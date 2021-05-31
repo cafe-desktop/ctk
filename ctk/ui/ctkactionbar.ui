@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <template class="GtkActionBar" parent="GtkBin">
+  <template class="CtkActionBar" parent="CtkBin">
     <child>
-      <object class="GtkRevealer" id="revealer">
+      <object class="CtkRevealer" id="revealer">
         <property name="visible">1</property>
         <child>
-          <object class="GtkBox" id="box">
+          <object class="CtkBox" id="box">
             <property name="visible">1</property>
             <property name="spacing">6</property>
           </object>

@@ -1,10 +1,10 @@
 #include <ctk/ctk.h>
 
 static void
-expand_toggled (GtkToggleButton *b, GtkWidget *w)
+expand_toggled (CtkToggleButton *b, CtkWidget *w)
 {
   gboolean active;
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   active = ctk_toggle_button_get_active (b);
   parent = ctk_widget_get_parent (w);
@@ -14,10 +14,10 @@ expand_toggled (GtkToggleButton *b, GtkWidget *w)
 }
 
 static void
-fill_toggled (GtkToggleButton *b, GtkWidget *w)
+fill_toggled (CtkToggleButton *b, CtkWidget *w)
 {
   gboolean active;
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   active = ctk_toggle_button_get_active (b);
   parent = ctk_widget_get_parent (w);
@@ -27,13 +27,13 @@ fill_toggled (GtkToggleButton *b, GtkWidget *w)
 }
 
 static void
-edit_widget (GtkWidget *button)
+edit_widget (CtkWidget *button)
 {
-  GtkWidget *dialog;
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkWidget *check;
+  CtkWidget *dialog;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkWidget *check;
   gboolean expand, fill;
 
   dialog = CTK_WIDGET (g_object_get_data (G_OBJECT (button), "dialog"));
@@ -101,10 +101,10 @@ edit_widget (GtkWidget *button)
   ctk_window_present (CTK_WINDOW (dialog));
 }
 
-static GtkWidget *
+static CtkWidget *
 test_widget (const gchar *label)
 {
-  GtkWidget *w;
+  CtkWidget *w;
 
   w = ctk_button_new_with_label (label);
   g_signal_connect (w, "clicked", G_CALLBACK (edit_widget), NULL);
@@ -113,7 +113,7 @@ test_widget (const gchar *label)
 }
 
 static void
-spacing_changed (GtkSpinButton *spin, GtkBox *box)
+spacing_changed (CtkSpinButton *spin, CtkBox *box)
 {
   gint spacing;
 
@@ -124,13 +124,13 @@ spacing_changed (GtkSpinButton *spin, GtkBox *box)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *box;
-  GtkWidget *check;
-  GtkWidget *b;
-  GtkWidget *label;
-  GtkWidget *spin;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *box;
+  CtkWidget *check;
+  CtkWidget *b;
+  CtkWidget *label;
+  CtkWidget *spin;
 
   ctk_init (NULL, NULL);
 

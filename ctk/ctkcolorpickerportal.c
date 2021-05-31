@@ -21,7 +21,7 @@
 #include "ctkprivate.h"
 #include <gio/gio.h>
 
-struct _GtkColorPickerPortal
+struct _CtkColorPickerPortal
 {
   GObject parent_instance;
 
@@ -30,16 +30,16 @@ struct _GtkColorPickerPortal
   GTask *task;
 };
 
-struct _GtkColorPickerPortalClass
+struct _CtkColorPickerPortalClass
 {
   GObjectClass parent_class;
 };
 
 static GInitableIface *initable_parent_iface;
 static void ctk_color_picker_portal_initable_iface_init (GInitableIface *iface);
-static void ctk_color_picker_portal_iface_init (GtkColorPickerInterface *iface);
+static void ctk_color_picker_portal_iface_init (CtkColorPickerInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorPickerPortal, ctk_color_picker_portal, G_TYPE_OBJECT,
+G_DEFINE_TYPE_WITH_CODE (CtkColorPickerPortal, ctk_color_picker_portal, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, ctk_color_picker_portal_initable_iface_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_PICKER, ctk_color_picker_portal_iface_init))
 
@@ -48,7 +48,7 @@ ctk_color_picker_portal_initable_init (GInitable     *initable,
                                        GCancellable  *cancellable,
                                        GError       **error)
 {
-  GtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (initable);
+  CtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (initable);
   char *owner;
   GVariant *ret;
   guint version = 0;
@@ -105,14 +105,14 @@ ctk_color_picker_portal_initable_iface_init (GInitableIface *iface)
 }
 
 static void
-ctk_color_picker_portal_init (GtkColorPickerPortal *picker)
+ctk_color_picker_portal_init (CtkColorPickerPortal *picker)
 {
 }
 
 static void
 ctk_color_picker_portal_finalize (GObject *object)
 {
-  GtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (object);
+  CtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (object);
 
   g_clear_object (&picker->portal_proxy);
 
@@ -120,14 +120,14 @@ ctk_color_picker_portal_finalize (GObject *object)
 }
 
 static void
-ctk_color_picker_portal_class_init (GtkColorPickerPortalClass *class)
+ctk_color_picker_portal_class_init (CtkColorPickerPortalClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
   object_class->finalize = ctk_color_picker_portal_finalize;
 }
 
-GtkColorPicker *
+CtkColorPicker *
 ctk_color_picker_portal_new (void)
 {
   return CTK_COLOR_PICKER (g_initable_new (CTK_TYPE_COLOR_PICKER_PORTAL, NULL, NULL, NULL));
@@ -142,7 +142,7 @@ portal_response_received (GDBusConnection *connection,
                           GVariant        *parameters,
                           gpointer         user_data)
 {
-  GtkColorPickerPortal *picker = user_data;
+  CtkColorPickerPortal *picker = user_data;
   guint32 response;
   GVariant *ret;
 
@@ -176,11 +176,11 @@ portal_response_received (GDBusConnection *connection,
 }
 
 static void
-ctk_color_picker_portal_pick (GtkColorPicker      *cp,
+ctk_color_picker_portal_pick (CtkColorPicker      *cp,
                               GAsyncReadyCallback  callback,
                               gpointer             user_data)
 {
-  GtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (cp);
+  CtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (cp);
   GVariantBuilder options;
   GDBusConnection *connection;
   char *token;
@@ -222,7 +222,7 @@ ctk_color_picker_portal_pick (GtkColorPicker      *cp,
 }
 
 static GdkRGBA *
-ctk_color_picker_portal_pick_finish (GtkColorPicker  *cp,
+ctk_color_picker_portal_pick_finish (CtkColorPicker  *cp,
                                      GAsyncResult    *res,
                                      GError         **error)
 {
@@ -232,7 +232,7 @@ ctk_color_picker_portal_pick_finish (GtkColorPicker  *cp,
 }
 
 static void
-ctk_color_picker_portal_iface_init (GtkColorPickerInterface *iface)
+ctk_color_picker_portal_iface_init (CtkColorPickerInterface *iface)
 {
   iface->pick = ctk_color_picker_portal_pick;
   iface->pick_finish = ctk_color_picker_portal_pick_finish;

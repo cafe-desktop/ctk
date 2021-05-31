@@ -22,7 +22,7 @@
 #include <string.h>
 
 static void
-set_text (GtkWidget   *widget,
+set_text (CtkWidget   *widget,
           const gchar *text)
 {
   if (CTK_IS_LABEL (widget))
@@ -36,7 +36,7 @@ set_text (GtkWidget   *widget,
 }
 
 static void
-append_text (GtkWidget   *widget,
+append_text (CtkWidget   *widget,
              const gchar *text)
 {
   if (CTK_IS_LABEL (widget))
@@ -57,8 +57,8 @@ append_text (GtkWidget   *widget,
     }
   else if (CTK_IS_TEXT_VIEW (widget))
     {
-      GtkTextBuffer *buffer;
-      GtkTextIter end;
+      CtkTextBuffer *buffer;
+      CtkTextIter end;
 
       buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
       ctk_text_buffer_get_end_iter (buffer, &end);
@@ -69,7 +69,7 @@ append_text (GtkWidget   *widget,
 }
 
 static void
-test_basic (GtkWidget *widget)
+test_basic (CtkWidget *widget)
 {
   AtkText *atk_text;
   const gchar *text = "Text goes here";
@@ -125,7 +125,7 @@ text_inserted (AtkText *atk_text, gint position, gint length, SignalData *data)
 }
 
 static void
-test_text_changed (GtkWidget *widget)
+test_text_changed (CtkWidget *widget)
 {
   AtkText *atk_text;
   const gchar *text = "Täxt goes here";
@@ -382,7 +382,7 @@ show_text_attributes (PangoLayout *l)
 #endif
 
 static void
-test_words (GtkWidget *widget)
+test_words (CtkWidget *widget)
 {
   AtkText *atk_text;
   const gchar *text = "abc! def\nghi jkl\nmno";
@@ -876,7 +876,7 @@ test_words (GtkWidget *widget)
     {
       if (CTK_IS_ENTRY (widget))
         {
-          /* GtkEntry sets single-paragraph mode on its pango layout */
+          /* CtkEntry sets single-paragraph mode on its pango layout */
           if (expected[i].boundary == ATK_TEXT_BOUNDARY_LINE_START ||
               expected[i].boundary == ATK_TEXT_BOUNDARY_LINE_END)
             continue;
@@ -917,7 +917,7 @@ test_words (GtkWidget *widget)
 }
 
 static void
-select_region (GtkWidget *widget,
+select_region (CtkWidget *widget,
                gint       start,
                gint       end)
 {
@@ -927,8 +927,8 @@ select_region (GtkWidget *widget,
     ctk_label_select_region (CTK_LABEL (widget), start, end);
   else if (CTK_IS_TEXT_VIEW (widget))
     {
-      GtkTextBuffer *buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
-      GtkTextIter start_iter, end_iter;
+      CtkTextBuffer *buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
+      CtkTextIter start_iter, end_iter;
 
       ctk_text_buffer_get_iter_at_offset (buffer, &start_iter, end);
       ctk_text_buffer_get_iter_at_offset (buffer, &end_iter, start);
@@ -961,7 +961,7 @@ selection_changed_cb (AtkText *text, SelectionData *data)
 }
 
 static void
-test_selection (GtkWidget *widget)
+test_selection (CtkWidget *widget)
 {
   AtkText *atk_text;
   const gchar *text = "Bla bla bla";
@@ -1024,7 +1024,7 @@ test_selection (GtkWidget *widget)
 }
 
 static void
-setup_test (GtkWidget *widget)
+setup_test (CtkWidget *widget)
 {
   set_text (widget, "");
 }
@@ -1032,7 +1032,7 @@ setup_test (GtkWidget *widget)
 static void
 add_text_test (const gchar      *prefix,
                GTestFixtureFunc  test_func,
-               GtkWidget        *widget)
+               CtkWidget        *widget)
 {
   gchar *path;
 
@@ -1047,7 +1047,7 @@ add_text_test (const gchar      *prefix,
 }
 
 static void
-add_text_tests (GtkWidget *widget)
+add_text_tests (CtkWidget *widget)
 {
   g_object_ref_sink (widget);
   add_text_test ("/text/basic", (GTestFixtureFunc) test_basic, widget);
@@ -1060,7 +1060,7 @@ add_text_tests (GtkWidget *widget)
 static void
 test_bold_label (void)
 {
-  GtkWidget *label;
+  CtkWidget *label;
   AtkObject *atk_obj;
   gchar *text;
 
@@ -1091,7 +1091,7 @@ main (int argc, char *argv[])
 
   g_test_bug_base ("http://bugzilla.gnome.org/");
 
-  g_test_add_func ("/text/bold/GtkLabel", test_bold_label);
+  g_test_add_func ("/text/bold/CtkLabel", test_bold_label);
 
   add_text_tests (ctk_label_new (""));
   add_text_tests (ctk_entry_new ());

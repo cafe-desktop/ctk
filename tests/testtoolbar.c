@@ -21,10 +21,10 @@
 #include <ctk/ctk.h>
 
 static void
-change_orientation (GtkWidget *button, GtkWidget *toolbar)
+change_orientation (CtkWidget *button, CtkWidget *toolbar)
 {
-  GtkWidget *grid;
-  GtkOrientation orientation;
+  CtkWidget *grid;
+  CtkOrientation orientation;
 
   grid = ctk_widget_get_parent (toolbar);
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
@@ -51,16 +51,16 @@ change_orientation (GtkWidget *button, GtkWidget *toolbar)
 }
 
 static void
-change_show_arrow (GtkWidget *button, GtkWidget *toolbar)
+change_show_arrow (CtkWidget *button, CtkWidget *toolbar)
 {
   ctk_toolbar_set_show_arrow (CTK_TOOLBAR (toolbar),
 		ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)));
 }
 
 static void
-set_toolbar_style_toggled (GtkCheckButton *button, GtkToolbar *toolbar)
+set_toolbar_style_toggled (CtkCheckButton *button, CtkToolbar *toolbar)
 {
-  GtkWidget *option_menu;
+  CtkWidget *option_menu;
   int style;
   
   option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
@@ -80,19 +80,19 @@ set_toolbar_style_toggled (GtkCheckButton *button, GtkToolbar *toolbar)
 }
 
 static void
-change_toolbar_style (GtkWidget *option_menu, GtkWidget *toolbar)
+change_toolbar_style (CtkWidget *option_menu, CtkWidget *toolbar)
 {
-  GtkToolbarStyle style;
+  CtkToolbarStyle style;
 
   style = ctk_combo_box_get_active (CTK_COMBO_BOX (option_menu));
   ctk_toolbar_set_style (CTK_TOOLBAR (toolbar), style);
 }
 
 static void
-set_visible_func(GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
-		 GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
+set_visible_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
+		 CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
 {
-  GtkToolItem *tool_item;
+  CtkToolItem *tool_item;
   gboolean visible;
 
   ctk_tree_model_get (model, iter, 0, &tool_item, -1);
@@ -103,12 +103,12 @@ set_visible_func(GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
 }
 
 static void
-visibile_toggled(GtkCellRendererToggle *cell, const gchar *path_str,
-		 GtkTreeModel *model)
+visibile_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
+		 CtkTreeModel *model)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
-  GtkToolItem *tool_item;
+  CtkTreePath *path;
+  CtkTreeIter iter;
+  CtkToolItem *tool_item;
   gboolean visible;
 
   path = ctk_tree_path_new_from_string (path_str);
@@ -124,10 +124,10 @@ visibile_toggled(GtkCellRendererToggle *cell, const gchar *path_str,
 }
 
 static void
-set_expand_func(GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
-		GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
+set_expand_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
+		CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
 {
-  GtkToolItem *tool_item;
+  CtkToolItem *tool_item;
 
   ctk_tree_model_get (model, iter, 0, &tool_item, -1);
 
@@ -136,12 +136,12 @@ set_expand_func(GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
 }
 
 static void
-expand_toggled(GtkCellRendererToggle *cell, const gchar *path_str,
-	       GtkTreeModel *model)
+expand_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
+	       CtkTreeModel *model)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
-  GtkToolItem *tool_item;
+  CtkTreePath *path;
+  CtkTreeIter iter;
+  CtkToolItem *tool_item;
 
   path = ctk_tree_path_new_from_string (path_str);
   ctk_tree_model_get_iter (model, &iter, path);
@@ -155,10 +155,10 @@ expand_toggled(GtkCellRendererToggle *cell, const gchar *path_str,
 }
 
 static void
-set_homogeneous_func(GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
-		     GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
+set_homogeneous_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
+		     CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
 {
-  GtkToolItem *tool_item;
+  CtkToolItem *tool_item;
 
   ctk_tree_model_get (model, iter, 0, &tool_item, -1);
 
@@ -167,12 +167,12 @@ set_homogeneous_func(GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
 }
 
 static void
-homogeneous_toggled(GtkCellRendererToggle *cell, const gchar *path_str,
-		    GtkTreeModel *model)
+homogeneous_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
+		    CtkTreeModel *model)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
-  GtkToolItem *tool_item;
+  CtkTreePath *path;
+  CtkTreeIter iter;
+  CtkToolItem *tool_item;
 
   path = ctk_tree_path_new_from_string (path_str);
   ctk_tree_model_get_iter (model, &iter, path);
@@ -187,10 +187,10 @@ homogeneous_toggled(GtkCellRendererToggle *cell, const gchar *path_str,
 
 
 static void
-set_important_func(GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
-		   GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
+set_important_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
+		   CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
 {
-  GtkToolItem *tool_item;
+  CtkToolItem *tool_item;
 
   ctk_tree_model_get (model, iter, 0, &tool_item, -1);
 
@@ -199,12 +199,12 @@ set_important_func(GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
 }
 
 static void
-important_toggled(GtkCellRendererToggle *cell, const gchar *path_str,
-		  GtkTreeModel *model)
+important_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
+		  CtkTreeModel *model)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
-  GtkToolItem *tool_item;
+  CtkTreePath *path;
+  CtkTreeIter iter;
+  CtkToolItem *tool_item;
 
   path = ctk_tree_path_new_from_string (path_str);
   ctk_tree_model_get_iter (model, &iter, path);
@@ -217,12 +217,12 @@ important_toggled(GtkCellRendererToggle *cell, const gchar *path_str,
   ctk_tree_path_free (path);
 }
 
-static GtkListStore *
-create_items_list (GtkWidget **tree_view_p)
+static CtkListStore *
+create_items_list (CtkWidget **tree_view_p)
 {
-  GtkWidget *tree_view;
-  GtkListStore *list_store;
-  GtkCellRenderer *cell;
+  CtkWidget *tree_view;
+  CtkListStore *list_store;
+  CtkCellRenderer *cell;
   
   list_store = ctk_list_store_new (2, CTK_TYPE_TOOL_ITEM, G_TYPE_STRING);
   
@@ -273,9 +273,9 @@ create_items_list (GtkWidget **tree_view_p)
 }
 
 static void
-add_item_to_list (GtkListStore *store, GtkToolItem *item, const gchar *text)
+add_item_to_list (CtkListStore *store, CtkToolItem *item, const gchar *text)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   ctk_list_store_append (store, &iter);
   ctk_list_store_set (store, &iter,
@@ -286,16 +286,16 @@ add_item_to_list (GtkListStore *store, GtkToolItem *item, const gchar *text)
 }
 
 static void
-bold_toggled (GtkToggleToolButton *button)
+bold_toggled (CtkToggleToolButton *button)
 {
   g_message ("Bold toggled (active=%d)",
 	     ctk_toggle_tool_button_get_active (button));
 }
 
 static void
-set_icon_size_toggled (GtkCheckButton *button, GtkToolbar *toolbar)
+set_icon_size_toggled (CtkCheckButton *button, CtkToolbar *toolbar)
 {
-  GtkWidget *option_menu;
+  CtkWidget *option_menu;
   int icon_size;
   
   option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
@@ -318,7 +318,7 @@ set_icon_size_toggled (GtkCheckButton *button, GtkToolbar *toolbar)
 }
 
 static void
-icon_size_history_changed (GtkComboBox *menu, GtkToolbar *toolbar)
+icon_size_history_changed (CtkComboBox *menu, CtkToolbar *toolbar)
 {
   int icon_size;
 
@@ -331,8 +331,8 @@ icon_size_history_changed (GtkComboBox *menu, GtkToolbar *toolbar)
 }
 
 static gboolean
-toolbar_drag_drop (GtkWidget *widget, GdkDragContext *context,
-		   gint x, gint y, guint time, GtkWidget *label)
+toolbar_drag_drop (CtkWidget *widget, GdkDragContext *context,
+		   gint x, gint y, guint time, CtkWidget *label)
 {
   gchar buf[32];
 
@@ -343,12 +343,12 @@ toolbar_drag_drop (GtkWidget *widget, GdkDragContext *context,
   return TRUE;
 }
 
-static GtkTargetEntry target_table[] = {
+static CtkTargetEntry target_table[] = {
   { "application/x-toolbar-item", 0, 0 }
 };
 
 static void
-rtl_toggled (GtkCheckButton *check)
+rtl_toggled (CtkCheckButton *check)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (check)))
     ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
@@ -363,7 +363,7 @@ typedef struct
 } MenuPositionData;
 
 static void
-position_function (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data)
+position_function (CtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data)
 {
   /* Do not do this in your own code */
 
@@ -380,16 +380,16 @@ position_function (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer 
 }
 
 static gboolean
-popup_context_menu (GtkToolbar *toolbar, gint x, gint y, gint button_number)
+popup_context_menu (CtkToolbar *toolbar, gint x, gint y, gint button_number)
 {
   MenuPositionData position_data;
   
-  GtkMenu *menu = CTK_MENU (ctk_menu_new ());
+  CtkMenu *menu = CTK_MENU (ctk_menu_new ());
   int i;
 
   for (i = 0; i < 5; i++)
     {
-      GtkWidget *item;
+      CtkWidget *item;
       gchar *label = g_strdup_printf ("Item _%d", i);
       item = ctk_menu_item_new_with_mnemonic (label);
       ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
@@ -410,10 +410,10 @@ popup_context_menu (GtkToolbar *toolbar, gint x, gint y, gint button_number)
   return TRUE;
 }
 
-static GtkToolItem *drag_item = NULL;
+static CtkToolItem *drag_item = NULL;
 
 static gboolean
-toolbar_drag_motion (GtkToolbar     *toolbar,
+toolbar_drag_motion (CtkToolbar     *toolbar,
 		     GdkDragContext *context,
 		     gint            x,
 		     gint            y,
@@ -438,7 +438,7 @@ toolbar_drag_motion (GtkToolbar     *toolbar,
 }
 
 static void
-toolbar_drag_leave (GtkToolbar     *toolbar,
+toolbar_drag_leave (CtkToolbar     *toolbar,
 		    GdkDragContext *context,
 		    guint           time,
 		    gpointer	    null)
@@ -453,7 +453,7 @@ toolbar_drag_leave (GtkToolbar     *toolbar,
 }
 
 static gboolean
-timeout_cb (GtkWidget *widget)
+timeout_cb (CtkWidget *widget)
 {
   static gboolean sensitive = TRUE;
   
@@ -465,7 +465,7 @@ timeout_cb (GtkWidget *widget)
 }
 
 static gboolean
-timeout_cb1 (GtkWidget *widget)
+timeout_cb1 (CtkWidget *widget)
 {
 	static gboolean sensitive = TRUE;
 	sensitive = !sensitive;
@@ -476,17 +476,17 @@ timeout_cb1 (GtkWidget *widget)
 gint
 main (gint argc, gchar **argv)
 {
-  GtkWidget *window, *toolbar, *grid, *treeview, *scrolled_window;
-  GtkWidget *hbox, *hbox1, *hbox2, *checkbox, *option_menu, *menu;
+  CtkWidget *window, *toolbar, *grid, *treeview, *scrolled_window;
+  CtkWidget *hbox, *hbox1, *hbox2, *checkbox, *option_menu, *menu;
   gint i;
   static const gchar *toolbar_styles[] = { "icons", "text", "both (vertical)",
 					   "both (horizontal)" };
-  GtkToolItem *item;
-  GtkListStore *store;
-  GtkWidget *image;
-  GtkWidget *menuitem;
-  GtkWidget *button;
-  GtkWidget *label;
+  CtkToolItem *item;
+  CtkListStore *store;
+  CtkWidget *image;
+  CtkWidget *menuitem;
+  CtkWidget *button;
+  CtkWidget *label;
   GIcon *gicon;
   GSList *group;
   

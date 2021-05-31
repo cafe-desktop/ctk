@@ -1,13 +1,13 @@
 /* Size Groups
  *
- * GtkSizeGroup provides a mechanism for grouping a number of
+ * CtkSizeGroup provides a mechanism for grouping a number of
  * widgets together so they all request the same amount of space.
  * This is typically useful when you want a column of widgets to
- * have the same size, but you can't use a GtkTable widget.
+ * have the same size, but you can't use a CtkTable widget.
  *
  * Note that size groups only affect the amount of space requested,
  * not the size that the widgets finally receive. If you want the
- * widgets in a GtkSizeGroup to actually be the same size, you need
+ * widgets in a CtkSizeGroup to actually be the same size, you need
  * to pack them in such a way that they get the size they request
  * and not more. For example, if you are packing your widgets
  * into a table, you would not include the CTK_FILL flag.
@@ -18,10 +18,10 @@
 
 /* Convenience function to create a combo box holding a number of strings
  */
-GtkWidget *
+CtkWidget *
 create_combo_box (const char **strings)
 {
-  GtkWidget *combo_box;
+  CtkWidget *combo_box;
   const char **str;
 
   combo_box = ctk_combo_box_text_new ();
@@ -35,14 +35,14 @@ create_combo_box (const char **strings)
 }
 
 static void
-add_row (GtkGrid      *table,
+add_row (CtkGrid      *table,
          int           row,
-         GtkSizeGroup *size_group,
+         CtkSizeGroup *size_group,
          const char   *label_text,
          const char  **options)
 {
-  GtkWidget *combo_box;
-  GtkWidget *label;
+  CtkWidget *combo_box;
+  CtkWidget *label;
 
   label = ctk_label_new_with_mnemonic (label_text);
   ctk_widget_set_halign (label, CTK_ALIGN_START);
@@ -59,10 +59,10 @@ add_row (GtkGrid      *table,
 }
 
 static void
-toggle_grouping (GtkToggleButton *check_button,
-                 GtkSizeGroup    *size_group)
+toggle_grouping (CtkToggleButton *check_button,
+                 CtkSizeGroup    *size_group)
 {
-  GtkSizeGroupMode new_mode;
+  CtkSizeGroupMode new_mode;
 
   /* CTK_SIZE_GROUP_NONE is not generally useful, but is useful
    * here to show the effect of CTK_SIZE_GROUP_HORIZONTAL by
@@ -76,15 +76,15 @@ toggle_grouping (GtkToggleButton *check_button,
   ctk_size_group_set_mode (size_group, new_mode);
 }
 
-GtkWidget *
-do_sizegroup (GtkWidget *do_widget)
+CtkWidget *
+do_sizegroup (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *table;
-  GtkWidget *frame;
-  GtkWidget *vbox;
-  GtkWidget *check_button;
-  GtkSizeGroup *size_group;
+  static CtkWidget *window = NULL;
+  CtkWidget *table;
+  CtkWidget *frame;
+  CtkWidget *vbox;
+  CtkWidget *check_button;
+  CtkSizeGroup *size_group;
 
   static const char *color_options[] = {
     "Red", "Green", "Blue", NULL

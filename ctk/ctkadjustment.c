@@ -33,19 +33,19 @@
 /**
  * SECTION:ctkadjustment
  * @Short_description: A representation of an adjustable bounded value
- * @Title: GtkAdjustment
+ * @Title: CtkAdjustment
  *
- * The #GtkAdjustment object represents a value which has an associated lower
+ * The #CtkAdjustment object represents a value which has an associated lower
  * and upper bound, together with step and page increments, and a page size.
- * It is used within several GTK+ widgets, including #GtkSpinButton, #GtkViewport,
- * and #GtkRange (which is a base class for #GtkScrollbar and #GtkScale).
+ * It is used within several GTK+ widgets, including #CtkSpinButton, #CtkViewport,
+ * and #CtkRange (which is a base class for #CtkScrollbar and #CtkScale).
  *
- * The #GtkAdjustment object does not update the value itself. Instead
- * it is left up to the owner of the #GtkAdjustment to control the value.
+ * The #CtkAdjustment object does not update the value itself. Instead
+ * it is left up to the owner of the #CtkAdjustment to control the value.
  */
 
 
-struct _GtkAdjustmentPrivate {
+struct _CtkAdjustmentPrivate {
   gdouble lower;
   gdouble upper;
   gdouble value;
@@ -101,13 +101,13 @@ static GParamSpec *adjustment_props[NUM_PROPERTIES] = { NULL, };
 
 static guint64 adjustment_changed_stamp = 0; /* protected by global gdk lock */
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkAdjustment, ctk_adjustment, G_TYPE_INITIALLY_UNOWNED)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkAdjustment, ctk_adjustment, G_TYPE_INITIALLY_UNOWNED)
 
 static void
 ctk_adjustment_finalize (GObject *object)
 {
-  GtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
-  GtkAdjustmentPrivate *priv = adjustment->priv;
+  CtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
+  CtkAdjustmentPrivate *priv = adjustment->priv;
 
   if (priv->tick_id)
     g_signal_handler_disconnect (priv->clock, priv->tick_id);
@@ -118,7 +118,7 @@ ctk_adjustment_finalize (GObject *object)
 }
 
 static void
-ctk_adjustment_class_init (GtkAdjustmentClass *class)
+ctk_adjustment_class_init (CtkAdjustmentClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
@@ -131,7 +131,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
   class->value_changed = NULL;
 
   /**
-   * GtkAdjustment:value:
+   * CtkAdjustment:value:
    *
    * The value of the adjustment.
    *
@@ -146,7 +146,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkAdjustment:lower:
+   * CtkAdjustment:lower:
    *
    * The minimum value of the adjustment.
    *
@@ -161,7 +161,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkAdjustment:upper:
+   * CtkAdjustment:upper:
    *
    * The maximum value of the adjustment.
    * Note that values will be restricted by
@@ -179,7 +179,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkAdjustment:step-increment:
+   * CtkAdjustment:step-increment:
    *
    * The step increment of the adjustment.
    *
@@ -194,7 +194,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkAdjustment:page-increment:
+   * CtkAdjustment:page-increment:
    *
    * The page increment of the adjustment.
    *
@@ -209,12 +209,12 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkAdjustment:page-size:
+   * CtkAdjustment:page-size:
    *
    * The page size of the adjustment.
    * Note that the page-size is irrelevant and should be set to zero
    * if the adjustment is used for a simple scalar value, e.g. in a
-   * #GtkSpinButton.
+   * #CtkSpinButton.
    *
    * Since: 2.4
    */
@@ -229,39 +229,39 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, adjustment_props);
 
   /**
-   * GtkAdjustment::changed:
+   * CtkAdjustment::changed:
    * @adjustment: the object which received the signal
    *
-   * Emitted when one or more of the #GtkAdjustment properties have been
-   * changed, other than the #GtkAdjustment:value property.
+   * Emitted when one or more of the #CtkAdjustment properties have been
+   * changed, other than the #CtkAdjustment:value property.
    */
   adjustment_signals[CHANGED] =
     g_signal_new (I_("changed"),
 		  G_OBJECT_CLASS_TYPE (class),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
-		  G_STRUCT_OFFSET (GtkAdjustmentClass, changed),
+		  G_STRUCT_OFFSET (CtkAdjustmentClass, changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkAdjustment::value-changed:
+   * CtkAdjustment::value-changed:
    * @adjustment: the object which received the signal
    *
-   * Emitted when the #GtkAdjustment:value property has been changed.
+   * Emitted when the #CtkAdjustment:value property has been changed.
    */
   adjustment_signals[VALUE_CHANGED] =
     g_signal_new (I_("value-changed"),
 		  G_OBJECT_CLASS_TYPE (class),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
-		  G_STRUCT_OFFSET (GtkAdjustmentClass, value_changed),
+		  G_STRUCT_OFFSET (CtkAdjustmentClass, value_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 }
 
 static void
-ctk_adjustment_init (GtkAdjustment *adjustment)
+ctk_adjustment_init (CtkAdjustment *adjustment)
 {
   adjustment->priv = ctk_adjustment_get_instance_private (adjustment);
 }
@@ -272,8 +272,8 @@ ctk_adjustment_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
-  GtkAdjustmentPrivate *priv = adjustment->priv;
+  CtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
+  CtkAdjustmentPrivate *priv = adjustment->priv;
 
   switch (prop_id)
     {
@@ -307,9 +307,9 @@ ctk_adjustment_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
+  CtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
   gdouble double_value = g_value_get_double (value);
-  GtkAdjustmentPrivate *priv = adjustment->priv;
+  CtkAdjustmentPrivate *priv = adjustment->priv;
 
   switch (prop_id)
     {
@@ -338,13 +338,13 @@ ctk_adjustment_set_property (GObject      *object,
 }
 
 static inline void
-emit_changed (GtkAdjustment *adjustment)
+emit_changed (CtkAdjustment *adjustment)
 {
   g_signal_emit (adjustment, adjustment_signals[CHANGED], 0);
 }
 
 static inline void
-emit_value_changed (GtkAdjustment *adjustment)
+emit_value_changed (CtkAdjustment *adjustment)
 {
   g_signal_emit (adjustment, adjustment_signals[VALUE_CHANGED], 0);
   g_object_notify_by_pspec (G_OBJECT (adjustment), adjustment_props[PROP_VALUE]);
@@ -390,11 +390,11 @@ ctk_adjustment_dispatch_properties_changed (GObject     *object,
  * @page_increment: the page increment
  * @page_size: the page size
  *
- * Creates a new #GtkAdjustment.
+ * Creates a new #CtkAdjustment.
  *
- * Returns: a new #GtkAdjustment
+ * Returns: a new #CtkAdjustment
  */
-GtkAdjustment *
+CtkAdjustment *
 ctk_adjustment_new (gdouble value,
 		    gdouble lower,
 		    gdouble upper,
@@ -414,7 +414,7 @@ ctk_adjustment_new (gdouble value,
 
 /**
  * ctk_adjustment_get_value:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
  * Gets the current value of the adjustment.
  * See ctk_adjustment_set_value().
@@ -422,7 +422,7 @@ ctk_adjustment_new (gdouble value,
  * Returns: The current value of the adjustment
  **/
 gdouble
-ctk_adjustment_get_value (GtkAdjustment *adjustment)
+ctk_adjustment_get_value (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
@@ -430,7 +430,7 @@ ctk_adjustment_get_value (GtkAdjustment *adjustment)
 }
 
 gdouble
-ctk_adjustment_get_target_value (GtkAdjustment *adjustment)
+ctk_adjustment_get_target_value (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
@@ -441,7 +441,7 @@ ctk_adjustment_get_target_value (GtkAdjustment *adjustment)
 }
 
 static void
-adjustment_set_value (GtkAdjustment *adjustment,
+adjustment_set_value (CtkAdjustment *adjustment,
                       gdouble        value)
 {
   if (adjustment->priv->value != value)
@@ -452,12 +452,12 @@ adjustment_set_value (GtkAdjustment *adjustment,
 }
 
 static void ctk_adjustment_on_frame_clock_update (GdkFrameClock *clock,
-                                                  GtkAdjustment *adjustment);
+                                                  CtkAdjustment *adjustment);
 
 static void
-ctk_adjustment_begin_updating (GtkAdjustment *adjustment)
+ctk_adjustment_begin_updating (CtkAdjustment *adjustment)
 {
-  GtkAdjustmentPrivate *priv = adjustment->priv;
+  CtkAdjustmentPrivate *priv = adjustment->priv;
 
   if (priv->tick_id == 0)
     {
@@ -468,9 +468,9 @@ ctk_adjustment_begin_updating (GtkAdjustment *adjustment)
 }
 
 static void
-ctk_adjustment_end_updating (GtkAdjustment *adjustment)
+ctk_adjustment_end_updating (CtkAdjustment *adjustment)
 {
-  GtkAdjustmentPrivate *priv = adjustment->priv;
+  CtkAdjustmentPrivate *priv = adjustment->priv;
 
   if (priv->tick_id != 0)
     {
@@ -493,9 +493,9 @@ ease_out_cubic (gdouble t)
 
 static void
 ctk_adjustment_on_frame_clock_update (GdkFrameClock *clock,
-                                      GtkAdjustment *adjustment)
+                                      CtkAdjustment *adjustment)
 {
-  GtkAdjustmentPrivate *priv = adjustment->priv;
+  CtkAdjustmentPrivate *priv = adjustment->priv;
   gint64 now;
 
   now = gdk_frame_clock_get_frame_time (clock);
@@ -516,11 +516,11 @@ ctk_adjustment_on_frame_clock_update (GdkFrameClock *clock,
 }
 
 static void
-ctk_adjustment_set_value_internal (GtkAdjustment *adjustment,
+ctk_adjustment_set_value_internal (CtkAdjustment *adjustment,
                                    gdouble        value,
                                    gboolean       animate)
 {
-  GtkAdjustmentPrivate *priv = adjustment->priv;
+  CtkAdjustmentPrivate *priv = adjustment->priv;
 
   /* don't use CLAMP() so we don't end up below lower if upper - page_size
    * is smaller than lower
@@ -548,18 +548,18 @@ ctk_adjustment_set_value_internal (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_set_value:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  * @value: the new value
  *
- * Sets the #GtkAdjustment value. The value is clamped to lie between
- * #GtkAdjustment:lower and #GtkAdjustment:upper.
+ * Sets the #CtkAdjustment value. The value is clamped to lie between
+ * #CtkAdjustment:lower and #CtkAdjustment:upper.
  *
- * Note that for adjustments which are used in a #GtkScrollbar, the
- * effective range of allowed values goes from #GtkAdjustment:lower to
- * #GtkAdjustment:upper - #GtkAdjustment:page-size.
+ * Note that for adjustments which are used in a #CtkScrollbar, the
+ * effective range of allowed values goes from #CtkAdjustment:lower to
+ * #CtkAdjustment:upper - #CtkAdjustment:page-size.
  */
 void
-ctk_adjustment_set_value (GtkAdjustment *adjustment,
+ctk_adjustment_set_value (CtkAdjustment *adjustment,
 			  gdouble        value)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
@@ -568,7 +568,7 @@ ctk_adjustment_set_value (GtkAdjustment *adjustment,
 }
 
 void
-ctk_adjustment_animate_to_value (GtkAdjustment *adjustment,
+ctk_adjustment_animate_to_value (CtkAdjustment *adjustment,
 			         gdouble        value)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
@@ -578,7 +578,7 @@ ctk_adjustment_animate_to_value (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_get_lower:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
  * Retrieves the minimum value of the adjustment.
  *
@@ -587,7 +587,7 @@ ctk_adjustment_animate_to_value (GtkAdjustment *adjustment,
  * Since: 2.14
  **/
 gdouble
-ctk_adjustment_get_lower (GtkAdjustment *adjustment)
+ctk_adjustment_get_lower (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
@@ -596,27 +596,27 @@ ctk_adjustment_get_lower (GtkAdjustment *adjustment)
 
 /**
  * ctk_adjustment_set_lower:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  * @lower: the new minimum value
  *
  * Sets the minimum value of the adjustment.
  *
  * When setting multiple adjustment properties via their individual
- * setters, multiple #GtkAdjustment::changed signals will be emitted.
- * However, since the emission of the #GtkAdjustment::changed signal
+ * setters, multiple #CtkAdjustment::changed signals will be emitted.
+ * However, since the emission of the #CtkAdjustment::changed signal
  * is tied to the emission of the #GObject::notify signals of the changed
- * properties, it’s possible to compress the #GtkAdjustment::changed
+ * properties, it’s possible to compress the #CtkAdjustment::changed
  * signals into one by calling g_object_freeze_notify() and
  * g_object_thaw_notify() around the calls to the individual setters.
  *
  * Alternatively, using a single g_object_set() for all the properties
  * to change, or using ctk_adjustment_configure() has the same effect
- * of compressing #GtkAdjustment::changed emissions.
+ * of compressing #CtkAdjustment::changed emissions.
  *
  * Since: 2.14
  **/
 void
-ctk_adjustment_set_lower (GtkAdjustment *adjustment,
+ctk_adjustment_set_lower (CtkAdjustment *adjustment,
                           gdouble        lower)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
@@ -627,7 +627,7 @@ ctk_adjustment_set_lower (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_get_upper:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
  * Retrieves the maximum value of the adjustment.
  *
@@ -636,7 +636,7 @@ ctk_adjustment_set_lower (GtkAdjustment *adjustment,
  * Since: 2.14
  **/
 gdouble
-ctk_adjustment_get_upper (GtkAdjustment *adjustment)
+ctk_adjustment_get_upper (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
@@ -645,7 +645,7 @@ ctk_adjustment_get_upper (GtkAdjustment *adjustment)
 
 /**
  * ctk_adjustment_set_upper:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  * @upper: the new maximum value
  *
  * Sets the maximum value of the adjustment.
@@ -654,13 +654,13 @@ ctk_adjustment_get_upper (GtkAdjustment *adjustment)
  * if the page-size property is nonzero.
  *
  * See ctk_adjustment_set_lower() about how to compress multiple
- * emissions of the #GtkAdjustment::changed signal when setting
+ * emissions of the #CtkAdjustment::changed signal when setting
  * multiple adjustment properties.
  *
  * Since: 2.14
  **/
 void
-ctk_adjustment_set_upper (GtkAdjustment *adjustment,
+ctk_adjustment_set_upper (CtkAdjustment *adjustment,
                           gdouble        upper)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
@@ -671,7 +671,7 @@ ctk_adjustment_set_upper (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_get_step_increment:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
  * Retrieves the step increment of the adjustment.
  *
@@ -680,7 +680,7 @@ ctk_adjustment_set_upper (GtkAdjustment *adjustment,
  * Since: 2.14
  **/
 gdouble
-ctk_adjustment_get_step_increment (GtkAdjustment *adjustment)
+ctk_adjustment_get_step_increment (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
@@ -689,19 +689,19 @@ ctk_adjustment_get_step_increment (GtkAdjustment *adjustment)
 
 /**
  * ctk_adjustment_set_step_increment:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  * @step_increment: the new step increment
  *
  * Sets the step increment of the adjustment.
  *
  * See ctk_adjustment_set_lower() about how to compress multiple
- * emissions of the #GtkAdjustment::changed signal when setting
+ * emissions of the #CtkAdjustment::changed signal when setting
  * multiple adjustment properties.
  *
  * Since: 2.14
  **/
 void
-ctk_adjustment_set_step_increment (GtkAdjustment *adjustment,
+ctk_adjustment_set_step_increment (CtkAdjustment *adjustment,
                                    gdouble        step_increment)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
@@ -712,7 +712,7 @@ ctk_adjustment_set_step_increment (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_get_page_increment:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
  * Retrieves the page increment of the adjustment.
  *
@@ -721,7 +721,7 @@ ctk_adjustment_set_step_increment (GtkAdjustment *adjustment,
  * Since: 2.14
  **/
 gdouble
-ctk_adjustment_get_page_increment (GtkAdjustment *adjustment)
+ctk_adjustment_get_page_increment (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
@@ -730,19 +730,19 @@ ctk_adjustment_get_page_increment (GtkAdjustment *adjustment)
 
 /**
  * ctk_adjustment_set_page_increment:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  * @page_increment: the new page increment
  *
  * Sets the page increment of the adjustment.
  *
  * See ctk_adjustment_set_lower() about how to compress multiple
- * emissions of the #GtkAdjustment::changed signal when setting
+ * emissions of the #CtkAdjustment::changed signal when setting
  * multiple adjustment properties.
  *
  * Since: 2.14
  **/
 void
-ctk_adjustment_set_page_increment (GtkAdjustment *adjustment,
+ctk_adjustment_set_page_increment (CtkAdjustment *adjustment,
                                    gdouble        page_increment)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
@@ -753,7 +753,7 @@ ctk_adjustment_set_page_increment (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_get_page_size:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
  * Retrieves the page size of the adjustment.
  *
@@ -762,7 +762,7 @@ ctk_adjustment_set_page_increment (GtkAdjustment *adjustment,
  * Since: 2.14
  **/
 gdouble
-ctk_adjustment_get_page_size (GtkAdjustment *adjustment)
+ctk_adjustment_get_page_size (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
@@ -771,19 +771,19 @@ ctk_adjustment_get_page_size (GtkAdjustment *adjustment)
 
 /**
  * ctk_adjustment_set_page_size:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  * @page_size: the new page size
  *
  * Sets the page size of the adjustment.
  *
  * See ctk_adjustment_set_lower() about how to compress multiple
- * emissions of the GtkAdjustment::changed signal when setting
+ * emissions of the CtkAdjustment::changed signal when setting
  * multiple adjustment properties.
  *
  * Since: 2.14
  **/
 void
-ctk_adjustment_set_page_size (GtkAdjustment *adjustment,
+ctk_adjustment_set_page_size (CtkAdjustment *adjustment,
                               gdouble        page_size)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
@@ -794,7 +794,7 @@ ctk_adjustment_set_page_size (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_configure:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  * @value: the new value
  * @lower: the new minimum value
  * @upper: the new maximum value
@@ -805,14 +805,14 @@ ctk_adjustment_set_page_size (GtkAdjustment *adjustment,
  * Sets all properties of the adjustment at once.
  *
  * Use this function to avoid multiple emissions of the
- * #GtkAdjustment::changed signal. See ctk_adjustment_set_lower()
+ * #CtkAdjustment::changed signal. See ctk_adjustment_set_lower()
  * for an alternative way of compressing multiple emissions of
- * #GtkAdjustment::changed into one.
+ * #CtkAdjustment::changed into one.
  *
  * Since: 2.14
  **/
 void
-ctk_adjustment_configure (GtkAdjustment *adjustment,
+ctk_adjustment_configure (CtkAdjustment *adjustment,
                           gdouble        value,
                           gdouble        lower,
                           gdouble        upper,
@@ -820,7 +820,7 @@ ctk_adjustment_configure (GtkAdjustment *adjustment,
                           gdouble        page_increment,
                           gdouble        page_size)
 {
-  GtkAdjustmentPrivate *priv;
+  CtkAdjustmentPrivate *priv;
   gboolean value_changed = FALSE;
   guint64 old_stamp = adjustment_changed_stamp;
 
@@ -864,17 +864,17 @@ ctk_adjustment_configure (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_changed:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
- * Emits a #GtkAdjustment::changed signal from the #GtkAdjustment.
- * This is typically called by the owner of the #GtkAdjustment after it has
- * changed any of the #GtkAdjustment properties other than the value.
+ * Emits a #CtkAdjustment::changed signal from the #CtkAdjustment.
+ * This is typically called by the owner of the #CtkAdjustment after it has
+ * changed any of the #CtkAdjustment properties other than the value.
  *
- * Deprecated: 3.18: GTK+ emits #GtkAdjustment::changed itself whenever any
+ * Deprecated: 3.18: GTK+ emits #CtkAdjustment::changed itself whenever any
  *    of the properties (other than value) change
  */
 void
-ctk_adjustment_changed (GtkAdjustment *adjustment)
+ctk_adjustment_changed (CtkAdjustment *adjustment)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
   emit_changed (adjustment);
@@ -882,17 +882,17 @@ ctk_adjustment_changed (GtkAdjustment *adjustment)
 
 /**
  * ctk_adjustment_value_changed:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
- * Emits a #GtkAdjustment::value-changed signal from the #GtkAdjustment.
- * This is typically called by the owner of the #GtkAdjustment after it has
- * changed the #GtkAdjustment:value property.
+ * Emits a #CtkAdjustment::value-changed signal from the #CtkAdjustment.
+ * This is typically called by the owner of the #CtkAdjustment after it has
+ * changed the #CtkAdjustment:value property.
  *
- * Deprecated: 3.18: GTK+ emits #GtkAdjustment::value-changed itself whenever
+ * Deprecated: 3.18: GTK+ emits #CtkAdjustment::value-changed itself whenever
  *    the value changes
  */
 void
-ctk_adjustment_value_changed (GtkAdjustment *adjustment)
+ctk_adjustment_value_changed (CtkAdjustment *adjustment)
 {
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
   emit_value_changed (adjustment);
@@ -900,24 +900,24 @@ ctk_adjustment_value_changed (GtkAdjustment *adjustment)
 
 /**
  * ctk_adjustment_clamp_page:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  * @lower: the lower value
  * @upper: the upper value
  *
- * Updates the #GtkAdjustment:value property to ensure that the range
+ * Updates the #CtkAdjustment:value property to ensure that the range
  * between @lower and @upper is in the current page (i.e. between
- * #GtkAdjustment:value and #GtkAdjustment:value + #GtkAdjustment:page-size).
+ * #CtkAdjustment:value and #CtkAdjustment:value + #CtkAdjustment:page-size).
  * If the range is larger than the page size, then only the start of it will
  * be in the current page.
  *
- * A #GtkAdjustment::value-changed signal will be emitted if the value is changed.
+ * A #CtkAdjustment::value-changed signal will be emitted if the value is changed.
  */
 void
-ctk_adjustment_clamp_page (GtkAdjustment *adjustment,
+ctk_adjustment_clamp_page (CtkAdjustment *adjustment,
 			   gdouble        lower,
 			   gdouble        upper)
 {
-  GtkAdjustmentPrivate *priv;
+  CtkAdjustmentPrivate *priv;
   gboolean need_emission;
 
   g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
@@ -946,7 +946,7 @@ ctk_adjustment_clamp_page (GtkAdjustment *adjustment,
 
 /**
  * ctk_adjustment_get_minimum_increment:
- * @adjustment: a #GtkAdjustment
+ * @adjustment: a #CtkAdjustment
  *
  * Gets the smaller of step increment and page increment.
  *
@@ -955,9 +955,9 @@ ctk_adjustment_clamp_page (GtkAdjustment *adjustment,
  * Since: 3.2
  */
 gdouble
-ctk_adjustment_get_minimum_increment (GtkAdjustment *adjustment)
+ctk_adjustment_get_minimum_increment (CtkAdjustment *adjustment)
 {
-  GtkAdjustmentPrivate *priv;
+  CtkAdjustmentPrivate *priv;
   gdouble minimum_increment;
 
   g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0);
@@ -988,11 +988,11 @@ ctk_adjustment_get_minimum_increment (GtkAdjustment *adjustment)
 }
 
 void
-ctk_adjustment_enable_animation (GtkAdjustment *adjustment,
+ctk_adjustment_enable_animation (CtkAdjustment *adjustment,
                                  GdkFrameClock *clock,
                                  guint          duration)
 {
-  GtkAdjustmentPrivate *priv = adjustment->priv;
+  CtkAdjustmentPrivate *priv = adjustment->priv;
 
   if (priv->clock != clock)
     {
@@ -1018,13 +1018,13 @@ ctk_adjustment_enable_animation (GtkAdjustment *adjustment,
 }
 
 guint
-ctk_adjustment_get_animation_duration (GtkAdjustment *adjustment)
+ctk_adjustment_get_animation_duration (CtkAdjustment *adjustment)
 {
   return adjustment->priv->duration;
 }
 
 gboolean
-ctk_adjustment_is_animating (GtkAdjustment *adjustment)
+ctk_adjustment_is_animating (CtkAdjustment *adjustment)
 {
   return adjustment->priv->tick_id != 0;
 }

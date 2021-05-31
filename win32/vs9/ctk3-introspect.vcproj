@@ -25,10 +25,10 @@
 			>
 			<Tool
 				Name="VCNMakeTool"
-				BuildCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParam)"
-				ReBuildCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParam) clean all"
-				CleanCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParam) clean"
-				Output="$(GtkIntrospectBuiltFiles)"
+				BuildCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParam)"
+				ReBuildCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParam) clean all"
+				CleanCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParam) clean"
+				Output="$(CtkIntrospectBuiltFiles)"
 			/>
 		</Configuration>
 		<Configuration
@@ -38,10 +38,10 @@
 			>
 			<Tool
 				Name="VCNMakeTool"
-				BuildCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParamX64)"
-				ReBuildCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParamX64) clean all"
-				CleanCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParamX64) clean"
-				Output="$(GtkIntrospectBuiltFiles)"
+				BuildCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParamX64)"
+				ReBuildCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParamX64) clean all"
+				CleanCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParamX64) clean"
+				Output="$(CtkIntrospectBuiltFiles)"
 			/>
 		</Configuration>
 		<Configuration
@@ -53,10 +53,10 @@
 			>
 			<Tool
 				Name="VCNMakeTool"
-				BuildCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParam)"
-				ReBuildCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParam) clean all"
-				CleanCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParam) clean"
-				Output="$(GtkIntrospectBuiltFiles)"
+				BuildCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParam)"
+				ReBuildCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParam) clean all"
+				CleanCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParam) clean"
+				Output="$(CtkIntrospectBuiltFiles)"
 			/>
 		</Configuration>
 		<Configuration
@@ -66,10 +66,10 @@
 			>
 			<Tool
 				Name="VCNMakeTool"
-				BuildCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParamX64)"
-				ReBuildCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParamX64) clean all"
-				CleanCommandLine="$(GtkIntrospectNMakeCmd) $(IntrospectPythonParamX64) clean"
-				Output="$(GtkIntrospectBuiltFiles)"
+				BuildCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParamX64)"
+				ReBuildCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParamX64) clean all"
+				CleanCommandLine="$(CtkIntrospectNMakeCmd) $(IntrospectPythonParamX64) clean"
+				Output="$(CtkIntrospectBuiltFiles)"
 			/>
 		</Configuration>
 	</Configurations>

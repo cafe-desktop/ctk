@@ -2,16 +2,16 @@
 <!-- Generated with glade 3.16.0 on Mon Nov  4 13:29:25 2013 -->
 <interface>
   <!-- interface-requires ctk+ 3.10 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="label" translatable="yes">A &lt;a href="http://www.gnome.org"&gt;link&lt;/a&gt; to the &lt;a href="http://www.gnome.org"&gt;GNOME&lt;/a&gt; website</property>
@@ -24,7 +24,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLinkButton" id="linkbutton1">
+          <object class="CtkLinkButton" id="linkbutton1">
             <property name="label" translatable="yes">A normal link</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -39,7 +39,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLinkButton" id="linkbutton2">
+          <object class="CtkLinkButton" id="linkbutton2">
             <property name="label" translatable="yes">A visited link</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

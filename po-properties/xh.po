@@ -444,10 +444,10 @@ msgstr "Iqela Lezenzo"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"I-GtkActionGroup le GtkAction enxulunyaniswa nayo, okanye NULL (kusebenziso "
+"I-CtkActionGroup le CtkAction enxulunyaniswa nayo, okanye NULL (kusebenziso "
 "lwangaphakathi)."
 
 #: ctk/ctkaction.c:414 ctk/ctkimagemenuitem.c:172
@@ -863,10 +863,10 @@ msgstr "Uhlobo lokupakisha"
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"I-GtkPackType ebonisa ukuba inkqubo engumntwana ipakishwe ngokunxulumene "
+"I-CtkPackType ebonisa ukuba inkqubo engumntwana ipakishwe ngokunxulumene "
 "nesiqalo okanye isiphelo senkqubo engunozala na"
 
 #: ctk/ctkbox.c:293 ctk/ctknotebook.c:670 ctk/ctkpaned.c:270
@@ -1398,9 +1398,9 @@ msgid "Size"
 msgstr "Ubungakanani"
 
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr ""
-"Ixabiso le-GtkIconSize elichaza ubungakanani bomfanekiso ongumqondiso "
+"Ixabiso le-CtkIconSize elichaza ubungakanani bomfanekiso ongumqondiso "
 "onikezelwayo"
 
 #: ctk/ctkcellrendererpixbuf.c:162
@@ -1527,9 +1527,9 @@ msgstr "Igama lomxholo womfanekiso ongumqondiso emalisetyenziswe"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
-"Ixabiso le-GtkIconSize elichaza ubungakanani bomfanekiso ongumqondiso "
+"Ixabiso le-CtkIconSize elichaza ubungakanani bomfanekiso ongumqondiso "
 "onikezelwayo"
 
 #: ctk/ctkcellrenderertext.c:232
@@ -3408,11 +3408,11 @@ msgstr "Ulungelelwaniso"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Ulungelelaniso lwemigca kumbhalo welebhile ngokunxulumana kwayo. Le nto "
 "AYInagalelo kulungelelaniso lwelebhile phakathi kwindawo eyabelwe yona. Bona "
-"i-GtkMisc::xalign yayo"
+"i-CtkMisc::xalign yayo"
 
 #: ctk/ctklabel.c:587
 msgid "Pattern"
@@ -3520,16 +3520,16 @@ msgid "Horizontal adjustment"
 msgstr "Uhlenga-hlengiso oluthe tyaba"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "I-GtkAdjustment ngokwendawo ethe tyaba"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "I-CtkAdjustment ngokwendawo ethe tyaba"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "Uhlenga-hlengiso oluthe nkqo"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "I-GtkAdjustment ngokwendawo ethe nkqo"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "I-CtkAdjustment ngokwendawo ethe nkqo"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
 msgid "Width"
@@ -3926,7 +3926,7 @@ msgid "Message area"
 msgstr "Isimbo Somyalezo"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4405,7 +4405,7 @@ msgid "Default Page Setup"
 msgstr "Umphakamo Omiselweyo"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
@@ -4413,7 +4413,7 @@ msgid "Print Settings"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1043
@@ -4543,7 +4543,7 @@ msgid "Embed Page Setup"
 msgstr "Ubungakanani Bephepha"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4557,7 +4557,7 @@ msgid "The number of pages that will be printed."
 msgstr "Inani lemigca yetafile"
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr ""
 
 #: ctk/ctkprintunixdialog.c:324
@@ -4567,7 +4567,7 @@ msgstr "Unyaka okhethiweyo"
 
 #: ctk/ctkprintunixdialog.c:325
 #, fuzzy
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr "Into esebenzayo ngelo xesha"
 
 #: ctk/ctkprintunixdialog.c:332
@@ -4589,7 +4589,7 @@ msgid "Whether the application has a selection"
 msgstr "Nokuba ngaba isenzo senziwe ukuba sisebenze na."
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprogressbar.c:134
@@ -4744,8 +4744,8 @@ msgid "How the range should be updated on the screen"
 msgstr "Indlela emaluhlaziywe ngayo uluhlu eskrinini"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "I-GtkAdjustment equlethe ixabiso langoku lwento eseluhlwini"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "I-CtkAdjustment equlethe ixabiso langoku lwento eseluhlwini"
 
 #: ctk/ctkrange.c:428
 msgid "Invert direction slider moves to increase range value"
@@ -5031,8 +5031,8 @@ msgstr "Ubungakanani bomfanekiso ongumqondiso we-toolbar"
 #: ctk/ctkscalebutton.c:240
 #, fuzzy
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "I-GtkAdjustment equlethe ixabiso langoku lwento eseluhlwini"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "I-CtkAdjustment equlethe ixabiso langoku lwento eseluhlwini"
 
 #: ctk/ctkscalebutton.c:268
 #, fuzzy
@@ -5577,9 +5577,9 @@ msgid "Default file chooser backend"
 msgstr "Icala elingemva lesikhethi esimiliselweyo sefayili"
 
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
 msgstr ""
-"Igama lecala elingemva le-GtkFileChooser elinokusetyenziswa "
+"Igama lecala elingemva le-CtkFileChooser elinokusetyenziswa "
 "njengelimiliselweyo"
 
 #: ctk/ctksettings.c:760
@@ -5589,9 +5589,9 @@ msgstr "Icala elingemva lesikhethi esimiliselweyo sefayili"
 
 #: ctk/ctksettings.c:761
 #, fuzzy
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr ""
-"Igama lecala elingemva le-GtkFileChooser elinokusetyenziswa "
+"Igama lecala elingemva le-CtkFileChooser elinokusetyenziswa "
 "njengelimiliselweyo"
 
 #: ctk/ctksettings.c:784
@@ -5828,7 +5828,7 @@ msgstr "Inani Leziqhagamshelanisi"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6853,9 +6853,9 @@ msgid "Fixed Height Mode"
 msgstr "Imo Yomphakamo Esisigxina"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"Ikhawuleziza imbonakalo ye-GtkTreeView ngokuqikelela ukuba yonke imigca "
+"Ikhawuleziza imbonakalo ye-CtkTreeView ngokuqikelela ukuba yonke imigca "
 "inomphakamo ofanayo"
 
 #: ctk/ctktreeview.c:677
@@ -7146,17 +7146,17 @@ msgstr "Uluhlu lwamagama lwe-XML elichaza i-UI ehlangeneyo"
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr ""
-"I-GtkAdjustment emisela amaxabiso endawo ethe tyaba yale mbonakalo ye-port"
+"I-CtkAdjustment emisela amaxabiso endawo ethe tyaba yale mbonakalo ye-port"
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr ""
-"I-GtkAdjustment emisela amaxabiso endawo ethe nkqo yale mbonakalo ye-port"
+"I-CtkAdjustment emisela amaxabiso endawo ethe nkqo yale mbonakalo ye-port"
 
 #: ctk/ctkviewport.c:159
 msgid "Determines how the shadowed box around the viewport is drawn"
@@ -7652,8 +7652,8 @@ msgid "Focus in Toplevel"
 msgstr "Gxininisa kwiNqanaba Elingentla"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Nokuba ngaba ugxilo lofakelo lungaphakathi kwale GtkWindow na"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Nokuba ngaba ugxilo lofakelo lungaphakathi kwale CtkWindow na"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -7888,12 +7888,12 @@ msgstr ""
 
 #, fuzzy
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "Ukuba TRUE i-GtkProgress ikwinkqubo yomsebenzi, into etsho ukuba ibonisa "
+#~ "Ukuba TRUE i-CtkProgress ikwinkqubo yomsebenzi, into etsho ukuba ibonisa "
 #~ "ukuba kukho into eyenzekayo, hayi ukuba umsebenzi lowo sewugqitywe "
 #~ "kangakanani na. Le nto isetyenziswa xa usenza into ongaziyo ukuba ixa "
 #~ "kuthatha ixesha elingakanani na"
@@ -8072,8 +8072,8 @@ msgstr ""
 #~ "Nokuba ngaba isixhobo sokuqala ubone simele sithathe sonke isithuba "
 #~ "esisinikiweyo na"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "I-GtkAdjustment enxulumene nesikhombisi senkqubela (Yaliwe)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "I-CtkAdjustment enxulumene nesikhombisi senkqubela (Yaliwe)"
 
 #~ msgid "Bar style"
 #~ msgstr "Isimbo sebha"

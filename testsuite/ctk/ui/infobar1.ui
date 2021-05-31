@@ -1,11 +1,11 @@
 <!-- test all valid infobar markup -->
 <interface>
-  <object class="GtkInfoBar">
+  <object class="CtkInfoBar">
     <child>
-      <object class="GtkButton" id="button_cancel"/>
+      <object class="CtkButton" id="button_cancel"/>
     </child>
     <child>
-      <object class="GtkButton" id="button_ok">
+      <object class="CtkButton" id="button_ok">
         <property name="can-default">True</property>
       </object>
     </child>

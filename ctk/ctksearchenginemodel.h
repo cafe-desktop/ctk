@@ -26,18 +26,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SEARCH_ENGINE_MODEL		(_ctk_search_engine_model_get_type ())
-#define CTK_SEARCH_ENGINE_MODEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_MODEL, GtkSearchEngineModel))
-#define CTK_SEARCH_ENGINE_MODEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_MODEL, GtkSearchEngineModelClass))
+#define CTK_SEARCH_ENGINE_MODEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_MODEL, CtkSearchEngineModel))
+#define CTK_SEARCH_ENGINE_MODEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_MODEL, CtkSearchEngineModelClass))
 #define CTK_IS_SEARCH_ENGINE_MODEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEARCH_ENGINE_MODEL))
 #define CTK_IS_SEARCH_ENGINE_MODEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEARCH_ENGINE_MODEL))
-#define CTK_SEARCH_ENGINE_MODEL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_MODEL, GtkSearchEngineModelClass))
+#define CTK_SEARCH_ENGINE_MODEL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_MODEL, CtkSearchEngineModelClass))
 
-typedef struct _GtkSearchEngineModel GtkSearchEngineModel;
-typedef struct _GtkSearchEngineModelClass GtkSearchEngineModelClass;
+typedef struct _CtkSearchEngineModel CtkSearchEngineModel;
+typedef struct _CtkSearchEngineModelClass CtkSearchEngineModelClass;
 
 GType            _ctk_search_engine_model_get_type (void);
 
-GtkSearchEngine *_ctk_search_engine_model_new      (GtkFileSystemModel *model);
+CtkSearchEngine *_ctk_search_engine_model_new      (CtkFileSystemModel *model);
 
 G_END_DECLS
 

@@ -41,46 +41,46 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_UI_MANAGER            (ctk_ui_manager_get_type ())
-#define CTK_UI_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_UI_MANAGER, GtkUIManager))
-#define CTK_UI_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_UI_MANAGER, GtkUIManagerClass))
+#define CTK_UI_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_UI_MANAGER, CtkUIManager))
+#define CTK_UI_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_UI_MANAGER, CtkUIManagerClass))
 #define CTK_IS_UI_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_UI_MANAGER))
 #define CTK_IS_UI_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_UI_MANAGER))
-#define CTK_UI_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_UI_MANAGER, GtkUIManagerClass))
+#define CTK_UI_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_UI_MANAGER, CtkUIManagerClass))
 
-typedef struct _GtkUIManager      GtkUIManager;
-typedef struct _GtkUIManagerClass GtkUIManagerClass;
-typedef struct _GtkUIManagerPrivate GtkUIManagerPrivate;
+typedef struct _CtkUIManager      CtkUIManager;
+typedef struct _CtkUIManagerClass CtkUIManagerClass;
+typedef struct _CtkUIManagerPrivate CtkUIManagerPrivate;
 
 
-struct _GtkUIManager {
+struct _CtkUIManager {
   GObject parent;
 
   /*< private >*/
-  GtkUIManagerPrivate *private_data;
+  CtkUIManagerPrivate *private_data;
 };
 
-struct _GtkUIManagerClass {
+struct _CtkUIManagerClass {
   GObjectClass parent_class;
 
   /* Signals */
-  void (* add_widget)       (GtkUIManager *manager,
-                             GtkWidget    *widget);
-  void (* actions_changed)  (GtkUIManager *manager);
-  void (* connect_proxy)    (GtkUIManager *manager,
-			     GtkAction    *action,
-			     GtkWidget    *proxy);
-  void (* disconnect_proxy) (GtkUIManager *manager,
-			     GtkAction    *action,
-			     GtkWidget    *proxy);
-  void (* pre_activate)     (GtkUIManager *manager,
-			     GtkAction    *action);
-  void (* post_activate)    (GtkUIManager *manager,
-			     GtkAction    *action);
+  void (* add_widget)       (CtkUIManager *manager,
+                             CtkWidget    *widget);
+  void (* actions_changed)  (CtkUIManager *manager);
+  void (* connect_proxy)    (CtkUIManager *manager,
+			     CtkAction    *action,
+			     CtkWidget    *proxy);
+  void (* disconnect_proxy) (CtkUIManager *manager,
+			     CtkAction    *action,
+			     CtkWidget    *proxy);
+  void (* pre_activate)     (CtkUIManager *manager,
+			     CtkAction    *action);
+  void (* post_activate)    (CtkUIManager *manager,
+			     CtkAction    *action);
 
   /* Virtual functions */
-  GtkWidget * (* get_widget) (GtkUIManager *manager,
+  CtkWidget * (* get_widget) (CtkUIManager *manager,
                               const gchar  *path);
-  GtkAction * (* get_action) (GtkUIManager *manager,
+  CtkAction * (* get_action) (CtkUIManager *manager,
                               const gchar  *path);
 
   /* Padding for future expansion */
@@ -91,7 +91,7 @@ struct _GtkUIManagerClass {
 };
 
 /**
- * GtkUIManagerItemType:
+ * CtkUIManagerItemType:
  * @CTK_UI_MANAGER_AUTO: Pick the type of the UI element according to context.
  * @CTK_UI_MANAGER_MENUBAR: Create a menubar.
  * @CTK_UI_MANAGER_MENU: Create a menu.
@@ -122,68 +122,68 @@ typedef enum {
   CTK_UI_MANAGER_SEPARATOR         = 1 << 7,
   CTK_UI_MANAGER_ACCELERATOR       = 1 << 8,
   CTK_UI_MANAGER_POPUP_WITH_ACCELS = 1 << 9
-} GtkUIManagerItemType;
+} CtkUIManagerItemType;
 
 GDK_DEPRECATED_IN_3_10
 GType          ctk_ui_manager_get_type            (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
-GtkUIManager  *ctk_ui_manager_new                 (void);
+CtkUIManager  *ctk_ui_manager_new                 (void);
 GDK_DEPRECATED_IN_3_4
-void           ctk_ui_manager_set_add_tearoffs    (GtkUIManager          *manager,
+void           ctk_ui_manager_set_add_tearoffs    (CtkUIManager          *manager,
                                                    gboolean               add_tearoffs);
 GDK_DEPRECATED_IN_3_4
-gboolean       ctk_ui_manager_get_add_tearoffs    (GtkUIManager          *manager);
+gboolean       ctk_ui_manager_get_add_tearoffs    (CtkUIManager          *manager);
 
 GDK_DEPRECATED_IN_3_10
-void           ctk_ui_manager_insert_action_group (GtkUIManager          *manager,
-						   GtkActionGroup        *action_group,
+void           ctk_ui_manager_insert_action_group (CtkUIManager          *manager,
+						   CtkActionGroup        *action_group,
 						   gint                   pos);
 GDK_DEPRECATED_IN_3_10
-void           ctk_ui_manager_remove_action_group (GtkUIManager          *manager,
-						   GtkActionGroup        *action_group);
+void           ctk_ui_manager_remove_action_group (CtkUIManager          *manager,
+						   CtkActionGroup        *action_group);
 GDK_DEPRECATED_IN_3_10
-GList         *ctk_ui_manager_get_action_groups   (GtkUIManager          *manager);
+GList         *ctk_ui_manager_get_action_groups   (CtkUIManager          *manager);
 GDK_DEPRECATED_IN_3_10
-GtkAccelGroup *ctk_ui_manager_get_accel_group     (GtkUIManager          *manager);
+CtkAccelGroup *ctk_ui_manager_get_accel_group     (CtkUIManager          *manager);
 GDK_DEPRECATED_IN_3_10
-GtkWidget     *ctk_ui_manager_get_widget          (GtkUIManager          *manager,
+CtkWidget     *ctk_ui_manager_get_widget          (CtkUIManager          *manager,
 						   const gchar           *path);
 GDK_DEPRECATED_IN_3_10
-GSList        *ctk_ui_manager_get_toplevels       (GtkUIManager          *manager,
-						   GtkUIManagerItemType   types);
+GSList        *ctk_ui_manager_get_toplevels       (CtkUIManager          *manager,
+						   CtkUIManagerItemType   types);
 GDK_DEPRECATED_IN_3_10
-GtkAction     *ctk_ui_manager_get_action          (GtkUIManager          *manager,
+CtkAction     *ctk_ui_manager_get_action          (CtkUIManager          *manager,
 						   const gchar           *path);
 GDK_DEPRECATED_IN_3_10
-guint          ctk_ui_manager_add_ui_from_string  (GtkUIManager          *manager,
+guint          ctk_ui_manager_add_ui_from_string  (CtkUIManager          *manager,
 						   const gchar           *buffer,
 						   gssize                 length,
 						   GError               **error);
 GDK_DEPRECATED_IN_3_10
-guint          ctk_ui_manager_add_ui_from_file    (GtkUIManager          *manager,
+guint          ctk_ui_manager_add_ui_from_file    (CtkUIManager          *manager,
 						   const gchar           *filename,
 						   GError               **error);
 GDK_DEPRECATED_IN_3_10
-guint          ctk_ui_manager_add_ui_from_resource(GtkUIManager          *manager,
+guint          ctk_ui_manager_add_ui_from_resource(CtkUIManager          *manager,
 						   const gchar           *resource_path,
 						   GError               **error);
 GDK_DEPRECATED_IN_3_10
-void           ctk_ui_manager_add_ui              (GtkUIManager          *manager,
+void           ctk_ui_manager_add_ui              (CtkUIManager          *manager,
 						   guint                  merge_id,
 						   const gchar           *path,
 						   const gchar           *name,
 						   const gchar           *action,
-						   GtkUIManagerItemType   type,
+						   CtkUIManagerItemType   type,
 						   gboolean               top);
 GDK_DEPRECATED_IN_3_10
-void           ctk_ui_manager_remove_ui           (GtkUIManager          *manager,
+void           ctk_ui_manager_remove_ui           (CtkUIManager          *manager,
 						   guint                  merge_id);
 GDK_DEPRECATED_IN_3_10
-gchar         *ctk_ui_manager_get_ui              (GtkUIManager          *manager);
+gchar         *ctk_ui_manager_get_ui              (CtkUIManager          *manager);
 GDK_DEPRECATED_IN_3_10
-void           ctk_ui_manager_ensure_update       (GtkUIManager          *manager);
+void           ctk_ui_manager_ensure_update       (CtkUIManager          *manager);
 GDK_DEPRECATED_IN_3_10
-guint          ctk_ui_manager_new_merge_id        (GtkUIManager          *manager);
+guint          ctk_ui_manager_new_merge_id        (CtkUIManager          *manager);
 
 G_END_DECLS
 

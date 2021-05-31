@@ -6,11 +6,11 @@
 
 #include <ctk/ctk.h>
 
-static GtkTextTag *tag;
+static CtkTextTag *tag;
 
 static void
-margin_changed (GtkAdjustment *adjustment,
-                GtkTextView   *text)
+margin_changed (CtkAdjustment *adjustment,
+                CtkTextView   *text)
 {
   gint value;
 
@@ -19,21 +19,21 @@ margin_changed (GtkAdjustment *adjustment,
   g_object_set (tag, "pixels-above-lines", value, NULL);
 }
 
-GtkWidget *
-do_overlay2 (GtkWidget *do_widget)
+CtkWidget *
+do_overlay2 (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *overlay;
-      GtkWidget *sw;
-      GtkWidget *text;
-      GtkWidget *image;
-      GtkWidget *scale;
-      GtkTextBuffer *buffer;
-      GtkTextIter start, end;
-      GtkAdjustment *adjustment;
+      CtkWidget *overlay;
+      CtkWidget *sw;
+      CtkWidget *text;
+      CtkWidget *image;
+      CtkWidget *scale;
+      CtkTextBuffer *buffer;
+      CtkTextIter start, end;
+      CtkAdjustment *adjustment;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_default_size (CTK_WINDOW (window), 500, 510);

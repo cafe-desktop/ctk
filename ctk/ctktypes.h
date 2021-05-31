@@ -31,28 +31,28 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkAdjustment          GtkAdjustment;
-typedef struct _GtkBuilder             GtkBuilder;
-typedef struct _GtkClipboard	       GtkClipboard;
-typedef struct _GtkIconSet             GtkIconSet;
-typedef struct _GtkIconSource          GtkIconSource;
-typedef struct _GtkRcStyle             GtkRcStyle;
-typedef struct _GtkRequisition	       GtkRequisition;
-typedef struct _GtkSelectionData       GtkSelectionData;
-typedef struct _GtkSettings            GtkSettings;
-typedef struct _GtkStyle               GtkStyle;
-typedef struct _GtkStyleContext        GtkStyleContext;
-typedef struct _GtkTooltip             GtkTooltip;
-typedef struct _GtkWidget              GtkWidget;
-typedef struct _GtkWidgetPath          GtkWidgetPath;
-typedef struct _GtkWindow              GtkWindow;
+typedef struct _CtkAdjustment          CtkAdjustment;
+typedef struct _CtkBuilder             CtkBuilder;
+typedef struct _CtkClipboard	       CtkClipboard;
+typedef struct _CtkIconSet             CtkIconSet;
+typedef struct _CtkIconSource          CtkIconSource;
+typedef struct _CtkRcStyle             CtkRcStyle;
+typedef struct _CtkRequisition	       CtkRequisition;
+typedef struct _CtkSelectionData       CtkSelectionData;
+typedef struct _CtkSettings            CtkSettings;
+typedef struct _CtkStyle               CtkStyle;
+typedef struct _CtkStyleContext        CtkStyleContext;
+typedef struct _CtkTooltip             CtkTooltip;
+typedef struct _CtkWidget              CtkWidget;
+typedef struct _CtkWidgetPath          CtkWidgetPath;
+typedef struct _CtkWindow              CtkWindow;
 
 
-typedef gboolean (*GtkRcPropertyParser) (const GParamSpec *pspec,
+typedef gboolean (*CtkRcPropertyParser) (const GParamSpec *pspec,
                                          const GString    *rc_string,
                                          GValue           *property_value);
 
-typedef void (*GtkBuilderConnectFunc) (GtkBuilder    *builder,
+typedef void (*CtkBuilderConnectFunc) (CtkBuilder    *builder,
 				       GObject       *object,
 				       const gchar   *signal_name,
 				       const gchar   *handler_name,

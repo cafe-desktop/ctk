@@ -36,12 +36,12 @@
 /**
  * SECTION:ctkcellrendererprogress
  * @Short_description: Renders numbers as progress bars
- * @Title: GtkCellRendererProgress
+ * @Title: CtkCellRendererProgress
  *
- * #GtkCellRendererProgress renders a numeric value as a progress par in a cell.
+ * #CtkCellRendererProgress renders a numeric value as a progress par in a cell.
  * Additionally, it can display a text on top of the progress bar.
  *
- * The #GtkCellRendererProgress cell renderer was added in GTK+ 2.6.
+ * The #CtkCellRendererProgress cell renderer was added in GTK+ 2.6.
  */
 
 
@@ -57,7 +57,7 @@ enum
   PROP_INVERTED
 };
 
-struct _GtkCellRendererProgressPrivate
+struct _CtkCellRendererProgressPrivate
 {
   gint value;
   gchar *text;
@@ -68,7 +68,7 @@ struct _GtkCellRendererProgressPrivate
   gint offset;
   gfloat text_xalign;
   gfloat text_yalign;
-  GtkOrientation orientation;
+  CtkOrientation orientation;
   gboolean inverted;
 };
 
@@ -81,41 +81,41 @@ static void ctk_cell_renderer_progress_set_property (GObject                 *ob
 						     guint                    param_id,
 						     const GValue            *value,
 						     GParamSpec              *pspec);
-static void ctk_cell_renderer_progress_set_value    (GtkCellRendererProgress *cellprogress,
+static void ctk_cell_renderer_progress_set_value    (CtkCellRendererProgress *cellprogress,
 						     gint                     value);
-static void ctk_cell_renderer_progress_set_text     (GtkCellRendererProgress *cellprogress,
+static void ctk_cell_renderer_progress_set_text     (CtkCellRendererProgress *cellprogress,
 						     const gchar             *text);
-static void ctk_cell_renderer_progress_set_pulse    (GtkCellRendererProgress *cellprogress,
+static void ctk_cell_renderer_progress_set_pulse    (CtkCellRendererProgress *cellprogress,
 						     gint                     pulse);
-static void compute_dimensions                      (GtkCellRenderer         *cell,
-						     GtkWidget               *widget,
+static void compute_dimensions                      (CtkCellRenderer         *cell,
+						     CtkWidget               *widget,
 						     const gchar             *text,
 						     gint                    *width,
 						     gint                    *height);
-static void ctk_cell_renderer_progress_get_size     (GtkCellRenderer         *cell,
-						     GtkWidget               *widget,
+static void ctk_cell_renderer_progress_get_size     (CtkCellRenderer         *cell,
+						     CtkWidget               *widget,
 						     const GdkRectangle      *cell_area,
 						     gint                    *x_offset,
 						     gint                    *y_offset,
 						     gint                    *width,
 						     gint                    *height);
-static void ctk_cell_renderer_progress_render       (GtkCellRenderer         *cell,
+static void ctk_cell_renderer_progress_render       (CtkCellRenderer         *cell,
 						     cairo_t                 *cr,
-						     GtkWidget               *widget,
+						     CtkWidget               *widget,
 						     const GdkRectangle      *background_area,
 						     const GdkRectangle      *cell_area,
-				                     GtkCellRendererState    flags);
+				                     CtkCellRendererState    flags);
 
      
-G_DEFINE_TYPE_WITH_CODE (GtkCellRendererProgress, ctk_cell_renderer_progress, CTK_TYPE_CELL_RENDERER,
-                         G_ADD_PRIVATE (GtkCellRendererProgress)
+G_DEFINE_TYPE_WITH_CODE (CtkCellRendererProgress, ctk_cell_renderer_progress, CTK_TYPE_CELL_RENDERER,
+                         G_ADD_PRIVATE (CtkCellRendererProgress)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL))
 
 static void
-ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
+ctk_cell_renderer_progress_class_init (CtkCellRendererProgressClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
+  CtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
   
   object_class->finalize = ctk_cell_renderer_progress_finalize;
   object_class->get_property = ctk_cell_renderer_progress_get_property;
@@ -125,7 +125,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
   cell_class->render = ctk_cell_renderer_progress_render;
   
   /**
-   * GtkCellRendererProgress:value:
+   * CtkCellRendererProgress:value:
    *
    * The "value" property determines the percentage to which the
    * progress bar will be "filled in".
@@ -141,7 +141,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
 						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkCellRendererProgress:text:
+   * CtkCellRendererProgress:text:
    * 
    * The "text" property determines the label which will be drawn
    * over the progress bar. Setting this property to %NULL causes the default 
@@ -159,7 +159,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
 							CTK_PARAM_READWRITE));
 
   /**
-   * GtkCellRendererProgress:pulse:
+   * CtkCellRendererProgress:pulse:
    * 
    * Setting this to a non-negative value causes the cell renderer to
    * enter "activity mode", where a block bounces back and forth to 
@@ -183,7 +183,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
                                                      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkCellRendererProgress:text-xalign:
+   * CtkCellRendererProgress:text-xalign:
    *
    * The "text-xalign" property controls the horizontal alignment of the
    * text in the progress bar.  Valid values range from 0 (left) to 1
@@ -200,7 +200,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
                                                        CTK_PARAM_READWRITE));
 
   /**
-   * GtkCellRendererProgress:text-yalign:
+   * CtkCellRendererProgress:text-yalign:
    *
    * The "text-yalign" property controls the vertical alignment of the
    * text in the progress bar.  Valid values range from 0 (top) to 1
@@ -230,9 +230,9 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
 }
 
 static void
-ctk_cell_renderer_progress_init (GtkCellRendererProgress *cellprogress)
+ctk_cell_renderer_progress_init (CtkCellRendererProgress *cellprogress)
 {
-  GtkCellRendererProgressPrivate *priv;
+  CtkCellRendererProgressPrivate *priv;
 
   cellprogress->priv = ctk_cell_renderer_progress_get_instance_private (cellprogress);
   priv = cellprogress->priv;
@@ -256,13 +256,13 @@ ctk_cell_renderer_progress_init (GtkCellRendererProgress *cellprogress)
 /**
  * ctk_cell_renderer_progress_new:
  * 
- * Creates a new #GtkCellRendererProgress. 
+ * Creates a new #CtkCellRendererProgress. 
  *
  * Returns: the new cell renderer
  *
  * Since: 2.6
  **/
-GtkCellRenderer*
+CtkCellRenderer*
 ctk_cell_renderer_progress_new (void)
 {
   return g_object_new (CTK_TYPE_CELL_RENDERER_PROGRESS, NULL);
@@ -271,8 +271,8 @@ ctk_cell_renderer_progress_new (void)
 static void
 ctk_cell_renderer_progress_finalize (GObject *object)
 {
-  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
-  GtkCellRendererProgressPrivate *priv = cellprogress->priv;
+  CtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
+  CtkCellRendererProgressPrivate *priv = cellprogress->priv;
   
   g_free (priv->text);
   g_free (priv->label);
@@ -286,8 +286,8 @@ ctk_cell_renderer_progress_get_property (GObject    *object,
 					 GValue     *value,
 					 GParamSpec *pspec)
 {
-  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
-  GtkCellRendererProgressPrivate *priv = cellprogress->priv;
+  CtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
+  CtkCellRendererProgressPrivate *priv = cellprogress->priv;
   
   switch (param_id)
     {
@@ -323,8 +323,8 @@ ctk_cell_renderer_progress_set_property (GObject      *object,
 					 const GValue *value,
 					 GParamSpec   *pspec)
 {
-  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
-  GtkCellRendererProgressPrivate *priv = cellprogress->priv;
+  CtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
+  CtkCellRendererProgressPrivate *priv = cellprogress->priv;
   
   switch (param_id)
     {
@@ -366,9 +366,9 @@ ctk_cell_renderer_progress_set_property (GObject      *object,
 }
 
 static void
-recompute_label (GtkCellRendererProgress *cellprogress)
+recompute_label (CtkCellRendererProgress *cellprogress)
 {
-  GtkCellRendererProgressPrivate *priv = cellprogress->priv;
+  CtkCellRendererProgressPrivate *priv = cellprogress->priv;
   gchar *label;
 
   if (priv->text)
@@ -383,7 +383,7 @@ recompute_label (GtkCellRendererProgress *cellprogress)
 }
 
 static void
-ctk_cell_renderer_progress_set_value (GtkCellRendererProgress *cellprogress, 
+ctk_cell_renderer_progress_set_value (CtkCellRendererProgress *cellprogress, 
 				      gint                     value)
 {
   if (cellprogress->priv->value != value)
@@ -395,7 +395,7 @@ ctk_cell_renderer_progress_set_value (GtkCellRendererProgress *cellprogress,
 }
 
 static void
-ctk_cell_renderer_progress_set_text (GtkCellRendererProgress *cellprogress, 
+ctk_cell_renderer_progress_set_text (CtkCellRendererProgress *cellprogress, 
 				     const gchar             *text)
 {
   gchar *new_text;
@@ -408,10 +408,10 @@ ctk_cell_renderer_progress_set_text (GtkCellRendererProgress *cellprogress,
 }
 
 static void
-ctk_cell_renderer_progress_set_pulse (GtkCellRendererProgress *cellprogress, 
+ctk_cell_renderer_progress_set_pulse (CtkCellRendererProgress *cellprogress, 
 				      gint                     pulse)
 {
-  GtkCellRendererProgressPrivate *priv = cellprogress->priv;
+  CtkCellRendererProgressPrivate *priv = cellprogress->priv;
 
   if (pulse != priv->pulse)
     {
@@ -427,8 +427,8 @@ ctk_cell_renderer_progress_set_pulse (GtkCellRendererProgress *cellprogress,
 }
 
 static void
-compute_dimensions (GtkCellRenderer *cell,
-		    GtkWidget       *widget, 
+compute_dimensions (CtkCellRenderer *cell,
+		    CtkWidget       *widget, 
 		    const gchar     *text, 
 		    gint            *width, 
 		    gint            *height)
@@ -452,16 +452,16 @@ compute_dimensions (GtkCellRenderer *cell,
 }
 
 static void
-ctk_cell_renderer_progress_get_size (GtkCellRenderer    *cell,
-				     GtkWidget          *widget,
+ctk_cell_renderer_progress_get_size (CtkCellRenderer    *cell,
+				     CtkWidget          *widget,
 				     const GdkRectangle *cell_area,
 				     gint               *x_offset,
 				     gint               *y_offset,
 				     gint               *width,
 				     gint               *height)
 {
-  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (cell);
-  GtkCellRendererProgressPrivate *priv = cellprogress->priv;
+  CtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (cell);
+  CtkCellRendererProgressPrivate *priv = cellprogress->priv;
   gint w, h;
   gchar *text;
 
@@ -544,17 +544,17 @@ get_bar_position (gint     start,
 }
 
 static void
-ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
+ctk_cell_renderer_progress_render (CtkCellRenderer      *cell,
                                    cairo_t              *cr,
-				   GtkWidget            *widget,
+				   CtkWidget            *widget,
 				   const GdkRectangle   *background_area,
 				   const GdkRectangle   *cell_area,
-				   GtkCellRendererState  flags)
+				   CtkCellRendererState  flags)
 {
-  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (cell);
-  GtkCellRendererProgressPrivate *priv= cellprogress->priv;
-  GtkStyleContext *context;
-  GtkBorder padding;
+  CtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (cell);
+  CtkCellRendererProgressPrivate *priv= cellprogress->priv;
+  CtkStyleContext *context;
+  CtkBorder padding;
   PangoLayout *layout;
   PangoRectangle logical_rect;
   gint x, y, w, h, x_pos, y_pos, bar_position, bar_size, start, full_size;

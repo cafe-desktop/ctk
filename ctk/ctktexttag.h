@@ -3,7 +3,7 @@
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000      Red Hat, Inc.
- * Tk -> Gtk port by Havoc Pennington <hp@redhat.com>
+ * Tk -> Ctk port by Havoc Pennington <hp@redhat.com>
  *
  * This software is copyrighted by the Regents of the University of
  * California, Sun Microsystems, Inc., and other parties.  The
@@ -61,35 +61,35 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkTextIter GtkTextIter;
-typedef struct _GtkTextTagTable GtkTextTagTable;
+typedef struct _CtkTextIter CtkTextIter;
+typedef struct _CtkTextTagTable CtkTextTagTable;
 
 #define CTK_TYPE_TEXT_TAG            (ctk_text_tag_get_type ())
-#define CTK_TEXT_TAG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_TAG, GtkTextTag))
-#define CTK_TEXT_TAG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_TAG, GtkTextTagClass))
+#define CTK_TEXT_TAG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_TAG, CtkTextTag))
+#define CTK_TEXT_TAG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_TAG, CtkTextTagClass))
 #define CTK_IS_TEXT_TAG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEXT_TAG))
 #define CTK_IS_TEXT_TAG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_TAG))
-#define CTK_TEXT_TAG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_TAG, GtkTextTagClass))
+#define CTK_TEXT_TAG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_TAG, CtkTextTagClass))
 
-typedef struct _GtkTextTag             GtkTextTag;
-typedef struct _GtkTextTagPrivate      GtkTextTagPrivate;
-typedef struct _GtkTextTagClass        GtkTextTagClass;
+typedef struct _CtkTextTag             CtkTextTag;
+typedef struct _CtkTextTagPrivate      CtkTextTagPrivate;
+typedef struct _CtkTextTagClass        CtkTextTagClass;
 
-struct _GtkTextTag
+struct _CtkTextTag
 {
   GObject parent_instance;
 
-  GtkTextTagPrivate *priv;
+  CtkTextTagPrivate *priv;
 };
 
-struct _GtkTextTagClass
+struct _CtkTextTagClass
 {
   GObjectClass parent_class;
 
-  gboolean (* event) (GtkTextTag        *tag,
+  gboolean (* event) (CtkTextTag        *tag,
                       GObject           *event_object, /* widget, canvas item, whatever */
                       GdkEvent          *event,        /* the event itself */
-                      const GtkTextIter *iter);        /* location of event in buffer */
+                      const CtkTextIter *iter);        /* location of event in buffer */
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -101,19 +101,19 @@ struct _GtkTextTagClass
 GDK_AVAILABLE_IN_ALL
 GType        ctk_text_tag_get_type     (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkTextTag  *ctk_text_tag_new          (const gchar       *name);
+CtkTextTag  *ctk_text_tag_new          (const gchar       *name);
 GDK_AVAILABLE_IN_ALL
-gint         ctk_text_tag_get_priority (GtkTextTag        *tag);
+gint         ctk_text_tag_get_priority (CtkTextTag        *tag);
 GDK_AVAILABLE_IN_ALL
-void         ctk_text_tag_set_priority (GtkTextTag        *tag,
+void         ctk_text_tag_set_priority (CtkTextTag        *tag,
                                         gint               priority);
 GDK_AVAILABLE_IN_ALL
-gboolean     ctk_text_tag_event        (GtkTextTag        *tag,
+gboolean     ctk_text_tag_event        (CtkTextTag        *tag,
                                         GObject           *event_object,
                                         GdkEvent          *event,
-                                        const GtkTextIter *iter);
+                                        const CtkTextIter *iter);
 GDK_AVAILABLE_IN_3_20
-void         ctk_text_tag_changed      (GtkTextTag        *tag,
+void         ctk_text_tag_changed      (CtkTextTag        *tag,
                                         gboolean           size_changed);
 
 G_END_DECLS

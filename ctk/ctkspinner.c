@@ -44,11 +44,11 @@
 /**
  * SECTION:ctkspinner
  * @Short_description: Show a spinner animation
- * @Title: GtkSpinner
- * @See_also: #GtkCellRendererSpinner, #GtkProgressBar
+ * @Title: CtkSpinner
+ * @See_also: #CtkCellRendererSpinner, #CtkProgressBar
  *
- * A GtkSpinner widget displays an icon-size spinning animation.
- * It is often used as an alternative to a #GtkProgressBar for
+ * A CtkSpinner widget displays an icon-size spinning animation.
+ * It is often used as an alternative to a #CtkProgressBar for
  * displaying indefinite activity, instead of actual progress.
  *
  * To start the animation, use ctk_spinner_start(), to stop it
@@ -56,7 +56,7 @@
  *
  * # CSS nodes
  *
- * GtkSpinner has a single CSS node with the name spinner. When the animation is
+ * CtkSpinner has a single CSS node with the name spinner. When the animation is
  * active, the :checked pseudoclass is added to this node.
  */
 
@@ -66,18 +66,18 @@ enum {
   PROP_ACTIVE
 };
 
-struct _GtkSpinnerPrivate
+struct _CtkSpinnerPrivate
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
   gboolean active;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkSpinner, ctk_spinner, CTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkSpinner, ctk_spinner, CTK_TYPE_WIDGET)
 
 static void
 ctk_spinner_finalize (GObject *object)
 {
-  GtkSpinner *spinner = CTK_SPINNER (object);
+  CtkSpinner *spinner = CTK_SPINNER (object);
 
   g_clear_object (&spinner->priv->gadget);
 
@@ -85,7 +85,7 @@ ctk_spinner_finalize (GObject *object)
 }
 
 static void
-ctk_spinner_get_preferred_width (GtkWidget *widget,
+ctk_spinner_get_preferred_width (CtkWidget *widget,
                                  gint      *minimum,
                                  gint      *natural)
 {
@@ -97,7 +97,7 @@ ctk_spinner_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_spinner_get_preferred_height (GtkWidget *widget,
+ctk_spinner_get_preferred_height (CtkWidget *widget,
                                   gint      *minimum,
                                   gint      *natural)
 {
@@ -109,10 +109,10 @@ ctk_spinner_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_spinner_size_allocate (GtkWidget     *widget,
-                           GtkAllocation *allocation)
+ctk_spinner_size_allocate (CtkWidget     *widget,
+                           CtkAllocation *allocation)
 {
-  GtkAllocation clip;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -125,7 +125,7 @@ ctk_spinner_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_spinner_draw (GtkWidget *widget,
+ctk_spinner_draw (CtkWidget *widget,
                   cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_SPINNER (widget)->priv->gadget, cr);
@@ -134,10 +134,10 @@ ctk_spinner_draw (GtkWidget *widget,
 }
 
 static void
-ctk_spinner_set_active (GtkSpinner *spinner,
+ctk_spinner_set_active (CtkSpinner *spinner,
                         gboolean    active)
 {
-  GtkSpinnerPrivate *priv = spinner->priv;
+  CtkSpinnerPrivate *priv = spinner->priv;
 
   active = !!active;
 
@@ -162,7 +162,7 @@ ctk_spinner_get_property (GObject    *object,
                           GValue     *value,
                           GParamSpec *pspec)
 {
-  GtkSpinnerPrivate *priv;
+  CtkSpinnerPrivate *priv;
 
   priv = CTK_SPINNER (object)->priv;
 
@@ -193,10 +193,10 @@ ctk_spinner_set_property (GObject      *object,
 }
 
 static void
-ctk_spinner_class_init (GtkSpinnerClass *klass)
+ctk_spinner_class_init (CtkSpinnerClass *klass)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
   gobject_class = G_OBJECT_CLASS(klass);
   gobject_class->finalize = ctk_spinner_finalize;
@@ -209,7 +209,7 @@ ctk_spinner_class_init (GtkSpinnerClass *klass)
   widget_class->get_preferred_width = ctk_spinner_get_preferred_width;
   widget_class->get_preferred_height = ctk_spinner_get_preferred_height;
 
-  /* GtkSpinner:active:
+  /* CtkSpinner:active:
    *
    * Whether the spinner is active
    *
@@ -228,9 +228,9 @@ ctk_spinner_class_init (GtkSpinnerClass *klass)
 }
 
 static void
-ctk_spinner_init (GtkSpinner *spinner)
+ctk_spinner_init (CtkSpinner *spinner)
 {
-  GtkCssNode *widget_node;
+  CtkCssNode *widget_node;
 
   spinner->priv = ctk_spinner_get_instance_private (spinner);
 
@@ -247,11 +247,11 @@ ctk_spinner_init (GtkSpinner *spinner)
  *
  * Returns a new spinner widget. Not yet started.
  *
- * Returns: a new #GtkSpinner
+ * Returns: a new #CtkSpinner
  *
  * Since: 2.20
  */
-GtkWidget *
+CtkWidget *
 ctk_spinner_new (void)
 {
   return g_object_new (CTK_TYPE_SPINNER, NULL);
@@ -259,14 +259,14 @@ ctk_spinner_new (void)
 
 /**
  * ctk_spinner_start:
- * @spinner: a #GtkSpinner
+ * @spinner: a #CtkSpinner
  *
  * Starts the animation of the spinner.
  *
  * Since: 2.20
  */
 void
-ctk_spinner_start (GtkSpinner *spinner)
+ctk_spinner_start (CtkSpinner *spinner)
 {
   g_return_if_fail (CTK_IS_SPINNER (spinner));
 
@@ -275,14 +275,14 @@ ctk_spinner_start (GtkSpinner *spinner)
 
 /**
  * ctk_spinner_stop:
- * @spinner: a #GtkSpinner
+ * @spinner: a #CtkSpinner
  *
  * Stops the animation of the spinner.
  *
  * Since: 2.20
  */
 void
-ctk_spinner_stop (GtkSpinner *spinner)
+ctk_spinner_stop (CtkSpinner *spinner)
 {
   g_return_if_fail (CTK_IS_SPINNER (spinner));
 

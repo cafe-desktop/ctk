@@ -22,30 +22,30 @@
 #include "ctkcssstylepropertyprivate.h"
 #include "ctkstylecontextprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   GdkRGBA rgba;
 };
 
 static void
-ctk_css_value_rgba_free (GtkCssValue *value)
+ctk_css_value_rgba_free (CtkCssValue *value)
 {
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_rgba_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_rgba_compute (CtkCssValue             *value,
                             guint                    property_id,
-                            GtkStyleProviderPrivate *provider,
-                            GtkCssStyle             *style,
-                            GtkCssStyle             *parent_style)
+                            CtkStyleProviderPrivate *provider,
+                            CtkCssStyle             *style,
+                            CtkCssStyle             *parent_style)
 {
   return _ctk_css_value_ref (value);
 }
 
 static gboolean
-ctk_css_value_rgba_equal (const GtkCssValue *rgba1,
-                          const GtkCssValue *rgba2)
+ctk_css_value_rgba_equal (const CtkCssValue *rgba1,
+                          const CtkCssValue *rgba2)
 {
   return gdk_rgba_equal (&rgba1->rgba, &rgba2->rgba);
 }
@@ -58,9 +58,9 @@ transition (double start,
   return start + (end - start) * progress;
 }
 
-static GtkCssValue *
-ctk_css_value_rgba_transition (GtkCssValue *start,
-                               GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_rgba_transition (CtkCssValue *start,
+                               CtkCssValue *end,
                                guint        property_id,
                                double       progress)
 {
@@ -89,7 +89,7 @@ ctk_css_value_rgba_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_rgba_print (const GtkCssValue *rgba,
+ctk_css_value_rgba_print (const CtkCssValue *rgba,
                           GString           *string)
 {
   char *s = gdk_rgba_to_string (&rgba->rgba);
@@ -97,7 +97,7 @@ ctk_css_value_rgba_print (const GtkCssValue *rgba,
   g_free (s);
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_RGBA = {
+static const CtkCssValueClass CTK_CSS_VALUE_RGBA = {
   ctk_css_value_rgba_free,
   ctk_css_value_rgba_compute,
   ctk_css_value_rgba_equal,
@@ -105,21 +105,21 @@ static const GtkCssValueClass CTK_CSS_VALUE_RGBA = {
   ctk_css_value_rgba_print
 };
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_rgba_value_new_from_rgba (const GdkRGBA *rgba)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   g_return_val_if_fail (rgba != NULL, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_RGBA);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_RGBA);
   value->rgba = *rgba;
 
   return value;
 }
 
 const GdkRGBA *
-_ctk_css_rgba_value_get_rgba (const GtkCssValue *rgba)
+_ctk_css_rgba_value_get_rgba (const CtkCssValue *rgba)
 {
   g_return_val_if_fail (rgba->class == &CTK_CSS_VALUE_RGBA, NULL);
 

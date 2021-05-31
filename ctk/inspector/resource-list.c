@@ -43,46 +43,46 @@ enum
   COLUMN_SIZE
 };
 
-struct _GtkInspectorResourceListPrivate
+struct _CtkInspectorResourceListPrivate
 {
-  GtkTreeStore *model;
-  GtkTextBuffer *buffer;
-  GtkWidget *image;
-  GtkWidget *content;
-  GtkWidget *name_label;
-  GtkWidget *type;
-  GtkWidget *type_label;
-  GtkWidget *size_label;
-  GtkWidget *info_grid;
-  GtkWidget *stack;
-  GtkWidget *tree;
-  GtkWidget *buttons;
-  GtkWidget *open_details_button;
-  GtkWidget *close_details_button;
-  GtkTreeViewColumn *path_column;
-  GtkTreeViewColumn *count_column;
-  GtkCellRenderer *count_renderer;
-  GtkTreeViewColumn *size_column;
-  GtkCellRenderer *size_renderer;
-  GtkWidget *search_bar;
-  GtkWidget *search_entry;
-  GtkTreeWalk *walk;
+  CtkTreeStore *model;
+  CtkTextBuffer *buffer;
+  CtkWidget *image;
+  CtkWidget *content;
+  CtkWidget *name_label;
+  CtkWidget *type;
+  CtkWidget *type_label;
+  CtkWidget *size_label;
+  CtkWidget *info_grid;
+  CtkWidget *stack;
+  CtkWidget *tree;
+  CtkWidget *buttons;
+  CtkWidget *open_details_button;
+  CtkWidget *close_details_button;
+  CtkTreeViewColumn *path_column;
+  CtkTreeViewColumn *count_column;
+  CtkCellRenderer *count_renderer;
+  CtkTreeViewColumn *size_column;
+  CtkCellRenderer *size_renderer;
+  CtkWidget *search_bar;
+  CtkWidget *search_entry;
+  CtkTreeWalk *walk;
   gint search_length;
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorResourceList, ctk_inspector_resource_list, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorResourceList, ctk_inspector_resource_list, CTK_TYPE_BOX)
 
 static void
-load_resources_recurse (GtkInspectorResourceList *sl,
-                        GtkTreeIter              *parent,
+load_resources_recurse (CtkInspectorResourceList *sl,
+                        CtkTreeIter              *parent,
                         const gchar              *path,
                         gint                     *count_out,
                         gsize                    *size_out)
 {
   gchar **names;
   gint i;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   guint64 stored_size;
 
   names = g_resources_enumerate_children (path, 0, NULL);
@@ -140,10 +140,10 @@ load_resources_recurse (GtkInspectorResourceList *sl,
 }
 
 static gboolean
-populate_details (GtkInspectorResourceList *rl,
-                  GtkTreePath              *tree_path)
+populate_details (CtkInspectorResourceList *rl,
+                  CtkTreePath              *tree_path)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *path;
   gchar *name;
   GBytes *bytes;
@@ -234,10 +234,10 @@ populate_details (GtkInspectorResourceList *rl,
 }
 
 static void
-row_activated (GtkTreeView              *treeview,
-               GtkTreePath              *path,
-               GtkTreeViewColumn        *column,
-               GtkInspectorResourceList *sl)
+row_activated (CtkTreeView              *treeview,
+               CtkTreePath              *path,
+               CtkTreeViewColumn        *column,
+               CtkInspectorResourceList *sl)
 {
   if (!populate_details (sl, path))
     return;
@@ -247,11 +247,11 @@ row_activated (GtkTreeView              *treeview,
 }
 
 static gboolean
-can_show_details (GtkInspectorResourceList *rl)
+can_show_details (CtkInspectorResourceList *rl)
 {
-  GtkTreeSelection *selection;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkTreeSelection *selection;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
   gchar *path;
 
   selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (rl->priv->tree));
@@ -273,10 +273,10 @@ can_show_details (GtkInspectorResourceList *rl)
 }
 
 static void
-on_selection_changed (GtkTreeSelection         *selection,
-                      GtkInspectorResourceList *rl)
+on_selection_changed (CtkTreeSelection         *selection,
+                      CtkInspectorResourceList *rl)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   if (ctk_tree_selection_get_selected (selection, NULL, &iter))
     ctk_tree_walk_reset (rl->priv->walk, &iter);
@@ -287,13 +287,13 @@ on_selection_changed (GtkTreeSelection         *selection,
 }
 
 static void
-open_details (GtkWidget                *button,
-              GtkInspectorResourceList *sl)
+open_details (CtkWidget                *button,
+              CtkInspectorResourceList *sl)
 {
-  GtkTreeSelection *selection;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GtkTreePath *path;
+  CtkTreeSelection *selection;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkTreePath *path;
 
   selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (sl->priv->tree));
   if (!ctk_tree_selection_get_selected (selection, &model, &iter))
@@ -310,15 +310,15 @@ open_details (GtkWidget                *button,
 }
 
 static void
-close_details (GtkWidget                *button,
-               GtkInspectorResourceList *sl)
+close_details (CtkWidget                *button,
+               CtkInspectorResourceList *sl)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (sl->priv->stack), "list");
   ctk_stack_set_visible_child_name (CTK_STACK (sl->priv->buttons), "list");
 }
 
 static void
-load_resources (GtkInspectorResourceList *sl)
+load_resources (CtkInspectorResourceList *sl)
 {
   gint count = 0;
   gsize size = 0;
@@ -327,10 +327,10 @@ load_resources (GtkInspectorResourceList *sl)
 }
 
 static void
-count_data_func (GtkTreeViewColumn *col,
-                 GtkCellRenderer   *cell,
-                 GtkTreeModel      *model,
-                 GtkTreeIter       *iter,
+count_data_func (CtkTreeViewColumn *col,
+                 CtkCellRenderer   *cell,
+                 CtkTreeModel      *model,
+                 CtkTreeIter       *iter,
                  gpointer           data)
 {
   gint count;
@@ -348,10 +348,10 @@ count_data_func (GtkTreeViewColumn *col,
 }
 
 static void
-size_data_func (GtkTreeViewColumn *col,
-                GtkCellRenderer   *cell,
-                GtkTreeModel      *model,
-                GtkTreeIter       *iter,
+size_data_func (CtkTreeViewColumn *col,
+                CtkCellRenderer   *cell,
+                CtkTreeModel      *model,
+                CtkTreeIter       *iter,
                 gpointer           data)
 {
   gsize size;
@@ -366,9 +366,9 @@ size_data_func (GtkTreeViewColumn *col,
 }
 
 static void
-on_map (GtkWidget *widget)
+on_map (CtkWidget *widget)
 {
-  GtkInspectorResourceList *sl = CTK_INSPECTOR_RESOURCE_LIST (widget);
+  CtkInspectorResourceList *sl = CTK_INSPECTOR_RESOURCE_LIST (widget);
 
   ctk_tree_view_expand_all (CTK_TREE_VIEW (sl->priv->tree));
   ctk_stack_set_visible_child_name (CTK_STACK (sl->priv->stack), "list");
@@ -376,11 +376,11 @@ on_map (GtkWidget *widget)
 }
 
 static void
-move_search_to_row (GtkInspectorResourceList *sl,
-                    GtkTreeIter              *iter)
+move_search_to_row (CtkInspectorResourceList *sl,
+                    CtkTreeIter              *iter)
 {
-  GtkTreeSelection *selection;
-  GtkTreePath *path;
+  CtkTreeSelection *selection;
+  CtkTreePath *path;
 
   selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (sl->priv->tree));
   path = ctk_tree_model_get_path (CTK_TREE_MODEL (sl->priv->model), iter);
@@ -391,9 +391,9 @@ move_search_to_row (GtkInspectorResourceList *sl,
 }
 
 static gboolean
-key_press_event (GtkWidget                *window,
+key_press_event (CtkWidget                *window,
                  GdkEvent                 *event,
-                 GtkInspectorResourceList *sl)
+                 CtkInspectorResourceList *sl)
 {
   if (ctk_widget_get_mapped (CTK_WIDGET (sl)))
     {
@@ -408,10 +408,10 @@ key_press_event (GtkWidget                *window,
            event->key.keyval == GDK_KEY_ISO_Enter ||
            event->key.keyval == GDK_KEY_KP_Enter))
         {
-          GtkTreeSelection *selection;
-          GtkTreeModel *model;
-          GtkTreeIter iter;
-          GtkTreePath *path;
+          CtkTreeSelection *selection;
+          CtkTreeModel *model;
+          CtkTreeIter iter;
+          CtkTreePath *path;
 
           selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (sl->priv->tree));
           if (ctk_tree_selection_get_selected (selection, &model, &iter))
@@ -437,7 +437,7 @@ key_press_event (GtkWidget                *window,
                ((event->key.state & (default_accel | GDK_SHIFT_MASK)) == (default_accel | GDK_SHIFT_MASK)) &&
                (event->key.keyval == GDK_KEY_g || event->key.keyval == GDK_KEY_G))
         {
-          GtkTreeIter iter;
+          CtkTreeIter iter;
           if (ctk_tree_walk_next_match (sl->priv->walk, TRUE, TRUE, &iter))
             move_search_to_row (sl, &iter);
           else
@@ -449,7 +449,7 @@ key_press_event (GtkWidget                *window,
                ((event->key.state & (default_accel | GDK_SHIFT_MASK)) == default_accel) &&
                (event->key.keyval == GDK_KEY_g || event->key.keyval == GDK_KEY_G))
         {
-          GtkTreeIter iter;
+          CtkTreeIter iter;
 
           if (ctk_tree_walk_next_match (sl->priv->walk, TRUE, FALSE, &iter))
             move_search_to_row (sl, &iter);
@@ -466,8 +466,8 @@ key_press_event (GtkWidget                *window,
 }
 
 static void
-on_hierarchy_changed (GtkWidget *widget,
-                      GtkWidget *previous_toplevel)
+on_hierarchy_changed (CtkWidget *widget,
+                      CtkWidget *previous_toplevel)
 {
   if (previous_toplevel)
     g_signal_handlers_disconnect_by_func (previous_toplevel, key_press_event, widget);
@@ -476,10 +476,10 @@ on_hierarchy_changed (GtkWidget *widget,
 }
 
 static void
-on_search_changed (GtkSearchEntry           *entry,
-                   GtkInspectorResourceList *sl)
+on_search_changed (CtkSearchEntry           *entry,
+                   CtkInspectorResourceList *sl)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gint length;
   gboolean backwards;
 
@@ -514,11 +514,11 @@ match_string (const gchar *string,
 }
 
 static gboolean
-match_row (GtkTreeModel *model,
-           GtkTreeIter  *iter,
+match_row (CtkTreeModel *model,
+           CtkTreeIter  *iter,
            gpointer      data)
 {
-  GtkInspectorResourceList *sl = data;
+  CtkInspectorResourceList *sl = data;
   gchar *name, *path;
   const gchar *text;
   gboolean match;
@@ -541,7 +541,7 @@ match_row (GtkTreeModel *model,
 static void
 search_mode_changed (GObject                  *search_bar,
                      GParamSpec               *pspec,
-                     GtkInspectorResourceList *sl)
+                     CtkInspectorResourceList *sl)
 {
   if (!ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (search_bar)))
     {
@@ -551,12 +551,12 @@ search_mode_changed (GObject                  *search_bar,
 }
 
 static void
-next_match (GtkButton                *button,
-            GtkInspectorResourceList *sl)
+next_match (CtkButton                *button,
+            CtkInspectorResourceList *sl)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (sl->priv->search_bar)))
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       if (ctk_tree_walk_next_match (sl->priv->walk, TRUE, FALSE, &iter))
         move_search_to_row (sl, &iter);
@@ -566,12 +566,12 @@ next_match (GtkButton                *button,
 }
 
 static void
-previous_match (GtkButton                *button,
-                GtkInspectorResourceList *sl)
+previous_match (CtkButton                *button,
+                CtkInspectorResourceList *sl)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (sl->priv->search_bar)))
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       if (ctk_tree_walk_next_match (sl->priv->walk, TRUE, TRUE, &iter))
         move_search_to_row (sl, &iter);
@@ -581,7 +581,7 @@ previous_match (GtkButton                *button,
 }
 
 static void
-ctk_inspector_resource_list_init (GtkInspectorResourceList *sl)
+ctk_inspector_resource_list_init (CtkInspectorResourceList *sl)
 {
   sl->priv = ctk_inspector_resource_list_get_instance_private (sl);
 
@@ -607,7 +607,7 @@ ctk_inspector_resource_list_init (GtkInspectorResourceList *sl)
 static void
 constructed (GObject *object)
 {
-  GtkInspectorResourceList *rl = CTK_INSPECTOR_RESOURCE_LIST (object);
+  CtkInspectorResourceList *rl = CTK_INSPECTOR_RESOURCE_LIST (object);
 
   g_signal_connect (rl->priv->open_details_button, "clicked",
                     G_CALLBACK (open_details), rl);
@@ -623,7 +623,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorResourceList *rl = CTK_INSPECTOR_RESOURCE_LIST (object);
+  CtkInspectorResourceList *rl = CTK_INSPECTOR_RESOURCE_LIST (object);
 
   switch (param_id)
     {
@@ -643,7 +643,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorResourceList *rl = CTK_INSPECTOR_RESOURCE_LIST (object);
+  CtkInspectorResourceList *rl = CTK_INSPECTOR_RESOURCE_LIST (object);
   
   switch (param_id)
     {
@@ -662,7 +662,7 @@ set_property (GObject      *object,
 static void
 finalize (GObject *object)
 {
-  GtkInspectorResourceList *sl = CTK_INSPECTOR_RESOURCE_LIST (object);
+  CtkInspectorResourceList *sl = CTK_INSPECTOR_RESOURCE_LIST (object);
 
   ctk_tree_walk_free (sl->priv->walk);
 
@@ -670,10 +670,10 @@ finalize (GObject *object)
 }
 
 static void
-ctk_inspector_resource_list_class_init (GtkInspectorResourceListClass *klass)
+ctk_inspector_resource_list_class_init (CtkInspectorResourceListClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->get_property = get_property;
   object_class->set_property = set_property;
@@ -685,24 +685,24 @@ ctk_inspector_resource_list_class_init (GtkInspectorResourceListClass *klass)
                            CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/resource-list.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, model);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, buffer);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, content);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, image);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, name_label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, type_label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, type);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, size_label);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, info_grid);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, count_column);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, count_renderer);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, size_column);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, size_renderer);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, stack);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, tree);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, search_bar);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, search_entry);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, path_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, model);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, buffer);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, content);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, image);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, name_label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, type_label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, type);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, size_label);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, info_grid);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, count_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, count_renderer);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, size_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, size_renderer);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, stack);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, tree);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, search_bar);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, search_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorResourceList, path_column);
 
   ctk_widget_class_bind_template_callback (widget_class, row_activated);
   ctk_widget_class_bind_template_callback (widget_class, on_selection_changed);

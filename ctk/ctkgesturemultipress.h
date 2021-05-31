@@ -29,26 +29,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_GESTURE_MULTI_PRESS         (ctk_gesture_multi_press_get_type ())
-#define CTK_GESTURE_MULTI_PRESS(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_MULTI_PRESS, GtkGestureMultiPress))
-#define CTK_GESTURE_MULTI_PRESS_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_MULTI_PRESS, GtkGestureMultiPressClass))
+#define CTK_GESTURE_MULTI_PRESS(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_MULTI_PRESS, CtkGestureMultiPress))
+#define CTK_GESTURE_MULTI_PRESS_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_MULTI_PRESS, CtkGestureMultiPressClass))
 #define CTK_IS_GESTURE_MULTI_PRESS(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_MULTI_PRESS))
 #define CTK_IS_GESTURE_MULTI_PRESS_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_MULTI_PRESS))
-#define CTK_GESTURE_MULTI_PRESS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_MULTI_PRESS, GtkGestureMultiPressClass))
+#define CTK_GESTURE_MULTI_PRESS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_MULTI_PRESS, CtkGestureMultiPressClass))
 
-typedef struct _GtkGestureMultiPress GtkGestureMultiPress;
-typedef struct _GtkGestureMultiPressClass GtkGestureMultiPressClass;
+typedef struct _CtkGestureMultiPress CtkGestureMultiPress;
+typedef struct _CtkGestureMultiPressClass CtkGestureMultiPressClass;
 
 GDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_multi_press_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * ctk_gesture_multi_press_new      (GtkWidget            *widget);
+CtkGesture * ctk_gesture_multi_press_new      (CtkWidget            *widget);
 
 GDK_AVAILABLE_IN_3_14
-void         ctk_gesture_multi_press_set_area (GtkGestureMultiPress *gesture,
+void         ctk_gesture_multi_press_set_area (CtkGestureMultiPress *gesture,
 					       const GdkRectangle   *rect);
 GDK_AVAILABLE_IN_3_14
-gboolean     ctk_gesture_multi_press_get_area (GtkGestureMultiPress *gesture,
+gboolean     ctk_gesture_multi_press_get_area (CtkGestureMultiPress *gesture,
                                                GdkRectangle         *rect);
 
 G_END_DECLS

@@ -36,31 +36,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_HBOX            (ctk_hbox_get_type ())
-#define CTK_HBOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HBOX, GtkHBox))
-#define CTK_HBOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HBOX, GtkHBoxClass))
+#define CTK_HBOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HBOX, CtkHBox))
+#define CTK_HBOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HBOX, CtkHBoxClass))
 #define CTK_IS_HBOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HBOX))
 #define CTK_IS_HBOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HBOX))
-#define CTK_HBOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HBOX, GtkHBoxClass))
+#define CTK_HBOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HBOX, CtkHBoxClass))
 
 
-typedef struct _GtkHBox	      GtkHBox;
-typedef struct _GtkHBoxClass  GtkHBoxClass;
+typedef struct _CtkHBox	      CtkHBox;
+typedef struct _CtkHBoxClass  CtkHBoxClass;
 
-struct _GtkHBox
+struct _CtkHBox
 {
-  GtkBox box;
+  CtkBox box;
 };
 
-struct _GtkHBoxClass
+struct _CtkHBoxClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType       ctk_hbox_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_box_new)
-GtkWidget * ctk_hbox_new      (gboolean homogeneous,
+CtkWidget * ctk_hbox_new      (gboolean homogeneous,
                                gint     spacing);
 
 G_END_DECLS

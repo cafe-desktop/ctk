@@ -3,7 +3,7 @@
  * Copyright (c) 1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000      Red Hat, Inc.
- * Tk -> Gtk port by Havoc Pennington <hp@redhat.com>
+ * Tk -> Ctk port by Havoc Pennington <hp@redhat.com>
  *
  * This software is copyrighted by the Regents of the University of
  * California, Sun Microsystems, Inc., and other parties.  The
@@ -56,17 +56,17 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkTextMark      GtkTextMark;
-typedef struct _GtkTextMarkClass GtkTextMarkClass;
+typedef struct _CtkTextMark      CtkTextMark;
+typedef struct _CtkTextMarkClass CtkTextMarkClass;
 
 #define CTK_TYPE_TEXT_MARK              (ctk_text_mark_get_type ())
-#define CTK_TEXT_MARK(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_TEXT_MARK, GtkTextMark))
-#define CTK_TEXT_MARK_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_MARK, GtkTextMarkClass))
+#define CTK_TEXT_MARK(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_TEXT_MARK, CtkTextMark))
+#define CTK_TEXT_MARK_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_MARK, CtkTextMarkClass))
 #define CTK_IS_TEXT_MARK(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_TEXT_MARK))
 #define CTK_IS_TEXT_MARK_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_MARK))
-#define CTK_TEXT_MARK_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_MARK, GtkTextMarkClass))
+#define CTK_TEXT_MARK_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_MARK, CtkTextMarkClass))
 
-struct _GtkTextMark
+struct _CtkTextMark
 {
   GObject parent_instance;
 
@@ -74,7 +74,7 @@ struct _GtkTextMark
   gpointer segment;
 };
 
-struct _GtkTextMarkClass
+struct _CtkTextMarkClass
 {
   GObjectClass parent_class;
 
@@ -89,22 +89,22 @@ GDK_AVAILABLE_IN_ALL
 GType                 ctk_text_mark_get_type         (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkTextMark          *ctk_text_mark_new              (const gchar *name,
+CtkTextMark          *ctk_text_mark_new              (const gchar *name,
                                                       gboolean     left_gravity);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_text_mark_set_visible      (GtkTextMark *mark,
+void                  ctk_text_mark_set_visible      (CtkTextMark *mark,
                                                       gboolean     setting);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_text_mark_get_visible      (GtkTextMark *mark);
+gboolean              ctk_text_mark_get_visible      (CtkTextMark *mark);
 
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_text_mark_get_name         (GtkTextMark *mark);
+const gchar *         ctk_text_mark_get_name         (CtkTextMark *mark);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_text_mark_get_deleted      (GtkTextMark *mark);
+gboolean              ctk_text_mark_get_deleted      (CtkTextMark *mark);
 GDK_AVAILABLE_IN_ALL
-GtkTextBuffer*        ctk_text_mark_get_buffer       (GtkTextMark *mark);
+CtkTextBuffer*        ctk_text_mark_get_buffer       (CtkTextMark *mark);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_text_mark_get_left_gravity (GtkTextMark *mark);
+gboolean              ctk_text_mark_get_left_gravity (CtkTextMark *mark);
 
 G_END_DECLS
 

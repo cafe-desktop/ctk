@@ -1787,7 +1787,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Használat:\n"
 "  ctk-builder-tool [PARANCS] FÁJL\n"
@@ -1805,7 +1805,7 @@ msgstr ""
 "  --id=ID              Csak a megnevezett objektum előnézete\n"
 "  --css=FILE           Stílus használata CSS fájlból\n"
 "\n"
-"Különböző feladatok végrehajtása GtkBuilder .ui fájlokon.\n"
+"Különböző feladatok végrehajtása CtkBuilder .ui fájlokon.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2534,7 +2534,7 @@ msgstr "Elérés"
 msgid "Create Folder"
 msgstr "Mappa létrehozása"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -2786,12 +2786,12 @@ msgstr "Minden figyelmeztetés végzetes legyen"
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
 msgid "GTK+ debugging flags to set"
-msgstr "Beállítandó Gtk+ debug jelzőbitek"
+msgstr "Beállítandó Ctk+ debug jelzőbitek"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
 msgid "GTK+ debugging flags to unset"
-msgstr "Kikapcsolandó Gtk+ jelzőbitek"
+msgstr "Kikapcsolandó Ctk+ jelzőbitek"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format

@@ -12,7 +12,7 @@ static GOptionEntry options[] = {
 };
 
 static void
-toggle_reveal (GtkRevealer *revealer)
+toggle_reveal (CtkRevealer *revealer)
 {
   ctk_revealer_set_reveal_child (revealer, !ctk_revealer_get_reveal_child (revealer));
 }
@@ -20,8 +20,8 @@ toggle_reveal (GtkRevealer *revealer)
 int
 main(int argc, char **argv)
 {
-  GtkWidget *window, *revealer, *grid, *widget;
-  GtkCssProvider *cssprovider;
+  CtkWidget *window, *revealer, *grid, *widget;
+  CtkCssProvider *cssprovider;
   GError *error = NULL;
   guint x, y;
 

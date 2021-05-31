@@ -3,7 +3,7 @@
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000 Red Hat, Inc.
- * Tk->Gtk port by Havoc Pennington
+ * Tk->Ctk port by Havoc Pennington
  *
  * This file can be used under your choice of two licenses, the LGPL
  * and the original Tk license.
@@ -81,7 +81,7 @@
 G_BEGIN_DECLS
 
 /* A semi-public header intended for use by code that also
- * uses GtkTextLayout
+ * uses CtkTextLayout
  */
 
 /* The drawable should be pre-initialized to your preferred background.
@@ -91,8 +91,8 @@ G_BEGIN_DECLS
  * widgets           - list of widgets that need exposing
  */
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_draw (GtkTextLayout        *layout,
-                           GtkWidget            *widget,
+void ctk_text_layout_draw (CtkTextLayout        *layout,
+                           CtkWidget            *widget,
                            cairo_t              *cr,
                            GList               **widgets);
 

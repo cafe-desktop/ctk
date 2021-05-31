@@ -25,7 +25,7 @@
 #include "ctk-reftest.h"
 
 static gboolean 
-tick_callback_for_1_frame (GtkWidget     *widget,
+tick_callback_for_1_frame (CtkWidget     *widget,
                            GdkFrameClock *frame_clock,
                            gpointer       unused)
 {
@@ -35,7 +35,7 @@ tick_callback_for_1_frame (GtkWidget     *widget,
 }
 
 G_MODULE_EXPORT gboolean
-inhibit_for_1_frame (GtkWidget *widget)
+inhibit_for_1_frame (CtkWidget *widget)
 {
   reftest_inhibit_snapshot ();
   ctk_widget_add_tick_callback (widget,
@@ -46,7 +46,7 @@ inhibit_for_1_frame (GtkWidget *widget)
 }
 
 static gboolean 
-tick_callback_for_2_frames (GtkWidget     *widget,
+tick_callback_for_2_frames (CtkWidget     *widget,
                             GdkFrameClock *frame_clock,
                             gpointer       unused)
 {
@@ -57,7 +57,7 @@ tick_callback_for_2_frames (GtkWidget     *widget,
 }
 
 G_MODULE_EXPORT gboolean
-inhibit_for_2_frames (GtkWidget *widget)
+inhibit_for_2_frames (CtkWidget *widget)
 {
   reftest_inhibit_snapshot ();
   ctk_widget_add_tick_callback (widget,
@@ -68,7 +68,7 @@ inhibit_for_2_frames (GtkWidget *widget)
 }
 
 static gboolean 
-tick_callback_for_3_frames (GtkWidget     *widget,
+tick_callback_for_3_frames (CtkWidget     *widget,
                             GdkFrameClock *frame_clock,
                             gpointer       unused)
 {
@@ -79,7 +79,7 @@ tick_callback_for_3_frames (GtkWidget     *widget,
 }
 
 G_MODULE_EXPORT gboolean
-inhibit_for_3_frames (GtkWidget *widget)
+inhibit_for_3_frames (CtkWidget *widget)
 {
   reftest_inhibit_snapshot ();
   ctk_widget_add_tick_callback (widget,
@@ -90,10 +90,10 @@ inhibit_for_3_frames (GtkWidget *widget)
 }
 
 G_MODULE_EXPORT gboolean
-add_reference_class_if_no_animation (GtkWidget *widget)
+add_reference_class_if_no_animation (CtkWidget *widget)
 {
   gboolean enabled;
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   g_object_get (ctk_widget_get_settings (widget), "ctk-enable-animations", &enabled, NULL);
   if (enabled)

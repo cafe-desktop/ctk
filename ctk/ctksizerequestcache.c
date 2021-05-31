@@ -71,7 +71,7 @@ _ctk_size_request_cache_clear (SizeRequestCache *cache)
 
 void
 _ctk_size_request_cache_commit (SizeRequestCache *cache,
-                                GtkOrientation    orientation,
+                                CtkOrientation    orientation,
                                 gint              for_size,
                                 gint              minimum_size,
                                 gint              natural_size,
@@ -212,7 +212,7 @@ _ctk_size_request_cache_commit (SizeRequestCache *cache,
  */
 gboolean
 _ctk_size_request_cache_lookup (SizeRequestCache *cache,
-                                GtkOrientation    orientation,
+                                CtkOrientation    orientation,
                                 gint              for_size,
                                 gint             *minimum,
                                 gint             *natural,

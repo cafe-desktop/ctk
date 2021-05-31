@@ -41,30 +41,30 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PLUG            (ctk_plug_get_type ())
-#define CTK_PLUG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PLUG, GtkPlug))
-#define CTK_PLUG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PLUG, GtkPlugClass))
+#define CTK_PLUG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PLUG, CtkPlug))
+#define CTK_PLUG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PLUG, CtkPlugClass))
 #define CTK_IS_PLUG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PLUG))
 #define CTK_IS_PLUG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PLUG))
-#define CTK_PLUG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PLUG, GtkPlugClass))
+#define CTK_PLUG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PLUG, CtkPlugClass))
 
 
-typedef struct _GtkPlug        GtkPlug;
-typedef struct _GtkPlugPrivate GtkPlugPrivate;
-typedef struct _GtkPlugClass   GtkPlugClass;
+typedef struct _CtkPlug        CtkPlug;
+typedef struct _CtkPlugPrivate CtkPlugPrivate;
+typedef struct _CtkPlugClass   CtkPlugClass;
 
 
-struct _GtkPlug
+struct _CtkPlug
 {
-  GtkWindow window;
+  CtkWindow window;
 
-  GtkPlugPrivate *priv;
+  CtkPlugPrivate *priv;
 };
 
-struct _GtkPlugClass
+struct _CtkPlugClass
 {
-  GtkWindowClass parent_class;
+  CtkWindowClass parent_class;
 
-  void (*embedded) (GtkPlug *plug);
+  void (*embedded) (CtkPlug *plug);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -77,24 +77,24 @@ GDK_AVAILABLE_IN_ALL
 GType      ctk_plug_get_type              (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_plug_construct             (GtkPlug    *plug,
+void       ctk_plug_construct             (CtkPlug    *plug,
                                            Window      socket_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_plug_new                   (Window      socket_id);
+CtkWidget *ctk_plug_new                   (Window      socket_id);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_plug_construct_for_display (GtkPlug    *plug,
+void       ctk_plug_construct_for_display (CtkPlug    *plug,
                                            GdkDisplay *display,
                                            Window      socket_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_plug_new_for_display       (GdkDisplay *display,
+CtkWidget *ctk_plug_new_for_display       (GdkDisplay *display,
                                            Window      socket_id);
 GDK_AVAILABLE_IN_ALL
-Window     ctk_plug_get_id                (GtkPlug    *plug);
+Window     ctk_plug_get_id                (CtkPlug    *plug);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_plug_get_embedded          (GtkPlug    *plug);
+gboolean   ctk_plug_get_embedded          (CtkPlug    *plug);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *ctk_plug_get_socket_window     (GtkPlug    *plug);
+GdkWindow *ctk_plug_get_socket_window     (CtkPlug    *plug);
 
 G_END_DECLS
 

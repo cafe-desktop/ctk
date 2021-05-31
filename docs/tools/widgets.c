@@ -19,7 +19,7 @@
 
 static WidgetInfo *
 new_widget_info (const char *name,
-		 GtkWidget  *widget,
+		 CtkWidget  *widget,
 		 WidgetSize  size)
 {
   WidgetInfo *info;
@@ -69,8 +69,8 @@ new_widget_info (const char *name,
 static WidgetInfo *
 create_button (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_button_new_with_mnemonic ("_Button");
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);
@@ -82,9 +82,9 @@ create_button (void)
 static WidgetInfo *
 create_switch (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
-  GtkWidget *sw;
+  CtkWidget *widget;
+  CtkWidget *align;
+  CtkWidget *sw;
 
   widget = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
   sw = ctk_switch_new ();
@@ -102,8 +102,8 @@ create_switch (void)
 static WidgetInfo *
 create_toggle_button (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_toggle_button_new_with_mnemonic ("_Toggle Button");
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), FALSE);
@@ -116,8 +116,8 @@ create_toggle_button (void)
 static WidgetInfo *
 create_check_button (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_check_button_new_with_mnemonic ("_Check Button");
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), TRUE);
@@ -130,8 +130,8 @@ create_check_button (void)
 static WidgetInfo *
 create_link_button (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_link_button_new_with_label ("http://www.ctk.org", "Link Button");
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);
@@ -143,10 +143,10 @@ create_link_button (void)
 static WidgetInfo *
 create_menu_button (void)
 {
-  GtkWidget *widget;
-  GtkWidget *image;
-  GtkWidget *menu;
-  GtkWidget *vbox;
+  CtkWidget *widget;
+  CtkWidget *image;
+  CtkWidget *menu;
+  CtkWidget *vbox;
 
   widget = ctk_menu_button_new ();
   image = ctk_image_new ();
@@ -203,8 +203,8 @@ g_test_permission_class_init (GTestPermissionClass *class)
 static WidgetInfo *
 create_lockbutton (void)
 {
-  GtkWidget *vbox;
-  GtkWidget *widget;
+  CtkWidget *vbox;
+  CtkWidget *widget;
 
   widget = ctk_lock_button_new (g_object_new (G_TYPE_TEST_PERMISSION, NULL));
 
@@ -222,8 +222,8 @@ create_lockbutton (void)
 static WidgetInfo *
 create_entry (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_entry_new ();
   ctk_entry_set_text (CTK_ENTRY (widget), "Entry");
@@ -237,8 +237,8 @@ create_entry (void)
 static WidgetInfo *
 create_search_entry (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_search_entry_new ();
   ctk_entry_set_placeholder_text (CTK_ENTRY (widget), "Search...");
@@ -251,9 +251,9 @@ create_search_entry (void)
 static WidgetInfo *
 create_radio (void)
 {
-  GtkWidget *widget;
-  GtkWidget *radio;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *radio;
+  CtkWidget *align;
 
   widget = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
   radio = ctk_radio_button_new_with_mnemonic (NULL, "Radio Button _One");
@@ -271,8 +271,8 @@ create_radio (void)
 static WidgetInfo *
 create_label (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_label_new ("Label");
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);
@@ -285,8 +285,8 @@ static WidgetInfo *
 create_accel_label (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget, *button, *box;
-  GtkAccelGroup *accel_group;
+  CtkWidget *widget, *button, *box;
+  CtkAccelGroup *accel_group;
 
   widget = ctk_accel_label_new ("Accel Label");
 
@@ -312,12 +312,12 @@ create_accel_label (void)
 static WidgetInfo *
 create_combo_box_entry (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
-  GtkWidget *child;
-  GtkTreeModel *model;
+  CtkWidget *widget;
+  CtkWidget *align;
+  CtkWidget *child;
+  CtkTreeModel *model;
 
-  model = (GtkTreeModel *)ctk_list_store_new (1, G_TYPE_STRING);
+  model = (CtkTreeModel *)ctk_list_store_new (1, G_TYPE_STRING);
   widget = g_object_new (CTK_TYPE_COMBO_BOX,
 			 "has-entry", TRUE,
 			 "model", model,
@@ -336,10 +336,10 @@ create_combo_box_entry (void)
 static WidgetInfo *
 create_combo_box (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
-  GtkCellRenderer *cell;
-  GtkListStore *store;
+  CtkWidget *widget;
+  CtkWidget *align;
+  CtkCellRenderer *cell;
+  CtkListStore *store;
 
   widget = ctk_combo_box_new ();
   ctk_cell_layout_clear (CTK_CELL_LAYOUT (widget));
@@ -361,8 +361,8 @@ create_combo_box (void)
 static WidgetInfo *
 create_combo_box_text (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_combo_box_text_new ();
 
@@ -377,8 +377,8 @@ create_combo_box_text (void)
 static WidgetInfo *
 create_info_bar (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *widget;
+  CtkWidget *align;
   WidgetInfo *info;
 
   widget = ctk_info_bar_new ();
@@ -399,11 +399,11 @@ create_info_bar (void)
 static WidgetInfo *
 create_search_bar (void)
 {
-  GtkWidget *widget;
-  GtkWidget *entry;
+  CtkWidget *widget;
+  CtkWidget *entry;
   WidgetInfo *info;
-  GtkWidget *view;
-  GtkWidget *box;
+  CtkWidget *view;
+  CtkWidget *box;
 
   box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   widget = ctk_search_bar_new ();
@@ -431,11 +431,11 @@ create_search_bar (void)
 static WidgetInfo *
 create_action_bar (void)
 {
-  GtkWidget *widget;
-  GtkWidget *button;
+  CtkWidget *widget;
+  CtkWidget *button;
   WidgetInfo *info;
-  GtkWidget *view;
-  GtkWidget *box;
+  CtkWidget *view;
+  CtkWidget *box;
 
   box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   view = ctk_text_view_new ();
@@ -466,7 +466,7 @@ static WidgetInfo *
 create_recent_chooser_dialog (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_recent_chooser_dialog_new ("Recent Chooser Dialog",
 					  NULL,
@@ -484,8 +484,8 @@ create_recent_chooser_dialog (void)
 static WidgetInfo *
 create_text_view (void)
 {
-  GtkWidget *widget;
-  GtkWidget *text_view;
+  CtkWidget *widget;
+  CtkWidget *text_view;
 
   widget = ctk_frame_new (NULL);
   ctk_frame_set_shadow_type (CTK_FRAME (widget), CTK_SHADOW_IN);
@@ -502,10 +502,10 @@ create_text_view (void)
 static WidgetInfo *
 create_tree_view (void)
 {
-  GtkWidget *widget;
-  GtkWidget *tree_view;
-  GtkTreeStore *store;
-  GtkTreeIter iter;
+  CtkWidget *widget;
+  CtkWidget *tree_view;
+  CtkTreeStore *store;
+  CtkTreeIter iter;
   WidgetInfo *info;
 
   widget = ctk_frame_new (NULL);
@@ -544,12 +544,12 @@ create_tree_view (void)
 static WidgetInfo *
 create_icon_view (void)
 {
-  GtkWidget *widget;
-  GtkWidget *vbox;
-  GtkWidget *align;
-  GtkWidget *icon_view;
-  GtkListStore *list_store;
-  GtkTreeIter iter;
+  CtkWidget *widget;
+  CtkWidget *vbox;
+  CtkWidget *align;
+  CtkWidget *icon_view;
+  CtkListStore *list_store;
+  CtkTreeIter iter;
   GdkPixbuf *pixbuf;
   WidgetInfo *info;
 
@@ -588,9 +588,9 @@ create_icon_view (void)
 static WidgetInfo *
 create_color_button (void)
 {
-  GtkWidget *vbox;
-  GtkWidget *picker;
-  GtkWidget *align;
+  CtkWidget *vbox;
+  CtkWidget *picker;
+  CtkWidget *align;
   GdkColor color;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
@@ -611,9 +611,9 @@ create_color_button (void)
 static WidgetInfo *
 create_font_button (void)
 {
-  GtkWidget *vbox;
-  GtkWidget *picker;
-  GtkWidget *align;
+  CtkWidget *vbox;
+  CtkWidget *picker;
+  CtkWidget *align;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);
@@ -630,10 +630,10 @@ create_font_button (void)
 static WidgetInfo *
 create_file_button (void)
 {
-  GtkWidget *vbox;
-  GtkWidget *vbox2;
-  GtkWidget *picker;
-  GtkWidget *align;
+  CtkWidget *vbox;
+  CtkWidget *vbox2;
+  CtkWidget *picker;
+  CtkWidget *align;
   char *path;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
@@ -676,8 +676,8 @@ create_file_button (void)
 static WidgetInfo *
 create_separator (void)
 {
-  GtkWidget *hbox;
-  GtkWidget *vbox;
+  CtkWidget *hbox;
+  CtkWidget *vbox;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
   hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
@@ -701,9 +701,9 @@ create_separator (void)
 static WidgetInfo *
 create_panes (void)
 {
-  GtkWidget *hbox;
-  GtkWidget *vbox;
-  GtkWidget *pane;
+  CtkWidget *hbox;
+  CtkWidget *vbox;
+  CtkWidget *pane;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
   hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
@@ -749,7 +749,7 @@ create_panes (void)
 static WidgetInfo *
 create_frame (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_frame_new ("Frame");
 
@@ -760,7 +760,7 @@ static WidgetInfo *
 create_window (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   info = new_widget_info ("window", widget, MEDIUM);
@@ -774,7 +774,7 @@ static WidgetInfo *
 create_filesel (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_file_chooser_dialog_new ("File Chooser Dialog",
 					NULL,
@@ -794,7 +794,7 @@ static WidgetInfo *
 create_print_dialog (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_print_unix_dialog_new ("Print Dialog", NULL);   
   ctk_widget_set_size_request (widget, 505, 350);
@@ -808,9 +808,9 @@ static WidgetInfo *
 create_page_setup_dialog (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
-  GtkPageSetup *page_setup;
-  GtkPrintSettings *settings;
+  CtkWidget *widget;
+  CtkPageSetup *page_setup;
+  CtkPrintSettings *settings;
 
   page_setup = ctk_page_setup_new ();
   settings = ctk_print_settings_new ();
@@ -830,8 +830,8 @@ create_page_setup_dialog (void)
 static WidgetInfo *
 create_toolbar (void)
 {
-  GtkWidget *widget;
-  GtkToolItem *item;
+  CtkWidget *widget;
+  CtkToolItem *item;
 
   widget = ctk_toolbar_new ();
 
@@ -855,8 +855,8 @@ create_toolbar (void)
 static WidgetInfo *
 create_toolpalette (void)
 {
-  GtkWidget *widget, *group;
-  GtkToolItem *item;
+  CtkWidget *widget, *group;
+  CtkToolItem *item;
 
   widget = ctk_tool_palette_new ();
   group = ctk_tool_item_group_new ("Tools");
@@ -889,7 +889,7 @@ create_toolpalette (void)
 static WidgetInfo *
 create_menubar (void)
 {
-  GtkWidget *widget, *vbox, *align, *item;
+  CtkWidget *widget, *vbox, *align, *item;
 
   widget = ctk_menu_bar_new ();
 
@@ -916,7 +916,7 @@ create_menubar (void)
 static WidgetInfo *
 create_message_dialog (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_message_dialog_new (NULL,
 				   0,
@@ -932,7 +932,7 @@ create_message_dialog (void)
 static WidgetInfo *
 create_about_dialog (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   const gchar *authors[] = {
     "Peter Mattis",
     "Spencer Kimball",
@@ -959,7 +959,7 @@ create_about_dialog (void)
 static WidgetInfo *
 create_notebook (void)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_notebook_new ();
 
@@ -975,9 +975,9 @@ create_notebook (void)
 static WidgetInfo *
 create_progressbar (void)
 {
-  GtkWidget *vbox;
-  GtkWidget *widget;
-  GtkWidget *align;
+  CtkWidget *vbox;
+  CtkWidget *widget;
+  CtkWidget *align;
 
   widget = ctk_progress_bar_new ();
   ctk_progress_bar_set_fraction (CTK_PROGRESS_BAR (widget), 0.5);
@@ -996,8 +996,8 @@ create_progressbar (void)
 static WidgetInfo *
 create_level_bar (void)
 {
-  GtkWidget *vbox;
-  GtkWidget *widget;
+  CtkWidget *vbox;
+  CtkWidget *widget;
 
   widget = ctk_level_bar_new ();
   ctk_level_bar_set_value (CTK_LEVEL_BAR (widget), 0.333);
@@ -1014,7 +1014,7 @@ create_level_bar (void)
 static WidgetInfo *
 create_scrolledwindow (void)
 {
-  GtkWidget *scrolledwin, *label;
+  CtkWidget *scrolledwin, *label;
 
   scrolledwin = ctk_scrolled_window_new (NULL, NULL);
   ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolledwin),
@@ -1029,8 +1029,8 @@ create_scrolledwindow (void)
 static WidgetInfo *
 create_scrollbar (void)
 {
-  GtkWidget *widget;
-  GtkWidget *vbox, *align;
+  CtkWidget *widget;
+  CtkWidget *vbox, *align;
 
   widget = ctk_scrollbar_new (CTK_ORIENTATION_HORIZONTAL, NULL);
   ctk_widget_set_size_request (widget, 100, -1);
@@ -1049,8 +1049,8 @@ create_scrollbar (void)
 static WidgetInfo *
 create_spinbutton (void)
 {
-  GtkWidget *widget;
-  GtkWidget *vbox, *align;
+  CtkWidget *widget;
+  CtkWidget *vbox, *align;
 
   widget = ctk_spin_button_new_with_range (0.0, 100.0, 1.0);
 
@@ -1069,8 +1069,8 @@ static WidgetInfo *
 create_statusbar (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
-  GtkWidget *vbox, *align;
+  CtkWidget *widget;
+  CtkWidget *vbox, *align;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);
@@ -1094,8 +1094,8 @@ create_statusbar (void)
 static WidgetInfo *
 create_scales (void)
 {
-  GtkWidget *hbox;
-  GtkWidget *vbox;
+  CtkWidget *hbox;
+  CtkWidget *vbox;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
   hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
@@ -1120,8 +1120,8 @@ create_scales (void)
 static WidgetInfo *
 create_image (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align, *vbox;
+  CtkWidget *widget;
+  CtkWidget *align, *vbox;
 
   widget = ctk_image_new_from_icon_name ("applications-graphics",
                                          CTK_ICON_SIZE_DIALOG);
@@ -1140,8 +1140,8 @@ create_image (void)
 static WidgetInfo *
 create_spinner (void)
 {
-  GtkWidget *widget;
-  GtkWidget *align, *vbox;
+  CtkWidget *widget;
+  CtkWidget *align, *vbox;
 
   widget = ctk_spinner_new ();
   ctk_widget_set_size_request (widget, 24, 24);
@@ -1161,9 +1161,9 @@ create_spinner (void)
 static WidgetInfo *
 create_volume_button (void)
 {
-  GtkWidget *button, *box;
-  GtkWidget *widget;
-  GtkWidget *popup;
+  CtkWidget *button, *box;
+  CtkWidget *widget;
+  CtkWidget *popup;
 
   widget = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_size_request (widget, 100, 250);
@@ -1186,8 +1186,8 @@ create_volume_button (void)
 static WidgetInfo *
 create_assistant (void)
 {
-  GtkWidget *widget;
-  GtkWidget *page1, *page2;
+  CtkWidget *widget;
+  CtkWidget *page1, *page2;
   WidgetInfo *info;
 
   widget = ctk_assistant_new ();
@@ -1214,8 +1214,8 @@ create_assistant (void)
 static WidgetInfo *
 create_appchooserbutton (void)
 {
-  GtkWidget *picker;
-  GtkWidget *align, *vbox;
+  CtkWidget *picker;
+  CtkWidget *align, *vbox;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);
@@ -1233,7 +1233,7 @@ static WidgetInfo *
 create_appchooserdialog (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_app_chooser_dialog_new_for_content_type (NULL, 0, "image/png");
   ctk_window_set_default_size (CTK_WINDOW (widget), 200, 300);
@@ -1248,7 +1248,7 @@ static WidgetInfo *
 create_fontchooserdialog (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_font_chooser_dialog_new ("Font Chooser Dialog", NULL);
   ctk_window_set_default_size (CTK_WINDOW (widget), 200, 300);
@@ -1262,7 +1262,7 @@ static WidgetInfo *
 create_colorchooserdialog (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_color_chooser_dialog_new ("Color Chooser Dialog", NULL);
   info = new_widget_info ("colorchooser", widget, ASIS);
@@ -1274,10 +1274,10 @@ create_colorchooserdialog (void)
 static WidgetInfo *
 create_headerbar (void)
 {
-  GtkWidget *window;
-  GtkWidget *bar;
-  GtkWidget *view;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *bar;
+  CtkWidget *view;
+  CtkWidget *button;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_container_set_border_width (CTK_CONTAINER (window), 0);
@@ -1300,9 +1300,9 @@ create_headerbar (void)
 static WidgetInfo *
 create_placessidebar (void)
 {
-  GtkWidget *bar;
-  GtkWidget *vbox;
-  GtkWidget *align;
+  CtkWidget *bar;
+  CtkWidget *vbox;
+  CtkWidget *align;
 
   bar = ctk_places_sidebar_new ();
   ctk_widget_set_size_request (bar, 150, 300);
@@ -1321,10 +1321,10 @@ create_placessidebar (void)
 static WidgetInfo *
 create_stack (void)
 {
-  GtkWidget *stack;
-  GtkWidget *switcher;
-  GtkWidget *vbox;
-  GtkWidget *view;
+  CtkWidget *stack;
+  CtkWidget *switcher;
+  CtkWidget *vbox;
+  CtkWidget *view;
 
   stack = ctk_stack_new ();
   ctk_widget_set_margin_top (stack, 10);
@@ -1355,10 +1355,10 @@ create_stack (void)
 static WidgetInfo *
 create_stack_switcher (void)
 {
-  GtkWidget *stack;
-  GtkWidget *switcher;
-  GtkWidget *vbox;
-  GtkWidget *view;
+  CtkWidget *stack;
+  CtkWidget *switcher;
+  CtkWidget *vbox;
+  CtkWidget *view;
 
   stack = ctk_stack_new ();
   ctk_widget_set_margin_top (stack, 10);
@@ -1389,11 +1389,11 @@ create_stack_switcher (void)
 static WidgetInfo *
 create_sidebar (void)
 {
-  GtkWidget *stack;
-  GtkWidget *sidebar;
-  GtkWidget *hbox;
-  GtkWidget *view;
-  GtkWidget *frame;
+  CtkWidget *stack;
+  CtkWidget *sidebar;
+  CtkWidget *hbox;
+  CtkWidget *view;
+  CtkWidget *frame;
 
   stack = ctk_stack_new ();
   ctk_widget_set_size_request (stack, 120, 120);
@@ -1424,10 +1424,10 @@ create_sidebar (void)
 static WidgetInfo *
 create_list_box (void)
 {
-  GtkWidget *widget;
-  GtkWidget *list;
-  GtkWidget *row;
-  GtkWidget *button;
+  CtkWidget *widget;
+  CtkWidget *list;
+  CtkWidget *row;
+  CtkWidget *button;
   WidgetInfo *info;
 
   widget = ctk_frame_new (NULL);
@@ -1476,11 +1476,11 @@ create_list_box (void)
 static WidgetInfo *
 create_flow_box (void)
 {
-  GtkWidget *widget;
-  GtkWidget *box;
-  GtkWidget *vbox;
-  GtkWidget *child;
-  GtkWidget *button;
+  CtkWidget *widget;
+  CtkWidget *box;
+  CtkWidget *vbox;
+  CtkWidget *child;
+  CtkWidget *button;
   WidgetInfo *info;
 
   widget = ctk_frame_new (NULL);
@@ -1520,8 +1520,8 @@ static WidgetInfo *
 create_gl_area (void)
 {
   WidgetInfo *info;
-  GtkWidget *widget;
-  GtkWidget *gears;
+  CtkWidget *widget;
+  CtkWidget *gears;
 
   widget = ctk_frame_new (NULL);
   ctk_frame_set_shadow_type (CTK_FRAME (widget), CTK_SHADOW_IN);

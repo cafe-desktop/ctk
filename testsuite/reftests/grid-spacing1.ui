@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid">
+      <object class="CtkGrid" id="grid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
 
         <child>
-          <object class="GtkGrid" id="grid0">
+          <object class="CtkGrid" id="grid0">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="column-spacing">20</property>
             <child>
-              <object class="GtkLabel" id="one">
+              <object class="CtkLabel" id="one">
                 <property name="visible">True</property>
                 <property name="label">One</property>
               </object>
@@ -24,7 +24,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="two">
+              <object class="CtkLabel" id="two">
                 <property name="visible">True</property>
                 <property name="label">Two</property>
               </object>
@@ -33,7 +33,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="three">
+              <object class="CtkLabel" id="three">
                 <property name="visible">True</property>
                 <property name="label">Three</property>
               </object>
@@ -49,12 +49,12 @@
         </child>
 
         <child>
-          <object class="GtkGrid" id="grid1">
+          <object class="CtkGrid" id="grid1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="column-homogeneous">True</property>
             <child>
-              <object class="GtkLabel" id="long">
+              <object class="CtkLabel" id="long">
                 <property name="visible">True</property>
                 <property name="label">Verylongtext</property>
               </object>
@@ -63,7 +63,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="short">
+              <object class="CtkLabel" id="short">
                 <property name="visible">True</property>
                 <property name="label">Short</property>
               </object>
@@ -79,11 +79,11 @@
         </child>
 
         <child>
-          <object class="GtkGrid" id="grid2">
+          <object class="CtkGrid" id="grid2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkLabel" id="a">
+              <object class="CtkLabel" id="a">
                 <property name="visible">True</property>
                 <property name="label">A</property>
               </object>
@@ -92,7 +92,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="b">
+              <object class="CtkLabel" id="b">
                 <property name="visible">True</property>
                 <property name="label">B</property>
                 <property name="hexpand">True</property>
@@ -102,7 +102,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="c">
+              <object class="CtkLabel" id="c">
                 <property name="visible">True</property>
                 <property name="label">C</property>
               </object>

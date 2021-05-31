@@ -32,24 +32,24 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_NUMERABLE_ICON                  (ctk_numerable_icon_get_type ())
-#define CTK_NUMERABLE_ICON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NUMERABLE_ICON, GtkNumerableIcon))
-#define CTK_NUMERABLE_ICON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NUMERABLE_ICON, GtkNumerableIconClass))
+#define CTK_NUMERABLE_ICON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NUMERABLE_ICON, CtkNumerableIcon))
+#define CTK_NUMERABLE_ICON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NUMERABLE_ICON, CtkNumerableIconClass))
 #define CTK_IS_NUMERABLE_ICON(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_NUMERABLE_ICON))
 #define CTK_IS_NUMERABLE_ICON_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_NUMERABLE_ICON))
-#define CTK_NUMERABLE_ICON_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NUMERABLE_ICON, GtkNumerableIconClass))
+#define CTK_NUMERABLE_ICON_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NUMERABLE_ICON, CtkNumerableIconClass))
 
-typedef struct _GtkNumerableIcon        GtkNumerableIcon;
-typedef struct _GtkNumerableIconClass   GtkNumerableIconClass;
-typedef struct _GtkNumerableIconPrivate GtkNumerableIconPrivate;
+typedef struct _CtkNumerableIcon        CtkNumerableIcon;
+typedef struct _CtkNumerableIconClass   CtkNumerableIconClass;
+typedef struct _CtkNumerableIconPrivate CtkNumerableIconPrivate;
 
-struct _GtkNumerableIcon {
+struct _CtkNumerableIcon {
   GEmblemedIcon parent;
 
   /*< private >*/
-  GtkNumerableIconPrivate *priv;
+  CtkNumerableIconPrivate *priv;
 };
 
-struct _GtkNumerableIconClass {
+struct _CtkNumerableIconClass {
   GEmblemedIconClass parent_class;
 
   /* padding for future class expansion */
@@ -63,37 +63,37 @@ GDK_DEPRECATED_IN_3_14
 GIcon *           ctk_numerable_icon_new                      (GIcon            *base_icon);
 GDK_DEPRECATED_IN_3_14
 GIcon *           ctk_numerable_icon_new_with_style_context   (GIcon            *base_icon,
-                                                               GtkStyleContext  *context);
+                                                               CtkStyleContext  *context);
 
 GDK_DEPRECATED_IN_3_14
-GtkStyleContext * ctk_numerable_icon_get_style_context        (GtkNumerableIcon *self);
+CtkStyleContext * ctk_numerable_icon_get_style_context        (CtkNumerableIcon *self);
 GDK_DEPRECATED_IN_3_14
-void              ctk_numerable_icon_set_style_context        (GtkNumerableIcon *self,
-                                                               GtkStyleContext  *style);
+void              ctk_numerable_icon_set_style_context        (CtkNumerableIcon *self,
+                                                               CtkStyleContext  *style);
 
 GDK_DEPRECATED_IN_3_14
-gint              ctk_numerable_icon_get_count                (GtkNumerableIcon *self);
+gint              ctk_numerable_icon_get_count                (CtkNumerableIcon *self);
 GDK_DEPRECATED_IN_3_14
-void              ctk_numerable_icon_set_count                (GtkNumerableIcon *self,
+void              ctk_numerable_icon_set_count                (CtkNumerableIcon *self,
                                                                gint count);
 
 GDK_DEPRECATED_IN_3_14
-const gchar *     ctk_numerable_icon_get_label                (GtkNumerableIcon *self);
+const gchar *     ctk_numerable_icon_get_label                (CtkNumerableIcon *self);
 GDK_DEPRECATED_IN_3_14
-void              ctk_numerable_icon_set_label                (GtkNumerableIcon *self,
+void              ctk_numerable_icon_set_label                (CtkNumerableIcon *self,
                                                                const gchar      *label);
 
 GDK_DEPRECATED_IN_3_14
-void              ctk_numerable_icon_set_background_gicon     (GtkNumerableIcon *self,
+void              ctk_numerable_icon_set_background_gicon     (CtkNumerableIcon *self,
                                                                GIcon            *icon);
 GDK_DEPRECATED_IN_3_14
-GIcon *           ctk_numerable_icon_get_background_gicon     (GtkNumerableIcon *self);
+GIcon *           ctk_numerable_icon_get_background_gicon     (CtkNumerableIcon *self);
 
 GDK_DEPRECATED_IN_3_14
-void              ctk_numerable_icon_set_background_icon_name (GtkNumerableIcon *self,
+void              ctk_numerable_icon_set_background_icon_name (CtkNumerableIcon *self,
                                                                const gchar      *icon_name);
 GDK_DEPRECATED_IN_3_14
-const gchar *     ctk_numerable_icon_get_background_icon_name (GtkNumerableIcon *self);
+const gchar *     ctk_numerable_icon_get_background_icon_name (CtkNumerableIcon *self);
 
 G_END_DECLS
 

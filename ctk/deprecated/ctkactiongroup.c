@@ -29,10 +29,10 @@
 /**
  * SECTION:ctkactiongroup
  * @Short_description: A group of actions
- * @Title: GtkActionGroup
+ * @Title: CtkActionGroup
  *
  * Actions are organised into groups. An action group is essentially a
- * map from names to #GtkAction objects.
+ * map from names to #CtkAction objects.
  *
  * All actions that would make sense to use in a particular context
  * should be in a single group. Multiple action groups may be used for a
@@ -53,25 +53,25 @@
  * path. The GTK+ accelerator map code makes sure that the correct shortcut
  * is displayed next to the menu item.
  *
- * # GtkActionGroup as GtkBuildable # {#GtkActionGroup-BUILDER-UI}
+ * # CtkActionGroup as CtkBuildable # {#CtkActionGroup-BUILDER-UI}
  *
- * The #GtkActionGroup implementation of the #GtkBuildable interface accepts
- * #GtkAction objects as <child> elements in UI definitions.
+ * The #CtkActionGroup implementation of the #CtkBuildable interface accepts
+ * #CtkAction objects as <child> elements in UI definitions.
  *
  * Note that it is probably more common to define actions and action groups
  * in the code, since they are directly related to what the code can do.
  *
- * The GtkActionGroup implementation of the GtkBuildable interface supports
+ * The CtkActionGroup implementation of the CtkBuildable interface supports
  * a custom <accelerator> element, which has attributes named “key“ and
  * “modifiers“ and allows to specify accelerators. This is similar to the
- * <accelerator> element of #GtkWidget, the main difference is that
+ * <accelerator> element of #CtkWidget, the main difference is that
  * it doesn’t allow you to specify a signal.
  *
- * ## A #GtkDialog UI definition fragment. ##
+ * ## A #CtkDialog UI definition fragment. ##
  * |[
- * <object class="GtkActionGroup" id="actiongroup">
+ * <object class="CtkActionGroup" id="actiongroup">
  *   <child>
- *       <object class="GtkAction" id="About">
+ *       <object class="CtkAction" id="About">
  *           <property name="name">About</property>
  *           <property name="stock_id">ctk-about</property>
  *           <signal handler="about_activate" name="activate"/>
@@ -102,15 +102,15 @@
 #include "ctkintl.h"
 
 
-struct _GtkActionGroupPrivate 
+struct _CtkActionGroupPrivate 
 {
   gchar           *name;
   gboolean	   sensitive;
   gboolean	   visible;
   GHashTable      *actions;
-  GtkAccelGroup   *accel_group;
+  CtkAccelGroup   *accel_group;
 
-  GtkTranslateFunc translate_func;
+  CtkTranslateFunc translate_func;
   gpointer         translate_data;
   GDestroyNotify   translate_notify;
 };
@@ -133,8 +133,8 @@ enum
   PROP_ACCEL_GROUP
 };
 
-static void       ctk_action_group_init            (GtkActionGroup      *self);
-static void       ctk_action_group_class_init      (GtkActionGroupClass *class);
+static void       ctk_action_group_init            (CtkActionGroup      *self);
+static void       ctk_action_group_class_init      (CtkActionGroupClass *class);
 static void       ctk_action_group_finalize        (GObject             *object);
 static void       ctk_action_group_set_property    (GObject             *object,
 						    guint                prop_id,
@@ -144,39 +144,39 @@ static void       ctk_action_group_get_property    (GObject             *object,
 						    guint                prop_id,
 						    GValue              *value,
 						    GParamSpec          *pspec);
-static GtkAction *ctk_action_group_real_get_action (GtkActionGroup      *self,
+static CtkAction *ctk_action_group_real_get_action (CtkActionGroup      *self,
 						    const gchar         *name);
 
-/* GtkBuildable */
-static void ctk_action_group_buildable_init (GtkBuildableIface *iface);
-static void ctk_action_group_buildable_add_child (GtkBuildable  *buildable,
-						  GtkBuilder    *builder,
+/* CtkBuildable */
+static void ctk_action_group_buildable_init (CtkBuildableIface *iface);
+static void ctk_action_group_buildable_add_child (CtkBuildable  *buildable,
+						  CtkBuilder    *builder,
 						  GObject       *child,
 						  const gchar   *type);
-static void ctk_action_group_buildable_set_name (GtkBuildable *buildable,
+static void ctk_action_group_buildable_set_name (CtkBuildable *buildable,
 						 const gchar  *name);
-static const gchar* ctk_action_group_buildable_get_name (GtkBuildable *buildable);
-static gboolean ctk_action_group_buildable_custom_tag_start (GtkBuildable     *buildable,
-							     GtkBuilder       *builder,
+static const gchar* ctk_action_group_buildable_get_name (CtkBuildable *buildable);
+static gboolean ctk_action_group_buildable_custom_tag_start (CtkBuildable     *buildable,
+							     CtkBuilder       *builder,
 							     GObject          *child,
 							     const gchar      *tagname,
 							     GMarkupParser    *parser,
 							     gpointer         *data);
-static void ctk_action_group_buildable_custom_tag_end (GtkBuildable *buildable,
-						       GtkBuilder   *builder,
+static void ctk_action_group_buildable_custom_tag_end (CtkBuildable *buildable,
+						       CtkBuilder   *builder,
 						       GObject      *child,
 						       const gchar  *tagname,
 						       gpointer     *user_data);
 
 static guint         action_group_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkActionGroup, ctk_action_group, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkActionGroup)
+G_DEFINE_TYPE_WITH_CODE (CtkActionGroup, ctk_action_group, G_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkActionGroup)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_action_group_buildable_init))
 
 static void
-ctk_action_group_class_init (GtkActionGroupClass *klass)
+ctk_action_group_class_init (CtkActionGroupClass *klass)
 {
   GObjectClass *gobject_class;
 
@@ -188,7 +188,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
   klass->get_action = ctk_action_group_real_get_action;
 
   /**
-   * GtkActionGroup:name:
+   * CtkActionGroup:name:
    *
    * A name for the action.
    *
@@ -202,7 +202,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 							NULL,
 							CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
   /**
-   * GtkActionGroup:sensitive:
+   * CtkActionGroup:sensitive:
    *
    * Whether the action group is enabled.
    *
@@ -216,7 +216,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 							 TRUE,
 							 CTK_PARAM_READWRITE));
   /**
-   * GtkActionGroup:visible:
+   * CtkActionGroup:visible:
    *
    * Whether the action group is visible.
    *
@@ -230,7 +230,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 							 TRUE,
 							 CTK_PARAM_READWRITE));
   /**
-   * GtkActionGroup:accel-group:
+   * CtkActionGroup:accel-group:
    *
    * The accelerator group the actions of this group should use.
    *
@@ -245,7 +245,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 							CTK_PARAM_READWRITE));
 
   /**
-   * GtkActionGroup::connect-proxy:
+   * CtkActionGroup::connect-proxy:
    * @action_group: the group
    * @action: the action
    * @proxy: the proxy
@@ -258,7 +258,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
    * class would be too clumsy, e.g. showing tooltips for menuitems in the
    * statusbar.
    *
-   * #GtkUIManager proxies the signal and provides global notification 
+   * #CtkUIManager proxies the signal and provides global notification 
    * just before any action is connected to a proxy, which is probably more
    * convenient to use.
    *
@@ -275,7 +275,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 		  CTK_TYPE_ACTION, CTK_TYPE_WIDGET);
 
   /**
-   * GtkActionGroup::disconnect-proxy:
+   * CtkActionGroup::disconnect-proxy:
    * @action_group: the group
    * @action: the action
    * @proxy: the proxy
@@ -283,7 +283,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
    * The ::disconnect-proxy signal is emitted after disconnecting a proxy 
    * from an action in the group. 
    *
-   * #GtkUIManager proxies the signal and provides global notification 
+   * #CtkUIManager proxies the signal and provides global notification 
    * just before any action is connected to a proxy, which is probably more
    * convenient to use.
    *
@@ -300,14 +300,14 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 		  CTK_TYPE_ACTION, CTK_TYPE_WIDGET);
 
   /**
-   * GtkActionGroup::pre-activate:
+   * CtkActionGroup::pre-activate:
    * @action_group: the group
    * @action: the action
    *
    * The ::pre-activate signal is emitted just before the @action in the
    * @action_group is activated
    *
-   * This is intended for #GtkUIManager to proxy the signal and provide global
+   * This is intended for #CtkUIManager to proxy the signal and provide global
    * notification just before any action is activated.
    *
    * Since: 2.4
@@ -323,14 +323,14 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 		  CTK_TYPE_ACTION);
 
   /**
-   * GtkActionGroup::post-activate:
+   * CtkActionGroup::post-activate:
    * @action_group: the group
    * @action: the action
    *
    * The ::post-activate signal is emitted just after the @action in the
    * @action_group is activated
    *
-   * This is intended for #GtkUIManager to proxy the signal and provide global
+   * This is intended for #CtkUIManager to proxy the signal and provide global
    * notification just after any action is activated.
    *
    * Since: 2.4
@@ -348,14 +348,14 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 
 
 static void 
-remove_action (GtkAction *action) 
+remove_action (CtkAction *action) 
 {
   g_object_set (action, I_("action-group"), NULL, NULL);
   g_object_unref (action);
 }
 
 static void
-ctk_action_group_init (GtkActionGroup *action_group)
+ctk_action_group_init (CtkActionGroup *action_group)
 {
   action_group->priv = ctk_action_group_get_instance_private (action_group);
   action_group->priv->name = NULL;
@@ -370,7 +370,7 @@ ctk_action_group_init (GtkActionGroup *action_group)
 }
 
 static void
-ctk_action_group_buildable_init (GtkBuildableIface *iface)
+ctk_action_group_buildable_init (CtkBuildableIface *iface)
 {
   iface->add_child = ctk_action_group_buildable_add_child;
   iface->set_name = ctk_action_group_buildable_set_name;
@@ -380,8 +380,8 @@ ctk_action_group_buildable_init (GtkBuildableIface *iface)
 }
 
 static void
-ctk_action_group_buildable_add_child (GtkBuildable  *buildable,
-				      GtkBuilder    *builder,
+ctk_action_group_buildable_add_child (CtkBuildable  *buildable,
+				      CtkBuilder    *builder,
 				      GObject       *child,
 				      const gchar   *type)
 {
@@ -390,20 +390,20 @@ ctk_action_group_buildable_add_child (GtkBuildable  *buildable,
 }
 
 static void
-ctk_action_group_buildable_set_name (GtkBuildable *buildable,
+ctk_action_group_buildable_set_name (CtkBuildable *buildable,
 				     const gchar  *name)
 {
-  GtkActionGroup *self = CTK_ACTION_GROUP (buildable);
-  GtkActionGroupPrivate *private = self->priv;
+  CtkActionGroup *self = CTK_ACTION_GROUP (buildable);
+  CtkActionGroupPrivate *private = self->priv;
 
   private->name = g_strdup (name);
 }
 
 static const gchar *
-ctk_action_group_buildable_get_name (GtkBuildable *buildable)
+ctk_action_group_buildable_get_name (CtkBuildable *buildable)
 {
-  GtkActionGroup *self = CTK_ACTION_GROUP (buildable);
-  GtkActionGroupPrivate *private = self->priv;
+  CtkActionGroup *self = CTK_ACTION_GROUP (buildable);
+  CtkActionGroupPrivate *private = self->priv;
 
   return private->name;
 }
@@ -460,8 +460,8 @@ static const GMarkupParser accelerator_parser =
   };
 
 static gboolean
-ctk_action_group_buildable_custom_tag_start (GtkBuildable     *buildable,
-					     GtkBuilder       *builder,
+ctk_action_group_buildable_custom_tag_start (CtkBuildable     *buildable,
+					     CtkBuilder       *builder,
 					     GObject          *child,
 					     const gchar      *tagname,
 					     GMarkupParser    *parser,
@@ -482,8 +482,8 @@ ctk_action_group_buildable_custom_tag_start (GtkBuildable     *buildable,
 }
 
 static void
-ctk_action_group_buildable_custom_tag_end (GtkBuildable *buildable,
-					   GtkBuilder   *builder,
+ctk_action_group_buildable_custom_tag_end (CtkBuildable *buildable,
+					   CtkBuilder   *builder,
 					   GObject      *child,
 					   const gchar  *tagname,
 					   gpointer     *user_data)
@@ -492,9 +492,9 @@ ctk_action_group_buildable_custom_tag_end (GtkBuildable *buildable,
   
   if (strcmp (tagname, "accelerator") == 0)
     {
-      GtkActionGroup *action_group;
-      GtkActionGroupPrivate *private;
-      GtkAction *action;
+      CtkActionGroup *action_group;
+      CtkActionGroupPrivate *private;
+      CtkAction *action;
       gchar *accel_path;
       
       data = (AcceleratorParserData*)user_data;
@@ -522,21 +522,21 @@ ctk_action_group_buildable_custom_tag_end (GtkBuildable *buildable,
  * ctk_action_group_new:
  * @name: the name of the action group.
  *
- * Creates a new #GtkActionGroup object. The name of the action group
+ * Creates a new #CtkActionGroup object. The name of the action group
  * is used when associating [keybindings][Action-Accel] 
  * with the actions.
  *
- * Returns: the new #GtkActionGroup
+ * Returns: the new #CtkActionGroup
  *
  * Since: 2.4
  *
  * Deprecated: 3.10
  */
-GtkActionGroup *
+CtkActionGroup *
 ctk_action_group_new (const gchar *name)
 {
-  GtkActionGroup *self;
-  GtkActionGroupPrivate *private;
+  CtkActionGroup *self;
+  CtkActionGroupPrivate *private;
 
   self = g_object_new (CTK_TYPE_ACTION_GROUP, NULL);
   private = self->priv;
@@ -548,7 +548,7 @@ ctk_action_group_new (const gchar *name)
 static void
 ctk_action_group_finalize (GObject *object)
 {
-  GtkActionGroup *self = CTK_ACTION_GROUP (object);
+  CtkActionGroup *self = CTK_ACTION_GROUP (object);
 
   g_free (self->priv->name);
 
@@ -568,8 +568,8 @@ ctk_action_group_set_property (GObject         *object,
 			       const GValue    *value,
 			       GParamSpec      *pspec)
 {
-  GtkActionGroup *self;
-  GtkActionGroupPrivate *private;
+  CtkActionGroup *self;
+  CtkActionGroupPrivate *private;
   gchar *tmp;
   
   self = CTK_ACTION_GROUP (object);
@@ -603,8 +603,8 @@ ctk_action_group_get_property (GObject    *object,
 			       GValue     *value,
 			       GParamSpec *pspec)
 {
-  GtkActionGroup *self;
-  GtkActionGroupPrivate *private;
+  CtkActionGroup *self;
+  CtkActionGroupPrivate *private;
   
   self = CTK_ACTION_GROUP (object);
   private = self->priv;
@@ -629,11 +629,11 @@ ctk_action_group_get_property (GObject    *object,
     }
 }
 
-static GtkAction *
-ctk_action_group_real_get_action (GtkActionGroup *self,
+static CtkAction *
+ctk_action_group_real_get_action (CtkActionGroup *self,
 				  const gchar    *action_name)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
 
   private = self->priv;
 
@@ -653,9 +653,9 @@ ctk_action_group_real_get_action (GtkActionGroup *self,
  * Deprecated: 3.10
  */
 const gchar *
-ctk_action_group_get_name (GtkActionGroup *action_group)
+ctk_action_group_get_name (CtkActionGroup *action_group)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
 
   g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), NULL);
 
@@ -680,9 +680,9 @@ ctk_action_group_get_name (GtkActionGroup *action_group)
  * Deprecated: 3.10
  */
 gboolean
-ctk_action_group_get_sensitive (GtkActionGroup *action_group)
+ctk_action_group_get_sensitive (CtkActionGroup *action_group)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
 
   g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), FALSE);
 
@@ -693,7 +693,7 @@ ctk_action_group_get_sensitive (GtkActionGroup *action_group)
 
 static void
 cb_set_action_sensitivity (const gchar *name, 
-			   GtkAction   *action)
+			   CtkAction   *action)
 {
   /* Minor optimization, the action_groups state only affects actions 
    * that are themselves sensitive */
@@ -713,10 +713,10 @@ cb_set_action_sensitivity (const gchar *name,
  * Deprecated: 3.10
  */
 void
-ctk_action_group_set_sensitive (GtkActionGroup *action_group, 
+ctk_action_group_set_sensitive (CtkActionGroup *action_group, 
 				gboolean        sensitive)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
 
   g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
@@ -749,9 +749,9 @@ ctk_action_group_set_sensitive (GtkActionGroup *action_group,
  * Deprecated: 3.10
  */
 gboolean
-ctk_action_group_get_visible (GtkActionGroup *action_group)
+ctk_action_group_get_visible (CtkActionGroup *action_group)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
 
   g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), FALSE);
 
@@ -762,7 +762,7 @@ ctk_action_group_get_visible (GtkActionGroup *action_group)
 
 /**
  * ctk_action_group_get_accel_group:
- * @action_group: a #GtkActionGroup
+ * @action_group: a #CtkActionGroup
  *
  * Gets the accelerator group.
  * 
@@ -773,8 +773,8 @@ ctk_action_group_get_visible (GtkActionGroup *action_group)
  *
  * Deprecated: 3.10
  */
-GtkAccelGroup *
-ctk_action_group_get_accel_group (GtkActionGroup *action_group)
+CtkAccelGroup *
+ctk_action_group_get_accel_group (CtkActionGroup *action_group)
 {
   g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), FALSE);
 
@@ -783,7 +783,7 @@ ctk_action_group_get_accel_group (GtkActionGroup *action_group)
 
 static void
 cb_set_action_visiblity (const gchar *name, 
-			 GtkAction   *action)
+			 CtkAction   *action)
 {
   /* Minor optimization, the action_groups state only affects actions 
    * that are themselves visible */
@@ -802,10 +802,10 @@ cb_set_action_visiblity (const gchar *name,
  * Deprecated: 3.10
  */
 void
-ctk_action_group_set_visible (GtkActionGroup *action_group, 
+ctk_action_group_set_visible (CtkActionGroup *action_group, 
 			      gboolean        visible)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
 
   g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
@@ -830,8 +830,8 @@ ctk_action_group_accel_group_foreach (gpointer key, gpointer val, gpointer data)
 
 /**
  * ctk_action_group_set_accel_group:
- * @action_group: a #GtkActionGroup
- * @accel_group: (allow-none): a #GtkAccelGroup to set or %NULL
+ * @action_group: a #CtkActionGroup
+ * @accel_group: (allow-none): a #CtkAccelGroup to set or %NULL
  *
  * Sets the accelerator group to be used by every action in this group.
  * 
@@ -840,10 +840,10 @@ ctk_action_group_accel_group_foreach (gpointer key, gpointer val, gpointer data)
  * Deprecated: 3.10
  */
 void
-ctk_action_group_set_accel_group (GtkActionGroup *action_group,
-                                  GtkAccelGroup  *accel_group)
+ctk_action_group_set_accel_group (CtkActionGroup *action_group,
+                                  CtkAccelGroup  *accel_group)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
 
   g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
@@ -878,8 +878,8 @@ ctk_action_group_set_accel_group (GtkActionGroup *action_group,
  *
  * Deprecated: 3.10
  */
-GtkAction *
-ctk_action_group_get_action (GtkActionGroup *action_group,
+CtkAction *
+ctk_action_group_get_action (CtkActionGroup *action_group,
 			     const gchar    *action_name)
 {
   g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), NULL);
@@ -890,12 +890,12 @@ ctk_action_group_get_action (GtkActionGroup *action_group,
 }
 
 static gboolean
-check_unique_action (GtkActionGroup *action_group,
+check_unique_action (CtkActionGroup *action_group,
 	             const gchar    *action_name)
 {
   if (ctk_action_group_get_action (action_group, action_name) != NULL)
     {
-      GtkActionGroupPrivate *private;
+      CtkActionGroupPrivate *private;
 
       private = action_group->priv;
 
@@ -925,10 +925,10 @@ check_unique_action (GtkActionGroup *action_group,
  * Deprecated: 3.10
  */
 void
-ctk_action_group_add_action (GtkActionGroup *action_group,
-			     GtkAction      *action)
+ctk_action_group_add_action (CtkActionGroup *action_group,
+			     CtkAction      *action)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
   const gchar *name;
 
   g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
@@ -971,11 +971,11 @@ ctk_action_group_add_action (GtkActionGroup *action_group,
  * Deprecated: 3.10
  */
 void
-ctk_action_group_add_action_with_accel (GtkActionGroup *action_group,
-					GtkAction      *action,
+ctk_action_group_add_action_with_accel (CtkActionGroup *action_group,
+					CtkAction      *action,
 					const gchar    *accelerator)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
   gchar *accel_path;
   guint  accel_key = 0;
   GdkModifierType accel_mods;
@@ -1004,7 +1004,7 @@ ctk_action_group_add_action_with_accel (GtkActionGroup *action_group,
   else 
     {
       gchar *stock_id;
-      GtkStockItem stock_item;
+      CtkStockItem stock_item;
 
       g_object_get (action, "stock-id", &stock_id, NULL);
 
@@ -1042,10 +1042,10 @@ ctk_action_group_add_action_with_accel (GtkActionGroup *action_group,
  * Deprecated: 3.10
  */
 void
-ctk_action_group_remove_action (GtkActionGroup *action_group,
-				GtkAction      *action)
+ctk_action_group_remove_action (CtkActionGroup *action_group,
+				CtkAction      *action)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
   const gchar *name;
 
   g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
@@ -1075,16 +1075,16 @@ add_single_action (gpointer key,
  *
  * Lists the actions in the action group.
  *
- * Returns: (element-type GtkAction) (transfer container): an allocated list of the action objects in the action group
+ * Returns: (element-type CtkAction) (transfer container): an allocated list of the action objects in the action group
  *
  * Since: 2.4
  *
  * Deprecated: 3.10
  */
 GList *
-ctk_action_group_list_actions (GtkActionGroup *action_group)
+ctk_action_group_list_actions (CtkActionGroup *action_group)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
   GList *actions = NULL;
 
   g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), NULL);
@@ -1115,8 +1115,8 @@ ctk_action_group_list_actions (GtkActionGroup *action_group)
  * Deprecated: 3.10
  */
 void
-ctk_action_group_add_actions (GtkActionGroup       *action_group,
-			      const GtkActionEntry *entries,
+ctk_action_group_add_actions (CtkActionGroup       *action_group,
+			      const CtkActionEntry *entries,
 			      guint                 n_entries,
 			      gpointer              user_data)
 {
@@ -1165,8 +1165,8 @@ shared_data_unref (gpointer data)
  * Deprecated: 3.10
  */
 void
-ctk_action_group_add_actions_full (GtkActionGroup       *action_group,
-				   const GtkActionEntry *entries,
+ctk_action_group_add_actions_full (CtkActionGroup       *action_group,
+				   const CtkActionEntry *entries,
 				   guint                 n_entries,
 				   gpointer              user_data,
 				   GDestroyNotify        destroy)
@@ -1187,7 +1187,7 @@ ctk_action_group_add_actions_full (GtkActionGroup       *action_group,
 
   for (i = 0; i < n_entries; i++)
     {
-      GtkAction *action;
+      CtkAction *action;
       const gchar *label;
       const gchar *tooltip;
 
@@ -1249,8 +1249,8 @@ ctk_action_group_add_actions_full (GtkActionGroup       *action_group,
  * Deprecated: 3.10
  */
 void
-ctk_action_group_add_toggle_actions (GtkActionGroup             *action_group,
-				     const GtkToggleActionEntry *entries,
+ctk_action_group_add_toggle_actions (CtkActionGroup             *action_group,
+				     const CtkToggleActionEntry *entries,
 				     guint                       n_entries,
 				     gpointer                    user_data)
 {
@@ -1276,8 +1276,8 @@ ctk_action_group_add_toggle_actions (GtkActionGroup             *action_group,
  * Deprecated: 3.10
  */
 void
-ctk_action_group_add_toggle_actions_full (GtkActionGroup             *action_group,
-					  const GtkToggleActionEntry *entries,
+ctk_action_group_add_toggle_actions_full (CtkActionGroup             *action_group,
+					  const CtkToggleActionEntry *entries,
 					  guint                       n_entries,
 					  gpointer                    user_data,
 					  GDestroyNotify              destroy)
@@ -1297,7 +1297,7 @@ ctk_action_group_add_toggle_actions_full (GtkActionGroup             *action_gro
 
   for (i = 0; i < n_entries; i++)
     {
-      GtkToggleAction *action;
+      CtkToggleAction *action;
       const gchar *label;
       const gchar *tooltip;
 
@@ -1369,8 +1369,8 @@ ctk_action_group_add_toggle_actions_full (GtkActionGroup             *action_gro
  * Deprecated: 3.10
  **/
 void            
-ctk_action_group_add_radio_actions (GtkActionGroup            *action_group,
-				    const GtkRadioActionEntry *entries,
+ctk_action_group_add_radio_actions (CtkActionGroup            *action_group,
+				    const CtkRadioActionEntry *entries,
 				    guint                      n_entries,
 				    gint                       value,
 				    GCallback                  on_change,
@@ -1401,8 +1401,8 @@ ctk_action_group_add_radio_actions (GtkActionGroup            *action_group,
  * Deprecated: 3.10
  **/
 void            
-ctk_action_group_add_radio_actions_full (GtkActionGroup            *action_group,
-					 const GtkRadioActionEntry *entries,
+ctk_action_group_add_radio_actions_full (CtkActionGroup            *action_group,
+					 const CtkRadioActionEntry *entries,
 					 guint                      n_entries,
 					 gint                       value,
 					 GCallback                  on_change,
@@ -1414,13 +1414,13 @@ ctk_action_group_add_radio_actions_full (GtkActionGroup            *action_group
    */
   guint i;
   GSList *group = NULL;
-  GtkRadioAction *first_action = NULL;
+  CtkRadioAction *first_action = NULL;
 
   g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   for (i = 0; i < n_entries; i++)
     {
-      GtkRadioAction *action;
+      CtkRadioAction *action;
       const gchar *label;
       const gchar *tooltip; 
 
@@ -1471,14 +1471,14 @@ ctk_action_group_add_radio_actions_full (GtkActionGroup            *action_group
 
 /**
  * ctk_action_group_set_translate_func:
- * @action_group: a #GtkActionGroup
- * @func: a #GtkTranslateFunc
+ * @action_group: a #CtkActionGroup
+ * @func: a #CtkTranslateFunc
  * @data: data to be passed to @func and @notify
  * @notify: a #GDestroyNotify function to be called when @action_group is
  *   destroyed and when the translation function is changed again
  *
  * Sets a function to be used for translating the @label and @tooltip of 
- * #GtkActionEntrys added by ctk_action_group_add_actions().
+ * #CtkActionEntrys added by ctk_action_group_add_actions().
  *
  * If you’re using gettext(), it is enough to set the translation domain
  * with ctk_action_group_set_translation_domain().
@@ -1488,12 +1488,12 @@ ctk_action_group_add_radio_actions_full (GtkActionGroup            *action_group
  * Deprecated: 3.10
  **/
 void
-ctk_action_group_set_translate_func (GtkActionGroup   *action_group,
-				     GtkTranslateFunc  func,
+ctk_action_group_set_translate_func (CtkActionGroup   *action_group,
+				     CtkTranslateFunc  func,
 				     gpointer          data,
 				     GDestroyNotify    notify)
 {
-  GtkActionGroupPrivate *private;
+  CtkActionGroupPrivate *private;
 
   g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
   
@@ -1520,12 +1520,12 @@ dgettext_swapped (const gchar *msgid,
 
 /**
  * ctk_action_group_set_translation_domain:
- * @action_group: a #GtkActionGroup
+ * @action_group: a #CtkActionGroup
  * @domain: (allow-none): the translation domain to use for g_dgettext()
  * calls, or %NULL to use the domain set with textdomain()
  * 
  * Sets the translation domain and uses g_dgettext() for translating the 
- * @label and @tooltip of #GtkActionEntrys added by 
+ * @label and @tooltip of #CtkActionEntrys added by 
  * ctk_action_group_add_actions().
  *
  * If you’re not using gettext() for localization, see 
@@ -1536,13 +1536,13 @@ dgettext_swapped (const gchar *msgid,
  * Deprecated: 3.10
  **/
 void 
-ctk_action_group_set_translation_domain (GtkActionGroup *action_group,
+ctk_action_group_set_translation_domain (CtkActionGroup *action_group,
 					 const gchar    *domain)
 {
   g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   ctk_action_group_set_translate_func (action_group, 
-				       (GtkTranslateFunc)dgettext_swapped,
+				       (CtkTranslateFunc)dgettext_swapped,
 				       g_strdup (domain),
 				       g_free);
 } 
@@ -1550,7 +1550,7 @@ ctk_action_group_set_translation_domain (GtkActionGroup *action_group,
 
 /**
  * ctk_action_group_translate_string:
- * @action_group: a #GtkActionGroup
+ * @action_group: a #CtkActionGroup
  * @string: a string
  *
  * Translates a string using the function set with 
@@ -1564,11 +1564,11 @@ ctk_action_group_set_translation_domain (GtkActionGroup *action_group,
  * Deprecated: 3.10
  **/
 const gchar *
-ctk_action_group_translate_string (GtkActionGroup *action_group,
+ctk_action_group_translate_string (CtkActionGroup *action_group,
 				   const gchar    *string)
 {
-  GtkActionGroupPrivate *private;
-  GtkTranslateFunc translate_func;
+  CtkActionGroupPrivate *private;
+  CtkTranslateFunc translate_func;
   gpointer translate_data;
   
   g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), string);
@@ -1587,35 +1587,35 @@ ctk_action_group_translate_string (GtkActionGroup *action_group,
     return string;
 }
 
-/* Protected for use by GtkAction */
+/* Protected for use by CtkAction */
 void
-_ctk_action_group_emit_connect_proxy  (GtkActionGroup *action_group,
-                                       GtkAction      *action,
-                                       GtkWidget      *proxy)
+_ctk_action_group_emit_connect_proxy  (CtkActionGroup *action_group,
+                                       CtkAction      *action,
+                                       CtkWidget      *proxy)
 {
   g_signal_emit (action_group, action_group_signals[CONNECT_PROXY], 0, 
                  action, proxy);
 }
 
 void
-_ctk_action_group_emit_disconnect_proxy  (GtkActionGroup *action_group,
-                                          GtkAction      *action,
-                                          GtkWidget      *proxy)
+_ctk_action_group_emit_disconnect_proxy  (CtkActionGroup *action_group,
+                                          CtkAction      *action,
+                                          CtkWidget      *proxy)
 {
   g_signal_emit (action_group, action_group_signals[DISCONNECT_PROXY], 0, 
                  action, proxy);
 }
 
 void
-_ctk_action_group_emit_pre_activate  (GtkActionGroup *action_group,
-				      GtkAction      *action)
+_ctk_action_group_emit_pre_activate  (CtkActionGroup *action_group,
+				      CtkAction      *action)
 {
   g_signal_emit (action_group, action_group_signals[PRE_ACTIVATE], 0, action);
 }
 
 void
-_ctk_action_group_emit_post_activate (GtkActionGroup *action_group,
-				      GtkAction      *action)
+_ctk_action_group_emit_post_activate (CtkActionGroup *action_group,
+				      CtkAction      *action)
 {
   g_signal_emit (action_group, action_group_signals[POST_ACTIVATE], 0, action);
 }

@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PANED_ACCESSIBLE                      (ctk_paned_accessible_get_type ())
-#define CTK_PANED_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PANED_ACCESSIBLE, GtkPanedAccessible))
-#define CTK_PANED_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PANED_ACCESSIBLE, GtkPanedAccessibleClass))
+#define CTK_PANED_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PANED_ACCESSIBLE, CtkPanedAccessible))
+#define CTK_PANED_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PANED_ACCESSIBLE, CtkPanedAccessibleClass))
 #define CTK_IS_PANED_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PANED_ACCESSIBLE))
 #define CTK_IS_PANED_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PANED_ACCESSIBLE))
-#define CTK_PANED_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PANED_ACCESSIBLE, GtkPanedAccessibleClass))
+#define CTK_PANED_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PANED_ACCESSIBLE, CtkPanedAccessibleClass))
 
-typedef struct _GtkPanedAccessible        GtkPanedAccessible;
-typedef struct _GtkPanedAccessibleClass   GtkPanedAccessibleClass;
-typedef struct _GtkPanedAccessiblePrivate GtkPanedAccessiblePrivate;
+typedef struct _CtkPanedAccessible        CtkPanedAccessible;
+typedef struct _CtkPanedAccessibleClass   CtkPanedAccessibleClass;
+typedef struct _CtkPanedAccessiblePrivate CtkPanedAccessiblePrivate;
 
-struct _GtkPanedAccessible
+struct _CtkPanedAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkPanedAccessiblePrivate *priv;
+  CtkPanedAccessiblePrivate *priv;
 };
 
-struct _GtkPanedAccessibleClass
+struct _CtkPanedAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

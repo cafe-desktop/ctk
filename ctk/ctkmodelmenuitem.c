@@ -26,16 +26,16 @@
 #include "ctkimage.h"
 #include "ctkbox.h"
 
-struct _GtkModelMenuItem
+struct _CtkModelMenuItem
 {
-  GtkCheckMenuItem parent_instance;
-  GtkMenuTrackerItemRole role;
+  CtkCheckMenuItem parent_instance;
+  CtkMenuTrackerItemRole role;
   gboolean has_indicator;
 };
 
-typedef GtkCheckMenuItemClass GtkModelMenuItemClass;
+typedef CtkCheckMenuItemClass CtkModelMenuItemClass;
 
-G_DEFINE_TYPE (GtkModelMenuItem, ctk_model_menu_item, CTK_TYPE_CHECK_MENU_ITEM)
+G_DEFINE_TYPE (CtkModelMenuItem, ctk_model_menu_item, CTK_TYPE_CHECK_MENU_ITEM)
 
 enum
 {
@@ -48,10 +48,10 @@ enum
 };
 
 static void
-ctk_model_menu_item_toggle_size_request (GtkMenuItem *menu_item,
+ctk_model_menu_item_toggle_size_request (CtkMenuItem *menu_item,
                                          gint        *requisition)
 {
-  GtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (menu_item);
+  CtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (menu_item);
 
   if (item->has_indicator)
     CTK_MENU_ITEM_CLASS (ctk_model_menu_item_parent_class)
@@ -62,16 +62,16 @@ ctk_model_menu_item_toggle_size_request (GtkMenuItem *menu_item,
 }
 
 static void
-ctk_model_menu_item_activate (GtkMenuItem *item)
+ctk_model_menu_item_activate (CtkMenuItem *item)
 {
   /* block the automatic toggle behaviour -- just do nothing */
 }
 
 static void
-ctk_model_menu_item_draw_indicator (GtkCheckMenuItem *check_item,
+ctk_model_menu_item_draw_indicator (CtkCheckMenuItem *check_item,
                                     cairo_t          *cr)
 {
-  GtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (check_item);
+  CtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (check_item);
 
   if (item->has_indicator)
     CTK_CHECK_MENU_ITEM_CLASS (ctk_model_menu_item_parent_class)
@@ -79,7 +79,7 @@ ctk_model_menu_item_draw_indicator (GtkCheckMenuItem *check_item,
 }
 
 static void
-ctk_model_menu_item_set_has_indicator (GtkModelMenuItem *item,
+ctk_model_menu_item_set_has_indicator (CtkModelMenuItem *item,
                                        gboolean          has_indicator)
 {
   if (has_indicator == item->has_indicator)
@@ -91,8 +91,8 @@ ctk_model_menu_item_set_has_indicator (GtkModelMenuItem *item,
 }
 
 static void
-ctk_model_menu_item_set_action_role (GtkModelMenuItem       *item,
-                                     GtkMenuTrackerItemRole  role)
+ctk_model_menu_item_set_action_role (CtkModelMenuItem       *item,
+                                     CtkMenuTrackerItemRole  role)
 {
   AtkObject *accessible;
   AtkRole a11y_role;
@@ -127,10 +127,10 @@ ctk_model_menu_item_set_action_role (GtkModelMenuItem       *item,
 }
 
 static void
-ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
+ctk_model_menu_item_set_icon (CtkModelMenuItem *item,
                               GIcon            *icon)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   g_return_if_fail (CTK_IS_MODEL_MENU_ITEM (item));
   g_return_if_fail (icon == NULL || G_IS_ICON (icon));
@@ -143,7 +143,7 @@ ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
    *   - accel label child
    *   - already a box
    *
-   * Handle the no-child case by having GtkMenuItem create the accel
+   * Handle the no-child case by having CtkMenuItem create the accel
    * label, then we will only have two possible cases.
    */
   if (child == NULL)
@@ -170,7 +170,7 @@ ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
     }
   else
     {
-      GtkWidget *box;
+      CtkWidget *box;
 
       if (icon == NULL)
         return;
@@ -197,7 +197,7 @@ ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
    */
   if (icon != NULL)
     {
-      GtkWidget *image;
+      CtkWidget *image;
 
       image = ctk_image_new_from_gicon (icon, CTK_ICON_SIZE_MENU);
       ctk_image_set_pixel_size (CTK_IMAGE (image), 16);
@@ -209,9 +209,9 @@ ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
 }
 
 static GIcon *
-ctk_model_menu_item_get_icon (GtkModelMenuItem *item)
+ctk_model_menu_item_get_icon (CtkModelMenuItem *item)
 {
-  GtkWidget *child;
+  CtkWidget *child;
   GIcon *icon = NULL;
 
   child = ctk_bin_get_child (CTK_BIN (item));
@@ -235,10 +235,10 @@ ctk_model_menu_item_get_icon (GtkModelMenuItem *item)
 }
 
 static void
-ctk_model_menu_item_set_text (GtkModelMenuItem *item,
+ctk_model_menu_item_set_text (CtkModelMenuItem *item,
                               const gchar      *text)
 {
-  GtkWidget *child;
+  CtkWidget *child;
   GList *children;
 
   child = ctk_bin_get_child (CTK_BIN (item));
@@ -272,9 +272,9 @@ ctk_model_menu_item_set_text (GtkModelMenuItem *item,
 }
 
 static const gchar *
-ctk_model_menu_item_get_text (GtkModelMenuItem *item)
+ctk_model_menu_item_get_text (CtkModelMenuItem *item)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   child = ctk_bin_get_child (CTK_BIN (item));
 
@@ -304,10 +304,10 @@ ctk_model_menu_item_get_text (GtkModelMenuItem *item)
 }
 
 static void
-ctk_model_menu_item_set_accel (GtkModelMenuItem *item,
+ctk_model_menu_item_set_accel (CtkModelMenuItem *item,
                                const gchar      *accel)
 {
-  GtkWidget *child;
+  CtkWidget *child;
   GList *children;
   GdkModifierType modifiers;
   guint key;
@@ -353,10 +353,10 @@ ctk_model_menu_item_set_accel (GtkModelMenuItem *item,
 }
 
 static gchar *
-ctk_model_menu_item_get_accel (GtkModelMenuItem *item)
+ctk_model_menu_item_get_accel (CtkModelMenuItem *item)
 {
-  GtkWidget *child;
-  GtkWidget *accel_label = NULL;
+  CtkWidget *child;
+  CtkWidget *accel_label = NULL;
 
   child = ctk_bin_get_child (CTK_BIN (item));
 
@@ -397,7 +397,7 @@ ctk_model_menu_item_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (object);
+  CtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (object);
 
   switch (prop_id)
     {
@@ -432,7 +432,7 @@ ctk_model_menu_item_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (object);
+  CtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (object);
 
   switch (prop_id)
     {
@@ -463,15 +463,15 @@ ctk_model_menu_item_set_property (GObject      *object,
 }
 
 static void
-ctk_model_menu_item_init (GtkModelMenuItem *item)
+ctk_model_menu_item_init (CtkModelMenuItem *item)
 {
 }
 
 static void
-ctk_model_menu_item_class_init (GtkModelMenuItemClass *class)
+ctk_model_menu_item_class_init (CtkModelMenuItemClass *class)
 {
-  GtkCheckMenuItemClass *check_class = CTK_CHECK_MENU_ITEM_CLASS (class);
-  GtkMenuItemClass *item_class = CTK_MENU_ITEM_CLASS (class);
+  CtkCheckMenuItemClass *check_class = CTK_CHECK_MENU_ITEM_CLASS (class);
+  CtkMenuItemClass *item_class = CTK_MENU_ITEM_CLASS (class);
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
   check_class->draw_indicator = ctk_model_menu_item_draw_indicator;
@@ -503,7 +503,7 @@ ctk_model_menu_item_class_init (GtkModelMenuItemClass *class)
   ctk_widget_class_set_accessible_role (CTK_WIDGET_CLASS (class), ATK_ROLE_MENU_ITEM);
 }
 
-GtkWidget *
+CtkWidget *
 ctk_model_menu_item_new (void)
 {
   return g_object_new (CTK_TYPE_MODEL_MENU_ITEM, NULL);

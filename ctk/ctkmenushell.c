@@ -24,15 +24,15 @@
 
 /**
  * SECTION:ctkmenushell
- * @Title: GtkMenuShell
+ * @Title: CtkMenuShell
  * @Short_description: A base class for menu objects
  *
- * A #GtkMenuShell is the abstract base class used to derive the
- * #GtkMenu and #GtkMenuBar subclasses.
+ * A #CtkMenuShell is the abstract base class used to derive the
+ * #CtkMenu and #CtkMenuBar subclasses.
  *
- * A #GtkMenuShell is a container of #GtkMenuItem objects arranged
+ * A #CtkMenuShell is a container of #CtkMenuItem objects arranged
  * in a list which can be navigated, selected, and activated by the
- * user to perform application functions. A #GtkMenuItem can have a
+ * user to perform application functions. A #CtkMenuItem can have a
  * submenu associated with it, allowing for nested hierarchical menus.
  *
  * # Terminology
@@ -117,74 +117,74 @@ static void ctk_menu_shell_get_property      (GObject           *object,
                                               guint              prop_id,
                                               GValue            *value,
                                               GParamSpec        *pspec);
-static void ctk_menu_shell_realize           (GtkWidget         *widget);
+static void ctk_menu_shell_realize           (CtkWidget         *widget);
 static void ctk_menu_shell_finalize          (GObject           *object);
 static void ctk_menu_shell_dispose           (GObject           *object);
-static gint ctk_menu_shell_button_press      (GtkWidget         *widget,
+static gint ctk_menu_shell_button_press      (CtkWidget         *widget,
                                               GdkEventButton    *event);
-static gint ctk_menu_shell_button_release    (GtkWidget         *widget,
+static gint ctk_menu_shell_button_release    (CtkWidget         *widget,
                                               GdkEventButton    *event);
-static gint ctk_menu_shell_key_press         (GtkWidget         *widget,
+static gint ctk_menu_shell_key_press         (CtkWidget         *widget,
                                               GdkEventKey       *event);
-static gint ctk_menu_shell_enter_notify      (GtkWidget         *widget,
+static gint ctk_menu_shell_enter_notify      (CtkWidget         *widget,
                                               GdkEventCrossing  *event);
-static gint ctk_menu_shell_leave_notify      (GtkWidget         *widget,
+static gint ctk_menu_shell_leave_notify      (CtkWidget         *widget,
                                               GdkEventCrossing  *event);
-static void ctk_menu_shell_screen_changed    (GtkWidget         *widget,
+static void ctk_menu_shell_screen_changed    (CtkWidget         *widget,
                                               GdkScreen         *previous_screen);
-static gboolean ctk_menu_shell_grab_broken       (GtkWidget         *widget,
+static gboolean ctk_menu_shell_grab_broken       (CtkWidget         *widget,
                                               GdkEventGrabBroken *event);
-static void ctk_menu_shell_add               (GtkContainer      *container,
-                                              GtkWidget         *widget);
-static void ctk_menu_shell_remove            (GtkContainer      *container,
-                                              GtkWidget         *widget);
-static void ctk_menu_shell_forall            (GtkContainer      *container,
+static void ctk_menu_shell_add               (CtkContainer      *container,
+                                              CtkWidget         *widget);
+static void ctk_menu_shell_remove            (CtkContainer      *container,
+                                              CtkWidget         *widget);
+static void ctk_menu_shell_forall            (CtkContainer      *container,
                                               gboolean           include_internals,
-                                              GtkCallback        callback,
+                                              CtkCallback        callback,
                                               gpointer           callback_data);
-static void ctk_menu_shell_real_insert       (GtkMenuShell *menu_shell,
-                                              GtkWidget    *child,
+static void ctk_menu_shell_real_insert       (CtkMenuShell *menu_shell,
+                                              CtkWidget    *child,
                                               gint          position);
-static void ctk_real_menu_shell_deactivate   (GtkMenuShell      *menu_shell);
-static gint ctk_menu_shell_is_item           (GtkMenuShell      *menu_shell,
-                                              GtkWidget         *child);
-static GtkWidget *ctk_menu_shell_get_item    (GtkMenuShell      *menu_shell,
+static void ctk_real_menu_shell_deactivate   (CtkMenuShell      *menu_shell);
+static gint ctk_menu_shell_is_item           (CtkMenuShell      *menu_shell,
+                                              CtkWidget         *child);
+static CtkWidget *ctk_menu_shell_get_item    (CtkMenuShell      *menu_shell,
                                               GdkEvent          *event);
-static GType    ctk_menu_shell_child_type  (GtkContainer      *container);
-static void ctk_menu_shell_real_select_item  (GtkMenuShell      *menu_shell,
-                                              GtkWidget         *menu_item);
-static gboolean ctk_menu_shell_select_submenu_first (GtkMenuShell   *menu_shell); 
+static GType    ctk_menu_shell_child_type  (CtkContainer      *container);
+static void ctk_menu_shell_real_select_item  (CtkMenuShell      *menu_shell,
+                                              CtkWidget         *menu_item);
+static gboolean ctk_menu_shell_select_submenu_first (CtkMenuShell   *menu_shell); 
 
-static void ctk_real_menu_shell_move_current (GtkMenuShell      *menu_shell,
-                                              GtkMenuDirectionType direction);
-static void ctk_real_menu_shell_activate_current (GtkMenuShell      *menu_shell,
+static void ctk_real_menu_shell_move_current (CtkMenuShell      *menu_shell,
+                                              CtkMenuDirectionType direction);
+static void ctk_real_menu_shell_activate_current (CtkMenuShell      *menu_shell,
                                                   gboolean           force_hide);
-static void ctk_real_menu_shell_cancel           (GtkMenuShell      *menu_shell);
-static void ctk_real_menu_shell_cycle_focus      (GtkMenuShell      *menu_shell,
-                                                  GtkDirectionType   dir);
+static void ctk_real_menu_shell_cancel           (CtkMenuShell      *menu_shell);
+static void ctk_real_menu_shell_cycle_focus      (CtkMenuShell      *menu_shell,
+                                                  CtkDirectionType   dir);
 
-static void     ctk_menu_shell_reset_key_hash    (GtkMenuShell *menu_shell);
-static gboolean ctk_menu_shell_activate_mnemonic (GtkMenuShell *menu_shell,
+static void     ctk_menu_shell_reset_key_hash    (CtkMenuShell *menu_shell);
+static gboolean ctk_menu_shell_activate_mnemonic (CtkMenuShell *menu_shell,
                                                   GdkEventKey  *event);
-static gboolean ctk_menu_shell_real_move_selected (GtkMenuShell  *menu_shell, 
+static gboolean ctk_menu_shell_real_move_selected (CtkMenuShell  *menu_shell, 
                                                    gint           distance);
 
 static guint menu_shell_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkMenuShell, ctk_menu_shell, CTK_TYPE_CONTAINER)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CtkMenuShell, ctk_menu_shell, CTK_TYPE_CONTAINER)
 
 static void
-ctk_menu_shell_class_init (GtkMenuShellClass *klass)
+ctk_menu_shell_class_init (CtkMenuShellClass *klass)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
-  GtkContainerClass *container_class;
+  CtkWidgetClass *widget_class;
+  CtkContainerClass *container_class;
 
-  GtkBindingSet *binding_set;
+  CtkBindingSet *binding_set;
 
   object_class = (GObjectClass*) klass;
-  widget_class = (GtkWidgetClass*) klass;
-  container_class = (GtkContainerClass*) klass;
+  widget_class = (CtkWidgetClass*) klass;
+  container_class = (CtkContainerClass*) klass;
 
   object_class->set_property = ctk_menu_shell_set_property;
   object_class->get_property = ctk_menu_shell_get_property;
@@ -216,7 +216,7 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
   klass->move_selected = ctk_menu_shell_real_move_selected;
 
   /**
-   * GtkMenuShell::deactivate:
+   * CtkMenuShell::deactivate:
    * @menushell: the object which received the signal
    *
    * This signal is emitted when a menu shell is deactivated.
@@ -225,13 +225,13 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
     g_signal_new (I_("deactivate"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkMenuShellClass, deactivate),
+                  G_STRUCT_OFFSET (CtkMenuShellClass, deactivate),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkMenuShell::selection-done:
+   * CtkMenuShell::selection-done:
    * @menushell: the object which received the signal
    *
    * This signal is emitted when a selection has been
@@ -241,13 +241,13 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
     g_signal_new (I_("selection-done"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkMenuShellClass, selection_done),
+                  G_STRUCT_OFFSET (CtkMenuShellClass, selection_done),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkMenuShell::move-current:
+   * CtkMenuShell::move-current:
    * @menushell: the object which received the signal
    * @direction: the direction to move
    *
@@ -258,14 +258,14 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
     g_signal_new (I_("move-current"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkMenuShellClass, move_current),
+                  G_STRUCT_OFFSET (CtkMenuShellClass, move_current),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
                   CTK_TYPE_MENU_DIRECTION_TYPE);
 
   /**
-   * GtkMenuShell::activate-current:
+   * CtkMenuShell::activate-current:
    * @menushell: the object which received the signal
    * @force_hide: if %TRUE, hide the menu after activating the menu item
    *
@@ -276,30 +276,30 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
     g_signal_new (I_("activate-current"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkMenuShellClass, activate_current),
+                  G_STRUCT_OFFSET (CtkMenuShellClass, activate_current),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
                   G_TYPE_BOOLEAN);
 
   /**
-   * GtkMenuShell::cancel:
+   * CtkMenuShell::cancel:
    * @menushell: the object which received the signal
    *
    * An action signal which cancels the selection within the menu shell.
-   * Causes the #GtkMenuShell::selection-done signal to be emitted.
+   * Causes the #CtkMenuShell::selection-done signal to be emitted.
    */
   menu_shell_signals[CANCEL] =
     g_signal_new (I_("cancel"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkMenuShellClass, cancel),
+                  G_STRUCT_OFFSET (CtkMenuShellClass, cancel),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkMenuShell::cycle-focus:
+   * CtkMenuShell::cycle-focus:
    * @menushell: the object which received the signal
    * @direction: the direction to cycle in
    *
@@ -317,7 +317,7 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
                                 CTK_TYPE_DIRECTION_TYPE);
 
   /**
-   * GtkMenuShell::move-selected:
+   * CtkMenuShell::move-selected:
    * @menu_shell: the object on which the signal is emitted
    * @distance: +1 to move to the next item, -1 to move to the previous
    *
@@ -332,24 +332,24 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
     g_signal_new (I_("move-selected"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkMenuShellClass, move_selected),
+                  G_STRUCT_OFFSET (CtkMenuShellClass, move_selected),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__INT,
                   G_TYPE_BOOLEAN, 1,
                   G_TYPE_INT);
 
   /**
-   * GtkMenuShell::insert:
+   * CtkMenuShell::insert:
    * @menu_shell: the object on which the signal is emitted
-   * @child: the #GtkMenuItem that is being inserted
+   * @child: the #CtkMenuItem that is being inserted
    * @position: the position at which the insert occurs
    *
-   * The ::insert signal is emitted when a new #GtkMenuItem is added to
-   * a #GtkMenuShell.  A separate signal is used instead of
-   * GtkContainer::add because of the need for an additional position
+   * The ::insert signal is emitted when a new #CtkMenuItem is added to
+   * a #CtkMenuShell.  A separate signal is used instead of
+   * CtkContainer::add because of the need for an additional position
    * parameter.
    *
-   * The inverse of this signal is the GtkContainer::removed signal.
+   * The inverse of this signal is the CtkContainer::removed signal.
    *
    * Since: 3.2
    **/
@@ -357,7 +357,7 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
     g_signal_new (I_("insert"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkMenuShellClass, insert),
+                  G_STRUCT_OFFSET (CtkMenuShellClass, insert),
                   NULL, NULL,
                   _ctk_marshal_VOID__OBJECT_INT,
                   G_TYPE_NONE, 2, CTK_TYPE_WIDGET, G_TYPE_INT);
@@ -405,7 +405,7 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
                                 CTK_TYPE_DIRECTION_TYPE, CTK_DIR_TAB_BACKWARD);
 
   /**
-   * GtkMenuShell:take-focus:
+   * CtkMenuShell:take-focus:
    *
    * A boolean that determines whether the menu and its submenus grab the
    * keyboard focus. See ctk_menu_shell_set_take_focus() and
@@ -425,13 +425,13 @@ ctk_menu_shell_class_init (GtkMenuShellClass *klass)
 }
 
 static GType
-ctk_menu_shell_child_type (GtkContainer *container)
+ctk_menu_shell_child_type (CtkContainer *container)
 {
   return CTK_TYPE_MENU_ITEM;
 }
 
 static void
-ctk_menu_shell_init (GtkMenuShell *menu_shell)
+ctk_menu_shell_init (CtkMenuShell *menu_shell)
 {
   menu_shell->priv = ctk_menu_shell_get_instance_private (menu_shell);
   menu_shell->priv->take_focus = TRUE;
@@ -443,7 +443,7 @@ ctk_menu_shell_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (object);
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (object);
 
   switch (prop_id)
     {
@@ -462,7 +462,7 @@ ctk_menu_shell_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (object);
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (object);
 
   switch (prop_id)
     {
@@ -478,8 +478,8 @@ ctk_menu_shell_get_property (GObject    *object,
 static void
 ctk_menu_shell_finalize (GObject *object)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (object);
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (object);
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (priv->mnemonic_hash)
     _ctk_mnemonic_hash_free (priv->mnemonic_hash);
@@ -493,7 +493,7 @@ ctk_menu_shell_finalize (GObject *object)
 static void
 ctk_menu_shell_dispose (GObject *object)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (object);
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (object);
 
   g_clear_pointer (&menu_shell->priv->tracker, ctk_menu_tracker_free);
   ctk_menu_shell_deactivate (menu_shell);
@@ -503,47 +503,47 @@ ctk_menu_shell_dispose (GObject *object)
 
 /**
  * ctk_menu_shell_append:
- * @menu_shell: a #GtkMenuShell
- * @child: (type Gtk.MenuItem): The #GtkMenuItem to add
+ * @menu_shell: a #CtkMenuShell
+ * @child: (type Ctk.MenuItem): The #CtkMenuItem to add
  *
- * Adds a new #GtkMenuItem to the end of the menu shell's
+ * Adds a new #CtkMenuItem to the end of the menu shell's
  * item list.
  */
 void
-ctk_menu_shell_append (GtkMenuShell *menu_shell,
-                       GtkWidget    *child)
+ctk_menu_shell_append (CtkMenuShell *menu_shell,
+                       CtkWidget    *child)
 {
   ctk_menu_shell_insert (menu_shell, child, -1);
 }
 
 /**
  * ctk_menu_shell_prepend:
- * @menu_shell: a #GtkMenuShell
- * @child: The #GtkMenuItem to add
+ * @menu_shell: a #CtkMenuShell
+ * @child: The #CtkMenuItem to add
  *
- * Adds a new #GtkMenuItem to the beginning of the menu shell's
+ * Adds a new #CtkMenuItem to the beginning of the menu shell's
  * item list.
  */
 void
-ctk_menu_shell_prepend (GtkMenuShell *menu_shell,
-                        GtkWidget    *child)
+ctk_menu_shell_prepend (CtkMenuShell *menu_shell,
+                        CtkWidget    *child)
 {
   ctk_menu_shell_insert (menu_shell, child, 0);
 }
 
 /**
  * ctk_menu_shell_insert:
- * @menu_shell: a #GtkMenuShell
- * @child: The #GtkMenuItem to add
+ * @menu_shell: a #CtkMenuShell
+ * @child: The #CtkMenuItem to add
  * @position: The position in the item list where @child
  *     is added. Positions are numbered from 0 to n-1
  *
- * Adds a new #GtkMenuItem to the menu shell’s item list
+ * Adds a new #CtkMenuItem to the menu shell’s item list
  * at the position indicated by @position.
  */
 void
-ctk_menu_shell_insert (GtkMenuShell *menu_shell,
-                       GtkWidget    *child,
+ctk_menu_shell_insert (CtkMenuShell *menu_shell,
+                       CtkWidget    *child,
                        gint          position)
 {
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
@@ -553,11 +553,11 @@ ctk_menu_shell_insert (GtkMenuShell *menu_shell,
 }
 
 static void
-ctk_menu_shell_real_insert (GtkMenuShell *menu_shell,
-                            GtkWidget    *child,
+ctk_menu_shell_real_insert (CtkMenuShell *menu_shell,
+                            CtkWidget    *child,
                             gint          position)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   priv->children = g_list_insert (priv->children, child, position);
 
@@ -566,7 +566,7 @@ ctk_menu_shell_real_insert (GtkMenuShell *menu_shell,
 
 /**
  * ctk_menu_shell_deactivate:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  *
  * Deactivates the menu shell.
  *
@@ -574,7 +574,7 @@ ctk_menu_shell_real_insert (GtkMenuShell *menu_shell,
  * from the screen.
  */
 void
-ctk_menu_shell_deactivate (GtkMenuShell *menu_shell)
+ctk_menu_shell_deactivate (CtkMenuShell *menu_shell)
 {
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
 
@@ -583,9 +583,9 @@ ctk_menu_shell_deactivate (GtkMenuShell *menu_shell)
 }
 
 static void
-ctk_menu_shell_realize (GtkWidget *widget)
+ctk_menu_shell_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -618,9 +618,9 @@ ctk_menu_shell_realize (GtkWidget *widget)
 }
 
 static void
-ctk_menu_shell_activate (GtkMenuShell *menu_shell)
+ctk_menu_shell_activate (CtkMenuShell *menu_shell)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (!priv->active)
     {
@@ -637,13 +637,13 @@ ctk_menu_shell_activate (GtkMenuShell *menu_shell)
 }
 
 static gint
-ctk_menu_shell_button_press (GtkWidget      *widget,
+ctk_menu_shell_button_press (CtkWidget      *widget,
                              GdkEventButton *event)
 {
-  GtkMenuShell *menu_shell;
-  GtkMenuShellPrivate *priv;
-  GtkWidget *menu_item;
-  GtkWidget *parent;
+  CtkMenuShell *menu_shell;
+  CtkMenuShellPrivate *priv;
+  CtkWidget *menu_item;
+  CtkWidget *parent;
 
   if (event->type != GDK_BUTTON_PRESS)
     return FALSE;
@@ -728,11 +728,11 @@ ctk_menu_shell_button_press (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_menu_shell_grab_broken (GtkWidget          *widget,
+ctk_menu_shell_grab_broken (CtkWidget          *widget,
                             GdkEventGrabBroken *event)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (priv->have_xgrab && event->grab_window == NULL)
     {
@@ -746,11 +746,11 @@ ctk_menu_shell_grab_broken (GtkWidget          *widget,
 }
 
 static gint
-ctk_menu_shell_button_release (GtkWidget      *widget,
+ctk_menu_shell_button_release (CtkWidget      *widget,
                                GdkEventButton *event)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (priv->parent_menu_shell &&
       (event->time - CTK_MENU_SHELL (priv->parent_menu_shell)->priv->activate_time) < MENU_SHELL_TIMEOUT)
@@ -766,7 +766,7 @@ ctk_menu_shell_button_release (GtkWidget      *widget,
 
   if (priv->active)
     {
-      GtkWidget *menu_item;
+      CtkWidget *menu_item;
       gboolean   deactivate = TRUE;
 
       if (priv->button && (event->button != priv->button))
@@ -784,7 +784,7 @@ ctk_menu_shell_button_release (GtkWidget      *widget,
           if (menu_item && (priv->active_menu_item == menu_item) &&
               _ctk_menu_item_is_selectable (menu_item))
             {
-              GtkWidget *submenu = CTK_MENU_ITEM (menu_item)->priv->submenu;
+              CtkWidget *submenu = CTK_MENU_ITEM (menu_item)->priv->submenu;
 
               if (submenu == NULL)
                 {
@@ -818,7 +818,7 @@ ctk_menu_shell_button_release (GtkWidget      *widget,
                   /* Only close the submenu on click if we opened the
                    * menu explicitly (usec_since_popup == 0) or
                    * enough time has passed since it was opened by
-                   * GtkMenuItem's timeout (usec_since_popup > delay).
+                   * CtkMenuItem's timeout (usec_since_popup > delay).
                    */
                   if (!priv->activated_submenu &&
                       (usec_since_popup == 0 ||
@@ -881,22 +881,22 @@ ctk_menu_shell_button_release (GtkWidget      *widget,
 }
 
 void
-_ctk_menu_shell_set_keyboard_mode (GtkMenuShell *menu_shell,
+_ctk_menu_shell_set_keyboard_mode (CtkMenuShell *menu_shell,
                                    gboolean      keyboard_mode)
 {
   menu_shell->priv->keyboard_mode = keyboard_mode;
 }
 
 gboolean
-_ctk_menu_shell_get_keyboard_mode (GtkMenuShell *menu_shell)
+_ctk_menu_shell_get_keyboard_mode (CtkMenuShell *menu_shell)
 {
   return menu_shell->priv->keyboard_mode;
 }
 
 void
-_ctk_menu_shell_update_mnemonics (GtkMenuShell *menu_shell)
+_ctk_menu_shell_update_mnemonics (CtkMenuShell *menu_shell)
 {
-  GtkMenuShell *target;
+  CtkMenuShell *target;
   gboolean found;
   gboolean mnemonics_visible;
 
@@ -904,8 +904,8 @@ _ctk_menu_shell_update_mnemonics (GtkMenuShell *menu_shell)
   found = FALSE;
   while (target)
     {
-      GtkMenuShellPrivate *priv = target->priv;
-      GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (target));
+      CtkMenuShellPrivate *priv = target->priv;
+      CtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (target));
 
       /* The idea with keyboard mode is that once you start using
        * the keyboard to navigate the menus, we show mnemonics
@@ -949,11 +949,11 @@ _ctk_menu_shell_update_mnemonics (GtkMenuShell *menu_shell)
 }
 
 static gint
-ctk_menu_shell_key_press (GtkWidget   *widget,
+ctk_menu_shell_key_press (CtkWidget   *widget,
                           GdkEventKey *event)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
+  CtkMenuShellPrivate *priv = menu_shell->priv;
   gboolean enable_mnemonics;
 
   priv->keyboard_mode = TRUE;
@@ -976,11 +976,11 @@ ctk_menu_shell_key_press (GtkWidget   *widget,
 }
 
 static gint
-ctk_menu_shell_enter_notify (GtkWidget        *widget,
+ctk_menu_shell_enter_notify (CtkWidget        *widget,
                              GdkEventCrossing *event)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (event->mode == GDK_CROSSING_CTK_GRAB ||
       event->mode == GDK_CROSSING_CTK_UNGRAB ||
@@ -989,8 +989,8 @@ ctk_menu_shell_enter_notify (GtkWidget        *widget,
 
   if (priv->active)
     {
-      GtkWidget *menu_item;
-      GtkWidget *parent;
+      CtkWidget *menu_item;
+      CtkWidget *parent;
 
       menu_item = ctk_get_event_widget ((GdkEvent*) event);
 
@@ -1051,7 +1051,7 @@ ctk_menu_shell_enter_notify (GtkWidget        *widget,
 }
 
 static gint
-ctk_menu_shell_leave_notify (GtkWidget        *widget,
+ctk_menu_shell_leave_notify (CtkWidget        *widget,
                              GdkEventCrossing *event)
 {
   if (event->mode == GDK_CROSSING_CTK_GRAB ||
@@ -1061,10 +1061,10 @@ ctk_menu_shell_leave_notify (GtkWidget        *widget,
 
   if (ctk_widget_get_visible (widget))
     {
-      GtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
-      GtkMenuShellPrivate *priv = menu_shell->priv;
-      GtkWidget *event_widget = ctk_get_event_widget ((GdkEvent*) event);
-      GtkMenuItem *menu_item;
+      CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
+      CtkMenuShellPrivate *priv = menu_shell->priv;
+      CtkWidget *event_widget = ctk_get_event_widget ((GdkEvent*) event);
+      CtkMenuItem *menu_item;
 
       if (!event_widget || !CTK_IS_MENU_ITEM (event_widget))
         return TRUE;
@@ -1096,25 +1096,25 @@ ctk_menu_shell_leave_notify (GtkWidget        *widget,
 }
 
 static void
-ctk_menu_shell_screen_changed (GtkWidget *widget,
+ctk_menu_shell_screen_changed (CtkWidget *widget,
                                GdkScreen *previous_screen)
 {
   ctk_menu_shell_reset_key_hash (CTK_MENU_SHELL (widget));
 }
 
 static void
-ctk_menu_shell_add (GtkContainer *container,
-                    GtkWidget    *widget)
+ctk_menu_shell_add (CtkContainer *container,
+                    CtkWidget    *widget)
 {
   ctk_menu_shell_append (CTK_MENU_SHELL (container), widget);
 }
 
 static void
-ctk_menu_shell_remove (GtkContainer *container,
-                       GtkWidget    *widget)
+ctk_menu_shell_remove (CtkContainer *container,
+                       CtkWidget    *widget)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (container);
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (container);
+  CtkMenuShellPrivate *priv = menu_shell->priv;
   gint was_visible;
 
   was_visible = ctk_widget_get_visible (widget);
@@ -1136,13 +1136,13 @@ ctk_menu_shell_remove (GtkContainer *container,
 }
 
 static void
-ctk_menu_shell_forall (GtkContainer *container,
+ctk_menu_shell_forall (CtkContainer *container,
                        gboolean      include_internals,
-                       GtkCallback   callback,
+                       CtkCallback   callback,
                        gpointer      callback_data)
 {
-  GtkMenuShell *menu_shell = CTK_MENU_SHELL (container);
-  GtkWidget *child;
+  CtkMenuShell *menu_shell = CTK_MENU_SHELL (container);
+  CtkWidget *child;
   GList *children;
 
   children = menu_shell->priv->children;
@@ -1157,9 +1157,9 @@ ctk_menu_shell_forall (GtkContainer *container,
 
 
 static void
-ctk_real_menu_shell_deactivate (GtkMenuShell *menu_shell)
+ctk_real_menu_shell_deactivate (CtkMenuShell *menu_shell)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (priv->active)
     {
@@ -1192,10 +1192,10 @@ ctk_real_menu_shell_deactivate (GtkMenuShell *menu_shell)
 }
 
 static gint
-ctk_menu_shell_is_item (GtkMenuShell *menu_shell,
-                        GtkWidget    *child)
+ctk_menu_shell_is_item (CtkMenuShell *menu_shell,
+                        CtkWidget    *child)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   g_return_val_if_fail (CTK_IS_MENU_SHELL (menu_shell), FALSE);
   g_return_val_if_fail (child != NULL, FALSE);
@@ -1203,7 +1203,7 @@ ctk_menu_shell_is_item (GtkMenuShell *menu_shell,
   parent = ctk_widget_get_parent (child);
   while (CTK_IS_MENU_SHELL (parent))
     {
-      if (parent == (GtkWidget*) menu_shell)
+      if (parent == (CtkWidget*) menu_shell)
         return TRUE;
       parent = CTK_MENU_SHELL (parent)->priv->parent_menu_shell;
     }
@@ -1211,11 +1211,11 @@ ctk_menu_shell_is_item (GtkMenuShell *menu_shell,
   return FALSE;
 }
 
-static GtkWidget*
-ctk_menu_shell_get_item (GtkMenuShell *menu_shell,
+static CtkWidget*
+ctk_menu_shell_get_item (CtkMenuShell *menu_shell,
                          GdkEvent     *event)
 {
-  GtkWidget *menu_item;
+  CtkWidget *menu_item;
 
   menu_item = ctk_get_event_widget ((GdkEvent*) event);
 
@@ -1232,17 +1232,17 @@ ctk_menu_shell_get_item (GtkMenuShell *menu_shell,
 
 /**
  * ctk_menu_shell_select_item:
- * @menu_shell: a #GtkMenuShell
- * @menu_item: The #GtkMenuItem to select
+ * @menu_shell: a #CtkMenuShell
+ * @menu_item: The #CtkMenuItem to select
  *
  * Selects the menu item from the menu shell.
  */
 void
-ctk_menu_shell_select_item (GtkMenuShell *menu_shell,
-                            GtkWidget    *menu_item)
+ctk_menu_shell_select_item (CtkMenuShell *menu_shell,
+                            CtkWidget    *menu_item)
 {
-  GtkMenuShellPrivate *priv;
-  GtkMenuShellClass *class;
+  CtkMenuShellPrivate *priv;
+  CtkMenuShellClass *class;
 
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
   g_return_if_fail (CTK_IS_MENU_ITEM (menu_item));
@@ -1256,15 +1256,15 @@ ctk_menu_shell_select_item (GtkMenuShell *menu_shell,
     class->select_item (menu_shell, menu_item);
 }
 
-void _ctk_menu_item_set_placement (GtkMenuItem         *menu_item,
-                                   GtkSubmenuPlacement  placement);
+void _ctk_menu_item_set_placement (CtkMenuItem         *menu_item,
+                                   CtkSubmenuPlacement  placement);
 
 static void
-ctk_menu_shell_real_select_item (GtkMenuShell *menu_shell,
-                                 GtkWidget    *menu_item)
+ctk_menu_shell_real_select_item (CtkMenuShell *menu_shell,
+                                 CtkWidget    *menu_item)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
-  GtkPackDirection pack_dir = PACK_DIRECTION (menu_shell);
+  CtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkPackDirection pack_dir = PACK_DIRECTION (menu_shell);
 
   if (priv->active_menu_item)
     {
@@ -1301,15 +1301,15 @@ ctk_menu_shell_real_select_item (GtkMenuShell *menu_shell,
 
 /**
  * ctk_menu_shell_deselect:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  *
  * Deselects the currently selected item from the menu shell,
  * if any.
  */
 void
-ctk_menu_shell_deselect (GtkMenuShell *menu_shell)
+ctk_menu_shell_deselect (CtkMenuShell *menu_shell)
 {
-  GtkMenuShellPrivate *priv;
+  CtkMenuShellPrivate *priv;
 
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
 
@@ -1325,16 +1325,16 @@ ctk_menu_shell_deselect (GtkMenuShell *menu_shell)
 
 /**
  * ctk_menu_shell_activate_item:
- * @menu_shell: a #GtkMenuShell
- * @menu_item: the #GtkMenuItem to activate
+ * @menu_shell: a #CtkMenuShell
+ * @menu_item: the #CtkMenuItem to activate
  * @force_deactivate: if %TRUE, force the deactivation of the
  *     menu shell after the menu item is activated
  *
  * Activates the menu item within the menu shell.
  */
 void
-ctk_menu_shell_activate_item (GtkMenuShell *menu_shell,
-                              GtkWidget    *menu_item,
+ctk_menu_shell_activate_item (CtkMenuShell *menu_shell,
+                              CtkWidget    *menu_item,
                               gboolean      force_deactivate)
 {
   GSList *slist, *shells = NULL;
@@ -1351,7 +1351,7 @@ ctk_menu_shell_activate_item (GtkMenuShell *menu_shell,
 
   if (deactivate)
     {
-      GtkMenuShell *parent_menu_shell = menu_shell;
+      CtkMenuShell *parent_menu_shell = menu_shell;
 
       do
         {
@@ -1359,7 +1359,7 @@ ctk_menu_shell_activate_item (GtkMenuShell *menu_shell,
 
           g_object_ref (parent_menu_shell);
           shells = g_slist_prepend (shells, parent_menu_shell);
-          parent_menu_shell = (GtkMenuShell*) parent_menu_shell->priv->parent_menu_shell;
+          parent_menu_shell = (CtkMenuShell*) parent_menu_shell->priv->parent_menu_shell;
         }
       while (parent_menu_shell);
       shells = g_slist_reverse (shells);
@@ -1376,7 +1376,7 @@ ctk_menu_shell_activate_item (GtkMenuShell *menu_shell,
 
   for (slist = shells; slist; slist = slist->next)
     {
-      GtkMenuShell *parent_menu_shell = slist->data;
+      CtkMenuShell *parent_menu_shell = slist->data;
 
       g_signal_emit (parent_menu_shell, menu_shell_signals[SELECTION_DONE], 0);
       parent_menu_shell->priv->selection_done_coming_soon = FALSE;
@@ -1390,10 +1390,10 @@ ctk_menu_shell_activate_item (GtkMenuShell *menu_shell,
 
 /* Distance should be +/- 1 */
 static gboolean
-ctk_menu_shell_real_move_selected (GtkMenuShell  *menu_shell,
+ctk_menu_shell_real_move_selected (CtkMenuShell  *menu_shell,
                                    gint           distance)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (priv->active_menu_item)
     {
@@ -1434,7 +1434,7 @@ ctk_menu_shell_real_move_selected (GtkMenuShell  *menu_shell,
 
 /* Distance should be +/- 1 */
 static void
-ctk_menu_shell_move_selected (GtkMenuShell  *menu_shell,
+ctk_menu_shell_move_selected (CtkMenuShell  *menu_shell,
                               gint           distance)
 {
   gboolean handled = FALSE;
@@ -1445,7 +1445,7 @@ ctk_menu_shell_move_selected (GtkMenuShell  *menu_shell,
 
 /**
  * ctk_menu_shell_select_first:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  * @search_sensitive: if %TRUE, search for the first selectable
  *                    menu item, otherwise select nothing if
  *                    the first item isn’t sensitive. This
@@ -1459,11 +1459,11 @@ ctk_menu_shell_move_selected (GtkMenuShell  *menu_shell,
  * Since: 2.2
  */
 void
-ctk_menu_shell_select_first (GtkMenuShell *menu_shell,
+ctk_menu_shell_select_first (CtkMenuShell *menu_shell,
                              gboolean      search_sensitive)
 {
-  GtkMenuShellPrivate *priv;
-  GtkWidget *to_select = NULL;
+  CtkMenuShellPrivate *priv;
+  CtkWidget *to_select = NULL;
   GList *tmp_list;
 
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
@@ -1473,7 +1473,7 @@ ctk_menu_shell_select_first (GtkMenuShell *menu_shell,
   tmp_list = priv->children;
   while (tmp_list)
     {
-      GtkWidget *child = tmp_list->data;
+      CtkWidget *child = tmp_list->data;
 
       if ((!search_sensitive && ctk_widget_get_visible (child)) ||
           _ctk_menu_item_is_selectable (child))
@@ -1497,17 +1497,17 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 void
-_ctk_menu_shell_select_last (GtkMenuShell *menu_shell,
+_ctk_menu_shell_select_last (CtkMenuShell *menu_shell,
                              gboolean      search_sensitive)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
-  GtkWidget *to_select = NULL;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkWidget *to_select = NULL;
   GList *tmp_list;
 
   tmp_list = g_list_last (priv->children);
   while (tmp_list)
     {
-      GtkWidget *child = tmp_list->data;
+      CtkWidget *child = tmp_list->data;
 
       if ((!search_sensitive && ctk_widget_get_visible (child)) ||
           _ctk_menu_item_is_selectable (child))
@@ -1530,10 +1530,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static gboolean
-ctk_menu_shell_select_submenu_first (GtkMenuShell *menu_shell)
+ctk_menu_shell_select_submenu_first (CtkMenuShell *menu_shell)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
-  GtkMenuItem *menu_item;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuItem *menu_item;
 
   if (priv->active_menu_item == NULL)
     return FALSE;
@@ -1572,11 +1572,11 @@ ctk_menu_shell_select_submenu_first (GtkMenuShell *menu_shell)
  * when text direction and packing direction are both left-to-right.
  */
 static void
-ctk_real_menu_shell_move_current (GtkMenuShell         *menu_shell,
-                                  GtkMenuDirectionType  direction)
+ctk_real_menu_shell_move_current (CtkMenuShell         *menu_shell,
+                                  CtkMenuDirectionType  direction)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
-  GtkMenuShell *parent_menu_shell = NULL;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShell *parent_menu_shell = NULL;
   gboolean had_selection;
 
   priv->in_unselectable_item = FALSE;
@@ -1611,7 +1611,7 @@ ctk_real_menu_shell_move_current (GtkMenuShell         *menu_shell,
                _ctk_menu_item_is_selectable (priv->active_menu_item) &&
                CTK_MENU_ITEM (priv->active_menu_item)->priv->submenu)
         {
-          GtkMenuShell *submenu = CTK_MENU_SHELL (CTK_MENU_ITEM (priv->active_menu_item)->priv->submenu);
+          CtkMenuShell *submenu = CTK_MENU_SHELL (CTK_MENU_ITEM (priv->active_menu_item)->priv->submenu);
 
           if (CTK_MENU_SHELL_GET_CLASS (menu_shell)->submenu_placement !=
               CTK_MENU_SHELL_GET_CLASS (submenu)->submenu_placement)
@@ -1666,10 +1666,10 @@ ctk_real_menu_shell_move_current (GtkMenuShell         *menu_shell,
  * it if menu_item->klass->hide_on_activate is true.
  */
 static void
-ctk_real_menu_shell_activate_current (GtkMenuShell *menu_shell,
+ctk_real_menu_shell_activate_current (CtkMenuShell *menu_shell,
                                       gboolean      force_hide)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (priv->active_menu_item &&
       _ctk_menu_item_is_selectable (priv->active_menu_item))
@@ -1684,7 +1684,7 @@ ctk_real_menu_shell_activate_current (GtkMenuShell *menu_shell,
 }
 
 static void
-ctk_real_menu_shell_cancel (GtkMenuShell *menu_shell)
+ctk_real_menu_shell_cancel (CtkMenuShell *menu_shell)
 {
   /* Unset the active menu item so ctk_menu_popdown() doesn't see it. */
   ctk_menu_shell_deselect (menu_shell);
@@ -1693,8 +1693,8 @@ ctk_real_menu_shell_cancel (GtkMenuShell *menu_shell)
 }
 
 static void
-ctk_real_menu_shell_cycle_focus (GtkMenuShell     *menu_shell,
-                                 GtkDirectionType  dir)
+ctk_real_menu_shell_cycle_focus (CtkMenuShell     *menu_shell,
+                                 CtkDirectionType  dir)
 {
   while (menu_shell && !CTK_IS_MENU_BAR (menu_shell))
     {
@@ -1709,9 +1709,9 @@ ctk_real_menu_shell_cycle_focus (GtkMenuShell     *menu_shell,
 }
 
 gint
-_ctk_menu_shell_get_popup_delay (GtkMenuShell *menu_shell)
+_ctk_menu_shell_get_popup_delay (CtkMenuShell *menu_shell)
 {
-  GtkMenuShellClass *klass = CTK_MENU_SHELL_GET_CLASS (menu_shell);
+  CtkMenuShellClass *klass = CTK_MENU_SHELL_GET_CLASS (menu_shell);
   
   if (klass->get_popup_delay)
     {
@@ -1725,25 +1725,25 @@ _ctk_menu_shell_get_popup_delay (GtkMenuShell *menu_shell)
 
 /**
  * ctk_menu_shell_cancel:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  *
  * Cancels the selection within the menu shell.
  *
  * Since: 2.4
  */
 void
-ctk_menu_shell_cancel (GtkMenuShell *menu_shell)
+ctk_menu_shell_cancel (CtkMenuShell *menu_shell)
 {
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
 
   g_signal_emit (menu_shell, menu_shell_signals[CANCEL], 0);
 }
 
-static GtkMnemonicHash *
-ctk_menu_shell_get_mnemonic_hash (GtkMenuShell *menu_shell,
+static CtkMnemonicHash *
+ctk_menu_shell_get_mnemonic_hash (CtkMenuShell *menu_shell,
                                   gboolean      create)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (!priv->mnemonic_hash && create)
     priv->mnemonic_hash = _ctk_mnemonic_hash_new ();
@@ -1756,21 +1756,21 @@ menu_shell_add_mnemonic_foreach (guint     keyval,
                                  GSList   *targets,
                                  gpointer  data)
 {
-  GtkKeyHash *key_hash = data;
+  CtkKeyHash *key_hash = data;
 
   _ctk_key_hash_add_entry (key_hash, keyval, 0, GUINT_TO_POINTER (keyval));
 }
 
-static GtkKeyHash *
-ctk_menu_shell_get_key_hash (GtkMenuShell *menu_shell,
+static CtkKeyHash *
+ctk_menu_shell_get_key_hash (CtkMenuShell *menu_shell,
                              gboolean      create)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
-  GtkWidget *widget = CTK_WIDGET (menu_shell);
+  CtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkWidget *widget = CTK_WIDGET (menu_shell);
 
   if (!priv->key_hash && create && ctk_widget_has_screen (widget))
     {
-      GtkMnemonicHash *mnemonic_hash = ctk_menu_shell_get_mnemonic_hash (menu_shell, FALSE);
+      CtkMnemonicHash *mnemonic_hash = ctk_menu_shell_get_mnemonic_hash (menu_shell, FALSE);
       GdkScreen *screen = ctk_widget_get_screen (widget);
       GdkKeymap *keymap = gdk_keymap_get_for_display (gdk_screen_get_display (screen));
 
@@ -1788,9 +1788,9 @@ ctk_menu_shell_get_key_hash (GtkMenuShell *menu_shell,
 }
 
 static void
-ctk_menu_shell_reset_key_hash (GtkMenuShell *menu_shell)
+ctk_menu_shell_reset_key_hash (CtkMenuShell *menu_shell)
 {
-  GtkMenuShellPrivate *priv = menu_shell->priv;
+  CtkMenuShellPrivate *priv = menu_shell->priv;
 
   if (priv->key_hash)
     {
@@ -1800,11 +1800,11 @@ ctk_menu_shell_reset_key_hash (GtkMenuShell *menu_shell)
 }
 
 static gboolean
-ctk_menu_shell_activate_mnemonic (GtkMenuShell *menu_shell,
+ctk_menu_shell_activate_mnemonic (CtkMenuShell *menu_shell,
                                   GdkEventKey  *event)
 {
-  GtkMnemonicHash *mnemonic_hash;
-  GtkKeyHash *key_hash;
+  CtkMnemonicHash *mnemonic_hash;
+  CtkKeyHash *key_hash;
   GSList *entries;
   gboolean result = FALSE;
 
@@ -1833,9 +1833,9 @@ ctk_menu_shell_activate_mnemonic (GtkMenuShell *menu_shell,
 }
 
 void
-_ctk_menu_shell_add_mnemonic (GtkMenuShell *menu_shell,
+_ctk_menu_shell_add_mnemonic (CtkMenuShell *menu_shell,
                               guint         keyval,
-                              GtkWidget    *target)
+                              CtkWidget    *target)
 {
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
   g_return_if_fail (CTK_IS_WIDGET (target));
@@ -1846,9 +1846,9 @@ _ctk_menu_shell_add_mnemonic (GtkMenuShell *menu_shell,
 }
 
 void
-_ctk_menu_shell_remove_mnemonic (GtkMenuShell *menu_shell,
+_ctk_menu_shell_remove_mnemonic (CtkMenuShell *menu_shell,
                                  guint         keyval,
-                                 GtkWidget    *target)
+                                 CtkWidget    *target)
 {
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
   g_return_if_fail (CTK_IS_WIDGET (target));
@@ -1859,10 +1859,10 @@ _ctk_menu_shell_remove_mnemonic (GtkMenuShell *menu_shell,
 }
 
 void
-_ctk_menu_shell_set_grab_device (GtkMenuShell *menu_shell,
+_ctk_menu_shell_set_grab_device (CtkMenuShell *menu_shell,
                                  GdkDevice    *device)
 {
-  GtkMenuShellPrivate *priv;
+  CtkMenuShellPrivate *priv;
 
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
   g_return_if_fail (device == NULL || GDK_IS_DEVICE (device));
@@ -1878,7 +1878,7 @@ _ctk_menu_shell_set_grab_device (GtkMenuShell *menu_shell,
 }
 
 GdkDevice *
-_ctk_menu_shell_get_grab_device (GtkMenuShell *menu_shell)
+_ctk_menu_shell_get_grab_device (CtkMenuShell *menu_shell)
 {
   g_return_val_if_fail (CTK_IS_MENU_SHELL (menu_shell), NULL);
 
@@ -1887,7 +1887,7 @@ _ctk_menu_shell_get_grab_device (GtkMenuShell *menu_shell)
 
 /**
  * ctk_menu_shell_get_take_focus:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  *
  * Returns %TRUE if the menu shell will take the keyboard focus on popup.
  *
@@ -1896,7 +1896,7 @@ _ctk_menu_shell_get_grab_device (GtkMenuShell *menu_shell)
  * Since: 2.8
  */
 gboolean
-ctk_menu_shell_get_take_focus (GtkMenuShell *menu_shell)
+ctk_menu_shell_get_take_focus (CtkMenuShell *menu_shell)
 {
   g_return_val_if_fail (CTK_IS_MENU_SHELL (menu_shell), FALSE);
 
@@ -1905,7 +1905,7 @@ ctk_menu_shell_get_take_focus (GtkMenuShell *menu_shell)
 
 /**
  * ctk_menu_shell_set_take_focus:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  * @take_focus: %TRUE if the menu shell should take the keyboard
  *     focus on popup
  *
@@ -1939,10 +1939,10 @@ ctk_menu_shell_get_take_focus (GtkMenuShell *menu_shell)
  * Since: 2.8
  */
 void
-ctk_menu_shell_set_take_focus (GtkMenuShell *menu_shell,
+ctk_menu_shell_set_take_focus (CtkMenuShell *menu_shell,
                                gboolean      take_focus)
 {
-  GtkMenuShellPrivate *priv;
+  CtkMenuShellPrivate *priv;
 
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
 
@@ -1958,7 +1958,7 @@ ctk_menu_shell_set_take_focus (GtkMenuShell *menu_shell,
 
 /**
  * ctk_menu_shell_get_selected_item:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  *
  * Gets the currently selected item.
  *
@@ -1966,8 +1966,8 @@ ctk_menu_shell_set_take_focus (GtkMenuShell *menu_shell,
  *
  * Since: 3.0
  */
-GtkWidget *
-ctk_menu_shell_get_selected_item (GtkMenuShell *menu_shell)
+CtkWidget *
+ctk_menu_shell_get_selected_item (CtkMenuShell *menu_shell)
 {
   g_return_val_if_fail (CTK_IS_MENU_SHELL (menu_shell), NULL);
 
@@ -1976,19 +1976,19 @@ ctk_menu_shell_get_selected_item (GtkMenuShell *menu_shell)
 
 /**
  * ctk_menu_shell_get_parent_shell:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  *
  * Gets the parent menu shell.
  *
- * The parent menu shell of a submenu is the #GtkMenu or #GtkMenuBar
+ * The parent menu shell of a submenu is the #CtkMenu or #CtkMenuBar
  * from which it was opened up.
  *
- * Returns: (transfer none): the parent #GtkMenuShell
+ * Returns: (transfer none): the parent #CtkMenuShell
  *
  * Since: 3.0
  */
-GtkWidget *
-ctk_menu_shell_get_parent_shell (GtkMenuShell *menu_shell)
+CtkWidget *
+ctk_menu_shell_get_parent_shell (CtkMenuShell *menu_shell)
 {
   g_return_val_if_fail (CTK_IS_MENU_SHELL (menu_shell), NULL);
 
@@ -1996,38 +1996,38 @@ ctk_menu_shell_get_parent_shell (GtkMenuShell *menu_shell)
 }
 
 static void
-ctk_menu_shell_item_activate (GtkMenuItem *menuitem,
+ctk_menu_shell_item_activate (CtkMenuItem *menuitem,
                               gpointer     user_data)
 {
-  GtkMenuTrackerItem *item = user_data;
+  CtkMenuTrackerItem *item = user_data;
 
   ctk_menu_tracker_item_activated (item);
 }
 
 static void
-ctk_menu_shell_submenu_shown (GtkWidget *submenu,
+ctk_menu_shell_submenu_shown (CtkWidget *submenu,
                               gpointer   user_data)
 {
-  GtkMenuTrackerItem *item = user_data;
+  CtkMenuTrackerItem *item = user_data;
 
   ctk_menu_tracker_item_request_submenu_shown (item, TRUE);
 }
 
 static void
-ctk_menu_shell_submenu_hidden (GtkWidget *submenu,
+ctk_menu_shell_submenu_hidden (CtkWidget *submenu,
                                gpointer   user_data)
 {
-  GtkMenuTrackerItem *item = user_data;
+  CtkMenuTrackerItem *item = user_data;
 
   if (!CTK_MENU_SHELL (submenu)->priv->selection_done_coming_soon)
     ctk_menu_tracker_item_request_submenu_shown (item, FALSE);
 }
 
 static void
-ctk_menu_shell_submenu_selection_done (GtkWidget *submenu,
+ctk_menu_shell_submenu_selection_done (CtkWidget *submenu,
                                        gpointer   user_data)
 {
-  GtkMenuTrackerItem *item = user_data;
+  CtkMenuTrackerItem *item = user_data;
 
   if (CTK_MENU_SHELL (submenu)->priv->selection_done_coming_soon)
     ctk_menu_tracker_item_request_submenu_shown (item, FALSE);
@@ -2037,8 +2037,8 @@ static void
 ctk_menu_shell_tracker_remove_func (gint     position,
                                     gpointer user_data)
 {
-  GtkMenuShell *menu_shell = user_data;
-  GtkWidget *child;
+  CtkMenuShell *menu_shell = user_data;
+  CtkWidget *child;
 
   child = g_list_nth_data (menu_shell->priv->children, position);
   /* We use destroy here because in the case of an item with a submenu,
@@ -2049,12 +2049,12 @@ ctk_menu_shell_tracker_remove_func (gint     position,
 }
 
 static void
-ctk_menu_shell_tracker_insert_func (GtkMenuTrackerItem *item,
+ctk_menu_shell_tracker_insert_func (CtkMenuTrackerItem *item,
                                     gint                position,
                                     gpointer            user_data)
 {
-  GtkMenuShell *menu_shell = user_data;
-  GtkWidget *widget;
+  CtkMenuShell *menu_shell = user_data;
+  CtkWidget *widget;
 
   if (ctk_menu_tracker_item_get_is_separator (item))
     {
@@ -2067,7 +2067,7 @@ ctk_menu_shell_tracker_insert_func (GtkMenuTrackerItem *item,
        *
        * Note: we only do this once, and we only do it if the label is
        * non-NULL because even setting a NULL label on the separator
-       * will be enough to create a GtkLabel and add it, changing the
+       * will be enough to create a CtkLabel and add it, changing the
        * appearance in the process.
        */
 
@@ -2079,7 +2079,7 @@ ctk_menu_shell_tracker_insert_func (GtkMenuTrackerItem *item,
     }
   else if (ctk_menu_tracker_item_get_has_link (item, G_MENU_LINK_SUBMENU))
     {
-      GtkMenuShell *submenu;
+      CtkMenuShell *submenu;
 
       widget = ctk_model_menu_item_new ();
       g_object_bind_property (item, "label", widget, "text", G_BINDING_SYNC_CREATE);
@@ -2120,9 +2120,9 @@ ctk_menu_shell_tracker_insert_func (GtkMenuTrackerItem *item,
     {
       widget = ctk_model_menu_item_new ();
 
-      /* We bind to "text" instead of "label" because GtkModelMenuItem
+      /* We bind to "text" instead of "label" because CtkModelMenuItem
        * uses this property (along with "icon") to control its child
-       * widget.  Once this is merged into GtkMenuItem we can go back to
+       * widget.  Once this is merged into CtkMenuItem we can go back to
        * using "label".
        */
       g_object_bind_property (item, "label", widget, "text", G_BINDING_SYNC_CREATE);
@@ -2137,21 +2137,21 @@ ctk_menu_shell_tracker_insert_func (GtkMenuTrackerItem *item,
     }
 
   /* TODO: drop this when we have bindings that ref the source */
-  g_object_set_data_full (G_OBJECT (widget), "GtkMenuTrackerItem", g_object_ref (item), g_object_unref);
+  g_object_set_data_full (G_OBJECT (widget), "CtkMenuTrackerItem", g_object_ref (item), g_object_unref);
 
   ctk_menu_shell_insert (menu_shell, widget, position);
 }
 
 /**
  * ctk_menu_shell_bind_model:
- * @menu_shell: a #GtkMenuShell
+ * @menu_shell: a #CtkMenuShell
  * @model: (allow-none): the #GMenuModel to bind to or %NULL to remove
  *   binding
  * @action_namespace: (allow-none): the namespace for actions in @model
  * @with_separators: %TRUE if toplevel items in @shell should have
  *   separators between them
  *
- * Establishes a binding between a #GtkMenuShell and a #GMenuModel.
+ * Establishes a binding between a #CtkMenuShell and a #GMenuModel.
  *
  * The contents of @shell are removed and then refilled with menu items
  * according to @model.  When @model changes, @shell is updated.
@@ -2170,10 +2170,10 @@ ctk_menu_shell_tracker_insert_func (GtkMenuTrackerItem *item,
  * mentioned and @action_namespace is “app” then the effective action
  * name is “app.quit”.
  *
- * This function uses #GtkActionable to define the action name and
+ * This function uses #CtkActionable to define the action name and
  * target values on the created menu items.  If you want to use an
  * action group other than “app” and “win”, or if you want to use a
- * #GtkMenuShell outside of a #GtkApplicationWindow, then you will need
+ * #CtkMenuShell outside of a #CtkApplicationWindow, then you will need
  * to attach your own action group to the widget hierarchy using
  * ctk_widget_insert_action_group().  As an example, if you created a
  * group with a “quit” action and inserted it with the name “mygroup”
@@ -2188,12 +2188,12 @@ ctk_menu_shell_tracker_insert_func (GtkMenuTrackerItem *item,
  * Since: 3.6
  */
 void
-ctk_menu_shell_bind_model (GtkMenuShell *menu_shell,
+ctk_menu_shell_bind_model (CtkMenuShell *menu_shell,
                            GMenuModel   *model,
                            const gchar  *action_namespace,
                            gboolean      with_separators)
 {
-  GtkActionMuxer *muxer;
+  CtkActionMuxer *muxer;
 
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
   g_return_if_fail (model == NULL || G_IS_MENU_MODEL (model));

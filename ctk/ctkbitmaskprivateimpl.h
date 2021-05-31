@@ -19,30 +19,30 @@
  */
 
 
-static inline GtkBitmask *
+static inline CtkBitmask *
 _ctk_bitmask_new (void)
 {
   return _ctk_bitmask_from_bits (0);
 }
 
-static inline GtkBitmask *
-_ctk_bitmask_copy (const GtkBitmask *mask)
+static inline CtkBitmask *
+_ctk_bitmask_copy (const CtkBitmask *mask)
 {
   if (_ctk_bitmask_is_allocated (mask))
     return _ctk_allocated_bitmask_copy (mask);
   else
-    return (GtkBitmask *) mask;
+    return (CtkBitmask *) mask;
 }
 
 static inline void
-_ctk_bitmask_free (GtkBitmask *mask)
+_ctk_bitmask_free (CtkBitmask *mask)
 {
   if (_ctk_bitmask_is_allocated (mask))
     _ctk_allocated_bitmask_free (mask);
 }
 
 static inline char *
-_ctk_bitmask_to_string (const GtkBitmask *mask)
+_ctk_bitmask_to_string (const CtkBitmask *mask)
 {
   GString *string;
   
@@ -52,22 +52,22 @@ _ctk_bitmask_to_string (const GtkBitmask *mask)
 }
 
 static inline void
-_ctk_bitmask_print (const GtkBitmask *mask,
+_ctk_bitmask_print (const CtkBitmask *mask,
                     GString          *string)
 {
   _ctk_allocated_bitmask_print (mask, string);
 }
 
-static inline GtkBitmask *
-_ctk_bitmask_intersect (GtkBitmask       *mask,
-                        const GtkBitmask *other)
+static inline CtkBitmask *
+_ctk_bitmask_intersect (CtkBitmask       *mask,
+                        const CtkBitmask *other)
 {
   return _ctk_allocated_bitmask_intersect (mask, other);
 }
 
-static inline GtkBitmask *
-_ctk_bitmask_union (GtkBitmask       *mask,
-                    const GtkBitmask *other)
+static inline CtkBitmask *
+_ctk_bitmask_union (CtkBitmask       *mask,
+                    const CtkBitmask *other)
 {
   if (_ctk_bitmask_is_allocated (mask) ||
       _ctk_bitmask_is_allocated (other))
@@ -77,15 +77,15 @@ _ctk_bitmask_union (GtkBitmask       *mask,
                                    | _ctk_bitmask_to_bits (other));
 }
 
-static inline GtkBitmask *
-_ctk_bitmask_subtract (GtkBitmask       *mask,
-                       const GtkBitmask *other)
+static inline CtkBitmask *
+_ctk_bitmask_subtract (CtkBitmask       *mask,
+                       const CtkBitmask *other)
 {
   return _ctk_allocated_bitmask_subtract (mask, other);
 }
 
 static inline gboolean
-_ctk_bitmask_get (const GtkBitmask *mask,
+_ctk_bitmask_get (const CtkBitmask *mask,
                   guint             index_)
 {
   if (_ctk_bitmask_is_allocated (mask))
@@ -96,8 +96,8 @@ _ctk_bitmask_get (const GtkBitmask *mask,
            : FALSE;
 }
 
-static inline GtkBitmask *
-_ctk_bitmask_set (GtkBitmask *mask,
+static inline CtkBitmask *
+_ctk_bitmask_set (CtkBitmask *mask,
                   guint       index_,
                   gboolean    value)
 {
@@ -119,8 +119,8 @@ _ctk_bitmask_set (GtkBitmask *mask,
     return mask;
 }
 
-static inline GtkBitmask *
-_ctk_bitmask_invert_range (GtkBitmask *mask,
+static inline CtkBitmask *
+_ctk_bitmask_invert_range (CtkBitmask *mask,
                            guint       start,
                            guint       end)
 {
@@ -136,14 +136,14 @@ _ctk_bitmask_invert_range (GtkBitmask *mask,
 }
 
 static inline gboolean
-_ctk_bitmask_is_empty (const GtkBitmask *mask)
+_ctk_bitmask_is_empty (const CtkBitmask *mask)
 {
   return mask == _ctk_bitmask_from_bits (0);
 }
 
 static inline gboolean
-_ctk_bitmask_equals (const GtkBitmask *mask,
-                     const GtkBitmask *other)
+_ctk_bitmask_equals (const CtkBitmask *mask,
+                     const CtkBitmask *other)
 {
   if (mask == other)
     return TRUE;
@@ -156,8 +156,8 @@ _ctk_bitmask_equals (const GtkBitmask *mask,
 }
 
 static inline gboolean
-_ctk_bitmask_intersects (const GtkBitmask *mask,
-                         const GtkBitmask *other)
+_ctk_bitmask_intersects (const CtkBitmask *mask,
+                         const CtkBitmask *other)
 {
   if (_ctk_bitmask_is_allocated (mask) ||
       _ctk_bitmask_is_allocated (other))

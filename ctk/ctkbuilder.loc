@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <locatingRules>
-  <locatingRule name="GtkBuilder" pattern="*.ui">
+  <locatingRule name="CtkBuilder" pattern="*.ui">
     <documentRule localName="interface" target="ctkbuilder.its"/>
   </locatingRule>
 </locatingRules>

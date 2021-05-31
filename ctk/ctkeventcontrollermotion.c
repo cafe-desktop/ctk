@@ -20,10 +20,10 @@
 /**
  * SECTION:ctkeventcontrollermotion
  * @Short_description: Event controller for motion events
- * @Title: GtkEventControllerMotion
- * @See_also: #GtkEventController
+ * @Title: CtkEventControllerMotion
+ * @See_also: #CtkEventController
  *
- * #GtkEventControllerMotion is an event controller meant for situations
+ * #CtkEventControllerMotion is an event controller meant for situations
  * where you need to track the position of the pointer.
  *
  * This object was added in 3.24.
@@ -38,14 +38,14 @@
 #include "ctktypebuiltins.h"
 #include "ctkmarshalers.h"
 
-struct _GtkEventControllerMotion
+struct _CtkEventControllerMotion
 {
-  GtkEventController parent_instance;
+  CtkEventController parent_instance;
 };
 
-struct _GtkEventControllerMotionClass
+struct _CtkEventControllerMotionClass
 {
-  GtkEventControllerClass parent_class;
+  CtkEventControllerClass parent_class;
 };
 
 enum {
@@ -57,16 +57,16 @@ enum {
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE (GtkEventControllerMotion, ctk_event_controller_motion, CTK_TYPE_EVENT_CONTROLLER)
+G_DEFINE_TYPE (CtkEventControllerMotion, ctk_event_controller_motion, CTK_TYPE_EVENT_CONTROLLER)
 
 static void
-get_coords (GtkWidget      *widget,
+get_coords (CtkWidget      *widget,
             const GdkEvent *event,
             double         *x,
             double         *y)
 {
   GdkWindow *window, *ancestor;
-  GtkAllocation alloc;
+  CtkAllocation alloc;
 
   ctk_widget_get_allocation (widget, &alloc);
   gdk_event_get_coords (event, x, y);
@@ -88,11 +88,11 @@ get_coords (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_event_controller_motion_handle_event (GtkEventController *controller,
+ctk_event_controller_motion_handle_event (CtkEventController *controller,
                                           const GdkEvent     *event)
 {
-  GtkEventControllerClass *parent_class;
-  GtkWidget *widget;
+  CtkEventControllerClass *parent_class;
+  CtkWidget *widget;
   GdkEventType type;
 
   widget = ctk_event_controller_get_widget (controller);
@@ -121,14 +121,14 @@ ctk_event_controller_motion_handle_event (GtkEventController *controller,
 }
 
 static void
-ctk_event_controller_motion_class_init (GtkEventControllerMotionClass *klass)
+ctk_event_controller_motion_class_init (CtkEventControllerMotionClass *klass)
 {
-  GtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
+  CtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
 
   controller_class->handle_event = ctk_event_controller_motion_handle_event;
 
   /**
-   * GtkEventControllerMotion::enter:
+   * CtkEventControllerMotion::enter:
    * @controller: The object that received the signal
    * @x: the x coordinate
    * @y: the y coordinate
@@ -147,7 +147,7 @@ ctk_event_controller_motion_class_init (GtkEventControllerMotionClass *klass)
                               _ctk_marshal_VOID__DOUBLE_DOUBLEv);
 
   /**
-   * GtkEventControllerMotion::leave:
+   * CtkEventControllerMotion::leave:
    * @controller: The object that received the signal
    *
    * Signals that pointer has left the widget.
@@ -161,7 +161,7 @@ ctk_event_controller_motion_class_init (GtkEventControllerMotionClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkEventControllerMotion::motion:
+   * CtkEventControllerMotion::motion:
    * @controller: The object that received the signal
    * @x: the x coordinate
    * @y: the y coordinate
@@ -181,23 +181,23 @@ ctk_event_controller_motion_class_init (GtkEventControllerMotionClass *klass)
 }
 
 static void
-ctk_event_controller_motion_init (GtkEventControllerMotion *motion)
+ctk_event_controller_motion_init (CtkEventControllerMotion *motion)
 {
 }
 
 /**
  * ctk_event_controller_motion_new:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Creates a new event controller that will handle motion events
  * for the given @widget.
  *
- * Returns: a new #GtkEventControllerMotion
+ * Returns: a new #CtkEventControllerMotion
  *
  * Since: 3.24
  **/
-GtkEventController *
-ctk_event_controller_motion_new (GtkWidget *widget)
+CtkEventController *
+ctk_event_controller_motion_new (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 

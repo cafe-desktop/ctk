@@ -29,28 +29,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_GESTURE_PAN         (ctk_gesture_pan_get_type ())
-#define CTK_GESTURE_PAN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_PAN, GtkGesturePan))
-#define CTK_GESTURE_PAN_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_PAN, GtkGesturePanClass))
+#define CTK_GESTURE_PAN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_PAN, CtkGesturePan))
+#define CTK_GESTURE_PAN_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_PAN, CtkGesturePanClass))
 #define CTK_IS_GESTURE_PAN(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_PAN))
 #define CTK_IS_GESTURE_PAN_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_PAN))
-#define CTK_GESTURE_PAN_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_PAN, GtkGesturePanClass))
+#define CTK_GESTURE_PAN_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_PAN, CtkGesturePanClass))
 
-typedef struct _GtkGesturePan GtkGesturePan;
-typedef struct _GtkGesturePanClass GtkGesturePanClass;
+typedef struct _CtkGesturePan CtkGesturePan;
+typedef struct _CtkGesturePanClass CtkGesturePanClass;
 
 GDK_AVAILABLE_IN_3_14
 GType             ctk_gesture_pan_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture *      ctk_gesture_pan_new             (GtkWidget      *widget,
-                                                   GtkOrientation  orientation);
+CtkGesture *      ctk_gesture_pan_new             (CtkWidget      *widget,
+                                                   CtkOrientation  orientation);
 
 GDK_AVAILABLE_IN_3_14
-GtkOrientation    ctk_gesture_pan_get_orientation (GtkGesturePan  *gesture);
+CtkOrientation    ctk_gesture_pan_get_orientation (CtkGesturePan  *gesture);
 
 GDK_AVAILABLE_IN_3_14
-void              ctk_gesture_pan_set_orientation (GtkGesturePan  *gesture,
-                                                   GtkOrientation  orientation);
+void              ctk_gesture_pan_set_orientation (CtkGesturePan  *gesture,
+                                                   CtkOrientation  orientation);
 
 
 G_END_DECLS

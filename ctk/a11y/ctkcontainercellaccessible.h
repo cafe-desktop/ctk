@@ -28,41 +28,41 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CONTAINER_CELL_ACCESSIBLE            (ctk_container_cell_accessible_get_type ())
-#define CTK_CONTAINER_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CONTAINER_CELL_ACCESSIBLE, GtkContainerCellAccessible))
-#define CTK_CONTAINER_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CONTAINER_CELL_ACCESSIBLE, GtkContainerCellAccessibleClass))
+#define CTK_CONTAINER_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CONTAINER_CELL_ACCESSIBLE, CtkContainerCellAccessible))
+#define CTK_CONTAINER_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CONTAINER_CELL_ACCESSIBLE, CtkContainerCellAccessibleClass))
 #define CTK_IS_CONTAINER_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CONTAINER_CELL_ACCESSIBLE))
 #define CTK_IS_CONTAINER_CELL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CONTAINER_CELL_ACCESSIBLE))
-#define CTK_CONTAINER_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CONTAINER_CELL_ACCESSIBLE, GtkContainerCellAccessibleClass))
+#define CTK_CONTAINER_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CONTAINER_CELL_ACCESSIBLE, CtkContainerCellAccessibleClass))
 
-typedef struct _GtkContainerCellAccessible        GtkContainerCellAccessible;
-typedef struct _GtkContainerCellAccessibleClass   GtkContainerCellAccessibleClass;
-typedef struct _GtkContainerCellAccessiblePrivate GtkContainerCellAccessiblePrivate;
+typedef struct _CtkContainerCellAccessible        CtkContainerCellAccessible;
+typedef struct _CtkContainerCellAccessibleClass   CtkContainerCellAccessibleClass;
+typedef struct _CtkContainerCellAccessiblePrivate CtkContainerCellAccessiblePrivate;
 
-struct _GtkContainerCellAccessible
+struct _CtkContainerCellAccessible
 {
-  GtkCellAccessible parent;
+  CtkCellAccessible parent;
 
-  GtkContainerCellAccessiblePrivate *priv;
+  CtkContainerCellAccessiblePrivate *priv;
 };
 
-struct _GtkContainerCellAccessibleClass
+struct _CtkContainerCellAccessibleClass
 {
-  GtkCellAccessibleClass parent_class;
+  CtkCellAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL
 GType                       ctk_container_cell_accessible_get_type     (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkContainerCellAccessible *ctk_container_cell_accessible_new          (void);
+CtkContainerCellAccessible *ctk_container_cell_accessible_new          (void);
 GDK_AVAILABLE_IN_ALL
-void                        ctk_container_cell_accessible_add_child    (GtkContainerCellAccessible *container,
-                                                                        GtkCellAccessible          *child);
+void                        ctk_container_cell_accessible_add_child    (CtkContainerCellAccessible *container,
+                                                                        CtkCellAccessible          *child);
 GDK_AVAILABLE_IN_ALL
-void                        ctk_container_cell_accessible_remove_child (GtkContainerCellAccessible *container,
-                                                                        GtkCellAccessible          *child);
+void                        ctk_container_cell_accessible_remove_child (CtkContainerCellAccessible *container,
+                                                                        CtkCellAccessible          *child);
 GDK_AVAILABLE_IN_ALL
-GList                      *ctk_container_cell_accessible_get_children  (GtkContainerCellAccessible *container);
+GList                      *ctk_container_cell_accessible_get_children  (CtkContainerCellAccessible *container);
 
 G_END_DECLS
 

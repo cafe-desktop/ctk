@@ -33,7 +33,7 @@ enum
 };
 
 static void
-print_hello (GtkWidget *w,
+print_hello (CtkWidget *w,
 	     guint      action)
 {
   switch (action)
@@ -57,7 +57,7 @@ print_hello (GtkWidget *w,
 }
 
 static void
-remove_buttons (GtkWidget *widget, GtkWidget *other_button)
+remove_buttons (CtkWidget *widget, CtkWidget *other_button)
 {
   ctk_widget_destroy (other_button);
   ctk_widget_destroy (widget);
@@ -66,7 +66,7 @@ remove_buttons (GtkWidget *widget, GtkWidget *other_button)
 static gboolean
 blink_cb (gpointer data)
 {
-  GtkWidget *widget = data;
+  CtkWidget *widget = data;
 
   ctk_widget_show (widget);
   g_object_set_data (G_OBJECT (widget), "blink", NULL);
@@ -75,8 +75,8 @@ blink_cb (gpointer data)
 }
 
 static void
-blink (GtkWidget *widget,
-       GtkWidget *window)
+blink (CtkWidget *widget,
+       CtkWidget *window)
 {
   guint blink_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (window), "blink"));
   
@@ -90,7 +90,7 @@ blink (GtkWidget *widget,
 }
 
 static void
-local_destroy (GtkWidget *window)
+local_destroy (CtkWidget *window)
 {
   guint blink_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (window), "blink"));
   if (blink_timeout)
@@ -98,17 +98,17 @@ local_destroy (GtkWidget *window)
 }
 
 static void
-remote_destroy (GtkWidget *window)
+remote_destroy (CtkWidget *window)
 {
   local_destroy (window);
   ctk_main_quit ();
 }
 
 static void
-add_buttons (GtkWidget *widget, GtkWidget *box)
+add_buttons (CtkWidget *widget, CtkWidget *box)
 {
-  GtkWidget *add_button;
-  GtkWidget *remove_button;
+  CtkWidget *add_button;
+  CtkWidget *remove_button;
 
   add_button = ctk_button_new_with_mnemonic ("_Add");
   ctk_box_pack_start (CTK_BOX (box), add_button, TRUE, TRUE, 0);
@@ -127,11 +127,11 @@ add_buttons (GtkWidget *widget, GtkWidget *box)
 		    add_button);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_combo (void)
 {
-  GtkComboBoxText *combo;
-  GtkWidget *entry;
+  CtkComboBoxText *combo;
+  CtkWidget *entry;
 
   combo = CTK_COMBO_BOX_TEXT (ctk_combo_box_text_new_with_entry ());
 
@@ -153,13 +153,13 @@ create_combo (void)
   return CTK_WIDGET (combo);
 }
 
-static GtkWidget *
-create_menubar (GtkWindow *window)
+static CtkWidget *
+create_menubar (CtkWindow *window)
 {
-  GtkAccelGroup *accel_group=NULL;
-  GtkWidget *menubar;
-  GtkWidget *menuitem;
-  GtkWidget *menu;
+  CtkAccelGroup *accel_group=NULL;
+  CtkWidget *menubar;
+  CtkWidget *menuitem;
+  CtkWidget *menu;
 
   accel_group = ctk_accel_group_new ();
   ctk_window_add_accel_group (window, accel_group);
@@ -193,10 +193,10 @@ create_menubar (GtkWindow *window)
   return menubar;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_combo_box (void)
 {
-  GtkComboBoxText *combo_box = CTK_COMBO_BOX_TEXT (ctk_combo_box_text_new ());
+  CtkComboBoxText *combo_box = CTK_COMBO_BOX_TEXT (ctk_combo_box_text_new ());
 
   ctk_combo_box_text_append_text (combo_box, "This");
   ctk_combo_box_text_append_text (combo_box, "Is");
@@ -206,12 +206,12 @@ create_combo_box (void)
   return CTK_WIDGET (combo_box);
 }
 
-static GtkWidget *
-create_content (GtkWindow *window, gboolean local)
+static CtkWidget *
+create_content (CtkWindow *window, gboolean local)
 {
-  GtkWidget *vbox;
-  GtkWidget *button;
-  GtkWidget *frame;
+  CtkWidget *vbox;
+  CtkWidget *button;
+  CtkWidget *frame;
 
   frame = ctk_frame_new (local? "Local" : "Remote");
   ctk_container_set_border_width (CTK_CONTAINER (frame), 3);
@@ -256,8 +256,8 @@ guint32
 create_child_plug (guint32  xid,
 		   gboolean local)
 {
-  GtkWidget *window;
-  GtkWidget *content;
+  CtkWidget *window;
+  CtkWidget *content;
 
   window = ctk_plug_new (xid);
 

@@ -505,7 +505,7 @@ get_window_list (GdkDisplay *display,
 
 /* ---------------------------------------------------------------------------------------------------- */
 
-struct _GtkMountOperationLookupContext
+struct _CtkMountOperationLookupContext
 {
   /* Hash from pid (gint) -> XID (gint)
    *
@@ -516,15 +516,15 @@ struct _GtkMountOperationLookupContext
   GdkDisplay *display;
 };
 
-GtkMountOperationLookupContext *
+CtkMountOperationLookupContext *
 _ctk_mount_operation_lookup_context_get (GdkDisplay *display)
 {
-  GtkMountOperationLookupContext *context;
+  CtkMountOperationLookupContext *context;
   Window *mapping;
   gint mapping_length;
   gint n;
 
-  context = g_new0 (GtkMountOperationLookupContext, 1);
+  context = g_new0 (CtkMountOperationLookupContext, 1);
 
   context->pid_to_window = g_hash_table_new (g_direct_hash, g_direct_equal);
   context->display = display;
@@ -558,7 +558,7 @@ _ctk_mount_operation_lookup_context_get (GdkDisplay *display)
 }
 
 void
-_ctk_mount_operation_lookup_context_free (GtkMountOperationLookupContext *context)
+_ctk_mount_operation_lookup_context_free (CtkMountOperationLookupContext *context)
 {
   g_hash_table_unref (context->pid_to_window);
   g_free (context);
@@ -834,7 +834,7 @@ pid_get_command_line (GPid pid)
 /* ---------------------------------------------------------------------------------------------------- */
 
 static gchar *
-get_name_for_window_with_pid (GtkMountOperationLookupContext *context,
+get_name_for_window_with_pid (CtkMountOperationLookupContext *context,
                               GPid                            pid)
 {
   Window window;
@@ -898,7 +898,7 @@ get_name_for_window_with_pid (GtkMountOperationLookupContext *context,
 /* ---------------------------------------------------------------------------------------------------- */
 
 static GdkPixbuf *
-get_pixbuf_for_window_with_pid (GtkMountOperationLookupContext *context,
+get_pixbuf_for_window_with_pid (CtkMountOperationLookupContext *context,
                                 GPid                            pid,
                                 gint                            size_pixels)
 {
@@ -960,7 +960,7 @@ static const gchar *well_known_commands[] =
 };
 
 gboolean
-_ctk_mount_operation_lookup_info (GtkMountOperationLookupContext *context,
+_ctk_mount_operation_lookup_info (CtkMountOperationLookupContext *context,
                                   GPid                            pid,
                                   gint                            size_pixels,
                                   gchar                         **out_name,

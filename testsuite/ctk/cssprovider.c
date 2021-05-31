@@ -1,8 +1,8 @@
 #include <ctk/ctk.h>
 
 static void
-assert_section_is_not_null (GtkCssProvider *provider,
-                            GtkCssSection  *section,
+assert_section_is_not_null (CtkCssProvider *provider,
+                            CtkCssSection  *section,
                             const GError   *error,
                             gpointer        unused)
 {
@@ -12,7 +12,7 @@ assert_section_is_not_null (GtkCssProvider *provider,
 static void
 test_section_in_load_from_data (void)
 {
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
 
   provider = ctk_css_provider_new ();
   g_signal_connect (provider, "parsing-error",
@@ -24,16 +24,16 @@ test_section_in_load_from_data (void)
 static void
 test_section_in_style_property (void)
 {
-  GtkCssProvider *provider;
-  GtkWidgetClass *widget_class;
-  GtkWidgetPath *path;
+  CtkCssProvider *provider;
+  CtkWidgetClass *widget_class;
+  CtkWidgetPath *path;
   GParamSpec *pspec;
   GValue value = G_VALUE_INIT;
 
   provider = ctk_css_provider_new ();
   g_signal_connect (provider, "parsing-error",
                     G_CALLBACK (assert_section_is_not_null), NULL);
-  ctk_css_provider_load_from_data (provider, "* { -GtkWidget-interior-focus: random garbage goes here; }", -1, NULL);
+  ctk_css_provider_load_from_data (provider, "* { -CtkWidget-interior-focus: random garbage goes here; }", -1, NULL);
 
   widget_class = g_type_class_ref (CTK_TYPE_WIDGET);
   pspec = ctk_widget_class_find_style_property (widget_class, "interior-focus");
@@ -53,7 +53,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 static void
 test_section_load_nonexisting_file (void)
 {
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
 
   provider = ctk_css_provider_new ();
   g_signal_connect (provider, "parsing-error",

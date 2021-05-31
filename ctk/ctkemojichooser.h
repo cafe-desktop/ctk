@@ -26,16 +26,16 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EMOJI_CHOOSER                 (ctk_emoji_chooser_get_type ())
-#define CTK_EMOJI_CHOOSER(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EMOJI_CHOOSER, GtkEmojiChooser))
-#define CTK_EMOJI_CHOOSER_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EMOJI_CHOOSER, GtkEmojiChooserClass))
+#define CTK_EMOJI_CHOOSER(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EMOJI_CHOOSER, CtkEmojiChooser))
+#define CTK_EMOJI_CHOOSER_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EMOJI_CHOOSER, CtkEmojiChooserClass))
 #define CTK_IS_EMOJI_CHOOSER(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_EMOJI_CHOOSER))
 #define CTK_IS_EMOJI_CHOOSER_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_EMOJI_CHOOSER))
-#define CTK_EMOJI_CHOOSER_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EMOJI_CHOOSER, GtkEmojiChooserClass))
+#define CTK_EMOJI_CHOOSER_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EMOJI_CHOOSER, CtkEmojiChooserClass))
 
-typedef struct _GtkEmojiChooser      GtkEmojiChooser;
-typedef struct _GtkEmojiChooserClass GtkEmojiChooserClass;
+typedef struct _CtkEmojiChooser      CtkEmojiChooser;
+typedef struct _CtkEmojiChooserClass CtkEmojiChooserClass;
 
 GType      ctk_emoji_chooser_get_type (void) G_GNUC_CONST;
-GtkWidget *ctk_emoji_chooser_new      (void);
+CtkWidget *ctk_emoji_chooser_new      (void);
 
 G_END_DECLS

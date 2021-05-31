@@ -8,7 +8,7 @@ and should work. It consists of three parts:
 
  II) A list of invariants about the states of the widgets. 
     (Throughout this document, we refer to the states of the
-     widgets by referring to the flags for GtkWidget)
+     widgets by referring to the flags for CtkWidget)
 
  III) Some notes about the ways that a widget changes states
 
@@ -40,10 +40,10 @@ Flag descriptions:
 I. Flags
 --------
 
-GtkObject:
+CtkObject:
 
 CTK_DESTROYED:
-	This flagged is set for a GtkObject right before its
+	This flagged is set for a CtkObject right before its
 	destruction code is executed. Its main use is the
 	prevention of multiple destruction invocations.
 	
@@ -57,11 +57,11 @@ CTK_RESERVED_2:
 	Reserved flags.
 
 
-GtkWidget, public flags:
+CtkWidget, public flags:
 
 CTK_TOPLEVEL:
-	Widgets without a real parent, as there are GtkWindows and
-	GtkMenus have this flag set throughout their lifetime.
+	Widgets without a real parent, as there are CtkWindows and
+	CtkMenus have this flag set throughout their lifetime.
 	Toplevel widgets always contain their own GdkWindow.
 	
 CTK_NO_WINDOW:
@@ -91,7 +91,7 @@ CTK_VISIBLE:
 CTK_CHILD_VISIBLE
         Set by ctk_widget_set_child_visible, and if FALSE indicates that 
         the widget should not be mapped even if the parent is mapped
-        and visible. Containers like GtkNotebook use this flag.
+        and visible. Containers like CtkNotebook use this flag.
         A private flag, not a public flag, so if you need to check
         this flag, you should call ctk_widget_get_child_visible().
         (Should be very rarely necessary.)
@@ -112,7 +112,7 @@ CTK_PARENT_SENSITIVE:
 
 CTK_CAN_FOCUS:
 	There are no directly corresponding functions for setting/unsetting
-	this flag, but it can be affected by the GtkWidget::has_focus argument
+	this flag, but it can be affected by the CtkWidget::has_focus argument
 	via ctk_widget_set_arg.
 	This flag determines whether a widget is able to handle focus grabs.
 
@@ -137,9 +137,9 @@ CTK_BASIC:
 	and those that don't. Subsequent parent<->child relation ships
 	of non `basic' widgets should be avoided. The checking for
 	this is currently not properly enforced in the code. For
-	example GtkButton is a non `basic' widget, that will therefore
-	disallow to act as a container for another GtkButton. Now the
-	gnit is, one can add a GtkHBox (which is a `basic' widget) to
+	example CtkButton is a non `basic' widget, that will therefore
+	disallow to act as a container for another CtkButton. Now the
+	gnit is, one can add a CtkHBox (which is a `basic' widget) to
 	the first button, and put the second into the box.
 
 CTK_RESERVED_3:
@@ -150,7 +150,7 @@ CTK_RC_STYLE:
 	had a style defined through the rc mechanism.
 
 
-GtkWidget, private flags:
+CtkWidget, private flags:
 
 CTK_USER_STYLE:
 	A widget is flagged to have a user style, once ctk_widget_set_style
@@ -159,7 +159,7 @@ CTK_USER_STYLE:
 	style assign from outside the toolkit.
 	
 CTK_RESIZE_PENDING:
-	First, this is only valid for GtkContainers.
+	First, this is only valid for CtkContainers.
 	[some of the code should move to ctkcontainer.c therefore]
 	Relies on CTK_WIDGET_REALIZED(widget)
 	[this is not really enforced throughout the code, but should
@@ -175,7 +175,7 @@ CTK_RESIZE_NEEDED:
 	 be. once this is done special checking in ctk_widget_real_destroy
 	 can be avoided]
 	Means: a widget has been added to the resize_widgets list of
-	its _toplevel_ container (keep this in mind for GtkViewport).
+	its _toplevel_ container (keep this in mind for CtkViewport).
 	Remark: this flag is also used internally by ctkwindow.c during
 	the evaluation of resizing worthy widgets.
 
@@ -488,7 +488,7 @@ It may not be completely obvious why this works. Note
 that parent_class is a static variable on a per-class
 basis. So say: we have
 
-  GtkFoo <- GtkBar <- GtkWidget <-GtkObject
+  CtkFoo <- CtkBar <- CtkWidget <-CtkObject
 
 And that Foo, Widget, and Object all have destructors, but
 not Bar.
@@ -497,4 +497,4 @@ Then ctk_foo_destroy will call ctk_widget_destroy (because
 it was not overridden in the Bar class structure) and
 ctk_widget_destroy will call ctk_object_destroy because
 the parent_class variable referenced by ctk_foo_destroy is the 
-static variable in ctkwidget.c: GtkObjectClass.
+static variable in ctkwidget.c: CtkObjectClass.

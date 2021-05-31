@@ -32,27 +32,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SPINNER           (ctk_spinner_get_type ())
-#define CTK_SPINNER(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SPINNER, GtkSpinner))
-#define CTK_SPINNER_CLASS(obj)     (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_SPINNER,  GtkSpinnerClass))
+#define CTK_SPINNER(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SPINNER, CtkSpinner))
+#define CTK_SPINNER_CLASS(obj)     (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_SPINNER,  CtkSpinnerClass))
 #define CTK_IS_SPINNER(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SPINNER))
 #define CTK_IS_SPINNER_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE ((obj), CTK_TYPE_SPINNER))
-#define CTK_SPINNER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SPINNER, GtkSpinnerClass))
+#define CTK_SPINNER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SPINNER, CtkSpinnerClass))
 
-typedef struct _GtkSpinner      GtkSpinner;
-typedef struct _GtkSpinnerClass GtkSpinnerClass;
-typedef struct _GtkSpinnerPrivate  GtkSpinnerPrivate;
+typedef struct _CtkSpinner      CtkSpinner;
+typedef struct _CtkSpinnerClass CtkSpinnerClass;
+typedef struct _CtkSpinnerPrivate  CtkSpinnerPrivate;
 
-struct _GtkSpinner
+struct _CtkSpinner
 {
-  GtkWidget parent;
+  CtkWidget parent;
 
   /*< private >*/
-  GtkSpinnerPrivate *priv;
+  CtkSpinnerPrivate *priv;
 };
 
-struct _GtkSpinnerClass
+struct _CtkSpinnerClass
 {
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -64,11 +64,11 @@ struct _GtkSpinnerClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_spinner_get_type  (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_spinner_new (void);
+CtkWidget *ctk_spinner_new (void);
 GDK_AVAILABLE_IN_ALL
-void       ctk_spinner_start      (GtkSpinner *spinner);
+void       ctk_spinner_start      (CtkSpinner *spinner);
 GDK_AVAILABLE_IN_ALL
-void       ctk_spinner_stop       (GtkSpinner *spinner);
+void       ctk_spinner_stop       (CtkSpinner *spinner);
 
 G_END_DECLS
 

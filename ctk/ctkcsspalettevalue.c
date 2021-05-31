@@ -22,42 +22,42 @@
 #include "ctkcsscolorvalueprivate.h"
 #include "ctkcssrgbavalueprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   GHashTable *colors;
 };
 
-static GtkCssValue *default_palette;
+static CtkCssValue *default_palette;
 
-static GtkCssValue *ctk_css_palette_value_new_empty (void);
+static CtkCssValue *ctk_css_palette_value_new_empty (void);
 
 static void
-ctk_css_palette_value_add_color (GtkCssValue *value,
+ctk_css_palette_value_add_color (CtkCssValue *value,
                                  const char  *name,
-                                 GtkCssValue *color)
+                                 CtkCssValue *color)
 {
   g_hash_table_insert (value->colors, g_strdup (name), color);
 }
 
 static void
-ctk_css_value_palette_free (GtkCssValue *value)
+ctk_css_value_palette_free (CtkCssValue *value)
 {
   g_hash_table_unref (value->colors);
 
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_palette_compute (GtkCssValue             *specified,
+static CtkCssValue *
+ctk_css_value_palette_compute (CtkCssValue             *specified,
                                guint                    property_id,
-                               GtkStyleProviderPrivate *provider,
-                               GtkCssStyle             *style,
-                               GtkCssStyle             *parent_style)
+                               CtkStyleProviderPrivate *provider,
+                               CtkCssStyle             *style,
+                               CtkCssStyle             *parent_style)
 {
   GHashTableIter iter;
   gpointer name, value;
-  GtkCssValue *computed_color;
-  GtkCssValue *result;
+  CtkCssValue *computed_color;
+  CtkCssValue *result;
   gboolean changes = FALSE;
 
   result = ctk_css_palette_value_new_empty ();
@@ -80,8 +80,8 @@ ctk_css_value_palette_compute (GtkCssValue             *specified,
 }
 
 static gboolean
-ctk_css_value_palette_equal (const GtkCssValue *value1,
-                             const GtkCssValue *value2)
+ctk_css_value_palette_equal (const CtkCssValue *value1,
+                             const CtkCssValue *value2)
 {
   gpointer name, color1, color2;
   GHashTableIter iter;
@@ -103,15 +103,15 @@ ctk_css_value_palette_equal (const GtkCssValue *value1,
   return TRUE;
 }
 
-static GtkCssValue *
-ctk_css_value_palette_transition (GtkCssValue *start,
-                                  GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_palette_transition (CtkCssValue *start,
+                                  CtkCssValue *end,
                                   guint        property_id,
                                   double       progress)
 {
   gpointer name, start_color, end_color;
   GHashTableIter iter;
-  GtkCssValue *result, *transition;
+  CtkCssValue *result, *transition;
 
   /* XXX: For colors that are only in start or end but not both,
    * we don't transition but just keep the value.
@@ -146,7 +146,7 @@ ctk_css_value_palette_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_palette_print (const GtkCssValue *value,
+ctk_css_value_palette_print (const CtkCssValue *value,
                              GString           *string)
 {
   GHashTableIter iter;
@@ -172,7 +172,7 @@ ctk_css_value_palette_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_PALETTE = {
+static const CtkCssValueClass CTK_CSS_VALUE_PALETTE = {
   ctk_css_value_palette_free,
   ctk_css_value_palette_compute,
   ctk_css_value_palette_equal,
@@ -180,12 +180,12 @@ static const GtkCssValueClass CTK_CSS_VALUE_PALETTE = {
   ctk_css_value_palette_print
 };
 
-static GtkCssValue *
+static CtkCssValue *
 ctk_css_palette_value_new_empty (void)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_PALETTE);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_PALETTE);
   result->colors = g_hash_table_new_full (g_str_hash, g_str_equal,
                                           g_free,
                                           (GDestroyNotify) _ctk_css_value_unref);
@@ -193,7 +193,7 @@ ctk_css_palette_value_new_empty (void)
   return result;
 }
 
-GtkCssValue *
+CtkCssValue *
 ctk_css_palette_value_new_default (void)
 {
   if (default_palette == NULL)
@@ -207,10 +207,10 @@ ctk_css_palette_value_new_default (void)
   return _ctk_css_value_ref (default_palette);
 }
 
-GtkCssValue *
-ctk_css_palette_value_parse (GtkCssParser *parser)
+CtkCssValue *
+ctk_css_palette_value_parse (CtkCssParser *parser)
 {
-  GtkCssValue *result, *color;
+  CtkCssValue *result, *color;
   char *ident;
 
   if (_ctk_css_parser_try (parser, "default", TRUE))
@@ -243,10 +243,10 @@ ctk_css_palette_value_parse (GtkCssParser *parser)
 }
 
 const GdkRGBA *
-ctk_css_palette_value_get_color (GtkCssValue *value,
+ctk_css_palette_value_get_color (CtkCssValue *value,
                                  const char  *name)
 {
-  GtkCssValue *color;
+  CtkCssValue *color;
 
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_PALETTE, NULL);
 

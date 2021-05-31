@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="label">_Combo:</property>
             <property name="use-underline">True</property>
@@ -15,23 +15,23 @@
           </object>
         </child>
         <child>
-          <object class="GtkComboBox" id="combo1">
+          <object class="CtkComboBox" id="combo1">
             <property name="visible">True</property>
           </object>
         </child>
         <child>
-          <object class="GtkComboBox" id="combo2">
+          <object class="CtkComboBox" id="combo2">
             <property name="visible">True</property>
             <property name="has-entry">True</property>
           </object>
         </child>
         <child>
-          <object class="GtkComboBoxText" id="combo3">
+          <object class="CtkComboBoxText" id="combo3">
             <property name="visible">True</property>
           </object>
         </child>
         <child>
-          <object class="GtkComboBoxText" id="combo4">
+          <object class="CtkComboBoxText" id="combo4">
             <property name="visible">True</property>
             <property name="has-entry">True</property>
           </object>

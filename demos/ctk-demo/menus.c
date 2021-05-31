@@ -1,21 +1,21 @@
 /* Menus
  *
  * There are several widgets involved in displaying menus. The
- * GtkMenuBar widget is a menu bar, which normally appears horizontally
+ * CtkMenuBar widget is a menu bar, which normally appears horizontally
  * at the top of an application, but can also be layed out vertically.
- * The GtkMenu widget is the actual menu that pops up. Both GtkMenuBar
- * and GtkMenu are subclasses of GtkMenuShell; a GtkMenuShell contains
- * menu items (GtkMenuItem). Each menu item contains text and/or images
+ * The CtkMenu widget is the actual menu that pops up. Both CtkMenuBar
+ * and CtkMenu are subclasses of CtkMenuShell; a CtkMenuShell contains
+ * menu items (CtkMenuItem). Each menu item contains text and/or images
  * and can be selected by the user.
  *
- * There are several kinds of menu item, including plain GtkMenuItem,
- * GtkCheckMenuItem which can be checked/unchecked, GtkRadioMenuItem
+ * There are several kinds of menu item, including plain CtkMenuItem,
+ * CtkCheckMenuItem which can be checked/unchecked, CtkRadioMenuItem
  * which is a check menu item that's in a mutually exclusive group,
- * GtkSeparatorMenuItem which is a separator bar, GtkTearoffMenuItem
- * which allows a GtkMenu to be torn off, and GtkImageMenuItem which
- * can place a GtkImage or other widget next to the menu text.
+ * CtkSeparatorMenuItem which is a separator bar, CtkTearoffMenuItem
+ * which allows a CtkMenu to be torn off, and CtkImageMenuItem which
+ * can place a CtkImage or other widget next to the menu text.
  *
- * A GtkMenuItem can have a submenu, which is simply a GtkMenu to pop
+ * A CtkMenuItem can have a submenu, which is simply a CtkMenu to pop
  * up when the menu item is selected. Typically, all menu items in a menu bar
  * have submenus.
  */
@@ -25,11 +25,11 @@
 
 #include <stdio.h>
 
-static GtkWidget *
+static CtkWidget *
 create_menu (gint depth)
 {
-  GtkWidget *menu;
-  GtkRadioMenuItem *last_item;
+  CtkWidget *menu;
+  CtkRadioMenuItem *last_item;
   char buf[32];
   int i, j;
 
@@ -41,7 +41,7 @@ create_menu (gint depth)
 
   for (i = 0, j = 1; i < 5; i++, j++)
     {
-      GtkWidget *menu_item;
+      CtkWidget *menu_item;
 
       sprintf (buf, "item %2d - %d", depth, j);
 
@@ -61,11 +61,11 @@ create_menu (gint depth)
 }
 
 static void
-change_orientation (GtkWidget *button,
-                    GtkWidget *menubar)
+change_orientation (CtkWidget *button,
+                    CtkWidget *menubar)
 {
-  GtkWidget *parent;
-  GtkOrientation orientation;
+  CtkWidget *parent;
+  CtkOrientation orientation;
 
   parent = ctk_widget_get_parent (menubar);
   orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (parent));
@@ -78,22 +78,22 @@ change_orientation (GtkWidget *button,
 
 }
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 
-GtkWidget *
-do_menus (GtkWidget *do_widget)
+CtkWidget *
+do_menus (CtkWidget *do_widget)
 {
-  GtkWidget *box;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
+  CtkWidget *box;
+  CtkWidget *box1;
+  CtkWidget *box2;
+  CtkWidget *button;
 
   if (!window)
     {
-      GtkWidget *menubar;
-      GtkWidget *menu;
-      GtkWidget *menuitem;
-      GtkAccelGroup *accel_group;
+      CtkWidget *menubar;
+      CtkWidget *menu;
+      CtkWidget *menuitem;
+      CtkAccelGroup *accel_group;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),

@@ -25,14 +25,14 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_ease_value_new_cubic_bezier  (double                x1,
+CtkCssValue *   _ctk_css_ease_value_new_cubic_bezier  (double                x1,
                                                        double                y1,
                                                        double                x2,
                                                        double                y2);
-gboolean        _ctk_css_ease_value_can_parse         (GtkCssParser         *parser);
-GtkCssValue *   _ctk_css_ease_value_parse             (GtkCssParser         *parser);
+gboolean        _ctk_css_ease_value_can_parse         (CtkCssParser         *parser);
+CtkCssValue *   _ctk_css_ease_value_parse             (CtkCssParser         *parser);
 
-double          _ctk_css_ease_value_transform         (const GtkCssValue    *ease,
+double          _ctk_css_ease_value_transform         (const CtkCssValue    *ease,
                                                        double                progress);
 
 

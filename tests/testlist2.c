@@ -3,7 +3,7 @@
 static void
 row_unrevealed (GObject *revealer, GParamSpec *pspec, gpointer data)
 {
-  GtkWidget *row, *list;
+  CtkWidget *row, *list;
 
   row = ctk_widget_get_parent (CTK_WIDGET (revealer));
   list = ctk_widget_get_parent (row);
@@ -12,9 +12,9 @@ row_unrevealed (GObject *revealer, GParamSpec *pspec, gpointer data)
 }
 
 static void
-remove_this_row (GtkButton *button, GtkWidget *child)
+remove_this_row (CtkButton *button, CtkWidget *child)
 {
-  GtkWidget *row, *revealer;
+  CtkWidget *row, *revealer;
 
   row = ctk_widget_get_parent (child);
   revealer = ctk_revealer_new ();
@@ -29,12 +29,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_revealer_set_reveal_child (CTK_REVEALER (revealer), FALSE);
 }
 
-static GtkWidget *create_row (const gchar *label);
+static CtkWidget *create_row (const gchar *label);
 
 static void
 row_revealed (GObject *revealer, GParamSpec *pspec, gpointer data)
 {
-  GtkWidget *row, *child;
+  CtkWidget *row, *child;
 
   row = ctk_widget_get_parent (CTK_WIDGET (revealer));
   child = ctk_bin_get_child (CTK_BIN (revealer));
@@ -46,9 +46,9 @@ row_revealed (GObject *revealer, GParamSpec *pspec, gpointer data)
 }
 
 static void
-add_row_below (GtkButton *button, GtkWidget *child)
+add_row_below (CtkButton *button, CtkWidget *child)
 {
-  GtkWidget *revealer, *row, *list;
+  CtkWidget *revealer, *row, *list;
   gint index;
 
   row = ctk_widget_get_parent (child);
@@ -65,7 +65,7 @@ add_row_below (GtkButton *button, GtkWidget *child)
 }
 
 static void
-add_separator (GtkListBoxRow *row, GtkListBoxRow *before, gpointer data)
+add_separator (CtkListBoxRow *row, CtkListBoxRow *before, gpointer data)
 {
   if (!before)
     return;
@@ -73,10 +73,10 @@ add_separator (GtkListBoxRow *row, GtkListBoxRow *before, gpointer data)
   ctk_list_box_row_set_header (row, ctk_separator_new (CTK_ORIENTATION_HORIZONTAL));
 }
 
-static GtkWidget *
+static CtkWidget *
 create_row (const gchar *text)
 {
-  GtkWidget *row, *label, *button;
+  CtkWidget *row, *label, *button;
 
   row = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
   label = ctk_label_new (text);
@@ -97,7 +97,7 @@ create_row (const gchar *text)
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *window, *list, *sw, *row;
+  CtkWidget *window, *list, *sw, *row;
   gint i;
   gchar *text;
 

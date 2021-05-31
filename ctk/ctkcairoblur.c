@@ -190,7 +190,7 @@ _boxblur (guchar      *buffer,
           int          width,
           int          height,
           int          radius,
-          GtkBlurFlags flags)
+          CtkBlurFlags flags)
 {
   guchar *flipped_buffer;
   int d = get_box_filter_size (radius);
@@ -228,7 +228,7 @@ _boxblur (guchar      *buffer,
 void
 _ctk_cairo_blur_surface (cairo_surface_t* surface,
                          double           radius_d,
-                         GtkBlurFlags     flags)
+                         CtkBlurFlags     flags)
 {
   int radius = radius_d;
 

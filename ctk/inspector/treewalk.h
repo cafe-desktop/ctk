@@ -19,26 +19,26 @@
 //#include "ctktreemodel.h"
 
 
-typedef gboolean (*RowPredicate) (GtkTreeModel *model,
-                                  GtkTreeIter  *iter,
+typedef gboolean (*RowPredicate) (CtkTreeModel *model,
+                                  CtkTreeIter  *iter,
                                   gpointer      data);
 
-typedef struct _GtkTreeWalk GtkTreeWalk;
+typedef struct _CtkTreeWalk CtkTreeWalk;
 
-GtkTreeWalk * ctk_tree_walk_new        (GtkTreeModel   *model,
+CtkTreeWalk * ctk_tree_walk_new        (CtkTreeModel   *model,
                                         RowPredicate    predicate,
                                         gpointer        data,
                                         GDestroyNotify  destroy);
 
-void          ctk_tree_walk_free       (GtkTreeWalk *walk);
+void          ctk_tree_walk_free       (CtkTreeWalk *walk);
 
-void          ctk_tree_walk_reset      (GtkTreeWalk *walk,
-                                        GtkTreeIter *iter);
+void          ctk_tree_walk_reset      (CtkTreeWalk *walk,
+                                        CtkTreeIter *iter);
 
-gboolean      ctk_tree_walk_next_match (GtkTreeWalk *walk,
+gboolean      ctk_tree_walk_next_match (CtkTreeWalk *walk,
                                         gboolean     force_move,
                                         gboolean     backwards,
-                                        GtkTreeIter *iter);
+                                        CtkTreeIter *iter);
 
-gboolean      ctk_tree_walk_get_position (GtkTreeWalk *walk,
-                                          GtkTreeIter *iter);
+gboolean      ctk_tree_walk_get_position (CtkTreeWalk *walk,
+                                          CtkTreeIter *iter);

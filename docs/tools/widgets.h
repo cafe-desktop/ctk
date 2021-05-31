@@ -14,7 +14,7 @@ typedef enum
 
 typedef struct WidgetInfo
 {
-  GtkWidget *window;
+  CtkWidget *window;
   gchar *name;
   gboolean no_focus;
   gboolean include_decorations;

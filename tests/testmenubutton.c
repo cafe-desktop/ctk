@@ -6,26 +6,26 @@
 static GList *menubuttons = NULL;
 
 static void
-horizontal_alignment_changed (GtkComboBox *box)
+horizontal_alignment_changed (CtkComboBox *box)
 {
-	GtkAlign alignment = ctk_combo_box_get_active (box);
+	CtkAlign alignment = ctk_combo_box_get_active (box);
 	GList *l;
 
 	for (l = menubuttons; l != NULL; l = l->next) {
-		GtkMenu *popup = ctk_menu_button_get_popup (CTK_MENU_BUTTON (l->data));
+		CtkMenu *popup = ctk_menu_button_get_popup (CTK_MENU_BUTTON (l->data));
 		if (popup != NULL)
 			ctk_widget_set_halign (CTK_WIDGET (popup), alignment);
 	}
 }
 
 static void
-vertical_alignment_changed (GtkComboBox *box)
+vertical_alignment_changed (CtkComboBox *box)
 {
-	GtkAlign alignment = ctk_combo_box_get_active (box);
+	CtkAlign alignment = ctk_combo_box_get_active (box);
 	GList *l;
 
 	for (l = menubuttons; l != NULL; l = l->next) {
-		GtkMenu *popup = ctk_menu_button_get_popup (CTK_MENU_BUTTON (l->data));
+		CtkMenu *popup = ctk_menu_button_get_popup (CTK_MENU_BUTTON (l->data));
 		if (popup != NULL)
 			ctk_widget_set_valign (CTK_WIDGET (popup), alignment);
 	}
@@ -33,15 +33,15 @@ vertical_alignment_changed (GtkComboBox *box)
 
 int main (int argc, char **argv)
 {
-	GtkWidget *window;
-	GtkWidget *button;
-	GtkWidget *grid;
-	GtkWidget *entry;
-	GtkWidget *label;
-	GtkWidget *check;
-	GtkWidget *combo;
-	GtkWidget *menu_widget;
-	GtkAccelGroup *accel_group;
+	CtkWidget *window;
+	CtkWidget *button;
+	CtkWidget *grid;
+	CtkWidget *entry;
+	CtkWidget *label;
+	CtkWidget *check;
+	CtkWidget *combo;
+	CtkWidget *menu_widget;
+	CtkAccelGroup *accel_group;
 	guint i;
 	guint row = 0;
 	GMenu *menu;
@@ -103,10 +103,10 @@ int main (int argc, char **argv)
 	ctk_grid_attach_next_to (CTK_GRID (grid), button, entry, CTK_POS_RIGHT, 1, 1);
 	menubuttons = g_list_prepend (menubuttons, button);
 
-	/* Button with GtkMenu */
+	/* Button with CtkMenu */
 	menu_widget = ctk_menu_new ();
 	for (i = 0; i < 5; ++i) {
-		GtkWidget *item;
+		CtkWidget *item;
 
 		if (i == 2) {
 			item = ctk_menu_item_new_with_mnemonic ("_Copy");

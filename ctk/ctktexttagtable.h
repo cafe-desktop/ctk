@@ -34,36 +34,36 @@
 G_BEGIN_DECLS
 
 /**
- * GtkTextTagTableForeach:
- * @tag: the #GtkTextTag
+ * CtkTextTagTableForeach:
+ * @tag: the #CtkTextTag
  * @data: (closure): data passed to ctk_text_tag_table_foreach()
  */
-typedef void (* GtkTextTagTableForeach) (GtkTextTag *tag, gpointer data);
+typedef void (* CtkTextTagTableForeach) (CtkTextTag *tag, gpointer data);
 
 #define CTK_TYPE_TEXT_TAG_TABLE            (ctk_text_tag_table_get_type ())
-#define CTK_TEXT_TAG_TABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTable))
-#define CTK_TEXT_TAG_TABLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTableClass))
+#define CTK_TEXT_TAG_TABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_TAG_TABLE, CtkTextTagTable))
+#define CTK_TEXT_TAG_TABLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_TAG_TABLE, CtkTextTagTableClass))
 #define CTK_IS_TEXT_TAG_TABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEXT_TAG_TABLE))
 #define CTK_IS_TEXT_TAG_TABLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_TAG_TABLE))
-#define CTK_TEXT_TAG_TABLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTableClass))
+#define CTK_TEXT_TAG_TABLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_TAG_TABLE, CtkTextTagTableClass))
 
-typedef struct _GtkTextTagTablePrivate       GtkTextTagTablePrivate;
-typedef struct _GtkTextTagTableClass         GtkTextTagTableClass;
+typedef struct _CtkTextTagTablePrivate       CtkTextTagTablePrivate;
+typedef struct _CtkTextTagTableClass         CtkTextTagTableClass;
 
-struct _GtkTextTagTable
+struct _CtkTextTagTable
 {
   GObject parent_instance;
 
-  GtkTextTagTablePrivate *priv;
+  CtkTextTagTablePrivate *priv;
 };
 
-struct _GtkTextTagTableClass
+struct _CtkTextTagTableClass
 {
   GObjectClass parent_class;
 
-  void (* tag_changed) (GtkTextTagTable *table, GtkTextTag *tag, gboolean size_changed);
-  void (* tag_added) (GtkTextTagTable *table, GtkTextTag *tag);
-  void (* tag_removed) (GtkTextTagTable *table, GtkTextTag *tag);
+  void (* tag_changed) (CtkTextTagTable *table, CtkTextTag *tag, gboolean size_changed);
+  void (* tag_added) (CtkTextTagTable *table, CtkTextTag *tag);
+  void (* tag_removed) (CtkTextTagTable *table, CtkTextTag *tag);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -76,22 +76,22 @@ GDK_AVAILABLE_IN_ALL
 GType          ctk_text_tag_table_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkTextTagTable *ctk_text_tag_table_new      (void);
+CtkTextTagTable *ctk_text_tag_table_new      (void);
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_text_tag_table_add      (GtkTextTagTable        *table,
-                                              GtkTextTag             *tag);
+gboolean         ctk_text_tag_table_add      (CtkTextTagTable        *table,
+                                              CtkTextTag             *tag);
 GDK_AVAILABLE_IN_ALL
-void             ctk_text_tag_table_remove   (GtkTextTagTable        *table,
-                                              GtkTextTag             *tag);
+void             ctk_text_tag_table_remove   (CtkTextTagTable        *table,
+                                              CtkTextTag             *tag);
 GDK_AVAILABLE_IN_ALL
-GtkTextTag      *ctk_text_tag_table_lookup   (GtkTextTagTable        *table,
+CtkTextTag      *ctk_text_tag_table_lookup   (CtkTextTagTable        *table,
                                               const gchar            *name);
 GDK_AVAILABLE_IN_ALL
-void             ctk_text_tag_table_foreach  (GtkTextTagTable        *table,
-                                              GtkTextTagTableForeach  func,
+void             ctk_text_tag_table_foreach  (CtkTextTagTable        *table,
+                                              CtkTextTagTableForeach  func,
                                               gpointer                data);
 GDK_AVAILABLE_IN_ALL
-gint             ctk_text_tag_table_get_size (GtkTextTagTable        *table);
+gint             ctk_text_tag_table_get_size (CtkTextTagTable        *table);
 
 G_END_DECLS
 

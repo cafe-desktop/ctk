@@ -17,7 +17,7 @@
  */
 
 
-/* The contents of a selection are returned in a GtkSelectionData
+/* The contents of a selection are returned in a CtkSelectionData
  * structure. selection/target identify the request.  type specifies
  * the type of the return; if length < 0, and the data should be
  * ignored. This structure has object semantics - no fields should be
@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-struct _GtkSelectionData
+struct _CtkSelectionData
 {
   /*< private >*/
   GdkAtom       selection;
@@ -47,22 +47,22 @@ struct _GtkSelectionData
   GdkDisplay   *display;
 };
 
-struct _GtkTargetList
+struct _CtkTargetList
 {
   /*< private >*/
   GList *list;
   guint ref_count;
 };
 
-gboolean _ctk_selection_clear           (GtkWidget         *widget,
+gboolean _ctk_selection_clear           (CtkWidget         *widget,
                                          GdkEventSelection *event);
-gboolean _ctk_selection_request         (GtkWidget         *widget,
+gboolean _ctk_selection_request         (CtkWidget         *widget,
                                          GdkEventSelection *event);
 gboolean _ctk_selection_incr_event      (GdkWindow         *window,
                                          GdkEventProperty  *event);
-gboolean _ctk_selection_notify          (GtkWidget         *widget,
+gboolean _ctk_selection_notify          (CtkWidget         *widget,
                                          GdkEventSelection *event);
-gboolean _ctk_selection_property_notify (GtkWidget         *widget,
+gboolean _ctk_selection_property_notify (CtkWidget         *widget,
                                          GdkEventProperty  *event);
 
 G_END_DECLS

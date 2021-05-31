@@ -1,4 +1,4 @@
-/* GtkPrinterOptionWidget 
+/* CtkPrinterOptionWidget 
  * Copyright (C) 2006 John (J5) Palmieri <johnp@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -23,29 +23,29 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINTER_OPTION_WIDGET                  (ctk_printer_option_widget_get_type ())
-#define CTK_PRINTER_OPTION_WIDGET(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_OPTION_WIDGET, GtkPrinterOptionWidget))
-#define CTK_PRINTER_OPTION_WIDGET_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER_OPTION_WIDGET, GtkPrinterOptionWidgetClass))
+#define CTK_PRINTER_OPTION_WIDGET(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_OPTION_WIDGET, CtkPrinterOptionWidget))
+#define CTK_PRINTER_OPTION_WIDGET_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER_OPTION_WIDGET, CtkPrinterOptionWidgetClass))
 #define CTK_IS_PRINTER_OPTION_WIDGET(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER_OPTION_WIDGET))
 #define CTK_IS_PRINTER_OPTION_WIDGET_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINTER_OPTION_WIDGET))
-#define CTK_PRINTER_OPTION_WIDGET_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER_OPTION_WIDGET, GtkPrinterOptionWidgetClass))
+#define CTK_PRINTER_OPTION_WIDGET_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER_OPTION_WIDGET, CtkPrinterOptionWidgetClass))
 
 
-typedef struct _GtkPrinterOptionWidget         GtkPrinterOptionWidget;
-typedef struct _GtkPrinterOptionWidgetClass    GtkPrinterOptionWidgetClass;
-typedef struct GtkPrinterOptionWidgetPrivate   GtkPrinterOptionWidgetPrivate;
+typedef struct _CtkPrinterOptionWidget         CtkPrinterOptionWidget;
+typedef struct _CtkPrinterOptionWidgetClass    CtkPrinterOptionWidgetClass;
+typedef struct CtkPrinterOptionWidgetPrivate   CtkPrinterOptionWidgetPrivate;
 
-struct _GtkPrinterOptionWidget
+struct _CtkPrinterOptionWidget
 {
-  GtkBox parent_instance;
+  CtkBox parent_instance;
 
-  GtkPrinterOptionWidgetPrivate *priv;
+  CtkPrinterOptionWidgetPrivate *priv;
 };
 
-struct _GtkPrinterOptionWidgetClass
+struct _CtkPrinterOptionWidgetClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
-  void (*changed) (GtkPrinterOptionWidget *widget);
+  void (*changed) (CtkPrinterOptionWidget *widget);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -58,16 +58,16 @@ GDK_AVAILABLE_IN_ALL
 GType	     ctk_printer_option_widget_get_type           (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget   *ctk_printer_option_widget_new                (GtkPrinterOption       *source);
+CtkWidget   *ctk_printer_option_widget_new                (CtkPrinterOption       *source);
 GDK_AVAILABLE_IN_ALL
-void         ctk_printer_option_widget_set_source         (GtkPrinterOptionWidget *setting,
-		 					   GtkPrinterOption       *source);
+void         ctk_printer_option_widget_set_source         (CtkPrinterOptionWidget *setting,
+		 					   CtkPrinterOption       *source);
 GDK_AVAILABLE_IN_ALL
-gboolean     ctk_printer_option_widget_has_external_label (GtkPrinterOptionWidget *setting);
+gboolean     ctk_printer_option_widget_has_external_label (CtkPrinterOptionWidget *setting);
 GDK_AVAILABLE_IN_ALL
-GtkWidget   *ctk_printer_option_widget_get_external_label (GtkPrinterOptionWidget *setting);
+CtkWidget   *ctk_printer_option_widget_get_external_label (CtkPrinterOptionWidget *setting);
 GDK_AVAILABLE_IN_ALL
-const gchar *ctk_printer_option_widget_get_value          (GtkPrinterOptionWidget *setting);
+const gchar *ctk_printer_option_widget_get_value          (CtkPrinterOptionWidget *setting);
 
 G_END_DECLS
 

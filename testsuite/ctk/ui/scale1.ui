@@ -1,6 +1,6 @@
 <!-- test valid scale custom tags -->
 <interface>
-  <object class="GtkScale">
+  <object class="CtkScale">
     <marks>
       <mark translatable="yes" comments="blargh" context="none" value="0.1" position="top">text</mark>
       <mark value="0.9"/>

@@ -36,38 +36,38 @@ enum
   COLUMN_OBJECT_NAME
 };
 
-struct _GtkInspectorObjectHierarchyPrivate
+struct _CtkInspectorObjectHierarchyPrivate
 {
-  GtkTreeStore *model;
-  GtkTreeView *tree;
+  CtkTreeStore *model;
+  CtkTreeView *tree;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorObjectHierarchy, ctk_inspector_object_hierarchy, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorObjectHierarchy, ctk_inspector_object_hierarchy, CTK_TYPE_BOX)
 
 static void
-ctk_inspector_object_hierarchy_init (GtkInspectorObjectHierarchy *oh)
+ctk_inspector_object_hierarchy_init (CtkInspectorObjectHierarchy *oh)
 {
   oh->priv = ctk_inspector_object_hierarchy_get_instance_private (oh);
   ctk_widget_init_template (CTK_WIDGET (oh));
 }
 
 static void
-ctk_inspector_object_hierarchy_class_init (GtkInspectorObjectHierarchyClass *klass)
+ctk_inspector_object_hierarchy_class_init (CtkInspectorObjectHierarchyClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/object-hierarchy.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, model);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, tree);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorObjectHierarchy, model);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorObjectHierarchy, tree);
 }
 
 void
-ctk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
+ctk_inspector_object_hierarchy_set_object (CtkInspectorObjectHierarchy *oh,
                                            GObject                     *object)
 {
   GType type;
   const gchar *class_name;
-  GtkTreeIter iter, parent;
+  CtkTreeIter iter, parent;
   GList *list = NULL, *l;
   GHashTable *interfaces;
   GHashTableIter hit;

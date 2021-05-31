@@ -32,7 +32,7 @@ window1
       <AtkAction>
       action 0 name: click
       action 0 description: Clicks the button
-    unnamed-GtkContainerAccessible-0
+    unnamed-CtkContainerAccessible-0
       "filler"
       parent: headerbar1
       state: enabled sensitive showing vertical visible
@@ -42,7 +42,7 @@ window1
       alpha: 1
       Title
         "label"
-        parent: unnamed-GtkContainerAccessible-0
+        parent: unnamed-CtkContainerAccessible-0
         index: 0
         name: Title
         state: enabled multi-line sensitive showing visible
@@ -82,7 +82,7 @@ window1
         <AtkHypertext>
       Subtitle
         "label"
-        parent: unnamed-GtkContainerAccessible-0
+        parent: unnamed-CtkContainerAccessible-0
         index: 1
         name: Subtitle
         state: enabled multi-line sensitive showing visible

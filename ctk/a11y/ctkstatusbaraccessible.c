@@ -22,10 +22,10 @@
 #include "ctkstatusbaraccessible.h"
 
 
-G_DEFINE_TYPE (GtkStatusbarAccessible, ctk_statusbar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (CtkStatusbarAccessible, ctk_statusbar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-text_changed (GtkStatusbar *statusbar,
+text_changed (CtkStatusbar *statusbar,
               guint         context_id,
               const gchar  *text,
               AtkObject    *obj)
@@ -39,7 +39,7 @@ static void
 ctk_statusbar_accessible_initialize (AtkObject *obj,
                                      gpointer   data)
 {
-  GtkWidget *statusbar = data;
+  CtkWidget *statusbar = data;
 
   ATK_OBJECT_CLASS (ctk_statusbar_accessible_parent_class)->initialize (obj, data);
 
@@ -51,11 +51,11 @@ ctk_statusbar_accessible_initialize (AtkObject *obj,
   obj->role = ATK_ROLE_STATUSBAR;
 }
 
-static GtkWidget *
-find_label_child (GtkContainer *container)
+static CtkWidget *
+find_label_child (CtkContainer *container)
 {
   GList *children, *tmp_list;
-  GtkWidget *child;
+  CtkWidget *child;
 
   children = ctk_container_get_children (container);
 
@@ -79,10 +79,10 @@ find_label_child (GtkContainer *container)
   return child;
 }
 
-static GtkWidget *
-get_label_from_statusbar (GtkStatusbar *statusbar)
+static CtkWidget *
+get_label_from_statusbar (CtkStatusbar *statusbar)
 {
-  GtkWidget *box;
+  CtkWidget *box;
 
   box = ctk_statusbar_get_message_area (statusbar);
 
@@ -93,8 +93,8 @@ static const gchar *
 ctk_statusbar_accessible_get_name (AtkObject *obj)
 {
   const gchar *name;
-  GtkWidget *widget;
-  GtkWidget *label;
+  CtkWidget *widget;
+  CtkWidget *label;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -125,10 +125,10 @@ ctk_statusbar_accessible_ref_child (AtkObject *obj,
 }
 
 static void
-ctk_statusbar_accessible_class_init (GtkStatusbarAccessibleClass *klass)
+ctk_statusbar_accessible_class_init (CtkStatusbarAccessibleClass *klass)
 {
   AtkObjectClass  *class = ATK_OBJECT_CLASS (klass);
-  GtkContainerAccessibleClass *container_class = (GtkContainerAccessibleClass*)klass;
+  CtkContainerAccessibleClass *container_class = (CtkContainerAccessibleClass*)klass;
 
   class->get_name = ctk_statusbar_accessible_get_name;
   class->get_n_children = ctk_statusbar_accessible_get_n_children;
@@ -143,6 +143,6 @@ ctk_statusbar_accessible_class_init (GtkStatusbarAccessibleClass *klass)
 }
 
 static void
-ctk_statusbar_accessible_init (GtkStatusbarAccessible *bar)
+ctk_statusbar_accessible_init (CtkStatusbarAccessible *bar)
 {
 }

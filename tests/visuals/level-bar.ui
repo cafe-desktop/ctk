@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="default_width">600</property>
     <property name="default_height">600</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="orientation">vertical</property>
         <property name="spacing">12</property>
         <property name="visible">True</property>
         <property name="vexpand">True</property>
         <property name="hexpand">True</property>
         <child>
-          <object class="GtkGrid" id="grid1">
+          <object class="CtkGrid" id="grid1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <property name="row_spacing">12</property>
             <child>
-              <object class="GtkLabel" id="label1">
+              <object class="CtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="label">Continuous values</property>
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str1">
+              <object class="CtkLevelBar" id="str1">
                 <property name="visible">True</property>
                 <property name="hexpand">true</property>
                 <property name="value">0.09</property>
@@ -36,34 +36,34 @@
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str2">
+              <object class="CtkLevelBar" id="str2">
                 <property name="visible">True</property>
                 <property name="hexpand">true</property>
                 <property name="value">0.20</property>
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str3">
+              <object class="CtkLevelBar" id="str3">
                 <property name="visible">True</property>
                 <property name="hexpand">true</property>
                 <property name="value">0.5</property>
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str4">
+              <object class="CtkLevelBar" id="str4">
                 <property name="visible">True</property>
                 <property name="hexpand">true</property>
                 <property name="value">1.0</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel" id="label2">
+              <object class="CtkLabel" id="label2">
                 <property name="visible">True</property>
                 <property name="label">Discrete values</property>
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str1d">
+              <object class="CtkLevelBar" id="str1d">
                 <property name="visible">True</property>
                 <property name="hexpand">true</property>
                 <property name="value">2.8</property>
@@ -79,20 +79,20 @@
           </object>
         </child>
         <child>
-          <object class="GtkGrid" id="grid2">
+          <object class="CtkGrid" id="grid2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
             <property name="column_spacing">12</property>
             <property name="halign">center</property>
             <child>
-              <object class="GtkLabel" id="label3">
+              <object class="CtkLabel" id="label3">
                 <property name="visible">True</property>
                 <property name="label">Continuous values</property>
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str5">
+              <object class="CtkLevelBar" id="str5">
                 <property name="visible">True</property>
                 <property name="vexpand">true</property>
                 <property name="orientation">vertical</property>
@@ -100,7 +100,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str6">
+              <object class="CtkLevelBar" id="str6">
                 <property name="visible">True</property>
                 <property name="vexpand">true</property>
                 <property name="orientation">vertical</property>
@@ -108,7 +108,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str7">
+              <object class="CtkLevelBar" id="str7">
                 <property name="visible">True</property>
                 <property name="vexpand">true</property>
                 <property name="orientation">vertical</property>
@@ -116,7 +116,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str8">
+              <object class="CtkLevelBar" id="str8">
                 <property name="visible">True</property>
                 <property name="vexpand">true</property>
                 <property name="orientation">vertical</property>
@@ -124,13 +124,13 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel" id="label4">
+              <object class="CtkLabel" id="label4">
                 <property name="visible">True</property>
                 <property name="label">Discrete values</property>
               </object>
             </child>
             <child>
-              <object class="GtkLevelBar" id="str2d">
+              <object class="CtkLevelBar" id="str2d">
                 <property name="visible">True</property>
                 <property name="vexpand">true</property>
                 <property name="orientation">vertical</property>

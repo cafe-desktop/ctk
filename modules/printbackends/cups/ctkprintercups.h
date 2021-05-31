@@ -1,4 +1,4 @@
-/* GtkPrinterCups
+/* CtkPrinterCups
  * Copyright (C) 2006 John (J5) Palmieri <johnp@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -33,19 +33,19 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINTER_CUPS                  (ctk_printer_cups_get_type ())
-#define CTK_PRINTER_CUPS(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_CUPS, GtkPrinterCups))
-#define CTK_PRINTER_CUPS_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER_CUPS, GtkPrinterCupsClass))
+#define CTK_PRINTER_CUPS(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_CUPS, CtkPrinterCups))
+#define CTK_PRINTER_CUPS_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER_CUPS, CtkPrinterCupsClass))
 #define CTK_IS_PRINTER_CUPS(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER_CUPS))
 #define CTK_IS_PRINTER_CUPS_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINTER_CUPS))
-#define CTK_PRINTER_CUPS_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER_CUPS, GtkPrinterCupsClass))
+#define CTK_PRINTER_CUPS_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER_CUPS, CtkPrinterCupsClass))
 
-typedef struct _GtkPrinterCups	        GtkPrinterCups;
-typedef struct _GtkPrinterCupsClass     GtkPrinterCupsClass;
-typedef struct _GtkPrinterCupsPrivate   GtkPrinterCupsPrivate;
+typedef struct _CtkPrinterCups	        CtkPrinterCups;
+typedef struct _CtkPrinterCupsClass     CtkPrinterCupsClass;
+typedef struct _CtkPrinterCupsPrivate   CtkPrinterCupsPrivate;
 
-struct _GtkPrinterCups
+struct _CtkPrinterCups
 {
-  GtkPrinter parent_instance;
+  CtkPrinter parent_instance;
 
   gchar *device_uri;
   gchar *original_device_uri;
@@ -84,7 +84,7 @@ struct _GtkPrinterCups
   gboolean remote;
   guint get_remote_ppd_poll;
   gint  get_remote_ppd_attempts;
-  GtkCupsConnectionTest *remote_cups_connection_test;
+  CtkCupsConnectionTest *remote_cups_connection_test;
 
 #ifdef HAVE_COLORD
   CdClient     *colord_client;
@@ -109,25 +109,25 @@ struct _GtkPrinterCups
   int      number_of_covers;
 };
 
-struct _GtkPrinterCupsClass
+struct _CtkPrinterCupsClass
 {
-  GtkPrinterClass parent_class;
+  CtkPrinterClass parent_class;
 
 };
 
 GType                    ctk_printer_cups_get_type      (void) G_GNUC_CONST;
 void                     ctk_printer_cups_register_type (GTypeModule     *module);
 
-GtkPrinterCups          *ctk_printer_cups_new           (const char      *name,
-                                                         GtkPrintBackend *backend,
+CtkPrinterCups          *ctk_printer_cups_new           (const char      *name,
+                                                         CtkPrintBackend *backend,
                                                          gpointer         colord_client);
-ppd_file_t 		*ctk_printer_cups_get_ppd       (GtkPrinterCups  *printer);
-const gchar		*ctk_printer_cups_get_ppd_name  (GtkPrinterCups  *printer);
+ppd_file_t 		*ctk_printer_cups_get_ppd       (CtkPrinterCups  *printer);
+const gchar		*ctk_printer_cups_get_ppd_name  (CtkPrinterCups  *printer);
 
 #ifdef HAVE_COLORD
-void                     ctk_printer_cups_update_settings (GtkPrinterCups *printer,
-                                                         GtkPrintSettings *settings,
-                                                         GtkPrinterOptionSet *set);
+void                     ctk_printer_cups_update_settings (CtkPrinterCups *printer,
+                                                         CtkPrintSettings *settings,
+                                                         CtkPrinterOptionSet *set);
 #endif
 
 G_END_DECLS

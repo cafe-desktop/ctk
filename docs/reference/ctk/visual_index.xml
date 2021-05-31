@@ -6,43 +6,43 @@
 <section id="visual-display">
   <title>Display</title>
   <para role="gallery">
-    <link linkend="GtkLabel">
+    <link linkend="CtkLabel">
       <inlinegraphic fileref="label.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkAccelLabel">
+    <link linkend="CtkAccelLabel">
       <inlinegraphic fileref="accel-label.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkSpinner">
+    <link linkend="CtkSpinner">
       <inlinegraphic fileref="spinner.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkStatusbar">
+    <link linkend="CtkStatusbar">
       <inlinegraphic fileref="statusbar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkLevelBar">
+    <link linkend="CtkLevelBar">
       <inlinegraphic fileref="levelbar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkProgressBar">
+    <link linkend="CtkProgressBar">
       <inlinegraphic fileref="progressbar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkInfoBar">
+    <link linkend="CtkInfoBar">
       <inlinegraphic fileref="info-bar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkScrollbar">
+    <link linkend="CtkScrollbar">
       <inlinegraphic fileref="scrollbar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkImage">
+    <link linkend="CtkImage">
       <inlinegraphic fileref="image.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkSeparator">
+    <link linkend="CtkSeparator">
       <inlinegraphic fileref="separator.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkTextView">
+    <link linkend="CtkTextView">
       <inlinegraphic fileref="multiline-text.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkScale">
+    <link linkend="CtkScale">
       <inlinegraphic fileref="scales.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkGLArea">
+    <link linkend="CtkGLArea">
       <inlinegraphic fileref="glarea.png" format="PNG"></inlinegraphic>
     </link>
   </para>
@@ -51,55 +51,55 @@
 <section id="visual-buttons">
   <title>Buttons</title>
   <para role="gallery">
-    <link linkend="GtkButton">
+    <link linkend="CtkButton">
       <inlinegraphic fileref="button.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkCheckButton">
+    <link linkend="CtkCheckButton">
       <inlinegraphic fileref="check-button.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkToggleButton">
+    <link linkend="CtkToggleButton">
       <inlinegraphic fileref="toggle-button.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkLinkButton">
+    <link linkend="CtkLinkButton">
       <inlinegraphic fileref="link-button.png" format="PNG"></inlinegraphic>
     </link>
 
-    <link linkend="GtkMenuButton">
+    <link linkend="CtkMenuButton">
       <inlinegraphic fileref="menu-button.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkLockButton">
+    <link linkend="CtkLockButton">
       <inlinegraphic fileref="lockbutton.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkSpinButton">
+    <link linkend="CtkSpinButton">
       <inlinegraphic fileref="spinbutton.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkColorButton">
+    <link linkend="CtkColorButton">
       <inlinegraphic fileref="color-button.png" format="PNG"></inlinegraphic>
     </link>
 
-    <link linkend="GtkSwitch">
+    <link linkend="CtkSwitch">
       <inlinegraphic fileref="switch.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkComboBox">
+    <link linkend="CtkComboBox">
       <inlinegraphic fileref="combo-box.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkComboBoxText">
+    <link linkend="CtkComboBoxText">
       <inlinegraphic fileref="combo-box-text.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkFontButton">
+    <link linkend="CtkFontButton">
       <inlinegraphic fileref="font-button.png" format="PNG"></inlinegraphic>
     </link>
 
-    <link linkend="GtkAppChooserButton">
+    <link linkend="CtkAppChooserButton">
       <inlinegraphic fileref="appchooserbutton.png" format="PNG"></inlinegraphic>
     </link>
-   <link linkend="GtkVolumeButton">
+   <link linkend="CtkVolumeButton">
       <inlinegraphic fileref="volumebutton.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkRadioButton">
+    <link linkend="CtkRadioButton">
       <inlinegraphic fileref="radio-group.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkFileChooserButton">
+    <link linkend="CtkFileChooserButton">
       <inlinegraphic fileref="file-button.png" format="PNG"></inlinegraphic>
     </link>
   </para>
@@ -108,10 +108,10 @@
 <section id="visual-entries">
   <title>Entries</title>
   <para role="gallery">
-    <link linkend="GtkEntry">
+    <link linkend="CtkEntry">
       <inlinegraphic fileref="entry.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkSearchEntry">
+    <link linkend="CtkSearchEntry">
       <inlinegraphic fileref="search-entry.png" format="PNG"></inlinegraphic>
     </link>
   </para>
@@ -120,58 +120,58 @@
 <section id="visual-containers">
   <title>Containers</title>
   <para role="gallery">
-    <link linkend="GtkScrolledWindow">
+    <link linkend="CtkScrolledWindow">
       <inlinegraphic fileref="scrolledwindow.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkHeaderBar">
+    <link linkend="CtkHeaderBar">
       <inlinegraphic fileref="headerbar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkSearchBar">
+    <link linkend="CtkSearchBar">
       <inlinegraphic fileref="search-bar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkActionBar">
+    <link linkend="CtkActionBar">
       <inlinegraphic fileref="action-bar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkListBox">
+    <link linkend="CtkListBox">
       <inlinegraphic fileref="list-box.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkFlowBox">
+    <link linkend="CtkFlowBox">
       <inlinegraphic fileref="flow-box.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkStack">
+    <link linkend="CtkStack">
       <inlinegraphic fileref="stack.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkStackSwitcher">
+    <link linkend="CtkStackSwitcher">
       <inlinegraphic fileref="stackswitcher.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkStackSidebar">
+    <link linkend="CtkStackSidebar">
       <inlinegraphic fileref="sidebar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkTreeView">
+    <link linkend="CtkTreeView">
       <inlinegraphic fileref="list-and-tree.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkIconView">
+    <link linkend="CtkIconView">
       <inlinegraphic fileref="icon-view.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkNotebook">
+    <link linkend="CtkNotebook">
       <inlinegraphic fileref="notebook.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkFrame">
+    <link linkend="CtkFrame">
       <inlinegraphic fileref="frame.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkPaned">
+    <link linkend="CtkPaned">
       <inlinegraphic fileref="panes.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkMenuBar">
+    <link linkend="CtkMenuBar">
       <inlinegraphic fileref="menubar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkToolbar">
+    <link linkend="CtkToolbar">
       <inlinegraphic fileref="toolbar.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkToolPalette">
+    <link linkend="CtkToolPalette">
       <inlinegraphic fileref="toolpalette.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkPlacesSidebar">
+    <link linkend="CtkPlacesSidebar">
       <inlinegraphic fileref="placessidebar.png" format="PNG"></inlinegraphic>
     </link>
   </para>
@@ -180,37 +180,37 @@
 <section id="visual-windows">
   <title>Windows</title>
   <para role="gallery">
-    <link linkend="GtkWindow">
+    <link linkend="CtkWindow">
       <inlinegraphic fileref="window.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkMessageDialog">
+    <link linkend="CtkMessageDialog">
       <inlinegraphic fileref="messagedialog.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkAboutDialog">
+    <link linkend="CtkAboutDialog">
       <inlinegraphic fileref="aboutdialog.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkAssistant">
+    <link linkend="CtkAssistant">
       <inlinegraphic fileref="assistant.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkColorChooserDialog">
+    <link linkend="CtkColorChooserDialog">
       <inlinegraphic fileref="colorchooser.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkFileChooserDialog">
+    <link linkend="CtkFileChooserDialog">
       <inlinegraphic fileref="filechooser.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkRecentChooserDialog">
+    <link linkend="CtkRecentChooserDialog">
       <inlinegraphic fileref="recentchooserdialog.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkFontChooserDialog">
+    <link linkend="CtkFontChooserDialog">
       <inlinegraphic fileref="fontchooser.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkAppChooserDialog">
+    <link linkend="CtkAppChooserDialog">
       <inlinegraphic fileref="appchooserdialog.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkPageSetupUnixDialog">
+    <link linkend="CtkPageSetupUnixDialog">
       <inlinegraphic fileref="pagesetupdialog.png" format="PNG"></inlinegraphic>
     </link>
-    <link linkend="GtkPrintUnixDialog">
+    <link linkend="CtkPrintUnixDialog">
       <inlinegraphic fileref="printdialog.png" format="PNG"></inlinegraphic>
     </link>
   </para>

@@ -40,14 +40,14 @@
 /**
  * SECTION:ctkcheckmenuitem
  * @Short_description: A menu item with a check box
- * @Title: GtkCheckMenuItem
+ * @Title: CtkCheckMenuItem
  *
- * A #GtkCheckMenuItem is a menu item that maintains the state of a boolean
- * value in addition to a #GtkMenuItem usual role in activating application
+ * A #CtkCheckMenuItem is a menu item that maintains the state of a boolean
+ * value in addition to a #CtkMenuItem usual role in activating application
  * code.
  *
  * A check box indicating the state of the boolean value is displayed
- * at the left side of the #GtkMenuItem.  Activating the #GtkMenuItem
+ * at the left side of the #CtkMenuItem.  Activating the #CtkMenuItem
  * toggles the value.
  *
  * # CSS nodes
@@ -58,16 +58,16 @@
  * ╰── <child>
  * ]|
  *
- * GtkCheckMenuItem has a main CSS node with name menuitem, and a subnode
+ * CtkCheckMenuItem has a main CSS node with name menuitem, and a subnode
  * with name check, which gets the .left or .right style class.
  */
 
 
 #define INDICATOR_SIZE 16
 
-struct _GtkCheckMenuItemPrivate
+struct _CtkCheckMenuItemPrivate
 {
-  GtkCssGadget *indicator_gadget;
+  CtkCssGadget *indicator_gadget;
 
   guint active             : 1;
   guint draw_as_radio      : 1;
@@ -86,12 +86,12 @@ enum {
   PROP_DRAW_AS_RADIO
 };
 
-static gint ctk_check_menu_item_draw                 (GtkWidget             *widget,
+static gint ctk_check_menu_item_draw                 (CtkWidget             *widget,
                                                       cairo_t               *cr);
-static void ctk_check_menu_item_activate             (GtkMenuItem           *menu_item);
-static void ctk_check_menu_item_toggle_size_request  (GtkMenuItem           *menu_item,
+static void ctk_check_menu_item_activate             (CtkMenuItem           *menu_item);
+static void ctk_check_menu_item_toggle_size_request  (CtkMenuItem           *menu_item,
                                                       gint                  *requisition);
-static void ctk_real_check_menu_item_draw_indicator  (GtkCheckMenuItem      *check_menu_item,
+static void ctk_real_check_menu_item_draw_indicator  (CtkCheckMenuItem      *check_menu_item,
                                                       cairo_t               *cr);
 static void ctk_check_menu_item_set_property         (GObject               *object,
                                                       guint                  prop_id,
@@ -102,37 +102,37 @@ static void ctk_check_menu_item_get_property         (GObject               *obj
                                                       GValue                *value,
                                                       GParamSpec            *pspec);
 
-static void ctk_check_menu_item_state_flags_changed (GtkWidget        *widget,
-                                                     GtkStateFlags     previous_state);
-static void ctk_check_menu_item_direction_changed   (GtkWidget        *widget,
-                                                     GtkTextDirection  previous_dir);
+static void ctk_check_menu_item_state_flags_changed (CtkWidget        *widget,
+                                                     CtkStateFlags     previous_state);
+static void ctk_check_menu_item_direction_changed   (CtkWidget        *widget,
+                                                     CtkTextDirection  previous_dir);
 
-static void ctk_check_menu_item_activatable_interface_init (GtkActivatableIface  *iface);
-static void ctk_check_menu_item_update                     (GtkActivatable       *activatable,
-                                                            GtkAction            *action,
+static void ctk_check_menu_item_activatable_interface_init (CtkActivatableIface  *iface);
+static void ctk_check_menu_item_update                     (CtkActivatable       *activatable,
+                                                            CtkAction            *action,
                                                             const gchar          *property_name);
-static void ctk_check_menu_item_sync_action_properties     (GtkActivatable       *activatable,
-                                                            GtkAction            *action);
+static void ctk_check_menu_item_sync_action_properties     (CtkActivatable       *activatable,
+                                                            CtkAction            *action);
 
-static GtkActivatableIface *parent_activatable_iface;
+static CtkActivatableIface *parent_activatable_iface;
 static guint                check_menu_item_signals[LAST_SIGNAL] = { 0 };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkCheckMenuItem, ctk_check_menu_item, CTK_TYPE_MENU_ITEM,
-                         G_ADD_PRIVATE (GtkCheckMenuItem)
+G_DEFINE_TYPE_WITH_CODE (CtkCheckMenuItem, ctk_check_menu_item, CTK_TYPE_MENU_ITEM,
+                         G_ADD_PRIVATE (CtkCheckMenuItem)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
                                                 ctk_check_menu_item_activatable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
-ctk_check_menu_item_size_allocate (GtkWidget     *widget,
-                                   GtkAllocation *allocation)
+ctk_check_menu_item_size_allocate (CtkWidget     *widget,
+                                   CtkAllocation *allocation)
 {
-  GtkAllocation clip, widget_clip;
-  GtkAllocation content_alloc, indicator_alloc;
-  GtkCssGadget *menu_item_gadget;
-  GtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (widget);
-  GtkCheckMenuItemPrivate *priv = check_menu_item->priv;
+  CtkAllocation clip, widget_clip;
+  CtkAllocation content_alloc, indicator_alloc;
+  CtkCssGadget *menu_item_gadget;
+  CtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (widget);
+  CtkCheckMenuItemPrivate *priv = check_menu_item->priv;
   gint content_baseline, toggle_size;
 
   CTK_WIDGET_CLASS (ctk_check_menu_item_parent_class)->size_allocate
@@ -177,7 +177,7 @@ ctk_check_menu_item_size_allocate (GtkWidget     *widget,
 static void
 ctk_check_menu_item_finalize (GObject *object)
 {
-  GtkCheckMenuItemPrivate *priv = CTK_CHECK_MENU_ITEM (object)->priv;
+  CtkCheckMenuItemPrivate *priv = CTK_CHECK_MENU_ITEM (object)->priv;
 
   g_clear_object (&priv->indicator_gadget);
 
@@ -185,15 +185,15 @@ ctk_check_menu_item_finalize (GObject *object)
 }
 
 static void
-ctk_check_menu_item_class_init (GtkCheckMenuItemClass *klass)
+ctk_check_menu_item_class_init (CtkCheckMenuItemClass *klass)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
-  GtkMenuItemClass *menu_item_class;
+  CtkWidgetClass *widget_class;
+  CtkMenuItemClass *menu_item_class;
   
   gobject_class = G_OBJECT_CLASS (klass);
-  widget_class = (GtkWidgetClass*) klass;
-  menu_item_class = (GtkMenuItemClass*) klass;
+  widget_class = (CtkWidgetClass*) klass;
+  menu_item_class = (CtkMenuItemClass*) klass;
   
   gobject_class->set_property = ctk_check_menu_item_set_property;
   gobject_class->get_property = ctk_check_menu_item_get_property;
@@ -228,7 +228,7 @@ ctk_check_menu_item_class_init (GtkCheckMenuItemClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkCheckMenuItem:indicator-size:
+   * CtkCheckMenuItem:indicator-size:
    *
    * The size of the check or radio indicator.
    *
@@ -254,7 +254,7 @@ ctk_check_menu_item_class_init (GtkCheckMenuItemClass *klass)
   klass->draw_indicator = ctk_real_check_menu_item_draw_indicator;
 
   /**
-   * GtkCheckMenuItem::toggled:
+   * CtkCheckMenuItem::toggled:
    * @checkmenuitem: the object which received the signal.
    *
    * This signal is emitted when the state of the check box is changed.
@@ -266,7 +266,7 @@ ctk_check_menu_item_class_init (GtkCheckMenuItemClass *klass)
     g_signal_new (I_("toggled"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkCheckMenuItemClass, toggled),
+                  G_STRUCT_OFFSET (CtkCheckMenuItemClass, toggled),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
@@ -276,7 +276,7 @@ ctk_check_menu_item_class_init (GtkCheckMenuItemClass *klass)
 }
 
 static void 
-ctk_check_menu_item_activatable_interface_init (GtkActivatableIface  *iface)
+ctk_check_menu_item_activatable_interface_init (CtkActivatableIface  *iface)
 {
   parent_activatable_iface = g_type_interface_peek_parent (iface);
   iface->update = ctk_check_menu_item_update;
@@ -284,11 +284,11 @@ ctk_check_menu_item_activatable_interface_init (GtkActivatableIface  *iface)
 }
 
 static void
-ctk_check_menu_item_update (GtkActivatable *activatable,
-                            GtkAction      *action,
+ctk_check_menu_item_update (CtkActivatable *activatable,
+                            CtkAction      *action,
                             const gchar    *property_name)
 {
-  GtkCheckMenuItem *check_menu_item;
+  CtkCheckMenuItem *check_menu_item;
   gboolean use_action_appearance;
 
   check_menu_item = CTK_CHECK_MENU_ITEM (activatable);
@@ -320,10 +320,10 @@ ctk_check_menu_item_update (GtkActivatable *activatable,
 }
 
 static void
-ctk_check_menu_item_sync_action_properties (GtkActivatable *activatable,
-                                            GtkAction      *action)
+ctk_check_menu_item_sync_action_properties (CtkActivatable *activatable,
+                                            CtkAction      *action)
 {
-  GtkCheckMenuItem *check_menu_item;
+  CtkCheckMenuItem *check_menu_item;
   gboolean use_action_appearance;
   gboolean is_toggle_action;
 
@@ -358,11 +358,11 @@ ctk_check_menu_item_sync_action_properties (GtkActivatable *activatable,
 /**
  * ctk_check_menu_item_new:
  *
- * Creates a new #GtkCheckMenuItem.
+ * Creates a new #CtkCheckMenuItem.
  *
- * Returns: a new #GtkCheckMenuItem.
+ * Returns: a new #CtkCheckMenuItem.
  */
-GtkWidget*
+CtkWidget*
 ctk_check_menu_item_new (void)
 {
   return g_object_new (CTK_TYPE_CHECK_MENU_ITEM, NULL);
@@ -372,11 +372,11 @@ ctk_check_menu_item_new (void)
  * ctk_check_menu_item_new_with_label:
  * @label: the string to use for the label.
  *
- * Creates a new #GtkCheckMenuItem with a label.
+ * Creates a new #CtkCheckMenuItem with a label.
  *
- * Returns: a new #GtkCheckMenuItem.
+ * Returns: a new #CtkCheckMenuItem.
  */
-GtkWidget*
+CtkWidget*
 ctk_check_menu_item_new_with_label (const gchar *label)
 {
   return g_object_new (CTK_TYPE_CHECK_MENU_ITEM, 
@@ -390,13 +390,13 @@ ctk_check_menu_item_new_with_label (const gchar *label)
  * @label: The text of the button, with an underscore in front of the
  *     character
  *
- * Creates a new #GtkCheckMenuItem containing a label. The label
+ * Creates a new #CtkCheckMenuItem containing a label. The label
  * will be created using ctk_label_new_with_mnemonic(), so underscores
  * in @label indicate the mnemonic for the menu item.
  *
- * Returns: a new #GtkCheckMenuItem
+ * Returns: a new #CtkCheckMenuItem
  */
-GtkWidget*
+CtkWidget*
 ctk_check_menu_item_new_with_mnemonic (const gchar *label)
 {
   return g_object_new (CTK_TYPE_CHECK_MENU_ITEM, 
@@ -407,16 +407,16 @@ ctk_check_menu_item_new_with_mnemonic (const gchar *label)
 
 /**
  * ctk_check_menu_item_set_active:
- * @check_menu_item: a #GtkCheckMenuItem.
+ * @check_menu_item: a #CtkCheckMenuItem.
  * @is_active: boolean value indicating whether the check box is active.
  *
  * Sets the active state of the menu item’s check box.
  */
 void
-ctk_check_menu_item_set_active (GtkCheckMenuItem *check_menu_item,
+ctk_check_menu_item_set_active (CtkCheckMenuItem *check_menu_item,
                                 gboolean          is_active)
 {
-  GtkCheckMenuItemPrivate *priv;
+  CtkCheckMenuItemPrivate *priv;
 
   g_return_if_fail (CTK_IS_CHECK_MENU_ITEM (check_menu_item));
 
@@ -430,7 +430,7 @@ ctk_check_menu_item_set_active (GtkCheckMenuItem *check_menu_item,
 
 /**
  * ctk_check_menu_item_get_active:
- * @check_menu_item: a #GtkCheckMenuItem
+ * @check_menu_item: a #CtkCheckMenuItem
  * 
  * Returns whether the check menu item is active. See
  * ctk_check_menu_item_set_active ().
@@ -438,7 +438,7 @@ ctk_check_menu_item_set_active (GtkCheckMenuItem *check_menu_item,
  * Returns: %TRUE if the menu item is checked.
  */
 gboolean
-ctk_check_menu_item_get_active (GtkCheckMenuItem *check_menu_item)
+ctk_check_menu_item_get_active (CtkCheckMenuItem *check_menu_item)
 {
   g_return_val_if_fail (CTK_IS_CHECK_MENU_ITEM (check_menu_item), FALSE);
 
@@ -446,10 +446,10 @@ ctk_check_menu_item_get_active (GtkCheckMenuItem *check_menu_item)
 }
 
 static void
-ctk_check_menu_item_toggle_size_request (GtkMenuItem *menu_item,
+ctk_check_menu_item_toggle_size_request (CtkMenuItem *menu_item,
                                          gint        *requisition)
 {
-  GtkCheckMenuItem *check_menu_item;
+  CtkCheckMenuItem *check_menu_item;
 
   g_return_if_fail (CTK_IS_CHECK_MENU_ITEM (menu_item));
 
@@ -463,21 +463,21 @@ ctk_check_menu_item_toggle_size_request (GtkMenuItem *menu_item,
 
 /**
  * ctk_check_menu_item_toggled:
- * @check_menu_item: a #GtkCheckMenuItem.
+ * @check_menu_item: a #CtkCheckMenuItem.
  *
- * Emits the #GtkCheckMenuItem::toggled signal.
+ * Emits the #CtkCheckMenuItem::toggled signal.
  */
 void
-ctk_check_menu_item_toggled (GtkCheckMenuItem *check_menu_item)
+ctk_check_menu_item_toggled (CtkCheckMenuItem *check_menu_item)
 {
   g_signal_emit (check_menu_item, check_menu_item_signals[TOGGLED], 0);
 }
 
 static void
-update_node_state (GtkCheckMenuItem *check_menu_item)
+update_node_state (CtkCheckMenuItem *check_menu_item)
 {
-  GtkCheckMenuItemPrivate *priv = check_menu_item->priv;
-  GtkStateFlags state;
+  CtkCheckMenuItemPrivate *priv = check_menu_item->priv;
+  CtkStateFlags state;
 
   state = ctk_widget_get_state_flags (CTK_WIDGET (check_menu_item));
 
@@ -491,7 +491,7 @@ update_node_state (GtkCheckMenuItem *check_menu_item)
 
 /**
  * ctk_check_menu_item_set_inconsistent:
- * @check_menu_item: a #GtkCheckMenuItem
+ * @check_menu_item: a #CtkCheckMenuItem
  * @setting: %TRUE to display an “inconsistent” third state check
  *
  * If the user has selected a range of elements (such as some text or
@@ -505,10 +505,10 @@ update_node_state (GtkCheckMenuItem *check_menu_item)
  * 
  **/
 void
-ctk_check_menu_item_set_inconsistent (GtkCheckMenuItem *check_menu_item,
+ctk_check_menu_item_set_inconsistent (CtkCheckMenuItem *check_menu_item,
                                       gboolean          setting)
 {
-  GtkCheckMenuItemPrivate *priv;
+  CtkCheckMenuItemPrivate *priv;
 
   g_return_if_fail (CTK_IS_CHECK_MENU_ITEM (check_menu_item));
 
@@ -527,14 +527,14 @@ ctk_check_menu_item_set_inconsistent (GtkCheckMenuItem *check_menu_item,
 
 /**
  * ctk_check_menu_item_get_inconsistent:
- * @check_menu_item: a #GtkCheckMenuItem
+ * @check_menu_item: a #CtkCheckMenuItem
  * 
  * Retrieves the value set by ctk_check_menu_item_set_inconsistent().
  * 
  * Returns: %TRUE if inconsistent
  **/
 gboolean
-ctk_check_menu_item_get_inconsistent (GtkCheckMenuItem *check_menu_item)
+ctk_check_menu_item_get_inconsistent (CtkCheckMenuItem *check_menu_item)
 {
   g_return_val_if_fail (CTK_IS_CHECK_MENU_ITEM (check_menu_item), FALSE);
 
@@ -543,19 +543,19 @@ ctk_check_menu_item_get_inconsistent (GtkCheckMenuItem *check_menu_item)
 
 /**
  * ctk_check_menu_item_set_draw_as_radio:
- * @check_menu_item: a #GtkCheckMenuItem
- * @draw_as_radio: whether @check_menu_item is drawn like a #GtkRadioMenuItem
+ * @check_menu_item: a #CtkCheckMenuItem
+ * @draw_as_radio: whether @check_menu_item is drawn like a #CtkRadioMenuItem
  *
- * Sets whether @check_menu_item is drawn like a #GtkRadioMenuItem
+ * Sets whether @check_menu_item is drawn like a #CtkRadioMenuItem
  *
  * Since: 2.4
  **/
 void
-ctk_check_menu_item_set_draw_as_radio (GtkCheckMenuItem *check_menu_item,
+ctk_check_menu_item_set_draw_as_radio (CtkCheckMenuItem *check_menu_item,
                                        gboolean          draw_as_radio)
 {
-  GtkCheckMenuItemPrivate *priv;
-  GtkCssNode *indicator_node;
+  CtkCheckMenuItemPrivate *priv;
+  CtkCssNode *indicator_node;
 
   g_return_if_fail (CTK_IS_CHECK_MENU_ITEM (check_menu_item));
 
@@ -580,16 +580,16 @@ ctk_check_menu_item_set_draw_as_radio (GtkCheckMenuItem *check_menu_item,
 
 /**
  * ctk_check_menu_item_get_draw_as_radio:
- * @check_menu_item: a #GtkCheckMenuItem
+ * @check_menu_item: a #CtkCheckMenuItem
  * 
- * Returns whether @check_menu_item looks like a #GtkRadioMenuItem
+ * Returns whether @check_menu_item looks like a #CtkRadioMenuItem
  * 
- * Returns: Whether @check_menu_item looks like a #GtkRadioMenuItem
+ * Returns: Whether @check_menu_item looks like a #CtkRadioMenuItem
  * 
  * Since: 2.4
  **/
 gboolean
-ctk_check_menu_item_get_draw_as_radio (GtkCheckMenuItem *check_menu_item)
+ctk_check_menu_item_get_draw_as_radio (CtkCheckMenuItem *check_menu_item)
 {
   g_return_val_if_fail (CTK_IS_CHECK_MENU_ITEM (check_menu_item), FALSE);
   
@@ -597,9 +597,9 @@ ctk_check_menu_item_get_draw_as_radio (GtkCheckMenuItem *check_menu_item)
 }
 
 static void
-ctk_check_menu_item_init (GtkCheckMenuItem *check_menu_item)
+ctk_check_menu_item_init (CtkCheckMenuItem *check_menu_item)
 {
-  GtkCheckMenuItemPrivate *priv;
+  CtkCheckMenuItemPrivate *priv;
 
   priv = check_menu_item->priv = ctk_check_menu_item_get_instance_private (check_menu_item);
   priv->active = FALSE;
@@ -613,10 +613,10 @@ ctk_check_menu_item_init (GtkCheckMenuItem *check_menu_item)
 }
 
 static gint
-ctk_check_menu_item_draw (GtkWidget *widget,
+ctk_check_menu_item_draw (CtkWidget *widget,
                           cairo_t   *cr)
 {
-  GtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (widget);
+  CtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (widget);
 
   if (CTK_WIDGET_CLASS (ctk_check_menu_item_parent_class)->draw)
     CTK_WIDGET_CLASS (ctk_check_menu_item_parent_class)->draw (widget, cr);
@@ -628,11 +628,11 @@ ctk_check_menu_item_draw (GtkWidget *widget,
 }
 
 static void
-ctk_check_menu_item_activate (GtkMenuItem *menu_item)
+ctk_check_menu_item_activate (CtkMenuItem *menu_item)
 {
-  GtkCheckMenuItemPrivate *priv;
+  CtkCheckMenuItemPrivate *priv;
 
-  GtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (menu_item);
+  CtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (menu_item);
   priv = check_menu_item->priv;
 
   priv->active = !priv->active;
@@ -647,11 +647,11 @@ ctk_check_menu_item_activate (GtkMenuItem *menu_item)
 }
 
 static void
-ctk_check_menu_item_state_flags_changed (GtkWidget     *widget,
-                                         GtkStateFlags  previous_state)
+ctk_check_menu_item_state_flags_changed (CtkWidget     *widget,
+                                         CtkStateFlags  previous_state)
 
 {
-  GtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (widget);
+  CtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (widget);
 
   update_node_state (check_menu_item);
 
@@ -659,12 +659,12 @@ ctk_check_menu_item_state_flags_changed (GtkWidget     *widget,
 }
 
 static void
-ctk_check_menu_item_direction_changed (GtkWidget        *widget,
-                                       GtkTextDirection  previous_dir)
+ctk_check_menu_item_direction_changed (CtkWidget        *widget,
+                                       CtkTextDirection  previous_dir)
 {
-  GtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (widget);
-  GtkCheckMenuItemPrivate *priv = check_menu_item->priv;
-  GtkCssNode *indicator_node, *widget_node, *node;
+  CtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (widget);
+  CtkCheckMenuItemPrivate *priv = check_menu_item->priv;
+  CtkCssNode *indicator_node, *widget_node, *node;
 
   indicator_node = ctk_css_gadget_get_node (priv->indicator_gadget);
   widget_node = ctk_widget_get_css_node (widget);
@@ -692,7 +692,7 @@ ctk_check_menu_item_direction_changed (GtkWidget        *widget,
 }
 
 static void
-ctk_real_check_menu_item_draw_indicator (GtkCheckMenuItem *check_menu_item,
+ctk_real_check_menu_item_draw_indicator (CtkCheckMenuItem *check_menu_item,
                                          cairo_t          *cr)
 {
   ctk_css_gadget_draw (check_menu_item->priv->indicator_gadget, cr);
@@ -704,8 +704,8 @@ ctk_check_menu_item_get_property (GObject     *object,
                                   GValue      *value,
                                   GParamSpec  *pspec)
 {
-  GtkCheckMenuItem *checkitem = CTK_CHECK_MENU_ITEM (object);
-  GtkCheckMenuItemPrivate *priv = checkitem->priv;
+  CtkCheckMenuItem *checkitem = CTK_CHECK_MENU_ITEM (object);
+  CtkCheckMenuItemPrivate *priv = checkitem->priv;
   
   switch (prop_id)
     {
@@ -731,7 +731,7 @@ ctk_check_menu_item_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkCheckMenuItem *checkitem = CTK_CHECK_MENU_ITEM (object);
+  CtkCheckMenuItem *checkitem = CTK_CHECK_MENU_ITEM (object);
   
   switch (prop_id)
     {
@@ -754,24 +754,24 @@ ctk_check_menu_item_set_property (GObject      *object,
 
 /*
  * _ctk_check_menu_item_set_active:
- * @check_menu_item: a #GtkCheckMenuItem
+ * @check_menu_item: a #CtkCheckMenuItem
  * @is_active: whether the action is active or not
  *
- * Sets the #GtkCheckMenuItem:active property directly. This function does
+ * Sets the #CtkCheckMenuItem:active property directly. This function does
  * not emit signals or notifications: it is left to the caller to do so.
  */
 void
-_ctk_check_menu_item_set_active (GtkCheckMenuItem *check_menu_item,
+_ctk_check_menu_item_set_active (CtkCheckMenuItem *check_menu_item,
                                  gboolean          is_active)
 {
-  GtkCheckMenuItemPrivate *priv = check_menu_item->priv;
+  CtkCheckMenuItemPrivate *priv = check_menu_item->priv;
 
   priv->active = is_active;
   update_node_state (check_menu_item);
 }
 
-GtkCssGadget *
-_ctk_check_menu_item_get_indicator_gadget (GtkCheckMenuItem *check_menu_item)
+CtkCssGadget *
+_ctk_check_menu_item_get_indicator_gadget (CtkCheckMenuItem *check_menu_item)
 {
   return check_menu_item->priv->indicator_gadget;
 }

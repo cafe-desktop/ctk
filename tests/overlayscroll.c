@@ -32,7 +32,7 @@ get_content (void)
 }
 
 static void
-mode_changed (GtkComboBox *combo, GtkScrolledWindow *sw)
+mode_changed (CtkComboBox *combo, CtkScrolledWindow *sw)
 {
   gint active = ctk_combo_box_get_active (combo);
 
@@ -42,14 +42,14 @@ mode_changed (GtkComboBox *combo, GtkScrolledWindow *sw)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
+  CtkWidget *window;
   gchar *content;
-  GtkWidget *box;
-  GtkWidget *sw;
-  GtkWidget *tv;
-  GtkWidget *sb2;
-  GtkWidget *combo;
-  GtkAdjustment *adj;
+  CtkWidget *box;
+  CtkWidget *sw;
+  CtkWidget *tv;
+  CtkWidget *sb2;
+  CtkWidget *combo;
+  CtkAdjustment *adj;
 
   ctk_init (&argc, &argv);
 

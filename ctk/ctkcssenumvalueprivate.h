@@ -27,69 +27,69 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_blend_mode_value_new         (GtkCssBlendMode    blend_mode);
-GtkCssValue *   _ctk_css_blend_mode_value_try_parse   (GtkCssParser      *parser);
-GtkCssBlendMode _ctk_css_blend_mode_value_get         (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_blend_mode_value_new         (CtkCssBlendMode    blend_mode);
+CtkCssValue *   _ctk_css_blend_mode_value_try_parse   (CtkCssParser      *parser);
+CtkCssBlendMode _ctk_css_blend_mode_value_get         (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_border_style_value_new       (GtkBorderStyle     border_style);
-GtkCssValue *   _ctk_css_border_style_value_try_parse (GtkCssParser      *parser);
-GtkBorderStyle  _ctk_css_border_style_value_get       (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_border_style_value_new       (CtkBorderStyle     border_style);
+CtkCssValue *   _ctk_css_border_style_value_try_parse (CtkCssParser      *parser);
+CtkBorderStyle  _ctk_css_border_style_value_get       (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_font_size_value_new          (GtkCssFontSize     size);
-GtkCssValue *   _ctk_css_font_size_value_try_parse    (GtkCssParser      *parser);
-GtkCssFontSize  _ctk_css_font_size_value_get          (const GtkCssValue *value);
-double          ctk_css_font_size_get_default_px      (GtkStyleProviderPrivate *provider,
-                                                       GtkCssStyle             *style);
+CtkCssValue *   _ctk_css_font_size_value_new          (CtkCssFontSize     size);
+CtkCssValue *   _ctk_css_font_size_value_try_parse    (CtkCssParser      *parser);
+CtkCssFontSize  _ctk_css_font_size_value_get          (const CtkCssValue *value);
+double          ctk_css_font_size_get_default_px      (CtkStyleProviderPrivate *provider,
+                                                       CtkCssStyle             *style);
 
-GtkCssValue *   _ctk_css_font_style_value_new         (PangoStyle         style);
-GtkCssValue *   _ctk_css_font_style_value_try_parse   (GtkCssParser      *parser);
-PangoStyle      _ctk_css_font_style_value_get         (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_font_style_value_new         (PangoStyle         style);
+CtkCssValue *   _ctk_css_font_style_value_try_parse   (CtkCssParser      *parser);
+PangoStyle      _ctk_css_font_style_value_get         (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_font_variant_value_new       (PangoVariant       variant);
-GtkCssValue *   _ctk_css_font_variant_value_try_parse (GtkCssParser      *parser);
-PangoVariant    _ctk_css_font_variant_value_get       (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_font_variant_value_new       (PangoVariant       variant);
+CtkCssValue *   _ctk_css_font_variant_value_try_parse (CtkCssParser      *parser);
+PangoVariant    _ctk_css_font_variant_value_get       (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_font_weight_value_new        (PangoWeight        weight);
-GtkCssValue *   _ctk_css_font_weight_value_try_parse  (GtkCssParser      *parser);
-PangoWeight     _ctk_css_font_weight_value_get        (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_font_weight_value_new        (PangoWeight        weight);
+CtkCssValue *   _ctk_css_font_weight_value_try_parse  (CtkCssParser      *parser);
+PangoWeight     _ctk_css_font_weight_value_get        (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_font_stretch_value_new       (PangoStretch       stretch);
-GtkCssValue *   _ctk_css_font_stretch_value_try_parse (GtkCssParser      *parser);
-PangoStretch    _ctk_css_font_stretch_value_get       (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_font_stretch_value_new       (PangoStretch       stretch);
+CtkCssValue *   _ctk_css_font_stretch_value_try_parse (CtkCssParser      *parser);
+PangoStretch    _ctk_css_font_stretch_value_get       (const CtkCssValue *value);
 
-GtkCssValue *         _ctk_css_text_decoration_line_value_new       (GtkTextDecorationLine  line);
-GtkCssValue *         _ctk_css_text_decoration_line_value_try_parse (GtkCssParser          *parser);
-GtkTextDecorationLine _ctk_css_text_decoration_line_value_get       (const GtkCssValue     *value);
+CtkCssValue *         _ctk_css_text_decoration_line_value_new       (CtkTextDecorationLine  line);
+CtkCssValue *         _ctk_css_text_decoration_line_value_try_parse (CtkCssParser          *parser);
+CtkTextDecorationLine _ctk_css_text_decoration_line_value_get       (const CtkCssValue     *value);
 
-GtkCssValue *          _ctk_css_text_decoration_style_value_new       (GtkTextDecorationStyle  style);
-GtkCssValue *          _ctk_css_text_decoration_style_value_try_parse (GtkCssParser           *parser);
-GtkTextDecorationStyle _ctk_css_text_decoration_style_value_get       (const GtkCssValue      *value);
+CtkCssValue *          _ctk_css_text_decoration_style_value_new       (CtkTextDecorationStyle  style);
+CtkCssValue *          _ctk_css_text_decoration_style_value_try_parse (CtkCssParser           *parser);
+CtkTextDecorationStyle _ctk_css_text_decoration_style_value_get       (const CtkCssValue      *value);
 
-GtkCssValue *   _ctk_css_area_value_new               (GtkCssArea         area);
-GtkCssValue *   _ctk_css_area_value_try_parse         (GtkCssParser      *parser);
-GtkCssArea      _ctk_css_area_value_get               (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_area_value_new               (CtkCssArea         area);
+CtkCssValue *   _ctk_css_area_value_try_parse         (CtkCssParser      *parser);
+CtkCssArea      _ctk_css_area_value_get               (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_direction_value_new          (GtkCssDirection    direction);
-GtkCssValue *   _ctk_css_direction_value_try_parse    (GtkCssParser      *parser);
-GtkCssDirection _ctk_css_direction_value_get          (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_direction_value_new          (CtkCssDirection    direction);
+CtkCssValue *   _ctk_css_direction_value_try_parse    (CtkCssParser      *parser);
+CtkCssDirection _ctk_css_direction_value_get          (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_play_state_value_new         (GtkCssPlayState    play_state);
-GtkCssValue *   _ctk_css_play_state_value_try_parse   (GtkCssParser      *parser);
-GtkCssPlayState _ctk_css_play_state_value_get         (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_play_state_value_new         (CtkCssPlayState    play_state);
+CtkCssValue *   _ctk_css_play_state_value_try_parse   (CtkCssParser      *parser);
+CtkCssPlayState _ctk_css_play_state_value_get         (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_fill_mode_value_new          (GtkCssFillMode     fill_mode);
-GtkCssValue *   _ctk_css_fill_mode_value_try_parse    (GtkCssParser      *parser);
-GtkCssFillMode  _ctk_css_fill_mode_value_get          (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_fill_mode_value_new          (CtkCssFillMode     fill_mode);
+CtkCssValue *   _ctk_css_fill_mode_value_try_parse    (CtkCssParser      *parser);
+CtkCssFillMode  _ctk_css_fill_mode_value_get          (const CtkCssValue *value);
 
-GtkCssValue *   _ctk_css_icon_effect_value_new        (GtkCssIconEffect   image_effect);
-GtkCssValue *   _ctk_css_icon_effect_value_try_parse  (GtkCssParser      *parser);
-GtkCssIconEffect _ctk_css_icon_effect_value_get       (const GtkCssValue *value);
-void            ctk_css_icon_effect_apply             (GtkCssIconEffect   icon_effect,
+CtkCssValue *   _ctk_css_icon_effect_value_new        (CtkCssIconEffect   image_effect);
+CtkCssValue *   _ctk_css_icon_effect_value_try_parse  (CtkCssParser      *parser);
+CtkCssIconEffect _ctk_css_icon_effect_value_get       (const CtkCssValue *value);
+void            ctk_css_icon_effect_apply             (CtkCssIconEffect   icon_effect,
                                                        cairo_surface_t   *surface);
 
-GtkCssValue *   _ctk_css_icon_style_value_new         (GtkCssIconStyle    icon_style);
-GtkCssValue *   _ctk_css_icon_style_value_try_parse   (GtkCssParser      *parser);
-GtkCssIconStyle _ctk_css_icon_style_value_get         (const GtkCssValue *value);
+CtkCssValue *   _ctk_css_icon_style_value_new         (CtkCssIconStyle    icon_style);
+CtkCssValue *   _ctk_css_icon_style_value_try_parse   (CtkCssParser      *parser);
+CtkCssIconStyle _ctk_css_icon_style_value_get         (const CtkCssValue *value);
 
 G_END_DECLS
 

@@ -2,11 +2,11 @@
 <!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="ctk+" version="3.20"/>
-  <object class="GtkWindow">
+  <object class="CtkWindow">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkLabel">
+      <object class="CtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">███</property>

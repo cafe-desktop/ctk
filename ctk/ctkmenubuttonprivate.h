@@ -25,11 +25,11 @@
 
 G_BEGIN_DECLS
 
-typedef void (* GtkMenuButtonShowMenuCallback) (gpointer user_data);
+typedef void (* CtkMenuButtonShowMenuCallback) (gpointer user_data);
 
-void       _ctk_menu_button_set_popup_with_func (GtkMenuButton                 *menu_button,
-                                                 GtkWidget                     *menu,
-                                                 GtkMenuButtonShowMenuCallback  func,
+void       _ctk_menu_button_set_popup_with_func (CtkMenuButton                 *menu_button,
+                                                 CtkWidget                     *menu,
+                                                 CtkMenuButtonShowMenuCallback  func,
                                                  gpointer                       user_data);
 
 G_END_DECLS

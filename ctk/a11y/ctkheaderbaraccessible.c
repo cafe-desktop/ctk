@@ -21,10 +21,10 @@
 
 #include "ctkcontainerprivate.h"
 
-G_DEFINE_TYPE (GtkHeaderBarAccessible, ctk_header_bar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (CtkHeaderBarAccessible, ctk_header_bar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-count_widget (GtkWidget *widget,
+count_widget (CtkWidget *widget,
               gint      *count)
 {
   (*count)++;
@@ -33,14 +33,14 @@ count_widget (GtkWidget *widget,
 static gint
 ctk_header_bar_accessible_get_n_children (AtkObject* obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gint count = 0;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return 0;
 
-  ctk_container_forall (CTK_CONTAINER (widget), (GtkCallback) count_widget, &count);
+  ctk_container_forall (CTK_CONTAINER (widget), (CtkCallback) count_widget, &count);
   return count;
 }
 
@@ -50,7 +50,7 @@ ctk_header_bar_accessible_ref_child (AtkObject *obj,
 {
   GList *children, *tmp_list;
   AtkObject  *accessible;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -72,7 +72,7 @@ ctk_header_bar_accessible_ref_child (AtkObject *obj,
 }
 
 static void
-ctk_header_bar_accessible_class_init (GtkHeaderBarAccessibleClass *klass)
+ctk_header_bar_accessible_class_init (CtkHeaderBarAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -81,7 +81,7 @@ ctk_header_bar_accessible_class_init (GtkHeaderBarAccessibleClass *klass)
 }
 
 static void
-ctk_header_bar_accessible_init (GtkHeaderBarAccessible *header_bar)
+ctk_header_bar_accessible_init (CtkHeaderBarAccessible *header_bar)
 {
 }
 

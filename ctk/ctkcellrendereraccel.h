@@ -27,18 +27,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_RENDERER_ACCEL            (ctk_cell_renderer_accel_get_type ())
-#define CTK_CELL_RENDERER_ACCEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccel))
-#define CTK_CELL_RENDERER_ACCEL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccelClass))
+#define CTK_CELL_RENDERER_ACCEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_ACCEL, CtkCellRendererAccel))
+#define CTK_CELL_RENDERER_ACCEL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_ACCEL, CtkCellRendererAccelClass))
 #define CTK_IS_CELL_RENDERER_ACCEL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_ACCEL))
 #define CTK_IS_CELL_RENDERER_ACCEL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_ACCEL))
-#define CTK_CELL_RENDERER_ACCEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccelClass))
+#define CTK_CELL_RENDERER_ACCEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_ACCEL, CtkCellRendererAccelClass))
 
-typedef struct _GtkCellRendererAccel              GtkCellRendererAccel;
-typedef struct _GtkCellRendererAccelPrivate       GtkCellRendererAccelPrivate;
-typedef struct _GtkCellRendererAccelClass         GtkCellRendererAccelClass;
+typedef struct _CtkCellRendererAccel              CtkCellRendererAccel;
+typedef struct _CtkCellRendererAccelPrivate       CtkCellRendererAccelPrivate;
+typedef struct _CtkCellRendererAccelClass         CtkCellRendererAccelClass;
 
 /**
- * GtkCellRendererAccelMode:
+ * CtkCellRendererAccelMode:
  * @CTK_CELL_RENDERER_ACCEL_MODE_CTK: GTK+ accelerators mode
  * @CTK_CELL_RENDERER_ACCEL_MODE_OTHER: Other accelerator mode
  *
@@ -51,28 +51,28 @@ typedef enum
 {
   CTK_CELL_RENDERER_ACCEL_MODE_CTK,
   CTK_CELL_RENDERER_ACCEL_MODE_OTHER
-} GtkCellRendererAccelMode;
+} CtkCellRendererAccelMode;
 
 
-struct _GtkCellRendererAccel
+struct _CtkCellRendererAccel
 {
-  GtkCellRendererText parent;
+  CtkCellRendererText parent;
 
   /*< private >*/
-  GtkCellRendererAccelPrivate *priv;
+  CtkCellRendererAccelPrivate *priv;
 };
 
-struct _GtkCellRendererAccelClass
+struct _CtkCellRendererAccelClass
 {
-  GtkCellRendererTextClass parent_class;
+  CtkCellRendererTextClass parent_class;
 
-  void (* accel_edited)  (GtkCellRendererAccel *accel,
+  void (* accel_edited)  (CtkCellRendererAccel *accel,
 		 	  const gchar          *path_string,
 			  guint                 accel_key,
 			  GdkModifierType       accel_mods,
 			  guint                 hardware_keycode);
 
-  void (* accel_cleared) (GtkCellRendererAccel *accel,
+  void (* accel_cleared) (CtkCellRendererAccel *accel,
 			  const gchar          *path_string);
 
   /* Padding for future expansion */
@@ -86,7 +86,7 @@ struct _GtkCellRendererAccelClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_accel_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer *ctk_cell_renderer_accel_new             (void);
+CtkCellRenderer *ctk_cell_renderer_accel_new             (void);
 
 
 G_END_DECLS

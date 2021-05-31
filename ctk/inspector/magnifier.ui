@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <template class="GtkInspectorMagnifier" parent="GtkBox">
+  <template class="CtkInspectorMagnifier" parent="CtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="CtkScrolledWindow">
         <property name="visible">True</property>
         <property name="hscrollbar-policy">automatic</property>
         <property name="vscrollbar-policy">automatic</property>
         <property name="expand">True</property>
         <property name="shadow-type">none</property>
         <child>
-          <object class="GtkMagnifier" id="magnifier">
+          <object class="CtkMagnifier" id="magnifier">
             <property name="visible">True</property>
             <property name="resize">True</property>
           </object>

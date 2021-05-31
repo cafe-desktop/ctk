@@ -13,5 +13,5 @@ Documentation for updating this catalog can be found here:
 
 Note also that when including private GTK+ widgets as components, it is
 important to call g_type_ensure () to register the type explicitly
-before calling ctk_container_init_template(), otherwise GtkBuilder will
+before calling ctk_container_init_template(), otherwise CtkBuilder will
 not be able to properly load the type.

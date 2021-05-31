@@ -28,14 +28,14 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_REVEALER (ctk_revealer_get_type ())
-#define CTK_REVEALER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_REVEALER, GtkRevealer))
-#define CTK_REVEALER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_REVEALER, GtkRevealerClass))
+#define CTK_REVEALER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_REVEALER, CtkRevealer))
+#define CTK_REVEALER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_REVEALER, CtkRevealerClass))
 #define CTK_IS_REVEALER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_REVEALER))
 #define CTK_IS_REVEALER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_REVEALER))
-#define CTK_REVEALER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_REVEALER, GtkRevealerClass))
+#define CTK_REVEALER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_REVEALER, CtkRevealerClass))
 
-typedef struct _GtkRevealer GtkRevealer;
-typedef struct _GtkRevealerClass GtkRevealerClass;
+typedef struct _CtkRevealer CtkRevealer;
+typedef struct _CtkRevealerClass CtkRevealerClass;
 
 typedef enum {
   CTK_REVEALER_TRANSITION_TYPE_NONE,
@@ -44,41 +44,41 @@ typedef enum {
   CTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT,
   CTK_REVEALER_TRANSITION_TYPE_SLIDE_UP,
   CTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN
-} GtkRevealerTransitionType;
+} CtkRevealerTransitionType;
 
-struct _GtkRevealer {
-  GtkBin parent_instance;
+struct _CtkRevealer {
+  CtkBin parent_instance;
 };
 
 /**
- * GtkRevealerClass:
+ * CtkRevealerClass:
  * @parent_class: The parent class.
  */
-struct _GtkRevealerClass {
-  GtkBinClass parent_class;
+struct _CtkRevealerClass {
+  CtkBinClass parent_class;
 };
 
 GDK_AVAILABLE_IN_3_10
 GType                      ctk_revealer_get_type                (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_10
-GtkWidget*                 ctk_revealer_new                     (void);
+CtkWidget*                 ctk_revealer_new                     (void);
 GDK_AVAILABLE_IN_3_10
-gboolean                   ctk_revealer_get_reveal_child        (GtkRevealer               *revealer);
+gboolean                   ctk_revealer_get_reveal_child        (CtkRevealer               *revealer);
 GDK_AVAILABLE_IN_3_10
-void                       ctk_revealer_set_reveal_child        (GtkRevealer               *revealer,
+void                       ctk_revealer_set_reveal_child        (CtkRevealer               *revealer,
                                                                  gboolean                   reveal_child);
 GDK_AVAILABLE_IN_3_10
-gboolean                   ctk_revealer_get_child_revealed      (GtkRevealer               *revealer);
+gboolean                   ctk_revealer_get_child_revealed      (CtkRevealer               *revealer);
 GDK_AVAILABLE_IN_3_10
-guint                      ctk_revealer_get_transition_duration (GtkRevealer               *revealer);
+guint                      ctk_revealer_get_transition_duration (CtkRevealer               *revealer);
 GDK_AVAILABLE_IN_3_10
-void                       ctk_revealer_set_transition_duration (GtkRevealer               *revealer,
+void                       ctk_revealer_set_transition_duration (CtkRevealer               *revealer,
                                                                  guint                      duration);
 GDK_AVAILABLE_IN_3_10
-void                       ctk_revealer_set_transition_type     (GtkRevealer               *revealer,
-                                                                 GtkRevealerTransitionType  transition);
+void                       ctk_revealer_set_transition_type     (CtkRevealer               *revealer,
+                                                                 CtkRevealerTransitionType  transition);
 GDK_AVAILABLE_IN_3_10
-GtkRevealerTransitionType  ctk_revealer_get_transition_type     (GtkRevealer               *revealer);
+CtkRevealerTransitionType  ctk_revealer_get_transition_type     (CtkRevealer               *revealer);
 
 
 G_END_DECLS

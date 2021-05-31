@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkHeaderBar" id="headerbar1">
+      <object class="CtkHeaderBar" id="headerbar1">
         <property name="visible">True</property>
         <property name="title">Title</property>
         <property name="subtitle">Subtitle</property>
         <child>
-          <object class="GtkButton" id="button1">
+          <object class="CtkButton" id="button1">
             <property name="label" translatable="yes">Yes</property>
             <property name="visible">True</property>
           </object>
@@ -19,7 +19,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="page2">
+          <object class="CtkButton" id="page2">
             <property name="label" translatable="yes">No</property>
             <property name="visible">True</property>
           </object>

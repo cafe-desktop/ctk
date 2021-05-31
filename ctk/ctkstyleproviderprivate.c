@@ -28,28 +28,28 @@ enum {
   LAST_SIGNAL
 };
 
-G_DEFINE_INTERFACE (GtkStyleProviderPrivate, _ctk_style_provider_private, CTK_TYPE_STYLE_PROVIDER)
+G_DEFINE_INTERFACE (CtkStyleProviderPrivate, _ctk_style_provider_private, CTK_TYPE_STYLE_PROVIDER)
 
 static guint signals[LAST_SIGNAL];
 
 static void
-_ctk_style_provider_private_default_init (GtkStyleProviderPrivateInterface *iface)
+_ctk_style_provider_private_default_init (CtkStyleProviderPrivateInterface *iface)
 {
   signals[CHANGED] = g_signal_new (I_("-ctk-private-changed"),
                                    G_TYPE_FROM_INTERFACE (iface),
                                    G_SIGNAL_RUN_LAST,
-                                   G_STRUCT_OFFSET (GtkStyleProviderPrivateInterface, changed),
+                                   G_STRUCT_OFFSET (CtkStyleProviderPrivateInterface, changed),
                                    NULL, NULL,
                                    NULL,
                                    G_TYPE_NONE, 0);
 
 }
 
-GtkCssValue *
-_ctk_style_provider_private_get_color (GtkStyleProviderPrivate *provider,
+CtkCssValue *
+_ctk_style_provider_private_get_color (CtkStyleProviderPrivate *provider,
                                        const char              *name)
 {
-  GtkStyleProviderPrivateInterface *iface;
+  CtkStyleProviderPrivateInterface *iface;
 
   /* for compat with ctk_symbolic_color_resolve() */
   if (provider == NULL)
@@ -65,11 +65,11 @@ _ctk_style_provider_private_get_color (GtkStyleProviderPrivate *provider,
   return iface->get_color (provider, name);
 }
 
-GtkCssKeyframes *
-_ctk_style_provider_private_get_keyframes (GtkStyleProviderPrivate *provider,
+CtkCssKeyframes *
+_ctk_style_provider_private_get_keyframes (CtkStyleProviderPrivate *provider,
                                            const char              *name)
 {
-  GtkStyleProviderPrivateInterface *iface;
+  CtkStyleProviderPrivateInterface *iface;
 
   ctk_internal_return_val_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
   ctk_internal_return_val_if_fail (name != NULL, NULL);
@@ -83,12 +83,12 @@ _ctk_style_provider_private_get_keyframes (GtkStyleProviderPrivate *provider,
 }
 
 void
-_ctk_style_provider_private_lookup (GtkStyleProviderPrivate *provider,
-                                    const GtkCssMatcher     *matcher,
-                                    GtkCssLookup            *lookup,
-                                    GtkCssChange            *out_change)
+_ctk_style_provider_private_lookup (CtkStyleProviderPrivate *provider,
+                                    const CtkCssMatcher     *matcher,
+                                    CtkCssLookup            *lookup,
+                                    CtkCssChange            *out_change)
 {
-  GtkStyleProviderPrivateInterface *iface;
+  CtkStyleProviderPrivateInterface *iface;
 
   ctk_internal_return_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider));
   ctk_internal_return_if_fail (matcher != NULL);
@@ -106,17 +106,17 @@ _ctk_style_provider_private_lookup (GtkStyleProviderPrivate *provider,
 }
 
 void
-_ctk_style_provider_private_changed (GtkStyleProviderPrivate *provider)
+_ctk_style_provider_private_changed (CtkStyleProviderPrivate *provider)
 {
   ctk_internal_return_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider));
 
   g_signal_emit (provider, signals[CHANGED], 0);
 }
 
-GtkSettings *
-_ctk_style_provider_private_get_settings (GtkStyleProviderPrivate *provider)
+CtkSettings *
+_ctk_style_provider_private_get_settings (CtkStyleProviderPrivate *provider)
 {
-  GtkStyleProviderPrivateInterface *iface;
+  CtkStyleProviderPrivateInterface *iface;
 
   g_return_val_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
 
@@ -129,9 +129,9 @@ _ctk_style_provider_private_get_settings (GtkStyleProviderPrivate *provider)
 }
 
 int
-_ctk_style_provider_private_get_scale (GtkStyleProviderPrivate *provider)
+_ctk_style_provider_private_get_scale (CtkStyleProviderPrivate *provider)
 {
-  GtkStyleProviderPrivateInterface *iface;
+  CtkStyleProviderPrivateInterface *iface;
 
   ctk_internal_return_val_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider), 1);
 
@@ -144,11 +144,11 @@ _ctk_style_provider_private_get_scale (GtkStyleProviderPrivate *provider)
 }
 
 void
-_ctk_style_provider_private_emit_error (GtkStyleProviderPrivate *provider,
-                                        GtkCssSection           *section,
+_ctk_style_provider_private_emit_error (CtkStyleProviderPrivate *provider,
+                                        CtkCssSection           *section,
                                         GError                  *error)
 {
-  GtkStyleProviderPrivateInterface *iface;
+  CtkStyleProviderPrivateInterface *iface;
 
   iface = CTK_STYLE_PROVIDER_PRIVATE_GET_INTERFACE (provider);
 

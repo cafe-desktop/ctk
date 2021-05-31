@@ -454,10 +454,10 @@ msgstr "Amel Zümresi"
 
 #: ctk/ctkaction.c:355
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"Bu GtkAction'nıñ ülfetlendirilgeni GtkActionGroup, yaki NULL (iç qullanım "
+"Bu CtkAction'nıñ ülfetlendirilgeni CtkActionGroup, yaki NULL (iç qullanım "
 "içün)."
 
 #: ctk/ctkaction.c:373 ctk/ctkimagemenuitem.c:169
@@ -915,11 +915,11 @@ msgstr "Deste türü"
 
 #: ctk/ctkbox.c:170 ctk/ctknotebook.c:724
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
 "Balanıñ, babanıñ soñunamı yaki başınamı sıltavlı olaraq destelengenini "
-"belirtken bir GtkPackType"
+"belirtken bir CtkPackType"
 
 # ctk/ctkpaned.c:116 ctk/ctkruler.c:138
 #: ctk/ctkbox.c:176 ctk/ctknotebook.c:702 ctk/ctkpaned.c:241
@@ -1472,8 +1472,8 @@ msgstr "Ölçü"
 
 # ctk/ctkwindow.c:333
 #: ctk/ctkcellrendererpixbuf.c:144
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Qılınğan işaretçikniñ ölçüsini belirtken GtkIconSize qıymeti"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Qılınğan işaretçikniñ ölçüsini belirtken CtkIconSize qıymeti"
 
 #: ctk/ctkcellrendererpixbuf.c:153
 msgid "Detail"
@@ -1616,8 +1616,8 @@ msgstr "Aylanıcınıñ nabzı"
 # ctk/ctkwindow.c:333
 #: ctk/ctkcellrendererspinner.c:159
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "Qılınğan işaretçikniñ ölçüsini belirtken GtkIconSize qıymeti"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "Qılınğan işaretçikniñ ölçüsini belirtken CtkIconSize qıymeti"
 
 # ctk/ctkcellrenderertext.c:155
 #: ctk/ctkcellrenderertext.c:196
@@ -3843,10 +3843,10 @@ msgstr "Tegizleme"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Etiket metniniñ satırlarınıñ bir-birine nisbeten hizalanması. Bu, etiketniñ "
-"tahsisi içerisinde hizalanmasını tesirlemez. Onıñ içün baqıñız: GtkMisc::"
+"tahsisi içerisinde hizalanmasını tesirlemez. Onıñ içün baqıñız: CtkMisc::"
 "xalign"
 
 # ctk/ctklabel.c:236
@@ -3972,8 +3972,8 @@ msgstr "Ufqiy tadil"
 
 # ctk/ctklayout.c:420
 #: ctk/ctklayout.c:618 ctk/ctkscrolledwindow.c:219
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "Ufqiy mevam içün GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "Ufqiy mevam içün CtkAdjustment"
 
 # ctk/ctklayout.c:427 ctk/ctkviewport.c:139
 #: ctk/ctklayout.c:625 ctk/ctkviewport.c:114
@@ -3982,8 +3982,8 @@ msgstr "Vertikal tadil"
 
 # ctk/ctklayout.c:428
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:226
-msgid "The GtkAdjustment for the vertical position"
-msgstr "Vertikal mevam içün GtkAdjustment"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "Vertikal mevam içün CtkAdjustment"
 
 # ctk/ctklayout.c:436
 #: ctk/ctklayout.c:634
@@ -4954,16 +4954,16 @@ msgid "Default Page Setup"
 msgstr "Ög-belgilengen Saife Tesbiti"
 
 #: ctk/ctkprintoperation.c:998
-msgid "The GtkPageSetup used by default"
-msgstr "Ög-belgilengen olaraq qullanılacaq GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "Ög-belgilengen olaraq qullanılacaq CtkPageSetup"
 
 #: ctk/ctkprintoperation.c:1016 ctk/ctkprintunixdialog.c:320
 msgid "Print Settings"
 msgstr "Bastıruv Tesbitleri"
 
 #: ctk/ctkprintoperation.c:1017 ctk/ctkprintunixdialog.c:321
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "Dialognı başlanğıçlandıruv içün qullanılacaq GtkPrintSettings"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "Dialognı başlanğıçlandıruv içün qullanılacaq CtkPrintSettings"
 
 # ctk/ctkfontsel.c:185
 #: ctk/ctkprintoperation.c:1035
@@ -5095,7 +5095,7 @@ msgid "Embed Page Setup"
 msgstr "Saife Tesbitini İçeri Yatqız"
 
 #: ctk/ctkprintoperation.c:1313
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1334
@@ -5108,8 +5108,8 @@ msgid "The number of pages that will be printed."
 msgstr "Bastırılacaq olğan saifelerniñ sayısı."
 
 #: ctk/ctkprintunixdialog.c:303
-msgid "The GtkPageSetup to use"
-msgstr "Qullanılacaq GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "Qullanılacaq CtkPageSetup"
 
 # ctk/ctkfilesel.c:503
 #: ctk/ctkprintunixdialog.c:328
@@ -5118,8 +5118,8 @@ msgstr "Saylanğan Bastırıcı"
 
 # ctk/ctkfontsel.c:193
 #: ctk/ctkprintunixdialog.c:329
-msgid "The GtkPrinter which is selected"
-msgstr "Saylanğan olğan GtkPrinter"
+msgid "The CtkPrinter which is selected"
+msgstr "Saylanğan olğan CtkPrinter"
 
 #: ctk/ctkprintunixdialog.c:336
 msgid "Manual Capabilites"
@@ -5140,7 +5140,7 @@ msgid "Whether the application has a selection"
 msgstr "Uyğulamanıñ bir saylamı olıp olmağanı"
 
 #: ctk/ctkprintunixdialog.c:362
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 # ctk/ctkprogress.c:122
@@ -5151,11 +5151,11 @@ msgstr "Faaliyet tarzı"
 # ctk/ctkprogress.c:123
 #: ctk/ctkprogress.c:103
 msgid ""
-"If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+"If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 "something is happening, but not how much of the activity is finished. This "
 "is used when you're doing something but don't know how long it will take."
 msgstr ""
-"Eger DOĞRU ise, GtkProgress faaliyet tarzındadır, yani bir şeyniñ "
+"Eger DOĞRU ise, CtkProgress faaliyet tarzındadır, yani bir şeyniñ "
 "yaşanğanını signallar, amma faaliyetniñ ne qadarınıñ tamamlanğan olğanını "
 "degil. Bu, ne qadar sürecegini bilmegeniñiz bir şey yapılğanda qullanılır."
 
@@ -5172,8 +5172,8 @@ msgstr "Teraqqiyatnıñ metin olaraq kösterilip kösterilmeycegi."
 # tüklü
 # ctk/ctkprogressbar.c:132
 #: ctk/ctkprogressbar.c:119
-msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-msgstr "Teraqqiyat çubuğına bağlanğan GtkAdjustment (Taqbih etilgen)"
+msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+msgstr "Teraqqiyat çubuğına bağlanğan CtkAdjustment (Taqbih etilgen)"
 
 # ctk/ctkprogressbar.c:148
 #: ctk/ctkprogressbar.c:135
@@ -5374,8 +5374,8 @@ msgstr "Menzilniñ ekran üzerinde nasıl güncellenecegi"
 
 # ctk/ctkrange.c:266
 #: ctk/ctkrange.c:368
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "Bu menzil nesnesiniñ ağımdaki qıymetini ihtiva etken GtkAdjustment"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "Bu menzil nesnesiniñ ağımdaki qıymetini ihtiva etken CtkAdjustment"
 
 # tüklü
 # ctk/ctkrange.c:273
@@ -5762,9 +5762,9 @@ msgstr "İşaretçik ölçüsi"
 # ctk/ctkrange.c:266
 #: ctk/ctkscalebutton.c:226
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"Bu miqyas dögmesi nesnesiniñ ağımdaki qıymetini ihtiva etken GtkAdjustment"
+"Bu miqyas dögmesi nesnesiniñ ağımdaki qıymetini ihtiva etken CtkAdjustment"
 
 #: ctk/ctkscalebutton.c:254
 msgid "Icons"
@@ -6320,17 +6320,17 @@ msgid "Default file chooser backend"
 msgstr "Ög-belgilengen dosye saylavcısı arqa-ucu"
 
 #: ctk/ctksettings.c:742
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Ög-belgilengen olaraq qullanılacaq GtkFileChooser arqa-ucunıñ adı"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Ög-belgilengen olaraq qullanılacaq CtkFileChooser arqa-ucunıñ adı"
 
 #: ctk/ctksettings.c:759
 msgid "Default print backend"
 msgstr "Ög-belgilengen bastıruv arqa-ucu"
 
 #: ctk/ctksettings.c:760
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr ""
-"Ög-belgilengen olaraq qullanılacaq GtkPrintBackend arqa-uclarınıñ listesi"
+"Ög-belgilengen olaraq qullanılacaq CtkPrintBackend arqa-uclarınıñ listesi"
 
 #: ctk/ctksettings.c:783
 msgid "Default command to run when displaying a print preview"
@@ -6574,7 +6574,7 @@ msgstr "Adım sayısı"
 #: ctk/ctkspinner.c:144
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -7734,9 +7734,9 @@ msgid "Fixed Height Mode"
 msgstr "Sabit Yükseklik Tarzı"
 
 #: ctk/ctktreeview.c:658
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"Saflarnıñ hepsiniñ aynı yükseklikte olğanını farz eterek GtkTreeView'ni "
+"Saflarnıñ hepsiniñ aynı yükseklikte olğanını farz eterek CtkTreeView'ni "
 "sur'atlandırır"
 
 #: ctk/ctktreeview.c:678
@@ -8055,18 +8055,18 @@ msgstr "Mezc etilgen qullanıcı arayüzüni (QA) tasvir etken XML tizgisi"
 # ctk/ctkviewport.c:132
 #: ctk/ctkviewport.c:107
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr ""
-"Bu körünim-limanı içün ufqiy mevam qıymetlerini belgilegen GtkAdjustment"
+"Bu körünim-limanı içün ufqiy mevam qıymetlerini belgilegen CtkAdjustment"
 
 # ctk/ctkviewport.c:140
 #: ctk/ctkviewport.c:115
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr ""
-"Bu körünim-limanı içün vertikal mevam qıymetlerini belgilegen GtkAdjustment"
+"Bu körünim-limanı içün vertikal mevam qıymetlerini belgilegen CtkAdjustment"
 
 # ctk/ctkviewport.c:148
 #: ctk/ctkviewport.c:123
@@ -8586,8 +8586,8 @@ msgid "Focus in Toplevel"
 msgstr "Fokus Üst Seviyede"
 
 #: ctk/ctkwindow.c:643
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Kirdi fokusınıñ bu GtkWindow içerisinde olıp olmağanı"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Kirdi fokusınıñ bu CtkWindow içerisinde olıp olmağanı"
 
 #: ctk/ctkwindow.c:650
 msgid "Type hint"

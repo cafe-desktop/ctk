@@ -2,15 +2,15 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="ctk+" version="3.0"/>
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="width_request">100</property>
             <property name="height_request">100</property>
             <property name="visible">True</property>
@@ -21,7 +21,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label_n">
+          <object class="CtkLabel" id="label_n">
             <property name="name">label_n</property>
             <property name="height_request">30</property>
             <property name="visible">True</property>
@@ -33,7 +33,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label_w">
+          <object class="CtkLabel" id="label_w">
             <property name="name">label_w</property>
             <property name="width_request">30</property>
             <property name="visible">True</property>
@@ -45,7 +45,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label_e">
+          <object class="CtkLabel" id="label_e">
             <property name="name">label_e</property>
             <property name="width_request">30</property>
             <property name="visible">True</property>
@@ -57,7 +57,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label_s">
+          <object class="CtkLabel" id="label_s">
             <property name="name">label_s</property>
             <property name="height_request">30</property>
             <property name="visible">True</property>

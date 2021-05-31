@@ -50,7 +50,7 @@ typedef enum {
   GDK_DRAG_STATUS_MOTION_WAIT,
   GDK_DRAG_STATUS_ACTION_WAIT,
   GDK_DRAG_STATUS_DROP
-} GtkDragStatus;
+} CtkDragStatus;
 
 typedef struct {
   guint32 xid;

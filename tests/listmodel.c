@@ -101,12 +101,12 @@ my_object_class_init (MyObjectClass *class)
   g_object_class_install_properties (object_class, LAST_PROPERTY, properties);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_widget (gpointer item,
                gpointer user_data)
 {
   MyObject *obj = (MyObject *)item;
-  GtkWidget *label;
+  CtkWidget *label;
 
   label = ctk_label_new ("");
   g_object_bind_property (obj, "label", label, "label", G_BINDING_SYNC_CREATE);
@@ -126,7 +126,7 @@ compare_items (gconstpointer a, gconstpointer b, gpointer data)
 }
 
 static void
-add_some (GtkButton *button, GListStore *store)
+add_some (CtkButton *button, GListStore *store)
 {
   gint n, i;
   guint n_items;
@@ -149,7 +149,7 @@ add_some (GtkButton *button, GListStore *store)
 }
 
 static void
-remove_some (GtkButton *button, GListStore *store)
+remove_some (CtkButton *button, GListStore *store)
 {
   gint n, i;
   guint n_items;
@@ -167,7 +167,7 @@ remove_some (GtkButton *button, GListStore *store)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *grid, *sw, *box, *button;
+  CtkWidget *window, *grid, *sw, *box, *button;
   GListStore *store;
   gint i;
 

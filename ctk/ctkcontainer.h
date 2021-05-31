@@ -35,27 +35,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CONTAINER              (ctk_container_get_type ())
-#define CTK_CONTAINER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CONTAINER, GtkContainer))
-#define CTK_CONTAINER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CONTAINER, GtkContainerClass))
+#define CTK_CONTAINER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CONTAINER, CtkContainer))
+#define CTK_CONTAINER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CONTAINER, CtkContainerClass))
 #define CTK_IS_CONTAINER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CONTAINER))
 #define CTK_IS_CONTAINER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CONTAINER))
-#define CTK_CONTAINER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CONTAINER, GtkContainerClass))
+#define CTK_CONTAINER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CONTAINER, CtkContainerClass))
 
 
-typedef struct _GtkContainer              GtkContainer;
-typedef struct _GtkContainerPrivate       GtkContainerPrivate;
-typedef struct _GtkContainerClass         GtkContainerClass;
+typedef struct _CtkContainer              CtkContainer;
+typedef struct _CtkContainerPrivate       CtkContainerPrivate;
+typedef struct _CtkContainerClass         CtkContainerClass;
 
-struct _GtkContainer
+struct _CtkContainer
 {
-  GtkWidget widget;
+  CtkWidget widget;
 
   /*< private >*/
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 };
 
 /**
- * GtkContainerClass:
+ * CtkContainerClass:
  * @parent_class: The parent class.
  * @add: Signal emitted when a widget is added to container.
  * @remove: Signal emitted when a widget is removed from container.
@@ -72,38 +72,38 @@ struct _GtkContainer
  *
  * Base class for containers.
  */
-struct _GtkContainerClass
+struct _CtkContainerClass
 {
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
   /*< public >*/
 
-  void    (*add)       		(GtkContainer	 *container,
-				 GtkWidget	 *widget);
-  void    (*remove)    		(GtkContainer	 *container,
-				 GtkWidget	 *widget);
-  void    (*check_resize)	(GtkContainer	 *container);
-  void    (*forall)    		(GtkContainer	 *container,
+  void    (*add)       		(CtkContainer	 *container,
+				 CtkWidget	 *widget);
+  void    (*remove)    		(CtkContainer	 *container,
+				 CtkWidget	 *widget);
+  void    (*check_resize)	(CtkContainer	 *container);
+  void    (*forall)    		(CtkContainer	 *container,
 				 gboolean	  include_internals,
-				 GtkCallback	  callback,
+				 CtkCallback	  callback,
 				 gpointer	  callback_data);
-  void    (*set_focus_child)	(GtkContainer	 *container,
-				 GtkWidget	 *child);
-  GType   (*child_type)		(GtkContainer	 *container);
-  gchar*  (*composite_name)	(GtkContainer	 *container,
-				 GtkWidget	 *child);
-  void    (*set_child_property) (GtkContainer    *container,
-				 GtkWidget       *child,
+  void    (*set_focus_child)	(CtkContainer	 *container,
+				 CtkWidget	 *child);
+  GType   (*child_type)		(CtkContainer	 *container);
+  gchar*  (*composite_name)	(CtkContainer	 *container,
+				 CtkWidget	 *child);
+  void    (*set_child_property) (CtkContainer    *container,
+				 CtkWidget       *child,
 				 guint            property_id,
 				 const GValue    *value,
 				 GParamSpec      *pspec);
-  void    (*get_child_property) (GtkContainer    *container,
-                                 GtkWidget       *child,
+  void    (*get_child_property) (CtkContainer    *container,
+                                 CtkWidget       *child,
 				 guint            property_id,
 				 GValue          *value,
 				 GParamSpec      *pspec);
-  GtkWidgetPath * (*get_path_for_child) (GtkContainer *container,
-                                         GtkWidget    *child);
+  CtkWidgetPath * (*get_path_for_child) (CtkContainer *container,
+                                         CtkWidget    *child);
 
 
   /*< private >*/
@@ -123,7 +123,7 @@ struct _GtkContainerClass
 
 
 /**
- * GtkResizeMode:
+ * CtkResizeMode:
  * @CTK_RESIZE_PARENT: Pass resize request to the parent
  * @CTK_RESIZE_QUEUE: Queue resizes on this widget
  * @CTK_RESIZE_IMMEDIATE: Resize immediately. Deprecated.
@@ -133,7 +133,7 @@ typedef enum
   CTK_RESIZE_PARENT,
   CTK_RESIZE_QUEUE,
   CTK_RESIZE_IMMEDIATE
-} GtkResizeMode;
+} CtkResizeMode;
 
 
 /* Application-level methods */
@@ -141,46 +141,46 @@ typedef enum
 GDK_AVAILABLE_IN_ALL
 GType   ctk_container_get_type		 (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-void    ctk_container_set_border_width	 (GtkContainer	   *container,
+void    ctk_container_set_border_width	 (CtkContainer	   *container,
 					  guint		    border_width);
 GDK_AVAILABLE_IN_ALL
-guint   ctk_container_get_border_width   (GtkContainer     *container);
+guint   ctk_container_get_border_width   (CtkContainer     *container);
 GDK_AVAILABLE_IN_ALL
-void    ctk_container_add		 (GtkContainer	   *container,
-					  GtkWidget	   *widget);
+void    ctk_container_add		 (CtkContainer	   *container,
+					  CtkWidget	   *widget);
 GDK_AVAILABLE_IN_ALL
-void    ctk_container_remove		 (GtkContainer	   *container,
-					  GtkWidget	   *widget);
+void    ctk_container_remove		 (CtkContainer	   *container,
+					  CtkWidget	   *widget);
 
 GDK_DEPRECATED_IN_3_12
-void    ctk_container_set_resize_mode    (GtkContainer     *container,
-					  GtkResizeMode     resize_mode);
+void    ctk_container_set_resize_mode    (CtkContainer     *container,
+					  CtkResizeMode     resize_mode);
 GDK_DEPRECATED_IN_3_12
-GtkResizeMode ctk_container_get_resize_mode (GtkContainer     *container);
+CtkResizeMode ctk_container_get_resize_mode (CtkContainer     *container);
 
 GDK_AVAILABLE_IN_ALL
-void    ctk_container_check_resize       (GtkContainer     *container);
+void    ctk_container_check_resize       (CtkContainer     *container);
 
 GDK_AVAILABLE_IN_ALL
-void     ctk_container_foreach      (GtkContainer       *container,
-				     GtkCallback         callback,
+void     ctk_container_foreach      (CtkContainer       *container,
+				     CtkCallback         callback,
 				     gpointer            callback_data);
 GDK_AVAILABLE_IN_ALL
-GList*   ctk_container_get_children     (GtkContainer       *container);
+GList*   ctk_container_get_children     (CtkContainer       *container);
 
 GDK_AVAILABLE_IN_ALL
-void     ctk_container_propagate_draw   (GtkContainer   *container,
-					 GtkWidget      *child,
+void     ctk_container_propagate_draw   (CtkContainer   *container,
+					 CtkWidget      *child,
 					 cairo_t        *cr);
 
 GDK_DEPRECATED_IN_3_24
-void     ctk_container_set_focus_chain  (GtkContainer   *container,
+void     ctk_container_set_focus_chain  (CtkContainer   *container,
                                          GList          *focusable_widgets);
 GDK_DEPRECATED_IN_3_24
-gboolean ctk_container_get_focus_chain  (GtkContainer   *container,
+gboolean ctk_container_get_focus_chain  (CtkContainer   *container,
 					 GList         **focusable_widgets);
 GDK_DEPRECATED_IN_3_24
-void     ctk_container_unset_focus_chain (GtkContainer  *container);
+void     ctk_container_unset_focus_chain (CtkContainer  *container);
 
 #define CTK_IS_RESIZE_CONTAINER(widget) (CTK_IS_CONTAINER (widget) && \
                                         (ctk_container_get_resize_mode (CTK_CONTAINER (widget)) != CTK_RESIZE_PARENT))
@@ -188,38 +188,38 @@ void     ctk_container_unset_focus_chain (GtkContainer  *container);
 /* Widget-level methods */
 
 GDK_DEPRECATED_IN_3_14
-void   ctk_container_set_reallocate_redraws (GtkContainer    *container,
+void   ctk_container_set_reallocate_redraws (CtkContainer    *container,
 					     gboolean         needs_redraws);
 GDK_AVAILABLE_IN_ALL
-void   ctk_container_set_focus_child	   (GtkContainer     *container,
-					    GtkWidget	     *child);
+void   ctk_container_set_focus_child	   (CtkContainer     *container,
+					    CtkWidget	     *child);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *
-       ctk_container_get_focus_child	   (GtkContainer     *container);
+CtkWidget *
+       ctk_container_get_focus_child	   (CtkContainer     *container);
 GDK_AVAILABLE_IN_ALL
-void   ctk_container_set_focus_vadjustment (GtkContainer     *container,
-					    GtkAdjustment    *adjustment);
+void   ctk_container_set_focus_vadjustment (CtkContainer     *container,
+					    CtkAdjustment    *adjustment);
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment *ctk_container_get_focus_vadjustment (GtkContainer *container);
+CtkAdjustment *ctk_container_get_focus_vadjustment (CtkContainer *container);
 GDK_AVAILABLE_IN_ALL
-void   ctk_container_set_focus_hadjustment (GtkContainer     *container,
-					    GtkAdjustment    *adjustment);
+void   ctk_container_set_focus_hadjustment (CtkContainer     *container,
+					    CtkAdjustment    *adjustment);
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment *ctk_container_get_focus_hadjustment (GtkContainer *container);
+CtkAdjustment *ctk_container_get_focus_hadjustment (CtkContainer *container);
 
 GDK_DEPRECATED_IN_3_10
-void    ctk_container_resize_children      (GtkContainer     *container);
+void    ctk_container_resize_children      (CtkContainer     *container);
 
 GDK_AVAILABLE_IN_ALL
-GType   ctk_container_child_type	   (GtkContainer     *container);
+GType   ctk_container_child_type	   (CtkContainer     *container);
 
 
 GDK_AVAILABLE_IN_ALL
-void         ctk_container_class_install_child_property (GtkContainerClass *cclass,
+void         ctk_container_class_install_child_property (CtkContainerClass *cclass,
 							 guint		    property_id,
 							 GParamSpec	   *pspec);
 GDK_AVAILABLE_IN_3_18
-void         ctk_container_class_install_child_properties (GtkContainerClass *cclass,
+void         ctk_container_class_install_child_properties (CtkContainerClass *cclass,
                                                            guint              n_pspecs,
                                                            GParamSpec       **pspecs);
 GDK_AVAILABLE_IN_ALL
@@ -229,49 +229,49 @@ GDK_AVAILABLE_IN_ALL
 GParamSpec** ctk_container_class_list_child_properties	(GObjectClass	   *cclass,
 							 guint		   *n_properties);
 GDK_AVAILABLE_IN_ALL
-void         ctk_container_add_with_properties		(GtkContainer	   *container,
-							 GtkWidget	   *widget,
+void         ctk_container_add_with_properties		(CtkContainer	   *container,
+							 CtkWidget	   *widget,
 							 const gchar	   *first_prop_name,
 							 ...) G_GNUC_NULL_TERMINATED;
 GDK_AVAILABLE_IN_ALL
-void         ctk_container_child_set			(GtkContainer	   *container,
-							 GtkWidget	   *child,
+void         ctk_container_child_set			(CtkContainer	   *container,
+							 CtkWidget	   *child,
 							 const gchar	   *first_prop_name,
 							 ...) G_GNUC_NULL_TERMINATED;
 GDK_AVAILABLE_IN_ALL
-void         ctk_container_child_get			(GtkContainer	   *container,
-							 GtkWidget	   *child,
+void         ctk_container_child_get			(CtkContainer	   *container,
+							 CtkWidget	   *child,
 							 const gchar	   *first_prop_name,
 							 ...) G_GNUC_NULL_TERMINATED;
 GDK_AVAILABLE_IN_ALL
-void         ctk_container_child_set_valist		(GtkContainer	   *container,
-							 GtkWidget	   *child,
+void         ctk_container_child_set_valist		(CtkContainer	   *container,
+							 CtkWidget	   *child,
 							 const gchar	   *first_property_name,
 							 va_list	    var_args);
 GDK_AVAILABLE_IN_ALL
-void         ctk_container_child_get_valist		(GtkContainer	   *container,
-							 GtkWidget	   *child,
+void         ctk_container_child_get_valist		(CtkContainer	   *container,
+							 CtkWidget	   *child,
 							 const gchar	   *first_property_name,
 							 va_list	    var_args);
 GDK_AVAILABLE_IN_ALL
-void	     ctk_container_child_set_property		(GtkContainer	   *container,
-							 GtkWidget	   *child,
+void	     ctk_container_child_set_property		(CtkContainer	   *container,
+							 CtkWidget	   *child,
 							 const gchar	   *property_name,
 							 const GValue	   *value);
 GDK_AVAILABLE_IN_ALL
-void	     ctk_container_child_get_property		(GtkContainer	   *container,
-							 GtkWidget	   *child,
+void	     ctk_container_child_get_property		(CtkContainer	   *container,
+							 CtkWidget	   *child,
 							 const gchar	   *property_name,
 	                                                 GValue		   *value);
 
 GDK_AVAILABLE_IN_3_2
-void ctk_container_child_notify (GtkContainer *container,
-                                 GtkWidget    *child,
+void ctk_container_child_notify (CtkContainer *container,
+                                 CtkWidget    *child,
                                  const gchar  *child_property);
 
 GDK_AVAILABLE_IN_3_18
-void ctk_container_child_notify_by_pspec (GtkContainer *container,
-                                          GtkWidget    *child,
+void ctk_container_child_notify_by_pspec (CtkContainer *container,
+                                          CtkWidget    *child,
                                           GParamSpec   *pspec);
 
 /**
@@ -289,18 +289,18 @@ void ctk_container_child_notify_by_pspec (GtkContainer *container,
 
 
 GDK_AVAILABLE_IN_ALL
-void    ctk_container_forall		     (GtkContainer *container,
-					      GtkCallback   callback,
+void    ctk_container_forall		     (CtkContainer *container,
+					      CtkCallback   callback,
 					      gpointer	    callback_data);
 
 GDK_AVAILABLE_IN_ALL
-void    ctk_container_class_handle_border_width (GtkContainerClass *klass);
+void    ctk_container_class_handle_border_width (CtkContainerClass *klass);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidgetPath * ctk_container_get_path_for_child (GtkContainer      *container,
-                                                  GtkWidget         *child);
+CtkWidgetPath * ctk_container_get_path_for_child (CtkContainer      *container,
+                                                  CtkWidget         *child);
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkContainer, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkContainer, g_object_unref)
 
 G_END_DECLS
 

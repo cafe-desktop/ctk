@@ -21,38 +21,38 @@
 
 #include <string.h>
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   char *string;
 };
 
 static void
-ctk_css_value_string_free (GtkCssValue *value)
+ctk_css_value_string_free (CtkCssValue *value)
 {
   g_free (value->string);
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_string_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_string_compute (CtkCssValue             *value,
                               guint                    property_id,
-                              GtkStyleProviderPrivate *provider,
-                              GtkCssStyle             *style,
-                              GtkCssStyle             *parent_style)
+                              CtkStyleProviderPrivate *provider,
+                              CtkCssStyle             *style,
+                              CtkCssStyle             *parent_style)
 {
   return _ctk_css_value_ref (value);
 }
 
 static gboolean
-ctk_css_value_string_equal (const GtkCssValue *value1,
-                            const GtkCssValue *value2)
+ctk_css_value_string_equal (const CtkCssValue *value1,
+                            const CtkCssValue *value2)
 {
   return g_strcmp0 (value1->string, value2->string) == 0;
 }
 
-static GtkCssValue *
-ctk_css_value_string_transition (GtkCssValue *start,
-                                 GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_string_transition (CtkCssValue *start,
+                                 CtkCssValue *end,
                                  guint        property_id,
                                  double       progress)
 {
@@ -60,7 +60,7 @@ ctk_css_value_string_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_string_print (const GtkCssValue *value,
+ctk_css_value_string_print (const CtkCssValue *value,
                             GString           *str)
 {
   if (value->string == NULL)
@@ -73,7 +73,7 @@ ctk_css_value_string_print (const GtkCssValue *value,
 }
 
 static void
-ctk_css_value_ident_print (const GtkCssValue *value,
+ctk_css_value_ident_print (const CtkCssValue *value,
                             GString           *str)
 {
   char *string = value->string;
@@ -116,7 +116,7 @@ out:
   ;
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_STRING = {
+static const CtkCssValueClass CTK_CSS_VALUE_STRING = {
   ctk_css_value_string_free,
   ctk_css_value_string_compute,
   ctk_css_value_string_equal,
@@ -124,7 +124,7 @@ static const GtkCssValueClass CTK_CSS_VALUE_STRING = {
   ctk_css_value_string_print
 };
 
-static const GtkCssValueClass CTK_CSS_VALUE_IDENT = {
+static const CtkCssValueClass CTK_CSS_VALUE_IDENT = {
   ctk_css_value_string_free,
   ctk_css_value_string_compute,
   ctk_css_value_string_equal,
@@ -132,25 +132,25 @@ static const GtkCssValueClass CTK_CSS_VALUE_IDENT = {
   ctk_css_value_ident_print
 };
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_string_value_new (const char *string)
 {
   return _ctk_css_string_value_new_take (g_strdup (string));
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_string_value_new_take (char *string)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_STRING);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_STRING);
   result->string = string;
 
   return result;
 }
 
-GtkCssValue *
-_ctk_css_string_value_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_string_value_parse (CtkCssParser *parser)
 {
   char *s;
 
@@ -164,7 +164,7 @@ _ctk_css_string_value_parse (GtkCssParser *parser)
 }
 
 const char *
-_ctk_css_string_value_get (const GtkCssValue *value)
+_ctk_css_string_value_get (const CtkCssValue *value)
 {
   g_return_val_if_fail (value != NULL, NULL);
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_STRING, NULL);
@@ -172,25 +172,25 @@ _ctk_css_string_value_get (const GtkCssValue *value)
   return value->string;
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_ident_value_new (const char *ident)
 {
   return _ctk_css_ident_value_new_take (g_strdup (ident));
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_ident_value_new_take (char *ident)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_IDENT);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_IDENT);
   result->string = ident;
 
   return result;
 }
 
-GtkCssValue *
-_ctk_css_ident_value_try_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_ident_value_try_parse (CtkCssParser *parser)
 {
   char *ident;
 
@@ -204,7 +204,7 @@ _ctk_css_ident_value_try_parse (GtkCssParser *parser)
 }
 
 const char *
-_ctk_css_ident_value_get (const GtkCssValue *value)
+_ctk_css_ident_value_get (const CtkCssValue *value)
 {
   g_return_val_if_fail (value != NULL, NULL);
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_IDENT, NULL);

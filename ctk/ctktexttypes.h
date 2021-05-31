@@ -30,28 +30,28 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkTextCounter GtkTextCounter;
-typedef struct _GtkTextLineSegment GtkTextLineSegment;
-typedef struct _GtkTextLineSegmentClass GtkTextLineSegmentClass;
-typedef struct _GtkTextToggleBody GtkTextToggleBody;
-typedef struct _GtkTextMarkBody GtkTextMarkBody;
+typedef struct _CtkTextCounter CtkTextCounter;
+typedef struct _CtkTextLineSegment CtkTextLineSegment;
+typedef struct _CtkTextLineSegmentClass CtkTextLineSegmentClass;
+typedef struct _CtkTextToggleBody CtkTextToggleBody;
+typedef struct _CtkTextMarkBody CtkTextMarkBody;
 
 /*
  * Declarations for variables shared among the text-related files:
  */
 
 /* In ctktextbtree.c */
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_char_type;
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_toggle_on_type;
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_toggle_off_type;
+extern G_GNUC_INTERNAL const CtkTextLineSegmentClass ctk_text_char_type;
+extern G_GNUC_INTERNAL const CtkTextLineSegmentClass ctk_text_toggle_on_type;
+extern G_GNUC_INTERNAL const CtkTextLineSegmentClass ctk_text_toggle_off_type;
 
 /* In ctktextmark.c */
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_left_mark_type;
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_right_mark_type;
+extern G_GNUC_INTERNAL const CtkTextLineSegmentClass ctk_text_left_mark_type;
+extern G_GNUC_INTERNAL const CtkTextLineSegmentClass ctk_text_right_mark_type;
 
 /* In ctktextchild.c */
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_pixbuf_type;
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_child_type;
+extern G_GNUC_INTERNAL const CtkTextLineSegmentClass ctk_text_pixbuf_type;
+extern G_GNUC_INTERNAL const CtkTextLineSegmentClass ctk_text_child_type;
 
 /*
  * UTF 8 Stubs

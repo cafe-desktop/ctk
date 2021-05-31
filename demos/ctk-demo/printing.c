@@ -1,6 +1,6 @@
 /* Printing/Printing
  *
- * GtkPrintOperation offers a simple API to support printing
+ * CtkPrintOperation offers a simple API to support printing
  * in a cross-platform way.
  *
  */
@@ -24,8 +24,8 @@ typedef struct
 } PrintData;
 
 static void
-begin_print (GtkPrintOperation *operation,
-             GtkPrintContext   *context,
+begin_print (CtkPrintOperation *operation,
+             CtkPrintContext   *context,
              gpointer           user_data)
 {
   PrintData *data = (PrintData *)user_data;
@@ -53,8 +53,8 @@ begin_print (GtkPrintOperation *operation,
 }
 
 static void
-draw_page (GtkPrintOperation *operation,
-           GtkPrintContext   *context,
+draw_page (CtkPrintOperation *operation,
+           CtkPrintContext   *context,
            gint               page_nr,
            gpointer           user_data)
 {
@@ -130,8 +130,8 @@ draw_page (GtkPrintOperation *operation,
 }
 
 static void
-end_print (GtkPrintOperation *operation,
-           GtkPrintContext   *context,
+end_print (CtkPrintOperation *operation,
+           CtkPrintContext   *context,
            gpointer           user_data)
 {
   PrintData *data = (PrintData *)user_data;
@@ -142,11 +142,11 @@ end_print (GtkPrintOperation *operation,
 }
 
 
-GtkWidget *
-do_printing (GtkWidget *do_widget)
+CtkWidget *
+do_printing (CtkWidget *do_widget)
 {
-  GtkPrintOperation *operation;
-  GtkPrintSettings *settings;
+  CtkPrintOperation *operation;
+  CtkPrintSettings *settings;
   PrintData *data;
   GError *error = NULL;
 
@@ -178,7 +178,7 @@ do_printing (GtkWidget *do_widget)
 
   if (error)
     {
-      GtkWidget *dialog;
+      CtkWidget *dialog;
 
       dialog = ctk_message_dialog_new (CTK_WINDOW (do_widget),
                                        CTK_DIALOG_DESTROY_WITH_PARENT,

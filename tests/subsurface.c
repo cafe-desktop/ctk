@@ -1,21 +1,21 @@
 #include <ctk/ctk.h>
 
 
-static void     da_realize       (GtkWidget     *widget);
-static void     da_size_allocate (GtkWidget     *widget,
-                                  GtkAllocation *allocation);
-static gboolean da_draw          (GtkWidget     *widget,
+static void     da_realize       (CtkWidget     *widget);
+static void     da_size_allocate (CtkWidget     *widget,
+                                  CtkAllocation *allocation);
+static gboolean da_draw          (CtkWidget     *widget,
                                   cairo_t       *cr);
 
-typedef GtkDrawingArea DArea;
-typedef GtkDrawingAreaClass DAreaClass;
+typedef CtkDrawingArea DArea;
+typedef CtkDrawingAreaClass DAreaClass;
 
 G_DEFINE_TYPE (DArea, da, CTK_TYPE_WIDGET)
 
 static void
 da_class_init (DAreaClass *class)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   widget_class->realize = da_realize;
   widget_class->size_allocate = da_size_allocate;
@@ -28,16 +28,16 @@ da_init (DArea *darea)
   ctk_widget_set_has_window (CTK_WIDGET (darea), TRUE);
 }
 
-GtkWidget*
+CtkWidget*
 da_new (void)
 {
   return g_object_new (da_get_type (), NULL);
 }
 
 static void
-da_realize (GtkWidget *widget)
+da_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -64,8 +64,8 @@ da_realize (GtkWidget *widget)
 }
 
 static void
-da_size_allocate (GtkWidget     *widget,
-                  GtkAllocation *allocation)
+da_size_allocate (CtkWidget     *widget,
+                  CtkAllocation *allocation)
 {
   ctk_widget_set_allocation (widget, allocation);
 
@@ -76,7 +76,7 @@ da_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-da_draw (GtkWidget *widget,
+da_draw (CtkWidget *widget,
          cairo_t   *cr)
 {
   cairo_set_source_rgb (cr, 1.0, 0.0, 0.0); 
@@ -88,8 +88,8 @@ da_draw (GtkWidget *widget,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *label, *box, *widget;
-  GtkWidget *stack, *switcher;
+  CtkWidget *window, *label, *box, *widget;
+  CtkWidget *stack, *switcher;
 
   ctk_init (NULL, NULL);
 

@@ -67,13 +67,13 @@
 /**
  * SECTION:ctkcolorsel
  * @Short_description: Deprecated widget used to select a color
- * @Title: GtkColorSelection
+ * @Title: CtkColorSelection
  *
- * The #GtkColorSelection is a widget that is used to select
+ * The #CtkColorSelection is a widget that is used to select
  * a color.  It consists of a color wheel and number of sliders
  * and entry boxes for color parameters such as hue, saturation,
  * value, red, green, blue, and opacity.  It is found on the standard
- * color selection dialog box #GtkColorSelectionDialog.
+ * color selection dialog box #CtkColorSelectionDialog.
  */
 
 
@@ -132,7 +132,7 @@ enum {
 };
 
 
-struct _GtkColorSelectionPrivate
+struct _CtkColorSelectionPrivate
 {
   guint has_opacity       : 1;
   guint has_palette       : 1;
@@ -144,30 +144,30 @@ struct _GtkColorSelectionPrivate
   gdouble color[COLORSEL_NUM_CHANNELS];
   gdouble old_color[COLORSEL_NUM_CHANNELS];
 
-  GtkWidget *triangle_colorsel;
-  GtkWidget *hue_spinbutton;
-  GtkWidget *sat_spinbutton;
-  GtkWidget *val_spinbutton;
-  GtkWidget *red_spinbutton;
-  GtkWidget *green_spinbutton;
-  GtkWidget *blue_spinbutton;
-  GtkWidget *opacity_slider;
-  GtkWidget *opacity_label;
-  GtkWidget *opacity_entry;
-  GtkWidget *palette_frame;
-  GtkWidget *hex_entry;
+  CtkWidget *triangle_colorsel;
+  CtkWidget *hue_spinbutton;
+  CtkWidget *sat_spinbutton;
+  CtkWidget *val_spinbutton;
+  CtkWidget *red_spinbutton;
+  CtkWidget *green_spinbutton;
+  CtkWidget *blue_spinbutton;
+  CtkWidget *opacity_slider;
+  CtkWidget *opacity_label;
+  CtkWidget *opacity_entry;
+  CtkWidget *palette_frame;
+  CtkWidget *hex_entry;
 
   /* The Palette code */
-  GtkWidget *custom_palette [CTK_CUSTOM_PALETTE_WIDTH][CTK_CUSTOM_PALETTE_HEIGHT];
+  CtkWidget *custom_palette [CTK_CUSTOM_PALETTE_WIDTH][CTK_CUSTOM_PALETTE_HEIGHT];
 
   /* The color_sample stuff */
-  GtkWidget *sample_area;
-  GtkWidget *old_sample;
-  GtkWidget *cur_sample;
-  GtkWidget *colorsel;
+  CtkWidget *sample_area;
+  CtkWidget *old_sample;
+  CtkWidget *cur_sample;
+  CtkWidget *colorsel;
 
   /* Window for grabbing on */
-  GtkWidget *dropper_grab_widget;
+  CtkWidget *dropper_grab_widget;
   guint32    grab_time;
   GdkDevice *keyboard_device;
   GdkDevice *pointer_device;
@@ -177,9 +177,9 @@ struct _GtkColorSelectionPrivate
 };
 
 
-static void ctk_color_selection_destroy         (GtkWidget               *widget);
+static void ctk_color_selection_destroy         (CtkWidget               *widget);
 static void ctk_color_selection_finalize        (GObject                 *object);
-static void update_color                        (GtkColorSelection       *colorsel);
+static void update_color                        (CtkColorSelection       *colorsel);
 static void ctk_color_selection_set_property    (GObject                 *object,
                                                  guint                    prop_id,
                                                  const GValue            *value,
@@ -189,16 +189,16 @@ static void ctk_color_selection_get_property    (GObject                 *object
                                                  GValue                  *value,
                                                  GParamSpec              *pspec);
 
-static void ctk_color_selection_realize         (GtkWidget               *widget);
-static void ctk_color_selection_unrealize       (GtkWidget               *widget);
-static void ctk_color_selection_show_all        (GtkWidget               *widget);
-static gboolean ctk_color_selection_grab_broken (GtkWidget               *widget,
+static void ctk_color_selection_realize         (CtkWidget               *widget);
+static void ctk_color_selection_unrealize       (CtkWidget               *widget);
+static void ctk_color_selection_show_all        (CtkWidget               *widget);
+static gboolean ctk_color_selection_grab_broken (CtkWidget               *widget,
                                                  GdkEventGrabBroken      *event);
 
-static void     ctk_color_selection_set_palette_color   (GtkColorSelection *colorsel,
+static void     ctk_color_selection_set_palette_color   (CtkColorSelection *colorsel,
                                                          gint               index,
                                                          GdkColor          *color);
-static void     set_focus_line_attributes               (GtkWidget         *drawing_area,
+static void     set_focus_line_attributes               (CtkWidget         *drawing_area,
                                                          cairo_t           *cr,
                                                          gint              *focus_width);
 static void     default_noscreen_change_palette_func    (const GdkColor    *colors,
@@ -207,54 +207,54 @@ static void     default_change_palette_func             (GdkScreen         *scre
                                                          const GdkColor    *colors,
                                                          gint               n_colors);
 static void     make_control_relations                  (AtkObject         *atk_obj,
-                                                         GtkWidget         *widget);
+                                                         CtkWidget         *widget);
 static void     make_all_relations                      (AtkObject         *atk_obj,
-                                                         GtkColorSelectionPrivate *priv);
+                                                         CtkColorSelectionPrivate *priv);
 
-static void     hsv_changed                             (GtkWidget         *hsv,
+static void     hsv_changed                             (CtkWidget         *hsv,
                                                          gpointer           data);
-static void     get_screen_color                        (GtkWidget         *button);
-static void     adjustment_changed                      (GtkAdjustment     *adjustment,
+static void     get_screen_color                        (CtkWidget         *button);
+static void     adjustment_changed                      (CtkAdjustment     *adjustment,
                                                          gpointer           data);
-static void     opacity_entry_changed                   (GtkWidget         *opacity_entry,
+static void     opacity_entry_changed                   (CtkWidget         *opacity_entry,
                                                          gpointer           data);
-static void     hex_changed                             (GtkWidget         *hex_entry,
+static void     hex_changed                             (CtkWidget         *hex_entry,
                                                          gpointer           data);
-static gboolean hex_focus_out                           (GtkWidget         *hex_entry,
+static gboolean hex_focus_out                           (CtkWidget         *hex_entry,
                                                          GdkEventFocus     *event,
                                                          gpointer           data);
-static void     color_sample_new                        (GtkColorSelection *colorsel);
-static void     make_label_spinbutton                   (GtkColorSelection *colorsel,
-                                                         GtkWidget        **spinbutton,
+static void     color_sample_new                        (CtkColorSelection *colorsel);
+static void     make_label_spinbutton                   (CtkColorSelection *colorsel,
+                                                         CtkWidget        **spinbutton,
                                                          gchar             *text,
-                                                         GtkWidget         *table,
+                                                         CtkWidget         *table,
                                                          gint               i,
                                                          gint               j,
                                                          gint               channel_type,
                                                          const gchar       *tooltip);
-static void     make_palette_frame                      (GtkColorSelection *colorsel,
-                                                         GtkWidget         *table,
+static void     make_palette_frame                      (CtkColorSelection *colorsel,
+                                                         CtkWidget         *table,
                                                          gint               i,
                                                          gint               j);
-static void     set_selected_palette                    (GtkColorSelection *colorsel,
+static void     set_selected_palette                    (CtkColorSelection *colorsel,
                                                          int                x,
                                                          int                y);
-static void     set_focus_line_attributes               (GtkWidget         *drawing_area,
+static void     set_focus_line_attributes               (CtkWidget         *drawing_area,
                                                          cairo_t           *cr,
                                                          gint              *focus_width);
-static gboolean mouse_press                             (GtkWidget         *invisible,
+static gboolean mouse_press                             (CtkWidget         *invisible,
                                                          GdkEventButton    *event,
                                                          gpointer           data);
 static void  palette_change_notify_instance (GObject    *object,
                                              GParamSpec *pspec,
                                              gpointer    data);
-static void update_palette (GtkColorSelection *colorsel);
-static void shutdown_eyedropper (GtkWidget *widget);
+static void update_palette (CtkColorSelection *colorsel);
+static void shutdown_eyedropper (CtkWidget *widget);
 
 static guint color_selection_signals[LAST_SIGNAL] = { 0 };
 
-static GtkColorSelectionChangePaletteFunc noscreen_change_palette_hook = default_noscreen_change_palette_func;
-static GtkColorSelectionChangePaletteWithScreenFunc change_palette_hook = default_change_palette_func;
+static CtkColorSelectionChangePaletteFunc noscreen_change_palette_hook = default_noscreen_change_palette_func;
+static CtkColorSelectionChangePaletteWithScreenFunc change_palette_hook = default_change_palette_func;
 
 static const guchar dropper_bits[] = {
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
@@ -299,13 +299,13 @@ static const guchar dropper_bits[] = {
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"};
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkColorSelection, ctk_color_selection, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkColorSelection, ctk_color_selection, CTK_TYPE_BOX)
 
 static void
-ctk_color_selection_class_init (GtkColorSelectionClass *klass)
+ctk_color_selection_class_init (CtkColorSelectionClass *klass)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = ctk_color_selection_finalize;
@@ -335,11 +335,11 @@ ctk_color_selection_class_init (GtkColorSelectionClass *klass)
                                                          CTK_PARAM_READWRITE));
 
   /**
-   * GtkColorSelection:current-color:
+   * CtkColorSelection:current-color:
    *
    * The current GdkColor color.
    *
-   * Deprecated: 3.4: Use #GtkColorSelection:current-rgba instead.
+   * Deprecated: 3.4: Use #CtkColorSelection:current-rgba instead.
    */
   g_object_class_install_property (gobject_class,
                                    PROP_CURRENT_COLOR,
@@ -357,7 +357,7 @@ ctk_color_selection_class_init (GtkColorSelectionClass *klass)
                                                       CTK_PARAM_READWRITE));
 
   /**
-   * GtkColorSelection:current-rgba:
+   * CtkColorSelection:current-rgba:
    *
    * The current RGBA color.
    *
@@ -372,32 +372,32 @@ ctk_color_selection_class_init (GtkColorSelectionClass *klass)
                                                        CTK_PARAM_READWRITE));
 
   /**
-   * GtkColorSelection::color-changed:
+   * CtkColorSelection::color-changed:
    * @colorselection: the object which received the signal.
    *
-   * This signal is emitted when the color changes in the #GtkColorSelection
+   * This signal is emitted when the color changes in the #CtkColorSelection
    * according to its update policy.
    */
   color_selection_signals[COLOR_CHANGED] =
     g_signal_new (I_("color-changed"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkColorSelectionClass, color_changed),
+                  G_STRUCT_OFFSET (CtkColorSelectionClass, color_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 }
 
 static void
-ctk_color_selection_init (GtkColorSelection *colorsel)
+ctk_color_selection_init (CtkColorSelection *colorsel)
 {
-  GtkWidget *top_hbox;
-  GtkWidget *top_right_vbox;
-  GtkWidget *table, *label, *hbox, *frame, *vbox, *button;
-  GtkAdjustment *adjust;
-  GtkWidget *picker_image;
+  CtkWidget *top_hbox;
+  CtkWidget *top_right_vbox;
+  CtkWidget *table, *label, *hbox, *frame, *vbox, *button;
+  CtkAdjustment *adjust;
+  CtkWidget *picker_image;
   gint i, j;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   AtkObject *atk_obj;
   GList *focus_chain = NULL;
 
@@ -596,7 +596,7 @@ ctk_color_selection_set_property (GObject         *object,
                                   const GValue    *value,
                                   GParamSpec      *pspec)
 {
-  GtkColorSelection *colorsel = CTK_COLOR_SELECTION (object);
+  CtkColorSelection *colorsel = CTK_COLOR_SELECTION (object);
 
   switch (prop_id)
     {
@@ -642,7 +642,7 @@ ctk_color_selection_get_property (GObject     *object,
                                   GValue      *value,
                                   GParamSpec  *pspec)
 {
-  GtkColorSelection *colorsel = CTK_COLOR_SELECTION (object);
+  CtkColorSelection *colorsel = CTK_COLOR_SELECTION (object);
 
   switch (prop_id)
     {
@@ -683,13 +683,13 @@ ctk_color_selection_get_property (GObject     *object,
     }
 }
 
-/* GtkWidget methods */
+/* CtkWidget methods */
 
 static void
-ctk_color_selection_destroy (GtkWidget *widget)
+ctk_color_selection_destroy (CtkWidget *widget)
 {
-  GtkColorSelection *cselection = CTK_COLOR_SELECTION (widget);
-  GtkColorSelectionPrivate *priv = cselection->private_data;
+  CtkColorSelection *cselection = CTK_COLOR_SELECTION (widget);
+  CtkColorSelectionPrivate *priv = cselection->private_data;
 
   if (priv->dropper_grab_widget)
     {
@@ -701,11 +701,11 @@ ctk_color_selection_destroy (GtkWidget *widget)
 }
 
 static void
-ctk_color_selection_realize (GtkWidget *widget)
+ctk_color_selection_realize (CtkWidget *widget)
 {
-  GtkColorSelection *colorsel = CTK_COLOR_SELECTION (widget);
-  GtkColorSelectionPrivate *priv = colorsel->private_data;
-  GtkSettings *settings = ctk_widget_get_settings (widget);
+  CtkColorSelection *colorsel = CTK_COLOR_SELECTION (widget);
+  CtkColorSelectionPrivate *priv = colorsel->private_data;
+  CtkSettings *settings = ctk_widget_get_settings (widget);
 
   priv->settings_connection =  g_signal_connect (settings,
                                                  "notify::ctk-color-palette",
@@ -717,11 +717,11 @@ ctk_color_selection_realize (GtkWidget *widget)
 }
 
 static void
-ctk_color_selection_unrealize (GtkWidget *widget)
+ctk_color_selection_unrealize (CtkWidget *widget)
 {
-  GtkColorSelection *colorsel = CTK_COLOR_SELECTION (widget);
-  GtkColorSelectionPrivate *priv = colorsel->private_data;
-  GtkSettings *settings = ctk_widget_get_settings (widget);
+  CtkColorSelection *colorsel = CTK_COLOR_SELECTION (widget);
+  CtkColorSelectionPrivate *priv = colorsel->private_data;
+  CtkSettings *settings = ctk_widget_get_settings (widget);
 
   g_signal_handler_disconnect (settings, priv->settings_connection);
 
@@ -733,13 +733,13 @@ ctk_color_selection_unrealize (GtkWidget *widget)
  * palette and opacity sliders.
  */
 static void
-ctk_color_selection_show_all (GtkWidget *widget)
+ctk_color_selection_show_all (CtkWidget *widget)
 {
   ctk_widget_show (widget);
 }
 
 static gboolean
-ctk_color_selection_grab_broken (GtkWidget          *widget,
+ctk_color_selection_grab_broken (CtkWidget          *widget,
                                  GdkEventGrabBroken *event)
 {
   shutdown_eyedropper (widget);
@@ -753,16 +753,16 @@ ctk_color_selection_grab_broken (GtkWidget          *widget,
  *
  */
 
-static void color_sample_draw_sample (GtkColorSelection *colorsel,
+static void color_sample_draw_sample (CtkColorSelection *colorsel,
                                       int                which,
                                       cairo_t *          cr);
-static void color_sample_update_samples (GtkColorSelection *colorsel);
+static void color_sample_update_samples (CtkColorSelection *colorsel);
 
 static void
-set_color_internal (GtkColorSelection *colorsel,
+set_color_internal (CtkColorSelection *colorsel,
                     gdouble           *color)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   gint i;
 
   priv = colorsel->private_data;
@@ -808,12 +808,12 @@ set_color_icon (GdkDragContext *context,
 }
 
 static void
-color_sample_drag_begin (GtkWidget      *widget,
+color_sample_drag_begin (CtkWidget      *widget,
                          GdkDragContext *context,
                          gpointer        data)
 {
-  GtkColorSelection *colorsel = data;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel = data;
+  CtkColorSelectionPrivate *priv;
   gdouble *colsrc;
 
   priv = colorsel->private_data;
@@ -827,7 +827,7 @@ color_sample_drag_begin (GtkWidget      *widget,
 }
 
 static void
-color_sample_drag_end (GtkWidget      *widget,
+color_sample_drag_end (CtkWidget      *widget,
                        GdkDragContext *context,
                        gpointer        data)
 {
@@ -835,17 +835,17 @@ color_sample_drag_end (GtkWidget      *widget,
 }
 
 static void
-color_sample_drop_handle (GtkWidget        *widget,
+color_sample_drop_handle (CtkWidget        *widget,
                           GdkDragContext   *context,
                           gint              x,
                           gint              y,
-                          GtkSelectionData *selection_data,
+                          CtkSelectionData *selection_data,
                           guint             info,
                           guint             time,
                           gpointer          data)
 {
-  GtkColorSelection *colorsel = data;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel = data;
+  CtkColorSelectionPrivate *priv;
   gint length;
   guint16 *vals;
   gdouble color[4];
@@ -886,15 +886,15 @@ color_sample_drop_handle (GtkWidget        *widget,
 }
 
 static void
-color_sample_drag_handle (GtkWidget        *widget,
+color_sample_drag_handle (CtkWidget        *widget,
                           GdkDragContext   *context,
-                          GtkSelectionData *selection_data,
+                          CtkSelectionData *selection_data,
                           guint             info,
                           guint             time,
                           gpointer          data)
 {
-  GtkColorSelection *colorsel = data;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel = data;
+  CtkColorSelectionPrivate *priv;
   guint16 vals[4];
   gdouble *colsrc;
 
@@ -917,13 +917,13 @@ color_sample_drag_handle (GtkWidget        *widget,
 
 /* which = 0 means draw old sample, which = 1 means draw new */
 static void
-color_sample_draw_sample (GtkColorSelection *colorsel,
+color_sample_draw_sample (CtkColorSelection *colorsel,
                           int                which,
                           cairo_t           *cr)
 {
-  GtkWidget *da;
+  CtkWidget *da;
   gint x, y, goff;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   int width, height;
 
   g_return_if_fail (colorsel != NULL);
@@ -940,7 +940,7 @@ color_sample_draw_sample (GtkColorSelection *colorsel,
     }
   else
     {
-      GtkAllocation old_sample_allocation;
+      CtkAllocation old_sample_allocation;
 
       da = priv->cur_sample;
       ctk_widget_get_allocation (priv->old_sample, &old_sample_allocation);
@@ -992,17 +992,17 @@ color_sample_draw_sample (GtkColorSelection *colorsel,
 
 
 static void
-color_sample_update_samples (GtkColorSelection *colorsel)
+color_sample_update_samples (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv = colorsel->private_data;
+  CtkColorSelectionPrivate *priv = colorsel->private_data;
   ctk_widget_queue_draw (priv->old_sample);
   ctk_widget_queue_draw (priv->cur_sample);
 }
 
 static gboolean
-color_old_sample_draw (GtkWidget         *da,
+color_old_sample_draw (CtkWidget         *da,
                        cairo_t           *cr,
-                       GtkColorSelection *colorsel)
+                       CtkColorSelection *colorsel)
 {
   color_sample_draw_sample (colorsel, 0, cr);
   return FALSE;
@@ -1010,21 +1010,21 @@ color_old_sample_draw (GtkWidget         *da,
 
 
 static gboolean
-color_cur_sample_draw (GtkWidget         *da,
+color_cur_sample_draw (CtkWidget         *da,
                        cairo_t           *cr,
-                       GtkColorSelection *colorsel)
+                       CtkColorSelection *colorsel)
 {
   color_sample_draw_sample (colorsel, 1, cr);
   return FALSE;
 }
 
 static void
-color_sample_setup_dnd (GtkColorSelection *colorsel, GtkWidget *sample)
+color_sample_setup_dnd (CtkColorSelection *colorsel, CtkWidget *sample)
 {
-  static const GtkTargetEntry targets[] = {
+  static const CtkTargetEntry targets[] = {
     { "application/x-color", 0 }
   };
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   priv = colorsel->private_data;
 
   ctk_drag_source_set (sample,
@@ -1060,9 +1060,9 @@ color_sample_setup_dnd (GtkColorSelection *colorsel, GtkWidget *sample)
 }
 
 static void
-update_tooltips (GtkColorSelection *colorsel)
+update_tooltips (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   priv = colorsel->private_data;
 
@@ -1090,9 +1090,9 @@ update_tooltips (GtkColorSelection *colorsel)
 }
 
 static void
-color_sample_new (GtkColorSelection *colorsel)
+color_sample_new (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   priv = colorsel->private_data;
 
@@ -1124,7 +1124,7 @@ color_sample_new (GtkColorSelection *colorsel)
 /* The palette area code */
 
 static void
-palette_get_color (GtkWidget *drawing_area, gdouble *color)
+palette_get_color (CtkWidget *drawing_area, gdouble *color)
 {
   gdouble *color_val;
 
@@ -1148,11 +1148,11 @@ palette_get_color (GtkWidget *drawing_area, gdouble *color)
 }
 
 static gboolean
-palette_draw (GtkWidget *drawing_area,
+palette_draw (CtkWidget *drawing_area,
                cairo_t   *cr,
                gpointer   data)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   gint focus_width;
   GdkRGBA color;
 
@@ -1176,7 +1176,7 @@ palette_draw (GtkWidget *drawing_area,
 }
 
 static void
-set_focus_line_attributes (GtkWidget *drawing_area,
+set_focus_line_attributes (CtkWidget *drawing_area,
                            cairo_t   *cr,
                            gint      *focus_width)
 {
@@ -1228,7 +1228,7 @@ set_focus_line_attributes (GtkWidget *drawing_area,
 }
 
 static void
-palette_drag_begin (GtkWidget      *widget,
+palette_drag_begin (CtkWidget      *widget,
                     GdkDragContext *context,
                     gpointer        data)
 {
@@ -1239,9 +1239,9 @@ palette_drag_begin (GtkWidget      *widget,
 }
 
 static void
-palette_drag_handle (GtkWidget        *widget,
+palette_drag_handle (CtkWidget        *widget,
                      GdkDragContext   *context,
-                     GtkSelectionData *selection_data,
+                     CtkSelectionData *selection_data,
                      guint             info,
                      guint             time,
                      gpointer          data)
@@ -1262,7 +1262,7 @@ palette_drag_handle (GtkWidget        *widget,
 }
 
 static void
-palette_drag_end (GtkWidget      *widget,
+palette_drag_end (CtkWidget      *widget,
                   GdkDragContext *context,
                   gpointer        data)
 {
@@ -1270,9 +1270,9 @@ palette_drag_end (GtkWidget      *widget,
 }
 
 static GdkColor *
-get_current_colors (GtkColorSelection *colorsel)
+get_current_colors (CtkColorSelection *colorsel)
 {
-  GtkSettings *settings;
+  CtkSettings *settings;
   GdkColor *colors = NULL;
   gint n_colors = 0;
   gchar *palette;
@@ -1314,12 +1314,12 @@ get_current_colors (GtkColorSelection *colorsel)
 
 /* Changes the model color */
 static void
-palette_change_color (GtkWidget         *drawing_area,
-                      GtkColorSelection *colorsel,
+palette_change_color (CtkWidget         *drawing_area,
+                      CtkColorSelection *colorsel,
                       gdouble           *color)
 {
   gint x, y;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   GdkColor gdk_color;
   GdkColor *current_colors;
   GdkScreen *screen;
@@ -1378,8 +1378,8 @@ palette_change_color (GtkWidget         *drawing_area,
 
 /* Changes the view color */
 static void
-palette_set_color (GtkWidget         *drawing_area,
-                   GtkColorSelection *colorsel,
+palette_set_color (CtkWidget         *drawing_area,
+                   CtkColorSelection *colorsel,
                    gdouble           *color)
 {
   gdouble *new_color = g_new (double, 4);
@@ -1394,7 +1394,7 @@ palette_set_color (GtkWidget         *drawing_area,
 
   if (GPOINTER_TO_INT (g_object_get_data (G_OBJECT (drawing_area), "color_set")) == 0)
     {
-      static const GtkTargetEntry targets[] = {
+      static const CtkTargetEntry targets[] = {
         { "application/x-color", 0 }
       };
       ctk_drag_source_set (drawing_area,
@@ -1423,12 +1423,12 @@ palette_set_color (GtkWidget         *drawing_area,
 }
 
 static void
-save_color_selected (GtkWidget *menuitem,
+save_color_selected (CtkWidget *menuitem,
                      gpointer   data)
 {
-  GtkColorSelection *colorsel;
-  GtkWidget *drawing_area;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel;
+  CtkWidget *drawing_area;
+  CtkColorSelectionPrivate *priv;
 
   drawing_area = CTK_WIDGET (data);
 
@@ -1441,12 +1441,12 @@ save_color_selected (GtkWidget *menuitem,
 }
 
 static void
-do_popup (GtkColorSelection *colorsel,
-          GtkWidget         *drawing_area,
+do_popup (CtkColorSelection *colorsel,
+          CtkWidget         *drawing_area,
           const GdkEvent    *trigger_event)
 {
-  GtkWidget *menu;
-  GtkWidget *mi;
+  CtkWidget *menu;
+  CtkWidget *mi;
 
   g_object_set_data (G_OBJECT (drawing_area),
                      I_("ctk-color-sel"),
@@ -1477,7 +1477,7 @@ do_popup (GtkColorSelection *colorsel,
 
 
 static gboolean
-palette_enter (GtkWidget        *drawing_area,
+palette_enter (CtkWidget        *drawing_area,
                GdkEventCrossing *event,
                gpointer        data)
 {
@@ -1489,7 +1489,7 @@ palette_enter (GtkWidget        *drawing_area,
 }
 
 static gboolean
-palette_leave (GtkWidget        *drawing_area,
+palette_leave (CtkWidget        *drawing_area,
                GdkEventCrossing *event,
                gpointer        data)
 {
@@ -1501,11 +1501,11 @@ palette_leave (GtkWidget        *drawing_area,
 }
 
 static gboolean
-palette_press (GtkWidget      *drawing_area,
+palette_press (CtkWidget      *drawing_area,
                GdkEventButton *event,
                gpointer        data)
 {
-  GtkColorSelection *colorsel = CTK_COLOR_SELECTION (data);
+  CtkColorSelection *colorsel = CTK_COLOR_SELECTION (data);
 
   ctk_widget_grab_focus (drawing_area);
 
@@ -1519,11 +1519,11 @@ palette_press (GtkWidget      *drawing_area,
 }
 
 static gboolean
-palette_release (GtkWidget      *drawing_area,
+palette_release (CtkWidget      *drawing_area,
                  GdkEventButton *event,
                  gpointer        data)
 {
-  GtkColorSelection *colorsel = CTK_COLOR_SELECTION (data);
+  CtkColorSelection *colorsel = CTK_COLOR_SELECTION (data);
 
   ctk_widget_grab_focus (drawing_area);
 
@@ -1543,16 +1543,16 @@ palette_release (GtkWidget      *drawing_area,
 }
 
 static void
-palette_drop_handle (GtkWidget        *widget,
+palette_drop_handle (CtkWidget        *widget,
                      GdkDragContext   *context,
                      gint              x,
                      gint              y,
-                     GtkSelectionData *selection_data,
+                     CtkSelectionData *selection_data,
                      guint             info,
                      guint             time,
                      gpointer          data)
 {
-  GtkColorSelection *colorsel = CTK_COLOR_SELECTION (data);
+  CtkColorSelection *colorsel = CTK_COLOR_SELECTION (data);
   gint length;
   guint16 *vals;
   gdouble color[4];
@@ -1582,7 +1582,7 @@ palette_drop_handle (GtkWidget        *widget,
 }
 
 static gint
-palette_activate (GtkWidget   *widget,
+palette_activate (CtkWidget   *widget,
                   GdkEventKey *event,
                   gpointer     data)
 {
@@ -1606,7 +1606,7 @@ palette_activate (GtkWidget   *widget,
 }
 
 static gboolean
-palette_popup (GtkWidget *widget,
+palette_popup (CtkWidget *widget,
                gpointer   data)
 {
   do_popup (data, widget, NULL);
@@ -1614,12 +1614,12 @@ palette_popup (GtkWidget *widget,
 }
 
 
-static GtkWidget*
-palette_new (GtkColorSelection *colorsel)
+static CtkWidget*
+palette_new (CtkColorSelection *colorsel)
 {
-  GtkWidget *retval;
+  CtkWidget *retval;
 
-  static const GtkTargetEntry targets[] = {
+  static const CtkTargetEntry targets[] = {
     { "application/x-color", 0 }
   };
 
@@ -1668,7 +1668,7 @@ palette_new (GtkColorSelection *colorsel)
 }
 
 
-/* The actual GtkColorSelection widget */
+/* The actual CtkColorSelection widget */
 
 static GdkCursor *
 make_picker_cursor (GdkScreen *screen)
@@ -1707,8 +1707,8 @@ grab_color_at_pointer (GdkScreen *screen,
 {
   GdkPixbuf *pixbuf;
   guchar *pixels;
-  GtkColorSelection *colorsel = data;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel = data;
+  CtkColorSelectionPrivate *priv;
   GdkColor color;
   GdkWindow *root_window = gdk_screen_get_root_window (screen);
 
@@ -1750,10 +1750,10 @@ grab_color_at_pointer (GdkScreen *screen,
 }
 
 static void
-shutdown_eyedropper (GtkWidget *widget)
+shutdown_eyedropper (CtkWidget *widget)
 {
-  GtkColorSelection *colorsel;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel;
+  CtkColorSelectionPrivate *priv;
 
   colorsel = CTK_COLOR_SELECTION (widget);
   priv = colorsel->private_data;
@@ -1771,7 +1771,7 @@ shutdown_eyedropper (GtkWidget *widget)
 }
 
 static void
-mouse_motion (GtkWidget      *invisible,
+mouse_motion (CtkWidget      *invisible,
               GdkEventMotion *event,
               gpointer        data)
 {
@@ -1781,11 +1781,11 @@ mouse_motion (GtkWidget      *invisible,
 }
 
 static gboolean
-mouse_release (GtkWidget      *invisible,
+mouse_release (CtkWidget      *invisible,
                GdkEventButton *event,
                gpointer        data)
 {
-  /* GtkColorSelection *colorsel = data; */
+  /* CtkColorSelection *colorsel = data; */
 
   if (event->button != GDK_BUTTON_PRIMARY)
     return FALSE;
@@ -1809,7 +1809,7 @@ mouse_release (GtkWidget      *invisible,
 /* Helper Functions */
 
 static gboolean
-key_press (GtkWidget   *invisible,
+key_press (CtkWidget   *invisible,
            GdkEventKey *event,
            gpointer     data)
 {
@@ -1879,7 +1879,7 @@ key_press (GtkWidget   *invisible,
 }
 
 static gboolean
-mouse_press (GtkWidget      *invisible,
+mouse_press (CtkWidget      *invisible,
              GdkEventButton *event,
              gpointer        data)
 {
@@ -1903,16 +1903,16 @@ mouse_press (GtkWidget      *invisible,
 
 /* when the button is clicked */
 static void
-get_screen_color (GtkWidget *button)
+get_screen_color (CtkWidget *button)
 {
-  GtkColorSelection *colorsel = g_object_get_data (G_OBJECT (button), "COLORSEL");
-  GtkColorSelectionPrivate *priv = colorsel->private_data;
+  CtkColorSelection *colorsel = g_object_get_data (G_OBJECT (button), "COLORSEL");
+  CtkColorSelectionPrivate *priv = colorsel->private_data;
   GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (button));
   GdkDevice *device, *keyb_device, *pointer_device;
   GdkCursor *picker_cursor;
   GdkGrabStatus grab_status;
   GdkWindow *window;
-  GtkWidget *grab_widget, *toplevel;
+  CtkWidget *grab_widget, *toplevel;
 
   guint32 time = ctk_get_current_event_time ();
 
@@ -1993,11 +1993,11 @@ get_screen_color (GtkWidget *button)
 }
 
 static void
-hex_changed (GtkWidget *hex_entry,
+hex_changed (CtkWidget *hex_entry,
              gpointer   data)
 {
-  GtkColorSelection *colorsel;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel;
+  CtkColorSelectionPrivate *priv;
   GdkRGBA color;
   gchar *text;
 
@@ -2025,7 +2025,7 @@ hex_changed (GtkWidget *hex_entry,
 }
 
 static gboolean
-hex_focus_out (GtkWidget     *hex_entry,
+hex_focus_out (CtkWidget     *hex_entry,
                GdkEventFocus *event,
                gpointer       data)
 {
@@ -2035,11 +2035,11 @@ hex_focus_out (GtkWidget     *hex_entry,
 }
 
 static void
-hsv_changed (GtkWidget *hsv,
+hsv_changed (CtkWidget *hsv,
              gpointer   data)
 {
-  GtkColorSelection *colorsel;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel;
+  CtkColorSelectionPrivate *priv;
 
   colorsel = CTK_COLOR_SELECTION (data);
   priv = colorsel->private_data;
@@ -2061,11 +2061,11 @@ hsv_changed (GtkWidget *hsv,
 }
 
 static void
-adjustment_changed (GtkAdjustment *adjustment,
+adjustment_changed (CtkAdjustment *adjustment,
                     gpointer       data)
 {
-  GtkColorSelection *colorsel;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel;
+  CtkColorSelectionPrivate *priv;
 
   colorsel = CTK_COLOR_SELECTION (g_object_get_data (G_OBJECT (adjustment), "COLORSEL"));
   priv = colorsel->private_data;
@@ -2114,12 +2114,12 @@ adjustment_changed (GtkAdjustment *adjustment,
 }
 
 static void
-opacity_entry_changed (GtkWidget *opacity_entry,
+opacity_entry_changed (CtkWidget *opacity_entry,
                        gpointer   data)
 {
-  GtkColorSelection *colorsel;
-  GtkColorSelectionPrivate *priv;
-  GtkAdjustment *adj;
+  CtkColorSelection *colorsel;
+  CtkColorSelectionPrivate *priv;
+  CtkAdjustment *adj;
   gchar *text;
 
   colorsel = CTK_COLOR_SELECTION (data);
@@ -2138,17 +2138,17 @@ opacity_entry_changed (GtkWidget *opacity_entry,
 }
 
 static void
-make_label_spinbutton (GtkColorSelection *colorsel,
-                       GtkWidget        **spinbutton,
+make_label_spinbutton (CtkColorSelection *colorsel,
+                       CtkWidget        **spinbutton,
                        gchar             *text,
-                       GtkWidget         *table,
+                       CtkWidget         *table,
                        gint               i,
                        gint               j,
                        gint               channel_type,
                        const gchar       *tooltip)
 {
-  GtkWidget *label;
-  GtkAdjustment *adjust;
+  CtkWidget *label;
+  CtkAdjustment *adjust;
 
   if (channel_type == COLORSEL_HUE)
     {
@@ -2181,13 +2181,13 @@ make_label_spinbutton (GtkColorSelection *colorsel,
 }
 
 static void
-make_palette_frame (GtkColorSelection *colorsel,
-                    GtkWidget         *table,
+make_palette_frame (CtkColorSelection *colorsel,
+                    CtkWidget         *table,
                     gint               i,
                     gint               j)
 {
-  GtkWidget *frame;
-  GtkColorSelectionPrivate *priv;
+  CtkWidget *frame;
+  CtkColorSelectionPrivate *priv;
 
   priv = colorsel->private_data;
   frame = ctk_frame_new (NULL);
@@ -2200,9 +2200,9 @@ make_palette_frame (GtkColorSelection *colorsel,
 
 /* Set the palette entry [x][y] to be the currently selected one. */
 static void
-set_selected_palette (GtkColorSelection *colorsel, int x, int y)
+set_selected_palette (CtkColorSelection *colorsel, int x, int y)
 {
-  GtkColorSelectionPrivate *priv = colorsel->private_data;
+  CtkColorSelectionPrivate *priv = colorsel->private_data;
 
   ctk_widget_grab_focus (priv->custom_palette[x][y]);
 }
@@ -2217,9 +2217,9 @@ scale_round (double val, double factor)
 }
 
 static void
-update_color (GtkColorSelection *colorsel)
+update_color (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv = colorsel->private_data;
+  CtkColorSelectionPrivate *priv = colorsel->private_data;
   gchar entryval[12];
   gchar opacity_text[32];
   gchar *ptr;
@@ -2280,7 +2280,7 @@ update_color (GtkColorSelection *colorsel)
 }
 
 static void
-update_palette (GtkColorSelection *colorsel)
+update_palette (CtkColorSelection *colorsel)
 {
   GdkColor *current_colors;
   gint i, j;
@@ -2339,15 +2339,15 @@ default_change_palette_func (GdkScreen      *screen,
 /**
  * ctk_color_selection_new:
  *
- * Creates a new GtkColorSelection.
+ * Creates a new CtkColorSelection.
  *
- * Returns: a new #GtkColorSelection
+ * Returns: a new #CtkColorSelection
  */
-GtkWidget *
+CtkWidget *
 ctk_color_selection_new (void)
 {
-  GtkColorSelection *colorsel;
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelection *colorsel;
+  CtkColorSelectionPrivate *priv;
   gdouble color[4];
   color[0] = 1.0;
   color[1] = 1.0;
@@ -2370,7 +2370,7 @@ ctk_color_selection_new (void)
 
 /**
  * ctk_color_selection_get_has_opacity_control:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  *
  * Determines whether the colorsel has an opacity control.
  *
@@ -2378,9 +2378,9 @@ ctk_color_selection_new (void)
  *     %FALSE if it does't
  */
 gboolean
-ctk_color_selection_get_has_opacity_control (GtkColorSelection *colorsel)
+ctk_color_selection_get_has_opacity_control (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_COLOR_SELECTION (colorsel), FALSE);
 
@@ -2391,16 +2391,16 @@ ctk_color_selection_get_has_opacity_control (GtkColorSelection *colorsel)
 
 /**
  * ctk_color_selection_set_has_opacity_control:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @has_opacity: %TRUE if @colorsel can set the opacity, %FALSE otherwise
  *
  * Sets the @colorsel to use or not use opacity.
  */
 void
-ctk_color_selection_set_has_opacity_control (GtkColorSelection *colorsel,
+ctk_color_selection_set_has_opacity_control (CtkColorSelection *colorsel,
                                              gboolean           has_opacity)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
 
@@ -2430,16 +2430,16 @@ ctk_color_selection_set_has_opacity_control (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_get_has_palette:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  *
  * Determines whether the color selector has a color palette.
  *
  * Returns: %TRUE if the selector has a palette, %FALSE if it hasn't
  */
 gboolean
-ctk_color_selection_get_has_palette (GtkColorSelection *colorsel)
+ctk_color_selection_get_has_palette (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_COLOR_SELECTION (colorsel), FALSE);
 
@@ -2450,16 +2450,16 @@ ctk_color_selection_get_has_palette (GtkColorSelection *colorsel)
 
 /**
  * ctk_color_selection_set_has_palette:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @has_palette: %TRUE if palette is to be visible, %FALSE otherwise
  *
  * Shows and hides the palette based upon the value of @has_palette.
  */
 void
-ctk_color_selection_set_has_palette (GtkColorSelection *colorsel,
+ctk_color_selection_set_has_palette (CtkColorSelection *colorsel,
                                      gboolean           has_palette)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
 
   priv = colorsel->private_data;
@@ -2481,7 +2481,7 @@ ctk_color_selection_set_has_palette (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_set_current_color:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @color: a #GdkColor to set the current color with
  *
  * Sets the current color to be @color.
@@ -2492,10 +2492,10 @@ ctk_color_selection_set_has_palette (GtkColorSelection *colorsel,
  * Deprecated: 3.4: Use ctk_color_selection_set_current_rgba() instead.
  */
 void
-ctk_color_selection_set_current_color (GtkColorSelection *colorsel,
+ctk_color_selection_set_current_color (CtkColorSelection *colorsel,
                                        const GdkColor    *color)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   gint i;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
@@ -2523,7 +2523,7 @@ ctk_color_selection_set_current_color (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_set_current_alpha:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @alpha: an integer between 0 and 65535
  *
  * Sets the current opacity to be @alpha.
@@ -2532,10 +2532,10 @@ ctk_color_selection_set_current_color (GtkColorSelection *colorsel,
  * the original opacity to be @alpha too.
  */
 void
-ctk_color_selection_set_current_alpha (GtkColorSelection *colorsel,
+ctk_color_selection_set_current_alpha (CtkColorSelection *colorsel,
                                        guint16            alpha)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   gint i;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
@@ -2554,18 +2554,18 @@ ctk_color_selection_set_current_alpha (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_get_current_color:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @color: (out): a #GdkColor to fill in with the current color
  *
- * Sets @color to be the current color in the GtkColorSelection widget.
+ * Sets @color to be the current color in the CtkColorSelection widget.
  *
  * Deprecated: 3.4: Use ctk_color_selection_get_current_rgba() instead.
  */
 void
-ctk_color_selection_get_current_color (GtkColorSelection *colorsel,
+ctk_color_selection_get_current_color (CtkColorSelection *colorsel,
                                        GdkColor          *color)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
   g_return_if_fail (color != NULL);
@@ -2578,16 +2578,16 @@ ctk_color_selection_get_current_color (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_get_current_alpha:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  *
  * Returns the current alpha value.
  *
  * Returns: an integer between 0 and 65535
  */
 guint16
-ctk_color_selection_get_current_alpha (GtkColorSelection *colorsel)
+ctk_color_selection_get_current_alpha (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_COLOR_SELECTION (colorsel), 0);
 
@@ -2597,7 +2597,7 @@ ctk_color_selection_get_current_alpha (GtkColorSelection *colorsel)
 
 /**
  * ctk_color_selection_set_previous_color:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @color: a #GdkColor to set the previous color with
  *
  * Sets the “previous” color to be @color.
@@ -2610,10 +2610,10 @@ ctk_color_selection_get_current_alpha (GtkColorSelection *colorsel)
  * Deprecated: 3.4: Use ctk_color_selection_set_previous_rgba() instead.
  */
 void
-ctk_color_selection_set_previous_color (GtkColorSelection *colorsel,
+ctk_color_selection_set_previous_color (CtkColorSelection *colorsel,
                                         const GdkColor    *color)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
   g_return_if_fail (color != NULL);
@@ -2636,7 +2636,7 @@ ctk_color_selection_set_previous_color (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_set_previous_alpha:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @alpha: an integer between 0 and 65535
  *
  * Sets the “previous” alpha to be @alpha.
@@ -2645,10 +2645,10 @@ ctk_color_selection_set_previous_color (GtkColorSelection *colorsel,
  * as it might seem confusing to have that alpha change.
  */
 void
-ctk_color_selection_set_previous_alpha (GtkColorSelection *colorsel,
+ctk_color_selection_set_previous_alpha (CtkColorSelection *colorsel,
                                         guint16            alpha)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
 
@@ -2663,7 +2663,7 @@ ctk_color_selection_set_previous_alpha (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_get_previous_color:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @color: (out): a #GdkColor to fill in with the original color value
  *
  * Fills @color in with the original color value.
@@ -2671,10 +2671,10 @@ ctk_color_selection_set_previous_alpha (GtkColorSelection *colorsel,
  * Deprecated: 3.4: Use ctk_color_selection_get_previous_rgba() instead.
  */
 void
-ctk_color_selection_get_previous_color (GtkColorSelection *colorsel,
+ctk_color_selection_get_previous_color (CtkColorSelection *colorsel,
                                         GdkColor           *color)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
   g_return_if_fail (color != NULL);
@@ -2687,16 +2687,16 @@ ctk_color_selection_get_previous_color (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_get_previous_alpha:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  *
  * Returns the previous alpha value.
  *
  * Returns: an integer between 0 and 65535
  */
 guint16
-ctk_color_selection_get_previous_alpha (GtkColorSelection *colorsel)
+ctk_color_selection_get_previous_alpha (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_COLOR_SELECTION (colorsel), 0);
 
@@ -2706,7 +2706,7 @@ ctk_color_selection_get_previous_alpha (GtkColorSelection *colorsel)
 
 /**
  * ctk_color_selection_set_current_rgba:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @rgba: A #GdkRGBA to set the current color with
  *
  * Sets the current color to be @rgba.
@@ -2717,10 +2717,10 @@ ctk_color_selection_get_previous_alpha (GtkColorSelection *colorsel)
  * Since: 3.0
  */
 void
-ctk_color_selection_set_current_rgba (GtkColorSelection *colorsel,
+ctk_color_selection_set_current_rgba (CtkColorSelection *colorsel,
                                       const GdkRGBA     *rgba)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   gint i;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
@@ -2753,18 +2753,18 @@ ctk_color_selection_set_current_rgba (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_get_current_rgba:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @rgba: (out): a #GdkRGBA to fill in with the current color
  *
- * Sets @rgba to be the current color in the GtkColorSelection widget.
+ * Sets @rgba to be the current color in the CtkColorSelection widget.
  *
  * Since: 3.0
  */
 void
-ctk_color_selection_get_current_rgba (GtkColorSelection *colorsel,
+ctk_color_selection_get_current_rgba (CtkColorSelection *colorsel,
                                       GdkRGBA           *rgba)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
   g_return_if_fail (rgba != NULL);
@@ -2778,7 +2778,7 @@ ctk_color_selection_get_current_rgba (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_set_previous_rgba:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @rgba: a #GdkRGBA to set the previous color with
  *
  * Sets the “previous” color to be @rgba.
@@ -2791,10 +2791,10 @@ ctk_color_selection_get_current_rgba (GtkColorSelection *colorsel,
  * Since: 3.0
  */
 void
-ctk_color_selection_set_previous_rgba (GtkColorSelection *colorsel,
+ctk_color_selection_set_previous_rgba (CtkColorSelection *colorsel,
                                        const GdkRGBA     *rgba)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
   g_return_if_fail (rgba != NULL);
@@ -2821,7 +2821,7 @@ ctk_color_selection_set_previous_rgba (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_get_previous_rgba:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @rgba: (out): a #GdkRGBA to fill in with the original color value
  *
  * Fills @rgba in with the original color value.
@@ -2829,10 +2829,10 @@ ctk_color_selection_set_previous_rgba (GtkColorSelection *colorsel,
  * Since: 3.0
  */
 void
-ctk_color_selection_get_previous_rgba (GtkColorSelection *colorsel,
+ctk_color_selection_get_previous_rgba (CtkColorSelection *colorsel,
                                        GdkRGBA           *rgba)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_COLOR_SELECTION (colorsel));
   g_return_if_fail (rgba != NULL);
@@ -2846,18 +2846,18 @@ ctk_color_selection_get_previous_rgba (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_set_palette_color:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  * @index: the color index of the palette
  * @color: A #GdkColor to set the palette with
  *
  * Sets the palette located at @index to have @color as its color.
  */
 static void
-ctk_color_selection_set_palette_color (GtkColorSelection *colorsel,
+ctk_color_selection_set_palette_color (CtkColorSelection *colorsel,
                                        gint               index,
                                        GdkColor          *color)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
   gint x, y;
   gdouble col[3];
 
@@ -2877,7 +2877,7 @@ ctk_color_selection_set_palette_color (GtkColorSelection *colorsel,
 
 /**
  * ctk_color_selection_is_adjusting:
- * @colorsel: a #GtkColorSelection
+ * @colorsel: a #CtkColorSelection
  *
  * Gets the current state of the @colorsel.
  *
@@ -2885,9 +2885,9 @@ ctk_color_selection_set_palette_color (GtkColorSelection *colorsel,
  *     a color around, and %FALSE if the selection has stopped
  */
 gboolean
-ctk_color_selection_is_adjusting (GtkColorSelection *colorsel)
+ctk_color_selection_is_adjusting (CtkColorSelection *colorsel)
 {
-  GtkColorSelectionPrivate *priv;
+  CtkColorSelectionPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_COLOR_SELECTION (colorsel), FALSE);
 
@@ -3039,17 +3039,17 @@ ctk_color_selection_palette_to_string (const GdkColor *colors,
  * tries to modify the palette in a color selection.
  *
  * This function should save the new palette contents, and update
- * the #GtkSettings:ctk-color-palette GtkSettings property so all
- * GtkColorSelection widgets will be modified.
+ * the #CtkSettings:ctk-color-palette CtkSettings property so all
+ * CtkColorSelection widgets will be modified.
  *
  * Returns: the previous change palette hook (that was replaced)
  *
  * Since: 2.2
  */
-GtkColorSelectionChangePaletteWithScreenFunc
-ctk_color_selection_set_change_palette_with_screen_hook (GtkColorSelectionChangePaletteWithScreenFunc func)
+CtkColorSelectionChangePaletteWithScreenFunc
+ctk_color_selection_set_change_palette_with_screen_hook (CtkColorSelectionChangePaletteWithScreenFunc func)
 {
-  GtkColorSelectionChangePaletteWithScreenFunc old;
+  CtkColorSelectionChangePaletteWithScreenFunc old;
 
   old = change_palette_hook;
 
@@ -3060,7 +3060,7 @@ ctk_color_selection_set_change_palette_with_screen_hook (GtkColorSelectionChange
 
 static void
 make_control_relations (AtkObject *atk_obj,
-                        GtkWidget *widget)
+                        CtkWidget *widget)
 {
   AtkObject *obj;
 
@@ -3071,7 +3071,7 @@ make_control_relations (AtkObject *atk_obj,
 
 static void
 make_all_relations (AtkObject                *atk_obj,
-                    GtkColorSelectionPrivate *priv)
+                    CtkColorSelectionPrivate *priv)
 {
   make_control_relations (atk_obj, priv->hue_spinbutton);
   make_control_relations (atk_obj, priv->sat_spinbutton);

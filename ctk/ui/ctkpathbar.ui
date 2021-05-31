@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <object class="GtkButton" id="down_slider_button">
+  <object class="CtkButton" id="down_slider_button">
     <property name="visible">1</property>
     <property name="can-focus">1</property>
     <property name="receives-default">1</property>
@@ -16,7 +16,7 @@
     <signal name="focus-out-event" handler="ctk_path_bar_slider_down_defocus" swapped="no"/>
     <signal name="unmap" handler="on_slider_unmap" swapped="no"/>
     <child>
-      <object class="GtkImage">
+      <object class="CtkImage">
         <property name="visible">1</property>
         <property name="icon-name">pan-end-symbolic</property>
         <property name="icon-size">1</property>
@@ -26,7 +26,7 @@
       <class name="slider-button"/>
     </style>
   </object>
-  <object class="GtkButton" id="up_slider_button">
+  <object class="CtkButton" id="up_slider_button">
     <property name="visible">1</property>
     <property name="can-focus">1</property>
     <property name="receives-default">1</property>
@@ -41,7 +41,7 @@
     <signal name="focus-out-event" handler="ctk_path_bar_slider_up_defocus" swapped="no"/>
     <signal name="unmap" handler="on_slider_unmap" swapped="no"/>
     <child>
-      <object class="GtkImage">
+      <object class="CtkImage">
         <property name="visible">1</property>
         <property name="icon-name">pan-start-symbolic</property>
         <property name="icon-size">1</property>

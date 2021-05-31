@@ -21,19 +21,19 @@
 typedef struct _Info Info;
 struct _Info
 {
-  GtkWindow  *window;
-  GtkToolbar *toolbar;
+  CtkWindow  *window;
+  CtkToolbar *toolbar;
   gint	      counter;
 };
 
 static void
-add_random (GtkToolbar *toolbar, gint n)
+add_random (CtkToolbar *toolbar, gint n)
 {
   gint n_items;
   gint position;
   gchar *label = g_strdup_printf ("Button %d", n);
 
-  GtkToolItem *toolitem = ctk_tool_button_new (NULL, label);
+  CtkToolItem *toolitem = ctk_tool_button_new (NULL, label);
   ctk_tool_item_set_tooltip_text (toolitem, "Bar");
 
   g_free (label);
@@ -49,9 +49,9 @@ add_random (GtkToolbar *toolbar, gint n)
 }
 
 static void
-remove_random (GtkToolbar *toolbar)
+remove_random (CtkToolbar *toolbar)
 {
-  GtkToolItem *tool_item;
+  CtkToolItem *tool_item;
   gint n_items;
   gint position;
 

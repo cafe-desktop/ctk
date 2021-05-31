@@ -32,7 +32,7 @@ unblock (gpointer data)
 }
 
 G_MODULE_EXPORT void
-strip_attributes_if_no_animation (GtkWidget *widget)
+strip_attributes_if_no_animation (CtkWidget *widget)
 {
   gboolean enabled;
 

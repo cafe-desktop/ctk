@@ -1807,7 +1807,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Brug:\n"
 "  ctk-builder-tool [KOMMANDO] FIL\n"
@@ -1825,7 +1825,7 @@ msgstr ""
 "  --id=ID            Forhåndsvis kun the navngivne objekt\n"
 "  --css=FIL          Brug typografi fra CSS-fil\n"
 "\n"
-"Udfør diverse handlinger på .ui-filer fra GtkBuilder.\n"
+"Udfør diverse handlinger på .ui-filer fra CtkBuilder.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2669,7 +2669,7 @@ msgstr "Tilgået"
 msgid "Create Folder"
 msgstr "Opret mappe"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -9140,7 +9140,7 @@ msgstr "Udskriv til testprinter"
 #~ "it's from a different GTK version?"
 #~ msgstr ""
 #~ "Billedindlæsningsmodulet %s  eksporterer ikke den rigtige grænseflade; "
-#~ "måske er den fra en anden Gtk-version?"
+#~ "måske er den fra en anden Ctk-version?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Billedtypen “%s” er ikke understøttet"

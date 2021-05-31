@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="width_request">110</property>
     <property name="height_request">110</property>
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkBox" id="box1">
+          <object class="CtkBox" id="box1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkEventBox" id="eventbox1">
+              <object class="CtkEventBox" id="eventbox1">
                 <property name="width_request">10</property>
                 <property name="height_request">10</property>
                 <property name="visible">True</property>
@@ -33,7 +33,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox2">
+              <object class="CtkEventBox" id="eventbox2">
                 <property name="width_request">10</property>
                 <property name="height_request">10</property>
                 <property name="visible">True</property>
@@ -50,7 +50,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox3">
+              <object class="CtkEventBox" id="eventbox3">
                 <property name="width_request">10</property>
                 <property name="height_request">10</property>
                 <property name="visible">True</property>
@@ -68,7 +68,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox4">
+              <object class="CtkEventBox" id="eventbox4">
                 <property name="width_request">10</property>
                 <property name="height_request">10</property>
                 <property name="visible">True</property>
@@ -86,7 +86,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox5">
+              <object class="CtkEventBox" id="eventbox5">
                 <property name="width_request">10</property>
                 <property name="height_request">10</property>
                 <property name="visible">True</property>
@@ -103,7 +103,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox6">
+              <object class="CtkEventBox" id="eventbox6">
                 <property name="width_request">10</property>
                 <property name="height_request">10</property>
                 <property name="visible">True</property>
@@ -120,7 +120,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox7">
+              <object class="CtkEventBox" id="eventbox7">
                 <property name="width_request">10</property>
                 <property name="height_request">10</property>
                 <property name="visible">True</property>
@@ -138,7 +138,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox8">
+              <object class="CtkEventBox" id="eventbox8">
                 <property name="width_request">10</property>
                 <property name="height_request">10</property>
                 <property name="visible">True</property>

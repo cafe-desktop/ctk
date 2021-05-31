@@ -14,15 +14,15 @@ static void
 on_application_activate (GApplication *gapplication,
                          void         *user_data)
 {
-  GtkApplication *application = CTK_APPLICATION (gapplication);
-  GtkCssProvider *css_provider = ctk_css_provider_new ();
+  CtkApplication *application = CTK_APPLICATION (gapplication);
+  CtkCssProvider *css_provider = ctk_css_provider_new ();
   GdkScreen *screen = gdk_screen_get_default ();
 
   GSimpleAction *action;
-  GtkWidget *box;
+  CtkWidget *box;
   GIcon *gicon;
-  GtkWidget *model_button;
-  GtkWidget *widget;
+  CtkWidget *model_button;
+  CtkWidget *widget;
 
   ctk_css_provider_load_from_data (css_provider,
     "window > box { padding: 0.5em; }"
@@ -97,7 +97,7 @@ int
 main (int   argc,
       char *argv[])
 {
-  GtkApplication *application = ctk_application_new ("org.ctk.test.modelbutton",
+  CtkApplication *application = ctk_application_new ("org.ctk.test.modelbutton",
                                                      G_APPLICATION_FLAGS_NONE);
   int result;
 

@@ -22,11 +22,11 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   ctk_css_calc_value_new_sum          (GtkCssValue            *value1,
-                                                     GtkCssValue            *value2);
+CtkCssValue *   ctk_css_calc_value_new_sum          (CtkCssValue            *value1,
+                                                     CtkCssValue            *value2);
 
-GtkCssValue *   ctk_css_calc_value_parse            (GtkCssParser           *parser,
-                                                     GtkCssNumberParseFlags  flags);
+CtkCssValue *   ctk_css_calc_value_parse            (CtkCssParser           *parser,
+                                                     CtkCssNumberParseFlags  flags);
 
 G_END_DECLS
 

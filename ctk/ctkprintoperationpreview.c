@@ -34,7 +34,7 @@ ctk_print_operation_preview_get_type (void)
     {
       const GTypeInfo print_operation_preview_info =
       {
-        sizeof (GtkPrintOperationPreviewIface), /* class_size */
+        sizeof (CtkPrintOperationPreviewIface), /* class_size */
 	ctk_print_operation_preview_base_init,   /* base_init */
 	NULL,		/* base_finalize */
 	NULL,
@@ -46,7 +46,7 @@ ctk_print_operation_preview_get_type (void)
       };
 
       print_operation_preview_type =
-	g_type_register_static (G_TYPE_INTERFACE, I_("GtkPrintOperationPreview"),
+	g_type_register_static (G_TYPE_INTERFACE, I_("CtkPrintOperationPreview"),
 				&print_operation_preview_info, 0);
 
       g_type_interface_add_prerequisite (print_operation_preview_type, G_TYPE_OBJECT);
@@ -63,9 +63,9 @@ ctk_print_operation_preview_base_init (gpointer g_iface)
   if (!initialized)
     {
       /**
-       * GtkPrintOperationPreview::ready:
+       * CtkPrintOperationPreview::ready:
        * @preview: the object on which the signal is emitted
-       * @context: the current #GtkPrintContext
+       * @context: the current #CtkPrintContext
        *
        * The ::ready signal gets emitted once per preview operation,
        * before the first page is rendered.
@@ -75,17 +75,17 @@ ctk_print_operation_preview_base_init (gpointer g_iface)
       g_signal_new (I_("ready"),
 		    CTK_TYPE_PRINT_OPERATION_PREVIEW,
 		    G_SIGNAL_RUN_LAST,
-		    G_STRUCT_OFFSET (GtkPrintOperationPreviewIface, ready),
+		    G_STRUCT_OFFSET (CtkPrintOperationPreviewIface, ready),
 		    NULL, NULL,
 		    NULL,
 		    G_TYPE_NONE, 1,
 		    CTK_TYPE_PRINT_CONTEXT);
 
       /**
-       * GtkPrintOperationPreview::got-page-size:
+       * CtkPrintOperationPreview::got-page-size:
        * @preview: the object on which the signal is emitted
-       * @context: the current #GtkPrintContext
-       * @page_setup: the #GtkPageSetup for the current page
+       * @context: the current #CtkPrintContext
+       * @page_setup: the #CtkPageSetup for the current page
        *
        * The ::got-page-size signal is emitted once for each page
        * that gets rendered to the preview. 
@@ -97,7 +97,7 @@ ctk_print_operation_preview_base_init (gpointer g_iface)
       g_signal_new (I_("got-page-size"),
 		    CTK_TYPE_PRINT_OPERATION_PREVIEW,
 		    G_SIGNAL_RUN_LAST,
-		    G_STRUCT_OFFSET (GtkPrintOperationPreviewIface, got_page_size),
+		    G_STRUCT_OFFSET (CtkPrintOperationPreviewIface, got_page_size),
 		    NULL, NULL,
 		    _ctk_marshal_VOID__OBJECT_OBJECT,
 		    G_TYPE_NONE, 2,
@@ -110,11 +110,11 @@ ctk_print_operation_preview_base_init (gpointer g_iface)
 
 /**
  * ctk_print_operation_preview_render_page:
- * @preview: a #GtkPrintOperationPreview
+ * @preview: a #CtkPrintOperationPreview
  * @page_nr: the page to render
  *
  * Renders a page to the preview, using the print context that
- * was passed to the #GtkPrintOperation::preview handler together
+ * was passed to the #CtkPrintOperation::preview handler together
  * with @preview.
  *
  * A custom iprint preview should use this function in its ::expose
@@ -126,7 +126,7 @@ ctk_print_operation_preview_base_init (gpointer g_iface)
  * Since: 2.10 
  */
 void    
-ctk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
+ctk_print_operation_preview_render_page (CtkPrintOperationPreview *preview,
 					 gint			   page_nr)
 {
   g_return_if_fail (CTK_IS_PRINT_OPERATION_PREVIEW (preview));
@@ -137,7 +137,7 @@ ctk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
 
 /**
  * ctk_print_operation_preview_end_preview:
- * @preview: a #GtkPrintOperationPreview
+ * @preview: a #CtkPrintOperationPreview
  *
  * Ends a preview. 
  *
@@ -146,7 +146,7 @@ ctk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
  * Since: 2.10
  */
 void
-ctk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview)
+ctk_print_operation_preview_end_preview (CtkPrintOperationPreview *preview)
 {
   g_return_if_fail (CTK_IS_PRINT_OPERATION_PREVIEW (preview));
 
@@ -155,7 +155,7 @@ ctk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview)
 
 /**
  * ctk_print_operation_preview_is_selected:
- * @preview: a #GtkPrintOperationPreview
+ * @preview: a #CtkPrintOperationPreview
  * @page_nr: a page number
  *
  * Returns whether the given page is included in the set of pages that
@@ -166,7 +166,7 @@ ctk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview)
  * Since: 2.10
  */
 gboolean
-ctk_print_operation_preview_is_selected (GtkPrintOperationPreview *preview,
+ctk_print_operation_preview_is_selected (CtkPrintOperationPreview *preview,
 					 gint                      page_nr)
 {
   g_return_val_if_fail (CTK_IS_PRINT_OPERATION_PREVIEW (preview), FALSE);

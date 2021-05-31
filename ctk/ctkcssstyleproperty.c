@@ -46,15 +46,15 @@ enum {
   PROP_INITIAL
 };
 
-G_DEFINE_TYPE (GtkCssStyleProperty, _ctk_css_style_property, CTK_TYPE_STYLE_PROPERTY)
+G_DEFINE_TYPE (CtkCssStyleProperty, _ctk_css_style_property, CTK_TYPE_STYLE_PROPERTY)
 
-static GtkCssStylePropertyClass *ctk_css_style_property_class = NULL;
+static CtkCssStylePropertyClass *ctk_css_style_property_class = NULL;
 
 static void
 ctk_css_style_property_constructed (GObject *object)
 {
-  GtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
-  GtkCssStylePropertyClass *klass = CTK_CSS_STYLE_PROPERTY_GET_CLASS (property);
+  CtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
+  CtkCssStylePropertyClass *klass = CTK_CSS_STYLE_PROPERTY_GET_CLASS (property);
 
   property->id = klass->style_properties->len;
   g_ptr_array_add (klass->style_properties, property);
@@ -68,7 +68,7 @@ ctk_css_style_property_set_property (GObject      *object,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  GtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
+  CtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
 
   switch (prop_id)
     {
@@ -97,7 +97,7 @@ ctk_css_style_property_get_property (GObject    *object,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
-  GtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
+  CtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
 
   switch (prop_id)
     {
@@ -123,13 +123,13 @@ ctk_css_style_property_get_property (GObject    *object,
 }
 
 static void
-_ctk_css_style_property_assign (GtkStyleProperty   *property,
-                                GtkStyleProperties *props,
-                                GtkStateFlags       state,
+_ctk_css_style_property_assign (CtkStyleProperty   *property,
+                                CtkStyleProperties *props,
+                                CtkStateFlags       state,
                                 const GValue       *value)
 {
-  GtkCssStyleProperty *style;
-  GtkCssValue *css_value;
+  CtkCssStyleProperty *style;
+  CtkCssValue *css_value;
   
   style = CTK_CSS_STYLE_PROPERTY (property);
   css_value = style->assign_value (style, value);
@@ -142,13 +142,13 @@ _ctk_css_style_property_assign (GtkStyleProperty   *property,
 }
 
 static void
-_ctk_css_style_property_query (GtkStyleProperty   *property,
+_ctk_css_style_property_query (CtkStyleProperty   *property,
                                GValue             *value,
-                               GtkStyleQueryFunc   query_func,
+                               CtkStyleQueryFunc   query_func,
                                gpointer            query_data)
 {
-  GtkCssStyleProperty *style_property = CTK_CSS_STYLE_PROPERTY (property);
-  GtkCssValue *css_value;
+  CtkCssStyleProperty *style_property = CTK_CSS_STYLE_PROPERTY (property);
+  CtkCssValue *css_value;
 
   css_value = (* query_func) (CTK_CSS_STYLE_PROPERTY (property)->id, query_data);
   if (css_value == NULL)
@@ -157,11 +157,11 @@ _ctk_css_style_property_query (GtkStyleProperty   *property,
   style_property->query_value (style_property, css_value, value);
 }
 
-static GtkCssValue *
-ctk_css_style_property_parse_value (GtkStyleProperty *property,
-                                    GtkCssParser     *parser)
+static CtkCssValue *
+ctk_css_style_property_parse_value (CtkStyleProperty *property,
+                                    CtkCssParser     *parser)
 {
-  GtkCssStyleProperty *style_property = CTK_CSS_STYLE_PROPERTY (property);
+  CtkCssStyleProperty *style_property = CTK_CSS_STYLE_PROPERTY (property);
 
   if (_ctk_css_parser_try (parser, "initial", TRUE))
     {
@@ -193,10 +193,10 @@ ctk_css_style_property_parse_value (GtkStyleProperty *property,
 }
 
 static void
-_ctk_css_style_property_class_init (GtkCssStylePropertyClass *klass)
+_ctk_css_style_property_class_init (CtkCssStylePropertyClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkStylePropertyClass *property_class = CTK_STYLE_PROPERTY_CLASS (klass);
+  CtkStylePropertyClass *property_class = CTK_STYLE_PROPERTY_CLASS (klass);
 
   object_class->constructed = ctk_css_style_property_constructed;
   object_class->set_property = ctk_css_style_property_set_property;
@@ -248,16 +248,16 @@ _ctk_css_style_property_class_init (GtkCssStylePropertyClass *klass)
   ctk_css_style_property_class = klass;
 }
 
-static GtkCssValue *
-ctk_css_style_property_real_parse_value (GtkCssStyleProperty *property,
-                                         GtkCssParser        *parser)
+static CtkCssValue *
+ctk_css_style_property_real_parse_value (CtkCssStyleProperty *property,
+                                         CtkCssParser        *parser)
 {
   g_assert_not_reached ();
   return NULL;
 }
 
 static void
-_ctk_css_style_property_init (GtkCssStyleProperty *property)
+_ctk_css_style_property_init (CtkCssStyleProperty *property)
 {
   property->parse_value = ctk_css_style_property_real_parse_value;
 }
@@ -292,7 +292,7 @@ _ctk_css_style_property_get_n_properties (void)
  *
  * Returns: (transfer none): The style property with the given id
  **/
-GtkCssStyleProperty *
+CtkCssStyleProperty *
 _ctk_css_style_property_lookup_by_id (guint id)
 {
 
@@ -318,7 +318,7 @@ _ctk_css_style_property_lookup_by_id (guint id)
  * Returns: %TRUE if the property is inherited by default.
  **/
 gboolean
-_ctk_css_style_property_is_inherit (GtkCssStyleProperty *property)
+_ctk_css_style_property_is_inherit (CtkCssStyleProperty *property)
 {
   ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
 
@@ -336,7 +336,7 @@ _ctk_css_style_property_is_inherit (GtkCssStyleProperty *property)
  * Returns: %TRUE if the property can be animated.
  **/
 gboolean
-_ctk_css_style_property_is_animated (GtkCssStyleProperty *property)
+_ctk_css_style_property_is_animated (CtkCssStyleProperty *property)
 {
   ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
 
@@ -347,13 +347,13 @@ _ctk_css_style_property_is_animated (GtkCssStyleProperty *property)
  * _ctk_css_style_property_get_affects:
  * @property: the property
  *
- * Returns all the things this property affects. See @GtkCssAffects for what
+ * Returns all the things this property affects. See @CtkCssAffects for what
  * the flags mean.
  *
  * Returns: The things this property affects.
  **/
-GtkCssAffects
-_ctk_css_style_property_get_affects (GtkCssStyleProperty *property)
+CtkCssAffects
+_ctk_css_style_property_get_affects (CtkCssStyleProperty *property)
 {
   ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), 0);
 
@@ -370,7 +370,7 @@ _ctk_css_style_property_get_affects (GtkCssStyleProperty *property)
  * Returns: The id of the property
  **/
 guint
-_ctk_css_style_property_get_id (GtkCssStyleProperty *property)
+_ctk_css_style_property_get_id (CtkCssStyleProperty *property)
 {
   ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), 0);
 
@@ -387,8 +387,8 @@ _ctk_css_style_property_get_id (GtkCssStyleProperty *property)
  *
  * Returns: (transfer none): the initial value. The value will never change.
  **/
-GtkCssValue *
-_ctk_css_style_property_get_initial_value (GtkCssStyleProperty *property)
+CtkCssValue *
+_ctk_css_style_property_get_initial_value (CtkCssStyleProperty *property)
 {
   ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), NULL);
 
@@ -402,20 +402,20 @@ _ctk_css_style_property_get_initial_value (GtkCssStyleProperty *property)
  * Computes a bitmask for all properties that have at least one of @flags
  * set.
  *
- * Returns: (transfer full): A #GtkBitmask with the bit set for every
+ * Returns: (transfer full): A #CtkBitmask with the bit set for every
  *          property that has at least one of @flags set.
  */
-GtkBitmask *
-_ctk_css_style_property_get_mask_affecting (GtkCssAffects affects)
+CtkBitmask *
+_ctk_css_style_property_get_mask_affecting (CtkCssAffects affects)
 {
-  GtkBitmask *result;
+  CtkBitmask *result;
   guint i;
 
   result = _ctk_bitmask_new ();
 
   for (i = 0; i < _ctk_css_style_property_get_n_properties (); i++)
     {
-      GtkCssStyleProperty *prop = _ctk_css_style_property_lookup_by_id (i);
+      CtkCssStyleProperty *prop = _ctk_css_style_property_lookup_by_id (i);
 
       if (_ctk_css_style_property_get_affects (prop) & affects)
         result = _ctk_bitmask_set (result, i, TRUE);

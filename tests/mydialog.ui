@@ -1,14 +1,14 @@
 <interface>
-  <template class="MyDialog" parent="GtkDialog">
+  <template class="MyDialog" parent="CtkDialog">
     <child type="action">
-      <object class="GtkButton" id="cancel_button">
+      <object class="CtkButton" id="cancel_button">
         <property name="visible">True</property>
         <property name="label">_Abort</property>
         <property name="use_underline">True</property>
       </object>
     </child>
     <child type="action">
-      <object class="GtkButton" id="go_button">
+      <object class="CtkButton" id="go_button">
         <property name="visible">True</property>
         <property name="label">_Go</property>
         <property name="use_underline">True</property>

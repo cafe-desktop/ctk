@@ -1576,21 +1576,21 @@ msgstr "אומנות על ידי"
 # *
 # * SECTION:ctkaboutdialog
 # * @Short_description: Display information about an application
-# * @Title: GtkAboutDialog
+# * @Title: CtkAboutDialog
 # *
-# * The GtkAboutDialog offers a simple way to display information about
+# * The CtkAboutDialog offers a simple way to display information about
 # * a program like its logo, name, copyright, website and license. It is
 # * also possible to give credits to the authors, documenters, translators
 # * and artists who have worked on the program. An about dialog is typically
 # * opened when the user selects the <literal>About</literal> option from
 # * the <literal>Help</literal> menu. All parts of the dialog are optional.
 # *
-# * About dialog often contain links and email addresses. GtkAboutDialog
+# * About dialog often contain links and email addresses. CtkAboutDialog
 # * displays these as clickable links. By default, it calls ctk_show_uri()
 # * when a user clicks one. The behaviour can be overridden with the
-# * #GtkAboutDialog::activate-link signal.
+# * #CtkAboutDialog::activate-link signal.
 # *
-# * To make constructing a GtkAboutDialog as convenient as possible, you can
+# * To make constructing a CtkAboutDialog as convenient as possible, you can
 # * use the function ctk_show_about_dialog() which constructs and shows a dialog
 # * and keeps it around so that it can be shown again.
 # *
@@ -1598,7 +1598,7 @@ msgstr "אומנות על ידי"
 # * on the dialog window (where &percnt;s is replaced by the name of the
 # * application, but in order to ensure proper translation of the title,
 # * applications should set the title property explicitly when constructing
-# * a GtkAboutDialog, as shown in the following example:
+# * a CtkAboutDialog, as shown in the following example:
 # * <informalexample><programlisting>
 # * ctk_show_about_dialog (NULL,
 # *                        "program-name", "ExampleCode",
@@ -1607,7 +1607,7 @@ msgstr "אומנות על ידי"
 # *                        NULL);
 # * </programlisting></informalexample>
 # *
-# * It is also possible to show a #GtkAboutDialog like any other #GtkDialog,
+# * It is also possible to show a #CtkAboutDialog like any other #CtkDialog,
 # * e.g. using ctk_dialog_run(). In this case, you might need to know that
 # * the 'Close' button returns the #CTK_RESPONSE_CANCEL response id.
 #
@@ -1843,7 +1843,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Usage:\n"
 "  ctk-builder-tool [COMMAND] FILE\n"
@@ -1861,7 +1861,7 @@ msgstr ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2604,7 +2604,7 @@ msgstr "יצירת תיקייה"
 
 # hebrew note: "תיקייה" is "folder", but there is no better word for
 # "directory"
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.

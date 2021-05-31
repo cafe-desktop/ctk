@@ -166,12 +166,12 @@ enum
   NUM_COLUMNS
 };
 
-static GtkTreeModel *
+static CtkTreeModel *
 make_model (void)
 {
-  GtkTreeStore *model;
+  CtkTreeStore *model;
   TreeStruct *month = toplevel;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   model = ctk_tree_store_new (NUM_COLUMNS,
 			      G_TYPE_STRING,
@@ -200,7 +200,7 @@ make_model (void)
 			  -1);
       while (holiday->label)
 	{
-	  GtkTreeIter child_iter;
+	  CtkTreeIter child_iter;
 
 	  ctk_tree_store_append (model, &child_iter, &iter);
 	  ctk_tree_store_set (model, &child_iter,
@@ -223,13 +223,13 @@ make_model (void)
 }
 
 static void
-alex_toggled (GtkCellRendererToggle *cell,
+alex_toggled (CtkCellRendererToggle *cell,
 	      gchar                 *path_str,
 	      gpointer               data)
 {
-  GtkTreeModel *model = (GtkTreeModel *) data;
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_str);
+  CtkTreeModel *model = (CtkTreeModel *) data;
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
   gboolean alex;
 
   ctk_tree_model_get_iter (model, &iter, path);
@@ -242,13 +242,13 @@ alex_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-havoc_toggled (GtkCellRendererToggle *cell,
+havoc_toggled (CtkCellRendererToggle *cell,
 	       gchar                 *path_str,
 	       gpointer               data)
 {
-  GtkTreeModel *model = (GtkTreeModel *) data;
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_str);
+  CtkTreeModel *model = (CtkTreeModel *) data;
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
   gboolean havoc;
 
   ctk_tree_model_get_iter (model, &iter, path);
@@ -261,13 +261,13 @@ havoc_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-owen_toggled (GtkCellRendererToggle *cell,
+owen_toggled (CtkCellRendererToggle *cell,
 	      gchar                 *path_str,
 	      gpointer               data)
 {
-  GtkTreeModel *model = (GtkTreeModel *) data;
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_str);
+  CtkTreeModel *model = (CtkTreeModel *) data;
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
   gboolean owen;
 
   ctk_tree_model_get_iter (model, &iter, path);
@@ -280,13 +280,13 @@ owen_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-tim_toggled (GtkCellRendererToggle *cell,
+tim_toggled (CtkCellRendererToggle *cell,
 	     gchar                 *path_str,
 	     gpointer               data)
 {
-  GtkTreeModel *model = (GtkTreeModel *) data;
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_str);
+  CtkTreeModel *model = (CtkTreeModel *) data;
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
   gboolean tim;
 
   ctk_tree_model_get_iter (model, &iter, path);
@@ -299,13 +299,13 @@ tim_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-dave_toggled (GtkCellRendererToggle *cell,
+dave_toggled (CtkCellRendererToggle *cell,
 	      gchar                 *path_str,
 	      gpointer               data)
 {
-  GtkTreeModel *model = (GtkTreeModel *) data;
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_str);
+  CtkTreeModel *model = (CtkTreeModel *) data;
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
   gboolean dave;
 
   ctk_tree_model_get_iter (model, &iter, path);
@@ -318,14 +318,14 @@ dave_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-set_indicator_size (GtkTreeViewColumn *column,
-		    GtkCellRenderer *cell,
-		    GtkTreeModel *model,
-		    GtkTreeIter *iter,
+set_indicator_size (CtkTreeViewColumn *column,
+		    CtkCellRenderer *cell,
+		    CtkTreeModel *model,
+		    CtkTreeIter *iter,
 		    gpointer data)
 {
   gint size;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_model_get_path (model, iter);
   size = ctk_tree_path_get_indices (path)[0]  * 2 + 10;
@@ -337,14 +337,14 @@ set_indicator_size (GtkTreeViewColumn *column,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *scrolled_window;
-  GtkWidget *tree_view;
-  GtkTreeModel *model;
-  GtkCellRenderer *renderer;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *scrolled_window;
+  CtkWidget *tree_view;
+  CtkTreeModel *model;
+  CtkCellRenderer *renderer;
   gint col_offset;
-  GtkTreeViewColumn *column;
+  CtkTreeViewColumn *column;
 
   ctk_init (&argc, &argv);
 

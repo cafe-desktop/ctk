@@ -375,7 +375,7 @@ msgstr "Tegevuste grupp"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
 
@@ -941,7 +941,7 @@ msgid "Style context"
 msgstr ""
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
+msgid "CtkStyleContext to get style from"
 msgstr ""
 
 #: ctk/deprecated/ctktable.c:185
@@ -1345,7 +1345,7 @@ msgstr ""
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:354 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
 
@@ -1416,7 +1416,7 @@ msgstr ""
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
 
 #: ctk/ctkappchooserbutton.c:634
@@ -2083,7 +2083,7 @@ msgstr "Lehekülje liik"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
 
@@ -2379,7 +2379,7 @@ msgid "The stock ID of the stock icon to render"
 msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:227
@@ -2496,7 +2496,7 @@ msgid "Pulse of the spinner"
 msgstr "Printeri nimi"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:256
@@ -2933,7 +2933,7 @@ msgstr ""
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
+msgid "The CtkCellArea used to layout cells"
 msgstr ""
 
 #: ctk/ctkcellview.c:306
@@ -2941,7 +2941,7 @@ msgid "Cell Area Context"
 msgstr ""
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 
 #: ctk/ctkcellview.c:324
@@ -3193,7 +3193,7 @@ msgstr "Tekstiveerg"
 #: ctk/ctkcombobox.c:1111
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 
 #: ctk/ctkcombobox.c:1128
@@ -4414,7 +4414,7 @@ msgstr ""
 #: ctk/ctkglarea.c:807
 #, fuzzy
 #| msgid "Whether the header can be clicked"
-msgid "Whether the GtkGLArea renders on each redraw"
+msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "Päist saab klõpsata või mitte"
 
 #: ctk/ctkglarea.c:827
@@ -4810,7 +4810,7 @@ msgstr "Joondus"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 
 #: ctk/ctklabel.c:877
@@ -5472,7 +5472,7 @@ msgid "Message area"
 msgstr "Teate liik"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmodelbutton.c:1100
@@ -6316,7 +6316,7 @@ msgid "Default Page Setup"
 msgstr "Vaikimisi lehe sätted"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:430
@@ -6324,7 +6324,7 @@ msgid "Print Settings"
 msgstr "Printimissätted"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:431
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1147
@@ -6443,7 +6443,7 @@ msgid "Embed Page Setup"
 msgstr "Lehekülje sätted"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:472
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1446
@@ -6459,7 +6459,7 @@ msgid "The number of pages that will be printed."
 msgstr "Dokumendis olevate lehekülgede arv."
 
 #: ctk/ctkprintunixdialog.c:413
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr ""
 
 #: ctk/ctkprintunixdialog.c:438
@@ -6467,8 +6467,8 @@ msgid "Selected Printer"
 msgstr "Valitud printer"
 
 #: ctk/ctkprintunixdialog.c:439
-msgid "The GtkPrinter which is selected"
-msgstr "Valitud GtkPrinter"
+msgid "The CtkPrinter which is selected"
+msgstr "Valitud CtkPrinter"
 
 #: ctk/ctkprintunixdialog.c:446
 msgid "Manual Capabilities"
@@ -6595,7 +6595,7 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr ""
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr ""
 
 #: ctk/ctkrange.c:442
@@ -6858,7 +6858,7 @@ msgstr "Ikooni suurus"
 
 #: ctk/ctkscalebutton.c:216
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
 
 #: ctk/ctkscalebutton.c:244
@@ -6982,7 +6982,7 @@ msgid "Horizontal Adjustment"
 msgstr ""
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
+msgid "The CtkAdjustment for the horizontal position"
 msgstr ""
 
 #: ctk/ctkscrolledwindow.c:576
@@ -6990,7 +6990,7 @@ msgid "Vertical Adjustment"
 msgstr ""
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
+msgid "The CtkAdjustment for the vertical position"
 msgstr ""
 
 #: ctk/ctkscrolledwindow.c:583
@@ -7487,7 +7487,7 @@ msgid "Default file chooser backend"
 msgstr ""
 
 #: ctk/ctksettings.c:979
-msgid "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
 msgstr ""
 
 #: ctk/ctksettings.c:996
@@ -7495,7 +7495,7 @@ msgid "Default print backend"
 msgstr ""
 
 #: ctk/ctksettings.c:997
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr ""
 
 #: ctk/ctksettings.c:1020
@@ -8159,7 +8159,7 @@ msgid "Stack"
 msgstr ""
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
+msgid "Associated stack for this CtkStackSidebar"
 msgstr ""
 
 #: ctk/ctkstackswitcher.c:687
@@ -8213,7 +8213,7 @@ msgid "Value type"
 msgstr "Lehekülje liik"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
 msgstr ""
 
 #: ctk/ctkswitch.c:896
@@ -9174,7 +9174,7 @@ msgid "Fixed Height Mode"
 msgstr ""
 
 #: ctk/ctktreeview.c:1110
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 
 #: ctk/ctktreeview.c:1129
@@ -10014,7 +10014,7 @@ msgid "Focus in Toplevel"
 msgstr ""
 
 #: ctk/ctkwindow.c:909
-msgid "Whether the input focus is within this GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
 msgstr ""
 
 #: ctk/ctkwindow.c:915
@@ -10133,12 +10133,12 @@ msgid "Whether the window is maximized"
 msgstr "Kas vidin on nähtav või mitte"
 
 #: ctk/ctkwindow.c:1110
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1111
-msgid "The GtkApplication for the window"
-msgstr "Akna GtkApplication"
+msgid "The CtkApplication for the window"
+msgstr "Akna CtkApplication"
 
 #: ctk/ctkwindow.c:1121 ctk/ctkwindow.c:1122
 msgid "Decorated button layout"
@@ -10153,7 +10153,7 @@ msgid "Cloud Print account"
 msgstr ""
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
+msgid "CtkCloudprintAccount instance"
 msgstr ""
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147

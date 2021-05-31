@@ -313,8 +313,8 @@ msgid "Style context"
 msgstr "បរិបទ​រចនាប័ទ្ម"
 
 #: ../ctk/deprecated/ctkstyle.c:475
-msgid "GtkStyleContext to get style from"
-msgstr "GtkStyleContext សម្រាប់​ទទួល​យក​រចនាប័ទ្ម​ពី"
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext សម្រាប់​ទទួល​យក​រចនាប័ទ្ម​ពី"
 
 #: ../ctk/deprecated/ctktable.c:191
 msgid "Rows"
@@ -725,10 +725,10 @@ msgstr "ក្រុម​សកម្មភាព"
 
 #: ../ctk/ctkaction.c:394
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"GtkAction នេះ​ទាក់ទង​ជាមួយ​នឹង​ GtkActionGroupis ឬ​គ្មាន​សោះ (សម្រាប់​តែ​ការ​ប្រើប្រាស់​ខាងក្នុង) "
+"CtkAction នេះ​ទាក់ទង​ជាមួយ​នឹង​ CtkActionGroupis ឬ​គ្មាន​សោះ (សម្រាប់​តែ​ការ​ប្រើប្រាស់​ខាងក្នុង) "
 "។"
 
 #: ../ctk/ctkaction.c:412 ../ctk/ctkbutton.c:353 ../ctk/ctkimagemenuitem.c:192
@@ -909,8 +909,8 @@ msgstr "រួមបញ្ចូល​ធាតុ 'ផ្សេងទៀត...'
 #: ../ctk/ctkappchooserbutton.c:615
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
-msgstr "ថា​តើ​ប្រអប់​បន្សំ​នឹង​រួមបញ្ចូល​ធាតុ​ដែល​ដំណើរការ GtkAppChooserDialog ដែរ​ឬ​ទេ"
+"CtkAppChooserDialog"
+msgstr "ថា​តើ​ប្រអប់​បន្សំ​នឹង​រួមបញ្ចូល​ធាតុ​ដែល​ដំណើរការ CtkAppChooserDialog ដែរ​ឬ​ទេ"
 
 #: ../ctk/ctkappchooserbutton.c:631
 msgid "Show default item"
@@ -1254,10 +1254,10 @@ msgstr "ប្រភេទ​កញ្ចប់"
 
 #: ../ctk/ctkbox.c:307
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"GtkPackType បញ្ជាក់​​ថា​គួរតែ​ខ្ចប់​ធាតុ​ក្រាហ្វិក​រង​ដោយ​ប្រើ​សេចក្ដីយោង​ទៅ​ខាងដើម ឬ​ខាង​ចុង​ធាតុ​ក្រាហ្វិក​មេ​"
+"CtkPackType បញ្ជាក់​​ថា​គួរតែ​ខ្ចប់​ធាតុ​ក្រាហ្វិក​រង​ដោយ​ប្រើ​សេចក្ដីយោង​ទៅ​ខាងដើម ឬ​ខាង​ចុង​ធាតុ​ក្រាហ្វិក​មេ​"
 "ដែរ​ឬ​ទេ"
 
 #: ../ctk/ctkbox.c:313 ../ctk/ctknotebook.c:767 ../ctk/ctkpaned.c:348
@@ -1546,10 +1546,10 @@ msgstr "ប្រភេទ​កញ្ចប់"
 
 #: ../ctk/ctkcellareabox.c:386
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"GtkPackType បញ្ជាក់​ថា​តើ​គួរ​តែ​ភ្ជាប់​ក្រឡា​ដោយ​ប្រើ​សេចក្ដីយោង​ទៅ​កាន់​ផ្នែក​ខាងដើម ឬ​ខាងចុង​ផ្ទៃ​ក្រឡា​"
+"CtkPackType បញ្ជាក់​ថា​តើ​គួរ​តែ​ភ្ជាប់​ក្រឡា​ដោយ​ប្រើ​សេចក្ដីយោង​ទៅ​កាន់​ផ្នែក​ខាងដើម ឬ​ខាងចុង​ផ្ទៃ​ក្រឡា​"
 "ដែរ​ឬទេ"
 
 #: ../ctk/ctkcellarea.c:803
@@ -1828,8 +1828,8 @@ msgid "Size"
 msgstr "ទំហំ"
 
 #: ../ctk/ctkcellrendererpixbuf.c:184
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "តម្លៃ GtkIconSize ដែល​បញ្ជាក់​ទំហំ​រូបតំណាង​ដែល​បាន​បង្ហាញ"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "តម្លៃ CtkIconSize ដែល​បញ្ជាក់​ទំហំ​រូបតំណាង​ដែល​បាន​បង្ហាញ"
 
 #: ../ctk/ctkcellrendererpixbuf.c:193
 msgid "Detail"
@@ -1947,8 +1947,8 @@ msgid "Pulse of the spinner"
 msgstr "ចលនា​របស់​ប៊ូតុង​បង្កើន​បន្ថយ"
 
 #: ../ctk/ctkcellrendererspinner.c:158
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "តម្លៃ GtkIconSize ដែល​បញ្ជាក់​ទំហំ​របស់​ប៊ូតុង​បង្កើន​បន្ថយ​ដែល​បាន​បង្ហាញ"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "តម្លៃ CtkIconSize ដែល​បញ្ជាក់​ទំហំ​របស់​ប៊ូតុង​បង្កើន​បន្ថយ​ដែល​បាន​បង្ហាញ"
 
 #: ../ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2403,16 +2403,16 @@ msgstr "ផ្ទៃ​ក្រឡា"
 #: ../ctk/ctkcellview.c:253 ../ctk/ctkcombobox.c:1011
 #: ../ctk/ctkentrycompletion.c:452 ../ctk/ctkiconview.c:643
 #: ../ctk/ctktreemenu.c:333 ../ctk/ctktreeviewcolumn.c:427
-msgid "The GtkCellArea used to layout cells"
-msgstr "GtkCellArea ត្រូវ​ប្រើ​ដើម្បី​កំណត់​ប្លង់​ក្រឡា"
+msgid "The CtkCellArea used to layout cells"
+msgstr "CtkCellArea ត្រូវ​ប្រើ​ដើម្បី​កំណត់​ប្លង់​ក្រឡា"
 
 #: ../ctk/ctkcellview.c:276
 msgid "Cell Area Context"
 msgstr "បរិបទ​ផ្ទៃ​ក្រឡា"
 
 #: ../ctk/ctkcellview.c:277
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
-msgstr "GtkCellAreaContext ធ្លាប់​ត្រូវ​បាន​ប្រើ ដើម្បី​គណនី​ធរណីមាត្រ​របស់​ទិដ្ឋភាព​ក្រឡា"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
+msgstr "CtkCellAreaContext ធ្លាប់​ត្រូវ​បាន​ប្រើ ដើម្បី​គណនី​ធរណីមាត្រ​របស់​ទិដ្ឋភាព​ក្រឡា"
 
 #: ../ctk/ctkcellview.c:294
 msgid "Draw Sensitive"
@@ -2625,10 +2625,10 @@ msgstr "ជួរឈរ​អត្ថបទ​ដែល​មាន​ធាត
 #: ../ctk/ctkcombobox.c:941
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "ជួរឈរ​នៅ​ក្នុង​ម៉ូដែល​​ប្រអប់​បន្សំ​ដែល​ត្រូវ​ភ្ជាប់​ជាមួយ​ខ្សែ​អក្សរ​មក​ពី​ធាតុ ប្រសិនបើ​ប្រអប់​បន្សំ​ត្រូវ​បាន​បង្កើត​ជាមួយ "
-"#GtkComboBox:has-entry = %TRUE"
+"#CtkComboBox:has-entry = %TRUE"
 
 #: ../ctk/ctkcombobox.c:958
 msgid "ID Column"
@@ -3812,10 +3812,10 @@ msgstr "ការ​តម្រឹមសងខាង"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "ការ​តម្រឹម​បន្ទាត់​នៅ​ក្នុង​អត្ថបទ​ស្លាក​ដែល​ទាក់ទង​គ្នា ។ វា​មិន​មាន​ឥទ្ធិពល​ទៅលើ​ការ​តម្រឹម​ស្លាក​នៅ​ក្នុង​ពេល​"
-"បម្រុង​ទុក​​ទេ ។ ចំពោះ​ព័ត៌មាន​លម្អិត សូម​មើល GtkMisc::xalign"
+"បម្រុង​ទុក​​ទេ ។ ចំពោះ​ព័ត៌មាន​លម្អិត សូម​មើល CtkMisc::xalign"
 
 #: ../ctk/ctklabel.c:764
 msgid "Pattern"
@@ -4330,8 +4330,8 @@ msgid "Message area"
 msgstr "ផ្ទៃ​សារ"
 
 #: ../ctk/ctkmessagedialog.c:310
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
-msgstr "GtkVBox ដែល​មាន​ស្លាក​ចម្បង និង​រង​របស់ប្រអប់"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
+msgstr "CtkVBox ដែល​មាន​ស្លាក​ចម្បង និង​រង​របស់ប្រអប់"
 
 #: ../ctk/ctkmisc.c:113
 msgid "Y align"
@@ -4824,16 +4824,16 @@ msgid "Default Page Setup"
 msgstr "ការ​រៀបចំ​ទំព័រ​លំនាំដើម"
 
 #: ../ctk/ctkprintoperation.c:1088
-msgid "The GtkPageSetup used by default"
-msgstr "GtkPageSetup ត្រូវ​បាន​ប្រើ​តាម​លំនាំដើម"
+msgid "The CtkPageSetup used by default"
+msgstr "CtkPageSetup ត្រូវ​បាន​ប្រើ​តាម​លំនាំដើម"
 
 #: ../ctk/ctkprintoperation.c:1106 ../ctk/ctkprintunixdialog.c:384
 msgid "Print Settings"
 msgstr "ការ​កំណត់​ម៉ាស៊ីន​បោះពុម្ព"
 
 #: ../ctk/ctkprintoperation.c:1107 ../ctk/ctkprintunixdialog.c:385
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "GtkPrintSettings ត្រូវ​ប្រើ​សម្រាប់​ការ​ចាប់ផ្ដើម​ប្រអប់"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "CtkPrintSettings ត្រូវ​ប្រើ​សម្រាប់​ការ​ចាប់ផ្ដើម​ប្រអប់"
 
 #: ../ctk/ctkprintoperation.c:1125
 msgid "Job Name"
@@ -4950,8 +4950,8 @@ msgid "Embed Page Setup"
 msgstr "បង្កប់​ការ​រៀបចំ​ទំព័រ"
 
 #: ../ctk/ctkprintoperation.c:1403 ../ctk/ctkprintunixdialog.c:426
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "ពិត ប្រសិនបើ​ប្រអប់​រៀបចំ​ទំព័រ​ត្រូវ​បាន​បង្កប់​នៅ​ក្នុង GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "ពិត ប្រសិនបើ​ប្រអប់​រៀបចំ​ទំព័រ​ត្រូវ​បាន​បង្កប់​នៅ​ក្នុង CtkPrintUnixDialog"
 
 #: ../ctk/ctkprintoperation.c:1424
 msgid "Number of Pages To Print"
@@ -4962,16 +4962,16 @@ msgid "The number of pages that will be printed."
 msgstr "ចំនួន​ទំព័រ​ដែល​នឹង​ត្រូវ​បោះពុម្ព ។"
 
 #: ../ctk/ctkprintunixdialog.c:367
-msgid "The GtkPageSetup to use"
-msgstr "GtkPageSetup ដែល​ត្រូវ​ប្រើ"
+msgid "The CtkPageSetup to use"
+msgstr "CtkPageSetup ដែល​ត្រូវ​ប្រើ"
 
 #: ../ctk/ctkprintunixdialog.c:392
 msgid "Selected Printer"
 msgstr "បាន​ជ្រើស​ម៉ាស៊ីន​បោះពុម្ព"
 
 #: ../ctk/ctkprintunixdialog.c:393
-msgid "The GtkPrinter which is selected"
-msgstr "GtkPrinter ដែល​ត្រូវ​បាន​ជ្រើស"
+msgid "The CtkPrinter which is selected"
+msgstr "CtkPrinter ដែល​ត្រូវ​បាន​ជ្រើស"
 
 #: ../ctk/ctkprintunixdialog.c:400
 msgid "Manual Capabilities"
@@ -5117,8 +5117,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "ប៊ូតុង​មូល​ដែល​មាន​ក្រុម​ជា​របស់​ប៊ូតុងនេះ ។"
 
 #: ../ctk/ctkrange.c:425
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "GtkAdjustment ដែល​មាន​តម្លៃ​ជួរ​បច្ចុប្បន្ន"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "CtkAdjustment ដែល​មាន​តម្លៃ​ជួរ​បច្ចុប្បន្ន"
 
 #: ../ctk/ctkrange.c:433
 msgid "Invert direction slider moves to increase range value"
@@ -5342,8 +5342,8 @@ msgstr "ទំហំ​រូបតំណាង"
 
 #: ../ctk/ctkscalebutton.c:238
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "GtkAdjustment ដែល​មាន​តម្លៃ​បច្ចុប្បន្ន​នៃ​វត្ថុ​ប៊ូតុង​ធ្វើ​មាត្រដ្ឋាន​នេះ"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "CtkAdjustment ដែល​មាន​តម្លៃ​បច្ចុប្បន្ន​នៃ​វត្ថុ​ប៊ូតុង​ធ្វើ​មាត្រដ្ឋាន​នេះ"
 
 #: ../ctk/ctkscalebutton.c:266
 msgid "Icons"
@@ -5460,16 +5460,16 @@ msgid "Horizontal Adjustment"
 msgstr "លៃ​តម្រូវ​ផ្ដេក"
 
 #: ../ctk/ctkscrolledwindow.c:373
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment សម្រាប់​ទីតាំង​ផ្ដេក"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment សម្រាប់​ទីតាំង​ផ្ដេក"
 
 #: ../ctk/ctkscrolledwindow.c:379
 msgid "Vertical Adjustment"
 msgstr "លៃ​តម្រូវ​បញ្ឈរ"
 
 #: ../ctk/ctkscrolledwindow.c:380
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment សម្រាប់​ទីតាំង​បញ្ឈរ"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment សម្រាប់​ទីតាំង​បញ្ឈរ"
 
 #: ../ctk/ctkscrolledwindow.c:386
 msgid "Horizontal Scrollbar Policy"
@@ -5899,16 +5899,16 @@ msgid "Default file chooser backend"
 msgstr "កម្មវិធី​ខាងក្រោយ​របស់​កម្មវិធី​ជ្រើស​ឯកសារ​លំនាំដើម"
 
 #: ../ctk/ctksettings.c:883
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "ឈ្មោះ​កម្មវិធី​ខាង​ក្រោយ​របស់ GtkFileChooser ត្រូវ​ប្រើ​តាម​លំនាំដើម"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "ឈ្មោះ​កម្មវិធី​ខាង​ក្រោយ​របស់ CtkFileChooser ត្រូវ​ប្រើ​តាម​លំនាំដើម"
 
 #: ../ctk/ctksettings.c:900
 msgid "Default print backend"
 msgstr "កម្មវិធី​ខាងក្រោយ​សម្រាប់​បោះពុម្ព​តាម​លំនាំដើម"
 
 #: ../ctk/ctksettings.c:901
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "បញ្ជី​កម្មវិធី​ខាងក្រោយ GtkPrintBackend ដែល​ត្រូវ​ប្រើ​តាម​លំនាំដើម"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "បញ្ជី​កម្មវិធី​ខាងក្រោយ CtkPrintBackend ដែល​ត្រូវ​ប្រើ​តាម​លំនាំដើម"
 
 #: ../ctk/ctksettings.c:924
 msgid "Default command to run when displaying a print preview"
@@ -6353,8 +6353,8 @@ msgid "Value type"
 msgstr "ប្រភេទ​តម្លៃ"
 
 #: ../ctk/ctkstyleproperty.c:118
-msgid "The value type returned by GtkStyleContext"
-msgstr "ប្រភេទ​តម្លៃ​ដែល​ត្រូវ​​ត្រឡប់​ដោយ GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
+msgstr "ប្រភេទ​តម្លៃ​ដែល​ត្រូវ​​ត្រឡប់​ដោយ CtkStyleContext"
 
 #: ../ctk/ctkswitch.c:835
 msgid "Whether the switch is on or off"
@@ -7160,8 +7160,8 @@ msgid "Fixed Height Mode"
 msgstr "របៀប​កម្ពស់​ថេរ"
 
 #: ../ctk/ctktreeview.c:1075
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "បង្កើន​ល្បឿន GtkTreeView ដោយ​សន្មត​ថា​ជួរដេក​ទាំងអស់​មាន​កម្ពស់​ស្មើ​គ្នា"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "បង្កើន​ល្បឿន CtkTreeView ដោយ​សន្មត​ថា​ជួរដេក​ទាំងអស់​មាន​កម្ពស់​ស្មើ​គ្នា"
 
 #: ../ctk/ctktreeview.c:1095
 msgid "Hover Selection"
@@ -7921,8 +7921,8 @@ msgid "Focus in Toplevel"
 msgstr "ផ្ដោត​នៅ​ក្នុង​កម្រិត​ខ្ពស់"
 
 #: ../ctk/ctkwindow.c:808
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "ថា​តើ​ចំណុច​ផ្ដោត​ក្នុង​ការ​បញ្ចូល​ស្ថិត​នៅ​ក្នុង GtkWindow នេះ​ដែរ​ឬ​ទេ"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "ថា​តើ​ចំណុច​ផ្ដោត​ក្នុង​ការ​បញ្ចូល​ស្ថិត​នៅ​ក្នុង CtkWindow នេះ​ដែរ​ឬ​ទេ"
 
 #: ../ctk/ctkwindow.c:815
 msgid "Type hint"
@@ -8047,12 +8047,12 @@ msgid "Height of resize grip"
 msgstr "កម្ពស់​ចំណុច​ចាប់​ទាញ​ប្ដូរ​ទំហំ"
 
 #: ../ctk/ctkwindow.c:1047
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ../ctk/ctkwindow.c:1048
-msgid "The GtkApplication for the window"
-msgstr "GtkApplication សម្រាប់​​បង្អួច"
+msgid "The CtkApplication for the window"
+msgstr "CtkApplication សម្រាប់​​បង្អួច"
 
 #: ../modules/printbackends/cups/ctkprintercups.c:93
 msgid "Color Profile Title"
@@ -8077,5 +8077,5 @@ msgstr "ចំណងជើង​ទម្រង់​ពណ៌​ដែល​ត
 #~ msgid "The type of values after style lookup"
 #~ msgstr "ប្រភេទ​តម្លៃ បន្ទាប់ពី​បាន​រក​មើល​រចនាប័ទ្ម"
 
-#~ msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
-#~ msgstr "ពិត ប្រសិនបើ​ប្រអប់​រៀបចំ​ទំព័រ​ត្រូវ​បាន​បង្កប់​នៅ​ក្នុង GtkPrintDialog"
+#~ msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
+#~ msgstr "ពិត ប្រសិនបើ​ប្រអប់​រៀបចំ​ទំព័រ​ត្រូវ​បាន​បង្កប់​នៅ​ក្នុង CtkPrintDialog"

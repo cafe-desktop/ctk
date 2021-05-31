@@ -1,6 +1,6 @@
-<!-- test invalid tag in GtkLabel -->
+<!-- test invalid tag in CtkLabel -->
 <interface>
-  <object class="GtkLabel">
+  <object class="CtkLabel">
     <attributes>
     </attributes>
     <warbl/>

@@ -1,20 +1,20 @@
 #include <ctk/ctk.h>
 
-static GtkWidget *win;
-static GtkWidget *inhibit_entry;
-static GtkWidget *inhibit_logout;
-static GtkWidget *inhibit_switch;
-static GtkWidget *inhibit_suspend;
-static GtkWidget *inhibit_idle;
-static GtkWidget *inhibit_label;
+static CtkWidget *win;
+static CtkWidget *inhibit_entry;
+static CtkWidget *inhibit_logout;
+static CtkWidget *inhibit_switch;
+static CtkWidget *inhibit_suspend;
+static CtkWidget *inhibit_idle;
+static CtkWidget *inhibit_label;
 
 static void
-inhibitor_toggled (GtkToggleButton *button, GtkApplication *app)
+inhibitor_toggled (CtkToggleButton *button, CtkApplication *app)
 {
   gboolean active;
   const gchar *reason;
-  GtkApplicationInhibitFlags flags;
-  GtkWidget *toplevel;
+  CtkApplicationInhibitFlags flags;
+  CtkWidget *toplevel;
   guint cookie;
 
   active = ctk_toggle_button_get_active (button);
@@ -70,14 +70,14 @@ inhibitor_toggled (GtkToggleButton *button, GtkApplication *app)
 }
 
 static void
-activate (GtkApplication *app,
+activate (CtkApplication *app,
           gpointer        data)
 {
-  GtkWidget *box;
-  GtkWidget *separator;
-  GtkWidget *grid;
-  GtkWidget *button;
-  GtkWidget *label;
+  CtkWidget *box;
+  CtkWidget *separator;
+  CtkWidget *grid;
+  CtkWidget *button;
+  CtkWidget *label;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
@@ -130,7 +130,7 @@ activate (GtkApplication *app,
 }
 
 static void
-quit (GtkApplication *app,
+quit (CtkApplication *app,
       gpointer        data)
 {
   g_print ("Received quit\n");
@@ -140,7 +140,7 @@ quit (GtkApplication *app,
 int
 main (int argc, char *argv[])
 {
-  GtkApplication *app;
+  CtkApplication *app;
 
   app = ctk_application_new ("org.ctk.Test.session", 0);
   g_object_set (app, "register-session", TRUE, NULL);

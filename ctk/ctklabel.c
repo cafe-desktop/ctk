@@ -68,11 +68,11 @@
 /**
  * SECTION:ctklabel
  * @Short_description: A widget that displays a small to medium amount of text
- * @Title: GtkLabel
+ * @Title: CtkLabel
  *
- * The #GtkLabel widget displays a small amount of text. As the name
+ * The #CtkLabel widget displays a small amount of text. As the name
  * implies, most labels are used to label another widget such as a
- * #GtkButton, a #GtkMenuItem, or a #GtkComboBox.
+ * #CtkButton, a #CtkMenuItem, or a #CtkComboBox.
  *
  * # CSS nodes
  *
@@ -84,9 +84,9 @@
  * ╰── [link]
  * ]|
  *
- * GtkLabel has a single CSS node with the name label. A wide variety
+ * CtkLabel has a single CSS node with the name label. A wide variety
  * of style classes may be applied to labels, such as .title, .subtitle,
- * .dim-label, etc. In the #GtkShortcutsWindow, labels are used wth the
+ * .dim-label, etc. In the #CtkShortcutsWindow, labels are used wth the
  * .keycap style class.
  *
  * If the label has a selection, it gets a subnode with name selection.
@@ -95,9 +95,9 @@
  * carry the link or visited state depending on whether they have been
  * visited.
  *
- * # GtkLabel as GtkBuildable
+ * # CtkLabel as CtkBuildable
  *
- * The GtkLabel implementation of the GtkBuildable interface supports a
+ * The CtkLabel implementation of the CtkBuildable interface supports a
  * custom <attributes> element, which supports any number of <attribute>
  * elements. The <attribute> element has attributes named “name“, “value“,
  * “start“ and “end“ and allows you to specify #PangoAttribute values for
@@ -105,7 +105,7 @@
  *
  * An example of a UI definition fragment specifying Pango attributes:
  * |[
- * <object class="GtkLabel">
+ * <object class="CtkLabel">
  *   <attributes>
  *     <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
  *     <attribute name="background" value="red" start="5" end="10"/>
@@ -129,15 +129,15 @@
  * ctk_label_set_text_with_mnemonic().
  *
  * Mnemonics automatically activate any activatable widget the label is
- * inside, such as a #GtkButton; if the label is not inside the
+ * inside, such as a #CtkButton; if the label is not inside the
  * mnemonic’s target widget, you have to tell the label about the target
  * using ctk_label_set_mnemonic_widget(). Here’s a simple example where
  * the label is inside a button:
  *
  * |[<!-- language="C" -->
  *   // Pressing Alt+H will activate this button
- *   GtkWidget *button = ctk_button_new ();
- *   GtkWidget *label = ctk_label_new_with_mnemonic ("_Hello");
+ *   CtkWidget *button = ctk_button_new ();
+ *   CtkWidget *label = ctk_label_new_with_mnemonic ("_Hello");
  *   ctk_container_add (CTK_CONTAINER (button), label);
  * ]|
  *
@@ -146,17 +146,17 @@
  *
  * |[<!-- language="C" -->
  *   // Pressing Alt+H will activate this button
- *   GtkWidget *button = ctk_button_new_with_mnemonic ("_Hello");
+ *   CtkWidget *button = ctk_button_new_with_mnemonic ("_Hello");
  * ]|
  *
  * To create a mnemonic for a widget alongside the label, such as a
- * #GtkEntry, you have to point the label at the entry with
+ * #CtkEntry, you have to point the label at the entry with
  * ctk_label_set_mnemonic_widget():
  *
  * |[<!-- language="C" -->
  *   // Pressing Alt+H will focus the entry
- *   GtkWidget *entry = ctk_entry_new ();
- *   GtkWidget *label = ctk_label_new_with_mnemonic ("_Hello");
+ *   CtkWidget *entry = ctk_entry_new ();
+ *   CtkWidget *label = ctk_label_new_with_mnemonic ("_Hello");
  *   ctk_label_set_mnemonic_widget (CTK_LABEL (label), entry);
  * ]|
  *
@@ -168,7 +168,7 @@
  *
  * Here’s how to create a label with a small font:
  * |[<!-- language="C" -->
- *   GtkWidget *label = ctk_label_new (NULL);
+ *   CtkWidget *label = ctk_label_new (NULL);
  *   ctk_label_set_markup (CTK_LABEL (label), "<small>Small text</small>");
  * ]|
  *
@@ -209,10 +209,10 @@
  *
  * ctk_label_set_justify() sets how the lines in a label align
  * with one another. If you want to set how the label as a whole
- * aligns in its available space, see the #GtkWidget:halign and
- * #GtkWidget:valign properties.
+ * aligns in its available space, see the #CtkWidget:halign and
+ * #CtkWidget:valign properties.
  *
- * The #GtkLabel:width-chars and #GtkLabel:max-width-chars properties
+ * The #CtkLabel:width-chars and #CtkLabel:max-width-chars properties
  * can be used to control the size allocation of ellipsized or wrapped
  * labels. For ellipsizing labels, if either is specified (and less
  * than the actual text size), it is used as the minimum width, and the actual
@@ -221,8 +221,8 @@
  * is used as the natural width. Even if max-width-chars specified, wrapping
  * labels will be rewrapped to use all of the available width.
  *
- * Note that the interpretation of #GtkLabel:width-chars and
- * #GtkLabel:max-width-chars has changed a bit with the introduction of
+ * Note that the interpretation of #CtkLabel:width-chars and
+ * #CtkLabel:max-width-chars has changed a bit with the introduction of
  * [width-for-height geometry management.][geometry-management]
  *
  * # Links
@@ -240,20 +240,20 @@
  * "Go to the"
  * "<a href=\"http://www.ctk.org title=\"&lt;i&gt;Our&lt;/i&gt; website\">"
  * "GTK+ website</a> for more...";
- * GtkWidget *label = ctk_label_new (NULL);
+ * CtkWidget *label = ctk_label_new (NULL);
  * ctk_label_set_markup (CTK_LABEL (label), text);
  * ]|
  *
  * It is possible to implement custom handling for links and their tooltips with
- * the #GtkLabel::activate-link signal and the ctk_label_get_current_uri() function.
+ * the #CtkLabel::activate-link signal and the ctk_label_get_current_uri() function.
  */
 
-struct _GtkLabelPrivate
+struct _CtkLabelPrivate
 {
-  GtkLabelSelectionInfo *select_info;
-  GtkWidget *mnemonic_widget;
-  GtkWindow *mnemonic_window;
-  GtkCssGadget *gadget;
+  CtkLabelSelectionInfo *select_info;
+  CtkWidget *mnemonic_widget;
+  CtkWindow *mnemonic_window;
+  CtkCssGadget *gadget;
 
   PangoAttrList *attrs;
   PangoAttrList *markup_attrs;
@@ -288,9 +288,9 @@ struct _GtkLabelPrivate
 
 /* Notes about the handling of links:
  *
- * Links share the GtkLabelSelectionInfo struct with selectable labels.
+ * Links share the CtkLabelSelectionInfo struct with selectable labels.
  * There are some new fields for links. The links field contains the list
- * of GtkLabelLink structs that describe the links which are embedded in
+ * of CtkLabelLink structs that describe the links which are embedded in
  * the label. The active_link field points to the link under the mouse
  * pointer. For keyboard navigation, the “focus” link is determined by
  * finding the link which contains the selection_anchor position.
@@ -317,28 +317,28 @@ typedef struct
   gchar *uri;
   gchar *title;     /* the title attribute, used as tooltip */
 
-  GtkCssNode *cssnode;
+  CtkCssNode *cssnode;
 
   gboolean visited; /* get set when the link is activated; this flag
                      * gets preserved over later set_markup() calls
                      */
   gint start;       /* position of the link in the PangoLayout */
   gint end;
-} GtkLabelLink;
+} CtkLabelLink;
 
-struct _GtkLabelSelectionInfo
+struct _CtkLabelSelectionInfo
 {
   GdkWindow *window;
   gint selection_anchor;
   gint selection_end;
-  GtkWidget *popup_menu;
-  GtkCssNode *selection_node;
+  CtkWidget *popup_menu;
+  CtkCssNode *selection_node;
 
   GList *links;
-  GtkLabelLink *active_link;
+  CtkLabelLink *active_link;
 
-  GtkGesture *drag_gesture;
-  GtkGesture *multipress_gesture;
+  CtkGesture *drag_gesture;
+  CtkGesture *multipress_gesture;
 
   gint drag_start_x;
   gint drag_start_y;
@@ -409,99 +409,99 @@ static void ctk_label_get_property      (GObject          *object,
 					 GValue           *value,
 					 GParamSpec       *pspec);
 static void ctk_label_finalize          (GObject          *object);
-static void ctk_label_destroy           (GtkWidget        *widget);
-static void ctk_label_size_allocate     (GtkWidget        *widget,
-                                         GtkAllocation    *allocation);
-static void ctk_label_state_flags_changed   (GtkWidget        *widget,
-                                             GtkStateFlags     prev_state);
-static void ctk_label_style_updated     (GtkWidget        *widget);
-static gboolean ctk_label_draw          (GtkWidget        *widget,
+static void ctk_label_destroy           (CtkWidget        *widget);
+static void ctk_label_size_allocate     (CtkWidget        *widget,
+                                         CtkAllocation    *allocation);
+static void ctk_label_state_flags_changed   (CtkWidget        *widget,
+                                             CtkStateFlags     prev_state);
+static void ctk_label_style_updated     (CtkWidget        *widget);
+static gboolean ctk_label_draw          (CtkWidget        *widget,
                                          cairo_t          *cr);
-static gboolean ctk_label_focus         (GtkWidget         *widget,
-                                         GtkDirectionType   direction);
+static gboolean ctk_label_focus         (CtkWidget         *widget,
+                                         CtkDirectionType   direction);
 
-static void ctk_label_realize           (GtkWidget        *widget);
-static void ctk_label_unrealize         (GtkWidget        *widget);
-static void ctk_label_map               (GtkWidget        *widget);
-static void ctk_label_unmap             (GtkWidget        *widget);
+static void ctk_label_realize           (CtkWidget        *widget);
+static void ctk_label_unrealize         (CtkWidget        *widget);
+static void ctk_label_map               (CtkWidget        *widget);
+static void ctk_label_unmap             (CtkWidget        *widget);
 
-static gboolean ctk_label_motion            (GtkWidget        *widget,
+static gboolean ctk_label_motion            (CtkWidget        *widget,
 					     GdkEventMotion   *event);
-static gboolean ctk_label_leave_notify      (GtkWidget        *widget,
+static gboolean ctk_label_leave_notify      (CtkWidget        *widget,
                                              GdkEventCrossing *event);
 
-static void     ctk_label_grab_focus        (GtkWidget        *widget);
+static void     ctk_label_grab_focus        (CtkWidget        *widget);
 
-static gboolean ctk_label_query_tooltip     (GtkWidget        *widget,
+static gboolean ctk_label_query_tooltip     (CtkWidget        *widget,
                                              gint              x,
                                              gint              y,
                                              gboolean          keyboard_tip,
-                                             GtkTooltip       *tooltip);
+                                             CtkTooltip       *tooltip);
 
-static void ctk_label_set_text_internal          (GtkLabel      *label,
+static void ctk_label_set_text_internal          (CtkLabel      *label,
 						  gchar         *str);
-static void ctk_label_set_label_internal         (GtkLabel      *label,
+static void ctk_label_set_label_internal         (CtkLabel      *label,
 						  gchar         *str);
-static gboolean ctk_label_set_use_markup_internal    (GtkLabel  *label,
+static gboolean ctk_label_set_use_markup_internal    (CtkLabel  *label,
                                                       gboolean   val);
-static gboolean ctk_label_set_use_underline_internal (GtkLabel  *label,
+static gboolean ctk_label_set_use_underline_internal (CtkLabel  *label,
                                                       gboolean   val);
-static void ctk_label_set_uline_text_internal    (GtkLabel      *label,
+static void ctk_label_set_uline_text_internal    (CtkLabel      *label,
 						  const gchar   *str);
-static void ctk_label_set_pattern_internal       (GtkLabel      *label,
+static void ctk_label_set_pattern_internal       (CtkLabel      *label,
 				                  const gchar   *pattern,
                                                   gboolean       is_mnemonic);
-static void ctk_label_set_markup_internal        (GtkLabel      *label,
+static void ctk_label_set_markup_internal        (CtkLabel      *label,
 						  const gchar   *str,
 						  gboolean       with_uline);
-static void ctk_label_recalculate                (GtkLabel      *label);
-static void ctk_label_hierarchy_changed          (GtkWidget     *widget,
-						  GtkWidget     *old_toplevel);
-static void ctk_label_screen_changed             (GtkWidget     *widget,
+static void ctk_label_recalculate                (CtkLabel      *label);
+static void ctk_label_hierarchy_changed          (CtkWidget     *widget,
+						  CtkWidget     *old_toplevel);
+static void ctk_label_screen_changed             (CtkWidget     *widget,
 						  GdkScreen     *old_screen);
-static gboolean ctk_label_popup_menu             (GtkWidget     *widget);
+static gboolean ctk_label_popup_menu             (CtkWidget     *widget);
 
-static void ctk_label_create_window       (GtkLabel *label);
-static void ctk_label_destroy_window      (GtkLabel *label);
-static void ctk_label_ensure_select_info  (GtkLabel *label);
-static void ctk_label_clear_select_info   (GtkLabel *label);
-static void ctk_label_update_cursor       (GtkLabel *label);
-static void ctk_label_clear_layout        (GtkLabel *label);
-static void ctk_label_ensure_layout       (GtkLabel *label);
-static void ctk_label_select_region_index (GtkLabel *label,
+static void ctk_label_create_window       (CtkLabel *label);
+static void ctk_label_destroy_window      (CtkLabel *label);
+static void ctk_label_ensure_select_info  (CtkLabel *label);
+static void ctk_label_clear_select_info   (CtkLabel *label);
+static void ctk_label_update_cursor       (CtkLabel *label);
+static void ctk_label_clear_layout        (CtkLabel *label);
+static void ctk_label_ensure_layout       (CtkLabel *label);
+static void ctk_label_select_region_index (CtkLabel *label,
                                            gint      anchor_index,
                                            gint      end_index);
 
-static void ctk_label_update_active_link  (GtkWidget *widget,
+static void ctk_label_update_active_link  (CtkWidget *widget,
                                            gdouble    x,
                                            gdouble    y);
 
-static gboolean ctk_label_mnemonic_activate (GtkWidget         *widget,
+static gboolean ctk_label_mnemonic_activate (CtkWidget         *widget,
 					     gboolean           group_cycling);
-static void     ctk_label_setup_mnemonic    (GtkLabel          *label,
+static void     ctk_label_setup_mnemonic    (CtkLabel          *label,
 					     guint              last_key);
-static void     ctk_label_drag_data_get     (GtkWidget         *widget,
+static void     ctk_label_drag_data_get     (CtkWidget         *widget,
 					     GdkDragContext    *context,
-					     GtkSelectionData  *selection_data,
+					     CtkSelectionData  *selection_data,
 					     guint              info,
 					     guint              time);
 
-static void     ctk_label_buildable_interface_init     (GtkBuildableIface *iface);
-static gboolean ctk_label_buildable_custom_tag_start   (GtkBuildable     *buildable,
-							GtkBuilder       *builder,
+static void     ctk_label_buildable_interface_init     (CtkBuildableIface *iface);
+static gboolean ctk_label_buildable_custom_tag_start   (CtkBuildable     *buildable,
+							CtkBuilder       *builder,
 							GObject          *child,
 							const gchar      *tagname,
 							GMarkupParser    *parser,
 							gpointer         *data);
 
-static void     ctk_label_buildable_custom_finished    (GtkBuildable     *buildable,
-							GtkBuilder       *builder,
+static void     ctk_label_buildable_custom_finished    (CtkBuildable     *buildable,
+							CtkBuilder       *builder,
 							GObject          *child,
 							const gchar      *tagname,
 							gpointer          user_data);
 
 
-static void connect_mnemonics_visible_notify    (GtkLabel   *label);
+static void connect_mnemonics_visible_notify    (CtkLabel   *label);
 static gboolean      separate_uline_pattern     (const gchar  *str,
                                                  guint        *accel_key,
                                                  gchar       **new_str,
@@ -509,79 +509,79 @@ static gboolean      separate_uline_pattern     (const gchar  *str,
 
 
 /* For selectable labels: */
-static void ctk_label_move_cursor        (GtkLabel        *label,
-					  GtkMovementStep  step,
+static void ctk_label_move_cursor        (CtkLabel        *label,
+					  CtkMovementStep  step,
 					  gint             count,
 					  gboolean         extend_selection);
-static void ctk_label_copy_clipboard     (GtkLabel        *label);
-static void ctk_label_select_all         (GtkLabel        *label);
-static void ctk_label_do_popup           (GtkLabel        *label,
+static void ctk_label_copy_clipboard     (CtkLabel        *label);
+static void ctk_label_select_all         (CtkLabel        *label);
+static void ctk_label_do_popup           (CtkLabel        *label,
 					  const GdkEvent  *event);
-static gint ctk_label_move_forward_word  (GtkLabel        *label,
+static gint ctk_label_move_forward_word  (CtkLabel        *label,
 					  gint             start);
-static gint ctk_label_move_backward_word (GtkLabel        *label,
+static gint ctk_label_move_backward_word (CtkLabel        *label,
 					  gint             start);
 
 /* For links: */
-static void          ctk_label_clear_links      (GtkLabel  *label);
-static gboolean      ctk_label_activate_link    (GtkLabel    *label,
+static void          ctk_label_clear_links      (CtkLabel  *label);
+static gboolean      ctk_label_activate_link    (CtkLabel    *label,
                                                  const gchar *uri);
-static void          ctk_label_activate_current_link (GtkLabel *label);
-static GtkLabelLink *ctk_label_get_current_link (GtkLabel  *label);
-static void          emit_activate_link         (GtkLabel     *label,
-                                                 GtkLabelLink *link);
+static void          ctk_label_activate_current_link (CtkLabel *label);
+static CtkLabelLink *ctk_label_get_current_link (CtkLabel  *label);
+static void          emit_activate_link         (CtkLabel     *label,
+                                                 CtkLabelLink *link);
 
 /* Event controller callbacks */
-static void   ctk_label_multipress_gesture_pressed  (GtkGestureMultiPress *gesture,
+static void   ctk_label_multipress_gesture_pressed  (CtkGestureMultiPress *gesture,
                                                      gint                  n_press,
                                                      gdouble               x,
                                                      gdouble               y,
-                                                     GtkLabel             *label);
-static void   ctk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
+                                                     CtkLabel             *label);
+static void   ctk_label_multipress_gesture_released (CtkGestureMultiPress *gesture,
                                                      gint                  n_press,
                                                      gdouble               x,
                                                      gdouble               y,
-                                                     GtkLabel             *label);
-static void   ctk_label_drag_gesture_begin          (GtkGestureDrag *gesture,
+                                                     CtkLabel             *label);
+static void   ctk_label_drag_gesture_begin          (CtkGestureDrag *gesture,
                                                      gdouble         start_x,
                                                      gdouble         start_y,
-                                                     GtkLabel       *label);
-static void   ctk_label_drag_gesture_update         (GtkGestureDrag *gesture,
+                                                     CtkLabel       *label);
+static void   ctk_label_drag_gesture_update         (CtkGestureDrag *gesture,
                                                      gdouble         offset_x,
                                                      gdouble         offset_y,
-                                                     GtkLabel       *label);
+                                                     CtkLabel       *label);
 
-static GtkSizeRequestMode ctk_label_get_request_mode                (GtkWidget           *widget);
-static void               ctk_label_get_preferred_width             (GtkWidget           *widget,
+static CtkSizeRequestMode ctk_label_get_request_mode                (CtkWidget           *widget);
+static void               ctk_label_get_preferred_width             (CtkWidget           *widget,
                                                                      gint                *minimum_size,
                                                                      gint                *natural_size);
-static void               ctk_label_get_preferred_height            (GtkWidget           *widget,
+static void               ctk_label_get_preferred_height            (CtkWidget           *widget,
                                                                      gint                *minimum_size,
                                                                      gint                *natural_size);
-static void               ctk_label_get_preferred_width_for_height  (GtkWidget           *widget,
+static void               ctk_label_get_preferred_width_for_height  (CtkWidget           *widget,
                                                                      gint                 height,
                                                                      gint                *minimum_width,
                                                                      gint                *natural_width);
-static void               ctk_label_get_preferred_height_for_width  (GtkWidget           *widget,
+static void               ctk_label_get_preferred_height_for_width  (CtkWidget           *widget,
                                                                      gint                 width,
                                                                      gint                *minimum_height,
                                                                      gint                *natural_height);
-static void    ctk_label_get_preferred_height_and_baseline_for_width (GtkWidget          *widget,
+static void    ctk_label_get_preferred_height_and_baseline_for_width (CtkWidget          *widget,
 								      gint                width,
 								      gint               *minimum_height,
 								      gint               *natural_height,
 								      gint               *minimum_baseline,
 								      gint               *natural_baseline);
 
-static void     ctk_label_measure (GtkCssGadget   *gadget,
-                                   GtkOrientation  orientation,
+static void     ctk_label_measure (CtkCssGadget   *gadget,
+                                   CtkOrientation  orientation,
                                    int             for_size,
                                    int            *minimum,
                                    int            *natural,
                                    int            *minimum_baseline,
                                    int            *natural_baseline,
                                    gpointer        unused);
-static gboolean ctk_label_render  (GtkCssGadget   *gadget,
+static gboolean ctk_label_render  (CtkCssGadget   *gadget,
                                    cairo_t        *cr,
                                    int             x,
                                    int             y,
@@ -589,20 +589,20 @@ static gboolean ctk_label_render  (GtkCssGadget   *gadget,
                                    int             height,
                                    gpointer        data);
 
-static GtkBuildableIface *buildable_parent_iface = NULL;
+static CtkBuildableIface *buildable_parent_iface = NULL;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-G_DEFINE_TYPE_WITH_CODE (GtkLabel, ctk_label, CTK_TYPE_MISC,
-                         G_ADD_PRIVATE (GtkLabel)
+G_DEFINE_TYPE_WITH_CODE (CtkLabel, ctk_label, CTK_TYPE_MISC,
+                         G_ADD_PRIVATE (CtkLabel)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_label_buildable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
-add_move_binding (GtkBindingSet  *binding_set,
+add_move_binding (CtkBindingSet  *binding_set,
 		  guint           keyval,
 		  guint           modmask,
-		  GtkMovementStep step,
+		  CtkMovementStep step,
 		  gint            count)
 {
   g_return_if_fail ((modmask & GDK_SHIFT_MASK) == 0);
@@ -622,11 +622,11 @@ add_move_binding (GtkBindingSet  *binding_set,
 }
 
 static void
-ctk_label_class_init (GtkLabelClass *class)
+ctk_label_class_init (CtkLabelClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
-  GtkBindingSet *binding_set;
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkBindingSet *binding_set;
 
   gobject_class->set_property = ctk_label_set_property;
   gobject_class->get_property = ctk_label_get_property;
@@ -663,14 +663,14 @@ ctk_label_class_init (GtkLabelClass *class)
   class->activate_link = ctk_label_activate_link;
 
   /**
-   * GtkLabel::move-cursor:
+   * CtkLabel::move-cursor:
    * @entry: the object which received the signal
-   * @step: the granularity of the move, as a #GtkMovementStep
+   * @step: the granularity of the move, as a #CtkMovementStep
    * @count: the number of @step units to move
    * @extend_selection: %TRUE if the move should extend the selection
    *
    * The ::move-cursor signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted when the user initiates a cursor movement.
    * If the cursor is not visible in @entry, this signal causes
    * the viewport to be moved instead.
@@ -691,7 +691,7 @@ ctk_label_class_init (GtkLabelClass *class)
     g_signal_new (I_("move-cursor"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkLabelClass, move_cursor),
+		  G_STRUCT_OFFSET (CtkLabelClass, move_cursor),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__ENUM_INT_BOOLEAN,
 		  G_TYPE_NONE, 3,
@@ -700,11 +700,11 @@ ctk_label_class_init (GtkLabelClass *class)
 		  G_TYPE_BOOLEAN);
 
    /**
-   * GtkLabel::copy-clipboard:
+   * CtkLabel::copy-clipboard:
    * @label: the object which received the signal
    *
    * The ::copy-clipboard signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to copy the selection to the clipboard.
    *
    * The default binding for this signal is Ctrl-c.
@@ -713,13 +713,13 @@ ctk_label_class_init (GtkLabelClass *class)
     g_signal_new (I_("copy-clipboard"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkLabelClass, copy_clipboard),
+		  G_STRUCT_OFFSET (CtkLabelClass, copy_clipboard),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
   
   /**
-   * GtkLabel::populate-popup:
+   * CtkLabel::populate-popup:
    * @label: The label on which the signal is emitted
    * @menu: the menu that is being populated
    *
@@ -734,17 +734,17 @@ ctk_label_class_init (GtkLabelClass *class)
     g_signal_new (I_("populate-popup"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkLabelClass, populate_popup),
+		  G_STRUCT_OFFSET (CtkLabelClass, populate_popup),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  CTK_TYPE_MENU);
 
     /**
-     * GtkLabel::activate-current-link:
+     * CtkLabel::activate-current-link:
      * @label: The label on which the signal was emitted
      *
-     * A [keybinding signal][GtkBindingSignal]
+     * A [keybinding signal][CtkBindingSignal]
      * which gets emitted when the user activates a link in the label.
      *
      * Applications may also emit the signal with g_signal_emit_by_name()
@@ -764,7 +764,7 @@ ctk_label_class_init (GtkLabelClass *class)
                                   G_TYPE_NONE, 0);
 
     /**
-     * GtkLabel::activate-link:
+     * CtkLabel::activate-link:
      * @label: The label on which the signal was emitted
      * @uri: the URI that is activated
      *
@@ -780,24 +780,24 @@ ctk_label_class_init (GtkLabelClass *class)
       g_signal_new (I_("activate-link"),
                     G_TYPE_FROM_CLASS (gobject_class),
                     G_SIGNAL_RUN_LAST,
-                    G_STRUCT_OFFSET (GtkLabelClass, activate_link),
+                    G_STRUCT_OFFSET (CtkLabelClass, activate_link),
                     _ctk_boolean_handled_accumulator, NULL,
                     _ctk_marshal_BOOLEAN__STRING,
                     G_TYPE_BOOLEAN, 1, G_TYPE_STRING);
 
   /**
-   * GtkLabel:label:
+   * CtkLabel:label:
    *
    * The contents of the label.
    *
    * If the string contains [Pango XML markup][PangoMarkupFormat], you will
-   * have to set the #GtkLabel:use-markup property to %TRUE in order for the
+   * have to set the #CtkLabel:use-markup property to %TRUE in order for the
    * label to display the markup attributes. See also ctk_label_set_markup()
    * for a convenience function that sets both this property and the
-   * #GtkLabel:use-markup property at the same time.
+   * #CtkLabel:use-markup property at the same time.
    *
    * If the string contains underlines acting as mnemonics, you will have to
-   * set the #GtkLabel:use-underline property to %TRUE in order for the label
+   * set the #CtkLabel:use-underline property to %TRUE in order for the label
    * to display them.
    */
   label_props[PROP_LABEL] =
@@ -831,16 +831,16 @@ ctk_label_class_init (GtkLabelClass *class)
   label_props[PROP_JUSTIFY] =
       g_param_spec_enum ("justify",
                          P_("Justification"),
-                         P_("The alignment of the lines in the text of the label relative to each other. This does NOT affect the alignment of the label within its allocation. See GtkLabel:xalign for that"),
+                         P_("The alignment of the lines in the text of the label relative to each other. This does NOT affect the alignment of the label within its allocation. See CtkLabel:xalign for that"),
                          CTK_TYPE_JUSTIFICATION,
                          CTK_JUSTIFY_LEFT,
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:xalign:
+   * CtkLabel:xalign:
    *
    * The xalign property determines the horizontal aligment of the label text
-   * inside the labels size allocation. Compare this to #GtkWidget:halign,
+   * inside the labels size allocation. Compare this to #CtkWidget:halign,
    * which determines how the labels size allocation is positioned in the
    * space available for the label.
    *
@@ -855,10 +855,10 @@ ctk_label_class_init (GtkLabelClass *class)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:yalign:
+   * CtkLabel:yalign:
    *
    * The yalign property determines the vertical aligment of the label text
-   * inside the labels size allocation. Compare this to #GtkWidget:valign,
+   * inside the labels size allocation. Compare this to #CtkWidget:valign,
    * which determines how the labels size allocation is positioned in the
    * space available for the label.
    *
@@ -887,9 +887,9 @@ ctk_label_class_init (GtkLabelClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:wrap-mode:
+   * CtkLabel:wrap-mode:
    *
-   * If line wrapping is on (see the #GtkLabel:wrap property) this controls
+   * If line wrapping is on (see the #CtkLabel:wrap property) this controls
    * how the line wrapping is done. The default is %PANGO_WRAP_WORD, which
    * means wrap on word boundaries.
    *
@@ -942,7 +942,7 @@ ctk_label_class_init (GtkLabelClass *class)
                         CTK_PARAM_READABLE);
 
   /**
-   * GtkLabel:ellipsize:
+   * CtkLabel:ellipsize:
    *
    * The preferred place to ellipsize the string, if the label does
    * not have enough room to display the entire string, specified as a
@@ -952,7 +952,7 @@ ctk_label_class_init (GtkLabelClass *class)
    * %PANGO_ELLIPSIZE_NONE has the side-effect that the label requests
    * only enough space to display the ellipsis "...". In particular, this
    * means that ellipsizing labels do not work well in notebook tabs, unless
-   * the #GtkNotebook tab-expand child property is set to %TRUE. Other ways
+   * the #CtkNotebook tab-expand child property is set to %TRUE. Other ways
    * to set a label's width are ctk_widget_set_size_request() and
    * ctk_label_set_width_chars().
    *
@@ -967,13 +967,13 @@ ctk_label_class_init (GtkLabelClass *class)
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:width-chars:
+   * CtkLabel:width-chars:
    *
    * The desired width of the label, in characters. If this property is set to
    * -1, the width will be calculated automatically.
    *
    * See the section on [text layout][label-text-layout]
-   * for details of how #GtkLabel:width-chars and #GtkLabel:max-width-chars
+   * for details of how #CtkLabel:width-chars and #CtkLabel:max-width-chars
    * determine the width of ellipsized and wrapped labels.
    *
    * Since: 2.6
@@ -987,7 +987,7 @@ ctk_label_class_init (GtkLabelClass *class)
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:single-line-mode:
+   * CtkLabel:single-line-mode:
    *
    * Whether the label is in single line mode. In single line mode,
    * the height of the label does not depend on the actual text, it
@@ -1005,7 +1005,7 @@ ctk_label_class_init (GtkLabelClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:angle:
+   * CtkLabel:angle:
    * 
    * The angle that the baseline of the label makes with the horizontal,
    * in degrees, measured counterclockwise. An angle of 90 reads from
@@ -1023,13 +1023,13 @@ ctk_label_class_init (GtkLabelClass *class)
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:max-width-chars:
+   * CtkLabel:max-width-chars:
    *
    * The desired maximum width of the label, in characters. If this property
    * is set to -1, the width will be calculated automatically.
    *
    * See the section on [text layout][label-text-layout]
-   * for details of how #GtkLabel:width-chars and #GtkLabel:max-width-chars
+   * for details of how #CtkLabel:width-chars and #CtkLabel:max-width-chars
    * determine the width of ellipsized and wrapped labels.
    *
    * Since: 2.6
@@ -1043,7 +1043,7 @@ ctk_label_class_init (GtkLabelClass *class)
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:track-visited-links:
+   * CtkLabel:track-visited-links:
    *
    * Set this property to %TRUE to make the label track which links
    * have been visited. It will then apply the #CTK_STATE_FLAG_VISITED
@@ -1059,7 +1059,7 @@ ctk_label_class_init (GtkLabelClass *class)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkLabel:lines:
+   * CtkLabel:lines:
    *
    * The number of lines to which an ellipsized, wrapping label
    * should be limited. This property has no effect if the
@@ -1210,7 +1210,7 @@ ctk_label_set_property (GObject      *object,
 			const GValue *value,
 			GParamSpec   *pspec)
 {
-  GtkLabel *label = CTK_LABEL (object);
+  CtkLabel *label = CTK_LABEL (object);
 
   switch (prop_id)
     {
@@ -1242,7 +1242,7 @@ ctk_label_set_property (GObject      *object,
       ctk_label_set_selectable (label, g_value_get_boolean (value));
       break;	  
     case PROP_MNEMONIC_WIDGET:
-      ctk_label_set_mnemonic_widget (label, (GtkWidget*) g_value_get_object (value));
+      ctk_label_set_mnemonic_widget (label, (CtkWidget*) g_value_get_object (value));
       break;
     case PROP_ELLIPSIZE:
       ctk_label_set_ellipsize (label, g_value_get_enum (value));
@@ -1283,8 +1283,8 @@ ctk_label_get_property (GObject     *object,
 			GValue      *value,
 			GParamSpec  *pspec)
 {
-  GtkLabel *label = CTK_LABEL (object);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (object);
+  CtkLabelPrivate *priv = label->priv;
 
   switch (prop_id)
     {
@@ -1358,9 +1358,9 @@ ctk_label_get_property (GObject     *object,
 }
 
 static void
-ctk_label_init (GtkLabel *label)
+ctk_label_init (CtkLabel *label)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   label->priv = ctk_label_get_instance_private (label);
   priv = label->priv;
@@ -1406,7 +1406,7 @@ ctk_label_init (GtkLabel *label)
 
 
 static void
-ctk_label_buildable_interface_init (GtkBuildableIface *iface)
+ctk_label_buildable_interface_init (CtkBuildableIface *iface)
 {
   buildable_parent_iface = g_type_interface_peek_parent (iface);
 
@@ -1415,13 +1415,13 @@ ctk_label_buildable_interface_init (GtkBuildableIface *iface)
 }
 
 typedef struct {
-  GtkBuilder    *builder;
+  CtkBuilder    *builder;
   GObject       *object;
   PangoAttrList *attrs;
 } PangoParserData;
 
 static PangoAttribute *
-attribute_from_text (GtkBuilder   *builder,
+attribute_from_text (CtkBuilder   *builder,
 		     const gchar  *name,
 		     const gchar  *value,
 		     GError      **error)
@@ -1678,7 +1678,7 @@ pango_start_element (GMarkupParseContext *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkContainer", element_name,
+                                        "CtkContainer", element_name,
                                         error);
     }
 }
@@ -1689,8 +1689,8 @@ static const GMarkupParser pango_parser =
   };
 
 static gboolean
-ctk_label_buildable_custom_tag_start (GtkBuildable     *buildable,
-				      GtkBuilder       *builder,
+ctk_label_buildable_custom_tag_start (CtkBuildable     *buildable,
+				      CtkBuilder       *builder,
 				      GObject          *child,
 				      const gchar      *tagname,
 				      GMarkupParser    *parser,
@@ -1715,8 +1715,8 @@ ctk_label_buildable_custom_tag_start (GtkBuildable     *buildable,
 }
 
 static void
-ctk_label_buildable_custom_finished (GtkBuildable *buildable,
-				     GtkBuilder   *builder,
+ctk_label_buildable_custom_finished (CtkBuildable *buildable,
+				     CtkBuilder   *builder,
 				     GObject      *child,
 				     const gchar  *tagname,
 				     gpointer      user_data)
@@ -1750,12 +1750,12 @@ ctk_label_buildable_custom_finished (GtkBuildable *buildable,
  * Creates a new label with the given text inside it. You can
  * pass %NULL to get an empty label widget.
  *
- * Returns: the new #GtkLabel
+ * Returns: the new #CtkLabel
  **/
-GtkWidget*
+CtkWidget*
 ctk_label_new (const gchar *str)
 {
-  GtkLabel *label;
+  CtkLabel *label;
   
   label = g_object_new (CTK_TYPE_LABEL, NULL);
 
@@ -1770,7 +1770,7 @@ ctk_label_new (const gchar *str)
  * @str: (nullable): The text of the label, with an underscore in front of the
  *       mnemonic character
  *
- * Creates a new #GtkLabel, containing the text in @str.
+ * Creates a new #CtkLabel, containing the text in @str.
  *
  * If characters in @str are preceded by an underscore, they are
  * underlined. If you need a literal underscore character in a label, use
@@ -1780,17 +1780,17 @@ ctk_label_new (const gchar *str)
  * ctk_label_set_mnemonic_widget().
  * 
  * If ctk_label_set_mnemonic_widget() is not called, then the first 
- * activatable ancestor of the #GtkLabel will be chosen as the mnemonic 
+ * activatable ancestor of the #CtkLabel will be chosen as the mnemonic 
  * widget. For instance, if the label is inside a button or menu item, 
  * the button or menu item will automatically become the mnemonic widget 
  * and be activated by the mnemonic.
  *
- * Returns: the new #GtkLabel
+ * Returns: the new #CtkLabel
  **/
-GtkWidget*
+CtkWidget*
 ctk_label_new_with_mnemonic (const gchar *str)
 {
-  GtkLabel *label;
+  CtkLabel *label;
   
   label = g_object_new (CTK_TYPE_LABEL, NULL);
 
@@ -1801,12 +1801,12 @@ ctk_label_new_with_mnemonic (const gchar *str)
 }
 
 static gboolean
-ctk_label_mnemonic_activate (GtkWidget *widget,
+ctk_label_mnemonic_activate (CtkWidget *widget,
 			     gboolean   group_cycling)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
-  GtkWidget *parent;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
+  CtkWidget *parent;
 
   if (priv->mnemonic_widget)
     return ctk_widget_mnemonic_activate (priv->mnemonic_widget, group_cycling);
@@ -1837,13 +1837,13 @@ ctk_label_mnemonic_activate (GtkWidget *widget,
 }
 
 static void
-ctk_label_setup_mnemonic (GtkLabel *label,
+ctk_label_setup_mnemonic (CtkLabel *label,
 			  guint     last_key)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkWidget *widget = CTK_WIDGET (label);
-  GtkWidget *toplevel;
-  GtkWidget *mnemonic_menu;
+  CtkLabelPrivate *priv = label->priv;
+  CtkWidget *widget = CTK_WIDGET (label);
+  CtkWidget *toplevel;
+  CtkWidget *mnemonic_menu;
   
   mnemonic_menu = g_object_get_qdata (G_OBJECT (label), quark_mnemonic_menu);
   
@@ -1873,7 +1873,7 @@ ctk_label_setup_mnemonic (GtkLabel *label,
   toplevel = ctk_widget_get_toplevel (widget);
   if (ctk_widget_is_toplevel (toplevel))
     {
-      GtkWidget *menu_shell;
+      CtkWidget *menu_shell;
       
       menu_shell = ctk_widget_get_ancestor (widget,
 					    CTK_TYPE_MENU_SHELL);
@@ -1900,17 +1900,17 @@ ctk_label_setup_mnemonic (GtkLabel *label,
 }
 
 static void
-ctk_label_hierarchy_changed (GtkWidget *widget,
-			     GtkWidget *old_toplevel)
+ctk_label_hierarchy_changed (CtkWidget *widget,
+			     CtkWidget *old_toplevel)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
 
   ctk_label_setup_mnemonic (label, priv->mnemonic_keyval);
 }
 
 static void
-label_shortcut_setting_apply (GtkLabel *label)
+label_shortcut_setting_apply (CtkLabel *label)
 {
   ctk_label_recalculate (label);
   if (CTK_IS_ACCEL_LABEL (label))
@@ -1918,7 +1918,7 @@ label_shortcut_setting_apply (GtkLabel *label)
 }
 
 static void
-label_shortcut_setting_traverse_container (GtkWidget *widget,
+label_shortcut_setting_traverse_container (CtkWidget *widget,
                                            gpointer   data)
 {
   if (CTK_IS_LABEL (widget))
@@ -1929,7 +1929,7 @@ label_shortcut_setting_traverse_container (GtkWidget *widget,
 }
 
 static void
-label_shortcut_setting_changed (GtkSettings *settings)
+label_shortcut_setting_changed (CtkSettings *settings)
 {
   GList *list, *l;
 
@@ -1937,7 +1937,7 @@ label_shortcut_setting_changed (GtkSettings *settings)
 
   for (l = list; l ; l = l->next)
     {
-      GtkWidget *widget = l->data;
+      CtkWidget *widget = l->data;
 
       if (ctk_widget_get_settings (widget) == settings)
         ctk_container_forall (CTK_CONTAINER (widget),
@@ -1948,11 +1948,11 @@ label_shortcut_setting_changed (GtkSettings *settings)
 }
 
 static void
-mnemonics_visible_apply (GtkWidget *widget,
+mnemonics_visible_apply (CtkWidget *widget,
                          gboolean   mnemonics_visible)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
 
   mnemonics_visible = mnemonics_visible != FALSE;
 
@@ -1965,7 +1965,7 @@ mnemonics_visible_apply (GtkWidget *widget,
 }
 
 static void
-label_mnemonics_visible_traverse_container (GtkWidget *widget,
+label_mnemonics_visible_traverse_container (CtkWidget *widget,
                                             gpointer   data)
 {
   gboolean mnemonics_visible = GPOINTER_TO_INT (data);
@@ -1974,7 +1974,7 @@ label_mnemonics_visible_traverse_container (GtkWidget *widget,
 }
 
 void
-_ctk_label_mnemonics_visible_apply_recursively (GtkWidget *widget,
+_ctk_label_mnemonics_visible_apply_recursively (CtkWidget *widget,
                                                 gboolean   mnemonics_visible)
 {
   if (CTK_IS_LABEL (widget))
@@ -1986,7 +1986,7 @@ _ctk_label_mnemonics_visible_apply_recursively (GtkWidget *widget,
 }
 
 static void
-label_mnemonics_visible_changed (GtkWindow  *window,
+label_mnemonics_visible_changed (CtkWindow  *window,
                                  GParamSpec *pspec,
                                  gpointer    data)
 {
@@ -2000,10 +2000,10 @@ label_mnemonics_visible_changed (GtkWindow  *window,
 }
 
 static void
-ctk_label_screen_changed (GtkWidget *widget,
+ctk_label_screen_changed (CtkWidget *widget,
 			  GdkScreen *old_screen)
 {
-  GtkSettings *settings;
+  CtkSettings *settings;
   gboolean shortcuts_connected;
 
   /* The PangoContext is replaced when the screen changes, so clear the layouts */
@@ -2038,8 +2038,8 @@ static void
 label_mnemonic_widget_weak_notify (gpointer      data,
 				   GObject      *where_the_object_was)
 {
-  GtkLabel *label = data;
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = data;
+  CtkLabelPrivate *priv = label->priv;
 
   priv->mnemonic_widget = NULL;
   g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_MNEMONIC_WIDGET]);
@@ -2047,29 +2047,29 @@ label_mnemonic_widget_weak_notify (gpointer      data,
 
 /**
  * ctk_label_set_mnemonic_widget:
- * @label: a #GtkLabel
- * @widget: (nullable): the target #GtkWidget, or %NULL to unset
+ * @label: a #CtkLabel
+ * @widget: (nullable): the target #CtkWidget, or %NULL to unset
  *
  * If the label has been set so that it has an mnemonic key (using
  * i.e. ctk_label_set_markup_with_mnemonic(),
  * ctk_label_set_text_with_mnemonic(), ctk_label_new_with_mnemonic()
  * or the “use_underline” property) the label can be associated with a
  * widget that is the target of the mnemonic. When the label is inside
- * a widget (like a #GtkButton or a #GtkNotebook tab) it is
+ * a widget (like a #CtkButton or a #CtkNotebook tab) it is
  * automatically associated with the correct widget, but sometimes
- * (i.e. when the target is a #GtkEntry next to the label) you need to
+ * (i.e. when the target is a #CtkEntry next to the label) you need to
  * set it explicitly using this function.
  *
  * The target widget will be accelerated by emitting the 
- * GtkWidget::mnemonic-activate signal on it. The default handler for 
+ * CtkWidget::mnemonic-activate signal on it. The default handler for 
  * this signal will activate the widget if there are no mnemonic collisions 
  * and toggle focus between the colliding widgets otherwise.
  **/
 void
-ctk_label_set_mnemonic_widget (GtkLabel  *label,
-			       GtkWidget *widget)
+ctk_label_set_mnemonic_widget (CtkLabel  *label,
+			       CtkWidget *widget)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -2099,7 +2099,7 @@ ctk_label_set_mnemonic_widget (GtkLabel  *label,
 
 /**
  * ctk_label_get_mnemonic_widget:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Retrieves the target of the mnemonic (keyboard shortcut) of this
  * label. See ctk_label_set_mnemonic_widget().
@@ -2107,8 +2107,8 @@ ctk_label_set_mnemonic_widget (GtkLabel  *label,
  * Returns: (nullable) (transfer none): the target of the label’s mnemonic,
  *     or %NULL if none has been set and the default algorithm will be used.
  **/
-GtkWidget *
-ctk_label_get_mnemonic_widget (GtkLabel *label)
+CtkWidget *
+ctk_label_get_mnemonic_widget (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), NULL);
 
@@ -2117,7 +2117,7 @@ ctk_label_get_mnemonic_widget (GtkLabel *label)
 
 /**
  * ctk_label_get_mnemonic_keyval:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * If the label has been set so that it has an mnemonic key this function
  * returns the keyval used for the mnemonic accelerator. If there is no
@@ -2126,7 +2126,7 @@ ctk_label_get_mnemonic_widget (GtkLabel *label)
  * Returns: GDK keyval usable for accelerators, or #GDK_KEY_VoidSymbol
  **/
 guint
-ctk_label_get_mnemonic_keyval (GtkLabel *label)
+ctk_label_get_mnemonic_keyval (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), GDK_KEY_VoidSymbol);
 
@@ -2134,10 +2134,10 @@ ctk_label_get_mnemonic_keyval (GtkLabel *label)
 }
 
 static void
-ctk_label_set_text_internal (GtkLabel *label,
+ctk_label_set_text_internal (CtkLabel *label,
                              gchar    *str)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (g_strcmp0 (priv->text, str) == 0)
     {
@@ -2155,10 +2155,10 @@ ctk_label_set_text_internal (GtkLabel *label,
 }
 
 static void
-ctk_label_set_label_internal (GtkLabel *label,
+ctk_label_set_label_internal (CtkLabel *label,
 			      gchar    *str)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   g_free (priv->label);
 
@@ -2168,10 +2168,10 @@ ctk_label_set_label_internal (GtkLabel *label,
 }
 
 static gboolean
-ctk_label_set_use_markup_internal (GtkLabel *label,
+ctk_label_set_use_markup_internal (CtkLabel *label,
                                    gboolean  val)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   val = val != FALSE;
   if (priv->use_markup != val)
@@ -2187,10 +2187,10 @@ ctk_label_set_use_markup_internal (GtkLabel *label,
 }
 
 static gboolean
-ctk_label_set_use_underline_internal (GtkLabel *label,
+ctk_label_set_use_underline_internal (CtkLabel *label,
                                       gboolean  val)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   val = val != FALSE;
   if (priv->use_underline != val)
@@ -2209,9 +2209,9 @@ ctk_label_set_use_underline_internal (GtkLabel *label,
  * label, use_underline and use_markup
  */
 static void
-ctk_label_recalculate (GtkLabel *label)
+ctk_label_recalculate (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   guint keyval = priv->mnemonic_keyval;
 
   ctk_label_clear_links (label);
@@ -2247,22 +2247,22 @@ ctk_label_recalculate (GtkLabel *label)
 
 /**
  * ctk_label_set_text:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @str: The text you want to set
  *
- * Sets the text within the #GtkLabel widget. It overwrites any text that
+ * Sets the text within the #CtkLabel widget. It overwrites any text that
  * was there before.  
  *
  * This function will clear any previously set mnemonic accelerators, and
- * set the #GtkLabel:use-underline property to %FALSE as a side effect.
+ * set the #CtkLabel:use-underline property to %FALSE as a side effect.
  *
- * This function will set the #GtkLabel:use-markup property to %FALSE
+ * This function will set the #CtkLabel:use-markup property to %FALSE
  * as a side effect.
  *
  * See also: ctk_label_set_markup()
  **/
 void
-ctk_label_set_text (GtkLabel    *label,
+ctk_label_set_text (CtkLabel    *label,
 		    const gchar *str)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -2280,7 +2280,7 @@ ctk_label_set_text (GtkLabel    *label,
 
 /**
  * ctk_label_set_attributes:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @attrs: (nullable): a #PangoAttrList, or %NULL
  *
  * Sets a #PangoAttrList; the attributes in the list are applied to the
@@ -2288,16 +2288,16 @@ ctk_label_set_text (GtkLabel    *label,
  *
  * The attributes set with this function will be applied
  * and merged with any other attributes previously effected by way
- * of the #GtkLabel:use-underline or #GtkLabel:use-markup properties.
+ * of the #CtkLabel:use-underline or #CtkLabel:use-markup properties.
  * While it is not recommended to mix markup strings with manually set
  * attributes, if you must; know that the attributes will be applied
  * to the label after the markup string is parsed.
  **/
 void
-ctk_label_set_attributes (GtkLabel         *label,
+ctk_label_set_attributes (CtkLabel         *label,
                           PangoAttrList    *attrs)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -2316,7 +2316,7 @@ ctk_label_set_attributes (GtkLabel         *label,
 
 /**
  * ctk_label_get_attributes:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Gets the attribute list that was set on the label using
  * ctk_label_set_attributes(), if any. This function does
@@ -2329,7 +2329,7 @@ ctk_label_set_attributes (GtkLabel         *label,
  *     if none was set.
  **/
 PangoAttrList *
-ctk_label_get_attributes (GtkLabel *label)
+ctk_label_get_attributes (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), NULL);
 
@@ -2338,16 +2338,16 @@ ctk_label_get_attributes (GtkLabel *label)
 
 /**
  * ctk_label_set_label:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @str: the new text to set for the label
  *
  * Sets the text of the label. The label is interpreted as
  * including embedded underlines and/or Pango markup depending
- * on the values of the #GtkLabel:use-underline and
- * #GtkLabel:use-markup properties.
+ * on the values of the #CtkLabel:use-underline and
+ * #CtkLabel:use-markup properties.
  **/
 void
-ctk_label_set_label (GtkLabel    *label,
+ctk_label_set_label (CtkLabel    *label,
 		     const gchar *str)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -2362,7 +2362,7 @@ ctk_label_set_label (GtkLabel    *label,
 
 /**
  * ctk_label_get_label:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Fetches the text from a label widget including any embedded
  * underlines indicating mnemonics and Pango markup. (See
@@ -2372,7 +2372,7 @@ ctk_label_set_label (GtkLabel    *label,
  *   owned by the widget and must not be modified or freed.
  **/
 const gchar *
-ctk_label_get_label (GtkLabel *label)
+ctk_label_get_label (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), NULL);
 
@@ -2381,7 +2381,7 @@ ctk_label_get_label (GtkLabel *label)
 
 typedef struct
 {
-  GtkLabel *label;
+  CtkLabel *label;
   GList *links;
   GString *new_str;
   gsize text_len;
@@ -2395,20 +2395,20 @@ start_element_handler (GMarkupParseContext  *context,
                        gpointer              user_data,
                        GError              **error)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
   UriParserData *pdata = user_data;
 
   if (strcmp (element_name, "a") == 0)
     {
-      GtkLabelLink *link;
+      CtkLabelLink *link;
       const gchar *uri = NULL;
       const gchar *title = NULL;
       gboolean visited = FALSE;
       gint line_number;
       gint char_number;
       gint i;
-      GtkCssNode *widget_node;
-      GtkStateFlags state;
+      CtkCssNode *widget_node;
+      CtkStateFlags state;
 
       g_markup_parse_context_get_position (context, &line_number, &char_number);
 
@@ -2459,7 +2459,7 @@ start_element_handler (GMarkupParseContext  *context,
             }
         }
 
-      link = g_new0 (GtkLabelLink, 1);
+      link = g_new0 (CtkLabelLink, 1);
       link->uri = g_strdup (uri);
       link->title = g_strdup (title);
 
@@ -2516,7 +2516,7 @@ end_element_handler (GMarkupParseContext  *context,
 
   if (!strcmp (element_name, "a"))
     {
-      GtkLabelLink *link = pdata->links->data;
+      CtkLabelLink *link = pdata->links->data;
       link->end = pdata->text_len;
     }
   else
@@ -2559,7 +2559,7 @@ xml_isspace (gchar c)
 }
 
 static void
-link_free (GtkLabelLink *link)
+link_free (CtkLabelLink *link)
 {
   ctk_css_node_set_parent (link->cssnode, NULL);
   g_free (link->uri);
@@ -2569,7 +2569,7 @@ link_free (GtkLabelLink *link)
 
 
 static gboolean
-parse_uri_markup (GtkLabel     *label,
+parse_uri_markup (CtkLabel     *label,
                   const gchar  *str,
                   gchar       **new_str,
                   GList       **links,
@@ -2632,15 +2632,15 @@ failed:
 }
 
 static void
-ctk_label_ensure_has_tooltip (GtkLabel *label)
+ctk_label_ensure_has_tooltip (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   GList *l;
   gboolean has_tooltip = FALSE;
 
   for (l = priv->select_info->links; l; l = l->next)
     {
-      GtkLabelLink *link = l->data;
+      CtkLabelLink *link = l->data;
       if (link->title)
         {
           has_tooltip = TRUE;
@@ -2652,11 +2652,11 @@ ctk_label_ensure_has_tooltip (GtkLabel *label)
 }
 
 static void
-ctk_label_set_markup_internal (GtkLabel    *label,
+ctk_label_set_markup_internal (CtkLabel    *label,
                                const gchar *str,
                                gboolean     with_uline)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gchar *text = NULL;
   GError *error = NULL;
   PangoAttrList *attrs = NULL;
@@ -2766,7 +2766,7 @@ ctk_label_set_markup_internal (GtkLabel    *label,
 
 /**
  * ctk_label_set_markup:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @str: a markup string (see [Pango markup format][PangoMarkupFormat])
  *
  * Parses @str which is marked up with the
@@ -2777,7 +2777,7 @@ ctk_label_set_markup_internal (GtkLabel    *label,
  * g_markup_escape_text() or g_markup_printf_escaped():
  *
  * |[<!-- language="C" -->
- * GtkWidget *label = ctk_label_new (NULL);
+ * CtkWidget *label = ctk_label_new (NULL);
  * const char *str = "some text";
  * const char *format = "<span style=\"italic\">\%s</span>";
  * char *markup;
@@ -2787,17 +2787,17 @@ ctk_label_set_markup_internal (GtkLabel    *label,
  * g_free (markup);
  * ]|
  *
- * This function will set the #GtkLabel:use-markup property to %TRUE as
+ * This function will set the #CtkLabel:use-markup property to %TRUE as
  * a side effect.
  *
- * If you set the label contents using the #GtkLabel:label property you
- * should also ensure that you set the #GtkLabel:use-markup property
+ * If you set the label contents using the #CtkLabel:label property you
+ * should also ensure that you set the #CtkLabel:use-markup property
  * accordingly.
  *
  * See also: ctk_label_set_text()
  **/
 void
-ctk_label_set_markup (GtkLabel    *label,
+ctk_label_set_markup (CtkLabel    *label,
                       const gchar *str)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -2815,7 +2815,7 @@ ctk_label_set_markup (GtkLabel    *label,
 
 /**
  * ctk_label_set_markup_with_mnemonic:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @str: a markup string (see
  *     [Pango markup format][PangoMarkupFormat])
  *
@@ -2829,7 +2829,7 @@ ctk_label_set_markup (GtkLabel    *label,
  * automatically, or explicitly using ctk_label_set_mnemonic_widget().
  */
 void
-ctk_label_set_markup_with_mnemonic (GtkLabel    *label,
+ctk_label_set_markup_with_mnemonic (CtkLabel    *label,
                                     const gchar *str)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -2847,7 +2847,7 @@ ctk_label_set_markup_with_mnemonic (GtkLabel    *label,
 
 /**
  * ctk_label_get_text:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * 
  * Fetches the text from a label widget, as displayed on the
  * screen. This does not include any embedded underlines
@@ -2857,7 +2857,7 @@ ctk_label_set_markup_with_mnemonic (GtkLabel    *label,
  *   string used by the label, and must not be modified.
  **/
 const gchar *
-ctk_label_get_text (GtkLabel *label)
+ctk_label_get_text (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), NULL);
 
@@ -2865,10 +2865,10 @@ ctk_label_get_text (GtkLabel *label)
 }
 
 static PangoAttrList *
-ctk_label_pattern_to_attrs (GtkLabel      *label,
+ctk_label_pattern_to_attrs (CtkLabel      *label,
 			    const gchar   *pattern)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   const char *start;
   const char *p = priv->text;
   const char *q = pattern;
@@ -2906,11 +2906,11 @@ ctk_label_pattern_to_attrs (GtkLabel      *label,
 }
 
 static void
-ctk_label_set_pattern_internal (GtkLabel    *label,
+ctk_label_set_pattern_internal (CtkLabel    *label,
 				const gchar *pattern,
                                 gboolean     is_mnemonic)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   PangoAttrList *attrs;
   gboolean enable_mnemonics = TRUE;
   gboolean auto_mnemonics = TRUE;
@@ -2943,19 +2943,19 @@ ctk_label_set_pattern_internal (GtkLabel    *label,
 
 /**
  * ctk_label_set_pattern:
- * @label: The #GtkLabel you want to set the pattern to.
+ * @label: The #CtkLabel you want to set the pattern to.
  * @pattern: The pattern as described above.
  *
  * The pattern of underlines you want under the existing text within the
- * #GtkLabel widget.  For example if the current text of the label says
+ * #CtkLabel widget.  For example if the current text of the label says
  * “FooBarBaz” passing a pattern of “___   ___” will underline
  * “Foo” and “Baz” but not “Bar”.
  */
 void
-ctk_label_set_pattern (GtkLabel	   *label,
+ctk_label_set_pattern (CtkLabel	   *label,
 		       const gchar *pattern)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -2978,8 +2978,8 @@ ctk_label_set_pattern (GtkLabel	   *label,
 
 /**
  * ctk_label_set_justify:
- * @label: a #GtkLabel
- * @jtype: a #GtkJustification
+ * @label: a #CtkLabel
+ * @jtype: a #CtkJustification
  *
  * Sets the alignment of the lines in the text of the label relative to
  * each other. %CTK_JUSTIFY_LEFT is the default value when the widget is
@@ -2989,17 +2989,17 @@ ctk_label_set_pattern (GtkLabel	   *label,
  * single line.
  */
 void
-ctk_label_set_justify (GtkLabel        *label,
-		       GtkJustification jtype)
+ctk_label_set_justify (CtkLabel        *label,
+		       CtkJustification jtype)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
   g_return_if_fail (jtype >= CTK_JUSTIFY_LEFT && jtype <= CTK_JUSTIFY_FILL);
 
   priv = label->priv;
 
-  if ((GtkJustification) priv->jtype != jtype)
+  if ((CtkJustification) priv->jtype != jtype)
     {
       priv->jtype = jtype;
 
@@ -3013,14 +3013,14 @@ ctk_label_set_justify (GtkLabel        *label,
 
 /**
  * ctk_label_get_justify:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns the justification of the label. See ctk_label_set_justify().
  *
- * Returns: #GtkJustification
+ * Returns: #CtkJustification
  **/
-GtkJustification
-ctk_label_get_justify (GtkLabel *label)
+CtkJustification
+ctk_label_get_justify (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), 0);
 
@@ -3029,7 +3029,7 @@ ctk_label_get_justify (GtkLabel *label)
 
 /**
  * ctk_label_set_ellipsize:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @mode: a #PangoEllipsizeMode
  *
  * Sets the mode used to ellipsize (add an ellipsis: "...") to the text 
@@ -3038,10 +3038,10 @@ ctk_label_get_justify (GtkLabel *label)
  * Since: 2.6
  **/
 void
-ctk_label_set_ellipsize (GtkLabel          *label,
+ctk_label_set_ellipsize (CtkLabel          *label,
 			 PangoEllipsizeMode mode)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
   g_return_if_fail (mode >= PANGO_ELLIPSIZE_NONE && mode <= PANGO_ELLIPSIZE_END);
@@ -3062,7 +3062,7 @@ ctk_label_set_ellipsize (GtkLabel          *label,
 
 /**
  * ctk_label_get_ellipsize:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns the ellipsizing position of the label. See ctk_label_set_ellipsize().
  *
@@ -3071,7 +3071,7 @@ ctk_label_set_ellipsize (GtkLabel          *label,
  * Since: 2.6
  **/
 PangoEllipsizeMode
-ctk_label_get_ellipsize (GtkLabel *label)
+ctk_label_get_ellipsize (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), PANGO_ELLIPSIZE_NONE);
 
@@ -3080,7 +3080,7 @@ ctk_label_get_ellipsize (GtkLabel *label)
 
 /**
  * ctk_label_set_width_chars:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @n_chars: the new desired width, in characters.
  * 
  * Sets the desired width in characters of @label to @n_chars.
@@ -3088,10 +3088,10 @@ ctk_label_get_ellipsize (GtkLabel *label)
  * Since: 2.6
  **/
 void
-ctk_label_set_width_chars (GtkLabel *label,
+ctk_label_set_width_chars (CtkLabel *label,
 			   gint      n_chars)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -3107,7 +3107,7 @@ ctk_label_set_width_chars (GtkLabel *label,
 
 /**
  * ctk_label_get_width_chars:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * 
  * Retrieves the desired width of @label, in characters. See
  * ctk_label_set_width_chars().
@@ -3117,7 +3117,7 @@ ctk_label_set_width_chars (GtkLabel *label,
  * Since: 2.6
  **/
 gint
-ctk_label_get_width_chars (GtkLabel *label)
+ctk_label_get_width_chars (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), -1);
 
@@ -3126,7 +3126,7 @@ ctk_label_get_width_chars (GtkLabel *label)
 
 /**
  * ctk_label_set_max_width_chars:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @n_chars: the new desired maximum width, in characters.
  * 
  * Sets the desired maximum width in characters of @label to @n_chars.
@@ -3134,10 +3134,10 @@ ctk_label_get_width_chars (GtkLabel *label)
  * Since: 2.6
  **/
 void
-ctk_label_set_max_width_chars (GtkLabel *label,
+ctk_label_set_max_width_chars (CtkLabel *label,
 			       gint      n_chars)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -3154,7 +3154,7 @@ ctk_label_set_max_width_chars (GtkLabel *label,
 
 /**
  * ctk_label_get_max_width_chars:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * 
  * Retrieves the desired maximum width of @label, in characters. See
  * ctk_label_set_width_chars().
@@ -3164,7 +3164,7 @@ ctk_label_set_max_width_chars (GtkLabel *label,
  * Since: 2.6
  **/
 gint
-ctk_label_get_max_width_chars (GtkLabel *label)
+ctk_label_get_max_width_chars (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), -1);
 
@@ -3173,10 +3173,10 @@ ctk_label_get_max_width_chars (GtkLabel *label)
 
 /**
  * ctk_label_set_line_wrap:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @wrap: the setting
  *
- * Toggles line wrapping within the #GtkLabel widget. %TRUE makes it break
+ * Toggles line wrapping within the #CtkLabel widget. %TRUE makes it break
  * lines if text exceeds the widget’s size. %FALSE lets the text get cut off
  * by the edge of the widget if it exceeds the widget size.
  *
@@ -3187,10 +3187,10 @@ ctk_label_get_max_width_chars (GtkLabel *label)
  * set the label’s width using ctk_widget_set_size_request().
  **/
 void
-ctk_label_set_line_wrap (GtkLabel *label,
+ctk_label_set_line_wrap (CtkLabel *label,
 			 gboolean  wrap)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -3210,7 +3210,7 @@ ctk_label_set_line_wrap (GtkLabel *label,
 
 /**
  * ctk_label_get_line_wrap:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns whether lines in the label are automatically wrapped. 
  * See ctk_label_set_line_wrap().
@@ -3218,7 +3218,7 @@ ctk_label_set_line_wrap (GtkLabel *label,
  * Returns: %TRUE if the lines of the label are automatically wrapped.
  */
 gboolean
-ctk_label_get_line_wrap (GtkLabel *label)
+ctk_label_get_line_wrap (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), FALSE);
 
@@ -3227,7 +3227,7 @@ ctk_label_get_line_wrap (GtkLabel *label)
 
 /**
  * ctk_label_set_line_wrap_mode:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @wrap_mode: the line wrapping mode
  *
  * If line wrapping is on (see ctk_label_set_line_wrap()) this controls how
@@ -3237,10 +3237,10 @@ ctk_label_get_line_wrap (GtkLabel *label)
  * Since: 2.10
  **/
 void
-ctk_label_set_line_wrap_mode (GtkLabel *label,
+ctk_label_set_line_wrap_mode (CtkLabel *label,
 			      PangoWrapMode wrap_mode)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -3257,7 +3257,7 @@ ctk_label_set_line_wrap_mode (GtkLabel *label,
 
 /**
  * ctk_label_get_line_wrap_mode:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns line wrap mode used by the label. See ctk_label_set_line_wrap_mode().
  *
@@ -3266,7 +3266,7 @@ ctk_label_set_line_wrap_mode (GtkLabel *label,
  * Since: 2.10
  */
 PangoWrapMode
-ctk_label_get_line_wrap_mode (GtkLabel *label)
+ctk_label_get_line_wrap_mode (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), FALSE);
 
@@ -3274,9 +3274,9 @@ ctk_label_get_line_wrap_mode (GtkLabel *label)
 }
 
 static void
-ctk_label_destroy (GtkWidget *widget)
+ctk_label_destroy (CtkWidget *widget)
 {
-  GtkLabel *label = CTK_LABEL (widget);
+  CtkLabel *label = CTK_LABEL (widget);
 
   ctk_label_set_mnemonic_widget (label, NULL);
 
@@ -3286,8 +3286,8 @@ ctk_label_destroy (GtkWidget *widget)
 static void
 ctk_label_finalize (GObject *object)
 {
-  GtkLabel *label = CTK_LABEL (object);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (object);
+  CtkLabelPrivate *priv = label->priv;
 
   g_free (priv->label);
   g_free (priv->text);
@@ -3311,7 +3311,7 @@ ctk_label_finalize (GObject *object)
 }
 
 static void
-ctk_label_clear_layout (GtkLabel *label)
+ctk_label_clear_layout (CtkLabel *label)
 {
   g_clear_object (&label->priv->layout);
 }
@@ -3330,11 +3330,11 @@ ctk_label_clear_layout (GtkLabel *label)
  * Returns: a new reference to a pango layout
  **/
 static PangoLayout *
-ctk_label_get_measuring_layout (GtkLabel *   label,
+ctk_label_get_measuring_layout (CtkLabel *   label,
                                 PangoLayout *existing_layout,
                                 int          width)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   PangoRectangle rect;
   PangoLayout *copy;
 
@@ -3388,16 +3388,16 @@ ctk_label_get_measuring_layout (GtkLabel *   label,
 }
 
 static void
-ctk_label_update_layout_width (GtkLabel *label)
+ctk_label_update_layout_width (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkWidget *widget = CTK_WIDGET (label);
+  CtkLabelPrivate *priv = label->priv;
+  CtkWidget *widget = CTK_WIDGET (label);
 
   g_assert (priv->layout);
 
   if (priv->ellipsize || priv->wrap)
     {
-      GtkAllocation allocation;
+      CtkAllocation allocation;
       int xpad, ypad;
       PangoRectangle logical;
       gint width, height;
@@ -3480,11 +3480,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_label_update_layout_attributes (GtkLabel *label)
+ctk_label_update_layout_attributes (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkWidget *widget = CTK_WIDGET (label);
-  GtkStyleContext *context;
+  CtkLabelPrivate *priv = label->priv;
+  CtkWidget *widget = CTK_WIDGET (label);
+  CtkStyleContext *context;
   PangoAttrList *attrs;
   PangoAttrList *style_attrs;
 
@@ -3503,7 +3503,7 @@ ctk_label_update_layout_attributes (GtkLabel *label)
 
       for (list = priv->select_info->links; list; list = list->next)
         {
-          GtkLabelLink *link = list->data;
+          CtkLabelLink *link = list->data;
 
           attribute = pango_attr_underline_new (TRUE);
           attribute->start_index = link->start;
@@ -3542,10 +3542,10 @@ ctk_label_update_layout_attributes (GtkLabel *label)
 }
 
 static void
-ctk_label_ensure_layout (GtkLabel *label)
+ctk_label_ensure_layout (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkWidget *widget;
+  CtkLabelPrivate *priv = label->priv;
+  CtkWidget *widget;
   gboolean rtl;
 
   widget = CTK_WIDGET (label);
@@ -3613,10 +3613,10 @@ ctk_label_ensure_layout (GtkLabel *label)
     }
 }
 
-static GtkSizeRequestMode
-ctk_label_get_request_mode (GtkWidget *widget)
+static CtkSizeRequestMode
+ctk_label_get_request_mode (CtkWidget *widget)
 {
-  GtkLabel *label = CTK_LABEL (widget);
+  CtkLabel *label = CTK_LABEL (widget);
   gdouble angle;
 
   angle = ctk_label_get_angle (label);
@@ -3631,7 +3631,7 @@ ctk_label_get_request_mode (GtkWidget *widget)
 
 
 static void
-get_size_for_allocation (GtkLabel *label,
+get_size_for_allocation (CtkLabel *label,
                          gint      allocation,
                          gint     *minimum_size,
                          gint     *natural_size,
@@ -3659,7 +3659,7 @@ get_size_for_allocation (GtkLabel *label,
 }
 
 static gint
-get_char_pixels (GtkWidget   *label,
+get_char_pixels (CtkWidget   *label,
                  PangoLayout *layout)
 {
   PangoContext *context;
@@ -3678,11 +3678,11 @@ get_char_pixels (GtkWidget   *label,
 }
 
 static void
-ctk_label_get_preferred_layout_size (GtkLabel *label,
+ctk_label_get_preferred_layout_size (CtkLabel *label,
                                      PangoRectangle *smallest,
                                      PangoRectangle *widest)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   PangoLayout *layout;
   gint char_pixels;
 
@@ -3748,15 +3748,15 @@ ctk_label_get_preferred_layout_size (GtkLabel *label,
 }
 
 static void
-ctk_label_get_preferred_size (GtkWidget      *widget,
-                              GtkOrientation  orientation,
+ctk_label_get_preferred_size (CtkWidget      *widget,
+                              CtkOrientation  orientation,
                               gint           *minimum_size,
                               gint           *natural_size,
 			      gint           *minimum_baseline,
 			      gint           *natural_baseline)
 {
-  GtkLabel      *label = CTK_LABEL (widget);
-  GtkLabelPrivate  *priv = label->priv;
+  CtkLabel      *label = CTK_LABEL (widget);
+  CtkLabelPrivate  *priv = label->priv;
   gint xpad, ypad;
   PangoRectangle widest_rect;
   PangoRectangle smallest_rect;
@@ -3875,8 +3875,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_label_measure (GtkCssGadget   *gadget,
-                   GtkOrientation  orientation,
+ctk_label_measure (CtkCssGadget   *gadget,
+                   CtkOrientation  orientation,
                    int             for_size,
                    int            *minimum,
                    int            *natural,
@@ -3884,9 +3884,9 @@ ctk_label_measure (GtkCssGadget   *gadget,
                    int            *natural_baseline,
                    gpointer        unused)
 {
-  GtkWidget *widget;
-  GtkLabel *label;
-  GtkLabelPrivate *priv;
+  CtkWidget *widget;
+  CtkLabel *label;
+  CtkLabelPrivate *priv;
   gint xpad, ypad;
 
   widget = ctk_css_gadget_get_owner (gadget);
@@ -3928,7 +3928,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_label_get_preferred_width (GtkWidget *widget,
+ctk_label_get_preferred_width (CtkWidget *widget,
                                gint      *minimum_size,
                                gint      *natural_size)
 {
@@ -3940,7 +3940,7 @@ ctk_label_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_label_get_preferred_height (GtkWidget *widget,
+ctk_label_get_preferred_height (CtkWidget *widget,
                                 gint      *minimum_size,
                                 gint      *natural_size)
 {
@@ -3952,7 +3952,7 @@ ctk_label_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_label_get_preferred_width_for_height (GtkWidget *widget,
+ctk_label_get_preferred_width_for_height (CtkWidget *widget,
                                           gint       height,
                                           gint      *minimum_width,
                                           gint      *natural_width)
@@ -3965,7 +3965,7 @@ ctk_label_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_label_get_preferred_height_for_width (GtkWidget *widget,
+ctk_label_get_preferred_height_for_width (CtkWidget *widget,
                                           gint       width,
                                           gint      *minimum_height,
                                           gint      *natural_height)
@@ -3978,7 +3978,7 @@ ctk_label_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_label_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_label_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 						       gint       width,
 						       gint      *minimum_height,
 						       gint      *natural_height,
@@ -3993,13 +3993,13 @@ ctk_label_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 }
 
 static void
-get_layout_location (GtkLabel  *label,
+get_layout_location (CtkLabel  *label,
                      gint      *xp,
                      gint      *yp)
 {
-  GtkAllocation allocation;
-  GtkWidget *widget;
-  GtkLabelPrivate *priv;
+  CtkAllocation allocation;
+  CtkWidget *widget;
+  CtkLabelPrivate *priv;
   gint xpad, ypad;
   gint req_width, x, y;
   gint req_height;
@@ -4056,7 +4056,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * labels, always show the top of the text when they are under-allocated.  The
    * rationale is this:
    *
-   * - Single-line labels appear in GtkButtons, and it is very easy to get them
+   * - Single-line labels appear in CtkButtons, and it is very easy to get them
    *   to be smaller than their requisition.  The button may clip the label, but
    *   the label will still be able to show most of itself and the focus
    *   rectangle.  Also, it is fairly easy to read a single line of clipped text.
@@ -4077,13 +4077,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_label_get_ink_rect (GtkLabel     *label,
+ctk_label_get_ink_rect (CtkLabel     *label,
                         GdkRectangle *rect)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkStyleContext *context;
+  CtkLabelPrivate *priv = label->priv;
+  CtkStyleContext *context;
   PangoRectangle ink_rect;
-  GtkBorder extents;
+  CtkBorder extents;
   int x, y;
 
   ctk_label_ensure_layout (label);
@@ -4099,11 +4099,11 @@ ctk_label_get_ink_rect (GtkLabel     *label,
 }
 
 static void
-ctk_label_size_allocate (GtkWidget     *widget,
-                         GtkAllocation *allocation)
+ctk_label_size_allocate (CtkWidget     *widget,
+                         CtkAllocation *allocation)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
   GdkRectangle clip_rect, clip;
 
   CTK_WIDGET_CLASS (ctk_label_parent_class)->size_allocate (widget, allocation);
@@ -4129,10 +4129,10 @@ ctk_label_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_label_update_cursor (GtkLabel *label)
+ctk_label_update_cursor (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkWidget *widget;
+  CtkLabelPrivate *priv = label->priv;
+  CtkWidget *widget;
 
   if (!priv->select_info)
     return;
@@ -4166,18 +4166,18 @@ ctk_label_update_cursor (GtkLabel *label)
 }
 
 static void
-update_link_state (GtkLabel *label)
+update_link_state (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   GList *l;
-  GtkStateFlags state;
+  CtkStateFlags state;
 
   if (!priv->select_info)
     return;
 
   for (l = priv->select_info->links; l; l = l->next)
     {
-      GtkLabelLink *link = l->data;
+      CtkLabelLink *link = l->data;
 
       state = ctk_widget_get_state_flags (CTK_WIDGET (label));
       if (link->visited)
@@ -4196,11 +4196,11 @@ update_link_state (GtkLabel *label)
 }
 
 static void
-ctk_label_state_flags_changed (GtkWidget     *widget,
-                               GtkStateFlags  prev_state)
+ctk_label_state_flags_changed (CtkWidget     *widget,
+                               CtkStateFlags  prev_state)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     {
@@ -4216,12 +4216,12 @@ ctk_label_state_flags_changed (GtkWidget     *widget,
 }
 
 static void 
-ctk_label_style_updated (GtkWidget *widget)
+ctk_label_style_updated (CtkWidget *widget)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
-  GtkStyleContext *context;
-  GtkCssStyleChange *change;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
+  CtkStyleContext *context;
+  CtkCssStyleChange *change;
 
   CTK_WIDGET_CLASS (ctk_label_parent_class)->style_updated (widget);
 
@@ -4234,9 +4234,9 @@ ctk_label_style_updated (GtkWidget *widget)
 }
 
 static PangoDirection
-get_cursor_direction (GtkLabel *label)
+get_cursor_direction (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   GSList *l;
 
   g_assert (priv->select_info);
@@ -4261,11 +4261,11 @@ get_cursor_direction (GtkLabel *label)
   return PANGO_DIRECTION_LTR;
 }
 
-static GtkLabelLink *
-ctk_label_get_focus_link (GtkLabel *label)
+static CtkLabelLink *
+ctk_label_get_focus_link (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelSelectionInfo *info = priv->select_info;
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelSelectionInfo *info = priv->select_info;
   GList *l;
 
   if (!info)
@@ -4276,7 +4276,7 @@ ctk_label_get_focus_link (GtkLabel *label)
 
   for (l = info->links; l; l = l->next)
     {
-      GtkLabelLink *link = l->data;
+      CtkLabelLink *link = l->data;
       if (link->start <= info->selection_anchor &&
           info->selection_anchor <= link->end)
         return link;
@@ -4286,7 +4286,7 @@ ctk_label_get_focus_link (GtkLabel *label)
 }
 
 static gboolean
-ctk_label_draw (GtkWidget *widget,
+ctk_label_draw (CtkWidget *widget,
                 cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_LABEL (widget)->priv->gadget, cr);
@@ -4294,12 +4294,12 @@ ctk_label_draw (GtkWidget *widget,
   return FALSE;
 }
 
-static void layout_to_window_coords (GtkLabel *label,
+static void layout_to_window_coords (CtkLabel *label,
                                      gint     *x,
                                      gint     *y);
 
 static gboolean
-ctk_label_render (GtkCssGadget *gadget,
+ctk_label_render (CtkCssGadget *gadget,
                   cairo_t      *cr,
                   int           x,
                   int           y,
@@ -4307,11 +4307,11 @@ ctk_label_render (GtkCssGadget *gadget,
                   int           height,
                   gpointer      data)
 {
-  GtkWidget *widget;
-  GtkLabel *label;
-  GtkLabelPrivate *priv;
-  GtkLabelSelectionInfo *info;
-  GtkStyleContext *context;
+  CtkWidget *widget;
+  CtkLabel *label;
+  CtkLabelPrivate *priv;
+  CtkLabelSelectionInfo *info;
+  CtkStyleContext *context;
   gint lx, ly;
 
   widget = ctk_css_gadget_get_owner (gadget);
@@ -4370,8 +4370,8 @@ ctk_label_render (GtkCssGadget *gadget,
         }
       else if (info)
         {
-          GtkLabelLink *focus_link;
-          GtkLabelLink *active_link;
+          CtkLabelLink *focus_link;
+          CtkLabelLink *active_link;
           gint range[2];
           cairo_region_t *clip;
           GdkRectangle rect;
@@ -4508,10 +4508,10 @@ separate_uline_pattern (const gchar  *str,
 }
 
 static void
-ctk_label_set_uline_text_internal (GtkLabel    *label,
+ctk_label_set_uline_text_internal (CtkLabel    *label,
 				   const gchar *str)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   guint accel_key = GDK_KEY_VoidSymbol;
   gchar *new_str;
   gchar *pattern;
@@ -4534,7 +4534,7 @@ ctk_label_set_uline_text_internal (GtkLabel    *label,
 
 /**
  * ctk_label_set_text_with_mnemonic:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @str: a string
  * 
  * Sets the label’s text from the string @str.
@@ -4544,7 +4544,7 @@ ctk_label_set_uline_text_internal (GtkLabel    *label,
  * automatically, or explicitly using ctk_label_set_mnemonic_widget().
  **/
 void
-ctk_label_set_text_with_mnemonic (GtkLabel    *label,
+ctk_label_set_text_with_mnemonic (CtkLabel    *label,
 				  const gchar *str)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -4562,10 +4562,10 @@ ctk_label_set_text_with_mnemonic (GtkLabel    *label,
 }
 
 static void
-ctk_label_realize (GtkWidget *widget)
+ctk_label_realize (CtkWidget *widget)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
 
   CTK_WIDGET_CLASS (ctk_label_parent_class)->realize (widget);
 
@@ -4574,10 +4574,10 @@ ctk_label_realize (GtkWidget *widget)
 }
 
 static void
-ctk_label_unrealize (GtkWidget *widget)
+ctk_label_unrealize (CtkWidget *widget)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     ctk_label_destroy_window (label);
@@ -4586,10 +4586,10 @@ ctk_label_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_label_map (GtkWidget *widget)
+ctk_label_map (CtkWidget *widget)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
 
   CTK_WIDGET_CLASS (ctk_label_parent_class)->map (widget);
 
@@ -4598,10 +4598,10 @@ ctk_label_map (GtkWidget *widget)
 }
 
 static void
-ctk_label_unmap (GtkWidget *widget)
+ctk_label_unmap (CtkWidget *widget)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     {
@@ -4618,11 +4618,11 @@ ctk_label_unmap (GtkWidget *widget)
 }
 
 static void
-window_to_layout_coords (GtkLabel *label,
+window_to_layout_coords (CtkLabel *label,
                          gint     *x,
                          gint     *y)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   gint lx, ly;
 
   /* get layout location in widget->window coords */
@@ -4637,12 +4637,12 @@ window_to_layout_coords (GtkLabel *label,
 }
 
 static void
-layout_to_window_coords (GtkLabel *label,
+layout_to_window_coords (CtkLabel *label,
                          gint     *x,
                          gint     *y)
 {
   gint lx, ly;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   /* get layout location in widget->window coords */
   get_layout_location (label, &lx, &ly);
@@ -4656,12 +4656,12 @@ layout_to_window_coords (GtkLabel *label,
 }
 
 static gboolean
-get_layout_index (GtkLabel *label,
+get_layout_index (CtkLabel *label,
                   gint      x,
                   gint      y,
                   gint     *index)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint trailing = 0;
   const gchar *cluster;
   const gchar *cluster_end;
@@ -4694,13 +4694,13 @@ get_layout_index (GtkLabel *label,
 }
 
 static gboolean
-range_is_in_ellipsis_full (GtkLabel *label,
+range_is_in_ellipsis_full (CtkLabel *label,
                            gint      range_start,
                            gint      range_end,
                            gint     *ellipsis_start,
                            gint     *ellipsis_end)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   PangoLayoutIter *iter;
   gboolean in_ellipsis;
 
@@ -4749,7 +4749,7 @@ range_is_in_ellipsis_full (GtkLabel *label,
 }
 
 static gboolean
-range_is_in_ellipsis (GtkLabel *label,
+range_is_in_ellipsis (CtkLabel *label,
                       gint      range_start,
                       gint      range_end)
 {
@@ -4757,9 +4757,9 @@ range_is_in_ellipsis (GtkLabel *label,
 }
 
 static void
-ctk_label_select_word (GtkLabel *label)
+ctk_label_select_word (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint min, max;
 
   gint start_index = ctk_label_move_backward_word (label, priv->select_info->selection_end);
@@ -4777,12 +4777,12 @@ ctk_label_select_word (GtkLabel *label)
 }
 
 static void
-ctk_label_grab_focus (GtkWidget *widget)
+ctk_label_grab_focus (CtkWidget *widget)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
   gboolean select_on_focus;
-  GtkLabelLink *link;
+  CtkLabelLink *link;
   GList *l;
 
   if (priv->select_info == NULL)
@@ -4820,13 +4820,13 @@ ctk_label_grab_focus (GtkWidget *widget)
 }
 
 static gboolean
-ctk_label_focus (GtkWidget        *widget,
-                 GtkDirectionType  direction)
+ctk_label_focus (CtkWidget        *widget,
+                 CtkDirectionType  direction)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelSelectionInfo *info = priv->select_info;
-  GtkLabelLink *focus_link;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelSelectionInfo *info = priv->select_info;
+  CtkLabelLink *focus_link;
   GList *l;
 
   if (!ctk_widget_is_focus (widget))
@@ -4868,7 +4868,7 @@ ctk_label_focus (GtkWidget        *widget,
       if (direction == CTK_DIR_TAB_FORWARD)
         for (l = info->links; l; l = l->next)
           {
-            GtkLabelLink *link = l->data;
+            CtkLabelLink *link = l->data;
 
             if (link->start > index)
               {
@@ -4883,7 +4883,7 @@ ctk_label_focus (GtkWidget        *widget,
       else if (direction == CTK_DIR_TAB_BACKWARD)
         for (l = g_list_last (info->links); l; l = l->prev)
           {
-            GtkLabelLink *link = l->data;
+            CtkLabelLink *link = l->data;
 
             if (link->end < index)
               {
@@ -4913,7 +4913,7 @@ ctk_label_focus (GtkWidget        *widget,
             l = info->links;
           for (; l; l = l->next)
             {
-              GtkLabelLink *link = l->data;
+              CtkLabelLink *link = l->data;
               if (!range_is_in_ellipsis (label, link->start, link->end))
                 break;
             }
@@ -4929,7 +4929,7 @@ ctk_label_focus (GtkWidget        *widget,
             l = g_list_last (info->links);
           for (; l; l = l->prev)
             {
-              GtkLabelLink *link = l->data;
+              CtkLabelLink *link = l->data;
               if (!range_is_in_ellipsis (label, link->start, link->end))
                 break;
             }
@@ -4957,15 +4957,15 @@ out:
 }
 
 static void
-ctk_label_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
+ctk_label_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
                                       gint                  n_press,
                                       gdouble               widget_x,
                                       gdouble               widget_y,
-                                      GtkLabel             *label)
+                                      CtkLabel             *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelSelectionInfo *info = priv->select_info;
-  GtkWidget *widget = CTK_WIDGET (label);
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelSelectionInfo *info = priv->select_info;
+  CtkWidget *widget = CTK_WIDGET (label);
   GdkEventSequence *sequence;
   const GdkEvent *event;
   guint button;
@@ -5041,14 +5041,14 @@ ctk_label_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
 }
 
 static void
-ctk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
+ctk_label_multipress_gesture_released (CtkGestureMultiPress *gesture,
                                        gint                  n_press,
                                        gdouble               x,
                                        gdouble               y,
-                                       GtkLabel             *label)
+                                       CtkLabel             *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelSelectionInfo *info = priv->select_info;
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelSelectionInfo *info = priv->select_info;
   GdkEventSequence *sequence;
   gint index;
 
@@ -5079,10 +5079,10 @@ ctk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
 }
 
 static void
-connect_mnemonics_visible_notify (GtkLabel *label)
+connect_mnemonics_visible_notify (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkWidget *toplevel;
+  CtkLabelPrivate *priv = label->priv;
+  CtkWidget *toplevel;
   gboolean connected;
 
   toplevel = ctk_widget_get_toplevel (CTK_WIDGET (label));
@@ -5110,12 +5110,12 @@ connect_mnemonics_visible_notify (GtkLabel *label)
 }
 
 static void
-drag_begin_cb (GtkWidget      *widget,
+drag_begin_cb (CtkWidget      *widget,
                GdkDragContext *context,
                gpointer        data)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
   cairo_surface_t *surface = NULL;
 
   g_signal_handlers_disconnect_by_func (widget, drag_begin_cb, NULL);
@@ -5157,13 +5157,13 @@ drag_begin_cb (GtkWidget      *widget,
 }
 
 static void
-ctk_label_drag_gesture_begin (GtkGestureDrag *gesture,
+ctk_label_drag_gesture_begin (CtkGestureDrag *gesture,
                               gdouble         start_x,
                               gdouble         start_y,
-                              GtkLabel       *label)
+                              CtkLabel       *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelSelectionInfo *info = priv->select_info;
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelSelectionInfo *info = priv->select_info;
   GdkModifierType state_mask;
   GdkEventSequence *sequence;
   const GdkEvent *event;
@@ -5226,14 +5226,14 @@ ctk_label_drag_gesture_begin (GtkGestureDrag *gesture,
 }
 
 static void
-ctk_label_drag_gesture_update (GtkGestureDrag *gesture,
+ctk_label_drag_gesture_update (CtkGestureDrag *gesture,
                                gdouble         offset_x,
                                gdouble         offset_y,
-                               GtkLabel       *label)
+                               CtkLabel       *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelSelectionInfo *info = priv->select_info;
-  GtkWidget *widget = CTK_WIDGET (label);
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelSelectionInfo *info = priv->select_info;
+  CtkWidget *widget = CTK_WIDGET (label);
   GdkEventSequence *sequence;
   gdouble x, y;
   gint index;
@@ -5251,7 +5251,7 @@ ctk_label_drag_gesture_update (GtkGestureDrag *gesture,
 				    info->drag_start_y,
 				    x, y))
 	{
-	  GtkTargetList *target_list = ctk_target_list_new (NULL, 0);
+	  CtkTargetList *target_list = ctk_target_list_new (NULL, 0);
           const GdkEvent *event;
 
           event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
@@ -5321,13 +5321,13 @@ ctk_label_drag_gesture_update (GtkGestureDrag *gesture,
 }
 
 static void
-ctk_label_update_active_link (GtkWidget *widget,
+ctk_label_update_active_link (CtkWidget *widget,
                               gdouble    x,
                               gdouble    y)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelSelectionInfo *info = priv->select_info;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelSelectionInfo *info = priv->select_info;
   gint index;
 
   if (info == NULL)
@@ -5336,7 +5336,7 @@ ctk_label_update_active_link (GtkWidget *widget,
   if (info->links && !info->in_drag)
     {
       GList *l;
-      GtkLabelLink *link;
+      CtkLabelLink *link;
       gboolean found = FALSE;
 
       if (info->selection_anchor == info->selection_end)
@@ -5382,7 +5382,7 @@ ctk_label_update_active_link (GtkWidget *widget,
 }
 
 static gboolean
-ctk_label_motion (GtkWidget      *widget,
+ctk_label_motion (CtkWidget      *widget,
                   GdkEventMotion *event)
 {
   gdouble x, y;
@@ -5394,11 +5394,11 @@ ctk_label_motion (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_label_leave_notify (GtkWidget        *widget,
+ctk_label_leave_notify (CtkWidget        *widget,
                         GdkEventCrossing *event)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     {
@@ -5414,11 +5414,11 @@ ctk_label_leave_notify (GtkWidget        *widget,
 }
 
 static void
-ctk_label_create_window (GtkLabel *label)
+ctk_label_create_window (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkAllocation allocation;
-  GtkWidget *widget;
+  CtkLabelPrivate *priv = label->priv;
+  CtkAllocation allocation;
+  CtkWidget *widget;
   GdkWindowAttr attributes;
   gint attributes_mask;
 
@@ -5462,9 +5462,9 @@ ctk_label_create_window (GtkLabel *label)
 }
 
 static void
-ctk_label_destroy_window (GtkLabel *label)
+ctk_label_destroy_window (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   g_assert (priv->select_info);
 
@@ -5477,13 +5477,13 @@ ctk_label_destroy_window (GtkLabel *label)
 }
 
 static void
-ctk_label_ensure_select_info (GtkLabel *label)
+ctk_label_ensure_select_info (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info == NULL)
     {
-      priv->select_info = g_new0 (GtkLabelSelectionInfo, 1);
+      priv->select_info = g_new0 (CtkLabelSelectionInfo, 1);
 
       ctk_widget_set_can_focus (CTK_WIDGET (label), TRUE);
 
@@ -5511,9 +5511,9 @@ ctk_label_ensure_select_info (GtkLabel *label)
 }
 
 static void
-ctk_label_clear_select_info (GtkLabel *label)
+ctk_label_clear_select_info (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info == NULL)
     return;
@@ -5534,17 +5534,17 @@ ctk_label_clear_select_info (GtkLabel *label)
 
 /**
  * ctk_label_set_selectable:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @setting: %TRUE to allow selecting text in the label
  *
  * Selectable labels allow the user to select text from the label, for
  * copy-and-paste.
  **/
 void
-ctk_label_set_selectable (GtkLabel *label,
+ctk_label_set_selectable (CtkLabel *label,
                           gboolean  setting)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
   gboolean old_setting;
 
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -5585,16 +5585,16 @@ ctk_label_set_selectable (GtkLabel *label,
 
 /**
  * ctk_label_get_selectable:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * 
  * Gets the value set by ctk_label_set_selectable().
  * 
  * Returns: %TRUE if the user can copy text from the label
  **/
 gboolean
-ctk_label_get_selectable (GtkLabel *label)
+ctk_label_get_selectable (CtkLabel *label)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_LABEL (label), FALSE);
 
@@ -5605,7 +5605,7 @@ ctk_label_get_selectable (GtkLabel *label)
 
 /**
  * ctk_label_set_angle:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @angle: the angle that the baseline of the label makes with
  *   the horizontal, in degrees, measured counterclockwise
  * 
@@ -5617,10 +5617,10 @@ ctk_label_get_selectable (GtkLabel *label)
  * Since: 2.6
  **/
 void
-ctk_label_set_angle (GtkLabel *label,
+ctk_label_set_angle (CtkLabel *label,
 		     gdouble   angle)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -5646,7 +5646,7 @@ ctk_label_set_angle (GtkLabel *label,
 
 /**
  * ctk_label_get_angle:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * 
  * Gets the angle of rotation for the label. See
  * ctk_label_set_angle().
@@ -5656,7 +5656,7 @@ ctk_label_set_angle (GtkLabel *label,
  * Since: 2.6
  **/
 gdouble
-ctk_label_get_angle  (GtkLabel *label)
+ctk_label_get_angle  (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), 0.0);
   
@@ -5664,10 +5664,10 @@ ctk_label_get_angle  (GtkLabel *label)
 }
 
 static void
-ctk_label_set_selection_text (GtkLabel         *label,
-			      GtkSelectionData *selection_data)
+ctk_label_set_selection_text (CtkLabel         *label,
+			      CtkSelectionData *selection_data)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info &&
       (priv->select_info->selection_anchor !=
@@ -5697,9 +5697,9 @@ ctk_label_set_selection_text (GtkLabel         *label,
 }
 
 static void
-ctk_label_drag_data_get (GtkWidget        *widget,
+ctk_label_drag_data_get (CtkWidget        *widget,
 			 GdkDragContext   *context,
-			 GtkSelectionData *selection_data,
+			 CtkSelectionData *selection_data,
 			 guint             info,
 			 guint             time)
 {
@@ -5707,8 +5707,8 @@ ctk_label_drag_data_get (GtkWidget        *widget,
 }
 
 static void
-get_text_callback (GtkClipboard     *clipboard,
-                   GtkSelectionData *selection_data,
+get_text_callback (CtkClipboard     *clipboard,
+                   CtkSelectionData *selection_data,
                    guint             info,
                    gpointer          user_data_or_owner)
 {
@@ -5716,11 +5716,11 @@ get_text_callback (GtkClipboard     *clipboard,
 }
 
 static void
-clear_text_callback (GtkClipboard     *clipboard,
+clear_text_callback (CtkClipboard     *clipboard,
                      gpointer          user_data_or_owner)
 {
-  GtkLabel *label;
-  GtkLabelPrivate *priv;
+  CtkLabel *label;
+  CtkLabelPrivate *priv;
 
   label = CTK_LABEL (user_data_or_owner);
   priv = label->priv;
@@ -5734,11 +5734,11 @@ clear_text_callback (GtkClipboard     *clipboard,
 }
 
 static void
-ctk_label_select_region_index (GtkLabel *label,
+ctk_label_select_region_index (CtkLabel *label,
                                gint      anchor_index,
                                gint      end_index)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -5746,7 +5746,7 @@ ctk_label_select_region_index (GtkLabel *label,
 
   if (priv->select_info && priv->select_info->selectable)
     {
-      GtkClipboard *clipboard;
+      CtkClipboard *clipboard;
       gint s, e;
 
       /* Ensure that we treat an ellipsized region like a single
@@ -5824,8 +5824,8 @@ ctk_label_select_region_index (GtkLabel *label,
 
       if (anchor_index != end_index)
         {
-          GtkTargetList *list;
-          GtkTargetEntry *targets;
+          CtkTargetList *list;
+          CtkTargetEntry *targets;
           gint n_targets;
 
           list = ctk_target_list_new (NULL, 0);
@@ -5844,7 +5844,7 @@ ctk_label_select_region_index (GtkLabel *label,
 
           if (!priv->select_info->selection_node)
             {
-              GtkCssNode *widget_node;
+              CtkCssNode *widget_node;
 
               widget_node = ctk_widget_get_css_node (CTK_WIDGET (label));
               priv->select_info->selection_node = ctk_css_node_new ();
@@ -5875,7 +5875,7 @@ ctk_label_select_region_index (GtkLabel *label,
 
 /**
  * ctk_label_select_region:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @start_offset: start offset (in characters not bytes)
  * @end_offset: end offset (in characters not bytes)
  *
@@ -5885,11 +5885,11 @@ ctk_label_select_region_index (GtkLabel *label,
  * @end_offset are -1, then the end of the label will be substituted.
  **/
 void
-ctk_label_select_region  (GtkLabel *label,
+ctk_label_select_region  (CtkLabel *label,
                           gint      start_offset,
                           gint      end_offset)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -5911,7 +5911,7 @@ ctk_label_select_region  (GtkLabel *label,
 
 /**
  * ctk_label_get_selection_bounds:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @start: (out): return location for start of selection, as a character offset
  * @end: (out): return location for end of selection, as a character offset
  * 
@@ -5921,11 +5921,11 @@ ctk_label_select_region  (GtkLabel *label,
  * Returns: %TRUE if selection is non-empty
  **/
 gboolean
-ctk_label_get_selection_bounds (GtkLabel  *label,
+ctk_label_get_selection_bounds (CtkLabel  *label,
                                 gint      *start,
                                 gint      *end)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_LABEL (label), FALSE);
 
@@ -5983,7 +5983,7 @@ ctk_label_get_selection_bounds (GtkLabel  *label,
 
 /**
  * ctk_label_get_layout:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * 
  * Gets the #PangoLayout used to display the label.
  * The layout is useful to e.g. convert text positions to
@@ -5995,9 +5995,9 @@ ctk_label_get_selection_bounds (GtkLabel  *label,
  * Returns: (transfer none): the #PangoLayout for this label
  **/
 PangoLayout*
-ctk_label_get_layout (GtkLabel *label)
+ctk_label_get_layout (CtkLabel *label)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_LABEL (label), NULL);
 
@@ -6010,7 +6010,7 @@ ctk_label_get_layout (GtkLabel *label)
 
 /**
  * ctk_label_get_layout_offsets:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @x: (out) (optional): location to store X offset of layout, or %NULL
  * @y: (out) (optional): location to store Y offset of layout, or %NULL
  *
@@ -6018,14 +6018,14 @@ ctk_label_get_layout (GtkLabel *label)
  * representing the text in the label; useful to convert mouse events
  * into coordinates inside the #PangoLayout, e.g. to take some action
  * if some part of the label is clicked. Of course you will need to
- * create a #GtkEventBox to receive the events, and pack the label
+ * create a #CtkEventBox to receive the events, and pack the label
  * inside it, since labels are windowless (they return %FALSE from
  * ctk_widget_get_has_window()). Remember
  * when using the #PangoLayout functions you need to convert to
  * and from pixels using PANGO_PIXELS() or #PANGO_SCALE.
  **/
 void
-ctk_label_get_layout_offsets (GtkLabel *label,
+ctk_label_get_layout_offsets (CtkLabel *label,
                               gint     *x,
                               gint     *y)
 {
@@ -6038,7 +6038,7 @@ ctk_label_get_layout_offsets (GtkLabel *label,
 
 /**
  * ctk_label_set_use_markup:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @setting: %TRUE if the label’s text should be parsed for markup.
  *
  * Sets whether the text of the label contains markup in
@@ -6046,7 +6046,7 @@ ctk_label_get_layout_offsets (GtkLabel *label,
  * See ctk_label_set_markup().
  **/
 void
-ctk_label_set_use_markup (GtkLabel *label,
+ctk_label_set_use_markup (CtkLabel *label,
 			  gboolean  setting)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -6061,7 +6061,7 @@ ctk_label_set_use_markup (GtkLabel *label,
 
 /**
  * ctk_label_get_use_markup:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns whether the label’s text is interpreted as marked up with
  * the [Pango text markup language][PangoMarkupFormat].
@@ -6070,7 +6070,7 @@ ctk_label_set_use_markup (GtkLabel *label,
  * Returns: %TRUE if the label’s text will be parsed for markup.
  **/
 gboolean
-ctk_label_get_use_markup (GtkLabel *label)
+ctk_label_get_use_markup (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), FALSE);
 
@@ -6079,14 +6079,14 @@ ctk_label_get_use_markup (GtkLabel *label)
 
 /**
  * ctk_label_set_use_underline:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @setting: %TRUE if underlines in the text indicate mnemonics
  *
  * If true, an underline in the text indicates the next character should be
  * used for the mnemonic accelerator key.
  */
 void
-ctk_label_set_use_underline (GtkLabel *label,
+ctk_label_set_use_underline (CtkLabel *label,
 			     gboolean  setting)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -6101,7 +6101,7 @@ ctk_label_set_use_underline (GtkLabel *label,
 
 /**
  * ctk_label_get_use_underline:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns whether an embedded underline in the label indicates a
  * mnemonic. See ctk_label_set_use_underline().
@@ -6110,7 +6110,7 @@ ctk_label_set_use_underline (GtkLabel *label,
  *               the mnemonic accelerator keys.
  **/
 gboolean
-ctk_label_get_use_underline (GtkLabel *label)
+ctk_label_get_use_underline (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), FALSE);
 
@@ -6119,7 +6119,7 @@ ctk_label_get_use_underline (GtkLabel *label)
 
 /**
  * ctk_label_set_single_line_mode:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @single_line_mode: %TRUE if the label should be in single line mode
  *
  * Sets whether the label is in single line mode.
@@ -6127,10 +6127,10 @@ ctk_label_get_use_underline (GtkLabel *label)
  * Since: 2.6
  */
 void
-ctk_label_set_single_line_mode (GtkLabel *label,
+ctk_label_set_single_line_mode (CtkLabel *label,
                                 gboolean single_line_mode)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -6151,7 +6151,7 @@ ctk_label_set_single_line_mode (GtkLabel *label,
 
 /**
  * ctk_label_get_single_line_mode:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns whether the label is in single line mode.
  *
@@ -6160,7 +6160,7 @@ ctk_label_set_single_line_mode (GtkLabel *label,
  * Since: 2.6
  **/
 gboolean
-ctk_label_get_single_line_mode  (GtkLabel *label)
+ctk_label_get_single_line_mode  (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), FALSE);
 
@@ -6173,12 +6173,12 @@ ctk_label_get_single_line_mode  (GtkLabel *label)
  * right arrow key.
  */
 static void
-get_better_cursor (GtkLabel *label,
+get_better_cursor (CtkLabel *label,
 		   gint      index,
 		   gint      *x,
 		   gint      *y)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
   PangoDirection keymap_direction = gdk_keymap_get_direction (keymap);
   PangoDirection cursor_direction = get_cursor_direction (label);
@@ -6216,11 +6216,11 @@ get_better_cursor (GtkLabel *label,
 
 
 static gint
-ctk_label_move_logically (GtkLabel *label,
+ctk_label_move_logically (CtkLabel *label,
 			  gint      start,
 			  gint      count)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint offset = g_utf8_pointer_to_offset (priv->text,
 					  priv->text + start);
 
@@ -6260,11 +6260,11 @@ ctk_label_move_logically (GtkLabel *label,
 }
 
 static gint
-ctk_label_move_visually (GtkLabel *label,
+ctk_label_move_visually (CtkLabel *label,
 			 gint      start,
 			 gint      count)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint index;
 
   index = start;
@@ -6315,10 +6315,10 @@ ctk_label_move_visually (GtkLabel *label,
 }
 
 static gint
-ctk_label_move_forward_word (GtkLabel *label,
+ctk_label_move_forward_word (CtkLabel *label,
 			     gint      start)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint new_pos = g_utf8_pointer_to_offset (priv->text,
 					   priv->text + start);
   gint length;
@@ -6346,10 +6346,10 @@ ctk_label_move_forward_word (GtkLabel *label,
 
 
 static gint
-ctk_label_move_backward_word (GtkLabel *label,
+ctk_label_move_backward_word (CtkLabel *label,
 			      gint      start)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint new_pos = g_utf8_pointer_to_offset (priv->text,
 					   priv->text + start);
 
@@ -6375,12 +6375,12 @@ ctk_label_move_backward_word (GtkLabel *label,
 }
 
 static void
-ctk_label_move_cursor (GtkLabel       *label,
-                       GtkMovementStep step,
+ctk_label_move_cursor (CtkLabel       *label,
+                       CtkMovementStep step,
                        gint            count,
                        gboolean        extend_selection)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint old_pos;
   gint new_pos;
 
@@ -6451,7 +6451,7 @@ ctk_label_move_cursor (GtkLabel       *label,
                                                  count > 0 ?
                                                  CTK_DIR_RIGHT : CTK_DIR_LEFT))
                     {
-                      GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (label));
+                      CtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (label));
 
                       if (toplevel)
                         ctk_widget_child_focus (toplevel,
@@ -6504,15 +6504,15 @@ ctk_label_move_cursor (GtkLabel       *label,
 }
 
 static void
-ctk_label_copy_clipboard (GtkLabel *label)
+ctk_label_copy_clipboard (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->text && priv->select_info)
     {
       gint start, end;
       gint len;
-      GtkClipboard *clipboard;
+      CtkClipboard *clipboard;
 
       start = MIN (priv->select_info->selection_anchor,
                    priv->select_info->selection_end);
@@ -6533,7 +6533,7 @@ ctk_label_copy_clipboard (GtkLabel *label)
 	ctk_clipboard_set_text (clipboard, priv->text + start, end - start);
       else
         {
-          GtkLabelLink *link;
+          CtkLabelLink *link;
 
           link = ctk_label_get_focus_link (label);
           if (link)
@@ -6543,9 +6543,9 @@ ctk_label_copy_clipboard (GtkLabel *label)
 }
 
 static void
-ctk_label_select_all (GtkLabel *label)
+ctk_label_select_all (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   ctk_label_select_region_index (label, 0, strlen (priv->text));
 }
@@ -6553,21 +6553,21 @@ ctk_label_select_all (GtkLabel *label)
 /* Quick hack of a popup menu
  */
 static void
-activate_cb (GtkWidget *menuitem,
-	     GtkLabel  *label)
+activate_cb (CtkWidget *menuitem,
+	     CtkLabel  *label)
 {
   const gchar *signal = g_object_get_qdata (G_OBJECT (menuitem), quark_ctk_signal);
   g_signal_emit_by_name (label, signal);
 }
 
 static void
-append_action_signal (GtkLabel     *label,
-		      GtkWidget    *menu,
+append_action_signal (CtkLabel     *label,
+		      CtkWidget    *menu,
 		      const gchar  *text,
 		      const gchar  *signal,
                       gboolean      sensitive)
 {
-  GtkWidget *menuitem = ctk_menu_item_new_with_mnemonic (text);
+  CtkWidget *menuitem = ctk_menu_item_new_with_mnemonic (text);
 
   g_object_set_qdata (G_OBJECT (menuitem), quark_ctk_signal, (char *)signal);
   g_signal_connect (menuitem, "activate",
@@ -6580,32 +6580,32 @@ append_action_signal (GtkLabel     *label,
 }
 
 static void
-popup_menu_detach (GtkWidget *attach_widget,
-		   GtkMenu   *menu)
+popup_menu_detach (CtkWidget *attach_widget,
+		   CtkMenu   *menu)
 {
-  GtkLabel *label = CTK_LABEL (attach_widget);
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabel *label = CTK_LABEL (attach_widget);
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     priv->select_info->popup_menu = NULL;
 }
 
 static void
-open_link_activate_cb (GtkMenuItem *menuitem,
-                       GtkLabel    *label)
+open_link_activate_cb (CtkMenuItem *menuitem,
+                       CtkLabel    *label)
 {
-  GtkLabelLink *link;
+  CtkLabelLink *link;
 
   link = g_object_get_qdata (G_OBJECT (menuitem), quark_link);
   emit_activate_link (label, link);
 }
 
 static void
-copy_link_activate_cb (GtkMenuItem *menuitem,
-                       GtkLabel    *label)
+copy_link_activate_cb (CtkMenuItem *menuitem,
+                       CtkLabel    *label)
 {
-  GtkLabelLink *link;
-  GtkClipboard *clipboard;
+  CtkLabelLink *link;
+  CtkClipboard *clipboard;
 
   link = g_object_get_qdata (G_OBJECT (menuitem), quark_link);
   clipboard = ctk_widget_get_clipboard (CTK_WIDGET (label), GDK_SELECTION_CLIPBOARD);
@@ -6613,7 +6613,7 @@ copy_link_activate_cb (GtkMenuItem *menuitem,
 }
 
 static gboolean
-ctk_label_popup_menu (GtkWidget *widget)
+ctk_label_popup_menu (CtkWidget *widget)
 {
   ctk_label_do_popup (CTK_LABEL (widget), NULL);
 
@@ -6621,14 +6621,14 @@ ctk_label_popup_menu (GtkWidget *widget)
 }
 
 static void
-ctk_label_do_popup (GtkLabel       *label,
+ctk_label_do_popup (CtkLabel       *label,
                     const GdkEvent *event)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkWidget *menuitem;
-  GtkWidget *menu;
+  CtkLabelPrivate *priv = label->priv;
+  CtkWidget *menuitem;
+  CtkWidget *menu;
   gboolean have_selection;
-  GtkLabelLink *link;
+  CtkLabelLink *link;
 
   if (!priv->select_info)
     return;
@@ -6714,9 +6714,9 @@ ctk_label_do_popup (GtkLabel       *label,
 }
 
 static void
-ctk_label_clear_links (GtkLabel *label)
+ctk_label_clear_links (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (!priv->select_info)
     return;
@@ -6729,11 +6729,11 @@ ctk_label_clear_links (GtkLabel *label)
 }
 
 static gboolean
-ctk_label_activate_link (GtkLabel    *label,
+ctk_label_activate_link (CtkLabel    *label,
                          const gchar *uri)
 {
-  GtkWidget *widget = CTK_WIDGET (label);
-  GtkWidget *top_level = ctk_widget_get_toplevel (widget);
+  CtkWidget *widget = CTK_WIDGET (label);
+  CtkWidget *top_level = ctk_widget_get_toplevel (widget);
   guint32 timestamp = ctk_get_current_event_time ();
   GError *error = NULL;
 
@@ -6747,12 +6747,12 @@ ctk_label_activate_link (GtkLabel    *label,
 }
 
 static void
-emit_activate_link (GtkLabel     *label,
-                    GtkLabelLink *link)
+emit_activate_link (CtkLabel     *label,
+                    CtkLabelLink *link)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gboolean handled;
-  GtkStateFlags state;
+  CtkStateFlags state;
 
   g_signal_emit (label, signals[ACTIVATE_LINK], 0, link->uri, &handled);
   if (handled && priv->track_links && !link->visited &&
@@ -6767,10 +6767,10 @@ emit_activate_link (GtkLabel     *label,
 }
 
 static void
-ctk_label_activate_current_link (GtkLabel *label)
+ctk_label_activate_current_link (CtkLabel *label)
 {
-  GtkLabelLink *link;
-  GtkWidget *widget = CTK_WIDGET (label);
+  CtkLabelLink *link;
+  CtkWidget *widget = CTK_WIDGET (label);
 
   link = ctk_label_get_focus_link (label);
 
@@ -6780,9 +6780,9 @@ ctk_label_activate_current_link (GtkLabel *label)
     }
   else
     {
-      GtkWidget *toplevel;
-      GtkWindow *window;
-      GtkWidget *default_widget, *focus_widget;
+      CtkWidget *toplevel;
+      CtkWindow *window;
+      CtkWidget *default_widget, *focus_widget;
 
       toplevel = ctk_widget_get_toplevel (widget);
       if (CTK_IS_WINDOW (toplevel))
@@ -6802,11 +6802,11 @@ ctk_label_activate_current_link (GtkLabel *label)
     }
 }
 
-static GtkLabelLink *
-ctk_label_get_current_link (GtkLabel *label)
+static CtkLabelLink *
+ctk_label_get_current_link (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelLink *link;
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelLink *link;
 
   if (!priv->select_info)
     return NULL;
@@ -6821,15 +6821,15 @@ ctk_label_get_current_link (GtkLabel *label)
 
 /**
  * ctk_label_get_current_uri:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns the URI for the currently active link in the label.
  * The active link is the one under the mouse pointer or, in a
  * selectable label, the link in which the text cursor is currently
  * positioned.
  *
- * This function is intended for use in a #GtkLabel::activate-link handler
- * or for use in a #GtkWidget::query-tooltip handler.
+ * This function is intended for use in a #CtkLabel::activate-link handler
+ * or for use in a #CtkWidget::query-tooltip handler.
  *
  * Returns: the currently active URI. The string is owned by GTK+ and must
  *   not be freed or modified.
@@ -6837,9 +6837,9 @@ ctk_label_get_current_link (GtkLabel *label)
  * Since: 2.18
  */
 const gchar *
-ctk_label_get_current_uri (GtkLabel *label)
+ctk_label_get_current_uri (CtkLabel *label)
 {
-  GtkLabelLink *link;
+  CtkLabelLink *link;
 
   g_return_val_if_fail (CTK_IS_LABEL (label), NULL);
 
@@ -6853,7 +6853,7 @@ ctk_label_get_current_uri (GtkLabel *label)
 
 /**
  * ctk_label_set_track_visited_links:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @track_links: %TRUE to track visited links
  *
  * Sets whether the label should keep track of clicked
@@ -6862,10 +6862,10 @@ ctk_label_get_current_uri (GtkLabel *label)
  * Since: 2.18
  */
 void
-ctk_label_set_track_visited_links (GtkLabel *label,
+ctk_label_set_track_visited_links (CtkLabel *label,
                                    gboolean  track_links)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -6886,7 +6886,7 @@ ctk_label_set_track_visited_links (GtkLabel *label,
 
 /**
  * ctk_label_get_track_visited_links:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Returns whether the label is currently keeping track
  * of clicked links.
@@ -6896,7 +6896,7 @@ ctk_label_set_track_visited_links (GtkLabel *label,
  * Since: 2.18
  */
 gboolean
-ctk_label_get_track_visited_links (GtkLabel *label)
+ctk_label_get_track_visited_links (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), FALSE);
 
@@ -6904,15 +6904,15 @@ ctk_label_get_track_visited_links (GtkLabel *label)
 }
 
 static gboolean
-ctk_label_query_tooltip (GtkWidget  *widget,
+ctk_label_query_tooltip (CtkWidget  *widget,
                          gint        x,
                          gint        y,
                          gboolean    keyboard_tip,
-                         GtkTooltip *tooltip)
+                         CtkTooltip *tooltip)
 {
-  GtkLabel *label = CTK_LABEL (widget);
-  GtkLabelPrivate *priv = label->priv;
-  GtkLabelSelectionInfo *info = priv->select_info;
+  CtkLabel *label = CTK_LABEL (widget);
+  CtkLabelPrivate *priv = label->priv;
+  CtkLabelSelectionInfo *info = priv->select_info;
   gint index = -1;
   GList *l;
 
@@ -6933,7 +6933,7 @@ ctk_label_query_tooltip (GtkWidget  *widget,
         {
           for (l = info->links; l != NULL; l = l->next)
             {
-              GtkLabelLink *link = l->data;
+              CtkLabelLink *link = l->data;
               if (index >= link->start && index <= link->end)
                 {
                   if (link->title)
@@ -6954,9 +6954,9 @@ ctk_label_query_tooltip (GtkWidget  *widget,
 }
 
 gint
-_ctk_label_get_cursor_position (GtkLabel *label)
+_ctk_label_get_cursor_position (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info && priv->select_info->selectable)
     return g_utf8_pointer_to_offset (priv->text,
@@ -6966,9 +6966,9 @@ _ctk_label_get_cursor_position (GtkLabel *label)
 }
 
 gint
-_ctk_label_get_selection_bound (GtkLabel *label)
+_ctk_label_get_selection_bound (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info && priv->select_info->selectable)
     return g_utf8_pointer_to_offset (priv->text,
@@ -6979,7 +6979,7 @@ _ctk_label_get_selection_bound (GtkLabel *label)
 
 /**
  * ctk_label_set_lines:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @lines: the desired number of lines, or -1
  *
  * Sets the number of lines to which an ellipsized, wrapping label
@@ -6990,10 +6990,10 @@ _ctk_label_get_selection_bound (GtkLabel *label)
  * Since: 3.10
  */
 void
-ctk_label_set_lines (GtkLabel *label,
+ctk_label_set_lines (CtkLabel *label,
                      gint      lines)
 {
-  GtkLabelPrivate *priv;
+  CtkLabelPrivate *priv;
 
   g_return_if_fail (CTK_IS_LABEL (label));
 
@@ -7010,7 +7010,7 @@ ctk_label_set_lines (GtkLabel *label,
 
 /**
  * ctk_label_get_lines:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
  * Gets the number of lines to which an ellipsized, wrapping
  * label should be limited. See ctk_label_set_lines().
@@ -7020,7 +7020,7 @@ ctk_label_set_lines (GtkLabel *label,
  * Since: 3.10
  */
 gint
-ctk_label_get_lines (GtkLabel *label)
+ctk_label_get_lines (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), -1);
 
@@ -7028,9 +7028,9 @@ ctk_label_get_lines (GtkLabel *label)
 }
 
 gint
-_ctk_label_get_n_links (GtkLabel *label)
+_ctk_label_get_n_links (CtkLabel *label)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     return g_list_length (priv->select_info->links);
@@ -7039,14 +7039,14 @@ _ctk_label_get_n_links (GtkLabel *label)
 }
 
 const gchar *
-_ctk_label_get_link_uri (GtkLabel *label,
+_ctk_label_get_link_uri (CtkLabel *label,
                          gint      idx)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     {
-      GtkLabelLink *link = g_list_nth_data (priv->select_info->links, idx);
+      CtkLabelLink *link = g_list_nth_data (priv->select_info->links, idx);
       if (link)
         return link->uri;
     }
@@ -7055,15 +7055,15 @@ _ctk_label_get_link_uri (GtkLabel *label,
 }
 
 void
-_ctk_label_get_link_extent (GtkLabel *label,
+_ctk_label_get_link_extent (CtkLabel *label,
                             gint      idx,
                             gint     *start,
                             gint     *end)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint i;
   GList *l;
-  GtkLabelLink *link;
+  CtkLabelLink *link;
 
   if (priv->select_info)
     for (l = priv->select_info->links, i = 0; l; l = l->next, i++)
@@ -7082,13 +7082,13 @@ _ctk_label_get_link_extent (GtkLabel *label,
 }
 
 gint
-_ctk_label_get_link_at (GtkLabel *label, 
+_ctk_label_get_link_at (CtkLabel *label, 
                         gint      pos)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint i;
   GList *l;
-  GtkLabelLink *link;
+  CtkLabelLink *link;
 
   if (priv->select_info)
     for (l = priv->select_info->links, i = 0; l; l = l->next, i++)
@@ -7102,14 +7102,14 @@ _ctk_label_get_link_at (GtkLabel *label,
 }
 
 void
-_ctk_label_activate_link (GtkLabel *label,
+_ctk_label_activate_link (CtkLabel *label,
                           gint      idx)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     {
-      GtkLabelLink *link = g_list_nth_data (priv->select_info->links, idx);
+      CtkLabelLink *link = g_list_nth_data (priv->select_info->links, idx);
 
       if (link)
         emit_activate_link (label, link);
@@ -7117,14 +7117,14 @@ _ctk_label_activate_link (GtkLabel *label,
 }
 
 gboolean
-_ctk_label_get_link_visited (GtkLabel *label,
+_ctk_label_get_link_visited (CtkLabel *label,
                              gint      idx)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
     {
-      GtkLabelLink *link = g_list_nth_data (priv->select_info->links, idx);
+      CtkLabelLink *link = g_list_nth_data (priv->select_info->links, idx);
       return link ? link->visited : FALSE;
     }
 
@@ -7132,14 +7132,14 @@ _ctk_label_get_link_visited (GtkLabel *label,
 }
 
 gboolean
-_ctk_label_get_link_focused (GtkLabel *label,
+_ctk_label_get_link_focused (CtkLabel *label,
                              gint      idx)
 {
-  GtkLabelPrivate *priv = label->priv;
+  CtkLabelPrivate *priv = label->priv;
   gint i;
   GList *l;
-  GtkLabelLink *link;
-  GtkLabelSelectionInfo *info = priv->select_info;
+  CtkLabelLink *link;
+  CtkLabelSelectionInfo *info = priv->select_info;
 
   if (!info)
     return FALSE;
@@ -7163,15 +7163,15 @@ _ctk_label_get_link_focused (GtkLabel *label,
 
 /**
  * ctk_label_set_xalign:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @xalign: the new xalign value, between 0 and 1
  *
- * Sets the #GtkLabel:xalign property for @label.
+ * Sets the #CtkLabel:xalign property for @label.
  *
  * Since: 3.16
  */
 void
-ctk_label_set_xalign (GtkLabel *label,
+ctk_label_set_xalign (CtkLabel *label,
                       gfloat    xalign)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -7189,16 +7189,16 @@ ctk_label_set_xalign (GtkLabel *label,
 
 /**
  * ctk_label_get_xalign:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
- * Gets the #GtkLabel:xalign property for @label.
+ * Gets the #CtkLabel:xalign property for @label.
  *
  * Returns: the xalign property
  *
  * Since: 3.16
  */
 gfloat
-ctk_label_get_xalign (GtkLabel *label)
+ctk_label_get_xalign (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), 0.5);
 
@@ -7207,15 +7207,15 @@ ctk_label_get_xalign (GtkLabel *label)
 
 /**
  * ctk_label_set_yalign:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  * @yalign: the new yalign value, between 0 and 1
  *
- * Sets the #GtkLabel:yalign property for @label.
+ * Sets the #CtkLabel:yalign property for @label.
  *
  * Since: 3.16
  */
 void
-ctk_label_set_yalign (GtkLabel *label,
+ctk_label_set_yalign (CtkLabel *label,
                       gfloat    yalign)
 {
   g_return_if_fail (CTK_IS_LABEL (label));
@@ -7233,16 +7233,16 @@ ctk_label_set_yalign (GtkLabel *label,
 
 /**
  * ctk_label_get_yalign:
- * @label: a #GtkLabel
+ * @label: a #CtkLabel
  *
- * Gets the #GtkLabel:yalign property for @label.
+ * Gets the #CtkLabel:yalign property for @label.
  *
  * Returns: the yalign property
  *
  * Since: 3.16
  */
 gfloat
-ctk_label_get_yalign (GtkLabel *label)
+ctk_label_get_yalign (CtkLabel *label)
 {
   g_return_val_if_fail (CTK_IS_LABEL (label), 0.5);
 

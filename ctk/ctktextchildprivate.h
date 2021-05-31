@@ -3,7 +3,7 @@
  * Copyright (c) 1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000      Red Hat, Inc.
- * Tk -> Gtk port by Havoc Pennington <hp@redhat.com>
+ * Tk -> Ctk port by Havoc Pennington <hp@redhat.com>
  *
  * This software is copyrighted by the Regents of the University of
  * California, Sun Microsystems, Inc., and other parties.  The
@@ -54,34 +54,34 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkTextPixbuf GtkTextPixbuf;
+typedef struct _CtkTextPixbuf CtkTextPixbuf;
 
-struct _GtkTextPixbuf
+struct _CtkTextPixbuf
 {
   GdkPixbuf *pixbuf;
 };
 
-GtkTextLineSegment *_ctk_pixbuf_segment_new (GdkPixbuf *pixbuf);
+CtkTextLineSegment *_ctk_pixbuf_segment_new (GdkPixbuf *pixbuf);
 
-typedef struct _GtkTextChildBody GtkTextChildBody;
+typedef struct _CtkTextChildBody CtkTextChildBody;
 
-struct _GtkTextChildBody
+struct _CtkTextChildBody
 {
-  GtkTextChildAnchor *obj;
+  CtkTextChildAnchor *obj;
   GSList *widgets;
-  GtkTextBTree *tree;
-  GtkTextLine *line;
+  CtkTextBTree *tree;
+  CtkTextLine *line;
 };
 
-GtkTextLineSegment *_ctk_widget_segment_new      (GtkTextChildAnchor *anchor);
-void                _ctk_widget_segment_add      (GtkTextLineSegment *widget_segment,
-                                                  GtkWidget          *child);
-void                _ctk_widget_segment_remove   (GtkTextLineSegment *widget_segment,
-                                                  GtkWidget          *child);
-void                _ctk_widget_segment_ref      (GtkTextLineSegment *widget_segment);
-void                _ctk_widget_segment_unref    (GtkTextLineSegment *widget_segment);
+CtkTextLineSegment *_ctk_widget_segment_new      (CtkTextChildAnchor *anchor);
+void                _ctk_widget_segment_add      (CtkTextLineSegment *widget_segment,
+                                                  CtkWidget          *child);
+void                _ctk_widget_segment_remove   (CtkTextLineSegment *widget_segment,
+                                                  CtkWidget          *child);
+void                _ctk_widget_segment_ref      (CtkTextLineSegment *widget_segment);
+void                _ctk_widget_segment_unref    (CtkTextLineSegment *widget_segment);
 
-GtkTextLayout*      _ctk_anchored_child_get_layout (GtkWidget *child);
+CtkTextLayout*      _ctk_anchored_child_get_layout (CtkWidget *child);
 
 G_END_DECLS
 

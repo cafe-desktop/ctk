@@ -89,7 +89,7 @@ static GetThemeBackgroundExtentFunc GetThemeBackgroundExtent = NULL;
 
 static GHashTable *themes_by_class = NULL;
 
-struct _GtkWin32Theme {
+struct _CtkWin32Theme {
   char *class_name;
   gint ref_count;
 #ifdef G_OS_WIN32
@@ -97,8 +97,8 @@ struct _GtkWin32Theme {
 #endif
 };
 
-GtkWin32Theme *
-ctk_win32_theme_ref (GtkWin32Theme *theme)
+CtkWin32Theme *
+ctk_win32_theme_ref (CtkWin32Theme *theme)
 {
   theme->ref_count++;
 
@@ -106,7 +106,7 @@ ctk_win32_theme_ref (GtkWin32Theme *theme)
 }
 
 static gboolean
-ctk_win32_theme_close (GtkWin32Theme *theme)
+ctk_win32_theme_close (CtkWin32Theme *theme)
 {
 #ifdef G_OS_WIN32
   if (theme->htheme)
@@ -120,7 +120,7 @@ ctk_win32_theme_close (GtkWin32Theme *theme)
 }
 
 void
-ctk_win32_theme_unref (GtkWin32Theme *theme)
+ctk_win32_theme_unref (CtkWin32Theme *theme)
 {
   theme->ref_count--;
 
@@ -132,12 +132,12 @@ ctk_win32_theme_unref (GtkWin32Theme *theme)
   ctk_win32_theme_close (theme);
   g_free (theme->class_name);
 
-  g_slice_free (GtkWin32Theme, theme);
+  g_slice_free (CtkWin32Theme, theme);
 }
 
 gboolean
-ctk_win32_theme_equal (GtkWin32Theme *theme1,
-                       GtkWin32Theme *theme2)
+ctk_win32_theme_equal (CtkWin32Theme *theme1,
+                       CtkWin32Theme *theme2)
 {
   /* Themes are cached so they're guaranteed unique. */
   return theme1 == theme2;
@@ -235,7 +235,7 @@ ctk_win32_theme_init (void)
 }
 
 static HTHEME
-ctk_win32_theme_get_htheme (GtkWin32Theme *theme)
+ctk_win32_theme_get_htheme (CtkWin32Theme *theme)
 {
   guint16 *wclass;
   
@@ -261,10 +261,10 @@ canonicalize_class_name (const char *classname)
   return g_ascii_strdown (classname, -1);
 }
 
-GtkWin32Theme *
+CtkWin32Theme *
 ctk_win32_theme_lookup (const char *classname)
 {
-  GtkWin32Theme *theme;
+  CtkWin32Theme *theme;
   char *canonical_classname;
 
   if (G_UNLIKELY (themes_by_class == NULL))
@@ -279,7 +279,7 @@ ctk_win32_theme_lookup (const char *classname)
       return ctk_win32_theme_ref (theme);
     }
 
-  theme = g_slice_new0 (GtkWin32Theme);
+  theme = g_slice_new0 (CtkWin32Theme);
   theme->ref_count = 1;
   theme->class_name = canonical_classname;
 
@@ -288,10 +288,10 @@ ctk_win32_theme_lookup (const char *classname)
   return theme;
 }
 
-GtkWin32Theme *
-ctk_win32_theme_parse (GtkCssParser *parser)
+CtkWin32Theme *
+ctk_win32_theme_parse (CtkCssParser *parser)
 {
-  GtkWin32Theme *theme;
+  CtkWin32Theme *theme;
   char *class_name;
 
   class_name = _ctk_css_parser_try_name (parser, TRUE);
@@ -308,7 +308,7 @@ ctk_win32_theme_parse (GtkCssParser *parser)
 }
 
 cairo_surface_t *
-ctk_win32_theme_create_surface (GtkWin32Theme *theme,
+ctk_win32_theme_create_surface (CtkWin32Theme *theme,
                                 int            xp_part,
 				int            state,
 				int            margins[4],
@@ -396,10 +396,10 @@ ctk_win32_theme_create_surface (GtkWin32Theme *theme,
 }
 
 void
-ctk_win32_theme_get_part_border (GtkWin32Theme  *theme,
+ctk_win32_theme_get_part_border (CtkWin32Theme  *theme,
                                  int             part,
                                  int             state,
-                                 GtkBorder      *out_border)
+                                 CtkBorder      *out_border)
 {
 #ifdef G_OS_WIN32
   HTHEME htheme = ctk_win32_theme_get_htheme (theme);
@@ -433,7 +433,7 @@ ctk_win32_theme_get_part_border (GtkWin32Theme  *theme,
 }
 
 void
-ctk_win32_theme_get_part_size (GtkWin32Theme  *theme,
+ctk_win32_theme_get_part_size (CtkWin32Theme  *theme,
                                int             part,
                                int             state,
                                int            *width,
@@ -462,7 +462,7 @@ ctk_win32_theme_get_part_size (GtkWin32Theme  *theme,
 }
 
 int
-ctk_win32_theme_get_size (GtkWin32Theme *theme,
+ctk_win32_theme_get_size (CtkWin32Theme *theme,
 			  int            id)
 {
 #ifdef G_OS_WIN32
@@ -485,7 +485,7 @@ ctk_win32_theme_get_size (GtkWin32Theme *theme,
 }
 
 void
-ctk_win32_theme_get_color (GtkWin32Theme *theme,
+ctk_win32_theme_get_color (CtkWin32Theme *theme,
                            gint           id,
                            GdkRGBA       *color)
 {
@@ -513,7 +513,7 @@ ctk_win32_theme_get_color (GtkWin32Theme *theme,
 }
 
 void
-ctk_win32_theme_print (GtkWin32Theme *theme,
+ctk_win32_theme_print (CtkWin32Theme *theme,
                        GString       *string)
 {
   g_string_append (string, theme->class_name);

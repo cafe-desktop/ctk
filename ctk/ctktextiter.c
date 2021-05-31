@@ -37,7 +37,7 @@
 /**
  * SECTION:ctktextiter
  * @Short_description: Text buffer iterator
- * @Title: GtkTextIter
+ * @Title: CtkTextIter
  *
  * You may wish to begin by reading the
  * [text widget conceptual overview][TextWidget]
@@ -48,13 +48,13 @@
 
 #define FIX_OVERFLOWS(varname) if ((varname) == G_MININT) (varname) = G_MININT + 1
 
-typedef struct _GtkTextRealIter GtkTextRealIter;
+typedef struct _CtkTextRealIter CtkTextRealIter;
 
-struct G_GNUC_MAY_ALIAS _GtkTextRealIter
+struct G_GNUC_MAY_ALIAS _CtkTextRealIter
 {
   /* Always-valid information */
-  GtkTextBTree *tree;
-  GtkTextLine *line;
+  CtkTextBTree *tree;
+  CtkTextLine *line;
   /* At least one of these is always valid;
      if invalid, they are -1.
 
@@ -69,8 +69,8 @@ struct G_GNUC_MAY_ALIAS _GtkTextRealIter
   gint chars_changed_stamp;
   gint segments_changed_stamp;
   /* Valid if the segments_changed_stamp is up-to-date */
-  GtkTextLineSegment *segment;     /* indexable segment we index */
-  GtkTextLineSegment *any_segment; /* first segment in our location,
+  CtkTextLineSegment *segment;     /* indexable segment we index */
+  CtkTextLineSegment *any_segment; /* first segment in our location,
                                       maybe same as "segment" */
   /* One of these will always be valid if segments_changed_stamp is
      up-to-date. If invalid, they are -1.
@@ -89,8 +89,8 @@ struct G_GNUC_MAY_ALIAS _GtkTextRealIter
    other than the char stamp and the tree are valid.
 */
 static void
-iter_set_common (GtkTextRealIter *iter,
-                 GtkTextLine *line)
+iter_set_common (CtkTextRealIter *iter,
+                 CtkTextLine *line)
 {
   /* Update segments stamp */
   iter->segments_changed_stamp =
@@ -107,8 +107,8 @@ iter_set_common (GtkTextRealIter *iter,
 }
 
 static void
-iter_set_from_byte_offset (GtkTextRealIter *iter,
-                           GtkTextLine *line,
+iter_set_from_byte_offset (CtkTextRealIter *iter,
+                           CtkTextLine *line,
                            gint byte_offset)
 {
   iter_set_common (iter, line);
@@ -124,8 +124,8 @@ iter_set_from_byte_offset (GtkTextRealIter *iter,
 }
 
 static void
-iter_set_from_char_offset (GtkTextRealIter *iter,
-                           GtkTextLine *line,
+iter_set_from_char_offset (CtkTextRealIter *iter,
+                           CtkTextLine *line,
                            gint char_offset)
 {
   iter_set_common (iter, line);
@@ -141,11 +141,11 @@ iter_set_from_char_offset (GtkTextRealIter *iter,
 }
 
 static void
-iter_set_from_segment (GtkTextRealIter *iter,
-                       GtkTextLine *line,
-                       GtkTextLineSegment *segment)
+iter_set_from_segment (CtkTextRealIter *iter,
+                       CtkTextLine *line,
+                       CtkTextLineSegment *segment)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
   gint byte_offset;
 
   /* This could theoretically be optimized by computing all the iter
@@ -165,10 +165,10 @@ iter_set_from_segment (GtkTextRealIter *iter,
    truly computed lazily; often we don't need to do the full make_real
    work. This ensures the btree and line are valid, but doesn't
    update the segments. */
-static GtkTextRealIter*
-ctk_text_iter_make_surreal (const GtkTextIter *_iter)
+static CtkTextRealIter*
+ctk_text_iter_make_surreal (const CtkTextIter *_iter)
 {
-  GtkTextRealIter *iter = (GtkTextRealIter*)_iter;
+  CtkTextRealIter *iter = (CtkTextRealIter*)_iter;
 
   if (iter->chars_changed_stamp !=
       _ctk_text_btree_get_chars_changed_stamp (iter->tree))
@@ -204,10 +204,10 @@ ctk_text_iter_make_surreal (const GtkTextIter *_iter)
   return iter;
 }
 
-static GtkTextRealIter*
-ctk_text_iter_make_real (const GtkTextIter *_iter)
+static CtkTextRealIter*
+ctk_text_iter_make_real (const CtkTextIter *_iter)
 {
-  GtkTextRealIter *iter;
+  CtkTextRealIter *iter;
 
   iter = ctk_text_iter_make_surreal (_iter);
 
@@ -237,16 +237,16 @@ ctk_text_iter_make_real (const GtkTextIter *_iter)
   return iter;
 }
 
-static GtkTextRealIter*
-iter_init_common (GtkTextIter *_iter,
-                  GtkTextBTree *tree)
+static CtkTextRealIter*
+iter_init_common (CtkTextIter *_iter,
+                  CtkTextBTree *tree)
 {
-  GtkTextRealIter *iter = (GtkTextRealIter*)_iter;
+  CtkTextRealIter *iter = (CtkTextRealIter*)_iter;
 
   g_return_val_if_fail (iter != NULL, NULL);
   g_return_val_if_fail (tree != NULL, NULL);
 
-  memset (iter, 0, sizeof (GtkTextRealIter));
+  memset (iter, 0, sizeof (CtkTextRealIter));
 
   iter->tree = tree;
 
@@ -256,13 +256,13 @@ iter_init_common (GtkTextIter *_iter,
   return iter;
 }
 
-static GtkTextRealIter*
-iter_init_from_segment (GtkTextIter *iter,
-                        GtkTextBTree *tree,
-                        GtkTextLine *line,
-                        GtkTextLineSegment *segment)
+static CtkTextRealIter*
+iter_init_from_segment (CtkTextIter *iter,
+                        CtkTextBTree *tree,
+                        CtkTextLine *line,
+                        CtkTextLineSegment *segment)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (line != NULL, NULL);
 
@@ -273,13 +273,13 @@ iter_init_from_segment (GtkTextIter *iter,
   return real;
 }
 
-static GtkTextRealIter*
-iter_init_from_byte_offset (GtkTextIter *iter,
-                            GtkTextBTree *tree,
-                            GtkTextLine *line,
+static CtkTextRealIter*
+iter_init_from_byte_offset (CtkTextIter *iter,
+                            CtkTextBTree *tree,
+                            CtkTextLine *line,
                             gint line_byte_offset)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (line != NULL, NULL);
 
@@ -297,13 +297,13 @@ iter_init_from_byte_offset (GtkTextIter *iter,
   return real;
 }
 
-static GtkTextRealIter*
-iter_init_from_char_offset (GtkTextIter *iter,
-                            GtkTextBTree *tree,
-                            GtkTextLine *line,
+static CtkTextRealIter*
+iter_init_from_char_offset (CtkTextIter *iter,
+                            CtkTextBTree *tree,
+                            CtkTextLine *line,
                             gint line_char_offset)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (line != NULL, NULL);
 
@@ -315,27 +315,27 @@ iter_init_from_char_offset (GtkTextIter *iter,
 }
 
 static inline void
-invalidate_char_index (GtkTextRealIter *iter)
+invalidate_char_index (CtkTextRealIter *iter)
 {
   iter->cached_char_index = -1;
 }
 
 static inline void
-adjust_char_index (GtkTextRealIter *iter, gint count)
+adjust_char_index (CtkTextRealIter *iter, gint count)
 {
   if (iter->cached_char_index >= 0)
     iter->cached_char_index += count;
 }
 
 static inline void
-adjust_line_number (GtkTextRealIter *iter, gint count)
+adjust_line_number (CtkTextRealIter *iter, gint count)
 {
   if (iter->cached_line_number >= 0)
     iter->cached_line_number += count;
 }
 
 static inline void
-ensure_char_offsets (GtkTextRealIter *iter)
+ensure_char_offsets (CtkTextRealIter *iter)
 {
   if (iter->line_char_offset < 0)
     {
@@ -349,7 +349,7 @@ ensure_char_offsets (GtkTextRealIter *iter)
 }
 
 static inline void
-ensure_byte_offsets (GtkTextRealIter *iter)
+ensure_byte_offsets (CtkTextRealIter *iter)
 {
   if (iter->line_byte_offset < 0)
     {
@@ -363,14 +363,14 @@ ensure_byte_offsets (GtkTextRealIter *iter)
 }
 
 static inline gboolean
-is_segment_start (GtkTextRealIter *real)
+is_segment_start (CtkTextRealIter *real)
 {
   return real->segment_byte_offset == 0 || real->segment_char_offset == 0;
 }
 
 #ifdef G_ENABLE_DEBUG
 static void
-check_invariants (const GtkTextIter *iter)
+check_invariants (const CtkTextIter *iter)
 {
   if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_iter_check (iter);
@@ -383,14 +383,14 @@ check_invariants (const GtkTextIter *iter)
  * ctk_text_iter_get_buffer:
  * @iter: an iterator
  *
- * Returns the #GtkTextBuffer this iterator is associated with.
+ * Returns the #CtkTextBuffer this iterator is associated with.
  *
  * Returns: (transfer none): the buffer
  **/
-GtkTextBuffer*
-ctk_text_iter_get_buffer (const GtkTextIter *iter)
+CtkTextBuffer*
+ctk_text_iter_get_buffer (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, NULL);
 
@@ -410,19 +410,19 @@ ctk_text_iter_get_buffer (const GtkTextIter *iter)
  *
  * Creates a dynamically-allocated copy of an iterator. This function
  * is not useful in applications, because iterators can be copied with a
- * simple assignment (`GtkTextIter i = j;`). The
+ * simple assignment (`CtkTextIter i = j;`). The
  * function is used by language bindings.
  *
  * Returns: a copy of the @iter, free with ctk_text_iter_free()
  **/
-GtkTextIter*
-ctk_text_iter_copy (const GtkTextIter *iter)
+CtkTextIter*
+ctk_text_iter_copy (const CtkTextIter *iter)
 {
-  GtkTextIter *new_iter;
+  CtkTextIter *new_iter;
 
   g_return_val_if_fail (iter != NULL, NULL);
 
-  new_iter = g_slice_new (GtkTextIter);
+  new_iter = g_slice_new (CtkTextIter);
 
   *new_iter = *iter;
 
@@ -439,28 +439,28 @@ ctk_text_iter_copy (const GtkTextIter *iter)
  * simply be allocated on the stack.
  **/
 void
-ctk_text_iter_free (GtkTextIter *iter)
+ctk_text_iter_free (CtkTextIter *iter)
 {
   g_return_if_fail (iter != NULL);
 
-  g_slice_free (GtkTextIter, iter);
+  g_slice_free (CtkTextIter, iter);
 }
 
 /**
  * ctk_text_iter_assign:
- * @iter: a #GtkTextIter
- * @other: another #GtkTextIter
+ * @iter: a #CtkTextIter
+ * @other: another #CtkTextIter
  *
  * Assigns the value of @other to @iter.  This function
  * is not useful in applications, because iterators can be assigned
- * with `GtkTextIter i = j;`. The
+ * with `CtkTextIter i = j;`. The
  * function is used by language bindings.
  *
  * Since: 3.2
  **/
 void
-ctk_text_iter_assign (GtkTextIter       *iter,
-                      const GtkTextIter *other)
+ctk_text_iter_assign (CtkTextIter       *iter,
+                      const CtkTextIter *other)
 {
   g_return_if_fail (iter != NULL);
   g_return_if_fail (other != NULL);
@@ -468,14 +468,14 @@ ctk_text_iter_assign (GtkTextIter       *iter,
   *iter = *other;
 }
 
-G_DEFINE_BOXED_TYPE (GtkTextIter, ctk_text_iter,
+G_DEFINE_BOXED_TYPE (CtkTextIter, ctk_text_iter,
                      ctk_text_iter_copy,
                      ctk_text_iter_free)
 
-GtkTextLineSegment*
-_ctk_text_iter_get_indexable_segment (const GtkTextIter *iter)
+CtkTextLineSegment*
+_ctk_text_iter_get_indexable_segment (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, NULL);
 
@@ -491,10 +491,10 @@ _ctk_text_iter_get_indexable_segment (const GtkTextIter *iter)
   return real->segment;
 }
 
-GtkTextLineSegment*
-_ctk_text_iter_get_any_segment (const GtkTextIter *iter)
+CtkTextLineSegment*
+_ctk_text_iter_get_any_segment (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, NULL);
 
@@ -511,9 +511,9 @@ _ctk_text_iter_get_any_segment (const GtkTextIter *iter)
 }
 
 gint
-_ctk_text_iter_get_segment_byte (const GtkTextIter *iter)
+_ctk_text_iter_get_segment_byte (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -530,9 +530,9 @@ _ctk_text_iter_get_segment_byte (const GtkTextIter *iter)
 }
 
 gint
-_ctk_text_iter_get_segment_char (const GtkTextIter *iter)
+_ctk_text_iter_get_segment_char (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -550,28 +550,28 @@ _ctk_text_iter_get_segment_char (const GtkTextIter *iter)
 
 /* This function does not require a still-valid
    iterator */
-GtkTextLine*
-_ctk_text_iter_get_text_line (const GtkTextIter *iter)
+CtkTextLine*
+_ctk_text_iter_get_text_line (const CtkTextIter *iter)
 {
-  const GtkTextRealIter *real;
+  const CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, NULL);
 
-  real = (const GtkTextRealIter*)iter;
+  real = (const CtkTextRealIter*)iter;
 
   return real->line;
 }
 
 /* This function does not require a still-valid
    iterator */
-GtkTextBTree*
-_ctk_text_iter_get_btree (const GtkTextIter *iter)
+CtkTextBTree*
+_ctk_text_iter_get_btree (const CtkTextIter *iter)
 {
-  const GtkTextRealIter *real;
+  const CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, NULL);
 
-  real = (const GtkTextRealIter*)iter;
+  real = (const CtkTextRealIter*)iter;
 
   return real->tree;
 }
@@ -585,7 +585,7 @@ _ctk_text_iter_get_btree (const GtkTextIter *iter)
  * @iter: an iterator
  *
  * Returns the character offset of an iterator.
- * Each character in a #GtkTextBuffer has an offset,
+ * Each character in a #CtkTextBuffer has an offset,
  * starting with 0 for the first character in the buffer.
  * Use ctk_text_buffer_get_iter_at_offset() to convert an
  * offset back into an iterator.
@@ -593,9 +593,9 @@ _ctk_text_iter_get_btree (const GtkTextIter *iter)
  * Returns: a character offset
  **/
 gint
-ctk_text_iter_get_offset (const GtkTextIter *iter)
+ctk_text_iter_get_offset (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -625,15 +625,15 @@ ctk_text_iter_get_offset (const GtkTextIter *iter)
  * @iter: an iterator
  *
  * Returns the line number containing the iterator. Lines in
- * a #GtkTextBuffer are numbered beginning with 0 for the first
+ * a #CtkTextBuffer are numbered beginning with 0 for the first
  * line in the buffer.
  *
  * Returns: a line number
  **/
 gint
-ctk_text_iter_get_line (const GtkTextIter *iter)
+ctk_text_iter_get_line (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -662,9 +662,9 @@ ctk_text_iter_get_line (const GtkTextIter *iter)
  * Returns: offset from start of line
  **/
 gint
-ctk_text_iter_get_line_offset (const GtkTextIter *iter)
+ctk_text_iter_get_line_offset (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -686,16 +686,16 @@ ctk_text_iter_get_line_offset (const GtkTextIter *iter)
  *
  * Returns the byte index of the iterator, counting
  * from the start of a newline-terminated line.
- * Remember that #GtkTextBuffer encodes text in
+ * Remember that #CtkTextBuffer encodes text in
  * UTF-8, and that characters can require a variable
  * number of bytes to represent.
  *
  * Returns: distance from start of line, in bytes
  **/
 gint
-ctk_text_iter_get_line_index (const GtkTextIter *iter)
+ctk_text_iter_get_line_index (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
   
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -713,7 +713,7 @@ ctk_text_iter_get_line_index (const GtkTextIter *iter)
 
 /**
  * ctk_text_iter_get_visible_line_offset:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Returns the offset in characters from the start of the
  * line to the given @iter, not counting characters that
@@ -723,12 +723,12 @@ ctk_text_iter_get_line_index (const GtkTextIter *iter)
  * Returns: offset in visible characters from the start of the line 
  **/
 gint
-ctk_text_iter_get_visible_line_offset (const GtkTextIter *iter)
+ctk_text_iter_get_visible_line_offset (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
   gint vis_offset;
-  GtkTextLineSegment *seg;
-  GtkTextIter pos;
+  CtkTextLineSegment *seg;
+  CtkTextIter pos;
   
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -778,7 +778,7 @@ ctk_text_iter_get_visible_line_offset (const GtkTextIter *iter)
 
 /**
  * ctk_text_iter_get_visible_line_index:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Returns the number of bytes from the start of the
  * line to the given @iter, not counting bytes that
@@ -788,12 +788,12 @@ ctk_text_iter_get_visible_line_offset (const GtkTextIter *iter)
  * Returns: byte index of @iter with respect to the start of the line
  **/
 gint
-ctk_text_iter_get_visible_line_index (const GtkTextIter *iter)
+ctk_text_iter_get_visible_line_index (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
   gint vis_offset;
-  GtkTextLineSegment *seg;
-  GtkTextIter pos;
+  CtkTextLineSegment *seg;
+  CtkTextIter pos;
   
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -859,9 +859,9 @@ ctk_text_iter_get_visible_line_index (const GtkTextIter *iter)
  * Returns: a Unicode character, or 0 if @iter is not dereferenceable
  */
 gunichar
-ctk_text_iter_get_char (const GtkTextIter *iter)
+ctk_text_iter_get_char (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -905,8 +905,8 @@ ctk_text_iter_get_char (const GtkTextIter *iter)
  * Returns: (transfer full): slice of text from the buffer
  **/
 gchar*
-ctk_text_iter_get_slice       (const GtkTextIter *start,
-                               const GtkTextIter *end)
+ctk_text_iter_get_slice       (const CtkTextIter *start,
+                               const CtkTextIter *end)
 {
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
@@ -931,8 +931,8 @@ ctk_text_iter_get_slice       (const GtkTextIter *start,
  * Returns: (transfer full): array of characters from the buffer
  **/
 gchar*
-ctk_text_iter_get_text       (const GtkTextIter *start,
-                              const GtkTextIter *end)
+ctk_text_iter_get_text       (const CtkTextIter *start,
+                              const CtkTextIter *end)
 {
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
@@ -949,14 +949,14 @@ ctk_text_iter_get_text       (const GtkTextIter *start,
  * @end: iterator at end of range
  *
  * Like ctk_text_iter_get_slice(), but invisible text is not included.
- * Invisible text is usually invisible because a #GtkTextTag with the
+ * Invisible text is usually invisible because a #CtkTextTag with the
  * “invisible” attribute turned on has been applied to it.
  *
  * Returns: (transfer full): slice of text from the buffer
  **/
 gchar*
-ctk_text_iter_get_visible_slice (const GtkTextIter  *start,
-                                 const GtkTextIter  *end)
+ctk_text_iter_get_visible_slice (const CtkTextIter  *start,
+                                 const CtkTextIter  *end)
 {
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
@@ -973,15 +973,15 @@ ctk_text_iter_get_visible_slice (const GtkTextIter  *start,
  * @end: iterator at end of range
  *
  * Like ctk_text_iter_get_text(), but invisible text is not included.
- * Invisible text is usually invisible because a #GtkTextTag with the
+ * Invisible text is usually invisible because a #CtkTextTag with the
  * “invisible” attribute turned on has been applied to it.
  *
  * Returns: (transfer full): string containing visible text in the
  * range
  **/
 gchar*
-ctk_text_iter_get_visible_text (const GtkTextIter  *start,
-                                const GtkTextIter  *end)
+ctk_text_iter_get_visible_text (const CtkTextIter  *start,
+                                const CtkTextIter  *end)
 {
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
@@ -1003,9 +1003,9 @@ ctk_text_iter_get_visible_text (const GtkTextIter  *start,
  * Returns: (transfer none): the pixbuf at @iter
  **/
 GdkPixbuf*
-ctk_text_iter_get_pixbuf (const GtkTextIter *iter)
+ctk_text_iter_get_pixbuf (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, NULL);
 
@@ -1032,10 +1032,10 @@ ctk_text_iter_get_pixbuf (const GtkTextIter *iter)
  *
  * Returns: (transfer none): the anchor at @iter
  **/
-GtkTextChildAnchor*
-ctk_text_iter_get_child_anchor (const GtkTextIter *iter)
+CtkTextChildAnchor*
+ctk_text_iter_get_child_anchor (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, NULL);
 
@@ -1056,19 +1056,19 @@ ctk_text_iter_get_child_anchor (const GtkTextIter *iter)
  * ctk_text_iter_get_marks:
  * @iter: an iterator
  *
- * Returns a list of all #GtkTextMark at this location. Because marks
+ * Returns a list of all #CtkTextMark at this location. Because marks
  * are not iterable (they don’t take up any "space" in the buffer,
  * they are just marks in between iterable locations), multiple marks
  * can exist in the same place. The returned list is not in any
  * meaningful order.
  *
- * Returns: (element-type GtkTextMark) (transfer container): list of #GtkTextMark
+ * Returns: (element-type CtkTextMark) (transfer container): list of #CtkTextMark
  **/
 GSList*
-ctk_text_iter_get_marks (const GtkTextIter *iter)
+ctk_text_iter_get_marks (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
-  GtkTextLineSegment *seg;
+  CtkTextRealIter *real;
+  CtkTextLineSegment *seg;
   GSList *retval;
 
   g_return_val_if_fail (iter != NULL, NULL);
@@ -1101,21 +1101,21 @@ ctk_text_iter_get_marks (const GtkTextIter *iter)
  * @iter: an iterator
  * @toggled_on: %TRUE to get toggled-on tags
  *
- * Returns a list of #GtkTextTag that are toggled on or off at this
+ * Returns a list of #CtkTextTag that are toggled on or off at this
  * point.  (If @toggled_on is %TRUE, the list contains tags that are
  * toggled on.) If a tag is toggled on at @iter, then some non-empty
  * range of characters following @iter has that tag applied to it.  If
  * a tag is toggled off, then some non-empty range following @iter
  * does not have the tag applied to it.
  *
- * Returns: (element-type GtkTextTag) (transfer container): tags toggled at this point
+ * Returns: (element-type CtkTextTag) (transfer container): tags toggled at this point
  **/
 GSList*
-ctk_text_iter_get_toggled_tags  (const GtkTextIter  *iter,
+ctk_text_iter_get_toggled_tags  (const CtkTextIter  *iter,
                                  gboolean            toggled_on)
 {
-  GtkTextRealIter *real;
-  GtkTextLineSegment *seg;
+  CtkTextRealIter *real;
+  CtkTextLineSegment *seg;
   GSList *retval;
 
   g_return_val_if_fail (iter != NULL, NULL);
@@ -1157,7 +1157,7 @@ ctk_text_iter_get_toggled_tags  (const GtkTextIter  *iter,
 /**
  * ctk_text_iter_starts_tag:
  * @iter: an iterator
- * @tag: (nullable): a #GtkTextTag, or %NULL
+ * @tag: (nullable): a #CtkTextTag, or %NULL
  *
  * Returns %TRUE if @tag is toggled on at exactly this point. If @tag
  * is %NULL, returns %TRUE if any tag is toggled on at this point.
@@ -1173,11 +1173,11 @@ ctk_text_iter_get_toggled_tags  (const GtkTextIter  *iter,
  * Since: 3.20
  **/
 gboolean
-ctk_text_iter_starts_tag (const GtkTextIter *iter,
-                          GtkTextTag        *tag)
+ctk_text_iter_starts_tag (const CtkTextIter *iter,
+                          CtkTextTag        *tag)
 {
-  GtkTextRealIter *real;
-  GtkTextLineSegment *seg;
+  CtkTextRealIter *real;
+  CtkTextLineSegment *seg;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -1207,7 +1207,7 @@ ctk_text_iter_starts_tag (const GtkTextIter *iter,
 /**
  * ctk_text_iter_begins_tag:
  * @iter: an iterator
- * @tag: (nullable): a #GtkTextTag, or %NULL
+ * @tag: (nullable): a #CtkTextTag, or %NULL
  *
  * Returns %TRUE if @tag is toggled on at exactly this point. If @tag
  * is %NULL, returns %TRUE if any tag is toggled on at this point.
@@ -1223,8 +1223,8 @@ ctk_text_iter_starts_tag (const GtkTextIter *iter,
  * Deprecated: 3.20: Use ctk_text_iter_starts_tag() instead.
  **/
 gboolean
-ctk_text_iter_begins_tag (const GtkTextIter *iter,
-                          GtkTextTag        *tag)
+ctk_text_iter_begins_tag (const CtkTextIter *iter,
+                          CtkTextTag        *tag)
 {
   return ctk_text_iter_starts_tag (iter, tag);
 }
@@ -1232,7 +1232,7 @@ ctk_text_iter_begins_tag (const GtkTextIter *iter,
 /**
  * ctk_text_iter_ends_tag:
  * @iter: an iterator
- * @tag: (allow-none): a #GtkTextTag, or %NULL
+ * @tag: (allow-none): a #CtkTextTag, or %NULL
  *
  * Returns %TRUE if @tag is toggled off at exactly this point. If @tag
  * is %NULL, returns %TRUE if any tag is toggled off at this point.
@@ -1246,11 +1246,11 @@ ctk_text_iter_begins_tag (const GtkTextIter *iter,
  * Returns: whether @iter is the end of a range tagged with @tag
  **/
 gboolean
-ctk_text_iter_ends_tag   (const GtkTextIter  *iter,
-                          GtkTextTag         *tag)
+ctk_text_iter_ends_tag   (const CtkTextIter  *iter,
+                          CtkTextTag         *tag)
 {
-  GtkTextRealIter *real;
-  GtkTextLineSegment *seg;
+  CtkTextRealIter *real;
+  CtkTextLineSegment *seg;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -1280,7 +1280,7 @@ ctk_text_iter_ends_tag   (const GtkTextIter  *iter,
 /**
  * ctk_text_iter_toggles_tag:
  * @iter: an iterator
- * @tag: (allow-none): a #GtkTextTag, or %NULL
+ * @tag: (allow-none): a #CtkTextTag, or %NULL
  *
  * This is equivalent to (ctk_text_iter_starts_tag() ||
  * ctk_text_iter_ends_tag()), i.e. it tells you whether a range with
@@ -1289,11 +1289,11 @@ ctk_text_iter_ends_tag   (const GtkTextIter  *iter,
  * Returns: whether @tag is toggled on or off at @iter
  **/
 gboolean
-ctk_text_iter_toggles_tag (const GtkTextIter  *iter,
-                           GtkTextTag         *tag)
+ctk_text_iter_toggles_tag (const CtkTextIter  *iter,
+                           CtkTextTag         *tag)
 {
-  GtkTextRealIter *real;
-  GtkTextLineSegment *seg;
+  CtkTextRealIter *real;
+  CtkTextLineSegment *seg;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -1322,7 +1322,7 @@ ctk_text_iter_toggles_tag (const GtkTextIter  *iter,
 /**
  * ctk_text_iter_has_tag:
  * @iter: an iterator
- * @tag: a #GtkTextTag
+ * @tag: a #CtkTextTag
  *
  * Returns %TRUE if @iter points to a character that is part of a range tagged
  * with @tag. See also ctk_text_iter_starts_tag() and ctk_text_iter_ends_tag().
@@ -1330,10 +1330,10 @@ ctk_text_iter_toggles_tag (const GtkTextIter  *iter,
  * Returns: whether @iter is tagged with @tag
  **/
 gboolean
-ctk_text_iter_has_tag (const GtkTextIter   *iter,
-                       GtkTextTag          *tag)
+ctk_text_iter_has_tag (const CtkTextIter   *iter,
+                       CtkTextTag          *tag)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (CTK_IS_TEXT_TAG (tag), FALSE);
@@ -1360,19 +1360,19 @@ ctk_text_iter_has_tag (const GtkTextIter   *iter,
 
 /**
  * ctk_text_iter_get_tags:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Returns a list of tags that apply to @iter, in ascending order of
- * priority (highest-priority tags are last). The #GtkTextTag in the
+ * priority (highest-priority tags are last). The #CtkTextTag in the
  * list don’t have a reference added, but you have to free the list
  * itself.
  *
- * Returns: (element-type GtkTextTag) (transfer container): list of #GtkTextTag
+ * Returns: (element-type CtkTextTag) (transfer container): list of #CtkTextTag
  **/
 GSList*
-ctk_text_iter_get_tags (const GtkTextIter *iter)
+ctk_text_iter_get_tags (const CtkTextIter *iter)
 {
-  GtkTextTag** tags;
+  CtkTextTag** tags;
   gint tag_count = 0;
   gint i;
   GSList *retval;
@@ -1411,7 +1411,7 @@ ctk_text_iter_get_tags (const GtkTextIter *iter)
  *
  * Returns whether the character at @iter is within an editable region
  * of text.  Non-editable text is “locked” and can’t be changed by the
- * user via #GtkTextView. This function is simply a convenience
+ * user via #CtkTextView. This function is simply a convenience
  * wrapper around ctk_text_iter_get_attributes(). If no tags applied
  * to this text affect editability, @default_setting will be returned.
  *
@@ -1425,10 +1425,10 @@ ctk_text_iter_get_tags (const GtkTextIter *iter)
  * Returns: whether @iter is inside an editable range
  **/
 gboolean
-ctk_text_iter_editable (const GtkTextIter *iter,
+ctk_text_iter_editable (const CtkTextIter *iter,
                         gboolean           default_setting)
 {
-  GtkTextAttributes *values;
+  CtkTextAttributes *values;
   gboolean retval;
 
   g_return_val_if_fail (iter != NULL, FALSE);
@@ -1461,7 +1461,7 @@ ctk_text_iter_editable (const GtkTextIter *iter,
  * Returns: whether text inserted at @iter would be editable
  **/
 gboolean
-ctk_text_iter_can_insert (const GtkTextIter *iter,
+ctk_text_iter_can_insert (const CtkTextIter *iter,
                           gboolean           default_editability)
 {
   g_return_val_if_fail (iter != NULL, FALSE);
@@ -1479,7 +1479,7 @@ ctk_text_iter_can_insert (const GtkTextIter *iter,
        * then iter is the first char in an editable region
        * and thus insertion at iter results in editable text.
        */
-      GtkTextIter prev = *iter;
+      CtkTextIter prev = *iter;
       ctk_text_iter_backward_char (&prev);
       return ctk_text_iter_editable (&prev, default_editability);
     }
@@ -1498,9 +1498,9 @@ ctk_text_iter_can_insert (const GtkTextIter *iter,
  * Returns: (transfer full): language in effect at @iter
  **/
 PangoLanguage *
-ctk_text_iter_get_language (const GtkTextIter *iter)
+ctk_text_iter_get_language (const CtkTextIter *iter)
 {
-  GtkTextAttributes *values;
+  CtkTextAttributes *values;
   PangoLanguage *retval;
   
   values = ctk_text_attributes_new ();
@@ -1527,9 +1527,9 @@ ctk_text_iter_get_language (const GtkTextIter *iter)
  * Returns: whether @iter begins a line
  **/
 gboolean
-ctk_text_iter_starts_line (const GtkTextIter   *iter)
+ctk_text_iter_starts_line (const CtkTextIter   *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -1567,7 +1567,7 @@ ctk_text_iter_starts_line (const GtkTextIter   *iter)
  * Returns: whether @iter is at the end of a line
  **/
 gboolean
-ctk_text_iter_ends_line (const GtkTextIter   *iter)
+ctk_text_iter_ends_line (const CtkTextIter   *iter)
 {
   gunichar wc;
   
@@ -1586,7 +1586,7 @@ ctk_text_iter_ends_line (const GtkTextIter   *iter)
     return TRUE;
   else if (wc == '\n')
     {
-      GtkTextIter tmp = *iter;
+      CtkTextIter tmp = *iter;
 
       /* need to determine if a \r precedes the \n, in which case
        * we aren't the end of the line.
@@ -1624,9 +1624,9 @@ ctk_text_iter_ends_line (const GtkTextIter   *iter)
  * Returns: whether @iter is the end iterator
  **/
 gboolean
-ctk_text_iter_is_end (const GtkTextIter *iter)
+ctk_text_iter_is_end (const CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -1662,7 +1662,7 @@ ctk_text_iter_is_end (const GtkTextIter *iter)
  * Returns: whether @iter is the first in the buffer
  **/
 gboolean
-ctk_text_iter_is_start (const GtkTextIter *iter)
+ctk_text_iter_is_start (const CtkTextIter *iter)
 {
   return ctk_text_iter_get_offset (iter) == 0;
 }
@@ -1677,11 +1677,11 @@ ctk_text_iter_is_start (const GtkTextIter *iter)
  * Returns: number of characters in the line
  **/
 gint
-ctk_text_iter_get_chars_in_line (const GtkTextIter   *iter)
+ctk_text_iter_get_chars_in_line (const CtkTextIter   *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
   gint count;
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -1729,11 +1729,11 @@ ctk_text_iter_get_chars_in_line (const GtkTextIter   *iter)
  * Returns: number of bytes in the line
  **/
 gint
-ctk_text_iter_get_bytes_in_line (const GtkTextIter   *iter)
+ctk_text_iter_get_bytes_in_line (const CtkTextIter   *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
   gint count;
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_return_val_if_fail (iter != NULL, 0);
 
@@ -1773,7 +1773,7 @@ ctk_text_iter_get_bytes_in_line (const GtkTextIter   *iter)
 /**
  * ctk_text_iter_get_attributes:
  * @iter: an iterator
- * @values: (out): a #GtkTextAttributes to be filled in
+ * @values: (out): a #CtkTextAttributes to be filled in
  *
  * Computes the effect of any tags applied to this spot in the
  * text. The @values parameter should be initialized to the default
@@ -1787,10 +1787,10 @@ ctk_text_iter_get_bytes_in_line (const GtkTextIter   *iter)
  * Returns: %TRUE if @values was modified
  **/
 gboolean
-ctk_text_iter_get_attributes (const GtkTextIter  *iter,
-                              GtkTextAttributes  *values)
+ctk_text_iter_get_attributes (const CtkTextIter  *iter,
+                              CtkTextAttributes  *values)
 {
-  GtkTextTag** tags;
+  CtkTextTag** tags;
   gint tag_count = 0;
 
   /* Get the tags at this spot */
@@ -1826,11 +1826,11 @@ ctk_text_iter_get_attributes (const GtkTextIter  *iter,
  * won’t move to the end of the last line.
  */
 static gboolean
-forward_line_leaving_caches_unmodified (GtkTextRealIter *real)
+forward_line_leaving_caches_unmodified (CtkTextRealIter *real)
 {
   if (!_ctk_text_line_contains_end_iter (real->line, real->tree))
     {
-      GtkTextLine *new_line;
+      CtkTextLine *new_line;
       
       new_line = _ctk_text_line_next (real->line);
       g_assert (new_line);
@@ -1874,9 +1874,9 @@ forward_line_leaving_caches_unmodified (GtkTextRealIter *real)
  * the future.
  */
 static gboolean
-backward_line_leaving_caches_unmodified (GtkTextRealIter *real)
+backward_line_leaving_caches_unmodified (CtkTextRealIter *real)
 {
-  GtkTextLine *new_line;
+  CtkTextLine *new_line;
 
   new_line = _ctk_text_line_previous (real->line);
 
@@ -1918,11 +1918,11 @@ backward_line_leaving_caches_unmodified (GtkTextRealIter *real)
  * DEREFERENCEABLE)
  */
 static gboolean
-forward_char (GtkTextRealIter *real)
+forward_char (CtkTextRealIter *real)
 {
-  GtkTextIter *iter = (GtkTextIter*)real;
+  CtkTextIter *iter = (CtkTextIter*)real;
 
-  check_invariants ((GtkTextIter*)real);
+  check_invariants ((CtkTextIter*)real);
 
   ensure_char_offsets (real);
 
@@ -1964,9 +1964,9 @@ forward_char (GtkTextRealIter *real)
          must now be the segment we're in the middle of. */
       real->any_segment = real->segment;
 
-      check_invariants ((GtkTextIter*)real);
+      check_invariants ((CtkTextIter*)real);
 
-      if (ctk_text_iter_is_end ((GtkTextIter*)real))
+      if (ctk_text_iter_is_end ((CtkTextIter*)real))
         return FALSE;
       else
         return TRUE;
@@ -1974,13 +1974,13 @@ forward_char (GtkTextRealIter *real)
 }
 
 gboolean
-_ctk_text_iter_forward_indexable_segment (GtkTextIter *iter)
+_ctk_text_iter_forward_indexable_segment (CtkTextIter *iter)
 {
   /* Need to move to the next segment; if no next segment,
      need to move to next line. */
-  GtkTextLineSegment *seg;
-  GtkTextLineSegment *any_seg;
-  GtkTextRealIter *real;
+  CtkTextLineSegment *seg;
+  CtkTextLineSegment *any_seg;
+  CtkTextRealIter *real;
   gint chars_skipped;
   gint bytes_skipped;
 
@@ -2080,9 +2080,9 @@ _ctk_text_iter_forward_indexable_segment (GtkTextIter *iter)
 }
 
 static gboolean
-at_last_indexable_segment (GtkTextRealIter *real)
+at_last_indexable_segment (CtkTextRealIter *real)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   /* Return TRUE if there are no indexable segments after
    * this iterator.
@@ -2103,18 +2103,18 @@ at_last_indexable_segment (GtkTextRealIter *real)
  * ends up on a different segment if it returns TRUE)
  */
 gboolean
-_ctk_text_iter_backward_indexable_segment (GtkTextIter *iter)
+_ctk_text_iter_backward_indexable_segment (CtkTextIter *iter)
 {
   /* Move to the start of the previous segment; if no previous
    * segment, to the last segment in the previous line. This is
    * inherently a bit inefficient due to the singly-linked list and
    * tree nodes, but we can't afford the RAM for doubly-linked.
    */
-  GtkTextRealIter *real;
-  GtkTextLineSegment *seg;
-  GtkTextLineSegment *any_seg;
-  GtkTextLineSegment *prev_seg;
-  GtkTextLineSegment *prev_any_seg;
+  CtkTextRealIter *real;
+  CtkTextLineSegment *seg;
+  CtkTextLineSegment *any_seg;
+  CtkTextLineSegment *prev_seg;
+  CtkTextLineSegment *prev_any_seg;
   gint bytes_skipped;
   gint chars_skipped;
 
@@ -2247,9 +2247,9 @@ _ctk_text_iter_backward_indexable_segment (GtkTextIter *iter)
  * Returns: whether @iter moved and is dereferenceable
  **/
 gboolean
-ctk_text_iter_forward_char (GtkTextIter *iter)
+ctk_text_iter_forward_char (CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -2276,7 +2276,7 @@ ctk_text_iter_forward_char (GtkTextIter *iter)
  * Returns: whether movement was possible
  **/
 gboolean
-ctk_text_iter_backward_char (GtkTextIter *iter)
+ctk_text_iter_backward_char (CtkTextIter *iter)
 {
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -2315,9 +2315,9 @@ ctk_text_iter_backward_char (GtkTextIter *iter)
  * Returns: whether @iter moved and is dereferenceable
  **/
 gboolean
-ctk_text_iter_forward_chars (GtkTextIter *iter, gint count)
+ctk_text_iter_forward_chars (CtkTextIter *iter, gint count)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -2387,9 +2387,9 @@ ctk_text_iter_forward_chars (GtkTextIter *iter, gint count)
  *
  **/
 gboolean
-ctk_text_iter_backward_chars (GtkTextIter *iter, gint count)
+ctk_text_iter_backward_chars (CtkTextIter *iter, gint count)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -2488,7 +2488,7 @@ ctk_text_iter_backward_chars (GtkTextIter *iter, gint count)
 
 /**
  * ctk_text_iter_forward_text_chars:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of chars to move
  *
  * Moves forward by @count text characters (pixbufs, widgets,
@@ -2499,7 +2499,7 @@ ctk_text_iter_backward_chars (GtkTextIter *iter, gint count)
  * Returns: whether @iter moved and is dereferenceable
  **/
 gboolean
-ctk_text_iter_forward_text_chars  (GtkTextIter *iter,
+ctk_text_iter_forward_text_chars  (CtkTextIter *iter,
                                    gint         count)
 {
 
@@ -2509,7 +2509,7 @@ ctk_text_iter_forward_text_chars  (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_backward_text_chars:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of chars to move
  *
  * Moves backward by @count text characters (pixbufs, widgets,
@@ -2520,7 +2520,7 @@ ctk_text_iter_forward_text_chars  (GtkTextIter *iter,
  * Returns: whether @iter moved and is dereferenceable
  **/
 gboolean
-ctk_text_iter_backward_text_chars (GtkTextIter *iter,
+ctk_text_iter_backward_text_chars (CtkTextIter *iter,
                                    gint         count)
 {
 
@@ -2540,9 +2540,9 @@ ctk_text_iter_backward_text_chars (GtkTextIter *iter,
  * Returns: whether @iter can be dereferenced
  **/
 gboolean
-ctk_text_iter_forward_line (GtkTextIter *iter)
+ctk_text_iter_forward_line (CtkTextIter *iter)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
   
@@ -2592,10 +2592,10 @@ ctk_text_iter_forward_line (GtkTextIter *iter)
  * Returns: whether @iter moved
  **/
 gboolean
-ctk_text_iter_backward_line (GtkTextIter *iter)
+ctk_text_iter_backward_line (CtkTextIter *iter)
 {
-  GtkTextLine *new_line;
-  GtkTextRealIter *real;
+  CtkTextLine *new_line;
+  CtkTextRealIter *real;
   gboolean offset_will_change;
   gint offset;
 
@@ -2657,7 +2657,7 @@ ctk_text_iter_backward_line (GtkTextIter *iter)
 
 /**
  * ctk_text_iter_forward_lines:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of lines to move forward
  *
  * Moves @count lines forward, if possible (if @count would move
@@ -2671,7 +2671,7 @@ ctk_text_iter_backward_line (GtkTextIter *iter)
  * Returns: whether @iter moved and is dereferenceable
  **/
 gboolean
-ctk_text_iter_forward_lines (GtkTextIter *iter, gint count)
+ctk_text_iter_forward_lines (CtkTextIter *iter, gint count)
 {
   FIX_OVERFLOWS (count);
   
@@ -2708,7 +2708,7 @@ ctk_text_iter_forward_lines (GtkTextIter *iter, gint count)
 
 /**
  * ctk_text_iter_backward_lines:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of lines to move backward
  *
  * Moves @count lines backward, if possible (if @count would move
@@ -2722,7 +2722,7 @@ ctk_text_iter_forward_lines (GtkTextIter *iter, gint count)
  * Returns: whether @iter moved and is dereferenceable
  **/
 gboolean
-ctk_text_iter_backward_lines (GtkTextIter *iter, gint count)
+ctk_text_iter_backward_lines (CtkTextIter *iter, gint count)
 {
   FIX_OVERFLOWS (count);
   
@@ -2760,7 +2760,7 @@ ctk_text_iter_backward_lines (GtkTextIter *iter, gint count)
  * Since: 2.8
  **/
 gboolean
-ctk_text_iter_forward_visible_line (GtkTextIter *iter)
+ctk_text_iter_forward_visible_line (CtkTextIter *iter)
 {
   while (ctk_text_iter_forward_line (iter))
     {
@@ -2800,7 +2800,7 @@ ctk_text_iter_forward_visible_line (GtkTextIter *iter)
  * Since: 2.8
  **/
 gboolean
-ctk_text_iter_backward_visible_line (GtkTextIter *iter)
+ctk_text_iter_backward_visible_line (CtkTextIter *iter)
 {
   while (ctk_text_iter_backward_line (iter))
     {
@@ -2825,7 +2825,7 @@ ctk_text_iter_backward_visible_line (GtkTextIter *iter)
 
 /**
  * ctk_text_iter_forward_visible_lines:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of lines to move forward
  *
  * Moves @count visible lines forward, if possible (if @count would move
@@ -2841,7 +2841,7 @@ ctk_text_iter_backward_visible_line (GtkTextIter *iter)
  * Since: 2.8
  **/
 gboolean
-ctk_text_iter_forward_visible_lines (GtkTextIter *iter,
+ctk_text_iter_forward_visible_lines (CtkTextIter *iter,
                                      gint         count)
 {
   FIX_OVERFLOWS (count);
@@ -2865,7 +2865,7 @@ ctk_text_iter_forward_visible_lines (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_backward_visible_lines:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of lines to move backward
  *
  * Moves @count visible lines backward, if possible (if @count would move
@@ -2881,7 +2881,7 @@ ctk_text_iter_forward_visible_lines (GtkTextIter *iter,
  * Since: 2.8
  **/
 gboolean
-ctk_text_iter_backward_visible_lines (GtkTextIter *iter,
+ctk_text_iter_backward_visible_lines (CtkTextIter *iter,
                                       gint         count)
 {
   FIX_OVERFLOWS (count);
@@ -3088,7 +3088,7 @@ inside_sentence_func (const PangoLogAttr *attrs,
 }
 
 static gboolean
-test_log_attrs (const GtkTextIter *iter,
+test_log_attrs (const CtkTextIter *iter,
                 TestLogAttrFunc    func)
 {
   gint char_len;
@@ -3108,7 +3108,7 @@ test_log_attrs (const GtkTextIter *iter,
 }
 
 static gboolean
-find_line_log_attrs (const GtkTextIter *iter,
+find_line_log_attrs (const CtkTextIter *iter,
                      FindLogAttrFunc    func,
                      gint              *found_offset,
                      gboolean           already_moved_initially)
@@ -3132,11 +3132,11 @@ find_line_log_attrs (const GtkTextIter *iter,
 }
 
 static gboolean
-find_by_log_attrs (GtkTextIter     *arg_iter,
+find_by_log_attrs (CtkTextIter     *arg_iter,
                    FindLogAttrFunc  func,
                    gboolean         forward)
 {
-  GtkTextIter iter;
+  CtkTextIter iter;
   gboolean already_moved_initially = FALSE;
 
   g_return_val_if_fail (arg_iter != NULL, FALSE);
@@ -3193,11 +3193,11 @@ find_by_log_attrs (GtkTextIter     *arg_iter,
 }
 
 static gboolean
-find_visible_by_log_attrs (GtkTextIter     *iter,
+find_visible_by_log_attrs (CtkTextIter     *iter,
                            FindLogAttrFunc  func,
                            gboolean         forward)
 {
-  GtkTextIter pos;
+  CtkTextIter pos;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -3205,7 +3205,7 @@ find_visible_by_log_attrs (GtkTextIter     *iter,
 
   while (TRUE)
     {
-      GtkTextIter pos_before = pos;
+      CtkTextIter pos_before = pos;
 
       find_by_log_attrs (&pos, func, forward);
 
@@ -3222,11 +3222,11 @@ find_visible_by_log_attrs (GtkTextIter     *iter,
   return FALSE;
 }
 
-typedef gboolean (* OneStepFunc) (GtkTextIter *iter);
-typedef gboolean (* MultipleStepFunc) (GtkTextIter *iter, gint count);
+typedef gboolean (* OneStepFunc) (CtkTextIter *iter);
+typedef gboolean (* MultipleStepFunc) (CtkTextIter *iter, gint count);
 				  
 static gboolean 
-move_multiple_steps (GtkTextIter *iter, 
+move_multiple_steps (CtkTextIter *iter, 
 		     gint count,
 		     OneStepFunc step_forward,
 		     MultipleStepFunc n_steps_backward)
@@ -3258,7 +3258,7 @@ move_multiple_steps (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_forward_word_end:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves forward to the next word end. (If @iter is currently on a
  * word end, moves forward to the next one after that.) Word breaks
@@ -3269,14 +3269,14 @@ move_multiple_steps (GtkTextIter *iter,
  * Returns: %TRUE if @iter moved and is not the end iterator 
  **/
 gboolean
-ctk_text_iter_forward_word_end (GtkTextIter *iter)
+ctk_text_iter_forward_word_end (CtkTextIter *iter)
 {
   return find_by_log_attrs (iter, find_word_end_func, TRUE);
 }
 
 /**
  * ctk_text_iter_backward_word_start:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves backward to the previous word start. (If @iter is currently on a
  * word start, moves backward to the next one after that.) Word breaks
@@ -3287,7 +3287,7 @@ ctk_text_iter_forward_word_end (GtkTextIter *iter)
  * Returns: %TRUE if @iter moved and is not the end iterator 
  **/
 gboolean
-ctk_text_iter_backward_word_start (GtkTextIter *iter)
+ctk_text_iter_backward_word_start (CtkTextIter *iter)
 {
   return find_by_log_attrs (iter, find_word_start_func, FALSE);
 }
@@ -3298,7 +3298,7 @@ ctk_text_iter_backward_word_start (GtkTextIter *iter)
 
 /**
  * ctk_text_iter_forward_word_ends:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of times to move
  * 
  * Calls ctk_text_iter_forward_word_end() up to @count times.
@@ -3306,7 +3306,7 @@ ctk_text_iter_backward_word_start (GtkTextIter *iter)
  * Returns: %TRUE if @iter moved and is not the end iterator 
  **/
 gboolean
-ctk_text_iter_forward_word_ends (GtkTextIter      *iter,
+ctk_text_iter_forward_word_ends (CtkTextIter      *iter,
                                  gint              count)
 {
   return move_multiple_steps (iter, count, 
@@ -3316,7 +3316,7 @@ ctk_text_iter_forward_word_ends (GtkTextIter      *iter,
 
 /**
  * ctk_text_iter_backward_word_starts:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of times to move
  * 
  * Calls ctk_text_iter_backward_word_start() up to @count times.
@@ -3324,7 +3324,7 @@ ctk_text_iter_forward_word_ends (GtkTextIter      *iter,
  * Returns: %TRUE if @iter moved and is not the end iterator 
  **/
 gboolean
-ctk_text_iter_backward_word_starts (GtkTextIter      *iter,
+ctk_text_iter_backward_word_starts (CtkTextIter      *iter,
                                     gint               count)
 {
   return move_multiple_steps (iter, count, 
@@ -3334,7 +3334,7 @@ ctk_text_iter_backward_word_starts (GtkTextIter      *iter,
 
 /**
  * ctk_text_iter_forward_visible_word_end:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves forward to the next visible word end. (If @iter is currently on a
  * word end, moves forward to the next one after that.) Word breaks
@@ -3347,14 +3347,14 @@ ctk_text_iter_backward_word_starts (GtkTextIter      *iter,
  * Since: 2.4
  **/
 gboolean
-ctk_text_iter_forward_visible_word_end (GtkTextIter *iter)
+ctk_text_iter_forward_visible_word_end (CtkTextIter *iter)
 {
   return find_visible_by_log_attrs (iter, find_word_end_func, TRUE);
 }
 
 /**
  * ctk_text_iter_backward_visible_word_start:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves backward to the previous visible word start. (If @iter is currently 
  * on a word start, moves backward to the next one after that.) Word breaks
@@ -3367,14 +3367,14 @@ ctk_text_iter_forward_visible_word_end (GtkTextIter *iter)
  * Since: 2.4
  **/
 gboolean
-ctk_text_iter_backward_visible_word_start (GtkTextIter      *iter)
+ctk_text_iter_backward_visible_word_start (CtkTextIter      *iter)
 {
   return find_visible_by_log_attrs (iter, find_word_start_func, FALSE);
 }
 
 /**
  * ctk_text_iter_forward_visible_word_ends:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of times to move
  * 
  * Calls ctk_text_iter_forward_visible_word_end() up to @count times.
@@ -3384,7 +3384,7 @@ ctk_text_iter_backward_visible_word_start (GtkTextIter      *iter)
  * Since: 2.4
  **/
 gboolean
-ctk_text_iter_forward_visible_word_ends (GtkTextIter *iter,
+ctk_text_iter_forward_visible_word_ends (CtkTextIter *iter,
 					 gint         count)
 {
   return move_multiple_steps (iter, count, 
@@ -3394,7 +3394,7 @@ ctk_text_iter_forward_visible_word_ends (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_backward_visible_word_starts:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of times to move
  * 
  * Calls ctk_text_iter_backward_visible_word_start() up to @count times.
@@ -3404,7 +3404,7 @@ ctk_text_iter_forward_visible_word_ends (GtkTextIter *iter,
  * Since: 2.4
  **/
 gboolean
-ctk_text_iter_backward_visible_word_starts (GtkTextIter *iter,
+ctk_text_iter_backward_visible_word_starts (CtkTextIter *iter,
 					    gint         count)
 {
   return move_multiple_steps (iter, count, 
@@ -3414,7 +3414,7 @@ ctk_text_iter_backward_visible_word_starts (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_starts_word:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Determines whether @iter begins a natural-language word.  Word
  * breaks are determined by Pango and should be correct for nearly any
@@ -3424,14 +3424,14 @@ ctk_text_iter_backward_visible_word_starts (GtkTextIter *iter,
  * Returns: %TRUE if @iter is at the start of a word
  **/
 gboolean
-ctk_text_iter_starts_word (const GtkTextIter *iter)
+ctk_text_iter_starts_word (const CtkTextIter *iter)
 {
   return test_log_attrs (iter, is_word_start_func);
 }
 
 /**
  * ctk_text_iter_ends_word:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Determines whether @iter ends a natural-language word.  Word breaks
  * are determined by Pango and should be correct for nearly any
@@ -3441,14 +3441,14 @@ ctk_text_iter_starts_word (const GtkTextIter *iter)
  * Returns: %TRUE if @iter is at the end of a word
  **/
 gboolean
-ctk_text_iter_ends_word (const GtkTextIter *iter)
+ctk_text_iter_ends_word (const CtkTextIter *iter)
 {
   return test_log_attrs (iter, is_word_end_func);
 }
 
 /**
  * ctk_text_iter_inside_word:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  *
  * Determines whether the character pointed by @iter is part of a
  * natural-language word (as opposed to say inside some whitespace).  Word
@@ -3461,14 +3461,14 @@ ctk_text_iter_ends_word (const GtkTextIter *iter)
  * Returns: %TRUE if @iter is inside a word
  **/
 gboolean
-ctk_text_iter_inside_word (const GtkTextIter *iter)
+ctk_text_iter_inside_word (const CtkTextIter *iter)
 {
   return test_log_attrs (iter, inside_word_func);
 }
 
 /**
  * ctk_text_iter_starts_sentence:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Determines whether @iter begins a sentence.  Sentence boundaries are
  * determined by Pango and should be correct for nearly any language
@@ -3478,14 +3478,14 @@ ctk_text_iter_inside_word (const GtkTextIter *iter)
  * Returns: %TRUE if @iter is at the start of a sentence.
  **/
 gboolean
-ctk_text_iter_starts_sentence (const GtkTextIter *iter)
+ctk_text_iter_starts_sentence (const CtkTextIter *iter)
 {
   return test_log_attrs (iter, is_sentence_start_func);
 }
 
 /**
  * ctk_text_iter_ends_sentence:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Determines whether @iter ends a sentence.  Sentence boundaries are
  * determined by Pango and should be correct for nearly any language
@@ -3495,14 +3495,14 @@ ctk_text_iter_starts_sentence (const GtkTextIter *iter)
  * Returns: %TRUE if @iter is at the end of a sentence.
  **/
 gboolean
-ctk_text_iter_ends_sentence (const GtkTextIter *iter)
+ctk_text_iter_ends_sentence (const CtkTextIter *iter)
 {
   return test_log_attrs (iter, is_sentence_end_func);
 }
 
 /**
  * ctk_text_iter_inside_sentence:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Determines whether @iter is inside a sentence (as opposed to in
  * between two sentences, e.g. after a period and before the first
@@ -3513,14 +3513,14 @@ ctk_text_iter_ends_sentence (const GtkTextIter *iter)
  * Returns: %TRUE if @iter is inside a sentence.
  **/
 gboolean
-ctk_text_iter_inside_sentence (const GtkTextIter *iter)
+ctk_text_iter_inside_sentence (const CtkTextIter *iter)
 {
   return test_log_attrs (iter, inside_sentence_func);
 }
 
 /**
  * ctk_text_iter_forward_sentence_end:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves forward to the next sentence end. (If @iter is at the end of
  * a sentence, moves to the next end of sentence.)  Sentence
@@ -3531,14 +3531,14 @@ ctk_text_iter_inside_sentence (const GtkTextIter *iter)
  * Returns: %TRUE if @iter moved and is not the end iterator
  **/
 gboolean
-ctk_text_iter_forward_sentence_end (GtkTextIter *iter)
+ctk_text_iter_forward_sentence_end (CtkTextIter *iter)
 {
   return find_by_log_attrs (iter, find_sentence_end_func, TRUE);
 }
 
 /**
  * ctk_text_iter_backward_sentence_start:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves backward to the previous sentence start; if @iter is already at
  * the start of a sentence, moves backward to the next one.  Sentence
@@ -3549,7 +3549,7 @@ ctk_text_iter_forward_sentence_end (GtkTextIter *iter)
  * Returns: %TRUE if @iter moved and is not the end iterator
  **/
 gboolean
-ctk_text_iter_backward_sentence_start (GtkTextIter *iter)
+ctk_text_iter_backward_sentence_start (CtkTextIter *iter)
 {
   return find_by_log_attrs (iter, find_sentence_start_func, FALSE);
 }
@@ -3559,7 +3559,7 @@ ctk_text_iter_backward_sentence_start (GtkTextIter *iter)
  */
 /**
  * ctk_text_iter_forward_sentence_ends:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of sentences to move
  * 
  * Calls ctk_text_iter_forward_sentence_end() @count times (or until
@@ -3569,7 +3569,7 @@ ctk_text_iter_backward_sentence_start (GtkTextIter *iter)
  * Returns: %TRUE if @iter moved and is not the end iterator
  **/
 gboolean
-ctk_text_iter_forward_sentence_ends (GtkTextIter      *iter,
+ctk_text_iter_forward_sentence_ends (CtkTextIter      *iter,
                                      gint              count)
 {
   return move_multiple_steps (iter, count, 
@@ -3579,7 +3579,7 @@ ctk_text_iter_forward_sentence_ends (GtkTextIter      *iter,
 
 /**
  * ctk_text_iter_backward_sentence_starts:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of sentences to move
  * 
  * Calls ctk_text_iter_backward_sentence_start() up to @count times,
@@ -3589,7 +3589,7 @@ ctk_text_iter_forward_sentence_ends (GtkTextIter      *iter,
  * Returns: %TRUE if @iter moved and is not the end iterator
  **/
 gboolean
-ctk_text_iter_backward_sentence_starts (GtkTextIter *iter,
+ctk_text_iter_backward_sentence_starts (CtkTextIter *iter,
                                         gint         count)
 {
   return move_multiple_steps (iter, count, 
@@ -3656,7 +3656,7 @@ is_cursor_pos_func (const PangoLogAttr *attrs,
 
 /**
  * ctk_text_iter_forward_cursor_position:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves @iter forward by a single cursor position. Cursor positions
  * are (unsurprisingly) positions where the cursor can appear. Perhaps
@@ -3672,28 +3672,28 @@ is_cursor_pos_func (const PangoLogAttr *attrs,
  * Returns: %TRUE if we moved and the new position is dereferenceable
  **/
 gboolean
-ctk_text_iter_forward_cursor_position (GtkTextIter *iter)
+ctk_text_iter_forward_cursor_position (CtkTextIter *iter)
 {
   return find_by_log_attrs (iter, find_forward_cursor_pos_func, TRUE);
 }
 
 /**
  * ctk_text_iter_backward_cursor_position:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Like ctk_text_iter_forward_cursor_position(), but moves backward.
  * 
  * Returns: %TRUE if we moved
  **/
 gboolean
-ctk_text_iter_backward_cursor_position (GtkTextIter *iter)
+ctk_text_iter_backward_cursor_position (CtkTextIter *iter)
 {
   return find_by_log_attrs (iter, find_backward_cursor_pos_func, FALSE);
 }
 
 /**
  * ctk_text_iter_forward_cursor_positions:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of positions to move
  * 
  * Moves up to @count cursor positions. See
@@ -3702,7 +3702,7 @@ ctk_text_iter_backward_cursor_position (GtkTextIter *iter)
  * Returns: %TRUE if we moved and the new position is dereferenceable
  **/
 gboolean
-ctk_text_iter_forward_cursor_positions (GtkTextIter *iter,
+ctk_text_iter_forward_cursor_positions (CtkTextIter *iter,
                                         gint         count)
 {
   return move_multiple_steps (iter, count, 
@@ -3712,7 +3712,7 @@ ctk_text_iter_forward_cursor_positions (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_backward_cursor_positions:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of positions to move
  *
  * Moves up to @count cursor positions. See
@@ -3721,7 +3721,7 @@ ctk_text_iter_forward_cursor_positions (GtkTextIter *iter,
  * Returns: %TRUE if we moved and the new position is dereferenceable
  **/
 gboolean
-ctk_text_iter_backward_cursor_positions (GtkTextIter *iter,
+ctk_text_iter_backward_cursor_positions (CtkTextIter *iter,
                                          gint         count)
 {
   return move_multiple_steps (iter, count, 
@@ -3731,7 +3731,7 @@ ctk_text_iter_backward_cursor_positions (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_forward_visible_cursor_position:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves @iter forward to the next visible cursor position. See 
  * ctk_text_iter_forward_cursor_position() for details.
@@ -3741,14 +3741,14 @@ ctk_text_iter_backward_cursor_positions (GtkTextIter *iter,
  * Since: 2.4
  **/
 gboolean
-ctk_text_iter_forward_visible_cursor_position (GtkTextIter *iter)
+ctk_text_iter_forward_visible_cursor_position (CtkTextIter *iter)
 {
   return find_visible_by_log_attrs (iter, find_forward_cursor_pos_func, TRUE);
 }
 
 /**
  * ctk_text_iter_backward_visible_cursor_position:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves @iter forward to the previous visible cursor position. See 
  * ctk_text_iter_backward_cursor_position() for details.
@@ -3758,14 +3758,14 @@ ctk_text_iter_forward_visible_cursor_position (GtkTextIter *iter)
  * Since: 2.4
  **/
 gboolean
-ctk_text_iter_backward_visible_cursor_position (GtkTextIter *iter)
+ctk_text_iter_backward_visible_cursor_position (CtkTextIter *iter)
 {
   return find_visible_by_log_attrs (iter, find_backward_cursor_pos_func, FALSE);
 }
 
 /**
  * ctk_text_iter_forward_visible_cursor_positions:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of positions to move
  * 
  * Moves up to @count visible cursor positions. See
@@ -3776,7 +3776,7 @@ ctk_text_iter_backward_visible_cursor_position (GtkTextIter *iter)
  * Since: 2.4
  **/
 gboolean
-ctk_text_iter_forward_visible_cursor_positions (GtkTextIter *iter,
+ctk_text_iter_forward_visible_cursor_positions (CtkTextIter *iter,
 						gint         count)
 {
   return move_multiple_steps (iter, count, 
@@ -3786,7 +3786,7 @@ ctk_text_iter_forward_visible_cursor_positions (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_backward_visible_cursor_positions:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @count: number of positions to move
  *
  * Moves up to @count visible cursor positions. See
@@ -3797,7 +3797,7 @@ ctk_text_iter_forward_visible_cursor_positions (GtkTextIter *iter,
  * Since: 2.4
  **/
 gboolean
-ctk_text_iter_backward_visible_cursor_positions (GtkTextIter *iter,
+ctk_text_iter_backward_visible_cursor_positions (CtkTextIter *iter,
 						 gint         count)
 {
   return move_multiple_steps (iter, count, 
@@ -3807,7 +3807,7 @@ ctk_text_iter_backward_visible_cursor_positions (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_is_cursor_position:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * See ctk_text_iter_forward_cursor_position() or #PangoLogAttr or
  * pango_break() for details on what a cursor position is.
@@ -3815,14 +3815,14 @@ ctk_text_iter_backward_visible_cursor_positions (GtkTextIter *iter,
  * Returns: %TRUE if the cursor can be placed at @iter
  **/
 gboolean
-ctk_text_iter_is_cursor_position (const GtkTextIter *iter)
+ctk_text_iter_is_cursor_position (const CtkTextIter *iter)
 {
   return test_log_attrs (iter, is_cursor_pos_func);
 }
 
 /**
  * ctk_text_iter_set_line_offset:
- * @iter: a #GtkTextIter 
+ * @iter: a #CtkTextIter 
  * @char_on_line: a character offset relative to the start of @iter’s current line
  * 
  * Moves @iter within a line, to a new character
@@ -3834,10 +3834,10 @@ ctk_text_iter_is_cursor_position (const GtkTextIter *iter)
  *
  **/
 void
-ctk_text_iter_set_line_offset (GtkTextIter *iter,
+ctk_text_iter_set_line_offset (CtkTextIter *iter,
                                gint         char_on_line)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
   gint chars_in_line;
   
   g_return_if_fail (iter != NULL);
@@ -3863,7 +3863,7 @@ ctk_text_iter_set_line_offset (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_set_line_index:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @byte_on_line: a byte index relative to the start of @iter’s current line
  *
  * Same as ctk_text_iter_set_line_offset(), but works with a
@@ -3873,10 +3873,10 @@ ctk_text_iter_set_line_offset (GtkTextIter *iter,
  * 
  **/
 void
-ctk_text_iter_set_line_index (GtkTextIter *iter,
+ctk_text_iter_set_line_index (CtkTextIter *iter,
                               gint         byte_on_line)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
   gint bytes_in_line;
   
   g_return_if_fail (iter != NULL);
@@ -3910,7 +3910,7 @@ ctk_text_iter_set_line_index (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_set_visible_line_offset:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @char_on_line: a character offset
  * 
  * Like ctk_text_iter_set_line_offset(), but the offset is in visible
@@ -3918,11 +3918,11 @@ ctk_text_iter_set_line_index (GtkTextIter *iter,
  * counted in the offset.
  **/
 void
-ctk_text_iter_set_visible_line_offset (GtkTextIter *iter,
+ctk_text_iter_set_visible_line_offset (CtkTextIter *iter,
                                        gint         char_on_line)
 {
   gint chars_seen = 0;
-  GtkTextIter pos;
+  CtkTextIter pos;
 
   g_return_if_fail (iter != NULL);
   
@@ -3951,7 +3951,7 @@ ctk_text_iter_set_visible_line_offset (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_set_visible_line_index:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @byte_on_line: a byte index
  * 
  * Like ctk_text_iter_set_line_index(), but the index is in visible
@@ -3959,13 +3959,13 @@ ctk_text_iter_set_visible_line_offset (GtkTextIter *iter,
  * in the index.
  **/
 void
-ctk_text_iter_set_visible_line_index (GtkTextIter *iter,
+ctk_text_iter_set_visible_line_index (CtkTextIter *iter,
                                       gint         byte_on_line)
 {
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
   gint offset = 0;
-  GtkTextIter pos;
-  GtkTextLineSegment *seg;
+  CtkTextIter pos;
+  CtkTextLineSegment *seg;
   
   g_return_if_fail (iter != NULL);
 
@@ -4011,7 +4011,7 @@ ctk_text_iter_set_visible_line_index (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_set_line:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @line_number: line number (counted from 0)
  *
  * Moves iterator @iter to the start of the line @line_number.  If
@@ -4020,12 +4020,12 @@ ctk_text_iter_set_visible_line_index (GtkTextIter *iter,
  * 
  **/
 void
-ctk_text_iter_set_line (GtkTextIter *iter,
+ctk_text_iter_set_line (CtkTextIter *iter,
                         gint         line_number)
 {
-  GtkTextLine *line;
+  CtkTextLine *line;
   gint real_line;
-  GtkTextRealIter *real;
+  CtkTextRealIter *real;
 
   g_return_if_fail (iter != NULL);
 
@@ -4048,18 +4048,18 @@ ctk_text_iter_set_line (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_set_offset:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @char_offset: a character number
  *
  * Sets @iter to point to @char_offset. @char_offset counts from the start
  * of the entire text buffer, starting with 0.
  **/
 void
-ctk_text_iter_set_offset (GtkTextIter *iter,
+ctk_text_iter_set_offset (CtkTextIter *iter,
                           gint         char_offset)
 {
-  GtkTextLine *line;
-  GtkTextRealIter *real;
+  CtkTextLine *line;
+  CtkTextRealIter *real;
   gint line_start;
   gint real_char_index;
 
@@ -4091,17 +4091,17 @@ ctk_text_iter_set_offset (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_forward_to_end:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  *
  * Moves @iter forward to the “end iterator,” which points one past the last
  * valid character in the buffer. ctk_text_iter_get_char() called on the
  * end iterator returns 0, which is convenient for writing loops.
  **/
 void
-ctk_text_iter_forward_to_end  (GtkTextIter *iter)
+ctk_text_iter_forward_to_end  (CtkTextIter *iter)
 {
-  GtkTextBuffer *buffer;
-  GtkTextRealIter *real;
+  CtkTextBuffer *buffer;
+  CtkTextRealIter *real;
 
   g_return_if_fail (iter != NULL);
 
@@ -4121,9 +4121,9 @@ ctk_text_iter_forward_to_end  (GtkTextIter *iter)
  * I think forward_to_line_end() actually gets called fairly often.
  */
 static int
-find_paragraph_delimiter_for_line (GtkTextIter *iter)
+find_paragraph_delimiter_for_line (CtkTextIter *iter)
 {
-  GtkTextIter end;
+  CtkTextIter end;
   end = *iter;
 
   if (_ctk_text_line_contains_end_iter (_ctk_text_iter_get_text_line (&end),
@@ -4147,7 +4147,7 @@ find_paragraph_delimiter_for_line (GtkTextIter *iter)
 
 /**
  * ctk_text_iter_forward_to_line_end:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * 
  * Moves the iterator to point to the paragraph delimiter characters,
  * which will be either a newline, a carriage return, a carriage
@@ -4161,7 +4161,7 @@ find_paragraph_delimiter_for_line (GtkTextIter *iter)
  * Returns: %TRUE if we moved and the new location is not the end iterator
  **/
 gboolean
-ctk_text_iter_forward_to_line_end (GtkTextIter *iter)
+ctk_text_iter_forward_to_line_end (CtkTextIter *iter)
 {
   gint current_offset;
   gint new_offset;
@@ -4197,11 +4197,11 @@ ctk_text_iter_forward_to_line_end (GtkTextIter *iter)
 
 /**
  * ctk_text_iter_forward_to_tag_toggle:
- * @iter: a #GtkTextIter
- * @tag: (allow-none): a #GtkTextTag, or %NULL
+ * @iter: a #CtkTextIter
+ * @tag: (allow-none): a #CtkTextTag, or %NULL
  *
  * Moves forward to the next toggle (on or off) of the
- * #GtkTextTag @tag, or to the next toggle of any tag if
+ * #CtkTextTag @tag, or to the next toggle of any tag if
  * @tag is %NULL. If no matching tag toggles are found,
  * returns %FALSE, otherwise %TRUE. Does not return toggles
  * located at @iter, only toggles after @iter. Sets @iter to
@@ -4211,12 +4211,12 @@ ctk_text_iter_forward_to_line_end (GtkTextIter *iter)
  * Returns: whether we found a tag toggle after @iter
  **/
 gboolean
-ctk_text_iter_forward_to_tag_toggle (GtkTextIter *iter,
-                                     GtkTextTag  *tag)
+ctk_text_iter_forward_to_tag_toggle (CtkTextIter *iter,
+                                     CtkTextTag  *tag)
 {
-  GtkTextLine *next_line;
-  GtkTextLine *current_line;
-  GtkTextRealIter *real;
+  CtkTextLine *next_line;
+  CtkTextLine *current_line;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -4282,11 +4282,11 @@ ctk_text_iter_forward_to_tag_toggle (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_backward_to_tag_toggle:
- * @iter: a #GtkTextIter
- * @tag: (allow-none): a #GtkTextTag, or %NULL
+ * @iter: a #CtkTextIter
+ * @tag: (allow-none): a #CtkTextTag, or %NULL
  *
  * Moves backward to the next toggle (on or off) of the
- * #GtkTextTag @tag, or to the next toggle of any tag if
+ * #CtkTextTag @tag, or to the next toggle of any tag if
  * @tag is %NULL. If no matching tag toggles are found,
  * returns %FALSE, otherwise %TRUE. Does not return toggles
  * located at @iter, only toggles before @iter. Sets @iter
@@ -4296,12 +4296,12 @@ ctk_text_iter_forward_to_tag_toggle (GtkTextIter *iter,
  * Returns: whether we found a tag toggle before @iter
  **/
 gboolean
-ctk_text_iter_backward_to_tag_toggle (GtkTextIter *iter,
-                                      GtkTextTag  *tag)
+ctk_text_iter_backward_to_tag_toggle (CtkTextIter *iter,
+                                      CtkTextTag  *tag)
 {
-  GtkTextLine *prev_line;
-  GtkTextLine *current_line;
-  GtkTextRealIter *real;
+  CtkTextLine *prev_line;
+  CtkTextLine *current_line;
+  CtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
 
@@ -4382,8 +4382,8 @@ ctk_text_iter_backward_to_tag_toggle (GtkTextIter *iter,
 }
 
 static gboolean
-matches_pred (GtkTextIter *iter,
-              GtkTextCharPredicate pred,
+matches_pred (CtkTextIter *iter,
+              CtkTextCharPredicate pred,
               gpointer user_data)
 {
   gint ch;
@@ -4395,7 +4395,7 @@ matches_pred (GtkTextIter *iter,
 
 /**
  * ctk_text_iter_forward_find_char:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @pred: (scope call): a function to be called on each character
  * @user_data: user data for @pred
  * @limit: (allow-none): search limit, or %NULL for none 
@@ -4408,10 +4408,10 @@ matches_pred (GtkTextIter *iter,
  * Returns: whether a match was found
  **/
 gboolean
-ctk_text_iter_forward_find_char (GtkTextIter         *iter,
-                                 GtkTextCharPredicate pred,
+ctk_text_iter_forward_find_char (CtkTextIter         *iter,
+                                 CtkTextCharPredicate pred,
                                  gpointer             user_data,
-                                 const GtkTextIter   *limit)
+                                 const CtkTextIter   *limit)
 {
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (pred != NULL, FALSE);
@@ -4433,7 +4433,7 @@ ctk_text_iter_forward_find_char (GtkTextIter         *iter,
 
 /**
  * ctk_text_iter_backward_find_char:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @pred: (scope call): function to be called on each character
  * @user_data: user data for @pred
  * @limit: (allow-none): search limit, or %NULL for none
@@ -4443,10 +4443,10 @@ ctk_text_iter_forward_find_char (GtkTextIter         *iter,
  * Returns: whether a match was found
  **/
 gboolean
-ctk_text_iter_backward_find_char (GtkTextIter         *iter,
-                                  GtkTextCharPredicate pred,
+ctk_text_iter_backward_find_char (CtkTextIter         *iter,
+                                  CtkTextCharPredicate pred,
                                   gpointer             user_data,
-                                  const GtkTextIter   *limit)
+                                  const CtkTextIter   *limit)
 {
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (pred != NULL, FALSE);
@@ -4467,7 +4467,7 @@ ctk_text_iter_backward_find_char (GtkTextIter         *iter,
 }
 
 static void
-forward_chars_with_skipping (GtkTextIter *iter,
+forward_chars_with_skipping (CtkTextIter *iter,
                              gint         count,
                              gboolean     skip_invisible,
                              gboolean     skip_nontext,
@@ -4723,15 +4723,15 @@ utf8_caselessnmatch (const gchar *s1,
 }
 
 static gboolean
-lines_match (const GtkTextIter *start,
+lines_match (const CtkTextIter *start,
              const gchar **lines,
              gboolean visible_only,
              gboolean slice,
              gboolean case_insensitive,
-             GtkTextIter *match_start,
-             GtkTextIter *match_end)
+             CtkTextIter *match_start,
+             CtkTextIter *match_end)
 {
-  GtkTextIter next;
+  CtkTextIter next;
   gchar *line_text;
   const gchar *found;
   gint offset;
@@ -4926,23 +4926,23 @@ strbreakup (const char *string,
  * may wish to use @limit to avoid locking up your UI on large
  * buffers.
  *
- * @match_start will never be set to a #GtkTextIter located before @iter, even if
+ * @match_start will never be set to a #CtkTextIter located before @iter, even if
  * there is a possible @match_end after or at @iter.
  *
  * Returns: whether a match was found
  **/
 gboolean
-ctk_text_iter_forward_search (const GtkTextIter *iter,
+ctk_text_iter_forward_search (const CtkTextIter *iter,
                               const gchar       *str,
-                              GtkTextSearchFlags flags,
-                              GtkTextIter       *match_start,
-                              GtkTextIter       *match_end,
-                              const GtkTextIter *limit)
+                              CtkTextSearchFlags flags,
+                              CtkTextIter       *match_start,
+                              CtkTextIter       *match_end,
+                              const CtkTextIter *limit)
 {
   gchar **lines = NULL;
-  GtkTextIter match;
+  CtkTextIter match;
   gboolean retval = FALSE;
-  GtkTextIter search;
+  CtkTextIter search;
   gboolean visible_only;
   gboolean slice;
   gboolean case_insensitive;
@@ -4991,7 +4991,7 @@ ctk_text_iter_forward_search (const GtkTextIter *iter,
        * ctk_text_iter_get_text() is called repeatedly on
        * a single line.
        */
-      GtkTextIter end;
+      CtkTextIter end;
 
       if (limit &&
           ctk_text_iter_compare (&search, limit) >= 0)
@@ -5109,8 +5109,8 @@ struct _LinesWindow
   gint n_lines;
   gchar **lines;
 
-  GtkTextIter first_line_start;
-  GtkTextIter first_line_end;
+  CtkTextIter first_line_start;
+  CtkTextIter first_line_end;
 
   guint slice : 1;
   guint visible_only : 1;
@@ -5118,11 +5118,11 @@ struct _LinesWindow
 
 static void
 lines_window_init (LinesWindow       *win,
-                   const GtkTextIter *start)
+                   const CtkTextIter *start)
 {
   gint i;
-  GtkTextIter line_start;
-  GtkTextIter line_end;
+  CtkTextIter line_start;
+  CtkTextIter line_end;
 
   /* If we start on line 1, there are 2 lines to search (0 and 1), so
    * n_lines can be 2.
@@ -5187,7 +5187,7 @@ lines_window_init (LinesWindow       *win,
 static gboolean
 lines_window_back (LinesWindow *win)
 {
-  GtkTextIter new_start;
+  CtkTextIter new_start;
   gchar *line_text;
 
   new_start = win->first_line_start;
@@ -5241,7 +5241,7 @@ lines_window_free (LinesWindow *win)
 
 /**
  * ctk_text_iter_backward_search:
- * @iter: a #GtkTextIter where the search begins
+ * @iter: a #CtkTextIter where the search begins
  * @str: search string
  * @flags: bitmask of flags affecting the search
  * @match_start: (out caller-allocates) (allow-none): return location for start of match, or %NULL
@@ -5250,18 +5250,18 @@ lines_window_free (LinesWindow *win)
  *
  * Same as ctk_text_iter_forward_search(), but moves backward.
  *
- * @match_end will never be set to a #GtkTextIter located after @iter, even if
+ * @match_end will never be set to a #CtkTextIter located after @iter, even if
  * there is a possible @match_start before or at @iter.
  *
  * Returns: whether a match was found
  **/
 gboolean
-ctk_text_iter_backward_search (const GtkTextIter *iter,
+ctk_text_iter_backward_search (const CtkTextIter *iter,
                                const gchar       *str,
-                               GtkTextSearchFlags flags,
-                               GtkTextIter       *match_start,
-                               GtkTextIter       *match_end,
-                               const GtkTextIter *limit)
+                               CtkTextSearchFlags flags,
+                               CtkTextIter       *match_start,
+                               CtkTextIter       *match_end,
+                               const CtkTextIter *limit)
 {
   gchar **lines = NULL;
   gchar **l;
@@ -5282,7 +5282,7 @@ ctk_text_iter_backward_search (const GtkTextIter *iter,
   if (*str == '\0')
     {
       /* If we can move one char, return the empty string there */
-      GtkTextIter match = *iter;
+      CtkTextIter match = *iter;
 
       if (limit && ctk_text_iter_equal (limit, &match))
         return FALSE;
@@ -5342,8 +5342,8 @@ ctk_text_iter_backward_search (const GtkTextIter *iter,
         {
           /* Match! */
           gint offset;
-          GtkTextIter start_tmp;
-          GtkTextIter end_tmp;
+          CtkTextIter start_tmp;
+          CtkTextIter end_tmp;
 
           /* Offset to start of search string */
           offset = g_utf8_strlen (*win.lines, first_line_match - *win.lines);
@@ -5390,8 +5390,8 @@ ctk_text_iter_backward_search (const GtkTextIter *iter,
 
 /**
  * ctk_text_iter_equal:
- * @lhs: a #GtkTextIter
- * @rhs: another #GtkTextIter
+ * @lhs: a #CtkTextIter
+ * @rhs: another #CtkTextIter
  * 
  * Tests whether two iterators are equal, using the fastest possible
  * mechanism. This function is very fast; you can expect it to perform
@@ -5402,14 +5402,14 @@ ctk_text_iter_backward_search (const GtkTextIter *iter,
  * Returns: %TRUE if the iterators point to the same place in the buffer
  **/
 gboolean
-ctk_text_iter_equal (const GtkTextIter *lhs,
-                     const GtkTextIter *rhs)
+ctk_text_iter_equal (const CtkTextIter *lhs,
+                     const CtkTextIter *rhs)
 {
-  GtkTextRealIter *real_lhs;
-  GtkTextRealIter *real_rhs;
+  CtkTextRealIter *real_lhs;
+  CtkTextRealIter *real_rhs;
 
-  real_lhs = (GtkTextRealIter*)lhs;
-  real_rhs = (GtkTextRealIter*)rhs;
+  real_lhs = (CtkTextRealIter*)lhs;
+  real_rhs = (CtkTextRealIter*)rhs;
 
   check_invariants (lhs);
   check_invariants (rhs);
@@ -5431,8 +5431,8 @@ ctk_text_iter_equal (const GtkTextIter *lhs,
 
 /**
  * ctk_text_iter_compare:
- * @lhs: a #GtkTextIter
- * @rhs: another #GtkTextIter
+ * @lhs: a #CtkTextIter
+ * @rhs: another #CtkTextIter
  * 
  * A qsort()-style function that returns negative if @lhs is less than
  * @rhs, positive if @lhs is greater than @rhs, and 0 if they’re equal.
@@ -5442,11 +5442,11 @@ ctk_text_iter_equal (const GtkTextIter *lhs,
  * Returns: -1 if @lhs is less than @rhs, 1 if @lhs is greater, 0 if they are equal
  **/
 gint
-ctk_text_iter_compare (const GtkTextIter *lhs,
-                       const GtkTextIter *rhs)
+ctk_text_iter_compare (const CtkTextIter *lhs,
+                       const CtkTextIter *rhs)
 {
-  GtkTextRealIter *real_lhs;
-  GtkTextRealIter *real_rhs;
+  CtkTextRealIter *real_lhs;
+  CtkTextRealIter *real_rhs;
 
   real_lhs = ctk_text_iter_make_surreal (lhs);
   real_rhs = ctk_text_iter_make_surreal (rhs);
@@ -5502,7 +5502,7 @@ ctk_text_iter_compare (const GtkTextIter *lhs,
 
 /**
  * ctk_text_iter_in_range:
- * @iter: a #GtkTextIter
+ * @iter: a #CtkTextIter
  * @start: start of range
  * @end: end of range
  * 
@@ -5512,9 +5512,9 @@ ctk_text_iter_compare (const GtkTextIter *lhs,
  * Returns: %TRUE if @iter is in the range
  **/
 gboolean
-ctk_text_iter_in_range (const GtkTextIter *iter,
-                        const GtkTextIter *start,
-                        const GtkTextIter *end)
+ctk_text_iter_in_range (const CtkTextIter *iter,
+                        const CtkTextIter *start,
+                        const CtkTextIter *end)
 {
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (start != NULL, FALSE);
@@ -5527,8 +5527,8 @@ ctk_text_iter_in_range (const GtkTextIter *iter,
 
 /**
  * ctk_text_iter_order:
- * @first: a #GtkTextIter
- * @second: another #GtkTextIter
+ * @first: a #CtkTextIter
+ * @second: another #CtkTextIter
  *
  * Swaps the value of @first and @second if @second comes before
  * @first in the buffer. That is, ensures that @first and @second are
@@ -5539,15 +5539,15 @@ ctk_text_iter_in_range (const GtkTextIter *iter,
  * 
  **/
 void
-ctk_text_iter_order (GtkTextIter *first,
-                     GtkTextIter *second)
+ctk_text_iter_order (CtkTextIter *first,
+                     CtkTextIter *second)
 {
   g_return_if_fail (first != NULL);
   g_return_if_fail (second != NULL);
 
   if (ctk_text_iter_compare (first, second) > 0)
     {
-      GtkTextIter tmp;
+      CtkTextIter tmp;
 
       tmp = *first;
       *first = *second;
@@ -5560,14 +5560,14 @@ ctk_text_iter_order (GtkTextIter *first,
  */
 
 void
-_ctk_text_btree_get_iter_at_char (GtkTextBTree *tree,
-                                  GtkTextIter *iter,
+_ctk_text_btree_get_iter_at_char (CtkTextBTree *tree,
+                                  CtkTextIter *iter,
                                   gint char_index)
 {
-  GtkTextRealIter *real = (GtkTextRealIter*)iter;
+  CtkTextRealIter *real = (CtkTextRealIter*)iter;
   gint real_char_index;
   gint line_start;
-  GtkTextLine *line;
+  CtkTextLine *line;
 
   g_return_if_fail (iter != NULL);
   g_return_if_fail (tree != NULL);
@@ -5583,13 +5583,13 @@ _ctk_text_btree_get_iter_at_char (GtkTextBTree *tree,
 }
 
 void
-_ctk_text_btree_get_iter_at_line_char (GtkTextBTree *tree,
-                                       GtkTextIter  *iter,
+_ctk_text_btree_get_iter_at_line_char (CtkTextBTree *tree,
+                                       CtkTextIter  *iter,
                                        gint          line_number,
                                        gint          char_on_line)
 {
-  GtkTextRealIter *real = (GtkTextRealIter*)iter;
-  GtkTextLine *line;
+  CtkTextRealIter *real = (CtkTextRealIter*)iter;
+  CtkTextLine *line;
   gint real_line;
 
   g_return_if_fail (iter != NULL);
@@ -5606,13 +5606,13 @@ _ctk_text_btree_get_iter_at_line_char (GtkTextBTree *tree,
 }
 
 void
-_ctk_text_btree_get_iter_at_line_byte (GtkTextBTree   *tree,
-                                       GtkTextIter    *iter,
+_ctk_text_btree_get_iter_at_line_byte (CtkTextBTree   *tree,
+                                       CtkTextIter    *iter,
                                        gint            line_number,
                                        gint            byte_index)
 {
-  GtkTextRealIter *real = (GtkTextRealIter*)iter;
-  GtkTextLine *line;
+  CtkTextRealIter *real = (CtkTextRealIter*)iter;
+  CtkTextLine *line;
   gint real_line;
 
   g_return_if_fail (iter != NULL);
@@ -5629,9 +5629,9 @@ _ctk_text_btree_get_iter_at_line_byte (GtkTextBTree   *tree,
 }
 
 void
-_ctk_text_btree_get_iter_at_line      (GtkTextBTree   *tree,
-                                       GtkTextIter    *iter,
-                                       GtkTextLine    *line,
+_ctk_text_btree_get_iter_at_line      (CtkTextBTree   *tree,
+                                       CtkTextIter    *iter,
+                                       CtkTextLine    *line,
                                        gint            byte_offset)
 {
   g_return_if_fail (iter != NULL);
@@ -5644,11 +5644,11 @@ _ctk_text_btree_get_iter_at_line      (GtkTextBTree   *tree,
 }
 
 gboolean
-_ctk_text_btree_get_iter_at_first_toggle (GtkTextBTree   *tree,
-                                          GtkTextIter    *iter,
-                                          GtkTextTag     *tag)
+_ctk_text_btree_get_iter_at_first_toggle (CtkTextBTree   *tree,
+                                          CtkTextIter    *iter,
+                                          CtkTextTag     *tag)
 {
-  GtkTextLine *line;
+  CtkTextLine *line;
 
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (tree != NULL, FALSE);
@@ -5675,9 +5675,9 @@ _ctk_text_btree_get_iter_at_first_toggle (GtkTextBTree   *tree,
 }
 
 gboolean
-_ctk_text_btree_get_iter_at_last_toggle  (GtkTextBTree   *tree,
-                                          GtkTextIter    *iter,
-                                          GtkTextTag     *tag)
+_ctk_text_btree_get_iter_at_last_toggle  (CtkTextBTree   *tree,
+                                          CtkTextIter    *iter,
+                                          CtkTextTag     *tag)
 {
   gboolean found;
 
@@ -5697,11 +5697,11 @@ _ctk_text_btree_get_iter_at_last_toggle  (GtkTextBTree   *tree,
 }
 
 gboolean
-_ctk_text_btree_get_iter_at_mark_name (GtkTextBTree *tree,
-                                       GtkTextIter *iter,
+_ctk_text_btree_get_iter_at_mark_name (CtkTextBTree *tree,
+                                       CtkTextIter *iter,
                                        const gchar *mark_name)
 {
-  GtkTextMark *mark;
+  CtkTextMark *mark;
 
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (tree != NULL, FALSE);
@@ -5719,11 +5719,11 @@ _ctk_text_btree_get_iter_at_mark_name (GtkTextBTree *tree,
 }
 
 void
-_ctk_text_btree_get_iter_at_mark (GtkTextBTree *tree,
-                                  GtkTextIter *iter,
-                                  GtkTextMark *mark)
+_ctk_text_btree_get_iter_at_mark (CtkTextBTree *tree,
+                                  CtkTextIter *iter,
+                                  CtkTextMark *mark)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_return_if_fail (iter != NULL);
   g_return_if_fail (tree != NULL);
@@ -5738,11 +5738,11 @@ _ctk_text_btree_get_iter_at_mark (GtkTextBTree *tree,
 }
 
 void
-_ctk_text_btree_get_iter_at_child_anchor (GtkTextBTree       *tree,
-                                          GtkTextIter        *iter,
-                                          GtkTextChildAnchor *anchor)
+_ctk_text_btree_get_iter_at_child_anchor (CtkTextBTree       *tree,
+                                          CtkTextIter        *iter,
+                                          CtkTextChildAnchor *anchor)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_return_if_fail (iter != NULL);
   g_return_if_fail (tree != NULL);
@@ -5759,8 +5759,8 @@ _ctk_text_btree_get_iter_at_child_anchor (GtkTextBTree       *tree,
 }
 
 void
-_ctk_text_btree_get_end_iter         (GtkTextBTree   *tree,
-                                      GtkTextIter    *iter)
+_ctk_text_btree_get_end_iter         (CtkTextBTree   *tree,
+                                      CtkTextIter    *iter)
 {
   g_return_if_fail (iter != NULL);
   g_return_if_fail (tree != NULL);
@@ -5772,19 +5772,19 @@ _ctk_text_btree_get_end_iter         (GtkTextBTree   *tree,
 }
 
 void
-_ctk_text_iter_check (const GtkTextIter *iter)
+_ctk_text_iter_check (const CtkTextIter *iter)
 {
-  const GtkTextRealIter *real = (const GtkTextRealIter*)iter;
+  const CtkTextRealIter *real = (const CtkTextRealIter*)iter;
   gint line_char_offset, line_byte_offset, seg_char_offset, seg_byte_offset;
-  GtkTextLineSegment *byte_segment = NULL;
-  GtkTextLineSegment *byte_any_segment = NULL;
-  GtkTextLineSegment *char_segment = NULL;
-  GtkTextLineSegment *char_any_segment = NULL;
+  CtkTextLineSegment *byte_segment = NULL;
+  CtkTextLineSegment *byte_any_segment = NULL;
+  CtkTextLineSegment *char_segment = NULL;
+  CtkTextLineSegment *char_any_segment = NULL;
   gboolean segments_updated;
 
   /* This function checks our class invariants for the Iter class. */
 
-  g_assert (sizeof (GtkTextIter) == sizeof (GtkTextRealIter));
+  g_assert (sizeof (CtkTextIter) == sizeof (CtkTextRealIter));
 
   if (real->chars_changed_stamp !=
       _ctk_text_btree_get_chars_changed_stamp (real->tree))

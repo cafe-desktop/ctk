@@ -21,47 +21,47 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MAGNIFIER           (_ctk_magnifier_get_type ())
-#define CTK_MAGNIFIER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MAGNIFIER, GtkMagnifier))
-#define CTK_MAGNIFIER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_MAGNIFIER, GtkMagnifierClass))
+#define CTK_MAGNIFIER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MAGNIFIER, CtkMagnifier))
+#define CTK_MAGNIFIER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_MAGNIFIER, CtkMagnifierClass))
 #define CTK_IS_MAGNIFIER(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_MAGNIFIER))
 #define CTK_IS_MAGNIFIER_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), CTK_TYPE_MAGNIFIER))
-#define CTK_MAGNIFIER_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MAGNIFIER, GtkMagnifierClass))
+#define CTK_MAGNIFIER_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MAGNIFIER, CtkMagnifierClass))
 
-typedef struct _GtkMagnifier GtkMagnifier;
-typedef struct _GtkMagnifierClass GtkMagnifierClass;
+typedef struct _CtkMagnifier CtkMagnifier;
+typedef struct _CtkMagnifierClass CtkMagnifierClass;
 
-struct _GtkMagnifier
+struct _CtkMagnifier
 {
-  GtkWidget parent_instance;
+  CtkWidget parent_instance;
 };
 
-struct _GtkMagnifierClass
+struct _CtkMagnifierClass
 {
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 };
 
 GType       _ctk_magnifier_get_type          (void) G_GNUC_CONST;
 
-GtkWidget * _ctk_magnifier_new               (GtkWidget       *inspected);
+CtkWidget * _ctk_magnifier_new               (CtkWidget       *inspected);
 
-GtkWidget * _ctk_magnifier_get_inspected     (GtkMagnifier *magnifier);
-void        _ctk_magnifier_set_inspected     (GtkMagnifier *magnifier,
-                                              GtkWidget    *inspected);
+CtkWidget * _ctk_magnifier_get_inspected     (CtkMagnifier *magnifier);
+void        _ctk_magnifier_set_inspected     (CtkMagnifier *magnifier,
+                                              CtkWidget    *inspected);
 
-void        _ctk_magnifier_set_coords        (GtkMagnifier *magnifier,
+void        _ctk_magnifier_set_coords        (CtkMagnifier *magnifier,
                                               gdouble       x,
                                               gdouble       y);
-void        _ctk_magnifier_get_coords        (GtkMagnifier *magnifier,
+void        _ctk_magnifier_get_coords        (CtkMagnifier *magnifier,
                                               gdouble      *x,
                                               gdouble      *y);
 
-void        _ctk_magnifier_set_magnification (GtkMagnifier *magnifier,
+void        _ctk_magnifier_set_magnification (CtkMagnifier *magnifier,
                                               gdouble       magnification);
-gdouble     _ctk_magnifier_get_magnification (GtkMagnifier *magnifier);
+gdouble     _ctk_magnifier_get_magnification (CtkMagnifier *magnifier);
 
-void        _ctk_magnifier_set_resize        (GtkMagnifier *magnifier,
+void        _ctk_magnifier_set_resize        (CtkMagnifier *magnifier,
                                               gboolean      resize);
-gboolean    _ctk_magnifier_get_resize        (GtkMagnifier *magnifier);
+gboolean    _ctk_magnifier_get_resize        (CtkMagnifier *magnifier);
 
 G_END_DECLS
 

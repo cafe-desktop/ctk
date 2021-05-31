@@ -1,6 +1,6 @@
 <!-- missing focus chain widget name attribute -->
 <interface>
-  <object class="GtkBox">
+  <object class="CtkBox">
     <focus-chain>
       <widget/>
     </focus-chain>

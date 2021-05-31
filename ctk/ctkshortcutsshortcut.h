@@ -24,20 +24,20 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SHORTCUTS_SHORTCUT (ctk_shortcuts_shortcut_get_type())
-#define CTK_SHORTCUTS_SHORTCUT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUTS_SHORTCUT, GtkShortcutsShortcut))
-#define CTK_SHORTCUTS_SHORTCUT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUTS_SHORTCUT, GtkShortcutsShortcutClass))
+#define CTK_SHORTCUTS_SHORTCUT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUTS_SHORTCUT, CtkShortcutsShortcut))
+#define CTK_SHORTCUTS_SHORTCUT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUTS_SHORTCUT, CtkShortcutsShortcutClass))
 #define CTK_IS_SHORTCUTS_SHORTCUT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SHORTCUTS_SHORTCUT))
 #define CTK_IS_SHORTCUTS_SHORTCUT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SHORTCUTS_SHORTCUT))
-#define CTK_SHORTCUTS_SHORTCUT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUTS_SHORTCUT, GtkShortcutsShortcutClass))
+#define CTK_SHORTCUTS_SHORTCUT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUTS_SHORTCUT, CtkShortcutsShortcutClass))
 
 
-typedef struct _GtkShortcutsShortcut      GtkShortcutsShortcut;
-typedef struct _GtkShortcutsShortcutClass GtkShortcutsShortcutClass;
+typedef struct _CtkShortcutsShortcut      CtkShortcutsShortcut;
+typedef struct _CtkShortcutsShortcutClass CtkShortcutsShortcutClass;
 
 /**
- * GtkShortcutType:
+ * CtkShortcutType:
  * @CTK_SHORTCUT_ACCELERATOR:
- *   The shortcut is a keyboard accelerator. The #GtkShortcutsShortcut:accelerator
+ *   The shortcut is a keyboard accelerator. The #CtkShortcutsShortcut:accelerator
  *   property will be used.
  * @CTK_SHORTCUT_GESTURE_PINCH:
  *   The shortcut is a pinch gesture. GTK+ provides an icon and subtitle.
@@ -52,10 +52,10 @@ typedef struct _GtkShortcutsShortcutClass GtkShortcutsShortcutClass;
  * @CTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_RIGHT:
  *   The shortcut is a two-finger swipe gesture. GTK+ provides an icon and subtitle.
  * @CTK_SHORTCUT_GESTURE:
- *   The shortcut is a gesture. The #GtkShortcutsShortcut:icon property will be
+ *   The shortcut is a gesture. The #CtkShortcutsShortcut:icon property will be
  *   used.
  *
- * GtkShortcutType specifies the kind of shortcut that is being described.
+ * CtkShortcutType specifies the kind of shortcut that is being described.
  * More values may be added to this enumeration over time.
  *
  * Since: 3.20
@@ -69,7 +69,7 @@ typedef enum {
   CTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_LEFT,
   CTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_RIGHT,
   CTK_SHORTCUT_GESTURE
-} GtkShortcutType;
+} CtkShortcutType;
 
 GDK_AVAILABLE_IN_3_20
 GType        ctk_shortcuts_shortcut_get_type (void) G_GNUC_CONST;

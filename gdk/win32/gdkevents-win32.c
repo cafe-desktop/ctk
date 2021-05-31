@@ -1188,17 +1188,17 @@ show_window_recurse (GdkWindow *window, gboolean hide_window)
 		{
 		  if (gdk_window_get_state (window) & GDK_WINDOW_STATE_MAXIMIZED)
 		    {
-		      GtkShowWindow (window, SW_SHOWMAXIMIZED);
+		      CtkShowWindow (window, SW_SHOWMAXIMIZED);
 		    }
 		  else
 		    {
-		      GtkShowWindow (window, SW_RESTORE);
+		      CtkShowWindow (window, SW_RESTORE);
 		    }
 		}
 	    }
 	  else
 	    {
-	      GtkShowWindow (window, SW_MINIMIZE);
+	      CtkShowWindow (window, SW_MINIMIZE);
 	    }
 	}
 
@@ -2252,7 +2252,7 @@ gdk_event_translate (MSG  *msg,
 	  goto done;
 
 	case GDK_FILTER_CONTINUE:
-	  /* No more: Send unknown client messages on to Gtk for it to use */
+	  /* No more: Send unknown client messages on to Ctk for it to use */
 	  GDK_NOTE (EVENTS, _gdk_win32_print_event (event));
 	  return_val = TRUE;
 	  goto done;

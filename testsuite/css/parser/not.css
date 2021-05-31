@@ -2,7 +2,7 @@
   font-size: 1px;
 }
 
-:not(GtkButton) {
+:not(CtkButton) {
   font-size: 2px;
 }
 
@@ -22,7 +22,7 @@
   font-size: 6px;
 }
 
-:not( GtkButton) {
+:not( CtkButton) {
   font-size: 7px;
 }
 
@@ -42,7 +42,7 @@
   font-size: 11px;
 }
 
-:not(GtkButton  ) {
+:not(CtkButton  ) {
   font-size: 12px;
 }
 
@@ -62,7 +62,7 @@
   font-size: 16px;
 }
 
-:not( GtkButton   ) {
+:not( CtkButton   ) {
   font-size: 17px;
 }
 

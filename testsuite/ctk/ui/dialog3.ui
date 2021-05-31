@@ -1,8 +1,8 @@
 <!-- invalid dialog markup attribute -->
 <interface>
-  <object class="GtkDialog">
+  <object class="CtkDialog">
     <child type="action">
-      <object class="GtkButton" id="button_ok">
+      <object class="CtkButton" id="button_ok">
         <property name="can-default">True</property>
       </object>
     </child>

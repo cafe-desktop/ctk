@@ -1,4 +1,4 @@
-/* Gtk+ property notify tests
+/* Ctk+ property notify tests
  * Copyright (C) 2014 Matthias Clasen
  *
  * This library is free software; you can redistribute it and/or
@@ -364,25 +364,25 @@ test_type (gconstpointer data)
     return;
 
   /* Deprecated, not getting fixed */
-  if (g_str_equal (g_type_name (type), "GtkColorSelection") ||
-      g_str_equal (g_type_name (type), "GtkHandleBox") ||
-      g_str_equal (g_type_name (type), "GtkHPaned") ||
-      g_str_equal (g_type_name (type), "GtkVPaned") ||
-      g_str_equal (g_type_name (type), "GtkHScale") ||
-      g_str_equal (g_type_name (type), "GtkVScale") ||
-      g_str_equal (g_type_name (type), "GtkHScrollbar") ||
-      g_str_equal (g_type_name (type), "GtkVScrollbar") ||
-      g_str_equal (g_type_name (type), "GtkHSeparator") ||
-      g_str_equal (g_type_name (type), "GtkVSeparator") ||
-      g_str_equal (g_type_name (type), "GtkHBox") ||
-      g_str_equal (g_type_name (type), "GtkVBox") ||
-      g_str_equal (g_type_name (type), "GtkArrow") ||
-      g_str_equal (g_type_name (type), "GtkNumerableIcon") ||
-      g_str_equal (g_type_name (type), "GtkRadioAction") ||
-      g_str_equal (g_type_name (type), "GtkToggleAction") ||
-      g_str_equal (g_type_name (type), "GtkTable") ||
-      g_str_equal (g_type_name (type), "GtkUIManager") ||
-      g_str_equal (g_type_name (type), "GtkImageMenuItem"))
+  if (g_str_equal (g_type_name (type), "CtkColorSelection") ||
+      g_str_equal (g_type_name (type), "CtkHandleBox") ||
+      g_str_equal (g_type_name (type), "CtkHPaned") ||
+      g_str_equal (g_type_name (type), "CtkVPaned") ||
+      g_str_equal (g_type_name (type), "CtkHScale") ||
+      g_str_equal (g_type_name (type), "CtkVScale") ||
+      g_str_equal (g_type_name (type), "CtkHScrollbar") ||
+      g_str_equal (g_type_name (type), "CtkVScrollbar") ||
+      g_str_equal (g_type_name (type), "CtkHSeparator") ||
+      g_str_equal (g_type_name (type), "CtkVSeparator") ||
+      g_str_equal (g_type_name (type), "CtkHBox") ||
+      g_str_equal (g_type_name (type), "CtkVBox") ||
+      g_str_equal (g_type_name (type), "CtkArrow") ||
+      g_str_equal (g_type_name (type), "CtkNumerableIcon") ||
+      g_str_equal (g_type_name (type), "CtkRadioAction") ||
+      g_str_equal (g_type_name (type), "CtkToggleAction") ||
+      g_str_equal (g_type_name (type), "CtkTable") ||
+      g_str_equal (g_type_name (type), "CtkUIManager") ||
+      g_str_equal (g_type_name (type), "CtkImageMenuItem"))
     return;
 
   /* These can't be freely constructed/destroyed */
@@ -524,17 +524,17 @@ test_type (gconstpointer data)
         continue;
 
       /* Not supported in subclass */
-      if (g_str_equal (g_type_name (type), "GtkRecentAction") &&
+      if (g_str_equal (g_type_name (type), "CtkRecentAction") &&
 	  g_str_equal (pspec->name, "select-multiple"))
         continue;
 
-      if (g_str_equal (g_type_name (type), "GtkRecentChooserMenu") &&
+      if (g_str_equal (g_type_name (type), "CtkRecentChooserMenu") &&
 	  g_str_equal (pspec->name, "select-multiple"))
         continue;
 
-      /* Really a bug in the way GtkButton and its subclasses interact:
+      /* Really a bug in the way CtkButton and its subclasses interact:
        * setting label etc on a subclass destroys the content, breaking
-       * e.g. GtkColorButton pretty badly
+       * e.g. CtkColorButton pretty badly
        */
       if (type == CTK_TYPE_COLOR_BUTTON && pspec->owner_type == CTK_TYPE_BUTTON)
         continue;
@@ -544,18 +544,18 @@ test_type (gconstpointer data)
         continue;
 
       /* Too many special cases involving -set properties */
-      if (g_str_equal (g_type_name (pspec->owner_type), "GtkCellRendererText") ||
-          g_str_equal (g_type_name (pspec->owner_type), "GtkTextTag"))
+      if (g_str_equal (g_type_name (pspec->owner_type), "CtkCellRendererText") ||
+          g_str_equal (g_type_name (pspec->owner_type), "CtkTextTag"))
         continue;
 
       /* Most things assume a model is set */
-      if (g_str_equal (g_type_name (pspec->owner_type), "GtkComboBox"))
+      if (g_str_equal (g_type_name (pspec->owner_type), "CtkComboBox"))
         continue;
 
       /* Deprecated, not getting fixed */
-      if (g_str_equal (g_type_name (pspec->owner_type), "GtkActivatable") ||
-          g_str_equal (g_type_name (pspec->owner_type), "GtkActionGroup") ||
-          g_str_equal (g_type_name (pspec->owner_type), "GtkAction"))
+      if (g_str_equal (g_type_name (pspec->owner_type), "CtkActivatable") ||
+          g_str_equal (g_type_name (pspec->owner_type), "CtkActionGroup") ||
+          g_str_equal (g_type_name (pspec->owner_type), "CtkAction"))
         continue;
 
       if (g_type_is_a (pspec->owner_type, CTK_TYPE_CONTAINER) &&
@@ -573,9 +573,9 @@ test_type (gconstpointer data)
            g_str_equal (pspec->name, "stock-detail")))
         continue;
 
-       if (g_str_equal (g_type_name (pspec->owner_type), "GtkArrow") ||
-          g_str_equal (g_type_name (pspec->owner_type), "GtkAlignment") ||
-          g_str_equal (g_type_name (pspec->owner_type), "GtkMisc"))
+       if (g_str_equal (g_type_name (pspec->owner_type), "CtkArrow") ||
+          g_str_equal (g_type_name (pspec->owner_type), "CtkAlignment") ||
+          g_str_equal (g_type_name (pspec->owner_type), "CtkMisc"))
         continue;
 
       if (g_type_is_a (pspec->owner_type, CTK_TYPE_MENU) &&

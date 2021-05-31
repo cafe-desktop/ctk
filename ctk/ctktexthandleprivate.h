@@ -23,67 +23,67 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TEXT_HANDLE           (_ctk_text_handle_get_type ())
-#define CTK_TEXT_HANDLE(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_TEXT_HANDLE, GtkTextHandle))
-#define CTK_TEXT_HANDLE_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_TEXT_HANDLE, GtkTextHandleClass))
+#define CTK_TEXT_HANDLE(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_TEXT_HANDLE, CtkTextHandle))
+#define CTK_TEXT_HANDLE_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_TEXT_HANDLE, CtkTextHandleClass))
 #define CTK_IS_TEXT_HANDLE(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_TEXT_HANDLE))
 #define CTK_IS_TEXT_HANDLE_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), CTK_TYPE_TEXT_HANDLE))
-#define CTK_TEXT_HANDLE_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_TEXT_HANDLE, GtkTextHandleClass))
+#define CTK_TEXT_HANDLE_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_TEXT_HANDLE, CtkTextHandleClass))
 
-typedef struct _GtkTextHandle GtkTextHandle;
-typedef struct _GtkTextHandleClass GtkTextHandleClass;
+typedef struct _CtkTextHandle CtkTextHandle;
+typedef struct _CtkTextHandleClass CtkTextHandleClass;
 
 typedef enum
 {
   CTK_TEXT_HANDLE_POSITION_CURSOR,
   CTK_TEXT_HANDLE_POSITION_SELECTION_START,
   CTK_TEXT_HANDLE_POSITION_SELECTION_END = CTK_TEXT_HANDLE_POSITION_CURSOR
-} GtkTextHandlePosition;
+} CtkTextHandlePosition;
 
 typedef enum
 {
   CTK_TEXT_HANDLE_MODE_NONE,
   CTK_TEXT_HANDLE_MODE_CURSOR,
   CTK_TEXT_HANDLE_MODE_SELECTION
-} GtkTextHandleMode;
+} CtkTextHandleMode;
 
-struct _GtkTextHandle
+struct _CtkTextHandle
 {
   GObject parent_instance;
   gpointer priv;
 };
 
-struct _GtkTextHandleClass
+struct _CtkTextHandleClass
 {
   GObjectClass parent_class;
 
-  void (* handle_dragged) (GtkTextHandle         *handle,
-                           GtkTextHandlePosition  pos,
+  void (* handle_dragged) (CtkTextHandle         *handle,
+                           CtkTextHandlePosition  pos,
                            gint                   x,
                            gint                   y);
-  void (* drag_finished)  (GtkTextHandle         *handle,
-                           GtkTextHandlePosition  pos);
+  void (* drag_finished)  (CtkTextHandle         *handle,
+                           CtkTextHandlePosition  pos);
 };
 
 GType           _ctk_text_handle_get_type     (void) G_GNUC_CONST;
 
-GtkTextHandle * _ctk_text_handle_new          (GtkWidget             *parent);
+CtkTextHandle * _ctk_text_handle_new          (CtkWidget             *parent);
 
-void            _ctk_text_handle_set_mode     (GtkTextHandle         *handle,
-                                               GtkTextHandleMode      mode);
-GtkTextHandleMode
-                _ctk_text_handle_get_mode     (GtkTextHandle         *handle);
-void            _ctk_text_handle_set_position (GtkTextHandle         *handle,
-                                               GtkTextHandlePosition  pos,
+void            _ctk_text_handle_set_mode     (CtkTextHandle         *handle,
+                                               CtkTextHandleMode      mode);
+CtkTextHandleMode
+                _ctk_text_handle_get_mode     (CtkTextHandle         *handle);
+void            _ctk_text_handle_set_position (CtkTextHandle         *handle,
+                                               CtkTextHandlePosition  pos,
                                                GdkRectangle          *rect);
-void            _ctk_text_handle_set_visible  (GtkTextHandle         *handle,
-                                               GtkTextHandlePosition  pos,
+void            _ctk_text_handle_set_visible  (CtkTextHandle         *handle,
+                                               CtkTextHandlePosition  pos,
                                                gboolean               visible);
 
-gboolean        _ctk_text_handle_get_is_dragged (GtkTextHandle         *handle,
-                                                 GtkTextHandlePosition  pos);
-void            _ctk_text_handle_set_direction (GtkTextHandle         *handle,
-                                                GtkTextHandlePosition  pos,
-                                                GtkTextDirection       dir);
+gboolean        _ctk_text_handle_get_is_dragged (CtkTextHandle         *handle,
+                                                 CtkTextHandlePosition  pos);
+void            _ctk_text_handle_set_direction (CtkTextHandle         *handle,
+                                                CtkTextHandlePosition  pos,
+                                                CtkTextDirection       dir);
 
 G_END_DECLS
 

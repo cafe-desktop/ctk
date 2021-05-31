@@ -1,6 +1,6 @@
 <!-- invalid element in levelbar markup -->
 <interface>
-  <object class="GtkLevelBar">
+  <object class="CtkLevelBar">
     <offsets>
       <warbl/>
     </offsets>

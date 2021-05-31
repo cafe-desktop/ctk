@@ -21,16 +21,16 @@
 
 #include <ctk/ctktextbuffer.h>
 
-guint8 * _ctk_text_buffer_serialize_rich_text   (GtkTextBuffer     *register_buffer,
-                                                 GtkTextBuffer     *content_buffer,
-                                                 const GtkTextIter *start,
-                                                 const GtkTextIter *end,
+guint8 * _ctk_text_buffer_serialize_rich_text   (CtkTextBuffer     *register_buffer,
+                                                 CtkTextBuffer     *content_buffer,
+                                                 const CtkTextIter *start,
+                                                 const CtkTextIter *end,
                                                  gsize             *length,
                                                  gpointer           user_data);
 
-gboolean _ctk_text_buffer_deserialize_rich_text (GtkTextBuffer     *register_buffer,
-                                                 GtkTextBuffer     *content_buffer,
-                                                 GtkTextIter       *iter,
+gboolean _ctk_text_buffer_deserialize_rich_text (CtkTextBuffer     *register_buffer,
+                                                 CtkTextBuffer     *content_buffer,
+                                                 CtkTextIter       *iter,
                                                  const guint8      *data,
                                                  gsize              length,
                                                  gboolean           create_tags,

@@ -31,31 +31,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_AREA_BOX            (ctk_cell_area_box_get_type ())
-#define CTK_CELL_AREA_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_AREA_BOX, GtkCellAreaBox))
-#define CTK_CELL_AREA_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_AREA_BOX, GtkCellAreaBoxClass))
+#define CTK_CELL_AREA_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_AREA_BOX, CtkCellAreaBox))
+#define CTK_CELL_AREA_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_AREA_BOX, CtkCellAreaBoxClass))
 #define CTK_IS_CELL_AREA_BOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_AREA_BOX))
 #define CTK_IS_CELL_AREA_BOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_AREA_BOX))
-#define CTK_CELL_AREA_BOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_AREA_BOX, GtkCellAreaBoxClass))
+#define CTK_CELL_AREA_BOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_AREA_BOX, CtkCellAreaBoxClass))
 
-typedef struct _GtkCellAreaBox              GtkCellAreaBox;
-typedef struct _GtkCellAreaBoxClass         GtkCellAreaBoxClass;
-typedef struct _GtkCellAreaBoxPrivate       GtkCellAreaBoxPrivate;
+typedef struct _CtkCellAreaBox              CtkCellAreaBox;
+typedef struct _CtkCellAreaBoxClass         CtkCellAreaBoxClass;
+typedef struct _CtkCellAreaBoxPrivate       CtkCellAreaBoxPrivate;
 
-struct _GtkCellAreaBox
+struct _CtkCellAreaBox
 {
   /*< private >*/
-  GtkCellArea parent_instance;
+  CtkCellArea parent_instance;
 
-  GtkCellAreaBoxPrivate *priv;
+  CtkCellAreaBoxPrivate *priv;
 };
 
 /**
- * GtkCellAreaBoxClass:
+ * CtkCellAreaBoxClass:
  */
-struct _GtkCellAreaBoxClass
+struct _CtkCellAreaBoxClass
 {
   /*< private >*/
-  GtkCellAreaClass parent_class;
+  CtkCellAreaClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -68,27 +68,27 @@ GDK_AVAILABLE_IN_ALL
 GType        ctk_cell_area_box_get_type    (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkCellArea *ctk_cell_area_box_new         (void);
+CtkCellArea *ctk_cell_area_box_new         (void);
 GDK_AVAILABLE_IN_ALL
-void         ctk_cell_area_box_pack_start  (GtkCellAreaBox  *box,
-                                            GtkCellRenderer *renderer,
+void         ctk_cell_area_box_pack_start  (CtkCellAreaBox  *box,
+                                            CtkCellRenderer *renderer,
                                             gboolean         expand,
                                             gboolean         align,
                                             gboolean         fixed);
 GDK_AVAILABLE_IN_ALL
-void         ctk_cell_area_box_pack_end    (GtkCellAreaBox  *box,
-                                            GtkCellRenderer *renderer,
+void         ctk_cell_area_box_pack_end    (CtkCellAreaBox  *box,
+                                            CtkCellRenderer *renderer,
                                             gboolean         expand,
                                             gboolean         align,
                                             gboolean         fixed);
 GDK_AVAILABLE_IN_ALL
-gint         ctk_cell_area_box_get_spacing (GtkCellAreaBox  *box);
+gint         ctk_cell_area_box_get_spacing (CtkCellAreaBox  *box);
 GDK_AVAILABLE_IN_ALL
-void         ctk_cell_area_box_set_spacing (GtkCellAreaBox  *box,
+void         ctk_cell_area_box_set_spacing (CtkCellAreaBox  *box,
                                             gint             spacing);
 
-/* Private interaction with GtkCellAreaBoxContext */
-gboolean    _ctk_cell_area_box_group_visible (GtkCellAreaBox  *box,
+/* Private interaction with CtkCellAreaBoxContext */
+gboolean    _ctk_cell_area_box_group_visible (CtkCellAreaBox  *box,
                                               gint             group_idx);
 
 G_END_DECLS

@@ -24,15 +24,15 @@
 #include "ctkcsseasevalueprivate.h"
 #include "ctkprogresstrackerprivate.h"
 
-G_DEFINE_TYPE (GtkCssTransition, _ctk_css_transition, CTK_TYPE_STYLE_ANIMATION)
+G_DEFINE_TYPE (CtkCssTransition, _ctk_css_transition, CTK_TYPE_STYLE_ANIMATION)
 
-static GtkStyleAnimation *
-ctk_css_transition_advance (GtkStyleAnimation    *style_animation,
+static CtkStyleAnimation *
+ctk_css_transition_advance (CtkStyleAnimation    *style_animation,
                            gint64                timestamp)
 {
-  GtkCssTransition *source = CTK_CSS_TRANSITION (style_animation);
+  CtkCssTransition *source = CTK_CSS_TRANSITION (style_animation);
 
-  GtkCssTransition *transition;
+  CtkCssTransition *transition;
 
   transition = g_object_new (CTK_TYPE_CSS_TRANSITION, NULL);
 
@@ -47,13 +47,13 @@ ctk_css_transition_advance (GtkStyleAnimation    *style_animation,
 }
 
 static void
-ctk_css_transition_apply_values (GtkStyleAnimation   *style_animation,
-                                 GtkCssAnimatedStyle *style)
+ctk_css_transition_apply_values (CtkStyleAnimation   *style_animation,
+                                 CtkCssAnimatedStyle *style)
 {
-  GtkCssTransition *transition = CTK_CSS_TRANSITION (style_animation);
-  GtkCssValue *value, *end;
+  CtkCssTransition *transition = CTK_CSS_TRANSITION (style_animation);
+  CtkCssValue *value, *end;
   double progress;
-  GtkProgressState state;
+  CtkProgressState state;
 
   end = ctk_css_animated_style_get_intrinsic_value (style, transition->property);
 
@@ -82,17 +82,17 @@ ctk_css_transition_apply_values (GtkStyleAnimation   *style_animation,
 }
 
 static gboolean
-ctk_css_transition_is_finished (GtkStyleAnimation *animation)
+ctk_css_transition_is_finished (CtkStyleAnimation *animation)
 {
-  GtkCssTransition *transition = CTK_CSS_TRANSITION (animation);
+  CtkCssTransition *transition = CTK_CSS_TRANSITION (animation);
 
   return ctk_progress_tracker_get_state (&transition->tracker) == CTK_PROGRESS_STATE_AFTER;
 }
 
 static gboolean
-ctk_css_transition_is_static (GtkStyleAnimation *animation)
+ctk_css_transition_is_static (CtkStyleAnimation *animation)
 {
-  GtkCssTransition *transition = CTK_CSS_TRANSITION (animation);
+  CtkCssTransition *transition = CTK_CSS_TRANSITION (animation);
 
   return ctk_progress_tracker_get_state (&transition->tracker) == CTK_PROGRESS_STATE_AFTER;
 }
@@ -100,7 +100,7 @@ ctk_css_transition_is_static (GtkStyleAnimation *animation)
 static void
 ctk_css_transition_finalize (GObject *object)
 {
-  GtkCssTransition *transition = CTK_CSS_TRANSITION (object);
+  CtkCssTransition *transition = CTK_CSS_TRANSITION (object);
 
   _ctk_css_value_unref (transition->start);
   _ctk_css_value_unref (transition->ease);
@@ -109,10 +109,10 @@ ctk_css_transition_finalize (GObject *object)
 }
 
 static void
-_ctk_css_transition_class_init (GtkCssTransitionClass *klass)
+_ctk_css_transition_class_init (CtkCssTransitionClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkStyleAnimationClass *animation_class = CTK_STYLE_ANIMATION_CLASS (klass);
+  CtkStyleAnimationClass *animation_class = CTK_STYLE_ANIMATION_CLASS (klass);
 
   object_class->finalize = ctk_css_transition_finalize;
 
@@ -123,19 +123,19 @@ _ctk_css_transition_class_init (GtkCssTransitionClass *klass)
 }
 
 static void
-_ctk_css_transition_init (GtkCssTransition *transition)
+_ctk_css_transition_init (CtkCssTransition *transition)
 {
 }
 
-GtkStyleAnimation *
+CtkStyleAnimation *
 _ctk_css_transition_new (guint        property,
-                         GtkCssValue *start,
-                         GtkCssValue *ease,
+                         CtkCssValue *start,
+                         CtkCssValue *ease,
                          gint64       timestamp,
                          gint64       duration_us,
                          gint64       delay_us)
 {
-  GtkCssTransition *transition;
+  CtkCssTransition *transition;
 
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (ease != NULL, NULL);
@@ -152,7 +152,7 @@ _ctk_css_transition_new (guint        property,
 }
 
 guint
-_ctk_css_transition_get_property (GtkCssTransition *transition)
+_ctk_css_transition_get_property (CtkCssTransition *transition)
 {
   g_return_val_if_fail (CTK_IS_CSS_TRANSITION (transition), 0);
 

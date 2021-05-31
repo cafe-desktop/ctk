@@ -23,41 +23,41 @@
 
 G_BEGIN_DECLS
 
-typedef union _GtkCssSelector GtkCssSelector;
-typedef struct _GtkCssSelectorTree GtkCssSelectorTree;
-typedef struct _GtkCssSelectorTreeBuilder GtkCssSelectorTreeBuilder;
+typedef union _CtkCssSelector CtkCssSelector;
+typedef struct _CtkCssSelectorTree CtkCssSelectorTree;
+typedef struct _CtkCssSelectorTreeBuilder CtkCssSelectorTreeBuilder;
 
-GtkCssSelector *  _ctk_css_selector_parse           (GtkCssParser           *parser);
-void              _ctk_css_selector_free            (GtkCssSelector         *selector);
+CtkCssSelector *  _ctk_css_selector_parse           (CtkCssParser           *parser);
+void              _ctk_css_selector_free            (CtkCssSelector         *selector);
 
-char *            _ctk_css_selector_to_string       (const GtkCssSelector   *selector);
-void              _ctk_css_selector_print           (const GtkCssSelector   *selector,
+char *            _ctk_css_selector_to_string       (const CtkCssSelector   *selector);
+void              _ctk_css_selector_print           (const CtkCssSelector   *selector,
                                                      GString                *str);
 
-gboolean          _ctk_css_selector_matches         (const GtkCssSelector   *selector,
-                                                     const GtkCssMatcher    *matcher);
-GtkCssChange      _ctk_css_selector_get_change      (const GtkCssSelector   *selector);
-int               _ctk_css_selector_compare         (const GtkCssSelector   *a,
-                                                     const GtkCssSelector   *b);
+gboolean          _ctk_css_selector_matches         (const CtkCssSelector   *selector,
+                                                     const CtkCssMatcher    *matcher);
+CtkCssChange      _ctk_css_selector_get_change      (const CtkCssSelector   *selector);
+int               _ctk_css_selector_compare         (const CtkCssSelector   *a,
+                                                     const CtkCssSelector   *b);
 
-void         _ctk_css_selector_tree_free             (GtkCssSelectorTree       *tree);
-GPtrArray *  _ctk_css_selector_tree_match_all        (const GtkCssSelectorTree *tree,
-						      const GtkCssMatcher      *matcher);
-GtkCssChange _ctk_css_selector_tree_get_change_all   (const GtkCssSelectorTree *tree,
-						      const GtkCssMatcher *matcher);
-void         _ctk_css_selector_tree_match_print      (const GtkCssSelectorTree *tree,
+void         _ctk_css_selector_tree_free             (CtkCssSelectorTree       *tree);
+GPtrArray *  _ctk_css_selector_tree_match_all        (const CtkCssSelectorTree *tree,
+						      const CtkCssMatcher      *matcher);
+CtkCssChange _ctk_css_selector_tree_get_change_all   (const CtkCssSelectorTree *tree,
+						      const CtkCssMatcher *matcher);
+void         _ctk_css_selector_tree_match_print      (const CtkCssSelectorTree *tree,
 						      GString                  *str);
 
 
-GtkCssSelectorTreeBuilder *_ctk_css_selector_tree_builder_new   (void);
-void                       _ctk_css_selector_tree_builder_add   (GtkCssSelectorTreeBuilder *builder,
-								 GtkCssSelector            *selectors,
-								 GtkCssSelectorTree       **selector_match,
+CtkCssSelectorTreeBuilder *_ctk_css_selector_tree_builder_new   (void);
+void                       _ctk_css_selector_tree_builder_add   (CtkCssSelectorTreeBuilder *builder,
+								 CtkCssSelector            *selectors,
+								 CtkCssSelectorTree       **selector_match,
 								 gpointer                   match);
-GtkCssSelectorTree *       _ctk_css_selector_tree_builder_build (GtkCssSelectorTreeBuilder *builder);
-void                       _ctk_css_selector_tree_builder_free  (GtkCssSelectorTreeBuilder *builder);
+CtkCssSelectorTree *       _ctk_css_selector_tree_builder_build (CtkCssSelectorTreeBuilder *builder);
+void                       _ctk_css_selector_tree_builder_free  (CtkCssSelectorTreeBuilder *builder);
 
-const char *ctk_css_pseudoclass_name (GtkStateFlags flags);
+const char *ctk_css_pseudoclass_name (CtkStateFlags flags);
 
 G_END_DECLS
 

@@ -1,5 +1,5 @@
 /*
- * builderparser.c: Test GtkBuilder parser
+ * builderparser.c: Test CtkBuilder parser
  *
  * Copyright (C) 2014 Red Hat, Inc
  *
@@ -29,7 +29,7 @@ test_file (const gchar *filename, GString *string)
   gsize  length;
   GError *error = NULL;
   gboolean ret;
-  GtkBuilder *builder;
+  CtkBuilder *builder;
 
   if (!g_file_get_contents (filename, &contents, &length, &error))
     {

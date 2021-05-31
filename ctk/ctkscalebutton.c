@@ -59,17 +59,17 @@
 /**
  * SECTION:ctkscalebutton
  * @Short_description: A button which pops up a scale
- * @Title: GtkScaleButton
+ * @Title: CtkScaleButton
  *
- * #GtkScaleButton provides a button which pops up a scale widget.
+ * #CtkScaleButton provides a button which pops up a scale widget.
  * This kind of widget is commonly used for volume controls in multimedia
- * applications, and GTK+ provides a #GtkVolumeButton subclass that
+ * applications, and GTK+ provides a #CtkVolumeButton subclass that
  * is tailored for this use case.
  *
  * # CSS nodes
  *
- * GtkScaleButton has a single CSS node with name button. To differentiate
- * it from a plain #GtkButton, it gets the .scale style class.
+ * CtkScaleButton has a single CSS node with name button. To differentiate
+ * it from a plain #CtkButton, it gets the .scale style class.
  *
  * The popup widget that contains the scale has a .scale-popup style class.
  */
@@ -98,25 +98,25 @@ enum
   PROP_ICONS
 };
 
-struct _GtkScaleButtonPrivate
+struct _CtkScaleButtonPrivate
 {
-  GtkWidget *plus_button;
-  GtkWidget *minus_button;
-  GtkWidget *dock;
-  GtkWidget *box;
-  GtkWidget *scale;
-  GtkWidget *image;
-  GtkWidget *active_button;
+  CtkWidget *plus_button;
+  CtkWidget *minus_button;
+  CtkWidget *dock;
+  CtkWidget *box;
+  CtkWidget *scale;
+  CtkWidget *image;
+  CtkWidget *active_button;
 
-  GtkIconSize size;
-  GtkOrientation orientation;
-  GtkOrientation applied_orientation;
+  CtkIconSize size;
+  CtkOrientation orientation;
+  CtkOrientation applied_orientation;
 
   guint click_id;
 
   gchar **icon_list;
 
-  GtkAdjustment *adjustment; /* needed because it must be settable in init() */
+  CtkAdjustment *adjustment; /* needed because it must be settable in init() */
 };
 
 static void     ctk_scale_button_constructed    (GObject             *object);
@@ -130,41 +130,41 @@ static void	ctk_scale_button_get_property	(GObject             *object,
 						 guint                prop_id,
 						 GValue              *value,
 						 GParamSpec          *pspec);
-static void ctk_scale_button_set_orientation_private (GtkScaleButton *button,
-                                                      GtkOrientation  orientation);
-static gboolean	ctk_scale_button_scroll		(GtkWidget           *widget,
+static void ctk_scale_button_set_orientation_private (CtkScaleButton *button,
+                                                      CtkOrientation  orientation);
+static gboolean	ctk_scale_button_scroll		(CtkWidget           *widget,
 						 GdkEventScroll      *event);
-static void     ctk_scale_button_clicked        (GtkButton           *button);
-static void     ctk_scale_button_popup          (GtkWidget           *widget);
-static void     ctk_scale_button_popdown        (GtkWidget           *widget);
-static gboolean cb_button_press			(GtkWidget           *widget,
+static void     ctk_scale_button_clicked        (CtkButton           *button);
+static void     ctk_scale_button_popup          (CtkWidget           *widget);
+static void     ctk_scale_button_popdown        (CtkWidget           *widget);
+static gboolean cb_button_press			(CtkWidget           *widget,
 						 GdkEventButton      *event,
 						 gpointer             user_data);
-static gboolean cb_button_release		(GtkWidget           *widget,
+static gboolean cb_button_release		(CtkWidget           *widget,
 						 GdkEventButton      *event,
 						 gpointer             user_data);
-static void     cb_button_clicked               (GtkWidget           *button,
+static void     cb_button_clicked               (CtkWidget           *button,
                                                  gpointer             user_data);
-static void     ctk_scale_button_update_icon    (GtkScaleButton      *button);
-static void     cb_scale_value_changed          (GtkRange            *range,
+static void     ctk_scale_button_update_icon    (CtkScaleButton      *button);
+static void     cb_scale_value_changed          (CtkRange            *range,
                                                  gpointer             user_data);
-static void     cb_popup_mapped                 (GtkWidget           *popup,
+static void     cb_popup_mapped                 (CtkWidget           *popup,
                                                  gpointer             user_data);
 
-G_DEFINE_TYPE_WITH_CODE (GtkScaleButton, ctk_scale_button, CTK_TYPE_BUTTON,
-                         G_ADD_PRIVATE (GtkScaleButton)
+G_DEFINE_TYPE_WITH_CODE (CtkScaleButton, ctk_scale_button, CTK_TYPE_BUTTON,
+                         G_ADD_PRIVATE (CtkScaleButton)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE,
                                                 NULL))
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
 static void
-ctk_scale_button_class_init (GtkScaleButtonClass *klass)
+ctk_scale_button_class_init (CtkScaleButtonClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkButtonClass *button_class = CTK_BUTTON_CLASS (klass);
-  GtkBindingSet *binding_set;
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkButtonClass *button_class = CTK_BUTTON_CLASS (klass);
+  CtkBindingSet *binding_set;
 
   gobject_class->constructed = ctk_scale_button_constructed;
   gobject_class->finalize = ctk_scale_button_finalize;
@@ -177,12 +177,12 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
   button_class->clicked = ctk_scale_button_clicked;
 
   /**
-   * GtkScaleButton:orientation:
+   * CtkScaleButton:orientation:
    *
-   * The orientation of the #GtkScaleButton's popup window.
+   * The orientation of the #CtkScaleButton's popup window.
    *
-   * Note that since GTK+ 2.16, #GtkScaleButton implements the
-   * #GtkOrientable interface which has its own @orientation
+   * Note that since GTK+ 2.16, #CtkScaleButton implements the
+   * #CtkOrientable interface which has its own @orientation
    * property. However we redefine the property here in order to
    * override its default horizontal orientation.
    *
@@ -215,12 +215,12 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
                                    PROP_ADJUSTMENT,
                                    g_param_spec_object ("adjustment",
 							P_("Adjustment"),
-							P_("The GtkAdjustment that contains the current value of this scale button object"),
+							P_("The CtkAdjustment that contains the current value of this scale button object"),
                                                         CTK_TYPE_ADJUSTMENT,
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkScaleButton:icons:
+   * CtkScaleButton:icons:
    *
    * The names of the icons to be used by the scale button.
    * The first item in the array will be used in the button
@@ -235,7 +235,7 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
    * 50% of the scale, and the second one for the top 50%.
    *
    * It is recommended to use at least 3 icons so that the
-   * #GtkScaleButton reflects the current value of the scale
+   * #CtkScaleButton reflects the current value of the scale
    * better for the users.
    *
    * Since: 2.12
@@ -249,7 +249,7 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
                                                        CTK_PARAM_READWRITE));
 
   /**
-   * GtkScaleButton::value-changed:
+   * CtkScaleButton::value-changed:
    * @button: the object which received the signal
    * @value: the new value
    *
@@ -262,17 +262,17 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
     g_signal_new (I_("value-changed"),
 		  G_TYPE_FROM_CLASS (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkScaleButtonClass, value_changed),
+		  G_STRUCT_OFFSET (CtkScaleButtonClass, value_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, G_TYPE_DOUBLE);
 
   /**
-   * GtkScaleButton::popup:
+   * CtkScaleButton::popup:
    * @button: the object which received the signal
    *
    * The ::popup signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to popup the scale widget.
    *
    * The default bindings for this signal are Space, Enter and Return.
@@ -289,11 +289,11 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
                                 G_TYPE_NONE, 0);
 
   /**
-   * GtkScaleButton::popdown:
+   * CtkScaleButton::popdown:
    * @button: the object which received the signal
    *
    * The ::popdown signal is a
-   * [keybinding signal][GtkBindingSignal]
+   * [keybinding signal][CtkBindingSignal]
    * which gets emitted to popdown the scale widget.
    *
    * The default binding for this signal is Escape.
@@ -330,12 +330,12 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
   ctk_widget_class_set_template_from_resource (widget_class,
 					       "/org/ctk/libctk/ui/ctkscalebutton.ui");
 
-  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkScaleButton, plus_button);
-  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkScaleButton, minus_button);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkScaleButton, dock);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkScaleButton, box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkScaleButton, scale);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkScaleButton, image);
+  ctk_widget_class_bind_template_child_internal_private (widget_class, CtkScaleButton, plus_button);
+  ctk_widget_class_bind_template_child_internal_private (widget_class, CtkScaleButton, minus_button);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkScaleButton, dock);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkScaleButton, box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkScaleButton, scale);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkScaleButton, image);
 
   ctk_widget_class_bind_template_callback (widget_class, cb_button_press);
   ctk_widget_class_bind_template_callback (widget_class, cb_button_release);
@@ -348,10 +348,10 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
 }
 
 static void
-ctk_scale_button_init (GtkScaleButton *button)
+ctk_scale_button_init (CtkScaleButton *button)
 {
-  GtkScaleButtonPrivate *priv;
-  GtkStyleContext *context;
+  CtkScaleButtonPrivate *priv;
+  CtkStyleContext *context;
 
   button->priv = priv = ctk_scale_button_get_instance_private (button);
 
@@ -376,8 +376,8 @@ ctk_scale_button_init (GtkScaleButton *button)
 static void
 ctk_scale_button_constructed (GObject *object)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (object);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (object);
+  CtkScaleButtonPrivate *priv = button->priv;
 
   G_OBJECT_CLASS (ctk_scale_button_parent_class)->constructed (object);
 
@@ -392,7 +392,7 @@ ctk_scale_button_set_property (GObject       *object,
 			       const GValue  *value,
 			       GParamSpec    *pspec)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (object);
+  CtkScaleButton *button = CTK_SCALE_BUTTON (object);
 
   switch (prop_id)
     {
@@ -429,8 +429,8 @@ ctk_scale_button_get_property (GObject     *object,
 			       GValue      *value,
 			       GParamSpec  *pspec)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (object);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (object);
+  CtkScaleButtonPrivate *priv = button->priv;
 
   switch (prop_id)
     {
@@ -458,8 +458,8 @@ ctk_scale_button_get_property (GObject     *object,
 static void
 ctk_scale_button_finalize (GObject *object)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (object);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (object);
+  CtkScaleButtonPrivate *priv = button->priv;
 
   if (priv->icon_list)
     {
@@ -479,8 +479,8 @@ ctk_scale_button_finalize (GObject *object)
 static void
 ctk_scale_button_dispose (GObject *object)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (object);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (object);
+  CtkScaleButtonPrivate *priv = button->priv;
 
   if (priv->dock)
     {
@@ -499,7 +499,7 @@ ctk_scale_button_dispose (GObject *object)
 
 /**
  * ctk_scale_button_new:
- * @size: (type int): a stock icon size (#GtkIconSize)
+ * @size: (type int): a stock icon size (#CtkIconSize)
  * @min: the minimum value of the scale (usually 0)
  * @max: the maximum value of the scale (usually 100)
  * @step: the stepping of value when a scroll-wheel event,
@@ -508,22 +508,22 @@ ctk_scale_button_dispose (GObject *object)
  *         array of icon names, or %NULL if you want to set the list
  *         later with ctk_scale_button_set_icons()
  *
- * Creates a #GtkScaleButton, with a range between @min and @max, with
+ * Creates a #CtkScaleButton, with a range between @min and @max, with
  * a stepping of @step.
  *
- * Returns: a new #GtkScaleButton
+ * Returns: a new #CtkScaleButton
  *
  * Since: 2.12
  */
-GtkWidget *
-ctk_scale_button_new (GtkIconSize   size,
+CtkWidget *
+ctk_scale_button_new (CtkIconSize   size,
 		      gdouble       min,
 		      gdouble       max,
 		      gdouble       step,
 		      const gchar **icons)
 {
-  GtkScaleButton *button;
-  GtkAdjustment *adjustment;
+  CtkScaleButton *button;
+  CtkAdjustment *adjustment;
 
   adjustment = ctk_adjustment_new (min, min, max, step, 10 * step, 0);
 
@@ -538,7 +538,7 @@ ctk_scale_button_new (GtkIconSize   size,
 
 /**
  * ctk_scale_button_get_value:
- * @button: a #GtkScaleButton
+ * @button: a #CtkScaleButton
  *
  * Gets the current value of the scale button.
  *
@@ -547,9 +547,9 @@ ctk_scale_button_new (GtkIconSize   size,
  * Since: 2.12
  */
 gdouble
-ctk_scale_button_get_value (GtkScaleButton * button)
+ctk_scale_button_get_value (CtkScaleButton * button)
 {
-  GtkScaleButtonPrivate *priv;
+  CtkScaleButtonPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_SCALE_BUTTON (button), 0);
 
@@ -560,21 +560,21 @@ ctk_scale_button_get_value (GtkScaleButton * button)
 
 /**
  * ctk_scale_button_set_value:
- * @button: a #GtkScaleButton
+ * @button: a #CtkScaleButton
  * @value: new value of the scale button
  *
  * Sets the current value of the scale; if the value is outside
  * the minimum or maximum range values, it will be clamped to fit
- * inside them. The scale button emits the #GtkScaleButton::value-changed
+ * inside them. The scale button emits the #CtkScaleButton::value-changed
  * signal if the value changes.
  *
  * Since: 2.12
  */
 void
-ctk_scale_button_set_value (GtkScaleButton *button,
+ctk_scale_button_set_value (CtkScaleButton *button,
 			    gdouble         value)
 {
-  GtkScaleButtonPrivate *priv;
+  CtkScaleButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_SCALE_BUTTON (button));
 
@@ -586,19 +586,19 @@ ctk_scale_button_set_value (GtkScaleButton *button,
 
 /**
  * ctk_scale_button_set_icons:
- * @button: a #GtkScaleButton
+ * @button: a #CtkScaleButton
  * @icons: (array zero-terminated=1): a %NULL-terminated array of icon names
  *
  * Sets the icons to be used by the scale button.
- * For details, see the #GtkScaleButton:icons property.
+ * For details, see the #CtkScaleButton:icons property.
  *
  * Since: 2.12
  */
 void
-ctk_scale_button_set_icons (GtkScaleButton  *button,
+ctk_scale_button_set_icons (CtkScaleButton  *button,
 			    const gchar    **icons)
 {
-  GtkScaleButtonPrivate *priv;
+  CtkScaleButtonPrivate *priv;
   gchar **tmp;
 
   g_return_if_fail (CTK_IS_SCALE_BUTTON (button));
@@ -615,17 +615,17 @@ ctk_scale_button_set_icons (GtkScaleButton  *button,
 
 /**
  * ctk_scale_button_get_adjustment:
- * @button: a #GtkScaleButton
+ * @button: a #CtkScaleButton
  *
- * Gets the #GtkAdjustment associated with the #GtkScaleButton’s scale.
+ * Gets the #CtkAdjustment associated with the #CtkScaleButton’s scale.
  * See ctk_range_get_adjustment() for details.
  *
  * Returns: (transfer none): the adjustment associated with the scale
  *
  * Since: 2.12
  */
-GtkAdjustment*
-ctk_scale_button_get_adjustment	(GtkScaleButton *button)
+CtkAdjustment*
+ctk_scale_button_get_adjustment	(CtkScaleButton *button)
 {
   g_return_val_if_fail (CTK_IS_SCALE_BUTTON (button), NULL);
 
@@ -634,18 +634,18 @@ ctk_scale_button_get_adjustment	(GtkScaleButton *button)
 
 /**
  * ctk_scale_button_set_adjustment:
- * @button: a #GtkScaleButton
- * @adjustment: a #GtkAdjustment
+ * @button: a #CtkScaleButton
+ * @adjustment: a #CtkAdjustment
  *
- * Sets the #GtkAdjustment to be used as a model
- * for the #GtkScaleButton’s scale.
+ * Sets the #CtkAdjustment to be used as a model
+ * for the #CtkScaleButton’s scale.
  * See ctk_range_set_adjustment() for details.
  *
  * Since: 2.12
  */
 void
-ctk_scale_button_set_adjustment	(GtkScaleButton *button,
-				 GtkAdjustment  *adjustment)
+ctk_scale_button_set_adjustment	(CtkScaleButton *button,
+				 CtkAdjustment  *adjustment)
 {
   g_return_if_fail (CTK_IS_SCALE_BUTTON (button));
 
@@ -669,16 +669,16 @@ ctk_scale_button_set_adjustment	(GtkScaleButton *button,
 
 /**
  * ctk_scale_button_get_plus_button:
- * @button: a #GtkScaleButton
+ * @button: a #CtkScaleButton
  *
- * Retrieves the plus button of the #GtkScaleButton.
+ * Retrieves the plus button of the #CtkScaleButton.
  *
- * Returns: (transfer none) (type Gtk.Button): the plus button of the #GtkScaleButton as a #GtkButton
+ * Returns: (transfer none) (type Ctk.Button): the plus button of the #CtkScaleButton as a #CtkButton
  *
  * Since: 2.14
  */
-GtkWidget *
-ctk_scale_button_get_plus_button (GtkScaleButton *button)
+CtkWidget *
+ctk_scale_button_get_plus_button (CtkScaleButton *button)
 {
   g_return_val_if_fail (CTK_IS_SCALE_BUTTON (button), NULL);
 
@@ -687,16 +687,16 @@ ctk_scale_button_get_plus_button (GtkScaleButton *button)
 
 /**
  * ctk_scale_button_get_minus_button:
- * @button: a #GtkScaleButton
+ * @button: a #CtkScaleButton
  *
- * Retrieves the minus button of the #GtkScaleButton.
+ * Retrieves the minus button of the #CtkScaleButton.
  *
- * Returns: (transfer none) (type Gtk.Button): the minus button of the #GtkScaleButton as a #GtkButton
+ * Returns: (transfer none) (type Ctk.Button): the minus button of the #CtkScaleButton as a #CtkButton
  *
  * Since: 2.14
  */
-GtkWidget *
-ctk_scale_button_get_minus_button (GtkScaleButton *button)
+CtkWidget *
+ctk_scale_button_get_minus_button (CtkScaleButton *button)
 {
   g_return_val_if_fail (CTK_IS_SCALE_BUTTON (button), NULL);
 
@@ -705,16 +705,16 @@ ctk_scale_button_get_minus_button (GtkScaleButton *button)
 
 /**
  * ctk_scale_button_get_popup:
- * @button: a #GtkScaleButton
+ * @button: a #CtkScaleButton
  *
- * Retrieves the popup of the #GtkScaleButton.
+ * Retrieves the popup of the #CtkScaleButton.
  *
- * Returns: (transfer none): the popup of the #GtkScaleButton
+ * Returns: (transfer none): the popup of the #CtkScaleButton
  *
  * Since: 2.14
  */
-GtkWidget *
-ctk_scale_button_get_popup (GtkScaleButton *button)
+CtkWidget *
+ctk_scale_button_get_popup (CtkScaleButton *button)
 {
   g_return_val_if_fail (CTK_IS_SCALE_BUTTON (button), NULL);
 
@@ -722,10 +722,10 @@ ctk_scale_button_get_popup (GtkScaleButton *button)
 }
 
 static void
-apply_orientation (GtkScaleButton *button,
-                   GtkOrientation  orientation)
+apply_orientation (CtkScaleButton *button,
+                   CtkOrientation  orientation)
 {
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButtonPrivate *priv = button->priv;
 
   if (priv->applied_orientation != orientation)
     {
@@ -760,10 +760,10 @@ apply_orientation (GtkScaleButton *button,
 }
 
 static void
-ctk_scale_button_set_orientation_private (GtkScaleButton *button,
-                                          GtkOrientation  orientation)
+ctk_scale_button_set_orientation_private (CtkScaleButton *button,
+                                          CtkOrientation  orientation)
 {
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButtonPrivate *priv = button->priv;
 
   if (priv->orientation != orientation)
     {
@@ -777,12 +777,12 @@ ctk_scale_button_set_orientation_private (GtkScaleButton *button,
  */
 
 static gboolean
-ctk_scale_button_scroll (GtkWidget      *widget,
+ctk_scale_button_scroll (CtkWidget      *widget,
 			 GdkEventScroll *event)
 {
-  GtkScaleButton *button;
-  GtkScaleButtonPrivate *priv;
-  GtkAdjustment *adjustment;
+  CtkScaleButton *button;
+  CtkScaleButtonPrivate *priv;
+  CtkAdjustment *adjustment;
   gdouble d;
 
   button = CTK_SCALE_BUTTON (widget);
@@ -817,13 +817,13 @@ ctk_scale_button_scroll (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_scale_popup (GtkWidget *widget)
+ctk_scale_popup (CtkWidget *widget)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (widget);
-  GtkScaleButtonPrivate *priv = button->priv;
-  GtkWidget *toplevel;
-  GtkBorder border;
-  GtkRequisition req;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (widget);
+  CtkScaleButtonPrivate *priv = button->priv;
+  CtkWidget *toplevel;
+  CtkBorder border;
+  CtkRequisition req;
   gint w, h;
   gint size;
 
@@ -847,22 +847,22 @@ ctk_scale_popup (GtkWidget *widget)
 }
 
 static void
-ctk_scale_button_popdown (GtkWidget *widget)
+ctk_scale_button_popdown (CtkWidget *widget)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (widget);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (widget);
+  CtkScaleButtonPrivate *priv = button->priv;
 
   ctk_popover_popdown (CTK_POPOVER (priv->dock));
 }
 
 static void
-ctk_scale_button_clicked (GtkButton *button)
+ctk_scale_button_clicked (CtkButton *button)
 {
   ctk_scale_popup (CTK_WIDGET (button));
 }
 
 static void
-ctk_scale_button_popup (GtkWidget *widget)
+ctk_scale_button_popup (CtkWidget *widget)
 {
   ctk_scale_popup (widget);
 }
@@ -871,11 +871,11 @@ ctk_scale_button_popup (GtkWidget *widget)
  * +/- button callbacks.
  */
 static gboolean
-button_click (GtkScaleButton *button,
-              GtkWidget      *active)
+button_click (CtkScaleButton *button,
+              CtkWidget      *active)
 {
-  GtkScaleButtonPrivate *priv = button->priv;
-  GtkAdjustment *adjustment = priv->adjustment;
+  CtkScaleButtonPrivate *priv = button->priv;
+  CtkAdjustment *adjustment = priv->adjustment;
   gboolean can_continue = TRUE;
   gdouble val;
 
@@ -905,8 +905,8 @@ button_click (GtkScaleButton *button,
 static gboolean
 cb_button_timeout (gpointer user_data)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
+  CtkScaleButtonPrivate *priv = button->priv;
   gboolean res;
 
   if (priv->click_id == 0)
@@ -923,12 +923,12 @@ cb_button_timeout (gpointer user_data)
 }
 
 static gboolean
-cb_button_press (GtkWidget      *widget,
+cb_button_press (CtkWidget      *widget,
 		 GdkEventButton *event,
 		 gpointer        user_data)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
+  CtkScaleButtonPrivate *priv = button->priv;
   gint double_click_time;
 
   if (priv->click_id != 0)
@@ -949,12 +949,12 @@ cb_button_press (GtkWidget      *widget,
 }
 
 static gboolean
-cb_button_release (GtkWidget      *widget,
+cb_button_release (CtkWidget      *widget,
 		   GdkEventButton *event,
 		   gpointer        user_data)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
+  CtkScaleButtonPrivate *priv = button->priv;
 
   if (priv->click_id != 0)
     {
@@ -966,11 +966,11 @@ cb_button_release (GtkWidget      *widget,
 }
 
 static void
-cb_button_clicked (GtkWidget *widget,
+cb_button_clicked (CtkWidget *widget,
                    gpointer   user_data)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
+  CtkScaleButtonPrivate *priv = button->priv;
 
   if (priv->click_id != 0)
     return;
@@ -979,10 +979,10 @@ cb_button_clicked (GtkWidget *widget,
 }
 
 static void
-ctk_scale_button_update_icon (GtkScaleButton *button)
+ctk_scale_button_update_icon (CtkScaleButton *button)
 {
-  GtkScaleButtonPrivate *priv = button->priv;
-  GtkAdjustment *adjustment;
+  CtkScaleButtonPrivate *priv = button->priv;
+  CtkAdjustment *adjustment;
   gdouble value;
   const gchar *name;
   guint num_icons;
@@ -1051,10 +1051,10 @@ ctk_scale_button_update_icon (GtkScaleButton *button)
 }
 
 static void
-cb_scale_value_changed (GtkRange *range,
+cb_scale_value_changed (CtkRange *range,
                         gpointer  user_data)
 {
-  GtkScaleButton *button = user_data;
+  CtkScaleButton *button = user_data;
   gdouble value;
   gdouble upper, lower;
 
@@ -1072,11 +1072,11 @@ cb_scale_value_changed (GtkRange *range,
 }
 
 static void
-cb_popup_mapped (GtkWidget *popup,
+cb_popup_mapped (CtkWidget *popup,
                  gpointer   user_data)
 {
-  GtkScaleButton *button = user_data;
-  GtkScaleButtonPrivate *priv = button->priv;
+  CtkScaleButton *button = user_data;
+  CtkScaleButtonPrivate *priv = button->priv;
 
   ctk_widget_grab_focus (priv->scale);
 }

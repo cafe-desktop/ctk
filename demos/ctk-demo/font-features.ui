@@ -2,23 +2,23 @@
 <!-- Generated with glade 3.18.1 -->
 <interface>
   <requires lib="ctk+" version="3.12"/>
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="default-width">600</property>
     <property name="default-height">500</property>
     <child type="titlebar">
-      <object class="GtkHeaderBar">
+      <object class="CtkHeaderBar">
         <property name="visible">1</property>
         <property name="show_close_button">1</property>
         <property name="title">Font Features</property>
         <child>
-          <object class="GtkButton" id="reset">
+          <object class="CtkButton" id="reset">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="receives_default">1</property>
             <property name="tooltip-text">Reset</property>
             <signal name="clicked" handler="reset" swapped="no"/>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">1</property>
                 <property name="icon_name">view-refresh-symbolic</property>
               </object>
@@ -28,24 +28,24 @@
       </object>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">1</property>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="CtkScrolledWindow">
             <property name="visible">1</property>
             <property name="can_focus">1</property>
             <property name="hscrollbar_policy">never</property>
             <child>
-              <object class="GtkViewport">
+              <object class="CtkViewport">
                 <property name="visible">1</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="CtkBox">
                     <property name="visible">1</property>
                     <property name="margin">10</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkFontButton" id="font">
+                      <object class="CtkFontButton" id="font">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <property name="receives_default">1</property>
@@ -54,12 +54,12 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="script_lang">
+                      <object class="CtkComboBox" id="script_lang">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <signal name="changed" handler="script_changed" swapped="no"/>
                         <child>
-                          <object class="GtkCellRendererText"/>
+                          <object class="CtkCellRendererText"/>
                           <attributes>
                             <attribute name="text">0</attribute>
                           </attributes>
@@ -67,28 +67,28 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="kern_pres">
+                                  <object class="CtkImage" id="kern_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="kern_dflt">
+                                  <object class="CtkCheckButton" id="kern_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -97,7 +97,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="kern">
+                                  <object class="CtkCheckButton" id="kern">
                                     <property name="label" translatable="yes">Enabled</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -112,7 +112,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Kerning</property>
                           </object>
@@ -120,28 +120,28 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="liga_pres">
+                                  <object class="CtkImage" id="liga_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="liga_dflt">
+                                  <object class="CtkCheckButton" id="liga_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -150,7 +150,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="liga">
+                                  <object class="CtkCheckButton" id="liga">
                                     <property name="label" translatable="yes">Common Ligatures</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -163,17 +163,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="dlig_pres">
+                                  <object class="CtkImage" id="dlig_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="dlig_dflt">
+                                  <object class="CtkCheckButton" id="dlig_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -182,7 +182,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="dlig">
+                                  <object class="CtkCheckButton" id="dlig">
                                     <property name="label" translatable="yes">Discretionary Ligatures</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -195,17 +195,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="hlig_pres">
+                                  <object class="CtkImage" id="hlig_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="hlig_dflt">
+                                  <object class="CtkCheckButton" id="hlig_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -214,7 +214,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="hlig">
+                                  <object class="CtkCheckButton" id="hlig">
                                     <property name="label" translatable="yes">Historical Ligatures</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -227,17 +227,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="clig_pres">
+                                  <object class="CtkImage" id="clig_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="clig_dflt">
+                                  <object class="CtkCheckButton" id="clig_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -246,7 +246,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="clig">
+                                  <object class="CtkCheckButton" id="clig">
                                     <property name="label" translatable="yes">Contextual Ligatures</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -261,7 +261,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Ligatures</property>
                           </object>
@@ -269,28 +269,28 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="smcp_pres">
+                                  <object class="CtkImage" id="smcp_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="smcp_dflt">
+                                  <object class="CtkCheckButton" id="smcp_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -299,7 +299,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="smcp">
+                                  <object class="CtkCheckButton" id="smcp">
                                     <property name="label" translatable="yes">Small Caps</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -312,17 +312,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="c2sc_pres">
+                                  <object class="CtkImage" id="c2sc_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="c2sc_dflt">
+                                  <object class="CtkCheckButton" id="c2sc_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -331,7 +331,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="c2sc">
+                                  <object class="CtkCheckButton" id="c2sc">
                                     <property name="label" translatable="yes">Small Caps from Caps</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -344,17 +344,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="pcap_pres">
+                                  <object class="CtkImage" id="pcap_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="pcap_dflt">
+                                  <object class="CtkCheckButton" id="pcap_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -363,7 +363,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="pcap">
+                                  <object class="CtkCheckButton" id="pcap">
                                     <property name="label" translatable="yes">Petite Caps</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -376,17 +376,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="c2pc_pres">
+                                  <object class="CtkImage" id="c2pc_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="c2pc_dflt">
+                                  <object class="CtkCheckButton" id="c2pc_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -395,7 +395,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="c2pc">
+                                  <object class="CtkCheckButton" id="c2pc">
                                     <property name="label" translatable="yes">Caps to Petite Caps</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -408,17 +408,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="unic_pres">
+                                  <object class="CtkImage" id="unic_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="unic_dflt">
+                                  <object class="CtkCheckButton" id="unic_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -427,7 +427,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="unic">
+                                  <object class="CtkCheckButton" id="unic">
                                     <property name="label" translatable="yes">Unicase</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -440,17 +440,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="cpsp_pres">
+                                  <object class="CtkImage" id="cpsp_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="cpsp_dflt">
+                                  <object class="CtkCheckButton" id="cpsp_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -459,7 +459,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="cpsp">
+                                  <object class="CtkCheckButton" id="cpsp">
                                     <property name="label" translatable="yes">Capital Spacing</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -472,17 +472,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="case_pres">
+                                  <object class="CtkImage" id="case_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="case_dflt">
+                                  <object class="CtkCheckButton" id="case_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -491,7 +491,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="case">
+                                  <object class="CtkCheckButton" id="case">
                                     <property name="label" translatable="yes">Case-sensitive Forms</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -506,7 +506,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Letter Case</property>
                           </object>
@@ -514,21 +514,21 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="numcasedefault_pres">
+                                  <object class="CtkImage" id="numcasedefault_pres">
                                     <property name="visible">1</property>
                                     <property name="opacity">0</property>
                                     <property name="icon-name">object-select-symbolic</property>
@@ -536,7 +536,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="numcasedefault">
+                                  <object class="CtkRadioButton" id="numcasedefault">
                                     <property name="label" translatable="yes">Default</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -549,17 +549,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="lnum_pres">
+                                  <object class="CtkImage" id="lnum_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="lnum">
+                                  <object class="CtkRadioButton" id="lnum">
                                     <property name="label" translatable="yes">Lining</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -573,17 +573,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="onum_pres">
+                                  <object class="CtkImage" id="onum_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="onum">
+                                  <object class="CtkRadioButton" id="onum">
                                     <property name="label" translatable="yes">Old-Style</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -599,7 +599,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Number Case</property>
                           </object>
@@ -607,21 +607,21 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="numspacedefault_pres">
+                                  <object class="CtkImage" id="numspacedefault_pres">
                                     <property name="visible">1</property>
                                     <property name="opacity">0</property>
                                     <property name="icon-name">object-select-symbolic</property>
@@ -629,7 +629,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="numspacedefault">
+                                  <object class="CtkRadioButton" id="numspacedefault">
                                     <property name="label" translatable="yes">Default</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -642,17 +642,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="pnum_pres">
+                                  <object class="CtkImage" id="pnum_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="pnum">
+                                  <object class="CtkRadioButton" id="pnum">
                                     <property name="label" translatable="yes">Proportional</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -666,17 +666,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="tnum_pres">
+                                  <object class="CtkImage" id="tnum_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="tnum">
+                                  <object class="CtkRadioButton" id="tnum">
                                     <property name="label" translatable="yes">Tabular</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -692,7 +692,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Number Spacing</property>
                           </object>
@@ -700,21 +700,21 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="fractiondefault_pres">
+                                  <object class="CtkImage" id="fractiondefault_pres">
                                     <property name="visible">1</property>
                                     <property name="opacity">0</property>
                                     <property name="icon-name">object-select-symbolic</property>
@@ -722,7 +722,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="fractiondefault">
+                                  <object class="CtkRadioButton" id="fractiondefault">
                                     <property name="label" translatable="yes">Off</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -735,17 +735,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="frac_pres">
+                                  <object class="CtkImage" id="frac_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="frac">
+                                  <object class="CtkRadioButton" id="frac">
                                     <property name="label" translatable="yes">Normal</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -759,17 +759,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="afrc_pres">
+                                  <object class="CtkImage" id="afrc_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="afrc">
+                                  <object class="CtkRadioButton" id="afrc">
                                     <property name="label" translatable="yes">Alternate</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -785,7 +785,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Fractions</property>
                           </object>
@@ -793,28 +793,28 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="zero_pres">
+                                  <object class="CtkImage" id="zero_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="zero_dflt">
+                                  <object class="CtkCheckButton" id="zero_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -823,7 +823,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="zero">
+                                  <object class="CtkCheckButton" id="zero">
                                     <property name="label" translatable="yes">Slashed Zero</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -836,17 +836,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="nalt_pres">
+                                  <object class="CtkImage" id="nalt_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="nalt_dflt">
+                                  <object class="CtkCheckButton" id="nalt_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -855,7 +855,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="nalt">
+                                  <object class="CtkCheckButton" id="nalt">
                                     <property name="label" translatable="yes">Alternative Annotations</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -868,17 +868,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="sinf_pres">
+                                  <object class="CtkImage" id="sinf_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="sinf_dflt">
+                                  <object class="CtkCheckButton" id="sinf_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -887,7 +887,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="sinf">
+                                  <object class="CtkCheckButton" id="sinf">
                                     <property name="label" translatable="yes">Scientific Inferiors</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -902,7 +902,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Numeric Extras</property>
                           </object>
@@ -910,28 +910,28 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="swsh_pres">
+                                  <object class="CtkImage" id="swsh_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="swsh_dflt">
+                                  <object class="CtkCheckButton" id="swsh_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -940,7 +940,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="swsh">
+                                  <object class="CtkCheckButton" id="swsh">
                                     <property name="label" translatable="yes">Swash Glyphs</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -953,17 +953,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="cswh_pres">
+                                  <object class="CtkImage" id="cswh_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="cswh_dflt">
+                                  <object class="CtkCheckButton" id="cswh_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -972,7 +972,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="cswh">
+                                  <object class="CtkCheckButton" id="cswh">
                                     <property name="label" translatable="yes">Contextual Swash</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -985,17 +985,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="locl_pres">
+                                  <object class="CtkImage" id="locl_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="locl_dflt">
+                                  <object class="CtkCheckButton" id="locl_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1004,7 +1004,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="locl">
+                                  <object class="CtkCheckButton" id="locl">
                                     <property name="label" translatable="yes">Localized Forms</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1017,17 +1017,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="calt_pres">
+                                  <object class="CtkImage" id="calt_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="calt_dflt">
+                                  <object class="CtkCheckButton" id="calt_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1036,7 +1036,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="calt">
+                                  <object class="CtkCheckButton" id="calt">
                                     <property name="label" translatable="yes">Contextual Alternatives</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1049,17 +1049,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="hist_pres">
+                                  <object class="CtkImage" id="hist_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="hist_dflt">
+                                  <object class="CtkCheckButton" id="hist_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1068,7 +1068,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="hist">
+                                  <object class="CtkCheckButton" id="hist">
                                     <property name="label" translatable="yes">Historical Alternatives</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1081,17 +1081,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="salt_pres">
+                                  <object class="CtkImage" id="salt_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="salt_dflt">
+                                  <object class="CtkCheckButton" id="salt_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1100,7 +1100,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="salt">
+                                  <object class="CtkCheckButton" id="salt">
                                     <property name="label" translatable="yes">Stylistic Alternatives</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1113,17 +1113,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="titl_pres">
+                                  <object class="CtkImage" id="titl_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="titl_dflt">
+                                  <object class="CtkCheckButton" id="titl_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1132,7 +1132,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="titl">
+                                  <object class="CtkCheckButton" id="titl">
                                     <property name="label" translatable="yes">Titling Alternatives</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1145,17 +1145,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="rand_pres">
+                                  <object class="CtkImage" id="rand_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="rand_dflt">
+                                  <object class="CtkCheckButton" id="rand_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1164,7 +1164,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="rand">
+                                  <object class="CtkCheckButton" id="rand">
                                     <property name="label" translatable="yes">Randomize</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1177,17 +1177,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="subs_pres">
+                                  <object class="CtkImage" id="subs_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="subs_dflt">
+                                  <object class="CtkCheckButton" id="subs_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1196,7 +1196,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="subs">
+                                  <object class="CtkCheckButton" id="subs">
                                     <property name="label" translatable="yes">Subscript</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1209,17 +1209,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="sups_pres">
+                                  <object class="CtkImage" id="sups_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="sups_dflt">
+                                  <object class="CtkCheckButton" id="sups_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1228,7 +1228,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="sups">
+                                  <object class="CtkCheckButton" id="sups">
                                     <property name="label" translatable="yes">Superscript</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1243,7 +1243,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Character Alternatives</property>
                           </object>
@@ -1251,28 +1251,28 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="init_pres">
+                                  <object class="CtkImage" id="init_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="init_dflt">
+                                  <object class="CtkCheckButton" id="init_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1281,7 +1281,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="init">
+                                  <object class="CtkCheckButton" id="init">
                                     <property name="label" translatable="yes">Initial Forms</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1294,17 +1294,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="medi_pres">
+                                  <object class="CtkImage" id="medi_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="medi_dflt">
+                                  <object class="CtkCheckButton" id="medi_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1313,7 +1313,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="medi">
+                                  <object class="CtkCheckButton" id="medi">
                                     <property name="label" translatable="yes">Medial Forms</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1326,17 +1326,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="fina_pres">
+                                  <object class="CtkImage" id="fina_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="fina_dflt">
+                                  <object class="CtkCheckButton" id="fina_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1345,7 +1345,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="fina">
+                                  <object class="CtkCheckButton" id="fina">
                                     <property name="label" translatable="yes">Final Forms</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1358,17 +1358,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="isol_pres">
+                                  <object class="CtkImage" id="isol_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="isol_dflt">
+                                  <object class="CtkCheckButton" id="isol_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1377,7 +1377,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="isol">
+                                  <object class="CtkCheckButton" id="isol">
                                     <property name="label" translatable="yes">Isolated Forms</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1392,7 +1392,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Positional Alternatives</property>
                           </object>
@@ -1400,28 +1400,28 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkExpander">
+                      <object class="CtkExpander">
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">1</property>
                             <property name="margin_start">10</property>
                             <property name="margin_end">10</property>
                             <property name="margin_top">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="ss01_pres">
+                                  <object class="CtkImage" id="ss01_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss01_dflt">
+                                  <object class="CtkCheckButton" id="ss01_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1430,7 +1430,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss01">
+                                  <object class="CtkCheckButton" id="ss01">
                                     <property name="label" translatable="yes">Set 1</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1443,17 +1443,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="ss02_pres">
+                                  <object class="CtkImage" id="ss02_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss02_dflt">
+                                  <object class="CtkCheckButton" id="ss02_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1462,7 +1462,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss02">
+                                  <object class="CtkCheckButton" id="ss02">
                                     <property name="label" translatable="yes">Set 2</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1475,17 +1475,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="ss03_pres">
+                                  <object class="CtkImage" id="ss03_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss03_dflt">
+                                  <object class="CtkCheckButton" id="ss03_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1494,7 +1494,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss03">
+                                  <object class="CtkCheckButton" id="ss03">
                                     <property name="label" translatable="yes">Set 3</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1507,17 +1507,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="ss04_pres">
+                                  <object class="CtkImage" id="ss04_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss04_dflt">
+                                  <object class="CtkCheckButton" id="ss04_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1526,7 +1526,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss04">
+                                  <object class="CtkCheckButton" id="ss04">
                                     <property name="label" translatable="yes">Set 4</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1539,17 +1539,17 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkBox">
+                              <object class="CtkBox">
                                 <property name="visible">1</property>
                                 <child>
-                                  <object class="GtkImage" id="ss05_pres">
+                                  <object class="CtkImage" id="ss05_pres">
                                     <property name="visible">1</property>
                                     <property name="icon-name">object-select-symbolic</property>
                                     <property name="icon-size">1</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss05_dflt">
+                                  <object class="CtkCheckButton" id="ss05_dflt">
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
                                     <property name="draw_indicator">1</property>
@@ -1558,7 +1558,7 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="ss05">
+                                  <object class="CtkCheckButton" id="ss05">
                                     <property name="label" translatable="yes">Set 5</property>
                                     <property name="visible">1</property>
                                     <property name="can_focus">1</property>
@@ -1573,7 +1573,7 @@
                           </object>
                         </child>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="CtkLabel">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Alternative Stylistic Sets</property>
                           </object>
@@ -1590,22 +1590,22 @@
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">1</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkStack" id="stack">
+              <object class="CtkStack" id="stack">
                 <property name="visible">1</property>
                 <property name="margin_start">20</property>
                 <property name="margin_end">20</property>
                 <property name="margin_top">20</property>
                 <property name="margin_bottom">20</property>
                 <child>
-                  <object class="GtkEventBox">
+                  <object class="CtkEventBox">
                     <property name="visible">1</property>
                     <signal name="button-press-event" handler="switch_to_entry"/>
                     <child>
-                      <object class="GtkLabel" id="label">
+                      <object class="CtkLabel" id="label">
                         <property name="visible">1</property>
                         <property name="wrap">1</property>
                         <property name="xalign">0</property>
@@ -1619,7 +1619,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry">
+                  <object class="CtkEntry" id="entry">
                     <property name="visible">1</property>
                     <property name="text">Grumpy wizards make toxic brew for the evil Queen and Jack. A quick movement of the enemy will jeopardize six gunboats. The job of waxing linoleum frequently peeves chintzy kids. My girl wove six dozen plaid jackets before she quit. Twelve ziggurats quickly jumped a finch box.
 
@@ -1638,7 +1638,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel" id="settings">
+              <object class="CtkLabel" id="settings">
                 <property name="visible">1</property>
                 <property name="margin_start">20</property>
                 <property name="margin_end">20</property>

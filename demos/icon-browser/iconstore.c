@@ -3,17 +3,17 @@
 
 struct _IconStore
 {
-  GtkListStore parent;
+  CtkListStore parent;
 
   gint text_column;
 };
 
 struct _IconStoreClass
 {
-  GtkListStoreClass parent_class;
+  CtkListStoreClass parent_class;
 };
 
-static void icon_store_drag_source_init (GtkTreeDragSourceIface *iface);
+static void icon_store_drag_source_init (CtkTreeDragSourceIface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (IconStore, icon_store, CTK_TYPE_LIST_STORE,
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_DRAG_SOURCE,
@@ -36,17 +36,17 @@ icon_store_class_init (IconStoreClass *class)
 }
 
 static gboolean
-row_draggable (GtkTreeDragSource *drag_source,
-               GtkTreePath       *path)
+row_draggable (CtkTreeDragSource *drag_source,
+               CtkTreePath       *path)
 {
   return TRUE;
 }
 
 static gboolean
-drag_data_delete (GtkTreeDragSource *drag_source,
-                  GtkTreePath       *path)
+drag_data_delete (CtkTreeDragSource *drag_source,
+                  CtkTreePath       *path)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   if (ctk_tree_model_get_iter (CTK_TREE_MODEL (drag_source), &iter, path))
     return ctk_list_store_remove (CTK_LIST_STORE (drag_source), &iter);
@@ -54,11 +54,11 @@ drag_data_delete (GtkTreeDragSource *drag_source,
 }
 
 static gboolean
-drag_data_get (GtkTreeDragSource *drag_source,
-               GtkTreePath       *path,
-               GtkSelectionData  *selection)
+drag_data_get (CtkTreeDragSource *drag_source,
+               CtkTreePath       *path,
+               CtkSelectionData  *selection)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *text;
 
   if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (drag_source), &iter, path))
@@ -77,7 +77,7 @@ drag_data_get (GtkTreeDragSource *drag_source,
 
 
 static void
-icon_store_drag_source_init (GtkTreeDragSourceIface *iface)
+icon_store_drag_source_init (CtkTreeDragSourceIface *iface)
 {
   iface->row_draggable = row_draggable;
   iface->drag_data_delete = drag_data_delete;

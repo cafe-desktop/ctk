@@ -32,11 +32,11 @@ typedef struct {
   char **options;
   char **option_labels;
   char *selected;
-} GtkFileChooserNativeChoice;
+} CtkFileChooserNativeChoice;
 
-struct _GtkFileChooserNative
+struct _CtkFileChooserNative
 {
-  GtkNativeDialog parent_instance;
+  CtkNativeDialog parent_instance;
 
   char *accept_label;
   char *cancel_label;
@@ -47,27 +47,27 @@ struct _GtkFileChooserNative
   GFile *current_folder;
   GFile *current_file;
   char *current_name;
-  GtkFileFilter *current_filter;
+  CtkFileFilter *current_filter;
   GSList *choices;
 
   /* Fallback mode */
-  GtkWidget *dialog;
-  GtkWidget *accept_button;
-  GtkWidget *cancel_button;
+  CtkWidget *dialog;
+  CtkWidget *accept_button;
+  CtkWidget *cancel_button;
 
   gpointer mode_data;
 };
 
-gboolean ctk_file_chooser_native_win32_show (GtkFileChooserNative *self);
-void ctk_file_chooser_native_win32_hide (GtkFileChooserNative *self);
+gboolean ctk_file_chooser_native_win32_show (CtkFileChooserNative *self);
+void ctk_file_chooser_native_win32_hide (CtkFileChooserNative *self);
 
 #if defined GDK_WINDOWING_QUARTZ && MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
-gboolean ctk_file_chooser_native_quartz_show (GtkFileChooserNative *self);
-void ctk_file_chooser_native_quartz_hide (GtkFileChooserNative *self);
+gboolean ctk_file_chooser_native_quartz_show (CtkFileChooserNative *self);
+void ctk_file_chooser_native_quartz_hide (CtkFileChooserNative *self);
 #endif
 
-gboolean ctk_file_chooser_native_portal_show (GtkFileChooserNative *self);
-void ctk_file_chooser_native_portal_hide (GtkFileChooserNative *self);
+gboolean ctk_file_chooser_native_portal_show (CtkFileChooserNative *self);
+void ctk_file_chooser_native_portal_hide (CtkFileChooserNative *self);
 
 G_END_DECLS
 

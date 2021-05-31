@@ -25,7 +25,7 @@
 #include <ctk/ctk.h>
 
 static void
-redraw_event_box (GtkWidget *widget)
+redraw_event_box (CtkWidget *widget)
 {
   while (widget)
     {
@@ -40,10 +40,10 @@ redraw_event_box (GtkWidget *widget)
 }
 
 static void
-combo_changed_cb (GtkWidget *combo,
+combo_changed_cb (CtkWidget *combo,
 		  gpointer   data)
 {
-  GtkWidget *label = CTK_WIDGET (data);
+  CtkWidget *label = CTK_WIDGET (data);
   gint active;
 
   active = ctk_combo_box_get_active (CTK_COMBO_BOX (combo));
@@ -52,26 +52,26 @@ combo_changed_cb (GtkWidget *combo,
 }
 
 static void
-scale_changed_cb (GtkRange *range,
+scale_changed_cb (CtkRange *range,
 		  gpointer   data)
 {
   double angle = ctk_range_get_value (range);
-  GtkWidget *label = CTK_WIDGET (data);
+  CtkWidget *label = CTK_WIDGET (data);
   
   ctk_label_set_angle (CTK_LABEL (label), angle);
   redraw_event_box (label);
 }
 
 static gboolean
-ebox_draw_cb (GtkWidget *widget,
+ebox_draw_cb (CtkWidget *widget,
               cairo_t   *cr,
               gpointer   data)
 {
   PangoLayout *layout;
   const double dashes[] = { 6, 18 };
-  GtkAllocation label_allocation;
-  GtkRequisition minimum_size, natural_size;
-  GtkWidget *label = data;
+  CtkAllocation label_allocation;
+  CtkRequisition minimum_size, natural_size;
+  CtkWidget *label = data;
   gint x, y;
 
   cairo_translate (cr, -0.5, -0.5);
@@ -122,8 +122,8 @@ ebox_draw_cb (GtkWidget *widget,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *vbox, *label;
-  GtkWidget *combo, *scale, *ebox;
+  CtkWidget *window, *vbox, *label;
+  CtkWidget *combo, *scale, *ebox;
 
   ctk_init (&argc, &argv);
 

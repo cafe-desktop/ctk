@@ -30,7 +30,7 @@ typedef struct
   GdkModifierType modifier;
 } AccelKey;
 
-struct _GtkApplicationAccels
+struct _CtkApplicationAccels
 {
   GObject parent;
 
@@ -38,7 +38,7 @@ struct _GtkApplicationAccels
   GHashTable *accel_to_actions;
 };
 
-G_DEFINE_TYPE (GtkApplicationAccels, ctk_application_accels, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkApplicationAccels, ctk_application_accels, G_TYPE_OBJECT)
 
 static AccelKey *
 accel_key_copy (const AccelKey *source)
@@ -79,7 +79,7 @@ accel_key_equal (gconstpointer a,
 }
 
 static void
-add_entry (GtkApplicationAccels *accels,
+add_entry (CtkApplicationAccels *accels,
            AccelKey             *key,
            const gchar          *action_and_target)
 {
@@ -103,7 +103,7 @@ add_entry (GtkApplicationAccels *accels,
 }
 
 static void
-remove_entry (GtkApplicationAccels *accels,
+remove_entry (CtkApplicationAccels *accels,
               AccelKey             *key,
               const gchar          *action_and_target)
 {
@@ -145,7 +145,7 @@ remove_entry (GtkApplicationAccels *accels,
 static void
 ctk_application_accels_finalize (GObject *object)
 {
-  GtkApplicationAccels *accels = CTK_APPLICATION_ACCELS (object);
+  CtkApplicationAccels *accels = CTK_APPLICATION_ACCELS (object);
 
   g_hash_table_unref (accels->accel_to_actions);
   g_hash_table_unref (accels->action_to_accels);
@@ -154,7 +154,7 @@ ctk_application_accels_finalize (GObject *object)
 }
 
 static void
-ctk_application_accels_class_init (GtkApplicationAccelsClass *klass)
+ctk_application_accels_class_init (CtkApplicationAccelsClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -162,21 +162,21 @@ ctk_application_accels_class_init (GtkApplicationAccelsClass *klass)
 }
 
 static void
-ctk_application_accels_init (GtkApplicationAccels *accels)
+ctk_application_accels_init (CtkApplicationAccels *accels)
 {
   accels->accel_to_actions = g_hash_table_new_full (accel_key_hash, accel_key_equal,
                                                     accel_key_free, g_free);
   accels->action_to_accels = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
 }
 
-GtkApplicationAccels *
+CtkApplicationAccels *
 ctk_application_accels_new (void)
 {
   return g_object_new (CTK_TYPE_APPLICATION_ACCELS, NULL);
 }
 
 void
-ctk_application_accels_set_accels_for_action (GtkApplicationAccels *accels,
+ctk_application_accels_set_accels_for_action (CtkApplicationAccels *accels,
                                               const gchar          *detailed_action_name,
                                               const gchar * const  *accelerators)
 {
@@ -232,7 +232,7 @@ ctk_application_accels_set_accels_for_action (GtkApplicationAccels *accels,
 }
 
 gchar **
-ctk_application_accels_get_accels_for_action (GtkApplicationAccels *accels,
+ctk_application_accels_get_accels_for_action (CtkApplicationAccels *accels,
                                               const gchar          *detailed_action_name)
 {
   gchar *action_and_target;
@@ -262,7 +262,7 @@ ctk_application_accels_get_accels_for_action (GtkApplicationAccels *accels,
 }
 
 gchar **
-ctk_application_accels_get_actions_for_accel (GtkApplicationAccels *accels,
+ctk_application_accels_get_actions_for_accel (CtkApplicationAccels *accels,
                                               const gchar          *accel)
 {
   const gchar * const *actions_and_targets;
@@ -302,7 +302,7 @@ ctk_application_accels_get_actions_for_accel (GtkApplicationAccels *accels,
 }
 
 gchar **
-ctk_application_accels_list_action_descriptions (GtkApplicationAccels *accels)
+ctk_application_accels_list_action_descriptions (CtkApplicationAccels *accels)
 {
   GHashTableIter iter;
   gchar **result;
@@ -332,9 +332,9 @@ ctk_application_accels_list_action_descriptions (GtkApplicationAccels *accels)
 }
 
 void
-ctk_application_accels_foreach_key (GtkApplicationAccels     *accels,
-                                    GtkWindow                *window,
-                                    GtkWindowKeysForeachFunc  callback,
+ctk_application_accels_foreach_key (CtkApplicationAccels     *accels,
+                                    CtkWindow                *window,
+                                    CtkWindowKeysForeachFunc  callback,
                                     gpointer                  user_data)
 {
   GHashTableIter iter;
@@ -350,7 +350,7 @@ ctk_application_accels_foreach_key (GtkApplicationAccels     *accels,
 }
 
 gboolean
-ctk_application_accels_activate (GtkApplicationAccels *accels,
+ctk_application_accels_activate (CtkApplicationAccels *accels,
                                  GActionGroup         *action_group,
                                  guint                 key,
                                  GdkModifierType       modifier)

@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RANGE_ACCESSIBLE                       (ctk_range_accessible_get_type ())
-#define CTK_RANGE_ACCESSIBLE(obj)                       (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RANGE_ACCESSIBLE, GtkRangeAccessible))
-#define CTK_RANGE_ACCESSIBLE_CLASS(klass)               (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RANGE_ACCESSIBLE, GtkRangeAccessibleClass))
+#define CTK_RANGE_ACCESSIBLE(obj)                       (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RANGE_ACCESSIBLE, CtkRangeAccessible))
+#define CTK_RANGE_ACCESSIBLE_CLASS(klass)               (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RANGE_ACCESSIBLE, CtkRangeAccessibleClass))
 #define CTK_IS_RANGE_ACCESSIBLE(obj)                    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RANGE_ACCESSIBLE))
 #define CTK_IS_RANGE_ACCESSIBLE_CLASS(klass)            (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RANGE_ACCESSIBLE))
-#define CTK_RANGE_ACCESSIBLE_GET_CLASS(obj)             (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RANGE_ACCESSIBLE, GtkRangeAccessibleClass))
+#define CTK_RANGE_ACCESSIBLE_GET_CLASS(obj)             (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RANGE_ACCESSIBLE, CtkRangeAccessibleClass))
 
-typedef struct _GtkRangeAccessible        GtkRangeAccessible;
-typedef struct _GtkRangeAccessibleClass   GtkRangeAccessibleClass;
-typedef struct _GtkRangeAccessiblePrivate GtkRangeAccessiblePrivate;
+typedef struct _CtkRangeAccessible        CtkRangeAccessible;
+typedef struct _CtkRangeAccessibleClass   CtkRangeAccessibleClass;
+typedef struct _CtkRangeAccessiblePrivate CtkRangeAccessiblePrivate;
 
-struct _GtkRangeAccessible
+struct _CtkRangeAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkRangeAccessiblePrivate *priv;
+  CtkRangeAccessiblePrivate *priv;
 };
 
-struct _GtkRangeAccessibleClass
+struct _CtkRangeAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

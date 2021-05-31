@@ -29,13 +29,13 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FILE_CHOOSER             (ctk_file_chooser_get_type ())
-#define CTK_FILE_CHOOSER(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER, GtkFileChooser))
+#define CTK_FILE_CHOOSER(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER, CtkFileChooser))
 #define CTK_IS_FILE_CHOOSER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_CHOOSER))
 
-typedef struct _GtkFileChooser      GtkFileChooser;
+typedef struct _CtkFileChooser      CtkFileChooser;
 
 /**
- * GtkFileChooserAction:
+ * CtkFileChooserAction:
  * @CTK_FILE_CHOOSER_ACTION_OPEN: Indicates open mode.  The file chooser
  *  will only let the user pick an existing file.
  * @CTK_FILE_CHOOSER_ACTION_SAVE: Indicates save mode.  The file chooser
@@ -48,7 +48,7 @@ typedef struct _GtkFileChooser      GtkFileChooser;
  *  new folder.  The file chooser will let the user name an existing or
  *  new folder.
  *
- * Describes whether a #GtkFileChooser is being used to open existing files
+ * Describes whether a #CtkFileChooser is being used to open existing files
  * or to save to a possibly new file.
  */
 typedef enum
@@ -57,10 +57,10 @@ typedef enum
   CTK_FILE_CHOOSER_ACTION_SAVE,
   CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
   CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER
-} GtkFileChooserAction;
+} CtkFileChooserAction;
 
 /**
- * GtkFileChooserConfirmation:
+ * CtkFileChooserConfirmation:
  * @CTK_FILE_CHOOSER_CONFIRMATION_CONFIRM: The file chooser will present
  *  its stock dialog to confirm about overwriting an existing file.
  * @CTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME: The file chooser will
@@ -69,7 +69,7 @@ typedef enum
  *  continue running, so as to let the user select another file name.
  *
  * Used as a return value of handlers for the
- * #GtkFileChooser::confirm-overwrite signal of a #GtkFileChooser. This
+ * #CtkFileChooser::confirm-overwrite signal of a #CtkFileChooser. This
  * value determines whether the file chooser will present the stock
  * confirmation dialog, accept the user’s choice of a filename, or
  * let the user choose another filename.
@@ -81,21 +81,21 @@ typedef enum
   CTK_FILE_CHOOSER_CONFIRMATION_CONFIRM,
   CTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME,
   CTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN
-} GtkFileChooserConfirmation;
+} CtkFileChooserConfirmation;
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_file_chooser_get_type (void) G_GNUC_CONST;
 
-/* GError enumeration for GtkFileChooser */
+/* GError enumeration for CtkFileChooser */
 /**
  * CTK_FILE_CHOOSER_ERROR:
  *
- * Used to get the #GError quark for #GtkFileChooser errors.
+ * Used to get the #GError quark for #CtkFileChooser errors.
  */
 #define CTK_FILE_CHOOSER_ERROR (ctk_file_chooser_error_quark ())
 
 /**
- * GtkFileChooserError:
+ * CtkFileChooserError:
  * @CTK_FILE_CHOOSER_ERROR_NONEXISTENT: Indicates that a file does not exist.
  * @CTK_FILE_CHOOSER_ERROR_BAD_FILENAME: Indicates a malformed filename.
  * @CTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS: Indicates a duplicate path (e.g. when
@@ -103,14 +103,14 @@ GType ctk_file_chooser_get_type (void) G_GNUC_CONST;
  * @CTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME: Indicates an incomplete hostname (e.g. "http://foo" without a slash after that).
  *
  * These identify the various errors that can occur while calling
- * #GtkFileChooser functions.
+ * #CtkFileChooser functions.
  */
 typedef enum {
   CTK_FILE_CHOOSER_ERROR_NONEXISTENT,
   CTK_FILE_CHOOSER_ERROR_BAD_FILENAME,
   CTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS,
   CTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME
-} GtkFileChooserError;
+} CtkFileChooserError;
 
 GDK_AVAILABLE_IN_ALL
 GQuark ctk_file_chooser_error_quark (void);
@@ -118,207 +118,207 @@ GQuark ctk_file_chooser_error_quark (void);
 /* Configuration
  */
 GDK_AVAILABLE_IN_ALL
-void                 ctk_file_chooser_set_action          (GtkFileChooser       *chooser,
-							   GtkFileChooserAction  action);
+void                 ctk_file_chooser_set_action          (CtkFileChooser       *chooser,
+							   CtkFileChooserAction  action);
 GDK_AVAILABLE_IN_ALL
-GtkFileChooserAction ctk_file_chooser_get_action          (GtkFileChooser       *chooser);
+CtkFileChooserAction ctk_file_chooser_get_action          (CtkFileChooser       *chooser);
 GDK_AVAILABLE_IN_ALL
-void                 ctk_file_chooser_set_local_only      (GtkFileChooser       *chooser,
+void                 ctk_file_chooser_set_local_only      (CtkFileChooser       *chooser,
 							   gboolean              local_only);
 GDK_AVAILABLE_IN_ALL
-gboolean             ctk_file_chooser_get_local_only      (GtkFileChooser       *chooser);
+gboolean             ctk_file_chooser_get_local_only      (CtkFileChooser       *chooser);
 GDK_AVAILABLE_IN_ALL
-void                 ctk_file_chooser_set_select_multiple (GtkFileChooser       *chooser,
+void                 ctk_file_chooser_set_select_multiple (CtkFileChooser       *chooser,
 							   gboolean              select_multiple);
 GDK_AVAILABLE_IN_ALL
-gboolean             ctk_file_chooser_get_select_multiple (GtkFileChooser       *chooser);
+gboolean             ctk_file_chooser_get_select_multiple (CtkFileChooser       *chooser);
 GDK_AVAILABLE_IN_ALL
-void                 ctk_file_chooser_set_show_hidden     (GtkFileChooser       *chooser,
+void                 ctk_file_chooser_set_show_hidden     (CtkFileChooser       *chooser,
 							   gboolean              show_hidden);
 GDK_AVAILABLE_IN_ALL
-gboolean             ctk_file_chooser_get_show_hidden     (GtkFileChooser       *chooser);
+gboolean             ctk_file_chooser_get_show_hidden     (CtkFileChooser       *chooser);
 
 GDK_AVAILABLE_IN_ALL
-void                 ctk_file_chooser_set_do_overwrite_confirmation (GtkFileChooser *chooser,
+void                 ctk_file_chooser_set_do_overwrite_confirmation (CtkFileChooser *chooser,
 								     gboolean        do_overwrite_confirmation);
 GDK_AVAILABLE_IN_ALL
-gboolean             ctk_file_chooser_get_do_overwrite_confirmation (GtkFileChooser *chooser);
+gboolean             ctk_file_chooser_get_do_overwrite_confirmation (CtkFileChooser *chooser);
 
 GDK_AVAILABLE_IN_ALL
-void                 ctk_file_chooser_set_create_folders  (GtkFileChooser       *chooser,
+void                 ctk_file_chooser_set_create_folders  (CtkFileChooser       *chooser,
 							  gboolean               create_folders);
 GDK_AVAILABLE_IN_ALL
-gboolean             ctk_file_chooser_get_create_folders (GtkFileChooser *chooser);
+gboolean             ctk_file_chooser_get_create_folders (CtkFileChooser *chooser);
 
 /* Suggested name for the Save-type actions
  */
 GDK_AVAILABLE_IN_ALL
-void        ctk_file_chooser_set_current_name  (GtkFileChooser *chooser,
+void        ctk_file_chooser_set_current_name  (CtkFileChooser *chooser,
 					        const gchar    *name);
 GDK_AVAILABLE_IN_3_10
-gchar *ctk_file_chooser_get_current_name (GtkFileChooser *chooser);
+gchar *ctk_file_chooser_get_current_name (CtkFileChooser *chooser);
 
 /* Filename manipulation
  */
 GDK_AVAILABLE_IN_ALL
-gchar *  ctk_file_chooser_get_filename       (GtkFileChooser *chooser);
+gchar *  ctk_file_chooser_get_filename       (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_set_filename       (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_set_filename       (CtkFileChooser *chooser,
 					      const char     *filename);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_select_filename    (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_select_filename    (CtkFileChooser *chooser,
 					      const char     *filename);
 GDK_AVAILABLE_IN_ALL
-void     ctk_file_chooser_unselect_filename  (GtkFileChooser *chooser,
+void     ctk_file_chooser_unselect_filename  (CtkFileChooser *chooser,
 					      const char     *filename);
 GDK_AVAILABLE_IN_ALL
-void     ctk_file_chooser_select_all         (GtkFileChooser *chooser);
+void     ctk_file_chooser_select_all         (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-void     ctk_file_chooser_unselect_all       (GtkFileChooser *chooser);
+void     ctk_file_chooser_unselect_all       (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-GSList * ctk_file_chooser_get_filenames      (GtkFileChooser *chooser);
+GSList * ctk_file_chooser_get_filenames      (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_set_current_folder (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_set_current_folder (CtkFileChooser *chooser,
 					      const gchar    *filename);
 GDK_AVAILABLE_IN_ALL
-gchar *  ctk_file_chooser_get_current_folder (GtkFileChooser *chooser);
+gchar *  ctk_file_chooser_get_current_folder (CtkFileChooser *chooser);
 
 
 /* URI manipulation
  */
 GDK_AVAILABLE_IN_ALL
-gchar *  ctk_file_chooser_get_uri                (GtkFileChooser *chooser);
+gchar *  ctk_file_chooser_get_uri                (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_set_uri                (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_set_uri                (CtkFileChooser *chooser,
 						  const char     *uri);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_select_uri             (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_select_uri             (CtkFileChooser *chooser,
 						  const char     *uri);
 GDK_AVAILABLE_IN_ALL
-void     ctk_file_chooser_unselect_uri           (GtkFileChooser *chooser,
+void     ctk_file_chooser_unselect_uri           (CtkFileChooser *chooser,
 						  const char     *uri);
 GDK_AVAILABLE_IN_ALL
-GSList * ctk_file_chooser_get_uris               (GtkFileChooser *chooser);
+GSList * ctk_file_chooser_get_uris               (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_set_current_folder_uri (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_set_current_folder_uri (CtkFileChooser *chooser,
 						  const gchar    *uri);
 GDK_AVAILABLE_IN_ALL
-gchar *  ctk_file_chooser_get_current_folder_uri (GtkFileChooser *chooser);
+gchar *  ctk_file_chooser_get_current_folder_uri (CtkFileChooser *chooser);
 
 /* GFile manipulation */
 GDK_AVAILABLE_IN_ALL
-GFile *  ctk_file_chooser_get_file                (GtkFileChooser  *chooser);
+GFile *  ctk_file_chooser_get_file                (CtkFileChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_set_file                (GtkFileChooser  *chooser,
+gboolean ctk_file_chooser_set_file                (CtkFileChooser  *chooser,
                                                    GFile           *file,
                                                    GError         **error);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_select_file             (GtkFileChooser  *chooser,
+gboolean ctk_file_chooser_select_file             (CtkFileChooser  *chooser,
                                                    GFile           *file,
                                                    GError         **error);
 GDK_AVAILABLE_IN_ALL
-void     ctk_file_chooser_unselect_file           (GtkFileChooser  *chooser,
+void     ctk_file_chooser_unselect_file           (CtkFileChooser  *chooser,
                                                    GFile           *file);
 GDK_AVAILABLE_IN_ALL
-GSList * ctk_file_chooser_get_files               (GtkFileChooser  *chooser);
+GSList * ctk_file_chooser_get_files               (CtkFileChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_set_current_folder_file (GtkFileChooser  *chooser,
+gboolean ctk_file_chooser_set_current_folder_file (CtkFileChooser  *chooser,
                                                    GFile           *file,
                                                    GError         **error);
 GDK_AVAILABLE_IN_ALL
-GFile *  ctk_file_chooser_get_current_folder_file (GtkFileChooser  *chooser);
+GFile *  ctk_file_chooser_get_current_folder_file (CtkFileChooser  *chooser);
 
 /* Preview widget
  */
 GDK_AVAILABLE_IN_ALL
-void       ctk_file_chooser_set_preview_widget        (GtkFileChooser *chooser,
-						       GtkWidget      *preview_widget);
+void       ctk_file_chooser_set_preview_widget        (CtkFileChooser *chooser,
+						       CtkWidget      *preview_widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_file_chooser_get_preview_widget        (GtkFileChooser *chooser);
+CtkWidget *ctk_file_chooser_get_preview_widget        (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-void       ctk_file_chooser_set_preview_widget_active (GtkFileChooser *chooser,
+void       ctk_file_chooser_set_preview_widget_active (CtkFileChooser *chooser,
 						       gboolean        active);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_file_chooser_get_preview_widget_active (GtkFileChooser *chooser);
+gboolean   ctk_file_chooser_get_preview_widget_active (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-void       ctk_file_chooser_set_use_preview_label     (GtkFileChooser *chooser,
+void       ctk_file_chooser_set_use_preview_label     (CtkFileChooser *chooser,
 						       gboolean        use_label);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_file_chooser_get_use_preview_label     (GtkFileChooser *chooser);
+gboolean   ctk_file_chooser_get_use_preview_label     (CtkFileChooser *chooser);
 
 GDK_AVAILABLE_IN_ALL
-char  *ctk_file_chooser_get_preview_filename (GtkFileChooser *chooser);
+char  *ctk_file_chooser_get_preview_filename (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-char  *ctk_file_chooser_get_preview_uri      (GtkFileChooser *chooser);
+char  *ctk_file_chooser_get_preview_uri      (CtkFileChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-GFile *ctk_file_chooser_get_preview_file     (GtkFileChooser *chooser);
+GFile *ctk_file_chooser_get_preview_file     (CtkFileChooser *chooser);
 
 /* Extra widget
  */
 GDK_AVAILABLE_IN_ALL
-void       ctk_file_chooser_set_extra_widget (GtkFileChooser *chooser,
-					      GtkWidget      *extra_widget);
+void       ctk_file_chooser_set_extra_widget (CtkFileChooser *chooser,
+					      CtkWidget      *extra_widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_file_chooser_get_extra_widget (GtkFileChooser *chooser);
+CtkWidget *ctk_file_chooser_get_extra_widget (CtkFileChooser *chooser);
 
 /* List of user selectable filters
  */
 GDK_AVAILABLE_IN_ALL
-void    ctk_file_chooser_add_filter    (GtkFileChooser *chooser,
-					GtkFileFilter  *filter);
+void    ctk_file_chooser_add_filter    (CtkFileChooser *chooser,
+					CtkFileFilter  *filter);
 GDK_AVAILABLE_IN_ALL
-void    ctk_file_chooser_remove_filter (GtkFileChooser *chooser,
-					GtkFileFilter  *filter);
+void    ctk_file_chooser_remove_filter (CtkFileChooser *chooser,
+					CtkFileFilter  *filter);
 GDK_AVAILABLE_IN_ALL
-GSList *ctk_file_chooser_list_filters  (GtkFileChooser *chooser);
+GSList *ctk_file_chooser_list_filters  (CtkFileChooser *chooser);
 
 /* Current filter
  */
 GDK_AVAILABLE_IN_ALL
-void           ctk_file_chooser_set_filter (GtkFileChooser *chooser,
-					   GtkFileFilter  *filter);
+void           ctk_file_chooser_set_filter (CtkFileChooser *chooser,
+					   CtkFileFilter  *filter);
 GDK_AVAILABLE_IN_ALL
-GtkFileFilter *ctk_file_chooser_get_filter (GtkFileChooser *chooser);
+CtkFileFilter *ctk_file_chooser_get_filter (CtkFileChooser *chooser);
 
 /* Per-application shortcut folders */
 
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_add_shortcut_folder    (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_add_shortcut_folder    (CtkFileChooser *chooser,
 						  const char     *folder,
 						  GError        **error);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_remove_shortcut_folder (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_remove_shortcut_folder (CtkFileChooser *chooser,
 						  const char     *folder,
 						  GError        **error);
 GDK_AVAILABLE_IN_ALL
-GSList *ctk_file_chooser_list_shortcut_folders   (GtkFileChooser *chooser);
+GSList *ctk_file_chooser_list_shortcut_folders   (CtkFileChooser *chooser);
 
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_add_shortcut_folder_uri    (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_add_shortcut_folder_uri    (CtkFileChooser *chooser,
 						      const char     *uri,
 						      GError        **error);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_file_chooser_remove_shortcut_folder_uri (GtkFileChooser *chooser,
+gboolean ctk_file_chooser_remove_shortcut_folder_uri (CtkFileChooser *chooser,
 						      const char     *uri,
 						      GError        **error);
 GDK_AVAILABLE_IN_ALL
-GSList *ctk_file_chooser_list_shortcut_folder_uris   (GtkFileChooser *chooser);
+GSList *ctk_file_chooser_list_shortcut_folder_uris   (CtkFileChooser *chooser);
 
 GDK_AVAILABLE_IN_3_22
-void        ctk_file_chooser_add_choice              (GtkFileChooser  *chooser,
+void        ctk_file_chooser_add_choice              (CtkFileChooser  *chooser,
                                                       const char      *id,
                                                       const char      *label,
                                                       const char     **options,
                                                       const char     **option_labels);
 GDK_AVAILABLE_IN_3_22
-void        ctk_file_chooser_remove_choice           (GtkFileChooser  *chooser,
+void        ctk_file_chooser_remove_choice           (CtkFileChooser  *chooser,
                                                       const char      *id);
 GDK_AVAILABLE_IN_3_22
-void        ctk_file_chooser_set_choice              (GtkFileChooser  *chooser,
+void        ctk_file_chooser_set_choice              (CtkFileChooser  *chooser,
                                                       const char      *id,
                                                       const char      *option);
 GDK_AVAILABLE_IN_3_22
-const char *ctk_file_chooser_get_choice              (GtkFileChooser  *chooser,
+const char *ctk_file_chooser_get_choice              (CtkFileChooser  *chooser,
                                                       const char      *id);
 
 G_END_DECLS

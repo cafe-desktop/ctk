@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkGrid" id="grid">
+  <object class="CtkGrid" id="grid">
     <property name="row-spacing">10</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkToolbar">
+      <object class="CtkToolbar">
         <property name="visible">1</property>
         <property name="hexpand">1</property>
         <property name="show-arrow">0</property>
@@ -12,7 +12,7 @@
           <class name="primary-toolbar"/>
         </style>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="use_action_appearance">0</property>
@@ -26,7 +26,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="use_action_appearance">0</property>
@@ -41,7 +41,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="sensitive">0</property>
@@ -55,7 +55,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="label" translatable="yes">Raised</property>
@@ -71,7 +71,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="label" translatable="yes">Raised Active</property>
@@ -88,7 +88,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="sensitive">0</property>
@@ -103,11 +103,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToolItem">
+          <object class="CtkToolItem">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <child>
-              <object class="GtkEntry" id="entry1">
+              <object class="CtkEntry" id="entry1">
                 <property name="visible">1</property>
                 <property name="can_focus">1</property>
                 <property name="invisible_char">•</property>
@@ -118,11 +118,11 @@
           </object>
         </child>
         <child>
-          <object class="GtkToolItem">
+          <object class="CtkToolItem">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <child>
-              <object class="GtkSwitch" id="switch1">
+              <object class="CtkSwitch" id="switch1">
                 <property name="visible">1</property>
                 <property name="can_focus">1</property>
               </object>
@@ -132,7 +132,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">1</property>
         <property name="valign">center</property>
         <property name="halign">center</property>
@@ -140,7 +140,7 @@
           <class name="linked"/>
         </style>
         <child>
-          <object class="GtkButton">
+          <object class="CtkButton">
             <property name="label" translatable="yes">Hi, I am a button</property>
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
@@ -150,7 +150,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="CtkButton">
             <property name="label" translatable="yes">And I'm another button</property>
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
@@ -163,7 +163,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="CtkButton">
             <property name="label" translatable="yes">This is a button party!</property>
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
@@ -178,7 +178,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkToolbar">
+      <object class="CtkToolbar">
         <property name="visible">1</property>
         <property name="hexpand">1</property>
         <property name="icon_size">1</property>
@@ -187,7 +187,7 @@
           <class name="inline-toolbar"/>
         </style>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="use_action_appearance">0</property>
@@ -200,7 +200,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="use_action_appearance">0</property>
@@ -213,7 +213,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="use_action_appearance">0</property>
@@ -227,7 +227,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="use_action_appearance">0</property>
@@ -241,7 +241,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="sensitive">0</property>
@@ -255,7 +255,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton">
+          <object class="CtkToggleToolButton">
             <property name="use_action_appearance">0</property>
             <property name="visible">1</property>
             <property name="sensitive">0</property>
@@ -272,12 +272,12 @@
       </object>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">1</property>
         <property name="spacing">10</property>
         <property name="orientation">horizontal</property>
         <child>
-          <object class="GtkButton">
+          <object class="CtkButton">
             <property name="visible">1</property>
             <property name="label">Plain</property>
             <property name="halign">end</property>
@@ -287,7 +287,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="CtkButton">
             <property name="visible">1</property>
             <property name="label">Destructive</property>
             <style>
@@ -296,7 +296,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="CtkButton">
             <property name="visible">1</property>
             <property name="label">Suggested</property>
             <style>

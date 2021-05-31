@@ -37,33 +37,33 @@
 
 /**
  * SECTION:ctktoolbutton
- * @Short_description: A GtkToolItem subclass that displays buttons
- * @Title: GtkToolButton
- * @See_also: #GtkToolbar, #GtkMenuToolButton, #GtkToggleToolButton,
- *   #GtkRadioToolButton, #GtkSeparatorToolItem
+ * @Short_description: A CtkToolItem subclass that displays buttons
+ * @Title: CtkToolButton
+ * @See_also: #CtkToolbar, #CtkMenuToolButton, #CtkToggleToolButton,
+ *   #CtkRadioToolButton, #CtkSeparatorToolItem
  *
- * #GtkToolButtons are #GtkToolItems containing buttons.
+ * #CtkToolButtons are #CtkToolItems containing buttons.
  *
- * Use ctk_tool_button_new() to create a new #GtkToolButton.
+ * Use ctk_tool_button_new() to create a new #CtkToolButton.
  *
- * The label of a #GtkToolButton is determined by the properties
- * #GtkToolButton:label-widget, #GtkToolButton:label, and
- * #GtkToolButton:stock-id. If #GtkToolButton:label-widget is
+ * The label of a #CtkToolButton is determined by the properties
+ * #CtkToolButton:label-widget, #CtkToolButton:label, and
+ * #CtkToolButton:stock-id. If #CtkToolButton:label-widget is
  * non-%NULL, then that widget is used as the label. Otherwise, if
- * #GtkToolButton:label is non-%NULL, that string is used as the label.
- * Otherwise, if #GtkToolButton:stock-id is non-%NULL, the label is
+ * #CtkToolButton:label is non-%NULL, that string is used as the label.
+ * Otherwise, if #CtkToolButton:stock-id is non-%NULL, the label is
  * determined by the stock item. Otherwise, the button does not have a label.
  *
- * The icon of a #GtkToolButton is determined by the properties
- * #GtkToolButton:icon-widget and #GtkToolButton:stock-id. If
- * #GtkToolButton:icon-widget is non-%NULL, then
- * that widget is used as the icon. Otherwise, if #GtkToolButton:stock-id is
+ * The icon of a #CtkToolButton is determined by the properties
+ * #CtkToolButton:icon-widget and #CtkToolButton:stock-id. If
+ * #CtkToolButton:icon-widget is non-%NULL, then
+ * that widget is used as the icon. Otherwise, if #CtkToolButton:stock-id is
  * non-%NULL, the icon is determined by the stock item. Otherwise,
  * the button does not have a icon.
  *
  * # CSS nodes
  *
- * GtkToolButton has a single CSS node with name toolbutton.
+ * CtkToolButton has a single CSS node with name toolbutton.
  */
 
 
@@ -86,9 +86,9 @@ enum {
   PROP_ACTION_TARGET
 };
 
-static void ctk_tool_button_init          (GtkToolButton      *button,
-					   GtkToolButtonClass *klass);
-static void ctk_tool_button_class_init    (GtkToolButtonClass *klass);
+static void ctk_tool_button_init          (CtkToolButton      *button,
+					   CtkToolButtonClass *klass);
+static void ctk_tool_button_class_init    (CtkToolButtonClass *klass);
 static void ctk_tool_button_set_property  (GObject            *object,
 					   guint               prop_id,
 					   const GValue       *value,
@@ -101,41 +101,41 @@ static void ctk_tool_button_property_notify (GObject          *object,
 					     GParamSpec       *pspec);
 static void ctk_tool_button_finalize      (GObject            *object);
 
-static void ctk_tool_button_toolbar_reconfigured (GtkToolItem *tool_item);
-static gboolean   ctk_tool_button_create_menu_proxy (GtkToolItem     *item);
-static void       button_clicked                    (GtkWidget       *widget,
-						     GtkToolButton   *button);
-static void ctk_tool_button_style_updated  (GtkWidget          *widget);
+static void ctk_tool_button_toolbar_reconfigured (CtkToolItem *tool_item);
+static gboolean   ctk_tool_button_create_menu_proxy (CtkToolItem     *item);
+static void       button_clicked                    (CtkWidget       *widget,
+						     CtkToolButton   *button);
+static void ctk_tool_button_style_updated  (CtkWidget          *widget);
 
-static void ctk_tool_button_construct_contents (GtkToolItem *tool_item);
+static void ctk_tool_button_construct_contents (CtkToolItem *tool_item);
 
-static void ctk_tool_button_actionable_iface_init      (GtkActionableInterface *iface);
-static void ctk_tool_button_activatable_interface_init (GtkActivatableIface  *iface);
-static void ctk_tool_button_update                     (GtkActivatable       *activatable,
-							GtkAction            *action,
+static void ctk_tool_button_actionable_iface_init      (CtkActionableInterface *iface);
+static void ctk_tool_button_activatable_interface_init (CtkActivatableIface  *iface);
+static void ctk_tool_button_update                     (CtkActivatable       *activatable,
+							CtkAction            *action,
 							const gchar          *property_name);
-static void ctk_tool_button_sync_action_properties     (GtkActivatable       *activatable,
-							GtkAction            *action);
+static void ctk_tool_button_sync_action_properties     (CtkActivatable       *activatable,
+							CtkAction            *action);
 
 
-struct _GtkToolButtonPrivate
+struct _CtkToolButtonPrivate
 {
-  GtkWidget *button;
+  CtkWidget *button;
 
   gchar *stock_id;
   gchar *icon_name;
   gchar *label_text;
-  GtkWidget *label_widget;
-  GtkWidget *icon_widget;
+  CtkWidget *label_widget;
+  CtkWidget *icon_widget;
 
-  GtkSizeGroup *text_size_group;
+  CtkSizeGroup *text_size_group;
 
   guint use_underline : 1;
   guint contents_invalid : 1;
 };
 
 static GObjectClass        *parent_class = NULL;
-static GtkActivatableIface *parent_activatable_iface;
+static CtkActivatableIface *parent_activatable_iface;
 static guint                toolbutton_signals[LAST_SIGNAL] = { 0 };
 
 GType
@@ -159,10 +159,10 @@ ctk_tool_button_get_type (void)
       };
 
       g_define_type_id = g_type_register_static_simple (CTK_TYPE_TOOL_ITEM,
-                                                        I_("GtkToolButton"),
-                                                        sizeof (GtkToolButtonClass),
+                                                        I_("CtkToolButton"),
+                                                        sizeof (CtkToolButtonClass),
                                                         (GClassInitFunc) ctk_tool_button_class_init,
-                                                        sizeof (GtkToolButton),
+                                                        sizeof (CtkToolButton),
                                                         (GInstanceInitFunc) ctk_tool_button_init,
                                                         0);
 
@@ -177,17 +177,17 @@ ctk_tool_button_get_type (void)
 }
 
 static void
-ctk_tool_button_class_init (GtkToolButtonClass *klass)
+ctk_tool_button_class_init (CtkToolButtonClass *klass)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
-  GtkToolItemClass *tool_item_class;
+  CtkWidgetClass *widget_class;
+  CtkToolItemClass *tool_item_class;
   
   parent_class = g_type_class_peek_parent (klass);
   
   object_class = (GObjectClass *)klass;
-  widget_class = (GtkWidgetClass *)klass;
-  tool_item_class = (GtkToolItemClass *)klass;
+  widget_class = (CtkWidgetClass *)klass;
+  tool_item_class = (CtkToolItemClass *)klass;
   
   object_class->set_property = ctk_tool_button_set_property;
   object_class->get_property = ctk_tool_button_get_property;
@@ -259,9 +259,9 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
 							CTK_TYPE_WIDGET,
 							CTK_PARAM_READWRITE));
   /**
-   * GtkToolButton:stock-id:
+   * CtkToolButton:stock-id:
    *
-   * Deprecated: 3.10: Use #GtkToolButton:icon-name instead.
+   * Deprecated: 3.10: Use #CtkToolButton:icon-name instead.
    */
   g_object_class_install_property (object_class,
 				   PROP_STOCK_ID,
@@ -272,12 +272,12 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
 							CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
-   * GtkToolButton:icon-name:
+   * CtkToolButton:icon-name:
    * 
    * The name of the themed icon displayed on the item.
    * This property only has an effect if not overridden by
-   * #GtkToolButton:label-widget, #GtkToolButton:icon-widget or
-   * #GtkToolButton:stock-id properties.
+   * #CtkToolButton:label-widget, #CtkToolButton:icon-widget or
+   * #CtkToolButton:stock-id properties.
    *
    * Since: 2.8 
    */
@@ -300,7 +300,7 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
   g_object_class_override_property (object_class, PROP_ACTION_TARGET, "action-target");
 
   /**
-   * GtkButton:icon-spacing:
+   * CtkButton:icon-spacing:
    * 
    * Spacing in pixels between the icon and label.
    * 
@@ -316,7 +316,7 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
 							     CTK_PARAM_READWRITE));
 
 /**
- * GtkToolButton::clicked:
+ * CtkToolButton::clicked:
  * @toolbutton: the object that emitted the signal
  *
  * This signal is emitted when the tool button is clicked with the mouse
@@ -326,25 +326,25 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
     g_signal_new (I_("clicked"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkToolButtonClass, clicked),
+		  G_STRUCT_OFFSET (CtkToolButtonClass, clicked),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
   
-  g_type_class_add_private (object_class, sizeof (GtkToolButtonPrivate));
+  g_type_class_add_private (object_class, sizeof (CtkToolButtonPrivate));
 
   ctk_widget_class_set_css_name (widget_class, "toolbutton");
 }
 
 static void
-ctk_tool_button_init (GtkToolButton      *button,
-		      GtkToolButtonClass *klass)
+ctk_tool_button_init (CtkToolButton      *button,
+		      CtkToolButtonClass *klass)
 {
-  GtkToolItem *toolitem = CTK_TOOL_ITEM (button);
+  CtkToolItem *toolitem = CTK_TOOL_ITEM (button);
 
   button->priv = G_TYPE_INSTANCE_GET_PRIVATE (button,
                                               CTK_TYPE_TOOL_BUTTON,
-                                              GtkToolButtonPrivate);
+                                              CtkToolButtonPrivate);
 
   button->priv->contents_invalid = TRUE;
 
@@ -361,21 +361,21 @@ ctk_tool_button_init (GtkToolButton      *button,
 }
 
 static void
-ctk_tool_button_construct_contents (GtkToolItem *tool_item)
+ctk_tool_button_construct_contents (CtkToolItem *tool_item)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (tool_item);
-  GtkWidget *child;
-  GtkWidget *label = NULL;
-  GtkWidget *icon = NULL;
-  GtkToolbarStyle style;
+  CtkToolButton *button = CTK_TOOL_BUTTON (tool_item);
+  CtkWidget *child;
+  CtkWidget *label = NULL;
+  CtkWidget *icon = NULL;
+  CtkToolbarStyle style;
   gboolean need_label = FALSE;
   gboolean need_icon = FALSE;
-  GtkIconSize icon_size;
-  GtkWidget *box = NULL;
+  CtkIconSize icon_size;
+  CtkWidget *box = NULL;
   guint icon_spacing;
-  GtkOrientation text_orientation = CTK_ORIENTATION_HORIZONTAL;
-  GtkSizeGroup *size_group = NULL;
-  GtkWidget *parent;
+  CtkOrientation text_orientation = CTK_ORIENTATION_HORIZONTAL;
+  CtkSizeGroup *size_group = NULL;
+  CtkWidget *parent;
 
   button->priv->contents_invalid = FALSE;
 
@@ -452,7 +452,7 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
 	}
       else
 	{
-	  GtkStockItem stock_item;
+	  CtkStockItem stock_item;
 	  gboolean elide;
 	  gchar *label_text;
 
@@ -529,7 +529,7 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
   icon_size = ctk_tool_item_get_icon_size (CTK_TOOL_ITEM (button));
   if (need_icon)
     {
-      GtkIconSet *icon_set = NULL;
+      CtkIconSet *icon_set = NULL;
 
       if (button->priv->stock_id)
         {
@@ -663,7 +663,7 @@ ctk_tool_button_set_property (GObject         *object,
 			      const GValue    *value,
 			      GParamSpec      *pspec)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (object);
+  CtkToolButton *button = CTK_TOOL_BUTTON (object);
   
   switch (prop_id)
     {
@@ -703,7 +703,7 @@ static void
 ctk_tool_button_property_notify (GObject          *object,
 				 GParamSpec       *pspec)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (object);
+  CtkToolButton *button = CTK_TOOL_BUTTON (object);
 
   if (button->priv->contents_invalid ||
       strcmp ("is-important", pspec->name) == 0)
@@ -719,7 +719,7 @@ ctk_tool_button_get_property (GObject         *object,
 			      GValue          *value,
 			      GParamSpec      *pspec)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (object);
+  CtkToolButton *button = CTK_TOOL_BUTTON (object);
 
   switch (prop_id)
     {
@@ -754,41 +754,41 @@ ctk_tool_button_get_property (GObject         *object,
 }
 
 static const gchar *
-ctk_tool_button_get_action_name (GtkActionable *actionable)
+ctk_tool_button_get_action_name (CtkActionable *actionable)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (actionable);
+  CtkToolButton *button = CTK_TOOL_BUTTON (actionable);
 
   return ctk_actionable_get_action_name (CTK_ACTIONABLE (button->priv->button));
 }
 
 static void
-ctk_tool_button_set_action_name (GtkActionable *actionable,
+ctk_tool_button_set_action_name (CtkActionable *actionable,
                                  const gchar   *action_name)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (actionable);
+  CtkToolButton *button = CTK_TOOL_BUTTON (actionable);
 
   ctk_actionable_set_action_name (CTK_ACTIONABLE (button->priv->button), action_name);
 }
 
 static GVariant *
-ctk_tool_button_get_action_target_value (GtkActionable *actionable)
+ctk_tool_button_get_action_target_value (CtkActionable *actionable)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (actionable);
+  CtkToolButton *button = CTK_TOOL_BUTTON (actionable);
 
   return ctk_actionable_get_action_target_value (CTK_ACTIONABLE (button->priv->button));
 }
 
 static void
-ctk_tool_button_set_action_target_value (GtkActionable *actionable,
+ctk_tool_button_set_action_target_value (CtkActionable *actionable,
                                          GVariant      *action_target)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (actionable);
+  CtkToolButton *button = CTK_TOOL_BUTTON (actionable);
 
   ctk_actionable_set_action_target_value (CTK_ACTIONABLE (button->priv->button), action_target);
 }
 
 static void
-ctk_tool_button_actionable_iface_init (GtkActionableInterface *iface)
+ctk_tool_button_actionable_iface_init (CtkActionableInterface *iface)
 {
   iface->get_action_name = ctk_tool_button_get_action_name;
   iface->set_action_name = ctk_tool_button_set_action_name;
@@ -799,7 +799,7 @@ ctk_tool_button_actionable_iface_init (GtkActionableInterface *iface)
 static void
 ctk_tool_button_finalize (GObject *object)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (object);
+  CtkToolButton *button = CTK_TOOL_BUTTON (object);
 
   g_free (button->priv->stock_id);
   g_free (button->priv->icon_name);
@@ -814,15 +814,15 @@ ctk_tool_button_finalize (GObject *object)
   parent_class->finalize (object);
 }
 
-static GtkWidget *
-clone_image_menu_size (GtkImage *image)
+static CtkWidget *
+clone_image_menu_size (CtkImage *image)
 {
-  GtkImageType storage_type = ctk_image_get_storage_type (image);
+  CtkImageType storage_type = ctk_image_get_storage_type (image);
 
   if (storage_type == CTK_IMAGE_STOCK)
     {
       gchar *stock_id;
-      GtkWidget *widget;
+      CtkWidget *widget;
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_image_get_stock (image, &stock_id, NULL);
       widget = ctk_image_new_from_stock (stock_id, CTK_ICON_SIZE_MENU);
@@ -837,8 +837,8 @@ clone_image_menu_size (GtkImage *image)
     }
   else if (storage_type == CTK_IMAGE_ICON_SET)
     {
-      GtkWidget *widget;
-      GtkIconSet *icon_set;
+      CtkWidget *widget;
+      CtkIconSet *icon_set;
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_image_get_icon_set (image, &icon_set, NULL);
       widget = ctk_image_new_from_icon_set (icon_set, CTK_ICON_SIZE_MENU);
@@ -858,7 +858,7 @@ clone_image_menu_size (GtkImage *image)
       if (ctk_icon_size_lookup (CTK_ICON_SIZE_MENU, &width, &height))
 	{
 	  GdkPixbuf *src_pixbuf, *dest_pixbuf;
-	  GtkWidget *cloned_image;
+	  CtkWidget *cloned_image;
 
 	  src_pixbuf = ctk_image_get_pixbuf (image);
 	  dest_pixbuf = gdk_pixbuf_scale_simple (src_pixbuf, width, height,
@@ -875,12 +875,12 @@ clone_image_menu_size (GtkImage *image)
 }
       
 static gboolean
-ctk_tool_button_create_menu_proxy (GtkToolItem *item)
+ctk_tool_button_create_menu_proxy (CtkToolItem *item)
 {
-  GtkToolButton *button = CTK_TOOL_BUTTON (item);
-  GtkWidget *menu_item;
-  GtkWidget *menu_image = NULL;
-  GtkStockItem stock_item;
+  CtkToolButton *button = CTK_TOOL_BUTTON (item);
+  CtkWidget *menu_item;
+  CtkWidget *menu_image = NULL;
+  CtkStockItem stock_item;
   gboolean use_mnemonic = TRUE;
   const char *label;
 
@@ -939,10 +939,10 @@ ctk_tool_button_create_menu_proxy (GtkToolItem *item)
 }
 
 static void
-button_clicked (GtkWidget     *widget,
-		GtkToolButton *button)
+button_clicked (CtkWidget     *widget,
+		CtkToolButton *button)
 {
-  GtkAction *action;
+  CtkAction *action;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -957,15 +957,15 @@ button_clicked (GtkWidget     *widget,
 }
 
 static void
-ctk_tool_button_toolbar_reconfigured (GtkToolItem *tool_item)
+ctk_tool_button_toolbar_reconfigured (CtkToolItem *tool_item)
 {
   ctk_tool_button_construct_contents (tool_item);
 }
 
 static void 
-ctk_tool_button_update_icon_spacing (GtkToolButton *button)
+ctk_tool_button_update_icon_spacing (CtkToolButton *button)
 {
-  GtkWidget *box;
+  CtkWidget *box;
   guint spacing;
 
   box = ctk_bin_get_child (CTK_BIN (button->priv->button));
@@ -979,7 +979,7 @@ ctk_tool_button_update_icon_spacing (GtkToolButton *button)
 }
 
 static void
-ctk_tool_button_style_updated (GtkWidget *widget)
+ctk_tool_button_style_updated (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (parent_class)->style_updated (widget);
 
@@ -987,7 +987,7 @@ ctk_tool_button_style_updated (GtkWidget *widget)
 }
 
 static void 
-ctk_tool_button_activatable_interface_init (GtkActivatableIface  *iface)
+ctk_tool_button_activatable_interface_init (CtkActivatableIface  *iface)
 {
   parent_activatable_iface = g_type_interface_peek_parent (iface);
   iface->update = ctk_tool_button_update;
@@ -995,12 +995,12 @@ ctk_tool_button_activatable_interface_init (GtkActivatableIface  *iface)
 }
 
 static void
-ctk_tool_button_update (GtkActivatable *activatable,
-			GtkAction      *action,
+ctk_tool_button_update (CtkActivatable *activatable,
+			CtkAction      *action,
 			const gchar    *property_name)
 {
-  GtkToolButton *button;
-  GtkWidget *image;
+  CtkToolButton *button;
+  CtkWidget *image;
   gboolean use_action_appearance;
 
   parent_activatable_iface->update (activatable, action, property_name);
@@ -1024,8 +1024,8 @@ ctk_tool_button_update (GtkActivatable *activatable,
     {
       const gchar *stock_id = ctk_action_get_stock_id (action);
       GIcon *icon = ctk_action_get_gicon (action);
-      GtkIconSize icon_size = CTK_ICON_SIZE_BUTTON;
-      GtkIconSet *icon_set = NULL;
+      CtkIconSize icon_size = CTK_ICON_SIZE_BUTTON;
+      CtkIconSet *icon_set = NULL;
 
       if (stock_id)
         {
@@ -1057,13 +1057,13 @@ ctk_tool_button_update (GtkActivatable *activatable,
 }
 
 static void
-ctk_tool_button_sync_action_properties (GtkActivatable *activatable,
-				        GtkAction      *action)
+ctk_tool_button_sync_action_properties (CtkActivatable *activatable,
+				        CtkAction      *action)
 {
-  GtkToolButton *button;
+  CtkToolButton *button;
   GIcon         *icon;
   const gchar   *stock_id;
-  GtkIconSet    *icon_set = NULL;
+  CtkIconSet    *icon_set = NULL;
 
   parent_activatable_iface->sync_action_properties (activatable, action);
 
@@ -1096,8 +1096,8 @@ ctk_tool_button_sync_action_properties (GtkActivatable *activatable,
       ctk_tool_button_set_icon_widget (button, NULL);
   else if ((icon = ctk_action_get_gicon (action)) != NULL)
     {
-      GtkIconSize icon_size = ctk_tool_item_get_icon_size (CTK_TOOL_ITEM (button));
-      GtkWidget  *image = ctk_tool_button_get_icon_widget (button);
+      CtkIconSize icon_size = ctk_tool_item_get_icon_size (CTK_TOOL_ITEM (button));
+      CtkWidget  *image = ctk_tool_button_get_icon_widget (button);
       
       if (!image)
 	{
@@ -1118,23 +1118,23 @@ ctk_tool_button_sync_action_properties (GtkActivatable *activatable,
  * ctk_tool_button_new_from_stock:
  * @stock_id: the name of the stock item 
  *
- * Creates a new #GtkToolButton containing the image and text from a
+ * Creates a new #CtkToolButton containing the image and text from a
  * stock item. Some stock ids have preprocessor macros like #CTK_STOCK_OK
  * and #CTK_STOCK_APPLY.
  *
  * It is an error if @stock_id is not a name of a stock item.
  * 
- * Returns: A new #GtkToolButton
+ * Returns: A new #CtkToolButton
  * 
  * Since: 2.4
  *
  * Deprecated: 3.10: Use ctk_tool_button_new() together with
  * ctk_image_new_from_icon_name() instead.
  **/
-GtkToolItem *
+CtkToolItem *
 ctk_tool_button_new_from_stock (const gchar *stock_id)
 {
-  GtkToolButton *button;
+  CtkToolButton *button;
 
   g_return_val_if_fail (stock_id != NULL, NULL);
     
@@ -1150,18 +1150,18 @@ ctk_tool_button_new_from_stock (const gchar *stock_id)
  * @label: (allow-none): a string that will be used as label, or %NULL
  * @icon_widget: (allow-none): a widget that will be used as the button contents, or %NULL
  *
- * Creates a new #GtkToolButton using @icon_widget as contents and @label as
+ * Creates a new #CtkToolButton using @icon_widget as contents and @label as
  * label.
  *
- * Returns: A new #GtkToolButton
+ * Returns: A new #CtkToolButton
  * 
  * Since: 2.4
  **/
-GtkToolItem *
-ctk_tool_button_new (GtkWidget	 *icon_widget,
+CtkToolItem *
+ctk_tool_button_new (CtkWidget	 *icon_widget,
 		     const gchar *label)
 {
-  GtkToolButton *button;
+  CtkToolButton *button;
 
   g_return_val_if_fail (icon_widget == NULL || CTK_IS_WIDGET (icon_widget), NULL);
 
@@ -1175,20 +1175,20 @@ ctk_tool_button_new (GtkWidget	 *icon_widget,
 
 /**
  * ctk_tool_button_set_label:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * @label: (allow-none): a string that will be used as label, or %NULL.
  *
- * Sets @label as the label used for the tool button. The #GtkToolButton:label
+ * Sets @label as the label used for the tool button. The #CtkToolButton:label
  * property only has an effect if not overridden by a non-%NULL 
- * #GtkToolButton:label-widget property. If both the #GtkToolButton:label-widget
- * and #GtkToolButton:label properties are %NULL, the label is determined by the
- * #GtkToolButton:stock-id property. If the #GtkToolButton:stock-id property is
+ * #CtkToolButton:label-widget property. If both the #CtkToolButton:label-widget
+ * and #CtkToolButton:label properties are %NULL, the label is determined by the
+ * #CtkToolButton:stock-id property. If the #CtkToolButton:stock-id property is
  * also %NULL, @button will not have a label.
  * 
  * Since: 2.4
  **/
 void
-ctk_tool_button_set_label (GtkToolButton *button,
+ctk_tool_button_set_label (CtkToolButton *button,
 			   const gchar   *label)
 {
   gchar *old_label;
@@ -1217,7 +1217,7 @@ ctk_tool_button_set_label (GtkToolButton *button,
 
 /**
  * ctk_tool_button_get_label:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * 
  * Returns the label used by the tool button, or %NULL if the tool button
  * doesn’t have a label. or uses a the label from a stock item. The returned
@@ -1228,7 +1228,7 @@ ctk_tool_button_set_label (GtkToolButton *button,
  * Since: 2.4
  **/
 const gchar *
-ctk_tool_button_get_label (GtkToolButton *button)
+ctk_tool_button_get_label (CtkToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
@@ -1237,7 +1237,7 @@ ctk_tool_button_get_label (GtkToolButton *button)
 
 /**
  * ctk_tool_button_set_use_underline:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * @use_underline: whether the button label has the form “_Open”
  *
  * If set, an underline in the label property indicates that the next character
@@ -1252,7 +1252,7 @@ ctk_tool_button_get_label (GtkToolButton *button)
  * Since: 2.4
  **/
 void
-ctk_tool_button_set_use_underline (GtkToolButton *button,
+ctk_tool_button_set_use_underline (CtkToolButton *button,
 				   gboolean       use_underline)
 {
   g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
@@ -1270,7 +1270,7 @@ ctk_tool_button_set_use_underline (GtkToolButton *button,
 
 /**
  * ctk_tool_button_get_use_underline:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * 
  * Returns whether underscores in the label property are used as mnemonics
  * on menu items on the overflow menu. See ctk_tool_button_set_use_underline().
@@ -1281,7 +1281,7 @@ ctk_tool_button_set_use_underline (GtkToolButton *button,
  * Since: 2.4
  **/
 gboolean
-ctk_tool_button_get_use_underline (GtkToolButton *button)
+ctk_tool_button_get_use_underline (CtkToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), FALSE);
 
@@ -1290,19 +1290,19 @@ ctk_tool_button_get_use_underline (GtkToolButton *button)
 
 /**
  * ctk_tool_button_set_stock_id:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * @stock_id: (allow-none): a name of a stock item, or %NULL
  *
  * Sets the name of the stock item. See ctk_tool_button_new_from_stock().
  * The stock_id property only has an effect if not overridden by non-%NULL 
- * #GtkToolButton:label-widget and #GtkToolButton:icon-widget properties.
+ * #CtkToolButton:label-widget and #CtkToolButton:icon-widget properties.
  * 
  * Since: 2.4
  *
  * Deprecated: 3.10: Use ctk_tool_button_set_icon_name() instead.
  **/
 void
-ctk_tool_button_set_stock_id (GtkToolButton *button,
+ctk_tool_button_set_stock_id (CtkToolButton *button,
 			      const gchar   *stock_id)
 {
   gchar *old_stock_id;
@@ -1321,7 +1321,7 @@ ctk_tool_button_set_stock_id (GtkToolButton *button,
 
 /**
  * ctk_tool_button_get_stock_id:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * 
  * Returns the name of the stock item. See ctk_tool_button_set_stock_id().
  * The returned string is owned by GTK+ and must not be freed or modifed.
@@ -1333,7 +1333,7 @@ ctk_tool_button_set_stock_id (GtkToolButton *button,
  * Deprecated: 3.10: Use ctk_tool_button_get_icon_name() instead.
  **/
 const gchar *
-ctk_tool_button_get_stock_id (GtkToolButton *button)
+ctk_tool_button_get_stock_id (CtkToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
@@ -1342,19 +1342,19 @@ ctk_tool_button_get_stock_id (GtkToolButton *button)
 
 /**
  * ctk_tool_button_set_icon_name:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * @icon_name: (allow-none): the name of the themed icon
  *
  * Sets the icon for the tool button from a named themed icon.
- * See the docs for #GtkIconTheme for more details.
- * The #GtkToolButton:icon-name property only has an effect if not
- * overridden by non-%NULL #GtkToolButton:label-widget, 
- * #GtkToolButton:icon-widget and #GtkToolButton:stock-id properties.
+ * See the docs for #CtkIconTheme for more details.
+ * The #CtkToolButton:icon-name property only has an effect if not
+ * overridden by non-%NULL #CtkToolButton:label-widget, 
+ * #CtkToolButton:icon-widget and #CtkToolButton:stock-id properties.
  * 
  * Since: 2.8
  **/
 void
-ctk_tool_button_set_icon_name (GtkToolButton *button,
+ctk_tool_button_set_icon_name (CtkToolButton *button,
 			       const gchar   *icon_name)
 {
   gchar *old_icon_name;
@@ -1373,7 +1373,7 @@ ctk_tool_button_set_icon_name (GtkToolButton *button,
 
 /**
  * ctk_tool_button_get_icon_name:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  *
  * Returns the name of the themed icon for the tool button,
  * see ctk_tool_button_set_icon_name().
@@ -1384,7 +1384,7 @@ ctk_tool_button_set_icon_name (GtkToolButton *button,
  * Since: 2.8
  **/
 const gchar*
-ctk_tool_button_get_icon_name (GtkToolButton *button)
+ctk_tool_button_get_icon_name (CtkToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
@@ -1393,18 +1393,18 @@ ctk_tool_button_get_icon_name (GtkToolButton *button)
 
 /**
  * ctk_tool_button_set_icon_widget:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * @icon_widget: (allow-none): the widget used as icon, or %NULL
  *
  * Sets @icon as the widget used as icon on @button. If @icon_widget is
- * %NULL the icon is determined by the #GtkToolButton:stock-id property. If the
- * #GtkToolButton:stock-id property is also %NULL, @button will not have an icon.
+ * %NULL the icon is determined by the #CtkToolButton:stock-id property. If the
+ * #CtkToolButton:stock-id property is also %NULL, @button will not have an icon.
  * 
  * Since: 2.4
  **/
 void
-ctk_tool_button_set_icon_widget (GtkToolButton *button,
-				 GtkWidget     *icon_widget)
+ctk_tool_button_set_icon_widget (CtkToolButton *button,
+				 CtkWidget     *icon_widget)
 {
   g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
   g_return_if_fail (icon_widget == NULL || CTK_IS_WIDGET (icon_widget));
@@ -1413,7 +1413,7 @@ ctk_tool_button_set_icon_widget (GtkToolButton *button,
     {
       if (button->priv->icon_widget)
 	{
-          GtkWidget *parent;
+          CtkWidget *parent;
 
           parent = ctk_widget_get_parent (button->priv->icon_widget);
 	  if (parent)
@@ -1435,20 +1435,20 @@ ctk_tool_button_set_icon_widget (GtkToolButton *button,
 
 /**
  * ctk_tool_button_set_label_widget:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  * @label_widget: (allow-none): the widget used as label, or %NULL
  *
  * Sets @label_widget as the widget that will be used as the label
- * for @button. If @label_widget is %NULL the #GtkToolButton:label property is used
- * as label. If #GtkToolButton:label is also %NULL, the label in the stock item
- * determined by the #GtkToolButton:stock-id property is used as label. If
- * #GtkToolButton:stock-id is also %NULL, @button does not have a label.
+ * for @button. If @label_widget is %NULL the #CtkToolButton:label property is used
+ * as label. If #CtkToolButton:label is also %NULL, the label in the stock item
+ * determined by the #CtkToolButton:stock-id property is used as label. If
+ * #CtkToolButton:stock-id is also %NULL, @button does not have a label.
  * 
  * Since: 2.4
  **/
 void
-ctk_tool_button_set_label_widget (GtkToolButton *button,
-				  GtkWidget     *label_widget)
+ctk_tool_button_set_label_widget (CtkToolButton *button,
+				  CtkWidget     *label_widget)
 {
   g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
   g_return_if_fail (label_widget == NULL || CTK_IS_WIDGET (label_widget));
@@ -1457,7 +1457,7 @@ ctk_tool_button_set_label_widget (GtkToolButton *button,
     {
       if (button->priv->label_widget)
 	{
-          GtkWidget *parent;
+          CtkWidget *parent;
 
           parent = ctk_widget_get_parent (button->priv->label_widget);
           if (parent)
@@ -1479,7 +1479,7 @@ ctk_tool_button_set_label_widget (GtkToolButton *button,
 
 /**
  * ctk_tool_button_get_label_widget:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  *
  * Returns the widget used as label on @button.
  * See ctk_tool_button_set_label_widget().
@@ -1489,8 +1489,8 @@ ctk_tool_button_set_label_widget (GtkToolButton *button,
  *
  * Since: 2.4
  **/
-GtkWidget *
-ctk_tool_button_get_label_widget (GtkToolButton *button)
+CtkWidget *
+ctk_tool_button_get_label_widget (CtkToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
@@ -1499,7 +1499,7 @@ ctk_tool_button_get_label_widget (GtkToolButton *button)
 
 /**
  * ctk_tool_button_get_icon_widget:
- * @button: a #GtkToolButton
+ * @button: a #CtkToolButton
  *
  * Return the widget used as icon widget on @button.
  * See ctk_tool_button_set_icon_widget().
@@ -1509,16 +1509,16 @@ ctk_tool_button_get_label_widget (GtkToolButton *button)
  *
  * Since: 2.4
  **/
-GtkWidget *
-ctk_tool_button_get_icon_widget (GtkToolButton *button)
+CtkWidget *
+ctk_tool_button_get_icon_widget (CtkToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
   return button->priv->icon_widget;
 }
 
-GtkWidget *
-_ctk_tool_button_get_button (GtkToolButton *button)
+CtkWidget *
+_ctk_tool_button_get_button (CtkToolButton *button)
 {
   g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 

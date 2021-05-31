@@ -26,9 +26,9 @@ G_BEGIN_DECLS
 void            _ctk_accel_map_init         (void);
 
 void            _ctk_accel_map_add_group    (const gchar   *accel_path,
-                                             GtkAccelGroup *accel_group);
+                                             CtkAccelGroup *accel_group);
 void            _ctk_accel_map_remove_group (const gchar   *accel_path,
-                                             GtkAccelGroup *accel_group);
+                                             CtkAccelGroup *accel_group);
 gboolean        _ctk_accel_path_is_valid    (const gchar   *accel_path);
 
 gchar         * _ctk_accel_path_for_action  (const gchar   *action_name,

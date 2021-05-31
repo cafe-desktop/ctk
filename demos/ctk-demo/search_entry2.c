@@ -1,6 +1,6 @@
 /* Entry/Delayed Search Entry
  *
- * GtkSearchEntry sets up GtkEntries ready for search. Search entries
+ * CtkSearchEntry sets up CtkEntries ready for search. Search entries
  * have their "changed" signal delayed and should be used
  * when the searched operation is slow such as loads of entries
  * to search, or online searches.
@@ -9,8 +9,8 @@
 #include <ctk/ctk.h>
 
 static void
-search_changed_cb (GtkSearchEntry *entry,
-                   GtkLabel       *result_label)
+search_changed_cb (CtkSearchEntry *entry,
+                   CtkLabel       *result_label)
 {
   const char *text;
   text = ctk_entry_get_text (CTK_ENTRY (entry));
@@ -19,7 +19,7 @@ search_changed_cb (GtkSearchEntry *entry,
 }
 
 static void
-changed_cb (GtkEditable *editable)
+changed_cb (CtkEditable *editable)
 {
   const char *text;
   text = ctk_entry_get_text (CTK_ENTRY (editable));
@@ -27,52 +27,52 @@ changed_cb (GtkEditable *editable)
 }
 
 static gboolean
-window_key_press_event_cb (GtkWidget    *widget,
+window_key_press_event_cb (CtkWidget    *widget,
 			   GdkEvent     *event,
-			   GtkSearchBar *bar)
+			   CtkSearchBar *bar)
 {
   return ctk_search_bar_handle_event (bar, event);
 }
 
 static void
-search_changed (GtkSearchEntry *entry,
-                GtkLabel       *label)
+search_changed (CtkSearchEntry *entry,
+                CtkLabel       *label)
 {
   ctk_label_set_text (label, "search-changed");
 }
 
 static void
-next_match (GtkSearchEntry *entry,
-            GtkLabel       *label)
+next_match (CtkSearchEntry *entry,
+            CtkLabel       *label)
 {
   ctk_label_set_text (label, "next-match");
 }
 
 static void
-previous_match (GtkSearchEntry *entry,
-                GtkLabel       *label)
+previous_match (CtkSearchEntry *entry,
+                CtkLabel       *label)
 {
   ctk_label_set_text (label, "previous-match");
 }
 
 static void
-stop_search (GtkSearchEntry *entry,
-             GtkLabel       *label)
+stop_search (CtkSearchEntry *entry,
+             CtkLabel       *label)
 {
   ctk_label_set_text (label, "stop-search");
 }
 
-GtkWidget *
-do_search_entry2 (GtkWidget *do_widget)
+CtkWidget *
+do_search_entry2 (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *vbox;
-  GtkWidget *hbox;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkWidget *container;
-  GtkWidget *searchbar;
-  GtkWidget *button;
+  static CtkWidget *window = NULL;
+  CtkWidget *vbox;
+  CtkWidget *hbox;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkWidget *container;
+  CtkWidget *searchbar;
+  CtkWidget *button;
 
   if (!window)
     {

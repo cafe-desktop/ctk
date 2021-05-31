@@ -1,4 +1,4 @@
-/* GtkCustomPaperUnixDialog
+/* CtkCustomPaperUnixDialog
  * Copyright (C) 2006 Alexander Larsson <alexl@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -23,31 +23,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG                  (ctk_custom_paper_unix_dialog_get_type ())
-#define CTK_CUSTOM_PAPER_UNIX_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, GtkCustomPaperUnixDialog))
-#define CTK_CUSTOM_PAPER_UNIX_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, GtkCustomPaperUnixDialogClass))
+#define CTK_CUSTOM_PAPER_UNIX_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, CtkCustomPaperUnixDialog))
+#define CTK_CUSTOM_PAPER_UNIX_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, CtkCustomPaperUnixDialogClass))
 #define CTK_IS_CUSTOM_PAPER_UNIX_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG))
 #define CTK_IS_CUSTOM_PAPER_UNIX_DIALOG_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG))
-#define CTK_CUSTOM_PAPER_UNIX_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, GtkCustomPaperUnixDialogClass))
+#define CTK_CUSTOM_PAPER_UNIX_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, CtkCustomPaperUnixDialogClass))
 
 
-typedef struct _GtkCustomPaperUnixDialog         GtkCustomPaperUnixDialog;
-typedef struct _GtkCustomPaperUnixDialogClass    GtkCustomPaperUnixDialogClass;
-typedef struct _GtkCustomPaperUnixDialogPrivate  GtkCustomPaperUnixDialogPrivate;
+typedef struct _CtkCustomPaperUnixDialog         CtkCustomPaperUnixDialog;
+typedef struct _CtkCustomPaperUnixDialogClass    CtkCustomPaperUnixDialogClass;
+typedef struct _CtkCustomPaperUnixDialogPrivate  CtkCustomPaperUnixDialogPrivate;
 
-struct _GtkCustomPaperUnixDialog
+struct _CtkCustomPaperUnixDialog
 {
-  GtkDialog parent_instance;
+  CtkDialog parent_instance;
 
-  GtkCustomPaperUnixDialogPrivate *priv;
+  CtkCustomPaperUnixDialogPrivate *priv;
 };
 
 /**
- * GtkCustomPaperUnixDialogClass:
+ * CtkCustomPaperUnixDialogClass:
  * @parent_class: The parent class.
  */
-struct _GtkCustomPaperUnixDialogClass
+struct _CtkCustomPaperUnixDialogClass
 {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 
   /*< private >*/
 
@@ -60,11 +60,11 @@ struct _GtkCustomPaperUnixDialogClass
 
 GDK_AVAILABLE_IN_ALL
 GType             ctk_custom_paper_unix_dialog_get_type           (void) G_GNUC_CONST;
-GtkWidget *       _ctk_custom_paper_unix_dialog_new                (GtkWindow   *parent,
+CtkWidget *       _ctk_custom_paper_unix_dialog_new                (CtkWindow   *parent,
 								   const gchar *title);
-GtkUnit           _ctk_print_get_default_user_units                (void);
-void              _ctk_print_load_custom_papers                    (GtkListStore *store);
-void              _ctk_print_save_custom_papers                    (GtkListStore *store);
+CtkUnit           _ctk_print_get_default_user_units                (void);
+void              _ctk_print_load_custom_papers                    (CtkListStore *store);
+void              _ctk_print_save_custom_papers                    (CtkListStore *store);
 GList *           _ctk_load_custom_papers                          (void);
 
 

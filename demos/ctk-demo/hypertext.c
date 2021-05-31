@@ -15,12 +15,12 @@
  * as a link.
  */
 static void
-insert_link (GtkTextBuffer *buffer,
-             GtkTextIter   *iter,
+insert_link (CtkTextBuffer *buffer,
+             CtkTextIter   *iter,
              gchar         *text,
              gint           page)
 {
-  GtkTextTag *tag;
+  CtkTextTag *tag;
 
   tag = ctk_text_buffer_create_tag (buffer, NULL,
                                     "foreground", "blue",
@@ -34,10 +34,10 @@ insert_link (GtkTextBuffer *buffer,
  * hypertext app, this method would parse a file to identify the links.
  */
 static void
-show_page (GtkTextBuffer *buffer,
+show_page (CtkTextBuffer *buffer,
            gint           page)
 {
-  GtkTextIter iter;
+  CtkTextIter iter;
 
   ctk_text_buffer_set_text (buffer, "", 0);
   ctk_text_buffer_get_iter_at_offset (buffer, &iter, 0);
@@ -62,7 +62,7 @@ show_page (GtkTextBuffer *buffer,
     }
   else if (page == 3)
     {
-      GtkTextTag *tag;
+      CtkTextTag *tag;
 
       tag = ctk_text_buffer_create_tag (buffer, NULL,
                                         "weight", PANGO_WEIGHT_BOLD,
@@ -80,15 +80,15 @@ show_page (GtkTextBuffer *buffer,
  * by the data attached to it.
  */
 static void
-follow_if_link (GtkWidget   *text_view,
-                GtkTextIter *iter)
+follow_if_link (CtkWidget   *text_view,
+                CtkTextIter *iter)
 {
   GSList *tags = NULL, *tagp = NULL;
 
   tags = ctk_text_iter_get_tags (iter);
   for (tagp = tags;  tagp != NULL;  tagp = tagp->next)
     {
-      GtkTextTag *tag = tagp->data;
+      CtkTextTag *tag = tagp->data;
       gint page = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (tag), "page"));
 
       if (page != 0)
@@ -105,11 +105,11 @@ follow_if_link (GtkWidget   *text_view,
 /* Links can be activated by pressing Enter.
  */
 static gboolean
-key_press_event (GtkWidget *text_view,
+key_press_event (CtkWidget *text_view,
                  GdkEventKey *event)
 {
-  GtkTextIter iter;
-  GtkTextBuffer *buffer;
+  CtkTextIter iter;
+  CtkTextBuffer *buffer;
 
   switch (event->keyval)
     {
@@ -131,11 +131,11 @@ key_press_event (GtkWidget *text_view,
 /* Links can also be activated by clicking or tapping.
  */
 static gboolean
-event_after (GtkWidget *text_view,
+event_after (CtkWidget *text_view,
              GdkEvent  *ev)
 {
-  GtkTextIter start, end, iter;
-  GtkTextBuffer *buffer;
+  CtkTextIter start, end, iter;
+  CtkTextBuffer *buffer;
   gdouble ex, ey;
   gint x, y;
 
@@ -188,12 +188,12 @@ static GdkCursor *regular_cursor = NULL;
  * typically used by web browsers.
  */
 static void
-set_cursor_if_appropriate (GtkTextView    *text_view,
+set_cursor_if_appropriate (CtkTextView    *text_view,
                            gint            x,
                            gint            y)
 {
   GSList *tags = NULL, *tagp = NULL;
-  GtkTextIter iter;
+  CtkTextIter iter;
   gboolean hovering = FALSE;
 
   if (ctk_text_view_get_iter_at_location (text_view, &iter, x, y))
@@ -201,7 +201,7 @@ set_cursor_if_appropriate (GtkTextView    *text_view,
       tags = ctk_text_iter_get_tags (&iter);
       for (tagp = tags;  tagp != NULL;  tagp = tagp->next)
         {
-          GtkTextTag *tag = tagp->data;
+          CtkTextTag *tag = tagp->data;
           gint page = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (tag), "page"));
 
           if (page != 0)
@@ -229,7 +229,7 @@ set_cursor_if_appropriate (GtkTextView    *text_view,
 /* Update the cursor image if the pointer moved.
  */
 static gboolean
-motion_notify_event (GtkWidget      *text_view,
+motion_notify_event (CtkWidget      *text_view,
                      GdkEventMotion *event)
 {
   gint x, y;
@@ -243,16 +243,16 @@ motion_notify_event (GtkWidget      *text_view,
   return FALSE;
 }
 
-GtkWidget *
-do_hypertext (GtkWidget *do_widget)
+CtkWidget *
+do_hypertext (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *view;
-      GtkWidget *sw;
-      GtkTextBuffer *buffer;
+      CtkWidget *view;
+      CtkWidget *sw;
+      CtkTextBuffer *buffer;
       GdkDisplay *display;
 
       display = ctk_widget_get_display (do_widget);

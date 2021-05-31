@@ -21,12 +21,12 @@
 #include <ctk/ctk.h>
 #include <ctk/ctk-a11y.h>
 
-/* Implement a (trivial) GtkButton subclass, derive GtkButtonAccessible
+/* Implement a (trivial) CtkButton subclass, derive CtkButtonAccessible
  * and use the derived accessible for our new button.
  */
 
-typedef GtkButtonAccessible MyButtonAccessible;
-typedef GtkButtonAccessibleClass MyButtonAccessibleClass;
+typedef CtkButtonAccessible MyButtonAccessible;
+typedef CtkButtonAccessibleClass MyButtonAccessibleClass;
 
 G_DEFINE_TYPE (MyButtonAccessible, my_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
 
@@ -40,8 +40,8 @@ my_button_accessible_class_init (MyButtonAccessibleClass *class)
 {
 }
 
-typedef GtkButton MyButton;
-typedef GtkButtonClass MyButtonClass;
+typedef CtkButton MyButton;
+typedef CtkButtonClass MyButtonClass;
 
 G_DEFINE_TYPE (MyButton, my_button, CTK_TYPE_BUTTON)
 
@@ -59,8 +59,8 @@ my_button_class_init (MyButtonClass *class)
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *widget;
-  GtkAccessible *accessible;
+  CtkWidget *widget;
+  CtkAccessible *accessible;
 
   ctk_init (NULL, NULL);
 

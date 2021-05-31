@@ -21,11 +21,11 @@
 static guint add_rows_id = 0;
 
 static void
-populate_list (GtkListBox *list)
+populate_list (CtkListBox *list)
 {
   gint i;
   gchar *text;
-  GtkWidget *row, *label;
+  CtkWidget *row, *label;
   gint n;
   GList *l;
 
@@ -48,13 +48,13 @@ populate_list (GtkListBox *list)
     }
 }
 
-static GtkWidget *popup;
-static GtkWidget *spinner;
+static CtkWidget *popup;
+static CtkWidget *spinner;
 
 static gboolean
 add_rows (gpointer data)
 {
-  GtkListBox *list = data;
+  CtkListBox *list = data;
 
   ctk_widget_hide (popup);
   ctk_spinner_stop (CTK_SPINNER (spinner));
@@ -66,9 +66,9 @@ add_rows (gpointer data)
 }
 
 static void
-edge_overshot (GtkScrolledWindow *sw,
-               GtkPositionType    pos,
-               GtkListBox        *list)
+edge_overshot (CtkScrolledWindow *sw,
+               CtkPositionType    pos,
+               CtkListBox        *list)
 {
   if (pos == CTK_POS_BOTTOM)
     {
@@ -81,9 +81,9 @@ edge_overshot (GtkScrolledWindow *sw,
 }
 
 static void
-edge_reached (GtkScrolledWindow *sw,
-	      GtkPositionType    pos,
-	      GtkListBox        *list)
+edge_reached (CtkScrolledWindow *sw,
+	      CtkPositionType    pos,
+	      CtkListBox        *list)
 {
   g_print ("Reached the edge at pos %d!\n", pos);
 }
@@ -91,11 +91,11 @@ edge_reached (GtkScrolledWindow *sw,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *win;
-  GtkWidget *sw;
-  GtkWidget *list;
-  GtkWidget *overlay;
-  GtkWidget *label;
+  CtkWidget *win;
+  CtkWidget *sw;
+  CtkWidget *list;
+  CtkWidget *overlay;
+  CtkWidget *label;
 
   ctk_init (NULL, NULL);
 

@@ -31,47 +31,47 @@
 /**
  * SECTION:ctkoverlay
  * @short_description: A container which overlays widgets on top of each other
- * @title: GtkOverlay
+ * @title: CtkOverlay
  *
- * GtkOverlay is a container which contains a single main child, on top
+ * CtkOverlay is a container which contains a single main child, on top
  * of which it can place “overlay” widgets. The position of each overlay
- * widget is determined by its #GtkWidget:halign and #GtkWidget:valign
+ * widget is determined by its #CtkWidget:halign and #CtkWidget:valign
  * properties. E.g. a widget with both alignments set to %CTK_ALIGN_START
- * will be placed at the top left corner of the GtkOverlay container,
+ * will be placed at the top left corner of the CtkOverlay container,
  * whereas an overlay with halign set to %CTK_ALIGN_CENTER and valign set
- * to %CTK_ALIGN_END will be placed a the bottom edge of the GtkOverlay,
+ * to %CTK_ALIGN_END will be placed a the bottom edge of the CtkOverlay,
  * horizontally centered. The position can be adjusted by setting the margin
  * properties of the child to non-zero values.
  *
  * More complicated placement of overlays is possible by connecting
- * to the #GtkOverlay::get-child-position signal.
+ * to the #CtkOverlay::get-child-position signal.
  *
  * An overlay’s minimum and natural sizes are those of its main child. The sizes
  * of overlay children are not considered when measuring these preferred sizes.
  *
- * # GtkOverlay as GtkBuildable
+ * # CtkOverlay as CtkBuildable
  *
- * The GtkOverlay implementation of the GtkBuildable interface
+ * The CtkOverlay implementation of the CtkBuildable interface
  * supports placing a child as an overlay by specifying “overlay” as
  * the “type” attribute of a `<child>` element.
  *
  * # CSS nodes
  *
- * GtkOverlay has a single CSS node with the name “overlay”. Overlay children
+ * CtkOverlay has a single CSS node with the name “overlay”. Overlay children
  * whose alignments cause them to be positioned at an edge get the style classes
  * “.left”, “.right”, “.top”, and/or “.bottom” according to their position.
  */
 
-struct _GtkOverlayPrivate
+struct _CtkOverlayPrivate
 {
   GSList *children;
 };
 
-typedef struct _GtkOverlayChild GtkOverlayChild;
+typedef struct _CtkOverlayChild CtkOverlayChild;
 
-struct _GtkOverlayChild
+struct _CtkOverlayChild
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   GdkWindow *window;
   gboolean pass_through;
 };
@@ -90,21 +90,21 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static void ctk_overlay_buildable_init (GtkBuildableIface *iface);
+static void ctk_overlay_buildable_init (CtkBuildableIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkOverlay, ctk_overlay, CTK_TYPE_BIN,
-                         G_ADD_PRIVATE (GtkOverlay)
+G_DEFINE_TYPE_WITH_CODE (CtkOverlay, ctk_overlay, CTK_TYPE_BIN,
+                         G_ADD_PRIVATE (CtkOverlay)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_overlay_buildable_init))
 
 static void
-ctk_overlay_compute_child_allocation (GtkOverlay      *overlay,
-				      GtkOverlayChild *child,
-				      GtkAllocation *window_allocation,
-				      GtkAllocation *widget_allocation)
+ctk_overlay_compute_child_allocation (CtkOverlay      *overlay,
+				      CtkOverlayChild *child,
+				      CtkAllocation *window_allocation,
+				      CtkAllocation *widget_allocation)
 {
   gint left, right, top, bottom;
-  GtkAllocation allocation, overlay_allocation;
+  CtkAllocation allocation, overlay_allocation;
   gboolean result;
 
   g_signal_emit (overlay, signals[GET_CHILD_POSITION],
@@ -141,11 +141,11 @@ ctk_overlay_compute_child_allocation (GtkOverlay      *overlay,
 }
 
 static GdkWindow *
-ctk_overlay_create_child_window (GtkOverlay *overlay,
-                                 GtkOverlayChild *child)
+ctk_overlay_create_child_window (CtkOverlay *overlay,
+                                 CtkOverlayChild *child)
 {
-  GtkWidget *widget = CTK_WIDGET (overlay);
-  GtkAllocation allocation;
+  CtkWidget *widget = CTK_WIDGET (overlay);
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -173,9 +173,9 @@ ctk_overlay_create_child_window (GtkOverlay *overlay,
   return window;
 }
 
-static GtkAlign
-effective_align (GtkAlign         align,
-                 GtkTextDirection direction)
+static CtkAlign
+effective_align (CtkAlign         align,
+                 CtkTextDirection direction)
 {
   switch (align)
     {
@@ -189,18 +189,18 @@ effective_align (GtkAlign         align,
 }
 
 static void
-ctk_overlay_get_main_widget_allocation (GtkOverlay *overlay,
-                                        GtkAllocation *main_alloc_out)
+ctk_overlay_get_main_widget_allocation (CtkOverlay *overlay,
+                                        CtkAllocation *main_alloc_out)
 {
-  GtkWidget *main_widget;
-  GtkAllocation main_alloc;
+  CtkWidget *main_widget;
+  CtkAllocation main_alloc;
 
   main_widget = ctk_bin_get_child (CTK_BIN (overlay));
 
   /* special-case scrolled windows */
   if (CTK_IS_SCROLLED_WINDOW (main_widget))
     {
-      GtkWidget *grandchild;
+      CtkWidget *grandchild;
       gint x, y;
       gboolean res;
 
@@ -234,15 +234,15 @@ ctk_overlay_get_main_widget_allocation (GtkOverlay *overlay,
 }
 
 static void
-ctk_overlay_child_update_style_classes (GtkOverlay *overlay,
-                                        GtkWidget *child,
-                                        GtkAllocation *child_allocation)
+ctk_overlay_child_update_style_classes (CtkOverlay *overlay,
+                                        CtkWidget *child,
+                                        CtkAllocation *child_allocation)
 {
-  GtkAllocation overlay_allocation, main_allocation;
-  GtkAlign valign, halign;
+  CtkAllocation overlay_allocation, main_allocation;
+  CtkAlign valign, halign;
   gboolean is_left, is_right, is_top, is_bottom;
   gboolean has_left, has_right, has_top, has_bottom;
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (child);
   has_left = ctk_style_context_has_class (context, CTK_STYLE_CLASS_LEFT);
@@ -297,10 +297,10 @@ ctk_overlay_child_update_style_classes (GtkOverlay *overlay,
 }
 
 static void
-ctk_overlay_child_allocate (GtkOverlay      *overlay,
-                            GtkOverlayChild *child)
+ctk_overlay_child_allocate (CtkOverlay      *overlay,
+                            CtkOverlayChild *child)
 {
-  GtkAllocation window_allocation, child_allocation;
+  CtkAllocation window_allocation, child_allocation;
 
   if (ctk_widget_get_mapped (CTK_WIDGET (overlay)))
     {
@@ -328,13 +328,13 @@ ctk_overlay_child_allocate (GtkOverlay      *overlay,
 }
 
 static void
-ctk_overlay_size_allocate (GtkWidget     *widget,
-                           GtkAllocation *allocation)
+ctk_overlay_size_allocate (CtkWidget     *widget,
+                           CtkAllocation *allocation)
 {
-  GtkOverlay *overlay = CTK_OVERLAY (widget);
-  GtkOverlayPrivate *priv = overlay->priv;
+  CtkOverlay *overlay = CTK_OVERLAY (widget);
+  CtkOverlayPrivate *priv = overlay->priv;
   GSList *children;
-  GtkWidget *main_widget;
+  CtkWidget *main_widget;
 
   CTK_WIDGET_CLASS (ctk_overlay_parent_class)->size_allocate (widget, allocation);
 
@@ -347,14 +347,14 @@ ctk_overlay_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_overlay_get_child_position (GtkOverlay    *overlay,
-                                GtkWidget     *widget,
-                                GtkAllocation *alloc)
+ctk_overlay_get_child_position (CtkOverlay    *overlay,
+                                CtkWidget     *widget,
+                                CtkAllocation *alloc)
 {
-  GtkAllocation main_alloc;
-  GtkRequisition min, req;
-  GtkAlign halign;
-  GtkTextDirection direction;
+  CtkAllocation main_alloc;
+  CtkRequisition min, req;
+  CtkAlign halign;
+  CtkTextDirection direction;
 
   ctk_overlay_get_main_widget_allocation (overlay, &main_alloc);
   ctk_widget_get_preferred_size (widget, &min, &req);
@@ -412,11 +412,11 @@ ctk_overlay_get_child_position (GtkOverlay    *overlay,
 }
 
 static void
-ctk_overlay_realize (GtkWidget *widget)
+ctk_overlay_realize (CtkWidget *widget)
 {
-  GtkOverlay *overlay = CTK_OVERLAY (widget);
-  GtkOverlayPrivate *priv = overlay->priv;
-  GtkOverlayChild *child;
+  CtkOverlay *overlay = CTK_OVERLAY (widget);
+  CtkOverlayPrivate *priv = overlay->priv;
+  CtkOverlayChild *child;
   GSList *children;
 
   CTK_WIDGET_CLASS (ctk_overlay_parent_class)->realize (widget);
@@ -431,11 +431,11 @@ ctk_overlay_realize (GtkWidget *widget)
 }
 
 static void
-ctk_overlay_unrealize (GtkWidget *widget)
+ctk_overlay_unrealize (CtkWidget *widget)
 {
-  GtkOverlay *overlay = CTK_OVERLAY (widget);
-  GtkOverlayPrivate *priv = overlay->priv;
-  GtkOverlayChild *child;
+  CtkOverlay *overlay = CTK_OVERLAY (widget);
+  CtkOverlayPrivate *priv = overlay->priv;
+  CtkOverlayChild *child;
   GSList *children;
 
   for (children = priv->children; children; children = children->next)
@@ -452,11 +452,11 @@ ctk_overlay_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_overlay_map (GtkWidget *widget)
+ctk_overlay_map (CtkWidget *widget)
 {
-  GtkOverlay *overlay = CTK_OVERLAY (widget);
-  GtkOverlayPrivate *priv = overlay->priv;
-  GtkOverlayChild *child;
+  CtkOverlay *overlay = CTK_OVERLAY (widget);
+  CtkOverlayPrivate *priv = overlay->priv;
+  CtkOverlayChild *child;
   GSList *children;
 
   CTK_WIDGET_CLASS (ctk_overlay_parent_class)->map (widget);
@@ -473,11 +473,11 @@ ctk_overlay_map (GtkWidget *widget)
 }
 
 static void
-ctk_overlay_unmap (GtkWidget *widget)
+ctk_overlay_unmap (CtkWidget *widget)
 {
-  GtkOverlay *overlay = CTK_OVERLAY (widget);
-  GtkOverlayPrivate *priv = overlay->priv;
-  GtkOverlayChild *child;
+  CtkOverlay *overlay = CTK_OVERLAY (widget);
+  CtkOverlayPrivate *priv = overlay->priv;
+  CtkOverlayChild *child;
   GSList *children;
 
   for (children = priv->children; children; children = children->next)
@@ -493,11 +493,11 @@ ctk_overlay_unmap (GtkWidget *widget)
 }
 
 static void
-ctk_overlay_remove (GtkContainer *container,
-                    GtkWidget    *widget)
+ctk_overlay_remove (CtkContainer *container,
+                    CtkWidget    *widget)
 {
-  GtkOverlayPrivate *priv = CTK_OVERLAY (container)->priv;
-  GtkOverlayChild *child;
+  CtkOverlayPrivate *priv = CTK_OVERLAY (container)->priv;
+  CtkOverlayChild *child;
   GSList *children, *next;
   gboolean removed;
 
@@ -518,7 +518,7 @@ ctk_overlay_remove (GtkContainer *container,
           ctk_widget_unparent (widget);
 
           priv->children = g_slist_delete_link (priv->children, children);
-          g_slice_free (GtkOverlayChild, child);
+          g_slice_free (CtkOverlayChild, child);
 
           removed = TRUE;
         }
@@ -532,15 +532,15 @@ ctk_overlay_remove (GtkContainer *container,
 
 /**
  * ctk_overlay_reorder_overlay:
- * @overlay: a #GtkOverlay
- * @child: the overlaid #GtkWidget to move
+ * @overlay: a #CtkOverlay
+ * @child: the overlaid #CtkWidget to move
  * @index_: the new index for @child in the list of overlay children
  *   of @overlay, starting from 0. If negative, indicates the end of
  *   the list
  *
  * Moves @child to a new @index in the list of @overlay children.
  * The list contains overlays in the order that these were
- * added to @overlay by default. See also #GtkOverlay:index.
+ * added to @overlay by default. See also #CtkOverlay:index.
  *
  * A widget’s index in the @overlay children list determines which order
  * the children are drawn if they overlap. The first child is drawn at
@@ -549,15 +549,15 @@ ctk_overlay_remove (GtkContainer *container,
  * Since: 3.18
  */
 void
-ctk_overlay_reorder_overlay (GtkOverlay *overlay,
-                             GtkWidget  *child,
+ctk_overlay_reorder_overlay (CtkOverlay *overlay,
+                             CtkWidget  *child,
                              int         index_)
 {
-  GtkOverlayPrivate *priv;
+  CtkOverlayPrivate *priv;
   GSList *old_link;
   GSList *new_link;
   GSList *l;
-  GtkOverlayChild *child_info = NULL;
+  CtkOverlayChild *child_info = NULL;
   gint old_index, i;
   gint index;
 
@@ -599,7 +599,7 @@ ctk_overlay_reorder_overlay (GtkOverlay *overlay,
 
   for (i = 0, l = priv->children; l != NULL; l = l->next, i++)
     {
-      GtkOverlayChild *info = l->data;
+      CtkOverlayChild *info = l->data;
       if ((i < index && i < old_index) ||
           (i > index && i > old_index))
         continue;
@@ -613,15 +613,15 @@ ctk_overlay_reorder_overlay (GtkOverlay *overlay,
 
 
 static void
-ctk_overlay_forall (GtkContainer *overlay,
+ctk_overlay_forall (CtkContainer *overlay,
                     gboolean      include_internals,
-                    GtkCallback   callback,
+                    CtkCallback   callback,
                     gpointer      callback_data)
 {
-  GtkOverlayPrivate *priv = CTK_OVERLAY (overlay)->priv;
-  GtkOverlayChild *child;
+  CtkOverlayPrivate *priv = CTK_OVERLAY (overlay)->priv;
+  CtkOverlayChild *child;
   GSList *children;
-  GtkWidget *main_widget;
+  CtkWidget *main_widget;
 
   main_widget = ctk_bin_get_child (CTK_BIN (overlay));
   if (main_widget)
@@ -637,12 +637,12 @@ ctk_overlay_forall (GtkContainer *overlay,
     }
 }
 
-static GtkOverlayChild *
-ctk_overlay_get_overlay_child (GtkOverlay *overlay,
-			       GtkWidget *child)
+static CtkOverlayChild *
+ctk_overlay_get_overlay_child (CtkOverlay *overlay,
+			       CtkWidget *child)
 {
-  GtkOverlayPrivate *priv = CTK_OVERLAY (overlay)->priv;
-  GtkOverlayChild *child_info;
+  CtkOverlayPrivate *priv = CTK_OVERLAY (overlay)->priv;
+  CtkOverlayChild *child_info;
   GSList *children;
 
   for (children = priv->children; children; children = children->next)
@@ -657,15 +657,15 @@ ctk_overlay_get_overlay_child (GtkOverlay *overlay,
 }
 
 static void
-ctk_overlay_set_child_property (GtkContainer *container,
-				GtkWidget    *child,
+ctk_overlay_set_child_property (CtkContainer *container,
+				CtkWidget    *child,
 				guint         property_id,
 				const GValue *value,
 				GParamSpec   *pspec)
 {
-  GtkOverlay *overlay = CTK_OVERLAY (container);
-  GtkOverlayChild *child_info;
-  GtkWidget *main_widget;
+  CtkOverlay *overlay = CTK_OVERLAY (container);
+  CtkOverlayChild *child_info;
+  CtkWidget *main_widget;
 
   main_widget = ctk_bin_get_child (CTK_BIN (overlay));
   if (child == main_widget)
@@ -709,16 +709,16 @@ ctk_overlay_set_child_property (GtkContainer *container,
 }
 
 static void
-ctk_overlay_get_child_property (GtkContainer *container,
-				GtkWidget    *child,
+ctk_overlay_get_child_property (CtkContainer *container,
+				CtkWidget    *child,
 				guint         property_id,
 				GValue       *value,
 				GParamSpec   *pspec)
 {
-  GtkOverlay *overlay = CTK_OVERLAY (container);
-  GtkOverlayPrivate *priv = CTK_OVERLAY (overlay)->priv;
-  GtkOverlayChild *child_info;
-  GtkWidget *main_widget;
+  CtkOverlay *overlay = CTK_OVERLAY (container);
+  CtkOverlayPrivate *priv = CTK_OVERLAY (overlay)->priv;
+  CtkOverlayChild *child_info;
+  CtkWidget *main_widget;
 
   main_widget = ctk_bin_get_child (CTK_BIN (overlay));
   if (child == main_widget)
@@ -752,11 +752,11 @@ ctk_overlay_get_child_property (GtkContainer *container,
 
 
 static void
-ctk_overlay_class_init (GtkOverlayClass *klass)
+ctk_overlay_class_init (CtkOverlayClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
 
   widget_class->size_allocate = ctk_overlay_size_allocate;
   widget_class->realize = ctk_overlay_realize;
@@ -772,7 +772,7 @@ ctk_overlay_class_init (GtkOverlayClass *klass)
   klass->get_child_position = ctk_overlay_get_child_position;
 
   /**
-   * GtkOverlay:pass-through:
+   * CtkOverlay:pass-through:
    *
    * Whether to pass input through the overlay child to the main child.
    * (Of course, this has no effect when set on the main child itself.)
@@ -785,7 +785,7 @@ ctk_overlay_class_init (GtkOverlayClass *klass)
                             CTK_PARAM_READWRITE));
 
   /**
-   * GtkOverlay:index:
+   * CtkOverlay:index:
    *
    * The index of the overlay child in the parent (or -1 for the main child).
    * See ctk_overlay_reorder_overlay().
@@ -800,8 +800,8 @@ ctk_overlay_class_init (GtkOverlayClass *klass)
 								CTK_PARAM_READWRITE));
 
   /**
-   * GtkOverlay::get-child-position:
-   * @overlay: the #GtkOverlay
+   * CtkOverlay::get-child-position:
+   * @overlay: the #CtkOverlay
    * @widget: the child widget to position
    * @allocation: (type Gdk.Rectangle) (out caller-allocates): return
    *   location for the allocation
@@ -817,7 +817,7 @@ ctk_overlay_class_init (GtkOverlayClass *klass)
    * and gives the widget its natural size (except that an
    * alignment of %CTK_ALIGN_FILL will cause the overlay to
    * be full-width/height). If the main child is a
-   * #GtkScrolledWindow, the overlays are placed relative
+   * #CtkScrolledWindow, the overlays are placed relative
    * to its contents.
    *
    * Returns: %TRUE if the @allocation has been filled
@@ -826,7 +826,7 @@ ctk_overlay_class_init (GtkOverlayClass *klass)
     g_signal_new (I_("get-child-position"),
                   G_TYPE_FROM_CLASS (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkOverlayClass, get_child_position),
+                  G_STRUCT_OFFSET (CtkOverlayClass, get_child_position),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__OBJECT_BOXED,
                   G_TYPE_BOOLEAN, 2,
@@ -840,7 +840,7 @@ ctk_overlay_class_init (GtkOverlayClass *klass)
 }
 
 static void
-ctk_overlay_init (GtkOverlay *overlay)
+ctk_overlay_init (CtkOverlay *overlay)
 {
   overlay->priv = ctk_overlay_get_instance_private (overlay);
 
@@ -848,8 +848,8 @@ ctk_overlay_init (GtkOverlay *overlay)
 }
 
 static void
-ctk_overlay_buildable_add_child (GtkBuildable *buildable,
-                                 GtkBuilder   *builder,
+ctk_overlay_buildable_add_child (CtkBuildable *buildable,
+                                 CtkBuilder   *builder,
                                  GObject      *child,
                                  const gchar  *type)
 {
@@ -862,7 +862,7 @@ ctk_overlay_buildable_add_child (GtkBuildable *buildable,
 }
 
 static void
-ctk_overlay_buildable_init (GtkBuildableIface *iface)
+ctk_overlay_buildable_init (CtkBuildableIface *iface)
 {
   iface->add_child = ctk_overlay_buildable_add_child;
 }
@@ -870,13 +870,13 @@ ctk_overlay_buildable_init (GtkBuildableIface *iface)
 /**
  * ctk_overlay_new:
  *
- * Creates a new #GtkOverlay.
+ * Creates a new #CtkOverlay.
  *
- * Returns: a new #GtkOverlay object.
+ * Returns: a new #CtkOverlay object.
  *
  * Since: 3.2
  */
-GtkWidget *
+CtkWidget *
 ctk_overlay_new (void)
 {
   return g_object_new (CTK_TYPE_OVERLAY, NULL);
@@ -884,8 +884,8 @@ ctk_overlay_new (void)
 
 /**
  * ctk_overlay_add_overlay:
- * @overlay: a #GtkOverlay
- * @widget: a #GtkWidget to be added to the container
+ * @overlay: a #CtkOverlay
+ * @widget: a #CtkWidget to be added to the container
  *
  * Adds @widget to @overlay.
  *
@@ -893,22 +893,22 @@ ctk_overlay_new (void)
  * added with ctk_container_add().
  *
  * The position at which @widget is placed is determined
- * from its #GtkWidget:halign and #GtkWidget:valign properties.
+ * from its #CtkWidget:halign and #CtkWidget:valign properties.
  *
  * Since: 3.2
  */
 void
-ctk_overlay_add_overlay (GtkOverlay *overlay,
-                         GtkWidget  *widget)
+ctk_overlay_add_overlay (CtkOverlay *overlay,
+                         CtkWidget  *widget)
 {
-  GtkOverlayPrivate *priv;
-  GtkOverlayChild *child;
+  CtkOverlayPrivate *priv;
+  CtkOverlayChild *child;
 
   g_return_if_fail (CTK_IS_OVERLAY (overlay));
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = overlay->priv;
-  child = g_slice_new0 (GtkOverlayChild);
+  child = g_slice_new0 (CtkOverlayChild);
   child->widget = widget;
 
   priv->children = g_slist_append (priv->children, child);
@@ -926,18 +926,18 @@ ctk_overlay_add_overlay (GtkOverlay *overlay,
 
 /**
  * ctk_overlay_set_overlay_pass_through:
- * @overlay: a #GtkOverlay
- * @widget: an overlay child of #GtkOverlay
+ * @overlay: a #CtkOverlay
+ * @widget: an overlay child of #CtkOverlay
  * @pass_through: whether the child should pass the input through
  *
- * Convenience function to set the value of the #GtkOverlay:pass-through
+ * Convenience function to set the value of the #CtkOverlay:pass-through
  * child property for @widget.
  *
  * Since: 3.18
  */
 void
-ctk_overlay_set_overlay_pass_through (GtkOverlay *overlay,
-				      GtkWidget  *widget,
+ctk_overlay_set_overlay_pass_through (CtkOverlay *overlay,
+				      CtkWidget  *widget,
 				      gboolean    pass_through)
 {
   g_return_if_fail (CTK_IS_OVERLAY (overlay));
@@ -950,10 +950,10 @@ ctk_overlay_set_overlay_pass_through (GtkOverlay *overlay,
 
 /**
  * ctk_overlay_get_overlay_pass_through:
- * @overlay: a #GtkOverlay
- * @widget: an overlay child of #GtkOverlay
+ * @overlay: a #CtkOverlay
+ * @widget: an overlay child of #CtkOverlay
  *
- * Convenience function to get the value of the #GtkOverlay:pass-through
+ * Convenience function to get the value of the #CtkOverlay:pass-through
  * child property for @widget.
  *
  * Returns: whether the widget is a pass through child.
@@ -961,8 +961,8 @@ ctk_overlay_set_overlay_pass_through (GtkOverlay *overlay,
  * Since: 3.18
  */
 gboolean
-ctk_overlay_get_overlay_pass_through (GtkOverlay *overlay,
-				      GtkWidget  *widget)
+ctk_overlay_get_overlay_pass_through (CtkOverlay *overlay,
+				      CtkWidget  *widget)
 {
   gboolean pass_through;
 

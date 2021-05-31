@@ -23,31 +23,31 @@
 
 G_BEGIN_DECLS
 
-typedef union _GtkImageDefinition GtkImageDefinition;
+typedef union _CtkImageDefinition CtkImageDefinition;
 
-GtkImageDefinition *    ctk_image_definition_new_empty          (void);
-GtkImageDefinition *    ctk_image_definition_new_pixbuf         (GdkPixbuf                      *pixbuf,
+CtkImageDefinition *    ctk_image_definition_new_empty          (void);
+CtkImageDefinition *    ctk_image_definition_new_pixbuf         (GdkPixbuf                      *pixbuf,
                                                                  int                             scale);
-GtkImageDefinition *    ctk_image_definition_new_stock          (const char                     *stock_id);
-GtkImageDefinition *    ctk_image_definition_new_icon_set       (GtkIconSet                     *icon_set);
-GtkImageDefinition *    ctk_image_definition_new_animation      (GdkPixbufAnimation             *animation,
+CtkImageDefinition *    ctk_image_definition_new_stock          (const char                     *stock_id);
+CtkImageDefinition *    ctk_image_definition_new_icon_set       (CtkIconSet                     *icon_set);
+CtkImageDefinition *    ctk_image_definition_new_animation      (GdkPixbufAnimation             *animation,
                                                                  int                             scale);
-GtkImageDefinition *    ctk_image_definition_new_icon_name      (const char                     *icon_name);
-GtkImageDefinition *    ctk_image_definition_new_gicon          (GIcon                          *gicon);
-GtkImageDefinition *    ctk_image_definition_new_surface        (cairo_surface_t                *surface);
+CtkImageDefinition *    ctk_image_definition_new_icon_name      (const char                     *icon_name);
+CtkImageDefinition *    ctk_image_definition_new_gicon          (GIcon                          *gicon);
+CtkImageDefinition *    ctk_image_definition_new_surface        (cairo_surface_t                *surface);
 
-GtkImageDefinition *    ctk_image_definition_ref                (GtkImageDefinition             *def);
-void                    ctk_image_definition_unref              (GtkImageDefinition             *def);
+CtkImageDefinition *    ctk_image_definition_ref                (CtkImageDefinition             *def);
+void                    ctk_image_definition_unref              (CtkImageDefinition             *def);
 
-GtkImageType            ctk_image_definition_get_storage_type   (const GtkImageDefinition       *def);
-gint                    ctk_image_definition_get_scale          (const GtkImageDefinition       *def);
-GdkPixbuf *             ctk_image_definition_get_pixbuf         (const GtkImageDefinition       *def);
-const gchar *           ctk_image_definition_get_stock          (const GtkImageDefinition       *def);
-GtkIconSet *            ctk_image_definition_get_icon_set       (const GtkImageDefinition       *def);
-GdkPixbufAnimation *    ctk_image_definition_get_animation      (const GtkImageDefinition       *def);
-const gchar *           ctk_image_definition_get_icon_name      (const GtkImageDefinition       *def);
-GIcon *                 ctk_image_definition_get_gicon          (const GtkImageDefinition       *def);
-cairo_surface_t *       ctk_image_definition_get_surface        (const GtkImageDefinition       *def);
+CtkImageType            ctk_image_definition_get_storage_type   (const CtkImageDefinition       *def);
+gint                    ctk_image_definition_get_scale          (const CtkImageDefinition       *def);
+GdkPixbuf *             ctk_image_definition_get_pixbuf         (const CtkImageDefinition       *def);
+const gchar *           ctk_image_definition_get_stock          (const CtkImageDefinition       *def);
+CtkIconSet *            ctk_image_definition_get_icon_set       (const CtkImageDefinition       *def);
+GdkPixbufAnimation *    ctk_image_definition_get_animation      (const CtkImageDefinition       *def);
+const gchar *           ctk_image_definition_get_icon_name      (const CtkImageDefinition       *def);
+GIcon *                 ctk_image_definition_get_gicon          (const CtkImageDefinition       *def);
+cairo_surface_t *       ctk_image_definition_get_surface        (const CtkImageDefinition       *def);
 
 
 G_END_DECLS

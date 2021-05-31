@@ -25,8 +25,8 @@ static char *baseline_pos_str[] = {
 };
 
 static void
-baseline_row_value_changed (GtkSpinButton *spin_button,
-			    GtkGrid *grid)
+baseline_row_value_changed (CtkSpinButton *spin_button,
+			    CtkGrid *grid)
 {
   gint row = ctk_spin_button_get_value_as_int (spin_button);
 
@@ -34,15 +34,15 @@ baseline_row_value_changed (GtkSpinButton *spin_button,
 }
 
 static void
-homogeneous_changed (GtkToggleButton *toggle_button,
-		    GtkGrid *grid)
+homogeneous_changed (CtkToggleButton *toggle_button,
+		    CtkGrid *grid)
 {
   ctk_grid_set_row_homogeneous (grid, ctk_toggle_button_get_active (toggle_button));
 }
 
 static void
-baseline_position_changed (GtkComboBox *combo,
-			   GtkBox *hbox)
+baseline_position_changed (CtkComboBox *combo,
+			   CtkBox *hbox)
 {
   int i = ctk_combo_box_get_active (combo);
 
@@ -50,8 +50,8 @@ baseline_position_changed (GtkComboBox *combo,
 }
 
 static void
-image_size_value_changed (GtkSpinButton *spin_button,
-			  GtkImage *image)
+image_size_value_changed (CtkSpinButton *spin_button,
+			  CtkImage *image)
 {
   gint size = ctk_spin_button_get_value_as_int (spin_button);
 
@@ -59,7 +59,7 @@ image_size_value_changed (GtkSpinButton *spin_button,
 }
 
 static void
-set_font_size (GtkWidget *widget, gint size)
+set_font_size (CtkWidget *widget, gint size)
 {
   const gchar *class[3] = { "small-font", "medium-font", "large-font" };
 
@@ -70,11 +70,11 @@ int
 main (int    argc,
       char **argv)
 {
-  GtkWidget *window, *label, *entry, *button, *grid, *notebook;
-  GtkWidget *vbox, *hbox, *grid_hbox, *spin, *spin2, *toggle, *combo, *image, *ebox;
-  GtkAdjustment *adjustment;
+  CtkWidget *window, *label, *entry, *button, *grid, *notebook;
+  CtkWidget *vbox, *hbox, *grid_hbox, *spin, *spin2, *toggle, *combo, *image, *ebox;
+  CtkAdjustment *adjustment;
   int i, j;
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
 
   ctk_init (&argc, &argv);
 
@@ -100,7 +100,7 @@ main (int    argc,
   for (j = 0; j < 2; j++)
     {
       char *aligns_names[] = { "FILL", "BASELINE" };
-      GtkAlign aligns[] = { CTK_ALIGN_FILL, CTK_ALIGN_BASELINE};
+      CtkAlign aligns[] = { CTK_ALIGN_FILL, CTK_ALIGN_BASELINE};
 
       hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
       ctk_box_pack_start (CTK_BOX (vbox), hbox, FALSE, FALSE, 5);
@@ -251,7 +251,7 @@ main (int    argc,
 
       if (j != 0)
 	ctk_grid_set_row_baseline_position (CTK_GRID (grid),
-					    j, (GtkBaselinePosition)(j-1));
+					    j, (CtkBaselinePosition)(j-1));
 
       for (i = 0; i < 3; i++)
 	{

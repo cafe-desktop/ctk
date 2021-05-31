@@ -36,27 +36,27 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_MESSAGE_DIALOG                  (ctk_message_dialog_get_type ())
-#define CTK_MESSAGE_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MESSAGE_DIALOG, GtkMessageDialog))
-#define CTK_MESSAGE_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MESSAGE_DIALOG, GtkMessageDialogClass))
+#define CTK_MESSAGE_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MESSAGE_DIALOG, CtkMessageDialog))
+#define CTK_MESSAGE_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MESSAGE_DIALOG, CtkMessageDialogClass))
 #define CTK_IS_MESSAGE_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MESSAGE_DIALOG))
 #define CTK_IS_MESSAGE_DIALOG_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MESSAGE_DIALOG))
-#define CTK_MESSAGE_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MESSAGE_DIALOG, GtkMessageDialogClass))
+#define CTK_MESSAGE_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MESSAGE_DIALOG, CtkMessageDialogClass))
 
-typedef struct _GtkMessageDialog              GtkMessageDialog;
-typedef struct _GtkMessageDialogPrivate       GtkMessageDialogPrivate;
-typedef struct _GtkMessageDialogClass         GtkMessageDialogClass;
+typedef struct _CtkMessageDialog              CtkMessageDialog;
+typedef struct _CtkMessageDialogPrivate       CtkMessageDialogPrivate;
+typedef struct _CtkMessageDialogClass         CtkMessageDialogClass;
 
-struct _GtkMessageDialog
+struct _CtkMessageDialog
 {
-  GtkDialog parent_instance;
+  CtkDialog parent_instance;
 
   /*< private >*/
-  GtkMessageDialogPrivate *priv;
+  CtkMessageDialogPrivate *priv;
 };
 
-struct _GtkMessageDialogClass
+struct _CtkMessageDialogClass
 {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -66,7 +66,7 @@ struct _GtkMessageDialogClass
 };
 
 /**
- * GtkButtonsType:
+ * CtkButtonsType:
  * @CTK_BUTTONS_NONE: no buttons at all
  * @CTK_BUTTONS_OK: an OK button
  * @CTK_BUTTONS_CLOSE: a Close button
@@ -90,50 +90,50 @@ typedef enum
   CTK_BUTTONS_CANCEL,
   CTK_BUTTONS_YES_NO,
   CTK_BUTTONS_OK_CANCEL
-} GtkButtonsType;
+} CtkButtonsType;
 
 GDK_AVAILABLE_IN_ALL
 GType      ctk_message_dialog_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_message_dialog_new      (GtkWindow      *parent,
-                                        GtkDialogFlags  flags,
-                                        GtkMessageType  type,
-                                        GtkButtonsType  buttons,
+CtkWidget* ctk_message_dialog_new      (CtkWindow      *parent,
+                                        CtkDialogFlags  flags,
+                                        CtkMessageType  type,
+                                        CtkButtonsType  buttons,
                                         const gchar    *message_format,
                                         ...) G_GNUC_PRINTF (5, 6);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_message_dialog_new_with_markup   (GtkWindow      *parent,
-                                                 GtkDialogFlags  flags,
-                                                 GtkMessageType  type,
-                                                 GtkButtonsType  buttons,
+CtkWidget* ctk_message_dialog_new_with_markup   (CtkWindow      *parent,
+                                                 CtkDialogFlags  flags,
+                                                 CtkMessageType  type,
+                                                 CtkButtonsType  buttons,
                                                  const gchar    *message_format,
                                                  ...) G_GNUC_PRINTF (5, 6);
 
 GDK_DEPRECATED_IN_3_12
-void       ctk_message_dialog_set_image    (GtkMessageDialog *dialog,
-					    GtkWidget        *image);
+void       ctk_message_dialog_set_image    (CtkMessageDialog *dialog,
+					    CtkWidget        *image);
 
 GDK_DEPRECATED_IN_3_12
-GtkWidget * ctk_message_dialog_get_image   (GtkMessageDialog *dialog);
+CtkWidget * ctk_message_dialog_get_image   (CtkMessageDialog *dialog);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_message_dialog_set_markup  (GtkMessageDialog *message_dialog,
+void       ctk_message_dialog_set_markup  (CtkMessageDialog *message_dialog,
                                            const gchar      *str);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_message_dialog_format_secondary_text (GtkMessageDialog *message_dialog,
+void       ctk_message_dialog_format_secondary_text (CtkMessageDialog *message_dialog,
                                                      const gchar      *message_format,
                                                      ...) G_GNUC_PRINTF (2, 3);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_message_dialog_format_secondary_markup (GtkMessageDialog *message_dialog,
+void       ctk_message_dialog_format_secondary_markup (CtkMessageDialog *message_dialog,
                                                        const gchar      *message_format,
                                                        ...) G_GNUC_PRINTF (2, 3);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_message_dialog_get_message_area (GtkMessageDialog *message_dialog);
+CtkWidget *ctk_message_dialog_get_message_area (CtkMessageDialog *message_dialog);
 
 G_END_DECLS
 

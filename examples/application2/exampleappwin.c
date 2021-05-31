@@ -5,7 +5,7 @@
 
 struct _ExampleAppWindow
 {
-  GtkApplicationWindow parent;
+  CtkApplicationWindow parent;
 };
 
 G_DEFINE_TYPE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);

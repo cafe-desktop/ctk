@@ -28,26 +28,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ICON_VIEW_ACCESSIBLE                  (ctk_icon_view_accessible_get_type ())
-#define CTK_ICON_VIEW_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW_ACCESSIBLE, GtkIconViewAccessible))
-#define CTK_ICON_VIEW_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ICON_VIEW_ACCESSIBLE, GtkIconViewAccessibleClass))
+#define CTK_ICON_VIEW_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW_ACCESSIBLE, CtkIconViewAccessible))
+#define CTK_ICON_VIEW_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ICON_VIEW_ACCESSIBLE, CtkIconViewAccessibleClass))
 #define CTK_IS_ICON_VIEW_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ICON_VIEW_ACCESSIBLE))
 #define CTK_IS_ICON_VIEW_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ICON_VIEW_ACCESSIBLE))
-#define CTK_ICON_VIEW_ACCESSIBLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON_VIEW_ACCESSIBLE, GtkIconViewAccessibleClass))
+#define CTK_ICON_VIEW_ACCESSIBLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON_VIEW_ACCESSIBLE, CtkIconViewAccessibleClass))
 
-typedef struct _GtkIconViewAccessible        GtkIconViewAccessible;
-typedef struct _GtkIconViewAccessibleClass   GtkIconViewAccessibleClass;
-typedef struct _GtkIconViewAccessiblePrivate GtkIconViewAccessiblePrivate;
+typedef struct _CtkIconViewAccessible        CtkIconViewAccessible;
+typedef struct _CtkIconViewAccessibleClass   CtkIconViewAccessibleClass;
+typedef struct _CtkIconViewAccessiblePrivate CtkIconViewAccessiblePrivate;
 
-struct _GtkIconViewAccessible
+struct _CtkIconViewAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkIconViewAccessiblePrivate *priv;
+  CtkIconViewAccessiblePrivate *priv;
 };
 
-struct _GtkIconViewAccessibleClass
+struct _CtkIconViewAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

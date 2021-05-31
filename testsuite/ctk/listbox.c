@@ -1,11 +1,11 @@
 #include <ctk/ctk.h>
 
 static gint
-sort_list (GtkListBoxRow *row1,
-           GtkListBoxRow *row2,
+sort_list (CtkListBoxRow *row1,
+           CtkListBoxRow *row2,
            gpointer       data)
 {
-  GtkWidget *label1, *label2;
+  CtkWidget *label1, *label2;
   gint n1, n2;
   gint *count = data;
 
@@ -21,10 +21,10 @@ sort_list (GtkListBoxRow *row1,
 }
 
 static void
-check_sorted (GtkListBox *list)
+check_sorted (CtkListBox *list)
 {
   GList *children;
-  GtkWidget *row, *label;
+  CtkWidget *row, *label;
   gint n1, n2;
   GList *l;
 
@@ -44,9 +44,9 @@ check_sorted (GtkListBox *list)
 static void
 test_sort (void)
 {
-  GtkListBox *list;
-  GtkListBoxRow *row;
-  GtkWidget *label;
+  CtkListBox *list;
+  CtkListBoxRow *row;
+  CtkWidget *label;
   gint i, r;
   gchar *s;
   gint count;
@@ -83,11 +83,11 @@ test_sort (void)
   g_object_unref (list);
 }
 
-static GtkListBoxRow *callback_row;
+static CtkListBoxRow *callback_row;
 
 static void
-on_row_selected (GtkListBox    *list_box,
-                 GtkListBoxRow *row,
+on_row_selected (CtkListBox    *list_box,
+                 CtkListBoxRow *row,
                  gpointer       data)
 {
   gint *i = data;
@@ -100,9 +100,9 @@ on_row_selected (GtkListBox    *list_box,
 static void
 test_selection (void)
 {
-  GtkListBox *list;
-  GtkListBoxRow *row, *row2;
-  GtkWidget *label;
+  CtkListBox *list;
+  CtkListBoxRow *row, *row2;
+  CtkWidget *label;
   gint i;
   gchar *s;
   gint count;
@@ -178,7 +178,7 @@ test_selection (void)
 }
 
 static void
-on_selected_rows_changed (GtkListBox *box, gpointer data)
+on_selected_rows_changed (CtkListBox *box, gpointer data)
 {
   gint *i = data;
 
@@ -188,10 +188,10 @@ on_selected_rows_changed (GtkListBox *box, gpointer data)
 static void
 test_multi_selection (void)
 {
-  GtkListBox *list;
+  CtkListBox *list;
   GList *l;
-  GtkListBoxRow *row, *row2;
-  GtkWidget *label;
+  CtkListBoxRow *row, *row2;
+  CtkWidget *label;
   gint i;
   gchar *s;
   gint count;
@@ -265,11 +265,11 @@ test_multi_selection (void)
 }
 
 static gboolean
-filter_func (GtkListBoxRow *row,
+filter_func (CtkListBoxRow *row,
              gpointer       data)
 {
   gint *count = data;
-  GtkWidget *child;
+  CtkWidget *child;
   gint i;
 
   (*count)++;
@@ -281,11 +281,11 @@ filter_func (GtkListBoxRow *row,
 }
 
 static void
-check_filtered (GtkListBox *list)
+check_filtered (CtkListBox *list)
 {
   GList *children, *l;
   gint count;
-  GtkWidget *row;
+  CtkWidget *row;
 
   count = 0;
   children = ctk_container_get_children (CTK_CONTAINER (list));
@@ -302,11 +302,11 @@ check_filtered (GtkListBox *list)
 static void
 test_filter (void)
 {
-  GtkListBox *list;
-  GtkListBoxRow *row;
+  CtkListBox *list;
+  CtkListBoxRow *row;
   gint i;
   gchar *s;
-  GtkWidget *label;
+  CtkWidget *label;
   gint count;
 
   list = CTK_LIST_BOX (ctk_list_box_new ());
@@ -344,14 +344,14 @@ test_filter (void)
 }
 
 static void
-header_func (GtkListBoxRow *row,
-             GtkListBoxRow *before,
+header_func (CtkListBoxRow *row,
+             CtkListBoxRow *before,
              gpointer       data)
 {
-  GtkWidget *child;
+  CtkWidget *child;
   gint i;
   gint *count = data;
-  GtkWidget *header;
+  CtkWidget *header;
   gchar *s;
 
   (*count)++;
@@ -372,11 +372,11 @@ header_func (GtkListBoxRow *row,
 }
 
 static void
-check_headers (GtkListBox *list)
+check_headers (CtkListBox *list)
 {
   GList *children, *l;
   gint count;
-  GtkListBoxRow *row;
+  CtkListBoxRow *row;
 
   count = 0;
   children = ctk_container_get_children (CTK_CONTAINER (list));
@@ -393,11 +393,11 @@ check_headers (GtkListBox *list)
 static void
 test_header (void)
 {
-  GtkListBox *list;
-  GtkListBoxRow *row;
+  CtkListBox *list;
+  CtkListBoxRow *row;
   gint i;
   gchar *s;
-  GtkWidget *label;
+  CtkWidget *label;
   gint count;
 
   list = CTK_LIST_BOX (ctk_list_box_new ());

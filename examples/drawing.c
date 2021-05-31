@@ -18,7 +18,7 @@ clear_surface (void)
 
 /* Create a new surface of the appropriate size to store our scribbles */
 static gboolean
-configure_event_cb (GtkWidget         *widget,
+configure_event_cb (CtkWidget         *widget,
                     GdkEventConfigure *event,
                     gpointer           data)
 {
@@ -42,7 +42,7 @@ configure_event_cb (GtkWidget         *widget,
  * clipped to only draw the exposed areas of the widget
  */
 static gboolean
-draw_cb (GtkWidget *widget,
+draw_cb (CtkWidget *widget,
          cairo_t   *cr,
          gpointer   data)
 {
@@ -54,7 +54,7 @@ draw_cb (GtkWidget *widget,
 
 /* Draw a rectangle on the surface at the given position */
 static void
-draw_brush (GtkWidget *widget,
+draw_brush (CtkWidget *widget,
             gdouble    x,
             gdouble    y)
 {
@@ -78,7 +78,7 @@ draw_brush (GtkWidget *widget,
  * struct which contains this information.
  */
 static gboolean
-button_press_event_cb (GtkWidget      *widget,
+button_press_event_cb (CtkWidget      *widget,
                        GdkEventButton *event,
                        gpointer        data)
 {
@@ -105,7 +105,7 @@ button_press_event_cb (GtkWidget      *widget,
  * a GdkEventMotion struct which contains this information.
  */
 static gboolean
-motion_notify_event_cb (GtkWidget      *widget,
+motion_notify_event_cb (CtkWidget      *widget,
                         GdkEventMotion *event,
                         gpointer        data)
 {
@@ -128,12 +128,12 @@ close_window (void)
 }
 
 static void
-activate (GtkApplication *app,
+activate (CtkApplication *app,
           gpointer        user_data)
 {
-  GtkWidget *window;
-  GtkWidget *frame;
-  GtkWidget *drawing_area;
+  CtkWidget *window;
+  CtkWidget *frame;
+  CtkWidget *drawing_area;
 
   window = ctk_application_window_new (app);
   ctk_window_set_title (CTK_WINDOW (window), "Drawing Area");
@@ -179,7 +179,7 @@ int
 main (int    argc,
       char **argv)
 {
-  GtkApplication *app;
+  CtkApplication *app;
   int status;
 
   app = ctk_application_new ("org.ctk.example", G_APPLICATION_FLAGS_NONE);

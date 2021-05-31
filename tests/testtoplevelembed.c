@@ -1,24 +1,24 @@
 #include "config.h"
 #include <ctk/ctk.h>
 
-GtkWidget *notebook;
+CtkWidget *notebook;
 
 
 static void
-remove_notebook_page (GtkWidget *button,
-		      GtkWidget *toplevel)
+remove_notebook_page (CtkWidget *button,
+		      CtkWidget *toplevel)
 {
   ctk_container_remove (CTK_CONTAINER (notebook), toplevel);
   ctk_widget_show (toplevel);
 }
 
-GtkWidget *
-create_tab_label (GtkWidget *toplevel)
+CtkWidget *
+create_tab_label (CtkWidget *toplevel)
 {
-  GtkWidget *box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 2);
-  GtkWidget *label = ctk_label_new (G_OBJECT_TYPE_NAME (toplevel));
-  GtkWidget *button = ctk_button_new ();
-  GtkWidget *image = ctk_image_new_from_icon_name ("window-close", CTK_ICON_SIZE_MENU);
+  CtkWidget *box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 2);
+  CtkWidget *label = ctk_label_new (G_OBJECT_TYPE_NAME (toplevel));
+  CtkWidget *button = ctk_button_new ();
+  CtkWidget *image = ctk_image_new_from_icon_name ("window-close", CTK_ICON_SIZE_MENU);
 
   ctk_container_add (CTK_CONTAINER (button), image);
   ctk_box_pack_start (CTK_BOX (box), label, TRUE, TRUE, 0);
@@ -32,12 +32,12 @@ create_tab_label (GtkWidget *toplevel)
 }
 
 static void
-toplevel_delete_event (GtkWidget *toplevel,
+toplevel_delete_event (CtkWidget *toplevel,
 		       GdkEvent  *event,
 		       gpointer   none)
 {
   GdkWindow *gdk_win;
-  GtkWidget *label = create_tab_label (toplevel);
+  CtkWidget *label = create_tab_label (toplevel);
 
   gdk_win = ctk_widget_get_window (notebook);
   g_assert (gdk_win);
@@ -54,8 +54,8 @@ toplevel_delete_event (GtkWidget *toplevel,
 gint
 main (gint argc, gchar **argv)
 {
-  GtkWidget *window;
-  GtkWidget *widget;
+  CtkWidget *window;
+  CtkWidget *widget;
   
   ctk_init (&argc, &argv);
 

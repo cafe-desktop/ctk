@@ -14,7 +14,7 @@ enum {
 
 static float rotation_angles[N_AXIS] = { 0.0 };
 
-static GtkWidget *gl_area;
+static CtkWidget *gl_area;
 
 static const GLfloat vertex_data[] = {
  0.f, 0.5f, 0.f, 1.f,
@@ -246,7 +246,7 @@ static GLuint program;
 static GLuint mvp_location;
 
 static void
-realize (GtkWidget *widget)
+realize (CtkWidget *widget)
 {
   const char *fragment, *vertex;
   GdkGLContext *context;
@@ -281,7 +281,7 @@ realize (GtkWidget *widget)
 }
 
 static void
-unrealize (GtkWidget *widget)
+unrealize (CtkWidget *widget)
 {
   ctk_gl_area_make_current (CTK_GL_AREA (widget));
 
@@ -319,7 +319,7 @@ draw_triangle (void)
 }
 
 static gboolean
-render (GtkGLArea    *area,
+render (CtkGLArea    *area,
         GdkGLContext *context)
 {
   glClearColor (0.5, 0.5, 0.5, 1.0);
@@ -333,7 +333,7 @@ render (GtkGLArea    *area,
 }
 
 static void
-on_axis_value_change (GtkAdjustment *adjustment,
+on_axis_value_change (CtkAdjustment *adjustment,
                       gpointer       data)
 {
   int axis = GPOINTER_TO_INT (data);
@@ -346,11 +346,11 @@ on_axis_value_change (GtkAdjustment *adjustment,
   ctk_widget_queue_draw (gl_area);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_axis_slider (int axis)
 {
-  GtkWidget *box, *label, *slider;
-  GtkAdjustment *adj;
+  CtkWidget *box, *label, *slider;
+  CtkAdjustment *adj;
   const char *text;
 
   box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, FALSE);
@@ -394,7 +394,7 @@ create_axis_slider (int axis)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *box, *button, *controls;
+  CtkWidget *window, *box, *button, *controls;
   int i;
 
   ctk_init (&argc, &argv);
@@ -404,7 +404,7 @@ main (int argc, char *argv[])
    */
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (CTK_WINDOW (window), "GtkGLArea - Triangle");
+  ctk_window_set_title (CTK_WINDOW (window), "CtkGLArea - Triangle");
   ctk_window_set_default_size (CTK_WINDOW (window), 400, 600);
   ctk_container_set_border_width (CTK_CONTAINER (window), 12);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);

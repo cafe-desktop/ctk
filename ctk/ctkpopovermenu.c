@@ -25,23 +25,23 @@
 /**
  * SECTION:ctkpopovermenu
  * @Short_description: Popovers to use as menus
- * @Title: GtkPopoverMenu
+ * @Title: CtkPopoverMenu
  *
- * GtkPopoverMenu is a subclass of #GtkPopover that treats its
+ * CtkPopoverMenu is a subclass of #CtkPopover that treats its
  * children like menus and allows switching between them. It is
- * meant to be used primarily together with #GtkModelButton, but
- * any widget can be used, such as #GtkSpinButton or #GtkScale.
- * In this respect, GtkPopoverMenu is more flexible than popovers
+ * meant to be used primarily together with #CtkModelButton, but
+ * any widget can be used, such as #CtkSpinButton or #CtkScale.
+ * In this respect, CtkPopoverMenu is more flexible than popovers
  * that are created from a #GMenuModel with ctk_popover_new_from_model().
  *
- * To add a child as a submenu, set the #GtkPopoverMenu:submenu
+ * To add a child as a submenu, set the #CtkPopoverMenu:submenu
  * child property to the name of the submenu. To let the user open
- * this submenu, add a #GtkModelButton whose #GtkModelButton:menu-name
+ * this submenu, add a #CtkModelButton whose #CtkModelButton:menu-name
  * property is set to the name you've given to the submenu.
  *
- * By convention, the first child of a submenu should be a #GtkModelButton
+ * By convention, the first child of a submenu should be a #CtkModelButton
  * to switch back to the parent menu. Such a button should use the
- * #GtkModelButton:inverted and #GtkModelButton:centered properties
+ * #CtkModelButton:inverted and #CtkModelButton:centered properties
  * to achieve a title-like appearance and place the submenu indicator
  * at the opposite side. To switch back to the main menu, use "main"
  * as the menu name.
@@ -49,20 +49,20 @@
  * # Example
  *
  * |[
- * <object class="GtkPopoverMenu">
+ * <object class="CtkPopoverMenu">
  *   <child>
- *     <object class="GtkBox">
+ *     <object class="CtkBox">
  *       <property name="visible">True</property>
  *       <property name="margin">10</property>
  *       <child>
- *         <object class="GtkModelButton">
+ *         <object class="CtkModelButton">
  *           <property name="visible">True</property>
  *           <property name="action-name">win.frob</property>
  *           <property name="text" translatable="yes">Frob</property>
  *         </object>
  *       </child>
  *       <child>
- *         <object class="GtkModelButton">
+ *         <object class="CtkModelButton">
  *           <property name="visible">True</property>
  *           <property name="menu-name">more</property>
  *           <property name="text" translatable="yes">More</property>
@@ -71,18 +71,18 @@
  *     </object>
  *   </child>
  *   <child>
- *     <object class="GtkBox">
+ *     <object class="CtkBox">
  *       <property name="visible">True</property>
  *       <property name="margin">10</property>
  *       <child>
- *         <object class="GtkModelButton">
+ *         <object class="CtkModelButton">
  *           <property name="visible">True</property>
  *           <property name="action-name">win.foo</property>
  *           <property name="text" translatable="yes">Foo</property>
  *         </object>
  *       </child>
  *       <child>
- *         <object class="GtkModelButton">
+ *         <object class="CtkModelButton">
  *           <property name="visible">True</property>
  *           <property name="action-name">win.bar</property>
  *           <property name="text" translatable="yes">Bar</property>
@@ -97,13 +97,13 @@
  * ]|
  *
  * Just like normal popovers created using ctk_popover_new_from_model,
- * #GtkPopoverMenu instances have a single css node called "popover"
+ * #CtkPopoverMenu instances have a single css node called "popover"
  * and get the .menu style class.
  */
 
-struct _GtkPopoverMenu
+struct _CtkPopoverMenu
 {
-  GtkPopover parent_instance;
+  CtkPopover parent_instance;
 };
 
 enum {
@@ -115,21 +115,21 @@ enum {
   CHILD_PROP_POSITION
 };
 
-G_DEFINE_TYPE (GtkPopoverMenu, ctk_popover_menu, CTK_TYPE_POPOVER)
+G_DEFINE_TYPE (CtkPopoverMenu, ctk_popover_menu, CTK_TYPE_POPOVER)
 
 static void
 visible_submenu_changed (GObject        *object,
                          GParamSpec     *pspec,
-                         GtkPopoverMenu *popover)
+                         CtkPopoverMenu *popover)
 {
   g_object_notify (G_OBJECT (popover), "visible-submenu");
 }
 
 static void
-ctk_popover_menu_init (GtkPopoverMenu *popover)
+ctk_popover_menu_init (CtkPopoverMenu *popover)
 {
-  GtkWidget *stack;
-  GtkStyleContext *style_context;
+  CtkWidget *stack;
+  CtkStyleContext *style_context;
 
   stack = ctk_stack_new ();
   ctk_stack_set_vhomogeneous (CTK_STACK (stack), FALSE);
@@ -145,24 +145,24 @@ ctk_popover_menu_init (GtkPopoverMenu *popover)
 }
 
 static void
-ctk_popover_menu_map (GtkWidget *widget)
+ctk_popover_menu_map (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_popover_menu_parent_class)->map (widget);
   ctk_popover_menu_open_submenu (CTK_POPOVER_MENU (widget), "main");
 }
 
 static void
-ctk_popover_menu_unmap (GtkWidget *widget)
+ctk_popover_menu_unmap (CtkWidget *widget)
 {
   ctk_popover_menu_open_submenu (CTK_POPOVER_MENU (widget), "main");
   CTK_WIDGET_CLASS (ctk_popover_menu_parent_class)->unmap (widget);
 }
 
 static void
-ctk_popover_menu_add (GtkContainer *container,
-                      GtkWidget    *child)
+ctk_popover_menu_add (CtkContainer *container,
+                      CtkWidget    *child)
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 
   stack = ctk_bin_get_child (CTK_BIN (container));
 
@@ -185,10 +185,10 @@ ctk_popover_menu_add (GtkContainer *container,
 }
 
 static void
-ctk_popover_menu_remove (GtkContainer *container,
-                         GtkWidget    *child)
+ctk_popover_menu_remove (CtkContainer *container,
+                         CtkWidget    *child)
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 
   stack = ctk_bin_get_child (CTK_BIN (container));
 
@@ -199,12 +199,12 @@ ctk_popover_menu_remove (GtkContainer *container,
 }
 
 static void
-ctk_popover_menu_forall (GtkContainer *container,
+ctk_popover_menu_forall (CtkContainer *container,
                          gboolean      include_internals,
-                         GtkCallback   callback,
+                         CtkCallback   callback,
                          gpointer      callback_data)
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 
   stack = ctk_bin_get_child (CTK_BIN (container));
 
@@ -215,13 +215,13 @@ ctk_popover_menu_forall (GtkContainer *container,
 }
 
 static void
-ctk_popover_menu_get_child_property (GtkContainer *container,
-                                     GtkWidget    *child,
+ctk_popover_menu_get_child_property (CtkContainer *container,
+                                     CtkWidget    *child,
                                      guint         property_id,
                                      GValue       *value,
                                      GParamSpec   *pspec)
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 
   stack = ctk_bin_get_child (CTK_BIN (container));
 
@@ -253,13 +253,13 @@ ctk_popover_menu_get_child_property (GtkContainer *container,
 }
 
 static void
-ctk_popover_menu_set_child_property (GtkContainer *container,
-                                     GtkWidget    *child,
+ctk_popover_menu_set_child_property (CtkContainer *container,
+                                     CtkWidget    *child,
                                      guint         property_id,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 
   stack = ctk_bin_get_child (CTK_BIN (container));
 
@@ -296,7 +296,7 @@ ctk_popover_menu_get_property (GObject    *object,
                                GValue     *value,
                                GParamSpec *pspec)
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 
   stack = ctk_bin_get_child (CTK_BIN (object));
 
@@ -318,7 +318,7 @@ ctk_popover_menu_set_property (GObject      *object,
                                const GValue *value,
                                GParamSpec   *pspec)
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 
   stack = ctk_bin_get_child (CTK_BIN (object));
 
@@ -335,10 +335,10 @@ ctk_popover_menu_set_property (GObject      *object,
 }
 
 static void
-ctk_popover_menu_class_init (GtkPopoverMenuClass *klass)
+ctk_popover_menu_class_init (CtkPopoverMenuClass *klass)
 {
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->set_property = ctk_popover_menu_set_property;
@@ -362,7 +362,7 @@ ctk_popover_menu_class_init (GtkPopoverMenuClass *klass)
                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
-   * GtkPopoverMenu:submenu:
+   * CtkPopoverMenu:submenu:
    *
    * The submenu child property specifies the name of the submenu
    * If it is %NULL or "main", the child is used as the main menu,
@@ -392,11 +392,11 @@ ctk_popover_menu_class_init (GtkPopoverMenuClass *klass)
  *
  * Creates a new popover menu.
  *
- * Returns: a new #GtkPopoverMenu
+ * Returns: a new #CtkPopoverMenu
  *
  * Since: 3.16
  */
-GtkWidget *
+CtkWidget *
 ctk_popover_menu_new (void)
 {
   return g_object_new (CTK_TYPE_POPOVER_MENU, NULL);
@@ -404,26 +404,26 @@ ctk_popover_menu_new (void)
 
 /**
  * ctk_popover_menu_open_submenu:
- * @popover: a #GtkPopoverMenu
+ * @popover: a #CtkPopoverMenu
  * @name: the name of the menu to switch to
  *
  * Opens a submenu of the @popover. The @name
  * must be one of the names given to the submenus
- * of @popover with #GtkPopoverMenu:submenu, or
+ * of @popover with #CtkPopoverMenu:submenu, or
  * "main" to switch back to the main menu.
  *
- * #GtkModelButton will open submenus automatically
- * when the #GtkModelButton:menu-name property is set,
+ * #CtkModelButton will open submenus automatically
+ * when the #CtkModelButton:menu-name property is set,
  * so this function is only needed when you are using
  * other kinds of widgets to initiate menu changes.
  *
  * Since: 3.16
  */
 void
-ctk_popover_menu_open_submenu (GtkPopoverMenu *popover,
+ctk_popover_menu_open_submenu (CtkPopoverMenu *popover,
                                const gchar    *name)
 {
-  GtkWidget *stack;
+  CtkWidget *stack;
 
   g_return_if_fail (CTK_IS_POPOVER_MENU (popover));
 

@@ -1,2 +1,2 @@
 ERROR: ctk-builder-error-quark 1
-.:7:17 Unsupported tag for GtkContainer: <warbl>
+.:7:17 Unsupported tag for CtkContainer: <warbl>

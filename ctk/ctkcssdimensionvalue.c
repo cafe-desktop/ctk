@@ -24,23 +24,23 @@
 
 #include "fallback-c89.c"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
-  GtkCssUnit unit;
+  CtkCssUnit unit;
   double value;
 };
 
 static void
-ctk_css_value_dimension_free (GtkCssValue *value)
+ctk_css_value_dimension_free (CtkCssValue *value)
 {
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
 static double
 get_base_font_size_px (guint                    property_id,
-                       GtkStyleProviderPrivate *provider,
-                       GtkCssStyle             *style,
-                       GtkCssStyle             *parent_style)
+                       CtkStyleProviderPrivate *provider,
+                       CtkCssStyle             *style,
+                       CtkCssStyle             *parent_style)
 {
   if (property_id == CTK_CSS_PROPERTY_FONT_SIZE)
     {
@@ -54,19 +54,19 @@ get_base_font_size_px (guint                    property_id,
 }
 
 static double
-get_dpi (GtkCssStyle *style)
+get_dpi (CtkCssStyle *style)
 {
   return _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_DPI), 96);
 }
 
-static GtkCssValue *
-ctk_css_value_dimension_compute (GtkCssValue             *number,
+static CtkCssValue *
+ctk_css_value_dimension_compute (CtkCssValue             *number,
                               guint                    property_id,
-                              GtkStyleProviderPrivate *provider,
-                              GtkCssStyle             *style,
-                              GtkCssStyle             *parent_style)
+                              CtkStyleProviderPrivate *provider,
+                              CtkCssStyle             *style,
+                              CtkCssStyle             *parent_style)
 {
-  GtkBorderStyle border_style;
+  CtkBorderStyle border_style;
 
   /* special case according to http://dev.w3.org/csswg/css-backgrounds/#the-border-width */
   switch (property_id)
@@ -160,15 +160,15 @@ ctk_css_value_dimension_compute (GtkCssValue             *number,
 }
 
 static gboolean
-ctk_css_value_dimension_equal (const GtkCssValue *number1,
-                            const GtkCssValue *number2)
+ctk_css_value_dimension_equal (const CtkCssValue *number1,
+                            const CtkCssValue *number2)
 {
   return number1->unit == number2->unit &&
          number1->value == number2->value;
 }
 
 static void
-ctk_css_value_dimension_print (const GtkCssValue *number,
+ctk_css_value_dimension_print (const CtkCssValue *number,
                             GString           *string)
 {
   char buf[G_ASCII_DTOSTR_BUF_SIZE];
@@ -205,7 +205,7 @@ ctk_css_value_dimension_print (const GtkCssValue *number,
 }
 
 static double
-ctk_css_value_dimension_get (const GtkCssValue *value,
+ctk_css_value_dimension_get (const CtkCssValue *value,
                              double             one_hundred_percent)
 {
   if (value->unit == CTK_CSS_PERCENT)
@@ -214,28 +214,28 @@ ctk_css_value_dimension_get (const GtkCssValue *value,
     return value->value;
 }
 
-static GtkCssDimension
-ctk_css_value_dimension_get_dimension (const GtkCssValue *value)
+static CtkCssDimension
+ctk_css_value_dimension_get_dimension (const CtkCssValue *value)
 {
   return ctk_css_unit_get_dimension (value->unit);
 }
 
 static gboolean
-ctk_css_value_dimension_has_percent (const GtkCssValue *value)
+ctk_css_value_dimension_has_percent (const CtkCssValue *value)
 {
   return ctk_css_unit_get_dimension (value->unit) == CTK_CSS_DIMENSION_PERCENTAGE;
 }
 
-static GtkCssValue *
-ctk_css_value_dimension_multiply (const GtkCssValue *value,
+static CtkCssValue *
+ctk_css_value_dimension_multiply (const CtkCssValue *value,
                                   double             factor)
 {
   return ctk_css_dimension_value_new (value->value * factor, value->unit);
 }
 
-static GtkCssValue *
-ctk_css_value_dimension_try_add (const GtkCssValue *value1,
-                                 const GtkCssValue *value2)
+static CtkCssValue *
+ctk_css_value_dimension_try_add (const CtkCssValue *value1,
+                                 const CtkCssValue *value2)
 {
   if (value1->unit != value2->unit)
     return NULL;
@@ -244,7 +244,7 @@ ctk_css_value_dimension_try_add (const GtkCssValue *value1,
 }
 
 static gint
-ctk_css_value_dimension_get_calc_term_order (const GtkCssValue *value)
+ctk_css_value_dimension_get_calc_term_order (const CtkCssValue *value)
 {
   /* note: the order is alphabetic */
   guint order_per_unit[] = {
@@ -270,7 +270,7 @@ ctk_css_value_dimension_get_calc_term_order (const GtkCssValue *value)
   return 1000 + order_per_unit[value->unit];
 }
 
-static const GtkCssNumberValueClass CTK_CSS_VALUE_DIMENSION = {
+static const CtkCssNumberValueClass CTK_CSS_VALUE_DIMENSION = {
   {
     ctk_css_value_dimension_free,
     ctk_css_value_dimension_compute,
@@ -286,22 +286,22 @@ static const GtkCssNumberValueClass CTK_CSS_VALUE_DIMENSION = {
   ctk_css_value_dimension_get_calc_term_order
 };
 
-GtkCssValue *
+CtkCssValue *
 ctk_css_dimension_value_new (double     value,
-                             GtkCssUnit unit)
+                             CtkCssUnit unit)
 {
-  static GtkCssValue number_singletons[] = {
+  static CtkCssValue number_singletons[] = {
     { &CTK_CSS_VALUE_DIMENSION.value_class, 1, CTK_CSS_NUMBER, 0 },
     { &CTK_CSS_VALUE_DIMENSION.value_class, 1, CTK_CSS_NUMBER, 1 },
   };
-  static GtkCssValue px_singletons[] = {
+  static CtkCssValue px_singletons[] = {
     { &CTK_CSS_VALUE_DIMENSION.value_class, 1, CTK_CSS_PX, 0 },
     { &CTK_CSS_VALUE_DIMENSION.value_class, 1, CTK_CSS_PX, 1 },
     { &CTK_CSS_VALUE_DIMENSION.value_class, 1, CTK_CSS_PX, 2 },
     { &CTK_CSS_VALUE_DIMENSION.value_class, 1, CTK_CSS_PX, 3 },
     { &CTK_CSS_VALUE_DIMENSION.value_class, 1, CTK_CSS_PX, 4 },
   };
-  GtkCssValue *result;
+  CtkCssValue *result;
 
   if (unit == CTK_CSS_NUMBER && (value == 0 || value == 1))
     return _ctk_css_value_ref (&number_singletons[(int) value]);
@@ -316,7 +316,7 @@ ctk_css_dimension_value_new (double     value,
       return _ctk_css_value_ref (&px_singletons[(int) value]);
     }
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_DIMENSION.value_class);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_DIMENSION.value_class);
   result->unit = unit;
   result->value = value;
 

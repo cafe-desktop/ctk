@@ -27,26 +27,26 @@
 
 G_BEGIN_DECLS
 
-GtkRecentManager *_ctk_recent_chooser_get_recent_manager     (GtkRecentChooser  *chooser);
-GList *           _ctk_recent_chooser_get_items              (GtkRecentChooser  *chooser,
-							      GtkRecentFilter   *filter,
-							      GtkRecentSortFunc  func,
+CtkRecentManager *_ctk_recent_chooser_get_recent_manager     (CtkRecentChooser  *chooser);
+GList *           _ctk_recent_chooser_get_items              (CtkRecentChooser  *chooser,
+							      CtkRecentFilter   *filter,
+							      CtkRecentSortFunc  func,
 							      gpointer           data);
 
-void              _ctk_recent_chooser_item_activated         (GtkRecentChooser  *chooser);
-void              _ctk_recent_chooser_selection_changed      (GtkRecentChooser  *chooser);
+void              _ctk_recent_chooser_item_activated         (CtkRecentChooser  *chooser);
+void              _ctk_recent_chooser_selection_changed      (CtkRecentChooser  *chooser);
 
-void              _ctk_recent_chooser_update                 (GtkActivatable       *activatable,
-							      GtkAction            *action,
+void              _ctk_recent_chooser_update                 (CtkActivatable       *activatable,
+							      CtkAction            *action,
 							      const gchar          *property_name);
-void              _ctk_recent_chooser_sync_action_properties (GtkActivatable       *activatable,
-							      GtkAction            *action);
-void              _ctk_recent_chooser_set_related_action     (GtkRecentChooser     *recent_chooser, 
-							      GtkAction            *action);
-GtkAction        *_ctk_recent_chooser_get_related_action     (GtkRecentChooser     *recent_chooser);
-void              _ctk_recent_chooser_set_use_action_appearance (GtkRecentChooser  *recent_chooser, 
+void              _ctk_recent_chooser_sync_action_properties (CtkActivatable       *activatable,
+							      CtkAction            *action);
+void              _ctk_recent_chooser_set_related_action     (CtkRecentChooser     *recent_chooser, 
+							      CtkAction            *action);
+CtkAction        *_ctk_recent_chooser_get_related_action     (CtkRecentChooser     *recent_chooser);
+void              _ctk_recent_chooser_set_use_action_appearance (CtkRecentChooser  *recent_chooser, 
 								 gboolean           use_appearance);
-gboolean          _ctk_recent_chooser_get_use_action_appearance (GtkRecentChooser  *recent_chooser);
+gboolean          _ctk_recent_chooser_get_use_action_appearance (CtkRecentChooser  *recent_chooser);
 
 G_END_DECLS
 

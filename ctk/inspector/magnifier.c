@@ -31,24 +31,24 @@ enum
   PROP_ADJUSTMENT
 };
 
-struct _GtkInspectorMagnifierPrivate
+struct _CtkInspectorMagnifierPrivate
 {
-  GtkWidget *object;
-  GtkWidget *magnifier;
-  GtkAdjustment *adjustment;
+  CtkWidget *object;
+  CtkWidget *magnifier;
+  CtkAdjustment *adjustment;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMagnifier, ctk_inspector_magnifier, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorMagnifier, ctk_inspector_magnifier, CTK_TYPE_BOX)
 
 static void
-ctk_inspector_magnifier_init (GtkInspectorMagnifier *sl)
+ctk_inspector_magnifier_init (CtkInspectorMagnifier *sl)
 {
   sl->priv = ctk_inspector_magnifier_get_instance_private (sl);
   ctk_widget_init_template (CTK_WIDGET (sl));
 }
 
 void
-ctk_inspector_magnifier_set_object (GtkInspectorMagnifier *sl,
+ctk_inspector_magnifier_set_object (CtkInspectorMagnifier *sl,
                                     GObject              *object)
 {
   sl->priv->object = NULL;
@@ -74,7 +74,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorMagnifier *sl = CTK_INSPECTOR_MAGNIFIER (object);
+  CtkInspectorMagnifier *sl = CTK_INSPECTOR_MAGNIFIER (object);
 
   switch (param_id)
     {
@@ -94,7 +94,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorMagnifier *sl = CTK_INSPECTOR_MAGNIFIER (object);
+  CtkInspectorMagnifier *sl = CTK_INSPECTOR_MAGNIFIER (object);
 
   switch (param_id)
     {
@@ -111,7 +111,7 @@ set_property (GObject      *object,
 static void
 constructed (GObject *object)
 {
-  GtkInspectorMagnifier *sl = CTK_INSPECTOR_MAGNIFIER (object);
+  CtkInspectorMagnifier *sl = CTK_INSPECTOR_MAGNIFIER (object);
 
   g_object_bind_property (sl->priv->adjustment, "value",
                           sl->priv->magnifier, "magnification",
@@ -119,10 +119,10 @@ constructed (GObject *object)
 }
 
 static void
-ctk_inspector_magnifier_class_init (GtkInspectorMagnifierClass *klass)
+ctk_inspector_magnifier_class_init (CtkInspectorMagnifierClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->get_property = get_property;
   object_class->set_property = set_property;
@@ -133,7 +133,7 @@ ctk_inspector_magnifier_class_init (GtkInspectorMagnifierClass *klass)
                            CTK_TYPE_ADJUSTMENT, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/magnifier.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMagnifier, magnifier);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorMagnifier, magnifier);
 }
 
 // vim: set et sw=2 ts=2:

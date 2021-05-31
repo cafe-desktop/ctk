@@ -24,25 +24,25 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 typedef struct StylePropertyValue StylePropertyValue;
 
-struct _GtkModifierStylePrivate
+struct _CtkModifierStylePrivate
 {
-  GtkStyleProperties *style;
+  CtkStyleProperties *style;
   GHashTable *color_properties;
 };
 
-static void ctk_modifier_style_provider_init         (GtkStyleProviderIface            *iface);
-static void ctk_modifier_style_provider_private_init (GtkStyleProviderPrivateInterface *iface);
+static void ctk_modifier_style_provider_init         (CtkStyleProviderIface            *iface);
+static void ctk_modifier_style_provider_private_init (CtkStyleProviderPrivateInterface *iface);
 static void ctk_modifier_style_finalize              (GObject                          *object);
 
-G_DEFINE_TYPE_EXTENDED (GtkModifierStyle, _ctk_modifier_style, G_TYPE_OBJECT, 0,
-                        G_ADD_PRIVATE (GtkModifierStyle)
+G_DEFINE_TYPE_EXTENDED (CtkModifierStyle, _ctk_modifier_style, G_TYPE_OBJECT, 0,
+                        G_ADD_PRIVATE (CtkModifierStyle)
                         G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER,
                                                ctk_modifier_style_provider_init)
                         G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER_PRIVATE,
                                                ctk_modifier_style_provider_private_init));
 
 static void
-_ctk_modifier_style_class_init (GtkModifierStyleClass *klass)
+_ctk_modifier_style_class_init (CtkModifierStyleClass *klass)
 {
   GObjectClass *object_class;
 
@@ -52,9 +52,9 @@ _ctk_modifier_style_class_init (GtkModifierStyleClass *klass)
 }
 
 static void
-_ctk_modifier_style_init (GtkModifierStyle *modifier_style)
+_ctk_modifier_style_init (CtkModifierStyle *modifier_style)
 {
-  GtkModifierStylePrivate *priv;
+  CtkModifierStylePrivate *priv;
 
   priv = modifier_style->priv = _ctk_modifier_style_get_instance_private (modifier_style);
 
@@ -66,13 +66,13 @@ _ctk_modifier_style_init (GtkModifierStyle *modifier_style)
 }
 
 static gboolean
-ctk_modifier_style_get_style_property (GtkStyleProvider *provider,
-                                       GtkWidgetPath    *path,
-                                       GtkStateFlags     state,
+ctk_modifier_style_get_style_property (CtkStyleProvider *provider,
+                                       CtkWidgetPath    *path,
+                                       CtkStateFlags     state,
                                        GParamSpec       *pspec,
                                        GValue           *value)
 {
-  GtkModifierStylePrivate *priv;
+  CtkModifierStylePrivate *priv;
   GdkRGBA *rgba;
   GdkColor color;
   gchar *str;
@@ -101,27 +101,27 @@ ctk_modifier_style_get_style_property (GtkStyleProvider *provider,
 }
 
 static void
-ctk_modifier_style_provider_init (GtkStyleProviderIface *iface)
+ctk_modifier_style_provider_init (CtkStyleProviderIface *iface)
 {
   iface->get_style_property = ctk_modifier_style_get_style_property;
 }
 
-static GtkCssValue *
-ctk_modifier_style_provider_get_color (GtkStyleProviderPrivate *provider,
+static CtkCssValue *
+ctk_modifier_style_provider_get_color (CtkStyleProviderPrivate *provider,
                                        const char              *name)
 {
-  GtkModifierStyle *style = CTK_MODIFIER_STYLE (provider);
+  CtkModifierStyle *style = CTK_MODIFIER_STYLE (provider);
 
   return _ctk_style_provider_private_get_color (CTK_STYLE_PROVIDER_PRIVATE (style->priv->style), name);
 }
 
 static void
-ctk_modifier_style_provider_lookup (GtkStyleProviderPrivate *provider,
-                                    const GtkCssMatcher     *matcher,
-                                    GtkCssLookup            *lookup,
-                                    GtkCssChange            *change)
+ctk_modifier_style_provider_lookup (CtkStyleProviderPrivate *provider,
+                                    const CtkCssMatcher     *matcher,
+                                    CtkCssLookup            *lookup,
+                                    CtkCssChange            *change)
 {
-  GtkModifierStyle *style = CTK_MODIFIER_STYLE (provider);
+  CtkModifierStyle *style = CTK_MODIFIER_STYLE (provider);
 
   _ctk_style_provider_private_lookup (CTK_STYLE_PROVIDER_PRIVATE (style->priv->style),
                                       matcher,
@@ -130,7 +130,7 @@ ctk_modifier_style_provider_lookup (GtkStyleProviderPrivate *provider,
 }
 
 static void
-ctk_modifier_style_provider_private_init (GtkStyleProviderPrivateInterface *iface)
+ctk_modifier_style_provider_private_init (CtkStyleProviderPrivateInterface *iface)
 {
   iface->get_color = ctk_modifier_style_provider_get_color;
   iface->lookup = ctk_modifier_style_provider_lookup;
@@ -139,7 +139,7 @@ ctk_modifier_style_provider_private_init (GtkStyleProviderPrivateInterface *ifac
 static void
 ctk_modifier_style_finalize (GObject *object)
 {
-  GtkModifierStylePrivate *priv;
+  CtkModifierStylePrivate *priv;
 
   priv = CTK_MODIFIER_STYLE (object)->priv;
   g_hash_table_destroy (priv->color_properties);
@@ -148,19 +148,19 @@ ctk_modifier_style_finalize (GObject *object)
   G_OBJECT_CLASS (_ctk_modifier_style_parent_class)->finalize (object);
 }
 
-GtkModifierStyle *
+CtkModifierStyle *
 _ctk_modifier_style_new (void)
 {
   return g_object_new (CTK_TYPE_MODIFIER_STYLE, NULL);
 }
 
 static void
-modifier_style_set_color (GtkModifierStyle *style,
+modifier_style_set_color (CtkModifierStyle *style,
                           const gchar      *prop,
-                          GtkStateFlags     state,
+                          CtkStateFlags     state,
                           const GdkRGBA    *color)
 {
-  GtkModifierStylePrivate *priv;
+  CtkModifierStylePrivate *priv;
 
   g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
 
@@ -177,8 +177,8 @@ modifier_style_set_color (GtkModifierStyle *style,
 }
 
 void
-_ctk_modifier_style_set_background_color (GtkModifierStyle *style,
-                                          GtkStateFlags     state,
+_ctk_modifier_style_set_background_color (CtkModifierStyle *style,
+                                          CtkStateFlags     state,
                                           const GdkRGBA    *color)
 {
   g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
@@ -187,8 +187,8 @@ _ctk_modifier_style_set_background_color (GtkModifierStyle *style,
 }
 
 void
-_ctk_modifier_style_set_color (GtkModifierStyle *style,
-                               GtkStateFlags     state,
+_ctk_modifier_style_set_color (CtkModifierStyle *style,
+                               CtkStateFlags     state,
                                const GdkRGBA    *color)
 {
   g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
@@ -197,10 +197,10 @@ _ctk_modifier_style_set_color (GtkModifierStyle *style,
 }
 
 void
-_ctk_modifier_style_set_font (GtkModifierStyle           *style,
+_ctk_modifier_style_set_font (CtkModifierStyle           *style,
                               const PangoFontDescription *font_desc)
 {
-  GtkModifierStylePrivate *priv;
+  CtkModifierStylePrivate *priv;
 
   g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
 
@@ -217,12 +217,12 @@ _ctk_modifier_style_set_font (GtkModifierStyle           *style,
 }
 
 void
-_ctk_modifier_style_map_color (GtkModifierStyle *style,
+_ctk_modifier_style_map_color (CtkModifierStyle *style,
                                const gchar      *name,
                                const GdkRGBA    *color)
 {
-  GtkModifierStylePrivate *priv;
-  GtkSymbolicColor *symbolic_color = NULL;
+  CtkModifierStylePrivate *priv;
+  CtkSymbolicColor *symbolic_color = NULL;
 
   g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
   g_return_if_fail (name != NULL);
@@ -239,12 +239,12 @@ _ctk_modifier_style_map_color (GtkModifierStyle *style,
 }
 
 void
-_ctk_modifier_style_set_color_property (GtkModifierStyle *style,
+_ctk_modifier_style_set_color_property (CtkModifierStyle *style,
                                         GType             widget_type,
                                         const gchar      *prop_name,
                                         const GdkRGBA    *color)
 {
-  GtkModifierStylePrivate *priv;
+  CtkModifierStylePrivate *priv;
   const GdkRGBA *old_color;
   gchar *str;
 

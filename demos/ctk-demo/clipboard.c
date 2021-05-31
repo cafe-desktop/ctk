@@ -1,6 +1,6 @@
 /* Clipboard
  *
- * GtkClipboard is used for clipboard handling. This demo shows how to
+ * CtkClipboard is used for clipboard handling. This demo shows how to
  * copy and paste text to and from the clipboard.
  *
  * It also shows how to transfer images via the clipboard or via
@@ -14,11 +14,11 @@
 #include <string.h>
 
 void
-copy_button_clicked (GtkWidget *button,
+copy_button_clicked (CtkWidget *button,
                      gpointer   user_data)
 {
-  GtkWidget *entry;
-  GtkClipboard *clipboard;
+  CtkWidget *entry;
+  CtkClipboard *clipboard;
 
   entry = CTK_WIDGET (user_data);
 
@@ -31,11 +31,11 @@ copy_button_clicked (GtkWidget *button,
 }
 
 void
-paste_received (GtkClipboard *clipboard,
+paste_received (CtkClipboard *clipboard,
                 const gchar  *text,
                 gpointer      user_data)
 {
-  GtkWidget *entry;
+  CtkWidget *entry;
 
   entry = CTK_WIDGET (user_data);
 
@@ -45,11 +45,11 @@ paste_received (GtkClipboard *clipboard,
 }
 
 void
-paste_button_clicked (GtkWidget *button,
+paste_button_clicked (CtkWidget *button,
                      gpointer   user_data)
 {
-  GtkWidget *entry;
-  GtkClipboard *clipboard;
+  CtkWidget *entry;
+  CtkClipboard *clipboard;
 
   entry = CTK_WIDGET (user_data);
 
@@ -65,11 +65,11 @@ paste_button_clicked (GtkWidget *button,
 }
 
 static GdkPixbuf *
-get_image_pixbuf (GtkImage *image)
+get_image_pixbuf (CtkImage *image)
 {
   const gchar *icon_name;
-  GtkIconSize size;
-  GtkIconTheme *icon_theme;
+  CtkIconSize size;
+  CtkIconTheme *icon_theme;
   int width;
 
   switch (ctk_image_get_storage_type (image))
@@ -93,7 +93,7 @@ get_image_pixbuf (GtkImage *image)
 }
 
 static void
-drag_begin (GtkWidget      *widget,
+drag_begin (CtkWidget      *widget,
             GdkDragContext *context,
             gpointer        data)
 {
@@ -105,9 +105,9 @@ drag_begin (GtkWidget      *widget,
 }
 
 void
-drag_data_get (GtkWidget        *widget,
+drag_data_get (CtkWidget        *widget,
                GdkDragContext   *context,
-               GtkSelectionData *selection_data,
+               CtkSelectionData *selection_data,
                guint             info,
                guint             time,
                gpointer          data)
@@ -120,11 +120,11 @@ drag_data_get (GtkWidget        *widget,
 }
 
 static void
-drag_data_received (GtkWidget        *widget,
+drag_data_received (CtkWidget        *widget,
                     GdkDragContext   *context,
                     gint              x,
                     gint              y,
-                    GtkSelectionData *selection_data,
+                    CtkSelectionData *selection_data,
                     guint             info,
                     guint32           time,
                     gpointer          data)
@@ -140,10 +140,10 @@ drag_data_received (GtkWidget        *widget,
 }
 
 static void
-copy_image (GtkMenuItem *item,
+copy_image (CtkMenuItem *item,
             gpointer     data)
 {
-  GtkClipboard *clipboard;
+  CtkClipboard *clipboard;
   GdkPixbuf *pixbuf;
 
   clipboard = ctk_clipboard_get (GDK_SELECTION_CLIPBOARD);
@@ -154,10 +154,10 @@ copy_image (GtkMenuItem *item,
 }
 
 static void
-paste_image (GtkMenuItem *item,
+paste_image (CtkMenuItem *item,
              gpointer     data)
 {
-  GtkClipboard *clipboard;
+  CtkClipboard *clipboard;
   GdkPixbuf *pixbuf;
 
   clipboard = ctk_clipboard_get (GDK_SELECTION_CLIPBOARD);
@@ -171,12 +171,12 @@ paste_image (GtkMenuItem *item,
 }
 
 static gboolean
-button_press (GtkWidget      *widget,
+button_press (CtkWidget      *widget,
               GdkEventButton *button,
               gpointer        data)
 {
-  GtkWidget *menu;
-  GtkWidget *item;
+  CtkWidget *menu;
+  CtkWidget *item;
 
   if (button->button != GDK_BUTTON_SECONDARY)
     return FALSE;
@@ -197,18 +197,18 @@ button_press (GtkWidget      *widget,
   return TRUE;
 }
 
-GtkWidget *
-do_clipboard (GtkWidget *do_widget)
+CtkWidget *
+do_clipboard (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *vbox, *hbox;
-      GtkWidget *label;
-      GtkWidget *entry, *button;
-      GtkWidget *ebox, *image;
-      GtkClipboard *clipboard;
+      CtkWidget *vbox, *hbox;
+      CtkWidget *label;
+      CtkWidget *entry, *button;
+      CtkWidget *ebox, *image;
+      CtkClipboard *clipboard;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),

@@ -1,6 +1,6 @@
 <interface>
-  <object class="GtkBox">
-    <object class="GtkBox">
+  <object class="CtkBox">
+    <object class="CtkBox">
     </object>
   </object>
 </interface>

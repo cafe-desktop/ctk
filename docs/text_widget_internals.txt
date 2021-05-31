@@ -1,23 +1,23 @@
-This file documents how GtkTextView works, at least partially.  You
+This file documents how CtkTextView works, at least partially.  You
 probably want to read the text widget overview in the reference manual
 to get an application programmer overview of the public API before
 reading this. The overview in the reference manual documents
-GtkTextBuffer, GtkTextView, GtkTextMark, etc. from a public API
+CtkTextBuffer, CtkTextView, CtkTextMark, etc. from a public API
 standpoint.
 
 The BTree
 ===
 
-The heart of the text widget is a data structure called GtkTextBTree,
-which implements all the hard work of the public GtkTextBuffer object.
+The heart of the text widget is a data structure called CtkTextBTree,
+which implements all the hard work of the public CtkTextBuffer object.
 The purpose of the btree is to make most operations at least O(log N),
 so application programmers can just use whatever API is convenient
 without worrying about O(N) performance pitfalls.
 
 The BTree is a tree of paragraphs (newline-terminated lines).  The
-leaves of the tree are paragraphs, represented by a GtkTextLine. The
+leaves of the tree are paragraphs, represented by a CtkTextLine. The
 nodes of the tree above the leaves are represented by
-GtkTextBTreeNode. The nodes are used to store aggregate data counts,
+CtkTextBTreeNode. The nodes are used to store aggregate data counts,
 so we can for example skip 100 paragraphs or 100 characters, without
 having to traverse 100 nodes in a list.
 
@@ -55,14 +55,14 @@ In addition to keeping aggregate line counts at each node, we count
 characters, and information about the tag toggles appearing below each
 node.
 
-Structure of a GtkTextLine
+Structure of a CtkTextLine
 ===
 
-A GtkTextLine contains a single paragraph of text. It should probably
-be renamed GtkTextPara someday but ah well.  GtkTextLine is used for 
+A CtkTextLine contains a single paragraph of text. It should probably
+be renamed CtkTextPara someday but ah well.  CtkTextLine is used for 
 the leaf nodes of the BTree.
 
-A line is a list of GtkTextLineSegment. Line segments contain the
+A line is a list of CtkTextLineSegment. Line segments contain the
 actual data found in the text buffer.
  
 Here are the types of line segment (see ctktextsegment.h,
@@ -82,7 +82,7 @@ ctktextchild.h, etc.):
   Child widget:      stores a child widget that behaves as a single 
                      Unicode character from an editing perspective.
                      (well, stores a list of child widgets, one per 
-                     GtkTextView displaying the buffer)
+                     CtkTextView displaying the buffer)
 
   Image:             stores a GdkPixbuf that behaves as a single 
                      character from an editing perspective.
@@ -129,24 +129,24 @@ user-visible; indexable segments include text, images, and widgets.
 Segments with zero length occupy positions between characters, and
 include marks and tag toggles.
 
-The GtkText*Body structs are the type-specific portions of 
-GtkTextSegment.
+The CtkText*Body structs are the type-specific portions of 
+CtkTextSegment.
 
 Character segments have the actual character data allocated in the
-same malloc() block as the GtkTextSegment, to save both malloc()
+same malloc() block as the CtkTextSegment, to save both malloc()
 overhead and the overhead of a pointer to the character data.
 
 Storing and tracking tags in the BTree
 ===
 
-A GtkTextTag is an object representing some text attributes.  A tag
+A CtkTextTag is an object representing some text attributes.  A tag
 can affect zero attributes (for example one used only for internal
 application bookkeeping), a single attribute such as "bold", or any
 number of attributes (such as large and bold and centered for a
 "header" tag).
 
 The tags that can be applied to a given buffer are stored in the
-GtkTextTagTable for that buffer. The tag table is just a collection of
+CtkTextTagTable for that buffer. The tag table is just a collection of
 tags.
 
 The real work of applying/removing tags happens in the function
@@ -165,24 +165,24 @@ for each tag that's toggled somewhere below the node. The Summary
 simply contains a count of tag toggle segments found below the node.
 
 
-Views of the BTree (GtkTextLayout)
+Views of the BTree (CtkTextLayout)
 ===
 
 Each BTree has one or more views that display the tree.  Originally
 there was some idea that a view could be any object, so there are some
 "gpointer view_id" left in the code. However, at some point we decided
-that all views had to be a GtkTextLayout and so the btree does assume
+that all views had to be a CtkTextLayout and so the btree does assume
 that from time to time.
 
 The BTree maintains some per-line and per-node data that is specific 
-to each view. The per-line data is in GtkTextLineData and the per-node
+to each view. The per-line data is in CtkTextLineData and the per-node
 data is in another badly-named struct called NodeData (should be
 PerViewNodeData or something). The purpose of these is to store:
 
  - aggregate height, so we can calculate the Y position of each
    paragraph in O(log N) time, and can get the full height 
    of the buffer in O(1) time. The height is per-view since 
-   each GtkTextView may have a different size allocation.
+   each CtkTextView may have a different size allocation.
 
  - maximum width (the longest line), so we can calculate the width of
    the entire buffer in O(1) time in order to properly set up the
@@ -199,7 +199,7 @@ open a new text widget with a lot of text in it, you can watch the
 scrollbar adjust as the height is computed in an idle handler.  Lines
 whose height has never been computed are taken to have a height of 0.
 
-Iterators (GtkTextIter)
+Iterators (CtkTextIter)
 ===
 
 Iterators are fairly complex in order to avoid re-traversing the btree
@@ -217,7 +217,7 @@ That is, you can't use an iterator after adding/removing characters.
 
 The "segments_changed_stamp" is incremented any time we change any
 segments, and tells outstanding iterators that any pointers to 
-GtkTextSegment that they may be holding are now invalid. For example, 
+CtkTextSegment that they may be holding are now invalid. For example, 
 if you are iterating over a character segment, and insert a mark in
 the middle of the segment, the character segment will be split in half
 and the original segment will be freed. This increments
@@ -228,27 +228,27 @@ the new segment.
 Iterators also cache some random information such as the current line
 number, just because it's free to do so.
 
-GtkTextLayout
+CtkTextLayout
 ===
 
-If you think of GtkTextBTree as the backend for GtkTextBuffer,
-GtkTextLayout is the backend for GtkTextView. GtkTextLayout was also
+If you think of CtkTextBTree as the backend for CtkTextBuffer,
+CtkTextLayout is the backend for CtkTextView. CtkTextLayout was also
 used for a canvas item at one point, which is why its methods are not
-underscore-prefixed and the header gets installed. But GtkTextLayout
+underscore-prefixed and the header gets installed. But CtkTextLayout
 is really intended to be private.
 
-The main task of GtkTextLayout is to validate lines (compute their
+The main task of CtkTextLayout is to validate lines (compute their
 width and height) by converting the lines to a PangoLayout and using
-Pango functions. GtkTextLayout is also used for visual iteration, and
+Pango functions. CtkTextLayout is also used for visual iteration, and
 mapping visual locations to logical buffer positions.
 
-Validating a line involves creating the GtkTextLineDisplay for that 
-line. To save memory, GtkTextLineDisplay objects are always created
+Validating a line involves creating the CtkTextLineDisplay for that 
+line. To save memory, CtkTextLineDisplay objects are always created
 transiently, we don't keep them around.
 
 The layout has three signals:
 
- - "invalidated" means some line was changed, so GtkTextView 
+ - "invalidated" means some line was changed, so CtkTextView 
    needs to install idle handlers to revalidate.
 
  - "changed" means some lines were validated, so the aggregate
@@ -258,41 +258,41 @@ The layout has three signals:
    child widget
 
 ctk_text_layout_get_line_display() is sort of the "heart" of
-GtkTextLayout. This function validates a line. 
+CtkTextLayout. This function validates a line. 
 
 Line validation involves:
 
- - convert any GtkTextTag on the line to PangoAttrList
+ - convert any CtkTextTag on the line to PangoAttrList
  
  - add the preedit string
 
  - keep track of "visible marks" (the cursor)
 
-A given set of tags is composited to a GtkTextAttributes. (In the Tk
+A given set of tags is composited to a CtkTextAttributes. (In the Tk
 code this was called a "style" and there are still relics of this in
 the code, such as "invalidate_cached_style()", that should be cleaned
 up.) 
 
-There's a single-GtkTextAttributes cache, "layout->one_style_cache",
+There's a single-CtkTextAttributes cache, "layout->one_style_cache",
 which is used to avoid recomputing the mapping from tags to attributes
-for every segment. The one_style_cache is stored in the GtkTextLayout
+for every segment. The one_style_cache is stored in the CtkTextLayout
 instead of just a local variable in ctk_text_layout_get_line_display()
 so we can use it across multiple lines. Any time we see a segment that
 may change the current style (such as a tag toggle), the cache has to
 be dropped.
 
-To compute a GtkTextAttributes from the GtkTextTag that apply to a
+To compute a CtkTextAttributes from the CtkTextTag that apply to a
 given segment, the function is _ctk_text_attributes_fill_from_tags(). 
 This "mashes" a list of tags into a single set of text attributes. 
 If no tags affect a given attribute, a default set of attributes are
 used. These defaults sometimes come from widget->style on the
-GtkTextView, and sometimes come from a property of the GtkTextView
+CtkTextView, and sometimes come from a property of the CtkTextView
 such as "pixels_above_lines"
 
-GtkTextView
+CtkTextView
 ===
 
-Once you get GtkTextLayout and GtkTextBTree the actual GtkTextView 
+Once you get CtkTextLayout and CtkTextBTree the actual CtkTextView 
 widget is not that complicated.
 
 The main complexity is the interaction between scrolling and line
@@ -306,14 +306,14 @@ Invisible text
 ===
 
 Invisible text doesn't work yet. It is a property that can be set by a
-GtkTextTag; so you determine whether text is invisible using the same
+CtkTextTag; so you determine whether text is invisible using the same
 mechanism you would use to check whether the text is bold, or orange.
 
 The intended behavior of invisible text is that it should vanish
 completely, as if it did not exist. The use-case we were thinking of
 was a code editor with function folding, where you can hide all
 function bodies. That could be implemented by creating a
-"function_body" GtkTextTag and toggling its "invisible" attribute to
+"function_body" CtkTextTag and toggling its "invisible" attribute to
 hide/show the function bodies.
 
 Lines are normally validated in an idle handler, but as an exception,

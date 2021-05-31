@@ -26,18 +26,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_IMAGE_WIN32           (_ctk_css_image_win32_get_type ())
-#define CTK_CSS_IMAGE_WIN32(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32))
-#define CTK_CSS_IMAGE_WIN32_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32Class))
+#define CTK_CSS_IMAGE_WIN32(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_WIN32, CtkCssImageWin32))
+#define CTK_CSS_IMAGE_WIN32_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_WIN32, CtkCssImageWin32Class))
 #define CTK_IS_CSS_IMAGE_WIN32(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_WIN32))
 #define CTK_IS_CSS_IMAGE_WIN32_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_WIN32))
-#define CTK_CSS_IMAGE_WIN32_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32Class))
+#define CTK_CSS_IMAGE_WIN32_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_WIN32, CtkCssImageWin32Class))
 
-typedef struct _GtkCssImageWin32           GtkCssImageWin32;
-typedef struct _GtkCssImageWin32Class      GtkCssImageWin32Class;
+typedef struct _CtkCssImageWin32           CtkCssImageWin32;
+typedef struct _CtkCssImageWin32Class      CtkCssImageWin32Class;
 
-struct _GtkCssImageWin32
+struct _CtkCssImageWin32
 {
-  GtkCssImage parent;
+  CtkCssImage parent;
 
   int part;
   int state;
@@ -48,12 +48,12 @@ struct _GtkCssImageWin32
 
   gint margins[4];
 
-  GtkWin32Theme *theme;
+  CtkWin32Theme *theme;
 };
 
-struct _GtkCssImageWin32Class
+struct _CtkCssImageWin32Class
 {
-  GtkCssImageClass parent_class;
+  CtkCssImageClass parent_class;
 };
 
 GType          _ctk_css_image_win32_get_type             (void) G_GNUC_CONST;

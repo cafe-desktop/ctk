@@ -25,17 +25,17 @@
 #include "ctkprivate.h"
 #include "ctkintl.h"
 
-struct _GtkStackCombo
+struct _CtkStackCombo
 {
-  GtkBox box;
+  CtkBox box;
 
-  GtkComboBox *combo;
-  GtkStack *stack;
+  CtkComboBox *combo;
+  CtkStack *stack;
   GBinding *binding;
 };
 
-struct _GtkStackComboClass {
-  GtkBoxClass parent_class;
+struct _CtkStackComboClass {
+  CtkBoxClass parent_class;
 };
 
 enum {
@@ -43,10 +43,10 @@ enum {
   PROP_STACK
 };
 
-G_DEFINE_TYPE (GtkStackCombo, ctk_stack_combo, CTK_TYPE_BOX)
+G_DEFINE_TYPE (CtkStackCombo, ctk_stack_combo, CTK_TYPE_BOX)
 
 static void
-ctk_stack_combo_init (GtkStackCombo *self)
+ctk_stack_combo_init (CtkStackCombo *self)
 {
   self->stack = NULL;
   self->combo = CTK_COMBO_BOX (ctk_combo_box_text_new ());
@@ -54,24 +54,24 @@ ctk_stack_combo_init (GtkStackCombo *self)
   ctk_box_pack_start (CTK_BOX (self), CTK_WIDGET (self->combo), FALSE, FALSE, 0);
 }
 
-static void ctk_stack_combo_set_stack (GtkStackCombo *self,
-                                       GtkStack      *stack);
+static void ctk_stack_combo_set_stack (CtkStackCombo *self,
+                                       CtkStack      *stack);
 
 static void
-rebuild_combo (GtkStackCombo *self)
+rebuild_combo (CtkStackCombo *self)
 {
   ctk_stack_combo_set_stack (self, self->stack);
 }
 
 static void
-on_child_visible_changed (GtkStackCombo *self)
+on_child_visible_changed (CtkStackCombo *self)
 {
   rebuild_combo (self);
 }
 
 static void
-add_child (GtkWidget     *widget,
-           GtkStackCombo *self)
+add_child (CtkWidget     *widget,
+           CtkStackCombo *self)
 {
   g_signal_handlers_disconnect_by_func (widget, G_CALLBACK (on_child_visible_changed), self);
   g_signal_connect_swapped (widget, "notify::visible", G_CALLBACK (on_child_visible_changed), self);
@@ -93,36 +93,36 @@ add_child (GtkWidget     *widget,
 }
 
 static void
-populate_combo (GtkStackCombo *self)
+populate_combo (CtkStackCombo *self)
 {
-  ctk_container_foreach (CTK_CONTAINER (self->stack), (GtkCallback)add_child, self);
+  ctk_container_foreach (CTK_CONTAINER (self->stack), (CtkCallback)add_child, self);
 }
 
 static void
-clear_combo (GtkStackCombo *self)
+clear_combo (CtkStackCombo *self)
 {
   ctk_combo_box_text_remove_all (CTK_COMBO_BOX_TEXT (self->combo));
 }
 
 static void
-on_stack_child_added (GtkContainer  *container,
-                      GtkWidget     *widget,
-                      GtkStackCombo *self)
+on_stack_child_added (CtkContainer  *container,
+                      CtkWidget     *widget,
+                      CtkStackCombo *self)
 {
   rebuild_combo (self);
 }
 
 static void
-on_stack_child_removed (GtkContainer  *container,
-                        GtkWidget     *widget,
-                        GtkStackCombo *self)
+on_stack_child_removed (CtkContainer  *container,
+                        CtkWidget     *widget,
+                        CtkStackCombo *self)
 {
   g_signal_handlers_disconnect_by_func (widget, G_CALLBACK (on_child_visible_changed), self);
   rebuild_combo (self);
 }
 
 static void
-disconnect_stack_signals (GtkStackCombo *self)
+disconnect_stack_signals (CtkStackCombo *self)
 {
   g_binding_unbind (self->binding);
   self->binding = NULL;
@@ -132,7 +132,7 @@ disconnect_stack_signals (GtkStackCombo *self)
 }
 
 static void
-connect_stack_signals (GtkStackCombo *self)
+connect_stack_signals (CtkStackCombo *self)
 {
   g_signal_connect_after (self->stack, "add", G_CALLBACK (on_stack_child_added), self);
   g_signal_connect_after (self->stack, "remove", G_CALLBACK (on_stack_child_removed), self);
@@ -141,8 +141,8 @@ connect_stack_signals (GtkStackCombo *self)
 }
 
 static void
-ctk_stack_combo_set_stack (GtkStackCombo *self,
-                           GtkStack      *stack)
+ctk_stack_combo_set_stack (CtkStackCombo *self,
+                           CtkStack      *stack)
 {
   if (stack)
     g_object_ref (stack);
@@ -168,7 +168,7 @@ ctk_stack_combo_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkStackCombo *self = CTK_STACK_COMBO (object);
+  CtkStackCombo *self = CTK_STACK_COMBO (object);
 
   switch (prop_id)
     {
@@ -188,7 +188,7 @@ ctk_stack_combo_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkStackCombo *self = CTK_STACK_COMBO (object);
+  CtkStackCombo *self = CTK_STACK_COMBO (object);
 
   switch (prop_id)
     {
@@ -209,7 +209,7 @@ ctk_stack_combo_set_property (GObject      *object,
 static void
 ctk_stack_combo_dispose (GObject *object)
 {
-  GtkStackCombo *self = CTK_STACK_COMBO (object);
+  CtkStackCombo *self = CTK_STACK_COMBO (object);
 
   ctk_stack_combo_set_stack (self, NULL);
 
@@ -217,10 +217,10 @@ ctk_stack_combo_dispose (GObject *object)
 }
 
 static void
-ctk_stack_combo_class_init (GtkStackComboClass *class)
+ctk_stack_combo_class_init (CtkStackComboClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->get_property = ctk_stack_combo_get_property;
   object_class->set_property = ctk_stack_combo_set_property;

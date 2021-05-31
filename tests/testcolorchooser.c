@@ -11,7 +11,7 @@ color_changed (GObject *o, GParamSpec *pspect, gpointer data)
 }
 
 static void
-dialog_response (GtkDialog *dialog, gint response)
+dialog_response (CtkDialog *dialog, gint response)
 {
   GdkRGBA color;
 
@@ -33,7 +33,7 @@ dialog_response (GtkDialog *dialog, gint response)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
   gint i;
 
   ctk_init (NULL, NULL);

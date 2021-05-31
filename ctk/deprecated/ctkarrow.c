@@ -25,25 +25,25 @@
 /**
  * SECTION:ctkarrow
  * @Short_description: Displays an arrow
- * @Title: GtkArrow
+ * @Title: CtkArrow
  * @See_also: ctk_render_arrow()
  *
- * GtkArrow should be used to draw simple arrows that need to point in
+ * CtkArrow should be used to draw simple arrows that need to point in
  * one of the four cardinal directions (up, down, left, or right).  The
  * style of the arrow can be one of shadow in, shadow out, etched in, or
  * etched out.  Note that these directions and style types may be
  * amended in versions of GTK+ to come.
  *
- * GtkArrow will fill any space alloted to it, but since it is inherited
- * from #GtkMisc, it can be padded and/or aligned, to fill exactly the
+ * CtkArrow will fill any space alloted to it, but since it is inherited
+ * from #CtkMisc, it can be padded and/or aligned, to fill exactly the
  * space the programmer desires.
  *
  * Arrows are created with a call to ctk_arrow_new().  The direction or
  * style of an arrow can be changed after creation by using ctk_arrow_set().
  *
- * GtkArrow has been deprecated; you can simply use a #GtkImage with a
+ * CtkArrow has been deprecated; you can simply use a #CtkImage with a
  * suitable icon name, such as “pan-down-symbolic“. When replacing 
- * GtkArrow by an image, pay attention to the fact that GtkArrow is
+ * CtkArrow by an image, pay attention to the fact that CtkArrow is
  * doing automatic flipping between #CTK_ARROW_LEFT and #CTK_ARROW_RIGHT,
  * depending on the text direction. To get the same effect with an image,
  * use the icon names “pan-start-symbolic“ and “pan-end-symbolic“, which
@@ -64,7 +64,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 #define MIN_ARROW_SIZE  15
 
-struct _GtkArrowPrivate
+struct _CtkArrowPrivate
 {
   gint16 arrow_type;
   gint16 shadow_type;
@@ -85,28 +85,28 @@ static void     ctk_arrow_get_property (GObject        *object,
                                         guint           prop_id,
                                         GValue         *value,
                                         GParamSpec     *pspec);
-static gboolean ctk_arrow_draw         (GtkWidget      *widget,
+static gboolean ctk_arrow_draw         (CtkWidget      *widget,
                                         cairo_t        *cr);
 
-static void     ctk_arrow_get_preferred_width         (GtkWidget           *widget,
+static void     ctk_arrow_get_preferred_width         (CtkWidget           *widget,
                                                        gint                *minimum_size,
                                                        gint                *natural_size);
-static void     ctk_arrow_get_preferred_height        (GtkWidget           *widget,
+static void     ctk_arrow_get_preferred_height        (CtkWidget           *widget,
                                                        gint                *minimum_size,
                                                        gint                *natural_size);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-G_DEFINE_TYPE_WITH_PRIVATE (GtkArrow, ctk_arrow, CTK_TYPE_MISC)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkArrow, ctk_arrow, CTK_TYPE_MISC)
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
-ctk_arrow_class_init (GtkArrowClass *class)
+ctk_arrow_class_init (CtkArrowClass *class)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
   gobject_class = (GObjectClass*) class;
-  widget_class = (GtkWidgetClass*) class;
+  widget_class = (CtkWidgetClass*) class;
 
   gobject_class->set_property = ctk_arrow_set_property;
   gobject_class->get_property = ctk_arrow_get_property;
@@ -149,8 +149,8 @@ ctk_arrow_set_property (GObject         *object,
 			const GValue    *value,
 			GParamSpec      *pspec)
 {
-  GtkArrow *arrow = CTK_ARROW (object);
-  GtkArrowPrivate *priv = arrow->priv;
+  CtkArrow *arrow = CTK_ARROW (object);
+  CtkArrowPrivate *priv = arrow->priv;
 
   switch (prop_id)
     {
@@ -176,8 +176,8 @@ ctk_arrow_get_property (GObject         *object,
 			GValue          *value,
 			GParamSpec      *pspec)
 {
-  GtkArrow *arrow = CTK_ARROW (object);
-  GtkArrowPrivate *priv = arrow->priv;
+  CtkArrow *arrow = CTK_ARROW (object);
+  CtkArrowPrivate *priv = arrow->priv;
 
   switch (prop_id)
     {
@@ -194,7 +194,7 @@ ctk_arrow_get_property (GObject         *object,
 }
 
 static void
-ctk_arrow_init (GtkArrow *arrow)
+ctk_arrow_init (CtkArrow *arrow)
 {
   arrow->priv = ctk_arrow_get_instance_private (arrow);
 
@@ -205,11 +205,11 @@ ctk_arrow_init (GtkArrow *arrow)
 }
 
 static void
-ctk_arrow_get_preferred_width (GtkWidget *widget,
+ctk_arrow_get_preferred_width (CtkWidget *widget,
                                gint      *minimum_size,
                                gint      *natural_size)
 {
-  GtkBorder border;
+  CtkBorder border;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   _ctk_misc_get_padding_and_border (CTK_MISC (widget), &border);
@@ -220,11 +220,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_arrow_get_preferred_height (GtkWidget *widget,
+ctk_arrow_get_preferred_height (CtkWidget *widget,
                                 gint      *minimum_size,
                                 gint      *natural_size)
 {
-  GtkBorder border;
+  CtkBorder border;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   _ctk_misc_get_padding_and_border (CTK_MISC (widget), &border);
@@ -236,21 +236,21 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 /**
  * ctk_arrow_new:
- * @arrow_type: a valid #GtkArrowType.
- * @shadow_type: a valid #GtkShadowType.
+ * @arrow_type: a valid #CtkArrowType.
+ * @shadow_type: a valid #CtkShadowType.
  *
- * Creates a new #GtkArrow widget.
+ * Creates a new #CtkArrow widget.
  *
- * Returns: the new #GtkArrow widget.
+ * Returns: the new #CtkArrow widget.
  *
- * Deprecated: 3.14: Use a #GtkImage with a suitable icon.
+ * Deprecated: 3.14: Use a #CtkImage with a suitable icon.
  */
-GtkWidget*
-ctk_arrow_new (GtkArrowType  arrow_type,
-	       GtkShadowType shadow_type)
+CtkWidget*
+ctk_arrow_new (CtkArrowType  arrow_type,
+	       CtkShadowType shadow_type)
 {
-  GtkArrowPrivate *priv;
-  GtkArrow *arrow;
+  CtkArrowPrivate *priv;
+  CtkArrow *arrow;
 
   arrow = g_object_new (CTK_TYPE_ARROW, NULL);
 
@@ -264,21 +264,21 @@ ctk_arrow_new (GtkArrowType  arrow_type,
 
 /**
  * ctk_arrow_set:
- * @arrow: a widget of type #GtkArrow.
- * @arrow_type: a valid #GtkArrowType.
- * @shadow_type: a valid #GtkShadowType.
+ * @arrow: a widget of type #CtkArrow.
+ * @arrow_type: a valid #CtkArrowType.
+ * @shadow_type: a valid #CtkShadowType.
  *
- * Sets the direction and style of the #GtkArrow, @arrow.
+ * Sets the direction and style of the #CtkArrow, @arrow.
  *
- * Deprecated: 3.14: Use a #GtkImage with a suitable icon.
+ * Deprecated: 3.14: Use a #CtkImage with a suitable icon.
  */
 void
-ctk_arrow_set (GtkArrow      *arrow,
-	       GtkArrowType   arrow_type,
-	       GtkShadowType  shadow_type)
+ctk_arrow_set (CtkArrow      *arrow,
+	       CtkArrowType   arrow_type,
+	       CtkShadowType  shadow_type)
 {
-  GtkArrowPrivate *priv;
-  GtkWidget *widget;
+  CtkArrowPrivate *priv;
+  CtkWidget *widget;
 
   g_return_if_fail (CTK_IS_ARROW (arrow));
 
@@ -289,7 +289,7 @@ ctk_arrow_set (GtkArrow      *arrow,
     {
       g_object_freeze_notify (G_OBJECT (arrow));
 
-      if ((GtkArrowType) priv->arrow_type != arrow_type)
+      if ((CtkArrowType) priv->arrow_type != arrow_type)
         {
           priv->arrow_type = arrow_type;
           g_object_notify (G_OBJECT (arrow), "arrow-type");
@@ -310,18 +310,18 @@ ctk_arrow_set (GtkArrow      *arrow,
 }
 
 static gboolean
-ctk_arrow_draw (GtkWidget *widget,
+ctk_arrow_draw (CtkWidget *widget,
                 cairo_t   *cr)
 {
-  GtkArrow *arrow = CTK_ARROW (widget);
-  GtkArrowPrivate *priv = arrow->priv;
-  GtkStyleContext *context;
+  CtkArrow *arrow = CTK_ARROW (widget);
+  CtkArrowPrivate *priv = arrow->priv;
+  CtkStyleContext *context;
   gdouble x, y;
   gint width, height;
   gint extent;
-  GtkBorder border;
+  CtkBorder border;
   gfloat xalign, yalign;
-  GtkArrowType effective_arrow_type;
+  CtkArrowType effective_arrow_type;
   gfloat arrow_scaling;
   gdouble angle;
 

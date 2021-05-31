@@ -25,16 +25,16 @@
 /**
  * SECTION:ctkeditable
  * @Short_description: Interface for text-editing widgets
- * @Title: GtkEditable
+ * @Title: CtkEditable
  *
- * The #GtkEditable interface is an interface which should be implemented by
- * text editing widgets, such as #GtkEntry and #GtkSpinButton. It contains functions
+ * The #CtkEditable interface is an interface which should be implemented by
+ * text editing widgets, such as #CtkEntry and #CtkSpinButton. It contains functions
  * for generically manipulating an editable widget, a large number of action
  * signals used for key bindings, and several signals that an application can
  * connect to to modify the behavior of a widget.
  *
  * As an example of the latter usage, by connecting
- * the following handler to #GtkEditable::insert-text, an application
+ * the following handler to #CtkEditable::insert-text, an application
  * can convert all entry into a widget into uppercase.
  *
  * ## Forcing entry to uppercase.
@@ -43,7 +43,7 @@
  * #include <ctype.h>;
  *
  * void
- * insert_text_handler (GtkEditable *editable,
+ * insert_text_handler (CtkEditable *editable,
  *                      const gchar *text,
  *                      gint         length,
  *                      gint        *position,
@@ -92,12 +92,12 @@ ctk_editable_get_type (void)
     {
       const GTypeInfo editable_info =
       {
-	sizeof (GtkEditableInterface),  /* class_size */
+	sizeof (CtkEditableInterface),  /* class_size */
 	ctk_editable_base_init,	    /* base_init */
 	NULL,			    /* base_finalize */
       };
 
-      editable_type = g_type_register_static (G_TYPE_INTERFACE, I_("GtkEditable"),
+      editable_type = g_type_register_static (G_TYPE_INTERFACE, I_("CtkEditable"),
 					      &editable_info, 0);
     }
 
@@ -112,7 +112,7 @@ ctk_editable_base_init (gpointer g_class)
   if (! initialized)
     {
       /**
-       * GtkEditable::insert-text:
+       * CtkEditable::insert-text:
        * @editable: the object which received the signal
        * @new_text: the new text to insert
        * @new_text_length: the length of the new text, in bytes,
@@ -134,7 +134,7 @@ ctk_editable_base_init (gpointer g_class)
         g_signal_new (I_("insert-text"),
                       CTK_TYPE_EDITABLE,
                       G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (GtkEditableInterface, insert_text),
+                      G_STRUCT_OFFSET (CtkEditableInterface, insert_text),
                       NULL, NULL,
                       _ctk_marshal_VOID__STRING_INT_POINTER,
                       G_TYPE_NONE, 3,
@@ -146,7 +146,7 @@ ctk_editable_base_init (gpointer g_class)
                                   _ctk_marshal_VOID__STRING_INT_POINTERv);
 
       /**
-       * GtkEditable::delete-text:
+       * CtkEditable::delete-text:
        * @editable: the object which received the signal
        * @start_pos: the starting position
        * @end_pos: the end position
@@ -165,7 +165,7 @@ ctk_editable_base_init (gpointer g_class)
         g_signal_new (I_("delete-text"),
                       CTK_TYPE_EDITABLE,
                       G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (GtkEditableInterface, delete_text),
+                      G_STRUCT_OFFSET (CtkEditableInterface, delete_text),
                       NULL, NULL,
                       _ctk_marshal_VOID__INT_INT,
                       G_TYPE_NONE, 2,
@@ -175,11 +175,11 @@ ctk_editable_base_init (gpointer g_class)
                                   G_TYPE_FROM_CLASS (g_class),
                                   _ctk_marshal_VOID__INT_INTv);
       /**
-       * GtkEditable::changed:
+       * CtkEditable::changed:
        * @editable: the object which received the signal
        *
        * The ::changed signal is emitted at the end of a single
-       * user-visible operation on the contents of the #GtkEditable.
+       * user-visible operation on the contents of the #CtkEditable.
        *
        * E.g., a paste operation that replaces the contents of the
        * selection will cause only one signal emission (even though it
@@ -191,7 +191,7 @@ ctk_editable_base_init (gpointer g_class)
         g_signal_new (I_("changed"),
                       CTK_TYPE_EDITABLE,
                       G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (GtkEditableInterface, changed),
+                      G_STRUCT_OFFSET (CtkEditableInterface, changed),
                       NULL, NULL,
                       NULL,
                       G_TYPE_NONE, 0);
@@ -202,7 +202,7 @@ ctk_editable_base_init (gpointer g_class)
 
 /**
  * ctk_editable_insert_text: (virtual do_insert_text)
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  * @new_text: the text to append
  * @new_text_length: the length of the text in bytes, or -1
  * @position: (inout): location of the position text will be inserted at
@@ -214,7 +214,7 @@ ctk_editable_base_init (gpointer g_class)
  * The function updates @position to point after the newly inserted text.
  */
 void
-ctk_editable_insert_text (GtkEditable *editable,
+ctk_editable_insert_text (CtkEditable *editable,
 			  const gchar *new_text,
 			  gint         new_text_length,
 			  gint        *position)
@@ -230,7 +230,7 @@ ctk_editable_insert_text (GtkEditable *editable,
 
 /**
  * ctk_editable_delete_text: (virtual do_delete_text)
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  * @start_pos: start position
  * @end_pos: end position
  *
@@ -242,7 +242,7 @@ ctk_editable_insert_text (GtkEditable *editable,
  * Note that the positions are specified in characters, not bytes.
  */
 void
-ctk_editable_delete_text (GtkEditable *editable,
+ctk_editable_delete_text (CtkEditable *editable,
 			  gint         start_pos,
 			  gint         end_pos)
 {
@@ -253,7 +253,7 @@ ctk_editable_delete_text (GtkEditable *editable,
 
 /**
  * ctk_editable_get_chars:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  * @start_pos: start of text
  * @end_pos: end of text
  *
@@ -265,11 +265,11 @@ ctk_editable_delete_text (GtkEditable *editable,
  * Note that positions are specified in characters, not bytes.
  *
  * Returns: a pointer to the contents of the widget as a
- *      string. This string is allocated by the #GtkEditable
+ *      string. This string is allocated by the #CtkEditable
  *      implementation and should be freed by the caller.
  */
 gchar *    
-ctk_editable_get_chars (GtkEditable *editable,
+ctk_editable_get_chars (CtkEditable *editable,
 			gint         start_pos,
 			gint         end_pos)
 {
@@ -280,7 +280,7 @@ ctk_editable_get_chars (GtkEditable *editable,
 
 /**
  * ctk_editable_set_position:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  * @position: the position of the cursor 
  *
  * Sets the cursor position in the editable to the given value.
@@ -292,7 +292,7 @@ ctk_editable_get_chars (GtkEditable *editable,
  * of the editable. Note that @position is in characters, not in bytes.
  */
 void
-ctk_editable_set_position (GtkEditable      *editable,
+ctk_editable_set_position (CtkEditable      *editable,
 			   gint              position)
 {
   g_return_if_fail (CTK_IS_EDITABLE (editable));
@@ -302,7 +302,7 @@ ctk_editable_set_position (GtkEditable      *editable,
 
 /**
  * ctk_editable_get_position:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  *
  * Retrieves the current position of the cursor relative to the start
  * of the content of the editable. 
@@ -312,7 +312,7 @@ ctk_editable_set_position (GtkEditable      *editable,
  * Returns: the cursor position
  */
 gint
-ctk_editable_get_position (GtkEditable *editable)
+ctk_editable_get_position (CtkEditable *editable)
 {
   g_return_val_if_fail (CTK_IS_EDITABLE (editable), 0);
 
@@ -321,7 +321,7 @@ ctk_editable_get_position (GtkEditable *editable)
 
 /**
  * ctk_editable_get_selection_bounds:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  * @start_pos: (out) (allow-none): location to store the starting position, or %NULL
  * @end_pos: (out) (allow-none): location to store the end position, or %NULL
  *
@@ -334,7 +334,7 @@ ctk_editable_get_position (GtkEditable *editable)
  * Returns: %TRUE if an area is selected, %FALSE otherwise
  */
 gboolean
-ctk_editable_get_selection_bounds (GtkEditable *editable,
+ctk_editable_get_selection_bounds (CtkEditable *editable,
 				   gint        *start_pos,
 				   gint        *end_pos)
 {
@@ -355,13 +355,13 @@ ctk_editable_get_selection_bounds (GtkEditable *editable,
 
 /**
  * ctk_editable_delete_selection:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  *
  * Deletes the currently selected text of the editable.
  * This call doesn’t do anything if there is no selected text.
  */
 void
-ctk_editable_delete_selection (GtkEditable *editable)
+ctk_editable_delete_selection (CtkEditable *editable)
 {
   gint start, end;
 
@@ -373,7 +373,7 @@ ctk_editable_delete_selection (GtkEditable *editable)
 
 /**
  * ctk_editable_select_region: (virtual set_selection_bounds)
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  * @start_pos: start of region
  * @end_pos: end of region
  *
@@ -386,7 +386,7 @@ ctk_editable_delete_selection (GtkEditable *editable)
  * Note that positions are specified in characters, not bytes.
  */
 void
-ctk_editable_select_region (GtkEditable *editable,
+ctk_editable_select_region (CtkEditable *editable,
 			    gint         start_pos,
 			    gint         end_pos)
 {
@@ -397,13 +397,13 @@ ctk_editable_select_region (GtkEditable *editable,
 
 /**
  * ctk_editable_cut_clipboard:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  *
  * Removes the contents of the currently selected content in the editable and
  * puts it on the clipboard.
  */
 void
-ctk_editable_cut_clipboard (GtkEditable *editable)
+ctk_editable_cut_clipboard (CtkEditable *editable)
 {
   g_return_if_fail (CTK_IS_EDITABLE (editable));
   
@@ -412,13 +412,13 @@ ctk_editable_cut_clipboard (GtkEditable *editable)
 
 /**
  * ctk_editable_copy_clipboard:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  *
  * Copies the contents of the currently selected content in the editable and
  * puts it on the clipboard.
  */
 void
-ctk_editable_copy_clipboard (GtkEditable *editable)
+ctk_editable_copy_clipboard (CtkEditable *editable)
 {
   g_return_if_fail (CTK_IS_EDITABLE (editable));
   
@@ -427,13 +427,13 @@ ctk_editable_copy_clipboard (GtkEditable *editable)
 
 /**
  * ctk_editable_paste_clipboard:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  *
  * Pastes the content of the clipboard to the current position of the
  * cursor in the editable.
  */
 void
-ctk_editable_paste_clipboard (GtkEditable *editable)
+ctk_editable_paste_clipboard (CtkEditable *editable)
 {
   g_return_if_fail (CTK_IS_EDITABLE (editable));
   
@@ -442,7 +442,7 @@ ctk_editable_paste_clipboard (GtkEditable *editable)
 
 /**
  * ctk_editable_set_editable:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  * @is_editable: %TRUE if the user is allowed to edit the text
  *   in the widget
  *
@@ -450,7 +450,7 @@ ctk_editable_paste_clipboard (GtkEditable *editable)
  * widget or not. 
  */
 void
-ctk_editable_set_editable (GtkEditable    *editable,
+ctk_editable_set_editable (CtkEditable    *editable,
 			   gboolean        is_editable)
 {
   g_return_if_fail (CTK_IS_EDITABLE (editable));
@@ -462,7 +462,7 @@ ctk_editable_set_editable (GtkEditable    *editable,
 
 /**
  * ctk_editable_get_editable:
- * @editable: a #GtkEditable
+ * @editable: a #CtkEditable
  *
  * Retrieves whether @editable is editable. See
  * ctk_editable_set_editable().
@@ -470,7 +470,7 @@ ctk_editable_set_editable (GtkEditable    *editable,
  * Returns: %TRUE if @editable is editable.
  */
 gboolean
-ctk_editable_get_editable (GtkEditable *editable)
+ctk_editable_get_editable (CtkEditable *editable)
 {
   gboolean value;
 

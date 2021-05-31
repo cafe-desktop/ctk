@@ -123,14 +123,14 @@ _ctk_quartz_create_image_from_surface (cairo_surface_t *surface)
 }
 
 NSSet *
-_ctk_quartz_target_list_to_pasteboard_types (GtkTargetList *target_list)
+_ctk_quartz_target_list_to_pasteboard_types (CtkTargetList *target_list)
 {
   NSMutableSet *set = [[NSMutableSet alloc] init];
   GList *list;
 
   for (list = target_list->list; list; list = list->next)
     {
-      GtkTargetPair *pair = list->data;
+      CtkTargetPair *pair = list->data;
       g_return_val_if_fail (pair->flags < 16, NULL);
       [set addObject:gdk_quartz_atom_to_pasteboard_type_libctk_only (pair->target)];
     }
@@ -139,7 +139,7 @@ _ctk_quartz_target_list_to_pasteboard_types (GtkTargetList *target_list)
 }
 
 NSSet *
-_ctk_quartz_target_entries_to_pasteboard_types (const GtkTargetEntry *targets,
+_ctk_quartz_target_entries_to_pasteboard_types (const CtkTargetEntry *targets,
 						guint                 n_targets)
 {
   NSMutableSet *set = [[NSMutableSet alloc] init];
@@ -172,14 +172,14 @@ _ctk_quartz_pasteboard_types_to_atom_list (NSArray *array)
   return result;
 }
 
-GtkSelectionData *
+CtkSelectionData *
 _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
 						GdkAtom       target,
 						GdkAtom       selection)
 {
-  GtkSelectionData *selection_data = NULL;
+  CtkSelectionData *selection_data = NULL;
 
-  selection_data = g_slice_new0 (GtkSelectionData);
+  selection_data = g_slice_new0 (CtkSelectionData);
   selection_data->selection = selection;
   selection_data->target = target;
   if (!selection_data->display)
@@ -277,7 +277,7 @@ _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
 
 void
 _ctk_quartz_set_selection_data_for_pasteboard (NSPasteboard     *pasteboard,
-					       GtkSelectionData *selection_data)
+					       CtkSelectionData *selection_data)
 {
   NSString *type;
   GdkDisplay *display;

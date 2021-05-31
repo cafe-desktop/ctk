@@ -24,23 +24,23 @@ $_switch_margin: if($_sizevariant=='default', 10px, 7px);
 
 * {
   padding: 0;
-  -GtkToolButton-icon-spacing: 4;
-  -GtkTextView-error-underline-color: $error_color;
+  -CtkToolButton-icon-spacing: 4;
+  -CtkTextView-error-underline-color: $error_color;
 
   // The size for scrollbars. The slider is 2px smaller, but we keep it
   // up so that the whole area is sensitive to button presses for the
   // slider. The stepper button is larger in both directions, the slider
   // only in the width
 
-  -GtkScrolledWindow-scrollbar-spacing: 0;
+  -CtkScrolledWindow-scrollbar-spacing: 0;
 
-  -GtkToolItemGroup-expander-size: 11;
+  -CtkToolItemGroup-expander-size: 11;
 
-  -GtkWidget-text-handle-width: 20;
-  -GtkWidget-text-handle-height: 24;
+  -CtkWidget-text-handle-width: 20;
+  -CtkWidget-text-handle-height: 24;
 
-  -GtkDialog-button-spacing: 4;
-  -GtkDialog-action-area-border: 0;
+  -CtkDialog-button-spacing: 4;
+  -CtkDialog-action-area-border: 0;
 
   // We use the outline properties to signal the focus properties
   // to the adwaita engine: using real CSS properties is faster,
@@ -844,7 +844,7 @@ button {
     // child, a label needs just lateral padding while an icon needs vertical
     // padding added too.
 
-    outline-offset: -3px; // needs to be set or it gets overriden by GtkRadioButton outline-offset
+    outline-offset: -3px; // needs to be set or it gets overriden by CtkRadioButton outline-offset
 
     > label {
       padding-left: 6px;  // label padding
@@ -866,7 +866,7 @@ button {
 
     &.image-button {
       // we want image buttons to have a 1:1 aspect ratio, so compensation
-      // of the padding added to the GtkImage is needed
+      // of the padding added to the CtkImage is needed
       padding-left: 2px;
       padding-right: 2px;
     }
@@ -1232,7 +1232,7 @@ button:visited {
 
 
 /*****************
- * GtkSpinButton *
+ * CtkSpinButton *
  *****************/
 spinbutton {
   &:not(.vertical) {
@@ -1479,7 +1479,7 @@ combobox {
  * Toolbars *
  ************/
 %toolbar {
-  -GtkWidget-window-dragging: true;
+  -CtkWidget-window-dragging: true;
   padding: 4px;
   background-color: $bg_color;
 }
@@ -1542,7 +1542,7 @@ searchbar > revealer > box,
 }
 
 searchbar > revealer > box {
-  // workaround: undo the GtkContainer:border-width and use CSS padding instead
+  // workaround: undo the CtkContainer:border-width and use CSS padding instead
   margin: -6px;
   padding: 6px;
 }
@@ -1731,7 +1731,7 @@ headerbar {
         min-height: 20px;
         padding: $_sel_menu_pad;
 
-        arrow { -GtkArrow-arrow-scaling: 1; }
+        arrow { -CtkArrow-arrow-scaling: 1; }
 
         .arrow {
           -ctk-icon-source: -ctk-icontheme('pan-down-symbolic');
@@ -1907,7 +1907,7 @@ window.devel {
  * Pathbars *
  ************/
 
-// GtkPathBar does not work with just .linked, so we must override that. But we
+// CtkPathBar does not work with just .linked, so we must override that. But we
 // can’t simply remove .linked from the widget as that might break other themes.
 // Note also we select on filechooser to avoid interfering with NautilusPathBar.
 filechooser .path-bar.linked > button {
@@ -1950,12 +1950,12 @@ $_treeview_borders_color: if($variant=='light',mix($borders_color, $base_color,8
 
 treeview.view {
   @at-root * {
-    -GtkTreeView-horizontal-separator: 4;
-    -GtkTreeView-grid-line-width: 1;
-    -GtkTreeView-grid-line-pattern: '';
-    -GtkTreeView-tree-line-width: 1;
-    -GtkTreeView-tree-line-pattern: '';
-    -GtkTreeView-expander-size: 16;
+    -CtkTreeView-horizontal-separator: 4;
+    -CtkTreeView-grid-line-width: 1;
+    -CtkTreeView-grid-line-pattern: '';
+    -CtkTreeView-tree-line-width: 1;
+    -CtkTreeView-tree-line-pattern: '';
+    -CtkTreeView-expander-size: 16;
    }
 
   border-left-color: mix($fg_color, $base_color, 50%); // this is actually the tree lines color,
@@ -2163,7 +2163,7 @@ treeview.view {
  *********/
 menubar,
 .menubar {
-  -GtkWidget-window-dragging: true;
+  -CtkWidget-window-dragging: true;
   padding: 0px;
   box-shadow: inset 0 -1px transparentize(black, 0.9);
 
@@ -2643,8 +2643,8 @@ scrollbar {
 
   // disable steppers
   @at-root * {
-    -GtkScrollbar-has-backward-stepper: false;
-    -GtkScrollbar-has-forward-stepper: false;
+    -CtkScrollbar-has-backward-stepper: false;
+    -CtkScrollbar-has-forward-stepper: false;
   }
 
   background-color: $scrollbar_bg_color;
@@ -3119,7 +3119,7 @@ treeview.view radio:selected { &:focus, & { @extend %radio; }} // This is a work
 
 
 /************
- * GtkScale *
+ * CtkScale *
  ************/
 %scale_trough {
   border: 1px solid $borders_color;
@@ -4105,7 +4105,7 @@ placessidebar {
   > viewport.frame { border-style: none; }
 
   row {
-    // Needs overriding of the GtkListBoxRow padding
+    // Needs overriding of the CtkListBoxRow padding
     min-height: 36px;
     padding: 0px;
 
@@ -4270,7 +4270,7 @@ paned {
 
 
 /**************
- * GtkInfoBar *
+ * CtkInfoBar *
  **************/
 infobar {
   border-style: none;
@@ -4529,7 +4529,7 @@ colorchooser .popover.osd { border-radius: 5px; }
     border-radius: 5px;
   }
 
-  button { // +/- buttons on GtkVolumeButton popup
+  button { // +/- buttons on CtkVolumeButton popup
     &:hover {
       @extend %undecorated_button;
       background-color: transparentize($fg_color,0.9);

@@ -3,7 +3,7 @@ accessibility information. Run it like this:
 
 ./accessibility-dump [OPTIONS] TESTFILE [TESTFILES...]
 
-where TESTFILE is a GtkBuilder .ui file. accessibility-dump creates
+where TESTFILE is a CtkBuilder .ui file. accessibility-dump creates
 a textual dump of the accessibility information for the created
 widget hierarchy and compares it to a preexisting .txt file.
 

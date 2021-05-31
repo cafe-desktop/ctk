@@ -24,21 +24,21 @@
 
 #include <gdk/gdkx.h>
 
-typedef GtkApplicationImplDBusClass GtkApplicationImplX11Class;
+typedef CtkApplicationImplDBusClass CtkApplicationImplX11Class;
 
 typedef struct
 {
-  GtkApplicationImplDBus dbus;
+  CtkApplicationImplDBus dbus;
 
-} GtkApplicationImplX11;
+} CtkApplicationImplX11;
 
-G_DEFINE_TYPE (GtkApplicationImplX11, ctk_application_impl_x11, CTK_TYPE_APPLICATION_IMPL_DBUS)
+G_DEFINE_TYPE (CtkApplicationImplX11, ctk_application_impl_x11, CTK_TYPE_APPLICATION_IMPL_DBUS)
 
 static void
-ctk_application_impl_x11_handle_window_realize (GtkApplicationImpl *impl,
-                                                GtkWindow          *window)
+ctk_application_impl_x11_handle_window_realize (CtkApplicationImpl *impl,
+                                                CtkWindow          *window)
 {
-  GtkApplicationImplDBus *dbus = (GtkApplicationImplDBus *) impl;
+  CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
   GdkWindow *gdk_window;
   gchar *window_path;
 
@@ -60,8 +60,8 @@ ctk_application_impl_x11_handle_window_realize (GtkApplicationImpl *impl,
 }
 
 static GVariant *
-ctk_application_impl_x11_get_window_system_id (GtkApplicationImplDBus *dbus,
-                                               GtkWindow              *window)
+ctk_application_impl_x11_get_window_system_id (CtkApplicationImplDBus *dbus,
+                                               CtkWindow              *window)
 {
   GdkWindow *gdk_window;
 
@@ -74,12 +74,12 @@ ctk_application_impl_x11_get_window_system_id (GtkApplicationImplDBus *dbus,
 }
 
 static void
-ctk_application_impl_x11_init (GtkApplicationImplX11 *x11)
+ctk_application_impl_x11_init (CtkApplicationImplX11 *x11)
 {
 }
 
 static void
-ctk_application_impl_x11_before_emit (GtkApplicationImpl *impl,
+ctk_application_impl_x11_before_emit (CtkApplicationImpl *impl,
                                       GVariant           *platform_data)
 {
   const char *startup_notification_id = NULL;
@@ -90,10 +90,10 @@ ctk_application_impl_x11_before_emit (GtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_x11_class_init (GtkApplicationImplX11Class *class)
+ctk_application_impl_x11_class_init (CtkApplicationImplX11Class *class)
 {
-  GtkApplicationImplDBusClass *dbus_class = CTK_APPLICATION_IMPL_DBUS_CLASS (class);
-  GtkApplicationImplClass *impl_class = CTK_APPLICATION_IMPL_CLASS (class);
+  CtkApplicationImplDBusClass *dbus_class = CTK_APPLICATION_IMPL_DBUS_CLASS (class);
+  CtkApplicationImplClass *impl_class = CTK_APPLICATION_IMPL_CLASS (class);
 
   impl_class->handle_window_realize = ctk_application_impl_x11_handle_window_realize;
   dbus_class->get_window_system_id = ctk_application_impl_x11_get_window_system_id;

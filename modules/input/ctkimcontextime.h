@@ -24,19 +24,19 @@
 extern GType ctk_type_im_context_ime;
 
 #define CTK_TYPE_IM_CONTEXT_IME            ctk_type_im_context_ime
-#define CTK_IM_CONTEXT_IME(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_IME, GtkIMContextIME))
-#define CTK_IM_CONTEXT_IME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_IME, GtkIMContextIMEClass))
+#define CTK_IM_CONTEXT_IME(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_IME, CtkIMContextIME))
+#define CTK_IM_CONTEXT_IME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_IME, CtkIMContextIMEClass))
 #define CTK_IS_IM_CONTEXT_IME(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT_IME))
 #define CTK_IS_IM_CONTEXT_IME_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT_IME))
-#define CTK_IM_CONTEXT_IME_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_IME, GtkIMContextIMEClass))
+#define CTK_IM_CONTEXT_IME_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_IME, CtkIMContextIMEClass))
 
-typedef struct _GtkIMContextIME GtkIMContextIME;
-typedef struct _GtkIMContextIMEPrivate GtkIMContextIMEPrivate;
-typedef struct _GtkIMContextIMEClass GtkIMContextIMEClass;
+typedef struct _CtkIMContextIME CtkIMContextIME;
+typedef struct _CtkIMContextIMEPrivate CtkIMContextIMEPrivate;
+typedef struct _CtkIMContextIMEClass CtkIMContextIMEClass;
 
-struct _GtkIMContextIME
+struct _CtkIMContextIME
 {
-  GtkIMContext object;
+  CtkIMContext object;
 
   GdkWindow *client_window;
   GdkWindow *toplevel;
@@ -47,14 +47,14 @@ struct _GtkIMContextIME
   GdkRectangle cursor_location;
   gchar *commit_string;
 
-  GtkIMContextIMEPrivate *priv;
+  CtkIMContextIMEPrivate *priv;
 };
 
-struct _GtkIMContextIMEClass
+struct _CtkIMContextIMEClass
 {
-  GtkIMContextClass parent_class;
+  CtkIMContextClass parent_class;
 };
 
 
 void          ctk_im_context_ime_register_type (GTypeModule * type_module);
-GtkIMContext *ctk_im_context_ime_new           (void);
+CtkIMContext *ctk_im_context_ime_new           (void);

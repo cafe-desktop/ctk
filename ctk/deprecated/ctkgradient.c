@@ -29,27 +29,27 @@
 /**
  * SECTION:ctkgradient
  * @Short_description: Gradients
- * @Title: GtkGradient
+ * @Title: CtkGradient
  *
- * GtkGradient is a boxed type that represents a gradient.
+ * CtkGradient is a boxed type that represents a gradient.
  * It is the result of parsing a
  * [gradient expression][ctkcssprovider-gradients].
- * To obtain the gradient represented by a GtkGradient, it has to
+ * To obtain the gradient represented by a CtkGradient, it has to
  * be resolved with ctk_gradient_resolve(), which replaces all
  * symbolic color references by the colors they refer to (in a given
  * context) and constructs a #cairo_pattern_t value.
  *
- * It is not normally necessary to deal directly with #GtkGradients,
- * since they are mostly used behind the scenes by #GtkStyleContext and
- * #GtkCssProvider.
+ * It is not normally necessary to deal directly with #CtkGradients,
+ * since they are mostly used behind the scenes by #CtkStyleContext and
+ * #CtkCssProvider.
  *
- * #GtkGradient is deprecated. It was used internally by GTK’s CSS engine
+ * #CtkGradient is deprecated. It was used internally by GTK’s CSS engine
  * to represent gradients. As its handling is not conforming to modern
  * web standards, it is not used anymore. If you want to use gradients in
  * your own code, please use Cairo directly.
  */
 
-G_DEFINE_BOXED_TYPE (GtkGradient, ctk_gradient,
+G_DEFINE_BOXED_TYPE (CtkGradient, ctk_gradient,
                      ctk_gradient_ref, ctk_gradient_unref)
 
 typedef struct ColorStop ColorStop;
@@ -57,10 +57,10 @@ typedef struct ColorStop ColorStop;
 struct ColorStop
 {
   gdouble offset;
-  GtkSymbolicColor *color;
+  CtkSymbolicColor *color;
 };
 
-struct _GtkGradient
+struct _CtkGradient
 {
   gdouble x0;
   gdouble y0;
@@ -84,21 +84,21 @@ struct _GtkGradient
  * Creates a new linear gradient along the line defined by (x0, y0) and (x1, y1). Before using the gradient
  * a number of stop colors must be added through ctk_gradient_add_color_stop().
  *
- * Returns: A newly created #GtkGradient
+ * Returns: A newly created #CtkGradient
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkGradient is deprecated.
+ * Deprecated: 3.8: #CtkGradient is deprecated.
  **/
-GtkGradient *
+CtkGradient *
 ctk_gradient_new_linear (gdouble x0,
                          gdouble y0,
                          gdouble x1,
                          gdouble y1)
 {
-  GtkGradient *gradient;
+  CtkGradient *gradient;
 
-  gradient = g_slice_new (GtkGradient);
+  gradient = g_slice_new (CtkGradient);
   gradient->stops = g_array_new (FALSE, FALSE, sizeof (ColorStop));
 
   gradient->x0 = x0;
@@ -126,13 +126,13 @@ ctk_gradient_new_linear (gdouble x0,
  * (x1, y1, radius1). Before using the gradient a number of stop colors must be added
  * through ctk_gradient_add_color_stop().
  *
- * Returns: A newly created #GtkGradient
+ * Returns: A newly created #CtkGradient
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkGradient is deprecated.
+ * Deprecated: 3.8: #CtkGradient is deprecated.
  **/
-GtkGradient *
+CtkGradient *
 ctk_gradient_new_radial (gdouble x0,
 			 gdouble y0,
 			 gdouble radius0,
@@ -140,9 +140,9 @@ ctk_gradient_new_radial (gdouble x0,
 			 gdouble y1,
 			 gdouble radius1)
 {
-  GtkGradient *gradient;
+  CtkGradient *gradient;
 
-  gradient = g_slice_new (GtkGradient);
+  gradient = g_slice_new (CtkGradient);
   gradient->stops = g_array_new (FALSE, FALSE, sizeof (ColorStop));
 
   gradient->x0 = x0;
@@ -159,7 +159,7 @@ ctk_gradient_new_radial (gdouble x0,
 
 /**
  * ctk_gradient_add_color_stop:
- * @gradient: a #GtkGradient
+ * @gradient: a #CtkGradient
  * @offset: offset for the color stop
  * @color: color to use
  *
@@ -167,12 +167,12 @@ ctk_gradient_new_radial (gdouble x0,
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkGradient is deprecated.
+ * Deprecated: 3.8: #CtkGradient is deprecated.
  **/
 void
-ctk_gradient_add_color_stop (GtkGradient      *gradient,
+ctk_gradient_add_color_stop (CtkGradient      *gradient,
                              gdouble           offset,
-                             GtkSymbolicColor *color)
+                             CtkSymbolicColor *color)
 {
   ColorStop stop;
 
@@ -186,7 +186,7 @@ ctk_gradient_add_color_stop (GtkGradient      *gradient,
 
 /**
  * ctk_gradient_ref:
- * @gradient: a #GtkGradient
+ * @gradient: a #CtkGradient
  *
  * Increases the reference count of @gradient.
  *
@@ -194,10 +194,10 @@ ctk_gradient_add_color_stop (GtkGradient      *gradient,
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkGradient is deprecated.
+ * Deprecated: 3.8: #CtkGradient is deprecated.
  **/
-GtkGradient *
-ctk_gradient_ref (GtkGradient *gradient)
+CtkGradient *
+ctk_gradient_ref (CtkGradient *gradient)
 {
   g_return_val_if_fail (gradient != NULL, NULL);
 
@@ -208,17 +208,17 @@ ctk_gradient_ref (GtkGradient *gradient)
 
 /**
  * ctk_gradient_unref:
- * @gradient: a #GtkGradient
+ * @gradient: a #CtkGradient
  *
  * Decreases the reference count of @gradient, freeing its memory
  * if the reference count reaches 0.
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkGradient is deprecated.
+ * Deprecated: 3.8: #CtkGradient is deprecated.
  **/
 void
-ctk_gradient_unref (GtkGradient *gradient)
+ctk_gradient_unref (CtkGradient *gradient)
 {
   g_return_if_fail (gradient != NULL);
 
@@ -237,14 +237,14 @@ ctk_gradient_unref (GtkGradient *gradient)
         }
 
       g_array_free (gradient->stops, TRUE);
-      g_slice_free (GtkGradient, gradient);
+      g_slice_free (CtkGradient, gradient);
     }
 }
 
 /**
  * ctk_gradient_resolve:
- * @gradient: a #GtkGradient
- * @props: #GtkStyleProperties to use when resolving named colors
+ * @gradient: a #CtkGradient
+ * @props: #CtkStyleProperties to use when resolving named colors
  * @resolved_gradient: (out): return location for the resolved pattern
  *
  * If @gradient is resolvable, @resolved_gradient will be filled in
@@ -257,11 +257,11 @@ ctk_gradient_unref (GtkGradient *gradient)
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkGradient is deprecated.
+ * Deprecated: 3.8: #CtkGradient is deprecated.
  **/
 gboolean
-ctk_gradient_resolve (GtkGradient         *gradient,
-                      GtkStyleProperties  *props,
+ctk_gradient_resolve (CtkGradient         *gradient,
+                      CtkStyleProperties  *props,
                       cairo_pattern_t    **resolved_gradient)
 {
   cairo_pattern_t *pattern;
@@ -303,10 +303,10 @@ ctk_gradient_resolve (GtkGradient         *gradient,
 }
 
 cairo_pattern_t *
-_ctk_gradient_resolve_full (GtkGradient             *gradient,
-                            GtkStyleProviderPrivate *provider,
-                            GtkCssStyle             *style,
-                            GtkCssStyle             *parent_style)
+_ctk_gradient_resolve_full (CtkGradient             *gradient,
+                            CtkStyleProviderPrivate *provider,
+                            CtkCssStyle             *style,
+                            CtkCssStyle             *parent_style)
 {
   cairo_pattern_t *pattern;
   guint i;
@@ -328,7 +328,7 @@ _ctk_gradient_resolve_full (GtkGradient             *gradient,
   for (i = 0; i < gradient->stops->len; i++)
     {
       ColorStop *stop;
-      GtkCssValue *val;
+      CtkCssValue *val;
       GdkRGBA rgba;
 
       stop = &g_array_index (gradient->stops, ColorStop, i);
@@ -387,10 +387,10 @@ append_number (GString    *str,
  *
  * Returns: A string representation for @gradient
  *
- * Deprecated: 3.8: #GtkGradient is deprecated.
+ * Deprecated: 3.8: #CtkGradient is deprecated.
  **/
 char *
-ctk_gradient_to_string (GtkGradient *gradient)
+ctk_gradient_to_string (CtkGradient *gradient)
 {
   GString *str;
   guint i;
@@ -458,14 +458,14 @@ ctk_gradient_to_string (GtkGradient *gradient)
   return g_string_free (str, FALSE);
 }
 
-static GtkGradient *
-ctk_gradient_fade (GtkGradient *gradient,
+static CtkGradient *
+ctk_gradient_fade (CtkGradient *gradient,
                    double       opacity)
 {
-  GtkGradient *faded;
+  CtkGradient *faded;
   guint i;
 
-  faded = g_slice_new (GtkGradient);
+  faded = g_slice_new (CtkGradient);
   faded->stops = g_array_new (FALSE, FALSE, sizeof (ColorStop));
 
   faded->x0 = gradient->x0;
@@ -479,7 +479,7 @@ ctk_gradient_fade (GtkGradient *gradient,
 
   for (i = 0; i < gradient->stops->len; i++)
     {
-      GtkSymbolicColor *color;
+      CtkSymbolicColor *color;
       ColorStop *stop;
 
       stop = &g_array_index (gradient->stops, ColorStop, i);
@@ -491,13 +491,13 @@ ctk_gradient_fade (GtkGradient *gradient,
   return faded;
 }
 
-GtkGradient *
-_ctk_gradient_transition (GtkGradient *start,
-                          GtkGradient *end,
+CtkGradient *
+_ctk_gradient_transition (CtkGradient *start,
+                          CtkGradient *end,
                           guint        property_id,
                           double       progress)
 {
-  GtkGradient *gradient;
+  CtkGradient *gradient;
   guint i;
 
   g_return_val_if_fail (start != NULL, NULL);
@@ -512,7 +512,7 @@ _ctk_gradient_transition (GtkGradient *start,
   if ((start->radius0 == 0 && start->radius1 == 0) != (end->radius0 == 0 && end->radius1 == 0))
     return NULL;
 
-  gradient = g_slice_new (GtkGradient);
+  gradient = g_slice_new (CtkGradient);
   gradient->stops = g_array_new (FALSE, FALSE, sizeof (ColorStop));
 
   gradient->x0 = (1 - progress) * start->x0 + progress * end->x0;
@@ -527,7 +527,7 @@ _ctk_gradient_transition (GtkGradient *start,
   for (i = 0; i < start->stops->len; i++)
     {
       ColorStop *start_stop, *end_stop;
-      GtkSymbolicColor *color;
+      CtkSymbolicColor *color;
       double offset;
 
       start_stop = &g_array_index (start->stops, ColorStop, i);

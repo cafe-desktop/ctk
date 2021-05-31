@@ -53,35 +53,35 @@
 #include "broadway/gdkbroadway.h"
 #endif
 
-struct _GtkInspectorGeneralPrivate
+struct _CtkInspectorGeneralPrivate
 {
-  GtkWidget *version_box;
-  GtkWidget *env_box;
-  GtkWidget *display_box;
-  GtkWidget *gl_box;
-  GtkWidget *device_box;
-  GtkWidget *ctk_version;
-  GtkWidget *gdk_backend;
-  GtkWidget *gl_version;
-  GtkWidget *gl_vendor;
-  GtkWidget *prefix;
-  GtkWidget *xdg_data_home;
-  GtkWidget *xdg_data_dirs;
-  GtkWidget *ctk_path;
-  GtkWidget *ctk_exe_prefix;
-  GtkWidget *ctk_data_prefix;
-  GtkWidget *gsettings_schema_dir;
-  GtkWidget *display_name;
-  GtkWidget *display_rgba;
-  GtkWidget *display_composited;
-  GtkSizeGroup *labels;
-  GtkAdjustment *focus_adjustment;
+  CtkWidget *version_box;
+  CtkWidget *env_box;
+  CtkWidget *display_box;
+  CtkWidget *gl_box;
+  CtkWidget *device_box;
+  CtkWidget *ctk_version;
+  CtkWidget *gdk_backend;
+  CtkWidget *gl_version;
+  CtkWidget *gl_vendor;
+  CtkWidget *prefix;
+  CtkWidget *xdg_data_home;
+  CtkWidget *xdg_data_dirs;
+  CtkWidget *ctk_path;
+  CtkWidget *ctk_exe_prefix;
+  CtkWidget *ctk_data_prefix;
+  CtkWidget *gsettings_schema_dir;
+  CtkWidget *display_name;
+  CtkWidget *display_rgba;
+  CtkWidget *display_composited;
+  CtkSizeGroup *labels;
+  CtkAdjustment *focus_adjustment;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorGeneral, ctk_inspector_general, CTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorGeneral, ctk_inspector_general, CTK_TYPE_SCROLLED_WINDOW)
 
 static void
-init_version (GtkInspectorGeneral *gen)
+init_version (CtkInspectorGeneral *gen)
 {
   const gchar *backend;
   GdkDisplay *display;
@@ -120,13 +120,13 @@ init_version (GtkInspectorGeneral *gen)
 }
 
 static G_GNUC_UNUSED void
-add_check_row (GtkInspectorGeneral *gen,
-               GtkListBox          *list,
+add_check_row (CtkInspectorGeneral *gen,
+               CtkListBox          *list,
                const gchar         *name,
                gboolean             value,
                gint                 indent)
 {
-  GtkWidget *row, *box, *label, *check;
+  CtkWidget *row, *box, *label, *check;
 
   box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 40);
   g_object_set (box,
@@ -157,15 +157,15 @@ add_check_row (GtkInspectorGeneral *gen,
 }
 
 static void
-add_label_row (GtkInspectorGeneral *gen,
-               GtkListBox          *list,
+add_label_row (CtkInspectorGeneral *gen,
+               CtkListBox          *list,
                const char          *name,
                const char          *value,
                gint                 indent)
 {
-  GtkWidget *box;
-  GtkWidget *label;
-  GtkWidget *row;
+  CtkWidget *box;
+  CtkWidget *label;
+  CtkWidget *row;
 
   box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 40);
   g_object_set (box,
@@ -198,7 +198,7 @@ add_label_row (GtkInspectorGeneral *gen,
 
 #ifdef GDK_WINDOWING_X11
 static void
-append_glx_extension_row (GtkInspectorGeneral *gen,
+append_glx_extension_row (CtkInspectorGeneral *gen,
                           Display             *dpy,
                           const gchar         *ext)
 {
@@ -208,7 +208,7 @@ append_glx_extension_row (GtkInspectorGeneral *gen,
 
 #ifdef GDK_WINDOWING_WAYLAND
 static void
-append_egl_extension_row (GtkInspectorGeneral *gen,
+append_egl_extension_row (CtkInspectorGeneral *gen,
                           EGLDisplay          dpy,
                           const gchar         *ext)
 {
@@ -252,7 +252,7 @@ wayland_get_display (struct wl_display *wl_display)
 
 
 static void
-init_gl (GtkInspectorGeneral *gen)
+init_gl (CtkInspectorGeneral *gen)
 {
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
@@ -312,7 +312,7 @@ init_gl (GtkInspectorGeneral *gen)
 }
 
 static void
-set_monospace_font (GtkWidget *w)
+set_monospace_font (CtkWidget *w)
 {
   PangoAttrList *attrs;
 
@@ -324,7 +324,7 @@ set_monospace_font (GtkWidget *w)
 }
 
 static void
-set_path_label (GtkWidget   *w,
+set_path_label (CtkWidget   *w,
                 const gchar *var)
 {
   const gchar *v;
@@ -337,14 +337,14 @@ set_path_label (GtkWidget   *w,
     }
   else
     {
-       GtkWidget *r;
+       CtkWidget *r;
        r = ctk_widget_get_ancestor (w, CTK_TYPE_LIST_BOX_ROW);
        ctk_widget_hide (r);
     }
 }
 
 static void
-init_env (GtkInspectorGeneral *gen)
+init_env (CtkInspectorGeneral *gen)
 {
   set_monospace_font (gen->priv->prefix);
   ctk_label_set_text (CTK_LABEL (gen->priv->prefix), _ctk_get_data_prefix ());
@@ -372,15 +372,15 @@ translate_subpixel_layout (GdkSubpixelLayout subpixel)
 }
 
 static void
-populate_display (GdkScreen *screen, GtkInspectorGeneral *gen)
+populate_display (GdkScreen *screen, CtkInspectorGeneral *gen)
 {
   gchar *name;
   gint i;
   GList *children, *l;
-  GtkWidget *child;
+  CtkWidget *child;
   GdkDisplay *display;
   int n_monitors;
-  GtkListBox *list;
+  CtkListBox *list;
 
   list = CTK_LIST_BOX (gen->priv->display_box);
   children = ctk_container_get_children (CTK_CONTAINER (list));
@@ -466,7 +466,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-init_display (GtkInspectorGeneral *gen)
+init_display (CtkInspectorGeneral *gen)
 {
   GdkScreen *screen;
 
@@ -479,10 +479,10 @@ init_display (GtkInspectorGeneral *gen)
   populate_display (screen, gen);
 }
 
-static void populate_seats (GtkInspectorGeneral *gen);
+static void populate_seats (CtkInspectorGeneral *gen);
 
 static void
-add_device (GtkInspectorGeneral *gen,
+add_device (CtkInspectorGeneral *gen,
             GdkDevice           *device)
 {
   const gchar *name, *value;
@@ -579,7 +579,7 @@ get_seat_capabilities (GdkSeat *seat)
 }
 
 static void
-add_seat (GtkInspectorGeneral *gen,
+add_seat (CtkInspectorGeneral *gen,
           GdkSeat             *seat,
           int                  num)
 {
@@ -610,7 +610,7 @@ add_seat (GtkInspectorGeneral *gen,
 }
 
 static void
-populate_seats (GtkInspectorGeneral *gen)
+populate_seats (CtkInspectorGeneral *gen)
 {
   GdkDisplay *display = gdk_display_get_default ();
   GList *list, *l;
@@ -630,7 +630,7 @@ populate_seats (GtkInspectorGeneral *gen)
 }
 
 static void
-init_device (GtkInspectorGeneral *gen)
+init_device (CtkInspectorGeneral *gen)
 {
   GdkDisplay *display = gdk_display_get_default ();
 
@@ -641,7 +641,7 @@ init_device (GtkInspectorGeneral *gen)
 }
 
 static void
-ctk_inspector_general_init (GtkInspectorGeneral *gen)
+ctk_inspector_general_init (CtkInspectorGeneral *gen)
 {
   gen->priv = ctk_inspector_general_get_instance_private (gen);
   ctk_widget_init_template (CTK_WIDGET (gen));
@@ -653,9 +653,9 @@ ctk_inspector_general_init (GtkInspectorGeneral *gen)
 }
 
 static gboolean
-keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorGeneral *gen)
+keynav_failed (CtkWidget *widget, CtkDirectionType direction, CtkInspectorGeneral *gen)
 {
-  GtkWidget *next;
+  CtkWidget *next;
   gdouble value, lower, upper, page;
 
   if (direction == CTK_DIR_DOWN && widget == gen->priv->version_box)
@@ -705,7 +705,7 @@ keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorGenera
 static void
 ctk_inspector_general_constructed (GObject *object)
 {
-  GtkInspectorGeneral *gen = CTK_INSPECTOR_GENERAL (object);
+  CtkInspectorGeneral *gen = CTK_INSPECTOR_GENERAL (object);
 
   G_OBJECT_CLASS (ctk_inspector_general_parent_class)->constructed (object);
 
@@ -721,34 +721,34 @@ ctk_inspector_general_constructed (GObject *object)
 }
 
 static void
-ctk_inspector_general_class_init (GtkInspectorGeneralClass *klass)
+ctk_inspector_general_class_init (CtkInspectorGeneralClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->constructed = ctk_inspector_general_constructed;
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/general.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, version_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, env_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, display_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, gl_box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, ctk_version);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, gdk_backend);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, gl_version);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, gl_vendor);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, prefix);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, xdg_data_home);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, xdg_data_dirs);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, ctk_path);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, ctk_exe_prefix);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, ctk_data_prefix);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, gsettings_schema_dir);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, labels);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, display_name);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, display_composited);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, display_rgba);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorGeneral, device_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, version_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, env_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, display_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gl_box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, ctk_version);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gdk_backend);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gl_version);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gl_vendor);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, prefix);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, xdg_data_home);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, xdg_data_dirs);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, ctk_path);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, ctk_exe_prefix);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, ctk_data_prefix);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gsettings_schema_dir);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, labels);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, display_name);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, display_composited);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, display_rgba);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, device_box);
 }
 
 // vim: set et sw=2 ts=2:

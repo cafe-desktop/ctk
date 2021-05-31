@@ -24,20 +24,20 @@
 
 G_BEGIN_DECLS
 
-#define CTK_CLIPBOARD_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CLIPBOARD, GtkClipboardClass))
+#define CTK_CLIPBOARD_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CLIPBOARD, CtkClipboardClass))
 #define CTK_IS_CLIPBOARD_CLASS(klass)	        (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CLIPBOARD))
-#define CTK_CLIPBOARD_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CLIPBOARD, GtkClipboardClass))
+#define CTK_CLIPBOARD_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CLIPBOARD, CtkClipboardClass))
 
-typedef struct _GtkClipboardClass GtkClipboardClass;
+typedef struct _CtkClipboardClass CtkClipboardClass;
 
-struct _GtkClipboard 
+struct _CtkClipboard 
 {
   GObject parent_instance;
 
   GdkAtom selection;
 
-  GtkClipboardGetFunc get_func;
-  GtkClipboardClearFunc clear_func;
+  CtkClipboardGetFunc get_func;
+  CtkClipboardClearFunc clear_func;
   gpointer user_data;
   gboolean have_owner;
 
@@ -57,30 +57,30 @@ struct _GtkClipboard
   GdkAtom   *storable_targets;
 };
 
-struct _GtkClipboardClass
+struct _CtkClipboardClass
 {
   GObjectClass parent_class;
 
   /* vfuncs */
-  gboolean      (* set_contents)                (GtkClipboard                   *clipboard,
-                                                 const GtkTargetEntry           *targets,
+  gboolean      (* set_contents)                (CtkClipboard                   *clipboard,
+                                                 const CtkTargetEntry           *targets,
                                                  guint                           n_targets,
-                                                 GtkClipboardGetFunc             get_func,
-                                                 GtkClipboardClearFunc           clear_func,
+                                                 CtkClipboardGetFunc             get_func,
+                                                 CtkClipboardClearFunc           clear_func,
                                                  gpointer                        user_data,
                                                  gboolean                        have_owner);
-  void          (* clear)                       (GtkClipboard                   *clipboard);
-  void          (* request_contents)            (GtkClipboard                   *clipboard,
+  void          (* clear)                       (CtkClipboard                   *clipboard);
+  void          (* request_contents)            (CtkClipboard                   *clipboard,
                                                  GdkAtom                         target,
-                                                 GtkClipboardReceivedFunc        callback,
+                                                 CtkClipboardReceivedFunc        callback,
                                                  gpointer                        user_data);
-  void          (* set_can_store)               (GtkClipboard                   *clipboard,
-                                                 const GtkTargetEntry           *targets,
+  void          (* set_can_store)               (CtkClipboard                   *clipboard,
+                                                 const CtkTargetEntry           *targets,
                                                  gint                            n_targets);
-  void          (* store)                       (GtkClipboard                   *clipboard);
+  void          (* store)                       (CtkClipboard                   *clipboard);
 
   /* signals */
-  void          (* owner_change)                (GtkClipboard                   *clipboard,
+  void          (* owner_change)                (CtkClipboard                   *clipboard,
                                                  GdkEventOwnerChange            *event);
 };
 void     _ctk_clipboard_handle_event    (GdkEventOwnerChange *event);

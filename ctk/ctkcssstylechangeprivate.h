@@ -22,34 +22,34 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkCssStyleChange GtkCssStyleChange;
+typedef struct _CtkCssStyleChange CtkCssStyleChange;
 
-struct _GtkCssStyleChange {
-  GtkCssStyle   *old_style;
-  GtkCssStyle   *new_style;
+struct _CtkCssStyleChange {
+  CtkCssStyle   *old_style;
+  CtkCssStyle   *new_style;
 
   guint          n_compared;
 
-  GtkCssAffects  affects;
-  GtkBitmask    *changes;
+  CtkCssAffects  affects;
+  CtkBitmask    *changes;
 };
 
-void            ctk_css_style_change_init               (GtkCssStyleChange      *change,
-                                                         GtkCssStyle            *old_style,
-                                                         GtkCssStyle            *new_style);
-void            ctk_css_style_change_finish             (GtkCssStyleChange      *change);
+void            ctk_css_style_change_init               (CtkCssStyleChange      *change,
+                                                         CtkCssStyle            *old_style,
+                                                         CtkCssStyle            *new_style);
+void            ctk_css_style_change_finish             (CtkCssStyleChange      *change);
 
-GtkCssStyle *   ctk_css_style_change_get_old_style      (GtkCssStyleChange      *change);
-GtkCssStyle *   ctk_css_style_change_get_new_style      (GtkCssStyleChange      *change);
+CtkCssStyle *   ctk_css_style_change_get_old_style      (CtkCssStyleChange      *change);
+CtkCssStyle *   ctk_css_style_change_get_new_style      (CtkCssStyleChange      *change);
 
-gboolean        ctk_css_style_change_has_change         (GtkCssStyleChange      *change);
-gboolean        ctk_css_style_change_affects            (GtkCssStyleChange      *change,
-                                                         GtkCssAffects           affects);
-gboolean        ctk_css_style_change_changes_property   (GtkCssStyleChange      *change,
+gboolean        ctk_css_style_change_has_change         (CtkCssStyleChange      *change);
+gboolean        ctk_css_style_change_affects            (CtkCssStyleChange      *change,
+                                                         CtkCssAffects           affects);
+gboolean        ctk_css_style_change_changes_property   (CtkCssStyleChange      *change,
                                                          guint                   id);
-void            ctk_css_style_change_print              (GtkCssStyleChange      *change, GString *string);
+void            ctk_css_style_change_print              (CtkCssStyleChange      *change, GString *string);
 
-char *          ctk_css_style_change_to_string          (GtkCssStyleChange      *change);
+char *          ctk_css_style_change_to_string          (CtkCssStyleChange      *change);
 G_END_DECLS
 
 #endif /* __CTK_CSS_STYLE_CHANGE_PRIVATE_H__ */

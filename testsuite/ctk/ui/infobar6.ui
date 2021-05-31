@@ -1,6 +1,6 @@
 <!-- test all valid infobar markup -->
 <interface>
-  <object class="GtkInfoBar">
+  <object class="CtkInfoBar">
     <action-widgets>
       <action-widget response="ok">xyzzy</action-widget>
     </action-widgets>

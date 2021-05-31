@@ -35,22 +35,22 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkvbox
  * @Short_description: A vertical container box
- * @Title: GtkVBox
- * @See_also: #GtkHBox
+ * @Title: CtkVBox
+ * @See_also: #CtkHBox
  *
- * A #GtkVBox is a container that organizes child widgets into a single column.
+ * A #CtkVBox is a container that organizes child widgets into a single column.
  *
- * Use the #GtkBox packing interface to determine the arrangement,
- * spacing, height, and alignment of #GtkVBox children.
+ * Use the #CtkBox packing interface to determine the arrangement,
+ * spacing, height, and alignment of #CtkVBox children.
  *
  * All children are allocated the same width.
  *
- * GtkVBox has been deprecated. You can use #GtkBox with a #GtkOrientable:orientation
+ * CtkVBox has been deprecated. You can use #CtkBox with a #CtkOrientable:orientation
  * set to %CTK_ORIENTATION_VERTICAL instead when calling ctk_box_new(),
  * which is a very quick and easy change.
  *
- * If you have derived your own classes from GtkVBox, you can change the
- * inheritance to derive directly from #GtkBox, and set the #GtkOrientable:orientation
+ * If you have derived your own classes from CtkVBox, you can change the
+ * inheritance to derive directly from #CtkBox, and set the #CtkOrientable:orientation
  * property to %CTK_ORIENTATION_VERTICAL in your instance init function,
  * with a call like:
  *
@@ -61,19 +61,19 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  *
  * If you have a grid-like layout composed of nested boxes, and you don’t
  * need first-child or last-child styling, the recommendation is to switch
- * to #GtkGrid. For more information about migrating to #GtkGrid, see
- * [Migrating from other containers to GtkGrid][ctk-migrating-GtkGrid].
+ * to #CtkGrid. For more information about migrating to #CtkGrid, see
+ * [Migrating from other containers to CtkGrid][ctk-migrating-CtkGrid].
  */
 
-G_DEFINE_TYPE (GtkVBox, ctk_vbox, CTK_TYPE_BOX)
+G_DEFINE_TYPE (CtkVBox, ctk_vbox, CTK_TYPE_BOX)
 
 static void
-ctk_vbox_class_init (GtkVBoxClass *class)
+ctk_vbox_class_init (CtkVBoxClass *class)
 {
 }
 
 static void
-ctk_vbox_init (GtkVBox *vbox)
+ctk_vbox_init (CtkVBox *vbox)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (vbox),
                                   CTK_ORIENTATION_VERTICAL);
@@ -86,16 +86,16 @@ ctk_vbox_init (GtkVBox *vbox)
  * @homogeneous: %TRUE if all children are to be given equal space allotments.
  * @spacing: the number of pixels to place by default between children.
  *
- * Creates a new #GtkVBox.
+ * Creates a new #CtkVBox.
  *
- * Returns: a new #GtkVBox.
+ * Returns: a new #CtkVBox.
  *
  * Deprecated: 3.2: You can use ctk_box_new() with %CTK_ORIENTATION_VERTICAL instead,
  *   which is a quick and easy change. But the recommendation is to switch to
- *   #GtkGrid, since #GtkBox is going to go away eventually.
- *   See [Migrating from other containers to GtkGrid][ctk-migrating-GtkGrid].
+ *   #CtkGrid, since #CtkBox is going to go away eventually.
+ *   See [Migrating from other containers to CtkGrid][ctk-migrating-CtkGrid].
  */
-GtkWidget *
+CtkWidget *
 ctk_vbox_new (gboolean homogeneous,
 	      gint     spacing)
 {

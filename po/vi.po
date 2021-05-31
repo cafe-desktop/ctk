@@ -1,6 +1,6 @@
 # Vietnamese translation for GTK+.
 # Copyright © 2015 GNOME i18n Project for Vietnamese.
-# This file is distributed under the same license as the Gtk+ package.
+# This file is distributed under the same license as the Ctk+ package.
 # Hoang Ngoc Tu <hntu@gmx.de>, 2000-2002.
 # Joern v. Kattchee <kattchee@cs.tu-berlin.de>, 2000-2002.
 # Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002-2004,2007-2009,2011-2013.
@@ -9,7 +9,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Gtk+ master\n"
+"Project-Id-Version: Ctk+ master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-27 22:25+0000\n"
 "PO-Revision-Date: 2015-09-28 15:48+0700\n"
@@ -1732,7 +1732,7 @@ msgid ""
 "  simplify    Simplify the file\n"
 "  enumerate   List all named objects\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Cách dùng:\n"
 "  ctk-builder-tool [LỆNH] TẬP_TIN\n"
@@ -1742,7 +1742,7 @@ msgstr ""
 "  simplify    Rút gọn tập tin\n"
 "  enumerate   Liệt kê tất cả các đối tượng có tên\n"
 "\n"
-"Thực hiện các công việc khác nhau trên các tập tin GtkBuilder .ui.\n"
+"Thực hiện các công việc khác nhau trên các tập tin CtkBuilder .ui.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2518,7 +2518,7 @@ msgstr "Không thể gửi yêu cầu tìm kiếm"
 msgid "Accessed"
 msgstr "Truy cập"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.

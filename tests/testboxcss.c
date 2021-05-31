@@ -45,12 +45,12 @@
   "\n"
 
 static void
-show_parsing_error (GtkCssProvider *provider,
-                    GtkCssSection  *section,
+show_parsing_error (CtkCssProvider *provider,
+                    CtkCssSection  *section,
                     const GError   *error,
-                    GtkTextBuffer  *buffer)
+                    CtkTextBuffer  *buffer)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
   const char *tag_name;
 
   ctk_text_buffer_get_iter_at_line_index (buffer,
@@ -71,10 +71,10 @@ show_parsing_error (GtkCssProvider *provider,
 }
                     
 static void
-css_text_changed (GtkTextBuffer  *buffer,
-                  GtkCssProvider *provider)
+css_text_changed (CtkTextBuffer  *buffer,
+                  CtkCssProvider *provider)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
   char *text;
 
   ctk_text_buffer_get_start_iter (buffer, &start);
@@ -89,7 +89,7 @@ css_text_changed (GtkTextBuffer  *buffer,
 }
 
 static void
-remove_widget (GtkWidget *widget)
+remove_widget (CtkWidget *widget)
 {
   ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (widget)), widget);
 }
@@ -97,13 +97,13 @@ remove_widget (GtkWidget *widget)
 static int count = 0;
 
 static void
-add_button (GtkBox *box)
+add_button (CtkBox *box)
 {
-  GtkWidget* button;
+  CtkWidget* button;
   char *text;
 
   text = g_strdup_printf ("Remove %d", ++count);
-  button = (GtkWidget *)ctk_button_new_with_label (text);
+  button = (CtkWidget *)ctk_button_new_with_label (text);
   g_free (text);
   ctk_style_context_add_class (ctk_widget_get_style_context (button), "play");
   g_signal_connect_swapped (button,
@@ -115,13 +115,13 @@ add_button (GtkBox *box)
 }
 
 static void
-add_toolbutton (GtkToolbar *toolbar)
+add_toolbutton (CtkToolbar *toolbar)
 {
-  GtkWidget* button;
+  CtkWidget* button;
   char *text;
 
   text = g_strdup_printf ("Remove %d", ++count);
-  button = (GtkWidget *)ctk_tool_button_new (NULL, text);
+  button = (CtkWidget *)ctk_tool_button_new (NULL, text);
   g_free (text);
   ctk_style_context_add_class (ctk_widget_get_style_context (button), "play");
   g_signal_connect_swapped (button,
@@ -133,7 +133,7 @@ add_toolbutton (GtkToolbar *toolbar)
 }
 
 static void
-set_orientation (GtkSwitch *switch_)
+set_orientation (CtkSwitch *switch_)
 {
   ctk_widget_set_default_direction (ctk_switch_get_active (switch_) ? CTK_TEXT_DIR_LTR : CTK_TEXT_DIR_RTL);
 }
@@ -141,10 +141,10 @@ set_orientation (GtkSwitch *switch_)
 gint
 main (gint argc, gchar **argv)
 {
-  GtkWidget *window, *main_box, *container, *child;
-  GtkWidget *box, *toolbar;
-  GtkStyleProvider *provider;
-  GtkTextBuffer *css;
+  CtkWidget *window, *main_box, *container, *child;
+  CtkWidget *box, *toolbar;
+  CtkStyleProvider *provider;
+  CtkTextBuffer *css;
   
   ctk_init (&argc, &argv);
 

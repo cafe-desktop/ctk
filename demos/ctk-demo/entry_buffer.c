@@ -1,6 +1,6 @@
 /* Entry/Entry Buffer
  *
- * GtkEntryBuffer provides the text content in a GtkEntry.
+ * CtkEntryBuffer provides the text content in a CtkEntry.
  * Applications can provide their own buffer implementation,
  * e.g. to provide secure handling for passwords in memory.
  */
@@ -8,14 +8,14 @@
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 
-GtkWidget *
-do_entry_buffer (GtkWidget *do_widget)
+CtkWidget *
+do_entry_buffer (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkEntryBuffer *buffer;
+  static CtkWidget *window = NULL;
+  CtkWidget *vbox;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkEntryBuffer *buffer;
 
   if (!window)
     {

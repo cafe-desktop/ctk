@@ -87,11 +87,11 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>atk-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ModuleDefinitionFile>..\..\libgail-util\gailutil.def</ModuleDefinitionFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
@@ -111,11 +111,11 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>atk-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ModuleDefinitionFile>..\..\libgail-util\gailutil.def</ModuleDefinitionFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -137,11 +137,11 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>atk-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ModuleDefinitionFile>..\..\libgail-util\gailutil.def</ModuleDefinitionFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
@@ -158,11 +158,11 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>atk-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ModuleDefinitionFile>..\..\libgail-util\gailutil.def</ModuleDefinitionFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

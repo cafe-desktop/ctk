@@ -34,31 +34,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_VBOX		 (ctk_vbox_get_type ())
-#define CTK_VBOX(obj)		 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VBOX, GtkVBox))
-#define CTK_VBOX_CLASS(klass)	 (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VBOX, GtkVBoxClass))
+#define CTK_VBOX(obj)		 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VBOX, CtkVBox))
+#define CTK_VBOX_CLASS(klass)	 (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VBOX, CtkVBoxClass))
 #define CTK_IS_VBOX(obj)	 (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VBOX))
 #define CTK_IS_VBOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VBOX))
-#define CTK_VBOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VBOX, GtkVBoxClass))
+#define CTK_VBOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VBOX, CtkVBoxClass))
 
 
-typedef struct _GtkVBox	      GtkVBox;
-typedef struct _GtkVBoxClass  GtkVBoxClass;
+typedef struct _CtkVBox	      CtkVBox;
+typedef struct _CtkVBoxClass  CtkVBoxClass;
 
-struct _GtkVBox
+struct _CtkVBox
 {
-  GtkBox box;
+  CtkBox box;
 };
 
-struct _GtkVBoxClass
+struct _CtkVBoxClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType       ctk_vbox_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_box_new)
-GtkWidget * ctk_vbox_new      (gboolean homogeneous,
+CtkWidget * ctk_vbox_new      (gboolean homogeneous,
                                gint     spacing);
 
 G_END_DECLS

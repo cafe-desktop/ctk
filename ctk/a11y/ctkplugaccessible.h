@@ -31,33 +31,33 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PLUG_ACCESSIBLE                         (ctk_plug_accessible_get_type ())
-#define CTK_PLUG_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PLUG_ACCESSIBLE, GtkPlugAccessible))
-#define CTK_PLUG_ACCESSIBLE_CLASS(klass)                 (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PLUG_ACCESSIBLE, GtkPlugAccessibleClass))
+#define CTK_PLUG_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PLUG_ACCESSIBLE, CtkPlugAccessible))
+#define CTK_PLUG_ACCESSIBLE_CLASS(klass)                 (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PLUG_ACCESSIBLE, CtkPlugAccessibleClass))
 #define CTK_IS_PLUG_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PLUG_ACCESSIBLE))
 #define CTK_IS_PLUG_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PLUG_ACCESSIBLE))
-#define CTK_PLUG_ACCESSIBLE_GET_CLASS(obj)               (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PLUG_ACCESSIBLE, GtkPlugAccessibleClass))
+#define CTK_PLUG_ACCESSIBLE_GET_CLASS(obj)               (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PLUG_ACCESSIBLE, CtkPlugAccessibleClass))
 
-typedef struct _GtkPlugAccessible        GtkPlugAccessible;
-typedef struct _GtkPlugAccessibleClass   GtkPlugAccessibleClass;
-typedef struct _GtkPlugAccessiblePrivate GtkPlugAccessiblePrivate;
+typedef struct _CtkPlugAccessible        CtkPlugAccessible;
+typedef struct _CtkPlugAccessibleClass   CtkPlugAccessibleClass;
+typedef struct _CtkPlugAccessiblePrivate CtkPlugAccessiblePrivate;
 
-struct _GtkPlugAccessible
+struct _CtkPlugAccessible
 {
-  GtkWindowAccessible parent;
+  CtkWindowAccessible parent;
 
-  GtkPlugAccessiblePrivate *priv;
+  CtkPlugAccessiblePrivate *priv;
 };
 
-struct _GtkPlugAccessibleClass
+struct _CtkPlugAccessibleClass
 {
-  GtkWindowAccessibleClass parent_class;
+  CtkWindowAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_plug_accessible_get_type (void);
 
 GDK_AVAILABLE_IN_ALL
-gchar *ctk_plug_accessible_get_id (GtkPlugAccessible *plug);
+gchar *ctk_plug_accessible_get_id (CtkPlugAccessible *plug);
 
 G_END_DECLS
 

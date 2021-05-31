@@ -5,7 +5,7 @@
 
 struct _ExampleAppWindow
 {
-  GtkApplicationWindow parent;
+  CtkApplicationWindow parent;
 };
 
 typedef struct _ExampleAppWindowPrivate ExampleAppWindowPrivate;
@@ -13,23 +13,23 @@ typedef struct _ExampleAppWindowPrivate ExampleAppWindowPrivate;
 struct _ExampleAppWindowPrivate
 {
   GSettings *settings;
-  GtkWidget *stack;
-  GtkWidget *search;
-  GtkWidget *searchbar;
+  CtkWidget *stack;
+  CtkWidget *search;
+  CtkWidget *searchbar;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
 
 static void
-search_text_changed (GtkEntry *entry)
+search_text_changed (CtkEntry *entry)
 {
   ExampleAppWindow *win;
   ExampleAppWindowPrivate *priv;
   const gchar *text;
-  GtkWidget *tab;
-  GtkWidget *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, match_start, match_end;
+  CtkWidget *tab;
+  CtkWidget *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, match_start, match_end;
 
   text = ctk_entry_get_text (entry);
 
@@ -130,12 +130,12 @@ example_app_window_open (ExampleAppWindow *win,
 {
   ExampleAppWindowPrivate *priv;
   gchar *basename;
-  GtkWidget *scrolled, *view;
+  CtkWidget *scrolled, *view;
   gchar *contents;
   gsize length;
-  GtkTextBuffer *buffer;
-  GtkTextTag *tag;
-  GtkTextIter start_iter, end_iter;
+  CtkTextBuffer *buffer;
+  CtkTextTag *tag;
+  CtkTextIter start_iter, end_iter;
 
   priv = example_app_window_get_instance_private (win);
   basename = g_file_get_basename (file);

@@ -36,23 +36,23 @@ G_BEGIN_DECLS
 
 
 /**
- * GtkTextChildAnchor:
+ * CtkTextChildAnchor:
  *
- * A #GtkTextChildAnchor is a spot in the buffer where child widgets can
+ * A #CtkTextChildAnchor is a spot in the buffer where child widgets can
  * be “anchored” (inserted inline, as if they were characters). The anchor
  * can have multiple widgets anchored, to allow for multiple views.
  */
-typedef struct _GtkTextChildAnchor      GtkTextChildAnchor;
-typedef struct _GtkTextChildAnchorClass GtkTextChildAnchorClass;
+typedef struct _CtkTextChildAnchor      CtkTextChildAnchor;
+typedef struct _CtkTextChildAnchorClass CtkTextChildAnchorClass;
 
 #define CTK_TYPE_TEXT_CHILD_ANCHOR              (ctk_text_child_anchor_get_type ())
-#define CTK_TEXT_CHILD_ANCHOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_TEXT_CHILD_ANCHOR, GtkTextChildAnchor))
-#define CTK_TEXT_CHILD_ANCHOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_CHILD_ANCHOR, GtkTextChildAnchorClass))
+#define CTK_TEXT_CHILD_ANCHOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_TEXT_CHILD_ANCHOR, CtkTextChildAnchor))
+#define CTK_TEXT_CHILD_ANCHOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_CHILD_ANCHOR, CtkTextChildAnchorClass))
 #define CTK_IS_TEXT_CHILD_ANCHOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_TEXT_CHILD_ANCHOR))
 #define CTK_IS_TEXT_CHILD_ANCHOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_CHILD_ANCHOR))
-#define CTK_TEXT_CHILD_ANCHOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_CHILD_ANCHOR, GtkTextChildAnchorClass))
+#define CTK_TEXT_CHILD_ANCHOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_CHILD_ANCHOR, CtkTextChildAnchorClass))
 
-struct _GtkTextChildAnchor
+struct _CtkTextChildAnchor
 {
   GObject parent_instance;
 
@@ -60,7 +60,7 @@ struct _GtkTextChildAnchor
   gpointer segment;
 };
 
-struct _GtkTextChildAnchorClass
+struct _CtkTextChildAnchorClass
 {
   GObjectClass parent_class;
 
@@ -75,12 +75,12 @@ GDK_AVAILABLE_IN_ALL
 GType               ctk_text_child_anchor_get_type    (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkTextChildAnchor* ctk_text_child_anchor_new         (void);
+CtkTextChildAnchor* ctk_text_child_anchor_new         (void);
 
 GDK_AVAILABLE_IN_ALL
-GList*              ctk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor);
+GList*              ctk_text_child_anchor_get_widgets (CtkTextChildAnchor *anchor);
 GDK_AVAILABLE_IN_ALL
-gboolean            ctk_text_child_anchor_get_deleted (GtkTextChildAnchor *anchor);
+gboolean            ctk_text_child_anchor_get_deleted (CtkTextChildAnchor *anchor);
 
 G_END_DECLS
 

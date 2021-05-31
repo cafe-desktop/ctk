@@ -1,6 +1,6 @@
 /* Revealer
  *
- * GtkRevealer is a container that animates showing and hiding
+ * CtkRevealer is a container that animates showing and hiding
  * of its sole child with nice transitions.
  */
 
@@ -10,7 +10,7 @@ static gint count = 0;
 static guint timeout = 0;
 
 static void
-change_direction (GtkRevealer *revealer)
+change_direction (CtkRevealer *revealer)
 {
   if (ctk_widget_get_mapped (CTK_WIDGET (revealer)))
     {
@@ -24,14 +24,14 @@ change_direction (GtkRevealer *revealer)
 static gboolean
 reveal_one (gpointer data)
 {
-  GtkWidget *window = data;
-  GtkBuilder *builder;
+  CtkWidget *window = data;
+  CtkBuilder *builder;
   gchar *name;
-  GtkRevealer *revealer;
+  CtkRevealer *revealer;
 
   builder = CTK_BUILDER (g_object_get_data (G_OBJECT (window), "builder"));
   name = g_strdup_printf ("revealer%d", count);
-  revealer = (GtkRevealer *)ctk_builder_get_object (builder, name);
+  revealer = (CtkRevealer *)ctk_builder_get_object (builder, name);
 
   ctk_revealer_set_reveal_child (revealer, TRUE);
 
@@ -48,7 +48,7 @@ reveal_one (gpointer data)
     return TRUE;
 }
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 
 static void
 on_destroy (gpointer data)
@@ -61,12 +61,12 @@ on_destroy (gpointer data)
     }
 }
 
-GtkWidget *
-do_revealer (GtkWidget *do_widget)
+CtkWidget *
+do_revealer (CtkWidget *do_widget)
 {
   if (!window)
     {
-      GtkBuilder *builder;
+      CtkBuilder *builder;
 
       builder = ctk_builder_new_from_resource ("/revealer/revealer.ui");
       ctk_builder_connect_signals (builder, NULL);

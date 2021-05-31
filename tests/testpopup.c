@@ -1,7 +1,7 @@
 #include <ctk/ctk.h>
 
 static gboolean
-draw_popup (GtkWidget *widget,
+draw_popup (CtkWidget *widget,
             cairo_t   *cr,
             gpointer   data)
 {
@@ -12,9 +12,9 @@ draw_popup (GtkWidget *widget,
 }
 
 static gboolean
-place_popup (GtkWidget *parent,
+place_popup (CtkWidget *parent,
              GdkEvent  *event,
-             GtkWidget *popup)
+             CtkWidget *popup)
 {
   GdkEventMotion *ev_motion = (GdkEventMotion *) event;
   gint width, height;
@@ -28,11 +28,11 @@ place_popup (GtkWidget *parent,
 }
 
 static gboolean
-on_map_event (GtkWidget *parent,
+on_map_event (CtkWidget *parent,
               GdkEvent  *event,
               gpointer   data)
 {
-  GtkWidget *popup;
+  CtkWidget *popup;
 
   popup = ctk_window_new (CTK_WINDOW_POPUP);
 
@@ -50,7 +50,7 @@ on_map_event (GtkWidget *parent,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
+  CtkWidget *window;
 
   ctk_init (&argc, &argv);
 

@@ -62,34 +62,34 @@ enum
   COLUMN_PROP_LOCATION
 };
 
-struct _GtkInspectorCssNodeTreePrivate
+struct _CtkInspectorCssNodeTreePrivate
 {
-  GtkWidget *node_tree;
-  GtkTreeModel *node_model;
-  GtkTreeViewColumn *node_name_column;
-  GtkTreeViewColumn *node_id_column;
-  GtkTreeViewColumn *node_classes_column;
-  GtkListStore *prop_model;
-  GtkWidget *prop_tree;
-  GtkTreeViewColumn *prop_name_column;
+  CtkWidget *node_tree;
+  CtkTreeModel *node_model;
+  CtkTreeViewColumn *node_name_column;
+  CtkTreeViewColumn *node_id_column;
+  CtkTreeViewColumn *node_classes_column;
+  CtkListStore *prop_model;
+  CtkWidget *prop_tree;
+  CtkTreeViewColumn *prop_name_column;
   GHashTable *prop_iters;
-  GtkCssNode *node;
+  CtkCssNode *node;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorCssNodeTree, ctk_inspector_css_node_tree, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorCssNodeTree, ctk_inspector_css_node_tree, CTK_TYPE_BOX)
 
 typedef struct {
-  GtkCssNode *node;
+  CtkCssNode *node;
   const gchar *prop_name;
   GdkRectangle rect;
-  GtkInspectorCssNodeTree *cnt;
+  CtkInspectorCssNodeTree *cnt;
 } NodePropEditor;
 
 static void
 show_node_prop_editor (NodePropEditor *npe)
 {
-  GtkWidget *popover;
-  GtkWidget *editor;
+  CtkWidget *popover;
+  CtkWidget *editor;
 
   popover = ctk_popover_new (CTK_WIDGET (npe->cnt->priv->node_tree));
   ctk_popover_set_pointing_to (CTK_POPOVER (popover), &npe->rect);
@@ -108,12 +108,12 @@ show_node_prop_editor (NodePropEditor *npe)
 }
 
 static void
-row_activated (GtkTreeView             *tv,
-               GtkTreePath             *path,
-               GtkTreeViewColumn       *col,
-               GtkInspectorCssNodeTree *cnt)
+row_activated (CtkTreeView             *tv,
+               CtkTreePath             *path,
+               CtkTreeViewColumn       *col,
+               CtkInspectorCssNodeTree *cnt)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   NodePropEditor npe;
 
   npe.cnt = cnt;
@@ -136,14 +136,14 @@ row_activated (GtkTreeView             *tv,
 }
 
 static void
-ctk_inspector_css_node_tree_set_node (GtkInspectorCssNodeTree *cnt,
-                                      GtkCssNode              *node);
+ctk_inspector_css_node_tree_set_node (CtkInspectorCssNodeTree *cnt,
+                                      CtkCssNode              *node);
 
 static void
-selection_changed (GtkTreeSelection *selection, GtkInspectorCssNodeTree *cnt)
+selection_changed (CtkTreeSelection *selection, CtkInspectorCssNodeTree *cnt)
 {
-  GtkTreeIter iter;
-  GtkCssNode *node;
+  CtkTreeIter iter;
+  CtkCssNode *node;
 
   if (!ctk_tree_selection_get_selected (selection, NULL, &iter))
     return;
@@ -153,9 +153,9 @@ selection_changed (GtkTreeSelection *selection, GtkInspectorCssNodeTree *cnt)
 }
 
 static void
-ctk_inspector_css_node_tree_unset_node (GtkInspectorCssNodeTree *cnt)
+ctk_inspector_css_node_tree_unset_node (CtkInspectorCssNodeTree *cnt)
 {
-  GtkInspectorCssNodeTreePrivate *priv = cnt->priv;
+  CtkInspectorCssNodeTreePrivate *priv = cnt->priv;
 
   if (priv->node)
     {
@@ -171,7 +171,7 @@ ctk_inspector_css_node_tree_unset_node (GtkInspectorCssNodeTree *cnt)
 static void
 ctk_inspector_css_node_tree_finalize (GObject *object)
 {
-  GtkInspectorCssNodeTree *cnt = CTK_INSPECTOR_CSS_NODE_TREE (object);
+  CtkInspectorCssNodeTree *cnt = CTK_INSPECTOR_CSS_NODE_TREE (object);
 
   ctk_inspector_css_node_tree_unset_node (cnt);
 
@@ -183,7 +183,7 @@ ctk_inspector_css_node_tree_finalize (GObject *object)
 static void
 ensure_css_sections (void)
 {
-  GtkSettings *settings;
+  CtkSettings *settings;
   gchar *theme_name;
 
   ctk_css_provider_set_keep_css_sections ();
@@ -195,23 +195,23 @@ ensure_css_sections (void)
 }
 
 static void
-ctk_inspector_css_node_tree_class_init (GtkInspectorCssNodeTreeClass *klass)
+ctk_inspector_css_node_tree_class_init (CtkInspectorCssNodeTreeClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ensure_css_sections ();
 
   object_class->finalize = ctk_inspector_css_node_tree_finalize;
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/css-node-tree.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, node_tree);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, node_name_column);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, node_id_column);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, node_classes_column);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, prop_name_column);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, prop_model);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, prop_name_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssNodeTree, node_tree);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssNodeTree, node_name_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssNodeTree, node_id_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssNodeTree, node_classes_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssNodeTree, prop_name_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssNodeTree, prop_model);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorCssNodeTree, prop_name_column);
 
   ctk_widget_class_bind_template_callback (widget_class, row_activated);
   ctk_widget_class_bind_template_callback (widget_class, selection_changed);
@@ -239,7 +239,7 @@ strv_sort (char **strv)
 }
 
 static gchar *
-format_state_flags (GtkStateFlags state)
+format_state_flags (CtkStateFlags state)
 {
   if (state)
     {
@@ -266,8 +266,8 @@ format_state_flags (GtkStateFlags state)
 }
 
 static void
-ctk_inspector_css_node_tree_get_node_value (GtkTreeModelCssNode *model,
-                                            GtkCssNode          *node,
+ctk_inspector_css_node_tree_get_node_value (CtkTreeModelCssNode *model,
+                                            CtkCssNode          *node,
                                             int                  column,
                                             GValue              *value)
 {
@@ -307,9 +307,9 @@ ctk_inspector_css_node_tree_get_node_value (GtkTreeModelCssNode *model,
 }
 
 static void
-ctk_inspector_css_node_tree_init (GtkInspectorCssNodeTree *cnt)
+ctk_inspector_css_node_tree_init (CtkInspectorCssNodeTree *cnt)
 {
-  GtkInspectorCssNodeTreePrivate *priv;
+  CtkInspectorCssNodeTreePrivate *priv;
   gint i;
 
   cnt->priv = ctk_inspector_css_node_tree_get_instance_private (cnt);
@@ -335,8 +335,8 @@ ctk_inspector_css_node_tree_init (GtkInspectorCssNodeTree *cnt)
 
   for (i = 0; i < _ctk_css_style_property_get_n_properties (); i++)
     {
-      GtkCssStyleProperty *prop;
-      GtkTreeIter iter;
+      CtkCssStyleProperty *prop;
+      CtkTreeIter iter;
       const gchar *name;
 
       prop = _ctk_css_style_property_lookup_by_id (i);
@@ -349,13 +349,13 @@ ctk_inspector_css_node_tree_init (GtkInspectorCssNodeTree *cnt)
 }
 
 void
-ctk_inspector_css_node_tree_set_object (GtkInspectorCssNodeTree *cnt,
+ctk_inspector_css_node_tree_set_object (CtkInspectorCssNodeTree *cnt,
                                         GObject                 *object)
 {
-  GtkInspectorCssNodeTreePrivate *priv;
-  GtkCssNode *node, *root;
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkInspectorCssNodeTreePrivate *priv;
+  CtkCssNode *node, *root;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   g_return_if_fail (CTK_INSPECTOR_IS_CSS_NODE_TREE (cnt));
 
@@ -386,25 +386,25 @@ ctk_inspector_css_node_tree_set_object (GtkInspectorCssNodeTree *cnt,
 }
 
 static void
-ctk_inspector_css_node_tree_update_style (GtkInspectorCssNodeTree *cnt,
-                                          GtkCssStyle             *new_style)
+ctk_inspector_css_node_tree_update_style (CtkInspectorCssNodeTree *cnt,
+                                          CtkCssStyle             *new_style)
 {
-  GtkInspectorCssNodeTreePrivate *priv = cnt->priv;
+  CtkInspectorCssNodeTreePrivate *priv = cnt->priv;
   gint i;
 
   for (i = 0; i < _ctk_css_style_property_get_n_properties (); i++)
     {
-      GtkCssStyleProperty *prop;
+      CtkCssStyleProperty *prop;
       const gchar *name;
-      GtkTreeIter *iter;
-      GtkCssSection *section;
+      CtkTreeIter *iter;
+      CtkCssSection *section;
       gchar *location;
       gchar *value;
 
       prop = _ctk_css_style_property_lookup_by_id (i);
       name = _ctk_style_property_get_name (CTK_STYLE_PROPERTY (prop));
 
-      iter = (GtkTreeIter *)g_hash_table_lookup (priv->prop_iters, name);
+      iter = (CtkTreeIter *)g_hash_table_lookup (priv->prop_iters, name);
 
       if (new_style)
         {
@@ -434,18 +434,18 @@ ctk_inspector_css_node_tree_update_style (GtkInspectorCssNodeTree *cnt,
 }
 
 static void
-ctk_inspector_css_node_tree_update_style_cb (GtkCssNode              *node,
-                                             GtkCssStyleChange       *change,
-                                             GtkInspectorCssNodeTree *cnt)
+ctk_inspector_css_node_tree_update_style_cb (CtkCssNode              *node,
+                                             CtkCssStyleChange       *change,
+                                             CtkInspectorCssNodeTree *cnt)
 {
   ctk_inspector_css_node_tree_update_style (cnt, ctk_css_style_change_get_new_style (change));
 }
 
 static void
-ctk_inspector_css_node_tree_set_node (GtkInspectorCssNodeTree *cnt,
-                                      GtkCssNode              *node)
+ctk_inspector_css_node_tree_set_node (CtkInspectorCssNodeTree *cnt,
+                                      CtkCssNode              *node)
 {
-  GtkInspectorCssNodeTreePrivate *priv = cnt->priv;
+  CtkInspectorCssNodeTreePrivate *priv = cnt->priv;
 
   if (priv->node == node)
     return;

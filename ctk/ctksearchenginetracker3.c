@@ -56,27 +56,27 @@
 #define SEARCH_LOCATION_QUERY SEARCH_QUERY_BASE("?urn nfo:belongsToContainer/nie:isStoredAs/nie:url ~location")
 #define FILE_CHECK_QUERY "ASK { ?urn nie:url ~url }"
 
-struct _GtkSearchEngineTracker3
+struct _CtkSearchEngineTracker3
 {
-  GtkSearchEngine parent;
+  CtkSearchEngine parent;
   TrackerSparqlConnection *sparql_conn;
   TrackerSparqlStatement *search_query;
   TrackerSparqlStatement *search_recursive_query;
   TrackerSparqlStatement *search_location_query;
   TrackerSparqlStatement *file_check_query;
   GCancellable *cancellable;
-  GtkQuery *query;
+  CtkQuery *query;
   gboolean query_pending;
 };
 
-struct _GtkSearchEngineTracker3Class
+struct _CtkSearchEngineTracker3Class
 {
-  GtkSearchEngineClass parent_class;
+  CtkSearchEngineClass parent_class;
 };
 
 static void ctk_search_engine_tracker3_initable_iface_init (GInitableIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkSearchEngineTracker3,
+G_DEFINE_TYPE_WITH_CODE (CtkSearchEngineTracker3,
                          ctk_search_engine_tracker3,
                          CTK_TYPE_SEARCH_ENGINE,
                          G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE,
@@ -85,9 +85,9 @@ G_DEFINE_TYPE_WITH_CODE (GtkSearchEngineTracker3,
 static void
 finalize (GObject *object)
 {
-  GtkSearchEngineTracker3 *engine;
+  CtkSearchEngineTracker3 *engine;
 
-  g_debug ("Finalizing GtkSearchEngineTracker3");
+  g_debug ("Finalizing CtkSearchEngineTracker3");
 
   engine = CTK_SEARCH_ENGINE_TRACKER3 (object);
 
@@ -109,11 +109,11 @@ finalize (GObject *object)
 static void
 free_hit (gpointer data)
 {
-  GtkSearchHit *hit = data;
+  CtkSearchHit *hit = data;
 
   g_clear_object (&hit->file);
   g_clear_object (&hit->info);
-  g_slice_free (GtkSearchHit, hit);
+  g_slice_free (CtkSearchHit, hit);
 }
 
 static GFileInfo *
@@ -151,11 +151,11 @@ query_callback (TrackerSparqlStatement *statement,
                 GAsyncResult           *res,
                 gpointer                user_data)
 {
-  GtkSearchEngineTracker3 *engine;
+  CtkSearchEngineTracker3 *engine;
   TrackerSparqlCursor *cursor;
   GList *hits = NULL;
   GError *error = NULL;
-  GtkSearchHit *hit;
+  CtkSearchHit *hit;
 
   engine = CTK_SEARCH_ENGINE_TRACKER3 (user_data);
 
@@ -176,7 +176,7 @@ query_callback (TrackerSparqlStatement *statement,
       const gchar *url;
 
       url = tracker_sparql_cursor_get_string (cursor, 0, NULL);
-      hit = g_slice_new0 (GtkSearchHit);
+      hit = g_slice_new0 (CtkSearchHit);
       hit->file = g_file_new_for_uri (url);
       hit->info = create_file_info (cursor);
       hits = g_list_prepend (hits, hit);
@@ -193,9 +193,9 @@ query_callback (TrackerSparqlStatement *statement,
 }
 
 static void
-ctk_search_engine_tracker3_start (GtkSearchEngine *engine)
+ctk_search_engine_tracker3_start (CtkSearchEngine *engine)
 {
-  GtkSearchEngineTracker3 *tracker;
+  CtkSearchEngineTracker3 *tracker;
   TrackerSparqlStatement *statement;
   const gchar *search_text;
   gboolean recursive;
@@ -212,7 +212,7 @@ ctk_search_engine_tracker3_start (GtkSearchEngine *engine)
 
   if (tracker->query == NULL)
     {
-      g_debug ("Attempt to start a new search with no GtkQuery, doing nothing");
+      g_debug ("Attempt to start a new search with no CtkQuery, doing nothing");
       return;
     }
 
@@ -257,9 +257,9 @@ ctk_search_engine_tracker3_start (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_tracker3_stop (GtkSearchEngine *engine)
+ctk_search_engine_tracker3_stop (CtkSearchEngine *engine)
 {
-  GtkSearchEngineTracker3 *tracker;
+  CtkSearchEngineTracker3 *tracker;
 
   tracker = CTK_SEARCH_ENGINE_TRACKER3 (engine);
 
@@ -271,10 +271,10 @@ ctk_search_engine_tracker3_stop (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_tracker3_set_query (GtkSearchEngine *engine,
-                                      GtkQuery        *query)
+ctk_search_engine_tracker3_set_query (CtkSearchEngine *engine,
+                                      CtkQuery        *query)
 {
-  GtkSearchEngineTracker3 *tracker;
+  CtkSearchEngineTracker3 *tracker;
 
   tracker = CTK_SEARCH_ENGINE_TRACKER3 (engine);
 
@@ -288,10 +288,10 @@ ctk_search_engine_tracker3_set_query (GtkSearchEngine *engine,
 }
 
 static void
-ctk_search_engine_tracker3_class_init (GtkSearchEngineTracker3Class *class)
+ctk_search_engine_tracker3_class_init (CtkSearchEngineTracker3Class *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkSearchEngineClass *engine_class = CTK_SEARCH_ENGINE_CLASS (class);
+  CtkSearchEngineClass *engine_class = CTK_SEARCH_ENGINE_CLASS (class);
 
   gobject_class->finalize = finalize;
 
@@ -301,7 +301,7 @@ ctk_search_engine_tracker3_class_init (GtkSearchEngineTracker3Class *class)
 }
 
 static void
-ctk_search_engine_tracker3_init (GtkSearchEngineTracker3 *engine)
+ctk_search_engine_tracker3_init (CtkSearchEngineTracker3 *engine)
 {
   engine->cancellable = g_cancellable_new ();
   engine->query_pending = FALSE;
@@ -312,7 +312,7 @@ ctk_search_engine_tracker3_initable_init (GInitable     *initable,
                                           GCancellable  *cancellable,
                                           GError       **error)
 {
-  GtkSearchEngineTracker3 *engine;
+  CtkSearchEngineTracker3 *engine;
 
   engine = CTK_SEARCH_ENGINE_TRACKER3 (initable);
 
@@ -363,10 +363,10 @@ ctk_search_engine_tracker3_initable_iface_init (GInitableIface *iface)
   iface->init = ctk_search_engine_tracker3_initable_init;
 }
 
-GtkSearchEngine *
+CtkSearchEngine *
 ctk_search_engine_tracker3_new (void)
 {
-  GtkSearchEngineTracker3 *engine;
+  CtkSearchEngineTracker3 *engine;
   GError *error = NULL;
   GModule *self;
 
@@ -385,7 +385,7 @@ ctk_search_engine_tracker3_new (void)
         return NULL;
     }
 
-  g_debug ("Creating GtkSearchEngineTracker3...");
+  g_debug ("Creating CtkSearchEngineTracker3...");
 
   engine = g_initable_new (CTK_TYPE_SEARCH_ENGINE_TRACKER3,
                            NULL, &error, NULL);
@@ -403,7 +403,7 @@ gboolean
 ctk_search_engine_tracker3_is_indexed (GFile    *location,
                                        gpointer  data)
 {
-  GtkSearchEngineTracker3 *engine = data;
+  CtkSearchEngineTracker3 *engine = data;
   TrackerSparqlCursor *cursor;
   GError *error = NULL;
   gboolean indexed;

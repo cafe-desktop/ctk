@@ -20,22 +20,22 @@
 #include <ctk/ctk.h>
 #include "ctklinkbuttonaccessible.h"
 
-typedef struct _GtkLinkButtonAccessibleLink GtkLinkButtonAccessibleLink;
-typedef struct _GtkLinkButtonAccessibleLinkClass GtkLinkButtonAccessibleLinkClass;
+typedef struct _CtkLinkButtonAccessibleLink CtkLinkButtonAccessibleLink;
+typedef struct _CtkLinkButtonAccessibleLinkClass CtkLinkButtonAccessibleLinkClass;
 
-struct _GtkLinkButtonAccessiblePrivate
+struct _CtkLinkButtonAccessiblePrivate
 {
   AtkHyperlink *link;
 };
 
-struct _GtkLinkButtonAccessibleLink
+struct _CtkLinkButtonAccessibleLink
 {
   AtkHyperlink parent;
 
-  GtkLinkButtonAccessible *button;
+  CtkLinkButtonAccessible *button;
 };
 
-struct _GtkLinkButtonAccessibleLinkClass
+struct _CtkLinkButtonAccessibleLinkClass
 {
   AtkHyperlinkClass parent_class;
 };
@@ -44,13 +44,13 @@ static void atk_action_interface_init (AtkActionIface *iface);
 
 GType _ctk_link_button_accessible_link_get_type (void);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLinkButtonAccessibleLink, _ctk_link_button_accessible_link, ATK_TYPE_HYPERLINK,
+G_DEFINE_TYPE_WITH_CODE (CtkLinkButtonAccessibleLink, _ctk_link_button_accessible_link, ATK_TYPE_HYPERLINK,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static AtkHyperlink *
-ctk_link_button_accessible_link_new (GtkLinkButtonAccessible *button)
+ctk_link_button_accessible_link_new (CtkLinkButtonAccessible *button)
 {
-  GtkLinkButtonAccessibleLink *l;
+  CtkLinkButtonAccessibleLink *l;
 
   l = g_object_new (_ctk_link_button_accessible_link_get_type (), NULL);
   l->button = button;
@@ -62,8 +62,8 @@ static gchar *
 ctk_link_button_accessible_link_get_uri (AtkHyperlink *atk_link,
                                          gint          i)
 {
-  GtkLinkButtonAccessibleLink *l = (GtkLinkButtonAccessibleLink *)atk_link;
-  GtkWidget *widget;
+  CtkLinkButtonAccessibleLink *l = (CtkLinkButtonAccessibleLink *)atk_link;
+  CtkWidget *widget;
   const gchar *uri;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (l->button));
@@ -88,18 +88,18 @@ static AtkObject *
 ctk_link_button_accessible_link_get_object (AtkHyperlink *atk_link,
                                             gint          i)
 {
-  GtkLinkButtonAccessibleLink *l = (GtkLinkButtonAccessibleLink *)atk_link;
+  CtkLinkButtonAccessibleLink *l = (CtkLinkButtonAccessibleLink *)atk_link;
 
   return ATK_OBJECT (l->button);
 }
 
 static void
-_ctk_link_button_accessible_link_init (GtkLinkButtonAccessibleLink *l)
+_ctk_link_button_accessible_link_init (CtkLinkButtonAccessibleLink *l)
 {
 }
 
 static void
-_ctk_link_button_accessible_link_class_init (GtkLinkButtonAccessibleLinkClass *class)
+_ctk_link_button_accessible_link_class_init (CtkLinkButtonAccessibleLinkClass *class)
 {
   AtkHyperlinkClass *atk_link_class = ATK_HYPERLINK_CLASS (class);
 
@@ -113,8 +113,8 @@ static gboolean
 ctk_link_button_accessible_link_do_action (AtkAction *action,
                                            gint       i)
 {
-  GtkLinkButtonAccessibleLink *l = (GtkLinkButtonAccessibleLink *)action;
-  GtkWidget *widget;
+  CtkLinkButtonAccessibleLink *l = (CtkLinkButtonAccessibleLink *)action;
+  CtkWidget *widget;
 
   widget = CTK_WIDGET (l->button);
   if (widget == NULL)
@@ -156,7 +156,7 @@ atk_action_interface_init (AtkActionIface *iface)
 }
 
 static gboolean
-activate_link (GtkLinkButton *button,
+activate_link (CtkLinkButton *button,
                AtkHyperlink  *atk_link)
 {
   g_signal_emit_by_name (atk_link, "link-activated");
@@ -167,7 +167,7 @@ activate_link (GtkLinkButton *button,
 static AtkHyperlink *
 ctk_link_button_accessible_get_hyperlink (AtkHyperlinkImpl *impl)
 {
-  GtkLinkButtonAccessible *button = CTK_LINK_BUTTON_ACCESSIBLE (impl);
+  CtkLinkButtonAccessible *button = CTK_LINK_BUTTON_ACCESSIBLE (impl);
 
   if (!button->priv->link)
     {
@@ -181,12 +181,12 @@ ctk_link_button_accessible_get_hyperlink (AtkHyperlinkImpl *impl)
 
 static void atk_hypertext_impl_interface_init (AtkHyperlinkImplIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLinkButtonAccessible, ctk_link_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkLinkButtonAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkLinkButtonAccessible, ctk_link_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkLinkButtonAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_HYPERLINK_IMPL, atk_hypertext_impl_interface_init))
 
 static void
-ctk_link_button_accessible_init (GtkLinkButtonAccessible *button)
+ctk_link_button_accessible_init (CtkLinkButtonAccessible *button)
 {
   button->priv = ctk_link_button_accessible_get_instance_private (button);
 }
@@ -194,7 +194,7 @@ ctk_link_button_accessible_init (GtkLinkButtonAccessible *button)
 static void
 ctk_link_button_accessible_finalize (GObject *object)
 {
-  GtkLinkButtonAccessible *button = CTK_LINK_BUTTON_ACCESSIBLE (object);
+  CtkLinkButtonAccessible *button = CTK_LINK_BUTTON_ACCESSIBLE (object);
 
   if (button->priv->link)
     g_object_unref (button->priv->link);
@@ -206,7 +206,7 @@ static AtkStateSet *
 ctk_link_button_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_link_button_accessible_parent_class)->ref_state_set (accessible);
 
@@ -221,7 +221,7 @@ ctk_link_button_ref_state_set (AtkObject *accessible)
 }
 
 static void
-ctk_link_button_accessible_class_init (GtkLinkButtonAccessibleClass *klass)
+ctk_link_button_accessible_class_init (CtkLinkButtonAccessibleClass *klass)
 {
   G_OBJECT_CLASS (klass)->finalize = ctk_link_button_accessible_finalize;
   ATK_OBJECT_CLASS (klass)->ref_state_set = ctk_link_button_ref_state_set;

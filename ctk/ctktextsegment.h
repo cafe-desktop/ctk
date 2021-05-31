@@ -44,16 +44,16 @@ G_BEGIN_DECLS
    (character and toggle segments) */
 
 /* Information a BTree stores about a tag. */
-typedef struct _GtkTextTagInfo GtkTextTagInfo;
-struct _GtkTextTagInfo {
-  GtkTextTag *tag;
-  GtkTextBTreeNode *tag_root; /* highest-level node containing the tag */
+typedef struct _CtkTextTagInfo CtkTextTagInfo;
+struct _CtkTextTagInfo {
+  CtkTextTag *tag;
+  CtkTextBTreeNode *tag_root; /* highest-level node containing the tag */
   gint toggle_count;      /* total toggles of this tag below tag_root */
 };
 
 /* Body of a segment that toggles a tag on or off */
-struct _GtkTextToggleBody {
-  GtkTextTagInfo *info;             /* Tag that starts or ends here. */
+struct _CtkTextToggleBody {
+  CtkTextTagInfo *info;             /* Tag that starts or ends here. */
   gboolean inNodeCounts;             /* TRUE means this toggle has been
                                       * accounted for in node toggle
                                       * counts; FALSE means it hasn't, yet. */
@@ -63,15 +63,15 @@ struct _GtkTextToggleBody {
 /* Class struct for segments */
 
 /* Split seg at index, returning list of two new segments, and freeing seg */
-typedef GtkTextLineSegment* (*GtkTextSegSplitFunc)      (GtkTextLineSegment *seg,
+typedef CtkTextLineSegment* (*CtkTextSegSplitFunc)      (CtkTextLineSegment *seg,
                                                          gint                index);
 
 /* Delete seg which is contained in line; if tree_gone, the tree is being
  * freed in its entirety, which may matter for some reason (?)
  * Return TRUE if the segment is not deleteable, e.g. a mark.
  */
-typedef gboolean            (*GtkTextSegDeleteFunc)     (GtkTextLineSegment *seg,
-                                                         GtkTextLine        *line,
+typedef gboolean            (*CtkTextSegDeleteFunc)     (CtkTextLineSegment *seg,
+                                                         CtkTextLine        *line,
                                                          gboolean            tree_gone);
 
 /* Called after segment structure of line changes, so segments can
@@ -79,38 +79,38 @@ typedef gboolean            (*GtkTextSegDeleteFunc)     (GtkTextLineSegment *seg
  * to replace the original segment list with. The line argument is
  * the current line.
  */
-typedef GtkTextLineSegment* (*GtkTextSegCleanupFunc)    (GtkTextLineSegment *seg,
-                                                         GtkTextLine        *line);
+typedef CtkTextLineSegment* (*CtkTextSegCleanupFunc)    (CtkTextLineSegment *seg,
+                                                         CtkTextLine        *line);
 
 /* Called when a segment moves from one line to another. CleanupFunc is also
  * called in that case, so many segments just use CleanupFunc, I'm not sure
  * what’s up with that (this function may not be needed...)
  */
-typedef void                (*GtkTextSegLineChangeFunc) (GtkTextLineSegment *seg,
-                                                         GtkTextLine        *line);
+typedef void                (*CtkTextSegLineChangeFunc) (CtkTextLineSegment *seg,
+                                                         CtkTextLine        *line);
 
 /* Called to do debug checks on the segment. */
-typedef void                (*GtkTextSegCheckFunc)      (GtkTextLineSegment *seg,
-                                                         GtkTextLine        *line);
+typedef void                (*CtkTextSegCheckFunc)      (CtkTextLineSegment *seg,
+                                                         CtkTextLine        *line);
 
-struct _GtkTextLineSegmentClass {
+struct _CtkTextLineSegmentClass {
   char *name;                           /* Name of this kind of segment. */
   gboolean leftGravity;                 /* If a segment has zero size (e.g. a
                                          * mark or tag toggle), does it
                                          * attach to character to its left
                                          * or right?  1 means left, 0 means
                                          * right. */
-  GtkTextSegSplitFunc splitFunc;        /* Procedure to split large segment
+  CtkTextSegSplitFunc splitFunc;        /* Procedure to split large segment
                                          * into two smaller ones. */
-  GtkTextSegDeleteFunc deleteFunc;      /* Procedure to call to delete
+  CtkTextSegDeleteFunc deleteFunc;      /* Procedure to call to delete
                                          * segment. */
-  GtkTextSegCleanupFunc cleanupFunc;   /* After any change to a line, this
+  CtkTextSegCleanupFunc cleanupFunc;   /* After any change to a line, this
                                         * procedure is invoked for all
                                         * segments left in the line to
                                         * perform any cleanup they wish
                                         * (e.g. joining neighboring
                                         * segments). */
-  GtkTextSegLineChangeFunc lineChangeFunc;
+  CtkTextSegLineChangeFunc lineChangeFunc;
   /* Invoked when a segment is about
    * to be moved from its current line
    * to an earlier line because of
@@ -119,7 +119,7 @@ struct _GtkTextLineSegmentClass {
    * CleanupFunc will be invoked after
    * the deletion is finished. */
 
-  GtkTextSegCheckFunc checkFunc;       /* Called during consistency checks
+  CtkTextSegCheckFunc checkFunc;       /* Called during consistency checks
                                         * to check internal consistency of
                                         * segment. */
 };
@@ -128,10 +128,10 @@ struct _GtkTextLineSegmentClass {
  * The data structure below defines line segments.
  */
 
-struct _GtkTextLineSegment {
-  const GtkTextLineSegmentClass *type;  /* Pointer to record describing
+struct _CtkTextLineSegment {
+  const CtkTextLineSegmentClass *type;  /* Pointer to record describing
                                          * segment's type. */
-  GtkTextLineSegment *next;             /* Next in list of segments for this
+  CtkTextLineSegment *next;             /* Next in list of segments for this
                                          * line, or NULL for end of list. */
 
   int char_count;                       /* # of chars of index space occupied */
@@ -142,29 +142,29 @@ struct _GtkTextLineSegment {
     char chars[4];                      /* Characters that make up character
                                          * info.  Actual length varies to
                                          * hold as many characters as needed.*/
-    GtkTextToggleBody toggle;              /* Information about tag toggle. */
-    GtkTextMarkBody mark;              /* Information about mark. */
-    GtkTextPixbuf pixbuf;              /* Child pixbuf */
-    GtkTextChildBody child;            /* Child widget */
+    CtkTextToggleBody toggle;              /* Information about tag toggle. */
+    CtkTextMarkBody mark;              /* Information about mark. */
+    CtkTextPixbuf pixbuf;              /* Child pixbuf */
+    CtkTextChildBody child;            /* Child widget */
   } body;
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GtkTextLineSegment  *ctk_text_line_segment_split (const GtkTextIter *iter);
+CtkTextLineSegment  *ctk_text_line_segment_split (const CtkTextIter *iter);
 
-GtkTextLineSegment *_ctk_char_segment_new                  (const gchar    *text,
+CtkTextLineSegment *_ctk_char_segment_new                  (const gchar    *text,
                                                             guint           len);
-GtkTextLineSegment *_ctk_char_segment_new_from_two_strings (const gchar    *text1,
+CtkTextLineSegment *_ctk_char_segment_new_from_two_strings (const gchar    *text1,
                                                             guint           len1,
 							    guint           chars1,
                                                             const gchar    *text2,
                                                             guint           len2,
 							    guint           chars2);
-GtkTextLineSegment *_ctk_toggle_segment_new                (GtkTextTagInfo *info,
+CtkTextLineSegment *_ctk_toggle_segment_new                (CtkTextTagInfo *info,
                                                             gboolean        on);
 
-void                _ctk_toggle_segment_free               (GtkTextLineSegment *seg);
+void                _ctk_toggle_segment_free               (CtkTextLineSegment *seg);
 
 G_END_DECLS
 

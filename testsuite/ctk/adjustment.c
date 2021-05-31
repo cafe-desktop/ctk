@@ -20,7 +20,7 @@
 static void
 test_basic (void)
 {
-  GtkAdjustment *a;
+  CtkAdjustment *a;
 
   a = ctk_adjustment_new (2.0, 0.0, 100.0, 1.0, 5.0, 10.0);
   
@@ -54,13 +54,13 @@ static gint changed_count;
 static gint value_changed_count;
 
 static void
-changed_cb (GtkAdjustment *a)
+changed_cb (CtkAdjustment *a)
 {
   changed_count++;
 }
 
 static void
-value_changed_cb (GtkAdjustment *a)
+value_changed_cb (CtkAdjustment *a)
 {
   value_changed_count++;
 }
@@ -68,7 +68,7 @@ value_changed_cb (GtkAdjustment *a)
 static void
 test_signals (void)
 {
-  GtkAdjustment *a;
+  CtkAdjustment *a;
 
   a = ctk_adjustment_new (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
@@ -108,7 +108,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 test_clamp (void)
 {
-  GtkAdjustment *a;
+  CtkAdjustment *a;
 
   a = ctk_adjustment_new (2.0, 0.0, 100.0, 1.0, 5.0, 10.0);
 
@@ -132,7 +132,7 @@ test_clamp (void)
 static void
 test_clamp_page (void)
 {
-  GtkAdjustment *a;
+  CtkAdjustment *a;
 
   a = ctk_adjustment_new (20.0, 0.0, 100.0, 1.0, 5.0, 10.0);
 

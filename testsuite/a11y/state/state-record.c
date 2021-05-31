@@ -37,7 +37,7 @@ record_state_change (AtkObject   *accessible,
                      gboolean     set,
                      GString     *string)
 {
-  GtkWidget *w;
+  CtkWidget *w;
   const gchar *name;
 
   if (states)
@@ -69,7 +69,7 @@ stop (gpointer data)
 }
 
 static void
-do_action (GtkBuilder *builder, const gchar *action, GString *string)
+do_action (CtkBuilder *builder, const gchar *action, GString *string)
 {
   gchar **parts;
   gint len;
@@ -144,7 +144,7 @@ record_events (const gchar *ui_file,
                const gchar *in_file,
                GString     *string)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error;
   gchar *contents;
   gchar **actions;

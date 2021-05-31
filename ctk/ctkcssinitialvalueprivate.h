@@ -24,8 +24,8 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_initial_value_new            (void);
-GtkCssValue *   _ctk_css_initial_value_get            (void);
+CtkCssValue *   _ctk_css_initial_value_new            (void);
+CtkCssValue *   _ctk_css_initial_value_get            (void);
 
 G_END_DECLS
 

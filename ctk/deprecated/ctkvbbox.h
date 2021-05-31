@@ -34,31 +34,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_VBUTTON_BOX            (ctk_vbutton_box_get_type ())
-#define CTK_VBUTTON_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VBUTTON_BOX, GtkVButtonBox))
-#define CTK_VBUTTON_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VBUTTON_BOX, GtkVButtonBoxClass))
+#define CTK_VBUTTON_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VBUTTON_BOX, CtkVButtonBox))
+#define CTK_VBUTTON_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VBUTTON_BOX, CtkVButtonBoxClass))
 #define CTK_IS_VBUTTON_BOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VBUTTON_BOX))
 #define CTK_IS_VBUTTON_BOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VBUTTON_BOX))
-#define CTK_VBUTTON_BOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VBUTTON_BOX, GtkVButtonBoxClass))
+#define CTK_VBUTTON_BOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VBUTTON_BOX, CtkVButtonBoxClass))
 
 
-typedef struct _GtkVButtonBox       GtkVButtonBox;
-typedef struct _GtkVButtonBoxClass  GtkVButtonBoxClass;
+typedef struct _CtkVButtonBox       CtkVButtonBox;
+typedef struct _CtkVButtonBoxClass  CtkVButtonBoxClass;
 
-struct _GtkVButtonBox
+struct _CtkVButtonBox
 {
-  GtkButtonBox button_box;
+  CtkButtonBox button_box;
 };
 
-struct _GtkVButtonBoxClass
+struct _CtkVButtonBoxClass
 {
-  GtkButtonBoxClass parent_class;
+  CtkButtonBoxClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType      ctk_vbutton_box_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_button_box_new)
-GtkWidget *ctk_vbutton_box_new      (void);
+CtkWidget *ctk_vbutton_box_new      (void);
 
 G_END_DECLS
 

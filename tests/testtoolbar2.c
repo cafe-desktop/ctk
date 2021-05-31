@@ -2,12 +2,12 @@
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *frame;
-  GtkWidget *box3;
-  GtkWidget *view;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *frame;
+  CtkWidget *box3;
+  CtkWidget *view;
+  CtkWidget *button;
 
   ctk_init (NULL, NULL);
 

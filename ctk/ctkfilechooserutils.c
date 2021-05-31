@@ -1,6 +1,6 @@
 /* GTK - The GIMP Toolkit
  * ctkfilechooserutils.c: Private utility functions useful for
- *                        implementing a GtkFileChooser interface
+ *                        implementing a CtkFileChooser interface
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -25,60 +25,60 @@
 #include "ctkintl.h"
 
 
-static gboolean       delegate_set_current_folder     (GtkFileChooser    *chooser,
+static gboolean       delegate_set_current_folder     (CtkFileChooser    *chooser,
 						       GFile             *file,
 						       GError           **error);
-static GFile *        delegate_get_current_folder     (GtkFileChooser    *chooser);
-static void           delegate_set_current_name       (GtkFileChooser    *chooser,
+static GFile *        delegate_get_current_folder     (CtkFileChooser    *chooser);
+static void           delegate_set_current_name       (CtkFileChooser    *chooser,
 						       const gchar       *name);
-static gchar *        delegate_get_current_name       (GtkFileChooser    *chooser);
-static gboolean       delegate_select_file            (GtkFileChooser    *chooser,
+static gchar *        delegate_get_current_name       (CtkFileChooser    *chooser);
+static gboolean       delegate_select_file            (CtkFileChooser    *chooser,
 						       GFile             *file,
 						       GError           **error);
-static void           delegate_unselect_file          (GtkFileChooser    *chooser,
+static void           delegate_unselect_file          (CtkFileChooser    *chooser,
 						       GFile             *file);
-static void           delegate_select_all             (GtkFileChooser    *chooser);
-static void           delegate_unselect_all           (GtkFileChooser    *chooser);
-static GSList *       delegate_get_files              (GtkFileChooser    *chooser);
-static GFile *        delegate_get_preview_file       (GtkFileChooser    *chooser);
-static GtkFileSystem *delegate_get_file_system        (GtkFileChooser    *chooser);
-static void           delegate_add_filter             (GtkFileChooser    *chooser,
-						       GtkFileFilter     *filter);
-static void           delegate_remove_filter          (GtkFileChooser    *chooser,
-						       GtkFileFilter     *filter);
-static GSList *       delegate_list_filters           (GtkFileChooser    *chooser);
-static gboolean       delegate_add_shortcut_folder    (GtkFileChooser    *chooser,
+static void           delegate_select_all             (CtkFileChooser    *chooser);
+static void           delegate_unselect_all           (CtkFileChooser    *chooser);
+static GSList *       delegate_get_files              (CtkFileChooser    *chooser);
+static GFile *        delegate_get_preview_file       (CtkFileChooser    *chooser);
+static CtkFileSystem *delegate_get_file_system        (CtkFileChooser    *chooser);
+static void           delegate_add_filter             (CtkFileChooser    *chooser,
+						       CtkFileFilter     *filter);
+static void           delegate_remove_filter          (CtkFileChooser    *chooser,
+						       CtkFileFilter     *filter);
+static GSList *       delegate_list_filters           (CtkFileChooser    *chooser);
+static gboolean       delegate_add_shortcut_folder    (CtkFileChooser    *chooser,
 						       GFile             *file,
 						       GError           **error);
-static gboolean       delegate_remove_shortcut_folder (GtkFileChooser    *chooser,
+static gboolean       delegate_remove_shortcut_folder (CtkFileChooser    *chooser,
 						       GFile             *file,
 						       GError           **error);
-static GSList *       delegate_list_shortcut_folders  (GtkFileChooser    *chooser);
+static GSList *       delegate_list_shortcut_folders  (CtkFileChooser    *chooser);
 static void           delegate_notify                 (GObject           *object,
 						       GParamSpec        *pspec,
 						       gpointer           data);
-static void           delegate_current_folder_changed (GtkFileChooser    *chooser,
+static void           delegate_current_folder_changed (CtkFileChooser    *chooser,
 						       gpointer           data);
-static void           delegate_selection_changed      (GtkFileChooser    *chooser,
+static void           delegate_selection_changed      (CtkFileChooser    *chooser,
 						       gpointer           data);
-static void           delegate_update_preview         (GtkFileChooser    *chooser,
+static void           delegate_update_preview         (CtkFileChooser    *chooser,
 						       gpointer           data);
-static void           delegate_file_activated         (GtkFileChooser    *chooser,
+static void           delegate_file_activated         (CtkFileChooser    *chooser,
 						       gpointer           data);
 
-static GtkFileChooserConfirmation delegate_confirm_overwrite (GtkFileChooser    *chooser,
+static CtkFileChooserConfirmation delegate_confirm_overwrite (CtkFileChooser    *chooser,
 							      gpointer           data);
-static void           delegate_add_choice             (GtkFileChooser  *chooser,
+static void           delegate_add_choice             (CtkFileChooser  *chooser,
                                                        const char      *id,
                                                        const char      *label,
                                                        const char     **options,
                                                        const char     **option_labels);
-static void           delegate_remove_choice          (GtkFileChooser  *chooser,
+static void           delegate_remove_choice          (CtkFileChooser  *chooser,
                                                        const char      *id);
-static void           delegate_set_choice             (GtkFileChooser  *chooser,
+static void           delegate_set_choice             (CtkFileChooser  *chooser,
                                                        const char      *id,
                                                        const char      *option);
-static const char *   delegate_get_choice             (GtkFileChooser  *chooser,
+static const char *   delegate_get_choice             (CtkFileChooser  *chooser,
                                                        const char      *id);
 
 
@@ -87,8 +87,8 @@ static const char *   delegate_get_choice             (GtkFileChooser  *chooser,
  * @klass: the class structure for a type deriving from #GObject
  *
  * Installs the necessary properties for a class implementing
- * #GtkFileChooser. A #GtkParamSpecOverride property is installed
- * for each property, using the values from the #GtkFileChooserProp
+ * #CtkFileChooser. A #CtkParamSpecOverride property is installed
+ * for each property, using the values from the #CtkFileChooserProp
  * enumeration. The caller must make sure itself that the enumeration
  * values don’t collide with some other property values they
  * are using.
@@ -133,17 +133,17 @@ _ctk_file_chooser_install_properties (GObjectClass *klass)
 
 /**
  * _ctk_file_chooser_delegate_iface_init:
- * @iface: a #GtkFileChoserIface structure
+ * @iface: a #CtkFileChoserIface structure
  *
  * An interface-initialization function for use in cases where
  * an object is simply delegating the methods, signals of
- * the #GtkFileChooser interface to another object.
+ * the #CtkFileChooser interface to another object.
  * _ctk_file_chooser_set_delegate() must be called on each
  * instance of the object so that the delegate object can
  * be found.
  **/
 void
-_ctk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface)
+_ctk_file_chooser_delegate_iface_init (CtkFileChooserIface *iface)
 {
   iface->set_current_folder = delegate_set_current_folder;
   iface->get_current_folder = delegate_get_current_folder;
@@ -170,18 +170,18 @@ _ctk_file_chooser_delegate_iface_init (GtkFileChooserIface *iface)
 
 /**
  * _ctk_file_chooser_set_delegate:
- * @receiver: a #GObject implementing #GtkFileChooser
- * @delegate: another #GObject implementing #GtkFileChooser
+ * @receiver: a #GObject implementing #CtkFileChooser
+ * @delegate: another #GObject implementing #CtkFileChooser
  *
- * Establishes that calls on @receiver for #GtkFileChooser
+ * Establishes that calls on @receiver for #CtkFileChooser
  * methods should be delegated to @delegate, and that
- * #GtkFileChooser signals emitted on @delegate should be
+ * #CtkFileChooser signals emitted on @delegate should be
  * forwarded to @receiver. Must be used in conjunction with
  * _ctk_file_chooser_delegate_iface_init().
  **/
 void
-_ctk_file_chooser_set_delegate (GtkFileChooser *receiver,
-				GtkFileChooser *delegate)
+_ctk_file_chooser_set_delegate (CtkFileChooser *receiver,
+				CtkFileChooser *delegate)
 {
   g_return_if_fail (CTK_IS_FILE_CHOOSER (receiver));
   g_return_if_fail (CTK_IS_FILE_CHOOSER (delegate));
@@ -212,15 +212,15 @@ _ctk_file_chooser_delegate_get_quark (void)
   return quark;
 }
 
-static GtkFileChooser *
-get_delegate (GtkFileChooser *receiver)
+static CtkFileChooser *
+get_delegate (CtkFileChooser *receiver)
 {
   return g_object_get_qdata (G_OBJECT (receiver),
 			     CTK_FILE_CHOOSER_DELEGATE_QUARK);
 }
 
 static gboolean
-delegate_select_file (GtkFileChooser    *chooser,
+delegate_select_file (CtkFileChooser    *chooser,
 		      GFile             *file,
 		      GError           **error)
 {
@@ -228,64 +228,64 @@ delegate_select_file (GtkFileChooser    *chooser,
 }
 
 static void
-delegate_unselect_file (GtkFileChooser *chooser,
+delegate_unselect_file (CtkFileChooser *chooser,
 			GFile          *file)
 {
   ctk_file_chooser_unselect_file (get_delegate (chooser), file);
 }
 
 static void
-delegate_select_all (GtkFileChooser *chooser)
+delegate_select_all (CtkFileChooser *chooser)
 {
   ctk_file_chooser_select_all (get_delegate (chooser));
 }
 
 static void
-delegate_unselect_all (GtkFileChooser *chooser)
+delegate_unselect_all (CtkFileChooser *chooser)
 {
   ctk_file_chooser_unselect_all (get_delegate (chooser));
 }
 
 static GSList *
-delegate_get_files (GtkFileChooser *chooser)
+delegate_get_files (CtkFileChooser *chooser)
 {
   return ctk_file_chooser_get_files (get_delegate (chooser));
 }
 
 static GFile *
-delegate_get_preview_file (GtkFileChooser *chooser)
+delegate_get_preview_file (CtkFileChooser *chooser)
 {
   return ctk_file_chooser_get_preview_file (get_delegate (chooser));
 }
 
-static GtkFileSystem *
-delegate_get_file_system (GtkFileChooser *chooser)
+static CtkFileSystem *
+delegate_get_file_system (CtkFileChooser *chooser)
 {
   return _ctk_file_chooser_get_file_system (get_delegate (chooser));
 }
 
 static void
-delegate_add_filter (GtkFileChooser *chooser,
-		     GtkFileFilter  *filter)
+delegate_add_filter (CtkFileChooser *chooser,
+		     CtkFileFilter  *filter)
 {
   ctk_file_chooser_add_filter (get_delegate (chooser), filter);
 }
 
 static void
-delegate_remove_filter (GtkFileChooser *chooser,
-			GtkFileFilter  *filter)
+delegate_remove_filter (CtkFileChooser *chooser,
+			CtkFileFilter  *filter)
 {
   ctk_file_chooser_remove_filter (get_delegate (chooser), filter);
 }
 
 static GSList *
-delegate_list_filters (GtkFileChooser *chooser)
+delegate_list_filters (CtkFileChooser *chooser)
 {
   return ctk_file_chooser_list_filters (get_delegate (chooser));
 }
 
 static gboolean
-delegate_add_shortcut_folder (GtkFileChooser  *chooser,
+delegate_add_shortcut_folder (CtkFileChooser  *chooser,
 			      GFile           *file,
 			      GError         **error)
 {
@@ -293,7 +293,7 @@ delegate_add_shortcut_folder (GtkFileChooser  *chooser,
 }
 
 static gboolean
-delegate_remove_shortcut_folder (GtkFileChooser  *chooser,
+delegate_remove_shortcut_folder (CtkFileChooser  *chooser,
 				 GFile           *file,
 				 GError         **error)
 {
@@ -301,13 +301,13 @@ delegate_remove_shortcut_folder (GtkFileChooser  *chooser,
 }
 
 static GSList *
-delegate_list_shortcut_folders (GtkFileChooser *chooser)
+delegate_list_shortcut_folders (CtkFileChooser *chooser)
 {
   return _ctk_file_chooser_list_shortcut_folder_files (get_delegate (chooser));
 }
 
 static gboolean
-delegate_set_current_folder (GtkFileChooser  *chooser,
+delegate_set_current_folder (CtkFileChooser  *chooser,
 			     GFile           *file,
 			     GError         **error)
 {
@@ -315,20 +315,20 @@ delegate_set_current_folder (GtkFileChooser  *chooser,
 }
 
 static GFile *
-delegate_get_current_folder (GtkFileChooser *chooser)
+delegate_get_current_folder (CtkFileChooser *chooser)
 {
   return ctk_file_chooser_get_current_folder_file (get_delegate (chooser));
 }
 
 static void
-delegate_set_current_name (GtkFileChooser *chooser,
+delegate_set_current_name (CtkFileChooser *chooser,
 			   const gchar    *name)
 {
   ctk_file_chooser_set_current_name (get_delegate (chooser), name);
 }
 
 static gchar *
-delegate_get_current_name (GtkFileChooser *chooser)
+delegate_get_current_name (CtkFileChooser *chooser)
 {
   return ctk_file_chooser_get_current_name (get_delegate (chooser));
 }
@@ -347,38 +347,38 @@ delegate_notify (GObject    *object,
 }
 
 static void
-delegate_selection_changed (GtkFileChooser *chooser,
+delegate_selection_changed (CtkFileChooser *chooser,
 			    gpointer        data)
 {
   g_signal_emit_by_name (data, "selection-changed");
 }
 
 static void
-delegate_current_folder_changed (GtkFileChooser *chooser,
+delegate_current_folder_changed (CtkFileChooser *chooser,
 				 gpointer        data)
 {
   g_signal_emit_by_name (data, "current-folder-changed");
 }
 
 static void
-delegate_update_preview (GtkFileChooser    *chooser,
+delegate_update_preview (CtkFileChooser    *chooser,
 			 gpointer           data)
 {
   g_signal_emit_by_name (data, "update-preview");
 }
 
 static void
-delegate_file_activated (GtkFileChooser    *chooser,
+delegate_file_activated (CtkFileChooser    *chooser,
 			 gpointer           data)
 {
   g_signal_emit_by_name (data, "file-activated");
 }
 
-static GtkFileChooserConfirmation
-delegate_confirm_overwrite (GtkFileChooser    *chooser,
+static CtkFileChooserConfirmation
+delegate_confirm_overwrite (CtkFileChooser    *chooser,
 			    gpointer           data)
 {
-  GtkFileChooserConfirmation conf;
+  CtkFileChooserConfirmation conf;
 
   g_signal_emit_by_name (data, "confirm-overwrite", &conf);
   return conf;
@@ -398,7 +398,7 @@ get_parent_for_uri (const char *uri)
 	
 }
 
-/* Extracts the parent folders out of the supplied list of GtkRecentInfo* items, and returns
+/* Extracts the parent folders out of the supplied list of CtkRecentInfo* items, and returns
  * a list of GFile* for those unique parents.
  */
 GList *
@@ -414,7 +414,7 @@ _ctk_file_chooser_extract_recent_folders (GList *infos)
 
   for (l = infos; l; l = l->next)
     {
-      GtkRecentInfo *info = l->data;
+      CtkRecentInfo *info = l->data;
       const char *uri;
       GFile *parent;
 
@@ -441,10 +441,10 @@ _ctk_file_chooser_extract_recent_folders (GList *infos)
 }
 
 GSettings *
-_ctk_file_chooser_get_settings_for_widget (GtkWidget *widget)
+_ctk_file_chooser_get_settings_for_widget (CtkWidget *widget)
 {
   static GQuark file_chooser_settings_quark = 0;
-  GtkSettings *ctksettings;
+  CtkSettings *ctksettings;
   GSettings *settings;
 
   if (G_UNLIKELY (file_chooser_settings_quark == 0))
@@ -517,7 +517,7 @@ _ctk_file_chooser_label_for_file (GFile *file)
 }
 
 static void
-delegate_add_choice (GtkFileChooser *chooser,
+delegate_add_choice (CtkFileChooser *chooser,
                      const char      *id,
                      const char      *label,
                      const char     **options,
@@ -527,14 +527,14 @@ delegate_add_choice (GtkFileChooser *chooser,
                                id, label, options, option_labels);
 }
 static void
-delegate_remove_choice (GtkFileChooser  *chooser,
+delegate_remove_choice (CtkFileChooser  *chooser,
                         const char      *id)
 {
   ctk_file_chooser_remove_choice (get_delegate (chooser), id);
 }
 
 static void
-delegate_set_choice (GtkFileChooser  *chooser,
+delegate_set_choice (CtkFileChooser  *chooser,
                      const char      *id,
                      const char      *option)
 {
@@ -543,7 +543,7 @@ delegate_set_choice (GtkFileChooser  *chooser,
 
 
 static const char *
-delegate_get_choice (GtkFileChooser  *chooser,
+delegate_get_choice (CtkFileChooser  *chooser,
                      const char      *id)
 {
   return ctk_file_chooser_get_choice (get_delegate (chooser), id);

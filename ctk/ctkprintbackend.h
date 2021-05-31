@@ -20,11 +20,11 @@
 #define __CTK_PRINT_BACKEND_H__
 
 /* This is a "semi-private" header; it is meant only for
- * alternate GtkPrintDialog backend modules; no stability guarantees
+ * alternate CtkPrintDialog backend modules; no stability guarantees
  * are made at this point
  */
 #ifndef CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
-#error "GtkPrintBackend is not supported API for general use"
+#error "CtkPrintBackend is not supported API for general use"
 #endif
 
 #include <ctk/ctk.h>
@@ -33,8 +33,8 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkPrintBackendClass    GtkPrintBackendClass;
-typedef struct _GtkPrintBackendPrivate  GtkPrintBackendPrivate;
+typedef struct _CtkPrintBackendClass    CtkPrintBackendClass;
+typedef struct _CtkPrintBackendPrivate  CtkPrintBackendPrivate;
 
 #define CTK_PRINT_BACKEND_ERROR (ctk_print_backend_error_quark ())
 
@@ -42,84 +42,84 @@ typedef enum
 {
   /* TODO: add specific errors */
   CTK_PRINT_BACKEND_ERROR_GENERIC
-} GtkPrintBackendError;
+} CtkPrintBackendError;
 
 GDK_AVAILABLE_IN_ALL
 GQuark     ctk_print_backend_error_quark      (void);
 
 #define CTK_TYPE_PRINT_BACKEND                  (ctk_print_backend_get_type ())
-#define CTK_PRINT_BACKEND(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND, GtkPrintBackend))
-#define CTK_PRINT_BACKEND_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND, GtkPrintBackendClass))
+#define CTK_PRINT_BACKEND(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND, CtkPrintBackend))
+#define CTK_PRINT_BACKEND_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND, CtkPrintBackendClass))
 #define CTK_IS_PRINT_BACKEND(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_BACKEND))
 #define CTK_IS_PRINT_BACKEND_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_BACKEND))
-#define CTK_PRINT_BACKEND_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_BACKEND, GtkPrintBackendClass))
+#define CTK_PRINT_BACKEND_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_BACKEND, CtkPrintBackendClass))
 
 typedef enum 
 {
   CTK_PRINT_BACKEND_STATUS_UNKNOWN,
   CTK_PRINT_BACKEND_STATUS_OK,
   CTK_PRINT_BACKEND_STATUS_UNAVAILABLE
-} GtkPrintBackendStatus;
+} CtkPrintBackendStatus;
 
-struct _GtkPrintBackend
+struct _CtkPrintBackend
 {
   GObject parent_instance;
 
-  GtkPrintBackendPrivate *priv;
+  CtkPrintBackendPrivate *priv;
 };
 
-struct _GtkPrintBackendClass
+struct _CtkPrintBackendClass
 {
   GObjectClass parent_class;
 
   /* Global backend methods: */
-  void                   (*request_printer_list)            (GtkPrintBackend        *backend);
-  void                   (*print_stream)                    (GtkPrintBackend        *backend,
-							     GtkPrintJob            *job,
+  void                   (*request_printer_list)            (CtkPrintBackend        *backend);
+  void                   (*print_stream)                    (CtkPrintBackend        *backend,
+							     CtkPrintJob            *job,
 							     GIOChannel             *data_io,
-							     GtkPrintJobCompleteFunc callback,
+							     CtkPrintJobCompleteFunc callback,
 							     gpointer                user_data,
 							     GDestroyNotify          dnotify);
 
   /* Printer methods: */
-  void                  (*printer_request_details)           (GtkPrinter          *printer);
-  cairo_surface_t *     (*printer_create_cairo_surface)      (GtkPrinter          *printer,
-							      GtkPrintSettings    *settings,
+  void                  (*printer_request_details)           (CtkPrinter          *printer);
+  cairo_surface_t *     (*printer_create_cairo_surface)      (CtkPrinter          *printer,
+							      CtkPrintSettings    *settings,
 							      gdouble              height,
 							      gdouble              width,
 							      GIOChannel          *cache_io);
-  GtkPrinterOptionSet * (*printer_get_options)               (GtkPrinter          *printer,
-							      GtkPrintSettings    *settings,
-							      GtkPageSetup        *page_setup,
-							      GtkPrintCapabilities capabilities);
-  gboolean              (*printer_mark_conflicts)            (GtkPrinter          *printer,
-							      GtkPrinterOptionSet *options);
-  void                  (*printer_get_settings_from_options) (GtkPrinter          *printer,
-							      GtkPrinterOptionSet *options,
-							      GtkPrintSettings    *settings);
-  void                  (*printer_prepare_for_print)         (GtkPrinter          *printer,
-							      GtkPrintJob         *print_job,
-							      GtkPrintSettings    *settings,
-							      GtkPageSetup        *page_setup);
-  GList  *              (*printer_list_papers)               (GtkPrinter          *printer);
-  GtkPageSetup *        (*printer_get_default_page_size)     (GtkPrinter          *printer);
-  gboolean              (*printer_get_hard_margins)          (GtkPrinter          *printer,
+  CtkPrinterOptionSet * (*printer_get_options)               (CtkPrinter          *printer,
+							      CtkPrintSettings    *settings,
+							      CtkPageSetup        *page_setup,
+							      CtkPrintCapabilities capabilities);
+  gboolean              (*printer_mark_conflicts)            (CtkPrinter          *printer,
+							      CtkPrinterOptionSet *options);
+  void                  (*printer_get_settings_from_options) (CtkPrinter          *printer,
+							      CtkPrinterOptionSet *options,
+							      CtkPrintSettings    *settings);
+  void                  (*printer_prepare_for_print)         (CtkPrinter          *printer,
+							      CtkPrintJob         *print_job,
+							      CtkPrintSettings    *settings,
+							      CtkPageSetup        *page_setup);
+  GList  *              (*printer_list_papers)               (CtkPrinter          *printer);
+  CtkPageSetup *        (*printer_get_default_page_size)     (CtkPrinter          *printer);
+  gboolean              (*printer_get_hard_margins)          (CtkPrinter          *printer,
 							      gdouble             *top,
 							      gdouble             *bottom,
 							      gdouble             *left,
 							      gdouble             *right);
-  GtkPrintCapabilities  (*printer_get_capabilities)          (GtkPrinter          *printer);
+  CtkPrintCapabilities  (*printer_get_capabilities)          (CtkPrinter          *printer);
 
   /* Signals */
-  void                  (*printer_list_changed)              (GtkPrintBackend     *backend);
-  void                  (*printer_list_done)                 (GtkPrintBackend     *backend);
-  void                  (*printer_added)                     (GtkPrintBackend     *backend,
-							      GtkPrinter          *printer);
-  void                  (*printer_removed)                   (GtkPrintBackend     *backend,
-							      GtkPrinter          *printer);
-  void                  (*printer_status_changed)            (GtkPrintBackend     *backend,
-							      GtkPrinter          *printer);
-  void                  (*request_password)                  (GtkPrintBackend     *backend,
+  void                  (*printer_list_changed)              (CtkPrintBackend     *backend);
+  void                  (*printer_list_done)                 (CtkPrintBackend     *backend);
+  void                  (*printer_added)                     (CtkPrintBackend     *backend,
+							      CtkPrinter          *printer);
+  void                  (*printer_removed)                   (CtkPrintBackend     *backend,
+							      CtkPrinter          *printer);
+  void                  (*printer_status_changed)            (CtkPrintBackend     *backend,
+							      CtkPrinter          *printer);
+  void                  (*request_password)                  (CtkPrintBackend     *backend,
                                                               gpointer             auth_info_required,
                                                               gpointer             auth_info_default,
                                                               gpointer             auth_info_display,
@@ -128,13 +128,13 @@ struct _GtkPrintBackendClass
                                                               gboolean             can_store_auth_info);
 
   /* not a signal */
-  void                  (*set_password)                      (GtkPrintBackend     *backend,
+  void                  (*set_password)                      (CtkPrintBackend     *backend,
                                                               gchar              **auth_info_required,
                                                               gchar              **auth_info,
                                                               gboolean             store_auth_info);
 
-  gboolean              (*printer_get_hard_margins_for_paper_size) (GtkPrinter    *printer,
-								    GtkPaperSize  *paper_size,
+  gboolean              (*printer_get_hard_margins_for_paper_size) (CtkPrinter    *printer,
+								    CtkPaperSize  *paper_size,
 								    gdouble       *top,
 								    gdouble       *bottom,
 								    gdouble       *left,
@@ -150,82 +150,82 @@ GDK_AVAILABLE_IN_ALL
 GType   ctk_print_backend_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GList      *ctk_print_backend_get_printer_list     (GtkPrintBackend         *print_backend);
+GList      *ctk_print_backend_get_printer_list     (CtkPrintBackend         *print_backend);
 GDK_AVAILABLE_IN_ALL
-gboolean    ctk_print_backend_printer_list_is_done (GtkPrintBackend         *print_backend);
+gboolean    ctk_print_backend_printer_list_is_done (CtkPrintBackend         *print_backend);
 GDK_AVAILABLE_IN_ALL
-GtkPrinter *ctk_print_backend_find_printer         (GtkPrintBackend         *print_backend,
+CtkPrinter *ctk_print_backend_find_printer         (CtkPrintBackend         *print_backend,
 						    const gchar             *printer_name);
 GDK_AVAILABLE_IN_ALL
-void        ctk_print_backend_print_stream         (GtkPrintBackend         *print_backend,
-						    GtkPrintJob             *job,
+void        ctk_print_backend_print_stream         (CtkPrintBackend         *print_backend,
+						    CtkPrintJob             *job,
 						    GIOChannel              *data_io,
-						    GtkPrintJobCompleteFunc  callback,
+						    CtkPrintJobCompleteFunc  callback,
 						    gpointer                 user_data,
 						    GDestroyNotify           dnotify);
 GDK_AVAILABLE_IN_ALL
 GList *     ctk_print_backend_load_modules         (void);
 GDK_AVAILABLE_IN_ALL
-void        ctk_print_backend_destroy              (GtkPrintBackend         *print_backend);
+void        ctk_print_backend_destroy              (CtkPrintBackend         *print_backend);
 GDK_AVAILABLE_IN_ALL
-void        ctk_print_backend_set_password         (GtkPrintBackend         *backend, 
+void        ctk_print_backend_set_password         (CtkPrintBackend         *backend, 
                                                     gchar                  **auth_info_required,
                                                     gchar                  **auth_info,
                                                     gboolean                 can_store_auth_info);
 
-/* Backend-only functions for GtkPrintBackend */
+/* Backend-only functions for CtkPrintBackend */
 
 GDK_AVAILABLE_IN_ALL
-void        ctk_print_backend_add_printer          (GtkPrintBackend         *print_backend,
-						    GtkPrinter              *printer);
+void        ctk_print_backend_add_printer          (CtkPrintBackend         *print_backend,
+						    CtkPrinter              *printer);
 GDK_AVAILABLE_IN_ALL
-void        ctk_print_backend_remove_printer       (GtkPrintBackend         *print_backend,
-						    GtkPrinter              *printer);
+void        ctk_print_backend_remove_printer       (CtkPrintBackend         *print_backend,
+						    CtkPrinter              *printer);
 GDK_AVAILABLE_IN_ALL
-void        ctk_print_backend_set_list_done        (GtkPrintBackend         *backend);
+void        ctk_print_backend_set_list_done        (CtkPrintBackend         *backend);
 
 
-/* Backend-only functions for GtkPrinter */
+/* Backend-only functions for CtkPrinter */
 GDK_AVAILABLE_IN_ALL
-gboolean    ctk_printer_is_new                (GtkPrinter      *printer);
+gboolean    ctk_printer_is_new                (CtkPrinter      *printer);
 GDK_AVAILABLE_IN_ALL
-void        ctk_printer_set_accepts_pdf       (GtkPrinter      *printer,
+void        ctk_printer_set_accepts_pdf       (CtkPrinter      *printer,
 					       gboolean         val);
 GDK_AVAILABLE_IN_ALL
-void        ctk_printer_set_accepts_ps        (GtkPrinter      *printer,
+void        ctk_printer_set_accepts_ps        (CtkPrinter      *printer,
 					       gboolean         val);
 GDK_AVAILABLE_IN_ALL
-void        ctk_printer_set_is_new            (GtkPrinter      *printer,
+void        ctk_printer_set_is_new            (CtkPrinter      *printer,
 					       gboolean         val);
 GDK_AVAILABLE_IN_ALL
-void        ctk_printer_set_is_active         (GtkPrinter      *printer,
+void        ctk_printer_set_is_active         (CtkPrinter      *printer,
 					       gboolean         val);
 GDK_AVAILABLE_IN_ALL
-gboolean    ctk_printer_set_is_paused         (GtkPrinter      *printer,
+gboolean    ctk_printer_set_is_paused         (CtkPrinter      *printer,
 					       gboolean         val);
 GDK_AVAILABLE_IN_ALL
-gboolean    ctk_printer_set_is_accepting_jobs (GtkPrinter      *printer,
+gboolean    ctk_printer_set_is_accepting_jobs (CtkPrinter      *printer,
 					       gboolean         val);
 GDK_AVAILABLE_IN_ALL
-void        ctk_printer_set_has_details       (GtkPrinter      *printer,
+void        ctk_printer_set_has_details       (CtkPrinter      *printer,
 					       gboolean         val);
 GDK_AVAILABLE_IN_ALL
-void        ctk_printer_set_is_default        (GtkPrinter      *printer,
+void        ctk_printer_set_is_default        (CtkPrinter      *printer,
 					       gboolean         val);
 GDK_AVAILABLE_IN_ALL
-void        ctk_printer_set_icon_name         (GtkPrinter      *printer,
+void        ctk_printer_set_icon_name         (CtkPrinter      *printer,
 					       const gchar     *icon);
 GDK_AVAILABLE_IN_ALL
-gboolean    ctk_printer_set_job_count         (GtkPrinter      *printer,
+gboolean    ctk_printer_set_job_count         (CtkPrinter      *printer,
 					       gint             count);
 GDK_AVAILABLE_IN_ALL
-gboolean    ctk_printer_set_location          (GtkPrinter      *printer,
+gboolean    ctk_printer_set_location          (CtkPrinter      *printer,
 					       const gchar     *location);
 GDK_AVAILABLE_IN_ALL
-gboolean    ctk_printer_set_description       (GtkPrinter      *printer,
+gboolean    ctk_printer_set_description       (CtkPrinter      *printer,
 					       const gchar     *description);
 GDK_AVAILABLE_IN_ALL
-gboolean    ctk_printer_set_state_message     (GtkPrinter      *printer,
+gboolean    ctk_printer_set_state_message     (CtkPrinter      *printer,
 					       const gchar     *message);
 
 

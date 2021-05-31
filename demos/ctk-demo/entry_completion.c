@@ -1,7 +1,7 @@
 /* Entry/Entry Completion
  *
- * GtkEntryCompletion provides a mechanism for adding support for
- * completion in GtkEntry.
+ * CtkEntryCompletion provides a mechanism for adding support for
+ * completion in CtkEntry.
  *
  */
 
@@ -9,11 +9,11 @@
 #include <ctk/ctk.h>
 
 /* Creates a tree model containing the completions */
-GtkTreeModel *
+CtkTreeModel *
 create_completion_model (void)
 {
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeIter iter;
 
   store = ctk_list_store_new (1, G_TYPE_STRING);
 
@@ -33,15 +33,15 @@ create_completion_model (void)
 }
 
 
-GtkWidget *
-do_entry_completion (GtkWidget *do_widget)
+CtkWidget *
+do_entry_completion (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkEntryCompletion *completion;
-  GtkTreeModel *completion_model;
+  static CtkWidget *window = NULL;
+  CtkWidget *vbox;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkEntryCompletion *completion;
+  CtkTreeModel *completion_model;
 
   if (!window)
     {

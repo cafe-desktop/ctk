@@ -34,7 +34,7 @@ static gint timeout = 0;
 static GSList *icons = NULL;
 
 static gboolean
-size_changed_cb (GtkStatusIcon *icon,
+size_changed_cb (CtkStatusIcon *icon,
 		 int size)
 {
   g_print ("status icon %p size-changed size = %d\n", icon, size);
@@ -43,23 +43,23 @@ size_changed_cb (GtkStatusIcon *icon,
 }
 
 static void
-embedded_changed_cb (GtkStatusIcon *icon)
+embedded_changed_cb (CtkStatusIcon *icon)
 {
   g_print ("status icon %p embedded changed to %d\n", icon,
 	   ctk_status_icon_is_embedded (icon));
 }
 
 static void
-orientation_changed_cb (GtkStatusIcon *icon)
+orientation_changed_cb (CtkStatusIcon *icon)
 {
-  GtkOrientation orientation;
+  CtkOrientation orientation;
 
   g_object_get (icon, "orientation", &orientation, NULL);
   g_print ("status icon %p orientation changed to %d\n", icon, orientation);
 }
 
 static void
-screen_changed_cb (GtkStatusIcon *icon)
+screen_changed_cb (CtkStatusIcon *icon)
 {
   g_print ("status icon %p screen changed to %p\n", icon,
 	   ctk_status_icon_get_screen (icon));
@@ -85,7 +85,7 @@ update_icon (void)
 
   for (l = icons; l; l = l->next)
     {
-      GtkStatusIcon *status_icon = l->data;
+      CtkStatusIcon *status_icon = l->data;
 
       ctk_status_icon_set_from_icon_name (status_icon, icon_name);
       ctk_status_icon_set_tooltip_text (status_icon, tooltip);
@@ -106,7 +106,7 @@ timeout_handler (gpointer data)
 }
 
 static void
-visible_toggle_toggled (GtkToggleButton *toggle)
+visible_toggle_toggled (CtkToggleButton *toggle)
 {
   GSList *l;
 
@@ -116,7 +116,7 @@ visible_toggle_toggled (GtkToggleButton *toggle)
 }
 
 static void
-timeout_toggle_toggled (GtkToggleButton *toggle)
+timeout_toggle_toggled (CtkToggleButton *toggle)
 {
   if (timeout)
     {
@@ -130,11 +130,11 @@ timeout_toggle_toggled (GtkToggleButton *toggle)
 }
 
 static void
-icon_activated (GtkStatusIcon *icon)
+icon_activated (CtkStatusIcon *icon)
 {
-  GtkWidget *content_area;
-  GtkWidget *dialog;
-  GtkWidget *toggle;
+  CtkWidget *content_area;
+  CtkWidget *dialog;
+  CtkWidget *toggle;
 
   dialog = g_object_get_data (G_OBJECT (icon), "test-status-icon-dialog");
   if (dialog == NULL)
@@ -180,13 +180,13 @@ icon_activated (GtkStatusIcon *icon)
 }
 
 static void
-do_quit (GtkMenuItem *item)
+do_quit (CtkMenuItem *item)
 {
   GSList *l;
 
   for (l = icons; l; l = l->next)
     {
-      GtkStatusIcon *icon = l->data;
+      CtkStatusIcon *icon = l->data;
 
       ctk_status_icon_set_visible (icon, FALSE);
       g_object_unref (icon);
@@ -199,17 +199,17 @@ do_quit (GtkMenuItem *item)
 }
 
 static void
-do_exit (GtkMenuItem *item)
+do_exit (CtkMenuItem *item)
 {
   exit (0);
 }
 
 static void 
-popup_menu (GtkStatusIcon *icon,
+popup_menu (CtkStatusIcon *icon,
 	    guint          button,
 	    guint32        activate_time)
 {
-  GtkWidget *menu, *menuitem;
+  CtkWidget *menu, *menuitem;
 
   menu = ctk_menu_new ();
 
@@ -239,7 +239,7 @@ popup_menu (GtkStatusIcon *icon,
 int
 main (int argc, char **argv)
 {
-  GtkStatusIcon *icon;
+  CtkStatusIcon *icon;
 
   ctk_init (&argc, &argv);
 

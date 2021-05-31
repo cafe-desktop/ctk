@@ -27,15 +27,15 @@
 #include "ctksizerequest.h"
 #include "ctkwidgetprivate.h"
 
-/* GtkBoxGadget is a container gadget implementation that arranges its
+/* CtkBoxGadget is a container gadget implementation that arranges its
  * children in a row, either horizontally or vertically. Children can
  * be either widgets or gadgets, and can be set to expand horizontally
  * or vertically, or both.
  */
 
-typedef struct _GtkBoxGadgetPrivate GtkBoxGadgetPrivate;
-struct _GtkBoxGadgetPrivate {
-  GtkOrientation orientation;
+typedef struct _CtkBoxGadgetPrivate CtkBoxGadgetPrivate;
+struct _CtkBoxGadgetPrivate {
+  CtkOrientation orientation;
   GArray *children;
 
   guint draw_focus       : 1;
@@ -44,17 +44,17 @@ struct _GtkBoxGadgetPrivate {
   guint align_reverse    : 1;
 };
 
-typedef gboolean (* ComputeExpandFunc) (GObject *object, GtkOrientation orientation);
+typedef gboolean (* ComputeExpandFunc) (GObject *object, CtkOrientation orientation);
 
-typedef struct _GtkBoxGadgetChild GtkBoxGadgetChild;
-struct _GtkBoxGadgetChild {
+typedef struct _CtkBoxGadgetChild CtkBoxGadgetChild;
+struct _CtkBoxGadgetChild {
   GObject *object;
   gboolean expand;
-  GtkAlign align;
+  CtkAlign align;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkBoxGadget, ctk_box_gadget, CTK_TYPE_CSS_GADGET,
-                         G_ADD_PRIVATE (GtkBoxGadget))
+G_DEFINE_TYPE_WITH_CODE (CtkBoxGadget, ctk_box_gadget, CTK_TYPE_CSS_GADGET,
+                         G_ADD_PRIVATE (CtkBoxGadget))
 
 static gboolean
 ctk_box_gadget_child_is_visible (GObject *child)
@@ -66,10 +66,10 @@ ctk_box_gadget_child_is_visible (GObject *child)
 }
 
 static gboolean
-ctk_box_gadget_child_compute_expand (GtkBoxGadget      *gadget,
-                                     GtkBoxGadgetChild *child)
+ctk_box_gadget_child_compute_expand (CtkBoxGadget      *gadget,
+                                     CtkBoxGadgetChild *child)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
 
   if (child->expand)
     return TRUE;
@@ -80,12 +80,12 @@ ctk_box_gadget_child_compute_expand (GtkBoxGadget      *gadget,
   return FALSE;
 }
 
-static GtkAlign
-ctk_box_gadget_child_get_align (GtkBoxGadget      *gadget,
-                                GtkBoxGadgetChild *child)
+static CtkAlign
+ctk_box_gadget_child_get_align (CtkBoxGadget      *gadget,
+                                CtkBoxGadgetChild *child)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
-  GtkAlign align;
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkAlign align;
 
   if (CTK_IS_WIDGET (child->object))
     {
@@ -100,8 +100,8 @@ ctk_box_gadget_child_get_align (GtkBoxGadget      *gadget,
   return align;
 }
 
-static GtkAlign
-effective_align (GtkAlign align,
+static CtkAlign
+effective_align (CtkAlign align,
                  gboolean reverse)
 {
   switch (align)
@@ -117,7 +117,7 @@ effective_align (GtkAlign align,
 
 static void
 ctk_box_gadget_measure_child (GObject        *child,
-                              GtkOrientation  orientation,
+                              CtkOrientation  orientation,
                               gint            for_size,
                               gint           *minimum,
                               gint           *natural,
@@ -143,19 +143,19 @@ ctk_box_gadget_measure_child (GObject        *child,
 }
 
 static void
-ctk_box_gadget_distribute (GtkBoxGadget     *gadget,
+ctk_box_gadget_distribute (CtkBoxGadget     *gadget,
                            gint              for_size,
                            gint              size,
-                           GtkRequestedSize *sizes)
+                           CtkRequestedSize *sizes)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
   guint i, n_expand;
 
   n_expand = 0;
 
   for (i = 0 ; i < priv->children->len; i++)
     {
-      GtkBoxGadgetChild *child = &g_array_index (priv->children, GtkBoxGadgetChild, i);
+      CtkBoxGadgetChild *child = &g_array_index (priv->children, CtkBoxGadgetChild, i);
 
       ctk_box_gadget_measure_child (child->object,
                                     priv->orientation,
@@ -181,7 +181,7 @@ ctk_box_gadget_distribute (GtkBoxGadget     *gadget,
 
   for (i = 0 ; i < priv->children->len; i++)
     {
-      GtkBoxGadgetChild *child = &g_array_index (priv->children, GtkBoxGadgetChild, i);
+      CtkBoxGadgetChild *child = &g_array_index (priv->children, CtkBoxGadgetChild, i);
 
       if (!ctk_box_gadget_child_is_visible (child->object) ||
           !ctk_box_gadget_child_compute_expand (gadget, child))
@@ -196,15 +196,15 @@ ctk_box_gadget_distribute (GtkBoxGadget     *gadget,
 }
 
 static void
-ctk_box_gadget_measure_orientation (GtkCssGadget   *gadget,
-                                    GtkOrientation  orientation,
+ctk_box_gadget_measure_orientation (CtkCssGadget   *gadget,
+                                    CtkOrientation  orientation,
                                     gint            for_size,
                                     gint           *minimum,
                                     gint           *natural,
                                     gint           *minimum_baseline,
                                     gint           *natural_baseline)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
   gint child_min, child_nat;
   guint i;
 
@@ -213,7 +213,7 @@ ctk_box_gadget_measure_orientation (GtkCssGadget   *gadget,
 
   for (i = 0 ; i < priv->children->len; i++)
     {
-      GtkBoxGadgetChild *child = &g_array_index (priv->children, GtkBoxGadgetChild, i);
+      CtkBoxGadgetChild *child = &g_array_index (priv->children, CtkBoxGadgetChild, i);
 
       ctk_box_gadget_measure_child (child->object,
                                     orientation,
@@ -227,23 +227,23 @@ ctk_box_gadget_measure_orientation (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_box_gadget_measure_opposite (GtkCssGadget   *gadget,
-                                 GtkOrientation  orientation,
+ctk_box_gadget_measure_opposite (CtkCssGadget   *gadget,
+                                 CtkOrientation  orientation,
                                  gint            for_size,
                                  gint           *minimum,
                                  gint           *natural,
                                  gint           *minimum_baseline,
                                  gint           *natural_baseline)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
   int child_min, child_nat, child_min_baseline, child_nat_baseline;
   int total_min, above_min, below_min, total_nat, above_nat, below_nat;
-  GtkRequestedSize *sizes;
+  CtkRequestedSize *sizes;
   guint i;
 
   if (for_size >= 0)
     {
-      sizes = g_newa (GtkRequestedSize, priv->children->len);
+      sizes = g_newa (CtkRequestedSize, priv->children->len);
       ctk_box_gadget_distribute (CTK_BOX_GADGET (gadget), -1, for_size, sizes);
     }
 
@@ -252,7 +252,7 @@ ctk_box_gadget_measure_opposite (GtkCssGadget   *gadget,
 
   for (i = 0 ; i < priv->children->len; i++)
     {
-      GtkBoxGadgetChild *child = &g_array_index (priv->children, GtkBoxGadgetChild, i);
+      CtkBoxGadgetChild *child = &g_array_index (priv->children, CtkBoxGadgetChild, i);
 
       ctk_box_gadget_measure_child (child->object,
                                     orientation,
@@ -290,15 +290,15 @@ ctk_box_gadget_measure_opposite (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_box_gadget_get_preferred_size (GtkCssGadget   *gadget,
-                                   GtkOrientation  orientation,
+ctk_box_gadget_get_preferred_size (CtkCssGadget   *gadget,
+                                   CtkOrientation  orientation,
                                    gint            for_size,
                                    gint           *minimum,
                                    gint           *natural,
                                    gint           *minimum_baseline,
                                    gint           *natural_baseline)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
 
   if (priv->orientation == orientation)
     ctk_box_gadget_measure_orientation (gadget, orientation, for_size, minimum, natural, minimum_baseline, natural_baseline);
@@ -308,11 +308,11 @@ ctk_box_gadget_get_preferred_size (GtkCssGadget   *gadget,
 
 static void
 ctk_box_gadget_allocate_child (GObject        *child,
-                               GtkOrientation  box_orientation,
-                               GtkAlign        child_align,
-                               GtkAllocation  *allocation,
+                               CtkOrientation  box_orientation,
+                               CtkAlign        child_align,
+                               CtkAllocation  *allocation,
                                int             baseline,
-                               GtkAllocation  *out_clip)
+                               CtkAllocation  *out_clip)
 {
   if (CTK_IS_WIDGET (child))
     {
@@ -321,7 +321,7 @@ ctk_box_gadget_allocate_child (GObject        *child,
     }
   else
     {
-      GtkAllocation child_allocation;
+      CtkAllocation child_allocation;
       int minimum, natural;
       int minimum_baseline, natural_baseline;
 
@@ -405,19 +405,19 @@ ctk_box_gadget_allocate_child (GObject        *child,
 }
 
 static void
-ctk_box_gadget_allocate (GtkCssGadget        *gadget,
-                         const GtkAllocation *allocation,
+ctk_box_gadget_allocate (CtkCssGadget        *gadget,
+                         const CtkAllocation *allocation,
                          int                  baseline,
-                         GtkAllocation       *out_clip)
+                         CtkAllocation       *out_clip)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
-  GtkRequestedSize *sizes;
-  GtkAllocation child_allocation, child_clip;
-  GtkAlign child_align;
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkRequestedSize *sizes;
+  CtkAllocation child_allocation, child_clip;
+  CtkAlign child_align;
   guint i;
 
   child_allocation = *allocation;
-  sizes = g_newa (GtkRequestedSize, priv->children->len);
+  sizes = g_newa (CtkRequestedSize, priv->children->len);
 
   if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     {
@@ -429,7 +429,7 @@ ctk_box_gadget_allocate (GtkCssGadget        *gadget,
       for (i = 0; i < priv->children->len; i++)
         {
           guint idx = priv->allocate_reverse ? priv->children->len - 1 - i : i;
-          GtkBoxGadgetChild *child = &g_array_index (priv->children, GtkBoxGadgetChild, idx);
+          CtkBoxGadgetChild *child = &g_array_index (priv->children, CtkBoxGadgetChild, idx);
           child_allocation.width = sizes[idx].minimum_size;
           child_allocation.height = allocation->height;
           child_allocation.y = allocation->y;
@@ -463,7 +463,7 @@ ctk_box_gadget_allocate (GtkCssGadget        *gadget,
       for (i = 0 ; i < priv->children->len; i++)
         {
           guint idx = priv->allocate_reverse ? priv->children->len - 1 - i : i;
-          GtkBoxGadgetChild *child = &g_array_index (priv->children, GtkBoxGadgetChild, idx);
+          CtkBoxGadgetChild *child = &g_array_index (priv->children, CtkBoxGadgetChild, idx);
           child_allocation.height = sizes[idx].minimum_size;
           child_allocation.width = allocation->width;
           child_allocation.x = allocation->x;
@@ -490,21 +490,21 @@ ctk_box_gadget_allocate (GtkCssGadget        *gadget,
 }
 
 static gboolean
-ctk_box_gadget_draw (GtkCssGadget *gadget,
+ctk_box_gadget_draw (CtkCssGadget *gadget,
                      cairo_t      *cr,
                      int           x,
                      int           y,
                      int           width,
                      int           height)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
-  GtkWidget *owner = ctk_css_gadget_get_owner (gadget);
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkWidget *owner = ctk_css_gadget_get_owner (gadget);
   guint i;
 
   for (i = 0; i < priv->children->len; i++)
     {
       guint draw_index = priv->draw_reverse ? priv->children->len - 1 - i : i;
-      GtkBoxGadgetChild *child = &g_array_index (priv->children, GtkBoxGadgetChild, draw_index);
+      CtkBoxGadgetChild *child = &g_array_index (priv->children, CtkBoxGadgetChild, draw_index);
 
       if (CTK_IS_WIDGET (child->object))
         ctk_container_propagate_draw (CTK_CONTAINER (owner), CTK_WIDGET (child->object), cr);
@@ -521,7 +521,7 @@ ctk_box_gadget_draw (GtkCssGadget *gadget,
 static void
 ctk_box_gadget_finalize (GObject *object)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (object));
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (object));
 
   g_array_free (priv->children, TRUE);
 
@@ -529,9 +529,9 @@ ctk_box_gadget_finalize (GObject *object)
 }
 
 static void
-ctk_box_gadget_class_init (GtkBoxGadgetClass *klass)
+ctk_box_gadget_class_init (CtkBoxGadgetClass *klass)
 {
-  GtkCssGadgetClass *gadget_class = CTK_CSS_GADGET_CLASS (klass);
+  CtkCssGadgetClass *gadget_class = CTK_CSS_GADGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_box_gadget_finalize;
@@ -544,23 +544,23 @@ ctk_box_gadget_class_init (GtkBoxGadgetClass *klass)
 static void
 ctk_box_gadget_clear_child (gpointer data)
 {
-  GtkBoxGadgetChild *child = data;
+  CtkBoxGadgetChild *child = data;
 
   g_object_unref (child->object);
 }
 
 static void
-ctk_box_gadget_init (GtkBoxGadget *gadget)
+ctk_box_gadget_init (CtkBoxGadget *gadget)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
 
-  priv->children = g_array_new (FALSE, FALSE, sizeof (GtkBoxGadgetChild));
+  priv->children = g_array_new (FALSE, FALSE, sizeof (CtkBoxGadgetChild));
   g_array_set_clear_func (priv->children, ctk_box_gadget_clear_child);
 }
 
-GtkCssGadget *
-ctk_box_gadget_new_for_node (GtkCssNode *node,
-                               GtkWidget  *owner)
+CtkCssGadget *
+ctk_box_gadget_new_for_node (CtkCssNode *node,
+                               CtkWidget  *owner)
 {
   return g_object_new (CTK_TYPE_BOX_GADGET,
                        "node", node,
@@ -568,14 +568,14 @@ ctk_box_gadget_new_for_node (GtkCssNode *node,
                        NULL);
 }
 
-GtkCssGadget *
+CtkCssGadget *
 ctk_box_gadget_new (const char   *name,
-                    GtkWidget    *owner,
-                    GtkCssGadget *parent,
-                    GtkCssGadget *next_sibling)
+                    CtkWidget    *owner,
+                    CtkCssGadget *parent,
+                    CtkCssGadget *next_sibling)
 {
-  GtkCssNode *node;
-  GtkCssGadget *result;
+  CtkCssNode *node;
+  CtkCssGadget *result;
 
   node = ctk_css_node_new ();
   ctk_css_node_set_name (node, g_intern_string (name));
@@ -592,51 +592,51 @@ ctk_box_gadget_new (const char   *name,
 }
 
 void
-ctk_box_gadget_set_orientation (GtkBoxGadget   *gadget,
-                                GtkOrientation  orientation)
+ctk_box_gadget_set_orientation (CtkBoxGadget   *gadget,
+                                CtkOrientation  orientation)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
 
   priv->orientation = orientation;
 }
 
 void
-ctk_box_gadget_set_draw_focus (GtkBoxGadget *gadget,
+ctk_box_gadget_set_draw_focus (CtkBoxGadget *gadget,
                                gboolean      draw_focus)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
 
   priv->draw_focus = draw_focus;
 }
 
 void
-ctk_box_gadget_set_draw_reverse (GtkBoxGadget *gadget,
+ctk_box_gadget_set_draw_reverse (CtkBoxGadget *gadget,
                                  gboolean      draw_reverse)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
 
   priv->draw_reverse = draw_reverse;
 }
 
 void
-ctk_box_gadget_set_allocate_reverse (GtkBoxGadget *gadget,
+ctk_box_gadget_set_allocate_reverse (CtkBoxGadget *gadget,
                                      gboolean      allocate_reverse)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
 
   priv->allocate_reverse = allocate_reverse;
 }
 
 void
-ctk_box_gadget_set_align_reverse (GtkBoxGadget *gadget,
+ctk_box_gadget_set_align_reverse (CtkBoxGadget *gadget,
                                   gboolean      align_reverse)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
 
   priv->align_reverse = align_reverse;
 }
 
-static GtkCssNode *
+static CtkCssNode *
 get_css_node (GObject *child)
 {
   if (CTK_IS_WIDGET (child))
@@ -646,14 +646,14 @@ get_css_node (GObject *child)
 }
 
 static void
-ctk_box_gadget_insert_object (GtkBoxGadget *gadget,
+ctk_box_gadget_insert_object (CtkBoxGadget *gadget,
                               int           pos,
                               GObject      *object,
                               gboolean      expand,
-                              GtkAlign      align)
+                              CtkAlign      align)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
-  GtkBoxGadgetChild child;
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetChild child;
 
   child.object = g_object_ref (object);
   child.expand = expand;
@@ -671,29 +671,29 @@ ctk_box_gadget_insert_object (GtkBoxGadget *gadget,
       g_array_insert_val (priv->children, pos, child);
       ctk_css_node_insert_before (ctk_css_gadget_get_node (CTK_CSS_GADGET (gadget)),
                                   get_css_node (object),
-                                  get_css_node (g_array_index (priv->children, GtkBoxGadgetChild, pos + 1).object));
+                                  get_css_node (g_array_index (priv->children, CtkBoxGadgetChild, pos + 1).object));
     }
 }
 
 void
-ctk_box_gadget_insert_widget (GtkBoxGadget *gadget,
+ctk_box_gadget_insert_widget (CtkBoxGadget *gadget,
                               int           pos,
-                              GtkWidget    *widget)
+                              CtkWidget    *widget)
 {
   ctk_box_gadget_insert_object (gadget, pos, G_OBJECT (widget), FALSE, CTK_ALIGN_FILL);
 }
 
-static GtkBoxGadgetChild *
-ctk_box_gadget_find_object (GtkBoxGadget *gadget,
+static CtkBoxGadgetChild *
+ctk_box_gadget_find_object (CtkBoxGadget *gadget,
                             GObject      *object,
                             int          *position)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
   guint i;
 
   for (i = 0; i < priv->children->len; i++)
     {
-      GtkBoxGadgetChild *child = &g_array_index (priv->children, GtkBoxGadgetChild, i);
+      CtkBoxGadgetChild *child = &g_array_index (priv->children, CtkBoxGadgetChild, i);
 
       if (child->object == object)
         {
@@ -707,11 +707,11 @@ ctk_box_gadget_find_object (GtkBoxGadget *gadget,
 }
 
 static void
-ctk_box_gadget_remove_object (GtkBoxGadget *gadget,
+ctk_box_gadget_remove_object (CtkBoxGadget *gadget,
                               GObject      *object)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
-  GtkBoxGadgetChild *child;
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (gadget);
+  CtkBoxGadgetChild *child;
   int position;
 
   child = ctk_box_gadget_find_object (gadget, object, &position);
@@ -723,18 +723,18 @@ ctk_box_gadget_remove_object (GtkBoxGadget *gadget,
 }
 
 void
-ctk_box_gadget_remove_widget (GtkBoxGadget *gadget,
-                              GtkWidget    *widget)
+ctk_box_gadget_remove_widget (CtkBoxGadget *gadget,
+                              CtkWidget    *widget)
 {
   ctk_box_gadget_remove_object (gadget, G_OBJECT (widget));
 }
 
 void
-ctk_box_gadget_insert_gadget_before (GtkBoxGadget *gadget,
-                                     GtkCssGadget *sibling,
-                                     GtkCssGadget *cssgadget,
+ctk_box_gadget_insert_gadget_before (CtkBoxGadget *gadget,
+                                     CtkCssGadget *sibling,
+                                     CtkCssGadget *cssgadget,
                                      gboolean      expand,
-                                     GtkAlign      align)
+                                     CtkAlign      align)
 {
   /* Insert at the end if no sibling specified */
   int pos = -1;
@@ -746,11 +746,11 @@ ctk_box_gadget_insert_gadget_before (GtkBoxGadget *gadget,
 }
 
 void
-ctk_box_gadget_insert_gadget_after (GtkBoxGadget *gadget,
-                                    GtkCssGadget *sibling,
-                                    GtkCssGadget *cssgadget,
+ctk_box_gadget_insert_gadget_after (CtkBoxGadget *gadget,
+                                    CtkCssGadget *sibling,
+                                    CtkCssGadget *cssgadget,
                                     gboolean      expand,
-                                    GtkAlign      align)
+                                    CtkAlign      align)
 {
   /* Insert at the beginning if no sibling specified */
   int pos = 0;
@@ -762,35 +762,35 @@ ctk_box_gadget_insert_gadget_after (GtkBoxGadget *gadget,
 }
 
 void
-ctk_box_gadget_insert_gadget (GtkBoxGadget *gadget,
+ctk_box_gadget_insert_gadget (CtkBoxGadget *gadget,
                               int           pos,
-                              GtkCssGadget *cssgadget,
+                              CtkCssGadget *cssgadget,
                               gboolean      expand,
-                              GtkAlign      align)
+                              CtkAlign      align)
 {
   ctk_box_gadget_insert_object (gadget, pos, G_OBJECT (cssgadget), expand, align);
 }
 
 void
-ctk_box_gadget_remove_gadget (GtkBoxGadget *gadget,
-                              GtkCssGadget *cssgadget)
+ctk_box_gadget_remove_gadget (CtkBoxGadget *gadget,
+                              CtkCssGadget *cssgadget)
 {
   ctk_box_gadget_remove_object (gadget, G_OBJECT (cssgadget));
 }
 
 void
-ctk_box_gadget_reverse_children (GtkBoxGadget *gadget)
+ctk_box_gadget_reverse_children (CtkBoxGadget *gadget)
 {
-  GtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
+  CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
   int i, j;
 
   ctk_css_node_reverse_children (ctk_css_gadget_get_node (CTK_CSS_GADGET (gadget)));
 
   for (i = 0, j = priv->children->len - 1; i < j; i++, j--)
     {
-      GtkBoxGadgetChild *child1 = &g_array_index (priv->children, GtkBoxGadgetChild, i);
-      GtkBoxGadgetChild *child2 = &g_array_index (priv->children, GtkBoxGadgetChild, j);
-      GtkBoxGadgetChild tmp;
+      CtkBoxGadgetChild *child1 = &g_array_index (priv->children, CtkBoxGadgetChild, i);
+      CtkBoxGadgetChild *child2 = &g_array_index (priv->children, CtkBoxGadgetChild, j);
+      CtkBoxGadgetChild tmp;
 
       tmp = *child1;
       *child1 = *child2;
@@ -799,11 +799,11 @@ ctk_box_gadget_reverse_children (GtkBoxGadget *gadget)
 }
 
 void
-ctk_box_gadget_set_gadget_expand (GtkBoxGadget *gadget,
+ctk_box_gadget_set_gadget_expand (CtkBoxGadget *gadget,
                                   GObject      *object,
                                   gboolean      expand)
 {
-  GtkBoxGadgetChild *child;
+  CtkBoxGadgetChild *child;
 
   child = ctk_box_gadget_find_object (gadget, object, NULL);
 
@@ -818,11 +818,11 @@ ctk_box_gadget_set_gadget_expand (GtkBoxGadget *gadget,
 }
 
 void
-ctk_box_gadget_set_gadget_align (GtkBoxGadget *gadget,
+ctk_box_gadget_set_gadget_align (CtkBoxGadget *gadget,
                                  GObject      *object,
-                                 GtkAlign      align)
+                                 CtkAlign      align)
 {
-  GtkBoxGadgetChild *child;
+  CtkBoxGadgetChild *child;
 
   child = ctk_box_gadget_find_object (gadget, object, NULL);
 

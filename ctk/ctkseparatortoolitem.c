@@ -30,29 +30,29 @@
  * SECTION:ctkseparatortoolitem
  * @Short_description: A toolbar item that separates groups of other
  *   toolbar items
- * @Title: GtkSeparatorToolItem
- * @See_also: #GtkToolbar, #GtkRadioToolButton
+ * @Title: CtkSeparatorToolItem
+ * @See_also: #CtkToolbar, #CtkRadioToolButton
  *
- * A #GtkSeparatorToolItem is a #GtkToolItem that separates groups of other
- * #GtkToolItems. Depending on the theme, a #GtkSeparatorToolItem will
+ * A #CtkSeparatorToolItem is a #CtkToolItem that separates groups of other
+ * #CtkToolItems. Depending on the theme, a #CtkSeparatorToolItem will
  * often look like a vertical line on horizontally docked toolbars.
  *
- * If the #GtkToolbar child property “expand” is %TRUE and the property
- * #GtkSeparatorToolItem:draw is %FALSE, a #GtkSeparatorToolItem will act as
+ * If the #CtkToolbar child property “expand” is %TRUE and the property
+ * #CtkSeparatorToolItem:draw is %FALSE, a #CtkSeparatorToolItem will act as
  * a “spring” that forces other items to the ends of the toolbar.
  *
- * Use ctk_separator_tool_item_new() to create a new #GtkSeparatorToolItem.
+ * Use ctk_separator_tool_item_new() to create a new #CtkSeparatorToolItem.
  *
  * # CSS nodes
  *
- * GtkSeparatorToolItem has a single CSS node with name separator.
+ * CtkSeparatorToolItem has a single CSS node with name separator.
  */
 
 #define MENU_ID "ctk-separator-tool-item-menu-id"
 
-struct _GtkSeparatorToolItemPrivate
+struct _CtkSeparatorToolItemPrivate
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
   GdkWindow *event_window;
   guint draw : 1;
 };
@@ -62,7 +62,7 @@ enum {
   PROP_DRAW
 };
 
-static gboolean ctk_separator_tool_item_create_menu_proxy (GtkToolItem               *item);
+static gboolean ctk_separator_tool_item_create_menu_proxy (CtkToolItem               *item);
 static void     ctk_separator_tool_item_set_property      (GObject                   *object,
                                                            guint                      prop_id,
                                                            const GValue              *value,
@@ -71,33 +71,33 @@ static void     ctk_separator_tool_item_get_property      (GObject              
                                                            guint                      prop_id,
                                                            GValue                    *value,
                                                            GParamSpec                *pspec);
-static void     ctk_separator_tool_item_get_preferred_width (GtkWidget               *widget,
+static void     ctk_separator_tool_item_get_preferred_width (CtkWidget               *widget,
                                                            gint                      *minimum,
                                                            gint                      *natural);
-static void     ctk_separator_tool_item_get_preferred_height (GtkWidget              *widget,
+static void     ctk_separator_tool_item_get_preferred_height (CtkWidget              *widget,
                                                            gint                      *minimum,
                                                            gint                      *natural);
-static void     ctk_separator_tool_item_size_allocate     (GtkWidget                 *widget,
-                                                           GtkAllocation             *allocation);
-static gboolean ctk_separator_tool_item_draw              (GtkWidget                 *widget,
+static void     ctk_separator_tool_item_size_allocate     (CtkWidget                 *widget,
+                                                           CtkAllocation             *allocation);
+static gboolean ctk_separator_tool_item_draw              (CtkWidget                 *widget,
                                                            cairo_t                   *cr);
-static void     ctk_separator_tool_item_add               (GtkContainer              *container,
-                                                           GtkWidget                 *child);
-static void     ctk_separator_tool_item_realize           (GtkWidget                 *widget);
-static void     ctk_separator_tool_item_unrealize         (GtkWidget                 *widget);
-static void     ctk_separator_tool_item_map               (GtkWidget                 *widget);
-static void     ctk_separator_tool_item_unmap             (GtkWidget                 *widget);
-static gboolean ctk_separator_tool_item_button_event      (GtkWidget                 *widget,
+static void     ctk_separator_tool_item_add               (CtkContainer              *container,
+                                                           CtkWidget                 *child);
+static void     ctk_separator_tool_item_realize           (CtkWidget                 *widget);
+static void     ctk_separator_tool_item_unrealize         (CtkWidget                 *widget);
+static void     ctk_separator_tool_item_map               (CtkWidget                 *widget);
+static void     ctk_separator_tool_item_unmap             (CtkWidget                 *widget);
+static gboolean ctk_separator_tool_item_button_event      (CtkWidget                 *widget,
                                                            GdkEventButton            *event);
-static gboolean ctk_separator_tool_item_motion_event      (GtkWidget                 *widget,
+static gboolean ctk_separator_tool_item_motion_event      (CtkWidget                 *widget,
                                                            GdkEventMotion            *event);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkSeparatorToolItem, ctk_separator_tool_item, CTK_TYPE_TOOL_ITEM)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkSeparatorToolItem, ctk_separator_tool_item, CTK_TYPE_TOOL_ITEM)
 
 static void
 ctk_separator_tool_item_finalize (GObject *object)
 {
-  GtkSeparatorToolItem *item = CTK_SEPARATOR_TOOL_ITEM (object);
+  CtkSeparatorToolItem *item = CTK_SEPARATOR_TOOL_ITEM (object);
 
   g_clear_object (&item->priv->gadget);
 
@@ -105,17 +105,17 @@ ctk_separator_tool_item_finalize (GObject *object)
 }
 
 static void
-ctk_separator_tool_item_class_init (GtkSeparatorToolItemClass *class)
+ctk_separator_tool_item_class_init (CtkSeparatorToolItemClass *class)
 {
   GObjectClass *object_class;
-  GtkContainerClass *container_class;
-  GtkToolItemClass *toolitem_class;
-  GtkWidgetClass *widget_class;
+  CtkContainerClass *container_class;
+  CtkToolItemClass *toolitem_class;
+  CtkWidgetClass *widget_class;
   
   object_class = (GObjectClass *)class;
-  container_class = (GtkContainerClass *)class;
-  toolitem_class = (GtkToolItemClass *)class;
-  widget_class = (GtkWidgetClass *)class;
+  container_class = (CtkContainerClass *)class;
+  toolitem_class = (CtkToolItemClass *)class;
+  widget_class = (CtkWidgetClass *)class;
 
   object_class->set_property = ctk_separator_tool_item_set_property;
   object_class->get_property = ctk_separator_tool_item_get_property;
@@ -149,11 +149,11 @@ ctk_separator_tool_item_class_init (GtkSeparatorToolItemClass *class)
 }
 
 static void
-ctk_separator_tool_item_init (GtkSeparatorToolItem *separator_item)
+ctk_separator_tool_item_init (CtkSeparatorToolItem *separator_item)
 {
-  GtkSeparatorToolItemPrivate *priv;
-  GtkWidget *widget;
-  GtkCssNode *widget_node;
+  CtkSeparatorToolItemPrivate *priv;
+  CtkWidget *widget;
+  CtkCssNode *widget_node;
 
   widget = CTK_WIDGET (separator_item);
   priv = separator_item->priv = ctk_separator_tool_item_get_instance_private (separator_item);
@@ -170,16 +170,16 @@ ctk_separator_tool_item_init (GtkSeparatorToolItem *separator_item)
 }
 
 static void
-ctk_separator_tool_item_add (GtkContainer *container,
-                             GtkWidget    *child)
+ctk_separator_tool_item_add (CtkContainer *container,
+                             CtkWidget    *child)
 {
-  g_warning ("attempt to add a child to an GtkSeparatorToolItem");
+  g_warning ("attempt to add a child to an CtkSeparatorToolItem");
 }
 
 static gboolean
-ctk_separator_tool_item_create_menu_proxy (GtkToolItem *item)
+ctk_separator_tool_item_create_menu_proxy (CtkToolItem *item)
 {
-  GtkWidget *menu_item = NULL;
+  CtkWidget *menu_item = NULL;
   
   menu_item = ctk_separator_menu_item_new ();
   
@@ -194,7 +194,7 @@ ctk_separator_tool_item_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-  GtkSeparatorToolItem *item = CTK_SEPARATOR_TOOL_ITEM (object);
+  CtkSeparatorToolItem *item = CTK_SEPARATOR_TOOL_ITEM (object);
   
   switch (prop_id)
     {
@@ -213,7 +213,7 @@ ctk_separator_tool_item_get_property (GObject      *object,
                                       GValue       *value,
                                       GParamSpec   *pspec)
 {
-  GtkSeparatorToolItem *item = CTK_SEPARATOR_TOOL_ITEM (object);
+  CtkSeparatorToolItem *item = CTK_SEPARATOR_TOOL_ITEM (object);
   
   switch (prop_id)
     {
@@ -227,7 +227,7 @@ ctk_separator_tool_item_get_property (GObject      *object,
 }
 
 static void
-ctk_separator_tool_item_get_preferred_width (GtkWidget *widget,
+ctk_separator_tool_item_get_preferred_width (CtkWidget *widget,
                                              gint      *minimum,
                                              gint      *natural)
 {
@@ -239,7 +239,7 @@ ctk_separator_tool_item_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_separator_tool_item_get_preferred_height (GtkWidget *widget,
+ctk_separator_tool_item_get_preferred_height (CtkWidget *widget,
                                               gint      *minimum,
                                               gint      *natural)
 {
@@ -251,12 +251,12 @@ ctk_separator_tool_item_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_separator_tool_item_size_allocate (GtkWidget     *widget,
-                                       GtkAllocation *allocation)
+ctk_separator_tool_item_size_allocate (CtkWidget     *widget,
+                                       CtkAllocation *allocation)
 {
-  GtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
-  GtkSeparatorToolItemPrivate *priv = separator->priv;
-  GtkAllocation clip;
+  CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
+  CtkSeparatorToolItemPrivate *priv = separator->priv;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -276,11 +276,11 @@ ctk_separator_tool_item_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_separator_tool_item_realize (GtkWidget *widget)
+ctk_separator_tool_item_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
-  GtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
-  GtkSeparatorToolItemPrivate *priv = separator->priv;
+  CtkAllocation allocation;
+  CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
+  CtkSeparatorToolItemPrivate *priv = separator->priv;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -312,10 +312,10 @@ ctk_separator_tool_item_realize (GtkWidget *widget)
 }
 
 static void
-ctk_separator_tool_item_unrealize (GtkWidget *widget)
+ctk_separator_tool_item_unrealize (CtkWidget *widget)
 {
-  GtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
-  GtkSeparatorToolItemPrivate *priv = separator->priv;
+  CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
+  CtkSeparatorToolItemPrivate *priv = separator->priv;
 
   if (priv->event_window)
     {
@@ -328,10 +328,10 @@ ctk_separator_tool_item_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_separator_tool_item_map (GtkWidget *widget)
+ctk_separator_tool_item_map (CtkWidget *widget)
 {
-  GtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
-  GtkSeparatorToolItemPrivate *priv = separator->priv;
+  CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
+  CtkSeparatorToolItemPrivate *priv = separator->priv;
 
   CTK_WIDGET_CLASS (ctk_separator_tool_item_parent_class)->map (widget);
 
@@ -340,10 +340,10 @@ ctk_separator_tool_item_map (GtkWidget *widget)
 }
 
 static void
-ctk_separator_tool_item_unmap (GtkWidget *widget)
+ctk_separator_tool_item_unmap (CtkWidget *widget)
 {
-  GtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
-  GtkSeparatorToolItemPrivate *priv = separator->priv;
+  CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
+  CtkSeparatorToolItemPrivate *priv = separator->priv;
 
   if (priv->event_window)
     gdk_window_hide (priv->event_window);
@@ -352,11 +352,11 @@ ctk_separator_tool_item_unmap (GtkWidget *widget)
 }
 
 static gboolean
-ctk_separator_tool_item_motion_event (GtkWidget      *widget,
+ctk_separator_tool_item_motion_event (CtkWidget      *widget,
                                       GdkEventMotion *event)
 {
-  GtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
-  GtkSeparatorToolItemPrivate *priv = separator->priv;
+  CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
+  CtkSeparatorToolItemPrivate *priv = separator->priv;
 
   /* We want window dragging to work on empty toolbar areas,
    * so we only eat button events on visible separators
@@ -365,11 +365,11 @@ ctk_separator_tool_item_motion_event (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_separator_tool_item_button_event (GtkWidget      *widget,
+ctk_separator_tool_item_button_event (CtkWidget      *widget,
                                       GdkEventButton *event)
 {
-  GtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
-  GtkSeparatorToolItemPrivate *priv = separator->priv;
+  CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
+  CtkSeparatorToolItemPrivate *priv = separator->priv;
 
   /* We want window dragging to work on empty toolbar areas,
    * so we only eat button events on visible separators
@@ -378,7 +378,7 @@ ctk_separator_tool_item_button_event (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_separator_tool_item_draw (GtkWidget *widget,
+ctk_separator_tool_item_draw (CtkWidget *widget,
                               cairo_t   *cr)
 {
   if (CTK_SEPARATOR_TOOL_ITEM (widget)->priv->draw)
@@ -390,16 +390,16 @@ ctk_separator_tool_item_draw (GtkWidget *widget,
 /**
  * ctk_separator_tool_item_new:
  * 
- * Create a new #GtkSeparatorToolItem
+ * Create a new #CtkSeparatorToolItem
  * 
- * Returns: the new #GtkSeparatorToolItem
+ * Returns: the new #CtkSeparatorToolItem
  * 
  * Since: 2.4
  */
-GtkToolItem *
+CtkToolItem *
 ctk_separator_tool_item_new (void)
 {
-  GtkToolItem *self;
+  CtkToolItem *self;
   
   self = g_object_new (CTK_TYPE_SEPARATOR_TOOL_ITEM,
                        NULL);
@@ -409,7 +409,7 @@ ctk_separator_tool_item_new (void)
 
 /**
  * ctk_separator_tool_item_get_draw:
- * @item: a #GtkSeparatorToolItem 
+ * @item: a #CtkSeparatorToolItem 
  * 
  * Returns whether @item is drawn as a line, or just blank. 
  * See ctk_separator_tool_item_set_draw().
@@ -419,7 +419,7 @@ ctk_separator_tool_item_new (void)
  * Since: 2.4
  */
 gboolean
-ctk_separator_tool_item_get_draw (GtkSeparatorToolItem *item)
+ctk_separator_tool_item_get_draw (CtkSeparatorToolItem *item)
 {
   g_return_val_if_fail (CTK_IS_SEPARATOR_TOOL_ITEM (item), FALSE);
   
@@ -428,7 +428,7 @@ ctk_separator_tool_item_get_draw (GtkSeparatorToolItem *item)
 
 /**
  * ctk_separator_tool_item_set_draw:
- * @item: a #GtkSeparatorToolItem
+ * @item: a #CtkSeparatorToolItem
  * @draw: whether @item is drawn as a vertical line
  * 
  * Whether @item is drawn as a vertical line, or just blank.
@@ -438,7 +438,7 @@ ctk_separator_tool_item_get_draw (GtkSeparatorToolItem *item)
  * Since: 2.4
  */
 void
-ctk_separator_tool_item_set_draw (GtkSeparatorToolItem *item,
+ctk_separator_tool_item_set_draw (CtkSeparatorToolItem *item,
                                   gboolean              draw)
 {
   g_return_if_fail (CTK_IS_SEPARATOR_TOOL_ITEM (item));

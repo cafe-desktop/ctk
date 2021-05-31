@@ -1,11 +1,11 @@
 #include <ctk/ctk.h>
 #include <math.h>
 
-GtkAdjustment *adjustment;
+CtkAdjustment *adjustment;
 int cursor_x, cursor_y;
 
 static void
-on_motion_notify (GtkWidget      *window,
+on_motion_notify (CtkWidget      *window,
                   GdkEventMotion *event)
 {
   if (event->window == ctk_widget_get_window (window))
@@ -19,7 +19,7 @@ on_motion_notify (GtkWidget      *window,
 }
 
 static void
-on_draw (GtkWidget *window,
+on_draw (CtkWidget *window,
          cairo_t   *cr)
 {
   cairo_set_source_rgb (cr, 1, 1, 1);
@@ -34,10 +34,10 @@ on_draw (GtkWidget *window,
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *scale;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *label;
+  CtkWidget *scale;
 
   ctk_init (&argc, &argv);
 

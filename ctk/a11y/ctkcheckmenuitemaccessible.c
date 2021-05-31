@@ -22,13 +22,13 @@
 #include "ctkcheckmenuitemaccessible.h"
 
 
-G_DEFINE_TYPE (GtkCheckMenuItemAccessible, ctk_check_menu_item_accessible, CTK_TYPE_MENU_ITEM_ACCESSIBLE)
+G_DEFINE_TYPE (CtkCheckMenuItemAccessible, ctk_check_menu_item_accessible, CTK_TYPE_MENU_ITEM_ACCESSIBLE)
 
 static void
-toggled_cb (GtkWidget *widget)
+toggled_cb (CtkWidget *widget)
 {
   AtkObject *accessible;
-  GtkCheckMenuItem *check_menu_item;
+  CtkCheckMenuItem *check_menu_item;
   gboolean active;
 
   check_menu_item = CTK_CHECK_MENU_ITEM (widget);
@@ -53,8 +53,8 @@ static AtkStateSet *
 ctk_check_menu_item_accessible_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
-  GtkCheckMenuItem *check_menu_item;
-  GtkWidget *widget;
+  CtkCheckMenuItem *check_menu_item;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
@@ -80,7 +80,7 @@ static void
 ctk_check_menu_item_accessible_notify_ctk (GObject    *obj,
                                            GParamSpec *pspec)
 {
-  GtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (obj);
+  CtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (obj);
   AtkObject *atk_obj;
   gboolean sensitive;
   gboolean inconsistent;
@@ -111,10 +111,10 @@ ctk_check_menu_item_accessible_notify_ctk (GObject    *obj,
 }
 
 static void
-ctk_check_menu_item_accessible_class_init (GtkCheckMenuItemAccessibleClass *klass)
+ctk_check_menu_item_accessible_class_init (CtkCheckMenuItemAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   widget_class->notify_ctk = ctk_check_menu_item_accessible_notify_ctk;
 
@@ -123,6 +123,6 @@ ctk_check_menu_item_accessible_class_init (GtkCheckMenuItemAccessibleClass *klas
 }
 
 static void
-ctk_check_menu_item_accessible_init (GtkCheckMenuItemAccessible *item)
+ctk_check_menu_item_accessible_init (CtkCheckMenuItemAccessible *item)
 {
 }

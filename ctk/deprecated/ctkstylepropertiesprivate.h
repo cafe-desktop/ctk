@@ -24,10 +24,10 @@
 
 G_BEGIN_DECLS
 
-void           _ctk_style_properties_set_property_by_property (GtkStyleProperties      *props,
-                                                               GtkCssStyleProperty     *property,
-                                                               GtkStateFlags            state,
-                                                               GtkCssValue             *value);
+void           _ctk_style_properties_set_property_by_property (CtkStyleProperties      *props,
+                                                               CtkCssStyleProperty     *property,
+                                                               CtkStateFlags            state,
+                                                               CtkCssValue             *value);
 
 G_END_DECLS
 

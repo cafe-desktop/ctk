@@ -27,19 +27,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct _GtkCssKeyframes {
+struct _CtkCssKeyframes {
   int ref_count;                /* ref count */
   int n_keyframes;              /* number of keyframes (at least 2 for 0% and 100% */
   double *keyframe_progress;    /* ordered array of n_keyframes of [0..1] */
   int n_properties;             /* number of properties used by keyframes */
   guint *property_ids;          /* ordered array of n_properties property ids */
-  GtkCssValue **values;         /* 2D array: n_keyframes * n_properties of (value or NULL) for all the keyframes */
+  CtkCssValue **values;         /* 2D array: n_keyframes * n_properties of (value or NULL) for all the keyframes */
 };
 
 #define KEYFRAMES_VALUE(keyframes, k, p) ((keyframes)->values[(k) * (keyframes)->n_properties + (p)])
 
-GtkCssKeyframes *
-_ctk_css_keyframes_ref (GtkCssKeyframes *keyframes)
+CtkCssKeyframes *
+_ctk_css_keyframes_ref (CtkCssKeyframes *keyframes)
 {
   g_return_val_if_fail (keyframes != NULL, NULL);
 
@@ -49,7 +49,7 @@ _ctk_css_keyframes_ref (GtkCssKeyframes *keyframes)
 }
 
 void
-_ctk_css_keyframes_unref (GtkCssKeyframes *keyframes)
+_ctk_css_keyframes_unref (CtkCssKeyframes *keyframes)
 {
   guint k, p;
 
@@ -72,11 +72,11 @@ _ctk_css_keyframes_unref (GtkCssKeyframes *keyframes)
     }
   g_free (keyframes->values);
 
-  g_slice_free (GtkCssKeyframes, keyframes);
+  g_slice_free (CtkCssKeyframes, keyframes);
 }
 
 static guint
-ctk_css_keyframes_add_keyframe (GtkCssKeyframes *keyframes,
+ctk_css_keyframes_add_keyframe (CtkCssKeyframes *keyframes,
                                 double           progress)
 {
   guint k, p;
@@ -109,9 +109,9 @@ ctk_css_keyframes_add_keyframe (GtkCssKeyframes *keyframes,
 
   if (keyframes->n_properties)
     {
-      gsize size = sizeof (GtkCssValue *) * keyframes->n_properties;
+      gsize size = sizeof (CtkCssValue *) * keyframes->n_properties;
       
-      keyframes->values = g_realloc (keyframes->values, sizeof (GtkCssValue *) * keyframes->n_keyframes * keyframes->n_properties);
+      keyframes->values = g_realloc (keyframes->values, sizeof (CtkCssValue *) * keyframes->n_keyframes * keyframes->n_properties);
       memmove (&KEYFRAMES_VALUE (keyframes, k + 1, 0), &KEYFRAMES_VALUE (keyframes, k, 0), size * (keyframes->n_keyframes - k - 1));
       memset (&KEYFRAMES_VALUE (keyframes, k, 0), 0, size);
     }
@@ -120,7 +120,7 @@ ctk_css_keyframes_add_keyframe (GtkCssKeyframes *keyframes,
 }
 
 static guint
-ctk_css_keyframes_lookup_property (GtkCssKeyframes *keyframes,
+ctk_css_keyframes_lookup_property (CtkCssKeyframes *keyframes,
                                    guint            property_id)
 {
   guint p;
@@ -143,13 +143,13 @@ ctk_css_keyframes_lookup_property (GtkCssKeyframes *keyframes,
       guint old_n_properties = keyframes->n_properties - 1;
       int k;
       
-      keyframes->values = g_realloc (keyframes->values, sizeof (GtkCssValue *) * keyframes->n_keyframes * keyframes->n_properties);
+      keyframes->values = g_realloc (keyframes->values, sizeof (CtkCssValue *) * keyframes->n_keyframes * keyframes->n_properties);
 
       if (p + 1 < keyframes->n_properties)
         {
           memmove (&KEYFRAMES_VALUE (keyframes, keyframes->n_keyframes - 1, p + 1),
                    &keyframes->values[(keyframes->n_keyframes - 1) * old_n_properties + p],
-                   sizeof (GtkCssValue *) * (keyframes->n_properties - p - 1));
+                   sizeof (CtkCssValue *) * (keyframes->n_properties - p - 1));
         }
       KEYFRAMES_VALUE (keyframes, keyframes->n_keyframes - 1, p) = NULL;
 
@@ -157,33 +157,33 @@ ctk_css_keyframes_lookup_property (GtkCssKeyframes *keyframes,
         {
           memmove (&KEYFRAMES_VALUE (keyframes, k, p + 1),
                    &keyframes->values[k * old_n_properties + p],
-                   sizeof (GtkCssValue *) * old_n_properties);
+                   sizeof (CtkCssValue *) * old_n_properties);
           KEYFRAMES_VALUE (keyframes, k, p) = NULL;
         }
     }
   else
     {
-      keyframes->values = g_new0 (GtkCssValue *, keyframes->n_keyframes);
+      keyframes->values = g_new0 (CtkCssValue *, keyframes->n_keyframes);
     }
 
   return p;
 }
 
-static GtkCssKeyframes *
+static CtkCssKeyframes *
 ctk_css_keyframes_alloc (void)
 {
-  GtkCssKeyframes *keyframes;
+  CtkCssKeyframes *keyframes;
 
-  keyframes = g_slice_new0 (GtkCssKeyframes);
+  keyframes = g_slice_new0 (CtkCssKeyframes);
   keyframes->ref_count = 1;
 
   return keyframes;
 }
 
-static GtkCssKeyframes *
+static CtkCssKeyframes *
 ctk_css_keyframes_new (void)
 {
-  GtkCssKeyframes *keyframes;
+  CtkCssKeyframes *keyframes;
 
   keyframes = ctk_css_keyframes_alloc ();
 
@@ -194,10 +194,10 @@ ctk_css_keyframes_new (void)
 }
 
 static gboolean
-keyframes_set_value (GtkCssKeyframes     *keyframes,
+keyframes_set_value (CtkCssKeyframes     *keyframes,
                      guint                k,
-                     GtkCssStyleProperty *property,
-                     GtkCssValue         *value)
+                     CtkCssStyleProperty *property,
+                     CtkCssValue         *value)
 {
   guint p;
 
@@ -215,12 +215,12 @@ keyframes_set_value (GtkCssKeyframes     *keyframes,
 }
 
 static gboolean
-parse_declaration (GtkCssKeyframes *keyframes,
+parse_declaration (CtkCssKeyframes *keyframes,
                    guint            k,
-                   GtkCssParser    *parser)
+                   CtkCssParser    *parser)
 {
-  GtkStyleProperty *property;
-  GtkCssValue *value;
+  CtkStyleProperty *property;
+  CtkCssValue *value;
   char *name;
 
   while (_ctk_css_parser_try (parser, ";", TRUE))
@@ -266,14 +266,14 @@ parse_declaration (GtkCssKeyframes *keyframes,
 
   if (CTK_IS_CSS_SHORTHAND_PROPERTY (property))
     {
-      GtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
+      CtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
       gboolean animatable = FALSE;
       guint i;
 
       for (i = 0; i < _ctk_css_shorthand_property_get_n_subproperties (shorthand); i++)
         {
-          GtkCssStyleProperty *child = _ctk_css_shorthand_property_get_subproperty (shorthand, i);
-          GtkCssValue *sub = _ctk_css_array_value_get_nth (value, i);
+          CtkCssStyleProperty *child = _ctk_css_shorthand_property_get_subproperty (shorthand, i);
+          CtkCssValue *sub = _ctk_css_array_value_get_nth (value, i);
           
           animatable |= keyframes_set_value (keyframes, k, child, sub);
         }
@@ -297,9 +297,9 @@ parse_declaration (GtkCssKeyframes *keyframes,
 }
 
 static gboolean
-parse_block (GtkCssKeyframes *keyframes,
+parse_block (CtkCssKeyframes *keyframes,
              guint            k,
-             GtkCssParser    *parser)
+             CtkCssParser    *parser)
 {
   if (!_ctk_css_parser_try (parser, "{", TRUE))
     {
@@ -322,10 +322,10 @@ parse_block (GtkCssKeyframes *keyframes,
   return TRUE;
 }
 
-GtkCssKeyframes *
-_ctk_css_keyframes_parse (GtkCssParser *parser)
+CtkCssKeyframes *
+_ctk_css_keyframes_parse (CtkCssParser *parser)
 {
-  GtkCssKeyframes *keyframes;
+  CtkCssKeyframes *keyframes;
   double progress;
   guint k;
 
@@ -375,7 +375,7 @@ compare_property_by_name (gconstpointer a,
                           gconstpointer b,
                           gpointer      data)
 {
-  GtkCssKeyframes *keyframes = data;
+  CtkCssKeyframes *keyframes = data;
 
   return strcmp (_ctk_style_property_get_name (CTK_STYLE_PROPERTY (
                     _ctk_css_style_property_lookup_by_id (keyframes->property_ids[*(const guint *) a]))),
@@ -384,7 +384,7 @@ compare_property_by_name (gconstpointer a,
 }
 
 void
-_ctk_css_keyframes_print (GtkCssKeyframes *keyframes,
+_ctk_css_keyframes_print (CtkCssKeyframes *keyframes,
                           GString         *string)
 {
   guint k, p;
@@ -434,13 +434,13 @@ _ctk_css_keyframes_print (GtkCssKeyframes *keyframes,
   g_free (sorted);
 }
 
-GtkCssKeyframes *
-_ctk_css_keyframes_compute (GtkCssKeyframes         *keyframes,
-                            GtkStyleProviderPrivate *provider,
-                            GtkCssStyle             *style,
-                            GtkCssStyle             *parent_style)
+CtkCssKeyframes *
+_ctk_css_keyframes_compute (CtkCssKeyframes         *keyframes,
+                            CtkStyleProviderPrivate *provider,
+                            CtkCssStyle             *style,
+                            CtkCssStyle             *parent_style)
 {
-  GtkCssKeyframes *resolved;
+  CtkCssKeyframes *resolved;
   guint k, p;
 
   g_return_val_if_fail (keyframes != NULL, NULL);
@@ -453,7 +453,7 @@ _ctk_css_keyframes_compute (GtkCssKeyframes         *keyframes,
   resolved->keyframe_progress = g_memdup (keyframes->keyframe_progress, keyframes->n_keyframes * sizeof (double));
   resolved->n_properties = keyframes->n_properties;
   resolved->property_ids = g_memdup (keyframes->property_ids, keyframes->n_properties * sizeof (guint));
-  resolved->values = g_new0 (GtkCssValue *, resolved->n_keyframes * resolved->n_properties);
+  resolved->values = g_new0 (CtkCssValue *, resolved->n_keyframes * resolved->n_properties);
 
   for (p = 0; p < resolved->n_properties; p++)
     {
@@ -474,7 +474,7 @@ _ctk_css_keyframes_compute (GtkCssKeyframes         *keyframes,
 }
 
 guint
-_ctk_css_keyframes_get_n_properties (GtkCssKeyframes *keyframes)
+_ctk_css_keyframes_get_n_properties (CtkCssKeyframes *keyframes)
 {
   g_return_val_if_fail (keyframes != NULL, 0);
 
@@ -482,7 +482,7 @@ _ctk_css_keyframes_get_n_properties (GtkCssKeyframes *keyframes)
 }
 
 guint
-_ctk_css_keyframes_get_property_id (GtkCssKeyframes *keyframes,
+_ctk_css_keyframes_get_property_id (CtkCssKeyframes *keyframes,
                                     guint            id)
 {
   g_return_val_if_fail (keyframes != NULL, 0);
@@ -491,13 +491,13 @@ _ctk_css_keyframes_get_property_id (GtkCssKeyframes *keyframes,
   return keyframes->property_ids[id];
 }
 
-GtkCssValue *
-_ctk_css_keyframes_get_value (GtkCssKeyframes *keyframes,
+CtkCssValue *
+_ctk_css_keyframes_get_value (CtkCssKeyframes *keyframes,
                               guint            id,
                               double           progress,
-                              GtkCssValue     *default_value)
+                              CtkCssValue     *default_value)
 {
-  GtkCssValue *start_value, *end_value, *result;
+  CtkCssValue *start_value, *end_value, *result;
   double start_progress, end_progress;
   guint k;
 

@@ -23,7 +23,7 @@
 #include <ctk/ctk.h>
 
 G_MODULE_EXPORT void
-image_recording_surface_set (GtkWidget *widget,
+image_recording_surface_set (CtkWidget *widget,
                              gpointer   unused)
 {
   GError *error = NULL;

@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE              (ctk_check_menu_item_accessible_get_type ())
-#define CTK_CHECK_MENU_ITEM_ACCESSIBLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE, GtkCheckMenuItemAccessible))
-#define CTK_CHECK_MENU_ITEM_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE, GtkCheckMenuItemAccessibleClass))
+#define CTK_CHECK_MENU_ITEM_ACCESSIBLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE, CtkCheckMenuItemAccessible))
+#define CTK_CHECK_MENU_ITEM_ACCESSIBLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE, CtkCheckMenuItemAccessibleClass))
 #define CTK_IS_CHECK_MENU_ITEM_ACCESSIBLE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE))
 #define CTK_IS_CHECK_MENU_ITEM_ACCESSIBLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE))
-#define CTK_CHECK_MENU_ITEM_ACCESSIBLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE, GtkCheckMenuItemAccessibleClass))
+#define CTK_CHECK_MENU_ITEM_ACCESSIBLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE, CtkCheckMenuItemAccessibleClass))
 
-typedef struct _GtkCheckMenuItemAccessible        GtkCheckMenuItemAccessible;
-typedef struct _GtkCheckMenuItemAccessibleClass   GtkCheckMenuItemAccessibleClass;
-typedef struct _GtkCheckMenuItemAccessiblePrivate GtkCheckMenuItemAccessiblePrivate;
+typedef struct _CtkCheckMenuItemAccessible        CtkCheckMenuItemAccessible;
+typedef struct _CtkCheckMenuItemAccessibleClass   CtkCheckMenuItemAccessibleClass;
+typedef struct _CtkCheckMenuItemAccessiblePrivate CtkCheckMenuItemAccessiblePrivate;
 
-struct _GtkCheckMenuItemAccessible
+struct _CtkCheckMenuItemAccessible
 {
-  GtkMenuItemAccessible parent;
+  CtkMenuItemAccessible parent;
 
-  GtkCheckMenuItemAccessiblePrivate *priv;
+  CtkCheckMenuItemAccessiblePrivate *priv;
 };
 
-struct _GtkCheckMenuItemAccessibleClass
+struct _CtkCheckMenuItemAccessibleClass
 {
-  GtkMenuItemAccessibleClass parent_class;
+  CtkMenuItemAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

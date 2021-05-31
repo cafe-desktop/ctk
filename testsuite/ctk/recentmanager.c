@@ -26,8 +26,8 @@ const gchar *uri2 = "file:///tmp/testrecentchooser2.txt";
 static void
 recent_manager_get_default (void)
 {
-  GtkRecentManager *manager;
-  GtkRecentManager *manager2;
+  CtkRecentManager *manager;
+  CtkRecentManager *manager2;
 
   manager = ctk_recent_manager_get_default ();
   g_assert (manager != NULL);
@@ -39,13 +39,13 @@ recent_manager_get_default (void)
 static void
 recent_manager_add (void)
 {
-  GtkRecentManager *manager;
-  GtkRecentData *recent_data;
+  CtkRecentManager *manager;
+  CtkRecentData *recent_data;
   gboolean res;
 
   manager = ctk_recent_manager_get_default ();
 
-  recent_data = g_slice_new0 (GtkRecentData);
+  recent_data = g_slice_new0 (CtkRecentData);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -95,7 +95,7 @@ recent_manager_add (void)
                                      recent_data);
   g_assert (res == TRUE);
 
-  g_slice_free (GtkRecentData, recent_data);
+  g_slice_free (CtkRecentData, recent_data);
 }
 
 typedef struct {
@@ -104,7 +104,7 @@ typedef struct {
 } AddManyClosure;
 
 static void
-check_bulk (GtkRecentManager *manager,
+check_bulk (CtkRecentManager *manager,
             gpointer          data)
 {
   AddManyClosure *closure = data;
@@ -121,11 +121,11 @@ check_bulk (GtkRecentManager *manager,
 static void
 recent_manager_add_many (void)
 {
-  GtkRecentManager *manager = g_object_new (CTK_TYPE_RECENT_MANAGER,
+  CtkRecentManager *manager = g_object_new (CTK_TYPE_RECENT_MANAGER,
                                             "filename", "recently-used.xbel",
                                             NULL);
   AddManyClosure *closure = g_new (AddManyClosure, 1);
-  GtkRecentData *data = g_slice_new0 (GtkRecentData);
+  CtkRecentData *data = g_slice_new0 (CtkRecentData);
   gint i;
 
   closure->main_loop = g_main_loop_new (NULL, FALSE);
@@ -154,7 +154,7 @@ recent_manager_add_many (void)
   g_main_loop_run (closure->main_loop);
 
   g_main_loop_unref (closure->main_loop);
-  g_slice_free (GtkRecentData, data);
+  g_slice_free (CtkRecentData, data);
   g_free (closure);
   g_object_unref (manager);
 
@@ -164,7 +164,7 @@ recent_manager_add_many (void)
 static void
 recent_manager_has_item (void)
 {
-  GtkRecentManager *manager;
+  CtkRecentManager *manager;
   gboolean res;
 
   manager = ctk_recent_manager_get_default ();
@@ -179,7 +179,7 @@ recent_manager_has_item (void)
 static void
 recent_manager_move_item (void)
 {
-  GtkRecentManager *manager;
+  CtkRecentManager *manager;
   gboolean res;
   GError *error;
 
@@ -211,8 +211,8 @@ recent_manager_move_item (void)
 static void
 recent_manager_lookup_item (void)
 {
-  GtkRecentManager *manager;
-  GtkRecentInfo *info;
+  CtkRecentManager *manager;
+  CtkRecentInfo *info;
   GError *error;
 
   manager = ctk_recent_manager_get_default ();
@@ -240,7 +240,7 @@ recent_manager_lookup_item (void)
 static void
 recent_manager_remove_item (void)
 {
-  GtkRecentManager *manager;
+  CtkRecentManager *manager;
   gboolean res;
   GError *error;
 
@@ -269,8 +269,8 @@ recent_manager_remove_item (void)
 static void
 recent_manager_purge (void)
 {
-  GtkRecentManager *manager;
-  GtkRecentData *recent_data;
+  CtkRecentManager *manager;
+  CtkRecentData *recent_data;
   gint n;
   GError *error;
 
@@ -281,12 +281,12 @@ recent_manager_purge (void)
   n = ctk_recent_manager_purge_items (manager, &error);
   g_assert (error == NULL);
 
-  recent_data = g_slice_new0 (GtkRecentData);
+  recent_data = g_slice_new0 (CtkRecentData);
   recent_data->mime_type = "text/plain";
   recent_data->app_name = "testrecentchooser";
   recent_data->app_exec = "testrecentchooser %u";
   ctk_recent_manager_add_full (manager, uri, recent_data);
-  g_slice_free (GtkRecentData, recent_data);
+  g_slice_free (CtkRecentData, recent_data);
 
   error = NULL;
   n = ctk_recent_manager_purge_items (manager, &error);

@@ -37,45 +37,45 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkvscale
  * @Short_description: A vertical slider widget for selecting a value from a range
- * @Title: GtkVScale
+ * @Title: CtkVScale
  *
- * The #GtkVScale widget is used to allow the user to select a value using
+ * The #CtkVScale widget is used to allow the user to select a value using
  * a vertical slider. To create one, use ctk_hscale_new_with_range().
  *
  * The position to show the current value, and the number of decimal places
- * shown can be set using the parent #GtkScale class’s functions.
+ * shown can be set using the parent #CtkScale class’s functions.
  *
- * GtkVScale has been deprecated, use #GtkScale instead.
+ * CtkVScale has been deprecated, use #CtkScale instead.
  */
 
-G_DEFINE_TYPE (GtkVScale, ctk_vscale, CTK_TYPE_SCALE)
+G_DEFINE_TYPE (CtkVScale, ctk_vscale, CTK_TYPE_SCALE)
 
 static void
-ctk_vscale_class_init (GtkVScaleClass *class)
+ctk_vscale_class_init (CtkVScaleClass *class)
 {
-  GtkRangeClass *range_class = CTK_RANGE_CLASS (class);
+  CtkRangeClass *range_class = CTK_RANGE_CLASS (class);
 
   range_class->slider_detail = "vscale";
 }
 
 static void
-ctk_vscale_init (GtkVScale *vscale)
+ctk_vscale_init (CtkVScale *vscale)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (vscale),
                                   CTK_ORIENTATION_VERTICAL);
 }
 /**
  * ctk_vscale_new:
- * @adjustment: the #GtkAdjustment which sets the range of the scale.
+ * @adjustment: the #CtkAdjustment which sets the range of the scale.
  *
- * Creates a new #GtkVScale.
+ * Creates a new #CtkVScale.
  *
- * Returns: a new #GtkVScale.
+ * Returns: a new #CtkVScale.
  *
  * Deprecated: 3.2: Use ctk_scale_new() with %CTK_ORIENTATION_VERTICAL instead
  */
-GtkWidget *
-ctk_vscale_new (GtkAdjustment *adjustment)
+CtkWidget *
+ctk_vscale_new (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment),
                         NULL);
@@ -100,17 +100,17 @@ ctk_vscale_new (GtkAdjustment *adjustment)
  * is a power of ten. If the resulting precision is not suitable for your
  * needs, use ctk_scale_set_digits() to correct it.
  *
- * Returns: a new #GtkVScale
+ * Returns: a new #CtkVScale
  *
  * Deprecated: 3.2: Use ctk_scale_new_with_range() with %CTK_ORIENTATION_VERTICAL instead
  **/
-GtkWidget *
+CtkWidget *
 ctk_vscale_new_with_range (gdouble min,
                            gdouble max,
                            gdouble step)
 {
-  GtkAdjustment *adj;
-  GtkScale *scale;
+  CtkAdjustment *adj;
+  CtkScale *scale;
   gint digits;
 
   g_return_val_if_fail (min < max, NULL);

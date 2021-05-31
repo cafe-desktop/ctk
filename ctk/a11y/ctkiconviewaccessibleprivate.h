@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-void _ctk_icon_view_accessible_adjustment_changed  (GtkIconView *icon_view);
+void _ctk_icon_view_accessible_adjustment_changed  (CtkIconView *icon_view);
 
 G_END_DECLS
 

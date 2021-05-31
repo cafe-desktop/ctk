@@ -3,7 +3,7 @@
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000      Red Hat, Inc.
- * Tk -> Gtk port by Havoc Pennington <hp@redhat.com>
+ * Tk -> Ctk port by Havoc Pennington <hp@redhat.com>
  *
  * This software is copyrighted by the Regents of the University of
  * California, Sun Microsystems, Inc., and other parties.  The
@@ -61,14 +61,14 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkTextAttributes GtkTextAttributes;
+typedef struct _CtkTextAttributes CtkTextAttributes;
 
 #define CTK_TYPE_TEXT_ATTRIBUTES     (ctk_text_attributes_get_type ())
 
-typedef struct _GtkTextAppearance GtkTextAppearance;
+typedef struct _CtkTextAppearance CtkTextAppearance;
 
 /**
- * GtkTextAppearance:
+ * CtkTextAppearance:
  * @bg_color: Background #GdkColor.
  * @fg_color: Foreground #GdkColor.
  * @rise: Super/subscript rise, can be negative.
@@ -79,14 +79,14 @@ typedef struct _GtkTextAppearance GtkTextAppearance;
  *   the composite values struct; it’s true if any of the tags being
  *   composited had background stuff set.
  * @inside_selection: This are only used when we are actually laying
- *   out and rendering a paragraph; not when a #GtkTextAppearance is
- *   part of a #GtkTextAttributes.
+ *   out and rendering a paragraph; not when a #CtkTextAppearance is
+ *   part of a #CtkTextAttributes.
  * @is_text: This are only used when we are actually laying
- *   out and rendering a paragraph; not when a #GtkTextAppearance is
- *   part of a #GtkTextAttributes.
+ *   out and rendering a paragraph; not when a #CtkTextAppearance is
+ *   part of a #CtkTextAttributes.
  * @rgba: #GdkRGBA
  */
-struct _GtkTextAppearance
+struct _CtkTextAppearance
 {
   /*< public >*/
   GdkColor bg_color; /* pixel is taken for underline color */
@@ -106,8 +106,8 @@ struct _GtkTextAppearance
   guint draw_bg : 1;
 
   /* These are only used when we are actually laying out and rendering
-   * a paragraph; not when a GtkTextAppearance is part of a
-   * GtkTextAttributes.
+   * a paragraph; not when a CtkTextAppearance is part of a
+   * CtkTextAttributes.
    */
   guint inside_selection : 1;
   guint is_text : 1;
@@ -135,10 +135,10 @@ struct _GtkTextAppearance
 };
 
 /**
- * GtkTextAttributes:
- * @appearance: #GtkTextAppearance for text.
- * @justification: #GtkJustification for text.
- * @direction: #GtkTextDirection for text.
+ * CtkTextAttributes:
+ * @appearance: #CtkTextAppearance for text.
+ * @justification: #CtkJustification for text.
+ * @direction: #CtkTextDirection for text.
  * @font: #PangoFontDescription for text.
  * @font_scale: Font scale factor.
  * @left_margin: Width of the left margin in pixels.
@@ -149,7 +149,7 @@ struct _GtkTextAppearance
  * @pixels_inside_wrap: Pixels of blank space between wrapped lines in
  *   a paragraph.
  * @tabs: Custom #PangoTabArray for this text.
- * @wrap_mode: #GtkWrapMode for text.
+ * @wrap_mode: #CtkWrapMode for text.
  * @language: #PangoLanguage for text.
  * @invisible: Hide the text.
  * @bg_full_height: Background is fit to full line height rather than
@@ -158,21 +158,21 @@ struct _GtkTextAppearance
  * @no_fallback: Whether to disable font fallback.
  * @letter_spacing: Extra space to insert between graphemes, in Pango units
  *
- * Using #GtkTextAttributes directly should rarely be necessary.
+ * Using #CtkTextAttributes directly should rarely be necessary.
  * It’s primarily useful with ctk_text_iter_get_attributes().
  * As with most GTK+ structs, the fields in this struct should only
  * be read, never modified directly.
  */
-struct _GtkTextAttributes
+struct _CtkTextAttributes
 {
   /*< private >*/
   guint refcount;
 
   /*< public >*/
-  GtkTextAppearance appearance;
+  CtkTextAppearance appearance;
 
-  GtkJustification justification;
-  GtkTextDirection direction;
+  CtkJustification justification;
+  CtkTextDirection direction;
 
   PangoFontDescription *font;
 
@@ -188,7 +188,7 @@ struct _GtkTextAttributes
 
   PangoTabArray *tabs;
 
-  GtkWrapMode wrap_mode;
+  CtkWrapMode wrap_mode;
 
   PangoLanguage *language;
 
@@ -227,16 +227,16 @@ struct _GtkTextAttributes
 };
 
 GDK_AVAILABLE_IN_ALL
-GtkTextAttributes* ctk_text_attributes_new         (void);
+CtkTextAttributes* ctk_text_attributes_new         (void);
 GDK_AVAILABLE_IN_ALL
-GtkTextAttributes* ctk_text_attributes_copy        (GtkTextAttributes *src);
+CtkTextAttributes* ctk_text_attributes_copy        (CtkTextAttributes *src);
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_attributes_copy_values (GtkTextAttributes *src,
-                                                    GtkTextAttributes *dest);
+void               ctk_text_attributes_copy_values (CtkTextAttributes *src,
+                                                    CtkTextAttributes *dest);
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_attributes_unref       (GtkTextAttributes *values);
+void               ctk_text_attributes_unref       (CtkTextAttributes *values);
 GDK_AVAILABLE_IN_ALL
-GtkTextAttributes *ctk_text_attributes_ref         (GtkTextAttributes *values);
+CtkTextAttributes *ctk_text_attributes_ref         (CtkTextAttributes *values);
 
 GDK_AVAILABLE_IN_ALL
 GType              ctk_text_attributes_get_type    (void) G_GNUC_CONST;

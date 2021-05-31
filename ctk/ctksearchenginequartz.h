@@ -23,30 +23,30 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SEARCH_ENGINE_QUARTZ			(_ctk_search_engine_quartz_get_type ())
-#define CTK_SEARCH_ENGINE_QUARTZ(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_QUARTZ, GtkSearchEngineQuartz))
-#define CTK_SEARCH_ENGINE_QUARTZ_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_QUARTZ, GtkSearchEngineQuartzClass))
+#define CTK_SEARCH_ENGINE_QUARTZ(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_QUARTZ, CtkSearchEngineQuartz))
+#define CTK_SEARCH_ENGINE_QUARTZ_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_QUARTZ, CtkSearchEngineQuartzClass))
 #define CTK_IS_SEARCH_ENGINE_QUARTZ(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEARCH_ENGINE_QUARTZ))
 #define CTK_IS_SEARCH_ENGINE_QUARTZ_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEARCH_ENGINE_QUARTZ))
-#define CTK_SEARCH_ENGINE_QUARTZ_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_QUARTZ, GtkSearchEngineQuartzClass))
+#define CTK_SEARCH_ENGINE_QUARTZ_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_QUARTZ, CtkSearchEngineQuartzClass))
 
-typedef struct _GtkSearchEngineQuartz GtkSearchEngineQuartz;
-typedef struct _GtkSearchEngineQuartzClass GtkSearchEngineQuartzClass;
-typedef struct _GtkSearchEngineQuartzPrivate GtkSearchEngineQuartzPrivate;
+typedef struct _CtkSearchEngineQuartz CtkSearchEngineQuartz;
+typedef struct _CtkSearchEngineQuartzClass CtkSearchEngineQuartzClass;
+typedef struct _CtkSearchEngineQuartzPrivate CtkSearchEngineQuartzPrivate;
 
-struct _GtkSearchEngineQuartz
+struct _CtkSearchEngineQuartz
 {
-  GtkSearchEngine parent;
+  CtkSearchEngine parent;
 
-  GtkSearchEngineQuartzPrivate *priv;
+  CtkSearchEngineQuartzPrivate *priv;
 };
 
-struct _GtkSearchEngineQuartzClass
+struct _CtkSearchEngineQuartzClass
 {
-  GtkSearchEngineClass parent_class;
+  CtkSearchEngineClass parent_class;
 };
 
 GType            _ctk_search_engine_quartz_get_type (void);
-GtkSearchEngine *_ctk_search_engine_quartz_new      (void);
+CtkSearchEngine *_ctk_search_engine_quartz_new      (void);
 
 G_END_DECLS
 

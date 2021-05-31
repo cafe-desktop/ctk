@@ -20,21 +20,21 @@
 #include <ctk/ctk.h>
 #include "ctksocketaccessible.h"
 
-/* We can not make GtkSocketAccessible inherit both from GtkContainerAccessible
- * and GtkSocket, so we make it the atk parent of an AtkSocket */
+/* We can not make CtkSocketAccessible inherit both from CtkContainerAccessible
+ * and CtkSocket, so we make it the atk parent of an AtkSocket */
 
-struct _GtkSocketAccessiblePrivate
+struct _CtkSocketAccessiblePrivate
 {
   AtkObject *accessible_socket;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkSocketAccessible, ctk_socket_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkSocketAccessible))
+G_DEFINE_TYPE_WITH_CODE (CtkSocketAccessible, ctk_socket_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkSocketAccessible))
 
 static AtkObject*
 ctk_socket_accessible_ref_child (AtkObject *obj, int i)
 {
-  GtkSocketAccessible *socket = CTK_SOCKET_ACCESSIBLE (obj);
+  CtkSocketAccessible *socket = CTK_SOCKET_ACCESSIBLE (obj);
 
   if (i != 0)
     return NULL;
@@ -51,8 +51,8 @@ ctk_socket_accessible_get_n_children (AtkObject *obj)
 static void
 ctk_socket_accessible_finalize (GObject *object)
 {
-  GtkSocketAccessible *socket = CTK_SOCKET_ACCESSIBLE (object);
-  GtkSocketAccessiblePrivate *priv = socket->priv;
+  CtkSocketAccessible *socket = CTK_SOCKET_ACCESSIBLE (object);
+  CtkSocketAccessiblePrivate *priv = socket->priv;
 
   g_clear_object (&priv->accessible_socket);
 
@@ -73,9 +73,9 @@ ctk_socket_accessible_initialize (AtkObject *socket, gpointer data)
 }
 
 static void
-ctk_socket_accessible_class_init (GtkSocketAccessibleClass *klass)
+ctk_socket_accessible_class_init (CtkSocketAccessibleClass *klass)
 {
-  GtkContainerAccessibleClass *container_class = (GtkContainerAccessibleClass*)klass;
+  CtkContainerAccessibleClass *container_class = (CtkContainerAccessibleClass*)klass;
   AtkObjectClass              *atk_class       = ATK_OBJECT_CLASS (klass);
   GObjectClass                *gobject_class   = G_OBJECT_CLASS (klass);
 
@@ -90,13 +90,13 @@ ctk_socket_accessible_class_init (GtkSocketAccessibleClass *klass)
 }
 
 static void
-ctk_socket_accessible_init (GtkSocketAccessible *socket)
+ctk_socket_accessible_init (CtkSocketAccessible *socket)
 {
   socket->priv = ctk_socket_accessible_get_instance_private (socket);
 }
 
 void
-ctk_socket_accessible_embed (GtkSocketAccessible *socket, gchar *path)
+ctk_socket_accessible_embed (CtkSocketAccessible *socket, gchar *path)
 {
   atk_socket_embed (ATK_SOCKET (socket->priv->accessible_socket), path);
 }

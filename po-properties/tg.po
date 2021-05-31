@@ -317,10 +317,10 @@ msgstr "Гурӯҳи фаъолият"
 
 #: ../ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"GtkActionGroup ин GtkAction дар якҷоягӣ бо, ё NULL (барои истифодаи дохилӣ)."
+"CtkActionGroup ин CtkAction дар якҷоягӣ бо, ё NULL (барои истифодаи дохилӣ)."
 
 #: ../ctk/deprecated/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:378
@@ -579,8 +579,8 @@ msgid "Style context"
 msgstr "Таносуби сабк"
 
 #: ../ctk/deprecated/ctkstyle.c:470
-msgid "GtkStyleContext to get style from"
-msgstr "GtkStyleContext барои гирифтани сабк аз"
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext барои гирифтани сабк аз"
 
 #: ../ctk/deprecated/ctktable.c:189
 msgid "Rows"
@@ -899,10 +899,10 @@ msgstr "Намуди баста"
 
 #: ../ctk/ctkactionbar.c:968 ../ctk/ctkbox.c:325 ../ctk/ctkheaderbar.c:1735
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"GtkPackType муайян мекунад, ки оё объекти иловагӣ барои оғоз ё анҷоми "
+"CtkPackType муайян мекунад, ки оё объекти иловагӣ барои оғоз ё анҷоми "
 "объекти асосӣ бо истинод бастабандӣ мешавад ё на"
 
 #: ../ctk/ctkactionbar.c:974 ../ctk/ctkbox.c:331 ../ctk/ctkheaderbar.c:1741
@@ -1070,10 +1070,10 @@ msgstr "Объекти \"Дигар ...\" -ро дар бар мегирад"
 #: ../ctk/ctkappchooserbutton.c:616
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
 "Новобаста ба он, ки combobox бояд объектеро барои раҳсозӣ кардани "
-"GtkAppChooserDialog  дар бар гирад"
+"CtkAppChooserDialog  дар бар гирад"
 
 #: ../ctk/ctkappchooserbutton.c:632
 msgid "Show default item"
@@ -1709,10 +1709,10 @@ msgstr "Намуди баста"
 
 #: ../ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"GtkPackType нишон медиҳад, ки оё катак барои оғоз ё хотимаи минтақаи катан "
+"CtkPackType нишон медиҳад, ки оё катак барои оғоз ё хотимаи минтақаи катан "
 "бо истинод бастабандӣ мешавад ё на"
 
 #: ../ctk/ctkcellarea.c:789
@@ -2001,8 +2001,8 @@ msgid "Size"
 msgstr "Андоза"
 
 #: ../ctk/ctkcellrendererpixbuf.c:195
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Арзиши GtkIconSize, ки андозаи аломати ҷуброншударо муайян мекунад"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Арзиши CtkIconSize, ки андозаи аломати ҷуброншударо муайян мекунад"
 
 #: ../ctk/ctkcellrendererpixbuf.c:204
 msgid "Detail"
@@ -2115,9 +2115,9 @@ msgid "Pulse of the spinner"
 msgstr "Набзи чархонанда"
 
 #: ../ctk/ctkcellrendererspinner.c:158
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
-"Арзиши GtkIconSize, ки андозаи чархонандаи ҷубронкуннандаро муайян мекунад"
+"Арзиши CtkIconSize, ки андозаи чархонандаи ҷубронкуннандаро муайян мекунад"
 
 #: ../ctk/ctkcellrenderertext.c:254
 msgid "Text to render"
@@ -2574,17 +2574,17 @@ msgstr "Ноҳияи катак"
 #: ../ctk/ctkcellview.c:254 ../ctk/ctkcombobox.c:1016
 #: ../ctk/ctkentrycompletion.c:460 ../ctk/ctkiconview.c:641
 #: ../ctk/ctktreemenu.c:315 ../ctk/ctktreeviewcolumn.c:427
-msgid "The GtkCellArea used to layout cells"
-msgstr "GtkCellArea барои тарҳбандии катакҳо истифода мешавад"
+msgid "The CtkCellArea used to layout cells"
+msgstr "CtkCellArea барои тарҳбандии катакҳо истифода мешавад"
 
 #: ../ctk/ctkcellview.c:277
 msgid "Cell Area Context"
 msgstr "Контексти ноҳияи катак"
 
 #: ../ctk/ctkcellview.c:278
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
-"GtkCellAreaContext барои муҳосибаи геометрияи намуди катак истифода мешавад"
+"CtkCellAreaContext барои муҳосибаи геометрияи намуди катак истифода мешавад"
 
 #: ../ctk/ctkcellview.c:295
 msgid "Draw Sensitive"
@@ -2796,10 +2796,10 @@ msgstr "Сутуни воридкунии матн"
 #: ../ctk/ctkcombobox.c:946
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "Сутун дар модели қуттиҳои мутобиқат барои пайвастшавӣ бо сатрҳо аз вуруд "
-"ҳастанд, агар мутобиқат бо #GtkComboBox:has-entry = %TRUE сохта шуда бошад"
+"ҳастанд, агар мутобиқат бо #CtkComboBox:has-entry = %TRUE сохта шуда бошад"
 
 #: ../ctk/ctkcombobox.c:963
 msgid "ID Column"
@@ -4160,10 +4160,10 @@ msgstr "Баробаркунӣ"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Вобаста ба якдигар мосшавии хатҳо дар матни барчасп. Ин ба мосшавии барчасп "
-"дар дохили тахсисдиҳии худ таъсир намерасонад. барои ин, нигаред ба GtkMisc::"
+"дар дохили тахсисдиҳии худ таъсир намерасонад. барои ин, нигаред ба CtkMisc::"
 "xalign"
 
 #: ../ctk/ctklabel.c:742
@@ -4738,8 +4738,8 @@ msgid "Message area"
 msgstr "Ноҳияи паём"
 
 #: ../ctk/ctkmessagedialog.c:289
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
-msgstr "GtkVBox, ки барчаспҳои ибтидоӣ ва дуюмдараҷаи гуфтугӯро нигоҳ медорад"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
+msgstr "CtkVBox, ки барчаспҳои ибтидоӣ ва дуюмдараҷаи гуфтугӯро нигоҳ медорад"
 
 #: ../ctk/ctkmisc.c:111
 msgid "Y align"
@@ -5324,16 +5324,16 @@ msgid "Default Page Setup"
 msgstr "Барпосозии саҳифаи пешфарз"
 
 #: ../ctk/ctkprintoperation.c:1084
-msgid "The GtkPageSetup used by default"
-msgstr "GtkPageSetup истифодашуда аз ҷониби пешфарз"
+msgid "The CtkPageSetup used by default"
+msgstr "CtkPageSetup истифодашуда аз ҷониби пешфарз"
 
 #: ../ctk/ctkprintoperation.c:1102 ../ctk/ctkprintunixdialog.c:425
 msgid "Print Settings"
 msgstr "Танзимоти чопкунӣ"
 
 #: ../ctk/ctkprintoperation.c:1103 ../ctk/ctkprintunixdialog.c:426
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "GtkPrintSettings истифодашуда барои омода кардани равзанаи гуфтугӯ"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "CtkPrintSettings истифодашуда барои омода кардани равзанаи гуфтугӯ"
 
 #: ../ctk/ctkprintoperation.c:1121
 msgid "Job Name"
@@ -5453,9 +5453,9 @@ msgid "Embed Page Setup"
 msgstr "Танзими саҳифаи дарунсохт"
 
 #: ../ctk/ctkprintoperation.c:1399 ../ctk/ctkprintunixdialog.c:467
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
-"ДУРУСТ агар маҷмӯи танзимоти саҳифа дар GtkPrintUnixDialog ҷойгир шуда бошад"
+"ДУРУСТ агар маҷмӯи танзимоти саҳифа дар CtkPrintUnixDialog ҷойгир шуда бошад"
 
 #: ../ctk/ctkprintoperation.c:1420
 msgid "Number of Pages To Print"
@@ -5466,16 +5466,16 @@ msgid "The number of pages that will be printed."
 msgstr "Миқдори саҳифаҳое, ки чоп мешаванд."
 
 #: ../ctk/ctkprintunixdialog.c:408
-msgid "The GtkPageSetup to use"
-msgstr "GtkPageSetup барои истифода"
+msgid "The CtkPageSetup to use"
+msgstr "CtkPageSetup барои истифода"
 
 #: ../ctk/ctkprintunixdialog.c:433
 msgid "Selected Printer"
 msgstr "Принтери интихобшуда"
 
 #: ../ctk/ctkprintunixdialog.c:434
-msgid "The GtkPrinter which is selected"
-msgstr "GtkPrinter, ки интихоб шудааст"
+msgid "The CtkPrinter which is selected"
+msgstr "CtkPrinter, ки интихоб шудааст"
 
 #: ../ctk/ctkprintunixdialog.c:441
 msgid "Manual Capabilities"
@@ -5592,8 +5592,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "Тугмаи абзори радио, ки ин тугма ба гурӯҳи он тааллуқ дорад."
 
 #: ../ctk/ctkrange.c:436
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "GtkAdjustment, ки қимати ҷории объекти ҳудудиро дар бар мегирад"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "CtkAdjustment, ки қимати ҷории объекти ҳудудиро дар бар мегирад"
 
 #: ../ctk/ctkrange.c:444
 msgid "Invert direction slider moves to increase range value"
@@ -5851,9 +5851,9 @@ msgstr "Андозаи нишонаҳо"
 
 #: ../ctk/ctkscalebutton.c:215
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"GtkAdjustment, ки қимати ҷории ин объекти тугмаи миқёсбандиро дар бар мегирад"
+"CtkAdjustment, ки қимати ҷории ин объекти тугмаи миқёсбандиро дар бар мегирад"
 
 #: ../ctk/ctkscalebutton.c:243
 msgid "Icons"
@@ -5979,16 +5979,16 @@ msgid "Horizontal Adjustment"
 msgstr "Москунии уфуқӣ"
 
 #: ../ctk/ctkscrolledwindow.c:361
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment барои вазъияти уфуқӣ"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment барои вазъияти уфуқӣ"
 
 #: ../ctk/ctkscrolledwindow.c:367
 msgid "Vertical Adjustment"
 msgstr "Москунии амудӣ"
 
 #: ../ctk/ctkscrolledwindow.c:368
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment барои вазъияти амудӣ"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment барои вазъияти амудӣ"
 
 #: ../ctk/ctkscrolledwindow.c:374
 msgid "Horizontal Scrollbar Policy"
@@ -6453,16 +6453,16 @@ msgid "Default file chooser backend"
 msgstr "Интиҳои интихобкунандаи файли пешфарз"
 
 #: ../ctk/ctksettings.c:951
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Номи интиҳои GtkFileChooser барои истифодаи пешфарз"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Номи интиҳои CtkFileChooser барои истифодаи пешфарз"
 
 #: ../ctk/ctksettings.c:968
 msgid "Default print backend"
 msgstr "Интиҳои чопи пешфарз"
 
 #: ../ctk/ctksettings.c:969
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Рӯйхати интиҳои GtkPrintBackend барои истифодаи пешфарз"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Рӯйхати интиҳои CtkPrintBackend барои истифодаи пешфарз"
 
 #: ../ctk/ctksettings.c:992
 msgid "Default command to run when displaying a print preview"
@@ -7020,8 +7020,8 @@ msgid "Value type"
 msgstr "Навъи қимат"
 
 #: ../ctk/ctkstyleproperty.c:118
-msgid "The value type returned by GtkStyleContext"
-msgstr "Навъи қимати баргардонидашуда тавассути GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
+msgstr "Навъи қимати баргардонидашуда тавассути CtkStyleContext"
 
 #: ../ctk/ctkswitch.c:835
 msgid "Whether the switch is on or off"
@@ -7816,9 +7816,9 @@ msgid "Fixed Height Mode"
 msgstr "Ҳолати баландии собит"
 
 #: ../ctk/ctktreeview.c:1059
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"Ба шарте, ки ҳамаи сатрҳо баланди баробар дошта бошанд, суръати GtkTreeView "
+"Ба шарте, ки ҳамаи сатрҳо баланди баробар дошта бошанд, суръати CtkTreeView "
 "баланд мешавад"
 
 #: ../ctk/ctktreeview.c:1079
@@ -8634,8 +8634,8 @@ msgid "Focus in Toplevel"
 msgstr "Фокус дар сатҳи олӣ"
 
 #: ../ctk/ctkwindow.c:899
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Оё фокуси вуруд дар дохили GtkWindow аст"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Оё фокуси вуруд дар дохили CtkWindow аст"
 
 #: ../ctk/ctkwindow.c:906
 msgid "Type hint"
@@ -8771,12 +8771,12 @@ msgid "Height of resize grip"
 msgstr "Баландии чанголи тағйири андоза"
 
 #: ../ctk/ctkwindow.c:1142
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ../ctk/ctkwindow.c:1143
-msgid "The GtkApplication for the window"
-msgstr "GtkApplication барои равзана"
+msgid "The CtkApplication for the window"
+msgstr "CtkApplication барои равзана"
 
 #: ../modules/printbackends/cups/ctkprintercups.c:93
 msgid "Color Profile Title"

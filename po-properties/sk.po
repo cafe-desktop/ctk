@@ -367,10 +367,10 @@ msgstr "Skupina akcií"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"GtkActionGroup, ku ktorej je táto GtkAction priradená, alebo NULL (pre "
+"CtkActionGroup, ku ktorej je táto CtkAction priradená, alebo NULL (pre "
 "vnútorné použitie)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
@@ -736,7 +736,7 @@ msgid ""
 msgstr "Množstvo miesta pridaného hore a dole od olvádacieho prvku, v pixeloch"
 
 # MČ: Nedokážem si to dobre predstaviť. Je to „číslo v ikone“, alebo „počet ikon“?
-# * https://developer.gnome.org/ctk3/stable/GtkNumerableIcon.html
+# * https://developer.gnome.org/ctk3/stable/CtkNumerableIcon.html
 #: ctk/deprecated/ctknumerableicon.c:642
 msgid "Icon's count"
 msgstr "Počet v ikone"
@@ -932,8 +932,8 @@ msgid "Style context"
 msgstr "Kontext štýlu"
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
-msgstr "GtkStyleContext odkiaľ sa má získať štýl"
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext odkiaľ sa má získať štýl"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1312,10 +1312,10 @@ msgstr "Typ balenia"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"GtkPackType určujúci, či je potomok balený s odkazom na začiatok alebo na "
+"CtkPackType určujúci, či je potomok balený s odkazom na začiatok alebo na "
 "koniec rodiča"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
@@ -1385,10 +1385,10 @@ msgstr "Zahrnúť položku „Iné…“"
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
 "Určuje, či má kombinované pole zahrnúť položku, ktorá vyvolá "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 
 #: ctk/ctkappchooserbutton.c:634
 msgid "Show default item"
@@ -2006,10 +2006,10 @@ msgstr "Typ balenia"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"GtkPackType určuje, či je bunka balená s odkazom na začiatok alebo na koniec "
+"CtkPackType určuje, či je bunka balená s odkazom na začiatok alebo na koniec "
 "rodiča"
 
 #: ctk/ctkcellarea.c:790
@@ -2286,8 +2286,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "Identifikátor (zo skladu) pre vykreslovanú štandardnú ikonu"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Hodnota GtkIconSize, ktorá určuje veľkosť vykreslenej ikony"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Hodnota CtkIconSize, ktorá určuje veľkosť vykreslenej ikony"
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2400,9 +2400,9 @@ msgid "Pulse of the spinner"
 msgstr "Pulzovanie rotujúceho indikátora"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
-"Hodnota GtkIconSize, ktorá určuje veľkosť vykresleného rotujúceho indikátora"
+"Hodnota CtkIconSize, ktorá určuje veľkosť vykresleného rotujúceho indikátora"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2838,15 +2838,15 @@ msgstr "Oblasť bunky"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
-msgstr "Oblasť GtkCellArea použitá na rozloženie buniek"
+msgid "The CtkCellArea used to layout cells"
+msgstr "Oblasť CtkCellArea použitá na rozloženie buniek"
 
 #: ctk/ctkcellview.c:306
 msgid "Cell Area Context"
 msgstr "Kontext oblasti bunky"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 "Kontext oblasti bunky, ktorý sa použije na výpočet geometrie pohľadu CellView"
 
@@ -3068,10 +3068,10 @@ msgstr "Stĺpec textu vstupného poľa"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "Stĺpec v modely kombinovaného poľa na asociáciu s textom zo vstupného poľa, "
-"ak kombinované pole bolo vytvorené s #GtkComboBox:has-entry = %TRUE"
+"ak kombinované pole bolo vytvorené s #CtkComboBox:has-entry = %TRUE"
 
 #: ctk/ctkcombobox.c:1129
 msgid "ID Column"
@@ -4235,8 +4235,8 @@ msgid "Auto render"
 msgstr "Automaticky vykresľovať"
 
 #: ctk/ctkglarea.c:808
-msgid "Whether the GtkGLArea renders on each redraw"
-msgstr "Určuje, či sa má vykresliť GtkGLArea pri každom prekreslení"
+msgid "Whether the CtkGLArea renders on each redraw"
+msgstr "Určuje, či sa má vykresliť CtkGLArea pri každom prekreslení"
 
 #: ctk/ctkglarea.c:828
 msgid "Has alpha"
@@ -4599,10 +4599,10 @@ msgstr "Zarovnanie"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "Zarovnanie riadkov v texte vľhadom na ostatné riadky. Toto NEOVPLYVŇUJE "
-"zarovnanie textu vzhľadom k jeho miestu. To nájdete v GtkMisc::xalign"
+"zarovnanie textu vzhľadom k jeho miestu. To nájdete v CtkMisc::xalign"
 
 #: ctk/ctklabel.c:877
 msgid "Pattern"
@@ -5211,9 +5211,9 @@ msgid "Message area"
 msgstr "Oblasť správy"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr ""
-"Ovládací prvok GtkBox, v ktorom sú umiestnené primárny a sekundárny "
+"Ovládací prvok CtkBox, v ktorom sú umiestnené primárny a sekundárny "
 "označenia dialógového okna"
 
 #: ctk/ctkmodelbutton.c:1150
@@ -5974,16 +5974,16 @@ msgid "Default Page Setup"
 msgstr "Predvolené nastavenia stránky"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "Predvolene použitý GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "Predvolene použitý CtkPageSetup"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "Nastavenia tlače"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "GtkPrintSettings použité na nainicializovanie dialógového okna"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "CtkPrintSettings použité na nainicializovanie dialógového okna"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -6102,10 +6102,10 @@ msgid "Embed Page Setup"
 msgstr "Zabuduje nastavenie stránky"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 "TRUE, ak sú kombinované polia nastavenia strany zapuzdrené v objekte "
-"GtkPrintUnixDialog"
+"CtkPrintUnixDialog"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -6116,16 +6116,16 @@ msgid "The number of pages that will be printed."
 msgstr "Počet stránok, ktoré budú vytlačené."
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "Použitý objekt GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "Použitý objekt CtkPageSetup"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "Vybraná tlačiareň"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "Položka GtkPrinter, ktorá je vybraná"
+msgid "The CtkPrinter which is selected"
+msgstr "Položka CtkPrinter, ktorá je vybraná"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6241,9 +6241,9 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "Nástrojové rádiové tlačidlo a skupina, do ktorých patrí toto tlačidlo."
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr ""
-"Prvok GtkAdjustment, ktorý obsahuje aktuálnu hodnotu tohto objektu rozsahu"
+"Prvok CtkAdjustment, ktorý obsahuje aktuálnu hodnotu tohto objektu rozsahu"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6495,9 +6495,9 @@ msgstr "Veľkosť ikony"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"Prvok GtkAdjustment, ktorý obsahuje aktuálnu hodnotu tohto objektu tlačidlo "
+"Prvok CtkAdjustment, ktorý obsahuje aktuálnu hodnotu tohto objektu tlačidlo "
 "mierky"
 
 #: ctk/ctkscalebutton.c:246
@@ -6621,16 +6621,16 @@ msgid "Horizontal Adjustment"
 msgstr "Vodorvné zarovnanie"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "Hodnota GtkAdjustment pre vodoronú pozíciu"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "Hodnota CtkAdjustment pre vodoronú pozíciu"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "Zvislé zarovnanie"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "Hodnota GtkAdjustment pre zvislú pozíciu"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "Hodnota CtkAdjustment pre zvislú pozíciu"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -7139,16 +7139,16 @@ msgid "Default file chooser backend"
 msgstr "Predvolený backend pre výber súborov"
 
 #: ctk/ctksettings.c:990
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Názov predvoleného obslužného programu pre GtkFileChooser"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Názov predvoleného obslužného programu pre CtkFileChooser"
 
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Predvolený obslužný program pre tlač"
 
 #: ctk/ctksettings.c:1008
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Zoznam predvolených obslužných programov pre GtkPrintBackend"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Zoznam predvolených obslužných programov pre CtkPrintBackend"
 
 #: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
@@ -7782,7 +7782,7 @@ msgid "Stack"
 msgstr "Zásobník"
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
+msgid "Associated stack for this CtkStackSidebar"
 msgstr "Zásobník asociovaný s týmto zásobníkovým bočným panelom"
 
 #: ctk/ctkstackswitcher.c:687
@@ -7826,8 +7826,8 @@ msgid "Value type"
 msgstr "Typ hodnoty"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
-msgstr "Typ hodnoty vrátenej z GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
+msgstr "Typ hodnoty vrátenej z CtkStyleContext"
 
 #: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
@@ -8706,8 +8706,8 @@ msgid "Fixed Height Mode"
 msgstr "Režim pevnej výšky"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "Zrýchli GtkTreeView predpokladom, že všetky riadky majú rovnakú výšku"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "Zrýchli CtkTreeView predpokladom, že všetky riadky majú rovnakú výšku"
 
 #: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
@@ -9522,8 +9522,8 @@ msgid "Focus in Toplevel"
 msgstr "Zameriavač v najvyššom prvku"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Určuje, či je vstupný zameriavač v tomto prvku GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Určuje, či je vstupný zameriavač v tomto prvku CtkWindow"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -9634,12 +9634,12 @@ msgid "Whether the window is maximized"
 msgstr "Určuje, či je okno maximalizované"
 
 #: ctk/ctkwindow.c:1113
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1114
-msgid "The GtkApplication for the window"
-msgstr "GtkApplication pre okno"
+msgid "The CtkApplication for the window"
+msgstr "CtkApplication pre okno"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
@@ -9654,8 +9654,8 @@ msgid "Cloud Print account"
 msgstr "Účet cloudovej tlače"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "Inštancia GtkCloudprintAccount"
+msgid "CtkCloudprintAccount instance"
+msgstr "Inštancia CtkCloudprintAccount"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"

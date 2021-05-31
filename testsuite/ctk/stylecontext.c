@@ -1,16 +1,16 @@
 #include <ctk/ctk.h>
 
 typedef struct {
-  GtkStyleContext *context;
-  GtkCssProvider  *blue_provider;
-  GtkCssProvider  *red_provider;
-  GtkCssProvider  *green_provider;
+  CtkStyleContext *context;
+  CtkCssProvider  *blue_provider;
+  CtkCssProvider  *red_provider;
+  CtkCssProvider  *green_provider;
 } PrioritiesFixture;
 
 static void
 test_parse_selectors (void)
 {
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
   GError *error;
   gboolean res;
   gint i;
@@ -75,10 +75,10 @@ test_parse_selectors (void)
 static void
 test_path (void)
 {
-  GtkWidgetPath *path;
-  GtkWidgetPath *path2;
+  CtkWidgetPath *path;
+  CtkWidgetPath *path2;
   gint pos;
-  GtkRegionFlags flags;
+  CtkRegionFlags flags;
 
   path = ctk_widget_path_new ();
   g_assert_cmpint (ctk_widget_path_length (path), ==, 0);
@@ -147,9 +147,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 test_match (void)
 {
-  GtkStyleContext *context;
-  GtkWidgetPath *path;
-  GtkCssProvider *provider;
+  CtkStyleContext *context;
+  CtkWidgetPath *path;
+  CtkCssProvider *provider;
   GError *error;
   const gchar *data;
   GdkRGBA color;
@@ -270,8 +270,8 @@ test_match (void)
 static void
 test_basic_properties (void)
 {
-  GtkStyleContext *context;
-  GtkWidgetPath *path;
+  CtkStyleContext *context;
+  CtkWidgetPath *path;
   GdkRGBA *color;
   GdkRGBA *bg_color;
   PangoFontDescription *font;
@@ -300,8 +300,8 @@ test_basic_properties (void)
 void
 test_invalidate_saved (void)
 {
-  GtkWidget *window;
-  GtkStyleContext *context;
+  CtkWidget *window;
+  CtkStyleContext *context;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
@@ -318,7 +318,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 void
 test_widget_path_parent (void)
 {
-  GtkStyleContext *parent, *context;
+  CtkStyleContext *parent, *context;
 
   parent = ctk_style_context_new ();
   context = ctk_style_context_new ();
@@ -332,7 +332,7 @@ test_widget_path_parent (void)
 static void
 test_style_classes (void)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   GList *classes;
 
   context = ctk_style_context_new ();
@@ -374,7 +374,7 @@ test_style_priorities_setup (PrioritiesFixture *f,
                              gconstpointer      unused)
 {
   GError *error = NULL;
-  GtkWidgetPath *path;
+  CtkWidgetPath *path;
   f->blue_provider = ctk_css_provider_new ();
   f->red_provider = ctk_css_provider_new ();
   f->green_provider = ctk_css_provider_new ();

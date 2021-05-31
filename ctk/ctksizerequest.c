@@ -36,8 +36,8 @@
 static GQuark recursion_check_quark = 0;
 
 static void
-push_recursion_check (GtkWidget       *widget,
-                      GtkOrientation   orientation,
+push_recursion_check (CtkWidget       *widget,
+                      CtkOrientation   orientation,
                       gint             for_size)
 {
   const char *previous_method;
@@ -60,7 +60,7 @@ push_recursion_check (GtkWidget       *widget,
   if (previous_method != NULL)
     {
       g_warning ("%s %p: widget tried to ctk_widget_%s inside "
-                 " GtkWidget     ::%s implementation. "
+                 " CtkWidget     ::%s implementation. "
                  "Should just invoke CTK_WIDGET_GET_CLASS(widget)->%s "
                  "directly rather than using ctk_widget_%s",
                  G_OBJECT_TYPE_NAME (widget), widget,
@@ -72,8 +72,8 @@ push_recursion_check (GtkWidget       *widget,
 }
 
 static void
-pop_recursion_check (GtkWidget       *widget,
-                     GtkOrientation   orientation)
+pop_recursion_check (CtkWidget       *widget,
+                     CtkOrientation   orientation)
 {
   g_object_set_qdata (G_OBJECT (widget), recursion_check_quark, NULL);
 }
@@ -83,7 +83,7 @@ pop_recursion_check (GtkWidget       *widget,
 #endif /* G_ENABLE_CONSISTENCY_CHECKS */
 
 static const char *
-get_vfunc_name (GtkOrientation orientation,
+get_vfunc_name (CtkOrientation orientation,
                 gint           for_size)
 {
   if (orientation == CTK_ORIENTATION_HORIZONTAL)
@@ -93,9 +93,9 @@ get_vfunc_name (GtkOrientation orientation,
 }
 
 static gboolean
-widget_class_has_baseline_support (GtkWidgetClass *widget_class)
+widget_class_has_baseline_support (CtkWidgetClass *widget_class)
 {
-  GtkWidgetClass *parent_class;
+  CtkWidgetClass *parent_class;
 
   if (widget_class->get_preferred_height_and_baseline_for_width == NULL)
     return FALSE;
@@ -123,9 +123,9 @@ widget_class_has_baseline_support (GtkWidgetClass *widget_class)
 }
 
 gboolean
-_ctk_widget_has_baseline_support (GtkWidget *widget)
+_ctk_widget_has_baseline_support (CtkWidget *widget)
 {
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
   widget_class = CTK_WIDGET_GET_CLASS (widget);
 
@@ -133,8 +133,8 @@ _ctk_widget_has_baseline_support (GtkWidget *widget)
 }
 
 static void
-ctk_widget_query_size_for_orientation (GtkWidget        *widget,
-                                       GtkOrientation    orientation,
+ctk_widget_query_size_for_orientation (CtkWidget        *widget,
+                                       CtkOrientation    orientation,
                                        gint              for_size,
                                        gint             *minimum_size,
                                        gint             *natural_size,
@@ -142,7 +142,7 @@ ctk_widget_query_size_for_orientation (GtkWidget        *widget,
                                        gint             *natural_baseline)
 {
   SizeRequestCache *cache;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
   gint min_size = 0;
   gint nat_size = 0;
   gint min_baseline = -1;
@@ -368,8 +368,8 @@ ctk_widget_query_size_for_orientation (GtkWidget        *widget,
  * or get_preferred_height() will be used.
  */
 static void
-ctk_widget_compute_size_for_orientation (GtkWidget        *widget,
-                                         GtkOrientation    orientation,
+ctk_widget_compute_size_for_orientation (CtkWidget        *widget,
+                                         CtkOrientation    orientation,
                                          gint              for_size,
                                          gint             *minimum,
                                          gint             *natural,
@@ -406,7 +406,7 @@ ctk_widget_compute_size_for_orientation (GtkWidget        *widget,
   g_hash_table_iter_init (&iter, widgets);
   while (g_hash_table_iter_next (&iter, &key, NULL))
     {
-      GtkWidget *tmp_widget = key;
+      CtkWidget *tmp_widget = key;
       gint min_dimension, nat_dimension;
 
       ctk_widget_query_size_for_orientation (tmp_widget, orientation, for_size, &min_dimension, &nat_dimension, NULL, NULL);
@@ -433,22 +433,22 @@ ctk_widget_compute_size_for_orientation (GtkWidget        *widget,
 
 /**
  * ctk_widget_get_request_mode:
- * @widget: a #GtkWidget instance
+ * @widget: a #CtkWidget instance
  *
  * Gets whether the widget prefers a height-for-width layout
  * or a width-for-height layout.
  *
- * #GtkBin widgets generally propagate the preference of
+ * #CtkBin widgets generally propagate the preference of
  * their child, container widgets need to request something either in
  * context of their children or in context of their allocation
  * capabilities.
  *
- * Returns: The #GtkSizeRequestMode preferred by @widget.
+ * Returns: The #CtkSizeRequestMode preferred by @widget.
  *
  * Since: 3.0
  */
-GtkSizeRequestMode
-ctk_widget_get_request_mode (GtkWidget *widget)
+CtkSizeRequestMode
+ctk_widget_get_request_mode (CtkWidget *widget)
 {
   SizeRequestCache *cache;
 
@@ -465,7 +465,7 @@ ctk_widget_get_request_mode (GtkWidget *widget)
 
 /**
  * ctk_widget_get_preferred_width:
- * @widget: a #GtkWidget instance
+ * @widget: a #CtkWidget instance
  * @minimum_width: (out) (allow-none): location to store the minimum width, or %NULL
  * @natural_width: (out) (allow-none): location to store the natural width, or %NULL
  *
@@ -474,15 +474,15 @@ ctk_widget_get_request_mode (GtkWidget *widget)
  * This call is specific to height-for-width requests.
  *
  * The returned request will be modified by the
- * GtkWidgetClass::adjust_size_request virtual method and by any
- * #GtkSizeGroups that have been applied. That is, the returned request
+ * CtkWidgetClass::adjust_size_request virtual method and by any
+ * #CtkSizeGroups that have been applied. That is, the returned request
  * is the one that should be used for layout, not necessarily the one
  * returned by the widget itself.
  *
  * Since: 3.0
  */
 void
-ctk_widget_get_preferred_width (GtkWidget *widget,
+ctk_widget_get_preferred_width (CtkWidget *widget,
                                 gint      *minimum_width,
                                 gint      *natural_width)
 {
@@ -500,7 +500,7 @@ ctk_widget_get_preferred_width (GtkWidget *widget,
 
 /**
  * ctk_widget_get_preferred_height:
- * @widget: a #GtkWidget instance
+ * @widget: a #CtkWidget instance
  * @minimum_height: (out) (allow-none): location to store the minimum height, or %NULL
  * @natural_height: (out) (allow-none): location to store the natural height, or %NULL
  *
@@ -509,15 +509,15 @@ ctk_widget_get_preferred_width (GtkWidget *widget,
  * This call is specific to width-for-height requests.
  *
  * The returned request will be modified by the
- * GtkWidgetClass::adjust_size_request virtual method and by any
- * #GtkSizeGroups that have been applied. That is, the returned request
+ * CtkWidgetClass::adjust_size_request virtual method and by any
+ * #CtkSizeGroups that have been applied. That is, the returned request
  * is the one that should be used for layout, not necessarily the one
  * returned by the widget itself.
  *
  * Since: 3.0
  */
 void
-ctk_widget_get_preferred_height (GtkWidget *widget,
+ctk_widget_get_preferred_height (CtkWidget *widget,
                                  gint      *minimum_height,
                                  gint      *natural_height)
 {
@@ -536,7 +536,7 @@ ctk_widget_get_preferred_height (GtkWidget *widget,
 
 /**
  * ctk_widget_get_preferred_width_for_height:
- * @widget: a #GtkWidget instance
+ * @widget: a #CtkWidget instance
  * @height: the height which is available for allocation
  * @minimum_width: (out) (allow-none): location for storing the minimum width, or %NULL
  * @natural_width: (out) (allow-none): location for storing the natural width, or %NULL
@@ -545,15 +545,15 @@ ctk_widget_get_preferred_height (GtkWidget *widget,
  * the specified @height.
  *
  * The returned request will be modified by the
- * GtkWidgetClass::adjust_size_request virtual method and by any
- * #GtkSizeGroups that have been applied. That is, the returned request
+ * CtkWidgetClass::adjust_size_request virtual method and by any
+ * #CtkSizeGroups that have been applied. That is, the returned request
  * is the one that should be used for layout, not necessarily the one
  * returned by the widget itself.
  *
  * Since: 3.0
  */
 void
-ctk_widget_get_preferred_width_for_height (GtkWidget *widget,
+ctk_widget_get_preferred_width_for_height (CtkWidget *widget,
                                            gint       height,
                                            gint      *minimum_width,
                                            gint      *natural_width)
@@ -572,7 +572,7 @@ ctk_widget_get_preferred_width_for_height (GtkWidget *widget,
 
 /**
  * ctk_widget_get_preferred_height_for_width:
- * @widget: a #GtkWidget instance
+ * @widget: a #CtkWidget instance
  * @width: the width which is available for allocation
  * @minimum_height: (out) (allow-none): location for storing the minimum height, or %NULL
  * @natural_height: (out) (allow-none): location for storing the natural height, or %NULL
@@ -581,15 +581,15 @@ ctk_widget_get_preferred_width_for_height (GtkWidget *widget,
  * the specified @width.
  *
  * The returned request will be modified by the
- * GtkWidgetClass::adjust_size_request virtual method and by any
- * #GtkSizeGroups that have been applied. That is, the returned request
+ * CtkWidgetClass::adjust_size_request virtual method and by any
+ * #CtkSizeGroups that have been applied. That is, the returned request
  * is the one that should be used for layout, not necessarily the one
  * returned by the widget itself.
  *
  * Since: 3.0
  */
 void
-ctk_widget_get_preferred_height_for_width (GtkWidget *widget,
+ctk_widget_get_preferred_height_for_width (CtkWidget *widget,
                                            gint       width,
                                            gint      *minimum_height,
                                            gint      *natural_height)
@@ -608,7 +608,7 @@ ctk_widget_get_preferred_height_for_width (GtkWidget *widget,
 
 /**
  * ctk_widget_get_preferred_height_and_baseline_for_width:
- * @widget: a #GtkWidget instance
+ * @widget: a #CtkWidget instance
  * @width: the width which is available for allocation, or -1 if none
  * @minimum_height: (out) (allow-none): location for storing the minimum height, or %NULL
  * @natural_height: (out) (allow-none): location for storing the natural height, or %NULL
@@ -620,15 +620,15 @@ ctk_widget_get_preferred_height_for_width (GtkWidget *widget,
  * that no baseline is requested for this widget.
  *
  * The returned request will be modified by the
- * GtkWidgetClass::adjust_size_request and GtkWidgetClass::adjust_baseline_request virtual methods
- * and by any #GtkSizeGroups that have been applied. That is, the returned request
+ * CtkWidgetClass::adjust_size_request and CtkWidgetClass::adjust_baseline_request virtual methods
+ * and by any #CtkSizeGroups that have been applied. That is, the returned request
  * is the one that should be used for layout, not necessarily the one
  * returned by the widget itself.
  *
  * Since: 3.10
  */
 void
-ctk_widget_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_widget_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 							gint       width,
 							gint      *minimum_height,
 							gint      *natural_height,
@@ -650,7 +650,7 @@ ctk_widget_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 
 /*
  * _ctk_widget_get_preferred_size_and_baseline:
- * @widget: a #GtkWidget instance
+ * @widget: a #CtkWidget instance
  * @minimum_size: (out) (allow-none): location for storing the minimum size, or %NULL
  * @natural_size: (out) (allow-none): location for storing the natural size, or %NULL
  *
@@ -661,7 +661,7 @@ ctk_widget_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
  * This is used to retrieve a suitable size by container widgets which do
  * not impose any restrictions on the child placement. It can be used
  * to deduce toplevel window and menu sizes as well as child widgets in
- * free-form containers such as GtkLayout.
+ * free-form containers such as CtkLayout.
  *
  * Handle with care. Note that the natural height of a height-for-width
  * widget will generally be a smaller size than the minimum height, since the required
@@ -669,9 +669,9 @@ ctk_widget_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
  * the minimum width.
  */
 void
-_ctk_widget_get_preferred_size_and_baseline (GtkWidget      *widget,
-                                             GtkRequisition *minimum_size,
-                                             GtkRequisition *natural_size,
+_ctk_widget_get_preferred_size_and_baseline (CtkWidget      *widget,
+                                             CtkRequisition *minimum_size,
+                                             CtkRequisition *natural_size,
                                              gint           *minimum_baseline,
                                              gint           *natural_baseline)
 {
@@ -720,7 +720,7 @@ _ctk_widget_get_preferred_size_and_baseline (GtkWidget      *widget,
 
 /**
  * ctk_widget_get_preferred_size:
- * @widget: a #GtkWidget instance
+ * @widget: a #CtkWidget instance
  * @minimum_size: (out) (allow-none): location for storing the minimum size, or %NULL
  * @natural_size: (out) (allow-none): location for storing the natural size, or %NULL
  *
@@ -730,7 +730,7 @@ _ctk_widget_get_preferred_size_and_baseline (GtkWidget      *widget,
  * This is used to retrieve a suitable size by container widgets which do
  * not impose any restrictions on the child placement. It can be used
  * to deduce toplevel window and menu sizes as well as child widgets in
- * free-form containers such as GtkLayout.
+ * free-form containers such as CtkLayout.
  *
  * Handle with care. Note that the natural height of a height-for-width
  * widget will generally be a smaller size than the minimum height, since the required
@@ -743,9 +743,9 @@ _ctk_widget_get_preferred_size_and_baseline (GtkWidget      *widget,
  * Since: 3.0
  */
 void
-ctk_widget_get_preferred_size (GtkWidget      *widget,
-                               GtkRequisition *minimum_size,
-                               GtkRequisition *natural_size)
+ctk_widget_get_preferred_size (CtkWidget      *widget,
+                               CtkRequisition *minimum_size,
+                               CtkRequisition *natural_size)
 {
   _ctk_widget_get_preferred_size_and_baseline (widget, minimum_size, natural_size,
                                                NULL, NULL);
@@ -756,7 +756,7 @@ compare_gap (gconstpointer p1,
 	     gconstpointer p2,
 	     gpointer      data)
 {
-  GtkRequestedSize *sizes = data;
+  CtkRequestedSize *sizes = data;
   const guint *c1 = p1;
   const guint *c2 = p2;
 
@@ -787,7 +787,7 @@ compare_gap (gconstpointer p1,
  * children up to natural size first.
  *
  * The remaining space will be added to the @minimum_size member of the
- * GtkRequestedSize struct. If all sizes reach their natural size then
+ * CtkRequestedSize struct. If all sizes reach their natural size then
  * the remaining space is returned.
  *
  * Returns: The remainder of @extra_space after redistributing space
@@ -796,7 +796,7 @@ compare_gap (gconstpointer p1,
 gint
 ctk_distribute_natural_allocation (gint              extra_space,
 				   guint             n_requested_sizes,
-				   GtkRequestedSize *sizes)
+				   CtkRequestedSize *sizes)
 {
   guint *spreading;
   gint   i;
@@ -854,8 +854,8 @@ ctk_distribute_natural_allocation (gint              extra_space,
 }
 
 void
-_ctk_widget_get_preferred_size_for_size (GtkWidget      *widget,
-                                         GtkOrientation  orientation,
+_ctk_widget_get_preferred_size_for_size (CtkWidget      *widget,
+                                         CtkOrientation  orientation,
                                          gint            size,
                                          gint           *minimum,
                                          gint           *natural,

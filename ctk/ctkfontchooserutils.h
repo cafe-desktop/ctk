@@ -1,5 +1,5 @@
 /* ctkfontchooserutils.h - Private utility functions for implementing a
- *                           GtkFontChooser interface
+ *                           CtkFontChooser interface
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -41,12 +41,12 @@ typedef enum {
   CTK_FONT_CHOOSER_PROP_FONT_FEATURES,
   CTK_FONT_CHOOSER_PROP_LANGUAGE,
   CTK_FONT_CHOOSER_PROP_LAST
-} GtkFontChooserProp;
+} CtkFontChooserProp;
 
 void   _ctk_font_chooser_install_properties  (GObjectClass          *klass);
-void   _ctk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface);
-void   _ctk_font_chooser_set_delegate        (GtkFontChooser      *receiver,
-                                              GtkFontChooser      *delegate);
+void   _ctk_font_chooser_delegate_iface_init (CtkFontChooserIface *iface);
+void   _ctk_font_chooser_set_delegate        (CtkFontChooser      *receiver,
+                                              CtkFontChooser      *delegate);
 
 GQuark _ctk_font_chooser_delegate_get_quark  (void) G_GNUC_CONST;
 

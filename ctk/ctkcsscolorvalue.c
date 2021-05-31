@@ -38,11 +38,11 @@ typedef enum {
   COLOR_TYPE_CURRENT_COLOR
 } ColorType;
 
-struct _GtkCssValue
+struct _CtkCssValue
 {
   CTK_CSS_VALUE_BASE
   ColorType type;
-  GtkCssValue *last_value;
+  CtkCssValue *last_value;
 
   union
   {
@@ -50,27 +50,27 @@ struct _GtkCssValue
 
     struct
     {
-      GtkCssValue *color;
+      CtkCssValue *color;
       gdouble factor;
     } shade, alpha;
 
     struct
     {
-      GtkCssValue *color1;
-      GtkCssValue *color2;
+      CtkCssValue *color1;
+      CtkCssValue *color2;
       gdouble factor;
     } mix;
 
     struct
     {
-      GtkWin32Theme *theme;
+      CtkWin32Theme *theme;
       gint id;
     } win32;
   } sym_col;
 };
 
 static void
-ctk_css_value_color_free (GtkCssValue *color)
+ctk_css_value_color_free (CtkCssValue *color)
 {
   if (color->last_value)
     _ctk_css_value_unref (color->last_value);
@@ -97,14 +97,14 @@ ctk_css_value_color_free (GtkCssValue *color)
       break;
     }
 
-  g_slice_free (GtkCssValue, color);
+  g_slice_free (CtkCssValue, color);
 }
 
-static GtkCssValue *
+static CtkCssValue *
 ctk_css_value_color_get_fallback (guint                    property_id,
-                                  GtkStyleProviderPrivate *provider,
-                                  GtkCssStyle             *style,
-                                  GtkCssStyle             *parent_style)
+                                  CtkStyleProviderPrivate *provider,
+                                  CtkCssStyle             *style,
+                                  CtkCssStyle             *parent_style)
 {
   static const GdkRGBA transparent = { 0, 0, 0, 0 };
 
@@ -140,13 +140,13 @@ ctk_css_value_color_get_fallback (guint                    property_id,
     }
 }
 
-GtkCssValue *
-_ctk_css_color_value_resolve (GtkCssValue             *color,
-                              GtkStyleProviderPrivate *provider,
-                              GtkCssValue             *current,
+CtkCssValue *
+_ctk_css_color_value_resolve (CtkCssValue             *color,
+                              CtkStyleProviderPrivate *provider,
+                              CtkCssValue             *current,
                               GSList                  *cycle_list)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   ctk_internal_return_val_if_fail (color != NULL, NULL);
   ctk_internal_return_val_if_fail (provider == NULL || CTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
@@ -157,7 +157,7 @@ _ctk_css_color_value_resolve (GtkCssValue             *color,
       return _ctk_css_value_ref (color->last_value);
     case COLOR_TYPE_NAME:
       {
-	GtkCssValue *named;
+	CtkCssValue *named;
         GSList cycle = { color, cycle_list };
 
         /* If color exists in cycle_list, we're currently resolving it.
@@ -177,8 +177,8 @@ _ctk_css_color_value_resolve (GtkCssValue             *color,
       break;
     case COLOR_TYPE_SHADE:
       {
-	GtkCssValue *val;
-        GtkHSLA hsla;
+	CtkCssValue *val;
+        CtkHSLA hsla;
 	GdkRGBA shade;
 
 	val = _ctk_css_color_value_resolve (color->sym_col.shade.color, provider, current, cycle_list);
@@ -198,7 +198,7 @@ _ctk_css_color_value_resolve (GtkCssValue             *color,
       break;
     case COLOR_TYPE_ALPHA:
       {
-	GtkCssValue *val;
+	CtkCssValue *val;
 	GdkRGBA alpha;
 
 	val = _ctk_css_color_value_resolve (color->sym_col.alpha.color, provider, current, cycle_list);
@@ -216,7 +216,7 @@ _ctk_css_color_value_resolve (GtkCssValue             *color,
 
     case COLOR_TYPE_MIX:
       {
-	GtkCssValue *val;
+	CtkCssValue *val;
 	GdkRGBA color1, color2, res;
 
 	val = _ctk_css_color_value_resolve (color->sym_col.mix.color1, provider, current, cycle_list);
@@ -286,14 +286,14 @@ _ctk_css_color_value_resolve (GtkCssValue             *color,
   return value;
 }
 
-static GtkCssValue *
-ctk_css_value_color_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_color_compute (CtkCssValue             *value,
                              guint                    property_id,
-                             GtkStyleProviderPrivate *provider,
-                             GtkCssStyle             *style,
-                             GtkCssStyle             *parent_style)
+                             CtkStyleProviderPrivate *provider,
+                             CtkCssStyle             *style,
+                             CtkCssStyle             *parent_style)
 {
-  GtkCssValue *resolved, *current;
+  CtkCssValue *resolved, *current;
 
   /* The computed value of the ‘currentColor’ keyword is the computed
    * value of the ‘color’ property. If the ‘currentColor’ keyword is
@@ -323,8 +323,8 @@ ctk_css_value_color_compute (GtkCssValue             *value,
 }
 
 static gboolean
-ctk_css_value_color_equal (const GtkCssValue *value1,
-                           const GtkCssValue *value2)
+ctk_css_value_color_equal (const CtkCssValue *value1,
+                           const CtkCssValue *value2)
 {
   if (value1->type != value2->type)
     return FALSE;
@@ -360,9 +360,9 @@ ctk_css_value_color_equal (const GtkCssValue *value1,
     }
 }
 
-static GtkCssValue *
-ctk_css_value_color_transition (GtkCssValue *start,
-                                GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_color_transition (CtkCssValue *start,
+                                CtkCssValue *end,
                                 guint        property_id,
                                 double       progress)
 {
@@ -370,7 +370,7 @@ ctk_css_value_color_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_color_print (const GtkCssValue *value,
+ctk_css_value_color_print (const CtkCssValue *value,
                            GString           *string)
 {
   switch (value->type)
@@ -442,7 +442,7 @@ ctk_css_value_color_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_COLOR = {
+static const CtkCssValueClass CTK_CSS_VALUE_COLOR = {
   ctk_css_value_color_free,
   ctk_css_value_color_compute,
   ctk_css_value_color_equal,
@@ -450,21 +450,21 @@ static const GtkCssValueClass CTK_CSS_VALUE_COLOR = {
   ctk_css_value_color_print
 };
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_color_value_new_literal (const GdkRGBA *color)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   g_return_val_if_fail (color != NULL, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_LITERAL;
   value->last_value = _ctk_css_rgba_value_new_from_rgba (color);
 
   return value;
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_color_value_new_rgba (double red,
                                double green,
                                double blue,
@@ -475,29 +475,29 @@ _ctk_css_color_value_new_rgba (double red,
   return _ctk_css_color_value_new_literal (&rgba);
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_color_value_new_name (const gchar *name)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   ctk_internal_return_val_if_fail (name != NULL, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_NAME;
   value->sym_col.name = g_strdup (name);
 
   return value;
 }
 
-GtkCssValue *
-_ctk_css_color_value_new_shade (GtkCssValue *color,
+CtkCssValue *
+_ctk_css_color_value_new_shade (CtkCssValue *color,
                                 gdouble      factor)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   ctk_internal_return_val_if_fail (color->class == &CTK_CSS_VALUE_COLOR, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_SHADE;
   value->sym_col.shade.color = _ctk_css_value_ref (color);
   value->sym_col.shade.factor = factor;
@@ -505,15 +505,15 @@ _ctk_css_color_value_new_shade (GtkCssValue *color,
   return value;
 }
 
-GtkCssValue *
-_ctk_css_color_value_new_alpha (GtkCssValue *color,
+CtkCssValue *
+_ctk_css_color_value_new_alpha (CtkCssValue *color,
                                 gdouble      factor)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   ctk_internal_return_val_if_fail (color->class == &CTK_CSS_VALUE_COLOR, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_ALPHA;
   value->sym_col.alpha.color = _ctk_css_value_ref (color);
   value->sym_col.alpha.factor = factor;
@@ -521,17 +521,17 @@ _ctk_css_color_value_new_alpha (GtkCssValue *color,
   return value;
 }
 
-GtkCssValue *
-_ctk_css_color_value_new_mix (GtkCssValue *color1,
-                              GtkCssValue *color2,
+CtkCssValue *
+_ctk_css_color_value_new_mix (CtkCssValue *color1,
+                              CtkCssValue *color2,
                               gdouble      factor)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   ctk_internal_return_val_if_fail (color1->class == &CTK_CSS_VALUE_COLOR, NULL);
   ctk_internal_return_val_if_fail (color2->class == &CTK_CSS_VALUE_COLOR, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_MIX;
   value->sym_col.mix.color1 = _ctk_css_value_ref (color1);
   value->sym_col.mix.color2 = _ctk_css_value_ref (color2);
@@ -540,15 +540,15 @@ _ctk_css_color_value_new_mix (GtkCssValue *color1,
   return value;
 }
 
-static GtkCssValue *
-ctk_css_color_value_new_win32_for_theme (GtkWin32Theme *theme,
+static CtkCssValue *
+ctk_css_color_value_new_win32_for_theme (CtkWin32Theme *theme,
                                          gint           id)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   ctk_internal_return_val_if_fail (theme != NULL, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_WIN32;
   value->sym_col.win32.theme = ctk_win32_theme_ref (theme);
   value->sym_col.win32.id = id;
@@ -556,12 +556,12 @@ ctk_css_color_value_new_win32_for_theme (GtkWin32Theme *theme,
   return value;
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_color_value_new_win32 (const gchar *theme_class,
                                 gint         id)
 {
-  GtkWin32Theme *theme;
-  GtkCssValue *value;
+  CtkWin32Theme *theme;
+  CtkCssValue *value;
 
   ctk_internal_return_val_if_fail (theme_class != NULL, NULL);
 
@@ -572,10 +572,10 @@ _ctk_css_color_value_new_win32 (const gchar *theme_class,
   return value;
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_color_value_new_current_color (void)
 {
-  static GtkCssValue current_color = { &CTK_CSS_VALUE_COLOR, 1, COLOR_TYPE_CURRENT_COLOR, NULL, };
+  static CtkCssValue current_color = { &CTK_CSS_VALUE_COLOR, 1, COLOR_TYPE_CURRENT_COLOR, NULL, };
 
   return _ctk_css_value_ref (&current_color);
 }
@@ -591,11 +591,11 @@ typedef enum {
   COLOR_WIN32
 } ColorParseType;
 
-static GtkCssValue *
-ctk_css_color_parse_win32 (GtkCssParser *parser)
+static CtkCssValue *
+ctk_css_color_parse_win32 (CtkCssParser *parser)
 {
-  GtkCssValue *color;
-  GtkWin32Theme *theme;
+  CtkCssValue *color;
+  CtkWin32Theme *theme;
   char *name;
   int id;
 
@@ -635,12 +635,12 @@ ctk_css_color_parse_win32 (GtkCssParser *parser)
   return color;
 }
 
-static GtkCssValue *
-_ctk_css_color_value_parse_function (GtkCssParser   *parser,
+static CtkCssValue *
+_ctk_css_color_value_parse_function (CtkCssParser   *parser,
                                      ColorParseType  color)
 {
-  GtkCssValue *value;
-  GtkCssValue *child1, *child2;
+  CtkCssValue *value;
+  CtkCssValue *child1, *child2;
   double d;
 
   if (!_ctk_css_parser_try (parser, "(", TRUE))
@@ -790,10 +790,10 @@ _ctk_css_color_value_parse_function (GtkCssParser   *parser,
   return value;
 }
 
-GtkCssValue *
-_ctk_css_color_value_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_color_value_parse (CtkCssParser *parser)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
   GdkRGBA rgba;
   guint color;
   const char *names[] = {"rgba", "rgb",  "lighter", "darker", "shade", "alpha", "mix",

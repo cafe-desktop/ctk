@@ -29,29 +29,29 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RECENT_CHOOSER_DIALOG		  (ctk_recent_chooser_dialog_get_type ())
-#define CTK_RECENT_CHOOSER_DIALOG(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER_DIALOG, GtkRecentChooserDialog))
+#define CTK_RECENT_CHOOSER_DIALOG(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER_DIALOG, CtkRecentChooserDialog))
 #define CTK_IS_RECENT_CHOOSER_DIALOG(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_CHOOSER_DIALOG))
-#define CTK_RECENT_CHOOSER_DIALOG_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_CHOOSER_DIALOG, GtkRecentChooserDialogClass))
+#define CTK_RECENT_CHOOSER_DIALOG_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_CHOOSER_DIALOG, CtkRecentChooserDialogClass))
 #define CTK_IS_RECENT_CHOOSER_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RECENT_CHOOSER_DIALOG))
-#define CTK_RECENT_CHOOSER_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_CHOOSER_DIALOG, GtkRecentChooserDialogClass))
+#define CTK_RECENT_CHOOSER_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_CHOOSER_DIALOG, CtkRecentChooserDialogClass))
 
-typedef struct _GtkRecentChooserDialog        GtkRecentChooserDialog;
-typedef struct _GtkRecentChooserDialogClass   GtkRecentChooserDialogClass;
+typedef struct _CtkRecentChooserDialog        CtkRecentChooserDialog;
+typedef struct _CtkRecentChooserDialogClass   CtkRecentChooserDialogClass;
 
-typedef struct _GtkRecentChooserDialogPrivate GtkRecentChooserDialogPrivate;
+typedef struct _CtkRecentChooserDialogPrivate CtkRecentChooserDialogPrivate;
 
 
-struct _GtkRecentChooserDialog
+struct _CtkRecentChooserDialog
 {
-  GtkDialog parent_instance;
+  CtkDialog parent_instance;
 
   /*< private >*/
-  GtkRecentChooserDialogPrivate *priv;
+  CtkRecentChooserDialogPrivate *priv;
 };
 
-struct _GtkRecentChooserDialogClass
+struct _CtkRecentChooserDialogClass
 {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -65,14 +65,14 @@ GDK_AVAILABLE_IN_ALL
 GType      ctk_recent_chooser_dialog_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_recent_chooser_dialog_new             (const gchar      *title,
-					              GtkWindow        *parent,
+CtkWidget *ctk_recent_chooser_dialog_new             (const gchar      *title,
+					              CtkWindow        *parent,
 					              const gchar      *first_button_text,
 					              ...) G_GNUC_NULL_TERMINATED;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_recent_chooser_dialog_new_for_manager (const gchar      *title,
-						      GtkWindow        *parent,
-						      GtkRecentManager *manager,
+CtkWidget *ctk_recent_chooser_dialog_new_for_manager (const gchar      *title,
+						      CtkWindow        *parent,
+						      CtkRecentManager *manager,
 						      const gchar      *first_button_text,
 						      ...) G_GNUC_NULL_TERMINATED;
 

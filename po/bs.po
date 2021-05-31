@@ -2330,7 +2330,7 @@ msgstr ""
 msgid "Could not send the search request"
 msgstr "Ne mogu da pošaljem zahtjev pretrage"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -2520,7 +2520,7 @@ msgstr ""
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:454
 msgid "Load additional GTK+ modules"
-msgstr "Učitaj dopunske Gtk+ dodatke"
+msgstr "Učitaj dopunske Ctk+ dodatke"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:455
@@ -2535,12 +2535,12 @@ msgstr "Učini sva upozorenja pogubnim."
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:460
 msgid "GTK+ debugging flags to set"
-msgstr "Koje Gtk+ opcije za nalaženje grešaka uključiti"
+msgstr "Koje Ctk+ opcije za nalaženje grešaka uključiti"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:463
 msgid "GTK+ debugging flags to unset"
-msgstr "Koje Gtk+ opcije za nalaženje grešaka isključiti"
+msgstr "Koje Ctk+ opcije za nalaženje grešaka isključiti"
 
 #: ../ctk/ctkmain.c:776
 #, c-format
@@ -2549,11 +2549,11 @@ msgstr "Ne može se otvoriti ekran: %s"
 
 #: ../ctk/ctkmain.c:842
 msgid "GTK+ Options"
-msgstr "Gtk+ opcije"
+msgstr "Ctk+ opcije"
 
 #: ../ctk/ctkmain.c:842
 msgid "Show GTK+ Options"
-msgstr "Prikaži Gtk+ opcije"
+msgstr "Prikaži Ctk+ opcije"
 
 #. Translate to default:RTL if you want your widgets
 #. * to bje RTL, otherwise translate to default:LTR.

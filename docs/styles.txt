@@ -54,21 +54,21 @@ ctk_style_copy ()
   widget via ctk_widget_set_style().
 
 
-GtkWidget::style_set
+CtkWidget::style_set
   This signal will be emitted for a widget once its style changes with
   an additional argument previous_style which will hold the widget->style
   value from a previous emission.
   The initial emission of this signal is guaranteed to happen prior
-  to any GtkWidget::size_request emission, and will have the previous_style
+  to any CtkWidget::size_request emission, and will have the previous_style
   argument set to NULL.
-  The GtkWidgetClass implements a default handler for this signal that
+  The CtkWidgetClass implements a default handler for this signal that
   will set the widget's window's background of widgets that provide their
   own windows according to the new style.
   Derived widgets need to override this default handler, if:
   - their size requisition depends on the current style.
     (e.g., on the style's fonts)
   - they set the background of widget->window to something other than.
-    style->bg. (e.g., GtkListItem)
+    style->bg. (e.g., CtkListItem)
   - the widget provides windows other than widget->window.
   - the widget has any other stored dependencies on the style.
                    

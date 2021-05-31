@@ -20,7 +20,7 @@
 #include "ctkcolorpickerkwinprivate.h"
 #include <gio/gio.h>
 
-struct _GtkColorPickerKwin
+struct _CtkColorPickerKwin
 {
   GObject parent_instance;
 
@@ -28,16 +28,16 @@ struct _GtkColorPickerKwin
   GTask *task;
 };
 
-struct _GtkColorPickerKwinClass
+struct _CtkColorPickerKwinClass
 {
   GObjectClass parent_class;
 };
 
 static GInitableIface *initable_parent_iface;
 static void ctk_color_picker_kwin_initable_iface_init (GInitableIface *iface);
-static void ctk_color_picker_kwin_iface_init (GtkColorPickerInterface *iface);
+static void ctk_color_picker_kwin_iface_init (CtkColorPickerInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorPickerKwin, ctk_color_picker_kwin, G_TYPE_OBJECT,
+G_DEFINE_TYPE_WITH_CODE (CtkColorPickerKwin, ctk_color_picker_kwin, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, ctk_color_picker_kwin_initable_iface_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_PICKER, ctk_color_picker_kwin_iface_init))
 
@@ -46,7 +46,7 @@ ctk_color_picker_kwin_initable_init (GInitable     *initable,
                                       GCancellable  *cancellable,
                                       GError       **error)
 {
-  GtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (initable);
+  CtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (initable);
   char *owner;
 
   picker->kwin_proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
@@ -84,14 +84,14 @@ ctk_color_picker_kwin_initable_iface_init (GInitableIface *iface)
 }
 
 static void
-ctk_color_picker_kwin_init (GtkColorPickerKwin *picker)
+ctk_color_picker_kwin_init (CtkColorPickerKwin *picker)
 {
 }
 
 static void
 ctk_color_picker_kwin_finalize (GObject *object)
 {
-  GtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (object);
+  CtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (object);
 
   g_clear_object (&picker->kwin_proxy);
 
@@ -99,14 +99,14 @@ ctk_color_picker_kwin_finalize (GObject *object)
 }
 
 static void
-ctk_color_picker_kwin_class_init (GtkColorPickerKwinClass *class)
+ctk_color_picker_kwin_class_init (CtkColorPickerKwinClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
   object_class->finalize = ctk_color_picker_kwin_finalize;
 }
 
-GtkColorPicker *
+CtkColorPicker *
 ctk_color_picker_kwin_new (void)
 {
   return CTK_COLOR_PICKER (g_initable_new (CTK_TYPE_COLOR_PICKER_KWIN, NULL, NULL, NULL));
@@ -117,7 +117,7 @@ color_picked (GObject      *source,
               GAsyncResult *res,
               gpointer      data)
 {
-  GtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (data);
+  CtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (data);
   GError *error = NULL;
   GVariant *ret;
 
@@ -148,11 +148,11 @@ color_picked (GObject      *source,
 }
 
 static void
-ctk_color_picker_kwin_pick (GtkColorPicker      *cp,
+ctk_color_picker_kwin_pick (CtkColorPicker      *cp,
                             GAsyncReadyCallback  callback,
                             gpointer             user_data)
 {
-  GtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (cp);
+  CtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (cp);
 
   if (picker->task)
     return;
@@ -170,7 +170,7 @@ ctk_color_picker_kwin_pick (GtkColorPicker      *cp,
 }
 
 static GdkRGBA *
-ctk_color_picker_kwin_pick_finish (GtkColorPicker  *cp,
+ctk_color_picker_kwin_pick_finish (CtkColorPicker  *cp,
                                    GAsyncResult    *res,
                                    GError         **error)
 {
@@ -180,7 +180,7 @@ ctk_color_picker_kwin_pick_finish (GtkColorPicker  *cp,
 }
 
 static void
-ctk_color_picker_kwin_iface_init (GtkColorPickerInterface *iface)
+ctk_color_picker_kwin_iface_init (CtkColorPickerInterface *iface)
 {
   iface->pick = ctk_color_picker_kwin_pick;
   iface->pick_finish = ctk_color_picker_kwin_pick_finish;

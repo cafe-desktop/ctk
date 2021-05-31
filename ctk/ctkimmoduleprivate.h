@@ -24,9 +24,9 @@
 
 G_BEGIN_DECLS
 
-void           _ctk_im_module_list                   (const GtkIMContextInfo ***contexts,
+void           _ctk_im_module_list                   (const CtkIMContextInfo ***contexts,
 						      guint                    *n_contexts);
-GtkIMContext * _ctk_im_module_create                 (const gchar              *context_id);
+CtkIMContext * _ctk_im_module_create                 (const gchar              *context_id);
 const gchar  * _ctk_im_module_get_default_context_id (void);
 
 G_END_DECLS

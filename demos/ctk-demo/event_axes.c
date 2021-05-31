@@ -53,7 +53,7 @@ const gchar *colors[] = {
   "burlywood"
 };
 
-static GtkPadActionEntry pad_actions[] = {
+static CtkPadActionEntry pad_actions[] = {
   { CTK_PAD_ACTION_BUTTON, 1, -1, N_("Nuclear strike"), "pad.nuke" },
   { CTK_PAD_ACTION_BUTTON, 2, -1, N_("Release siberian methane reserves"), "pad.heat" },
   { CTK_PAD_ACTION_BUTTON, 3, -1, N_("Release solar flare"), "pad.fry" },
@@ -197,7 +197,7 @@ update_axes_from_event (GdkEvent  *event,
 }
 
 static gboolean
-event_cb (GtkWidget *widget,
+event_cb (CtkWidget *widget,
           GdkEvent  *event,
           gpointer   user_data)
 {
@@ -229,7 +229,7 @@ render_arrow (cairo_t     *cr,
 static void
 draw_axes_info (cairo_t       *cr,
                 AxesInfo      *info,
-                GtkAllocation *allocation)
+                CtkAllocation *allocation)
 {
   gdouble pressure, tilt_x, tilt_y, distance, wheel, rotation, slider;
   GdkAxisFlags axes = gdk_device_get_axes (info->last_source);
@@ -408,7 +408,7 @@ tool_type_to_string (GdkDeviceToolType tool_type)
 }
 
 static void
-draw_device_info (GtkWidget        *widget,
+draw_device_info (CtkWidget        *widget,
                   cairo_t          *cr,
                   GdkEventSequence *sequence,
                   gint             *y,
@@ -463,12 +463,12 @@ draw_device_info (GtkWidget        *widget,
 }
 
 static gboolean
-draw_cb (GtkWidget *widget,
+draw_cb (CtkWidget *widget,
          cairo_t   *cr,
          gpointer   user_data)
 {
   EventData *data = user_data;
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   AxesInfo *info;
   GHashTableIter iter;
   gpointer key, value;
@@ -514,7 +514,7 @@ draw_cb (GtkWidget *widget,
 }
 
 static void
-update_label_text (GtkWidget   *label,
+update_label_text (CtkWidget   *label,
                    const gchar *text)
 {
   gchar *markup = NULL;
@@ -528,7 +528,7 @@ update_label_text (GtkWidget   *label,
 static gboolean
 reset_label_text_timeout_cb (gpointer user_data)
 {
-  GtkWidget *label = user_data;
+  CtkWidget *label = user_data;
 
   update_label_text (label, NULL);
   pad_action_timeout_id = 0;
@@ -536,7 +536,7 @@ reset_label_text_timeout_cb (gpointer user_data)
 }
 
 static void
-update_label_and_timeout (GtkWidget   *label,
+update_label_and_timeout (CtkWidget   *label,
                           const gchar *text)
 {
   if (pad_action_timeout_id)
@@ -551,7 +551,7 @@ on_action_activate (GSimpleAction *action,
                     GVariant      *parameter,
                     gpointer       user_data)
 {
-  GtkWidget *label = user_data;
+  CtkWidget *label = user_data;
   const gchar *result;
   gchar *str;
 
@@ -568,10 +568,10 @@ on_action_activate (GSimpleAction *action,
 }
 
 static void
-init_pad_controller (GtkWidget *window,
-                     GtkWidget *label)
+init_pad_controller (CtkWidget *window,
+                     CtkWidget *label)
 {
-  GtkPadController *pad_controller;
+  CtkPadController *pad_controller;
   GSimpleActionGroup *action_group;
   GSimpleAction *action;
   gint i;
@@ -609,12 +609,12 @@ init_pad_controller (GtkWidget *window,
   g_object_unref (action_group);
 }
 
-GtkWidget *
-do_event_axes (GtkWidget *toplevel)
+CtkWidget *
+do_event_axes (CtkWidget *toplevel)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
   EventData *event_data;
-  GtkWidget *box, *label;
+  CtkWidget *box, *label;
 
   if (!window)
     {

@@ -29,7 +29,7 @@ viewport {
 }
 
 * {
-    -GtkScrolledWindow-scrollbars-spacing: 0;
+    -CtkScrolledWindow-scrollbars-spacing: 0;
 }
 
 :link {
@@ -1213,12 +1213,12 @@ menu * {
 
 /* Assistant */
 
-GtkAssistant .sidebar .highlight {
+CtkAssistant .sidebar .highlight {
     background-color: gray;
     font-weight: bold;
 }
 
-GtkAssistant .sidebar {
+CtkAssistant .sidebar {
     padding: 12px;
 
     background-color: white;

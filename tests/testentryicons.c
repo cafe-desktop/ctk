@@ -2,14 +2,14 @@
 #include <stdio.h>
 
 static void
-clear_pressed (GtkEntry *entry, gint icon, GdkEvent *event, gpointer data)
+clear_pressed (CtkEntry *entry, gint icon, GdkEvent *event, gpointer data)
 {
    if (icon == CTK_ENTRY_ICON_SECONDARY)
      ctk_entry_set_text (entry, "");
 }
 
 static void
-drag_begin_cb (GtkWidget      *widget,
+drag_begin_cb (CtkWidget      *widget,
                GdkDragContext *context,
                gpointer        user_data)
 {
@@ -21,9 +21,9 @@ drag_begin_cb (GtkWidget      *widget,
 }
 
 static void
-drag_data_get_cb (GtkWidget        *widget,
+drag_data_get_cb (CtkWidget        *widget,
                   GdkDragContext   *context,
-                  GtkSelectionData *data,
+                  CtkSelectionData *data,
                   guint             info,
                   guint             time,
                   gpointer          user_data)
@@ -50,24 +50,24 @@ drag_data_get_cb (GtkWidget        *widget,
 }
 
 static void
-set_blank (GtkWidget *button,
-           GtkEntry  *entry)
+set_blank (CtkWidget *button,
+           CtkEntry  *entry)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     ctk_entry_set_icon_from_icon_name (entry, CTK_ENTRY_ICON_SECONDARY, NULL);
 }
 
 static void
-set_icon_name (GtkWidget *button,
-               GtkEntry  *entry)
+set_icon_name (CtkWidget *button,
+               CtkEntry  *entry)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     ctk_entry_set_icon_from_icon_name (entry, CTK_ENTRY_ICON_SECONDARY, "media-floppy");
 }
 
 static void
-set_gicon (GtkWidget *button,
-           GtkEntry  *entry)
+set_gicon (CtkWidget *button,
+           CtkEntry  *entry)
 {
   GIcon *icon;
 
@@ -80,8 +80,8 @@ set_gicon (GtkWidget *button,
 }
 
 static void
-set_pixbuf (GtkWidget *button,
-            GtkEntry  *entry)
+set_pixbuf (CtkWidget *button,
+            CtkEntry  *entry)
 {
   GdkPixbuf *pixbuf;
 
@@ -96,22 +96,22 @@ set_pixbuf (GtkWidget *button,
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkWidget *box;
-  GtkWidget *button1;
-  GtkWidget *button2;
-  GtkWidget *button3;
-  GtkWidget *button4;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkWidget *box;
+  CtkWidget *button1;
+  CtkWidget *button2;
+  CtkWidget *button3;
+  CtkWidget *button4;
   GIcon *icon;
-  GtkTargetList *tlist;
+  CtkTargetList *tlist;
 
   ctk_init (&argc, &argv);
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (CTK_WINDOW (window), "Gtk Entry Icons Test");
+  ctk_window_set_title (CTK_WINDOW (window), "Ctk Entry Icons Test");
   ctk_container_set_border_width (CTK_CONTAINER (window), 12);
 
   g_signal_connect (G_OBJECT (window), "destroy",

@@ -1809,7 +1809,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "사용법:\n"
 "  ctk-builder-tool [명령] <파일>\n"
@@ -1827,7 +1827,7 @@ msgstr ""
 "  --id=ID            이름 있는 오브젝트만 미리 봅니다\n"
 "  --css=<파일>       CSS 파일에서 스타일을 사용합니다\n"
 "\n"
-"GtkBuilder .ui 파일에 여러가지 작업을 수행합니다.\n"
+"CtkBuilder .ui 파일에 여러가지 작업을 수행합니다.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2674,7 +2674,7 @@ msgstr "접근 시간"
 msgid "Create Folder"
 msgstr "폴더 만들기"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -4225,7 +4225,7 @@ msgstr "주소"
 msgid "Reference count"
 msgstr "레퍼런스 카운트"
 
-# 주의: GtkBuildable을 말한다
+# 주의: CtkBuildable을 말한다
 #: ctk/inspector/misc-info.ui:136
 msgid "Buildable ID"
 msgstr "Buildable 아이디"

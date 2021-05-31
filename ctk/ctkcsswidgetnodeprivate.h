@@ -24,36 +24,36 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_WIDGET_NODE           (ctk_css_widget_node_get_type ())
-#define CTK_CSS_WIDGET_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_WIDGET_NODE, GtkCssWidgetNode))
-#define CTK_CSS_WIDGET_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_WIDGET_NODE, GtkCssWidgetNodeClass))
+#define CTK_CSS_WIDGET_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_WIDGET_NODE, CtkCssWidgetNode))
+#define CTK_CSS_WIDGET_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_WIDGET_NODE, CtkCssWidgetNodeClass))
 #define CTK_IS_CSS_WIDGET_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_WIDGET_NODE))
 #define CTK_IS_CSS_WIDGET_NODE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_WIDGET_NODE))
-#define CTK_CSS_WIDGET_NODE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_WIDGET_NODE, GtkCssWidgetNodeClass))
+#define CTK_CSS_WIDGET_NODE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_WIDGET_NODE, CtkCssWidgetNodeClass))
 
-typedef struct _GtkCssWidgetNode           GtkCssWidgetNode;
-typedef struct _GtkCssWidgetNodeClass      GtkCssWidgetNodeClass;
+typedef struct _CtkCssWidgetNode           CtkCssWidgetNode;
+typedef struct _CtkCssWidgetNodeClass      CtkCssWidgetNodeClass;
 
-struct _GtkCssWidgetNode
+struct _CtkCssWidgetNode
 {
-  GtkCssNode node;
+  CtkCssNode node;
 
-  GtkWidget *widget;
+  CtkWidget *widget;
   guint validate_cb_id;
-  GtkCssStyle *last_updated_style;
+  CtkCssStyle *last_updated_style;
 };
 
-struct _GtkCssWidgetNodeClass
+struct _CtkCssWidgetNodeClass
 {
-  GtkCssNodeClass node_class;
+  CtkCssNodeClass node_class;
 };
 
 GType                   ctk_css_widget_node_get_type            (void) G_GNUC_CONST;
 
-GtkCssNode *            ctk_css_widget_node_new                 (GtkWidget              *widget);
+CtkCssNode *            ctk_css_widget_node_new                 (CtkWidget              *widget);
 
-void                    ctk_css_widget_node_widget_destroyed    (GtkCssWidgetNode       *node);
+void                    ctk_css_widget_node_widget_destroyed    (CtkCssWidgetNode       *node);
 
-GtkWidget *             ctk_css_widget_node_get_widget          (GtkCssWidgetNode       *node);
+CtkWidget *             ctk_css_widget_node_get_widget          (CtkCssWidgetNode       *node);
 
 G_END_DECLS
 

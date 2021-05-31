@@ -367,10 +367,10 @@ msgstr "Eylem Kümesi"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"Bu GtkAction'ın ilişkilendirildiği GtkActionGroup, veya NULL (dahili "
+"Bu CtkAction'ın ilişkilendirildiği CtkActionGroup, veya NULL (dahili "
 "kullanım için)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
@@ -919,8 +919,8 @@ msgid "Style context"
 msgstr "Biçem içeriği"
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
-msgstr "Biçem içeriği almak için GtkStyleContext"
+msgid "CtkStyleContext to get style from"
+msgstr "Biçem içeriği almak için CtkStyleContext"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1299,11 +1299,11 @@ msgstr "Paket türü"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
 "Altın, üstün sonuna veya başına refaranslı olarak paketlendiğini belirten "
-"bir GtkPackType"
+"bir CtkPackType"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
@@ -1372,9 +1372,9 @@ msgstr "Bir 'Diğer...' ögesi içerir"
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
-"Açılan kutunun bir GtkAppChooserDialog tetikleyen öge içermesinin gerekip "
+"Açılan kutunun bir CtkAppChooserDialog tetikleyen öge içermesinin gerekip "
 "gerekmemesi"
 
 #: ctk/ctkappchooserbutton.c:634
@@ -1995,11 +1995,11 @@ msgstr "Paket Türü"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
 "Hücrenin hücre alanının başına ya da sonuna referanslı paketlenip "
-"paketlenmediğini belirten bir GtkPackType"
+"paketlenmediğini belirten bir CtkPackType"
 
 #: ctk/ctkcellarea.c:790
 msgid "Focus Cell"
@@ -2277,8 +2277,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "Taranacak depo simgesinin depo numarası"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Taranmış simgenin boyutunu belirten GtkIconSize değeri"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Taranmış simgenin boyutunu belirten CtkIconSize değeri"
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2389,8 +2389,8 @@ msgid "Pulse of the spinner"
 msgstr "Değiştiricinin vurumu"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "İşlenmiş değer değiştiricinin boyutunu belirten GtkIconSize değeri"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "İşlenmiş değer değiştiricinin boyutunu belirten CtkIconSize değeri"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2829,18 +2829,18 @@ msgstr "Hücre Alanı"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
-msgstr "Yerleşim hücreleri için kullanılan GtkCellArea"
+msgid "The CtkCellArea used to layout cells"
+msgstr "Yerleşim hücreleri için kullanılan CtkCellArea"
 
 #: ctk/ctkcellview.c:306
 msgid "Cell Area Context"
 msgstr "Hücre Alan İçeriği"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 "Hücre görünümlerinin geometrisini hesaplamak için kullanılan "
-"GtkCellAreaContext"
+"CtkCellAreaContext"
 
 #: ctk/ctkcellview.c:324
 msgid "Draw Sensitive"
@@ -3057,9 +3057,9 @@ msgstr "Metin Sütunu Girdisi"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
-"Eğer açılan kutu #GtkComboBox:has-entry = %TRUE ile oluşturulmuşsa girdiden "
+"Eğer açılan kutu #CtkComboBox:has-entry = %TRUE ile oluşturulmuşsa girdiden "
 "dizileri ilişkilendirmek için açılan kutunun modelinde sütun"
 
 #: ctk/ctkcombobox.c:1129
@@ -4217,8 +4217,8 @@ msgid "Auto render"
 msgstr "Otomatik ekrana çizme"
 
 #: ctk/ctkglarea.c:808
-msgid "Whether the GtkGLArea renders on each redraw"
-msgstr "GtkGLArea'nın her yeniden çizimde ekrana çizip çizmeyeceği"
+msgid "Whether the CtkGLArea renders on each redraw"
+msgstr "CtkGLArea'nın her yeniden çizimde ekrana çizip çizmeyeceği"
 
 #: ctk/ctkglarea.c:828
 msgid "Has alpha"
@@ -4579,10 +4579,10 @@ msgstr "İç hizalama"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "Etiket metnindeki çizgilerin birbirlerine göre hizalanması. Bu, etiketin "
-"kendi alan alımındaki hizalamasını ETKİLEMEZ. Onun için GtkLabel:xalign'a "
+"kendi alan alımındaki hizalamasını ETKİLEMEZ. Onun için CtkLabel:xalign'a "
 "bakınız"
 
 #: ctk/ctklabel.c:877
@@ -5196,8 +5196,8 @@ msgid "Message area"
 msgstr "İleti alanı"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
-msgstr "İletişim penceresinin birincil ve ikincil etiketlerini tutan GtkBox"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
+msgstr "İletişim penceresinin birincil ve ikincil etiketlerini tutan CtkBox"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -5942,16 +5942,16 @@ msgid "Default Page Setup"
 msgstr "Öntanımlı Sayfa Yapısı"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "Öntanımlı olarak kullanılacak GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "Öntanımlı olarak kullanılacak CtkPageSetup"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "Yazdırma Ayarları"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "Pencere başlatılırken kullanılacak GtkPrintSettings"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "Pencere başlatılırken kullanılacak CtkPrintSettings"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -6070,9 +6070,9 @@ msgid "Embed Page Setup"
 msgstr "Sayfa Ayarını Göm"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
-"Eğer sayfa ayarları birleşimi GtkPrintUnixDialog içinde gömülüyse, DOĞRU"
+"Eğer sayfa ayarları birleşimi CtkPrintUnixDialog içinde gömülüyse, DOĞRU"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -6083,16 +6083,16 @@ msgid "The number of pages that will be printed."
 msgstr "Yazdırılacak sayfaların sayısı."
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "Kullanılacak GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "Kullanılacak CtkPageSetup"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "Seçilen Yazıcı"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "Seçilmiş olan GtkPrinter"
+msgid "The CtkPrinter which is selected"
+msgstr "Seçilmiş olan CtkPrinter"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6207,8 +6207,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "Bu parçanın ait olduğu kümenin radyo düğmesi."
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "Bu aralık nesnesinin geçerli değerini içeren GtkAdjustment"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "Bu aralık nesnesinin geçerli değerini içeren CtkAdjustment"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6460,8 +6460,8 @@ msgstr "Simge boyutu"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "Bu ölçek düğmesi nesnesinin geçerli değerini taşıyan GtkAdjustment"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "Bu ölçek düğmesi nesnesinin geçerli değerini taşıyan CtkAdjustment"
 
 #: ctk/ctkscalebutton.c:246
 msgid "Icons"
@@ -6582,16 +6582,16 @@ msgid "Horizontal Adjustment"
 msgstr "Yatay Hizalama"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "Yatay konum için GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "Yatay konum için CtkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "Düşey Hizalama"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "Düşey konum için GtkAdjustment"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "Düşey konum için CtkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -7095,16 +7095,16 @@ msgid "Default file chooser backend"
 msgstr "Öntanımlı dosya seçici arka ucu"
 
 #: ctk/ctksettings.c:990
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Öntanımlı olarak kullanılacak GtkFileChooser arka ucu adı"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Öntanımlı olarak kullanılacak CtkFileChooser arka ucu adı"
 
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Öntanımlı yazdırma arka ucu"
 
 #: ctk/ctksettings.c:1008
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Öntanımlı olarak kullanılacak GtkPrintBackend arka uçlarının listesi"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Öntanımlı olarak kullanılacak CtkPrintBackend arka uçlarının listesi"
 
 #: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
@@ -7733,8 +7733,8 @@ msgid "Stack"
 msgstr "Yığın"
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
-msgstr "Bu GtkStackSidebar için ilişkilendirilmiş yığın"
+msgid "Associated stack for this CtkStackSidebar"
+msgstr "Bu CtkStackSidebar için ilişkilendirilmiş yığın"
 
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
@@ -7777,8 +7777,8 @@ msgid "Value type"
 msgstr "Değer türü"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
-msgstr "GtkStyleContext tarafından dönen değer türü"
+msgid "The value type returned by CtkStyleContext"
+msgstr "CtkStyleContext tarafından dönen değer türü"
 
 #: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
@@ -8656,9 +8656,9 @@ msgid "Fixed Height Mode"
 msgstr "Sabit Yükseklik Kipi"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"GtkTreeView'i tüm satırları eşit yükseklikte olduğunu farzederek hızlandır"
+"CtkTreeView'i tüm satırları eşit yükseklikte olduğunu farzederek hızlandır"
 
 #: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
@@ -9461,8 +9461,8 @@ msgid "Focus in Toplevel"
 msgstr "Üst Düzeyde Odakla"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Girdi odaklamasının bu GtkWindow ile yapılması"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Girdi odaklamasının bu CtkWindow ile yapılması"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -9573,12 +9573,12 @@ msgid "Whether the window is maximized"
 msgstr "Pencerenin büyütülebilirliği"
 
 #: ctk/ctkwindow.c:1113
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1114
-msgid "The GtkApplication for the window"
-msgstr "Pencere için GtkApplication"
+msgid "The CtkApplication for the window"
+msgstr "Pencere için CtkApplication"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
@@ -9593,8 +9593,8 @@ msgid "Cloud Print account"
 msgstr "Bulut Yazdırma hesabı"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "GtkCloudprintAccount örneği"
+msgid "CtkCloudprintAccount instance"
+msgstr "CtkCloudprintAccount örneği"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"

@@ -1,19 +1,19 @@
 #include <ctk/ctk.h>
 
 static void
-destroy_cb (GtkWidget  *window,
-            GtkBuilder *builder)
+destroy_cb (CtkWidget  *window,
+            CtkBuilder *builder)
 {
   ctk_main_quit ();
 }
 
 static void
-populate_popup_cb (GtkAppChooserWidget *app_chooser_widget,
-                   GtkMenu             *menu,
+populate_popup_cb (CtkAppChooserWidget *app_chooser_widget,
+                   CtkMenu             *menu,
                    GAppInfo            *app_info,
                    gpointer             user_data)
 {
-  GtkWidget *menu_item;
+  CtkWidget *menu_item;
 
   menu_item = ctk_menu_item_new_with_label ("Menu Item A");
   ctk_widget_show (menu_item);
@@ -40,9 +40,9 @@ int
 main (int   argc,
       char *argv[])
 {
-  GtkBuilder *builder;
-  GtkWidget *window;
-  GtkWidget *app_chooser_widget;
+  CtkBuilder *builder;
+  CtkWidget *window;
+  CtkWidget *app_chooser_widget;
 
   ctk_init (&argc, &argv);
 

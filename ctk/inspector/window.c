@@ -51,10 +51,10 @@
 #include "ctkwindow.h"
 #include "ctkwindowgroup.h"
 
-G_DEFINE_TYPE (GtkInspectorWindow, ctk_inspector_window, CTK_TYPE_WINDOW)
+G_DEFINE_TYPE (CtkInspectorWindow, ctk_inspector_window, CTK_TYPE_WINDOW)
 
 static gboolean
-set_selected_object (GtkInspectorWindow *iw,
+set_selected_object (CtkInspectorWindow *iw,
                      GObject            *selected)
 {
   GList *l;
@@ -86,10 +86,10 @@ set_selected_object (GtkInspectorWindow *iw,
 }
 
 static void
-on_object_activated (GtkInspectorObjectTree *wt,
+on_object_activated (CtkInspectorObjectTree *wt,
                      GObject                *selected,
                      const gchar            *name,
-                     GtkInspectorWindow     *iw)
+                     CtkInspectorWindow     *iw)
 {
   const gchar *tab;
 
@@ -105,9 +105,9 @@ on_object_activated (GtkInspectorObjectTree *wt,
 }
 
 static void
-on_object_selected (GtkInspectorObjectTree *wt,
+on_object_selected (CtkInspectorObjectTree *wt,
                     GObject                *selected,
-                    GtkInspectorWindow     *iw)
+                    CtkInspectorWindow     *iw)
 {
   ctk_widget_set_sensitive (iw->object_details_button, selected != NULL);
   if (CTK_IS_WIDGET (selected))
@@ -115,14 +115,14 @@ on_object_selected (GtkInspectorObjectTree *wt,
 }
 
 static void
-close_object_details (GtkWidget *button, GtkInspectorWindow *iw)
+close_object_details (CtkWidget *button, CtkInspectorWindow *iw)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (iw->object_stack), "object-tree");
   ctk_stack_set_visible_child_name (CTK_STACK (iw->object_buttons), "list");
 }
 
 static void
-open_object_details (GtkWidget *button, GtkInspectorWindow *iw)
+open_object_details (CtkWidget *button, CtkInspectorWindow *iw)
 {
   GObject *selected;
 
@@ -141,7 +141,7 @@ translate_visible_child_name (GBinding     *binding,
                               GValue       *to,
                               gpointer      user_data)
 {
-  GtkInspectorWindow *iw = user_data;
+  CtkInspectorWindow *iw = user_data;
   const char *name;
 
   name = g_value_get_string (from);
@@ -155,7 +155,7 @@ translate_visible_child_name (GBinding     *binding,
 }
 
 static void
-ctk_inspector_window_init (GtkInspectorWindow *iw)
+ctk_inspector_window_init (CtkInspectorWindow *iw)
 {
   GIOExtensionPoint *extension_point;
   GList *l, *extensions;
@@ -179,10 +179,10 @@ ctk_inspector_window_init (GtkInspectorWindow *iw)
     {
       GIOExtension *extension = l->data;
       GType type;
-      GtkWidget *widget;
+      CtkWidget *widget;
       const char *name;
       char *title;
-      GtkWidget *button;
+      CtkWidget *button;
       gboolean use_picker;
 
       type = g_io_extension_get_type (extension);
@@ -224,7 +224,7 @@ ctk_inspector_window_init (GtkInspectorWindow *iw)
 static void
 ctk_inspector_window_constructed (GObject *object)
 {
-  GtkInspectorWindow *iw = CTK_INSPECTOR_WINDOW (object);
+  CtkInspectorWindow *iw = CTK_INSPECTOR_WINDOW (object);
 
   G_OBJECT_CLASS (ctk_inspector_window_parent_class)->constructed (object);
 
@@ -232,47 +232,47 @@ ctk_inspector_window_constructed (GObject *object)
 }
 
 static void
-object_details_changed (GtkWidget          *combo,
+object_details_changed (CtkWidget          *combo,
                         GParamSpec         *pspec,
-                        GtkInspectorWindow *iw)
+                        CtkInspectorWindow *iw)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (iw->object_center_stack), "title");
 }
 
 static void
-ctk_inspector_window_class_init (GtkInspectorWindowClass *klass)
+ctk_inspector_window_class_init (CtkInspectorWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->constructed = ctk_inspector_window_constructed;
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/window.ui");
 
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, top_stack);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, button_stack);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_stack);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_tree);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_details);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_start_stack);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_center_stack);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_buttons);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_details_button);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, select_object);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, prop_list);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, child_prop_list);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, signals_list);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, widget_css_node_tree);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_hierarchy);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, object_title);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, selector);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, size_groups);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, data_list);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, actions);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, menu);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, misc_info);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, gestures);
-  ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, magnifier);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, top_stack);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, button_stack);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_stack);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_tree);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_details);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_start_stack);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_center_stack);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_buttons);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_details_button);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, select_object);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, prop_list);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, child_prop_list);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, signals_list);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, widget_css_node_tree);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_hierarchy);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, object_title);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, selector);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, size_groups);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, data_list);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, actions);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, menu);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, misc_info);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, gestures);
+  ctk_widget_class_bind_template_child (widget_class, CtkInspectorWindow, magnifier);
 
   ctk_widget_class_bind_template_callback (widget_class, ctk_inspector_on_inspect);
   ctk_widget_class_bind_template_callback (widget_class, on_object_activated);
@@ -295,7 +295,7 @@ get_inspector_screen (void)
       display = gdk_display_open (name);
 
       if (display)
-        g_debug ("Using display %s for GtkInspector", name);
+        g_debug ("Using display %s for CtkInspector", name);
       else
         g_message ("Failed to open display %s", name);
     }
@@ -304,7 +304,7 @@ get_inspector_screen (void)
     {
       display = gdk_display_open (NULL);
       if (display)
-        g_debug ("Using default display for GtkInspector");
+        g_debug ("Using default display for CtkInspector");
       else
         g_message ("Failed to separate connection to default display");
     }
@@ -315,7 +315,7 @@ get_inspector_screen (void)
   return gdk_display_get_default_screen (display);
 }
 
-GtkWidget *
+CtkWidget *
 ctk_inspector_window_new (void)
 {
   return CTK_WIDGET (g_object_new (CTK_TYPE_INSPECTOR_WINDOW,
@@ -324,9 +324,9 @@ ctk_inspector_window_new (void)
 }
 
 void
-ctk_inspector_window_rescan (GtkWidget *widget)
+ctk_inspector_window_rescan (CtkWidget *widget)
 {
-  GtkInspectorWindow *iw = CTK_INSPECTOR_WINDOW (widget);
+  CtkInspectorWindow *iw = CTK_INSPECTOR_WINDOW (widget);
 
   ctk_inspector_object_tree_scan (CTK_INSPECTOR_OBJECT_TREE (iw->object_tree), NULL);
 }

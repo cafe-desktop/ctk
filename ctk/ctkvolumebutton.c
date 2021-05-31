@@ -37,9 +37,9 @@
 /**
  * SECTION:ctkvolumebutton
  * @Short_description: A button which pops up a volume control
- * @Title: GtkVolumeButton
+ * @Title: CtkVolumeButton
  *
- * #GtkVolumeButton is a subclass of #GtkScaleButton that has
+ * #CtkVolumeButton is a subclass of #CtkScaleButton that has
  * been tailored for use as a volume control widget with suitable
  * icons, tooltips and accessible labels.
  */
@@ -70,20 +70,20 @@ enum
   PROP_SYMBOLIC
 };
 
-static gboolean	cb_query_tooltip (GtkWidget       *button,
+static gboolean	cb_query_tooltip (CtkWidget       *button,
                                   gint             x,
                                   gint             y,
                                   gboolean         keyboard_mode,
-                                  GtkTooltip      *tooltip,
+                                  CtkTooltip      *tooltip,
                                   gpointer         user_data);
-static void	cb_value_changed (GtkVolumeButton *button,
+static void	cb_value_changed (CtkVolumeButton *button,
                                   gdouble          value,
                                   gpointer         user_data);
 
-G_DEFINE_TYPE (GtkVolumeButton, ctk_volume_button, CTK_TYPE_SCALE_BUTTON)
+G_DEFINE_TYPE (CtkVolumeButton, ctk_volume_button, CTK_TYPE_SCALE_BUTTON)
 
 static gboolean
-get_symbolic (GtkScaleButton *button)
+get_symbolic (CtkScaleButton *button)
 {
   gchar **icon_list;
   gboolean ret;
@@ -106,7 +106,7 @@ ctk_volume_button_set_property (GObject       *object,
 				const GValue  *value,
 				GParamSpec    *pspec)
 {
-  GtkScaleButton *button = CTK_SCALE_BUTTON (object);
+  CtkScaleButton *button = CTK_SCALE_BUTTON (object);
 
   switch (prop_id)
     {
@@ -144,16 +144,16 @@ ctk_volume_button_get_property (GObject     *object,
 }
 
 static void
-ctk_volume_button_class_init (GtkVolumeButtonClass *klass)
+ctk_volume_button_class_init (CtkVolumeButtonClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->set_property = ctk_volume_button_set_property;
   gobject_class->get_property = ctk_volume_button_get_property;
 
   /**
-   * GtkVolumeButton:use-symbolic:
+   * CtkVolumeButton:use-symbolic:
    *
    * Whether to use symbolic icons as the icons. Note that
    * if the symbolic icons are not available in your installed
@@ -178,13 +178,13 @@ ctk_volume_button_class_init (GtkVolumeButtonClass *klass)
 }
 
 static void
-ctk_volume_button_init (GtkVolumeButton *button)
+ctk_volume_button_init (CtkVolumeButton *button)
 {
-  GtkWidget *widget = CTK_WIDGET (button);
+  CtkWidget *widget = CTK_WIDGET (button);
 
   ctk_widget_init_template (widget);
 
-  /* The atk action description is not supported by GtkBuilder */
+  /* The atk action description is not supported by CtkBuilder */
   atk_action_set_description (ATK_ACTION (ctk_widget_get_accessible (CTK_WIDGET (widget))),
 			      1, _("Adjusts the volume"));
 }
@@ -192,15 +192,15 @@ ctk_volume_button_init (GtkVolumeButton *button)
 /**
  * ctk_volume_button_new:
  *
- * Creates a #GtkVolumeButton, with a range between 0.0 and 1.0, with
+ * Creates a #CtkVolumeButton, with a range between 0.0 and 1.0, with
  * a stepping of 0.02. Volume values can be obtained and modified using
- * the functions from #GtkScaleButton.
+ * the functions from #CtkScaleButton.
  *
- * Returns: a new #GtkVolumeButton
+ * Returns: a new #CtkVolumeButton
  *
  * Since: 2.12
  */
-GtkWidget *
+CtkWidget *
 ctk_volume_button_new (void)
 {
   GObject *button;
@@ -209,15 +209,15 @@ ctk_volume_button_new (void)
 }
 
 static gboolean
-cb_query_tooltip (GtkWidget  *button,
+cb_query_tooltip (CtkWidget  *button,
 		  gint        x,
 		  gint        y,
 		  gboolean    keyboard_mode,
-		  GtkTooltip *tooltip,
+		  CtkTooltip *tooltip,
 		  gpointer    user_data)
 {
-  GtkScaleButton *scale_button = CTK_SCALE_BUTTON (button);
-  GtkAdjustment *adjustment;
+  CtkScaleButton *scale_button = CTK_SCALE_BUTTON (button);
+  CtkAdjustment *adjustment;
   gdouble val;
   char *str;
   AtkImage *image;
@@ -257,7 +257,7 @@ cb_query_tooltip (GtkWidget  *button,
 }
 
 static void
-cb_value_changed (GtkVolumeButton *button, gdouble value, gpointer user_data)
+cb_value_changed (CtkVolumeButton *button, gdouble value, gpointer user_data)
 {
   ctk_widget_trigger_tooltip_query (CTK_WIDGET (button));
 }

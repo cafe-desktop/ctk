@@ -1,11 +1,11 @@
 #include <ctk/ctk.h>
 
 static GdkPixbuf *
-get_image_pixbuf (GtkImage *image)
+get_image_pixbuf (CtkImage *image)
 {
   const gchar *icon_name;
-  GtkIconSize size;
-  GtkIconTheme *icon_theme;
+  CtkIconSize size;
+  CtkIconTheme *icon_theme;
   int width;
 
   switch (ctk_image_get_storage_type (image))
@@ -40,7 +40,7 @@ enum {
 };
 
 static void
-image_drag_begin (GtkWidget      *widget,
+image_drag_begin (CtkWidget      *widget,
                   GdkDragContext *context,
                   gpointer        data)
 {
@@ -71,9 +71,9 @@ image_drag_begin (GtkWidget      *widget,
 }
 
 static void
-window_destroyed (GtkWidget *window, gpointer data)
+window_destroyed (CtkWidget *window, gpointer data)
 {
-  GtkWidget *widget = data;
+  CtkWidget *widget = data;
 
   g_print ("drag widget destroyed\n");
   g_object_unref (window);
@@ -81,22 +81,22 @@ window_destroyed (GtkWidget *window, gpointer data)
 }
 
 static void
-window_drag_end (GtkWidget *ebox, GdkDragContext *context, gpointer data)
+window_drag_end (CtkWidget *ebox, GdkDragContext *context, gpointer data)
 {
-  GtkWidget *window = data;
+  CtkWidget *window = data;
 
   ctk_widget_destroy (window);
   g_signal_handlers_disconnect_by_func (ebox, window_drag_end, data);
 }
 
 static void
-window_drag_begin (GtkWidget      *widget,
+window_drag_begin (CtkWidget      *widget,
                    GdkDragContext *context,
                    gpointer        data)
 {
   GdkPixbuf *pixbuf;
-  GtkWidget *window;
-  GtkWidget *image;
+  CtkWidget *window;
+  CtkWidget *image;
   int hotspot;
 
   hotspot = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (data), "hotspot"));
@@ -125,9 +125,9 @@ window_drag_begin (GtkWidget      *widget,
 }
 
 static void
-update_source_target_list (GtkWidget *ebox, GtkWidget *image)
+update_source_target_list (CtkWidget *ebox, CtkWidget *image)
 {
-  GtkTargetList *target_list;
+  CtkTargetList *target_list;
 
   target_list = ctk_target_list_new (NULL, 0);
 
@@ -141,9 +141,9 @@ update_source_target_list (GtkWidget *ebox, GtkWidget *image)
 }
 
 static void
-update_dest_target_list (GtkWidget *ebox)
+update_dest_target_list (CtkWidget *ebox)
 {
-  GtkTargetList *target_list;
+  CtkTargetList *target_list;
 
   target_list = ctk_target_list_new (NULL, 0);
 
@@ -156,9 +156,9 @@ update_dest_target_list (GtkWidget *ebox)
 }
 
 void
-image_drag_data_get (GtkWidget        *widget,
+image_drag_data_get (CtkWidget        *widget,
                      GdkDragContext   *context,
-                     GtkSelectionData *selection_data,
+                     CtkSelectionData *selection_data,
                      guint             info,
                      guint             time,
                      gpointer          data)
@@ -186,11 +186,11 @@ image_drag_data_get (GtkWidget        *widget,
 }
 
 static void
-image_drag_data_received (GtkWidget        *widget,
+image_drag_data_received (CtkWidget        *widget,
                           GdkDragContext   *context,
                           gint              x,
                           gint              y,
-                          GtkSelectionData *selection_data,
+                          CtkSelectionData *selection_data,
                           guint             info,
                           guint32           time,
                           gpointer          data)
@@ -219,10 +219,10 @@ image_drag_data_received (GtkWidget        *widget,
 }
 
 
-GtkWidget *
+CtkWidget *
 make_image (const gchar *icon_name, int hotspot)
 {
-  GtkWidget *image, *ebox;
+  CtkWidget *image, *ebox;
 
   image = ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_DIALOG);
   ebox = ctk_event_box_new ();
@@ -244,10 +244,10 @@ make_image (const gchar *icon_name, int hotspot)
   return ebox;
 }
 
-GtkWidget *
+CtkWidget *
 make_image2 (const gchar *icon_name, int hotspot)
 {
-  GtkWidget *image, *ebox;
+  CtkWidget *image, *ebox;
 
   image = ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_DIALOG);
   ebox = ctk_event_box_new ();
@@ -270,13 +270,13 @@ make_image2 (const gchar *icon_name, int hotspot)
 }
 
 static void
-spinner_drag_begin (GtkWidget      *widget,
+spinner_drag_begin (CtkWidget      *widget,
                     GdkDragContext *context,
                     gpointer        data)
 {
-  GtkWidget *spinner;
+  CtkWidget *spinner;
 
-  g_print ("GtkWidget::drag-begin\n");
+  g_print ("CtkWidget::drag-begin\n");
   spinner = g_object_new (CTK_TYPE_SPINNER,
                           "visible", TRUE,
                           "active",  TRUE,
@@ -286,21 +286,21 @@ spinner_drag_begin (GtkWidget      *widget,
 }
 
 static void
-spinner_drag_end (GtkWidget      *widget,
+spinner_drag_end (CtkWidget      *widget,
                   GdkDragContext *context,
                   gpointer        data)
 {
-  GtkWidget *spinner;
+  CtkWidget *spinner;
 
-  g_print ("GtkWidget::drag-end\n");
+  g_print ("CtkWidget::drag-end\n");
   spinner = g_object_get_data (G_OBJECT (context), "spinner");
   ctk_widget_destroy (spinner);
 }
 
 static gboolean
-spinner_drag_failed (GtkWidget      *widget,
+spinner_drag_failed (CtkWidget      *widget,
                      GdkDragContext *context,
-                     GtkDragResult   result,
+                     CtkDragResult   result,
                      gpointer        data)
 {
   GTypeClass *class;
@@ -308,28 +308,28 @@ spinner_drag_failed (GtkWidget      *widget,
 
   class = g_type_class_ref (CTK_TYPE_DRAG_RESULT);
   value = g_enum_get_value (G_ENUM_CLASS (class), result);
-  g_print ("GtkWidget::drag-failed %s\n", value->value_nick);
+  g_print ("CtkWidget::drag-failed %s\n", value->value_nick);
   g_type_class_unref (class);
 
   return FALSE;
 }
 
 void
-spinner_drag_data_get (GtkWidget        *widget,
+spinner_drag_data_get (CtkWidget        *widget,
                        GdkDragContext   *context,
-                       GtkSelectionData *selection_data,
+                       CtkSelectionData *selection_data,
                        guint             info,
                        guint             time,
                        gpointer          data)
 {
-  g_print ("GtkWidget::drag-data-get\n");
+  g_print ("CtkWidget::drag-data-get\n");
   ctk_selection_data_set_text (selection_data, "ACTIVE", -1);
 }
 
-static GtkWidget *
+static CtkWidget *
 make_spinner (void)
 {
-  GtkWidget *spinner, *ebox;
+  CtkWidget *spinner, *ebox;
 
   spinner = ctk_spinner_new ();
   ctk_spinner_start (CTK_SPINNER (spinner));
@@ -351,9 +351,9 @@ make_spinner (void)
 int
 main (int argc, char *Argv[])
 {
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *entry;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *entry;
 
   ctk_init (NULL, NULL);
 

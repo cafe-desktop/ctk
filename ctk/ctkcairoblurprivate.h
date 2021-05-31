@@ -34,11 +34,11 @@ typedef enum {
   CTK_BLUR_X = 1<<0,
   CTK_BLUR_Y = 1<<1,
   CTK_BLUR_REPEAT = 1<<2
-} GtkBlurFlags;
+} CtkBlurFlags;
 
 void            _ctk_cairo_blur_surface         (cairo_surface_t *surface,
                                                  double           radius,
-						 GtkBlurFlags     flags);;
+						 CtkBlurFlags     flags);;
 int             _ctk_cairo_blur_compute_pixels  (double           radius);
 
 G_END_DECLS

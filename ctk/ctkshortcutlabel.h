@@ -24,34 +24,34 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SHORTCUT_LABEL (ctk_shortcut_label_get_type())
-#define CTK_SHORTCUT_LABEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUT_LABEL, GtkShortcutLabel))
-#define CTK_SHORTCUT_LABEL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUT_LABEL, GtkShortcutLabelClass))
+#define CTK_SHORTCUT_LABEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUT_LABEL, CtkShortcutLabel))
+#define CTK_SHORTCUT_LABEL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUT_LABEL, CtkShortcutLabelClass))
 #define CTK_IS_SHORTCUT_LABEL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SHORTCUT_LABEL))
 #define CTK_IS_SHORTCUT_LABEL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SHORTCUT_LABEL))
-#define CTK_SHORTCUT_LABEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUT_LABEL, GtkShortcutLabelClass))
+#define CTK_SHORTCUT_LABEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUT_LABEL, CtkShortcutLabelClass))
 
 
-typedef struct _GtkShortcutLabel      GtkShortcutLabel;
-typedef struct _GtkShortcutLabelClass GtkShortcutLabelClass;
+typedef struct _CtkShortcutLabel      CtkShortcutLabel;
+typedef struct _CtkShortcutLabelClass CtkShortcutLabelClass;
 
 GDK_AVAILABLE_IN_3_22
 GType        ctk_shortcut_label_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-GtkWidget   *ctk_shortcut_label_new             (const gchar      *accelerator);
+CtkWidget   *ctk_shortcut_label_new             (const gchar      *accelerator);
 
 GDK_AVAILABLE_IN_3_22
-const gchar *ctk_shortcut_label_get_accelerator (GtkShortcutLabel *self);
+const gchar *ctk_shortcut_label_get_accelerator (CtkShortcutLabel *self);
 
 GDK_AVAILABLE_IN_3_22
-void         ctk_shortcut_label_set_accelerator (GtkShortcutLabel *self,
+void         ctk_shortcut_label_set_accelerator (CtkShortcutLabel *self,
                                                  const gchar      *accelerator);
 
 GDK_AVAILABLE_IN_3_22
-const gchar *ctk_shortcut_label_get_disabled_text (GtkShortcutLabel *self);
+const gchar *ctk_shortcut_label_get_disabled_text (CtkShortcutLabel *self);
 
 GDK_AVAILABLE_IN_3_22
-void         ctk_shortcut_label_set_disabled_text (GtkShortcutLabel *self,
+void         ctk_shortcut_label_set_disabled_text (CtkShortcutLabel *self,
                                                    const gchar      *disabled_text);
 
 G_END_DECLS

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <object class="GtkListStore" id="prop_model">
+  <object class="CtkListStore" id="prop_model">
     <columns>
       <column type="gchararray"/>
       <column type="gchararray"/>
@@ -8,37 +8,37 @@
       <column type="gint"/>
     </columns>
   </object>
-  <template class="GtkInspectorCssNodeTree" parent="GtkBox">
+  <template class="CtkInspectorCssNodeTree" parent="CtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkPaned" id="paned">
+      <object class="CtkPaned" id="paned">
         <property name="visible">1</property>
         <property name="wide-handle">1</property>
         <property name="orientation">horizontal</property>
         <property name="position">400</property>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="CtkScrolledWindow">
             <property name="visible">1</property>
             <property name="expand">1</property>
             <property name="min-content-height">100</property>
             <child>
-              <object class="GtkTreeView" id="node_tree">
+              <object class="CtkTreeView" id="node_tree">
                 <property name="visible">1</property>
                 <property name="search-column">0</property>
                 <property name="enable-search">0</property>
                 <property name="enable-grid-lines">vertical</property>
                 <signal name="row-activated" handler="row_activated"/>
                 <child internal-child="selection">
-                  <object class="GtkTreeSelection">
+                  <object class="CtkTreeSelection">
                     <signal name="changed" handler="selection_changed"/>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkTreeViewColumn" id="node_name_column">
+                  <object class="CtkTreeViewColumn" id="node_name_column">
                     <property name="resizable">1</property>
                     <property name="title" translatable="yes">Name</property>
                     <child>
-                      <object class="GtkCellRendererText"/>
+                      <object class="CtkCellRendererText"/>
                       <attributes>
                         <attribute name="text">0</attribute>
                         <attribute name="sensitive">1</attribute>
@@ -47,11 +47,11 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkTreeViewColumn" id="node_id_column">
+                  <object class="CtkTreeViewColumn" id="node_id_column">
                     <property name="resizable">1</property>
                     <property name="title" translatable="yes">ID</property>
                     <child>
-                      <object class="GtkCellRendererText"/>
+                      <object class="CtkCellRendererText"/>
                       <attributes>
                         <attribute name="text">3</attribute>
                         <attribute name="sensitive">1</attribute>
@@ -60,11 +60,11 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkTreeViewColumn" id="node_classes_column">
+                  <object class="CtkTreeViewColumn" id="node_classes_column">
                     <property name="resizable">1</property>
                     <property name="title" translatable="yes">Style Classes</property>
                     <child>
-                      <object class="GtkCellRendererText"/>
+                      <object class="CtkCellRendererText"/>
                       <attributes>
                         <attribute name="text">2</attribute>
                         <attribute name="sensitive">1</attribute>
@@ -73,11 +73,11 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkTreeViewColumn" id="node_state_column">
+                  <object class="CtkTreeViewColumn" id="node_state_column">
                     <property name="resizable">1</property>
                     <property name="title" translatable="yes">State</property>
                     <child>
-                      <object class="GtkCellRendererText"/>
+                      <object class="CtkCellRendererText"/>
                       <attributes>
                         <attribute name="text">4</attribute>
                         <attribute name="sensitive">1</attribute>
@@ -90,28 +90,28 @@
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">1</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="CtkScrolledWindow">
                 <property name="visible">1</property>
                 <property name="expand">1</property>
                 <property name="min-content-height">100</property>
                 <child>
-                  <object class="GtkTreeView" id="prop_tree">
+                  <object class="CtkTreeView" id="prop_tree">
                     <property name="visible">1</property>
                     <property name="model">prop_model</property>
                     <property name="search-column">0</property>
                     <property name="enable-search">0</property>
                     <property name="enable-grid-lines">vertical</property>
                     <child>
-                      <object class="GtkTreeViewColumn" id="prop_name_column">
+                      <object class="CtkTreeViewColumn" id="prop_name_column">
                         <property name="title" translatable="yes">CSS Property</property>
                         <property name="resizable">1</property>
                         <property name="sort-column-id">0</property>
                         <child>
-                          <object class="GtkCellRendererText">
+                          <object class="CtkCellRendererText">
                             <property name="scale">0.8</property>
                           </object>
                           <attributes>
@@ -121,11 +121,11 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkTreeViewColumn">
+                      <object class="CtkTreeViewColumn">
                         <property name="title" translatable="yes">Value</property>
                         <property name="resizable">1</property>
                         <child>
-                          <object class="GtkCellRendererText">
+                          <object class="CtkCellRendererText">
                             <property name="scale">0.8</property>
                             <property name="width-chars">20</property>
                             <property name="ellipsize">end</property>
@@ -137,11 +137,11 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkTreeViewColumn">
+                      <object class="CtkTreeViewColumn">
                         <property name="title" translatable="yes">Location</property>
                         <property name="resizable">1</property>
                         <child>
-                          <object class="GtkCellRendererText">
+                          <object class="CtkCellRendererText">
                             <property name="scale">0.8</property>
                             <property name="width-chars">20</property>
                             <property name="ellipsize">end</property>

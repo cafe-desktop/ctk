@@ -19,7 +19,7 @@
 
 
 G_MODULE_EXPORT void
-add_border_windows (GtkTextView *text_view)
+add_border_windows (CtkTextView *text_view)
 {
   ctk_text_view_set_border_window_size (text_view, CTK_TEXT_WINDOW_LEFT, 30);
   ctk_text_view_set_border_window_size (text_view, CTK_TEXT_WINDOW_RIGHT, 30);

@@ -1,6 +1,6 @@
 /* Images
  *
- * GtkImage is used to display an image; the image can be in a number of formats.
+ * CtkImage is used to display an image; the image can be in a number of formats.
  * Typically, you load an image into a GdkPixbuf, then display the pixbuf.
  *
  * This demo code shows some of the more obscure cases, in the simple
@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <errno.h>
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 static GdkPixbufLoader *pixbuf_loader = NULL;
 static guint load_timeout = 0;
 static GInputStream * image_stream = NULL;
@@ -27,7 +27,7 @@ progressive_prepared_callback (GdkPixbufLoader *loader,
                                gpointer         data)
 {
   GdkPixbuf *pixbuf;
-  GtkWidget *image;
+  CtkWidget *image;
 
   image = CTK_WIDGET (data);
 
@@ -49,15 +49,15 @@ progressive_updated_callback (GdkPixbufLoader *loader,
                               gint                 height,
                               gpointer     data)
 {
-  GtkWidget *image;
+  CtkWidget *image;
   GdkPixbuf *pixbuf;
 
   image = CTK_WIDGET (data);
 
-  /* We know the pixbuf inside the GtkImage has changed, but the image
+  /* We know the pixbuf inside the CtkImage has changed, but the image
    * itself doesn't know this; so give it a hint by setting the pixbuf
-   * again. Queuing a redraw used to be sufficient, but nowadays GtkImage
-   * uses GtkIconHelper which caches the pixbuf state and will just redraw
+   * again. Queuing a redraw used to be sufficient, but nowadays CtkImage
+   * uses CtkIconHelper which caches the pixbuf state and will just redraw
    * from the cache.
    */
 
@@ -70,7 +70,7 @@ progressive_updated_callback (GdkPixbufLoader *loader,
 static gint
 progressive_timeout (gpointer data)
 {
-  GtkWidget *image;
+  CtkWidget *image;
 
   image = CTK_WIDGET (data);
 
@@ -89,7 +89,7 @@ progressive_timeout (gpointer data)
 
       if (bytes_read < 0)
         {
-          GtkWidget *dialog;
+          CtkWidget *dialog;
 
           dialog = ctk_message_dialog_new (CTK_WINDOW (window),
                                            CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -116,7 +116,7 @@ progressive_timeout (gpointer data)
                                     buf, bytes_read,
                                     &error))
         {
-          GtkWidget *dialog;
+          CtkWidget *dialog;
 
           dialog = ctk_message_dialog_new (CTK_WINDOW (window),
                                            CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -149,7 +149,7 @@ progressive_timeout (gpointer data)
           error = NULL;
           if (!g_input_stream_close (image_stream, NULL, &error))
             {
-              GtkWidget *dialog;
+              CtkWidget *dialog;
 
               dialog = ctk_message_dialog_new (CTK_WINDOW (window),
                                                CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -186,7 +186,7 @@ progressive_timeout (gpointer data)
           if (!gdk_pixbuf_loader_close (pixbuf_loader,
                                         &error))
             {
-              GtkWidget *dialog;
+              CtkWidget *dialog;
 
               dialog = ctk_message_dialog_new (CTK_WINDOW (window),
                                                CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -222,7 +222,7 @@ progressive_timeout (gpointer data)
 
       if (image_stream == NULL)
         {
-          GtkWidget *dialog;
+          CtkWidget *dialog;
 
           dialog = ctk_message_dialog_new (CTK_WINDOW (window),
                                            CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -261,7 +261,7 @@ progressive_timeout (gpointer data)
 }
 
 static void
-start_progressive_loading (GtkWidget *image)
+start_progressive_loading (CtkWidget *image)
 {
   /* This is obviously totally contrived (we slow down loading
    * on purpose to show how incremental loading works).
@@ -301,10 +301,10 @@ cleanup_callback (GObject   *object,
 }
 
 static void
-toggle_sensitivity_callback (GtkWidget *togglebutton,
+toggle_sensitivity_callback (CtkWidget *togglebutton,
                              gpointer   user_data)
 {
-  GtkContainer *container = user_data;
+  CtkContainer *container = user_data;
   GList *list;
   GList *tmp;
 
@@ -325,14 +325,14 @@ toggle_sensitivity_callback (GtkWidget *togglebutton,
 }
 
 
-GtkWidget *
-do_images (GtkWidget *do_widget)
+CtkWidget *
+do_images (CtkWidget *do_widget)
 {
-  GtkWidget *frame;
-  GtkWidget *vbox;
-  GtkWidget *image;
-  GtkWidget *label;
-  GtkWidget *button;
+  CtkWidget *frame;
+  CtkWidget *vbox;
+  CtkWidget *image;
+  CtkWidget *label;
+  CtkWidget *button;
   GIcon     *gicon;
 
   if (!window)

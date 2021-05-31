@@ -22,17 +22,17 @@
 
 G_BEGIN_DECLS
 
-GtkPrintOperationResult ctk_print_operation_portal_run_dialog             (GtkPrintOperation           *op,
+CtkPrintOperationResult ctk_print_operation_portal_run_dialog             (CtkPrintOperation           *op,
                                                                            gboolean                     show_dialog,
-                                                                           GtkWindow                   *parent,
+                                                                           CtkWindow                   *parent,
                                                                            gboolean                    *do_print);
-void                    ctk_print_operation_portal_run_dialog_async       (GtkPrintOperation           *op,
+void                    ctk_print_operation_portal_run_dialog_async       (CtkPrintOperation           *op,
                                                                            gboolean                     show_dialog,
-                                                                           GtkWindow                   *parent,
-                                                                           GtkPrintOperationPrintFunc   print_cb);
-void                    ctk_print_operation_portal_launch_preview         (GtkPrintOperation           *op,
+                                                                           CtkWindow                   *parent,
+                                                                           CtkPrintOperationPrintFunc   print_cb);
+void                    ctk_print_operation_portal_launch_preview         (CtkPrintOperation           *op,
                                                                            cairo_surface_t             *surface,
-                                                                           GtkWindow                   *parent,
+                                                                           CtkWindow                   *parent,
                                                                            const char                  *filename);
 
 G_END_DECLS

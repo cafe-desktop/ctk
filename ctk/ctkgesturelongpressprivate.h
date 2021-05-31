@@ -23,19 +23,19 @@
 #include "ctkgesturesingleprivate.h"
 #include "ctkgesturelongpress.h"
 
-struct _GtkGestureLongPress
+struct _CtkGestureLongPress
 {
-  GtkGestureSingle parent_instance;
+  CtkGestureSingle parent_instance;
 };
 
-struct _GtkGestureLongPressClass
+struct _CtkGestureLongPressClass
 {
-  GtkGestureSingleClass parent_class;
+  CtkGestureSingleClass parent_class;
 
-  void (* pressed)   (GtkGestureLongPress *gesture,
+  void (* pressed)   (CtkGestureLongPress *gesture,
                       gdouble              x,
                       gdouble              y);
-  void (* cancelled) (GtkGestureLongPress *gesture);
+  void (* cancelled) (CtkGestureLongPress *gesture);
 
   /*< private >*/
   gpointer padding[10];

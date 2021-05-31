@@ -2,7 +2,7 @@
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * Massively updated for Pango by Owen Taylor, May 2000
- * GtkFontSelection widget for Gtk+, by Damon Chaplin, May 1998.
+ * CtkFontSelection widget for Ctk+, by Damon Chaplin, May 1998.
  * Based on the GnomeFontSelector widget, by Elliot Lee, but major changes.
  * The GnomeFontSelector was derived from app/text_tool.c in the GIMP.
  *
@@ -58,12 +58,12 @@
 /**
  * SECTION:ctkfontsel
  * @Short_description: Deprecated widget for selecting fonts
- * @Title: GtkFontSelection
- * @See_also: #GtkFontSelectionDialog, #GtkFontChooser
+ * @Title: CtkFontSelection
+ * @See_also: #CtkFontSelectionDialog, #CtkFontChooser
  *
- * The #GtkFontSelection widget lists the available fonts, styles and sizes,
+ * The #CtkFontSelection widget lists the available fonts, styles and sizes,
  * allowing the user to select a font.
- * It is used in the #GtkFontSelectionDialog widget to provide a dialog box for
+ * It is used in the #CtkFontSelectionDialog widget to provide a dialog box for
  * selecting fonts.
  *
  * To set the font which is initially selected, use
@@ -74,22 +74,22 @@
  * To change the text which is shown in the preview area, use
  * ctk_font_selection_set_preview_text().
  *
- * In GTK+ 3.2, #GtkFontSelection has been deprecated in favor of
- * #GtkFontChooser.
+ * In GTK+ 3.2, #CtkFontSelection has been deprecated in favor of
+ * #CtkFontChooser.
  */
 
 
-struct _GtkFontSelectionPrivate
+struct _CtkFontSelectionPrivate
 {
-  GtkWidget *font_entry;        /* Used _get_family_entry() for consistency, -mr */
-  GtkWidget *font_style_entry;  /* Used _get_face_entry() for consistency, -mr */
+  CtkWidget *font_entry;        /* Used _get_family_entry() for consistency, -mr */
+  CtkWidget *font_style_entry;  /* Used _get_face_entry() for consistency, -mr */
 
-  GtkWidget *size_entry;
-  GtkWidget *preview_entry;
+  CtkWidget *size_entry;
+  CtkWidget *preview_entry;
 
-  GtkWidget *family_list;
-  GtkWidget *face_list;
-  GtkWidget *size_list;
+  CtkWidget *family_list;
+  CtkWidget *face_list;
+  CtkWidget *size_list;
 
   PangoFontFamily *family;      /* Current family */
   PangoFontFace *face;          /* Current face */
@@ -98,13 +98,13 @@ struct _GtkFontSelectionPrivate
 };
 
 
-struct _GtkFontSelectionDialogPrivate
+struct _CtkFontSelectionDialogPrivate
 {
-  GtkWidget *fontsel;
+  CtkWidget *fontsel;
 
-  GtkWidget *ok_button;
-  GtkWidget *apply_button;
-  GtkWidget *cancel_button;
+  CtkWidget *ok_button;
+  CtkWidget *apply_button;
+  CtkWidget *cancel_button;
 };
 
 
@@ -170,62 +170,62 @@ static void    ctk_font_selection_get_property       (GObject         *object,
 						      GValue          *value,
 						      GParamSpec      *pspec);
 static void    ctk_font_selection_finalize	     (GObject         *object);
-static void    ctk_font_selection_screen_changed     (GtkWidget	      *widget,
+static void    ctk_font_selection_screen_changed     (CtkWidget	      *widget,
 						      GdkScreen       *previous_screen);
-static void    ctk_font_selection_style_updated      (GtkWidget      *widget);
+static void    ctk_font_selection_style_updated      (CtkWidget      *widget);
 
 /* These are the callbacks & related functions. */
-static void     ctk_font_selection_select_font           (GtkTreeSelection *selection,
+static void     ctk_font_selection_select_font           (CtkTreeSelection *selection,
 							  gpointer          data);
-static void     ctk_font_selection_show_available_fonts  (GtkFontSelection *fs);
+static void     ctk_font_selection_show_available_fonts  (CtkFontSelection *fs);
 
-static void     ctk_font_selection_show_available_styles (GtkFontSelection *fs);
-static void     ctk_font_selection_select_best_style     (GtkFontSelection *fs,
+static void     ctk_font_selection_show_available_styles (CtkFontSelection *fs);
+static void     ctk_font_selection_select_best_style     (CtkFontSelection *fs,
 							  gboolean          use_first);
-static void     ctk_font_selection_select_style          (GtkTreeSelection *selection,
+static void     ctk_font_selection_select_style          (CtkTreeSelection *selection,
 							  gpointer          data);
 
-static void     ctk_font_selection_select_best_size      (GtkFontSelection *fs);
-static void     ctk_font_selection_show_available_sizes  (GtkFontSelection *fs,
+static void     ctk_font_selection_select_best_size      (CtkFontSelection *fs);
+static void     ctk_font_selection_show_available_sizes  (CtkFontSelection *fs,
 							  gboolean          first_time);
-static void     ctk_font_selection_size_activate         (GtkWidget        *w,
+static void     ctk_font_selection_size_activate         (CtkWidget        *w,
 							  gpointer          data);
-static gboolean ctk_font_selection_size_focus_out        (GtkWidget        *w,
+static gboolean ctk_font_selection_size_focus_out        (CtkWidget        *w,
 							  GdkEventFocus    *event,
 							  gpointer          data);
-static void     ctk_font_selection_select_size           (GtkTreeSelection *selection,
+static void     ctk_font_selection_select_size           (CtkTreeSelection *selection,
 							  gpointer          data);
 
-static void     ctk_font_selection_scroll_on_map         (GtkWidget        *w,
+static void     ctk_font_selection_scroll_on_map         (CtkWidget        *w,
 							  gpointer          data);
 
-static void     ctk_font_selection_preview_changed       (GtkWidget        *entry,
-							  GtkFontSelection *fontsel);
-static void     ctk_font_selection_scroll_to_selection   (GtkFontSelection *fontsel);
+static void     ctk_font_selection_preview_changed       (CtkWidget        *entry,
+							  CtkFontSelection *fontsel);
+static void     ctk_font_selection_scroll_to_selection   (CtkFontSelection *fontsel);
 
 
 /* Misc. utility functions. */
-static void    ctk_font_selection_load_font          (GtkFontSelection *fs);
-static void    ctk_font_selection_update_preview     (GtkFontSelection *fs);
+static void    ctk_font_selection_load_font          (CtkFontSelection *fs);
+static void    ctk_font_selection_update_preview     (CtkFontSelection *fs);
 
-static PangoFontDescription *ctk_font_selection_get_font_description (GtkFontSelection *fontsel);
-static gboolean ctk_font_selection_select_font_desc  (GtkFontSelection      *fontsel,
+static PangoFontDescription *ctk_font_selection_get_font_description (CtkFontSelection *fontsel);
+static gboolean ctk_font_selection_select_font_desc  (CtkFontSelection      *fontsel,
 						      PangoFontDescription  *new_desc,
 						      PangoFontFamily      **pfamily,
 						      PangoFontFace        **pface);
-static void     ctk_font_selection_reload_fonts          (GtkFontSelection *fontsel);
-static void     ctk_font_selection_ref_family            (GtkFontSelection *fontsel,
+static void     ctk_font_selection_reload_fonts          (CtkFontSelection *fontsel);
+static void     ctk_font_selection_ref_family            (CtkFontSelection *fontsel,
 							  PangoFontFamily  *family);
-static void     ctk_font_selection_ref_face              (GtkFontSelection *fontsel,
+static void     ctk_font_selection_ref_face              (CtkFontSelection *fontsel,
 							  PangoFontFace    *face);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkFontSelection, ctk_font_selection, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkFontSelection, ctk_font_selection, CTK_TYPE_BOX)
 
 static void
-ctk_font_selection_class_init (GtkFontSelectionClass *klass)
+ctk_font_selection_class_init (CtkFontSelectionClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->finalize = ctk_font_selection_finalize;
   gobject_class->set_property = ctk_font_selection_set_property;
@@ -256,7 +256,7 @@ ctk_font_selection_set_property (GObject         *object,
 				 const GValue    *value,
 				 GParamSpec      *pspec)
 {
-  GtkFontSelection *fontsel;
+  CtkFontSelection *fontsel;
 
   fontsel = CTK_FONT_SELECTION (object);
 
@@ -279,7 +279,7 @@ static void ctk_font_selection_get_property (GObject         *object,
 					     GValue          *value,
 					     GParamSpec      *pspec)
 {
-  GtkFontSelection *fontsel;
+  CtkFontSelection *fontsel;
 
   fontsel = CTK_FONT_SELECTION (object);
 
@@ -301,10 +301,10 @@ static void ctk_font_selection_get_property (GObject         *object,
  * activate the default button on our own.
  */
 static gboolean
-list_row_activated (GtkWidget *widget)
+list_row_activated (CtkWidget *widget)
 {
-  GtkWidget *default_widget, *focus_widget;
-  GtkWindow *window;
+  CtkWidget *default_widget, *focus_widget;
+  CtkWindow *window;
   
   window = CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (widget)));
   if (!ctk_widget_is_toplevel (CTK_WIDGET (window)))
@@ -324,16 +324,16 @@ list_row_activated (GtkWidget *widget)
 }
 
 static void
-ctk_font_selection_init (GtkFontSelection *fontsel)
+ctk_font_selection_init (CtkFontSelection *fontsel)
 {
-  GtkFontSelectionPrivate *priv;
-  GtkWidget *scrolled_win;
-  GtkWidget *text_box;
-  GtkWidget *table, *label;
-  GtkWidget *font_label, *style_label;
-  GtkWidget *vbox;
-  GtkListStore *model;
-  GtkTreeViewColumn *column;
+  CtkFontSelectionPrivate *priv;
+  CtkWidget *scrolled_win;
+  CtkWidget *text_box;
+  CtkWidget *table, *label;
+  CtkWidget *font_label, *style_label;
+  CtkWidget *vbox;
+  CtkListStore *model;
+  CtkTreeViewColumn *column;
   GList *focus_chain = NULL;
   AtkObject *atk_obj;
 
@@ -601,16 +601,16 @@ ctk_font_selection_init (GtkFontSelection *fontsel)
 /**
  * ctk_font_selection_new:
  *
- * Creates a new #GtkFontSelection.
+ * Creates a new #CtkFontSelection.
  *
- * Returns: a new #GtkFontSelection
+ * Returns: a new #CtkFontSelection
  *
- * Deprecated: 3.2: Use #GtkFontChooserWidget instead
+ * Deprecated: 3.2: Use #CtkFontChooserWidget instead
  */
-GtkWidget *
+CtkWidget *
 ctk_font_selection_new (void)
 {
-  GtkFontSelection *fontsel;
+  CtkFontSelection *fontsel;
   
   fontsel = g_object_new (CTK_TYPE_FONT_SELECTION, NULL);
   
@@ -620,7 +620,7 @@ ctk_font_selection_new (void)
 static void
 ctk_font_selection_finalize (GObject *object)
 {
-  GtkFontSelection *fontsel = CTK_FONT_SELECTION (object);
+  CtkFontSelection *fontsel = CTK_FONT_SELECTION (object);
 
   ctk_font_selection_ref_family (fontsel, NULL);
   ctk_font_selection_ref_face (fontsel, NULL);
@@ -629,10 +629,10 @@ ctk_font_selection_finalize (GObject *object)
 }
 
 static void
-ctk_font_selection_ref_family (GtkFontSelection *fontsel,
+ctk_font_selection_ref_family (CtkFontSelection *fontsel,
 			       PangoFontFamily  *family)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
 
   if (family)
     family = g_object_ref (family);
@@ -641,10 +641,10 @@ ctk_font_selection_ref_family (GtkFontSelection *fontsel,
   priv->family = family;
 }
 
-static void ctk_font_selection_ref_face (GtkFontSelection *fontsel,
+static void ctk_font_selection_ref_face (CtkFontSelection *fontsel,
 					 PangoFontFace    *face)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
 
   if (face)
     face = g_object_ref (face);
@@ -654,7 +654,7 @@ static void ctk_font_selection_ref_face (GtkFontSelection *fontsel,
 }
 
 static void
-ctk_font_selection_reload_fonts (GtkFontSelection *fontsel)
+ctk_font_selection_reload_fonts (CtkFontSelection *fontsel)
 {
   if (ctk_widget_has_screen (CTK_WIDGET (fontsel)))
     {
@@ -673,14 +673,14 @@ ctk_font_selection_reload_fonts (GtkFontSelection *fontsel)
 }
 
 static void
-ctk_font_selection_screen_changed (GtkWidget *widget,
+ctk_font_selection_screen_changed (CtkWidget *widget,
 				   GdkScreen *previous_screen)
 {
   ctk_font_selection_reload_fonts (CTK_FONT_SELECTION (widget));
 }
 
 static void
-ctk_font_selection_style_updated (GtkWidget *widget)
+ctk_font_selection_style_updated (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_font_selection_parent_class)->style_updated (widget);
 
@@ -689,33 +689,33 @@ ctk_font_selection_style_updated (GtkWidget *widget)
 }
 
 static void
-ctk_font_selection_preview_changed (GtkWidget        *entry,
-				    GtkFontSelection *fontsel)
+ctk_font_selection_preview_changed (CtkWidget        *entry,
+				    CtkFontSelection *fontsel)
 {
   g_object_notify (G_OBJECT (fontsel), "preview-text");
 }
 
 static void
-scroll_to_selection (GtkTreeView *tree_view)
+scroll_to_selection (CtkTreeView *tree_view)
 {
-  GtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
+  CtkTreeModel *model;
+  CtkTreeIter iter;
 
   if (ctk_tree_selection_get_selected (selection, &model, &iter))
     {
-      GtkTreePath *path = ctk_tree_model_get_path (model, &iter);
+      CtkTreePath *path = ctk_tree_model_get_path (model, &iter);
       ctk_tree_view_scroll_to_cell (tree_view, path, NULL, TRUE, 0.5, 0.5);
       ctk_tree_path_free (path);
     }
 }
 
 static void
-set_cursor_to_iter (GtkTreeView *view,
-		    GtkTreeIter *iter)
+set_cursor_to_iter (CtkTreeView *view,
+		    CtkTreeIter *iter)
 {
-  GtkTreeModel *model = ctk_tree_view_get_model (view);
-  GtkTreePath *path = ctk_tree_model_get_path (model, iter);
+  CtkTreeModel *model = ctk_tree_view_get_model (view);
+  CtkTreePath *path = ctk_tree_model_get_path (model, iter);
   
   ctk_tree_view_set_cursor (view, path, NULL, FALSE);
 
@@ -723,9 +723,9 @@ set_cursor_to_iter (GtkTreeView *view,
 }
 
 static void
-ctk_font_selection_scroll_to_selection (GtkFontSelection *fontsel)
+ctk_font_selection_scroll_to_selection (CtkFontSelection *fontsel)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
 
   /* Try to scroll the font family list to the selected item */
   scroll_to_selection (CTK_TREE_VIEW (priv->family_list));
@@ -740,7 +740,7 @@ ctk_font_selection_scroll_to_selection (GtkFontSelection *fontsel)
 }
 
 static void
-ctk_font_selection_scroll_on_map (GtkWidget		*widget,
+ctk_font_selection_scroll_on_map (CtkWidget		*widget,
                                   gpointer		 data)
 {
   ctk_font_selection_scroll_to_selection (CTK_FONT_SELECTION (data));
@@ -748,13 +748,13 @@ ctk_font_selection_scroll_on_map (GtkWidget		*widget,
 
 /* This is called when a family is selected in the list. */
 static void
-ctk_font_selection_select_font (GtkTreeSelection *selection,
+ctk_font_selection_select_font (CtkTreeSelection *selection,
 				gpointer          data)
 {
-  GtkFontSelection *fontsel;
-  GtkFontSelectionPrivate *priv;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkFontSelection *fontsel;
+  CtkFontSelectionPrivate *priv;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
 #ifdef INCLUDE_FONT_ENTRIES
   const gchar *family_name;
 #endif
@@ -794,14 +794,14 @@ cmp_families (const void *a, const void *b)
 }
 
 static void
-ctk_font_selection_show_available_fonts (GtkFontSelection *fontsel)
+ctk_font_selection_show_available_fonts (CtkFontSelection *fontsel)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
-  GtkListStore *model;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkListStore *model;
   PangoFontFamily **families;
   PangoFontFamily *match_family = NULL;
   gint n_families, i;
-  GtkTreeIter match_row;
+  CtkTreeIter match_row;
 
   model = CTK_LIST_STORE (ctk_tree_view_get_model (CTK_TREE_VIEW (priv->family_list)));
 
@@ -814,7 +814,7 @@ ctk_font_selection_show_available_fonts (GtkFontSelection *fontsel)
   for (i=0; i<n_families; i++)
     {
       const gchar *name = pango_font_family_get_name (families[i]);
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       ctk_list_store_insert_with_values (model, &iter, -1,
                                          FAMILY_COLUMN, families[i],
@@ -890,14 +890,14 @@ font_description_style_equal (const PangoFontDescription *a,
 /* This fills the font style list with all the possible style combinations
    for the current font family. */
 static void
-ctk_font_selection_show_available_styles (GtkFontSelection *fontsel)
+ctk_font_selection_show_available_styles (CtkFontSelection *fontsel)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
   gint n_faces, i;
   PangoFontFace **faces;
   PangoFontDescription *old_desc;
-  GtkListStore *model;
-  GtkTreeIter match_row;
+  CtkListStore *model;
+  CtkTreeIter match_row;
   PangoFontFace *match_face = NULL;
 
   model = CTK_LIST_STORE (ctk_tree_view_get_model (CTK_TREE_VIEW (priv->face_list)));
@@ -914,7 +914,7 @@ ctk_font_selection_show_available_styles (GtkFontSelection *fontsel)
 
   for (i=0; i < n_faces; i++)
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
       const gchar *str = pango_font_face_get_face_name (faces[i]);
 
       ctk_list_store_insert_with_values (model, &iter, -1,
@@ -964,12 +964,12 @@ ctk_font_selection_show_available_styles (GtkFontSelection *fontsel)
    However, the interface is so easy to use now I'm not sure it's worth it.
    Note: This will load a font. */
 static void
-ctk_font_selection_select_best_style (GtkFontSelection *fontsel,
+ctk_font_selection_select_best_style (CtkFontSelection *fontsel,
 				      gboolean	        use_first)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
-  GtkTreeIter iter;
-  GtkTreeModel *model;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
 
   model = ctk_tree_view_get_model (CTK_TREE_VIEW (priv->face_list));
 
@@ -986,12 +986,12 @@ ctk_font_selection_select_best_style (GtkFontSelection *fontsel,
 
 /* This is called when a style is selected in the list. */
 static void
-ctk_font_selection_select_style (GtkTreeSelection *selection,
+ctk_font_selection_select_style (CtkTreeSelection *selection,
 				 gpointer          data)
 {
-  GtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
+  CtkTreeModel *model;
+  CtkTreeIter iter;
 
   if (ctk_tree_selection_get_selected (selection, &model, &iter))
     {
@@ -1007,12 +1007,12 @@ ctk_font_selection_select_style (GtkTreeSelection *selection,
 }
 
 static void
-ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
+ctk_font_selection_show_available_sizes (CtkFontSelection *fontsel,
 					 gboolean          first_time)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
   gint i;
-  GtkListStore *model;
+  CtkListStore *model;
   gchar buffer[128];
   gchar *p;
 
@@ -1025,7 +1025,7 @@ ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
 
       for (i = 0; i < G_N_ELEMENTS (font_sizes); i++)
 	{
-	  GtkTreeIter iter;
+	  CtkTreeIter iter;
 
 	  ctk_list_store_insert_with_values (model, &iter, -1,
 	                                     SIZE_COLUMN, font_sizes[i], -1);
@@ -1036,7 +1036,7 @@ ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
     }
   else
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
       gboolean found = FALSE;
 
       ctk_tree_model_get_iter_first (CTK_TREE_MODEL (model), &iter);
@@ -1054,7 +1054,7 @@ ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
 
       if (!found)
 	{
-	  GtkTreeSelection *selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->size_list));
+	  CtkTreeSelection *selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->size_list));
 	  ctk_tree_selection_unselect_all (selection);
 	}
     }
@@ -1079,16 +1079,16 @@ ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
 }
 
 static void
-ctk_font_selection_select_best_size (GtkFontSelection *fontsel)
+ctk_font_selection_select_best_size (CtkFontSelection *fontsel)
 {
   ctk_font_selection_load_font (fontsel);  
 }
 
 static void
-ctk_font_selection_set_size (GtkFontSelection *fontsel,
+ctk_font_selection_set_size (CtkFontSelection *fontsel,
 			     gint              new_size)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
 
   if (priv->size != new_size)
     {
@@ -1102,11 +1102,11 @@ ctk_font_selection_set_size (GtkFontSelection *fontsel,
 /* If the user hits return in the font size entry, we change to the new font
    size. */
 static void
-ctk_font_selection_size_activate (GtkWidget   *w,
+ctk_font_selection_size_activate (CtkWidget   *w,
                                   gpointer     data)
 {
-  GtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
+  CtkFontSelectionPrivate *priv = fontsel->priv;
   gint new_size;
   const gchar *text;
 
@@ -1120,12 +1120,12 @@ ctk_font_selection_size_activate (GtkWidget   *w,
 }
 
 static gboolean
-ctk_font_selection_size_focus_out (GtkWidget     *w,
+ctk_font_selection_size_focus_out (CtkWidget     *w,
 				   GdkEventFocus *event,
 				   gpointer       data)
 {
-  GtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
+  CtkFontSelectionPrivate *priv = fontsel->priv;
   gint new_size;
   const gchar *text;
 
@@ -1139,12 +1139,12 @@ ctk_font_selection_size_focus_out (GtkWidget     *w,
 
 /* This is called when a size is selected in the list. */
 static void
-ctk_font_selection_select_size (GtkTreeSelection *selection,
+ctk_font_selection_select_size (CtkTreeSelection *selection,
 				gpointer          data)
 {
-  GtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
+  CtkTreeModel *model;
+  CtkTreeIter iter;
   gint new_size;
 
   if (ctk_tree_selection_get_selected (selection, &model, &iter))
@@ -1155,15 +1155,15 @@ ctk_font_selection_select_size (GtkTreeSelection *selection,
 }
 
 static void
-ctk_font_selection_load_font (GtkFontSelection *fontsel)
+ctk_font_selection_load_font (CtkFontSelection *fontsel)
 {
   ctk_font_selection_update_preview (fontsel);
 }
 
 static PangoFontDescription *
-ctk_font_selection_get_font_description (GtkFontSelection *fontsel)
+ctk_font_selection_get_font_description (CtkFontSelection *fontsel)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
   PangoFontDescription *font_desc;
 
   if (priv->face)
@@ -1180,10 +1180,10 @@ ctk_font_selection_get_font_description (GtkFontSelection *fontsel)
 /* This sets the font in the preview entry to the selected font.
  */
 static void
-ctk_font_selection_update_preview (GtkFontSelection *fontsel)
+ctk_font_selection_update_preview (CtkFontSelection *fontsel)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
-  GtkWidget *preview_entry = priv->preview_entry;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkWidget *preview_entry = priv->preview_entry;
   const gchar *text;
 
   ctk_widget_override_font (preview_entry,
@@ -1203,19 +1203,19 @@ ctk_font_selection_update_preview (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_family_list:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
- * This returns the #GtkTreeView that lists font families, for
+ * This returns the #CtkTreeView that lists font families, for
  * example, “Sans”, “Serif”, etc.
  *
- * Returns: (transfer none): A #GtkWidget that is part of @fontsel
+ * Returns: (transfer none): A #CtkWidget that is part of @fontsel
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
-GtkWidget *
-ctk_font_selection_get_family_list (GtkFontSelection *fontsel)
+CtkWidget *
+ctk_font_selection_get_family_list (CtkFontSelection *fontsel)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
@@ -1224,19 +1224,19 @@ ctk_font_selection_get_family_list (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_face_list:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
- * This returns the #GtkTreeView which lists all styles available for
+ * This returns the #CtkTreeView which lists all styles available for
  * the selected font. For example, “Regular”, “Bold”, etc.
  * 
- * Returns: (transfer none): A #GtkWidget that is part of @fontsel
+ * Returns: (transfer none): A #CtkWidget that is part of @fontsel
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
-GtkWidget *
-ctk_font_selection_get_face_list (GtkFontSelection *fontsel)
+CtkWidget *
+ctk_font_selection_get_face_list (CtkFontSelection *fontsel)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
@@ -1245,19 +1245,19 @@ ctk_font_selection_get_face_list (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_size_entry:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
- * This returns the #GtkEntry used to allow the user to edit the font
+ * This returns the #CtkEntry used to allow the user to edit the font
  * number manually instead of selecting it from the list of font sizes.
  *
- * Returns: (transfer none): A #GtkWidget that is part of @fontsel
+ * Returns: (transfer none): A #CtkWidget that is part of @fontsel
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
-GtkWidget *
-ctk_font_selection_get_size_entry (GtkFontSelection *fontsel)
+CtkWidget *
+ctk_font_selection_get_size_entry (CtkFontSelection *fontsel)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
@@ -1266,18 +1266,18 @@ ctk_font_selection_get_size_entry (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_size_list:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
- * This returns the #GtkTreeView used to list font sizes.
+ * This returns the #CtkTreeView used to list font sizes.
  *
- * Returns: (transfer none): A #GtkWidget that is part of @fontsel
+ * Returns: (transfer none): A #CtkWidget that is part of @fontsel
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
-GtkWidget *
-ctk_font_selection_get_size_list (GtkFontSelection *fontsel)
+CtkWidget *
+ctk_font_selection_get_size_list (CtkFontSelection *fontsel)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
@@ -1286,18 +1286,18 @@ ctk_font_selection_get_size_list (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_preview_entry:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
- * This returns the #GtkEntry used to display the font as a preview.
+ * This returns the #CtkEntry used to display the font as a preview.
  *
- * Returns: (transfer none): A #GtkWidget that is part of @fontsel
+ * Returns: (transfer none): A #CtkWidget that is part of @fontsel
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
-GtkWidget *
-ctk_font_selection_get_preview_entry (GtkFontSelection *fontsel)
+CtkWidget *
+ctk_font_selection_get_preview_entry (CtkFontSelection *fontsel)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
@@ -1306,7 +1306,7 @@ ctk_font_selection_get_preview_entry (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_family:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
  * Gets the #PangoFontFamily representing the selected font family.
  *
@@ -1317,10 +1317,10 @@ ctk_font_selection_get_preview_entry (GtkFontSelection *fontsel)
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
 PangoFontFamily *
-ctk_font_selection_get_family (GtkFontSelection *fontsel)
+ctk_font_selection_get_family (CtkFontSelection *fontsel)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
@@ -1329,7 +1329,7 @@ ctk_font_selection_get_family (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_face:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
  * Gets the #PangoFontFace representing the selected font group
  * details (i.e. family, slant, weight, width, etc).
@@ -1340,10 +1340,10 @@ ctk_font_selection_get_family (GtkFontSelection *fontsel)
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
 PangoFontFace *
-ctk_font_selection_get_face (GtkFontSelection *fontsel)
+ctk_font_selection_get_face (CtkFontSelection *fontsel)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
@@ -1352,7 +1352,7 @@ ctk_font_selection_get_face (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_size:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
  * The selected font size.
  *
@@ -1361,10 +1361,10 @@ ctk_font_selection_get_face (GtkFontSelection *fontsel)
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  **/
 gint
-ctk_font_selection_get_size (GtkFontSelection *fontsel)
+ctk_font_selection_get_size (CtkFontSelection *fontsel)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), -1);
 
@@ -1373,7 +1373,7 @@ ctk_font_selection_get_size (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_get_font_name:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  * 
  * Gets the currently-selected font name. 
  *
@@ -1387,10 +1387,10 @@ ctk_font_selection_get_size (GtkFontSelection *fontsel)
  * Returns: A string with the name of the current font, or %NULL if 
  *     no font is selected. You must free this string with g_free().
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
 gchar *
-ctk_font_selection_get_font_name (GtkFontSelection *fontsel)
+ctk_font_selection_get_font_name (CtkFontSelection *fontsel)
 {
   gchar *result;
   
@@ -1407,18 +1407,18 @@ ctk_font_selection_get_font_name (GtkFontSelection *fontsel)
    Next we try to set each of the properties according to the fontname.
    Finally we select the font family & style in the lists. */
 static gboolean
-ctk_font_selection_select_font_desc (GtkFontSelection      *fontsel,
+ctk_font_selection_select_font_desc (CtkFontSelection      *fontsel,
 				     PangoFontDescription  *new_desc,
 				     PangoFontFamily      **pfamily,
 				     PangoFontFace        **pface)
 {
-  GtkFontSelectionPrivate *priv = fontsel->priv;
+  CtkFontSelectionPrivate *priv = fontsel->priv;
   PangoFontFamily *new_family = NULL;
   PangoFontFace *new_face = NULL;
   PangoFontFace *fallback_face = NULL;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GtkTreeIter match_iter;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkTreeIter match_iter;
   gboolean valid;
   const gchar *new_family_name;
 
@@ -1509,7 +1509,7 @@ ctk_font_selection_select_font_desc (GtkFontSelection      *fontsel,
 
 /**
  * ctk_font_selection_set_font_name:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  * @fontname: a font name like “Helvetica 12” or “Times Bold 18”
  * 
  * Sets the currently-selected font. 
@@ -1522,10 +1522,10 @@ ctk_font_selection_select_font_desc (GtkFontSelection      *fontsel,
  *     such font exists or if the @fontsel doesn’t belong to a particular 
  *     screen yet.
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
 gboolean
-ctk_font_selection_set_font_name (GtkFontSelection *fontsel,
+ctk_font_selection_set_font_name (CtkFontSelection *fontsel,
 				  const gchar      *fontname)
 {
   PangoFontFamily *family = NULL;
@@ -1559,7 +1559,7 @@ ctk_font_selection_set_font_name (GtkFontSelection *fontsel,
 
 /**
  * ctk_font_selection_get_preview_text:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  *
  * Gets the text displayed in the preview area.
  * 
@@ -1567,12 +1567,12 @@ ctk_font_selection_set_font_name (GtkFontSelection *fontsel,
  *     This string is owned by the widget and should not be 
  *     modified or freed 
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
 const gchar*
-ctk_font_selection_get_preview_text (GtkFontSelection *fontsel)
+ctk_font_selection_get_preview_text (CtkFontSelection *fontsel)
 {
-  GtkFontSelectionPrivate *priv;
+  CtkFontSelectionPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
@@ -1584,19 +1584,19 @@ ctk_font_selection_get_preview_text (GtkFontSelection *fontsel)
 
 /**
  * ctk_font_selection_set_preview_text:
- * @fontsel: a #GtkFontSelection
+ * @fontsel: a #CtkFontSelection
  * @text: the text to display in the preview area 
  *
  * Sets the text displayed in the preview area.
  * The @text is used to show how the selected font looks.
  *
- * Deprecated: 3.2: Use #GtkFontChooser
+ * Deprecated: 3.2: Use #CtkFontChooser
  */
 void
-ctk_font_selection_set_preview_text  (GtkFontSelection *fontsel,
+ctk_font_selection_set_preview_text  (CtkFontSelection *fontsel,
 				      const gchar      *text)
 {
-  GtkFontSelectionPrivate *priv;
+  CtkFontSelectionPrivate *priv;
 
   g_return_if_fail (CTK_IS_FONT_SELECTION (fontsel));
   g_return_if_fail (text != NULL);
@@ -1610,10 +1610,10 @@ ctk_font_selection_set_preview_text  (GtkFontSelection *fontsel,
 /**
  * SECTION:ctkfontseldlg
  * @Short_description: Deprecated dialog box for selecting fonts
- * @Title: GtkFontSelectionDialog
- * @See_also: #GtkFontSelection, #GtkDialog, #GtkFontChooserDialog
+ * @Title: CtkFontSelectionDialog
+ * @See_also: #CtkFontSelection, #CtkDialog, #CtkFontChooserDialog
  *
- * The #GtkFontSelectionDialog widget is a dialog box for selecting a font.
+ * The #CtkFontSelectionDialog widget is a dialog box for selecting a font.
  *
  * To set the font which is initially selected, use
  * ctk_font_selection_dialog_set_font_name().
@@ -1623,44 +1623,44 @@ ctk_font_selection_set_preview_text  (GtkFontSelection *fontsel,
  * To change the text which is shown in the preview area, use
  * ctk_font_selection_dialog_set_preview_text().
  *
- * In GTK+ 3.2, #GtkFontSelectionDialog has been deprecated in favor of
- * #GtkFontChooserDialog.
+ * In GTK+ 3.2, #CtkFontSelectionDialog has been deprecated in favor of
+ * #CtkFontChooserDialog.
  *
- * # GtkFontSelectionDialog as GtkBuildable # {#GtkFontSelectionDialog-BUILDER-UI}
+ * # CtkFontSelectionDialog as CtkBuildable # {#CtkFontSelectionDialog-BUILDER-UI}
  *
- * The GtkFontSelectionDialog implementation of the GtkBuildable interface
- * exposes the embedded #GtkFontSelection as internal child with the
+ * The CtkFontSelectionDialog implementation of the CtkBuildable interface
+ * exposes the embedded #CtkFontSelection as internal child with the
  * name “font_selection”. It also exposes the buttons with the names
  * “ok_button”, “cancel_button” and “apply_button”.
  */
 
-static void ctk_font_selection_dialog_buildable_interface_init     (GtkBuildableIface *iface);
-static GObject * ctk_font_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
-									  GtkBuilder   *builder,
+static void ctk_font_selection_dialog_buildable_interface_init     (CtkBuildableIface *iface);
+static GObject * ctk_font_selection_dialog_buildable_get_internal_child (CtkBuildable *buildable,
+									  CtkBuilder   *builder,
 									  const gchar  *childname);
 
-G_DEFINE_TYPE_WITH_CODE (GtkFontSelectionDialog, ctk_font_selection_dialog,
+G_DEFINE_TYPE_WITH_CODE (CtkFontSelectionDialog, ctk_font_selection_dialog,
 			 CTK_TYPE_DIALOG,
-                         G_ADD_PRIVATE (GtkFontSelectionDialog)
+                         G_ADD_PRIVATE (CtkFontSelectionDialog)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
 						ctk_font_selection_dialog_buildable_interface_init))
 
-static GtkBuildableIface *parent_buildable_iface;
+static CtkBuildableIface *parent_buildable_iface;
 
 static void
-ctk_font_selection_dialog_class_init (GtkFontSelectionDialogClass *klass)
+ctk_font_selection_dialog_class_init (CtkFontSelectionDialogClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_FONT_CHOOSER);
 }
 
 static void
-ctk_font_selection_dialog_init (GtkFontSelectionDialog *fontseldiag)
+ctk_font_selection_dialog_init (CtkFontSelectionDialog *fontseldiag)
 {
-  GtkFontSelectionDialogPrivate *priv;
-  GtkDialog *dialog = CTK_DIALOG (fontseldiag);
-  GtkWidget *action_area, *content_area;
+  CtkFontSelectionDialogPrivate *priv;
+  CtkDialog *dialog = CTK_DIALOG (fontseldiag);
+  CtkWidget *action_area, *content_area;
 
   fontseldiag->priv = ctk_font_selection_dialog_get_instance_private (fontseldiag);
   priv = fontseldiag->priv;
@@ -1715,16 +1715,16 @@ ctk_font_selection_dialog_init (GtkFontSelectionDialog *fontseldiag)
  * ctk_font_selection_dialog_new:
  * @title: the title of the dialog window 
  *
- * Creates a new #GtkFontSelectionDialog.
+ * Creates a new #CtkFontSelectionDialog.
  *
- * Returns: a new #GtkFontSelectionDialog
+ * Returns: a new #CtkFontSelectionDialog
  *
- * Deprecated: 3.2: Use #GtkFontChooserDialog
+ * Deprecated: 3.2: Use #CtkFontChooserDialog
  */
-GtkWidget*
+CtkWidget*
 ctk_font_selection_dialog_new (const gchar *title)
 {
-  GtkFontSelectionDialog *fontseldiag;
+  CtkFontSelectionDialog *fontseldiag;
   
   fontseldiag = g_object_new (CTK_TYPE_FONT_SELECTION_DIALOG, NULL);
 
@@ -1736,18 +1736,18 @@ ctk_font_selection_dialog_new (const gchar *title)
 
 /**
  * ctk_font_selection_dialog_get_font_selection:
- * @fsd: a #GtkFontSelectionDialog
+ * @fsd: a #CtkFontSelectionDialog
  *
- * Retrieves the #GtkFontSelection widget embedded in the dialog.
+ * Retrieves the #CtkFontSelection widget embedded in the dialog.
  *
- * Returns: (transfer none): the embedded #GtkFontSelection
+ * Returns: (transfer none): the embedded #CtkFontSelection
  *
  * Since: 2.22
  *
- * Deprecated: 3.2: Use #GtkFontChooserDialog
+ * Deprecated: 3.2: Use #CtkFontChooserDialog
  **/
-GtkWidget*
-ctk_font_selection_dialog_get_font_selection (GtkFontSelectionDialog *fsd)
+CtkWidget*
+ctk_font_selection_dialog_get_font_selection (CtkFontSelectionDialog *fsd)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
@@ -1757,19 +1757,19 @@ ctk_font_selection_dialog_get_font_selection (GtkFontSelectionDialog *fsd)
 
 /**
  * ctk_font_selection_dialog_get_ok_button:
- * @fsd: a #GtkFontSelectionDialog
+ * @fsd: a #CtkFontSelectionDialog
  *
  * Gets the “OK” button.
  *
- * Returns: (transfer none): the #GtkWidget used in the dialog
+ * Returns: (transfer none): the #CtkWidget used in the dialog
  *     for the “OK” button.
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooserDialog
+ * Deprecated: 3.2: Use #CtkFontChooserDialog
  */
-GtkWidget *
-ctk_font_selection_dialog_get_ok_button (GtkFontSelectionDialog *fsd)
+CtkWidget *
+ctk_font_selection_dialog_get_ok_button (CtkFontSelectionDialog *fsd)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
@@ -1778,19 +1778,19 @@ ctk_font_selection_dialog_get_ok_button (GtkFontSelectionDialog *fsd)
 
 /**
  * ctk_font_selection_dialog_get_cancel_button:
- * @fsd: a #GtkFontSelectionDialog
+ * @fsd: a #CtkFontSelectionDialog
  *
  * Gets the “Cancel” button.
  *
- * Returns: (transfer none): the #GtkWidget used in the dialog
+ * Returns: (transfer none): the #CtkWidget used in the dialog
  *     for the “Cancel” button.
  *
  * Since: 2.14
  *
- * Deprecated: 3.2: Use #GtkFontChooserDialog
+ * Deprecated: 3.2: Use #CtkFontChooserDialog
  */
-GtkWidget *
-ctk_font_selection_dialog_get_cancel_button (GtkFontSelectionDialog *fsd)
+CtkWidget *
+ctk_font_selection_dialog_get_cancel_button (CtkFontSelectionDialog *fsd)
 {
   g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
@@ -1798,18 +1798,18 @@ ctk_font_selection_dialog_get_cancel_button (GtkFontSelectionDialog *fsd)
 }
 
 static void
-ctk_font_selection_dialog_buildable_interface_init (GtkBuildableIface *iface)
+ctk_font_selection_dialog_buildable_interface_init (CtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
   iface->get_internal_child = ctk_font_selection_dialog_buildable_get_internal_child;
 }
 
 static GObject *
-ctk_font_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
-							GtkBuilder   *builder,
+ctk_font_selection_dialog_buildable_get_internal_child (CtkBuildable *buildable,
+							CtkBuilder   *builder,
 							const gchar  *childname)
 {
-  GtkFontSelectionDialogPrivate *priv;
+  CtkFontSelectionDialogPrivate *priv;
 
   priv = CTK_FONT_SELECTION_DIALOG (buildable)->priv;
 
@@ -1827,7 +1827,7 @@ ctk_font_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
 
 /**
  * ctk_font_selection_dialog_get_font_name:
- * @fsd: a #GtkFontSelectionDialog
+ * @fsd: a #CtkFontSelectionDialog
  * 
  * Gets the currently-selected font name.
  *
@@ -1841,12 +1841,12 @@ ctk_font_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
  * Returns: A string with the name of the current font, or %NULL if no 
  *     font is selected. You must free this string with g_free().
  *
- * Deprecated: 3.2: Use #GtkFontChooserDialog
+ * Deprecated: 3.2: Use #CtkFontChooserDialog
  */
 gchar*
-ctk_font_selection_dialog_get_font_name (GtkFontSelectionDialog *fsd)
+ctk_font_selection_dialog_get_font_name (CtkFontSelectionDialog *fsd)
 {
-  GtkFontSelectionDialogPrivate *priv;
+  CtkFontSelectionDialogPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
@@ -1857,7 +1857,7 @@ ctk_font_selection_dialog_get_font_name (GtkFontSelectionDialog *fsd)
 
 /**
  * ctk_font_selection_dialog_set_font_name:
- * @fsd: a #GtkFontSelectionDialog
+ * @fsd: a #CtkFontSelectionDialog
  * @fontname: a font name like “Helvetica 12” or “Times Bold 18”
  *
  * Sets the currently selected font. 
@@ -1865,13 +1865,13 @@ ctk_font_selection_dialog_get_font_name (GtkFontSelectionDialog *fsd)
  * Returns: %TRUE if the font selected in @fsd is now the
  *     @fontname specified, %FALSE otherwise. 
  *
- * Deprecated: 3.2: Use #GtkFontChooserDialog
+ * Deprecated: 3.2: Use #CtkFontChooserDialog
  */
 gboolean
-ctk_font_selection_dialog_set_font_name (GtkFontSelectionDialog *fsd,
+ctk_font_selection_dialog_set_font_name (CtkFontSelectionDialog *fsd,
 					 const gchar	        *fontname)
 {
-  GtkFontSelectionDialogPrivate *priv;
+  CtkFontSelectionDialogPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), FALSE);
   g_return_val_if_fail (fontname, FALSE);
@@ -1883,7 +1883,7 @@ ctk_font_selection_dialog_set_font_name (GtkFontSelectionDialog *fsd,
 
 /**
  * ctk_font_selection_dialog_get_preview_text:
- * @fsd: a #GtkFontSelectionDialog
+ * @fsd: a #CtkFontSelectionDialog
  *
  * Gets the text displayed in the preview area.
  * 
@@ -1891,12 +1891,12 @@ ctk_font_selection_dialog_set_font_name (GtkFontSelectionDialog *fsd,
  *     This string is owned by the widget and should not be 
  *     modified or freed 
  *
- * Deprecated: 3.2: Use #GtkFontChooserDialog
+ * Deprecated: 3.2: Use #CtkFontChooserDialog
  */
 const gchar*
-ctk_font_selection_dialog_get_preview_text (GtkFontSelectionDialog *fsd)
+ctk_font_selection_dialog_get_preview_text (CtkFontSelectionDialog *fsd)
 {
-  GtkFontSelectionDialogPrivate *priv;
+  CtkFontSelectionDialogPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
@@ -1907,18 +1907,18 @@ ctk_font_selection_dialog_get_preview_text (GtkFontSelectionDialog *fsd)
 
 /**
  * ctk_font_selection_dialog_set_preview_text:
- * @fsd: a #GtkFontSelectionDialog
+ * @fsd: a #CtkFontSelectionDialog
  * @text: the text to display in the preview area
  *
  * Sets the text displayed in the preview area. 
  *
- * Deprecated: 3.2: Use #GtkFontChooserDialog
+ * Deprecated: 3.2: Use #CtkFontChooserDialog
  */
 void
-ctk_font_selection_dialog_set_preview_text (GtkFontSelectionDialog *fsd,
+ctk_font_selection_dialog_set_preview_text (CtkFontSelectionDialog *fsd,
 					    const gchar	           *text)
 {
-  GtkFontSelectionDialogPrivate *priv;
+  CtkFontSelectionDialogPrivate *priv;
 
   g_return_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd));
   g_return_if_fail (text != NULL);

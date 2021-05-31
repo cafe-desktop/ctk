@@ -26,12 +26,12 @@
 
 #include "ctkcssnumbervalueprivate.h"
 
-G_DEFINE_TYPE (GtkCssImageCrossFade, _ctk_css_image_cross_fade, CTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (CtkCssImageCrossFade, _ctk_css_image_cross_fade, CTK_TYPE_CSS_IMAGE)
 
 static int
-ctk_css_image_cross_fade_get_width (GtkCssImage *image)
+ctk_css_image_cross_fade_get_width (CtkCssImage *image)
 {
-  GtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
+  CtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
   int start_width, end_width;
 
   if (cross_fade->start)
@@ -58,9 +58,9 @@ ctk_css_image_cross_fade_get_width (GtkCssImage *image)
 }
 
 static int
-ctk_css_image_cross_fade_get_height (GtkCssImage *image)
+ctk_css_image_cross_fade_get_height (CtkCssImage *image)
 {
-  GtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
+  CtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
   int start_height, end_height;
 
   if (cross_fade->start)
@@ -87,11 +87,11 @@ ctk_css_image_cross_fade_get_height (GtkCssImage *image)
 }
 
 static gboolean
-ctk_css_image_cross_fade_equal (GtkCssImage *image1,
-                                GtkCssImage *image2)
+ctk_css_image_cross_fade_equal (CtkCssImage *image1,
+                                CtkCssImage *image2)
 {
-  GtkCssImageCrossFade *cross_fade1 = CTK_CSS_IMAGE_CROSS_FADE (image1);
-  GtkCssImageCrossFade *cross_fade2 = CTK_CSS_IMAGE_CROSS_FADE (image2);
+  CtkCssImageCrossFade *cross_fade1 = CTK_CSS_IMAGE_CROSS_FADE (image1);
+  CtkCssImageCrossFade *cross_fade2 = CTK_CSS_IMAGE_CROSS_FADE (image2);
 
   return cross_fade1->progress == cross_fade2->progress &&
          _ctk_css_image_equal (cross_fade1->start, cross_fade2->start) &&
@@ -99,12 +99,12 @@ ctk_css_image_cross_fade_equal (GtkCssImage *image1,
 }
 
 static void
-ctk_css_image_cross_fade_draw (GtkCssImage        *image,
+ctk_css_image_cross_fade_draw (CtkCssImage        *image,
                                cairo_t            *cr,
                                double              width,
                                double              height)
 {
-  GtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
+  CtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
 
   if (cross_fade->progress <= 0.0)
     {
@@ -153,10 +153,10 @@ ctk_css_image_cross_fade_draw (GtkCssImage        *image,
 }
 
 static gboolean
-ctk_css_image_cross_fade_parse (GtkCssImage  *image,
-                                GtkCssParser *parser)
+ctk_css_image_cross_fade_parse (CtkCssImage  *image,
+                                CtkCssParser *parser)
 {
-  GtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
+  CtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
   if (!_ctk_css_parser_try (parser, "cross-fade(", TRUE))
     {
       _ctk_css_parser_error (parser, "Expected 'cross-fade('");
@@ -165,7 +165,7 @@ ctk_css_image_cross_fade_parse (GtkCssImage  *image,
 
   if (ctk_css_number_value_can_parse (parser))
     {
-      GtkCssValue *number;
+      CtkCssValue *number;
       
       number = _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_PERCENT | CTK_CSS_POSITIVE_ONLY);
       if (number == NULL)
@@ -204,10 +204,10 @@ ctk_css_image_cross_fade_parse (GtkCssImage  *image,
 }
 
 static void
-ctk_css_image_cross_fade_print (GtkCssImage *image,
+ctk_css_image_cross_fade_print (CtkCssImage *image,
                                 GString     *string)
 {
-  GtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
+  CtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
 
   g_string_append (string, "cross-fade(");
   if (cross_fade->progress != 0.5)
@@ -227,15 +227,15 @@ ctk_css_image_cross_fade_print (GtkCssImage *image,
   g_string_append (string, ")");
 }
 
-static GtkCssImage *
-ctk_css_image_cross_fade_compute (GtkCssImage             *image,
+static CtkCssImage *
+ctk_css_image_cross_fade_compute (CtkCssImage             *image,
                                   guint                    property_id,
-                                  GtkStyleProviderPrivate *provider,
-                                  GtkCssStyle             *style,
-                                  GtkCssStyle             *parent_style)
+                                  CtkStyleProviderPrivate *provider,
+                                  CtkCssStyle             *style,
+                                  CtkCssStyle             *parent_style)
 {
-  GtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
-  GtkCssImage *start, *end, *computed;
+  CtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (image);
+  CtkCssImage *start, *end, *computed;
 
   start = _ctk_css_image_compute (cross_fade->start, property_id, provider, style, parent_style);
   end = _ctk_css_image_compute (cross_fade->end, property_id, provider, style, parent_style);
@@ -251,7 +251,7 @@ ctk_css_image_cross_fade_compute (GtkCssImage             *image,
 static void
 ctk_css_image_cross_fade_dispose (GObject *object)
 {
-  GtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (object);
+  CtkCssImageCrossFade *cross_fade = CTK_CSS_IMAGE_CROSS_FADE (object);
 
   g_clear_object (&cross_fade->start);
   g_clear_object (&cross_fade->end);
@@ -260,9 +260,9 @@ ctk_css_image_cross_fade_dispose (GObject *object)
 }
 
 static void
-_ctk_css_image_cross_fade_class_init (GtkCssImageCrossFadeClass *klass)
+_ctk_css_image_cross_fade_class_init (CtkCssImageCrossFadeClass *klass)
 {
-  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
+  CtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   image_class->get_width = ctk_css_image_cross_fade_get_width;
@@ -277,16 +277,16 @@ _ctk_css_image_cross_fade_class_init (GtkCssImageCrossFadeClass *klass)
 }
 
 static void
-_ctk_css_image_cross_fade_init (GtkCssImageCrossFade *image_cross_fade)
+_ctk_css_image_cross_fade_init (CtkCssImageCrossFade *image_cross_fade)
 {
 }
 
-GtkCssImage *
-_ctk_css_image_cross_fade_new (GtkCssImage *start,
-                               GtkCssImage *end,
+CtkCssImage *
+_ctk_css_image_cross_fade_new (CtkCssImage *start,
+                               CtkCssImage *end,
                                double       progress)
 {
-  GtkCssImageCrossFade *cross_fade;
+  CtkCssImageCrossFade *cross_fade;
 
   g_return_val_if_fail (start == NULL || CTK_IS_CSS_IMAGE (start), NULL);
   g_return_val_if_fail (end == NULL || CTK_IS_CSS_IMAGE (end), NULL);

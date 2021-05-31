@@ -23,31 +23,31 @@
 
 
 #define CTK_TYPE_INSPECTOR_ACTION_EDITOR            (ctk_inspector_action_editor_get_type())
-#define CTK_INSPECTOR_ACTION_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_ACTION_EDITOR, GtkInspectorActionEditor))
-#define CTK_INSPECTOR_ACTION_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_ACTION_EDITOR, GtkInspectorActionEditorClass))
+#define CTK_INSPECTOR_ACTION_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_ACTION_EDITOR, CtkInspectorActionEditor))
+#define CTK_INSPECTOR_ACTION_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_ACTION_EDITOR, CtkInspectorActionEditorClass))
 #define CTK_INSPECTOR_IS_ACTION_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_ACTION_EDITOR))
 #define CTK_INSPECTOR_IS_ACTION_EDITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_ACTION_EDITOR))
-#define CTK_INSPECTOR_ACTION_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_ACTION_EDITOR, GtkInspectorActionEditorClass))
+#define CTK_INSPECTOR_ACTION_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_ACTION_EDITOR, CtkInspectorActionEditorClass))
 
-typedef struct _GtkInspectorActionEditorPrivate GtkInspectorActionEditorPrivate;
-
-typedef struct
-{
-  GtkBox parent;
-  GtkInspectorActionEditorPrivate *priv;
-} GtkInspectorActionEditor;
+typedef struct _CtkInspectorActionEditorPrivate CtkInspectorActionEditorPrivate;
 
 typedef struct
 {
-  GtkBoxClass parent;
-} GtkInspectorActionEditorClass;
+  CtkBox parent;
+  CtkInspectorActionEditorPrivate *priv;
+} CtkInspectorActionEditor;
+
+typedef struct
+{
+  CtkBoxClass parent;
+} CtkInspectorActionEditorClass;
 
 
 G_BEGIN_DECLS
 
 
 GType      ctk_inspector_action_editor_get_type (void);
-GtkWidget *ctk_inspector_action_editor_new      (GActionGroup *group,
+CtkWidget *ctk_inspector_action_editor_new      (GActionGroup *group,
                                                  const gchar  *prefix,
                                                  const gchar  *name);
 

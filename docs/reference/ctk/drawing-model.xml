@@ -79,7 +79,7 @@
         drawing cycle can also be initiated when a widget itself decides
         that it needs to update its display.  For example, when the user
         types a character in a <link
-        linkend="GtkEntry"><classname>GtkEntry</classname></link>
+        linkend="CtkEntry"><classname>CtkEntry</classname></link>
         widget, the entry asks GTK+ to queue a redraw operation for
         itself.
       </para>
@@ -190,7 +190,7 @@
       <para>
         During the Paint phase we will send a single expose event to
         the toplevel window. The event handler will create a cairo
-        context for the window and emit a GtkWidget::draw() signal
+        context for the window and emit a CtkWidget::draw() signal
         on it, which will propagate down the entire widget hierarchy
         in back-to-front order, using the clipping and transform of
         the cairo context. This lets each widget draw its content at
@@ -244,7 +244,7 @@
 
       <para>
         Since the above causes some overhead, we introduce a caching mechanism.
-        Containers that scroll a lot (GtkViewport, GtkTextView, GtkTreeView,
+        Containers that scroll a lot (CtkViewport, CtkTextView, CtkTreeView,
         etc) allocate an offscreen image during scrolling and render their
         children to it (which is possible since drawing is fully hierarchical).
         The offscreen image is a bit larger than the visible area, so most of
@@ -300,7 +300,7 @@
       <para>
 	To make this easier, GTK+ normally calls
         <function>gdk_window_begin_paint_region()</function>
-        before emitting the #GtkWidget::draw signal, and
+        before emitting the #CtkWidget::draw signal, and
 	then it calls <function>gdk_window_end_paint()</function>
 	after the signal has been emitted. This is convenient for
 	most widgets, as they do not need to worry about creating
@@ -362,7 +362,7 @@ my_widget_init (MyWidget *widget)
     <para>
       Generally, applications use the pre-defined widgets in GTK+ and
       they do not draw extra things on top of them (the exception
-      being <classname>GtkDrawingArea</classname>).  However,
+      being <classname>CtkDrawingArea</classname>).  However,
       applications may sometimes find it convenient to draw directly
       on certain widgets like toplevel windows or event boxes.  When
       this is the case, GTK+ needs to be told not to overwrite your
@@ -371,8 +371,8 @@ my_widget_init (MyWidget *widget)
     </para>
 
     <para>
-      <classname>GtkWindow</classname> and
-      <classname>GtkEventBox</classname> are the two widgets that allow
+      <classname>CtkWindow</classname> and
+      <classname>CtkEventBox</classname> are the two widgets that allow
       turning off drawing of default contents by calling
       <function>ctk_widget_set_app_paintable()</function>. If you call
       this function, they will not draw their contents and let you do
@@ -380,7 +380,7 @@ my_widget_init (MyWidget *widget)
     </para>
 
     <para>
-      Since the #GtkWidget::draw signal runs user-connected handlers
+      Since the #CtkWidget::draw signal runs user-connected handlers
       <emphasis>before</emphasis> the widget's default handler, what
       usually happens is this:
     </para>
@@ -408,9 +408,9 @@ my_widget_init (MyWidget *widget)
       <listitem>
 	<para>
 	  The draw handler for the parent class gets run.
-	  Since both <classname>GtkWindow</classname> and
-	  <classname>GtkEventBox</classname> are descendants of
-	  <classname>GtkContainer</classname>, their no-window
+	  Since both <classname>CtkWindow</classname> and
+	  <classname>CtkEventBox</classname> are descendants of
+	  <classname>CtkContainer</classname>, their no-window
 	  children will be asked to draw themselves recursively, as
 	  described in <xref linkend="hierarchical-drawing"/>.
 	</para>
@@ -423,10 +423,10 @@ my_widget_init (MyWidget *widget)
       <para>
         Call <function>ctk_widget_set_app_paintable()</function> if you
 	intend to draw your own content directly on a
-	<classname>GtkWindow</classname> and
-	<classname>GtkEventBox</classname>.  You seldom need to draw
+	<classname>CtkWindow</classname> and
+	<classname>CtkEventBox</classname>.  You seldom need to draw
 	on top of other widgets, and
-	<classname>GtkDrawingArea</classname> ignores this flag, as it
+	<classname>CtkDrawingArea</classname> ignores this flag, as it
 	<emphasis>is</emphasis> intended to be drawn on.
       </para>
     </formalpara>

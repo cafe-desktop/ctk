@@ -26,34 +26,34 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_ACTION_MUXER                               (ctk_action_muxer_get_type ())
 #define CTK_ACTION_MUXER(inst)                              (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             CTK_TYPE_ACTION_MUXER, GtkActionMuxer))
+                                                             CTK_TYPE_ACTION_MUXER, CtkActionMuxer))
 #define CTK_IS_ACTION_MUXER(inst)                           (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
                                                              CTK_TYPE_ACTION_MUXER))
 
-typedef struct _GtkActionMuxer                              GtkActionMuxer;
+typedef struct _CtkActionMuxer                              CtkActionMuxer;
 
 GType                   ctk_action_muxer_get_type                       (void);
-GtkActionMuxer *        ctk_action_muxer_new                            (void);
+CtkActionMuxer *        ctk_action_muxer_new                            (void);
 
-void                    ctk_action_muxer_insert                         (GtkActionMuxer *muxer,
+void                    ctk_action_muxer_insert                         (CtkActionMuxer *muxer,
                                                                          const gchar    *prefix,
                                                                          GActionGroup   *action_group);
 
-void                    ctk_action_muxer_remove                         (GtkActionMuxer *muxer,
+void                    ctk_action_muxer_remove                         (CtkActionMuxer *muxer,
                                                                          const gchar    *prefix);
-const gchar **          ctk_action_muxer_list_prefixes                  (GtkActionMuxer *muxer);
-GActionGroup *          ctk_action_muxer_lookup                         (GtkActionMuxer *muxer,
+const gchar **          ctk_action_muxer_list_prefixes                  (CtkActionMuxer *muxer);
+GActionGroup *          ctk_action_muxer_lookup                         (CtkActionMuxer *muxer,
                                                                          const gchar    *prefix);
-GtkActionMuxer *        ctk_action_muxer_get_parent                     (GtkActionMuxer *muxer);
+CtkActionMuxer *        ctk_action_muxer_get_parent                     (CtkActionMuxer *muxer);
 
-void                    ctk_action_muxer_set_parent                     (GtkActionMuxer *muxer,
-                                                                         GtkActionMuxer *parent);
+void                    ctk_action_muxer_set_parent                     (CtkActionMuxer *muxer,
+                                                                         CtkActionMuxer *parent);
 
-void                    ctk_action_muxer_set_primary_accel              (GtkActionMuxer *muxer,
+void                    ctk_action_muxer_set_primary_accel              (CtkActionMuxer *muxer,
                                                                          const gchar    *action_and_target,
                                                                          const gchar    *primary_accel);
 
-const gchar *           ctk_action_muxer_get_primary_accel              (GtkActionMuxer *muxer,
+const gchar *           ctk_action_muxer_get_primary_accel              (CtkActionMuxer *muxer,
                                                                          const gchar    *action_and_target);
 
 /* No better place for these... */

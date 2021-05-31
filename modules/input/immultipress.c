@@ -17,7 +17,7 @@
 #include "config.h"
 
 #include "ctkimcontextmultipress.h"
-#include <ctk/ctkimmodule.h> /* For GtkIMContextInfo */
+#include <ctk/ctkimmodule.h> /* For CtkIMContextInfo */
 #include <glib/gi18n.h>
 #include <string.h> /* For strcmp() */
 
@@ -25,7 +25,7 @@
  
 /** NOTE: Change the default language from "" to "*" to enable this input method by default for all locales.
  */
-static const GtkIMContextInfo info = { 
+static const CtkIMContextInfo info = { 
   CONTEXT_ID,		   /* ID */
   NC_("input method menu", "Multipress"),     /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain. Defined in configure.ac */
@@ -33,7 +33,7 @@ static const GtkIMContextInfo info = {
   ""			   /* Languages for which this module is the default */
 };
 
-static const GtkIMContextInfo *info_list[] = {
+static const CtkIMContextInfo *info_list[] = {
   &info
 };
 
@@ -52,18 +52,18 @@ MODULE_ENTRY (void, exit) (void)
 {
 }
 
-MODULE_ENTRY (void, list) (const GtkIMContextInfo ***contexts,
+MODULE_ENTRY (void, list) (const CtkIMContextInfo ***contexts,
 			   int                      *n_contexts)
 {
   *contexts = info_list;
   *n_contexts = G_N_ELEMENTS (info_list);
 }
 
-MODULE_ENTRY (GtkIMContext *, create) (const gchar *context_id)
+MODULE_ENTRY (CtkIMContext *, create) (const gchar *context_id)
 {
   if (strcmp (context_id, CONTEXT_ID) == 0)
   {
-    GtkIMContext* imcontext = CTK_IM_CONTEXT(g_object_new (CTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL));
+    CtkIMContext* imcontext = CTK_IM_CONTEXT(g_object_new (CTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL));
     return imcontext;
   }
   else

@@ -21,7 +21,7 @@
 #include <ctk/ctk.h>
 
 static void
-on_toggle_hexpand (GtkToggleButton *toggle,
+on_toggle_hexpand (CtkToggleButton *toggle,
                    void            *data)
 {
   g_object_set (toggle,
@@ -30,7 +30,7 @@ on_toggle_hexpand (GtkToggleButton *toggle,
 }
 
 static void
-on_toggle_vexpand (GtkToggleButton *toggle,
+on_toggle_vexpand (CtkToggleButton *toggle,
                    void            *data)
 {
   g_object_set (toggle,
@@ -41,10 +41,10 @@ on_toggle_vexpand (GtkToggleButton *toggle,
 static void
 create_box_window (void)
 {
-  GtkWidget *window;
-  GtkWidget *box1, *box2, *box3;
-  GtkWidget *toggle;
-  GtkWidget *colorbox;
+  CtkWidget *window;
+  CtkWidget *box1, *box2, *box3;
+  CtkWidget *toggle;
+  CtkWidget *colorbox;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Boxes");
@@ -110,10 +110,10 @@ create_box_window (void)
 static void
 create_grid_window (void)
 {
-  GtkWidget *window;
-  GtkWidget *grid;
-  GtkWidget *toggle;
-  GtkWidget *colorbox;
+  CtkWidget *window;
+  CtkWidget *grid;
+  CtkWidget *toggle;
+  CtkWidget *colorbox;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), "Grid");

@@ -25,15 +25,15 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SHORTCUTS_SECTION (ctk_shortcuts_section_get_type ())
-#define CTK_SHORTCUTS_SECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSection))
-#define CTK_SHORTCUTS_SECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSectionClass))
+#define CTK_SHORTCUTS_SECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUTS_SECTION, CtkShortcutsSection))
+#define CTK_SHORTCUTS_SECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUTS_SECTION, CtkShortcutsSectionClass))
 #define CTK_IS_SHORTCUTS_SECTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SHORTCUTS_SECTION))
 #define CTK_IS_SHORTCUTS_SECTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SHORTCUTS_SECTION))
-#define CTK_SHORTCUTS_SECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSectionClass))
+#define CTK_SHORTCUTS_SECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUTS_SECTION, CtkShortcutsSectionClass))
 
 
-typedef struct _GtkShortcutsSection      GtkShortcutsSection;
-typedef struct _GtkShortcutsSectionClass GtkShortcutsSectionClass;
+typedef struct _CtkShortcutsSection      CtkShortcutsSection;
+typedef struct _CtkShortcutsSectionClass CtkShortcutsSectionClass;
 
 GDK_AVAILABLE_IN_3_20
 GType        ctk_shortcuts_section_get_type (void) G_GNUC_CONST;

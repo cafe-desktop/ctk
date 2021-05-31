@@ -31,22 +31,22 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_COLOR_PICKER             (ctk_color_picker_get_type ())
-#define CTK_COLOR_PICKER(o)               (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_COLOR_PICKER, GtkColorPicker))
+#define CTK_COLOR_PICKER(o)               (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_COLOR_PICKER, CtkColorPicker))
 #define CTK_IS_COLOR_PICKER(o)            (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_COLOR_PICKER))
-#define CTK_COLOR_PICKER_GET_INTERFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE ((o), CTK_TYPE_COLOR_PICKER, GtkColorPickerInterface))
+#define CTK_COLOR_PICKER_GET_INTERFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE ((o), CTK_TYPE_COLOR_PICKER, CtkColorPickerInterface))
 
 
-typedef struct _GtkColorPicker            GtkColorPicker;
-typedef struct _GtkColorPickerInterface   GtkColorPickerInterface;
+typedef struct _CtkColorPicker            CtkColorPicker;
+typedef struct _CtkColorPickerInterface   CtkColorPickerInterface;
 
-struct _GtkColorPickerInterface {
+struct _CtkColorPickerInterface {
   GTypeInterface g_iface;
 
-  void (* pick)             (GtkColorPicker      *picker,
+  void (* pick)             (CtkColorPicker      *picker,
                              GAsyncReadyCallback  callback,
                              gpointer             user_data);
 
-  GdkRGBA * (* pick_finish) (GtkColorPicker      *picker,
+  GdkRGBA * (* pick_finish) (CtkColorPicker      *picker,
                              GAsyncResult        *res,
                              GError             **error);
 };
@@ -54,13 +54,13 @@ struct _GtkColorPickerInterface {
 GDK_AVAILABLE_IN_ALL
 GType            ctk_color_picker_get_type    (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkColorPicker * ctk_color_picker_new         (void);
+CtkColorPicker * ctk_color_picker_new         (void);
 GDK_AVAILABLE_IN_ALL
-void             ctk_color_picker_pick        (GtkColorPicker       *picker,
+void             ctk_color_picker_pick        (CtkColorPicker       *picker,
                                                GAsyncReadyCallback   callback,
                                                gpointer              user_data);
 GDK_AVAILABLE_IN_ALL
-GdkRGBA *        ctk_color_picker_pick_finish (GtkColorPicker       *picker,
+GdkRGBA *        ctk_color_picker_pick_finish (CtkColorPicker       *picker,
                                                GAsyncResult         *res,
                                                GError              **error);
 

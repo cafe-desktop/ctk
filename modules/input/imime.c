@@ -25,7 +25,7 @@
 #include "ctk/ctkimmodule.h"
 #include "ctkimcontextime.h"
 
-static const GtkIMContextInfo ime_info = {
+static const CtkIMContextInfo ime_info = {
   "ime",
   NC_("input method menu", "Windows IME"),
   GETTEXT_PACKAGE,
@@ -33,7 +33,7 @@ static const GtkIMContextInfo ime_info = {
   "*",
 };
 
-static const GtkIMContextInfo *info_list[] = {
+static const CtkIMContextInfo *info_list[] = {
   &ime_info,
 };
 
@@ -52,13 +52,13 @@ MODULE_ENTRY (void, exit) (void)
 {
 }
 
-MODULE_ENTRY (void, list) (const GtkIMContextInfo *** contexts, int *n_contexts)
+MODULE_ENTRY (void, list) (const CtkIMContextInfo *** contexts, int *n_contexts)
 {
   *contexts = info_list;
   *n_contexts = G_N_ELEMENTS (info_list);
 }
 
-MODULE_ENTRY (GtkIMContext *, create) (const gchar * context_id)
+MODULE_ENTRY (CtkIMContext *, create) (const gchar * context_id)
 {
   g_return_val_if_fail (context_id, NULL);
 

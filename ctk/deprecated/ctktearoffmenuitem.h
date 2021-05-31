@@ -34,32 +34,32 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TEAROFF_MENU_ITEM	      (ctk_tearoff_menu_item_get_type ())
-#define CTK_TEAROFF_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEAROFF_MENU_ITEM, GtkTearoffMenuItem))
-#define CTK_TEAROFF_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEAROFF_MENU_ITEM, GtkTearoffMenuItemClass))
+#define CTK_TEAROFF_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEAROFF_MENU_ITEM, CtkTearoffMenuItem))
+#define CTK_TEAROFF_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEAROFF_MENU_ITEM, CtkTearoffMenuItemClass))
 #define CTK_IS_TEAROFF_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEAROFF_MENU_ITEM))
 #define CTK_IS_TEAROFF_MENU_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEAROFF_MENU_ITEM))
-#define CTK_TEAROFF_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEAROFF_MENU_ITEM, GtkTearoffMenuItemClass))
+#define CTK_TEAROFF_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEAROFF_MENU_ITEM, CtkTearoffMenuItemClass))
 
 
-typedef struct _GtkTearoffMenuItem              GtkTearoffMenuItem;
-typedef struct _GtkTearoffMenuItemPrivate       GtkTearoffMenuItemPrivate;
-typedef struct _GtkTearoffMenuItemClass         GtkTearoffMenuItemClass;
+typedef struct _CtkTearoffMenuItem              CtkTearoffMenuItem;
+typedef struct _CtkTearoffMenuItemPrivate       CtkTearoffMenuItemPrivate;
+typedef struct _CtkTearoffMenuItemClass         CtkTearoffMenuItemClass;
 
-struct _GtkTearoffMenuItem
+struct _CtkTearoffMenuItem
 {
-  GtkMenuItem menu_item;
+  CtkMenuItem menu_item;
 
   /*< private >*/
-  GtkTearoffMenuItemPrivate *priv;
+  CtkTearoffMenuItemPrivate *priv;
 };
 
 /**
- * GtkTearoffMenuItemClass:
+ * CtkTearoffMenuItemClass:
  * @parent_class: The parent class.
  */
-struct _GtkTearoffMenuItemClass
+struct _CtkTearoffMenuItemClass
 {
-  GtkMenuItemClass parent_class;
+  CtkMenuItemClass parent_class;
 
   /*< private >*/
 
@@ -74,7 +74,7 @@ struct _GtkTearoffMenuItemClass
 GDK_DEPRECATED_IN_3_4
 GType	   ctk_tearoff_menu_item_get_type     (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_4
-GtkWidget* ctk_tearoff_menu_item_new	      (void);
+CtkWidget* ctk_tearoff_menu_item_new	      (void);
 
 G_END_DECLS
 

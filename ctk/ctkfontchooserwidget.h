@@ -27,31 +27,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FONT_CHOOSER_WIDGET              (ctk_font_chooser_widget_get_type ())
-#define CTK_FONT_CHOOSER_WIDGET(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FONT_CHOOSER_WIDGET, GtkFontChooserWidget))
-#define CTK_FONT_CHOOSER_WIDGET_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FONT_CHOOSER_WIDGET, GtkFontChooserWidgetClass))
+#define CTK_FONT_CHOOSER_WIDGET(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FONT_CHOOSER_WIDGET, CtkFontChooserWidget))
+#define CTK_FONT_CHOOSER_WIDGET_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FONT_CHOOSER_WIDGET, CtkFontChooserWidgetClass))
 #define CTK_IS_FONT_CHOOSER_WIDGET(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FONT_CHOOSER_WIDGET))
 #define CTK_IS_FONT_CHOOSER_WIDGET_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FONT_CHOOSER_WIDGET))
-#define CTK_FONT_CHOOSER_WIDGET_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FONT_CHOOSER_WIDGET, GtkFontChooserWidgetClass))
+#define CTK_FONT_CHOOSER_WIDGET_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FONT_CHOOSER_WIDGET, CtkFontChooserWidgetClass))
 
-typedef struct _GtkFontChooserWidget              GtkFontChooserWidget;
-typedef struct _GtkFontChooserWidgetPrivate       GtkFontChooserWidgetPrivate;
-typedef struct _GtkFontChooserWidgetClass         GtkFontChooserWidgetClass;
+typedef struct _CtkFontChooserWidget              CtkFontChooserWidget;
+typedef struct _CtkFontChooserWidgetPrivate       CtkFontChooserWidgetPrivate;
+typedef struct _CtkFontChooserWidgetClass         CtkFontChooserWidgetClass;
 
-struct _GtkFontChooserWidget
+struct _CtkFontChooserWidget
 {
-  GtkBox parent_instance;
+  CtkBox parent_instance;
 
   /*< private >*/
-  GtkFontChooserWidgetPrivate *priv;
+  CtkFontChooserWidgetPrivate *priv;
 };
 
 /**
- * GtkFontChooserWidgetClass:
+ * CtkFontChooserWidgetClass:
  * @parent_class: The parent class.
  */
-struct _GtkFontChooserWidgetClass
+struct _CtkFontChooserWidgetClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
   /*< private >*/
 
@@ -70,7 +70,7 @@ GDK_AVAILABLE_IN_3_2
 GType        ctk_font_chooser_widget_get_type                 (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_2
-GtkWidget*   ctk_font_chooser_widget_new                      (void);
+CtkWidget*   ctk_font_chooser_widget_new                      (void);
 
 G_END_DECLS
 

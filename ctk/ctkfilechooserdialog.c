@@ -44,33 +44,33 @@
 /**
  * SECTION:ctkfilechooserdialog
  * @Short_description: A file chooser dialog, suitable for “File/Open” or “File/Save” commands
- * @Title: GtkFileChooserDialog
- * @See_also: #GtkFileChooser, #GtkDialog, GtkFileChooserNative
+ * @Title: CtkFileChooserDialog
+ * @See_also: #CtkFileChooser, #CtkDialog, CtkFileChooserNative
  *
- * #GtkFileChooserDialog is a dialog box suitable for use with
+ * #CtkFileChooserDialog is a dialog box suitable for use with
  * “File/Open” or “File/Save as” commands.  This widget works by
- * putting a #GtkFileChooserWidget inside a #GtkDialog.  It exposes
- * the #GtkFileChooser interface, so you can use all of the
- * #GtkFileChooser functions on the file chooser dialog as well as
- * those for #GtkDialog.
+ * putting a #CtkFileChooserWidget inside a #CtkDialog.  It exposes
+ * the #CtkFileChooser interface, so you can use all of the
+ * #CtkFileChooser functions on the file chooser dialog as well as
+ * those for #CtkDialog.
  *
- * Note that #GtkFileChooserDialog does not have any methods of its
+ * Note that #CtkFileChooserDialog does not have any methods of its
  * own.  Instead, you should use the functions that work on a
- * #GtkFileChooser.
+ * #CtkFileChooser.
  *
  * If you want to integrate well with the platform you should use the
- * #GtkFileChooserNative API, which will use a platform-specific
- * dialog if available and fall back to GtkFileChooserDialog
+ * #CtkFileChooserNative API, which will use a platform-specific
+ * dialog if available and fall back to CtkFileChooserDialog
  * otherwise.
  *
  * ## Typical usage ## {#ctkfilechooser-typical-usage}
  *
  * In the simplest of cases, you can the following code to use
- * #GtkFileChooserDialog to select a file for opening:
+ * #CtkFileChooserDialog to select a file for opening:
  *
  * |[
- * GtkWidget *dialog;
- * GtkFileChooserAction action = CTK_FILE_CHOOSER_ACTION_OPEN;
+ * CtkWidget *dialog;
+ * CtkFileChooserAction action = CTK_FILE_CHOOSER_ACTION_OPEN;
  * gint res;
  *
  * dialog = ctk_file_chooser_dialog_new ("Open File",
@@ -86,7 +86,7 @@
  * if (res == CTK_RESPONSE_ACCEPT)
  *   {
  *     char *filename;
- *     GtkFileChooser *chooser = CTK_FILE_CHOOSER (dialog);
+ *     CtkFileChooser *chooser = CTK_FILE_CHOOSER (dialog);
  *     filename = ctk_file_chooser_get_filename (chooser);
  *     open_file (filename);
  *     g_free (filename);
@@ -98,9 +98,9 @@
  * To use a dialog for saving, you can use this:
  *
  * |[
- * GtkWidget *dialog;
- * GtkFileChooser *chooser;
- * GtkFileChooserAction action = CTK_FILE_CHOOSER_ACTION_SAVE;
+ * CtkWidget *dialog;
+ * CtkFileChooser *chooser;
+ * CtkFileChooserAction action = CTK_FILE_CHOOSER_ACTION_SAVE;
  * gint res;
  *
  * dialog = ctk_file_chooser_dialog_new ("Save File",
@@ -137,7 +137,7 @@
  *
  * ## Setting up a file chooser dialog ## {#ctkfilechooserdialog-setting-up}
  *
- * There are various cases in which you may need to use a #GtkFileChooserDialog:
+ * There are various cases in which you may need to use a #CtkFileChooserDialog:
  *
  * - To select a file for opening. Use #CTK_FILE_CHOOSER_ACTION_OPEN.
  *
@@ -162,14 +162,14 @@
 
  * ## Response Codes ## {#ctkfilechooserdialog-responses}
  *
- * #GtkFileChooserDialog inherits from #GtkDialog, so buttons that
+ * #CtkFileChooserDialog inherits from #CtkDialog, so buttons that
  * go in its action area have response codes such as
  * #CTK_RESPONSE_ACCEPT and #CTK_RESPONSE_CANCEL.  For example, you
  * could call ctk_file_chooser_dialog_new() as follows:
  *
  * |[
- * GtkWidget *dialog;
- * GtkFileChooserAction action = CTK_FILE_CHOOSER_ACTION_OPEN;
+ * CtkWidget *dialog;
+ * CtkFileChooserAction action = CTK_FILE_CHOOSER_ACTION_OPEN;
  *
  * dialog = ctk_file_chooser_dialog_new ("Open File",
  *                                       parent_window,
@@ -182,9 +182,9 @@
  * ]|
  *
  * This will create buttons for “Cancel” and “Open” that use stock
- * response identifiers from #GtkResponseType.  For most dialog
+ * response identifiers from #CtkResponseType.  For most dialog
  * boxes you can use your own custom response codes rather than the
- * ones in #GtkResponseType, but #GtkFileChooserDialog assumes that
+ * ones in #CtkResponseType, but #CtkFileChooserDialog assumes that
  * its “accept”-type action, e.g. an “Open” or “Save” button,
  * will have one of the following response codes:
  *
@@ -193,7 +193,7 @@
  * - #CTK_RESPONSE_YES
  * - #CTK_RESPONSE_APPLY
  *
- * This is because #GtkFileChooserDialog must intercept responses
+ * This is because #CtkFileChooserDialog must intercept responses
  * and switch to folders if appropriate, rather than letting the
  * dialog terminate — the implementation uses these known
  * response codes to know which responses can be blocked if
@@ -201,17 +201,17 @@
  *
  * To summarize, make sure you use a
  * [stock response code][ctkfilechooserdialog-responses]
- * when you use #GtkFileChooserDialog to ensure proper operation.
+ * when you use #CtkFileChooserDialog to ensure proper operation.
  */
 
 
-struct _GtkFileChooserDialogPrivate
+struct _CtkFileChooserDialogPrivate
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
-  GtkSizeGroup *buttons;
+  CtkSizeGroup *buttons;
 
-  /* for use with GtkFileChooserEmbed */
+  /* for use with CtkFileChooserEmbed */
   gboolean response_requested;
   gboolean search_setup;
   gboolean has_entry;
@@ -228,34 +228,34 @@ static void     ctk_file_chooser_dialog_get_property (GObject               *obj
 static void     ctk_file_chooser_dialog_notify       (GObject               *object,
                                                       GParamSpec            *pspec);
 
-static void     ctk_file_chooser_dialog_map          (GtkWidget             *widget);
-static void     ctk_file_chooser_dialog_unmap        (GtkWidget             *widget);
-static void     ctk_file_chooser_dialog_size_allocate (GtkWidget             *widget,
-                                                       GtkAllocation         *allocation);
-static void     file_chooser_widget_file_activated   (GtkFileChooser        *chooser,
-                                                      GtkFileChooserDialog  *dialog);
-static void     file_chooser_widget_default_size_changed (GtkWidget            *widget,
-                                                          GtkFileChooserDialog *dialog);
-static void     file_chooser_widget_response_requested (GtkWidget            *widget,
-                                                        GtkFileChooserDialog *dialog);
-static void     file_chooser_widget_selection_changed (GtkWidget            *widget,
-                                                        GtkFileChooserDialog *dialog);
+static void     ctk_file_chooser_dialog_map          (CtkWidget             *widget);
+static void     ctk_file_chooser_dialog_unmap        (CtkWidget             *widget);
+static void     ctk_file_chooser_dialog_size_allocate (CtkWidget             *widget,
+                                                       CtkAllocation         *allocation);
+static void     file_chooser_widget_file_activated   (CtkFileChooser        *chooser,
+                                                      CtkFileChooserDialog  *dialog);
+static void     file_chooser_widget_default_size_changed (CtkWidget            *widget,
+                                                          CtkFileChooserDialog *dialog);
+static void     file_chooser_widget_response_requested (CtkWidget            *widget,
+                                                        CtkFileChooserDialog *dialog);
+static void     file_chooser_widget_selection_changed (CtkWidget            *widget,
+                                                        CtkFileChooserDialog *dialog);
 
-static void response_cb (GtkDialog *dialog,
+static void response_cb (CtkDialog *dialog,
                          gint       response_id);
 
-static void setup_save_entry (GtkFileChooserDialog *dialog);
+static void setup_save_entry (CtkFileChooserDialog *dialog);
 
-G_DEFINE_TYPE_WITH_CODE (GtkFileChooserDialog, ctk_file_chooser_dialog, CTK_TYPE_DIALOG,
-                         G_ADD_PRIVATE (GtkFileChooserDialog)
+G_DEFINE_TYPE_WITH_CODE (CtkFileChooserDialog, ctk_file_chooser_dialog, CTK_TYPE_DIALOG,
+                         G_ADD_PRIVATE (CtkFileChooserDialog)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_FILE_CHOOSER,
                                                 _ctk_file_chooser_delegate_iface_init))
 
 static void
-ctk_file_chooser_dialog_class_init (GtkFileChooserDialogClass *class)
+ctk_file_chooser_dialog_class_init (CtkFileChooserDialogClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   gobject_class->set_property = ctk_file_chooser_dialog_set_property;
   gobject_class->get_property = ctk_file_chooser_dialog_get_property;
@@ -274,8 +274,8 @@ ctk_file_chooser_dialog_class_init (GtkFileChooserDialogClass *class)
   ctk_widget_class_set_template_from_resource (widget_class,
                                                "/org/ctk/libctk/ui/ctkfilechooserdialog.ui");
 
-  ctk_widget_class_bind_template_child_private (widget_class, GtkFileChooserDialog, widget);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkFileChooserDialog, buttons);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkFileChooserDialog, widget);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkFileChooserDialog, buttons);
   ctk_widget_class_bind_template_callback (widget_class, response_cb);
   ctk_widget_class_bind_template_callback (widget_class, file_chooser_widget_file_activated);
   ctk_widget_class_bind_template_callback (widget_class, file_chooser_widget_default_size_changed);
@@ -284,7 +284,7 @@ ctk_file_chooser_dialog_class_init (GtkFileChooserDialogClass *class)
 }
 
 static void
-ctk_file_chooser_dialog_init (GtkFileChooserDialog *dialog)
+ctk_file_chooser_dialog_init (CtkFileChooserDialog *dialog)
 {
   dialog->priv = ctk_file_chooser_dialog_get_instance_private (dialog);
   dialog->priv->response_requested = FALSE;
@@ -296,8 +296,8 @@ ctk_file_chooser_dialog_init (GtkFileChooserDialog *dialog)
                                   CTK_FILE_CHOOSER (dialog->priv->widget));
 }
 
-static GtkWidget *
-get_accept_action_widget (GtkDialog *dialog,
+static CtkWidget *
+get_accept_action_widget (CtkDialog *dialog,
                           gboolean   sensitive_only)
 {
   gint response[] = {
@@ -307,7 +307,7 @@ get_accept_action_widget (GtkDialog *dialog,
     CTK_RESPONSE_APPLY
   };
   gint i;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   for (i = 0; i < G_N_ELEMENTS (response); i++)
     {
@@ -336,10 +336,10 @@ is_stock_accept_response_id (gint response_id)
 
 /* Callback used when the user activates a file in the file chooser widget */
 static void
-file_chooser_widget_file_activated (GtkFileChooser       *chooser,
-                                    GtkFileChooserDialog *dialog)
+file_chooser_widget_file_activated (CtkFileChooser       *chooser,
+                                    CtkFileChooserDialog *dialog)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   if (ctk_window_activate_default (CTK_WINDOW (dialog)))
     return;
@@ -353,12 +353,12 @@ file_chooser_widget_file_activated (GtkFileChooser       *chooser,
 }
 
 static void
-file_chooser_widget_default_size_changed (GtkWidget            *widget,
-                                          GtkFileChooserDialog *dialog)
+file_chooser_widget_default_size_changed (CtkWidget            *widget,
+                                          CtkFileChooserDialog *dialog)
 {
-  GtkFileChooserDialogPrivate *priv;
+  CtkFileChooserDialogPrivate *priv;
   gint default_width, default_height;
-  GtkRequisition req, widget_req;
+  CtkRequisition req, widget_req;
 
   priv = ctk_file_chooser_dialog_get_instance_private (dialog);
 
@@ -381,10 +381,10 @@ file_chooser_widget_default_size_changed (GtkWidget            *widget,
 }
 
 static void
-file_chooser_widget_selection_changed (GtkWidget            *widget,
-                                       GtkFileChooserDialog *dialog)
+file_chooser_widget_selection_changed (CtkWidget            *widget,
+                                       CtkFileChooserDialog *dialog)
 {
-  GtkWidget *button;
+  CtkWidget *button;
   GSList *uris;
   gboolean sensitive;
 
@@ -400,10 +400,10 @@ file_chooser_widget_selection_changed (GtkWidget            *widget,
 }
 
 static void
-file_chooser_widget_response_requested (GtkWidget            *widget,
-                                        GtkFileChooserDialog *dialog)
+file_chooser_widget_response_requested (CtkWidget            *widget,
+                                        CtkFileChooserDialog *dialog)
 {
-  GtkWidget *button;
+  CtkWidget *button;
 
   dialog->priv->response_requested = TRUE;
 
@@ -430,7 +430,7 @@ ctk_file_chooser_dialog_set_property (GObject      *object,
                                       GParamSpec   *pspec)
 
 {
-  GtkFileChooserDialogPrivate *priv;
+  CtkFileChooserDialogPrivate *priv;
 
   priv = ctk_file_chooser_dialog_get_instance_private (CTK_FILE_CHOOSER_DIALOG (object));
 
@@ -443,7 +443,7 @@ ctk_file_chooser_dialog_get_property (GObject    *object,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-  GtkFileChooserDialogPrivate *priv;
+  CtkFileChooserDialogPrivate *priv;
 
   priv = ctk_file_chooser_dialog_get_instance_private (CTK_FILE_CHOOSER_DIALOG (object));
 
@@ -462,16 +462,16 @@ ctk_file_chooser_dialog_notify (GObject    *object,
 }
 
 static void
-add_button (GtkWidget *button, gpointer data)
+add_button (CtkWidget *button, gpointer data)
 {
-  GtkFileChooserDialog *dialog = data;
+  CtkFileChooserDialog *dialog = data;
 
   if (CTK_IS_BUTTON (button))
     ctk_size_group_add_widget (dialog->priv->buttons, button);
 }
 
 static void
-setup_search (GtkFileChooserDialog *dialog)
+setup_search (CtkFileChooserDialog *dialog)
 {
   gboolean use_header;
 
@@ -483,9 +483,9 @@ setup_search (GtkFileChooserDialog *dialog)
   g_object_get (dialog, "use-header-bar", &use_header, NULL);
   if (use_header)
     {
-      GtkWidget *button;
-      GtkWidget *image;
-      GtkWidget *header;
+      CtkWidget *button;
+      CtkWidget *image;
+      CtkWidget *header;
 
       button = ctk_toggle_button_new ();
       ctk_widget_set_focus_on_click (button, FALSE);
@@ -512,12 +512,12 @@ setup_search (GtkFileChooserDialog *dialog)
 }
 
 static void
-setup_save_entry (GtkFileChooserDialog *dialog)
+setup_save_entry (CtkFileChooserDialog *dialog)
 {
   gboolean use_header;
-  GtkFileChooserAction action;
+  CtkFileChooserAction action;
   gboolean need_entry;
-  GtkWidget *header;
+  CtkWidget *header;
 
   g_object_get (dialog,
                 "use-header-bar", &use_header,
@@ -534,9 +534,9 @@ setup_save_entry (GtkFileChooserDialog *dialog)
 
   if (need_entry && !dialog->priv->has_entry)
     {
-      GtkWidget *box;
-      GtkWidget *label;
-      GtkWidget *entry;
+      CtkWidget *box;
+      CtkWidget *label;
+      CtkWidget *entry;
 
       box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
       label = ctk_label_new_with_mnemonic (_("_Name"));
@@ -561,9 +561,9 @@ setup_save_entry (GtkFileChooserDialog *dialog)
 }
 
 static void
-ensure_default_response (GtkFileChooserDialog *dialog)
+ensure_default_response (CtkFileChooserDialog *dialog)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = get_accept_action_widget (CTK_DIALOG (dialog), TRUE);
   if (widget)
@@ -571,10 +571,10 @@ ensure_default_response (GtkFileChooserDialog *dialog)
 }
 
 static void
-ctk_file_chooser_dialog_map (GtkWidget *widget)
+ctk_file_chooser_dialog_map (CtkWidget *widget)
 {
-  GtkFileChooserDialog *dialog = CTK_FILE_CHOOSER_DIALOG (widget);
-  GtkFileChooserDialogPrivate *priv = dialog->priv;
+  CtkFileChooserDialog *dialog = CTK_FILE_CHOOSER_DIALOG (widget);
+  CtkFileChooserDialogPrivate *priv = dialog->priv;
 
   setup_search (dialog);
   setup_save_entry (dialog);
@@ -586,9 +586,9 @@ ctk_file_chooser_dialog_map (GtkWidget *widget)
 }
 
 static void
-save_dialog_geometry (GtkFileChooserDialog *dialog)
+save_dialog_geometry (CtkFileChooserDialog *dialog)
 {
-  GtkWindow *window;
+  CtkWindow *window;
   GSettings *settings;
   int old_x, old_y, old_width, old_height;
   int x, y, width, height;
@@ -612,9 +612,9 @@ save_dialog_geometry (GtkFileChooserDialog *dialog)
 }
 
 static void
-ctk_file_chooser_dialog_unmap (GtkWidget *widget)
+ctk_file_chooser_dialog_unmap (CtkWidget *widget)
 {
-  GtkFileChooserDialog *dialog = CTK_FILE_CHOOSER_DIALOG (widget);
+  CtkFileChooserDialog *dialog = CTK_FILE_CHOOSER_DIALOG (widget);
 
   save_dialog_geometry (dialog);
 
@@ -622,8 +622,8 @@ ctk_file_chooser_dialog_unmap (GtkWidget *widget)
 }
 
 static void
-ctk_file_chooser_dialog_size_allocate (GtkWidget     *widget,
-                                       GtkAllocation *allocation)
+ctk_file_chooser_dialog_size_allocate (CtkWidget     *widget,
+                                       CtkAllocation *allocation)
 {
   CTK_WIDGET_CLASS (ctk_file_chooser_dialog_parent_class)->size_allocate (widget, allocation);
 
@@ -632,15 +632,15 @@ ctk_file_chooser_dialog_size_allocate (GtkWidget     *widget,
 }
 
 /* We do a signal connection here rather than overriding the method in
- * class_init because GtkDialog::response is a RUN_LAST signal.  We want *our*
+ * class_init because CtkDialog::response is a RUN_LAST signal.  We want *our*
  * handler to be run *first*, regardless of whether the user installs response
  * handlers of his own.
  */
 static void
-response_cb (GtkDialog *dialog,
+response_cb (CtkDialog *dialog,
              gint       response_id)
 {
-  GtkFileChooserDialogPrivate *priv;
+  CtkFileChooserDialogPrivate *priv;
 
   priv = ctk_file_chooser_dialog_get_instance_private (CTK_FILE_CHOOSER_DIALOG (dialog));
 
@@ -655,14 +655,14 @@ response_cb (GtkDialog *dialog,
   priv->response_requested = FALSE;
 }
 
-static GtkWidget *
+static CtkWidget *
 ctk_file_chooser_dialog_new_valist (const gchar          *title,
-                                    GtkWindow            *parent,
-                                    GtkFileChooserAction  action,
+                                    CtkWindow            *parent,
+                                    CtkFileChooserAction  action,
                                     const gchar          *first_button_text,
                                     va_list               varargs)
 {
-  GtkWidget *result;
+  CtkWidget *result;
   const char *button_text = first_button_text;
   gint response_id;
 
@@ -692,21 +692,21 @@ ctk_file_chooser_dialog_new_valist (const gchar          *title,
  * @first_button_text: (allow-none): stock ID or text to go in the first button, or %NULL
  * @...: response ID for the first button, then additional (button, id) pairs, ending with %NULL
  *
- * Creates a new #GtkFileChooserDialog.  This function is analogous to
+ * Creates a new #CtkFileChooserDialog.  This function is analogous to
  * ctk_dialog_new_with_buttons().
  *
- * Returns: a new #GtkFileChooserDialog
+ * Returns: a new #CtkFileChooserDialog
  *
  * Since: 2.4
  **/
-GtkWidget *
+CtkWidget *
 ctk_file_chooser_dialog_new (const gchar          *title,
-                             GtkWindow            *parent,
-                             GtkFileChooserAction  action,
+                             CtkWindow            *parent,
+                             CtkFileChooserAction  action,
                              const gchar          *first_button_text,
                              ...)
 {
-  GtkWidget *result;
+  CtkWidget *result;
   va_list varargs;
 
   va_start (varargs, first_button_text);

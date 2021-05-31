@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.6 -->
-  <template class="GtkLockButton" parent="GtkButton">
+  <template class="CtkLockButton" parent="CtkButton">
     <property name="visible">1</property>
     <property name="can-focus">1</property>
     <property name="receives-default">1</property>
     <child>
-      <object class="GtkBox" id="box">
+      <object class="CtkBox" id="box">
         <property name="visible">1</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="spacing">6</property>
         <child>
-          <object class="GtkImage" id="image">
+          <object class="CtkImage" id="image">
             <property name="visible">1</property>
             <property name="icon-name">image-missing</property>
           </object>
@@ -21,17 +21,17 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="CtkStack" id="stack">
             <property name="visible">1</property>
             <child>
-              <object class="GtkLabel" id="label_lock">
+              <object class="CtkLabel" id="label_lock">
                 <property name="visible">1</property>
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes">Lock</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel" id="label_unlock">
+              <object class="CtkLabel" id="label_unlock">
                 <property name="visible">1</property>
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes">Unlock</property>

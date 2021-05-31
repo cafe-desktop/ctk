@@ -24,7 +24,7 @@
 #include "ctkwidgetaccessibleprivate.h"
 #include "ctk/ctkmenuitemprivate.h"
 
-struct _GtkMenuItemAccessiblePrivate
+struct _CtkMenuItemAccessiblePrivate
 {
   gchar *text;
   gboolean selected;
@@ -32,23 +32,23 @@ struct _GtkMenuItemAccessiblePrivate
 
 #define KEYBINDING_SEPARATOR ";"
 
-static void menu_item_select   (GtkMenuItem *item);
-static void menu_item_deselect (GtkMenuItem *item);
+static void menu_item_select   (CtkMenuItem *item);
+static void menu_item_deselect (CtkMenuItem *item);
 
-static GtkWidget *get_label_from_container   (GtkWidget *container);
-static gchar     *get_text_from_label_widget (GtkWidget *widget);
+static CtkWidget *get_label_from_container   (CtkWidget *container);
+static gchar     *get_text_from_label_widget (CtkWidget *widget);
 
-static gint menu_item_insert_ctk (GtkMenuShell   *shell,
-                                  GtkWidget      *widget,
+static gint menu_item_insert_ctk (CtkMenuShell   *shell,
+                                  CtkWidget      *widget,
                                   gint            position);
-static gint menu_item_remove_ctk (GtkContainer   *container,
-                                  GtkWidget      *widget);
+static gint menu_item_remove_ctk (CtkContainer   *container,
+                                  CtkWidget      *widget);
 
 static void atk_action_interface_init    (AtkActionIface *iface);
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkMenuItemAccessible, ctk_menu_item_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkMenuItemAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkMenuItemAccessible, ctk_menu_item_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkMenuItemAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init);
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
@@ -56,9 +56,9 @@ static void
 ctk_menu_item_accessible_initialize (AtkObject *obj,
                                      gpointer   data)
 {
-  GtkWidget *widget;
-  GtkWidget *parent;
-  GtkWidget *menu;
+  CtkWidget *widget;
+  CtkWidget *parent;
+  CtkWidget *menu;
 
   ATK_OBJECT_CLASS (ctk_menu_item_accessible_parent_class)->initialize (obj, data);
   g_signal_connect (data, "select", G_CALLBACK (menu_item_select), NULL);
@@ -71,7 +71,7 @@ ctk_menu_item_accessible_initialize (AtkObject *obj,
   parent = ctk_widget_get_parent (widget);
   if (CTK_IS_MENU (parent))
     {
-      GtkWidget *parent_widget;
+      CtkWidget *parent_widget;
 
       parent_widget =  ctk_menu_get_attach_widget (CTK_MENU (parent));
 
@@ -96,8 +96,8 @@ ctk_menu_item_accessible_initialize (AtkObject *obj,
 static gint
 ctk_menu_item_accessible_get_n_children (AtkObject *obj)
 {
-  GtkWidget *widget;
-  GtkWidget *submenu;
+  CtkWidget *widget;
+  CtkWidget *submenu;
   gint count = 0;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -121,8 +121,8 @@ ctk_menu_item_accessible_ref_child (AtkObject *obj,
                                     gint       i)
 {
   AtkObject  *accessible;
-  GtkWidget *widget;
-  GtkWidget *submenu;
+  CtkWidget *widget;
+  CtkWidget *submenu;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -182,7 +182,7 @@ ctk_menu_item_accessible_ref_state_set (AtkObject *obj)
 static AtkRole
 ctk_menu_item_accessible_get_role (AtkObject *obj)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget != NULL &&
@@ -196,9 +196,9 @@ static const gchar *
 ctk_menu_item_accessible_get_name (AtkObject *obj)
 {
   const gchar *name;
-  GtkWidget *widget;
-  GtkWidget *label;
-  GtkMenuItemAccessible *accessible;
+  CtkWidget *widget;
+  CtkWidget *label;
+  CtkMenuItemAccessible *accessible;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -220,7 +220,7 @@ ctk_menu_item_accessible_get_name (AtkObject *obj)
 static void
 ctk_menu_item_accessible_finalize (GObject *object)
 {
-  GtkMenuItemAccessible *accessible = CTK_MENU_ITEM_ACCESSIBLE (object);
+  CtkMenuItemAccessible *accessible = CTK_MENU_ITEM_ACCESSIBLE (object);
 
   g_free (accessible->priv->text);
 
@@ -246,11 +246,11 @@ ctk_menu_item_accessible_notify_ctk (GObject    *obj,
 }
 
 static void
-ctk_menu_item_accessible_class_init (GtkMenuItemAccessibleClass *klass)
+ctk_menu_item_accessible_class_init (CtkMenuItemAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   widget_class->notify_ctk = ctk_menu_item_accessible_notify_ctk;
 
@@ -265,15 +265,15 @@ ctk_menu_item_accessible_class_init (GtkMenuItemAccessibleClass *klass)
 }
 
 static void
-ctk_menu_item_accessible_init (GtkMenuItemAccessible *menu_item)
+ctk_menu_item_accessible_init (CtkMenuItemAccessible *menu_item)
 {
   menu_item->priv = ctk_menu_item_accessible_get_instance_private (menu_item);
 }
 
-static GtkWidget *
-get_label_from_container (GtkWidget *container)
+static CtkWidget *
+get_label_from_container (CtkWidget *container)
 {
-  GtkWidget *label;
+  CtkWidget *label;
   GList *children, *tmp_list;
 
   if (!CTK_IS_CONTAINER (container))
@@ -307,17 +307,17 @@ get_label_from_container (GtkWidget *container)
 }
 
 static gchar *
-get_text_from_label_widget (GtkWidget *label)
+get_text_from_label_widget (CtkWidget *label)
 {
   if (CTK_IS_LABEL (label))
     return g_strdup (ctk_label_get_text (CTK_LABEL (label)));
   else if (CTK_IS_CELL_VIEW (label))
     {
       GList *cells, *l;
-      GtkTreeModel *model;
-      GtkTreeIter iter;
-      GtkTreePath *path;
-      GtkCellArea *area;
+      CtkTreeModel *model;
+      CtkTreeIter iter;
+      CtkTreePath *path;
+      CtkCellArea *area;
       gchar *text;
 
       model = ctk_cell_view_get_model (CTK_CELL_VIEW (label));
@@ -332,7 +332,7 @@ get_text_from_label_widget (GtkWidget *label)
       text = NULL;
       for (l = cells; l; l = l->next)
         {
-          GtkCellRenderer *cell = l->data;
+          CtkCellRenderer *cell = l->data;
 
           if (CTK_IS_CELL_RENDERER_TEXT (cell))
             {
@@ -350,10 +350,10 @@ get_text_from_label_widget (GtkWidget *label)
 }
 
 static void
-ensure_menus_unposted (GtkMenuItemAccessible *menu_item)
+ensure_menus_unposted (CtkMenuItemAccessible *menu_item)
 {
   AtkObject *parent;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   parent = atk_object_get_parent (ATK_OBJECT (menu_item));
   while (parent)
@@ -374,7 +374,7 @@ static gboolean
 ctk_menu_item_accessible_do_action (AtkAction *action,
                                     gint       i)
 {
-  GtkWidget *item, *item_parent;
+  CtkWidget *item, *item_parent;
   gboolean item_mapped;
 
   item = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
@@ -407,7 +407,7 @@ ctk_menu_item_accessible_do_action (AtkAction *action,
 static gint
 ctk_menu_item_accessible_get_n_actions (AtkAction *action)
 {
-  GtkWidget *item;
+  CtkWidget *item;
 
   item = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (item == NULL)
@@ -447,7 +447,7 @@ ctk_menu_item_accessible_action_get_description (AtkAction *action,
 }
 
 static gboolean
-find_accel_by_widget (GtkAccelKey *key,
+find_accel_by_widget (CtkAccelKey *key,
                       GClosure    *closure,
                       gpointer     data)
 {
@@ -458,17 +458,17 @@ find_accel_by_widget (GtkAccelKey *key,
 }
 
 static gboolean
-find_accel_by_closure (GtkAccelKey *key,
+find_accel_by_closure (CtkAccelKey *key,
                        GClosure    *closure,
                        gpointer     data)
 {
   return data == (gpointer) closure;
 }
 
-static GtkWidget *
-find_item_label (GtkWidget *item)
+static CtkWidget *
+find_item_label (CtkWidget *item)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   child = ctk_bin_get_child (CTK_BIN (item));
   if (CTK_IS_CONTAINER (child))
@@ -505,10 +505,10 @@ ctk_menu_item_accessible_get_keybinding (AtkAction *action,
   gchar *item_keybinding = NULL;
   gchar *full_keybinding = NULL;
   gchar *accelerator = NULL;
-  GtkWidget *item;
-  GtkWidget *temp_item;
-  GtkWidget *child;
-  GtkWidget *parent;
+  CtkWidget *item;
+  CtkWidget *temp_item;
+  CtkWidget *child;
+  CtkWidget *parent;
 
   item = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (item == NULL)
@@ -534,7 +534,7 @@ ctk_menu_item_accessible_get_keybinding (AtkAction *action,
 
       if (CTK_IS_MENU_BAR (parent))
         {
-          GtkWidget *toplevel;
+          CtkWidget *toplevel;
 
           toplevel = ctk_widget_get_toplevel (parent);
           if (toplevel && CTK_IS_WINDOW (toplevel))
@@ -604,15 +604,15 @@ ctk_menu_item_accessible_get_keybinding (AtkAction *action,
         
       if (!accelerator)
         {
-          GtkAccelGroup *group;
-          GtkAccelKey *key = NULL;
+          CtkAccelGroup *group;
+          CtkAccelKey *key = NULL;
 
           group = ctk_menu_get_accel_group (CTK_MENU (parent));
           if (group)
             key = ctk_accel_group_find (group, find_accel_by_widget, item);
           else if (CTK_IS_ACCEL_LABEL (child))
             {
-              GtkAccelLabel *accel_label;
+              CtkAccelLabel *accel_label;
               GClosure      *accel_closure;
 
               accel_label = CTK_ACCEL_LABEL (child);
@@ -678,7 +678,7 @@ atk_action_interface_init (AtkActionIface *iface)
 }
 
 static void
-menu_item_selection (GtkMenuItem  *item,
+menu_item_selection (CtkMenuItem  *item,
                      gboolean      selected)
 {
   AtkObject *obj, *parent;
@@ -703,12 +703,12 @@ static gboolean
 ctk_menu_item_accessible_add_selection (AtkSelection *selection,
                                            gint          i)
 {
-  GtkMenuShell *shell;
+  CtkMenuShell *shell;
   GList *kids;
   guint length;
-  GtkWidget *widget;
-  GtkWidget *menu;
-  GtkWidget *child;
+  CtkWidget *widget;
+  CtkWidget *menu;
+  CtkWidget *child;
 
   widget =  ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -737,8 +737,8 @@ ctk_menu_item_accessible_add_selection (AtkSelection *selection,
 static gboolean
 ctk_menu_item_accessible_clear_selection (AtkSelection *selection)
 {
-  GtkWidget *widget;
-  GtkWidget *menu;
+  CtkWidget *widget;
+  CtkWidget *menu;
 
   widget =  ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -757,11 +757,11 @@ static AtkObject *
 ctk_menu_item_accessible_ref_selection (AtkSelection *selection,
                                            gint          i)
 {
-  GtkMenuShell *shell;
+  CtkMenuShell *shell;
   AtkObject *obj;
-  GtkWidget *widget;
-  GtkWidget *menu;
-  GtkWidget *item;
+  CtkWidget *widget;
+  CtkWidget *menu;
+  CtkWidget *item;
 
   if (i != 0)
     return NULL;
@@ -790,9 +790,9 @@ ctk_menu_item_accessible_ref_selection (AtkSelection *selection,
 static gint
 ctk_menu_item_accessible_get_selection_count (AtkSelection *selection)
 {
-  GtkMenuShell *shell;
-  GtkWidget *widget;
-  GtkWidget *menu;
+  CtkMenuShell *shell;
+  CtkWidget *widget;
+  CtkWidget *menu;
 
   widget =  ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -814,11 +814,11 @@ static gboolean
 ctk_menu_item_accessible_is_child_selected (AtkSelection *selection,
                                                gint          i)
 {
-  GtkMenuShell *shell;
+  CtkMenuShell *shell;
   gint j;
-  GtkWidget *widget;
-  GtkWidget *menu;
-  GtkWidget *item;
+  CtkWidget *widget;
+  CtkWidget *menu;
+  CtkWidget *item;
   GList *kids;
 
   widget =  ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
@@ -846,10 +846,10 @@ static gboolean
 ctk_menu_item_accessible_remove_selection (AtkSelection *selection,
                                               gint          i)
 {
-  GtkMenuShell *shell;
-  GtkWidget *widget;
-  GtkWidget *menu;
-  GtkWidget *item;
+  CtkMenuShell *shell;
+  CtkWidget *widget;
+  CtkWidget *menu;
+  CtkWidget *item;
 
   if (i != 0)
     return FALSE;
@@ -883,11 +883,11 @@ atk_selection_interface_init (AtkSelectionIface *iface)
 }
 
 static gint
-menu_item_insert_ctk (GtkMenuShell *shell,
-                      GtkWidget    *widget,
+menu_item_insert_ctk (CtkMenuShell *shell,
+                      CtkWidget    *widget,
                       gint          position)
 {
-  GtkWidget *parent_widget;
+  CtkWidget *parent_widget;
 
   g_return_val_if_fail (CTK_IS_MENU (shell), 1);
 
@@ -899,10 +899,10 @@ menu_item_insert_ctk (GtkMenuShell *shell,
 }
 
 static gint
-menu_item_remove_ctk (GtkContainer *container,
-                      GtkWidget    *widget)
+menu_item_remove_ctk (CtkContainer *container,
+                      CtkWidget    *widget)
 {
-  GtkWidget *parent_widget;
+  CtkWidget *parent_widget;
 
   g_return_val_if_fail (CTK_IS_MENU (container), 1);
 
@@ -915,13 +915,13 @@ menu_item_remove_ctk (GtkContainer *container,
 }
 
 static void
-menu_item_select (GtkMenuItem *item)
+menu_item_select (CtkMenuItem *item)
 {
   menu_item_selection (item, TRUE);
 }
 
 static void
-menu_item_deselect (GtkMenuItem *item)
+menu_item_deselect (CtkMenuItem *item)
 {
   menu_item_selection (item, FALSE);
 }

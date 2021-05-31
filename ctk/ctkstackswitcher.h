@@ -30,23 +30,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STACK_SWITCHER            (ctk_stack_switcher_get_type ())
-#define CTK_STACK_SWITCHER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STACK_SWITCHER, GtkStackSwitcher))
-#define CTK_STACK_SWITCHER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STACK_SWITCHER, GtkStackSwitcherClass))
+#define CTK_STACK_SWITCHER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STACK_SWITCHER, CtkStackSwitcher))
+#define CTK_STACK_SWITCHER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STACK_SWITCHER, CtkStackSwitcherClass))
 #define CTK_IS_STACK_SWITCHER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_STACK_SWITCHER))
 #define CTK_IS_STACK_SWITCHER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_STACK_SWITCHER))
-#define CTK_STACK_SWITCHER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STACK_SWITCHER, GtkStackSwitcherClass))
+#define CTK_STACK_SWITCHER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STACK_SWITCHER, CtkStackSwitcherClass))
 
-typedef struct _GtkStackSwitcher              GtkStackSwitcher;
-typedef struct _GtkStackSwitcherClass         GtkStackSwitcherClass;
+typedef struct _CtkStackSwitcher              CtkStackSwitcher;
+typedef struct _CtkStackSwitcherClass         CtkStackSwitcherClass;
 
-struct _GtkStackSwitcher
+struct _CtkStackSwitcher
 {
-  GtkBox widget;
+  CtkBox widget;
 };
 
-struct _GtkStackSwitcherClass
+struct _CtkStackSwitcherClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -58,12 +58,12 @@ struct _GtkStackSwitcherClass
 GDK_AVAILABLE_IN_3_10
 GType        ctk_stack_switcher_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_10
-GtkWidget *  ctk_stack_switcher_new               (void);
+CtkWidget *  ctk_stack_switcher_new               (void);
 GDK_AVAILABLE_IN_3_10
-void         ctk_stack_switcher_set_stack         (GtkStackSwitcher *switcher,
-                                                   GtkStack         *stack);
+void         ctk_stack_switcher_set_stack         (CtkStackSwitcher *switcher,
+                                                   CtkStack         *stack);
 GDK_AVAILABLE_IN_3_10
-GtkStack *   ctk_stack_switcher_get_stack         (GtkStackSwitcher *switcher);
+CtkStack *   ctk_stack_switcher_get_stack         (CtkStackSwitcher *switcher);
 
 G_END_DECLS
 

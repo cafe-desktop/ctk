@@ -1,6 +1,6 @@
 /* Links
  *
- * GtkLabel can show hyperlinks. The default action is to call
+ * CtkLabel can show hyperlinks. The default action is to call
  * ctk_show_uri_on_window() on their URI, but it is possible to override
  * this with a custom handler.
  */
@@ -8,7 +8,7 @@
 #include <ctk/ctk.h>
 
 static void
-response_cb (GtkWidget *dialog,
+response_cb (CtkWidget *dialog,
              gint       response_id,
              gpointer   data)
 {
@@ -16,14 +16,14 @@ response_cb (GtkWidget *dialog,
 }
 
 static gboolean
-activate_link (GtkWidget   *label,
+activate_link (CtkWidget   *label,
                const gchar *uri,
                gpointer     data)
 {
   if (g_strcmp0 (uri, "keynav") == 0)
     {
-      GtkWidget *dialog;
-      GtkWidget *parent;
+      CtkWidget *dialog;
+      CtkWidget *parent;
 
       parent = ctk_widget_get_toplevel (label);
       dialog = ctk_message_dialog_new_with_markup (CTK_WINDOW (parent),
@@ -44,11 +44,11 @@ activate_link (GtkWidget   *label,
   return FALSE;
 }
 
-GtkWidget *
-do_links (GtkWidget *do_widget)
+CtkWidget *
+do_links (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *label;
+  static CtkWidget *window = NULL;
+  CtkWidget *label;
 
   if (!window)
     {

@@ -22,13 +22,13 @@
 /**
  * SECTION:ctkexpander
  * @Short_description: A container which can hide its child
- * @Title: GtkExpander
+ * @Title: CtkExpander
  *
- * A #GtkExpander allows the user to hide or show its child by clicking
- * on an expander triangle similar to the triangles used in a #GtkTreeView.
+ * A #CtkExpander allows the user to hide or show its child by clicking
+ * on an expander triangle similar to the triangles used in a #CtkTreeView.
  *
  * Normally you use an expander as you would use any other descendant
- * of #GtkBin; you create the child widget and use ctk_container_add()
+ * of #CtkBin; you create the child widget and use ctk_container_add()
  * to add it to the expander. When the expander is toggled, it will take
  * care of showing and hiding the child automatically.
  *
@@ -36,9 +36,9 @@
  *
  * There are situations in which you may prefer to show and hide the
  * expanded widget yourself, such as when you want to actually create
- * the widget at expansion time. In this case, create a #GtkExpander
+ * the widget at expansion time. In this case, create a #CtkExpander
  * but do not add a child to it. The expander widget has an
- * #GtkExpander:expanded property which can be used to monitor
+ * #CtkExpander:expanded property which can be used to monitor
  * its expansion state. You should watch this property with a signal
  * connection as follows:
  *
@@ -48,7 +48,7 @@
  *                    GParamSpec *param_spec,
  *                    gpointer    user_data)
  * {
- *   GtkExpander *expander;
+ *   CtkExpander *expander;
  *
  *   expander = CTK_EXPANDER (object);
  *
@@ -65,7 +65,7 @@
  * static void
  * create_expander (void)
  * {
- *   GtkWidget *expander = ctk_expander_new_with_mnemonic ("_More Options");
+ *   CtkWidget *expander = ctk_expander_new_with_mnemonic ("_More Options");
  *   g_signal_connect (expander, "notify::expanded",
  *                     G_CALLBACK (expander_callback), NULL);
  *
@@ -73,21 +73,21 @@
  * }
  * ]|
  *
- * # GtkExpander as GtkBuildable
+ * # CtkExpander as CtkBuildable
  *
- * The GtkExpander implementation of the GtkBuildable interface supports
+ * The CtkExpander implementation of the CtkBuildable interface supports
  * placing a child in the label position by specifying “label” as the
  * “type” attribute of a <child> element. A normal content child can be
  * specified without specifying a <child> type attribute.
  *
- * An example of a UI definition fragment with GtkExpander:
+ * An example of a UI definition fragment with CtkExpander:
  * |[
- * <object class="GtkExpander">
+ * <object class="CtkExpander">
  *   <child type="label">
- *     <object class="GtkLabel" id="expander-label"/>
+ *     <object class="CtkLabel" id="expander-label"/>
  *   </child>
  *   <child>
- *     <object class="GtkEntry" id="expander-content"/>
+ *     <object class="CtkEntry" id="expander-content"/>
  *   </child>
  * </object>
  * ]|
@@ -102,7 +102,7 @@
  * ╰── <child>
  * ]|
  *
- * GtkExpander has three CSS nodes, the main node with the name expander,
+ * CtkExpander has three CSS nodes, the main node with the name expander,
  * a subnode with name title and node below it with name arrow. The arrow of an
  * expander that is showing its child gets the :checked pseudoclass added to it.
  */
@@ -147,16 +147,16 @@ enum
   PROP_RESIZE_TOPLEVEL
 };
 
-struct _GtkExpanderPrivate
+struct _CtkExpanderPrivate
 {
-  GtkWidget        *label_widget;
+  CtkWidget        *label_widget;
   GdkWindow        *event_window;
 
-  GtkCssGadget     *gadget;
-  GtkCssGadget     *title_gadget;
-  GtkCssGadget     *arrow_gadget;
+  CtkCssGadget     *gadget;
+  CtkCssGadget     *title_gadget;
+  CtkCssGadget     *arrow_gadget;
 
-  GtkGesture       *multipress_gesture;
+  CtkGesture       *multipress_gesture;
   gint              spacing;
 
   guint             expand_timer;
@@ -178,93 +178,93 @@ static void ctk_expander_get_property (GObject          *object,
                                        GValue           *value,
                                        GParamSpec       *pspec);
 
-static void     ctk_expander_destroy        (GtkWidget        *widget);
-static void     ctk_expander_realize        (GtkWidget        *widget);
-static void     ctk_expander_unrealize      (GtkWidget        *widget);
-static void     ctk_expander_size_allocate  (GtkWidget        *widget,
-                                             GtkAllocation    *allocation);
-static void     ctk_expander_map            (GtkWidget        *widget);
-static void     ctk_expander_unmap          (GtkWidget        *widget);
-static gboolean ctk_expander_draw           (GtkWidget        *widget,
+static void     ctk_expander_destroy        (CtkWidget        *widget);
+static void     ctk_expander_realize        (CtkWidget        *widget);
+static void     ctk_expander_unrealize      (CtkWidget        *widget);
+static void     ctk_expander_size_allocate  (CtkWidget        *widget,
+                                             CtkAllocation    *allocation);
+static void     ctk_expander_map            (CtkWidget        *widget);
+static void     ctk_expander_unmap          (CtkWidget        *widget);
+static gboolean ctk_expander_draw           (CtkWidget        *widget,
                                              cairo_t          *cr);
 
-static gboolean ctk_expander_enter_notify   (GtkWidget        *widget,
+static gboolean ctk_expander_enter_notify   (CtkWidget        *widget,
                                              GdkEventCrossing *event);
-static gboolean ctk_expander_leave_notify   (GtkWidget        *widget,
+static gboolean ctk_expander_leave_notify   (CtkWidget        *widget,
                                              GdkEventCrossing *event);
-static gboolean ctk_expander_focus          (GtkWidget        *widget,
-                                             GtkDirectionType  direction);
-static gboolean ctk_expander_drag_motion    (GtkWidget        *widget,
+static gboolean ctk_expander_focus          (CtkWidget        *widget,
+                                             CtkDirectionType  direction);
+static gboolean ctk_expander_drag_motion    (CtkWidget        *widget,
                                              GdkDragContext   *context,
                                              gint              x,
                                              gint              y,
                                              guint             time);
-static void     ctk_expander_drag_leave     (GtkWidget        *widget,
+static void     ctk_expander_drag_leave     (CtkWidget        *widget,
                                              GdkDragContext   *context,
                                              guint             time);
 
-static void ctk_expander_add    (GtkContainer *container,
-                                 GtkWidget    *widget);
-static void ctk_expander_remove (GtkContainer *container,
-                                 GtkWidget    *widget);
-static void ctk_expander_forall (GtkContainer *container,
+static void ctk_expander_add    (CtkContainer *container,
+                                 CtkWidget    *widget);
+static void ctk_expander_remove (CtkContainer *container,
+                                 CtkWidget    *widget);
+static void ctk_expander_forall (CtkContainer *container,
                                  gboolean        include_internals,
-                                 GtkCallback     callback,
+                                 CtkCallback     callback,
                                  gpointer        callback_data);
 
-static void ctk_expander_activate (GtkExpander *expander);
+static void ctk_expander_activate (CtkExpander *expander);
 
 
-/* GtkBuildable */
-static void ctk_expander_buildable_init           (GtkBuildableIface *iface);
-static void ctk_expander_buildable_add_child      (GtkBuildable *buildable,
-                                                   GtkBuilder   *builder,
+/* CtkBuildable */
+static void ctk_expander_buildable_init           (CtkBuildableIface *iface);
+static void ctk_expander_buildable_add_child      (CtkBuildable *buildable,
+                                                   CtkBuilder   *builder,
                                                    GObject      *child,
                                                    const gchar  *type);
 
 
-/* GtkWidget      */
-static void  ctk_expander_get_preferred_width             (GtkWidget           *widget,
+/* CtkWidget      */
+static void  ctk_expander_get_preferred_width             (CtkWidget           *widget,
                                                            gint                *minimum_size,
                                                            gint                *natural_size);
-static void  ctk_expander_get_preferred_height            (GtkWidget           *widget,
+static void  ctk_expander_get_preferred_height            (CtkWidget           *widget,
                                                            gint                *minimum_size,
                                                            gint                *natural_size);
-static void  ctk_expander_get_preferred_height_for_width  (GtkWidget           *layout,
+static void  ctk_expander_get_preferred_height_for_width  (CtkWidget           *layout,
                                                            gint                 width,
                                                            gint                *minimum_height,
                                                            gint                *natural_height);
-static void  ctk_expander_get_preferred_width_for_height  (GtkWidget           *layout,
+static void  ctk_expander_get_preferred_width_for_height  (CtkWidget           *layout,
                                                            gint                 width,
                                                            gint                *minimum_height,
                                                            gint                *natural_height);
-static void ctk_expander_state_flags_changed (GtkWidget        *widget,
-                                              GtkStateFlags     previous_state);
-static void ctk_expander_direction_changed   (GtkWidget        *widget,
-                                              GtkTextDirection  previous_direction);
+static void ctk_expander_state_flags_changed (CtkWidget        *widget,
+                                              CtkStateFlags     previous_state);
+static void ctk_expander_direction_changed   (CtkWidget        *widget,
+                                              CtkTextDirection  previous_direction);
 
 /* Gestures */
-static void     gesture_multipress_released_cb (GtkGestureMultiPress *gesture,
+static void     gesture_multipress_released_cb (CtkGestureMultiPress *gesture,
                                                 gint                  n_press,
                                                 gdouble               x,
                                                 gdouble               y,
-                                                GtkExpander          *expander);
+                                                CtkExpander          *expander);
 
-G_DEFINE_TYPE_WITH_CODE (GtkExpander, ctk_expander, CTK_TYPE_BIN,
-                         G_ADD_PRIVATE (GtkExpander)
+G_DEFINE_TYPE_WITH_CODE (CtkExpander, ctk_expander, CTK_TYPE_BIN,
+                         G_ADD_PRIVATE (CtkExpander)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_expander_buildable_init))
 
 static void
-ctk_expander_class_init (GtkExpanderClass *klass)
+ctk_expander_class_init (CtkExpanderClass *klass)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
-  GtkContainerClass *container_class;
+  CtkWidgetClass *widget_class;
+  CtkContainerClass *container_class;
 
   gobject_class   = (GObjectClass *) klass;
-  widget_class    = (GtkWidgetClass *) klass;
-  container_class = (GtkContainerClass *) klass;
+  widget_class    = (CtkWidgetClass *) klass;
+  container_class = (CtkContainerClass *) klass;
 
   gobject_class->set_property = ctk_expander_set_property;
   gobject_class->get_property = ctk_expander_get_property;
@@ -327,7 +327,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkExpander:spacing:
+   * CtkExpander:spacing:
    *
    * Space to put between the label and the child when the
    * expander is expanded.
@@ -354,7 +354,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkExpander:label-fill:
+   * CtkExpander:label-fill:
    *
    * Whether the label widget should fill all available horizontal space.
    *
@@ -369,7 +369,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkExpander:resize-toplevel:
+   * CtkExpander:resize-toplevel:
    *
    * When this property is %TRUE, the expander will resize the toplevel
    * widget containing the expander upon expanding and collapsing.
@@ -385,7 +385,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkExpander:expander-size:
+   * CtkExpander:expander-size:
    *
    * The size of the expander arrow.
    *
@@ -401,7 +401,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkExpander:expander-spacing:
+   * CtkExpander:expander-spacing:
    *
    * Spaing around the expander arrow.
    *
@@ -421,7 +421,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
     g_signal_new (I_("activate"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                  G_STRUCT_OFFSET (GtkExpanderClass, activate),
+                  G_STRUCT_OFFSET (CtkExpanderClass, activate),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
@@ -431,10 +431,10 @@ ctk_expander_class_init (GtkExpanderClass *klass)
 }
 
 static void
-ctk_expander_init (GtkExpander *expander)
+ctk_expander_init (CtkExpander *expander)
 {
-  GtkExpanderPrivate *priv;
-  GtkCssNode *widget_node;
+  CtkExpanderPrivate *priv;
+  CtkCssNode *widget_node;
 
   expander->priv = priv = ctk_expander_get_instance_private (expander);
 
@@ -488,8 +488,8 @@ ctk_expander_init (GtkExpander *expander)
 }
 
 static void
-ctk_expander_buildable_add_child (GtkBuildable  *buildable,
-                                  GtkBuilder    *builder,
+ctk_expander_buildable_add_child (CtkBuildable  *buildable,
+                                  CtkBuilder    *builder,
                                   GObject       *child,
                                   const gchar   *type)
 {
@@ -502,7 +502,7 @@ ctk_expander_buildable_add_child (GtkBuildable  *buildable,
 }
 
 static void
-ctk_expander_buildable_init (GtkBuildableIface *iface)
+ctk_expander_buildable_init (CtkBuildableIface *iface)
 {
   iface->add_child = ctk_expander_buildable_add_child;
 }
@@ -513,7 +513,7 @@ ctk_expander_set_property (GObject      *object,
                            const GValue *value,
                            GParamSpec   *pspec)
 {
-  GtkExpander *expander = CTK_EXPANDER (object);
+  CtkExpander *expander = CTK_EXPANDER (object);
 
   switch (prop_id)
     {
@@ -553,8 +553,8 @@ ctk_expander_get_property (GObject    *object,
                            GValue     *value,
                            GParamSpec *pspec)
 {
-  GtkExpander *expander = CTK_EXPANDER (object);
-  GtkExpanderPrivate *priv = expander->priv;
+  CtkExpander *expander = CTK_EXPANDER (object);
+  CtkExpanderPrivate *priv = expander->priv;
 
   switch (prop_id)
     {
@@ -591,9 +591,9 @@ ctk_expander_get_property (GObject    *object,
 }
 
 static void
-ctk_expander_destroy (GtkWidget *widget)
+ctk_expander_destroy (CtkWidget *widget)
 {
-  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
+  CtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->expand_timer)
     {
@@ -611,10 +611,10 @@ ctk_expander_destroy (GtkWidget *widget)
 }
 
 static void
-ctk_expander_realize (GtkWidget *widget)
+ctk_expander_realize (CtkWidget *widget)
 {
-  GtkAllocation title_allocation;
-  GtkExpanderPrivate *priv;
+  CtkAllocation title_allocation;
+  CtkExpanderPrivate *priv;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -650,9 +650,9 @@ ctk_expander_realize (GtkWidget *widget)
 }
 
 static void
-ctk_expander_unrealize (GtkWidget *widget)
+ctk_expander_unrealize (CtkWidget *widget)
 {
-  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
+  CtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->event_window)
     {
@@ -666,11 +666,11 @@ ctk_expander_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_expander_size_allocate (GtkWidget     *widget,
-                            GtkAllocation *allocation)
+ctk_expander_size_allocate (CtkWidget     *widget,
+                            CtkAllocation *allocation)
 {
-  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
-  GtkAllocation clip;
+  CtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -683,7 +683,7 @@ ctk_expander_size_allocate (GtkWidget     *widget,
 
   if (ctk_widget_get_realized (widget))
     {
-      GtkAllocation title_allocation;
+      CtkAllocation title_allocation;
 
       ctk_css_gadget_get_border_allocation (priv->title_gadget, &title_allocation, NULL);
       gdk_window_move_resize (priv->event_window,
@@ -693,9 +693,9 @@ ctk_expander_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_expander_map (GtkWidget *widget)
+ctk_expander_map (CtkWidget *widget)
 {
-  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
+  CtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->label_widget)
     ctk_widget_map (priv->label_widget);
@@ -707,9 +707,9 @@ ctk_expander_map (GtkWidget *widget)
 }
 
 static void
-ctk_expander_unmap (GtkWidget *widget)
+ctk_expander_unmap (CtkWidget *widget)
 {
-  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
+  CtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->event_window)
     gdk_window_hide (priv->event_window);
@@ -721,7 +721,7 @@ ctk_expander_unmap (GtkWidget *widget)
 }
 
 static gboolean
-ctk_expander_draw (GtkWidget *widget,
+ctk_expander_draw (CtkWidget *widget,
                    cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_EXPANDER (widget)->priv->gadget, cr);
@@ -730,21 +730,21 @@ ctk_expander_draw (GtkWidget *widget,
 }
 
 static void
-gesture_multipress_released_cb (GtkGestureMultiPress *gesture,
+gesture_multipress_released_cb (CtkGestureMultiPress *gesture,
                                 gint                  n_press,
                                 gdouble               x,
                                 gdouble               y,
-                                GtkExpander          *expander)
+                                CtkExpander          *expander)
 {
   if (expander->priv->prelight)
     ctk_widget_activate (CTK_WIDGET (expander));
 }
 
 static void
-ctk_expander_redraw_expander (GtkExpander *expander)
+ctk_expander_redraw_expander (CtkExpander *expander)
 {
-  GtkAllocation allocation;
-  GtkWidget *widget = CTK_WIDGET (expander);
+  CtkAllocation allocation;
+  CtkWidget *widget = CTK_WIDGET (expander);
 
   if (ctk_widget_get_realized (widget))
     {
@@ -754,10 +754,10 @@ ctk_expander_redraw_expander (GtkExpander *expander)
 }
 
 static void
-update_node_state (GtkExpander *expander)
+update_node_state (CtkExpander *expander)
 {
-  GtkExpanderPrivate *priv = expander->priv;
-  GtkStateFlags state;
+  CtkExpanderPrivate *priv = expander->priv;
+  CtkStateFlags state;
 
   state = ctk_widget_get_state_flags (CTK_WIDGET (expander));
 
@@ -777,8 +777,8 @@ update_node_state (GtkExpander *expander)
 }
 
 static void
-ctk_expander_state_flags_changed (GtkWidget     *widget,
-                                  GtkStateFlags  previous_state)
+ctk_expander_state_flags_changed (CtkWidget     *widget,
+                                  CtkStateFlags  previous_state)
 {
   update_node_state (CTK_EXPANDER (widget));
 
@@ -786,11 +786,11 @@ ctk_expander_state_flags_changed (GtkWidget     *widget,
 }
 
 static void
-ctk_expander_direction_changed (GtkWidget        *widget,
-                                GtkTextDirection  previous_direction)
+ctk_expander_direction_changed (CtkWidget        *widget,
+                                CtkTextDirection  previous_direction)
 {
-  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
-  GtkAlign align;
+  CtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
+  CtkAlign align;
 
   ctk_box_gadget_reverse_children (CTK_BOX_GADGET (priv->title_gadget));
 
@@ -807,10 +807,10 @@ ctk_expander_direction_changed (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_expander_enter_notify (GtkWidget        *widget,
+ctk_expander_enter_notify (CtkWidget        *widget,
                            GdkEventCrossing *event)
 {
-  GtkExpander *expander = CTK_EXPANDER (widget);
+  CtkExpander *expander = CTK_EXPANDER (widget);
 
   if (event->window == expander->priv->event_window &&
       event->detail != GDK_NOTIFY_INFERIOR)
@@ -831,10 +831,10 @@ ctk_expander_enter_notify (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_expander_leave_notify (GtkWidget        *widget,
+ctk_expander_leave_notify (CtkWidget        *widget,
                            GdkEventCrossing *event)
 {
-  GtkExpander *expander = CTK_EXPANDER (widget);
+  CtkExpander *expander = CTK_EXPANDER (widget);
 
   if (event->window == expander->priv->event_window &&
       event->detail != GDK_NOTIFY_INFERIOR)
@@ -856,8 +856,8 @@ ctk_expander_leave_notify (GtkWidget        *widget,
 static gboolean
 expand_timeout (gpointer data)
 {
-  GtkExpander *expander = CTK_EXPANDER (data);
-  GtkExpanderPrivate *priv = expander->priv;
+  CtkExpander *expander = CTK_EXPANDER (data);
+  CtkExpanderPrivate *priv = expander->priv;
 
   priv->expand_timer = 0;
   ctk_expander_set_expanded (expander, TRUE);
@@ -866,14 +866,14 @@ expand_timeout (gpointer data)
 }
 
 static gboolean
-ctk_expander_drag_motion (GtkWidget        *widget,
+ctk_expander_drag_motion (CtkWidget        *widget,
                           GdkDragContext   *context,
                           gint              x,
                           gint              y,
                           guint             time)
 {
-  GtkExpander *expander = CTK_EXPANDER (widget);
-  GtkExpanderPrivate *priv = expander->priv;
+  CtkExpander *expander = CTK_EXPANDER (widget);
+  CtkExpanderPrivate *priv = expander->priv;
 
   if (!priv->expanded && !priv->expand_timer)
     {
@@ -885,12 +885,12 @@ ctk_expander_drag_motion (GtkWidget        *widget,
 }
 
 static void
-ctk_expander_drag_leave (GtkWidget      *widget,
+ctk_expander_drag_leave (CtkWidget      *widget,
                          GdkDragContext *context,
                          guint           time)
 {
-  GtkExpander *expander = CTK_EXPANDER (widget);
-  GtkExpanderPrivate *priv = expander->priv;
+  CtkExpander *expander = CTK_EXPANDER (widget);
+  CtkExpanderPrivate *priv = expander->priv;
 
   if (priv->expand_timer)
     {
@@ -908,10 +908,10 @@ typedef enum
 } FocusSite;
 
 static gboolean
-focus_current_site (GtkExpander      *expander,
-                    GtkDirectionType  direction)
+focus_current_site (CtkExpander      *expander,
+                    CtkDirectionType  direction)
 {
-  GtkWidget *current_focus;
+  CtkWidget *current_focus;
 
   current_focus = ctk_container_get_focus_child (CTK_CONTAINER (expander));
 
@@ -922,9 +922,9 @@ focus_current_site (GtkExpander      *expander,
 }
 
 static gboolean
-focus_in_site (GtkExpander      *expander,
+focus_in_site (CtkExpander      *expander,
                FocusSite         site,
-               GtkDirectionType  direction)
+               CtkDirectionType  direction)
 {
   switch (site)
     {
@@ -938,7 +938,7 @@ focus_in_site (GtkExpander      *expander,
         return FALSE;
     case FOCUS_CHILD:
       {
-        GtkWidget *child = ctk_bin_get_child (CTK_BIN (expander));
+        CtkWidget *child = ctk_bin_get_child (CTK_BIN (expander));
 
         if (child && ctk_widget_get_child_visible (child))
           return ctk_widget_child_focus (child, direction);
@@ -954,9 +954,9 @@ focus_in_site (GtkExpander      *expander,
 }
 
 static FocusSite
-get_next_site (GtkExpander      *expander,
+get_next_site (CtkExpander      *expander,
                FocusSite         site,
-               GtkDirectionType  direction)
+               CtkDirectionType  direction)
 {
   gboolean ltr;
 
@@ -1027,15 +1027,15 @@ get_next_site (GtkExpander      *expander,
 }
 
 static void
-ctk_expander_resize_toplevel (GtkExpander *expander)
+ctk_expander_resize_toplevel (CtkExpander *expander)
 {
-  GtkExpanderPrivate *priv = expander->priv;
-  GtkWidget *child = ctk_bin_get_child (CTK_BIN (expander));
+  CtkExpanderPrivate *priv = expander->priv;
+  CtkWidget *child = ctk_bin_get_child (CTK_BIN (expander));
 
   if (child && priv->resize_toplevel &&
       ctk_widget_get_realized (CTK_WIDGET (expander)))
     {
-      GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (expander));
+      CtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (expander));
 
       if (toplevel && CTK_IS_WINDOW (toplevel) &&
           ctk_widget_get_realized (toplevel))
@@ -1059,14 +1059,14 @@ ctk_expander_resize_toplevel (GtkExpander *expander)
 }
 
 static gboolean
-ctk_expander_focus (GtkWidget        *widget,
-                    GtkDirectionType  direction)
+ctk_expander_focus (CtkWidget        *widget,
+                    CtkDirectionType  direction)
 {
-  GtkExpander *expander = CTK_EXPANDER (widget);
+  CtkExpander *expander = CTK_EXPANDER (widget);
 
   if (!focus_current_site (expander, direction))
     {
-      GtkWidget *old_focus_child;
+      CtkWidget *old_focus_child;
       gboolean widget_is_focus;
       FocusSite site = FOCUS_NONE;
 
@@ -1093,8 +1093,8 @@ ctk_expander_focus (GtkWidget        *widget,
 }
 
 static void
-ctk_expander_update_child_mapped (GtkExpander *expander,
-                                  GtkWidget   *child)
+ctk_expander_update_child_mapped (CtkExpander *expander,
+                                  CtkWidget   *child)
 {
   /* If collapsing, we must unmap the child, as ctk_box_gadget_remove() does
    * not, so otherwise the child is not drawn but still consumes input in-place.
@@ -1113,10 +1113,10 @@ ctk_expander_update_child_mapped (GtkExpander *expander,
 }
 
 static void
-ctk_expander_add (GtkContainer *container,
-                  GtkWidget    *widget)
+ctk_expander_add (CtkContainer *container,
+                  CtkWidget    *widget)
 {
-  GtkExpander *expander = CTK_EXPANDER (container);
+  CtkExpander *expander = CTK_EXPANDER (container);
 
   CTK_CONTAINER_CLASS (ctk_expander_parent_class)->add (container, widget);
 
@@ -1129,10 +1129,10 @@ ctk_expander_add (GtkContainer *container,
 }
 
 static void
-ctk_expander_remove (GtkContainer *container,
-                     GtkWidget    *widget)
+ctk_expander_remove (CtkContainer *container,
+                     CtkWidget    *widget)
 {
-  GtkExpander *expander = CTK_EXPANDER (container);
+  CtkExpander *expander = CTK_EXPANDER (container);
 
   if (CTK_EXPANDER (expander)->priv->label_widget == widget)
     ctk_expander_set_label_widget (expander, NULL);
@@ -1144,14 +1144,14 @@ ctk_expander_remove (GtkContainer *container,
 }
 
 static void
-ctk_expander_forall (GtkContainer *container,
+ctk_expander_forall (CtkContainer *container,
                      gboolean      include_internals,
-                     GtkCallback   callback,
+                     CtkCallback   callback,
                      gpointer      callback_data)
 {
-  GtkBin *bin = CTK_BIN (container);
-  GtkExpanderPrivate *priv = CTK_EXPANDER (container)->priv;
-  GtkWidget *child;
+  CtkBin *bin = CTK_BIN (container);
+  CtkExpanderPrivate *priv = CTK_EXPANDER (container)->priv;
+  CtkWidget *child;
 
   child = ctk_bin_get_child (bin);
   if (child)
@@ -1162,13 +1162,13 @@ ctk_expander_forall (GtkContainer *container,
 }
 
 static void
-ctk_expander_activate (GtkExpander *expander)
+ctk_expander_activate (CtkExpander *expander)
 {
   ctk_expander_set_expanded (expander, !expander->priv->expanded);
 }
 
 static void
-ctk_expander_get_preferred_width (GtkWidget *widget,
+ctk_expander_get_preferred_width (CtkWidget *widget,
                                   gint      *minimum_size,
                                   gint      *natural_size)
 {
@@ -1180,7 +1180,7 @@ ctk_expander_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_expander_get_preferred_height (GtkWidget *widget,
+ctk_expander_get_preferred_height (CtkWidget *widget,
                                    gint      *minimum_size,
                                    gint      *natural_size)
 {
@@ -1192,7 +1192,7 @@ ctk_expander_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_expander_get_preferred_width_for_height (GtkWidget *widget,
+ctk_expander_get_preferred_width_for_height (CtkWidget *widget,
                                              gint       height,
                                              gint      *minimum_size,
                                              gint      *natural_size)
@@ -1205,7 +1205,7 @@ ctk_expander_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_expander_get_preferred_height_for_width (GtkWidget *widget,
+ctk_expander_get_preferred_height_for_width (CtkWidget *widget,
                                              gint       width,
                                              gint      *minimum_size,
                                              gint      *natural_size)
@@ -1223,11 +1223,11 @@ ctk_expander_get_preferred_height_for_width (GtkWidget *widget,
  *
  * Creates a new expander using @label as the text of the label.
  *
- * Returns: a new #GtkExpander widget.
+ * Returns: a new #CtkExpander widget.
  *
  * Since: 2.4
  */
-GtkWidget *
+CtkWidget *
 ctk_expander_new (const gchar *label)
 {
   return g_object_new (CTK_TYPE_EXPANDER, "label", label, NULL);
@@ -1245,11 +1245,11 @@ ctk_expander_new (const gchar *label)
  * accelerator called a mnemonic.
  * Pressing Alt and that key activates the button.
  *
- * Returns: a new #GtkExpander widget.
+ * Returns: a new #CtkExpander widget.
  *
  * Since: 2.4
  */
-GtkWidget *
+CtkWidget *
 ctk_expander_new_with_mnemonic (const gchar *label)
 {
   return g_object_new (CTK_TYPE_EXPANDER,
@@ -1260,7 +1260,7 @@ ctk_expander_new_with_mnemonic (const gchar *label)
 
 /**
  * ctk_expander_set_expanded:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  * @expanded: whether the child widget is revealed
  *
  * Sets the state of the expander. Set to %TRUE, if you want
@@ -1270,11 +1270,11 @@ ctk_expander_new_with_mnemonic (const gchar *label)
  * Since: 2.4
  */
 void
-ctk_expander_set_expanded (GtkExpander *expander,
+ctk_expander_set_expanded (CtkExpander *expander,
                            gboolean     expanded)
 {
-  GtkExpanderPrivate *priv;
-  GtkWidget *child;
+  CtkExpanderPrivate *priv;
+  CtkWidget *child;
 
   g_return_if_fail (CTK_IS_EXPANDER (expander));
 
@@ -1309,9 +1309,9 @@ ctk_expander_set_expanded (GtkExpander *expander,
 
 /**
  * ctk_expander_get_expanded:
- * @expander:a #GtkExpander
+ * @expander:a #CtkExpander
  *
- * Queries a #GtkExpander and returns its current state. Returns %TRUE
+ * Queries a #CtkExpander and returns its current state. Returns %TRUE
  * if the child widget is revealed.
  *
  * See ctk_expander_set_expanded().
@@ -1321,7 +1321,7 @@ ctk_expander_set_expanded (GtkExpander *expander,
  * Since: 2.4
  */
 gboolean
-ctk_expander_get_expanded (GtkExpander *expander)
+ctk_expander_get_expanded (CtkExpander *expander)
 {
   g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
@@ -1330,7 +1330,7 @@ ctk_expander_get_expanded (GtkExpander *expander)
 
 /**
  * ctk_expander_set_spacing:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  * @spacing: distance between the expander and child in pixels
  *
  * Sets the spacing field of @expander, which is the number of
@@ -1341,7 +1341,7 @@ ctk_expander_get_expanded (GtkExpander *expander)
  * Deprecated: 3.20: Use margins on the child instead.
  */
 void
-ctk_expander_set_spacing (GtkExpander *expander,
+ctk_expander_set_spacing (CtkExpander *expander,
                           gint         spacing)
 {
   g_return_if_fail (CTK_IS_EXPANDER (expander));
@@ -1359,7 +1359,7 @@ ctk_expander_set_spacing (GtkExpander *expander,
 
 /**
  * ctk_expander_get_spacing:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  *
  * Gets the value set by ctk_expander_set_spacing().
  *
@@ -1370,7 +1370,7 @@ ctk_expander_set_spacing (GtkExpander *expander,
  * Deprecated: 3.20: Use margins on the child instead.
  */
 gint
-ctk_expander_get_spacing (GtkExpander *expander)
+ctk_expander_get_spacing (CtkExpander *expander)
 {
   g_return_val_if_fail (CTK_IS_EXPANDER (expander), 0);
 
@@ -1379,7 +1379,7 @@ ctk_expander_get_spacing (GtkExpander *expander)
 
 /**
  * ctk_expander_set_label:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  * @label: (nullable): a string
  *
  * Sets the text of the label of the expander to @label.
@@ -1389,7 +1389,7 @@ ctk_expander_get_spacing (GtkExpander *expander)
  * Since: 2.4
  */
 void
-ctk_expander_set_label (GtkExpander *expander,
+ctk_expander_set_label (CtkExpander *expander,
                         const gchar *label)
 {
   g_return_if_fail (CTK_IS_EXPANDER (expander));
@@ -1400,7 +1400,7 @@ ctk_expander_set_label (GtkExpander *expander,
     }
   else
     {
-      GtkWidget *child;
+      CtkWidget *child;
 
       child = ctk_label_new (label);
       ctk_label_set_use_underline (CTK_LABEL (child), expander->priv->use_underline);
@@ -1415,7 +1415,7 @@ ctk_expander_set_label (GtkExpander *expander,
 
 /**
  * ctk_expander_get_label:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  *
  * Fetches the text from a label widget including any embedded
  * underlines indicating mnemonics and Pango markup, as set by
@@ -1435,9 +1435,9 @@ ctk_expander_set_label (GtkExpander *expander,
  * Since: 2.4
  */
 const gchar *
-ctk_expander_get_label (GtkExpander *expander)
+ctk_expander_get_label (CtkExpander *expander)
 {
-  GtkExpanderPrivate *priv;
+  CtkExpanderPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_EXPANDER (expander), NULL);
 
@@ -1451,7 +1451,7 @@ ctk_expander_get_label (GtkExpander *expander)
 
 /**
  * ctk_expander_set_use_underline:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  * @use_underline: %TRUE if underlines in the text indicate mnemonics
  *
  * If true, an underline in the text of the expander label indicates
@@ -1460,10 +1460,10 @@ ctk_expander_get_label (GtkExpander *expander)
  * Since: 2.4
  */
 void
-ctk_expander_set_use_underline (GtkExpander *expander,
+ctk_expander_set_use_underline (CtkExpander *expander,
                                 gboolean     use_underline)
 {
-  GtkExpanderPrivate *priv;
+  CtkExpanderPrivate *priv;
 
   g_return_if_fail (CTK_IS_EXPANDER (expander));
 
@@ -1484,7 +1484,7 @@ ctk_expander_set_use_underline (GtkExpander *expander,
 
 /**
  * ctk_expander_get_use_underline:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  *
  * Returns whether an embedded underline in the expander label
  * indicates a mnemonic. See ctk_expander_set_use_underline().
@@ -1495,7 +1495,7 @@ ctk_expander_set_use_underline (GtkExpander *expander,
  * Since: 2.4
  */
 gboolean
-ctk_expander_get_use_underline (GtkExpander *expander)
+ctk_expander_get_use_underline (CtkExpander *expander)
 {
   g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
@@ -1504,7 +1504,7 @@ ctk_expander_get_use_underline (GtkExpander *expander)
 
 /**
  * ctk_expander_set_use_markup:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  * @use_markup: %TRUE if the label’s text should be parsed for markup
  *
  * Sets whether the text of the label contains markup in
@@ -1514,10 +1514,10 @@ ctk_expander_get_use_underline (GtkExpander *expander)
  * Since: 2.4
  */
 void
-ctk_expander_set_use_markup (GtkExpander *expander,
+ctk_expander_set_use_markup (CtkExpander *expander,
                              gboolean     use_markup)
 {
-  GtkExpanderPrivate *priv;
+  CtkExpanderPrivate *priv;
 
   g_return_if_fail (CTK_IS_EXPANDER (expander));
 
@@ -1538,7 +1538,7 @@ ctk_expander_set_use_markup (GtkExpander *expander,
 
 /**
  * ctk_expander_get_use_markup:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  *
  * Returns whether the label’s text is interpreted as marked up with
  * the [Pango text markup language][PangoMarkupFormat].
@@ -1549,7 +1549,7 @@ ctk_expander_set_use_markup (GtkExpander *expander,
  * Since: 2.4
  */
 gboolean
-ctk_expander_get_use_markup (GtkExpander *expander)
+ctk_expander_get_use_markup (CtkExpander *expander)
 {
   g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
@@ -1558,7 +1558,7 @@ ctk_expander_get_use_markup (GtkExpander *expander)
 
 /**
  * ctk_expander_set_label_widget:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  * @label_widget: (nullable): the new label widget
  *
  * Set the label widget for the expander. This is the widget
@@ -1567,11 +1567,11 @@ ctk_expander_get_use_markup (GtkExpander *expander)
  * Since: 2.4
  */
 void
-ctk_expander_set_label_widget (GtkExpander *expander,
-                               GtkWidget   *label_widget)
+ctk_expander_set_label_widget (CtkExpander *expander,
+                               CtkWidget   *label_widget)
 {
-  GtkExpanderPrivate *priv;
-  GtkWidget *widget;
+  CtkExpanderPrivate *priv;
+  CtkWidget *widget;
   int pos;
 
   g_return_if_fail (CTK_IS_EXPANDER (expander));
@@ -1616,7 +1616,7 @@ ctk_expander_set_label_widget (GtkExpander *expander,
 
 /**
  * ctk_expander_get_label_widget:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  *
  * Retrieves the label widget for the frame. See
  * ctk_expander_set_label_widget().
@@ -1626,8 +1626,8 @@ ctk_expander_set_label_widget (GtkExpander *expander,
  *
  * Since: 2.4
  */
-GtkWidget *
-ctk_expander_get_label_widget (GtkExpander *expander)
+CtkWidget *
+ctk_expander_get_label_widget (CtkExpander *expander)
 {
   g_return_val_if_fail (CTK_IS_EXPANDER (expander), NULL);
 
@@ -1636,7 +1636,7 @@ ctk_expander_get_label_widget (GtkExpander *expander)
 
 /**
  * ctk_expander_set_label_fill:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  * @label_fill: %TRUE if the label should should fill
  *     all available horizontal space
  *
@@ -1648,10 +1648,10 @@ ctk_expander_get_label_widget (GtkExpander *expander)
  * Since: 2.22
  */
 void
-ctk_expander_set_label_fill (GtkExpander *expander,
+ctk_expander_set_label_fill (CtkExpander *expander,
                              gboolean     label_fill)
 {
-  GtkExpanderPrivate *priv;
+  CtkExpanderPrivate *priv;
 
   g_return_if_fail (CTK_IS_EXPANDER (expander));
 
@@ -1672,7 +1672,7 @@ ctk_expander_set_label_fill (GtkExpander *expander,
 
 /**
  * ctk_expander_get_label_fill:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  *
  * Returns whether the label widget will fill all available
  * horizontal space allocated to @expander.
@@ -1683,7 +1683,7 @@ ctk_expander_set_label_fill (GtkExpander *expander,
  * Since: 2.22
  */
 gboolean
-ctk_expander_get_label_fill (GtkExpander *expander)
+ctk_expander_get_label_fill (CtkExpander *expander)
 {
   g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
@@ -1692,7 +1692,7 @@ ctk_expander_get_label_fill (GtkExpander *expander)
 
 /**
  * ctk_expander_set_resize_toplevel:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  * @resize_toplevel: whether to resize the toplevel
  *
  * Sets whether the expander will resize the toplevel widget
@@ -1701,7 +1701,7 @@ ctk_expander_get_label_fill (GtkExpander *expander)
  * Since: 3.2
  */
 void
-ctk_expander_set_resize_toplevel (GtkExpander *expander,
+ctk_expander_set_resize_toplevel (CtkExpander *expander,
                                   gboolean     resize_toplevel)
 {
   g_return_if_fail (CTK_IS_EXPANDER (expander));
@@ -1715,7 +1715,7 @@ ctk_expander_set_resize_toplevel (GtkExpander *expander,
 
 /**
  * ctk_expander_get_resize_toplevel:
- * @expander: a #GtkExpander
+ * @expander: a #CtkExpander
  *
  * Returns whether the expander will resize the toplevel widget
  * containing the expander upon resizing and collpasing.
@@ -1725,7 +1725,7 @@ ctk_expander_set_resize_toplevel (GtkExpander *expander,
  * Since: 3.2
  */
 gboolean
-ctk_expander_get_resize_toplevel (GtkExpander *expander)
+ctk_expander_get_resize_toplevel (CtkExpander *expander)
 {
   g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 

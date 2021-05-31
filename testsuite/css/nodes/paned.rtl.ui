@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkPaned">
+      <object class="CtkPaned">
         <property name="visible">True</property>
         <property name="orientation">horizontal</property>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">True</property>
             <property name="name">label1</property>
           </object>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="CtkLabel">
             <property name="visible">True</property>
             <property name="name">label2</property>
           </object>

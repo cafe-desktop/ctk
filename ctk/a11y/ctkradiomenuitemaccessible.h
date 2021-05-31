@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE               (ctk_radio_menu_item_accessible_get_type ())
-#define CTK_RADIO_MENU_ITEM_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE, GtkRadioMenuItemAccessible))
-#define CTK_RADIO_MENU_ITEM_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE, GtkRadioMenuItemAccessibleClass))
+#define CTK_RADIO_MENU_ITEM_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE, CtkRadioMenuItemAccessible))
+#define CTK_RADIO_MENU_ITEM_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE, CtkRadioMenuItemAccessibleClass))
 #define CTK_IS_RADIO_MENU_ITEM_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE))
 #define CTK_IS_RADIO_MENU_ITEM_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE))
-#define CTK_RADIO_MENU_ITEM_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE, GtkRadioMenuItemAccessibleClass))
+#define CTK_RADIO_MENU_ITEM_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RADIO_MENU_ITEM_ACCESSIBLE, CtkRadioMenuItemAccessibleClass))
 
-typedef struct _GtkRadioMenuItemAccessible        GtkRadioMenuItemAccessible;
-typedef struct _GtkRadioMenuItemAccessibleClass   GtkRadioMenuItemAccessibleClass;
-typedef struct _GtkRadioMenuItemAccessiblePrivate GtkRadioMenuItemAccessiblePrivate;
+typedef struct _CtkRadioMenuItemAccessible        CtkRadioMenuItemAccessible;
+typedef struct _CtkRadioMenuItemAccessibleClass   CtkRadioMenuItemAccessibleClass;
+typedef struct _CtkRadioMenuItemAccessiblePrivate CtkRadioMenuItemAccessiblePrivate;
 
-struct _GtkRadioMenuItemAccessible
+struct _CtkRadioMenuItemAccessible
 {
-  GtkCheckMenuItemAccessible parent;
+  CtkCheckMenuItemAccessible parent;
 
-  GtkRadioMenuItemAccessiblePrivate *priv;
+  CtkRadioMenuItemAccessiblePrivate *priv;
 };
 
-struct _GtkRadioMenuItemAccessibleClass
+struct _CtkRadioMenuItemAccessibleClass
 {
-  GtkCheckMenuItemAccessibleClass parent_class;
+  CtkCheckMenuItemAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

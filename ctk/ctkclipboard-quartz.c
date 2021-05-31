@@ -38,31 +38,31 @@ enum {
   LAST_SIGNAL
 };
 
-@interface GtkClipboardOwner : NSObject {
-  GtkClipboard *clipboard;
+@interface CtkClipboardOwner : NSObject {
+  CtkClipboard *clipboard;
   @public
   gboolean setting_same_owner;
 }
 
 @end
 
-typedef struct _GtkClipboardClass GtkClipboardClass;
+typedef struct _CtkClipboardClass CtkClipboardClass;
 
-struct _GtkClipboard
+struct _CtkClipboard
 {
   GObject parent_instance;
 
   NSPasteboard *pasteboard;
-  GtkClipboardOwner *owner;
+  CtkClipboardOwner *owner;
   NSInteger change_count;
 
   GdkAtom selection;
 
-  GtkClipboardGetFunc get_func;
-  GtkClipboardClearFunc clear_func;
+  CtkClipboardGetFunc get_func;
+  CtkClipboardClearFunc clear_func;
   gpointer user_data;
   gboolean have_owner;
-  GtkTargetList *target_list;
+  CtkTargetList *target_list;
 
   gboolean have_selection;
   GdkDisplay *display;
@@ -78,34 +78,34 @@ struct _GtkClipboard
   GdkAtom   *storable_targets;
 };
 
-struct _GtkClipboardClass
+struct _CtkClipboardClass
 {
   GObjectClass parent_class;
 
-  void (*owner_change) (GtkClipboard        *clipboard,
+  void (*owner_change) (CtkClipboard        *clipboard,
 			GdkEventOwnerChange *event);
 };
 
-static void ctk_clipboard_class_init   (GtkClipboardClass   *class);
+static void ctk_clipboard_class_init   (CtkClipboardClass   *class);
 static void ctk_clipboard_finalize     (GObject             *object);
-static void ctk_clipboard_owner_change (GtkClipboard        *clipboard,
+static void ctk_clipboard_owner_change (CtkClipboard        *clipboard,
 					GdkEventOwnerChange *event);
 
-static void          clipboard_unset      (GtkClipboard     *clipboard);
-static GtkClipboard *clipboard_peek       (GdkDisplay       *display,
+static void          clipboard_unset      (CtkClipboard     *clipboard);
+static CtkClipboard *clipboard_peek       (GdkDisplay       *display,
 					   GdkAtom           selection,
 					   gboolean          only_if_exists);
 
-@implementation GtkClipboardOwner
+@implementation CtkClipboardOwner
 -(void)pasteboard:(NSPasteboard *)sender provideDataForType:(NSString *)type
 {
-  GtkSelectionData selection_data;
+  CtkSelectionData selection_data;
   guint info;
 
   if (!clipboard->target_list)
     return;
 
-  memset (&selection_data, 0, sizeof (GtkSelectionData));
+  memset (&selection_data, 0, sizeof (CtkSelectionData));
 
   selection_data.selection = clipboard->selection;
   selection_data.target = gdk_quartz_pasteboard_type_to_atom_libctk_only (type);
@@ -138,7 +138,7 @@ static GtkClipboard *clipboard_peek       (GdkDisplay       *display,
     clipboard_unset (clipboard);
 }
 
-- (id)initWithClipboard:(GtkClipboard *)aClipboard
+- (id)initWithClipboard:(CtkClipboard *)aClipboard
 {
   self = [super init];
 
@@ -169,18 +169,18 @@ ctk_clipboard_get_type (void)
     {
       const GTypeInfo clipboard_info =
       {
-	sizeof (GtkClipboardClass),
+	sizeof (CtkClipboardClass),
 	NULL,           /* base_init */
 	NULL,           /* base_finalize */
 	(GClassInitFunc) ctk_clipboard_class_init,
 	NULL,           /* class_finalize */
 	NULL,           /* class_data */
-	sizeof (GtkClipboard),
+	sizeof (CtkClipboard),
 	0,              /* n_preallocs */
 	(GInstanceInitFunc) NULL,
       };
 
-      clipboard_type = g_type_register_static (G_TYPE_OBJECT, I_("GtkClipboard"),
+      clipboard_type = g_type_register_static (G_TYPE_OBJECT, I_("CtkClipboard"),
 					       &clipboard_info, 0);
     }
 
@@ -188,7 +188,7 @@ ctk_clipboard_get_type (void)
 }
 
 static void
-ctk_clipboard_class_init (GtkClipboardClass *class)
+ctk_clipboard_class_init (CtkClipboardClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
@@ -199,7 +199,7 @@ ctk_clipboard_class_init (GtkClipboardClass *class)
   class->owner_change = ctk_clipboard_owner_change;
 
   /**
-   * GtkClipboard::owner-change:
+   * CtkClipboard::owner-change:
    * @clipboard:
    * @event: (type GdkEventOwnerChange):
    */
@@ -207,7 +207,7 @@ ctk_clipboard_class_init (GtkClipboardClass *class)
     g_signal_new (I_("owner-change"),
 		  G_TYPE_FROM_CLASS (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkClipboardClass, owner_change),
+		  G_STRUCT_OFFSET (CtkClipboardClass, owner_change),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
@@ -217,14 +217,14 @@ ctk_clipboard_class_init (GtkClipboardClass *class)
 static void
 ctk_clipboard_finalize (GObject *object)
 {
-  GtkClipboard *clipboard;
+  CtkClipboard *clipboard;
   GSList *clipboards;
 
   clipboard = CTK_CLIPBOARD (object);
 
   clipboards = g_object_get_data (G_OBJECT (clipboard->display), "ctk-clipboard-list");
   if (g_slist_index (clipboards, clipboard) >= 0)
-    g_warning ("GtkClipboard prematurely finalized");
+    g_warning ("CtkClipboard prematurely finalized");
 
   clipboard_unset (clipboard);
 
@@ -246,7 +246,7 @@ ctk_clipboard_finalize (GObject *object)
 static void
 clipboard_display_closed (GdkDisplay   *display,
 			  gboolean      is_error,
-			  GtkClipboard *clipboard)
+			  CtkClipboard *clipboard)
 {
   GSList *clipboards;
 
@@ -264,7 +264,7 @@ clipboard_display_closed (GdkDisplay   *display,
  *
  * Returns: (transfer none):
  */
-GtkClipboard *
+CtkClipboard *
 ctk_clipboard_get_for_display (GdkDisplay *display,
 			       GdkAtom     selection)
 {
@@ -280,7 +280,7 @@ ctk_clipboard_get_for_display (GdkDisplay *display,
  *
  * Returns: (transfer none):
  */
-GtkClipboard *
+CtkClipboard *
 ctk_clipboard_get (GdkAtom selection)
 {
   return ctk_clipboard_get_for_display (gdk_display_get_default (), selection);
@@ -297,7 +297,7 @@ ctk_clipboard_get (GdkAtom selection)
  *
  * Since: 3.16
  **/
-GtkClipboard *
+CtkClipboard *
 ctk_clipboard_get_default (GdkDisplay *display)
 {
   g_return_val_if_fail (display != NULL, NULL);
@@ -315,7 +315,7 @@ clipboard_owner_destroyed (gpointer data)
   tmp_list = clipboards;
   while (tmp_list)
     {
-      GtkClipboard *clipboard = tmp_list->data;
+      CtkClipboard *clipboard = tmp_list->data;
 
       clipboard->get_func = NULL;
       clipboard->clear_func = NULL;
@@ -337,7 +337,7 @@ clipboard_owner_destroyed (gpointer data)
 }
 
 static void
-clipboard_add_owner_notify (GtkClipboard *clipboard)
+clipboard_add_owner_notify (CtkClipboard *clipboard)
 {
   if (!clipboards_owned_key_id)
     clipboards_owned_key_id = g_quark_from_static_string (clipboards_owned_key);
@@ -351,7 +351,7 @@ clipboard_add_owner_notify (GtkClipboard *clipboard)
 }
 
 static void
-clipboard_remove_owner_notify (GtkClipboard *clipboard)
+clipboard_remove_owner_notify (CtkClipboard *clipboard)
 {
   if (clipboard->have_owner)
      g_object_set_qdata_full (clipboard->user_data, clipboards_owned_key_id,
@@ -362,11 +362,11 @@ clipboard_remove_owner_notify (GtkClipboard *clipboard)
 }
 
 static gboolean
-ctk_clipboard_set_contents (GtkClipboard         *clipboard,
-			    const GtkTargetEntry *targets,
+ctk_clipboard_set_contents (CtkClipboard         *clipboard,
+			    const CtkTargetEntry *targets,
 			    guint                 n_targets,
-			    GtkClipboardGetFunc   get_func,
-			    GtkClipboardClearFunc clear_func,
+			    CtkClipboardGetFunc   get_func,
+			    CtkClipboardClearFunc clear_func,
 			    gpointer              user_data,
 			    gboolean              have_owner)
 {
@@ -412,14 +412,14 @@ ctk_clipboard_set_contents (GtkClipboard         *clipboard,
     }
   else
     {
-      GtkClipboardOwner *new_owner;
+      CtkClipboardOwner *new_owner;
 
       /* We do not set the new owner on clipboard->owner immediately,
        * because declareTypes could (but not always does -- see also the
        * comment at pasteboardChangedOwner above) cause clipboard_unset
        * to be called, which releases clipboard->owner.
        */
-      new_owner = [[GtkClipboardOwner alloc] initWithClipboard:clipboard];
+      new_owner = [[CtkClipboardOwner alloc] initWithClipboard:clipboard];
       clipboard->change_count = [clipboard->pasteboard declareTypes: [types allObjects]
                                                               owner: new_owner];
 
@@ -458,11 +458,11 @@ ctk_clipboard_set_contents (GtkClipboard         *clipboard,
  * @user_data:
  */
 gboolean
-ctk_clipboard_set_with_data (GtkClipboard          *clipboard,
-			     const GtkTargetEntry  *targets,
+ctk_clipboard_set_with_data (CtkClipboard          *clipboard,
+			     const CtkTargetEntry  *targets,
 			     guint                  n_targets,
-			     GtkClipboardGetFunc    get_func,
-			     GtkClipboardClearFunc  clear_func,
+			     CtkClipboardGetFunc    get_func,
+			     CtkClipboardClearFunc  clear_func,
 			     gpointer               user_data)
 {
   g_return_val_if_fail (clipboard != NULL, FALSE);
@@ -483,11 +483,11 @@ ctk_clipboard_set_with_data (GtkClipboard          *clipboard,
  * @owner:
  */
 gboolean
-ctk_clipboard_set_with_owner (GtkClipboard          *clipboard,
-			      const GtkTargetEntry  *targets,
+ctk_clipboard_set_with_owner (CtkClipboard          *clipboard,
+			      const CtkTargetEntry  *targets,
 			      guint                  n_targets,
-			      GtkClipboardGetFunc    get_func,
-			      GtkClipboardClearFunc  clear_func,
+			      CtkClipboardGetFunc    get_func,
+			      CtkClipboardClearFunc  clear_func,
 			      GObject               *owner)
 {
   g_return_val_if_fail (clipboard != NULL, FALSE);
@@ -507,7 +507,7 @@ ctk_clipboard_set_with_owner (GtkClipboard          *clipboard,
  * Returns: (transfer none):
  */
 GObject *
-ctk_clipboard_get_owner (GtkClipboard *clipboard)
+ctk_clipboard_get_owner (CtkClipboard *clipboard)
 {
   g_return_val_if_fail (clipboard != NULL, NULL);
 
@@ -524,9 +524,9 @@ ctk_clipboard_get_owner (GtkClipboard *clipboard)
 }
 
 static void
-clipboard_unset (GtkClipboard *clipboard)
+clipboard_unset (CtkClipboard *clipboard)
 {
-  GtkClipboardClearFunc old_clear_func;
+  CtkClipboardClearFunc old_clear_func;
   gpointer old_data;
   gboolean old_have_owner;
   gint old_n_storable_targets;
@@ -571,7 +571,7 @@ clipboard_unset (GtkClipboard *clipboard)
 }
 
 void
-ctk_clipboard_clear (GtkClipboard *clipboard)
+ctk_clipboard_clear (CtkClipboard *clipboard)
 {
   clipboard_unset (clipboard);
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
@@ -587,8 +587,8 @@ ctk_clipboard_clear (GtkClipboard *clipboard)
 }
 
 static void
-text_get_func (GtkClipboard     *clipboard,
-	       GtkSelectionData *selection_data,
+text_get_func (CtkClipboard     *clipboard,
+	       CtkSelectionData *selection_data,
 	       guint             info,
 	       gpointer          data)
 {
@@ -596,18 +596,18 @@ text_get_func (GtkClipboard     *clipboard,
 }
 
 static void
-text_clear_func (GtkClipboard *clipboard,
+text_clear_func (CtkClipboard *clipboard,
 		 gpointer      data)
 {
   g_free (data);
 }
 
 void
-ctk_clipboard_set_text (GtkClipboard *clipboard,
+ctk_clipboard_set_text (CtkClipboard *clipboard,
 			const gchar  *text,
 			gint          len)
 {
-  GtkTargetEntry target = { "UTF8_STRING", 0, 0 };
+  CtkTargetEntry target = { "UTF8_STRING", 0, 0 };
 
   g_return_if_fail (clipboard != NULL);
   g_return_if_fail (text != NULL);
@@ -624,8 +624,8 @@ ctk_clipboard_set_text (GtkClipboard *clipboard,
 
 
 static void
-pixbuf_get_func (GtkClipboard     *clipboard,
-		 GtkSelectionData *selection_data,
+pixbuf_get_func (CtkClipboard     *clipboard,
+		 CtkSelectionData *selection_data,
 		 guint             info,
 		 gpointer          data)
 {
@@ -633,19 +633,19 @@ pixbuf_get_func (GtkClipboard     *clipboard,
 }
 
 static void
-pixbuf_clear_func (GtkClipboard *clipboard,
+pixbuf_clear_func (CtkClipboard *clipboard,
 		   gpointer      data)
 {
   g_object_unref (data);
 }
 
 void
-ctk_clipboard_set_image (GtkClipboard *clipboard,
+ctk_clipboard_set_image (CtkClipboard *clipboard,
 			 GdkPixbuf    *pixbuf)
 {
-  GtkTargetList *list;
+  CtkTargetList *list;
   GList *l;
-  GtkTargetEntry *targets;
+  CtkTargetEntry *targets;
   gint n_targets, i;
 
   g_return_if_fail (clipboard != NULL);
@@ -655,10 +655,10 @@ ctk_clipboard_set_image (GtkClipboard *clipboard,
   ctk_target_list_add_image_targets (list, 0, TRUE);
 
   n_targets = g_list_length (list->list);
-  targets = g_new0 (GtkTargetEntry, n_targets);
+  targets = g_new0 (CtkTargetEntry, n_targets);
   for (l = list->list, i = 0; l; l = l->next, i++)
     {
-      GtkTargetPair *pair = (GtkTargetPair *)l->data;
+      CtkTargetPair *pair = (CtkTargetPair *)l->data;
       targets[i].target = gdk_atom_name (pair->target);
     }
 
@@ -682,12 +682,12 @@ ctk_clipboard_set_image (GtkClipboard *clipboard,
  * @user_data:
  */
 void
-ctk_clipboard_request_contents (GtkClipboard            *clipboard,
+ctk_clipboard_request_contents (CtkClipboard            *clipboard,
 				GdkAtom                  target,
-				GtkClipboardReceivedFunc callback,
+				CtkClipboardReceivedFunc callback,
 				gpointer                 user_data)
 {
-  GtkSelectionData *data;
+  CtkSelectionData *data;
 
   data = ctk_clipboard_wait_for_contents (clipboard, target);
 
@@ -703,8 +703,8 @@ ctk_clipboard_request_contents (GtkClipboard            *clipboard,
  * @user_data:
  */
 void
-ctk_clipboard_request_text (GtkClipboard                *clipboard,
-			    GtkClipboardTextReceivedFunc callback,
+ctk_clipboard_request_text (CtkClipboard                *clipboard,
+			    CtkClipboardTextReceivedFunc callback,
 			    gpointer                     user_data)
 {
   gchar *data = ctk_clipboard_wait_for_text (clipboard);
@@ -722,9 +722,9 @@ ctk_clipboard_request_text (GtkClipboard                *clipboard,
  * @user_data:
  */
 void
-ctk_clipboard_request_rich_text (GtkClipboard                    *clipboard,
-                                 GtkTextBuffer                   *buffer,
-                                 GtkClipboardRichTextReceivedFunc callback,
+ctk_clipboard_request_rich_text (CtkClipboard                    *clipboard,
+                                 CtkTextBuffer                   *buffer,
+                                 CtkClipboardRichTextReceivedFunc callback,
                                  gpointer                         user_data)
 {
   /* FIXME: Implement */
@@ -741,8 +741,8 @@ ctk_clipboard_request_rich_text (GtkClipboard                    *clipboard,
  * Returns: (nullable):
  */
 guint8 *
-ctk_clipboard_wait_for_rich_text (GtkClipboard  *clipboard,
-                                  GtkTextBuffer *buffer,
+ctk_clipboard_wait_for_rich_text (CtkClipboard  *clipboard,
+                                  CtkTextBuffer *buffer,
                                   GdkAtom       *format,
                                   gsize         *length)
 {
@@ -757,8 +757,8 @@ ctk_clipboard_wait_for_rich_text (GtkClipboard  *clipboard,
  * @user_data:
  */
 void
-ctk_clipboard_request_image (GtkClipboard                  *clipboard,
-			     GtkClipboardImageReceivedFunc  callback,
+ctk_clipboard_request_image (CtkClipboard                  *clipboard,
+			     CtkClipboardImageReceivedFunc  callback,
 			     gpointer                       user_data)
 {
   GdkPixbuf *pixbuf = ctk_clipboard_wait_for_image (clipboard);
@@ -776,8 +776,8 @@ ctk_clipboard_request_image (GtkClipboard                  *clipboard,
  * @user_data:
  */
 void
-ctk_clipboard_request_uris (GtkClipboard                *clipboard,
-			    GtkClipboardURIReceivedFunc  callback,
+ctk_clipboard_request_uris (CtkClipboard                *clipboard,
+			    CtkClipboardURIReceivedFunc  callback,
 			    gpointer                     user_data)
 {
   gchar **uris = ctk_clipboard_wait_for_uris (clipboard);
@@ -794,8 +794,8 @@ ctk_clipboard_request_uris (GtkClipboard                *clipboard,
  * @user_data:
  */
 void
-ctk_clipboard_request_targets (GtkClipboard                *clipboard,
-			       GtkClipboardTargetsReceivedFunc callback,
+ctk_clipboard_request_targets (CtkClipboard                *clipboard,
+			       CtkClipboardTargetsReceivedFunc callback,
 			       gpointer                     user_data)
 {
   GdkAtom *targets;
@@ -813,12 +813,12 @@ ctk_clipboard_request_targets (GtkClipboard                *clipboard,
  *
  * Returns: (nullable):
  */
-GtkSelectionData *
-ctk_clipboard_wait_for_contents (GtkClipboard *clipboard,
+CtkSelectionData *
+ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
 				 GdkAtom       target)
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  GtkSelectionData *selection_data = NULL;
+  CtkSelectionData *selection_data = NULL;
 
   if (clipboard->change_count < [clipboard->pasteboard changeCount])
     {
@@ -835,7 +835,7 @@ ctk_clipboard_wait_for_contents (GtkClipboard *clipboard,
 
       length = [types count] * sizeof (GdkAtom);
 
-      selection_data = g_slice_new0 (GtkSelectionData);
+      selection_data = g_slice_new0 (CtkSelectionData);
       selection_data->selection = clipboard->selection;
       selection_data->target = target;
       if (!selection_data->display)
@@ -873,9 +873,9 @@ ctk_clipboard_wait_for_contents (GtkClipboard *clipboard,
  * Returns: (nullable):
  */
 gchar *
-ctk_clipboard_wait_for_text (GtkClipboard *clipboard)
+ctk_clipboard_wait_for_text (CtkClipboard *clipboard)
 {
-  GtkSelectionData *data;
+  CtkSelectionData *data;
   gchar *result;
 
   data = ctk_clipboard_wait_for_contents (clipboard,
@@ -895,10 +895,10 @@ ctk_clipboard_wait_for_text (GtkClipboard *clipboard)
  * Returns: (nullable) (transfer full):
  */
 GdkPixbuf *
-ctk_clipboard_wait_for_image (GtkClipboard *clipboard)
+ctk_clipboard_wait_for_image (CtkClipboard *clipboard)
 {
   GdkAtom target = gdk_atom_intern_static_string("image/tiff");
-  GtkSelectionData *data;
+  CtkSelectionData *data;
 
   data = ctk_clipboard_wait_for_contents (clipboard, target);
 
@@ -919,9 +919,9 @@ ctk_clipboard_wait_for_image (GtkClipboard *clipboard)
  * Returns: (nullable) (array zero-terminated=1) (transfer full) (element-type utf8):
  */
 gchar **
-ctk_clipboard_wait_for_uris (GtkClipboard *clipboard)
+ctk_clipboard_wait_for_uris (CtkClipboard *clipboard)
 {
-  GtkSelectionData *data;
+  CtkSelectionData *data;
 
   data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("text/uri-list"));
   if (data)
@@ -944,7 +944,7 @@ ctk_clipboard_wait_for_uris (GtkClipboard *clipboard)
  * Returns: (transfer none):
  */
 GdkDisplay *
-ctk_clipboard_get_display (GtkClipboard *clipboard)
+ctk_clipboard_get_display (CtkClipboard *clipboard)
 {
   g_return_val_if_fail (clipboard != NULL, NULL);
 
@@ -952,9 +952,9 @@ ctk_clipboard_get_display (GtkClipboard *clipboard)
 }
 
 gboolean
-ctk_clipboard_wait_is_text_available (GtkClipboard *clipboard)
+ctk_clipboard_wait_is_text_available (CtkClipboard *clipboard)
 {
-  GtkSelectionData *data;
+  CtkSelectionData *data;
   gboolean result = FALSE;
 
   data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
@@ -968,10 +968,10 @@ ctk_clipboard_wait_is_text_available (GtkClipboard *clipboard)
 }
 
 gboolean
-ctk_clipboard_wait_is_rich_text_available (GtkClipboard  *clipboard,
-                                           GtkTextBuffer *buffer)
+ctk_clipboard_wait_is_rich_text_available (CtkClipboard  *clipboard,
+                                           CtkTextBuffer *buffer)
 {
-  GtkSelectionData *data;
+  CtkSelectionData *data;
   gboolean result = FALSE;
 
   g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), FALSE);
@@ -988,9 +988,9 @@ ctk_clipboard_wait_is_rich_text_available (GtkClipboard  *clipboard,
 }
 
 gboolean
-ctk_clipboard_wait_is_image_available (GtkClipboard *clipboard)
+ctk_clipboard_wait_is_image_available (CtkClipboard *clipboard)
 {
-  GtkSelectionData *data;
+  CtkSelectionData *data;
   gboolean result = FALSE;
 
   data = ctk_clipboard_wait_for_contents (clipboard,
@@ -1005,9 +1005,9 @@ ctk_clipboard_wait_is_image_available (GtkClipboard *clipboard)
 }
 
 gboolean
-ctk_clipboard_wait_is_uris_available (GtkClipboard *clipboard)
+ctk_clipboard_wait_is_uris_available (CtkClipboard *clipboard)
 {
-  GtkSelectionData *data;
+  CtkSelectionData *data;
   gboolean result = FALSE;
 
   data = ctk_clipboard_wait_for_contents (clipboard,
@@ -1023,7 +1023,7 @@ ctk_clipboard_wait_is_uris_available (GtkClipboard *clipboard)
 
 /**
  * ctk_clipboard_wait_for_targets:
- * @clipboard: a #GtkClipboard
+ * @clipboard: a #CtkClipboard
  * @targets: (out) (array length=n_targets) (transfer container): location
  *           to store an array of targets. The result stored here must
  *           be freed with g_free().
@@ -1041,11 +1041,11 @@ ctk_clipboard_wait_is_uris_available (GtkClipboard *clipboard)
  * Since: 2.4
  */
 gboolean
-ctk_clipboard_wait_for_targets (GtkClipboard  *clipboard,
+ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
 				GdkAtom      **targets,
 				gint          *n_targets)
 {
-  GtkSelectionData *data;
+  CtkSelectionData *data;
   gboolean result = FALSE;
 
   g_return_val_if_fail (clipboard != NULL, FALSE);
@@ -1100,12 +1100,12 @@ ctk_clipboard_wait_for_targets (GtkClipboard  *clipboard,
   return result;
 }
 
-static GtkClipboard *
+static CtkClipboard *
 clipboard_peek (GdkDisplay *display,
 		GdkAtom     selection,
 		gboolean    only_if_exists)
 {
-  GtkClipboard *clipboard = NULL;
+  CtkClipboard *clipboard = NULL;
   GSList *clipboards;
   GSList *tmp_list;
 
@@ -1160,7 +1160,7 @@ clipboard_peek (GdkDisplay *display,
 }
 
 static void
-ctk_clipboard_owner_change (GtkClipboard        *clipboard,
+ctk_clipboard_owner_change (CtkClipboard        *clipboard,
 			    GdkEventOwnerChange *event)
 {
   if (clipboard->n_cached_targets != -1)
@@ -1171,7 +1171,7 @@ ctk_clipboard_owner_change (GtkClipboard        *clipboard,
 }
 
 gboolean
-ctk_clipboard_wait_is_target_available (GtkClipboard *clipboard,
+ctk_clipboard_wait_is_target_available (CtkClipboard *clipboard,
 					GdkAtom       target)
 {
   GdkAtom *targets;
@@ -1207,19 +1207,19 @@ _ctk_clipboard_handle_event (GdkEventOwnerChange *event)
  * @n_targets:
  */
 void
-ctk_clipboard_set_can_store (GtkClipboard         *clipboard,
- 			     const GtkTargetEntry *targets,
+ctk_clipboard_set_can_store (CtkClipboard         *clipboard,
+ 			     const CtkTargetEntry *targets,
  			     gint                  n_targets)
 {
   /* FIXME: Implement */
 }
 
 void
-ctk_clipboard_store (GtkClipboard *clipboard)
+ctk_clipboard_store (CtkClipboard *clipboard)
 {
   int i;
   int n_targets = 0;
-  GtkTargetEntry *targets;
+  CtkTargetEntry *targets;
 
   g_return_if_fail (CTK_IS_CLIPBOARD (clipboard));
 
@@ -1237,7 +1237,7 @@ ctk_clipboard_store (GtkClipboard *clipboard)
                                             &n_targets);
   for (i = 0; i < n_targets; i++)
     {
-      GtkSelectionData selection_data;
+      CtkSelectionData selection_data;
 
       /* in each loop iteration, check if the content is still
        * there, because calling get_func() can do anything to
@@ -1246,7 +1246,7 @@ ctk_clipboard_store (GtkClipboard *clipboard)
       if (!clipboard->target_list || !clipboard->get_func)
         break;
 
-      memset (&selection_data, 0, sizeof (GtkSelectionData));
+      memset (&selection_data, 0, sizeof (CtkSelectionData));
 
       selection_data.selection = clipboard->selection;
       selection_data.target = gdk_atom_intern_static_string (targets[i].target);
@@ -1270,7 +1270,7 @@ ctk_clipboard_store (GtkClipboard *clipboard)
 void
 _ctk_clipboard_store_all (void)
 {
-  GtkClipboard *clipboard;
+  CtkClipboard *clipboard;
   GSList *displays, *list;
 
   displays = gdk_display_manager_list_displays (gdk_display_manager_get ());
@@ -1298,7 +1298,7 @@ _ctk_clipboard_store_all (void)
  * Since: 3.22
  */
 GdkAtom
-ctk_clipboard_get_selection (GtkClipboard *clipboard)
+ctk_clipboard_get_selection (CtkClipboard *clipboard)
 {
   g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), GDK_NONE);
 

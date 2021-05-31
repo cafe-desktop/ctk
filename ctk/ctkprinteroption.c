@@ -25,7 +25,7 @@
 #include "ctkprinteroption.h"
 
 /*****************************************
- *            GtkPrinterOption           *
+ *            CtkPrinterOption           *
  *****************************************/
 
 enum {
@@ -49,12 +49,12 @@ static void ctk_printer_option_get_property (GObject      *object,
                                              GValue       *value,
                                              GParamSpec   *pspec);
 
-G_DEFINE_TYPE (GtkPrinterOption, ctk_printer_option, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkPrinterOption, ctk_printer_option, G_TYPE_OBJECT)
 
 static void
 ctk_printer_option_finalize (GObject *object)
 {
-  GtkPrinterOption *option = CTK_PRINTER_OPTION (object);
+  CtkPrinterOption *option = CTK_PRINTER_OPTION (object);
   int i;
   
   g_free (option->name);
@@ -73,14 +73,14 @@ ctk_printer_option_finalize (GObject *object)
 }
 
 static void
-ctk_printer_option_init (GtkPrinterOption *option)
+ctk_printer_option_init (CtkPrinterOption *option)
 {
   option->value = g_strdup ("");
   option->activates_default = FALSE;
 }
 
 static void
-ctk_printer_option_class_init (GtkPrinterOptionClass *class)
+ctk_printer_option_class_init (CtkPrinterOptionClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
@@ -92,7 +92,7 @@ ctk_printer_option_class_init (GtkPrinterOptionClass *class)
     g_signal_new (I_("changed"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrinterOptionClass, changed),
+		  G_STRUCT_OFFSET (CtkPrinterOptionClass, changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
@@ -106,11 +106,11 @@ ctk_printer_option_class_init (GtkPrinterOptionClass *class)
                                                         CTK_PARAM_READWRITE));
 }
 
-GtkPrinterOption *
+CtkPrinterOption *
 ctk_printer_option_new (const char *name, const char *display_text,
-			GtkPrinterOptionType type)
+			CtkPrinterOptionType type)
 {
-  GtkPrinterOption *option;
+  CtkPrinterOption *option;
 
   option = g_object_new (CTK_TYPE_PRINTER_OPTION, NULL);
 
@@ -127,7 +127,7 @@ ctk_printer_option_set_property (GObject         *object,
                                  const GValue    *value,
                                  GParamSpec      *pspec)
 {
-  GtkPrinterOption *option = CTK_PRINTER_OPTION (object);
+  CtkPrinterOption *option = CTK_PRINTER_OPTION (object);
 
   switch (prop_id)
     {
@@ -146,7 +146,7 @@ ctk_printer_option_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkPrinterOption *option = CTK_PRINTER_OPTION (object);
+  CtkPrinterOption *option = CTK_PRINTER_OPTION (object);
 
   switch (prop_id)
     {
@@ -160,13 +160,13 @@ ctk_printer_option_get_property (GObject    *object,
 }
 
 static void
-emit_changed (GtkPrinterOption *option)
+emit_changed (CtkPrinterOption *option)
 {
   g_signal_emit (option, signals[CHANGED], 0);
 }
 
 void
-ctk_printer_option_set (GtkPrinterOption *option,
+ctk_printer_option_set (CtkPrinterOption *option,
 			const char *value)
 {
   if (value == NULL)
@@ -200,14 +200,14 @@ ctk_printer_option_set (GtkPrinterOption *option,
 }
 
 void
-ctk_printer_option_set_boolean (GtkPrinterOption *option,
+ctk_printer_option_set_boolean (CtkPrinterOption *option,
 				gboolean value)
 {
   ctk_printer_option_set (option, value ? "True" : "False");
 }
 
 void
-ctk_printer_option_set_has_conflict  (GtkPrinterOption *option,
+ctk_printer_option_set_has_conflict  (CtkPrinterOption *option,
 				      gboolean  has_conflict)
 {
   has_conflict = has_conflict != 0;
@@ -220,13 +220,13 @@ ctk_printer_option_set_has_conflict  (GtkPrinterOption *option,
 }
 
 void
-ctk_printer_option_clear_has_conflict (GtkPrinterOption     *option)
+ctk_printer_option_clear_has_conflict (CtkPrinterOption     *option)
 {
   ctk_printer_option_set_has_conflict  (option, FALSE);
 }
 
 void
-ctk_printer_option_allocate_choices (GtkPrinterOption     *option,
+ctk_printer_option_allocate_choices (CtkPrinterOption     *option,
 				     int num)
 {
   g_free (option->choices);
@@ -246,7 +246,7 @@ ctk_printer_option_allocate_choices (GtkPrinterOption     *option,
 }
 
 void
-ctk_printer_option_choices_from_array (GtkPrinterOption   *option,
+ctk_printer_option_choices_from_array (CtkPrinterOption   *option,
 				       int                 num_choices,
 				       char               *choices[],
 				       char              *choices_display[])
@@ -262,7 +262,7 @@ ctk_printer_option_choices_from_array (GtkPrinterOption   *option,
 }
 
 gboolean
-ctk_printer_option_has_choice (GtkPrinterOption     *option,
+ctk_printer_option_has_choice (CtkPrinterOption     *option,
 			       const char           *choice)
 {
   int i;
@@ -277,7 +277,7 @@ ctk_printer_option_has_choice (GtkPrinterOption     *option,
 }
 
 void
-ctk_printer_option_set_activates_default (GtkPrinterOption *option,
+ctk_printer_option_set_activates_default (CtkPrinterOption *option,
 					  gboolean          activates)
 {
   g_return_if_fail (CTK_IS_PRINTER_OPTION (option));
@@ -286,7 +286,7 @@ ctk_printer_option_set_activates_default (GtkPrinterOption *option,
 }
 
 gboolean
-ctk_printer_option_get_activates_default (GtkPrinterOption *option)
+ctk_printer_option_get_activates_default (CtkPrinterOption *option)
 {
   g_return_val_if_fail (CTK_IS_PRINTER_OPTION (option), FALSE);
 

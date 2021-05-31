@@ -24,13 +24,13 @@
 #define MANY_ITEMS     10000
 
 static void
-fill_model (GtkTreeModel *model)
+fill_model (CtkTreeModel *model)
 {
   GdkPixbuf *pixbuf;
   int i;
   char *str, *str2;
-  GtkTreeIter iter;
-  GtkListStore *store = CTK_LIST_STORE (model);
+  CtkTreeIter iter;
+  CtkListStore *store = CTK_LIST_STORE (model);
   gint32 size;
   
   pixbuf = gdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
@@ -71,10 +71,10 @@ fill_model (GtkTreeModel *model)
   //  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (store), 2, CTK_SORT_ASCENDING);
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_model (void)
 {
-  GtkListStore *store;
+  CtkListStore *store;
   
   store = ctk_list_store_new (5, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_BOOLEAN);
 
@@ -83,10 +83,10 @@ create_model (void)
 
 
 static void
-foreach_selected_remove (GtkWidget *button, GtkIconView *icon_list)
+foreach_selected_remove (CtkWidget *button, CtkIconView *icon_list)
 {
-  GtkTreeIter iter;
-  GtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
 
   GList *list, *selected;
 
@@ -95,7 +95,7 @@ foreach_selected_remove (GtkWidget *button, GtkIconView *icon_list)
   
   for (list = selected; list; list = list->next)
     {
-      GtkTreePath *path = list->data;
+      CtkTreePath *path = list->data;
 
       ctk_tree_model_get_iter (model, &iter, path);
       ctk_list_store_remove (CTK_LIST_STORE (model), &iter);
@@ -108,10 +108,10 @@ foreach_selected_remove (GtkWidget *button, GtkIconView *icon_list)
 
 
 static void
-swap_rows (GtkWidget *button, GtkIconView *icon_list)
+swap_rows (CtkWidget *button, CtkIconView *icon_list)
 {
-  GtkTreeIter iter, iter2;
-  GtkTreeModel *model;
+  CtkTreeIter iter, iter2;
+  CtkTreeModel *model;
 
   model = ctk_icon_view_get_model (icon_list);
   ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (model), -2, CTK_SORT_ASCENDING);
@@ -123,12 +123,12 @@ swap_rows (GtkWidget *button, GtkIconView *icon_list)
 }
 
 static void
-add_n_items (GtkIconView *icon_list, gint n)
+add_n_items (CtkIconView *icon_list, gint n)
 {
   static gint count = NUMBER_OF_ITEMS;
 
-  GtkTreeIter iter;
-  GtkListStore *store;
+  CtkTreeIter iter;
+  CtkListStore *store;
   GdkPixbuf *pixbuf;
   gchar *str, *str2;
   gint i;
@@ -155,22 +155,22 @@ add_n_items (GtkIconView *icon_list, gint n)
 }
 
 static void
-add_some (GtkWidget *button, GtkIconView *icon_list)
+add_some (CtkWidget *button, CtkIconView *icon_list)
 {
   add_n_items (icon_list, SOME_ITEMS);
 }
 
 static void
-add_many (GtkWidget *button, GtkIconView *icon_list)
+add_many (CtkWidget *button, CtkIconView *icon_list)
 {
   add_n_items (icon_list, MANY_ITEMS);
 }
 
 static void
-add_large (GtkWidget *button, GtkIconView *icon_list)
+add_large (CtkWidget *button, CtkIconView *icon_list)
 {
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeIter iter;
 
   GdkPixbuf *pixbuf, *pb;
   gchar *str;
@@ -231,34 +231,34 @@ add_large (GtkWidget *button, GtkIconView *icon_list)
 }
 
 static void
-select_all (GtkWidget *button, GtkIconView *icon_list)
+select_all (CtkWidget *button, CtkIconView *icon_list)
 {
   ctk_icon_view_select_all (icon_list);
 }
 
 static void
-select_nonexisting (GtkWidget *button, GtkIconView *icon_list)
+select_nonexisting (CtkWidget *button, CtkIconView *icon_list)
 {  
-  GtkTreePath *path = ctk_tree_path_new_from_indices (999999, -1);
+  CtkTreePath *path = ctk_tree_path_new_from_indices (999999, -1);
   ctk_icon_view_select_path (icon_list, path);
   ctk_tree_path_free (path);
 }
 
 static void
-unselect_all (GtkWidget *button, GtkIconView *icon_list)
+unselect_all (CtkWidget *button, CtkIconView *icon_list)
 {
   ctk_icon_view_unselect_all (icon_list);
 }
 
 static void
-selection_changed (GtkIconView *icon_list)
+selection_changed (CtkIconView *icon_list)
 {
   g_print ("Selection changed!\n");
 }
 
 typedef struct {
-  GtkIconView     *icon_list;
-  GtkTreePath     *path;
+  CtkIconView     *icon_list;
+  CtkTreePath     *path;
 } ItemData;
 
 static void
@@ -269,11 +269,11 @@ free_item_data (ItemData *data)
 }
 
 static void
-item_activated (GtkIconView *icon_view,
-		GtkTreePath *path)
+item_activated (CtkIconView *icon_view,
+		CtkTreePath *path)
 {
-  GtkTreeIter iter;
-  GtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkTreeModel *model;
   gchar *text;
 
   model = ctk_icon_view_get_model (icon_view);
@@ -286,13 +286,13 @@ item_activated (GtkIconView *icon_view,
 }
 
 static void
-toggled (GtkCellRendererToggle *cell,
+toggled (CtkCellRendererToggle *cell,
 	 gchar                 *path_string,
 	 gpointer               data)
 {
-  GtkTreeModel *model = CTK_TREE_MODEL (data);
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
+  CtkTreeModel *model = CTK_TREE_MODEL (data);
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_string);
   gboolean value;
 
   ctk_tree_model_get_iter (model, &iter, path);
@@ -305,14 +305,14 @@ toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-edited (GtkCellRendererText *cell,
+edited (CtkCellRendererText *cell,
 	gchar               *path_string,
 	gchar               *new_text,
 	gpointer             data)
 {
-  GtkTreeModel *model = CTK_TREE_MODEL (data);
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
+  CtkTreeModel *model = CTK_TREE_MODEL (data);
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_string);
 
   ctk_tree_model_get_iter (model, &iter, path);
   ctk_list_store_set (CTK_LIST_STORE (model), &iter, 1, new_text, -1);
@@ -321,20 +321,20 @@ edited (GtkCellRendererText *cell,
 }
 
 static void
-item_cb (GtkWidget *menuitem,
+item_cb (CtkWidget *menuitem,
 	 ItemData  *data)
 {
   item_activated (data->icon_list, data->path);
 }
 
 static void
-do_popup_menu (GtkWidget      *icon_list, 
+do_popup_menu (CtkWidget      *icon_list, 
 	       GdkEventButton *event)
 {
-  GtkIconView *icon_view = CTK_ICON_VIEW (icon_list); 
-  GtkWidget *menu;
-  GtkWidget *menuitem;
-  GtkTreePath *path = NULL;
+  CtkIconView *icon_view = CTK_ICON_VIEW (icon_list); 
+  CtkWidget *menu;
+  CtkWidget *menuitem;
+  CtkTreePath *path = NULL;
   int button, event_time;
   ItemData *data;
   GList *list;
@@ -347,7 +347,7 @@ do_popup_menu (GtkWidget      *icon_list,
 
       if (list)
         {
-          path = (GtkTreePath*)list->data;
+          path = (CtkTreePath*)list->data;
           g_list_free_full (list, (GDestroyNotify) ctk_tree_path_free);
         }
     }
@@ -384,7 +384,7 @@ do_popup_menu (GtkWidget      *icon_list,
 	
 
 static gboolean
-button_press_event_handler (GtkWidget      *widget, 
+button_press_event_handler (CtkWidget      *widget, 
 			    GdkEventButton *event)
 {
   /* Ignore double-clicks and triple-clicks */
@@ -399,26 +399,26 @@ button_press_event_handler (GtkWidget      *widget,
 }
 
 static gboolean
-popup_menu_handler (GtkWidget *widget)
+popup_menu_handler (CtkWidget *widget)
 {
   do_popup_menu (widget, NULL);
   return TRUE;
 }
 
-static const GtkTargetEntry item_targets[] = {
+static const CtkTargetEntry item_targets[] = {
   { "CTK_TREE_MODEL_ROW", CTK_TARGET_SAME_APP, 0 }
 };
 	
 gint
 main (gint argc, gchar **argv)
 {
-  GtkWidget *paned, *tv;
-  GtkWidget *window, *icon_list, *scrolled_window;
-  GtkWidget *vbox, *bbox;
-  GtkWidget *button;
-  GtkTreeModel *model;
-  GtkCellRenderer *cell;
-  GtkTreeViewColumn *tvc;
+  CtkWidget *paned, *tv;
+  CtkWidget *window, *icon_list, *scrolled_window;
+  CtkWidget *vbox, *bbox;
+  CtkWidget *button;
+  CtkTreeModel *model;
+  CtkCellRenderer *cell;
+  CtkTreeViewColumn *tvc;
   
   ctk_init (&argc, &argv);
 

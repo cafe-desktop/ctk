@@ -309,8 +309,8 @@ msgid "Style context"
 msgstr "مەزمۇن ئۇسلۇبى"
 
 #: ../ctk/deprecated/ctkstyle.c:475
-msgid "GtkStyleContext to get style from"
-msgstr "GtkStyleContext ئۇسلۇبقا ئېرىشىدىغان ئورۇن"
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext ئۇسلۇبقا ئېرىشىدىغان ئورۇن"
 
 #: ../ctk/deprecated/ctktable.c:191
 msgid "Rows"
@@ -714,9 +714,9 @@ msgstr "مەشغۇلات گۇرۇپپىسى"
 
 #: ../ctk/ctkaction.c:394
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
-msgstr "بۇ GtkAction باغلانغان GtkActionGroup ياكى NULL (ئىچىدە ئىشلىتىلىدۇ)"
+msgstr "بۇ CtkAction باغلانغان CtkActionGroup ياكى NULL (ئىچىدە ئىشلىتىلىدۇ)"
 
 #: ../ctk/ctkaction.c:412 ../ctk/ctkbutton.c:353 ../ctk/ctkimagemenuitem.c:192
 msgid "Always show image"
@@ -890,8 +890,8 @@ msgstr "«باشقا…» تۈرىنى ئۆز ئىچىگە ئالسۇن"
 #: ../ctk/ctkappchooserbutton.c:615
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
-msgstr "GtkAppChooserDialog غا تەگكەندە بىرىكمە رامكا بىر تۈرنى ئۆز ئىچىگە ئالامدۇ يوق"
+"CtkAppChooserDialog"
+msgstr "CtkAppChooserDialog غا تەگكەندە بىرىكمە رامكا بىر تۈرنى ئۆز ئىچىگە ئالامدۇ يوق"
 
 #: ../ctk/ctkappchooserbutton.c:631
 msgid "Show default item"
@@ -1233,9 +1233,9 @@ msgstr "بوغچا تىپى"
 
 #: ../ctk/ctkbox.c:304
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
-msgstr "تارماق بۆلەكنىڭ ئاتا بۆلەكنىڭ باشلاش ياكى ئاخىرلىشىش ئىچىدىكى GtkPackType قىممىتى تەركىبىدە بار يوقلۇقىنى ئىپادىلەيدۇ"
+msgstr "تارماق بۆلەكنىڭ ئاتا بۆلەكنىڭ باشلاش ياكى ئاخىرلىشىش ئىچىدىكى CtkPackType قىممىتى تەركىبىدە بار يوقلۇقىنى ئىپادىلەيدۇ"
 
 #: ../ctk/ctkbox.c:310 ../ctk/ctknotebook.c:768 ../ctk/ctkpaned.c:348
 #: ../ctk/ctktoolitemgroup.c:1678
@@ -1520,9 +1520,9 @@ msgstr "بوغچا تىپى"
 
 #: ../ctk/ctkcellareabox.c:386
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
-msgstr "كاتەكچىنىڭ كاتەكچە دائىرىسىنىڭ باشلاش ياكى ئاخىرلىشىش ئىچىدىكى GtkPackType قىممىتى تەركىبىدە بار يوقلۇقىنى ئىپادىلەيدۇ"
+msgstr "كاتەكچىنىڭ كاتەكچە دائىرىسىنىڭ باشلاش ياكى ئاخىرلىشىش ئىچىدىكى CtkPackType قىممىتى تەركىبىدە بار يوقلۇقىنى ئىپادىلەيدۇ"
 
 #: ../ctk/ctkcellarea.c:803
 msgid "Focus Cell"
@@ -1800,8 +1800,8 @@ msgid "Size"
 msgstr "چوڭلۇقى"
 
 #: ../ctk/ctkcellrendererpixbuf.c:184
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "رەڭلەيدىغان سىنبەلگە چوڭلۇقىنىڭ GtkIconSize قىممىتى بەلگىلىنىدۇ"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "رەڭلەيدىغان سىنبەلگە چوڭلۇقىنىڭ CtkIconSize قىممىتى بەلگىلىنىدۇ"
 
 #: ../ctk/ctkcellrendererpixbuf.c:193
 msgid "Detail"
@@ -1918,8 +1918,8 @@ msgid "Pulse of the spinner"
 msgstr "چىغ تەڭشەكنىڭ ئىمپۇلسى"
 
 #: ../ctk/ctkcellrendererspinner.c:158
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "كۆرسىتىدىغان چىغ تەڭشەك چوڭلۇقىنىڭ GtkIconSize قىممىتى بەلگىلىنىدۇ"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "كۆرسىتىدىغان چىغ تەڭشەك چوڭلۇقىنىڭ CtkIconSize قىممىتى بەلگىلىنىدۇ"
 
 #: ../ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2368,16 +2368,16 @@ msgstr "كاتەكچە دائىرىسى"
 #: ../ctk/ctkcellview.c:253 ../ctk/ctkcombobox.c:1008
 #: ../ctk/ctkentrycompletion.c:452 ../ctk/ctkiconview.c:638
 #: ../ctk/ctktreemenu.c:333 ../ctk/ctktreeviewcolumn.c:425
-msgid "The GtkCellArea used to layout cells"
-msgstr "GtkCellArea ئىشلىتىپ كاتەكچە ئۇسلۇبى لايىھىلىنىدۇ"
+msgid "The CtkCellArea used to layout cells"
+msgstr "CtkCellArea ئىشلىتىپ كاتەكچە ئۇسلۇبى لايىھىلىنىدۇ"
 
 #: ../ctk/ctkcellview.c:276
 msgid "Cell Area Context"
 msgstr "كاتەكچە دائىرە تىل مۇھىتى"
 
 #: ../ctk/ctkcellview.c:277
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
-msgstr "GtkCellAreaContext ھېسابلاش كاتەكچىسىنىڭ كۆرۈنۈش گېئومېتىرىيىسىگە ئىشلىتىلىدۇ"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
+msgstr "CtkCellAreaContext ھېسابلاش كاتەكچىسىنىڭ كۆرۈنۈش گېئومېتىرىيىسىگە ئىشلىتىلىدۇ"
 
 #: ../ctk/ctkcellview.c:294
 msgid "Draw Sensitive"
@@ -2590,8 +2590,8 @@ msgstr "تۈر تېكىست ئىستونى"
 #: ../ctk/ctkcombobox.c:938
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
-msgstr "ئەگەر بىرىكمە رامكا #GtkComboBox:has-entry = %TRUE ئارقىلىق قۇرۇلغان بولسا، بىرىكمە رامكا مودېلىدىكى بۇ ئىستون كىرگۈزگۈچ تىزگىنىدىكى ھەرپ تىزىقىغا باغلىنىدۇ"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
+msgstr "ئەگەر بىرىكمە رامكا #CtkComboBox:has-entry = %TRUE ئارقىلىق قۇرۇلغان بولسا، بىرىكمە رامكا مودېلىدىكى بۇ ئىستون كىرگۈزگۈچ تىزگىنىدىكى ھەرپ تىزىقىغا باغلىنىدۇ"
 
 #: ../ctk/ctkcombobox.c:955
 msgid "ID Column"
@@ -3783,8 +3783,8 @@ msgstr "تەڭشە"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
-msgstr "ئەن ئۈستىدىكى تېكىستلەرنىڭ ئوخشاش بولمىغان قۇردىكى توغرىلىنىش ئۇسۇلى. بۇ تەڭشەك ئەننىڭ ئۆزىنىڭ توغرىلىنىشىغا تەسىر كۆرسەتمەيدۇ. GtkMisc::xalign دىكى چۈشەندۈرۈشنى كۆرۈڭ."
+"CtkMisc::xalign for that"
+msgstr "ئەن ئۈستىدىكى تېكىستلەرنىڭ ئوخشاش بولمىغان قۇردىكى توغرىلىنىش ئۇسۇلى. بۇ تەڭشەك ئەننىڭ ئۆزىنىڭ توغرىلىنىشىغا تەسىر كۆرسەتمەيدۇ. CtkMisc::xalign دىكى چۈشەندۈرۈشنى كۆرۈڭ."
 
 #: ../ctk/ctklabel.c:759
 msgid "Pattern"
@@ -4297,8 +4297,8 @@ msgid "Message area"
 msgstr "ئۇچۇر رايونى"
 
 #: ../ctk/ctkmessagedialog.c:310
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
-msgstr "سۆزلەشكۈنىڭ ئاساسىي ئەنى ۋە ئىككىنچى ئەنىنىڭ GtkVBox نى ساقلاپ قالىدۇ"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
+msgstr "سۆزلەشكۈنىڭ ئاساسىي ئەنى ۋە ئىككىنچى ئەنىنىڭ CtkVBox نى ساقلاپ قالىدۇ"
 
 #: ../ctk/ctkmisc.c:113
 msgid "Y align"
@@ -4788,16 +4788,16 @@ msgid "Default Page Setup"
 msgstr "كۆڭۈلدىكى بەت تەڭشىكى"
 
 #: ../ctk/ctkprintoperation.c:1088
-msgid "The GtkPageSetup used by default"
-msgstr "ئىشلىتىدىغان كۆڭۈلدىكى GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "ئىشلىتىدىغان كۆڭۈلدىكى CtkPageSetup"
 
 #: ../ctk/ctkprintoperation.c:1106 ../ctk/ctkprintunixdialog.c:384
 msgid "Print Settings"
 msgstr "بېسىش تەڭشىكى"
 
 #: ../ctk/ctkprintoperation.c:1107 ../ctk/ctkprintunixdialog.c:385
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "سۆزلەشكۈنىڭ GtkPrintSettings نى دەسلەپلەشتۈرۈۋاتىدۇ"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "سۆزلەشكۈنىڭ CtkPrintSettings نى دەسلەپلەشتۈرۈۋاتىدۇ"
 
 #: ../ctk/ctkprintoperation.c:1125
 msgid "Job Name"
@@ -4912,8 +4912,8 @@ msgid "Embed Page Setup"
 msgstr "سىڭدۈرمە بەت تەڭشەك"
 
 #: ../ctk/ctkprintoperation.c:1403 ../ctk/ctkprintunixdialog.c:426
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "ئەگەر بەت تەڭشەك بىرىكمىسى GtkPrintUnixDialog غا سىڭدۈرۈلسە ئۇنداقتا TRUE بولىدۇ"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "ئەگەر بەت تەڭشەك بىرىكمىسى CtkPrintUnixDialog غا سىڭدۈرۈلسە ئۇنداقتا TRUE بولىدۇ"
 
 #: ../ctk/ctkprintoperation.c:1424
 msgid "Number of Pages To Print"
@@ -4924,16 +4924,16 @@ msgid "The number of pages that will be printed."
 msgstr "باسىدىغان بەت سانى."
 
 #: ../ctk/ctkprintunixdialog.c:367
-msgid "The GtkPageSetup to use"
-msgstr "ئىشلىتىدىغان GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "ئىشلىتىدىغان CtkPageSetup"
 
 #: ../ctk/ctkprintunixdialog.c:392
 msgid "Selected Printer"
 msgstr "تاللانغان پرىنتېر"
 
 #: ../ctk/ctkprintunixdialog.c:393
-msgid "The GtkPrinter which is selected"
-msgstr "تاللانغان GtkPrinter"
+msgid "The CtkPrinter which is selected"
+msgstr "تاللانغان CtkPrinter"
 
 #: ../ctk/ctkprintunixdialog.c:400
 msgid "Manual Capabilities"
@@ -5075,8 +5075,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "تاق تاللاش قورال توپچىسى تۇرۇشلۇق گۇرۇپپا."
 
 #: ../ctk/ctkrange.c:425
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "بۇ دائىرىدىكى نەڭ نۆۋەتتىكى قىممىتىنىڭ GtkAdjustmen"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "بۇ دائىرىدىكى نەڭ نۆۋەتتىكى قىممىتىنىڭ CtkAdjustmen"
 
 #: ../ctk/ctkrange.c:433
 msgid "Invert direction slider moves to increase range value"
@@ -5300,8 +5300,8 @@ msgstr "سىنبەلگە چوڭلۇقى"
 
 #: ../ctk/ctkscalebutton.c:238
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "بۇ نىسبەتتىكى توپچا نەڭنىڭ نۆۋەتتىكى قىممىتىنىڭ GtkAdjustment"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "بۇ نىسبەتتىكى توپچا نەڭنىڭ نۆۋەتتىكى قىممىتىنىڭ CtkAdjustment"
 
 #: ../ctk/ctkscalebutton.c:266
 msgid "Icons"
@@ -5418,16 +5418,16 @@ msgid "Horizontal Adjustment"
 msgstr "توغرا يۆنىلىشتىكى تەڭشىلىشى"
 
 #: ../ctk/ctkscrolledwindow.c:368
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "توغرا يۆنىلىشتىكى GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "توغرا يۆنىلىشتىكى CtkAdjustment"
 
 #: ../ctk/ctkscrolledwindow.c:374
 msgid "Vertical Adjustment"
 msgstr "تىك يۆنىلىشتىكى تەڭشىلىشى"
 
 #: ../ctk/ctkscrolledwindow.c:375
-msgid "The GtkAdjustment for the vertical position"
-msgstr "تىك يۆنىلىشتىكى GtkAdjustment"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "تىك يۆنىلىشتىكى CtkAdjustment"
 
 #: ../ctk/ctkscrolledwindow.c:381
 msgid "Horizontal Scrollbar Policy"
@@ -5852,16 +5852,16 @@ msgid "Default file chooser backend"
 msgstr "كۆڭۈلدىكى ھۆججەت تاللىغۇچ ئارقا ئۇچى"
 
 #: ../ctk/ctksettings.c:882
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "ئىشلىتىدىغان كۆڭۈلدىكى GtkFileChooser ئارقا ئۇچ ئاتى"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "ئىشلىتىدىغان كۆڭۈلدىكى CtkFileChooser ئارقا ئۇچ ئاتى"
 
 #: ../ctk/ctksettings.c:899
 msgid "Default print backend"
 msgstr "كۆڭۈلدىكى بېسىش ئارقا ئۇچى"
 
 #: ../ctk/ctksettings.c:900
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "ئىشلىتىدىغان كۆڭۈلدىكى GtkPrintBackend ئارقا ئۇچ تىزىمى"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "ئىشلىتىدىغان كۆڭۈلدىكى CtkPrintBackend ئارقا ئۇچ تىزىمى"
 
 #: ../ctk/ctksettings.c:923
 msgid "Default command to run when displaying a print preview"
@@ -6293,8 +6293,8 @@ msgid "Value type"
 msgstr "قىممەت تىپى"
 
 #: ../ctk/ctkstyleproperty.c:118
-msgid "The value type returned by GtkStyleContext"
-msgstr "قىممەتنىڭ تىپى(GtkStyleContext قايتۇرغان)"
+msgid "The value type returned by CtkStyleContext"
+msgstr "قىممەتنىڭ تىپى(CtkStyleContext قايتۇرغان)"
 
 #: ../ctk/ctkswitch.c:815
 msgid "Whether the switch is on or off"
@@ -7087,8 +7087,8 @@ msgid "Fixed Height Mode"
 msgstr "مۇقىم ئېگىزلىك ھالىتى"
 
 #: ../ctk/ctktreeview.c:1066
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "ھەممە قۇرنىڭ ئېگىزلىكى ئوخشاش بولغاندا GtkTreeView تېزلىشىدۇ"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "ھەممە قۇرنىڭ ئېگىزلىكى ئوخشاش بولغاندا CtkTreeView تېزلىشىدۇ"
 
 #: ../ctk/ctktreeview.c:1086
 msgid "Hover Selection"
@@ -7846,8 +7846,8 @@ msgid "Focus in Toplevel"
 msgstr "يۇقىرى قەۋەت كۆزنەكتىكى فوكۇس"
 
 #: ../ctk/ctkwindow.c:798
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "فوكۇس GtkWindow كۆزنەكتىمۇ ئەمەسمۇ"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "فوكۇس CtkWindow كۆزنەكتىمۇ ئەمەسمۇ"
 
 #: ../ctk/ctkwindow.c:805
 msgid "Type hint"
@@ -7972,12 +7972,12 @@ msgid "Height of resize grip"
 msgstr "چوڭلۇقىنى ئۆزگەرتىش تۇتقۇسىنىڭ ئېگىزلىكى"
 
 #: ../ctk/ctkwindow.c:1037
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ../ctk/ctkwindow.c:1038
-msgid "The GtkApplication for the window"
-msgstr "كۆزنەكنىڭ GtkApplication"
+msgid "The CtkApplication for the window"
+msgstr "كۆزنەكنىڭ CtkApplication"
 
 #: ../modules/printbackends/cups/ctkprintercups.c:93
 msgid "Color Profile Title"
@@ -7993,9 +7993,9 @@ msgstr "ئىشلىتىدىغان رەڭ Profile نىڭ ماۋزۇسى"
 #~ msgid "Event base for XInput events"
 #~ msgstr "XInput ھادىسىسىنىڭ ھادىسە ئاساسى"
 
-#~ msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+#~ msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 #~ msgstr ""
-#~ "ئەگەر بەت تەڭشەك بىرىكمىسى GtkPrintDialog غا سىڭدۈرۈلسە ئۇنداقتا TRUE "
+#~ "ئەگەر بەت تەڭشەك بىرىكمىسى CtkPrintDialog غا سىڭدۈرۈلسە ئۇنداقتا TRUE "
 #~ "بولىدۇ"
 
 #~ msgid "Background color as a (possibly unallocated) GdkColor"

@@ -30,25 +30,25 @@
 
 G_BEGIN_DECLS
 
-#define CTK_IS_TEXT_MARK_SEGMENT(mark) (((GtkTextLineSegment*)mark)->type == &ctk_text_left_mark_type || \
-                                ((GtkTextLineSegment*)mark)->type == &ctk_text_right_mark_type)
+#define CTK_IS_TEXT_MARK_SEGMENT(mark) (((CtkTextLineSegment*)mark)->type == &ctk_text_left_mark_type || \
+                                ((CtkTextLineSegment*)mark)->type == &ctk_text_right_mark_type)
 
 /*
  * The data structure below defines line segments that represent
  * marks.  There is one of these for each mark in the text.
  */
 
-struct _GtkTextMarkBody {
-  GtkTextMark *obj;
+struct _CtkTextMarkBody {
+  CtkTextMark *obj;
   gchar *name;
-  GtkTextBTree *tree;
-  GtkTextLine *line;
+  CtkTextBTree *tree;
+  CtkTextLine *line;
   guint visible : 1;
   guint not_deleteable : 1;
 };
 
-void _ctk_mark_segment_set_tree (GtkTextLineSegment *mark,
-				 GtkTextBTree       *tree);
+void _ctk_mark_segment_set_tree (CtkTextLineSegment *mark,
+				 CtkTextBTree       *tree);
 
 G_END_DECLS
 

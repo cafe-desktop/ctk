@@ -11,7 +11,7 @@ typedef struct {
 } FrameData;
 
 static FrameData *displayed_frame;
-static GtkWidget *window;
+static CtkWidget *window;
 static GList *past_frames;
 static Variable latency_error = VARIABLE_INIT;
 static Variable time_factor_stats = VARIABLE_INIT;
@@ -191,7 +191,7 @@ adjust_clock_for_phase (gint64 frame_clock_time,
 /* Drawing */
 
 static gboolean
-on_window_draw (GtkWidget *widget,
+on_window_draw (CtkWidget *widget,
                 cairo_t   *cr)
 {
   GdkRectangle allocation;

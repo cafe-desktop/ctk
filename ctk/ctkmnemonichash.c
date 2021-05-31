@@ -19,16 +19,16 @@
 
 #include "ctkmnemonichash.h"
 
-struct _GtkMnemnonicHash
+struct _CtkMnemnonicHash
 {
   GHashTable *hash;
 };
 
 
-GtkMnemonicHash *
+CtkMnemonicHash *
 _ctk_mnemonic_hash_new (void)
 {
-  GtkMnemonicHash *mnemonic_hash = g_new (GtkMnemonicHash, 1);
+  CtkMnemonicHash *mnemonic_hash = g_new (CtkMnemonicHash, 1);
 
   mnemonic_hash->hash = g_hash_table_new (g_direct_hash, NULL);
 
@@ -53,7 +53,7 @@ mnemonic_hash_free_foreach (gpointer	key,
 }
 
 void
-_ctk_mnemonic_hash_free (GtkMnemonicHash *mnemonic_hash)
+_ctk_mnemonic_hash_free (CtkMnemonicHash *mnemonic_hash)
 {
   g_hash_table_foreach (mnemonic_hash->hash,
 			mnemonic_hash_free_foreach,
@@ -64,9 +64,9 @@ _ctk_mnemonic_hash_free (GtkMnemonicHash *mnemonic_hash)
 }
 
 void
-_ctk_mnemonic_hash_add (GtkMnemonicHash *mnemonic_hash,
+_ctk_mnemonic_hash_add (CtkMnemonicHash *mnemonic_hash,
 			guint            keyval,
-			GtkWidget       *target)
+			CtkWidget       *target)
 {
   gpointer key = GUINT_TO_POINTER (keyval);
   GSList *targets, *new_targets;
@@ -82,9 +82,9 @@ _ctk_mnemonic_hash_add (GtkMnemonicHash *mnemonic_hash,
 }
 
 void
-_ctk_mnemonic_hash_remove (GtkMnemonicHash *mnemonic_hash,
+_ctk_mnemonic_hash_remove (CtkMnemonicHash *mnemonic_hash,
 			   guint           keyval,
-			   GtkWidget      *target)
+			   CtkWidget      *target)
 {
   gpointer key = GUINT_TO_POINTER (keyval);
   GSList *targets, *new_targets;
@@ -106,11 +106,11 @@ _ctk_mnemonic_hash_remove (GtkMnemonicHash *mnemonic_hash,
 }
 
 gboolean
-_ctk_mnemonic_hash_activate (GtkMnemonicHash *mnemonic_hash,
+_ctk_mnemonic_hash_activate (CtkMnemonicHash *mnemonic_hash,
 			     guint            keyval)
 {
   GSList *list, *targets;
-  GtkWidget *widget, *chosen_widget;
+  CtkWidget *widget, *chosen_widget;
   GdkWindow *window;
   gboolean overloaded;
 
@@ -157,7 +157,7 @@ _ctk_mnemonic_hash_activate (GtkMnemonicHash *mnemonic_hash,
 }
 
 GSList *
-_ctk_mnemonic_hash_lookup (GtkMnemonicHash *mnemonic_hash,
+_ctk_mnemonic_hash_lookup (CtkMnemonicHash *mnemonic_hash,
 			   guint            keyval)
 {
   return g_hash_table_lookup (mnemonic_hash->hash, GUINT_TO_POINTER (keyval));
@@ -169,7 +169,7 @@ mnemonic_hash_foreach_func (gpointer key,
 			    gpointer data)
 {
   struct {
-    GtkMnemonicHashForeach func;
+    CtkMnemonicHashForeach func;
     gpointer func_data;
   } *info = data;
 
@@ -180,12 +180,12 @@ mnemonic_hash_foreach_func (gpointer key,
 }
 
 void
-_ctk_mnemonic_hash_foreach (GtkMnemonicHash       *mnemonic_hash,
-			    GtkMnemonicHashForeach func,
+_ctk_mnemonic_hash_foreach (CtkMnemonicHash       *mnemonic_hash,
+			    CtkMnemonicHashForeach func,
 			    gpointer               func_data)
 {
   struct {
-    GtkMnemonicHashForeach func;
+    CtkMnemonicHashForeach func;
     gpointer func_data;
   } info;
   

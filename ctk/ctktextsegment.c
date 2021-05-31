@@ -6,7 +6,7 @@
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1995 Sun Microsystems, Inc.
  * Copyright (c) 2000      Red Hat, Inc.
- * Tk -> Gtk port by Havoc Pennington <hp@redhat.com>
+ * Tk -> Ctk port by Havoc Pennington <hp@redhat.com>
  *
  * This software is copyrighted by the Regents of the University of
  * California, Sun Microsystems, Inc., and other parties.  The
@@ -90,12 +90,12 @@
  *--------------------------------------------------------------
  */
 
-GtkTextLineSegment*
-ctk_text_line_segment_split (const GtkTextIter *iter)
+CtkTextLineSegment*
+ctk_text_line_segment_split (const CtkTextIter *iter)
 {
-  GtkTextLineSegment *prev, *seg;
-  GtkTextBTree *tree;
-  GtkTextLine *line;
+  CtkTextLineSegment *prev, *seg;
+  CtkTextBTree *tree;
+  CtkTextLine *line;
   int count;
 
   line = _ctk_text_iter_get_text_line (iter);
@@ -153,17 +153,17 @@ ctk_text_line_segment_split (const GtkTextIter *iter)
  * Macros that determine how much space to allocate for new segments:
  */
 
-#define CSEG_SIZE(chars) ((unsigned) (G_STRUCT_OFFSET (GtkTextLineSegment, body) \
+#define CSEG_SIZE(chars) ((unsigned) (G_STRUCT_OFFSET (CtkTextLineSegment, body) \
         + 1 + (chars)))
-#define TSEG_SIZE ((unsigned) (G_STRUCT_OFFSET (GtkTextLineSegment, body) \
-        + sizeof (GtkTextToggleBody)))
+#define TSEG_SIZE ((unsigned) (G_STRUCT_OFFSET (CtkTextLineSegment, body) \
+        + sizeof (CtkTextToggleBody)))
 
 /*
  * Type functions
  */
 
 static void
-char_segment_self_check (GtkTextLineSegment *seg)
+char_segment_self_check (CtkTextLineSegment *seg)
 {
   /* This function checks the segment itself, but doesn't
      assume the segment has been validly inserted into
@@ -187,15 +187,15 @@ char_segment_self_check (GtkTextLineSegment *seg)
     }
 }
 
-GtkTextLineSegment*
+CtkTextLineSegment*
 _ctk_char_segment_new (const gchar *text, guint len)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_assert (ctk_text_byte_begins_utf8_char (text));
 
   seg = g_slice_alloc (CSEG_SIZE (len));
-  seg->type = (GtkTextLineSegmentClass *)&ctk_text_char_type;
+  seg->type = (CtkTextLineSegmentClass *)&ctk_text_char_type;
   seg->next = NULL;
   seg->byte_count = len;
   memcpy (seg->body.chars, text, len);
@@ -209,7 +209,7 @@ _ctk_char_segment_new (const gchar *text, guint len)
   return seg;
 }
 
-GtkTextLineSegment*
+CtkTextLineSegment*
 _ctk_char_segment_new_from_two_strings (const gchar *text1, 
 					guint        len1, 
 					guint        chars1,
@@ -217,7 +217,7 @@ _ctk_char_segment_new_from_two_strings (const gchar *text1,
 					guint        len2, 
 					guint        chars2)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   g_assert (ctk_text_byte_begins_utf8_char (text1));
   g_assert (ctk_text_byte_begins_utf8_char (text2));
@@ -239,7 +239,7 @@ _ctk_char_segment_new_from_two_strings (const gchar *text1,
 }
 
 static void
-_ctk_char_segment_free (GtkTextLineSegment *seg)
+_ctk_char_segment_free (CtkTextLineSegment *seg)
 {
   if (seg == NULL)
     return;
@@ -267,10 +267,10 @@ _ctk_char_segment_free (GtkTextLineSegment *seg)
  *--------------------------------------------------------------
  */
 
-static GtkTextLineSegment *
-char_segment_split_func (GtkTextLineSegment *seg, int index)
+static CtkTextLineSegment *
+char_segment_split_func (CtkTextLineSegment *seg, int index)
 {
-  GtkTextLineSegment *new1, *new2;
+  CtkTextLineSegment *new1, *new2;
 
   g_assert (index < seg->byte_count);
 
@@ -324,10 +324,10 @@ char_segment_split_func (GtkTextLineSegment *seg, int index)
  */
 
         /* ARGSUSED */
-static GtkTextLineSegment *
-char_segment_cleanup_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
+static CtkTextLineSegment *
+char_segment_cleanup_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
 {
-  GtkTextLineSegment *segPtr2, *newPtr;
+  CtkTextLineSegment *segPtr2, *newPtr;
 
   if (CTK_DEBUG_CHECK (TEXT))
     char_segment_self_check (segPtr);
@@ -380,7 +380,7 @@ char_segment_cleanup_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
 
         /* ARGSUSED */
 static int
-char_segment_delete_func (GtkTextLineSegment *segPtr, GtkTextLine *line, int treeGone)
+char_segment_delete_func (CtkTextLineSegment *segPtr, CtkTextLine *line, int treeGone)
 {
   _ctk_char_segment_free (segPtr);
   return 0;
@@ -410,7 +410,7 @@ char_segment_delete_func (GtkTextLineSegment *segPtr, GtkTextLine *line, int tre
 
         /* ARGSUSED */
 static void
-char_segment_check_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
+char_segment_check_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
 {
   char_segment_self_check (segPtr);
 
@@ -423,10 +423,10 @@ char_segment_check_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
     }
 }
 
-GtkTextLineSegment*
-_ctk_toggle_segment_new (GtkTextTagInfo *info, gboolean on)
+CtkTextLineSegment*
+_ctk_toggle_segment_new (CtkTextTagInfo *info, gboolean on)
 {
-  GtkTextLineSegment *seg;
+  CtkTextLineSegment *seg;
 
   seg = g_slice_alloc (TSEG_SIZE);
 
@@ -444,7 +444,7 @@ _ctk_toggle_segment_new (GtkTextTagInfo *info, gboolean on)
 }
 
 void
-_ctk_toggle_segment_free (GtkTextLineSegment *seg)
+_ctk_toggle_segment_free (CtkTextLineSegment *seg)
 {
   if (seg == NULL)
     return;
@@ -474,14 +474,14 @@ _ctk_toggle_segment_free (GtkTextLineSegment *seg)
  *
  * Side effects:
  *      If the tree is going away then the toggle’s memory is
- *      freed;  otherwise the toggle counts in GtkTextBTreeNodes above the
+ *      freed;  otherwise the toggle counts in CtkTextBTreeNodes above the
  *      segment get updated.
  *
  *--------------------------------------------------------------
  */
 
 static int
-toggle_segment_delete_func (GtkTextLineSegment *segPtr, GtkTextLine *line, int treeGone)
+toggle_segment_delete_func (CtkTextLineSegment *segPtr, CtkTextLine *line, int treeGone)
 {
   if (treeGone)
     {
@@ -493,7 +493,7 @@ toggle_segment_delete_func (GtkTextLineSegment *segPtr, GtkTextLine *line, int t
    * This toggle is in the middle of a range of characters that's
    * being deleted.  Refuse to die.  We'll be moved to the end of
    * the deleted range and our cleanup procedure will be called
-   * later.  Decrement GtkTextBTreeNode toggle counts here, and set a flag
+   * later.  Decrement CtkTextBTreeNode toggle counts here, and set a flag
    * so we'll re-increment them in the cleanup procedure.
    */
 
@@ -526,17 +526,17 @@ toggle_segment_delete_func (GtkTextLineSegment *segPtr, GtkTextLine *line, int t
  *      or modify segPtr.
  *
  * Side effects:
- *      Toggle counts in the GtkTextBTreeNodes above the new line will be
+ *      Toggle counts in the CtkTextBTreeNodes above the new line will be
  *      updated if they’re not already.  Toggles may be collapsed
  *      if there are duplicate toggles at the same position.
  *
  *--------------------------------------------------------------
  */
 
-static GtkTextLineSegment *
-toggle_segment_cleanup_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
+static CtkTextLineSegment *
+toggle_segment_cleanup_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
 {
-  GtkTextLineSegment *segPtr2, *prevPtr;
+  CtkTextLineSegment *segPtr2, *prevPtr;
   int counts;
 
   /*
@@ -600,13 +600,13 @@ toggle_segment_cleanup_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
  *      None.
  *
  * Side effects:
- *      Toggle counts are decremented in the GtkTextBTreeNodes above the line.
+ *      Toggle counts are decremented in the CtkTextBTreeNodes above the line.
  *
  *--------------------------------------------------------------
  */
 
 static void
-toggle_segment_line_change_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
+toggle_segment_line_change_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
 {
   if (segPtr->body.toggle.inNodeCounts)
     {
@@ -621,7 +621,7 @@ toggle_segment_line_change_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
  */
 
 
-const GtkTextLineSegmentClass ctk_text_char_type = {
+const CtkTextLineSegmentClass ctk_text_char_type = {
   "character",                          /* name */
   0,                                            /* leftGravity */
   char_segment_split_func,                              /* splitFunc */
@@ -636,7 +636,7 @@ const GtkTextLineSegmentClass ctk_text_char_type = {
  * range:
  */
 
-const GtkTextLineSegmentClass ctk_text_toggle_on_type = {
+const CtkTextLineSegmentClass ctk_text_toggle_on_type = {
   "toggleOn",                                   /* name */
   0,                                            /* leftGravity */
   NULL,                 /* splitFunc */
@@ -651,7 +651,7 @@ const GtkTextLineSegmentClass ctk_text_toggle_on_type = {
  * range:
  */
 
-const GtkTextLineSegmentClass ctk_text_toggle_off_type = {
+const CtkTextLineSegmentClass ctk_text_toggle_off_type = {
   "toggleOff",                          /* name */
   1,                                            /* leftGravity */
   NULL,                 /* splitFunc */

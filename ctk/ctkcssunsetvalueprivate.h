@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _ctk_css_unset_value_new            (void);
+CtkCssValue *   _ctk_css_unset_value_new            (void);
 
 G_END_DECLS
 

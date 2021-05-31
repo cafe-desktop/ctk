@@ -20,13 +20,13 @@
 /**
  * SECTION:ctkgesturedrag
  * @Short_description: Drag gesture
- * @Title: GtkGestureDrag
- * @See_also: #GtkGestureSwipe
+ * @Title: CtkGestureDrag
+ * @See_also: #CtkGestureSwipe
  *
- * #GtkGestureDrag is a #GtkGesture implementation that recognizes drag
+ * #CtkGestureDrag is a #CtkGesture implementation that recognizes drag
  * operations. The drag operation itself can be tracked throught the
- * #GtkGestureDrag::drag-begin, #GtkGestureDrag::drag-update and
- * #GtkGestureDrag::drag-end signals, or the relevant coordinates be
+ * #CtkGestureDrag::drag-begin, #CtkGestureDrag::drag-update and
+ * #CtkGestureDrag::drag-end signals, or the relevant coordinates be
  * extracted through ctk_gesture_drag_get_offset() and
  * ctk_gesture_drag_get_start_point().
  */
@@ -36,10 +36,10 @@
 #include "ctkintl.h"
 #include "ctkmarshalers.h"
 
-typedef struct _GtkGestureDragPrivate GtkGestureDragPrivate;
+typedef struct _CtkGestureDragPrivate CtkGestureDragPrivate;
 typedef struct _EventData EventData;
 
-struct _GtkGestureDragPrivate
+struct _CtkGestureDragPrivate
 {
   gdouble start_x;
   gdouble start_y;
@@ -56,10 +56,10 @@ enum {
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureDrag, ctk_gesture_drag, CTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkGestureDrag, ctk_gesture_drag, CTK_TYPE_GESTURE_SINGLE)
 
 static gboolean
-ctk_gesture_drag_filter_event (GtkEventController *controller,
+ctk_gesture_drag_filter_event (CtkEventController *controller,
                                const GdkEvent     *event)
 {
   /* Let touchpad swipe events go through, only if they match n-points  */
@@ -79,10 +79,10 @@ ctk_gesture_drag_filter_event (GtkEventController *controller,
 }
 
 static void
-ctk_gesture_drag_begin (GtkGesture       *gesture,
+ctk_gesture_drag_begin (CtkGesture       *gesture,
                         GdkEventSequence *sequence)
 {
-  GtkGestureDragPrivate *priv;
+  CtkGestureDragPrivate *priv;
   GdkEventSequence *current;
 
   current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
@@ -96,10 +96,10 @@ ctk_gesture_drag_begin (GtkGesture       *gesture,
 }
 
 static void
-ctk_gesture_drag_update (GtkGesture       *gesture,
+ctk_gesture_drag_update (CtkGesture       *gesture,
                          GdkEventSequence *sequence)
 {
-  GtkGestureDragPrivate *priv;
+  CtkGestureDragPrivate *priv;
   gdouble x, y;
 
   priv = ctk_gesture_drag_get_instance_private (CTK_GESTURE_DRAG (gesture));
@@ -111,10 +111,10 @@ ctk_gesture_drag_update (GtkGesture       *gesture,
 }
 
 static void
-ctk_gesture_drag_end (GtkGesture       *gesture,
+ctk_gesture_drag_end (CtkGesture       *gesture,
                       GdkEventSequence *sequence)
 {
-  GtkGestureDragPrivate *priv;
+  CtkGestureDragPrivate *priv;
   GdkEventSequence *current;
   gdouble x, y;
 
@@ -129,10 +129,10 @@ ctk_gesture_drag_end (GtkGesture       *gesture,
 }
 
 static void
-ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
+ctk_gesture_drag_class_init (CtkGestureDragClass *klass)
 {
-  GtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
-  GtkEventControllerClass *event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
+  CtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
+  CtkEventControllerClass *event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
 
   event_controller_class->filter_event = ctk_gesture_drag_filter_event;
 
@@ -141,7 +141,7 @@ ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
   gesture_class->end = ctk_gesture_drag_end;
 
   /**
-   * GtkGestureDrag::drag-begin:
+   * CtkGestureDrag::drag-begin:
    * @gesture: the object which received the signal
    * @start_x: X coordinate, relative to the widget allocation
    * @start_y: Y coordinate, relative to the widget allocation
@@ -154,7 +154,7 @@ ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
     g_signal_new (I_("drag-begin"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkGestureDragClass, drag_begin),
+                  G_STRUCT_OFFSET (CtkGestureDragClass, drag_begin),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -162,7 +162,7 @@ ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__DOUBLE_DOUBLEv);
   /**
-   * GtkGestureDrag::drag-update:
+   * CtkGestureDrag::drag-update:
    * @gesture: the object which received the signal
    * @offset_x: X offset, relative to the start point
    * @offset_y: Y offset, relative to the start point
@@ -175,7 +175,7 @@ ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
     g_signal_new (I_("drag-update"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkGestureDragClass, drag_update),
+                  G_STRUCT_OFFSET (CtkGestureDragClass, drag_update),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -183,7 +183,7 @@ ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__DOUBLE_DOUBLEv);
   /**
-   * GtkGestureDrag::drag-end:
+   * CtkGestureDrag::drag-end:
    * @gesture: the object which received the signal
    * @offset_x: X offset, relative to the start point
    * @offset_y: Y offset, relative to the start point
@@ -196,7 +196,7 @@ ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
     g_signal_new (I_("drag-end"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkGestureDragClass, drag_end),
+                  G_STRUCT_OFFSET (CtkGestureDragClass, drag_end),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -206,22 +206,22 @@ ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
 }
 
 static void
-ctk_gesture_drag_init (GtkGestureDrag *gesture)
+ctk_gesture_drag_init (CtkGestureDrag *gesture)
 {
 }
 
 /**
  * ctk_gesture_drag_new:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Returns a newly created #GtkGesture that recognizes drags.
+ * Returns a newly created #CtkGesture that recognizes drags.
  *
- * Returns: a newly created #GtkGestureDrag
+ * Returns: a newly created #CtkGestureDrag
  *
  * Since: 3.14
  **/
-GtkGesture *
-ctk_gesture_drag_new (GtkWidget *widget)
+CtkGesture *
+ctk_gesture_drag_new (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -232,7 +232,7 @@ ctk_gesture_drag_new (GtkWidget *widget)
 
 /**
  * ctk_gesture_drag_get_start_point:
- * @gesture: a #GtkGesture
+ * @gesture: a #CtkGesture
  * @x: (out) (nullable): X coordinate for the drag start point
  * @y: (out) (nullable): Y coordinate for the drag start point
  *
@@ -245,11 +245,11 @@ ctk_gesture_drag_new (GtkWidget *widget)
  * Since: 3.14
  **/
 gboolean
-ctk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
+ctk_gesture_drag_get_start_point (CtkGestureDrag *gesture,
                                   gdouble        *x,
                                   gdouble        *y)
 {
-  GtkGestureDragPrivate *priv;
+  CtkGestureDragPrivate *priv;
   GdkEventSequence *sequence;
 
   g_return_val_if_fail (CTK_IS_GESTURE_DRAG (gesture), FALSE);
@@ -272,7 +272,7 @@ ctk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
 
 /**
  * ctk_gesture_drag_get_offset:
- * @gesture: a #GtkGesture
+ * @gesture: a #CtkGesture
  * @x: (out) (nullable): X offset for the current point
  * @y: (out) (nullable): Y offset for the current point
  *
@@ -285,11 +285,11 @@ ctk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
  * Since: 3.14
  **/
 gboolean
-ctk_gesture_drag_get_offset (GtkGestureDrag *gesture,
+ctk_gesture_drag_get_offset (CtkGestureDrag *gesture,
                              gdouble        *x,
                              gdouble        *y)
 {
-  GtkGestureDragPrivate *priv;
+  CtkGestureDragPrivate *priv;
   GdkEventSequence *sequence;
 
   g_return_val_if_fail (CTK_IS_GESTURE_DRAG (gesture), FALSE);

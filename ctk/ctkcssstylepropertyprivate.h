@@ -25,40 +25,40 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_STYLE_PROPERTY           (_ctk_css_style_property_get_type ())
-#define CTK_CSS_STYLE_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_STYLE_PROPERTY, GtkCssStyleProperty))
-#define CTK_CSS_STYLE_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_STYLE_PROPERTY, GtkCssStylePropertyClass))
+#define CTK_CSS_STYLE_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_STYLE_PROPERTY, CtkCssStyleProperty))
+#define CTK_CSS_STYLE_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_STYLE_PROPERTY, CtkCssStylePropertyClass))
 #define CTK_IS_CSS_STYLE_PROPERTY(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_STYLE_PROPERTY))
 #define CTK_IS_CSS_STYLE_PROPERTY_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_STYLE_PROPERTY))
-#define CTK_CSS_STYLE_PROPERTY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_STYLE_PROPERTY, GtkCssStylePropertyClass))
+#define CTK_CSS_STYLE_PROPERTY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_STYLE_PROPERTY, CtkCssStylePropertyClass))
 
-typedef struct _GtkCssStyleProperty           GtkCssStyleProperty;
-typedef struct _GtkCssStylePropertyClass      GtkCssStylePropertyClass;
+typedef struct _CtkCssStyleProperty           CtkCssStyleProperty;
+typedef struct _CtkCssStylePropertyClass      CtkCssStylePropertyClass;
 
-typedef GtkCssValue *    (* GtkCssStylePropertyParseFunc)  (GtkCssStyleProperty    *property,
-                                                            GtkCssParser           *parser);
-typedef void             (* GtkCssStylePropertyQueryFunc)  (GtkCssStyleProperty    *property,
-                                                            const GtkCssValue      *cssvalue,
+typedef CtkCssValue *    (* CtkCssStylePropertyParseFunc)  (CtkCssStyleProperty    *property,
+                                                            CtkCssParser           *parser);
+typedef void             (* CtkCssStylePropertyQueryFunc)  (CtkCssStyleProperty    *property,
+                                                            const CtkCssValue      *cssvalue,
                                                             GValue                 *value);
-typedef GtkCssValue *    (* GtkCssStylePropertyAssignFunc) (GtkCssStyleProperty    *property,
+typedef CtkCssValue *    (* CtkCssStylePropertyAssignFunc) (CtkCssStyleProperty    *property,
                                                             const GValue           *value);
-struct _GtkCssStyleProperty
+struct _CtkCssStyleProperty
 {
-  GtkStyleProperty parent;
+  CtkStyleProperty parent;
 
-  GtkCssValue *initial_value;
+  CtkCssValue *initial_value;
   guint id;
-  GtkCssAffects affects;
+  CtkCssAffects affects;
   guint inherit :1;
   guint animated :1;
 
-  GtkCssStylePropertyParseFunc parse_value;
-  GtkCssStylePropertyQueryFunc query_value;
-  GtkCssStylePropertyAssignFunc assign_value;
+  CtkCssStylePropertyParseFunc parse_value;
+  CtkCssStylePropertyQueryFunc query_value;
+  CtkCssStylePropertyAssignFunc assign_value;
 };
 
-struct _GtkCssStylePropertyClass
+struct _CtkCssStylePropertyClass
 {
-  GtkStylePropertyClass parent_class;
+  CtkStylePropertyClass parent_class;
 
   GPtrArray *style_properties;
 };
@@ -68,27 +68,27 @@ GType                   _ctk_css_style_property_get_type        (void) G_GNUC_CO
 void                    _ctk_css_style_property_init_properties (void);
 
 guint                   _ctk_css_style_property_get_n_properties(void);
-GtkCssStyleProperty *   _ctk_css_style_property_lookup_by_id    (guint                   id);
+CtkCssStyleProperty *   _ctk_css_style_property_lookup_by_id    (guint                   id);
 
-gboolean                _ctk_css_style_property_is_inherit      (GtkCssStyleProperty    *property);
-gboolean                _ctk_css_style_property_is_animated     (GtkCssStyleProperty    *property);
-GtkCssAffects           _ctk_css_style_property_get_affects     (GtkCssStyleProperty    *property);
-gboolean                _ctk_css_style_property_affects_size    (GtkCssStyleProperty    *property);
-gboolean                _ctk_css_style_property_affects_font    (GtkCssStyleProperty    *property);
-guint                   _ctk_css_style_property_get_id          (GtkCssStyleProperty    *property);
-GtkCssValue  *          _ctk_css_style_property_get_initial_value
-                                                                (GtkCssStyleProperty    *property);
+gboolean                _ctk_css_style_property_is_inherit      (CtkCssStyleProperty    *property);
+gboolean                _ctk_css_style_property_is_animated     (CtkCssStyleProperty    *property);
+CtkCssAffects           _ctk_css_style_property_get_affects     (CtkCssStyleProperty    *property);
+gboolean                _ctk_css_style_property_affects_size    (CtkCssStyleProperty    *property);
+gboolean                _ctk_css_style_property_affects_font    (CtkCssStyleProperty    *property);
+guint                   _ctk_css_style_property_get_id          (CtkCssStyleProperty    *property);
+CtkCssValue  *          _ctk_css_style_property_get_initial_value
+                                                                (CtkCssStyleProperty    *property);
 
-void                    _ctk_css_style_property_print_value     (GtkCssStyleProperty    *property,
-                                                                 GtkCssValue            *value,
+void                    _ctk_css_style_property_print_value     (CtkCssStyleProperty    *property,
+                                                                 CtkCssValue            *value,
                                                                  GString                *string);
 
-GtkBitmask *            _ctk_css_style_property_get_mask_affecting
-                                                                (GtkCssAffects           affects);
+CtkBitmask *            _ctk_css_style_property_get_mask_affecting
+                                                                (CtkCssAffects           affects);
 
 /* XXX - find a better place for these */
-GtkCssValue * ctk_css_font_family_value_parse (GtkCssParser *parser);
-GtkCssValue * ctk_css_font_size_value_parse   (GtkCssParser *parser);
+CtkCssValue * ctk_css_font_family_value_parse (CtkCssParser *parser);
+CtkCssValue * ctk_css_font_size_value_parse   (CtkCssParser *parser);
 
 G_END_DECLS
 

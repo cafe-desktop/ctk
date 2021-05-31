@@ -26,45 +26,45 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_STATIC_STYLE           (ctk_css_static_style_get_type ())
-#define CTK_CSS_STATIC_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyle))
-#define CTK_CSS_STATIC_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyleClass))
+#define CTK_CSS_STATIC_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_STATIC_STYLE, CtkCssStaticStyle))
+#define CTK_CSS_STATIC_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_STATIC_STYLE, CtkCssStaticStyleClass))
 #define CTK_IS_CSS_STATIC_STYLE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_STATIC_STYLE))
 #define CTK_IS_CSS_STATIC_STYLE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_STATIC_STYLE))
-#define CTK_CSS_STATIC_STYLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyleClass))
+#define CTK_CSS_STATIC_STYLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_STATIC_STYLE, CtkCssStaticStyleClass))
 
-typedef struct _GtkCssStaticStyle           GtkCssStaticStyle;
-typedef struct _GtkCssStaticStyleClass      GtkCssStaticStyleClass;
+typedef struct _CtkCssStaticStyle           CtkCssStaticStyle;
+typedef struct _CtkCssStaticStyleClass      CtkCssStaticStyleClass;
 
-struct _GtkCssStaticStyle
+struct _CtkCssStaticStyle
 {
-  GtkCssStyle parent;
+  CtkCssStyle parent;
 
-  GtkCssValue           *values[CTK_CSS_PROPERTY_N_PROPERTIES]; /* the values */
+  CtkCssValue           *values[CTK_CSS_PROPERTY_N_PROPERTIES]; /* the values */
   GPtrArray             *sections;             /* sections the values are defined in */
 
-  GtkCssChange           change;               /* change as returned by value lookup */
+  CtkCssChange           change;               /* change as returned by value lookup */
 };
 
-struct _GtkCssStaticStyleClass
+struct _CtkCssStaticStyleClass
 {
-  GtkCssStyleClass parent_class;
+  CtkCssStyleClass parent_class;
 };
 
 GType                   ctk_css_static_style_get_type           (void) G_GNUC_CONST;
 
-GtkCssStyle *           ctk_css_static_style_get_default        (void);
-GtkCssStyle *           ctk_css_static_style_new_compute        (GtkStyleProviderPrivate *provider,
-                                                                 const GtkCssMatcher    *matcher,
-                                                                 GtkCssStyle            *parent);
+CtkCssStyle *           ctk_css_static_style_get_default        (void);
+CtkCssStyle *           ctk_css_static_style_new_compute        (CtkStyleProviderPrivate *provider,
+                                                                 const CtkCssMatcher    *matcher,
+                                                                 CtkCssStyle            *parent);
 
-void                    ctk_css_static_style_compute_value      (GtkCssStaticStyle      *style,
-                                                                 GtkStyleProviderPrivate*provider,
-                                                                 GtkCssStyle            *parent_style,
+void                    ctk_css_static_style_compute_value      (CtkCssStaticStyle      *style,
+                                                                 CtkStyleProviderPrivate*provider,
+                                                                 CtkCssStyle            *parent_style,
                                                                  guint                   id,
-                                                                 GtkCssValue            *specified,
-                                                                 GtkCssSection          *section);
+                                                                 CtkCssValue            *specified,
+                                                                 CtkCssSection          *section);
 
-GtkCssChange            ctk_css_static_style_get_change         (GtkCssStaticStyle      *style);
+CtkCssChange            ctk_css_static_style_get_change         (CtkCssStaticStyle      *style);
 
 G_END_DECLS
 

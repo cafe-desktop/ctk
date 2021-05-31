@@ -31,12 +31,12 @@
 
 
 typedef struct {
-  GtkListBoxRow parent;
-  GtkWidget *widget;
+  CtkListBoxRow parent;
+  CtkWidget *widget;
 } SizeGroupRow;
 
 typedef struct {
-  GtkListBoxRowClass parent;
+  CtkListBoxRowClass parent;
 } SizeGroupRowClass;
 
 enum {
@@ -75,9 +75,9 @@ size_group_row_get_property (GObject    *object,
 }
 
 static void
-size_group_row_widget_destroyed (GtkWidget *widget, SizeGroupRow *row)
+size_group_row_widget_destroyed (CtkWidget *widget, SizeGroupRow *row)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   parent = ctk_widget_get_parent (CTK_WIDGET (row));
   if (parent)
@@ -85,7 +85,7 @@ size_group_row_widget_destroyed (GtkWidget *widget, SizeGroupRow *row)
 }
 
 static void
-set_widget (SizeGroupRow *row, GtkWidget *widget)
+set_widget (SizeGroupRow *row, CtkWidget *widget)
 {
   if (row->widget)
     g_signal_handlers_disconnect_by_func (row->widget,
@@ -127,11 +127,11 @@ size_group_row_finalize (GObject *object)
 }
 
 static void
-size_group_state_flags_changed (GtkWidget     *widget,
-                                GtkStateFlags  old_state)
+size_group_state_flags_changed (CtkWidget     *widget,
+                                CtkStateFlags  old_state)
 {
   SizeGroupRow *row = (SizeGroupRow*)widget;
-  GtkStateFlags state;
+  CtkStateFlags state;
 
   if (!row->widget)
     return;
@@ -150,7 +150,7 @@ static void
 size_group_row_class_init (SizeGroupRowClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->finalize = size_group_row_finalize;
   object_class->get_property = size_group_row_get_property;
@@ -165,13 +165,13 @@ size_group_row_class_init (SizeGroupRowClass *class)
 
 }
 
-G_DEFINE_TYPE (GtkInspectorSizeGroups, ctk_inspector_size_groups, CTK_TYPE_BOX)
+G_DEFINE_TYPE (CtkInspectorSizeGroups, ctk_inspector_size_groups, CTK_TYPE_BOX)
 
 static void
-clear_view (GtkInspectorSizeGroups *sl)
+clear_view (CtkInspectorSizeGroups *sl)
 {
   GList *children, *l;
-  GtkWidget *child;
+  CtkWidget *child;
 
   children = ctk_container_get_children (CTK_CONTAINER (sl));
   for (l = children; l; l = l->next)
@@ -183,12 +183,12 @@ clear_view (GtkInspectorSizeGroups *sl)
 }
 
 static void
-add_widget (GtkInspectorSizeGroups *sl,
-            GtkListBox             *listbox,
-            GtkWidget              *widget)
+add_widget (CtkInspectorSizeGroups *sl,
+            CtkListBox             *listbox,
+            CtkWidget              *widget)
 {
-  GtkWidget *row;
-  GtkWidget *label;
+  CtkWidget *row;
+  CtkWidget *label;
   gchar *text;
 
   row = g_object_new (size_group_row_get_type (), "widget", widget, NULL);
@@ -204,13 +204,13 @@ add_widget (GtkInspectorSizeGroups *sl,
 }
 
 static void
-add_size_group (GtkInspectorSizeGroups *sl,
-                GtkSizeGroup           *group)
+add_size_group (CtkInspectorSizeGroups *sl,
+                CtkSizeGroup           *group)
 {
-  GtkWidget *frame, *box, *box2;
-  GtkWidget *label, *sw, *combo;
+  CtkWidget *frame, *box, *box2;
+  CtkWidget *label, *sw, *combo;
   GSList *widgets, *l;
-  GtkWidget *listbox;
+  CtkWidget *listbox;
 
   frame = ctk_frame_new (NULL);
   ctk_container_add (CTK_CONTAINER (sl), frame);
@@ -270,7 +270,7 @@ add_size_group (GtkInspectorSizeGroups *sl,
 }
 
 void
-ctk_inspector_size_groups_set_object (GtkInspectorSizeGroups *sl,
+ctk_inspector_size_groups_set_object (CtkInspectorSizeGroups *sl,
                                       GObject                *object)
 {
   GSList *groups, *l;
@@ -288,13 +288,13 @@ ctk_inspector_size_groups_set_object (GtkInspectorSizeGroups *sl,
     ctk_widget_show (CTK_WIDGET (sl));
   for (l = groups; l; l = l->next)
     {
-      GtkSizeGroup *group = l->data;
+      CtkSizeGroup *group = l->data;
       add_size_group (sl, group);
     }
 }
 
 static void
-ctk_inspector_size_groups_init (GtkInspectorSizeGroups *sl)
+ctk_inspector_size_groups_init (CtkInspectorSizeGroups *sl)
 {
   g_object_set (sl,
                 "orientation", CTK_ORIENTATION_VERTICAL,
@@ -307,7 +307,7 @@ ctk_inspector_size_groups_init (GtkInspectorSizeGroups *sl)
 }
 
 static void
-ctk_inspector_size_groups_class_init (GtkInspectorSizeGroupsClass *klass)
+ctk_inspector_size_groups_class_init (CtkInspectorSizeGroupsClass *klass)
 {
 }
 

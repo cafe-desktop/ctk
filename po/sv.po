@@ -1784,7 +1784,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Användning:\n"
 "  ctk-builder-tool [KOMMANDO] FIL\n"
@@ -1802,7 +1802,7 @@ msgstr ""
 "  --id=ID            Förhandsgranska endast det namngivna objektet\n"
 "  --css=FIL          Använd stil från CSS-fil\n"
 "\n"
-"Utför diverse uppgifter på GtkBuilders .ui-filer.\n"
+"Utför diverse uppgifter på CtkBuilders .ui-filer.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2696,7 +2696,7 @@ msgstr "Åtkommen"
 msgid "Create Folder"
 msgstr "Skapa mapp"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -2742,7 +2742,7 @@ msgstr "Optisk storlek"
 msgid "Default"
 msgstr "Standard"
 
-# https://developer.gnome.org/ctk3/stable/GtkEventController.html#GtkPropagationPhase
+# https://developer.gnome.org/ctk3/stable/CtkEventController.html#CtkPropagationPhase
 #: ctk/ctkfontchooserwidget.c:2113
 msgid "Ligatures"
 msgstr "Ligaturer"
@@ -4197,7 +4197,7 @@ msgctxt "event phase"
 msgid "None"
 msgstr "Ingen"
 
-# https://developer.gnome.org/ctk3/stable/GtkEventController.html#GtkPropagationPhase
+# https://developer.gnome.org/ctk3/stable/CtkEventController.html#CtkPropagationPhase
 #: ctk/inspector/gestures.c:130
 msgctxt "event phase"
 msgid "Capture"

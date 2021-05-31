@@ -1,6 +1,6 @@
 <!-- irrelevant comments and context are stripped -->
 <interface>
-  <object class="GtkWindow">
+  <object class="CtkWindow">
     <property name="visible">1</property>
   </object>
 </interface>

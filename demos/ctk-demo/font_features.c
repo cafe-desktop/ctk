@@ -14,21 +14,21 @@
 #include <hb-ot.h>
 #include <hb-ft.h>
 
-static GtkWidget *label;
-static GtkWidget *settings;
-static GtkWidget *font;
-static GtkWidget *script_lang;
-static GtkWidget *resetbutton;
-static GtkWidget *numcasedefault;
-static GtkWidget *numspacedefault;
-static GtkWidget *fractiondefault;
-static GtkWidget *stack;
-static GtkWidget *entry;
+static CtkWidget *label;
+static CtkWidget *settings;
+static CtkWidget *font;
+static CtkWidget *script_lang;
+static CtkWidget *resetbutton;
+static CtkWidget *numcasedefault;
+static CtkWidget *numspacedefault;
+static CtkWidget *fractiondefault;
+static CtkWidget *stack;
+static CtkWidget *entry;
 
 #define num_features 40
 
-static GtkWidget *toggle[num_features];
-static GtkWidget *icon[num_features];
+static CtkWidget *toggle[num_features];
+static CtkWidget *icon[num_features];
 static const char *feature_names[num_features] = {
   "kern", "liga", "dlig", "hlig", "clig", "smcp", "c2sc", "pcap", "c2pc", "unic",
   "cpsp", "case", "lnum", "onum", "pnum", "tnum", "frac", "afrc", "zero", "nalt",
@@ -46,8 +46,8 @@ update_display (void)
   gboolean has_feature;
   int i;
   hb_tag_t lang_tag;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
   const char *lang;
 
   text = ctk_entry_get_text (CTK_ENTRY (entry));
@@ -204,7 +204,7 @@ tag_pair_equal (gconstpointer a, gconstpointer b)
 static void
 update_script_combo (void)
 {
-  GtkListStore *store;
+  CtkListStore *store;
   hb_font_t *hb_font;
   gint i, j, k, l;
   FT_Face ft_face;
@@ -342,8 +342,8 @@ static void
 update_features (void)
 {
   gint i, j, k;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
   guint script_index, lang_index;
   PangoFont *pango_font;
   FT_Face ft_face;
@@ -454,7 +454,7 @@ switch_to_label (void)
 }
 
 static gboolean
-entry_key_press (GtkEntry *entry, GdkEventKey *event)
+entry_key_press (CtkEntry *entry, GdkEventKey *event)
 {
   if (event->keyval == GDK_KEY_Escape)
     {
@@ -466,14 +466,14 @@ entry_key_press (GtkEntry *entry, GdkEventKey *event)
   return GDK_EVENT_PROPAGATE;
 }
 
-GtkWidget *
-do_font_features (GtkWidget *do_widget)
+CtkWidget *
+do_font_features (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkBuilder *builder;
+      CtkBuilder *builder;
       int i;
 
       builder = ctk_builder_new_from_resource ("/font_features/font-features.ui");

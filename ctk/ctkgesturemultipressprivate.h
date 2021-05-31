@@ -22,24 +22,24 @@
 #include "ctkgesturesingleprivate.h"
 #include "ctkgesturemultipress.h"
 
-struct _GtkGestureMultiPress
+struct _CtkGestureMultiPress
 {
-  GtkGestureSingle parent_instance;
+  CtkGestureSingle parent_instance;
 };
 
-struct _GtkGestureMultiPressClass
+struct _CtkGestureMultiPressClass
 {
-  GtkGestureSingleClass parent_class;
+  CtkGestureSingleClass parent_class;
 
-  void     (* pressed) (GtkGestureMultiPress *gesture,
+  void     (* pressed) (CtkGestureMultiPress *gesture,
                         gint                  n_press,
                         gdouble               x,
                         gdouble               y);
-  void     (* released) (GtkGestureMultiPress *gesture,
+  void     (* released) (CtkGestureMultiPress *gesture,
                          gint                  n_press,
                          gdouble               x,
                          gdouble               y);
-  void     (* stopped) (GtkGestureMultiPress *gesture);
+  void     (* stopped) (CtkGestureMultiPress *gesture);
 
   /*<private>*/
   gpointer padding[10];

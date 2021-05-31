@@ -29,21 +29,21 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FILE_FILTER              (ctk_file_filter_get_type ())
-#define CTK_FILE_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_FILTER, GtkFileFilter))
+#define CTK_FILE_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_FILTER, CtkFileFilter))
 #define CTK_IS_FILE_FILTER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_FILTER))
 
-typedef struct _GtkFileFilter     GtkFileFilter;
-typedef struct _GtkFileFilterInfo GtkFileFilterInfo;
+typedef struct _CtkFileFilter     CtkFileFilter;
+typedef struct _CtkFileFilterInfo CtkFileFilterInfo;
 
 /**
- * GtkFileFilterFlags:
+ * CtkFileFilterFlags:
  * @CTK_FILE_FILTER_FILENAME: the filename of the file being tested
  * @CTK_FILE_FILTER_URI: the URI for the file being tested
  * @CTK_FILE_FILTER_DISPLAY_NAME: the string that will be used to 
  *   display the file in the file chooser
  * @CTK_FILE_FILTER_MIME_TYPE: the mime type of the file
  * 
- * These flags indicate what parts of a #GtkFileFilterInfo struct
+ * These flags indicate what parts of a #CtkFileFilterInfo struct
  * are filled or need to be filled. 
  */
 typedef enum {
@@ -51,11 +51,11 @@ typedef enum {
   CTK_FILE_FILTER_URI          = 1 << 1,
   CTK_FILE_FILTER_DISPLAY_NAME = 1 << 2,
   CTK_FILE_FILTER_MIME_TYPE    = 1 << 3
-} GtkFileFilterFlags;
+} CtkFileFilterFlags;
 
 /**
- * GtkFileFilterFunc:
- * @filter_info: a #GtkFileFilterInfo that is filled according
+ * CtkFileFilterFunc:
+ * @filter_info: a #CtkFileFilterInfo that is filled according
  *   to the @needed flags passed to ctk_file_filter_add_custom()
  * @data: (closure): user data passed to ctk_file_filter_add_custom()
  *
@@ -64,11 +64,11 @@ typedef enum {
  *
  * Returns: %TRUE if the file should be displayed
  */
-typedef gboolean (*GtkFileFilterFunc) (const GtkFileFilterInfo *filter_info,
+typedef gboolean (*CtkFileFilterFunc) (const CtkFileFilterInfo *filter_info,
 				       gpointer                 data);
 
 /**
- * GtkFileFilterInfo:
+ * CtkFileFilterInfo:
  * @contains: Flags indicating which of the following fields need
  *   are filled
  * @filename: the filename of the file being tested
@@ -77,12 +77,12 @@ typedef gboolean (*GtkFileFilterFunc) (const GtkFileFilterInfo *filter_info,
  *   in the file chooser
  * @mime_type: the mime type of the file
  *
- * A #GtkFileFilterInfo-struct is used to pass information about the
+ * A #CtkFileFilterInfo-struct is used to pass information about the
  * tested file to ctk_file_filter_filter().
  */
-struct _GtkFileFilterInfo
+struct _CtkFileFilterInfo
 {
-  GtkFileFilterFlags contains;
+  CtkFileFilterFlags contains;
 
   const gchar *filename;
   const gchar *uri;
@@ -94,38 +94,38 @@ GDK_AVAILABLE_IN_ALL
 GType ctk_file_filter_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkFileFilter *       ctk_file_filter_new      (void);
+CtkFileFilter *       ctk_file_filter_new      (void);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_file_filter_set_name (GtkFileFilter *filter,
+void                  ctk_file_filter_set_name (CtkFileFilter *filter,
 						const gchar   *name);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_file_filter_get_name (GtkFileFilter *filter);
+const gchar *         ctk_file_filter_get_name (CtkFileFilter *filter);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_file_filter_add_mime_type      (GtkFileFilter      *filter,
+void ctk_file_filter_add_mime_type      (CtkFileFilter      *filter,
 					 const gchar        *mime_type);
 GDK_AVAILABLE_IN_ALL
-void ctk_file_filter_add_pattern        (GtkFileFilter      *filter,
+void ctk_file_filter_add_pattern        (CtkFileFilter      *filter,
 					 const gchar        *pattern);
 GDK_AVAILABLE_IN_ALL
-void ctk_file_filter_add_pixbuf_formats (GtkFileFilter      *filter);
+void ctk_file_filter_add_pixbuf_formats (CtkFileFilter      *filter);
 GDK_AVAILABLE_IN_ALL
-void ctk_file_filter_add_custom         (GtkFileFilter      *filter,
-					 GtkFileFilterFlags  needed,
-					 GtkFileFilterFunc   func,
+void ctk_file_filter_add_custom         (CtkFileFilter      *filter,
+					 CtkFileFilterFlags  needed,
+					 CtkFileFilterFunc   func,
 					 gpointer            data,
 					 GDestroyNotify      notify);
 
 GDK_AVAILABLE_IN_ALL
-GtkFileFilterFlags ctk_file_filter_get_needed (GtkFileFilter           *filter);
+CtkFileFilterFlags ctk_file_filter_get_needed (CtkFileFilter           *filter);
 GDK_AVAILABLE_IN_ALL
-gboolean           ctk_file_filter_filter     (GtkFileFilter           *filter,
-					       const GtkFileFilterInfo *filter_info);
+gboolean           ctk_file_filter_filter     (CtkFileFilter           *filter,
+					       const CtkFileFilterInfo *filter_info);
 
 GDK_AVAILABLE_IN_3_22
-GVariant      *ctk_file_filter_to_gvariant       (GtkFileFilter *filter);
+GVariant      *ctk_file_filter_to_gvariant       (CtkFileFilter *filter);
 GDK_AVAILABLE_IN_3_22
-GtkFileFilter *ctk_file_filter_new_from_gvariant (GVariant      *variant);
+CtkFileFilter *ctk_file_filter_new_from_gvariant (GVariant      *variant);
 
 G_END_DECLS
 

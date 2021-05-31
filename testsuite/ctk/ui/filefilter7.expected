@@ -1,2 +1,2 @@
 ERROR: ctk-builder-error-quark 1
-.:5:15 Unsupported tag for GtkFileFilter: <warbl>
+.:5:15 Unsupported tag for CtkFileFilter: <warbl>

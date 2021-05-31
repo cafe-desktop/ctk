@@ -38,34 +38,34 @@
 /**
  * SECTION:ctkcolorseldlg
  * @Short_description: Deprecated dialog box for selecting a color
- * @Title: GtkColorSelectionDialog
+ * @Title: CtkColorSelectionDialog
  *
- * The #GtkColorSelectionDialog provides a standard dialog which
- * allows the user to select a color much like the #GtkFileChooserDialog
+ * The #CtkColorSelectionDialog provides a standard dialog which
+ * allows the user to select a color much like the #CtkFileChooserDialog
  * provides a standard dialog for file selection.
  *
  * Use ctk_color_selection_dialog_get_color_selection() to get the
- * #GtkColorSelection widget contained within the dialog. Use this widget
+ * #CtkColorSelection widget contained within the dialog. Use this widget
  * and its ctk_color_selection_get_current_color()
  * function to gain access to the selected color.  Connect a handler
- * for this widget’s #GtkColorSelection::color-changed signal to be notified
+ * for this widget’s #CtkColorSelection::color-changed signal to be notified
  * when the color changes.
  *
- * # GtkColorSelectionDialog as GtkBuildable # {#GtkColorSelectionDialog-BUILDER-UI}
+ * # CtkColorSelectionDialog as CtkBuildable # {#CtkColorSelectionDialog-BUILDER-UI}
  *
- * The GtkColorSelectionDialog implementation of the GtkBuildable interface
- * exposes the embedded #GtkColorSelection as internal child with the
+ * The CtkColorSelectionDialog implementation of the CtkBuildable interface
+ * exposes the embedded #CtkColorSelection as internal child with the
  * name “color_selection”. It also exposes the buttons with the names
  * “ok_button”, “cancel_button” and “help_button”.
  */
 
 
-struct _GtkColorSelectionDialogPrivate
+struct _CtkColorSelectionDialogPrivate
 {
-  GtkWidget *colorsel;
-  GtkWidget *ok_button;
-  GtkWidget *cancel_button;
-  GtkWidget *help_button;
+  CtkWidget *colorsel;
+  CtkWidget *ok_button;
+  CtkWidget *cancel_button;
+  CtkWidget *help_button;
 };
 
 enum {
@@ -78,20 +78,20 @@ enum {
 
 
 /***************************/
-/* GtkColorSelectionDialog */
+/* CtkColorSelectionDialog */
 /***************************/
 
-static void ctk_color_selection_dialog_buildable_interface_init     (GtkBuildableIface *iface);
-static GObject * ctk_color_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
-									  GtkBuilder   *builder,
+static void ctk_color_selection_dialog_buildable_interface_init     (CtkBuildableIface *iface);
+static GObject * ctk_color_selection_dialog_buildable_get_internal_child (CtkBuildable *buildable,
+									  CtkBuilder   *builder,
 									  const gchar  *childname);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorSelectionDialog, ctk_color_selection_dialog, CTK_TYPE_DIALOG,
-                         G_ADD_PRIVATE (GtkColorSelectionDialog)
+G_DEFINE_TYPE_WITH_CODE (CtkColorSelectionDialog, ctk_color_selection_dialog, CTK_TYPE_DIALOG,
+                         G_ADD_PRIVATE (CtkColorSelectionDialog)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_color_selection_dialog_buildable_interface_init))
 
-static GtkBuildableIface *parent_buildable_iface;
+static CtkBuildableIface *parent_buildable_iface;
 
 static void
 ctk_color_selection_dialog_get_property (GObject         *object,
@@ -99,8 +99,8 @@ ctk_color_selection_dialog_get_property (GObject         *object,
 					 GValue          *value,
 					 GParamSpec      *pspec)
 {
-  GtkColorSelectionDialog *colorsel = CTK_COLOR_SELECTION_DIALOG (object);
-  GtkColorSelectionDialogPrivate *priv = colorsel->priv;
+  CtkColorSelectionDialog *colorsel = CTK_COLOR_SELECTION_DIALOG (object);
+  CtkColorSelectionDialogPrivate *priv = colorsel->priv;
 
   switch (prop_id)
     {
@@ -123,10 +123,10 @@ ctk_color_selection_dialog_get_property (GObject         *object,
 }
 
 static void
-ctk_color_selection_dialog_class_init (GtkColorSelectionDialogClass *klass)
+ctk_color_selection_dialog_class_init (CtkColorSelectionDialogClass *klass)
 {
   GObjectClass   *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->get_property = ctk_color_selection_dialog_get_property;
 
@@ -163,11 +163,11 @@ ctk_color_selection_dialog_class_init (GtkColorSelectionDialogClass *klass)
 }
 
 static void
-ctk_color_selection_dialog_init (GtkColorSelectionDialog *colorseldiag)
+ctk_color_selection_dialog_init (CtkColorSelectionDialog *colorseldiag)
 {
-  GtkColorSelectionDialogPrivate *priv;
-  GtkDialog *dialog = CTK_DIALOG (colorseldiag);
-  GtkWidget *action_area, *content_area;
+  CtkColorSelectionDialogPrivate *priv;
+  CtkDialog *dialog = CTK_DIALOG (colorseldiag);
+  CtkWidget *action_area, *content_area;
 
   colorseldiag->priv = ctk_color_selection_dialog_get_instance_private (colorseldiag);
   priv = colorseldiag->priv;
@@ -217,14 +217,14 @@ ctk_color_selection_dialog_init (GtkColorSelectionDialog *colorseldiag)
  * ctk_color_selection_dialog_new:
  * @title: a string containing the title text for the dialog.
  *
- * Creates a new #GtkColorSelectionDialog.
+ * Creates a new #CtkColorSelectionDialog.
  *
- * Returns: a #GtkColorSelectionDialog.
+ * Returns: a #CtkColorSelectionDialog.
  */
-GtkWidget*
+CtkWidget*
 ctk_color_selection_dialog_new (const gchar *title)
 {
-  GtkColorSelectionDialog *colorseldiag;
+  CtkColorSelectionDialog *colorseldiag;
   
   colorseldiag = g_object_new (CTK_TYPE_COLOR_SELECTION_DIALOG, NULL);
 
@@ -238,16 +238,16 @@ ctk_color_selection_dialog_new (const gchar *title)
 
 /**
  * ctk_color_selection_dialog_get_color_selection:
- * @colorsel: a #GtkColorSelectionDialog
+ * @colorsel: a #CtkColorSelectionDialog
  *
- * Retrieves the #GtkColorSelection widget embedded in the dialog.
+ * Retrieves the #CtkColorSelection widget embedded in the dialog.
  *
- * Returns: (transfer none): the embedded #GtkColorSelection
+ * Returns: (transfer none): the embedded #CtkColorSelection
  *
  * Since: 2.14
  **/
-GtkWidget*
-ctk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorsel)
+CtkWidget*
+ctk_color_selection_dialog_get_color_selection (CtkColorSelectionDialog *colorsel)
 {
   g_return_val_if_fail (CTK_IS_COLOR_SELECTION_DIALOG (colorsel), NULL);
 
@@ -255,19 +255,19 @@ ctk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorse
 }
 
 static void
-ctk_color_selection_dialog_buildable_interface_init (GtkBuildableIface *iface)
+ctk_color_selection_dialog_buildable_interface_init (CtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
   iface->get_internal_child = ctk_color_selection_dialog_buildable_get_internal_child;
 }
 
 static GObject *
-ctk_color_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
-							 GtkBuilder   *builder,
+ctk_color_selection_dialog_buildable_get_internal_child (CtkBuildable *buildable,
+							 CtkBuilder   *builder,
 							 const gchar  *childname)
 {
-  GtkColorSelectionDialog *selection_dialog = CTK_COLOR_SELECTION_DIALOG (buildable);
-  GtkColorSelectionDialogPrivate *priv = selection_dialog->priv;
+  CtkColorSelectionDialog *selection_dialog = CTK_COLOR_SELECTION_DIALOG (buildable);
+  CtkColorSelectionDialogPrivate *priv = selection_dialog->priv;
 
   if (g_strcmp0 (childname, "ok_button") == 0)
     return G_OBJECT (priv->ok_button);

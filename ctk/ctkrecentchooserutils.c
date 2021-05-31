@@ -1,5 +1,5 @@
 /* ctkrecentchooserutils.h - Private utility functions for implementing a
- *                           GtkRecentChooser interface
+ *                           CtkRecentChooser interface
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -27,36 +27,36 @@
 #include "ctkrecentchooserutils.h"
 
 /* Methods */
-static void      delegate_set_sort_func              (GtkRecentChooser  *chooser,
-						      GtkRecentSortFunc  sort_func,
+static void      delegate_set_sort_func              (CtkRecentChooser  *chooser,
+						      CtkRecentSortFunc  sort_func,
 						      gpointer           sort_data,
 						      GDestroyNotify     data_destroy);
-static void      delegate_add_filter                 (GtkRecentChooser  *chooser,
-						      GtkRecentFilter   *filter);
-static void      delegate_remove_filter              (GtkRecentChooser  *chooser,
-						      GtkRecentFilter   *filter);
-static GSList   *delegate_list_filters               (GtkRecentChooser  *chooser);
-static gboolean  delegate_select_uri                 (GtkRecentChooser  *chooser,
+static void      delegate_add_filter                 (CtkRecentChooser  *chooser,
+						      CtkRecentFilter   *filter);
+static void      delegate_remove_filter              (CtkRecentChooser  *chooser,
+						      CtkRecentFilter   *filter);
+static GSList   *delegate_list_filters               (CtkRecentChooser  *chooser);
+static gboolean  delegate_select_uri                 (CtkRecentChooser  *chooser,
 						      const gchar       *uri,
 						      GError           **error);
-static void      delegate_unselect_uri               (GtkRecentChooser  *chooser,
+static void      delegate_unselect_uri               (CtkRecentChooser  *chooser,
 						      const gchar       *uri);
-static GList    *delegate_get_items                  (GtkRecentChooser  *chooser);
-static GtkRecentManager *delegate_get_recent_manager (GtkRecentChooser  *chooser);
-static void      delegate_select_all                 (GtkRecentChooser  *chooser);
-static void      delegate_unselect_all               (GtkRecentChooser  *chooser);
-static gboolean  delegate_set_current_uri            (GtkRecentChooser  *chooser,
+static GList    *delegate_get_items                  (CtkRecentChooser  *chooser);
+static CtkRecentManager *delegate_get_recent_manager (CtkRecentChooser  *chooser);
+static void      delegate_select_all                 (CtkRecentChooser  *chooser);
+static void      delegate_unselect_all               (CtkRecentChooser  *chooser);
+static gboolean  delegate_set_current_uri            (CtkRecentChooser  *chooser,
 						      const gchar       *uri,
 						      GError           **error);
-static gchar *   delegate_get_current_uri            (GtkRecentChooser  *chooser);
+static gchar *   delegate_get_current_uri            (CtkRecentChooser  *chooser);
 
 /* Signals */
 static void      delegate_notify            (GObject          *object,
 					     GParamSpec       *pspec,
 					     gpointer          user_data);
-static void      delegate_selection_changed (GtkRecentChooser *receiver,
+static void      delegate_selection_changed (CtkRecentChooser *receiver,
 					     gpointer          user_data);
-static void      delegate_item_activated    (GtkRecentChooser *receiver,
+static void      delegate_item_activated    (CtkRecentChooser *receiver,
 					     gpointer          user_data);
 
 /**
@@ -64,8 +64,8 @@ static void      delegate_item_activated    (GtkRecentChooser *receiver,
  * @klass: the class structure for a type deriving from #GObject
  *
  * Installs the necessary properties for a class implementing
- * #GtkRecentChooser. A #GtkParamSpecOverride property is installed
- * for each property, using the values from the #GtkRecentChooserProp
+ * #CtkRecentChooser. A #CtkParamSpecOverride property is installed
+ * for each property, using the values from the #CtkRecentChooserProp
  * enumeration. The caller must make sure itself that the enumeration
  * values don’t collide with some other property values they
  * are using.
@@ -107,17 +107,17 @@ _ctk_recent_chooser_install_properties (GObjectClass *klass)
 
 /**
  * _ctk_recent_chooser_delegate_iface_init:
- * @iface: a #GtkRecentChooserIface
+ * @iface: a #CtkRecentChooserIface
  *
  * An interface-initialization function for use in cases where
  * an object is simply delegating the methods, signals of
- * the #GtkRecentChooser interface to another object.
+ * the #CtkRecentChooser interface to another object.
  * _ctk_recent_chooser_set_delegate() must be called on each
  * instance of the object so that the delegate object can
  * be found.
  */
 void
-_ctk_recent_chooser_delegate_iface_init (GtkRecentChooserIface *iface)
+_ctk_recent_chooser_delegate_iface_init (CtkRecentChooserIface *iface)
 {
   iface->set_current_uri = delegate_set_current_uri;
   iface->get_current_uri = delegate_get_current_uri;
@@ -135,18 +135,18 @@ _ctk_recent_chooser_delegate_iface_init (GtkRecentChooserIface *iface)
 
 /**
  * _ctk_recent_chooser_set_delegate:
- * @receiver: a #GObject implementing #GtkRecentChooser
- * @delegate: another #GObject implementing #GtkRecentChooser
+ * @receiver: a #GObject implementing #CtkRecentChooser
+ * @delegate: another #GObject implementing #CtkRecentChooser
  *
- * Establishes that calls on @receiver for #GtkRecentChooser
+ * Establishes that calls on @receiver for #CtkRecentChooser
  * methods should be delegated to @delegate, and that
- * #GtkRecentChooser signals emitted on @delegate should be
+ * #CtkRecentChooser signals emitted on @delegate should be
  * forwarded to @receiver. Must be used in conjunction with
  * _ctk_recent_chooser_delegate_iface_init().
  */
 void
-_ctk_recent_chooser_set_delegate (GtkRecentChooser *receiver,
-				  GtkRecentChooser *delegate)
+_ctk_recent_chooser_set_delegate (CtkRecentChooser *receiver,
+				  CtkRecentChooser *delegate)
 {
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (receiver));
   g_return_if_fail (CTK_IS_RECENT_CHOOSER (delegate));
@@ -173,16 +173,16 @@ _ctk_recent_chooser_delegate_get_quark (void)
   return quark;
 }
 
-static GtkRecentChooser *
-get_delegate (GtkRecentChooser *receiver)
+static CtkRecentChooser *
+get_delegate (CtkRecentChooser *receiver)
 {
   return g_object_get_qdata (G_OBJECT (receiver),
   			     CTK_RECENT_CHOOSER_DELEGATE_QUARK);
 }
 
 static void
-delegate_set_sort_func (GtkRecentChooser  *chooser,
-			GtkRecentSortFunc  sort_func,
+delegate_set_sort_func (CtkRecentChooser  *chooser,
+			CtkRecentSortFunc  sort_func,
 			gpointer           sort_data,
 			GDestroyNotify     data_destroy)
 {
@@ -193,27 +193,27 @@ delegate_set_sort_func (GtkRecentChooser  *chooser,
 }
 
 static void
-delegate_add_filter (GtkRecentChooser *chooser,
-		     GtkRecentFilter  *filter)
+delegate_add_filter (CtkRecentChooser *chooser,
+		     CtkRecentFilter  *filter)
 {
   ctk_recent_chooser_add_filter (get_delegate (chooser), filter);
 }
 
 static void
-delegate_remove_filter (GtkRecentChooser *chooser,
-			GtkRecentFilter  *filter)
+delegate_remove_filter (CtkRecentChooser *chooser,
+			CtkRecentFilter  *filter)
 {
   ctk_recent_chooser_remove_filter (get_delegate (chooser), filter);
 }
 
 static GSList *
-delegate_list_filters (GtkRecentChooser *chooser)
+delegate_list_filters (CtkRecentChooser *chooser)
 {
   return ctk_recent_chooser_list_filters (get_delegate (chooser));
 }
 
 static gboolean
-delegate_select_uri (GtkRecentChooser  *chooser,
+delegate_select_uri (CtkRecentChooser  *chooser,
 		     const gchar       *uri,
 		     GError           **error)
 {
@@ -221,38 +221,38 @@ delegate_select_uri (GtkRecentChooser  *chooser,
 }
 
 static void
-delegate_unselect_uri (GtkRecentChooser *chooser,
+delegate_unselect_uri (CtkRecentChooser *chooser,
 		       const gchar      *uri)
 {
  ctk_recent_chooser_unselect_uri (get_delegate (chooser), uri);
 }
 
 static GList *
-delegate_get_items (GtkRecentChooser *chooser)
+delegate_get_items (CtkRecentChooser *chooser)
 {
   return ctk_recent_chooser_get_items (get_delegate (chooser));
 }
 
-static GtkRecentManager *
-delegate_get_recent_manager (GtkRecentChooser *chooser)
+static CtkRecentManager *
+delegate_get_recent_manager (CtkRecentChooser *chooser)
 {
   return _ctk_recent_chooser_get_recent_manager (get_delegate (chooser));
 }
 
 static void
-delegate_select_all (GtkRecentChooser *chooser)
+delegate_select_all (CtkRecentChooser *chooser)
 {
   ctk_recent_chooser_select_all (get_delegate (chooser));
 }
 
 static void
-delegate_unselect_all (GtkRecentChooser *chooser)
+delegate_unselect_all (CtkRecentChooser *chooser)
 {
   ctk_recent_chooser_unselect_all (get_delegate (chooser));
 }
 
 static gboolean
-delegate_set_current_uri (GtkRecentChooser  *chooser,
+delegate_set_current_uri (CtkRecentChooser  *chooser,
 			  const gchar       *uri,
 			  GError           **error)
 {
@@ -260,7 +260,7 @@ delegate_set_current_uri (GtkRecentChooser  *chooser,
 }
 
 static gchar *
-delegate_get_current_uri (GtkRecentChooser *chooser)
+delegate_get_current_uri (CtkRecentChooser *chooser)
 {
   return ctk_recent_chooser_get_current_uri (get_delegate (chooser));
 }
@@ -279,22 +279,22 @@ delegate_notify (GObject    *object,
 }
 
 static void
-delegate_selection_changed (GtkRecentChooser *receiver,
+delegate_selection_changed (CtkRecentChooser *receiver,
 			    gpointer          user_data)
 {
   _ctk_recent_chooser_selection_changed (CTK_RECENT_CHOOSER (user_data));
 }
 
 static void
-delegate_item_activated (GtkRecentChooser *receiver,
+delegate_item_activated (CtkRecentChooser *receiver,
 			 gpointer          user_data)
 {
   _ctk_recent_chooser_item_activated (CTK_RECENT_CHOOSER (user_data));
 }
 
 static gint
-sort_recent_items_mru (GtkRecentInfo *a,
-		       GtkRecentInfo *b,
+sort_recent_items_mru (CtkRecentInfo *a,
+		       CtkRecentInfo *b,
 		       gpointer       unused)
 {
   g_assert (a != NULL && b != NULL);
@@ -303,8 +303,8 @@ sort_recent_items_mru (GtkRecentInfo *a,
 }
 
 static gint
-sort_recent_items_lru (GtkRecentInfo *a,
-		       GtkRecentInfo *b,
+sort_recent_items_lru (CtkRecentInfo *a,
+		       CtkRecentInfo *b,
 		       gpointer       unused)
 {
   g_assert (a != NULL && b != NULL);
@@ -314,7 +314,7 @@ sort_recent_items_lru (GtkRecentInfo *a,
 
 typedef struct
 {
-  GtkRecentSortFunc func;
+  CtkRecentSortFunc func;
   gpointer data;
 } SortRecentData;
 
@@ -324,8 +324,8 @@ sort_recent_items_proxy (gpointer *a,
                          gpointer *b,
                          gpointer  user_data)
 {
-  GtkRecentInfo *info_a = (GtkRecentInfo *) a;
-  GtkRecentInfo *info_b = (GtkRecentInfo *) b;
+  CtkRecentInfo *info_a = (CtkRecentInfo *) a;
+  CtkRecentInfo *info_b = (CtkRecentInfo *) b;
   SortRecentData *sort_recent = user_data;
 
   if (sort_recent->func)
@@ -336,11 +336,11 @@ sort_recent_items_proxy (gpointer *a,
 }
 
 static gboolean
-get_is_recent_filtered (GtkRecentFilter *filter,
-			GtkRecentInfo   *info)
+get_is_recent_filtered (CtkRecentFilter *filter,
+			CtkRecentInfo   *info)
 {
-  GtkRecentFilterInfo filter_info;
-  GtkRecentFilterFlags needed;
+  CtkRecentFilterInfo filter_info;
+  CtkRecentFilterFlags needed;
   gboolean retval;
 
   g_assert (info != NULL);
@@ -397,28 +397,28 @@ get_is_recent_filtered (GtkRecentFilter *filter,
 
 /*
  * _ctk_recent_chooser_get_items:
- * @chooser: a #GtkRecentChooser
- * @filter: a #GtkRecentFilter
+ * @chooser: a #CtkRecentChooser
+ * @filter: a #CtkRecentFilter
  * @sort_func: (allow-none): sorting function, or %NULL
  * @sort_data: (allow-none): sorting function data, or %NULL
  *
  * Default implementation for getting the filtered, sorted and
- * clamped list of recently used resources from a #GtkRecentChooser.
+ * clamped list of recently used resources from a #CtkRecentChooser.
  * This function should be used by implementations of the
- * #GtkRecentChooser interface inside the GtkRecentChooser::get_items
+ * #CtkRecentChooser interface inside the CtkRecentChooser::get_items
  * vfunc.
  *
- * Returns: a list of #GtkRecentInfo objects
+ * Returns: a list of #CtkRecentInfo objects
  */
 GList *
-_ctk_recent_chooser_get_items (GtkRecentChooser  *chooser,
-                               GtkRecentFilter   *filter,
-                               GtkRecentSortFunc  sort_func,
+_ctk_recent_chooser_get_items (CtkRecentChooser  *chooser,
+                               CtkRecentFilter   *filter,
+                               CtkRecentSortFunc  sort_func,
                                gpointer           sort_data)
 {
-  GtkRecentManager *manager;
+  CtkRecentManager *manager;
   gint limit;
-  GtkRecentSortType sort_type;
+  CtkRecentSortType sort_type;
   GList *items;
   GCompareDataFunc compare_func;
   gint length;
@@ -453,7 +453,7 @@ _ctk_recent_chooser_get_items (GtkRecentChooser  *chooser,
       filter_items = NULL;
       for (l = items; l != NULL; l = l->next)
         {
-          GtkRecentInfo *info = l->data;
+          CtkRecentInfo *info = l->data;
           gboolean remove_item = FALSE;
 
           if (get_is_recent_filtered (filter, info))

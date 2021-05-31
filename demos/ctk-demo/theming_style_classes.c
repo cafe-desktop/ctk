@@ -10,13 +10,13 @@
 
 #include <ctk/ctk.h>
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 
-GtkWidget *
-do_theming_style_classes (GtkWidget *do_widget)
+CtkWidget *
+do_theming_style_classes (CtkWidget *do_widget)
 {
-  GtkWidget *grid;
-  GtkBuilder *builder;
+  CtkWidget *grid;
+  CtkBuilder *builder;
 
   if (!window)
     {
@@ -31,7 +31,7 @@ do_theming_style_classes (GtkWidget *do_widget)
 
       builder = ctk_builder_new_from_resource ("/theming_style_classes/theming.ui");
 
-      grid = (GtkWidget *)ctk_builder_get_object (builder, "grid");
+      grid = (CtkWidget *)ctk_builder_get_object (builder, "grid");
       ctk_widget_show_all (grid);
       ctk_container_add (CTK_CONTAINER (window), grid);
       g_object_unref (builder);

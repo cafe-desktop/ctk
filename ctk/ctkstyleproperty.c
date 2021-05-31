@@ -34,12 +34,12 @@ enum {
   PROP_VALUE_TYPE
 };
 
-G_DEFINE_ABSTRACT_TYPE (GtkStyleProperty, _ctk_style_property, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (CtkStyleProperty, _ctk_style_property, G_TYPE_OBJECT)
 
 static void
 ctk_style_property_finalize (GObject *object)
 {
-  GtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
+  CtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
 
   g_warning ("finalizing %s '%s', how could this happen?", G_OBJECT_TYPE_NAME (object), property->name);
 
@@ -52,8 +52,8 @@ ctk_style_property_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
-  GtkStylePropertyClass *klass = CTK_STYLE_PROPERTY_GET_CLASS (property);
+  CtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
+  CtkStylePropertyClass *klass = CTK_STYLE_PROPERTY_GET_CLASS (property);
 
   switch (prop_id)
     {
@@ -78,7 +78,7 @@ ctk_style_property_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
+  CtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
 
   switch (prop_id)
     {
@@ -95,7 +95,7 @@ ctk_style_property_get_property (GObject    *object,
 }
 
 static void
-_ctk_style_property_class_init (GtkStylePropertyClass *klass)
+_ctk_style_property_class_init (CtkStylePropertyClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -114,7 +114,7 @@ _ctk_style_property_class_init (GtkStylePropertyClass *klass)
                                    PROP_VALUE_TYPE,
                                    g_param_spec_gtype ("value-type",
                                                        P_("Value type"),
-                                                       P_("The value type returned by GtkStyleContext"),
+                                                       P_("The value type returned by CtkStyleContext"),
                                                        G_TYPE_NONE,
                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
@@ -122,7 +122,7 @@ _ctk_style_property_class_init (GtkStylePropertyClass *klass)
 }
 
 static void
-_ctk_style_property_init (GtkStyleProperty *property)
+_ctk_style_property_init (CtkStyleProperty *property)
 {
   property->value_type = G_TYPE_NONE;
 }
@@ -138,17 +138,17 @@ _ctk_style_property_init (GtkStyleProperty *property)
  * parsing fails, %FALSE will be returned and @value will be
  * left uninitialized.
  *
- * Only if @property is a #GtkCssShorthandProperty, the @value will
- * always be a #GtkCssValue whose values can be queried with
+ * Only if @property is a #CtkCssShorthandProperty, the @value will
+ * always be a #CtkCssValue whose values can be queried with
  * _ctk_css_array_value_get_nth().
  *
- * Returns: %NULL on failure or the parsed #GtkCssValue
+ * Returns: %NULL on failure or the parsed #CtkCssValue
  **/
-GtkCssValue *
-_ctk_style_property_parse_value (GtkStyleProperty *property,
-                                 GtkCssParser     *parser)
+CtkCssValue *
+_ctk_style_property_parse_value (CtkStyleProperty *property,
+                                 CtkCssParser     *parser)
 {
-  GtkStylePropertyClass *klass;
+  CtkStylePropertyClass *klass;
 
   g_return_val_if_fail (CTK_IS_STYLE_PROPERTY (property), NULL);
   g_return_val_if_fail (parser != NULL, NULL);
@@ -171,12 +171,12 @@ _ctk_style_property_parse_value (GtkStyleProperty *property,
  * value from code using old APIs.
  **/
 void
-_ctk_style_property_assign (GtkStyleProperty   *property,
-                            GtkStyleProperties *props,
-                            GtkStateFlags       state,
+_ctk_style_property_assign (CtkStyleProperty   *property,
+                            CtkStyleProperties *props,
+                            CtkStateFlags       state,
                             const GValue       *value)
 {
-  GtkStylePropertyClass *klass;
+  CtkStylePropertyClass *klass;
 
   g_return_if_fail (CTK_IS_STYLE_PROPERTY (property));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -202,12 +202,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  * value to return to code using old APIs.
  **/
 void
-_ctk_style_property_query (GtkStyleProperty  *property,
+_ctk_style_property_query (CtkStyleProperty  *property,
                            GValue            *value,
-                           GtkStyleQueryFunc  query_func,
+                           CtkStyleQueryFunc  query_func,
                            gpointer           query_data)
 {
-  GtkStylePropertyClass *klass;
+  CtkStylePropertyClass *klass;
 
   g_return_if_fail (value != NULL);
   g_return_if_fail (CTK_IS_STYLE_PROPERTY (property));
@@ -237,8 +237,8 @@ void
 _ctk_style_property_add_alias (const gchar *name,
                                const gchar *alias)
 {
-  GtkStylePropertyClass *klass;
-  GtkStyleProperty *property;
+  CtkStylePropertyClass *klass;
+  CtkStyleProperty *property;
 
   g_return_if_fail (name != NULL);
   g_return_if_fail (alias != NULL);
@@ -263,10 +263,10 @@ _ctk_style_property_add_alias (const gchar *name,
  * Returns: (nullable) (transfer none): The property or %NULL if no
  *     property with the given name exists.
  **/
-GtkStyleProperty *
+CtkStyleProperty *
 _ctk_style_property_lookup (const char *name)
 {
-  GtkStylePropertyClass *klass;
+  CtkStylePropertyClass *klass;
 
   g_return_val_if_fail (name != NULL, NULL);
 
@@ -286,7 +286,7 @@ _ctk_style_property_lookup (const char *name)
  * Returns: the name of the property
  **/
 const char *
-_ctk_style_property_get_name (GtkStyleProperty *property)
+_ctk_style_property_get_name (CtkStyleProperty *property)
 {
   g_return_val_if_fail (CTK_IS_STYLE_PROPERTY (property), NULL);
 
@@ -305,7 +305,7 @@ _ctk_style_property_get_name (GtkStyleProperty *property)
  * Returns: the value type in use or %G_TYPE_NONE if none.
  **/
 GType
-_ctk_style_property_get_value_type (GtkStyleProperty *property)
+_ctk_style_property_get_value_type (CtkStyleProperty *property)
 {
   g_return_val_if_fail (CTK_IS_STYLE_PROPERTY (property), G_TYPE_NONE);
 

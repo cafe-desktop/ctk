@@ -1,6 +1,6 @@
 # Actual GTK things
 {
-  GtkWidgetClass action GPtrArray
+  CtkWidgetClass action GPtrArray
   Memcheck:Leak
   fun:malloc
   fun:g_malloc

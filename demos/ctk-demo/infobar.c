@@ -7,12 +7,12 @@
 #include <ctk/ctk.h>
 
 static void
-on_bar_response (GtkInfoBar *info_bar,
+on_bar_response (CtkInfoBar *info_bar,
                  gint        response_id,
                  gpointer    user_data)
 {
-  GtkWidget *dialog;
-  GtkWidget *window;
+  CtkWidget *dialog;
+  CtkWidget *window;
 
   if (response_id == CTK_RESPONSE_CLOSE)
     {
@@ -37,17 +37,17 @@ on_bar_response (GtkInfoBar *info_bar,
   ctk_widget_show_all (dialog);
 }
 
-GtkWidget *
-do_infobar (GtkWidget *do_widget)
+CtkWidget *
+do_infobar (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *frame;
-  GtkWidget *bar;
-  GtkWidget *vbox;
-  GtkWidget *vbox2;
-  GtkWidget *label;
-  GtkWidget *actions;
-  GtkWidget *button;
+  static CtkWidget *window = NULL;
+  CtkWidget *frame;
+  CtkWidget *bar;
+  CtkWidget *vbox;
+  CtkWidget *vbox2;
+  CtkWidget *label;
+  CtkWidget *actions;
+  CtkWidget *button;
 
   if (!window)
     {

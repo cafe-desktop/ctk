@@ -1,8 +1,8 @@
 <!-- invalid element -->
 <interface>
-  <object class="GtkInfoBar">
+  <object class="CtkInfoBar">
     <child>
-      <object class="GtkButton" id="button_cancel"/>
+      <object class="CtkButton" id="button_cancel"/>
     </child>
     <action-widgets>
       <worbl/>

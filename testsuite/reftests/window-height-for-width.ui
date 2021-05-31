@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkDialog" id="window1">
+  <object class="CtkDialog" id="window1">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Dubstep</property>
@@ -9,12 +9,12 @@
     <property name="modal">True</property>
     <property name="use_header_bar">1</property>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox2">
+      <object class="CtkBox" id="dialog-vbox2">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
-          <object class="GtkLabel" id="screen_reader_blurb">
+          <object class="CtkLabel" id="screen_reader_blurb">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_start">12</property>
@@ -32,7 +32,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="grid3">
+          <object class="CtkGrid" id="grid3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_start">12</property>
@@ -42,7 +42,7 @@
             <property name="row_spacing">12</property>
             <property name="column_spacing">6</property>
             <child>
-              <object class="GtkLabel" id="screen_reader_label">
+              <object class="CtkLabel" id="screen_reader_label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
@@ -59,7 +59,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSwitch" id="screen_reader_switch">
+              <object class="CtkSwitch" id="screen_reader_switch">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">end</property>

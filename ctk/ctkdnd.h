@@ -40,7 +40,7 @@ G_BEGIN_DECLS
 /* Destination side */
 
 GDK_AVAILABLE_IN_ALL
-void ctk_drag_get_data (GtkWidget      *widget,
+void ctk_drag_get_data (CtkWidget      *widget,
 			GdkDragContext *context,
 			GdkAtom         target,
 			guint32         time_);
@@ -51,18 +51,18 @@ void ctk_drag_finish   (GdkDragContext *context,
 			guint32         time_);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_drag_get_source_widget (GdkDragContext *context);
+CtkWidget *ctk_drag_get_source_widget (GdkDragContext *context);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_drag_highlight   (GtkWidget  *widget);
+void ctk_drag_highlight   (CtkWidget  *widget);
 GDK_AVAILABLE_IN_ALL
-void ctk_drag_unhighlight (GtkWidget  *widget);
+void ctk_drag_unhighlight (CtkWidget  *widget);
 
 /* Source side */
 
 GDK_AVAILABLE_IN_3_10
-GdkDragContext *ctk_drag_begin_with_coordinates (GtkWidget         *widget,
-                                                 GtkTargetList     *targets,
+GdkDragContext *ctk_drag_begin_with_coordinates (CtkWidget         *widget,
+                                                 CtkTargetList     *targets,
                                                  GdkDragAction      actions,
                                                  gint               button,
                                                  GdkEvent          *event,
@@ -70,8 +70,8 @@ GdkDragContext *ctk_drag_begin_with_coordinates (GtkWidget         *widget,
                                                  gint               y);
 
 GDK_DEPRECATED_IN_3_10_FOR(ctk_drag_begin_with_coordinates)
-GdkDragContext *ctk_drag_begin (GtkWidget         *widget,
-				GtkTargetList     *targets,
+GdkDragContext *ctk_drag_begin (CtkWidget         *widget,
+				CtkTargetList     *targets,
 				GdkDragAction      actions,
 				gint               button,
 				GdkEvent          *event);
@@ -81,7 +81,7 @@ void ctk_drag_cancel           (GdkDragContext *context);
 
 GDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_widget (GdkDragContext *context,
-			       GtkWidget      *widget,
+			       CtkWidget      *widget,
 			       gint            hot_x,
 			       gint            hot_y);
 GDK_AVAILABLE_IN_ALL
@@ -112,7 +112,7 @@ GDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_default (GdkDragContext    *context);
 
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_drag_check_threshold (GtkWidget *widget,
+gboolean ctk_drag_check_threshold (CtkWidget *widget,
 				   gint       start_x,
 				   gint       start_y,
 				   gint       current_x,

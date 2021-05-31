@@ -5,13 +5,13 @@ enum
   TARGET_CTK_TREE_MODEL_ROW
 };
 
-static GtkTargetEntry row_targets[] =
+static CtkTargetEntry row_targets[] =
 {
   { "CTK_TREE_MODEL_ROW", CTK_TARGET_SAME_APP, TARGET_CTK_TREE_MODEL_ROW }
 };
 
 static void
-on_button_clicked (GtkWidget *widget, gpointer data)
+on_button_clicked (CtkWidget *widget, gpointer data)
 {
   g_print ("Button %d clicked\n", GPOINTER_TO_INT (data));
 }
@@ -19,13 +19,13 @@ on_button_clicked (GtkWidget *widget, gpointer data)
 static void
 kinetic_scrolling (void)
 {
-  GtkWidget *window, *swindow, *grid;
-  GtkWidget *label;
-  GtkWidget *button_grid, *button;
-  GtkWidget *treeview;
-  GtkCellRenderer *renderer;
-  GtkListStore *store;
-  GtkWidget *textview;
+  CtkWidget *window, *swindow, *grid;
+  CtkWidget *label;
+  CtkWidget *button_grid, *button;
+  CtkWidget *treeview;
+  CtkCellRenderer *renderer;
+  CtkListStore *store;
+  CtkWidget *textview;
   gint i;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -96,7 +96,7 @@ kinetic_scrolling (void)
   store = ctk_list_store_new (1, G_TYPE_STRING);
   for (i = 0; i < 80; i++)
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
       gchar *label = g_strdup_printf ("Row number %d", i);
 
       ctk_list_store_append (store, &iter);

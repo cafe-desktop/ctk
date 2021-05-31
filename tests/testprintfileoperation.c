@@ -46,7 +46,7 @@ test_print_file_operation_set_font_size (TestPrintFileOperation *op,
 }
 
 static void
-test_print_file_operation_begin_print (GtkPrintOperation *operation, GtkPrintContext *context)
+test_print_file_operation_begin_print (CtkPrintOperation *operation, CtkPrintContext *context)
 {
   TestPrintFileOperation *op = TEST_PRINT_FILE_OPERATION (operation);
   char *contents;
@@ -74,8 +74,8 @@ test_print_file_operation_begin_print (GtkPrintOperation *operation, GtkPrintCon
 }
 
 static void
-test_print_file_operation_draw_page (GtkPrintOperation *operation,
-				     GtkPrintContext *context,
+test_print_file_operation_draw_page (CtkPrintOperation *operation,
+				     CtkPrintContext *context,
 				     int page_nr)
 {
   cairo_t *cr;
@@ -143,7 +143,7 @@ test_print_file_operation_draw_page (GtkPrintOperation *operation,
 }
 
 static void
-test_print_file_operation_end_print (GtkPrintOperation *operation, GtkPrintContext *context)
+test_print_file_operation_end_print (CtkPrintOperation *operation, CtkPrintContext *context)
 {
   TestPrintFileOperation *op = TEST_PRINT_FILE_OPERATION (operation);
   g_strfreev (op->lines);
@@ -153,7 +153,7 @@ static void
 test_print_file_operation_class_init (TestPrintFileOperationClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
-  GtkPrintOperationClass *print_class = (GtkPrintOperationClass *)class;
+  CtkPrintOperationClass *print_class = (CtkPrintOperationClass *)class;
 
   gobject_class->finalize = test_print_file_operation_finalize;
   print_class->begin_print = test_print_file_operation_begin_print;

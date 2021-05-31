@@ -121,7 +121,7 @@
       <default>(-1, -1)</default>
       <summary>Window position</summary>
       <description>
-	The (x, y) coordinates of the upper-left corner of the GtkFileChooserDialog's
+	The (x, y) coordinates of the upper-left corner of the CtkFileChooserDialog's
         window.
       </description>
     </key>
@@ -129,7 +129,7 @@
       <default>(-1, -1)</default>
       <summary>Window size</summary>
       <description>
-	The size (width, height) of the GtkFileChooserDialog's window, in pixels.
+	The size (width, height) of the CtkFileChooserDialog's window, in pixels.
       </description>
     </key>
     <key name='startup-mode' enum='org.ctk.Settings.FileChooser.StartupMode'>

@@ -31,25 +31,25 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_LIST_STORE	       (ctk_list_store_get_type ())
-#define CTK_LIST_STORE(obj)	       (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_STORE, GtkListStore))
-#define CTK_LIST_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_STORE, GtkListStoreClass))
+#define CTK_LIST_STORE(obj)	       (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_STORE, CtkListStore))
+#define CTK_LIST_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_STORE, CtkListStoreClass))
 #define CTK_IS_LIST_STORE(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LIST_STORE))
 #define CTK_IS_LIST_STORE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LIST_STORE))
-#define CTK_LIST_STORE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_STORE, GtkListStoreClass))
+#define CTK_LIST_STORE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_STORE, CtkListStoreClass))
 
-typedef struct _GtkListStore              GtkListStore;
-typedef struct _GtkListStorePrivate       GtkListStorePrivate;
-typedef struct _GtkListStoreClass         GtkListStoreClass;
+typedef struct _CtkListStore              CtkListStore;
+typedef struct _CtkListStorePrivate       CtkListStorePrivate;
+typedef struct _CtkListStoreClass         CtkListStoreClass;
 
-struct _GtkListStore
+struct _CtkListStore
 {
   GObject parent;
 
   /*< private >*/
-  GtkListStorePrivate *priv;
+  CtkListStorePrivate *priv;
 };
 
-struct _GtkListStoreClass
+struct _CtkListStoreClass
 {
   GObjectClass parent_class;
 
@@ -64,90 +64,90 @@ struct _GtkListStoreClass
 GDK_AVAILABLE_IN_ALL
 GType         ctk_list_store_get_type         (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkListStore *ctk_list_store_new              (gint          n_columns,
+CtkListStore *ctk_list_store_new              (gint          n_columns,
 					       ...);
 GDK_AVAILABLE_IN_ALL
-GtkListStore *ctk_list_store_newv             (gint          n_columns,
+CtkListStore *ctk_list_store_newv             (gint          n_columns,
 					       GType        *types);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_set_column_types (GtkListStore *list_store,
+void          ctk_list_store_set_column_types (CtkListStore *list_store,
 					       gint          n_columns,
 					       GType        *types);
 
-/* NOTE: use ctk_tree_model_get to get values from a GtkListStore */
+/* NOTE: use ctk_tree_model_get to get values from a CtkListStore */
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_set_value        (GtkListStore *list_store,
-					       GtkTreeIter  *iter,
+void          ctk_list_store_set_value        (CtkListStore *list_store,
+					       CtkTreeIter  *iter,
 					       gint          column,
 					       GValue       *value);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_set              (GtkListStore *list_store,
-					       GtkTreeIter  *iter,
+void          ctk_list_store_set              (CtkListStore *list_store,
+					       CtkTreeIter  *iter,
 					       ...);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_set_valuesv      (GtkListStore *list_store,
-					       GtkTreeIter  *iter,
+void          ctk_list_store_set_valuesv      (CtkListStore *list_store,
+					       CtkTreeIter  *iter,
 					       gint         *columns,
 					       GValue       *values,
 					       gint          n_values);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_set_valist       (GtkListStore *list_store,
-					       GtkTreeIter  *iter,
+void          ctk_list_store_set_valist       (CtkListStore *list_store,
+					       CtkTreeIter  *iter,
 					       va_list       var_args);
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_list_store_remove           (GtkListStore *list_store,
-					       GtkTreeIter  *iter);
+gboolean      ctk_list_store_remove           (CtkListStore *list_store,
+					       CtkTreeIter  *iter);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_insert           (GtkListStore *list_store,
-					       GtkTreeIter  *iter,
+void          ctk_list_store_insert           (CtkListStore *list_store,
+					       CtkTreeIter  *iter,
 					       gint          position);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_insert_before    (GtkListStore *list_store,
-					       GtkTreeIter  *iter,
-					       GtkTreeIter  *sibling);
+void          ctk_list_store_insert_before    (CtkListStore *list_store,
+					       CtkTreeIter  *iter,
+					       CtkTreeIter  *sibling);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_insert_after     (GtkListStore *list_store,
-					       GtkTreeIter  *iter,
-					       GtkTreeIter  *sibling);
+void          ctk_list_store_insert_after     (CtkListStore *list_store,
+					       CtkTreeIter  *iter,
+					       CtkTreeIter  *sibling);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_insert_with_values  (GtkListStore *list_store,
-						  GtkTreeIter  *iter,
+void          ctk_list_store_insert_with_values  (CtkListStore *list_store,
+						  CtkTreeIter  *iter,
 						  gint          position,
 						  ...);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_insert_with_valuesv (GtkListStore *list_store,
-						  GtkTreeIter  *iter,
+void          ctk_list_store_insert_with_valuesv (CtkListStore *list_store,
+						  CtkTreeIter  *iter,
 						  gint          position,
 						  gint         *columns,
 						  GValue       *values,
 						  gint          n_values);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_prepend          (GtkListStore *list_store,
-					       GtkTreeIter  *iter);
+void          ctk_list_store_prepend          (CtkListStore *list_store,
+					       CtkTreeIter  *iter);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_append           (GtkListStore *list_store,
-					       GtkTreeIter  *iter);
+void          ctk_list_store_append           (CtkListStore *list_store,
+					       CtkTreeIter  *iter);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_clear            (GtkListStore *list_store);
+void          ctk_list_store_clear            (CtkListStore *list_store);
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_list_store_iter_is_valid    (GtkListStore *list_store,
-                                               GtkTreeIter  *iter);
+gboolean      ctk_list_store_iter_is_valid    (CtkListStore *list_store,
+                                               CtkTreeIter  *iter);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_reorder          (GtkListStore *store,
+void          ctk_list_store_reorder          (CtkListStore *store,
                                                gint         *new_order);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_swap             (GtkListStore *store,
-                                               GtkTreeIter  *a,
-                                               GtkTreeIter  *b);
+void          ctk_list_store_swap             (CtkListStore *store,
+                                               CtkTreeIter  *a,
+                                               CtkTreeIter  *b);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_move_after       (GtkListStore *store,
-                                               GtkTreeIter  *iter,
-                                               GtkTreeIter  *position);
+void          ctk_list_store_move_after       (CtkListStore *store,
+                                               CtkTreeIter  *iter,
+                                               CtkTreeIter  *position);
 GDK_AVAILABLE_IN_ALL
-void          ctk_list_store_move_before      (GtkListStore *store,
-                                               GtkTreeIter  *iter,
-                                               GtkTreeIter  *position);
+void          ctk_list_store_move_before      (CtkListStore *store,
+                                               CtkTreeIter  *iter,
+                                               CtkTreeIter  *position);
 
 
 G_END_DECLS

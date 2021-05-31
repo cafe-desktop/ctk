@@ -27,33 +27,33 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SOCKET_ACCESSIBLE                         (ctk_socket_accessible_get_type ())
-#define CTK_SOCKET_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SOCKET_ACCESSIBLE, GtkSocketAccessible))
-#define CTK_SOCKET_ACCESSIBLE_CLASS(klass)                 (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SOCKET_ACCESSIBLE, GtkSocketAccessibleClass))
+#define CTK_SOCKET_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SOCKET_ACCESSIBLE, CtkSocketAccessible))
+#define CTK_SOCKET_ACCESSIBLE_CLASS(klass)                 (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SOCKET_ACCESSIBLE, CtkSocketAccessibleClass))
 #define CTK_IS_SOCKET_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SOCKET_ACCESSIBLE))
 #define CTK_IS_SOCKET_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SOCKET_ACCESSIBLE))
-#define CTK_SOCKET_ACCESSIBLE_GET_CLASS(obj)               (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SOCKET_ACCESSIBLE, GtkSocketAccessibleClass))
+#define CTK_SOCKET_ACCESSIBLE_GET_CLASS(obj)               (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SOCKET_ACCESSIBLE, CtkSocketAccessibleClass))
 
-typedef struct _GtkSocketAccessible        GtkSocketAccessible;
-typedef struct _GtkSocketAccessibleClass   GtkSocketAccessibleClass;
-typedef struct _GtkSocketAccessiblePrivate GtkSocketAccessiblePrivate;
+typedef struct _CtkSocketAccessible        CtkSocketAccessible;
+typedef struct _CtkSocketAccessibleClass   CtkSocketAccessibleClass;
+typedef struct _CtkSocketAccessiblePrivate CtkSocketAccessiblePrivate;
 
-struct _GtkSocketAccessible
+struct _CtkSocketAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkSocketAccessiblePrivate *priv;
+  CtkSocketAccessiblePrivate *priv;
 };
 
-struct _GtkSocketAccessibleClass
+struct _CtkSocketAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_socket_accessible_get_type (void);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_socket_accessible_embed (GtkSocketAccessible *socket, gchar *path);
+void ctk_socket_accessible_embed (CtkSocketAccessible *socket, gchar *path);
 
 G_END_DECLS
 

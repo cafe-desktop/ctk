@@ -25,24 +25,24 @@
 /**
  * SECTION:ctkaccessible
  * @Short_description: Accessibility support for widgets
- * @Title: GtkAccessible
+ * @Title: CtkAccessible
  *
- * The #GtkAccessible class is the base class for accessible
- * implementations for #GtkWidget subclasses. It is a thin
+ * The #CtkAccessible class is the base class for accessible
+ * implementations for #CtkWidget subclasses. It is a thin
  * wrapper around #AtkObject, which adds facilities for associating
  * a widget with its accessible object.
  *
  * An accessible implementation for a third-party widget should
- * derive from #GtkAccessible and implement the suitable interfaces
+ * derive from #CtkAccessible and implement the suitable interfaces
  * from ATK, such as #AtkText or #AtkSelection. To establish
  * the connection between the widget class and its corresponding
  * acccessible implementation, override the get_accessible vfunc
- * in #GtkWidgetClass.
+ * in #CtkWidgetClass.
  */
 
-struct _GtkAccessiblePrivate
+struct _CtkAccessiblePrivate
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 };
 
 enum {
@@ -50,9 +50,9 @@ enum {
   PROP_WIDGET
 };
 
-static void ctk_accessible_real_connect_widget_destroyed (GtkAccessible *accessible);
+static void ctk_accessible_real_connect_widget_destroyed (CtkAccessible *accessible);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkAccessible, ctk_accessible, ATK_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkAccessible, ctk_accessible, ATK_TYPE_OBJECT)
 
 static void
 ctk_accessible_set_property (GObject      *object,
@@ -60,7 +60,7 @@ ctk_accessible_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkAccessible *accessible = CTK_ACCESSIBLE (object);
+  CtkAccessible *accessible = CTK_ACCESSIBLE (object);
 
   switch (prop_id)
     {
@@ -79,8 +79,8 @@ ctk_accessible_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkAccessible *accessible = CTK_ACCESSIBLE (object);
-  GtkAccessiblePrivate *priv = accessible->priv;
+  CtkAccessible *accessible = CTK_ACCESSIBLE (object);
+  CtkAccessiblePrivate *priv = accessible->priv;
 
   switch (prop_id)
     {
@@ -94,7 +94,7 @@ ctk_accessible_get_property (GObject    *object,
 }
 
 static void
-ctk_accessible_init (GtkAccessible *accessible)
+ctk_accessible_init (CtkAccessible *accessible)
 {
   accessible->priv = ctk_accessible_get_instance_private (accessible);
 }
@@ -102,7 +102,7 @@ ctk_accessible_init (GtkAccessible *accessible)
 static AtkStateSet *
 ctk_accessible_ref_state_set (AtkObject *object)
 {
-  GtkAccessible *accessible = CTK_ACCESSIBLE (object);
+  CtkAccessible *accessible = CTK_ACCESSIBLE (object);
   AtkStateSet *state_set;
 
   state_set = ATK_OBJECT_CLASS (ctk_accessible_parent_class)->ref_state_set (object);
@@ -114,13 +114,13 @@ ctk_accessible_ref_state_set (AtkObject *object)
 }
 
 static void
-ctk_accessible_real_widget_set (GtkAccessible *accessible)
+ctk_accessible_real_widget_set (CtkAccessible *accessible)
 {
   atk_object_notify_state_change (ATK_OBJECT (accessible), ATK_STATE_DEFUNCT, FALSE);
 }
 
 static void
-ctk_accessible_real_widget_unset (GtkAccessible *accessible)
+ctk_accessible_real_widget_unset (CtkAccessible *accessible)
 {
   atk_object_notify_state_change (ATK_OBJECT (accessible), ATK_STATE_DEFUNCT, TRUE);
 }
@@ -128,7 +128,7 @@ ctk_accessible_real_widget_unset (GtkAccessible *accessible)
 static void
 ctk_accessible_dispose (GObject *object)
 {
-  GtkAccessible *accessible = CTK_ACCESSIBLE (object);
+  CtkAccessible *accessible = CTK_ACCESSIBLE (object);
   
   ctk_accessible_set_widget (accessible, NULL);
 
@@ -136,7 +136,7 @@ ctk_accessible_dispose (GObject *object)
 }
 
 static void
-ctk_accessible_class_init (GtkAccessibleClass *klass)
+ctk_accessible_class_init (CtkAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *atkobject_class = ATK_OBJECT_CLASS (klass);
@@ -161,10 +161,10 @@ ctk_accessible_class_init (GtkAccessibleClass *klass)
 
 /**
  * ctk_accessible_set_widget:
- * @accessible: a #GtkAccessible
- * @widget: (allow-none): a #GtkWidget or %NULL to unset
+ * @accessible: a #CtkAccessible
+ * @widget: (allow-none): a #CtkWidget or %NULL to unset
  *
- * Sets the #GtkWidget corresponding to the #GtkAccessible.
+ * Sets the #CtkWidget corresponding to the #CtkAccessible.
  *
  * @accessible will not hold a reference to @widget.
  * It is the caller’s responsibility to ensure that when @widget
@@ -174,11 +174,11 @@ ctk_accessible_class_init (GtkAccessibleClass *klass)
  * Since: 2.22
  */
 void
-ctk_accessible_set_widget (GtkAccessible *accessible,
-                           GtkWidget     *widget)
+ctk_accessible_set_widget (CtkAccessible *accessible,
+                           CtkWidget     *widget)
 {
-  GtkAccessiblePrivate *priv;
-  GtkAccessibleClass *klass;
+  CtkAccessiblePrivate *priv;
+  CtkAccessibleClass *klass;
 
   g_return_if_fail (CTK_IS_ACCESSIBLE (accessible));
 
@@ -201,19 +201,19 @@ ctk_accessible_set_widget (GtkAccessible *accessible,
 
 /**
  * ctk_accessible_get_widget:
- * @accessible: a #GtkAccessible
+ * @accessible: a #CtkAccessible
  *
- * Gets the #GtkWidget corresponding to the #GtkAccessible.
+ * Gets the #CtkWidget corresponding to the #CtkAccessible.
  * The returned widget does not have a reference added, so
  * you do not need to unref it.
  *
- * Returns: (nullable) (transfer none): pointer to the #GtkWidget
- *     corresponding to the #GtkAccessible, or %NULL.
+ * Returns: (nullable) (transfer none): pointer to the #CtkWidget
+ *     corresponding to the #CtkAccessible, or %NULL.
  *
  * Since: 2.22
  */
-GtkWidget*
-ctk_accessible_get_widget (GtkAccessible *accessible)
+CtkWidget*
+ctk_accessible_get_widget (CtkAccessible *accessible)
 {
   g_return_val_if_fail (CTK_IS_ACCESSIBLE (accessible), NULL);
 
@@ -222,17 +222,17 @@ ctk_accessible_get_widget (GtkAccessible *accessible)
 
 /**
  * ctk_accessible_connect_widget_destroyed:
- * @accessible: a #GtkAccessible
+ * @accessible: a #CtkAccessible
  *
  * This function specifies the callback function to be called
- * when the widget corresponding to a GtkAccessible is destroyed.
+ * when the widget corresponding to a CtkAccessible is destroyed.
  *
  * Deprecated: 3.4: Use ctk_accessible_set_widget() and its vfuncs.
  */
 void
-ctk_accessible_connect_widget_destroyed (GtkAccessible *accessible)
+ctk_accessible_connect_widget_destroyed (CtkAccessible *accessible)
 {
-  GtkAccessibleClass *class;
+  CtkAccessibleClass *class;
 
   g_return_if_fail (CTK_IS_ACCESSIBLE (accessible));
 
@@ -243,16 +243,16 @@ ctk_accessible_connect_widget_destroyed (GtkAccessible *accessible)
 }
 
 static void
-ctk_accessible_widget_destroyed (GtkWidget     *widget,
-                                 GtkAccessible *accessible)
+ctk_accessible_widget_destroyed (CtkWidget     *widget,
+                                 CtkAccessible *accessible)
 {
   ctk_accessible_set_widget (accessible, NULL);
 }
 
 static void
-ctk_accessible_real_connect_widget_destroyed (GtkAccessible *accessible)
+ctk_accessible_real_connect_widget_destroyed (CtkAccessible *accessible)
 {
-  GtkAccessiblePrivate *priv = accessible->priv;
+  CtkAccessiblePrivate *priv = accessible->priv;
 
   if (priv->widget)
     g_signal_connect (priv->widget, "destroy",

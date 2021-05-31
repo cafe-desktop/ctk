@@ -455,7 +455,7 @@ update_cursor (gpointer data,
  * gdk_cursor_new_from_pixbuf() will have to be handled
  * by the application (GTK+ applications can learn about
  * cursor theme changes by listening for change notification
- * for the corresponding #GtkSetting).
+ * for the corresponding #CtkSetting).
  *
  * Since: 2.8
  */

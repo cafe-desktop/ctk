@@ -22,17 +22,17 @@
 #include "ctkgesturedragprivate.h"
 #include "ctkgesturepan.h"
 
-struct _GtkGesturePan
+struct _CtkGesturePan
 {
-  GtkGestureDrag parent_instance;
+  CtkGestureDrag parent_instance;
 };
 
-struct _GtkGesturePanClass
+struct _CtkGesturePanClass
 {
-  GtkGestureDragClass parent_class;
+  CtkGestureDragClass parent_class;
 
-  void (* pan) (GtkGesturePan *gesture,
-                GtkPanDirection direction,
+  void (* pan) (CtkGesturePan *gesture,
+                CtkPanDirection direction,
                 gdouble         offset);
 
   /*< private >*/

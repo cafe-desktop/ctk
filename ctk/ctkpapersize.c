@@ -28,7 +28,7 @@
 
 #include "ctkpapersize.h"
 #include "ctkprintutils.h"
-#include "ctkprintoperation.h"  /* for GtkPrintError */
+#include "ctkprintoperation.h"  /* for CtkPrintError */
 #include "ctkintl.h"
 
 /* _ctk_load_custom_papers() only on Unix so far  */
@@ -42,16 +42,16 @@
 /**
  * SECTION:ctkpapersize
  * @Short_description: Support for named paper sizes
- * @Title: GtkPaperSize
- * @See_also:#GtkPageSetup
+ * @Title: CtkPaperSize
+ * @See_also:#CtkPageSetup
  *
- * GtkPaperSize handles paper sizes. It uses the standard called
+ * CtkPaperSize handles paper sizes. It uses the standard called
  * [PWG 5101.1-2002 PWG: Standard for Media Standardized Names](http://www.pwg.org/standards.html)
  * to name the paper sizes (and to get the data for the page sizes).
- * In addition to standard paper sizes, GtkPaperSize allows to
+ * In addition to standard paper sizes, CtkPaperSize allows to
  * construct custom paper sizes with arbitrary dimensions.
  *
- * The #GtkPaperSize object stores not only the dimensions (width
+ * The #CtkPaperSize object stores not only the dimensions (width
  * and height) of a paper size and its name, it also provides
  * default [print margins][print-margins].
  *
@@ -59,7 +59,7 @@
  */
 
 
-struct _GtkPaperSize
+struct _CtkPaperSize
 {
   const PaperInfo *info;
 
@@ -73,7 +73,7 @@ struct _GtkPaperSize
   gboolean is_ipp;
 };
 
-G_DEFINE_BOXED_TYPE (GtkPaperSize, ctk_paper_size,
+G_DEFINE_BOXED_TYPE (CtkPaperSize, ctk_paper_size,
                      ctk_paper_size_copy,
                      ctk_paper_size_free)
 
@@ -193,12 +193,12 @@ parse_full_media_size_name (const gchar  *full_name,
   return TRUE;
 }
 
-static GtkPaperSize *
+static CtkPaperSize *
 ctk_paper_size_new_from_info (const PaperInfo *info)
 {
-  GtkPaperSize *size;
+  CtkPaperSize *size;
 
-  size = g_slice_new0 (GtkPaperSize);
+  size = g_slice_new0 (CtkPaperSize);
   size->info = info;
   size->width = info->width;
   size->height = info->height;
@@ -210,22 +210,22 @@ ctk_paper_size_new_from_info (const PaperInfo *info)
  * ctk_paper_size_new:
  * @name: (allow-none): a paper size name, or %NULL
  *
- * Creates a new #GtkPaperSize object by parsing a
+ * Creates a new #CtkPaperSize object by parsing a
  * [PWG 5101.1-2002](ftp://ftp.pwg.org/pub/pwg/candidates/cs-pwgmsn10-20020226-5101.1.pdf)
  * paper name.
  *
  * If @name is %NULL, the default paper size is returned,
  * see ctk_paper_size_get_default().
  *
- * Returns: a new #GtkPaperSize, use ctk_paper_size_free()
+ * Returns: a new #CtkPaperSize, use ctk_paper_size_free()
  * to free it
  *
  * Since: 2.10
  */
-GtkPaperSize *
+CtkPaperSize *
 ctk_paper_size_new (const gchar *name)
 {
-  GtkPaperSize *size;
+  CtkPaperSize *size;
   char *short_name;
   double width, height;
   const PaperInfo *info;
@@ -243,7 +243,7 @@ ctk_paper_size_new (const gchar *name)
         }
       else
         {
-          size = g_slice_new0 (GtkPaperSize);
+          size = g_slice_new0 (CtkPaperSize);
 
           size->width = width;
           size->height = height;
@@ -261,7 +261,7 @@ ctk_paper_size_new (const gchar *name)
       else
         {
           g_warning ("Unknown paper size %s", name);
-          size = g_slice_new0 (GtkPaperSize);
+          size = g_slice_new0 (CtkPaperSize);
           size->name = g_strdup (name);
           size->display_name = g_strdup (name);
           /* Default to A4 size */
@@ -302,19 +302,19 @@ improve_displayname (const gchar *name)
  * @width: the paper width, in points
  * @height: the paper height in points
  *
- * Creates a new #GtkPaperSize object by using
+ * Creates a new #CtkPaperSize object by using
  * PPD information.
  *
  * If @ppd_name is not a recognized PPD paper name,
  * @ppd_display_name, @width and @height are used to
- * construct a custom #GtkPaperSize object.
+ * construct a custom #CtkPaperSize object.
  *
- * Returns: a new #GtkPaperSize, use ctk_paper_size_free()
+ * Returns: a new #CtkPaperSize, use ctk_paper_size_free()
  * to free it
  *
  * Since: 2.10
  */
-GtkPaperSize *
+CtkPaperSize *
 ctk_paper_size_new_from_ppd (const gchar *ppd_name,
                              const gchar *ppd_display_name,
                              gdouble      width,
@@ -323,7 +323,7 @@ ctk_paper_size_new_from_ppd (const gchar *ppd_name,
   char *name;
   const char *lookup_ppd_name;
   char *freeme;
-  GtkPaperSize *size;
+  CtkPaperSize *size;
   int i;
   char *display_name;
 
@@ -383,24 +383,24 @@ ctk_paper_size_new_from_ppd (const gchar *ppd_name,
  * @width: the paper width, in points
  * @height: the paper height in points
  *
- * Creates a new #GtkPaperSize object by using
+ * Creates a new #CtkPaperSize object by using
  * IPP information.
  *
  * If @ipp_name is not a recognized paper name,
  * @width and @height are used to
- * construct a custom #GtkPaperSize object.
+ * construct a custom #CtkPaperSize object.
  *
- * Returns: a new #GtkPaperSize, use ctk_paper_size_free()
+ * Returns: a new #CtkPaperSize, use ctk_paper_size_free()
  * to free it
  *
  * Since: 3.16
  */
-GtkPaperSize *
+CtkPaperSize *
 ctk_paper_size_new_from_ipp (const gchar *ipp_name,
                              gdouble      width,
                              gdouble      height)
 {
-  GtkPaperSize *size;
+  CtkPaperSize *size;
   const gchar  *name = NULL;
   gboolean      found = FALSE;
   float         x_dimension;
@@ -476,26 +476,26 @@ ctk_paper_size_new_from_ipp (const gchar *ipp_name,
  * @height: the paper height, in units of @unit
  * @unit: the unit for @width and @height. not %CTK_UNIT_NONE.
  *
- * Creates a new #GtkPaperSize object with the
+ * Creates a new #CtkPaperSize object with the
  * given parameters.
  *
- * Returns: a new #GtkPaperSize object, use ctk_paper_size_free()
+ * Returns: a new #CtkPaperSize object, use ctk_paper_size_free()
  * to free it
  *
  * Since: 2.10
  */
-GtkPaperSize *
+CtkPaperSize *
 ctk_paper_size_new_custom (const gchar *name,
                            const gchar *display_name,
                            gdouble      width,
                            gdouble      height,
-                           GtkUnit      unit)
+                           CtkUnit      unit)
 {
-  GtkPaperSize *size;
+  CtkPaperSize *size;
   g_return_val_if_fail (name != NULL, NULL);
   g_return_val_if_fail (unit != CTK_UNIT_NONE, NULL);
 
-  size = g_slice_new0 (GtkPaperSize);
+  size = g_slice_new0 (CtkPaperSize);
 
   size->name = g_strdup (name);
   size->display_name = g_strdup (display_name);
@@ -509,20 +509,20 @@ ctk_paper_size_new_custom (const gchar *name,
 
 /**
  * ctk_paper_size_copy:
- * @other: a #GtkPaperSize
+ * @other: a #CtkPaperSize
  *
- * Copies an existing #GtkPaperSize.
+ * Copies an existing #CtkPaperSize.
  *
  * Returns: a copy of @other
  *
  * Since: 2.10
  */
-GtkPaperSize *
-ctk_paper_size_copy (GtkPaperSize *other)
+CtkPaperSize *
+ctk_paper_size_copy (CtkPaperSize *other)
 {
-  GtkPaperSize *size;
+  CtkPaperSize *size;
 
-  size = g_slice_new0 (GtkPaperSize);
+  size = g_slice_new0 (CtkPaperSize);
 
   size->info = other->info;
   if (other->name)
@@ -542,28 +542,28 @@ ctk_paper_size_copy (GtkPaperSize *other)
 
 /**
  * ctk_paper_size_free:
- * @size: a #GtkPaperSize
+ * @size: a #CtkPaperSize
  *
- * Free the given #GtkPaperSize object.
+ * Free the given #CtkPaperSize object.
  *
  * Since: 2.10
  */
 void
-ctk_paper_size_free (GtkPaperSize *size)
+ctk_paper_size_free (CtkPaperSize *size)
 {
   g_free (size->name);
   g_free (size->display_name);
   g_free (size->ppd_name);
 
-  g_slice_free (GtkPaperSize, size);
+  g_slice_free (CtkPaperSize, size);
 }
 
 /**
  * ctk_paper_size_is_equal:
- * @size1: a #GtkPaperSize object
- * @size2: another #GtkPaperSize object
+ * @size1: a #CtkPaperSize object
+ * @size2: another #CtkPaperSize object
  *
- * Compares two #GtkPaperSize objects.
+ * Compares two #CtkPaperSize objects.
  *
  * Returns: %TRUE, if @size1 and @size2
  * represent the same paper size
@@ -571,8 +571,8 @@ ctk_paper_size_free (GtkPaperSize *size)
  * Since: 2.10
  */
 gboolean
-ctk_paper_size_is_equal (GtkPaperSize *size1,
-                         GtkPaperSize *size2)
+ctk_paper_size_is_equal (CtkPaperSize *size1,
+                         CtkPaperSize *size2)
 {
   if (size1->info != NULL && size2->info != NULL)
     return size1->info == size2->info;
@@ -588,8 +588,8 @@ ctk_paper_size_is_equal (GtkPaperSize *size1,
  *
  * Creates a list of known paper sizes.
  *
- * Returns:  (element-type GtkPaperSize) (transfer full): a newly allocated list of newly
- *    allocated #GtkPaperSize objects
+ * Returns:  (element-type CtkPaperSize) (transfer full): a newly allocated list of newly
+ *    allocated #CtkPaperSize objects
  *
  * Since: 2.12
  */
@@ -607,8 +607,8 @@ ctk_paper_size_get_paper_sizes (gboolean include_custom)
       page_setups = _ctk_load_custom_papers ();
       for (l = page_setups; l != NULL; l = l->next)
         {
-          GtkPageSetup *setup = (GtkPageSetup *) l->data;
-          GtkPaperSize *size;
+          CtkPageSetup *setup = (CtkPageSetup *) l->data;
+          CtkPaperSize *size;
 
           size = ctk_page_setup_get_paper_size (setup);
           list = g_list_prepend (list, ctk_paper_size_copy (size));
@@ -619,7 +619,7 @@ ctk_paper_size_get_paper_sizes (gboolean include_custom)
 #endif
   for (i = 0; i < G_N_ELEMENTS (standard_names_offsets); ++i)
     {
-       GtkPaperSize *size;
+       CtkPaperSize *size;
 
        size = ctk_paper_size_new_from_info (&standard_names_offsets[i]);
        list = g_list_prepend (list, size);
@@ -631,16 +631,16 @@ ctk_paper_size_get_paper_sizes (gboolean include_custom)
 
 /**
  * ctk_paper_size_get_name:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  *
- * Gets the name of the #GtkPaperSize.
+ * Gets the name of the #CtkPaperSize.
  *
  * Returns: the name of @size
  *
  * Since: 2.10
  */
 const gchar *
-ctk_paper_size_get_name (GtkPaperSize *size)
+ctk_paper_size_get_name (CtkPaperSize *size)
 {
   if (size->name)
     return size->name;
@@ -650,16 +650,16 @@ ctk_paper_size_get_name (GtkPaperSize *size)
 
 /**
  * ctk_paper_size_get_display_name:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  *
- * Gets the human-readable name of the #GtkPaperSize.
+ * Gets the human-readable name of the #CtkPaperSize.
  *
  * Returns: the human-readable name of @size
  *
  * Since: 2.10
  */
 const gchar *
-ctk_paper_size_get_display_name (GtkPaperSize *size)
+ctk_paper_size_get_display_name (CtkPaperSize *size)
 {
   const gchar *display_name;
 
@@ -674,9 +674,9 @@ ctk_paper_size_get_display_name (GtkPaperSize *size)
 
 /**
  * ctk_paper_size_get_ppd_name:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  *
- * Gets the PPD name of the #GtkPaperSize, which
+ * Gets the PPD name of the #CtkPaperSize, which
  * may be %NULL.
  *
  * Returns: the PPD name of @size
@@ -684,7 +684,7 @@ ctk_paper_size_get_display_name (GtkPaperSize *size)
  * Since: 2.10
  */
 const gchar *
-ctk_paper_size_get_ppd_name (GtkPaperSize *size)
+ctk_paper_size_get_ppd_name (CtkPaperSize *size)
 {
   if (size->ppd_name)
     return size->ppd_name;
@@ -695,10 +695,10 @@ ctk_paper_size_get_ppd_name (GtkPaperSize *size)
 
 /**
  * ctk_paper_size_get_width:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  * @unit: the unit for the return value, not %CTK_UNIT_NONE
  *
- * Gets the paper width of the #GtkPaperSize, in
+ * Gets the paper width of the #CtkPaperSize, in
  * units of @unit.
  *
  * Returns: the paper width
@@ -706,18 +706,18 @@ ctk_paper_size_get_ppd_name (GtkPaperSize *size)
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_width (GtkPaperSize *size,
-                          GtkUnit       unit)
+ctk_paper_size_get_width (CtkPaperSize *size,
+                          CtkUnit       unit)
 {
   return _ctk_print_convert_from_mm (size->width, unit);
 }
 
 /**
  * ctk_paper_size_get_height:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  * @unit: the unit for the return value, not %CTK_UNIT_NONE
  *
- * Gets the paper height of the #GtkPaperSize, in
+ * Gets the paper height of the #CtkPaperSize, in
  * units of @unit.
  *
  * Returns: the paper height
@@ -725,43 +725,43 @@ ctk_paper_size_get_width (GtkPaperSize *size,
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_height (GtkPaperSize *size,
-                           GtkUnit       unit)
+ctk_paper_size_get_height (CtkPaperSize *size,
+                           CtkUnit       unit)
 {
   return _ctk_print_convert_from_mm (size->height, unit);
 }
 
 /**
  * ctk_paper_size_is_custom:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  *
  * Returns %TRUE if @size is not a standard paper size.
  *
  * Returns: whether @size is a custom paper size.
  **/
 gboolean
-ctk_paper_size_is_custom (GtkPaperSize *size)
+ctk_paper_size_is_custom (CtkPaperSize *size)
 {
   return size->is_custom;
 }
 
 /**
  * ctk_paper_size_is_ipp:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  *
  * Returns %TRUE if @size is an IPP standard paper size.
  *
  * Returns: whether @size is not an IPP custom paper size.
  **/
 gboolean
-ctk_paper_size_is_ipp (GtkPaperSize *size)
+ctk_paper_size_is_ipp (CtkPaperSize *size)
 {
   return size->is_ipp;
 }
 
 /**
  * ctk_paper_size_set_size:
- * @size: a custom #GtkPaperSize object
+ * @size: a custom #CtkPaperSize object
  * @width: the new width in units of @unit
  * @height: the new height in units of @unit
  * @unit: the unit for @width and @height
@@ -771,10 +771,10 @@ ctk_paper_size_is_ipp (GtkPaperSize *size)
  * Since: 2.10
  */
 void
-ctk_paper_size_set_size (GtkPaperSize *size,
+ctk_paper_size_set_size (CtkPaperSize *size,
                          gdouble       width,
                          gdouble       height,
-                         GtkUnit       unit)
+                         CtkUnit       unit)
 {
   g_return_if_fail (size != NULL);
   g_return_if_fail (size->is_custom);
@@ -856,18 +856,18 @@ ctk_paper_size_get_default (void)
 
 /**
  * ctk_paper_size_get_default_top_margin:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  * @unit: the unit for the return value, not %CTK_UNIT_NONE
  *
- * Gets the default top margin for the #GtkPaperSize.
+ * Gets the default top margin for the #CtkPaperSize.
  *
  * Returns: the default top margin
  *
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_default_top_margin (GtkPaperSize *size,
-                                       GtkUnit       unit)
+ctk_paper_size_get_default_top_margin (CtkPaperSize *size,
+                                       CtkUnit       unit)
 {
   gdouble margin;
 
@@ -877,18 +877,18 @@ ctk_paper_size_get_default_top_margin (GtkPaperSize *size,
 
 /**
  * ctk_paper_size_get_default_bottom_margin:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  * @unit: the unit for the return value, not %CTK_UNIT_NONE
  *
- * Gets the default bottom margin for the #GtkPaperSize.
+ * Gets the default bottom margin for the #CtkPaperSize.
  *
  * Returns: the default bottom margin
  *
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_default_bottom_margin (GtkPaperSize *size,
-                                          GtkUnit       unit)
+ctk_paper_size_get_default_bottom_margin (CtkPaperSize *size,
+                                          CtkUnit       unit)
 {
   gdouble margin;
   const gchar *name;
@@ -906,18 +906,18 @@ ctk_paper_size_get_default_bottom_margin (GtkPaperSize *size,
 
 /**
  * ctk_paper_size_get_default_left_margin:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  * @unit: the unit for the return value, not %CTK_UNIT_NONE
  *
- * Gets the default left margin for the #GtkPaperSize.
+ * Gets the default left margin for the #CtkPaperSize.
  *
  * Returns: the default left margin
  *
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_default_left_margin (GtkPaperSize *size,
-                                        GtkUnit       unit)
+ctk_paper_size_get_default_left_margin (CtkPaperSize *size,
+                                        CtkUnit       unit)
 {
   gdouble margin;
 
@@ -927,18 +927,18 @@ ctk_paper_size_get_default_left_margin (GtkPaperSize *size,
 
 /**
  * ctk_paper_size_get_default_right_margin:
- * @size: a #GtkPaperSize object
+ * @size: a #CtkPaperSize object
  * @unit: the unit for the return value, not %CTK_UNIT_NONE
  *
- * Gets the default right margin for the #GtkPaperSize.
+ * Gets the default right margin for the #CtkPaperSize.
  *
  * Returns: the default right margin
  *
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_default_right_margin (GtkPaperSize *size,
-                                         GtkUnit       unit)
+ctk_paper_size_get_default_right_margin (CtkPaperSize *size,
+                                         CtkUnit       unit)
 {
   gdouble margin;
 
@@ -956,17 +956,17 @@ ctk_paper_size_get_default_right_margin (GtkPaperSize *size,
  * Reads a paper size from the group @group_name in the key file
  * @key_file.
  *
- * Returns: a new #GtkPaperSize object with the restored
+ * Returns: a new #CtkPaperSize object with the restored
  *     paper size, or %NULL if an error occurred
  *
  * Since: 2.12
  */
-GtkPaperSize *
+CtkPaperSize *
 ctk_paper_size_new_from_key_file (GKeyFile     *key_file,
                                   const gchar  *group_name,
                                   GError      **error)
 {
-  GtkPaperSize *paper_size = NULL;
+  CtkPaperSize *paper_size = NULL;
   gchar *name = NULL;
   gchar *ppd_name = NULL;
   gchar *display_name = NULL;
@@ -1040,7 +1040,7 @@ out:
 
 /**
  * ctk_paper_size_to_key_file:
- * @size: a #GtkPaperSize
+ * @size: a #CtkPaperSize
  * @key_file: the #GKeyFile to save the paper size to
  * @group_name: the group to add the settings to in @key_file
  *
@@ -1049,7 +1049,7 @@ out:
  * Since: 2.12
  */
 void
-ctk_paper_size_to_key_file (GtkPaperSize *size,
+ctk_paper_size_to_key_file (CtkPaperSize *size,
                             GKeyFile     *key_file,
                             const gchar  *group_name)
 {
@@ -1081,7 +1081,7 @@ ctk_paper_size_to_key_file (GtkPaperSize *size,
 
 /**
  * ctk_paper_size_to_gvariant:
- * @paper_size: a #GtkPaperSize
+ * @paper_size: a #CtkPaperSize
  *
  * Serialize a paper size to an a{sv} variant.
  *
@@ -1090,7 +1090,7 @@ ctk_paper_size_to_key_file (GtkPaperSize *size,
  * Since: 3.22
  */
 GVariant *
-ctk_paper_size_to_gvariant (GtkPaperSize *paper_size)
+ctk_paper_size_to_gvariant (CtkPaperSize *paper_size)
 {
   const char *name;
   const char *ppd_name;
@@ -1124,14 +1124,14 @@ ctk_paper_size_to_gvariant (GtkPaperSize *paper_size)
  * Deserialize a paper size from an a{sv} variant in
  * the format produced by ctk_paper_size_to_gvariant().
  *
- * Returns: (transfer full): a new #GtkPaperSize object
+ * Returns: (transfer full): a new #CtkPaperSize object
  *
  * Since: 3.22
  */
-GtkPaperSize *
+CtkPaperSize *
 ctk_paper_size_new_from_gvariant (GVariant *variant)
 {
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   const char *name;
   const char *ppd_name;
   const char *display_name;

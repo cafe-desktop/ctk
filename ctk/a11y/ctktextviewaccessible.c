@@ -32,28 +32,28 @@
 #include "ctktextbufferprivate.h"
 #include "ctk/ctkwidgetprivate.h"
 
-struct _GtkTextViewAccessiblePrivate
+struct _CtkTextViewAccessiblePrivate
 {
   gint insert_offset;
   gint selection_bound;
 };
 
-static void       insert_text_cb        (GtkTextBuffer    *buffer,
-                                                         GtkTextIter      *arg1,
+static void       insert_text_cb        (CtkTextBuffer    *buffer,
+                                                         CtkTextIter      *arg1,
                                                          gchar            *arg2,
                                                          gint             arg3,
                                                          gpointer         user_data);
-static void       delete_range_cb       (GtkTextBuffer    *buffer,
-                                                         GtkTextIter      *arg1,
-                                                         GtkTextIter      *arg2,
+static void       delete_range_cb       (CtkTextBuffer    *buffer,
+                                                         CtkTextIter      *arg1,
+                                                         CtkTextIter      *arg2,
                                                          gpointer         user_data);
-static void       delete_range_after_cb (GtkTextBuffer    *buffer,
-                                                         GtkTextIter      *arg1,
-                                                         GtkTextIter      *arg2,
+static void       delete_range_after_cb (CtkTextBuffer    *buffer,
+                                                         CtkTextIter      *arg1,
+                                                         CtkTextIter      *arg2,
                                                          gpointer         user_data);
-static void       mark_set_cb           (GtkTextBuffer    *buffer,
-                                                         GtkTextIter      *arg1,
-                                                         GtkTextMark      *arg2,
+static void       mark_set_cb           (CtkTextBuffer    *buffer,
+                                                         CtkTextIter      *arg1,
+                                                         CtkTextMark      *arg2,
                                                          gpointer         user_data);
 
 
@@ -61,8 +61,8 @@ static void atk_editable_text_interface_init      (AtkEditableTextIface      *if
 static void atk_text_interface_init               (AtkTextIface              *iface);
 static void atk_streamable_content_interface_init (AtkStreamableContentIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkTextViewAccessible, ctk_text_view_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkTextViewAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkTextViewAccessible, ctk_text_view_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkTextViewAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_EDITABLE_TEXT, atk_editable_text_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_TEXT, atk_text_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_STREAMABLE_CONTENT, atk_streamable_content_interface_init))
@@ -100,7 +100,7 @@ static AtkStateSet*
 ctk_text_view_accessible_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_text_view_accessible_parent_class)->ref_state_set (accessible);
 
@@ -119,9 +119,9 @@ ctk_text_view_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-ctk_text_view_accessible_change_buffer (GtkTextViewAccessible *accessible,
-                                        GtkTextBuffer         *old_buffer,
-                                        GtkTextBuffer         *new_buffer)
+ctk_text_view_accessible_change_buffer (CtkTextViewAccessible *accessible,
+                                        CtkTextBuffer         *old_buffer,
+                                        CtkTextBuffer         *new_buffer)
 {
   if (old_buffer)
     {
@@ -148,7 +148,7 @@ ctk_text_view_accessible_change_buffer (GtkTextViewAccessible *accessible,
 }
 
 static void
-ctk_text_view_accessible_widget_set (GtkAccessible *accessible)
+ctk_text_view_accessible_widget_set (CtkAccessible *accessible)
 {
   ctk_text_view_accessible_change_buffer (CTK_TEXT_VIEW_ACCESSIBLE (accessible),
                                           NULL,
@@ -156,7 +156,7 @@ ctk_text_view_accessible_widget_set (GtkAccessible *accessible)
 }
 
 static void
-ctk_text_view_accessible_widget_unset (GtkAccessible *accessible)
+ctk_text_view_accessible_widget_unset (CtkAccessible *accessible)
 {
   ctk_text_view_accessible_change_buffer (CTK_TEXT_VIEW_ACCESSIBLE (accessible),
                                           ctk_text_view_get_buffer (CTK_TEXT_VIEW (ctk_accessible_get_widget (accessible))),
@@ -164,11 +164,11 @@ ctk_text_view_accessible_widget_unset (GtkAccessible *accessible)
 }
 
 static void
-ctk_text_view_accessible_class_init (GtkTextViewAccessibleClass *klass)
+ctk_text_view_accessible_class_init (CtkTextViewAccessibleClass *klass)
 {
   AtkObjectClass  *class = ATK_OBJECT_CLASS (klass);
-  GtkAccessibleClass *accessible_class = CTK_ACCESSIBLE_CLASS (klass);
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkAccessibleClass *accessible_class = CTK_ACCESSIBLE_CLASS (klass);
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   accessible_class->widget_set = ctk_text_view_accessible_widget_set;
   accessible_class->widget_unset = ctk_text_view_accessible_widget_unset;
@@ -180,7 +180,7 @@ ctk_text_view_accessible_class_init (GtkTextViewAccessibleClass *klass)
 }
 
 static void
-ctk_text_view_accessible_init (GtkTextViewAccessible *accessible)
+ctk_text_view_accessible_init (CtkTextViewAccessible *accessible)
 {
   accessible->priv = ctk_text_view_accessible_get_instance_private (accessible);
 }
@@ -190,10 +190,10 @@ ctk_text_view_accessible_get_text (AtkText *text,
                                    gint     start_offset,
                                    gint     end_offset)
 {
-  GtkTextView *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
-  GtkWidget *widget;
+  CtkTextView *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -214,11 +214,11 @@ ctk_text_view_accessible_get_text_after_offset (AtkText         *text,
                                                 gint            *start_offset,
                                                 gint            *end_offset)
 {
-  GtkWidget *widget;
-  GtkTextView *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter pos;
-  GtkTextIter start, end;
+  CtkWidget *widget;
+  CtkTextView *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter pos;
+  CtkTextIter start, end;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -257,11 +257,11 @@ ctk_text_view_accessible_get_text_at_offset (AtkText         *text,
                                              gint            *start_offset,
                                              gint            *end_offset)
 {
-  GtkWidget *widget;
-  GtkTextView *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter pos;
-  GtkTextIter start, end;
+  CtkWidget *widget;
+  CtkTextView *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter pos;
+  CtkTextIter start, end;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -302,11 +302,11 @@ ctk_text_view_accessible_get_text_before_offset (AtkText         *text,
                                                  gint            *start_offset,
                                                  gint            *end_offset)
 {
-  GtkWidget *widget;
-  GtkTextView *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter pos;
-  GtkTextIter start, end;
+  CtkWidget *widget;
+  CtkTextView *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter pos;
+  CtkTextIter start, end;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -356,9 +356,9 @@ static gunichar
 ctk_text_view_accessible_get_character_at_offset (AtkText *text,
                                                   gint     offset)
 {
-  GtkWidget *widget;
-  GtkTextIter start, end;
-  GtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextIter start, end;
+  CtkTextBuffer *buffer;
   gchar *string;
   gunichar unichar;
 
@@ -383,8 +383,8 @@ ctk_text_view_accessible_get_character_at_offset (AtkText *text,
 static gint
 ctk_text_view_accessible_get_character_count (AtkText *text)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -395,10 +395,10 @@ ctk_text_view_accessible_get_character_count (AtkText *text)
 }
 
 static gint
-get_insert_offset (GtkTextBuffer *buffer)
+get_insert_offset (CtkTextBuffer *buffer)
 {
-  GtkTextMark *insert;
-  GtkTextIter iter;
+  CtkTextMark *insert;
+  CtkTextIter iter;
 
   insert = ctk_text_buffer_get_insert (buffer);
   ctk_text_buffer_get_iter_at_mark (buffer, &iter, insert);
@@ -408,8 +408,8 @@ get_insert_offset (GtkTextBuffer *buffer)
 static gint
 ctk_text_view_accessible_get_caret_offset (AtkText *text)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -423,10 +423,10 @@ static gboolean
 ctk_text_view_accessible_set_caret_offset (AtkText *text,
                                            gint     offset)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -448,10 +448,10 @@ ctk_text_view_accessible_get_offset_at_point (AtkText      *text,
                                               gint          y,
                                               AtkCoordType  coords)
 {
-  GtkTextView *view;
-  GtkTextIter iter;
+  CtkTextView *view;
+  CtkTextIter iter;
   gint x_widget, y_widget, x_window, y_window, buff_x, buff_y;
-  GtkWidget *widget;
+  CtkWidget *widget;
   GdkWindow *window;
   GdkRectangle rect;
 
@@ -507,10 +507,10 @@ ctk_text_view_accessible_get_character_extents (AtkText      *text,
                                                 gint         *height,
                                                 AtkCoordType  coords)
 {
-  GtkTextView *view;
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
-  GtkWidget *widget;
+  CtkTextView *view;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
+  CtkWidget *widget;
   GdkRectangle rectangle;
   GdkWindow *window;
   gint x_widget, y_widget, x_window, y_window;
@@ -594,10 +594,10 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
                                              gint    *start_offset,
                                              gint    *end_offset)
 {
-  GtkTextView *view;
-  GtkTextBuffer *buffer;
-  GtkWidget *widget;
-  GtkTextIter iter;
+  CtkTextView *view;
+  CtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextIter iter;
   AtkAttributeSet *attrib_set = NULL;
   GSList *tags, *temp_tags;
   gdouble scale = 1;
@@ -626,7 +626,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "style-set", &val_set, NULL);
       if (val_set)
@@ -642,7 +642,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "variant-set", &val_set, NULL);
       if (val_set)
@@ -658,7 +658,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "stretch-set", &val_set, NULL);
       if (val_set)
@@ -674,12 +674,12 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "justification-set", &val_set, NULL);
       if (val_set)
         {
-          GtkJustification justification;
+          CtkJustification justification;
           g_object_get (tag, "justification", &justification, NULL);
           attrib_set = add_text_int_attribute (attrib_set, ATK_TEXT_ATTR_JUSTIFICATION, justification);
         }
@@ -690,8 +690,8 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
-      GtkTextDirection direction;
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextDirection direction;
 
       g_object_get (tag, "direction", &direction, NULL);
 
@@ -707,12 +707,12 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "wrap-mode-set", &val_set, NULL);
       if (val_set)
         {
-          GtkWrapMode wrap_mode;
+          CtkWrapMode wrap_mode;
           g_object_get (tag, "wrap-mode", &wrap_mode, NULL);
           attrib_set = add_text_int_attribute (attrib_set, ATK_TEXT_ATTR_WRAP_MODE, wrap_mode);
         }
@@ -723,7 +723,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "foreground-set", &val_set, NULL);
       if (val_set)
@@ -746,7 +746,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "background-set", &val_set, NULL);
       if (val_set)
@@ -769,7 +769,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "family-set", &val_set, NULL);
 
@@ -786,7 +786,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "language-set", &val_set, NULL);
 
@@ -803,7 +803,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "weight-set", &val_set, NULL);
 
@@ -825,7 +825,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
       gboolean scale_set;
 
       g_object_get (tag, "scale-set", &scale_set, NULL);
@@ -849,7 +849,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "size-set", &val_set, NULL);
       if (val_set)
@@ -867,7 +867,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "strikethrough-set", &val_set, NULL);
       if (val_set)
@@ -883,7 +883,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "underline-set", &val_set, NULL);
       if (val_set)
@@ -899,7 +899,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "rise-set", &val_set, NULL);
       if (val_set)
@@ -917,7 +917,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "background-full-height-set", &val_set, NULL);
       if (val_set)
@@ -933,7 +933,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "pixels-inside-wrap-set", &val_set, NULL);
       if (val_set)
@@ -951,7 +951,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "pixels-below-lines-set", &val_set, NULL);
       if (val_set)
@@ -969,7 +969,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "pixels-above-lines-set", &val_set, NULL);
       if (val_set)
@@ -987,7 +987,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "editable-set", &val_set, NULL);
       if (val_set)
@@ -1003,7 +1003,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "invisible-set", &val_set, NULL);
       if (val_set)
@@ -1019,7 +1019,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "indent-set", &val_set, NULL);
       if (val_set)
@@ -1037,7 +1037,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "right-margin-set", &val_set, NULL);
       if (val_set)
@@ -1055,7 +1055,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
+      CtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "left-margin-set", &val_set, NULL);
       if (val_set)
@@ -1077,9 +1077,9 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
 static AtkAttributeSet *
 ctk_text_view_accessible_get_default_attributes (AtkText *text)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextAttributes *text_attrs;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextAttributes *text_attrs;
   AtkAttributeSet *attributes;
   PangoFontDescription *font;
   gchar *value;
@@ -1174,8 +1174,8 @@ ctk_text_view_accessible_get_default_attributes (AtkText *text)
 static gint
 ctk_text_view_accessible_get_n_selections (AtkText *text)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1194,10 +1194,10 @@ ctk_text_view_accessible_get_selection (AtkText *atk_text,
                                         gint    *start_pos,
                                         gint    *end_pos)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
   gchar *text;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (atk_text));
@@ -1226,9 +1226,9 @@ ctk_text_view_accessible_add_selection (AtkText *text,
                                         gint     start_pos,
                                         gint     end_pos)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1252,11 +1252,11 @@ static gboolean
 ctk_text_view_accessible_remove_selection (AtkText *text,
                                            gint     selection_num)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextMark *insert;
-  GtkTextIter iter;
-  GtkTextIter start, end;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextMark *insert;
+  CtkTextIter iter;
+  CtkTextIter start, end;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1284,9 +1284,9 @@ ctk_text_view_accessible_set_selection (AtkText *text,
                                         gint     start_pos,
                                         gint     end_pos)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1315,10 +1315,10 @@ ctk_text_view_accessible_scroll_substring_to(AtkText *text,
                                              gint end_offset,
                                              AtkScrollType type)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
   gdouble xalign = -1.0, yalign = -1.0;
   gboolean use_align = TRUE;
   gint offset, rtl = 0;
@@ -1433,12 +1433,12 @@ ctk_text_view_accessible_set_run_attributes (AtkEditableText *text,
                                              gint             start_offset,
                                              gint             end_offset)
 {
-  GtkTextView *view;
-  GtkTextBuffer *buffer;
-  GtkWidget *widget;
-  GtkTextTag *tag;
-  GtkTextIter start;
-  GtkTextIter end;
+  CtkTextView *view;
+  CtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextTag *tag;
+  CtkTextIter start;
+  CtkTextIter end;
   gint j;
   GdkColor *color;
   gchar** RGB_vals;
@@ -1651,9 +1651,9 @@ static void
 ctk_text_view_accessible_set_text_contents (AtkEditableText *text,
                                             const gchar     *string)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1673,10 +1673,10 @@ ctk_text_view_accessible_insert_text (AtkEditableText *text,
                                       gint             length,
                                       gint            *position)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1696,11 +1696,11 @@ ctk_text_view_accessible_copy_text (AtkEditableText *text,
                                     gint             start_pos,
                                     gint             end_pos)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
   gchar *str;
-  GtkClipboard *clipboard;
+  CtkClipboard *clipboard;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1721,12 +1721,12 @@ ctk_text_view_accessible_cut_text (AtkEditableText *text,
                                    gint             start_pos,
                                    gint             end_pos)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter start, end;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter start, end;
   gchar *str;
-  GtkClipboard *clipboard;
+  CtkClipboard *clipboard;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1750,11 +1750,11 @@ ctk_text_view_accessible_delete_text (AtkEditableText *text,
                                       gint             start_pos,
                                       gint             end_pos)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
-  GtkTextIter start_itr;
-  GtkTextIter end_itr;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
+  CtkTextIter start_itr;
+  CtkTextIter end_itr;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1772,17 +1772,17 @@ ctk_text_view_accessible_delete_text (AtkEditableText *text,
 
 typedef struct
 {
-  GtkTextBuffer* buffer;
+  CtkTextBuffer* buffer;
   gint position;
 } PasteData;
 
 static void
-paste_received (GtkClipboard *clipboard,
+paste_received (CtkClipboard *clipboard,
                 const gchar  *text,
                 gpointer      data)
 {
   PasteData* paste = data;
-  GtkTextIter pos_itr;
+  CtkTextIter pos_itr;
 
   if (text)
     {
@@ -1797,11 +1797,11 @@ static void
 ctk_text_view_accessible_paste_text (AtkEditableText *text,
                                      gint             position)
 {
-  GtkTextView *view;
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
+  CtkTextView *view;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
   PasteData paste;
-  GtkClipboard *clipboard;
+  CtkClipboard *clipboard;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -1835,12 +1835,12 @@ atk_editable_text_interface_init (AtkEditableTextIface *iface)
 /* Callbacks */
 
 static void
-ctk_text_view_accessible_update_cursor (GtkTextViewAccessible *accessible,
-                                        GtkTextBuffer *        buffer)
+ctk_text_view_accessible_update_cursor (CtkTextViewAccessible *accessible,
+                                        CtkTextBuffer *        buffer)
 {
   int prev_insert_offset, prev_selection_bound;
   int insert_offset, selection_bound;
-  GtkTextIter iter;
+  CtkTextIter iter;
 
   prev_insert_offset = accessible->priv->insert_offset;
   prev_selection_bound = accessible->priv->selection_bound;
@@ -1864,13 +1864,13 @@ ctk_text_view_accessible_update_cursor (GtkTextViewAccessible *accessible,
 }
 
 static void
-insert_text_cb (GtkTextBuffer *buffer,
-                GtkTextIter   *iter,
+insert_text_cb (CtkTextBuffer *buffer,
+                CtkTextIter   *iter,
                 gchar         *text,
                 gint           len,
                 gpointer       data)
 {
-  GtkTextViewAccessible *accessible = data;
+  CtkTextViewAccessible *accessible = data;
   gint position;
   gint length;
 
@@ -1883,12 +1883,12 @@ insert_text_cb (GtkTextBuffer *buffer,
 }
 
 static void
-delete_range_cb (GtkTextBuffer *buffer,
-                 GtkTextIter   *start,
-                 GtkTextIter   *end,
+delete_range_cb (CtkTextBuffer *buffer,
+                 CtkTextIter   *start,
+                 CtkTextIter   *end,
                  gpointer       data)
 {
-  GtkTextViewAccessible *accessible = data;
+  CtkTextViewAccessible *accessible = data;
   gint offset, length;
 
   offset = ctk_text_iter_get_offset (start);
@@ -1901,23 +1901,23 @@ delete_range_cb (GtkTextBuffer *buffer,
 }
 
 static void
-delete_range_after_cb (GtkTextBuffer *buffer,
-                       GtkTextIter   *start,
-                       GtkTextIter   *end,
+delete_range_after_cb (CtkTextBuffer *buffer,
+                       CtkTextIter   *start,
+                       CtkTextIter   *end,
                        gpointer       data)
 {
-  GtkTextViewAccessible *accessible = data;
+  CtkTextViewAccessible *accessible = data;
 
   ctk_text_view_accessible_update_cursor (accessible, buffer);
 }
 
 static void
-mark_set_cb (GtkTextBuffer *buffer,
-             GtkTextIter   *location,
-             GtkTextMark   *mark,
+mark_set_cb (CtkTextBuffer *buffer,
+             CtkTextIter   *location,
+             CtkTextMark   *mark,
              gpointer       data)
 {
-  GtkTextViewAccessible *accessible = data;
+  CtkTextViewAccessible *accessible = data;
 
   /*
    * Only generate the signal for the "insert" mark, which
@@ -1936,8 +1936,8 @@ mark_set_cb (GtkTextBuffer *buffer,
 static gint
 gail_streamable_content_get_n_mime_types (AtkStreamableContent *streamable)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
   gint n_mime_types = 0;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (streamable));
@@ -1966,8 +1966,8 @@ static const gchar *
 gail_streamable_content_get_mime_type (AtkStreamableContent *streamable,
                                        gint                  i)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (streamable));
   if (widget == NULL)
@@ -1993,8 +1993,8 @@ static GIOChannel *
 gail_streamable_content_get_stream (AtkStreamableContent *streamable,
                                     const gchar          *mime_type)
 {
-  GtkWidget *widget;
-  GtkTextBuffer *buffer;
+  CtkWidget *widget;
+  CtkTextBuffer *buffer;
   gint i, n_mime_types = 0;
   GdkAtom *atoms;
 
@@ -2017,7 +2017,7 @@ gail_streamable_content_get_stream (AtkStreamableContent *streamable,
           GError *err = NULL;
           gsize len, written;
           gchar tname[80];
-          GtkTextIter start, end;
+          CtkTextIter start, end;
           GIOChannel *gio = NULL;
           int fd;
 
@@ -2074,10 +2074,10 @@ atk_streamable_content_interface_init (AtkStreamableContentIface *iface)
 }
 
 void
-_ctk_text_view_accessible_set_buffer (GtkTextView   *textview,
-                                      GtkTextBuffer *old_buffer)
+_ctk_text_view_accessible_set_buffer (CtkTextView   *textview,
+                                      CtkTextBuffer *old_buffer)
 {
-  GtkTextViewAccessible *accessible;
+  CtkTextViewAccessible *accessible;
 
   g_return_if_fail (CTK_IS_TEXT_VIEW (textview));
   g_return_if_fail (old_buffer == NULL || CTK_IS_TEXT_BUFFER (old_buffer));

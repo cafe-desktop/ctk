@@ -1,15 +1,15 @@
 #include <ctk/ctk.h>
 
 static void
-set_insensitive (GtkButton *b, GtkWidget *w)
+set_insensitive (CtkButton *b, CtkWidget *w)
 {
   ctk_widget_set_sensitive (w, FALSE);
 }
 
 static void
-state_changed (GtkWidget *widget)
+state_changed (CtkWidget *widget)
 {
-  GtkStateFlags flags;
+  CtkStateFlags flags;
   const gchar *sep;
 
   g_print ("state changed: \n");
@@ -53,10 +53,10 @@ state_changed (GtkWidget *widget)
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *bu;
-  GtkWidget *w, *c;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *bu;
+  CtkWidget *w, *c;
 
   ctk_init (&argc, &argv);
 

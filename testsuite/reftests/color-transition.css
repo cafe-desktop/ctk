@@ -8,11 +8,11 @@ window {
   background-color: #7F0080;
 }
 
-GtkBox {
+CtkBox {
   background-color: red;
 }
 
-GtkBox GtkBox {
+CtkBox CtkBox {
   background-color: transparent;
   animation: foo 100s steps(2);
 }

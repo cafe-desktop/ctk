@@ -21,14 +21,14 @@
 
 #include "ctkcssnumbervalueprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   guint fill :1;
-  GtkCssValue *values[4];
+  CtkCssValue *values[4];
 };
 
 static void
-ctk_css_value_border_free (GtkCssValue *value)
+ctk_css_value_border_free (CtkCssValue *value)
 {
   guint i;
 
@@ -38,18 +38,18 @@ ctk_css_value_border_free (GtkCssValue *value)
         _ctk_css_value_unref (value->values[i]);
     }
 
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_border_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_border_compute (CtkCssValue             *value,
                               guint                    property_id,
-                              GtkStyleProviderPrivate *provider,
-                              GtkCssStyle             *style,
-                              GtkCssStyle             *parent_style)
+                              CtkStyleProviderPrivate *provider,
+                              CtkCssStyle             *style,
+                              CtkCssStyle             *parent_style)
 {
-  GtkCssValue *values[4];
-  GtkCssValue *computed;
+  CtkCssValue *values[4];
+  CtkCssValue *computed;
   gboolean changed = FALSE;
   guint i;
 
@@ -83,8 +83,8 @@ ctk_css_value_border_compute (GtkCssValue             *value,
 }
 
 static gboolean
-ctk_css_value_border_equal (const GtkCssValue *value1,
-                            const GtkCssValue *value2)
+ctk_css_value_border_equal (const CtkCssValue *value1,
+                            const CtkCssValue *value2)
 {
   guint i;
 
@@ -100,9 +100,9 @@ ctk_css_value_border_equal (const GtkCssValue *value1,
   return TRUE;
 }
 
-static GtkCssValue *
-ctk_css_value_border_transition (GtkCssValue *start,
-                                 GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_border_transition (CtkCssValue *start,
+                                 CtkCssValue *end,
                                  guint        property_id,
                                  double       progress)
 {
@@ -110,7 +110,7 @@ ctk_css_value_border_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_border_print (const GtkCssValue *value,
+ctk_css_value_border_print (const CtkCssValue *value,
                             GString           *string)
 {
   guint i, n;
@@ -139,7 +139,7 @@ ctk_css_value_border_print (const GtkCssValue *value,
     g_string_append (string, " fill");
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_BORDER = {
+static const CtkCssValueClass CTK_CSS_VALUE_BORDER = {
   ctk_css_value_border_free,
   ctk_css_value_border_compute,
   ctk_css_value_border_equal,
@@ -147,15 +147,15 @@ static const GtkCssValueClass CTK_CSS_VALUE_BORDER = {
   ctk_css_value_border_print
 };
 
-GtkCssValue *
-_ctk_css_border_value_new (GtkCssValue *top,
-                           GtkCssValue *right,
-                           GtkCssValue *bottom,
-                           GtkCssValue *left)
+CtkCssValue *
+_ctk_css_border_value_new (CtkCssValue *top,
+                           CtkCssValue *right,
+                           CtkCssValue *bottom,
+                           CtkCssValue *left)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_BORDER);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_BORDER);
   result->values[CTK_CSS_TOP] = top;
   result->values[CTK_CSS_RIGHT] = right;
   result->values[CTK_CSS_BOTTOM] = bottom;
@@ -164,13 +164,13 @@ _ctk_css_border_value_new (GtkCssValue *top,
   return result;
 }
 
-GtkCssValue *
-_ctk_css_border_value_parse (GtkCssParser           *parser,
-                             GtkCssNumberParseFlags  flags,
+CtkCssValue *
+_ctk_css_border_value_parse (CtkCssParser           *parser,
+                             CtkCssNumberParseFlags  flags,
                              gboolean                allow_auto,
                              gboolean                allow_fill)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
   guint i;
 
   result = _ctk_css_border_value_new (NULL, NULL, NULL, NULL);
@@ -213,32 +213,32 @@ _ctk_css_border_value_parse (GtkCssParser           *parser,
   return result;
 }
 
-GtkCssValue *
-_ctk_css_border_value_get_top (const GtkCssValue *value)
+CtkCssValue *
+_ctk_css_border_value_get_top (const CtkCssValue *value)
 {
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_BORDER, NULL);
 
   return value->values[CTK_CSS_TOP];
 }
 
-GtkCssValue *
-_ctk_css_border_value_get_right (const GtkCssValue *value)
+CtkCssValue *
+_ctk_css_border_value_get_right (const CtkCssValue *value)
 {
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_BORDER, NULL);
 
   return value->values[CTK_CSS_RIGHT];
 }
 
-GtkCssValue *
-_ctk_css_border_value_get_bottom (const GtkCssValue *value)
+CtkCssValue *
+_ctk_css_border_value_get_bottom (const CtkCssValue *value)
 {
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_BORDER, NULL);
 
   return value->values[CTK_CSS_BOTTOM];
 }
 
-GtkCssValue *
-_ctk_css_border_value_get_left (const GtkCssValue *value)
+CtkCssValue *
+_ctk_css_border_value_get_left (const CtkCssValue *value)
 {
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_BORDER, NULL);
 

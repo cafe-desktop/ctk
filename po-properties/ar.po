@@ -431,9 +431,9 @@ msgstr "مجموعة العمليات"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
-msgstr "GtkActionGroup المربوط به GtkAction هذا أو NULL (للاستخدام الداخلي)"
+msgstr "CtkActionGroup المربوط به CtkAction هذا أو NULL (للاستخدام الداخلي)"
 
 #: ctk/ctkaction.c:414 ctk/ctkimagemenuitem.c:172
 msgid "Always show image"
@@ -823,9 +823,9 @@ msgstr "نوع التحزيم"
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
-msgstr "GtkPackType مؤشر لما إذا سيحزم الإبن بمرجع لبداية أو نهاية الأب"
+msgstr "CtkPackType مؤشر لما إذا سيحزم الإبن بمرجع لبداية أو نهاية الأب"
 
 #: ctk/ctkbox.c:293 ctk/ctknotebook.c:670 ctk/ctkpaned.c:270
 #: ctk/ctkruler.c:158 ctk/ctktoolitemgroup.c:1652
@@ -1316,8 +1316,8 @@ msgid "Size"
 msgstr "الحجم"
 
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "قيمة GtkIconSize التي تحدد حجم الأيقونة المرسومة"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "قيمة CtkIconSize التي تحدد حجم الأيقونة المرسومة"
 
 #: ctk/ctkcellrendererpixbuf.c:162
 msgid "Detail"
@@ -1435,8 +1435,8 @@ msgstr "اسم الطابعة"
 
 #: ctk/ctkcellrendererspinner.c:154
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "قيمة GtkIconSize التي تحدد حجم الأيقونة المرسومة"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "قيمة CtkIconSize التي تحدد حجم الأيقونة المرسومة"
 
 #: ctk/ctkcellrenderertext.c:232
 msgid "Text to render"
@@ -3212,10 +3212,10 @@ msgstr "ضبط"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "ترصيف السطور في نص العلامة بالنسبة لبعضها البعض. لا يؤثّر هذا في ترصيف "
-"العلامة نفسها في مكانها المخصص لها. راجع GtkMisc::xalign للمزيد من العملومات"
+"العلامة نفسها في مكانها المخصص لها. راجع CtkMisc::xalign للمزيد من العملومات"
 
 #: ctk/ctklabel.c:587
 msgid "Pattern"
@@ -3314,16 +3314,16 @@ msgid "Horizontal adjustment"
 msgstr "ضبط أفقي"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment للموقع الأفقي"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment للموقع الأفقي"
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
 msgid "Vertical adjustment"
 msgstr "ضبط عمودي"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment للموقع العمودي"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment للموقع العمودي"
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
 msgid "Width"
@@ -3684,7 +3684,7 @@ msgid "Message area"
 msgstr "نوع الرسالة"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4119,16 +4119,16 @@ msgid "Default Page Setup"
 msgstr "إعداد الصفحة الإفتراضي"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
-msgstr "الـ GtkPageSetup المستعمل افتراضيا"
+msgid "The CtkPageSetup used by default"
+msgstr "الـ CtkPageSetup المستعمل افتراضيا"
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
 msgid "Print Settings"
 msgstr "إعدادات الطبع"
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "الـ GtkPrintSettings المستعمل لبدأ الحوار"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "الـ CtkPrintSettings المستعمل لبدأ الحوار"
 
 #: ctk/ctkprintoperation.c:1043
 msgid "Job Name"
@@ -4250,7 +4250,7 @@ msgid "Embed Page Setup"
 msgstr "إعداد الصفحة"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4264,16 +4264,16 @@ msgid "The number of pages that will be printed."
 msgstr "عدد الصفحات في المستند"
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
-msgstr "الـ GtkPageSetup المستخدم"
+msgid "The CtkPageSetup to use"
+msgstr "الـ CtkPageSetup المستخدم"
 
 #: ctk/ctkprintunixdialog.c:324
 msgid "Selected Printer"
 msgstr "الطابعة المنتقاة"
 
 #: ctk/ctkprintunixdialog.c:325
-msgid "The GtkPrinter which is selected"
-msgstr "الـ GtkPrinter المختار"
+msgid "The CtkPrinter which is selected"
+msgstr "الـ CtkPrinter المختار"
 
 #: ctk/ctkprintunixdialog.c:332
 msgid "Manual Capabilities"
@@ -4294,7 +4294,7 @@ msgid "Whether the application has a selection"
 msgstr "فيما إذا كانت العملية مفعلة."
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprogressbar.c:134
@@ -4439,8 +4439,8 @@ msgid "How the range should be updated on the screen"
 msgstr "كيفية تحديث المدى على الشاشة"
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "GtkAdjustment المحتوي على القيمة الحالية لجسم المدى هذا"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "CtkAdjustment المحتوي على القيمة الحالية لجسم المدى هذا"
 
 #: ctk/ctkrange.c:428
 msgid "Invert direction slider moves to increase range value"
@@ -4692,8 +4692,8 @@ msgstr "حجم الأيقونة"
 
 #: ctk/ctkscalebutton.c:240
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "GtkAdjustment المحتوي على القيمة الحالية لجسم التحجيم هذا"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "CtkAdjustment المحتوي على القيمة الحالية لجسم التحجيم هذا"
 
 #: ctk/ctkscalebutton.c:268
 msgid "Icons"
@@ -5191,16 +5191,16 @@ msgid "Default file chooser backend"
 msgstr "خلفيّة منتقي الملفات الإفتراضيّة"
 
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "اسم خلفية GtkFileChooser التي ستستخدم إفتراضيّا"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "اسم خلفية CtkFileChooser التي ستستخدم إفتراضيّا"
 
 #: ctk/ctksettings.c:760
 msgid "Default print backend"
 msgstr "خلفيّة الطابعة الإفتراضيّة"
 
 #: ctk/ctksettings.c:761
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "اسم النّهايات الخلفيّة لـ GtkPrintBackend التي ستستخدم إفتراضيّا"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "اسم النّهايات الخلفيّة لـ CtkPrintBackend التي ستستخدم إفتراضيّا"
 
 #: ctk/ctksettings.c:784
 msgid "Default command to run when displaying a print preview"
@@ -5413,7 +5413,7 @@ msgstr "عدد الصفحات"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6356,8 +6356,8 @@ msgid "Fixed Height Mode"
 msgstr "نسق الارتفاع الثابت"
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "يسرع GtkTreeView باعتبار جميع الأعمدة ذات إرتفاع موحد"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "يسرع CtkTreeView باعتبار جميع الأعمدة ذات إرتفاع موحد"
 
 #: ctk/ctktreeview.c:677
 msgid "Hover Selection"
@@ -6625,15 +6625,15 @@ msgstr "سلسلة XML تصف واجهة المستخدم المدمجة"
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
-msgstr "GtkAdjustment·المحدّد·لقيم·الموقع·الأفقي·لمنفذ·المشهد"
+msgstr "CtkAdjustment·المحدّد·لقيم·الموقع·الأفقي·لمنفذ·المشهد"
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
-msgstr "GtkAdjustment المحدّد لقيم الموقع العمودي لمنفذ المشهد"
+msgstr "CtkAdjustment المحدّد لقيم الموقع العمودي لمنفذ المشهد"
 
 #: ctk/ctkviewport.c:159
 msgid "Determines how the shadowed box around the viewport is drawn"
@@ -7095,8 +7095,8 @@ msgid "Focus in Toplevel"
 msgstr "تركيز في المستوى الأعلى"
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "ما اذا يكون تركيز الإدخال ضمن GtkWindow الحالي"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "ما اذا يكون تركيز الإدخال ضمن CtkWindow الحالي"
 
 #: ctk/ctkwindow.c:717
 msgid "Type hint"
@@ -7313,12 +7313,12 @@ msgstr "كيفية رسم عمود الحالة لطريقة الإدخال"
 #~ msgstr "نمط النشاط"
 
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "إذا ضبط لـ TRUE فسيكون GtkProgress في نسق الشاغل، مما يعني أنه يشير إلى "
+#~ "إذا ضبط لـ TRUE فسيكون CtkProgress في نسق الشاغل، مما يعني أنه يشير إلى "
 #~ "حصول شيء ما لكنه لن يشير إلى كمية النشاط المكتملة. يستعمل هذا عندما تكون "
 #~ "تفعلُ شيئا لا تعلم كم سيستغرق."
 
@@ -7518,8 +7518,8 @@ msgstr "كيفية رسم عمود الحالة لطريقة الإدخال"
 #~ "Whether the preview widget should take up the entire space it is allocated"
 #~ msgstr "فيما إذا وجب أن تملأ ودجة·التلميح كامل المساحة التي خصصة لها"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "GtkAdjustment المرتبط بعمود التطوّر (ملغى)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "CtkAdjustment المرتبط بعمود التطوّر (ملغى)"
 
 #~ msgid "Bar style"
 #~ msgstr "أسلوب العمود"

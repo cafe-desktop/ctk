@@ -1,13 +1,13 @@
 #include <ctk/ctk.h>
 
 static void
-toggle_center (GtkCheckButton *button,
+toggle_center (CtkCheckButton *button,
                GParamSpec     *pspec,
-               GtkActionBar   *bar)
+               CtkActionBar   *bar)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
-      GtkWidget *button;
+      CtkWidget *button;
 
       button = ctk_button_new_with_label ("Center");
       ctk_widget_show (button);
@@ -20,9 +20,9 @@ toggle_center (GtkCheckButton *button,
 }
 
 static void
-toggle_visibility (GtkCheckButton *button,
+toggle_visibility (CtkCheckButton *button,
                    GParamSpec     *pspec,
-                   GtkActionBar   *bar)
+                   CtkActionBar   *bar)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     ctk_widget_show (CTK_WIDGET (bar));
@@ -31,19 +31,19 @@ toggle_visibility (GtkCheckButton *button,
 }
 
 static void
-create_widgets (GtkActionBar  *bar,
-                GtkPackType    pack_type,
+create_widgets (CtkActionBar  *bar,
+                CtkPackType    pack_type,
                 gint           n)
 {
   GList *children, *l;
-  GtkWidget *child;
+  CtkWidget *child;
   gint i;
   gchar *label;
 
   children = ctk_container_get_children (CTK_CONTAINER (bar));
   for (l = children; l; l = l->next)
     {
-      GtkPackType type;
+      CtkPackType type;
 
       child = l->data;
       ctk_container_child_get (CTK_CONTAINER (bar), child, "pack-type", &type, NULL);
@@ -67,9 +67,9 @@ create_widgets (GtkActionBar  *bar,
 }
 
 static void
-change_start (GtkSpinButton *button,
+change_start (CtkSpinButton *button,
               GParamSpec    *pspec,
-              GtkActionBar  *bar)
+              CtkActionBar  *bar)
 {
   create_widgets (bar,
                   CTK_PACK_START,
@@ -77,9 +77,9 @@ change_start (GtkSpinButton *button,
 }
 
 static void
-change_end (GtkSpinButton *button,
+change_end (CtkSpinButton *button,
             GParamSpec    *pspec,
-            GtkActionBar  *bar)
+            CtkActionBar  *bar)
 {
   create_widgets (bar,
                   CTK_PACK_END,
@@ -89,14 +89,14 @@ change_end (GtkSpinButton *button,
 static void
 activate (GApplication *gapp)
 {
-  GtkApplication *app = CTK_APPLICATION (gapp);
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *grid;
-  GtkWidget *label;
-  GtkWidget *spin;
-  GtkWidget *check;
-  GtkWidget *bar;
+  CtkApplication *app = CTK_APPLICATION (gapp);
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *grid;
+  CtkWidget *label;
+  CtkWidget *spin;
+  CtkWidget *check;
+  CtkWidget *bar;
 
   window = ctk_application_window_new (app);
   ctk_application_add_window (app, CTK_WINDOW (window));
@@ -155,7 +155,7 @@ activate (GApplication *gapp)
 int
 main (int argc, char *argv[])
 {
-  GtkApplication *app;
+  CtkApplication *app;
 
   app = ctk_application_new ("org.ctk.Test.ActionBar", 0);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);

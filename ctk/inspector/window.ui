@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <object class="GtkAdjustment" id="magnification_adjustment">
+  <object class="CtkAdjustment" id="magnification_adjustment">
     <property name="lower">1.0</property>
     <property name="upper">5.0</property>
     <property name="page-size">0.0</property>
@@ -8,24 +8,24 @@
     <property name="step-increment">0.1</property>
     <property name="value">2.0</property>
   </object>
-  <template class="GtkInspectorWindow" parent="GtkWindow">
+  <template class="CtkInspectorWindow" parent="CtkWindow">
     <property name="default-height">500</property>
     <property name="default-width">800</property>
     <property name="icon">resource:///org/ctk/libctk/inspector/logo.png</property>
     <child type="titlebar">
-      <object class="GtkHeaderBar">
+      <object class="CtkHeaderBar">
         <property name="visible">1</property>
         <property name="show-close-button">1</property>
         <child>
-          <object class="GtkStack" id="button_stack">
+          <object class="CtkStack" id="button_stack">
             <property name="visible">1</property>
             <property name="visible-child-name" bind-source="top_stack" bind-property="visible-child-name"/>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">1</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkButton" id="select_object">
+                  <object class="CtkButton" id="select_object">
                     <property name="visible">1</property>
                     <property name="focus-on-click">0</property>
                     <property name="tooltip-text" translatable="yes">Select an Object</property>
@@ -36,7 +36,7 @@
                       <class name="image-button"/>
                     </style>
                     <child>
-                      <object class="GtkImage">
+                      <object class="CtkImage">
                         <property name="visible">1</property>
                         <property name="icon-name">find-location-symbolic</property>
                         <property name="icon-size">1</property>
@@ -45,10 +45,10 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkStack" id="object_buttons">
+                  <object class="CtkStack" id="object_buttons">
                     <property name="visible">1</property>
                     <child>
-                      <object class="GtkButton" id="object_details_button">
+                      <object class="CtkButton" id="object_details_button">
                         <property name="visible">1</property>
                         <property name="focus-on-click">0</property>
                         <property name="tooltip-text" translatable="yes">Show Details</property>
@@ -59,7 +59,7 @@
                           <class name="image-button"/>
                         </style>
                         <child>
-                          <object class="GtkImage">
+                          <object class="CtkImage">
                             <property name="visible">1</property>
                             <property name="icon-name">dialog-information-symbolic</property>
                             <property name="icon-size">1</property>
@@ -71,7 +71,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="CtkButton">
                         <property name="visible">1</property>
                         <property name="focus-on-click">0</property>
                         <property name="tooltip-text" translatable="yes">Show all Objects</property>
@@ -82,7 +82,7 @@
                           <class name="image-button"/>
                         </style>
                         <child>
-                          <object class="GtkImage">
+                          <object class="CtkImage">
                             <property name="visible">1</property>
                             <property name="icon-name">view-list-symbolic</property>
                             <property name="icon-size">1</property>
@@ -101,7 +101,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="record_statistics_button">
+              <object class="CtkToggleButton" id="record_statistics_button">
                 <property name="visible">1</property>
                 <property name="focus-on-click">0</property>
                 <property name="tooltip-text" translatable="yes">Collect Statistics</property>
@@ -111,7 +111,7 @@
                   <class name="image-button"/>
                 </style>
                 <child>
-                  <object class="GtkImage">
+                  <object class="CtkImage">
                     <property name="visible">1</property>
                     <property name="icon-name">media-record-symbolic</property>
                     <property name="icon-size">1</property>
@@ -123,12 +123,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkStack" id="resource_buttons">
+              <object class="CtkStack" id="resource_buttons">
                 <property name="visible">1</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <child>
-                  <object class="GtkButton">
+                  <object class="CtkButton">
                     <property name="visible">1</property>
                     <property name="focus-on-click">0</property>
                     <property name="tooltip-text" translatable="yes">Show Details</property>
@@ -138,7 +138,7 @@
                       <class name="image-button"/>
                     </style>
                     <child>
-                      <object class="GtkImage">
+                      <object class="CtkImage">
                         <property name="visible">1</property>
                         <property name="icon-name">dialog-information-symbolic</property>
                         <property name="icon-size">1</property>
@@ -150,7 +150,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="CtkButton">
                     <property name="visible">1</property>
                     <property name="focus-on-click">0</property>
                     <property name="tooltip-text" translatable="yes">Show all Resources</property>
@@ -160,7 +160,7 @@
                       <class name="image-button"/>
                     </style>
                     <child>
-                      <object class="GtkImage">
+                      <object class="CtkImage">
                         <property name="visible">1</property>
                         <property name="icon-name">view-list-symbolic</property>
                         <property name="icon-size">1</property>
@@ -177,7 +177,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">1</property>
               </object>
               <packing>
@@ -185,7 +185,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">1</property>
               </object>
               <packing>
@@ -193,7 +193,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">1</property>
               </object>
               <packing>
@@ -203,7 +203,7 @@
           </object>
         </child>
         <child type="title">
-          <object class="GtkStackSwitcher">
+          <object class="CtkStackSwitcher">
             <property name="visible">1</property>
             <property name="margin-start">6</property>
             <property name="margin-end">6</property>
@@ -213,13 +213,13 @@
       </object>
     </child>
     <child>
-      <object class="GtkStack" id="top_stack">
+      <object class="CtkStack" id="top_stack">
         <property name="visible">1</property>
         <child>
-          <object class="GtkStack" id="object_stack">
+          <object class="CtkStack" id="object_stack">
             <property name="visible">1</property>
             <child>
-              <object class="GtkInspectorObjectTree" id="object_tree">
+              <object class="CtkInspectorObjectTree" id="object_tree">
                 <property name="visible">True</property>
                 <signal name="object-activated" handler="on_object_activated"/>
                 <signal name="object-selected" handler="on_object_selected"/>
@@ -229,25 +229,25 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="CtkBox">
                 <property name="visible">1</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="CtkBox">
                     <property name="visible">1</property>
                     <property name="spacing">10</property>
                     <child>
-                      <object class="GtkStackCombo" id="stackcombo">
+                      <object class="CtkStackCombo" id="stackcombo">
                         <property name="visible">True</property>
                         <property name="margin">6</property>
                         <property name="stack">object_details</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkStack" id="object_start_stack">
+                      <object class="CtkStack" id="object_start_stack">
                         <property name="visible">True</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">True</property>
                           </object>
                           <packing>
@@ -255,13 +255,13 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox">
+                          <object class="CtkBox">
                             <property name="visible">True</property>
                             <property name="orientation">horizontal</property>
                             <property name="spacing">6</property>
                             <property name="margin">6</property>
                             <child>
-                              <object class="GtkToggleButton" id="signals_trace_button">
+                              <object class="CtkToggleButton" id="signals_trace_button">
                                 <property name="visible">True</property>
                                 <property name="relief">none</property>
                                 <property name="tooltip-text" translatable="yes">Trace signal emissions on this object</property>
@@ -269,7 +269,7 @@
                                   <class name="image-button"/>
                                 </style>
                                 <child>
-                                  <object class="GtkImage">
+                                  <object class="CtkImage">
                                     <property name="visible">True</property>
                                     <property name="icon-name">media-record-symbolic</property>
                                     <property name="icon-size">1</property>
@@ -278,7 +278,7 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkButton" id="signals_clear_button">
+                              <object class="CtkButton" id="signals_clear_button">
                                 <property name="visible">True</property>
                                 <property name="relief">none</property>
                                 <property name="tooltip-text" translatable="yes">Clear log</property>
@@ -286,7 +286,7 @@
                                   <class name="image-button"/>
                                 </style>
                                 <child>
-                                  <object class="GtkImage">
+                                  <object class="CtkImage">
                                     <property name="visible">True</property>
                                     <property name="icon-name">edit-clear-symbolic</property>
                                     <property name="icon-size">1</property>
@@ -300,7 +300,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkScale">
+                          <object class="CtkScale">
                             <property name="visible">True</property>
                             <property name="orientation">horizontal</property>
                             <property name="width-request">150</property>
@@ -321,11 +321,11 @@
                       </object>
                     </child>
                     <child type="center">
-                      <object class="GtkStack" id="object_center_stack">
+                      <object class="CtkStack" id="object_center_stack">
                         <property name="visible">1</property>
                         <property name="transition-type">crossfade</property>
                         <child>
-                          <object class="GtkLabel" id="object_title">
+                          <object class="CtkLabel" id="object_title">
                             <property name="visible">1</property>
                           </object>
                           <packing>
@@ -333,7 +333,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSearchEntry" id="prop_search_entry">
+                          <object class="CtkSearchEntry" id="prop_search_entry">
                             <property name="visible">1</property>
                             <property name="margin">6</property>
                             <property name="max-width-chars">40</property>
@@ -343,7 +343,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSearchEntry" id="child_prop_search_entry">
+                          <object class="CtkSearchEntry" id="child_prop_search_entry">
                             <property name="visible">1</property>
                             <property name="margin">6</property>
                             <property name="max-width-chars">40</property>
@@ -357,11 +357,11 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkStack" id="object_details">
+                  <object class="CtkStack" id="object_details">
                     <property name="visible">1</property>
                     <signal name="notify::visible-child" handler="object_details_changed"/>
                     <child>
-                      <object class="GtkInspectorMiscInfo" id="misc_info">
+                      <object class="CtkInspectorMiscInfo" id="misc_info">
                         <property name="visible">True</property>
                         <property name="object-tree">object_tree</property>
                       </object>
@@ -371,7 +371,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorPropList" id="prop_list">
+                      <object class="CtkInspectorPropList" id="prop_list">
                         <property name="visible">True</property>
                         <property name="child-properties">False</property>
                         <property name="object-tree">object_tree</property>
@@ -383,7 +383,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorSignalsList" id="signals_list">
+                      <object class="CtkInspectorSignalsList" id="signals_list">
                         <property name="visible">True</property>
                         <property name="trace-button">signals_trace_button</property>
                         <property name="clear-button">signals_clear_button</property>
@@ -394,7 +394,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorPropList" id="child_prop_list">
+                      <object class="CtkInspectorPropList" id="child_prop_list">
                         <property name="child-properties">True</property>
                         <property name="object-tree">object_tree</property>
                         <property name="search-entry">child_prop_search_entry</property>
@@ -405,7 +405,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorObjectHierarchy" id="object_hierarchy">
+                      <object class="CtkInspectorObjectHierarchy" id="object_hierarchy">
                         <property name="visible">True</property>
                       </object>
                       <packing>
@@ -414,7 +414,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorSelector" id="selector">
+                      <object class="CtkInspectorSelector" id="selector">
                         <property name="visible">True</property>
                       </object>
                       <packing>
@@ -423,7 +423,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorCssNodeTree" id="widget_css_node_tree">
+                      <object class="CtkInspectorCssNodeTree" id="widget_css_node_tree">
                         <property name="visible">True</property>
                       </object>
                       <packing>
@@ -432,35 +432,35 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorSizeGroups" id="size_groups"/>
+                      <object class="CtkInspectorSizeGroups" id="size_groups"/>
                       <packing>
                         <property name="name">size-groups</property>
                         <property name="title" translatable="yes">Size Groups</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorDataList" id="data_list"/>
+                      <object class="CtkInspectorDataList" id="data_list"/>
                       <packing>
                         <property name="name">data</property>
                         <property name="title" translatable="yes">Data</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorActions" id="actions"/>
+                      <object class="CtkInspectorActions" id="actions"/>
                       <packing>
                         <property name="name">actions</property>
                         <property name="title" translatable="yes">Actions</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorMenu" id="menu"/>
+                      <object class="CtkInspectorMenu" id="menu"/>
                       <packing>
                         <property name="name">menu</property>
                         <property name="title" translatable="yes">Menu</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorGestures" id="gestures">
+                      <object class="CtkInspectorGestures" id="gestures">
                         <property name="object-tree">object_tree</property>
                       </object>
                       <packing>
@@ -469,7 +469,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkInspectorMagnifier" id="magnifier">
+                      <object class="CtkInspectorMagnifier" id="magnifier">
                         <property name="adjustment">magnification_adjustment</property>
                       </object>
                       <packing>
@@ -491,7 +491,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInspectorStatistics">
+          <object class="CtkInspectorStatistics">
             <property name="visible">True</property>
             <property name="button">record_statistics_button</property>
           </object>
@@ -501,7 +501,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInspectorResourceList">
+          <object class="CtkInspectorResourceList">
             <property name="visible">True</property>
             <property name="buttons">resource_buttons</property>
           </object>
@@ -511,7 +511,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInspectorCssEditor">
+          <object class="CtkInspectorCssEditor">
             <property name="visible">True</property>
           </object>
           <packing>
@@ -520,7 +520,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInspectorVisual">
+          <object class="CtkInspectorVisual">
             <property name="visible">True</property>
           </object>
           <packing>
@@ -529,7 +529,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInspectorGeneral">
+          <object class="CtkInspectorGeneral">
             <property name="visible">True</property>
           </object>
           <packing>

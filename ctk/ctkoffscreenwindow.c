@@ -26,36 +26,36 @@
 /**
  * SECTION:ctkoffscreenwindow
  * @short_description: A toplevel to manage offscreen rendering of child widgets
- * @title: GtkOffscreenWindow
+ * @title: CtkOffscreenWindow
  *
- * GtkOffscreenWindow is strictly intended to be used for obtaining
+ * CtkOffscreenWindow is strictly intended to be used for obtaining
  * snapshots of widgets that are not part of a normal widget hierarchy.
- * Since #GtkOffscreenWindow is a toplevel widget you cannot obtain
+ * Since #CtkOffscreenWindow is a toplevel widget you cannot obtain
  * snapshots of a full window with it since you cannot pack a toplevel
  * widget in another toplevel.
  *
  * The idea is to take a widget and manually set the state of it,
- * add it to a GtkOffscreenWindow and then retrieve the snapshot
+ * add it to a CtkOffscreenWindow and then retrieve the snapshot
  * as a #cairo_surface_t or #GdkPixbuf.
  *
- * GtkOffscreenWindow derives from #GtkWindow only as an implementation
- * detail.  Applications should not use any API specific to #GtkWindow
- * to operate on this object.  It should be treated as a #GtkBin that
+ * CtkOffscreenWindow derives from #CtkWindow only as an implementation
+ * detail.  Applications should not use any API specific to #CtkWindow
+ * to operate on this object.  It should be treated as a #CtkBin that
  * has no parent widget.
  *
- * When contained offscreen widgets are redrawn, GtkOffscreenWindow
- * will emit a #GtkWidget::damage-event signal.
+ * When contained offscreen widgets are redrawn, CtkOffscreenWindow
+ * will emit a #CtkWidget::damage-event signal.
  */
 
-G_DEFINE_TYPE (GtkOffscreenWindow, ctk_offscreen_window, CTK_TYPE_WINDOW);
+G_DEFINE_TYPE (CtkOffscreenWindow, ctk_offscreen_window, CTK_TYPE_WINDOW);
 
 static void
-ctk_offscreen_window_get_preferred_width (GtkWidget *widget,
+ctk_offscreen_window_get_preferred_width (CtkWidget *widget,
 					  gint      *minimum,
 					  gint      *natural)
 {
-  GtkBin *bin = CTK_BIN (widget);
-  GtkWidget *child;
+  CtkBin *bin = CTK_BIN (widget);
+  CtkWidget *child;
   gint border_width;
   gint default_width;
 
@@ -84,12 +84,12 @@ ctk_offscreen_window_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_offscreen_window_get_preferred_height (GtkWidget *widget,
+ctk_offscreen_window_get_preferred_height (CtkWidget *widget,
 					   gint      *minimum,
 					   gint      *natural)
 {
-  GtkBin *bin = CTK_BIN (widget);
-  GtkWidget *child;
+  CtkBin *bin = CTK_BIN (widget);
+  CtkWidget *child;
   gint border_width;
   gint default_height;
 
@@ -118,11 +118,11 @@ ctk_offscreen_window_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_offscreen_window_size_allocate (GtkWidget *widget,
-                                    GtkAllocation *allocation)
+ctk_offscreen_window_size_allocate (CtkWidget *widget,
+                                    CtkAllocation *allocation)
 {
-  GtkBin *bin = CTK_BIN (widget);
-  GtkWidget *child;
+  CtkBin *bin = CTK_BIN (widget);
+  CtkWidget *child;
   gint border_width;
 
   ctk_widget_set_allocation (widget, allocation);
@@ -140,7 +140,7 @@ ctk_offscreen_window_size_allocate (GtkWidget *widget,
 
   if (child != NULL && ctk_widget_get_visible (child))
     {
-      GtkAllocation  child_alloc;
+      CtkAllocation  child_alloc;
 
       child_alloc.x = border_width;
       child_alloc.y = border_width;
@@ -154,11 +154,11 @@ ctk_offscreen_window_size_allocate (GtkWidget *widget,
 }
 
 static void
-ctk_offscreen_window_realize (GtkWidget *widget)
+ctk_offscreen_window_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
-  GtkBin *bin;
-  GtkWidget *child;
+  CtkAllocation allocation;
+  CtkBin *bin;
+  CtkWidget *child;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -191,10 +191,10 @@ ctk_offscreen_window_realize (GtkWidget *widget)
 }
 
 static void
-ctk_offscreen_window_resize (GtkWidget *widget)
+ctk_offscreen_window_resize (CtkWidget *widget)
 {
-  GtkAllocation allocation = { 0, 0 };
-  GtkRequisition requisition;
+  CtkAllocation allocation = { 0, 0 };
+  CtkRequisition requisition;
 
   ctk_widget_get_preferred_size (widget, &requisition, NULL);
 
@@ -204,8 +204,8 @@ ctk_offscreen_window_resize (GtkWidget *widget)
 }
 
 static void
-move_focus (GtkWidget       *widget,
-            GtkDirectionType dir)
+move_focus (CtkWidget       *widget,
+            CtkDirectionType dir)
 {
   ctk_widget_child_focus (widget, dir);
 
@@ -214,7 +214,7 @@ move_focus (GtkWidget       *widget,
 }
 
 static void
-ctk_offscreen_window_show (GtkWidget *widget)
+ctk_offscreen_window_show (CtkWidget *widget)
 {
   gboolean need_resize;
 
@@ -233,26 +233,26 @@ ctk_offscreen_window_show (GtkWidget *widget)
 }
 
 static void
-ctk_offscreen_window_hide (GtkWidget *widget)
+ctk_offscreen_window_hide (CtkWidget *widget)
 {
   _ctk_widget_set_visible_flag (widget, FALSE);
   ctk_widget_unmap (widget);
 }
 
 static void
-ctk_offscreen_window_check_resize (GtkContainer *container)
+ctk_offscreen_window_check_resize (CtkContainer *container)
 {
-  GtkWidget *widget = CTK_WIDGET (container);
+  CtkWidget *widget = CTK_WIDGET (container);
 
   if (ctk_widget_get_visible (widget))
     ctk_offscreen_window_resize (widget);
 }
 
 static void
-ctk_offscreen_window_class_init (GtkOffscreenWindowClass *class)
+ctk_offscreen_window_class_init (CtkOffscreenWindowClass *class)
 {
-  GtkWidgetClass *widget_class;
-  GtkContainerClass *container_class;
+  CtkWidgetClass *widget_class;
+  CtkContainerClass *container_class;
 
   widget_class = CTK_WIDGET_CLASS (class);
   container_class = CTK_CONTAINER_CLASS (class);
@@ -268,7 +268,7 @@ ctk_offscreen_window_class_init (GtkOffscreenWindowClass *class)
 }
 
 static void
-ctk_offscreen_window_init (GtkOffscreenWindow *window)
+ctk_offscreen_window_init (CtkOffscreenWindow *window)
 {
 }
 
@@ -279,11 +279,11 @@ ctk_offscreen_window_init (GtkOffscreenWindow *window)
  * Creates a toplevel container widget that is used to retrieve
  * snapshots of widgets without showing them on the screen.
  *
- * Returns: A pointer to a #GtkWidget
+ * Returns: A pointer to a #CtkWidget
  *
  * Since: 2.20
  */
-GtkWidget *
+CtkWidget *
 ctk_offscreen_window_new (void)
 {
   return g_object_new (ctk_offscreen_window_get_type (), NULL);
@@ -291,7 +291,7 @@ ctk_offscreen_window_new (void)
 
 /**
  * ctk_offscreen_window_get_surface:
- * @offscreen: the #GtkOffscreenWindow contained widget.
+ * @offscreen: the #CtkOffscreenWindow contained widget.
  *
  * Retrieves a snapshot of the contained widget in the form of
  * a #cairo_surface_t.  If you need to keep this around over window
@@ -303,7 +303,7 @@ ctk_offscreen_window_new (void)
  * Since: 2.20
  */
 cairo_surface_t *
-ctk_offscreen_window_get_surface (GtkOffscreenWindow *offscreen)
+ctk_offscreen_window_get_surface (CtkOffscreenWindow *offscreen)
 {
   g_return_val_if_fail (CTK_IS_OFFSCREEN_WINDOW (offscreen), NULL);
 
@@ -312,7 +312,7 @@ ctk_offscreen_window_get_surface (GtkOffscreenWindow *offscreen)
 
 /**
  * ctk_offscreen_window_get_pixbuf:
- * @offscreen: the #GtkOffscreenWindow contained widget.
+ * @offscreen: the #CtkOffscreenWindow contained widget.
  *
  * Retrieves a snapshot of the contained widget in the form of
  * a #GdkPixbuf.  This is a new pixbuf with a reference count of 1,
@@ -324,7 +324,7 @@ ctk_offscreen_window_get_surface (GtkOffscreenWindow *offscreen)
  * Since: 2.20
  */
 GdkPixbuf *
-ctk_offscreen_window_get_pixbuf (GtkOffscreenWindow *offscreen)
+ctk_offscreen_window_get_pixbuf (CtkOffscreenWindow *offscreen)
 {
   cairo_surface_t *surface;
   GdkPixbuf *pixbuf = NULL;

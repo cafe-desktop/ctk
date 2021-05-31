@@ -7,8 +7,8 @@
 
 #include <ctk/ctk.h>
 
-static GtkWidget *assistant = NULL;
-static GtkWidget *progress_bar = NULL;
+static CtkWidget *assistant = NULL;
+static CtkWidget *progress_bar = NULL;
 
 static gboolean
 apply_changes_gradually (gpointer data)
@@ -34,23 +34,23 @@ apply_changes_gradually (gpointer data)
 }
 
 static void
-on_assistant_apply (GtkWidget *widget, gpointer data)
+on_assistant_apply (CtkWidget *widget, gpointer data)
 {
   /* Start a timer to simulate changes taking a few seconds to apply. */
   g_timeout_add (100, apply_changes_gradually, NULL);
 }
 
 static void
-on_assistant_close_cancel (GtkWidget *widget, gpointer data)
+on_assistant_close_cancel (CtkWidget *widget, gpointer data)
 {
-  GtkWidget **assistant = (GtkWidget **) data;
+  CtkWidget **assistant = (CtkWidget **) data;
 
   ctk_widget_destroy (*assistant);
   *assistant = NULL;
 }
 
 static void
-on_assistant_prepare (GtkWidget *widget, GtkWidget *page, gpointer data)
+on_assistant_prepare (CtkWidget *widget, CtkWidget *page, gpointer data)
 {
   gint current_page, n_pages;
   gchar *title;
@@ -71,10 +71,10 @@ on_assistant_prepare (GtkWidget *widget, GtkWidget *page, gpointer data)
 }
 
 static void
-on_entry_changed (GtkWidget *widget, gpointer data)
+on_entry_changed (CtkWidget *widget, gpointer data)
 {
-  GtkAssistant *assistant = CTK_ASSISTANT (data);
-  GtkWidget *current_page;
+  CtkAssistant *assistant = CTK_ASSISTANT (data);
+  CtkWidget *current_page;
   gint page_number;
   const gchar *text;
 
@@ -89,9 +89,9 @@ on_entry_changed (GtkWidget *widget, gpointer data)
 }
 
 static void
-create_page1 (GtkWidget *assistant)
+create_page1 (CtkWidget *assistant)
 {
-  GtkWidget *box, *label, *entry;
+  CtkWidget *box, *label, *entry;
 
   box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
   ctk_container_set_border_width (CTK_CONTAINER (box), 12);
@@ -113,9 +113,9 @@ create_page1 (GtkWidget *assistant)
 }
 
 static void
-create_page2 (GtkWidget *assistant)
+create_page2 (CtkWidget *assistant)
 {
-  GtkWidget *box, *checkbutton;
+  CtkWidget *box, *checkbutton;
 
   box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
   ctk_container_set_border_width (CTK_CONTAINER (box), 12);
@@ -131,9 +131,9 @@ create_page2 (GtkWidget *assistant)
 }
 
 static void
-create_page3 (GtkWidget *assistant)
+create_page3 (CtkWidget *assistant)
 {
-  GtkWidget *label;
+  CtkWidget *label;
 
   label = ctk_label_new ("This is a confirmation page, press 'Apply' to apply changes");
 
@@ -145,7 +145,7 @@ create_page3 (GtkWidget *assistant)
 }
 
 static void
-create_page4 (GtkWidget *assistant)
+create_page4 (CtkWidget *assistant)
 {
   progress_bar = ctk_progress_bar_new ();
   ctk_widget_set_halign (progress_bar, CTK_ALIGN_CENTER);
@@ -162,8 +162,8 @@ create_page4 (GtkWidget *assistant)
   ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), progress_bar, FALSE);
 }
 
-GtkWidget*
-do_assistant (GtkWidget *do_widget)
+CtkWidget*
+do_assistant (CtkWidget *do_widget)
 {
   if (!assistant)
     {

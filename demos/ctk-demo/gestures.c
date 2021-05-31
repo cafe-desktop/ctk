@@ -7,16 +7,16 @@
 
 #include <ctk/ctk.h>
 
-static GtkGesture *rotate = NULL;
-static GtkGesture *zoom = NULL;
+static CtkGesture *rotate = NULL;
+static CtkGesture *zoom = NULL;
 static gdouble swipe_x = 0;
 static gdouble swipe_y = 0;
 static gboolean long_pressed = FALSE;
 
 static gboolean
-touchpad_swipe_gesture_begin (GtkGesture       *gesture,
+touchpad_swipe_gesture_begin (CtkGesture       *gesture,
                               GdkEventSequence *sequence,
-                              GtkWidget        *widget)
+                              CtkWidget        *widget)
 {
   /* Disallow touchscreen events here */
   if (sequence != NULL)
@@ -25,10 +25,10 @@ touchpad_swipe_gesture_begin (GtkGesture       *gesture,
 }
 
 static void
-swipe_gesture_swept (GtkGestureSwipe *gesture,
+swipe_gesture_swept (CtkGestureSwipe *gesture,
                      gdouble          velocity_x,
                      gdouble          velocity_y,
-                     GtkWidget       *widget)
+                     CtkWidget       *widget)
 {
   swipe_x = velocity_x / 10;
   swipe_y = velocity_y / 10;
@@ -36,46 +36,46 @@ swipe_gesture_swept (GtkGestureSwipe *gesture,
 }
 
 static void
-long_press_gesture_pressed (GtkGestureLongPress *gesture,
+long_press_gesture_pressed (CtkGestureLongPress *gesture,
                             gdouble              x,
                             gdouble              y,
-                            GtkWidget           *widget)
+                            CtkWidget           *widget)
 {
   long_pressed = TRUE;
   ctk_widget_queue_draw (widget);
 }
 
 static void
-long_press_gesture_end (GtkGesture       *gesture,
+long_press_gesture_end (CtkGesture       *gesture,
                         GdkEventSequence *sequence,
-                        GtkWidget        *widget)
+                        CtkWidget        *widget)
 {
   long_pressed = FALSE;
   ctk_widget_queue_draw (widget);
 }
 
 static void
-rotation_angle_changed (GtkGestureRotate *gesture,
+rotation_angle_changed (CtkGestureRotate *gesture,
                         gdouble           angle,
                         gdouble           delta,
-                        GtkWidget        *widget)
+                        CtkWidget        *widget)
 {
   ctk_widget_queue_draw (widget);
 }
 
 static void
-zoom_scale_changed (GtkGestureZoom *gesture,
+zoom_scale_changed (CtkGestureZoom *gesture,
                     gdouble         scale,
-                    GtkWidget      *widget)
+                    CtkWidget      *widget)
 {
   ctk_widget_queue_draw (widget);
 }
 
 static gboolean
-drawing_area_draw (GtkWidget *widget,
+drawing_area_draw (CtkWidget *widget,
                    cairo_t   *cr)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
 
   ctk_widget_get_allocation (widget, &allocation);
 
@@ -141,12 +141,12 @@ drawing_area_draw (GtkWidget *widget,
   return TRUE;
 }
 
-GtkWidget *
-do_gestures (GtkWidget *do_widget)
+CtkWidget *
+do_gestures (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *drawing_area;
-  GtkGesture *gesture;
+  static CtkWidget *window = NULL;
+  CtkWidget *drawing_area;
+  CtkGesture *gesture;
 
   if (!window)
     {

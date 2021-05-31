@@ -43,7 +43,7 @@
       </varlistentry>
       <varlistentry>
         <term><filename>ctk/ctkx.h</filename></term>
-        <listitem>for the X-specfic widgets #GtkSocket and #GtkPlug</listitem>
+        <listitem>for the X-specfic widgets #CtkSocket and #CtkPlug</listitem>
       </varlistentry>
       <varlistentry>
         <term><filename>ctk/ctkunixprint.h</filename></term>
@@ -124,13 +124,13 @@
     compatibility when we change internal interfaces. As a quick example,
     when adding GSEAL_ENABLE, if you see an error like:
     <programlisting>
-    error: 'GtkToggleButton' has no member named 'active'
+    error: 'CtkToggleButton' has no member named 'active'
     </programlisting>
     this means that you are accessing the public structure of
-    GtkToggleButton directly, perhaps with some code like:
+    CtkToggleButton directly, perhaps with some code like:
     <informalexample><programlisting>
       static void
-      on_toggled (GtkToggleButton *button)
+      on_toggled (CtkToggleButton *button)
       {
         if (button->active)
           frob_active ();
@@ -142,11 +142,11 @@
   <para>
     In most cases, this can easily be replaced with the correct accessor
     method. The main rule is that if you have code like the above which
-    accesses the "active" field of a "GtkToggleButton", then the accessor
+    accesses the "active" field of a "CtkToggleButton", then the accessor
     method becomes "ctk_toggle_button_get_active":
     <informalexample><programlisting>
       static void
-      on_toggled (GtkToggleButton *button)
+      on_toggled (CtkToggleButton *button)
       {
         if (ctk_toggle_button_get_active (button))
           frob_active ();
@@ -333,8 +333,8 @@ gdk_gc_set_clip_rectangle (gc, NULL);
           </programlisting></informalexample>
           With cairo, the same effect can be achieved using:
           <informalexample><programlisting>
-GtkStyleContext *context;
-GtkStateFlags flags;
+CtkStyleContext *context;
+CtkStateFlags flags;
 GdkRGBA rgba;
 cairo_t *cr;
 
@@ -392,7 +392,7 @@ ctk_color_button_get_checkered (void)
           Note that stippling looks very outdated in UIs, and is rarely
           used in modern applications. All properties that made use of
           stippling have been removed from GTK+ 3. Most prominently,
-          stippling is absent from text rendering, in particular #GtkTextTag.
+          stippling is absent from text rendering, in particular #CtkTextTag.
         </para>
       </formalpara>
       <formalpara><title>Using the target also as source or mask</title>
@@ -473,20 +473,20 @@ gdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
       which is described in detail in the API documentation
       (see <xref linkend="geometry-management"/>). As a consequence,
       the ::size-request signal and vfunc has been removed from
-      #GtkWidgetClass. The replacement for size_request() can
+      #CtkWidgetClass. The replacement for size_request() can
       take several levels of sophistication:
       <itemizedlist>
         <listitem>
         <para>
         As a minimal replacement to keep current functionality,
-        you can simply implement the #GtkWidgetClass.get_preferred_width() and
-        #GtkWidgetClass.get_preferred_height() vfuncs by calling your existing
+        you can simply implement the #CtkWidgetClass.get_preferred_width() and
+        #CtkWidgetClass.get_preferred_height() vfuncs by calling your existing
         size_request() function. So you go from
         <informalexample><programlisting>
 static void
 my_widget_class_init (MyWidgetClass *class)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   /* ... */
 
@@ -500,11 +500,11 @@ my_widget_class_init (MyWidgetClass *class)
         </para>
         <informalexample><programlisting>
 static void
-my_widget_get_preferred_width (GtkWidget *widget,
+my_widget_get_preferred_width (CtkWidget *widget,
                                gint      *minimal_width,
                                gint      *natural_width)
 {
-  GtkRequisition requisition;
+  CtkRequisition requisition;
 
   my_widget_size_request (widget, &amp;requisition);
 
@@ -512,11 +512,11 @@ my_widget_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-my_widget_get_preferred_height (GtkWidget *widget,
+my_widget_get_preferred_height (CtkWidget *widget,
                                 gint      *minimal_height,
                                 gint      *natural_height)
 {
-  GtkRequisition requisition;
+  CtkRequisition requisition;
 
   my_widget_size_request (widget, &amp;requisition);
 
@@ -528,7 +528,7 @@ my_widget_get_preferred_height (GtkWidget *widget,
 static void
 my_widget_class_init (MyWidgetClass *class)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   /* ... */
 
@@ -546,8 +546,8 @@ my_widget_class_init (MyWidgetClass *class)
           </para>
           <informalexample><programlisting>
 static void
-my_widget_get_preferred_size (GtkWidget      *widget,
-                              GtkOrientation  orientation,
+my_widget_get_preferred_size (CtkWidget      *widget,
+                              CtkOrientation  orientation,
                                gint          *minimal_size,
                                gint          *natural_size)
 {
@@ -569,7 +569,7 @@ my_widget_get_preferred_size (GtkWidget      *widget,
 }
 
 static void
-my_widget_get_preferred_width (GtkWidget *widget,
+my_widget_get_preferred_width (CtkWidget *widget,
                                gint      *minimal_width,
                                gint      *natural_width)
 {
@@ -580,7 +580,7 @@ my_widget_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-my_widget_get_preferred_height (GtkWidget *widget,
+my_widget_get_preferred_height (CtkWidget *widget,
                                 gint      *minimal_height,
                                 gint      *natural_height)
 {
@@ -598,8 +598,8 @@ my_widget_get_preferred_height (GtkWidget *widget,
           <para>If your widget can cope with a small size,
           but would appreciate getting some more space (a common
           example would be that it contains ellipsizable labels),
-          you can do that by making your #GtkWidgetClass.get_preferred_width() /
-          #GtkWidgetClass.get_preferred_height()
+          you can do that by making your #CtkWidgetClass.get_preferred_width() /
+          #CtkWidgetClass.get_preferred_height()
           functions return a smaller value for @minimal than for @natural.
           For @minimal, you probably want to return the same value
           that your size_request() function returned before (since
@@ -611,13 +611,13 @@ my_widget_get_preferred_height (GtkWidget *widget,
           container, as in the following example:
           <informalexample><programlisting>
 static void
-ctk_fixed_get_preferred_height (GtkWidget *widget,
+ctk_fixed_get_preferred_height (CtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
-  GtkFixed *fixed = CTK_FIXED (widget);
-  GtkFixedPrivate *priv = fixed->priv;
-  GtkFixedChild *child;
+  CtkFixed *fixed = CTK_FIXED (widget);
+  CtkFixedPrivate *priv = fixed->priv;
+  CtkFixedChild *child;
   GList *children;
   gint child_min, child_nat;
 
@@ -642,22 +642,22 @@ ctk_fixed_get_preferred_height (GtkWidget *widget,
         </listitem>
         <listitem>
           <para>
-          Note that the #GtkWidgetClass.get_preferred_width() /
-          #GtkWidgetClass.get_preferred_height() functions
+          Note that the #CtkWidgetClass.get_preferred_width() /
+          #CtkWidgetClass.get_preferred_height() functions
           only allow you to deal with one dimension at a time. If your
           size_request() handler is doing things that involve both
           width and height at the same time (e.g. limiting the aspect
           ratio), you will have to implement
-          #GtkWidgetClass.get_preferred_height_for_width()
-          and #GtkWidgetClass.get_preferred_width_for_height().
+          #CtkWidgetClass.get_preferred_height_for_width()
+          and #CtkWidgetClass.get_preferred_width_for_height().
           </para>
         </listitem>
         <listitem>
           <para>
           To make full use of the new capabilities of the
           height-for-width geometry management, you need to additionally
-          implement the #GtkWidgetClass.get_preferred_height_for_width() and
-          #GtkWidgetClass.get_preferred_width_for_height(). For details on
+          implement the #CtkWidgetClass.get_preferred_height_for_width() and
+          #CtkWidgetClass.get_preferred_width_for_height(). For details on
           these functions, see <xref linkend="geometry-management"/>.
           </para>
         </listitem>
@@ -776,7 +776,7 @@ g_object_unref (pixbuf);
       a #GdkVisual provides enough information for cairo to handle colors
       in 'native' surfaces. Therefore, #GdkColormap and related functions
       have been removed in GTK+ 3, and visuals are used instead. The
-      colormap-handling functions of #GtkWidget (ctk_widget_set_colormap(),
+      colormap-handling functions of #CtkWidget (ctk_widget_set_colormap(),
       etc) have been removed and ctk_widget_set_visual() has been added.
     </para>
     <example><title>Setting up a translucent window</title>
@@ -785,9 +785,9 @@ g_object_unref (pixbuf);
     </para>
     <informalexample><programlisting>
 static void
-on_alpha_screen_changed (GtkWidget *widget,
+on_alpha_screen_changed (CtkWidget *widget,
                          GdkScreen *old_screen,
-                         GtkWidget *label)
+                         CtkWidget *label)
 {
   GdkScreen *screen = ctk_widget_get_screen (widget);
   GdkColormap *colormap = gdk_screen_get_rgba_colormap (screen);
@@ -803,9 +803,9 @@ on_alpha_screen_changed (GtkWidget *widget,
     </para>
     <informalexample><programlisting>
 static void
-on_alpha_screen_changed (GtkWindow *window,
+on_alpha_screen_changed (CtkWindow *window,
                          GdkScreen *old_screen,
-                         GtkWidget *label)
+                         CtkWidget *label)
 {
   GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
   GdkVisual *visual = gdk_screen_get_rgba_visual (screen);
@@ -975,10 +975,10 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
   </section>
 
   <section>
-    <title>GtkPlug and GtkSocket</title>
+    <title>CtkPlug and CtkSocket</title>
 
     <para>
-      The #GtkPlug and #GtkSocket widgets are now X11-specific, and you
+      The #CtkPlug and #CtkSocket widgets are now X11-specific, and you
       have to include the <filename>&lt;ctk/ctkx.h&gt;</filename> header
       to use them. The previous section about proper handling of
       backend-specific code applies, if you care about other backends.
@@ -986,10 +986,10 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
   </section>
 
   <section>
-    <title>The GtkWidget::draw signal</title>
+    <title>The CtkWidget::draw signal</title>
     <para>
-      The GtkWidget #GtkWidget::expose-event signal has been replaced by
-      a new #GtkWidget::draw signal, which takes a #cairo_t instead of
+      The CtkWidget #CtkWidget::expose-event signal has been replaced by
+      a new #CtkWidget::draw signal, which takes a #cairo_t instead of
       an expose event. The cairo context is being set up so that the origin
       at (0, 0) coincides with the upper left corner of the widget, and
       is properly clipped.
@@ -1003,7 +1003,7 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
       is available via the new ctk_widget_get_allocated_width() and
       ctk_widget_get_allocated_height() functions. It is not necessary to
       check for ctk_widget_is_drawable(), since GTK+ already does this check
-      before emitting the #GtkWidget::draw signal.
+      before emitting the #CtkWidget::draw signal.
     </para>
     <para>
       There are some special considerations for widgets with multiple windows.
@@ -1022,7 +1022,7 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
         }
       ...
       </programlisting></informalexample>
-      In contrast, the #GtkWidget::draw signal handler may have to draw multiple
+      In contrast, the #CtkWidget::draw signal handler may have to draw multiple
       windows in one call. GTK+ has a convenience function
       ctk_cairo_should_draw_window() that can be used to find out if
       a window needs to be drawn. With that, the example above would look
@@ -1045,7 +1045,7 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
       cairo_restore() when modifying the cairo context in your draw function.
     </para>
     <para>
-      All GtkStyle drawing functions (ctk_paint_box(), etc) have been changed
+      All CtkStyle drawing functions (ctk_paint_box(), etc) have been changed
       to take a #cairo_t instead of a window and a clip area. ::draw
       implementations will usually just use the cairo context that has been
       passed in for this.
@@ -1053,10 +1053,10 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
     <example><title>A simple ::draw function</title>
     <programlisting>
 gboolean
-ctk_arrow_draw (GtkWidget *widget,
+ctk_arrow_draw (CtkWidget *widget,
                 cairo_t   *cr)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   gint x, y;
   gint width, height;
   gint extent;
@@ -1077,13 +1077,13 @@ ctk_arrow_draw (GtkWidget *widget,
   </section>
 
   <section>
-    <title>GtkProgressBar orientation</title>
+    <title>CtkProgressBar orientation</title>
 
     <para>
-      In GTK+ 2.x, #GtkProgressBar and #GtkCellRendererProgress were using the
-      GtkProgressBarOrientation enumeration to specify their orientation and
+      In GTK+ 2.x, #CtkProgressBar and #CtkCellRendererProgress were using the
+      CtkProgressBarOrientation enumeration to specify their orientation and
       direction. In GTK+ 3, both the widget and the cell renderer implement
-      #GtkOrientable, and have an additional 'inverted' property to determine
+      #CtkOrientable, and have an additional 'inverted' property to determine
       their direction. Therefore, a call to ctk_progress_bar_set_orientation()
       needs to be replaced by a pair of calls to
       ctk_orientable_set_orientation() and ctk_progress_bar_set_inverted().
@@ -1095,7 +1095,7 @@ ctk_arrow_draw (GtkWidget *widget,
           <colspec colname="3"/>
           <thead>
             <row><entry>GTK+ 2.x</entry><entry namest="2" nameend="3">GTK+ 3</entry></row>
-            <row><entry>GtkProgressBarOrientation</entry><entry>GtkOrientation</entry><entry>inverted</entry></row>
+            <row><entry>CtkProgressBarOrientation</entry><entry>CtkOrientation</entry><entry>inverted</entry></row>
           </thead>
           <tbody>
             <row><entry>CTK_PROGRESS_LEFT_TO_RIGHT</entry><entry>CTK_ORIENTATION_HORIZONTAL</entry><entry>FALSE</entry></row>
@@ -1122,7 +1122,7 @@ ctk_arrow_draw (GtkWidget *widget,
     </para>
     <para>
       If you experience sizing problems with widgets in ported code,
-      carefully check the #GtkBox expand and #GtkBox fill child properties of your
+      carefully check the #CtkBox expand and #CtkBox fill child properties of your
       boxes.
     </para>
   </section>
@@ -1131,45 +1131,45 @@ ctk_arrow_draw (GtkWidget *widget,
     <title>Scrolling changes</title>
 
     <para>
-      The default values for the #GtkScrolledWindow:hscrollbar-policy and
-      #GtkScrolledWindow:vscrollbar-policy properties have been changed from
+      The default values for the #CtkScrolledWindow:hscrollbar-policy and
+      #CtkScrolledWindow:vscrollbar-policy properties have been changed from
       'never' to 'automatic'. If your application was relying on the default
       value, you will have to set it explicitly.
     </para>
 
     <para>
-      The ::set-scroll-adjustments signal on GtkWidget has been replaced
-      by the #GtkScrollable interface which must be implemented by a widget
-      that wants to be placed in a #GtkScrolledWindow. Instead of emitting
+      The ::set-scroll-adjustments signal on CtkWidget has been replaced
+      by the #CtkScrollable interface which must be implemented by a widget
+      that wants to be placed in a #CtkScrolledWindow. Instead of emitting
       ::set-scroll-adjustments, the scrolled window simply sets the
-      #GtkScrollable:hadjustment and #GtkScrollable:vadjustment properties.
+      #CtkScrollable:hadjustment and #CtkScrollable:vadjustment properties.
     </para>
   </section>
 
   <section>
-    <title>GtkObject is gone</title>
+    <title>CtkObject is gone</title>
 
     <para>
-      GtkObject has been removed in GTK+ 3. Its remaining functionality,
-      the ::destroy signal, has been moved to GtkWidget. If you have non-widget
-      classes that are directly derived from GtkObject, you have to make
+      CtkObject has been removed in GTK+ 3. Its remaining functionality,
+      the ::destroy signal, has been moved to CtkWidget. If you have non-widget
+      classes that are directly derived from CtkObject, you have to make
       them derive from #GInitiallyUnowned (or, if you don't need the floating
       functionality, #GObject). If you have widgets that override the
       destroy class handler, you have to adjust your class_init function,
-      since destroy is now a member of GtkWidgetClass:
+      since destroy is now a member of CtkWidgetClass:
       <informalexample><programlisting>
-      GtkObjectClass *object_class = CTK_OBJECT_CLASS (class);
+      CtkObjectClass *object_class = CTK_OBJECT_CLASS (class);
 
       object_class->destroy = my_destroy;
       </programlisting></informalexample>
       becomes
       <informalexample><programlisting>
-      GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+      CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
       widget_class->destroy = my_destroy;
       </programlisting></informalexample>
       In the unlikely case that you have a non-widget class that is derived
-      from GtkObject and makes use of the destroy functionality, you have
+      from CtkObject and makes use of the destroy functionality, you have
       to implement ::destroy yourself.
     </para>
 
@@ -1184,11 +1184,11 @@ ctk_arrow_draw (GtkWidget *widget,
   </section>
 
   <section>
-    <title>GtkEntryCompletion signal parameters</title>
+    <title>CtkEntryCompletion signal parameters</title>
 
     <para>
-      The #GtkEntryCompletion::match-selected and
-      #GtkEntryCompletion::cursor-on-match signals were erroneously
+      The #CtkEntryCompletion::match-selected and
+      #CtkEntryCompletion::cursor-on-match signals were erroneously
       given the internal filter model instead of the users model.
       This oversight has been fixed in GTK+ 3; if you have handlers
       for these signals, they will likely need slight adjustments.
@@ -1199,8 +1199,8 @@ ctk_arrow_draw (GtkWidget *widget,
     <title>Resize grips</title>
 
     <para>
-     The resize grip functionality has been moved from #GtkStatusbar
-     to #GtkWindow. Any window can now have resize grips, regardless whether
+     The resize grip functionality has been moved from #CtkStatusbar
+     to #CtkWindow. Any window can now have resize grips, regardless whether
      it has a statusbar or not. The functions
      ctk_statusbar_set_has_resize_grip() and ctk_statusbar_get_has_resize_grip()
      have disappeared, and instead there are now

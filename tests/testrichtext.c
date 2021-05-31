@@ -29,7 +29,7 @@ quick_rand32 (void)
 }
 
 static gboolean
-delete_event (GtkWidget   *widget,
+delete_event (CtkWidget   *widget,
               GdkEventAny *event,
               gpointer     user_data)
 {
@@ -39,7 +39,7 @@ delete_event (GtkWidget   *widget,
 }
 
 static void
-text_tag_enqueue (GtkTextTag *tag,
+text_tag_enqueue (CtkTextTag *tag,
                   gpointer    data)
 {
   GSList **slist_p = data;
@@ -58,17 +58,17 @@ static const gchar *example_text =
 "hjhjhj2hj23jh jh jk jk2h3 hj kjj jk jh21 jhhj32.";
 
 static GdkAtom
-setup_buffer (GtkTextBuffer *buffer)
+setup_buffer (CtkTextBuffer *buffer)
 {
   const guint tlen = strlen (example_text);
   const guint tcount = 17;
-  GtkTextTag **tags;
-  GtkTextTagTable *ttable = ctk_text_buffer_get_tag_table (buffer);
+  CtkTextTag **tags;
+  CtkTextTagTable *ttable = ctk_text_buffer_get_tag_table (buffer);
   GSList *node, *slist = NULL;
   GdkAtom atom;
   guint i;
 
-  tags = g_malloc (sizeof (GtkTextTag *) * tcount);
+  tags = g_malloc (sizeof (CtkTextTag *) * tcount);
 
   /* cleanup */
   ctk_text_buffer_set_text (buffer, "", 0);
@@ -94,7 +94,7 @@ setup_buffer (GtkTextBuffer *buffer)
   for (i = 0; i < tcount * 5; i++)
     {
       gint a = quick_rand32() % tlen, b = quick_rand32() % tlen;
-      GtkTextIter start, end;
+      CtkTextIter start, end;
       ctk_text_buffer_get_iter_at_offset (buffer, &start, MIN (a, b));
       ctk_text_buffer_get_iter_at_offset (buffer, &end,   MAX (a, b));
       ctk_text_buffer_apply_tag (buffer, tags[i % tcount], &start, &end);
@@ -110,11 +110,11 @@ setup_buffer (GtkTextBuffer *buffer)
 }
 
 static gboolean
-test_serialize_deserialize (GtkTextBuffer *buffer,
+test_serialize_deserialize (CtkTextBuffer *buffer,
                             GdkAtom        atom,
                             GError       **error)
 {
-  GtkTextIter  start, end;
+  CtkTextIter  start, end;
   guint8      *spew;
   gsize        spew_length;
   gboolean     success;
@@ -136,10 +136,10 @@ gint
 main (gint   argc,
       gchar *argv[])
 {
-  GtkWidget     *window;
-  GtkWidget     *sw;
-  GtkWidget     *view;
-  GtkTextBuffer *buffer;
+  CtkWidget     *window;
+  CtkWidget     *sw;
+  CtkWidget     *view;
+  CtkTextBuffer *buffer;
   GdkAtom        atom;
   guint          i, broken = 0;
 

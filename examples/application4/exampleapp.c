@@ -5,7 +5,7 @@
 
 struct _ExampleApp
 {
-  GtkApplication parent;
+  CtkApplication parent;
 };
 
 G_DEFINE_TYPE(ExampleApp, example_app, CTK_TYPE_APPLICATION);
@@ -39,7 +39,7 @@ static GActionEntry app_entries[] =
 static void
 example_app_startup (GApplication *app)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *app_menu;
   const gchar *quit_accels[2] = { "<Ctrl>Q", NULL };
 

@@ -28,30 +28,30 @@
 #include "ctk/ctkcssnodeprivate.h"
 
 #define CTK_TYPE_INSPECTOR_CSS_NODE_TREE            (ctk_inspector_css_node_tree_get_type())
-#define CTK_INSPECTOR_CSS_NODE_TREE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_CSS_NODE_TREE, GtkInspectorCssNodeTree))
-#define CTK_INSPECTOR_CSS_NODE_TREE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_CSS_NODE_TREE, GtkInspectorCssNodeTreeClass))
+#define CTK_INSPECTOR_CSS_NODE_TREE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_CSS_NODE_TREE, CtkInspectorCssNodeTree))
+#define CTK_INSPECTOR_CSS_NODE_TREE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_CSS_NODE_TREE, CtkInspectorCssNodeTreeClass))
 #define CTK_INSPECTOR_IS_CSS_NODE_TREE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_CSS_NODE_TREE))
 #define CTK_INSPECTOR_IS_CSS_NODE_TREE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_CSS_NODE_TREE))
-#define CTK_INSPECTOR_CSS_NODE_TREE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_CSS_NODE_TREE, GtkInspectorCssNodeTreeClass))
+#define CTK_INSPECTOR_CSS_NODE_TREE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_CSS_NODE_TREE, CtkInspectorCssNodeTreeClass))
 
 
-typedef struct _GtkInspectorCssNodeTreePrivate GtkInspectorCssNodeTreePrivate;
+typedef struct _CtkInspectorCssNodeTreePrivate CtkInspectorCssNodeTreePrivate;
 
-typedef struct _GtkInspectorCssNodeTree
+typedef struct _CtkInspectorCssNodeTree
 {
-  GtkBox parent;
-  GtkInspectorCssNodeTreePrivate *priv;
-} GtkInspectorCssNodeTree;
+  CtkBox parent;
+  CtkInspectorCssNodeTreePrivate *priv;
+} CtkInspectorCssNodeTree;
 
-typedef struct _GtkInspectorCssNodeTreeClass
+typedef struct _CtkInspectorCssNodeTreeClass
 {
-  GtkBoxClass parent;
-} GtkInspectorCssNodeTreeClass;
+  CtkBoxClass parent;
+} CtkInspectorCssNodeTreeClass;
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_css_node_tree_get_type       (void);
-void       ctk_inspector_css_node_tree_set_object     (GtkInspectorCssNodeTree *cnt,
+void       ctk_inspector_css_node_tree_set_object     (CtkInspectorCssNodeTree *cnt,
                                                        GObject                 *object);
 
 G_END_DECLS

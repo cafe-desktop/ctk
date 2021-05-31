@@ -24,12 +24,12 @@
 #include "ctkprivatetypebuiltins.h"
 #include "ctkprivate.h"
 
-GtkCssLookup *
-_ctk_css_lookup_new (const GtkBitmask *relevant)
+CtkCssLookup *
+_ctk_css_lookup_new (const CtkBitmask *relevant)
 {
-  GtkCssLookup *lookup;
+  CtkCssLookup *lookup;
 
-  lookup = g_malloc0 (sizeof (GtkCssLookup));
+  lookup = g_malloc0 (sizeof (CtkCssLookup));
 
   if (relevant)
     {
@@ -45,7 +45,7 @@ _ctk_css_lookup_new (const GtkBitmask *relevant)
 }
 
 void
-_ctk_css_lookup_free (GtkCssLookup *lookup)
+_ctk_css_lookup_free (CtkCssLookup *lookup)
 {
   ctk_internal_return_if_fail (lookup != NULL);
 
@@ -54,7 +54,7 @@ _ctk_css_lookup_free (GtkCssLookup *lookup)
 }
 
 gboolean
-_ctk_css_lookup_is_missing (const GtkCssLookup *lookup,
+_ctk_css_lookup_is_missing (const CtkCssLookup *lookup,
                             guint               id)
 {
   ctk_internal_return_val_if_fail (lookup != NULL, FALSE);
@@ -76,10 +76,10 @@ _ctk_css_lookup_is_missing (const GtkCssLookup *lookup,
  * to ensure they are kept alive until _ctk_css_lookup_free() is called.
  **/
 void
-_ctk_css_lookup_set (GtkCssLookup  *lookup,
+_ctk_css_lookup_set (CtkCssLookup  *lookup,
                      guint          id,
-                     GtkCssSection *section,
-                     GtkCssValue   *value)
+                     CtkCssSection *section,
+                     CtkCssValue   *value)
 {
   ctk_internal_return_if_fail (lookup != NULL);
   ctk_internal_return_if_fail (_ctk_bitmask_get (lookup->missing, id));
@@ -94,7 +94,7 @@ _ctk_css_lookup_set (GtkCssLookup  *lookup,
  * _ctk_css_lookup_resolve:
  * @lookup: the lookup
  * @context: the context the values are resolved for
- * @values: a new #GtkCssStyle to be filled with the new properties
+ * @values: a new #CtkCssStyle to be filled with the new properties
  *
  * Resolves the current lookup into a styleproperties object. This is done
  * by converting from the “winning declaration” to the “computed value”.
@@ -103,10 +103,10 @@ _ctk_css_lookup_set (GtkCssLookup  *lookup,
  * an issue, go fix it.
  **/
 void
-_ctk_css_lookup_resolve (GtkCssLookup            *lookup,
-                         GtkStyleProviderPrivate *provider,
-                         GtkCssStaticStyle       *style,
-                         GtkCssStyle             *parent_style)
+_ctk_css_lookup_resolve (CtkCssLookup            *lookup,
+                         CtkStyleProviderPrivate *provider,
+                         CtkCssStaticStyle       *style,
+                         CtkCssStyle             *parent_style)
 {
   guint i;
 

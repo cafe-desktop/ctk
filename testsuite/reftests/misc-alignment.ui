@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="width_request">160</property>
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
@@ -27,7 +27,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label2">
+          <object class="CtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_start">10</property>
@@ -48,7 +48,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label3">
+          <object class="CtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_start">20</property>
@@ -69,7 +69,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label4">
+          <object class="CtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_start">10</property>
@@ -90,7 +90,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label5">
+          <object class="CtkLabel" id="label5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
@@ -107,7 +107,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkArrow" id="arrow1">
+          <object class="CtkArrow" id="arrow1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
@@ -123,7 +123,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkArrow" id="arrow2">
+          <object class="CtkArrow" id="arrow2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_start">10</property>
@@ -143,7 +143,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkArrow" id="arrow3">
+          <object class="CtkArrow" id="arrow3">
             <property name="width_request">16</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -164,7 +164,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkArrow" id="arrow4">
+          <object class="CtkArrow" id="arrow4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_start">10</property>
@@ -184,7 +184,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkArrow" id="arrow5">
+          <object class="CtkArrow" id="arrow5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
@@ -200,7 +200,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image1">
+          <object class="CtkImage" id="image1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
@@ -219,7 +219,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image2">
+          <object class="CtkImage" id="image2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
@@ -240,7 +240,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image3">
+          <object class="CtkImage" id="image3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -261,7 +261,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image4">
+          <object class="CtkImage" id="image4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
@@ -282,7 +282,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image5">
+          <object class="CtkImage" id="image5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>

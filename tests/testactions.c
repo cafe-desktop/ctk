@@ -19,11 +19,11 @@
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 #include <ctk/ctk.h>
 
-static GtkActionGroup *action_group = NULL;
-static GtkToolbar *toolbar = NULL;
+static CtkActionGroup *action_group = NULL;
+static CtkToolbar *toolbar = NULL;
 
 static void
-activate_action (GtkAction *action)
+activate_action (CtkAction *action)
 {
   const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
@@ -32,7 +32,7 @@ activate_action (GtkAction *action)
 }
 
 static void
-toggle_action (GtkAction *action)
+toggle_action (CtkAction *action)
 {
   const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
@@ -43,7 +43,7 @@ toggle_action (GtkAction *action)
 
 
 static void
-radio_action (GtkAction *action)
+radio_action (CtkAction *action)
 {
   const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
@@ -54,7 +54,7 @@ radio_action (GtkAction *action)
 }
 
 static void
-recent_action (GtkAction *action)
+recent_action (CtkAction *action)
 {
   const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
@@ -67,7 +67,7 @@ recent_action (GtkAction *action)
 }
 
 static void
-toggle_cnp_actions (GtkAction *action)
+toggle_cnp_actions (CtkAction *action)
 {
   gboolean sensitive;
 
@@ -87,15 +87,15 @@ toggle_cnp_actions (GtkAction *action)
 }
 
 static void
-show_accel_dialog (GtkAction *action)
+show_accel_dialog (CtkAction *action)
 {
   g_message ("Sorry, accel dialog not available");
 }
 
 static void
-toolbar_style (GtkAction *action)
+toolbar_style (CtkAction *action)
 {
-  GtkToolbarStyle style;
+  CtkToolbarStyle style;
 
   g_return_if_fail (toolbar != NULL);
 
@@ -107,7 +107,7 @@ toolbar_style (GtkAction *action)
 }
 
 static void
-toolbar_size_small (GtkAction *action)
+toolbar_size_small (CtkAction *action)
 {
   g_return_if_fail (toolbar != NULL);
 
@@ -115,7 +115,7 @@ toolbar_size_small (GtkAction *action)
 }
 
 static void
-toolbar_size_large (GtkAction *action)
+toolbar_size_large (CtkAction *action)
 {
   g_return_if_fail (toolbar != NULL);
 
@@ -123,7 +123,7 @@ toolbar_size_large (GtkAction *action)
 }
 
 /* convenience functions for declaring actions */
-static GtkActionEntry entries[] = {
+static CtkActionEntry entries[] = {
   { "Menu1Action", NULL, "Menu _1" },
   { "Menu2Action", NULL, "Menu _2" },
   { "Menu3Action", NULL, "_Dynamic Menu" },
@@ -147,7 +147,7 @@ static GtkActionEntry entries[] = {
 };
 static guint n_entries = G_N_ELEMENTS (entries);
 
-static GtkToggleActionEntry toggle_entries[] = {
+static CtkToggleActionEntry toggle_entries[] = {
   { "bold", CTK_STOCK_BOLD, "_Bold", "<control>B",
     "Change to bold face", 
     G_CALLBACK (toggle_action), FALSE },
@@ -164,7 +164,7 @@ enum {
   JUSTIFY_FILL
 };
 
-static GtkRadioActionEntry justify_entries[] = {
+static CtkRadioActionEntry justify_entries[] = {
   { "justify-left", CTK_STOCK_JUSTIFY_LEFT, "_Left", "<control>L",
     "Left justify the text", JUSTIFY_LEFT },
   { "justify-center", CTK_STOCK_JUSTIFY_CENTER, "C_enter", "<control>E",
@@ -176,7 +176,7 @@ static GtkRadioActionEntry justify_entries[] = {
 };
 static guint n_justify_entries = G_N_ELEMENTS (justify_entries);
 
-static GtkRadioActionEntry toolbar_entries[] = {
+static CtkRadioActionEntry toolbar_entries[] = {
   { "toolbar-icons", NULL, "Icons", NULL, NULL, CTK_TOOLBAR_ICONS },
   { "toolbar-text", NULL, "Text", NULL, NULL, CTK_TOOLBAR_TEXT },
   { "toolbar-both", NULL, "Both", NULL, NULL, CTK_TOOLBAR_BOTH },
@@ -249,9 +249,9 @@ static const gchar *ui_info =
 "  </popup>\n";
 
 static void
-add_widget (GtkUIManager *merge,
-	    GtkWidget   *widget,
-	    GtkContainer *container)
+add_widget (CtkUIManager *merge,
+	    CtkWidget   *widget,
+	    CtkContainer *container)
 {
 
   ctk_box_pack_start (CTK_BOX (container), widget, FALSE, FALSE, 0);
@@ -265,10 +265,10 @@ add_widget (GtkUIManager *merge,
 }
 
 static guint ui_id = 0;
-static GtkActionGroup *dag = NULL;
+static CtkActionGroup *dag = NULL;
 
 static void
-ensure_update (GtkUIManager *manager)
+ensure_update (CtkUIManager *manager)
 {
   GTimer *timer;
   double seconds;
@@ -287,11 +287,11 @@ ensure_update (GtkUIManager *manager)
 }
 
 static void
-add_cb (GtkWidget *button,
-	GtkUIManager *manager)
+add_cb (CtkWidget *button,
+	CtkUIManager *manager)
 {
-  GtkWidget *spinbutton;
-  GtkAction *action;
+  CtkWidget *spinbutton;
+  CtkAction *action;
   int i, num;
   char *name, *label;
   
@@ -327,8 +327,8 @@ add_cb (GtkWidget *button,
 }
 
 static void
-remove_cb (GtkWidget *button,
-	   GtkUIManager *manager)
+remove_cb (CtkWidget *button,
+	   CtkUIManager *manager)
 {
   if (ui_id == 0 || dag == NULL)
     return;
@@ -343,12 +343,12 @@ remove_cb (GtkWidget *button,
 }
 
 static void
-create_window (GtkActionGroup *action_group)
+create_window (CtkActionGroup *action_group)
 {
-  GtkUIManager *merge;
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *hbox, *spinbutton, *button;
+  CtkUIManager *merge;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *hbox, *spinbutton, *button;
   GError *error = NULL;
 
   merge = ctk_ui_manager_new ();
@@ -402,7 +402,7 @@ create_window (GtkActionGroup *action_group)
 int
 main (int argc, char **argv)
 {
-  GtkAction *action;
+  CtkAction *action;
 
   ctk_init (&argc, &argv);
 
@@ -448,7 +448,7 @@ main (int argc, char **argv)
 	 action; 
 	 action = action->next)
       {
-	GtkAction *a = action->data;
+	CtkAction *a = action->data;
 	g_print ("action %s ref count %d\n", 
 		 ctk_action_get_name (a), G_OBJECT (a)->ref_count);
       }

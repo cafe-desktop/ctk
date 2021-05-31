@@ -46,34 +46,34 @@
 /**
  * SECTION:ctkplug
  * @Short_description: Toplevel for embedding into other processes
- * @Title: GtkPlug
+ * @Title: CtkPlug
  * @include: ctk/ctkx.h
- * @See_also: #GtkSocket
+ * @See_also: #CtkSocket
  *
- * Together with #GtkSocket, #GtkPlug provides the ability to embed
+ * Together with #CtkSocket, #CtkPlug provides the ability to embed
  * widgets from one process into another process in a fashion that is
- * transparent to the user. One process creates a #GtkSocket widget
+ * transparent to the user. One process creates a #CtkSocket widget
  * and passes the ID of that widget’s window to the other process,
- * which then creates a #GtkPlug with that window ID. Any widgets
- * contained in the #GtkPlug then will appear inside the first
+ * which then creates a #CtkPlug with that window ID. Any widgets
+ * contained in the #CtkPlug then will appear inside the first
  * application’s window.
  *
- * The communication between a #GtkSocket and a #GtkPlug follows the
+ * The communication between a #CtkSocket and a #CtkPlug follows the
  * [XEmbed Protocol](http://www.freedesktop.org/Standards/xembed-spec).
  * This protocol has also been implemented in other toolkits, e.g. Qt,
  * allowing the same level of integration when embedding a Qt widget
  * in GTK+ or vice versa.
  *
- * The #GtkPlug and #GtkSocket widgets are only available when GTK+
+ * The #CtkPlug and #CtkSocket widgets are only available when GTK+
  * is compiled for the X11 platform and %GDK_WINDOWING_X11 is defined.
- * They can only be used on a #GdkX11Display. To use #GtkPlug and
- * #GtkSocket, you need to include the `ctk/ctkx.h` header.
+ * They can only be used on a #GdkX11Display. To use #CtkPlug and
+ * #CtkSocket, you need to include the `ctk/ctkx.h` header.
  */
 
-struct _GtkPlugPrivate
+struct _CtkPlugPrivate
 {
-  GtkWidget      *modality_window;
-  GtkWindowGroup *modality_group;
+  CtkWidget      *modality_window;
+  CtkWindowGroup *modality_group;
 
   GdkWindow      *socket_window;
 
@@ -87,27 +87,27 @@ static void            ctk_plug_get_property          (GObject     *object,
 						       GValue      *value,
 						       GParamSpec  *pspec);
 static void            ctk_plug_finalize              (GObject          *object);
-static void            ctk_plug_realize               (GtkWidget        *widget);
-static void            ctk_plug_unrealize             (GtkWidget        *widget);
-static void            ctk_plug_show                  (GtkWidget        *widget);
-static void            ctk_plug_hide                  (GtkWidget        *widget);
-static void            ctk_plug_map                   (GtkWidget        *widget);
-static void            ctk_plug_unmap                 (GtkWidget        *widget);
-static gboolean        ctk_plug_key_press_event       (GtkWidget        *widget,
+static void            ctk_plug_realize               (CtkWidget        *widget);
+static void            ctk_plug_unrealize             (CtkWidget        *widget);
+static void            ctk_plug_show                  (CtkWidget        *widget);
+static void            ctk_plug_hide                  (CtkWidget        *widget);
+static void            ctk_plug_map                   (CtkWidget        *widget);
+static void            ctk_plug_unmap                 (CtkWidget        *widget);
+static gboolean        ctk_plug_key_press_event       (CtkWidget        *widget,
 						       GdkEventKey      *event);
-static gboolean        ctk_plug_focus_event           (GtkWidget        *widget,
+static gboolean        ctk_plug_focus_event           (CtkWidget        *widget,
 						       GdkEventFocus    *event);
-static void            ctk_plug_set_focus             (GtkWindow        *window,
-						       GtkWidget        *focus);
-static gboolean        ctk_plug_focus                 (GtkWidget        *widget,
-						       GtkDirectionType  direction);
-static void            ctk_plug_check_resize          (GtkContainer     *container);
-static void            ctk_plug_keys_changed          (GtkWindow        *window);
+static void            ctk_plug_set_focus             (CtkWindow        *window,
+						       CtkWidget        *focus);
+static gboolean        ctk_plug_focus                 (CtkWidget        *widget,
+						       CtkDirectionType  direction);
+static void            ctk_plug_check_resize          (CtkContainer     *container);
+static void            ctk_plug_keys_changed          (CtkWindow        *window);
 
 static void            xembed_set_info                (GdkWindow        *window,
 				                       unsigned long     flags);
 
-static GtkBinClass *bin_class = NULL;
+static CtkBinClass *bin_class = NULL;
 
 typedef struct
 {
@@ -128,7 +128,7 @@ enum {
 
 static guint plug_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkPlug, ctk_plug, CTK_TYPE_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkPlug, ctk_plug, CTK_TYPE_WINDOW)
 
 static void
 ctk_plug_get_property (GObject    *object,
@@ -136,8 +136,8 @@ ctk_plug_get_property (GObject    *object,
 		       GValue     *value,
 		       GParamSpec *pspec)
 {
-  GtkPlug *plug = CTK_PLUG (object);
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlug *plug = CTK_PLUG (object);
+  CtkPlugPrivate *priv = plug->priv;
 
   switch (prop_id)
     {
@@ -154,12 +154,12 @@ ctk_plug_get_property (GObject    *object,
 }
 
 static void
-ctk_plug_class_init (GtkPlugClass *class)
+ctk_plug_class_init (CtkPlugClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
-  GtkWidgetClass *widget_class = (GtkWidgetClass *)class;
-  GtkWindowClass *window_class = (GtkWindowClass *)class;
-  GtkContainerClass *container_class = (GtkContainerClass *)class;
+  CtkWidgetClass *widget_class = (CtkWidgetClass *)class;
+  CtkWindowClass *window_class = (CtkWindowClass *)class;
+  CtkContainerClass *container_class = (CtkContainerClass *)class;
 
   bin_class = g_type_class_peek (CTK_TYPE_BIN);
 
@@ -186,7 +186,7 @@ ctk_plug_class_init (GtkPlugClass *class)
   window_class->keys_changed = ctk_plug_keys_changed;
 
   /**
-   * GtkPlug:embedded:
+   * CtkPlug:embedded:
    *
    * %TRUE if the plug is embedded in a socket.
    *
@@ -201,7 +201,7 @@ ctk_plug_class_init (GtkPlugClass *class)
 							 CTK_PARAM_READABLE));
 
   /**
-   * GtkPlug:socket-window:
+   * CtkPlug:socket-window:
    *
    * The window of the socket the plug is embedded in.
    *
@@ -216,7 +216,7 @@ ctk_plug_class_init (GtkPlugClass *class)
 							CTK_PARAM_READABLE));
 
   /**
-   * GtkPlug::embedded:
+   * CtkPlug::embedded:
    * @plug: the object on which the signal was emitted
    *
    * Gets emitted when the plug becomes embedded in a socket.
@@ -225,7 +225,7 @@ ctk_plug_class_init (GtkPlugClass *class)
     g_signal_new (I_("embedded"),
 		  G_OBJECT_CLASS_TYPE (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPlugClass, embedded),
+		  G_STRUCT_OFFSET (CtkPlugClass, embedded),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
@@ -236,7 +236,7 @@ ctk_plug_class_init (GtkPlugClass *class)
 }
 
 static void
-ctk_plug_init (GtkPlug *plug)
+ctk_plug_init (CtkPlug *plug)
 {
   plug->priv = ctk_plug_get_instance_private (plug);
 
@@ -245,15 +245,15 @@ ctk_plug_init (GtkPlug *plug)
 
 /**
  * ctk_plug_handle_modality_on:
- * @plug: a #GtkPlug
+ * @plug: a #CtkPlug
  *
- * Called from the GtkPlug backend when the corresponding socket has
+ * Called from the CtkPlug backend when the corresponding socket has
  * told the plug that it modality has toggled on.
  */
 static void
-ctk_plug_handle_modality_on (GtkPlug *plug)
+ctk_plug_handle_modality_on (CtkPlug *plug)
 {
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlugPrivate *priv = plug->priv;
 
   if (!priv->modality_window)
     {
@@ -268,15 +268,15 @@ ctk_plug_handle_modality_on (GtkPlug *plug)
 
 /**
  * ctk_plug_handle_modality_off:
- * @plug: a #GtkPlug
+ * @plug: a #CtkPlug
  *
- * Called from the GtkPlug backend when the corresponding socket has
+ * Called from the CtkPlug backend when the corresponding socket has
  * told the plug that it modality has toggled off.
  */
 static void
-ctk_plug_handle_modality_off (GtkPlug *plug)
+ctk_plug_handle_modality_off (CtkPlug *plug)
 {
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlugPrivate *priv = plug->priv;
 
   if (priv->modality_window)
     {
@@ -286,11 +286,11 @@ ctk_plug_handle_modality_off (GtkPlug *plug)
 }
 
 static void
-ctk_plug_set_is_child (GtkPlug  *plug,
+ctk_plug_set_is_child (CtkPlug  *plug,
 		       gboolean  is_child)
 {
-  GtkPlugPrivate *priv = plug->priv;
-  GtkWidget *widget = CTK_WIDGET (plug);
+  CtkPlugPrivate *priv = plug->priv;
+  CtkWidget *widget = CTK_WIDGET (plug);
 
   g_assert (!ctk_widget_get_parent (widget));
 
@@ -342,16 +342,16 @@ ctk_plug_set_is_child (GtkPlug  *plug,
 
 /**
  * ctk_plug_get_id:
- * @plug: a #GtkPlug.
+ * @plug: a #CtkPlug.
  * 
- * Gets the window ID of a #GtkPlug widget, which can then
+ * Gets the window ID of a #CtkPlug widget, which can then
  * be used to embed this window inside another window, for
  * instance with ctk_socket_add_id().
  * 
  * Returns: the window ID for the plug
  **/
 Window
-ctk_plug_get_id (GtkPlug *plug)
+ctk_plug_get_id (CtkPlug *plug)
 {
   g_return_val_if_fail (CTK_IS_PLUG (plug), 0);
 
@@ -363,7 +363,7 @@ ctk_plug_get_id (GtkPlug *plug)
 
 /**
  * ctk_plug_get_embedded:
- * @plug: a #GtkPlug
+ * @plug: a #CtkPlug
  *
  * Determines whether the plug is embedded in a socket.
  *
@@ -372,7 +372,7 @@ ctk_plug_get_id (GtkPlug *plug)
  * Since: 2.14
  **/
 gboolean
-ctk_plug_get_embedded (GtkPlug *plug)
+ctk_plug_get_embedded (CtkPlug *plug)
 {
   g_return_val_if_fail (CTK_IS_PLUG (plug), FALSE);
 
@@ -381,7 +381,7 @@ ctk_plug_get_embedded (GtkPlug *plug)
 
 /**
  * ctk_plug_get_socket_window:
- * @plug: a #GtkPlug
+ * @plug: a #CtkPlug
  *
  * Retrieves the socket the plug is embedded in.
  *
@@ -390,7 +390,7 @@ ctk_plug_get_embedded (GtkPlug *plug)
  * Since: 2.14
  **/
 GdkWindow *
-ctk_plug_get_socket_window (GtkPlug *plug)
+ctk_plug_get_socket_window (CtkPlug *plug)
 {
   g_return_val_if_fail (CTK_IS_PLUG (plug), NULL);
 
@@ -399,17 +399,17 @@ ctk_plug_get_socket_window (GtkPlug *plug)
 
 /**
  * _ctk_plug_add_to_socket:
- * @plug: a #GtkPlug
- * @socket_: a #GtkSocket
+ * @plug: a #CtkPlug
+ * @socket_: a #CtkSocket
  * 
  * Adds a plug to a socket within the same application.
  **/
 void
-_ctk_plug_add_to_socket (GtkPlug   *plug,
-			 GtkSocket *socket_)
+_ctk_plug_add_to_socket (CtkPlug   *plug,
+			 CtkSocket *socket_)
 {
-  GtkPlugPrivate *priv;
-  GtkWidget *widget;
+  CtkPlugPrivate *priv;
+  CtkWidget *widget;
   
   g_return_if_fail (CTK_IS_PLUG (plug));
   g_return_if_fail (CTK_IS_SOCKET (socket_));
@@ -445,14 +445,14 @@ _ctk_plug_add_to_socket (GtkPlug   *plug,
 
 /*
  * ctk_plug_send_delete_event:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Send a GDK_DELETE event to the @widget and destroy it if
  * necessary. Internal GTK function, called from this file or the
- * backend-specific GtkPlug implementation.
+ * backend-specific CtkPlug implementation.
  */
 static void
-ctk_plug_send_delete_event (GtkWidget *widget)
+ctk_plug_send_delete_event (CtkWidget *widget)
 {
   GdkEvent *event = gdk_event_new (GDK_DELETE);
 
@@ -471,17 +471,17 @@ ctk_plug_send_delete_event (GtkWidget *widget)
 
 /**
  * _ctk_plug_remove_from_socket:
- * @plug: a #GtkPlug
- * @socket_: a #GtkSocket
+ * @plug: a #CtkPlug
+ * @socket_: a #CtkSocket
  * 
  * Removes a plug from a socket within the same application.
  **/
 void
-_ctk_plug_remove_from_socket (GtkPlug   *plug,
-			      GtkSocket *socket_)
+_ctk_plug_remove_from_socket (CtkPlug   *plug,
+			      CtkSocket *socket_)
 {
-  GtkPlugPrivate *priv;
-  GtkWidget *widget;
+  CtkPlugPrivate *priv;
+  CtkWidget *widget;
   GdkWindow *window;
   GdkWindow *root_window;
   gboolean result;
@@ -544,14 +544,14 @@ _ctk_plug_remove_from_socket (GtkPlug   *plug,
 
 /**
  * ctk_plug_construct:
- * @plug: a #GtkPlug.
+ * @plug: a #CtkPlug.
  * @socket_id: the XID of the socket’s window.
  *
- * Finish the initialization of @plug for a given #GtkSocket identified by
- * @socket_id. This function will generally only be used by classes deriving from #GtkPlug.
+ * Finish the initialization of @plug for a given #CtkSocket identified by
+ * @socket_id. This function will generally only be used by classes deriving from #CtkPlug.
  **/
 void
-ctk_plug_construct (GtkPlug *plug,
+ctk_plug_construct (CtkPlug *plug,
 		    Window   socket_id)
 {
   ctk_plug_construct_for_display (plug, gdk_display_get_default (), socket_id);
@@ -559,23 +559,23 @@ ctk_plug_construct (GtkPlug *plug,
 
 /**
  * ctk_plug_construct_for_display:
- * @plug: a #GtkPlug.
+ * @plug: a #CtkPlug.
  * @display: the #GdkDisplay associated with @socket_id’s 
- *	     #GtkSocket.
+ *	     #CtkSocket.
  * @socket_id: the XID of the socket’s window.
  *
- * Finish the initialization of @plug for a given #GtkSocket identified by
+ * Finish the initialization of @plug for a given #CtkSocket identified by
  * @socket_id which is currently displayed on @display.
- * This function will generally only be used by classes deriving from #GtkPlug.
+ * This function will generally only be used by classes deriving from #CtkPlug.
  *
  * Since: 2.2
  **/
 void
-ctk_plug_construct_for_display (GtkPlug    *plug,
+ctk_plug_construct_for_display (CtkPlug    *plug,
 				GdkDisplay *display,
 				Window      socket_id)
 {
-  GtkPlugPrivate *priv;
+  CtkPlugPrivate *priv;
 
   g_return_if_fail (CTK_IS_PLUG (plug));
   g_return_if_fail (GDK_IS_DISPLAY (display));
@@ -601,7 +601,7 @@ ctk_plug_construct_for_display (GtkPlug    *plug,
 		_ctk_plug_add_to_socket (plug, user_data);
 	      else
 		{
-		  g_warning (G_STRLOC "Can't create GtkPlug as child of non-GtkSocket");
+		  g_warning (G_STRLOC "Can't create CtkPlug as child of non-CtkSocket");
 		  priv->socket_window = NULL;
 		}
 	    }
@@ -623,13 +623,13 @@ ctk_plug_construct_for_display (GtkPlug    *plug,
  * ctk_plug_new:
  * @socket_id:  the window ID of the socket, or 0.
  * 
- * Creates a new plug widget inside the #GtkSocket identified
+ * Creates a new plug widget inside the #CtkSocket identified
  * by @socket_id. If @socket_id is 0, the plug is left “unplugged” and
- * can later be plugged into a #GtkSocket by  ctk_socket_add_id().
+ * can later be plugged into a #CtkSocket by  ctk_socket_add_id().
  * 
- * Returns: the new #GtkPlug widget.
+ * Returns: the new #CtkPlug widget.
  **/
-GtkWidget*
+CtkWidget*
 ctk_plug_new (Window socket_id)
 {
   return ctk_plug_new_for_display (gdk_display_get_default (), socket_id);
@@ -640,17 +640,17 @@ ctk_plug_new (Window socket_id)
  * @display: the #GdkDisplay on which @socket_id is displayed
  * @socket_id: the XID of the socket’s window.
  * 
- * Create a new plug widget inside the #GtkSocket identified by socket_id.
+ * Create a new plug widget inside the #CtkSocket identified by socket_id.
  *
- * Returns: the new #GtkPlug widget.
+ * Returns: the new #CtkPlug widget.
  *
  * Since: 2.2
  */
-GtkWidget*
+CtkWidget*
 ctk_plug_new_for_display (GdkDisplay *display,
 			  Window      socket_id)
 {
-  GtkPlug *plug;
+  CtkPlug *plug;
 
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 
@@ -662,8 +662,8 @@ ctk_plug_new_for_display (GdkDisplay *display,
 static void
 ctk_plug_finalize (GObject *object)
 {
-  GtkPlug *plug = CTK_PLUG (object);
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlug *plug = CTK_PLUG (object);
+  CtkPlugPrivate *priv = plug->priv;
 
   if (priv->grabbed_keys)
     g_hash_table_destroy (priv->grabbed_keys);
@@ -672,10 +672,10 @@ ctk_plug_finalize (GObject *object)
 }
 
 static void
-ctk_plug_unrealize (GtkWidget *widget)
+ctk_plug_unrealize (CtkWidget *widget)
 {
-  GtkPlug *plug = CTK_PLUG (widget);
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlug *plug = CTK_PLUG (widget);
+  CtkPlugPrivate *priv = plug->priv;
 
   if (priv->socket_window != NULL)
     {
@@ -718,7 +718,7 @@ xembed_set_info (GdkWindow     *window,
 
 #ifdef CTK_HAVE_ATK_PLUG_SET_CHILD
 static void
-_ctk_plug_accessible_embed_set_info (GtkWidget *widget, GdkWindow *window)
+_ctk_plug_accessible_embed_set_info (CtkWidget *widget, GdkWindow *window)
 {
   GdkDisplay *display = gdk_window_get_display (window);
   gchar *buffer = ctk_plug_accessible_get_id (CTK_PLUG_ACCESSIBLE (ctk_widget_get_accessible (widget)));
@@ -738,19 +738,19 @@ _ctk_plug_accessible_embed_set_info (GtkWidget *widget, GdkWindow *window)
 
 /**
  * ctk_plug_focus_first_last:
- * @plug: a #GtkPlug
+ * @plug: a #CtkPlug
  * @direction: a direction
  *
- * Called from the GtkPlug backend when the corresponding socket has
+ * Called from the CtkPlug backend when the corresponding socket has
  * told the plug that it has received the focus.
  */
 static void
-ctk_plug_focus_first_last (GtkPlug          *plug,
-			   GtkDirectionType  direction)
+ctk_plug_focus_first_last (CtkPlug          *plug,
+			   CtkDirectionType  direction)
 {
-  GtkWindow *window = CTK_WINDOW (plug);
-  GtkWidget *focus_widget;
-  GtkWidget *parent;
+  CtkWindow *window = CTK_WINDOW (plug);
+  CtkWidget *focus_widget;
+  CtkWidget *parent;
 
   focus_widget = ctk_window_get_focus (window);
   if (focus_widget)
@@ -769,17 +769,17 @@ ctk_plug_focus_first_last (GtkPlug          *plug,
 }
 
 static void
-handle_xembed_message (GtkPlug           *plug,
+handle_xembed_message (CtkPlug           *plug,
 		       XEmbedMessageType  message,
 		       glong              detail,
 		       glong              data1,
 		       glong              data2,
 		       guint32            time)
 {
-  GtkWindow *window = CTK_WINDOW (plug);
+  CtkWindow *window = CTK_WINDOW (plug);
 
   CTK_NOTE (PLUGSOCKET,
-	    g_message ("GtkPlug: %s received", _ctk_xembed_message_name (message)));
+	    g_message ("CtkPlug: %s received", _ctk_xembed_message_name (message)));
   
   switch (message)
     {
@@ -825,12 +825,12 @@ handle_xembed_message (GtkPlug           *plug,
     case XEMBED_REQUEST_FOCUS:
     case XEMBED_FOCUS_NEXT:
     case XEMBED_FOCUS_PREV:
-      g_warning ("GtkPlug: Invalid _XEMBED message %s received", _ctk_xembed_message_name (message));
+      g_warning ("CtkPlug: Invalid _XEMBED message %s received", _ctk_xembed_message_name (message));
       break;
       
     default:
       CTK_NOTE(PLUGSOCKET,
-	       g_message ("GtkPlug: Ignoring unknown _XEMBED message of type %d", message));
+	       g_message ("CtkPlug: Ignoring unknown _XEMBED message of type %d", message));
       break;
     }
 }
@@ -841,8 +841,8 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 {
   GdkScreen *screen = gdk_window_get_screen (event->any.window);
   GdkDisplay *display = gdk_screen_get_display (screen);
-  GtkPlug *plug = CTK_PLUG (data);
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlug *plug = CTK_PLUG (data);
+  CtkPlugPrivate *priv = plug->priv;
   XEvent *xevent = (XEvent *)gdk_xevent;
   GHashTableIter iter;
   gpointer key;
@@ -880,7 +880,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 	XReparentEvent *xre = &xevent->xreparent;
         gboolean was_embedded = priv->socket_window != NULL;
 
-	CTK_NOTE (PLUGSOCKET, g_message("GtkPlug: ReparentNotify received"));
+	CTK_NOTE (PLUGSOCKET, g_message("CtkPlug: ReparentNotify received"));
 
 	return_val = GDK_FILTER_REMOVE;
 	
@@ -890,7 +890,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 	  {
 	    /* End of embedding protocol for previous socket */
 	    
-	    CTK_NOTE (PLUGSOCKET, g_message ("GtkPlug: end of embedding"));
+	    CTK_NOTE (PLUGSOCKET, g_message ("CtkPlug: end of embedding"));
 	    /* FIXME: race if we remove from another socket and
 	     * then add to a local window before we get notification
 	     * Probably need check in _ctk_plug_add_to_socket
@@ -898,7 +898,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 
             if (xre->parent != GDK_WINDOW_XID (priv->socket_window))
 	      {
-		GtkWidget *widget = CTK_WIDGET (plug);
+		CtkWidget *widget = CTK_WIDGET (plug);
 
 		g_object_unref (priv->socket_window);
 		priv->socket_window = NULL;
@@ -914,7 +914,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 
 		if (xre->parent == GDK_WINDOW_XID (gdk_screen_get_root_window (screen)))
 		  {
-		    CTK_NOTE (PLUGSOCKET, g_message ("GtkPlug: calling ctk_plug_send_delete_event()"));
+		    CTK_NOTE (PLUGSOCKET, g_message ("CtkPlug: calling ctk_plug_send_delete_event()"));
 		    ctk_plug_send_delete_event (widget);
 
 		    g_object_notify (G_OBJECT (plug), "embedded");
@@ -928,7 +928,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 	  {
 	    /* Start of embedding protocol */
 
-	    CTK_NOTE (PLUGSOCKET, g_message ("GtkPlug: start of embedding"));
+	    CTK_NOTE (PLUGSOCKET, g_message ("CtkPlug: start of embedding"));
 
             priv->socket_window = gdk_x11_window_lookup_for_display (display, xre->parent);
             if (priv->socket_window)
@@ -1026,12 +1026,12 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
   return return_val;
 }
 static void
-ctk_plug_realize (GtkWidget *widget)
+ctk_plug_realize (CtkWidget *widget)
 {
-  GtkAllocation allocation;
-  GtkPlug *plug = CTK_PLUG (widget);
-  GtkPlugPrivate *priv = plug->priv;
-  GtkWindow *window = CTK_WINDOW (widget);
+  CtkAllocation allocation;
+  CtkPlug *plug = CTK_PLUG (widget);
+  CtkPlugPrivate *priv = plug->priv;
+  CtkWindow *window = CTK_WINDOW (widget);
   GdkWindow *gdk_window;
   GdkWindowAttr attributes;
   const gchar *title;
@@ -1043,7 +1043,7 @@ ctk_plug_realize (GtkWidget *widget)
 
   screen = ctk_widget_get_screen (widget);
   if (!GDK_IS_X11_SCREEN (screen))
-    g_warning ("GtkPlug only works under X11");
+    g_warning ("CtkPlug only works under X11");
 
   title = ctk_window_get_title (window);
   _ctk_window_get_wmclass (window, &wmclass_name, &wmclass_class);
@@ -1131,7 +1131,7 @@ ctk_plug_realize (GtkWidget *widget)
 }
 
 static void
-ctk_plug_show (GtkWidget *widget)
+ctk_plug_show (CtkWidget *widget)
 {
   if (ctk_widget_is_toplevel (widget))
     CTK_WIDGET_CLASS (ctk_plug_parent_class)->show (widget);
@@ -1140,7 +1140,7 @@ ctk_plug_show (GtkWidget *widget)
 }
 
 static void
-ctk_plug_hide (GtkWidget *widget)
+ctk_plug_hide (CtkWidget *widget)
 {
   if (ctk_widget_is_toplevel (widget))
     CTK_WIDGET_CLASS (ctk_plug_parent_class)->hide (widget);
@@ -1154,13 +1154,13 @@ void gdk_synthesize_window_state (GdkWindow     *window,
                                   GdkWindowState set_flags);
 
 static void
-ctk_plug_map (GtkWidget *widget)
+ctk_plug_map (CtkWidget *widget)
 {
   if (ctk_widget_is_toplevel (widget))
     {
-      GtkBin *bin = CTK_BIN (widget);
-      GtkPlug *plug = CTK_PLUG (widget);
-      GtkWidget *child;
+      CtkBin *bin = CTK_BIN (widget);
+      CtkPlug *plug = CTK_PLUG (widget);
+      CtkWidget *child;
 
       ctk_widget_set_mapped (widget, TRUE);
 
@@ -1181,13 +1181,13 @@ ctk_plug_map (GtkWidget *widget)
 }
 
 static void
-ctk_plug_unmap (GtkWidget *widget)
+ctk_plug_unmap (CtkWidget *widget)
 {
   if (ctk_widget_is_toplevel (widget))
     {
-      GtkPlug *plug = CTK_PLUG (widget);
+      CtkPlug *plug = CTK_PLUG (widget);
       GdkWindow *window;
-      GtkWidget *child;
+      CtkWidget *child;
 
       window = ctk_widget_get_window (widget);
 
@@ -1210,7 +1210,7 @@ ctk_plug_unmap (GtkWidget *widget)
 }
 
 static gboolean
-ctk_plug_key_press_event (GtkWidget   *widget,
+ctk_plug_key_press_event (CtkWidget   *widget,
 			  GdkEventKey *event)
 {
   if (ctk_widget_is_toplevel (widget))
@@ -1220,7 +1220,7 @@ ctk_plug_key_press_event (GtkWidget   *widget,
 }
 
 static gboolean
-ctk_plug_focus_event (GtkWidget      *widget,
+ctk_plug_focus_event (CtkWidget      *widget,
 		      GdkEventFocus  *event)
 {
   /* We eat focus-in events and focus-out events, since they
@@ -1231,11 +1231,11 @@ ctk_plug_focus_event (GtkWidget      *widget,
 }
 
 static void
-ctk_plug_set_focus (GtkWindow *window,
-		    GtkWidget *focus)
+ctk_plug_set_focus (CtkWindow *window,
+		    CtkWidget *focus)
 {
-  GtkPlug *plug = CTK_PLUG (window);
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlug *plug = CTK_PLUG (window);
+  CtkPlugPrivate *priv = plug->priv;
 
   CTK_WINDOW_CLASS (ctk_plug_parent_class)->set_focus (window, focus);
   
@@ -1274,8 +1274,8 @@ static void
 add_grabbed_key (gpointer key, gpointer val, gpointer data)
 {
   GrabbedKey *grabbed_key = key;
-  GtkPlug *plug = data;
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlug *plug = data;
+  CtkPlugPrivate *priv = plug->priv;
 
   if (!priv->grabbed_keys ||
       !g_hash_table_lookup (priv->grabbed_keys, grabbed_key))
@@ -1290,8 +1290,8 @@ static void
 remove_grabbed_key (gpointer key, gpointer val, gpointer data)
 {
   GrabbedKey *grabbed_key = key;
-  GtkPlug *plug = data;
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlug *plug = data;
+  CtkPlugPrivate *priv = plug->priv;
 
   if (!priv->grabbed_keys ||
       !g_hash_table_lookup (priv->grabbed_keys, grabbed_key))
@@ -1303,7 +1303,7 @@ remove_grabbed_key (gpointer key, gpointer val, gpointer data)
 }
 
 static void
-keys_foreach (GtkWindow      *window,
+keys_foreach (CtkWindow      *window,
 	      guint           keyval,
 	      GdkModifierType modifiers,
 	      gboolean        is_mnemonic,
@@ -1325,11 +1325,11 @@ grabbed_key_free (gpointer data)
 }
 
 static void
-ctk_plug_keys_changed (GtkWindow *window)
+ctk_plug_keys_changed (CtkWindow *window)
 {
   GHashTable *new_grabbed_keys, *old_grabbed_keys;
-  GtkPlug *plug = CTK_PLUG (window);
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlug *plug = CTK_PLUG (window);
+  CtkPlugPrivate *priv = plug->priv;
 
   new_grabbed_keys = g_hash_table_new_full (grabbed_key_hash, grabbed_key_equal, (GDestroyNotify)grabbed_key_free, NULL);
   _ctk_window_keys_foreach (window, keys_foreach, new_grabbed_keys);
@@ -1349,10 +1349,10 @@ ctk_plug_keys_changed (GtkWindow *window)
 }
 
 static void
-ctk_plug_focus_to_parent (GtkPlug         *plug,
-			  GtkDirectionType direction)
+ctk_plug_focus_to_parent (CtkPlug         *plug,
+			  CtkDirectionType direction)
 {
-  GtkPlugPrivate *priv = plug->priv;
+  CtkPlugPrivate *priv = plug->priv;
   XEmbedMessageType message;
   
   switch (direction)
@@ -1377,23 +1377,23 @@ ctk_plug_focus_to_parent (GtkPlug         *plug,
 }
 
 static gboolean
-ctk_plug_focus (GtkWidget        *widget,
-		GtkDirectionType  direction)
+ctk_plug_focus (CtkWidget        *widget,
+		CtkDirectionType  direction)
 {
-  GtkBin *bin = CTK_BIN (widget);
-  GtkPlug *plug = CTK_PLUG (widget);
-  GtkWindow *window = CTK_WINDOW (widget);
-  GtkContainer *container = CTK_CONTAINER (widget);
-  GtkWidget *child;
-  GtkWidget *old_focus_child;
-  GtkWidget *parent;
+  CtkBin *bin = CTK_BIN (widget);
+  CtkPlug *plug = CTK_PLUG (widget);
+  CtkWindow *window = CTK_WINDOW (widget);
+  CtkContainer *container = CTK_CONTAINER (widget);
+  CtkWidget *child;
+  CtkWidget *old_focus_child;
+  CtkWidget *parent;
 
   old_focus_child = ctk_container_get_focus_child (container);
-  /* We override GtkWindow's behavior, since we don't want wrapping here.
+  /* We override CtkWindow's behavior, since we don't want wrapping here.
    */
   if (old_focus_child)
     {
-      GtkWidget *focus_widget;
+      CtkWidget *focus_widget;
 
       if (ctk_widget_child_focus (old_focus_child, direction))
 	return TRUE;
@@ -1427,7 +1427,7 @@ ctk_plug_focus (GtkWidget        *widget,
 }
 
 static void
-ctk_plug_check_resize (GtkContainer *container)
+ctk_plug_check_resize (CtkContainer *container)
 {
   if (ctk_widget_is_toplevel (CTK_WIDGET (container)))
     CTK_CONTAINER_CLASS (ctk_plug_parent_class)->check_resize (container);

@@ -36,25 +36,25 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_APP_CHOOSER_WIDGET            (ctk_app_chooser_widget_get_type ())
-#define CTK_APP_CHOOSER_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_APP_CHOOSER_WIDGET, GtkAppChooserWidget))
-#define CTK_APP_CHOOSER_WIDGET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_APP_CHOOSER_WIDGET, GtkAppChooserWidgetClass))
+#define CTK_APP_CHOOSER_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_APP_CHOOSER_WIDGET, CtkAppChooserWidget))
+#define CTK_APP_CHOOSER_WIDGET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_APP_CHOOSER_WIDGET, CtkAppChooserWidgetClass))
 #define CTK_IS_APP_CHOOSER_WIDGET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_APP_CHOOSER_WIDGET))
 #define CTK_IS_APP_CHOOSER_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_APP_CHOOSER_WIDGET))
-#define CTK_APP_CHOOSER_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_APP_CHOOSER_WIDGET, GtkAppChooserWidgetClass))
+#define CTK_APP_CHOOSER_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_APP_CHOOSER_WIDGET, CtkAppChooserWidgetClass))
 
-typedef struct _GtkAppChooserWidget        GtkAppChooserWidget;
-typedef struct _GtkAppChooserWidgetClass   GtkAppChooserWidgetClass;
-typedef struct _GtkAppChooserWidgetPrivate GtkAppChooserWidgetPrivate;
+typedef struct _CtkAppChooserWidget        CtkAppChooserWidget;
+typedef struct _CtkAppChooserWidgetClass   CtkAppChooserWidgetClass;
+typedef struct _CtkAppChooserWidgetPrivate CtkAppChooserWidgetPrivate;
 
-struct _GtkAppChooserWidget {
-  GtkBox parent;
+struct _CtkAppChooserWidget {
+  CtkBox parent;
 
   /*< private >*/
-  GtkAppChooserWidgetPrivate *priv;
+  CtkAppChooserWidgetPrivate *priv;
 };
 
 /**
- * GtkAppChooserWidgetClass:
+ * CtkAppChooserWidgetClass:
  * @parent_class: The parent class.
  * @application_selected: Signal emitted when an application item is
  *    selected from the widget’s list.
@@ -63,19 +63,19 @@ struct _GtkAppChooserWidget {
  * @populate_popup: Signal emitted when a context menu is about to
  *    popup over an application item.
  */
-struct _GtkAppChooserWidgetClass {
-  GtkBoxClass parent_class;
+struct _CtkAppChooserWidgetClass {
+  CtkBoxClass parent_class;
 
   /*< public >*/
 
-  void (* application_selected)  (GtkAppChooserWidget *self,
+  void (* application_selected)  (CtkAppChooserWidget *self,
                                   GAppInfo            *app_info);
 
-  void (* application_activated) (GtkAppChooserWidget *self,
+  void (* application_activated) (CtkAppChooserWidget *self,
                                   GAppInfo            *app_info);
 
-  void (* populate_popup)        (GtkAppChooserWidget *self,
-                                  GtkMenu             *menu,
+  void (* populate_popup)        (CtkAppChooserWidget *self,
+                                  CtkMenu             *menu,
                                   GAppInfo            *app_info);
 
   /*< private >*/
@@ -88,43 +88,43 @@ GDK_AVAILABLE_IN_ALL
 GType         ctk_app_chooser_widget_get_type             (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *   ctk_app_chooser_widget_new                  (const gchar         *content_type);
+CtkWidget *   ctk_app_chooser_widget_new                  (const gchar         *content_type);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_app_chooser_widget_set_show_default     (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_default     (CtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_app_chooser_widget_get_show_default     (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_default     (CtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_app_chooser_widget_set_show_recommended (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_recommended (CtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_app_chooser_widget_get_show_recommended (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_recommended (CtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_app_chooser_widget_set_show_fallback    (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_fallback    (CtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_app_chooser_widget_get_show_fallback    (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_fallback    (CtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_app_chooser_widget_set_show_other       (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_other       (CtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_app_chooser_widget_get_show_other       (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_other       (CtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_app_chooser_widget_set_show_all         (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_all         (CtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_app_chooser_widget_get_show_all         (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_all         (CtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          ctk_app_chooser_widget_set_default_text     (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_default_text     (CtkAppChooserWidget *self,
                                                            const gchar         *text);
 GDK_AVAILABLE_IN_ALL
-const gchar * ctk_app_chooser_widget_get_default_text     (GtkAppChooserWidget *self);
+const gchar * ctk_app_chooser_widget_get_default_text     (CtkAppChooserWidget *self);
 
 G_END_DECLS
 

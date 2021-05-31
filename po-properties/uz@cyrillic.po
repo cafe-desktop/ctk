@@ -412,7 +412,7 @@ msgstr "Амал гуруҳи"
 
 #: ctk/ctkaction.c:396
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
 
@@ -790,7 +790,7 @@ msgstr ""
 
 #: ctk/ctkbox.c:287 ctk/ctknotebook.c:692
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
 
@@ -1280,7 +1280,7 @@ msgid "Size"
 msgstr "Ўлчами"
 
 #: ctk/ctkcellrendererpixbuf.c:153
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:162
@@ -1397,7 +1397,7 @@ msgid "Pulse of the spinner"
 msgstr "Принтернинг номи"
 
 #: ctk/ctkcellrendererspinner.c:154
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:232
@@ -3125,7 +3125,7 @@ msgstr ""
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 
 #: ctk/ctklabel.c:587
@@ -3222,7 +3222,7 @@ msgid "Horizontal adjustment"
 msgstr "Энига текислаш"
 
 #: ctk/ctklayout.c:626 ctk/ctkscrolledwindow.c:244
-msgid "The GtkAdjustment for the horizontal position"
+msgid "The CtkAdjustment for the horizontal position"
 msgstr ""
 
 #: ctk/ctklayout.c:633 ctk/ctkviewport.c:150
@@ -3230,7 +3230,7 @@ msgid "Vertical adjustment"
 msgstr "Бўйига текислаш"
 
 #: ctk/ctklayout.c:634 ctk/ctkscrolledwindow.c:251
-msgid "The GtkAdjustment for the vertical position"
+msgid "The CtkAdjustment for the vertical position"
 msgstr ""
 
 #: ctk/ctklayout.c:641 ctk/ctktreeviewcolumn.c:211
@@ -3584,7 +3584,7 @@ msgid "Message area"
 msgstr "Хабар тури"
 
 #: ctk/ctkmessagedialog.c:306
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmisc.c:91
@@ -4012,7 +4012,7 @@ msgid "Default Page Setup"
 msgstr "Андоха саҳифа мосламаси"
 
 #: ctk/ctkprintoperation.c:1006
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1024 ctk/ctkprintunixdialog.c:316
@@ -4020,7 +4020,7 @@ msgid "Print Settings"
 msgstr "Босиб чиқариш мосламалари"
 
 #: ctk/ctkprintoperation.c:1025 ctk/ctkprintunixdialog.c:317
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1043
@@ -4139,7 +4139,7 @@ msgid "Embed Page Setup"
 msgstr "Саҳифа мосламалари"
 
 #: ctk/ctkprintoperation.c:1321
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1342
@@ -4153,7 +4153,7 @@ msgid "The number of pages that will be printed."
 msgstr "Ҳужжатдаги саҳифалар сони."
 
 #: ctk/ctkprintunixdialog.c:299
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr ""
 
 #: ctk/ctkprintunixdialog.c:324
@@ -4161,7 +4161,7 @@ msgid "Selected Printer"
 msgstr "Танланган принтер"
 
 #: ctk/ctkprintunixdialog.c:325
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr ""
 
 #: ctk/ctkprintunixdialog.c:332
@@ -4182,7 +4182,7 @@ msgid "Whether the application has a selection"
 msgstr "Бирламчи нишончанинг сезгирлиги"
 
 #: ctk/ctkprintunixdialog.c:358
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprogressbar.c:134
@@ -4323,7 +4323,7 @@ msgid "How the range should be updated on the screen"
 msgstr ""
 
 #: ctk/ctkrange.c:420
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr ""
 
 #: ctk/ctkrange.c:428
@@ -4576,7 +4576,7 @@ msgstr "Нишонча ўлчами"
 
 #: ctk/ctkscalebutton.c:240
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
 
 #: ctk/ctkscalebutton.c:268
@@ -5065,7 +5065,7 @@ msgid "Default file chooser backend"
 msgstr ""
 
 #: ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
 msgstr ""
 
 #: ctk/ctksettings.c:760
@@ -5073,7 +5073,7 @@ msgid "Default print backend"
 msgstr ""
 
 #: ctk/ctksettings.c:761
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr ""
 
 #: ctk/ctksettings.c:784
@@ -5281,7 +5281,7 @@ msgstr "Саҳифалар сони"
 #: ctk/ctkspinner.c:147
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
-"will complete a full cycle in one second by default (see #GtkSpinner:cycle-"
+"will complete a full cycle in one second by default (see #CtkSpinner:cycle-"
 "duration)."
 msgstr ""
 
@@ -6195,7 +6195,7 @@ msgid "Fixed Height Mode"
 msgstr ""
 
 #: ctk/ctktreeview.c:657
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 
 #: ctk/ctktreeview.c:677
@@ -6463,13 +6463,13 @@ msgstr ""
 
 #: ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr ""
 
 #: ctk/ctkviewport.c:151
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr ""
 
@@ -6920,7 +6920,7 @@ msgid "Focus in Toplevel"
 msgstr ""
 
 #: ctk/ctkwindow.c:710
-msgid "Whether the input focus is within this GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
 msgstr ""
 
 #: ctk/ctkwindow.c:717

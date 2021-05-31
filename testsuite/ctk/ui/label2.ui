@@ -1,6 +1,6 @@
 <!-- test missing label attribute value -->
 <interface>
-  <object class="GtkLabel">
+  <object class="CtkLabel">
     <attributes>
       <attribute name="style"/>
     </attributes>

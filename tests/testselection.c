@@ -104,9 +104,9 @@ static int num_targets = sizeof(targets)/sizeof(Target);
 
 static int have_selection = FALSE;
 
-GtkWidget *selection_widget;
-GtkWidget *selection_text;
-GtkWidget *selection_button;
+CtkWidget *selection_widget;
+CtkWidget *selection_text;
+CtkWidget *selection_button;
 GString *selection_string = NULL;
 
 static void
@@ -136,7 +136,7 @@ init_atoms (void)
 }
 
 void
-selection_toggled (GtkWidget *widget)
+selection_toggled (CtkWidget *widget)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget)))
     {
@@ -159,8 +159,8 @@ selection_toggled (GtkWidget *widget)
 }
 
 void
-selection_get (GtkWidget *widget, 
-	       GtkSelectionData *selection_data,
+selection_get (CtkWidget *widget, 
+	       CtkSelectionData *selection_data,
 	       guint      info,
 	       guint      time,
 	       gpointer   data)
@@ -195,7 +195,7 @@ selection_get (GtkWidget *widget,
 }
 
 gint
-selection_clear (GtkWidget *widget, GdkEventSelection *event)
+selection_clear (CtkWidget *widget, GdkEventSelection *event)
 {
   have_selection = FALSE;
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON(selection_button), FALSE);
@@ -265,14 +265,14 @@ stringify_span (guchar *data, gint *position)
 }
 
 void
-selection_received (GtkWidget *widget, GtkSelectionData *selection_data)
+selection_received (CtkWidget *widget, CtkSelectionData *selection_data)
 {
   int position;
   int i;
   SelType seltype;
   char *str;
   guchar *data;
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
   GdkAtom type;
 
   if (ctk_selection_data_get_length (selection_data) < 0)
@@ -354,7 +354,7 @@ selection_received (GtkWidget *widget, GtkSelectionData *selection_data)
 }
 
 void
-paste (GtkWidget *dialog, gint response, GtkWidget *entry)
+paste (CtkWidget *dialog, gint response, CtkWidget *entry)
 {
   const char *name;
   GdkAtom atom;
@@ -387,15 +387,15 @@ quit (void)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *content_area;
-  GtkWidget *dialog;
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkWidget *hbox;
-  GtkWidget *scrolled;
+  CtkWidget *content_area;
+  CtkWidget *dialog;
+  CtkWidget *vbox;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkWidget *hbox;
+  CtkWidget *scrolled;
 
-  static GtkTargetEntry targetlist[] = {
+  static CtkTargetEntry targetlist[] = {
     { "STRING",        0, STRING },
     { "TEXT",          0, TEXT },
     { "COMPOUND_TEXT", 0, COMPOUND_TEXT }

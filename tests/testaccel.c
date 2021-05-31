@@ -19,16 +19,16 @@
 #include <gdk/gdkkeysyms.h>
 
 static void
-accel_edited_callback (GtkCellRendererText *cell,
+accel_edited_callback (CtkCellRendererText *cell,
                        const char          *path_string,
                        guint                keyval,
                        GdkModifierType      mask,
                        guint                hardware_keycode,
                        gpointer             data)
 {
-  GtkTreeModel *model = (GtkTreeModel *)data;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
-  GtkTreeIter iter;
+  CtkTreeModel *model = (CtkTreeModel *)data;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_string);
+  CtkTreeIter iter;
 
   ctk_tree_model_get_iter (model, &iter, path);
 
@@ -43,28 +43,28 @@ accel_edited_callback (GtkCellRendererText *cell,
 }
 
 static void
-accel_cleared_callback (GtkCellRendererText *cell,
+accel_cleared_callback (CtkCellRendererText *cell,
                         const char          *path_string,
                         gpointer             data)
 {
-  GtkTreeModel *model = (GtkTreeModel *)data;
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreeModel *model = (CtkTreeModel *)data;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   path = ctk_tree_path_new_from_string (path_string);
   ctk_tree_model_get_iter (model, &iter, path);
   ctk_list_store_set (CTK_LIST_STORE (model), &iter, 0, 0, 1, 0, 2, 0, -1);
   ctk_tree_path_free (path);
 }
-static GtkWidget *
+static CtkWidget *
 key_test (void)
 {
-	GtkWidget *window, *sw, *tv;
-	GtkListStore *store;
-	GtkTreeViewColumn *column;
-	GtkCellRenderer *rend;
+	CtkWidget *window, *sw, *tv;
+	CtkListStore *store;
+	CtkTreeViewColumn *column;
+	CtkCellRenderer *rend;
 	gint i;
-        GtkWidget *box, *entry;
+        CtkWidget *box, *entry;
 
 	/* create window */
 	window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -104,7 +104,7 @@ key_test (void)
 	ctk_tree_view_append_column (CTK_TREE_VIEW (tv), column);
 
 	for (i = 0; i < 10; i++) {
-		GtkTreeIter iter;
+		CtkTreeIter iter;
 
 		ctk_list_store_append (store, &iter);
 	}
@@ -119,7 +119,7 @@ key_test (void)
 gint
 main (gint argc, gchar **argv)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
   
   ctk_init (&argc, &argv);
 

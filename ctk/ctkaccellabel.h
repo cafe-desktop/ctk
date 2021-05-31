@@ -1,7 +1,7 @@
 /* GTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
- * GtkAccelLabel: GtkLabel with accelerator monitoring facilities.
+ * CtkAccelLabel: CtkLabel with accelerator monitoring facilities.
  * Copyright (C) 1998 Tim Janik
  *
  * This library is free software; you can redistribute it and/or
@@ -37,32 +37,32 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ACCEL_LABEL		(ctk_accel_label_get_type ())
-#define CTK_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACCEL_LABEL, GtkAccelLabel))
-#define CTK_ACCEL_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCEL_LABEL, GtkAccelLabelClass))
+#define CTK_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACCEL_LABEL, CtkAccelLabel))
+#define CTK_ACCEL_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCEL_LABEL, CtkAccelLabelClass))
 #define CTK_IS_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ACCEL_LABEL))
 #define CTK_IS_ACCEL_LABEL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ACCEL_LABEL))
-#define CTK_ACCEL_LABEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCEL_LABEL, GtkAccelLabelClass))
+#define CTK_ACCEL_LABEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCEL_LABEL, CtkAccelLabelClass))
 
 
-typedef struct _GtkAccelLabel	     GtkAccelLabel;
-typedef struct _GtkAccelLabelClass   GtkAccelLabelClass;
-typedef struct _GtkAccelLabelPrivate GtkAccelLabelPrivate;
+typedef struct _CtkAccelLabel	     CtkAccelLabel;
+typedef struct _CtkAccelLabelClass   CtkAccelLabelClass;
+typedef struct _CtkAccelLabelPrivate CtkAccelLabelPrivate;
 
 /**
- * GtkAccelLabel:
+ * CtkAccelLabel:
  *
- * The #GtkAccelLabel-struct contains private data only, and
+ * The #CtkAccelLabel-struct contains private data only, and
  * should be accessed using the functions below.
  */
-struct _GtkAccelLabel
+struct _CtkAccelLabel
 {
-  GtkLabel label;
-  GtkAccelLabelPrivate *priv;
+  CtkLabel label;
+  CtkAccelLabelPrivate *priv;
 };
 
-struct _GtkAccelLabelClass
+struct _CtkAccelLabelClass
 {
-  GtkLabelClass	 parent_class;
+  CtkLabelClass	 parent_class;
 
   gchar		*signal_quote1;
   gchar		*signal_quote2;
@@ -82,34 +82,34 @@ struct _GtkAccelLabelClass
 GDK_AVAILABLE_IN_ALL
 GType	   ctk_accel_label_get_type	     (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_accel_label_new		     (const gchar   *string);
+CtkWidget* ctk_accel_label_new		     (const gchar   *string);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_accel_label_get_accel_widget  (GtkAccelLabel *accel_label);
+CtkWidget* ctk_accel_label_get_accel_widget  (CtkAccelLabel *accel_label);
 GDK_AVAILABLE_IN_ALL
-guint	   ctk_accel_label_get_accel_width   (GtkAccelLabel *accel_label);
+guint	   ctk_accel_label_get_accel_width   (CtkAccelLabel *accel_label);
 GDK_AVAILABLE_IN_ALL
-void	   ctk_accel_label_set_accel_widget  (GtkAccelLabel *accel_label,
-					      GtkWidget	    *accel_widget);
+void	   ctk_accel_label_set_accel_widget  (CtkAccelLabel *accel_label,
+					      CtkWidget	    *accel_widget);
 GDK_AVAILABLE_IN_ALL
-void	   ctk_accel_label_set_accel_closure (GtkAccelLabel *accel_label,
+void	   ctk_accel_label_set_accel_closure (CtkAccelLabel *accel_label,
 					      GClosure	    *accel_closure);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_accel_label_refetch           (GtkAccelLabel *accel_label);
+gboolean   ctk_accel_label_refetch           (CtkAccelLabel *accel_label);
 GDK_AVAILABLE_IN_3_6
-void       ctk_accel_label_set_accel         (GtkAccelLabel   *accel_label,
+void       ctk_accel_label_set_accel         (CtkAccelLabel   *accel_label,
                                               guint            accelerator_key,
                                               GdkModifierType  accelerator_mods);
 GDK_AVAILABLE_IN_3_12
-void       ctk_accel_label_get_accel         (GtkAccelLabel   *accel_label,
+void       ctk_accel_label_get_accel         (CtkAccelLabel   *accel_label,
                                               guint           *accelerator_key,
                                               GdkModifierType *accelerator_mods);
 
 /* private */
-gchar *    _ctk_accel_label_class_get_accelerator_label (GtkAccelLabelClass *klass,
+gchar *    _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
 							 guint               accelerator_key,
 							 GdkModifierType     accelerator_mods);
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkAccelLabel, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkAccelLabel, g_object_unref)
 
 G_END_DECLS
 

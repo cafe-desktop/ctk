@@ -28,7 +28,7 @@
 
 GType type_thai = 0;
 
-static const GtkIMContextInfo thai_info = { 
+static const CtkIMContextInfo thai_info = { 
   "thai",	   /* ID */
   NC_("input method menu", "Thai-Lao"),  /* Human readable name */
   GETTEXT_PACKAGE, /* Translation domain */
@@ -36,7 +36,7 @@ static const GtkIMContextInfo thai_info = {
   "lo:th"	   /* Languages for which this module is the default */
 };
 
-static const GtkIMContextInfo *info_list[] = {
+static const CtkIMContextInfo *info_list[] = {
   &thai_info
 };
 
@@ -55,14 +55,14 @@ MODULE_ENTRY (void, exit) (void)
 {
 }
 
-MODULE_ENTRY (void, list) (const GtkIMContextInfo ***contexts,
+MODULE_ENTRY (void, list) (const CtkIMContextInfo ***contexts,
 			   int                      *n_contexts)
 {
   *contexts = info_list;
   *n_contexts = G_N_ELEMENTS (info_list);
 }
 
-MODULE_ENTRY (GtkIMContext *, create) (const gchar *context_id)
+MODULE_ENTRY (CtkIMContext *, create) (const gchar *context_id)
 {
   if (strcmp (context_id, "thai") == 0)
     return ctk_im_context_thai_new ();

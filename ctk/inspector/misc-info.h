@@ -21,30 +21,30 @@
 #include "ctkscrolledwindow.h"
 
 #define CTK_TYPE_INSPECTOR_MISC_INFO            (ctk_inspector_misc_info_get_type())
-#define CTK_INSPECTOR_MISC_INFO(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_MISC_INFO, GtkInspectorMiscInfo))
-#define CTK_INSPECTOR_MISC_INFO_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_MISC_INFO, GtkInspectorMiscInfoClass))
+#define CTK_INSPECTOR_MISC_INFO(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_MISC_INFO, CtkInspectorMiscInfo))
+#define CTK_INSPECTOR_MISC_INFO_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_MISC_INFO, CtkInspectorMiscInfoClass))
 #define CTK_INSPECTOR_IS_MISC_INFO(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_MISC_INFO))
 #define CTK_INSPECTOR_IS_MISC_INFO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_MISC_INFO))
-#define CTK_INSPECTOR_MISC_INFO_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_MISC_INFO, GtkInspectorMiscInfoClass))
+#define CTK_INSPECTOR_MISC_INFO_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_MISC_INFO, CtkInspectorMiscInfoClass))
 
 
-typedef struct _GtkInspectorMiscInfoPrivate GtkInspectorMiscInfoPrivate;
+typedef struct _CtkInspectorMiscInfoPrivate CtkInspectorMiscInfoPrivate;
 
-typedef struct _GtkInspectorMiscInfo
+typedef struct _CtkInspectorMiscInfo
 {
-  GtkScrolledWindow parent;
-  GtkInspectorMiscInfoPrivate *priv;
-} GtkInspectorMiscInfo;
+  CtkScrolledWindow parent;
+  CtkInspectorMiscInfoPrivate *priv;
+} CtkInspectorMiscInfo;
 
-typedef struct _GtkInspectorMiscInfoClass
+typedef struct _CtkInspectorMiscInfoClass
 {
-  GtkScrolledWindowClass parent;
-} GtkInspectorMiscInfoClass;
+  CtkScrolledWindowClass parent;
+} CtkInspectorMiscInfoClass;
 
 G_BEGIN_DECLS
 
 GType ctk_inspector_misc_info_get_type   (void);
-void  ctk_inspector_misc_info_set_object (GtkInspectorMiscInfo *sl,
+void  ctk_inspector_misc_info_set_object (CtkInspectorMiscInfo *sl,
                                           GObject              *object);
 
 G_END_DECLS

@@ -1,7 +1,7 @@
 #include <ctk/ctk.h>
 
 static void
-print_hello (GtkWidget *widget,
+print_hello (CtkWidget *widget,
              gpointer   data)
 {
   g_print ("Hello World\n");
@@ -11,14 +11,14 @@ int
 main (int   argc,
       char *argv[])
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GObject *window;
   GObject *button;
   GError *error = NULL;
 
   ctk_init (&argc, &argv);
 
-  /* Construct a GtkBuilder instance and load our UI description */
+  /* Construct a CtkBuilder instance and load our UI description */
   builder = ctk_builder_new ();
   if (ctk_builder_add_from_file (builder, "builder.ui", &error) == 0)
     {

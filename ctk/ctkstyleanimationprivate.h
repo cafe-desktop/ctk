@@ -25,40 +25,40 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STYLE_ANIMATION           (_ctk_style_animation_get_type ())
-#define CTK_STYLE_ANIMATION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_STYLE_ANIMATION, GtkStyleAnimation))
-#define CTK_STYLE_ANIMATION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_STYLE_ANIMATION, GtkStyleAnimationClass))
+#define CTK_STYLE_ANIMATION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_STYLE_ANIMATION, CtkStyleAnimation))
+#define CTK_STYLE_ANIMATION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_STYLE_ANIMATION, CtkStyleAnimationClass))
 #define CTK_IS_STYLE_ANIMATION(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_STYLE_ANIMATION))
 #define CTK_IS_STYLE_ANIMATION_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_STYLE_ANIMATION))
-#define CTK_STYLE_ANIMATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STYLE_ANIMATION, GtkStyleAnimationClass))
+#define CTK_STYLE_ANIMATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STYLE_ANIMATION, CtkStyleAnimationClass))
 
-typedef struct _GtkStyleAnimation           GtkStyleAnimation;
-typedef struct _GtkStyleAnimationClass      GtkStyleAnimationClass;
+typedef struct _CtkStyleAnimation           CtkStyleAnimation;
+typedef struct _CtkStyleAnimationClass      CtkStyleAnimationClass;
 
-struct _GtkStyleAnimation
+struct _CtkStyleAnimation
 {
   GObject parent;
 };
 
-struct _GtkStyleAnimationClass
+struct _CtkStyleAnimationClass
 {
   GObjectClass parent_class;
 
-  gboolean      (* is_finished)                         (GtkStyleAnimation      *animation);
-  gboolean      (* is_static)                           (GtkStyleAnimation      *animation);
-  void          (* apply_values)                        (GtkStyleAnimation      *animation,
-                                                         GtkCssAnimatedStyle    *style);
-  GtkStyleAnimation *  (* advance)                      (GtkStyleAnimation      *animation,
+  gboolean      (* is_finished)                         (CtkStyleAnimation      *animation);
+  gboolean      (* is_static)                           (CtkStyleAnimation      *animation);
+  void          (* apply_values)                        (CtkStyleAnimation      *animation,
+                                                         CtkCssAnimatedStyle    *style);
+  CtkStyleAnimation *  (* advance)                      (CtkStyleAnimation      *animation,
                                                          gint64                  timestamp);
 };
 
 GType           _ctk_style_animation_get_type           (void) G_GNUC_CONST;
 
-GtkStyleAnimation * _ctk_style_animation_advance        (GtkStyleAnimation      *animation,
+CtkStyleAnimation * _ctk_style_animation_advance        (CtkStyleAnimation      *animation,
                                                          gint64                  timestamp);
-void            _ctk_style_animation_apply_values       (GtkStyleAnimation      *animation,
-                                                         GtkCssAnimatedStyle    *style);
-gboolean        _ctk_style_animation_is_finished        (GtkStyleAnimation      *animation);
-gboolean        _ctk_style_animation_is_static          (GtkStyleAnimation      *animation);
+void            _ctk_style_animation_apply_values       (CtkStyleAnimation      *animation,
+                                                         CtkCssAnimatedStyle    *style);
+gboolean        _ctk_style_animation_is_finished        (CtkStyleAnimation      *animation);
+gboolean        _ctk_style_animation_is_static          (CtkStyleAnimation      *animation);
 
 
 G_END_DECLS

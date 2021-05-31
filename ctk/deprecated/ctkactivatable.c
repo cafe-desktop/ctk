@@ -18,27 +18,27 @@
 /**
  * SECTION:ctkactivatable
  * @Short_Description: An interface for activatable widgets
- * @Title: GtkActivatable
+ * @Title: CtkActivatable
  *
- * Activatable widgets can be connected to a #GtkAction and reflects
- * the state of its action. A #GtkActivatable can also provide feedback
+ * Activatable widgets can be connected to a #CtkAction and reflects
+ * the state of its action. A #CtkActivatable can also provide feedback
  * through its action, as they are responsible for activating their
  * related actions.
  *
- * # Implementing GtkActivatable
+ * # Implementing CtkActivatable
  *
- * When extending a class that is already #GtkActivatable; it is only
- * necessary to implement the #GtkActivatable->sync_action_properties()
- * and #GtkActivatable->update() methods and chain up to the parent
+ * When extending a class that is already #CtkActivatable; it is only
+ * necessary to implement the #CtkActivatable->sync_action_properties()
+ * and #CtkActivatable->update() methods and chain up to the parent
  * implementation, however when introducing
- * a new #GtkActivatable class; the #GtkActivatable:related-action and
- * #GtkActivatable:use-action-appearance properties need to be handled by
+ * a new #CtkActivatable class; the #CtkActivatable:related-action and
+ * #CtkActivatable:use-action-appearance properties need to be handled by
  * the implementor. Handling these properties is mostly a matter of installing
  * the action pointer and boolean flag on your instance, and calling
  * ctk_activatable_do_set_related_action() and
  * ctk_activatable_sync_action_properties() at the appropriate times.
  *
- * ## A class fragment implementing #GtkActivatable
+ * ## A class fragment implementing #CtkActivatable
  *
  * |[<!-- language="C" -->
  *
@@ -54,18 +54,18 @@
  * 
  *   ...
  * 
- *   GtkAction      *action;
+ *   CtkAction      *action;
  *   gboolean        use_action_appearance;
  * };
  * 
  * ...
  * 
- * static void foo_bar_activatable_interface_init         (GtkActivatableIface  *iface);
- * static void foo_bar_activatable_update                 (GtkActivatable       *activatable,
- * 						           GtkAction            *action,
+ * static void foo_bar_activatable_interface_init         (CtkActivatableIface  *iface);
+ * static void foo_bar_activatable_update                 (CtkActivatable       *activatable,
+ * 						           CtkAction            *action,
  * 						           const gchar          *property_name);
- * static void foo_bar_activatable_sync_action_properties (GtkActivatable       *activatable,
- * 						           GtkAction            *action);
+ * static void foo_bar_activatable_sync_action_properties (CtkActivatable       *activatable,
+ * 						           CtkAction            *action);
  * ...
  *
  *
@@ -83,7 +83,7 @@
  *
  *
  * static void
- * foo_bar_activatable_interface_init (GtkActivatableIface  *iface)
+ * foo_bar_activatable_interface_init (CtkActivatableIface  *iface)
  * {
  *   iface->update = foo_bar_activatable_update;
  *   iface->sync_action_properties = foo_bar_activatable_sync_action_properties;
@@ -181,7 +181,7 @@
  * holds a reference here for you...
  * static void
  * foo_bar_set_related_action (FooBar    *bar, 
- * 			    GtkAction *action)
+ * 			    CtkAction *action)
  * {
  *   FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);
  * 
@@ -195,10 +195,10 @@
  * 
  * ... Selectively reset and update activatable depending on the use-action-appearance property ...
  * static void
- * ctk_button_activatable_sync_action_properties (GtkActivatable       *activatable,
- * 		                                  GtkAction            *action)
+ * ctk_button_activatable_sync_action_properties (CtkActivatable       *activatable,
+ * 		                                  CtkAction            *action)
  * {
- *   GtkButtonPrivate *priv = CTK_BUTTON_GET_PRIVATE (activatable);
+ *   CtkButtonPrivate *priv = CTK_BUTTON_GET_PRIVATE (activatable);
  * 
  *   if (!action)
  *     return;
@@ -225,8 +225,8 @@
  * }
  * 
  * static void 
- * foo_bar_activatable_update (GtkActivatable       *activatable,
- * 			       GtkAction            *action,
+ * foo_bar_activatable_update (CtkActivatable       *activatable,
+ * 			       CtkAction            *action,
  * 			       const gchar          *property_name)
  * {
  *   FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (activatable);
@@ -266,19 +266,19 @@
 #include "ctkintl.h"
 
 
-typedef GtkActivatableIface GtkActivatableInterface;
-G_DEFINE_INTERFACE (GtkActivatable, ctk_activatable, G_TYPE_OBJECT)
+typedef CtkActivatableIface CtkActivatableInterface;
+G_DEFINE_INTERFACE (CtkActivatable, ctk_activatable, G_TYPE_OBJECT)
 
 static void
-ctk_activatable_default_init (GtkActivatableInterface *iface)
+ctk_activatable_default_init (CtkActivatableInterface *iface)
 {
   /**
-   * GtkActivatable:related-action:
+   * CtkActivatable:related-action:
    *
    * The action that this activatable will activate and receive
    * updates from for various states and possibly appearance.
    *
-   * > #GtkActivatable implementors need to handle the this property and
+   * > #CtkActivatable implementors need to handle the this property and
    * > call ctk_activatable_do_set_related_action() when it changes.
    *
    * Since: 2.16
@@ -293,16 +293,16 @@ ctk_activatable_default_init (GtkActivatableInterface *iface)
 							    CTK_PARAM_READWRITE));
 
   /**
-   * GtkActivatable:use-action-appearance:
+   * CtkActivatable:use-action-appearance:
    *
    * Whether this activatable should reset its layout
    * and appearance when setting the related action or when
    * the action changes appearance.
    *
-   * See the #GtkAction documentation directly to find which properties
-   * should be ignored by the #GtkActivatable when this property is %FALSE.
+   * See the #CtkAction documentation directly to find which properties
+   * should be ignored by the #CtkActivatable when this property is %FALSE.
    *
-   * > #GtkActivatable implementors need to handle this property
+   * > #CtkActivatable implementors need to handle this property
    * > and call ctk_activatable_sync_action_properties() on the activatable
    * > widget when it changes.
    *
@@ -321,11 +321,11 @@ ctk_activatable_default_init (GtkActivatableInterface *iface)
 }
 
 static void
-ctk_activatable_update (GtkActivatable *activatable,
-			GtkAction      *action,
+ctk_activatable_update (CtkActivatable *activatable,
+			CtkAction      *action,
 			const gchar    *property_name)
 {
-  GtkActivatableIface *iface;
+  CtkActivatableIface *iface;
 
   g_return_if_fail (CTK_IS_ACTIVATABLE (activatable));
 
@@ -333,29 +333,29 @@ ctk_activatable_update (GtkActivatable *activatable,
   if (iface->update)
     iface->update (activatable, action, property_name);
   else
-    g_critical ("GtkActivatable->update() unimplemented for type %s", 
+    g_critical ("CtkActivatable->update() unimplemented for type %s", 
 		g_type_name (G_OBJECT_TYPE (activatable)));
 }
 
 /**
  * ctk_activatable_sync_action_properties:
- * @activatable: a #GtkActivatable
- * @action: (allow-none): the related #GtkAction or %NULL
+ * @activatable: a #CtkActivatable
+ * @action: (allow-none): the related #CtkAction or %NULL
  *
  * This is called to update the activatable completely, this is called
- * internally when the #GtkActivatable:related-action property is set
+ * internally when the #CtkActivatable:related-action property is set
  * or unset and by the implementing class when
- * #GtkActivatable:use-action-appearance changes.
+ * #CtkActivatable:use-action-appearance changes.
  *
  * Since: 2.16
  *
  * Deprecated: 3.10
  **/
 void
-ctk_activatable_sync_action_properties (GtkActivatable *activatable,
-		                        GtkAction      *action)
+ctk_activatable_sync_action_properties (CtkActivatable *activatable,
+		                        CtkAction      *action)
 {
-  GtkActivatableIface *iface;
+  CtkActivatableIface *iface;
 
   g_return_if_fail (CTK_IS_ACTIVATABLE (activatable));
 
@@ -363,19 +363,19 @@ ctk_activatable_sync_action_properties (GtkActivatable *activatable,
   if (iface->sync_action_properties)
     iface->sync_action_properties (activatable, action);
   else
-    g_critical ("GtkActivatable->sync_action_properties() unimplemented for type %s", 
+    g_critical ("CtkActivatable->sync_action_properties() unimplemented for type %s", 
 		g_type_name (G_OBJECT_TYPE (activatable)));
 }
 
 
 /**
  * ctk_activatable_set_related_action:
- * @activatable: a #GtkActivatable
- * @action: the #GtkAction to set
+ * @activatable: a #CtkActivatable
+ * @action: the #CtkAction to set
  *
  * Sets the related action on the @activatable object.
  *
- * > #GtkActivatable implementors need to handle the #GtkActivatable:related-action
+ * > #CtkActivatable implementors need to handle the #CtkActivatable:related-action
  * > property and call ctk_activatable_do_set_related_action() when it changes.
  *
  * Since: 2.16
@@ -383,8 +383,8 @@ ctk_activatable_sync_action_properties (GtkActivatable *activatable,
  * Deprecated: 3.10
  **/
 void
-ctk_activatable_set_related_action (GtkActivatable *activatable,
-				    GtkAction      *action)
+ctk_activatable_set_related_action (CtkActivatable *activatable,
+				    CtkAction      *action)
 {
   g_return_if_fail (CTK_IS_ACTIVATABLE (activatable));
   g_return_if_fail (action == NULL || CTK_IS_ACTION (action));
@@ -393,31 +393,31 @@ ctk_activatable_set_related_action (GtkActivatable *activatable,
 }
 
 static void
-ctk_activatable_action_notify (GtkAction      *action,
+ctk_activatable_action_notify (CtkAction      *action,
 			       GParamSpec     *pspec,
-			       GtkActivatable *activatable)
+			       CtkActivatable *activatable)
 {
   ctk_activatable_update (activatable, action, pspec->name);
 }
 
 /**
  * ctk_activatable_do_set_related_action:
- * @activatable: a #GtkActivatable
- * @action: the #GtkAction to set
+ * @activatable: a #CtkActivatable
+ * @action: the #CtkAction to set
  * 
- * This is a utility function for #GtkActivatable implementors.
+ * This is a utility function for #CtkActivatable implementors.
  * 
- * When implementing #GtkActivatable you must call this when
- * handling changes of the #GtkActivatable:related-action, and
+ * When implementing #CtkActivatable you must call this when
+ * handling changes of the #CtkActivatable:related-action, and
  * you must also use this to break references in #GObject->dispose().
  *
  * This function adds a reference to the currently set related
- * action for you, it also makes sure the #GtkActivatable->update()
- * method is called when the related #GtkAction properties change
+ * action for you, it also makes sure the #CtkActivatable->update()
+ * method is called when the related #CtkAction properties change
  * and registers to the action’s proxy list.
  *
  * > Be careful to call this before setting the local
- * > copy of the #GtkAction property, since this function uses 
+ * > copy of the #CtkAction property, since this function uses 
  * > ctk_activatable_get_related_action() to retrieve the
  * > previous action.
  *
@@ -426,10 +426,10 @@ ctk_activatable_action_notify (GtkAction      *action,
  * Deprecated: 3.10
  */
 void
-ctk_activatable_do_set_related_action (GtkActivatable *activatable,
-				       GtkAction      *action)
+ctk_activatable_do_set_related_action (CtkActivatable *activatable,
+				       CtkAction      *action)
 {
-  GtkAction *prev_action;
+  CtkAction *prev_action;
 
   prev_action = ctk_activatable_get_related_action (activatable);
   
@@ -483,20 +483,20 @@ ctk_activatable_do_set_related_action (GtkActivatable *activatable,
 
 /**
  * ctk_activatable_get_related_action:
- * @activatable: a #GtkActivatable
+ * @activatable: a #CtkActivatable
  *
- * Gets the related #GtkAction for @activatable.
+ * Gets the related #CtkAction for @activatable.
  *
- * Returns: (transfer none): the related #GtkAction if one is set.
+ * Returns: (transfer none): the related #CtkAction if one is set.
  *
  * Since: 2.16
  *
  * Deprecated: 3.10
  **/
-GtkAction *
-ctk_activatable_get_related_action (GtkActivatable *activatable)
+CtkAction *
+ctk_activatable_get_related_action (CtkActivatable *activatable)
 {
-  GtkAction *action;
+  CtkAction *action;
 
   g_return_val_if_fail (CTK_IS_ACTIVATABLE (activatable), NULL);
 
@@ -511,14 +511,14 @@ ctk_activatable_get_related_action (GtkActivatable *activatable)
 
 /**
  * ctk_activatable_set_use_action_appearance:
- * @activatable: a #GtkActivatable
+ * @activatable: a #CtkActivatable
  * @use_appearance: whether to use the actions appearance
  *
  * Sets whether this activatable should reset its layout and appearance
  * when setting the related action or when the action changes appearance
  *
- * > #GtkActivatable implementors need to handle the
- * > #GtkActivatable:use-action-appearance property and call
+ * > #CtkActivatable implementors need to handle the
+ * > #CtkActivatable:use-action-appearance property and call
  * > ctk_activatable_sync_action_properties() to update @activatable
  * > if needed.
  *
@@ -527,7 +527,7 @@ ctk_activatable_get_related_action (GtkActivatable *activatable)
  * Deprecated: 3.10
 **/
 void
-ctk_activatable_set_use_action_appearance (GtkActivatable *activatable,
+ctk_activatable_set_use_action_appearance (CtkActivatable *activatable,
 					   gboolean        use_appearance)
 {
   g_object_set (activatable, "use-action-appearance", use_appearance, NULL);
@@ -535,7 +535,7 @@ ctk_activatable_set_use_action_appearance (GtkActivatable *activatable,
 
 /**
  * ctk_activatable_get_use_action_appearance:
- * @activatable: a #GtkActivatable
+ * @activatable: a #CtkActivatable
  *
  * Gets whether this activatable should reset its layout
  * and appearance when setting the related action or when
@@ -548,7 +548,7 @@ ctk_activatable_set_use_action_appearance (GtkActivatable *activatable,
  * Deprecated: 3.10
 **/
 gboolean
-ctk_activatable_get_use_action_appearance  (GtkActivatable *activatable)
+ctk_activatable_get_use_action_appearance  (CtkActivatable *activatable)
 {
   gboolean use_appearance;
 

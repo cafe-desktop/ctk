@@ -5,13 +5,13 @@
     <GlibEtcInstallRoot>$(SolutionDir)\..\..\..\vs$(VSVer)\$(Platform)</GlibEtcInstallRoot>
     <CopyDir>..\..\..\vs$(VSVer)\$(Platform)</CopyDir>
     <ApiVersion>3.0</ApiVersion>
-    <GtkVersion>@CTK_VERSION@</GtkVersion>
-    <GtkLibtoolCompatibleDllPrefix>lib</GtkLibtoolCompatibleDllPrefix>
-    <GtkLibtoolCompatibleDllSuffix>.0-0</GtkLibtoolCompatibleDllSuffix>
-    <GtkSeparateVSDllPrefix />
-    <GtkSeparateVSDllSuffix>-vs$(VSVer)</GtkSeparateVSDllSuffix>
-    <GtkDllPrefix>$(GtkSeparateVSDllPrefix)</GtkDllPrefix>
-    <GtkDllSuffix>$(GtkSeparateVSDllSuffix)</GtkDllSuffix>
+    <CtkVersion>@CTK_VERSION@</CtkVersion>
+    <CtkLibtoolCompatibleDllPrefix>lib</CtkLibtoolCompatibleDllPrefix>
+    <CtkLibtoolCompatibleDllSuffix>.0-0</CtkLibtoolCompatibleDllSuffix>
+    <CtkSeparateVSDllPrefix />
+    <CtkSeparateVSDllSuffix>-vs$(VSVer)</CtkSeparateVSDllSuffix>
+    <CtkDllPrefix>$(CtkSeparateVSDllPrefix)</CtkDllPrefix>
+    <CtkDllSuffix>$(CtkSeparateVSDllSuffix)</CtkDllSuffix>
     <PythonDir Condition="'$(VisualStudioVersion)|$(Platform)' == '10.0|Win32'">c:\python34</PythonDir>
     <PythonDir Condition="'$(VisualStudioVersion)|$(Platform)' == '11.0|Win32'">c:\python34</PythonDir>
     <PythonDir Condition="'$(VisualStudioVersion)|$(Platform)' == '12.0|Win32'">c:\python34</PythonDir>
@@ -42,26 +42,26 @@
     <BuildMacro Include="ApiVersion">
       <Value>$(ApiVersion)</Value>
     </BuildMacro>
-    <BuildMacro Include="GtkVersion">
-      <Value>$(GtkVersion)</Value>
+    <BuildMacro Include="CtkVersion">
+      <Value>$(CtkVersion)</Value>
     </BuildMacro>
-    <BuildMacro Include="GtkLibtoolCompatibleDllPrefix">
-      <Value>$(GtkLibtoolCompatibleDllPrefix)</Value>
+    <BuildMacro Include="CtkLibtoolCompatibleDllPrefix">
+      <Value>$(CtkLibtoolCompatibleDllPrefix)</Value>
     </BuildMacro>
-    <BuildMacro Include="GtkLibtoolCompatibleDllSuffix">
-      <Value>$(GtkLibtoolCompatibleDllSuffix)</Value>
+    <BuildMacro Include="CtkLibtoolCompatibleDllSuffix">
+      <Value>$(CtkLibtoolCompatibleDllSuffix)</Value>
     </BuildMacro>
-    <BuildMacro Include="GtkSeparateVSDllPrefix">
-      <Value>$(GtkSeparateVSDllPrefix)</Value>
+    <BuildMacro Include="CtkSeparateVSDllPrefix">
+      <Value>$(CtkSeparateVSDllPrefix)</Value>
     </BuildMacro>
-    <BuildMacro Include="GtkSeparateVSDllSuffix">
-      <Value>$(GtkSeparateVSDllSuffix)</Value>
+    <BuildMacro Include="CtkSeparateVSDllSuffix">
+      <Value>$(CtkSeparateVSDllSuffix)</Value>
     </BuildMacro>
-    <BuildMacro Include="GtkDllPrefix">
-      <Value>$(GtkDllPrefix)</Value>
+    <BuildMacro Include="CtkDllPrefix">
+      <Value>$(CtkDllPrefix)</Value>
     </BuildMacro>
-    <BuildMacro Include="GtkDllSuffix">
-      <Value>$(GtkDllSuffix)</Value>
+    <BuildMacro Include="CtkDllSuffix">
+      <Value>$(CtkDllSuffix)</Value>
     </BuildMacro>
     <BuildMacro Include="PythonDir">
       <Value>$(PythonDir)</Value>

@@ -20,7 +20,7 @@
 #include <ctk/ctk.h>
 
 static void
-set_fullscreen_monitor_cb (GtkWidget *widget, gpointer user_data)
+set_fullscreen_monitor_cb (CtkWidget *widget, gpointer user_data)
 {
   GdkFullscreenMode mode = (GdkFullscreenMode) GPOINTER_TO_INT (user_data);
   GdkWindow  *window;
@@ -31,7 +31,7 @@ set_fullscreen_monitor_cb (GtkWidget *widget, gpointer user_data)
 }
 
 static void
-remove_fullscreen_cb (GtkWidget *widget, gpointer user_data)
+remove_fullscreen_cb (CtkWidget *widget, gpointer user_data)
 {
   GdkWindow  *window;
 
@@ -42,7 +42,7 @@ remove_fullscreen_cb (GtkWidget *widget, gpointer user_data)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *vbox, *button;
+  CtkWidget *window, *vbox, *button;
 
   ctk_init (&argc, &argv);
 

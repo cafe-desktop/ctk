@@ -2,11 +2,11 @@
 <!-- Generated with glade 3.18.1 -->
 <interface>
   <requires lib="ctk+" version="3.12"/>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkSpinner" id="spinner1">
+      <object class="CtkSpinner" id="spinner1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <style>

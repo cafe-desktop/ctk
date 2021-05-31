@@ -24,9 +24,9 @@
 
 G_BEGIN_DECLS
 
-GtkSymbolicColor * _ctk_css_symbolic_value_new            (GtkCssParser               *parser);
+CtkSymbolicColor * _ctk_css_symbolic_value_new            (CtkCssParser               *parser);
 
-GtkCssValue *      _ctk_symbolic_color_get_css_value      (GtkSymbolicColor           *symbolic);
+CtkCssValue *      _ctk_symbolic_color_get_css_value      (CtkSymbolicColor           *symbolic);
 
 G_END_DECLS
 

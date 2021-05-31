@@ -3,27 +3,27 @@
 
 #include <ctk/ctk.h>
 
-typedef GtkApplication DemoApplication;
-typedef GtkApplicationClass DemoApplicationClass;
+typedef CtkApplication DemoApplication;
+typedef CtkApplicationClass DemoApplicationClass;
 
 G_DEFINE_TYPE (DemoApplication, demo_application, CTK_TYPE_APPLICATION)
 
 typedef struct {
-  GtkApplicationWindow parent_instance;
+  CtkApplicationWindow parent_instance;
 
-  GtkWidget *message;
-  GtkWidget *infobar;
-  GtkWidget *status;
-  GtkWidget *menutool;
+  CtkWidget *message;
+  CtkWidget *infobar;
+  CtkWidget *status;
+  CtkWidget *menutool;
   GMenuModel *toolmenu;
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
 
   int width;
   int height;
   gboolean maximized;
   gboolean fullscreen;
 } DemoApplicationWindow;
-typedef GtkApplicationWindowClass DemoApplicationWindowClass;
+typedef CtkApplicationWindowClass DemoApplicationWindowClass;
 
 G_DEFINE_TYPE (DemoApplicationWindow, demo_application_window, CTK_TYPE_APPLICATION_WINDOW)
 
@@ -33,7 +33,7 @@ static void
 show_action_dialog (GSimpleAction *action)
 {
   const gchar *name;
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   name = g_action_get_name (G_ACTION (action));
 
@@ -89,13 +89,13 @@ activate_new (GSimpleAction *action,
 }
 
 static void
-open_response_cb (GtkNativeDialog *dialog,
+open_response_cb (CtkNativeDialog *dialog,
                   gint             response_id,
                   gpointer         user_data)
 {
-  GtkFileChooserNative *native = user_data;
+  CtkFileChooserNative *native = user_data;
   GApplication *app = g_object_get_data (G_OBJECT (native), "app");
-  GtkWidget *message_dialog;
+  CtkWidget *message_dialog;
   GFile *file;
   char *contents;
   GError *error = NULL;
@@ -135,7 +135,7 @@ activate_open (GSimpleAction *action,
                gpointer       user_data)
 {
   GApplication *app = user_data;
-  GtkFileChooserNative *native;
+  CtkFileChooserNative *native;
 
   native = ctk_file_chooser_native_new ("Open File",
                                         NULL,
@@ -181,7 +181,7 @@ activate_about (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       user_data)
 {
-  GtkWidget *window = user_data;
+  CtkWidget *window = user_data;
 
   const gchar *authors[] = {
     "Peter Mattis",
@@ -222,8 +222,8 @@ activate_quit (GSimpleAction *action,
                GVariant      *parameter,
                gpointer       user_data)
 {
-  GtkApplication *app = user_data;
-  GtkWidget *win;
+  CtkApplication *app = user_data;
+  CtkWidget *win;
   GList *list, *next;
 
   list = ctk_application_get_windows (app);
@@ -239,13 +239,13 @@ activate_quit (GSimpleAction *action,
 }
 
 static void
-update_statusbar (GtkTextBuffer         *buffer,
+update_statusbar (CtkTextBuffer         *buffer,
                   DemoApplicationWindow *window)
 {
   gchar *msg;
   gint row, col;
   gint count;
-  GtkTextIter iter;
+  CtkTextIter iter;
 
   /* clear any previous message, underflow is allowed */
   ctk_statusbar_pop (CTK_STATUSBAR (window->status), 0);
@@ -268,9 +268,9 @@ update_statusbar (GtkTextBuffer         *buffer,
 }
 
 static void
-mark_set_callback (GtkTextBuffer         *buffer,
-                   const GtkTextIter     *new_location,
-                   GtkTextMark           *mark,
+mark_set_callback (CtkTextBuffer         *buffer,
+                   const CtkTextIter     *new_location,
+                   CtkTextMark           *mark,
                    DemoApplicationWindow *window)
 {
   update_statusbar (buffer, window);
@@ -281,7 +281,7 @@ change_theme_state (GSimpleAction *action,
                     GVariant      *state,
                     gpointer       user_data)
 {
-  GtkSettings *settings = ctk_settings_get_default ();
+  CtkSettings *settings = ctk_settings_get_default ();
 
   g_object_set (G_OBJECT (settings),
                 "ctk-application-prefer-dark-theme",
@@ -296,7 +296,7 @@ change_titlebar_state (GSimpleAction *action,
                        GVariant      *state,
                        gpointer       user_data)
 {
-  GtkWindow *window = user_data;
+  CtkWindow *window = user_data;
 
   ctk_window_set_hide_titlebar_when_maximized (CTK_WINDOW (window),
                                                g_variant_get_boolean (state));
@@ -331,7 +331,7 @@ static GActionEntry win_entries[] = {
 };
 
 static void
-clicked_cb (GtkWidget *widget, DemoApplicationWindow *window)
+clicked_cb (CtkWidget *widget, DemoApplicationWindow *window)
 {
   ctk_widget_hide (window->infobar);
 }
@@ -339,7 +339,7 @@ clicked_cb (GtkWidget *widget, DemoApplicationWindow *window)
 static void
 startup (GApplication *app)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *appmenu;
   GMenuModel *menubar;
 
@@ -433,7 +433,7 @@ demo_application_window_load_state (DemoApplicationWindow *win)
 static void
 demo_application_window_init (DemoApplicationWindow *window)
 {
-  GtkWidget *menu;
+  CtkWidget *menu;
 
   window->width = -1;
   window->height = -1;
@@ -469,8 +469,8 @@ demo_application_window_constructed (GObject *object)
 }
 
 static void
-demo_application_window_size_allocate (GtkWidget     *widget,
-                                       GtkAllocation *allocation)
+demo_application_window_size_allocate (CtkWidget     *widget,
+                                       CtkAllocation *allocation)
 {
   DemoApplicationWindow *window = (DemoApplicationWindow *)widget;
 
@@ -481,7 +481,7 @@ demo_application_window_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-demo_application_window_state_event (GtkWidget           *widget,
+demo_application_window_state_event (CtkWidget           *widget,
                                      GdkEventWindowState *event)
 {
   DemoApplicationWindow *window = (DemoApplicationWindow *)widget;
@@ -497,7 +497,7 @@ demo_application_window_state_event (GtkWidget           *widget,
 }
 
 static void
-demo_application_window_destroy (GtkWidget *widget)
+demo_application_window_destroy (CtkWidget *widget)
 {
   DemoApplicationWindow *window = (DemoApplicationWindow *)widget;
 
@@ -510,7 +510,7 @@ static void
 demo_application_window_class_init (DemoApplicationWindowClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->constructed = demo_application_window_constructed;
 
@@ -533,7 +533,7 @@ demo_application_window_class_init (DemoApplicationWindowClass *class)
 int
 main (int argc, char *argv[])
 {
-  GtkApplication *app;
+  CtkApplication *app;
 
   app = CTK_APPLICATION (g_object_new (demo_application_get_type (),
                                        "application-id", "org.ctk.Demo2",

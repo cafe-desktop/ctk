@@ -17,25 +17,25 @@
 
 #include "treewalk.h"
 
-struct _GtkTreeWalk
+struct _CtkTreeWalk
 {
-  GtkTreeModel *model;
-  GtkTreeIter position;
+  CtkTreeModel *model;
+  CtkTreeIter position;
   gboolean visited;
   RowPredicate predicate;
   gpointer data;
   GDestroyNotify destroy;
 };
 
-GtkTreeWalk *
-ctk_tree_walk_new (GtkTreeModel   *model,
+CtkTreeWalk *
+ctk_tree_walk_new (CtkTreeModel   *model,
                    RowPredicate    predicate,
                    gpointer        data,
                    GDestroyNotify  destroy)
 {
-  GtkTreeWalk *walk;
+  CtkTreeWalk *walk;
 
-  walk = g_new (GtkTreeWalk, 1);
+  walk = g_new (CtkTreeWalk, 1);
   walk->model = g_object_ref (model);
   walk->visited = FALSE;
   walk->predicate = predicate;
@@ -46,7 +46,7 @@ ctk_tree_walk_new (GtkTreeModel   *model,
 }
 
 void
-ctk_tree_walk_free (GtkTreeWalk *walk)
+ctk_tree_walk_free (CtkTreeWalk *walk)
 {
   g_object_unref (walk->model);
 
@@ -57,8 +57,8 @@ ctk_tree_walk_free (GtkTreeWalk *walk)
 }
 
 void
-ctk_tree_walk_reset (GtkTreeWalk *walk,
-                     GtkTreeIter *iter)
+ctk_tree_walk_reset (CtkTreeWalk *walk,
+                     CtkTreeIter *iter)
 {
   if (iter)
     {
@@ -72,9 +72,9 @@ ctk_tree_walk_reset (GtkTreeWalk *walk,
 }
 
 static gboolean
-ctk_tree_walk_step_forward (GtkTreeWalk *walk)
+ctk_tree_walk_step_forward (CtkTreeWalk *walk)
 {
-  GtkTreeIter next, up;
+  CtkTreeIter next, up;
 
   if (!walk->visited)
     {
@@ -107,11 +107,11 @@ ctk_tree_walk_step_forward (GtkTreeWalk *walk)
 }
 
 static gboolean
-ctk_tree_model_iter_last_child (GtkTreeModel *model,
-                                GtkTreeIter  *iter,
-                                GtkTreeIter  *parent)
+ctk_tree_model_iter_last_child (CtkTreeModel *model,
+                                CtkTreeIter  *iter,
+                                CtkTreeIter  *parent)
 {
-  GtkTreeIter next;
+  CtkTreeIter next;
 
   if (!ctk_tree_model_iter_children (model, &next, parent))
     return FALSE;
@@ -124,10 +124,10 @@ ctk_tree_model_iter_last_child (GtkTreeModel *model,
 }
 
 static gboolean
-ctk_tree_model_get_iter_last (GtkTreeModel *model,
-                              GtkTreeIter  *iter)
+ctk_tree_model_get_iter_last (CtkTreeModel *model,
+                              CtkTreeIter  *iter)
 {
-  GtkTreeIter next;
+  CtkTreeIter next;
 
   if (!ctk_tree_model_iter_last_child (model, &next, NULL))
     return FALSE;
@@ -140,9 +140,9 @@ ctk_tree_model_get_iter_last (GtkTreeModel *model,
 }
 
 static gboolean
-ctk_tree_walk_step_back (GtkTreeWalk *walk)
+ctk_tree_walk_step_back (CtkTreeWalk *walk)
 {
-  GtkTreeIter previous, down;
+  CtkTreeIter previous, down;
 
   if (!walk->visited)
     {
@@ -173,7 +173,7 @@ ctk_tree_walk_step_back (GtkTreeWalk *walk)
 }
 
 static gboolean
-ctk_tree_walk_step (GtkTreeWalk *walk, gboolean backwards)
+ctk_tree_walk_step (CtkTreeWalk *walk, gboolean backwards)
 {
   if (backwards)
     return ctk_tree_walk_step_back (walk);
@@ -182,7 +182,7 @@ ctk_tree_walk_step (GtkTreeWalk *walk, gboolean backwards)
 }
 
 static gboolean
-row_is_match (GtkTreeWalk *walk)
+row_is_match (CtkTreeWalk *walk)
 {
   if (walk->predicate)
     return walk->predicate (walk->model, &walk->position, walk->data);
@@ -190,14 +190,14 @@ row_is_match (GtkTreeWalk *walk)
 }
 
 gboolean
-ctk_tree_walk_next_match (GtkTreeWalk *walk,
+ctk_tree_walk_next_match (CtkTreeWalk *walk,
                           gboolean     force_move,
                           gboolean     backwards,
-                          GtkTreeIter *iter)
+                          CtkTreeIter *iter)
 {
   gboolean moved = FALSE;
   gboolean was_visited;
-  GtkTreeIter position;
+  CtkTreeIter position;
 
   was_visited = walk->visited;
   position = walk->position;
@@ -223,8 +223,8 @@ ctk_tree_walk_next_match (GtkTreeWalk *walk,
 }
 
 gboolean
-ctk_tree_walk_get_position (GtkTreeWalk *walk,
-                            GtkTreeIter *iter)
+ctk_tree_walk_get_position (CtkTreeWalk *walk,
+                            CtkTreeIter *iter)
 {
   *iter = walk->position;
   return walk->visited;

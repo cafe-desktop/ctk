@@ -1,4 +1,4 @@
-The way that the GtkTreeView calculates sizing is pretty confusing.
+The way that the CtkTreeView calculates sizing is pretty confusing.
 This is written down to help keep track of it in my head, and thus help
 anyone who hopes to work with the code in the future.
 -jrb
@@ -6,7 +6,7 @@ anyone who hopes to work with the code in the future.
 HOW THE GTKTREEVIEW CALCULATES SIZE:
 ====================================
  When the view is given a new model, the first thing it does is walk
-through the model at the top level, creating an GtkRBNode for each
+through the model at the top level, creating an CtkRBNode for each
 element of the model.  Each node has a height of 0.  The RBTree is kept
 updated as the models structure changes.  Additionally, the user can
 expand, collapse, and select rows at this stage.  The RBTree is accurate
@@ -18,7 +18,7 @@ the first-run function.  This is run before the expose event.
 HOW THE GTKTREEVIEWCOLUMN STORES SIZE:
 ======================================
 
-There are a number of size related fields in the GtkTreeViewColumn
+There are a number of size related fields in the CtkTreeViewColumn
 structure.  These are all valid after realization:
 
   column_type	    The sizing method to use when calculating the size

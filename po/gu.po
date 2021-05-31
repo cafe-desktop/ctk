@@ -2314,7 +2314,7 @@ msgstr ""
 msgid "Could not send the search request"
 msgstr "શોધ અરજી મોકલી શક્યા નહિં"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -3740,7 +3740,7 @@ msgstr "સુયોજન CTK_TEST_TOUCHSCREEN દ્દારા હાર્�
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/visual.ui.h:1
 msgid "GTK+ Theme"
-msgstr "Gtk+ થીમ"
+msgstr "Ctk+ થીમ"
 
 #: ../ctk/inspector/visual.ui.h:2
 #, fuzzy

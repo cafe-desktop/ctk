@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">1</property>
@@ -22,7 +22,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label2">
+          <object class="CtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">2</property>
@@ -34,7 +34,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label8">
+          <object class="CtkLabel" id="label8">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">3</property>
@@ -46,7 +46,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label3">
+          <object class="CtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">4 = 2 * 2</property>
@@ -58,7 +58,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label9">
+          <object class="CtkLabel" id="label9">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">5</property>
@@ -70,7 +70,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label10">
+          <object class="CtkLabel" id="label10">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">6 = 2 * 3</property>
@@ -82,7 +82,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label11">
+          <object class="CtkLabel" id="label11">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">7</property>
@@ -94,7 +94,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label4">
+          <object class="CtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">8 = 2 * 2 * 2</property>
@@ -106,7 +106,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label12">
+          <object class="CtkLabel" id="label12">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">9 = 3 * 3</property>
@@ -118,7 +118,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label5">
+          <object class="CtkLabel" id="label5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">10 = 2 * 5</property>
@@ -130,7 +130,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label14">
+          <object class="CtkLabel" id="label14">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">11</property>
@@ -142,7 +142,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label13">
+          <object class="CtkLabel" id="label13">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">12 = 2 * 2 * 3</property>
@@ -154,7 +154,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label7">
+          <object class="CtkLabel" id="label7">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">13</property>
@@ -166,7 +166,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label15">
+          <object class="CtkLabel" id="label15">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">14 = 2 * 7</property>
@@ -178,7 +178,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label16">
+          <object class="CtkLabel" id="label16">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">15 = 3 * 5</property>
@@ -190,7 +190,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label17">
+          <object class="CtkLabel" id="label17">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">16 = 2 * 2 * 2 * 2</property>
@@ -202,7 +202,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label6">
+          <object class="CtkLabel" id="label6">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">17</property>
@@ -214,7 +214,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label18">
+          <object class="CtkLabel" id="label18">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">18 = 2 * 3 * 3</property>
@@ -226,7 +226,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label19">
+          <object class="CtkLabel" id="label19">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">19</property>
@@ -238,7 +238,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label21">
+          <object class="CtkLabel" id="label21">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">20 = 2 * 2 * 5</property>
@@ -250,7 +250,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label20">
+          <object class="CtkLabel" id="label20">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">21 = 3 * 7</property>
@@ -262,7 +262,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label22">
+          <object class="CtkLabel" id="label22">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">22 = 2 * 11</property>
@@ -274,7 +274,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label23">
+          <object class="CtkLabel" id="label23">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">23</property>
@@ -286,7 +286,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label24">
+          <object class="CtkLabel" id="label24">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">24 = 2 * 2 * 2 * 3</property>
@@ -298,7 +298,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label25">
+          <object class="CtkLabel" id="label25">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">25 = 5 * 5</property>

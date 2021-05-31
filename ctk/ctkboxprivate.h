@@ -25,13 +25,13 @@
 G_BEGIN_DECLS
 
 
-void        _ctk_box_set_old_defaults   (GtkBox         *box);
-gboolean    _ctk_box_get_spacing_set    (GtkBox         *box);
-void        _ctk_box_set_spacing_set    (GtkBox         *box,
+void        _ctk_box_set_old_defaults   (CtkBox         *box);
+gboolean    _ctk_box_get_spacing_set    (CtkBox         *box);
+void        _ctk_box_set_spacing_set    (CtkBox         *box,
                                          gboolean        spacing_set);
-GList      *_ctk_box_get_children       (GtkBox         *box);
+GList      *_ctk_box_get_children       (CtkBox         *box);
 
-GtkCssGadget *ctk_box_get_gadget (GtkBox *box);
+CtkCssGadget *ctk_box_get_gadget (CtkBox *box);
 
 
 G_END_DECLS

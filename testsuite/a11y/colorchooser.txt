@@ -34,7 +34,7 @@ window1
       action 0 name: click
       action 0 description: Clicks the button
       action 0 keybinding: <Alt>s
-    unnamed-GtkContainerAccessible-0
+    unnamed-CtkContainerAccessible-0
       "filler"
       parent: headerbar
       state: enabled sensitive showing vertical visible
@@ -44,7 +44,7 @@ window1
       alpha: 1
       Select a Color
         "label"
-        parent: unnamed-GtkContainerAccessible-0
+        parent: unnamed-CtkContainerAccessible-0
         index: 0
         name: Select a Color
         state: enabled multi-line sensitive showing visible
@@ -84,7 +84,7 @@ window1
         <AtkHypertext>
       
         "label"
-        parent: unnamed-GtkContainerAccessible-0
+        parent: unnamed-CtkContainerAccessible-0
         index: 1
         name: 
         state: enabled multi-line sensitive
@@ -157,7 +157,7 @@ window1
       <AtkComponent>
       layer: widget
       alpha: 1
-      unnamed-GtkContainerAccessible-1
+      unnamed-CtkContainerAccessible-1
         "filler"
         parent: chooser
         index: 0
@@ -166,18 +166,18 @@ window1
         <AtkComponent>
         layer: widget
         alpha: 1
-        unnamed-GtkContainerAccessible-2
+        unnamed-CtkContainerAccessible-2
           "panel"
-          parent: unnamed-GtkContainerAccessible-1
+          parent: unnamed-CtkContainerAccessible-1
           index: 0
           state: enabled horizontal sensitive showing visible
           toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
-          unnamed-GtkColorSwatchAccessible-3
+          unnamed-CtkColorSwatchAccessible-3
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 0
             name: Black
             state: enabled focusable sensitive showing visible
@@ -192,9 +192,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-4
+          unnamed-CtkColorSwatchAccessible-4
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 1
             name: Dark Gray 4
             state: enabled focusable sensitive showing visible
@@ -209,9 +209,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-5
+          unnamed-CtkColorSwatchAccessible-5
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 2
             name: Dark Gray 3
             state: enabled focusable sensitive showing visible
@@ -226,9 +226,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-6
+          unnamed-CtkColorSwatchAccessible-6
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 3
             name: Dark Gray 2
             state: enabled focusable sensitive showing visible
@@ -243,9 +243,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-7
+          unnamed-CtkColorSwatchAccessible-7
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 4
             name: Dark Gray 1
             state: enabled focusable sensitive showing visible
@@ -260,9 +260,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-8
+          unnamed-CtkColorSwatchAccessible-8
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 5
             name: Light Gray 4
             state: enabled focusable sensitive showing visible
@@ -277,9 +277,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-9
+          unnamed-CtkColorSwatchAccessible-9
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 6
             name: Light Gray 3
             state: enabled focusable sensitive showing visible
@@ -294,9 +294,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-10
+          unnamed-CtkColorSwatchAccessible-10
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 7
             name: Light Gray 2
             state: enabled focusable sensitive showing visible
@@ -311,9 +311,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-11
+          unnamed-CtkColorSwatchAccessible-11
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 8
             name: Light Gray 1
             state: enabled focusable sensitive showing visible
@@ -328,9 +328,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-12
+          unnamed-CtkColorSwatchAccessible-12
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 9
             name: White
             state: checked enabled focusable sensitive showing visible
@@ -345,9 +345,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-13
+          unnamed-CtkColorSwatchAccessible-13
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 10
             name: Very Dark Brown
             state: enabled focusable sensitive showing visible
@@ -362,9 +362,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-14
+          unnamed-CtkColorSwatchAccessible-14
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 11
             name: Dark Brown
             state: enabled focusable sensitive showing visible
@@ -379,9 +379,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-15
+          unnamed-CtkColorSwatchAccessible-15
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 12
             name: Brown
             state: enabled focusable sensitive showing visible
@@ -396,9 +396,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-16
+          unnamed-CtkColorSwatchAccessible-16
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 13
             name: Light Brown
             state: enabled focusable sensitive showing visible
@@ -413,9 +413,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-17
+          unnamed-CtkColorSwatchAccessible-17
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 14
             name: Very Light Brown
             state: enabled focusable sensitive showing visible
@@ -430,9 +430,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-18
+          unnamed-CtkColorSwatchAccessible-18
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 15
             name: Very Dark Purple
             state: enabled focusable sensitive showing visible
@@ -447,9 +447,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-19
+          unnamed-CtkColorSwatchAccessible-19
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 16
             name: Dark Purple
             state: enabled focusable sensitive showing visible
@@ -464,9 +464,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-20
+          unnamed-CtkColorSwatchAccessible-20
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 17
             name: Purple
             state: enabled focusable sensitive showing visible
@@ -481,9 +481,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-21
+          unnamed-CtkColorSwatchAccessible-21
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 18
             name: Light Purple
             state: enabled focusable sensitive showing visible
@@ -498,9 +498,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-22
+          unnamed-CtkColorSwatchAccessible-22
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 19
             name: Very Light Purple
             state: enabled focusable sensitive showing visible
@@ -515,9 +515,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-23
+          unnamed-CtkColorSwatchAccessible-23
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 20
             name: Very Dark Red
             state: enabled focusable sensitive showing visible
@@ -532,9 +532,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-24
+          unnamed-CtkColorSwatchAccessible-24
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 21
             name: Dark Red
             state: enabled focusable sensitive showing visible
@@ -549,9 +549,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-25
+          unnamed-CtkColorSwatchAccessible-25
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 22
             name: Red
             state: enabled focusable sensitive showing visible
@@ -566,9 +566,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-26
+          unnamed-CtkColorSwatchAccessible-26
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 23
             name: Light Red
             state: enabled focusable sensitive showing visible
@@ -583,9 +583,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-27
+          unnamed-CtkColorSwatchAccessible-27
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 24
             name: Very Light Red
             state: enabled focusable sensitive showing visible
@@ -600,9 +600,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-28
+          unnamed-CtkColorSwatchAccessible-28
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 25
             name: Very Dark Orange
             state: enabled focusable sensitive showing visible
@@ -617,9 +617,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-29
+          unnamed-CtkColorSwatchAccessible-29
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 26
             name: Dark Orange
             state: enabled focusable sensitive showing visible
@@ -634,9 +634,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-30
+          unnamed-CtkColorSwatchAccessible-30
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 27
             name: Orange
             state: enabled focusable sensitive showing visible
@@ -651,9 +651,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-31
+          unnamed-CtkColorSwatchAccessible-31
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 28
             name: Light Orange
             state: enabled focusable sensitive showing visible
@@ -668,9 +668,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-32
+          unnamed-CtkColorSwatchAccessible-32
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 29
             name: Very Light Orange
             state: enabled focusable sensitive showing visible
@@ -685,9 +685,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-33
+          unnamed-CtkColorSwatchAccessible-33
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 30
             name: Very Dark Yellow
             state: enabled focusable sensitive showing visible
@@ -702,9 +702,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-34
+          unnamed-CtkColorSwatchAccessible-34
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 31
             name: Dark Yellow
             state: enabled focusable sensitive showing visible
@@ -719,9 +719,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-35
+          unnamed-CtkColorSwatchAccessible-35
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 32
             name: Yellow
             state: enabled focusable sensitive showing visible
@@ -736,9 +736,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-36
+          unnamed-CtkColorSwatchAccessible-36
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 33
             name: Light Yellow
             state: enabled focusable sensitive showing visible
@@ -753,9 +753,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-37
+          unnamed-CtkColorSwatchAccessible-37
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 34
             name: Very Light Yellow
             state: enabled focusable sensitive showing visible
@@ -770,9 +770,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-38
+          unnamed-CtkColorSwatchAccessible-38
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 35
             name: Very Dark Green
             state: enabled focusable sensitive showing visible
@@ -787,9 +787,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-39
+          unnamed-CtkColorSwatchAccessible-39
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 36
             name: Dark Green
             state: enabled focusable sensitive showing visible
@@ -804,9 +804,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-40
+          unnamed-CtkColorSwatchAccessible-40
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 37
             name: Green
             state: enabled focusable sensitive showing visible
@@ -821,9 +821,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-41
+          unnamed-CtkColorSwatchAccessible-41
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 38
             name: Light Green
             state: enabled focusable sensitive showing visible
@@ -838,9 +838,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-42
+          unnamed-CtkColorSwatchAccessible-42
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 39
             name: Very Light Green
             state: enabled focusable sensitive showing visible
@@ -855,9 +855,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-43
+          unnamed-CtkColorSwatchAccessible-43
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 40
             name: Very Dark Blue
             state: enabled focusable sensitive showing visible
@@ -872,9 +872,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-44
+          unnamed-CtkColorSwatchAccessible-44
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 41
             name: Dark Blue
             state: enabled focusable sensitive showing visible
@@ -889,9 +889,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-45
+          unnamed-CtkColorSwatchAccessible-45
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 42
             name: Blue
             state: enabled focusable sensitive showing visible
@@ -906,9 +906,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-46
+          unnamed-CtkColorSwatchAccessible-46
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 43
             name: Light Blue
             state: enabled focusable sensitive showing visible
@@ -923,9 +923,9 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-          unnamed-GtkColorSwatchAccessible-47
+          unnamed-CtkColorSwatchAccessible-47
             "radio button"
-            parent: unnamed-GtkContainerAccessible-2
+            parent: unnamed-CtkContainerAccessible-2
             index: 44
             name: Very Light Blue
             state: enabled focusable sensitive showing visible
@@ -942,7 +942,7 @@ window1
             action 2 description: Customizes the color
         Custom
           "label"
-          parent: unnamed-GtkContainerAccessible-1
+          parent: unnamed-CtkContainerAccessible-1
           index: 1
           name: Custom
           state: enabled multi-line sensitive showing visible
@@ -980,18 +980,18 @@ window1
                               weight: <omitted>
                               wrap-mode: word
           <AtkHypertext>
-        unnamed-GtkContainerAccessible-48
+        unnamed-CtkContainerAccessible-48
           "filler"
-          parent: unnamed-GtkContainerAccessible-1
+          parent: unnamed-CtkContainerAccessible-1
           index: 2
           state: enabled horizontal sensitive showing visible
           toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
-          unnamed-GtkColorSwatchAccessible-49
+          unnamed-CtkColorSwatchAccessible-49
             "push button"
-            parent: unnamed-GtkContainerAccessible-48
+            parent: unnamed-CtkContainerAccessible-48
             index: 0
             name: Custom color
             description: Create a custom color
@@ -1007,7 +1007,7 @@ window1
             action 1 description: Activates the color
             action 2 name: customize
             action 2 description: Customizes the color
-      unnamed-GtkContainerAccessible-50
+      unnamed-CtkContainerAccessible-50
         "filler"
         parent: chooser
         index: 1
@@ -1016,9 +1016,9 @@ window1
         <AtkComponent>
         layer: widget
         alpha: 1
-        GtkColorEditor
+        CtkColorEditor
           "filler"
-          parent: unnamed-GtkContainerAccessible-50
+          parent: unnamed-CtkContainerAccessible-50
           index: 0
           state: enabled horizontal sensitive
           toolkit: ctk
@@ -1027,7 +1027,7 @@ window1
           alpha: 1
           overlay
             "panel"
-            parent: GtkColorEditor
+            parent: CtkColorEditor
             index: 0
             state: enabled sensitive visible
             toolkit: ctk

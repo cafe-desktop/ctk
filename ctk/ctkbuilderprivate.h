@@ -110,7 +110,7 @@ typedef struct {
 
 typedef struct {
   const gchar *last_element;
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   gchar *domain;
   GSList *stack;
   SubParser *subparser;
@@ -131,27 +131,27 @@ typedef struct {
 
 typedef GType (*GTypeGetFunc) (void);
 
-/* Things only GtkBuilder should use */
-void _ctk_builder_parser_parse_buffer (GtkBuilder *builder,
+/* Things only CtkBuilder should use */
+void _ctk_builder_parser_parse_buffer (CtkBuilder *builder,
                                        const gchar *filename,
                                        const gchar *buffer,
                                        gsize length,
                                        gchar **requested_objs,
                                        GError **error);
-GObject * _ctk_builder_construct (GtkBuilder *builder,
+GObject * _ctk_builder_construct (CtkBuilder *builder,
                                   ObjectInfo *info,
 				  GError    **error);
-void      _ctk_builder_apply_properties (GtkBuilder *builder,
+void      _ctk_builder_apply_properties (CtkBuilder *builder,
 					 ObjectInfo *info,
 					 GError **error);
-void      _ctk_builder_add_object (GtkBuilder  *builder,
+void      _ctk_builder_add_object (CtkBuilder  *builder,
                                    const gchar *id,
                                    GObject     *object);
-void      _ctk_builder_add (GtkBuilder *builder,
+void      _ctk_builder_add (CtkBuilder *builder,
                             ChildInfo *child_info);
-void      _ctk_builder_add_signals (GtkBuilder *builder,
+void      _ctk_builder_add_signals (CtkBuilder *builder,
 				    GSList     *signals);
-void      _ctk_builder_finish (GtkBuilder *builder);
+void      _ctk_builder_finish (CtkBuilder *builder);
 void _free_signal_info (SignalInfo *info,
                         gpointer user_data);
 
@@ -171,9 +171,9 @@ gboolean  _ctk_builder_flags_from_string (GType         type,
 const gchar * _ctk_builder_parser_translate (const gchar *domain,
                                              const gchar *context,
                                              const gchar *text);
-gchar *   _ctk_builder_get_resource_path (GtkBuilder *builder,
+gchar *   _ctk_builder_get_resource_path (CtkBuilder *builder,
 					  const gchar *string);
-gchar *   _ctk_builder_get_absolute_filename (GtkBuilder *builder,
+gchar *   _ctk_builder_get_absolute_filename (CtkBuilder *builder,
 					      const gchar *string);
 
 void      _ctk_builder_menu_start (ParserData   *parser_data,
@@ -183,25 +183,25 @@ void      _ctk_builder_menu_start (ParserData   *parser_data,
                                    GError      **error);
 void      _ctk_builder_menu_end   (ParserData  *parser_data);
 
-GType     _ctk_builder_get_template_type (GtkBuilder *builder);
+GType     _ctk_builder_get_template_type (CtkBuilder *builder);
 
-void _ctk_builder_prefix_error            (GtkBuilder           *builder,
+void _ctk_builder_prefix_error            (CtkBuilder           *builder,
                                            GMarkupParseContext  *context,
                                            GError              **error);
-void _ctk_builder_error_unhandled_tag     (GtkBuilder           *builder,
+void _ctk_builder_error_unhandled_tag     (CtkBuilder           *builder,
                                            GMarkupParseContext  *context,
                                            const gchar          *object,
                                            const gchar          *element_name,
                                            GError              **error);
-gboolean _ctk_builder_check_parent        (GtkBuilder           *builder,
+gboolean _ctk_builder_check_parent        (CtkBuilder           *builder,
                                            GMarkupParseContext  *context,
                                            const gchar          *parent_name,
                                            GError              **error);
-GObject * _ctk_builder_lookup_object      (GtkBuilder           *builder,
+GObject * _ctk_builder_lookup_object      (CtkBuilder           *builder,
                                            const gchar          *name,
                                            gint                  line,
                                            gint                  col);
-gboolean _ctk_builder_lookup_failed       (GtkBuilder           *builder,
+gboolean _ctk_builder_lookup_failed       (CtkBuilder           *builder,
                                            GError              **error);
 
 

@@ -30,29 +30,29 @@ G_BEGIN_DECLS
 
 /* -- type macros --- */
 #define CTK_TYPE_SETTINGS             (ctk_settings_get_type ())
-#define CTK_SETTINGS(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SETTINGS, GtkSettings))
-#define CTK_SETTINGS_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SETTINGS, GtkSettingsClass))
+#define CTK_SETTINGS(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SETTINGS, CtkSettings))
+#define CTK_SETTINGS_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SETTINGS, CtkSettingsClass))
 #define CTK_IS_SETTINGS(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SETTINGS))
 #define CTK_IS_SETTINGS_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SETTINGS))
-#define CTK_SETTINGS_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SETTINGS, GtkSettingsClass))
+#define CTK_SETTINGS_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SETTINGS, CtkSettingsClass))
 
 
 /* --- typedefs --- */
-typedef struct _GtkSettingsPrivate GtkSettingsPrivate;
-typedef struct _GtkSettingsClass GtkSettingsClass;
-typedef struct _GtkSettingsValue GtkSettingsValue;
+typedef struct _CtkSettingsPrivate CtkSettingsPrivate;
+typedef struct _CtkSettingsClass CtkSettingsClass;
+typedef struct _CtkSettingsValue CtkSettingsValue;
 
 
 /* --- structures --- */
-struct _GtkSettings
+struct _CtkSettings
 {
   GObject parent_instance;
 
   /*< private >*/
-  GtkSettingsPrivate *priv;
+  CtkSettingsPrivate *priv;
 };
 
-struct _GtkSettingsClass
+struct _CtkSettingsClass
 {
   GObjectClass parent_class;
 
@@ -64,13 +64,13 @@ struct _GtkSettingsClass
 };
 
 /**
- * GtkSettingsValue:
+ * CtkSettingsValue:
  * @origin: Origin should be something like “filename:linenumber” for
  *    rc files, or e.g. “XProperty” for other sources.
  * @value: Valid types are LONG, DOUBLE and STRING corresponding to
  *    the token parsed, or a GSTRING holding an unparsed statement
  */
-struct _GtkSettingsValue
+struct _CtkSettingsValue
 {
   /* origin should be something like "filename:linenumber" for rc files,
    * or e.g. "XProperty" for other sources
@@ -88,15 +88,15 @@ struct _GtkSettingsValue
 GDK_AVAILABLE_IN_ALL
 GType           ctk_settings_get_type                (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkSettings*    ctk_settings_get_default             (void);
+CtkSettings*    ctk_settings_get_default             (void);
 GDK_AVAILABLE_IN_ALL
-GtkSettings*    ctk_settings_get_for_screen          (GdkScreen *screen);
+CtkSettings*    ctk_settings_get_for_screen          (GdkScreen *screen);
 
 GDK_DEPRECATED_IN_3_16
 void            ctk_settings_install_property        (GParamSpec         *pspec);
 GDK_DEPRECATED_IN_3_16
 void            ctk_settings_install_property_parser (GParamSpec         *pspec,
-                                                      GtkRcPropertyParser parser);
+                                                      CtkRcPropertyParser parser);
 
 /* --- precoded parsing functions --- */
 GDK_AVAILABLE_IN_ALL
@@ -121,27 +121,27 @@ gboolean ctk_rc_property_parse_border      (const GParamSpec *pspec,
                                             GValue           *property_value);
 
 GDK_DEPRECATED_IN_3_16
-void     ctk_settings_set_property_value   (GtkSettings            *settings,
+void     ctk_settings_set_property_value   (CtkSettings            *settings,
                                             const gchar            *name,
-                                            const GtkSettingsValue *svalue);
+                                            const CtkSettingsValue *svalue);
 GDK_DEPRECATED_IN_3_16
-void     ctk_settings_set_string_property  (GtkSettings            *settings,
+void     ctk_settings_set_string_property  (CtkSettings            *settings,
                                             const gchar            *name,
                                             const gchar            *v_string,
                                             const gchar            *origin);
 GDK_DEPRECATED_IN_3_16
-void     ctk_settings_set_long_property    (GtkSettings            *settings,
+void     ctk_settings_set_long_property    (CtkSettings            *settings,
                                             const gchar            *name,
                                             glong                   v_long,
                                             const gchar            *origin);
 GDK_DEPRECATED_IN_3_16
-void     ctk_settings_set_double_property  (GtkSettings            *settings,
+void     ctk_settings_set_double_property  (CtkSettings            *settings,
                                             const gchar            *name,
                                             gdouble                 v_double,
                                             const gchar            *origin);
 
 GDK_AVAILABLE_IN_3_20
-void     ctk_settings_reset_property       (GtkSettings            *settings,
+void     ctk_settings_reset_property       (CtkSettings            *settings,
                                             const gchar            *name);
 
 G_END_DECLS

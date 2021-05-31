@@ -1,13 +1,13 @@
 <interface>
-  <object id="window" class="GtkWindow">
+  <object id="window" class="CtkWindow">
     <property name="visible">True</property>
     <property name="title">Grid</property>
     <property name="border-width">10</property>
     <child>
-      <object id="grid" class="GtkGrid">
+      <object id="grid" class="CtkGrid">
         <property name="visible">True</property>
         <child>
-          <object id="button1" class="GtkButton">
+          <object id="button1" class="CtkButton">
             <property name="visible">True</property>
             <property name="label">Button 1</property>
           </object>
@@ -17,7 +17,7 @@
           </packing>
         </child>
         <child>
-          <object id="button2" class="GtkButton">
+          <object id="button2" class="CtkButton">
             <property name="visible">True</property>
             <property name="label">Button 2</property>
           </object>
@@ -27,7 +27,7 @@
           </packing>
         </child>
         <child>
-          <object id="quit" class="GtkButton">
+          <object id="quit" class="CtkButton">
             <property name="visible">True</property>
             <property name="label">Quit</property>
           </object>

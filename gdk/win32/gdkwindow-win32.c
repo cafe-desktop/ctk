@@ -1265,7 +1265,7 @@ show_window_internal (GdkWindow *window,
       !already_mapped &&
       (window->state & GDK_WINDOW_STATE_ICONIFIED))
     {
-      GtkShowWindow (window, SW_SHOWMINNOACTIVE);
+      CtkShowWindow (window, SW_SHOWMINNOACTIVE);
       return;
     }
 
@@ -1439,29 +1439,29 @@ show_window_internal (GdkWindow *window,
     }
   else if (window->state & GDK_WINDOW_STATE_MAXIMIZED)
     {
-      GtkShowWindow (window, SW_MAXIMIZE);
+      CtkShowWindow (window, SW_MAXIMIZE);
     }
   else if (window->state & GDK_WINDOW_STATE_ICONIFIED)
     {
       if (focus_on_map)
-        GtkShowWindow (window, SW_RESTORE);
+        CtkShowWindow (window, SW_RESTORE);
       else
-        GtkShowWindow (window, SW_SHOWNOACTIVATE);
+        CtkShowWindow (window, SW_SHOWNOACTIVATE);
     }
   else if (GDK_WINDOW_TYPE (window) == GDK_WINDOW_TEMP || !focus_on_map)
     {
       if (!IsWindowVisible (GDK_WINDOW_HWND (window)))
-        GtkShowWindow (window, SW_SHOWNOACTIVATE);
+        CtkShowWindow (window, SW_SHOWNOACTIVATE);
       else
-        GtkShowWindow (window, SW_SHOWNA);
+        CtkShowWindow (window, SW_SHOWNA);
     }
   else if (!IsWindowVisible (GDK_WINDOW_HWND (window)))
     {
-      GtkShowWindow (window, SW_SHOWNORMAL);
+      CtkShowWindow (window, SW_SHOWNORMAL);
     }
   else
     {
-      GtkShowWindow (window, SW_SHOW);
+      CtkShowWindow (window, SW_SHOW);
     }
 
   /* Sync STATE_ABOVE to TOPMOST */
@@ -1516,7 +1516,7 @@ gdk_win32_window_hide (GdkWindow *window)
     }
   else
     {
-      GtkShowWindow (window, SW_HIDE);
+      CtkShowWindow (window, SW_HIDE);
     }
 }
 
@@ -5204,7 +5204,7 @@ gdk_win32_window_iconify (GdkWindow *window)
   if (GDK_WINDOW_IS_MAPPED (window))
     {
       old_active_window = GetActiveWindow ();
-      GtkShowWindow (window, SW_MINIMIZE);
+      CtkShowWindow (window, SW_MINIMIZE);
       if (old_active_window != GDK_WINDOW_HWND (window))
 	SetActiveWindow (old_active_window);
     }
@@ -5276,7 +5276,7 @@ gdk_win32_window_maximize (GdkWindow *window)
 			   _gdk_win32_window_state_to_string (window->state)));
 
   if (GDK_WINDOW_IS_MAPPED (window))
-    GtkShowWindow (window, SW_MAXIMIZE);
+    CtkShowWindow (window, SW_MAXIMIZE);
   else
     gdk_synthesize_window_state (window,
 				 0,
@@ -5298,7 +5298,7 @@ gdk_win32_window_unmaximize (GdkWindow *window)
   _gdk_win32_window_invalidate_egl_framebuffer (window);
 
   if (GDK_WINDOW_IS_MAPPED (window))
-    GtkShowWindow (window, SW_RESTORE);
+    CtkShowWindow (window, SW_RESTORE);
   else
     gdk_synthesize_window_state (window,
 				 GDK_WINDOW_STATE_MAXIMIZED,
@@ -5470,13 +5470,13 @@ gdk_win32_window_focus (GdkWindow *window,
 			   _gdk_win32_window_state_to_string (window->state)));
 
   if (window->state & GDK_WINDOW_STATE_MAXIMIZED)
-    GtkShowWindow (window, SW_SHOWMAXIMIZED);
+    CtkShowWindow (window, SW_SHOWMAXIMIZED);
   else if (window->state & GDK_WINDOW_STATE_ICONIFIED)
-    GtkShowWindow (window, SW_RESTORE);
+    CtkShowWindow (window, SW_RESTORE);
   else if (!IsWindowVisible (GDK_WINDOW_HWND (window)))
-    GtkShowWindow (window, SW_SHOWNORMAL);
+    CtkShowWindow (window, SW_SHOWNORMAL);
   else
-    GtkShowWindow (window, SW_SHOW);
+    CtkShowWindow (window, SW_SHOW);
 
   SetFocus (GDK_WINDOW_HWND (window));
 }
@@ -6026,7 +6026,7 @@ gdk_win32_ref_cairo_surface (GdkWindow *window)
 }
 
 BOOL WINAPI
-GtkShowWindow (GdkWindow *window,
+CtkShowWindow (GdkWindow *window,
                int        cmd_show)
 {
   cairo_t *cr;

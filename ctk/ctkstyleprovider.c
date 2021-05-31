@@ -25,11 +25,11 @@
 
 /**
  * SECTION:ctkstyleprovider
- * @Short_description: Interface to provide style information to GtkStyleContext
- * @Title: GtkStyleProvider
- * @See_also: #GtkStyleContext, #GtkCssProvider
+ * @Short_description: Interface to provide style information to CtkStyleContext
+ * @Title: CtkStyleProvider
+ * @See_also: #CtkStyleContext, #CtkCssProvider
  *
- * GtkStyleProvider is an interface used to provide style information to a #GtkStyleContext.
+ * CtkStyleProvider is an interface used to provide style information to a #CtkStyleContext.
  * See ctk_style_context_add_provider() and ctk_style_context_add_provider_for_screen().
  */
 
@@ -42,8 +42,8 @@ ctk_style_provider_get_type (void)
 
   if (!style_provider_type)
     style_provider_type = g_type_register_static_simple (G_TYPE_INTERFACE,
-                                                         I_("GtkStyleProvider"),
-                                                         sizeof (GtkStyleProviderIface),
+                                                         I_("CtkStyleProvider"),
+                                                         sizeof (CtkStyleProviderIface),
                                                          (GClassInitFunc) ctk_style_provider_iface_init,
                                                          0, NULL, 0);
   return style_provider_type;
@@ -56,13 +56,13 @@ ctk_style_provider_iface_init (gpointer g_iface)
 
 /**
  * ctk_style_provider_get_style:
- * @provider: a #GtkStyleProvider
- * @path: #GtkWidgetPath to query
+ * @provider: a #CtkStyleProvider
+ * @path: #CtkWidgetPath to query
  *
  * Returns the style settings affecting a widget defined by @path, or %NULL if
  * @provider doesn’t contemplate styling @path.
  *
- * Returns: (nullable) (transfer full): a #GtkStyleProperties containing the
+ * Returns: (nullable) (transfer full): a #CtkStyleProperties containing the
  * style settings affecting @path
  *
  * Since: 3.0
@@ -70,11 +70,11 @@ ctk_style_provider_iface_init (gpointer g_iface)
  * Deprecated: 3.8: Will always return %NULL for all GTK-provided style providers
  *     as the interface cannot correctly work the way CSS is specified.
  **/
-GtkStyleProperties *
-ctk_style_provider_get_style (GtkStyleProvider *provider,
-                              GtkWidgetPath    *path)
+CtkStyleProperties *
+ctk_style_provider_get_style (CtkStyleProvider *provider,
+                              CtkWidgetPath    *path)
 {
-  GtkStyleProviderIface *iface;
+  CtkStyleProviderIface *iface;
 
   g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), NULL);
 
@@ -88,8 +88,8 @@ ctk_style_provider_get_style (GtkStyleProvider *provider,
 
 /**
  * ctk_style_provider_get_style_property:
- * @provider: a #GtkStyleProvider
- * @path: #GtkWidgetPath to query
+ * @provider: a #CtkStyleProvider
+ * @path: #CtkWidgetPath to query
  * @state: state to query the style property for
  * @pspec: The #GParamSpec to query
  * @value: (out): return location for the property value
@@ -102,13 +102,13 @@ ctk_style_provider_get_style (GtkStyleProvider *provider,
  * Since: 3.0
  **/
 gboolean
-ctk_style_provider_get_style_property (GtkStyleProvider *provider,
-                                       GtkWidgetPath    *path,
-                                       GtkStateFlags     state,
+ctk_style_provider_get_style_property (CtkStyleProvider *provider,
+                                       CtkWidgetPath    *path,
+                                       CtkStateFlags     state,
                                        GParamSpec       *pspec,
                                        GValue           *value)
 {
-  GtkStyleProviderIface *iface;
+  CtkStyleProviderIface *iface;
 
   g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), FALSE);
   g_return_val_if_fail (G_IS_PARAM_SPEC (pspec), FALSE);
@@ -126,10 +126,10 @@ ctk_style_provider_get_style_property (GtkStyleProvider *provider,
 
 /**
  * ctk_style_provider_get_icon_factory:
- * @provider: a #GtkStyleProvider
- * @path: #GtkWidgetPath to query
+ * @provider: a #CtkStyleProvider
+ * @path: #CtkWidgetPath to query
  *
- * Returns the #GtkIconFactory defined to be in use for @path, or %NULL if none
+ * Returns the #CtkIconFactory defined to be in use for @path, or %NULL if none
  * is defined.
  *
  * Returns: (nullable) (transfer none): The icon factory to use for @path, or %NULL
@@ -138,11 +138,11 @@ ctk_style_provider_get_style_property (GtkStyleProvider *provider,
  *
  * Deprecated: 3.8: Will always return %NULL for all GTK-provided style providers.
  **/
-GtkIconFactory *
-ctk_style_provider_get_icon_factory (GtkStyleProvider *provider,
-				     GtkWidgetPath    *path)
+CtkIconFactory *
+ctk_style_provider_get_icon_factory (CtkStyleProvider *provider,
+				     CtkWidgetPath    *path)
 {
-  GtkStyleProviderIface *iface;
+  CtkStyleProviderIface *iface;
 
   g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), NULL);
   g_return_val_if_fail (path != NULL, NULL);

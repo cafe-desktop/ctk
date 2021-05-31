@@ -244,11 +244,11 @@ static TreeEntry main_entries[] =
 
 
 static void
-populate_model (GtkTreeStore *model,
-		GtkTreeIter  *parent,
+populate_model (CtkTreeStore *model,
+		CtkTreeIter  *parent,
 		TreeEntry    *entries)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gint        i;
 
   for (i = 0; entries[i].info != NULL; i++)
@@ -268,10 +268,10 @@ populate_model (GtkTreeStore *model,
     }
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_model (void)
 {
-  GtkTreeStore *model;
+  CtkTreeStore *model;
   gint          i;
 
   model = ctk_tree_store_new (NUM_COLUMNS,
@@ -291,13 +291,13 @@ create_model (void)
 gint
 main (gint argc, gchar **argv)
 {
-  GtkWidget *window;
-  GtkWidget *scrolled_window;
-  GtkWidget *tree_view;
-  GtkTreeModel *tree_model;
-  GtkCellRenderer *renderer;
-  GtkTreeViewColumn *column;
-  GtkCellArea *area;
+  CtkWidget *window;
+  CtkWidget *scrolled_window;
+  CtkWidget *tree_view;
+  CtkTreeModel *tree_model;
+  CtkCellRenderer *renderer;
+  CtkTreeViewColumn *column;
+  CtkCellArea *area;
   
   ctk_init (&argc, &argv);
 
@@ -305,7 +305,7 @@ main (gint argc, gchar **argv)
     ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (CTK_WINDOW (window), "Vertical cells in GtkTreeViewColumn example");
+  ctk_window_set_title (CTK_WINDOW (window), "Vertical cells in CtkTreeViewColumn example");
   g_signal_connect (window, "destroy", ctk_main_quit, NULL);
 
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);

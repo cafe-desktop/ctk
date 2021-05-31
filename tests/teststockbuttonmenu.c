@@ -4,16 +4,16 @@
 
 int main (int argc, char **argv)
 {
-	GtkWidget *window;
-	GtkWidget *grid;
-	GtkWidget *button;
-	GtkWidget *menu;
-	GtkWidget *item;
-	GtkWidget *box;
-	GtkWidget *label;
-	GtkAction *action1;
-	GtkAction *action2;
-        GtkAccelGroup *accel_group;
+	CtkWidget *window;
+	CtkWidget *grid;
+	CtkWidget *button;
+	CtkWidget *menu;
+	CtkWidget *item;
+	CtkWidget *box;
+	CtkWidget *label;
+	CtkAction *action1;
+	CtkAction *action2;
+        CtkAccelGroup *accel_group;
 
 	ctk_init (&argc, &argv);
 
@@ -47,7 +47,7 @@ int main (int argc, char **argv)
         button = ctk_button_new_from_icon_name ("edit-clear", CTK_ICON_SIZE_BUTTON);
         ctk_container_add (CTK_CONTAINER (grid), button);
 
-	/* GtkAction-backed button */
+	/* CtkAction-backed button */
 	button = ctk_button_new ();
 	ctk_button_set_use_stock (CTK_BUTTON (button), TRUE);
         ctk_activatable_set_related_action (CTK_ACTIVATABLE (button), action1);
@@ -93,7 +93,7 @@ int main (int argc, char **argv)
 	ctk_box_pack_end (CTK_BOX (box), label, TRUE, TRUE, 0);
 	ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 
-	/* GtkAction-backed menuitem */
+	/* CtkAction-backed menuitem */
 	item = ctk_image_menu_item_new ();
 	ctk_activatable_set_related_action (CTK_ACTIVATABLE (item), action1);
 	ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);

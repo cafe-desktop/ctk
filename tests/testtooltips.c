@@ -24,11 +24,11 @@
 #include <ctk/ctk.h>
 
 static gboolean
-query_tooltip_cb (GtkWidget  *widget,
+query_tooltip_cb (CtkWidget  *widget,
 		  gint        x,
 		  gint        y,
 		  gboolean    keyboard_tip,
-		  GtkTooltip *tooltip,
+		  CtkTooltip *tooltip,
 		  gpointer    data)
 {
   ctk_tooltip_set_markup (tooltip, ctk_button_get_label (CTK_BUTTON (widget)));
@@ -39,7 +39,7 @@ query_tooltip_cb (GtkWidget  *widget,
 }
 
 static gboolean
-draw_tooltip (GtkWidget *widget,
+draw_tooltip (CtkWidget *widget,
               cairo_t   *cr,
               gpointer   unused)
 {
@@ -50,14 +50,14 @@ draw_tooltip (GtkWidget *widget,
 }
 
 static gboolean
-query_tooltip_custom_cb (GtkWidget  *widget,
+query_tooltip_custom_cb (CtkWidget  *widget,
 			 gint        x,
 			 gint        y,
 			 gboolean    keyboard_tip,
-			 GtkTooltip *tooltip,
+			 CtkTooltip *tooltip,
 			 gpointer    data)
 {
-  GtkWindow *window = ctk_widget_get_tooltip_window (widget);
+  CtkWindow *window = ctk_widget_get_tooltip_window (widget);
 
   ctk_widget_set_app_paintable (CTK_WIDGET (window), TRUE);
   g_signal_connect (window, "draw", G_CALLBACK (draw_tooltip), NULL);
@@ -66,17 +66,17 @@ query_tooltip_custom_cb (GtkWidget  *widget,
 }
 
 static gboolean
-query_tooltip_text_view_cb (GtkWidget  *widget,
+query_tooltip_text_view_cb (CtkWidget  *widget,
 			    gint        x,
 			    gint        y,
 			    gboolean    keyboard_tip,
-			    GtkTooltip *tooltip,
+			    CtkTooltip *tooltip,
 			    gpointer    data)
 {
-  GtkTextTag *tag = data;
-  GtkTextIter iter;
-  GtkTextView *text_view = CTK_TEXT_VIEW (widget);
-  GtkTextBuffer *buffer = ctk_text_view_get_buffer (text_view);
+  CtkTextTag *tag = data;
+  CtkTextIter iter;
+  CtkTextView *text_view = CTK_TEXT_VIEW (widget);
+  CtkTextBuffer *buffer = ctk_text_view_get_buffer (text_view);
 
   if (keyboard_tip)
     {
@@ -103,17 +103,17 @@ query_tooltip_text_view_cb (GtkWidget  *widget,
 }
 
 static gboolean
-query_tooltip_tree_view_cb (GtkWidget  *widget,
+query_tooltip_tree_view_cb (CtkWidget  *widget,
 			    gint        x,
 			    gint        y,
 			    gboolean    keyboard_tip,
-			    GtkTooltip *tooltip,
+			    CtkTooltip *tooltip,
 			    gpointer    data)
 {
-  GtkTreeIter iter;
-  GtkTreeView *tree_view = CTK_TREE_VIEW (widget);
-  GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
-  GtkTreePath *path = NULL;
+  CtkTreeIter iter;
+  CtkTreeView *tree_view = CTK_TREE_VIEW (widget);
+  CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+  CtkTreePath *path = NULL;
   gchar *tmp;
   gchar *pathstring;
 
@@ -139,11 +139,11 @@ query_tooltip_tree_view_cb (GtkWidget  *widget,
   return TRUE;
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_model (void)
 {
-  GtkTreeStore *store;
-  GtkTreeIter iter;
+  CtkTreeStore *store;
+  CtkTreeIter iter;
 
   store = ctk_tree_store_new (1, G_TYPE_STRING);
 
@@ -165,8 +165,8 @@ create_model (void)
 }
 
 static void
-selection_changed_cb (GtkTreeSelection *selection,
-		      GtkWidget        *tree_view)
+selection_changed_cb (CtkTreeSelection *selection,
+		      CtkWidget        *tree_view)
 {
   ctk_widget_trigger_tooltip_query (tree_view);
 }
@@ -188,11 +188,11 @@ rectangles[] =
 };
 
 static gboolean
-query_tooltip_drawing_area_cb (GtkWidget  *widget,
+query_tooltip_drawing_area_cb (CtkWidget  *widget,
 			       gint        x,
 			       gint        y,
 			       gboolean    keyboard_tip,
-			       GtkTooltip *tooltip,
+			       CtkTooltip *tooltip,
 			       gpointer    data)
 {
   gint i;
@@ -216,7 +216,7 @@ query_tooltip_drawing_area_cb (GtkWidget  *widget,
 }
 
 static gboolean
-drawing_area_draw (GtkWidget *drawing_area,
+drawing_area_draw (CtkWidget *drawing_area,
 		   cairo_t   *cr,
 		   gpointer   data)
 {
@@ -242,14 +242,14 @@ drawing_area_draw (GtkWidget *drawing_area,
 }
 
 static gboolean
-query_tooltip_label_cb (GtkWidget  *widget,
+query_tooltip_label_cb (CtkWidget  *widget,
 			gint        x,
 			gint        y,
 			gboolean    keyboard_tip,
-			GtkTooltip *tooltip,
+			CtkTooltip *tooltip,
 			gpointer    data)
 {
-  GtkWidget *custom = data;
+  CtkWidget *custom = data;
 
   ctk_tooltip_set_custom (tooltip, custom);
 
@@ -259,22 +259,22 @@ query_tooltip_label_cb (GtkWidget  *widget,
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *drawing_area;
-  GtkWidget *button;
-  GtkWidget *label;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *drawing_area;
+  CtkWidget *button;
+  CtkWidget *label;
 
-  GtkWidget *tooltip_window;
-  GtkWidget *tooltip_button;
+  CtkWidget *tooltip_window;
+  CtkWidget *tooltip_button;
 
-  GtkWidget *tree_view;
-  GtkTreeViewColumn *column;
+  CtkWidget *tree_view;
+  CtkTreeViewColumn *column;
 
-  GtkWidget *text_view;
-  GtkTextBuffer *buffer;
-  GtkTextIter iter;
-  GtkTextTag *tag;
+  CtkWidget *text_view;
+  CtkTextBuffer *buffer;
+  CtkTextIter iter;
+  CtkTextTag *tag;
 
   gchar *text, *markup;
 

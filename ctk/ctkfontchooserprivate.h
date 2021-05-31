@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-void            _ctk_font_chooser_font_activated        (GtkFontChooser *chooser,
+void            _ctk_font_chooser_font_activated        (CtkFontChooser *chooser,
                                                          const gchar    *fontname);
 
 G_END_DECLS

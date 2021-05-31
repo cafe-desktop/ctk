@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkButton" id="opaque">
+          <object class="CtkButton" id="opaque">
             <property name="label" translatable="yes">opaque</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -23,7 +23,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="transparent">
+          <object class="CtkButton" id="transparent">
             <property name="label" translatable="yes">transparent</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

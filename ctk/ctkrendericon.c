@@ -30,17 +30,17 @@
 #include <math.h>
 
 void
-ctk_css_style_render_icon (GtkCssStyle            *style,
+ctk_css_style_render_icon (CtkCssStyle            *style,
                            cairo_t                *cr,
                            double                  x,
                            double                  y,
                            double                  width,
                            double                  height,
-                           GtkCssImageBuiltinType  builtin_type)
+                           CtkCssImageBuiltinType  builtin_type)
 {
-  const GtkCssValue *shadows;
+  const CtkCssValue *shadows;
   cairo_matrix_t matrix, transform_matrix, saved_matrix;
-  GtkCssImage *image;
+  CtkCssImage *image;
 
   g_return_if_fail (CTK_IS_CSS_STYLE (style));
   g_return_if_fail (cr != NULL);
@@ -96,13 +96,13 @@ get_surface_extents (cairo_surface_t *surface,
 }
 
 void
-ctk_css_style_render_icon_surface (GtkCssStyle            *style,
+ctk_css_style_render_icon_surface (CtkCssStyle            *style,
                                    cairo_t                *cr,
                                    cairo_surface_t        *surface,
                                    double                  x,
                                    double                  y)
 {
-  const GtkCssValue *shadows;
+  const CtkCssValue *shadows;
   cairo_matrix_t matrix, transform_matrix, saved_matrix;
   GdkRectangle extents;
 
@@ -183,7 +183,7 @@ ctk_cairo_rectangle_transform (cairo_rectangle_int_t       *dest,
 }
 
 void
-ctk_css_style_render_icon_get_extents (GtkCssStyle  *style,
+ctk_css_style_render_icon_get_extents (CtkCssStyle  *style,
                                        GdkRectangle *extents,
                                        gint          x,
                                        gint          y,
@@ -191,7 +191,7 @@ ctk_css_style_render_icon_get_extents (GtkCssStyle  *style,
                                        gint          height)
 {
   cairo_matrix_t transform_matrix, matrix;
-  GtkBorder border;
+  CtkBorder border;
   GdkRectangle rect;
 
   g_return_if_fail (CTK_IS_CSS_STYLE (style));

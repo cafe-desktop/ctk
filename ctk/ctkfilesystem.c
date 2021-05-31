@@ -41,7 +41,7 @@
 
 #define FILES_PER_QUERY 100
 
-/* The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+/* The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
  * really pointers to GDrive, GVolume or GMount objects.  We need an extra
  * token for the fake “File System” volume.  So, we’ll return a pointer to
  * this particular string.
@@ -74,7 +74,7 @@ static guint fs_signals [FS_LAST_SIGNAL] = { 0, };
 
 typedef struct AsyncFuncData AsyncFuncData;
 
-struct GtkFileSystemPrivate
+struct CtkFileSystemPrivate
 {
   GVolumeMonitor *volume_monitor;
 
@@ -86,7 +86,7 @@ struct GtkFileSystemPrivate
 
 struct AsyncFuncData
 {
-  GtkFileSystem *file_system;
+  CtkFileSystem *file_system;
   GFile *file;
   GCancellable *cancellable;
 
@@ -94,16 +94,16 @@ struct AsyncFuncData
   gpointer data;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkFileSystem, _ctk_file_system, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkFileSystem, _ctk_file_system, G_TYPE_OBJECT)
 
 
-/* GtkFileSystem methods */
+/* CtkFileSystem methods */
 static void
 volumes_changed (GVolumeMonitor *volume_monitor,
 		 gpointer        volume,
 		 gpointer        user_data)
 {
-  GtkFileSystem *file_system;
+  CtkFileSystem *file_system;
 
   gdk_threads_enter ();
 
@@ -115,8 +115,8 @@ volumes_changed (GVolumeMonitor *volume_monitor,
 static void
 ctk_file_system_dispose (GObject *object)
 {
-  GtkFileSystem *file_system = CTK_FILE_SYSTEM (object);
-  GtkFileSystemPrivate *priv = file_system->priv;
+  CtkFileSystem *file_system = CTK_FILE_SYSTEM (object);
+  CtkFileSystemPrivate *priv = file_system->priv;
 
   DEBUG ("dispose");
 
@@ -137,7 +137,7 @@ ctk_file_system_dispose (GObject *object)
 }
 
 static void
-_ctk_file_system_class_init (GtkFileSystemClass *class)
+_ctk_file_system_class_init (CtkFileSystemClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
@@ -147,7 +147,7 @@ _ctk_file_system_class_init (GtkFileSystemClass *class)
     g_signal_new (I_("volumes-changed"),
 		  G_TYPE_FROM_CLASS (object_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkFileSystemClass, volumes_changed),
+		  G_STRUCT_OFFSET (CtkFileSystemClass, volumes_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
@@ -187,9 +187,9 @@ mount_referenced_by_volume_activation_root (GList *volumes, GMount *mount)
 }
 
 static void
-get_volumes_list (GtkFileSystem *file_system)
+get_volumes_list (CtkFileSystem *file_system)
 {
-  GtkFileSystemPrivate *priv = file_system->priv;
+  CtkFileSystemPrivate *priv = file_system->priv;
   GList *l, *ll;
   GList *drives;
   GList *volumes;
@@ -327,9 +327,9 @@ get_volumes_list (GtkFileSystem *file_system)
 }
 
 static void
-_ctk_file_system_init (GtkFileSystem *file_system)
+_ctk_file_system_init (CtkFileSystem *file_system)
 {
-  GtkFileSystemPrivate *priv;
+  CtkFileSystemPrivate *priv;
 
   DEBUG ("init");
 
@@ -358,17 +358,17 @@ _ctk_file_system_init (GtkFileSystem *file_system)
 		    G_CALLBACK (volumes_changed), file_system);
 }
 
-/* GtkFileSystem public methods */
-GtkFileSystem *
+/* CtkFileSystem public methods */
+CtkFileSystem *
 _ctk_file_system_new (void)
 {
   return g_object_new (CTK_TYPE_FILE_SYSTEM, NULL);
 }
 
 GSList *
-_ctk_file_system_list_volumes (GtkFileSystem *file_system)
+_ctk_file_system_list_volumes (CtkFileSystem *file_system)
 {
-  GtkFileSystemPrivate *priv = file_system->priv;
+  CtkFileSystemPrivate *priv = file_system->priv;
   GSList *list;
 
   DEBUG ("list_volumes");
@@ -414,7 +414,7 @@ query_info_callback (GObject      *source_object,
   if (async_data->callback)
     {
       gdk_threads_enter ();
-      ((GtkFileSystemGetInfoCallback) async_data->callback) (async_data->cancellable,
+      ((CtkFileSystemGetInfoCallback) async_data->callback) (async_data->cancellable,
 							     file_info, error, async_data->data);
       gdk_threads_leave ();
     }
@@ -429,10 +429,10 @@ query_info_callback (GObject      *source_object,
 }
 
 GCancellable *
-_ctk_file_system_get_info (GtkFileSystem                *file_system,
+_ctk_file_system_get_info (CtkFileSystem                *file_system,
 			   GFile                        *file,
 			   const gchar                  *attributes,
-			   GtkFileSystemGetInfoCallback  callback,
+			   CtkFileSystemGetInfoCallback  callback,
 			   gpointer                      data)
 {
   GCancellable *cancellable;
@@ -474,8 +474,8 @@ drive_poll_for_media_cb (GObject      *source_object,
   async_data = (AsyncFuncData *) user_data;
 
   gdk_threads_enter ();
-  ((GtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable,
-							     (GtkFileSystemVolume *) source_object,
+  ((CtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable,
+							     (CtkFileSystemVolume *) source_object,
 							     error, async_data->data);
   gdk_threads_leave ();
 
@@ -495,8 +495,8 @@ volume_mount_cb (GObject      *source_object,
   async_data = (AsyncFuncData *) user_data;
 
   gdk_threads_enter ();
-  ((GtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable,
-							     (GtkFileSystemVolume *) source_object,
+  ((CtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable,
+							     (CtkFileSystemVolume *) source_object,
 							     error, async_data->data);
   gdk_threads_leave ();
 
@@ -505,10 +505,10 @@ volume_mount_cb (GObject      *source_object,
 }
 
 GCancellable *
-_ctk_file_system_mount_volume (GtkFileSystem                    *file_system,
-			       GtkFileSystemVolume              *volume,
+_ctk_file_system_mount_volume (CtkFileSystem                    *file_system,
+			       CtkFileSystemVolume              *volume,
 			       GMountOperation                  *mount_operation,
-			       GtkFileSystemVolumeMountCallback  callback,
+			       CtkFileSystemVolumeMountCallback  callback,
 			       gpointer                          data)
 {
   GCancellable *cancellable;
@@ -552,7 +552,7 @@ enclosing_volume_mount_cb (GObject      *source_object,
 			   GAsyncResult *result,
 			   gpointer      user_data)
 {
-  GtkFileSystemVolume *volume;
+  CtkFileSystemVolume *volume;
   AsyncFuncData *async_data;
   GError *error = NULL;
 
@@ -566,7 +566,7 @@ enclosing_volume_mount_cb (GObject      *source_object,
     g_clear_error (&error);
 
   gdk_threads_enter ();
-  ((GtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable, volume,
+  ((CtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable, volume,
 							     error, async_data->data);
   gdk_threads_leave ();
 
@@ -577,10 +577,10 @@ enclosing_volume_mount_cb (GObject      *source_object,
 }
 
 GCancellable *
-_ctk_file_system_mount_enclosing_volume (GtkFileSystem                     *file_system,
+_ctk_file_system_mount_enclosing_volume (CtkFileSystem                     *file_system,
 					 GFile                             *file,
 					 GMountOperation                   *mount_operation,
-					 GtkFileSystemVolumeMountCallback   callback,
+					 CtkFileSystemVolumeMountCallback   callback,
 					 gpointer                           data)
 {
   GCancellable *cancellable;
@@ -610,8 +610,8 @@ _ctk_file_system_mount_enclosing_volume (GtkFileSystem                     *file
   return cancellable;
 }
 
-GtkFileSystemVolume *
-_ctk_file_system_get_volume_for_file (GtkFileSystem *file_system,
+CtkFileSystemVolume *
+_ctk_file_system_get_volume_for_file (CtkFileSystem *file_system,
 				      GFile         *file)
 {
   GMount *mount;
@@ -621,14 +621,14 @@ _ctk_file_system_get_volume_for_file (GtkFileSystem *file_system,
   mount = g_file_find_enclosing_mount (file, NULL, NULL);
 
   if (!mount && g_file_is_native (file))
-    return (GtkFileSystemVolume *) root_volume_token;
+    return (CtkFileSystemVolume *) root_volume_token;
 
-  return (GtkFileSystemVolume *) mount;
+  return (CtkFileSystemVolume *) mount;
 }
 
-/* GtkFileSystemVolume public methods */
+/* CtkFileSystemVolume public methods */
 gchar *
-_ctk_file_system_volume_get_display_name (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_get_display_name (CtkFileSystemVolume *volume)
 {
   DEBUG ("volume_get_display_name");
 
@@ -645,7 +645,7 @@ _ctk_file_system_volume_get_display_name (GtkFileSystemVolume *volume)
 }
 
 gboolean
-_ctk_file_system_volume_is_mounted (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_is_mounted (CtkFileSystemVolume *volume)
 {
   gboolean mounted;
 
@@ -675,7 +675,7 @@ _ctk_file_system_volume_is_mounted (GtkFileSystemVolume *volume)
 }
 
 GFile *
-_ctk_file_system_volume_get_root (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_get_root (CtkFileSystemVolume *volume)
 {
   GFile *file = NULL;
 
@@ -704,13 +704,13 @@ _ctk_file_system_volume_get_root (GtkFileSystemVolume *volume)
 
 static cairo_surface_t *
 get_surface_from_gicon (GIcon      *icon,
-			GtkWidget  *widget,
+			CtkWidget  *widget,
 			gint        icon_size,
 			GError    **error)
 {
-  GtkStyleContext *context;
-  GtkIconTheme *icon_theme;
-  GtkIconInfo *icon_info;
+  CtkStyleContext *context;
+  CtkIconTheme *icon_theme;
+  CtkIconInfo *icon_info;
   GdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
@@ -746,8 +746,8 @@ get_surface_from_gicon (GIcon      *icon,
 }
 
 cairo_surface_t *
-_ctk_file_system_volume_render_icon (GtkFileSystemVolume  *volume,
-				     GtkWidget            *widget,
+_ctk_file_system_volume_render_icon (CtkFileSystemVolume  *volume,
+				     CtkWidget            *widget,
 				     gint                  icon_size,
 				     GError              **error)
 {
@@ -774,7 +774,7 @@ _ctk_file_system_volume_render_icon (GtkFileSystemVolume  *volume,
 }
 
 GIcon *
-_ctk_file_system_volume_get_symbolic_icon (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_get_symbolic_icon (CtkFileSystemVolume *volume)
 {
   if (IS_ROOT_VOLUME (volume))
     return g_themed_icon_new ("drive-harddisk-symbolic");
@@ -788,8 +788,8 @@ _ctk_file_system_volume_get_symbolic_icon (GtkFileSystemVolume *volume)
     return NULL;
 }
 
-GtkFileSystemVolume *
-_ctk_file_system_volume_ref (GtkFileSystemVolume *volume)
+CtkFileSystemVolume *
+_ctk_file_system_volume_ref (CtkFileSystemVolume *volume)
 {
   if (IS_ROOT_VOLUME (volume))
     return volume;
@@ -803,7 +803,7 @@ _ctk_file_system_volume_ref (GtkFileSystemVolume *volume)
 }
 
 void
-_ctk_file_system_volume_unref (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_unref (CtkFileSystemVolume *volume)
 {
   /* Root volume doesn't need to be freed */
   if (IS_ROOT_VOLUME (volume))
@@ -818,7 +818,7 @@ _ctk_file_system_volume_unref (GtkFileSystemVolume *volume)
 /* GFileInfo helper functions */
 static cairo_surface_t *
 _ctk_file_info_render_icon_internal (GFileInfo *info,
-			             GtkWidget *widget,
+			             CtkWidget *widget,
 			             gint       icon_size,
                                      gboolean   symbolic)
 {
@@ -872,7 +872,7 @@ _ctk_file_info_render_icon_internal (GFileInfo *info,
 
 cairo_surface_t *
 _ctk_file_info_render_icon (GFileInfo *info,
-			    GtkWidget *widget,
+			    CtkWidget *widget,
 			    gint       icon_size)
 {
   return _ctk_file_info_render_icon_internal (info, widget, icon_size, FALSE);

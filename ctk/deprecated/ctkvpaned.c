@@ -33,25 +33,25 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkvpaned
  * @Short_description: A container with two panes arranged vertically
- * @Title: GtkVPaned
+ * @Title: CtkVPaned
  *
  * The VPaned widget is a container widget with two
  * children arranged vertically. The division between
  * the two panes is adjustable by the user by dragging
- * a handle. See #GtkPaned for details.
+ * a handle. See #CtkPaned for details.
  *
- * GtkVPaned has been deprecated, use #GtkPaned instead.
+ * CtkVPaned has been deprecated, use #CtkPaned instead.
  */
 
-G_DEFINE_TYPE (GtkVPaned, ctk_vpaned, CTK_TYPE_PANED)
+G_DEFINE_TYPE (CtkVPaned, ctk_vpaned, CTK_TYPE_PANED)
 
 static void
-ctk_vpaned_class_init (GtkVPanedClass *class)
+ctk_vpaned_class_init (CtkVPanedClass *class)
 {
 }
 
 static void
-ctk_vpaned_init (GtkVPaned *vpaned)
+ctk_vpaned_init (CtkVPaned *vpaned)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (vpaned),
                                   CTK_ORIENTATION_VERTICAL);
@@ -60,13 +60,13 @@ ctk_vpaned_init (GtkVPaned *vpaned)
 /**
  * ctk_vpaned_new:
  *
- * Create a new #GtkVPaned
+ * Create a new #CtkVPaned
  *
- * Returns: the new #GtkVPaned
+ * Returns: the new #CtkVPaned
  *
  * Deprecated: 3.2: Use ctk_paned_new() with %CTK_ORIENTATION_VERTICAL instead
  */
-GtkWidget *
+CtkWidget *
 ctk_vpaned_new (void)
 {
   return g_object_new (CTK_TYPE_VPANED, NULL);

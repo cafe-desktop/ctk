@@ -33,7 +33,7 @@ enum {
   PROP_SUBPROPERTIES,
 };
 
-G_DEFINE_TYPE (GtkCssShorthandProperty, _ctk_css_shorthand_property, CTK_TYPE_STYLE_PROPERTY)
+G_DEFINE_TYPE (CtkCssShorthandProperty, _ctk_css_shorthand_property, CTK_TYPE_STYLE_PROPERTY)
 
 static void
 ctk_css_shorthand_property_set_property (GObject      *object,
@@ -41,7 +41,7 @@ ctk_css_shorthand_property_set_property (GObject      *object,
                                          const GValue *value,
                                          GParamSpec   *pspec)
 {
-  GtkCssShorthandProperty *property = CTK_CSS_SHORTHAND_PROPERTY (object);
+  CtkCssShorthandProperty *property = CTK_CSS_SHORTHAND_PROPERTY (object);
   const char **subproperties;
   guint i;
 
@@ -52,7 +52,7 @@ ctk_css_shorthand_property_set_property (GObject      *object,
       g_assert (subproperties);
       for (i = 0; subproperties[i] != NULL; i++)
         {
-          GtkStyleProperty *subproperty = _ctk_style_property_lookup (subproperties[i]);
+          CtkStyleProperty *subproperty = _ctk_style_property_lookup (subproperties[i]);
           g_assert (CTK_IS_CSS_STYLE_PROPERTY (subproperty));
           g_ptr_array_add (property->subproperties, subproperty);
         }
@@ -64,37 +64,37 @@ ctk_css_shorthand_property_set_property (GObject      *object,
 }
 
 static void
-_ctk_css_shorthand_property_assign (GtkStyleProperty   *property,
-                                    GtkStyleProperties *props,
-                                    GtkStateFlags       state,
+_ctk_css_shorthand_property_assign (CtkStyleProperty   *property,
+                                    CtkStyleProperties *props,
+                                    CtkStateFlags       state,
                                     const GValue       *value)
 {
-  GtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
+  CtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
 
   shorthand->assign (shorthand, props, state, value);
 }
 
 static void
-_ctk_css_shorthand_property_query (GtkStyleProperty   *property,
+_ctk_css_shorthand_property_query (CtkStyleProperty   *property,
                                    GValue             *value,
-                                   GtkStyleQueryFunc   query_func,
+                                   CtkStyleQueryFunc   query_func,
                                    gpointer            query_data)
 {
-  GtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
+  CtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
 
   shorthand->query (shorthand, value, query_func, query_data);
 }
 
-static GtkCssValue *
-ctk_css_shorthand_property_parse_value (GtkStyleProperty *property,
-                                        GtkCssParser     *parser)
+static CtkCssValue *
+ctk_css_shorthand_property_parse_value (CtkStyleProperty *property,
+                                        CtkCssParser     *parser)
 {
-  GtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
-  GtkCssValue **data;
-  GtkCssValue *result;
+  CtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
+  CtkCssValue **data;
+  CtkCssValue *result;
   guint i;
 
-  data = g_new0 (GtkCssValue *, shorthand->subproperties->len);
+  data = g_new0 (CtkCssValue *, shorthand->subproperties->len);
 
   if (_ctk_css_parser_try (parser, "initial", TRUE))
     {
@@ -157,10 +157,10 @@ ctk_css_shorthand_property_parse_value (GtkStyleProperty *property,
 }
 
 static void
-_ctk_css_shorthand_property_class_init (GtkCssShorthandPropertyClass *klass)
+_ctk_css_shorthand_property_class_init (CtkCssShorthandPropertyClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkStylePropertyClass *property_class = CTK_STYLE_PROPERTY_CLASS (klass);
+  CtkStylePropertyClass *property_class = CTK_STYLE_PROPERTY_CLASS (klass);
 
   object_class->set_property = ctk_css_shorthand_property_set_property;
 
@@ -178,13 +178,13 @@ _ctk_css_shorthand_property_class_init (GtkCssShorthandPropertyClass *klass)
 }
 
 static void
-_ctk_css_shorthand_property_init (GtkCssShorthandProperty *shorthand)
+_ctk_css_shorthand_property_init (CtkCssShorthandProperty *shorthand)
 {
   shorthand->subproperties = g_ptr_array_new_with_free_func (g_object_unref);
 }
 
-GtkCssStyleProperty *
-_ctk_css_shorthand_property_get_subproperty (GtkCssShorthandProperty *shorthand,
+CtkCssStyleProperty *
+_ctk_css_shorthand_property_get_subproperty (CtkCssShorthandProperty *shorthand,
                                              guint                    property)
 {
   g_return_val_if_fail (CTK_IS_CSS_SHORTHAND_PROPERTY (shorthand), NULL);
@@ -194,7 +194,7 @@ _ctk_css_shorthand_property_get_subproperty (GtkCssShorthandProperty *shorthand,
 }
 
 guint
-_ctk_css_shorthand_property_get_n_subproperties (GtkCssShorthandProperty *shorthand)
+_ctk_css_shorthand_property_get_n_subproperties (CtkCssShorthandProperty *shorthand)
 {
   g_return_val_if_fail (CTK_IS_CSS_SHORTHAND_PROPERTY (shorthand), 0);
   

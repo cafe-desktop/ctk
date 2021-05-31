@@ -417,10 +417,10 @@ msgstr "𐑨𐑒𐑖𐑩𐑯 𐑜𐑮𐑵𐑐"
 #, fuzzy
 #: ../ctk/ctkaction.c:394
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"𐑞 GtkActionGroup 𐑞𐑦𐑕 GtkAction 𐑦𐑟 𐑩𐑕𐑴𐑖𐑦𐑱𐑑𐑩𐑛 𐑢𐑦𐑞, 𐑹 𐑯𐑳𐑤 (𐑓𐑹 𐑦𐑯𐑑𐑻𐑯𐑩𐑤 𐑿𐑟)."
+"𐑞 CtkActionGroup 𐑞𐑦𐑕 CtkAction 𐑦𐑟 𐑩𐑕𐑴𐑖𐑦𐑱𐑑𐑩𐑛 𐑢𐑦𐑞, 𐑹 𐑯𐑳𐑤 (𐑓𐑹 𐑦𐑯𐑑𐑻𐑯𐑩𐑤 𐑿𐑟)."
 
 #: ../ctk/ctkaction.c:412 ../ctk/ctkimagemenuitem.c:169
 msgid "Always show image"
@@ -807,10 +807,10 @@ msgstr "𐑐𐑨𐑒 𐑑𐑲𐑐"
 #, fuzzy
 #: ../ctk/ctkbox.c:257 ../ctk/ctknotebook.c:667
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"𐑩 GtkPackType 𐑦𐑯𐑛𐑦𐑒𐑱𐑑𐑦𐑙 𐑢𐑧𐑞𐑼 𐑞 𐑗𐑲𐑤𐑛 𐑦𐑟 𐑐𐑨𐑒𐑑 𐑢𐑦𐑞 𐑮𐑧𐑓𐑼𐑩𐑯𐑕 𐑑 𐑞 𐑕𐑑𐑸𐑑 𐑹 𐑧𐑯𐑛 𐑝 𐑞 "
+"𐑩 CtkPackType 𐑦𐑯𐑛𐑦𐑒𐑱𐑑𐑦𐑙 𐑢𐑧𐑞𐑼 𐑞 𐑗𐑲𐑤𐑛 𐑦𐑟 𐑐𐑨𐑒𐑑 𐑢𐑦𐑞 𐑮𐑧𐑓𐑼𐑩𐑯𐑕 𐑑 𐑞 𐑕𐑑𐑸𐑑 𐑹 𐑧𐑯𐑛 𐑝 𐑞 "
 "𐑐𐑺𐑩𐑯𐑑"
 
 #: ../ctk/ctkbox.c:263 ../ctk/ctknotebook.c:645 ../ctk/ctkpaned.c:241
@@ -1300,8 +1300,8 @@ msgstr "𐑕𐑲𐑟"
 
 #, fuzzy
 #: ../ctk/ctkcellrendererpixbuf.c:144
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "𐑞 GtkIconSize 𐑝𐑨𐑤𐑿 𐑞𐑨𐑑 𐑕𐑐𐑧𐑕𐑦𐑓𐑲𐑟 𐑞 𐑕𐑲𐑟 𐑝 𐑞 𐑮𐑧𐑯𐑛𐑻𐑛 𐑲𐑒𐑪𐑯"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "𐑞 CtkIconSize 𐑝𐑨𐑤𐑿 𐑞𐑨𐑑 𐑕𐑐𐑧𐑕𐑦𐑓𐑲𐑟 𐑞 𐑕𐑲𐑟 𐑝 𐑞 𐑮𐑧𐑯𐑛𐑻𐑛 𐑲𐑒𐑪𐑯"
 
 #: ../ctk/ctkcellrendererpixbuf.c:153
 msgid "Detail"
@@ -1426,8 +1426,8 @@ msgstr "𐑐𐑩𐑤𐑕 𐑝 𐑞 𐑕𐑐𐑦𐑯𐑻"
 
 #, fuzzy
 #: ../ctk/ctkcellrendererspinner.c:159
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "𐑞 GtkIconSize 𐑝𐑨𐑤𐑿 𐑞𐑨𐑑 𐑕𐑐𐑧𐑕𐑦𐑓𐑲𐑟 𐑞 𐑕𐑲𐑟 𐑝 𐑞 𐑮𐑧𐑯𐑛𐑻𐑛 𐑕𐑐𐑦𐑯𐑻"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "𐑞 CtkIconSize 𐑝𐑨𐑤𐑿 𐑞𐑨𐑑 𐑕𐑐𐑧𐑕𐑦𐑓𐑲𐑟 𐑞 𐑕𐑲𐑟 𐑝 𐑞 𐑮𐑧𐑯𐑛𐑻𐑛 𐑕𐑐𐑦𐑯𐑻"
 
 #: ../ctk/ctkcellrenderertext.c:196
 msgid "Text to render"
@@ -3267,10 +3267,10 @@ msgstr "𐑡𐑩𐑕𐑑𐑩𐑓𐑩𐑒𐑱𐑖𐑩𐑯"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "𐑞 𐑩𐑤𐑲𐑯𐑥𐑩𐑯𐑑 𐑝 𐑞 𐑤𐑲𐑯𐑟 𐑦𐑯 𐑞 𐑑𐑧𐑒𐑕𐑑 𐑝 𐑞 𐑤𐑱𐑚𐑩𐑤 𐑮𐑧𐑤𐑩𐑑𐑦𐑝 𐑑 𐑰𐑗 𐑳𐑞𐑼. 𐑞𐑦𐑕 𐑛𐑴𐑟 𐑯𐑪𐑑 𐑩𐑓𐑧𐑒𐑑 "
-"𐑞 𐑩𐑤𐑲𐑯𐑥𐑩𐑯𐑑 𐑝 𐑞 𐑤𐑱𐑚𐑩𐑤 𐑢𐑦𐑞𐑦𐑯 𐑦𐑑𐑕 𐑨𐑤𐑴𐑒𐑱𐑖𐑩𐑯. 𐑕𐑰 GtkMisc::xalign 𐑓𐑹 𐑞𐑨𐑑"
+"𐑞 𐑩𐑤𐑲𐑯𐑥𐑩𐑯𐑑 𐑝 𐑞 𐑤𐑱𐑚𐑩𐑤 𐑢𐑦𐑞𐑦𐑯 𐑦𐑑𐑕 𐑨𐑤𐑴𐑒𐑱𐑖𐑩𐑯. 𐑕𐑰 CtkMisc::xalign 𐑓𐑹 𐑞𐑨𐑑"
 
 #: ../ctk/ctklabel.c:566
 msgid "Pattern"
@@ -3376,8 +3376,8 @@ msgstr "𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤 𐑩𐑡𐑳𐑕𐑑𐑥𐑩�
 
 #, fuzzy
 #: ../ctk/ctklayout.c:582 ../ctk/ctkscrolledwindow.c:236
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "𐑞 GtkAdjustment 𐑓𐑹 𐑞 𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "𐑞 CtkAdjustment 𐑓𐑹 𐑞 𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯"
 
 #: ../ctk/ctklayout.c:589 ../ctk/ctkviewport.c:142
 msgid "Vertical adjustment"
@@ -3385,8 +3385,8 @@ msgstr "𐑝𐑻𐑑𐑦𐑒𐑩𐑤 𐑩𐑡𐑳𐑕𐑑𐑥𐑩𐑯𐑑"
 
 #, fuzzy
 #: ../ctk/ctklayout.c:590 ../ctk/ctkscrolledwindow.c:243
-msgid "The GtkAdjustment for the vertical position"
-msgstr "𐑞 GtkAdjustment 𐑓𐑹 𐑞 𐑝𐑻𐑑𐑦𐑒𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "𐑞 CtkAdjustment 𐑓𐑹 𐑞 𐑝𐑻𐑑𐑦𐑒𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯"
 
 #: ../ctk/ctklayout.c:598
 msgid "The width of the layout"
@@ -4177,8 +4177,8 @@ msgstr "𐑛𐑦𐑓𐑷𐑤𐑑 𐑐𐑱𐑡 𐑕𐑧𐑑𐑳𐑐"
 
 #, fuzzy
 #: ../ctk/ctkprintoperation.c:998
-msgid "The GtkPageSetup used by default"
-msgstr "𐑞 GtkPageSetup 𐑿𐑕𐑑 𐑚𐑲 𐑛𐑦𐑓𐑷𐑤𐑑"
+msgid "The CtkPageSetup used by default"
+msgstr "𐑞 CtkPageSetup 𐑿𐑕𐑑 𐑚𐑲 𐑛𐑦𐑓𐑷𐑤𐑑"
 
 #: ../ctk/ctkprintoperation.c:1016 ../ctk/ctkprintunixdialog.c:320
 msgid "Print Settings"
@@ -4186,8 +4186,8 @@ msgstr "𐑐𐑮𐑦𐑯𐑑 𐑕𐑧𐑑𐑦𐑙𐑟"
 
 #, fuzzy
 #: ../ctk/ctkprintoperation.c:1017 ../ctk/ctkprintunixdialog.c:321
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "𐑞 GtkPrintSettings 𐑿𐑕𐑑 𐑓𐑹 initializing 𐑞 𐑛𐑲𐑩𐑤𐑪𐑜"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "𐑞 CtkPrintSettings 𐑿𐑕𐑑 𐑓𐑹 initializing 𐑞 𐑛𐑲𐑩𐑤𐑪𐑜"
 
 #: ../ctk/ctkprintoperation.c:1035
 msgid "Job Name"
@@ -4309,8 +4309,8 @@ msgstr "𐑦𐑥𐑚𐑧𐑛 𐑐𐑱𐑡 𐑕𐑧𐑑𐑳𐑐"
 
 #, fuzzy
 #: ../ctk/ctkprintoperation.c:1313
-msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
-msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑐𐑱𐑡 𐑕𐑧𐑑𐑳𐑐 combos 𐑸 𐑧𐑥𐑚𐑧𐑛𐑦𐑛 𐑦𐑯 GtkPrintDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
+msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑐𐑱𐑡 𐑕𐑧𐑑𐑳𐑐 combos 𐑸 𐑧𐑥𐑚𐑧𐑛𐑦𐑛 𐑦𐑯 CtkPrintDialog"
 
 #: ../ctk/ctkprintoperation.c:1334
 msgid "Number of Pages To Print"
@@ -4322,8 +4322,8 @@ msgstr "𐑞 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑐𐑱𐑡𐑧𐑟 𐑞𐑨𐑑 𐑢�
 
 #, fuzzy
 #: ../ctk/ctkprintunixdialog.c:303
-msgid "The GtkPageSetup to use"
-msgstr "𐑞 GtkPageSetup 𐑑 𐑿𐑕"
+msgid "The CtkPageSetup to use"
+msgstr "𐑞 CtkPageSetup 𐑑 𐑿𐑕"
 
 #: ../ctk/ctkprintunixdialog.c:328
 msgid "Selected Printer"
@@ -4331,8 +4331,8 @@ msgstr "𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛 𐑐𐑮𐑦𐑯𐑑𐑼"
 
 #, fuzzy
 #: ../ctk/ctkprintunixdialog.c:329
-msgid "The GtkPrinter which is selected"
-msgstr "𐑞 GtkPrinter 𐑢𐑦𐑗 𐑦𐑟 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛"
+msgid "The CtkPrinter which is selected"
+msgstr "𐑞 CtkPrinter 𐑢𐑦𐑗 𐑦𐑟 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛"
 
 #, fuzzy
 #: ../ctk/ctkprintunixdialog.c:336
@@ -4353,8 +4353,8 @@ msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑩𐑐𐑤𐑦𐑒𐑱𐑕𐑩𐑯 𐑣𐑨𐑟 
 
 #, fuzzy
 #: ../ctk/ctkprintunixdialog.c:362
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑐𐑱𐑡 𐑕𐑧𐑑𐑳𐑐 combos 𐑸 𐑧𐑥𐑚𐑧𐑛𐑦𐑛 𐑦𐑯 GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑐𐑱𐑡 𐑕𐑧𐑑𐑳𐑐 combos 𐑸 𐑧𐑥𐑚𐑧𐑛𐑦𐑛 𐑦𐑯 CtkPrintUnixDialog"
 
 #: ../ctk/ctkprogress.c:102
 msgid "Activity mode"
@@ -4363,11 +4363,11 @@ msgstr "𐑨𐑒𐑑𐑦𐑝𐑦𐑑𐑦 𐑥𐑴𐑛"
 #, fuzzy
 #: ../ctk/ctkprogress.c:103
 msgid ""
-"If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+"If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 "something is happening, but not how much of the activity is finished. This is "
 "used when you're doing something but don't know how long it will take."
 msgstr ""
-"𐑦𐑓 𐑑𐑮𐑵, 𐑞 GtkProgress 𐑦𐑟 𐑦𐑯 𐑨𐑒𐑑𐑦𐑝𐑦𐑑𐑦 𐑥𐑴𐑛, 𐑥𐑰𐑯𐑦𐑙 𐑞𐑨𐑑 𐑦𐑑 𐑕𐑦𐑜𐑯𐑩𐑤𐑟 𐑕𐑳𐑥𐑔𐑦𐑙 𐑦𐑟 "
+"𐑦𐑓 𐑑𐑮𐑵, 𐑞 CtkProgress 𐑦𐑟 𐑦𐑯 𐑨𐑒𐑑𐑦𐑝𐑦𐑑𐑦 𐑥𐑴𐑛, 𐑥𐑰𐑯𐑦𐑙 𐑞𐑨𐑑 𐑦𐑑 𐑕𐑦𐑜𐑯𐑩𐑤𐑟 𐑕𐑳𐑥𐑔𐑦𐑙 𐑦𐑟 "
 "𐑣𐑨𐑐𐑩𐑯𐑦𐑙, 𐑚𐑳𐑑 𐑯𐑪𐑑 𐑣𐑬 𐑥𐑳𐑗 𐑝 𐑞 𐑨𐑒𐑑𐑦𐑝𐑦𐑑𐑦 𐑦𐑟 𐑓𐑦𐑯𐑦𐑖𐑑. 𐑞𐑦𐑕 𐑦𐑟 𐑿𐑟𐑛 𐑢𐑧𐑯 𐑿'𐑼 𐑛𐑵𐑦𐑙 "
 "𐑕𐑳𐑥𐑔𐑦𐑙 𐑚𐑳𐑑 𐑛𐑴𐑯𐑑 𐑯𐑴 𐑣𐑬 𐑤𐑪𐑙 𐑦𐑑 𐑢𐑦𐑤 𐑑𐑱𐑒."
 
@@ -4508,8 +4508,8 @@ msgstr "𐑣𐑬 𐑞 𐑮𐑱𐑯𐑡 𐑖𐑫𐑛 𐑚𐑰 𐑳𐑐𐑛𐑱�
 
 #, fuzzy
 #: ../ctk/ctkrange.c:368
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "𐑞 GtkAdjustment 𐑞𐑨𐑑 𐑒𐑩𐑯𐑑𐑱𐑯𐑟 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑝𐑨𐑤𐑿 𐑝 𐑞𐑦𐑕 𐑮𐑱𐑯𐑡 𐑩𐑚𐑡𐑧𐑒𐑑"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "𐑞 CtkAdjustment 𐑞𐑨𐑑 𐑒𐑩𐑯𐑑𐑱𐑯𐑟 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑝𐑨𐑤𐑿 𐑝 𐑞𐑦𐑕 𐑮𐑱𐑯𐑡 𐑩𐑚𐑡𐑧𐑒𐑑"
 
 #: ../ctk/ctkrange.c:375
 msgid "Inverted"
@@ -4838,8 +4838,8 @@ msgstr "𐑞 𐑲𐑒𐑪𐑯 𐑕𐑲𐑟"
 #, fuzzy
 #: ../ctk/ctkscalebutton.c:239
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "𐑞 GtkAdjustment 𐑞𐑨𐑑 𐑒𐑩𐑯𐑑𐑱𐑯𐑟 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑝𐑨𐑤𐑿 𐑝 𐑞𐑦𐑕 𐑕𐑒𐑱𐑤 𐑚𐑳𐑑𐑩𐑯 𐑩𐑚𐑡𐑧𐑒𐑑"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "𐑞 CtkAdjustment 𐑞𐑨𐑑 𐑒𐑩𐑯𐑑𐑱𐑯𐑟 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑝𐑨𐑤𐑿 𐑝 𐑞𐑦𐑕 𐑕𐑒𐑱𐑤 𐑚𐑳𐑑𐑩𐑯 𐑩𐑚𐑡𐑧𐑒𐑑"
 
 #: ../ctk/ctkscalebutton.c:267
 msgid "Icons"
@@ -5349,8 +5349,8 @@ msgstr "𐑛𐑦𐑓𐑷𐑤𐑑 𐑓𐑲𐑤 chooser 𐑚𐑨𐑒𐑧𐑯𐑛"
 
 #, fuzzy
 #: ../ctk/ctksettings.c:743
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "𐑯𐑱𐑥 𐑝 𐑞 GtkFileChooser 𐑚𐑨𐑒𐑧𐑯𐑛 𐑑 𐑿𐑕 𐑚𐑲 𐑛𐑦𐑓𐑷𐑤𐑑"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "𐑯𐑱𐑥 𐑝 𐑞 CtkFileChooser 𐑚𐑨𐑒𐑧𐑯𐑛 𐑑 𐑿𐑕 𐑚𐑲 𐑛𐑦𐑓𐑷𐑤𐑑"
 
 #: ../ctk/ctksettings.c:760
 msgid "Default print backend"
@@ -5358,8 +5358,8 @@ msgstr "𐑛𐑦𐑓𐑷𐑤𐑑 𐑐𐑮𐑦𐑯𐑑 𐑚𐑨𐑒𐑧𐑯𐑛"
 
 #, fuzzy
 #: ../ctk/ctksettings.c:761
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "𐑤𐑦𐑕𐑑 𐑝 𐑞 GtkPrintBackend 𐑚𐑨𐑒𐑧𐑯𐑛𐑟 𐑑 𐑿𐑕 𐑚𐑲 𐑛𐑦𐑓𐑷𐑤𐑑"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "𐑤𐑦𐑕𐑑 𐑝 𐑞 CtkPrintBackend 𐑚𐑨𐑒𐑧𐑯𐑛𐑟 𐑑 𐑿𐑕 𐑚𐑲 𐑛𐑦𐑓𐑷𐑤𐑑"
 
 #: ../ctk/ctksettings.c:784
 msgid "Default command to run when displaying a print preview"
@@ -5579,10 +5579,10 @@ msgstr "𐑯𐑳𐑥𐑚𐑼 𐑝 𐑕𐑑𐑧𐑐𐑕"
 msgid ""
 "The number of steps for the spinner to complete a full loop. The animation "
 "will complete a full cycle in one second by default (see "
-"#GtkSpinner:cycle-duration)."
+"#CtkSpinner:cycle-duration)."
 msgstr ""
 "𐑞 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑕𐑑𐑧𐑐𐑕 𐑓𐑹 𐑞 𐑕𐑐𐑦𐑯𐑻 𐑑 𐑒𐑩𐑥𐑐𐑤𐑰𐑑 𐑩 𐑓𐑫𐑤 𐑤𐑵𐑐. 𐑞 𐑨𐑯𐑩𐑥𐑱𐑖𐑩𐑯 𐑢𐑦𐑤 𐑒𐑩𐑥𐑐𐑤𐑰𐑑 𐑩 𐑓𐑫𐑤 "
-"𐑕𐑲𐑒𐑩𐑤 𐑦𐑯 𐑢𐑳𐑯 𐑕𐑧𐑒𐑩𐑯𐑛 𐑚𐑲 𐑛𐑦𐑓𐑷𐑤𐑑 (𐑕𐑰 #GtkSpinner:𐑕𐑲𐑒𐑩𐑤-𐑛𐑫𐑮𐑱𐑖𐑩𐑯)."
+"𐑕𐑲𐑒𐑩𐑤 𐑦𐑯 𐑢𐑳𐑯 𐑕𐑧𐑒𐑩𐑯𐑛 𐑚𐑲 𐑛𐑦𐑓𐑷𐑤𐑑 (𐑕𐑰 #CtkSpinner:𐑕𐑲𐑒𐑩𐑤-𐑛𐑫𐑮𐑱𐑖𐑩𐑯)."
 
 #: ../ctk/ctkspinner.c:159
 msgid "Animation duration"
@@ -6571,8 +6571,8 @@ msgstr "𐑓𐑦𐑒𐑕𐑑 𐑣𐑲𐑑 𐑥𐑴𐑛"
 
 #, fuzzy
 #: ../ctk/ctktreeview.c:658
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "𐑕𐑐𐑰𐑛𐑟 𐑳𐑐 GtkTreeView 𐑚𐑲 𐑩𐑕𐑿𐑥𐑦𐑙 𐑞𐑨𐑑 𐑷𐑤 𐑮𐑴𐑟 𐑣𐑨𐑝 𐑞 𐑕𐑱𐑥 𐑣𐑲𐑑"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "𐑕𐑐𐑰𐑛𐑟 𐑳𐑐 CtkTreeView 𐑚𐑲 𐑩𐑕𐑿𐑥𐑦𐑙 𐑞𐑨𐑑 𐑷𐑤 𐑮𐑴𐑟 𐑣𐑨𐑝 𐑞 𐑕𐑱𐑥 𐑣𐑲𐑑"
 
 #: ../ctk/ctktreeview.c:678
 msgid "Hover Selection"
@@ -6859,18 +6859,18 @@ msgstr "𐑩𐑯 ·𐑦·𐑥·𐑤 𐑕𐑑𐑮𐑦𐑙 𐑛𐑦𐑕𐑒𐑮�
 #, fuzzy
 #: ../ctk/ctkviewport.c:135
 msgid ""
-"The GtkAdjustment that determines the values of the horizontal position for "
+"The CtkAdjustment that determines the values of the horizontal position for "
 "this viewport"
 msgstr ""
-"𐑞 GtkAdjustment 𐑞𐑨𐑑 𐑛𐑦𐑑𐑻𐑥𐑦𐑯𐑟 𐑞 𐑝𐑨𐑤𐑿𐑟 𐑝 𐑞 𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑓𐑹 𐑞𐑦𐑕 viewport"
+"𐑞 CtkAdjustment 𐑞𐑨𐑑 𐑛𐑦𐑑𐑻𐑥𐑦𐑯𐑟 𐑞 𐑝𐑨𐑤𐑿𐑟 𐑝 𐑞 𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑓𐑹 𐑞𐑦𐑕 viewport"
 
 #, fuzzy
 #: ../ctk/ctkviewport.c:143
 msgid ""
-"The GtkAdjustment that determines the values of the vertical position for "
+"The CtkAdjustment that determines the values of the vertical position for "
 "this viewport"
 msgstr ""
-"𐑞 GtkAdjustment 𐑞𐑨𐑑 𐑛𐑦𐑑𐑻𐑥𐑦𐑯𐑟 𐑞 𐑝𐑨𐑤𐑿𐑟 𐑝 𐑞 𐑝𐑻𐑑𐑦𐑒𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑓𐑹 𐑞𐑦𐑕 viewport"
+"𐑞 CtkAdjustment 𐑞𐑨𐑑 𐑛𐑦𐑑𐑻𐑥𐑦𐑯𐑟 𐑞 𐑝𐑨𐑤𐑿𐑟 𐑝 𐑞 𐑝𐑻𐑑𐑦𐑒𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑓𐑹 𐑞𐑦𐑕 viewport"
 
 #, fuzzy
 #: ../ctk/ctkviewport.c:151
@@ -7310,8 +7310,8 @@ msgstr "𐑓𐑴𐑒𐑩𐑕 𐑦𐑯 Toplevel"
 
 #, fuzzy
 #: ../ctk/ctkwindow.c:651
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑦𐑯𐑐𐑫𐑑 𐑓𐑴𐑒𐑩𐑕 𐑦𐑟 𐑢𐑦𐑞𐑦𐑯 𐑞𐑦𐑕 GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑦𐑯𐑐𐑫𐑑 𐑓𐑴𐑒𐑩𐑕 𐑦𐑟 𐑢𐑦𐑞𐑦𐑯 𐑞𐑦𐑕 CtkWindow"
 
 #: ../ctk/ctkwindow.c:658
 msgid "Type hint"

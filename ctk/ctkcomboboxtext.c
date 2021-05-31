@@ -30,39 +30,39 @@
 /**
  * SECTION:ctkcomboboxtext
  * @Short_description: A simple, text-only combo box
- * @Title: GtkComboBoxText
- * @See_also: #GtkComboBox
+ * @Title: CtkComboBoxText
+ * @See_also: #CtkComboBox
  *
- * A GtkComboBoxText is a simple variant of #GtkComboBox that hides
+ * A CtkComboBoxText is a simple variant of #CtkComboBox that hides
  * the model-view complexity for simple text-only use cases.
  *
- * To create a GtkComboBoxText, use ctk_combo_box_text_new() or
+ * To create a CtkComboBoxText, use ctk_combo_box_text_new() or
  * ctk_combo_box_text_new_with_entry().
  *
- * You can add items to a GtkComboBoxText with
+ * You can add items to a CtkComboBoxText with
  * ctk_combo_box_text_append_text(), ctk_combo_box_text_insert_text()
  * or ctk_combo_box_text_prepend_text() and remove options with
  * ctk_combo_box_text_remove().
  *
- * If the GtkComboBoxText contains an entry (via the “has-entry” property),
+ * If the CtkComboBoxText contains an entry (via the “has-entry” property),
  * its contents can be retrieved using ctk_combo_box_text_get_active_text().
  * The entry itself can be accessed by calling ctk_bin_get_child() on the
  * combo box.
  *
  * You should not call ctk_combo_box_set_model() or attempt to pack more cells
- * into this combo box via its GtkCellLayout interface.
+ * into this combo box via its CtkCellLayout interface.
  *
- * # GtkComboBoxText as GtkBuildable
+ * # CtkComboBoxText as CtkBuildable
  *
- * The GtkComboBoxText implementation of the GtkBuildable interface supports
+ * The CtkComboBoxText implementation of the CtkBuildable interface supports
  * adding items directly using the <items> element and specifying <item>
  * elements for each item. Each <item> element can specify the “id”
  * corresponding to the appended text and also supports the regular
  * translation attributes “translatable”, “context” and “comments”.
  *
- * Here is a UI definition fragment specifying GtkComboBoxText items:
+ * Here is a UI definition fragment specifying CtkComboBoxText items:
  * |[
- * <object class="GtkComboBoxText">
+ * <object class="CtkComboBoxText">
  *   <items>
  *     <item translatable="yes" id="factory">Factory</item>
  *     <item translatable="yes" id="home">Home</item>
@@ -81,28 +81,28 @@
  *     ╰── window.popup
  * ]|
  *
- * GtkComboBoxText has a single CSS node with name combobox. It adds
+ * CtkComboBoxText has a single CSS node with name combobox. It adds
  * the style class .combo to the main CSS nodes of its entry and button
  * children, and the .linked class to the node of its internal box.
  */
 
-static void     ctk_combo_box_text_buildable_interface_init     (GtkBuildableIface *iface);
-static gboolean ctk_combo_box_text_buildable_custom_tag_start   (GtkBuildable     *buildable,
-								 GtkBuilder       *builder,
+static void     ctk_combo_box_text_buildable_interface_init     (CtkBuildableIface *iface);
+static gboolean ctk_combo_box_text_buildable_custom_tag_start   (CtkBuildable     *buildable,
+								 CtkBuilder       *builder,
 								 GObject          *child,
 								 const gchar      *tagname,
 								 GMarkupParser    *parser,
 								 gpointer         *data);
 
-static void     ctk_combo_box_text_buildable_custom_finished    (GtkBuildable     *buildable,
-								 GtkBuilder       *builder,
+static void     ctk_combo_box_text_buildable_custom_finished    (CtkBuildable     *buildable,
+								 CtkBuilder       *builder,
 								 GObject          *child,
 								 const gchar      *tagname,
 								 gpointer          user_data);
 
-static GtkBuildableIface *buildable_parent_iface = NULL;
+static CtkBuildableIface *buildable_parent_iface = NULL;
 
-G_DEFINE_TYPE_WITH_CODE (GtkComboBoxText, ctk_combo_box_text, CTK_TYPE_COMBO_BOX,
+G_DEFINE_TYPE_WITH_CODE (CtkComboBoxText, ctk_combo_box_text, CTK_TYPE_COMBO_BOX,
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
 						ctk_combo_box_text_buildable_interface_init));
 
@@ -118,7 +118,7 @@ ctk_combo_box_text_constructed (GObject *object)
 
   if (!ctk_combo_box_get_has_entry (CTK_COMBO_BOX (object)))
     {
-      GtkCellRenderer *cell;
+      CtkCellRenderer *cell;
 
       cell = ctk_cell_renderer_text_new ();
       ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (object), cell, TRUE);
@@ -129,9 +129,9 @@ ctk_combo_box_text_constructed (GObject *object)
 }
 
 static void
-ctk_combo_box_text_init (GtkComboBoxText *combo_box)
+ctk_combo_box_text_init (CtkComboBoxText *combo_box)
 {
-  GtkListStore *store;
+  CtkListStore *store;
 
   store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
   ctk_combo_box_set_model (CTK_COMBO_BOX (combo_box), CTK_TREE_MODEL (store));
@@ -139,7 +139,7 @@ ctk_combo_box_text_init (GtkComboBoxText *combo_box)
 }
 
 static void
-ctk_combo_box_text_class_init (GtkComboBoxTextClass *klass)
+ctk_combo_box_text_class_init (CtkComboBoxTextClass *klass)
 {
   GObjectClass *object_class;
 
@@ -148,7 +148,7 @@ ctk_combo_box_text_class_init (GtkComboBoxTextClass *klass)
 }
 
 static void
-ctk_combo_box_text_buildable_interface_init (GtkBuildableIface *iface)
+ctk_combo_box_text_buildable_interface_init (CtkBuildableIface *iface)
 {
   buildable_parent_iface = g_type_interface_peek_parent (iface);
 
@@ -157,7 +157,7 @@ ctk_combo_box_text_buildable_interface_init (GtkBuildableIface *iface)
 }
 
 typedef struct {
-  GtkBuilder    *builder;
+  CtkBuilder    *builder;
   GObject       *object;
   const gchar   *domain;
   gchar         *id;
@@ -218,7 +218,7 @@ item_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkComboBoxText", element_name,
+                                        "CtkComboBoxText", element_name,
                                         error);
     }
 }
@@ -275,8 +275,8 @@ static const GMarkupParser item_parser =
   };
 
 static gboolean
-ctk_combo_box_text_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                               GtkBuilder    *builder,
+ctk_combo_box_text_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                               CtkBuilder    *builder,
                                                GObject       *child,
                                                const gchar   *tagname,
                                                GMarkupParser *parser,
@@ -306,8 +306,8 @@ ctk_combo_box_text_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_combo_box_text_buildable_custom_finished (GtkBuildable *buildable,
-                                              GtkBuilder   *builder,
+ctk_combo_box_text_buildable_custom_finished (CtkBuildable *buildable,
+                                              CtkBuilder   *builder,
                                               GObject      *child,
                                               const gchar  *tagname,
                                               gpointer      user_data)
@@ -331,14 +331,14 @@ ctk_combo_box_text_buildable_custom_finished (GtkBuildable *buildable,
 /**
  * ctk_combo_box_text_new:
  *
- * Creates a new #GtkComboBoxText, which is a #GtkComboBox just displaying
+ * Creates a new #CtkComboBoxText, which is a #CtkComboBox just displaying
  * strings.
  *
- * Returns: A new #GtkComboBoxText
+ * Returns: A new #CtkComboBoxText
  *
  * Since: 2.24
  */
-GtkWidget *
+CtkWidget *
 ctk_combo_box_text_new (void)
 {
   return g_object_new (CTK_TYPE_COMBO_BOX_TEXT,
@@ -348,14 +348,14 @@ ctk_combo_box_text_new (void)
 /**
  * ctk_combo_box_text_new_with_entry:
  *
- * Creates a new #GtkComboBoxText, which is a #GtkComboBox just displaying
+ * Creates a new #CtkComboBoxText, which is a #CtkComboBox just displaying
  * strings. The combo box created by this function has an entry.
  *
- * Returns: a new #GtkComboBoxText
+ * Returns: a new #CtkComboBoxText
  *
  * Since: 2.24
  */
-GtkWidget *
+CtkWidget *
 ctk_combo_box_text_new_with_entry (void)
 {
   return g_object_new (CTK_TYPE_COMBO_BOX_TEXT,
@@ -365,7 +365,7 @@ ctk_combo_box_text_new_with_entry (void)
 
 /**
  * ctk_combo_box_text_append_text:
- * @combo_box: A #GtkComboBoxText
+ * @combo_box: A #CtkComboBoxText
  * @text: A string
  *
  * Appends @text to the list of strings stored in @combo_box.
@@ -376,7 +376,7 @@ ctk_combo_box_text_new_with_entry (void)
  * Since: 2.24
  */
 void
-ctk_combo_box_text_append_text (GtkComboBoxText *combo_box,
+ctk_combo_box_text_append_text (CtkComboBoxText *combo_box,
                                 const gchar     *text)
 {
   ctk_combo_box_text_insert (combo_box, -1, NULL, text);
@@ -384,7 +384,7 @@ ctk_combo_box_text_append_text (GtkComboBoxText *combo_box,
 
 /**
  * ctk_combo_box_text_prepend_text:
- * @combo_box: A #GtkComboBox
+ * @combo_box: A #CtkComboBox
  * @text: A string
  *
  * Prepends @text to the list of strings stored in @combo_box.
@@ -395,7 +395,7 @@ ctk_combo_box_text_append_text (GtkComboBoxText *combo_box,
  * Since: 2.24
  */
 void
-ctk_combo_box_text_prepend_text (GtkComboBoxText *combo_box,
+ctk_combo_box_text_prepend_text (CtkComboBoxText *combo_box,
                                  const gchar     *text)
 {
   ctk_combo_box_text_insert (combo_box, 0, NULL, text);
@@ -403,7 +403,7 @@ ctk_combo_box_text_prepend_text (GtkComboBoxText *combo_box,
 
 /**
  * ctk_combo_box_text_insert_text:
- * @combo_box: A #GtkComboBoxText
+ * @combo_box: A #CtkComboBoxText
  * @position: An index to insert @text
  * @text: A string
  *
@@ -417,7 +417,7 @@ ctk_combo_box_text_prepend_text (GtkComboBoxText *combo_box,
  * Since: 2.24
  */
 void
-ctk_combo_box_text_insert_text (GtkComboBoxText *combo_box,
+ctk_combo_box_text_insert_text (CtkComboBoxText *combo_box,
                                 gint             position,
                                 const gchar     *text)
 {
@@ -426,7 +426,7 @@ ctk_combo_box_text_insert_text (GtkComboBoxText *combo_box,
 
 /**
  * ctk_combo_box_text_append:
- * @combo_box: A #GtkComboBoxText
+ * @combo_box: A #CtkComboBoxText
  * @id: (allow-none): a string ID for this value, or %NULL
  * @text: A string
  *
@@ -439,7 +439,7 @@ ctk_combo_box_text_insert_text (GtkComboBoxText *combo_box,
  * Since: 2.24
  */
 void
-ctk_combo_box_text_append (GtkComboBoxText *combo_box,
+ctk_combo_box_text_append (CtkComboBoxText *combo_box,
                            const gchar     *id,
                            const gchar     *text)
 {
@@ -448,7 +448,7 @@ ctk_combo_box_text_append (GtkComboBoxText *combo_box,
 
 /**
  * ctk_combo_box_text_prepend:
- * @combo_box: A #GtkComboBox
+ * @combo_box: A #CtkComboBox
  * @id: (allow-none): a string ID for this value, or %NULL
  * @text: a string
  *
@@ -461,7 +461,7 @@ ctk_combo_box_text_append (GtkComboBoxText *combo_box,
  * Since: 2.24
  */
 void
-ctk_combo_box_text_prepend (GtkComboBoxText *combo_box,
+ctk_combo_box_text_prepend (CtkComboBoxText *combo_box,
                             const gchar     *id,
                             const gchar     *text)
 {
@@ -471,27 +471,27 @@ ctk_combo_box_text_prepend (GtkComboBoxText *combo_box,
 
 /**
  * ctk_combo_box_text_insert:
- * @combo_box: A #GtkComboBoxText
+ * @combo_box: A #CtkComboBoxText
  * @position: An index to insert @text
  * @id: (allow-none): a string ID for this value, or %NULL
  * @text: A string to display
  *
  * Inserts @text at @position in the list of strings stored in @combo_box.
  * If @id is non-%NULL then it is used as the ID of the row.  See
- * #GtkComboBox:id-column.
+ * #CtkComboBox:id-column.
  *
  * If @position is negative then @text is appended.
  *
  * Since: 3.0
  */
 void
-ctk_combo_box_text_insert (GtkComboBoxText *combo_box,
+ctk_combo_box_text_insert (CtkComboBoxText *combo_box,
                            gint             position,
                            const gchar     *id,
                            const gchar     *text)
 {
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeIter iter;
   gint text_column;
   gint column_type;
 
@@ -533,7 +533,7 @@ ctk_combo_box_text_insert (GtkComboBoxText *combo_box,
 
 /**
  * ctk_combo_box_text_remove:
- * @combo_box: A #GtkComboBox
+ * @combo_box: A #CtkComboBox
  * @position: Index of the item to remove
  *
  * Removes the string at @position from @combo_box.
@@ -541,12 +541,12 @@ ctk_combo_box_text_insert (GtkComboBoxText *combo_box,
  * Since: 2.24
  */
 void
-ctk_combo_box_text_remove (GtkComboBoxText *combo_box,
+ctk_combo_box_text_remove (CtkComboBoxText *combo_box,
                            gint             position)
 {
-  GtkTreeModel *model;
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkListStore *store;
+  CtkTreeIter iter;
 
   g_return_if_fail (CTK_IS_COMBO_BOX_TEXT (combo_box));
   g_return_if_fail (position >= 0);
@@ -561,16 +561,16 @@ ctk_combo_box_text_remove (GtkComboBoxText *combo_box,
 
 /**
  * ctk_combo_box_text_remove_all:
- * @combo_box: A #GtkComboBoxText
+ * @combo_box: A #CtkComboBoxText
  *
  * Removes all the text entries from the combo box.
  *
  * Since: 3.0
  */
 void
-ctk_combo_box_text_remove_all (GtkComboBoxText *combo_box)
+ctk_combo_box_text_remove_all (CtkComboBoxText *combo_box)
 {
-  GtkListStore *store;
+  CtkListStore *store;
 
   g_return_if_fail (CTK_IS_COMBO_BOX_TEXT (combo_box));
 
@@ -580,7 +580,7 @@ ctk_combo_box_text_remove_all (GtkComboBoxText *combo_box)
 
 /**
  * ctk_combo_box_text_get_active_text:
- * @combo_box: A #GtkComboBoxText
+ * @combo_box: A #CtkComboBoxText
  *
  * Returns the currently active string in @combo_box, or %NULL
  * if none is selected. If @combo_box contains an entry, this
@@ -593,23 +593,23 @@ ctk_combo_box_text_remove_all (GtkComboBoxText *combo_box)
  * Since: 2.24
  */
 gchar *
-ctk_combo_box_text_get_active_text (GtkComboBoxText *combo_box)
+ctk_combo_box_text_get_active_text (CtkComboBoxText *combo_box)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *text = NULL;
 
   g_return_val_if_fail (CTK_IS_COMBO_BOX_TEXT (combo_box), NULL);
 
  if (ctk_combo_box_get_has_entry (CTK_COMBO_BOX (combo_box)))
    {
-     GtkWidget *entry;
+     CtkWidget *entry;
 
      entry = ctk_bin_get_child (CTK_BIN (combo_box));
      text = g_strdup (ctk_entry_get_text (CTK_ENTRY (entry)));
    }
   else if (ctk_combo_box_get_active_iter (CTK_COMBO_BOX (combo_box), &iter))
     {
-      GtkTreeModel *model;
+      CtkTreeModel *model;
       gint text_column;
       gint column_type;
 

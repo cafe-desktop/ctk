@@ -20,10 +20,10 @@ static const gchar css[] =
  "}";
 
 static void
-on_bookmark_clicked (GtkButton *button, gpointer data)
+on_bookmark_clicked (CtkButton *button, gpointer data)
 {
-  GtkWindow *window = CTK_WINDOW (data);
-  GtkWidget *chooser;
+  CtkWindow *window = CTK_WINDOW (data);
+  CtkWidget *chooser;
 
   chooser = ctk_file_chooser_dialog_new ("File Chooser Test",
                                          window,
@@ -38,10 +38,10 @@ on_bookmark_clicked (GtkButton *button, gpointer data)
   ctk_widget_show (chooser);
 }
 
-static GtkWidget *header;
+static CtkWidget *header;
 
 static void
-change_subtitle (GtkButton *button, gpointer data)
+change_subtitle (CtkButton *button, gpointer data)
 {
   if (!CTK_IS_HEADER_BAR (header))
     return;
@@ -57,9 +57,9 @@ change_subtitle (GtkButton *button, gpointer data)
 }
 
 static void
-toggle_fullscreen (GtkButton *button, gpointer data)
+toggle_fullscreen (CtkButton *button, gpointer data)
 {
-  GtkWidget *window = CTK_WIDGET (data);
+  CtkWidget *window = CTK_WIDGET (data);
   static gboolean fullscreen = FALSE;
 
   if (fullscreen)
@@ -75,13 +75,13 @@ toggle_fullscreen (GtkButton *button, gpointer data)
 }
 
 static void
-change_header (GtkButton *button, gpointer data)
+change_header (CtkButton *button, gpointer data)
 {
-  GtkWidget *window = CTK_WIDGET (data);
-  GtkWidget *label;
-  GtkWidget *widget;
-  GtkWidget *image;
-  GtkWidget *box;
+  CtkWidget *window = CTK_WIDGET (data);
+  CtkWidget *label;
+  CtkWidget *widget;
+  CtkWidget *image;
+  CtkWidget *box;
 
   if (button && ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
@@ -126,12 +126,12 @@ change_header (GtkButton *button, gpointer data)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *footer;
-  GtkWidget *button;
-  GtkWidget *content;
-  GtkCssProvider *provider;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *footer;
+  CtkWidget *button;
+  CtkWidget *content;
+  CtkCssProvider *provider;
 
   ctk_init (NULL, NULL);
 

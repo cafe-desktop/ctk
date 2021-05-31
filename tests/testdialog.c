@@ -1,9 +1,9 @@
 #include <ctk/ctk.h>
 
 static void
-show_message_dialog1 (GtkWindow *parent)
+show_message_dialog1 (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = CTK_WIDGET (ctk_message_dialog_new (parent,
                                                CTK_DIALOG_MODAL|
@@ -20,10 +20,10 @@ show_message_dialog1 (GtkWindow *parent)
 }
 
 static void
-show_message_dialog1a (GtkWindow *parent)
+show_message_dialog1a (CtkWindow *parent)
 {
-  GtkWidget *dialog;
-  GtkWidget *image;
+  CtkWidget *dialog;
+  CtkWidget *image;
 
   dialog = CTK_WIDGET (ctk_message_dialog_new (parent,
                                                CTK_DIALOG_MODAL|
@@ -45,9 +45,9 @@ show_message_dialog1a (GtkWindow *parent)
 }
 
 static void
-show_message_dialog2 (GtkWindow *parent)
+show_message_dialog2 (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = CTK_WIDGET (ctk_message_dialog_new (parent,
                                                CTK_DIALOG_MODAL|
@@ -68,9 +68,9 @@ show_message_dialog2 (GtkWindow *parent)
 }
 
 static void
-show_color_chooser (GtkWindow *parent)
+show_color_chooser (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_color_chooser_dialog_new ("Builtin", parent);
 
@@ -79,9 +79,9 @@ show_color_chooser (GtkWindow *parent)
 }
 
 static void
-show_color_chooser_generic (GtkWindow *parent)
+show_color_chooser_generic (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = g_object_new (CTK_TYPE_COLOR_CHOOSER_DIALOG,
                          "title", "Generic Builtin",
@@ -93,9 +93,9 @@ show_color_chooser_generic (GtkWindow *parent)
 }
 
 static void
-add_content (GtkWidget *dialog)
+add_content (CtkWidget *dialog)
 {
-  GtkWidget *label;
+  CtkWidget *label;
 
   label = ctk_label_new ("content");
   g_object_set (label, "margin", 50, NULL);
@@ -105,16 +105,16 @@ add_content (GtkWidget *dialog)
 }
 
 static void
-add_buttons (GtkWidget *dialog)
+add_buttons (CtkWidget *dialog)
 {
   ctk_dialog_add_button (CTK_DIALOG (dialog), "Done", CTK_RESPONSE_OK);
   ctk_dialog_set_default_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
 }
 
 static void
-show_dialog (GtkWindow *parent)
+show_dialog (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_dialog_new_with_buttons ("Simple", parent, 
 					CTK_DIALOG_MODAL|CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -128,9 +128,9 @@ show_dialog (GtkWindow *parent)
 }
 
 static void
-show_dialog_with_header (GtkWindow *parent)
+show_dialog_with_header (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_dialog_new_with_buttons ("With Header", parent, 
 					CTK_DIALOG_MODAL|CTK_DIALOG_DESTROY_WITH_PARENT|CTK_DIALOG_USE_HEADER_BAR,
@@ -144,9 +144,9 @@ show_dialog_with_header (GtkWindow *parent)
 }
 
 static void
-show_dialog_with_buttons (GtkWindow *parent)
+show_dialog_with_buttons (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_dialog_new_with_buttons ("With Buttons", parent, 
 					CTK_DIALOG_MODAL|CTK_DIALOG_DESTROY_WITH_PARENT,
@@ -161,9 +161,9 @@ show_dialog_with_buttons (GtkWindow *parent)
 }
 
 static void
-show_dialog_with_header_buttons (GtkWindow *parent)
+show_dialog_with_header_buttons (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_dialog_new_with_buttons ("Header & Buttons", parent, 
 					CTK_DIALOG_MODAL|CTK_DIALOG_DESTROY_WITH_PARENT|CTK_DIALOG_USE_HEADER_BAR,
@@ -178,14 +178,14 @@ show_dialog_with_header_buttons (GtkWindow *parent)
 }
 
 static void
-show_dialog_with_header_buttons2 (GtkWindow *parent)
+show_dialog_with_header_buttons2 (CtkWindow *parent)
 {
-  GtkBuilder *builder;
-  GtkWidget *dialog;
+  CtkBuilder *builder;
+  CtkWidget *dialog;
 
   builder = ctk_builder_new ();
   ctk_builder_add_from_file (builder, "dialog.ui", NULL);
-  dialog = (GtkWidget *)ctk_builder_get_object (builder, "dialog");
+  dialog = (CtkWidget *)ctk_builder_get_object (builder, "dialog");
   g_object_unref (builder);
 
   ctk_dialog_run (CTK_DIALOG (dialog));
@@ -193,11 +193,11 @@ show_dialog_with_header_buttons2 (GtkWindow *parent)
 }
 
 typedef struct {
-  GtkDialog parent;
+  CtkDialog parent;
 } MyDialog;
 
 typedef struct {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 } MyDialogClass;
 
 G_DEFINE_TYPE (MyDialog, my_dialog, CTK_TYPE_DIALOG);
@@ -224,9 +224,9 @@ my_dialog_class_init (MyDialogClass *class)
 }
 
 static void
-show_dialog_from_template (GtkWindow *parent)
+show_dialog_from_template (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = g_object_new (my_dialog_get_type (),
                          "title", "Template",
@@ -240,9 +240,9 @@ show_dialog_from_template (GtkWindow *parent)
 }
 
 static void
-show_dialog_flex_template (GtkWindow *parent)
+show_dialog_flex_template (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
   gboolean use_header;
 
   g_object_get (ctk_settings_get_default (),
@@ -261,13 +261,13 @@ show_dialog_flex_template (GtkWindow *parent)
 }
 
 typedef struct {
-  GtkDialog parent;
+  CtkDialog parent;
 
-  GtkWidget *content;
+  CtkWidget *content;
 } MyDialog2;
 
 typedef struct {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 } MyDialog2Class;
 
 G_DEFINE_TYPE (MyDialog2, my_dialog2, CTK_TYPE_DIALOG);
@@ -296,9 +296,9 @@ my_dialog2_class_init (MyDialog2Class *class)
 }
 
 static void
-show_dialog_from_template_with_header (GtkWindow *parent)
+show_dialog_from_template_with_header (CtkWindow *parent)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = g_object_new (my_dialog2_get_type (),
                          "transient-for", parent,
@@ -315,10 +315,10 @@ show_dialog_from_template_with_header (GtkWindow *parent)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *box;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *box;
+  CtkWidget *button;
 
   ctk_init (NULL, NULL);
 

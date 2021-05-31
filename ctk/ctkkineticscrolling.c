@@ -56,11 +56,11 @@ typedef enum {
   CTK_KINETIC_SCROLLING_PHASE_DECELERATING,
   CTK_KINETIC_SCROLLING_PHASE_OVERSHOOTING,
   CTK_KINETIC_SCROLLING_PHASE_FINISHED,
-} GtkKineticScrollingPhase;
+} CtkKineticScrollingPhase;
 
-struct _GtkKineticScrolling
+struct _CtkKineticScrolling
 {
-  GtkKineticScrollingPhase phase;
+  CtkKineticScrollingPhase phase;
   gdouble lower;
   gdouble upper;
   gdouble overshoot_width;
@@ -76,12 +76,12 @@ struct _GtkKineticScrolling
   gdouble velocity;
 };
 
-static void ctk_kinetic_scrolling_init_overshoot (GtkKineticScrolling *data,
+static void ctk_kinetic_scrolling_init_overshoot (CtkKineticScrolling *data,
                                                   gdouble              equilibrium_position,
                                                   gdouble              initial_position,
                                                   gdouble              initial_velocity);
 
-GtkKineticScrolling *
+CtkKineticScrolling *
 ctk_kinetic_scrolling_new (gdouble lower,
                            gdouble upper,
                            gdouble overshoot_width,
@@ -90,9 +90,9 @@ ctk_kinetic_scrolling_new (gdouble lower,
                            gdouble initial_position,
                            gdouble initial_velocity)
 {
-  GtkKineticScrolling *data;
+  CtkKineticScrolling *data;
 
-  data = g_slice_new0 (GtkKineticScrolling);
+  data = g_slice_new0 (CtkKineticScrolling);
   data->lower = lower;
   data->upper = upper;
   data->decel_friction = decel_friction;
@@ -125,13 +125,13 @@ ctk_kinetic_scrolling_new (gdouble lower,
 }
 
 void
-ctk_kinetic_scrolling_free (GtkKineticScrolling *kinetic)
+ctk_kinetic_scrolling_free (CtkKineticScrolling *kinetic)
 {
-  g_slice_free (GtkKineticScrolling, kinetic);
+  g_slice_free (CtkKineticScrolling, kinetic);
 }
 
 static void
-ctk_kinetic_scrolling_init_overshoot (GtkKineticScrolling *data,
+ctk_kinetic_scrolling_init_overshoot (CtkKineticScrolling *data,
                                       gdouble              equilibrium_position,
                                       gdouble              initial_position,
                                       gdouble              initial_velocity)
@@ -144,7 +144,7 @@ ctk_kinetic_scrolling_init_overshoot (GtkKineticScrolling *data,
 }
 
 gboolean
-ctk_kinetic_scrolling_tick (GtkKineticScrolling *data,
+ctk_kinetic_scrolling_tick (CtkKineticScrolling *data,
                             gdouble              time_delta,
                             gdouble             *position,
                             gdouble             *velocity)

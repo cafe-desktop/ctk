@@ -35,7 +35,7 @@ typedef enum {
   SECTION_BOOKMARKS,
   SECTION_OTHER_LOCATIONS,
   N_SECTIONS
-} GtkPlacesSidebarSectionType;
+} CtkPlacesSidebarSectionType;
 
 typedef enum {
   PLACES_INVALID,
@@ -51,9 +51,9 @@ typedef enum {
   PLACES_OTHER_LOCATIONS,
   PLACES_STARRED_LOCATION,
   N_PLACES
-} GtkPlacesSidebarPlaceType;
+} CtkPlacesSidebarPlaceType;
 
-gchar *ctk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar);
+gchar *ctk_places_sidebar_get_location_title (CtkPlacesSidebar *sidebar);
 
 G_END_DECLS
 

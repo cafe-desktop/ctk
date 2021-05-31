@@ -23,15 +23,15 @@
 #include "testprintfileoperation.h"
 
 static void
-request_page_setup (GtkPrintOperation *operation,
-		    GtkPrintContext *context,
+request_page_setup (CtkPrintOperation *operation,
+		    CtkPrintContext *context,
 		    int page_nr,
-		    GtkPageSetup *setup)
+		    CtkPageSetup *setup)
 {
   /* Make the second page landscape mode a5 */
   if (page_nr == 1)
     {
-      GtkPaperSize *a5_size = ctk_paper_size_new ("iso_a5");
+      CtkPaperSize *a5_size = ctk_paper_size_new ("iso_a5");
       
       ctk_page_setup_set_orientation (setup, CTK_PAGE_ORIENTATION_LANDSCAPE);
       ctk_page_setup_set_paper_size (setup, a5_size);
@@ -40,8 +40,8 @@ request_page_setup (GtkPrintOperation *operation,
 }
 
 static void
-draw_page (GtkPrintOperation *operation,
-	   GtkPrintContext *context,
+draw_page (CtkPrintOperation *operation,
+	   CtkPrintContext *context,
 	   int page_nr)
 {
   cairo_t *cr;
@@ -95,7 +95,7 @@ draw_page (GtkPrintOperation *operation,
 int
 main (int argc, char **argv)
 {
-  GtkPrintOperation *print;
+  CtkPrintOperation *print;
   TestPrintFileOperation *print_file;
 
   ctk_init (&argc, &argv);
@@ -109,7 +109,7 @@ main (int argc, char **argv)
   g_signal_connect (print, "request_page_setup", G_CALLBACK (request_page_setup), NULL);
   ctk_print_operation_run (print, CTK_PRINT_OPERATION_ACTION_EXPORT, NULL, NULL);
 
-  /* Test subclassing of GtkPrintOperation */
+  /* Test subclassing of CtkPrintOperation */
   print_file = test_print_file_operation_new ("testprint.c");
   test_print_file_operation_set_font_size (print_file, 12.0);
   ctk_print_operation_set_export_filename (CTK_PRINT_OPERATION (print_file), "test2.pdf");

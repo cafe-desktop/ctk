@@ -5,12 +5,12 @@ static void
 new_window (GApplication *app,
             GFile        *file)
 {
-  GtkWidget *window, *scrolled, *view, *overlay;
-  GtkWidget *header;
+  CtkWidget *window, *scrolled, *view, *overlay;
+  CtkWidget *header;
 
   window = ctk_application_window_new (CTK_APPLICATION (app));
   ctk_application_window_set_show_menubar (CTK_APPLICATION_WINDOW (window), FALSE);
-  ctk_window_set_default_size ((GtkWindow*)window, 640, 480);
+  ctk_window_set_default_size ((CtkWindow*)window, 640, 480);
   ctk_window_set_title (CTK_WINDOW (window), "Sunny");
   ctk_window_set_icon_name (CTK_WINDOW (window), "sunny");
 
@@ -38,7 +38,7 @@ new_window (GApplication *app,
 
       if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
         {
-          GtkTextBuffer *buffer;
+          CtkTextBuffer *buffer;
 
           buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
           ctk_text_buffer_set_text (buffer, contents, length);
@@ -67,8 +67,8 @@ open (GApplication  *application,
     new_window (application, files[i]);
 }
 
-typedef GtkApplication MenuButton;
-typedef GtkApplicationClass MenuButtonClass;
+typedef CtkApplication MenuButton;
+typedef CtkApplicationClass MenuButtonClass;
 
 G_DEFINE_TYPE (MenuButton, menu_button, CTK_TYPE_APPLICATION)
 
@@ -92,7 +92,7 @@ quit_app (GSimpleAction *action,
           gpointer       user_data)
 {
   GList *list, *next;
-  GtkWindow *win;
+  CtkWindow *win;
 
   g_print ("Going down...\n");
 
@@ -127,7 +127,7 @@ static GActionEntry app_entries[] = {
 static void
 startup (GApplication *application)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
 
   G_APPLICATION_CLASS (menu_button_parent_class)->startup (application);
 

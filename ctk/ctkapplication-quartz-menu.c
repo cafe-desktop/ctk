@@ -39,30 +39,30 @@
 
 @interface GNSMenu : NSMenu
 {
-  GtkMenuTracker *tracker;
+  CtkMenuTracker *tracker;
 }
 
-- (id)initWithTitle:(NSString *)title model:(GMenuModel *)model observable:(GtkActionObservable *)observable;
+- (id)initWithTitle:(NSString *)title model:(GMenuModel *)model observable:(CtkActionObservable *)observable;
 
-- (id)initWithTitle:(NSString *)title trackerItem:(GtkMenuTrackerItem *)trackerItem;
+- (id)initWithTitle:(NSString *)title trackerItem:(CtkMenuTrackerItem *)trackerItem;
 
 @end
 
-@interface NSMenuItem (GtkMenuTrackerItem)
+@interface NSMenuItem (CtkMenuTrackerItem)
 
-+ (id)menuItemForTrackerItem:(GtkMenuTrackerItem *)trackerItem;
++ (id)menuItemForTrackerItem:(CtkMenuTrackerItem *)trackerItem;
 
 @end
 
 @interface GNSMenuItem : NSMenuItem
 {
-  GtkMenuTrackerItem *trackerItem;
+  CtkMenuTrackerItem *trackerItem;
   gulong trackerItemChangedHandler;
   GCancellable *cancellable;
   BOOL isSpecial;
 }
 
-- (id)initWithTrackerItem:(GtkMenuTrackerItem *)aTrackerItem;
+- (id)initWithTrackerItem:(CtkMenuTrackerItem *)aTrackerItem;
 
 - (void)didChangeLabel;
 - (void)didChangeIcon;
@@ -103,7 +103,7 @@ icon_loaded (GObject      *object,
              GAsyncResult *result,
              gpointer      user_data)
 {
-  GtkIconInfo *info = CTK_ICON_INFO (object);
+  CtkIconInfo *info = CTK_ICON_INFO (object);
   GNSMenuItem *item = user_data;
   GError *error = NULL;
   GdkPixbuf *pixbuf;
@@ -162,7 +162,7 @@ icon_loaded (GObject      *object,
   return ctk_menu_tracker_item_get_sensitive (trackerItem) ? YES : NO;
 }
 
-- (id)initWithTrackerItem:(GtkMenuTrackerItem *)aTrackerItem
+- (id)initWithTrackerItem:(CtkMenuTrackerItem *)aTrackerItem
 {
   self = [super initWithTitle:@""
                        action:@selector(didSelectItem:)
@@ -277,8 +277,8 @@ icon_loaded (GObject      *object,
       static GdkRGBA warning;
       static GdkRGBA error;
 
-      GtkIconTheme *theme;
-      GtkIconInfo *info;
+      CtkIconTheme *theme;
+      CtkIconInfo *info;
       gint scale = 1;
 
       if (!parsed)
@@ -366,9 +366,9 @@ icon_loaded (GObject      *object,
 
 @end
 
-@implementation NSMenuItem (GtkMenuTrackerItem)
+@implementation NSMenuItem (CtkMenuTrackerItem)
 
-+ (id)menuItemForTrackerItem:(GtkMenuTrackerItem *)trackerItem
++ (id)menuItemForTrackerItem:(CtkMenuTrackerItem *)trackerItem
 {
   if (ctk_menu_tracker_item_get_is_separator (trackerItem))
     return [NSMenuItem separatorItem];
@@ -379,7 +379,7 @@ icon_loaded (GObject      *object,
 @end
 
 static void
-menu_item_inserted (GtkMenuTrackerItem *item,
+menu_item_inserted (CtkMenuTrackerItem *item,
                     gint                position,
                     gpointer            user_data)
 {
@@ -406,7 +406,7 @@ menu_item_removed (gint     position,
 
 @implementation GNSMenu
 
-- (id)initWithTitle:(NSString *)title model:(GMenuModel *)model observable:(GtkActionObservable *)observable
+- (id)initWithTitle:(NSString *)title model:(GMenuModel *)model observable:(CtkActionObservable *)observable
 {
   self = [super initWithTitle:title];
 
@@ -426,7 +426,7 @@ menu_item_removed (gint     position,
   return self;
 }
 
-- (id)initWithTitle:(NSString *)title trackerItem:(GtkMenuTrackerItem *)trackerItem
+- (id)initWithTitle:(NSString *)title trackerItem:(CtkMenuTrackerItem *)trackerItem
 {
   self = [super initWithTitle:title];
 
@@ -455,7 +455,7 @@ menu_item_removed (gint     position,
 
 void
 ctk_application_impl_quartz_setup_menu (GMenuModel     *model,
-                                        GtkActionMuxer *muxer)
+                                        CtkActionMuxer *muxer)
 {
   NSMenu *menu;
 

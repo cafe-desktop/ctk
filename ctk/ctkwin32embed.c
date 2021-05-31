@@ -30,7 +30,7 @@ static guint message_type[CTK_WIN32_EMBED_LAST];
 static GSList *current_messages;
 
 guint
-_ctk_win32_embed_message_type (GtkWin32EmbedMessageType type)
+_ctk_win32_embed_message_type (CtkWin32EmbedMessageType type)
 {
   if (type < 0 || type >= CTK_WIN32_EMBED_LAST)
     return 0;
@@ -67,7 +67,7 @@ _ctk_win32_embed_pop_message (void)
 
 void
 _ctk_win32_embed_send (GdkWindow               *recipient,
-		       GtkWin32EmbedMessageType message,
+		       CtkWin32EmbedMessageType message,
 		       WPARAM		        wparam,
 		       LPARAM			lparam)
 {
@@ -78,7 +78,7 @@ _ctk_win32_embed_send (GdkWindow               *recipient,
 
 void
 _ctk_win32_embed_send_focus_message (GdkWindow               *recipient,
-				     GtkWin32EmbedMessageType message,
+				     CtkWin32EmbedMessageType message,
 				     WPARAM		      wparam)
 {
   int lparam = 0;

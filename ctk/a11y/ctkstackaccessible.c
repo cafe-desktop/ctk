@@ -23,14 +23,14 @@
 #include "ctkwidgetprivate.h"
 
 
-G_DEFINE_TYPE (GtkStackAccessible, ctk_stack_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (CtkStackAccessible, ctk_stack_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static AtkObject*
 ctk_stack_accessible_ref_child (AtkObject *obj,
                                 int        i)
 {
-  GtkWidget *stack = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
-  GtkWidget *visible_child;
+  CtkWidget *stack = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
+  CtkWidget *visible_child;
 
   if (stack == NULL)
     return NULL;
@@ -49,7 +49,7 @@ ctk_stack_accessible_ref_child (AtkObject *obj,
 static int
 ctk_stack_accessible_get_n_children (AtkObject *obj)
 {
-  GtkWidget *stack = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
+  CtkWidget *stack = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 
   if (stack == NULL)
     return 0;
@@ -61,10 +61,10 @@ ctk_stack_accessible_get_n_children (AtkObject *obj)
 }
 
 static void
-ctk_stack_accessible_class_init (GtkStackAccessibleClass *klass)
+ctk_stack_accessible_class_init (CtkStackAccessibleClass *klass)
 {
   AtkObjectClass *class                        = ATK_OBJECT_CLASS (klass);
-  GtkContainerAccessibleClass *container_class = (GtkContainerAccessibleClass*)klass;
+  CtkContainerAccessibleClass *container_class = (CtkContainerAccessibleClass*)klass;
 
   class->get_n_children = ctk_stack_accessible_get_n_children;
   class->ref_child      = ctk_stack_accessible_ref_child;
@@ -77,13 +77,13 @@ ctk_stack_accessible_class_init (GtkStackAccessibleClass *klass)
 }
 
 static void
-ctk_stack_accessible_init (GtkStackAccessible *bar) {}
+ctk_stack_accessible_init (CtkStackAccessible *bar) {}
 
 
 void
-ctk_stack_accessible_update_visible_child (GtkStack  *stack,
-                                           GtkWidget *old_visible_child,
-                                           GtkWidget *new_visible_child)
+ctk_stack_accessible_update_visible_child (CtkStack  *stack,
+                                           CtkWidget *old_visible_child,
+                                           CtkWidget *new_visible_child)
 {
   AtkObject *stack_accessible = _ctk_widget_peek_accessible (CTK_WIDGET (stack));
 

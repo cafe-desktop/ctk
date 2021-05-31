@@ -27,23 +27,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_EDITABLE            (ctk_cell_editable_get_type ())
-#define CTK_CELL_EDITABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_EDITABLE, GtkCellEditable))
-#define CTK_CELL_EDITABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_CELL_EDITABLE, GtkCellEditableIface))
+#define CTK_CELL_EDITABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_EDITABLE, CtkCellEditable))
+#define CTK_CELL_EDITABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_CELL_EDITABLE, CtkCellEditableIface))
 #define CTK_IS_CELL_EDITABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_EDITABLE))
-#define CTK_CELL_EDITABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_CELL_EDITABLE, GtkCellEditableIface))
+#define CTK_CELL_EDITABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_CELL_EDITABLE, CtkCellEditableIface))
 
-typedef struct _GtkCellEditable      GtkCellEditable; /* Dummy typedef */
-typedef struct _GtkCellEditableIface GtkCellEditableIface;
+typedef struct _CtkCellEditable      CtkCellEditable; /* Dummy typedef */
+typedef struct _CtkCellEditableIface CtkCellEditableIface;
 
 /**
- * GtkCellEditableIface:
+ * CtkCellEditableIface:
  * @editing_done: Signal is a sign for the cell renderer to update its
  *    value from the cell_editable.
  * @remove_widget: Signal is meant to indicate that the cell is
  *    finished editing, and the widget may now be destroyed.
  * @start_editing: Begins editing on a cell_editable.
  */
-struct _GtkCellEditableIface
+struct _CtkCellEditableIface
 {
   /*< private >*/
   GTypeInterface g_iface;
@@ -51,11 +51,11 @@ struct _GtkCellEditableIface
   /*< public >*/
 
   /* signals */
-  void (* editing_done)  (GtkCellEditable *cell_editable);
-  void (* remove_widget) (GtkCellEditable *cell_editable);
+  void (* editing_done)  (CtkCellEditable *cell_editable);
+  void (* remove_widget) (CtkCellEditable *cell_editable);
 
   /* virtual table */
-  void (* start_editing) (GtkCellEditable *cell_editable,
+  void (* start_editing) (CtkCellEditable *cell_editable,
 			  GdkEvent        *event);
 };
 
@@ -64,12 +64,12 @@ GDK_AVAILABLE_IN_ALL
 GType ctk_cell_editable_get_type      (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_editable_start_editing (GtkCellEditable *cell_editable,
+void  ctk_cell_editable_start_editing (CtkCellEditable *cell_editable,
 				       GdkEvent        *event);
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_editable_editing_done  (GtkCellEditable *cell_editable);
+void  ctk_cell_editable_editing_done  (CtkCellEditable *cell_editable);
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_editable_remove_widget (GtkCellEditable *cell_editable);
+void  ctk_cell_editable_remove_widget (CtkCellEditable *cell_editable);
 
 
 G_END_DECLS

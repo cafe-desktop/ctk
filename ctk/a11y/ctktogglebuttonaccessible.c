@@ -22,13 +22,13 @@
 #include "ctktogglebuttonaccessible.h"
 
 
-G_DEFINE_TYPE (GtkToggleButtonAccessible, ctk_toggle_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
+G_DEFINE_TYPE (CtkToggleButtonAccessible, ctk_toggle_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
 
 static void
-ctk_toggle_button_accessible_toggled (GtkWidget *widget)
+ctk_toggle_button_accessible_toggled (CtkWidget *widget)
 {
   AtkObject *accessible;
-  GtkToggleButton *toggle_button;
+  CtkToggleButton *toggle_button;
 
   toggle_button = CTK_TOGGLE_BUTTON (widget);
 
@@ -53,7 +53,7 @@ static void
 ctk_toggle_button_accessible_notify_ctk (GObject    *obj,
                                          GParamSpec *pspec)
 {
-  GtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (obj);
+  CtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (obj);
   AtkObject *atk_obj;
   gboolean sensitive;
   gboolean inconsistent;
@@ -81,8 +81,8 @@ static AtkStateSet*
 ctk_toggle_button_accessible_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
-  GtkToggleButton *toggle_button;
-  GtkWidget *widget;
+  CtkToggleButton *toggle_button;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
@@ -104,10 +104,10 @@ ctk_toggle_button_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-ctk_toggle_button_accessible_class_init (GtkToggleButtonAccessibleClass *klass)
+ctk_toggle_button_accessible_class_init (CtkToggleButtonAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   widget_class->notify_ctk = ctk_toggle_button_accessible_notify_ctk;
 
@@ -116,6 +116,6 @@ ctk_toggle_button_accessible_class_init (GtkToggleButtonAccessibleClass *klass)
 }
 
 static void
-ctk_toggle_button_accessible_init (GtkToggleButtonAccessible *button)
+ctk_toggle_button_accessible_init (CtkToggleButtonAccessible *button)
 {
 }

@@ -21,12 +21,12 @@
 /**
  * SECTION:ctkgesturerotate
  * @Short_description: Rotate gesture
- * @Title: GtkGestureRotate
- * @See_also: #GtkGestureZoom
+ * @Title: CtkGestureRotate
+ * @See_also: #CtkGestureZoom
  *
- * #GtkGestureRotate is a #GtkGesture implementation able to recognize
+ * #CtkGestureRotate is a #CtkGesture implementation able to recognize
  * 2-finger rotations, whenever the angle between both handled sequences
- * changes, the #GtkGestureRotate::angle-changed signal is emitted.
+ * changes, the #CtkGestureRotate::angle-changed signal is emitted.
  */
 
 #include "config.h"
@@ -36,14 +36,14 @@
 #include "ctkmarshalers.h"
 #include "ctkintl.h"
 
-typedef struct _GtkGestureRotatePrivate GtkGestureRotatePrivate;
+typedef struct _CtkGestureRotatePrivate CtkGestureRotatePrivate;
 
 enum {
   ANGLE_CHANGED,
   LAST_SIGNAL
 };
 
-struct _GtkGestureRotatePrivate
+struct _CtkGestureRotatePrivate
 {
   gdouble initial_angle;
   gdouble accum_touchpad_angle;
@@ -51,10 +51,10 @@ struct _GtkGestureRotatePrivate
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureRotate, ctk_gesture_rotate, CTK_TYPE_GESTURE)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkGestureRotate, ctk_gesture_rotate, CTK_TYPE_GESTURE)
 
 static void
-ctk_gesture_rotate_init (GtkGestureRotate *gesture)
+ctk_gesture_rotate_init (CtkGestureRotate *gesture)
 {
 }
 
@@ -74,13 +74,13 @@ ctk_gesture_rotate_constructor (GType                  type,
 }
 
 static gboolean
-_ctk_gesture_rotate_get_angle (GtkGestureRotate *rotate,
+_ctk_gesture_rotate_get_angle (CtkGestureRotate *rotate,
                                gdouble          *angle)
 {
-  GtkGestureRotatePrivate *priv;
+  CtkGestureRotatePrivate *priv;
   const GdkEvent *last_event;
   gdouble x1, y1, x2, y2;
-  GtkGesture *gesture;
+  CtkGesture *gesture;
   gdouble dx, dy;
   GList *sequences = NULL;
   gboolean retval = FALSE;
@@ -131,9 +131,9 @@ _ctk_gesture_rotate_get_angle (GtkGestureRotate *rotate,
 }
 
 static gboolean
-_ctk_gesture_rotate_check_emit (GtkGestureRotate *gesture)
+_ctk_gesture_rotate_check_emit (CtkGestureRotate *gesture)
 {
-  GtkGestureRotatePrivate *priv;
+  CtkGestureRotatePrivate *priv;
   gdouble angle, delta;
 
   if (!_ctk_gesture_rotate_get_angle (gesture, &angle))
@@ -150,25 +150,25 @@ _ctk_gesture_rotate_check_emit (GtkGestureRotate *gesture)
 }
 
 static void
-ctk_gesture_rotate_begin (GtkGesture       *gesture,
+ctk_gesture_rotate_begin (CtkGesture       *gesture,
                           GdkEventSequence *sequence)
 {
-  GtkGestureRotate *rotate = CTK_GESTURE_ROTATE (gesture);
-  GtkGestureRotatePrivate *priv;
+  CtkGestureRotate *rotate = CTK_GESTURE_ROTATE (gesture);
+  CtkGestureRotatePrivate *priv;
 
   priv = ctk_gesture_rotate_get_instance_private (rotate);
   _ctk_gesture_rotate_get_angle (rotate, &priv->initial_angle);
 }
 
 static void
-ctk_gesture_rotate_update (GtkGesture       *gesture,
+ctk_gesture_rotate_update (CtkGesture       *gesture,
                            GdkEventSequence *sequence)
 {
   _ctk_gesture_rotate_check_emit (CTK_GESTURE_ROTATE (gesture));
 }
 
 static gboolean
-ctk_gesture_rotate_filter_event (GtkEventController *controller,
+ctk_gesture_rotate_filter_event (CtkEventController *controller,
                                  const GdkEvent     *event)
 {
   /* Let 2-finger touchpad pinch events go through */
@@ -184,11 +184,11 @@ ctk_gesture_rotate_filter_event (GtkEventController *controller,
 }
 
 static gboolean
-ctk_gesture_rotate_handle_event (GtkEventController *controller,
+ctk_gesture_rotate_handle_event (CtkEventController *controller,
                                  const GdkEvent     *event)
 {
-  GtkGestureRotate *rotate = CTK_GESTURE_ROTATE (controller);
-  GtkGestureRotatePrivate *priv;
+  CtkGestureRotate *rotate = CTK_GESTURE_ROTATE (controller);
+  CtkGestureRotatePrivate *priv;
 
   priv = ctk_gesture_rotate_get_instance_private (rotate);
 
@@ -205,11 +205,11 @@ ctk_gesture_rotate_handle_event (GtkEventController *controller,
 }
 
 static void
-ctk_gesture_rotate_class_init (GtkGestureRotateClass *klass)
+ctk_gesture_rotate_class_init (CtkGestureRotateClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkEventControllerClass *event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
-  GtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
+  CtkEventControllerClass *event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
+  CtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
 
   object_class->constructor = ctk_gesture_rotate_constructor;
 
@@ -220,7 +220,7 @@ ctk_gesture_rotate_class_init (GtkGestureRotateClass *klass)
   gesture_class->update = ctk_gesture_rotate_update;
 
   /**
-   * GtkGestureRotate::angle-changed:
+   * CtkGestureRotate::angle-changed:
    * @gesture: the object on which the signal is emitted
    * @angle: Current angle in radians
    * @angle_delta: Difference with the starting angle, in radians
@@ -234,7 +234,7 @@ ctk_gesture_rotate_class_init (GtkGestureRotateClass *klass)
     g_signal_new (I_("angle-changed"),
                   CTK_TYPE_GESTURE_ROTATE,
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkGestureRotateClass, angle_changed),
+                  G_STRUCT_OFFSET (CtkGestureRotateClass, angle_changed),
                   NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
@@ -245,17 +245,17 @@ ctk_gesture_rotate_class_init (GtkGestureRotateClass *klass)
 
 /**
  * ctk_gesture_rotate_new:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * Returns a newly created #GtkGesture that recognizes 2-touch
+ * Returns a newly created #CtkGesture that recognizes 2-touch
  * rotation gestures.
  *
- * Returns: a newly created #GtkGestureRotate
+ * Returns: a newly created #CtkGestureRotate
  *
  * Since: 3.14
  **/
-GtkGesture *
-ctk_gesture_rotate_new (GtkWidget *widget)
+CtkGesture *
+ctk_gesture_rotate_new (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -266,7 +266,7 @@ ctk_gesture_rotate_new (GtkWidget *widget)
 
 /**
  * ctk_gesture_rotate_get_angle_delta:
- * @gesture: a #GtkGestureRotate
+ * @gesture: a #CtkGestureRotate
  *
  * If @gesture is active, this function returns the angle difference
  * in radians since the gesture was first recognized. If @gesture is
@@ -277,9 +277,9 @@ ctk_gesture_rotate_new (GtkWidget *widget)
  * Since: 3.14
  **/
 gdouble
-ctk_gesture_rotate_get_angle_delta (GtkGestureRotate *gesture)
+ctk_gesture_rotate_get_angle_delta (CtkGestureRotate *gesture)
 {
-  GtkGestureRotatePrivate *priv;
+  CtkGestureRotatePrivate *priv;
   gdouble angle;
 
   g_return_val_if_fail (CTK_IS_GESTURE_ROTATE (gesture), 0.0);

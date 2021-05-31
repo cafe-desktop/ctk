@@ -58,7 +58,7 @@ switch_default_direction (void)
 }
 
 G_MODULE_EXPORT void
-switch_direction (GtkWidget *widget)
+switch_direction (CtkWidget *widget)
 {
   switch (ctk_widget_get_direction (widget))
     {
@@ -76,9 +76,9 @@ switch_direction (GtkWidget *widget)
 }
 
 G_MODULE_EXPORT void
-swap_child (GtkWidget *window)
+swap_child (CtkWidget *window)
 {
-  GtkWidget *image;
+  CtkWidget *image;
 
   ctk_container_remove (CTK_CONTAINER (window), ctk_bin_get_child (CTK_BIN (window)));
 

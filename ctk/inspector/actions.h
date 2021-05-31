@@ -21,30 +21,30 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_ACTIONS            (ctk_inspector_actions_get_type())
-#define CTK_INSPECTOR_ACTIONS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActions))
-#define CTK_INSPECTOR_ACTIONS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActionsClass))
+#define CTK_INSPECTOR_ACTIONS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_ACTIONS, CtkInspectorActions))
+#define CTK_INSPECTOR_ACTIONS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_ACTIONS, CtkInspectorActionsClass))
 #define CTK_INSPECTOR_IS_ACTIONS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_ACTIONS))
 #define CTK_INSPECTOR_IS_ACTIONS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_ACTIONS))
-#define CTK_INSPECTOR_ACTIONS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActionsClass))
+#define CTK_INSPECTOR_ACTIONS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_ACTIONS, CtkInspectorActionsClass))
 
 
-typedef struct _GtkInspectorActionsPrivate GtkInspectorActionsPrivate;
+typedef struct _CtkInspectorActionsPrivate CtkInspectorActionsPrivate;
 
-typedef struct _GtkInspectorActions
+typedef struct _CtkInspectorActions
 {
-  GtkBox parent;
-  GtkInspectorActionsPrivate *priv;
-} GtkInspectorActions;
+  CtkBox parent;
+  CtkInspectorActionsPrivate *priv;
+} CtkInspectorActions;
 
-typedef struct _GtkInspectorActionsClass
+typedef struct _CtkInspectorActionsClass
 {
-  GtkBoxClass parent;
-} GtkInspectorActionsClass;
+  CtkBoxClass parent;
+} CtkInspectorActionsClass;
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_actions_get_type   (void);
-void       ctk_inspector_actions_set_object (GtkInspectorActions *sl,
+void       ctk_inspector_actions_set_object (CtkInspectorActions *sl,
                                              GObject              *object);
 
 G_END_DECLS

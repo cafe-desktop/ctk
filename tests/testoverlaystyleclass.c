@@ -1,11 +1,11 @@
 #include <ctk/ctk.h>
 
 static void
-child_size_allocate (GtkWidget *child,
+child_size_allocate (CtkWidget *child,
                      GdkRectangle *allocation,
                      gpointer user_data)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   context = ctk_widget_get_style_context (child);
 
   g_print ("Child %p\nHas left? %d\nHas right? %d\nHas top? %d\nHas bottom? %d\n",
@@ -17,13 +17,13 @@ child_size_allocate (GtkWidget *child,
 }
 
 static gboolean
-overlay_get_child_position (GtkOverlay *overlay,
-                            GtkWidget *child,
+overlay_get_child_position (CtkOverlay *overlay,
+                            CtkWidget *child,
                             GdkRectangle *allocation,
                             gpointer user_data)
 {
-  GtkWidget *custom_child = user_data;
-  GtkRequisition req;
+  CtkWidget *custom_child = user_data;
+  CtkRequisition req;
 
   if (child != custom_child)
     return FALSE;
@@ -41,15 +41,15 @@ overlay_get_child_position (GtkOverlay *overlay,
 int 
 main (int argc, char *argv[])
 {
-  GtkWidget *win, *overlay, *grid, *main_child, *child, *label, *sw;
-  GtkCssProvider *provider;
+  CtkWidget *win, *overlay, *grid, *main_child, *child, *label, *sw;
+  CtkCssProvider *provider;
   gchar *str;
 
   ctk_init (&argc, &argv);
 
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (provider,
-                                   "GtkLabel { border: 3px solid black; border-radius: 5px; padding: 2px; }"
+                                   "CtkLabel { border: 3px solid black; border-radius: 5px; padding: 2px; }"
                                    ".top { border-top-style: none; right-radius: 0px; border-top-left-radius: 0px; }"
                                    ".bottom { border-bottom-style: none; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; }"
                                    ".left { border-left-style: none; border-top-left-radius: 0px; border-bottom-left-radius: 0px; }"

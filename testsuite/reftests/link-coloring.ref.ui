@@ -2,16 +2,16 @@
 <!-- Generated with glade 3.16.0 on Mon Nov  4 16:28:50 2013 -->
 <interface>
   <!-- interface-requires ctk+ 3.10 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">A &lt;span color="blue" underline="single"&gt;link&lt;/span&gt; to the &lt;span color="blue" underline="single"&gt;GNOME&lt;/span&gt; website</property>
@@ -24,7 +24,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label2">
+          <object class="CtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">&lt;span color="blue" underline="single"&gt;A normal link&lt;/span&gt;</property>
@@ -37,7 +37,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label3">
+          <object class="CtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">&lt;span color="purple" underline="single"&gt;A visited link&lt;/span&gt;</property>

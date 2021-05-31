@@ -24,44 +24,44 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_STYLE_CASCADE           (_ctk_style_cascade_get_type ())
-#define CTK_STYLE_CASCADE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_STYLE_CASCADE, GtkStyleCascade))
-#define CTK_STYLE_CASCADE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_STYLE_CASCADE, GtkStyleCascadeClass))
+#define CTK_STYLE_CASCADE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_STYLE_CASCADE, CtkStyleCascade))
+#define CTK_STYLE_CASCADE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_STYLE_CASCADE, CtkStyleCascadeClass))
 #define CTK_IS_STYLE_CASCADE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_STYLE_CASCADE))
 #define CTK_IS_STYLE_CASCADE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_STYLE_CASCADE))
-#define CTK_STYLE_CASCADE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STYLE_CASCADE, GtkStyleCascadeClass))
+#define CTK_STYLE_CASCADE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STYLE_CASCADE, CtkStyleCascadeClass))
 
-typedef struct _GtkStyleCascade           GtkStyleCascade;
-typedef struct _GtkStyleCascadeClass      GtkStyleCascadeClass;
+typedef struct _CtkStyleCascade           CtkStyleCascade;
+typedef struct _CtkStyleCascadeClass      CtkStyleCascadeClass;
 
-struct _GtkStyleCascade
+struct _CtkStyleCascade
 {
   GObject object;
 
-  GtkStyleCascade *parent;
+  CtkStyleCascade *parent;
   GArray *providers;
   int scale;
 };
 
-struct _GtkStyleCascadeClass
+struct _CtkStyleCascadeClass
 {
   GObjectClass  parent_class;
 };
 
 GType                 _ctk_style_cascade_get_type               (void) G_GNUC_CONST;
 
-GtkStyleCascade *     _ctk_style_cascade_new                    (void);
+CtkStyleCascade *     _ctk_style_cascade_new                    (void);
 
-void                  _ctk_style_cascade_set_parent             (GtkStyleCascade     *cascade,
-                                                                 GtkStyleCascade     *parent);
-void                  _ctk_style_cascade_set_scale              (GtkStyleCascade     *cascade,
+void                  _ctk_style_cascade_set_parent             (CtkStyleCascade     *cascade,
+                                                                 CtkStyleCascade     *parent);
+void                  _ctk_style_cascade_set_scale              (CtkStyleCascade     *cascade,
                                                                  int                  scale);
-int                   _ctk_style_cascade_get_scale              (GtkStyleCascade     *cascade);
+int                   _ctk_style_cascade_get_scale              (CtkStyleCascade     *cascade);
 
-void                  _ctk_style_cascade_add_provider           (GtkStyleCascade     *cascade,
-                                                                 GtkStyleProvider    *provider,
+void                  _ctk_style_cascade_add_provider           (CtkStyleCascade     *cascade,
+                                                                 CtkStyleProvider    *provider,
                                                                  guint                priority);
-void                  _ctk_style_cascade_remove_provider        (GtkStyleCascade     *cascade,
-                                                                 GtkStyleProvider    *provider);
+void                  _ctk_style_cascade_remove_provider        (CtkStyleCascade     *cascade,
+                                                                 CtkStyleProvider    *provider);
 
 
 G_END_DECLS

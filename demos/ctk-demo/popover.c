@@ -1,26 +1,26 @@
 /* Popovers
  *
  * A bubble-like window containing contextual information or options.
- * GtkPopovers can be attached to any widget, and will be displayed
+ * CtkPopovers can be attached to any widget, and will be displayed
  * within the same window, but on top of all its content.
  */
 
 #include <ctk/ctk.h>
 
 static void
-toggle_changed_cb (GtkToggleButton *button,
-                   GtkWidget       *popover)
+toggle_changed_cb (CtkToggleButton *button,
+                   CtkWidget       *popover)
 {
   ctk_widget_set_visible (popover,
                           ctk_toggle_button_get_active (button));
 }
 
-static GtkWidget *
-create_popover (GtkWidget       *parent,
-                GtkWidget       *child,
-                GtkPositionType  pos)
+static CtkWidget *
+create_popover (CtkWidget       *parent,
+                CtkWidget       *child,
+                CtkPositionType  pos)
 {
-  GtkWidget *popover;
+  CtkWidget *popover;
 
   popover = ctk_popover_new (parent);
   ctk_popover_set_position (CTK_POPOVER (popover), pos);
@@ -31,12 +31,12 @@ create_popover (GtkWidget       *parent,
   return popover;
 }
 
-static GtkWidget *
-create_complex_popover (GtkWidget       *parent,
-                        GtkPositionType  pos)
+static CtkWidget *
+create_complex_popover (CtkWidget       *parent,
+                        CtkPositionType  pos)
 {
-  GtkWidget *popover, *window, *content;
-  GtkBuilder *builder;
+  CtkWidget *popover, *window, *content;
+  CtkBuilder *builder;
 
   builder = ctk_builder_new ();
   ctk_builder_add_from_resource (builder, "/popover/popover.ui", NULL);
@@ -55,12 +55,12 @@ create_complex_popover (GtkWidget       *parent,
 }
 
 static void
-entry_size_allocate_cb (GtkEntry      *entry,
-                        GtkAllocation *allocation,
+entry_size_allocate_cb (CtkEntry      *entry,
+                        CtkAllocation *allocation,
                         gpointer       user_data)
 {
-  GtkEntryIconPosition popover_pos;
-  GtkPopover *popover = user_data;
+  CtkEntryIconPosition popover_pos;
+  CtkPopover *popover = user_data;
   cairo_rectangle_int_t rect;
 
   if (ctk_widget_is_visible (CTK_WIDGET (popover)))
@@ -74,12 +74,12 @@ entry_size_allocate_cb (GtkEntry      *entry,
 }
 
 static void
-entry_icon_press_cb (GtkEntry             *entry,
-                     GtkEntryIconPosition  icon_pos,
+entry_icon_press_cb (CtkEntry             *entry,
+                     CtkEntryIconPosition  icon_pos,
                      GdkEvent             *event,
                      gpointer              user_data)
 {
-  GtkWidget *popover = user_data;
+  CtkWidget *popover = user_data;
   cairo_rectangle_int_t rect;
 
   ctk_entry_get_icon_area (entry, icon_pos, &rect);
@@ -91,12 +91,12 @@ entry_icon_press_cb (GtkEntry             *entry,
 }
 
 static void
-day_selected_cb (GtkCalendar *calendar,
+day_selected_cb (CtkCalendar *calendar,
                  gpointer     user_data)
 {
   cairo_rectangle_int_t rect;
-  GtkAllocation allocation;
-  GtkWidget *popover;
+  CtkAllocation allocation;
+  CtkWidget *popover;
   GdkEvent *event;
 
   event = ctk_get_current_event ();
@@ -122,11 +122,11 @@ day_selected_cb (GtkCalendar *calendar,
   gdk_event_free (event);
 }
 
-GtkWidget *
-do_popover (GtkWidget *do_widget)
+CtkWidget *
+do_popover (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *popover, *box, *widget;
+  static CtkWidget *window = NULL;
+  CtkWidget *popover, *box, *widget;
 
   if (!window)
     {

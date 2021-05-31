@@ -29,18 +29,18 @@
 
 typedef struct _CalendarData
 {
-  GtkWidget *calendar_widget;
-  GtkWidget *flag_checkboxes[6];
+  CtkWidget *calendar_widget;
+  CtkWidget *flag_checkboxes[6];
   gboolean  settings[6];
-  GtkWidget *font_dialog;
-  GtkWidget *window;
-  GtkWidget *prev2_sig;
-  GtkWidget *prev_sig;
-  GtkWidget *last_sig;
-  GtkWidget *month;
+  CtkWidget *font_dialog;
+  CtkWidget *window;
+  CtkWidget *prev2_sig;
+  CtkWidget *prev_sig;
+  CtkWidget *last_sig;
+  CtkWidget *month;
 
   GHashTable    *details_table;
-  GtkTextBuffer *details_buffer;
+  CtkTextBuffer *details_buffer;
   gulong         details_changed;
 } CalendarData;
 
@@ -54,7 +54,7 @@ enum
 };
 
 /*
- * GtkCalendar
+ * CtkCalendar
  */
 
 static void
@@ -137,7 +137,7 @@ calendar_set_signal_strings (char         *sig_str,
 }
 
 static void
-calendar_month_changed (GtkWidget    *widget,
+calendar_month_changed (CtkWidget    *widget,
                              CalendarData *data)
 {
   char buffer[256] = "month_changed: ";
@@ -147,7 +147,7 @@ calendar_month_changed (GtkWidget    *widget,
 }
 
 static void
-calendar_day_selected (GtkWidget    *widget,
+calendar_day_selected (CtkWidget    *widget,
                             CalendarData *data)
 {
   char buffer[256] = "day_selected: ";
@@ -159,7 +159,7 @@ calendar_day_selected (GtkWidget    *widget,
 }
 
 static void
-calendar_day_selected_double_click (GtkWidget    *widget,
+calendar_day_selected_double_click (CtkWidget    *widget,
                                          CalendarData *data)
 {
   char buffer[256] = "day_selected_double_click: ";
@@ -177,7 +177,7 @@ calendar_day_selected_double_click (GtkWidget    *widget,
 }
 
 static void
-calendar_prev_month (GtkWidget    *widget,
+calendar_prev_month (CtkWidget    *widget,
                           CalendarData *data)
 {
   char buffer[256] = "prev_month: ";
@@ -187,7 +187,7 @@ calendar_prev_month (GtkWidget    *widget,
 }
 
 static void
-calendar_next_month (GtkWidget    *widget,
+calendar_next_month (CtkWidget    *widget,
                      CalendarData *data)
 {
   char buffer[256] = "next_month: ";
@@ -197,7 +197,7 @@ calendar_next_month (GtkWidget    *widget,
 }
 
 static void
-calendar_prev_year (GtkWidget    *widget,
+calendar_prev_year (CtkWidget    *widget,
                     CalendarData *data)
 {
   char buffer[256] = "prev_year: ";
@@ -207,7 +207,7 @@ calendar_prev_year (GtkWidget    *widget,
 }
 
 static void
-calendar_next_year (GtkWidget    *widget,
+calendar_next_year (CtkWidget    *widget,
                     CalendarData *data)
 {
   char buffer[256] = "next_year: ";
@@ -231,7 +231,7 @@ calendar_set_flags (CalendarData *calendar)
 }
 
 static void
-calendar_toggle_flag (GtkWidget    *toggle,
+calendar_toggle_flag (CtkWidget    *toggle,
                       CalendarData *calendar)
 {
   gint i;
@@ -244,11 +244,11 @@ calendar_toggle_flag (GtkWidget    *toggle,
   
 }
 
-void calendar_select_font (GtkWidget    *button,
+void calendar_select_font (CtkWidget    *button,
                                  CalendarData *calendar)
 {
   const char *font = NULL;
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
   gchar *data;
 
   if (calendar->window)
@@ -261,14 +261,14 @@ void calendar_select_font (GtkWidget    *button,
           g_object_set_data_full (G_OBJECT (calendar->window), "css-provider", provider, g_object_unref);
         }
       font = ctk_font_chooser_get_font (CTK_FONT_CHOOSER (button));
-      data = g_strdup_printf ("GtkCalendar { font: %s; }", font);
+      data = g_strdup_printf ("CtkCalendar { font: %s; }", font);
       ctk_css_provider_load_from_data (provider, data, -1, NULL);
       g_free (data);
     }
 }
 
 static gchar*
-calendar_detail_cb (GtkCalendar *calendar,
+calendar_detail_cb (CtkCalendar *calendar,
                     guint        year,
                     guint        month,
                     guint        day,
@@ -278,10 +278,10 @@ calendar_detail_cb (GtkCalendar *calendar,
 }
 
 static void
-calendar_details_changed (GtkTextBuffer *buffer,
+calendar_details_changed (CtkTextBuffer *buffer,
                           CalendarData  *data)
 {
-  GtkTextIter start, end;
+  CtkTextIter start, end;
   guint year, month, day;
   gchar *detail;
 
@@ -305,7 +305,7 @@ static void
 demonstrate_details (CalendarData *data)
 {
   static char *rainbow[] = { "#900", "#980", "#390", "#095", "#059", "#309", "#908" };
-  GtkCalendar *calendar = CTK_CALENDAR (data->calendar_widget);
+  CtkCalendar *calendar = CTK_CALENDAR (data->calendar_widget);
   guint year, month, day;
   gchar *detail;
 
@@ -333,7 +333,7 @@ reset_details (CalendarData *data)
 }
 
 static void
-calendar_toggle_details (GtkWidget    *widget,
+calendar_toggle_details (CtkWidget    *widget,
                          CalendarData *data)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget)))
@@ -344,14 +344,14 @@ calendar_toggle_details (GtkWidget    *widget,
                                   NULL, NULL, NULL);
 }
 
-static GtkWidget*
+static CtkWidget*
 create_expander (const char *caption,
-                 GtkWidget  *child,
-                 GtkAlign    halign,
-                 GtkAlign    valign)
+                 CtkWidget  *child,
+                 CtkAlign    halign,
+                 CtkAlign    valign)
 {
-  GtkWidget *expander = ctk_expander_new ("");
-  GtkWidget *label = ctk_expander_get_label_widget (CTK_EXPANDER (expander));
+  CtkWidget *expander = ctk_expander_new ("");
+  CtkWidget *label = ctk_expander_get_label_widget (CTK_EXPANDER (expander));
 
   g_object_set (child,
                 "margin-top", 6,
@@ -368,14 +368,14 @@ create_expander (const char *caption,
   return expander;
 }
 
-static GtkWidget*
+static CtkWidget*
 create_frame (const char *caption,
-              GtkWidget  *child,
-              GtkAlign    halign,
-              GtkAlign    valign)
+              CtkWidget  *child,
+              CtkAlign    halign,
+              CtkAlign    valign)
 {
-  GtkWidget *frame = ctk_frame_new ("");
-  GtkWidget *label = ctk_frame_get_label_widget (CTK_FRAME (frame));
+  CtkWidget *frame = ctk_frame_new ("");
+  CtkWidget *label = ctk_frame_get_label_widget (CTK_FRAME (frame));
 
   g_object_set (child,
                 "margin-top", 6,
@@ -394,7 +394,7 @@ create_frame (const char *caption,
 }
 
 static void
-detail_width_changed (GtkSpinButton *button,
+detail_width_changed (CtkSpinButton *button,
                       CalendarData  *data)
 {
   gint value = (gint) ctk_spin_button_get_value (button);
@@ -402,7 +402,7 @@ detail_width_changed (GtkSpinButton *button,
 }
 
 static void
-detail_height_changed (GtkSpinButton *button,
+detail_height_changed (CtkSpinButton *button,
                       CalendarData  *data)
 {
   gint value = (gint) ctk_spin_button_get_value (button);
@@ -414,12 +414,12 @@ create_calendar(void)
 {
   static CalendarData calendar_data;
 
-  GtkWidget *window, *hpaned, *vbox, *rpane, *hbox;
-  GtkWidget *calendar, *toggle, *scroller, *button;
-  GtkWidget *frame, *label, *bbox, *details;
+  CtkWidget *window, *hpaned, *vbox, *rpane, *hbox;
+  CtkWidget *calendar, *toggle, *scroller, *button;
+  CtkWidget *frame, *label, *bbox, *details;
 
-  GtkSizeGroup *size;
-  GtkStyleContext *context;
+  CtkSizeGroup *size;
+  CtkStyleContext *context;
   PangoFontDescription *font_desc;
   gchar *font;
   gint i;
@@ -445,7 +445,7 @@ create_calendar(void)
     calendar_data.settings[i] = 0;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (CTK_WINDOW (window), "GtkCalendar Example");
+  ctk_window_set_title (CTK_WINDOW (window), "CtkCalendar Example");
   ctk_container_set_border_width (CTK_CONTAINER (window), 12);
   g_signal_connect (window, "destroy",
 		    G_CALLBACK (ctk_main_quit),

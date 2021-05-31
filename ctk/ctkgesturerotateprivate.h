@@ -23,16 +23,16 @@
 #include "ctkgestureprivate.h"
 #include "ctkgesturerotate.h"
 
-struct _GtkGestureRotate
+struct _CtkGestureRotate
 {
-  GtkGesture parent_instance;
+  CtkGesture parent_instance;
 };
 
-struct _GtkGestureRotateClass
+struct _CtkGestureRotateClass
 {
-  GtkGestureClass parent_class;
+  CtkGestureClass parent_class;
 
-  void (* angle_changed) (GtkGestureRotate *gesture,
+  void (* angle_changed) (CtkGestureRotate *gesture,
                           gdouble           angle,
                           gdouble           delta);
   /*< private >*/

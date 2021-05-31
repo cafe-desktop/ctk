@@ -25,7 +25,7 @@
 #include "ctkcsstransformvalueprivate.h"
 #include "ctkcssnumbervalueprivate.h"
 
-typedef union _GtkCssTransform GtkCssTransform;
+typedef union _CtkCssTransform CtkCssTransform;
 
 typedef enum {
   CTK_CSS_TRANSFORM_NONE,
@@ -36,40 +36,40 @@ typedef enum {
   CTK_CSS_TRANSFORM_SKEW,
   CTK_CSS_TRANSFORM_SKEW_X,
   CTK_CSS_TRANSFORM_SKEW_Y
-} GtkCssTransformType;
+} CtkCssTransformType;
 
-union _GtkCssTransform {
-  GtkCssTransformType type;
+union _CtkCssTransform {
+  CtkCssTransformType type;
   struct {
-    GtkCssTransformType type;
+    CtkCssTransformType type;
     cairo_matrix_t      matrix;
   }                   matrix;
   struct {
-    GtkCssTransformType type;
-    GtkCssValue        *x;
-    GtkCssValue        *y;
+    CtkCssTransformType type;
+    CtkCssValue        *x;
+    CtkCssValue        *y;
   }                   translate, scale, skew;
   struct {
-    GtkCssTransformType type;
-    GtkCssValue        *rotate;
+    CtkCssTransformType type;
+    CtkCssValue        *rotate;
   }                   rotate;
   struct {
-    GtkCssTransformType type;
-    GtkCssValue        *skew;
+    CtkCssTransformType type;
+    CtkCssValue        *skew;
   }                   skew_x, skew_y;
 };
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   guint             n_transforms;
-  GtkCssTransform   transforms[1];
+  CtkCssTransform   transforms[1];
 };
 
-static GtkCssValue *    ctk_css_transform_value_alloc           (guint                  n_values);
-static gboolean         ctk_css_transform_value_is_none         (const GtkCssValue     *value);
+static CtkCssValue *    ctk_css_transform_value_alloc           (guint                  n_values);
+static gboolean         ctk_css_transform_value_is_none         (const CtkCssValue     *value);
 
 static void
-ctk_css_transform_clear (GtkCssTransform *transform)
+ctk_css_transform_clear (CtkCssTransform *transform)
 {
   switch (transform->type)
     {
@@ -104,8 +104,8 @@ ctk_css_transform_clear (GtkCssTransform *transform)
 }
 
 static void
-ctk_css_transform_init_identity (GtkCssTransform     *transform,
-                                 GtkCssTransformType  type)
+ctk_css_transform_init_identity (CtkCssTransform     *transform,
+                                 CtkCssTransformType  type)
 {
   switch (type)
     {
@@ -153,7 +153,7 @@ ctk_cairo_matrix_skew (cairo_matrix_t *matrix,
 }
 
 static void
-ctk_css_transform_apply (const GtkCssTransform *transform,
+ctk_css_transform_apply (const CtkCssTransform *transform,
                          cairo_matrix_t        *matrix)
 {
   switch (transform->type)
@@ -199,7 +199,7 @@ ctk_css_transform_apply (const GtkCssTransform *transform,
 
 /* NB: The returned matrix may be invalid */
 static void
-ctk_css_transform_value_compute_matrix (const GtkCssValue *value,
+ctk_css_transform_value_compute_matrix (const CtkCssValue *value,
                                         cairo_matrix_t    *matrix)
 {
   guint i;
@@ -213,7 +213,7 @@ ctk_css_transform_value_compute_matrix (const GtkCssValue *value,
 }
 
 static void
-ctk_css_value_transform_free (GtkCssValue *value)
+ctk_css_value_transform_free (CtkCssValue *value)
 {
   guint i;
 
@@ -222,17 +222,17 @@ ctk_css_value_transform_free (GtkCssValue *value)
       ctk_css_transform_clear (&value->transforms[i]);
     }
 
-  g_slice_free1 (sizeof (GtkCssValue) + sizeof (GtkCssTransform) * (value->n_transforms - 1), value);
+  g_slice_free1 (sizeof (CtkCssValue) + sizeof (CtkCssTransform) * (value->n_transforms - 1), value);
 }
 
 /* returns TRUE if dest == src */
 static gboolean
-ctk_css_transform_compute (GtkCssTransform         *dest,
-                           GtkCssTransform         *src,
+ctk_css_transform_compute (CtkCssTransform         *dest,
+                           CtkCssTransform         *src,
                            guint                    property_id,
-                           GtkStyleProviderPrivate *provider,
-                           GtkCssStyle             *style,
-                           GtkCssStyle             *parent_style)
+                           CtkStyleProviderPrivate *provider,
+                           CtkCssStyle             *style,
+                           CtkCssStyle             *parent_style)
 {
   dest->type = src->type;
 
@@ -271,14 +271,14 @@ ctk_css_transform_compute (GtkCssTransform         *dest,
     }
 }
 
-static GtkCssValue *
-ctk_css_value_transform_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_transform_compute (CtkCssValue             *value,
                                  guint                    property_id,
-                                 GtkStyleProviderPrivate *provider,
-                                 GtkCssStyle             *style,
-                                 GtkCssStyle             *parent_style)
+                                 CtkStyleProviderPrivate *provider,
+                                 CtkCssStyle             *style,
+                                 CtkCssStyle             *parent_style)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
   gboolean changes;
   guint i;
 
@@ -309,8 +309,8 @@ ctk_css_value_transform_compute (GtkCssValue             *value,
 }
 
 static gboolean
-ctk_css_transform_equal (const GtkCssTransform *transform1,
-                         const GtkCssTransform *transform2)
+ctk_css_transform_equal (const CtkCssTransform *transform1,
+                         const CtkCssTransform *transform2)
 {
   if (transform1->type != transform2->type)
     return FALSE;
@@ -347,10 +347,10 @@ ctk_css_transform_equal (const GtkCssTransform *transform1,
 }
 
 static gboolean
-ctk_css_value_transform_equal (const GtkCssValue *value1,
-                               const GtkCssValue *value2)
+ctk_css_value_transform_equal (const CtkCssValue *value1,
+                               const CtkCssValue *value2)
 {
-  const GtkCssValue *larger;
+  const CtkCssValue *larger;
   guint i, n;
 
   n = MIN (value1->n_transforms, value2->n_transforms);
@@ -364,7 +364,7 @@ ctk_css_value_transform_equal (const GtkCssValue *value1,
 
   for (; i < larger->n_transforms; i++)
     {
-      GtkCssTransform transform;
+      CtkCssTransform transform;
 
       ctk_css_transform_init_identity (&transform, larger->transforms[i].type);
 
@@ -546,9 +546,9 @@ ctk_css_transform_matrix_transition (cairo_matrix_t       *result,
 }
 
 static void
-ctk_css_transform_transition (GtkCssTransform       *result,
-                              const GtkCssTransform *start,
-                              const GtkCssTransform *end,
+ctk_css_transform_transition (CtkCssTransform       *result,
+                              const CtkCssTransform *start,
+                              const CtkCssTransform *end,
                               guint                  property_id,
                               double                 progress)
 {
@@ -590,13 +590,13 @@ ctk_css_transform_transition (GtkCssTransform       *result,
     }
 }
 
-static GtkCssValue *
-ctk_css_value_transform_transition (GtkCssValue *start,
-                                    GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_transform_transition (CtkCssValue *start,
+                                    CtkCssValue *end,
                                     guint        property_id,
                                     double       progress)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
   guint i, n;
 
   if (ctk_css_transform_value_is_none (start))
@@ -650,7 +650,7 @@ ctk_css_value_transform_transition (GtkCssValue *start,
 
   for (; i < start->n_transforms; i++)
     {
-      GtkCssTransform transform;
+      CtkCssTransform transform;
 
       ctk_css_transform_init_identity (&transform, start->transforms[i].type);
       ctk_css_transform_transition (&result->transforms[i],
@@ -662,7 +662,7 @@ ctk_css_value_transform_transition (GtkCssValue *start,
     }
   for (; i < end->n_transforms; i++)
     {
-      GtkCssTransform transform;
+      CtkCssTransform transform;
 
       ctk_css_transform_init_identity (&transform, end->transforms[i].type);
       ctk_css_transform_transition (&result->transforms[i],
@@ -679,7 +679,7 @@ ctk_css_value_transform_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_transform_print (const GtkCssTransform *transform,
+ctk_css_transform_print (const CtkCssTransform *transform,
                          GString               *string)
 {
   char buf[G_ASCII_DTOSTR_BUF_SIZE];
@@ -754,7 +754,7 @@ ctk_css_transform_print (const GtkCssTransform *transform,
 }
 
 static void
-ctk_css_value_transform_print (const GtkCssValue *value,
+ctk_css_value_transform_print (const CtkCssValue *value,
                                GString           *string)
 {
   guint i;
@@ -774,7 +774,7 @@ ctk_css_value_transform_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_TRANSFORM = {
+static const CtkCssValueClass CTK_CSS_VALUE_TRANSFORM = {
   ctk_css_value_transform_free,
   ctk_css_value_transform_compute,
   ctk_css_value_transform_equal,
@@ -782,36 +782,36 @@ static const GtkCssValueClass CTK_CSS_VALUE_TRANSFORM = {
   ctk_css_value_transform_print
 };
 
-static GtkCssValue none_singleton = { &CTK_CSS_VALUE_TRANSFORM, 1, 0, {  { CTK_CSS_TRANSFORM_NONE } } };
+static CtkCssValue none_singleton = { &CTK_CSS_VALUE_TRANSFORM, 1, 0, {  { CTK_CSS_TRANSFORM_NONE } } };
 
-static GtkCssValue *
+static CtkCssValue *
 ctk_css_transform_value_alloc (guint n_transforms)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
            
   g_return_val_if_fail (n_transforms > 0, NULL);
          
-  result = _ctk_css_value_alloc (&CTK_CSS_VALUE_TRANSFORM, sizeof (GtkCssValue) + sizeof (GtkCssTransform) * (n_transforms - 1));
+  result = _ctk_css_value_alloc (&CTK_CSS_VALUE_TRANSFORM, sizeof (CtkCssValue) + sizeof (CtkCssTransform) * (n_transforms - 1));
   result->n_transforms = n_transforms;
             
   return result;
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_transform_value_new_none (void)
 {
   return _ctk_css_value_ref (&none_singleton);
 }
 
 static gboolean
-ctk_css_transform_value_is_none (const GtkCssValue *value)
+ctk_css_transform_value_is_none (const CtkCssValue *value)
 {
   return value->n_transforms == 0;
 }
 
 static gboolean
-ctk_css_transform_parse (GtkCssTransform *transform,
-                         GtkCssParser    *parser)
+ctk_css_transform_parse (CtkCssTransform *transform,
+                         CtkCssParser    *parser)
 {
   if (_ctk_css_parser_try (parser, "matrix(", TRUE))
     {
@@ -980,26 +980,26 @@ ctk_css_transform_parse (GtkCssTransform *transform,
   return TRUE;
 }
 
-GtkCssValue *
-_ctk_css_transform_value_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_transform_value_parse (CtkCssParser *parser)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
   GArray *array;
   guint i;
 
   if (_ctk_css_parser_try (parser, "none", TRUE))
     return _ctk_css_transform_value_new_none ();
 
-  array = g_array_new (FALSE, FALSE, sizeof (GtkCssTransform));
+  array = g_array_new (FALSE, FALSE, sizeof (CtkCssTransform));
 
   do {
-    GtkCssTransform transform;
+    CtkCssTransform transform;
 
     if (!ctk_css_transform_parse (&transform, parser))
       {
         for (i = 0; i < array->len; i++)
           {
-            ctk_css_transform_clear (&g_array_index (array, GtkCssTransform, i));
+            ctk_css_transform_clear (&g_array_index (array, CtkCssTransform, i));
           }
         g_array_free (array, TRUE);
         return NULL;
@@ -1008,7 +1008,7 @@ _ctk_css_transform_value_parse (GtkCssParser *parser)
   } while (!_ctk_css_parser_begins_with (parser, ';'));
 
   value = ctk_css_transform_value_alloc (array->len);
-  memcpy (value->transforms, array->data, sizeof (GtkCssTransform) * array->len);
+  memcpy (value->transforms, array->data, sizeof (CtkCssTransform) * array->len);
 
   g_array_free (array, TRUE);
 
@@ -1016,7 +1016,7 @@ _ctk_css_transform_value_parse (GtkCssParser *parser)
 }
 
 gboolean
-_ctk_css_transform_value_get_matrix (const GtkCssValue *transform,
+_ctk_css_transform_value_get_matrix (const CtkCssValue *transform,
                                      cairo_matrix_t    *matrix)
 {
   cairo_matrix_t invert;

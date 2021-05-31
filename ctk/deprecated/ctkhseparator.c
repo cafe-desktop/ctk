@@ -32,31 +32,31 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkhseparator
  * @Short_description: A horizontal separator
- * @Title: GtkHSeparator
- * @See_also: #GtkSeparator
+ * @Title: CtkHSeparator
+ * @See_also: #CtkSeparator
  *
- * The #GtkHSeparator widget is a horizontal separator, used to group the
+ * The #CtkHSeparator widget is a horizontal separator, used to group the
  * widgets within a window. It displays a horizontal line with a shadow to
  * make it appear sunken into the interface.
  *
- * > The #GtkHSeparator widget is not used as a separator within menus.
- * > To create a separator in a menu create an empty #GtkSeparatorMenuItem
+ * > The #CtkHSeparator widget is not used as a separator within menus.
+ * > To create a separator in a menu create an empty #CtkSeparatorMenuItem
  * > widget using ctk_separator_menu_item_new() and add it to the menu with
  * > ctk_menu_shell_append().
  *
- * GtkHSeparator has been deprecated, use #GtkSeparator instead.
+ * CtkHSeparator has been deprecated, use #CtkSeparator instead.
  */
 
 
-G_DEFINE_TYPE (GtkHSeparator, ctk_hseparator, CTK_TYPE_SEPARATOR)
+G_DEFINE_TYPE (CtkHSeparator, ctk_hseparator, CTK_TYPE_SEPARATOR)
 
 static void
-ctk_hseparator_class_init (GtkHSeparatorClass *class)
+ctk_hseparator_class_init (CtkHSeparatorClass *class)
 {
 }
 
 static void
-ctk_hseparator_init (GtkHSeparator *hseparator)
+ctk_hseparator_init (CtkHSeparator *hseparator)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (hseparator),
                                   CTK_ORIENTATION_HORIZONTAL);
@@ -65,13 +65,13 @@ ctk_hseparator_init (GtkHSeparator *hseparator)
 /**
  * ctk_hseparator_new:
  *
- * Creates a new #GtkHSeparator.
+ * Creates a new #CtkHSeparator.
  *
- * Returns: a new #GtkHSeparator.
+ * Returns: a new #CtkHSeparator.
  *
  * Deprecated: 3.2: Use ctk_separator_new() with %CTK_ORIENTATION_HORIZONTAL instead
  */
-GtkWidget *
+CtkWidget *
 ctk_hseparator_new (void)
 {
   return g_object_new (CTK_TYPE_HSEPARATOR, NULL);

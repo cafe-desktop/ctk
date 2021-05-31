@@ -24,25 +24,25 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkKeyHash GtkKeyHash;
+typedef struct _CtkKeyHash CtkKeyHash;
 
-GtkKeyHash *_ctk_key_hash_new           (GdkKeymap       *keymap,
+CtkKeyHash *_ctk_key_hash_new           (GdkKeymap       *keymap,
 					 GDestroyNotify   item_destroy_notify);
-void        _ctk_key_hash_add_entry     (GtkKeyHash      *key_hash,
+void        _ctk_key_hash_add_entry     (CtkKeyHash      *key_hash,
 					 guint            keyval,
 					 GdkModifierType  modifiers,
 					 gpointer         value);
-void        _ctk_key_hash_remove_entry  (GtkKeyHash      *key_hash,
+void        _ctk_key_hash_remove_entry  (CtkKeyHash      *key_hash,
 					 gpointer         value);
-GSList *    _ctk_key_hash_lookup        (GtkKeyHash      *key_hash,
+GSList *    _ctk_key_hash_lookup        (CtkKeyHash      *key_hash,
 					 guint16          hardware_keycode,
 					 GdkModifierType  state,
 					 GdkModifierType  mask,
 					 gint             group);
-GSList *    _ctk_key_hash_lookup_keyval (GtkKeyHash      *key_hash,
+GSList *    _ctk_key_hash_lookup_keyval (CtkKeyHash      *key_hash,
 					 guint            keyval,
 					 GdkModifierType  modifiers);
-void        _ctk_key_hash_free          (GtkKeyHash      *key_hash);
+void        _ctk_key_hash_free          (CtkKeyHash      *key_hash);
 
 G_END_DECLS
 

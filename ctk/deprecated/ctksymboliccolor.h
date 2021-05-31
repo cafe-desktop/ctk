@@ -33,34 +33,34 @@ GDK_DEPRECATED_IN_3_8
 GType              ctk_symbolic_color_get_type    (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_8
-GtkSymbolicColor * ctk_symbolic_color_new_literal (const GdkRGBA      *color);
+CtkSymbolicColor * ctk_symbolic_color_new_literal (const GdkRGBA      *color);
 GDK_DEPRECATED_IN_3_8
-GtkSymbolicColor * ctk_symbolic_color_new_name    (const gchar        *name);
+CtkSymbolicColor * ctk_symbolic_color_new_name    (const gchar        *name);
 GDK_DEPRECATED_IN_3_8
-GtkSymbolicColor * ctk_symbolic_color_new_shade   (GtkSymbolicColor   *color,
+CtkSymbolicColor * ctk_symbolic_color_new_shade   (CtkSymbolicColor   *color,
                                                    gdouble             factor);
 GDK_DEPRECATED_IN_3_8
-GtkSymbolicColor * ctk_symbolic_color_new_alpha   (GtkSymbolicColor   *color,
+CtkSymbolicColor * ctk_symbolic_color_new_alpha   (CtkSymbolicColor   *color,
                                                    gdouble             factor);
 GDK_DEPRECATED_IN_3_8
-GtkSymbolicColor * ctk_symbolic_color_new_mix     (GtkSymbolicColor   *color1,
-                                                   GtkSymbolicColor   *color2,
+CtkSymbolicColor * ctk_symbolic_color_new_mix     (CtkSymbolicColor   *color1,
+                                                   CtkSymbolicColor   *color2,
                                                    gdouble             factor);
 GDK_DEPRECATED_IN_3_8
-GtkSymbolicColor * ctk_symbolic_color_new_win32   (const gchar        *theme_class,
+CtkSymbolicColor * ctk_symbolic_color_new_win32   (const gchar        *theme_class,
                                                    gint                id);
 
 GDK_DEPRECATED_IN_3_8
-GtkSymbolicColor * ctk_symbolic_color_ref         (GtkSymbolicColor   *color);
+CtkSymbolicColor * ctk_symbolic_color_ref         (CtkSymbolicColor   *color);
 GDK_DEPRECATED_IN_3_8
-void               ctk_symbolic_color_unref       (GtkSymbolicColor   *color);
+void               ctk_symbolic_color_unref       (CtkSymbolicColor   *color);
 
 GDK_DEPRECATED_IN_3_8
-char *             ctk_symbolic_color_to_string   (GtkSymbolicColor   *color);
+char *             ctk_symbolic_color_to_string   (CtkSymbolicColor   *color);
 
 GDK_DEPRECATED_IN_3_8
-gboolean           ctk_symbolic_color_resolve     (GtkSymbolicColor   *color,
-                                                   GtkStyleProperties *props,
+gboolean           ctk_symbolic_color_resolve     (CtkSymbolicColor   *color,
+                                                   CtkStyleProperties *props,
                                                    GdkRGBA            *resolved_color);
 
 G_END_DECLS

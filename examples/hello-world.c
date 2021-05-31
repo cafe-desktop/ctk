@@ -1,19 +1,19 @@
 #include <ctk/ctk.h>
 
 static void
-print_hello (GtkWidget *widget,
+print_hello (CtkWidget *widget,
              gpointer   data)
 {
   g_print ("Hello World\n");
 }
 
 static void
-activate (GtkApplication *app,
+activate (CtkApplication *app,
           gpointer        user_data)
 {
-  GtkWidget *window;
-  GtkWidget *button;
-  GtkWidget *button_box;
+  CtkWidget *window;
+  CtkWidget *button;
+  CtkWidget *button_box;
 
   window = ctk_application_window_new (app);
   ctk_window_set_title (CTK_WINDOW (window), "Window");
@@ -34,7 +34,7 @@ int
 main (int    argc,
       char **argv)
 {
-  GtkApplication *app;
+  CtkApplication *app;
   int status;
 
   app = ctk_application_new ("org.ctk.example", G_APPLICATION_FLAGS_NONE);

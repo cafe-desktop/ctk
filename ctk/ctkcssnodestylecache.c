@@ -22,22 +22,22 @@
 #include "ctkdebug.h"
 #include "ctkcssstaticstyleprivate.h"
 
-struct _GtkCssNodeStyleCache {
+struct _CtkCssNodeStyleCache {
   guint        ref_count;
-  GtkCssStyle *style;
+  CtkCssStyle *style;
   GHashTable  *children;
 };
 
-#define UNPACK_DECLARATION(packed) ((GtkCssNodeDeclaration *) (GPOINTER_TO_SIZE (packed) & ~0x3))
+#define UNPACK_DECLARATION(packed) ((CtkCssNodeDeclaration *) (GPOINTER_TO_SIZE (packed) & ~0x3))
 #define UNPACK_FLAGS(packed) (GPOINTER_TO_SIZE (packed) & 0x3)
 #define PACK(decl, first_child, last_child) GSIZE_TO_POINTER (GPOINTER_TO_SIZE (decl) | ((first_child) ? 0x2 : 0) | ((last_child) ? 0x1 : 0))
 
-GtkCssNodeStyleCache *
-ctk_css_node_style_cache_new (GtkCssStyle *style)
+CtkCssNodeStyleCache *
+ctk_css_node_style_cache_new (CtkCssStyle *style)
 {
-  GtkCssNodeStyleCache *result;
+  CtkCssNodeStyleCache *result;
 
-  result = g_slice_new0 (GtkCssNodeStyleCache);
+  result = g_slice_new0 (CtkCssNodeStyleCache);
 
   result->ref_count = 1;
   result->style = g_object_ref (style);
@@ -45,8 +45,8 @@ ctk_css_node_style_cache_new (GtkCssStyle *style)
   return result;
 }
 
-GtkCssNodeStyleCache *
-ctk_css_node_style_cache_ref (GtkCssNodeStyleCache *cache)
+CtkCssNodeStyleCache *
+ctk_css_node_style_cache_ref (CtkCssNodeStyleCache *cache)
 {
   cache->ref_count++; 
 
@@ -54,7 +54,7 @@ ctk_css_node_style_cache_ref (GtkCssNodeStyleCache *cache)
 }
 
 void
-ctk_css_node_style_cache_unref (GtkCssNodeStyleCache *cache)
+ctk_css_node_style_cache_unref (CtkCssNodeStyleCache *cache)
 {
   cache->ref_count--; 
 
@@ -65,19 +65,19 @@ ctk_css_node_style_cache_unref (GtkCssNodeStyleCache *cache)
   if (cache->children)
     g_hash_table_unref (cache->children);
 
-  g_slice_free (GtkCssNodeStyleCache, cache);
+  g_slice_free (CtkCssNodeStyleCache, cache);
 }
 
-GtkCssStyle *
-ctk_css_node_style_cache_get_style (GtkCssNodeStyleCache *cache)
+CtkCssStyle *
+ctk_css_node_style_cache_get_style (CtkCssNodeStyleCache *cache)
 {
   return cache->style;
 }
 
 static gboolean
-may_be_stored_in_cache (GtkCssStyle *style)
+may_be_stored_in_cache (CtkCssStyle *style)
 {
-  GtkCssChange change;
+  CtkCssChange change;
 
   /* If you run your application with
    *   CTK_DEBUG=no-css-cache
@@ -135,14 +135,14 @@ ctk_css_node_style_cache_decl_free (gpointer item)
   ctk_css_node_declaration_unref (UNPACK_DECLARATION (item));
 }
 
-GtkCssNodeStyleCache *
-ctk_css_node_style_cache_insert (GtkCssNodeStyleCache   *parent,
-                                 GtkCssNodeDeclaration  *decl,
+CtkCssNodeStyleCache *
+ctk_css_node_style_cache_insert (CtkCssNodeStyleCache   *parent,
+                                 CtkCssNodeDeclaration  *decl,
                                  gboolean                is_first,
                                  gboolean                is_last,
-                                 GtkCssStyle            *style)
+                                 CtkCssStyle            *style)
 {
-  GtkCssNodeStyleCache *result;
+  CtkCssNodeStyleCache *result;
 
   if (!may_be_stored_in_cache (style))
     return NULL;
@@ -162,13 +162,13 @@ ctk_css_node_style_cache_insert (GtkCssNodeStyleCache   *parent,
   return result;
 }
 
-GtkCssNodeStyleCache *
-ctk_css_node_style_cache_lookup (GtkCssNodeStyleCache        *parent,
-                                 const GtkCssNodeDeclaration *decl,
+CtkCssNodeStyleCache *
+ctk_css_node_style_cache_lookup (CtkCssNodeStyleCache        *parent,
+                                 const CtkCssNodeDeclaration *decl,
                                  gboolean                     is_first,
                                  gboolean                     is_last)
 {
-  GtkCssNodeStyleCache *result;
+  CtkCssNodeStyleCache *result;
 
   if (parent->children == NULL)
     return NULL;

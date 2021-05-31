@@ -4,7 +4,7 @@ gint
 main (gint argc,
       gchar ** argv)
 {
-  GtkWidget *window, *revealer, *box, *widget, *entry;
+  CtkWidget *window, *revealer, *box, *widget, *entry;
 
   ctk_init (&argc, &argv);
 

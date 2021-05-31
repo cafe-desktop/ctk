@@ -37,74 +37,74 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_NOTEBOOK                  (ctk_notebook_get_type ())
-#define CTK_NOTEBOOK(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NOTEBOOK, GtkNotebook))
-#define CTK_NOTEBOOK_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NOTEBOOK, GtkNotebookClass))
+#define CTK_NOTEBOOK(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NOTEBOOK, CtkNotebook))
+#define CTK_NOTEBOOK_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NOTEBOOK, CtkNotebookClass))
 #define CTK_IS_NOTEBOOK(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_NOTEBOOK))
 #define CTK_IS_NOTEBOOK_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_NOTEBOOK))
-#define CTK_NOTEBOOK_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NOTEBOOK, GtkNotebookClass))
+#define CTK_NOTEBOOK_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NOTEBOOK, CtkNotebookClass))
 
 
 typedef enum
 {
   CTK_NOTEBOOK_TAB_FIRST,
   CTK_NOTEBOOK_TAB_LAST
-} GtkNotebookTab;
+} CtkNotebookTab;
 
-typedef struct _GtkNotebook              GtkNotebook;
-typedef struct _GtkNotebookPrivate       GtkNotebookPrivate;
-typedef struct _GtkNotebookClass         GtkNotebookClass;
+typedef struct _CtkNotebook              CtkNotebook;
+typedef struct _CtkNotebookPrivate       CtkNotebookPrivate;
+typedef struct _CtkNotebookClass         CtkNotebookClass;
 
-struct _GtkNotebook
+struct _CtkNotebook
 {
   /*< private >*/
-  GtkContainer container;
+  CtkContainer container;
 
-  GtkNotebookPrivate *priv;
+  CtkNotebookPrivate *priv;
 };
 
-struct _GtkNotebookClass
+struct _CtkNotebookClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
-  void (* switch_page)       (GtkNotebook     *notebook,
-                              GtkWidget       *page,
+  void (* switch_page)       (CtkNotebook     *notebook,
+                              CtkWidget       *page,
 			      guint            page_num);
 
   /* Action signals for keybindings */
-  gboolean (* select_page)     (GtkNotebook       *notebook,
+  gboolean (* select_page)     (CtkNotebook       *notebook,
                                 gboolean           move_focus);
-  gboolean (* focus_tab)       (GtkNotebook       *notebook,
-                                GtkNotebookTab     type);
-  gboolean (* change_current_page) (GtkNotebook   *notebook,
+  gboolean (* focus_tab)       (CtkNotebook       *notebook,
+                                CtkNotebookTab     type);
+  gboolean (* change_current_page) (CtkNotebook   *notebook,
                                 gint               offset);
-  void (* move_focus_out)      (GtkNotebook       *notebook,
-				GtkDirectionType   direction);
-  gboolean (* reorder_tab)     (GtkNotebook       *notebook,
-				GtkDirectionType   direction,
+  void (* move_focus_out)      (CtkNotebook       *notebook,
+				CtkDirectionType   direction);
+  gboolean (* reorder_tab)     (CtkNotebook       *notebook,
+				CtkDirectionType   direction,
 				gboolean           move_to_last);
 
   /* More vfuncs */
-  gint (* insert_page)         (GtkNotebook       *notebook,
-			        GtkWidget         *child,
-				GtkWidget         *tab_label,
-				GtkWidget         *menu_label,
+  gint (* insert_page)         (CtkNotebook       *notebook,
+			        CtkWidget         *child,
+				CtkWidget         *tab_label,
+				CtkWidget         *menu_label,
 				gint               position);
 
-  GtkNotebook * (* create_window) (GtkNotebook       *notebook,
-                                   GtkWidget         *page,
+  CtkNotebook * (* create_window) (CtkNotebook       *notebook,
+                                   CtkWidget         *page,
                                    gint               x,
                                    gint               y);
 
-  void (* page_reordered)      (GtkNotebook     *notebook,
-                                GtkWidget       *child,
+  void (* page_reordered)      (CtkNotebook     *notebook,
+                                CtkWidget       *child,
                                 guint            page_num);
 
-  void (* page_removed)        (GtkNotebook     *notebook,
-                                GtkWidget       *child,
+  void (* page_removed)        (CtkNotebook     *notebook,
+                                CtkWidget       *child,
                                 guint            page_num);
 
-  void (* page_added)          (GtkNotebook     *notebook,
-                                GtkWidget       *child,
+  void (* page_added)          (CtkNotebook     *notebook,
+                                CtkWidget       *child,
                                 guint            page_num);
 
   /* Padding for future expansion */
@@ -125,38 +125,38 @@ struct _GtkNotebookClass
 GDK_AVAILABLE_IN_ALL
 GType   ctk_notebook_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget * ctk_notebook_new        (void);
+CtkWidget * ctk_notebook_new        (void);
 GDK_AVAILABLE_IN_ALL
-gint ctk_notebook_append_page       (GtkNotebook *notebook,
-				     GtkWidget   *child,
-				     GtkWidget   *tab_label);
+gint ctk_notebook_append_page       (CtkNotebook *notebook,
+				     CtkWidget   *child,
+				     CtkWidget   *tab_label);
 GDK_AVAILABLE_IN_ALL
-gint ctk_notebook_append_page_menu  (GtkNotebook *notebook,
-				     GtkWidget   *child,
-				     GtkWidget   *tab_label,
-				     GtkWidget   *menu_label);
+gint ctk_notebook_append_page_menu  (CtkNotebook *notebook,
+				     CtkWidget   *child,
+				     CtkWidget   *tab_label,
+				     CtkWidget   *menu_label);
 GDK_AVAILABLE_IN_ALL
-gint ctk_notebook_prepend_page      (GtkNotebook *notebook,
-				     GtkWidget   *child,
-				     GtkWidget   *tab_label);
+gint ctk_notebook_prepend_page      (CtkNotebook *notebook,
+				     CtkWidget   *child,
+				     CtkWidget   *tab_label);
 GDK_AVAILABLE_IN_ALL
-gint ctk_notebook_prepend_page_menu (GtkNotebook *notebook,
-				     GtkWidget   *child,
-				     GtkWidget   *tab_label,
-				     GtkWidget   *menu_label);
+gint ctk_notebook_prepend_page_menu (CtkNotebook *notebook,
+				     CtkWidget   *child,
+				     CtkWidget   *tab_label,
+				     CtkWidget   *menu_label);
 GDK_AVAILABLE_IN_ALL
-gint ctk_notebook_insert_page       (GtkNotebook *notebook,
-				     GtkWidget   *child,
-				     GtkWidget   *tab_label,
+gint ctk_notebook_insert_page       (CtkNotebook *notebook,
+				     CtkWidget   *child,
+				     CtkWidget   *tab_label,
 				     gint         position);
 GDK_AVAILABLE_IN_ALL
-gint ctk_notebook_insert_page_menu  (GtkNotebook *notebook,
-				     GtkWidget   *child,
-				     GtkWidget   *tab_label,
-				     GtkWidget   *menu_label,
+gint ctk_notebook_insert_page_menu  (CtkNotebook *notebook,
+				     CtkWidget   *child,
+				     CtkWidget   *tab_label,
+				     CtkWidget   *menu_label,
 				     gint         position);
 GDK_AVAILABLE_IN_ALL
-void ctk_notebook_remove_page       (GtkNotebook *notebook,
+void ctk_notebook_remove_page       (CtkNotebook *notebook,
 				     gint         page_num);
 
 /***********************************************************
@@ -164,10 +164,10 @@ void ctk_notebook_remove_page       (GtkNotebook *notebook,
  ***********************************************************/
 
 GDK_AVAILABLE_IN_ALL
-void         ctk_notebook_set_group_name (GtkNotebook *notebook,
+void         ctk_notebook_set_group_name (CtkNotebook *notebook,
                                           const gchar *group_name);
 GDK_AVAILABLE_IN_ALL
-const gchar *ctk_notebook_get_group_name (GtkNotebook *notebook);
+const gchar *ctk_notebook_get_group_name (CtkNotebook *notebook);
 
 
 
@@ -176,122 +176,122 @@ const gchar *ctk_notebook_get_group_name (GtkNotebook *notebook);
  ***********************************************************/
 
 GDK_AVAILABLE_IN_ALL
-gint       ctk_notebook_get_current_page (GtkNotebook *notebook);
+gint       ctk_notebook_get_current_page (CtkNotebook *notebook);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_notebook_get_nth_page     (GtkNotebook *notebook,
+CtkWidget* ctk_notebook_get_nth_page     (CtkNotebook *notebook,
 					  gint         page_num);
 GDK_AVAILABLE_IN_ALL
-gint       ctk_notebook_get_n_pages      (GtkNotebook *notebook);
+gint       ctk_notebook_get_n_pages      (CtkNotebook *notebook);
 GDK_AVAILABLE_IN_ALL
-gint       ctk_notebook_page_num         (GtkNotebook *notebook,
-					  GtkWidget   *child);
+gint       ctk_notebook_page_num         (CtkNotebook *notebook,
+					  CtkWidget   *child);
 GDK_AVAILABLE_IN_ALL
-void       ctk_notebook_set_current_page (GtkNotebook *notebook,
+void       ctk_notebook_set_current_page (CtkNotebook *notebook,
 					  gint         page_num);
 GDK_AVAILABLE_IN_ALL
-void       ctk_notebook_next_page        (GtkNotebook *notebook);
+void       ctk_notebook_next_page        (CtkNotebook *notebook);
 GDK_AVAILABLE_IN_ALL
-void       ctk_notebook_prev_page        (GtkNotebook *notebook);
+void       ctk_notebook_prev_page        (CtkNotebook *notebook);
 
 /***********************************************************
  *            set Notebook, NotebookTab style              *
  ***********************************************************/
 
 GDK_AVAILABLE_IN_ALL
-void     ctk_notebook_set_show_border      (GtkNotebook     *notebook,
+void     ctk_notebook_set_show_border      (CtkNotebook     *notebook,
 					    gboolean         show_border);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_notebook_get_show_border      (GtkNotebook     *notebook);
+gboolean ctk_notebook_get_show_border      (CtkNotebook     *notebook);
 GDK_AVAILABLE_IN_ALL
-void     ctk_notebook_set_show_tabs        (GtkNotebook     *notebook,
+void     ctk_notebook_set_show_tabs        (CtkNotebook     *notebook,
 					    gboolean         show_tabs);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_notebook_get_show_tabs        (GtkNotebook     *notebook);
+gboolean ctk_notebook_get_show_tabs        (CtkNotebook     *notebook);
 GDK_AVAILABLE_IN_ALL
-void     ctk_notebook_set_tab_pos          (GtkNotebook     *notebook,
-				            GtkPositionType  pos);
+void     ctk_notebook_set_tab_pos          (CtkNotebook     *notebook,
+				            CtkPositionType  pos);
 GDK_AVAILABLE_IN_ALL
-GtkPositionType ctk_notebook_get_tab_pos   (GtkNotebook     *notebook);
+CtkPositionType ctk_notebook_get_tab_pos   (CtkNotebook     *notebook);
 GDK_AVAILABLE_IN_ALL
-void     ctk_notebook_set_scrollable       (GtkNotebook     *notebook,
+void     ctk_notebook_set_scrollable       (CtkNotebook     *notebook,
 					    gboolean         scrollable);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_notebook_get_scrollable       (GtkNotebook     *notebook);
+gboolean ctk_notebook_get_scrollable       (CtkNotebook     *notebook);
 GDK_DEPRECATED_IN_3_4
-guint16  ctk_notebook_get_tab_hborder      (GtkNotebook     *notebook);
+guint16  ctk_notebook_get_tab_hborder      (CtkNotebook     *notebook);
 GDK_DEPRECATED_IN_3_4
-guint16  ctk_notebook_get_tab_vborder      (GtkNotebook     *notebook);
+guint16  ctk_notebook_get_tab_vborder      (CtkNotebook     *notebook);
 
 /***********************************************************
  *               enable/disable PopupMenu                  *
  ***********************************************************/
 
 GDK_AVAILABLE_IN_ALL
-void ctk_notebook_popup_enable  (GtkNotebook *notebook);
+void ctk_notebook_popup_enable  (CtkNotebook *notebook);
 GDK_AVAILABLE_IN_ALL
-void ctk_notebook_popup_disable (GtkNotebook *notebook);
+void ctk_notebook_popup_disable (CtkNotebook *notebook);
 
 /***********************************************************
  *             query/set NotebookPage Properties           *
  ***********************************************************/
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget * ctk_notebook_get_tab_label    (GtkNotebook *notebook,
-					   GtkWidget   *child);
+CtkWidget * ctk_notebook_get_tab_label    (CtkNotebook *notebook,
+					   CtkWidget   *child);
 GDK_AVAILABLE_IN_ALL
-void ctk_notebook_set_tab_label           (GtkNotebook *notebook,
-					   GtkWidget   *child,
-					   GtkWidget   *tab_label);
+void ctk_notebook_set_tab_label           (CtkNotebook *notebook,
+					   CtkWidget   *child,
+					   CtkWidget   *tab_label);
 GDK_AVAILABLE_IN_ALL
-void          ctk_notebook_set_tab_label_text (GtkNotebook *notebook,
-                                               GtkWidget   *child,
+void          ctk_notebook_set_tab_label_text (CtkNotebook *notebook,
+                                               CtkWidget   *child,
                                                const gchar *tab_text);
 GDK_AVAILABLE_IN_ALL
-const gchar * ctk_notebook_get_tab_label_text (GtkNotebook *notebook,
-                                               GtkWidget   *child);
+const gchar * ctk_notebook_get_tab_label_text (CtkNotebook *notebook,
+                                               CtkWidget   *child);
 GDK_AVAILABLE_IN_ALL
-GtkWidget * ctk_notebook_get_menu_label   (GtkNotebook *notebook,
-					   GtkWidget   *child);
+CtkWidget * ctk_notebook_get_menu_label   (CtkNotebook *notebook,
+					   CtkWidget   *child);
 GDK_AVAILABLE_IN_ALL
-void ctk_notebook_set_menu_label          (GtkNotebook *notebook,
-					   GtkWidget   *child,
-					   GtkWidget   *menu_label);
+void ctk_notebook_set_menu_label          (CtkNotebook *notebook,
+					   CtkWidget   *child,
+					   CtkWidget   *menu_label);
 GDK_AVAILABLE_IN_ALL
-void          ctk_notebook_set_menu_label_text (GtkNotebook *notebook,
-                                                GtkWidget   *child,
+void          ctk_notebook_set_menu_label_text (CtkNotebook *notebook,
+                                                CtkWidget   *child,
                                                 const gchar *menu_text);
 GDK_AVAILABLE_IN_ALL
-const gchar * ctk_notebook_get_menu_label_text (GtkNotebook *notebook,
-							GtkWidget   *child);
+const gchar * ctk_notebook_get_menu_label_text (CtkNotebook *notebook,
+							CtkWidget   *child);
 GDK_AVAILABLE_IN_ALL
-void ctk_notebook_reorder_child           (GtkNotebook *notebook,
-					   GtkWidget   *child,
+void ctk_notebook_reorder_child           (CtkNotebook *notebook,
+					   CtkWidget   *child,
 					   gint         position);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_notebook_get_tab_reorderable (GtkNotebook *notebook,
-					   GtkWidget   *child);
+gboolean ctk_notebook_get_tab_reorderable (CtkNotebook *notebook,
+					   CtkWidget   *child);
 GDK_AVAILABLE_IN_ALL
-void ctk_notebook_set_tab_reorderable     (GtkNotebook *notebook,
-					   GtkWidget   *child,
+void ctk_notebook_set_tab_reorderable     (CtkNotebook *notebook,
+					   CtkWidget   *child,
 					   gboolean     reorderable);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_notebook_get_tab_detachable  (GtkNotebook *notebook,
-					   GtkWidget   *child);
+gboolean ctk_notebook_get_tab_detachable  (CtkNotebook *notebook,
+					   CtkWidget   *child);
 GDK_AVAILABLE_IN_ALL
-void ctk_notebook_set_tab_detachable      (GtkNotebook *notebook,
-					   GtkWidget   *child,
+void ctk_notebook_set_tab_detachable      (CtkNotebook *notebook,
+					   CtkWidget   *child,
 					   gboolean     detachable);
 GDK_AVAILABLE_IN_3_16
-void ctk_notebook_detach_tab              (GtkNotebook *notebook,
-                                           GtkWidget   *child);
+void ctk_notebook_detach_tab              (CtkNotebook *notebook,
+                                           CtkWidget   *child);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_notebook_get_action_widget (GtkNotebook *notebook,
-                                           GtkPackType  pack_type);
+CtkWidget* ctk_notebook_get_action_widget (CtkNotebook *notebook,
+                                           CtkPackType  pack_type);
 GDK_AVAILABLE_IN_ALL
-void       ctk_notebook_set_action_widget (GtkNotebook *notebook,
-                                           GtkWidget   *widget,
-                                           GtkPackType  pack_type);
+void       ctk_notebook_set_action_widget (CtkNotebook *notebook,
+                                           CtkWidget   *widget,
+                                           CtkPackType  pack_type);
 
 G_END_DECLS
 

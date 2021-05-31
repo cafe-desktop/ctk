@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <object class="GtkTextTagTable" id="tags">
+  <object class="CtkTextTagTable" id="tags">
     <child type="tag">
-      <object class="GtkTextTag">
+      <object class="CtkTextTag">
         <property name="name">warning</property>
         <property name="underline">single</property>
         <property name="underline-rgba">darkorange</property>
       </object>
     </child>
     <child type="tag">
-      <object class="GtkTextTag">
+      <object class="CtkTextTag">
         <property name="name">error</property>
         <property name="underline">error</property>
       </object>
     </child>
   </object>
-  <object class="GtkTextBuffer" id="text">
+  <object class="CtkTextBuffer" id="text">
     <property name="tag-table">tags</property>
     <signal name="changed" handler="text_changed"/>
   </object>
-  <template class="GtkInspectorCssEditor" parent="GtkBox">
+  <template class="CtkInspectorCssEditor" parent="CtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <property name="orientation">horizontal</property>
         <property name="spacing">6</property>
         <property name="margin">6</property>
         <child>
-          <object class="GtkToggleButton" id="disable_button">
+          <object class="CtkToggleButton" id="disable_button">
             <property name="visible">True</property>
             <property name="relief">none</property>
             <property name="tooltip-text" translatable="yes">Disable this custom CSS</property>
@@ -37,7 +37,7 @@
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">True</property>
                 <property name="icon-name">media-playback-pause-symbolic</property>
                 <property name="icon-size">1</property>
@@ -49,7 +49,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="save_button">
+          <object class="CtkButton" id="save_button">
             <property name="visible">True</property>
             <property name="relief">none</property>
             <property name="tooltip-text" translatable="yes">Save the current CSS</property>
@@ -58,7 +58,7 @@
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage">
+              <object class="CtkImage">
                 <property name="visible">True</property>
                 <property name="icon-name">document-save-symbolic</property>
                 <property name="icon-size">1</property>
@@ -70,20 +70,20 @@
           </packing>
         </child>
         <child type="center">
-          <object class="GtkLabel" id="object_title">
+          <object class="CtkLabel" id="object_title">
             <property name="visible">True</property>
           </object>
         </child>
       </object>
     </child>
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="CtkScrolledWindow">
         <property name="visible">True</property>
         <property name="hscrollbar-policy">never</property>
         <property name="vscrollbar-policy">automatic</property>
         <property name="expand">True</property>
         <child>
-          <object class="GtkTextView" id="view">
+          <object class="CtkTextView" id="view">
             <property name="visible">True</property>
             <property name="buffer">text</property>
             <property name="wrap-mode">word</property>

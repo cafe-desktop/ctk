@@ -35,18 +35,18 @@ static GOptionEntry entries[] = {
 };
 
 
-typedef void (ClearFunc)(GtkTreeModel *model);
-typedef void (InsertFunc)(GtkTreeModel *model,
+typedef void (ClearFunc)(CtkTreeModel *model);
+typedef void (InsertFunc)(CtkTreeModel *model,
 			  gint          items,
 			  gint          i);
 
 static void
-list_store_append (GtkTreeModel *model,
+list_store_append (CtkTreeModel *model,
 		   gint          items,
 		   gint          i)
 {
-  GtkListStore *store = CTK_LIST_STORE (model);
-  GtkTreeIter iter;
+  CtkListStore *store = CTK_LIST_STORE (model);
+  CtkTreeIter iter;
   gchar *text;
 
   text = g_strdup_printf ("row %d", i);
@@ -56,12 +56,12 @@ list_store_append (GtkTreeModel *model,
 }
 
 static void
-list_store_prepend (GtkTreeModel *model,
+list_store_prepend (CtkTreeModel *model,
 		    gint          items,
 		    gint          i)
 {
-  GtkListStore *store = CTK_LIST_STORE (model);
-  GtkTreeIter iter;
+  CtkListStore *store = CTK_LIST_STORE (model);
+  CtkTreeIter iter;
   gchar *text;
 
   text = g_strdup_printf ("row %d", i);
@@ -71,12 +71,12 @@ list_store_prepend (GtkTreeModel *model,
 }
 
 static void
-list_store_insert (GtkTreeModel *model,
+list_store_insert (CtkTreeModel *model,
 		   gint          items,
 		   gint          i)
 {
-  GtkListStore *store = CTK_LIST_STORE (model);
-  GtkTreeIter iter;
+  CtkListStore *store = CTK_LIST_STORE (model);
+  CtkTreeIter iter;
   gchar *text;
   gint n;
 
@@ -88,9 +88,9 @@ list_store_insert (GtkTreeModel *model,
 }
 
 static gint
-compare (GtkTreeModel *model,
-	 GtkTreeIter  *a,
-	 GtkTreeIter  *b,
+compare (CtkTreeModel *model,
+	 CtkTreeIter  *a,
+	 CtkTreeIter  *b,
 	 gpointer      data)
 {
   gchar *str_a, *str_b;
@@ -108,12 +108,12 @@ compare (GtkTreeModel *model,
 }
 
 static void
-tree_store_append (GtkTreeModel *model,
+tree_store_append (CtkTreeModel *model,
 		   gint          items,
 		   gint          i)
 {
-  GtkTreeStore *store = CTK_TREE_STORE (model);
-  GtkTreeIter iter;
+  CtkTreeStore *store = CTK_TREE_STORE (model);
+  CtkTreeIter iter;
   gchar *text;
 
   text = g_strdup_printf ("row %d", i);
@@ -123,12 +123,12 @@ tree_store_append (GtkTreeModel *model,
 }
 
 static void
-tree_store_prepend (GtkTreeModel *model,
+tree_store_prepend (CtkTreeModel *model,
 		    gint          items,
 		    gint          i)
 {
-  GtkTreeStore *store = CTK_TREE_STORE (model);
-  GtkTreeIter iter;
+  CtkTreeStore *store = CTK_TREE_STORE (model);
+  CtkTreeIter iter;
   gchar *text;
 
   text = g_strdup_printf ("row %d", i);
@@ -138,12 +138,12 @@ tree_store_prepend (GtkTreeModel *model,
 }
 
 static void
-tree_store_insert_flat (GtkTreeModel *model,
+tree_store_insert_flat (CtkTreeModel *model,
 			gint          items,
 			gint          i)
 {
-  GtkTreeStore *store = CTK_TREE_STORE (model);
-  GtkTreeIter iter;
+  CtkTreeStore *store = CTK_TREE_STORE (model);
+  CtkTreeIter iter;
   gchar *text;
   gint n;
 
@@ -158,13 +158,13 @@ typedef struct {
   gint i;
   gint n;
   gboolean found;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 } FindData;
 
 static gboolean
-find_nth (GtkTreeModel *model,
-	  GtkTreePath  *path,
-	  GtkTreeIter  *iter,
+find_nth (CtkTreeModel *model,
+	  CtkTreePath  *path,
+	  CtkTreeIter  *iter,
 	  gpointer      data)
 {
   FindData *fdata = (FindData *)data; 
@@ -182,12 +182,12 @@ find_nth (GtkTreeModel *model,
 }
 
 static void
-tree_store_insert_deep (GtkTreeModel *model,
+tree_store_insert_deep (CtkTreeModel *model,
 			gint          items,
 			gint          i)
 {
-  GtkTreeStore *store = CTK_TREE_STORE (model);
-  GtkTreeIter iter;
+  CtkTreeStore *store = CTK_TREE_STORE (model);
+  CtkTreeIter iter;
   gchar *text;
   FindData data;
 
@@ -205,7 +205,7 @@ tree_store_insert_deep (GtkTreeModel *model,
 
 static void
 test_run (gchar        *title,
-	  GtkTreeModel *store,
+	  CtkTreeModel *store,
 	  ClearFunc    *clear,
 	  InsertFunc   *insert)
 {
@@ -255,7 +255,7 @@ test_run (gchar        *title,
 int
 main (int argc, char *argv[])
 {
-  GtkTreeModel *model;
+  CtkTreeModel *model;
   
   ctk_init_with_args (&argc, &argv, NULL, entries, NULL, NULL);
 

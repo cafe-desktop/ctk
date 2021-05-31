@@ -214,10 +214,10 @@ random_menu_new (GRand *rand,
 
 /* Test cases {{{1 */
 
-static void assert_menu_equality (GtkContainer *container, GMenuModel   *model);
+static void assert_menu_equality (CtkContainer *container, GMenuModel   *model);
 
 static const gchar *
-get_label (GtkMenuItem *item)
+get_label (CtkMenuItem *item)
 {
   GList *children = ctk_container_get_children (CTK_CONTAINER (item));
   const gchar *label = NULL;
@@ -318,8 +318,8 @@ assert_section_equality (GSList      **children,
         }
       else
         {
-          GtkWidget *submenu_widget;
-          GtkMenuItem *item;
+          CtkWidget *submenu_widget;
+          CtkMenuItem *item;
 
           /* This is a normal item.  Make sure the label is right. */
           item = our_children->data;
@@ -362,7 +362,7 @@ assert_section_equality (GSList      **children,
 
   if (has_separator)
     {
-      GtkWidget *contents;
+      CtkWidget *contents;
       const gchar *label;
 
       /* We needed and had a separator and we visited a child.
@@ -393,7 +393,7 @@ assert_section_equality (GSList      **children,
  * separators by skipping over them and coming back to clean up later.
  */
 static void
-get_children_into_slist (GtkWidget *widget,
+get_children_into_slist (CtkWidget *widget,
                          gpointer   user_data)
 {
   GSList **list_ptr = user_data;
@@ -402,7 +402,7 @@ get_children_into_slist (GtkWidget *widget,
 }
 
 static void
-assert_menu_equality (GtkContainer *container,
+assert_menu_equality (CtkContainer *container,
                       GMenuModel   *model)
 {
   GSList *children = NULL;
@@ -418,7 +418,7 @@ static void
 test_bind_menu (void)
 {
   RandomMenu *model;
-  GtkWidget *menu;
+  CtkWidget *menu;
   GRand *rand;
   gint i;
 

@@ -21,29 +21,29 @@
 
 #include "ctkcssnumbervalueprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
-  GtkCssValue *x;
-  GtkCssValue *y;
+  CtkCssValue *x;
+  CtkCssValue *y;
 };
 
 static void
-ctk_css_value_corner_free (GtkCssValue *value)
+ctk_css_value_corner_free (CtkCssValue *value)
 {
   _ctk_css_value_unref (value->x);
   _ctk_css_value_unref (value->y);
 
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_corner_compute (GtkCssValue             *corner,
+static CtkCssValue *
+ctk_css_value_corner_compute (CtkCssValue             *corner,
                               guint                    property_id,
-                              GtkStyleProviderPrivate *provider,
-                              GtkCssStyle             *style,
-                              GtkCssStyle             *parent_style)
+                              CtkStyleProviderPrivate *provider,
+                              CtkCssStyle             *style,
+                              CtkCssStyle             *parent_style)
 {
-  GtkCssValue *x, *y;
+  CtkCssValue *x, *y;
 
   x = _ctk_css_value_compute (corner->x, property_id, provider, style, parent_style);
   y = _ctk_css_value_compute (corner->y, property_id, provider, style, parent_style);
@@ -58,20 +58,20 @@ ctk_css_value_corner_compute (GtkCssValue             *corner,
 }
 
 static gboolean
-ctk_css_value_corner_equal (const GtkCssValue *corner1,
-                            const GtkCssValue *corner2)
+ctk_css_value_corner_equal (const CtkCssValue *corner1,
+                            const CtkCssValue *corner2)
 {
   return _ctk_css_value_equal (corner1->x, corner2->x)
       && _ctk_css_value_equal (corner1->y, corner2->y);
 }
 
-static GtkCssValue *
-ctk_css_value_corner_transition (GtkCssValue *start,
-                                 GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_corner_transition (CtkCssValue *start,
+                                 CtkCssValue *end,
                                  guint        property_id,
                                  double       progress)
 {
-  GtkCssValue *x, *y;
+  CtkCssValue *x, *y;
 
   x = _ctk_css_value_transition (start->x, end->x, property_id, progress);
   if (x == NULL)
@@ -87,7 +87,7 @@ ctk_css_value_corner_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_corner_print (const GtkCssValue *corner,
+ctk_css_value_corner_print (const CtkCssValue *corner,
                            GString           *string)
 {
   _ctk_css_value_print (corner->x, string);
@@ -98,7 +98,7 @@ ctk_css_value_corner_print (const GtkCssValue *corner,
     }
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_CORNER = {
+static const CtkCssValueClass CTK_CSS_VALUE_CORNER = {
   ctk_css_value_corner_free,
   ctk_css_value_corner_compute,
   ctk_css_value_corner_equal,
@@ -106,23 +106,23 @@ static const GtkCssValueClass CTK_CSS_VALUE_CORNER = {
   ctk_css_value_corner_print
 };
 
-GtkCssValue *
-_ctk_css_corner_value_new (GtkCssValue *x,
-                           GtkCssValue *y)
+CtkCssValue *
+_ctk_css_corner_value_new (CtkCssValue *x,
+                           CtkCssValue *y)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_CORNER);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_CORNER);
   result->x = x;
   result->y = y;
 
   return result;
 }
 
-GtkCssValue *
-_ctk_css_corner_value_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_corner_value_parse (CtkCssParser *parser)
 {
-  GtkCssValue *x, *y;
+  CtkCssValue *x, *y;
 
   x = _ctk_css_number_value_parse (parser,
                                    CTK_CSS_POSITIVE_ONLY
@@ -152,7 +152,7 @@ _ctk_css_corner_value_parse (GtkCssParser *parser)
 }
 
 double
-_ctk_css_corner_value_get_x (const GtkCssValue *corner,
+_ctk_css_corner_value_get_x (const CtkCssValue *corner,
                              double             one_hundred_percent)
 {
   g_return_val_if_fail (corner != NULL, 0.0);
@@ -162,7 +162,7 @@ _ctk_css_corner_value_get_x (const GtkCssValue *corner,
 }
 
 double
-_ctk_css_corner_value_get_y (const GtkCssValue *corner,
+_ctk_css_corner_value_get_y (const CtkCssValue *corner,
                              double             one_hundred_percent)
 {
   g_return_val_if_fail (corner != NULL, 0.0);

@@ -1,5 +1,5 @@
 /* -*- Mode: C; c-basic-offset: 2; -*- */
-/* Gtk+ - non-ui printing
+/* Ctk+ - non-ui printing
  *
  * Copyright (C) 2006 Alexander Larsson <alexl@redhat.com>
  *
@@ -22,8 +22,8 @@
 #include "ctk/ctk.h"
 
 static void
-draw_page (GtkPrintOperation *operation,
-	   GtkPrintContext *context,
+draw_page (CtkPrintOperation *operation,
+	   CtkPrintContext *context,
 	   int page_nr)
 {
   cairo_t *cr;
@@ -78,8 +78,8 @@ draw_page (GtkPrintOperation *operation,
 int
 main (int argc, char **argv)
 {
-  GtkPrintOperation *print;
-  GtkPrintSettings *settings;
+  CtkPrintOperation *print;
+  CtkPrintSettings *settings;
 
   settings = ctk_print_settings_new ();
   /* ctk_print_settings_set_printer (settings, "printer"); */

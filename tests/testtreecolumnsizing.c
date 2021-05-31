@@ -33,11 +33,11 @@
 #define N_ROWS 10
 
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_model (void)
 {
   int i;
-  GtkListStore *store;
+  CtkListStore *store;
 
   store = ctk_list_store_new (5,
                               G_TYPE_STRING,
@@ -65,10 +65,10 @@ create_model (void)
 }
 
 static void
-toggle_long_content_row (GtkToggleButton *button,
+toggle_long_content_row (CtkToggleButton *button,
                          gpointer         user_data)
 {
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 
   model = ctk_tree_view_get_model (CTK_TREE_VIEW (user_data));
   if (ctk_tree_model_iter_n_children (model, NULL) == N_ROWS)
@@ -83,7 +83,7 @@ toggle_long_content_row (GtkToggleButton *button,
     }
   else
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       ctk_tree_model_iter_nth_child (model, &iter, NULL, N_ROWS);
       ctk_list_store_remove (CTK_LIST_STORE (model), &iter);
@@ -91,7 +91,7 @@ toggle_long_content_row (GtkToggleButton *button,
 }
 
 static void
-combo_box_changed (GtkComboBox *combo_box,
+combo_box_changed (CtkComboBox *combo_box,
                    gpointer     user_data)
 {
   gchar *str;
@@ -163,12 +163,12 @@ int
 main (int argc, char **argv)
 {
   int i;
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *combo_box;
-  GtkWidget *sw;
-  GtkWidget *tree_view;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *combo_box;
+  CtkWidget *sw;
+  CtkWidget *tree_view;
+  CtkWidget *button;
 
   ctk_init (&argc, &argv);
 
@@ -205,7 +205,7 @@ main (int argc, char **argv)
 
   for (i = 0; i < 5; i++)
     {
-      GtkTreeViewColumn *column;
+      CtkTreeViewColumn *column;
 
       ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (tree_view),
                                                    i, "Header",

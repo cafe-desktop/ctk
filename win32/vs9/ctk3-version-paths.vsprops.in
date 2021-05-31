@@ -21,34 +21,34 @@
 		Value="3.0"
 	/>
 	<UserMacro
-		Name="GtkVersion"
+		Name="CtkVersion"
 		Value="@CTK_VERSION@"
 	/>
 	<UserMacro
-		Name="GtkLibtoolCompatibleDllPrefix"
+		Name="CtkLibtoolCompatibleDllPrefix"
 		Value="lib"
 	/>
 	<UserMacro
-		Name="GtkLibtoolCompatibleDllSuffix"
+		Name="CtkLibtoolCompatibleDllSuffix"
 		Value=".0-0"
 	/>
 	<UserMacro
-		Name="GtkSeparateVSDllPrefix"
+		Name="CtkSeparateVSDllPrefix"
 		Value=""
 	/>
 	<UserMacro
-		Name="GtkSeparateVSDllSuffix"
+		Name="CtkSeparateVSDllSuffix"
 		Value="-vs$(VSVer)"
 	/>
-	<!-- Change these two to GtkLibtoolCompatibleDllPrefix and
-	GtkLibtoolCompatibleDllSuffix if that is what you want -->
+	<!-- Change these two to CtkLibtoolCompatibleDllPrefix and
+	CtkLibtoolCompatibleDllSuffix if that is what you want -->
 	<UserMacro
-		Name="GtkDllPrefix"
-		Value="$(GtkSeparateVSDllPrefix)"
+		Name="CtkDllPrefix"
+		Value="$(CtkSeparateVSDllPrefix)"
 	/>
 	<UserMacro
-		Name="GtkDllSuffix"
-		Value="$(GtkSeparateVSDllSuffix)"
+		Name="CtkDllSuffix"
+		Value="$(CtkSeparateVSDllSuffix)"
 	/>
 	<UserMacro
 		Name="PythonDir"

@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <interface>
-  <object class="GtkPopoverMenu" id="popover">
+  <object class="CtkPopoverMenu" id="popover">
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="margin">10</property>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <property name="margin-start">12</property>
@@ -15,7 +15,7 @@
             <property name="margin-top">6</property>
             <property name="margin-bottom">3</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">start</property>
                 <property name="label">Edit</property>
@@ -25,7 +25,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkSeparator">
+              <object class="CtkSeparator">
                 <property name="visible">True</property>
                 <property name="orientation">horizontal</property>
               </object>
@@ -33,28 +33,28 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.cut</property>
             <property name="text">Cut</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.copy</property>
             <property name="text">Copy</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.paste</property>
             <property name="text">Paste</property>
           </object>
         </child>
         <child>
-          <object class="GtkSeparator">
+          <object class="CtkSeparator">
             <property name="visible">True</property>
             <property name="orientation">horizontal</property>
             <property name="margin-start">12</property>
@@ -64,28 +64,28 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">action1</property>
             <property name="text">No action</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action2</property>
             <property name="text">Toggle</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action2a</property>
             <property name="text">Another Toggle</property>
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <property name="margin-start">12</property>
@@ -93,7 +93,7 @@
             <property name="margin-top">6</property>
             <property name="margin-bottom">3</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">start</property>
                 <property name="label">Middle Section</property>
@@ -103,7 +103,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkSeparator">
+              <object class="CtkSeparator">
                 <property name="visible">True</property>
                 <property name="orientation">horizontal</property>
               </object>
@@ -111,7 +111,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action3</property>
             <property name="action-target">'three'</property>
@@ -119,7 +119,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action3</property>
             <property name="action-target">'four'</property>
@@ -127,21 +127,21 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="text">Submenu 1</property>
             <property name="menu-name">submenu1</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="text">Submenu 2</property>
             <property name="menu-name">submenu2</property>
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <property name="margin-start">12</property>
@@ -149,7 +149,7 @@
             <property name="margin-top">6</property>
             <property name="margin-bottom">3</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">start</property>
                 <property name="label">End Section</property>
@@ -159,7 +159,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkSeparator">
+              <object class="CtkSeparator">
                 <property name="visible">True</property>
                 <property name="orientation">horizontal</property>
               </object>
@@ -167,7 +167,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action9</property>
             <property name="text">Another Item 9</property>
@@ -175,7 +175,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action10</property>
             <property name="text">Another Item 10</property>
@@ -184,12 +184,12 @@
       </object>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="margin">10</property>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="text">Submenu 1</property>
             <property name="inverted">True</property>
@@ -198,7 +198,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <property name="margin-start">12</property>
@@ -206,7 +206,7 @@
             <property name="margin-top">6</property>
             <property name="margin-bottom">3</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">start</property>
                 <property name="label">5555</property>
@@ -216,7 +216,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkSeparator">
+              <object class="CtkSeparator">
                 <property name="visible">True</property>
                 <property name="orientation">horizontal</property>
               </object>
@@ -224,28 +224,28 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action5</property>
             <property name="text">Item 5</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action5</property>
             <property name="text">Item 5a</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action5</property>
             <property name="text">Item 5b</property>
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">horizontal</property>
             <property name="halign">fill</property>
@@ -254,7 +254,7 @@
               <class name="linked"/>
             </style>
             <child>
-              <object class="GtkModelButton">
+              <object class="CtkModelButton">
                 <property name="visible">True</property>
                 <property name="text">List</property>
                 <property name="action-name">top.set-view</property>
@@ -268,7 +268,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkModelButton">
+              <object class="CtkModelButton">
                 <property name="visible">True</property>
                 <property name="text">Grid</property>
                 <property name="action-name">top.set-view</property>
@@ -284,21 +284,21 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action5</property>
             <property name="text">Item 5c</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action5</property>
             <property name="text">Item 5d</property>
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <property name="margin-start">12</property>
@@ -306,7 +306,7 @@
             <property name="margin-top">6</property>
             <property name="margin-bottom">3</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">start</property>
                 <property name="label">Format</property>
@@ -316,7 +316,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkSeparator">
+              <object class="CtkSeparator">
                 <property name="visible">True</property>
                 <property name="orientation">horizontal</property>
               </object>
@@ -324,7 +324,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">horizontal</property>
             <property name="halign">fill</property>
@@ -333,7 +333,7 @@
               <class name="linked"/>
             </style>
             <child>
-              <object class="GtkModelButton">
+              <object class="CtkModelButton">
                 <property name="visible">True</property>
                 <property name="text">Bold</property>
                 <property name="action-name">top.bold</property>
@@ -345,7 +345,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkModelButton">
+              <object class="CtkModelButton">
                 <property name="visible">True</property>
                 <property name="text">Italic</property>
                 <property name="action-name">top.italic</property>
@@ -358,7 +358,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkModelButton">
+              <object class="CtkModelButton">
                 <property name="visible">True</property>
                 <property name="text">Strikethrough</property>
                 <property name="action-name">top.strikethrough</property>
@@ -371,7 +371,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkModelButton">
+              <object class="CtkModelButton">
                 <property name="visible">True</property>
                 <property name="text">Underline</property>
                 <property name="action-name">top.underline</property>
@@ -386,7 +386,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="CtkBox">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <property name="margin-start">12</property>
@@ -394,7 +394,7 @@
             <property name="margin-top">6</property>
             <property name="margin-bottom">3</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">start</property>
                 <property name="label">6666</property>
@@ -404,7 +404,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkSeparator">
+              <object class="CtkSeparator">
                 <property name="visible">True</property>
                 <property name="orientation">horizontal</property>
               </object>
@@ -412,35 +412,35 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action6</property>
             <property name="text">Item 6</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action6</property>
             <property name="text">Item 6a</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action6</property>
             <property name="text">Item 6b</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action6</property>
             <property name="text">Item 6c</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action6</property>
             <property name="text">Item 6d</property>
@@ -452,12 +452,12 @@
       </packing>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="margin">10</property>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="text">Submenu 2</property>
             <property name="inverted">True</property>
@@ -466,21 +466,21 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action7</property>
             <property name="text">Item 7</property>
           </object>
         </child>
         <child>
-          <object class="GtkScale">
+          <object class="CtkScale">
             <property name="visible">True</property>
             <property name="draw-value">False</property>
             <property name="adjustment">adjustment</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="text">Subsubmenu</property>
             <property name="icon">icon9</property>
@@ -493,12 +493,12 @@
       </packing>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="CtkBox">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="margin">10</property>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="text">Subsubmenu</property>
             <property name="inverted">True</property>
@@ -507,14 +507,14 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">action8</property>
             <property name="text">Item 8</property>
           </object>
         </child>
         <child>
-          <object class="GtkSeparator">
+          <object class="CtkSeparator">
             <property name="visible">True</property>
             <property name="orientation">horizontal</property>
             <property name="margin-start">12</property>
@@ -524,14 +524,14 @@
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action9</property>
             <property name="text">Item 9</property>
           </object>
         </child>
         <child>
-          <object class="GtkModelButton">
+          <object class="CtkModelButton">
             <property name="visible">True</property>
             <property name="action-name">top.action10</property>
             <property name="text">Item 10</property>
@@ -561,7 +561,7 @@
   <object class="GThemedIcon" id="icon-underline">
     <property name="name">format-text-underline-symbolic</property>
   </object>
-  <object class="GtkAdjustment" id="adjustment">
+  <object class="CtkAdjustment" id="adjustment">
     <property name="lower">0</property>
     <property name="upper">100</property>
     <property name="value">50</property>

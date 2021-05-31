@@ -31,19 +31,19 @@
 /**
  * SECTION:ctkcellrendererpixbuf
  * @Short_description: Renders a pixbuf in a cell
- * @Title: GtkCellRendererPixbuf
+ * @Title: CtkCellRendererPixbuf
  *
- * A #GtkCellRendererPixbuf can be used to render an image in a cell. It allows
+ * A #CtkCellRendererPixbuf can be used to render an image in a cell. It allows
  * to render either a given #GdkPixbuf (set via the
- * #GtkCellRendererPixbuf:pixbuf property) or a named icon (set via the
- * #GtkCellRendererPixbuf:icon-name property).
+ * #CtkCellRendererPixbuf:pixbuf property) or a named icon (set via the
+ * #CtkCellRendererPixbuf:icon-name property).
  *
- * To support the tree view, #GtkCellRendererPixbuf also supports rendering two
- * alternative pixbufs, when the #GtkCellRenderer:is-expander property is %TRUE.
- * If the #GtkCellRenderer:is-expanded property is %TRUE and the
- * #GtkCellRendererPixbuf:pixbuf-expander-open property is set to a pixbuf, it
- * renders that pixbuf, if the #GtkCellRenderer:is-expanded property is %FALSE
- * and the #GtkCellRendererPixbuf:pixbuf-expander-closed property is set to a
+ * To support the tree view, #CtkCellRendererPixbuf also supports rendering two
+ * alternative pixbufs, when the #CtkCellRenderer:is-expander property is %TRUE.
+ * If the #CtkCellRenderer:is-expanded property is %TRUE and the
+ * #CtkCellRendererPixbuf:pixbuf-expander-open property is set to a pixbuf, it
+ * renders that pixbuf, if the #CtkCellRenderer:is-expanded property is %FALSE
+ * and the #CtkCellRendererPixbuf:pixbuf-expander-closed property is set to a
  * pixbuf, it renders that one.
  */
 
@@ -56,19 +56,19 @@ static void ctk_cell_renderer_pixbuf_set_property  (GObject                    *
 						    guint                       param_id,
 						    const GValue               *value,
 						    GParamSpec                 *pspec);
-static void ctk_cell_renderer_pixbuf_get_size   (GtkCellRenderer            *cell,
-						 GtkWidget                  *widget,
+static void ctk_cell_renderer_pixbuf_get_size   (CtkCellRenderer            *cell,
+						 CtkWidget                  *widget,
 						 const GdkRectangle         *rectangle,
 						 gint                       *x_offset,
 						 gint                       *y_offset,
 						 gint                       *width,
 						 gint                       *height);
-static void ctk_cell_renderer_pixbuf_render     (GtkCellRenderer            *cell,
+static void ctk_cell_renderer_pixbuf_render     (CtkCellRenderer            *cell,
 						 cairo_t                    *cr,
-						 GtkWidget                  *widget,
+						 CtkWidget                  *widget,
 						 const GdkRectangle         *background_area,
 						 const GdkRectangle         *cell_area,
-						 GtkCellRendererState        flags);
+						 CtkCellRendererState        flags);
 
 
 enum {
@@ -86,10 +86,10 @@ enum {
 };
 
 
-struct _GtkCellRendererPixbufPrivate
+struct _CtkCellRendererPixbufPrivate
 {
-  GtkImageDefinition *image_def;
-  GtkIconSize         icon_size;
+  CtkImageDefinition *image_def;
+  CtkIconSize         icon_size;
 
   GdkPixbuf *pixbuf_expander_open;
   GdkPixbuf *pixbuf_expander_closed;
@@ -99,12 +99,12 @@ struct _GtkCellRendererPixbufPrivate
   gchar *stock_detail;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererPixbuf, ctk_cell_renderer_pixbuf, CTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkCellRendererPixbuf, ctk_cell_renderer_pixbuf, CTK_TYPE_CELL_RENDERER)
 
 static void
-ctk_cell_renderer_pixbuf_init (GtkCellRendererPixbuf *cellpixbuf)
+ctk_cell_renderer_pixbuf_init (CtkCellRendererPixbuf *cellpixbuf)
 {
-  GtkCellRendererPixbufPrivate *priv;
+  CtkCellRendererPixbufPrivate *priv;
 
   cellpixbuf->priv = ctk_cell_renderer_pixbuf_get_instance_private (cellpixbuf);
   priv = cellpixbuf->priv;
@@ -117,8 +117,8 @@ ctk_cell_renderer_pixbuf_init (GtkCellRendererPixbuf *cellpixbuf)
 static void
 ctk_cell_renderer_pixbuf_finalize (GObject *object)
 {
-  GtkCellRendererPixbuf *cellpixbuf = CTK_CELL_RENDERER_PIXBUF (object);
-  GtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
+  CtkCellRendererPixbuf *cellpixbuf = CTK_CELL_RENDERER_PIXBUF (object);
+  CtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
 
   ctk_image_definition_unref (priv->image_def);
 
@@ -133,10 +133,10 @@ ctk_cell_renderer_pixbuf_finalize (GObject *object)
 }
 
 static void
-ctk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
+ctk_cell_renderer_pixbuf_class_init (CtkCellRendererPixbufClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (class);
+  CtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (class);
 
   object_class->finalize = ctk_cell_renderer_pixbuf_finalize;
 
@@ -170,7 +170,7 @@ ctk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
 							GDK_TYPE_PIXBUF,
 							CTK_PARAM_READWRITE));
   /**
-   * GtkCellRendererPixbuf:surface:
+   * CtkCellRendererPixbuf:surface:
    *
    * Since: 3.10
    */
@@ -183,11 +183,11 @@ ctk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
 						       CTK_PARAM_READWRITE));
 
   /**
-   * GtkCellRendererPixbuf:stock-id:
+   * CtkCellRendererPixbuf:stock-id:
    *
    * Since: 2.2
    *
-   * Deprecated: 3.10: Use #GtkCellRendererPixbuf:icon-name instead.
+   * Deprecated: 3.10: Use #CtkCellRendererPixbuf:icon-name instead.
    */
   g_object_class_install_property (object_class,
 				   PROP_STOCK_ID,
@@ -198,9 +198,9 @@ ctk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
 							CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
-   * GtkCellRendererPixbuf:stock-size:
+   * CtkCellRendererPixbuf:stock-size:
    *
-   * The #GtkIconSize value that specifies the size of the rendered icon.
+   * The #CtkIconSize value that specifies the size of the rendered icon.
    *
    * Since: 2.2
    */
@@ -208,14 +208,14 @@ ctk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
 				   PROP_STOCK_SIZE,
 				   g_param_spec_uint ("stock-size",
 						      P_("Size"),
-						      P_("The GtkIconSize value that specifies the size of the rendered icon"),
+						      P_("The CtkIconSize value that specifies the size of the rendered icon"),
 						      0,
 						      G_MAXUINT,
 						      CTK_ICON_SIZE_MENU,
 						      CTK_PARAM_READWRITE));
 
   /*
-   * GtkCellRendererPixbuf:stock-detail:
+   * CtkCellRendererPixbuf:stock-detail:
    *
    * Since: 2.2
    *
@@ -231,7 +231,7 @@ ctk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
 
   
   /**
-   * GtkCellRendererPixbuf:icon-name:
+   * CtkCellRendererPixbuf:icon-name:
    *
    * The name of the themed icon to display.
    * This property only has an effect if not overridden by "stock_id" 
@@ -248,10 +248,10 @@ ctk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
 							CTK_PARAM_READWRITE));
 
   /**
-   * GtkCellRendererPixbuf:follow-state:
+   * CtkCellRendererPixbuf:follow-state:
    *
    * Specifies whether the rendered pixbuf should be colorized
-   * according to the #GtkCellRendererState.
+   * according to the #CtkCellRendererState.
    *
    * Since: 2.8
    *
@@ -267,7 +267,7 @@ ctk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
  							 CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
-   * GtkCellRendererPixbuf:gicon:
+   * CtkCellRendererPixbuf:gicon:
    *
    * The GIcon representing the icon to display.
    * If the icon theme is changed, the image will be updated
@@ -294,8 +294,8 @@ ctk_cell_renderer_pixbuf_get_property (GObject        *object,
 				       GValue         *value,
 				       GParamSpec     *pspec)
 {
-  GtkCellRendererPixbuf *cellpixbuf = CTK_CELL_RENDERER_PIXBUF (object);
-  GtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
+  CtkCellRendererPixbuf *cellpixbuf = CTK_CELL_RENDERER_PIXBUF (object);
+  CtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
 
   switch (param_id)
     {
@@ -336,8 +336,8 @@ ctk_cell_renderer_pixbuf_get_property (GObject        *object,
 }
 
 static void
-notify_storage_type (GtkCellRendererPixbuf *cellpixbuf,
-                     GtkImageType           storage_type)
+notify_storage_type (CtkCellRendererPixbuf *cellpixbuf,
+                     CtkImageType           storage_type)
 {
   switch (storage_type)
     {
@@ -365,11 +365,11 @@ notify_storage_type (GtkCellRendererPixbuf *cellpixbuf,
 }
 
 static void
-take_image_definition (GtkCellRendererPixbuf *cellpixbuf,
-                       GtkImageDefinition    *def)
+take_image_definition (CtkCellRendererPixbuf *cellpixbuf,
+                       CtkImageDefinition    *def)
 {
-  GtkCellRendererPixbufPrivate *priv;
-  GtkImageType old_storage_type, new_storage_type;
+  CtkCellRendererPixbufPrivate *priv;
+  CtkImageType old_storage_type, new_storage_type;
   
   if (def == NULL)
     def = ctk_image_definition_new_empty ();
@@ -391,8 +391,8 @@ ctk_cell_renderer_pixbuf_set_property (GObject      *object,
 				       const GValue *value,
 				       GParamSpec   *pspec)
 {
-  GtkCellRendererPixbuf *cellpixbuf = CTK_CELL_RENDERER_PIXBUF (object);
-  GtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
+  CtkCellRendererPixbuf *cellpixbuf = CTK_CELL_RENDERER_PIXBUF (object);
+  CtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
 
   switch (param_id)
     {
@@ -440,28 +440,28 @@ ctk_cell_renderer_pixbuf_set_property (GObject      *object,
 /**
  * ctk_cell_renderer_pixbuf_new:
  * 
- * Creates a new #GtkCellRendererPixbuf. Adjust rendering
+ * Creates a new #CtkCellRendererPixbuf. Adjust rendering
  * parameters using object properties. Object properties can be set
- * globally (with g_object_set()). Also, with #GtkTreeViewColumn, you
- * can bind a property to a value in a #GtkTreeModel. For example, you
+ * globally (with g_object_set()). Also, with #CtkTreeViewColumn, you
+ * can bind a property to a value in a #CtkTreeModel. For example, you
  * can bind the “pixbuf” property on the cell renderer to a pixbuf value
  * in the model, thus rendering a different image in each row of the
- * #GtkTreeView.
+ * #CtkTreeView.
  * 
  * Returns: the new cell renderer
  **/
-GtkCellRenderer *
+CtkCellRenderer *
 ctk_cell_renderer_pixbuf_new (void)
 {
   return g_object_new (CTK_TYPE_CELL_RENDERER_PIXBUF, NULL);
 }
 
-static GtkIconHelper *
-create_icon_helper (GtkCellRendererPixbuf *cellpixbuf,
-                    GtkWidget             *widget)
+static CtkIconHelper *
+create_icon_helper (CtkCellRendererPixbuf *cellpixbuf,
+                    CtkWidget             *widget)
 {
-  GtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
-  GtkIconHelper *helper;
+  CtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
+  CtkIconHelper *helper;
 
   helper = ctk_icon_helper_new (ctk_style_context_get_node (ctk_widget_get_style_context (widget)), widget);
   _ctk_icon_helper_set_use_fallback (helper, TRUE);
@@ -474,23 +474,23 @@ create_icon_helper (GtkCellRendererPixbuf *cellpixbuf,
 }
 
 static void
-ctk_cell_renderer_pixbuf_get_size (GtkCellRenderer    *cell,
-				   GtkWidget          *widget,
+ctk_cell_renderer_pixbuf_get_size (CtkCellRenderer    *cell,
+				   CtkWidget          *widget,
 				   const GdkRectangle *cell_area,
 				   gint               *x_offset,
 				   gint               *y_offset,
 				   gint               *width,
 				   gint               *height)
 {
-  GtkCellRendererPixbuf *cellpixbuf = (GtkCellRendererPixbuf *) cell;
-  GtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
+  CtkCellRendererPixbuf *cellpixbuf = (CtkCellRendererPixbuf *) cell;
+  CtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
   gint pixbuf_width  = 0;
   gint pixbuf_height = 0;
   gint calc_width;
   gint calc_height;
   gint xpad, ypad;
-  GtkStyleContext *context;
-  GtkIconHelper *icon_helper;
+  CtkStyleContext *context;
+  CtkIconHelper *icon_helper;
 
   context = ctk_widget_get_style_context (widget);
   ctk_style_context_save (context);
@@ -552,22 +552,22 @@ ctk_cell_renderer_pixbuf_get_size (GtkCellRenderer    *cell,
 }
 
 static void
-ctk_cell_renderer_pixbuf_render (GtkCellRenderer      *cell,
+ctk_cell_renderer_pixbuf_render (CtkCellRenderer      *cell,
                                  cairo_t              *cr,
-				 GtkWidget            *widget,
+				 CtkWidget            *widget,
 				 const GdkRectangle   *background_area,
 				 const GdkRectangle   *cell_area,
-				 GtkCellRendererState  flags)
+				 CtkCellRendererState  flags)
 
 {
-  GtkCellRendererPixbuf *cellpixbuf = (GtkCellRendererPixbuf *) cell;
-  GtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
-  GtkStyleContext *context;
+  CtkCellRendererPixbuf *cellpixbuf = (CtkCellRendererPixbuf *) cell;
+  CtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
+  CtkStyleContext *context;
   GdkRectangle pix_rect;
   GdkRectangle draw_rect;
   gboolean is_expander;
   gint xpad, ypad;
-  GtkIconHelper *icon_helper = NULL;
+  CtkIconHelper *icon_helper = NULL;
 
   ctk_cell_renderer_pixbuf_get_size (cell, widget, (GdkRectangle *) cell_area,
 				     &pix_rect.x, 

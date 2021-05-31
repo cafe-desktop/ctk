@@ -34,10 +34,10 @@ enum
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE (GtkInspectorStrvEditor, ctk_inspector_strv_editor, CTK_TYPE_BOX);
+G_DEFINE_TYPE (CtkInspectorStrvEditor, ctk_inspector_strv_editor, CTK_TYPE_BOX);
 
 static void
-emit_changed (GtkInspectorStrvEditor *editor)
+emit_changed (CtkInspectorStrvEditor *editor)
 {
   if (editor->blocked)
     return;
@@ -46,20 +46,20 @@ emit_changed (GtkInspectorStrvEditor *editor)
 }
 
 static void
-remove_string (GtkButton              *button,
-               GtkInspectorStrvEditor *editor)
+remove_string (CtkButton              *button,
+               CtkInspectorStrvEditor *editor)
 {
   ctk_widget_destroy (ctk_widget_get_parent (CTK_WIDGET (button)));
   emit_changed (editor);
 }
 
 static void
-add_string (GtkInspectorStrvEditor *editor,
+add_string (CtkInspectorStrvEditor *editor,
             const gchar            *str)
 {
-  GtkWidget *box;
-  GtkWidget *entry;
-  GtkWidget *button;
+  CtkWidget *box;
+  CtkWidget *entry;
+  CtkWidget *button;
 
   box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_style_context_add_class (ctk_widget_get_style_context (box), "linked");
@@ -86,14 +86,14 @@ add_string (GtkInspectorStrvEditor *editor,
 }
 
 static void
-add_cb (GtkButton              *button,
-        GtkInspectorStrvEditor *editor)
+add_cb (CtkButton              *button,
+        CtkInspectorStrvEditor *editor)
 {
   add_string (editor, "");
 }
 
 static void
-ctk_inspector_strv_editor_init (GtkInspectorStrvEditor *editor)
+ctk_inspector_strv_editor_init (CtkInspectorStrvEditor *editor)
 {
   ctk_box_set_spacing (CTK_BOX (editor), 6);
   ctk_orientable_set_orientation (CTK_ORIENTABLE (editor), CTK_ORIENTATION_VERTICAL);
@@ -112,20 +112,20 @@ ctk_inspector_strv_editor_init (GtkInspectorStrvEditor *editor)
 }
 
 static void
-ctk_inspector_strv_editor_class_init (GtkInspectorStrvEditorClass *class)
+ctk_inspector_strv_editor_class_init (CtkInspectorStrvEditorClass *class)
 {
   signals[CHANGED] =
     g_signal_new ("changed",
                   G_TYPE_FROM_CLASS (class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkInspectorStrvEditorClass, changed),
+                  G_STRUCT_OFFSET (CtkInspectorStrvEditorClass, changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 }
 
 void
-ctk_inspector_strv_editor_set_strv (GtkInspectorStrvEditor  *editor,
+ctk_inspector_strv_editor_set_strv (CtkInspectorStrvEditor  *editor,
                                     gchar                  **strv)
 {
   GList *children, *l;
@@ -150,7 +150,7 @@ ctk_inspector_strv_editor_set_strv (GtkInspectorStrvEditor  *editor,
 }
 
 gchar **
-ctk_inspector_strv_editor_get_strv (GtkInspectorStrvEditor *editor)
+ctk_inspector_strv_editor_get_strv (CtkInspectorStrvEditor *editor)
 {
   GList *children, *l;
   GPtrArray *p;
@@ -160,7 +160,7 @@ ctk_inspector_strv_editor_get_strv (GtkInspectorStrvEditor *editor)
   children = ctk_container_get_children (CTK_CONTAINER (editor->box));
   for (l = children; l; l = l->next)
     {
-      GtkEntry *entry;
+      CtkEntry *entry;
 
       entry = CTK_ENTRY (g_object_get_data (G_OBJECT (l->data), "entry"));
       g_ptr_array_add (p, g_strdup (ctk_entry_get_text (entry)));

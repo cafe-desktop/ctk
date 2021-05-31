@@ -23,27 +23,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_RENDERER_GRAPH            (ctk_cell_renderer_graph_get_type ())
-#define CTK_CELL_RENDERER_GRAPH(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraph))
-#define CTK_CELL_RENDERER_GRAPH_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraphClass))
+#define CTK_CELL_RENDERER_GRAPH(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_GRAPH, CtkCellRendererGraph))
+#define CTK_CELL_RENDERER_GRAPH_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_GRAPH, CtkCellRendererGraphClass))
 #define CTK_IS_CELL_RENDERER_GRAPH(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_GRAPH))
 #define CTK_IS_CELL_RENDERER_GRAPH_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_GRAPH))
-#define CTK_CELL_RENDERER_GRAPH_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraphClass))
+#define CTK_CELL_RENDERER_GRAPH_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_GRAPH, CtkCellRendererGraphClass))
 
-typedef struct _GtkCellRendererGraph        GtkCellRendererGraph;
-typedef struct _GtkCellRendererGraphClass   GtkCellRendererGraphClass;
-typedef struct _GtkCellRendererGraphPrivate GtkCellRendererGraphPrivate;
+typedef struct _CtkCellRendererGraph        CtkCellRendererGraph;
+typedef struct _CtkCellRendererGraphClass   CtkCellRendererGraphClass;
+typedef struct _CtkCellRendererGraphPrivate CtkCellRendererGraphPrivate;
 
-struct _GtkCellRendererGraph
+struct _CtkCellRendererGraph
 {
-  GtkCellRenderer                parent;
+  CtkCellRenderer                parent;
 
   /*< private >*/
-  GtkCellRendererGraphPrivate *priv;
+  CtkCellRendererGraphPrivate *priv;
 };
 
-struct _GtkCellRendererGraphClass
+struct _CtkCellRendererGraphClass
 {
-  GtkCellRendererClass parent_class;
+  CtkCellRendererClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -55,7 +55,7 @@ struct _GtkCellRendererGraphClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_graph_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer *ctk_cell_renderer_graph_new      (void);
+CtkCellRenderer *ctk_cell_renderer_graph_new      (void);
 
 G_END_DECLS
 

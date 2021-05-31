@@ -35,21 +35,21 @@
 
 GType type_ti_et_translit = 0;
 
-static void ti_et_class_init (GtkIMContextSimpleClass *class);
-static void ti_et_init (GtkIMContextSimple *im_context);
+static void ti_et_class_init (CtkIMContextSimpleClass *class);
+static void ti_et_init (CtkIMContextSimple *im_context);
 
 static void
 ti_et_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (GtkIMContextSimpleClass),
+    sizeof (CtkIMContextSimpleClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
     (GClassInitFunc) ti_et_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
-    sizeof (GtkIMContextSimple),
+    sizeof (CtkIMContextSimple),
     0,
     (GInstanceInitFunc) ti_et_init,
   };
@@ -57,7 +57,7 @@ ti_et_register_type (GTypeModule *module)
   type_ti_et_translit = 
     g_type_module_register_type (module,
 				 CTK_TYPE_IM_CONTEXT_SIMPLE,
-				 "GtkIMContextTigrignaEthiopia",
+				 "CtkIMContextTigrignaEthiopia",
 				 &object_info, 0);
 }
 
@@ -433,12 +433,12 @@ static guint16 ti_et_compose_seqs[] = {
 };
 
 static void
-ti_et_class_init (GtkIMContextSimpleClass *class)
+ti_et_class_init (CtkIMContextSimpleClass *class)
 {
 }
 
 static void
-ti_et_init (GtkIMContextSimple *im_context)
+ti_et_init (CtkIMContextSimple *im_context)
 {
   ctk_im_context_simple_add_table (im_context,
 				   ti_et_compose_seqs,
@@ -446,7 +446,7 @@ ti_et_init (GtkIMContextSimple *im_context)
 				   G_N_ELEMENTS (ti_et_compose_seqs) / (5 + 2));
 }
 
-static const GtkIMContextInfo ti_et_info = { 
+static const CtkIMContextInfo ti_et_info = { 
   "ti_et",		   /* ID */
   NC_("input method menu", "Tigrigna-Ethiopian (EZ+)"), /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
@@ -454,7 +454,7 @@ static const GtkIMContextInfo ti_et_info = {
   "ti"			   /* Languages for which this module is the default */
 };
 
-static const GtkIMContextInfo *info_list[] = {
+static const CtkIMContextInfo *info_list[] = {
   &ti_et_info
 };
 
@@ -473,14 +473,14 @@ MODULE_ENTRY (void, exit) (void)
 {
 }
 
-MODULE_ENTRY (void, list) (const GtkIMContextInfo ***contexts,
+MODULE_ENTRY (void, list) (const CtkIMContextInfo ***contexts,
 			   int                      *n_contexts)
 {
   *contexts = info_list;
   *n_contexts = G_N_ELEMENTS (info_list);
 }
 
-MODULE_ENTRY (GtkIMContext *, create) (const gchar *context_id)
+MODULE_ENTRY (CtkIMContext *, create) (const gchar *context_id)
 {
   if (strcmp (context_id, "ti_et") == 0)
     return g_object_new (type_ti_et_translit, NULL);

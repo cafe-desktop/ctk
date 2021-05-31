@@ -122,7 +122,7 @@ get_name (AtkObject *accessible)
 
   if (CTK_IS_ACCESSIBLE (accessible))
     {
-      GtkWidget *widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
+      CtkWidget *widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
 
       name = g_strdup (ctk_buildable_get_name (CTK_BUILDABLE (widget)));
     }
@@ -738,11 +738,11 @@ dump_accessible (AtkObject     *accessible,
     }
 }
 
-static GtkWidget *
-builder_get_toplevel (GtkBuilder *builder)
+static CtkWidget *
+builder_get_toplevel (CtkBuilder *builder)
 {
   GSList *list, *walk;
-  GtkWidget *window = NULL;
+  CtkWidget *window = NULL;
 
   list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
@@ -764,8 +764,8 @@ static void
 dump_ui_file (const char *ui_file,
               GString *string)
 {
-  GtkWidget *window;
-  GtkBuilder *builder;
+  CtkWidget *window;
+  CtkBuilder *builder;
   GError *error = NULL;
 
   builder = ctk_builder_new ();

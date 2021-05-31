@@ -29,11 +29,11 @@ typedef enum {
   CTK_PROGRESS_STATE_BEFORE,
   CTK_PROGRESS_STATE_DURING,
   CTK_PROGRESS_STATE_AFTER,
-} GtkProgressState;
+} CtkProgressState;
 
-typedef struct _GtkProgressTracker GtkProgressTracker;
+typedef struct _CtkProgressTracker CtkProgressTracker;
 
-struct _GtkProgressTracker
+struct _CtkProgressTracker
 {
   gboolean is_running;
   guint64 last_frame_time;
@@ -42,32 +42,32 @@ struct _GtkProgressTracker
   gdouble iteration_count;
 };
 
-void                 ctk_progress_tracker_init_copy           (GtkProgressTracker *source,
-                                                               GtkProgressTracker *dest);
+void                 ctk_progress_tracker_init_copy           (CtkProgressTracker *source,
+                                                               CtkProgressTracker *dest);
 
-void                 ctk_progress_tracker_start               (GtkProgressTracker *tracker,
+void                 ctk_progress_tracker_start               (CtkProgressTracker *tracker,
                                                                guint64 duration,
                                                                gint64 delay,
                                                                gdouble iteration_count);
 
-void                 ctk_progress_tracker_finish              (GtkProgressTracker *tracker);
+void                 ctk_progress_tracker_finish              (CtkProgressTracker *tracker);
 
-void                 ctk_progress_tracker_advance_frame       (GtkProgressTracker *tracker,
+void                 ctk_progress_tracker_advance_frame       (CtkProgressTracker *tracker,
                                                                guint64 frame_time);
 
-void                 ctk_progress_tracker_skip_frame          (GtkProgressTracker *tracker,
+void                 ctk_progress_tracker_skip_frame          (CtkProgressTracker *tracker,
                                                                guint64 frame_time);
 
-GtkProgressState     ctk_progress_tracker_get_state           (GtkProgressTracker *tracker);
+CtkProgressState     ctk_progress_tracker_get_state           (CtkProgressTracker *tracker);
 
-gdouble              ctk_progress_tracker_get_iteration       (GtkProgressTracker *tracker);
+gdouble              ctk_progress_tracker_get_iteration       (CtkProgressTracker *tracker);
 
-guint64              ctk_progress_tracker_get_iteration_cycle (GtkProgressTracker *tracker);
+guint64              ctk_progress_tracker_get_iteration_cycle (CtkProgressTracker *tracker);
 
-gdouble              ctk_progress_tracker_get_progress        (GtkProgressTracker *tracker,
+gdouble              ctk_progress_tracker_get_progress        (CtkProgressTracker *tracker,
                                                                gboolean reverse);
 
-gdouble              ctk_progress_tracker_get_ease_out_cubic  (GtkProgressTracker *tracker,
+gdouble              ctk_progress_tracker_get_ease_out_cubic  (CtkProgressTracker *tracker,
                                                                gboolean reverse);
 
 G_END_DECLS

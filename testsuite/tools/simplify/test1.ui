@@ -1,6 +1,6 @@
 <!-- default property gets stripped -->
 <interface>
-  <object class="GtkWindow">
+  <object class="CtkWindow">
     <property name="visible">False</property>
   </object>
 </interface>

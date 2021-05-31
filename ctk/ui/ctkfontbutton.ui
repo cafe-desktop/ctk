@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <template class="GtkFontButton" parent="GtkButton">
+  <template class="CtkFontButton" parent="CtkButton">
     <property name="can-focus">1</property>
     <property name="receives-default">1</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">1</property>
         <child>
-          <object class="GtkLabel" id="font_label">
+          <object class="CtkLabel" id="font_label">
             <property name="visible">1</property>
             <property name="label" translatable="yes">Font</property>
           </object>
@@ -18,11 +18,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="font_size_box">
+          <object class="CtkBox" id="font_size_box">
             <property name="visible">1</property>
             <property name="no-show-all">1</property>
             <child>
-              <object class="GtkSeparator" id="separator">
+              <object class="CtkSeparator" id="separator">
                 <property name="visible">1</property>
                 <property name="orientation">vertical</property>
               </object>
@@ -31,7 +31,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="size_label">
+              <object class="CtkLabel" id="size_label">
                 <property name="visible">1</property>
                 <property name="label">14</property>
               </object>

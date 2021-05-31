@@ -4,7 +4,7 @@
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000 Red Hat, Inc.
- * Tk->Gtk port by Havoc Pennington
+ * Tk->Ctk port by Havoc Pennington
  * Pango support by Owen Taylor
  *
  * This file can be used under your choice of two licenses, the LGPL
@@ -95,22 +95,22 @@ G_BEGIN_DECLS
 /* forward declarations that have to be here to avoid including
  * ctktextbtree.h
  */
-typedef struct _GtkTextLine     GtkTextLine;
-typedef struct _GtkTextLineData GtkTextLineData;
+typedef struct _CtkTextLine     CtkTextLine;
+typedef struct _CtkTextLineData CtkTextLineData;
 
 #define CTK_TYPE_TEXT_LAYOUT             (ctk_text_layout_get_type ())
-#define CTK_TEXT_LAYOUT(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_LAYOUT, GtkTextLayout))
-#define CTK_TEXT_LAYOUT_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_LAYOUT, GtkTextLayoutClass))
+#define CTK_TEXT_LAYOUT(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_LAYOUT, CtkTextLayout))
+#define CTK_TEXT_LAYOUT_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_LAYOUT, CtkTextLayoutClass))
 #define CTK_IS_TEXT_LAYOUT(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEXT_LAYOUT))
 #define CTK_IS_TEXT_LAYOUT_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_LAYOUT))
-#define CTK_TEXT_LAYOUT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_LAYOUT, GtkTextLayoutClass))
+#define CTK_TEXT_LAYOUT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_LAYOUT, CtkTextLayoutClass))
 
-typedef struct _GtkTextLayout         GtkTextLayout;
-typedef struct _GtkTextLayoutClass    GtkTextLayoutClass;
-typedef struct _GtkTextLineDisplay    GtkTextLineDisplay;
-typedef struct _GtkTextAttrAppearance GtkTextAttrAppearance;
+typedef struct _CtkTextLayout         CtkTextLayout;
+typedef struct _CtkTextLayoutClass    CtkTextLayoutClass;
+typedef struct _CtkTextLineDisplay    CtkTextLineDisplay;
+typedef struct _CtkTextAttrAppearance CtkTextAttrAppearance;
 
-struct _GtkTextLayout
+struct _CtkTextLayout
 {
   GObject parent_instance;
 
@@ -130,13 +130,13 @@ struct _GtkTextLayout
   /* gint left_edge; */
   /* gint top_edge; */
 
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
 
   gint left_padding;
   gint right_padding;
 
   /* Default style used if no tags override it */
-  GtkTextAttributes *default_style;
+  CtkTextAttributes *default_style;
 
   /* Pango contexts used for creating layouts */
   PangoContext *ltr_context;
@@ -145,12 +145,12 @@ struct _GtkTextLayout
   /* A cache of one style; this is used to ensure
    * we don't constantly regenerate the style
    * over long runs with the same style. */
-  GtkTextAttributes *one_style_cache;
+  CtkTextAttributes *one_style_cache;
 
   /* A cache of one line display. Getting the same line
    * many times in a row is the most common case.
    */
-  GtkTextLineDisplay *one_display_cache;
+  CtkTextLineDisplay *one_display_cache;
 
   /* Whether we are allowed to wrap right now */
   gint wrap_loop_count;
@@ -158,7 +158,7 @@ struct _GtkTextLayout
   /* Whether to show the insertion cursor */
   guint cursor_visible : 1;
 
-  /* For what GtkTextDirection to draw cursor CTK_TEXT_DIR_NONE -
+  /* For what CtkTextDirection to draw cursor CTK_TEXT_DIR_NONE -
    * means draw both cursors.
    */
   guint cursor_direction : 2;
@@ -178,42 +178,42 @@ struct _GtkTextLayout
   guint overwrite_mode : 1;
 };
 
-struct _GtkTextLayoutClass
+struct _CtkTextLayoutClass
 {
   GObjectClass parent_class;
 
   /* Some portion of the layout was invalidated
    */
-  void  (*invalidated)  (GtkTextLayout *layout);
+  void  (*invalidated)  (CtkTextLayout *layout);
 
   /* A range of the layout changed appearance and possibly height
    */
-  void  (*changed)              (GtkTextLayout     *layout,
+  void  (*changed)              (CtkTextLayout     *layout,
                                  gint               y,
                                  gint               old_height,
                                  gint               new_height);
-  GtkTextLineData* (*wrap)      (GtkTextLayout     *layout,
-                                 GtkTextLine       *line,
-                                 GtkTextLineData   *line_data); /* may be NULL */
-  void  (*get_log_attrs)        (GtkTextLayout     *layout,
-                                 GtkTextLine       *line,
+  CtkTextLineData* (*wrap)      (CtkTextLayout     *layout,
+                                 CtkTextLine       *line,
+                                 CtkTextLineData   *line_data); /* may be NULL */
+  void  (*get_log_attrs)        (CtkTextLayout     *layout,
+                                 CtkTextLine       *line,
                                  PangoLogAttr     **attrs,
                                  gint              *n_attrs);
-  void  (*invalidate)           (GtkTextLayout     *layout,
-                                 const GtkTextIter *start,
-                                 const GtkTextIter *end);
-  void  (*free_line_data)       (GtkTextLayout     *layout,
-                                 GtkTextLine       *line,
-                                 GtkTextLineData   *line_data);
+  void  (*invalidate)           (CtkTextLayout     *layout,
+                                 const CtkTextIter *start,
+                                 const CtkTextIter *end);
+  void  (*free_line_data)       (CtkTextLayout     *layout,
+                                 CtkTextLine       *line,
+                                 CtkTextLineData   *line_data);
 
-  void (*allocate_child)        (GtkTextLayout     *layout,
-                                 GtkWidget         *child,
+  void (*allocate_child)        (CtkTextLayout     *layout,
+                                 CtkWidget         *child,
                                  gint               x,
                                  gint               y);
 
-  void (*invalidate_cursors)    (GtkTextLayout     *layout,
-                                 const GtkTextIter *start,
-                                 const GtkTextIter *end);
+  void (*invalidate_cursors)    (CtkTextLayout     *layout,
+                                 const CtkTextIter *start,
+                                 const CtkTextIter *end);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -221,18 +221,18 @@ struct _GtkTextLayoutClass
   void (*_ctk_reserved3) (void);
 };
 
-struct _GtkTextAttrAppearance
+struct _CtkTextAttrAppearance
 {
   PangoAttribute attr;
-  GtkTextAppearance appearance;
+  CtkTextAppearance appearance;
 };
 
-struct _GtkTextLineDisplay
+struct _CtkTextLineDisplay
 {
   PangoLayout *layout;
   GArray *cursors;      /* indexes of cursors in the PangoLayout */
 
-  GtkTextDirection direction;
+  CtkTextDirection direction;
 
   gint width;                   /* Width of layout */
   gint total_width;             /* width - margins, if no width set on layout, if width set on layout, -1 */
@@ -247,7 +247,7 @@ struct _GtkTextLineDisplay
   gint bottom_margin;
   gint insert_index;		/* Byte index of insert cursor within para or -1 */
 
-  GtkTextLine *line;
+  CtkTextLine *line;
   
   GdkColor *pg_bg_color;
 
@@ -268,45 +268,45 @@ GDK_AVAILABLE_IN_ALL
 GType         ctk_text_layout_get_type    (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkTextLayout*     ctk_text_layout_new                   (void);
+CtkTextLayout*     ctk_text_layout_new                   (void);
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_layout_set_buffer            (GtkTextLayout     *layout,
-							  GtkTextBuffer     *buffer);
+void               ctk_text_layout_set_buffer            (CtkTextLayout     *layout,
+							  CtkTextBuffer     *buffer);
 GDK_AVAILABLE_IN_ALL
-GtkTextBuffer     *ctk_text_layout_get_buffer            (GtkTextLayout     *layout);
+CtkTextBuffer     *ctk_text_layout_get_buffer            (CtkTextLayout     *layout);
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_layout_set_default_style     (GtkTextLayout     *layout,
-							  GtkTextAttributes *values);
+void               ctk_text_layout_set_default_style     (CtkTextLayout     *layout,
+							  CtkTextAttributes *values);
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_layout_set_contexts          (GtkTextLayout     *layout,
+void               ctk_text_layout_set_contexts          (CtkTextLayout     *layout,
 							  PangoContext      *ltr_context,
 							  PangoContext      *rtl_context);
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_layout_set_cursor_direction  (GtkTextLayout     *layout,
-                                                          GtkTextDirection   direction);
+void               ctk_text_layout_set_cursor_direction  (CtkTextLayout     *layout,
+                                                          CtkTextDirection   direction);
 GDK_AVAILABLE_IN_ALL
-void		   ctk_text_layout_set_overwrite_mode	 (GtkTextLayout     *layout,
+void		   ctk_text_layout_set_overwrite_mode	 (CtkTextLayout     *layout,
 							  gboolean           overwrite);
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_layout_set_keyboard_direction (GtkTextLayout     *layout,
-							   GtkTextDirection keyboard_dir);
+void               ctk_text_layout_set_keyboard_direction (CtkTextLayout     *layout,
+							   CtkTextDirection keyboard_dir);
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_layout_default_style_changed (GtkTextLayout     *layout);
+void               ctk_text_layout_default_style_changed (CtkTextLayout     *layout);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_set_screen_width       (GtkTextLayout     *layout,
+void ctk_text_layout_set_screen_width       (CtkTextLayout     *layout,
                                              gint               width);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_set_preedit_string     (GtkTextLayout     *layout,
+void ctk_text_layout_set_preedit_string     (CtkTextLayout     *layout,
  					     const gchar       *preedit_string,
  					     PangoAttrList     *preedit_attrs,
  					     gint               cursor_pos);
 
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_set_cursor_visible (GtkTextLayout     *layout,
+void     ctk_text_layout_set_cursor_visible (CtkTextLayout     *layout,
                                              gboolean           cursor_visible);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_get_cursor_visible (GtkTextLayout     *layout);
+gboolean ctk_text_layout_get_cursor_visible (CtkTextLayout     *layout);
 
 /* Getting the size or the lines potentially results in a call to
  * recompute, which is pretty massively expensive. Thus it should
@@ -316,67 +316,67 @@ gboolean ctk_text_layout_get_cursor_visible (GtkTextLayout     *layout);
  * a full recompute so they may get cheaper over time.
  */
 GDK_AVAILABLE_IN_ALL
-void    ctk_text_layout_get_size  (GtkTextLayout  *layout,
+void    ctk_text_layout_get_size  (CtkTextLayout  *layout,
                                    gint           *width,
                                    gint           *height);
 GDK_AVAILABLE_IN_ALL
-GSList* ctk_text_layout_get_lines (GtkTextLayout  *layout,
+GSList* ctk_text_layout_get_lines (CtkTextLayout  *layout,
                                    /* [top_y, bottom_y) */
                                    gint            top_y,
                                    gint            bottom_y,
                                    gint           *first_line_y);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_wrap_loop_start (GtkTextLayout *layout);
+void ctk_text_layout_wrap_loop_start (CtkTextLayout *layout);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_wrap_loop_end   (GtkTextLayout *layout);
+void ctk_text_layout_wrap_loop_end   (CtkTextLayout *layout);
 
 GDK_AVAILABLE_IN_ALL
-GtkTextLineDisplay* ctk_text_layout_get_line_display  (GtkTextLayout      *layout,
-                                                       GtkTextLine        *line,
+CtkTextLineDisplay* ctk_text_layout_get_line_display  (CtkTextLayout      *layout,
+                                                       CtkTextLine        *line,
                                                        gboolean            size_only);
 GDK_AVAILABLE_IN_ALL
-void                ctk_text_layout_free_line_display (GtkTextLayout      *layout,
-                                                       GtkTextLineDisplay *display);
+void                ctk_text_layout_free_line_display (CtkTextLayout      *layout,
+                                                       CtkTextLineDisplay *display);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_get_line_at_y     (GtkTextLayout     *layout,
-                                        GtkTextIter       *target_iter,
+void ctk_text_layout_get_line_at_y     (CtkTextLayout     *layout,
+                                        CtkTextIter       *target_iter,
                                         gint               y,
                                         gint              *line_top);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_get_iter_at_pixel (GtkTextLayout     *layout,
-                                            GtkTextIter       *iter,
+gboolean ctk_text_layout_get_iter_at_pixel (CtkTextLayout     *layout,
+                                            CtkTextIter       *iter,
                                             gint               x,
                                             gint               y);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_get_iter_at_position (GtkTextLayout     *layout,
-                                               GtkTextIter       *iter,
+gboolean ctk_text_layout_get_iter_at_position (CtkTextLayout     *layout,
+                                               CtkTextIter       *iter,
                                                gint              *trailing,
                                                gint               x,
                                                gint               y);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_invalidate        (GtkTextLayout     *layout,
-                                        const GtkTextIter *start,
-                                        const GtkTextIter *end);
+void ctk_text_layout_invalidate        (CtkTextLayout     *layout,
+                                        const CtkTextIter *start,
+                                        const CtkTextIter *end);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_invalidate_cursors(GtkTextLayout     *layout,
-                                        const GtkTextIter *start,
-                                        const GtkTextIter *end);
+void ctk_text_layout_invalidate_cursors(CtkTextLayout     *layout,
+                                        const CtkTextIter *start,
+                                        const CtkTextIter *end);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_free_line_data    (GtkTextLayout     *layout,
-                                        GtkTextLine       *line,
-                                        GtkTextLineData   *line_data);
+void ctk_text_layout_free_line_data    (CtkTextLayout     *layout,
+                                        CtkTextLine       *line,
+                                        CtkTextLineData   *line_data);
 
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_is_valid        (GtkTextLayout *layout);
+gboolean ctk_text_layout_is_valid        (CtkTextLayout *layout);
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_validate_yrange (GtkTextLayout *layout,
-                                          GtkTextIter   *anchor_line,
+void     ctk_text_layout_validate_yrange (CtkTextLayout *layout,
+                                          CtkTextIter   *anchor_line,
                                           gint           y0_,
                                           gint           y1_);
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_validate        (GtkTextLayout *layout,
+void     ctk_text_layout_validate        (CtkTextLayout *layout,
                                           gint           max_pixels);
 
 /* This function should return the passed-in line data,
@@ -387,93 +387,93 @@ void     ctk_text_layout_validate        (GtkTextLayout *layout,
  * stored on the btree line.
  */
 GDK_AVAILABLE_IN_ALL
-GtkTextLineData* ctk_text_layout_wrap  (GtkTextLayout   *layout,
-                                        GtkTextLine     *line,
-                                        GtkTextLineData *line_data); /* may be NULL */
+CtkTextLineData* ctk_text_layout_wrap  (CtkTextLayout   *layout,
+                                        CtkTextLine     *line,
+                                        CtkTextLineData *line_data); /* may be NULL */
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_changed              (GtkTextLayout     *layout,
+void     ctk_text_layout_changed              (CtkTextLayout     *layout,
                                                gint               y,
                                                gint               old_height,
                                                gint               new_height);
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_cursors_changed      (GtkTextLayout     *layout,
+void     ctk_text_layout_cursors_changed      (CtkTextLayout     *layout,
                                                gint               y,
                                                gint               old_height,
                                                gint               new_height);
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_get_iter_location    (GtkTextLayout     *layout,
-                                               const GtkTextIter *iter,
+void     ctk_text_layout_get_iter_location    (CtkTextLayout     *layout,
+                                               const CtkTextIter *iter,
                                                GdkRectangle      *rect);
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_get_line_yrange      (GtkTextLayout     *layout,
-                                               const GtkTextIter *iter,
+void     ctk_text_layout_get_line_yrange      (CtkTextLayout     *layout,
+                                               const CtkTextIter *iter,
                                                gint              *y,
                                                gint              *height);
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_get_cursor_locations (GtkTextLayout     *layout,
-                                               GtkTextIter       *iter,
+void     ctk_text_layout_get_cursor_locations (CtkTextLayout     *layout,
+                                               CtkTextIter       *iter,
                                                GdkRectangle      *strong_pos,
                                                GdkRectangle      *weak_pos);
-gboolean _ctk_text_layout_get_block_cursor    (GtkTextLayout     *layout,
+gboolean _ctk_text_layout_get_block_cursor    (CtkTextLayout     *layout,
 					       GdkRectangle      *pos);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_clamp_iter_to_vrange (GtkTextLayout     *layout,
-                                               GtkTextIter       *iter,
+gboolean ctk_text_layout_clamp_iter_to_vrange (CtkTextLayout     *layout,
+                                               CtkTextIter       *iter,
                                                gint               top,
                                                gint               bottom);
 
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_move_iter_to_line_end      (GtkTextLayout *layout,
-                                                     GtkTextIter   *iter,
+gboolean ctk_text_layout_move_iter_to_line_end      (CtkTextLayout *layout,
+                                                     CtkTextIter   *iter,
                                                      gint           direction);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_move_iter_to_previous_line (GtkTextLayout *layout,
-                                                     GtkTextIter   *iter);
+gboolean ctk_text_layout_move_iter_to_previous_line (CtkTextLayout *layout,
+                                                     CtkTextIter   *iter);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_move_iter_to_next_line     (GtkTextLayout *layout,
-                                                     GtkTextIter   *iter);
+gboolean ctk_text_layout_move_iter_to_next_line     (CtkTextLayout *layout,
+                                                     CtkTextIter   *iter);
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_move_iter_to_x             (GtkTextLayout *layout,
-                                                     GtkTextIter   *iter,
+void     ctk_text_layout_move_iter_to_x             (CtkTextLayout *layout,
+                                                     CtkTextIter   *iter,
                                                      gint           x);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_move_iter_visually         (GtkTextLayout *layout,
-                                                     GtkTextIter   *iter,
+gboolean ctk_text_layout_move_iter_visually         (CtkTextLayout *layout,
+                                                     CtkTextIter   *iter,
                                                      gint           count);
 
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_layout_iter_starts_line           (GtkTextLayout       *layout,
-                                                     const GtkTextIter   *iter);
+gboolean ctk_text_layout_iter_starts_line           (CtkTextLayout       *layout,
+                                                     const CtkTextIter   *iter);
 
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_layout_get_iter_at_line           (GtkTextLayout *layout,
-                                                     GtkTextIter    *iter,
-                                                     GtkTextLine    *line,
+void     ctk_text_layout_get_iter_at_line           (CtkTextLayout *layout,
+                                                     CtkTextIter    *iter,
+                                                     CtkTextLine    *line,
                                                      gint            byte_offset);
 
 /* Don't use these. Use ctk_text_view_add_child_at_anchor().
  * These functions are defined in ctktextchild.c, but here
- * since they are semi-public and require GtkTextLayout to
+ * since they are semi-public and require CtkTextLayout to
  * be declared.
  */
 GDK_AVAILABLE_IN_ALL
-void ctk_text_child_anchor_register_child   (GtkTextChildAnchor *anchor,
-                                             GtkWidget          *child,
-                                             GtkTextLayout      *layout);
+void ctk_text_child_anchor_register_child   (CtkTextChildAnchor *anchor,
+                                             CtkWidget          *child,
+                                             CtkTextLayout      *layout);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_child_anchor_unregister_child (GtkTextChildAnchor *anchor,
-                                             GtkWidget          *child);
+void ctk_text_child_anchor_unregister_child (CtkTextChildAnchor *anchor,
+                                             CtkWidget          *child);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_child_anchor_queue_resize     (GtkTextChildAnchor *anchor,
-                                             GtkTextLayout      *layout);
+void ctk_text_child_anchor_queue_resize     (CtkTextChildAnchor *anchor,
+                                             CtkTextLayout      *layout);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_anchored_child_set_layout     (GtkWidget          *child,
-                                             GtkTextLayout      *layout);
+void ctk_text_anchored_child_set_layout     (CtkWidget          *child,
+                                             CtkTextLayout      *layout);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_layout_spew (GtkTextLayout *layout);
+void ctk_text_layout_spew (CtkTextLayout *layout);
 
 G_END_DECLS
 

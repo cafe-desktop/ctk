@@ -23,24 +23,24 @@
 /**
  * SECTION:ctkprintcontext
  * @Short_description: Encapsulates context for drawing pages
- * @Title: GtkPrintContext
+ * @Title: CtkPrintContext
  *
- * A GtkPrintContext encapsulates context information that is required when
+ * A CtkPrintContext encapsulates context information that is required when
  * drawing pages for printing, such as the cairo context and important
  * parameters like page size and resolution. It also lets you easily
  * create #PangoLayout and #PangoContext objects that match the font metrics
  * of the cairo surface.
  *
- * GtkPrintContext objects gets passed to the #GtkPrintOperation::begin-print,
- * #GtkPrintOperation::end-print, #GtkPrintOperation::request-page-setup and
- * #GtkPrintOperation::draw-page signals on the #GtkPrintOperation.
+ * CtkPrintContext objects gets passed to the #CtkPrintOperation::begin-print,
+ * #CtkPrintOperation::end-print, #CtkPrintOperation::request-page-setup and
+ * #CtkPrintOperation::draw-page signals on the #CtkPrintOperation.
  *
- * ## Using GtkPrintContext in a #GtkPrintOperation::draw-page callback
+ * ## Using CtkPrintContext in a #CtkPrintOperation::draw-page callback
  *
  * |[<!-- language="C" -->
  * static void
- * draw_page (GtkPrintOperation *operation,
- * 	   GtkPrintContext   *context,
+ * draw_page (CtkPrintOperation *operation,
+ * 	   CtkPrintContext   *context,
  * 	   int                page_nr)
  * {
  *   cairo_t *cr;
@@ -95,22 +95,22 @@
  */
 
 
-typedef struct _GtkPrintContextClass GtkPrintContextClass;
+typedef struct _CtkPrintContextClass CtkPrintContextClass;
 
 #define CTK_IS_PRINT_CONTEXT_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_CONTEXT))
-#define CTK_PRINT_CONTEXT_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_CONTEXT, GtkPrintContextClass))
-#define CTK_PRINT_CONTEXT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_CONTEXT, GtkPrintContextClass))
+#define CTK_PRINT_CONTEXT_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_CONTEXT, CtkPrintContextClass))
+#define CTK_PRINT_CONTEXT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_CONTEXT, CtkPrintContextClass))
 
 #define MM_PER_INCH 25.4
 #define POINTS_PER_INCH 72
 
-struct _GtkPrintContext
+struct _CtkPrintContext
 {
   GObject parent_instance;
 
-  GtkPrintOperation *op;
+  CtkPrintOperation *op;
   cairo_t *cr;
-  GtkPageSetup *page_setup;
+  CtkPageSetup *page_setup;
 
   gdouble surface_dpi_x;
   gdouble surface_dpi_y;
@@ -126,17 +126,17 @@ struct _GtkPrintContext
 
 };
 
-struct _GtkPrintContextClass
+struct _CtkPrintContextClass
 {
   GObjectClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkPrintContext, ctk_print_context, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkPrintContext, ctk_print_context, G_TYPE_OBJECT)
 
 static void
 ctk_print_context_finalize (GObject *object)
 {
-  GtkPrintContext *context = CTK_PRINT_CONTEXT (object);
+  CtkPrintContext *context = CTK_PRINT_CONTEXT (object);
 
   if (context->page_setup)
     g_object_unref (context->page_setup);
@@ -148,12 +148,12 @@ ctk_print_context_finalize (GObject *object)
 }
 
 static void
-ctk_print_context_init (GtkPrintContext *context)
+ctk_print_context_init (CtkPrintContext *context)
 {
 }
 
 static void
-ctk_print_context_class_init (GtkPrintContextClass *class)
+ctk_print_context_class_init (CtkPrintContextClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
@@ -161,10 +161,10 @@ ctk_print_context_class_init (GtkPrintContextClass *class)
 }
 
 
-GtkPrintContext *
-_ctk_print_context_new (GtkPrintOperation *op)
+CtkPrintContext *
+_ctk_print_context_new (CtkPrintOperation *op)
 {
-  GtkPrintContext *context;
+  CtkPrintContext *context;
 
   context = g_object_new (CTK_TYPE_PRINT_CONTEXT, NULL);
 
@@ -176,14 +176,14 @@ _ctk_print_context_new (GtkPrintOperation *op)
 }
 
 static PangoFontMap *
-_ctk_print_context_get_fontmap (GtkPrintContext *context)
+_ctk_print_context_get_fontmap (CtkPrintContext *context)
 {
   return pango_cairo_font_map_get_default ();
 }
 
 /**
  * ctk_print_context_set_cairo_context:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  * @cr: the cairo context
  * @dpi_x: the horizontal resolution to use with @cr
  * @dpi_y: the vertical resolution to use with @cr
@@ -198,7 +198,7 @@ _ctk_print_context_get_fontmap (GtkPrintContext *context)
  * Since: 2.10 
  */
 void
-ctk_print_context_set_cairo_context (GtkPrintContext *context,
+ctk_print_context_set_cairo_context (CtkPrintContext *context,
 				     cairo_t         *cr,
 				     double           dpi_x,
 				     double           dpi_y)
@@ -238,11 +238,11 @@ ctk_print_context_set_cairo_context (GtkPrintContext *context,
 
 
 void
-_ctk_print_context_rotate_according_to_orientation (GtkPrintContext *context)
+_ctk_print_context_rotate_according_to_orientation (CtkPrintContext *context)
 {
   cairo_t *cr = context->cr;
   cairo_matrix_t matrix;
-  GtkPaperSize *paper_size;
+  CtkPaperSize *paper_size;
   gdouble width, height;
 
   paper_size = ctk_page_setup_get_paper_size (context->page_setup);
@@ -285,7 +285,7 @@ _ctk_print_context_rotate_according_to_orientation (GtkPrintContext *context)
 }
 
 void
-_ctk_print_context_reverse_according_to_orientation (GtkPrintContext *context)
+_ctk_print_context_reverse_according_to_orientation (CtkPrintContext *context)
 {
   cairo_t *cr = context->cr;
   cairo_matrix_t matrix;
@@ -315,7 +315,7 @@ _ctk_print_context_reverse_according_to_orientation (GtkPrintContext *context)
 }
 
 void
-_ctk_print_context_translate_into_margin (GtkPrintContext *context)
+_ctk_print_context_translate_into_margin (CtkPrintContext *context)
 {
   gdouble dx, dy;
 
@@ -349,8 +349,8 @@ _ctk_print_context_translate_into_margin (GtkPrintContext *context)
 }
 
 void
-_ctk_print_context_set_page_setup (GtkPrintContext *context,
-				   GtkPageSetup    *page_setup)
+_ctk_print_context_set_page_setup (CtkPrintContext *context,
+				   CtkPageSetup    *page_setup)
 {
   g_return_if_fail (CTK_IS_PRINT_CONTEXT (context));
   g_return_if_fail (page_setup == NULL ||
@@ -367,17 +367,17 @@ _ctk_print_context_set_page_setup (GtkPrintContext *context,
 
 /**
  * ctk_print_context_get_cairo_context:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  *
  * Obtains the cairo context that is associated with the
- * #GtkPrintContext.
+ * #CtkPrintContext.
  *
  * Returns: (transfer none): the cairo context of @context
  *
  * Since: 2.10
  */
 cairo_t *
-ctk_print_context_get_cairo_context (GtkPrintContext *context)
+ctk_print_context_get_cairo_context (CtkPrintContext *context)
 {
   g_return_val_if_fail (CTK_IS_PRINT_CONTEXT (context), NULL);
 
@@ -386,17 +386,17 @@ ctk_print_context_get_cairo_context (GtkPrintContext *context)
 
 /**
  * ctk_print_context_get_page_setup:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  *
- * Obtains the #GtkPageSetup that determines the page
- * dimensions of the #GtkPrintContext.
+ * Obtains the #CtkPageSetup that determines the page
+ * dimensions of the #CtkPrintContext.
  *
  * Returns: (transfer none): the page setup of @context
  *
  * Since: 2.10
  */
-GtkPageSetup *
-ctk_print_context_get_page_setup (GtkPrintContext *context)
+CtkPageSetup *
+ctk_print_context_get_page_setup (CtkPrintContext *context)
 {
   g_return_val_if_fail (CTK_IS_PRINT_CONTEXT (context), NULL);
 
@@ -405,18 +405,18 @@ ctk_print_context_get_page_setup (GtkPrintContext *context)
 
 /**
  * ctk_print_context_get_width:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  *
- * Obtains the width of the #GtkPrintContext, in pixels.
+ * Obtains the width of the #CtkPrintContext, in pixels.
  *
  * Returns: the width of @context
  *
  * Since: 2.10 
  */
 gdouble
-ctk_print_context_get_width (GtkPrintContext *context)
+ctk_print_context_get_width (CtkPrintContext *context)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
   gdouble width;
 
   g_return_val_if_fail (CTK_IS_PRINT_CONTEXT (context), 0);
@@ -434,18 +434,18 @@ ctk_print_context_get_width (GtkPrintContext *context)
 
 /**
  * ctk_print_context_get_height:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  * 
- * Obtains the height of the #GtkPrintContext, in pixels.
+ * Obtains the height of the #CtkPrintContext, in pixels.
  *
  * Returns: the height of @context
  *
  * Since: 2.10
  */
 gdouble
-ctk_print_context_get_height (GtkPrintContext *context)
+ctk_print_context_get_height (CtkPrintContext *context)
 {
-  GtkPrintOperationPrivate *priv;
+  CtkPrintOperationPrivate *priv;
   gdouble height;
 
   g_return_val_if_fail (CTK_IS_PRINT_CONTEXT (context), 0);
@@ -463,9 +463,9 @@ ctk_print_context_get_height (GtkPrintContext *context)
 
 /**
  * ctk_print_context_get_dpi_x:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  * 
- * Obtains the horizontal resolution of the #GtkPrintContext,
+ * Obtains the horizontal resolution of the #CtkPrintContext,
  * in dots per inch.
  *
  * Returns: the horizontal resolution of @context
@@ -473,7 +473,7 @@ ctk_print_context_get_height (GtkPrintContext *context)
  * Since: 2.10
  */
 gdouble
-ctk_print_context_get_dpi_x (GtkPrintContext *context)
+ctk_print_context_get_dpi_x (CtkPrintContext *context)
 {
   g_return_val_if_fail (CTK_IS_PRINT_CONTEXT (context), 0);
 
@@ -482,9 +482,9 @@ ctk_print_context_get_dpi_x (GtkPrintContext *context)
 
 /**
  * ctk_print_context_get_dpi_y:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  * 
- * Obtains the vertical resolution of the #GtkPrintContext,
+ * Obtains the vertical resolution of the #CtkPrintContext,
  * in dots per inch.
  *
  * Returns: the vertical resolution of @context
@@ -492,7 +492,7 @@ ctk_print_context_get_dpi_x (GtkPrintContext *context)
  * Since: 2.10
  */
 gdouble
-ctk_print_context_get_dpi_y (GtkPrintContext *context)
+ctk_print_context_get_dpi_y (CtkPrintContext *context)
 {
   g_return_val_if_fail (CTK_IS_PRINT_CONTEXT (context), 0);
 
@@ -501,20 +501,20 @@ ctk_print_context_get_dpi_y (GtkPrintContext *context)
 
 /**
  * ctk_print_context_get_hard_margins:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  * @top: (out): top hardware printer margin
  * @bottom: (out): bottom hardware printer margin
  * @left: (out): left hardware printer margin
  * @right: (out): right hardware printer margin
  *
- * Obtains the hardware printer margins of the #GtkPrintContext, in units.
+ * Obtains the hardware printer margins of the #CtkPrintContext, in units.
  *
  * Returns: %TRUE if the hard margins were retrieved
  *
  * Since: 2.20
  */
 gboolean
-ctk_print_context_get_hard_margins (GtkPrintContext *context,
+ctk_print_context_get_hard_margins (CtkPrintContext *context,
 				    gdouble         *top,
 				    gdouble         *bottom,
 				    gdouble         *left,
@@ -533,7 +533,7 @@ ctk_print_context_get_hard_margins (GtkPrintContext *context,
 
 /**
  * ctk_print_context_set_hard_margins:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  * @top: top hardware printer margin
  * @bottom: bottom hardware printer margin
  * @left: left hardware printer margin
@@ -542,7 +542,7 @@ ctk_print_context_get_hard_margins (GtkPrintContext *context,
  * set the hard margins in pixel coordinates
  */
 void
-_ctk_print_context_set_hard_margins (GtkPrintContext *context,
+_ctk_print_context_set_hard_margins (CtkPrintContext *context,
 				     gdouble          top,
 				     gdouble          bottom,
 				     gdouble          left,
@@ -557,17 +557,17 @@ _ctk_print_context_set_hard_margins (GtkPrintContext *context,
 
 /**
  * ctk_print_context_get_pango_fontmap:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  *
  * Returns a #PangoFontMap that is suitable for use
- * with the #GtkPrintContext.
+ * with the #CtkPrintContext.
  *
  * Returns: (transfer none): the font map of @context
  *
  * Since: 2.10
  */
 PangoFontMap *
-ctk_print_context_get_pango_fontmap (GtkPrintContext *context)
+ctk_print_context_get_pango_fontmap (CtkPrintContext *context)
 {
   g_return_val_if_fail (CTK_IS_PRINT_CONTEXT (context), NULL);
 
@@ -576,17 +576,17 @@ ctk_print_context_get_pango_fontmap (GtkPrintContext *context)
 
 /**
  * ctk_print_context_create_pango_context:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  *
  * Creates a new #PangoContext that can be used with the
- * #GtkPrintContext.
+ * #CtkPrintContext.
  *
  * Returns: (transfer full): a new Pango context for @context
  * 
  * Since: 2.10
  */
 PangoContext *
-ctk_print_context_create_pango_context (GtkPrintContext *context)
+ctk_print_context_create_pango_context (CtkPrintContext *context)
 {
   PangoContext *pango_context;
   cairo_font_options_t *options;
@@ -610,17 +610,17 @@ ctk_print_context_create_pango_context (GtkPrintContext *context)
 
 /**
  * ctk_print_context_create_pango_layout:
- * @context: a #GtkPrintContext
+ * @context: a #CtkPrintContext
  *
  * Creates a new #PangoLayout that is suitable for use
- * with the #GtkPrintContext.
+ * with the #CtkPrintContext.
  * 
  * Returns: (transfer full): a new Pango layout for @context
  *
  * Since: 2.10
  */
 PangoLayout *
-ctk_print_context_create_pango_layout (GtkPrintContext *context)
+ctk_print_context_create_pango_layout (CtkPrintContext *context)
 {
   PangoContext *pango_context;
   PangoLayout *layout;

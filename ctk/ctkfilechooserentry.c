@@ -34,30 +34,30 @@
 #include "ctkmarshalers.h"
 #include "ctkfilefilterprivate.h"
 
-typedef struct _GtkFileChooserEntryClass GtkFileChooserEntryClass;
+typedef struct _CtkFileChooserEntryClass CtkFileChooserEntryClass;
 
-#define CTK_FILE_CHOOSER_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntryClass))
+#define CTK_FILE_CHOOSER_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_CHOOSER_ENTRY, CtkFileChooserEntryClass))
 #define CTK_IS_FILE_CHOOSER_ENTRY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FILE_CHOOSER_ENTRY))
-#define CTK_FILE_CHOOSER_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntryClass))
+#define CTK_FILE_CHOOSER_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_CHOOSER_ENTRY, CtkFileChooserEntryClass))
 
-struct _GtkFileChooserEntryClass
+struct _CtkFileChooserEntryClass
 {
-  GtkEntryClass parent_class;
+  CtkEntryClass parent_class;
 };
 
-struct _GtkFileChooserEntry
+struct _CtkFileChooserEntry
 {
-  GtkEntry parent_instance;
+  CtkEntry parent_instance;
 
-  GtkFileChooserAction action;
+  CtkFileChooserAction action;
 
   GFile *base_folder;
   GFile *current_folder_file;
   gchar *dir_part;
   gchar *file_part;
 
-  GtkTreeModel *completion_store;
-  GtkFileFilter *current_filter;
+  CtkTreeModel *completion_store;
+  CtkFileFilter *current_filter;
 
   guint current_folder_loaded : 1;
   guint complete_on_load : 1;
@@ -83,45 +83,45 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 static void     ctk_file_chooser_entry_finalize       (GObject          *object);
 static void     ctk_file_chooser_entry_dispose        (GObject          *object);
-static void     ctk_file_chooser_entry_grab_focus     (GtkWidget        *widget);
-static gboolean ctk_file_chooser_entry_tab_handler    (GtkWidget *widget,
+static void     ctk_file_chooser_entry_grab_focus     (CtkWidget        *widget);
+static gboolean ctk_file_chooser_entry_tab_handler    (CtkWidget *widget,
 						       GdkEventKey *event);
-static gboolean ctk_file_chooser_entry_focus_out_event (GtkWidget       *widget,
+static gboolean ctk_file_chooser_entry_focus_out_event (CtkWidget       *widget,
 							GdkEventFocus   *event);
 
 #ifdef G_OS_WIN32
-static gint     insert_text_callback      (GtkFileChooserEntry *widget,
+static gint     insert_text_callback      (CtkFileChooserEntry *widget,
 					   const gchar         *new_text,
 					   gint                 new_text_length,
 					   gint                *position,
 					   gpointer             user_data);
-static void     delete_text_callback      (GtkFileChooserEntry *widget,
+static void     delete_text_callback      (CtkFileChooserEntry *widget,
 					   gint                 start_pos,
 					   gint                 end_pos,
 					   gpointer             user_data);
 #endif
 
-static gboolean match_selected_callback   (GtkEntryCompletion  *completion,
-					   GtkTreeModel        *model,
-					   GtkTreeIter         *iter,
-					   GtkFileChooserEntry *chooser_entry);
+static gboolean match_selected_callback   (CtkEntryCompletion  *completion,
+					   CtkTreeModel        *model,
+					   CtkTreeIter         *iter,
+					   CtkFileChooserEntry *chooser_entry);
 
-static void set_complete_on_load (GtkFileChooserEntry *chooser_entry,
+static void set_complete_on_load (CtkFileChooserEntry *chooser_entry,
                                   gboolean             complete_on_load);
-static void refresh_current_folder_and_file_part (GtkFileChooserEntry *chooser_entry);
-static void set_completion_folder (GtkFileChooserEntry *chooser_entry,
+static void refresh_current_folder_and_file_part (CtkFileChooserEntry *chooser_entry);
+static void set_completion_folder (CtkFileChooserEntry *chooser_entry,
                                    GFile               *folder,
 				   char                *dir_part);
-static void finished_loading_cb (GtkFileSystemModel  *model,
+static void finished_loading_cb (CtkFileSystemModel  *model,
                                  GError              *error,
-		                 GtkFileChooserEntry *chooser_entry);
+		                 CtkFileChooserEntry *chooser_entry);
 
-G_DEFINE_TYPE (GtkFileChooserEntry, _ctk_file_chooser_entry, CTK_TYPE_ENTRY)
+G_DEFINE_TYPE (CtkFileChooserEntry, _ctk_file_chooser_entry, CTK_TYPE_ENTRY)
 
 static char *
-ctk_file_chooser_entry_get_completion_text (GtkFileChooserEntry *chooser_entry)
+ctk_file_chooser_entry_get_completion_text (CtkFileChooserEntry *chooser_entry)
 {
-  GtkEditable *editable = CTK_EDITABLE (chooser_entry);
+  CtkEditable *editable = CTK_EDITABLE (chooser_entry);
   int start, end;
 
   ctk_editable_get_selection_bounds (editable, &start, &end);
@@ -133,7 +133,7 @@ ctk_file_chooser_entry_dispatch_properties_changed (GObject     *object,
                                                     guint        n_pspecs,
                                                     GParamSpec **pspecs)
 {
-  GtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
+  CtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
   guint i;
 
   G_OBJECT_CLASS (_ctk_file_chooser_entry_parent_class)->dispatch_properties_changed (object, n_pspecs, pspecs);
@@ -159,10 +159,10 @@ ctk_file_chooser_entry_dispatch_properties_changed (GObject     *object,
 }
 
 static void
-_ctk_file_chooser_entry_class_init (GtkFileChooserEntryClass *class)
+_ctk_file_chooser_entry_class_init (CtkFileChooserEntryClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   gobject_class->finalize = ctk_file_chooser_entry_finalize;
   gobject_class->dispose = ctk_file_chooser_entry_dispose;
@@ -182,15 +182,15 @@ _ctk_file_chooser_entry_class_init (GtkFileChooserEntryClass *class)
 }
 
 static gboolean
-match_func (GtkEntryCompletion *compl,
+match_func (CtkEntryCompletion *compl,
             const gchar        *key,
-            GtkTreeIter        *iter,
+            CtkTreeIter        *iter,
             gpointer            user_data)
 {
-  GtkFileChooserEntry *chooser_entry = user_data;
+  CtkFileChooserEntry *chooser_entry = user_data;
 
-  /* If we arrive here, the GtkFileSystemModel's GtkFileFilter already filtered out all
-   * files that don't start with the current prefix, so we manually apply the GtkFileChooser's
+  /* If we arrive here, the CtkFileSystemModel's CtkFileFilter already filtered out all
+   * files that don't start with the current prefix, so we manually apply the CtkFileChooser's
    * current file filter (e.g. just jpg files) here. */
   if (chooser_entry->current_filter != NULL)
     {
@@ -198,8 +198,8 @@ match_func (GtkEntryCompletion *compl,
       gboolean matches;
       GFile *file;
       GFileInfo *file_info;
-      GtkFileFilterInfo filter_info;
-      GtkFileFilterFlags needed_flags;
+      CtkFileFilterInfo filter_info;
+      CtkFileFilterFlags needed_flags;
 
       file = _ctk_file_system_model_get_file (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
                                               iter);
@@ -259,10 +259,10 @@ match_func (GtkEntryCompletion *compl,
 }
 
 static void
-_ctk_file_chooser_entry_init (GtkFileChooserEntry *chooser_entry)
+_ctk_file_chooser_entry_init (CtkFileChooserEntry *chooser_entry)
 {
-  GtkEntryCompletion *comp;
-  GtkCellRenderer *cell;
+  CtkEntryCompletion *comp;
+  CtkCellRenderer *cell;
 
   chooser_entry->local_only = TRUE;
 
@@ -309,7 +309,7 @@ _ctk_file_chooser_entry_init (GtkFileChooserEntry *chooser_entry)
 static void
 ctk_file_chooser_entry_finalize (GObject *object)
 {
-  GtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
+  CtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
 
   if (chooser_entry->base_folder)
     g_object_unref (chooser_entry->base_folder);
@@ -326,19 +326,19 @@ ctk_file_chooser_entry_finalize (GObject *object)
 static void
 ctk_file_chooser_entry_dispose (GObject *object)
 {
-  GtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
+  CtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
 
   set_completion_folder (chooser_entry, NULL, NULL);
 
   G_OBJECT_CLASS (_ctk_file_chooser_entry_parent_class)->dispose (object);
 }
 
-/* Match functions for the GtkEntryCompletion */
+/* Match functions for the CtkEntryCompletion */
 static gboolean
-match_selected_callback (GtkEntryCompletion  *completion,
-                         GtkTreeModel        *model,
-                         GtkTreeIter         *iter,
-                         GtkFileChooserEntry *chooser_entry)
+match_selected_callback (CtkEntryCompletion  *completion,
+                         CtkTreeModel        *model,
+                         CtkTreeIter         *iter,
+                         CtkFileChooserEntry *chooser_entry)
 {
   char *path;
   gint pos;
@@ -364,7 +364,7 @@ match_selected_callback (GtkEntryCompletion  *completion,
 }
 
 static void
-set_complete_on_load (GtkFileChooserEntry *chooser_entry,
+set_complete_on_load (CtkFileChooserEntry *chooser_entry,
                       gboolean             complete_on_load)
 {
   /* a completion was triggered, but we couldn't do it.
@@ -400,7 +400,7 @@ has_uri_scheme (const char *str)
 }
 
 static GFile *
-ctk_file_chooser_get_file_for_text (GtkFileChooserEntry *chooser_entry,
+ctk_file_chooser_get_file_for_text (CtkFileChooserEntry *chooser_entry,
                                     const gchar         *str)
 {
   GFile *file;
@@ -424,7 +424,7 @@ is_directory_shortcut (const char *text)
 }
 
 static GFile *
-ctk_file_chooser_get_directory_for_text (GtkFileChooserEntry *chooser_entry,
+ctk_file_chooser_get_directory_for_text (CtkFileChooserEntry *chooser_entry,
                                          const char *         text)
 {
   GFile *file, *parent;
@@ -448,7 +448,7 @@ ctk_file_chooser_get_directory_for_text (GtkFileChooserEntry *chooser_entry,
  * and mandatorily appends it
  */
 static void
-explicitly_complete (GtkFileChooserEntry *chooser_entry)
+explicitly_complete (CtkFileChooserEntry *chooser_entry)
 {
   chooser_entry->complete_on_load = FALSE;
 
@@ -464,7 +464,7 @@ explicitly_complete (GtkFileChooserEntry *chooser_entry)
 
       if (completion_len > text_len)
         {
-          GtkEditable *editable = CTK_EDITABLE (chooser_entry);
+          CtkEditable *editable = CTK_EDITABLE (chooser_entry);
           int pos = ctk_editable_get_position (editable);
 
           ctk_editable_insert_text (editable,
@@ -480,14 +480,14 @@ explicitly_complete (GtkFileChooserEntry *chooser_entry)
 }
 
 static void
-ctk_file_chooser_entry_grab_focus (GtkWidget *widget)
+ctk_file_chooser_entry_grab_focus (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (_ctk_file_chooser_entry_parent_class)->grab_focus (widget);
   _ctk_file_chooser_entry_select_filename (CTK_FILE_CHOOSER_ENTRY (widget));
 }
 
 static void
-start_explicit_completion (GtkFileChooserEntry *chooser_entry)
+start_explicit_completion (CtkFileChooserEntry *chooser_entry)
 {
   if (chooser_entry->current_folder_loaded)
     explicitly_complete (chooser_entry);
@@ -496,11 +496,11 @@ start_explicit_completion (GtkFileChooserEntry *chooser_entry)
 }
 
 static gboolean
-ctk_file_chooser_entry_tab_handler (GtkWidget *widget,
+ctk_file_chooser_entry_tab_handler (CtkWidget *widget,
 				    GdkEventKey *event)
 {
-  GtkFileChooserEntry *chooser_entry;
-  GtkEditable *editable;
+  CtkFileChooserEntry *chooser_entry;
+  CtkEditable *editable;
   GdkModifierType state;
   gint start, end;
 
@@ -537,10 +537,10 @@ ctk_file_chooser_entry_tab_handler (GtkWidget *widget,
 }
 
 static gboolean
-ctk_file_chooser_entry_focus_out_event (GtkWidget     *widget,
+ctk_file_chooser_entry_focus_out_event (CtkWidget     *widget,
 					GdkEventFocus *event)
 {
-  GtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (widget);
+  CtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (widget);
 
   set_complete_on_load (chooser_entry, FALSE);
  
@@ -548,9 +548,9 @@ ctk_file_chooser_entry_focus_out_event (GtkWidget     *widget,
 }
 
 static void
-update_inline_completion (GtkFileChooserEntry *chooser_entry)
+update_inline_completion (CtkFileChooserEntry *chooser_entry)
 {
-  GtkEntryCompletion *completion = ctk_entry_get_completion (CTK_ENTRY (chooser_entry));
+  CtkEntryCompletion *completion = ctk_entry_get_completion (CTK_ENTRY (chooser_entry));
 
   if (!chooser_entry->current_folder_loaded)
     {
@@ -572,7 +572,7 @@ update_inline_completion (GtkFileChooserEntry *chooser_entry)
 }
 
 static void
-discard_completion_store (GtkFileChooserEntry *chooser_entry)
+discard_completion_store (CtkFileChooserEntry *chooser_entry)
 {
   if (!chooser_entry->completion_store)
     return;
@@ -584,14 +584,14 @@ discard_completion_store (GtkFileChooserEntry *chooser_entry)
 }
 
 static gboolean
-completion_store_set (GtkFileSystemModel  *model,
+completion_store_set (CtkFileSystemModel  *model,
                       GFile               *file,
                       GFileInfo           *info,
                       int                  column,
                       GValue              *value,
                       gpointer             data)
 {
-  GtkFileChooserEntry *chooser_entry = data;
+  CtkFileChooserEntry *chooser_entry = data;
 
   const char *prefix = "";
   const char *suffix = "";
@@ -621,7 +621,7 @@ completion_store_set (GtkFileSystemModel  *model,
 
 /* Fills the completion store from the contents of the current folder */
 static void
-populate_completion_store (GtkFileChooserEntry *chooser_entry)
+populate_completion_store (CtkFileChooserEntry *chooser_entry)
 {
   chooser_entry->completion_store = CTK_TREE_MODEL (
       _ctk_file_system_model_new_for_directory (chooser_entry->current_folder_file,
@@ -649,11 +649,11 @@ populate_completion_store (GtkFileChooserEntry *chooser_entry)
 
 /* Callback when the current folder finishes loading */
 static void
-finished_loading_cb (GtkFileSystemModel  *model,
+finished_loading_cb (CtkFileSystemModel  *model,
                      GError              *error,
-		     GtkFileChooserEntry *chooser_entry)
+		     CtkFileChooserEntry *chooser_entry)
 {
-  GtkEntryCompletion *completion;
+  CtkEntryCompletion *completion;
 
   chooser_entry->current_folder_loaded = TRUE;
 
@@ -680,7 +680,7 @@ finished_loading_cb (GtkFileSystemModel  *model,
 }
 
 static void
-set_completion_folder (GtkFileChooserEntry *chooser_entry,
+set_completion_folder (CtkFileChooserEntry *chooser_entry,
                        GFile               *folder_file,
 		       char                *dir_part)
 {
@@ -719,7 +719,7 @@ set_completion_folder (GtkFileChooserEntry *chooser_entry,
 }
 
 static void
-refresh_current_folder_and_file_part (GtkFileChooserEntry *chooser_entry)
+refresh_current_folder_and_file_part (CtkFileChooserEntry *chooser_entry)
 {
   GFile *folder_file;
   char *text, *last_slash, *old_file_part;
@@ -753,7 +753,7 @@ refresh_current_folder_and_file_part (GtkFileChooserEntry *chooser_entry)
   if (chooser_entry->completion_store &&
       (g_strcmp0 (old_file_part, chooser_entry->file_part) != 0))
     {
-      GtkFileFilter *filter;
+      CtkFileFilter *filter;
       char *pattern;
 
       filter = ctk_file_filter_new ();
@@ -773,7 +773,7 @@ refresh_current_folder_and_file_part (GtkFileChooserEntry *chooser_entry)
 
 #ifdef G_OS_WIN32
 static gint
-insert_text_callback (GtkFileChooserEntry *chooser_entry,
+insert_text_callback (CtkFileChooserEntry *chooser_entry,
 		      const gchar	  *new_text,
 		      gint       	   new_text_length,
 		      gint       	  *position,
@@ -814,7 +814,7 @@ insert_text_callback (GtkFileChooserEntry *chooser_entry,
 }
 
 static void
-delete_text_callback (GtkFileChooserEntry *chooser_entry,
+delete_text_callback (CtkFileChooserEntry *chooser_entry,
 		      gint                 start_pos,
 		      gint                 end_pos,
 		      gpointer             user_data)
@@ -840,18 +840,18 @@ delete_text_callback (GtkFileChooserEntry *chooser_entry,
  * @eat_tabs: If %FALSE, allow focus navigation with the tab key.
  * @eat_escape: If %TRUE, capture Escape key presses and emit ::hide-entry
  *
- * Creates a new #GtkFileChooserEntry object. #GtkFileChooserEntry
+ * Creates a new #CtkFileChooserEntry object. #CtkFileChooserEntry
  * is an internal implementation widget for the GTK+ file chooser
  * which is an entry with completion with respect to a
- * #GtkFileSystem object.
+ * #CtkFileSystem object.
  *
- * Returns: the newly created #GtkFileChooserEntry
+ * Returns: the newly created #CtkFileChooserEntry
  **/
-GtkWidget *
+CtkWidget *
 _ctk_file_chooser_entry_new (gboolean eat_tabs,
                              gboolean eat_escape)
 {
-  GtkFileChooserEntry *chooser_entry;
+  CtkFileChooserEntry *chooser_entry;
 
   chooser_entry = g_object_new (CTK_TYPE_FILE_CHOOSER_ENTRY, NULL);
   chooser_entry->eat_tabs = (eat_tabs != FALSE);
@@ -862,13 +862,13 @@ _ctk_file_chooser_entry_new (gboolean eat_tabs,
 
 /**
  * _ctk_file_chooser_entry_set_base_folder:
- * @chooser_entry: a #GtkFileChooserEntry
+ * @chooser_entry: a #CtkFileChooserEntry
  * @file: file for a folder in the chooser entries current file system.
  *
  * Sets the folder with respect to which completions occur.
  **/
 void
-_ctk_file_chooser_entry_set_base_folder (GtkFileChooserEntry *chooser_entry,
+_ctk_file_chooser_entry_set_base_folder (CtkFileChooserEntry *chooser_entry,
 					 GFile               *file)
 {
   g_return_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry));
@@ -892,9 +892,9 @@ _ctk_file_chooser_entry_set_base_folder (GtkFileChooserEntry *chooser_entry,
 
 /**
  * _ctk_file_chooser_entry_get_current_folder:
- * @chooser_entry: a #GtkFileChooserEntry
+ * @chooser_entry: a #CtkFileChooserEntry
  *
- * Gets the current folder for the #GtkFileChooserEntry. If the
+ * Gets the current folder for the #CtkFileChooserEntry. If the
  * user has only entered a filename, this will be in the base folder
  * (see _ctk_file_chooser_entry_set_base_folder()), but if the
  * user has entered a relative or absolute path, then it will
@@ -905,7 +905,7 @@ _ctk_file_chooser_entry_set_base_folder (GtkFileChooserEntry *chooser_entry,
  *   the value after use.
  **/
 GFile *
-_ctk_file_chooser_entry_get_current_folder (GtkFileChooserEntry *chooser_entry)
+_ctk_file_chooser_entry_get_current_folder (CtkFileChooserEntry *chooser_entry)
 {
   g_return_val_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry), NULL);
 
@@ -915,7 +915,7 @@ _ctk_file_chooser_entry_get_current_folder (GtkFileChooserEntry *chooser_entry)
 
 /**
  * _ctk_file_chooser_entry_get_file_part:
- * @chooser_entry: a #GtkFileChooserEntry
+ * @chooser_entry: a #CtkFileChooserEntry
  *
  * Gets the non-folder portion of whatever the user has entered
  * into the file selector. What is returned is a UTF-8 string,
@@ -926,7 +926,7 @@ _ctk_file_chooser_entry_get_current_folder (GtkFileChooserEntry *chooser_entry)
  *  chooser entry and must not be modified or freed.
  **/
 const gchar *
-_ctk_file_chooser_entry_get_file_part (GtkFileChooserEntry *chooser_entry)
+_ctk_file_chooser_entry_get_file_part (CtkFileChooserEntry *chooser_entry)
 {
   const char *last_slash, *text;
 
@@ -944,22 +944,22 @@ _ctk_file_chooser_entry_get_file_part (GtkFileChooserEntry *chooser_entry)
 
 /**
  * _ctk_file_chooser_entry_set_action:
- * @chooser_entry: a #GtkFileChooserEntry
+ * @chooser_entry: a #CtkFileChooserEntry
  * @action: the action which is performed by the file selector using this entry
  *
  * Sets action which is performed by the file selector using this entry. 
- * The #GtkFileChooserEntry will use different completion strategies for 
+ * The #CtkFileChooserEntry will use different completion strategies for 
  * different actions.
  **/
 void
-_ctk_file_chooser_entry_set_action (GtkFileChooserEntry *chooser_entry,
-				    GtkFileChooserAction action)
+_ctk_file_chooser_entry_set_action (CtkFileChooserEntry *chooser_entry,
+				    CtkFileChooserAction action)
 {
   g_return_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry));
   
   if (chooser_entry->action != action)
     {
-      GtkEntryCompletion *comp;
+      CtkEntryCompletion *comp;
 
       chooser_entry->action = action;
 
@@ -991,14 +991,14 @@ _ctk_file_chooser_entry_set_action (GtkFileChooserEntry *chooser_entry,
 
 /**
  * _ctk_file_chooser_entry_get_action:
- * @chooser_entry: a #GtkFileChooserEntry
+ * @chooser_entry: a #CtkFileChooserEntry
  *
  * Gets the action for this entry. 
  *
  * Returns: the action
  **/
-GtkFileChooserAction
-_ctk_file_chooser_entry_get_action (GtkFileChooserEntry *chooser_entry)
+CtkFileChooserAction
+_ctk_file_chooser_entry_get_action (CtkFileChooserEntry *chooser_entry)
 {
   g_return_val_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry),
 			CTK_FILE_CHOOSER_ACTION_OPEN);
@@ -1007,10 +1007,10 @@ _ctk_file_chooser_entry_get_action (GtkFileChooserEntry *chooser_entry)
 }
 
 gboolean
-_ctk_file_chooser_entry_get_is_folder (GtkFileChooserEntry *chooser_entry,
+_ctk_file_chooser_entry_get_is_folder (CtkFileChooserEntry *chooser_entry,
 				       GFile               *file)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GFileInfo *info;
 
   if (chooser_entry->completion_store == NULL ||
@@ -1028,12 +1028,12 @@ _ctk_file_chooser_entry_get_is_folder (GtkFileChooserEntry *chooser_entry,
 
 /*
  * _ctk_file_chooser_entry_select_filename:
- * @chooser_entry: a #GtkFileChooserEntry
+ * @chooser_entry: a #CtkFileChooserEntry
  *
  * Selects the filename (without the extension) for user edition.
  */
 void
-_ctk_file_chooser_entry_select_filename (GtkFileChooserEntry *chooser_entry)
+_ctk_file_chooser_entry_select_filename (CtkFileChooserEntry *chooser_entry)
 {
   const gchar *str, *ext;
   glong len = -1;
@@ -1051,7 +1051,7 @@ _ctk_file_chooser_entry_select_filename (GtkFileChooserEntry *chooser_entry)
 }
 
 void
-_ctk_file_chooser_entry_set_local_only (GtkFileChooserEntry *chooser_entry,
+_ctk_file_chooser_entry_set_local_only (CtkFileChooserEntry *chooser_entry,
                                         gboolean             local_only)
 {
   chooser_entry->local_only = local_only;
@@ -1059,14 +1059,14 @@ _ctk_file_chooser_entry_set_local_only (GtkFileChooserEntry *chooser_entry,
 }
 
 gboolean
-_ctk_file_chooser_entry_get_local_only (GtkFileChooserEntry *chooser_entry)
+_ctk_file_chooser_entry_get_local_only (CtkFileChooserEntry *chooser_entry)
 {
   return chooser_entry->local_only;
 }
 
 void
-_ctk_file_chooser_entry_set_file_filter (GtkFileChooserEntry *chooser_entry,
-                                         GtkFileFilter       *filter)
+_ctk_file_chooser_entry_set_file_filter (CtkFileChooserEntry *chooser_entry,
+                                         CtkFileFilter       *filter)
 {
   chooser_entry->current_filter = filter;
 }

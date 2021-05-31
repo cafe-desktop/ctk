@@ -25,30 +25,30 @@
 /**
  * SECTION:ctkbutton
  * @Short_description: A widget that emits a signal when clicked on
- * @Title: GtkButton
+ * @Title: CtkButton
  *
- * The #GtkButton widget is generally used to trigger a callback function that is
+ * The #CtkButton widget is generally used to trigger a callback function that is
  * called when the button is pressed.  The various signals and how to use them
  * are outlined below.
  *
- * The #GtkButton widget can hold any valid child widget.  That is, it can hold
- * almost any other standard #GtkWidget.  The most commonly used child is the
- * #GtkLabel.
+ * The #CtkButton widget can hold any valid child widget.  That is, it can hold
+ * almost any other standard #CtkWidget.  The most commonly used child is the
+ * #CtkLabel.
  *
  * # CSS nodes
  *
- * GtkButton has a single CSS node with name button. The node will get the
+ * CtkButton has a single CSS node with name button. The node will get the
  * style classes .image-button or .text-button, if the content is just an
  * image or label, respectively. It may also receive the .flat style class.
  *
- * Other style classes that are commonly used with GtkButton include
+ * Other style classes that are commonly used with CtkButton include
  * .suggested-action and .destructive-action. In special cases, buttons
  * can be made round by adding the .circular style class.
  *
- * Button-like widgets like #GtkToggleButton, #GtkMenuButton, #GtkVolumeButton,
- * #GtkLockButton, #GtkColorButton, #GtkFontButton or #GtkFileChooserButton use
+ * Button-like widgets like #CtkToggleButton, #CtkMenuButton, #CtkVolumeButton,
+ * #CtkLockButton, #CtkColorButton, #CtkFontButton or #CtkFileChooserButton use
  * style classes such as .toggle, .popup, .scale, .lock, .color, .font, .file
- * to differentiate themselves from a plain GtkButton.
+ * to differentiate themselves from a plain CtkButton.
  */
 
 #include "config.h"
@@ -125,91 +125,91 @@ static void ctk_button_get_property   (GObject            *object,
                                        guint               prop_id,
                                        GValue             *value,
                                        GParamSpec         *pspec);
-static void ctk_button_screen_changed (GtkWidget          *widget,
+static void ctk_button_screen_changed (CtkWidget          *widget,
 				       GdkScreen          *previous_screen);
-static void ctk_button_realize (GtkWidget * widget);
-static void ctk_button_unrealize (GtkWidget * widget);
-static void ctk_button_map (GtkWidget * widget);
-static void ctk_button_unmap (GtkWidget * widget);
-static void ctk_button_style_updated (GtkWidget * widget);
-static void ctk_button_size_allocate (GtkWidget * widget,
-				      GtkAllocation * allocation);
-static gint ctk_button_draw (GtkWidget * widget, cairo_t *cr);
-static gint ctk_button_grab_broken (GtkWidget * widget,
+static void ctk_button_realize (CtkWidget * widget);
+static void ctk_button_unrealize (CtkWidget * widget);
+static void ctk_button_map (CtkWidget * widget);
+static void ctk_button_unmap (CtkWidget * widget);
+static void ctk_button_style_updated (CtkWidget * widget);
+static void ctk_button_size_allocate (CtkWidget * widget,
+				      CtkAllocation * allocation);
+static gint ctk_button_draw (CtkWidget * widget, cairo_t *cr);
+static gint ctk_button_grab_broken (CtkWidget * widget,
 				    GdkEventGrabBroken * event);
-static gint ctk_button_key_release (GtkWidget * widget, GdkEventKey * event);
-static gint ctk_button_enter_notify (GtkWidget * widget,
+static gint ctk_button_key_release (CtkWidget * widget, GdkEventKey * event);
+static gint ctk_button_enter_notify (CtkWidget * widget,
 				     GdkEventCrossing * event);
-static gint ctk_button_leave_notify (GtkWidget * widget,
+static gint ctk_button_leave_notify (CtkWidget * widget,
 				     GdkEventCrossing * event);
-static void ctk_real_button_pressed (GtkButton * button);
-static void ctk_real_button_released (GtkButton * button);
-static void ctk_real_button_clicked (GtkButton * button);
-static void ctk_real_button_activate  (GtkButton          *button);
-static void ctk_button_update_state   (GtkButton          *button);
-static void ctk_button_enter_leave    (GtkButton          *button);
-static void ctk_button_add            (GtkContainer       *container,
-			               GtkWidget          *widget);
-static GType ctk_button_child_type    (GtkContainer       *container);
-static void ctk_button_finish_activate (GtkButton         *button,
+static void ctk_real_button_pressed (CtkButton * button);
+static void ctk_real_button_released (CtkButton * button);
+static void ctk_real_button_clicked (CtkButton * button);
+static void ctk_real_button_activate  (CtkButton          *button);
+static void ctk_button_update_state   (CtkButton          *button);
+static void ctk_button_enter_leave    (CtkButton          *button);
+static void ctk_button_add            (CtkContainer       *container,
+			               CtkWidget          *widget);
+static GType ctk_button_child_type    (CtkContainer       *container);
+static void ctk_button_finish_activate (CtkButton         *button,
 					gboolean           do_it);
 
 static void ctk_button_constructed (GObject *object);
-static void ctk_button_construct_child (GtkButton             *button);
-static void ctk_button_state_changed   (GtkWidget             *widget,
-					GtkStateType           previous_state);
-static void ctk_button_grab_notify     (GtkWidget             *widget,
+static void ctk_button_construct_child (CtkButton             *button);
+static void ctk_button_state_changed   (CtkWidget             *widget,
+					CtkStateType           previous_state);
+static void ctk_button_grab_notify     (CtkWidget             *widget,
 					gboolean               was_grabbed);
-static void ctk_button_do_release      (GtkButton             *button,
+static void ctk_button_do_release      (CtkButton             *button,
                                         gboolean               emit_clicked);
 
-static void ctk_button_actionable_iface_init     (GtkActionableInterface *iface);
-static void ctk_button_activatable_interface_init(GtkActivatableIface  *iface);
-static void ctk_button_update                    (GtkActivatable       *activatable,
-				                  GtkAction            *action,
+static void ctk_button_actionable_iface_init     (CtkActionableInterface *iface);
+static void ctk_button_activatable_interface_init(CtkActivatableIface  *iface);
+static void ctk_button_update                    (CtkActivatable       *activatable,
+				                  CtkAction            *action,
 			                          const gchar          *property_name);
-static void ctk_button_sync_action_properties    (GtkActivatable       *activatable,
-                                                  GtkAction            *action);
-static void ctk_button_set_related_action        (GtkButton            *button,
-					          GtkAction            *action);
-static void ctk_button_set_use_action_appearance (GtkButton            *button,
+static void ctk_button_sync_action_properties    (CtkActivatable       *activatable,
+                                                  CtkAction            *action);
+static void ctk_button_set_related_action        (CtkButton            *button,
+					          CtkAction            *action);
+static void ctk_button_set_use_action_appearance (CtkButton            *button,
 						  gboolean              use_appearance);
 
-static void ctk_button_get_preferred_width             (GtkWidget           *widget,
+static void ctk_button_get_preferred_width             (CtkWidget           *widget,
                                                         gint                *minimum_size,
                                                         gint                *natural_size);
-static void ctk_button_get_preferred_height            (GtkWidget           *widget,
+static void ctk_button_get_preferred_height            (CtkWidget           *widget,
                                                         gint                *minimum_size,
                                                         gint                *natural_size);
-static void ctk_button_get_preferred_width_for_height  (GtkWidget           *widget,
+static void ctk_button_get_preferred_width_for_height  (CtkWidget           *widget,
                                                         gint                 for_size,
                                                         gint                *minimum_size,
                                                         gint                *natural_size);
-static void ctk_button_get_preferred_height_for_width  (GtkWidget           *widget,
+static void ctk_button_get_preferred_height_for_width  (CtkWidget           *widget,
                                                         gint                 for_size,
                                                         gint                *minimum_size,
                                                         gint                *natural_size);
-static void ctk_button_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+static void ctk_button_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 								    gint       width,
 								    gint      *minimum_size,
 								    gint      *natural_size,
 								    gint      *minimum_baseline,
 								    gint      *natural_baseline);
 
-static void     ctk_button_measure  (GtkCssGadget        *gadget,
-                                     GtkOrientation       orientation,
+static void     ctk_button_measure  (CtkCssGadget        *gadget,
+                                     CtkOrientation       orientation,
                                      int                  for_size,
                                      int                 *minimum_size,
                                      int                 *natural_size,
                                      int                 *minimum_baseline,
                                      int                 *natural_baseline,
                                      gpointer             data);
-static void     ctk_button_allocate (GtkCssGadget        *gadget,
-                                     const GtkAllocation *allocation,
+static void     ctk_button_allocate (CtkCssGadget        *gadget,
+                                     const CtkAllocation *allocation,
                                      int                  baseline,
-                                     GtkAllocation       *out_clip,
+                                     CtkAllocation       *out_clip,
                                      gpointer             data);
-static gboolean ctk_button_render   (GtkCssGadget        *gadget,
+static gboolean ctk_button_render   (CtkCssGadget        *gadget,
                                      cairo_t             *cr,
                                      int                  x,
                                      int                  y,
@@ -221,23 +221,23 @@ static GParamSpec *props[LAST_PROP] = { NULL, };
 static guint button_signals[LAST_SIGNAL] = { 0 };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkButton, ctk_button, CTK_TYPE_BIN,
-                         G_ADD_PRIVATE (GtkButton)
+G_DEFINE_TYPE_WITH_CODE (CtkButton, ctk_button, CTK_TYPE_BIN,
+                         G_ADD_PRIVATE (CtkButton)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIONABLE, ctk_button_actionable_iface_init)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_button_activatable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
-ctk_button_class_init (GtkButtonClass *klass)
+ctk_button_class_init (CtkButtonClass *klass)
 {
   GObjectClass *gobject_class;
-  GtkWidgetClass *widget_class;
-  GtkContainerClass *container_class;
+  CtkWidgetClass *widget_class;
+  CtkContainerClass *container_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  widget_class = (GtkWidgetClass*) klass;
-  container_class = (GtkContainerClass*) klass;
+  widget_class = (CtkWidgetClass*) klass;
+  container_class = (CtkContainerClass*) klass;
   
   gobject_class->constructed  = ctk_button_constructed;
   gobject_class->dispose      = ctk_button_dispose;
@@ -291,7 +291,7 @@ ctk_button_class_init (GtkButtonClass *klass)
                           CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY);
   
   /**
-   * GtkButton:use-stock:
+   * CtkButton:use-stock:
    *
    * Deprecated: 3.10
    */
@@ -311,9 +311,9 @@ ctk_button_class_init (GtkButtonClass *klass)
                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
   
   /**
-   * GtkButton:xalign:
+   * CtkButton:xalign:
    *
-   * If the child of the button is a #GtkMisc or #GtkAlignment, this property 
+   * If the child of the button is a #CtkMisc or #CtkAlignment, this property 
    * can be used to control its horizontal alignment. 0.0 is left aligned, 
    * 1.0 is right aligned.
    *
@@ -330,9 +330,9 @@ ctk_button_class_init (GtkButtonClass *klass)
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
-   * GtkButton:yalign:
+   * CtkButton:yalign:
    *
-   * If the child of the button is a #GtkMisc or #GtkAlignment, this property 
+   * If the child of the button is a #CtkMisc or #CtkAlignment, this property 
    * can be used to control its vertical alignment. 0.0 is top aligned, 
    * 1.0 is bottom aligned.
    *
@@ -349,7 +349,7 @@ ctk_button_class_init (GtkButtonClass *klass)
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
-   * GtkButton:image:
+   * CtkButton:image:
    *
    * The child widget to appear next to the button text.
    *
@@ -363,7 +363,7 @@ ctk_button_class_init (GtkButtonClass *klass)
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkButton:image-position:
+   * CtkButton:image-position:
    *
    * The position of the image relative to the text inside the button.
    *
@@ -378,9 +378,9 @@ ctk_button_class_init (GtkButtonClass *klass)
                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkButton:always-show-image:
+   * CtkButton:always-show-image:
    *
-   * If %TRUE, the button will ignore the #GtkSettings:ctk-button-images
+   * If %TRUE, the button will ignore the #CtkSettings:ctk-button-images
    * setting and always show the image, if available.
    *
    * Use this property if the button would be useless or hard to use
@@ -406,41 +406,41 @@ ctk_button_class_init (GtkButtonClass *klass)
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   /**
-   * GtkButton::pressed:
+   * CtkButton::pressed:
    * @button: the object that received the signal
    *
    * Emitted when the button is pressed.
    *
-   * Deprecated: 2.8: Use the #GtkWidget::button-press-event signal.
+   * Deprecated: 2.8: Use the #CtkWidget::button-press-event signal.
    */ 
   button_signals[PRESSED] =
     g_signal_new (I_("pressed"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkButtonClass, pressed),
+		  G_STRUCT_OFFSET (CtkButtonClass, pressed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkButton::released:
+   * CtkButton::released:
    * @button: the object that received the signal
    *
    * Emitted when the button is released.
    *
-   * Deprecated: 2.8: Use the #GtkWidget::button-release-event signal.
+   * Deprecated: 2.8: Use the #CtkWidget::button-release-event signal.
    */ 
   button_signals[RELEASED] =
     g_signal_new (I_("released"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkButtonClass, released),
+		  G_STRUCT_OFFSET (CtkButtonClass, released),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkButton::clicked:
+   * CtkButton::clicked:
    * @button: the object that received the signal
    *
    * Emitted when the button has been activated (pressed and released).
@@ -449,66 +449,66 @@ ctk_button_class_init (GtkButtonClass *klass)
     g_signal_new (I_("clicked"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkButtonClass, clicked),
+		  G_STRUCT_OFFSET (CtkButtonClass, clicked),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkButton::enter:
+   * CtkButton::enter:
    * @button: the object that received the signal
    *
    * Emitted when the pointer enters the button.
    *
-   * Deprecated: 2.8: Use the #GtkWidget::enter-notify-event signal.
+   * Deprecated: 2.8: Use the #CtkWidget::enter-notify-event signal.
    */ 
   button_signals[ENTER] =
     g_signal_new (I_("enter"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkButtonClass, enter),
+		  G_STRUCT_OFFSET (CtkButtonClass, enter),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkButton::leave:
+   * CtkButton::leave:
    * @button: the object that received the signal
    *
    * Emitted when the pointer leaves the button.
    *
-   * Deprecated: 2.8: Use the #GtkWidget::leave-notify-event signal.
+   * Deprecated: 2.8: Use the #CtkWidget::leave-notify-event signal.
    */ 
   button_signals[LEAVE] =
     g_signal_new (I_("leave"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkButtonClass, leave),
+		  G_STRUCT_OFFSET (CtkButtonClass, leave),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkButton::activate:
+   * CtkButton::activate:
    * @widget: the object which received the signal.
    *
-   * The ::activate signal on GtkButton is an action signal and
+   * The ::activate signal on CtkButton is an action signal and
    * emitting it causes the button to animate press then release. 
    * Applications should never connect to this signal, but use the
-   * #GtkButton::clicked signal.
+   * #CtkButton::clicked signal.
    */
   button_signals[ACTIVATE] =
     g_signal_new (I_("activate"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-		  G_STRUCT_OFFSET (GtkButtonClass, activate),
+		  G_STRUCT_OFFSET (CtkButtonClass, activate),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
   widget_class->activate_signal = button_signals[ACTIVATE];
 
   /**
-   * GtkButton:default-border:
+   * CtkButton:default-border:
    *
    * The "default-border" style property defines the extra space to add
    * around a button that can become the default widget of its window.
@@ -526,7 +526,7 @@ ctk_button_class_init (GtkButtonClass *klass)
 							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkButton:default-outside-border:
+   * CtkButton:default-outside-border:
    *
    * The "default-outside-border" style property defines the extra outside
    * space to add around a button that can become the default widget of its
@@ -544,7 +544,7 @@ ctk_button_class_init (GtkButtonClass *klass)
 							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkButton:child-displacement-x:
+   * CtkButton:child-displacement-x:
    *
    * How far in the x direction to move the child when the button is depressed.
    *
@@ -561,7 +561,7 @@ ctk_button_class_init (GtkButtonClass *klass)
 							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkButton:child-displacement-y:
+   * CtkButton:child-displacement-y:
    *
    * How far in the y direction to move the child when the button is depressed.
    *
@@ -578,7 +578,7 @@ ctk_button_class_init (GtkButtonClass *klass)
 							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkButton:displace-focus:
+   * CtkButton:displace-focus:
    *
    * Whether the child_displacement_x/child_displacement_y properties
    * should also affect the focus rectangle.
@@ -596,7 +596,7 @@ ctk_button_class_init (GtkButtonClass *klass)
 								 CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
-   * GtkButton:inner-border:
+   * CtkButton:inner-border:
    *
    * Sets the border between the button edges and child.
    *
@@ -613,7 +613,7 @@ ctk_button_class_init (GtkButtonClass *klass)
                                                                CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
 
   /**
-   * GtkButton::image-spacing:
+   * CtkButton::image-spacing:
    *
    * Spacing in pixels between the image and label.
    *
@@ -635,14 +635,14 @@ ctk_button_class_init (GtkButtonClass *klass)
 }
 
 static void
-multipress_pressed_cb (GtkGestureMultiPress *gesture,
+multipress_pressed_cb (CtkGestureMultiPress *gesture,
                        guint                 n_press,
                        gdouble               x,
                        gdouble               y,
-                       GtkWidget            *widget)
+                       CtkWidget            *widget)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
 
   if (ctk_widget_get_focus_on_click (widget) && !ctk_widget_has_focus (widget))
     ctk_widget_grab_focus (widget);
@@ -653,14 +653,14 @@ multipress_pressed_cb (GtkGestureMultiPress *gesture,
 }
 
 static void
-multipress_released_cb (GtkGestureMultiPress *gesture,
+multipress_released_cb (CtkGestureMultiPress *gesture,
                         guint                 n_press,
                         gdouble               x,
                         gdouble               y,
-                        GtkWidget            *widget)
+                        CtkWidget            *widget)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
   GdkEventSequence *sequence;
 
   g_signal_emit (button, button_signals[RELEASED], 0);
@@ -675,12 +675,12 @@ multipress_released_cb (GtkGestureMultiPress *gesture,
 }
 
 static void
-multipress_gesture_update_cb (GtkGesture       *gesture,
+multipress_gesture_update_cb (CtkGesture       *gesture,
                               GdkEventSequence *sequence,
-                              GtkButton        *button)
+                              CtkButton        *button)
 {
-  GtkButtonPrivate *priv = button->priv;
-  GtkAllocation allocation;
+  CtkButtonPrivate *priv = button->priv;
+  CtkAllocation allocation;
   gboolean in_button;
   gdouble x, y;
 
@@ -700,17 +700,17 @@ multipress_gesture_update_cb (GtkGesture       *gesture,
 }
 
 static void
-multipress_gesture_cancel_cb (GtkGesture       *gesture,
+multipress_gesture_cancel_cb (CtkGesture       *gesture,
                               GdkEventSequence *sequence,
-                              GtkButton        *button)
+                              CtkButton        *button)
 {
   ctk_button_do_release (button, FALSE);
 }
 
 static void
-ctk_button_init (GtkButton *button)
+ctk_button_init (CtkButton *button)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
 
   button->priv = ctk_button_get_instance_private (button);
   priv = button->priv;
@@ -757,8 +757,8 @@ ctk_button_init (GtkButton *button)
 static void
 ctk_button_finalize (GObject *object)
 {
-  GtkButton *button = CTK_BUTTON (object);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (object);
+  CtkButtonPrivate *priv = button->priv;
 
   g_clear_pointer (&priv->label_text, g_free);
   g_clear_object (&priv->gesture);
@@ -770,8 +770,8 @@ ctk_button_finalize (GObject *object)
 static void
 ctk_button_constructed (GObject *object)
 {
-  GtkButton *button = CTK_BUTTON (object);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (object);
+  CtkButtonPrivate *priv = button->priv;
 
   G_OBJECT_CLASS (ctk_button_parent_class)->constructed (object);
 
@@ -783,7 +783,7 @@ ctk_button_constructed (GObject *object)
 
 
 static GType
-ctk_button_child_type  (GtkContainer     *container)
+ctk_button_child_type  (CtkContainer     *container)
 {
   if (!ctk_bin_get_child (CTK_BIN (container)))
     return CTK_TYPE_WIDGET;
@@ -792,10 +792,10 @@ ctk_button_child_type  (GtkContainer     *container)
 }
 
 static void
-maybe_set_alignment (GtkButton *button,
-		     GtkWidget *widget)
+maybe_set_alignment (CtkButton *button,
+		     CtkWidget *widget)
 {
-  GtkButtonPrivate *priv = button->priv;
+  CtkButtonPrivate *priv = button->priv;
 
   if (!priv->align_set)
     return;
@@ -811,8 +811,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_button_add (GtkContainer *container,
-		GtkWidget    *widget)
+ctk_button_add (CtkContainer *container,
+		CtkWidget    *widget)
 {
   maybe_set_alignment (CTK_BUTTON (container), widget);
 
@@ -822,8 +822,8 @@ ctk_button_add (GtkContainer *container,
 static void
 ctk_button_dispose (GObject *object)
 {
-  GtkButton *button = CTK_BUTTON (object);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (object);
+  CtkButtonPrivate *priv = button->priv;
 
   g_clear_object (&priv->action_helper);
 
@@ -838,10 +838,10 @@ ctk_button_dispose (GObject *object)
 }
 
 static void
-ctk_button_set_action_name (GtkActionable *actionable,
+ctk_button_set_action_name (CtkActionable *actionable,
                             const gchar   *action_name)
 {
-  GtkButton *button = CTK_BUTTON (actionable);
+  CtkButton *button = CTK_BUTTON (actionable);
 
   g_return_if_fail (button->priv->action == NULL);
 
@@ -856,10 +856,10 @@ ctk_button_set_action_name (GtkActionable *actionable,
 }
 
 static void
-ctk_button_set_action_target_value (GtkActionable *actionable,
+ctk_button_set_action_target_value (CtkActionable *actionable,
                                     GVariant      *action_target)
 {
-  GtkButton *button = CTK_BUTTON (actionable);
+  CtkButton *button = CTK_BUTTON (actionable);
 
   if (!button->priv->action_helper)
     button->priv->action_helper = ctk_action_helper_new (actionable);
@@ -873,8 +873,8 @@ ctk_button_set_property (GObject         *object,
                          const GValue    *value,
                          GParamSpec      *pspec)
 {
-  GtkButton *button = CTK_BUTTON (object);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (object);
+  CtkButtonPrivate *priv = button->priv;
 
   switch (prop_id)
     {
@@ -882,7 +882,7 @@ ctk_button_set_property (GObject         *object,
       ctk_button_set_label (button, g_value_get_string (value));
       break;
     case PROP_IMAGE:
-      ctk_button_set_image (button, (GtkWidget *) g_value_get_object (value));
+      ctk_button_set_image (button, (CtkWidget *) g_value_get_object (value));
       break;
     case PROP_ALWAYS_SHOW_IMAGE:
       ctk_button_set_always_show_image (button, g_value_get_boolean (value));
@@ -935,8 +935,8 @@ ctk_button_get_property (GObject         *object,
                          GValue          *value,
                          GParamSpec      *pspec)
 {
-  GtkButton *button = CTK_BUTTON (object);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (object);
+  CtkButtonPrivate *priv = button->priv;
 
   switch (prop_id)
     {
@@ -986,23 +986,23 @@ ctk_button_get_property (GObject         *object,
 }
 
 static const gchar *
-ctk_button_get_action_name (GtkActionable *actionable)
+ctk_button_get_action_name (CtkActionable *actionable)
 {
-  GtkButton *button = CTK_BUTTON (actionable);
+  CtkButton *button = CTK_BUTTON (actionable);
 
   return ctk_action_helper_get_action_name (button->priv->action_helper);
 }
 
 static GVariant *
-ctk_button_get_action_target_value (GtkActionable *actionable)
+ctk_button_get_action_target_value (CtkActionable *actionable)
 {
-  GtkButton *button = CTK_BUTTON (actionable);
+  CtkButton *button = CTK_BUTTON (actionable);
 
   return ctk_action_helper_get_action_target_value (button->priv->action_helper);
 }
 
 static void
-ctk_button_actionable_iface_init (GtkActionableInterface *iface)
+ctk_button_actionable_iface_init (CtkActionableInterface *iface)
 {
   iface->get_action_name = ctk_button_get_action_name;
   iface->set_action_name = ctk_button_set_action_name;
@@ -1011,15 +1011,15 @@ ctk_button_actionable_iface_init (GtkActionableInterface *iface)
 }
 
 static void 
-ctk_button_activatable_interface_init (GtkActivatableIface  *iface)
+ctk_button_activatable_interface_init (CtkActivatableIface  *iface)
 {
   iface->update = ctk_button_update;
   iface->sync_action_properties = ctk_button_sync_action_properties;
 }
 
 static void
-activatable_update_stock_id (GtkButton *button,
-			     GtkAction *action)
+activatable_update_stock_id (CtkButton *button,
+			     CtkAction *action)
 {
   gboolean use_stock;
 
@@ -1036,11 +1036,11 @@ activatable_update_stock_id (GtkButton *button,
 }
 
 static void
-activatable_update_short_label (GtkButton *button,
-				GtkAction *action)
+activatable_update_short_label (CtkButton *button,
+				CtkAction *action)
 {
-  GtkWidget *child;
-  GtkWidget *image;
+  CtkWidget *child;
+  CtkWidget *image;
   gboolean use_stock;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -1066,10 +1066,10 @@ activatable_update_short_label (GtkButton *button,
 }
 
 static void
-activatable_update_icon_name (GtkButton *button,
-			      GtkAction *action)
+activatable_update_icon_name (CtkButton *button,
+			      CtkAction *action)
 {
-  GtkWidget *image;
+  CtkWidget *image;
   gboolean use_stock;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -1093,10 +1093,10 @@ activatable_update_icon_name (GtkButton *button,
 }
 
 static void
-activatable_update_gicon (GtkButton *button,
-			  GtkAction *action)
+activatable_update_gicon (CtkButton *button,
+			  CtkAction *action)
 {
-  GtkWidget *image = ctk_button_get_image (button);
+  CtkWidget *image = ctk_button_get_image (button);
   GIcon *icon;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -1110,12 +1110,12 @@ activatable_update_gicon (GtkButton *button,
 }
 
 static void 
-ctk_button_update (GtkActivatable *activatable,
-		   GtkAction      *action,
+ctk_button_update (CtkActivatable *activatable,
+		   CtkAction      *action,
 	           const gchar    *property_name)
 {
-  GtkButton *button = CTK_BUTTON (activatable);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (activatable);
+  CtkButtonPrivate *priv = button->priv;
 
   if (strcmp (property_name, "visible") == 0)
     {
@@ -1147,11 +1147,11 @@ ctk_button_update (GtkActivatable *activatable,
 }
 
 static void
-ctk_button_sync_action_properties (GtkActivatable *activatable,
-			           GtkAction      *action)
+ctk_button_sync_action_properties (CtkActivatable *activatable,
+			           CtkAction      *action)
 {
-  GtkButton *button = CTK_BUTTON (activatable);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (activatable);
+  CtkButtonPrivate *priv = button->priv;
   gboolean always_show_image;
 
   if (!action)
@@ -1180,10 +1180,10 @@ ctk_button_sync_action_properties (GtkActivatable *activatable,
 }
 
 static void
-ctk_button_set_related_action (GtkButton *button,
-			       GtkAction *action)
+ctk_button_set_related_action (CtkButton *button,
+			       CtkAction *action)
 {
-  GtkButtonPrivate *priv = button->priv;
+  CtkButtonPrivate *priv = button->priv;
 
   g_return_if_fail (ctk_action_helper_get_action_name (button->priv->action_helper) == NULL);
 
@@ -1207,10 +1207,10 @@ ctk_button_set_related_action (GtkButton *button,
 }
 
 static void
-ctk_button_set_use_action_appearance (GtkButton *button,
+ctk_button_set_use_action_appearance (CtkButton *button,
 				      gboolean   use_appearance)
 {
-  GtkButtonPrivate *priv = button->priv;
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->use_action_appearance != use_appearance)
     {
@@ -1226,26 +1226,26 @@ ctk_button_set_use_action_appearance (GtkButton *button,
 /**
  * ctk_button_new:
  *
- * Creates a new #GtkButton widget. To add a child widget to the button,
+ * Creates a new #CtkButton widget. To add a child widget to the button,
  * use ctk_container_add().
  *
- * Returns: The newly created #GtkButton widget.
+ * Returns: The newly created #CtkButton widget.
  */
-GtkWidget*
+CtkWidget*
 ctk_button_new (void)
 {
   return g_object_new (CTK_TYPE_BUTTON, NULL);
 }
 
 static gboolean
-show_image (GtkButton *button)
+show_image (CtkButton *button)
 {
-  GtkButtonPrivate *priv = button->priv;
+  CtkButtonPrivate *priv = button->priv;
   gboolean show;
 
   if (priv->label_text && !priv->always_show_image)
     {
-      GtkSettings *settings;
+      CtkSettings *settings;
 
       settings = ctk_widget_get_settings (CTK_WIDGET (button));        
       g_object_get (settings, "ctk-button-images", &show, NULL);
@@ -1258,16 +1258,16 @@ show_image (GtkButton *button)
 
 
 static void
-ctk_button_construct_child (GtkButton *button)
+ctk_button_construct_child (CtkButton *button)
 {
-  GtkButtonPrivate *priv = button->priv;
-  GtkStyleContext *context;
-  GtkStockItem item;
-  GtkWidget *child;
-  GtkWidget *label;
-  GtkWidget *box;
-  GtkWidget *align;
-  GtkWidget *image = NULL;
+  CtkButtonPrivate *priv = button->priv;
+  CtkStyleContext *context;
+  CtkStockItem item;
+  CtkWidget *child;
+  CtkWidget *label;
+  CtkWidget *box;
+  CtkWidget *align;
+  CtkWidget *image = NULL;
   gchar *label_text = NULL;
   gint image_spacing;
 
@@ -1287,7 +1287,7 @@ ctk_button_construct_child (GtkButton *button)
 
   if (priv->image && !priv->image_is_stock)
     {
-      GtkWidget *parent;
+      CtkWidget *parent;
 
       image = g_object_ref (priv->image);
 
@@ -1402,14 +1402,14 @@ ctk_button_construct_child (GtkButton *button)
 
 /**
  * ctk_button_new_with_label:
- * @label: The text you want the #GtkLabel to hold.
+ * @label: The text you want the #CtkLabel to hold.
  *
- * Creates a #GtkButton widget with a #GtkLabel child containing the given
+ * Creates a #CtkButton widget with a #CtkLabel child containing the given
  * text.
  *
- * Returns: The newly created #GtkButton widget.
+ * Returns: The newly created #CtkButton widget.
  */
-GtkWidget*
+CtkWidget*
 ctk_button_new_with_label (const gchar *label)
 {
   return g_object_new (CTK_TYPE_BUTTON, "label", label, NULL);
@@ -1418,7 +1418,7 @@ ctk_button_new_with_label (const gchar *label)
 /**
  * ctk_button_new_from_icon_name:
  * @icon_name: (nullable): an icon name or %NULL
- * @size: (type int): an icon size (#GtkIconSize)
+ * @size: (type int): an icon size (#CtkIconSize)
  *
  * Creates a new button containing an icon from the current icon theme.
  *
@@ -1429,16 +1429,16 @@ ctk_button_new_with_label (const gchar *label)
  * This function is a convenience wrapper around ctk_button_new() and
  * ctk_button_set_image().
  *
- * Returns: a new #GtkButton displaying the themed icon
+ * Returns: a new #CtkButton displaying the themed icon
  *
  * Since: 3.10
  */
-GtkWidget*
+CtkWidget*
 ctk_button_new_from_icon_name (const gchar *icon_name,
-			       GtkIconSize  size)
+			       CtkIconSize  size)
 {
-  GtkWidget *button;
-  GtkWidget *image;
+  CtkWidget *button;
+  CtkWidget *image;
 
   image = ctk_image_new_from_icon_name (icon_name, size);
   button =  g_object_new (CTK_TYPE_BUTTON,
@@ -1452,7 +1452,7 @@ ctk_button_new_from_icon_name (const gchar *icon_name,
  * ctk_button_new_from_stock:
  * @stock_id: the name of the stock item 
  *
- * Creates a new #GtkButton containing the image and text from a
+ * Creates a new #CtkButton containing the image and text from a
  * [stock item][ctkstock].
  * Some stock ids have preprocessor macros like #CTK_STOCK_OK and
  * #CTK_STOCK_APPLY.
@@ -1460,12 +1460,12 @@ ctk_button_new_from_icon_name (const gchar *icon_name,
  * If @stock_id is unknown, then it will be treated as a mnemonic
  * label (as for ctk_button_new_with_mnemonic()).
  *
- * Returns: a new #GtkButton
+ * Returns: a new #CtkButton
  *
  * Deprecated: 3.10: Stock items are deprecated. Use ctk_button_new_with_label()
  * instead.
  */
-GtkWidget*
+CtkWidget*
 ctk_button_new_from_stock (const gchar *stock_id)
 {
   return g_object_new (CTK_TYPE_BUTTON,
@@ -1480,16 +1480,16 @@ ctk_button_new_from_stock (const gchar *stock_id)
  * @label: The text of the button, with an underscore in front of the
  *         mnemonic character
  *
- * Creates a new #GtkButton containing a label.
+ * Creates a new #CtkButton containing a label.
  * If characters in @label are preceded by an underscore, they are underlined.
  * If you need a literal underscore character in a label, use “__” (two
  * underscores). The first underlined character represents a keyboard
  * accelerator called a mnemonic.
  * Pressing Alt and that key activates the button.
  *
- * Returns: a new #GtkButton
+ * Returns: a new #CtkButton
  */
-GtkWidget*
+CtkWidget*
 ctk_button_new_with_mnemonic (const gchar *label)
 {
   return g_object_new (CTK_TYPE_BUTTON, "label", label, "use-underline", TRUE,  NULL);
@@ -1497,14 +1497,14 @@ ctk_button_new_with_mnemonic (const gchar *label)
 
 /**
  * ctk_button_pressed:
- * @button: The #GtkButton you want to send the signal to.
+ * @button: The #CtkButton you want to send the signal to.
  *
- * Emits a #GtkButton::pressed signal to the given #GtkButton.
+ * Emits a #CtkButton::pressed signal to the given #CtkButton.
  *
- * Deprecated: 2.20: Use the #GtkWidget::button-press-event signal.
+ * Deprecated: 2.20: Use the #CtkWidget::button-press-event signal.
  */
 void
-ctk_button_pressed (GtkButton *button)
+ctk_button_pressed (CtkButton *button)
 {
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -1513,14 +1513,14 @@ ctk_button_pressed (GtkButton *button)
 
 /**
  * ctk_button_released:
- * @button: The #GtkButton you want to send the signal to.
+ * @button: The #CtkButton you want to send the signal to.
  *
- * Emits a #GtkButton::released signal to the given #GtkButton.
+ * Emits a #CtkButton::released signal to the given #CtkButton.
  *
- * Deprecated: 2.20: Use the #GtkWidget::button-release-event signal.
+ * Deprecated: 2.20: Use the #CtkWidget::button-release-event signal.
  */
 void
-ctk_button_released (GtkButton *button)
+ctk_button_released (CtkButton *button)
 {
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -1529,12 +1529,12 @@ ctk_button_released (GtkButton *button)
 
 /**
  * ctk_button_clicked:
- * @button: The #GtkButton you want to send the signal to.
+ * @button: The #CtkButton you want to send the signal to.
  *
- * Emits a #GtkButton::clicked signal to the given #GtkButton.
+ * Emits a #CtkButton::clicked signal to the given #CtkButton.
  */
 void
-ctk_button_clicked (GtkButton *button)
+ctk_button_clicked (CtkButton *button)
 {
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -1543,14 +1543,14 @@ ctk_button_clicked (GtkButton *button)
 
 /**
  * ctk_button_enter:
- * @button: The #GtkButton you want to send the signal to.
+ * @button: The #CtkButton you want to send the signal to.
  *
- * Emits a #GtkButton::enter signal to the given #GtkButton.
+ * Emits a #CtkButton::enter signal to the given #CtkButton.
  *
- * Deprecated: 2.20: Use the #GtkWidget::enter-notify-event signal.
+ * Deprecated: 2.20: Use the #CtkWidget::enter-notify-event signal.
  */
 void
-ctk_button_enter (GtkButton *button)
+ctk_button_enter (CtkButton *button)
 {
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -1559,14 +1559,14 @@ ctk_button_enter (GtkButton *button)
 
 /**
  * ctk_button_leave:
- * @button: The #GtkButton you want to send the signal to.
+ * @button: The #CtkButton you want to send the signal to.
  *
- * Emits a #GtkButton::leave signal to the given #GtkButton.
+ * Emits a #CtkButton::leave signal to the given #CtkButton.
  *
- * Deprecated: 2.20: Use the #GtkWidget::leave-notify-event signal.
+ * Deprecated: 2.20: Use the #CtkWidget::leave-notify-event signal.
  */
 void
-ctk_button_leave (GtkButton *button)
+ctk_button_leave (CtkButton *button)
 {
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -1575,21 +1575,21 @@ ctk_button_leave (GtkButton *button)
 
 /**
  * ctk_button_set_relief:
- * @button: The #GtkButton you want to set relief styles of
- * @relief: The GtkReliefStyle as described above
+ * @button: The #CtkButton you want to set relief styles of
+ * @relief: The CtkReliefStyle as described above
  *
- * Sets the relief style of the edges of the given #GtkButton widget.
+ * Sets the relief style of the edges of the given #CtkButton widget.
  * Two styles exist, %CTK_RELIEF_NORMAL and %CTK_RELIEF_NONE.
  * The default style is, as one can guess, %CTK_RELIEF_NORMAL.
  * The deprecated value %CTK_RELIEF_HALF behaves the same as
  * %CTK_RELIEF_NORMAL.
  */
 void
-ctk_button_set_relief (GtkButton      *button,
-		       GtkReliefStyle  relief)
+ctk_button_set_relief (CtkButton      *button,
+		       CtkReliefStyle  relief)
 {
-  GtkStyleContext *context;
-  GtkReliefStyle old_relief;
+  CtkStyleContext *context;
+  CtkReliefStyle old_relief;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -1608,16 +1608,16 @@ ctk_button_set_relief (GtkButton      *button,
 
 /**
  * ctk_button_get_relief:
- * @button: The #GtkButton you want the #GtkReliefStyle from.
+ * @button: The #CtkButton you want the #CtkReliefStyle from.
  *
- * Returns the current relief style of the given #GtkButton.
+ * Returns the current relief style of the given #CtkButton.
  *
- * Returns: The current #GtkReliefStyle
+ * Returns: The current #CtkReliefStyle
  */
-GtkReliefStyle
-ctk_button_get_relief (GtkButton *button)
+CtkReliefStyle
+ctk_button_get_relief (CtkButton *button)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   g_return_val_if_fail (CTK_IS_BUTTON (button), CTK_RELIEF_NORMAL);
 
@@ -1629,11 +1629,11 @@ ctk_button_get_relief (GtkButton *button)
 }
 
 static void
-ctk_button_realize (GtkWidget *widget)
+ctk_button_realize (CtkWidget *widget)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
-  GtkAllocation allocation;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -1667,10 +1667,10 @@ ctk_button_realize (GtkWidget *widget)
 }
 
 static void
-ctk_button_unrealize (GtkWidget *widget)
+ctk_button_unrealize (CtkWidget *widget)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->activate_timeout)
     ctk_button_finish_activate (button, FALSE);
@@ -1686,10 +1686,10 @@ ctk_button_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_button_map (GtkWidget *widget)
+ctk_button_map (CtkWidget *widget)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
 
   CTK_WIDGET_CLASS (ctk_button_parent_class)->map (widget);
 
@@ -1698,10 +1698,10 @@ ctk_button_map (GtkWidget *widget)
 }
 
 static void
-ctk_button_unmap (GtkWidget *widget)
+ctk_button_unmap (CtkWidget *widget)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->event_window)
     {
@@ -1713,11 +1713,11 @@ ctk_button_unmap (GtkWidget *widget)
 }
 
 static void
-ctk_button_update_image_spacing (GtkButton       *button,
-                                 GtkStyleContext *context)
+ctk_button_update_image_spacing (CtkButton       *button,
+                                 CtkStyleContext *context)
 {
-  GtkButtonPrivate *priv = button->priv;
-  GtkWidget *child; 
+  CtkButtonPrivate *priv = button->priv;
+  CtkWidget *child; 
   gint spacing;
 
   /* Keep in sync with ctk_button_construct_child,
@@ -1743,9 +1743,9 @@ ctk_button_update_image_spacing (GtkButton       *button,
 }
 
 static void
-ctk_button_style_updated (GtkWidget *widget)
+ctk_button_style_updated (CtkWidget *widget)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   CTK_WIDGET_CLASS (ctk_button_parent_class)->style_updated (widget);
 
@@ -1755,12 +1755,12 @@ ctk_button_style_updated (GtkWidget *widget)
 }
 
 static void
-ctk_button_size_allocate (GtkWidget     *widget,
-			  GtkAllocation *allocation)
+ctk_button_size_allocate (CtkWidget     *widget,
+			  CtkAllocation *allocation)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
-  GtkAllocation clip;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
   ctk_css_gadget_allocate (priv->gadget,
@@ -1772,24 +1772,24 @@ ctk_button_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_button_allocate (GtkCssGadget        *gadget,
-                     const GtkAllocation *allocation,
+ctk_button_allocate (CtkCssGadget        *gadget,
+                     const CtkAllocation *allocation,
                      int                  baseline,
-                     GtkAllocation       *out_clip,
+                     CtkAllocation       *out_clip,
                      gpointer             unused)
 {
-  GtkWidget *widget;
-  GtkWidget *child;
+  CtkWidget *widget;
+  CtkWidget *child;
 
   widget = ctk_css_gadget_get_owner (gadget);
 
   child = ctk_bin_get_child (CTK_BIN (widget));
   if (child && ctk_widget_get_visible (child))
-    ctk_widget_size_allocate_with_baseline (child, (GtkAllocation *)allocation, baseline);
+    ctk_widget_size_allocate_with_baseline (child, (CtkAllocation *)allocation, baseline);
 
   if (ctk_widget_get_realized (widget))
     {
-      GtkAllocation border_allocation;
+      CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
       gdk_window_move_resize (CTK_BUTTON (widget)->priv->event_window,
                               border_allocation.x,
@@ -1802,7 +1802,7 @@ ctk_button_allocate (GtkCssGadget        *gadget,
 }
 
 static gboolean
-ctk_button_draw (GtkWidget *widget,
+ctk_button_draw (CtkWidget *widget,
 		 cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_BUTTON (widget)->priv->gadget, cr);
@@ -1811,7 +1811,7 @@ ctk_button_draw (GtkWidget *widget,
 }
 
 static gboolean
-ctk_button_render (GtkCssGadget *gadget,
+ctk_button_render (CtkCssGadget *gadget,
                    cairo_t      *cr,
                    int           x,
                    int           y,
@@ -1819,7 +1819,7 @@ ctk_button_render (GtkCssGadget *gadget,
                    int           height,
                    gpointer      data)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_css_gadget_get_owner (gadget);
 
@@ -1829,10 +1829,10 @@ ctk_button_render (GtkCssGadget *gadget,
 }
 
 static void
-ctk_button_do_release (GtkButton *button,
+ctk_button_do_release (CtkButton *button,
                        gboolean   emit_clicked)
 {
-  GtkButtonPrivate *priv = button->priv;
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->button_down)
     {
@@ -1849,10 +1849,10 @@ ctk_button_do_release (GtkButton *button,
 }
 
 static gboolean
-ctk_button_grab_broken (GtkWidget          *widget,
+ctk_button_grab_broken (CtkWidget          *widget,
 			GdkEventGrabBroken *event)
 {
-  GtkButton *button = CTK_BUTTON (widget);
+  CtkButton *button = CTK_BUTTON (widget);
   
   ctk_button_do_release (button, FALSE);
 
@@ -1860,11 +1860,11 @@ ctk_button_grab_broken (GtkWidget          *widget,
 }
 
 static gboolean
-ctk_button_key_release (GtkWidget   *widget,
+ctk_button_key_release (CtkWidget   *widget,
 			GdkEventKey *event)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->activate_timeout)
     {
@@ -1878,11 +1878,11 @@ ctk_button_key_release (GtkWidget   *widget,
 }
 
 static gboolean
-ctk_button_enter_notify (GtkWidget        *widget,
+ctk_button_enter_notify (CtkWidget        *widget,
 			 GdkEventCrossing *event)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
 
   if ((event->window == button->priv->event_window) &&
       (event->detail != GDK_NOTIFY_INFERIOR))
@@ -1895,11 +1895,11 @@ ctk_button_enter_notify (GtkWidget        *widget,
 }
 
 static gboolean
-ctk_button_leave_notify (GtkWidget        *widget,
+ctk_button_leave_notify (CtkWidget        *widget,
 			 GdkEventCrossing *event)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
 
   if ((event->window == button->priv->event_window) &&
       (event->detail != GDK_NOTIFY_INFERIOR))
@@ -1912,9 +1912,9 @@ ctk_button_leave_notify (GtkWidget        *widget,
 }
 
 static void
-ctk_real_button_pressed (GtkButton *button)
+ctk_real_button_pressed (CtkButton *button)
 {
-  GtkButtonPrivate *priv = button->priv;
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->activate_timeout)
     return;
@@ -1924,9 +1924,9 @@ ctk_real_button_pressed (GtkButton *button)
 }
 
 static gboolean
-touch_release_in_button (GtkButton *button)
+touch_release_in_button (CtkButton *button)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
   gint width, height;
   GdkEvent *event;
   gdouble x, y;
@@ -1958,7 +1958,7 @@ touch_release_in_button (GtkButton *button)
 }
 
 static void
-ctk_real_button_released (GtkButton *button)
+ctk_real_button_released (CtkButton *button)
 {
   ctk_button_do_release (button,
                          ctk_widget_is_sensitive (CTK_WIDGET (button)) &&
@@ -1967,9 +1967,9 @@ ctk_real_button_released (GtkButton *button)
 }
 
 static void 
-ctk_real_button_clicked (GtkButton *button)
+ctk_real_button_clicked (CtkButton *button)
 {
-  GtkButtonPrivate *priv = button->priv;
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->action_helper)
     ctk_action_helper_activate (priv->action_helper);
@@ -1987,10 +1987,10 @@ button_activate_timeout (gpointer data)
 }
 
 static void
-ctk_real_button_activate (GtkButton *button)
+ctk_real_button_activate (CtkButton *button)
 {
-  GtkWidget *widget = CTK_WIDGET (button);
-  GtkButtonPrivate *priv = button->priv;
+  CtkWidget *widget = CTK_WIDGET (button);
+  CtkButtonPrivate *priv = button->priv;
   GdkDevice *device;
 
   device = ctk_get_current_event_device ();
@@ -2019,11 +2019,11 @@ ctk_real_button_activate (GtkButton *button)
 }
 
 static void
-ctk_button_finish_activate (GtkButton *button,
+ctk_button_finish_activate (CtkButton *button,
 			    gboolean   do_it)
 {
-  GtkWidget *widget = CTK_WIDGET (button);
-  GtkButtonPrivate *priv = button->priv;
+  CtkWidget *widget = CTK_WIDGET (button);
+  CtkButtonPrivate *priv = button->priv;
 
   g_source_remove (priv->activate_timeout);
   priv->activate_timeout = 0;
@@ -2044,8 +2044,8 @@ ctk_button_finish_activate (GtkButton *button,
 
 
 static void
-ctk_button_measure (GtkCssGadget   *gadget,
-		    GtkOrientation  orientation,
+ctk_button_measure (CtkCssGadget   *gadget,
+		    CtkOrientation  orientation,
                     int             for_size,
 		    int            *minimum,
 		    int            *natural,
@@ -2053,8 +2053,8 @@ ctk_button_measure (GtkCssGadget   *gadget,
 		    int            *natural_baseline,
                     gpointer        data)
 {
-  GtkWidget *widget;
-  GtkWidget *child;
+  CtkWidget *widget;
+  CtkWidget *child;
 
   widget = ctk_css_gadget_get_owner (gadget);
   child = ctk_bin_get_child (CTK_BIN (widget));
@@ -2079,7 +2079,7 @@ ctk_button_measure (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_button_get_preferred_width (GtkWidget *widget,
+ctk_button_get_preferred_width (CtkWidget *widget,
                                 gint      *minimum_size,
                                 gint      *natural_size)
 {
@@ -2091,7 +2091,7 @@ ctk_button_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_button_get_preferred_height (GtkWidget *widget,
+ctk_button_get_preferred_height (CtkWidget *widget,
                                  gint      *minimum_size,
                                  gint      *natural_size)
 {
@@ -2103,7 +2103,7 @@ ctk_button_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_button_get_preferred_width_for_height (GtkWidget *widget,
+ctk_button_get_preferred_width_for_height (CtkWidget *widget,
                                            gint       for_size,
                                            gint      *minimum_size,
                                            gint      *natural_size)
@@ -2116,7 +2116,7 @@ ctk_button_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_button_get_preferred_height_for_width (GtkWidget *widget,
+ctk_button_get_preferred_height_for_width (CtkWidget *widget,
                                            gint       for_size,
                                            gint      *minimum_size,
                                            gint      *natural_size)
@@ -2129,7 +2129,7 @@ ctk_button_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_button_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_button_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 							gint       for_size,
 							gint      *minimum_size,
 							gint      *natural_size,
@@ -2145,7 +2145,7 @@ ctk_button_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 
 /**
  * ctk_button_set_label:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @label: a string
  *
  * Sets the text of the label of the button to @str. This text is
@@ -2155,10 +2155,10 @@ ctk_button_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
  * This will also clear any previously set labels.
  */
 void
-ctk_button_set_label (GtkButton   *button,
+ctk_button_set_label (CtkButton   *button,
 		      const gchar *label)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
   gchar *new_label;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
@@ -2176,7 +2176,7 @@ ctk_button_set_label (GtkButton   *button,
 
 /**
  * ctk_button_get_label:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  *
  * Fetches the text from the label of the button, as set by
  * ctk_button_set_label(). If the label text has not 
@@ -2188,7 +2188,7 @@ ctk_button_set_label (GtkButton   *button,
  * by the widget and must not be modified or freed.
  */
 const gchar *
-ctk_button_get_label (GtkButton *button)
+ctk_button_get_label (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), NULL);
 
@@ -2197,17 +2197,17 @@ ctk_button_get_label (GtkButton *button)
 
 /**
  * ctk_button_set_use_underline:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @use_underline: %TRUE if underlines in the text indicate mnemonics
  *
  * If true, an underline in the text of the button label indicates
  * the next character should be used for the mnemonic accelerator key.
  */
 void
-ctk_button_set_use_underline (GtkButton *button,
+ctk_button_set_use_underline (CtkButton *button,
 			      gboolean   use_underline)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -2227,7 +2227,7 @@ ctk_button_set_use_underline (GtkButton *button,
 
 /**
  * ctk_button_get_use_underline:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  *
  * Returns whether an embedded underline in the button label indicates a
  * mnemonic. See ctk_button_set_use_underline ().
@@ -2236,7 +2236,7 @@ ctk_button_set_use_underline (GtkButton *button,
  *               indicates the mnemonic accelerator keys.
  */
 gboolean
-ctk_button_get_use_underline (GtkButton *button)
+ctk_button_get_use_underline (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), FALSE);
 
@@ -2245,7 +2245,7 @@ ctk_button_get_use_underline (GtkButton *button)
 
 /**
  * ctk_button_set_use_stock:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @use_stock: %TRUE if the button should use a stock item
  *
  * If %TRUE, the label set on the button is used as a
@@ -2254,10 +2254,10 @@ ctk_button_get_use_underline (GtkButton *button)
  * Deprecated: 3.10
  */
 void
-ctk_button_set_use_stock (GtkButton *button,
+ctk_button_set_use_stock (CtkButton *button,
 			  gboolean   use_stock)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -2277,7 +2277,7 @@ ctk_button_set_use_stock (GtkButton *button,
 
 /**
  * ctk_button_get_use_stock:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  *
  * Returns whether the button label is a stock item.
  *
@@ -2288,7 +2288,7 @@ ctk_button_set_use_stock (GtkButton *button,
  * Deprecated: 3.10
  */
 gboolean
-ctk_button_get_use_stock (GtkButton *button)
+ctk_button_get_use_stock (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), FALSE);
 
@@ -2297,7 +2297,7 @@ ctk_button_get_use_stock (GtkButton *button)
 
 /**
  * ctk_button_set_focus_on_click:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @focus_on_click: whether the button grabs focus when clicked with the mouse
  *
  * Sets whether the button will grab focus when it is clicked with the mouse.
@@ -2310,7 +2310,7 @@ ctk_button_get_use_stock (GtkButton *button)
  * Deprecated: 3.20: Use ctk_widget_set_focus_on_click() instead
  */
 void
-ctk_button_set_focus_on_click (GtkButton *button,
+ctk_button_set_focus_on_click (CtkButton *button,
 			       gboolean   focus_on_click)
 {
   g_return_if_fail (CTK_IS_BUTTON (button));
@@ -2320,7 +2320,7 @@ ctk_button_set_focus_on_click (GtkButton *button,
 
 /**
  * ctk_button_get_focus_on_click:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  *
  * Returns whether the button grabs focus when it is clicked with the mouse.
  * See ctk_button_set_focus_on_click().
@@ -2333,7 +2333,7 @@ ctk_button_set_focus_on_click (GtkButton *button,
  * Deprecated: 3.20: Use ctk_widget_get_focus_on_click() instead
  */
 gboolean
-ctk_button_get_focus_on_click (GtkButton *button)
+ctk_button_get_focus_on_click (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), FALSE);
   
@@ -2342,14 +2342,14 @@ ctk_button_get_focus_on_click (GtkButton *button)
 
 /**
  * ctk_button_set_alignment:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @xalign: the horizontal position of the child, 0.0 is left aligned, 
  *   1.0 is right aligned
  * @yalign: the vertical position of the child, 0.0 is top aligned, 
  *   1.0 is bottom aligned
  *
  * Sets the alignment of the child. This property has no effect unless 
- * the child is a #GtkMisc or a #GtkAlignment.
+ * the child is a #CtkMisc or a #CtkAlignment.
  *
  * Since: 2.4
  *
@@ -2357,11 +2357,11 @@ ctk_button_get_focus_on_click (GtkButton *button)
  * its alignment.
  */
 void
-ctk_button_set_alignment (GtkButton *button,
+ctk_button_set_alignment (CtkButton *button,
 			  gfloat     xalign,
 			  gfloat     yalign)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
   
@@ -2381,7 +2381,7 @@ ctk_button_set_alignment (GtkButton *button,
 
 /**
  * ctk_button_get_alignment:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @xalign: (out): return location for horizontal alignment
  * @yalign: (out): return location for vertical alignment
  *
@@ -2393,11 +2393,11 @@ ctk_button_set_alignment (GtkButton *button,
  * its alignment.
  */
 void
-ctk_button_get_alignment (GtkButton *button,
+ctk_button_get_alignment (CtkButton *button,
 			  gfloat    *xalign,
 			  gfloat    *yalign)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
   
@@ -2411,16 +2411,16 @@ ctk_button_get_alignment (GtkButton *button,
 }
 
 static void
-ctk_button_enter_leave (GtkButton *button)
+ctk_button_enter_leave (CtkButton *button)
 {
   ctk_button_update_state (button);
 }
 
 static void
-ctk_button_update_state (GtkButton *button)
+ctk_button_update_state (CtkButton *button)
 {
-  GtkButtonPrivate *priv = button->priv;
-  GtkStateFlags new_state;
+  CtkButtonPrivate *priv = button->priv;
+  CtkStateFlags new_state;
   gboolean depressed;
 
   if (priv->activate_timeout)
@@ -2441,9 +2441,9 @@ ctk_button_update_state (GtkButton *button)
 }
 
 static void 
-show_image_change_notify (GtkButton *button)
+show_image_change_notify (CtkButton *button)
 {
-  GtkButtonPrivate *priv = button->priv;
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->image) 
     {
@@ -2455,7 +2455,7 @@ show_image_change_notify (GtkButton *button)
 }
 
 static void
-traverse_container (GtkWidget *widget,
+traverse_container (CtkWidget *widget,
 		    gpointer   data)
 {
   if (CTK_IS_BUTTON (widget))
@@ -2465,7 +2465,7 @@ traverse_container (GtkWidget *widget,
 }
 
 static void
-ctk_button_setting_changed (GtkSettings *settings)
+ctk_button_setting_changed (CtkSettings *settings)
 {
   GList *list, *l;
 
@@ -2479,12 +2479,12 @@ ctk_button_setting_changed (GtkSettings *settings)
 }
 
 static void
-ctk_button_screen_changed (GtkWidget *widget,
+ctk_button_screen_changed (CtkWidget *widget,
 			   GdkScreen *previous_screen)
 {
-  GtkButton *button;
-  GtkButtonPrivate *priv;
-  GtkSettings *settings;
+  CtkButton *button;
+  CtkButtonPrivate *priv;
+  CtkSettings *settings;
   gulong show_image_connection;
 
   if (!ctk_widget_has_screen (widget))
@@ -2517,21 +2517,21 @@ ctk_button_screen_changed (GtkWidget *widget,
 }
 
 static void
-ctk_button_state_changed (GtkWidget    *widget,
-                          GtkStateType  previous_state)
+ctk_button_state_changed (CtkWidget    *widget,
+                          CtkStateType  previous_state)
 {
-  GtkButton *button = CTK_BUTTON (widget);
+  CtkButton *button = CTK_BUTTON (widget);
 
   if (!ctk_widget_is_sensitive (widget))
     ctk_button_do_release (button, FALSE);
 }
 
 static void
-ctk_button_grab_notify (GtkWidget *widget,
+ctk_button_grab_notify (CtkWidget *widget,
 			gboolean   was_grabbed)
 {
-  GtkButton *button = CTK_BUTTON (widget);
-  GtkButtonPrivate *priv = button->priv;
+  CtkButton *button = CTK_BUTTON (widget);
+  CtkButtonPrivate *priv = button->priv;
 
   if (priv->activate_timeout &&
       priv->grab_keyboard &&
@@ -2544,22 +2544,22 @@ ctk_button_grab_notify (GtkWidget *widget,
 
 /**
  * ctk_button_set_image:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @image: (nullable): a widget to set as the image for the button, or %NULL to unset
  *
  * Set the image of @button to the given widget. The image will be
  * displayed if the label text is %NULL or if
- * #GtkButton:always-show-image is %TRUE. You don’t have to call
+ * #CtkButton:always-show-image is %TRUE. You don’t have to call
  * ctk_widget_show() on @image yourself.
  *
  * Since: 2.6
  */
 void
-ctk_button_set_image (GtkButton *button,
-		      GtkWidget *image)
+ctk_button_set_image (CtkButton *button,
+		      CtkWidget *image)
 {
-  GtkButtonPrivate *priv;
-  GtkWidget *parent;
+  CtkButtonPrivate *priv;
+  CtkWidget *parent;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
   g_return_if_fail (image == NULL || CTK_IS_WIDGET (image));
@@ -2583,19 +2583,19 @@ ctk_button_set_image (GtkButton *button,
 
 /**
  * ctk_button_get_image:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  *
  * Gets the widget that is currenty set as the image of @button.
  * This may have been explicitly set by ctk_button_set_image()
  * or constructed by ctk_button_new_from_stock().
  *
- * Returns: (nullable) (transfer none): a #GtkWidget or %NULL in case
+ * Returns: (nullable) (transfer none): a #CtkWidget or %NULL in case
  *     there is no image
  *
  * Since: 2.6
  */
-GtkWidget *
-ctk_button_get_image (GtkButton *button)
+CtkWidget *
+ctk_button_get_image (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), NULL);
   
@@ -2604,7 +2604,7 @@ ctk_button_get_image (GtkButton *button)
 
 /**
  * ctk_button_set_image_position:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @position: the position
  *
  * Sets the position of the image relative to the text 
@@ -2613,10 +2613,10 @@ ctk_button_get_image (GtkButton *button)
  * Since: 2.10
  */ 
 void
-ctk_button_set_image_position (GtkButton       *button,
-			       GtkPositionType  position)
+ctk_button_set_image_position (CtkButton       *button,
+			       CtkPositionType  position)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
   g_return_if_fail (position >= CTK_POS_LEFT && position <= CTK_POS_BOTTOM);
@@ -2635,7 +2635,7 @@ ctk_button_set_image_position (GtkButton       *button,
 
 /**
  * ctk_button_get_image_position:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  *
  * Gets the position of the image relative to the text 
  * inside the button.
@@ -2644,8 +2644,8 @@ ctk_button_set_image_position (GtkButton       *button,
  *
  * Since: 2.10
  */
-GtkPositionType
-ctk_button_get_image_position (GtkButton *button)
+CtkPositionType
+ctk_button_get_image_position (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), CTK_POS_LEFT);
   
@@ -2654,10 +2654,10 @@ ctk_button_get_image_position (GtkButton *button)
 
 /**
  * ctk_button_set_always_show_image:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  * @always_show: %TRUE if the menuitem should always show the image
  *
- * If %TRUE, the button will ignore the #GtkSettings:ctk-button-images
+ * If %TRUE, the button will ignore the #CtkSettings:ctk-button-images
  * setting and always show the image, if available.
  *
  * Use this property if the button  would be useless or hard to use
@@ -2666,10 +2666,10 @@ ctk_button_get_image_position (GtkButton *button)
  * Since: 3.6
  */
 void
-ctk_button_set_always_show_image (GtkButton *button,
+ctk_button_set_always_show_image (CtkButton *button,
                                   gboolean    always_show)
 {
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_BUTTON (button));
 
@@ -2693,9 +2693,9 @@ ctk_button_set_always_show_image (GtkButton *button,
 
 /**
  * ctk_button_get_always_show_image:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  *
- * Returns whether the button will ignore the #GtkSettings:ctk-button-images
+ * Returns whether the button will ignore the #CtkSettings:ctk-button-images
  * setting and always show the image, if available.
  *
  * Returns: %TRUE if the button will always show the image
@@ -2703,7 +2703,7 @@ ctk_button_set_always_show_image (GtkButton *button,
  * Since: 3.6
  */
 gboolean
-ctk_button_get_always_show_image (GtkButton *button)
+ctk_button_get_always_show_image (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), FALSE);
 
@@ -2712,7 +2712,7 @@ ctk_button_get_always_show_image (GtkButton *button)
 
 /**
  * ctk_button_get_event_window:
- * @button: a #GtkButton
+ * @button: a #CtkButton
  *
  * Returns the button’s event window if it is realized, %NULL otherwise.
  * This function should be rarely needed.
@@ -2722,7 +2722,7 @@ ctk_button_get_always_show_image (GtkButton *button)
  * Since: 2.22
  */
 GdkWindow*
-ctk_button_get_event_window (GtkButton *button)
+ctk_button_get_event_window (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), NULL);
 

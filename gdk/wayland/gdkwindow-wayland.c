@@ -2933,7 +2933,7 @@ find_grab_input_seat (GdkWindow *window, GdkWindow *transient_for)
   if (impl->grab_input_seat)
     return gdk_wayland_seat_get_wl_seat (impl->grab_input_seat);
 
-  /* HACK: GtkMenu grabs a special window known as the "grab transfer window"
+  /* HACK: CtkMenu grabs a special window known as the "grab transfer window"
    * and then transfers the grab over to the correct window later. Look for
    * this window when taking the grab to know it's correct.
    *
@@ -4940,11 +4940,11 @@ gdk_wayland_window_get_ctk_surface (GdkWindow *window)
  * that lets the client identify the wl_surface as a panel or such.
  *
  * This function should be called before a #GdkWindow is shown. This is
- * best done by connecting to the #GtkWidget::realize signal:
+ * best done by connecting to the #CtkWidget::realize signal:
  *
  * |[<!-- language="C" -->
  *   static void
- *   widget_realize_cb (GtkWidget *widget)
+ *   widget_realize_cb (CtkWidget *widget)
  *   {
  *     GdkWindow *window;
  *     struct wl_surface *surface;
@@ -4959,7 +4959,7 @@ gdk_wayland_window_get_ctk_surface (GdkWindow *window)
  *   }
  *
  *   static void
- *   setup_window (GtkWindow *window)
+ *   setup_window (CtkWindow *window)
  *   {
  *     g_signal_connect (window, "realize", G_CALLBACK (widget_realize_cb), NULL);
  *   }

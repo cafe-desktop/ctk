@@ -27,59 +27,59 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_VALUE           (_ctk_css_value_get_type ())
 
-/* A GtkCssValue is a refcounted immutable value type */
+/* A CtkCssValue is a refcounted immutable value type */
 
-typedef struct _GtkCssValue           GtkCssValue;
-typedef struct _GtkCssValueClass      GtkCssValueClass;
+typedef struct _CtkCssValue           CtkCssValue;
+typedef struct _CtkCssValueClass      CtkCssValueClass;
 
 /* using define instead of struct here so compilers get the packing right */
 #define CTK_CSS_VALUE_BASE \
-  const GtkCssValueClass *class; \
+  const CtkCssValueClass *class; \
   gint ref_count;
 
-struct _GtkCssValueClass {
-  void          (* free)                              (GtkCssValue                *value);
+struct _CtkCssValueClass {
+  void          (* free)                              (CtkCssValue                *value);
 
-  GtkCssValue * (* compute)                           (GtkCssValue                *value,
+  CtkCssValue * (* compute)                           (CtkCssValue                *value,
                                                        guint                       property_id,
-                                                       GtkStyleProviderPrivate    *provider,
-                                                       GtkCssStyle                *style,
-                                                       GtkCssStyle                *parent_style);
-  gboolean      (* equal)                             (const GtkCssValue          *value1,
-                                                       const GtkCssValue          *value2);
-  GtkCssValue * (* transition)                        (GtkCssValue                *start,
-                                                       GtkCssValue                *end,
+                                                       CtkStyleProviderPrivate    *provider,
+                                                       CtkCssStyle                *style,
+                                                       CtkCssStyle                *parent_style);
+  gboolean      (* equal)                             (const CtkCssValue          *value1,
+                                                       const CtkCssValue          *value2);
+  CtkCssValue * (* transition)                        (CtkCssValue                *start,
+                                                       CtkCssValue                *end,
                                                        guint                       property_id,
                                                        double                      progress);
-  void          (* print)                             (const GtkCssValue          *value,
+  void          (* print)                             (const CtkCssValue          *value,
                                                        GString                    *string);
 };
 
 GType        _ctk_css_value_get_type                  (void) G_GNUC_CONST;
 
-GtkCssValue *_ctk_css_value_alloc                     (const GtkCssValueClass     *klass,
+CtkCssValue *_ctk_css_value_alloc                     (const CtkCssValueClass     *klass,
                                                        gsize                       size);
 #define _ctk_css_value_new(_name, _klass) ((_name *) _ctk_css_value_alloc ((_klass), sizeof (_name)))
 
-GtkCssValue *_ctk_css_value_ref                       (GtkCssValue                *value);
-void         _ctk_css_value_unref                     (GtkCssValue                *value);
+CtkCssValue *_ctk_css_value_ref                       (CtkCssValue                *value);
+void         _ctk_css_value_unref                     (CtkCssValue                *value);
 
-GtkCssValue *_ctk_css_value_compute                   (GtkCssValue                *value,
+CtkCssValue *_ctk_css_value_compute                   (CtkCssValue                *value,
                                                        guint                       property_id,
-                                                       GtkStyleProviderPrivate    *provider,
-                                                       GtkCssStyle                *style,
-                                                       GtkCssStyle                *parent_style);
-gboolean     _ctk_css_value_equal                     (const GtkCssValue          *value1,
-                                                       const GtkCssValue          *value2);
-gboolean     _ctk_css_value_equal0                    (const GtkCssValue          *value1,
-                                                       const GtkCssValue          *value2);
-GtkCssValue *_ctk_css_value_transition                (GtkCssValue                *start,
-                                                       GtkCssValue                *end,
+                                                       CtkStyleProviderPrivate    *provider,
+                                                       CtkCssStyle                *style,
+                                                       CtkCssStyle                *parent_style);
+gboolean     _ctk_css_value_equal                     (const CtkCssValue          *value1,
+                                                       const CtkCssValue          *value2);
+gboolean     _ctk_css_value_equal0                    (const CtkCssValue          *value1,
+                                                       const CtkCssValue          *value2);
+CtkCssValue *_ctk_css_value_transition                (CtkCssValue                *start,
+                                                       CtkCssValue                *end,
                                                        guint                       property_id,
                                                        double                      progress);
 
-char *       _ctk_css_value_to_string                 (const GtkCssValue          *value);
-void         _ctk_css_value_print                     (const GtkCssValue          *value,
+char *       _ctk_css_value_to_string                 (const CtkCssValue          *value);
+void         _ctk_css_value_print                     (const CtkCssValue          *value,
                                                        GString                    *string);
 
 G_END_DECLS

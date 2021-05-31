@@ -29,12 +29,12 @@
 /**
  * SECTION:ctkcellrenderertoggle
  * @Short_description: Renders a toggle button in a cell
- * @Title: GtkCellRendererToggle
+ * @Title: CtkCellRendererToggle
  *
- * #GtkCellRendererToggle renders a toggle button in a cell. The
+ * #CtkCellRendererToggle renders a toggle button in a cell. The
  * button is drawn as a radio or a checkbutton, depending on the
- * #GtkCellRendererToggle:radio property.
- * When activated, it emits the #GtkCellRendererToggle::toggled signal.
+ * #CtkCellRendererToggle:radio property.
+ * When activated, it emits the #CtkCellRendererToggle::toggled signal.
  */
 
 
@@ -46,26 +46,26 @@ static void ctk_cell_renderer_toggle_set_property  (GObject                    *
 						    guint                       param_id,
 						    const GValue               *value,
 						    GParamSpec                 *pspec);
-static void ctk_cell_renderer_toggle_get_size   (GtkCellRenderer            *cell,
-						 GtkWidget                  *widget,
+static void ctk_cell_renderer_toggle_get_size   (CtkCellRenderer            *cell,
+						 CtkWidget                  *widget,
 						 const GdkRectangle         *cell_area,
 						 gint                       *x_offset,
 						 gint                       *y_offset,
 						 gint                       *width,
 						 gint                       *height);
-static void ctk_cell_renderer_toggle_render     (GtkCellRenderer            *cell,
+static void ctk_cell_renderer_toggle_render     (CtkCellRenderer            *cell,
 						 cairo_t                    *cr,
-						 GtkWidget                  *widget,
+						 CtkWidget                  *widget,
 						 const GdkRectangle         *background_area,
 						 const GdkRectangle         *cell_area,
-						 GtkCellRendererState        flags);
-static gboolean ctk_cell_renderer_toggle_activate  (GtkCellRenderer            *cell,
+						 CtkCellRendererState        flags);
+static gboolean ctk_cell_renderer_toggle_activate  (CtkCellRenderer            *cell,
 						    GdkEvent                   *event,
-						    GtkWidget                  *widget,
+						    CtkWidget                  *widget,
 						    const gchar                *path,
 						    const GdkRectangle         *background_area,
 						    const GdkRectangle         *cell_area,
-						    GtkCellRendererState        flags);
+						    CtkCellRendererState        flags);
 
 
 enum {
@@ -86,7 +86,7 @@ enum {
 
 static guint toggle_cell_signals[LAST_SIGNAL] = { 0 };
 
-struct _GtkCellRendererTogglePrivate
+struct _CtkCellRendererTogglePrivate
 {
   gint indicator_size;
 
@@ -97,13 +97,13 @@ struct _GtkCellRendererTogglePrivate
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererToggle, ctk_cell_renderer_toggle, CTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkCellRendererToggle, ctk_cell_renderer_toggle, CTK_TYPE_CELL_RENDERER)
 
 
 static void
-ctk_cell_renderer_toggle_init (GtkCellRendererToggle *celltoggle)
+ctk_cell_renderer_toggle_init (CtkCellRendererToggle *celltoggle)
 {
-  GtkCellRendererTogglePrivate *priv;
+  CtkCellRendererTogglePrivate *priv;
 
   celltoggle->priv = ctk_cell_renderer_toggle_get_instance_private (celltoggle);
   priv = celltoggle->priv;
@@ -120,10 +120,10 @@ ctk_cell_renderer_toggle_init (GtkCellRendererToggle *celltoggle)
 }
 
 static void
-ctk_cell_renderer_toggle_class_init (GtkCellRendererToggleClass *class)
+ctk_cell_renderer_toggle_class_init (CtkCellRendererToggleClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (class);
+  CtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (class);
 
   object_class->get_property = ctk_cell_renderer_toggle_get_property;
   object_class->set_property = ctk_cell_renderer_toggle_set_property;
@@ -176,9 +176,9 @@ ctk_cell_renderer_toggle_class_init (GtkCellRendererToggleClass *class)
 
   
   /**
-   * GtkCellRendererToggle::toggled:
+   * CtkCellRendererToggle::toggled:
    * @cell_renderer: the object which received the signal
-   * @path: string representation of #GtkTreePath describing the 
+   * @path: string representation of #CtkTreePath describing the 
    *        event location
    *
    * The ::toggled signal is emitted when the cell is toggled. 
@@ -191,7 +191,7 @@ ctk_cell_renderer_toggle_class_init (GtkCellRendererToggleClass *class)
     g_signal_new (I_("toggled"),
 		  G_OBJECT_CLASS_TYPE (object_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkCellRendererToggleClass, toggled),
+		  G_STRUCT_OFFSET (CtkCellRendererToggleClass, toggled),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
@@ -206,8 +206,8 @@ ctk_cell_renderer_toggle_get_property (GObject     *object,
 				       GValue      *value,
 				       GParamSpec  *pspec)
 {
-  GtkCellRendererToggle *celltoggle = CTK_CELL_RENDERER_TOGGLE (object);
-  GtkCellRendererTogglePrivate *priv = celltoggle->priv;
+  CtkCellRendererToggle *celltoggle = CTK_CELL_RENDERER_TOGGLE (object);
+  CtkCellRendererTogglePrivate *priv = celltoggle->priv;
 
   switch (param_id)
     {
@@ -239,8 +239,8 @@ ctk_cell_renderer_toggle_set_property (GObject      *object,
 				       const GValue *value,
 				       GParamSpec   *pspec)
 {
-  GtkCellRendererToggle *celltoggle = CTK_CELL_RENDERER_TOGGLE (object);
-  GtkCellRendererTogglePrivate *priv = celltoggle->priv;
+  CtkCellRendererToggle *celltoggle = CTK_CELL_RENDERER_TOGGLE (object);
+  CtkCellRendererTogglePrivate *priv = celltoggle->priv;
 
   switch (param_id)
     {
@@ -288,29 +288,29 @@ ctk_cell_renderer_toggle_set_property (GObject      *object,
 /**
  * ctk_cell_renderer_toggle_new:
  *
- * Creates a new #GtkCellRendererToggle. Adjust rendering
+ * Creates a new #CtkCellRendererToggle. Adjust rendering
  * parameters using object properties. Object properties can be set
- * globally (with g_object_set()). Also, with #GtkTreeViewColumn, you
- * can bind a property to a value in a #GtkTreeModel. For example, you
+ * globally (with g_object_set()). Also, with #CtkTreeViewColumn, you
+ * can bind a property to a value in a #CtkTreeModel. For example, you
  * can bind the “active” property on the cell renderer to a boolean value
  * in the model, thus causing the check button to reflect the state of
  * the model.
  *
  * Returns: the new cell renderer
  **/
-GtkCellRenderer *
+CtkCellRenderer *
 ctk_cell_renderer_toggle_new (void)
 {
   return g_object_new (CTK_TYPE_CELL_RENDERER_TOGGLE, NULL);
 }
 
-static GtkStyleContext *
-ctk_cell_renderer_toggle_save_context (GtkCellRenderer *cell,
-				       GtkWidget       *widget)
+static CtkStyleContext *
+ctk_cell_renderer_toggle_save_context (CtkCellRenderer *cell,
+				       CtkWidget       *widget)
 {
-  GtkCellRendererTogglePrivate *priv = CTK_CELL_RENDERER_TOGGLE (cell)->priv;
+  CtkCellRendererTogglePrivate *priv = CTK_CELL_RENDERER_TOGGLE (cell)->priv;
 
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   context = ctk_widget_get_style_context (widget);
 
@@ -323,7 +323,7 @@ ctk_cell_renderer_toggle_save_context (GtkCellRenderer *cell,
 }
  
 static void
-calc_indicator_size (GtkStyleContext *context,
+calc_indicator_size (CtkStyleContext *context,
                      gint             indicator_size,
                      gint            *width,
                      gint            *height)
@@ -346,20 +346,20 @@ calc_indicator_size (GtkStyleContext *context,
 }
 
 static void
-ctk_cell_renderer_toggle_get_size (GtkCellRenderer    *cell,
-				   GtkWidget          *widget,
+ctk_cell_renderer_toggle_get_size (CtkCellRenderer    *cell,
+				   CtkWidget          *widget,
 				   const GdkRectangle *cell_area,
 				   gint               *x_offset,
 				   gint               *y_offset,
 				   gint               *width,
 				   gint               *height)
 {
-  GtkCellRendererTogglePrivate *priv;
+  CtkCellRendererTogglePrivate *priv;
   gint calc_width;
   gint calc_height;
   gint xpad, ypad;
-  GtkStyleContext *context;
-  GtkBorder border, padding;
+  CtkStyleContext *context;
+  CtkBorder border, padding;
 
   priv = CTK_CELL_RENDERER_TOGGLE (cell)->priv;
 
@@ -407,21 +407,21 @@ ctk_cell_renderer_toggle_get_size (GtkCellRenderer    *cell,
 }
 
 static void
-ctk_cell_renderer_toggle_render (GtkCellRenderer      *cell,
+ctk_cell_renderer_toggle_render (CtkCellRenderer      *cell,
 				 cairo_t              *cr,
-				 GtkWidget            *widget,
+				 CtkWidget            *widget,
 				 const GdkRectangle   *background_area,
 				 const GdkRectangle   *cell_area,
-				 GtkCellRendererState  flags)
+				 CtkCellRendererState  flags)
 {
-  GtkCellRendererToggle *celltoggle = CTK_CELL_RENDERER_TOGGLE (cell);
-  GtkCellRendererTogglePrivate *priv = celltoggle->priv;
-  GtkStyleContext *context;
+  CtkCellRendererToggle *celltoggle = CTK_CELL_RENDERER_TOGGLE (cell);
+  CtkCellRendererTogglePrivate *priv = celltoggle->priv;
+  CtkStyleContext *context;
   gint width, height;
   gint x_offset, y_offset;
   gint xpad, ypad;
-  GtkStateFlags state;
-  GtkBorder padding, border;
+  CtkStateFlags state;
+  CtkBorder padding, border;
 
   context = ctk_widget_get_style_context (widget);
   ctk_cell_renderer_toggle_get_size (cell, widget, cell_area,
@@ -489,16 +489,16 @@ ctk_cell_renderer_toggle_render (GtkCellRenderer      *cell,
 }
 
 static gint
-ctk_cell_renderer_toggle_activate (GtkCellRenderer      *cell,
+ctk_cell_renderer_toggle_activate (CtkCellRenderer      *cell,
 				   GdkEvent             *event,
-				   GtkWidget            *widget,
+				   CtkWidget            *widget,
 				   const gchar          *path,
 				   const GdkRectangle   *background_area,
 				   const GdkRectangle   *cell_area,
-				   GtkCellRendererState  flags)
+				   CtkCellRendererState  flags)
 {
-  GtkCellRendererTogglePrivate *priv;
-  GtkCellRendererToggle *celltoggle;
+  CtkCellRendererTogglePrivate *priv;
+  CtkCellRendererToggle *celltoggle;
 
   celltoggle = CTK_CELL_RENDERER_TOGGLE (cell);
   priv = celltoggle->priv;
@@ -514,22 +514,22 @@ ctk_cell_renderer_toggle_activate (GtkCellRenderer      *cell,
 
 /**
  * ctk_cell_renderer_toggle_set_radio:
- * @toggle: a #GtkCellRendererToggle
+ * @toggle: a #CtkCellRendererToggle
  * @radio: %TRUE to make the toggle look like a radio button
  * 
  * If @radio is %TRUE, the cell renderer renders a radio toggle
  * (i.e. a toggle in a group of mutually-exclusive toggles).
  * If %FALSE, it renders a check toggle (a standalone boolean option).
  * This can be set globally for the cell renderer, or changed just
- * before rendering each cell in the model (for #GtkTreeView, you set
- * up a per-row setting using #GtkTreeViewColumn to associate model
+ * before rendering each cell in the model (for #CtkTreeView, you set
+ * up a per-row setting using #CtkTreeViewColumn to associate model
  * columns with cell renderer properties).
  **/
 void
-ctk_cell_renderer_toggle_set_radio (GtkCellRendererToggle *toggle,
+ctk_cell_renderer_toggle_set_radio (CtkCellRendererToggle *toggle,
 				    gboolean               radio)
 {
-  GtkCellRendererTogglePrivate *priv;
+  CtkCellRendererTogglePrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER_TOGGLE (toggle));
 
@@ -540,14 +540,14 @@ ctk_cell_renderer_toggle_set_radio (GtkCellRendererToggle *toggle,
 
 /**
  * ctk_cell_renderer_toggle_get_radio:
- * @toggle: a #GtkCellRendererToggle
+ * @toggle: a #CtkCellRendererToggle
  *
  * Returns whether we’re rendering radio toggles rather than checkboxes. 
  * 
  * Returns: %TRUE if we’re rendering radio toggles rather than checkboxes
  **/
 gboolean
-ctk_cell_renderer_toggle_get_radio (GtkCellRendererToggle *toggle)
+ctk_cell_renderer_toggle_get_radio (CtkCellRendererToggle *toggle)
 {
   g_return_val_if_fail (CTK_IS_CELL_RENDERER_TOGGLE (toggle), FALSE);
 
@@ -556,7 +556,7 @@ ctk_cell_renderer_toggle_get_radio (GtkCellRendererToggle *toggle)
 
 /**
  * ctk_cell_renderer_toggle_get_active:
- * @toggle: a #GtkCellRendererToggle
+ * @toggle: a #CtkCellRendererToggle
  *
  * Returns whether the cell renderer is active. See
  * ctk_cell_renderer_toggle_set_active().
@@ -564,7 +564,7 @@ ctk_cell_renderer_toggle_get_radio (GtkCellRendererToggle *toggle)
  * Returns: %TRUE if the cell renderer is active.
  **/
 gboolean
-ctk_cell_renderer_toggle_get_active (GtkCellRendererToggle *toggle)
+ctk_cell_renderer_toggle_get_active (CtkCellRendererToggle *toggle)
 {
   g_return_val_if_fail (CTK_IS_CELL_RENDERER_TOGGLE (toggle), FALSE);
 
@@ -573,13 +573,13 @@ ctk_cell_renderer_toggle_get_active (GtkCellRendererToggle *toggle)
 
 /**
  * ctk_cell_renderer_toggle_set_active:
- * @toggle: a #GtkCellRendererToggle.
+ * @toggle: a #CtkCellRendererToggle.
  * @setting: the value to set.
  *
  * Activates or deactivates a cell renderer.
  **/
 void
-ctk_cell_renderer_toggle_set_active (GtkCellRendererToggle *toggle,
+ctk_cell_renderer_toggle_set_active (CtkCellRendererToggle *toggle,
 				     gboolean               setting)
 {
   g_return_if_fail (CTK_IS_CELL_RENDERER_TOGGLE (toggle));
@@ -589,7 +589,7 @@ ctk_cell_renderer_toggle_set_active (GtkCellRendererToggle *toggle,
 
 /**
  * ctk_cell_renderer_toggle_get_activatable:
- * @toggle: a #GtkCellRendererToggle
+ * @toggle: a #CtkCellRendererToggle
  *
  * Returns whether the cell renderer is activatable. See
  * ctk_cell_renderer_toggle_set_activatable().
@@ -599,7 +599,7 @@ ctk_cell_renderer_toggle_set_active (GtkCellRendererToggle *toggle,
  * Since: 2.18
  **/
 gboolean
-ctk_cell_renderer_toggle_get_activatable (GtkCellRendererToggle *toggle)
+ctk_cell_renderer_toggle_get_activatable (CtkCellRendererToggle *toggle)
 {
   g_return_val_if_fail (CTK_IS_CELL_RENDERER_TOGGLE (toggle), FALSE);
 
@@ -608,7 +608,7 @@ ctk_cell_renderer_toggle_get_activatable (GtkCellRendererToggle *toggle)
 
 /**
  * ctk_cell_renderer_toggle_set_activatable:
- * @toggle: a #GtkCellRendererToggle.
+ * @toggle: a #CtkCellRendererToggle.
  * @setting: the value to set.
  *
  * Makes the cell renderer activatable.
@@ -616,10 +616,10 @@ ctk_cell_renderer_toggle_get_activatable (GtkCellRendererToggle *toggle)
  * Since: 2.18
  **/
 void
-ctk_cell_renderer_toggle_set_activatable (GtkCellRendererToggle *toggle,
+ctk_cell_renderer_toggle_set_activatable (CtkCellRendererToggle *toggle,
                                           gboolean               setting)
 {
-  GtkCellRendererTogglePrivate *priv;
+  CtkCellRendererTogglePrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER_TOGGLE (toggle));
 

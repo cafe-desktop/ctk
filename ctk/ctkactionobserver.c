@@ -21,14 +21,14 @@
 
 #include "ctkactionobserver.h"
 
-G_DEFINE_INTERFACE (GtkActionObserver, ctk_action_observer, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (CtkActionObserver, ctk_action_observer, G_TYPE_OBJECT)
 
 /*< private >
  * SECTION:ctkactionobserver
  * @short_description: an interface implemented by objects that are
  *                     interested in monitoring actions for changes
  *
- * GtkActionObserver is a simple interface allowing objects that wish to
+ * CtkActionObserver is a simple interface allowing objects that wish to
  * be notified of changes to actions to be notified of those changes.
  *
  * It is also possible to monitor changes to action groups using
@@ -50,13 +50,13 @@ G_DEFINE_INTERFACE (GtkActionObserver, ctk_action_observer, G_TYPE_OBJECT)
  */
 
 void
-ctk_action_observer_default_init (GtkActionObserverInterface *class)
+ctk_action_observer_default_init (CtkActionObserverInterface *class)
 {
 }
 
 /*< private >
  * ctk_action_observer_action_added:
- * @observer: a #GtkActionObserver
+ * @observer: a #CtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
  * @enabled: %TRUE if the action is now enabled
@@ -72,8 +72,8 @@ ctk_action_observer_default_init (GtkActionObserverInterface *class)
  * observer has explicitly registered itself to receive events.
  */
 void
-ctk_action_observer_action_added (GtkActionObserver   *observer,
-                                  GtkActionObservable *observable,
+ctk_action_observer_action_added (CtkActionObserver   *observer,
+                                  CtkActionObservable *observable,
                                   const gchar         *action_name,
                                   const GVariantType  *parameter_type,
                                   gboolean             enabled,
@@ -87,7 +87,7 @@ ctk_action_observer_action_added (GtkActionObserver   *observer,
 
 /*< private >
  * ctk_action_observer_action_enabled_changed:
- * @observer: a #GtkActionObserver
+ * @observer: a #CtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
  * @enabled: %TRUE if the action is now enabled
@@ -99,8 +99,8 @@ ctk_action_observer_action_added (GtkActionObserver   *observer,
  * observer has explicitly registered itself to receive events.
  */
 void
-ctk_action_observer_action_enabled_changed (GtkActionObserver   *observer,
-                                            GtkActionObservable *observable,
+ctk_action_observer_action_enabled_changed (CtkActionObserver   *observer,
+                                            CtkActionObservable *observable,
                                             const gchar         *action_name,
                                             gboolean             enabled)
 {
@@ -112,7 +112,7 @@ ctk_action_observer_action_enabled_changed (GtkActionObserver   *observer,
 
 /*< private >
  * ctk_action_observer_action_state_changed:
- * @observer: a #GtkActionObserver
+ * @observer: a #CtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
  * @state: the new state of the action
@@ -124,8 +124,8 @@ ctk_action_observer_action_enabled_changed (GtkActionObserver   *observer,
  * observer has explicitly registered itself to receive events.
  */
 void
-ctk_action_observer_action_state_changed (GtkActionObserver   *observer,
-                                          GtkActionObservable *observable,
+ctk_action_observer_action_state_changed (CtkActionObserver   *observer,
+                                          CtkActionObservable *observable,
                                           const gchar         *action_name,
                                           GVariant            *state)
 {
@@ -137,7 +137,7 @@ ctk_action_observer_action_state_changed (GtkActionObserver   *observer,
 
 /*< private >
  * ctk_action_observer_action_removed:
- * @observer: a #GtkActionObserver
+ * @observer: a #CtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
  *
@@ -148,8 +148,8 @@ ctk_action_observer_action_state_changed (GtkActionObserver   *observer,
  * observer has explicitly registered itself to receive events.
  */
 void
-ctk_action_observer_action_removed (GtkActionObserver   *observer,
-                                    GtkActionObservable *observable,
+ctk_action_observer_action_removed (CtkActionObserver   *observer,
+                                    CtkActionObservable *observable,
                                     const gchar         *action_name)
 {
   g_return_if_fail (CTK_IS_ACTION_OBSERVER (observer));
@@ -160,7 +160,7 @@ ctk_action_observer_action_removed (GtkActionObserver   *observer,
 
 /*< private >
  * ctk_action_observer_primary_accel_changed:
- * @observer: a #GtkActionObserver
+ * @observer: a #CtkActionObserver
  * @observable: the source of the event
  * @action_name: the name of the action
  * @action_and_target: detailed action of the changed accel, in “action and target” format
@@ -173,12 +173,12 @@ ctk_action_observer_action_removed (GtkActionObserver   *observer,
  * reported target is the one that the observer is interested in.
  */
 void
-ctk_action_observer_primary_accel_changed (GtkActionObserver   *observer,
-                                           GtkActionObservable *observable,
+ctk_action_observer_primary_accel_changed (CtkActionObserver   *observer,
+                                           CtkActionObservable *observable,
                                            const gchar         *action_name,
                                            const gchar         *action_and_target)
 {
-  GtkActionObserverInterface *iface;
+  CtkActionObserverInterface *iface;
 
   g_return_if_fail (CTK_IS_ACTION_OBSERVER (observer));
 

@@ -21,10 +21,10 @@
 /**
  * SECTION:ctkeventcontroller
  * @Short_description: Self-contained handler of series of events
- * @Title: GtkEventController
- * @See_also: #GtkGesture
+ * @Title: CtkEventController
+ * @See_also: #CtkGesture
  *
- * #GtkEventController is a base, low-level implementation for event
+ * #CtkEventController is a base, low-level implementation for event
  * controllers. Those react to a series of #GdkEvents, and possibly trigger
  * actions as a consequence of those.
  */
@@ -38,7 +38,7 @@
 #include "ctkprivate.h"
 #include "ctkintl.h"
 
-typedef struct _GtkEventControllerPrivate GtkEventControllerPrivate;
+typedef struct _CtkEventControllerPrivate CtkEventControllerPrivate;
 
 enum {
   PROP_WIDGET = 1,
@@ -48,17 +48,17 @@ enum {
 
 static GParamSpec *properties[LAST_PROP] = { NULL, };
 
-struct _GtkEventControllerPrivate
+struct _CtkEventControllerPrivate
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   guint evmask;
-  GtkPropagationPhase phase;
+  CtkPropagationPhase phase;
 };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkEventController, ctk_event_controller, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CtkEventController, ctk_event_controller, G_TYPE_OBJECT)
 
 static gboolean
-ctk_event_controller_handle_event_default (GtkEventController *controller,
+ctk_event_controller_handle_event_default (CtkEventController *controller,
                                            const GdkEvent     *event)
 {
   return FALSE;
@@ -70,7 +70,7 @@ ctk_event_controller_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  GtkEventControllerPrivate *priv;
+  CtkEventControllerPrivate *priv;
 
   priv = ctk_event_controller_get_instance_private (CTK_EVENT_CONTROLLER (object));
 
@@ -96,7 +96,7 @@ ctk_event_controller_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-  GtkEventControllerPrivate *priv;
+  CtkEventControllerPrivate *priv;
 
   priv = ctk_event_controller_get_instance_private (CTK_EVENT_CONTROLLER (object));
 
@@ -116,8 +116,8 @@ ctk_event_controller_get_property (GObject    *object,
 static void
 ctk_event_controller_constructed (GObject *object)
 {
-  GtkEventController *controller = CTK_EVENT_CONTROLLER (object);
-  GtkEventControllerPrivate *priv;
+  CtkEventController *controller = CTK_EVENT_CONTROLLER (object);
+  CtkEventControllerPrivate *priv;
 
   G_OBJECT_CLASS (ctk_event_controller_parent_class)->constructed (object);
 
@@ -129,8 +129,8 @@ ctk_event_controller_constructed (GObject *object)
 static void
 ctk_event_controller_dispose (GObject *object)
 {
-  GtkEventController *controller = CTK_EVENT_CONTROLLER (object);
-  GtkEventControllerPrivate *priv;
+  CtkEventController *controller = CTK_EVENT_CONTROLLER (object);
+  CtkEventControllerPrivate *priv;
 
   priv = ctk_event_controller_get_instance_private (controller);
   if (priv->widget)
@@ -144,7 +144,7 @@ ctk_event_controller_dispose (GObject *object)
 }
 
 static void
-ctk_event_controller_class_init (GtkEventControllerClass *klass)
+ctk_event_controller_class_init (CtkEventControllerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -157,7 +157,7 @@ ctk_event_controller_class_init (GtkEventControllerClass *klass)
   object_class->dispose = ctk_event_controller_dispose;
 
   /**
-   * GtkEventController:widget:
+   * CtkEventController:widget:
    *
    * The widget receiving the #GdkEvents that the controller will handle.
    *
@@ -170,7 +170,7 @@ ctk_event_controller_class_init (GtkEventControllerClass *klass)
                            CTK_TYPE_WIDGET,
                            CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY);
   /**
-   * GtkEventController:propagation-phase:
+   * CtkEventController:propagation-phase:
    *
    * The propagation phase at which this controller will handle events.
    *
@@ -188,9 +188,9 @@ ctk_event_controller_class_init (GtkEventControllerClass *klass)
 }
 
 static void
-ctk_event_controller_init (GtkEventController *controller)
+ctk_event_controller_init (CtkEventController *controller)
 {
-  GtkEventControllerPrivate *priv;
+  CtkEventControllerPrivate *priv;
 
   priv = ctk_event_controller_get_instance_private (controller);
   priv->phase = CTK_PHASE_BUBBLE;
@@ -198,7 +198,7 @@ ctk_event_controller_init (GtkEventController *controller)
 
 /**
  * ctk_event_controller_handle_event:
- * @controller: a #GtkEventController
+ * @controller: a #CtkEventController
  * @event: a #GdkEvent
  *
  * Feeds an events into @controller, so it can be interpreted
@@ -210,10 +210,10 @@ ctk_event_controller_init (GtkEventController *controller)
  * Since: 3.14
  **/
 gboolean
-ctk_event_controller_handle_event (GtkEventController *controller,
+ctk_event_controller_handle_event (CtkEventController *controller,
                                    const GdkEvent     *event)
 {
-  GtkEventControllerClass *controller_class;
+  CtkEventControllerClass *controller_class;
   gboolean retval = FALSE;
 
   g_return_val_if_fail (CTK_IS_EVENT_CONTROLLER (controller), FALSE);
@@ -235,10 +235,10 @@ ctk_event_controller_handle_event (GtkEventController *controller,
 }
 
 void
-ctk_event_controller_set_event_mask (GtkEventController *controller,
+ctk_event_controller_set_event_mask (CtkEventController *controller,
                                      GdkEventMask        event_mask)
 {
-  GtkEventControllerPrivate *priv;
+  CtkEventControllerPrivate *priv;
 
   g_return_if_fail (CTK_IS_EVENT_CONTROLLER (controller));
 
@@ -251,9 +251,9 @@ ctk_event_controller_set_event_mask (GtkEventController *controller,
 }
 
 GdkEventMask
-ctk_event_controller_get_event_mask (GtkEventController *controller)
+ctk_event_controller_get_event_mask (CtkEventController *controller)
 {
-  GtkEventControllerPrivate *priv;
+  CtkEventControllerPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_EVENT_CONTROLLER (controller), 0);
 
@@ -264,18 +264,18 @@ ctk_event_controller_get_event_mask (GtkEventController *controller)
 
 /**
  * ctk_event_controller_get_widget:
- * @controller: a #GtkEventController
+ * @controller: a #CtkEventController
  *
- * Returns the #GtkWidget this controller relates to.
+ * Returns the #CtkWidget this controller relates to.
  *
- * Returns: (transfer none): a #GtkWidget
+ * Returns: (transfer none): a #CtkWidget
  *
  * Since: 3.14
  **/
-GtkWidget *
-ctk_event_controller_get_widget (GtkEventController *controller)
+CtkWidget *
+ctk_event_controller_get_widget (CtkEventController *controller)
 {
-  GtkEventControllerPrivate *priv;
+  CtkEventControllerPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_EVENT_CONTROLLER (controller), 0);
 
@@ -286,18 +286,18 @@ ctk_event_controller_get_widget (GtkEventController *controller)
 
 /**
  * ctk_event_controller_reset:
- * @controller: a #GtkEventController
+ * @controller: a #CtkEventController
  *
  * Resets the @controller to a clean state. Every interaction
- * the controller did through #GtkEventController::handle-event
+ * the controller did through #CtkEventController::handle-event
  * will be dropped at this point.
  *
  * Since: 3.14
  **/
 void
-ctk_event_controller_reset (GtkEventController *controller)
+ctk_event_controller_reset (CtkEventController *controller)
 {
-  GtkEventControllerClass *controller_class;
+  CtkEventControllerClass *controller_class;
 
   g_return_if_fail (CTK_IS_EVENT_CONTROLLER (controller));
 
@@ -309,7 +309,7 @@ ctk_event_controller_reset (GtkEventController *controller)
 
 /**
  * ctk_event_controller_get_propagation_phase:
- * @controller: a #GtkEventController
+ * @controller: a #CtkEventController
  *
  * Gets the propagation phase at which @controller handles events.
  *
@@ -317,10 +317,10 @@ ctk_event_controller_reset (GtkEventController *controller)
  *
  * Since: 3.14
  **/
-GtkPropagationPhase
-ctk_event_controller_get_propagation_phase (GtkEventController *controller)
+CtkPropagationPhase
+ctk_event_controller_get_propagation_phase (CtkEventController *controller)
 {
-  GtkEventControllerPrivate *priv;
+  CtkEventControllerPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_EVENT_CONTROLLER (controller), CTK_PHASE_NONE);
 
@@ -331,7 +331,7 @@ ctk_event_controller_get_propagation_phase (GtkEventController *controller)
 
 /**
  * ctk_event_controller_set_propagation_phase:
- * @controller: a #GtkEventController
+ * @controller: a #CtkEventController
  * @phase: a propagation phase
  *
  * Sets the propagation phase at which a controller handles events.
@@ -343,10 +343,10 @@ ctk_event_controller_get_propagation_phase (GtkEventController *controller)
  * Since: 3.14
  **/
 void
-ctk_event_controller_set_propagation_phase (GtkEventController  *controller,
-                                            GtkPropagationPhase  phase)
+ctk_event_controller_set_propagation_phase (CtkEventController  *controller,
+                                            CtkPropagationPhase  phase)
 {
-  GtkEventControllerPrivate *priv;
+  CtkEventControllerPrivate *priv;
 
   g_return_if_fail (CTK_IS_EVENT_CONTROLLER (controller));
   g_return_if_fail (phase >= CTK_PHASE_NONE && phase <= CTK_PHASE_TARGET);

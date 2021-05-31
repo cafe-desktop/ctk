@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <child>
-          <object class="GtkToggleButton" id="button1">
+          <object class="CtkToggleButton" id="button1">
             <property name="label" translatable="yes">Hello World!</property>
             <property name="visible">True</property>
             <property name="active">True</property>
@@ -21,7 +21,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="button2">
+          <object class="CtkCheckButton" id="button2">
             <property name="label" translatable="yes">Hello World!</property>
             <property name="visible">True</property>
             <property name="active">False</property>
@@ -34,7 +34,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="button3">
+          <object class="CtkRadioButton" id="button3">
             <property name="label" translatable="yes">Hello World!</property>
             <property name="visible">True</property>
             <property name="active">False</property>
@@ -47,7 +47,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="button4">
+          <object class="CtkRadioButton" id="button4">
             <property name="label" translatable="yes">Hello World!</property>
             <property name="visible">True</property>
             <property name="active">True</property>
@@ -61,7 +61,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSwitch" id="button5">
+          <object class="CtkSwitch" id="button5">
             <property name="visible">True</property>
             <property name="active">True</property>
             <property name="can_focus">True</property>
@@ -73,7 +73,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSwitch" id="button6">
+          <object class="CtkSwitch" id="button6">
             <property name="visible">True</property>
             <property name="active">False</property>
             <property name="can_focus">True</property>
@@ -91,7 +91,7 @@
         </child>
 
         <child>
-          <object class="GtkButton" id="button7">
+          <object class="CtkButton" id="button7">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -103,7 +103,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button8">
+          <object class="CtkButton" id="button8">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -117,7 +117,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button9">
+          <object class="CtkButton" id="button9">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -133,12 +133,12 @@
       </object>
     </child>
   </object>
-  <object class="GtkImage" id="image8">
+  <object class="CtkImage" id="image8">
     <property name="visible">True</property>
     <property name="icon-name">edit-find-replace</property>
     <property name="icon-size">1</property>
   </object>
-  <object class="GtkImage" id="image9">
+  <object class="CtkImage" id="image9">
     <property name="visible">True</property>
     <property name="icon-name">window-close-symbolic</property>
     <property name="use-fallback">True</property>

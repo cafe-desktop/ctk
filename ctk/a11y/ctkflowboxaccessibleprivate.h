@@ -22,9 +22,9 @@
 
 G_BEGIN_DECLS
 
-void _ctk_flow_box_accessible_selection_changed (GtkWidget *box);
-void _ctk_flow_box_accessible_update_cursor     (GtkWidget *box,
-                                                 GtkWidget *child);
+void _ctk_flow_box_accessible_selection_changed (CtkWidget *box);
+void _ctk_flow_box_accessible_update_cursor     (CtkWidget *box,
+                                                 CtkWidget *child);
 G_END_DECLS
 
 #endif /* __CTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__ */

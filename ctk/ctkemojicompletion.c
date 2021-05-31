@@ -31,45 +31,45 @@
 #include "ctkflowbox.h"
 #include "ctkstack.h"
 
-struct _GtkEmojiCompletion
+struct _CtkEmojiCompletion
 {
-  GtkPopover parent_instance;
+  CtkPopover parent_instance;
 
-  GtkEntry *entry;
+  CtkEntry *entry;
   char *text;
   guint length;
   guint offset;
   gulong changed_id;
   guint n_matches;
 
-  GtkWidget *list;
-  GtkWidget *active;
-  GtkWidget *active_variation;
+  CtkWidget *list;
+  CtkWidget *active;
+  CtkWidget *active_variation;
 
   GVariant *data;
 
-  GtkGesture *long_press;
+  CtkGesture *long_press;
 };
 
-struct _GtkEmojiCompletionClass {
-  GtkPopoverClass parent_class;
+struct _CtkEmojiCompletionClass {
+  CtkPopoverClass parent_class;
 };
 
-static void connect_signals    (GtkEmojiCompletion *completion,
-                                GtkEntry           *entry);
-static void disconnect_signals (GtkEmojiCompletion *completion);
-static int populate_completion (GtkEmojiCompletion *completion,
+static void connect_signals    (CtkEmojiCompletion *completion,
+                                CtkEntry           *entry);
+static void disconnect_signals (CtkEmojiCompletion *completion);
+static int populate_completion (CtkEmojiCompletion *completion,
                                 const char          *text,
                                 guint                offset);
 
 #define MAX_ROWS 5
 
-G_DEFINE_TYPE (GtkEmojiCompletion, ctk_emoji_completion, CTK_TYPE_POPOVER)
+G_DEFINE_TYPE (CtkEmojiCompletion, ctk_emoji_completion, CTK_TYPE_POPOVER)
 
 static void
 ctk_emoji_completion_finalize (GObject *object)
 {
-  GtkEmojiCompletion *completion = CTK_EMOJI_COMPLETION (object);
+  CtkEmojiCompletion *completion = CTK_EMOJI_COMPLETION (object);
 
   disconnect_signals (completion);
 
@@ -82,7 +82,7 @@ ctk_emoji_completion_finalize (GObject *object)
 }
 
 static void
-update_completion (GtkEmojiCompletion *completion)
+update_completion (CtkEmojiCompletion *completion)
 {
   const char *text;
   guint length;
@@ -129,14 +129,14 @@ next:
 }
 
 static void
-entry_changed (GtkEntry *entry, GtkEmojiCompletion *completion)
+entry_changed (CtkEntry *entry, CtkEmojiCompletion *completion)
 {
   update_completion (completion);
 }
 
 static void
-emoji_activated (GtkWidget          *row,
-                 GtkEmojiCompletion *completion)
+emoji_activated (CtkWidget          *row,
+                 CtkEmojiCompletion *completion)
 {
   const char *emoji;
   guint length;
@@ -155,31 +155,31 @@ emoji_activated (GtkWidget          *row,
 }
 
 static void
-row_activated (GtkListBox    *list,
-               GtkListBoxRow *row,
+row_activated (CtkListBox    *list,
+               CtkListBoxRow *row,
                gpointer       data)
 {
-  GtkEmojiCompletion *completion = data;
+  CtkEmojiCompletion *completion = data;
 
   emoji_activated (CTK_WIDGET (row), completion);
 }
 
 static void
-child_activated (GtkFlowBox      *box,
-                 GtkFlowBoxChild *child,
+child_activated (CtkFlowBox      *box,
+                 CtkFlowBoxChild *child,
                  gpointer         data)
 {
-  GtkEmojiCompletion *completion = data;
+  CtkEmojiCompletion *completion = data;
 
   emoji_activated (CTK_WIDGET (child), completion);
 }
 
 static void
-move_active_row (GtkEmojiCompletion *completion,
+move_active_row (CtkEmojiCompletion *completion,
                  int                 direction)
 {
-  GtkWidget *child;
-  GtkWidget *base;
+  CtkWidget *child;
+  CtkWidget *base;
   GList *children, *l, *active, *last;
 
   active = NULL;
@@ -229,7 +229,7 @@ move_active_row (GtkEmojiCompletion *completion,
 }
 
 static void
-activate_active_row (GtkEmojiCompletion *completion)
+activate_active_row (CtkEmojiCompletion *completion)
 {
   if (CTK_IS_FLOW_BOX_CHILD (completion->active_variation))
     emoji_activated (completion->active_variation, completion);
@@ -238,12 +238,12 @@ activate_active_row (GtkEmojiCompletion *completion)
 }
 
 static void
-show_variations (GtkEmojiCompletion *completion,
-                 GtkWidget          *row,
+show_variations (CtkEmojiCompletion *completion,
+                 CtkWidget          *row,
                  gboolean            visible)
 {
-  GtkWidget *stack;
-  GtkWidget *box;
+  CtkWidget *stack;
+  CtkWidget *box;
   gboolean is_visible;
 
   if (!row)
@@ -272,13 +272,13 @@ show_variations (GtkEmojiCompletion *completion,
 }
 
 static gboolean
-move_active_variation (GtkEmojiCompletion *completion,
+move_active_variation (CtkEmojiCompletion *completion,
                        int                 direction)
 {
-  GtkWidget *base;
-  GtkWidget *stack;
-  GtkWidget *box;
-  GtkWidget *next;
+  CtkWidget *base;
+  CtkWidget *stack;
+  CtkWidget *box;
+  CtkWidget *next;
   GList *children, *l, *active;
 
   if (!completion->active)
@@ -326,9 +326,9 @@ move_active_variation (GtkEmojiCompletion *completion,
 }
 
 static gboolean
-entry_key_press (GtkEntry           *entry,
+entry_key_press (CtkEntry           *entry,
                  GdkEventKey        *event,
-                 GtkEmojiCompletion *completion)
+                 CtkEmojiCompletion *completion)
 {
   guint keyval;
 
@@ -397,9 +397,9 @@ entry_key_press (GtkEntry           *entry,
 }
 
 static gboolean
-entry_focus_out (GtkWidget *entry,
+entry_focus_out (CtkWidget *entry,
                  GParamSpec *pspec,
-                 GtkEmojiCompletion *completion)
+                 CtkEmojiCompletion *completion)
 {
   if (!ctk_widget_has_focus (entry))
     ctk_popover_popdown (CTK_POPOVER (completion));
@@ -407,8 +407,8 @@ entry_focus_out (GtkWidget *entry,
 }
 
 static void
-connect_signals (GtkEmojiCompletion *completion,
-                 GtkEntry           *entry)
+connect_signals (CtkEmojiCompletion *completion,
+                 CtkEntry           *entry)
 {
   completion->entry = entry;
 
@@ -418,7 +418,7 @@ connect_signals (GtkEmojiCompletion *completion,
 }
 
 static void
-disconnect_signals (GtkEmojiCompletion *completion)
+disconnect_signals (CtkEmojiCompletion *completion)
 {
   g_signal_handlers_disconnect_by_func (completion->entry, entry_changed, completion);
   g_signal_handlers_disconnect_by_func (completion->entry, entry_key_press, completion);
@@ -479,12 +479,12 @@ get_text (GVariant *emoji_data,
 }
 
 static void
-add_emoji_variation (GtkWidget *box,
+add_emoji_variation (CtkWidget *box,
                      GVariant  *emoji_data,
                      gunichar   modifier)
 {
-  GtkWidget *child;
-  GtkWidget *label;
+  CtkWidget *child;
+  CtkWidget *label;
   PangoAttrList *attrs;
   char text[64];
 
@@ -512,17 +512,17 @@ add_emoji_variation (GtkWidget *box,
 }
 
 static void
-add_emoji (GtkWidget          *list,
+add_emoji (CtkWidget          *list,
            GVariant           *emoji_data,
-           GtkEmojiCompletion *completion)
+           CtkEmojiCompletion *completion)
 {
-  GtkWidget *child;
-  GtkWidget *label;
-  GtkWidget *box;
+  CtkWidget *child;
+  CtkWidget *label;
+  CtkWidget *box;
   PangoAttrList *attrs;
   char text[64];
   const char *shortname;
-  GtkWidget *stack;
+  CtkWidget *stack;
   gunichar modifier;
 
   get_text (emoji_data, 0, text, 64);
@@ -583,7 +583,7 @@ add_emoji (GtkWidget          *list,
 }
 
 static int
-populate_completion (GtkEmojiCompletion *completion,
+populate_completion (CtkEmojiCompletion *completion,
                      const char          *text,
                      guint                offset)
 {
@@ -641,13 +641,13 @@ populate_completion (GtkEmojiCompletion *completion,
 }
 
 static void
-long_pressed_cb (GtkGesture *gesture,
+long_pressed_cb (CtkGesture *gesture,
                  double      x,
                  double      y,
                  gpointer    data)
 {
-  GtkEmojiCompletion *completion = data;
-  GtkWidget *row;
+  CtkEmojiCompletion *completion = data;
+  CtkWidget *row;
 
   row = CTK_WIDGET (ctk_list_box_get_row_at_y (CTK_LIST_BOX (completion->list), y));
   if (!row)
@@ -657,7 +657,7 @@ long_pressed_cb (GtkGesture *gesture,
 }
 
 static void
-ctk_emoji_completion_init (GtkEmojiCompletion *completion)
+ctk_emoji_completion_init (CtkEmojiCompletion *completion)
 {
   GBytes *bytes = NULL;
 
@@ -672,24 +672,24 @@ ctk_emoji_completion_init (GtkEmojiCompletion *completion)
 }
 
 static void
-ctk_emoji_completion_class_init (GtkEmojiCompletionClass *klass)
+ctk_emoji_completion_class_init (CtkEmojiCompletionClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->finalize = ctk_emoji_completion_finalize;
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkemojicompletion.ui");
 
-  ctk_widget_class_bind_template_child (widget_class, GtkEmojiCompletion, list);
+  ctk_widget_class_bind_template_child (widget_class, CtkEmojiCompletion, list);
 
   ctk_widget_class_bind_template_callback (widget_class, row_activated);
 }
 
-GtkWidget *
-ctk_emoji_completion_new (GtkEntry *entry)
+CtkWidget *
+ctk_emoji_completion_new (CtkEntry *entry)
 {
-  GtkEmojiCompletion *completion;
+  CtkEmojiCompletion *completion;
 
   completion = CTK_EMOJI_COMPLETION (g_object_new (CTK_TYPE_EMOJI_COMPLETION,
                                                    "relative-to", entry,

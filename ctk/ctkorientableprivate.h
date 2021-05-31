@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-void _ctk_orientable_set_style_classes (GtkOrientable *orientable);
+void _ctk_orientable_set_style_classes (CtkOrientable *orientable);
 
 G_END_DECLS
 

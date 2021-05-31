@@ -25,28 +25,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_IMAGE_SCALED           (_ctk_css_image_scaled_get_type ())
-#define CTK_CSS_IMAGE_SCALED(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaled))
-#define CTK_CSS_IMAGE_SCALED_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaledClass))
+#define CTK_CSS_IMAGE_SCALED(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_SCALED, CtkCssImageScaled))
+#define CTK_CSS_IMAGE_SCALED_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_SCALED, CtkCssImageScaledClass))
 #define CTK_IS_CSS_IMAGE_SCALED(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_SCALED))
 #define CTK_IS_CSS_IMAGE_SCALED_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_SCALED))
-#define CTK_CSS_IMAGE_SCALED_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaledClass))
+#define CTK_CSS_IMAGE_SCALED_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_SCALED, CtkCssImageScaledClass))
 
-typedef struct _GtkCssImageScaled           GtkCssImageScaled;
-typedef struct _GtkCssImageScaledClass      GtkCssImageScaledClass;
+typedef struct _CtkCssImageScaled           CtkCssImageScaled;
+typedef struct _CtkCssImageScaledClass      CtkCssImageScaledClass;
 
-struct _GtkCssImageScaled
+struct _CtkCssImageScaled
 {
-  GtkCssImage parent;
+  CtkCssImage parent;
 
-  GtkCssImage **images;
+  CtkCssImage **images;
   int          n_images;
 
   int          scale;
 };
 
-struct _GtkCssImageScaledClass
+struct _CtkCssImageScaledClass
 {
-  GtkCssImageClass parent_class;
+  CtkCssImageClass parent_class;
 };
 
 GType          _ctk_css_image_scaled_get_type             (void) G_GNUC_CONST;

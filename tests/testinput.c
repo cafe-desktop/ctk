@@ -42,7 +42,7 @@ static GdkDevice *current_device;
 
 /* Erase the old cursor, and/or draw a new one, if necessary */
 static void
-update_cursor (GtkWidget *widget,  gdouble x, gdouble y)
+update_cursor (CtkWidget *widget,  gdouble x, gdouble y)
 {
   static gint cursor_present = 0;
   gint state = !gdk_device_get_has_cursor (current_device) && cursor_proximity;
@@ -83,9 +83,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 /* Create a new backing surface of the appropriate size */
 static gint
-configure_event (GtkWidget *widget, GdkEventConfigure *event)
+configure_event (CtkWidget *widget, GdkEventConfigure *event)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   cairo_t *cr;
 
   if (surface)
@@ -109,7 +109,7 @@ configure_event (GtkWidget *widget, GdkEventConfigure *event)
 
 /* Refill the screen from the backing surface */
 static gboolean
-draw (GtkWidget *widget, cairo_t *cr)
+draw (CtkWidget *widget, cairo_t *cr)
 {
   cairo_set_source_surface (cr, surface, 0, 0);
   cairo_paint (cr);
@@ -120,7 +120,7 @@ draw (GtkWidget *widget, cairo_t *cr)
 /* Draw a rectangle on the screen, size depending on pressure,
    and color on the type of device */
 static void
-draw_brush (GtkWidget *widget, GdkInputSource source,
+draw_brush (CtkWidget *widget, GdkInputSource source,
 	    gdouble x, gdouble y, gdouble pressure)
 {
   GdkRGBA color;
@@ -182,7 +182,7 @@ print_axes (GdkDevice *device, gdouble *axes)
 }
 
 static gint
-button_press_event (GtkWidget *widget, GdkEventButton *event)
+button_press_event (CtkWidget *widget, GdkEventButton *event)
 {
   current_device = event->device;
   cursor_proximity = TRUE;
@@ -206,7 +206,7 @@ button_press_event (GtkWidget *widget, GdkEventButton *event)
 }
 
 static gint
-key_press_event (GtkWidget *widget, GdkEventKey *event)
+key_press_event (CtkWidget *widget, GdkEventKey *event)
 {
   if ((event->keyval >= 0x20) && (event->keyval <= 0xFF))
     printf("I got a %c\n", event->keyval);
@@ -217,7 +217,7 @@ key_press_event (GtkWidget *widget, GdkEventKey *event)
 }
 
 static gint
-motion_notify_event (GtkWidget *widget, GdkEventMotion *event)
+motion_notify_event (CtkWidget *widget, GdkEventMotion *event)
 {
   GdkTimeCoord **events;
   gint n_events;
@@ -269,7 +269,7 @@ motion_notify_event (GtkWidget *widget, GdkEventMotion *event)
    cursor */
 
 static gint
-proximity_out_event (GtkWidget *widget, GdkEventProximity *event)
+proximity_out_event (CtkWidget *widget, GdkEventProximity *event)
 {
   cursor_proximity = FALSE;
   update_cursor (widget, cursor_x, cursor_y);
@@ -277,7 +277,7 @@ proximity_out_event (GtkWidget *widget, GdkEventProximity *event)
 }
 
 static gint
-leave_notify_event (GtkWidget *widget, GdkEventCrossing *event)
+leave_notify_event (CtkWidget *widget, GdkEventCrossing *event)
 {
   cursor_proximity = FALSE;
   update_cursor (widget, cursor_x, cursor_y);
@@ -295,10 +295,10 @@ main (int argc, char *argv[])
 {
   GList *devices, *d;
   GdkEventMask event_mask;
-  GtkWidget *window;
-  GtkWidget *drawing_area;
-  GtkWidget *vbox;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *drawing_area;
+  CtkWidget *vbox;
+  CtkWidget *button;
   GdkWindow *gdk_win;
   GdkSeat *seat;
 

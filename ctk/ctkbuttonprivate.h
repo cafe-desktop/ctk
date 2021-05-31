@@ -27,19 +27,19 @@
 G_BEGIN_DECLS
 
 
-struct _GtkButtonPrivate
+struct _CtkButtonPrivate
 {
-  GtkAction             *action;
-  GtkWidget             *image;
-  GtkActionHelper       *action_helper;
-  GtkCssGadget          *gadget;
+  CtkAction             *action;
+  CtkWidget             *image;
+  CtkActionHelper       *action_helper;
+  CtkCssGadget          *gadget;
 
   GdkDevice             *grab_keyboard;
   GdkWindow             *event_window;
 
   gchar                 *label_text;
 
-  GtkGesture            *gesture;
+  CtkGesture            *gesture;
 
   gfloat                 xalign;
   gfloat                 yalign;
@@ -49,7 +49,7 @@ struct _GtkButtonPrivate
 
   guint                  activate_timeout;
 
-  GtkPositionType        image_position;
+  CtkPositionType        image_position;
 
   guint          align_set             : 1;
   guint          button_down           : 1;

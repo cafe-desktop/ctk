@@ -1,4 +1,4 @@
-/* GtkPrinterCupsCups
+/* CtkPrinterCupsCups
  * Copyright (C) 2006 John (J5) Palmieri  <johnp@redhat.com>
  * Copyright (C) 2011 Richard Hughes <rhughes@redhat.com>
  *
@@ -32,11 +32,11 @@ enum {
   PROP_PROFILE_TITLE
 };
 
-static void ctk_printer_cups_init       (GtkPrinterCups      *printer);
-static void ctk_printer_cups_class_init (GtkPrinterCupsClass *class);
+static void ctk_printer_cups_init       (CtkPrinterCups      *printer);
+static void ctk_printer_cups_class_init (CtkPrinterCupsClass *class);
 static void ctk_printer_cups_finalize   (GObject             *object);
 
-static GtkPrinterClass *ctk_printer_cups_parent_class;
+static CtkPrinterClass *ctk_printer_cups_parent_class;
 static GType ctk_printer_cups_type = 0;
 
 static void ctk_printer_cups_set_property (GObject      *object,
@@ -53,20 +53,20 @@ ctk_printer_cups_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (GtkPrinterCupsClass),
+    sizeof (CtkPrinterCupsClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
     (GClassInitFunc) ctk_printer_cups_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
-    sizeof (GtkPrinterCups),
+    sizeof (CtkPrinterCups),
     0,              /* n_preallocs */
     (GInstanceInitFunc) ctk_printer_cups_init,
   };
 
  ctk_printer_cups_type = g_type_module_register_type (module,
                                                       CTK_TYPE_PRINTER,
-                                                      "GtkPrinterCups",
+                                                      "CtkPrinterCups",
                                                       &object_info, 0);
 }
 
@@ -77,7 +77,7 @@ ctk_printer_cups_get_type (void)
 }
 
 static void
-ctk_printer_cups_class_init (GtkPrinterCupsClass *class)
+ctk_printer_cups_class_init (CtkPrinterCupsClass *class)
 {
   GObjectClass *object_class = (GObjectClass *) class;
 
@@ -97,7 +97,7 @@ ctk_printer_cups_class_init (GtkPrinterCupsClass *class)
 }
 
 static void
-ctk_printer_cups_init (GtkPrinterCups *printer)
+ctk_printer_cups_init (CtkPrinterCups *printer)
 {
   printer->device_uri = NULL;
   printer->original_device_uri = NULL;
@@ -147,7 +147,7 @@ ctk_printer_cups_init (GtkPrinterCups *printer)
 static void
 ctk_printer_cups_finalize (GObject *object)
 {
-  GtkPrinterCups *printer;
+  CtkPrinterCups *printer;
 
   g_return_if_fail (object != NULL);
 
@@ -233,7 +233,7 @@ ctk_printer_cups_get_property (GObject    *object,
                                GParamSpec *pspec)
 {
 #ifdef HAVE_COLORD
-  GtkPrinterCups *printer = CTK_PRINTER_CUPS (object);
+  CtkPrinterCups *printer = CTK_PRINTER_CUPS (object);
 #endif
 
   switch (prop_id)
@@ -257,7 +257,7 @@ ctk_printer_cups_get_property (GObject    *object,
 #ifdef HAVE_COLORD
 
 static void
-colord_update_ui_from_settings (GtkPrinterCups *printer)
+colord_update_ui_from_settings (CtkPrinterCups *printer)
 {
   const gchar *title = NULL;
 
@@ -317,7 +317,7 @@ colord_client_profile_connect_cb (GObject *source_object,
 {
   gboolean ret;
   GError *error = NULL;
-  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
+  CtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
 
   ret = cd_profile_connect_finish (CD_PROFILE (source_object),
                                    res,
@@ -340,7 +340,7 @@ colord_client_device_get_profile_for_qualifiers_cb (GObject *source_object,
                                                     GAsyncResult *res,
                                                     gpointer user_data)
 {
-  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
+  CtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   GError *error = NULL;
 
   printer->colord_profile = cd_device_get_profile_for_qualifiers_finish (printer->colord_device,
@@ -369,13 +369,13 @@ out:
 }
 
 void
-ctk_printer_cups_update_settings (GtkPrinterCups *printer,
-                                  GtkPrintSettings *settings,
-                                  GtkPrinterOptionSet *set)
+ctk_printer_cups_update_settings (CtkPrinterCups *printer,
+                                  CtkPrintSettings *settings,
+                                  CtkPrinterOptionSet *set)
 {
   gchar *qualifier = NULL;
   gchar **qualifiers = NULL;
-  GtkPrinterOption *option;
+  CtkPrinterOption *option;
   const gchar *format[3];
 
   /* nothing set yet */
@@ -441,7 +441,7 @@ colord_client_device_connect_cb (GObject *source_object,
                                  GAsyncResult *res,
                                  gpointer user_data)
 {
-  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
+  CtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   gboolean ret;
   GError *error = NULL;
 
@@ -466,7 +466,7 @@ colord_client_find_device_cb (GObject *source_object,
                               GAsyncResult *res,
                               gpointer user_data)
 {
-  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
+  CtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   GError *error = NULL;
 
   /* get the new device */
@@ -495,7 +495,7 @@ out:
 }
 
 static void
-colord_update_device (GtkPrinterCups *printer)
+colord_update_device (CtkPrinterCups *printer)
 {
   gchar *colord_device_id = NULL;
 
@@ -544,7 +544,7 @@ colord_client_connect_cb (GObject *source_object,
 {
   gboolean ret;
   GError *error = NULL;
-  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
+  CtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   static gboolean colord_warned = FALSE;
 
   ret = cd_client_connect_finish (CD_CLIENT (source_object),
@@ -566,7 +566,7 @@ colord_client_connect_cb (GObject *source_object,
 }
 
 static void
-colord_printer_details_aquired_cb (GtkPrinterCups *printer,
+colord_printer_details_aquired_cb (CtkPrinterCups *printer,
                                    gboolean success,
                                    gpointer user_data)
 {
@@ -579,20 +579,20 @@ colord_printer_details_aquired_cb (GtkPrinterCups *printer,
 /**
  * ctk_printer_cups_new:
  *
- * Creates a new #GtkPrinterCups.
+ * Creates a new #CtkPrinterCups.
  *
- * Returns: a new #GtkPrinterCups
+ * Returns: a new #CtkPrinterCups
  *
  * Since: 2.10
  **/
-GtkPrinterCups *
+CtkPrinterCups *
 ctk_printer_cups_new (const char      *name,
-                      GtkPrintBackend *backend,
+                      CtkPrintBackend *backend,
                       gpointer         colord_client)
 {
   GObject *result;
   gboolean accepts_pdf;
-  GtkPrinterCups *printer;
+  CtkPrinterCups *printer;
 
 #if (CUPS_VERSION_MAJOR == 1 && CUPS_VERSION_MINOR >= 2) || CUPS_VERSION_MAJOR > 1
   accepts_pdf = TRUE;
@@ -637,13 +637,13 @@ ctk_printer_cups_new (const char      *name,
 }
 
 ppd_file_t *
-ctk_printer_cups_get_ppd (GtkPrinterCups *printer)
+ctk_printer_cups_get_ppd (CtkPrinterCups *printer)
 {
   return printer->ppd_file;
 }
 
 const gchar *
-ctk_printer_cups_get_ppd_name (GtkPrinterCups  *printer)
+ctk_printer_cups_get_ppd_name (CtkPrinterCups  *printer)
 {
   const gchar *result;
 

@@ -23,21 +23,21 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 typedef struct {
   GIcon *numerable;
-  GtkWidget *image;
+  CtkWidget *image;
   gboolean odd;
-  GtkIconSize size;
+  CtkIconSize size;
 } PackData;
 
 static void
-button_clicked_cb (GtkButton *b,
+button_clicked_cb (CtkButton *b,
                    gpointer user_data)
 {
   PackData *d = user_data;
-  GtkCssProvider *provider;
-  GtkStyleContext *style;
+  CtkCssProvider *provider;
+  CtkStyleContext *style;
   GError *error = NULL;
   gchar *data, *bg_str, *grad1, *grad2;
-  const gchar data_format[] = "GtkNumerableIcon { background-color: %s; color: #000000;"
+  const gchar data_format[] = "CtkNumerableIcon { background-color: %s; color: #000000;"
     "background-image: -ctk-gradient (linear, 0 0, 1 1, from(%s), to(%s));"
     "font: Monospace 12;"
     /* "background-image: url('apple-red.png');" */
@@ -80,7 +80,7 @@ button_clicked_cb (GtkButton *b,
 }
 
 static void
-refresh_cb (GtkWidget *button,
+refresh_cb (CtkWidget *button,
             gpointer   user_data)
 {
   PackData *d = user_data;
@@ -89,11 +89,11 @@ refresh_cb (GtkWidget *button,
 }
 
 static void
-pack_numerable (GtkWidget *parent,
-                GtkIconSize size)
+pack_numerable (CtkWidget *parent,
+                CtkIconSize size)
 {
   PackData *d;
-  GtkWidget *vbox, *label, *image, *button;
+  CtkWidget *vbox, *label, *image, *button;
   gchar *str;
   GIcon *icon, *numerable;
 
@@ -137,7 +137,7 @@ int
 main (int argc,
       char **argv)
 {
-  GtkWidget *hbox, *toplevel;
+  CtkWidget *hbox, *toplevel;
 
   ctk_init (&argc, &argv);
 

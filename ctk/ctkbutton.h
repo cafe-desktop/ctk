@@ -37,26 +37,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_BUTTON                 (ctk_button_get_type ())
-#define CTK_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BUTTON, GtkButton))
-#define CTK_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_BUTTON, GtkButtonClass))
+#define CTK_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BUTTON, CtkButton))
+#define CTK_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_BUTTON, CtkButtonClass))
 #define CTK_IS_BUTTON(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BUTTON))
 #define CTK_IS_BUTTON_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_BUTTON))
-#define CTK_BUTTON_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BUTTON, GtkButtonClass))
+#define CTK_BUTTON_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BUTTON, CtkButtonClass))
 
-typedef struct _GtkButton             GtkButton;
-typedef struct _GtkButtonPrivate      GtkButtonPrivate;
-typedef struct _GtkButtonClass        GtkButtonClass;
+typedef struct _CtkButton             CtkButton;
+typedef struct _CtkButtonPrivate      CtkButtonPrivate;
+typedef struct _CtkButtonClass        CtkButtonClass;
 
-struct _GtkButton
+struct _CtkButton
 {
   /*< private >*/
-  GtkBin bin;
+  CtkBin bin;
 
-  GtkButtonPrivate *priv;
+  CtkButtonPrivate *priv;
 };
 
 /**
- * GtkButtonClass:
+ * CtkButtonClass:
  * @parent_class: The parent class.
  * @pressed: Signal emitted when the button is pressed. Deprecated: 2.8.
  * @released: Signal emitted when the button is released. Deprecated: 2.8.
@@ -67,18 +67,18 @@ struct _GtkButton
  *    release. Applications should never connect to this signal, but use
  *    the @clicked signal.
  */
-struct _GtkButtonClass
+struct _CtkButtonClass
 {
-  GtkBinClass        parent_class;
+  CtkBinClass        parent_class;
 
   /*< public >*/
 
-  void (* pressed)  (GtkButton *button);
-  void (* released) (GtkButton *button);
-  void (* clicked)  (GtkButton *button);
-  void (* enter)    (GtkButton *button);
-  void (* leave)    (GtkButton *button);
-  void (* activate) (GtkButton *button);
+  void (* pressed)  (CtkButton *button);
+  void (* released) (CtkButton *button);
+  void (* clicked)  (CtkButton *button);
+  void (* enter)    (CtkButton *button);
+  void (* leave)    (CtkButton *button);
+  void (* activate) (CtkButton *button);
 
   /*< private >*/
 
@@ -93,78 +93,78 @@ struct _GtkButtonClass
 GDK_AVAILABLE_IN_ALL
 GType          ctk_button_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     ctk_button_new               (void);
+CtkWidget*     ctk_button_new               (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     ctk_button_new_with_label    (const gchar    *label);
+CtkWidget*     ctk_button_new_with_label    (const gchar    *label);
 GDK_AVAILABLE_IN_3_10
-GtkWidget*     ctk_button_new_from_icon_name (const gchar    *icon_name,
-					      GtkIconSize     size);
+CtkWidget*     ctk_button_new_from_icon_name (const gchar    *icon_name,
+					      CtkIconSize     size);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_button_new_with_label)
-GtkWidget*     ctk_button_new_from_stock    (const gchar    *stock_id);
+CtkWidget*     ctk_button_new_from_stock    (const gchar    *stock_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     ctk_button_new_with_mnemonic (const gchar    *label);
+CtkWidget*     ctk_button_new_with_mnemonic (const gchar    *label);
 GDK_AVAILABLE_IN_ALL
-void           ctk_button_clicked           (GtkButton      *button);
+void           ctk_button_clicked           (CtkButton      *button);
 GDK_DEPRECATED
-void           ctk_button_pressed           (GtkButton      *button);
+void           ctk_button_pressed           (CtkButton      *button);
 GDK_DEPRECATED
-void           ctk_button_released          (GtkButton      *button);
+void           ctk_button_released          (CtkButton      *button);
 GDK_DEPRECATED
-void           ctk_button_enter             (GtkButton      *button);
+void           ctk_button_enter             (CtkButton      *button);
 GDK_DEPRECATED
-void           ctk_button_leave             (GtkButton      *button);
+void           ctk_button_leave             (CtkButton      *button);
 
 GDK_AVAILABLE_IN_ALL
-void                  ctk_button_set_relief         (GtkButton      *button,
-						     GtkReliefStyle  relief);
+void                  ctk_button_set_relief         (CtkButton      *button,
+						     CtkReliefStyle  relief);
 GDK_AVAILABLE_IN_ALL
-GtkReliefStyle        ctk_button_get_relief         (GtkButton      *button);
+CtkReliefStyle        ctk_button_get_relief         (CtkButton      *button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_button_set_label          (GtkButton      *button,
+void                  ctk_button_set_label          (CtkButton      *button,
 						     const gchar    *label);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_button_get_label          (GtkButton      *button);
+const gchar *         ctk_button_get_label          (CtkButton      *button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_button_set_use_underline  (GtkButton      *button,
+void                  ctk_button_set_use_underline  (CtkButton      *button,
 						     gboolean        use_underline);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_button_get_use_underline  (GtkButton      *button);
+gboolean              ctk_button_get_use_underline  (CtkButton      *button);
 GDK_DEPRECATED_IN_3_10
-void                  ctk_button_set_use_stock      (GtkButton      *button,
+void                  ctk_button_set_use_stock      (CtkButton      *button,
 						     gboolean        use_stock);
 GDK_DEPRECATED_IN_3_10
-gboolean              ctk_button_get_use_stock      (GtkButton      *button);
+gboolean              ctk_button_get_use_stock      (CtkButton      *button);
 GDK_DEPRECATED_IN_3_20_FOR(ctk_widget_set_focus_on_click)
-void                  ctk_button_set_focus_on_click (GtkButton      *button,
+void                  ctk_button_set_focus_on_click (CtkButton      *button,
 						     gboolean        focus_on_click);
 GDK_DEPRECATED_IN_3_20_FOR(ctk_widget_get_focus_on_click)
-gboolean              ctk_button_get_focus_on_click (GtkButton      *button);
+gboolean              ctk_button_get_focus_on_click (CtkButton      *button);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_button_set_alignment      (GtkButton      *button,
+void                  ctk_button_set_alignment      (CtkButton      *button,
 						     gfloat          xalign,
 						     gfloat          yalign);
 GDK_DEPRECATED_IN_3_14
-void                  ctk_button_get_alignment      (GtkButton      *button,
+void                  ctk_button_get_alignment      (CtkButton      *button,
 						     gfloat         *xalign,
 						     gfloat         *yalign);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_button_set_image          (GtkButton      *button,
-					             GtkWidget      *image);
+void                  ctk_button_set_image          (CtkButton      *button,
+					             CtkWidget      *image);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*            ctk_button_get_image          (GtkButton      *button);
+CtkWidget*            ctk_button_get_image          (CtkButton      *button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_button_set_image_position (GtkButton      *button,
-						     GtkPositionType position);
+void                  ctk_button_set_image_position (CtkButton      *button,
+						     CtkPositionType position);
 GDK_AVAILABLE_IN_ALL
-GtkPositionType       ctk_button_get_image_position (GtkButton      *button);
+CtkPositionType       ctk_button_get_image_position (CtkButton      *button);
 GDK_AVAILABLE_IN_3_6
-void                  ctk_button_set_always_show_image (GtkButton   *button,
+void                  ctk_button_set_always_show_image (CtkButton   *button,
                                                         gboolean     always_show);
 GDK_AVAILABLE_IN_3_6
-gboolean              ctk_button_get_always_show_image (GtkButton   *button);
+gboolean              ctk_button_get_always_show_image (CtkButton   *button);
 
 GDK_AVAILABLE_IN_ALL
-GdkWindow*            ctk_button_get_event_window   (GtkButton      *button);
+GdkWindow*            ctk_button_get_event_window   (CtkButton      *button);
 
 
 G_END_DECLS

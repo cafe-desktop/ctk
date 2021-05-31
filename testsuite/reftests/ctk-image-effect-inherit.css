@@ -1,11 +1,11 @@
-GtkBox > :nth-child(1) {
+CtkBox > :nth-child(1) {
   -ctk-icon-effect: none;
 }
 
-GtkBox > :nth-child(2) {
+CtkBox > :nth-child(2) {
   -ctk-icon-effect: highlight;
 }
 
-GtkBox > :nth-child(3) {
+CtkBox > :nth-child(3) {
   -ctk-icon-effect: dim;
 }

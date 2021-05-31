@@ -4,14 +4,14 @@
 /* test that margins and non-zero allocation x/y
  * of the main widget are handled correctly
  */
-static GtkWidget *
+static CtkWidget *
 test_nonzerox (void)
 {
-  GtkWidget *win;
-  GtkWidget *grid;
-  GtkWidget *overlay;
-  GtkWidget *text;
-  GtkWidget *child;
+  CtkWidget *win;
+  CtkWidget *grid;
+  CtkWidget *overlay;
+  CtkWidget *text;
+  CtkWidget *child;
   GdkRGBA color;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -54,14 +54,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static gboolean
-get_child_position (GtkOverlay    *overlay,
-                    GtkWidget     *widget,
-                    GtkAllocation *alloc,
-                    GtkWidget     *relative)
+get_child_position (CtkOverlay    *overlay,
+                    CtkWidget     *widget,
+                    CtkAllocation *alloc,
+                    CtkWidget     *relative)
 {
-  GtkRequisition req;
-  GtkWidget *child;
-  GtkAllocation main_alloc;
+  CtkRequisition req;
+  CtkWidget *child;
+  CtkAllocation main_alloc;
   gint x, y;
 
   child = ctk_bin_get_child (CTK_BIN (overlay));
@@ -88,14 +88,14 @@ get_child_position (GtkOverlay    *overlay,
 }
 
 /* test custom positioning */
-static GtkWidget *
+static CtkWidget *
 test_relative (void)
 {
-  GtkWidget *win;
-  GtkWidget *grid;
-  GtkWidget *overlay;
-  GtkWidget *text;
-  GtkWidget *child;
+  CtkWidget *win;
+  CtkWidget *grid;
+  CtkWidget *overlay;
+  CtkWidget *text;
+  CtkWidget *child;
   GdkRGBA color;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -140,13 +140,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /* test CTK_ALIGN_FILL handling */
-static GtkWidget *
+static CtkWidget *
 test_fullwidth (void)
 {
-  GtkWidget *win;
-  GtkWidget *overlay;
-  GtkWidget *text;
-  GtkWidget *child;
+  CtkWidget *win;
+  CtkWidget *overlay;
+  CtkWidget *text;
+  CtkWidget *child;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (win), "Full-width");
@@ -170,15 +170,15 @@ test_fullwidth (void)
 }
 
 /* test that scrolling works as expected */
-static GtkWidget *
+static CtkWidget *
 test_scrolling (void)
 {
-  GtkWidget *win;
-  GtkWidget *overlay;
-  GtkWidget *sw;
-  GtkWidget *text;
-  GtkWidget *child;
-  GtkTextBuffer *buffer;
+  CtkWidget *win;
+  CtkWidget *overlay;
+  CtkWidget *sw;
+  CtkWidget *text;
+  CtkWidget *child;
+  CtkTextBuffer *buffer;
   gchar *contents;
   gsize len;
 
@@ -219,12 +219,12 @@ test_scrolling (void)
 
 static const gchar *buffer =
 "<interface>"
-"  <object class='GtkWindow' id='window'>"
-"    <property name='title'>GtkBuilder support</property>"
+"  <object class='CtkWindow' id='window'>"
+"    <property name='title'>CtkBuilder support</property>"
 "    <child>"
-"      <object class='GtkOverlay' id='overlay'>"
+"      <object class='CtkOverlay' id='overlay'>"
 "        <child type='overlay'>"
-"          <object class='GtkLabel' id='overlay-child'>"
+"          <object class='CtkLabel' id='overlay-child'>"
 "            <property name='label'>Witty remark goes here</property>"
 "            <property name='halign'>end</property>"
 "            <property name='valign'>end</property>"
@@ -232,9 +232,9 @@ static const gchar *buffer =
 "          </object>"
 "        </child>"
 "        <child>"
-"          <object class='GtkGrid' id='grid'>"
+"          <object class='CtkGrid' id='grid'>"
 "            <child>"
-"              <object class='GtkLabel' id='left'>"
+"              <object class='CtkLabel' id='left'>"
 "                <property name='label'>Left</property>"
 "              </object>"
 "              <packing>"
@@ -243,7 +243,7 @@ static const gchar *buffer =
 "              </packing>"
 "            </child>"
 "            <child>"
-"              <object class='GtkLabel' id='right'>"
+"              <object class='CtkLabel' id='right'>"
 "                <property name='label'>Right</property>"
 "              </object>"
 "              <packing>"
@@ -252,7 +252,7 @@ static const gchar *buffer =
 "              </packing>"
 "            </child>"
 "            <child>"
-"              <object class='GtkTextView' id='text'>"
+"              <object class='CtkTextView' id='text'>"
 "                 <property name='width-request'>200</property>"
 "                 <property name='height-request'>200</property>"
 "                 <property name='hexpand'>True</property>"
@@ -270,12 +270,12 @@ static const gchar *buffer =
 "  </object>"
 "</interface>";
 
-/* test that overlays can be constructed with GtkBuilder */
-static GtkWidget *
+/* test that overlays can be constructed with CtkBuilder */
+static CtkWidget *
 test_builder (void)
 {
-  GtkBuilder *builder;
-  GtkWidget *win;
+  CtkBuilder *builder;
+  CtkWidget *win;
   GError *error;
 
   builder = ctk_builder_new ();
@@ -288,7 +288,7 @@ test_builder (void)
       return NULL;
     }
 
-  win = (GtkWidget *)ctk_builder_get_object (builder, "window");
+  win = (CtkWidget *)ctk_builder_get_object (builder, "window");
   g_object_ref (win);
 
   g_object_unref (builder);
@@ -297,7 +297,7 @@ test_builder (void)
 }
 
 static void
-on_enter (GtkWidget *overlay, GdkEventCrossing *event, GtkWidget *child)
+on_enter (CtkWidget *overlay, GdkEventCrossing *event, CtkWidget *child)
 {
   if (event->window != ctk_widget_get_window (child))
     return;
@@ -310,15 +310,15 @@ on_enter (GtkWidget *overlay, GdkEventCrossing *event, GtkWidget *child)
   ctk_widget_queue_resize (overlay);
 }
 
-static GtkWidget *
+static CtkWidget *
 test_chase (void)
 {
-  GtkWidget *win;
-  GtkWidget *overlay;
-  GtkWidget *sw;
-  GtkWidget *text;
-  GtkWidget *child;
-  GtkTextBuffer *buffer;
+  CtkWidget *win;
+  CtkWidget *overlay;
+  CtkWidget *sw;
+  CtkWidget *text;
+  CtkWidget *child;
+  CtkTextBuffer *buffer;
   gchar *contents;
   gsize len;
 
@@ -360,17 +360,17 @@ test_chase (void)
   return win;
 }
 
-static GtkWidget *
+static CtkWidget *
 test_stacking (void)
 {
-  GtkWidget *win;
-  GtkWidget *overlay;
-  GtkWidget *main_child;
-  GtkWidget *label;
-  GtkWidget *child;
-  GtkWidget *grid;
-  GtkWidget *check1;
-  GtkWidget *check2;
+  CtkWidget *win;
+  CtkWidget *overlay;
+  CtkWidget *main_child;
+  CtkWidget *label;
+  CtkWidget *child;
+  CtkWidget *grid;
+  CtkWidget *check1;
+  CtkWidget *check2;
   GdkRGBA color;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -410,15 +410,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   return win;
 }
 
-static GtkWidget *
+static CtkWidget *
 test_input_stacking (void)
 {
-  GtkWidget *win;
-  GtkWidget *overlay;
-  GtkWidget *label, *entry;
-  GtkWidget *grid;
-  GtkWidget *button;
-  GtkWidget *vbox;
+  CtkWidget *win;
+  CtkWidget *overlay;
+  CtkWidget *label, *entry;
+  CtkWidget *grid;
+  CtkWidget *button;
+  CtkWidget *vbox;
   int i,j;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -460,19 +460,19 @@ test_input_stacking (void)
 }
 
 static void
-reorder_overlay (GtkButton *button, GtkOverlay *overlay)
+reorder_overlay (CtkButton *button, CtkOverlay *overlay)
 {
   ctk_overlay_reorder_overlay (overlay, ctk_widget_get_parent (CTK_WIDGET (button)), -1);
 }
 
-static GtkWidget *
+static CtkWidget *
 test_child_order (void)
 {
-  GtkWidget *win;
-  GtkWidget *overlay;
-  GtkWidget *button;
-  GtkWidget *label;
-  GtkWidget *ebox;
+  CtkWidget *win;
+  CtkWidget *overlay;
+  CtkWidget *button;
+  CtkWidget *label;
+  CtkWidget *ebox;
   GdkRGBA color;
   int i;
 
@@ -526,15 +526,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *win1;
-  GtkWidget *win2;
-  GtkWidget *win3;
-  GtkWidget *win4;
-  GtkWidget *win5;
-  GtkWidget *win6;
-  GtkWidget *win7;
-  GtkWidget *win8;
-  GtkWidget *win9;
+  CtkWidget *win1;
+  CtkWidget *win2;
+  CtkWidget *win3;
+  CtkWidget *win4;
+  CtkWidget *win5;
+  CtkWidget *win6;
+  CtkWidget *win7;
+  CtkWidget *win8;
+  CtkWidget *win9;
 
   ctk_init (&argc, &argv);
 

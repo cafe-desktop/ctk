@@ -25,11 +25,11 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   ctk_css_palette_value_new_default       (void);
+CtkCssValue *   ctk_css_palette_value_new_default       (void);
 
-GtkCssValue *   ctk_css_palette_value_parse             (GtkCssParser        *parser);
+CtkCssValue *   ctk_css_palette_value_parse             (CtkCssParser        *parser);
 
-const GdkRGBA * ctk_css_palette_value_get_color         (GtkCssValue         *value,
+const GdkRGBA * ctk_css_palette_value_get_color         (CtkCssValue         *value,
                                                          const char          *color_name);
 
 G_END_DECLS

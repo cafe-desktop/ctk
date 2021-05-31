@@ -1,11 +1,11 @@
 #include <ctk/ctk.h>
 
 static gboolean
-da_draw (GtkWidget *widget,
+da_draw (CtkWidget *widget,
          cairo_t   *cr,
          gpointer   user_data)
 {
-  GtkOffscreenWindow *offscreen = (GtkOffscreenWindow *)user_data;
+  CtkOffscreenWindow *offscreen = (CtkOffscreenWindow *)user_data;
 
   cairo_set_source_surface (cr,
                             ctk_offscreen_window_get_surface (offscreen),
@@ -16,9 +16,9 @@ da_draw (GtkWidget *widget,
 }
 
 static gboolean
-offscreen_damage (GtkWidget      *widget,
+offscreen_damage (CtkWidget      *widget,
                   GdkEventExpose *event,
-                  GtkWidget      *da)
+                  CtkWidget      *da)
 {
   ctk_widget_queue_draw (da);
 
@@ -26,7 +26,7 @@ offscreen_damage (GtkWidget      *widget,
 }
 
 static gboolean
-da_button_press (GtkWidget *area, GdkEventButton *event, GtkWidget *button)
+da_button_press (CtkWidget *area, GdkEventButton *event, CtkWidget *button)
 {
   ctk_widget_set_size_request (button, 150, 60);
   return TRUE;
@@ -35,10 +35,10 @@ da_button_press (GtkWidget *area, GdkEventButton *event, GtkWidget *button)
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *button;
-  GtkWidget *offscreen;
-  GtkWidget *da;
+  CtkWidget *window;
+  CtkWidget *button;
+  CtkWidget *offscreen;
+  CtkWidget *da;
 
   ctk_init (&argc, &argv);
 

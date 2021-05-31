@@ -36,23 +36,23 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctktearoffmenuitem
  * @Short_description: A menu item used to tear off and reattach its menu
- * @Title: GtkTearoffMenuItem
- * @See_also: #GtkMenu
+ * @Title: CtkTearoffMenuItem
+ * @See_also: #CtkMenu
  *
- * A #GtkTearoffMenuItem is a special #GtkMenuItem which is used to
+ * A #CtkTearoffMenuItem is a special #CtkMenuItem which is used to
  * tear off and reattach its menu.
  *
- * When its menu is shown normally, the #GtkTearoffMenuItem is drawn as a
+ * When its menu is shown normally, the #CtkTearoffMenuItem is drawn as a
  * dotted line indicating that the menu can be torn off.  Activating it
  * causes its menu to be torn off and displayed in its own window
  * as a tearoff menu.
  *
- * When its menu is shown as a tearoff menu, the #GtkTearoffMenuItem is drawn
+ * When its menu is shown as a tearoff menu, the #CtkTearoffMenuItem is drawn
  * as a dotted line which has a left pointing arrow graphic indicating that
  * the tearoff menu can be reattached.  Activating it will erase the tearoff
  * menu window.
  *
- * > #GtkTearoffMenuItem is deprecated and should not be used in newly
+ * > #CtkTearoffMenuItem is deprecated and should not be used in newly
  * > written code. Menus are not meant to be torn around.
  */
 
@@ -61,49 +61,49 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 #define TEAR_LENGTH 5
 #define BORDER_SPACING  3
 
-struct _GtkTearoffMenuItemPrivate
+struct _CtkTearoffMenuItemPrivate
 {
   guint torn_off : 1;
 };
 
-static void ctk_tearoff_menu_item_get_preferred_width  (GtkWidget      *widget,
+static void ctk_tearoff_menu_item_get_preferred_width  (CtkWidget      *widget,
                                                         gint           *minimum,
                                                         gint           *natural);
-static void ctk_tearoff_menu_item_get_preferred_height (GtkWidget      *widget,
+static void ctk_tearoff_menu_item_get_preferred_height (CtkWidget      *widget,
                                                         gint           *minimum,
                                                         gint           *natural);
-static gboolean ctk_tearoff_menu_item_draw             (GtkWidget      *widget,
+static gboolean ctk_tearoff_menu_item_draw             (CtkWidget      *widget,
                                                         cairo_t        *cr);
-static void ctk_tearoff_menu_item_activate             (GtkMenuItem    *menu_item);
-static void ctk_tearoff_menu_item_parent_set           (GtkWidget      *widget,
-                                                        GtkWidget      *previous);
+static void ctk_tearoff_menu_item_activate             (CtkMenuItem    *menu_item);
+static void ctk_tearoff_menu_item_parent_set           (CtkWidget      *widget,
+                                                        CtkWidget      *previous);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTearoffMenuItem, ctk_tearoff_menu_item, CTK_TYPE_MENU_ITEM)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkTearoffMenuItem, ctk_tearoff_menu_item, CTK_TYPE_MENU_ITEM)
 
 /**
  * ctk_tearoff_menu_item_new:
  *
- * Creates a new #GtkTearoffMenuItem.
+ * Creates a new #CtkTearoffMenuItem.
  *
- * Returns: a new #GtkTearoffMenuItem.
+ * Returns: a new #CtkTearoffMenuItem.
  *
- * Deprecated: 3.4: #GtkTearoffMenuItem is deprecated and should not be
+ * Deprecated: 3.4: #CtkTearoffMenuItem is deprecated and should not be
  *     used in newly written code.
  */
-GtkWidget*
+CtkWidget*
 ctk_tearoff_menu_item_new (void)
 {
   return g_object_new (CTK_TYPE_TEAROFF_MENU_ITEM, NULL);
 }
 
 static void
-ctk_tearoff_menu_item_class_init (GtkTearoffMenuItemClass *klass)
+ctk_tearoff_menu_item_class_init (CtkTearoffMenuItemClass *klass)
 {
-  GtkWidgetClass *widget_class;
-  GtkMenuItemClass *menu_item_class;
+  CtkWidgetClass *widget_class;
+  CtkMenuItemClass *menu_item_class;
 
-  widget_class = (GtkWidgetClass*) klass;
-  menu_item_class = (GtkMenuItemClass*) klass;
+  widget_class = (CtkWidgetClass*) klass;
+  menu_item_class = (CtkMenuItemClass*) klass;
 
   widget_class->draw = ctk_tearoff_menu_item_draw;
   widget_class->get_preferred_width = ctk_tearoff_menu_item_get_preferred_width;
@@ -116,21 +116,21 @@ ctk_tearoff_menu_item_class_init (GtkTearoffMenuItemClass *klass)
 }
 
 static void
-ctk_tearoff_menu_item_init (GtkTearoffMenuItem *self)
+ctk_tearoff_menu_item_init (CtkTearoffMenuItem *self)
 {
   self->priv = ctk_tearoff_menu_item_get_instance_private (self);
   self->priv->torn_off = FALSE;
 }
 
 static void
-ctk_tearoff_menu_item_get_preferred_width (GtkWidget      *widget,
+ctk_tearoff_menu_item_get_preferred_width (CtkWidget      *widget,
                                            gint           *minimum,
                                            gint           *natural)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   guint border_width;
-  GtkBorder padding;
-  GtkStateFlags state;
+  CtkBorder padding;
+  CtkStateFlags state;
 
   context = ctk_widget_get_style_context (widget);
   state = ctk_widget_get_state_flags (widget);
@@ -142,14 +142,14 @@ ctk_tearoff_menu_item_get_preferred_width (GtkWidget      *widget,
 }
 
 static void
-ctk_tearoff_menu_item_get_preferred_height (GtkWidget      *widget,
+ctk_tearoff_menu_item_get_preferred_height (CtkWidget      *widget,
                                             gint           *minimum,
                                             gint           *natural)
 {
-  GtkStyleContext *context;
-  GtkBorder padding;
-  GtkStateFlags state;
-  GtkWidget *parent;
+  CtkStyleContext *context;
+  CtkBorder padding;
+  CtkStateFlags state;
+  CtkWidget *parent;
   guint border_width;
 
   context = ctk_widget_get_style_context (widget);
@@ -174,18 +174,18 @@ ctk_tearoff_menu_item_get_preferred_height (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_tearoff_menu_item_draw (GtkWidget *widget,
+ctk_tearoff_menu_item_draw (CtkWidget *widget,
                             cairo_t   *cr)
 {
-  GtkMenuItem *menu_item;
-  GtkStateFlags state;
-  GtkStyleContext *context;
-  GtkBorder padding;
+  CtkMenuItem *menu_item;
+  CtkStateFlags state;
+  CtkStyleContext *context;
+  CtkBorder padding;
   gint x, y, width, height;
   gint right_max;
   guint border_width;
-  GtkTextDirection direction;
-  GtkWidget *parent;
+  CtkTextDirection direction;
+  CtkWidget *parent;
   gdouble angle;
 
   menu_item = CTK_MENU_ITEM (widget);
@@ -276,14 +276,14 @@ ctk_tearoff_menu_item_draw (GtkWidget *widget,
 }
 
 static void
-ctk_tearoff_menu_item_activate (GtkMenuItem *menu_item)
+ctk_tearoff_menu_item_activate (CtkMenuItem *menu_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   parent = ctk_widget_get_parent (CTK_WIDGET (menu_item));
   if (CTK_IS_MENU (parent))
     {
-      GtkMenu *menu = CTK_MENU (parent);
+      CtkMenu *menu = CTK_MENU (parent);
 
       ctk_widget_queue_resize (CTK_WIDGET (menu_item));
       ctk_menu_set_tearoff_state (menu, !ctk_menu_get_tearoff_state (menu));
@@ -291,24 +291,24 @@ ctk_tearoff_menu_item_activate (GtkMenuItem *menu_item)
 }
 
 static void
-tearoff_state_changed (GtkMenu            *menu,
+tearoff_state_changed (CtkMenu            *menu,
                        GParamSpec         *pspec,
                        gpointer            data)
 {
-  GtkTearoffMenuItem *tearoff_menu_item = CTK_TEAROFF_MENU_ITEM (data);
-  GtkTearoffMenuItemPrivate *priv = tearoff_menu_item->priv;
+  CtkTearoffMenuItem *tearoff_menu_item = CTK_TEAROFF_MENU_ITEM (data);
+  CtkTearoffMenuItemPrivate *priv = tearoff_menu_item->priv;
 
   priv->torn_off = ctk_menu_get_tearoff_state (menu);
 }
 
 static void
-ctk_tearoff_menu_item_parent_set (GtkWidget *widget,
-                                  GtkWidget *previous)
+ctk_tearoff_menu_item_parent_set (CtkWidget *widget,
+                                  CtkWidget *previous)
 {
-  GtkTearoffMenuItem *tearoff_menu_item = CTK_TEAROFF_MENU_ITEM (widget);
-  GtkTearoffMenuItemPrivate *priv = tearoff_menu_item->priv;
-  GtkMenu *menu;
-  GtkWidget *parent;
+  CtkTearoffMenuItem *tearoff_menu_item = CTK_TEAROFF_MENU_ITEM (widget);
+  CtkTearoffMenuItemPrivate *priv = tearoff_menu_item->priv;
+  CtkMenu *menu;
+  CtkWidget *parent;
 
   parent = ctk_widget_get_parent (widget);
   menu = CTK_IS_MENU (parent) ? CTK_MENU (parent) : NULL;

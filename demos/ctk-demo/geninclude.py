@@ -11,7 +11,7 @@ in_files = sys.argv[2:]
 
 
 file_output = """
-typedef GtkWidget *(*GDoDemoFunc) (GtkWidget *do_widget);
+typedef CtkWidget *(*GDoDemoFunc) (CtkWidget *do_widget);
 
 typedef struct _Demo Demo;
 
@@ -37,7 +37,7 @@ for demo_file in in_files:
         title = f.readline().replace("/*", "").strip()
 
 
-    file_output += "GtkWidget *do_" + demo_name + " (GtkWidget *do_widget);\n"
+    file_output += "CtkWidget *do_" + demo_name + " (CtkWidget *do_widget);\n"
     # demos += Demo(name = demo_name,
                   # title = title,
                   # file = demo_file,

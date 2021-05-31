@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">5</property>
         <property name="border-width">5</property>
         <child>
-	  <object class="GtkButton" id="button1">
+	  <object class="CtkButton" id="button1">
 	    <property name="name">button1</property>
 	    <property name="visible">True</property>
 	    <property name="can_focus">True</property>
@@ -23,7 +23,7 @@
 	  </object>
 	</child>
         <child>
-	  <object class="GtkButton" id="button2">
+	  <object class="CtkButton" id="button2">
 	    <property name="name">button2</property>
 	    <property name="visible">True</property>
 	    <property name="can_focus">True</property>
@@ -34,7 +34,7 @@
 	  </object>
 	</child>
         <child>
-	  <object class="GtkButton" id="button3">
+	  <object class="CtkButton" id="button3">
 	    <property name="name">button3</property>
 	    <property name="visible">True</property>
 	    <property name="can_focus">True</property>
@@ -45,7 +45,7 @@
 	  </object>
 	</child>
         <child>
-	  <object class="GtkButton" id="button4">
+	  <object class="CtkButton" id="button4">
 	    <property name="name">button4</property>
 	    <property name="visible">True</property>
 	    <property name="can_focus">True</property>
@@ -56,7 +56,7 @@
 	  </object>
 	</child>
         <child>
-	  <object class="GtkButton" id="button5">
+	  <object class="CtkButton" id="button5">
 	    <property name="name">button5</property>
 	    <property name="visible">True</property>
 	    <property name="can_focus">True</property>

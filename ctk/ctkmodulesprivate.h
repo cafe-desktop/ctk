@@ -36,7 +36,7 @@ gchar ** _ctk_get_module_path          (const gchar  *type);
 void     _ctk_modules_init             (gint          *argc,
                                         gchar       ***argv,
                                         const gchar   *ctk_modules_args);
-void     _ctk_modules_settings_changed (GtkSettings   *settings,
+void     _ctk_modules_settings_changed (CtkSettings   *settings,
                                         const gchar   *modules);
 
 gboolean _ctk_module_has_mixed_deps    (GModule       *module);

@@ -7,16 +7,16 @@
 }
 
 * {
-    -GtkButton-child-displacement-x: 1;
-    -GtkButton-child-displacement-y: 1;
+    -CtkButton-child-displacement-x: 1;
+    -CtkButton-child-displacement-y: 1;
 
-    -GtkToolbar-space-size: 10;
-    -GtkToolbar-space-style: line;
-    -GtkToolbar-button-relief: none;
-    -GtkButtonBox-child-min-width: 0;
-    -GtkButtonBox-child-min-height: 0;
-    -GtkArrow-arrow-scaling: 1.0;
-    -GtkEntry-invisible-char: 10046;
+    -CtkToolbar-space-size: 10;
+    -CtkToolbar-space-style: line;
+    -CtkToolbar-button-relief: none;
+    -CtkButtonBox-child-min-width: 0;
+    -CtkButtonBox-child-min-height: 0;
+    -CtkArrow-arrow-scaling: 1.0;
+    -CtkEntry-invisible-char: 10046;
 
     font-family: Sans;
     font-size: 12px;

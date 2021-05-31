@@ -8,24 +8,24 @@
  ************************************************************************/
 
 static void
-toggle_alpha (GtkWidget *checkbutton,
-              GtkWidget *gears)
+toggle_alpha (CtkWidget *checkbutton,
+              CtkWidget *gears)
 {
   ctk_gl_area_set_has_alpha (CTK_GL_AREA (gears),
                              ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON(checkbutton)));
 }
 
 static void
-toggle_overlay (GtkWidget *checkbutton,
-		GtkWidget *revealer)
+toggle_overlay (CtkWidget *checkbutton,
+		CtkWidget *revealer)
 {
   ctk_revealer_set_reveal_child (CTK_REVEALER (revealer),
 				 ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON(checkbutton)));
 }
 
 static void
-toggle_spin (GtkWidget *checkbutton,
-             GtkWidget *spinner)
+toggle_spin (CtkWidget *checkbutton,
+             CtkWidget *spinner)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON(checkbutton)))
     ctk_spinner_start (CTK_SPINNER (spinner));
@@ -34,22 +34,22 @@ toggle_spin (GtkWidget *checkbutton,
 }
 
 static void
-on_axis_value_change (GtkAdjustment *adjustment,
+on_axis_value_change (CtkAdjustment *adjustment,
                       gpointer       data)
 {
-  GtkGears *gears = CTK_GEARS (data);
+  CtkGears *gears = CTK_GEARS (data);
   int axis = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (adjustment), "axis"));
 
   ctk_gears_set_axis (gears, axis, ctk_adjustment_get_value (adjustment));
 }
 
 
-static GtkWidget *
-create_axis_slider (GtkGears *gears,
+static CtkWidget *
+create_axis_slider (CtkGears *gears,
                     int axis)
 {
-  GtkWidget *box, *label, *slider;
-  GtkAdjustment *adj;
+  CtkWidget *box, *label, *slider;
+  CtkAdjustment *adj;
   const char *text;
 
   box = ctk_box_new (CTK_ORIENTATION_VERTICAL, FALSE);
@@ -93,10 +93,10 @@ create_axis_slider (GtkGears *gears,
 }
 
 static void
-moar_gears (GtkButton *button, gpointer data)
+moar_gears (CtkButton *button, gpointer data)
 {
-  GtkContainer *container = CTK_CONTAINER (data);
-  GtkWidget *gears;
+  CtkContainer *container = CTK_CONTAINER (data);
+  CtkWidget *gears;
 
   gears = ctk_gears_new ();
   ctk_widget_set_size_request (gears, 100, 100);
@@ -107,7 +107,7 @@ moar_gears (GtkButton *button, gpointer data)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *box, *hbox, *button, *spinner, *check,
+  CtkWidget *window, *box, *hbox, *button, *spinner, *check,
     *fps_label, *gears, *extra_hbox, *bbox, *overlay,
     *revealer, *frame, *label, *scrolled, *popover;
   int i;

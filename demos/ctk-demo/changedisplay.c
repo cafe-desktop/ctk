@@ -21,9 +21,9 @@
  *
  *  - Letting the user choose a window by clicking on it
  *
- *  - Using GtkListStore and GtkTreeView
+ *  - Using CtkListStore and CtkTreeView
  *
- *  - Using GtkDialog
+ *  - Using CtkDialog
  */
 #include <string.h>
 #include <glib/gi18n.h>
@@ -38,16 +38,16 @@ typedef struct _ChangeDisplayInfo ChangeDisplayInfo;
 
 struct _ChangeDisplayInfo
 {
-  GtkWidget *window;
-  GtkSizeGroup *size_group;
+  CtkWidget *window;
+  CtkSizeGroup *size_group;
 
-  GtkTreeModel *display_model;
+  CtkTreeModel *display_model;
 
   GdkDisplay *current_display;
 };
 
 /* These enumerations provide symbolic names for the columns
- * in the two GtkListStore models.
+ * in the two CtkListStore models.
  */
 enum
 {
@@ -65,11 +65,11 @@ enum
 
 /* Finds the toplevel window under the mouse pointer, if any.
  */
-static GtkWidget *
+static CtkWidget *
 find_toplevel_at_pointer (GdkDisplay *display)
 {
   GdkWindow *pointer_window;
-  GtkWidget *widget = NULL;
+  CtkWidget *widget = NULL;
 
   pointer_window = gdk_device_get_window_at_position (ctk_get_current_event_device (),
                                                       NULL, NULL);
@@ -88,7 +88,7 @@ find_toplevel_at_pointer (GdkDisplay *display)
 }
 
 static gboolean
-button_release_event_cb (GtkWidget       *widget,
+button_release_event_cb (CtkWidget       *widget,
                          GdkEventButton  *event,
                          gboolean        *clicked)
 {
@@ -100,14 +100,14 @@ button_release_event_cb (GtkWidget       *widget,
  * the mouse. When the mouse is released, returns the toplevel
  * window under the pointer, or NULL, if there is none.
  */
-static GtkWidget *
+static CtkWidget *
 query_for_toplevel (GdkScreen  *screen,
                     const char *prompt)
 {
   GdkDisplay *display = gdk_screen_get_display (screen);
-  GtkWidget *popup, *label, *frame;
+  CtkWidget *popup, *label, *frame;
   GdkCursor *cursor;
-  GtkWidget *toplevel = NULL;
+  CtkWidget *toplevel = NULL;
   GdkDevice *device;
 
   popup = ctk_window_new (CTK_WINDOW_POPUP);
@@ -163,7 +163,7 @@ static void
 query_change_display (ChangeDisplayInfo *info)
 {
   GdkScreen *screen = ctk_widget_get_screen (info->window);
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
 
   toplevel = query_for_toplevel (screen,
                                  "Please select the toplevel\n"
@@ -180,7 +180,7 @@ query_change_display (ChangeDisplayInfo *info)
  * "Change" button was clicked, we destroy the dialog.
  */
 static void
-response_cb (GtkDialog         *dialog,
+response_cb (CtkDialog         *dialog,
              gint               response_id,
              ChangeDisplayInfo *info)
 {
@@ -195,13 +195,13 @@ response_cb (GtkDialog         *dialog,
  * to that display.
  */
 static void
-open_display_cb (GtkWidget         *button,
+open_display_cb (CtkWidget         *button,
                  ChangeDisplayInfo *info)
 {
-  GtkWidget *content_area;
-  GtkWidget *dialog;
-  GtkWidget *display_entry;
-  GtkWidget *dialog_label;
+  CtkWidget *content_area;
+  CtkWidget *dialog;
+  CtkWidget *display_entry;
+  CtkWidget *dialog_label;
   gchar *new_screen_name = NULL;
   GdkDisplay *result = NULL;
 
@@ -258,7 +258,7 @@ open_display_cb (GtkWidget         *button,
  * "Display" frame. Closes the selected display.
  */
 static void
-close_display_cb (GtkWidget         *button,
+close_display_cb (CtkWidget         *button,
                   ChangeDisplayInfo *info)
 {
   if (info->current_display)
@@ -270,11 +270,11 @@ close_display_cb (GtkWidget         *button,
  * screens.
  */
 static void
-display_changed_cb (GtkTreeSelection  *selection,
+display_changed_cb (CtkTreeSelection  *selection,
                     ChangeDisplayInfo *info)
 {
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
 
   if (info->current_display)
     g_object_unref (info->current_display);
@@ -294,13 +294,13 @@ display_changed_cb (GtkTreeSelection  *selection,
 static void
 create_frame (ChangeDisplayInfo *info,
               const char        *title,
-              GtkWidget        **frame,
-              GtkWidget        **tree_view,
-              GtkWidget        **button_vbox)
+              CtkWidget        **frame,
+              CtkWidget        **tree_view,
+              CtkWidget        **button_vbox)
 {
-  GtkTreeSelection *selection;
-  GtkWidget *scrollwin;
-  GtkWidget *hbox;
+  CtkTreeSelection *selection;
+  CtkWidget *scrollwin;
+  CtkWidget *hbox;
 
   *frame = ctk_frame_new (title);
 
@@ -335,11 +335,11 @@ create_frame (ChangeDisplayInfo *info,
  * are left-aligned, rather than centered. This function creates a button
  * and left-aligns it contents.
  */
-GtkWidget *
+CtkWidget *
 left_align_button_new (const char *label)
 {
-  GtkWidget *button = ctk_button_new_with_mnemonic (label);
-  GtkWidget *child = ctk_bin_get_child (CTK_BIN (button));
+  CtkWidget *button = ctk_button_new_with_mnemonic (label);
+  CtkWidget *child = ctk_bin_get_child (CTK_BIN (button));
 
   ctk_widget_set_halign (child, CTK_ALIGN_START);
   ctk_widget_set_valign (child, CTK_ALIGN_CENTER);
@@ -349,15 +349,15 @@ left_align_button_new (const char *label)
 
 /* Creates the "Display" frame in the main window.
  */
-GtkWidget *
+CtkWidget *
 create_display_frame (ChangeDisplayInfo *info)
 {
-  GtkWidget *frame;
-  GtkWidget *tree_view;
-  GtkWidget *button_vbox;
-  GtkTreeViewColumn *column;
-  GtkTreeSelection *selection;
-  GtkWidget *button;
+  CtkWidget *frame;
+  CtkWidget *tree_view;
+  CtkWidget *button_vbox;
+  CtkTreeViewColumn *column;
+  CtkTreeSelection *selection;
+  CtkWidget *button;
 
   create_frame (info, "Display", &frame, &tree_view, &button_vbox);
 
@@ -369,7 +369,7 @@ create_display_frame (ChangeDisplayInfo *info)
   g_signal_connect (button, "clicked",  G_CALLBACK (close_display_cb), info);
   ctk_box_pack_start (CTK_BOX (button_vbox), button, FALSE, FALSE, 0);
 
-  info->display_model = (GtkTreeModel *)ctk_list_store_new (DISPLAY_NUM_COLUMNS,
+  info->display_model = (CtkTreeModel *)ctk_list_store_new (DISPLAY_NUM_COLUMNS,
                                                             G_TYPE_STRING,
                                                             GDK_TYPE_DISPLAY);
 
@@ -396,7 +396,7 @@ display_closed_cb (GdkDisplay        *display,
                    gboolean           is_error,
                    ChangeDisplayInfo *info)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gboolean valid;
 
   for (valid = ctk_tree_model_get_iter_first (info->display_model, &iter);
@@ -425,7 +425,7 @@ add_display (ChangeDisplayInfo *info,
              GdkDisplay        *display)
 {
   const gchar *name = gdk_display_get_name (display);
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   ctk_list_store_append (CTK_LIST_STORE (info->display_model), &iter);
   ctk_list_store_set (CTK_LIST_STORE (info->display_model), &iter,
@@ -509,16 +509,16 @@ destroy_cb (GObject            *object,
 /* Main entry point. If the dialog for this demo doesn't yet exist, creates
  * it. Otherwise, destroys it.
  */
-GtkWidget *
-do_changedisplay (GtkWidget *do_widget)
+CtkWidget *
+do_changedisplay (CtkWidget *do_widget)
 {
   static ChangeDisplayInfo *info = NULL;
 
   if (!info)
     {
-      GtkWidget *content_area;
-      GtkWidget *vbox;
-      GtkWidget *frame;
+      CtkWidget *content_area;
+      CtkWidget *vbox;
+      CtkWidget *frame;
 
       info = g_new0 (ChangeDisplayInfo, 1);
 

@@ -5,7 +5,7 @@
  * Authors:
  *      Tristan Van Berkom <tristanvb@openismus.com>
  *
- * Based on some GtkComboBox menu code by Kristian Rietveld <kris@ctk.org>
+ * Based on some CtkComboBox menu code by Kristian Rietveld <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -23,11 +23,11 @@
 
 /*
  * SECTION:ctktreemenu
- * @Short_Description: A GtkMenu automatically created from a #GtkTreeModel
- * @Title: GtkTreeMenu
+ * @Short_Description: A CtkMenu automatically created from a #CtkTreeModel
+ * @Title: CtkTreeMenu
  *
- * The #GtkTreeMenu is used to display a drop-down menu allowing selection
- * of every row in the model and is used by the #GtkComboBox for its drop-down
+ * The #CtkTreeMenu is used to display a drop-down menu allowing selection
+ * of every row in the model and is used by the #CtkComboBox for its drop-down
  * menu.
  */
 
@@ -64,96 +64,96 @@ static void      ctk_tree_menu_get_property                   (GObject          
                                                                GValue             *value,
                                                                GParamSpec         *pspec);
 
-/* GtkWidgetClass */
-static void      ctk_tree_menu_get_preferred_width            (GtkWidget           *widget,
+/* CtkWidgetClass */
+static void      ctk_tree_menu_get_preferred_width            (CtkWidget           *widget,
                                                                gint                *minimum_size,
                                                                gint                *natural_size);
-static void      ctk_tree_menu_get_preferred_height           (GtkWidget           *widget,
+static void      ctk_tree_menu_get_preferred_height           (CtkWidget           *widget,
                                                                gint                *minimum_size,
                                                                gint                *natural_size);
-static void      ctk_tree_menu_get_preferred_width_for_height (GtkWidget           *widget,
+static void      ctk_tree_menu_get_preferred_width_for_height (CtkWidget           *widget,
                                                                gint                 for_height,
                                                                gint                *minimum_size,
                                                                gint                *natural_size);
-static void      ctk_tree_menu_get_preferred_height_for_width (GtkWidget           *widget,
+static void      ctk_tree_menu_get_preferred_height_for_width (CtkWidget           *widget,
                                                                gint                 for_width,
                                                                gint                *minimum_size,
                                                                gint                *natural_size);
 
-/* GtkCellLayoutIface */
-static void      ctk_tree_menu_cell_layout_init               (GtkCellLayoutIface  *iface);
-static GtkCellArea *ctk_tree_menu_cell_layout_get_area        (GtkCellLayout        *layout);
+/* CtkCellLayoutIface */
+static void      ctk_tree_menu_cell_layout_init               (CtkCellLayoutIface  *iface);
+static CtkCellArea *ctk_tree_menu_cell_layout_get_area        (CtkCellLayout        *layout);
 
 
 /* TreeModel/DrawingArea callbacks and building menus/submenus */
-static inline void rebuild_menu                               (GtkTreeMenu          *menu);
-static gboolean   menu_occupied                               (GtkTreeMenu          *menu,
+static inline void rebuild_menu                               (CtkTreeMenu          *menu);
+static gboolean   menu_occupied                               (CtkTreeMenu          *menu,
                                                                guint                 left_attach,
                                                                guint                 right_attach,
                                                                guint                 top_attach,
                                                                guint                 bottom_attach);
-static void       relayout_item                               (GtkTreeMenu          *menu,
-                                                               GtkWidget            *item,
-                                                               GtkTreeIter          *iter,
-                                                               GtkWidget            *prev);
-static void       ctk_tree_menu_populate                      (GtkTreeMenu          *menu);
-static GtkWidget *ctk_tree_menu_create_item                   (GtkTreeMenu          *menu,
-                                                               GtkTreeIter          *iter,
+static void       relayout_item                               (CtkTreeMenu          *menu,
+                                                               CtkWidget            *item,
+                                                               CtkTreeIter          *iter,
+                                                               CtkWidget            *prev);
+static void       ctk_tree_menu_populate                      (CtkTreeMenu          *menu);
+static CtkWidget *ctk_tree_menu_create_item                   (CtkTreeMenu          *menu,
+                                                               CtkTreeIter          *iter,
                                                                gboolean              header_item);
-static void       ctk_tree_menu_create_submenu                (GtkTreeMenu          *menu,
-                                                               GtkWidget            *item,
-                                                               GtkTreePath          *path);
-static void       ctk_tree_menu_set_area                      (GtkTreeMenu          *menu,
-                                                               GtkCellArea          *area);
-static GtkWidget *ctk_tree_menu_get_path_item                 (GtkTreeMenu          *menu,
-                                                               GtkTreePath          *path);
-static gboolean   ctk_tree_menu_path_in_menu                  (GtkTreeMenu          *menu,
-                                                               GtkTreePath          *path,
+static void       ctk_tree_menu_create_submenu                (CtkTreeMenu          *menu,
+                                                               CtkWidget            *item,
+                                                               CtkTreePath          *path);
+static void       ctk_tree_menu_set_area                      (CtkTreeMenu          *menu,
+                                                               CtkCellArea          *area);
+static CtkWidget *ctk_tree_menu_get_path_item                 (CtkTreeMenu          *menu,
+                                                               CtkTreePath          *path);
+static gboolean   ctk_tree_menu_path_in_menu                  (CtkTreeMenu          *menu,
+                                                               CtkTreePath          *path,
                                                                gboolean             *header_item);
-static void       row_inserted_cb                             (GtkTreeModel         *model,
-                                                               GtkTreePath          *path,
-                                                               GtkTreeIter          *iter,
-                                                               GtkTreeMenu          *menu);
-static void       row_deleted_cb                              (GtkTreeModel         *model,
-                                                               GtkTreePath          *path,
-                                                               GtkTreeMenu          *menu);
-static void       row_reordered_cb                            (GtkTreeModel         *model,
-                                                               GtkTreePath          *path,
-                                                               GtkTreeIter          *iter,
+static void       row_inserted_cb                             (CtkTreeModel         *model,
+                                                               CtkTreePath          *path,
+                                                               CtkTreeIter          *iter,
+                                                               CtkTreeMenu          *menu);
+static void       row_deleted_cb                              (CtkTreeModel         *model,
+                                                               CtkTreePath          *path,
+                                                               CtkTreeMenu          *menu);
+static void       row_reordered_cb                            (CtkTreeModel         *model,
+                                                               CtkTreePath          *path,
+                                                               CtkTreeIter          *iter,
                                                                gint                 *new_order,
-                                                               GtkTreeMenu          *menu);
-static void       row_changed_cb                              (GtkTreeModel         *model,
-                                                               GtkTreePath          *path,
-                                                               GtkTreeIter          *iter,
-                                                               GtkTreeMenu          *menu);
-static void       context_size_changed_cb                     (GtkCellAreaContext   *context,
+                                                               CtkTreeMenu          *menu);
+static void       row_changed_cb                              (CtkTreeModel         *model,
+                                                               CtkTreePath          *path,
+                                                               CtkTreeIter          *iter,
+                                                               CtkTreeMenu          *menu);
+static void       context_size_changed_cb                     (CtkCellAreaContext   *context,
                                                                GParamSpec           *pspec,
-                                                               GtkWidget            *menu);
-static void       area_apply_attributes_cb                    (GtkCellArea          *area,
-                                                               GtkTreeModel         *tree_model,
-                                                               GtkTreeIter          *iter,
+                                                               CtkWidget            *menu);
+static void       area_apply_attributes_cb                    (CtkCellArea          *area,
+                                                               CtkTreeModel         *tree_model,
+                                                               CtkTreeIter          *iter,
                                                                gboolean              is_expander,
                                                                gboolean              is_expanded,
-                                                               GtkTreeMenu          *menu);
-static void       item_activated_cb                           (GtkMenuItem          *item,
-                                                               GtkTreeMenu          *menu);
-static void       submenu_activated_cb                        (GtkTreeMenu          *submenu,
+                                                               CtkTreeMenu          *menu);
+static void       item_activated_cb                           (CtkMenuItem          *item,
+                                                               CtkTreeMenu          *menu);
+static void       submenu_activated_cb                        (CtkTreeMenu          *submenu,
                                                                const gchar          *path,
-                                                               GtkTreeMenu          *menu);
-static void       ctk_tree_menu_set_model_internal            (GtkTreeMenu          *menu,
-                                                               GtkTreeModel         *model);
+                                                               CtkTreeMenu          *menu);
+static void       ctk_tree_menu_set_model_internal            (CtkTreeMenu          *menu,
+                                                               CtkTreeModel         *model);
 
 
 
-struct _GtkTreeMenuPrivate
+struct _CtkTreeMenuPrivate
 {
   /* TreeModel and parent for this menu */
-  GtkTreeModel        *model;
-  GtkTreeRowReference *root;
+  CtkTreeModel        *model;
+  CtkTreeRowReference *root;
 
   /* CellArea and context for this menu */
-  GtkCellArea         *area;
-  GtkCellAreaContext  *context;
+  CtkCellArea         *area;
+  CtkCellAreaContext  *context;
 
   /* Signals */
   gulong               size_changed_id;
@@ -173,7 +173,7 @@ struct _GtkTreeMenuPrivate
   guint32              tearoff     : 1;
 
   /* Row separators */
-  GtkTreeViewRowSeparatorFunc row_separator_func;
+  CtkTreeViewRowSeparatorFunc row_separator_func;
   gpointer                    row_separator_data;
   GDestroyNotify              row_separator_destroy;
 };
@@ -197,13 +197,13 @@ enum {
 static guint   tree_menu_signals[N_SIGNALS] = { 0 };
 static GQuark  tree_menu_path_quark = 0;
 
-G_DEFINE_TYPE_WITH_CODE (GtkTreeMenu, _ctk_tree_menu, CTK_TYPE_MENU,
-                         G_ADD_PRIVATE (GtkTreeMenu)
+G_DEFINE_TYPE_WITH_CODE (CtkTreeMenu, _ctk_tree_menu, CTK_TYPE_MENU,
+                         G_ADD_PRIVATE (CtkTreeMenu)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_CELL_LAYOUT,
                                                 ctk_tree_menu_cell_layout_init));
 
 static void
-_ctk_tree_menu_init (GtkTreeMenu *menu)
+_ctk_tree_menu_init (CtkTreeMenu *menu)
 {
   menu->priv = _ctk_tree_menu_get_instance_private (menu);
   menu->priv->row_span_col = -1;
@@ -213,10 +213,10 @@ _ctk_tree_menu_init (GtkTreeMenu *menu)
 }
 
 static void
-_ctk_tree_menu_class_init (GtkTreeMenuClass *class)
+_ctk_tree_menu_class_init (CtkTreeMenuClass *class)
 {
   GObjectClass   *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   tree_menu_path_quark = g_quark_from_static_string ("ctk-tree-menu-path");
 
@@ -232,13 +232,13 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
   widget_class->get_preferred_height_for_width = ctk_tree_menu_get_preferred_height_for_width;
 
   /*
-   * GtkTreeMenu::menu-activate:
-   * @menu: a #GtkTreeMenu
-   * @path: the #GtkTreePath string for the item which was activated
+   * CtkTreeMenu::menu-activate:
+   * @menu: a #CtkTreeMenu
+   * @path: the #CtkTreePath string for the item which was activated
    * @user_data: the user data
    *
-   * This signal is emitted to notify that a menu item in the #GtkTreeMenu
-   * was activated and provides the path string from the #GtkTreeModel
+   * This signal is emitted to notify that a menu item in the #CtkTreeMenu
+   * was activated and provides the path string from the #CtkTreeModel
    * to specify which row was selected.
    *
    * Since: 3.0
@@ -253,9 +253,9 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
                   G_TYPE_NONE, 1, G_TYPE_STRING);
 
   /*
-   * GtkTreeMenu:model:
+   * CtkTreeMenu:model:
    *
-   * The #GtkTreeModel from which the menu is constructed.
+   * The #CtkTreeModel from which the menu is constructed.
    *
    * Since: 3.0
    */
@@ -268,17 +268,17 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
                                                         CTK_PARAM_READWRITE));
 
   /*
-   * GtkTreeMenu:root:
+   * CtkTreeMenu:root:
    *
-   * The #GtkTreePath that is the root for this menu, or %NULL.
+   * The #CtkTreePath that is the root for this menu, or %NULL.
    *
-   * The #GtkTreeMenu recursively creates submenus for #GtkTreeModel
+   * The #CtkTreeMenu recursively creates submenus for #CtkTreeModel
    * rows that have children and the "root" for each menu is provided
    * by the parent menu.
    *
-   * If you dont provide a root for the #GtkTreeMenu then the whole
+   * If you dont provide a root for the #CtkTreeMenu then the whole
    * model will be added to the menu. Specifying a root allows you
-   * to build a menu for a given #GtkTreePath and its children.
+   * to build a menu for a given #CtkTreePath and its children.
    * 
    * Since: 3.0
    */
@@ -292,12 +292,12 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
                                                        CTK_PARAM_READWRITE));
 
   /*
-   * GtkTreeMenu:cell-area:
+   * CtkTreeMenu:cell-area:
    *
-   * The #GtkCellArea used to render cells in the menu items.
+   * The #CtkCellArea used to render cells in the menu items.
    *
    * You can provide a different cell area at object construction
-   * time, otherwise the #GtkTreeMenu will use a #GtkCellAreaBox.
+   * time, otherwise the #CtkTreeMenu will use a #CtkCellAreaBox.
    *
    * Since: 3.0
    */
@@ -305,12 +305,12 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
                                    PROP_CELL_AREA,
                                    g_param_spec_object ("cell-area",
                                                         P_("Cell Area"),
-                                                        P_("The GtkCellArea used to layout cells"),
+                                                        P_("The CtkCellArea used to layout cells"),
                                                         CTK_TYPE_CELL_AREA,
                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   /*
-   * GtkTreeMenu:tearoff:
+   * CtkTreeMenu:tearoff:
    *
    * Specifies whether this menu comes with a leading tearoff menu item
    *
@@ -325,7 +325,7 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
                                                          CTK_PARAM_READWRITE));
 
   /*
-   * GtkTreeMenu:wrap-width:
+   * CtkTreeMenu:wrap-width:
    *
    * If wrap-width is set to a positive value, items in the popup will be laid
    * out along multiple columns, starting a new row on reaching the wrap width.
@@ -343,7 +343,7 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
                                                      CTK_PARAM_READWRITE));
 
   /*
-   * GtkTreeMenu:row-span-column:
+   * CtkTreeMenu:row-span-column:
    *
    * If this is set to a non-negative value, it must be the index of a column
    * of type %G_TYPE_INT in the model. The value in that column for each item
@@ -363,13 +363,13 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
                                                      CTK_PARAM_READWRITE));
 
   /*
-   * GtkTreeMenu:column-span-column:
+   * CtkTreeMenu:column-span-column:
    *
    * If this is set to a non-negative value, it must be the index of a column
    * of type %G_TYPE_INT in the model. The value in that column for each item
    * will determine how many columns that item will span in the popup.
    * Therefore, values in this column must be greater than zero, and the sum of
-   * an item’s column position + span should not exceed #GtkTreeMenu:wrap-width.
+   * an item’s column position + span should not exceed #CtkTreeMenu:wrap-width.
    *
    * Since: 3.0
    */
@@ -390,14 +390,14 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
 static void
 ctk_tree_menu_constructed (GObject *object)
 {
-  GtkTreeMenu *menu = CTK_TREE_MENU (object);
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenu *menu = CTK_TREE_MENU (object);
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   G_OBJECT_CLASS (_ctk_tree_menu_parent_class)->constructed (object);
 
   if (!priv->area)
     {
-      GtkCellArea *area = ctk_cell_area_box_new ();
+      CtkCellArea *area = ctk_cell_area_box_new ();
 
       ctk_tree_menu_set_area (menu, area);
     }
@@ -412,8 +412,8 @@ ctk_tree_menu_constructed (GObject *object)
 static void
 ctk_tree_menu_dispose (GObject *object)
 {
-  GtkTreeMenu        *menu;
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenu        *menu;
+  CtkTreeMenuPrivate *priv;
 
   menu = CTK_TREE_MENU (object);
   priv = menu->priv;
@@ -437,8 +437,8 @@ ctk_tree_menu_dispose (GObject *object)
 static void
 ctk_tree_menu_finalize (GObject *object)
 {
-  GtkTreeMenu        *menu;
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenu        *menu;
+  CtkTreeMenuPrivate *priv;
 
   menu = CTK_TREE_MENU (object);
   priv = menu->priv;
@@ -457,7 +457,7 @@ ctk_tree_menu_set_property (GObject            *object,
                             const GValue       *value,
                             GParamSpec         *pspec)
 {
-  GtkTreeMenu *menu = CTK_TREE_MENU (object);
+  CtkTreeMenu *menu = CTK_TREE_MENU (object);
 
   switch (prop_id)
     {
@@ -471,7 +471,7 @@ ctk_tree_menu_set_property (GObject            *object,
 
     case PROP_CELL_AREA:
       /* Construct-only, can only be assigned once */
-      ctk_tree_menu_set_area (menu, (GtkCellArea *)g_value_get_object (value));
+      ctk_tree_menu_set_area (menu, (CtkCellArea *)g_value_get_object (value));
       break;
 
     case PROP_TEAROFF:
@@ -502,8 +502,8 @@ ctk_tree_menu_get_property (GObject            *object,
                             GValue             *value,
                             GParamSpec         *pspec)
 {
-  GtkTreeMenu        *menu = CTK_TREE_MENU (object);
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenu        *menu = CTK_TREE_MENU (object);
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   switch (prop_id)
     {
@@ -530,7 +530,7 @@ ctk_tree_menu_get_property (GObject            *object,
 }
 
 /****************************************************************
- *                         GtkWidgetClass                       *
+ *                         CtkWidgetClass                       *
  ****************************************************************/
 
 /* We tell all the menu items to reserve space for the submenu
@@ -539,7 +539,7 @@ ctk_tree_menu_get_property (GObject            *object,
  * same width (and requested height for the same appropriate width).
  */
 static void
-sync_reserve_submenu_size (GtkTreeMenu *menu)
+sync_reserve_submenu_size (CtkTreeMenu *menu)
 {
   GList              *children, *l;
   gboolean            has_submenu = FALSE;
@@ -547,7 +547,7 @@ sync_reserve_submenu_size (GtkTreeMenu *menu)
   children = ctk_container_get_children (CTK_CONTAINER (menu));
   for (l = children; l; l = l->next)
     {
-      GtkMenuItem *item = l->data;
+      CtkMenuItem *item = l->data;
 
       if (ctk_menu_item_get_submenu (item) != NULL)
         {
@@ -558,7 +558,7 @@ sync_reserve_submenu_size (GtkTreeMenu *menu)
 
   for (l = children; l; l = l->next)
     {
-      GtkMenuItem *item = l->data;
+      CtkMenuItem *item = l->data;
 
       ctk_menu_item_set_reserve_indicator (item, has_submenu);
     }
@@ -567,18 +567,18 @@ sync_reserve_submenu_size (GtkTreeMenu *menu)
 }
 
 static void
-ctk_tree_menu_get_preferred_width (GtkWidget           *widget,
+ctk_tree_menu_get_preferred_width (CtkWidget           *widget,
                                    gint                *minimum_size,
                                    gint                *natural_size)
 {
-  GtkTreeMenu        *menu = CTK_TREE_MENU (widget);
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenu        *menu = CTK_TREE_MENU (widget);
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   /* We leave the requesting work up to the cellviews which operate in the same
    * context, reserving space for the submenu indicator if any of the items have
    * submenus ensures that every cellview will receive the same allocated width.
    *
-   * Since GtkMenu does hieght-for-width correctly, we know that the width of
+   * Since CtkMenu does hieght-for-width correctly, we know that the width of
    * every cell will be requested before the height-for-widths are requested.
    */
   g_signal_handler_block (priv->context, priv->size_changed_id);
@@ -591,12 +591,12 @@ ctk_tree_menu_get_preferred_width (GtkWidget           *widget,
 }
 
 static void
-ctk_tree_menu_get_preferred_height (GtkWidget           *widget,
+ctk_tree_menu_get_preferred_height (CtkWidget           *widget,
                                     gint                *minimum_size,
                                     gint                *natural_size)
 {
-  GtkTreeMenu        *menu = CTK_TREE_MENU (widget);
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenu        *menu = CTK_TREE_MENU (widget);
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   g_signal_handler_block (priv->context, priv->size_changed_id);
 
@@ -608,19 +608,19 @@ ctk_tree_menu_get_preferred_height (GtkWidget           *widget,
 }
 
 static void
-ctk_tree_menu_get_preferred_width_for_height (GtkWidget           *widget,
+ctk_tree_menu_get_preferred_width_for_height (CtkWidget           *widget,
                                               gint                 for_height,
                                               gint                *minimum_size,
                                               gint                *natural_size)
 {
-  GtkTreeMenu        *menu = CTK_TREE_MENU (widget);
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenu        *menu = CTK_TREE_MENU (widget);
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   /* We leave the requesting work up to the cellviews which operate in the same
    * context, reserving space for the submenu indicator if any of the items have
    * submenus ensures that every cellview will receive the same allocated width.
    *
-   * Since GtkMenu does hieght-for-width correctly, we know that the width of
+   * Since CtkMenu does hieght-for-width correctly, we know that the width of
    * every cell will be requested before the height-for-widths are requested.
    */
   g_signal_handler_block (priv->context, priv->size_changed_id);
@@ -633,13 +633,13 @@ ctk_tree_menu_get_preferred_width_for_height (GtkWidget           *widget,
 }
 
 static void
-ctk_tree_menu_get_preferred_height_for_width (GtkWidget           *widget,
+ctk_tree_menu_get_preferred_height_for_width (CtkWidget           *widget,
                                               gint                 for_width,
                                               gint                *minimum_size,
                                               gint                *natural_size)
 {
-  GtkTreeMenu        *menu = CTK_TREE_MENU (widget);
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenu        *menu = CTK_TREE_MENU (widget);
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   g_signal_handler_block (priv->context, priv->size_changed_id);
 
@@ -651,19 +651,19 @@ ctk_tree_menu_get_preferred_height_for_width (GtkWidget           *widget,
 }
 
 /****************************************************************
- *                      GtkCellLayoutIface                      *
+ *                      CtkCellLayoutIface                      *
  ****************************************************************/
 static void
-ctk_tree_menu_cell_layout_init (GtkCellLayoutIface  *iface)
+ctk_tree_menu_cell_layout_init (CtkCellLayoutIface  *iface)
 {
   iface->get_area = ctk_tree_menu_cell_layout_get_area;
 }
 
-static GtkCellArea *
-ctk_tree_menu_cell_layout_get_area (GtkCellLayout *layout)
+static CtkCellArea *
+ctk_tree_menu_cell_layout_get_area (CtkCellLayout *layout)
 {
-  GtkTreeMenu        *menu = CTK_TREE_MENU (layout);
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenu        *menu = CTK_TREE_MENU (layout);
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   return priv->area;
 }
@@ -672,23 +672,23 @@ ctk_tree_menu_cell_layout_get_area (GtkCellLayout *layout)
 /****************************************************************
  *             TreeModel callbacks/populating menus             *
  ****************************************************************/
-static GtkWidget *
-ctk_tree_menu_get_path_item (GtkTreeMenu          *menu,
-                             GtkTreePath          *search)
+static CtkWidget *
+ctk_tree_menu_get_path_item (CtkTreeMenu          *menu,
+                             CtkTreePath          *search)
 {
-  GtkWidget *item = NULL;
+  CtkWidget *item = NULL;
   GList     *children, *l;
 
   children = ctk_container_get_children (CTK_CONTAINER (menu));
 
   for (l = children; item == NULL && l != NULL; l = l->next)
     {
-      GtkWidget   *child = l->data;
-      GtkTreePath *path  = NULL;
+      CtkWidget   *child = l->data;
+      CtkTreePath *path  = NULL;
 
       if (CTK_IS_SEPARATOR_MENU_ITEM (child))
         {
-          GtkTreeRowReference *row =
+          CtkTreeRowReference *row =
             g_object_get_qdata (G_OBJECT (child), tree_menu_path_quark);
 
           if (row)
@@ -705,7 +705,7 @@ ctk_tree_menu_get_path_item (GtkTreeMenu          *menu,
         }
       else if (!CTK_IS_TEAROFF_MENU_ITEM (child))
         {
-          GtkWidget *view = ctk_bin_get_child (CTK_BIN (child));
+          CtkWidget *view = ctk_bin_get_child (CTK_BIN (child));
 
           /* It's always a cellview */
           if (CTK_IS_CELL_VIEW (view))
@@ -734,11 +734,11 @@ ctk_tree_menu_get_path_item (GtkTreeMenu          *menu,
 }
 
 static gboolean
-ctk_tree_menu_path_in_menu (GtkTreeMenu  *menu,
-                            GtkTreePath  *path,
+ctk_tree_menu_path_in_menu (CtkTreeMenu  *menu,
+                            CtkTreePath  *path,
                             gboolean     *header_item)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenuPrivate *priv = menu->priv;
   gboolean            in_menu = FALSE;
   gboolean            is_header = FALSE;
 
@@ -748,8 +748,8 @@ ctk_tree_menu_path_in_menu (GtkTreeMenu  *menu,
   /* If we are a submenu, compare the parent path */
   else if (priv->root)
     {
-      GtkTreePath *root_path   = ctk_tree_row_reference_get_path (priv->root);
-      GtkTreePath *search_path = ctk_tree_path_copy (path);
+      CtkTreePath *root_path   = ctk_tree_row_reference_get_path (priv->root);
+      CtkTreePath *search_path = ctk_tree_path_copy (path);
 
       if (root_path)
         {
@@ -777,13 +777,13 @@ ctk_tree_menu_path_in_menu (GtkTreeMenu  *menu,
   return in_menu;
 }
 
-static GtkWidget *
-ctk_tree_menu_path_needs_submenu (GtkTreeMenu *menu,
-                                  GtkTreePath *search)
+static CtkWidget *
+ctk_tree_menu_path_needs_submenu (CtkTreeMenu *menu,
+                                  CtkTreePath *search)
 {
-  GtkWidget   *item = NULL;
+  CtkWidget   *item = NULL;
   GList       *children, *l;
-  GtkTreePath *parent_path;
+  CtkTreePath *parent_path;
 
   if (ctk_tree_path_get_depth (search) <= 1)
     return NULL;
@@ -795,15 +795,15 @@ ctk_tree_menu_path_needs_submenu (GtkTreeMenu *menu,
 
   for (l = children; item == NULL && l != NULL; l = l->next)
     {
-      GtkWidget   *child = l->data;
-      GtkTreePath *path  = NULL;
+      CtkWidget   *child = l->data;
+      CtkTreePath *path  = NULL;
 
       /* Separators dont get submenus, if it already has a submenu then let
        * the submenu handle inserted rows */
       if (!CTK_IS_SEPARATOR_MENU_ITEM (child) &&
           !ctk_menu_item_get_submenu (CTK_MENU_ITEM (child)))
         {
-          GtkWidget *view = ctk_bin_get_child (CTK_BIN (child));
+          CtkWidget *view = ctk_bin_get_child (CTK_BIN (child));
 
           /* It's always a cellview */
           if (CTK_IS_CELL_VIEW (view))
@@ -825,26 +825,26 @@ ctk_tree_menu_path_needs_submenu (GtkTreeMenu *menu,
   return item;
 }
 
-static GtkWidget *
-find_empty_submenu (GtkTreeMenu  *menu)
+static CtkWidget *
+find_empty_submenu (CtkTreeMenu  *menu)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenuPrivate *priv = menu->priv;
   GList              *children, *l;
-  GtkWidget          *submenu = NULL;
+  CtkWidget          *submenu = NULL;
 
   children = ctk_container_get_children (CTK_CONTAINER (menu));
 
   for (l = children; submenu == NULL && l != NULL; l = l->next)
     {
-      GtkWidget   *child = l->data;
-      GtkTreePath *path  = NULL;
-      GtkTreeIter  iter;
+      CtkWidget   *child = l->data;
+      CtkTreePath *path  = NULL;
+      CtkTreeIter  iter;
 
       /* Separators dont get submenus, if it already has a submenu then let
        * the submenu handle inserted rows */
       if (!CTK_IS_SEPARATOR_MENU_ITEM (child) && !CTK_IS_TEAROFF_MENU_ITEM (child))
         {
-          GtkWidget *view = ctk_bin_get_child (CTK_BIN (child));
+          CtkWidget *view = ctk_bin_get_child (CTK_BIN (child));
 
           /* It's always a cellview */
           if (CTK_IS_CELL_VIEW (view))
@@ -867,14 +867,14 @@ find_empty_submenu (GtkTreeMenu  *menu)
 }
 
 static void
-row_inserted_cb (GtkTreeModel     *model,
-                 GtkTreePath      *path,
-                 GtkTreeIter      *iter,
-                 GtkTreeMenu      *menu)
+row_inserted_cb (CtkTreeModel     *model,
+                 CtkTreePath      *path,
+                 CtkTreeIter      *iter,
+                 CtkTreeMenu      *menu)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenuPrivate *priv = menu->priv;
   gint               *indices, index, depth;
-  GtkWidget          *item;
+  CtkWidget          *item;
 
   /* If the iter should be in this menu then go ahead and insert it */
   if (ctk_tree_menu_path_in_menu (menu, path, NULL))
@@ -912,7 +912,7 @@ row_inserted_cb (GtkTreeModel     *model,
       item = ctk_tree_menu_path_needs_submenu (menu, path);
       if (item)
         {
-          GtkTreePath *item_path = ctk_tree_path_copy (path);
+          CtkTreePath *item_path = ctk_tree_path_copy (path);
 
           ctk_tree_path_up (item_path);
           ctk_tree_menu_create_submenu (menu, item, item_path);
@@ -922,12 +922,12 @@ row_inserted_cb (GtkTreeModel     *model,
 }
 
 static void
-row_deleted_cb (GtkTreeModel     *model,
-                GtkTreePath      *path,
-                GtkTreeMenu      *menu)
+row_deleted_cb (CtkTreeModel     *model,
+                CtkTreePath      *path,
+                CtkTreeMenu      *menu)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
-  GtkWidget          *item;
+  CtkTreeMenuPrivate *priv = menu->priv;
+  CtkWidget          *item;
 
   /* If it's the header item we leave it to the parent menu
    * to remove us from its menu
@@ -951,27 +951,27 @@ row_deleted_cb (GtkTreeModel     *model,
     {
       /* It's up to the parent menu to destroy a child menu that becomes empty
        * since the topmost menu belongs to the user and is allowed to have no contents */
-      GtkWidget *submenu = find_empty_submenu (menu);
+      CtkWidget *submenu = find_empty_submenu (menu);
       if (submenu)
         ctk_widget_destroy (submenu);
     }
 }
 
 static void
-row_reordered_cb (GtkTreeModel    *model,
-                  GtkTreePath     *path,
-                  GtkTreeIter     *iter,
+row_reordered_cb (CtkTreeModel    *model,
+                  CtkTreePath     *path,
+                  CtkTreeIter     *iter,
                   gint            *new_order,
-                  GtkTreeMenu     *menu)
+                  CtkTreeMenu     *menu)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenuPrivate *priv = menu->priv;
   gboolean            this_menu = FALSE;
 
   if (ctk_tree_path_get_depth (path) == 0 && !priv->root)
     this_menu = TRUE;
   else if (priv->root)
     {
-      GtkTreePath *root_path =
+      CtkTreePath *root_path =
         ctk_tree_row_reference_get_path (priv->root);
 
       if (ctk_tree_path_compare (root_path, path) == 0)
@@ -985,8 +985,8 @@ row_reordered_cb (GtkTreeModel    *model,
 }
 
 static gint
-menu_item_position (GtkTreeMenu *menu,
-                    GtkWidget   *item)
+menu_item_position (CtkTreeMenu *menu,
+                    CtkWidget   *item)
 {
   GList *children;
   gint   position;
@@ -999,20 +999,20 @@ menu_item_position (GtkTreeMenu *menu,
 }
 
 static void
-row_changed_cb (GtkTreeModel         *model,
-                GtkTreePath          *path,
-                GtkTreeIter          *iter,
-                GtkTreeMenu          *menu)
+row_changed_cb (CtkTreeModel         *model,
+                CtkTreePath          *path,
+                CtkTreeIter          *iter,
+                CtkTreeMenu          *menu)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenuPrivate *priv = menu->priv;
   gboolean            is_separator = FALSE;
-  GtkWidget          *item;
+  CtkWidget          *item;
 
   item = ctk_tree_menu_get_path_item (menu, path);
 
   if (priv->root)
     {
-      GtkTreePath *root_path =
+      CtkTreePath *root_path =
         ctk_tree_row_reference_get_path (priv->root);
 
       if (root_path && ctk_tree_path_compare (root_path, path) == 0)
@@ -1058,9 +1058,9 @@ row_changed_cb (GtkTreeModel         *model,
 }
 
 static void
-context_size_changed_cb (GtkCellAreaContext  *context,
+context_size_changed_cb (CtkCellAreaContext  *context,
                          GParamSpec          *pspec,
-                         GtkWidget           *menu)
+                         CtkWidget           *menu)
 {
   if (!strcmp (pspec->name, "minimum-width") ||
       !strcmp (pspec->name, "natural-width") ||
@@ -1070,7 +1070,7 @@ context_size_changed_cb (GtkCellAreaContext  *context,
 }
 
 static gboolean
-area_is_sensitive (GtkCellArea *area)
+area_is_sensitive (CtkCellArea *area)
 {
   GList    *cells, *list;
   gboolean  sensitive = FALSE;
@@ -1090,17 +1090,17 @@ area_is_sensitive (GtkCellArea *area)
 }
 
 static void
-area_apply_attributes_cb (GtkCellArea          *area,
-                          GtkTreeModel         *tree_model,
-                          GtkTreeIter          *iter,
+area_apply_attributes_cb (CtkCellArea          *area,
+                          CtkTreeModel         *tree_model,
+                          CtkTreeIter          *iter,
                           gboolean              is_expander,
                           gboolean              is_expanded,
-                          GtkTreeMenu          *menu)
+                          CtkTreeMenu          *menu)
 {
   /* If the menu for this iter has a submenu */
-  GtkTreeMenuPrivate *priv = menu->priv;
-  GtkTreePath        *path;
-  GtkWidget          *item;
+  CtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreePath        *path;
+  CtkWidget          *item;
   gboolean            is_header;
   gboolean            sensitive;
 
@@ -1126,7 +1126,7 @@ area_apply_attributes_cb (GtkCellArea          *area,
               if (CTK_MENU_SHELL (menu)->priv->children &&
                   CTK_MENU_SHELL (menu)->priv->children->next)
                 {
-                  GtkWidget *separator =
+                  CtkWidget *separator =
                     CTK_MENU_SHELL (menu)->priv->children->next->data;
 
                   ctk_widget_set_sensitive (separator, sensitive);
@@ -1139,10 +1139,10 @@ area_apply_attributes_cb (GtkCellArea          *area,
 }
 
 static void
-ctk_tree_menu_set_area (GtkTreeMenu *menu,
-                        GtkCellArea *area)
+ctk_tree_menu_set_area (CtkTreeMenu *menu,
+                        CtkCellArea *area)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   if (priv->area)
     {
@@ -1166,7 +1166,7 @@ ctk_tree_menu_set_area (GtkTreeMenu *menu,
 }
 
 static gboolean
-menu_occupied (GtkTreeMenu *menu,
+menu_occupied (CtkTreeMenu *menu,
                guint        left_attach,
                guint        right_attach,
                guint        top_attach,
@@ -1195,12 +1195,12 @@ menu_occupied (GtkTreeMenu *menu,
 }
 
 static void
-relayout_item (GtkTreeMenu *menu,
-               GtkWidget   *item,
-               GtkTreeIter *iter,
-               GtkWidget   *prev)
+relayout_item (CtkTreeMenu *menu,
+               CtkWidget   *item,
+               CtkTreeIter *iter,
+               CtkWidget   *prev)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenuPrivate *priv = menu->priv;
   gint                current_col = 0, current_row = 0;
   gint                rows = 1, cols = 1;
 
@@ -1253,13 +1253,13 @@ relayout_item (GtkTreeMenu *menu,
 }
 
 static void
-ctk_tree_menu_create_submenu (GtkTreeMenu *menu,
-                              GtkWidget   *item,
-                              GtkTreePath *path)
+ctk_tree_menu_create_submenu (CtkTreeMenu *menu,
+                              CtkWidget   *item,
+                              CtkTreePath *path)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
-  GtkWidget          *view;
-  GtkWidget          *submenu;
+  CtkTreeMenuPrivate *priv = menu->priv;
+  CtkWidget          *view;
+  CtkWidget          *submenu;
 
   view = ctk_bin_get_child (CTK_BIN (item));
   ctk_cell_view_set_draw_sensitive (CTK_CELL_VIEW (view), TRUE);
@@ -1283,14 +1283,14 @@ ctk_tree_menu_create_submenu (GtkTreeMenu *menu,
                     G_CALLBACK (submenu_activated_cb), menu);
 }
 
-static GtkWidget *
-ctk_tree_menu_create_item (GtkTreeMenu *menu,
-                           GtkTreeIter *iter,
+static CtkWidget *
+ctk_tree_menu_create_item (CtkTreeMenu *menu,
+                           CtkTreeIter *iter,
                            gboolean     header_item)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
-  GtkWidget          *item, *view;
-  GtkTreePath        *path;
+  CtkTreeMenuPrivate *priv = menu->priv;
+  CtkWidget          *item, *view;
+  CtkTreePath        *path;
   gboolean            is_separator = FALSE;
 
   path = ctk_tree_model_get_path (priv->model, iter);
@@ -1325,7 +1325,7 @@ ctk_tree_menu_create_item (GtkTreeMenu *menu,
 
       g_signal_connect (item, "activate", G_CALLBACK (item_activated_cb), menu);
 
-      /* Add a GtkTreeMenu submenu to render the children of this row */
+      /* Add a CtkTreeMenu submenu to render the children of this row */
       if (header_item == FALSE &&
           ctk_tree_model_iter_has_child (priv->model, iter))
         ctk_tree_menu_create_submenu (menu, item, path);
@@ -1337,13 +1337,13 @@ ctk_tree_menu_create_item (GtkTreeMenu *menu,
 }
 
 static inline void
-rebuild_menu (GtkTreeMenu *menu)
+rebuild_menu (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreeMenuPrivate *priv = menu->priv;
 
   /* Destroy all the menu items */
   ctk_container_foreach (CTK_CONTAINER (menu),
-                         (GtkCallback) ctk_widget_destroy, NULL);
+                         (CtkCallback) ctk_widget_destroy, NULL);
 
   /* Populate */
   if (priv->model)
@@ -1352,14 +1352,14 @@ rebuild_menu (GtkTreeMenu *menu)
 
 
 static void
-ctk_tree_menu_populate (GtkTreeMenu *menu)
+ctk_tree_menu_populate (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv = menu->priv;
-  GtkTreePath        *path = NULL;
-  GtkTreeIter         parent;
-  GtkTreeIter         iter;
+  CtkTreeMenuPrivate *priv = menu->priv;
+  CtkTreePath        *path = NULL;
+  CtkTreeIter         parent;
+  CtkTreeIter         iter;
   gboolean            valid = FALSE;
-  GtkWidget          *menu_item, *prev = NULL;
+  CtkWidget          *menu_item, *prev = NULL;
 
   if (!priv->model)
     return;
@@ -1393,7 +1393,7 @@ ctk_tree_menu_populate (GtkTreeMenu *menu)
       valid = ctk_tree_model_iter_children (priv->model, &iter, NULL);
     }
 
-  /* Create a menu item for every row at the current depth, add a GtkTreeMenu
+  /* Create a menu item for every row at the current depth, add a CtkTreeMenu
    * submenu for iters/items that have children */
   while (valid)
     {
@@ -1410,11 +1410,11 @@ ctk_tree_menu_populate (GtkTreeMenu *menu)
 }
 
 static void
-item_activated_cb (GtkMenuItem          *item,
-                   GtkTreeMenu          *menu)
+item_activated_cb (CtkMenuItem          *item,
+                   CtkTreeMenu          *menu)
 {
-  GtkCellView *view;
-  GtkTreePath *path;
+  CtkCellView *view;
+  CtkTreePath *path;
   gchar       *path_str;
 
   /* Only activate leafs, not parents */
@@ -1432,9 +1432,9 @@ item_activated_cb (GtkMenuItem          *item,
 }
 
 static void
-submenu_activated_cb (GtkTreeMenu          *submenu,
+submenu_activated_cb (CtkTreeMenu          *submenu,
                       const gchar          *path,
-                      GtkTreeMenu          *menu)
+                      CtkTreeMenu          *menu)
 {
   g_signal_emit (menu, tree_menu_signals[SIGNAL_MENU_ACTIVATE], 0, path);
 }
@@ -1443,10 +1443,10 @@ submenu_activated_cb (GtkTreeMenu          *submenu,
  * infinite recursion while building submenus (we wait
  * until the root is set and then build the menu) */
 static void
-ctk_tree_menu_set_model_internal (GtkTreeMenu  *menu,
-                                  GtkTreeModel *model)
+ctk_tree_menu_set_model_internal (CtkTreeMenu  *menu,
+                                  CtkTreeModel *model)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   priv = menu->priv;
 
@@ -1497,54 +1497,54 @@ ctk_tree_menu_set_model_internal (GtkTreeMenu  *menu,
 /**
  * _ctk_tree_menu_new:
  *
- * Creates a new #GtkTreeMenu.
+ * Creates a new #CtkTreeMenu.
  *
- * Returns: A newly created #GtkTreeMenu with no model or root.
+ * Returns: A newly created #CtkTreeMenu with no model or root.
  *
  * Since: 3.0
  */
-GtkWidget *
+CtkWidget *
 _ctk_tree_menu_new (void)
 {
-  return (GtkWidget *)g_object_new (CTK_TYPE_TREE_MENU, NULL);
+  return (CtkWidget *)g_object_new (CTK_TYPE_TREE_MENU, NULL);
 }
 
 /*
  * _ctk_tree_menu_new_with_area:
- * @area: the #GtkCellArea to use to render cells in the menu
+ * @area: the #CtkCellArea to use to render cells in the menu
  *
- * Creates a new #GtkTreeMenu using @area to render its cells.
+ * Creates a new #CtkTreeMenu using @area to render its cells.
  *
- * Returns: A newly created #GtkTreeMenu with no model or root.
+ * Returns: A newly created #CtkTreeMenu with no model or root.
  *
  * Since: 3.0
  */
-GtkWidget *
-_ctk_tree_menu_new_with_area (GtkCellArea    *area)
+CtkWidget *
+_ctk_tree_menu_new_with_area (CtkCellArea    *area)
 {
-  return (GtkWidget *)g_object_new (CTK_TYPE_TREE_MENU,
+  return (CtkWidget *)g_object_new (CTK_TYPE_TREE_MENU,
                                     "cell-area", area,
                                     NULL);
 }
 
 /*
  * _ctk_tree_menu_new_full:
- * @area: (allow-none): the #GtkCellArea to use to render cells in the menu, or %NULL.
- * @model: (allow-none): the #GtkTreeModel to build the menu heirarchy from, or %NULL.
- * @root: (allow-none): the #GtkTreePath indicating the root row for this menu, or %NULL.
+ * @area: (allow-none): the #CtkCellArea to use to render cells in the menu, or %NULL.
+ * @model: (allow-none): the #CtkTreeModel to build the menu heirarchy from, or %NULL.
+ * @root: (allow-none): the #CtkTreePath indicating the root row for this menu, or %NULL.
  *
- * Creates a new #GtkTreeMenu hierarchy from the provided @model and @root using @area to render its cells.
+ * Creates a new #CtkTreeMenu hierarchy from the provided @model and @root using @area to render its cells.
  *
- * Returns: A newly created #GtkTreeMenu.
+ * Returns: A newly created #CtkTreeMenu.
  *
  * Since: 3.0
  */
-GtkWidget *
-_ctk_tree_menu_new_full (GtkCellArea         *area,
-                         GtkTreeModel        *model,
-                         GtkTreePath         *root)
+CtkWidget *
+_ctk_tree_menu_new_full (CtkCellArea         *area,
+                         CtkTreeModel        *model,
+                         CtkTreePath         *root)
 {
-  return (GtkWidget *)g_object_new (CTK_TYPE_TREE_MENU,
+  return (CtkWidget *)g_object_new (CTK_TYPE_TREE_MENU,
                                     "cell-area", area,
                                     "model", model,
                                     "root", root,
@@ -1553,16 +1553,16 @@ _ctk_tree_menu_new_full (GtkCellArea         *area,
 
 /*
  * _ctk_tree_menu_set_model:
- * @menu: a #GtkTreeMenu
- * @model: (allow-none): the #GtkTreeModel to build the menu hierarchy from, or %NULL.
+ * @menu: a #CtkTreeMenu
+ * @model: (allow-none): the #CtkTreeModel to build the menu hierarchy from, or %NULL.
  *
  * Sets @model to be used to build the menu heirarhcy.
  *
  * Since: 3.0
  */
 void
-_ctk_tree_menu_set_model (GtkTreeMenu  *menu,
-                          GtkTreeModel *model)
+_ctk_tree_menu_set_model (CtkTreeMenu  *menu,
+                          CtkTreeModel *model)
 {
   g_return_if_fail (CTK_IS_TREE_MENU (menu));
   g_return_if_fail (model == NULL || CTK_IS_TREE_MODEL (model));
@@ -1574,19 +1574,19 @@ _ctk_tree_menu_set_model (GtkTreeMenu  *menu,
 
 /*
  * _ctk_tree_menu_get_model:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  *
  * Gets the @model currently used for the menu heirarhcy.
  *
- * Returns: (transfer none): the #GtkTreeModel which is used
+ * Returns: (transfer none): the #CtkTreeModel which is used
  * for @menu’s hierarchy.
  *
  * Since: 3.0
  */
-GtkTreeModel *
-_ctk_tree_menu_get_model (GtkTreeMenu *menu)
+CtkTreeModel *
+_ctk_tree_menu_get_model (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TREE_MENU (menu), NULL);
 
@@ -1597,8 +1597,8 @@ _ctk_tree_menu_get_model (GtkTreeMenu *menu)
 
 /*
  * _ctk_tree_menu_set_root:
- * @menu: a #GtkTreeMenu
- * @path: (allow-none): the #GtkTreePath which is the root of @menu, or %NULL.
+ * @menu: a #CtkTreeMenu
+ * @path: (allow-none): the #CtkTreePath which is the root of @menu, or %NULL.
  *
  * Sets the root of a @menu’s hierarchy to be @path. @menu must already
  * have a model set and @path must point to a valid path inside the model.
@@ -1606,10 +1606,10 @@ _ctk_tree_menu_get_model (GtkTreeMenu *menu)
  * Since: 3.0
  */
 void
-_ctk_tree_menu_set_root (GtkTreeMenu *menu,
-                         GtkTreePath *path)
+_ctk_tree_menu_set_root (CtkTreeMenu *menu,
+                         CtkTreePath *path)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_MENU (menu));
   g_return_if_fail (menu->priv->model != NULL || path == NULL);
@@ -1629,20 +1629,20 @@ _ctk_tree_menu_set_root (GtkTreeMenu *menu,
 
 /*
  * _ctk_tree_menu_get_root:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  *
  * Gets the @root path for @menu’s hierarchy, or returns %NULL if @menu
  * has no model or is building a heirarchy for the entire model. *
  *
- * Returns: (transfer full) (allow-none): A newly created #GtkTreePath
+ * Returns: (transfer full) (allow-none): A newly created #CtkTreePath
  * pointing to the root of @menu which must be freed with ctk_tree_path_free().
  *
  * Since: 3.0
  */
-GtkTreePath *
-_ctk_tree_menu_get_root (GtkTreeMenu *menu)
+CtkTreePath *
+_ctk_tree_menu_get_root (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TREE_MENU (menu), NULL);
 
@@ -1656,7 +1656,7 @@ _ctk_tree_menu_get_root (GtkTreeMenu *menu)
 
 /*
  * _ctk_tree_menu_get_tearoff:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  *
  * Gets whether this menu is build with a leading tearoff menu item.
  *
@@ -1665,9 +1665,9 @@ _ctk_tree_menu_get_root (GtkTreeMenu *menu)
  * Since: 3.0
  */
 gboolean
-_ctk_tree_menu_get_tearoff (GtkTreeMenu *menu)
+_ctk_tree_menu_get_tearoff (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TREE_MENU (menu), FALSE);
 
@@ -1678,7 +1678,7 @@ _ctk_tree_menu_get_tearoff (GtkTreeMenu *menu)
 
 /*
  * _ctk_tree_menu_set_tearoff:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  * @tearoff: whether the menu should have a leading tearoff menu item.
  *
  * Sets whether this menu has a leading tearoff menu item.
@@ -1686,10 +1686,10 @@ _ctk_tree_menu_get_tearoff (GtkTreeMenu *menu)
  * Since: 3.0
  */
 void
-_ctk_tree_menu_set_tearoff (GtkTreeMenu *menu,
+_ctk_tree_menu_set_tearoff (CtkTreeMenu *menu,
                             gboolean     tearoff)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_MENU (menu));
 
@@ -1707,7 +1707,7 @@ _ctk_tree_menu_set_tearoff (GtkTreeMenu *menu,
 
 /*
  * _ctk_tree_menu_get_wrap_width:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  *
  * Gets the wrap width which is used to determine the number of columns
  * for @menu. If the wrap width is larger than 1, @menu is in table mode.
@@ -1717,9 +1717,9 @@ _ctk_tree_menu_set_tearoff (GtkTreeMenu *menu,
  * Since: 3.0
  */
 gint
-_ctk_tree_menu_get_wrap_width (GtkTreeMenu *menu)
+_ctk_tree_menu_get_wrap_width (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TREE_MENU (menu), FALSE);
 
@@ -1730,7 +1730,7 @@ _ctk_tree_menu_get_wrap_width (GtkTreeMenu *menu)
 
 /*
  * _ctk_tree_menu_set_wrap_width:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  * @width: the wrap width
  *
  * Sets the wrap width which is used to determine the number of columns
@@ -1739,10 +1739,10 @@ _ctk_tree_menu_get_wrap_width (GtkTreeMenu *menu)
  * Since: 3.0
  */
 void
-_ctk_tree_menu_set_wrap_width (GtkTreeMenu *menu,
+_ctk_tree_menu_set_wrap_width (CtkTreeMenu *menu,
                                gint         width)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_MENU (menu));
   g_return_if_fail (width >= 0);
@@ -1761,7 +1761,7 @@ _ctk_tree_menu_set_wrap_width (GtkTreeMenu *menu,
 
 /*
  * _ctk_tree_menu_get_row_span_column:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  *
  * Gets the column with row span information for @menu.
  * The row span column contains integers which indicate how many rows
@@ -1772,9 +1772,9 @@ _ctk_tree_menu_set_wrap_width (GtkTreeMenu *menu,
  * Since: 3.0
  */
 gint
-_ctk_tree_menu_get_row_span_column (GtkTreeMenu *menu)
+_ctk_tree_menu_get_row_span_column (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TREE_MENU (menu), FALSE);
 
@@ -1785,7 +1785,7 @@ _ctk_tree_menu_get_row_span_column (GtkTreeMenu *menu)
 
 /*
  * _ctk_tree_menu_set_row_span_column:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  * @row_span: the column in the model to fetch the row span for a given menu item.
  *
  * Sets the column with row span information for @menu to be @row_span.
@@ -1795,10 +1795,10 @@ _ctk_tree_menu_get_row_span_column (GtkTreeMenu *menu)
  * Since: 3.0
  */
 void
-_ctk_tree_menu_set_row_span_column (GtkTreeMenu *menu,
+_ctk_tree_menu_set_row_span_column (CtkTreeMenu *menu,
                                     gint         row_span)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_MENU (menu));
 
@@ -1817,7 +1817,7 @@ _ctk_tree_menu_set_row_span_column (GtkTreeMenu *menu,
 
 /*
  * _ctk_tree_menu_get_column_span_column:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  *
  * Gets the column with column span information for @menu.
  * The column span column contains integers which indicate how many columns
@@ -1828,9 +1828,9 @@ _ctk_tree_menu_set_row_span_column (GtkTreeMenu *menu,
  * Since: 3.0
  */
 gint
-_ctk_tree_menu_get_column_span_column (GtkTreeMenu *menu)
+_ctk_tree_menu_get_column_span_column (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TREE_MENU (menu), FALSE);
 
@@ -1841,7 +1841,7 @@ _ctk_tree_menu_get_column_span_column (GtkTreeMenu *menu)
 
 /*
  * _ctk_tree_menu_set_column_span_column:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  * @column_span: the column in the model to fetch the column span for a given menu item.
  *
  * Sets the column with column span information for @menu to be @column_span.
@@ -1851,10 +1851,10 @@ _ctk_tree_menu_get_column_span_column (GtkTreeMenu *menu)
  * Since: 3.0
  */
 void
-_ctk_tree_menu_set_column_span_column (GtkTreeMenu *menu,
+_ctk_tree_menu_set_column_span_column (CtkTreeMenu *menu,
                                        gint         column_span)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_MENU (menu));
 
@@ -1873,18 +1873,18 @@ _ctk_tree_menu_set_column_span_column (GtkTreeMenu *menu,
 
 /*
  * _ctk_tree_menu_get_row_separator_func:
- * @menu: a #GtkTreeMenu
+ * @menu: a #CtkTreeMenu
  *
- * Gets the current #GtkTreeViewRowSeparatorFunc separator function.
+ * Gets the current #CtkTreeViewRowSeparatorFunc separator function.
  *
  * Returns: the current row separator function.
  *
  * Since: 3.0
  */
-GtkTreeViewRowSeparatorFunc
-_ctk_tree_menu_get_row_separator_func (GtkTreeMenu *menu)
+CtkTreeViewRowSeparatorFunc
+_ctk_tree_menu_get_row_separator_func (CtkTreeMenu *menu)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_TREE_MENU (menu), NULL);
 
@@ -1895,8 +1895,8 @@ _ctk_tree_menu_get_row_separator_func (GtkTreeMenu *menu)
 
 /*
  * _ctk_tree_menu_set_row_separator_func:
- * @menu: a #GtkTreeMenu
- * @func: (allow-none): a #GtkTreeViewRowSeparatorFunc, or %NULL to unset the separator function.
+ * @menu: a #CtkTreeMenu
+ * @func: (allow-none): a #CtkTreeViewRowSeparatorFunc, or %NULL to unset the separator function.
  * @data: (allow-none): user data to pass to @func, or %NULL
  * @destroy: (allow-none): destroy notifier for @data, or %NULL
  *
@@ -1907,12 +1907,12 @@ _ctk_tree_menu_get_row_separator_func (GtkTreeMenu *menu)
  * Since: 3.0
  */
 void
-_ctk_tree_menu_set_row_separator_func (GtkTreeMenu          *menu,
-                                       GtkTreeViewRowSeparatorFunc func,
+_ctk_tree_menu_set_row_separator_func (CtkTreeMenu          *menu,
+                                       CtkTreeViewRowSeparatorFunc func,
                                        gpointer              data,
                                        GDestroyNotify        destroy)
 {
-  GtkTreeMenuPrivate *priv;
+  CtkTreeMenuPrivate *priv;
 
   g_return_if_fail (CTK_IS_TREE_MENU (menu));
 

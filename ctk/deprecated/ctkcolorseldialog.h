@@ -35,29 +35,29 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_SELECTION_DIALOG            (ctk_color_selection_dialog_get_type ())
-#define CTK_COLOR_SELECTION_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialog))
-#define CTK_COLOR_SELECTION_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialogClass))
+#define CTK_COLOR_SELECTION_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SELECTION_DIALOG, CtkColorSelectionDialog))
+#define CTK_COLOR_SELECTION_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SELECTION_DIALOG, CtkColorSelectionDialogClass))
 #define CTK_IS_COLOR_SELECTION_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_SELECTION_DIALOG))
 #define CTK_IS_COLOR_SELECTION_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_SELECTION_DIALOG))
-#define CTK_COLOR_SELECTION_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialogClass))
+#define CTK_COLOR_SELECTION_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SELECTION_DIALOG, CtkColorSelectionDialogClass))
 
 
-typedef struct _GtkColorSelectionDialog              GtkColorSelectionDialog;
-typedef struct _GtkColorSelectionDialogPrivate       GtkColorSelectionDialogPrivate;
-typedef struct _GtkColorSelectionDialogClass         GtkColorSelectionDialogClass;
+typedef struct _CtkColorSelectionDialog              CtkColorSelectionDialog;
+typedef struct _CtkColorSelectionDialogPrivate       CtkColorSelectionDialogPrivate;
+typedef struct _CtkColorSelectionDialogClass         CtkColorSelectionDialogClass;
 
 
-struct _GtkColorSelectionDialog
+struct _CtkColorSelectionDialog
 {
-  GtkDialog parent_instance;
+  CtkDialog parent_instance;
 
   /*< private >*/
-  GtkColorSelectionDialogPrivate *priv;
+  CtkColorSelectionDialogPrivate *priv;
 };
 
-struct _GtkColorSelectionDialogClass
+struct _CtkColorSelectionDialogClass
 {
-  GtkDialogClass parent_class;
+  CtkDialogClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -71,9 +71,9 @@ struct _GtkColorSelectionDialogClass
 GDK_DEPRECATED_IN_3_4
 GType      ctk_color_selection_dialog_get_type            (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_dialog_new)
-GtkWidget* ctk_color_selection_dialog_new                 (const gchar *title);
-GDK_DEPRECATED_IN_3_4_FOR(GtkColorChooser)
-GtkWidget* ctk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorsel);
+CtkWidget* ctk_color_selection_dialog_new                 (const gchar *title);
+GDK_DEPRECATED_IN_3_4_FOR(CtkColorChooser)
+CtkWidget* ctk_color_selection_dialog_get_color_selection (CtkColorSelectionDialog *colorsel);
 
 
 G_END_DECLS

@@ -23,32 +23,32 @@
 G_BEGIN_DECLS
 
 
-void            _ctk_text_buffer_spew                  (GtkTextBuffer      *buffer);
+void            _ctk_text_buffer_spew                  (CtkTextBuffer      *buffer);
 
-GtkTextBTree*   _ctk_text_buffer_get_btree             (GtkTextBuffer      *buffer);
+CtkTextBTree*   _ctk_text_buffer_get_btree             (CtkTextBuffer      *buffer);
 
-const PangoLogAttr* _ctk_text_buffer_get_line_log_attrs (GtkTextBuffer     *buffer,
-                                                         const GtkTextIter *anywhere_in_line,
+const PangoLogAttr* _ctk_text_buffer_get_line_log_attrs (CtkTextBuffer     *buffer,
+                                                         const CtkTextIter *anywhere_in_line,
                                                          gint              *char_len);
 
-void _ctk_text_buffer_notify_will_remove_tag (GtkTextBuffer *buffer,
-                                              GtkTextTag    *tag);
+void _ctk_text_buffer_notify_will_remove_tag (CtkTextBuffer *buffer,
+                                              CtkTextTag    *tag);
 
-void _ctk_text_buffer_get_text_before (GtkTextBuffer   *buffer,
+void _ctk_text_buffer_get_text_before (CtkTextBuffer   *buffer,
                                        AtkTextBoundary  boundary_type,
-                                       GtkTextIter     *position,
-                                       GtkTextIter     *start,
-                                       GtkTextIter     *end);
-void _ctk_text_buffer_get_text_at     (GtkTextBuffer   *buffer,
+                                       CtkTextIter     *position,
+                                       CtkTextIter     *start,
+                                       CtkTextIter     *end);
+void _ctk_text_buffer_get_text_at     (CtkTextBuffer   *buffer,
                                        AtkTextBoundary  boundary_type,
-                                       GtkTextIter     *position,
-                                       GtkTextIter     *start,
-                                       GtkTextIter     *end);
-void _ctk_text_buffer_get_text_after  (GtkTextBuffer   *buffer,
+                                       CtkTextIter     *position,
+                                       CtkTextIter     *start,
+                                       CtkTextIter     *end);
+void _ctk_text_buffer_get_text_after  (CtkTextBuffer   *buffer,
                                        AtkTextBoundary  boundary_type,
-                                       GtkTextIter     *position,
-                                       GtkTextIter     *start,
-                                       GtkTextIter     *end);
+                                       CtkTextIter     *position,
+                                       CtkTextIter     *start,
+                                       CtkTextIter     *end);
 
 G_END_DECLS
 

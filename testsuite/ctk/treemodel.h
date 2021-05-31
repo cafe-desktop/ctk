@@ -40,19 +40,19 @@ enum _SignalName
 };
 
 
-SignalMonitor *signal_monitor_new                     (GtkTreeModel  *client);
+SignalMonitor *signal_monitor_new                     (CtkTreeModel  *client);
 void           signal_monitor_free                    (SignalMonitor *m);
 
 void           signal_monitor_assert_is_empty         (SignalMonitor *m);
 
 void           signal_monitor_append_signal_reordered (SignalMonitor *m,
                                                        SignalName     signal,
-                                                       GtkTreePath   *path,
+                                                       CtkTreePath   *path,
                                                        int           *new_order,
                                                        int            len);
 void           signal_monitor_append_signal_path      (SignalMonitor *m,
                                                        SignalName     signal,
-                                                       GtkTreePath   *path);
+                                                       CtkTreePath   *path);
 void           signal_monitor_append_signal           (SignalMonitor *m,
                                                        SignalName     signal,
                                                        const gchar   *path_string);

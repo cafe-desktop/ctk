@@ -21,25 +21,25 @@
 #include <ctk/ctkscrolledwindow.h>
 
 #define CTK_TYPE_INSPECTOR_VISUAL            (ctk_inspector_visual_get_type())
-#define CTK_INSPECTOR_VISUAL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_VISUAL, GtkInspectorVisual))
-#define CTK_INSPECTOR_VISUAL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_VISUAL, GtkInspectorVisualClass))
+#define CTK_INSPECTOR_VISUAL(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_VISUAL, CtkInspectorVisual))
+#define CTK_INSPECTOR_VISUAL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_VISUAL, CtkInspectorVisualClass))
 #define CTK_INSPECTOR_IS_VISUAL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_VISUAL))
 #define CTK_INSPECTOR_IS_VISUAL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_VISUAL))
-#define CTK_INSPECTOR_VISUAL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_VISUAL, GtkInspectorVisualClass))
+#define CTK_INSPECTOR_VISUAL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_VISUAL, CtkInspectorVisualClass))
 
 
-typedef struct _GtkInspectorVisualPrivate GtkInspectorVisualPrivate;
+typedef struct _CtkInspectorVisualPrivate CtkInspectorVisualPrivate;
 
-typedef struct _GtkInspectorVisual
+typedef struct _CtkInspectorVisual
 {
-  GtkScrolledWindow parent;
-  GtkInspectorVisualPrivate *priv;
-} GtkInspectorVisual;
+  CtkScrolledWindow parent;
+  CtkInspectorVisualPrivate *priv;
+} CtkInspectorVisual;
 
-typedef struct _GtkInspectorVisualClass
+typedef struct _CtkInspectorVisualClass
 {
-  GtkScrolledWindowClass parent;
-} GtkInspectorVisualClass;
+  CtkScrolledWindowClass parent;
+} CtkInspectorVisualClass;
 
 G_BEGIN_DECLS
 

@@ -23,11 +23,11 @@
 
 /**
  * SECTION:ctklinkbutton
- * @Title: GtkLinkButton
+ * @Title: CtkLinkButton
  * @Short_description: Create buttons bound to a URL
- * @See_also: #GtkButton
+ * @See_also: #CtkButton
  *
- * A GtkLinkButton is a #GtkButton with a hyperlink, similar to the one
+ * A CtkLinkButton is a #CtkButton with a hyperlink, similar to the one
  * used by web browsers, which triggers an action when clicked. It is useful
  * to show quick links to resources.
  *
@@ -35,18 +35,18 @@
  * ctk_link_button_new_with_label(). If using the former, the URI you pass
  * to the constructor is used as a label for the widget.
  *
- * The URI bound to a GtkLinkButton can be set specifically using
+ * The URI bound to a CtkLinkButton can be set specifically using
  * ctk_link_button_set_uri(), and retrieved using ctk_link_button_get_uri().
  *
- * By default, GtkLinkButton calls ctk_show_uri_on_window() when the button is
+ * By default, CtkLinkButton calls ctk_show_uri_on_window() when the button is
  * clicked. This behaviour can be overridden by connecting to the
- * #GtkLinkButton::activate-link signal and returning %TRUE from the
+ * #CtkLinkButton::activate-link signal and returning %TRUE from the
  * signal handler.
  *
  * # CSS nodes
  *
- * GtkLinkButton has a single CSS node with name button. To differentiate
- * it from a plain #GtkButton, it gets the .link style class.
+ * CtkLinkButton has a single CSS node with name button. To differentiate
+ * it from a plain #CtkButton, it gets the .link style class.
  */
 
 #include "config.h"
@@ -71,13 +71,13 @@
 
 #include "a11y/ctklinkbuttonaccessible.h"
 
-struct _GtkLinkButtonPrivate
+struct _CtkLinkButtonPrivate
 {
   gchar *uri;
 
   gboolean visited;
 
-  GtkWidget *popup_menu;
+  CtkWidget *popup_menu;
 };
 
 enum
@@ -103,43 +103,43 @@ static void     ctk_link_button_set_property (GObject          *object,
 					      guint             prop_id,
 					      const GValue     *value,
 					      GParamSpec       *pspec);
-static gboolean ctk_link_button_button_press (GtkWidget        *widget,
+static gboolean ctk_link_button_button_press (CtkWidget        *widget,
 					      GdkEventButton   *event);
-static void     ctk_link_button_clicked      (GtkButton        *button);
-static gboolean ctk_link_button_popup_menu   (GtkWidget        *widget);
-static void     ctk_link_button_realize      (GtkWidget        *widget);
-static void     ctk_link_button_unrealize    (GtkWidget        *widget);
-static void     ctk_link_button_drag_begin   (GtkWidget        *widget,
+static void     ctk_link_button_clicked      (CtkButton        *button);
+static gboolean ctk_link_button_popup_menu   (CtkWidget        *widget);
+static void     ctk_link_button_realize      (CtkWidget        *widget);
+static void     ctk_link_button_unrealize    (CtkWidget        *widget);
+static void     ctk_link_button_drag_begin   (CtkWidget        *widget,
                                               GdkDragContext   *context);
-static void ctk_link_button_drag_data_get_cb (GtkWidget        *widget,
+static void ctk_link_button_drag_data_get_cb (CtkWidget        *widget,
 					      GdkDragContext   *context,
-					      GtkSelectionData *selection,
+					      CtkSelectionData *selection,
 					      guint             _info,
 					      guint             _time,
 					      gpointer          user_data);
-static gboolean ctk_link_button_query_tooltip_cb (GtkWidget    *widget,
+static gboolean ctk_link_button_query_tooltip_cb (CtkWidget    *widget,
                                                   gint          x,
                                                   gint          y,
                                                   gboolean      keyboard_tip,
-                                                  GtkTooltip   *tooltip,
+                                                  CtkTooltip   *tooltip,
                                                   gpointer      data);
-static gboolean ctk_link_button_activate_link (GtkLinkButton *link_button);
+static gboolean ctk_link_button_activate_link (CtkLinkButton *link_button);
 
-static const GtkTargetEntry link_drop_types[] = {
+static const CtkTargetEntry link_drop_types[] = {
   { "text/uri-list", 0, 0 },
   { "_NETSCAPE_URL", 0, 0 }
 };
 
 static guint link_signals[LAST_SIGNAL] = { 0, };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkLinkButton, ctk_link_button, CTK_TYPE_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkLinkButton, ctk_link_button, CTK_TYPE_BUTTON)
 
 static void
-ctk_link_button_class_init (GtkLinkButtonClass *klass)
+ctk_link_button_class_init (CtkLinkButtonClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkButtonClass *button_class = CTK_BUTTON_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkButtonClass *button_class = CTK_BUTTON_CLASS (klass);
 
   gobject_class->set_property = ctk_link_button_set_property;
   gobject_class->get_property = ctk_link_button_get_property;
@@ -156,7 +156,7 @@ ctk_link_button_class_init (GtkLinkButtonClass *klass)
   klass->activate_link = ctk_link_button_activate_link;
 
   /**
-   * GtkLinkButton:uri:
+   * CtkLinkButton:uri:
    *
    * The URI bound to this button.
    *
@@ -171,7 +171,7 @@ ctk_link_button_class_init (GtkLinkButtonClass *klass)
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkLinkButton:visited:
+   * CtkLinkButton:visited:
    *
    * The 'visited' state of this button. A visited link is drawn in a
    * different color.
@@ -187,14 +187,14 @@ ctk_link_button_class_init (GtkLinkButtonClass *klass)
                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkLinkButton::activate-link:
-   * @button: the #GtkLinkButton that emitted the signal
+   * CtkLinkButton::activate-link:
+   * @button: the #CtkLinkButton that emitted the signal
    *
-   * The ::activate-link signal is emitted each time the #GtkLinkButton
+   * The ::activate-link signal is emitted each time the #CtkLinkButton
    * has been clicked.
    *
    * The default handler will call ctk_show_uri_on_window() with the URI stored inside
-   * the #GtkLinkButton:uri property.
+   * the #CtkLinkButton:uri property.
    *
    * To override the default behavior, you can connect to the ::activate-link
    * signal and stop the propagation of the signal by returning %TRUE from
@@ -204,7 +204,7 @@ ctk_link_button_class_init (GtkLinkButtonClass *klass)
     g_signal_new (I_("activate-link"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkLinkButtonClass, activate_link),
+                  G_STRUCT_OFFSET (CtkLinkButtonClass, activate_link),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__VOID,
                   G_TYPE_BOOLEAN, 0);
@@ -214,9 +214,9 @@ ctk_link_button_class_init (GtkLinkButtonClass *klass)
 }
 
 static void
-ctk_link_button_init (GtkLinkButton *link_button)
+ctk_link_button_init (CtkLinkButton *link_button)
 {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
 
   link_button->priv = ctk_link_button_get_instance_private (link_button);
 
@@ -243,7 +243,7 @@ ctk_link_button_init (GtkLinkButton *link_button)
 static void
 ctk_link_button_finalize (GObject *object)
 {
-  GtkLinkButton *link_button = CTK_LINK_BUTTON (object);
+  CtkLinkButton *link_button = CTK_LINK_BUTTON (object);
   
   g_free (link_button->priv->uri);
   
@@ -256,7 +256,7 @@ ctk_link_button_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-  GtkLinkButton *link_button = CTK_LINK_BUTTON (object);
+  CtkLinkButton *link_button = CTK_LINK_BUTTON (object);
   
   switch (prop_id)
     {
@@ -278,7 +278,7 @@ ctk_link_button_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-  GtkLinkButton *link_button = CTK_LINK_BUTTON (object);
+  CtkLinkButton *link_button = CTK_LINK_BUTTON (object);
   
   switch (prop_id)
     {
@@ -295,7 +295,7 @@ ctk_link_button_set_property (GObject      *object,
 }
 
 static void
-set_hand_cursor (GtkWidget *widget,
+set_hand_cursor (CtkWidget *widget,
 		 gboolean   show_hand)
 {
   GdkDisplay *display;
@@ -315,7 +315,7 @@ set_hand_cursor (GtkWidget *widget,
 }
 
 static void
-ctk_link_button_realize (GtkWidget *widget)
+ctk_link_button_realize (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_link_button_parent_class)->realize (widget);
 
@@ -323,7 +323,7 @@ ctk_link_button_realize (GtkWidget *widget)
 }
 
 static void
-ctk_link_button_unrealize (GtkWidget *widget)
+ctk_link_button_unrealize (CtkWidget *widget)
 {
   set_hand_cursor (widget, FALSE);
 
@@ -331,19 +331,19 @@ ctk_link_button_unrealize (GtkWidget *widget)
 }
 
 static void
-popup_menu_detach (GtkWidget *attach_widget,
-		   GtkMenu   *menu)
+popup_menu_detach (CtkWidget *attach_widget,
+		   CtkMenu   *menu)
 {
-  GtkLinkButton *link_button = CTK_LINK_BUTTON (attach_widget);
+  CtkLinkButton *link_button = CTK_LINK_BUTTON (attach_widget);
 
   link_button->priv->popup_menu = NULL;
 }
 
 static void
-copy_activate_cb (GtkWidget     *widget,
-		  GtkLinkButton *link_button)
+copy_activate_cb (CtkWidget     *widget,
+		  CtkLinkButton *link_button)
 {
-  GtkLinkButtonPrivate *priv = link_button->priv;
+  CtkLinkButtonPrivate *priv = link_button->priv;
   
   ctk_clipboard_set_text (ctk_widget_get_clipboard (CTK_WIDGET (link_button),
 			  			    GDK_SELECTION_CLIPBOARD),
@@ -351,14 +351,14 @@ copy_activate_cb (GtkWidget     *widget,
 }
 
 static void
-ctk_link_button_do_popup (GtkLinkButton  *link_button,
+ctk_link_button_do_popup (CtkLinkButton  *link_button,
                           const GdkEvent *event)
 {
-  GtkLinkButtonPrivate *priv = link_button->priv;
+  CtkLinkButtonPrivate *priv = link_button->priv;
 
   if (ctk_widget_get_realized (CTK_WIDGET (link_button)))
     {
-      GtkWidget *menu_item;
+      CtkWidget *menu_item;
 
       if (priv->popup_menu)
 	ctk_widget_destroy (priv->popup_menu);
@@ -393,7 +393,7 @@ ctk_link_button_do_popup (GtkLinkButton  *link_button,
 }
 
 static gboolean
-ctk_link_button_button_press (GtkWidget      *widget,
+ctk_link_button_button_press (CtkWidget      *widget,
 			      GdkEventButton *event)
 {
   if (!ctk_widget_has_focus (widget))
@@ -416,9 +416,9 @@ ctk_link_button_button_press (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_link_button_activate_link (GtkLinkButton *link_button)
+ctk_link_button_activate_link (CtkLinkButton *link_button)
 {
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
   GError *error;
 
   toplevel = ctk_widget_get_toplevel (CTK_WIDGET (link_button));
@@ -441,7 +441,7 @@ ctk_link_button_activate_link (GtkLinkButton *link_button)
 }
 
 static void
-ctk_link_button_clicked (GtkButton *button)
+ctk_link_button_clicked (CtkButton *button)
 {
   gboolean retval = FALSE;
 
@@ -449,7 +449,7 @@ ctk_link_button_clicked (GtkButton *button)
 }
 
 static gboolean
-ctk_link_button_popup_menu (GtkWidget *widget)
+ctk_link_button_popup_menu (CtkWidget *widget)
 {
   ctk_link_button_do_popup (CTK_LINK_BUTTON (widget), NULL);
 
@@ -457,21 +457,21 @@ ctk_link_button_popup_menu (GtkWidget *widget)
 }
 
 static void
-ctk_link_button_drag_begin (GtkWidget      *widget,
+ctk_link_button_drag_begin (CtkWidget      *widget,
                             GdkDragContext *context)
 {
   ctk_drag_set_icon_name (context, "text-x-generic", 0, 0);
 }
 
 static void
-ctk_link_button_drag_data_get_cb (GtkWidget        *widget,
+ctk_link_button_drag_data_get_cb (CtkWidget        *widget,
 				  GdkDragContext   *context,
-				  GtkSelectionData *selection,
+				  CtkSelectionData *selection,
 				  guint             _info,
 				  guint             _time,
 				  gpointer          user_data)
 {
-  GtkLinkButton *link_button = CTK_LINK_BUTTON (widget);
+  CtkLinkButton *link_button = CTK_LINK_BUTTON (widget);
   gchar *uri;
   
   uri = g_strdup_printf ("%s\r\n", link_button->priv->uri);
@@ -488,17 +488,17 @@ ctk_link_button_drag_data_get_cb (GtkWidget        *widget,
  * ctk_link_button_new:
  * @uri: a valid URI
  *
- * Creates a new #GtkLinkButton with the URI as its text.
+ * Creates a new #CtkLinkButton with the URI as its text.
  *
  * Returns: a new link button widget.
  *
  * Since: 2.10
  */
-GtkWidget *
+CtkWidget *
 ctk_link_button_new (const gchar *uri)
 {
   gchar *utf8_uri = NULL;
-  GtkWidget *retval;
+  CtkWidget *retval;
   
   g_return_val_if_fail (uri != NULL, NULL);
   
@@ -538,17 +538,17 @@ ctk_link_button_new (const gchar *uri)
  * @uri: a valid URI
  * @label: (allow-none): the text of the button
  *
- * Creates a new #GtkLinkButton containing a label.
+ * Creates a new #CtkLinkButton containing a label.
  *
  * Returns: (transfer none): a new link button widget.
  *
  * Since: 2.10
  */
-GtkWidget *
+CtkWidget *
 ctk_link_button_new_with_label (const gchar *uri,
 				const gchar *label)
 {
-  GtkWidget *retval;
+  CtkWidget *retval;
   
   g_return_val_if_fail (uri != NULL, NULL);
   
@@ -564,14 +564,14 @@ ctk_link_button_new_with_label (const gchar *uri,
 }
 
 static gboolean 
-ctk_link_button_query_tooltip_cb (GtkWidget    *widget,
+ctk_link_button_query_tooltip_cb (CtkWidget    *widget,
                                   gint          x,
                                   gint          y,
                                   gboolean      keyboard_tip,
-                                  GtkTooltip   *tooltip,
+                                  CtkTooltip   *tooltip,
                                   gpointer      data)
 {
-  GtkLinkButton *link_button = CTK_LINK_BUTTON (widget);
+  CtkLinkButton *link_button = CTK_LINK_BUTTON (widget);
   const gchar *label, *uri;
   gchar *text, *markup;
 
@@ -598,19 +598,19 @@ ctk_link_button_query_tooltip_cb (GtkWidget    *widget,
 
 /**
  * ctk_link_button_set_uri:
- * @link_button: a #GtkLinkButton
+ * @link_button: a #CtkLinkButton
  * @uri: a valid URI
  *
- * Sets @uri as the URI where the #GtkLinkButton points. As a side-effect
+ * Sets @uri as the URI where the #CtkLinkButton points. As a side-effect
  * this unsets the “visited” state of the button.
  *
  * Since: 2.10
  */
 void
-ctk_link_button_set_uri (GtkLinkButton *link_button,
+ctk_link_button_set_uri (CtkLinkButton *link_button,
 			 const gchar   *uri)
 {
-  GtkLinkButtonPrivate *priv;
+  CtkLinkButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_LINK_BUTTON (link_button));
   g_return_if_fail (uri != NULL);
@@ -627,7 +627,7 @@ ctk_link_button_set_uri (GtkLinkButton *link_button,
 
 /**
  * ctk_link_button_get_uri:
- * @link_button: a #GtkLinkButton
+ * @link_button: a #CtkLinkButton
  *
  * Retrieves the URI set using ctk_link_button_set_uri().
  *
@@ -637,7 +637,7 @@ ctk_link_button_set_uri (GtkLinkButton *link_button,
  * Since: 2.10
  */
 const gchar *
-ctk_link_button_get_uri (GtkLinkButton *link_button)
+ctk_link_button_get_uri (CtkLinkButton *link_button)
 {
   g_return_val_if_fail (CTK_IS_LINK_BUTTON (link_button), NULL);
   
@@ -646,16 +646,16 @@ ctk_link_button_get_uri (GtkLinkButton *link_button)
 
 /**
  * ctk_link_button_set_visited:
- * @link_button: a #GtkLinkButton
+ * @link_button: a #CtkLinkButton
  * @visited: the new “visited” state
  *
- * Sets the “visited” state of the URI where the #GtkLinkButton
+ * Sets the “visited” state of the URI where the #CtkLinkButton
  * points.  See ctk_link_button_get_visited() for more details.
  *
  * Since: 2.14
  */
 void
-ctk_link_button_set_visited (GtkLinkButton *link_button,
+ctk_link_button_set_visited (CtkLinkButton *link_button,
                              gboolean       visited)
 {
   g_return_if_fail (CTK_IS_LINK_BUTTON (link_button));
@@ -683,9 +683,9 @@ ctk_link_button_set_visited (GtkLinkButton *link_button,
 
 /**
  * ctk_link_button_get_visited:
- * @link_button: a #GtkLinkButton
+ * @link_button: a #CtkLinkButton
  *
- * Retrieves the “visited” state of the URI where the #GtkLinkButton
+ * Retrieves the “visited” state of the URI where the #CtkLinkButton
  * points. The button becomes visited when it is clicked. If the URI
  * is changed on the button, the “visited” state is unset again.
  *
@@ -696,7 +696,7 @@ ctk_link_button_set_visited (GtkLinkButton *link_button,
  * Since: 2.14
  */
 gboolean
-ctk_link_button_get_visited (GtkLinkButton *link_button)
+ctk_link_button_get_visited (CtkLinkButton *link_button)
 {
   g_return_val_if_fail (CTK_IS_LINK_BUTTON (link_button), FALSE);
   

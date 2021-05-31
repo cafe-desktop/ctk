@@ -23,30 +23,30 @@
 
 
 #define CTK_TYPE_INSPECTOR_STRV_EDITOR            (ctk_inspector_strv_editor_get_type())
-#define CTK_INSPECTOR_STRV_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_STRV_EDITOR, GtkInspectorStrvEditor))
-#define CTK_INSPECTOR_STRV_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_STRV_EDITOR, GtkInspectorStrvEditorClass))
+#define CTK_INSPECTOR_STRV_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_STRV_EDITOR, CtkInspectorStrvEditor))
+#define CTK_INSPECTOR_STRV_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_STRV_EDITOR, CtkInspectorStrvEditorClass))
 #define CTK_INSPECTOR_IS_STRV_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_STRV_EDITOR))
 #define CTK_INSPECTOR_IS_STRV_EDITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_STRV_EDITOR))
-#define CTK_INSPECTOR_STRV_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_STRV_EDITOR, GtkInspectorStrvEditorClass))
+#define CTK_INSPECTOR_STRV_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_STRV_EDITOR, CtkInspectorStrvEditorClass))
 
 
 typedef struct
 {
-  GtkBox parent;
+  CtkBox parent;
 
-  GtkWidget *box;
-  GtkWidget *button;
+  CtkWidget *box;
+  CtkWidget *button;
 
   gboolean blocked;
-} GtkInspectorStrvEditor;
+} CtkInspectorStrvEditor;
 
 typedef struct
 {
-  GtkBoxClass parent;
+  CtkBoxClass parent;
 
-  void (* changed) (GtkInspectorStrvEditor *editor);
+  void (* changed) (CtkInspectorStrvEditor *editor);
 
-} GtkInspectorStrvEditorClass;
+} CtkInspectorStrvEditorClass;
 
 
 G_BEGIN_DECLS
@@ -54,10 +54,10 @@ G_BEGIN_DECLS
 
 GType ctk_inspector_strv_editor_get_type (void);
 
-void    ctk_inspector_strv_editor_set_strv (GtkInspectorStrvEditor  *editor,
+void    ctk_inspector_strv_editor_set_strv (CtkInspectorStrvEditor  *editor,
                                             gchar                  **strv);
 
-gchar **ctk_inspector_strv_editor_get_strv (GtkInspectorStrvEditor  *editor);
+gchar **ctk_inspector_strv_editor_get_strv (CtkInspectorStrvEditor  *editor);
 
 G_END_DECLS
 

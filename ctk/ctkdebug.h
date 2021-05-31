@@ -57,7 +57,7 @@ typedef enum {
   CTK_DEBUG_ACTIONS         = 1 << 19,
   CTK_DEBUG_RESIZE          = 1 << 20,
   CTK_DEBUG_LAYOUT          = 1 << 21
-} GtkDebugFlag;
+} CtkDebugFlag;
 
 #ifdef G_ENABLE_DEBUG
 

@@ -1,7 +1,7 @@
 /* Icon View/Icon View Basics
  *
- * The GtkIconView widget is used to display and manipulate icons.
- * It uses a GtkTreeModel for data storage, so the list store
+ * The CtkIconView widget is used to display and manipulate icons.
+ * It uses a CtkTreeModel for data storage, so the list store
  * example might be helpful.
  */
 
@@ -9,7 +9,7 @@
 #include <ctk/ctk.h>
 #include <string.h>
 
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 
 #define FOLDER_NAME "/iconview/gnome-fs-directory.png"
 #define FILE_NAME "/iconview/gnome-fs-regular.png"
@@ -26,7 +26,7 @@ enum
 
 static GdkPixbuf *file_pixbuf, *folder_pixbuf;
 gchar *parent;
-GtkToolItem *up_button;
+CtkToolItem *up_button;
 
 /* Loads the images for the demo and returns whether the operation succeeded */
 static void
@@ -44,11 +44,11 @@ load_pixbufs (void)
 }
 
 static void
-fill_store (GtkListStore *store)
+fill_store (CtkListStore *store)
 {
   GDir *dir;
   const gchar *name;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   /* First clear the store */
   ctk_list_store_clear (store);
@@ -91,9 +91,9 @@ fill_store (GtkListStore *store)
 }
 
 static gint
-sort_func (GtkTreeModel *model,
-           GtkTreeIter  *a,
-           GtkTreeIter  *b,
+sort_func (CtkTreeModel *model,
+           CtkTreeIter  *a,
+           CtkTreeIter  *b,
            gpointer      user_data)
 {
   gboolean is_dir_a, is_dir_b;
@@ -130,10 +130,10 @@ sort_func (GtkTreeModel *model,
   return ret;
 }
 
-static GtkListStore *
+static CtkListStore *
 create_store (void)
 {
-  GtkListStore *store;
+  CtkListStore *store;
 
   store = ctk_list_store_new (NUM_COLS,
                               G_TYPE_STRING,
@@ -153,13 +153,13 @@ create_store (void)
 }
 
 static void
-item_activated (GtkIconView *icon_view,
-                GtkTreePath *tree_path,
+item_activated (CtkIconView *icon_view,
+                CtkTreePath *tree_path,
                 gpointer     user_data)
 {
-  GtkListStore *store;
+  CtkListStore *store;
   gchar *path;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gboolean is_dir;
 
   store = CTK_LIST_STORE (user_data);
@@ -188,10 +188,10 @@ item_activated (GtkIconView *icon_view,
 }
 
 static void
-up_clicked (GtkToolItem *item,
+up_clicked (CtkToolItem *item,
             gpointer     user_data)
 {
-  GtkListStore *store;
+  CtkListStore *store;
   gchar *dir_name;
 
   store = CTK_LIST_STORE (user_data);
@@ -209,10 +209,10 @@ up_clicked (GtkToolItem *item,
 }
 
 static void
-home_clicked (GtkToolItem *item,
+home_clicked (CtkToolItem *item,
               gpointer     user_data)
 {
-  GtkListStore *store;
+  CtkListStore *store;
 
   store = CTK_LIST_STORE (user_data);
 
@@ -238,17 +238,17 @@ static void close_window(void)
   folder_pixbuf = NULL;
 }
 
-GtkWidget *
-do_iconview (GtkWidget *do_widget)
+CtkWidget *
+do_iconview (CtkWidget *do_widget)
 {
   if (!window)
     {
-      GtkWidget *sw;
-      GtkWidget *icon_view;
-      GtkListStore *store;
-      GtkWidget *vbox;
-      GtkWidget *tool_bar;
-      GtkToolItem *home_button;
+      CtkWidget *sw;
+      CtkWidget *icon_view;
+      CtkListStore *store;
+      CtkWidget *vbox;
+      CtkWidget *tool_bar;
+      CtkToolItem *home_button;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_default_size (CTK_WINDOW (window), 650, 400);

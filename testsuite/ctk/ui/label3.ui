@@ -1,6 +1,6 @@
 <!-- test invalid label attribute name -->
 <interface>
-  <object class="GtkLabel">
+  <object class="CtkLabel">
     <attributes>
       <attribute name="warbl" value="true"/>
     </attributes>

@@ -1,4 +1,4 @@
-/* testrecentchoosermenu.c - Test GtkRecentChooserMenu
+/* testrecentchoosermenu.c - Test CtkRecentChooserMenu
  * Copyright (C) 2007  Emmanuele Bassi  <ebassi@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -18,15 +18,15 @@
 #include "config.h"
 #include <ctk/ctk.h>
 
-static GtkRecentManager *manager = NULL;
-static GtkWidget *window = NULL;
-static GtkWidget *label = NULL;
+static CtkRecentManager *manager = NULL;
+static CtkWidget *window = NULL;
+static CtkWidget *label = NULL;
 
 static void
-item_activated_cb (GtkRecentChooser *chooser,
+item_activated_cb (CtkRecentChooser *chooser,
                    gpointer          data)
 {
-  GtkRecentInfo *info;
+  CtkRecentInfo *info;
   GString *text;
   gchar *label_text;
 
@@ -50,12 +50,12 @@ item_activated_cb (GtkRecentChooser *chooser,
   g_free (label_text);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_recent_chooser_menu (gint limit)
 {
-  GtkWidget *menu;
-  GtkRecentFilter *filter;
-  GtkWidget *menuitem;
+  CtkWidget *menu;
+  CtkRecentFilter *filter;
+  CtkWidget *menuitem;
   
   menu = ctk_recent_chooser_menu_new_for_manager (manager);
 
@@ -104,12 +104,12 @@ create_recent_chooser_menu (gint limit)
   return menu;
 }
 
-static GtkWidget *
-create_file_menu (GtkAccelGroup *accelgroup)
+static CtkWidget *
+create_file_menu (CtkAccelGroup *accelgroup)
 {
-  GtkWidget *menu;
-  GtkWidget *menuitem;
-  GtkWidget *recentmenu;
+  CtkWidget *menu;
+  CtkWidget *menuitem;
+  CtkWidget *recentmenu;
 
   menu = ctk_menu_new ();
 
@@ -143,12 +143,12 @@ create_file_menu (GtkAccelGroup *accelgroup)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *box;
-  GtkWidget *menubar;
-  GtkWidget *menuitem;
-  GtkWidget *menu;
-  GtkWidget *button;
-  GtkAccelGroup *accel_group;
+  CtkWidget *box;
+  CtkWidget *menubar;
+  CtkWidget *menuitem;
+  CtkWidget *menu;
+  CtkWidget *button;
+  CtkAccelGroup *accel_group;
 
   ctk_init (&argc, &argv);
 

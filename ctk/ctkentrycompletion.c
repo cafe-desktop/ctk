@@ -17,16 +17,16 @@
 
 /**
  * SECTION:ctkentrycompletion
- * @Short_description: Completion functionality for GtkEntry
- * @Title: GtkEntryCompletion
+ * @Short_description: Completion functionality for CtkEntry
+ * @Title: CtkEntryCompletion
  *
- * #GtkEntryCompletion is an auxiliary object to be used in conjunction with
- * #GtkEntry to provide the completion functionality. It implements the
- * #GtkCellLayout interface, to allow the user to add extra cells to the
- * #GtkTreeView with completion matches.
+ * #CtkEntryCompletion is an auxiliary object to be used in conjunction with
+ * #CtkEntry to provide the completion functionality. It implements the
+ * #CtkCellLayout interface, to allow the user to add extra cells to the
+ * #CtkTreeView with completion matches.
  *
  * “Completion functionality” means that when the user modifies the text
- * in the entry, #GtkEntryCompletion checks which rows in the model match
+ * in the entry, #CtkEntryCompletion checks which rows in the model match
  * the current content of the entry, and displays a list of matches.
  * By default, the matching is done by comparing the entry text
  * case-insensitively against the text column of the model (see
@@ -36,24 +36,24 @@
  * When the user selects a completion, the content of the entry is
  * updated. By default, the content of the entry is replaced by the
  * text column of the model, but this can be overridden by connecting
- * to the #GtkEntryCompletion::match-selected signal and updating the
+ * to the #CtkEntryCompletion::match-selected signal and updating the
  * entry in the signal handler. Note that you should return %TRUE from
  * the signal handler to suppress the default behaviour.
  *
  * To add completion functionality to an entry, use ctk_entry_set_completion().
  *
  * In addition to regular completion matches, which will be inserted into the
- * entry when they are selected, #GtkEntryCompletion also allows to display
+ * entry when they are selected, #CtkEntryCompletion also allows to display
  * “actions” in the popup window. Their appearance is similar to menuitems,
  * to differentiate them clearly from completion strings. When an action is
- * selected, the #GtkEntryCompletion::action-activated signal is emitted.
+ * selected, the #CtkEntryCompletion::action-activated signal is emitted.
  *
- * GtkEntryCompletion uses a #GtkTreeModelFilter model to represent the
+ * CtkEntryCompletion uses a #CtkTreeModelFilter model to represent the
  * subset of the entire model that is currently matching. While the
- * GtkEntryCompletion signals #GtkEntryCompletion::match-selected and
- * #GtkEntryCompletion::cursor-on-match take the original model and an
+ * CtkEntryCompletion signals #CtkEntryCompletion::match-selected and
+ * #CtkEntryCompletion::cursor-on-match take the original model and an
  * iter pointing to that model as arguments, other callbacks and signals
- * (such as #GtkCellLayoutDataFuncs or #GtkCellArea::apply-attributes)
+ * (such as #CtkCellLayoutDataFuncs or #CtkCellArea::apply-attributes)
  * will generally take the filter model as argument. As long as you are
  * only calling ctk_tree_model_get(), this will make no difference to
  * you. If for some reason, you need the original model, use
@@ -120,8 +120,8 @@ enum
 };
 
 
-static void     ctk_entry_completion_cell_layout_init    (GtkCellLayoutIface      *iface);
-static GtkCellArea* ctk_entry_completion_get_area        (GtkCellLayout           *cell_layout);
+static void     ctk_entry_completion_cell_layout_init    (CtkCellLayoutIface      *iface);
+static CtkCellArea* ctk_entry_completion_get_area        (CtkCellLayout           *cell_layout);
 
 static void     ctk_entry_completion_constructed         (GObject      *object);
 static void     ctk_entry_completion_set_property        (GObject      *object,
@@ -135,65 +135,65 @@ static void     ctk_entry_completion_get_property        (GObject      *object,
 static void     ctk_entry_completion_finalize            (GObject      *object);
 static void     ctk_entry_completion_dispose             (GObject      *object);
 
-static gboolean ctk_entry_completion_visible_func        (GtkTreeModel       *model,
-                                                          GtkTreeIter        *iter,
+static gboolean ctk_entry_completion_visible_func        (CtkTreeModel       *model,
+                                                          CtkTreeIter        *iter,
                                                           gpointer            data);
-static gboolean ctk_entry_completion_popup_key_event     (GtkWidget          *widget,
+static gboolean ctk_entry_completion_popup_key_event     (CtkWidget          *widget,
                                                           GdkEventKey        *event,
                                                           gpointer            user_data);
-static gboolean ctk_entry_completion_popup_button_press  (GtkWidget          *widget,
+static gboolean ctk_entry_completion_popup_button_press  (CtkWidget          *widget,
                                                           GdkEventButton     *event,
                                                           gpointer            user_data);
-static gboolean ctk_entry_completion_list_button_press   (GtkWidget          *widget,
+static gboolean ctk_entry_completion_list_button_press   (CtkWidget          *widget,
                                                           GdkEventButton     *event,
                                                           gpointer            user_data);
-static gboolean ctk_entry_completion_action_button_press (GtkWidget          *widget,
+static gboolean ctk_entry_completion_action_button_press (CtkWidget          *widget,
                                                           GdkEventButton     *event,
                                                           gpointer            user_data);
-static void     ctk_entry_completion_selection_changed   (GtkTreeSelection   *selection,
+static void     ctk_entry_completion_selection_changed   (CtkTreeSelection   *selection,
                                                           gpointer            data);
-static gboolean ctk_entry_completion_list_enter_notify   (GtkWidget          *widget,
+static gboolean ctk_entry_completion_list_enter_notify   (CtkWidget          *widget,
                                                           GdkEventCrossing   *event,
                                                           gpointer            data);
-static gboolean ctk_entry_completion_list_motion_notify  (GtkWidget          *widget,
+static gboolean ctk_entry_completion_list_motion_notify  (CtkWidget          *widget,
                                                           GdkEventMotion     *event,
                                                           gpointer            data);
-static void     ctk_entry_completion_insert_action       (GtkEntryCompletion *completion,
+static void     ctk_entry_completion_insert_action       (CtkEntryCompletion *completion,
                                                           gint                index,
                                                           const gchar        *string,
                                                           gboolean            markup);
-static void     ctk_entry_completion_action_data_func    (GtkTreeViewColumn  *tree_column,
-                                                          GtkCellRenderer    *cell,
-                                                          GtkTreeModel       *model,
-                                                          GtkTreeIter        *iter,
+static void     ctk_entry_completion_action_data_func    (CtkTreeViewColumn  *tree_column,
+                                                          CtkCellRenderer    *cell,
+                                                          CtkTreeModel       *model,
+                                                          CtkTreeIter        *iter,
                                                           gpointer            data);
 
-static gboolean ctk_entry_completion_match_selected      (GtkEntryCompletion *completion,
-                                                          GtkTreeModel       *model,
-                                                          GtkTreeIter        *iter);
-static gboolean ctk_entry_completion_real_insert_prefix  (GtkEntryCompletion *completion,
+static gboolean ctk_entry_completion_match_selected      (CtkEntryCompletion *completion,
+                                                          CtkTreeModel       *model,
+                                                          CtkTreeIter        *iter);
+static gboolean ctk_entry_completion_real_insert_prefix  (CtkEntryCompletion *completion,
                                                           const gchar        *prefix);
-static gboolean ctk_entry_completion_cursor_on_match     (GtkEntryCompletion *completion,
-                                                          GtkTreeModel       *model,
-                                                          GtkTreeIter        *iter);
-static gboolean ctk_entry_completion_insert_completion   (GtkEntryCompletion *completion,
-                                                          GtkTreeModel       *model,
-                                                          GtkTreeIter        *iter);
-static void     ctk_entry_completion_insert_completion_text (GtkEntryCompletion *completion,
+static gboolean ctk_entry_completion_cursor_on_match     (CtkEntryCompletion *completion,
+                                                          CtkTreeModel       *model,
+                                                          CtkTreeIter        *iter);
+static gboolean ctk_entry_completion_insert_completion   (CtkEntryCompletion *completion,
+                                                          CtkTreeModel       *model,
+                                                          CtkTreeIter        *iter);
+static void     ctk_entry_completion_insert_completion_text (CtkEntryCompletion *completion,
                                                              const gchar *text);
-static void     connect_completion_signals                  (GtkEntryCompletion *completion);
-static void     disconnect_completion_signals               (GtkEntryCompletion *completion);
+static void     connect_completion_signals                  (CtkEntryCompletion *completion);
+static void     disconnect_completion_signals               (CtkEntryCompletion *completion);
 
 
 static GParamSpec *entry_completion_props[NUM_PROPERTIES] = { NULL, };
 
 static guint entry_completion_signals[LAST_SIGNAL] = { 0 };
 
-/* GtkBuildable */
-static void     ctk_entry_completion_buildable_init      (GtkBuildableIface  *iface);
+/* CtkBuildable */
+static void     ctk_entry_completion_buildable_init      (CtkBuildableIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkEntryCompletion, ctk_entry_completion, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkEntryCompletion)
+G_DEFINE_TYPE_WITH_CODE (CtkEntryCompletion, ctk_entry_completion, G_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkEntryCompletion)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_CELL_LAYOUT,
                                                 ctk_entry_completion_cell_layout_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
@@ -201,7 +201,7 @@ G_DEFINE_TYPE_WITH_CODE (GtkEntryCompletion, ctk_entry_completion, G_TYPE_OBJECT
 
 
 static void
-ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
+ctk_entry_completion_class_init (CtkEntryCompletionClass *klass)
 {
   GObjectClass *object_class;
 
@@ -219,7 +219,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
   klass->no_matches = NULL;
 
   /**
-   * GtkEntryCompletion::insert-prefix:
+   * CtkEntryCompletion::insert-prefix:
    * @widget: the object which received the signal
    * @prefix: the common prefix of all possible completions
    *
@@ -229,7 +229,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
    *
    * Applications may connect to this signal in order to insert only a
    * smaller part of the @prefix into the entry - e.g. the entry used in
-   * the #GtkFileChooser inserts only the part of the prefix up to the
+   * the #CtkFileChooser inserts only the part of the prefix up to the
    * next '/'.
    *
    * Returns: %TRUE if the signal has been handled
@@ -240,17 +240,17 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
     g_signal_new (I_("insert-prefix"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkEntryCompletionClass, insert_prefix),
+                  G_STRUCT_OFFSET (CtkEntryCompletionClass, insert_prefix),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__STRING,
                   G_TYPE_BOOLEAN, 1,
                   G_TYPE_STRING);
 
   /**
-   * GtkEntryCompletion::match-selected:
+   * CtkEntryCompletion::match-selected:
    * @widget: the object which received the signal
-   * @model: the #GtkTreeModel containing the matches
-   * @iter: a #GtkTreeIter positioned at the selected match
+   * @model: the #CtkTreeModel containing the matches
+   * @iter: a #CtkTreeIter positioned at the selected match
    *
    * Gets emitted when a match from the list is selected.
    * The default behaviour is to replace the contents of the
@@ -268,7 +268,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
     g_signal_new (I_("match-selected"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkEntryCompletionClass, match_selected),
+                  G_STRUCT_OFFSET (CtkEntryCompletionClass, match_selected),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__OBJECT_BOXED,
                   G_TYPE_BOOLEAN, 2,
@@ -276,10 +276,10 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                   CTK_TYPE_TREE_ITER);
 
   /**
-   * GtkEntryCompletion::cursor-on-match:
+   * CtkEntryCompletion::cursor-on-match:
    * @widget: the object which received the signal
-   * @model: the #GtkTreeModel containing the matches
-   * @iter: a #GtkTreeIter positioned at the selected match
+   * @model: the #CtkTreeModel containing the matches
+   * @iter: a #CtkTreeIter positioned at the selected match
    *
    * Gets emitted when a match from the cursor is on a match
    * of the list. The default behaviour is to replace the contents
@@ -297,7 +297,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
     g_signal_new (I_("cursor-on-match"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkEntryCompletionClass, cursor_on_match),
+                  G_STRUCT_OFFSET (CtkEntryCompletionClass, cursor_on_match),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__OBJECT_BOXED,
                   G_TYPE_BOOLEAN, 2,
@@ -305,12 +305,12 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                   CTK_TYPE_TREE_ITER);
 
   /**
-   * GtkEntryCompletion::no-matches:
+   * CtkEntryCompletion::no-matches:
    * @widget: the object which received the signal
    *
    * Gets emitted when the filter model has zero
    * number of rows in completion_complete method.
-   * (In other words when GtkEntryCompletion is out of
+   * (In other words when CtkEntryCompletion is out of
    *  suggestions)
    *
    * Since: 3.14
@@ -319,13 +319,13 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
     g_signal_new (I_("no-matches"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkEntryCompletionClass, no_matches),
+                  G_STRUCT_OFFSET (CtkEntryCompletionClass, no_matches),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
 
   /**
-   * GtkEntryCompletion::action-activated:
+   * CtkEntryCompletion::action-activated:
    * @widget: the object which received the signal
    * @index: the index of the activated action
    *
@@ -337,7 +337,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
     g_signal_new (I_("action-activated"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkEntryCompletionClass, action_activated),
+                  G_STRUCT_OFFSET (CtkEntryCompletionClass, action_activated),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
@@ -358,7 +358,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntryCompletion:text-column:
+   * CtkEntryCompletion:text-column:
    *
    * The column of the model containing the strings.
    * Note that the strings must be UTF-8.
@@ -373,7 +373,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                       CTK_PARAM_READWRITE);
 
   /**
-   * GtkEntryCompletion:inline-completion:
+   * CtkEntryCompletion:inline-completion:
    *
    * Determines whether the common prefix of the possible completions
    * should be inserted automatically in the entry. Note that this
@@ -390,7 +390,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntryCompletion:popup-completion:
+   * CtkEntryCompletion:popup-completion:
    *
    * Determines whether the possible completions should be
    * shown in a popup window.
@@ -405,7 +405,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntryCompletion:popup-set-width:
+   * CtkEntryCompletion:popup-set-width:
    *
    * Determines whether the completions popup window will be
    * resized to the width of the entry.
@@ -420,12 +420,12 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntryCompletion:popup-single-match:
+   * CtkEntryCompletion:popup-single-match:
    *
    * Determines whether the completions popup window will shown
    * for a single possible completion. You probably want to set
    * this to %FALSE if you are using
-   * [inline completion][GtkEntryCompletion--inline-completion].
+   * [inline completion][CtkEntryCompletion--inline-completion].
    *
    * Since: 2.8
    */
@@ -437,7 +437,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntryCompletion:inline-selection:
+   * CtkEntryCompletion:inline-selection:
    *
    * Determines whether the possible completions on the popup
    * will appear in the entry as you navigate through them.
@@ -452,20 +452,20 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkEntryCompletion:cell-area:
+   * CtkEntryCompletion:cell-area:
    *
-   * The #GtkCellArea used to layout cell renderers in the treeview column.
+   * The #CtkCellArea used to layout cell renderers in the treeview column.
    *
    * If no area is specified when creating the entry completion with
    * ctk_entry_completion_new_with_area() a horizontally oriented
-   * #GtkCellAreaBox will be used.
+   * #CtkCellAreaBox will be used.
    *
    * Since: 3.0
    */
   entry_completion_props[PROP_CELL_AREA] =
       g_param_spec_object ("cell-area",
                            P_("Cell Area"),
-                           P_("The GtkCellArea used to layout cells"),
+                           P_("The CtkCellArea used to layout cells"),
                            CTK_TYPE_CELL_AREA,
                            CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
@@ -474,8 +474,8 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
 
 
 static void
-ctk_entry_completion_buildable_custom_tag_end (GtkBuildable *buildable,
-                                                GtkBuilder   *builder,
+ctk_entry_completion_buildable_custom_tag_end (CtkBuildable *buildable,
+                                                CtkBuilder   *builder,
                                                 GObject      *child,
                                                 const gchar  *tagname,
                                                 gpointer     *data)
@@ -485,7 +485,7 @@ ctk_entry_completion_buildable_custom_tag_end (GtkBuildable *buildable,
 }
 
 static void
-ctk_entry_completion_buildable_init (GtkBuildableIface *iface)
+ctk_entry_completion_buildable_init (CtkBuildableIface *iface)
 {
   iface->add_child = _ctk_cell_layout_buildable_add_child;
   iface->custom_tag_start = _ctk_cell_layout_buildable_custom_tag_start;
@@ -493,15 +493,15 @@ ctk_entry_completion_buildable_init (GtkBuildableIface *iface)
 }
 
 static void
-ctk_entry_completion_cell_layout_init (GtkCellLayoutIface *iface)
+ctk_entry_completion_cell_layout_init (CtkCellLayoutIface *iface)
 {
   iface->get_area = ctk_entry_completion_get_area;
 }
 
 static void
-ctk_entry_completion_init (GtkEntryCompletion *completion)
+ctk_entry_completion_init (CtkEntryCompletion *completion)
 {
-  GtkEntryCompletionPrivate *priv;
+  CtkEntryCompletionPrivate *priv;
 
   /* yes, also priv, need to keep the code readable */
   completion->priv = ctk_entry_completion_get_instance_private (completion);
@@ -522,11 +522,11 @@ ctk_entry_completion_init (GtkEntryCompletion *completion)
 static void
 ctk_entry_completion_constructed (GObject *object)
 {
-  GtkEntryCompletion        *completion = CTK_ENTRY_COMPLETION (object);
-  GtkEntryCompletionPrivate *priv = completion->priv;
-  GtkCellRenderer           *cell;
-  GtkTreeSelection          *sel;
-  GtkWidget                 *popup_frame;
+  CtkEntryCompletion        *completion = CTK_ENTRY_COMPLETION (object);
+  CtkEntryCompletionPrivate *priv = completion->priv;
+  CtkCellRenderer           *cell;
+  CtkTreeSelection          *sel;
+  CtkWidget                 *popup_frame;
 
   G_OBJECT_CLASS (ctk_entry_completion_parent_class)->constructed (object);
 
@@ -646,9 +646,9 @@ ctk_entry_completion_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
-  GtkEntryCompletionPrivate *priv = completion->priv;
-  GtkCellArea *area;
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
+  CtkEntryCompletionPrivate *priv = completion->priv;
+  CtkCellArea *area;
 
   switch (prop_id)
     {
@@ -719,7 +719,7 @@ ctk_entry_completion_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
 
   switch (prop_id)
     {
@@ -769,8 +769,8 @@ ctk_entry_completion_get_property (GObject    *object,
 static void
 ctk_entry_completion_finalize (GObject *object)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
-  GtkEntryCompletionPrivate *priv = completion->priv;
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
+  CtkEntryCompletionPrivate *priv = completion->priv;
 
   g_free (priv->case_normalized_key);
   g_free (priv->completion_prefix);
@@ -784,8 +784,8 @@ ctk_entry_completion_finalize (GObject *object)
 static void
 ctk_entry_completion_dispose (GObject *object)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
-  GtkEntryCompletionPrivate *priv = completion->priv;
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
+  CtkEntryCompletionPrivate *priv = completion->priv;
 
   if (priv->tree_view)
     {
@@ -824,10 +824,10 @@ ctk_entry_completion_dispose (GObject *object)
 }
 
 /* implement cell layout interface (only need to return the underlying cell area) */
-static GtkCellArea*
-ctk_entry_completion_get_area (GtkCellLayout *cell_layout)
+static CtkCellArea*
+ctk_entry_completion_get_area (CtkCellLayout *cell_layout)
 {
-  GtkEntryCompletionPrivate *priv;
+  CtkEntryCompletionPrivate *priv;
 
   priv = CTK_ENTRY_COMPLETION (cell_layout)->priv;
 
@@ -842,9 +842,9 @@ ctk_entry_completion_get_area (GtkCellLayout *cell_layout)
 
 /* all those callbacks */
 static gboolean
-ctk_entry_completion_default_completion_func (GtkEntryCompletion *completion,
+ctk_entry_completion_default_completion_func (CtkEntryCompletion *completion,
                                               const gchar        *key,
-                                              GtkTreeIter        *iter,
+                                              CtkTreeIter        *iter,
                                               gpointer            user_data)
 {
   gchar *item = NULL;
@@ -853,7 +853,7 @@ ctk_entry_completion_default_completion_func (GtkEntryCompletion *completion,
 
   gboolean ret = FALSE;
 
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 
   model = ctk_tree_model_filter_get_model (completion->priv->filter_model);
 
@@ -885,13 +885,13 @@ ctk_entry_completion_default_completion_func (GtkEntryCompletion *completion,
 }
 
 static gboolean
-ctk_entry_completion_visible_func (GtkTreeModel *model,
-                                   GtkTreeIter  *iter,
+ctk_entry_completion_visible_func (CtkTreeModel *model,
+                                   CtkTreeIter  *iter,
                                    gpointer      data)
 {
   gboolean ret = FALSE;
 
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   if (!completion->priv->case_normalized_key)
     return ret;
@@ -911,11 +911,11 @@ ctk_entry_completion_visible_func (GtkTreeModel *model,
 }
 
 static gboolean
-ctk_entry_completion_popup_key_event (GtkWidget   *widget,
+ctk_entry_completion_popup_key_event (CtkWidget   *widget,
                                       GdkEventKey *event,
                                       gpointer     user_data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
 
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
@@ -927,11 +927,11 @@ ctk_entry_completion_popup_key_event (GtkWidget   *widget,
 }
 
 static gboolean
-ctk_entry_completion_popup_button_press (GtkWidget      *widget,
+ctk_entry_completion_popup_button_press (CtkWidget      *widget,
                                          GdkEventButton *event,
                                          gpointer        user_data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
 
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
@@ -943,12 +943,12 @@ ctk_entry_completion_popup_button_press (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_entry_completion_list_button_press (GtkWidget      *widget,
+ctk_entry_completion_list_button_press (CtkWidget      *widget,
                                         GdkEventButton *event,
                                         gpointer        user_data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
-  GtkTreePath *path = NULL;
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
+  CtkTreePath *path = NULL;
 
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
@@ -957,10 +957,10 @@ ctk_entry_completion_list_button_press (GtkWidget      *widget,
                                      event->x, event->y,
                                      &path, NULL, NULL, NULL))
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
       gboolean entry_set;
-      GtkTreeModel *model;
-      GtkTreeIter child_iter;
+      CtkTreeModel *model;
+      CtkTreeIter child_iter;
 
       ctk_tree_model_get_iter (CTK_TREE_MODEL (completion->priv->filter_model),
                                &iter, path);
@@ -986,12 +986,12 @@ ctk_entry_completion_list_button_press (GtkWidget      *widget,
 }
 
 static gboolean
-ctk_entry_completion_action_button_press (GtkWidget      *widget,
+ctk_entry_completion_action_button_press (CtkWidget      *widget,
                                           GdkEventButton *event,
                                           gpointer        user_data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
-  GtkTreePath *path = NULL;
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
+  CtkTreePath *path = NULL;
 
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
@@ -1014,10 +1014,10 @@ ctk_entry_completion_action_button_press (GtkWidget      *widget,
 }
 
 static void
-ctk_entry_completion_action_data_func (GtkTreeViewColumn *tree_column,
-                                       GtkCellRenderer   *cell,
-                                       GtkTreeModel      *model,
-                                       GtkTreeIter       *iter,
+ctk_entry_completion_action_data_func (CtkTreeViewColumn *tree_column,
+                                       CtkCellRenderer   *cell,
+                                       CtkTreeModel      *model,
+                                       CtkTreeIter       *iter,
                                        gpointer           data)
 {
   gchar *string = NULL;
@@ -1046,10 +1046,10 @@ ctk_entry_completion_action_data_func (GtkTreeViewColumn *tree_column,
 }
 
 static void
-ctk_entry_completion_selection_changed (GtkTreeSelection *selection,
+ctk_entry_completion_selection_changed (CtkTreeSelection *selection,
                                         gpointer          data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   if (completion->priv->first_sel_changed)
     {
@@ -1064,7 +1064,7 @@ prepare_popup_func (GdkSeat   *seat,
                     GdkWindow *window,
                     gpointer   user_data)
 {
-  GtkEntryCompletion *completion = user_data;
+  CtkEntryCompletion *completion = user_data;
 
   /* prevent the first row being focused */
   ctk_widget_grab_focus (completion->priv->tree_view);
@@ -1076,9 +1076,9 @@ prepare_popup_func (GdkSeat   *seat,
 }
 
 static void
-ctk_entry_completion_popup (GtkEntryCompletion *completion)
+ctk_entry_completion_popup (CtkEntryCompletion *completion)
 {
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
 
   if (ctk_widget_get_mapped (completion->priv->popup_window))
     return;
@@ -1127,7 +1127,7 @@ ctk_entry_completion_popup (GtkEntryCompletion *completion)
 }
 
 void
-_ctk_entry_completion_popdown (GtkEntryCompletion *completion)
+_ctk_entry_completion_popdown (CtkEntryCompletion *completion)
 {
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return;
@@ -1149,16 +1149,16 @@ _ctk_entry_completion_popdown (GtkEntryCompletion *completion)
 /**
  * ctk_entry_completion_new:
  *
- * Creates a new #GtkEntryCompletion object.
+ * Creates a new #CtkEntryCompletion object.
  *
- * Returns: A newly created #GtkEntryCompletion object
+ * Returns: A newly created #CtkEntryCompletion object
  *
  * Since: 2.4
  */
-GtkEntryCompletion *
+CtkEntryCompletion *
 ctk_entry_completion_new (void)
 {
-  GtkEntryCompletion *completion;
+  CtkEntryCompletion *completion;
 
   completion = g_object_new (CTK_TYPE_ENTRY_COMPLETION, NULL);
 
@@ -1167,20 +1167,20 @@ ctk_entry_completion_new (void)
 
 /**
  * ctk_entry_completion_new_with_area:
- * @area: the #GtkCellArea used to layout cells
+ * @area: the #CtkCellArea used to layout cells
  *
- * Creates a new #GtkEntryCompletion object using the
+ * Creates a new #CtkEntryCompletion object using the
  * specified @area to layout cells in the underlying
- * #GtkTreeViewColumn for the drop-down menu.
+ * #CtkTreeViewColumn for the drop-down menu.
  *
- * Returns: A newly created #GtkEntryCompletion object
+ * Returns: A newly created #CtkEntryCompletion object
  *
  * Since: 3.0
  */
-GtkEntryCompletion *
-ctk_entry_completion_new_with_area (GtkCellArea *area)
+CtkEntryCompletion *
+ctk_entry_completion_new_with_area (CtkCellArea *area)
 {
-  GtkEntryCompletion *completion;
+  CtkEntryCompletion *completion;
 
   completion = g_object_new (CTK_TYPE_ENTRY_COMPLETION, "cell-area", area, NULL);
 
@@ -1189,7 +1189,7 @@ ctk_entry_completion_new_with_area (GtkCellArea *area)
 
 /**
  * ctk_entry_completion_get_entry:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Gets the entry @completion has been attached to.
  *
@@ -1197,8 +1197,8 @@ ctk_entry_completion_new_with_area (GtkCellArea *area)
  *
  * Since: 2.4
  */
-GtkWidget *
-ctk_entry_completion_get_entry (GtkEntryCompletion *completion)
+CtkWidget *
+ctk_entry_completion_get_entry (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), NULL);
 
@@ -1207,18 +1207,18 @@ ctk_entry_completion_get_entry (GtkEntryCompletion *completion)
 
 /**
  * ctk_entry_completion_set_model:
- * @completion: a #GtkEntryCompletion
- * @model: (allow-none): the #GtkTreeModel
+ * @completion: a #CtkEntryCompletion
+ * @model: (allow-none): the #CtkTreeModel
  *
- * Sets the model for a #GtkEntryCompletion. If @completion already has
+ * Sets the model for a #CtkEntryCompletion. If @completion already has
  * a model set, it will remove it before setting the new model.
  * If model is %NULL, then it will unset the model.
  *
  * Since: 2.4
  */
 void
-ctk_entry_completion_set_model (GtkEntryCompletion *completion,
-                                GtkTreeModel       *model)
+ctk_entry_completion_set_model (CtkEntryCompletion *completion,
+                                CtkTreeModel       *model)
 {
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (model == NULL || CTK_IS_TREE_MODEL (model));
@@ -1252,18 +1252,18 @@ ctk_entry_completion_set_model (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_model:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
- * Returns the model the #GtkEntryCompletion is using as data source.
+ * Returns the model the #CtkEntryCompletion is using as data source.
  * Returns %NULL if the model is unset.
  *
- * Returns: (nullable) (transfer none): A #GtkTreeModel, or %NULL if none
+ * Returns: (nullable) (transfer none): A #CtkTreeModel, or %NULL if none
  *     is currently being used
  *
  * Since: 2.4
  */
-GtkTreeModel *
-ctk_entry_completion_get_model (GtkEntryCompletion *completion)
+CtkTreeModel *
+ctk_entry_completion_get_model (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), NULL);
 
@@ -1275,8 +1275,8 @@ ctk_entry_completion_get_model (GtkEntryCompletion *completion)
 
 /**
  * ctk_entry_completion_set_match_func:
- * @completion: a #GtkEntryCompletion
- * @func: the #GtkEntryCompletionMatchFunc to use
+ * @completion: a #CtkEntryCompletion
+ * @func: the #CtkEntryCompletionMatchFunc to use
  * @func_data: user data for @func
  * @func_notify: destroy notify for @func_data.
  *
@@ -1287,8 +1287,8 @@ ctk_entry_completion_get_model (GtkEntryCompletion *completion)
  * Since: 2.4
  */
 void
-ctk_entry_completion_set_match_func (GtkEntryCompletion          *completion,
-                                     GtkEntryCompletionMatchFunc  func,
+ctk_entry_completion_set_match_func (CtkEntryCompletion          *completion,
+                                     CtkEntryCompletionMatchFunc  func,
                                      gpointer                     func_data,
                                      GDestroyNotify               func_notify)
 {
@@ -1304,7 +1304,7 @@ ctk_entry_completion_set_match_func (GtkEntryCompletion          *completion,
 
 /**
  * ctk_entry_completion_set_minimum_key_length:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @length: the minimum length of the key in order to start completing
  *
  * Requires the length of the search key for @completion to be at least
@@ -1315,7 +1315,7 @@ ctk_entry_completion_set_match_func (GtkEntryCompletion          *completion,
  * Since: 2.4
  */
 void
-ctk_entry_completion_set_minimum_key_length (GtkEntryCompletion *completion,
+ctk_entry_completion_set_minimum_key_length (CtkEntryCompletion *completion,
                                              gint                length)
 {
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
@@ -1332,7 +1332,7 @@ ctk_entry_completion_set_minimum_key_length (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_minimum_key_length:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Returns the minimum key length as set for @completion.
  *
@@ -1341,7 +1341,7 @@ ctk_entry_completion_set_minimum_key_length (GtkEntryCompletion *completion,
  * Since: 2.4
  */
 gint
-ctk_entry_completion_get_minimum_key_length (GtkEntryCompletion *completion)
+ctk_entry_completion_get_minimum_key_length (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), 0);
 
@@ -1350,7 +1350,7 @@ ctk_entry_completion_get_minimum_key_length (GtkEntryCompletion *completion)
 
 /**
  * ctk_entry_completion_complete:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Requests a completion operation, or in other words a refiltering of the
  * current list with completions, using the current key. The completion list
@@ -1359,10 +1359,10 @@ ctk_entry_completion_get_minimum_key_length (GtkEntryCompletion *completion)
  * Since: 2.4
  */
 void
-ctk_entry_completion_complete (GtkEntryCompletion *completion)
+ctk_entry_completion_complete (CtkEntryCompletion *completion)
 {
   gchar *tmp;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (CTK_IS_ENTRY (completion->priv->entry));
@@ -1408,12 +1408,12 @@ ctk_entry_completion_complete (GtkEntryCompletion *completion)
 }
 
 static void
-ctk_entry_completion_insert_action (GtkEntryCompletion *completion,
+ctk_entry_completion_insert_action (CtkEntryCompletion *completion,
                                     gint                index,
                                     const gchar        *string,
                                     gboolean            markup)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   ctk_list_store_insert (completion->priv->actions, &iter, index);
   ctk_list_store_set (completion->priv->actions, &iter,
@@ -1423,7 +1423,7 @@ ctk_entry_completion_insert_action (GtkEntryCompletion *completion,
 
   if (!ctk_widget_get_parent (completion->priv->action_view))
     {
-      GtkTreePath *path = ctk_tree_path_new_from_indices (0, -1);
+      CtkTreePath *path = ctk_tree_path_new_from_indices (0, -1);
 
       ctk_tree_view_set_cursor (CTK_TREE_VIEW (completion->priv->action_view),
                                 path, NULL, FALSE);
@@ -1437,7 +1437,7 @@ ctk_entry_completion_insert_action (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_insert_action_text:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @index_: the index of the item to insert
  * @text: text of the item to insert
  *
@@ -1451,7 +1451,7 @@ ctk_entry_completion_insert_action (GtkEntryCompletion *completion,
  * Since: 2.4
  */
 void
-ctk_entry_completion_insert_action_text (GtkEntryCompletion *completion,
+ctk_entry_completion_insert_action_text (CtkEntryCompletion *completion,
                                          gint                index_,
                                          const gchar        *text)
 {
@@ -1463,7 +1463,7 @@ ctk_entry_completion_insert_action_text (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_insert_action_markup:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @index_: the index of the item to insert
  * @markup: markup of the item to insert
  *
@@ -1473,7 +1473,7 @@ ctk_entry_completion_insert_action_text (GtkEntryCompletion *completion,
  * Since: 2.4
  */
 void
-ctk_entry_completion_insert_action_markup (GtkEntryCompletion *completion,
+ctk_entry_completion_insert_action_markup (CtkEntryCompletion *completion,
                                            gint                index_,
                                            const gchar        *markup)
 {
@@ -1485,7 +1485,7 @@ ctk_entry_completion_insert_action_markup (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_delete_action:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @index_: the index of the item to delete
  *
  * Deletes the action at @index_ from @completion’s action list.
@@ -1496,10 +1496,10 @@ ctk_entry_completion_insert_action_markup (GtkEntryCompletion *completion,
  * Since: 2.4
  */
 void
-ctk_entry_completion_delete_action (GtkEntryCompletion *completion,
+ctk_entry_completion_delete_action (CtkEntryCompletion *completion,
                                     gint                index_)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (index_ >= 0);
@@ -1511,7 +1511,7 @@ ctk_entry_completion_delete_action (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_set_text_column:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @column: the column in the model of @completion to get strings from
  *
  * Convenience function for setting up the most used case of this code: a
@@ -1519,18 +1519,18 @@ ctk_entry_completion_delete_action (GtkEntryCompletion *completion,
  * to have a list displaying all (and just) strings in the completion list,
  * and to get those strings from @column in the model of @completion.
  *
- * This functions creates and adds a #GtkCellRendererText for the selected
+ * This functions creates and adds a #CtkCellRendererText for the selected
  * column. If you need to set the text column, but don't want the cell
- * renderer, use g_object_set() to set the #GtkEntryCompletion:text-column
+ * renderer, use g_object_set() to set the #CtkEntryCompletion:text-column
  * property directly.
  *
  * Since: 2.4
  */
 void
-ctk_entry_completion_set_text_column (GtkEntryCompletion *completion,
+ctk_entry_completion_set_text_column (CtkEntryCompletion *completion,
                                       gint                column)
 {
-  GtkCellRenderer *cell;
+  CtkCellRenderer *cell;
 
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (column >= 0);
@@ -1552,7 +1552,7 @@ ctk_entry_completion_set_text_column (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_text_column:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Returns the column in the model of @completion to get strings from.
  *
@@ -1561,7 +1561,7 @@ ctk_entry_completion_set_text_column (GtkEntryCompletion *completion,
  * Since: 2.6
  */
 gint
-ctk_entry_completion_get_text_column (GtkEntryCompletion *completion)
+ctk_entry_completion_get_text_column (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), -1);
 
@@ -1571,21 +1571,21 @@ ctk_entry_completion_get_text_column (GtkEntryCompletion *completion)
 /* private */
 
 static gboolean
-ctk_entry_completion_list_enter_notify (GtkWidget        *widget,
+ctk_entry_completion_list_enter_notify (CtkWidget        *widget,
                                         GdkEventCrossing *event,
                                         gpointer          data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   return completion->priv->ignore_enter;
 }
 
 static gboolean
-ctk_entry_completion_list_motion_notify (GtkWidget      *widget,
+ctk_entry_completion_list_motion_notify (CtkWidget      *widget,
                                          GdkEventMotion *event,
                                          gpointer        data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   completion->priv->ignore_enter = FALSE;
 
@@ -1595,9 +1595,9 @@ ctk_entry_completion_list_motion_notify (GtkWidget      *widget,
 
 /* some nasty size requisition */
 void
-_ctk_entry_completion_resize_popup (GtkEntryCompletion *completion)
+_ctk_entry_completion_resize_popup (CtkEntryCompletion *completion)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   gint x, y;
   gint matches, actions, items, height;
   GdkDisplay *display;
@@ -1605,13 +1605,13 @@ _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion)
   gint vertical_separator;
   GdkRectangle area;
   GdkWindow *window;
-  GtkRequisition popup_req;
-  GtkRequisition entry_req;
-  GtkRequisition tree_req;
-  GtkTreePath *path;
+  CtkRequisition popup_req;
+  CtkRequisition entry_req;
+  CtkRequisition tree_req;
+  CtkTreePath *path;
   gboolean above;
   gint width;
-  GtkTreeViewColumn *action_column;
+  CtkTreeViewColumn *action_column;
   gint action_height;
 
   window = ctk_widget_get_window (completion->priv->entry);
@@ -1715,9 +1715,9 @@ _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion)
 }
 
 static gboolean
-ctk_entry_completion_match_selected (GtkEntryCompletion *completion,
-                                     GtkTreeModel       *model,
-                                     GtkTreeIter        *iter)
+ctk_entry_completion_match_selected (CtkEntryCompletion *completion,
+                                     CtkTreeModel       *model,
+                                     CtkTreeIter        *iter)
 {
   gchar *str = NULL;
 
@@ -1733,9 +1733,9 @@ ctk_entry_completion_match_selected (GtkEntryCompletion *completion,
 }
 
 static gboolean
-ctk_entry_completion_cursor_on_match (GtkEntryCompletion *completion,
-                                      GtkTreeModel       *model,
-                                      GtkTreeIter        *iter)
+ctk_entry_completion_cursor_on_match (CtkEntryCompletion *completion,
+                                      CtkTreeModel       *model,
+                                      CtkTreeIter        *iter)
 {
   ctk_entry_completion_insert_completion (completion, model, iter);
 
@@ -1758,10 +1758,10 @@ ctk_entry_completion_cursor_on_match (GtkEntryCompletion *completion,
  * Since: 3.4
  **/
 gchar *
-ctk_entry_completion_compute_prefix (GtkEntryCompletion *completion,
+ctk_entry_completion_compute_prefix (CtkEntryCompletion *completion,
                                      const char         *key)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *prefix = NULL;
   gboolean valid;
 
@@ -1821,7 +1821,7 @@ ctk_entry_completion_compute_prefix (GtkEntryCompletion *completion,
 
 
 static gboolean
-ctk_entry_completion_real_insert_prefix (GtkEntryCompletion *completion,
+ctk_entry_completion_real_insert_prefix (CtkEntryCompletion *completion,
                                          const gchar        *prefix)
 {
   if (prefix)
@@ -1853,7 +1853,7 @@ ctk_entry_completion_real_insert_prefix (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_completion_prefix:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Get the original text entered by the user that triggered
  * the completion or %NULL if there’s no completion ongoing.
@@ -1863,7 +1863,7 @@ ctk_entry_completion_real_insert_prefix (GtkEntryCompletion *completion,
  * Since: 2.12
  */
 const gchar*
-ctk_entry_completion_get_completion_prefix (GtkEntryCompletion *completion)
+ctk_entry_completion_get_completion_prefix (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), NULL);
 
@@ -1871,10 +1871,10 @@ ctk_entry_completion_get_completion_prefix (GtkEntryCompletion *completion)
 }
 
 static void
-ctk_entry_completion_insert_completion_text (GtkEntryCompletion *completion,
+ctk_entry_completion_insert_completion_text (CtkEntryCompletion *completion,
                                              const gchar *text)
 {
-  GtkEntryCompletionPrivate *priv = completion->priv;
+  CtkEntryCompletionPrivate *priv = completion->priv;
   gint len;
 
   priv = completion->priv;
@@ -1898,9 +1898,9 @@ ctk_entry_completion_insert_completion_text (GtkEntryCompletion *completion,
 }
 
 static gboolean
-ctk_entry_completion_insert_completion (GtkEntryCompletion *completion,
-                                        GtkTreeModel       *model,
-                                        GtkTreeIter        *iter)
+ctk_entry_completion_insert_completion (CtkEntryCompletion *completion,
+                                        CtkTreeModel       *model,
+                                        CtkTreeIter        *iter)
 {
   gchar *str = NULL;
 
@@ -1920,14 +1920,14 @@ ctk_entry_completion_insert_completion (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_insert_prefix:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Requests a prefix insertion.
  *
  * Since: 2.6
  */
 void
-ctk_entry_completion_insert_prefix (GtkEntryCompletion *completion)
+ctk_entry_completion_insert_prefix (CtkEntryCompletion *completion)
 {
   gboolean done;
   gchar *prefix;
@@ -1953,7 +1953,7 @@ ctk_entry_completion_insert_prefix (GtkEntryCompletion *completion)
 
 /**
  * ctk_entry_completion_set_inline_completion:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @inline_completion: %TRUE to do inline completion
  *
  * Sets whether the common prefix of the possible completions should
@@ -1962,7 +1962,7 @@ ctk_entry_completion_insert_prefix (GtkEntryCompletion *completion)
  * Since: 2.6
  */
 void
-ctk_entry_completion_set_inline_completion (GtkEntryCompletion *completion,
+ctk_entry_completion_set_inline_completion (CtkEntryCompletion *completion,
                                             gboolean            inline_completion)
 {
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
@@ -1979,7 +1979,7 @@ ctk_entry_completion_set_inline_completion (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_inline_completion:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Returns whether the common prefix of the possible completions should
  * be automatically inserted in the entry.
@@ -1989,7 +1989,7 @@ ctk_entry_completion_set_inline_completion (GtkEntryCompletion *completion,
  * Since: 2.6
  */
 gboolean
-ctk_entry_completion_get_inline_completion (GtkEntryCompletion *completion)
+ctk_entry_completion_get_inline_completion (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), FALSE);
 
@@ -1998,7 +1998,7 @@ ctk_entry_completion_get_inline_completion (GtkEntryCompletion *completion)
 
 /**
  * ctk_entry_completion_set_popup_completion:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @popup_completion: %TRUE to do popup completion
  *
  * Sets whether the completions should be presented in a popup window.
@@ -2006,7 +2006,7 @@ ctk_entry_completion_get_inline_completion (GtkEntryCompletion *completion)
  * Since: 2.6
  */
 void
-ctk_entry_completion_set_popup_completion (GtkEntryCompletion *completion,
+ctk_entry_completion_set_popup_completion (CtkEntryCompletion *completion,
                                            gboolean            popup_completion)
 {
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
@@ -2024,7 +2024,7 @@ ctk_entry_completion_set_popup_completion (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_popup_completion:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Returns whether the completions should be presented in a popup window.
  *
@@ -2033,7 +2033,7 @@ ctk_entry_completion_set_popup_completion (GtkEntryCompletion *completion,
  * Since: 2.6
  */
 gboolean
-ctk_entry_completion_get_popup_completion (GtkEntryCompletion *completion)
+ctk_entry_completion_get_popup_completion (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), TRUE);
 
@@ -2042,7 +2042,7 @@ ctk_entry_completion_get_popup_completion (GtkEntryCompletion *completion)
 
 /**
  * ctk_entry_completion_set_popup_set_width:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @popup_set_width: %TRUE to make the width of the popup the same as the entry
  *
  * Sets whether the completion popup window will be resized to be the same
@@ -2051,7 +2051,7 @@ ctk_entry_completion_get_popup_completion (GtkEntryCompletion *completion)
  * Since: 2.8
  */
 void
-ctk_entry_completion_set_popup_set_width (GtkEntryCompletion *completion,
+ctk_entry_completion_set_popup_set_width (CtkEntryCompletion *completion,
                                           gboolean            popup_set_width)
 {
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
@@ -2068,7 +2068,7 @@ ctk_entry_completion_set_popup_set_width (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_popup_set_width:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Returns whether the  completion popup window will be resized to the
  * width of the entry.
@@ -2079,7 +2079,7 @@ ctk_entry_completion_set_popup_set_width (GtkEntryCompletion *completion,
  * Since: 2.8
  */
 gboolean
-ctk_entry_completion_get_popup_set_width (GtkEntryCompletion *completion)
+ctk_entry_completion_get_popup_set_width (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), TRUE);
 
@@ -2089,18 +2089,18 @@ ctk_entry_completion_get_popup_set_width (GtkEntryCompletion *completion)
 
 /**
  * ctk_entry_completion_set_popup_single_match:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @popup_single_match: %TRUE if the popup should appear even for a single
  *     match
  *
  * Sets whether the completion popup window will appear even if there is
  * only a single match. You may want to set this to %FALSE if you
- * are using [inline completion][GtkEntryCompletion--inline-completion].
+ * are using [inline completion][CtkEntryCompletion--inline-completion].
  *
  * Since: 2.8
  */
 void
-ctk_entry_completion_set_popup_single_match (GtkEntryCompletion *completion,
+ctk_entry_completion_set_popup_single_match (CtkEntryCompletion *completion,
                                              gboolean            popup_single_match)
 {
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
@@ -2117,7 +2117,7 @@ ctk_entry_completion_set_popup_single_match (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_popup_single_match:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Returns whether the completion popup window will appear even if there is
  * only a single match.
@@ -2128,7 +2128,7 @@ ctk_entry_completion_set_popup_single_match (GtkEntryCompletion *completion,
  * Since: 2.8
  */
 gboolean
-ctk_entry_completion_get_popup_single_match (GtkEntryCompletion *completion)
+ctk_entry_completion_get_popup_single_match (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), TRUE);
 
@@ -2137,7 +2137,7 @@ ctk_entry_completion_get_popup_single_match (GtkEntryCompletion *completion)
 
 /**
  * ctk_entry_completion_set_inline_selection:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  * @inline_selection: %TRUE to do inline selection
  *
  * Sets whether it is possible to cycle through the possible completions
@@ -2146,7 +2146,7 @@ ctk_entry_completion_get_popup_single_match (GtkEntryCompletion *completion)
  * Since: 2.12
  */
 void
-ctk_entry_completion_set_inline_selection (GtkEntryCompletion *completion,
+ctk_entry_completion_set_inline_selection (CtkEntryCompletion *completion,
                                            gboolean inline_selection)
 {
   g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
@@ -2163,7 +2163,7 @@ ctk_entry_completion_set_inline_selection (GtkEntryCompletion *completion,
 
 /**
  * ctk_entry_completion_get_inline_selection:
- * @completion: a #GtkEntryCompletion
+ * @completion: a #CtkEntryCompletion
  *
  * Returns %TRUE if inline-selection mode is turned on.
  *
@@ -2172,7 +2172,7 @@ ctk_entry_completion_set_inline_selection (GtkEntryCompletion *completion,
  * Since: 2.12
  */
 gboolean
-ctk_entry_completion_get_inline_selection (GtkEntryCompletion *completion)
+ctk_entry_completion_get_inline_selection (CtkEntryCompletion *completion)
 {
   g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), FALSE);
 
@@ -2183,7 +2183,7 @@ ctk_entry_completion_get_inline_selection (GtkEntryCompletion *completion)
 static gint
 ctk_entry_completion_timeout (gpointer data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   completion->priv->completion_timeout = 0;
 
@@ -2219,12 +2219,12 @@ keyval_is_cursor_move (guint keyval)
 }
 
 static gboolean
-ctk_entry_completion_key_press (GtkWidget   *widget,
+ctk_entry_completion_key_press (CtkWidget   *widget,
                                 GdkEventKey *event,
                                 gpointer     user_data)
 {
   gint matches, actions = 0;
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
 
   if (!completion->priv->popup_completion)
     return FALSE;
@@ -2251,7 +2251,7 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
 
   if (keyval_is_cursor_move (event->keyval))
     {
-      GtkTreePath *path = NULL;
+      CtkTreePath *path = NULL;
 
       if (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up)
         {
@@ -2332,10 +2332,10 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
           if (completion->priv->inline_selection)
             {
 
-              GtkTreeIter iter;
-              GtkTreeIter child_iter;
-              GtkTreeModel *model = NULL;
-              GtkTreeSelection *sel;
+              CtkTreeIter iter;
+              CtkTreeIter child_iter;
+              CtkTreeModel *model = NULL;
+              CtkTreeSelection *sel;
               gboolean entry_set;
 
               sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->tree_view));
@@ -2436,11 +2436,11 @@ keypress_completion_out:
            event->keyval == GDK_KEY_KP_Enter ||
            event->keyval == GDK_KEY_Return)
     {
-      GtkTreeIter iter;
-      GtkTreeModel *model = NULL;
-      GtkTreeModel *child_model;
-      GtkTreeIter child_iter;
-      GtkTreeSelection *sel;
+      CtkTreeIter iter;
+      CtkTreeModel *model = NULL;
+      CtkTreeModel *child_model;
+      CtkTreeIter child_iter;
+      CtkTreeSelection *sel;
       gboolean retval = TRUE;
 
       ctk_entry_reset_im_context (CTK_ENTRY (widget));
@@ -2483,7 +2483,7 @@ keypress_completion_out:
           sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->action_view));
           if (ctk_tree_selection_get_selected (sel, &model, &iter))
             {
-              GtkTreePath *path;
+              CtkTreePath *path;
 
               path = ctk_tree_path_new_from_indices (completion->priv->current_selected - matches, -1);
               g_signal_emit_by_name (completion, "action-activated",
@@ -2504,11 +2504,11 @@ keypress_completion_out:
 }
 
 static void
-ctk_entry_completion_changed (GtkWidget *widget,
+ctk_entry_completion_changed (CtkWidget *widget,
                               gpointer   user_data)
 {
-  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
-  GtkEntry *entry = CTK_ENTRY (widget);
+  CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
+  CtkEntry *entry = CTK_ENTRY (widget);
   GdkDevice *device;
 
   if (!completion->priv->popup_completion)
@@ -2549,7 +2549,7 @@ ctk_entry_completion_changed (GtkWidget *widget,
 }
 
 static gboolean
-check_completion_callback (GtkEntryCompletion *completion)
+check_completion_callback (CtkEntryCompletion *completion)
 {
   completion->priv->check_completion_idle = NULL;
   
@@ -2560,10 +2560,10 @@ check_completion_callback (GtkEntryCompletion *completion)
 }
 
 static void
-clear_completion_callback (GtkEntry   *entry,
+clear_completion_callback (CtkEntry   *entry,
                            GParamSpec *pspec)
 {
-  GtkEntryCompletion *completion = ctk_entry_get_completion (entry);
+  CtkEntryCompletion *completion = ctk_entry_get_completion (entry);
       
   if (!completion->priv->inline_completion)
     return;
@@ -2574,9 +2574,9 @@ clear_completion_callback (GtkEntry   *entry,
 }
 
 static gboolean
-accept_completion_callback (GtkEntry *entry)
+accept_completion_callback (CtkEntry *entry)
 {
-  GtkEntryCompletion *completion = ctk_entry_get_completion (entry);
+  CtkEntryCompletion *completion = ctk_entry_get_completion (entry);
 
   if (!completion->priv->inline_completion)
     return FALSE;
@@ -2589,11 +2589,11 @@ accept_completion_callback (GtkEntry *entry)
 }
 
 static void
-completion_insert_text_callback (GtkEntry           *entry,
+completion_insert_text_callback (CtkEntry           *entry,
                                  const gchar        *text,
                                  gint                length,
                                  gint                position,
-                                 GtkEntryCompletion *completion)
+                                 CtkEntryCompletion *completion)
 {
   if (!completion->priv->inline_completion)
     return;
@@ -2611,7 +2611,7 @@ completion_insert_text_callback (GtkEntry           *entry,
 }
 
 static void
-connect_completion_signals (GtkEntryCompletion *completion)
+connect_completion_signals (CtkEntryCompletion *completion)
 {
   completion->priv->changed_id =
     g_signal_connect (completion->priv->entry, "changed",
@@ -2631,8 +2631,8 @@ connect_completion_signals (GtkEntryCompletion *completion)
 }
 
 static void
-set_accessible_relation (GtkWidget *window,
-                         GtkWidget *entry)
+set_accessible_relation (CtkWidget *window,
+                         CtkWidget *entry)
 {
   AtkObject *window_accessible;
   AtkObject *entry_accessible;
@@ -2646,8 +2646,8 @@ set_accessible_relation (GtkWidget *window,
 }
 
 static void
-unset_accessible_relation (GtkWidget *window,
-                           GtkWidget *entry)
+unset_accessible_relation (CtkWidget *window,
+                           CtkWidget *entry)
 {
   AtkObject *window_accessible;
   AtkObject *entry_accessible;
@@ -2661,7 +2661,7 @@ unset_accessible_relation (GtkWidget *window,
 }
 
 static void
-disconnect_completion_signals (GtkEntryCompletion *completion)
+disconnect_completion_signals (CtkEntryCompletion *completion)
 {
   if (completion->priv->changed_id > 0 &&
       g_signal_handler_is_connected (completion->priv->entry,
@@ -2690,7 +2690,7 @@ disconnect_completion_signals (GtkEntryCompletion *completion)
 }
 
 void
-_ctk_entry_completion_disconnect (GtkEntryCompletion *completion)
+_ctk_entry_completion_disconnect (CtkEntryCompletion *completion)
 {
   if (completion->priv->completion_timeout)
     {
@@ -2719,8 +2719,8 @@ _ctk_entry_completion_disconnect (GtkEntryCompletion *completion)
 }
 
 void
-_ctk_entry_completion_connect (GtkEntryCompletion *completion,
-                               GtkEntry           *entry)
+_ctk_entry_completion_connect (CtkEntryCompletion *completion,
+                               CtkEntry           *entry)
 {
   completion->priv->entry = CTK_WIDGET (entry);
 

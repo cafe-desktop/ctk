@@ -24,21 +24,21 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_PROVIDER         (ctk_css_provider_get_type ())
-#define CTK_CSS_PROVIDER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_CSS_PROVIDER, GtkCssProvider))
-#define CTK_CSS_PROVIDER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_CSS_PROVIDER, GtkCssProviderClass))
+#define CTK_CSS_PROVIDER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_CSS_PROVIDER, CtkCssProvider))
+#define CTK_CSS_PROVIDER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_CSS_PROVIDER, CtkCssProviderClass))
 #define CTK_IS_CSS_PROVIDER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_CSS_PROVIDER))
 #define CTK_IS_CSS_PROVIDER_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), CTK_TYPE_CSS_PROVIDER))
-#define CTK_CSS_PROVIDER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_CSS_PROVIDER, GtkCssProviderClass))
+#define CTK_CSS_PROVIDER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_CSS_PROVIDER, CtkCssProviderClass))
 
 /**
  * CTK_CSS_PROVIDER_ERROR:
  *
- * Domain for #GtkCssProvider errors.
+ * Domain for #CtkCssProvider errors.
  */
 #define CTK_CSS_PROVIDER_ERROR (ctk_css_provider_error_quark ())
 
 /**
- * GtkCssProviderError:
+ * CtkCssProviderError:
  * @CTK_CSS_PROVIDER_ERROR_FAILED: Failed.
  * @CTK_CSS_PROVIDER_ERROR_SYNTAX: Syntax error.
  * @CTK_CSS_PROVIDER_ERROR_IMPORT: Import error.
@@ -56,27 +56,27 @@ typedef enum
   CTK_CSS_PROVIDER_ERROR_NAME,
   CTK_CSS_PROVIDER_ERROR_DEPRECATED,
   CTK_CSS_PROVIDER_ERROR_UNKNOWN_VALUE
-} GtkCssProviderError;
+} CtkCssProviderError;
 
 GDK_AVAILABLE_IN_ALL
 GQuark ctk_css_provider_error_quark (void);
 
-typedef struct _GtkCssProvider GtkCssProvider;
-typedef struct _GtkCssProviderClass GtkCssProviderClass;
-typedef struct _GtkCssProviderPrivate GtkCssProviderPrivate;
+typedef struct _CtkCssProvider CtkCssProvider;
+typedef struct _CtkCssProviderClass CtkCssProviderClass;
+typedef struct _CtkCssProviderPrivate CtkCssProviderPrivate;
 
-struct _GtkCssProvider
+struct _CtkCssProvider
 {
   GObject parent_instance;
-  GtkCssProviderPrivate *priv;
+  CtkCssProviderPrivate *priv;
 };
 
-struct _GtkCssProviderClass
+struct _CtkCssProviderClass
 {
   GObjectClass parent_class;
 
-  void (* parsing_error)                        (GtkCssProvider  *provider,
-                                                 GtkCssSection   *section,
+  void (* parsing_error)                        (CtkCssProvider  *provider,
+                                                 CtkCssSection   *section,
                                                  const GError *   error);
 
   /* Padding for future expansion */
@@ -89,34 +89,34 @@ GDK_AVAILABLE_IN_ALL
 GType ctk_css_provider_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkCssProvider * ctk_css_provider_new (void);
+CtkCssProvider * ctk_css_provider_new (void);
 
 GDK_AVAILABLE_IN_3_2
-char *           ctk_css_provider_to_string      (GtkCssProvider  *provider);
+char *           ctk_css_provider_to_string      (CtkCssProvider  *provider);
 
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_css_provider_load_from_data (GtkCssProvider  *css_provider,
+gboolean         ctk_css_provider_load_from_data (CtkCssProvider  *css_provider,
                                                   const gchar     *data,
                                                   gssize           length,
                                                   GError         **error);
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_css_provider_load_from_file (GtkCssProvider  *css_provider,
+gboolean         ctk_css_provider_load_from_file (CtkCssProvider  *css_provider,
                                                   GFile           *file,
                                                   GError         **error);
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_css_provider_load_from_path (GtkCssProvider  *css_provider,
+gboolean         ctk_css_provider_load_from_path (CtkCssProvider  *css_provider,
                                                   const gchar     *path,
                                                   GError         **error);
 
 GDK_AVAILABLE_IN_3_16
-void             ctk_css_provider_load_from_resource (GtkCssProvider *css_provider,
+void             ctk_css_provider_load_from_resource (CtkCssProvider *css_provider,
                                                       const gchar    *resource_path);
 
 GDK_DEPRECATED_FOR(ctk_css_provider_new)
-GtkCssProvider * ctk_css_provider_get_default (void);
+CtkCssProvider * ctk_css_provider_get_default (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkCssProvider * ctk_css_provider_get_named (const gchar *name,
+CtkCssProvider * ctk_css_provider_get_named (const gchar *name,
                                              const gchar *variant);
 
 G_END_DECLS

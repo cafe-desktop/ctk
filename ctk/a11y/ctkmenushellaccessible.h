@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_MENU_SHELL_ACCESSIBLE                    (ctk_menu_shell_accessible_get_type ())
-#define CTK_MENU_SHELL_ACCESSIBLE(obj)                    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_SHELL_ACCESSIBLE, GtkMenuShellAccessible))
-#define CTK_MENU_SHELL_ACCESSIBLE_CLASS(klass)            (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_SHELL_ACCESSIBLE, GtkMenuShellAccessibleClass))
+#define CTK_MENU_SHELL_ACCESSIBLE(obj)                    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_SHELL_ACCESSIBLE, CtkMenuShellAccessible))
+#define CTK_MENU_SHELL_ACCESSIBLE_CLASS(klass)            (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_SHELL_ACCESSIBLE, CtkMenuShellAccessibleClass))
 #define CTK_IS_MENU_SHELL_ACCESSIBLE(obj)                 (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MENU_SHELL_ACCESSIBLE))
 #define CTK_IS_MENU_SHELL_ACCESSIBLE_CLASS(klass)         (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MENU_SHELL_ACCESSIBLE))
-#define CTK_MENU_SHELL_ACCESSIBLE_GET_CLASS(obj)          (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_SHELL_ACCESSIBLE, GtkMenuShellAccessibleClass))
+#define CTK_MENU_SHELL_ACCESSIBLE_GET_CLASS(obj)          (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_SHELL_ACCESSIBLE, CtkMenuShellAccessibleClass))
 
-typedef struct _GtkMenuShellAccessible        GtkMenuShellAccessible;
-typedef struct _GtkMenuShellAccessibleClass   GtkMenuShellAccessibleClass;
-typedef struct _GtkMenuShellAccessiblePrivate GtkMenuShellAccessiblePrivate;
+typedef struct _CtkMenuShellAccessible        CtkMenuShellAccessible;
+typedef struct _CtkMenuShellAccessibleClass   CtkMenuShellAccessibleClass;
+typedef struct _CtkMenuShellAccessiblePrivate CtkMenuShellAccessiblePrivate;
 
-struct _GtkMenuShellAccessible
+struct _CtkMenuShellAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 
-  GtkMenuShellAccessiblePrivate *priv;
+  CtkMenuShellAccessiblePrivate *priv;
 };
 
-struct _GtkMenuShellAccessibleClass
+struct _CtkMenuShellAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

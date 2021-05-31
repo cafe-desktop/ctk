@@ -28,33 +28,33 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RENDERER_CELL_ACCESSIBLE            (ctk_renderer_cell_accessible_get_type ())
-#define CTK_RENDERER_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RENDERER_CELL_ACCESSIBLE, GtkRendererCellAccessible))
-#define CTK_RENDERER_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RENDERER_CELL_ACCESSIBLE, GtkRendererCellAccessibleClass))
+#define CTK_RENDERER_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RENDERER_CELL_ACCESSIBLE, CtkRendererCellAccessible))
+#define CTK_RENDERER_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RENDERER_CELL_ACCESSIBLE, CtkRendererCellAccessibleClass))
 #define CTK_IS_RENDERER_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RENDERER_CELL_ACCESSIBLE))
 #define CTK_IS_RENDERER_CELL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RENDERER_CELL_ACCESSIBLE))
-#define CTK_RENDERER_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RENDERER_CELL_ACCESSIBLE, GtkRendererCellAccessibleClass))
+#define CTK_RENDERER_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RENDERER_CELL_ACCESSIBLE, CtkRendererCellAccessibleClass))
 
-typedef struct _GtkRendererCellAccessible        GtkRendererCellAccessible;
-typedef struct _GtkRendererCellAccessibleClass   GtkRendererCellAccessibleClass;
-typedef struct _GtkRendererCellAccessiblePrivate GtkRendererCellAccessiblePrivate;
+typedef struct _CtkRendererCellAccessible        CtkRendererCellAccessible;
+typedef struct _CtkRendererCellAccessibleClass   CtkRendererCellAccessibleClass;
+typedef struct _CtkRendererCellAccessiblePrivate CtkRendererCellAccessiblePrivate;
 
-struct _GtkRendererCellAccessible
+struct _CtkRendererCellAccessible
 {
-  GtkCellAccessible  parent;
+  CtkCellAccessible  parent;
 
-  GtkRendererCellAccessiblePrivate *priv;
+  CtkRendererCellAccessiblePrivate *priv;
 };
 
-struct _GtkRendererCellAccessibleClass
+struct _CtkRendererCellAccessibleClass
 {
-  GtkCellAccessibleClass parent_class;
+  CtkCellAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL
 GType      ctk_renderer_cell_accessible_get_type     (void);
 
 GDK_AVAILABLE_IN_ALL
-AtkObject *ctk_renderer_cell_accessible_new          (GtkCellRenderer * renderer);
+AtkObject *ctk_renderer_cell_accessible_new          (CtkCellRenderer * renderer);
 
 G_END_DECLS
 

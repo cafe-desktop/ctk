@@ -38,30 +38,30 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SOCKET            (ctk_socket_get_type ())
-#define CTK_SOCKET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SOCKET, GtkSocket))
-#define CTK_SOCKET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SOCKET, GtkSocketClass))
+#define CTK_SOCKET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SOCKET, CtkSocket))
+#define CTK_SOCKET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SOCKET, CtkSocketClass))
 #define CTK_IS_SOCKET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SOCKET))
 #define CTK_IS_SOCKET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SOCKET))
-#define CTK_SOCKET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SOCKET, GtkSocketClass))
+#define CTK_SOCKET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SOCKET, CtkSocketClass))
 
 
-typedef struct _GtkSocket        GtkSocket;
-typedef struct _GtkSocketClass   GtkSocketClass;
-typedef struct _GtkSocketPrivate GtkSocketPrivate;
+typedef struct _CtkSocket        CtkSocket;
+typedef struct _CtkSocketClass   CtkSocketClass;
+typedef struct _CtkSocketPrivate CtkSocketPrivate;
 
-struct _GtkSocket
+struct _CtkSocket
 {
-  GtkContainer container;
+  CtkContainer container;
 
-  GtkSocketPrivate *priv;
+  CtkSocketPrivate *priv;
 };
 
-struct _GtkSocketClass
+struct _CtkSocketClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
-  void     (*plug_added)   (GtkSocket *socket_);
-  gboolean (*plug_removed) (GtkSocket *socket_);
+  void     (*plug_added)   (CtkSocket *socket_);
+  gboolean (*plug_removed) (CtkSocket *socket_);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -73,14 +73,14 @@ struct _GtkSocketClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_socket_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_socket_new             (void);
+CtkWidget *ctk_socket_new             (void);
 GDK_AVAILABLE_IN_ALL
-void       ctk_socket_add_id          (GtkSocket *socket_,
+void       ctk_socket_add_id          (CtkSocket *socket_,
                                        Window     window);
 GDK_AVAILABLE_IN_ALL
-Window     ctk_socket_get_id          (GtkSocket *socket_);
+Window     ctk_socket_get_id          (CtkSocket *socket_);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *ctk_socket_get_plug_window (GtkSocket *socket_);
+GdkWindow *ctk_socket_get_plug_window (CtkSocket *socket_);
 
 G_END_DECLS
 

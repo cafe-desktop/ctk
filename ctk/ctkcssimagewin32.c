@@ -23,15 +23,15 @@
 
 #include "ctkcssprovider.h"
 
-G_DEFINE_TYPE (GtkCssImageWin32, _ctk_css_image_win32, CTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (CtkCssImageWin32, _ctk_css_image_win32, CTK_TYPE_CSS_IMAGE)
 
 static void
-ctk_css_image_win32_draw (GtkCssImage        *image,
+ctk_css_image_win32_draw (CtkCssImage        *image,
                           cairo_t            *cr,
                           double              width,
                           double              height)
 {
-  GtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (image);
+  CtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (image);
   cairo_surface_t *surface;
   int dx, dy;
 
@@ -66,10 +66,10 @@ ctk_css_image_win32_draw (GtkCssImage        *image,
 }
 
 static gboolean
-ctk_css_image_win32_parse (GtkCssImage  *image,
-                           GtkCssParser *parser)
+ctk_css_image_win32_parse (CtkCssImage  *image,
+                           CtkCssParser *parser)
 {
-  GtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (image);
+  CtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (image);
 
   if (!_ctk_css_parser_try (parser, "-ctk-win32-theme-part", TRUE))
     {
@@ -213,10 +213,10 @@ ctk_css_image_win32_parse (GtkCssImage  *image,
 }
 
 static void
-ctk_css_image_win32_print (GtkCssImage *image,
+ctk_css_image_win32_print (CtkCssImage *image,
                            GString     *string)
 {
-  GtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (image);
+  CtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (image);
 
   g_string_append (string, "-ctk-win32-theme-part(");
   ctk_win32_theme_print (wimage->theme, string);
@@ -226,7 +226,7 @@ ctk_css_image_win32_print (GtkCssImage *image,
 static void
 ctk_css_image_win32_finalize (GObject *object)
 {
-  GtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (object);
+  CtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (object);
 
   if (wimage->theme)
     ctk_win32_theme_unref (wimage->theme);
@@ -235,9 +235,9 @@ ctk_css_image_win32_finalize (GObject *object)
 }
 
 static void
-_ctk_css_image_win32_class_init (GtkCssImageWin32Class *klass)
+_ctk_css_image_win32_class_init (CtkCssImageWin32Class *klass)
 {
-  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
+  CtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_css_image_win32_finalize;
@@ -248,7 +248,7 @@ _ctk_css_image_win32_class_init (GtkCssImageWin32Class *klass)
 }
 
 static void
-_ctk_css_image_win32_init (GtkCssImageWin32 *wimage)
+_ctk_css_image_win32_init (CtkCssImageWin32 *wimage)
 {
   wimage->over_alpha = 1.0;
   wimage->part2 = -1;

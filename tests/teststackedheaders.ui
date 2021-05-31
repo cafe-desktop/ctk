@@ -1,16 +1,16 @@
 <interface>
-  <object class="GtkWindow" id="window">
+  <object class="CtkWindow" id="window">
     <property name="default-width">600</property>
     <property name="default-height">400</property>
     <property name="icon-name">preferences-desktop-font</property>
     <child type="titlebar">
-      <object class="GtkStack" id="header_stack">
+      <object class="CtkStack" id="header_stack">
         <property name="visible">True</property>
         <child>
-          <object class="GtkHeaderBar">
+          <object class="CtkHeaderBar">
             <property name="visible">True</property>
             <child>
-              <object class="GtkButton">
+              <object class="CtkButton">
                 <property name="visible">True</property>
                 <property name="label">New</property>
                 <property name="valign">center</property>
@@ -21,7 +21,7 @@
               </packing>
             </child>
             <child type="title">
-              <object class="GtkStackSwitcher">
+              <object class="CtkStackSwitcher">
                 <property name="visible">True</property>
                 <property name="stack">page_stack</property>
               </object>
@@ -32,10 +32,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkHeaderBar">
+          <object class="CtkHeaderBar">
             <property name="visible">True</property>
             <child>
-              <object class="GtkButton">
+              <object class="CtkButton">
                 <property name="visible">True</property>
                 <property name="label">&lt;</property>
                 <property name="valign">center</property>
@@ -53,17 +53,17 @@
       </object>
     </child>
     <child>
-      <object class="GtkStack" id="page_stack">
+      <object class="CtkStack" id="page_stack">
         <property name="visible">True</property>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="CtkScrolledWindow">
             <property name="visible">True</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <property name="hscrollbar-policy">always</property>
             <property name="vscrollbar-policy">always</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -77,14 +77,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="CtkScrolledWindow">
             <property name="visible">True</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <property name="hscrollbar-policy">always</property>
             <property name="vscrollbar-policy">always</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -98,14 +98,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="CtkScrolledWindow">
             <property name="visible">True</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <property name="hscrollbar-policy">always</property>
             <property name="vscrollbar-policy">always</property>
             <child>
-              <object class="GtkLabel">
+              <object class="CtkLabel">
                 <property name="visible">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>

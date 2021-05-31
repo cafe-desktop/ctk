@@ -33,9 +33,9 @@
 /**
  * SECTION:ctkinvisible
  * @Short_description: A widget which is not displayed
- * @Title: GtkInvisible
+ * @Title: CtkInvisible
  *
- * The #GtkInvisible widget is used internally in GTK+, and is probably not
+ * The #CtkInvisible widget is used internally in GTK+, and is probably not
  * very useful for application developers.
  *
  * It is used for reliable pointer grabs and selection handling in the code
@@ -43,7 +43,7 @@
  */
 
 
-struct _GtkInvisiblePrivate
+struct _CtkInvisiblePrivate
 {
   GdkScreen    *screen;
   gboolean      has_user_ref_count;
@@ -55,12 +55,12 @@ enum {
   LAST_ARG
 };
 
-static void ctk_invisible_destroy       (GtkWidget         *widget);
-static void ctk_invisible_realize       (GtkWidget         *widget);
-static void ctk_invisible_style_updated (GtkWidget         *widget);
-static void ctk_invisible_show          (GtkWidget         *widget);
-static void ctk_invisible_size_allocate (GtkWidget         *widget,
-					 GtkAllocation     *allocation);
+static void ctk_invisible_destroy       (CtkWidget         *widget);
+static void ctk_invisible_realize       (CtkWidget         *widget);
+static void ctk_invisible_style_updated (CtkWidget         *widget);
+static void ctk_invisible_show          (CtkWidget         *widget);
+static void ctk_invisible_size_allocate (CtkWidget         *widget,
+					 CtkAllocation     *allocation);
 static void ctk_invisible_set_property  (GObject           *object,
 					 guint              prop_id,
 					 const GValue      *value,
@@ -71,15 +71,15 @@ static void ctk_invisible_get_property  (GObject           *object,
 					 GParamSpec        *pspec);
 static void ctk_invisible_constructed   (GObject           *object);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInvisible, ctk_invisible, CTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInvisible, ctk_invisible, CTK_TYPE_WIDGET)
 
 static void
-ctk_invisible_class_init (GtkInvisibleClass *class)
+ctk_invisible_class_init (CtkInvisibleClass *class)
 {
   GObjectClass	 *gobject_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
-  widget_class = (GtkWidgetClass*) class;
+  widget_class = (CtkWidgetClass*) class;
   gobject_class = (GObjectClass*) class;
 
   widget_class->realize = ctk_invisible_realize;
@@ -102,9 +102,9 @@ ctk_invisible_class_init (GtkInvisibleClass *class)
 }
 
 static void
-ctk_invisible_init (GtkInvisible *invisible)
+ctk_invisible_init (CtkInvisible *invisible)
 {
-  GtkInvisiblePrivate *priv;
+  CtkInvisiblePrivate *priv;
 
   invisible->priv = ctk_invisible_get_instance_private (invisible);
   priv = invisible->priv;
@@ -119,10 +119,10 @@ ctk_invisible_init (GtkInvisible *invisible)
 }
 
 static void
-ctk_invisible_destroy (GtkWidget *widget)
+ctk_invisible_destroy (CtkWidget *widget)
 {
-  GtkInvisible *invisible = CTK_INVISIBLE (widget);
-  GtkInvisiblePrivate *priv = invisible->priv;
+  CtkInvisible *invisible = CTK_INVISIBLE (widget);
+  CtkInvisiblePrivate *priv = invisible->priv;
 
   if (priv->has_user_ref_count)
     {
@@ -136,15 +136,15 @@ ctk_invisible_destroy (GtkWidget *widget)
 /**
  * ctk_invisible_new_for_screen:
  * @screen: a #GdkScreen which identifies on which
- *	    the new #GtkInvisible will be created.
+ *	    the new #CtkInvisible will be created.
  *
- * Creates a new #GtkInvisible object for a specified screen
+ * Creates a new #CtkInvisible object for a specified screen
  *
- * Returns: a newly created #GtkInvisible object
+ * Returns: a newly created #CtkInvisible object
  *
  * Since: 2.2
  **/
-GtkWidget* 
+CtkWidget* 
 ctk_invisible_new_for_screen (GdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
@@ -155,11 +155,11 @@ ctk_invisible_new_for_screen (GdkScreen *screen)
 /**
  * ctk_invisible_new:
  * 
- * Creates a new #GtkInvisible.
+ * Creates a new #CtkInvisible.
  * 
- * Returns: a new #GtkInvisible.
+ * Returns: a new #CtkInvisible.
  **/
-GtkWidget*
+CtkWidget*
 ctk_invisible_new (void)
 {
   return g_object_new (CTK_TYPE_INVISIBLE, NULL);
@@ -167,19 +167,19 @@ ctk_invisible_new (void)
 
 /**
  * ctk_invisible_set_screen:
- * @invisible: a #GtkInvisible.
+ * @invisible: a #CtkInvisible.
  * @screen: a #GdkScreen.
  *
- * Sets the #GdkScreen where the #GtkInvisible object will be displayed.
+ * Sets the #GdkScreen where the #CtkInvisible object will be displayed.
  *
  * Since: 2.2
  **/ 
 void
-ctk_invisible_set_screen (GtkInvisible *invisible,
+ctk_invisible_set_screen (CtkInvisible *invisible,
 			  GdkScreen    *screen)
 {
-  GtkInvisiblePrivate *priv;
-  GtkWidget *widget;
+  CtkInvisiblePrivate *priv;
+  CtkWidget *widget;
   GdkScreen *previous_screen;
   gboolean was_realized;
 
@@ -210,7 +210,7 @@ ctk_invisible_set_screen (GtkInvisible *invisible,
 
 /**
  * ctk_invisible_get_screen:
- * @invisible: a #GtkInvisible.
+ * @invisible: a #CtkInvisible.
  *
  * Returns the #GdkScreen object associated with @invisible
  *
@@ -219,7 +219,7 @@ ctk_invisible_set_screen (GtkInvisible *invisible,
  * Since: 2.2
  **/
 GdkScreen *
-ctk_invisible_get_screen (GtkInvisible *invisible)
+ctk_invisible_get_screen (CtkInvisible *invisible)
 {
   g_return_val_if_fail (CTK_IS_INVISIBLE (invisible), NULL);
 
@@ -227,7 +227,7 @@ ctk_invisible_get_screen (GtkInvisible *invisible)
 }
 
 static void
-ctk_invisible_realize (GtkWidget *widget)
+ctk_invisible_realize (CtkWidget *widget)
 {
   GdkWindow *parent;
   GdkWindow *window;
@@ -257,21 +257,21 @@ ctk_invisible_realize (GtkWidget *widget)
 }
 
 static void
-ctk_invisible_style_updated (GtkWidget *widget)
+ctk_invisible_style_updated (CtkWidget *widget)
 {
   /* Don't chain up to parent implementation */
 }
 
 static void
-ctk_invisible_show (GtkWidget *widget)
+ctk_invisible_show (CtkWidget *widget)
 {
   _ctk_widget_set_visible_flag (widget, TRUE);
   ctk_widget_map (widget);
 }
 
 static void
-ctk_invisible_size_allocate (GtkWidget     *widget,
-                             GtkAllocation *allocation)
+ctk_invisible_size_allocate (CtkWidget     *widget,
+                             CtkAllocation *allocation)
 {
   ctk_widget_set_allocation (widget, allocation);
 }
@@ -283,7 +283,7 @@ ctk_invisible_set_property  (GObject      *object,
 			     const GValue *value,
 			     GParamSpec   *pspec)
 {
-  GtkInvisible *invisible = CTK_INVISIBLE (object);
+  CtkInvisible *invisible = CTK_INVISIBLE (object);
   
   switch (prop_id)
     {
@@ -302,8 +302,8 @@ ctk_invisible_get_property  (GObject      *object,
 			     GValue	  *value,
 			     GParamSpec   *pspec)
 {
-  GtkInvisible *invisible = CTK_INVISIBLE (object);
-  GtkInvisiblePrivate *priv = invisible->priv;
+  CtkInvisible *invisible = CTK_INVISIBLE (object);
+  CtkInvisiblePrivate *priv = invisible->priv;
 
   switch (prop_id)
     {

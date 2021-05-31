@@ -34,34 +34,34 @@
 #include <cloudproviders/cloudprovidersaccount.h>
 #endif
 
-struct _GtkSidebarRow
+struct _CtkSidebarRow
 {
-  GtkListBoxRow parent_instance;
+  CtkListBoxRow parent_instance;
   GIcon *start_icon;
   GIcon *end_icon;
-  GtkWidget *start_icon_widget;
-  GtkWidget *end_icon_widget;
+  CtkWidget *start_icon_widget;
+  CtkWidget *end_icon_widget;
   gchar *label;
   gchar *tooltip;
-  GtkWidget *label_widget;
+  CtkWidget *label_widget;
   gboolean ejectable;
-  GtkWidget *eject_button;
+  CtkWidget *eject_button;
   gint order_index;
-  GtkPlacesSidebarSectionType section_type;
-  GtkPlacesSidebarPlaceType place_type;
+  CtkPlacesSidebarSectionType section_type;
+  CtkPlacesSidebarPlaceType place_type;
   gchar *uri;
   GDrive *drive;
   GVolume *volume;
   GMount *mount;
   GObject *cloud_provider_account;
   gboolean placeholder;
-  GtkPlacesSidebar *sidebar;
-  GtkWidget *event_box;
-  GtkWidget *revealer;
-  GtkWidget *busy_spinner;
+  CtkPlacesSidebar *sidebar;
+  CtkWidget *event_box;
+  CtkWidget *revealer;
+  CtkWidget *busy_spinner;
 };
 
-G_DEFINE_TYPE (GtkSidebarRow, ctk_sidebar_row, CTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (CtkSidebarRow, ctk_sidebar_row, CTK_TYPE_LIST_BOX_ROW)
 
 enum
 {
@@ -89,7 +89,7 @@ static GParamSpec *properties [LAST_PROP];
 #ifdef HAVE_CLOUDPROVIDERS
 
 static void
-cloud_row_update (GtkSidebarRow *self)
+cloud_row_update (CtkSidebarRow *self)
 {
   CloudProvidersAccount *account;
   GIcon *end_icon;
@@ -137,7 +137,7 @@ ctk_sidebar_row_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
+  CtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
 
   switch (prop_id)
     {
@@ -212,8 +212,8 @@ ctk_sidebar_row_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
-  GtkStyleContext *context;
+  CtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
+  CtkStyleContext *context;
 
   switch (prop_id)
     {
@@ -355,7 +355,7 @@ ctk_sidebar_row_set_property (GObject      *object,
             g_clear_object (&self->cloud_provider_account);
 
             ctk_container_foreach (CTK_CONTAINER (self),
-                                   (GtkCallback) ctk_widget_destroy,
+                                   (CtkCallback) ctk_widget_destroy,
                                    NULL);
 
             context = ctk_widget_get_style_context (CTK_WIDGET (self));
@@ -375,7 +375,7 @@ on_child_revealed (GObject    *self,
                    GParamSpec *pspec,
                    gpointer    user_data)
 {
- /* We need to hide the actual widget because if not the GtkListBoxRow will
+ /* We need to hide the actual widget because if not the CtkListBoxRow will
   * still allocate the paddings, even if the revealer is not revealed, and
   * therefore the row will be still somewhat visible. */
   if (!ctk_revealer_get_reveal_child (CTK_REVEALER (self)))
@@ -383,14 +383,14 @@ on_child_revealed (GObject    *self,
 }
 
 void
-ctk_sidebar_row_reveal (GtkSidebarRow *self)
+ctk_sidebar_row_reveal (CtkSidebarRow *self)
 {
   ctk_widget_show_all (CTK_WIDGET (self));
   ctk_revealer_set_reveal_child (CTK_REVEALER (self->revealer), TRUE);
 }
 
 void
-ctk_sidebar_row_hide (GtkSidebarRow *self,
+ctk_sidebar_row_hide (CtkSidebarRow *self,
                       gboolean       inmediate)
 {
   guint transition_duration;
@@ -405,7 +405,7 @@ ctk_sidebar_row_hide (GtkSidebarRow *self,
 }
 
 void
-ctk_sidebar_row_set_start_icon (GtkSidebarRow *self,
+ctk_sidebar_row_set_start_icon (CtkSidebarRow *self,
                                 GIcon         *icon)
 {
   g_return_if_fail (CTK_IS_SIDEBAR_ROW (self));
@@ -424,7 +424,7 @@ ctk_sidebar_row_set_start_icon (GtkSidebarRow *self,
 }
 
 void
-ctk_sidebar_row_set_end_icon (GtkSidebarRow *self,
+ctk_sidebar_row_set_end_icon (CtkSidebarRow *self,
                               GIcon         *icon)
 {
   g_return_if_fail (CTK_IS_SIDEBAR_ROW (self));
@@ -446,7 +446,7 @@ ctk_sidebar_row_set_end_icon (GtkSidebarRow *self,
 static void
 ctk_sidebar_row_finalize (GObject *object)
 {
-  GtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
+  CtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
 
   g_clear_object (&self->start_icon);
   g_clear_object (&self->end_icon);
@@ -469,16 +469,16 @@ ctk_sidebar_row_finalize (GObject *object)
 }
 
 static void
-ctk_sidebar_row_init (GtkSidebarRow *self)
+ctk_sidebar_row_init (CtkSidebarRow *self)
 {
   ctk_widget_init_template (CTK_WIDGET (self));
 }
 
 static void
-ctk_sidebar_row_class_init (GtkSidebarRowClass *klass)
+ctk_sidebar_row_class_init (CtkSidebarRowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->get_property = ctk_sidebar_row_get_property;
   object_class->set_property = ctk_sidebar_row_set_property;
@@ -617,20 +617,20 @@ ctk_sidebar_row_class_init (GtkSidebarRowClass *klass)
   ctk_widget_class_set_template_from_resource (widget_class,
                                                "/org/ctk/libctk/ui/ctksidebarrow.ui");
 
-  ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, start_icon_widget);
-  ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, end_icon_widget);
-  ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, label_widget);
-  ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, eject_button);
-  ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, event_box);
-  ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, revealer);
-  ctk_widget_class_bind_template_child (widget_class, GtkSidebarRow, busy_spinner);
+  ctk_widget_class_bind_template_child (widget_class, CtkSidebarRow, start_icon_widget);
+  ctk_widget_class_bind_template_child (widget_class, CtkSidebarRow, end_icon_widget);
+  ctk_widget_class_bind_template_child (widget_class, CtkSidebarRow, label_widget);
+  ctk_widget_class_bind_template_child (widget_class, CtkSidebarRow, eject_button);
+  ctk_widget_class_bind_template_child (widget_class, CtkSidebarRow, event_box);
+  ctk_widget_class_bind_template_child (widget_class, CtkSidebarRow, revealer);
+  ctk_widget_class_bind_template_child (widget_class, CtkSidebarRow, busy_spinner);
 
   ctk_widget_class_bind_template_callback (widget_class, on_child_revealed);
   ctk_widget_class_set_css_name (widget_class, "row");
 }
 
-GtkSidebarRow*
-ctk_sidebar_row_clone (GtkSidebarRow *self)
+CtkSidebarRow*
+ctk_sidebar_row_clone (CtkSidebarRow *self)
 {
  return g_object_new (CTK_TYPE_SIDEBAR_ROW,
                       "sidebar", self->sidebar,
@@ -650,20 +650,20 @@ ctk_sidebar_row_clone (GtkSidebarRow *self)
                       NULL);
 }
 
-GtkWidget*
-ctk_sidebar_row_get_eject_button (GtkSidebarRow *self)
+CtkWidget*
+ctk_sidebar_row_get_eject_button (CtkSidebarRow *self)
 {
   return self->eject_button;
 }
 
-GtkWidget*
-ctk_sidebar_row_get_event_box (GtkSidebarRow *self)
+CtkWidget*
+ctk_sidebar_row_get_event_box (CtkSidebarRow *self)
 {
   return self->event_box;
 }
 
 void
-ctk_sidebar_row_set_busy (GtkSidebarRow *row,
+ctk_sidebar_row_set_busy (CtkSidebarRow *row,
                           gboolean       is_busy)
 {
   g_return_if_fail (CTK_IS_SIDEBAR_ROW (row));

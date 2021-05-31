@@ -29,23 +29,23 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_MENU_SECTION_BOX                           (ctk_menu_section_box_get_type ())
 #define CTK_MENU_SECTION_BOX(inst)                          (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             CTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBox))
+                                                             CTK_TYPE_MENU_SECTION_BOX, CtkMenuSectionBox))
 #define CTK_MENU_SECTION_BOX_CLASS(class)                   (G_TYPE_CHECK_CLASS_CAST ((class),                       \
-                                                             CTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBoxClass))
+                                                             CTK_TYPE_MENU_SECTION_BOX, CtkMenuSectionBoxClass))
 #define CTK_IS_MENU_SECTION_BOX(inst)                       (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
                                                              CTK_TYPE_MENU_SECTION_BOX))
 #define CTK_IS_MENU_SECTION_BOX_CLASS(class)                (G_TYPE_CHECK_CLASS_TYPE ((class),                       \
                                                              CTK_TYPE_MENU_SECTION_BOX))
 #define CTK_MENU_SECTION_BOX_GET_CLASS(inst)                (G_TYPE_INSTANCE_GET_CLASS ((inst),                      \
-                                                             CTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBoxClass))
+                                                             CTK_TYPE_MENU_SECTION_BOX, CtkMenuSectionBoxClass))
 
-typedef struct _GtkMenuSectionBox                           GtkMenuSectionBox;
+typedef struct _CtkMenuSectionBox                           CtkMenuSectionBox;
 
 GType                   ctk_menu_section_box_get_type                   (void) G_GNUC_CONST;
-void                    ctk_menu_section_box_new_toplevel               (GtkStack    *stack,
+void                    ctk_menu_section_box_new_toplevel               (CtkStack    *stack,
                                                                          GMenuModel  *model,
                                                                          const gchar *action_namespace,
-                                                                         GtkPopover  *popover);
+                                                                         CtkPopover  *popover);
 
 G_END_DECLS
 

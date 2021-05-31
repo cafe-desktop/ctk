@@ -41,11 +41,11 @@
  * SECTION:ctkaccelmap
  * @Short_description: Loadable keyboard accelerator specifications
  * @Title: Accelerator Maps
- * @See_also: #GtkAccelGroup, #GtkAccelKey, #GtkUIManager, ctk_widget_set_accel_path(), ctk_menu_item_set_accel_path()
+ * @See_also: #CtkAccelGroup, #CtkAccelKey, #CtkUIManager, ctk_widget_set_accel_path(), ctk_menu_item_set_accel_path()
  *
  * Accelerator maps are used to define runtime configurable accelerators.
  * Functions for manipulating them are are usually used by higher level
- * convenience mechanisms like #GtkUIManager and are thus considered
+ * convenience mechanisms like #CtkUIManager and are thus considered
  * “low-level”. You’ll want to use them if you’re manually creating menus that
  * should have user-configurable accelerators.
  *
@@ -65,7 +65,7 @@
  * “Image/View/Zoom” or “Edit/Select All”. So a full valid accelerator
  * path may look like: “<Gimp-Toolbox>/File/Dialogs/Tool Options...”.
  *
- * All accelerators are stored inside one global #GtkAccelMap that can
+ * All accelerators are stored inside one global #CtkAccelMap that can
  * be obtained using ctk_accel_map_get(). See
  * [Monitoring changes][monitoring-changes] for additional
  * details.
@@ -91,21 +91,21 @@
  *
  * # Monitoring changes
  *
- * #GtkAccelMap object is only useful for monitoring changes of
- * accelerators. By connecting to #GtkAccelMap::changed signal, one
+ * #CtkAccelMap object is only useful for monitoring changes of
+ * accelerators. By connecting to #CtkAccelMap::changed signal, one
  * can monitor changes of all accelerators. It is also possible to
  * monitor only single accelerator path by using it as a detail of
- * the #GtkAccelMap::changed signal.
+ * the #CtkAccelMap::changed signal.
  */
 
 
 /* --- structures --- */
-struct _GtkAccelMap
+struct _CtkAccelMap
 {
   GObject parent_instance;
 };
 
-struct _GtkAccelMapClass
+struct _CtkAccelMapClass
 {
   GObjectClass parent_class;
 };
@@ -259,7 +259,7 @@ ctk_accel_map_add_entry (const gchar    *accel_path,
  */
 gboolean
 ctk_accel_map_lookup_entry (const gchar *accel_path,
-			    GtkAccelKey *key)
+			    CtkAccelKey *key)
 {
   AccelEntry *entry;
 
@@ -370,7 +370,7 @@ internal_change_entry (const gchar    *accel_path,
   group_list = g_hash_table_slist_values (group_hm);
   for (slist = group_list; slist; slist = slist->next)
     {
-      GtkAccelGroup *group = slist->data;
+      CtkAccelGroup *group = slist->data;
 
       for (node = _ctk_accel_group_get_accelerables (group); node; node = node->next)
 	g_hash_table_insert (window_hm, node->data, node->data);
@@ -389,7 +389,7 @@ internal_change_entry (const gchar    *accel_path,
   /* 4) walk the acceleratables and figure whether they occupy accel_key&accel_mods */
   if (accel_key)
     for (slist = win_list; slist; slist = slist->next)
-      if (CTK_IS_WINDOW (slist->data))	/* bad kludge in lack of a GtkAcceleratable */
+      if (CTK_IS_WINDOW (slist->data))	/* bad kludge in lack of a CtkAcceleratable */
 	if (_ctk_window_query_nonaccels (slist->data, accel_key, accel_mods))
 	  {
 	    seen_accel = TRUE;
@@ -401,8 +401,8 @@ internal_change_entry (const gchar    *accel_path,
   if (removable)
     for (slist = group_list; slist; slist = slist->next)
       {
-	GtkAccelGroup *group = slist->data;
-	GtkAccelGroupEntry *ag_entry;
+	CtkAccelGroup *group = slist->data;
+	CtkAccelGroupEntry *ag_entry;
 	guint i, n;
 	
 	n = 0;
@@ -758,7 +758,7 @@ ctk_accel_map_save_fd (gint fd)
   gstring = g_string_new ("; ");
   if (g_get_prgname ())
     g_string_append (gstring, g_get_prgname ());
-  g_string_append (gstring, " GtkAccelMap rc-file         -*- scheme -*-\n");
+  g_string_append (gstring, " CtkAccelMap rc-file         -*- scheme -*-\n");
   g_string_append (gstring, "; this file is an automated accelerator map dump\n");
   g_string_append (gstring, ";\n");
 
@@ -804,13 +804,13 @@ ctk_accel_map_save (const gchar *file_name)
  * Loops over the entries in the accelerator map whose accel path 
  * doesn’t match any of the filters added with ctk_accel_map_add_filter(), 
  * and execute @foreach_func on each. The signature of @foreach_func is 
- * that of #GtkAccelMapForeach, the @changed parameter indicates whether
+ * that of #CtkAccelMapForeach, the @changed parameter indicates whether
  * this accelerator was changed during runtime (thus, would need
  * saving during an accelerator map dump).
  */
 void
 ctk_accel_map_foreach (gpointer           data,
-		       GtkAccelMapForeach foreach_func)
+		       CtkAccelMapForeach foreach_func)
 {
   GSList *entries, *slist, *node;
 
@@ -840,13 +840,13 @@ ctk_accel_map_foreach (gpointer           data,
  *
  * Loops over all entries in the accelerator map, and execute
  * @foreach_func on each. The signature of @foreach_func is that of
- * #GtkAccelMapForeach, the @changed parameter indicates whether
+ * #CtkAccelMapForeach, the @changed parameter indicates whether
  * this accelerator was changed during runtime (thus, would need
  * saving during an accelerator map dump).
  */
 void
 ctk_accel_map_foreach_unfiltered (gpointer           data,
-				  GtkAccelMapForeach foreach_func)
+				  CtkAccelMapForeach foreach_func)
 {
   GSList *entries, *slist;
 
@@ -896,7 +896,7 @@ ctk_accel_map_add_filter (const gchar *filter_pattern)
 
 void
 _ctk_accel_map_add_group (const gchar   *accel_path,
-			  GtkAccelGroup *accel_group)
+			  CtkAccelGroup *accel_group)
 {
   AccelEntry *entry;
 
@@ -914,7 +914,7 @@ _ctk_accel_map_add_group (const gchar   *accel_path,
 
 void
 _ctk_accel_map_remove_group (const gchar   *accel_path,
-			     GtkAccelGroup *accel_group)
+			     CtkAccelGroup *accel_group)
 {
   AccelEntry *entry;
 
@@ -943,8 +943,8 @@ _ctk_accel_map_remove_group (const gchar   *accel_path,
  * of times.
  *
  * Note that locking of individual accelerator paths is independent from 
- * locking the #GtkAccelGroup containing them. For runtime accelerator
- * changes to be possible, both the accelerator path and its #GtkAccelGroup
+ * locking the #CtkAccelGroup containing them. For runtime accelerator
+ * changes to be possible, both the accelerator path and its #CtkAccelGroup
  * have to be unlocked. 
  *
  * Since: 2.4
@@ -990,13 +990,13 @@ ctk_accel_map_unlock_path (const gchar *accel_path)
   entry->lock_count -= 1;  
 }
 
-G_DEFINE_TYPE (GtkAccelMap, ctk_accel_map, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkAccelMap, ctk_accel_map, G_TYPE_OBJECT)
 
 static void
-ctk_accel_map_class_init (GtkAccelMapClass *accel_map_class)
+ctk_accel_map_class_init (CtkAccelMapClass *accel_map_class)
 {
   /**
-   * GtkAccelMap::changed:
+   * CtkAccelMap::changed:
    * @object: the global accel map object
    * @accel_path: the path of the accelerator that changed
    * @accel_key: the key value for the new accelerator
@@ -1020,25 +1020,25 @@ ctk_accel_map_class_init (GtkAccelMapClass *accel_map_class)
 }
 
 static void
-ctk_accel_map_init (GtkAccelMap *map)
+ctk_accel_map_init (CtkAccelMap *map)
 {
 }
 
-static GtkAccelMap *accel_map;
+static CtkAccelMap *accel_map;
 
 /**
  * ctk_accel_map_get:
  * 
- * Gets the singleton global #GtkAccelMap object. This object
+ * Gets the singleton global #CtkAccelMap object. This object
  * is useful only for notification of changes to the accelerator
  * map via the ::changed signal; it isn’t a parameter to the
  * other accelerator map functions.
  * 
- * Returns: (transfer none): the global #GtkAccelMap object
+ * Returns: (transfer none): the global #CtkAccelMap object
  *
  * Since: 2.4
  **/
-GtkAccelMap *
+CtkAccelMap *
 ctk_accel_map_get (void)
 {
   if (!accel_map)

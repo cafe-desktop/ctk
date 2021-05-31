@@ -26,7 +26,7 @@
 static void atk_action_interface_init (AtkActionIface *iface);
 static void atk_image_interface_init  (AtkImageIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkButtonAccessible, ctk_button_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkButtonAccessible, ctk_button_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_IMAGE, atk_image_interface_init))
 
@@ -34,7 +34,7 @@ static void
 ctk_button_accessible_initialize (AtkObject *obj,
                                   gpointer   data)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   ATK_OBJECT_CLASS (ctk_button_accessible_parent_class)->initialize (obj, data);
 
@@ -43,7 +43,7 @@ ctk_button_accessible_initialize (AtkObject *obj,
     {
       /* Even though the accessible parent of the column header will
        * be reported as the table because the parent widget of the
-       * GtkTreeViewColumn's button is the GtkTreeView we set
+       * CtkTreeViewColumn's button is the CtkTreeView we set
        * the accessible parent for column header to be the table
        * to ensure that atk_object_get_index_in_parent() returns
        * the correct value; see gail_widget_get_index_in_parent().
@@ -55,10 +55,10 @@ ctk_button_accessible_initialize (AtkObject *obj,
     obj->role = ATK_ROLE_PUSH_BUTTON;
 }
 
-static GtkWidget *
-get_image_from_button (GtkWidget *button)
+static CtkWidget *
+get_image_from_button (CtkWidget *button)
 {
-  GtkWidget *image;
+  CtkWidget *image;
 
   image = ctk_button_get_image (CTK_BUTTON (button));
   if (CTK_IS_IMAGE (image))
@@ -67,11 +67,11 @@ get_image_from_button (GtkWidget *button)
   return NULL;
 }
 
-static GtkWidget *
-find_label_child (GtkContainer *container)
+static CtkWidget *
+find_label_child (CtkContainer *container)
 {
   GList *children, *tmp_list;
-  GtkWidget *child;
+  CtkWidget *child;
 
   children = ctk_container_get_children (container);
 
@@ -94,10 +94,10 @@ find_label_child (GtkContainer *container)
   return child;
 }
 
-static GtkWidget *
-get_label_from_button (GtkWidget *button)
+static CtkWidget *
+get_label_from_button (CtkWidget *button)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   child = ctk_bin_get_child (CTK_BIN (button));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -117,8 +117,8 @@ static const gchar *
 ctk_button_accessible_get_name (AtkObject *obj)
 {
   const gchar *name = NULL;
-  GtkWidget *widget;
-  GtkWidget *child;
+  CtkWidget *widget;
+  CtkWidget *child;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -133,7 +133,7 @@ ctk_button_accessible_get_name (AtkObject *obj)
     name = ctk_label_get_text (CTK_LABEL (child));
   else
     {
-      GtkWidget *image;
+      CtkWidget *image;
 
       image = get_image_from_button (widget);
       if (CTK_IS_IMAGE (image))
@@ -165,7 +165,7 @@ static AtkStateSet *
 ctk_button_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -186,7 +186,7 @@ static void
 ctk_button_accessible_notify_ctk (GObject    *obj,
                                   GParamSpec *pspec)
 {
-  GtkWidget *widget = CTK_WIDGET (obj);
+  CtkWidget *widget = CTK_WIDGET (obj);
   AtkObject *atk_obj = ctk_widget_get_accessible (widget);
 
   if (strcmp (pspec->name, "label") == 0)
@@ -201,11 +201,11 @@ ctk_button_accessible_notify_ctk (GObject    *obj,
 }
 
 static void
-ctk_button_accessible_class_init (GtkButtonAccessibleClass *klass)
+ctk_button_accessible_class_init (CtkButtonAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
-  GtkContainerAccessibleClass *container_class = (GtkContainerAccessibleClass*)klass;
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
+  CtkContainerAccessibleClass *container_class = (CtkContainerAccessibleClass*)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass*)klass;
 
   class->get_name = ctk_button_accessible_get_name;
   class->get_n_children = ctk_button_accessible_get_n_children;
@@ -220,7 +220,7 @@ ctk_button_accessible_class_init (GtkButtonAccessibleClass *klass)
 }
 
 static void
-ctk_button_accessible_init (GtkButtonAccessible *button)
+ctk_button_accessible_init (CtkButtonAccessible *button)
 {
 }
 
@@ -228,7 +228,7 @@ static gboolean
 ctk_button_accessible_do_action (AtkAction *action,
                                  gint       i)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
@@ -255,8 +255,8 @@ ctk_button_accessible_get_keybinding (AtkAction *action,
                                       gint       i)
 {
   gchar *return_value = NULL;
-  GtkWidget *widget;
-  GtkWidget *label;
+  CtkWidget *widget;
+  CtkWidget *label;
   guint key_val;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
@@ -345,8 +345,8 @@ atk_action_interface_init (AtkActionIface *iface)
 static const gchar *
 ctk_button_accessible_get_image_description (AtkImage *image)
 {
-  GtkWidget *widget;
-  GtkWidget  *button_image;
+  CtkWidget *widget;
+  CtkWidget  *button_image;
   AtkObject *obj;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
@@ -369,8 +369,8 @@ ctk_button_accessible_get_image_position (AtkImage     *image,
                                           gint         *y,
                                           AtkCoordType  coord_type)
 {
-  GtkWidget *widget;
-  GtkWidget *button_image;
+  CtkWidget *widget;
+  CtkWidget *button_image;
   AtkObject *obj;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
@@ -400,8 +400,8 @@ ctk_button_accessible_get_image_size (AtkImage *image,
                                       gint     *width,
                                       gint     *height)
 {
-  GtkWidget *widget;
-  GtkWidget *button_image;
+  CtkWidget *widget;
+  CtkWidget *button_image;
   AtkObject *obj;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
@@ -429,8 +429,8 @@ static gboolean
 ctk_button_accessible_set_image_description (AtkImage    *image,
                                              const gchar *description)
 {
-  GtkWidget *widget;
-  GtkWidget *button_image;
+  CtkWidget *widget;
+  CtkWidget *button_image;
   AtkObject *obj;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));

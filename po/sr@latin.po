@@ -1788,7 +1788,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Upotreba:\n"
 "  ctk-builder-tool [NAREDBA] DATOTEKA\n"
@@ -1806,7 +1806,7 @@ msgstr ""
 "  --id=IB             Prikazuje pregled samo imenovanog objekta\n"
 "  --css=DATOTEKA      Koristi stil iz CSS datoteke\n"
 "\n"
-"Obavljajte razne zadatke na „.ui“ datotekama Gtk Graditelja.\n"
+"Obavljajte razne zadatke na „.ui“ datotekama Ctk Graditelja.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2591,7 +2591,7 @@ msgstr "Ne mogu da pošaljem zahtev pretrage"
 msgid "Accessed"
 msgstr "Datum pristupa"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -2781,7 +2781,7 @@ msgstr ""
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
 msgid "Load additional GTK+ modules"
-msgstr "Učitava dopunske Gtk+ dodatke"
+msgstr "Učitava dopunske Ctk+ dodatke"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2796,12 +2796,12 @@ msgstr "Čini sva upozorenja kobnim"
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
 msgid "GTK+ debugging flags to set"
-msgstr "Gtk+ opcije za uklanjanje grešaka za uključivanje"
+msgstr "Ctk+ opcije za uklanjanje grešaka za uključivanje"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
 msgid "GTK+ debugging flags to unset"
-msgstr "Gtk+ opcije za uklanjanje grešaka za isključivanje"
+msgstr "Ctk+ opcije za uklanjanje grešaka za isključivanje"
 
 #: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
@@ -2810,11 +2810,11 @@ msgstr "Ne mogu da pristupim ekranu: %s"
 
 #: ctk/ctkmain.c:920
 msgid "GTK+ Options"
-msgstr "Gtk+ opcije"
+msgstr "Ctk+ opcije"
 
 #: ctk/ctkmain.c:920
 msgid "Show GTK+ Options"
-msgstr "Prikazuje Gtk+ opcije"
+msgstr "Prikazuje Ctk+ opcije"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3873,7 +3873,7 @@ msgstr "Uvek u prvom planu"
 #: ctk/ctkwindow.c:12686
 #, c-format
 msgid "Do you want to use GTK+ Inspector?"
-msgstr "Da li želite da koristite Gtk+ Nadzornika?"
+msgstr "Da li želite da koristite Ctk+ Nadzornika?"
 
 #: ctk/ctkwindow.c:12688
 #, c-format
@@ -3882,8 +3882,8 @@ msgid ""
 "the internals of any GTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Gtk+ Nadzornik je međudejstveni pročišćavač koji vam omogućava da "
-"istražujete i menjate unutrašnjost bilo kog Gtk+ programa. Njegovo korišćenje "
+"Ctk+ Nadzornik je međudejstveni pročišćavač koji vam omogućava da "
+"istražujete i menjate unutrašnjost bilo kog Ctk+ programa. Njegovo korišćenje "
 "može dovesti do pada ili urušavanja programa."
 
 #: ctk/ctkwindow.c:12693
@@ -3914,7 +3914,7 @@ msgstr "Vrsta parametara"
 
 #: ctk/inspector/css-editor.c:112
 msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Ovde možete upisati CSS pravilo koje Gtk+ prepoznaje."
+msgstr "Ovde možete upisati CSS pravilo koje Ctk+ prepoznaje."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -3973,7 +3973,7 @@ msgstr "Ništa"
 
 #: ctk/inspector/general.ui:34
 msgid "GTK+ Version"
-msgstr "Gtk+ izdanje"
+msgstr "Ctk+ izdanje"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4372,7 +4372,7 @@ msgstr "Crtanje pomoću GL-a je onemogućeno"
 
 #: ctk/inspector/visual.ui:61
 msgid "GTK+ Theme"
-msgstr "Gtk+ tema"
+msgstr "Ctk+ tema"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -7051,10 +7051,10 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Da li je radnja vidljiva."
 
 #~ msgid ""
-#~ "The GtkActionGroup this GtkAction is associated with, or NULL (for "
+#~ "The CtkActionGroup this CtkAction is associated with, or NULL (for "
 #~ "internal use)."
 #~ msgstr ""
-#~ "Grupa Gtk radnje kojoj je ova Gtk radnja pridružena, ili „NULL“ (za "
+#~ "Grupa Ctk radnje kojoj je ova Ctk radnja pridružena, ili „NULL“ (za "
 #~ "unutrašnju upotrebu)."
 
 #~ msgid "Whether the image will always be shown"
@@ -7367,8 +7367,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "The title of this tray icon"
 #~ msgstr "Naslov ove ikonice fioke"
 
-#~ msgid "GtkStyleContext to get style from"
-#~ msgstr "Iz kog sadržaja Gtk stila će biti uzet stil"
+#~ msgid "CtkStyleContext to get style from"
+#~ msgstr "Iz kog sadržaja Ctk stila će biti uzet stil"
 
 #~ msgid "Rows"
 #~ msgstr "Redovi"
@@ -7557,7 +7557,7 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Parametar za prizivanje radnje"
 
 #~ msgid ""
-#~ "A GtkPackType indicating whether the child is packed with reference to "
+#~ "A CtkPackType indicating whether the child is packed with reference to "
 #~ "the start or end of the parent"
 #~ msgstr ""
 #~ "Određuje da li je sadržani element vezan za početak ili kraj sadržaoca"
@@ -7594,9 +7594,9 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid ""
 #~ "Whether the combobox should include an item that triggers a "
-#~ "GtkAppChooserDialog"
+#~ "CtkAppChooserDialog"
 #~ msgstr ""
-#~ "Da li prozorče za izbor treba da sadrži stavku koja pokreće Gtk prozorče "
+#~ "Da li prozorče za izbor treba da sadrži stavku koja pokreće Ctk prozorče "
 #~ "za izbor programa"
 
 #~ msgid "Whether the combobox should show the default application on top"
@@ -7952,10 +7952,10 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Da li ćelije treba da budu iste veličine u svim redovima"
 
 #~ msgid ""
-#~ "A GtkPackType indicating whether the cell is packed with reference to the "
+#~ "A CtkPackType indicating whether the cell is packed with reference to the "
 #~ "start or end of the cell area"
 #~ msgstr ""
-#~ "Vrsta Gtk pakovanja koji označava da li je ćelija upakovana u odnosu na "
+#~ "Vrsta Ctk pakovanja koji označava da li je ćelija upakovana u odnosu na "
 #~ "početak ili na kraj oblasti ćelije"
 
 #~ msgid "The cell which currently has focus"
@@ -8123,9 +8123,9 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "The stock ID of the stock icon to render"
 #~ msgstr "ID pripremljene sličice koja se iscrtava"
 
-#~ msgid "The GtkIconSize value that specifies the size of the rendered icon"
+#~ msgid "The CtkIconSize value that specifies the size of the rendered icon"
 #~ msgstr ""
-#~ "Vrednost veličine Gtk ikonice koja određuje veličinu iscrtane ikonice"
+#~ "Vrednost veličine Ctk ikonice koja određuje veličinu iscrtane ikonice"
 
 #~ msgid "Render detail to pass to the theme engine"
 #~ msgstr "Detalj iscrtavanja koji se prosleđuje motoru teme"
@@ -8191,9 +8191,9 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Da li se prikazuje vrteška unutar ćelije"
 
 #~ msgid ""
-#~ "The GtkIconSize value that specifies the size of the rendered spinner"
+#~ "The CtkIconSize value that specifies the size of the rendered spinner"
 #~ msgstr ""
-#~ "Vrednost veličine Gtk ikonice koja određuje veličinu iscrtane vrteške"
+#~ "Vrednost veličine Ctk ikonice koja određuje veličinu iscrtane vrteške"
 
 #~ msgid "Text to render"
 #~ msgstr "Tekst za prikazivanje"
@@ -8454,15 +8454,15 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "The model for cell view"
 #~ msgstr "Model za prikaz ćelije"
 
-#~ msgid "The GtkCellArea used to layout cells"
-#~ msgstr "Oblast Gtk ćelije korišćena za raspoređivanje ćelija"
+#~ msgid "The CtkCellArea used to layout cells"
+#~ msgstr "Oblast Ctk ćelije korišćena za raspoređivanje ćelija"
 
 #~ msgid "Cell Area Context"
 #~ msgstr "Kontekst oblasti ćelije"
 
-#~ msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+#~ msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 #~ msgstr ""
-#~ "Kontekst oblasti Gtk ćelije korišćen za izračunavanje geometrije prikaza "
+#~ "Kontekst oblasti Ctk ćelije korišćen za izračunavanje geometrije prikaza "
 #~ "ćelije"
 
 #~ msgid "Draw Sensitive"
@@ -8589,10 +8589,10 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid ""
 #~ "The column in the combo box's model to associate with strings from the "
-#~ "entry if the combo was created with #GtkComboBox:has-entry = %TRUE"
+#~ "entry if the combo was created with #CtkComboBox:has-entry = %TRUE"
 #~ msgstr ""
 #~ "Kolona u modelu prozorčeta za izbor za udruživanje sa niskama iz unosa ako "
-#~ "je prozorče napravljeno sa „#GtkComboBox:has-entry = %TRUE“"
+#~ "je prozorče napravljeno sa „#CtkComboBox:has-entry = %TRUE“"
 
 #~ msgid ""
 #~ "The column in the combo box's model that provides string IDs for the "
@@ -9283,8 +9283,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "The GL context"
 #~ msgstr "GL kontekst"
 
-#~ msgid "Whether the GtkGLArea renders on each redraw"
-#~ msgstr "Da li se prikaz GtkGLArea vidžeta prikazuje pri svakom precrtavanju"
+#~ msgid "Whether the CtkGLArea renders on each redraw"
+#~ msgstr "Da li se prikaz CtkGLArea vidžeta prikazuje pri svakom precrtavanju"
 
 #~ msgid "Has alpha"
 #~ msgstr "Poseduje providnost"
@@ -9486,11 +9486,11 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid ""
 #~ "The alignment of the lines in the text of the label relative to each "
 #~ "other. This does NOT affect the alignment of the label within its "
-#~ "allocation. See GtkLabel:xalign for that"
+#~ "allocation. See CtkLabel:xalign for that"
 #~ msgstr ""
 #~ "Poravnanje redova, relativnih u odnosu jedan na drugog, u tekstu etikete. "
 #~ "Ovo NE UTIČE na poravnanje etikete unutar svog obuhvaćenog prostora. "
-#~ "Videti GtkLabel:xalign za tako nešto"
+#~ "Videti CtkLabel:xalign za tako nešto"
 
 #~ msgid ""
 #~ "A string with _ characters in positions correspond to characters in the "
@@ -9875,8 +9875,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Message area"
 #~ msgstr "Oblast poruke"
 
-#~ msgid "GtkBox that holds the dialog's primary and secondary labels"
-#~ msgstr "GtkBoks koji sadrži primarnu i sekundarnu oznaku prozorčeta"
+#~ msgid "CtkBox that holds the dialog's primary and secondary labels"
+#~ msgstr "CtkBoks koji sadrži primarnu i sekundarnu oznaku prozorčeta"
 
 #~ msgid "Role"
 #~ msgstr "Uloga"
@@ -10272,11 +10272,11 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Postavljeno ako posao za štampanje nastavlja da emituje signale izmenjenog "
 #~ "stanja pošto su podaci za štampu poslati štampaču ili serveru štampe."
 
-#~ msgid "The GtkPageSetup used by default"
-#~ msgstr "Gtk postavke strane koje se koriste kao podrazumevane"
+#~ msgid "The CtkPageSetup used by default"
+#~ msgstr "Ctk postavke strane koje se koriste kao podrazumevane"
 
-#~ msgid "The GtkPrintSettings used for initializing the dialog"
-#~ msgstr "Gtk podešavanja štampe koja se koriste prilikom pokretanja prozorčeta"
+#~ msgid "The CtkPrintSettings used for initializing the dialog"
+#~ msgstr "Ctk podešavanja štampe koja se koriste prilikom pokretanja prozorčeta"
 
 #~ msgid "A string used for identifying the print job."
 #~ msgstr "Niska koja identifikuje posao štampanja."
@@ -10337,9 +10337,9 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "TRUE if a selection exists."
 #~ msgstr "Postavljeno ako izbor postoji."
 
-#~ msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+#~ msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 #~ msgstr ""
-#~ "Postavljeno ako su padajući izbornici postavke strane ugnježdeni u Gtk "
+#~ "Postavljeno ako su padajući izbornici postavke strane ugnježdeni u Ctk "
 #~ "prozorčetu za štampu"
 
 #~ msgid "Number of Pages To Print"
@@ -10348,11 +10348,11 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "The number of pages that will be printed."
 #~ msgstr "Broj strana koji će biti štampan."
 
-#~ msgid "The GtkPageSetup to use"
-#~ msgstr "Gtk postavke strane koje se koriste"
+#~ msgid "The CtkPageSetup to use"
+#~ msgstr "Ctk postavke strane koje se koriste"
 
-#~ msgid "The GtkPrinter which is selected"
-#~ msgstr "Gtk štampač koji je izabran"
+#~ msgid "The CtkPrinter which is selected"
+#~ msgstr "Ctk štampač koji je izabran"
 
 #~ msgid "Manual Capabilities"
 #~ msgstr "Ručne mogućnosti"
@@ -10437,8 +10437,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Radio dugme trake alata čijoj grupi ovo dugme pripada."
 
 #~ msgid ""
-#~ "The GtkAdjustment that contains the current value of this range object"
-#~ msgstr "Gtk poravnanje koje sadrži tekuću vrednost ovog opsega"
+#~ "The CtkAdjustment that contains the current value of this range object"
+#~ msgstr "Ctk poravnanje koje sadrži tekuću vrednost ovog opsega"
 
 # Sta ovo uopste znaci na engleskom?
 #~ msgid "Invert direction slider moves to increase range value"
@@ -10582,9 +10582,9 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Veličina ikonice"
 
 #~ msgid ""
-#~ "The GtkAdjustment that contains the current value of this scale button "
+#~ "The CtkAdjustment that contains the current value of this scale button "
 #~ "object"
-#~ msgstr "Gtk poravnanje koje sadrži tekuću vrednost ovog dugmeta sa skalom"
+#~ msgstr "Ctk poravnanje koje sadrži tekuću vrednost ovog dugmeta sa skalom"
 
 #~ msgid "List of icon names"
 #~ msgstr "Spisak imena ikonica"
@@ -10666,14 +10666,14 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Display a second forward arrow button on the opposite end of the scrollbar"
 #~ msgstr "Prikaži drugu strelicu unapred na suprotnoj strani klizača"
 
-#~ msgid "The GtkAdjustment for the horizontal position"
-#~ msgstr "Gtk poravnanje za vodoravni položaj"
+#~ msgid "The CtkAdjustment for the horizontal position"
+#~ msgstr "Ctk poravnanje za vodoravni položaj"
 
 #~ msgid "Vertical Adjustment"
 #~ msgstr "Uspravna popravka"
 
-#~ msgid "The GtkAdjustment for the vertical position"
-#~ msgstr "Gtk poravnanje za uspravni položaj"
+#~ msgid "The CtkAdjustment for the vertical position"
+#~ msgstr "Ctk poravnanje za uspravni položaj"
 
 #~ msgid "Horizontal Scrollbar Policy"
 #~ msgstr "Prikazivanje strelica za vodoravno pomeranje"
@@ -10851,10 +10851,10 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Spisak veličina ikonice (ctk-menu=16,16;ctk-button=20,20..."
 
 #~ msgid "GTK Modules"
-#~ msgstr "Gtk dodaci"
+#~ msgstr "Ctk dodaci"
 
 #~ msgid "List of currently active GTK modules"
-#~ msgstr "Spisak trenutno pokrenutih Gtk dodataka"
+#~ msgstr "Spisak trenutno pokrenutih Ctk dodataka"
 
 #~ msgid "Xft Antialias"
 #~ msgstr "Iksft omekšavanje"
@@ -10951,7 +10951,7 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Paleta imenovanih boja za korišćenje u temama"
 
 #~ msgid "Whether to enable toolkit-wide animations."
-#~ msgstr "Da li omogućiti animacije u celom Gtk-u."
+#~ msgstr "Da li omogućiti animacije u celom Ctk-u."
 
 #~ msgid ""
 #~ "When TRUE, there are no motion notify events delivered on this screen"
@@ -11003,10 +11003,10 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Default file chooser backend"
 #~ msgstr "Podrazumevana podrška za izbor datoteka"
 
-#~ msgid "Name of the GtkFileChooser backend to use by default"
-#~ msgstr "Naziv podrške koju podrazumevano koristi Gtk izbirač datoteke"
+#~ msgid "Name of the CtkFileChooser backend to use by default"
+#~ msgstr "Naziv podrške koju podrazumevano koristi Ctk izbirač datoteke"
 
-#~ msgid "List of the GtkPrintBackend backends to use by default"
+#~ msgid "List of the CtkPrintBackend backends to use by default"
 #~ msgstr "Spisak pozadinskih motora za štampanje koji se podrazumevano koriste"
 
 #~ msgid "Default command to run when displaying a print preview"
@@ -11248,7 +11248,7 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Whether builtin GTK+ dialogs should use a header bar instead of an action "
 #~ "area."
 #~ msgstr ""
-#~ "Da li ugrađeni Gtk+ prozorčići treba da koriste traku zaglavlja umesto "
+#~ "Da li ugrađeni Ctk+ prozorčići treba da koriste traku zaglavlja umesto "
 #~ "oblasti radnje."
 
 #~ msgid "Enable primary paste"
@@ -11262,7 +11262,7 @@ msgstr "Štampaj na probnom štampaču"
 #~ "kurzora."
 
 #~ msgid "Whether GTK+ remembers recent files"
-#~ msgstr "Da li Gtk+ pamti skorašnje datoteke"
+#~ msgstr "Da li Ctk+ pamti skorašnje datoteke"
 
 #~ msgid "Long press time"
 #~ msgstr "Vreme dugog pritiska"
@@ -11407,8 +11407,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Whether this page needs attention"
 #~ msgstr "Da li ova stranica zahteva pažnju"
 
-#~ msgid "Associated stack for this GtkStackSidebar"
-#~ msgstr "Pripadajuća hrpa za ovaj GtkStackSidebar"
+#~ msgid "Associated stack for this CtkStackSidebar"
+#~ msgstr "Pripadajuća hrpa za ovaj CtkStackSidebar"
 
 #~ msgid "Symbolic size to use for named icon"
 #~ msgstr "Simbolička veličina koja će se koristiti za imenovane ikonice"
@@ -11425,8 +11425,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "The parent style context"
 #~ msgstr "Sadržaj roditeljskog stila"
 
-#~ msgid "The value type returned by GtkStyleContext"
-#~ msgstr "Vrsta vrednosti koju vraća sadržaj Gtk stila"
+#~ msgid "The value type returned by CtkStyleContext"
+#~ msgstr "Vrsta vrednosti koju vraća sadržaj Ctk stila"
 
 #~ msgid "Whether the switch is on or off"
 #~ msgstr "Da li je prekidač uključen ili isključen"
@@ -11986,7 +11986,7 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Model column to search through during interactive search"
 #~ msgstr "Model kolone za pretraživanje pri interaktivnoj pretrazi"
 
-#~ msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+#~ msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 #~ msgstr "Ubrzava prikaz pretpostavljanjem da svi redovi imaju istu visinu"
 
 #~ msgid "Whether the selection should follow the pointer"
@@ -12487,8 +12487,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Whether the toplevel is the current active window"
 #~ msgstr "Da li je prvi nivo trenutno aktivni prozor"
 
-#~ msgid "Whether the input focus is within this GtkWindow"
-#~ msgstr "Da li je fokus za unos unutar ovog Gtk prozora"
+#~ msgid "Whether the input focus is within this CtkWindow"
+#~ msgstr "Da li je fokus za unos unutar ovog Ctk prozora"
 
 #~ msgid ""
 #~ "Hint to help the desktop environment understand what kind of window this "
@@ -12548,8 +12548,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Whether the window is maximized"
 #~ msgstr "Da li će prozor biti uvećan"
 
-#~ msgid "The GtkApplication for the window"
-#~ msgstr "Gtk program za prozor"
+#~ msgid "The CtkApplication for the window"
+#~ msgstr "Ctk program za prozor"
 
 #~ msgid "Decorated button layout"
 #~ msgstr "Raspored ukrašenog dugmeta"
@@ -12557,8 +12557,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Decoration resize handle size"
 #~ msgstr "Veličina ručke za promenu veličine ukrasa"
 
-#~ msgid "GtkCloudprintAccount instance"
-#~ msgstr "Primerak naloga Gtk štampanja u oblaku"
+#~ msgid "CtkCloudprintAccount instance"
+#~ msgstr "Primerak naloga Ctk štampanja u oblaku"
 
 #~ msgid "Cloud Print printer ID"
 #~ msgstr "IB štampača štampanja u oblaku"

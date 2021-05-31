@@ -30,18 +30,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PAD_CONTROLLER         (ctk_pad_controller_get_type ())
-#define CTK_PAD_CONTROLLER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_PAD_CONTROLLER, GtkPadController))
-#define CTK_PAD_CONTROLLER_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_PAD_CONTROLLER, GtkPadControllerClass))
+#define CTK_PAD_CONTROLLER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_PAD_CONTROLLER, CtkPadController))
+#define CTK_PAD_CONTROLLER_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_PAD_CONTROLLER, CtkPadControllerClass))
 #define CTK_IS_PAD_CONTROLLER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_PAD_CONTROLLER))
 #define CTK_IS_PAD_CONTROLLER_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_PAD_CONTROLLER))
-#define CTK_PAD_CONTROLLER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_PAD_CONTROLLER, GtkPadControllerClass))
+#define CTK_PAD_CONTROLLER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_PAD_CONTROLLER, CtkPadControllerClass))
 
-typedef struct _GtkPadController GtkPadController;
-typedef struct _GtkPadControllerClass GtkPadControllerClass;
-typedef struct _GtkPadActionEntry GtkPadActionEntry;
+typedef struct _CtkPadController CtkPadController;
+typedef struct _CtkPadControllerClass CtkPadControllerClass;
+typedef struct _CtkPadActionEntry CtkPadActionEntry;
 
 /**
- * GtkPadActionType:
+ * CtkPadActionType:
  * @CTK_PAD_ACTION_BUTTON: Action is triggered by a pad button
  * @CTK_PAD_ACTION_RING: Action is triggered by a pad ring
  * @CTK_PAD_ACTION_STRIP: Action is triggered by a pad strip
@@ -52,10 +52,10 @@ typedef enum {
   CTK_PAD_ACTION_BUTTON,
   CTK_PAD_ACTION_RING,
   CTK_PAD_ACTION_STRIP
-} GtkPadActionType;
+} CtkPadActionType;
 
 /**
- * GtkPadActionEntry:
+ * CtkPadActionEntry:
  * @type: the type of pad feature that will trigger this action entry.
  * @index: the 0-indexed button/ring/strip number that will trigger this action
  *   entry.
@@ -66,8 +66,8 @@ typedef enum {
  *
  * Struct defining a pad action entry.
  */
-struct _GtkPadActionEntry {
-  GtkPadActionType type;
+struct _CtkPadActionEntry {
+  CtkPadActionType type;
   gint index;
   gint mode;
   gchar *label;
@@ -78,17 +78,17 @@ GDK_AVAILABLE_IN_3_22
 GType ctk_pad_controller_get_type           (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-GtkPadController *ctk_pad_controller_new    (GtkWindow        *window,
+CtkPadController *ctk_pad_controller_new    (CtkWindow        *window,
                                              GActionGroup     *group,
                                              GdkDevice        *pad);
 
 GDK_AVAILABLE_IN_3_22
-void  ctk_pad_controller_set_action_entries (GtkPadController        *controller,
-                                             const GtkPadActionEntry *entries,
+void  ctk_pad_controller_set_action_entries (CtkPadController        *controller,
+                                             const CtkPadActionEntry *entries,
                                              gint                     n_entries);
 GDK_AVAILABLE_IN_3_22
-void  ctk_pad_controller_set_action         (GtkPadController *controller,
-                                             GtkPadActionType  type,
+void  ctk_pad_controller_set_action         (CtkPadController *controller,
+                                             CtkPadActionType  type,
                                              gint              index,
                                              gint              mode,
                                              const gchar      *label,

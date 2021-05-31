@@ -30,18 +30,18 @@ Overview of Changes in GTK+ 0.99.7:
 
 * This release is mainly because 0.99.6 did not compile completely
   due to a missing file.
-* Fixes to Gtk's quit handlers.
+* Fixes to Ctk's quit handlers.
 
 Overview of Changes in GTK+ 0.99.6:
 
 * Intermediate release to become 1.0.
 * More signedness corrections for handler functions in ctkmain.h.
-* Semantics of GtkWidget::delete_event changed.
+* Semantics of CtkWidget::delete_event changed.
 * Documentation updates.
-* Inclusion of Gtk tutorial.
-* Implementation of a new shutdown method for GtkObject's executed prior to
+* Inclusion of Ctk tutorial.
+* Implementation of a new shutdown method for CtkObject's executed prior to
   actual destruction. WARNING: this breaks binary compatibility, programs using
-  Gtk need to be recompiled.
+  Ctk need to be recompiled.
 * Clean ups due to compiler warnings.
 * Various widget fixes.
 
@@ -68,10 +68,10 @@ Overview of Changes in GTK+ 0.99.4:
   and pending handlers of signals.
 * Support for user signals, and major changes to internal signal handler
   handling for proper signal removal and invokation of after signals.
-* Additional signals for various widgets e.g, GtkHandleBox::child_attached,
-  GtkHandleBox::child_detached, GtkWidget::style_set, GtkWidget::parent_set.
-* GtkTooltips became a true descendant of GtkObject via derivation from
-  GtkData and facilitates an extra tip string which can be used as e.g. an
+* Additional signals for various widgets e.g, CtkHandleBox::child_attached,
+  CtkHandleBox::child_detached, CtkWidget::style_set, CtkWidget::parent_set.
+* CtkTooltips became a true descendant of CtkObject via derivation from
+  CtkData and facilitates an extra tip string which can be used as e.g. an
   index into context help.
 * Split up of the widget/object flags into a private and a public portion,
   consult docs/widget_system.txt on this.
@@ -79,13 +79,13 @@ Overview of Changes in GTK+ 0.99.4:
 * Reimplementation of the *_interp functions as *_full functions to provide
   simple callback functions as well.
 * Idle functions are now prioritized.
-* Many enhancements to GtkNotebook.
-* New widget GtkSpinButton, check out testctk.
-* New widget GtkTipsQuery for letting the user query tooltips of widgets.
-* Addition of GtkEditable base widget to encapsulate selection and
-  clipboard handling. (GtkEntry and GtkText use this)
+* Many enhancements to CtkNotebook.
+* New widget CtkSpinButton, check out testctk.
+* New widget CtkTipsQuery for letting the user query tooltips of widgets.
+* Addition of CtkEditable base widget to encapsulate selection and
+  clipboard handling. (CtkEntry and CtkText use this)
 * Text widget more complete.
-* Additions to GtkStatusBar to make it complete.
+* Additions to CtkStatusBar to make it complete.
 * Gdk now supports regions.
 * Access masks for widget arguments (CTK_ARG_READABLE/CTK_ARG_WRITABLE).
 * Function replacements:

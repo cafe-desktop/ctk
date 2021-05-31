@@ -27,26 +27,26 @@
 /**
  * SECTION:ctkrecentchooserwidget
  * @Short_description: Displays recently used files
- * @Title: GtkRecentChooserWidget
- * @See_also:#GtkRecentChooser, #GtkRecentChooserDialog
+ * @Title: CtkRecentChooserWidget
+ * @See_also:#CtkRecentChooser, #CtkRecentChooserDialog
  *
- * #GtkRecentChooserWidget is a widget suitable for selecting recently used
- * files.  It is the main building block of a #GtkRecentChooserDialog.  Most
+ * #CtkRecentChooserWidget is a widget suitable for selecting recently used
+ * files.  It is the main building block of a #CtkRecentChooserDialog.  Most
  * applications will only need to use the latter; you can use
- * #GtkRecentChooserWidget as part of a larger window if you have special needs.
+ * #CtkRecentChooserWidget as part of a larger window if you have special needs.
  *
- * Note that #GtkRecentChooserWidget does not have any methods of its own.
- * Instead, you should use the functions that work on a #GtkRecentChooser.
+ * Note that #CtkRecentChooserWidget does not have any methods of its own.
+ * Instead, you should use the functions that work on a #CtkRecentChooser.
  *
  * Recently used files are supported since GTK+ 2.10.
  */
 
 
-struct _GtkRecentChooserWidgetPrivate
+struct _CtkRecentChooserWidgetPrivate
 {
-  GtkRecentManager *manager;
+  CtkRecentManager *manager;
   
-  GtkWidget *chooser;
+  CtkWidget *chooser;
 };
 
 static void     ctk_recent_chooser_widget_set_property (GObject               *object,
@@ -60,17 +60,17 @@ static void     ctk_recent_chooser_widget_get_property (GObject               *o
 static void     ctk_recent_chooser_widget_finalize     (GObject               *object);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserWidget,
+G_DEFINE_TYPE_WITH_CODE (CtkRecentChooserWidget,
 		         ctk_recent_chooser_widget,
 			 CTK_TYPE_BOX,
-                         G_ADD_PRIVATE (GtkRecentChooserWidget)
+                         G_ADD_PRIVATE (CtkRecentChooserWidget)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_RECENT_CHOOSER,
 						_ctk_recent_chooser_delegate_iface_init))
 
 static void
 ctk_recent_chooser_widget_constructed (GObject *gobject)
 {
-  GtkRecentChooserWidget *self = CTK_RECENT_CHOOSER_WIDGET (gobject);
+  CtkRecentChooserWidget *self = CTK_RECENT_CHOOSER_WIDGET (gobject);
 
   self->priv->chooser = _ctk_recent_chooser_default_new (self->priv->manager);
 
@@ -86,7 +86,7 @@ ctk_recent_chooser_widget_set_property (GObject      *object,
 				        const GValue *value,
 				        GParamSpec   *pspec)
 {
-  GtkRecentChooserWidgetPrivate *priv;
+  CtkRecentChooserWidgetPrivate *priv;
 
   priv = ctk_recent_chooser_widget_get_instance_private (CTK_RECENT_CHOOSER_WIDGET (object));
   
@@ -107,7 +107,7 @@ ctk_recent_chooser_widget_get_property (GObject    *object,
 				        GValue     *value,
 				        GParamSpec *pspec)
 {
-  GtkRecentChooserWidgetPrivate *priv;
+  CtkRecentChooserWidgetPrivate *priv;
 
   priv = ctk_recent_chooser_widget_get_instance_private (CTK_RECENT_CHOOSER_WIDGET (object));
 
@@ -117,7 +117,7 @@ ctk_recent_chooser_widget_get_property (GObject    *object,
 static void
 ctk_recent_chooser_widget_finalize (GObject *object)
 {
-  GtkRecentChooserWidget *self = CTK_RECENT_CHOOSER_WIDGET (object);
+  CtkRecentChooserWidget *self = CTK_RECENT_CHOOSER_WIDGET (object);
 
   self->priv->manager = NULL;
   
@@ -125,7 +125,7 @@ ctk_recent_chooser_widget_finalize (GObject *object)
 }
 
 static void
-ctk_recent_chooser_widget_class_init (GtkRecentChooserWidgetClass *klass)
+ctk_recent_chooser_widget_class_init (CtkRecentChooserWidgetClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -138,7 +138,7 @@ ctk_recent_chooser_widget_class_init (GtkRecentChooserWidgetClass *klass)
 }
 
 static void
-ctk_recent_chooser_widget_init (GtkRecentChooserWidget *widget)
+ctk_recent_chooser_widget_init (CtkRecentChooserWidget *widget)
 {
   widget->priv = ctk_recent_chooser_widget_get_instance_private (widget);
 
@@ -153,14 +153,14 @@ ctk_recent_chooser_widget_init (GtkRecentChooserWidget *widget)
 /**
  * ctk_recent_chooser_widget_new:
  * 
- * Creates a new #GtkRecentChooserWidget object.  This is an embeddable widget
+ * Creates a new #CtkRecentChooserWidget object.  This is an embeddable widget
  * used to access the recently used resources list.
  *
- * Returns: a new #GtkRecentChooserWidget
+ * Returns: a new #CtkRecentChooserWidget
  *
  * Since: 2.10
  */
-GtkWidget *
+CtkWidget *
 ctk_recent_chooser_widget_new (void)
 {
   return g_object_new (CTK_TYPE_RECENT_CHOOSER_WIDGET, NULL);
@@ -168,19 +168,19 @@ ctk_recent_chooser_widget_new (void)
 
 /**
  * ctk_recent_chooser_widget_new_for_manager:
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  *
- * Creates a new #GtkRecentChooserWidget with a specified recent manager.
+ * Creates a new #CtkRecentChooserWidget with a specified recent manager.
  *
  * This is useful if you have implemented your own recent manager, or if you
- * have a customized instance of a #GtkRecentManager object.
+ * have a customized instance of a #CtkRecentManager object.
  *
- * Returns: a new #GtkRecentChooserWidget
+ * Returns: a new #CtkRecentChooserWidget
  *
  * Since: 2.10
  */
-GtkWidget *
-ctk_recent_chooser_widget_new_for_manager (GtkRecentManager *manager)
+CtkWidget *
+ctk_recent_chooser_widget_new_for_manager (CtkRecentManager *manager)
 {
   g_return_val_if_fail (manager == NULL || CTK_IS_RECENT_MANAGER (manager), NULL);
   

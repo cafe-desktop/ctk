@@ -20,7 +20,7 @@
 #include "ctkcolorpickershellprivate.h"
 #include <gio/gio.h>
 
-struct _GtkColorPickerShell
+struct _CtkColorPickerShell
 {
   GObject parent_instance;
 
@@ -28,16 +28,16 @@ struct _GtkColorPickerShell
   GTask *task;
 };
 
-struct _GtkColorPickerShellClass
+struct _CtkColorPickerShellClass
 {
   GObjectClass parent_class;
 };
 
 static GInitableIface *initable_parent_iface;
 static void ctk_color_picker_shell_initable_iface_init (GInitableIface *iface);
-static void ctk_color_picker_shell_iface_init (GtkColorPickerInterface *iface);
+static void ctk_color_picker_shell_iface_init (CtkColorPickerInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorPickerShell, ctk_color_picker_shell, G_TYPE_OBJECT,
+G_DEFINE_TYPE_WITH_CODE (CtkColorPickerShell, ctk_color_picker_shell, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, ctk_color_picker_shell_initable_iface_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_PICKER, ctk_color_picker_shell_iface_init))
 
@@ -46,7 +46,7 @@ ctk_color_picker_shell_initable_init (GInitable     *initable,
                                       GCancellable  *cancellable,
                                       GError       **error)
 {
-  GtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (initable);
+  CtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (initable);
   char *owner;
 
   picker->shell_proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
@@ -84,14 +84,14 @@ ctk_color_picker_shell_initable_iface_init (GInitableIface *iface)
 }
 
 static void
-ctk_color_picker_shell_init (GtkColorPickerShell *picker)
+ctk_color_picker_shell_init (CtkColorPickerShell *picker)
 {
 }
 
 static void
 ctk_color_picker_shell_finalize (GObject *object)
 {
-  GtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (object);
+  CtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (object);
 
   g_clear_object (&picker->shell_proxy);
 
@@ -99,14 +99,14 @@ ctk_color_picker_shell_finalize (GObject *object)
 }
 
 static void
-ctk_color_picker_shell_class_init (GtkColorPickerShellClass *class)
+ctk_color_picker_shell_class_init (CtkColorPickerShellClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
   object_class->finalize = ctk_color_picker_shell_finalize;
 }
 
-GtkColorPicker *
+CtkColorPicker *
 ctk_color_picker_shell_new (void)
 {
   return CTK_COLOR_PICKER (g_initable_new (CTK_TYPE_COLOR_PICKER_SHELL, NULL, NULL, NULL));
@@ -117,7 +117,7 @@ color_picked (GObject      *source,
               GAsyncResult *res,
               gpointer      data)
 {
-  GtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (data);
+  CtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (data);
   GError *error = NULL;
   GVariant *ret, *dict;
 
@@ -147,11 +147,11 @@ color_picked (GObject      *source,
 }
 
 static void
-ctk_color_picker_shell_pick (GtkColorPicker      *cp,
+ctk_color_picker_shell_pick (CtkColorPicker      *cp,
                              GAsyncReadyCallback  callback,
                              gpointer             user_data)
 {
-  GtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (cp);
+  CtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (cp);
 
   if (picker->task)
     return;
@@ -169,7 +169,7 @@ ctk_color_picker_shell_pick (GtkColorPicker      *cp,
 }
 
 static GdkRGBA *
-ctk_color_picker_shell_pick_finish (GtkColorPicker  *cp,
+ctk_color_picker_shell_pick_finish (CtkColorPicker  *cp,
                                      GAsyncResult    *res,
                                      GError         **error)
 {
@@ -179,7 +179,7 @@ ctk_color_picker_shell_pick_finish (GtkColorPicker  *cp,
 }
 
 static void
-ctk_color_picker_shell_iface_init (GtkColorPickerInterface *iface)
+ctk_color_picker_shell_iface_init (CtkColorPickerInterface *iface)
 {
   iface->pick = ctk_color_picker_shell_pick;
   iface->pick_finish = ctk_color_picker_shell_pick_finish;

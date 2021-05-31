@@ -36,18 +36,18 @@ typedef enum
 {
   CTK_DIRECTION_LEFT,
   CTK_DIRECTION_RIGHT
-} GtkSubmenuDirection;
+} CtkSubmenuDirection;
 
 
-struct _GtkMenuPrivate
+struct _CtkMenuPrivate
 {
-  GtkWidget *parent_menu_item;
-  GtkWidget *old_active_menu_item;
+  CtkWidget *parent_menu_item;
+  CtkWidget *old_active_menu_item;
 
-  GtkAccelGroup *accel_group;
+  CtkAccelGroup *accel_group;
   const char    *accel_path;
 
-  GtkMenuPositionFunc position_func;
+  CtkMenuPositionFunc position_func;
   gpointer            position_func_data;
   GDestroyNotify      position_func_data_destroy;
   gint                position_x;
@@ -55,7 +55,7 @@ struct _GtkMenuPrivate
 
   GdkWindow         *rect_window;
   GdkRectangle       rect;
-  GtkWidget         *widget;
+  CtkWidget         *widget;
   GdkGravity         rect_anchor;
   GdkGravity         menu_anchor;
   GdkAnchorHints     anchor_hints;
@@ -71,18 +71,18 @@ struct _GtkMenuPrivate
    * count from the toplevel to the menu, so it must be restored
    * before operating on these widgets
    */
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
 
-  GtkWidget     *tearoff_window;
-  GtkWidget     *tearoff_hbox;
-  GtkWidget     *tearoff_scrollbar;
-  GtkAdjustment *tearoff_adjustment;
+  CtkWidget     *tearoff_window;
+  CtkWidget     *tearoff_hbox;
+  CtkWidget     *tearoff_scrollbar;
+  CtkAdjustment *tearoff_adjustment;
 
   GdkWindow *view_window;
   GdkWindow *bin_window;
 
-  GtkCssGadget *top_arrow_gadget;
-  GtkCssGadget *bottom_arrow_gadget;
+  CtkCssGadget *top_arrow_gadget;
+  CtkCssGadget *bottom_arrow_gadget;
 
   gint scroll_offset;
   gint saved_scroll_offset;
@@ -126,8 +126,8 @@ struct _GtkMenuPrivate
   gchar *title;
 
  /* Arrow states */
-  GtkStateFlags lower_arrow_state;
-  GtkStateFlags upper_arrow_state;
+  CtkStateFlags lower_arrow_state;
+  CtkStateFlags upper_arrow_state;
 
   /* navigation region */
   gint navigation_x;
@@ -142,7 +142,7 @@ struct _GtkMenuPrivate
 };
 
 G_GNUC_INTERNAL
-void ctk_menu_update_scroll_offset (GtkMenu            *menu,
+void ctk_menu_update_scroll_offset (CtkMenu            *menu,
                                     const GdkRectangle *flipped_rect,
                                     const GdkRectangle *final_rect,
                                     gboolean            flipped_x,

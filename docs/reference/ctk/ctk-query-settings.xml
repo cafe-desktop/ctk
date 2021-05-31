@@ -24,7 +24,7 @@
 
 <refnamediv>
   <refname>ctk-query-settings</refname>
-  <refpurpose>Utility to print name and value of all GtkSettings properties</refpurpose>
+  <refpurpose>Utility to print name and value of all CtkSettings properties</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -37,7 +37,7 @@
 <refsect1><title>Description</title>
 <para>
   <command>ctk-query-settings</command> prints both name and value of all properties
-  available in the GtkSettings class. Optionally, you can filter which properties
+  available in the CtkSettings class. Optionally, you can filter which properties
   to list by specifying a PATTERN.
 </para>
 </refsect1>

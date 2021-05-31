@@ -16,7 +16,7 @@
     color: black;
 }
 
-.cell, .check, .entry, .menu, .radio, GtkTextView, GtkTreeView {
+.cell, .check, .entry, .menu, .radio, CtkTextView, CtkTreeView {
     background-color: white;
 }
 
@@ -37,7 +37,7 @@ image, label, .menuitem {
     color: white;
 }
 
-GtkCheckButton:selected {
+CtkCheckButton:selected {
     background-color: @color_base;
 }
 
@@ -132,7 +132,7 @@ button {
     padding: 2px;
 }
 
-GtkComboBox .button {
+CtkComboBox .button {
     padding: 0px 2px 0px 2px;
 }
 

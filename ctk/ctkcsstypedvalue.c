@@ -22,40 +22,40 @@
 #include "ctkcsscustompropertyprivate.h"
 #include "ctkcssstylefuncsprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   GValue value;
 };
 
 static void
-ctk_css_value_typed_free (GtkCssValue *value)
+ctk_css_value_typed_free (CtkCssValue *value)
 {
   g_value_unset (&value->value);
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_typed_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_typed_compute (CtkCssValue             *value,
                              guint                    property_id,
-                             GtkStyleProviderPrivate *provider,
-                             GtkCssStyle             *style,
-                             GtkCssStyle             *parent_style)
+                             CtkStyleProviderPrivate *provider,
+                             CtkCssStyle             *style,
+                             CtkCssStyle             *parent_style)
 {
-  GtkCssCustomProperty *custom = CTK_CSS_CUSTOM_PROPERTY (_ctk_css_style_property_lookup_by_id (property_id));
+  CtkCssCustomProperty *custom = CTK_CSS_CUSTOM_PROPERTY (_ctk_css_style_property_lookup_by_id (property_id));
 
   return _ctk_css_style_funcs_compute_value (provider, style, parent_style, custom->pspec->value_type, value);
 }
 
 static gboolean
-ctk_css_value_typed_equal (const GtkCssValue *value1,
-                           const GtkCssValue *value2)
+ctk_css_value_typed_equal (const CtkCssValue *value1,
+                           const CtkCssValue *value2)
 {
   return FALSE;
 }
 
-static GtkCssValue *
-ctk_css_value_typed_transition (GtkCssValue *start,
-                                GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_typed_transition (CtkCssValue *start,
+                                CtkCssValue *end,
                                 guint        property_id,
                                 double       progress)
 {
@@ -63,13 +63,13 @@ ctk_css_value_typed_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_typed_print (const GtkCssValue *value,
+ctk_css_value_typed_print (const CtkCssValue *value,
                            GString           *string)
 {
   _ctk_css_style_funcs_print_value (&value->value, string);
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_TYPED = {
+static const CtkCssValueClass CTK_CSS_VALUE_TYPED = {
   ctk_css_value_typed_free,
   ctk_css_value_typed_compute,
   ctk_css_value_typed_equal,
@@ -77,22 +77,22 @@ static const GtkCssValueClass CTK_CSS_VALUE_TYPED = {
   ctk_css_value_typed_print
 };
 
-static GtkCssValue *
+static CtkCssValue *
 ctk_css_typed_value_new_for_type (GType type)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_TYPED);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_TYPED);
 
   g_value_init (&result->value, type);
 
   return result;
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_typed_value_new (const GValue *value)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
   g_return_val_if_fail (G_IS_VALUE (value), NULL);
 
@@ -103,10 +103,10 @@ _ctk_css_typed_value_new (const GValue *value)
   return result;
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_typed_value_new_take (GValue *value)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
   g_return_val_if_fail (G_IS_VALUE (value), NULL);
 
@@ -117,7 +117,7 @@ _ctk_css_typed_value_new_take (GValue *value)
 }
 
 gboolean
-_ctk_is_css_typed_value_of_type (const GtkCssValue *value,
+_ctk_is_css_typed_value_of_type (const CtkCssValue *value,
                                  GType              type)
 {
   if (value->class != &CTK_CSS_VALUE_TYPED)
@@ -127,7 +127,7 @@ _ctk_is_css_typed_value_of_type (const GtkCssValue *value,
 }
 
 const GValue *
-_ctk_css_typed_value_get (const GtkCssValue *value)
+_ctk_css_typed_value_get (const CtkCssValue *value)
 {
   g_return_val_if_fail (value->class == &CTK_CSS_VALUE_TYPED, NULL);
 

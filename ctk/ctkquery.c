@@ -24,7 +24,7 @@
 
 #include "ctkquery.h"
 
-struct _GtkQueryPrivate
+struct _CtkQueryPrivate
 {
   gchar *text;
   GFile *location;
@@ -32,12 +32,12 @@ struct _GtkQueryPrivate
   gchar **words;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkQuery, ctk_query, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkQuery, ctk_query, G_TYPE_OBJECT)
 
 static void
 finalize (GObject *object)
 {
-  GtkQuery *query;
+  CtkQuery *query;
 
   query = CTK_QUERY (object);
 
@@ -49,7 +49,7 @@ finalize (GObject *object)
 }
 
 static void
-ctk_query_class_init (GtkQueryClass *class)
+ctk_query_class_init (CtkQueryClass *class)
 {
   GObjectClass *gobject_class;
 
@@ -58,12 +58,12 @@ ctk_query_class_init (GtkQueryClass *class)
 }
 
 static void
-ctk_query_init (GtkQuery *query)
+ctk_query_init (CtkQuery *query)
 {
   query->priv = ctk_query_get_instance_private (query);
 }
 
-GtkQuery *
+CtkQuery *
 ctk_query_new (void)
 {
   return g_object_new (CTK_TYPE_QUERY,  NULL);
@@ -71,13 +71,13 @@ ctk_query_new (void)
 
 
 const gchar *
-ctk_query_get_text (GtkQuery *query)
+ctk_query_get_text (CtkQuery *query)
 {
   return query->priv->text;
 }
 
 void
-ctk_query_set_text (GtkQuery    *query,
+ctk_query_set_text (CtkQuery    *query,
                     const gchar *text)
 {
   g_free (query->priv->text);
@@ -88,13 +88,13 @@ ctk_query_set_text (GtkQuery    *query,
 }
 
 GFile *
-ctk_query_get_location (GtkQuery *query)
+ctk_query_get_location (CtkQuery *query)
 {
   return query->priv->location;
 }
 
 void
-ctk_query_set_location (GtkQuery *query,
+ctk_query_set_location (CtkQuery *query,
                         GFile    *file)
 {
   g_set_object (&query->priv->location, file);
@@ -113,7 +113,7 @@ prepare_string_for_compare (const gchar *string)
 }
 
 gboolean
-ctk_query_matches_string (GtkQuery    *query,
+ctk_query_matches_string (CtkQuery    *query,
                           const gchar *string)
 {
   gchar *prepared;

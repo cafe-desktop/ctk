@@ -6,11 +6,11 @@
 
 #include <ctk/ctk.h>
 
-GtkWidget *
-do_pickers (GtkWidget *do_widget)
+CtkWidget *
+do_pickers (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
-  GtkWidget *table, *label, *picker;
+  static CtkWidget *window = NULL;
+  CtkWidget *table, *label, *picker;
 
   if (!window)
   {

@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SCALE_BUTTON_ACCESSIBLE                     (ctk_scale_button_accessible_get_type ())
-#define CTK_SCALE_BUTTON_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessible))
-#define CTK_SCALE_BUTTON_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessibleClass))
+#define CTK_SCALE_BUTTON_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, CtkScaleButtonAccessible))
+#define CTK_SCALE_BUTTON_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, CtkScaleButtonAccessibleClass))
 #define CTK_IS_SCALE_BUTTON_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE))
 #define CTK_IS_SCALE_BUTTON_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE))
-#define CTK_SCALE_BUTTON_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessibleClass))
+#define CTK_SCALE_BUTTON_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, CtkScaleButtonAccessibleClass))
 
-typedef struct _GtkScaleButtonAccessible        GtkScaleButtonAccessible;
-typedef struct _GtkScaleButtonAccessibleClass   GtkScaleButtonAccessibleClass;
-typedef struct _GtkScaleButtonAccessiblePrivate GtkScaleButtonAccessiblePrivate;
+typedef struct _CtkScaleButtonAccessible        CtkScaleButtonAccessible;
+typedef struct _CtkScaleButtonAccessibleClass   CtkScaleButtonAccessibleClass;
+typedef struct _CtkScaleButtonAccessiblePrivate CtkScaleButtonAccessiblePrivate;
 
-struct _GtkScaleButtonAccessible
+struct _CtkScaleButtonAccessible
 {
-  GtkButtonAccessible parent;
+  CtkButtonAccessible parent;
 
-  GtkScaleButtonAccessiblePrivate *priv;
+  CtkScaleButtonAccessiblePrivate *priv;
 };
 
-struct _GtkScaleButtonAccessibleClass
+struct _CtkScaleButtonAccessibleClass
 {
-  GtkButtonAccessibleClass parent_class;
+  CtkButtonAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

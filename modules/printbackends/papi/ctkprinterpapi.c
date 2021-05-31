@@ -1,4 +1,4 @@
-/* GtkPrinterPapi
+/* CtkPrinterPapi
  * Copyright (C) 2006 John (J5) Palmieri  <johnp@redhat.com>
  * Copyright (C) 2009 Ghee Teo <ghee.teo@sun.com>
  *
@@ -19,11 +19,11 @@
 #include "config.h"
 #include "ctkprinterpapi.h"
 
-static void ctk_printer_papi_init       (GtkPrinterPapi      *printer);
-static void ctk_printer_papi_class_init (GtkPrinterPapiClass *class);
+static void ctk_printer_papi_init       (CtkPrinterPapi      *printer);
+static void ctk_printer_papi_class_init (CtkPrinterPapiClass *class);
 static void ctk_printer_papi_finalize   (GObject             *object);
 
-static GtkPrinterClass *ctk_printer_papi_parent_class;
+static CtkPrinterClass *ctk_printer_papi_parent_class;
 static GType ctk_printer_papi_type = 0;
 
 void 
@@ -31,20 +31,20 @@ ctk_printer_papi_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (GtkPrinterPapiClass),
+    sizeof (CtkPrinterPapiClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
     (GClassInitFunc) ctk_printer_papi_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
-    sizeof (GtkPrinterPapi),
+    sizeof (CtkPrinterPapi),
     0,              /* n_preallocs */
     (GInstanceInitFunc) ctk_printer_papi_init,
   };
 
  ctk_printer_papi_type = g_type_module_register_type (module,
                                                       CTK_TYPE_PRINTER,
-                                                      "GtkPrinterPapi",
+                                                      "CtkPrinterPapi",
                                                       &object_info, 0);
 }
 
@@ -55,7 +55,7 @@ ctk_printer_papi_get_type (void)
 }
 
 static void
-ctk_printer_papi_class_init (GtkPrinterPapiClass *class)
+ctk_printer_papi_class_init (CtkPrinterPapiClass *class)
 {
   GObjectClass *object_class = (GObjectClass *) class;
 	
@@ -65,7 +65,7 @@ ctk_printer_papi_class_init (GtkPrinterPapiClass *class)
 }
 
 static void
-ctk_printer_papi_init (GtkPrinterPapi *printer)
+ctk_printer_papi_init (CtkPrinterPapi *printer)
 {
   printer->printer_name = NULL;
 }
@@ -73,7 +73,7 @@ ctk_printer_papi_init (GtkPrinterPapi *printer)
 static void
 ctk_printer_papi_finalize (GObject *object)
 {
-  GtkPrinterPapi *printer;
+  CtkPrinterPapi *printer;
 
   g_return_if_fail (object != NULL);
 
@@ -87,18 +87,18 @@ ctk_printer_papi_finalize (GObject *object)
 /**
  * ctk_printer_papi_new:
  *
- * Creates a new #GtkPrinterPapi.
+ * Creates a new #CtkPrinterPapi.
  *
- * Returns: a new #GtkPrinterPapi
+ * Returns: a new #CtkPrinterPapi
  *
  * Since: 2.10
  **/
-GtkPrinterPapi *
+CtkPrinterPapi *
 ctk_printer_papi_new (const char      *name,
-		      GtkPrintBackend *backend)
+		      CtkPrintBackend *backend)
 {
   GObject *result;
-  GtkPrinterPapi *pp;
+  CtkPrinterPapi *pp;
   
   result = g_object_new (CTK_TYPE_PRINTER_PAPI,
 			 "name", name,
@@ -109,6 +109,6 @@ ctk_printer_papi_new (const char      *name,
 
   pp->printer_name = g_strdup (name);
 
-  return (GtkPrinterPapi *) pp;
+  return (CtkPrinterPapi *) pp;
 }
 

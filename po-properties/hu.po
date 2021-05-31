@@ -366,10 +366,10 @@ msgstr "Műveletcsoport"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"Az a GtkActionGroup, amelyhez a GtkAction társítva van, vagy NULL (belső "
+"Az a CtkActionGroup, amelyhez a CtkAction társítva van, vagy NULL (belső "
 "használatra)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
@@ -927,8 +927,8 @@ msgid "Style context"
 msgstr "Stíluskörnyezet"
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
-msgstr "A stílus lekéréséhez használt GtkStyleContext"
+msgid "CtkStyleContext to get style from"
+msgstr "A stílus lekéréséhez használt CtkStyleContext"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1311,10 +1311,10 @@ msgstr "Csomag típusa"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"Egy GtkPackType, amely azt jelzi, hogy a gyermekben a hivatkozás a szülő "
+"Egy CtkPackType, amely azt jelzi, hogy a gyermekben a hivatkozás a szülő "
 "elejére vagy végére mutat"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
@@ -1384,9 +1384,9 @@ msgstr "„Egyéb…” elem felvétele"
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
-"A legördülő menü tartalmazzon-e egy GtkAppChooserDialog-ot indító elemet"
+"A legördülő menü tartalmazzon-e egy CtkAppChooserDialog-ot indító elemet"
 
 #: ctk/ctkappchooserbutton.c:634
 msgid "Show default item"
@@ -2003,10 +2003,10 @@ msgstr "Csomagolás típusa"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"Egy GtkPackType, amely azt jelzi, hogy a cellában a hivatkozás a "
+"Egy CtkPackType, amely azt jelzi, hogy a cellában a hivatkozás a "
 "cellaterület elejére vagy végére mutat"
 
 #: ctk/ctkcellarea.c:790
@@ -2285,8 +2285,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "A megjelenítendő gyári ikon gyári azonosítója"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "A megjelenített ikon méretét meghatározó GtkIconSize érték"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "A megjelenített ikon méretét meghatározó CtkIconSize érték"
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2397,8 +2397,8 @@ msgid "Pulse of the spinner"
 msgstr "A forgó mérete"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "A megjelenített forgó méretét meghatározó GtkIconSize érték"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "A megjelenített forgó méretét meghatározó CtkIconSize érték"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2839,16 +2839,16 @@ msgstr "Cellaterület"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
-msgstr "A cellák elrendezéséhez használt GtkCellArea"
+msgid "The CtkCellArea used to layout cells"
+msgstr "A cellák elrendezéséhez használt CtkCellArea"
 
 #: ctk/ctkcellview.c:306
 msgid "Cell Area Context"
 msgstr "Cellaterület-környezet"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
-msgstr "A cellanézet geometriájának kiszámításához használt GtkCellAreaContext"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
+msgstr "A cellanézet geometriájának kiszámításához használt CtkCellAreaContext"
 
 #: ctk/ctkcellview.c:324
 msgid "Draw Sensitive"
@@ -3066,10 +3066,10 @@ msgstr "Beviteli szövegoszlop"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "A legördülő lista modelljének a bevitelből származó karakterláncokhoz "
-"társítandó oszlopa, ha a legördülő lista a #GtkComboBox:has-entry = %TRUE "
+"társítandó oszlopa, ha a legördülő lista a #CtkComboBox:has-entry = %TRUE "
 "használatával jött létre"
 
 #: ctk/ctkcombobox.c:1129
@@ -4235,8 +4235,8 @@ msgid "Auto render"
 msgstr "Automatikus megjelenítés"
 
 #: ctk/ctkglarea.c:808
-msgid "Whether the GtkGLArea renders on each redraw"
-msgstr "A GtkGLArea jelenjen-e meg minden újrarajzoláskor"
+msgid "Whether the CtkGLArea renders on each redraw"
+msgstr "A CtkGLArea jelenjen-e meg minden újrarajzoláskor"
 
 #: ctk/ctkglarea.c:828
 msgid "Has alpha"
@@ -4597,10 +4597,10 @@ msgstr "Sorkizárás"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "A címke szövege sorainak igazítása egymáshoz. Ez NINCS hatással a címke "
-"elhelyezkedésére. Azzal kapcsolatban lásd: GtkLabel:xalign"
+"elhelyezkedésére. Azzal kapcsolatban lásd: CtkLabel:xalign"
 
 #: ctk/ctklabel.c:877
 msgid "Pattern"
@@ -5211,8 +5211,8 @@ msgid "Message area"
 msgstr "Üzenetterület"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
-msgstr "Az ablak elsődleges és másodlagos címkéit tartalmazó GtkBox"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
+msgstr "Az ablak elsődleges és másodlagos címkéit tartalmazó CtkBox"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -5528,7 +5528,7 @@ msgstr "Műveletcsoport"
 msgid "Action group to launch actions from"
 msgstr "Műveletek indítása ezen műveletcsoportból"
 
-# GtkPadController is an event controller for the pads found in drawing
+# CtkPadController is an event controller for the pads found in drawing
 # tablets (The collection of buttons and tactile sensors often found around
 # the stylus-sensitive area).
 #: ctk/ctkpadcontroller.c:379
@@ -5963,16 +5963,16 @@ msgid "Default Page Setup"
 msgstr "Alapértelmezett oldalbeállítás"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "Az alapértelmezetten használandó GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "Az alapértelmezetten használandó CtkPageSetup"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "Nyomtatási beállítások"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "A párbeszédablak előkészítésére használt GtkPrintSettings"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "A párbeszédablak előkészítésére használt CtkPrintSettings"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -6094,7 +6094,7 @@ msgid "Embed Page Setup"
 msgstr "Oldalbeállítás beágyazása"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 "Ha IGAZ, akkor a nyomtatási párbeszédablak tartalmazza az oldalbeállítási "
 "legördülő listákat"
@@ -6108,16 +6108,16 @@ msgid "The number of pages that will be printed."
 msgstr "A nyomtatásra kerülő oldalak száma."
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "A használandó GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "A használandó CtkPageSetup"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "Kiválasztott nyomtató"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "A kijelölt GtkPrinter"
+msgid "The CtkPrinter which is selected"
+msgstr "A kijelölt CtkPrinter"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6235,8 +6235,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "Az a rádiógomb, amely csoportjához ez a gomb tartozik."
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "A tartományobjektum aktuális értékét tartalmazó GtkAdjustment"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "A tartományobjektum aktuális értékét tartalmazó CtkAdjustment"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6487,8 +6487,8 @@ msgstr "Az ikon mérete"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "A méretezőgomb-objektum aktuális értékét tartalmazó GtkAdjustment"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "A méretezőgomb-objektum aktuális értékét tartalmazó CtkAdjustment"
 
 #: ctk/ctkscalebutton.c:246
 msgid "Icons"
@@ -6611,16 +6611,16 @@ msgid "Horizontal Adjustment"
 msgstr "Vízszintes igazítás"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "A vízszintes pozícióhoz tartozó GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "A vízszintes pozícióhoz tartozó CtkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "Függőleges igazítás"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "A függőleges pozícióhoz tartozó GtkAdjustment"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "A függőleges pozícióhoz tartozó CtkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -7133,18 +7133,18 @@ msgid "Default file chooser backend"
 msgstr "A fájlválasztó alapértelmezett háttérprogramja"
 
 #: ctk/ctksettings.c:990
-msgid "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
 msgstr ""
-"Az alapértelmezés szerint használandó GtkFileChooser háttérprogram neve"
+"Az alapértelmezés szerint használandó CtkFileChooser háttérprogram neve"
 
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Alapértelmezett nyomtatási háttérprogram"
 
 #: ctk/ctksettings.c:1008
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr ""
-"Az alapértelmezés szerint használandó GtkPrintBackend háttérprogramok listája"
+"Az alapértelmezés szerint használandó CtkPrintBackend háttérprogramok listája"
 
 #: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
@@ -7776,8 +7776,8 @@ msgid "Stack"
 msgstr "Verem"
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
-msgstr "Ehhez a GtkStackSidebar elemhez társított verem"
+msgid "Associated stack for this CtkStackSidebar"
+msgstr "Ehhez a CtkStackSidebar elemhez társított verem"
 
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
@@ -7820,8 +7820,8 @@ msgid "Value type"
 msgstr "Érték típusa"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
-msgstr "A GtkStyleContext által visszadott értéktípus"
+msgid "The value type returned by CtkStyleContext"
+msgstr "A CtkStyleContext által visszadott értéktípus"
 
 #: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
@@ -8699,9 +8699,9 @@ msgid "Fixed Height Mode"
 msgstr "Rögzített magasság mód"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"A GtkTreeView felgyorsítása annak feltételezésével, hogy az összes sor "
+"A CtkTreeView felgyorsítása annak feltételezésével, hogy az összes sor "
 "magassága egyforma"
 
 #: ctk/ctktreeview.c:1127
@@ -9521,8 +9521,8 @@ msgid "Focus in Toplevel"
 msgstr "Fókusz a felső szinten"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "A beviteli fókusz a jelen GtkWindow ablakon belül van-e"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "A beviteli fókusz a jelen CtkWindow ablakon belül van-e"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -9635,12 +9635,12 @@ msgid "Whether the window is maximized"
 msgstr "Az ablak teljes méretű-e"
 
 #: ctk/ctkwindow.c:1113
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1114
-msgid "The GtkApplication for the window"
-msgstr "Az ablak GtkApplication objektuma"
+msgid "The CtkApplication for the window"
+msgstr "Az ablak CtkApplication objektuma"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
@@ -9655,8 +9655,8 @@ msgid "Cloud Print account"
 msgstr "Cloud Print fiók"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "GtkCloudprintAccount példány"
+msgid "CtkCloudprintAccount instance"
+msgstr "CtkCloudprintAccount példány"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"

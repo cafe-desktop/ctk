@@ -36,24 +36,24 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SCROLLBAR            (ctk_scrollbar_get_type ())
-#define CTK_SCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCROLLBAR, GtkScrollbar))
-#define CTK_SCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCROLLBAR, GtkScrollbarClass))
+#define CTK_SCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCROLLBAR, CtkScrollbar))
+#define CTK_SCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCROLLBAR, CtkScrollbarClass))
 #define CTK_IS_SCROLLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCROLLBAR))
 #define CTK_IS_SCROLLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCROLLBAR))
-#define CTK_SCROLLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCROLLBAR, GtkScrollbarClass))
+#define CTK_SCROLLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCROLLBAR, CtkScrollbarClass))
 
 
-typedef struct _GtkScrollbar        GtkScrollbar;
-typedef struct _GtkScrollbarClass   GtkScrollbarClass;
+typedef struct _CtkScrollbar        CtkScrollbar;
+typedef struct _CtkScrollbarClass   CtkScrollbarClass;
 
-struct _GtkScrollbar
+struct _CtkScrollbar
 {
-  GtkRange range;
+  CtkRange range;
 };
 
-struct _GtkScrollbarClass
+struct _CtkScrollbarClass
 {
-  GtkRangeClass parent_class;
+  CtkRangeClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -66,8 +66,8 @@ struct _GtkScrollbarClass
 GDK_AVAILABLE_IN_ALL
 GType       ctk_scrollbar_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget * ctk_scrollbar_new      (GtkOrientation  orientation,
-                                    GtkAdjustment  *adjustment);
+CtkWidget * ctk_scrollbar_new      (CtkOrientation  orientation,
+                                    CtkAdjustment  *adjustment);
 
 G_END_DECLS
 

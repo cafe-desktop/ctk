@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
       <child>
-        <object class="GtkGrid" id="grid1">
+        <object class="CtkGrid" id="grid1">
           <property name="visible">True</property>
           <property name="can_focus">False</property>
           <property name="orientation">vertical</property>
           <child>
-            <object class="GtkGrid" id="grid2">
+            <object class="CtkGrid" id="grid2">
               <property name="visible">True</property>
               <property name="can_focus">False</property>
               <property name="orientation">vertical</property>
               <child>
-                <object class="GtkLabel" id="label1">
+                <object class="CtkLabel" id="label1">
                   <property name="visible">True</property>
                 </object>
                 <packing>
@@ -24,7 +24,7 @@
                 </packing>
               </child>
               <child>
-                <object class="GtkLabel" id="label2">
+                <object class="CtkLabel" id="label2">
                   <property name="visible">True</property>
                   <property name="label" translatable="yes">medium</property>
                 </object>
@@ -34,7 +34,7 @@
                 </packing>
               </child>
               <child>
-                <object class="GtkLabel" id="label3">
+                <object class="CtkLabel" id="label3">
                   <property name="visible">True</property>
                   <property name="label" translatable="yes">wrap this very long text please or I'll need to write even more</property>
                   <property name="wrap">True</property>
@@ -49,7 +49,7 @@
         </object>
     </child>
   </object>
-  <object class="GtkSizeGroup" id="sizegroup1">
+  <object class="CtkSizeGroup" id="sizegroup1">
     <property name="mode">both</property>
     <property name="ignore-hidden">True</property>
     <widgets>

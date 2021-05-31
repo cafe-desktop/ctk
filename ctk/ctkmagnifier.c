@@ -26,11 +26,11 @@ enum {
   PROP_MAGNIFICATION
 };
 
-typedef struct _GtkMagnifierPrivate GtkMagnifierPrivate;
+typedef struct _CtkMagnifierPrivate CtkMagnifierPrivate;
 
-struct _GtkMagnifierPrivate
+struct _CtkMagnifierPrivate
 {
-  GtkWidget *inspected;
+  CtkWidget *inspected;
   gdouble magnification;
   gint x;
   gint y;
@@ -39,7 +39,7 @@ struct _GtkMagnifierPrivate
   gulong resize_handler;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkMagnifier, _ctk_magnifier,
+G_DEFINE_TYPE_WITH_PRIVATE (CtkMagnifier, _ctk_magnifier,
                             CTK_TYPE_WIDGET)
 
 static void
@@ -73,8 +73,8 @@ _ctk_magnifier_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkMagnifier *magnifier;
-  GtkMagnifierPrivate *priv;
+  CtkMagnifier *magnifier;
+  CtkMagnifierPrivate *priv;
 
   magnifier = CTK_MAGNIFIER (object);
   priv = _ctk_magnifier_get_instance_private (magnifier);
@@ -96,12 +96,12 @@ _ctk_magnifier_get_property (GObject    *object,
 }
 
 static gboolean
-_ctk_magnifier_draw (GtkWidget *widget,
+_ctk_magnifier_draw (CtkWidget *widget,
                      cairo_t   *cr)
 {
-  GtkAllocation allocation, inspected_alloc;
-  GtkMagnifier *magnifier;
-  GtkMagnifierPrivate *priv;
+  CtkAllocation allocation, inspected_alloc;
+  CtkMagnifier *magnifier;
+  CtkMagnifierPrivate *priv;
   gdouble x, y;
 
   magnifier = CTK_MAGNIFIER (widget);
@@ -134,12 +134,12 @@ _ctk_magnifier_draw (GtkWidget *widget,
 }
 
 static void
-ctk_magnifier_get_preferred_width (GtkWidget *widget,
+ctk_magnifier_get_preferred_width (CtkWidget *widget,
                                    gint      *minimum_width,
                                    gint      *natural_width)
 {
-  GtkMagnifier *magnifier;
-  GtkMagnifierPrivate *priv;
+  CtkMagnifier *magnifier;
+  CtkMagnifierPrivate *priv;
   gint width;
 
   magnifier = CTK_MAGNIFIER (widget);
@@ -155,12 +155,12 @@ ctk_magnifier_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_magnifier_get_preferred_height (GtkWidget *widget,
+ctk_magnifier_get_preferred_height (CtkWidget *widget,
                                     gint      *minimum_height,
                                     gint      *natural_height)
 {
-  GtkMagnifier *magnifier;
-  GtkMagnifierPrivate *priv;
+  CtkMagnifier *magnifier;
+  CtkMagnifierPrivate *priv;
   gint height;
 
   magnifier = CTK_MAGNIFIER (widget);
@@ -176,17 +176,17 @@ ctk_magnifier_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-resize_handler (GtkWidget     *widget,
-                GtkAllocation *alloc,
-                GtkWidget     *magnifier)
+resize_handler (CtkWidget     *widget,
+                CtkAllocation *alloc,
+                CtkWidget     *magnifier)
 {
   ctk_widget_queue_resize (magnifier);
 }
 
 static void
-connect_resize_handler (GtkMagnifier *magnifier)
+connect_resize_handler (CtkMagnifier *magnifier)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   priv = _ctk_magnifier_get_instance_private (magnifier);
 
@@ -196,9 +196,9 @@ connect_resize_handler (GtkMagnifier *magnifier)
 }
 
 static void
-disconnect_resize_handler (GtkMagnifier *magnifier)
+disconnect_resize_handler (CtkMagnifier *magnifier)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   priv = _ctk_magnifier_get_instance_private (magnifier);
 
@@ -211,18 +211,18 @@ disconnect_resize_handler (GtkMagnifier *magnifier)
 }
 
 static gboolean
-draw_handler (GtkWidget     *widget,
+draw_handler (CtkWidget     *widget,
               cairo_t       *cr,
-              GtkWidget     *magnifier)
+              CtkWidget     *magnifier)
 {
   ctk_widget_queue_draw (magnifier);
   return FALSE;
 }
 
 static void
-connect_draw_handler (GtkMagnifier *magnifier)
+connect_draw_handler (CtkMagnifier *magnifier)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   priv = _ctk_magnifier_get_instance_private (magnifier);
 
@@ -235,9 +235,9 @@ connect_draw_handler (GtkMagnifier *magnifier)
 }
 
 static void
-disconnect_draw_handler (GtkMagnifier *magnifier)
+disconnect_draw_handler (CtkMagnifier *magnifier)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   priv = _ctk_magnifier_get_instance_private (magnifier);
 
@@ -250,7 +250,7 @@ disconnect_draw_handler (GtkMagnifier *magnifier)
 }
 
 static void
-_ctk_magnifier_destroy (GtkWidget *widget)
+_ctk_magnifier_destroy (CtkWidget *widget)
 {
   _ctk_magnifier_set_inspected (CTK_MAGNIFIER (widget), NULL);
 
@@ -258,7 +258,7 @@ _ctk_magnifier_destroy (GtkWidget *widget)
 }
 
 static void
-ctk_magnifier_map (GtkWidget *widget)
+ctk_magnifier_map (CtkWidget *widget)
 {
   connect_draw_handler (CTK_MAGNIFIER (widget));
 
@@ -266,7 +266,7 @@ ctk_magnifier_map (GtkWidget *widget)
 }
 
 static void
-ctk_magnifier_unmap (GtkWidget *widget)
+ctk_magnifier_unmap (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (_ctk_magnifier_parent_class)->unmap (widget);
 
@@ -274,10 +274,10 @@ ctk_magnifier_unmap (GtkWidget *widget)
 }
 
 static void
-_ctk_magnifier_class_init (GtkMagnifierClass *klass)
+_ctk_magnifier_class_init (CtkMagnifierClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->set_property = _ctk_magnifier_set_property;
   object_class->get_property = _ctk_magnifier_get_property;
@@ -313,10 +313,10 @@ _ctk_magnifier_class_init (GtkMagnifierClass *klass)
 }
 
 static void
-_ctk_magnifier_init (GtkMagnifier *magnifier)
+_ctk_magnifier_init (CtkMagnifier *magnifier)
 {
-  GtkWidget *widget = CTK_WIDGET (magnifier);
-  GtkMagnifierPrivate *priv;
+  CtkWidget *widget = CTK_WIDGET (magnifier);
+  CtkMagnifierPrivate *priv;
 
   priv = _ctk_magnifier_get_instance_private (magnifier);
 
@@ -328,8 +328,8 @@ _ctk_magnifier_init (GtkMagnifier *magnifier)
   priv->resize = FALSE;
 }
 
-GtkWidget *
-_ctk_magnifier_new (GtkWidget *inspected)
+CtkWidget *
+_ctk_magnifier_new (CtkWidget *inspected)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (inspected), NULL);
 
@@ -338,10 +338,10 @@ _ctk_magnifier_new (GtkWidget *inspected)
                        NULL);
 }
 
-GtkWidget *
-_ctk_magnifier_get_inspected (GtkMagnifier *magnifier)
+CtkWidget *
+_ctk_magnifier_get_inspected (CtkMagnifier *magnifier)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_MAGNIFIER (magnifier), NULL);
 
@@ -351,10 +351,10 @@ _ctk_magnifier_get_inspected (GtkMagnifier *magnifier)
 }
 
 void
-_ctk_magnifier_set_inspected (GtkMagnifier *magnifier,
-                              GtkWidget    *inspected)
+_ctk_magnifier_set_inspected (CtkMagnifier *magnifier,
+                              CtkWidget    *inspected)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   g_return_if_fail (CTK_IS_MAGNIFIER (magnifier));
 
@@ -382,11 +382,11 @@ _ctk_magnifier_set_inspected (GtkMagnifier *magnifier,
 }
 
 void
-_ctk_magnifier_set_coords (GtkMagnifier *magnifier,
+_ctk_magnifier_set_coords (CtkMagnifier *magnifier,
                            gdouble       x,
                            gdouble       y)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   g_return_if_fail (CTK_IS_MAGNIFIER (magnifier));
 
@@ -403,11 +403,11 @@ _ctk_magnifier_set_coords (GtkMagnifier *magnifier,
 }
 
 void
-_ctk_magnifier_get_coords (GtkMagnifier *magnifier,
+_ctk_magnifier_get_coords (CtkMagnifier *magnifier,
                            gdouble      *x,
                            gdouble      *y)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   g_return_if_fail (CTK_IS_MAGNIFIER (magnifier));
 
@@ -421,10 +421,10 @@ _ctk_magnifier_get_coords (GtkMagnifier *magnifier,
 }
 
 void
-_ctk_magnifier_set_magnification (GtkMagnifier *magnifier,
+_ctk_magnifier_set_magnification (CtkMagnifier *magnifier,
                                   gdouble       magnification)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   g_return_if_fail (CTK_IS_MAGNIFIER (magnifier));
 
@@ -444,9 +444,9 @@ _ctk_magnifier_set_magnification (GtkMagnifier *magnifier,
 }
 
 gdouble
-_ctk_magnifier_get_magnification (GtkMagnifier *magnifier)
+_ctk_magnifier_get_magnification (CtkMagnifier *magnifier)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_MAGNIFIER (magnifier), 1);
 
@@ -456,10 +456,10 @@ _ctk_magnifier_get_magnification (GtkMagnifier *magnifier)
 }
 
 void
-_ctk_magnifier_set_resize (GtkMagnifier *magnifier,
+_ctk_magnifier_set_resize (CtkMagnifier *magnifier,
                            gboolean      resize)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   g_return_if_fail (CTK_IS_MAGNIFIER (magnifier));
 
@@ -478,9 +478,9 @@ _ctk_magnifier_set_resize (GtkMagnifier *magnifier,
 }
 
 gboolean
-_ctk_magnifier_get_resize (GtkMagnifier *magnifier)
+_ctk_magnifier_get_resize (CtkMagnifier *magnifier)
 {
-  GtkMagnifierPrivate *priv;
+  CtkMagnifierPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_MAGNIFIER (magnifier), FALSE);
 

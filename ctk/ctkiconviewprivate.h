@@ -21,8 +21,8 @@
 #ifndef __CTK_ICON_VIEW_PRIVATE_H__
 #define __CTK_ICON_VIEW_PRIVATE_H__
 
-typedef struct _GtkIconViewItem GtkIconViewItem;
-struct _GtkIconViewItem
+typedef struct _CtkIconViewItem CtkIconViewItem;
+struct _CtkIconViewItem
 {
   GdkRectangle cell_area;
 
@@ -35,10 +35,10 @@ struct _GtkIconViewItem
 
 };
 
-struct _GtkIconViewPrivate
+struct _CtkIconViewPrivate
 {
-  GtkCellArea        *cell_area;
-  GtkCellAreaContext *cell_area_context;
+  CtkCellArea        *cell_area;
+  CtkCellAreaContext *cell_area_context;
 
   gulong              add_editable_id;
   gulong              remove_editable_id;
@@ -48,35 +48,35 @@ struct _GtkIconViewPrivate
 
   gint width, height;
 
-  GtkSelectionMode selection_mode;
+  CtkSelectionMode selection_mode;
 
   GdkWindow *bin_window;
 
   GList *children;
 
-  GtkTreeModel *model;
+  CtkTreeModel *model;
 
   GList *items;
 
-  GtkAdjustment *hadjustment;
-  GtkAdjustment *vadjustment;
+  CtkAdjustment *hadjustment;
+  CtkAdjustment *vadjustment;
 
   gint rubberband_x1, rubberband_y1;
   gint rubberband_x2, rubberband_y2;
   GdkDevice *rubberband_device;
-  GtkCssNode *rubberband_node;
+  CtkCssNode *rubberband_node;
 
   guint scroll_timeout_id;
   gint scroll_value_diff;
   gint event_last_x, event_last_y;
 
-  GtkIconViewItem *anchor_item;
-  GtkIconViewItem *cursor_item;
+  CtkIconViewItem *anchor_item;
+  CtkIconViewItem *cursor_item;
 
-  GtkIconViewItem *last_single_clicked;
-  GtkIconViewItem *last_prelight;
+  CtkIconViewItem *last_single_clicked;
+  CtkIconViewItem *last_prelight;
 
-  GtkOrientation item_orientation;
+  CtkOrientation item_orientation;
 
   gint columns;
   gint item_width;
@@ -91,8 +91,8 @@ struct _GtkIconViewPrivate
   gint pixbuf_column;
   gint tooltip_column;
 
-  GtkCellRenderer *pixbuf_cell;
-  GtkCellRenderer *text_cell;
+  CtkCellRenderer *pixbuf_cell;
+  CtkCellRenderer *text_cell;
 
   /* Drag-and-drop. */
   GdkModifierType start_button_mask;
@@ -103,11 +103,11 @@ struct _GtkIconViewPrivate
   GdkDragAction source_actions;
   GdkDragAction dest_actions;
 
-  GtkTreeRowReference *dest_item;
-  GtkIconViewDropPosition dest_pos;
+  CtkTreeRowReference *dest_item;
+  CtkIconViewDropPosition dest_pos;
 
   /* scroll to */
-  GtkTreeRowReference *scroll_to_path;
+  CtkTreeRowReference *scroll_to_path;
   gfloat scroll_to_row_align;
   gfloat scroll_to_col_align;
   guint scroll_to_use_align : 1;
@@ -123,7 +123,7 @@ struct _GtkIconViewPrivate
 
   guint draw_focus : 1;
 
-  /* GtkScrollablePolicy needs to be checked when
+  /* CtkScrollablePolicy needs to be checked when
    * driving the scrollable adjustment values */
   guint hscroll_policy : 1;
   guint vscroll_policy : 1;
@@ -132,20 +132,20 @@ struct _GtkIconViewPrivate
 
 };
 
-void                 _ctk_icon_view_set_cell_data                  (GtkIconView            *icon_view,
-                                                                    GtkIconViewItem        *item);
-void                 _ctk_icon_view_set_cursor_item                (GtkIconView            *icon_view,
-                                                                    GtkIconViewItem        *item,
-                                                                    GtkCellRenderer        *cursor_cell);
-GtkIconViewItem *    _ctk_icon_view_get_item_at_coords             (GtkIconView            *icon_view,
+void                 _ctk_icon_view_set_cell_data                  (CtkIconView            *icon_view,
+                                                                    CtkIconViewItem        *item);
+void                 _ctk_icon_view_set_cursor_item                (CtkIconView            *icon_view,
+                                                                    CtkIconViewItem        *item,
+                                                                    CtkCellRenderer        *cursor_cell);
+CtkIconViewItem *    _ctk_icon_view_get_item_at_coords             (CtkIconView            *icon_view,
                                                                     gint                    x,
                                                                     gint                    y,
                                                                     gboolean                only_in_cell,
-                                                                    GtkCellRenderer       **cell_at_pos);
-void                 _ctk_icon_view_select_item                    (GtkIconView            *icon_view,
-                                                                    GtkIconViewItem        *item);
-void                 _ctk_icon_view_unselect_item                  (GtkIconView            *icon_view,
-                                                                    GtkIconViewItem        *item);
+                                                                    CtkCellRenderer       **cell_at_pos);
+void                 _ctk_icon_view_select_item                    (CtkIconView            *icon_view,
+                                                                    CtkIconViewItem        *item);
+void                 _ctk_icon_view_unselect_item                  (CtkIconView            *icon_view,
+                                                                    CtkIconViewItem        *item);
 
 G_END_DECLS
 

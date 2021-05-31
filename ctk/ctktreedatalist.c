@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU Library General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  * 
- * This file contains code shared between GtkTreeStore and GtkListStore.  Please
+ * This file contains code shared between CtkTreeStore and CtkListStore.  Please
  * do not use it.
  */
 
@@ -24,21 +24,21 @@
 
 /* node allocation
  */
-GtkTreeDataList *
+CtkTreeDataList *
 _ctk_tree_data_list_alloc (void)
 {
-  GtkTreeDataList *list;
+  CtkTreeDataList *list;
 
-  list = g_slice_new0 (GtkTreeDataList);
+  list = g_slice_new0 (CtkTreeDataList);
 
   return list;
 }
 
 void
-_ctk_tree_data_list_free (GtkTreeDataList *list,
+_ctk_tree_data_list_free (CtkTreeDataList *list,
 			  GType           *column_headers)
 {
-  GtkTreeDataList *tmp, *next;
+  CtkTreeDataList *tmp, *next;
   gint i = 0;
 
   tmp = list;
@@ -55,7 +55,7 @@ _ctk_tree_data_list_free (GtkTreeDataList *list,
       else if (g_type_is_a (column_headers [i], G_TYPE_VARIANT) && tmp->data.v_pointer != NULL)
 	g_variant_unref ((gpointer) tmp->data.v_pointer);
 
-      g_slice_free (GtkTreeDataList, tmp);
+      g_slice_free (CtkTreeDataList, tmp);
       i++;
       tmp = next;
     }
@@ -117,7 +117,7 @@ get_fundamental_type (GType type)
   return result;
 }
 void
-_ctk_tree_data_list_node_to_value (GtkTreeDataList *list,
+_ctk_tree_data_list_node_to_value (CtkTreeDataList *list,
 				   GType            type,
 				   GValue          *value)
 {
@@ -186,7 +186,7 @@ _ctk_tree_data_list_node_to_value (GtkTreeDataList *list,
 }
 
 void
-_ctk_tree_data_list_value_to_node (GtkTreeDataList *list,
+_ctk_tree_data_list_value_to_node (CtkTreeDataList *list,
 				   GValue          *value)
 {
   switch (get_fundamental_type (G_VALUE_TYPE (value)))
@@ -258,11 +258,11 @@ _ctk_tree_data_list_value_to_node (GtkTreeDataList *list,
     }
 }
 
-GtkTreeDataList *
-_ctk_tree_data_list_node_copy (GtkTreeDataList *list,
+CtkTreeDataList *
+_ctk_tree_data_list_node_copy (CtkTreeDataList *list,
                                GType            type)
 {
-  GtkTreeDataList *new_list;
+  CtkTreeDataList *new_list;
 
   g_return_val_if_fail (list != NULL, NULL);
   
@@ -317,9 +317,9 @@ _ctk_tree_data_list_node_copy (GtkTreeDataList *list,
 }
 
 gint
-_ctk_tree_data_list_compare_func (GtkTreeModel *model,
-				  GtkTreeIter  *a,
-				  GtkTreeIter  *b,
+_ctk_tree_data_list_compare_func (CtkTreeModel *model,
+				  CtkTreeIter  *a,
+				  CtkTreeIter  *b,
 				  gpointer      user_data)
 {
   gint column = GPOINTER_TO_INT (user_data);
@@ -474,9 +474,9 @@ _ctk_tree_data_list_header_new (gint   n_columns,
 
   for (i = 0; i < n_columns; i ++)
     {
-      GtkTreeDataSortHeader *header;
+      CtkTreeDataSortHeader *header;
 
-      header = g_slice_new (GtkTreeDataSortHeader);
+      header = g_slice_new (CtkTreeDataSortHeader);
 
       retval = g_list_prepend (retval, header);
       header->sort_column_id = i;
@@ -494,7 +494,7 @@ _ctk_tree_data_list_header_free (GList *list)
 
   for (tmp = list; tmp; tmp = tmp->next)
     {
-      GtkTreeDataSortHeader *header = (GtkTreeDataSortHeader *) tmp->data;
+      CtkTreeDataSortHeader *header = (CtkTreeDataSortHeader *) tmp->data;
 
       if (header->destroy)
 	{
@@ -504,20 +504,20 @@ _ctk_tree_data_list_header_free (GList *list)
 	  d (header->data);
 	}
 
-      g_slice_free (GtkTreeDataSortHeader, header);
+      g_slice_free (CtkTreeDataSortHeader, header);
     }
   g_list_free (list);
 }
 
-GtkTreeDataSortHeader *
+CtkTreeDataSortHeader *
 _ctk_tree_data_list_get_header (GList   *header_list,
 				gint     sort_column_id)
 {
-  GtkTreeDataSortHeader *header = NULL;
+  CtkTreeDataSortHeader *header = NULL;
 
   for (; header_list; header_list = header_list->next)
     {
-      header = (GtkTreeDataSortHeader*) header_list->data;
+      header = (CtkTreeDataSortHeader*) header_list->data;
       if (header->sort_column_id == sort_column_id)
 	return header;
     }
@@ -528,16 +528,16 @@ _ctk_tree_data_list_get_header (GList   *header_list,
 GList *
 _ctk_tree_data_list_set_header (GList                  *header_list,
 				gint                    sort_column_id,
-				GtkTreeIterCompareFunc  func,
+				CtkTreeIterCompareFunc  func,
 				gpointer                data,
 				GDestroyNotify          destroy)
 {
   GList *list = header_list;
-  GtkTreeDataSortHeader *header = NULL;
+  CtkTreeDataSortHeader *header = NULL;
 
   for (; list; list = list->next)
     {
-      header = (GtkTreeDataSortHeader*) list->data;
+      header = (CtkTreeDataSortHeader*) list->data;
       if (header->sort_column_id == sort_column_id)
 	break;
       header = NULL;
@@ -548,7 +548,7 @@ _ctk_tree_data_list_set_header (GList                  *header_list,
   
   if (header == NULL)
     {
-      header = g_slice_new0 (GtkTreeDataSortHeader);
+      header = g_slice_new0 (CtkTreeDataSortHeader);
       header->sort_column_id = sort_column_id;
       if (list)
 	list = g_list_append (list, header);

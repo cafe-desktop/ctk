@@ -21,30 +21,30 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_GESTURES            (ctk_inspector_gestures_get_type())
-#define CTK_INSPECTOR_GESTURES(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_GESTURES, GtkInspectorGestures))
-#define CTK_INSPECTOR_GESTURES_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_GESTURES, GtkInspectorGesturesClass))
+#define CTK_INSPECTOR_GESTURES(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_GESTURES, CtkInspectorGestures))
+#define CTK_INSPECTOR_GESTURES_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_GESTURES, CtkInspectorGesturesClass))
 #define CTK_INSPECTOR_IS_GESTURES(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_GESTURES))
 #define CTK_INSPECTOR_IS_GESTURES_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_GESTURES))
-#define CTK_INSPECTOR_GESTURES_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_GESTURES, GtkInspectorGesturesClass))
+#define CTK_INSPECTOR_GESTURES_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_GESTURES, CtkInspectorGesturesClass))
 
 
-typedef struct _GtkInspectorGesturesPrivate GtkInspectorGesturesPrivate;
+typedef struct _CtkInspectorGesturesPrivate CtkInspectorGesturesPrivate;
 
-typedef struct _GtkInspectorGestures
+typedef struct _CtkInspectorGestures
 {
-  GtkBox parent;
-  GtkInspectorGesturesPrivate *priv;
-} GtkInspectorGestures;
+  CtkBox parent;
+  CtkInspectorGesturesPrivate *priv;
+} CtkInspectorGestures;
 
-typedef struct _GtkInspectorGesturesClass
+typedef struct _CtkInspectorGesturesClass
 {
-  GtkBoxClass parent;
-} GtkInspectorGesturesClass;
+  CtkBoxClass parent;
+} CtkInspectorGesturesClass;
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_gestures_get_type   (void);
-void       ctk_inspector_gestures_set_object (GtkInspectorGestures *sl,
+void       ctk_inspector_gestures_set_object (CtkInspectorGestures *sl,
                                              GObject             *object);
 
 G_END_DECLS

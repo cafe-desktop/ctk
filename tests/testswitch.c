@@ -15,12 +15,12 @@ boolean_to_text (GBinding *binding,
   return TRUE;
 }
 
-static GtkWidget *
+static CtkWidget *
 make_switch (gboolean is_on,
              gboolean is_sensitive)
 {
-  GtkWidget *hbox;
-  GtkWidget *sw, *label;
+  CtkWidget *hbox;
+  CtkWidget *sw, *label;
 
   hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
 
@@ -45,7 +45,7 @@ make_switch (gboolean is_on,
 }
 
 typedef struct {
-  GtkSwitch *sw;
+  CtkSwitch *sw;
   gboolean state;
 } SetStateData;
 
@@ -62,7 +62,7 @@ set_state_delayed (gpointer data)
 }
 
 static gboolean
-set_state (GtkSwitch *sw, gboolean state, gpointer data)
+set_state (CtkSwitch *sw, gboolean state, gpointer data)
 {
   SetStateData *d;
   guint id;
@@ -85,7 +85,7 @@ set_state (GtkSwitch *sw, gboolean state, gpointer data)
 static void
 sw_delay_notify (GObject *obj, GParamSpec *pspec, gpointer data)
 {
-  GtkWidget *spinner = data;
+  CtkWidget *spinner = data;
   gboolean active;
   gboolean state;
 
@@ -106,12 +106,12 @@ sw_delay_notify (GObject *obj, GParamSpec *pspec, gpointer data)
     }
 }
 
-static GtkWidget *
+static CtkWidget *
 make_delayed_switch (gboolean is_on,
                      gboolean is_sensitive)
 {
-  GtkWidget *hbox;
-  GtkWidget *sw, *label, *spinner, *check;
+  CtkWidget *hbox;
+  CtkWidget *sw, *label, *spinner, *check;
 
   hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
 
@@ -153,13 +153,13 @@ make_delayed_switch (gboolean is_on,
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *vbox, *hbox;
+  CtkWidget *window;
+  CtkWidget *vbox, *hbox;
 
   ctk_init (&argc, &argv);
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (CTK_WINDOW (window), "GtkSwitch");
+  ctk_window_set_title (CTK_WINDOW (window), "CtkSwitch");
   ctk_window_set_default_size (CTK_WINDOW (window), 400, -1);
   ctk_container_set_border_width (CTK_CONTAINER (window), 6);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);

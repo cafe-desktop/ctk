@@ -5,9 +5,9 @@
 #include <ctk/ctk.h>
 
 static void
-set_cursor (GtkWidget *button, gpointer data)
+set_cursor (CtkWidget *button, gpointer data)
 {
-  GtkWidget *toplevel;
+  CtkWidget *toplevel;
   GdkCursor *cursor = data;
   GdkWindow *window;
 
@@ -16,12 +16,12 @@ set_cursor (GtkWidget *button, gpointer data)
   gdk_window_set_cursor (window, cursor);
 }
 
-static GtkWidget *
-add_section (GtkWidget   *box,
+static CtkWidget *
+add_section (CtkWidget   *box,
              const gchar *heading)
 {
-  GtkWidget *label;
-  GtkWidget *section;
+  CtkWidget *label;
+  CtkWidget *section;
 
   label = ctk_label_new (heading);
   ctk_label_set_xalign (CTK_LABEL (label), 0.0);
@@ -39,10 +39,10 @@ add_section (GtkWidget   *box,
 }
 
 static void
-add_button (GtkWidget   *section,
+add_button (CtkWidget   *section,
             const gchar *css_name)
 {
-  GtkWidget *image, *button;
+  CtkWidget *image, *button;
   GdkDisplay *display;
   GdkCursor *cursor;
 
@@ -69,16 +69,16 @@ add_button (GtkWidget   *section,
   ctk_container_add (CTK_CONTAINER (section), button);
 }
 
-GtkWidget *
-do_cursors (GtkWidget *do_widget)
+CtkWidget *
+do_cursors (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *sw;
-      GtkWidget *box;
-      GtkWidget *section;
+      CtkWidget *sw;
+      CtkWidget *box;
+      CtkWidget *section;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),

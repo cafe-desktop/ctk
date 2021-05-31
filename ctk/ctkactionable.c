@@ -26,46 +26,46 @@
 
 /**
  * SECTION:ctkactionable
- * @title: GtkActionable
+ * @title: CtkActionable
  * @short_description: An interface for widgets that can be associated
  *     with actions
  *
  * This interface provides a convenient way of associating widgets with
- * actions on a #GtkApplicationWindow or #GtkApplication.
+ * actions on a #CtkApplicationWindow or #CtkApplication.
  *
- * It primarily consists of two properties: #GtkActionable:action-name
- * and #GtkActionable:action-target. There are also some convenience APIs
+ * It primarily consists of two properties: #CtkActionable:action-name
+ * and #CtkActionable:action-target. There are also some convenience APIs
  * for setting these properties.
  *
  * The action will be looked up in action groups that are found among
  * the widgets ancestors. Most commonly, these will be the actions with
- * the “win.” or “app.” prefix that are associated with the #GtkApplicationWindow
- * or #GtkApplication, but other action groups that are added with
+ * the “win.” or “app.” prefix that are associated with the #CtkApplicationWindow
+ * or #CtkApplication, but other action groups that are added with
  * ctk_widget_insert_action_group() will be consulted as well.
  *
  * Since: 3.4
  **/
 
 /**
- * GtkActionable:
+ * CtkActionable:
  *
  * An opaque pointer type.
  **/
 
 /**
- * GtkActionableInterface:
+ * CtkActionableInterface:
  * @get_action_name: virtual function for ctk_actionable_get_action_name()
  * @set_action_name: virtual function for ctk_actionable_set_action_name()
  * @get_action_target_value: virtual function for ctk_actionable_get_action_target_value()
  * @set_action_target_value: virtual function for ctk_actionable_set_action_target_value()
  *
- * The interface vtable for #GtkActionable.
+ * The interface vtable for #CtkActionable.
  **/
 
-G_DEFINE_INTERFACE (GtkActionable, ctk_actionable, CTK_TYPE_WIDGET)
+G_DEFINE_INTERFACE (CtkActionable, ctk_actionable, CTK_TYPE_WIDGET)
 
 static void
-ctk_actionable_default_init (GtkActionableInterface *iface)
+ctk_actionable_default_init (CtkActionableInterface *iface)
 {
   g_object_interface_install_property (iface,
     g_param_spec_string ("action-name", P_("Action name"),
@@ -80,7 +80,7 @@ ctk_actionable_default_init (GtkActionableInterface *iface)
 
 /**
  * ctk_actionable_get_action_name:
- * @actionable: a #GtkActionable widget
+ * @actionable: a #CtkActionable widget
  *
  * Gets the action name for @actionable.
  *
@@ -91,7 +91,7 @@ ctk_actionable_default_init (GtkActionableInterface *iface)
  * Since: 3.4
  **/
 const gchar *
-ctk_actionable_get_action_name (GtkActionable *actionable)
+ctk_actionable_get_action_name (CtkActionable *actionable)
 {
   g_return_val_if_fail (CTK_IS_ACTIONABLE (actionable), NULL);
 
@@ -101,7 +101,7 @@ ctk_actionable_get_action_name (GtkActionable *actionable)
 
 /**
  * ctk_actionable_set_action_name:
- * @actionable: a #GtkActionable widget
+ * @actionable: a #CtkActionable widget
  * @action_name: (nullable): an action name, or %NULL
  *
  * Specifies the name of the action with which this widget should be
@@ -109,17 +109,17 @@ ctk_actionable_get_action_name (GtkActionable *actionable)
  * unassociated from any previous action.
  *
  * Usually this function is used when the widget is located (or will be
- * located) within the hierarchy of a #GtkApplicationWindow.
+ * located) within the hierarchy of a #CtkApplicationWindow.
  *
  * Names are of the form “win.save” or “app.quit” for actions on the
- * containing #GtkApplicationWindow or its associated #GtkApplication,
+ * containing #CtkApplicationWindow or its associated #CtkApplication,
  * respectively.  This is the same form used for actions in the #GMenu
  * associated with the window.
  *
  * Since: 3.4
  **/
 void
-ctk_actionable_set_action_name (GtkActionable *actionable,
+ctk_actionable_set_action_name (CtkActionable *actionable,
                                 const gchar   *action_name)
 {
   g_return_if_fail (CTK_IS_ACTIONABLE (actionable));
@@ -130,7 +130,7 @@ ctk_actionable_set_action_name (GtkActionable *actionable,
 
 /**
  * ctk_actionable_get_action_target_value:
- * @actionable: a #GtkActionable widget
+ * @actionable: a #CtkActionable widget
  *
  * Gets the current target value of @actionable.
  *
@@ -141,7 +141,7 @@ ctk_actionable_set_action_name (GtkActionable *actionable,
  * Since: 3.4
  **/
 GVariant *
-ctk_actionable_get_action_target_value (GtkActionable *actionable)
+ctk_actionable_get_action_target_value (CtkActionable *actionable)
 {
   g_return_val_if_fail (CTK_IS_ACTIONABLE (actionable), NULL);
 
@@ -151,7 +151,7 @@ ctk_actionable_get_action_target_value (GtkActionable *actionable)
 
 /**
  * ctk_actionable_set_action_target_value:
- * @actionable: a #GtkActionable widget
+ * @actionable: a #CtkActionable widget
  * @target_value: (nullable): a #GVariant to set as the target value, or %NULL
  *
  * Sets the target value of an actionable widget.
@@ -160,7 +160,7 @@ ctk_actionable_get_action_target_value (GtkActionable *actionable)
  *
  * The target value has two purposes.  First, it is used as the
  * parameter to activation of the action associated with the
- * #GtkActionable widget. Second, it is used to determine if the widget
+ * #CtkActionable widget. Second, it is used to determine if the widget
  * should be rendered as “active” — the widget is active if the state
  * is equal to the given target.
  *
@@ -177,7 +177,7 @@ ctk_actionable_get_action_target_value (GtkActionable *actionable)
  * Since: 3.4
  **/
 void
-ctk_actionable_set_action_target_value (GtkActionable *actionable,
+ctk_actionable_set_action_target_value (CtkActionable *actionable,
                                         GVariant      *target_value)
 {
   g_return_if_fail (CTK_IS_ACTIONABLE (actionable));
@@ -188,7 +188,7 @@ ctk_actionable_set_action_target_value (GtkActionable *actionable,
 
 /**
  * ctk_actionable_set_action_target:
- * @actionable: a #GtkActionable widget
+ * @actionable: a #CtkActionable widget
  * @format_string: a GVariant format string
  * @...: arguments appropriate for @format_string
  *
@@ -205,7 +205,7 @@ ctk_actionable_set_action_target_value (GtkActionable *actionable,
  * Since: 3.4
  **/
 void
-ctk_actionable_set_action_target (GtkActionable *actionable,
+ctk_actionable_set_action_target (CtkActionable *actionable,
                                   const gchar   *format_string,
                                   ...)
 {
@@ -218,7 +218,7 @@ ctk_actionable_set_action_target (GtkActionable *actionable,
 
 /**
  * ctk_actionable_set_detailed_action_name:
- * @actionable: a #GtkActionable widget
+ * @actionable: a #CtkActionable widget
  * @detailed_action_name: the detailed action name
  *
  * Sets the action-name and associated string target value of an
@@ -236,7 +236,7 @@ ctk_actionable_set_action_target (GtkActionable *actionable,
  * Since: 3.4
  **/
 void
-ctk_actionable_set_detailed_action_name (GtkActionable *actionable,
+ctk_actionable_set_detailed_action_name (CtkActionable *actionable,
                                          const gchar   *detailed_action_name)
 {
   GError *error = NULL;

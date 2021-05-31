@@ -40,16 +40,16 @@ KeySequence;
 static GObjectClass *im_context_multipress_parent_class = NULL;
 static GType         im_context_multipress_type = 0;
 
-static void im_context_multipress_class_init (GtkImContextMultipressClass *klass);
-static void im_context_multipress_init (GtkImContextMultipress *self);
+static void im_context_multipress_class_init (CtkImContextMultipressClass *klass);
+static void im_context_multipress_init (CtkImContextMultipress *self);
 static void im_context_multipress_finalize (GObject *obj);
 
-static void load_config (GtkImContextMultipress *self);
+static void load_config (CtkImContextMultipress *self);
 
-static gboolean vfunc_filter_keypress (GtkIMContext *context,
+static gboolean vfunc_filter_keypress (CtkIMContext *context,
                                        GdkEventKey  *event);
-static void vfunc_reset (GtkIMContext *context);
-static void vfunc_get_preedit_string (GtkIMContext   *context,
+static void vfunc_reset (CtkIMContext *context);
+static void vfunc_get_preedit_string (CtkIMContext   *context,
                                       gchar         **str,
                                       PangoAttrList **attrs,
                                       gint           *cursor_pos);
@@ -64,13 +64,13 @@ ctk_im_context_multipress_register_type (GTypeModule* type_module)
 {
   const GTypeInfo im_context_multipress_info =
     {
-      sizeof (GtkImContextMultipressClass),
+      sizeof (CtkImContextMultipressClass),
       (GBaseInitFunc) NULL,
       (GBaseFinalizeFunc) NULL,
       (GClassInitFunc) &im_context_multipress_class_init,
       NULL,
       NULL,
-      sizeof (GtkImContextMultipress),
+      sizeof (CtkImContextMultipress),
       0,
       (GInstanceInitFunc) &im_context_multipress_init,
       0,
@@ -79,7 +79,7 @@ ctk_im_context_multipress_register_type (GTypeModule* type_module)
   im_context_multipress_type =
     g_type_module_register_type (type_module,
                                  CTK_TYPE_IM_CONTEXT,
-                                 "GtkImContextMultipress",
+                                 "CtkImContextMultipress",
                                  &im_context_multipress_info, 0);
 }
 
@@ -104,9 +104,9 @@ key_sequence_free (gpointer value)
 }
 
 static void
-im_context_multipress_class_init (GtkImContextMultipressClass *klass)
+im_context_multipress_class_init (CtkImContextMultipressClass *klass)
 {
-  GtkIMContextClass *im_context_class;
+  CtkIMContextClass *im_context_class;
 
   /* Set this so we can use it later: */
   im_context_multipress_parent_class = g_type_class_peek_parent (klass);
@@ -121,7 +121,7 @@ im_context_multipress_class_init (GtkImContextMultipressClass *klass)
 }
 
 static void
-im_context_multipress_init (GtkImContextMultipress *self)
+im_context_multipress_init (CtkImContextMultipress *self)
 {
   self->key_sequences = g_hash_table_new_full (&g_direct_hash, &g_direct_equal,
                                                NULL, &key_sequence_free);
@@ -131,7 +131,7 @@ im_context_multipress_init (GtkImContextMultipress *self)
 static void
 im_context_multipress_finalize (GObject *obj)
 {
-  GtkImContextMultipress *self;
+  CtkImContextMultipress *self;
 
   self = CTK_IM_CONTEXT_MULTIPRESS (obj);
 
@@ -146,14 +146,14 @@ im_context_multipress_finalize (GObject *obj)
 }
 
 
-GtkIMContext *
+CtkIMContext *
 ctk_im_context_multipress_new (void)
 {
-  return (GtkIMContext *)g_object_new (CTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL);
+  return (CtkIMContext *)g_object_new (CTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL);
 }
 
 static void
-cancel_automatic_timeout_commit (GtkImContextMultipress *multipress_context)
+cancel_automatic_timeout_commit (CtkImContextMultipress *multipress_context)
 {
   if (multipress_context->timeout_id)
     g_source_remove (multipress_context->timeout_id);
@@ -165,7 +165,7 @@ cancel_automatic_timeout_commit (GtkImContextMultipress *multipress_context)
 /* Clear the compose buffer, so we are ready to compose the next character.
  */
 static void
-clear_compose_buffer (GtkImContextMultipress *multipress_context)
+clear_compose_buffer (CtkImContextMultipress *multipress_context)
 {
   multipress_context->key_last_entered = 0;
   multipress_context->compose_count = 0;
@@ -183,11 +183,11 @@ clear_compose_buffer (GtkImContextMultipress *multipress_context)
 /* Finish composing, provide the character, and clear our compose buffer.
  */
 static void
-accept_character (GtkImContextMultipress *multipress_context, const gchar *characters)
+accept_character (CtkImContextMultipress *multipress_context, const gchar *characters)
 {
   /* Clear the compose buffer, so we are ready to compose the next character.
    * Note that if we emit "preedit-changed" after "commit", there's a segfault/
-   * invalid-write with GtkTextView in ctk_text_layout_free_line_display(), when
+   * invalid-write with CtkTextView in ctk_text_layout_free_line_display(), when
    * destroying a PangoLayout (this can also be avoided by not using any Pango
    * attributes in get_preedit_string(). */
   clear_compose_buffer (multipress_context);
@@ -199,7 +199,7 @@ accept_character (GtkImContextMultipress *multipress_context, const gchar *chara
 static gboolean
 on_timeout (gpointer data)
 {
-  GtkImContextMultipress *multipress_context;
+  CtkImContextMultipress *multipress_context;
 
   gdk_threads_enter ();
 
@@ -217,10 +217,10 @@ on_timeout (gpointer data)
 }
 
 static gboolean
-vfunc_filter_keypress (GtkIMContext *context, GdkEventKey *event)
+vfunc_filter_keypress (CtkIMContext *context, GdkEventKey *event)
 {
-  GtkIMContextClass      *parent;
-  GtkImContextMultipress *multipress_context;
+  CtkIMContextClass      *parent;
+  CtkImContextMultipress *multipress_context;
 
   multipress_context = CTK_IM_CONTEXT_MULTIPRESS (context);
 
@@ -310,7 +310,7 @@ vfunc_filter_keypress (GtkIMContext *context, GdkEventKey *event)
         }
     }
 
-  parent = (GtkIMContextClass *)im_context_multipress_parent_class;
+  parent = (CtkIMContextClass *)im_context_multipress_parent_class;
 
   /* The default implementation just returns FALSE, but it is generally
    * a good idea to call the base class implementation: */
@@ -321,13 +321,13 @@ vfunc_filter_keypress (GtkIMContext *context, GdkEventKey *event)
 }
 
 static void
-vfunc_reset (GtkIMContext *context)
+vfunc_reset (CtkIMContext *context)
 {
   clear_compose_buffer (CTK_IM_CONTEXT_MULTIPRESS (context));
 }
 
 static void
-vfunc_get_preedit_string (GtkIMContext   *context,
+vfunc_get_preedit_string (CtkIMContext   *context,
                           gchar         **str,
                           PangoAttrList **attrs,
                           gint           *cursor_pos)
@@ -375,7 +375,7 @@ vfunc_get_preedit_string (GtkIMContext   *context,
  * with key/character-list pairs taken from the [keys] group of the file.
  */
 static void
-load_config (GtkImContextMultipress *self)
+load_config (CtkImContextMultipress *self)
 {
   GKeyFile *key_file;
   GError   *error = NULL;

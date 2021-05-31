@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * ctkprintbackendpapi.h: Default implementation of GtkPrintBackend 
+ * ctkprintbackendpapi.h: Default implementation of CtkPrintBackend 
  * for printing to papi 
  * Copyright (C) 2003, Red Hat, Inc.
  * Copyright (C) 2009, Sun Microsystems, Inc.
@@ -27,12 +27,12 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINT_BACKEND_PAPI            (ctk_print_backend_papi_get_type ())
-#define CTK_PRINT_BACKEND_PAPI(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_PAPI, GtkPrintBackendPapi))
+#define CTK_PRINT_BACKEND_PAPI(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_PAPI, CtkPrintBackendPapi))
 #define CTK_IS_PRINT_BACKEND_PAPI(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_BACKEND_PAPI))
 
-typedef struct _GtkPrintBackendPapi      GtkPrintBackendPapi;
+typedef struct _CtkPrintBackendPapi      CtkPrintBackendPapi;
 
-GtkPrintBackend *ctk_print_backend_papi_new      (void);
+CtkPrintBackend *ctk_print_backend_papi_new      (void);
 GType          ctk_print_backend_papi_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS

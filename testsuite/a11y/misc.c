@@ -23,8 +23,8 @@
 static void
 test_popover_parent (void)
 {
-  GtkWidget *w;
-  GtkWidget *p;
+  CtkWidget *w;
+  CtkWidget *p;
   AtkObject *a;
 
   g_test_bug ("733923");

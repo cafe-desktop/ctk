@@ -17,14 +17,14 @@
 
 #include <ctk/ctk.h>
 
-GtkClipboard *clipboard;
-GtkWidget *image;
-GtkWidget *label;
+CtkClipboard *clipboard;
+CtkWidget *image;
+CtkWidget *label;
 
 #define SIZE 256.
 
 static void
-image_request_cb (GtkClipboard *clipboard,
+image_request_cb (CtkClipboard *clipboard,
                   GdkPixbuf *pixbuf,
                   gpointer data)
 {
@@ -61,7 +61,7 @@ update_display (void)
 }
 
 static void
-on_owner_change (GtkClipboard *clipboard,
+on_owner_change (CtkClipboard *clipboard,
                  GdkEvent     *event,
                  gpointer      user_data)
 {
@@ -69,7 +69,7 @@ on_owner_change (GtkClipboard *clipboard,
 }
 
 static void
-on_response (GtkDialog *dialog,
+on_response (CtkDialog *dialog,
              gint       response_id,
              gpointer   user_data)
 {
@@ -78,7 +78,7 @@ on_response (GtkDialog *dialog,
     case 0:
       /* copy large */
       {
-        GtkIconTheme *theme;
+        CtkIconTheme *theme;
         GdkPixbuf *pixbuf;
         theme = ctk_icon_theme_get_default ();
         pixbuf = ctk_icon_theme_load_icon (theme, "utilities-terminal", 1600, 0, NULL);
@@ -89,7 +89,7 @@ on_response (GtkDialog *dialog,
     case 1:
       /* copy small */
       {
-        GtkIconTheme *theme;
+        CtkIconTheme *theme;
         GdkPixbuf *pixbuf;
         theme = ctk_icon_theme_get_default ();
         pixbuf = ctk_icon_theme_load_icon (theme, "utilities-terminal", 48, 0, NULL);
@@ -107,7 +107,7 @@ on_response (GtkDialog *dialog,
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window;
+  CtkWidget *window;
 
   ctk_init (&argc, &argv);
 

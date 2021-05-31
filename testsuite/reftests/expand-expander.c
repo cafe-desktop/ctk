@@ -32,7 +32,7 @@ unblock (gpointer data)
 }
 
 G_MODULE_EXPORT void
-expand_expander (GtkWidget *widget)
+expand_expander (CtkWidget *widget)
 {
   reftest_inhibit_snapshot ();
   ctk_expander_set_expanded (CTK_EXPANDER (widget), TRUE);

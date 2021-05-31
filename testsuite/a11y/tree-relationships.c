@@ -22,7 +22,7 @@
 
 const gchar list_ui[] =
   "<interface>"
-  "  <object class='GtkListStore' id='liststore1'>"
+  "  <object class='CtkListStore' id='liststore1'>"
   "    <columns>"
   "      <column type='gchararray'/>"
   "      <column type='gchararray'/>"
@@ -35,23 +35,23 @@ const gchar list_ui[] =
   "      <row><col id='0'>One</col><col id='1'>Two</col><col id='2'>Three</col><col id='3'>True</col><col id='4'>50</col><col id='5'>50</col></row>"
   "    </data>"
   "  </object>"
-  "  <object class='GtkWindow' id='window1'>"
+  "  <object class='CtkWindow' id='window1'>"
   "    <child>"
-  "      <object class='GtkTreeView' id='treeview1'>"
+  "      <object class='CtkTreeView' id='treeview1'>"
   "        <property name='visible'>True</property>"
   "        <property name='model'>liststore1</property>"
   "        <child>"
-  "          <object class='GtkTreeViewColumn' id='column1'>"
+  "          <object class='CtkTreeViewColumn' id='column1'>"
   "            <property name='title' translatable='yes'>First column</property>"
   "            <child>"
-  "              <object class='GtkCellRendererText' id='renderer1'>"
+  "              <object class='CtkCellRendererText' id='renderer1'>"
   "              </object>"
   "              <attributes>"
   "                <attribute name='text'>0</attribute>"
   "              </attributes>"
   "            </child>"
   "            <child>"
-  "              <object class='GtkCellRendererToggle' id='renderer2'>"
+  "              <object class='CtkCellRendererToggle' id='renderer2'>"
   "              </object>"
   "              <attributes>"
   "                <attribute name='active'>3</attribute>"
@@ -60,17 +60,17 @@ const gchar list_ui[] =
   "          </object>"
   "        </child>"
   "        <child>"
-  "          <object class='GtkTreeViewColumn' id='column2'>"
+  "          <object class='CtkTreeViewColumn' id='column2'>"
   "            <property name='title' translatable='yes'>Second column</property>"
   "            <child>"
-  "              <object class='GtkCellRendererText' id='renderer3'>"
+  "              <object class='CtkCellRendererText' id='renderer3'>"
   "              </object>"
   "              <attributes>"
   "                <attribute name='text'>1</attribute>"
   "              </attributes>"
   "            </child>"
   "            <child>"
-  "              <object class='GtkCellRendererProgress' id='renderer4'>"
+  "              <object class='CtkCellRendererProgress' id='renderer4'>"
   "              </object>"
   "              <attributes>"
   "                <attribute name='value'>4</attribute>"
@@ -83,11 +83,11 @@ const gchar list_ui[] =
   "  </object>"
   "</interface>";
 
-static GtkWidget *
-builder_get_toplevel (GtkBuilder *builder)
+static CtkWidget *
+builder_get_toplevel (CtkBuilder *builder)
 {
   GSList *list, *walk;
-  GtkWidget *window = NULL;
+  CtkWidget *window = NULL;
 
   list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
@@ -107,7 +107,7 @@ builder_get_toplevel (GtkBuilder *builder)
 
 const gchar tree_ui[] =
   "<interface>"
-  "  <object class='GtkTreeStore' id='treestore1'>"
+  "  <object class='CtkTreeStore' id='treestore1'>"
   "    <columns>"
   "      <column type='gchararray'/>"
   "      <column type='gchararray'/>"
@@ -117,23 +117,23 @@ const gchar tree_ui[] =
   "      <column type='gint'/>"
   "    </columns>"
   "  </object>"
-  "  <object class='GtkWindow' id='window1'>"
+  "  <object class='CtkWindow' id='window1'>"
   "    <child>"
-  "      <object class='GtkTreeView' id='treeview1'>"
+  "      <object class='CtkTreeView' id='treeview1'>"
   "        <property name='visible'>True</property>"
   "        <property name='model'>treestore1</property>"
   "        <child>"
-  "          <object class='GtkTreeViewColumn' id='column1'>"
+  "          <object class='CtkTreeViewColumn' id='column1'>"
   "            <property name='title' translatable='yes'>First column</property>"
   "            <child>"
-  "              <object class='GtkCellRendererText' id='renderer1'>"
+  "              <object class='CtkCellRendererText' id='renderer1'>"
   "              </object>"
   "              <attributes>"
   "                <attribute name='text'>0</attribute>"
   "              </attributes>"
   "            </child>"
   "            <child>"
-  "              <object class='GtkCellRendererToggle' id='renderer2'>"
+  "              <object class='CtkCellRendererToggle' id='renderer2'>"
   "              </object>"
   "              <attributes>"
   "                <attribute name='active'>3</attribute>"
@@ -142,17 +142,17 @@ const gchar tree_ui[] =
   "          </object>"
   "        </child>"
   "        <child>"
-  "          <object class='GtkTreeViewColumn' id='column2'>"
+  "          <object class='CtkTreeViewColumn' id='column2'>"
   "            <property name='title' translatable='yes'>Second column</property>"
   "            <child>"
-  "              <object class='GtkCellRendererText' id='renderer3'>"
+  "              <object class='CtkCellRendererText' id='renderer3'>"
   "              </object>"
   "              <attributes>"
   "                <attribute name='text'>1</attribute>"
   "              </attributes>"
   "            </child>"
   "            <child>"
-  "              <object class='GtkCellRendererProgress' id='renderer4'>"
+  "              <object class='CtkCellRendererProgress' id='renderer4'>"
   "              </object>"
   "              <attributes>"
   "                <attribute name='value'>4</attribute>"
@@ -166,14 +166,14 @@ const gchar tree_ui[] =
   "</interface>";
 
 static void
-populate_tree (GtkBuilder *builder)
+populate_tree (CtkBuilder *builder)
 {
-  GtkTreeView *tv;
-  GtkTreeStore *store;
-  GtkTreeIter iter;
+  CtkTreeView *tv;
+  CtkTreeStore *store;
+  CtkTreeIter iter;
 
-  tv = (GtkTreeView *)ctk_builder_get_object (builder, "treeview1");
-  store = (GtkTreeStore *)ctk_tree_view_get_model (tv);
+  tv = (CtkTreeView *)ctk_builder_get_object (builder, "treeview1");
+  store = (CtkTreeStore *)ctk_tree_view_get_model (tv);
 
   /* append some rows */
   ctk_tree_store_append (store, &iter, NULL);
@@ -226,12 +226,12 @@ process_pending_idles ()
 static void
 test_a11y_tree_focus (void)
 {
-  GtkBuilder *builder;
-  GtkWidget *window;
+  CtkBuilder *builder;
+  CtkWidget *window;
   GError *error = NULL;
-  GtkTreeView *tv;
-  GtkTreePath *path = NULL;
-  GtkTreeViewColumn *focus_column = NULL;
+  CtkTreeView *tv;
+  CtkTreePath *path = NULL;
+  CtkTreeViewColumn *focus_column = NULL;
   SignalData data;
   AtkObject *accessible;
   AtkObject *child;
@@ -245,7 +245,7 @@ test_a11y_tree_focus (void)
 
   populate_tree (builder);
 
-  tv = (GtkTreeView *)ctk_builder_get_object (builder, "treeview1");
+  tv = (CtkTreeView *)ctk_builder_get_object (builder, "treeview1");
   ctk_tree_view_expand_all (tv);
 
   ctk_widget_show (window);
@@ -275,7 +275,7 @@ test_a11y_tree_focus (void)
 }
 
 static AtkObject *
-find_root_accessible (GtkTreeView *tv, const char *name)
+find_root_accessible (CtkTreeView *tv, const char *name)
 {
   AtkObject *tvaccessible = ctk_widget_get_accessible (CTK_WIDGET (tv));
   int i = 0;
@@ -336,10 +336,10 @@ test_relations (AtkObject *parent, AtkObject *child)
 static void
 test_a11y_tree_relations (void)
 {
-  GtkBuilder *builder;
-  GtkWidget *window;
+  CtkBuilder *builder;
+  CtkWidget *window;
   GError *error = NULL;
-  GtkTreeView *tv;
+  CtkTreeView *tv;
   AtkObject *parent, *child;
 
   builder = ctk_builder_new ();
@@ -350,7 +350,7 @@ test_a11y_tree_relations (void)
 
   populate_tree (builder);
 
-  tv = (GtkTreeView *)ctk_builder_get_object (builder, "treeview1");
+  tv = (CtkTreeView *)ctk_builder_get_object (builder, "treeview1");
   ctk_tree_view_expand_all (tv);
 
   ctk_widget_show (window);

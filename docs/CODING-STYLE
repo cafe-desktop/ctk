@@ -370,13 +370,13 @@ outside of the inner block:
 When declaring a structure type use newlines to separate logical sections
 of the structure:
 
-  struct _GtkWrapBoxPrivate
+  struct _CtkWrapBoxPrivate
   {
-    GtkOrientation        orientation;
-    GtkWrapAllocationMode mode;
+    CtkOrientation        orientation;
+    CtkWrapAllocationMode mode;
 
-    GtkWrapBoxSpreading   horizontal_spreading;
-    GtkWrapBoxSpreading   vertical_spreading;
+    CtkWrapBoxSpreading   horizontal_spreading;
+    CtkWrapBoxSpreading   vertical_spreading;
 
     guint16               vertical_spacing;
     guint16               horizontal_spacing;
@@ -421,17 +421,17 @@ definitions should be vertically aligned in three columns:
 The maximum width of each column is given by the longest element in the
 column:
 
-  void         ctk_type_set_property (GtkType      *type,
+  void         ctk_type_set_property (CtkType      *type,
                                       const gchar  *value,
                                       GError      **error);
-  const gchar *ctk_type_get_property (GtkType      *type);
+  const gchar *ctk_type_get_property (CtkType      *type);
 
 It is also possible to align the columns to the next tab:
 
-  void          ctk_type_set_prop           (GtkType *type,
+  void          ctk_type_set_prop           (CtkType *type,
                                              gfloat   value);
-  gfloat        ctk_type_get_prop           (GtkType *type);
-  gint          ctk_type_update_foobar      (GtkType *type);
+  gfloat        ctk_type_get_prop           (CtkType *type);
+  gint          ctk_type_update_foobar      (CtkType *type);
 
 Public headers should never be included directly:
 
@@ -482,9 +482,9 @@ coding style notices.
 
 Typedef declarations should be placed at the beginning of the file:
 
-  typedef struct _GtkFoo          GtkFoo;
-  typedef struct _GtkFooClass     GtkFooClass;
-  typedef struct _GtkFooPrivate   GtkFooPrivate;
+  typedef struct _CtkFoo          CtkFoo;
+  typedef struct _CtkFooClass     CtkFooClass;
+  typedef struct _CtkFooPrivate   CtkFooPrivate;
 
 This includes enumeration types:
 
@@ -492,23 +492,23 @@ This includes enumeration types:
   {
     CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT,
     CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH
-  } GtkSizeRequestMode;
+  } CtkSizeRequestMode;
 
 And callback types:
 
-  typedef void (* GtkCallback) (GtkWidget *widget,
+  typedef void (* CtkCallback) (CtkWidget *widget,
                                 gpointer   user_data);
 
 Instance structures should only contain the parent type, and optionally a
 pointer to a private data structure, and they should be annotated as
 "private" using the gtk-doc trigraph:
 
-  struct _GtkFoo
+  struct _CtkFoo
   {
     /*< private >*/
-    GtkWidget parent_instance;
+    CtkWidget parent_instance;
 
-    GtkFooPrivate *priv;
+    CtkFooPrivate *priv;
   };
 
 The private data pointer is optional and should be omitted in newly
@@ -533,11 +533,11 @@ function.
 
 Interface types should always have the dummy typedef for cast purposes:
 
-        typedef struct _GtkFoo              GtkFoo;
+        typedef struct _CtkFoo              CtkFoo;
 
 The interface structure should have "Interface" postfixed to the dummy typedef:
 
-        typedef struct _GtkFooInterface         GtkFooInterface;
+        typedef struct _CtkFooInterface         CtkFooInterface;
 
 Interfaces must have the following macros:
 
@@ -589,7 +589,7 @@ be placed in the source file, directly above the function.
   /* valid */
   /**
    * ctk_get_flow:
-   * @widget: a #GtkWidget
+   * @widget: a #CtkWidget
    *
    * Gets the flow of a widget.
    *
@@ -597,8 +597,8 @@ be placed in the source file, directly above the function.
    *
    * Returns: (transfer none): the flow of @widget
    */
-  GtkFlow *
-  ctk_get_flow (GtkWidget *widget)
+  CtkFlow *
+  ctk_get_flow (CtkWidget *widget)
   {
 
     ...
@@ -615,9 +615,9 @@ after the license header:
   /**
    * SECTION:ctksizerequest
    * @Short_Description: Height-for-width geometry management
-   * @Title: GtkSizeRequest
+   * @Title: CtkSizeRequest
    *
-   * The GtkSizeRequest interface is GTK+'s height-for-width (and
+   * The CtkSizeRequest interface is GTK+'s height-for-width (and
    * width-for-height) geometry management system.
    * ...
    */

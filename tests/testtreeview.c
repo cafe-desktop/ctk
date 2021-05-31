@@ -54,75 +54,75 @@ static void run_automated_tests (void);
 /* This custom model is to test custom model use. */
 
 #define CTK_TYPE_MODEL_TYPES				(ctk_tree_model_types_get_type ())
-#define CTK_TREE_MODEL_TYPES(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MODEL_TYPES, GtkTreeModelTypes))
-#define CTK_TREE_MODEL_TYPES_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MODEL_TYPES, GtkTreeModelTypesClass))
+#define CTK_TREE_MODEL_TYPES(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MODEL_TYPES, CtkTreeModelTypes))
+#define CTK_TREE_MODEL_TYPES_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MODEL_TYPES, CtkTreeModelTypesClass))
 #define CTK_IS_TREE_MODEL_TYPES(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MODEL_TYPES))
 #define CTK_IS_TREE_MODEL_TYPES_GET_CLASS(klass)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MODEL_TYPES))
 
-typedef struct _GtkTreeModelTypes       GtkTreeModelTypes;
-typedef struct _GtkTreeModelTypesClass  GtkTreeModelTypesClass;
+typedef struct _CtkTreeModelTypes       CtkTreeModelTypes;
+typedef struct _CtkTreeModelTypesClass  CtkTreeModelTypesClass;
 
-struct _GtkTreeModelTypes
+struct _CtkTreeModelTypes
 {
   GObject parent;
 
   gint stamp;
 };
 
-struct _GtkTreeModelTypesClass
+struct _CtkTreeModelTypesClass
 {
   GObjectClass parent_class;
 
-  guint        (* get_flags)       (GtkTreeModel *tree_model);   
-  gint         (* get_n_columns)   (GtkTreeModel *tree_model);
-  GType        (* get_column_type) (GtkTreeModel *tree_model,
+  guint        (* get_flags)       (CtkTreeModel *tree_model);   
+  gint         (* get_n_columns)   (CtkTreeModel *tree_model);
+  GType        (* get_column_type) (CtkTreeModel *tree_model,
 				    gint          index);
-  gboolean     (* get_iter)        (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter,
-				    GtkTreePath  *path);
-  GtkTreePath *(* get_path)        (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter);
-  void         (* get_value)       (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter,
+  gboolean     (* get_iter)        (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter,
+				    CtkTreePath  *path);
+  CtkTreePath *(* get_path)        (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter);
+  void         (* get_value)       (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter,
 				    gint          column,
 				    GValue       *value);
-  gboolean     (* iter_next)       (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter);
-  gboolean     (* iter_children)   (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter,
-				    GtkTreeIter  *parent);
-  gboolean     (* iter_has_child)  (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter);
-  gint         (* iter_n_children) (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter);
-  gboolean     (* iter_nth_child)  (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter,
-				    GtkTreeIter  *parent,
+  gboolean     (* iter_next)       (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter);
+  gboolean     (* iter_children)   (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter,
+				    CtkTreeIter  *parent);
+  gboolean     (* iter_has_child)  (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter);
+  gint         (* iter_n_children) (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter);
+  gboolean     (* iter_nth_child)  (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter,
+				    CtkTreeIter  *parent,
 				    gint          n);
-  gboolean     (* iter_parent)     (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter,
-				    GtkTreeIter  *child);
-  void         (* ref_iter)        (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter);
-  void         (* unref_iter)      (GtkTreeModel *tree_model,
-				    GtkTreeIter  *iter);
+  gboolean     (* iter_parent)     (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter,
+				    CtkTreeIter  *child);
+  void         (* ref_iter)        (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter);
+  void         (* unref_iter)      (CtkTreeModel *tree_model,
+				    CtkTreeIter  *iter);
 
-  /* These will be moved into the GtkTreeModelIface eventually */
-  void         (* changed)         (GtkTreeModel *tree_model,
-				    GtkTreePath  *path,
-				    GtkTreeIter  *iter);
-  void         (* inserted)        (GtkTreeModel *tree_model,
-				    GtkTreePath  *path,
-				    GtkTreeIter  *iter);
-  void         (* child_toggled)   (GtkTreeModel *tree_model,
-				    GtkTreePath  *path,
-				    GtkTreeIter  *iter);
-  void         (* deleted)         (GtkTreeModel *tree_model,
-				    GtkTreePath  *path);
+  /* These will be moved into the CtkTreeModelIface eventually */
+  void         (* changed)         (CtkTreeModel *tree_model,
+				    CtkTreePath  *path,
+				    CtkTreeIter  *iter);
+  void         (* inserted)        (CtkTreeModel *tree_model,
+				    CtkTreePath  *path,
+				    CtkTreeIter  *iter);
+  void         (* child_toggled)   (CtkTreeModel *tree_model,
+				    CtkTreePath  *path,
+				    CtkTreeIter  *iter);
+  void         (* deleted)         (CtkTreeModel *tree_model,
+				    CtkTreePath  *path);
 };
 
 GType              ctk_tree_model_types_get_type      (void) G_GNUC_CONST;
-GtkTreeModelTypes *ctk_tree_model_types_new           (void);
+CtkTreeModelTypes *ctk_tree_model_types_new           (void);
 
 typedef enum
 {
@@ -163,14 +163,14 @@ get_model_types (void)
 }
 
 static void
-toggled_callback (GtkCellRendererToggle *celltoggle,
+toggled_callback (CtkCellRendererToggle *celltoggle,
                   gchar                 *path_string,
-                  GtkTreeView           *tree_view)
+                  CtkTreeView           *tree_view)
 {
-  GtkTreeModel *model = NULL;
-  GtkTreeModelSort *sort_model = NULL;
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreeModel *model = NULL;
+  CtkTreeModelSort *sort_model = NULL;
+  CtkTreePath *path;
+  CtkTreeIter iter;
   gboolean active = FALSE;
   
   g_return_if_fail (CTK_IS_TREE_VIEW (tree_view));
@@ -235,15 +235,15 @@ toggled_callback (GtkCellRendererToggle *celltoggle,
 }
 
 static void
-edited_callback (GtkCellRendererText *renderer,
+edited_callback (CtkCellRendererText *renderer,
 		 const gchar   *path_string,
 		 const gchar   *new_text,
-		 GtkTreeView  *tree_view)
+		 CtkTreeView  *tree_view)
 {
-  GtkTreeModel *model = NULL;
-  GtkTreeModelSort *sort_model = NULL;
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreeModel *model = NULL;
+  CtkTreeModelSort *sort_model = NULL;
+  CtkTreePath *path;
+  CtkTreeIter iter;
   guint value = atoi (new_text);
   
   g_return_if_fail (CTK_IS_TREE_VIEW (tree_view));
@@ -298,13 +298,13 @@ edited_callback (GtkCellRendererText *renderer,
 static ColumnsType current_column_type = COLUMNS_LOTS;
 
 static void
-set_columns_type (GtkTreeView *tree_view, ColumnsType type)
+set_columns_type (CtkTreeView *tree_view, ColumnsType type)
 {
-  GtkTreeViewColumn *col;
-  GtkCellRenderer *rend;
+  CtkTreeViewColumn *col;
+  CtkCellRenderer *rend;
   GdkPixbuf *pixbuf;
-  GtkWidget *image;
-  GtkAdjustment *adjustment;
+  CtkWidget *image;
+  CtkAdjustment *adjustment;
 
   current_column_type = type;
   
@@ -486,22 +486,22 @@ typedef enum
 } ModelType;
 
 /* FIXME add a custom model to test */
-static GtkTreeModel *models[MODEL_LAST];
+static CtkTreeModel *models[MODEL_LAST];
 static const char *model_names[MODEL_LAST] = {
-  "GtkTreeStore",
-  "GtkListStore",
-  "GtkTreeModelSort wrapping GtkTreeStore",
-  "GtkTreeModelSort wrapping GtkListStore",
-  "Empty GtkListStore",
-  "Empty GtkTreeStore",
+  "CtkTreeStore",
+  "CtkListStore",
+  "CtkTreeModelSort wrapping CtkTreeStore",
+  "CtkTreeModelSort wrapping CtkListStore",
+  "Empty CtkListStore",
+  "Empty CtkTreeStore",
   "NULL (no model)"
 };
 
-static GtkTreeModel*
+static CtkTreeModel*
 create_list_model (void)
 {
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeIter iter;
   gint i;
   GType *t;
 
@@ -538,13 +538,13 @@ create_list_model (void)
 
 static void
 typesystem_recurse (GType        type,
-                    GtkTreeIter *parent_iter,
-                    GtkTreeStore *store)
+                    CtkTreeIter *parent_iter,
+                    CtkTreeStore *store)
 {
   GType* children;
   guint n_children = 0;
   gint i;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *str;
   
   ctk_tree_store_append (store, &iter, parent_iter);
@@ -571,10 +571,10 @@ typesystem_recurse (GType        type,
   g_free (children);
 }
 
-static GtkTreeModel*
+static CtkTreeModel*
 create_tree_model (void)
 {
-  GtkTreeStore *store;
+  CtkTreeStore *store;
   gint i;
   GType *t;
   
@@ -605,9 +605,9 @@ create_tree_model (void)
 }
 
 static void
-model_selected (GtkComboBox *combo_box, gpointer data)
+model_selected (CtkComboBox *combo_box, gpointer data)
 {
-  GtkTreeView *tree_view = CTK_TREE_VIEW (data);
+  CtkTreeView *tree_view = CTK_TREE_VIEW (data);
   gint hist;
 
   hist = ctk_combo_box_get_active (combo_box);
@@ -619,9 +619,9 @@ model_selected (GtkComboBox *combo_box, gpointer data)
 }
 
 static void
-columns_selected (GtkComboBox *combo_box, gpointer data)
+columns_selected (CtkComboBox *combo_box, gpointer data)
 {
-  GtkTreeView *tree_view = CTK_TREE_VIEW (data);
+  CtkTreeView *tree_view = CTK_TREE_VIEW (data);
   gint hist;
 
   hist = ctk_combo_box_get_active (combo_box);
@@ -633,9 +633,9 @@ columns_selected (GtkComboBox *combo_box, gpointer data)
 }
 
 void
-on_row_activated (GtkTreeView       *tree_view,
-                  GtkTreePath       *path,
-                  GtkTreeViewColumn *column,
+on_row_activated (CtkTreeView       *tree_view,
+                  CtkTreePath       *path,
+                  CtkTreeViewColumn *column,
                   gpointer           user_data)
 {
   g_print ("Row activated\n");
@@ -646,7 +646,7 @@ enum
   TARGET_CTK_TREE_MODEL_ROW
 };
 
-static GtkTargetEntry row_targets[] = {
+static CtkTargetEntry row_targets[] = {
   { "CTK_TREE_MODEL_ROW", CTK_TARGET_SAME_APP,
     TARGET_CTK_TREE_MODEL_ROW }
 };
@@ -655,12 +655,12 @@ int
 main (int    argc,
       char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *sw;
-  GtkWidget *tv;
-  GtkWidget *box;
-  GtkWidget *combo_box;
-  GtkTreeModel *model;
+  CtkWidget *window;
+  CtkWidget *sw;
+  CtkWidget *tv;
+  CtkWidget *box;
+  CtkWidget *combo_box;
+  CtkTreeModel *model;
   gint i;
   
   ctk_init (&argc, &argv);
@@ -760,36 +760,36 @@ main (int    argc,
 }
 
 /*
- * GtkTreeModelTypes
+ * CtkTreeModelTypes
  */
 
-static void         ctk_tree_model_types_init                 (GtkTreeModelTypes      *model_types);
-static void         ctk_tree_model_types_tree_model_init      (GtkTreeModelIface   *iface);
-static gint         ctk_real_model_types_get_n_columns   (GtkTreeModel        *tree_model);
-static GType        ctk_real_model_types_get_column_type (GtkTreeModel        *tree_model,
+static void         ctk_tree_model_types_init                 (CtkTreeModelTypes      *model_types);
+static void         ctk_tree_model_types_tree_model_init      (CtkTreeModelIface   *iface);
+static gint         ctk_real_model_types_get_n_columns   (CtkTreeModel        *tree_model);
+static GType        ctk_real_model_types_get_column_type (CtkTreeModel        *tree_model,
 							   gint                 index);
-static GtkTreePath *ctk_real_model_types_get_path        (GtkTreeModel        *tree_model,
-							   GtkTreeIter         *iter);
-static void         ctk_real_model_types_get_value       (GtkTreeModel        *tree_model,
-							   GtkTreeIter         *iter,
+static CtkTreePath *ctk_real_model_types_get_path        (CtkTreeModel        *tree_model,
+							   CtkTreeIter         *iter);
+static void         ctk_real_model_types_get_value       (CtkTreeModel        *tree_model,
+							   CtkTreeIter         *iter,
 							   gint                 column,
 							   GValue              *value);
-static gboolean     ctk_real_model_types_iter_next       (GtkTreeModel        *tree_model,
-							   GtkTreeIter         *iter);
-static gboolean     ctk_real_model_types_iter_children   (GtkTreeModel        *tree_model,
-							   GtkTreeIter         *iter,
-							   GtkTreeIter         *parent);
-static gboolean     ctk_real_model_types_iter_has_child  (GtkTreeModel        *tree_model,
-							   GtkTreeIter         *iter);
-static gint         ctk_real_model_types_iter_n_children (GtkTreeModel        *tree_model,
-							   GtkTreeIter         *iter);
-static gboolean     ctk_real_model_types_iter_nth_child  (GtkTreeModel        *tree_model,
-							   GtkTreeIter         *iter,
-							   GtkTreeIter         *parent,
+static gboolean     ctk_real_model_types_iter_next       (CtkTreeModel        *tree_model,
+							   CtkTreeIter         *iter);
+static gboolean     ctk_real_model_types_iter_children   (CtkTreeModel        *tree_model,
+							   CtkTreeIter         *iter,
+							   CtkTreeIter         *parent);
+static gboolean     ctk_real_model_types_iter_has_child  (CtkTreeModel        *tree_model,
+							   CtkTreeIter         *iter);
+static gint         ctk_real_model_types_iter_n_children (CtkTreeModel        *tree_model,
+							   CtkTreeIter         *iter);
+static gboolean     ctk_real_model_types_iter_nth_child  (CtkTreeModel        *tree_model,
+							   CtkTreeIter         *iter,
+							   CtkTreeIter         *parent,
 							   gint                 n);
-static gboolean     ctk_real_model_types_iter_parent     (GtkTreeModel        *tree_model,
-							   GtkTreeIter         *iter,
-							   GtkTreeIter         *child);
+static gboolean     ctk_real_model_types_iter_parent     (CtkTreeModel        *tree_model,
+							   CtkTreeIter         *iter,
+							   CtkTreeIter         *child);
 
 
 GType
@@ -801,13 +801,13 @@ ctk_tree_model_types_get_type (void)
     {
       const GTypeInfo model_types_info =
       {
-        sizeof (GtkTreeModelTypesClass),
+        sizeof (CtkTreeModelTypesClass),
 	NULL,		/* base_init */
 	NULL,		/* base_finalize */
         NULL,           /* class_init */
 	NULL,		/* class_finalize */
 	NULL,		/* class_data */
-        sizeof (GtkTreeModelTypes),
+        sizeof (CtkTreeModelTypes),
 	0,
         (GInstanceInitFunc) ctk_tree_model_types_init
       };
@@ -820,7 +820,7 @@ ctk_tree_model_types_get_type (void)
       };
 
       model_types_type = g_type_register_static (G_TYPE_OBJECT,
-						 "GtkTreeModelTypes",
+						 "CtkTreeModelTypes",
 						 &model_types_info, 0);
       g_type_add_interface_static (model_types_type,
 				   CTK_TYPE_TREE_MODEL,
@@ -830,10 +830,10 @@ ctk_tree_model_types_get_type (void)
   return model_types_type;
 }
 
-GtkTreeModelTypes *
+CtkTreeModelTypes *
 ctk_tree_model_types_new (void)
 {
-  GtkTreeModelTypes *retval;
+  CtkTreeModelTypes *retval;
 
   retval = g_object_new (CTK_TYPE_MODEL_TYPES, NULL);
 
@@ -841,7 +841,7 @@ ctk_tree_model_types_new (void)
 }
 
 static void
-ctk_tree_model_types_tree_model_init (GtkTreeModelIface *iface)
+ctk_tree_model_types_tree_model_init (CtkTreeModelIface *iface)
 {
   iface->get_n_columns = ctk_real_model_types_get_n_columns;
   iface->get_column_type = ctk_real_model_types_get_column_type;
@@ -856,7 +856,7 @@ ctk_tree_model_types_tree_model_init (GtkTreeModelIface *iface)
 }
 
 static void
-ctk_tree_model_types_init (GtkTreeModelTypes *model_types)
+ctk_tree_model_types_init (CtkTreeModelTypes *model_types)
 {
   model_types->stamp = g_random_int ();
 }
@@ -867,13 +867,13 @@ static GType column_types[] = {
 };
   
 static gint
-ctk_real_model_types_get_n_columns (GtkTreeModel *tree_model)
+ctk_real_model_types_get_n_columns (CtkTreeModel *tree_model)
 {
   return G_N_ELEMENTS (column_types);
 }
 
 static GType
-ctk_real_model_types_get_column_type (GtkTreeModel *tree_model,
+ctk_real_model_types_get_column_type (CtkTreeModel *tree_model,
                                       gint          index)
 {
   g_return_val_if_fail (index < G_N_ELEMENTS (column_types), G_TYPE_INVALID);
@@ -884,9 +884,9 @@ ctk_real_model_types_get_column_type (GtkTreeModel *tree_model,
 #if 0
 /* Use default implementation of this */
 static gboolean
-ctk_real_model_types_get_iter (GtkTreeModel *tree_model,
-                               GtkTreeIter  *iter,
-                               GtkTreePath  *path)
+ctk_real_model_types_get_iter (CtkTreeModel *tree_model,
+                               CtkTreeIter  *iter,
+                               CtkTreePath  *path)
 {
   
 }
@@ -896,11 +896,11 @@ ctk_real_model_types_get_iter (GtkTreeModel *tree_model,
  * G_TYPE_RESERVED_FUNDAMENTAL.
  */
 
-static GtkTreePath *
-ctk_real_model_types_get_path (GtkTreeModel *tree_model,
-                               GtkTreeIter  *iter)
+static CtkTreePath *
+ctk_real_model_types_get_path (CtkTreeModel *tree_model,
+                               CtkTreeIter  *iter)
 {
-  GtkTreePath *retval;
+  CtkTreePath *retval;
   GType type;
   GType parent;
   
@@ -941,8 +941,8 @@ ctk_real_model_types_get_path (GtkTreeModel *tree_model,
 }
 
 static void
-ctk_real_model_types_get_value (GtkTreeModel *tree_model,
-                                GtkTreeIter  *iter,
+ctk_real_model_types_get_value (CtkTreeModel *tree_model,
+                                CtkTreeIter  *iter,
                                 gint          column,
                                 GValue       *value)
 {
@@ -975,8 +975,8 @@ ctk_real_model_types_get_value (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_next (GtkTreeModel  *tree_model,
-                                GtkTreeIter   *iter)
+ctk_real_model_types_iter_next (CtkTreeModel  *tree_model,
+                                CtkTreeIter   *iter)
 {
   
   GType parent;
@@ -1028,9 +1028,9 @@ ctk_real_model_types_iter_next (GtkTreeModel  *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_children (GtkTreeModel *tree_model,
-                                    GtkTreeIter  *iter,
-                                    GtkTreeIter  *parent)
+ctk_real_model_types_iter_children (CtkTreeModel *tree_model,
+                                    CtkTreeIter  *iter,
+                                    CtkTreeIter  *parent)
 {
   GType type;
   GType* children;
@@ -1053,8 +1053,8 @@ ctk_real_model_types_iter_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_has_child (GtkTreeModel *tree_model,
-                                     GtkTreeIter  *iter)
+ctk_real_model_types_iter_has_child (CtkTreeModel *tree_model,
+                                     CtkTreeIter  *iter)
 {
   GType type;
   GType* children;
@@ -1076,8 +1076,8 @@ ctk_real_model_types_iter_has_child (GtkTreeModel *tree_model,
 }
 
 static gint
-ctk_real_model_types_iter_n_children (GtkTreeModel *tree_model,
-                                      GtkTreeIter  *iter)
+ctk_real_model_types_iter_n_children (CtkTreeModel *tree_model,
+                                      CtkTreeIter  *iter)
 {
   if (iter == NULL)
     {
@@ -1100,9 +1100,9 @@ ctk_real_model_types_iter_n_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_nth_child (GtkTreeModel *tree_model,
-                                     GtkTreeIter  *iter,
-                                     GtkTreeIter  *parent,
+ctk_real_model_types_iter_nth_child (CtkTreeModel *tree_model,
+                                     CtkTreeIter  *iter,
+                                     CtkTreeIter  *parent,
                                      gint          n)
 {  
   if (parent == NULL)
@@ -1143,9 +1143,9 @@ ctk_real_model_types_iter_nth_child (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_parent (GtkTreeModel *tree_model,
-                                  GtkTreeIter  *iter,
-                                  GtkTreeIter  *child)
+ctk_real_model_types_iter_parent (CtkTreeModel *tree_model,
+                                  CtkTreeIter  *iter,
+                                  CtkTreeIter  *child)
 {
   GType type;
   GType parent;
@@ -1177,13 +1177,13 @@ ctk_real_model_types_iter_parent (GtkTreeModel *tree_model,
 #if 0
 
 static void
-treestore_torture_recurse (GtkTreeStore *store,
-                           GtkTreeIter  *root,
+treestore_torture_recurse (CtkTreeStore *store,
+                           CtkTreeIter  *root,
                            gint          depth)
 {
-  GtkTreeModel *model;
+  CtkTreeModel *model;
   gint i;
-  GtkTreeIter iter;  
+  CtkTreeIter iter;  
   
   model = CTK_TREE_MODEL (store);    
 
@@ -1278,10 +1278,10 @@ run_automated_tests (void)
 
   {
     /* Make sure list store mutations don't crash anything */
-    GtkListStore *store;
-    GtkTreeModel *model;
+    CtkListStore *store;
+    CtkTreeModel *model;
     gint i;
-    GtkTreeIter iter;
+    CtkTreeIter iter;
     
     store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -1349,8 +1349,8 @@ run_automated_tests (void)
 
   {
     /* Make sure tree store mutations don't crash anything */
-    GtkTreeStore *store;
-    GtkTreeIter root;
+    CtkTreeStore *store;
+    CtkTreeIter root;
 
     store = ctk_tree_store_new (1, G_TYPE_INT);
     ctk_tree_store_append (CTK_TREE_STORE (store), &root, NULL);

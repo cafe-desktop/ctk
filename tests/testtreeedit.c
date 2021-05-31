@@ -47,11 +47,11 @@ static ListEntry model_strings[] =
   { NULL }
 };
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_model (void)
 {
-  GtkTreeStore *model;
-  GtkTreeIter iter;
+  CtkTreeStore *model;
+  CtkTreeIter iter;
   gint i;
 
   model = ctk_tree_store_new (NUM_COLUMNS,
@@ -80,13 +80,13 @@ create_model (void)
 }
 
 static void
-editable_toggled (GtkCellRendererToggle *cell,
+editable_toggled (CtkCellRendererToggle *cell,
 		  gchar                 *path_string,
 		  gpointer               data)
 {
-  GtkTreeModel *model = CTK_TREE_MODEL (data);
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
+  CtkTreeModel *model = CTK_TREE_MODEL (data);
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_string);
   gboolean value;
 
   ctk_tree_model_get_iter (model, &iter, path);
@@ -99,13 +99,13 @@ editable_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-sensitive_toggled (GtkCellRendererToggle *cell,
+sensitive_toggled (CtkCellRendererToggle *cell,
 		   gchar                 *path_string,
 		   gpointer               data)
 {
-  GtkTreeModel *model = CTK_TREE_MODEL (data);
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
+  CtkTreeModel *model = CTK_TREE_MODEL (data);
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_string);
   gboolean value;
 
   ctk_tree_model_get_iter (model, &iter, path);
@@ -118,14 +118,14 @@ sensitive_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-edited (GtkCellRendererText *cell,
+edited (CtkCellRendererText *cell,
 	gchar               *path_string,
 	gchar               *new_text,
 	gpointer             data)
 {
-  GtkTreeModel *model = CTK_TREE_MODEL (data);
-  GtkTreeIter iter;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
+  CtkTreeModel *model = CTK_TREE_MODEL (data);
+  CtkTreeIter iter;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_string);
 
   ctk_tree_model_get_iter (model, &iter, path);
   ctk_tree_store_set (CTK_TREE_STORE (model), &iter, STRING_COLUMN, new_text, -1);
@@ -134,7 +134,7 @@ edited (GtkCellRendererText *cell,
 }
 
 static gboolean
-button_press_event (GtkWidget *widget, GdkEventButton *event, gpointer callback_data)
+button_press_event (CtkWidget *widget, GdkEventButton *event, gpointer callback_data)
 {
 	/* Deselect if people click outside any row. */
 	if (event->window == ctk_tree_view_get_bin_window (CTK_TREE_VIEW (widget))
@@ -148,12 +148,12 @@ button_press_event (GtkWidget *widget, GdkEventButton *event, gpointer callback_
 }
 
 typedef struct {
-  GtkCellArea     *area;
-  GtkCellRenderer *renderer;
+  CtkCellArea     *area;
+  CtkCellRenderer *renderer;
 } CallbackData;
 
 static void
-align_cell_toggled (GtkToggleButton  *toggle,
+align_cell_toggled (CtkToggleButton  *toggle,
 		    CallbackData     *data)
 {
   gboolean active = ctk_toggle_button_get_active (toggle);
@@ -162,7 +162,7 @@ align_cell_toggled (GtkToggleButton  *toggle,
 }
 
 static void
-expand_cell_toggled (GtkToggleButton  *toggle,
+expand_cell_toggled (CtkToggleButton  *toggle,
 		     CallbackData     *data)
 {
   gboolean active = ctk_toggle_button_get_active (toggle);
@@ -171,7 +171,7 @@ expand_cell_toggled (GtkToggleButton  *toggle,
 }
 
 static void
-fixed_cell_toggled (GtkToggleButton  *toggle,
+fixed_cell_toggled (CtkToggleButton  *toggle,
 		    CallbackData     *data)
 {
   gboolean active = ctk_toggle_button_get_active (toggle);
@@ -186,9 +186,9 @@ enum {
 };
 
 static void
-create_control (GtkWidget *box, gint number, gint cntl, CallbackData *data)
+create_control (CtkWidget *box, gint number, gint cntl, CallbackData *data)
 {
-  GtkWidget *checkbutton;
+  CtkWidget *checkbutton;
   GCallback  callback = NULL;
   gchar *name = NULL;
 
@@ -220,14 +220,14 @@ create_control (GtkWidget *box, gint number, gint cntl, CallbackData *data)
 gint
 main (gint argc, gchar **argv)
 {
-  GtkWidget *window;
-  GtkWidget *scrolled_window;
-  GtkWidget *tree_view;
-  GtkWidget *vbox, *hbox, *cntl_vbox;
-  GtkTreeModel *tree_model;
-  GtkCellRenderer *renderer;
-  GtkTreeViewColumn *column;
-  GtkCellArea *area;
+  CtkWidget *window;
+  CtkWidget *scrolled_window;
+  CtkWidget *tree_view;
+  CtkWidget *vbox, *hbox, *cntl_vbox;
+  CtkTreeModel *tree_model;
+  CtkCellRenderer *renderer;
+  CtkTreeViewColumn *column;
+  CtkCellArea *area;
   CallbackData callback[4];
   
   ctk_init (&argc, &argv);
@@ -236,7 +236,7 @@ main (gint argc, gchar **argv)
     ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (CTK_WINDOW (window), "GtkTreeView editing sample");
+  ctk_window_set_title (CTK_WINDOW (window), "CtkTreeView editing sample");
   g_signal_connect (window, "destroy", ctk_main_quit, NULL);
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);

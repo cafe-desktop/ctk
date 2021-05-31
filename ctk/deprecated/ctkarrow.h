@@ -37,27 +37,27 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_ARROW                  (ctk_arrow_get_type ())
-#define CTK_ARROW(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ARROW, GtkArrow))
-#define CTK_ARROW_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ARROW, GtkArrowClass))
+#define CTK_ARROW(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ARROW, CtkArrow))
+#define CTK_ARROW_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ARROW, CtkArrowClass))
 #define CTK_IS_ARROW(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ARROW))
 #define CTK_IS_ARROW_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ARROW))
-#define CTK_ARROW_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ARROW, GtkArrowClass))
+#define CTK_ARROW_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ARROW, CtkArrowClass))
 
-typedef struct _GtkArrow              GtkArrow;
-typedef struct _GtkArrowPrivate       GtkArrowPrivate;
-typedef struct _GtkArrowClass         GtkArrowClass;
+typedef struct _CtkArrow              CtkArrow;
+typedef struct _CtkArrowPrivate       CtkArrowPrivate;
+typedef struct _CtkArrowClass         CtkArrowClass;
 
-struct _GtkArrow
+struct _CtkArrow
 {
-  GtkMisc misc;
+  CtkMisc misc;
 
   /*< private >*/
-  GtkArrowPrivate *priv;
+  CtkArrowPrivate *priv;
 };
 
-struct _GtkArrowClass
+struct _CtkArrowClass
 {
-  GtkMiscClass parent_class;
+  CtkMiscClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -70,12 +70,12 @@ struct _GtkArrowClass
 GDK_DEPRECATED_IN_3_14
 GType      ctk_arrow_get_type   (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_14
-GtkWidget* ctk_arrow_new        (GtkArrowType   arrow_type,
-				 GtkShadowType  shadow_type);
+CtkWidget* ctk_arrow_new        (CtkArrowType   arrow_type,
+				 CtkShadowType  shadow_type);
 GDK_DEPRECATED_IN_3_14
-void       ctk_arrow_set        (GtkArrow      *arrow,
-				 GtkArrowType   arrow_type,
-				 GtkShadowType  shadow_type);
+void       ctk_arrow_set        (CtkArrow      *arrow,
+				 CtkArrowType   arrow_type,
+				 CtkShadowType  shadow_type);
 
 
 G_END_DECLS

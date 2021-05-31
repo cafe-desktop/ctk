@@ -34,33 +34,33 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_HSCALE            (ctk_hscale_get_type ())
-#define CTK_HSCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HSCALE, GtkHScale))
-#define CTK_HSCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HSCALE, GtkHScaleClass))
+#define CTK_HSCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HSCALE, CtkHScale))
+#define CTK_HSCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HSCALE, CtkHScaleClass))
 #define CTK_IS_HSCALE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HSCALE))
 #define CTK_IS_HSCALE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HSCALE))
-#define CTK_HSCALE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HSCALE, GtkHScaleClass))
+#define CTK_HSCALE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HSCALE, CtkHScaleClass))
 
 
-typedef struct _GtkHScale       GtkHScale;
-typedef struct _GtkHScaleClass  GtkHScaleClass;
+typedef struct _CtkHScale       CtkHScale;
+typedef struct _CtkHScaleClass  CtkHScaleClass;
 
-struct _GtkHScale
+struct _CtkHScale
 {
-  GtkScale scale;
+  CtkScale scale;
 };
 
-struct _GtkHScaleClass
+struct _CtkHScaleClass
 {
-  GtkScaleClass parent_class;
+  CtkScaleClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType      ctk_hscale_get_type       (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_scale_new)
-GtkWidget* ctk_hscale_new            (GtkAdjustment *adjustment);
+CtkWidget* ctk_hscale_new            (CtkAdjustment *adjustment);
 GDK_DEPRECATED_IN_3_2_FOR(ctk_scale_new_with_range)
-GtkWidget* ctk_hscale_new_with_range (gdouble        min,
+CtkWidget* ctk_hscale_new_with_range (gdouble        min,
                                       gdouble        max,
                                       gdouble        step);
 

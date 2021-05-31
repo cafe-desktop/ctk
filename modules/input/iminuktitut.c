@@ -32,21 +32,21 @@
 
 GType type_inuktitut_translit = 0;
 
-static void inuktitut_class_init (GtkIMContextSimpleClass *class);
-static void inuktitut_init (GtkIMContextSimple *im_context);
+static void inuktitut_class_init (CtkIMContextSimpleClass *class);
+static void inuktitut_init (CtkIMContextSimple *im_context);
 
 static void
 inuktitut_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (GtkIMContextSimpleClass),
+    sizeof (CtkIMContextSimpleClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
     (GClassInitFunc) inuktitut_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
-    sizeof (GtkIMContextSimple),
+    sizeof (CtkIMContextSimple),
     0,
     (GInstanceInitFunc) inuktitut_init,
   };
@@ -54,7 +54,7 @@ inuktitut_register_type (GTypeModule *module)
   type_inuktitut_translit = 
     g_type_module_register_type (module,
 				 CTK_TYPE_IM_CONTEXT_SIMPLE,
-				 "GtkIMContextInuktitut",
+				 "CtkIMContextInuktitut",
 				 &object_info, 0);
 }
 
@@ -107,12 +107,12 @@ static guint16 inuktitut_compose_seqs[] = {
 };
 
 static void
-inuktitut_class_init (GtkIMContextSimpleClass *class)
+inuktitut_class_init (CtkIMContextSimpleClass *class)
 {
 }
 
 static void
-inuktitut_init (GtkIMContextSimple *im_context)
+inuktitut_init (CtkIMContextSimple *im_context)
 {
   ctk_im_context_simple_add_table (im_context,
 				   inuktitut_compose_seqs,
@@ -120,7 +120,7 @@ inuktitut_init (GtkIMContextSimple *im_context)
 				   G_N_ELEMENTS (inuktitut_compose_seqs) / (4 + 2));
 }
 
-static const GtkIMContextInfo inuktitut_info = { 
+static const CtkIMContextInfo inuktitut_info = { 
   "inuktitut",		   /* ID */
   NC_("input method menu", "Inuktitut (Transliterated)"), /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
@@ -128,7 +128,7 @@ static const GtkIMContextInfo inuktitut_info = {
   "iu"			   /* Languages for which this module is the default */
 };
 
-static const GtkIMContextInfo *info_list[] = {
+static const CtkIMContextInfo *info_list[] = {
   &inuktitut_info
 };
 
@@ -147,14 +147,14 @@ MODULE_ENTRY (void, exit) (void)
 {
 }
 
-MODULE_ENTRY (void, list) (const GtkIMContextInfo ***contexts,
+MODULE_ENTRY (void, list) (const CtkIMContextInfo ***contexts,
 			   int                      *n_contexts)
 {
   *contexts = info_list;
   *n_contexts = G_N_ELEMENTS (info_list);
 }
 
-MODULE_ENTRY (GtkIMContext *, create) (const gchar *context_id)
+MODULE_ENTRY (CtkIMContext *, create) (const gchar *context_id)
 {
   if (strcmp (context_id, "inuktitut") == 0)
     return g_object_new (type_inuktitut_translit, NULL);

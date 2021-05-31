@@ -26,8 +26,8 @@ change_fullscreen_state (GSimpleAction *action,
   g_simple_action_set_state (action, state);
 }
 
-static GtkClipboard *
-get_clipboard (GtkWidget *widget)
+static CtkClipboard *
+get_clipboard (CtkWidget *widget)
 {
   return ctk_widget_get_clipboard (widget, gdk_atom_intern_static_string ("CLIPBOARD"));
 }
@@ -37,11 +37,11 @@ window_copy (GSimpleAction *action,
              GVariant      *parameter,
              gpointer       user_data)
 {
-  GtkWindow *window = CTK_WINDOW (user_data);
-  GtkTextView *text = g_object_get_data ((GObject*)window, "plugman-text");
+  CtkWindow *window = CTK_WINDOW (user_data);
+  CtkTextView *text = g_object_get_data ((GObject*)window, "plugman-text");
 
   ctk_text_buffer_copy_clipboard (ctk_text_view_get_buffer (text),
-                                  get_clipboard ((GtkWidget*) text));
+                                  get_clipboard ((CtkWidget*) text));
 }
 
 static void
@@ -49,11 +49,11 @@ window_paste (GSimpleAction *action,
               GVariant      *parameter,
               gpointer       user_data)
 {
-  GtkWindow *window = CTK_WINDOW (user_data);
-  GtkTextView *text = g_object_get_data ((GObject*)window, "plugman-text");
+  CtkWindow *window = CTK_WINDOW (user_data);
+  CtkTextView *text = g_object_get_data ((GObject*)window, "plugman-text");
   
   ctk_text_buffer_paste_clipboard (ctk_text_view_get_buffer (text),
-                                   get_clipboard ((GtkWidget*) text),
+                                   get_clipboard ((CtkWidget*) text),
                                    NULL,
                                    TRUE);
 
@@ -69,10 +69,10 @@ static void
 new_window (GApplication *app,
             GFile        *file)
 {
-  GtkWidget *window, *grid, *scrolled, *view;
+  CtkWidget *window, *grid, *scrolled, *view;
 
   window = ctk_application_window_new (CTK_APPLICATION (app));
-  ctk_window_set_default_size ((GtkWindow*)window, 640, 480);
+  ctk_window_set_default_size ((CtkWindow*)window, 640, 480);
   g_action_map_add_action_entries (G_ACTION_MAP (window), win_entries, G_N_ELEMENTS (win_entries), window);
   ctk_window_set_title (CTK_WINDOW (window), "Plugman");
 
@@ -97,7 +97,7 @@ new_window (GApplication *app,
 
       if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
         {
-          GtkTextBuffer *buffer;
+          CtkTextBuffer *buffer;
 
           buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
           ctk_text_buffer_set_text (buffer, contents, length);
@@ -126,8 +126,8 @@ plug_man_open (GApplication  *application,
     new_window (application, files[i]);
 }
 
-typedef GtkApplication PlugMan;
-typedef GtkApplicationClass PlugManClass;
+typedef CtkApplication PlugMan;
+typedef CtkApplicationClass PlugManClass;
 
 G_DEFINE_TYPE (PlugMan, plug_man, CTK_TYPE_APPLICATION)
 
@@ -156,7 +156,7 @@ quit_app (GSimpleAction *action,
           gpointer       user_data)
 {
   GList *list, *next;
-  GtkWindow *win;
+  CtkWindow *win;
 
   g_print ("Going down...\n");
 
@@ -197,8 +197,8 @@ plugin_action (GAction  *action,
 {
   GApplication *app;
   GList *list;
-  GtkWindow *window;
-  GtkWidget *text;
+  CtkWindow *window;
+  CtkWidget *text;
   GdkRGBA color;
 
   app = g_application_get_default ();
@@ -296,7 +296,7 @@ disable_plugin (const gchar *name)
 }
 
 static void
-enable_or_disable_plugin (GtkToggleButton *button,
+enable_or_disable_plugin (CtkToggleButton *button,
                           const gchar     *name)
 {
   if (plugin_enabled (name))
@@ -311,28 +311,28 @@ configure_plugins (GSimpleAction *action,
                    GVariant      *parameter,
                    gpointer       user_data)
 {
-  GtkBuilder *builder;
-  GtkWidget *dialog;
-  GtkWidget *check;
+  CtkBuilder *builder;
+  CtkWidget *dialog;
+  CtkWidget *check;
   GError *error = NULL;
 
   builder = ctk_builder_new ();
   ctk_builder_add_from_string (builder,
                                "<interface>"
-                               "  <object class='GtkDialog' id='plugin-dialog'>"
+                               "  <object class='CtkDialog' id='plugin-dialog'>"
                                "    <property name='border-width'>12</property>"
                                "    <property name='title'>Plugins</property>"
                                "    <child internal-child='vbox'>"
-                               "      <object class='GtkBox' id='content-area'>"
+                               "      <object class='CtkBox' id='content-area'>"
                                "        <property name='visible'>True</property>"
                                "        <child>"
-                               "          <object class='GtkCheckButton' id='red-plugin'>"
+                               "          <object class='CtkCheckButton' id='red-plugin'>"
                                "            <property name='label' translatable='yes'>Red Plugin - turn your text red</property>"
                                "            <property name='visible'>True</property>"
                                "          </object>"
                                "        </child>"
                                "        <child>"
-                               "          <object class='GtkCheckButton' id='black-plugin'>"
+                               "          <object class='CtkCheckButton' id='black-plugin'>"
                                "            <property name='label' translatable='yes'>Black Plugin - turn your text black</property>"
                                "            <property name='visible'>True</property>"
                                "          </object>"
@@ -340,10 +340,10 @@ configure_plugins (GSimpleAction *action,
                                "      </object>"
                                "    </child>"
                                "    <child internal-child='action_area'>"
-                               "      <object class='GtkButtonBox' id='action-area'>"
+                               "      <object class='CtkButtonBox' id='action-area'>"
                                "        <property name='visible'>True</property>"
                                "        <child>"
-                               "          <object class='GtkButton' id='close-button'>"
+                               "          <object class='CtkButton' id='close-button'>"
                                "            <property name='label' translatable='yes'>Close</property>"
                                "            <property name='visible'>True</property>"
                                "          </object>"
@@ -362,11 +362,11 @@ configure_plugins (GSimpleAction *action,
       goto out;
     }
 
-  dialog = (GtkWidget *)ctk_builder_get_object (builder, "plugin-dialog");
-  check = (GtkWidget *)ctk_builder_get_object (builder, "red-plugin");
+  dialog = (CtkWidget *)ctk_builder_get_object (builder, "plugin-dialog");
+  check = (CtkWidget *)ctk_builder_get_object (builder, "red-plugin");
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (check), plugin_enabled ("red"));
   g_signal_connect (check, "toggled", G_CALLBACK (enable_or_disable_plugin), "red");
-  check = (GtkWidget *)ctk_builder_get_object (builder, "black-plugin");
+  check = (CtkWidget *)ctk_builder_get_object (builder, "black-plugin");
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (check), plugin_enabled ("black"));
   g_signal_connect (check, "toggled", G_CALLBACK (enable_or_disable_plugin), "black");
 
@@ -387,7 +387,7 @@ static GActionEntry app_entries[] = {
 static void
 plug_man_startup (GApplication *application)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
 
   G_APPLICATION_CLASS (plug_man_parent_class)
     ->startup (application);

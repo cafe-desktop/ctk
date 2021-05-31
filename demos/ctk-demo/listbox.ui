@@ -2,30 +2,30 @@
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
   <!-- interface-requires ctkdemo 3.10 -->
-  <object class="GtkMenu" id="menu1">
+  <object class="CtkMenu" id="menu1">
     <property name="visible">1</property>
     <child>
-      <object class="GtkMenuItem" id="menuitem1">
+      <object class="CtkMenuItem" id="menuitem1">
         <property name="visible">1</property>
         <property name="label" translatable="yes">Email message</property>
         <property name="use_underline">1</property>
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="menuitem2">
+      <object class="CtkMenuItem" id="menuitem2">
         <property name="visible">1</property>
         <property name="label" translatable="yes">Embed message</property>
         <property name="use_underline">1</property>
       </object>
     </child>
   </object>
-  <template class="GtkMessageRow" parent="GtkListBoxRow">
+  <template class="CtkMessageRow" parent="CtkListBoxRow">
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">1</property>
         <property name="hexpand">1</property>
         <child>
-          <object class="GtkImage" id="avatar_image">
+          <object class="CtkImage" id="avatar_image">
             <property name="width_request">32</property>
             <property name="height_request">32</property>
             <property name="visible">1</property>
@@ -44,19 +44,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box1">
+          <object class="CtkBox" id="box1">
             <property name="visible">1</property>
             <property name="hexpand">1</property>
             <property name="baseline_position">top</property>
             <child>
-              <object class="GtkButton" id="button2">
+              <object class="CtkButton" id="button2">
                 <property name="visible">1</property>
                 <property name="can_focus">1</property>
                 <property name="receives_default">1</property>
                 <property name="valign">baseline</property>
                 <property name="relief">none</property>
                 <child>
-                  <object class="GtkLabel" id="source_name">
+                  <object class="CtkLabel" id="source_name">
                     <property name="visible">1</property>
                     <property name="valign">baseline</property>
                     <property name="label" translatable="0">Username</property>
@@ -68,7 +68,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel" id="source_nick">
+              <object class="CtkLabel" id="source_nick">
                 <property name="visible">1</property>
                 <property name="valign">baseline</property>
                 <property name="label" translatable="0">@nick</property>
@@ -81,7 +81,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="short_time_label">
+              <object class="CtkLabel" id="short_time_label">
                 <property name="visible">1</property>
                 <property name="valign">baseline</property>
                 <property name="label" translatable="yes">38m</property>
@@ -102,7 +102,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="content_label">
+          <object class="CtkLabel" id="content_label">
             <property name="visible">1</property>
             <property name="halign">start</property>
             <property name="valign">start</property>
@@ -117,15 +117,15 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="resent_box">
+          <object class="CtkBox" id="resent_box">
             <child>
-              <object class="GtkImage" id="image2">
+              <object class="CtkImage" id="image2">
                 <property name="visible">1</property>
                 <property name="icon_name">media-playlist-repeat</property>
               </object>
             </child>
             <child>
-              <object class="GtkLabel" id="label4">
+              <object class="CtkLabel" id="label4">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Resent by</property>
               </object>
@@ -134,7 +134,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLinkButton" id="resent_by_button">
+              <object class="CtkLinkButton" id="resent_by_button">
                 <property name="label" translatable="0">reshareer</property>
                 <property name="visible">1</property>
                 <property name="can_focus">1</property>
@@ -153,11 +153,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box3">
+          <object class="CtkBox" id="box3">
             <property name="visible">1</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkButton" id="expand_button">
+              <object class="CtkButton" id="expand_button">
                 <property name="label" translatable="yes">Expand</property>
                 <property name="visible">1</property>
                 <property name="can_focus">1</property>
@@ -167,10 +167,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkBox" id="extra_buttons_box">
+              <object class="CtkBox" id="extra_buttons_box">
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkButton" id="reply-button">
+                  <object class="CtkButton" id="reply-button">
                     <property name="label" translatable="yes">Reply</property>
                     <property name="visible">1</property>
                     <property name="can_focus">1</property>
@@ -179,7 +179,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="reshare-button">
+                  <object class="CtkButton" id="reshare-button">
                     <property name="label" translatable="yes">Reshare</property>
                     <property name="visible">1</property>
                     <property name="can_focus">1</property>
@@ -192,7 +192,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="favorite-buttton">
+                  <object class="CtkButton" id="favorite-buttton">
                     <property name="label" translatable="yes">Favorite</property>
                     <property name="visible">1</property>
                     <property name="can_focus">1</property>
@@ -205,14 +205,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkMenuButton" id="more-button">
+                  <object class="CtkMenuButton" id="more-button">
                     <property name="visible">1</property>
                     <property name="can_focus">1</property>
                     <property name="receives_default">1</property>
                     <property name="relief">none</property>
                     <property name="popup">menu1</property>
                     <child>
-                      <object class="GtkLabel" id="label7">
+                      <object class="CtkLabel" id="label7">
                         <property name="visible">1</property>
                         <property name="label" translatable="yes">More...</property>
                       </object>
@@ -234,24 +234,24 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRevealer" id="details_revealer">
+          <object class="CtkRevealer" id="details_revealer">
             <property name="visible">1</property>
             <child>
-              <object class="GtkBox" id="box5">
+              <object class="CtkBox" id="box5">
                 <property name="visible">1</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkBox" id="box7">
+                  <object class="CtkBox" id="box7">
                     <property name="visible">1</property>
                     <property name="margin_top">2</property>
                     <property name="margin_bottom">2</property>
                     <property name="spacing">8</property>
                     <child>
-                      <object class="GtkFrame" id="frame1">
+                      <object class="CtkFrame" id="frame1">
                         <property name="visible">1</property>
                         <property name="shadow_type">none</property>
                         <child>
-                          <object class="GtkLabel" id="n_reshares_label">
+                          <object class="CtkLabel" id="n_reshares_label">
                             <property name="visible">1</property>
                             <property name="label" translatable="0">&lt;b&gt;2&lt;/b&gt;
 Reshares</property>
@@ -263,11 +263,11 @@ Reshares</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkFrame" id="frame2">
+                      <object class="CtkFrame" id="frame2">
                         <property name="visible">1</property>
                         <property name="shadow_type">none</property>
                         <child>
-                          <object class="GtkLabel" id="n_favorites_label">
+                          <object class="CtkLabel" id="n_favorites_label">
                             <property name="visible">1</property>
                             <property name="label" translatable="0">&lt;b&gt;2&lt;/b&gt;
 FAVORITES</property>
@@ -287,10 +287,10 @@ FAVORITES</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="box6">
+                  <object class="CtkBox" id="box6">
                     <property name="visible">1</property>
                     <child>
-                      <object class="GtkLabel" id="detailed_time_label">
+                      <object class="CtkLabel" id="detailed_time_label">
                         <property name="visible">1</property>
                         <property name="label" translatable="0">4:25 AM - 14 Jun 13 </property>
                         <style>
@@ -299,7 +299,7 @@ FAVORITES</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button5">
+                      <object class="CtkButton" id="button5">
                         <property name="label" translatable="yes">Details</property>
                         <property name="visible">1</property>
                         <property name="can_focus">1</property>

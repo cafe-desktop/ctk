@@ -29,13 +29,13 @@
 /**
  * SECTION:ctkfontchooser
  * @Short_description: Interface implemented by widgets displaying fonts
- * @Title: GtkFontChooser
- * @See_also: #GtkFontChooserDialog, #GtkFontChooserWidget, #GtkFontButton
+ * @Title: CtkFontChooser
+ * @See_also: #CtkFontChooserDialog, #CtkFontChooserWidget, #CtkFontButton
  *
- * #GtkFontChooser is an interface that can be implemented by widgets
+ * #CtkFontChooser is an interface that can be implemented by widgets
  * displaying the list of fonts. In GTK+, the main objects
- * that implement this interface are #GtkFontChooserWidget,
- * #GtkFontChooserDialog and #GtkFontButton. The GtkFontChooser interface
+ * that implement this interface are #CtkFontChooserWidget,
+ * #CtkFontChooserDialog and #CtkFontButton. The CtkFontChooser interface
  * has been introducted in GTK+ 3.2.
  */
 
@@ -47,14 +47,14 @@ enum
 
 static guint chooser_signals[LAST_SIGNAL];
 
-typedef GtkFontChooserIface GtkFontChooserInterface;
-G_DEFINE_INTERFACE (GtkFontChooser, ctk_font_chooser, G_TYPE_OBJECT);
+typedef CtkFontChooserIface CtkFontChooserInterface;
+G_DEFINE_INTERFACE (CtkFontChooser, ctk_font_chooser, G_TYPE_OBJECT);
 
 static void
-ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
+ctk_font_chooser_default_init (CtkFontChooserInterface *iface)
 {
   /**
-   * GtkFontChooser:font:
+   * CtkFontChooser:font:
    *
    * The font description as a string, e.g. "Sans Italic 12".
    */
@@ -67,7 +67,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
                            CTK_PARAM_READWRITE));
 
   /**
-   * GtkFontChooser:font-desc:
+   * CtkFontChooser:font-desc:
    *
    * The font description as a #PangoFontDescription.
    */
@@ -80,7 +80,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
                           CTK_PARAM_READWRITE));
 
   /**
-   * GtkFontChooser:preview-text:
+   * CtkFontChooser:preview-text:
    *
    * The string with which to preview the font.
    */
@@ -93,7 +93,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
                           CTK_PARAM_READWRITE));
 
   /**
-   * GtkFontChooser:show-preview-entry:
+   * CtkFontChooser:show-preview-entry:
    *
    * Whether to show an entry to change the preview text.
    */
@@ -106,7 +106,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkFontChooser:level:
+   * CtkFontChooser:level:
    *
    * The level of granularity to offer for selecting fonts.
    *
@@ -124,7 +124,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkFontChooser:font-features:
+   * CtkFontChooser:font-features:
    *
    * The selected font features, in a format that is compatible with
    * CSS and with Pango attributes.
@@ -140,9 +140,9 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
                           CTK_PARAM_READABLE));
 
   /**
-   * GtkFontChooser:language:
+   * CtkFontChooser:language:
    *
-   * The language for which the #GtkFontChooser:font-features were
+   * The language for which the #CtkFontChooser:font-features were
    * selected, in a format that is compatible with CSS and with Pango
    * attributes.
    *
@@ -157,7 +157,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
-   * GtkFontChooser::font-activated:
+   * CtkFontChooser::font-activated:
    * @self: the object which received the signal
    * @fontname: the font name
    *
@@ -170,7 +170,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
     g_signal_new (I_("font-activated"),
                   CTK_TYPE_FONT_CHOOSER,
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkFontChooserIface, font_activated),
+                  G_STRUCT_OFFSET (CtkFontChooserIface, font_activated),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
@@ -179,7 +179,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
 
 /**
  * ctk_font_chooser_get_font_family:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Gets the #PangoFontFamily representing the selected font family.
  * Font families are a collection of font faces.
@@ -193,7 +193,7 @@ ctk_font_chooser_default_init (GtkFontChooserInterface *iface)
  * Since: 3.2
  */
 PangoFontFamily *
-ctk_font_chooser_get_font_family (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_font_family (CtkFontChooser *fontchooser)
 {
   g_return_val_if_fail (CTK_IS_FONT_CHOOSER (fontchooser), NULL);
 
@@ -202,7 +202,7 @@ ctk_font_chooser_get_font_family (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_get_font_face:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Gets the #PangoFontFace representing the selected font group
  * details (i.e. family, slant, weight, width, etc).
@@ -216,7 +216,7 @@ ctk_font_chooser_get_font_family (GtkFontChooser *fontchooser)
  * Since: 3.2
  */
 PangoFontFace *
-ctk_font_chooser_get_font_face (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_font_face (CtkFontChooser *fontchooser)
 {
   g_return_val_if_fail (CTK_IS_FONT_CHOOSER (fontchooser), NULL);
 
@@ -225,7 +225,7 @@ ctk_font_chooser_get_font_face (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_get_font_size:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * The selected font size.
  *
@@ -235,7 +235,7 @@ ctk_font_chooser_get_font_face (GtkFontChooser *fontchooser)
  * Since: 3.2
  */
 gint
-ctk_font_chooser_get_font_size (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_font_size (CtkFontChooser *fontchooser)
 {
   g_return_val_if_fail (CTK_IS_FONT_CHOOSER (fontchooser), -1);
 
@@ -244,7 +244,7 @@ ctk_font_chooser_get_font_size (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_get_font:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Gets the currently-selected font name.
  *
@@ -264,7 +264,7 @@ ctk_font_chooser_get_font_size (GtkFontChooser *fontchooser)
  * Since: 3.2
  */
 gchar *
-ctk_font_chooser_get_font (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_font (CtkFontChooser *fontchooser)
 {
   gchar *fontname;
 
@@ -278,7 +278,7 @@ ctk_font_chooser_get_font (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_set_font:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  * @fontname: a font name like “Helvetica 12” or “Times Bold 18”
  *
  * Sets the currently-selected font.
@@ -286,7 +286,7 @@ ctk_font_chooser_get_font (GtkFontChooser *fontchooser)
  * Since: 3.2
  */
 void
-ctk_font_chooser_set_font (GtkFontChooser *fontchooser,
+ctk_font_chooser_set_font (CtkFontChooser *fontchooser,
                            const gchar    *fontname)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (fontchooser));
@@ -297,7 +297,7 @@ ctk_font_chooser_set_font (GtkFontChooser *fontchooser,
 
 /**
  * ctk_font_chooser_get_font_desc:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Gets the currently-selected font.
  *
@@ -316,7 +316,7 @@ ctk_font_chooser_set_font (GtkFontChooser *fontchooser,
  * Since: 3.2
  */
 PangoFontDescription *
-ctk_font_chooser_get_font_desc (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_font_desc (CtkFontChooser *fontchooser)
 {
   PangoFontDescription *font_desc;
 
@@ -329,7 +329,7 @@ ctk_font_chooser_get_font_desc (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_set_font_desc:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  * @font_desc: a #PangoFontDescription
  *
  * Sets the currently-selected font from @font_desc.
@@ -337,7 +337,7 @@ ctk_font_chooser_get_font_desc (GtkFontChooser *fontchooser)
  * Since: 3.2
  */
 void
-ctk_font_chooser_set_font_desc (GtkFontChooser             *fontchooser,
+ctk_font_chooser_set_font_desc (CtkFontChooser             *fontchooser,
                                 const PangoFontDescription *font_desc)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (fontchooser));
@@ -348,7 +348,7 @@ ctk_font_chooser_set_font_desc (GtkFontChooser             *fontchooser,
 
 /**
  * ctk_font_chooser_get_preview_text:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Gets the text displayed in the preview area.
  *
@@ -358,7 +358,7 @@ ctk_font_chooser_set_font_desc (GtkFontChooser             *fontchooser,
  * Since: 3.2
  */
 gchar *
-ctk_font_chooser_get_preview_text (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_preview_text (CtkFontChooser *fontchooser)
 {
   char *text;
 
@@ -371,7 +371,7 @@ ctk_font_chooser_get_preview_text (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_set_preview_text:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  * @text: (transfer none): the text to display in the preview area
  *
  * Sets the text displayed in the preview area.
@@ -380,7 +380,7 @@ ctk_font_chooser_get_preview_text (GtkFontChooser *fontchooser)
  * Since: 3.2
  */
 void
-ctk_font_chooser_set_preview_text (GtkFontChooser *fontchooser,
+ctk_font_chooser_set_preview_text (CtkFontChooser *fontchooser,
                                    const gchar    *text)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (fontchooser));
@@ -391,7 +391,7 @@ ctk_font_chooser_set_preview_text (GtkFontChooser *fontchooser,
 
 /**
  * ctk_font_chooser_get_show_preview_entry:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Returns whether the preview entry is shown or not.
  *
@@ -401,7 +401,7 @@ ctk_font_chooser_set_preview_text (GtkFontChooser *fontchooser,
  * Since: 3.2
  */
 gboolean
-ctk_font_chooser_get_show_preview_entry (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_show_preview_entry (CtkFontChooser *fontchooser)
 {
   gboolean show;
 
@@ -414,7 +414,7 @@ ctk_font_chooser_get_show_preview_entry (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_set_show_preview_entry:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  * @show_preview_entry: whether to show the editable preview entry or not
  *
  * Shows or hides the editable preview entry.
@@ -422,7 +422,7 @@ ctk_font_chooser_get_show_preview_entry (GtkFontChooser *fontchooser)
  * Since: 3.2
  */
 void
-ctk_font_chooser_set_show_preview_entry (GtkFontChooser *fontchooser,
+ctk_font_chooser_set_show_preview_entry (CtkFontChooser *fontchooser,
                                          gboolean        show_preview_entry)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (fontchooser));
@@ -433,8 +433,8 @@ ctk_font_chooser_set_show_preview_entry (GtkFontChooser *fontchooser,
 
 /**
  * ctk_font_chooser_set_filter_func:
- * @fontchooser: a #GtkFontChooser
- * @filter: (allow-none): a #GtkFontFilterFunc, or %NULL
+ * @fontchooser: a #CtkFontChooser
+ * @filter: (allow-none): a #CtkFontFilterFunc, or %NULL
  * @user_data: data to pass to @filter
  * @destroy: function to call to free @data when it is no longer needed
  *
@@ -444,8 +444,8 @@ ctk_font_chooser_set_show_preview_entry (GtkFontChooser *fontchooser,
  * Since: 3.2
  */
 void
-ctk_font_chooser_set_filter_func (GtkFontChooser   *fontchooser,
-                                  GtkFontFilterFunc filter,
+ctk_font_chooser_set_filter_func (CtkFontChooser   *fontchooser,
+                                  CtkFontFilterFunc filter,
                                   gpointer          user_data,
                                   GDestroyNotify    destroy)
 {
@@ -458,7 +458,7 @@ ctk_font_chooser_set_filter_func (GtkFontChooser   *fontchooser,
 }
 
 void
-_ctk_font_chooser_font_activated (GtkFontChooser *chooser,
+_ctk_font_chooser_font_activated (CtkFontChooser *chooser,
                                   const gchar    *fontname)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (chooser));
@@ -468,7 +468,7 @@ _ctk_font_chooser_font_activated (GtkFontChooser *chooser,
 
 /**
  * ctk_font_chooser_set_font_map:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  * @fontmap: (allow-none): a #PangoFontMap
  *
  * Sets a custom font map to use for this font chooser widget.
@@ -499,7 +499,7 @@ _ctk_font_chooser_font_activated (GtkFontChooser *chooser,
  * Since: 3.18
  */
 void
-ctk_font_chooser_set_font_map (GtkFontChooser *fontchooser,
+ctk_font_chooser_set_font_map (CtkFontChooser *fontchooser,
                                PangoFontMap   *fontmap)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (fontchooser));
@@ -511,7 +511,7 @@ ctk_font_chooser_set_font_map (GtkFontChooser *fontchooser,
 
 /**
  * ctk_font_chooser_get_font_map:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Gets the custom font map of this font chooser widget,
  * or %NULL if it does not have one.
@@ -521,7 +521,7 @@ ctk_font_chooser_set_font_map (GtkFontChooser *fontchooser,
  * Since: 3.18
  */
 PangoFontMap *
-ctk_font_chooser_get_font_map (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_font_map (CtkFontChooser *fontchooser)
 {
   PangoFontMap *fontmap = NULL;
 
@@ -535,7 +535,7 @@ ctk_font_chooser_get_font_map (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_set_level:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  * @level: the desired level of granularity
  *
  * Sets the desired level of granularity for selecting fonts.
@@ -543,8 +543,8 @@ ctk_font_chooser_get_font_map (GtkFontChooser *fontchooser)
  * Since: 3.24
  */
 void
-ctk_font_chooser_set_level (GtkFontChooser      *fontchooser,
-                            GtkFontChooserLevel  level)
+ctk_font_chooser_set_level (CtkFontChooser      *fontchooser,
+                            CtkFontChooserLevel  level)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (fontchooser));
 
@@ -553,7 +553,7 @@ ctk_font_chooser_set_level (GtkFontChooser      *fontchooser,
 
 /**
  * ctk_font_chooser_get_level:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Returns the current level of granularity for selecting fonts.
  *
@@ -561,10 +561,10 @@ ctk_font_chooser_set_level (GtkFontChooser      *fontchooser,
  *
  * Since: 3.24
  */
-GtkFontChooserLevel
-ctk_font_chooser_get_level (GtkFontChooser *fontchooser)
+CtkFontChooserLevel
+ctk_font_chooser_get_level (CtkFontChooser *fontchooser)
 {
-  GtkFontChooserLevel level;
+  CtkFontChooserLevel level;
 
   g_return_val_if_fail (CTK_IS_FONT_CHOOSER (fontchooser), 0);
 
@@ -575,7 +575,7 @@ ctk_font_chooser_get_level (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_get_font_features:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Gets the currently-selected font features.
  *
@@ -584,7 +584,7 @@ ctk_font_chooser_get_level (GtkFontChooser *fontchooser)
  * Since: 3.24
  */
 char *
-ctk_font_chooser_get_font_features (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_font_features (CtkFontChooser *fontchooser)
 {
   char *text;
 
@@ -597,7 +597,7 @@ ctk_font_chooser_get_font_features (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_get_language:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  *
  * Gets the language that is used for font features.
  *
@@ -606,7 +606,7 @@ ctk_font_chooser_get_font_features (GtkFontChooser *fontchooser)
  * Since: 3.24
  */
 char *
-ctk_font_chooser_get_language (GtkFontChooser *fontchooser)
+ctk_font_chooser_get_language (CtkFontChooser *fontchooser)
 {
   char *text;
 
@@ -619,7 +619,7 @@ ctk_font_chooser_get_language (GtkFontChooser *fontchooser)
 
 /**
  * ctk_font_chooser_set_language:
- * @fontchooser: a #GtkFontChooser
+ * @fontchooser: a #CtkFontChooser
  * @language: a language
  *
  * Sets the language to use for font features.
@@ -627,7 +627,7 @@ ctk_font_chooser_get_language (GtkFontChooser *fontchooser)
  * Since: 3.24
  */
 void
-ctk_font_chooser_set_language (GtkFontChooser *fontchooser,
+ctk_font_chooser_set_language (CtkFontChooser *fontchooser,
                                const char     *language)
 {
   g_return_if_fail (CTK_IS_FONT_CHOOSER (fontchooser));

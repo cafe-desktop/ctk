@@ -52,7 +52,7 @@
 #include <windows.h>
 
 typedef struct {
-  GtkFileChooserNative *self;
+  CtkFileChooserNative *self;
   IFileDialogEvents *events;
 
   HWND parent;
@@ -347,14 +347,14 @@ static gboolean
 filechooser_win32_thread_done (gpointer _data)
 {
   FilechooserWin32ThreadData *data = _data;
-  GtkFileChooserNative *self = data->self;
+  CtkFileChooserNative *self = data->self;
   GSList *l;
 
   self->mode_data = NULL;
 
   for (l = self->choices; l; l = l->next)
     {
-      GtkFileChooserNativeChoice *choice = (GtkFileChooserNativeChoice*) l->data;
+      CtkFileChooserNativeChoice *choice = (CtkFileChooserNativeChoice*) l->data;
       gint sel = g_array_index (data->choices_selections, gint,
                                 g_slist_position (self->choices, l));
 
@@ -630,7 +630,7 @@ filechooser_win32_thread (gpointer _data)
         {
           for (l = data->self->choices; l; l = l->next, dialog_control_id++)
             {
-              GtkFileChooserNativeChoice *choice = (GtkFileChooserNativeChoice*) l->data;
+              CtkFileChooserNativeChoice *choice = (CtkFileChooserNativeChoice*) l->data;
 
               if (choice->options)
                 {
@@ -755,7 +755,7 @@ filechooser_win32_thread (gpointer _data)
         {
           for (l = data->self->choices; l; l = l->next)
             {
-              GtkFileChooserNativeChoice *choice = (GtkFileChooserNativeChoice*) l->data;
+              CtkFileChooserNativeChoice *choice = (CtkFileChooserNativeChoice*) l->data;
               DWORD dialog_item_id = (DWORD) g_slist_position (data->self->choices, l);
               gint val = -1;
 
@@ -804,7 +804,7 @@ filechooser_win32_thread (gpointer _data)
 }
 
 static gboolean
-file_filter_to_win32 (GtkFileFilter *filter,
+file_filter_to_win32 (CtkFileFilter *filter,
                       COMDLG_FILTERSPEC *spec)
 {
   const char *name;
@@ -868,12 +868,12 @@ translate_mnemonics (const char *src)
 }
 
 gboolean
-ctk_file_chooser_native_win32_show (GtkFileChooserNative *self)
+ctk_file_chooser_native_win32_show (CtkFileChooserNative *self)
 {
   GThread *thread;
   FilechooserWin32ThreadData *data;
-  GtkWindow *transient_for;
-  GtkFileChooserAction action;
+  CtkWindow *transient_for;
+  CtkFileChooserAction action;
   guint update_preview_signal;
   GSList *filters, *l;
   int n_filters, i;
@@ -976,7 +976,7 @@ ctk_file_chooser_native_win32_show (GtkFileChooserNative *self)
 }
 
 void
-ctk_file_chooser_native_win32_hide (GtkFileChooserNative *self)
+ctk_file_chooser_native_win32_hide (CtkFileChooserNative *self)
 {
   FilechooserWin32ThreadData *data = self->mode_data;
 

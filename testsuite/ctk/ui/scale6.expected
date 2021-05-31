@@ -1,2 +1,2 @@
 ERROR: ctk-builder-error-quark 1
-.:5:13 Unsupported tag for GtkScale: <foo>
+.:5:13 Unsupported tag for CtkScale: <foo>

@@ -21,23 +21,23 @@
 /**
  * SECTION:ctkmenubutton
  * @short_description: A widget that shows a popup when clicked on
- * @title: GtkMenuButton
+ * @title: CtkMenuButton
  *
- * The #GtkMenuButton widget is used to display a popup when clicked on.
- * This popup can be provided either as a #GtkMenu, a #GtkPopover or an
+ * The #CtkMenuButton widget is used to display a popup when clicked on.
+ * This popup can be provided either as a #CtkMenu, a #CtkPopover or an
  * abstract #GMenuModel.
  *
- * The #GtkMenuButton widget can hold any valid child widget. That is, it
- * can hold almost any other standard #GtkWidget. The most commonly used
- * child is #GtkImage. If no widget is explicitely added to the #GtkMenuButton,
- * a #GtkImage is automatically created, using an arrow image oriented
- * according to #GtkMenuButton:direction or the generic “open-menu-symbolic”
+ * The #CtkMenuButton widget can hold any valid child widget. That is, it
+ * can hold almost any other standard #CtkWidget. The most commonly used
+ * child is #CtkImage. If no widget is explicitely added to the #CtkMenuButton,
+ * a #CtkImage is automatically created, using an arrow image oriented
+ * according to #CtkMenuButton:direction or the generic “open-menu-symbolic”
  * icon if the direction is not set.
  *
- * The positioning of the popup is determined by the #GtkMenuButton:direction
+ * The positioning of the popup is determined by the #CtkMenuButton:direction
  * property of the menu button.
  *
- * For menus, the #GtkWidget:halign and #GtkWidget:valign properties of the
+ * For menus, the #CtkWidget:halign and #CtkWidget:valign properties of the
  * menu are also taken into account. For example, when the direction is
  * %CTK_ARROW_DOWN and the horizontal alignment is %CTK_ALIGN_START, the
  * menu will be positioned below the button, with the starting edge
@@ -104,8 +104,8 @@
  *
  * # CSS nodes
  *
- * GtkMenuButton has a single CSS node with name button. To differentiate
- * it from a plain #GtkButton, it gets the .popup style class.
+ * CtkMenuButton has a single CSS node with name button. To differentiate
+ * it from a plain #CtkButton, it gets the .popup style class.
  */
 
 #include "config.h"
@@ -123,18 +123,18 @@
 #include "ctkprivate.h"
 #include "ctkintl.h"
 
-struct _GtkMenuButtonPrivate
+struct _CtkMenuButtonPrivate
 {
-  GtkWidget *menu;    /* The menu and the popover are mutually exclusive */
-  GtkWidget *popover; /* Only one at a time can be set */
+  CtkWidget *menu;    /* The menu and the popover are mutually exclusive */
+  CtkWidget *popover; /* Only one at a time can be set */
   GMenuModel *model;
 
-  GtkMenuButtonShowMenuCallback func;
+  CtkMenuButtonShowMenuCallback func;
   gpointer user_data;
 
-  GtkWidget *align_widget;
-  GtkWidget *arrow_widget;
-  GtkArrowType arrow_type;
+  CtkWidget *align_widget;
+  CtkWidget *arrow_widget;
+  CtkArrowType arrow_type;
   gboolean use_popover;
   guint press_handled : 1;
 };
@@ -153,7 +153,7 @@ enum
 
 static GParamSpec *menu_button_props[LAST_PROP];
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkMenuButton, ctk_menu_button, CTK_TYPE_TOGGLE_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkMenuButton, ctk_menu_button, CTK_TYPE_TOGGLE_BUTTON)
 
 static void ctk_menu_button_dispose (GObject *object);
 
@@ -163,7 +163,7 @@ ctk_menu_button_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkMenuButton *self = CTK_MENU_BUTTON (object);
+  CtkMenuButton *self = CTK_MENU_BUTTON (object);
 
   switch (property_id)
     {
@@ -196,7 +196,7 @@ ctk_menu_button_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkMenuButtonPrivate *priv = CTK_MENU_BUTTON (object)->priv;
+  CtkMenuButtonPrivate *priv = CTK_MENU_BUTTON (object)->priv;
 
   switch (property_id)
     {
@@ -224,11 +224,11 @@ ctk_menu_button_get_property (GObject    *object,
 }
 
 static void
-ctk_menu_button_state_flags_changed (GtkWidget    *widget,
-                                     GtkStateFlags previous_state_flags)
+ctk_menu_button_state_flags_changed (CtkWidget    *widget,
+                                     CtkStateFlags previous_state_flags)
 {
-  GtkMenuButton *button = CTK_MENU_BUTTON (widget);
-  GtkMenuButtonPrivate *priv = button->priv;
+  CtkMenuButton *button = CTK_MENU_BUTTON (widget);
+  CtkMenuButtonPrivate *priv = button->priv;
 
   if (!ctk_widget_is_sensitive (widget))
     {
@@ -240,10 +240,10 @@ ctk_menu_button_state_flags_changed (GtkWidget    *widget,
 }
 
 static void
-popup_menu (GtkMenuButton *menu_button,
+popup_menu (CtkMenuButton *menu_button,
             GdkEvent      *event)
 {
-  GtkMenuButtonPrivate *priv = menu_button->priv;
+  CtkMenuButtonPrivate *priv = menu_button->priv;
   GdkGravity widget_anchor = GDK_GRAVITY_SOUTH_WEST;
   GdkGravity menu_anchor = GDK_GRAVITY_NORTH_WEST;
 
@@ -394,10 +394,10 @@ popup_menu (GtkMenuButton *menu_button,
 }
 
 static void
-ctk_menu_button_toggled (GtkToggleButton *button)
+ctk_menu_button_toggled (CtkToggleButton *button)
 {
-  GtkMenuButton *menu_button = CTK_MENU_BUTTON (button);
-  GtkMenuButtonPrivate *priv = menu_button->priv;
+  CtkMenuButton *menu_button = CTK_MENU_BUTTON (button);
+  CtkMenuButtonPrivate *priv = menu_button->priv;
   gboolean active = ctk_toggle_button_get_active (button);
 
   if (priv->menu)
@@ -432,10 +432,10 @@ ctk_menu_button_toggled (GtkToggleButton *button)
 }
 
 static void
-ctk_menu_button_add (GtkContainer *container,
-                     GtkWidget    *child)
+ctk_menu_button_add (CtkContainer *container,
+                     CtkWidget    *child)
 {
-  GtkMenuButton *button = CTK_MENU_BUTTON (container);
+  CtkMenuButton *button = CTK_MENU_BUTTON (container);
 
   if (button->priv->arrow_widget)
     ctk_container_remove (container, button->priv->arrow_widget);
@@ -444,10 +444,10 @@ ctk_menu_button_add (GtkContainer *container,
 }
 
 static void
-ctk_menu_button_remove (GtkContainer *container,
-                        GtkWidget    *child)
+ctk_menu_button_remove (CtkContainer *container,
+                        CtkWidget    *child)
 {
-  GtkMenuButton *button = CTK_MENU_BUTTON (container);
+  CtkMenuButton *button = CTK_MENU_BUTTON (container);
 
   if (child == button->priv->arrow_widget)
     button->priv->arrow_widget = NULL;
@@ -456,12 +456,12 @@ ctk_menu_button_remove (GtkContainer *container,
 }
 
 static void
-ctk_menu_button_class_init (GtkMenuButtonClass *klass)
+ctk_menu_button_class_init (CtkMenuButtonClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
-  GtkToggleButtonClass *toggle_button_class = CTK_TOGGLE_BUTTON_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  CtkToggleButtonClass *toggle_button_class = CTK_TOGGLE_BUTTON_CLASS (klass);
 
   gobject_class->set_property = ctk_menu_button_set_property;
   gobject_class->get_property = ctk_menu_button_get_property;
@@ -475,9 +475,9 @@ ctk_menu_button_class_init (GtkMenuButtonClass *klass)
   toggle_button_class->toggled = ctk_menu_button_toggled;
 
   /**
-   * GtkMenuButton:popup:
+   * CtkMenuButton:popup:
    *
-   * The #GtkMenu that will be popped up when the button is clicked.
+   * The #CtkMenu that will be popped up when the button is clicked.
    *
    * Since: 3.6
    */
@@ -489,14 +489,14 @@ ctk_menu_button_class_init (GtkMenuButtonClass *klass)
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkMenuButton:menu-model:
+   * CtkMenuButton:menu-model:
    *
    * The #GMenuModel from which the popup will be created.
-   * Depending on the #GtkMenuButton:use-popover property, that may
+   * Depending on the #CtkMenuButton:use-popover property, that may
    * be a menu or a popover.
    *
    * See ctk_menu_button_set_menu_model() for the interaction with the
-   * #GtkMenuButton:popup property.
+   * #CtkMenuButton:popup property.
    *
    * Since: 3.6
    */
@@ -508,9 +508,9 @@ ctk_menu_button_class_init (GtkMenuButtonClass *klass)
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkMenuButton:align-widget:
+   * CtkMenuButton:align-widget:
    *
-   * The #GtkWidget to use to align the menu with.
+   * The #CtkWidget to use to align the menu with.
    *
    * Since: 3.6
    */
@@ -522,9 +522,9 @@ ctk_menu_button_class_init (GtkMenuButtonClass *klass)
                            CTK_PARAM_READWRITE);
 
   /**
-   * GtkMenuButton:direction:
+   * CtkMenuButton:direction:
    *
-   * The #GtkArrowType representing the direction in which the
+   * The #CtkArrowType representing the direction in which the
    * menu or popover will be popped out.
    *
    * Since: 3.6
@@ -538,10 +538,10 @@ ctk_menu_button_class_init (GtkMenuButtonClass *klass)
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkMenuButton:use-popover:
+   * CtkMenuButton:use-popover:
    *
-   * Whether to construct a #GtkPopover from the menu model,
-   * or a #GtkMenu.
+   * Whether to construct a #CtkPopover from the menu model,
+   * or a #CtkMenu.
    *
    * Since: 3.12
    */
@@ -553,9 +553,9 @@ ctk_menu_button_class_init (GtkMenuButtonClass *klass)
                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GtkMenuButton:popover:
+   * CtkMenuButton:popover:
    *
-   * The #GtkPopover that will be popped up when the button is clicked.
+   * The #CtkPopover that will be popped up when the button is clicked.
    *
    * Since: 3.12
    */
@@ -573,8 +573,8 @@ ctk_menu_button_class_init (GtkMenuButtonClass *klass)
 }
 
 static void
-set_arrow_type (GtkImage     *image,
-                GtkArrowType  arrow_type)
+set_arrow_type (CtkImage     *image,
+                CtkArrowType  arrow_type)
 {
   switch (arrow_type)
     {
@@ -597,9 +597,9 @@ set_arrow_type (GtkImage     *image,
 }
 
 static void
-add_arrow (GtkMenuButton *menu_button)
+add_arrow (CtkMenuButton *menu_button)
 {
-  GtkWidget *arrow;
+  CtkWidget *arrow;
 
   arrow = ctk_image_new ();
   set_arrow_type (CTK_IMAGE (arrow), menu_button->priv->arrow_type);
@@ -609,10 +609,10 @@ add_arrow (GtkMenuButton *menu_button)
 }
 
 static void
-ctk_menu_button_init (GtkMenuButton *menu_button)
+ctk_menu_button_init (CtkMenuButton *menu_button)
 {
-  GtkMenuButtonPrivate *priv;
-  GtkStyleContext *context;
+  CtkMenuButtonPrivate *priv;
+  CtkStyleContext *context;
 
   priv = ctk_menu_button_get_instance_private (menu_button);
   menu_button->priv = priv;
@@ -631,15 +631,15 @@ ctk_menu_button_init (GtkMenuButton *menu_button)
 /**
  * ctk_menu_button_new:
  *
- * Creates a new #GtkMenuButton widget with downwards-pointing
+ * Creates a new #CtkMenuButton widget with downwards-pointing
  * arrow as the only child. You can replace the child widget
- * with another #GtkWidget should you wish to.
+ * with another #CtkWidget should you wish to.
  *
- * Returns: The newly created #GtkMenuButton widget
+ * Returns: The newly created #CtkMenuButton widget
  *
  * Since: 3.6
  */
-GtkWidget *
+CtkWidget *
 ctk_menu_button_new (void)
 {
   return g_object_new (CTK_TYPE_MENU_BUTTON, NULL);
@@ -651,7 +651,7 @@ ctk_menu_button_new (void)
  * Also used for the "close" signal on the popover.
  */
 static gboolean
-menu_deactivate_cb (GtkMenuButton *menu_button)
+menu_deactivate_cb (CtkMenuButton *menu_button)
 {
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (menu_button), FALSE);
   ctk_widget_unset_state_flags (CTK_WIDGET (menu_button), CTK_STATE_FLAG_PRELIGHT);
@@ -660,20 +660,20 @@ menu_deactivate_cb (GtkMenuButton *menu_button)
 }
 
 static void
-menu_detacher (GtkWidget *widget,
-               GtkMenu   *menu)
+menu_detacher (CtkWidget *widget,
+               CtkMenu   *menu)
 {
-  GtkMenuButtonPrivate *priv = CTK_MENU_BUTTON (widget)->priv;
+  CtkMenuButtonPrivate *priv = CTK_MENU_BUTTON (widget)->priv;
 
-  g_return_if_fail (priv->menu == (GtkWidget *) menu);
+  g_return_if_fail (priv->menu == (CtkWidget *) menu);
 
   priv->menu = NULL;
 }
 
 static void
-update_sensitivity (GtkMenuButton *menu_button)
+update_sensitivity (CtkMenuButton *menu_button)
 {
-  GtkMenuButtonPrivate *priv = menu_button->priv;
+  CtkMenuButtonPrivate *priv = menu_button->priv;
 
   if (CTK_BUTTON (menu_button)->priv->action_helper)
     return;
@@ -682,17 +682,17 @@ update_sensitivity (GtkMenuButton *menu_button)
                             priv->menu != NULL || priv->popover != NULL);
 }
 
-/* This function is used in GtkMenuToolButton, the call back will
- * be called when GtkMenuToolButton would have emitted the “show-menu”
+/* This function is used in CtkMenuToolButton, the call back will
+ * be called when CtkMenuToolButton would have emitted the “show-menu”
  * signal.
  */
 void
-_ctk_menu_button_set_popup_with_func (GtkMenuButton                 *menu_button,
-                                      GtkWidget                     *menu,
-                                      GtkMenuButtonShowMenuCallback  func,
+_ctk_menu_button_set_popup_with_func (CtkMenuButton                 *menu_button,
+                                      CtkWidget                     *menu,
+                                      CtkMenuButtonShowMenuCallback  func,
                                       gpointer                       user_data)
 {
-  GtkMenuButtonPrivate *priv;
+  CtkMenuButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_MENU_BUTTON (menu_button));
   g_return_if_fail (CTK_IS_MENU (menu) || menu == NULL);
@@ -736,22 +736,22 @@ _ctk_menu_button_set_popup_with_func (GtkMenuButton                 *menu_button
 
 /**
  * ctk_menu_button_set_popup:
- * @menu_button: a #GtkMenuButton
- * @menu: (nullable): a #GtkMenu, or %NULL to unset and disable the button
+ * @menu_button: a #CtkMenuButton
+ * @menu: (nullable): a #CtkMenu, or %NULL to unset and disable the button
  *
- * Sets the #GtkMenu that will be popped up when the @menu_button is clicked, or
+ * Sets the #CtkMenu that will be popped up when the @menu_button is clicked, or
  * %NULL to dissociate any existing menu and disable the button.
  *
- * If #GtkMenuButton:menu-model or #GtkMenuButton:popover are set, those objects
+ * If #CtkMenuButton:menu-model or #CtkMenuButton:popover are set, those objects
  * are dissociated from the @menu_button, and those properties are set to %NULL.
  *
  * Since: 3.6
  */
 void
-ctk_menu_button_set_popup (GtkMenuButton *menu_button,
-                           GtkWidget     *menu)
+ctk_menu_button_set_popup (CtkMenuButton *menu_button,
+                           CtkWidget     *menu)
 {
-  GtkMenuButtonPrivate *priv = menu_button->priv;
+  CtkMenuButtonPrivate *priv = menu_button->priv;
 
   g_return_if_fail (CTK_IS_MENU_BUTTON (menu_button));
   g_return_if_fail (CTK_IS_MENU (menu) || menu == NULL);
@@ -772,18 +772,18 @@ ctk_menu_button_set_popup (GtkMenuButton *menu_button,
 
 /**
  * ctk_menu_button_get_popup:
- * @menu_button: a #GtkMenuButton
+ * @menu_button: a #CtkMenuButton
  *
- * Returns the #GtkMenu that pops out of the button.
- * If the button does not use a #GtkMenu, this function
+ * Returns the #CtkMenu that pops out of the button.
+ * If the button does not use a #CtkMenu, this function
  * returns %NULL.
  *
- * Returns: (nullable) (transfer none): a #GtkMenu or %NULL
+ * Returns: (nullable) (transfer none): a #CtkMenu or %NULL
  *
  * Since: 3.6
  */
-GtkMenu *
-ctk_menu_button_get_popup (GtkMenuButton *menu_button)
+CtkMenu *
+ctk_menu_button_get_popup (CtkMenuButton *menu_button)
 {
   g_return_val_if_fail (CTK_IS_MENU_BUTTON (menu_button), NULL);
 
@@ -792,29 +792,29 @@ ctk_menu_button_get_popup (GtkMenuButton *menu_button)
 
 /**
  * ctk_menu_button_set_menu_model:
- * @menu_button: a #GtkMenuButton
+ * @menu_button: a #CtkMenuButton
  * @menu_model: (nullable): a #GMenuModel, or %NULL to unset and disable the
  *   button
  *
  * Sets the #GMenuModel from which the popup will be constructed,
  * or %NULL to dissociate any existing menu model and disable the button.
  *
- * Depending on the value of #GtkMenuButton:use-popover, either a
- * #GtkMenu will be created with ctk_menu_new_from_model(), or a
- * #GtkPopover with ctk_popover_new_from_model(). In either case,
+ * Depending on the value of #CtkMenuButton:use-popover, either a
+ * #CtkMenu will be created with ctk_menu_new_from_model(), or a
+ * #CtkPopover with ctk_popover_new_from_model(). In either case,
  * actions will be connected as documented for these functions.
  *
- * If #GtkMenuButton:popup or #GtkMenuButton:popover are already set, those
+ * If #CtkMenuButton:popup or #CtkMenuButton:popover are already set, those
  * widgets are dissociated from the @menu_button, and those properties are set
  * to %NULL.
  *
  * Since: 3.6
  */
 void
-ctk_menu_button_set_menu_model (GtkMenuButton *menu_button,
+ctk_menu_button_set_menu_model (CtkMenuButton *menu_button,
                                 GMenuModel    *menu_model)
 {
-  GtkMenuButtonPrivate *priv;
+  CtkMenuButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_MENU_BUTTON (menu_button));
   g_return_if_fail (G_IS_MENU_MODEL (menu_model) || menu_model == NULL);
@@ -830,14 +830,14 @@ ctk_menu_button_set_menu_model (GtkMenuButton *menu_button,
     {
       if (priv->use_popover)
         {
-          GtkWidget *popover;
+          CtkWidget *popover;
 
           popover = ctk_popover_new_from_model (CTK_WIDGET (menu_button), menu_model);
           ctk_menu_button_set_popover (menu_button, popover);
         }
       else
         {
-          GtkWidget *menu;
+          CtkWidget *menu;
 
           menu = ctk_menu_new_from_model (menu_model);
           ctk_widget_show_all (menu);
@@ -858,7 +858,7 @@ ctk_menu_button_set_menu_model (GtkMenuButton *menu_button,
 
 /**
  * ctk_menu_button_get_menu_model:
- * @menu_button: a #GtkMenuButton
+ * @menu_button: a #CtkMenuButton
  *
  * Returns the #GMenuModel used to generate the popup.
  *
@@ -867,7 +867,7 @@ ctk_menu_button_set_menu_model (GtkMenuButton *menu_button,
  * Since: 3.6
  */
 GMenuModel *
-ctk_menu_button_get_menu_model (GtkMenuButton *menu_button)
+ctk_menu_button_get_menu_model (CtkMenuButton *menu_button)
 {
   g_return_val_if_fail (CTK_IS_MENU_BUTTON (menu_button), NULL);
 
@@ -875,10 +875,10 @@ ctk_menu_button_get_menu_model (GtkMenuButton *menu_button)
 }
 
 static void
-set_align_widget_pointer (GtkMenuButton *menu_button,
-                          GtkWidget     *align_widget)
+set_align_widget_pointer (CtkMenuButton *menu_button,
+                          CtkWidget     *align_widget)
 {
-  GtkMenuButtonPrivate *priv;
+  CtkMenuButtonPrivate *priv;
 
   priv = menu_button->priv;
 
@@ -893,11 +893,11 @@ set_align_widget_pointer (GtkMenuButton *menu_button,
 
 /**
  * ctk_menu_button_set_align_widget:
- * @menu_button: a #GtkMenuButton
- * @align_widget: (allow-none): a #GtkWidget
+ * @menu_button: a #CtkMenuButton
+ * @align_widget: (allow-none): a #CtkWidget
  *
- * Sets the #GtkWidget to use to line the menu with when popped up.
- * Note that the @align_widget must contain the #GtkMenuButton itself.
+ * Sets the #CtkWidget to use to line the menu with when popped up.
+ * Note that the @align_widget must contain the #CtkMenuButton itself.
  *
  * Setting it to %NULL means that the menu will be aligned with the
  * button itself.
@@ -908,10 +908,10 @@ set_align_widget_pointer (GtkMenuButton *menu_button,
  * Since: 3.6
  */
 void
-ctk_menu_button_set_align_widget (GtkMenuButton *menu_button,
-                                  GtkWidget     *align_widget)
+ctk_menu_button_set_align_widget (CtkMenuButton *menu_button,
+                                  CtkWidget     *align_widget)
 {
-  GtkMenuButtonPrivate *priv;
+  CtkMenuButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_MENU_BUTTON (menu_button));
   g_return_if_fail (align_widget == NULL || ctk_widget_is_ancestor (CTK_WIDGET (menu_button), align_widget));
@@ -927,16 +927,16 @@ ctk_menu_button_set_align_widget (GtkMenuButton *menu_button,
 
 /**
  * ctk_menu_button_get_align_widget:
- * @menu_button: a #GtkMenuButton
+ * @menu_button: a #CtkMenuButton
  *
- * Returns the parent #GtkWidget to use to line up with menu.
+ * Returns the parent #CtkWidget to use to line up with menu.
  *
- * Returns: (nullable) (transfer none): a #GtkWidget value or %NULL
+ * Returns: (nullable) (transfer none): a #CtkWidget value or %NULL
  *
  * Since: 3.6
  */
-GtkWidget *
-ctk_menu_button_get_align_widget (GtkMenuButton *menu_button)
+CtkWidget *
+ctk_menu_button_get_align_widget (CtkMenuButton *menu_button)
 {
   g_return_val_if_fail (CTK_IS_MENU_BUTTON (menu_button), NULL);
 
@@ -944,9 +944,9 @@ ctk_menu_button_get_align_widget (GtkMenuButton *menu_button)
 }
 
 static void
-update_popover_direction (GtkMenuButton *menu_button)
+update_popover_direction (CtkMenuButton *menu_button)
 {
-  GtkMenuButtonPrivate *priv = menu_button->priv;
+  CtkMenuButtonPrivate *priv = menu_button->priv;
 
   if (!priv->popover)
     return;
@@ -970,15 +970,15 @@ update_popover_direction (GtkMenuButton *menu_button)
 }
 
 static void
-popover_destroy_cb (GtkMenuButton *menu_button)
+popover_destroy_cb (CtkMenuButton *menu_button)
 {
   ctk_menu_button_set_popover (menu_button, NULL);
 }
 
 /**
  * ctk_menu_button_set_direction:
- * @menu_button: a #GtkMenuButton
- * @direction: a #GtkArrowType
+ * @menu_button: a #CtkMenuButton
+ * @direction: a #CtkArrowType
  *
  * Sets the direction in which the popup will be popped up, as
  * well as changing the arrow’s direction. The child will not
@@ -993,11 +993,11 @@ popover_destroy_cb (GtkMenuButton *menu_button)
  * Since: 3.6
  */
 void
-ctk_menu_button_set_direction (GtkMenuButton *menu_button,
-                               GtkArrowType   direction)
+ctk_menu_button_set_direction (CtkMenuButton *menu_button,
+                               CtkArrowType   direction)
 {
-  GtkMenuButtonPrivate *priv = menu_button->priv;
-  GtkWidget *child;
+  CtkMenuButtonPrivate *priv = menu_button->priv;
+  CtkWidget *child;
 
   g_return_if_fail (CTK_IS_MENU_BUTTON (menu_button));
 
@@ -1018,16 +1018,16 @@ ctk_menu_button_set_direction (GtkMenuButton *menu_button,
 
 /**
  * ctk_menu_button_get_direction:
- * @menu_button: a #GtkMenuButton
+ * @menu_button: a #CtkMenuButton
  *
  * Returns the direction the popup will be pointing at when popped up.
  *
- * Returns: a #GtkArrowType value
+ * Returns: a #CtkArrowType value
  *
  * Since: 3.6
  */
-GtkArrowType
-ctk_menu_button_get_direction (GtkMenuButton *menu_button)
+CtkArrowType
+ctk_menu_button_get_direction (CtkMenuButton *menu_button)
 {
   g_return_val_if_fail (CTK_IS_MENU_BUTTON (menu_button), CTK_ARROW_DOWN);
 
@@ -1037,7 +1037,7 @@ ctk_menu_button_get_direction (GtkMenuButton *menu_button)
 static void
 ctk_menu_button_dispose (GObject *object)
 {
-  GtkMenuButtonPrivate *priv = CTK_MENU_BUTTON (object)->priv;
+  CtkMenuButtonPrivate *priv = CTK_MENU_BUTTON (object)->priv;
 
   if (priv->menu)
     {
@@ -1069,20 +1069,20 @@ ctk_menu_button_dispose (GObject *object)
 
 /**
  * ctk_menu_button_set_use_popover:
- * @menu_button: a #GtkMenuButton
+ * @menu_button: a #CtkMenuButton
  * @use_popover: %TRUE to construct a popover from the menu model
  *
- * Sets whether to construct a #GtkPopover instead of #GtkMenu
+ * Sets whether to construct a #CtkPopover instead of #CtkMenu
  * when ctk_menu_button_set_menu_model() is called. Note that
  * this property is only consulted when a new menu model is set.
  *
  * Since: 3.12
  */
 void
-ctk_menu_button_set_use_popover (GtkMenuButton *menu_button,
+ctk_menu_button_set_use_popover (CtkMenuButton *menu_button,
                                  gboolean       use_popover)
 {
-  GtkMenuButtonPrivate *priv;
+  CtkMenuButtonPrivate *priv;
 
   g_return_if_fail (CTK_IS_MENU_BUTTON (menu_button));
 
@@ -1107,17 +1107,17 @@ ctk_menu_button_set_use_popover (GtkMenuButton *menu_button,
 
 /**
  * ctk_menu_button_get_use_popover:
- * @menu_button: a #GtkMenuButton
+ * @menu_button: a #CtkMenuButton
  *
- * Returns whether a #GtkPopover or a #GtkMenu will be constructed
+ * Returns whether a #CtkPopover or a #CtkMenu will be constructed
  * from the menu model.
  *
- * Returns: %TRUE if using a #GtkPopover
+ * Returns: %TRUE if using a #CtkPopover
  *
  * Since: 3.12
  */
 gboolean
-ctk_menu_button_get_use_popover (GtkMenuButton *menu_button)
+ctk_menu_button_get_use_popover (CtkMenuButton *menu_button)
 {
   g_return_val_if_fail (CTK_IS_MENU_BUTTON (menu_button), FALSE);
 
@@ -1126,22 +1126,22 @@ ctk_menu_button_get_use_popover (GtkMenuButton *menu_button)
 
 /**
  * ctk_menu_button_set_popover:
- * @menu_button: a #GtkMenuButton
- * @popover: (nullable): a #GtkPopover, or %NULL to unset and disable the button
+ * @menu_button: a #CtkMenuButton
+ * @popover: (nullable): a #CtkPopover, or %NULL to unset and disable the button
  *
- * Sets the #GtkPopover that will be popped up when the @menu_button is clicked,
+ * Sets the #CtkPopover that will be popped up when the @menu_button is clicked,
  * or %NULL to dissociate any existing popover and disable the button.
  *
- * If #GtkMenuButton:menu-model or #GtkMenuButton:popup are set, those objects
+ * If #CtkMenuButton:menu-model or #CtkMenuButton:popup are set, those objects
  * are dissociated from the @menu_button, and those properties are set to %NULL.
  *
  * Since: 3.12
  */
 void
-ctk_menu_button_set_popover (GtkMenuButton *menu_button,
-                             GtkWidget     *popover)
+ctk_menu_button_set_popover (CtkMenuButton *menu_button,
+                             CtkWidget     *popover)
 {
-  GtkMenuButtonPrivate *priv = menu_button->priv;
+  CtkMenuButtonPrivate *priv = menu_button->priv;
 
   g_return_if_fail (CTK_IS_MENU_BUTTON (menu_button));
   g_return_if_fail (CTK_IS_POPOVER (popover) || popover == NULL);
@@ -1190,18 +1190,18 @@ ctk_menu_button_set_popover (GtkMenuButton *menu_button,
 
 /**
  * ctk_menu_button_get_popover:
- * @menu_button: a #GtkMenuButton
+ * @menu_button: a #CtkMenuButton
  *
- * Returns the #GtkPopover that pops out of the button.
- * If the button is not using a #GtkPopover, this function
+ * Returns the #CtkPopover that pops out of the button.
+ * If the button is not using a #CtkPopover, this function
  * returns %NULL.
  *
- * Returns: (nullable) (transfer none): a #GtkPopover or %NULL
+ * Returns: (nullable) (transfer none): a #CtkPopover or %NULL
  *
  * Since: 3.12
  */
-GtkPopover *
-ctk_menu_button_get_popover (GtkMenuButton *menu_button)
+CtkPopover *
+ctk_menu_button_get_popover (CtkMenuButton *menu_button)
 {
   g_return_val_if_fail (CTK_IS_MENU_BUTTON (menu_button), NULL);
 

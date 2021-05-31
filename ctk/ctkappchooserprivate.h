@@ -31,21 +31,21 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkAppChooserIface GtkAppChooserIface;
-typedef GtkAppChooserIface GtkAppChooserInterface;
+typedef struct _CtkAppChooserIface CtkAppChooserIface;
+typedef CtkAppChooserIface CtkAppChooserInterface;
 
-#define CTK_APP_CHOOSER_GET_IFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_APP_CHOOSER, GtkAppChooserIface))
+#define CTK_APP_CHOOSER_GET_IFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_APP_CHOOSER, CtkAppChooserIface))
 
-struct _GtkAppChooserIface {
+struct _CtkAppChooserIface {
   GTypeInterface base_iface;
 
-  GAppInfo * (* get_app_info) (GtkAppChooser *object);
-  void       (* refresh)      (GtkAppChooser *object);
+  GAppInfo * (* get_app_info) (CtkAppChooser *object);
+  void       (* refresh)      (CtkAppChooser *object);
 };
 
 void
-_ctk_app_chooser_widget_set_search_entry (GtkAppChooserWidget *self,
-                                          GtkEntry            *entry);
+_ctk_app_chooser_widget_set_search_entry (CtkAppChooserWidget *self,
+                                          CtkEntry            *entry);
 
 
 G_END_DECLS

@@ -25,14 +25,14 @@
 
 #include <ctk/ctk.h>
 
-static GtkTreeModel *
+static CtkTreeModel *
 get_model (void)
 {
-  static GtkListStore *store;
-  GtkTreeIter iter;
+  static CtkListStore *store;
+  CtkTreeIter iter;
 
   if (store)
-    return (GtkTreeModel *) g_object_ref (store);
+    return (CtkTreeModel *) g_object_ref (store);
 
   store = ctk_list_store_new (1, G_TYPE_STRING);
 
@@ -53,17 +53,17 @@ get_model (void)
   ctk_list_store_append (store, &iter);
   ctk_list_store_set (store, &iter, 0, "Eight", -1);
 
-  return (GtkTreeModel *) store;
+  return (CtkTreeModel *) store;
 }
 
 static gboolean
-visible_func (GtkTreeModel *model,
-              GtkTreeIter  *iter,
+visible_func (CtkTreeModel *model,
+              CtkTreeIter  *iter,
               gpointer      data)
 {
   gboolean first = GPOINTER_TO_INT (data);
   gboolean visible;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_model_get_path (model, iter);
 
@@ -77,22 +77,22 @@ visible_func (GtkTreeModel *model,
   return visible;
 }
 
-GtkTreeModel *
+CtkTreeModel *
 get_filter_model (gboolean first)
 {
-  GtkTreeModelFilter *model;
+  CtkTreeModelFilter *model;
 
-  model = (GtkTreeModelFilter *)ctk_tree_model_filter_new (get_model (), NULL);
+  model = (CtkTreeModelFilter *)ctk_tree_model_filter_new (get_model (), NULL);
 
   ctk_tree_model_filter_set_visible_func (model, visible_func, GINT_TO_POINTER (first), NULL);
 
-  return (GtkTreeModel *) model;
+  return (CtkTreeModel *) model;
 }
 
-static GtkWidget *
+static CtkWidget *
 get_view (gboolean first)
 {
-  GtkWidget *view;
+  CtkWidget *view;
 
   view = ctk_icon_view_new_with_model (get_filter_model (first));
   ctk_icon_view_set_text_column (CTK_ICON_VIEW (view), 0);
@@ -103,22 +103,22 @@ get_view (gboolean first)
 
 typedef struct
 {
-  GtkWidget *header1;
-  GtkWidget *view1;
-  GtkWidget *header2;
-  GtkWidget *view2;
+  CtkWidget *header1;
+  CtkWidget *view1;
+  CtkWidget *header2;
+  CtkWidget *view2;
 } Views;
 
 static gboolean
-keynav_failed (GtkWidget        *view,
-               GtkDirectionType  direction,
+keynav_failed (CtkWidget        *view,
+               CtkDirectionType  direction,
                Views            *views)
 {
-  GtkTreePath *path;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
   gint col;
-  GtkTreePath *sel;
+  CtkTreePath *sel;
 
   if (view == views->view1 && direction == CTK_DIR_DOWN)
     {
@@ -179,7 +179,7 @@ keynav_failed (GtkWidget        *view,
 }
 
 static gboolean
-focus_out (GtkWidget     *view,
+focus_out (CtkWidget     *view,
            GdkEventFocus *event,
            gpointer       data)
 {
@@ -189,11 +189,11 @@ focus_out (GtkWidget     *view,
 }
 
 static gboolean
-focus_in (GtkWidget     *view,
+focus_in (CtkWidget     *view,
           GdkEventFocus *event,
           gpointer       data)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   if (!ctk_icon_view_get_cursor (CTK_ICON_VIEW (view), &path, NULL))
     {
@@ -208,14 +208,14 @@ focus_in (GtkWidget     *view,
 }
 
 #define CSS \
-  "GtkWindow {\n" \
+  "CtkWindow {\n" \
   "  background-color: @base_color;\n" \
   "}\n"
 
 static void
 set_styles (void)
 {
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
   GdkScreen *screen;
 
   provider = ctk_css_provider_new ();
@@ -234,8 +234,8 @@ set_styles (void)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
+  CtkWidget *window;
+  CtkWidget *vbox;
   Views views;
 
   ctk_init (&argc, &argv);

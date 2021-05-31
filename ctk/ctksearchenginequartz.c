@@ -32,10 +32,10 @@
 @interface ResultReceiver : NSObject
 {
   int submitted_hits;
-  GtkSearchEngine *engine;
+  CtkSearchEngine *engine;
 }
 
-- (void) setEngine:(GtkSearchEngine *)quartz_engine;
+- (void) setEngine:(CtkSearchEngine *)quartz_engine;
 
 - (void) queryUpdate:(id)sender;
 - (void) queryProgress:(id)sender;
@@ -45,9 +45,9 @@
 
 
 /* Definition of GObject */
-struct _GtkSearchEngineQuartzPrivate
+struct _CtkSearchEngineQuartzPrivate
 {
-  GtkQuery *query;
+  CtkQuery *query;
 
   ResultReceiver *receiver;
   NSMetadataQuery *ns_query;
@@ -55,13 +55,13 @@ struct _GtkSearchEngineQuartzPrivate
   gboolean query_finished;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkSearchEngineQuartz, _ctk_search_engine_quartz, CTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkSearchEngineQuartz, _ctk_search_engine_quartz, CTK_TYPE_SEARCH_ENGINE)
 
 
 /* Implementation of the objective-C object */
 @implementation ResultReceiver
 
-- (void) setEngine:(GtkSearchEngine *)quartz_engine
+- (void) setEngine:(CtkSearchEngine *)quartz_engine
 {
   g_return_if_fail (CTK_IS_SEARCH_ENGINE (quartz_engine));
 
@@ -85,7 +85,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkSearchEngineQuartz, _ctk_search_engine_quartz, CT
       id result = [ns_query resultAtIndex:i];
       const char *result_path;
       GFile *file;
-      GtkSearchHit *hit;
+      CtkSearchHit *hit;
 
       result_path = [[result valueForAttribute:@"kMDItemPath"] UTF8String];
 
@@ -94,7 +94,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkSearchEngineQuartz, _ctk_search_engine_quartz, CT
 
       file = g_file_new_for_path (result_path);
 
-      hit = g_new (GtkSearchHit, 1);
+      hit = g_new (CtkSearchHit, 1);
       hit->file = file;
       hit->info = NULL;
 
@@ -141,7 +141,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkSearchEngineQuartz, _ctk_search_engine_quartz, CT
 static void
 ctk_search_engine_quartz_finalize (GObject *object)
 {
-  GtkSearchEngineQuartz *quartz;
+  CtkSearchEngineQuartz *quartz;
 
   QUARTZ_POOL_ALLOC;
 
@@ -164,9 +164,9 @@ ctk_search_engine_quartz_finalize (GObject *object)
 }
 
 static void
-ctk_search_engine_quartz_start (GtkSearchEngine *engine)
+ctk_search_engine_quartz_start (CtkSearchEngine *engine)
 {
-  GtkSearchEngineQuartz *quartz;
+  CtkSearchEngineQuartz *quartz;
 
   QUARTZ_POOL_ALLOC;
 
@@ -178,9 +178,9 @@ ctk_search_engine_quartz_start (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_quartz_stop (GtkSearchEngine *engine)
+ctk_search_engine_quartz_stop (CtkSearchEngine *engine)
 {
-  GtkSearchEngineQuartz *quartz;
+  CtkSearchEngineQuartz *quartz;
 
   QUARTZ_POOL_ALLOC;
 
@@ -192,10 +192,10 @@ ctk_search_engine_quartz_stop (GtkSearchEngine *engine)
 }
 
 static void
-ctk_search_engine_quartz_set_query (GtkSearchEngine *engine, 
-				    GtkQuery        *query)
+ctk_search_engine_quartz_set_query (CtkSearchEngine *engine, 
+				    CtkQuery        *query)
 {
-  GtkSearchEngineQuartz *quartz;
+  CtkSearchEngineQuartz *quartz;
   const char* path = NULL;
   GFile *location = NULL;
 
@@ -241,10 +241,10 @@ ctk_search_engine_quartz_set_query (GtkSearchEngine *engine,
 }
 
 static void
-_ctk_search_engine_quartz_class_init (GtkSearchEngineQuartzClass *class)
+_ctk_search_engine_quartz_class_init (CtkSearchEngineQuartzClass *class)
 {
   GObjectClass *gobject_class;
-  GtkSearchEngineClass *engine_class;
+  CtkSearchEngineClass *engine_class;
   
   gobject_class = G_OBJECT_CLASS (class);
   gobject_class->finalize = ctk_search_engine_quartz_finalize;
@@ -256,7 +256,7 @@ _ctk_search_engine_quartz_class_init (GtkSearchEngineQuartzClass *class)
 }
 
 static void
-_ctk_search_engine_quartz_init (GtkSearchEngineQuartz *engine)
+_ctk_search_engine_quartz_init (CtkSearchEngineQuartz *engine)
 {
   QUARTZ_POOL_ALLOC;
 
@@ -284,7 +284,7 @@ _ctk_search_engine_quartz_init (GtkSearchEngineQuartz *engine)
   QUARTZ_POOL_RELEASE;
 }
 
-GtkSearchEngine *
+CtkSearchEngine *
 _ctk_search_engine_quartz_new (void)
 {
 #ifdef GDK_WINDOWING_QUARTZ

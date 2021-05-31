@@ -1,4 +1,4 @@
-/* GtkIconTheme - a loader for icon themes
+/* CtkIconTheme - a loader for icon themes
  * ctk-icon-theme.c Copyright (C) 2002, 2003 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -67,9 +67,9 @@
 /**
  * SECTION:ctkicontheme
  * @Short_description: Looking up icons by name
- * @Title: GtkIconTheme
+ * @Title: CtkIconTheme
  *
- * #GtkIconTheme provides a facility for looking up icons by name
+ * #CtkIconTheme provides a facility for looking up icons by name
  * and size. The main reason for using a name rather than simply
  * providing a filename is to allow different icons to be used
  * depending on what “icon theme” is selected
@@ -90,7 +90,7 @@
  *   add, such as application icons or window icons.
  * 
  * - Stock images can only be loaded at the symbolic sizes defined
- *   by the #GtkIconSize enumeration, or by custom sizes defined
+ *   by the #CtkIconSize enumeration, or by custom sizes defined
  *   by ctk_icon_size_register(), while named icons are more flexible
  *   and any pixel size can be specified.
  * 
@@ -107,17 +107,17 @@
  * %CTK_STOCK_GO_FORWARD uses the two themed icons
  * “ctk-stock-go-forward-ltr” and “ctk-stock-go-forward-rtl”.)
  *
- * In many cases, named themes are used indirectly, via #GtkImage
+ * In many cases, named themes are used indirectly, via #CtkImage
  * or stock items, rather than directly, but looking up icons
- * directly is also simple. The #GtkIconTheme object acts
+ * directly is also simple. The #CtkIconTheme object acts
  * as a database of all the icons in the current theme. You
- * can create new #GtkIconTheme objects, but it’s much more
+ * can create new #CtkIconTheme objects, but it’s much more
  * efficient to use the standard icon theme for the #GdkScreen
  * so that the icon information is shared with other people
  * looking up icons.
  * |[<!-- language="C" -->
  * GError *error = NULL;
- * GtkIconTheme *icon_theme;
+ * CtkIconTheme *icon_theme;
  * GdkPixbuf *pixbuf;
  *
  * icon_theme = ctk_icon_theme_get_default ();
@@ -167,7 +167,7 @@ typedef enum
 #define DEBUG_CACHE(args)
 #endif
 
-struct _GtkIconThemePrivate
+struct _CtkIconThemePrivate
 {
   GHashTable *info_cache;
   GList *info_cache_lru;
@@ -203,7 +203,7 @@ typedef struct {
   gchar **icon_names;
   gint size;
   gint scale;
-  GtkIconLookupFlags flags;
+  CtkIconLookupFlags flags;
 } IconInfoKey;
 
 typedef struct _SymbolicPixbufCache SymbolicPixbufCache;
@@ -218,19 +218,19 @@ struct _SymbolicPixbufCache {
   SymbolicPixbufCache *next;
 };
 
-struct _GtkIconInfoClass
+struct _CtkIconInfoClass
 {
   GObjectClass parent_class;
 };
 
-struct _GtkIconInfo
+struct _CtkIconInfo
 {
   GObject parent_instance;
 
   /* Information about the source
    */
   IconInfoKey key;
-  GtkIconTheme *in_cache;
+  CtkIconTheme *in_cache;
 
   gchar *filename;
   GFile *icon_file;
@@ -300,7 +300,7 @@ typedef struct
   gchar *subdir;
   gint subdir_index;
   
-  GtkIconCache *cache;
+  CtkIconCache *cache;
   
   GHashTable *icons;
 } IconThemeDir;
@@ -322,14 +322,14 @@ typedef struct
 {
   gchar *dir;
   time_t mtime;
-  GtkIconCache *cache;
+  CtkIconCache *cache;
   gboolean exists;
 } IconThemeDirMtime;
 
 static void         ctk_icon_theme_finalize   (GObject          *object);
 static void         theme_dir_destroy         (IconThemeDir     *dir);
 static void         theme_destroy              (IconTheme       *theme);
-static GtkIconInfo *theme_lookup_icon         (IconTheme        *theme,
+static CtkIconInfo *theme_lookup_icon         (IconTheme        *theme,
                                                const gchar      *icon_name,
                                                gint              size,
                                                gint              scale,
@@ -342,28 +342,28 @@ static gboolean     theme_has_icon            (IconTheme        *theme,
                                                const gchar      *icon_name);
 static void         theme_list_contexts       (IconTheme        *theme,
                                                GHashTable       *contexts);
-static void         theme_subdir_load         (GtkIconTheme     *icon_theme,
+static void         theme_subdir_load         (CtkIconTheme     *icon_theme,
                                                IconTheme        *theme,
                                                GKeyFile         *theme_file,
                                                gchar            *subdir);
-static void         do_theme_change           (GtkIconTheme     *icon_theme);
-static void         blow_themes               (GtkIconTheme     *icon_themes);
-static gboolean     rescan_themes             (GtkIconTheme     *icon_themes);
+static void         do_theme_change           (CtkIconTheme     *icon_theme);
+static void         blow_themes               (CtkIconTheme     *icon_themes);
+static gboolean     rescan_themes             (CtkIconTheme     *icon_themes);
 static IconSuffix   theme_dir_get_icon_suffix (IconThemeDir     *dir,
                                                const gchar      *icon_name,
                                                gboolean         *has_icon_file);
-static GtkIconInfo *icon_info_new             (IconThemeDirType  type,
+static CtkIconInfo *icon_info_new             (IconThemeDirType  type,
                                                gint              dir_size,
                                                gint              dir_scale);
-static GtkIconInfo *icon_info_new_builtin     (BuiltinIcon      *icon);
+static CtkIconInfo *icon_info_new_builtin     (BuiltinIcon      *icon);
 static IconSuffix   suffix_from_name          (const gchar      *name);
 static BuiltinIcon *find_builtin_icon         (const gchar      *icon_name,
                                                gint              size,
                                                gint              scale,
                                                gint             *min_difference_p);
-static void         remove_from_lru_cache     (GtkIconTheme     *icon_theme,
-                                               GtkIconInfo      *icon_info);
-static gboolean     icon_info_ensure_scale_and_pixbuf (GtkIconInfo* icon_info);
+static void         remove_from_lru_cache     (CtkIconTheme     *icon_theme,
+                                               CtkIconInfo      *icon_info);
+static gboolean     icon_info_ensure_scale_and_pixbuf (CtkIconInfo* icon_info);
 
 static guint signal_changed = 0;
 
@@ -413,7 +413,7 @@ icon_info_key_equal (gconstpointer _a,
   return a->icon_names[i] == NULL && b->icon_names[i] == NULL;
 }
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkIconTheme, ctk_icon_theme, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkIconTheme, ctk_icon_theme, G_TYPE_OBJECT)
 
 /**
  * ctk_icon_theme_new:
@@ -424,11 +424,11 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkIconTheme, ctk_icon_theme, G_TYPE_OBJECT)
  * or ctk_icon_theme_get_for_screen() rather than creating
  * a new icon theme object for scratch.
  * 
- * Returns: the newly created #GtkIconTheme object.
+ * Returns: the newly created #CtkIconTheme object.
  *
  * Since: 2.4
  */
-GtkIconTheme *
+CtkIconTheme *
 ctk_icon_theme_new (void)
 {
   return g_object_new (CTK_TYPE_ICON_THEME, NULL);
@@ -440,14 +440,14 @@ ctk_icon_theme_new (void)
  * Gets the icon theme for the default screen. See
  * ctk_icon_theme_get_for_screen().
  *
- * Returns: (transfer none): A unique #GtkIconTheme associated with
+ * Returns: (transfer none): A unique #CtkIconTheme associated with
  *     the default screen. This icon theme is associated with
  *     the screen and can be used as long as the screen
  *     is open. Do not ref or unref it.
  *
  * Since: 2.4
  */
-GtkIconTheme *
+CtkIconTheme *
 ctk_icon_theme_get_default (void)
 {
   return ctk_icon_theme_get_for_screen (gdk_screen_get_default ());
@@ -466,24 +466,24 @@ ctk_icon_theme_get_default (void)
  * and setting the screen yourself; by using this function
  * a single icon theme object will be shared between users.
  *
- * Returns: (transfer none): A unique #GtkIconTheme associated with
+ * Returns: (transfer none): A unique #CtkIconTheme associated with
  *  the given screen. This icon theme is associated with
  *  the screen and can be used as long as the screen
  *  is open. Do not ref or unref it.
  *
  * Since: 2.4
  */
-GtkIconTheme *
+CtkIconTheme *
 ctk_icon_theme_get_for_screen (GdkScreen *screen)
 {
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
   icon_theme = g_object_get_data (G_OBJECT (screen), "ctk-icon-theme");
   if (!icon_theme)
     {
-      GtkIconThemePrivate *priv;
+      CtkIconThemePrivate *priv;
 
       icon_theme = ctk_icon_theme_new ();
       ctk_icon_theme_set_screen (icon_theme, screen);
@@ -498,14 +498,14 @@ ctk_icon_theme_get_for_screen (GdkScreen *screen)
 }
 
 static void
-ctk_icon_theme_class_init (GtkIconThemeClass *klass)
+ctk_icon_theme_class_init (CtkIconThemeClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
   gobject_class->finalize = ctk_icon_theme_finalize;
 
   /**
-   * GtkIconTheme::changed:
+   * CtkIconTheme::changed:
    * @icon_theme: the icon theme
    *
    * Emitted when the current icon theme is switched or GTK+ detects
@@ -515,7 +515,7 @@ ctk_icon_theme_class_init (GtkIconThemeClass *klass)
   signal_changed = g_signal_new (I_("changed"),
                                  G_TYPE_FROM_CLASS (klass),
                                  G_SIGNAL_RUN_LAST,
-                                 G_STRUCT_OFFSET (GtkIconThemeClass, changed),
+                                 G_STRUCT_OFFSET (CtkIconThemeClass, changed),
                                  NULL, NULL,
                                  NULL,
                                  G_TYPE_NONE, 0);
@@ -529,9 +529,9 @@ ctk_icon_theme_class_init (GtkIconThemeClass *klass)
 static void
 display_closed (GdkDisplay   *display,
                 gboolean      is_error,
-                GtkIconTheme *icon_theme)
+                CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
   GdkScreen *screen = priv->screen;
   gboolean was_screen_singleton = priv->is_screen_singleton;
 
@@ -550,12 +550,12 @@ display_closed (GdkDisplay   *display,
 }
 
 static void
-update_current_theme (GtkIconTheme *icon_theme)
+update_current_theme (CtkIconTheme *icon_theme)
 {
 #define theme_changed(_old, _new) \
   ((_old && !_new) || (!_old && _new) || \
    (_old && _new && strcmp (_old, _new) != 0))
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
 
   if (!priv->custom_theme)
     {
@@ -564,7 +564,7 @@ update_current_theme (GtkIconTheme *icon_theme)
 
       if (priv->screen)
         {
-          GtkSettings *settings = ctk_settings_get_for_screen (priv->screen);
+          CtkSettings *settings = ctk_settings_get_for_screen (priv->screen);
           g_object_get (settings, "ctk-icon-theme-name", &theme, NULL);
         }
 
@@ -583,21 +583,21 @@ update_current_theme (GtkIconTheme *icon_theme)
 #undef theme_changed
 }
 
-/* Callback when the icon theme GtkSetting changes
+/* Callback when the icon theme CtkSetting changes
  */
 static void
-theme_changed (GtkSettings  *settings,
+theme_changed (CtkSettings  *settings,
                GParamSpec   *pspec,
-               GtkIconTheme *icon_theme)
+               CtkIconTheme *icon_theme)
 {
   update_current_theme (icon_theme);
 }
 
 static void
-unset_screen (GtkIconTheme *icon_theme)
+unset_screen (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
-  GtkSettings *settings;
+  CtkIconThemePrivate *priv = icon_theme->priv;
+  CtkSettings *settings;
   GdkDisplay *display;
   
   if (priv->screen)
@@ -619,7 +619,7 @@ unset_screen (GtkIconTheme *icon_theme)
 
 /**
  * ctk_icon_theme_set_screen:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @screen: a #GdkScreen
  * 
  * Sets the screen for an icon theme; the screen is used
@@ -629,11 +629,11 @@ unset_screen (GtkIconTheme *icon_theme)
  * Since: 2.4
  */
 void
-ctk_icon_theme_set_screen (GtkIconTheme *icon_theme,
+ctk_icon_theme_set_screen (CtkIconTheme *icon_theme,
                            GdkScreen    *screen)
 {
-  GtkIconThemePrivate *priv;
-  GtkSettings *settings;
+  CtkIconThemePrivate *priv;
+  CtkSettings *settings;
   GdkDisplay *display;
 
   g_return_if_fail (CTK_ICON_THEME (icon_theme));
@@ -696,9 +696,9 @@ pixbuf_supports_svg (void)
 
 /* The icon info was removed from the icon_info_hash hash table */
 static void
-icon_info_uncached (GtkIconInfo *icon_info)
+icon_info_uncached (CtkIconInfo *icon_info)
 {
-  GtkIconTheme *icon_theme = icon_info->in_cache;
+  CtkIconTheme *icon_theme = icon_info->in_cache;
 
   DEBUG_CACHE (("removing %p (%s %d 0x%x) from cache (icon_them: %p)  (cache size %d)\n",
                 icon_info,
@@ -714,9 +714,9 @@ icon_info_uncached (GtkIconInfo *icon_info)
 }
 
 static void
-ctk_icon_theme_init (GtkIconTheme *icon_theme)
+ctk_icon_theme_init (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   const gchar * const *xdg_data_dirs;
   int i, j;
 
@@ -767,8 +767,8 @@ free_dir_mtime (IconThemeDirMtime *dir_mtime)
 static gboolean
 theme_changed_idle (gpointer user_data)
 {
-  GtkIconTheme *icon_theme;
-  GtkIconThemePrivate *priv;
+  CtkIconTheme *icon_theme;
+  CtkIconThemePrivate *priv;
 
   icon_theme = CTK_ICON_THEME (user_data);
   priv = icon_theme->priv;
@@ -784,9 +784,9 @@ theme_changed_idle (gpointer user_data)
 }
 
 static void
-queue_theme_changed (GtkIconTheme *icon_theme)
+queue_theme_changed (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
 
   if (!priv->theme_changed_idle)
     {
@@ -798,9 +798,9 @@ queue_theme_changed (GtkIconTheme *icon_theme)
 }
 
 static void
-do_theme_change (GtkIconTheme *icon_theme)
+do_theme_change (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
 
   g_hash_table_remove_all (priv->info_cache);
 
@@ -816,9 +816,9 @@ do_theme_change (GtkIconTheme *icon_theme)
 }
 
 static void
-blow_themes (GtkIconTheme *icon_theme)
+blow_themes (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
   
   if (priv->themes_valid)
     {
@@ -835,8 +835,8 @@ blow_themes (GtkIconTheme *icon_theme)
 static void
 ctk_icon_theme_finalize (GObject *object)
 {
-  GtkIconTheme *icon_theme;
-  GtkIconThemePrivate *priv;
+  CtkIconTheme *icon_theme;
+  CtkIconThemePrivate *priv;
   int i;
 
   icon_theme = CTK_ICON_THEME (object);
@@ -865,7 +865,7 @@ ctk_icon_theme_finalize (GObject *object)
 
 /**
  * ctk_icon_theme_set_search_path:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @path: (array length=n_elements) (element-type filename): array of
  *     directories that are searched for icon themes
  * @n_elements: number of elements in @path.
@@ -888,11 +888,11 @@ ctk_icon_theme_finalize (GObject *object)
  * Since: 2.4
  */
 void
-ctk_icon_theme_set_search_path (GtkIconTheme *icon_theme,
+ctk_icon_theme_set_search_path (CtkIconTheme *icon_theme,
                                 const gchar  *path[],
                                 gint          n_elements)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   gint i;
 
   g_return_if_fail (CTK_IS_ICON_THEME (icon_theme));
@@ -914,7 +914,7 @@ ctk_icon_theme_set_search_path (GtkIconTheme *icon_theme,
 
 /**
  * ctk_icon_theme_get_search_path:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @path: (allow-none) (array length=n_elements) (element-type filename) (out):
  *     location to store a list of icon theme path directories or %NULL.
  *     The stored value should be freed with g_strfreev().
@@ -925,11 +925,11 @@ ctk_icon_theme_set_search_path (GtkIconTheme *icon_theme,
  * Since: 2.4
  */
 void
-ctk_icon_theme_get_search_path (GtkIconTheme  *icon_theme,
+ctk_icon_theme_get_search_path (CtkIconTheme  *icon_theme,
                                 gchar        **path[],
                                 gint          *n_elements)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   gint i;
 
   g_return_if_fail (CTK_IS_ICON_THEME (icon_theme));
@@ -950,7 +950,7 @@ ctk_icon_theme_get_search_path (GtkIconTheme  *icon_theme,
 
 /**
  * ctk_icon_theme_append_search_path:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @path: (type filename): directory name to append to the icon path
  * 
  * Appends a directory to the search path. 
@@ -959,10 +959,10 @@ ctk_icon_theme_get_search_path (GtkIconTheme  *icon_theme,
  * Since: 2.4
  */
 void
-ctk_icon_theme_append_search_path (GtkIconTheme *icon_theme,
+ctk_icon_theme_append_search_path (CtkIconTheme *icon_theme,
                                    const gchar  *path)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
 
   g_return_if_fail (CTK_IS_ICON_THEME (icon_theme));
   g_return_if_fail (path != NULL);
@@ -979,7 +979,7 @@ ctk_icon_theme_append_search_path (GtkIconTheme *icon_theme,
 
 /**
  * ctk_icon_theme_prepend_search_path:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @path: (type filename): directory name to prepend to the icon path
  * 
  * Prepends a directory to the search path. 
@@ -988,10 +988,10 @@ ctk_icon_theme_append_search_path (GtkIconTheme *icon_theme,
  * Since: 2.4
  */
 void
-ctk_icon_theme_prepend_search_path (GtkIconTheme *icon_theme,
+ctk_icon_theme_prepend_search_path (CtkIconTheme *icon_theme,
                                     const gchar  *path)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   gint i;
 
   g_return_if_fail (CTK_IS_ICON_THEME (icon_theme));
@@ -1012,7 +1012,7 @@ ctk_icon_theme_prepend_search_path (GtkIconTheme *icon_theme,
 
 /**
  * ctk_icon_theme_add_resource_path:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @path: a resource path
  *
  * Adds a resource path that will be looked at when looking
@@ -1030,10 +1030,10 @@ ctk_icon_theme_prepend_search_path (GtkIconTheme *icon_theme,
  * Since: 3.14
  */
 void
-ctk_icon_theme_add_resource_path (GtkIconTheme *icon_theme,
+ctk_icon_theme_add_resource_path (CtkIconTheme *icon_theme,
                                   const gchar  *path)
 {
-  GtkIconThemePrivate *priv = NULL;
+  CtkIconThemePrivate *priv = NULL;
 
   g_return_if_fail (CTK_IS_ICON_THEME (icon_theme));
   g_return_if_fail (path != NULL);
@@ -1046,11 +1046,11 @@ ctk_icon_theme_add_resource_path (GtkIconTheme *icon_theme,
 
 /**
  * ctk_icon_theme_set_custom_theme:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @theme_name: (allow-none): name of icon theme to use instead of
  *   configured theme, or %NULL to unset a previously set custom theme
  * 
- * Sets the name of the icon theme that the #GtkIconTheme object uses
+ * Sets the name of the icon theme that the #CtkIconTheme object uses
  * overriding system configuration. This function cannot be called
  * on the icon theme objects returned from ctk_icon_theme_get_default()
  * and ctk_icon_theme_get_for_screen().
@@ -1058,10 +1058,10 @@ ctk_icon_theme_add_resource_path (GtkIconTheme *icon_theme,
  * Since: 2.4
  */
 void
-ctk_icon_theme_set_custom_theme (GtkIconTheme *icon_theme,
+ctk_icon_theme_set_custom_theme (CtkIconTheme *icon_theme,
                                  const gchar  *theme_name)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
 
   g_return_if_fail (CTK_IS_ICON_THEME (icon_theme));
 
@@ -1124,7 +1124,7 @@ static const gchar builtin_hicolor_index[] =
 "Type=Threshold\n";
 
 static void
-insert_theme (GtkIconTheme *icon_theme,
+insert_theme (CtkIconTheme *icon_theme,
               const gchar  *theme_name)
 {
   gint i;
@@ -1132,7 +1132,7 @@ insert_theme (GtkIconTheme *icon_theme,
   gchar **dirs;
   gchar **scaled_dirs;
   gchar **themes;
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   IconTheme *theme = NULL;
   gchar *path;
   GKeyFile *theme_file;
@@ -1289,12 +1289,12 @@ strip_suffix (const gchar *filename)
 }
 
 static void
-add_unthemed_icon (GtkIconTheme *icon_theme,
+add_unthemed_icon (CtkIconTheme *icon_theme,
                    const gchar  *dir,
                    const gchar  *file,
                    gboolean      is_resource)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
   IconSuffix new_suffix, old_suffix;
   gchar *abs_file;
   gchar *base_name;
@@ -1355,9 +1355,9 @@ add_unthemed_icon (GtkIconTheme *icon_theme,
 }
 
 static void
-load_themes (GtkIconTheme *icon_theme)
+load_themes (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   GDir *gdir;
   gint base;
   gchar *dir;
@@ -1455,9 +1455,9 @@ load_themes (GtkIconTheme *icon_theme)
 }
 
 static void
-ensure_valid_themes (GtkIconTheme *icon_theme)
+ensure_valid_themes (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
   GTimeVal tv;
   gboolean was_valid = priv->themes_valid;
 
@@ -1498,16 +1498,16 @@ ensure_valid_themes (GtkIconTheme *icon_theme)
  * pixmap is released we put it on the list.
  */
 static void
-ensure_lru_cache_space (GtkIconTheme *icon_theme)
+ensure_lru_cache_space (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
   GList *l;
 
   /* Remove last item if LRU full */
   l = g_list_nth (priv->info_cache_lru, INFO_CACHE_LRU_SIZE - 1);
   if (l)
     {
-      GtkIconInfo *icon_info = l->data;
+      CtkIconInfo *icon_info = l->data;
 
       DEBUG_CACHE (("removing (due to out of space) %p (%s %d 0x%x) from LRU cache (cache size %d)\n",
                     icon_info,
@@ -1521,10 +1521,10 @@ ensure_lru_cache_space (GtkIconTheme *icon_theme)
 }
 
 static void
-add_to_lru_cache (GtkIconTheme *icon_theme,
-                  GtkIconInfo  *icon_info)
+add_to_lru_cache (CtkIconTheme *icon_theme,
+                  CtkIconInfo  *icon_info)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
 
   DEBUG_CACHE (("adding  %p (%s %d 0x%x) to LRU cache (cache size %d)\n",
                 icon_info,
@@ -1541,10 +1541,10 @@ add_to_lru_cache (GtkIconTheme *icon_theme,
 }
 
 static void
-ensure_in_lru_cache (GtkIconTheme *icon_theme,
-                     GtkIconInfo  *icon_info)
+ensure_in_lru_cache (CtkIconTheme *icon_theme,
+                     CtkIconInfo  *icon_info)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
   GList *l;
 
   l = g_list_find (priv->info_cache_lru, icon_info);
@@ -1559,10 +1559,10 @@ ensure_in_lru_cache (GtkIconTheme *icon_theme,
 }
 
 static void
-remove_from_lru_cache (GtkIconTheme *icon_theme,
-                       GtkIconInfo  *icon_info)
+remove_from_lru_cache (CtkIconTheme *icon_theme,
+                       CtkIconInfo  *icon_info)
 {
-  GtkIconThemePrivate *priv = icon_theme->priv;
+  CtkIconThemePrivate *priv = icon_theme->priv;
   if (g_list_find (priv->info_cache_lru, icon_info))
     {
       DEBUG_CACHE (("removing %p (%s %d 0x%x) from LRU cache (cache size %d)\n",
@@ -1672,17 +1672,17 @@ icon_uri_is_symbolic (const gchar *icon_name)
       || g_str_has_suffix (icon_name, ".symbolic.png");
 }
 
-static GtkIconInfo *
-real_choose_icon (GtkIconTheme       *icon_theme,
+static CtkIconInfo *
+real_choose_icon (CtkIconTheme       *icon_theme,
                   const gchar        *icon_names[],
                   gint                size,
                   gint                scale,
-                  GtkIconLookupFlags  flags)
+                  CtkIconLookupFlags  flags)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   GList *l;
-  GtkIconInfo *icon_info = NULL;
-  GtkIconInfo *unscaled_icon_info;
+  CtkIconInfo *icon_info = NULL;
+  CtkIconInfo *unscaled_icon_info;
   UnthemedIcon *unthemed_icon = NULL;
   const gchar *icon_name = NULL;
   gboolean allow_svg;
@@ -1915,15 +1915,15 @@ icon_name_list_add_icon (GPtrArray   *icons,
   g_ptr_array_add (icons, icon_name);
 }
 
-static GtkIconInfo *
-choose_icon (GtkIconTheme       *icon_theme,
+static CtkIconInfo *
+choose_icon (CtkIconTheme       *icon_theme,
              const gchar        *icon_names[],
              gint                size,
              gint                scale,
-             GtkIconLookupFlags  flags)
+             CtkIconLookupFlags  flags)
 {
   gboolean has_regular = FALSE, has_symbolic = FALSE;
-  GtkIconInfo *icon_info;
+  CtkIconInfo *icon_info;
   GPtrArray *new_names;
   const gchar *dir_suffix;
   guint i;
@@ -2024,12 +2024,12 @@ choose_icon (GtkIconTheme       *icon_theme,
 
 /**
  * ctk_icon_theme_lookup_icon:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_name: the name of the icon to lookup
  * @size: desired icon size
  * @flags: flags modifying the behavior of the icon lookup
  * 
- * Looks up a named icon and returns a #GtkIconInfo containing
+ * Looks up a named icon and returns a #CtkIconInfo containing
  * information such as the filename of the icon. The icon
  * can then be rendered into a pixbuf using
  * ctk_icon_info_load_icon(). (ctk_icon_theme_load_icon()
@@ -2041,17 +2041,17 @@ choose_icon (GtkIconTheme       *icon_theme,
  * ctk_icon_theme_lookup_icon_for_scale(), as the assets loaded
  * for a given scaling factor may be different.
  * 
- * Returns: (nullable) (transfer full): a #GtkIconInfo object
+ * Returns: (nullable) (transfer full): a #CtkIconInfo object
  *     containing information about the icon, or %NULL if the
  *     icon wasn’t found.
  *
  * Since: 2.4
  */
-GtkIconInfo *
-ctk_icon_theme_lookup_icon (GtkIconTheme       *icon_theme,
+CtkIconInfo *
+ctk_icon_theme_lookup_icon (CtkIconTheme       *icon_theme,
                             const gchar        *icon_name,
                             gint                size,
-                            GtkIconLookupFlags  flags)
+                            CtkIconLookupFlags  flags)
 {
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
   g_return_val_if_fail (icon_name != NULL, NULL);
@@ -2066,32 +2066,32 @@ ctk_icon_theme_lookup_icon (GtkIconTheme       *icon_theme,
 
 /**
  * ctk_icon_theme_lookup_icon_for_scale:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_name: the name of the icon to lookup
  * @size: desired icon size
  * @scale: the desired scale
  * @flags: flags modifying the behavior of the icon lookup
  *
  * Looks up a named icon for a particular window scale and returns a
- * #GtkIconInfo containing information such as the filename of the
+ * #CtkIconInfo containing information such as the filename of the
  * icon. The icon can then be rendered into a pixbuf using
  * ctk_icon_info_load_icon(). (ctk_icon_theme_load_icon() combines
  * these two steps if all you need is the pixbuf.)
  *
- * Returns: (nullable) (transfer full): a #GtkIconInfo object
+ * Returns: (nullable) (transfer full): a #CtkIconInfo object
  *     containing information about the icon, or %NULL if the
  *     icon wasn’t found.
  *
  * Since: 3.10
  */
-GtkIconInfo *
-ctk_icon_theme_lookup_icon_for_scale (GtkIconTheme       *icon_theme,
+CtkIconInfo *
+ctk_icon_theme_lookup_icon_for_scale (CtkIconTheme       *icon_theme,
                                       const gchar        *icon_name,
                                       gint                size,
                                       gint                scale,
-                                      GtkIconLookupFlags  flags)
+                                      CtkIconLookupFlags  flags)
 {
-  GtkIconInfo *info;
+  CtkIconInfo *info;
 
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
   g_return_val_if_fail (icon_name != NULL, NULL);
@@ -2166,13 +2166,13 @@ ctk_icon_theme_lookup_icon_for_scale (GtkIconTheme       *icon_theme,
 
 /**
  * ctk_icon_theme_choose_icon:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_names: (array zero-terminated=1): %NULL-terminated array of
  *     icon names to lookup
  * @size: desired icon size
  * @flags: flags modifying the behavior of the icon lookup
  * 
- * Looks up a named icon and returns a #GtkIconInfo containing
+ * Looks up a named icon and returns a #CtkIconInfo containing
  * information such as the filename of the icon. The icon
  * can then be rendered into a pixbuf using
  * ctk_icon_info_load_icon(). (ctk_icon_theme_load_icon()
@@ -2182,17 +2182,17 @@ ctk_icon_theme_lookup_icon_for_scale (GtkIconTheme       *icon_theme,
  * tries them all in the given order before falling back to 
  * inherited icon themes.
  * 
- * Returns: (nullable) (transfer full): a #GtkIconInfo object
+ * Returns: (nullable) (transfer full): a #CtkIconInfo object
  * containing information about the icon, or %NULL if the icon wasn’t
  * found.
  *
  * Since: 2.12
  */
-GtkIconInfo *
-ctk_icon_theme_choose_icon (GtkIconTheme       *icon_theme,
+CtkIconInfo *
+ctk_icon_theme_choose_icon (CtkIconTheme       *icon_theme,
                             const gchar        *icon_names[],
                             gint                size,
-                            GtkIconLookupFlags  flags)
+                            CtkIconLookupFlags  flags)
 {
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
   g_return_val_if_fail (icon_names != NULL, NULL);
@@ -2205,7 +2205,7 @@ ctk_icon_theme_choose_icon (GtkIconTheme       *icon_theme,
 
 /**
  * ctk_icon_theme_choose_icon_for_scale:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_names: (array zero-terminated=1): %NULL-terminated
  *     array of icon names to lookup
  * @size: desired icon size
@@ -2213,7 +2213,7 @@ ctk_icon_theme_choose_icon (GtkIconTheme       *icon_theme,
  * @flags: flags modifying the behavior of the icon lookup
  * 
  * Looks up a named icon for a particular window scale and returns
- * a #GtkIconInfo containing information such as the filename of the
+ * a #CtkIconInfo containing information such as the filename of the
  * icon. The icon can then be rendered into a pixbuf using
  * ctk_icon_info_load_icon(). (ctk_icon_theme_load_icon()
  * combines these two steps if all you need is the pixbuf.)
@@ -2222,18 +2222,18 @@ ctk_icon_theme_choose_icon (GtkIconTheme       *icon_theme,
  * tries them all in the given order before falling back to 
  * inherited icon themes.
  * 
- * Returns: (nullable) (transfer full): a #GtkIconInfo object
+ * Returns: (nullable) (transfer full): a #CtkIconInfo object
  *     containing information about the icon, or %NULL if the
  *     icon wasn’t found.
  *
  * Since: 3.10
  */
-GtkIconInfo *
-ctk_icon_theme_choose_icon_for_scale (GtkIconTheme       *icon_theme,
+CtkIconInfo *
+ctk_icon_theme_choose_icon_for_scale (CtkIconTheme       *icon_theme,
                                       const gchar        *icon_names[],
                                       gint                size,
                                       gint                scale,
-                                      GtkIconLookupFlags  flags)
+                                      CtkIconLookupFlags  flags)
 {
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
   g_return_val_if_fail (icon_names != NULL, NULL);
@@ -2255,7 +2255,7 @@ ctk_icon_theme_error_quark (void)
 
 /**
  * ctk_icon_theme_load_icon:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_name: the name of the icon to lookup
  * @size: the desired icon size. The resulting icon may not be
  *     exactly this size; see ctk_icon_info_load_icon().
@@ -2270,7 +2270,7 @@ ctk_icon_theme_error_quark (void)
  *
  * Note that you probably want to listen for icon theme changes and
  * update the icon. This is usually done by connecting to the
- * GtkWidget::style-set signal. If for some reason you do not want to
+ * CtkWidget::style-set signal. If for some reason you do not want to
  * update the icon when the icon theme changes, you should consider
  * using gdk_pixbuf_copy() to make a private copy of the pixbuf
  * returned by this function. Otherwise GTK+ may need to keep the old
@@ -2284,10 +2284,10 @@ ctk_icon_theme_error_quark (void)
  * Since: 2.4
  */
 GdkPixbuf *
-ctk_icon_theme_load_icon (GtkIconTheme         *icon_theme,
+ctk_icon_theme_load_icon (CtkIconTheme         *icon_theme,
                           const gchar          *icon_name,
                           gint                  size,
-                          GtkIconLookupFlags    flags,
+                          CtkIconLookupFlags    flags,
                           GError              **error)
 {
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
@@ -2302,7 +2302,7 @@ ctk_icon_theme_load_icon (GtkIconTheme         *icon_theme,
 
 /**
  * ctk_icon_theme_load_icon_for_scale:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_name: the name of the icon to lookup
  * @size: the desired icon size. The resulting icon may not be
  *     exactly this size; see ctk_icon_info_load_icon().
@@ -2319,7 +2319,7 @@ ctk_icon_theme_load_icon (GtkIconTheme         *icon_theme,
  *
  * Note that you probably want to listen for icon theme changes and
  * update the icon. This is usually done by connecting to the
- * GtkWidget::style-set signal. If for some reason you do not want to
+ * CtkWidget::style-set signal. If for some reason you do not want to
  * update the icon when the icon theme changes, you should consider
  * using gdk_pixbuf_copy() to make a private copy of the pixbuf
  * returned by this function. Otherwise GTK+ may need to keep the old
@@ -2333,14 +2333,14 @@ ctk_icon_theme_load_icon (GtkIconTheme         *icon_theme,
  * Since: 3.10
  */
 GdkPixbuf *
-ctk_icon_theme_load_icon_for_scale (GtkIconTheme        *icon_theme,
+ctk_icon_theme_load_icon_for_scale (CtkIconTheme        *icon_theme,
                                     const gchar         *icon_name,
                                     gint                 size,
                                     gint                 scale,
-                                    GtkIconLookupFlags   flags,
+                                    CtkIconLookupFlags   flags,
                                     GError             **error)
 {
-  GtkIconInfo *icon_info;
+  CtkIconInfo *icon_info;
   GdkPixbuf *pixbuf = NULL;
   
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
@@ -2368,7 +2368,7 @@ ctk_icon_theme_load_icon_for_scale (GtkIconTheme        *icon_theme,
 
 /**
  * ctk_icon_theme_load_surface:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_name: the name of the icon to lookup
  * @size: the desired icon size. The resulting icon may not be
  *     exactly this size; see ctk_icon_info_load_icon().
@@ -2386,7 +2386,7 @@ ctk_icon_theme_load_icon_for_scale (GtkIconTheme        *icon_theme,
  *
  * Note that you probably want to listen for icon theme changes and
  * update the icon. This is usually done by connecting to the
- * GtkWidget::style-set signal.
+ * CtkWidget::style-set signal.
  *
  * Returns: (nullable) (transfer full): the rendered icon; this may be
  *     a newly created icon or a new reference to an internal icon, so
@@ -2397,15 +2397,15 @@ ctk_icon_theme_load_icon_for_scale (GtkIconTheme        *icon_theme,
  * Since: 3.10
  */
 cairo_surface_t *
-ctk_icon_theme_load_surface (GtkIconTheme        *icon_theme,
+ctk_icon_theme_load_surface (CtkIconTheme        *icon_theme,
                              const gchar         *icon_name,
                              gint                 size,
                              gint                 scale,
                              GdkWindow           *for_window,
-                             GtkIconLookupFlags   flags,
+                             CtkIconLookupFlags   flags,
                              GError             **error)
 {
-  GtkIconInfo *icon_info;
+  CtkIconInfo *icon_info;
   cairo_surface_t *surface = NULL;
   
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
@@ -2432,7 +2432,7 @@ ctk_icon_theme_load_surface (GtkIconTheme        *icon_theme,
 
 /**
  * ctk_icon_theme_has_icon:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_name: the name of an icon
  * 
  * Checks whether an icon theme includes an icon
@@ -2444,10 +2444,10 @@ ctk_icon_theme_load_surface (GtkIconTheme        *icon_theme,
  * Since: 2.4
  */
 gboolean 
-ctk_icon_theme_has_icon (GtkIconTheme *icon_theme,
+ctk_icon_theme_has_icon (CtkIconTheme *icon_theme,
                          const gchar  *icon_name)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   GList *l;
 
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), FALSE);
@@ -2460,7 +2460,7 @@ ctk_icon_theme_has_icon (GtkIconTheme *icon_theme,
   for (l = priv->dir_mtimes; l; l = l->next)
     {
       IconThemeDirMtime *dir_mtime = l->data;
-      GtkIconCache *cache = dir_mtime->cache;
+      CtkIconCache *cache = dir_mtime->cache;
       
       if (cache && _ctk_icon_cache_has_icon (cache, icon_name))
         return TRUE;
@@ -2494,7 +2494,7 @@ add_size (gpointer key,
 
 /**
  * ctk_icon_theme_get_icon_sizes:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon_name: the name of an icon
  * 
  * Returns an array of integers describing the sizes at which
@@ -2510,14 +2510,14 @@ add_size (gpointer key,
  * Since: 2.6
  */
 gint *
-ctk_icon_theme_get_icon_sizes (GtkIconTheme *icon_theme,
+ctk_icon_theme_get_icon_sizes (CtkIconTheme *icon_theme,
                                const gchar  *icon_name)
 {
   GList *l, *d, *icons;
   GHashTable *sizes;
   gint *result, *r;
   guint suffix;  
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
   
@@ -2591,7 +2591,7 @@ add_key_to_list (gpointer key,
 
 /**
  * ctk_icon_theme_list_icons:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @context: (allow-none): a string identifying a particular type of
  *           icon, or %NULL to list all icons.
  *
@@ -2613,10 +2613,10 @@ add_key_to_list (gpointer key,
  * Since: 2.4
  */
 GList *
-ctk_icon_theme_list_icons (GtkIconTheme *icon_theme,
+ctk_icon_theme_list_icons (CtkIconTheme *icon_theme,
                            const gchar  *context)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   GHashTable *icons;
   GList *list, *l;
   GQuark context_quark;
@@ -2662,7 +2662,7 @@ ctk_icon_theme_list_icons (GtkIconTheme *icon_theme,
 
 /**
  * ctk_icon_theme_list_contexts:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  *
  * Gets the list of contexts available within the current
  * hierarchy of icon themes.
@@ -2676,9 +2676,9 @@ ctk_icon_theme_list_icons (GtkIconTheme *icon_theme,
  * Since: 2.12
  */
 GList *
-ctk_icon_theme_list_contexts (GtkIconTheme *icon_theme)
+ctk_icon_theme_list_contexts (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   GHashTable *contexts;
   GList *list, *l;
 
@@ -2708,7 +2708,7 @@ ctk_icon_theme_list_contexts (GtkIconTheme *icon_theme)
 
 /**
  * ctk_icon_theme_get_example_icon_name:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * 
  * Gets the name of an icon that is representative of the
  * current theme (for instance, to use when presenting
@@ -2720,9 +2720,9 @@ ctk_icon_theme_list_contexts (GtkIconTheme *icon_theme)
  * Since: 2.4
  */
 gchar *
-ctk_icon_theme_get_example_icon_name (GtkIconTheme *icon_theme)
+ctk_icon_theme_get_example_icon_name (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   GList *l;
   IconTheme *theme;
 
@@ -2747,9 +2747,9 @@ ctk_icon_theme_get_example_icon_name (GtkIconTheme *icon_theme)
 
 
 static gboolean
-rescan_themes (GtkIconTheme *icon_theme)
+rescan_themes (CtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv;
+  CtkIconThemePrivate *priv;
   IconThemeDirMtime *dir_mtime;
   GList *d;
   gint stat_res;
@@ -2785,7 +2785,7 @@ rescan_themes (GtkIconTheme *icon_theme)
 
 /**
  * ctk_icon_theme_rescan_if_needed:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * 
  * Checks to see if the icon theme has changed; if it has, any
  * currently cached information is discarded and will be reloaded
@@ -2797,7 +2797,7 @@ rescan_themes (GtkIconTheme *icon_theme)
  * Since: 2.4
  */
 gboolean
-ctk_icon_theme_rescan_if_needed (GtkIconTheme *icon_theme)
+ctk_icon_theme_rescan_if_needed (CtkIconTheme *icon_theme)
 {
   gboolean retval;
 
@@ -3035,7 +3035,7 @@ compare_dir_matches (IconThemeDir *dir_a, gint difference_a,
   return diff_a <= diff_b;
 }
 
-static GtkIconInfo *
+static CtkIconInfo *
 theme_lookup_icon (IconTheme   *theme,
                    const gchar *icon_name,
                    gint         size,
@@ -3093,7 +3093,7 @@ theme_lookup_icon (IconTheme   *theme,
 
   if (min_dir)
     {
-      GtkIconInfo *icon_info;
+      CtkIconInfo *icon_info;
       gboolean has_icon_file = FALSE;
 
       icon_info = icon_info_new (min_dir->type, min_dir->size, min_dir->scale);
@@ -3217,7 +3217,7 @@ theme_list_contexts (IconTheme  *theme,
 }
 
 static gboolean
-scan_directory (GtkIconThemePrivate *icon_theme,
+scan_directory (CtkIconThemePrivate *icon_theme,
                 IconThemeDir        *dir,
                 gchar               *full_dir)
 {
@@ -3255,7 +3255,7 @@ scan_directory (GtkIconThemePrivate *icon_theme,
 }
 
 static gboolean
-scan_resources (GtkIconThemePrivate  *icon_theme,
+scan_resources (CtkIconThemePrivate  *icon_theme,
                 IconThemeDir         *dir,
                 gchar                *full_dir)
 {
@@ -3291,7 +3291,7 @@ scan_resources (GtkIconThemePrivate  *icon_theme,
 }
 
 static void
-theme_subdir_load (GtkIconTheme *icon_theme,
+theme_subdir_load (CtkIconTheme *icon_theme,
                    IconTheme    *theme,
                    GKeyFile     *theme_file,
                    gchar        *subdir)
@@ -3445,25 +3445,25 @@ theme_subdir_load (GtkIconTheme *icon_theme,
 }
 
 /*
- * GtkIconInfo
+ * CtkIconInfo
  */
 
-static void ctk_icon_info_class_init (GtkIconInfoClass *klass);
+static void ctk_icon_info_class_init (CtkIconInfoClass *klass);
 
-G_DEFINE_TYPE (GtkIconInfo, ctk_icon_info, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkIconInfo, ctk_icon_info, G_TYPE_OBJECT)
 
 static void
-ctk_icon_info_init (GtkIconInfo *icon_info)
+ctk_icon_info_init (CtkIconInfo *icon_info)
 {
   icon_info->scale = -1.;
 }
 
-static GtkIconInfo *
+static CtkIconInfo *
 icon_info_new (IconThemeDirType type,
                gint             dir_size,
                gint             dir_scale)
 {
-  GtkIconInfo *icon_info;
+  CtkIconInfo *icon_info;
 
   icon_info = g_object_new (CTK_TYPE_ICON_INFO, NULL);
 
@@ -3481,10 +3481,10 @@ icon_info_new (IconThemeDirType type,
  * so that we can do a load in a thread without affecting
  * the original IconInfo from the thread.
  */
-static GtkIconInfo *
-icon_info_dup (GtkIconInfo *icon_info)
+static CtkIconInfo *
+icon_info_dup (CtkIconInfo *icon_info)
 {
-  GtkIconInfo *dup;
+  CtkIconInfo *dup;
   GSList *l;
 
   dup = icon_info_new (icon_info->dir_type, icon_info->dir_size, icon_info->dir_scale);
@@ -3524,10 +3524,10 @@ icon_info_dup (GtkIconInfo *icon_info)
   return dup;
 }
 
-static GtkIconInfo *
+static CtkIconInfo *
 icon_info_new_builtin (BuiltinIcon *icon)
 {
-  GtkIconInfo *icon_info = icon_info_new (ICON_THEME_DIR_THRESHOLD, icon->size, 1);
+  CtkIconInfo *icon_info = icon_info_new (ICON_THEME_DIR_THRESHOLD, icon->size, 1);
 
   icon_info->cache_pixbuf = g_object_ref (icon->pixbuf);
 
@@ -3536,18 +3536,18 @@ icon_info_new_builtin (BuiltinIcon *icon)
 
 /**
  * ctk_icon_info_copy: (skip)
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * 
- * Make a copy of a #GtkIconInfo.
+ * Make a copy of a #CtkIconInfo.
  * 
- * Returns: (transfer full): the new GtkIconInfo
+ * Returns: (transfer full): the new CtkIconInfo
  *
  * Since: 2.4
  *
  * Deprecated: 3.8: Use g_object_ref()
  */
-GtkIconInfo *
-ctk_icon_info_copy (GtkIconInfo *icon_info)
+CtkIconInfo *
+ctk_icon_info_copy (CtkIconInfo *icon_info)
 {
   g_return_val_if_fail (icon_info != NULL, NULL);
   return g_object_ref (icon_info);
@@ -3555,16 +3555,16 @@ ctk_icon_info_copy (GtkIconInfo *icon_info)
 
 /**
  * ctk_icon_info_free: (skip)
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * 
- * Free a #GtkIconInfo and associated information
+ * Free a #CtkIconInfo and associated information
  *
  * Since: 2.4
  *
  * Deprecated: 3.8: Use g_object_unref()
  */
 void
-ctk_icon_info_free (GtkIconInfo *icon_info)
+ctk_icon_info_free (CtkIconInfo *icon_info)
 {
   g_return_if_fail (icon_info != NULL);
   g_object_unref (icon_info);
@@ -3573,7 +3573,7 @@ ctk_icon_info_free (GtkIconInfo *icon_info)
 static void
 ctk_icon_info_finalize (GObject *object)
 {
-  GtkIconInfo *icon_info = (GtkIconInfo *) object;
+  CtkIconInfo *icon_info = (CtkIconInfo *) object;
 
   if (icon_info->in_cache)
     g_hash_table_remove (icon_info->in_cache->priv->info_cache, &icon_info->key);
@@ -3596,7 +3596,7 @@ ctk_icon_info_finalize (GObject *object)
 }
 
 static void
-ctk_icon_info_class_init (GtkIconInfoClass *klass)
+ctk_icon_info_class_init (CtkIconInfoClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -3605,7 +3605,7 @@ ctk_icon_info_class_init (GtkIconInfoClass *klass)
 
 /**
  * ctk_icon_info_get_base_size:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * 
  * Gets the base size for the icon. The base size
  * is a size for the icon that was specified by
@@ -3625,7 +3625,7 @@ ctk_icon_info_class_init (GtkIconInfoClass *klass)
  * Since: 2.4
  */
 gint
-ctk_icon_info_get_base_size (GtkIconInfo *icon_info)
+ctk_icon_info_get_base_size (CtkIconInfo *icon_info)
 {
   g_return_val_if_fail (icon_info != NULL, 0);
 
@@ -3634,7 +3634,7 @@ ctk_icon_info_get_base_size (GtkIconInfo *icon_info)
 
 /**
  * ctk_icon_info_get_base_scale:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  *
  * Gets the base scale for the icon. The base scale is a scale
  * for the icon that was specified by the icon theme creator.
@@ -3647,7 +3647,7 @@ ctk_icon_info_get_base_size (GtkIconInfo *icon_info)
  * Since: 3.10
  */
 gint
-ctk_icon_info_get_base_scale (GtkIconInfo *icon_info)
+ctk_icon_info_get_base_scale (CtkIconInfo *icon_info)
 {
   g_return_val_if_fail (icon_info != NULL, 0);
 
@@ -3656,7 +3656,7 @@ ctk_icon_info_get_base_scale (GtkIconInfo *icon_info)
 
 /**
  * ctk_icon_info_get_filename:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * 
  * Gets the filename for the icon. If the %CTK_ICON_LOOKUP_USE_BUILTIN
  * flag was passed to ctk_icon_theme_lookup_icon(), there may be no
@@ -3671,7 +3671,7 @@ ctk_icon_info_get_base_scale (GtkIconInfo *icon_info)
  * Since: 2.4
  */
 const gchar *
-ctk_icon_info_get_filename (GtkIconInfo *icon_info)
+ctk_icon_info_get_filename (CtkIconInfo *icon_info)
 {
   g_return_val_if_fail (icon_info != NULL, NULL);
 
@@ -3680,7 +3680,7 @@ ctk_icon_info_get_filename (GtkIconInfo *icon_info)
 
 /**
  * ctk_icon_info_get_builtin_pixbuf:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * 
  * Gets the built-in image for this icon, if any. To allow GTK+ to use
  * built in icon images, you must pass the %CTK_ICON_LOOKUP_USE_BUILTIN
@@ -3697,7 +3697,7 @@ ctk_icon_info_get_filename (GtkIconInfo *icon_info)
  *     ctk_icon_theme_add_resource_path() instead of builtin icons.
  */
 GdkPixbuf *
-ctk_icon_info_get_builtin_pixbuf (GtkIconInfo *icon_info)
+ctk_icon_info_get_builtin_pixbuf (CtkIconInfo *icon_info)
 {
   g_return_val_if_fail (icon_info != NULL, NULL);
 
@@ -3709,7 +3709,7 @@ ctk_icon_info_get_builtin_pixbuf (GtkIconInfo *icon_info)
 
 /**
  * ctk_icon_info_is_symbolic:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  *
  * Checks if the icon is symbolic or not. This currently uses only
  * the file name and not the file contents for determining this.
@@ -3720,7 +3720,7 @@ ctk_icon_info_get_builtin_pixbuf (GtkIconInfo *icon_info)
  * Since: 3.12
  */
 gboolean
-ctk_icon_info_is_symbolic (GtkIconInfo *icon_info)
+ctk_icon_info_is_symbolic (CtkIconInfo *icon_info)
 {
   gchar *icon_uri;
   gboolean is_symbolic;
@@ -3739,7 +3739,7 @@ ctk_icon_info_is_symbolic (GtkIconInfo *icon_info)
 
 static GdkPixbuf *
 apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
-                         GtkIconInfo *info)
+                         CtkIconInfo *info)
 {
   GdkPixbuf *icon = NULL;
   gint w, h, pos;
@@ -3753,7 +3753,7 @@ apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
 
   for (l = info->emblem_infos, pos = 0; l; l = l->next, pos++)
     {
-      GtkIconInfo *emblem_info = l->data;
+      CtkIconInfo *emblem_info = l->data;
 
       if (icon_info_ensure_scale_and_pixbuf (emblem_info))
         {
@@ -3813,7 +3813,7 @@ apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
  * size of the icon itself.
  */
 static void 
-apply_emblems (GtkIconInfo *info)
+apply_emblems (CtkIconInfo *info)
 {
   GdkPixbuf *icon;
 
@@ -3834,7 +3834,7 @@ apply_emblems (GtkIconInfo *info)
  * without blocking
  */
 static gboolean
-icon_info_get_pixbuf_ready (GtkIconInfo *icon_info)
+icon_info_get_pixbuf_ready (CtkIconInfo *icon_info)
 {
   if (icon_info->pixbuf &&
       (icon_info->emblem_infos == NULL || icon_info->emblems_applied))
@@ -3851,7 +3851,7 @@ icon_info_get_pixbuf_ready (GtkIconInfo *icon_info)
  * that size.
  */
 static gboolean
-icon_info_ensure_scale_and_pixbuf (GtkIconInfo *icon_info)
+icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
 {
   gint image_width, image_height, image_size;
   gint scaled_desired_size;
@@ -4041,8 +4041,8 @@ icon_info_ensure_scale_and_pixbuf (GtkIconInfo *icon_info)
 static void
 proxy_pixbuf_destroy (guchar *pixels, gpointer data)
 {
-  GtkIconInfo *icon_info = data;
-  GtkIconTheme *icon_theme = icon_info->in_cache;
+  CtkIconInfo *icon_info = data;
+  CtkIconTheme *icon_theme = icon_info->in_cache;
 
   g_assert (icon_info->proxy_pixbuf != NULL);
   icon_info->proxy_pixbuf = NULL;
@@ -4056,7 +4056,7 @@ proxy_pixbuf_destroy (guchar *pixels, gpointer data)
 
 /**
  * ctk_icon_info_load_icon:
- * @icon_info: a #GtkIconInfo from ctk_icon_theme_lookup_icon()
+ * @icon_info: a #CtkIconInfo from ctk_icon_theme_lookup_icon()
  * @error: (allow-none): location to store error information on failure,
  *     or %NULL.
  *
@@ -4069,7 +4069,7 @@ proxy_pixbuf_destroy (guchar *pixels, gpointer data)
  * requested size or for which the source image would have to be scaled
  * up too far. (This maintains sharpness.). This behaviour can be changed
  * by passing the %CTK_ICON_LOOKUP_FORCE_SIZE flag when obtaining
- * the #GtkIconInfo. If this flag has been specified, the pixbuf
+ * the #CtkIconInfo. If this flag has been specified, the pixbuf
  * returned by this function will be scaled to the exact size.
  *
  * Returns: (transfer full): the rendered icon; this may be a newly
@@ -4080,7 +4080,7 @@ proxy_pixbuf_destroy (guchar *pixels, gpointer data)
  * Since: 2.4
  */
 GdkPixbuf *
-ctk_icon_info_load_icon (GtkIconInfo *icon_info,
+ctk_icon_info_load_icon (CtkIconInfo *icon_info,
                          GError     **error)
 {
   g_return_val_if_fail (icon_info != NULL, NULL);
@@ -4129,7 +4129,7 @@ ctk_icon_info_load_icon (GtkIconInfo *icon_info,
 
 /**
  * ctk_icon_info_load_surface:
- * @icon_info: a #GtkIconInfo from ctk_icon_theme_lookup_icon()
+ * @icon_info: a #CtkIconInfo from ctk_icon_theme_lookup_icon()
  * @for_window: (allow-none): #GdkWindow to optimize drawing for, or %NULL
  * @error: (allow-none): location for error information on failure, or %NULL
  *
@@ -4142,7 +4142,7 @@ ctk_icon_info_load_icon (GtkIconInfo *icon_info,
  * requested size or for which the source image would have to be scaled
  * up too far. (This maintains sharpness.). This behaviour can be changed
  * by passing the %CTK_ICON_LOOKUP_FORCE_SIZE flag when obtaining
- * the #GtkIconInfo. If this flag has been specified, the pixbuf
+ * the #CtkIconInfo. If this flag has been specified, the pixbuf
  * returned by this function will be scaled to the exact size.
  *
  * Returns: (transfer full): the rendered icon; this may be a newly
@@ -4153,7 +4153,7 @@ ctk_icon_info_load_icon (GtkIconInfo *icon_info,
  * Since: 3.10
  */
 cairo_surface_t *
-ctk_icon_info_load_surface (GtkIconInfo  *icon_info,
+ctk_icon_info_load_surface (CtkIconInfo  *icon_info,
                             GdkWindow    *for_window,
                             GError      **error)
 {
@@ -4180,7 +4180,7 @@ load_icon_thread  (GTask        *task,
                    gpointer      task_data,
                    GCancellable *cancellable)
 {
-  GtkIconInfo *dup = task_data;
+  CtkIconInfo *dup = task_data;
 
   (void)icon_info_ensure_scale_and_pixbuf (dup);
   g_task_return_pointer (task, NULL, NULL);
@@ -4188,7 +4188,7 @@ load_icon_thread  (GTask        *task,
 
 /**
  * ctk_icon_info_load_icon_async:
- * @icon_info: a #GtkIconInfo from ctk_icon_theme_lookup_icon()
+ * @icon_info: a #CtkIconInfo from ctk_icon_theme_lookup_icon()
  * @cancellable: (allow-none): optional #GCancellable object, %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the
  *     request is satisfied
@@ -4203,14 +4203,14 @@ load_icon_thread  (GTask        *task,
  * Since: 3.8
  */
 void
-ctk_icon_info_load_icon_async (GtkIconInfo         *icon_info,
+ctk_icon_info_load_icon_async (CtkIconInfo         *icon_info,
                                GCancellable        *cancellable,
                                GAsyncReadyCallback  callback,
                                gpointer             user_data)
 {
   GTask *task;
   GdkPixbuf *pixbuf;
-  GtkIconInfo *dup;
+  CtkIconInfo *dup;
   GError *error = NULL;
 
   task = g_task_new (icon_info, cancellable, callback, user_data);
@@ -4235,7 +4235,7 @@ ctk_icon_info_load_icon_async (GtkIconInfo         *icon_info,
 
 /**
  * ctk_icon_info_load_icon_finish:
- * @icon_info: a #GtkIconInfo from ctk_icon_theme_lookup_icon()
+ * @icon_info: a #CtkIconInfo from ctk_icon_theme_lookup_icon()
  * @res: a #GAsyncResult
  * @error: (allow-none): location to store error information on failure,
  *     or %NULL.
@@ -4250,12 +4250,12 @@ ctk_icon_info_load_icon_async (GtkIconInfo         *icon_info,
  * Since: 3.8
  */
 GdkPixbuf *
-ctk_icon_info_load_icon_finish (GtkIconInfo   *icon_info,
+ctk_icon_info_load_icon_finish (CtkIconInfo   *icon_info,
                                 GAsyncResult  *result,
                                 GError       **error)
 {
   GTask *task = G_TASK (result);
-  GtkIconInfo *dup;
+  CtkIconInfo *dup;
 
   g_return_val_if_fail (g_task_is_valid (result, icon_info), NULL);
 
@@ -4289,8 +4289,8 @@ static void
 proxy_symbolic_pixbuf_destroy (guchar   *pixels,
                                gpointer  data)
 {
-  GtkIconInfo *icon_info = data;
-  GtkIconTheme *icon_theme = icon_info->in_cache;
+  CtkIconInfo *icon_info = data;
+  CtkIconTheme *icon_theme = icon_info->in_cache;
   SymbolicPixbufCache *symbolic_cache;
 
   for (symbolic_cache = icon_info->symbolic_pixbuf_cache;
@@ -4316,7 +4316,7 @@ proxy_symbolic_pixbuf_destroy (guchar   *pixels,
 
 static GdkPixbuf *
 symbolic_cache_get_proxy (SymbolicPixbufCache *symbolic_cache,
-                          GtkIconInfo         *icon_info)
+                          CtkIconInfo         *icon_info)
 {
   if (symbolic_cache->proxy_pixbuf)
     return g_object_ref (symbolic_cache->proxy_pixbuf);
@@ -4441,7 +4441,7 @@ ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
 }
 
 static GdkPixbuf *
-ctk_icon_info_load_symbolic_png (GtkIconInfo    *icon_info,
+ctk_icon_info_load_symbolic_png (CtkIconInfo    *icon_info,
                                  const GdkRGBA  *fg,
                                  const GdkRGBA  *success_color,
                                  const GdkRGBA  *warning_color,
@@ -4479,7 +4479,7 @@ ctk_icon_info_load_symbolic_png (GtkIconInfo    *icon_info,
 }
 
 static GdkPixbuf *
-ctk_icon_info_load_symbolic_svg (GtkIconInfo    *icon_info,
+ctk_icon_info_load_symbolic_svg (CtkIconInfo    *icon_info,
                                  const GdkRGBA  *fg,
                                  const GdkRGBA  *success_color,
                                  const GdkRGBA  *warning_color,
@@ -4626,7 +4626,7 @@ ctk_icon_info_load_symbolic_svg (GtkIconInfo    *icon_info,
 
 
 static GdkPixbuf *
-ctk_icon_info_load_symbolic_internal (GtkIconInfo    *icon_info,
+ctk_icon_info_load_symbolic_internal (CtkIconInfo    *icon_info,
 				      const GdkRGBA  *fg,
 				      const GdkRGBA  *success_color,
 				      const GdkRGBA  *warning_color,
@@ -4687,7 +4687,7 @@ ctk_icon_info_load_symbolic_internal (GtkIconInfo    *icon_info,
 
 /**
  * ctk_icon_info_load_symbolic:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * @fg: a #GdkRGBA representing the foreground color of the icon
  * @success_color: (allow-none): a #GdkRGBA representing the warning color
  *     of the icon or %NULL to use the default color
@@ -4723,7 +4723,7 @@ ctk_icon_info_load_symbolic_internal (GtkIconInfo    *icon_info,
  * Since: 3.0
  */
 GdkPixbuf *
-ctk_icon_info_load_symbolic (GtkIconInfo    *icon_info,
+ctk_icon_info_load_symbolic (CtkIconInfo    *icon_info,
                              const GdkRGBA  *fg,
                              const GdkRGBA  *success_color,
                              const GdkRGBA  *warning_color,
@@ -4752,13 +4752,13 @@ ctk_icon_info_load_symbolic (GtkIconInfo    *icon_info,
 }
 
 void
-ctk_icon_theme_lookup_symbolic_colors (GtkCssStyle *style,
+ctk_icon_theme_lookup_symbolic_colors (CtkCssStyle *style,
                                        GdkRGBA     *color_out,
                                        GdkRGBA     *success_out,
                                        GdkRGBA     *warning_out,
                                        GdkRGBA     *error_out)
 {
-  GtkCssValue *palette, *color;
+  CtkCssValue *palette, *color;
   const GdkRGBA *lookup;
 
   color = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_COLOR);
@@ -4786,8 +4786,8 @@ ctk_icon_theme_lookup_symbolic_colors (GtkCssStyle *style,
 
 /**
  * ctk_icon_info_load_symbolic_for_context:
- * @icon_info: a #GtkIconInfo
- * @context: a #GtkStyleContext
+ * @icon_info: a #CtkIconInfo
+ * @context: a #CtkStyleContext
  * @was_symbolic: (out) (allow-none): a #gboolean, returns whether the
  *     loaded icon was a symbolic one and whether the @fg color was
  *     applied to it.
@@ -4810,8 +4810,8 @@ ctk_icon_theme_lookup_symbolic_colors (GtkCssStyle *style,
  * Since: 3.0
  */
 GdkPixbuf *
-ctk_icon_info_load_symbolic_for_context (GtkIconInfo      *icon_info,
-                                         GtkStyleContext  *context,
+ctk_icon_info_load_symbolic_for_context (CtkIconInfo      *icon_info,
+                                         CtkStyleContext  *context,
                                          gboolean         *was_symbolic,
                                          GError          **error)
 {
@@ -4845,7 +4845,7 @@ ctk_icon_info_load_symbolic_for_context (GtkIconInfo      *icon_info,
 
 typedef struct {
   gboolean is_symbolic;
-  GtkIconInfo *dup;
+  CtkIconInfo *dup;
   GdkRGBA fg;
   gboolean fg_set;
   GdkRGBA success_color;
@@ -4869,7 +4869,7 @@ async_load_no_symbolic_cb (GObject      *source_object,
                            GAsyncResult *res,
                            gpointer      user_data)
 {
-  GtkIconInfo *icon_info = CTK_ICON_INFO (source_object);
+  CtkIconInfo *icon_info = CTK_ICON_INFO (source_object);
   GTask *task = user_data;
   GError *error = NULL;
   GdkPixbuf *pixbuf;
@@ -4908,7 +4908,7 @@ load_symbolic_icon_thread  (GTask        *task,
 
 /**
  * ctk_icon_info_load_symbolic_async:
- * @icon_info: a #GtkIconInfo from ctk_icon_theme_lookup_icon()
+ * @icon_info: a #CtkIconInfo from ctk_icon_theme_lookup_icon()
  * @fg: a #GdkRGBA representing the foreground color of the icon
  * @success_color: (allow-none): a #GdkRGBA representing the warning color
  *     of the icon or %NULL to use the default color
@@ -4931,7 +4931,7 @@ load_symbolic_icon_thread  (GTask        *task,
  * Since: 3.8
  */
 void
-ctk_icon_info_load_symbolic_async (GtkIconInfo          *icon_info,
+ctk_icon_info_load_symbolic_async (CtkIconInfo          *icon_info,
                                    const GdkRGBA        *fg,
                                    const GdkRGBA        *success_color,
                                    const GdkRGBA        *warning_color,
@@ -5003,7 +5003,7 @@ ctk_icon_info_load_symbolic_async (GtkIconInfo          *icon_info,
 
 /**
  * ctk_icon_info_load_symbolic_finish:
- * @icon_info: a #GtkIconInfo from ctk_icon_theme_lookup_icon()
+ * @icon_info: a #CtkIconInfo from ctk_icon_theme_lookup_icon()
  * @res: a #GAsyncResult
  * @was_symbolic: (out) (allow-none): a #gboolean, returns whether the
  *     loaded icon was a symbolic one and whether the @fg color was
@@ -5021,7 +5021,7 @@ ctk_icon_info_load_symbolic_async (GtkIconInfo          *icon_info,
  * Since: 3.8
  */
 GdkPixbuf *
-ctk_icon_info_load_symbolic_finish (GtkIconInfo   *icon_info,
+ctk_icon_info_load_symbolic_finish (CtkIconInfo   *icon_info,
                                     GAsyncResult  *result,
                                     gboolean      *was_symbolic,
                                     GError       **error)
@@ -5067,8 +5067,8 @@ ctk_icon_info_load_symbolic_finish (GtkIconInfo   *icon_info,
 
 /**
  * ctk_icon_info_load_symbolic_for_context_async:
- * @icon_info: a #GtkIconInfo from ctk_icon_theme_lookup_icon()
- * @context: a #GtkStyleContext
+ * @icon_info: a #CtkIconInfo from ctk_icon_theme_lookup_icon()
+ * @context: a #CtkStyleContext
  * @cancellable: (allow-none): optional #GCancellable object,
  *     %NULL to ignore
  * @callback: (scope async): a #GAsyncReadyCallback to call when the
@@ -5084,8 +5084,8 @@ ctk_icon_info_load_symbolic_finish (GtkIconInfo   *icon_info,
  * Since: 3.8
  */
 void
-ctk_icon_info_load_symbolic_for_context_async (GtkIconInfo         *icon_info,
-                                               GtkStyleContext     *context,
+ctk_icon_info_load_symbolic_for_context_async (CtkIconInfo         *icon_info,
+                                               CtkStyleContext     *context,
                                                GCancellable        *cancellable,
                                                GAsyncReadyCallback  callback,
                                                gpointer             user_data)
@@ -5110,7 +5110,7 @@ ctk_icon_info_load_symbolic_for_context_async (GtkIconInfo         *icon_info,
 
 /**
  * ctk_icon_info_load_symbolic_for_context_finish:
- * @icon_info: a #GtkIconInfo from ctk_icon_theme_lookup_icon()
+ * @icon_info: a #CtkIconInfo from ctk_icon_theme_lookup_icon()
  * @res: a #GAsyncResult
  * @was_symbolic: (out) (allow-none): a #gboolean, returns whether the
  *     loaded icon was a symbolic one and whether the @fg color was
@@ -5128,7 +5128,7 @@ ctk_icon_info_load_symbolic_for_context_async (GtkIconInfo         *icon_info,
  * Since: 3.8
  */
 GdkPixbuf *
-ctk_icon_info_load_symbolic_for_context_finish (GtkIconInfo   *icon_info,
+ctk_icon_info_load_symbolic_for_context_finish (CtkIconInfo   *icon_info,
                                                 GAsyncResult  *result,
                                                 gboolean      *was_symbolic,
                                                 GError       **error)
@@ -5149,8 +5149,8 @@ color_to_rgba (GdkColor *color,
 
 /**
  * ctk_icon_info_load_symbolic_for_style:
- * @icon_info: a #GtkIconInfo
- * @style: a #GtkStyle to take the colors from
+ * @icon_info: a #CtkIconInfo
+ * @style: a #CtkStyle to take the colors from
  * @state: the widget state to use for colors
  * @was_symbolic: (out) (allow-none): a #gboolean, returns whether the
  *     loaded icon was a symbolic one and whether the @fg color was
@@ -5173,9 +5173,9 @@ color_to_rgba (GdkColor *color,
  * Deprecated: 3.0: Use ctk_icon_info_load_symbolic_for_context() instead
  */
 GdkPixbuf *
-ctk_icon_info_load_symbolic_for_style (GtkIconInfo   *icon_info,
-                                       GtkStyle      *style,
-                                       GtkStateType   state,
+ctk_icon_info_load_symbolic_for_style (CtkIconInfo   *icon_info,
+                                       CtkStyle      *style,
+                                       CtkStateType   state,
                                        gboolean      *was_symbolic,
                                        GError       **error)
 {
@@ -5222,7 +5222,7 @@ ctk_icon_info_load_symbolic_for_style (GtkIconInfo   *icon_info,
 
 /**
  * ctk_icon_info_set_raw_coordinates:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * @raw_coordinates: whether the coordinates of embedded rectangles
  *     and attached points should be returned in their original
  *     (unscaled) form.
@@ -5247,14 +5247,14 @@ ctk_icon_info_load_symbolic_for_style (GtkIconInfo   *icon_info,
  * Deprecated: 3.14: Embedded rectangles and attachment points are deprecated
  */
 void
-ctk_icon_info_set_raw_coordinates (GtkIconInfo *icon_info,
+ctk_icon_info_set_raw_coordinates (CtkIconInfo *icon_info,
                                    gboolean     raw_coordinates)
 {
 }
 
 /**
  * ctk_icon_info_get_embedded_rect:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * @rectangle: (out): #GdkRectangle in which to store embedded
  *   rectangle coordinates; coordinates are only stored
  *   when this function returns %TRUE.
@@ -5268,7 +5268,7 @@ ctk_icon_info_set_raw_coordinates (GtkIconInfo *icon_info,
  * Deprecated: 3.14: Embedded rectangles are deprecated
  */
 gboolean
-ctk_icon_info_get_embedded_rect (GtkIconInfo  *icon_info,
+ctk_icon_info_get_embedded_rect (CtkIconInfo  *icon_info,
                                  GdkRectangle *rectangle)
 {
   return FALSE;
@@ -5276,7 +5276,7 @@ ctk_icon_info_get_embedded_rect (GtkIconInfo  *icon_info,
 
 /**
  * ctk_icon_info_get_attach_points:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * @points: (allow-none) (array length=n_points) (out): location to store pointer
  *     to an array of points, or %NULL free the array of points with g_free().
  * @n_points: (allow-none): location to store the number of points in @points,
@@ -5291,7 +5291,7 @@ ctk_icon_info_get_embedded_rect (GtkIconInfo  *icon_info,
  * Deprecated: 3.14: Attachment points are deprecated
  */
 gboolean
-ctk_icon_info_get_attach_points (GtkIconInfo  *icon_info,
+ctk_icon_info_get_attach_points (CtkIconInfo  *icon_info,
                                  GdkPoint    **points,
                                  gint         *n_points)
 {
@@ -5300,7 +5300,7 @@ ctk_icon_info_get_attach_points (GtkIconInfo  *icon_info,
 
 /**
  * ctk_icon_info_get_display_name:
- * @icon_info: a #GtkIconInfo
+ * @icon_info: a #CtkIconInfo
  * 
  * This function is deprecated and always returns %NULL.
  * 
@@ -5311,7 +5311,7 @@ ctk_icon_info_get_attach_points (GtkIconInfo  *icon_info,
  * Deprecated: 3.14: Display names are deprecated
  */
 const gchar *
-ctk_icon_info_get_display_name (GtkIconInfo *icon_info)
+ctk_icon_info_get_display_name (CtkIconInfo *icon_info)
 {
   return NULL;
 }
@@ -5454,12 +5454,12 @@ find_builtin_icon (const gchar *icon_name,
 
 /**
  * ctk_icon_theme_lookup_by_gicon:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon: the #GIcon to look up
  * @size: desired icon size
  * @flags: flags modifying the behavior of the icon lookup
  * 
- * Looks up an icon and returns a #GtkIconInfo containing information
+ * Looks up an icon and returns a #CtkIconInfo containing information
  * such as the filename of the icon. The icon can then be rendered
  * into a pixbuf using ctk_icon_info_load_icon().
  *
@@ -5469,17 +5469,17 @@ find_builtin_icon (const gchar *icon_name,
  * ctk_icon_theme_lookup_by_gicon_for_scale(), as the assets loaded
  * for a given scaling factor may be different.
  *
- * Returns: (nullable) (transfer full): a #GtkIconInfo containing
+ * Returns: (nullable) (transfer full): a #CtkIconInfo containing
  *     information about the icon, or %NULL if the icon wasn’t
  *     found. Unref with g_object_unref()
  *
  * Since: 2.14
  */
-GtkIconInfo *
-ctk_icon_theme_lookup_by_gicon (GtkIconTheme       *icon_theme,
+CtkIconInfo *
+ctk_icon_theme_lookup_by_gicon (CtkIconTheme       *icon_theme,
                                 GIcon              *icon,
                                 gint                size,
-                                GtkIconLookupFlags  flags)
+                                CtkIconLookupFlags  flags)
 {
   return ctk_icon_theme_lookup_by_gicon_for_scale (icon_theme, icon,
                                                    size, 1, flags);
@@ -5488,30 +5488,30 @@ ctk_icon_theme_lookup_by_gicon (GtkIconTheme       *icon_theme,
 
 /**
  * ctk_icon_theme_lookup_by_gicon_for_scale:
- * @icon_theme: a #GtkIconTheme
+ * @icon_theme: a #CtkIconTheme
  * @icon: the #GIcon to look up
  * @size: desired icon size
  * @scale: the desired scale
  * @flags: flags modifying the behavior of the icon lookup
  *
- * Looks up an icon and returns a #GtkIconInfo containing information
+ * Looks up an icon and returns a #CtkIconInfo containing information
  * such as the filename of the icon. The icon can then be rendered into
  * a pixbuf using ctk_icon_info_load_icon().
  *
- * Returns: (nullable) (transfer full): a #GtkIconInfo containing
+ * Returns: (nullable) (transfer full): a #CtkIconInfo containing
  *     information about the icon, or %NULL if the icon wasn’t
  *     found. Unref with g_object_unref()
  *
  * Since: 3.10
  */
-GtkIconInfo *
-ctk_icon_theme_lookup_by_gicon_for_scale (GtkIconTheme       *icon_theme,
+CtkIconInfo *
+ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
                                           GIcon              *icon,
                                           gint                size,
                                           gint                scale,
-                                          GtkIconLookupFlags  flags)
+                                          CtkIconLookupFlags  flags)
 {
-  GtkIconInfo *info;
+  CtkIconInfo *info;
 
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
   g_return_val_if_fail (G_IS_ICON (icon), NULL);
@@ -5583,7 +5583,7 @@ ctk_icon_theme_lookup_by_gicon_for_scale (GtkIconTheme       *icon_theme,
     {
       GIcon *base, *emblem;
       GList *list, *l;
-      GtkIconInfo *base_info, *emblem_info;
+      CtkIconInfo *base_info, *emblem_info;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       if (CTK_IS_NUMERABLE_ICON (icon))
@@ -5618,20 +5618,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 /**
  * ctk_icon_info_new_for_pixbuf:
- * @icon_theme: a #GtkIconTheme
- * @pixbuf: the pixbuf to wrap in a #GtkIconInfo
+ * @icon_theme: a #CtkIconTheme
+ * @pixbuf: the pixbuf to wrap in a #CtkIconInfo
  *
- * Creates a #GtkIconInfo for a #GdkPixbuf.
+ * Creates a #CtkIconInfo for a #GdkPixbuf.
  *
- * Returns: (transfer full): a #GtkIconInfo
+ * Returns: (transfer full): a #CtkIconInfo
  *
  * Since: 2.14
  */
-GtkIconInfo *
-ctk_icon_info_new_for_pixbuf (GtkIconTheme *icon_theme,
+CtkIconInfo *
+ctk_icon_info_new_for_pixbuf (CtkIconTheme *icon_theme,
                               GdkPixbuf    *pixbuf)
 {
-  GtkIconInfo *info;
+  CtkIconInfo *info;
 
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
   g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
@@ -5643,12 +5643,12 @@ ctk_icon_info_new_for_pixbuf (GtkIconTheme *icon_theme,
   return info;
 }
 
-GtkIconInfo *
+CtkIconInfo *
 ctk_icon_info_new_for_file (GFile *file,
                             gint   size,
                             gint   scale)
 {
-  GtkIconInfo *info;
+  CtkIconInfo *info;
 
   info = icon_info_new (ICON_THEME_DIR_UNTHEMED, size, 1);
   info->loadable = G_LOADABLE_ICON (g_file_icon_new (file));

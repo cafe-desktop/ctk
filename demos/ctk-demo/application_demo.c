@@ -2,8 +2,8 @@
  *
  * Demonstrates a simple application.
  *
- * This example uses GtkApplication, GtkApplicationWindow, GtkBuilder
- * as well as GMenu and GResource. Due to the way GtkApplication is structured,
+ * This example uses CtkApplication, CtkApplicationWindow, CtkBuilder
+ * as well as GMenu and GResource. Due to the way CtkApplication is structured,
  * it is run as a separate process.
  */
 
@@ -12,7 +12,7 @@
 #include <ctk/ctk.h>
 
 static gboolean name_seen;
-static GtkWidget *placeholder;
+static CtkWidget *placeholder;
 
 static void
 on_name_appeared (GDBusConnection *connection,
@@ -45,8 +45,8 @@ on_name_vanished (GDBusConnection *connection,
 #define APP_EXTENSION
 #endif
 
-GtkWidget *
-do_application_demo (GtkWidget *toplevel)
+CtkWidget *
+do_application_demo (CtkWidget *toplevel)
 {
   static guint watch = 0;
 

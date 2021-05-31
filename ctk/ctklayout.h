@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  *
- * GtkLayout: Widget for scrolling of arbitrary-sized areas.
+ * CtkLayout: Widget for scrolling of arbitrary-sized areas.
  *
  * Copyright Owen Taylor, 1998
  */
@@ -40,28 +40,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LAYOUT            (ctk_layout_get_type ())
-#define CTK_LAYOUT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LAYOUT, GtkLayout))
-#define CTK_LAYOUT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LAYOUT, GtkLayoutClass))
+#define CTK_LAYOUT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LAYOUT, CtkLayout))
+#define CTK_LAYOUT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LAYOUT, CtkLayoutClass))
 #define CTK_IS_LAYOUT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LAYOUT))
 #define CTK_IS_LAYOUT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LAYOUT))
-#define CTK_LAYOUT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LAYOUT, GtkLayoutClass))
+#define CTK_LAYOUT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LAYOUT, CtkLayoutClass))
 
 
-typedef struct _GtkLayout              GtkLayout;
-typedef struct _GtkLayoutPrivate       GtkLayoutPrivate;
-typedef struct _GtkLayoutClass         GtkLayoutClass;
+typedef struct _CtkLayout              CtkLayout;
+typedef struct _CtkLayoutPrivate       CtkLayoutPrivate;
+typedef struct _CtkLayoutClass         CtkLayoutClass;
 
-struct _GtkLayout
+struct _CtkLayout
 {
-  GtkContainer container;
+  CtkContainer container;
 
   /*< private >*/
-  GtkLayoutPrivate *priv;
+  CtkLayoutPrivate *priv;
 };
 
-struct _GtkLayoutClass
+struct _CtkLayoutClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -73,41 +73,41 @@ struct _GtkLayoutClass
 GDK_AVAILABLE_IN_ALL
 GType          ctk_layout_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*     ctk_layout_new             (GtkAdjustment *hadjustment,
-				           GtkAdjustment *vadjustment);
+CtkWidget*     ctk_layout_new             (CtkAdjustment *hadjustment,
+				           CtkAdjustment *vadjustment);
 GDK_AVAILABLE_IN_ALL
-GdkWindow*     ctk_layout_get_bin_window  (GtkLayout     *layout);
+GdkWindow*     ctk_layout_get_bin_window  (CtkLayout     *layout);
 GDK_AVAILABLE_IN_ALL
-void           ctk_layout_put             (GtkLayout     *layout,
-		                           GtkWidget     *child_widget,
+void           ctk_layout_put             (CtkLayout     *layout,
+		                           CtkWidget     *child_widget,
 		                           gint           x,
 		                           gint           y);
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_layout_move            (GtkLayout     *layout,
-		                           GtkWidget     *child_widget,
+void           ctk_layout_move            (CtkLayout     *layout,
+		                           CtkWidget     *child_widget,
 		                           gint           x,
 		                           gint           y);
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_layout_set_size        (GtkLayout     *layout,
+void           ctk_layout_set_size        (CtkLayout     *layout,
 			                   guint          width,
 			                   guint          height);
 GDK_AVAILABLE_IN_ALL
-void           ctk_layout_get_size        (GtkLayout     *layout,
+void           ctk_layout_get_size        (CtkLayout     *layout,
 					   guint         *width,
 					   guint         *height);
 
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
-GtkAdjustment* ctk_layout_get_hadjustment (GtkLayout     *layout);
+CtkAdjustment* ctk_layout_get_hadjustment (CtkLayout     *layout);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
-GtkAdjustment* ctk_layout_get_vadjustment (GtkLayout     *layout);
+CtkAdjustment* ctk_layout_get_vadjustment (CtkLayout     *layout);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_hadjustment)
-void           ctk_layout_set_hadjustment (GtkLayout     *layout,
-                                           GtkAdjustment *adjustment);
+void           ctk_layout_set_hadjustment (CtkLayout     *layout,
+                                           CtkAdjustment *adjustment);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_vadjustment)
-void           ctk_layout_set_vadjustment (GtkLayout     *layout,
-                                           GtkAdjustment *adjustment);
+void           ctk_layout_set_vadjustment (CtkLayout     *layout,
+                                           CtkAdjustment *adjustment);
 
 
 G_END_DECLS

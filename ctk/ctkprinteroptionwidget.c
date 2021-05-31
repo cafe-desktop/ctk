@@ -1,4 +1,4 @@
-/* GtkPrinterOptionWidget
+/* CtkPrinterOptionWidget
  * Copyright (C) 2006 Alexander Larsson  <alexl@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -47,25 +47,25 @@
 
 static void ctk_printer_option_widget_finalize (GObject *object);
 
-static void deconstruct_widgets (GtkPrinterOptionWidget *widget);
-static void construct_widgets   (GtkPrinterOptionWidget *widget);
-static void update_widgets      (GtkPrinterOptionWidget *widget);
+static void deconstruct_widgets (CtkPrinterOptionWidget *widget);
+static void construct_widgets   (CtkPrinterOptionWidget *widget);
+static void update_widgets      (CtkPrinterOptionWidget *widget);
 
 static gchar *trim_long_filename (const gchar *filename);
 
-struct GtkPrinterOptionWidgetPrivate
+struct CtkPrinterOptionWidgetPrivate
 {
-  GtkPrinterOption *source;
+  CtkPrinterOption *source;
   gulong source_changed_handler;
 
-  GtkWidget *check;
-  GtkWidget *combo;
-  GtkWidget *entry;
-  GtkWidget *image;
-  GtkWidget *label;
-  GtkWidget *info_label;
-  GtkWidget *box;
-  GtkWidget *button;
+  CtkWidget *check;
+  CtkWidget *combo;
+  CtkWidget *entry;
+  CtkWidget *image;
+  CtkWidget *label;
+  CtkWidget *info_label;
+  CtkWidget *box;
+  CtkWidget *button;
 
   /* the last location for save to file, that the user selected */
   gchar *last_location;
@@ -83,7 +83,7 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkPrinterOptionWidget, ctk_printer_option_widget, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkPrinterOptionWidget, ctk_printer_option_widget, CTK_TYPE_BOX)
 
 static void ctk_printer_option_widget_set_property (GObject      *object,
 						    guint         prop_id,
@@ -93,17 +93,17 @@ static void ctk_printer_option_widget_get_property (GObject      *object,
 						    guint         prop_id,
 						    GValue       *value,
 						    GParamSpec   *pspec);
-static gboolean ctk_printer_option_widget_mnemonic_activate (GtkWidget *widget,
+static gboolean ctk_printer_option_widget_mnemonic_activate (CtkWidget *widget,
 							     gboolean   group_cycling);
 
 static void
-ctk_printer_option_widget_class_init (GtkPrinterOptionWidgetClass *class)
+ctk_printer_option_widget_class_init (CtkPrinterOptionWidgetClass *class)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
 
   object_class = (GObjectClass *) class;
-  widget_class = (GtkWidgetClass *) class;
+  widget_class = (CtkWidgetClass *) class;
 
   object_class->finalize = ctk_printer_option_widget_finalize;
   object_class->set_property = ctk_printer_option_widget_set_property;
@@ -115,7 +115,7 @@ ctk_printer_option_widget_class_init (GtkPrinterOptionWidgetClass *class)
     g_signal_new (I_("changed"),
 		  G_TYPE_FROM_CLASS (class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrinterOptionWidgetClass, changed),
+		  G_STRUCT_OFFSET (CtkPrinterOptionWidgetClass, changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
@@ -131,7 +131,7 @@ ctk_printer_option_widget_class_init (GtkPrinterOptionWidgetClass *class)
 }
 
 static void
-ctk_printer_option_widget_init (GtkPrinterOptionWidget *widget)
+ctk_printer_option_widget_init (CtkPrinterOptionWidget *widget)
 {
   widget->priv = ctk_printer_option_widget_get_instance_private (widget);
 
@@ -141,8 +141,8 @@ ctk_printer_option_widget_init (GtkPrinterOptionWidget *widget)
 static void
 ctk_printer_option_widget_finalize (GObject *object)
 {
-  GtkPrinterOptionWidget *widget = CTK_PRINTER_OPTION_WIDGET (object);
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidget *widget = CTK_PRINTER_OPTION_WIDGET (object);
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
   
   if (priv->source)
     {
@@ -161,7 +161,7 @@ ctk_printer_option_widget_set_property (GObject         *object,
 					const GValue    *value,
 					GParamSpec      *pspec)
 {
-  GtkPrinterOptionWidget *widget;
+  CtkPrinterOptionWidget *widget;
   
   widget = CTK_PRINTER_OPTION_WIDGET (object);
 
@@ -182,8 +182,8 @@ ctk_printer_option_widget_get_property (GObject    *object,
 					GValue     *value,
 					GParamSpec *pspec)
 {
-  GtkPrinterOptionWidget *widget = CTK_PRINTER_OPTION_WIDGET (object);
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidget *widget = CTK_PRINTER_OPTION_WIDGET (object);
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
 
   switch (prop_id)
     {
@@ -197,11 +197,11 @@ ctk_printer_option_widget_get_property (GObject    *object,
 }
 
 static gboolean
-ctk_printer_option_widget_mnemonic_activate (GtkWidget *widget,
+ctk_printer_option_widget_mnemonic_activate (CtkWidget *widget,
 					     gboolean   group_cycling)
 {
-  GtkPrinterOptionWidget *powidget = CTK_PRINTER_OPTION_WIDGET (widget);
-  GtkPrinterOptionWidgetPrivate *priv = powidget->priv;
+  CtkPrinterOptionWidget *powidget = CTK_PRINTER_OPTION_WIDGET (widget);
+  CtkPrinterOptionWidgetPrivate *priv = powidget->priv;
 
   if (priv->check)
     return ctk_widget_mnemonic_activate (priv->check, group_cycling);
@@ -216,30 +216,30 @@ ctk_printer_option_widget_mnemonic_activate (GtkWidget *widget,
 }
 
 static void
-emit_changed (GtkPrinterOptionWidget *widget)
+emit_changed (CtkPrinterOptionWidget *widget)
 {
   g_signal_emit (widget, signals[CHANGED], 0);
 }
 
-GtkWidget *
-ctk_printer_option_widget_new (GtkPrinterOption *source)
+CtkWidget *
+ctk_printer_option_widget_new (CtkPrinterOption *source)
 {
   return g_object_new (CTK_TYPE_PRINTER_OPTION_WIDGET, "source", source, NULL);
 }
 
 static void
-source_changed_cb (GtkPrinterOption *source,
-		   GtkPrinterOptionWidget  *widget)
+source_changed_cb (CtkPrinterOption *source,
+		   CtkPrinterOptionWidget  *widget)
 {
   update_widgets (widget);
   emit_changed (widget);
 }
 
 void
-ctk_printer_option_widget_set_source (GtkPrinterOptionWidget *widget,
-				      GtkPrinterOption       *source)
+ctk_printer_option_widget_set_source (CtkPrinterOptionWidget *widget,
+				      CtkPrinterOption       *source)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
 
   if (source)
     g_object_ref (source);
@@ -270,9 +270,9 @@ enum {
 };
 
 static void
-combo_box_set_model (GtkWidget *combo_box)
+combo_box_set_model (CtkWidget *combo_box)
 {
-  GtkListStore *store;
+  CtkListStore *store;
 
   store = ctk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING);
   ctk_combo_box_set_model (CTK_COMBO_BOX (combo_box), CTK_TREE_MODEL (store));
@@ -280,9 +280,9 @@ combo_box_set_model (GtkWidget *combo_box)
 }
 
 static void
-combo_box_set_view (GtkWidget *combo_box)
+combo_box_set_view (CtkWidget *combo_box)
 {
-  GtkCellRenderer *cell;
+  CtkCellRenderer *cell;
 
   cell = ctk_cell_renderer_text_new ();
   ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo_box), cell, TRUE);
@@ -291,10 +291,10 @@ combo_box_set_view (GtkWidget *combo_box)
                                    NULL);
 }
 
-static GtkWidget *
+static CtkWidget *
 combo_box_entry_new (void)
 {
-  GtkWidget *combo_box;
+  CtkWidget *combo_box;
   combo_box = g_object_new (CTK_TYPE_COMBO_BOX, "has-entry", TRUE, NULL);
 
   combo_box_set_model (combo_box);
@@ -304,10 +304,10 @@ combo_box_entry_new (void)
   return combo_box;
 }
 
-static GtkWidget *
+static CtkWidget *
 combo_box_new (void)
 {
-  GtkWidget *combo_box;
+  CtkWidget *combo_box;
   combo_box = ctk_combo_box_new ();
 
   combo_box_set_model (combo_box);
@@ -317,13 +317,13 @@ combo_box_new (void)
 }
   
 static void
-combo_box_append (GtkWidget   *combo,
+combo_box_append (CtkWidget   *combo,
 		  const gchar *display_text,
 		  const gchar *value)
 {
-  GtkTreeModel *model;
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkListStore *store;
+  CtkTreeIter iter;
   
   model = ctk_combo_box_get_model (CTK_COMBO_BOX (combo));
   store = CTK_LIST_STORE (model);
@@ -336,14 +336,14 @@ combo_box_append (GtkWidget   *combo,
 }
 
 struct ComboSet {
-  GtkComboBox *combo;
+  CtkComboBox *combo;
   const gchar *value;
 };
 
 static gboolean
-set_cb (GtkTreeModel *model, 
-	GtkTreePath  *path, 
-	GtkTreeIter  *iter, 
+set_cb (CtkTreeModel *model, 
+	CtkTreePath  *path, 
+	CtkTreeIter  *iter, 
 	gpointer      data)
 {
   struct ComboSet *set_data = data;
@@ -361,10 +361,10 @@ set_cb (GtkTreeModel *model,
 }
 
 static void
-combo_box_set (GtkWidget   *combo,
+combo_box_set (CtkWidget   *combo,
 	       const gchar *value)
 {
-  GtkTreeModel *model;
+  CtkTreeModel *model;
   struct ComboSet set_data;
   
   model = ctk_combo_box_get_model (CTK_COMBO_BOX (combo));
@@ -375,11 +375,11 @@ combo_box_set (GtkWidget   *combo,
 }
 
 static gchar *
-combo_box_get (GtkWidget *combo, gboolean *custom)
+combo_box_get (CtkWidget *combo, gboolean *custom)
 {
-  GtkTreeModel *model;
+  CtkTreeModel *model;
   gchar *value;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   model = ctk_combo_box_get_model (CTK_COMBO_BOX (combo));
 
@@ -426,9 +426,9 @@ combo_box_get (GtkWidget *combo, gboolean *custom)
 
 
 static void
-deconstruct_widgets (GtkPrinterOptionWidget *widget)
+deconstruct_widgets (CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
 
   if (priv->check)
     {
@@ -467,10 +467,10 @@ deconstruct_widgets (GtkPrinterOptionWidget *widget)
 }
 
 static void
-check_toggled_cb (GtkToggleButton        *toggle_button,
-		  GtkPrinterOptionWidget *widget)
+check_toggled_cb (CtkToggleButton        *toggle_button,
+		  CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
 
   g_signal_handler_block (priv->source, priv->source_changed_handler);
   ctk_printer_option_set_boolean (priv->source,
@@ -480,11 +480,11 @@ check_toggled_cb (GtkToggleButton        *toggle_button,
 }
 
 static void
-dialog_response_callback (GtkDialog              *dialog,
+dialog_response_callback (CtkDialog              *dialog,
                           gint                    response_id,
-                          GtkPrinterOptionWidget *widget)
+                          CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
   gchar *uri = NULL;
   gchar *new_location = NULL;
 
@@ -527,13 +527,13 @@ dialog_response_callback (GtkDialog              *dialog,
 }
 
 static void
-filesave_choose_cb (GtkWidget              *button,
-                    GtkPrinterOptionWidget *widget)
+filesave_choose_cb (CtkWidget              *button,
+                    CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
   gchar *last_location = NULL;
-  GtkWidget *dialog;
-  GtkWindow *toplevel;
+  CtkWidget *dialog;
+  CtkWindow *toplevel;
 
   /* this will be unblocked in the dialog_response_callback function */
   g_signal_handler_block (priv->source, priv->source_changed_handler);
@@ -623,10 +623,10 @@ filter_numeric (const gchar *val,
 }
 
 static void
-combo_changed_cb (GtkWidget              *combo,
-		  GtkPrinterOptionWidget *widget)
+combo_changed_cb (CtkWidget              *combo,
+		  CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
   gchar *value;
   gchar *filtered_val = NULL;
   gboolean changed;
@@ -661,7 +661,7 @@ combo_changed_cb (GtkWidget              *combo,
 
       if (changed)
         {
-          GtkEntry *entry;
+          CtkEntry *entry;
 	  
 	  entry = CTK_ENTRY (ctk_bin_get_child (CTK_BIN (combo)));
 
@@ -678,10 +678,10 @@ combo_changed_cb (GtkWidget              *combo,
 }
 
 static void
-entry_changed_cb (GtkWidget              *entry,
-		  GtkPrinterOptionWidget *widget)
+entry_changed_cb (CtkWidget              *entry,
+		  CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
   const gchar *value;
   
   g_signal_handler_block (priv->source, priv->source_changed_handler);
@@ -694,10 +694,10 @@ entry_changed_cb (GtkWidget              *entry,
 
 
 static void
-radio_changed_cb (GtkWidget              *button,
-		  GtkPrinterOptionWidget *widget)
+radio_changed_cb (CtkWidget              *button,
+		  CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
   gchar *value;
   
   g_signal_handler_block (priv->source, priv->source_changed_handler);
@@ -709,7 +709,7 @@ radio_changed_cb (GtkWidget              *button,
 }
 
 static void
-select_maybe (GtkWidget   *widget, 
+select_maybe (CtkWidget   *widget, 
 	      const gchar *value)
 {
   gchar *v = g_object_get_data (G_OBJECT (widget), "value");
@@ -719,22 +719,22 @@ select_maybe (GtkWidget   *widget,
 }
 
 static void
-alternative_set (GtkWidget   *box,
+alternative_set (CtkWidget   *box,
 		 const gchar *value)
 {
   ctk_container_foreach (CTK_CONTAINER (box), 
-			 (GtkCallback) select_maybe,
+			 (CtkCallback) select_maybe,
 			 (gpointer) value);
 }
 
 static GSList *
-alternative_append (GtkWidget              *box,
+alternative_append (CtkWidget              *box,
 		    const gchar            *label,
                     const gchar            *value,
-		    GtkPrinterOptionWidget *widget,
+		    CtkPrinterOptionWidget *widget,
 		    GSList                 *group)
 {
-  GtkWidget *button;
+  CtkWidget *button;
 
   button = ctk_radio_button_new_with_label (group, label);
   ctk_widget_show (button);
@@ -749,10 +749,10 @@ alternative_append (GtkWidget              *box,
 }
 
 static void
-construct_widgets (GtkPrinterOptionWidget *widget)
+construct_widgets (CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
-  GtkPrinterOption *source;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOption *source;
   char *text;
   int i;
   GSList *group;
@@ -797,7 +797,7 @@ construct_widgets (GtkPrinterOptionWidget *widget)
           if (source->type == CTK_PRINTER_OPTION_TYPE_PICKONE_PASSWORD ||
 	      source->type == CTK_PRINTER_OPTION_TYPE_PICKONE_PASSCODE)
 	    {
-              GtkEntry *entry;
+              CtkEntry *entry;
 
 	      entry = CTK_ENTRY (ctk_bin_get_child (CTK_BIN (priv->combo)));
 
@@ -936,10 +936,10 @@ trim_long_filename (const gchar *filename)
 }
 
 static void
-update_widgets (GtkPrinterOptionWidget *widget)
+update_widgets (CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
-  GtkPrinterOption *source;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOption *source;
 
   source = priv->source;
   
@@ -972,7 +972,7 @@ update_widgets (GtkPrinterOptionWidget *widget)
     case CTK_PRINTER_OPTION_TYPE_PICKONE_INT:
     case CTK_PRINTER_OPTION_TYPE_PICKONE_STRING:
       {
-        GtkEntry *entry;
+        CtkEntry *entry;
 
         entry = CTK_ENTRY (ctk_bin_get_child (CTK_BIN (priv->combo)));
         if (ctk_printer_option_has_choice (source, source->value))
@@ -1021,21 +1021,21 @@ update_widgets (GtkPrinterOptionWidget *widget)
 }
 
 gboolean
-ctk_printer_option_widget_has_external_label (GtkPrinterOptionWidget *widget)
+ctk_printer_option_widget_has_external_label (CtkPrinterOptionWidget *widget)
 {
   return widget->priv->label != NULL;
 }
 
-GtkWidget *
-ctk_printer_option_widget_get_external_label (GtkPrinterOptionWidget  *widget)
+CtkWidget *
+ctk_printer_option_widget_get_external_label (CtkPrinterOptionWidget  *widget)
 {
   return widget->priv->label;
 }
 
 const gchar *
-ctk_printer_option_widget_get_value (GtkPrinterOptionWidget *widget)
+ctk_printer_option_widget_get_value (CtkPrinterOptionWidget *widget)
 {
-  GtkPrinterOptionWidgetPrivate *priv = widget->priv;
+  CtkPrinterOptionWidgetPrivate *priv = widget->priv;
 
   if (priv->source)
     return priv->source->value;

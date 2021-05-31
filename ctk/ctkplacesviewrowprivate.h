@@ -31,34 +31,34 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_PLACES_VIEW_ROW (ctk_places_view_row_get_type())
 
-G_DECLARE_FINAL_TYPE (GtkPlacesViewRow, ctk_places_view_row, GTK, PLACES_VIEW_ROW, GtkListBoxRow)
+G_DECLARE_FINAL_TYPE (CtkPlacesViewRow, ctk_places_view_row, GTK, PLACES_VIEW_ROW, CtkListBoxRow)
 
-GtkWidget*         ctk_places_view_row_new                       (GVolume            *volume,
+CtkWidget*         ctk_places_view_row_new                       (GVolume            *volume,
                                                                   GMount             *mount);
 
-GtkWidget*         ctk_places_view_row_get_eject_button          (GtkPlacesViewRow   *row);
+CtkWidget*         ctk_places_view_row_get_eject_button          (CtkPlacesViewRow   *row);
 
-GtkWidget*         ctk_places_view_row_get_event_box             (GtkPlacesViewRow   *row);
+CtkWidget*         ctk_places_view_row_get_event_box             (CtkPlacesViewRow   *row);
 
-GMount*            ctk_places_view_row_get_mount                 (GtkPlacesViewRow   *row);
+GMount*            ctk_places_view_row_get_mount                 (CtkPlacesViewRow   *row);
 
-GVolume*           ctk_places_view_row_get_volume                (GtkPlacesViewRow   *row);
+GVolume*           ctk_places_view_row_get_volume                (CtkPlacesViewRow   *row);
 
-GFile*             ctk_places_view_row_get_file                  (GtkPlacesViewRow   *row);
+GFile*             ctk_places_view_row_get_file                  (CtkPlacesViewRow   *row);
 
-void               ctk_places_view_row_set_busy                  (GtkPlacesViewRow   *row,
+void               ctk_places_view_row_set_busy                  (CtkPlacesViewRow   *row,
                                                                   gboolean            is_busy);
 
-gboolean           ctk_places_view_row_get_is_network            (GtkPlacesViewRow   *row);
+gboolean           ctk_places_view_row_get_is_network            (CtkPlacesViewRow   *row);
 
-void               ctk_places_view_row_set_is_network            (GtkPlacesViewRow   *row,
+void               ctk_places_view_row_set_is_network            (CtkPlacesViewRow   *row,
                                                                   gboolean            is_network);
 
-void               ctk_places_view_row_set_path_size_group       (GtkPlacesViewRow   *row,
-                                                                  GtkSizeGroup       *group);
+void               ctk_places_view_row_set_path_size_group       (CtkPlacesViewRow   *row,
+                                                                  CtkSizeGroup       *group);
 
-void               ctk_places_view_row_set_space_size_group      (GtkPlacesViewRow   *row,
-                                                                  GtkSizeGroup       *group);
+void               ctk_places_view_row_set_space_size_group      (CtkPlacesViewRow   *row,
+                                                                  CtkSizeGroup       *group);
 
 G_END_DECLS
 

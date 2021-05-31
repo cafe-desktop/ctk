@@ -36,26 +36,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CHECK_BUTTON                  (ctk_check_button_get_type ())
-#define CTK_CHECK_BUTTON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CHECK_BUTTON, GtkCheckButton))
-#define CTK_CHECK_BUTTON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CHECK_BUTTON, GtkCheckButtonClass))
+#define CTK_CHECK_BUTTON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CHECK_BUTTON, CtkCheckButton))
+#define CTK_CHECK_BUTTON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CHECK_BUTTON, CtkCheckButtonClass))
 #define CTK_IS_CHECK_BUTTON(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CHECK_BUTTON))
 #define CTK_IS_CHECK_BUTTON_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CHECK_BUTTON))
-#define CTK_CHECK_BUTTON_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CHECK_BUTTON, GtkCheckButtonClass))
+#define CTK_CHECK_BUTTON_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CHECK_BUTTON, CtkCheckButtonClass))
 
 
-typedef struct _GtkCheckButton       GtkCheckButton;
-typedef struct _GtkCheckButtonClass  GtkCheckButtonClass;
+typedef struct _CtkCheckButton       CtkCheckButton;
+typedef struct _CtkCheckButtonClass  CtkCheckButtonClass;
 
-struct _GtkCheckButton
+struct _CtkCheckButton
 {
-  GtkToggleButton toggle_button;
+  CtkToggleButton toggle_button;
 };
 
-struct _GtkCheckButtonClass
+struct _CtkCheckButtonClass
 {
-  GtkToggleButtonClass parent_class;
+  CtkToggleButtonClass parent_class;
 
-  void (* draw_indicator) (GtkCheckButton *check_button,
+  void (* draw_indicator) (CtkCheckButton *check_button,
 			   cairo_t        *cr);
 
   /* Padding for future expansion */
@@ -69,13 +69,13 @@ struct _GtkCheckButtonClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_check_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_check_button_new               (void);
+CtkWidget* ctk_check_button_new               (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_check_button_new_with_label    (const gchar *label);
+CtkWidget* ctk_check_button_new_with_label    (const gchar *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_check_button_new_with_mnemonic (const gchar *label);
+CtkWidget* ctk_check_button_new_with_mnemonic (const gchar *label);
 
-void _ctk_check_button_get_props (GtkCheckButton *check_button,
+void _ctk_check_button_get_props (CtkCheckButton *check_button,
 				  gint           *indicator_size,
 				  gint           *indicator_spacing);
 

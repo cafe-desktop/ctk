@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="type">popup</property>
     <property name="can_focus">False</property>
     <property name="default_width">320</property>
     <property name="default_height">320</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="CtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkBox" id="box2">
+          <object class="CtkBox" id="box2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkEventBox" id="eventbox1">
+              <object class="CtkEventBox" id="eventbox1">
                 <property name="name">red</property>
                 <property name="width_request">30</property>
                 <property name="height_request">30</property>
@@ -30,7 +30,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox2">
+              <object class="CtkEventBox" id="eventbox2">
                 <property name="name">green</property>
                 <property name="width_request">30</property>
                 <property name="height_request">30</property>
@@ -51,11 +51,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box3">
+          <object class="CtkBox" id="box3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkEventBox" id="eventbox3">
+              <object class="CtkEventBox" id="eventbox3">
                 <property name="name">red</property>
                 <property name="width_request">30</property>
                 <property name="height_request">30</property>
@@ -69,7 +69,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox4">
+              <object class="CtkEventBox" id="eventbox4">
                 <property name="name">green</property>
                 <property name="width_request">30</property>
                 <property name="height_request">30</property>
@@ -90,11 +90,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box4">
+          <object class="CtkBox" id="box4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkEventBox" id="eventbox5">
+              <object class="CtkEventBox" id="eventbox5">
                 <property name="name">red</property>
                 <property name="width_request">30</property>
                 <property name="height_request">30</property>
@@ -108,7 +108,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox6">
+              <object class="CtkEventBox" id="eventbox6">
                 <property name="name">green</property>
                 <property name="width_request">30</property>
                 <property name="height_request">30</property>
@@ -129,11 +129,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box5">
+          <object class="CtkBox" id="box5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkEventBox" id="eventbox7">
+              <object class="CtkEventBox" id="eventbox7">
                 <property name="name">red</property>
                 <property name="width_request">30</property>
                 <property name="height_request">30</property>
@@ -147,7 +147,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox8">
+              <object class="CtkEventBox" id="eventbox8">
                 <property name="name">green</property>
                 <property name="width_request">30</property>
                 <property name="height_request">30</property>
@@ -168,16 +168,16 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box6">
+          <object class="CtkBox" id="box6">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkBox" id="box7">
+              <object class="CtkBox" id="box7">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkEventBox" id="eventbox9">
+                  <object class="CtkEventBox" id="eventbox9">
                     <property name="name">red</property>
                     <property name="width_request">30</property>
                     <property name="height_request">30</property>
@@ -191,7 +191,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEventBox" id="eventbox10">
+                  <object class="CtkEventBox" id="eventbox10">
                     <property name="name">green</property>
                     <property name="width_request">30</property>
                     <property name="height_request">30</property>
@@ -212,12 +212,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="box8">
+              <object class="CtkBox" id="box8">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkEventBox" id="eventbox11">
+                  <object class="CtkEventBox" id="eventbox11">
                     <property name="name">red</property>
                     <property name="width_request">30</property>
                     <property name="height_request">30</property>
@@ -231,7 +231,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEventBox" id="eventbox12">
+                  <object class="CtkEventBox" id="eventbox12">
                     <property name="name">green</property>
                     <property name="width_request">30</property>
                     <property name="height_request">30</property>
@@ -252,12 +252,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="box9">
+              <object class="CtkBox" id="box9">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkEventBox" id="eventbox13">
+                  <object class="CtkEventBox" id="eventbox13">
                     <property name="name">red</property>
                     <property name="width_request">30</property>
                     <property name="height_request">30</property>
@@ -271,7 +271,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEventBox" id="eventbox14">
+                  <object class="CtkEventBox" id="eventbox14">
                     <property name="name">green</property>
                     <property name="width_request">30</property>
                     <property name="height_request">30</property>
@@ -292,12 +292,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="box10">
+              <object class="CtkBox" id="box10">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkEventBox" id="eventbox15">
+                  <object class="CtkEventBox" id="eventbox15">
                     <property name="name">red</property>
                     <property name="width_request">30</property>
                     <property name="height_request">30</property>
@@ -311,7 +311,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEventBox" id="eventbox16">
+                  <object class="CtkEventBox" id="eventbox16">
                     <property name="name">green</property>
                     <property name="width_request">30</property>
                     <property name="height_request">30</property>
@@ -339,12 +339,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box11">
+          <object class="CtkBox" id="box11">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
             <child>
-              <object class="GtkEventBox" id="eventbox17">
+              <object class="CtkEventBox" id="eventbox17">
                 <property name="name">red</property>
                 <property name="width_request">10</property>
                 <property name="height_request">30</property>
@@ -357,7 +357,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox18">
+              <object class="CtkEventBox" id="eventbox18">
                 <property name="name">green</property>
                 <property name="width_request">10</property>
                 <property name="height_request">30</property>
@@ -370,7 +370,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox19">
+              <object class="CtkEventBox" id="eventbox19">
                 <property name="name">red</property>
                 <property name="width_request">20</property>
                 <property name="height_request">30</property>
@@ -383,7 +383,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox20">
+              <object class="CtkEventBox" id="eventbox20">
                 <property name="name">green</property>
                 <property name="width_request">20</property>
                 <property name="height_request">30</property>
@@ -396,7 +396,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox21">
+              <object class="CtkEventBox" id="eventbox21">
                 <property name="name">red</property>
                 <property name="width_request">40</property>
                 <property name="height_request">30</property>
@@ -409,7 +409,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox" id="eventbox22">
+              <object class="CtkEventBox" id="eventbox22">
                 <property name="name">green</property>
                 <property name="width_request">40</property>
                 <property name="height_request">30</property>

@@ -21,7 +21,7 @@
 #include <ctk/ctk.h>
 #include "ctkcomboboxaccessible.h"
 
-struct _GtkComboBoxAccessiblePrivate
+struct _CtkComboBoxAccessiblePrivate
 {
   gchar         *name;
   gint           old_selection;
@@ -31,17 +31,17 @@ struct _GtkComboBoxAccessiblePrivate
 static void atk_action_interface_init    (AtkActionIface    *iface);
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkComboBoxAccessible, ctk_combo_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkComboBoxAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkComboBoxAccessible, ctk_combo_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkComboBoxAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
 static void
-changed_cb (GtkWidget *widget)
+changed_cb (CtkWidget *widget)
 {
-  GtkComboBox *combo_box;
+  CtkComboBox *combo_box;
   AtkObject *obj;
-  GtkComboBoxAccessible *accessible;
+  CtkComboBoxAccessible *accessible;
   gint index;
 
   combo_box = CTK_COMBO_BOX (widget);
@@ -61,8 +61,8 @@ static void
 ctk_combo_box_accessible_initialize (AtkObject *obj,
                                      gpointer   data)
 {
-  GtkComboBox *combo_box;
-  GtkComboBoxAccessible *accessible;
+  CtkComboBox *combo_box;
+  CtkComboBoxAccessible *accessible;
   AtkObject *popup;
 
   ATK_OBJECT_CLASS (ctk_combo_box_accessible_parent_class)->initialize (obj, data);
@@ -88,7 +88,7 @@ ctk_combo_box_accessible_initialize (AtkObject *obj,
 static void
 ctk_combo_box_accessible_finalize (GObject *object)
 {
-  GtkComboBoxAccessible *combo_box = CTK_COMBO_BOX_ACCESSIBLE (object);
+  CtkComboBoxAccessible *combo_box = CTK_COMBO_BOX_ACCESSIBLE (object);
 
   g_free (combo_box->priv->name);
 
@@ -98,12 +98,12 @@ ctk_combo_box_accessible_finalize (GObject *object)
 static const gchar *
 ctk_combo_box_accessible_get_name (AtkObject *obj)
 {
-  GtkWidget *widget;
-  GtkComboBox *combo_box;
-  GtkComboBoxAccessible *accessible;
-  GtkTreeIter iter;
+  CtkWidget *widget;
+  CtkComboBox *combo_box;
+  CtkComboBoxAccessible *accessible;
+  CtkTreeIter iter;
   const gchar *name;
-  GtkTreeModel *model;
+  CtkTreeModel *model;
   gint n_columns;
   gint i;
 
@@ -144,7 +144,7 @@ static gint
 ctk_combo_box_accessible_get_n_children (AtkObject* obj)
 {
   gint n_children = 0;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -161,9 +161,9 @@ static AtkObject *
 ctk_combo_box_accessible_ref_child (AtkObject *obj,
                                     gint       i)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   AtkObject *child;
-  GtkComboBoxAccessible *box;
+  CtkComboBoxAccessible *box;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -192,7 +192,7 @@ ctk_combo_box_accessible_ref_child (AtkObject *obj,
 }
 
 static void
-ctk_combo_box_accessible_class_init (GtkComboBoxAccessibleClass *klass)
+ctk_combo_box_accessible_class_init (CtkComboBoxAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
@@ -206,7 +206,7 @@ ctk_combo_box_accessible_class_init (GtkComboBoxAccessibleClass *klass)
 }
 
 static void
-ctk_combo_box_accessible_init (GtkComboBoxAccessible *combo_box)
+ctk_combo_box_accessible_init (CtkComboBoxAccessible *combo_box)
 {
   combo_box->priv = ctk_combo_box_accessible_get_instance_private (combo_box);
   combo_box->priv->old_selection = -1;
@@ -218,8 +218,8 @@ static gboolean
 ctk_combo_box_accessible_do_action (AtkAction *action,
                                     gint       i)
 {
-  GtkComboBox *combo_box;
-  GtkWidget *widget;
+  CtkComboBox *combo_box;
+  CtkWidget *widget;
   gboolean popup_shown;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
@@ -252,9 +252,9 @@ static const gchar *
 ctk_combo_box_accessible_get_keybinding (AtkAction *action,
                                          gint       i)
 {
-  GtkComboBoxAccessible *combo_box;
-  GtkWidget *widget;
-  GtkWidget *label;
+  CtkComboBoxAccessible *combo_box;
+  CtkWidget *widget;
+  CtkWidget *label;
   AtkRelationSet *set;
   AtkRelation *relation;
   GPtrArray *target;
@@ -335,7 +335,7 @@ static gboolean
 ctk_combo_box_accessible_add_selection (AtkSelection *selection,
                                         gint          i)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -349,7 +349,7 @@ ctk_combo_box_accessible_add_selection (AtkSelection *selection,
 static gboolean
 ctk_combo_box_accessible_clear_selection (AtkSelection *selection)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -364,8 +364,8 @@ static AtkObject *
 ctk_combo_box_accessible_ref_selection (AtkSelection *selection,
                                         gint          i)
 {
-  GtkComboBox *combo_box;
-  GtkWidget *widget;
+  CtkComboBox *combo_box;
+  CtkWidget *widget;
   AtkObject *obj;
   gint index;
 
@@ -387,7 +387,7 @@ ctk_combo_box_accessible_ref_selection (AtkSelection *selection,
 static gint
 ctk_combo_box_accessible_get_selection_count (AtkSelection *selection)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
@@ -400,7 +400,7 @@ static gboolean
 ctk_combo_box_accessible_is_child_selected (AtkSelection *selection,
                                             gint          i)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gint j;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));

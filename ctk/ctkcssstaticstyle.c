@@ -38,17 +38,17 @@
 #include "ctkstylepropertyprivate.h"
 #include "ctkstyleproviderprivate.h"
 
-G_DEFINE_TYPE (GtkCssStaticStyle, ctk_css_static_style, CTK_TYPE_CSS_STYLE)
+G_DEFINE_TYPE (CtkCssStaticStyle, ctk_css_static_style, CTK_TYPE_CSS_STYLE)
 
-static GtkCssValue *
-ctk_css_static_style_get_value (GtkCssStyle *style,
+static CtkCssValue *
+ctk_css_static_style_get_value (CtkCssStyle *style,
                                 guint        id)
 {
-  GtkCssStaticStyle *sstyle = CTK_CSS_STATIC_STYLE (style);
+  CtkCssStaticStyle *sstyle = CTK_CSS_STATIC_STYLE (style);
 
   if (G_UNLIKELY (id >= CTK_CSS_PROPERTY_N_PROPERTIES))
     {
-      GtkCssStyleProperty *prop = _ctk_css_style_property_lookup_by_id (id);
+      CtkCssStyleProperty *prop = _ctk_css_style_property_lookup_by_id (id);
 
       return _ctk_css_style_property_get_initial_value (prop);
     }
@@ -56,11 +56,11 @@ ctk_css_static_style_get_value (GtkCssStyle *style,
   return sstyle->values[id];
 }
 
-static GtkCssSection *
-ctk_css_static_style_get_section (GtkCssStyle *style,
+static CtkCssSection *
+ctk_css_static_style_get_section (CtkCssStyle *style,
                                     guint        id)
 {
-  GtkCssStaticStyle *sstyle = CTK_CSS_STATIC_STYLE (style);
+  CtkCssStaticStyle *sstyle = CTK_CSS_STATIC_STYLE (style);
 
   if (sstyle->sections == NULL ||
       id >= sstyle->sections->len)
@@ -72,7 +72,7 @@ ctk_css_static_style_get_section (GtkCssStyle *style,
 static void
 ctk_css_static_style_dispose (GObject *object)
 {
-  GtkCssStaticStyle *style = CTK_CSS_STATIC_STYLE (object);
+  CtkCssStaticStyle *style = CTK_CSS_STATIC_STYLE (object);
   guint i;
 
   for (i = 0; i < CTK_CSS_PROPERTY_N_PROPERTIES; i++)
@@ -90,10 +90,10 @@ ctk_css_static_style_dispose (GObject *object)
 }
 
 static void
-ctk_css_static_style_class_init (GtkCssStaticStyleClass *klass)
+ctk_css_static_style_class_init (CtkCssStaticStyleClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkCssStyleClass *style_class = CTK_CSS_STYLE_CLASS (klass);
+  CtkCssStyleClass *style_class = CTK_CSS_STYLE_CLASS (klass);
 
   object_class->dispose = ctk_css_static_style_dispose;
 
@@ -102,7 +102,7 @@ ctk_css_static_style_class_init (GtkCssStaticStyleClass *klass)
 }
 
 static void
-ctk_css_static_style_init (GtkCssStaticStyle *style)
+ctk_css_static_style_init (CtkCssStaticStyle *style)
 {
 }
 
@@ -114,10 +114,10 @@ maybe_unref_section (gpointer section)
 }
 
 static void
-ctk_css_static_style_set_value (GtkCssStaticStyle *style,
+ctk_css_static_style_set_value (CtkCssStaticStyle *style,
                                 guint              id,
-                                GtkCssValue       *value,
-                                GtkCssSection     *section)
+                                CtkCssValue       *value,
+                                CtkCssSection     *section)
 {
   if (style->values[id])
     _ctk_css_value_unref (style->values[id]);
@@ -140,7 +140,7 @@ ctk_css_static_style_set_value (GtkCssStaticStyle *style,
     }
 }
 
-static GtkCssStyle *default_style;
+static CtkCssStyle *default_style;
 
 static void
 clear_default_style (gpointer data)
@@ -148,7 +148,7 @@ clear_default_style (gpointer data)
   g_set_object (&default_style, NULL);
 }
 
-GtkCssStyle *
+CtkCssStyle *
 ctk_css_static_style_get_default (void)
 {
   /* FIXME: This really depends on the screen, but we don't have
@@ -158,7 +158,7 @@ ctk_css_static_style_get_default (void)
    */
   if (default_style == NULL)
     {
-      GtkSettings *settings;
+      CtkSettings *settings;
 
       settings = ctk_settings_get_default ();
       default_style = ctk_css_static_style_new_compute (CTK_STYLE_PROVIDER_PRIVATE (settings),
@@ -171,14 +171,14 @@ ctk_css_static_style_get_default (void)
   return default_style;
 }
 
-GtkCssStyle *
-ctk_css_static_style_new_compute (GtkStyleProviderPrivate *provider,
-                                  const GtkCssMatcher     *matcher,
-                                  GtkCssStyle             *parent)
+CtkCssStyle *
+ctk_css_static_style_new_compute (CtkStyleProviderPrivate *provider,
+                                  const CtkCssMatcher     *matcher,
+                                  CtkCssStyle             *parent)
 {
-  GtkCssStaticStyle *result;
-  GtkCssLookup *lookup;
-  GtkCssChange change = CTK_CSS_CHANGE_ANY_SELF | CTK_CSS_CHANGE_ANY_SIBLING | CTK_CSS_CHANGE_ANY_PARENT;
+  CtkCssStaticStyle *result;
+  CtkCssLookup *lookup;
+  CtkCssChange change = CTK_CSS_CHANGE_ANY_SELF | CTK_CSS_CHANGE_ANY_SIBLING | CTK_CSS_CHANGE_ANY_PARENT;
 
   lookup = _ctk_css_lookup_new (NULL);
 
@@ -203,14 +203,14 @@ ctk_css_static_style_new_compute (GtkStyleProviderPrivate *provider,
 }
 
 void
-ctk_css_static_style_compute_value (GtkCssStaticStyle       *style,
-                                    GtkStyleProviderPrivate *provider,
-                                    GtkCssStyle             *parent_style,
+ctk_css_static_style_compute_value (CtkCssStaticStyle       *style,
+                                    CtkStyleProviderPrivate *provider,
+                                    CtkCssStyle             *parent_style,
                                     guint                    id,
-                                    GtkCssValue             *specified,
-                                    GtkCssSection           *section)
+                                    CtkCssValue             *specified,
+                                    CtkCssSection           *section)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   ctk_internal_return_if_fail (CTK_IS_CSS_STATIC_STYLE (style));
   ctk_internal_return_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider));
@@ -224,7 +224,7 @@ ctk_css_static_style_compute_value (GtkCssStaticStyle       *style,
    */
   if (specified == NULL)
     {
-      GtkCssStyleProperty *prop = _ctk_css_style_property_lookup_by_id (id);
+      CtkCssStyleProperty *prop = _ctk_css_style_property_lookup_by_id (id);
 
       if (_ctk_css_style_property_is_inherit (prop))
         specified = _ctk_css_inherit_value_new ();
@@ -242,8 +242,8 @@ ctk_css_static_style_compute_value (GtkCssStaticStyle       *style,
   _ctk_css_value_unref (specified);
 }
 
-GtkCssChange
-ctk_css_static_style_get_change (GtkCssStaticStyle *style)
+CtkCssChange
+ctk_css_static_style_get_change (CtkCssStaticStyle *style)
 {
   g_return_val_if_fail (CTK_IS_CSS_STATIC_STYLE (style), CTK_CSS_CHANGE_ANY);
 

@@ -1,22 +1,22 @@
 /* Color Chooser
  *
- * A GtkColorChooser lets the user choose a color. There are several
- * implementations of the GtkColorChooser interface in GTK+. The
- * GtkColorChooserDialog is a prebuilt dialog containing a
- * GtkColorChooserWidget.
+ * A CtkColorChooser lets the user choose a color. There are several
+ * implementations of the CtkColorChooser interface in GTK+. The
+ * CtkColorChooserDialog is a prebuilt dialog containing a
+ * CtkColorChooserWidget.
  */
 
 #include <ctk/ctk.h>
 
-static GtkWidget *window = NULL;
-static GtkWidget *da;
+static CtkWidget *window = NULL;
+static CtkWidget *da;
 static GdkRGBA color;
-static GtkWidget *frame;
+static CtkWidget *frame;
 
 /* draw callback for the drawing area
  */
 static gboolean
-draw_callback (GtkWidget *widget,
+draw_callback (CtkWidget *widget,
                cairo_t   *cr,
                gpointer   data)
 {
@@ -27,7 +27,7 @@ draw_callback (GtkWidget *widget,
 }
 
 static void
-response_cb (GtkDialog *dialog,
+response_cb (CtkDialog *dialog,
              gint       response_id,
              gpointer   user_data)
 {
@@ -38,10 +38,10 @@ response_cb (GtkDialog *dialog,
 }
 
 static void
-change_color_callback (GtkWidget *button,
+change_color_callback (CtkWidget *button,
                        gpointer   data)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
 
   dialog = ctk_color_chooser_dialog_new ("Changing color", CTK_WINDOW (window));
   ctk_window_set_modal (CTK_WINDOW (dialog), TRUE);
@@ -53,11 +53,11 @@ change_color_callback (GtkWidget *button,
   ctk_widget_show_all (dialog);
 }
 
-GtkWidget *
-do_colorsel (GtkWidget *do_widget)
+CtkWidget *
+do_colorsel (CtkWidget *do_widget)
 {
-  GtkWidget *vbox;
-  GtkWidget *button;
+  CtkWidget *vbox;
+  CtkWidget *button;
 
   if (!window)
     {

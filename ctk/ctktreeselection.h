@@ -28,19 +28,19 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_TREE_SELECTION			(ctk_tree_selection_get_type ())
-#define CTK_TREE_SELECTION(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_SELECTION, GtkTreeSelection))
-#define CTK_TREE_SELECTION_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_SELECTION, GtkTreeSelectionClass))
+#define CTK_TREE_SELECTION(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_SELECTION, CtkTreeSelection))
+#define CTK_TREE_SELECTION_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_SELECTION, CtkTreeSelectionClass))
 #define CTK_IS_TREE_SELECTION(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_SELECTION))
 #define CTK_IS_TREE_SELECTION_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TREE_SELECTION))
-#define CTK_TREE_SELECTION_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_SELECTION, GtkTreeSelectionClass))
+#define CTK_TREE_SELECTION_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_SELECTION, CtkTreeSelectionClass))
 
-typedef struct _GtkTreeSelectionPrivate      GtkTreeSelectionPrivate;
+typedef struct _CtkTreeSelectionPrivate      CtkTreeSelectionPrivate;
 
 /**
- * GtkTreeSelectionFunc:
- * @selection: A #GtkTreeSelection
- * @model: A #GtkTreeModel being viewed
- * @path: The #GtkTreePath of the row in question
+ * CtkTreeSelectionFunc:
+ * @selection: A #CtkTreeSelection
+ * @model: A #CtkTreeModel being viewed
+ * @path: The #CtkTreePath of the row in question
  * @path_currently_selected: %TRUE, if the path is currently selected
  * @data: (closure): user data
  *
@@ -51,47 +51,47 @@ typedef struct _GtkTreeSelectionPrivate      GtkTreeSelectionPrivate;
  *
  * Returns: %TRUE, if the selection state of the row can be toggled
  */
-typedef gboolean (* GtkTreeSelectionFunc)    (GtkTreeSelection  *selection,
-					      GtkTreeModel      *model,
-					      GtkTreePath       *path,
+typedef gboolean (* CtkTreeSelectionFunc)    (CtkTreeSelection  *selection,
+					      CtkTreeModel      *model,
+					      CtkTreePath       *path,
                                               gboolean           path_currently_selected,
 					      gpointer           data);
 
 /**
- * GtkTreeSelectionForeachFunc:
- * @model: The #GtkTreeModel being viewed
- * @path: The #GtkTreePath of a selected row
- * @iter: A #GtkTreeIter pointing to a selected row
+ * CtkTreeSelectionForeachFunc:
+ * @model: The #CtkTreeModel being viewed
+ * @path: The #CtkTreePath of a selected row
+ * @iter: A #CtkTreeIter pointing to a selected row
  * @data: (closure): user data
  *
  * A function used by ctk_tree_selection_selected_foreach() to map all
  * selected rows.  It will be called on every selected row in the view.
  */
-typedef void (* GtkTreeSelectionForeachFunc) (GtkTreeModel      *model,
-					      GtkTreePath       *path,
-					      GtkTreeIter       *iter,
+typedef void (* CtkTreeSelectionForeachFunc) (CtkTreeModel      *model,
+					      CtkTreePath       *path,
+					      CtkTreeIter       *iter,
 					      gpointer           data);
 
-struct _GtkTreeSelection
+struct _CtkTreeSelection
 {
   /*< private >*/
   GObject parent;
 
-  GtkTreeSelectionPrivate *priv;
+  CtkTreeSelectionPrivate *priv;
 };
 
 /**
- * GtkTreeSelectionClass:
+ * CtkTreeSelectionClass:
  * @parent_class: The parent class.
  * @changed: Signal emitted whenever the selection has (possibly) changed.
  */
-struct _GtkTreeSelectionClass
+struct _CtkTreeSelectionClass
 {
   GObjectClass parent_class;
 
   /*< public >*/
 
-  void (* changed) (GtkTreeSelection *selection);
+  void (* changed) (CtkTreeSelection *selection);
 
   /*< private >*/
 
@@ -107,68 +107,68 @@ GDK_AVAILABLE_IN_ALL
 GType            ctk_tree_selection_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_set_mode            (GtkTreeSelection            *selection,
-							 GtkSelectionMode             type);
+void             ctk_tree_selection_set_mode            (CtkTreeSelection            *selection,
+							 CtkSelectionMode             type);
 GDK_AVAILABLE_IN_ALL
-GtkSelectionMode ctk_tree_selection_get_mode        (GtkTreeSelection            *selection);
+CtkSelectionMode ctk_tree_selection_get_mode        (CtkTreeSelection            *selection);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_set_select_function (GtkTreeSelection            *selection,
-							 GtkTreeSelectionFunc         func,
+void             ctk_tree_selection_set_select_function (CtkTreeSelection            *selection,
+							 CtkTreeSelectionFunc         func,
 							 gpointer                     data,
 							 GDestroyNotify               destroy);
 GDK_AVAILABLE_IN_ALL
-gpointer         ctk_tree_selection_get_user_data       (GtkTreeSelection            *selection);
+gpointer         ctk_tree_selection_get_user_data       (CtkTreeSelection            *selection);
 GDK_AVAILABLE_IN_ALL
-GtkTreeView*     ctk_tree_selection_get_tree_view       (GtkTreeSelection            *selection);
+CtkTreeView*     ctk_tree_selection_get_tree_view       (CtkTreeSelection            *selection);
 
 GDK_AVAILABLE_IN_ALL
-GtkTreeSelectionFunc ctk_tree_selection_get_select_function (GtkTreeSelection        *selection);
+CtkTreeSelectionFunc ctk_tree_selection_get_select_function (CtkTreeSelection        *selection);
 
 /* Only meaningful if CTK_SELECTION_SINGLE or CTK_SELECTION_BROWSE is set */
 /* Use selected_foreach or get_selected_rows for CTK_SELECTION_MULTIPLE */
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_tree_selection_get_selected        (GtkTreeSelection            *selection,
-							 GtkTreeModel               **model,
-							 GtkTreeIter                 *iter);
+gboolean         ctk_tree_selection_get_selected        (CtkTreeSelection            *selection,
+							 CtkTreeModel               **model,
+							 CtkTreeIter                 *iter);
 GDK_AVAILABLE_IN_ALL
-GList *          ctk_tree_selection_get_selected_rows   (GtkTreeSelection            *selection,
-                                                         GtkTreeModel               **model);
+GList *          ctk_tree_selection_get_selected_rows   (CtkTreeSelection            *selection,
+                                                         CtkTreeModel               **model);
 GDK_AVAILABLE_IN_ALL
-gint             ctk_tree_selection_count_selected_rows (GtkTreeSelection            *selection);
+gint             ctk_tree_selection_count_selected_rows (CtkTreeSelection            *selection);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_selected_foreach    (GtkTreeSelection            *selection,
-							 GtkTreeSelectionForeachFunc  func,
+void             ctk_tree_selection_selected_foreach    (CtkTreeSelection            *selection,
+							 CtkTreeSelectionForeachFunc  func,
 							 gpointer                     data);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_select_path         (GtkTreeSelection            *selection,
-							 GtkTreePath                 *path);
+void             ctk_tree_selection_select_path         (CtkTreeSelection            *selection,
+							 CtkTreePath                 *path);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_unselect_path       (GtkTreeSelection            *selection,
-							 GtkTreePath                 *path);
+void             ctk_tree_selection_unselect_path       (CtkTreeSelection            *selection,
+							 CtkTreePath                 *path);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_select_iter         (GtkTreeSelection            *selection,
-							 GtkTreeIter                 *iter);
+void             ctk_tree_selection_select_iter         (CtkTreeSelection            *selection,
+							 CtkTreeIter                 *iter);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_unselect_iter       (GtkTreeSelection            *selection,
-							 GtkTreeIter                 *iter);
+void             ctk_tree_selection_unselect_iter       (CtkTreeSelection            *selection,
+							 CtkTreeIter                 *iter);
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_tree_selection_path_is_selected    (GtkTreeSelection            *selection,
-							 GtkTreePath                 *path);
+gboolean         ctk_tree_selection_path_is_selected    (CtkTreeSelection            *selection,
+							 CtkTreePath                 *path);
 GDK_AVAILABLE_IN_ALL
-gboolean         ctk_tree_selection_iter_is_selected    (GtkTreeSelection            *selection,
-							 GtkTreeIter                 *iter);
+gboolean         ctk_tree_selection_iter_is_selected    (CtkTreeSelection            *selection,
+							 CtkTreeIter                 *iter);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_select_all          (GtkTreeSelection            *selection);
+void             ctk_tree_selection_select_all          (CtkTreeSelection            *selection);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_unselect_all        (GtkTreeSelection            *selection);
+void             ctk_tree_selection_unselect_all        (CtkTreeSelection            *selection);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_select_range        (GtkTreeSelection            *selection,
-							 GtkTreePath                 *start_path,
-							 GtkTreePath                 *end_path);
+void             ctk_tree_selection_select_range        (CtkTreeSelection            *selection,
+							 CtkTreePath                 *start_path,
+							 CtkTreePath                 *end_path);
 GDK_AVAILABLE_IN_ALL
-void             ctk_tree_selection_unselect_range      (GtkTreeSelection            *selection,
-                                                         GtkTreePath                 *start_path,
-							 GtkTreePath                 *end_path);
+void             ctk_tree_selection_unselect_range      (CtkTreeSelection            *selection,
+                                                         CtkTreePath                 *start_path,
+							 CtkTreePath                 *end_path);
 
 
 G_END_DECLS

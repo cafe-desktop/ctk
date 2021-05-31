@@ -2,7 +2,7 @@ Things to care about when using/programing for GTK+
 ===================================================
 
 This file is meant to collect some frequently triggered failures when
-programming for/with Gtk, having the spirit of a developers FAQ.
+programming for/with Ctk, having the spirit of a developers FAQ.
 It is also the correct place to list up things that programmers should
 care about in general.
 
@@ -39,13 +39,13 @@ perform any operations through Gdk calls on it.
 Events that a likely to trigger a missing check for the window pointer
 currently are (and correspond to the trailing signals):
 
-GDK_SELECTION_CLEAR     GtkWidget::selection_clear_event
-GDK_FOCUS_CHANGE        GtkWidget::focus_in_event
-                        GtkWidget::focus_out_event
+GDK_SELECTION_CLEAR     CtkWidget::selection_clear_event
+GDK_FOCUS_CHANGE        CtkWidget::focus_in_event
+                        CtkWidget::focus_out_event
 
 Events that are assured to have a valid GdkEvent.any.window field are
 
-GDK_EXPOSE		GtkWidget::expose_event
+GDK_EXPOSE		CtkWidget::expose_event
 
 
 Writing Gdk functions

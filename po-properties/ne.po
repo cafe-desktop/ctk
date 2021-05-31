@@ -375,7 +375,7 @@ msgid "Action Group"
 msgstr "कार्य समूह"
 
 #: ctk/deprecated/ctkaction.c:498
-msgid "The GtkActionGroup this GtkAction is associated with, or NULL (for internal use)."
+msgid "The CtkActionGroup this CtkAction is associated with, or NULL (for internal use)."
 msgstr "जीटीके कार्य समूह यो जीटीके कार्यसँग सम्बन्धित छ वा शून्यसँग( आन्तरिक प्रयोगका लागि मात्र)"
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264 ctk/ctkbutton.c:393
@@ -946,7 +946,7 @@ msgstr "प्रसँग"
 
 #: ctk/deprecated/ctkstyle.c:472
 #, fuzzy
-msgid "GtkStyleContext to get style from"
+msgid "CtkStyleContext to get style from"
 msgstr "स्ट्रिमबाट डेटा प्राप्त गर्न सकेन"
 
 #: ctk/deprecated/ctktable.c:185
@@ -1332,7 +1332,7 @@ msgstr "थन्क्याउने प्रकार"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:354 ctk/ctkheaderbar.c:2004
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the start or end of "
+"A CtkPackType indicating whether the child is packed with reference to the start or end of "
 "the parent"
 msgstr " जीटीके बँधाइको प्रकारले के देखाउँछ भने जब उपशाखा बन्द गरिन्छ संदर्भसँग मूल कम्प्युटर सुरू वा बन्द हुन्छ"
 
@@ -1402,7 +1402,7 @@ msgid "Include an 'Other…' item"
 msgstr "लिङ्क भएको सबै द्रष्टव्यहरूलाई समावेश गर्नुहोस्"
 
 #: ctk/ctkappchooserbutton.c:619
-msgid "Whether the combobox should include an item that triggers a GtkAppChooserDialog"
+msgid "Whether the combobox should include an item that triggers a CtkAppChooserDialog"
 msgstr ""
 
 #: ctk/ctkappchooserbutton.c:634
@@ -2069,10 +2069,10 @@ msgstr "थन्क्याउने प्रकार"
 #: ctk/ctkcellareabox.c:381
 #, fuzzy
 #| msgid ""
-#| "A GtkPackType indicating whether the child is packed with reference to the start or end of "
+#| "A CtkPackType indicating whether the child is packed with reference to the start or end of "
 #| "the parent"
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the start or end of the "
+"A CtkPackType indicating whether the cell is packed with reference to the start or end of the "
 "cell area"
 msgstr " जीटीके बँधाइको प्रकारले के देखाउँछ भने जब उपशाखा बन्द गरिन्छ संदर्भसँग मूल कम्प्युटर सुरू वा बन्द हुन्छ"
 
@@ -2385,7 +2385,7 @@ msgid "The stock ID of the stock icon to render"
 msgstr "रेन्डरलाई संग्रहित छविचित्रको संग्रहित आइडि"
 
 #: ctk/ctkcellrendererpixbuf.c:202
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
 msgstr "भाषान्तर-चिन्हको आकार तय गर्ने जीटीके चिन्ह-आकारको मान  "
 
 #: ctk/ctkcellrendererpixbuf.c:211
@@ -2500,7 +2500,7 @@ msgstr "मिलिक-मिलिक गर्ने"
 
 #: ctk/ctkcellrendererspinner.c:160
 #, fuzzy
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr "भाषान्तर-चिन्हको आकार तय गर्ने जीटीके चिन्ह-आकारको मान  "
 
 #: ctk/ctkcellrenderertext.c:256
@@ -2945,7 +2945,7 @@ msgstr "कक्ष"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1189 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
+msgid "The CtkCellArea used to layout cells"
 msgstr ""
 
 #: ctk/ctkcellview.c:306
@@ -2954,7 +2954,7 @@ msgid "Cell Area Context"
 msgstr "क्षेत्र:"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 
 #: ctk/ctkcellview.c:324
@@ -3203,7 +3203,7 @@ msgstr "पाठ स्तम्भ"
 #: ctk/ctkcombobox.c:1118
 msgid ""
 "The column in the combo box's model to associate with strings from the entry if the combo was "
-"created with #GtkComboBox:has-entry = %TRUE"
+"created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 
 #: ctk/ctkcombobox.c:1135
@@ -4431,7 +4431,7 @@ msgstr "स्वत:"
 #: ctk/ctkglarea.c:807
 #, fuzzy
 #| msgid "Whether the header can be clicked"
-msgid "Whether the GtkGLArea renders on each redraw"
+msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "जब शीर्षलेख क्लिक गर्न सकिन्छ"
 
 #: ctk/ctkglarea.c:827
@@ -4838,10 +4838,10 @@ msgstr "मिलान"
 #, fuzzy
 #| msgid ""
 #| "The alignment of the lines in the text of the label relative to each other. This does NOT "
-#| "affect the alignment of the label within its allocation. See GtkMisc::xalign for that"
+#| "affect the alignment of the label within its allocation. See CtkMisc::xalign for that"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. This does NOT "
-"affect the alignment of the label within its allocation. See GtkLabel:xalign for that"
+"affect the alignment of the label within its allocation. See CtkLabel:xalign for that"
 msgstr ""
 "छापको एक अर्कासँग सम्बन्धित पाठमा लाईनहरूको पंक्तिबद्धता । यसले  छापको पंक्तिबद्धतालाई असर गर्दैन । यसका "
 "लागि एक्स-पंक्तिबद्ध जीटीके विविधता हेर्नुहोस्"
@@ -5527,7 +5527,7 @@ msgid "Message area"
 msgstr "क्षेत्र:"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
 #: ctk/ctkmodelbutton.c:1100
@@ -6192,7 +6192,7 @@ msgstr "अवरोध"
 
 #: ctk/ctkpopover.c:1778
 #, fuzzy
-#| msgid "The GtkAdjustment for the vertical position"
+#| msgid "The CtkAdjustment for the vertical position"
 msgid "Constraint for the popover position"
 msgstr "अवरोध, कुनै कुरामा एउटा अवरोध राख्नुहोस्"
 
@@ -6412,7 +6412,7 @@ msgstr "वैध पृष्ठ सेट अप फाइल छैन"
 
 #: ctk/ctkprintoperation.c:1110
 #, fuzzy
-msgid "The GtkPageSetup used by default"
+msgid "The CtkPageSetup used by default"
 msgstr "ctk+ले प्रयोग गरेको पूर्वनिर्धारित फन्टको नाम"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:430
@@ -6423,7 +6423,7 @@ msgstr ""
 "\"सेटअप छाप्नुहोस् \" संवादहरुलाई अक्षम बनाउँदछ ।"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:431
-msgid "The GtkPrintSettings used for initializing the dialog"
+msgid "The CtkPrintSettings used for initializing the dialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1147
@@ -6556,7 +6556,7 @@ msgid "Embed Page Setup"
 msgstr "पृष्ठ सेटअप"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:472
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 
 #: ctk/ctkprintoperation.c:1446
@@ -6571,7 +6571,7 @@ msgstr "कागजातमा पृष्ठहरूको जम्मा 
 
 #: ctk/ctkprintunixdialog.c:413
 #, fuzzy
-msgid "The GtkPageSetup to use"
+msgid "The CtkPageSetup to use"
 msgstr "जस्ताको तस्तै प्रयोग गर्नुहोस्"
 
 #: ctk/ctkprintunixdialog.c:438
@@ -6581,7 +6581,7 @@ msgstr "चयन गरिएको मुद्रणयन्त्र \"% s\
 
 #: ctk/ctkprintunixdialog.c:439
 #, fuzzy
-msgid "The GtkPrinter which is selected"
+msgid "The CtkPrinter which is selected"
 msgstr "आइटम जुन चाँही भरखरै सक्रिय भएको छ"
 
 #: ctk/ctkprintunixdialog.c:446
@@ -6714,7 +6714,7 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "रेडियो बटन जसको समुह यस विजेटमा पर्दछ"
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr "जीटीके मिलानमा अवस्थित दायराको वर्तमान मान "
 
 #: ctk/ctkrange.c:442
@@ -6991,7 +6991,7 @@ msgstr "प्रतिमा साइज"
 
 #: ctk/ctkscalebutton.c:216
 #, fuzzy
-msgid "The GtkAdjustment that contains the current value of this scale button object"
+msgid "The CtkAdjustment that contains the current value of this scale button object"
 msgstr "जीटीके मिलानमा अवस्थित दायराको वर्तमान मान "
 
 #: ctk/ctkscalebutton.c:244
@@ -7111,7 +7111,7 @@ msgid "Horizontal Adjustment"
 msgstr "क्षितिजीय मिलान"
 
 #: ctk/ctkscrolledwindow.c:560
-msgid "The GtkAdjustment for the horizontal position"
+msgid "The CtkAdjustment for the horizontal position"
 msgstr "क्षितिजीय स्थितिको लागि जिटिके मिलान"
 
 #: ctk/ctkscrolledwindow.c:566
@@ -7119,7 +7119,7 @@ msgid "Vertical Adjustment"
 msgstr "उर्ध्व मिलान"
 
 #: ctk/ctkscrolledwindow.c:567
-msgid "The GtkAdjustment for the vertical position"
+msgid "The CtkAdjustment for the vertical position"
 msgstr "उर्ध्व स्थितिको लागि जिटिके मिलान"
 
 #: ctk/ctkscrolledwindow.c:573
@@ -7635,7 +7635,7 @@ msgid "Default file chooser backend"
 msgstr "पूर्वनिर्धारित लेखपत्र छनौटकर्ताको मेरुदण्ड"
 
 #: ctk/ctksettings.c:979
-msgid "Name of the GtkFileChooser backend to use by default"
+msgid "Name of the CtkFileChooser backend to use by default"
 msgstr "जीटीके फाइल चयकको नाम पछाडि पारेर पूर्वनिर्धारित प्रयोग गर्न"
 
 #: ctk/ctksettings.c:996
@@ -7645,7 +7645,7 @@ msgstr "जीटीके फाइल चयकको नाम पछाड�
 
 #: ctk/ctksettings.c:997
 #, fuzzy
-msgid "List of the GtkPrintBackend backends to use by default"
+msgid "List of the CtkPrintBackend backends to use by default"
 msgstr "जीटीके फाइल चयकको नाम पछाडि पारेर पूर्वनिर्धारित प्रयोग गर्न"
 
 #: ctk/ctksettings.c:1020
@@ -8314,7 +8314,7 @@ msgstr "थाक"
 
 #: ctk/ctkstacksidebar.c:450
 #, fuzzy
-msgid "Associated stack for this GtkStackSidebar"
+msgid "Associated stack for this CtkStackSidebar"
 msgstr "सहायक"
 
 #: ctk/ctkstackswitcher.c:685
@@ -8369,7 +8369,7 @@ msgstr ""
 "प्रक्रिया '%s' ले फर्काएको मान'%s' (#%d) का लागि गलत मान प्रकार फर्कायो । अपेक्षित %s, प्राप्त %s ।"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
 msgstr ""
 
 #: ctk/ctkswitch.c:896
@@ -9334,7 +9334,7 @@ msgid "Fixed Height Mode"
 msgstr "निश्चित उचाइको मोड"
 
 #: ctk/ctktreeview.c:1110
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr "सवै पंक्तिको समान उचाई छ भन्ने मान्यतामा जीटीके उर्ध्व दृश्यको गति वृद्धि "
 
 #: ctk/ctktreeview.c:1129
@@ -10193,7 +10193,7 @@ msgid "Focus in Toplevel"
 msgstr "उच्च तहमा संकेन्द्रित"
 
 #: ctk/ctkwindow.c:907
-msgid "Whether the input focus is within this GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
 msgstr "जब निवेश संकेन्द्रविन्दु जीटीके विण्डोभित्र पर्छ"
 
 #: ctk/ctkwindow.c:913
@@ -10317,13 +10317,13 @@ msgstr "सञ्झ्याल अधिकतम होस्"
 #: ctk/ctkwindow.c:1108
 #, fuzzy
 #| msgid "Application paintable"
-msgid "GtkApplication"
+msgid "CtkApplication"
 msgstr "रङ्गाउन योग्य अनुप्रयोग"
 
 #: ctk/ctkwindow.c:1109
 #, fuzzy
 #| msgid "The initial position of the window"
-msgid "The GtkApplication for the window"
+msgid "The CtkApplication for the window"
 msgstr "त्यो विण्डो विण्डोको गुरुत्व हो"
 
 #: ctk/ctkwindow.c:1119 ctk/ctkwindow.c:1120
@@ -10343,7 +10343,7 @@ msgstr "बादल"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
 #, fuzzy
-msgid "GtkCloudprintAccount instance"
+msgid "CtkCloudprintAccount instance"
 msgstr "स्ट्रिङको पछिल्लो दृष्टान्तका लागि खोजी गर्दछ ।"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
@@ -10439,11 +10439,11 @@ msgstr "पूर्वनिर्धारित फाँट शीर्ष�
 #~ msgstr "औजारका लागि उर्ध्वतलीय मिलान"
 
 #~ msgid ""
-#~ "The GtkAdjustment that determines the values of the horizontal position for this viewport"
+#~ "The CtkAdjustment that determines the values of the horizontal position for this viewport"
 #~ msgstr "आँखिझ्यालका लागि समतलीय स्थितिका मानहरू निर्धारण गर्ने जीटीके मिलान "
 
 #~ msgid ""
-#~ "The GtkAdjustment that determines the values of the vertical position for this viewport"
+#~ "The CtkAdjustment that determines the values of the vertical position for this viewport"
 #~ msgstr "जीटीके मिलानको उर्ध्वतलीय स्थिति जस्ले दृष्टिपोर्टको मान निर्धारण गर्छ"
 
 #~ msgid "Extension events"
@@ -10543,7 +10543,7 @@ msgstr "पूर्वनिर्धारित फाँट शीर्ष�
 
 #, fuzzy
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals something is "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals something is "
 #~ "happening, but not how much of the activity is finished. This is used when you're doing "
 #~ "something but don't know how long it will take."
 #~ msgstr ""
@@ -10690,7 +10690,7 @@ msgstr "पूर्वनिर्धारित फाँट शीर्ष�
 #~ msgid "Whether the preview widget should take up the entire space it is allocated"
 #~ msgstr "जब पूर्वदृश्य औजारले ओगट्ने संपूर्ण ठाउँ छुट्याइन्छ"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
 #~ msgstr "प्रगतिबारसँग जोडिएको जीटीके मिलान (असहमति)"
 
 #~ msgid "Bar style"

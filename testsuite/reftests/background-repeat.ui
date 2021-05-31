@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="width_request">50</property>
     <property name="height_request">60</property>
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkButton" id="no-repeat">
+          <object class="CtkButton" id="no-repeat">
             <property name="name">no-repeat</property>
             <property name="width_request">50</property>
             <property name="height_request">60</property>
@@ -29,7 +29,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="repeat">
+          <object class="CtkButton" id="repeat">
             <property name="name">repeat</property>
             <property name="width_request">40</property>
             <property name="height_request">60</property>
@@ -47,7 +47,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="default">
+          <object class="CtkButton" id="default">
             <property name="name">default</property>
             <property name="width_request">50</property>
             <property name="height_request">60</property>

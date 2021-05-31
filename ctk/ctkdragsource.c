@@ -33,24 +33,24 @@
 #include "ctkintl.h"
 
 
-typedef struct _GtkDragSourceSite GtkDragSourceSite;
+typedef struct _CtkDragSourceSite CtkDragSourceSite;
 
-struct _GtkDragSourceSite 
+struct _CtkDragSourceSite 
 {
   GdkModifierType    start_button_mask;
-  GtkTargetList     *target_list;        /* Targets for drag data */
+  CtkTargetList     *target_list;        /* Targets for drag data */
   GdkDragAction      actions;            /* Possible actions */
 
-  GtkImageDefinition *image_def;
-  GtkGesture        *drag_gesture;
+  CtkImageDefinition *image_def;
+  CtkGesture        *drag_gesture;
 };
   
 static void
-ctk_drag_source_gesture_begin (GtkGesture       *gesture,
+ctk_drag_source_gesture_begin (CtkGesture       *gesture,
                                GdkEventSequence *sequence,
                                gpointer          data)
 {
-  GtkDragSourceSite *site = data;
+  CtkDragSourceSite *site = data;
   guint button;
 
   if (ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture)))
@@ -66,12 +66,12 @@ ctk_drag_source_gesture_begin (GtkGesture       *gesture,
 }
 
 static gboolean
-ctk_drag_source_event_cb (GtkWidget *widget,
+ctk_drag_source_event_cb (CtkWidget *widget,
                           GdkEvent  *event,
                           gpointer   data)
 {
   gdouble start_x, start_y, offset_x, offset_y;
-  GtkDragSourceSite *site = data;
+  CtkDragSourceSite *site = data;
 
   ctk_event_controller_handle_event (CTK_EVENT_CONTROLLER (site->drag_gesture), event);
 
@@ -116,19 +116,19 @@ ctk_drag_source_event_cb (GtkWidget *widget,
 static void 
 ctk_drag_source_site_destroy (gpointer data)
 {
-  GtkDragSourceSite *site = data;
+  CtkDragSourceSite *site = data;
 
   if (site->target_list)
     ctk_target_list_unref (site->target_list);
 
   ctk_image_definition_unref (site->image_def);
   g_clear_object (&site->drag_gesture);
-  g_slice_free (GtkDragSourceSite, site);
+  g_slice_free (CtkDragSourceSite, site);
 }
 
 /**
  * ctk_drag_source_set: (method)
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @start_button_mask: the bitmask of buttons that can start the drag
  * @targets: (allow-none) (array length=n_targets): the table of targets
  *     that the drag will support, may be %NULL
@@ -139,13 +139,13 @@ ctk_drag_source_site_destroy (gpointer data)
  * clicks and drags on the widget. The widget must have a window.
  */
 void
-ctk_drag_source_set (GtkWidget            *widget,
+ctk_drag_source_set (CtkWidget            *widget,
                      GdkModifierType       start_button_mask,
-                     const GtkTargetEntry *targets,
+                     const CtkTargetEntry *targets,
                      gint                  n_targets,
                      GdkDragAction         actions)
 {
-  GtkDragSourceSite *site;
+  CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -163,7 +163,7 @@ ctk_drag_source_set (GtkWidget            *widget,
     }
   else
     {
-      site = g_slice_new0 (GtkDragSourceSite);
+      site = g_slice_new0 (CtkDragSourceSite);
       site->image_def = ctk_image_definition_new_empty ();
       site->drag_gesture = ctk_gesture_drag_new (widget);
       ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (site->drag_gesture),
@@ -196,14 +196,14 @@ ctk_drag_source_set (GtkWidget            *widget,
 
 /**
  * ctk_drag_source_unset: (method)
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Undoes the effects of ctk_drag_source_set().
  */
 void 
-ctk_drag_source_unset (GtkWidget *widget)
+ctk_drag_source_unset (CtkWidget *widget)
 {
-  GtkDragSourceSite *site;
+  CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -220,19 +220,19 @@ ctk_drag_source_unset (GtkWidget *widget)
 
 /**
  * ctk_drag_source_get_target_list: (method)
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Gets the list of targets this widget can provide for
  * drag-and-drop.
  *
- * Returns: (nullable) (transfer none): the #GtkTargetList, or %NULL if none
+ * Returns: (nullable) (transfer none): the #CtkTargetList, or %NULL if none
  *
  * Since: 2.4
  */
-GtkTargetList *
-ctk_drag_source_get_target_list (GtkWidget *widget)
+CtkTargetList *
+ctk_drag_source_get_target_list (CtkWidget *widget)
 {
-  GtkDragSourceSite *site;
+  CtkDragSourceSite *site;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -243,7 +243,7 @@ ctk_drag_source_get_target_list (GtkWidget *widget)
 
 /**
  * ctk_drag_source_set_target_list: (method)
- * @widget: a #GtkWidget that’s a drag source
+ * @widget: a #CtkWidget that’s a drag source
  * @target_list: (allow-none): list of draggable targets, or %NULL for none
  *
  * Changes the target types that this widget offers for drag-and-drop.
@@ -253,10 +253,10 @@ ctk_drag_source_get_target_list (GtkWidget *widget)
  * Since: 2.4
  */
 void
-ctk_drag_source_set_target_list (GtkWidget     *widget,
-                                 GtkTargetList *target_list)
+ctk_drag_source_set_target_list (CtkWidget     *widget,
+                                 CtkTargetList *target_list)
 {
-  GtkDragSourceSite *site;
+  CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -279,9 +279,9 @@ ctk_drag_source_set_target_list (GtkWidget     *widget,
 
 /**
  * ctk_drag_source_add_text_targets: (method)
- * @widget: a #GtkWidget that’s is a drag source
+ * @widget: a #CtkWidget that’s is a drag source
  *
- * Add the text targets supported by #GtkSelectionData to
+ * Add the text targets supported by #CtkSelectionData to
  * the target list of the drag source.  The targets
  * are added with @info = 0. If you need another value, 
  * use ctk_target_list_add_text_targets() and
@@ -290,9 +290,9 @@ ctk_drag_source_set_target_list (GtkWidget     *widget,
  * Since: 2.6
  */
 void
-ctk_drag_source_add_text_targets (GtkWidget *widget)
+ctk_drag_source_add_text_targets (CtkWidget *widget)
 {
-  GtkTargetList *target_list;
+  CtkTargetList *target_list;
 
   target_list = ctk_drag_source_get_target_list (widget);
   if (target_list)
@@ -306,9 +306,9 @@ ctk_drag_source_add_text_targets (GtkWidget *widget)
 
 /**
  * ctk_drag_source_add_image_targets: (method)
- * @widget: a #GtkWidget that’s is a drag source
+ * @widget: a #CtkWidget that’s is a drag source
  *
- * Add the writable image targets supported by #GtkSelectionData to
+ * Add the writable image targets supported by #CtkSelectionData to
  * the target list of the drag source. The targets
  * are added with @info = 0. If you need another value, 
  * use ctk_target_list_add_image_targets() and
@@ -317,9 +317,9 @@ ctk_drag_source_add_text_targets (GtkWidget *widget)
  * Since: 2.6
  */
 void
-ctk_drag_source_add_image_targets (GtkWidget *widget)
+ctk_drag_source_add_image_targets (CtkWidget *widget)
 {
-  GtkTargetList *target_list;
+  CtkTargetList *target_list;
 
   target_list = ctk_drag_source_get_target_list (widget);
   if (target_list)
@@ -333,9 +333,9 @@ ctk_drag_source_add_image_targets (GtkWidget *widget)
 
 /**
  * ctk_drag_source_add_uri_targets: (method)
- * @widget: a #GtkWidget that’s is a drag source
+ * @widget: a #CtkWidget that’s is a drag source
  *
- * Add the URI targets supported by #GtkSelectionData to
+ * Add the URI targets supported by #CtkSelectionData to
  * the target list of the drag source.  The targets
  * are added with @info = 0. If you need another value, 
  * use ctk_target_list_add_uri_targets() and
@@ -344,9 +344,9 @@ ctk_drag_source_add_image_targets (GtkWidget *widget)
  * Since: 2.6
  */
 void
-ctk_drag_source_add_uri_targets (GtkWidget *widget)
+ctk_drag_source_add_uri_targets (CtkWidget *widget)
 {
-  GtkTargetList *target_list;
+  CtkTargetList *target_list;
 
   target_list = ctk_drag_source_get_target_list (widget);
   if (target_list)
@@ -360,7 +360,7 @@ ctk_drag_source_add_uri_targets (GtkWidget *widget)
 
 /**
  * ctk_drag_source_set_icon_pixbuf: (method)
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @pixbuf: the #GdkPixbuf for the drag icon
  * 
  * Sets the icon that will be used for drags from a particular widget
@@ -368,10 +368,10 @@ ctk_drag_source_add_uri_targets (GtkWidget *widget)
  * release it when it is no longer needed.
  */
 void 
-ctk_drag_source_set_icon_pixbuf (GtkWidget *widget,
+ctk_drag_source_set_icon_pixbuf (CtkWidget *widget,
                                  GdkPixbuf *pixbuf)
 {
-  GtkDragSourceSite *site;
+  CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
@@ -385,7 +385,7 @@ ctk_drag_source_set_icon_pixbuf (GtkWidget *widget,
 
 /**
  * ctk_drag_source_set_icon_stock: (method)
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @stock_id: the ID of the stock icon to use
  *
  * Sets the icon that will be used for drags from a particular source
@@ -394,10 +394,10 @@ ctk_drag_source_set_icon_pixbuf (GtkWidget *widget,
  * Deprecated: 3.10: Use ctk_drag_source_set_icon_name() instead.
  */
 void
-ctk_drag_source_set_icon_stock (GtkWidget   *widget,
+ctk_drag_source_set_icon_stock (CtkWidget   *widget,
                                 const gchar *stock_id)
 {
-  GtkDragSourceSite *site;
+  CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (stock_id != NULL);
@@ -411,19 +411,19 @@ ctk_drag_source_set_icon_stock (GtkWidget   *widget,
 
 /**
  * ctk_drag_source_set_icon_name: (method)
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @icon_name: name of icon to use
  * 
  * Sets the icon that will be used for drags from a particular source
- * to a themed icon. See the docs for #GtkIconTheme for more details.
+ * to a themed icon. See the docs for #CtkIconTheme for more details.
  *
  * Since: 2.8
  */
 void 
-ctk_drag_source_set_icon_name (GtkWidget   *widget,
+ctk_drag_source_set_icon_name (CtkWidget   *widget,
                                const gchar *icon_name)
 {
-  GtkDragSourceSite *site;
+  CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (icon_name != NULL);
@@ -437,19 +437,19 @@ ctk_drag_source_set_icon_name (GtkWidget   *widget,
 
 /**
  * ctk_drag_source_set_icon_gicon: (method)
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @icon: A #GIcon
  * 
  * Sets the icon that will be used for drags from a particular source
- * to @icon. See the docs for #GtkIconTheme for more details.
+ * to @icon. See the docs for #CtkIconTheme for more details.
  *
  * Since: 3.2
  */
 void
-ctk_drag_source_set_icon_gicon (GtkWidget *widget,
+ctk_drag_source_set_icon_gicon (CtkWidget *widget,
                                 GIcon     *icon)
 {
-  GtkDragSourceSite *site;
+  CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (icon != NULL);

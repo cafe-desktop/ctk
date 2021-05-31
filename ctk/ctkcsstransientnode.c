@@ -20,13 +20,13 @@
 #include "ctkcsstransientnodeprivate.h"
 #include "ctkprivate.h"
 
-G_DEFINE_TYPE (GtkCssTransientNode, ctk_css_transient_node, CTK_TYPE_CSS_NODE)
+G_DEFINE_TYPE (CtkCssTransientNode, ctk_css_transient_node, CTK_TYPE_CSS_NODE)
 
-static GtkWidgetPath *
-ctk_css_transient_node_create_widget_path (GtkCssNode *node)
+static CtkWidgetPath *
+ctk_css_transient_node_create_widget_path (CtkCssNode *node)
 {
-  GtkWidgetPath *result;
-  GtkCssNode *parent;
+  CtkWidgetPath *result;
+  CtkCssNode *parent;
 
   parent = ctk_css_node_get_parent (node);
   if (parent == NULL)
@@ -40,10 +40,10 @@ ctk_css_transient_node_create_widget_path (GtkCssNode *node)
   return result;
 }
 
-static const GtkWidgetPath *
-ctk_css_transient_node_get_widget_path (GtkCssNode *node)
+static const CtkWidgetPath *
+ctk_css_transient_node_get_widget_path (CtkCssNode *node)
 {
-  GtkCssNode *parent;
+  CtkCssNode *parent;
 
   parent = ctk_css_node_get_parent (node);
   if (parent == NULL)
@@ -52,20 +52,20 @@ ctk_css_transient_node_get_widget_path (GtkCssNode *node)
   return ctk_css_node_get_widget_path (parent);
 }
 
-static GtkCssStyle *
-ctk_css_transient_node_update_style (GtkCssNode   *cssnode,
-                                     GtkCssChange  change,
+static CtkCssStyle *
+ctk_css_transient_node_update_style (CtkCssNode   *cssnode,
+                                     CtkCssChange  change,
                                      gint64        timestamp,
-                                     GtkCssStyle  *style)
+                                     CtkCssStyle  *style)
 {
   /* This should get rid of animations */
   return CTK_CSS_NODE_CLASS (ctk_css_transient_node_parent_class)->update_style (cssnode, change, 0, style);
 }
 
 static void
-ctk_css_transient_node_class_init (GtkCssTransientNodeClass *klass)
+ctk_css_transient_node_class_init (CtkCssTransientNodeClass *klass)
 {
-  GtkCssNodeClass *node_class = CTK_CSS_NODE_CLASS (klass);
+  CtkCssNodeClass *node_class = CTK_CSS_NODE_CLASS (klass);
 
   node_class->create_widget_path = ctk_css_transient_node_create_widget_path;
   node_class->get_widget_path = ctk_css_transient_node_get_widget_path;
@@ -73,15 +73,15 @@ ctk_css_transient_node_class_init (GtkCssTransientNodeClass *klass)
 }
 
 static void
-ctk_css_transient_node_init (GtkCssTransientNode *cssnode)
+ctk_css_transient_node_init (CtkCssTransientNode *cssnode)
 {
   ctk_css_node_set_visible (CTK_CSS_NODE (cssnode), FALSE);
 }
 
-GtkCssNode *
-ctk_css_transient_node_new (GtkCssNode *parent)
+CtkCssNode *
+ctk_css_transient_node_new (CtkCssNode *parent)
 {
-  GtkCssNode *result;
+  CtkCssNode *result;
 
   ctk_internal_return_val_if_fail (CTK_IS_CSS_NODE (parent), NULL);
 

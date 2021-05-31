@@ -37,17 +37,17 @@
 /**
  * SECTION:ctkaccelgroup
  * @Short_description: Groups of global keyboard accelerators for an
- *     entire GtkWindow
+ *     entire CtkWindow
  * @Title: Accelerator Groups
  * @See_also: ctk_window_add_accel_group(), ctk_accel_map_change_entry(),
  * ctk_label_new_with_mnemonic()
  *
- * A #GtkAccelGroup represents a group of keyboard accelerators,
- * typically attached to a toplevel #GtkWindow (with
+ * A #CtkAccelGroup represents a group of keyboard accelerators,
+ * typically attached to a toplevel #CtkWindow (with
  * ctk_window_add_accel_group()). Usually you won’t need to create a
- * #GtkAccelGroup directly; instead, when using #GtkUIManager, GTK+
+ * #CtkAccelGroup directly; instead, when using #CtkUIManager, GTK+
  * automatically sets up the accelerators for your menus in the ui
- * manager’s #GtkAccelGroup.
+ * manager’s #CtkAccelGroup.
  *
  * Note that “accelerators” are different from
  * “mnemonics”. Accelerators are shortcuts for
@@ -84,12 +84,12 @@ enum {
 
 static GParamSpec *obj_properties[N_PROPERTIES] = { NULL, };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkAccelGroup, ctk_accel_group, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkAccelGroup, ctk_accel_group, G_TYPE_OBJECT)
 
 
 /* --- functions --- */
 static void
-ctk_accel_group_class_init (GtkAccelGroupClass *class)
+ctk_accel_group_class_init (CtkAccelGroupClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
@@ -120,14 +120,14 @@ ctk_accel_group_class_init (GtkAccelGroupClass *class)
                                       obj_properties);
 
   /**
-   * GtkAccelGroup::accel-activate:
-   * @accel_group: the #GtkAccelGroup which received the signal
+   * CtkAccelGroup::accel-activate:
+   * @accel_group: the #CtkAccelGroup which received the signal
    * @acceleratable: the object on which the accelerator was activated
    * @keyval: the accelerator keyval
    * @modifier: the modifier combination of the accelerator
    *
    * The accel-activate signal is an implementation detail of
-   * #GtkAccelGroup and not meant to be used by applications.
+   * #CtkAccelGroup and not meant to be used by applications.
    *
    * Returns: %TRUE if the accelerator was activated
    */
@@ -143,8 +143,8 @@ ctk_accel_group_class_init (GtkAccelGroupClass *class)
                   G_TYPE_UINT,
                   GDK_TYPE_MODIFIER_TYPE);
   /**
-   * GtkAccelGroup::accel-changed:
-   * @accel_group: the #GtkAccelGroup which received the signal
+   * CtkAccelGroup::accel-changed:
+   * @accel_group: the #CtkAccelGroup which received the signal
    * @keyval: the accelerator keyval
    * @modifier: the modifier combination of the accelerator
    * @accel_closure: the #GClosure of the accelerator
@@ -152,7 +152,7 @@ ctk_accel_group_class_init (GtkAccelGroupClass *class)
    * The accel-changed signal is emitted when an entry
    * is added to or removed from the accel group.
    *
-   * Widgets like #GtkAccelLabel which display an associated
+   * Widgets like #CtkAccelLabel which display an associated
    * accelerator should connect to this signal, and rebuild
    * their visual representation if the @accel_closure is theirs.
    */
@@ -160,7 +160,7 @@ ctk_accel_group_class_init (GtkAccelGroupClass *class)
     g_signal_new (I_("accel-changed"),
                   G_OBJECT_CLASS_TYPE (class),
                   G_SIGNAL_RUN_FIRST | G_SIGNAL_DETAILED,
-                  G_STRUCT_OFFSET (GtkAccelGroupClass, accel_changed),
+                  G_STRUCT_OFFSET (CtkAccelGroupClass, accel_changed),
                   NULL, NULL,
                   _ctk_marshal_VOID__UINT_FLAGS_BOXED,
                   G_TYPE_NONE, 3,
@@ -172,12 +172,12 @@ ctk_accel_group_class_init (GtkAccelGroupClass *class)
 static void
 ctk_accel_group_finalize (GObject *object)
 {
-  GtkAccelGroup *accel_group = CTK_ACCEL_GROUP (object);
+  CtkAccelGroup *accel_group = CTK_ACCEL_GROUP (object);
   guint i;
 
   for (i = 0; i < accel_group->priv->n_accels; i++)
     {
-      GtkAccelGroupEntry *entry = &accel_group->priv->priv_accels[i];
+      CtkAccelGroupEntry *entry = &accel_group->priv->priv_accels[i];
 
       if (entry->accel_path_quark)
         {
@@ -202,7 +202,7 @@ ctk_accel_group_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkAccelGroup *accel_group = CTK_ACCEL_GROUP (object);
+  CtkAccelGroup *accel_group = CTK_ACCEL_GROUP (object);
 
   switch (param_id)
     {
@@ -219,9 +219,9 @@ ctk_accel_group_get_property (GObject    *object,
 }
 
 static void
-ctk_accel_group_init (GtkAccelGroup *accel_group)
+ctk_accel_group_init (CtkAccelGroup *accel_group)
 {
-  GtkAccelGroupPrivate *priv;
+  CtkAccelGroupPrivate *priv;
 
   accel_group->priv = ctk_accel_group_get_instance_private (accel_group);
   priv = accel_group->priv;
@@ -236,11 +236,11 @@ ctk_accel_group_init (GtkAccelGroup *accel_group)
 /**
  * ctk_accel_group_new:
  *
- * Creates a new #GtkAccelGroup.
+ * Creates a new #CtkAccelGroup.
  *
- * Returns: a new #GtkAccelGroup object
+ * Returns: a new #CtkAccelGroup object
  */
-GtkAccelGroup*
+CtkAccelGroup*
 ctk_accel_group_new (void)
 {
   return g_object_new (CTK_TYPE_ACCEL_GROUP, NULL);
@@ -248,7 +248,7 @@ ctk_accel_group_new (void)
 
 /**
  * ctk_accel_group_get_is_locked:
- * @accel_group: a #GtkAccelGroup
+ * @accel_group: a #CtkAccelGroup
  *
  * Locks are added and removed using ctk_accel_group_lock() and
  * ctk_accel_group_unlock().
@@ -259,7 +259,7 @@ ctk_accel_group_new (void)
  * Since: 2.14
  */
 gboolean
-ctk_accel_group_get_is_locked (GtkAccelGroup *accel_group)
+ctk_accel_group_get_is_locked (CtkAccelGroup *accel_group)
 {
   g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), FALSE);
 
@@ -268,7 +268,7 @@ ctk_accel_group_get_is_locked (GtkAccelGroup *accel_group)
 
 /**
  * ctk_accel_group_get_modifier_mask:
- * @accel_group: a #GtkAccelGroup
+ * @accel_group: a #CtkAccelGroup
  *
  * Gets a #GdkModifierType representing the mask for this
  * @accel_group. For example, #GDK_CONTROL_MASK, #GDK_SHIFT_MASK, etc.
@@ -278,7 +278,7 @@ ctk_accel_group_get_is_locked (GtkAccelGroup *accel_group)
  * Since: 2.14
  */
 GdkModifierType
-ctk_accel_group_get_modifier_mask (GtkAccelGroup *accel_group)
+ctk_accel_group_get_modifier_mask (CtkAccelGroup *accel_group)
 {
   g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), 0);
 
@@ -293,7 +293,7 @@ accel_group_weak_ref_detach (GSList  *free_list,
 
   for (slist = free_list; slist; slist = slist->next)
     {
-      GtkAccelGroup *accel_group;
+      CtkAccelGroup *accel_group;
 
       accel_group = slist->data;
       accel_group->priv->acceleratables = g_slist_remove (accel_group->priv->acceleratables, stale_object);
@@ -304,7 +304,7 @@ accel_group_weak_ref_detach (GSList  *free_list,
 }
 
 void
-_ctk_accel_group_attach (GtkAccelGroup *accel_group,
+_ctk_accel_group_attach (CtkAccelGroup *accel_group,
                          GObject       *object)
 {
   GSList *slist;
@@ -328,7 +328,7 @@ _ctk_accel_group_attach (GtkAccelGroup *accel_group,
 }
 
 void
-_ctk_accel_group_detach (GtkAccelGroup *accel_group,
+_ctk_accel_group_detach (CtkAccelGroup *accel_group,
                          GObject       *object)
 {
   GSList *slist;
@@ -353,11 +353,11 @@ _ctk_accel_group_detach (GtkAccelGroup *accel_group,
 
 /**
  * ctk_accel_groups_from_object:
- * @object: a #GObject, usually a #GtkWindow
+ * @object: a #GObject, usually a #CtkWindow
  *
  * Gets a list of all accel groups which are attached to @object.
  *
- * Returns: (element-type GtkAccelGroup) (transfer none): a list of
+ * Returns: (element-type CtkAccelGroup) (transfer none): a list of
  *     all accel groups which are attached to @object
  */
 GSList*
@@ -370,23 +370,23 @@ ctk_accel_groups_from_object (GObject *object)
 
 /**
  * ctk_accel_group_find:
- * @accel_group: a #GtkAccelGroup
+ * @accel_group: a #CtkAccelGroup
  * @find_func: (scope call): a function to filter the entries
  *    of @accel_group with
  * @data: data to pass to @find_func
  *
  * Finds the first entry in an accelerator group for which
- * @find_func returns %TRUE and returns its #GtkAccelKey.
+ * @find_func returns %TRUE and returns its #CtkAccelKey.
  *
  * Returns: (transfer none): the key of the first entry passing
  *    @find_func. The key is owned by GTK+ and must not be freed.
  */
-GtkAccelKey*
-ctk_accel_group_find (GtkAccelGroup         *accel_group,
-                      GtkAccelGroupFindFunc  find_func,
+CtkAccelKey*
+ctk_accel_group_find (CtkAccelGroup         *accel_group,
+                      CtkAccelGroupFindFunc  find_func,
                       gpointer               data)
 {
-  GtkAccelKey *key = NULL;
+  CtkAccelKey *key = NULL;
   guint i;
 
   g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), NULL);
@@ -408,7 +408,7 @@ ctk_accel_group_find (GtkAccelGroup         *accel_group,
 
 /**
  * ctk_accel_group_lock:
- * @accel_group: a #GtkAccelGroup
+ * @accel_group: a #CtkAccelGroup
  *
  * Locks the given accelerator group.
  *
@@ -421,7 +421,7 @@ ctk_accel_group_find (GtkAccelGroup         *accel_group,
  * of times.
  */
 void
-ctk_accel_group_lock (GtkAccelGroup *accel_group)
+ctk_accel_group_lock (CtkAccelGroup *accel_group)
 {
   g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
 
@@ -435,12 +435,12 @@ ctk_accel_group_lock (GtkAccelGroup *accel_group)
 
 /**
  * ctk_accel_group_unlock:
- * @accel_group: a #GtkAccelGroup
+ * @accel_group: a #CtkAccelGroup
  *
  * Undoes the last call to ctk_accel_group_lock() on this @accel_group.
  */
 void
-ctk_accel_group_unlock (GtkAccelGroup *accel_group)
+ctk_accel_group_unlock (CtkAccelGroup *accel_group)
 {
   g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
   g_return_if_fail (accel_group->priv->lock_count > 0);
@@ -457,7 +457,7 @@ static void
 accel_closure_invalidate (gpointer  data,
                           GClosure *closure)
 {
-  GtkAccelGroup *accel_group = CTK_ACCEL_GROUP (data);
+  CtkAccelGroup *accel_group = CTK_ACCEL_GROUP (data);
 
   ctk_accel_group_disconnect (accel_group, closure);
 }
@@ -466,8 +466,8 @@ static int
 bsearch_compare_accels (const void *d1,
                         const void *d2)
 {
-  const GtkAccelGroupEntry *entry1 = d1;
-  const GtkAccelGroupEntry *entry2 = d2;
+  const CtkAccelGroupEntry *entry1 = d1;
+  const CtkAccelGroupEntry *entry2 = d2;
 
   if (entry1->key.accel_key == entry2->key.accel_key)
     return entry1->key.accel_mods < entry2->key.accel_mods ? -1 : entry1->key.accel_mods > entry2->key.accel_mods;
@@ -476,15 +476,15 @@ bsearch_compare_accels (const void *d1,
 }
 
 static void
-quick_accel_add (GtkAccelGroup   *accel_group,
+quick_accel_add (CtkAccelGroup   *accel_group,
                  guint            accel_key,
                  GdkModifierType  accel_mods,
-                 GtkAccelFlags    accel_flags,
+                 CtkAccelFlags    accel_flags,
                  GClosure        *closure,
                  GQuark           path_quark)
 {
   guint pos, i = accel_group->priv->n_accels++;
-  GtkAccelGroupEntry key;
+  CtkAccelGroupEntry key;
 
   /* find position */
   key.key.accel_key = accel_key;
@@ -494,7 +494,7 @@ quick_accel_add (GtkAccelGroup   *accel_group,
       break;
 
   /* insert at position, ref closure */
-  accel_group->priv->priv_accels = g_renew (GtkAccelGroupEntry, accel_group->priv->priv_accels, accel_group->priv->n_accels);
+  accel_group->priv->priv_accels = g_renew (CtkAccelGroupEntry, accel_group->priv->priv_accels, accel_group->priv->n_accels);
   memmove (accel_group->priv->priv_accels + pos + 1, accel_group->priv->priv_accels + pos,
            (i - pos) * sizeof (accel_group->priv->priv_accels[0]));
   accel_group->priv->priv_accels[pos].key.accel_key = accel_key;
@@ -528,11 +528,11 @@ quick_accel_add (GtkAccelGroup   *accel_group,
 }
 
 static void
-quick_accel_remove (GtkAccelGroup *accel_group,
+quick_accel_remove (CtkAccelGroup *accel_group,
                     guint          pos)
 {
   GQuark accel_quark = 0;
-  GtkAccelGroupEntry *entry = accel_group->priv->priv_accels + pos;
+  CtkAccelGroupEntry *entry = accel_group->priv->priv_accels + pos;
   guint accel_key = entry->key.accel_key;
   GdkModifierType accel_mods = entry->key.accel_mods;
   GClosure *closure = entry->closure;
@@ -570,14 +570,14 @@ quick_accel_remove (GtkAccelGroup *accel_group,
   g_closure_unref (closure);
 }
 
-static GtkAccelGroupEntry*
-quick_accel_find (GtkAccelGroup   *accel_group,
+static CtkAccelGroupEntry*
+quick_accel_find (CtkAccelGroup   *accel_group,
                   guint            accel_key,
                   GdkModifierType  accel_mods,
                   guint           *count_p)
 {
-  GtkAccelGroupEntry *entry;
-  GtkAccelGroupEntry key;
+  CtkAccelGroupEntry *entry;
+  CtkAccelGroupEntry key;
 
   *count_p = 0;
 
@@ -618,16 +618,16 @@ quick_accel_find (GtkAccelGroup   *accel_group,
  * @closure will be invoked if the @accel_key and @accel_mods from
  * ctk_accel_groups_activate() match those of this connection.
  *
- * The signature used for the @closure is that of #GtkAccelGroupActivate.
+ * The signature used for the @closure is that of #CtkAccelGroupActivate.
  *
  * Note that, due to implementation details, a single closure can
  * only be connected to one accelerator group.
  */
 void
-ctk_accel_group_connect (GtkAccelGroup   *accel_group,
+ctk_accel_group_connect (CtkAccelGroup   *accel_group,
                          guint            accel_key,
                          GdkModifierType  accel_mods,
-                         GtkAccelFlags    accel_flags,
+                         CtkAccelFlags    accel_flags,
                          GClosure        *closure)
 {
   g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
@@ -656,20 +656,20 @@ ctk_accel_group_connect (GtkAccelGroup   *accel_group,
  * be invoked if the @accel_key and @accel_mods from
  * ctk_accel_groups_activate() match the key and modifiers for the path.
  *
- * The signature used for the @closure is that of #GtkAccelGroupActivate.
+ * The signature used for the @closure is that of #CtkAccelGroupActivate.
  *
  * Note that @accel_path string will be stored in a #GQuark. Therefore,
  * if you pass a static string, you can save some memory by interning it
  * first with g_intern_static_string().
  */
 void
-ctk_accel_group_connect_by_path (GtkAccelGroup *accel_group,
+ctk_accel_group_connect_by_path (CtkAccelGroup *accel_group,
                                  const gchar   *accel_path,
                                  GClosure      *closure)
 {
   guint accel_key = 0;
   GdkModifierType accel_mods = 0;
-  GtkAccelKey key;
+  CtkAccelKey key;
 
   g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
   g_return_if_fail (closure != NULL);
@@ -706,7 +706,7 @@ ctk_accel_group_connect_by_path (GtkAccelGroup *accel_group,
  * Returns: %TRUE if the closure was found and got disconnected
  */
 gboolean
-ctk_accel_group_disconnect (GtkAccelGroup *accel_group,
+ctk_accel_group_disconnect (CtkAccelGroup *accel_group,
                             GClosure      *closure)
 {
   guint i;
@@ -737,11 +737,11 @@ ctk_accel_group_disconnect (GtkAccelGroup *accel_group,
  *     removed, %FALSE otherwise
  */
 gboolean
-ctk_accel_group_disconnect_key (GtkAccelGroup   *accel_group,
+ctk_accel_group_disconnect_key (CtkAccelGroup   *accel_group,
                                 guint            accel_key,
                                 GdkModifierType  accel_mods)
 {
-  GtkAccelGroupEntry *entries;
+  CtkAccelGroupEntry *entries;
   GSList *slist, *clist = NULL;
   gboolean removed_one = FALSE;
   guint n;
@@ -774,7 +774,7 @@ ctk_accel_group_disconnect_key (GtkAccelGroup   *accel_group,
 }
 
 void
-_ctk_accel_group_reconnect (GtkAccelGroup *accel_group,
+_ctk_accel_group_reconnect (CtkAccelGroup *accel_group,
                             GQuark         accel_path_quark)
 {
   GSList *slist, *clist = NULL;
@@ -806,7 +806,7 @@ _ctk_accel_group_reconnect (GtkAccelGroup *accel_group,
 }
 
 GSList*
-_ctk_accel_group_get_accelerables (GtkAccelGroup *accel_group)
+_ctk_accel_group_get_accelerables (CtkAccelGroup *accel_group)
 {
     g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), NULL);
 
@@ -825,16 +825,16 @@ _ctk_accel_group_get_accelerables (GtkAccelGroup *accel_group)
  * and @accel_mods.
  *
  * Returns: (nullable) (transfer none) (array length=n_entries): an array of
- *     @n_entries #GtkAccelGroupEntry elements, or %NULL. The array
+ *     @n_entries #CtkAccelGroupEntry elements, or %NULL. The array
  *     is owned by GTK+ and must not be freed.
  */
-GtkAccelGroupEntry*
-ctk_accel_group_query (GtkAccelGroup   *accel_group,
+CtkAccelGroupEntry*
+ctk_accel_group_query (CtkAccelGroup   *accel_group,
                        guint            accel_key,
                        GdkModifierType  accel_mods,
                        guint           *n_entries)
 {
-  GtkAccelGroupEntry *entries;
+  CtkAccelGroupEntry *entries;
   guint n;
 
   g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), NULL);
@@ -851,13 +851,13 @@ ctk_accel_group_query (GtkAccelGroup   *accel_group,
  * ctk_accel_group_from_accel_closure:
  * @closure: a #GClosure
  *
- * Finds the #GtkAccelGroup to which @closure is connected;
+ * Finds the #CtkAccelGroup to which @closure is connected;
  * see ctk_accel_group_connect().
  *
- * Returns: (nullable) (transfer none): the #GtkAccelGroup to which @closure
+ * Returns: (nullable) (transfer none): the #CtkAccelGroup to which @closure
  *     is connected, or %NULL
  */
-GtkAccelGroup*
+CtkAccelGroup*
 ctk_accel_group_from_accel_closure (GClosure *closure)
 {
   guint i;
@@ -881,9 +881,9 @@ ctk_accel_group_from_accel_closure (GClosure *closure)
 
 /**
  * ctk_accel_group_activate:
- * @accel_group: a #GtkAccelGroup
+ * @accel_group: a #CtkAccelGroup
  * @accel_quark: the quark for the accelerator name
- * @acceleratable: the #GObject, usually a #GtkWindow, on which
+ * @acceleratable: the #GObject, usually a #CtkWindow, on which
  *    to activate the accelerator
  * @accel_key: accelerator keyval from a key event
  * @accel_mods: keyboard state mask from a key event
@@ -895,7 +895,7 @@ ctk_accel_group_from_accel_closure (GClosure *closure)
  *     this keypress
  */
 gboolean
-ctk_accel_group_activate (GtkAccelGroup   *accel_group,
+ctk_accel_group_activate (CtkAccelGroup   *accel_group,
                           GQuark           accel_quark,
                           GObject         *acceleratable,
                           guint            accel_key,
@@ -915,12 +915,12 @@ ctk_accel_group_activate (GtkAccelGroup   *accel_group,
 
 /**
  * ctk_accel_groups_activate:
- * @object: the #GObject, usually a #GtkWindow, on which
+ * @object: the #GObject, usually a #CtkWindow, on which
  *     to activate the accelerator
  * @accel_key: accelerator keyval from a key event
  * @accel_mods: keyboard state mask from a key event
  *
- * Finds the first accelerator in any #GtkAccelGroup attached
+ * Finds the first accelerator in any #CtkAccelGroup attached
  * to @object that matches @accel_key and @accel_mods, and
  * activates that accelerator.
  *
@@ -1705,7 +1705,7 @@ gchar*
 ctk_accelerator_get_label (guint           accelerator_key,
                            GdkModifierType accelerator_mods)
 {
-  GtkAccelLabelClass *klass;
+  CtkAccelLabelClass *klass;
   gchar *label;
 
   klass = g_type_class_ref (CTK_TYPE_ACCEL_LABEL);
@@ -1726,7 +1726,7 @@ ctk_accelerator_get_label (guint           accelerator_key,
  * but will typically include #GDK_CONTROL_MASK | #GDK_SHIFT_MASK |
  * #GDK_MOD1_MASK | #GDK_SUPER_MASK | #GDK_HYPER_MASK | #GDK_META_MASK.
  * In other words, Control, Shift, Alt, Super, Hyper and Meta. Other
- * modifiers will by default be ignored by #GtkAccelGroup.
+ * modifiers will by default be ignored by #CtkAccelGroup.
  *
  * You must include at least the three modifiers Control, Shift
  * and Alt in any value you pass to this function.

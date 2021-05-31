@@ -19,7 +19,7 @@
 
 
 G_MODULE_EXPORT void
-statusbar_remove_all (GtkStatusbar *s)
+statusbar_remove_all (CtkStatusbar *s)
 {
   ctk_statusbar_push (s, 0, "One");
   ctk_statusbar_push (s, 0, "Two");

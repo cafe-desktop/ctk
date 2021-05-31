@@ -30,50 +30,50 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_GL_AREA                (ctk_gl_area_get_type ())
-#define CTK_GL_AREA(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_GL_AREA, GtkGLArea))
+#define CTK_GL_AREA(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_GL_AREA, CtkGLArea))
 #define CTK_IS_GL_AREA(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_GL_AREA))
-#define CTK_GL_AREA_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_GL_AREA, GtkGLAreaClass))
+#define CTK_GL_AREA_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_GL_AREA, CtkGLAreaClass))
 #define CTK_IS_GL_AREA_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_GL_AREA))
-#define CTK_GL_AREA_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_GL_AREA, GtkGLAreaClass))
+#define CTK_GL_AREA_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_GL_AREA, CtkGLAreaClass))
 
-typedef struct _GtkGLArea               GtkGLArea;
-typedef struct _GtkGLAreaClass          GtkGLAreaClass;
+typedef struct _CtkGLArea               CtkGLArea;
+typedef struct _CtkGLAreaClass          CtkGLAreaClass;
 
 /**
- * GtkGLArea:
+ * CtkGLArea:
  *
- * A #GtkWidget used for drawing with OpenGL.
+ * A #CtkWidget used for drawing with OpenGL.
  *
  * Since: 3.16
  */
-struct _GtkGLArea
+struct _CtkGLArea
 {
   /*< private >*/
-  GtkWidget parent_instance;
+  CtkWidget parent_instance;
 };
 
 /**
- * GtkGLAreaClass:
- * @render: class closure for the #GtkGLArea::render signal
- * @resize: class closeure for the #GtkGLArea::resize signal
- * @create_context: class closure for the #GtkGLArea::create-context signal
+ * CtkGLAreaClass:
+ * @render: class closure for the #CtkGLArea::render signal
+ * @resize: class closeure for the #CtkGLArea::resize signal
+ * @create_context: class closure for the #CtkGLArea::create-context signal
  *
- * The `GtkGLAreaClass` structure contains only private data.
+ * The `CtkGLAreaClass` structure contains only private data.
  *
  * Since: 3.16
  */
-struct _GtkGLAreaClass
+struct _CtkGLAreaClass
 {
   /*< private >*/
-  GtkWidgetClass parent_class;
+  CtkWidgetClass parent_class;
 
   /*< public >*/
-  gboolean       (* render)         (GtkGLArea        *area,
+  gboolean       (* render)         (CtkGLArea        *area,
                                      GdkGLContext     *context);
-  void           (* resize)         (GtkGLArea        *area,
+  void           (* resize)         (CtkGLArea        *area,
                                      int               width,
                                      int               height);
-  GdkGLContext * (* create_context) (GtkGLArea        *area);
+  GdkGLContext * (* create_context) (CtkGLArea        *area);
 
   /*< private >*/
   gpointer _padding[6];
@@ -83,58 +83,58 @@ GDK_AVAILABLE_IN_3_16
 GType ctk_gl_area_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_16
-GtkWidget *     ctk_gl_area_new                         (void);
+CtkWidget *     ctk_gl_area_new                         (void);
 
 GDK_AVAILABLE_IN_3_22
-void            ctk_gl_area_set_use_es                  (GtkGLArea    *area,
+void            ctk_gl_area_set_use_es                  (CtkGLArea    *area,
                                                          gboolean      use_es);
 GDK_AVAILABLE_IN_3_22
-gboolean        ctk_gl_area_get_use_es                  (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_use_es                  (CtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_set_required_version        (GtkGLArea    *area,
+void            ctk_gl_area_set_required_version        (CtkGLArea    *area,
                                                          gint          major,
                                                          gint          minor);
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_get_required_version        (GtkGLArea    *area,
+void            ctk_gl_area_get_required_version        (CtkGLArea    *area,
                                                          gint         *major,
                                                          gint         *minor);
 GDK_AVAILABLE_IN_3_16
-gboolean        ctk_gl_area_get_has_alpha               (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_has_alpha               (CtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_set_has_alpha               (GtkGLArea    *area,
+void            ctk_gl_area_set_has_alpha               (CtkGLArea    *area,
                                                          gboolean      has_alpha);
 GDK_AVAILABLE_IN_3_16
-gboolean        ctk_gl_area_get_has_depth_buffer        (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_has_depth_buffer        (CtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_set_has_depth_buffer        (GtkGLArea    *area,
+void            ctk_gl_area_set_has_depth_buffer        (CtkGLArea    *area,
                                                          gboolean      has_depth_buffer);
 GDK_AVAILABLE_IN_3_16
-gboolean        ctk_gl_area_get_has_stencil_buffer      (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_has_stencil_buffer      (CtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_set_has_stencil_buffer      (GtkGLArea    *area,
+void            ctk_gl_area_set_has_stencil_buffer      (CtkGLArea    *area,
                                                          gboolean      has_stencil_buffer);
 GDK_AVAILABLE_IN_3_16
-gboolean        ctk_gl_area_get_auto_render             (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_auto_render             (CtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_set_auto_render             (GtkGLArea    *area,
+void            ctk_gl_area_set_auto_render             (CtkGLArea    *area,
                                                          gboolean      auto_render);
 GDK_AVAILABLE_IN_3_16
-void           ctk_gl_area_queue_render                 (GtkGLArea    *area);
+void           ctk_gl_area_queue_render                 (CtkGLArea    *area);
 
 
 GDK_AVAILABLE_IN_3_16
-GdkGLContext *  ctk_gl_area_get_context                 (GtkGLArea    *area);
+GdkGLContext *  ctk_gl_area_get_context                 (CtkGLArea    *area);
 
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_make_current                (GtkGLArea    *area);
+void            ctk_gl_area_make_current                (CtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_attach_buffers              (GtkGLArea    *area);
+void            ctk_gl_area_attach_buffers              (CtkGLArea    *area);
 
 GDK_AVAILABLE_IN_3_16
-void            ctk_gl_area_set_error                   (GtkGLArea    *area,
+void            ctk_gl_area_set_error                   (CtkGLArea    *area,
                                                          const GError *error);
 GDK_AVAILABLE_IN_3_16
-GError *        ctk_gl_area_get_error                   (GtkGLArea    *area);
+GError *        ctk_gl_area_get_error                   (CtkGLArea    *area);
 
 G_END_DECLS
 

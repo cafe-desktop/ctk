@@ -34,26 +34,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_AREA_BOX_CONTEXT            (_ctk_cell_area_box_context_get_type ())
-#define CTK_CELL_AREA_BOX_CONTEXT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_AREA_BOX_CONTEXT, GtkCellAreaBoxContext))
-#define CTK_CELL_AREA_BOX_CONTEXT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_AREA_BOX_CONTEXT, GtkCellAreaBoxContextClass))
+#define CTK_CELL_AREA_BOX_CONTEXT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_AREA_BOX_CONTEXT, CtkCellAreaBoxContext))
+#define CTK_CELL_AREA_BOX_CONTEXT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_AREA_BOX_CONTEXT, CtkCellAreaBoxContextClass))
 #define CTK_IS_CELL_AREA_BOX_CONTEXT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_AREA_BOX_CONTEXT))
 #define CTK_IS_CELL_AREA_BOX_CONTEXT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_AREA_BOX_CONTEXT))
-#define CTK_CELL_AREA_BOX_CONTEXT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_AREA_BOX_CONTEXT, GtkCellAreaBoxContextClass))
+#define CTK_CELL_AREA_BOX_CONTEXT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_AREA_BOX_CONTEXT, CtkCellAreaBoxContextClass))
 
-typedef struct _GtkCellAreaBoxContext              GtkCellAreaBoxContext;
-typedef struct _GtkCellAreaBoxContextClass         GtkCellAreaBoxContextClass;
-typedef struct _GtkCellAreaBoxContextPrivate       GtkCellAreaBoxContextPrivate;
+typedef struct _CtkCellAreaBoxContext              CtkCellAreaBoxContext;
+typedef struct _CtkCellAreaBoxContextClass         CtkCellAreaBoxContextClass;
+typedef struct _CtkCellAreaBoxContextPrivate       CtkCellAreaBoxContextPrivate;
 
-struct _GtkCellAreaBoxContext
+struct _CtkCellAreaBoxContext
 {
-  GtkCellAreaContext parent_instance;
+  CtkCellAreaContext parent_instance;
 
-  GtkCellAreaBoxContextPrivate *priv;
+  CtkCellAreaBoxContextPrivate *priv;
 };
 
-struct _GtkCellAreaBoxContextClass
+struct _CtkCellAreaBoxContextClass
 {
-  GtkCellAreaContextClass parent_class;
+  CtkCellAreaContextClass parent_class;
 
 };
 
@@ -61,64 +61,64 @@ GType   _ctk_cell_area_box_context_get_type                     (void) G_GNUC_CO
 
 
 /* Create a duplicate of the context */
-GtkCellAreaBoxContext *_ctk_cell_area_box_context_copy          (GtkCellAreaBox        *box,
-                                                                GtkCellAreaBoxContext *box_context);
+CtkCellAreaBoxContext *_ctk_cell_area_box_context_copy          (CtkCellAreaBox        *box,
+                                                                CtkCellAreaBoxContext *box_context);
 
 /* Initialize group array dimensions */
-void    _ctk_cell_area_box_init_groups                         (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_init_groups                         (CtkCellAreaBoxContext *box_context,
                                                                 guint                  n_groups,
                                                                 gboolean              *expand_groups,
                                                                 gboolean              *align_groups);
 
 /* Update cell-group sizes */
-void    _ctk_cell_area_box_context_push_group_width             (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_context_push_group_width             (CtkCellAreaBoxContext *box_context,
                                                                 gint                   group_idx,
                                                                 gint                   minimum_width,
                                                                 gint                   natural_width);
 
-void    _ctk_cell_area_box_context_push_group_height_for_width  (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_context_push_group_height_for_width  (CtkCellAreaBoxContext *box_context,
                                                                 gint                   group_idx,
                                                                 gint                   for_width,
                                                                 gint                   minimum_height,
                                                                 gint                   natural_height);
 
-void    _ctk_cell_area_box_context_push_group_height            (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_context_push_group_height            (CtkCellAreaBoxContext *box_context,
                                                                 gint                   group_idx,
                                                                 gint                   minimum_height,
                                                                 gint                   natural_height);
 
-void    _ctk_cell_area_box_context_push_group_width_for_height  (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_context_push_group_width_for_height  (CtkCellAreaBoxContext *box_context,
                                                                 gint                   group_idx,
                                                                 gint                   for_height,
                                                                 gint                   minimum_width,
                                                                 gint                   natural_width);
 
 /* Fetch cell-group sizes */
-void    _ctk_cell_area_box_context_get_group_width              (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_context_get_group_width              (CtkCellAreaBoxContext *box_context,
                                                                 gint                   group_idx,
                                                                 gint                  *minimum_width,
                                                                 gint                  *natural_width);
 
-void    _ctk_cell_area_box_context_get_group_height_for_width   (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_context_get_group_height_for_width   (CtkCellAreaBoxContext *box_context,
                                                                 gint                   group_idx,
                                                                 gint                   for_width,
                                                                 gint                  *minimum_height,
                                                                 gint                  *natural_height);
 
-void    _ctk_cell_area_box_context_get_group_height             (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_context_get_group_height             (CtkCellAreaBoxContext *box_context,
                                                                 gint                   group_idx,
                                                                 gint                  *minimum_height,
                                                                 gint                  *natural_height);
 
-void    _ctk_cell_area_box_context_get_group_width_for_height   (GtkCellAreaBoxContext *box_context,
+void    _ctk_cell_area_box_context_get_group_width_for_height   (CtkCellAreaBoxContext *box_context,
                                                                 gint                   group_idx,
                                                                 gint                   for_height,
                                                                 gint                  *minimum_width,
                                                                 gint                  *natural_width);
 
-GtkRequestedSize *_ctk_cell_area_box_context_get_widths         (GtkCellAreaBoxContext *box_context,
+CtkRequestedSize *_ctk_cell_area_box_context_get_widths         (CtkCellAreaBoxContext *box_context,
                                                                 gint                  *n_widths);
-GtkRequestedSize *_ctk_cell_area_box_context_get_heights        (GtkCellAreaBoxContext *box_context,
+CtkRequestedSize *_ctk_cell_area_box_context_get_heights        (CtkCellAreaBoxContext *box_context,
                                                                 gint                  *n_heights);
 
 /* Private context/area interaction */
@@ -126,10 +126,10 @@ typedef struct {
   gint group_idx; /* Groups containing only invisible cells are not allocated */
   gint position;  /* Relative group allocation position in the orientation of the box */
   gint size;      /* Full allocated size of the cells in this group spacing inclusive */
-} GtkCellAreaBoxAllocation;
+} CtkCellAreaBoxAllocation;
 
-GtkCellAreaBoxAllocation *
-_ctk_cell_area_box_context_get_orientation_allocs (GtkCellAreaBoxContext *context,
+CtkCellAreaBoxAllocation *
+_ctk_cell_area_box_context_get_orientation_allocs (CtkCellAreaBoxContext *context,
                                                   gint                  *n_allocs);
 
 G_END_DECLS

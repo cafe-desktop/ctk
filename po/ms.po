@@ -3,7 +3,7 @@
 # Hasbullah Bin Pit (sebol)<sebol@ikhlas.com>, 2002.
 msgid ""
 msgstr ""
-"Project-Id-Version: Gtk+ 1.3.x\n"
+"Project-Id-Version: Ctk+ 1.3.x\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-01 15:10+0000\n"
 "PO-Revision-Date: 2020-01-01 12:05+0800\n"
@@ -1768,7 +1768,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Penggunaan:\n"
 "  ctk-builder-tool [PERINTAH] FAIL\n"
@@ -1786,7 +1786,7 @@ msgstr ""
 "  --id=ID            Hanya pratonton objek bernama\n"
 "  --css=FILE         Guna gaya dari fail CSS\n"
 "\n"
-"Lakukan pelbagai tugas terhadap fail GtkBuilder .ui.\n"
+"Lakukan pelbagai tugas terhadap fail CtkBuilder .ui.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2630,7 +2630,7 @@ msgstr "Dicapai"
 msgid "Create Folder"
 msgstr "Cipta Folder"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.

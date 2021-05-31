@@ -266,7 +266,7 @@ window1
       <AtkAction>
       action 0 name: activate
       action 0 description: Activates the entry
-      unnamed-GtkEntryIconAccessible-0
+      unnamed-CtkEntryIconAccessible-0
         "icon"
         parent: entry3
         state: enabled sensitive visible
@@ -275,7 +275,7 @@ window1
         alpha: 1
         <AtkAction>
         action 0 name: activate
-      unnamed-GtkEntryIconAccessible-1
+      unnamed-CtkEntryIconAccessible-1
         "icon"
         parent: entry3
         state: enabled sensitive visible

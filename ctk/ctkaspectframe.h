@@ -36,31 +36,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ASPECT_FRAME            (ctk_aspect_frame_get_type ())
-#define CTK_ASPECT_FRAME(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ASPECT_FRAME, GtkAspectFrame))
-#define CTK_ASPECT_FRAME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ASPECT_FRAME, GtkAspectFrameClass))
+#define CTK_ASPECT_FRAME(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ASPECT_FRAME, CtkAspectFrame))
+#define CTK_ASPECT_FRAME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ASPECT_FRAME, CtkAspectFrameClass))
 #define CTK_IS_ASPECT_FRAME(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ASPECT_FRAME))
 #define CTK_IS_ASPECT_FRAME_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ASPECT_FRAME))
-#define CTK_ASPECT_FRAME_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ASPECT_FRAME, GtkAspectFrameClass))
+#define CTK_ASPECT_FRAME_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ASPECT_FRAME, CtkAspectFrameClass))
 
-typedef struct _GtkAspectFrame              GtkAspectFrame;
-typedef struct _GtkAspectFramePrivate       GtkAspectFramePrivate;
-typedef struct _GtkAspectFrameClass         GtkAspectFrameClass;
+typedef struct _CtkAspectFrame              CtkAspectFrame;
+typedef struct _CtkAspectFramePrivate       CtkAspectFramePrivate;
+typedef struct _CtkAspectFrameClass         CtkAspectFrameClass;
 
-struct _GtkAspectFrame
+struct _CtkAspectFrame
 {
-  GtkFrame frame;
+  CtkFrame frame;
 
   /*< private >*/
-  GtkAspectFramePrivate *priv;
+  CtkAspectFramePrivate *priv;
 };
 
 /**
- * GtkAspectFrameClass:
+ * CtkAspectFrameClass:
  * @parent_class: The parent class.
  */
-struct _GtkAspectFrameClass
+struct _CtkAspectFrameClass
 {
-  GtkFrameClass parent_class;
+  CtkFrameClass parent_class;
 
   /*< private >*/
 
@@ -75,13 +75,13 @@ struct _GtkAspectFrameClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_aspect_frame_get_type   (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* ctk_aspect_frame_new        (const gchar     *label,
+CtkWidget* ctk_aspect_frame_new        (const gchar     *label,
 					gfloat           xalign,
 					gfloat           yalign,
 					gfloat           ratio,
 					gboolean         obey_child);
 GDK_AVAILABLE_IN_ALL
-void       ctk_aspect_frame_set        (GtkAspectFrame  *aspect_frame,
+void       ctk_aspect_frame_set        (CtkAspectFrame  *aspect_frame,
 					gfloat           xalign,
 					gfloat           yalign,
 					gfloat           ratio,

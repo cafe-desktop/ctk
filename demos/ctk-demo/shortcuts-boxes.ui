@@ -2,24 +2,24 @@
 <interface>
   <!-- interface-requires ctk+ 3.17 -->
 
-  <object class="GtkShortcutsWindow" id="shortcuts-boxes">
+  <object class="CtkShortcutsWindow" id="shortcuts-boxes">
     <property name="modal">1</property>
     
     <child>
-      <object class="GtkShortcutsSection">
+      <object class="CtkShortcutsSection">
         <property name="visible">1</property>
         <property name="section-name">shortcuts</property>
         <property name="max-height">12</property>
 
         <!-- Overview shortcuts -->
         <child>
-          <object class="GtkShortcutsGroup">
+          <object class="CtkShortcutsGroup">
             <property name="visible">1</property>
             <property name="title" translatable="yes">Overview</property>
             <property name="view">overview</property>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">F1</property>
                 <property name="title" translatable="yes">Help</property>
@@ -27,7 +27,7 @@
             </child>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;Ctrl&gt;n</property>
                 <property name="title" translatable="yes">Create a new box</property>
@@ -35,7 +35,7 @@
             </child>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;Ctrl&gt;f</property>
                 <property name="title" translatable="yes">Search</property>
@@ -43,7 +43,7 @@
             </child>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;Ctrl&gt;k</property>
                 <property name="title" translatable="yes">Keyboard shortcuts</property>
@@ -51,7 +51,7 @@
             </child>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;Ctrl&gt;q</property>
                 <property name="title" translatable="yes">Close Window/Quit Boxes</property>
@@ -62,14 +62,14 @@
 
         <!-- Wizard and Properties shortcuts -->
         <child>
-          <object class="GtkShortcutsGroup">
+          <object class="CtkShortcutsGroup">
             <property name="visible">1</property>
             <property name="title" translatable="yes">Box Creation and Properties</property>
             <property name="view">wizard</property>
 
             <!-- LTR -->
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="direction">ltr</property>
                 <property name="accelerator">&lt;Alt&gt;Right</property>
@@ -78,7 +78,7 @@
             </child>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="direction">ltr</property>
                 <property name="accelerator">&lt;Alt&gt;Left</property>
@@ -88,7 +88,7 @@
 
             <!-- RTL -->
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="direction">rtl</property>
                 <property name="accelerator">&lt;Alt&gt;Left</property>
@@ -97,7 +97,7 @@
             </child>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="direction">rtl</property>
                 <property name="accelerator">&lt;Alt&gt;Right</property>
@@ -109,13 +109,13 @@
 
         <!-- Display shortcuts -->
         <child>
-          <object class="GtkShortcutsGroup">
+          <object class="CtkShortcutsGroup">
             <property name="visible">1</property>
             <property name="title" translatable="yes">Box Display</property>
             <property name="view">display</property>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">Control_L+Alt_L</property>
                 <property name="title" translatable="yes">Grab/Ungrab keyboard</property>
@@ -124,7 +124,7 @@
 
             <!-- LTR -->
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="direction">ltr</property>
                 <property name="accelerator">&lt;Alt&gt;Left</property>
@@ -134,7 +134,7 @@
 
             <!-- RTL -->
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="direction">rtl</property>
                 <property name="accelerator">&lt;Alt&gt;Right</property>
@@ -143,7 +143,7 @@
             </child>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;Ctrl&gt;q</property>
                 <property name="title" translatable="yes">Close window/Quit Boxes</property>
@@ -151,7 +151,7 @@
             </child>
 
             <child>
-              <object class="GtkShortcutsShortcut">
+              <object class="CtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">F11</property>
                 <property name="title" translatable="yes">Fullscreen/Restore from fullscreen</property>

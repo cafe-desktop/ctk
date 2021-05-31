@@ -71,7 +71,7 @@ typedef struct {
   CachedSizeX  cached_size_x;
   CachedSizeY  cached_size_y;
 
-  GtkSizeRequestMode request_mode   : 3;
+  CtkSizeRequestMode request_mode   : 3;
   guint       request_mode_valid    : 1;
   struct {
     guint       n_cached_requests   : 3;
@@ -85,14 +85,14 @@ void            _ctk_size_request_cache_free                    (SizeRequestCach
 
 void            _ctk_size_request_cache_clear                   (SizeRequestCache       *cache);
 void            _ctk_size_request_cache_commit                  (SizeRequestCache       *cache,
-                                                                 GtkOrientation          orientation,
+                                                                 CtkOrientation          orientation,
                                                                  gint                    for_size,
                                                                  gint                    minimum_size,
                                                                  gint                    natural_size,
                                                                  gint                    minimum_baseline,
                                                                  gint                    natural_baseline);
 gboolean        _ctk_size_request_cache_lookup                  (SizeRequestCache       *cache,
-                                                                 GtkOrientation          orientation,
+                                                                 CtkOrientation          orientation,
                                                                  gint                    for_size,
                                                                  gint                   *minimum,
                                                                  gint                   *natural,

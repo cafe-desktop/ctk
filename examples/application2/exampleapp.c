@@ -5,7 +5,7 @@
 
 struct _ExampleApp
 {
-  GtkApplication parent;
+  CtkApplication parent;
 };
 
 G_DEFINE_TYPE(ExampleApp, example_app, CTK_TYPE_APPLICATION);

@@ -29,50 +29,50 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_SHORTHAND_PROPERTY           (_ctk_css_shorthand_property_get_type ())
-#define CTK_CSS_SHORTHAND_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandProperty))
-#define CTK_CSS_SHORTHAND_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandPropertyClass))
+#define CTK_CSS_SHORTHAND_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_SHORTHAND_PROPERTY, CtkCssShorthandProperty))
+#define CTK_CSS_SHORTHAND_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_SHORTHAND_PROPERTY, CtkCssShorthandPropertyClass))
 #define CTK_IS_CSS_SHORTHAND_PROPERTY(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_SHORTHAND_PROPERTY))
 #define CTK_IS_CSS_SHORTHAND_PROPERTY_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_SHORTHAND_PROPERTY))
-#define CTK_CSS_SHORTHAND_PROPERTY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandPropertyClass))
+#define CTK_CSS_SHORTHAND_PROPERTY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_SHORTHAND_PROPERTY, CtkCssShorthandPropertyClass))
 
-typedef struct _GtkCssShorthandProperty           GtkCssShorthandProperty;
-typedef struct _GtkCssShorthandPropertyClass      GtkCssShorthandPropertyClass;
+typedef struct _CtkCssShorthandProperty           CtkCssShorthandProperty;
+typedef struct _CtkCssShorthandPropertyClass      CtkCssShorthandPropertyClass;
 
-typedef gboolean              (* GtkCssShorthandPropertyParseFunc)      (GtkCssShorthandProperty *shorthand,
-                                                                         GtkCssValue            **values,
-                                                                         GtkCssParser            *parser);
-typedef void                  (* GtkCssShorthandPropertyAssignFunc)     (GtkCssShorthandProperty *shorthand,
-                                                                         GtkStyleProperties      *props,
-                                                                         GtkStateFlags            state,
+typedef gboolean              (* CtkCssShorthandPropertyParseFunc)      (CtkCssShorthandProperty *shorthand,
+                                                                         CtkCssValue            **values,
+                                                                         CtkCssParser            *parser);
+typedef void                  (* CtkCssShorthandPropertyAssignFunc)     (CtkCssShorthandProperty *shorthand,
+                                                                         CtkStyleProperties      *props,
+                                                                         CtkStateFlags            state,
                                                                          const GValue            *value);
-typedef void                  (* GtkCssShorthandPropertyQueryFunc)      (GtkCssShorthandProperty *shorthand,
+typedef void                  (* CtkCssShorthandPropertyQueryFunc)      (CtkCssShorthandProperty *shorthand,
                                                                          GValue                  *value,
-                                                                         GtkStyleQueryFunc        query_func,
+                                                                         CtkStyleQueryFunc        query_func,
                                                                          gpointer                 query_data);
 
-struct _GtkCssShorthandProperty
+struct _CtkCssShorthandProperty
 {
-  GtkStyleProperty parent;
+  CtkStyleProperty parent;
 
   GPtrArray *subproperties;
 
-  GtkCssShorthandPropertyParseFunc parse;
-  GtkCssShorthandPropertyAssignFunc assign;
-  GtkCssShorthandPropertyQueryFunc query;
+  CtkCssShorthandPropertyParseFunc parse;
+  CtkCssShorthandPropertyAssignFunc assign;
+  CtkCssShorthandPropertyQueryFunc query;
 };
 
-struct _GtkCssShorthandPropertyClass
+struct _CtkCssShorthandPropertyClass
 {
-  GtkStylePropertyClass parent_class;
+  CtkStylePropertyClass parent_class;
 };
 
 void                    _ctk_css_shorthand_property_init_properties     (void);
 
 GType                   _ctk_css_shorthand_property_get_type            (void) G_GNUC_CONST;
 
-GtkCssStyleProperty *   _ctk_css_shorthand_property_get_subproperty     (GtkCssShorthandProperty *shorthand,
+CtkCssStyleProperty *   _ctk_css_shorthand_property_get_subproperty     (CtkCssShorthandProperty *shorthand,
                                                                          guint                    property);
-guint                   _ctk_css_shorthand_property_get_n_subproperties (GtkCssShorthandProperty *shorthand);
+guint                   _ctk_css_shorthand_property_get_n_subproperties (CtkCssShorthandProperty *shorthand);
 
 
 G_END_DECLS

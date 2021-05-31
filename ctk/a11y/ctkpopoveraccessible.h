@@ -29,23 +29,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_POPOVER_ACCESSIBLE                      (ctk_popover_accessible_get_type ())
-#define CTK_POPOVER_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_POPOVER_ACCESSIBLE, GtkPopoverAccessible))
-#define CTK_POPOVER_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_POPOVER_ACCESSIBLE, GtkPopoverAccessibleClass))
+#define CTK_POPOVER_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_POPOVER_ACCESSIBLE, CtkPopoverAccessible))
+#define CTK_POPOVER_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_POPOVER_ACCESSIBLE, CtkPopoverAccessibleClass))
 #define CTK_IS_POPOVER_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_POPOVER_ACCESSIBLE))
 #define CTK_IS_POPOVER_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_POPOVER_ACCESSIBLE))
-#define CTK_POPOVER_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_POPOVER_ACCESSIBLE, GtkPopoverAccessibleClass))
+#define CTK_POPOVER_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_POPOVER_ACCESSIBLE, CtkPopoverAccessibleClass))
 
-typedef struct _GtkPopoverAccessible        GtkPopoverAccessible;
-typedef struct _GtkPopoverAccessibleClass   GtkPopoverAccessibleClass;
+typedef struct _CtkPopoverAccessible        CtkPopoverAccessible;
+typedef struct _CtkPopoverAccessibleClass   CtkPopoverAccessibleClass;
 
-struct _GtkPopoverAccessible
+struct _CtkPopoverAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 };
 
-struct _GtkPopoverAccessibleClass
+struct _CtkPopoverAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_3_12

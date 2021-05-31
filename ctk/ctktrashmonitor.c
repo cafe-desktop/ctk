@@ -26,7 +26,7 @@
 
 #define UPDATE_RATE_SECONDS 1
 
-struct _GtkTrashMonitor
+struct _CtkTrashMonitor
 {
   GObject parent;
 
@@ -39,11 +39,11 @@ struct _GtkTrashMonitor
   guint has_trash : 1;
 };
 
-struct _GtkTrashMonitorClass
+struct _CtkTrashMonitorClass
 {
   GObjectClass parent_class;
 
-  void (* trash_state_changed) (GtkTrashMonitor *monitor);
+  void (* trash_state_changed) (CtkTrashMonitor *monitor);
 };
 
 enum {
@@ -53,9 +53,9 @@ enum {
 
 static guint signals[LAST_SIGNAL];
 
-G_DEFINE_TYPE (GtkTrashMonitor, _ctk_trash_monitor, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CtkTrashMonitor, _ctk_trash_monitor, G_TYPE_OBJECT)
 
-static GtkTrashMonitor *the_trash_monitor;
+static CtkTrashMonitor *the_trash_monitor;
 
 #define ICON_NAME_TRASH_EMPTY "user-trash-symbolic"
 #define ICON_NAME_TRASH_FULL  "user-trash-full-symbolic"
@@ -63,7 +63,7 @@ static GtkTrashMonitor *the_trash_monitor;
 static void
 ctk_trash_monitor_dispose (GObject *object)
 {
-  GtkTrashMonitor *monitor;
+  CtkTrashMonitor *monitor;
 
   monitor = CTK_TRASH_MONITOR (object);
 
@@ -83,7 +83,7 @@ ctk_trash_monitor_dispose (GObject *object)
 }
 
 static void
-_ctk_trash_monitor_class_init (GtkTrashMonitorClass *class)
+_ctk_trash_monitor_class_init (CtkTrashMonitorClass *class)
 {
   GObjectClass *gobject_class;
 
@@ -95,7 +95,7 @@ _ctk_trash_monitor_class_init (GtkTrashMonitorClass *class)
     g_signal_new (I_("trash-state-changed"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkTrashMonitorClass, trash_state_changed),
+                  G_STRUCT_OFFSET (CtkTrashMonitorClass, trash_state_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
@@ -103,7 +103,7 @@ _ctk_trash_monitor_class_init (GtkTrashMonitorClass *class)
 
 /* Updates the internal has_trash flag and emits the "trash-state-changed" signal */
 static void
-update_has_trash_and_notify (GtkTrashMonitor *monitor,
+update_has_trash_and_notify (CtkTrashMonitor *monitor,
                              gboolean has_trash)
 {
   if (monitor->has_trash == !!has_trash)
@@ -124,7 +124,7 @@ trash_query_info_cb (GObject *source,
                      GAsyncResult *result,
                      gpointer user_data)
 {
-  GtkTrashMonitor *monitor = CTK_TRASH_MONITOR (user_data);
+  CtkTrashMonitor *monitor = CTK_TRASH_MONITOR (user_data);
   GFileInfo *info;
   guint32 item_count;
   gboolean has_trash = FALSE;
@@ -145,12 +145,12 @@ trash_query_info_cb (GObject *source,
   g_object_unref (monitor); /* was reffed in recompute_trash_state() */
 }
 
-static void recompute_trash_state (GtkTrashMonitor *monitor);
+static void recompute_trash_state (CtkTrashMonitor *monitor);
 
 static gboolean
 recompute_trash_state_cb (gpointer data)
 {
-  GtkTrashMonitor *monitor = data;
+  CtkTrashMonitor *monitor = data;
 
   monitor->timeout_id = 0;
   if (monitor->pending)
@@ -164,7 +164,7 @@ recompute_trash_state_cb (gpointer data)
 
 /* Asynchronously recomputes whether there is trash or not */
 static void
-recompute_trash_state (GtkTrashMonitor *monitor)
+recompute_trash_state (CtkTrashMonitor *monitor)
 {
   GFile *file;
 
@@ -199,13 +199,13 @@ file_monitor_changed_cb (GFileMonitor      *file_monitor,
                          GFile             *child,
                          GFile             *other_file,
                          GFileMonitorEvent  event_type,
-                         GtkTrashMonitor   *monitor)
+                         CtkTrashMonitor   *monitor)
 {
   recompute_trash_state (monitor);
 }
 
 static void
-_ctk_trash_monitor_init (GtkTrashMonitor *monitor)
+_ctk_trash_monitor_init (CtkTrashMonitor *monitor)
 {
   GFile *file;
 
@@ -228,10 +228,10 @@ _ctk_trash_monitor_init (GtkTrashMonitor *monitor)
  * _ctk_trash_monitor_get:
  *
  * Returns: (transfer full): a new reference to the singleton
- * #GtkTrashMonitor object.  Be sure to call g_object_unref() on it when you are
+ * #CtkTrashMonitor object.  Be sure to call g_object_unref() on it when you are
  * done with the trash monitor.
  */
-GtkTrashMonitor *
+CtkTrashMonitor *
 _ctk_trash_monitor_get (void)
 {
   if (the_trash_monitor != NULL)
@@ -249,14 +249,14 @@ _ctk_trash_monitor_get (void)
 
 /**
  * _ctk_trash_monitor_get_icon:
- * @monitor: a #GtkTrashMonitor
+ * @monitor: a #CtkTrashMonitor
  *
  * Returns: (transfer full): the #GIcon that should be used to represent
  * the state of the trash folder on screen, based on whether there is trash or
  * not.
  */
 GIcon *
-_ctk_trash_monitor_get_icon (GtkTrashMonitor *monitor)
+_ctk_trash_monitor_get_icon (CtkTrashMonitor *monitor)
 {
   const char *icon_name;
 
@@ -272,12 +272,12 @@ _ctk_trash_monitor_get_icon (GtkTrashMonitor *monitor)
 
 /**
  * _ctk_trash_monitor_get_has_trash:
- * @monitor: a #GtkTrashMonitor
+ * @monitor: a #CtkTrashMonitor
  *
  * Returns: #TRUE if there is trash in the trash:/// folder, or #FALSE otherwise.
  */
 gboolean
-_ctk_trash_monitor_get_has_trash (GtkTrashMonitor *monitor)
+_ctk_trash_monitor_get_has_trash (CtkTrashMonitor *monitor)
 {
   g_return_val_if_fail (CTK_IS_TRASH_MONITOR (monitor), FALSE);
 

@@ -1,7 +1,7 @@
 #include <ctk/ctk.h>
 
 typedef struct {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gint x;
   gint y;
   guint state;
@@ -17,7 +17,7 @@ static PointState touch_state[10]; /* touchpoint 0 gets pointer emulation,
 
 static void
 point_press (PointState *point,
-             GtkWidget  *widget,
+             CtkWidget  *widget,
              guint       button)
 {
   GdkDisplay *display;
@@ -65,7 +65,7 @@ point_press (PointState *point,
 
 static void
 point_update (PointState *point,
-              GtkWidget  *widget,
+              CtkWidget  *widget,
               gdouble     x,
               gdouble     y)
 {
@@ -169,7 +169,7 @@ point_release (PointState *point,
 }
 
 static const gchar *
-phase_nick (GtkPropagationPhase phase)
+phase_nick (CtkPropagationPhase phase)
 {
  GTypeClass *class;
  GEnumValue *value;
@@ -182,7 +182,7 @@ phase_nick (GtkPropagationPhase phase)
 }
 
 static const gchar *
-state_nick (GtkEventSequenceState state)
+state_nick (CtkEventSequenceState state)
 {
  GTypeClass *class;
  GEnumValue *value;
@@ -200,7 +200,7 @@ typedef struct {
 } LegacyData;
 
 static gboolean
-legacy_cb (GtkWidget *w, GdkEventButton *button, gpointer data)
+legacy_cb (CtkWidget *w, GdkEventButton *button, gpointer data)
 {
   LegacyData *ld = data;
 
@@ -213,15 +213,15 @@ legacy_cb (GtkWidget *w, GdkEventButton *button, gpointer data)
 
 typedef struct {
   GString *str;
-  GtkEventSequenceState state;
+  CtkEventSequenceState state;
 } GestureData;
 
 static void
-press_cb (GtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
+press_cb (CtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
 {
-  GtkEventController *c = CTK_EVENT_CONTROLLER (g);
+  CtkEventController *c = CTK_EVENT_CONTROLLER (g);
   GdkEventSequence *sequence;
-  GtkPropagationPhase phase;
+  CtkPropagationPhase phase;
   GestureData *gd = data;
   const gchar *name;
   
@@ -242,7 +242,7 @@ press_cb (GtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
 }
 
 static void
-cancel_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
+cancel_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -255,7 +255,7 @@ cancel_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
 }
 
 static void
-begin_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
+begin_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -271,7 +271,7 @@ begin_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
 }
 
 static void
-end_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
+end_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -284,7 +284,7 @@ end_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
 }
 
 static void
-update_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
+update_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -297,7 +297,7 @@ update_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
 }
 
 static void
-state_changed_cb (GtkGesture *g, GdkEventSequence *sequence, GtkEventSequenceState state, gpointer data)
+state_changed_cb (CtkGesture *g, GdkEventSequence *sequence, CtkEventSequenceState state, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -313,10 +313,10 @@ state_changed_cb (GtkGesture *g, GdkEventSequence *sequence, GtkEventSequenceSta
 }
 
 
-static GtkGesture *
-add_gesture (GtkWidget *w, const gchar *name, GtkPropagationPhase phase, GString *str, GtkEventSequenceState state)
+static CtkGesture *
+add_gesture (CtkWidget *w, const gchar *name, CtkPropagationPhase phase, GString *str, CtkEventSequenceState state)
 {
-  GtkGesture *g;
+  CtkGesture *g;
   GestureData *data;
 
   data = g_new (GestureData, 1);
@@ -338,10 +338,10 @@ add_gesture (GtkWidget *w, const gchar *name, GtkPropagationPhase phase, GString
   return g;
 }
 
-static GtkGesture *
-add_mt_gesture (GtkWidget *w, const gchar *name, GtkPropagationPhase phase, GString *str, GtkEventSequenceState state)
+static CtkGesture *
+add_mt_gesture (CtkWidget *w, const gchar *name, CtkPropagationPhase phase, GString *str, CtkEventSequenceState state)
 {
-  GtkGesture *g;
+  CtkGesture *g;
   GestureData *data;
 
   data = g_new (GestureData, 1);
@@ -362,7 +362,7 @@ add_mt_gesture (GtkWidget *w, const gchar *name, GtkPropagationPhase phase, GStr
 }
 
 static void
-add_legacy (GtkWidget *w, GString *str, gboolean exit)
+add_legacy (CtkWidget *w, GString *str, gboolean exit)
 {
   LegacyData *data;
 
@@ -375,7 +375,7 @@ add_legacy (GtkWidget *w, GString *str, gboolean exit)
 static void
 test_phases (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -424,7 +424,7 @@ test_phases (void)
 static void
 test_mixed (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -480,7 +480,7 @@ test_mixed (void)
 static void
 test_early_exit (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -531,7 +531,7 @@ test_early_exit (void)
 static void
 test_claim_capture (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -575,7 +575,7 @@ test_claim_capture (void)
 static void
 test_claim_target (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -620,7 +620,7 @@ test_claim_target (void)
 static void
 test_claim_bubble (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -671,8 +671,8 @@ test_claim_bubble (void)
 static void
 test_early_claim_capture (void)
 {
-  GtkWidget *A, *B, *C;
-  GtkGesture *g;
+  CtkWidget *A, *B, *C;
+  CtkGesture *g;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -726,8 +726,8 @@ test_early_claim_capture (void)
 static void
 test_late_claim_capture (void)
 {
-  GtkWidget *A, *B, *C;
-  GtkGesture *g;
+  CtkWidget *A, *B, *C;
+  CtkGesture *g;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -783,9 +783,9 @@ test_late_claim_capture (void)
 static void
 test_group (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
-  GtkGesture *g1, *g2;
+  CtkGesture *g1, *g2;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
@@ -833,7 +833,7 @@ test_group (void)
 static void
 test_gestures_outside_grab (void)
 {
-  GtkWidget *A, *B, *C, *D;
+  CtkWidget *A, *B, *C, *D;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -891,7 +891,7 @@ test_gestures_outside_grab (void)
 static void
 test_gestures_inside_grab (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -949,7 +949,7 @@ test_gestures_inside_grab (void)
 static void
 test_multitouch_on_single (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -997,7 +997,7 @@ test_multitouch_on_single (void)
 static void
 test_multitouch_activation (void)
 {
-  GtkWidget *A, *B, *C;
+  CtkWidget *A, *B, *C;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -1070,8 +1070,8 @@ test_multitouch_activation (void)
 static void
 test_multitouch_interaction (void)
 {
-  GtkWidget *A, *B, *C;
-  GtkGesture *g;
+  CtkWidget *A, *B, *C;
+  CtkGesture *g;
   GString *str;
 
   A = ctk_window_new (CTK_WINDOW_TOPLEVEL);

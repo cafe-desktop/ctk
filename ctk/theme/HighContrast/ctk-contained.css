@@ -79,7 +79,7 @@ read if you used those and something break with a version upgrade you're on your
 /* Very contrasty background for text views (@theme_text_color foreground) */
 @define-color text_view_bg #ffffff;
 /*************************** Check and Radio buttons * */
-* { padding: 0; -GtkToolButton-icon-spacing: 4; -GtkTextView-error-underline-color: #cc0000; -GtkScrolledWindow-scrollbar-spacing: 0; -GtkToolItemGroup-expander-size: 11; -GtkWidget-text-handle-width: 20; -GtkWidget-text-handle-height: 24; -GtkDialog-button-spacing: 4; -GtkDialog-action-area-border: 0; outline-color: alpha(currentColor,0.3); outline-style: dashed; outline-offset: -3px; outline-width: 1px; -ctk-outline-radius: 3px; -ctk-secondary-caret-color: #1b6acb; }
+* { padding: 0; -CtkToolButton-icon-spacing: 4; -CtkTextView-error-underline-color: #cc0000; -CtkScrolledWindow-scrollbar-spacing: 0; -CtkToolItemGroup-expander-size: 11; -CtkWidget-text-handle-width: 20; -CtkWidget-text-handle-height: 24; -CtkDialog-button-spacing: 4; -CtkDialog-action-area-border: 0; outline-color: alpha(currentColor,0.3); outline-style: dashed; outline-offset: -3px; outline-width: 1px; -ctk-outline-radius: 3px; -ctk-secondary-caret-color: #1b6acb; }
 
 /*************** Base States * */
 .background { color: #272c2e; background-color: #fdfdfc; }
@@ -556,7 +556,7 @@ button:link:hover, button:link:active, button:link:checked, button:visited:hover
 
 button:link > label, button:visited > label { text-decoration-line: underline; }
 
-/***************** GtkSpinButton * */
+/***************** CtkSpinButton * */
 spinbutton { font-feature-settings: "tnum"; }
 
 spinbutton:not(.vertical) { padding: 0; }
@@ -633,7 +633,7 @@ combobox arrow { -ctk-icon-source: -ctk-icontheme("pan-down-symbolic"); min-heig
 combobox:drop(active) { box-shadow: none; }
 
 /************ Toolbars * */
-searchbar > revealer > box, .location-bar, .inline-toolbar, toolbar { -GtkWidget-window-dragging: true; padding: 4px; background-color: #fdfdfc; }
+searchbar > revealer > box, .location-bar, .inline-toolbar, toolbar { -CtkWidget-window-dragging: true; padding: 4px; background-color: #fdfdfc; }
 
 toolbar { padding: 4px 3px 3px 4px; }
 
@@ -714,7 +714,7 @@ searchbar > revealer > box { margin: -6px; padding: 6px; }
 
 .selection-mode .titlebar:not(headerbar) .selection-menu, .selection-mode.titlebar:not(headerbar) .selection-menu, .selection-mode headerbar .selection-menu:backdrop, .selection-mode headerbar .selection-menu, headerbar.selection-mode .selection-menu:backdrop, headerbar.selection-mode .selection-menu { border-color: rgba(53, 132, 228, 0); background-color: rgba(53, 132, 228, 0); background-image: none; box-shadow: none; min-height: 20px; padding: 6px 10px; }
 
-.selection-mode .titlebar:not(headerbar) .selection-menu arrow, .selection-mode.titlebar:not(headerbar) .selection-menu arrow, .selection-mode headerbar .selection-menu:backdrop arrow, .selection-mode headerbar .selection-menu arrow, headerbar.selection-mode .selection-menu:backdrop arrow, headerbar.selection-mode .selection-menu arrow { -GtkArrow-arrow-scaling: 1; }
+.selection-mode .titlebar:not(headerbar) .selection-menu arrow, .selection-mode.titlebar:not(headerbar) .selection-menu arrow, .selection-mode headerbar .selection-menu:backdrop arrow, .selection-mode headerbar .selection-menu arrow, headerbar.selection-mode .selection-menu:backdrop arrow, headerbar.selection-mode .selection-menu arrow { -CtkArrow-arrow-scaling: 1; }
 
 .selection-mode .titlebar:not(headerbar) .selection-menu .arrow, .selection-mode.titlebar:not(headerbar) .selection-menu .arrow, .selection-mode headerbar .selection-menu:backdrop .arrow, .selection-mode headerbar .selection-menu .arrow, headerbar.selection-mode .selection-menu:backdrop .arrow, headerbar.selection-mode .selection-menu .arrow { -ctk-icon-source: -ctk-icontheme("pan-down-symbolic"); color: rgba(255, 255, 255, 0.5); -ctk-icon-shadow: none; }
 
@@ -770,7 +770,7 @@ window.devel headerbar.titlebar:not(.selection-mode):backdrop { background: #fdf
 /************** Tree Views * */
 treeview.view { border-left-color: #939696; border-top-color: #fdfdfc; }
 
-* { -GtkTreeView-horizontal-separator: 4; -GtkTreeView-grid-line-width: 1; -GtkTreeView-grid-line-pattern: ''; -GtkTreeView-tree-line-width: 1; -GtkTreeView-tree-line-pattern: ''; -GtkTreeView-expander-size: 16; }
+* { -CtkTreeView-horizontal-separator: 4; -CtkTreeView-grid-line-width: 1; -CtkTreeView-grid-line-pattern: ''; -CtkTreeView-tree-line-width: 1; -CtkTreeView-tree-line-pattern: ''; -CtkTreeView-expander-size: 16; }
 
 treeview.view:selected:focus, treeview.view:selected { border-radius: 0; }
 
@@ -845,7 +845,7 @@ treeview.view header button:backdrop:disabled { border-color: #f6f5f4; backgroun
 treeview.view header button:last-child { border-right-style: none; }
 
 /********* Menus * */
-menubar, .menubar { -GtkWidget-window-dragging: true; padding: 0px; box-shadow: inset 0 -1px rgba(0, 0, 0, 0.1); }
+menubar, .menubar { -CtkWidget-window-dragging: true; padding: 0px; box-shadow: inset 0 -1px rgba(0, 0, 0, 0.1); }
 
 menubar:backdrop, .menubar:backdrop { background-color: #f6f5f4; }
 
@@ -1060,7 +1060,7 @@ notebook > stack:not(:only-child):backdrop { background-color: #fcfcfc; }
 /************** Scrollbars * */
 scrollbar { background-color: #cecece; transition: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
-* { -GtkScrollbar-has-backward-stepper: false; -GtkScrollbar-has-forward-stepper: false; }
+* { -CtkScrollbar-has-backward-stepper: false; -CtkScrollbar-has-forward-stepper: false; }
 
 scrollbar.top { border-bottom: 1px solid #877b6e; }
 
@@ -1274,7 +1274,7 @@ menu menuitem radio:checked:not(:backdrop), menu menuitem radio:indeterminate:no
 
 treeview.view check:selected:focus, treeview.view check:selected, treeview.view radio:selected:focus, treeview.view radio:selected { color: #ffffff; border-color: #124787; }
 
-/************ GtkScale * */
+/************ CtkScale * */
 progressbar trough, scale fill, scale trough { border: 1px solid #877b6e; border-radius: 3px; background-color: #e1dedb; }
 
 progressbar trough:disabled, scale fill:disabled, scale trough:disabled { background-color: #fefefd; }
@@ -1809,7 +1809,7 @@ paned.vertical > separator { margin: 0 0 -8px 0; padding: 0 0 8px 0; background-
 
 paned.vertical > separator.wide { margin: 0; padding: 0; background-repeat: repeat-x, repeat-x; background-position: bottom, top; }
 
-/************** GtkInfoBar * */
+/************** CtkInfoBar * */
 infobar { border-style: none; }
 
 infobar.action:hover > revealer > box { background-color: white; border-bottom: 1px solid #93877b; }

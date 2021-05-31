@@ -50,7 +50,7 @@
 /*** PARSING ***/
 
 static gboolean
-value_is_done_parsing (GtkCssParser *parser)
+value_is_done_parsing (CtkCssParser *parser)
 {
   return _ctk_css_parser_is_eof (parser) ||
          _ctk_css_parser_begins_with (parser, ',') ||
@@ -59,10 +59,10 @@ value_is_done_parsing (GtkCssParser *parser)
 }
 
 static gboolean
-parse_four_numbers (GtkCssShorthandProperty  *shorthand,
-                    GtkCssValue             **values,
-                    GtkCssParser             *parser,
-                    GtkCssNumberParseFlags    flags)
+parse_four_numbers (CtkCssShorthandProperty  *shorthand,
+                    CtkCssValue             **values,
+                    CtkCssParser             *parser,
+                    CtkCssNumberParseFlags    flags)
 {
   guint i;
 
@@ -91,9 +91,9 @@ parse_four_numbers (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_margin (GtkCssShorthandProperty  *shorthand,
-              GtkCssValue             **values,
-              GtkCssParser             *parser)
+parse_margin (CtkCssShorthandProperty  *shorthand,
+              CtkCssValue             **values,
+              CtkCssParser             *parser)
 {
   return parse_four_numbers (shorthand,
                              values,
@@ -103,9 +103,9 @@ parse_margin (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_padding (GtkCssShorthandProperty  *shorthand,
-               GtkCssValue             **values,
-               GtkCssParser             *parser)
+parse_padding (CtkCssShorthandProperty  *shorthand,
+               CtkCssValue             **values,
+               CtkCssParser             *parser)
 {
   return parse_four_numbers (shorthand,
                              values,
@@ -116,9 +116,9 @@ parse_padding (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border_width (GtkCssShorthandProperty  *shorthand,
-                    GtkCssValue             **values,
-                    GtkCssParser             *parser)
+parse_border_width (CtkCssShorthandProperty  *shorthand,
+                    CtkCssValue             **values,
+                    CtkCssParser             *parser)
 {
   return parse_four_numbers (shorthand,
                              values,
@@ -129,11 +129,11 @@ parse_border_width (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean 
-parse_border_radius (GtkCssShorthandProperty  *shorthand,
-                     GtkCssValue             **values,
-                     GtkCssParser             *parser)
+parse_border_radius (CtkCssShorthandProperty  *shorthand,
+                     CtkCssValue             **values,
+                     CtkCssParser             *parser)
 {
-  GtkCssValue *x[4] = { NULL, }, *y[4] = { NULL, };
+  CtkCssValue *x[4] = { NULL, }, *y[4] = { NULL, };
   guint i;
 
   for (i = 0; i < 4; i++)
@@ -210,9 +210,9 @@ fail:
 }
 
 static gboolean 
-parse_border_color (GtkCssShorthandProperty  *shorthand,
-                    GtkCssValue             **values,
-                    GtkCssParser             *parser)
+parse_border_color (CtkCssShorthandProperty  *shorthand,
+                    CtkCssValue             **values,
+                    CtkCssParser             *parser)
 {
   guint i;
 
@@ -235,9 +235,9 @@ parse_border_color (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border_style (GtkCssShorthandProperty  *shorthand,
-                    GtkCssValue             **values,
-                    GtkCssParser             *parser)
+parse_border_style (CtkCssShorthandProperty  *shorthand,
+                    CtkCssValue             **values,
+                    CtkCssParser             *parser)
 {
   guint i;
 
@@ -261,9 +261,9 @@ parse_border_style (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border_image (GtkCssShorthandProperty  *shorthand,
-                    GtkCssValue             **values,
-                    GtkCssParser             *parser)
+parse_border_image (CtkCssShorthandProperty  *shorthand,
+                    CtkCssValue             **values,
+                    CtkCssParser             *parser)
 {
   do
     {
@@ -271,7 +271,7 @@ parse_border_image (GtkCssShorthandProperty  *shorthand,
           (_ctk_css_parser_has_prefix (parser, "none") ||
            _ctk_css_image_can_parse (parser)))
         {
-          GtkCssImage *image;
+          CtkCssImage *image;
 
           if (_ctk_css_parser_try (parser, "none", TRUE))
             image = NULL;
@@ -328,9 +328,9 @@ parse_border_image (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border_side (GtkCssShorthandProperty  *shorthand,
-                   GtkCssValue             **values,
-                   GtkCssParser             *parser)
+parse_border_side (CtkCssShorthandProperty  *shorthand,
+                   CtkCssValue             **values,
+                   CtkCssParser             *parser)
 {
   do
   {
@@ -370,9 +370,9 @@ parse_border_side (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border (GtkCssShorthandProperty  *shorthand,
-              GtkCssValue             **values,
-              GtkCssParser             *parser)
+parse_border (CtkCssShorthandProperty  *shorthand,
+              CtkCssValue             **values,
+              CtkCssParser             *parser)
 {
   do
   {
@@ -425,9 +425,9 @@ parse_border (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_font_with_pango (GtkCssShorthandProperty  *shorthand,
-                       GtkCssValue             **values,
-                       GtkCssParser             *parser)
+parse_font_with_pango (CtkCssShorthandProperty  *shorthand,
+                       CtkCssValue             **values,
+                       CtkCssParser             *parser)
 {
   PangoFontDescription *desc;
   guint mask;
@@ -473,9 +473,9 @@ parse_font_with_pango (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_font (GtkCssShorthandProperty  *shorthand,
-            GtkCssValue             **values,
-            GtkCssParser             *parser)
+parse_font (CtkCssShorthandProperty  *shorthand,
+            CtkCssValue             **values,
+            CtkCssParser             *parser)
 {
   gboolean parsed_one;
 
@@ -529,11 +529,11 @@ parse_font (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_one_background (GtkCssShorthandProperty  *shorthand,
-                      GtkCssValue             **values,
-                      GtkCssParser             *parser)
+parse_one_background (CtkCssShorthandProperty  *shorthand,
+                      CtkCssValue             **values,
+                      CtkCssParser             *parser)
 {
-  GtkCssValue *value = NULL;
+  CtkCssValue *value = NULL;
 
   do
     {
@@ -542,7 +542,7 @@ parse_one_background (GtkCssShorthandProperty  *shorthand,
           (_ctk_css_parser_has_prefix (parser, "none") ||
            _ctk_css_image_can_parse (parser)))
         {
-          GtkCssImage *image;
+          CtkCssImage *image;
 
           if (_ctk_css_parser_try (parser, "none", TRUE))
             image = NULL;
@@ -615,11 +615,11 @@ parse_one_background (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_background (GtkCssShorthandProperty  *shorthand,
-                  GtkCssValue             **values,
-                  GtkCssParser             *parser)
+parse_background (CtkCssShorthandProperty  *shorthand,
+                  CtkCssValue             **values,
+                  CtkCssParser             *parser)
 {
-  GtkCssValue *step_values[7];
+  CtkCssValue *step_values[7];
   GPtrArray *arrays[6];
   guint i;
 
@@ -646,7 +646,7 @@ parse_background (GtkCssShorthandProperty  *shorthand,
         {
           if (step_values[i] == NULL)
             {
-              GtkCssValue *initial = _ctk_css_style_property_get_initial_value (
+              CtkCssValue *initial = _ctk_css_style_property_get_initial_value (
                                          _ctk_css_shorthand_property_get_subproperty (shorthand, i));
               step_values[i] = _ctk_css_value_ref (_ctk_css_array_value_get_nth (initial, 0));
             }
@@ -658,7 +658,7 @@ parse_background (GtkCssShorthandProperty  *shorthand,
 
   for (i = 0; i < 6; i++)
     {
-      values[i] = _ctk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
+      values[i] = _ctk_css_array_value_new_from_array ((CtkCssValue **) arrays[i]->pdata, arrays[i]->len);
       g_ptr_array_unref (arrays[i]);
     }
 
@@ -668,9 +668,9 @@ parse_background (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_one_transition (GtkCssShorthandProperty  *shorthand,
-                      GtkCssValue             **values,
-                      GtkCssParser             *parser)
+parse_one_transition (CtkCssShorthandProperty  *shorthand,
+                      CtkCssValue             **values,
+                      CtkCssParser             *parser)
 {
   do
     {
@@ -678,7 +678,7 @@ parse_one_transition (GtkCssShorthandProperty  *shorthand,
       if (values[2] == NULL &&
           ctk_css_number_value_can_parse (parser) && !_ctk_css_parser_begins_with (parser, '-'))
         {
-          GtkCssValue *number = _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_TIME);
+          CtkCssValue *number = _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_TIME);
 
           if (number == NULL)
             return FALSE;
@@ -721,11 +721,11 @@ parse_one_transition (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_transition (GtkCssShorthandProperty  *shorthand,
-                  GtkCssValue             **values,
-                  GtkCssParser             *parser)
+parse_transition (CtkCssShorthandProperty  *shorthand,
+                  CtkCssValue             **values,
+                  CtkCssParser             *parser)
 {
-  GtkCssValue *step_values[4];
+  CtkCssValue *step_values[4];
   GPtrArray *arrays[4];
   guint i;
 
@@ -750,7 +750,7 @@ parse_transition (GtkCssShorthandProperty  *shorthand,
         {
           if (step_values[i] == NULL)
             {
-              GtkCssValue *initial = _ctk_css_style_property_get_initial_value (
+              CtkCssValue *initial = _ctk_css_style_property_get_initial_value (
                                          _ctk_css_shorthand_property_get_subproperty (shorthand, i));
               step_values[i] = _ctk_css_value_ref (_ctk_css_array_value_get_nth (initial, 0));
             }
@@ -762,7 +762,7 @@ parse_transition (GtkCssShorthandProperty  *shorthand,
 
   for (i = 0; i < 4; i++)
     {
-      values[i] = _ctk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
+      values[i] = _ctk_css_array_value_new_from_array ((CtkCssValue **) arrays[i]->pdata, arrays[i]->len);
       g_ptr_array_unref (arrays[i]);
     }
 
@@ -770,9 +770,9 @@ parse_transition (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_one_animation (GtkCssShorthandProperty  *shorthand,
-                     GtkCssValue             **values,
-                     GtkCssParser             *parser)
+parse_one_animation (CtkCssShorthandProperty  *shorthand,
+                     CtkCssValue             **values,
+                     CtkCssParser             *parser)
 {
   do
     {
@@ -783,7 +783,7 @@ parse_one_animation (GtkCssShorthandProperty  *shorthand,
       else if ((values[1] == NULL || values[3] == NULL) &&
                ctk_css_number_value_can_parse (parser))
         {
-          GtkCssValue *value;
+          CtkCssValue *value;
           
           value = _ctk_css_number_value_parse (parser,
                                                CTK_CSS_POSITIVE_ONLY
@@ -838,11 +838,11 @@ parse_one_animation (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_animation (GtkCssShorthandProperty  *shorthand,
-                 GtkCssValue             **values,
-                 GtkCssParser             *parser)
+parse_animation (CtkCssShorthandProperty  *shorthand,
+                 CtkCssValue             **values,
+                 CtkCssParser             *parser)
 {
-  GtkCssValue *step_values[7];
+  CtkCssValue *step_values[7];
   GPtrArray *arrays[7];
   guint i;
 
@@ -867,7 +867,7 @@ parse_animation (GtkCssShorthandProperty  *shorthand,
         {
           if (step_values[i] == NULL)
             {
-              GtkCssValue *initial = _ctk_css_style_property_get_initial_value (
+              CtkCssValue *initial = _ctk_css_style_property_get_initial_value (
                                          _ctk_css_shorthand_property_get_subproperty (shorthand, i));
               step_values[i] = _ctk_css_value_ref (_ctk_css_array_value_get_nth (initial, 0));
             }
@@ -879,7 +879,7 @@ parse_animation (GtkCssShorthandProperty  *shorthand,
 
   for (i = 0; i < 7; i++)
     {
-      values[i] = _ctk_css_array_value_new_from_array ((GtkCssValue **) arrays[i]->pdata, arrays[i]->len);
+      values[i] = _ctk_css_array_value_new_from_array ((CtkCssValue **) arrays[i]->pdata, arrays[i]->len);
       g_ptr_array_unref (arrays[i]);
     }
 
@@ -887,9 +887,9 @@ parse_animation (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_text_decoration (GtkCssShorthandProperty  *shorthand,
-                       GtkCssValue             **values,
-                       GtkCssParser             *parser)
+parse_text_decoration (CtkCssShorthandProperty  *shorthand,
+                       CtkCssValue             **values,
+                       CtkCssParser             *parser)
 {
   do
   {
@@ -925,9 +925,9 @@ parse_text_decoration (GtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_all (GtkCssShorthandProperty  *shorthand,
-           GtkCssValue             **values,
-           GtkCssParser             *parser)
+parse_all (CtkCssShorthandProperty  *shorthand,
+           CtkCssValue             **values,
+           CtkCssParser             *parser)
 {
   _ctk_css_parser_error (parser, "The 'all' property can only be set to 'initial', 'inherit' or 'unset'");
   return FALSE;
@@ -936,13 +936,13 @@ parse_all (GtkCssShorthandProperty  *shorthand,
 /*** PACKING ***/
 
 static void
-unpack_border (GtkCssShorthandProperty *shorthand,
-               GtkStyleProperties      *props,
-               GtkStateFlags            state,
+unpack_border (CtkCssShorthandProperty *shorthand,
+               CtkStyleProperties      *props,
+               CtkStateFlags            state,
                const GValue            *value)
 {
   GValue v = G_VALUE_INIT;
-  GtkBorder *border = g_value_get_boxed (value);
+  CtkBorder *border = g_value_get_boxed (value);
 
   g_value_init (&v, G_TYPE_INT);
 
@@ -959,13 +959,13 @@ unpack_border (GtkCssShorthandProperty *shorthand,
 }
 
 static void
-pack_border (GtkCssShorthandProperty *shorthand,
+pack_border (CtkCssShorthandProperty *shorthand,
              GValue                  *value,
-             GtkStyleQueryFunc        query_func,
+             CtkStyleQueryFunc        query_func,
              gpointer                 query_data)
 {
-  GtkCssStyleProperty *prop;
-  GtkBorder border;
+  CtkCssStyleProperty *prop;
+  CtkBorder border;
   GValue v;
 
   prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 0);
@@ -993,12 +993,12 @@ pack_border (GtkCssShorthandProperty *shorthand,
 }
 
 static void
-unpack_border_radius (GtkCssShorthandProperty *shorthand,
-                      GtkStyleProperties      *props,
-                      GtkStateFlags            state,
+unpack_border_radius (CtkCssShorthandProperty *shorthand,
+                      CtkStyleProperties      *props,
+                      CtkStateFlags            state,
                       const GValue            *value)
 {
-  GtkCssValue *css_value;
+  CtkCssValue *css_value;
   guint i;
   
   css_value = _ctk_css_corner_value_new (_ctk_css_number_value_new (g_value_get_int (value), CTK_CSS_PX),
@@ -1014,13 +1014,13 @@ unpack_border_radius (GtkCssShorthandProperty *shorthand,
 }
 
 static void
-pack_border_radius (GtkCssShorthandProperty *shorthand,
+pack_border_radius (CtkCssShorthandProperty *shorthand,
                     GValue                  *value,
-                    GtkStyleQueryFunc        query_func,
+                    CtkStyleQueryFunc        query_func,
                     gpointer                 query_data)
 {
-  GtkCssStyleProperty *prop;
-  GtkCssValue *v;
+  CtkCssStyleProperty *prop;
+  CtkCssValue *v;
   int i = 0;
 
   prop = CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("border-top-left-radius"));
@@ -1033,12 +1033,12 @@ pack_border_radius (GtkCssShorthandProperty *shorthand,
 }
 
 static void
-unpack_font_description (GtkCssShorthandProperty *shorthand,
-                         GtkStyleProperties      *props,
-                         GtkStateFlags            state,
+unpack_font_description (CtkCssShorthandProperty *shorthand,
+                         CtkStyleProperties      *props,
+                         CtkStateFlags            state,
                          const GValue            *value)
 {
-  GtkStyleProperty *prop;
+  CtkStyleProperty *prop;
   PangoFontDescription *description;
   PangoFontMask mask;
   GValue v = G_VALUE_INIT;
@@ -1132,13 +1132,13 @@ unpack_font_description (GtkCssShorthandProperty *shorthand,
 }
 
 static void
-pack_font_description (GtkCssShorthandProperty *shorthand,
+pack_font_description (CtkCssShorthandProperty *shorthand,
                        GValue                  *value,
-                       GtkStyleQueryFunc        query_func,
+                       CtkStyleQueryFunc        query_func,
                        gpointer                 query_data)
 {
   PangoFontDescription *description;
-  GtkCssValue *v;
+  CtkCssValue *v;
   double dpi;
 
   description = pango_font_description_new ();
@@ -1187,12 +1187,12 @@ pack_font_description (GtkCssShorthandProperty *shorthand,
 }
 
 static void
-unpack_to_everything (GtkCssShorthandProperty *shorthand,
-                      GtkStyleProperties      *props,
-                      GtkStateFlags            state,
+unpack_to_everything (CtkCssShorthandProperty *shorthand,
+                      CtkStyleProperties      *props,
+                      CtkStateFlags            state,
                       const GValue            *value)
 {
-  GtkCssStyleProperty *prop;
+  CtkCssStyleProperty *prop;
   guint i, n;
   
   n = _ctk_css_shorthand_property_get_n_subproperties (shorthand);
@@ -1205,12 +1205,12 @@ unpack_to_everything (GtkCssShorthandProperty *shorthand,
 }
 
 static void
-pack_first_element (GtkCssShorthandProperty *shorthand,
+pack_first_element (CtkCssShorthandProperty *shorthand,
                     GValue                  *value,
-                    GtkStyleQueryFunc        query_func,
+                    CtkStyleQueryFunc        query_func,
                     gpointer                 query_data)
 {
-  GtkCssStyleProperty *prop;
+  CtkCssStyleProperty *prop;
 
   /* NB: This is a fallback for properties that originally were
    * not used as shorthand. We just pick the first subproperty
@@ -1228,11 +1228,11 @@ static void
 _ctk_css_shorthand_property_register (const char                        *name,
                                       GType                              value_type,
                                       const char                       **subproperties,
-                                      GtkCssShorthandPropertyParseFunc   parse_func,
-                                      GtkCssShorthandPropertyAssignFunc  assign_func,
-                                      GtkCssShorthandPropertyQueryFunc   query_func)
+                                      CtkCssShorthandPropertyParseFunc   parse_func,
+                                      CtkCssShorthandPropertyAssignFunc  assign_func,
+                                      CtkCssShorthandPropertyQueryFunc   query_func)
 {
-  GtkCssShorthandProperty *node;
+  CtkCssShorthandProperty *node;
 
   node = g_object_new (CTK_TYPE_CSS_SHORTHAND_PROPERTY,
                        "name", name,

@@ -23,21 +23,21 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkCssNodeStyleCache GtkCssNodeStyleCache;
+typedef struct _CtkCssNodeStyleCache CtkCssNodeStyleCache;
 
-GtkCssNodeStyleCache *  ctk_css_node_style_cache_new            (GtkCssStyle            *style);
-GtkCssNodeStyleCache *  ctk_css_node_style_cache_ref            (GtkCssNodeStyleCache   *cache);
-void                    ctk_css_node_style_cache_unref          (GtkCssNodeStyleCache   *cache);
+CtkCssNodeStyleCache *  ctk_css_node_style_cache_new            (CtkCssStyle            *style);
+CtkCssNodeStyleCache *  ctk_css_node_style_cache_ref            (CtkCssNodeStyleCache   *cache);
+void                    ctk_css_node_style_cache_unref          (CtkCssNodeStyleCache   *cache);
 
-GtkCssStyle *           ctk_css_node_style_cache_get_style      (GtkCssNodeStyleCache   *cache);
+CtkCssStyle *           ctk_css_node_style_cache_get_style      (CtkCssNodeStyleCache   *cache);
 
-GtkCssNodeStyleCache *  ctk_css_node_style_cache_insert         (GtkCssNodeStyleCache   *parent,
-                                                                 GtkCssNodeDeclaration  *decl,
+CtkCssNodeStyleCache *  ctk_css_node_style_cache_insert         (CtkCssNodeStyleCache   *parent,
+                                                                 CtkCssNodeDeclaration  *decl,
                                                                  gboolean                is_first,
                                                                  gboolean                is_last,
-                                                                 GtkCssStyle            *style);
-GtkCssNodeStyleCache *  ctk_css_node_style_cache_lookup         (GtkCssNodeStyleCache        *parent,
-                                                                 const GtkCssNodeDeclaration *decl,
+                                                                 CtkCssStyle            *style);
+CtkCssNodeStyleCache *  ctk_css_node_style_cache_lookup         (CtkCssNodeStyleCache        *parent,
+                                                                 const CtkCssNodeDeclaration *decl,
                                                                  gboolean                     is_first,
                                                                  gboolean                     is_last);
 

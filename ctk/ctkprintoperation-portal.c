@@ -41,13 +41,13 @@
 
 
 typedef struct {
-  GtkPrintOperation *op;
+  CtkPrintOperation *op;
   GDBusProxy *proxy;
   guint response_signal_id;
   gboolean do_print;
-  GtkPrintOperationResult result;
-  GtkPrintOperationPrintFunc print_cb;
-  GtkWindow *parent;
+  CtkPrintOperationResult result;
+  CtkPrintOperationPrintFunc print_cb;
+  CtkWindow *parent;
   GMainLoop *loop;
   guint32 token;
   GDestroyNotify destroy;
@@ -78,15 +78,15 @@ portal_data_free (gpointer data)
 
 typedef struct {
   GDBusProxy *proxy;
-  GtkPrintJob *job;
+  CtkPrintJob *job;
   guint32 token;
   cairo_surface_t *surface;
   GMainLoop *loop;
   gboolean file_written;
-} GtkPrintOperationPortal;
+} CtkPrintOperationPortal;
 
 static void
-op_portal_free (GtkPrintOperationPortal *op_portal)
+op_portal_free (CtkPrintOperationPortal *op_portal)
 {
   g_clear_object (&op_portal->proxy);
   g_clear_object (&op_portal->job);
@@ -96,12 +96,12 @@ op_portal_free (GtkPrintOperationPortal *op_portal)
 }
 
 static void
-portal_start_page (GtkPrintOperation *op,
-                   GtkPrintContext   *print_context,
-                   GtkPageSetup      *page_setup)
+portal_start_page (CtkPrintOperation *op,
+                   CtkPrintContext   *print_context,
+                   CtkPageSetup      *page_setup)
 {
-  GtkPrintOperationPortal *op_portal = op->priv->platform_data;
-  GtkPaperSize *paper_size;
+  CtkPrintOperationPortal *op_portal = op->priv->platform_data;
+  CtkPaperSize *paper_size;
   cairo_surface_type_t type;
   gdouble w, h;
 
@@ -145,8 +145,8 @@ portal_start_page (GtkPrintOperation *op,
 }
 
 static void
-portal_end_page (GtkPrintOperation *op,
-                 GtkPrintContext   *print_context)
+portal_end_page (CtkPrintOperation *op,
+                 CtkPrintContext   *print_context)
 {
   cairo_t *cr;
 
@@ -163,8 +163,8 @@ print_file_done (GObject *source,
                  GAsyncResult *result,
                  gpointer data)
 {
-  GtkPrintOperation *op = data;
-  GtkPrintOperationPortal *op_portal = op->priv->platform_data;
+  CtkPrintOperation *op = data;
+  CtkPrintOperationPortal *op_portal = op->priv->platform_data;
   GError *error = NULL;
   GVariant *ret;
 
@@ -188,13 +188,13 @@ print_file_done (GObject *source,
 }
 
 static void
-portal_job_complete (GtkPrintJob  *job,
+portal_job_complete (CtkPrintJob  *job,
                      gpointer      data,
                      const GError *error)
 {
-  GtkPrintOperation *op = data;
-  GtkPrintOperationPortal *op_portal = op->priv->platform_data;
-  GtkPrintSettings *settings;
+  CtkPrintOperation *op = data;
+  CtkPrintOperationPortal *op_portal = op->priv->platform_data;
+  CtkPrintSettings *settings;
   const char *uri;
   char *filename;
   int fd, idx;
@@ -241,11 +241,11 @@ portal_job_complete (GtkPrintJob  *job,
 }
 
 static void
-portal_end_run (GtkPrintOperation *op,
+portal_end_run (CtkPrintOperation *op,
                 gboolean           wait,
                 gboolean           cancelled)
 {
-  GtkPrintOperationPortal *op_portal = op->priv->platform_data;
+  CtkPrintOperationPortal *op_portal = op->priv->platform_data;
 
   cairo_surface_finish (op_portal->surface);
 
@@ -277,14 +277,14 @@ portal_end_run (GtkPrintOperation *op,
 
 static void
 finish_print (PortalData        *portal,
-              GtkPrinter        *printer,
-              GtkPageSetup      *page_setup,
-              GtkPrintSettings  *settings)
+              CtkPrinter        *printer,
+              CtkPageSetup      *page_setup,
+              CtkPrintSettings  *settings)
 {
-  GtkPrintOperation *op = portal->op;
-  GtkPrintOperationPrivate *priv = op->priv;
-  GtkPrintJob *job;
-  GtkPrintOperationPortal *op_portal;
+  CtkPrintOperation *op = portal->op;
+  CtkPrintOperationPrivate *priv = op->priv;
+  CtkPrintJob *job;
+  CtkPrintOperationPortal *op_portal;
   cairo_t *cr;
 
   if (portal->do_print)
@@ -297,7 +297,7 @@ finish_print (PortalData        *portal,
       ctk_print_operation_set_default_page_setup (op, page_setup);
       _ctk_print_context_set_page_setup (priv->print_context, page_setup);
 
-      op_portal = g_new0 (GtkPrintOperationPortal, 1);
+      op_portal = g_new0 (CtkPrintOperationPortal, 1);
       priv->platform_data = op_portal;
       priv->free_platform_data = (GDestroyNotify) op_portal_free;
 
@@ -343,19 +343,19 @@ out:
     portal->destroy (portal);
 }
 
-static GtkPrinter *
+static CtkPrinter *
 find_file_printer (void)
 {
   GList *backends, *l, *printers;
-  GtkPrinter *printer;
+  CtkPrinter *printer;
 
   printer = NULL;
 
   backends = ctk_print_backend_load_modules ();
   for (l = backends; l; l = l->next)
     {
-      GtkPrintBackend *backend = l->data;
-      if (strcmp (G_OBJECT_TYPE_NAME (backend), "GtkPrintBackendFile") == 0)
+      CtkPrintBackend *backend = l->data;
+      if (strcmp (G_OBJECT_TYPE_NAME (backend), "CtkPrintBackendFile") == 0)
         {
           printers = ctk_print_backend_get_printer_list (backend);
           printer = printers->data;
@@ -395,9 +395,9 @@ prepare_print_response (GDBusConnection *connection,
   if (portal->do_print)
     {
       GVariant *v;
-      GtkPrintSettings *settings;
-      GtkPageSetup *page_setup;
-      GtkPrinter *printer;
+      CtkPrintSettings *settings;
+      CtkPageSetup *page_setup;
+      CtkPrinter *printer;
       char *filename;
       char *uri;
       int fd;
@@ -484,9 +484,9 @@ prepare_print_called (GObject      *source,
 }
 
 PortalData *
-create_portal_data (GtkPrintOperation          *op,
-                    GtkWindow                  *parent,
-                    GtkPrintOperationPrintFunc  print_cb)
+create_portal_data (CtkPrintOperation          *op,
+                    CtkWindow                  *parent,
+                    CtkPrintOperationPrintFunc  print_cb)
 {
   GDBusProxy *proxy;
   PortalData *portal;
@@ -495,7 +495,7 @@ create_portal_data (GtkPrintOperation          *op,
 
   signal_id = g_signal_lookup ("create-custom-widget", CTK_TYPE_PRINT_OPERATION);
   if (g_signal_has_handler_pending (op, signal_id, 0, TRUE))
-    g_warning ("GtkPrintOperation::create-custom-widget not supported with portal");
+    g_warning ("CtkPrintOperation::create-custom-widget not supported with portal");
 
   proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
                                          G_DBUS_PROXY_FLAGS_NONE,
@@ -536,7 +536,7 @@ create_portal_data (GtkPrintOperation          *op,
 }
 
 static void
-window_handle_exported (GtkWindow  *window,
+window_handle_exported (CtkWindow  *window,
                         const char *handle_str,
                         gpointer    user_data)
 {
@@ -558,10 +558,10 @@ window_handle_exported (GtkWindow  *window,
 }
 
 static void
-call_prepare_print (GtkPrintOperation *op,
+call_prepare_print (CtkPrintOperation *op,
                     PortalData        *portal)
 {
-  GtkPrintOperationPrivate *priv = op->priv;
+  CtkPrintOperationPrivate *priv = op->priv;
   GVariantBuilder opt_builder;
   char *token;
 
@@ -597,7 +597,7 @@ call_prepare_print (GtkPrintOperation *op,
     portal->setup = ctk_page_setup_to_gvariant (priv->default_page_setup);
   else
     {
-      GtkPageSetup *page_setup = ctk_page_setup_new ();
+      CtkPageSetup *page_setup = ctk_page_setup_new ();
       portal->setup = ctk_page_setup_to_gvariant (page_setup);
       g_object_unref (page_setup);
     }
@@ -626,14 +626,14 @@ call_prepare_print (GtkPrintOperation *op,
                      portal);
 }
 
-GtkPrintOperationResult
-ctk_print_operation_portal_run_dialog (GtkPrintOperation *op,
+CtkPrintOperationResult
+ctk_print_operation_portal_run_dialog (CtkPrintOperation *op,
                                        gboolean           show_dialog,
-                                       GtkWindow         *parent,
+                                       CtkWindow         *parent,
                                        gboolean          *do_print)
 {
   PortalData *portal;
-  GtkPrintOperationResult result;
+  CtkPrintOperationResult result;
 
   portal = create_portal_data (op, parent, NULL);
   if (portal == NULL)
@@ -654,10 +654,10 @@ ctk_print_operation_portal_run_dialog (GtkPrintOperation *op,
 }
 
 void
-ctk_print_operation_portal_run_dialog_async (GtkPrintOperation          *op,
+ctk_print_operation_portal_run_dialog_async (CtkPrintOperation          *op,
                                              gboolean                    show_dialog,
-                                             GtkWindow                  *parent,
-                                             GtkPrintOperationPrintFunc  print_cb)
+                                             CtkWindow                  *parent,
+                                             CtkPrintOperationPrintFunc  print_cb)
 {
   PortalData *portal;
 
@@ -669,9 +669,9 @@ ctk_print_operation_portal_run_dialog_async (GtkPrintOperation          *op,
 }
 
 void
-ctk_print_operation_portal_launch_preview (GtkPrintOperation *op,
+ctk_print_operation_portal_launch_preview (CtkPrintOperation *op,
                                            cairo_surface_t   *surface,
-                                           GtkWindow         *parent,
+                                           CtkWindow         *parent,
                                            const char        *filename)
 {
   char *uri;

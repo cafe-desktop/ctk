@@ -42,7 +42,7 @@
 G_BEGIN_DECLS
 
 /**
- * GtkAlign:
+ * CtkAlign:
  * @CTK_ALIGN_FILL: stretch to fill all space if possible, center if
  *     no meaningful way to stretch
  * @CTK_ALIGN_START: snap to left or top side, leaving space on right
@@ -57,8 +57,8 @@ G_BEGIN_DECLS
  * dimension.
  *
  * Alignment only matters if the widget receives a “too large” allocation,
- * for example if you packed the widget with the #GtkWidget:expand
- * flag inside a #GtkBox, then the widget might get extra space.  If
+ * for example if you packed the widget with the #CtkWidget:expand
+ * flag inside a #CtkBox, then the widget might get extra space.  If
  * you have for example a 16x16 icon inside a 32x32 space, the icon
  * could be scaled and stretched, it could be centered, or it could be
  * positioned to one side of the space.
@@ -77,10 +77,10 @@ typedef enum
   CTK_ALIGN_END,
   CTK_ALIGN_CENTER,
   CTK_ALIGN_BASELINE
-} GtkAlign;
+} CtkAlign;
 
 /**
- * GtkArrowType:
+ * CtkArrowType:
  * @CTK_ARROW_UP: Represents an upward pointing arrow.
  * @CTK_ARROW_DOWN: Represents a downward pointing arrow.
  * @CTK_ARROW_LEFT: Represents a left pointing arrow.
@@ -96,10 +96,10 @@ typedef enum
   CTK_ARROW_LEFT,
   CTK_ARROW_RIGHT,
   CTK_ARROW_NONE
-} GtkArrowType;
+} CtkArrowType;
 
 /**
- * GtkBaselinePosition:
+ * CtkBaselinePosition:
  * @CTK_BASELINE_POSITION_TOP: Align the baseline at the top
  * @CTK_BASELINE_POSITION_CENTER: Center the baseline
  * @CTK_BASELINE_POSITION_BOTTOM: Align the baseline at the bottom
@@ -108,7 +108,7 @@ typedef enum
  * children in that row along a common typographical baseline. If
  * the amount of verical space in the row is taller than the total
  * requested height of the baseline-aligned children then it can use a
- * #GtkBaselinePosition to select where to put the baseline inside the
+ * #CtkBaselinePosition to select where to put the baseline inside the
  * extra availible space.
  *
  * Since: 3.10
@@ -118,10 +118,10 @@ typedef enum
   CTK_BASELINE_POSITION_TOP,
   CTK_BASELINE_POSITION_CENTER,
   CTK_BASELINE_POSITION_BOTTOM
-} GtkBaselinePosition;
+} CtkBaselinePosition;
 
 /**
- * GtkDeleteType:
+ * CtkDeleteType:
  * @CTK_DELETE_CHARS: Delete characters.
  * @CTK_DELETE_WORD_ENDS: Delete only the portion of the word to the
  *   left/right of cursor if we’re in the middle of a word.
@@ -137,7 +137,7 @@ typedef enum
  * @CTK_DELETE_PARAGRAPHS: Delete entire line. Like C-k in pico.
  * @CTK_DELETE_WHITESPACE: Delete only whitespace. Like M-\ in Emacs.
  *
- * See also: #GtkEntry::delete-from-cursor.
+ * See also: #CtkEntry::delete-from-cursor.
  */
 typedef enum
 {
@@ -149,11 +149,11 @@ typedef enum
   CTK_DELETE_PARAGRAPH_ENDS,
   CTK_DELETE_PARAGRAPHS,
   CTK_DELETE_WHITESPACE
-} GtkDeleteType;
+} CtkDeleteType;
 
 /* Focus movement types */
 /**
- * GtkDirectionType:
+ * CtkDirectionType:
  * @CTK_DIR_TAB_FORWARD: Move forward.
  * @CTK_DIR_TAB_BACKWARD: Move backward.
  * @CTK_DIR_UP: Move up.
@@ -171,10 +171,10 @@ typedef enum
   CTK_DIR_DOWN,
   CTK_DIR_LEFT,
   CTK_DIR_RIGHT
-} GtkDirectionType;
+} CtkDirectionType;
 
 /**
- * GtkIconSize:
+ * CtkIconSize:
  * @CTK_ICON_SIZE_INVALID: Invalid size.
  * @CTK_ICON_SIZE_MENU: Size appropriate for menus (16px).
  * @CTK_ICON_SIZE_SMALL_TOOLBAR: Size appropriate for small toolbars (16px).
@@ -194,10 +194,10 @@ typedef enum
   CTK_ICON_SIZE_BUTTON,
   CTK_ICON_SIZE_DND,
   CTK_ICON_SIZE_DIALOG
-} GtkIconSize;
+} CtkIconSize;
 
 /**
- * GtkSensitivityType:
+ * CtkSensitivityType:
  * @CTK_SENSITIVITY_AUTO: The arrow is made insensitive if the
  *   thumb is at the end
  * @CTK_SENSITIVITY_ON: The arrow is always sensitive
@@ -211,11 +211,11 @@ typedef enum
   CTK_SENSITIVITY_AUTO,
   CTK_SENSITIVITY_ON,
   CTK_SENSITIVITY_OFF
-} GtkSensitivityType;
+} CtkSensitivityType;
 
 /* Reading directions for text */
 /**
- * GtkTextDirection:
+ * CtkTextDirection:
  * @CTK_TEXT_DIR_NONE: No direction.
  * @CTK_TEXT_DIR_LTR: Left to right text direction.
  * @CTK_TEXT_DIR_RTL: Right to left text direction.
@@ -227,17 +227,17 @@ typedef enum
   CTK_TEXT_DIR_NONE,
   CTK_TEXT_DIR_LTR,
   CTK_TEXT_DIR_RTL
-} GtkTextDirection;
+} CtkTextDirection;
 
 /**
- * GtkJustification:
+ * CtkJustification:
  * @CTK_JUSTIFY_LEFT: The text is placed at the left edge of the label.
  * @CTK_JUSTIFY_RIGHT: The text is placed at the right edge of the label.
  * @CTK_JUSTIFY_CENTER: The text is placed in the center of the label.
  * @CTK_JUSTIFY_FILL: The text is placed is distributed across the label.
  *
- * Used for justifying the text inside a #GtkLabel widget. (See also
- * #GtkAlignment).
+ * Used for justifying the text inside a #CtkLabel widget. (See also
+ * #CtkAlignment).
  */
 typedef enum
 {
@@ -245,10 +245,10 @@ typedef enum
   CTK_JUSTIFY_RIGHT,
   CTK_JUSTIFY_CENTER,
   CTK_JUSTIFY_FILL
-} GtkJustification;
+} CtkJustification;
 
 /**
- * GtkMenuDirectionType:
+ * CtkMenuDirectionType:
  * @CTK_MENU_DIR_PARENT: To the parent menu shell
  * @CTK_MENU_DIR_CHILD: To the submenu, if any, associated with the item
  * @CTK_MENU_DIR_NEXT: To the next menu item
@@ -262,10 +262,10 @@ typedef enum
   CTK_MENU_DIR_CHILD,
   CTK_MENU_DIR_NEXT,
   CTK_MENU_DIR_PREV
-} GtkMenuDirectionType;
+} CtkMenuDirectionType;
 
 /**
- * GtkMessageType:
+ * CtkMessageType:
  * @CTK_MESSAGE_INFO: Informational message
  * @CTK_MESSAGE_WARNING: Non-fatal warning message
  * @CTK_MESSAGE_QUESTION: Question requiring a choice
@@ -281,10 +281,10 @@ typedef enum
   CTK_MESSAGE_QUESTION,
   CTK_MESSAGE_ERROR,
   CTK_MESSAGE_OTHER
-} GtkMessageType;
+} CtkMessageType;
 
 /**
- * GtkMovementStep:
+ * CtkMovementStep:
  * @CTK_MOVEMENT_LOGICAL_POSITIONS: Move forward or back by graphemes
  * @CTK_MOVEMENT_VISUAL_POSITIONS:  Move left or right by graphemes
  * @CTK_MOVEMENT_WORDS:             Move forward or back by words
@@ -308,10 +308,10 @@ typedef enum
   CTK_MOVEMENT_PAGES,
   CTK_MOVEMENT_BUFFER_ENDS,
   CTK_MOVEMENT_HORIZONTAL_PAGES
-} GtkMovementStep;
+} CtkMovementStep;
 
 /**
- * GtkScrollStep:
+ * CtkScrollStep:
  * @CTK_SCROLL_STEPS: Scroll in steps.
  * @CTK_SCROLL_PAGES: Scroll by pages.
  * @CTK_SCROLL_ENDS: Scroll to ends.
@@ -327,47 +327,47 @@ typedef enum
   CTK_SCROLL_HORIZONTAL_STEPS,
   CTK_SCROLL_HORIZONTAL_PAGES,
   CTK_SCROLL_HORIZONTAL_ENDS
-} GtkScrollStep;
+} CtkScrollStep;
 
 /**
- * GtkOrientation:
+ * CtkOrientation:
  * @CTK_ORIENTATION_HORIZONTAL: The element is in horizontal orientation.
  * @CTK_ORIENTATION_VERTICAL: The element is in vertical orientation.
  *
  * Represents the orientation of widgets and other objects which can be switched
- * between horizontal and vertical orientation on the fly, like #GtkToolbar or
- * #GtkGesturePan.
+ * between horizontal and vertical orientation on the fly, like #CtkToolbar or
+ * #CtkGesturePan.
  */
 typedef enum
 {
   CTK_ORIENTATION_HORIZONTAL,
   CTK_ORIENTATION_VERTICAL
-} GtkOrientation;
+} CtkOrientation;
 
 /**
- * GtkPackType:
+ * CtkPackType:
  * @CTK_PACK_START: The child is packed into the start of the box
  * @CTK_PACK_END: The child is packed into the end of the box
  *
- * Represents the packing location #GtkBox children. (See: #GtkVBox,
- * #GtkHBox, and #GtkButtonBox).
+ * Represents the packing location #CtkBox children. (See: #CtkVBox,
+ * #CtkHBox, and #CtkButtonBox).
  */
 typedef enum
 {
   CTK_PACK_START,
   CTK_PACK_END
-} GtkPackType;
+} CtkPackType;
 
 /**
- * GtkPositionType:
+ * CtkPositionType:
  * @CTK_POS_LEFT: The feature is at the left edge.
  * @CTK_POS_RIGHT: The feature is at the right edge.
  * @CTK_POS_TOP: The feature is at the top edge.
  * @CTK_POS_BOTTOM: The feature is at the bottom edge.
  *
  * Describes which edge of a widget a certain feature is positioned at, e.g. the
- * tabs of a #GtkNotebook, the handle of a #GtkHandleBox or the label of a
- * #GtkScale.
+ * tabs of a #CtkNotebook, the handle of a #CtkHandleBox or the label of a
+ * #CtkScale.
  */
 typedef enum
 {
@@ -375,25 +375,25 @@ typedef enum
   CTK_POS_RIGHT,
   CTK_POS_TOP,
   CTK_POS_BOTTOM
-} GtkPositionType;
+} CtkPositionType;
 
 /**
- * GtkReliefStyle:
+ * CtkReliefStyle:
  * @CTK_RELIEF_NORMAL: Draw a normal relief.
  * @CTK_RELIEF_HALF: A half relief. Deprecated in 3.14, does the same as @CTK_RELIEF_NORMAL
  * @CTK_RELIEF_NONE: No relief.
  *
- * Indicated the relief to be drawn around a #GtkButton.
+ * Indicated the relief to be drawn around a #CtkButton.
  */
 typedef enum
 {
   CTK_RELIEF_NORMAL,
   CTK_RELIEF_HALF,
   CTK_RELIEF_NONE
-} GtkReliefStyle;
+} CtkReliefStyle;
 
 /**
- * GtkScrollType:
+ * CtkScrollType:
  * @CTK_SCROLL_NONE: No scrolling.
  * @CTK_SCROLL_JUMP: Jump to new location.
  * @CTK_SCROLL_STEP_BACKWARD: Step backward.
@@ -431,10 +431,10 @@ typedef enum
   CTK_SCROLL_PAGE_RIGHT,
   CTK_SCROLL_START,
   CTK_SCROLL_END
-} GtkScrollType;
+} CtkScrollType;
 
 /**
- * GtkSelectionMode:
+ * CtkSelectionMode:
  * @CTK_SELECTION_NONE: No selection is possible.
  * @CTK_SELECTION_SINGLE: Zero or one element may be selected.
  * @CTK_SELECTION_BROWSE: Exactly one element is selected.
@@ -456,17 +456,17 @@ typedef enum
   CTK_SELECTION_SINGLE,
   CTK_SELECTION_BROWSE,
   CTK_SELECTION_MULTIPLE
-} GtkSelectionMode;
+} CtkSelectionMode;
 
 /**
- * GtkShadowType:
+ * CtkShadowType:
  * @CTK_SHADOW_NONE: No outline.
  * @CTK_SHADOW_IN: The outline is bevelled inwards.
  * @CTK_SHADOW_OUT: The outline is bevelled outwards like a button.
  * @CTK_SHADOW_ETCHED_IN: The outline has a sunken 3d appearance.
  * @CTK_SHADOW_ETCHED_OUT: The outline has a raised 3d appearance.
  *
- * Used to change the appearance of an outline typically provided by a #GtkFrame.
+ * Used to change the appearance of an outline typically provided by a #CtkFrame.
  *
  * Note that many themes do not differentiate the appearance of the
  * various shadow types: Either their is no visible shadow (@CTK_SHADOW_NONE),
@@ -479,12 +479,12 @@ typedef enum
   CTK_SHADOW_OUT,
   CTK_SHADOW_ETCHED_IN,
   CTK_SHADOW_ETCHED_OUT
-} GtkShadowType;
+} CtkShadowType;
 
 /* Widget states */
 
 /**
- * GtkStateType:
+ * CtkStateType:
  * @CTK_STATE_NORMAL: State during normal operation.
  * @CTK_STATE_ACTIVE: State of a currently active widget, such as a depressed button.
  * @CTK_STATE_PRELIGHT: State indicating that the mouse pointer is over
@@ -498,12 +498,12 @@ typedef enum
  * @CTK_STATE_FOCUSED: The widget has the keyboard focus.
  *
  * This type indicates the current state of a widget; the state determines how
- * the widget is drawn. The #GtkStateType enumeration is also used to
- * identify different colors in a #GtkStyle for drawing, so states can be
+ * the widget is drawn. The #CtkStateType enumeration is also used to
+ * identify different colors in a #CtkStyle for drawing, so states can be
  * used for subparts of a widget as well as entire widgets.
  *
  * Deprecated: 3.14: All APIs that are using this enumeration have been deprecated
- *     in favor of alternatives using #GtkStateFlags.
+ *     in favor of alternatives using #CtkStateFlags.
  */
 typedef enum
 {
@@ -514,17 +514,17 @@ typedef enum
   CTK_STATE_INSENSITIVE,
   CTK_STATE_INCONSISTENT,
   CTK_STATE_FOCUSED
-} GtkStateType;
+} CtkStateType;
 
 /**
- * GtkToolbarStyle:
+ * CtkToolbarStyle:
  * @CTK_TOOLBAR_ICONS: Buttons display only icons in the toolbar.
  * @CTK_TOOLBAR_TEXT: Buttons display only text labels in the toolbar.
  * @CTK_TOOLBAR_BOTH: Buttons display text and icons in the toolbar.
  * @CTK_TOOLBAR_BOTH_HORIZ: Buttons display icons and text alongside each
  *  other, rather than vertically stacked
  *
- * Used to customize the appearance of a #GtkToolbar. Note that
+ * Used to customize the appearance of a #CtkToolbar. Note that
  * setting the toolbar style overrides the user’s preferences
  * for the default toolbar style.  Note that if the button has only
  * a label set and CTK_TOOLBAR_ICONS is used, the label will be
@@ -536,10 +536,10 @@ typedef enum
   CTK_TOOLBAR_TEXT,
   CTK_TOOLBAR_BOTH,
   CTK_TOOLBAR_BOTH_HORIZ
-} GtkToolbarStyle;
+} CtkToolbarStyle;
 
 /**
- * GtkWrapMode:
+ * CtkWrapMode:
  * @CTK_WRAP_NONE: do not wrap lines; just make the text area wider
  * @CTK_WRAP_CHAR: wrap text, breaking lines anywhere the cursor can
  *     appear (between characters, usually - if you want to be technical,
@@ -556,10 +556,10 @@ typedef enum
   CTK_WRAP_CHAR,
   CTK_WRAP_WORD,
   CTK_WRAP_WORD_CHAR
-} GtkWrapMode;
+} CtkWrapMode;
 
 /**
- * GtkSortType:
+ * CtkSortType:
  * @CTK_SORT_ASCENDING: Sorting is in ascending order.
  * @CTK_SORT_DESCENDING: Sorting is in descending order.
  *
@@ -569,17 +569,17 @@ typedef enum
 {
   CTK_SORT_ASCENDING,
   CTK_SORT_DESCENDING
-} GtkSortType;
+} CtkSortType;
 
 /* Style for ctk input method preedit/status */
 /**
- * GtkIMPreeditStyle:
+ * CtkIMPreeditStyle:
  * @CTK_IM_PREEDIT_NOTHING: Deprecated
  * @CTK_IM_PREEDIT_CALLBACK: Deprecated
  * @CTK_IM_PREEDIT_NONE: Deprecated
  *
  * Style for input method preedit. See also
- * #GtkSettings:ctk-im-preedit-style
+ * #CtkSettings:ctk-im-preedit-style
  *
  * Deprecated: 3.10
  */
@@ -588,16 +588,16 @@ typedef enum
   CTK_IM_PREEDIT_NOTHING,
   CTK_IM_PREEDIT_CALLBACK,
   CTK_IM_PREEDIT_NONE
-} GtkIMPreeditStyle;
+} CtkIMPreeditStyle;
 
 /**
- * GtkIMStatusStyle:
+ * CtkIMStatusStyle:
  * @CTK_IM_STATUS_NOTHING: Deprecated
  * @CTK_IM_STATUS_CALLBACK: Deprecated
  * @CTK_IM_STATUS_NONE: Deprecated
  *
  * Style for input method status. See also
- * #GtkSettings:ctk-im-status-style
+ * #CtkSettings:ctk-im-status-style
  *
  * Deprecated: 3.10
  */
@@ -606,10 +606,10 @@ typedef enum
   CTK_IM_STATUS_NOTHING,
   CTK_IM_STATUS_CALLBACK,
   CTK_IM_STATUS_NONE
-} GtkIMStatusStyle;
+} CtkIMStatusStyle;
 
 /**
- * GtkPackDirection:
+ * CtkPackDirection:
  * @CTK_PACK_DIRECTION_LTR: Widgets are packed left-to-right
  * @CTK_PACK_DIRECTION_RTL: Widgets are packed right-to-left
  * @CTK_PACK_DIRECTION_TTB: Widgets are packed top-to-bottom
@@ -624,10 +624,10 @@ typedef enum
   CTK_PACK_DIRECTION_RTL,
   CTK_PACK_DIRECTION_TTB,
   CTK_PACK_DIRECTION_BTT
-} GtkPackDirection;
+} CtkPackDirection;
 
 /**
- * GtkPrintPages:
+ * CtkPrintPages:
  * @CTK_PRINT_PAGES_ALL: All pages.
  * @CTK_PRINT_PAGES_CURRENT: Current page.
  * @CTK_PRINT_PAGES_RANGES: Range of pages.
@@ -641,10 +641,10 @@ typedef enum
   CTK_PRINT_PAGES_CURRENT,
   CTK_PRINT_PAGES_RANGES,
   CTK_PRINT_PAGES_SELECTION
-} GtkPrintPages;
+} CtkPrintPages;
 
 /**
- * GtkPageSet:
+ * CtkPageSet:
  * @CTK_PAGE_SET_ALL: All pages.
  * @CTK_PAGE_SET_EVEN: Even pages.
  * @CTK_PAGE_SET_ODD: Odd pages.
@@ -656,10 +656,10 @@ typedef enum
   CTK_PAGE_SET_ALL,
   CTK_PAGE_SET_EVEN,
   CTK_PAGE_SET_ODD
-} GtkPageSet;
+} CtkPageSet;
 
 /**
- * GtkNumberUpLayout:
+ * CtkNumberUpLayout:
  * @CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM: ![](layout-lrtb.png)
  * @CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP: ![](layout-lrbt.png)
  * @CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM: ![](layout-rltb.png)
@@ -682,10 +682,10 @@ typedef enum
   CTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT, /*< nick=tbrl >*/
   CTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT, /*< nick=btlr >*/
   CTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT  /*< nick=btrl >*/
-} GtkNumberUpLayout;
+} CtkNumberUpLayout;
 
 /**
- * GtkPageOrientation:
+ * CtkPageOrientation:
  * @CTK_PAGE_ORIENTATION_PORTRAIT: Portrait mode.
  * @CTK_PAGE_ORIENTATION_LANDSCAPE: Landscape mode.
  * @CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT: Reverse portrait mode.
@@ -699,10 +699,10 @@ typedef enum
   CTK_PAGE_ORIENTATION_LANDSCAPE,
   CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT,
   CTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE
-} GtkPageOrientation;
+} CtkPageOrientation;
 
 /**
- * GtkPrintQuality:
+ * CtkPrintQuality:
  * @CTK_PRINT_QUALITY_LOW: Low quality.
  * @CTK_PRINT_QUALITY_NORMAL: Normal quality.
  * @CTK_PRINT_QUALITY_HIGH: High quality.
@@ -716,10 +716,10 @@ typedef enum
   CTK_PRINT_QUALITY_NORMAL,
   CTK_PRINT_QUALITY_HIGH,
   CTK_PRINT_QUALITY_DRAFT
-} GtkPrintQuality;
+} CtkPrintQuality;
 
 /**
- * GtkPrintDuplex:
+ * CtkPrintDuplex:
  * @CTK_PRINT_DUPLEX_SIMPLEX: No duplex.
  * @CTK_PRINT_DUPLEX_HORIZONTAL: Horizontal duplex.
  * @CTK_PRINT_DUPLEX_VERTICAL: Vertical duplex.
@@ -731,11 +731,11 @@ typedef enum
   CTK_PRINT_DUPLEX_SIMPLEX,
   CTK_PRINT_DUPLEX_HORIZONTAL,
   CTK_PRINT_DUPLEX_VERTICAL
-} GtkPrintDuplex;
+} CtkPrintDuplex;
 
 
 /**
- * GtkUnit:
+ * CtkUnit:
  * @CTK_UNIT_NONE: No units.
  * @CTK_UNIT_POINTS: Dimensions in points.
  * @CTK_UNIT_INCH: Dimensions in inches.
@@ -749,12 +749,12 @@ typedef enum
   CTK_UNIT_POINTS,
   CTK_UNIT_INCH,
   CTK_UNIT_MM
-} GtkUnit;
+} CtkUnit;
 
 #define CTK_UNIT_PIXEL CTK_UNIT_NONE
 
 /**
- * GtkTreeViewGridLines:
+ * CtkTreeViewGridLines:
  * @CTK_TREE_VIEW_GRID_LINES_NONE: No grid lines.
  * @CTK_TREE_VIEW_GRID_LINES_HORIZONTAL: Horizontal grid lines.
  * @CTK_TREE_VIEW_GRID_LINES_VERTICAL: Vertical grid lines.
@@ -768,10 +768,10 @@ typedef enum
   CTK_TREE_VIEW_GRID_LINES_HORIZONTAL,
   CTK_TREE_VIEW_GRID_LINES_VERTICAL,
   CTK_TREE_VIEW_GRID_LINES_BOTH
-} GtkTreeViewGridLines;
+} CtkTreeViewGridLines;
 
 /**
- * GtkDragResult:
+ * CtkDragResult:
  * @CTK_DRAG_RESULT_SUCCESS: The drag operation was successful.
  * @CTK_DRAG_RESULT_NO_TARGET: No suitable drag target.
  * @CTK_DRAG_RESULT_USER_CANCELLED: The user cancelled the drag operation.
@@ -783,7 +783,7 @@ typedef enum
  *
  * Gives an indication why a drag operation failed.
  * The value can by obtained by connecting to the
- * #GtkWidget::drag-failed signal.
+ * #CtkWidget::drag-failed signal.
  */
 typedef enum
 {
@@ -793,10 +793,10 @@ typedef enum
   CTK_DRAG_RESULT_TIMEOUT_EXPIRED,
   CTK_DRAG_RESULT_GRAB_BROKEN,
   CTK_DRAG_RESULT_ERROR
-} GtkDragResult;
+} CtkDragResult;
 
 /**
- * GtkSizeGroupMode:
+ * CtkSizeGroupMode:
  * @CTK_SIZE_GROUP_NONE: group has no effect
  * @CTK_SIZE_GROUP_HORIZONTAL: group affects horizontal requisition
  * @CTK_SIZE_GROUP_VERTICAL: group affects vertical requisition
@@ -810,10 +810,10 @@ typedef enum {
   CTK_SIZE_GROUP_HORIZONTAL,
   CTK_SIZE_GROUP_VERTICAL,
   CTK_SIZE_GROUP_BOTH
-} GtkSizeGroupMode;
+} CtkSizeGroupMode;
 
 /**
- * GtkSizeRequestMode:
+ * CtkSizeRequestMode:
  * @CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH: Prefer height-for-width geometry management
  * @CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT: Prefer width-for-height geometry management
  * @CTK_SIZE_REQUEST_CONSTANT_SIZE: Don’t trade height-for-width or width-for-height
@@ -826,10 +826,10 @@ typedef enum
   CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH = 0,
   CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT,
   CTK_SIZE_REQUEST_CONSTANT_SIZE
-} GtkSizeRequestMode;
+} CtkSizeRequestMode;
 
 /**
- * GtkScrollablePolicy:
+ * CtkScrollablePolicy:
  * @CTK_SCROLL_MINIMUM: Scrollable adjustments are based on the minimum size
  * @CTK_SCROLL_NATURAL: Scrollable adjustments are based on the natural size
  *
@@ -840,10 +840,10 @@ typedef enum
 {
   CTK_SCROLL_MINIMUM = 0,
   CTK_SCROLL_NATURAL
-} GtkScrollablePolicy;
+} CtkScrollablePolicy;
 
 /**
- * GtkStateFlags:
+ * CtkStateFlags:
  * @CTK_STATE_FLAG_NORMAL: State during normal operation.
  * @CTK_STATE_FLAG_ACTIVE: Widget is active.
  * @CTK_STATE_FLAG_PRELIGHT: Widget has a mouse pointer over it.
@@ -879,10 +879,10 @@ typedef enum
   CTK_STATE_FLAG_VISITED      = 1 << 10,
   CTK_STATE_FLAG_CHECKED      = 1 << 11,
   CTK_STATE_FLAG_DROP_ACTIVE  = 1 << 12
-} GtkStateFlags;
+} CtkStateFlags;
 
 /**
- * GtkRegionFlags:
+ * CtkRegionFlags:
  * @CTK_REGION_EVEN: Region has an even number within a set.
  * @CTK_REGION_ODD: Region has an odd number within a set.
  * @CTK_REGION_FIRST: Region is the first one within a set.
@@ -899,10 +899,10 @@ typedef enum {
   CTK_REGION_LAST    = 1 << 3,
   CTK_REGION_ONLY    = 1 << 4,
   CTK_REGION_SORTED  = 1 << 5
-} GtkRegionFlags;
+} CtkRegionFlags;
 
 /**
- * GtkJunctionSides:
+ * CtkJunctionSides:
  * @CTK_JUNCTION_NONE: No junctions.
  * @CTK_JUNCTION_CORNER_TOPLEFT: Element connects on the top-left corner.
  * @CTK_JUNCTION_CORNER_TOPRIGHT: Element connects on the top-right corner.
@@ -925,10 +925,10 @@ typedef enum {
   CTK_JUNCTION_BOTTOM = (CTK_JUNCTION_CORNER_BOTTOMLEFT | CTK_JUNCTION_CORNER_BOTTOMRIGHT),
   CTK_JUNCTION_LEFT   = (CTK_JUNCTION_CORNER_TOPLEFT | CTK_JUNCTION_CORNER_BOTTOMLEFT),
   CTK_JUNCTION_RIGHT  = (CTK_JUNCTION_CORNER_TOPRIGHT | CTK_JUNCTION_CORNER_BOTTOMRIGHT)
-} GtkJunctionSides;
+} CtkJunctionSides;
 
 /**
- * GtkBorderStyle:
+ * CtkBorderStyle:
  * @CTK_BORDER_STYLE_NONE: No visible border
  * @CTK_BORDER_STYLE_SOLID: A single line segment
  * @CTK_BORDER_STYLE_INSET: Looks as if the content is sunken into the canvas
@@ -953,14 +953,14 @@ typedef enum {
   CTK_BORDER_STYLE_DOUBLE,
   CTK_BORDER_STYLE_GROOVE,
   CTK_BORDER_STYLE_RIDGE
-} GtkBorderStyle;
+} CtkBorderStyle;
 
 /**
- * GtkLevelBarMode:
+ * CtkLevelBarMode:
  * @CTK_LEVEL_BAR_MODE_CONTINUOUS: the bar has a continuous mode
  * @CTK_LEVEL_BAR_MODE_DISCRETE: the bar has a discrete mode
  *
- * Describes how #GtkLevelBar contents should be rendered.
+ * Describes how #CtkLevelBar contents should be rendered.
  * Note that this enumeration could be extended with additional modes
  * in the future.
  *
@@ -969,12 +969,12 @@ typedef enum {
 typedef enum {
   CTK_LEVEL_BAR_MODE_CONTINUOUS,
   CTK_LEVEL_BAR_MODE_DISCRETE
-} GtkLevelBarMode;
+} CtkLevelBarMode;
 
 G_END_DECLS
 
 /**
- * GtkInputPurpose:
+ * CtkInputPurpose:
  * @CTK_INPUT_PURPOSE_FREE_FORM: Allow any character
  * @CTK_INPUT_PURPOSE_ALPHA: Allow only alphabetic characters
  * @CTK_INPUT_PURPOSE_DIGITS: Allow only digits
@@ -1021,10 +1021,10 @@ typedef enum
   CTK_INPUT_PURPOSE_PASSWORD,
   CTK_INPUT_PURPOSE_PIN,
   CTK_INPUT_PURPOSE_TERMINAL,
-} GtkInputPurpose;
+} CtkInputPurpose;
 
 /**
- * GtkInputHints:
+ * CtkInputHints:
  * @CTK_INPUT_HINT_NONE: No special behaviour suggested
  * @CTK_INPUT_HINT_SPELLCHECK: Suggest checking for typos
  * @CTK_INPUT_HINT_NO_SPELLCHECK: Suggest not checking for typos
@@ -1043,7 +1043,7 @@ typedef enum
  *
  * Describes hints that might be taken into account by input methods
  * or applications. Note that input methods may already tailor their
- * behaviour according to the #GtkInputPurpose of the entry.
+ * behaviour according to the #CtkInputPurpose of the entry.
  *
  * Some common sense is expected when using these flags - mixing
  * @CTK_INPUT_HINT_LOWERCASE with any of the uppercase hints makes no sense.
@@ -1067,10 +1067,10 @@ typedef enum
   CTK_INPUT_HINT_VERTICAL_WRITING    = 1 << 8,
   CTK_INPUT_HINT_EMOJI               = 1 << 9,
   CTK_INPUT_HINT_NO_EMOJI            = 1 << 10
-} GtkInputHints;
+} CtkInputHints;
 
 /**
- * GtkPropagationPhase:
+ * CtkPropagationPhase:
  * @CTK_PHASE_NONE: Events are not delivered automatically. Those can be
  *   manually fed through ctk_event_controller_handle_event(). This should
  *   only be used when full control about when, or whether the controller
@@ -1086,7 +1086,7 @@ typedef enum
  *   note that widget implementations must chain up on button, motion, touch and
  *   grab broken handlers for controllers in this phase to be run.
  *
- * Describes the stage at which events are fed into a #GtkEventController.
+ * Describes the stage at which events are fed into a #CtkEventController.
  *
  * Since: 3.14
  */
@@ -1096,15 +1096,15 @@ typedef enum
   CTK_PHASE_CAPTURE,
   CTK_PHASE_BUBBLE,
   CTK_PHASE_TARGET
-} GtkPropagationPhase;
+} CtkPropagationPhase;
 
 /**
- * GtkEventSequenceState:
+ * CtkEventSequenceState:
  * @CTK_EVENT_SEQUENCE_NONE: The sequence is handled, but not grabbed.
  * @CTK_EVENT_SEQUENCE_CLAIMED: The sequence is handled and grabbed.
  * @CTK_EVENT_SEQUENCE_DENIED: The sequence is denied.
  *
- * Describes the state of a #GdkEventSequence in a #GtkGesture.
+ * Describes the state of a #GdkEventSequence in a #CtkGesture.
  *
  * Since: 3.14
  */
@@ -1113,16 +1113,16 @@ typedef enum
   CTK_EVENT_SEQUENCE_NONE,
   CTK_EVENT_SEQUENCE_CLAIMED,
   CTK_EVENT_SEQUENCE_DENIED
-} GtkEventSequenceState;
+} CtkEventSequenceState;
 
 /**
- * GtkPanDirection:
+ * CtkPanDirection:
  * @CTK_PAN_DIRECTION_LEFT: panned towards the left
  * @CTK_PAN_DIRECTION_RIGHT: panned towards the right
  * @CTK_PAN_DIRECTION_UP: panned upwards
  * @CTK_PAN_DIRECTION_DOWN: panned downwards
  *
- * Describes the panning direction of a #GtkGesturePan
+ * Describes the panning direction of a #CtkGesturePan
  *
  * Since: 3.14
  */
@@ -1132,10 +1132,10 @@ typedef enum
   CTK_PAN_DIRECTION_RIGHT,
   CTK_PAN_DIRECTION_UP,
   CTK_PAN_DIRECTION_DOWN
-} GtkPanDirection;
+} CtkPanDirection;
 
 /**
- * GtkPopoverConstraint:
+ * CtkPopoverConstraint:
  * @CTK_POPOVER_CONSTRAINT_NONE: Don't constrain the popover position
  *   beyond what is imposed by the implementation
  * @CTK_POPOVER_CONSTRAINT_WINDOW: Constrain the popover to the boundaries
@@ -1150,7 +1150,7 @@ typedef enum
 {
   CTK_POPOVER_CONSTRAINT_NONE,
   CTK_POPOVER_CONSTRAINT_WINDOW
-} GtkPopoverConstraint;
+} CtkPopoverConstraint;
 
 
 #endif /* __CTK_ENUMS_H__ */

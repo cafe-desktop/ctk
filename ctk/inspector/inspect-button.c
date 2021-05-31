@@ -37,14 +37,14 @@ typedef struct
   gint y;
   gboolean found;
   gboolean first;
-  GtkWidget *res_widget;
+  CtkWidget *res_widget;
 } FindWidgetData;
 
 static void
-find_widget (GtkWidget      *widget,
+find_widget (CtkWidget      *widget,
              FindWidgetData *data)
 {
-  GtkAllocation new_allocation;
+  CtkAllocation new_allocation;
   gint x_offset = 0;
   gint y_offset = 0;
 
@@ -122,7 +122,7 @@ find_widget (GtkWidget      *widget,
           new_data.first = FALSE;
 
           ctk_container_forall (CTK_CONTAINER (widget),
-                                (GtkCallback)find_widget,
+                                (CtkCallback)find_widget,
                                 &new_data);
 
           data->found = new_data.found;
@@ -142,10 +142,10 @@ find_widget (GtkWidget      *widget,
     }
 }
 
-static GtkWidget *
+static CtkWidget *
 find_widget_at_pointer (GdkDevice *device)
 {
-  GtkWidget *widget = NULL;
+  CtkWidget *widget = NULL;
   GdkWindow *pointer_window;
   gint x, y;
   FindWidgetData data;
@@ -180,12 +180,12 @@ find_widget_at_pointer (GdkDevice *device)
   return NULL;
 }
 
-static gboolean draw_flash (GtkWidget          *widget,
+static gboolean draw_flash (CtkWidget          *widget,
                             cairo_t            *cr,
-                            GtkInspectorWindow *iw);
+                            CtkInspectorWindow *iw);
 
 static void
-clear_flash (GtkInspectorWindow *iw)
+clear_flash (CtkInspectorWindow *iw)
 {
   if (iw->flash_widget)
     {
@@ -197,8 +197,8 @@ clear_flash (GtkInspectorWindow *iw)
 }
 
 static void
-start_flash (GtkInspectorWindow *iw,
-             GtkWidget          *widget)
+start_flash (CtkInspectorWindow *iw,
+             CtkWidget          *widget)
 {
   clear_flash (iw);
 
@@ -210,10 +210,10 @@ start_flash (GtkInspectorWindow *iw,
 }
 
 static void
-select_widget (GtkInspectorWindow *iw,
-               GtkWidget          *widget)
+select_widget (CtkInspectorWindow *iw,
+               CtkWidget          *widget)
 {
-  GtkInspectorObjectTree *wt = CTK_INSPECTOR_OBJECT_TREE (iw->object_tree);
+  CtkInspectorObjectTree *wt = CTK_INSPECTOR_OBJECT_TREE (iw->object_tree);
 
   iw->selected_widget = widget;
 
@@ -225,11 +225,11 @@ select_widget (GtkInspectorWindow *iw,
 }
 
 static void
-on_inspect_widget (GtkWidget          *button,
+on_inspect_widget (CtkWidget          *button,
                    GdkEvent           *event,
-                   GtkInspectorWindow *iw)
+                   CtkInspectorWindow *iw)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   gdk_window_raise (ctk_widget_get_window (CTK_WIDGET (iw)));
 
@@ -242,11 +242,11 @@ on_inspect_widget (GtkWidget          *button,
 }
 
 static void
-on_highlight_widget (GtkWidget          *button,
+on_highlight_widget (CtkWidget          *button,
                      GdkEvent           *event,
-                     GtkInspectorWindow *iw)
+                     CtkInspectorWindow *iw)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = find_widget_at_pointer (gdk_event_get_device (event));
 
@@ -273,7 +273,7 @@ on_highlight_widget (GtkWidget          *button,
 }
 
 static void
-deemphasize_window (GtkWidget *window)
+deemphasize_window (CtkWidget *window)
 {
   GdkScreen *screen;
 
@@ -295,7 +295,7 @@ deemphasize_window (GtkWidget *window)
 }
 
 static void
-reemphasize_window (GtkWidget *window)
+reemphasize_window (CtkWidget *window)
 {
   GdkScreen *screen;
 
@@ -311,11 +311,11 @@ reemphasize_window (GtkWidget *window)
 }
 
 static gboolean
-property_query_event (GtkWidget *widget,
+property_query_event (CtkWidget *widget,
                       GdkEvent  *event,
                       gpointer   data)
 {
-  GtkInspectorWindow *iw = (GtkInspectorWindow *)data;
+  CtkInspectorWindow *iw = (CtkInspectorWindow *)data;
 
   if (event->type == GDK_BUTTON_RELEASE)
     {
@@ -351,8 +351,8 @@ property_query_event (GtkWidget *widget,
 }
 
 void
-ctk_inspector_on_inspect (GtkWidget          *button,
-                          GtkInspectorWindow *iw)
+ctk_inspector_on_inspect (CtkWidget          *button,
+                          CtkInspectorWindow *iw)
 {
   GdkDisplay *display;
   GdkCursor *cursor;
@@ -387,18 +387,18 @@ ctk_inspector_on_inspect (GtkWidget          *button,
 }
 
 static gboolean
-draw_flash (GtkWidget          *widget,
+draw_flash (CtkWidget          *widget,
             cairo_t            *cr,
-            GtkInspectorWindow *iw)
+            CtkInspectorWindow *iw)
 {
-  GtkAllocation alloc;
+  CtkAllocation alloc;
 
   if (iw && iw->flash_count % 2 == 0)
     return FALSE;
 
   if (CTK_IS_WINDOW (widget))
     {
-      GtkWidget *child = ctk_bin_get_child (CTK_BIN (widget));
+      CtkWidget *child = ctk_bin_get_child (CTK_BIN (widget));
       /* We don't want to draw the drag highlight around the
        * CSD window decorations
        */
@@ -425,7 +425,7 @@ draw_flash (GtkWidget          *widget,
 }
 
 static gboolean
-on_flash_timeout (GtkInspectorWindow *iw)
+on_flash_timeout (CtkInspectorWindow *iw)
 {
   ctk_widget_queue_draw (iw->flash_widget);
 
@@ -445,8 +445,8 @@ on_flash_timeout (GtkInspectorWindow *iw)
 }
 
 void
-ctk_inspector_flash_widget (GtkInspectorWindow *iw,
-                            GtkWidget          *widget)
+ctk_inspector_flash_widget (CtkInspectorWindow *iw,
+                            CtkWidget          *widget)
 {
   if (!ctk_widget_get_visible (widget) || !ctk_widget_get_mapped (widget))
     return;
@@ -462,14 +462,14 @@ ctk_inspector_flash_widget (GtkInspectorWindow *iw,
 }
 
 void
-ctk_inspector_start_highlight (GtkWidget *widget)
+ctk_inspector_start_highlight (CtkWidget *widget)
 {
   g_signal_connect_after (widget, "draw", G_CALLBACK (draw_flash), NULL);
   ctk_widget_queue_draw (widget);
 }
 
 void
-ctk_inspector_stop_highlight (GtkWidget *widget)
+ctk_inspector_stop_highlight (CtkWidget *widget)
 {
   g_signal_handlers_disconnect_by_func (widget, draw_flash, NULL);
   g_signal_handlers_disconnect_by_func (widget, clear_flash, NULL);
@@ -477,11 +477,11 @@ ctk_inspector_stop_highlight (GtkWidget *widget)
 }
 
 void
-ctk_inspector_window_select_widget_under_pointer (GtkInspectorWindow *iw)
+ctk_inspector_window_select_widget_under_pointer (CtkInspectorWindow *iw)
 {
   GdkDisplay *display;
   GdkDevice *device;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   display = gdk_display_get_default ();
   device = gdk_seat_get_pointer (gdk_display_get_default_seat (display));

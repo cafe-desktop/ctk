@@ -34,27 +34,27 @@
 
 #define CORNER_MASK_CACHE_MAX_SIZE 2000U
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
   guint inset :1;
 
-  GtkCssValue *hoffset;
-  GtkCssValue *voffset;
-  GtkCssValue *radius;
-  GtkCssValue *spread;
+  CtkCssValue *hoffset;
+  CtkCssValue *voffset;
+  CtkCssValue *radius;
+  CtkCssValue *spread;
 
-  GtkCssValue *color;
+  CtkCssValue *color;
 };
 
-static GtkCssValue *    ctk_css_shadow_value_new (GtkCssValue *hoffset,
-                                                  GtkCssValue *voffset,
-                                                  GtkCssValue *radius,
-                                                  GtkCssValue *spread,
+static CtkCssValue *    ctk_css_shadow_value_new (CtkCssValue *hoffset,
+                                                  CtkCssValue *voffset,
+                                                  CtkCssValue *radius,
+                                                  CtkCssValue *spread,
                                                   gboolean     inset,
-                                                  GtkCssValue *color);
+                                                  CtkCssValue *color);
 
 static void
-ctk_css_value_shadow_free (GtkCssValue *shadow)
+ctk_css_value_shadow_free (CtkCssValue *shadow)
 {
   _ctk_css_value_unref (shadow->hoffset);
   _ctk_css_value_unref (shadow->voffset);
@@ -62,17 +62,17 @@ ctk_css_value_shadow_free (GtkCssValue *shadow)
   _ctk_css_value_unref (shadow->spread);
   _ctk_css_value_unref (shadow->color);
 
-  g_slice_free (GtkCssValue, shadow);
+  g_slice_free (CtkCssValue, shadow);
 }
 
-static GtkCssValue *
-ctk_css_value_shadow_compute (GtkCssValue             *shadow,
+static CtkCssValue *
+ctk_css_value_shadow_compute (CtkCssValue             *shadow,
                               guint                    property_id,
-                              GtkStyleProviderPrivate *provider,
-                              GtkCssStyle             *style,
-                              GtkCssStyle             *parent_style)
+                              CtkStyleProviderPrivate *provider,
+                              CtkCssStyle             *style,
+                              CtkCssStyle             *parent_style)
 {
-  GtkCssValue *hoffset, *voffset, *radius, *spread, *color;
+  CtkCssValue *hoffset, *voffset, *radius, *spread, *color;
 
   hoffset = _ctk_css_value_compute (shadow->hoffset, property_id, provider, style, parent_style);
   voffset = _ctk_css_value_compute (shadow->voffset, property_id, provider, style, parent_style);
@@ -99,8 +99,8 @@ ctk_css_value_shadow_compute (GtkCssValue             *shadow,
 }
 
 static gboolean
-ctk_css_value_shadow_equal (const GtkCssValue *shadow1,
-                            const GtkCssValue *shadow2)
+ctk_css_value_shadow_equal (const CtkCssValue *shadow1,
+                            const CtkCssValue *shadow2)
 {
   return shadow1->inset == shadow2->inset
       && _ctk_css_value_equal (shadow1->hoffset, shadow2->hoffset)
@@ -110,9 +110,9 @@ ctk_css_value_shadow_equal (const GtkCssValue *shadow1,
       && _ctk_css_value_equal (shadow1->color, shadow2->color);
 }
 
-static GtkCssValue *
-ctk_css_value_shadow_transition (GtkCssValue *start,
-                                 GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_shadow_transition (CtkCssValue *start,
+                                 CtkCssValue *end,
                                  guint        property_id,
                                  double       progress)
 {
@@ -128,7 +128,7 @@ ctk_css_value_shadow_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_shadow_print (const GtkCssValue *shadow,
+ctk_css_value_shadow_print (const CtkCssValue *shadow,
                             GString           *string)
 {
   _ctk_css_value_print (shadow->hoffset, string);
@@ -155,7 +155,7 @@ ctk_css_value_shadow_print (const GtkCssValue *shadow,
 
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_SHADOW = {
+static const CtkCssValueClass CTK_CSS_VALUE_SHADOW = {
   ctk_css_value_shadow_free,
   ctk_css_value_shadow_compute,
   ctk_css_value_shadow_equal,
@@ -163,17 +163,17 @@ static const GtkCssValueClass CTK_CSS_VALUE_SHADOW = {
   ctk_css_value_shadow_print
 };
 
-static GtkCssValue *
-ctk_css_shadow_value_new (GtkCssValue *hoffset,
-                          GtkCssValue *voffset,
-                          GtkCssValue *radius,
-                          GtkCssValue *spread,
+static CtkCssValue *
+ctk_css_shadow_value_new (CtkCssValue *hoffset,
+                          CtkCssValue *voffset,
+                          CtkCssValue *radius,
+                          CtkCssValue *spread,
                           gboolean     inset,
-                          GtkCssValue *color)
+                          CtkCssValue *color)
 {
-  GtkCssValue *retval;
+  CtkCssValue *retval;
 
-  retval = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_SHADOW);
+  retval = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_SHADOW);
 
   retval->hoffset = hoffset;
   retval->voffset = voffset;
@@ -185,8 +185,8 @@ ctk_css_shadow_value_new (GtkCssValue *hoffset,
   return retval;
 }
 
-GtkCssValue *
-_ctk_css_shadow_value_new_for_transition (GtkCssValue *target)
+CtkCssValue *
+_ctk_css_shadow_value_new_for_transition (CtkCssValue *target)
 {
   GdkRGBA transparent = { 0, 0, 0, 0 };
 
@@ -201,7 +201,7 @@ _ctk_css_shadow_value_new_for_transition (GtkCssValue *target)
 }
 
 static gboolean
-value_is_done_parsing (GtkCssParser *parser)
+value_is_done_parsing (CtkCssParser *parser)
 {
   return _ctk_css_parser_is_eof (parser) ||
          _ctk_css_parser_begins_with (parser, ',') ||
@@ -209,8 +209,8 @@ value_is_done_parsing (GtkCssParser *parser)
          _ctk_css_parser_begins_with (parser, '}');
 }
 
-GtkCssValue *
-_ctk_css_shadow_value_parse (GtkCssParser *parser,
+CtkCssValue *
+_ctk_css_shadow_value_parse (CtkCssParser *parser,
                              gboolean      box_shadow_mode)
 {
   enum {
@@ -221,7 +221,7 @@ _ctk_css_shadow_value_parse (GtkCssParser *parser,
     COLOR,
     N_VALUES
   };
-  GtkCssValue *values[N_VALUES] = { NULL, };
+  CtkCssValue *values[N_VALUES] = { NULL, };
   gboolean inset;
   guint i;
 
@@ -312,7 +312,7 @@ fail:
 }
 
 static gboolean
-needs_blur (const GtkCssValue *shadow)
+needs_blur (const CtkCssValue *shadow)
 {
   double radius = _ctk_css_number_value_get (shadow->radius, 0);
 
@@ -327,9 +327,9 @@ needs_blur (const GtkCssValue *shadow)
 static const cairo_user_data_key_t original_cr_key;
 
 static cairo_t *
-ctk_css_shadow_value_start_drawing (const GtkCssValue *shadow,
+ctk_css_shadow_value_start_drawing (const CtkCssValue *shadow,
                                     cairo_t           *cr,
-                                    GtkBlurFlags       blur_flags)
+                                    CtkBlurFlags       blur_flags)
 {
   cairo_rectangle_int_t clip_rect;
   cairo_surface_t *surface;
@@ -397,9 +397,9 @@ mask_surface_repeat (cairo_t         *cr,
 }
 
 static cairo_t *
-ctk_css_shadow_value_finish_drawing (const GtkCssValue *shadow,
+ctk_css_shadow_value_finish_drawing (const CtkCssValue *shadow,
                                      cairo_t           *cr,
-                                     GtkBlurFlags       blur_flags)
+                                     CtkBlurFlags       blur_flags)
 {
   gdouble radius;
   cairo_t *original_cr;
@@ -436,11 +436,11 @@ ctk_css_shadow_value_finish_drawing (const GtkCssValue *shadow,
 static const cairo_user_data_key_t radius_key;
 static const cairo_user_data_key_t layout_serial_key;
 
-G_DEFINE_QUARK (GtkCssShadowValue pango_cached_blurred_surface, pango_cached_blurred_surface)
+G_DEFINE_QUARK (CtkCssShadowValue pango_cached_blurred_surface, pango_cached_blurred_surface)
 
 static cairo_surface_t *
 get_cached_pango_surface (PangoLayout       *layout,
-                          const GtkCssValue *shadow)
+                          const CtkCssValue *shadow)
 {
   cairo_surface_t *cached_surface = g_object_get_qdata (G_OBJECT (layout), pango_cached_blurred_surface_quark ());
   guint cached_radius, cached_serial;
@@ -465,7 +465,7 @@ get_cached_pango_surface (PangoLayout       *layout,
 static cairo_surface_t *
 make_blurred_pango_surface (cairo_t           *existing_cr,
                             PangoLayout       *layout,
-                            const GtkCssValue *shadow)
+                            const CtkCssValue *shadow)
 {
   cairo_surface_t *surface;
   cairo_t *cr;
@@ -499,7 +499,7 @@ make_blurred_pango_surface (cairo_t           *existing_cr,
 static cairo_surface_t *
 get_blurred_pango_surface (cairo_t           *cr,
                            PangoLayout       *layout,
-                           const GtkCssValue *shadow)
+                           const CtkCssValue *shadow)
 {
   cairo_surface_t *surface;
   guint radius, serial;
@@ -524,7 +524,7 @@ get_blurred_pango_surface (cairo_t           *cr,
 }
 
 void
-_ctk_css_shadow_value_paint_layout (const GtkCssValue *shadow,
+_ctk_css_shadow_value_paint_layout (const CtkCssValue *shadow,
                                     cairo_t           *cr,
                                     PangoLayout       *layout)
 {
@@ -569,7 +569,7 @@ _ctk_css_shadow_value_paint_layout (const GtkCssValue *shadow,
 }
 
 void
-_ctk_css_shadow_value_paint_icon (const GtkCssValue *shadow,
+_ctk_css_shadow_value_paint_icon (const CtkCssValue *shadow,
 			          cairo_t           *cr)
 {
   cairo_pattern_t *pattern;
@@ -598,7 +598,7 @@ _ctk_css_shadow_value_paint_icon (const GtkCssValue *shadow,
 }
 
 gboolean
-_ctk_css_shadow_value_get_inset (const GtkCssValue *shadow)
+_ctk_css_shadow_value_get_inset (const CtkCssValue *shadow)
 {
   g_return_val_if_fail (shadow->class == &CTK_CSS_VALUE_SHADOW, FALSE);
 
@@ -606,7 +606,7 @@ _ctk_css_shadow_value_get_inset (const GtkCssValue *shadow)
 }
 
 void
-_ctk_css_shadow_value_get_geometry (const GtkCssValue *shadow,
+_ctk_css_shadow_value_get_geometry (const CtkCssValue *shadow,
                                     gdouble           *hoffset,
                                     gdouble           *voffset,
                                     gdouble           *radius,
@@ -635,11 +635,11 @@ has_empty_clip (cairo_t *cr)
 }
 
 static void
-draw_shadow (const GtkCssValue   *shadow,
+draw_shadow (const CtkCssValue   *shadow,
 	     cairo_t             *cr,
-	     GtkRoundedBox       *box,
-	     GtkRoundedBox       *clip_box,
-	     GtkBlurFlags         blur_flags)
+	     CtkRoundedBox       *box,
+	     CtkRoundedBox       *clip_box,
+	     CtkBlurFlags         blur_flags)
 {
   cairo_t *shadow_cr;
   gboolean do_blur;
@@ -716,16 +716,16 @@ quantize_to_int (double val)
 }
 
 static void
-draw_shadow_corner (const GtkCssValue   *shadow,
+draw_shadow_corner (const CtkCssValue   *shadow,
                     cairo_t             *cr,
-                    GtkRoundedBox       *box,
-                    GtkRoundedBox       *clip_box,
-                    GtkCssCorner         corner,
+                    CtkRoundedBox       *box,
+                    CtkRoundedBox       *clip_box,
+                    CtkCssCorner         corner,
                     cairo_rectangle_int_t *drawn_rect)
 {
   gdouble radius, clip_radius;
   int x1, x2, x3, y1, y2, y3, x, y;
-  GtkRoundedBox corner_box;
+  CtkRoundedBox corner_box;
   cairo_t *mask_cr;
   cairo_surface_t *mask;
   cairo_pattern_t *pattern;
@@ -867,14 +867,14 @@ draw_shadow_corner (const GtkCssValue   *shadow,
 }
 
 static void
-draw_shadow_side (const GtkCssValue   *shadow,
+draw_shadow_side (const CtkCssValue   *shadow,
                   cairo_t             *cr,
-                  GtkRoundedBox       *box,
-                  GtkRoundedBox       *clip_box,
-                  GtkCssSide           side,
+                  CtkRoundedBox       *box,
+                  CtkRoundedBox       *clip_box,
+                  CtkCssSide           side,
                   cairo_rectangle_int_t *drawn_rect)
 {
-  GtkBlurFlags blur_flags = CTK_BLUR_REPEAT;
+  CtkBlurFlags blur_flags = CTK_BLUR_REPEAT;
   gdouble radius, clip_radius;
   int x1, x2, y1, y2;
 
@@ -926,11 +926,11 @@ draw_shadow_side (const GtkCssValue   *shadow,
 }
 
 void
-_ctk_css_shadow_value_paint_box (const GtkCssValue   *shadow,
+_ctk_css_shadow_value_paint_box (const CtkCssValue   *shadow,
                                  cairo_t             *cr,
-                                 const GtkRoundedBox *padding_box)
+                                 const CtkRoundedBox *padding_box)
 {
-  GtkRoundedBox box, clip_box;
+  CtkRoundedBox box, clip_box;
   double spread, radius, clip_radius, x, y, outside;
   double x1c, y1c, x2c, y2c;
 

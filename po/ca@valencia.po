@@ -1775,7 +1775,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "Ús:\n"
 "  ctk-builder-tool [ORDRE] FITXER\n"
@@ -1793,7 +1793,7 @@ msgstr ""
 "  --id=ID            Previsualitza només l'objecte anomenat\n"
 "  --css=FITXER       Utilitza els estils del fitxer CSS\n"
 "\n"
-"Fes diverses tasques en fitxers GtkBuilder .ui.\n"
+"Fes diverses tasques en fitxers CtkBuilder .ui.\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2579,7 +2579,7 @@ msgstr "No s'ha pogut enviar la sol·licitud de busca"
 msgid "Accessed"
 msgstr "Accedit"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.

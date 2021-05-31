@@ -77,7 +77,7 @@
       grabs (system-wide or in-app) are taking input away:
       <simplelist>
 	<member>#GdkEventGrabBroken</member>
-	<member>#GtkWidget::grab-notify</member>
+	<member>#CtkWidget::grab-notify</member>
       </simplelist>
     </para>
     <para>
@@ -103,8 +103,8 @@
       When a GDK backend produces an input event, it is tied to a #GdkDevice and
       a #GdkWindow, which in turn represents a windowing system surface in the
       backend. If a widget has grabbed the current input device, or all input
-      devices, the event is propagated to that #GtkWidget. Otherwise, it is
-      propagated to the the #GtkWidget which called ctk_widget_register_window()
+      devices, the event is propagated to that #CtkWidget. Otherwise, it is
+      propagated to the the #CtkWidget which called ctk_widget_register_window()
       on the #GdkWindow receiving the event.
     </para>
 
@@ -112,8 +112,8 @@
       Grabs are implemented for each input device, and globally. A grab for a
       specific input device (ctk_device_grab_add()), is sent events in
       preference to a global grab (ctk_grab_add()). Input grabs only have effect
-      within the #GtkWindowGroup containing the #GtkWidget which registered the
-      event’s #GdkWindow. If this #GtkWidget is a child of the grab widget, the
+      within the #CtkWindowGroup containing the #CtkWidget which registered the
+      event’s #GdkWindow. If this #CtkWidget is a child of the grab widget, the
       event is propagated to the child — this is the basis for propagating
       events within modal dialogs.
     </para>
@@ -121,14 +121,14 @@
     <para>
       An event is propagated to a widget using ctk_propagate_event().
       Propagation differs between event types: key events (%GDK_KEY_PRESS,
-      %GDK_KEY_RELEASE) are delivered to the top-level #GtkWindow; other events
+      %GDK_KEY_RELEASE) are delivered to the top-level #CtkWindow; other events
       are propagated down and up the widget hierarchy in three phases (see
-      #GtkPropagationPhase).
+      #CtkPropagationPhase).
     </para>
 
     <para>
-      For key events, the top-level window’s default #GtkWindow::key-press-event
-      and #GtkWindow::key-release-event signal handlers handle mnemonics and
+      For key events, the top-level window’s default #CtkWindow::key-press-event
+      and #CtkWindow::key-release-event signal handlers handle mnemonics and
       accelerators first. Other key presses are then passed to
       ctk_window_propagate_key_event() which propagates the event upwards from
       the window’s current focus widget (ctk_window_get_focus()) to the
@@ -138,7 +138,7 @@
     <para>
       For other events, in the first phase (the “capture” phase) the event is
       delivered to each widget from the top-most (for example, the top-level
-      #GtkWindow or grab widget) down to the target #GtkWidget.
+      #CtkWindow or grab widget) down to the target #CtkWidget.
       <link linkend="event-controllers-and-gestures">Gestures</link> that are
       attached with %CTK_PHASE_CAPTURE get a chance to react to the event.
     </para>
@@ -151,11 +151,11 @@
     </para>
 
     <para>
-      Next, the #GtkWidget::event signal is emitted, then the appropriate signal
-      for the event in question, for example #GtkWidget::motion-notify-event.
+      Next, the #CtkWidget::event signal is emitted, then the appropriate signal
+      for the event in question, for example #CtkWidget::motion-notify-event.
       Handling these signals was the primary way to handle input in GTK+ widgets
       before gestures were introduced. If the widget is realized, the
-      #GtkWidget::event-after signal is emitted. The signals are emitted from
+      #CtkWidget::event-after signal is emitted. The signals are emitted from
       the target widget up to the top-level, as part of the “bubble” phase.
     </para>
 
@@ -164,7 +164,7 @@
       to gestures that are attached with %CTK_PHASE_BUBBLE. Therefore,
       gestures in the “bubble” phase are only used if the widget does
       not have its own event handlers, or takes care to chain up to the
-      default #GtkWidget handlers.
+      default #CtkWidget handlers.
     </para>
 
     <para>
@@ -194,7 +194,7 @@
     <para>
       If a widget is windowless (ctk_widget_get_has_window() returns %FALSE) and
       an application wants to receive custom events on it, it must be placed
-      inside a #GtkEventBox to receive the events, and an appropriate event mask
+      inside a #CtkEventBox to receive the events, and an appropriate event mask
       must be set on the box. When implementing a widget, use a %GDK_INPUT_ONLY
       #GdkWindow to receive the events instead.
     </para>
@@ -238,7 +238,7 @@
       by granting a “pointer emulating” hint to one of the currently interacting touch
       sequences, which will be reported on every #GdkEventTouch event from that sequence. By
       default, if a widget didn't request touch events by setting %GDK_TOUCH_MASK on its
-      event mask and didn't override #GtkWidget::touch-event, GTK+ will transform these
+      event mask and didn't override #CtkWidget::touch-event, GTK+ will transform these
       “pointer emulating” events into semantically similar #GdkEventButton and #GdkEventMotion
       events. Depending on %GDK_TOUCH_MASK being in the event mask or not, non-pointer-emulating
       sequences could still trigger gestures or just get filtered out, regardless of the widget
@@ -247,7 +247,7 @@
 
     <para>
       If the widget sets %GDK_TOUCH_MASK on its event mask and doesn't chain up on
-      #GtkWidget::touch-event, only touch events will be received, and no pointer emulation
+      #CtkWidget::touch-event, only touch events will be received, and no pointer emulation
       will be performed.
     </para>
   </refsect2>
@@ -279,7 +279,7 @@
       point somewhere else, even while the pointer/touch device is already grabbed.
       This makes it necessary for widgets to handle the cancellation of any ongoing
       interaction. Depending on whether a GTK or GDK grab is causing this, the
-      widget will respectively receive a #GtkWidget::grab-notify signal, or a
+      widget will respectively receive a #CtkWidget::grab-notify signal, or a
       #GdkEventGrabBroken event.
     </para>
 
@@ -301,7 +301,7 @@
 
     <para>
       Event controllers are standalone objects that can perform specific actions
-      upon received #GdkEvents. These are tied to a #GtkWidget, and can be told of
+      upon received #GdkEvents. These are tied to a #CtkWidget, and can be told of
       the event propagation phase at which they will manage the events.
     </para>
 

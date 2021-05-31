@@ -45,10 +45,10 @@ typedef struct
   /* translation */
   gchar        *context;
   gboolean      translatable;
-} GtkBuilderMenuState;
+} CtkBuilderMenuState;
 
 static void
-ctk_builder_menu_push_frame (GtkBuilderMenuState *state,
+ctk_builder_menu_push_frame (CtkBuilderMenuState *state,
                              GMenu               *menu,
                              GMenuItem           *item)
 {
@@ -63,7 +63,7 @@ ctk_builder_menu_push_frame (GtkBuilderMenuState *state,
 }
 
 static void
-ctk_builder_menu_pop_frame (GtkBuilderMenuState *state)
+ctk_builder_menu_pop_frame (CtkBuilderMenuState *state)
 {
   struct frame *prev = state->frame.prev;
 
@@ -87,7 +87,7 @@ ctk_builder_menu_start_element (GMarkupParseContext  *context,
                                 gpointer              user_data,
                                 GError              **error)
 {
-  GtkBuilderMenuState *state = user_data;
+  CtkBuilderMenuState *state = user_data;
 
 #define COLLECT(first, ...) \
   g_markup_collect_attributes (element_name,                                 \
@@ -235,7 +235,7 @@ ctk_builder_menu_end_element (GMarkupParseContext  *context,
                               gpointer              user_data,
                               GError              **error)
 {
-  GtkBuilderMenuState *state = user_data;
+  CtkBuilderMenuState *state = user_data;
 
   ctk_builder_menu_pop_frame (state);
 
@@ -303,7 +303,7 @@ ctk_builder_menu_text (GMarkupParseContext  *context,
                        gpointer              user_data,
                        GError              **error)
 {
-  GtkBuilderMenuState *state = user_data;
+  CtkBuilderMenuState *state = user_data;
   gint i;
 
   for (i = 0; i < text_len; i++)
@@ -325,7 +325,7 @@ ctk_builder_menu_error (GMarkupParseContext *context,
                         GError              *error,
                         gpointer             user_data)
 {
-  GtkBuilderMenuState *state = user_data;
+  CtkBuilderMenuState *state = user_data;
 
   while (state->frame.prev)
     {
@@ -345,7 +345,7 @@ ctk_builder_menu_error (GMarkupParseContext *context,
   g_free (state->attribute);
   g_free (state->context);
 
-  g_slice_free (GtkBuilderMenuState, state);
+  g_slice_free (CtkBuilderMenuState, state);
 }
 
 static GMarkupParser ctk_builder_menu_subparser =
@@ -364,10 +364,10 @@ _ctk_builder_menu_start (ParserData   *parser_data,
                          const gchar **attribute_values,
                          GError      **error)
 {
-  GtkBuilderMenuState *state;
+  CtkBuilderMenuState *state;
   gchar *id;
 
-  state = g_slice_new0 (GtkBuilderMenuState);
+  state = g_slice_new0 (CtkBuilderMenuState);
   state->parser_data = parser_data;
   g_markup_parse_context_push (parser_data->ctx, &ctk_builder_menu_subparser, state);
 
@@ -385,7 +385,7 @@ _ctk_builder_menu_start (ParserData   *parser_data,
 void
 _ctk_builder_menu_end (ParserData *parser_data)
 {
-  GtkBuilderMenuState *state;
+  CtkBuilderMenuState *state;
 
   state = g_markup_parse_context_pop (parser_data->ctx);
   ctk_builder_menu_pop_frame (state);
@@ -393,5 +393,5 @@ _ctk_builder_menu_end (ParserData *parser_data)
   g_assert (state->frame.prev == NULL);
   g_assert (state->frame.item == NULL);
   g_assert (state->frame.menu == NULL);
-  g_slice_free (GtkBuilderMenuState, state);
+  g_slice_free (CtkBuilderMenuState, state);
 }

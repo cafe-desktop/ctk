@@ -35,56 +35,56 @@
 /**
  * SECTION:ctkgrid
  * @Short_description: Pack widgets in rows and columns
- * @Title: GtkGrid
- * @See_also: #GtkBox
+ * @Title: CtkGrid
+ * @See_also: #CtkBox
  *
- * GtkGrid is a container which arranges its child widgets in
+ * CtkGrid is a container which arranges its child widgets in
  * rows and columns, with arbitrary positions and horizontal/vertical spans.
  *
  * Children are added using ctk_grid_attach(). They can span multiple
  * rows or columns. It is also possible to add a child next to an
  * existing child, using ctk_grid_attach_next_to(). The behaviour of
- * GtkGrid when several children occupy the same grid cell is undefined.
+ * CtkGrid when several children occupy the same grid cell is undefined.
  *
- * GtkGrid can be used like a #GtkBox by just using ctk_container_add(),
+ * CtkGrid can be used like a #CtkBox by just using ctk_container_add(),
  * which will place children next to each other in the direction determined
- * by the #GtkOrientable:orientation property. However, if all you want is a
- * single row or column, then #GtkBox is the preferred widget.
+ * by the #CtkOrientable:orientation property. However, if all you want is a
+ * single row or column, then #CtkBox is the preferred widget.
  *
  * # CSS nodes
  *
- * GtkGrid uses a single CSS node with name grid.
+ * CtkGrid uses a single CSS node with name grid.
  */
 
-typedef struct _GtkGridChild GtkGridChild;
-typedef struct _GtkGridChildAttach GtkGridChildAttach;
-typedef struct _GtkGridRowProperties GtkGridRowProperties;
-typedef struct _GtkGridLine GtkGridLine;
-typedef struct _GtkGridLines GtkGridLines;
-typedef struct _GtkGridLineData GtkGridLineData;
-typedef struct _GtkGridRequest GtkGridRequest;
+typedef struct _CtkGridChild CtkGridChild;
+typedef struct _CtkGridChildAttach CtkGridChildAttach;
+typedef struct _CtkGridRowProperties CtkGridRowProperties;
+typedef struct _CtkGridLine CtkGridLine;
+typedef struct _CtkGridLines CtkGridLines;
+typedef struct _CtkGridLineData CtkGridLineData;
+typedef struct _CtkGridRequest CtkGridRequest;
 
-struct _GtkGridChildAttach
+struct _CtkGridChildAttach
 {
   gint pos;
   gint span;
 };
 
-struct _GtkGridRowProperties
+struct _CtkGridRowProperties
 {
   gint row;
-  GtkBaselinePosition baseline_position;
+  CtkBaselinePosition baseline_position;
 };
 
-static const GtkGridRowProperties ctk_grid_row_properties_default = {
+static const CtkGridRowProperties ctk_grid_row_properties_default = {
   0,
   CTK_BASELINE_POSITION_CENTER
 };
 
-struct _GtkGridChild
+struct _CtkGridChild
 {
-  GtkWidget *widget;
-  GtkGridChildAttach attach[2];
+  CtkWidget *widget;
+  CtkGridChildAttach attach[2];
 };
 
 #define CHILD_LEFT(child)    ((child)->attach[CTK_ORIENTATION_HORIZONTAL].pos)
@@ -92,35 +92,35 @@ struct _GtkGridChild
 #define CHILD_TOP(child)     ((child)->attach[CTK_ORIENTATION_VERTICAL].pos)
 #define CHILD_HEIGHT(child)  ((child)->attach[CTK_ORIENTATION_VERTICAL].span)
 
-/* A GtkGridLineData struct contains row/column specific parts
+/* A CtkGridLineData struct contains row/column specific parts
  * of the grid.
  */
-struct _GtkGridLineData
+struct _CtkGridLineData
 {
   gint16 spacing;
   guint homogeneous : 1;
 };
 
-struct _GtkGridPrivate
+struct _CtkGridPrivate
 {
   GList *children;
   GList *row_properties;
 
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
 
-  GtkOrientation orientation;
+  CtkOrientation orientation;
   gint baseline_row;
 
-  GtkGridLineData linedata[2];
+  CtkGridLineData linedata[2];
 };
 
 #define ROWS(priv)    (&(priv)->linedata[CTK_ORIENTATION_HORIZONTAL])
 #define COLUMNS(priv) (&(priv)->linedata[CTK_ORIENTATION_VERTICAL])
 
-/* A GtkGridLine struct represents a single row or column
+/* A CtkGridLine struct represents a single row or column
  * during size requests
  */
-struct _GtkGridLine
+struct _CtkGridLine
 {
   gint minimum;
   gint natural;
@@ -138,16 +138,16 @@ struct _GtkGridLine
   guint empty       : 1;
 };
 
-struct _GtkGridLines
+struct _CtkGridLines
 {
-  GtkGridLine *lines;
+  CtkGridLine *lines;
   gint min, max;
 };
 
-struct _GtkGridRequest
+struct _CtkGridRequest
 {
-  GtkGrid *grid;
-  GtkGridLines lines[2];
+  CtkGrid *grid;
+  CtkGridLines lines[2];
 };
 
 
@@ -177,12 +177,12 @@ enum
 
 static GParamSpec *child_properties[N_CHILD_PROPERTIES] = { NULL, };
 
-G_DEFINE_TYPE_WITH_CODE (GtkGrid, ctk_grid, CTK_TYPE_CONTAINER,
-                         G_ADD_PRIVATE (GtkGrid)
+G_DEFINE_TYPE_WITH_CODE (CtkGrid, ctk_grid, CTK_TYPE_CONTAINER,
+                         G_ADD_PRIVATE (CtkGrid)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL))
 
 
-static void ctk_grid_row_properties_free (GtkGridRowProperties *props);
+static void ctk_grid_row_properties_free (CtkGridRowProperties *props);
 
 static void
 ctk_grid_get_property (GObject    *object,
@@ -190,8 +190,8 @@ ctk_grid_get_property (GObject    *object,
                        GValue     *value,
                        GParamSpec *pspec)
 {
-  GtkGrid *grid = CTK_GRID (object);
-  GtkGridPrivate *priv = grid->priv;
+  CtkGrid *grid = CTK_GRID (object);
+  CtkGridPrivate *priv = grid->priv;
 
   switch (prop_id)
     {
@@ -226,10 +226,10 @@ ctk_grid_get_property (GObject    *object,
 }
 
 static void
-ctk_grid_set_orientation (GtkGrid        *grid,
-                          GtkOrientation  orientation)
+ctk_grid_set_orientation (CtkGrid        *grid,
+                          CtkOrientation  orientation)
 {
-  GtkGridPrivate *priv = grid->priv;
+  CtkGridPrivate *priv = grid->priv;
 
   if (priv->orientation != orientation)
     {
@@ -246,7 +246,7 @@ ctk_grid_set_property (GObject      *object,
                        const GValue *value,
                        GParamSpec   *pspec)
 {
-  GtkGrid *grid = CTK_GRID (object);
+  CtkGrid *grid = CTK_GRID (object);
 
   switch (prop_id)
     {
@@ -280,12 +280,12 @@ ctk_grid_set_property (GObject      *object,
     }
 }
 
-static GtkGridChild *
-find_grid_child (GtkGrid   *grid,
-                 GtkWidget *widget)
+static CtkGridChild *
+find_grid_child (CtkGrid   *grid,
+                 CtkWidget *widget)
 {
-  GtkGridPrivate *priv = grid->priv;
-  GtkGridChild *child;
+  CtkGridPrivate *priv = grid->priv;
+  CtkGridChild *child;
   GList *list;
 
   for (list = priv->children; list; list = list->next)
@@ -300,14 +300,14 @@ find_grid_child (GtkGrid   *grid,
 }
 
 static void
-ctk_grid_get_child_property (GtkContainer *container,
-                             GtkWidget    *child,
+ctk_grid_get_child_property (CtkContainer *container,
+                             CtkWidget    *child,
                              guint         property_id,
                              GValue       *value,
                              GParamSpec   *pspec)
 {
-  GtkGrid *grid = CTK_GRID (container);
-  GtkGridChild *grid_child;
+  CtkGrid *grid = CTK_GRID (container);
+  CtkGridChild *grid_child;
 
   grid_child = find_grid_child (grid, child);
 
@@ -342,14 +342,14 @@ ctk_grid_get_child_property (GtkContainer *container,
 }
 
 static void
-ctk_grid_set_child_property (GtkContainer *container,
-                             GtkWidget    *child,
+ctk_grid_set_child_property (CtkContainer *container,
+                             CtkWidget    *child,
                              guint         property_id,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkGrid *grid = CTK_GRID (container);
-  GtkGridChild *grid_child;
+  CtkGrid *grid = CTK_GRID (container);
+  CtkGridChild *grid_child;
 
   grid_child = find_grid_child (grid, child);
 
@@ -390,8 +390,8 @@ ctk_grid_set_child_property (GtkContainer *container,
 static void
 ctk_grid_finalize (GObject *object)
 {
-  GtkGrid *grid = CTK_GRID (object);
-  GtkGridPrivate *priv = grid->priv;
+  CtkGrid *grid = CTK_GRID (object);
+  CtkGridPrivate *priv = grid->priv;
 
   g_list_free_full (priv->row_properties, (GDestroyNotify)ctk_grid_row_properties_free);
 
@@ -401,17 +401,17 @@ ctk_grid_finalize (GObject *object)
 }
 
 static void
-grid_attach (GtkGrid   *grid,
-             GtkWidget *widget,
+grid_attach (CtkGrid   *grid,
+             CtkWidget *widget,
              gint       left,
              gint       top,
              gint       width,
              gint       height)
 {
-  GtkGridPrivate *priv = grid->priv;
-  GtkGridChild *child;
+  CtkGridPrivate *priv = grid->priv;
+  CtkGridChild *child;
 
-  child = g_slice_new (GtkGridChild);
+  child = g_slice_new (CtkGridChild);
   child->widget = widget;
   CHILD_LEFT (child) = left;
   CHILD_TOP (child) = top;
@@ -431,16 +431,16 @@ grid_attach (GtkGrid   *grid,
  * in which the touching has to happen.
  */
 static gint
-find_attach_position (GtkGrid         *grid,
-                      GtkOrientation   orientation,
+find_attach_position (CtkGrid         *grid,
+                      CtkOrientation   orientation,
                       gint             op_pos,
                       gint             op_span,
                       gboolean         max)
 {
-  GtkGridPrivate *priv = grid->priv;
-  GtkGridChild *grid_child;
-  GtkGridChildAttach *attach;
-  GtkGridChildAttach *opposite;
+  CtkGridPrivate *priv = grid->priv;
+  CtkGridChild *grid_child;
+  CtkGridChildAttach *attach;
+  CtkGridChildAttach *opposite;
   GList *list;
   gint pos;
   gboolean hit;
@@ -478,11 +478,11 @@ find_attach_position (GtkGrid         *grid,
 }
 
 static void
-ctk_grid_add (GtkContainer *container,
-              GtkWidget    *child)
+ctk_grid_add (CtkContainer *container,
+              CtkWidget    *child)
 {
-  GtkGrid *grid = CTK_GRID (container);
-  GtkGridPrivate *priv = grid->priv;
+  CtkGrid *grid = CTK_GRID (container);
+  CtkGridPrivate *priv = grid->priv;
   gint pos[2] = { 0, 0 };
 
   pos[priv->orientation] = find_attach_position (grid, priv->orientation, 0, 1, TRUE);
@@ -490,12 +490,12 @@ ctk_grid_add (GtkContainer *container,
 }
 
 static void
-ctk_grid_remove (GtkContainer *container,
-                 GtkWidget    *child)
+ctk_grid_remove (CtkContainer *container,
+                 CtkWidget    *child)
 {
-  GtkGrid *grid = CTK_GRID (container);
-  GtkGridPrivate *priv = grid->priv;
-  GtkGridChild *grid_child;
+  CtkGrid *grid = CTK_GRID (container);
+  CtkGridPrivate *priv = grid->priv;
+  CtkGridChild *grid_child;
   GList *list;
 
   for (list = priv->children; list; list = list->next)
@@ -510,7 +510,7 @@ ctk_grid_remove (GtkContainer *container,
 
           priv->children = g_list_remove (priv->children, grid_child);
 
-          g_slice_free (GtkGridChild, grid_child);
+          g_slice_free (CtkGridChild, grid_child);
 
           if (was_visible && _ctk_widget_get_visible (CTK_WIDGET (grid)))
             ctk_widget_queue_resize (CTK_WIDGET (grid));
@@ -521,14 +521,14 @@ ctk_grid_remove (GtkContainer *container,
 }
 
 static void
-ctk_grid_forall (GtkContainer *container,
+ctk_grid_forall (CtkContainer *container,
                  gboolean      include_internals,
-                 GtkCallback   callback,
+                 CtkCallback   callback,
                  gpointer      callback_data)
 {
-  GtkGrid *grid = CTK_GRID (container);
-  GtkGridPrivate *priv = grid->priv;
-  GtkGridChild *child;
+  CtkGrid *grid = CTK_GRID (container);
+  CtkGridPrivate *priv = grid->priv;
+  CtkGridChild *child;
   GList *list;
 
   list = priv->children;
@@ -542,7 +542,7 @@ ctk_grid_forall (GtkContainer *container,
 }
 
 static GType
-ctk_grid_child_type (GtkContainer *container)
+ctk_grid_child_type (CtkContainer *container)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -550,11 +550,11 @@ ctk_grid_child_type (GtkContainer *container)
 /* Calculates the min and max numbers for both orientations.
  */
 static void
-ctk_grid_request_count_lines (GtkGridRequest *request)
+ctk_grid_request_count_lines (CtkGridRequest *request)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridChild *child;
-  GtkGridChildAttach *attach;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridChild *child;
+  CtkGridChildAttach *attach;
   GList *list;
   gint min[2];
   gint max[2];
@@ -583,13 +583,13 @@ ctk_grid_request_count_lines (GtkGridRequest *request)
  * if they have a non-spanning expanding child.
  */
 static void
-ctk_grid_request_init (GtkGridRequest *request,
-                       GtkOrientation  orientation)
+ctk_grid_request_init (CtkGridRequest *request,
+                       CtkOrientation  orientation)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridChild *child;
-  GtkGridChildAttach *attach;
-  GtkGridLines *lines;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridChild *child;
+  CtkGridChildAttach *attach;
+  CtkGridLines *lines;
   GList *list;
   gint i;
 
@@ -620,15 +620,15 @@ ctk_grid_request_init (GtkGridRequest *request,
 /* Sums allocations for lines spanned by child and their spacing.
  */
 static gint
-compute_allocation_for_child (GtkGridRequest *request,
-                              GtkGridChild   *child,
-                              GtkOrientation  orientation)
+compute_allocation_for_child (CtkGridRequest *request,
+                              CtkGridChild   *child,
+                              CtkOrientation  orientation)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridLineData *linedata;
-  GtkGridLines *lines;
-  GtkGridLine *line;
-  GtkGridChildAttach *attach;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridLineData *linedata;
+  CtkGridLines *lines;
+  CtkGridLine *line;
+  CtkGridChildAttach *attach;
   gint size;
   gint i;
 
@@ -647,9 +647,9 @@ compute_allocation_for_child (GtkGridRequest *request,
 }
 
 static void
-compute_request_for_child (GtkGridRequest *request,
-                           GtkGridChild   *child,
-                           GtkOrientation  orientation,
+compute_request_for_child (CtkGridRequest *request,
+                           CtkGridChild   *child,
+                           CtkOrientation  orientation,
                            gboolean        contextual,
                            gint           *minimum,
                            gint           *natural,
@@ -692,18 +692,18 @@ compute_request_for_child (GtkGridRequest *request,
  * lines in the opposite orientation to be set.
  */
 static void
-ctk_grid_request_non_spanning (GtkGridRequest *request,
-                               GtkOrientation  orientation,
+ctk_grid_request_non_spanning (CtkGridRequest *request,
+                               CtkOrientation  orientation,
                                gboolean        contextual)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridChild *child;
-  GtkGridChildAttach *attach;
-  GtkGridLines *lines;
-  GtkGridLine *line;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridChild *child;
+  CtkGridChildAttach *attach;
+  CtkGridLines *lines;
+  CtkGridLine *line;
   GList *list;
   gint i;
-  GtkBaselinePosition baseline_pos;
+  CtkBaselinePosition baseline_pos;
   gint minimum, minimum_baseline;
   gint natural, natural_baseline;
 
@@ -777,12 +777,12 @@ ctk_grid_request_non_spanning (GtkGridRequest *request,
 /* Enforce homogeneous sizes.
  */
 static void
-ctk_grid_request_homogeneous (GtkGridRequest *request,
-                              GtkOrientation  orientation)
+ctk_grid_request_homogeneous (CtkGridRequest *request,
+                              CtkOrientation  orientation)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridLineData *linedata;
-  GtkGridLines *lines;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridLineData *linedata;
+  CtkGridLines *lines;
   gint minimum, natural;
   gint i;
 
@@ -816,17 +816,17 @@ ctk_grid_request_homogeneous (GtkGridRequest *request,
  * non-spanning children.
  */
 static void
-ctk_grid_request_spanning (GtkGridRequest *request,
-                           GtkOrientation  orientation,
+ctk_grid_request_spanning (CtkGridRequest *request,
+                           CtkOrientation  orientation,
                            gboolean        contextual)
 {
-  GtkGridPrivate *priv = request->grid->priv;
+  CtkGridPrivate *priv = request->grid->priv;
   GList *list;
-  GtkGridChild *child;
-  GtkGridChildAttach *attach;
-  GtkGridLineData *linedata;
-  GtkGridLines *lines;
-  GtkGridLine *line;
+  CtkGridChild *child;
+  CtkGridChildAttach *attach;
+  CtkGridLineData *linedata;
+  CtkGridLines *lines;
+  CtkGridLine *line;
   gint minimum;
   gint natural;
   gint span_minimum;
@@ -951,20 +951,20 @@ ctk_grid_request_spanning (GtkGridRequest *request,
 /* Marks empty and expanding lines and counts them.
  */
 static void
-ctk_grid_request_compute_expand (GtkGridRequest *request,
-                                 GtkOrientation  orientation,
+ctk_grid_request_compute_expand (CtkGridRequest *request,
+                                 CtkOrientation  orientation,
 				 gint            min,
 				 gint            max,
                                  gint           *nonempty_lines,
                                  gint           *expand_lines)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridChild *child;
-  GtkGridChildAttach *attach;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridChild *child;
+  CtkGridChildAttach *attach;
   GList *list;
   gint i;
-  GtkGridLines *lines;
-  GtkGridLine *line;
+  CtkGridLines *lines;
+  CtkGridLine *line;
   gboolean has_expand;
   gint expand;
   gint empty;
@@ -1065,16 +1065,16 @@ ctk_grid_request_compute_expand (GtkGridRequest *request,
 /* Sums the minimum and natural fields of lines and their spacing.
  */
 static void
-ctk_grid_request_sum (GtkGridRequest *request,
-                      GtkOrientation  orientation,
+ctk_grid_request_sum (CtkGridRequest *request,
+                      CtkOrientation  orientation,
                       gint           *minimum,
                       gint           *natural,
 		      gint           *minimum_baseline,
 		      gint           *natural_baseline)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridLineData *linedata;
-  GtkGridLines *lines;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridLineData *linedata;
+  CtkGridLines *lines;
   gint i;
   gint min, nat;
   gint nonempty;
@@ -1124,8 +1124,8 @@ ctk_grid_request_sum (GtkGridRequest *request,
  * lines in the opposite orientation to be set.
  */
 static void
-ctk_grid_request_run (GtkGridRequest *request,
-                      GtkOrientation  orientation,
+ctk_grid_request_run (CtkGridRequest *request,
+                      CtkOrientation  orientation,
                       gboolean        contextual)
 {
   ctk_grid_request_init (request, orientation);
@@ -1136,15 +1136,15 @@ ctk_grid_request_run (GtkGridRequest *request,
 }
 
 static void
-ctk_grid_distribute_non_homogeneous (GtkGridLines *lines,
+ctk_grid_distribute_non_homogeneous (CtkGridLines *lines,
 				     gint nonempty,
 				     gint expand,
 				     gint size,
 				     gint min,
 				     gint max)
 {
-  GtkRequestedSize *sizes;
-  GtkGridLine *line;
+  CtkRequestedSize *sizes;
+  CtkGridLine *line;
   gint extra;
   gint rest;
   int i, j;
@@ -1152,7 +1152,7 @@ ctk_grid_distribute_non_homogeneous (GtkGridLines *lines,
   if (nonempty == 0)
     return;
 
-  sizes = g_newa (GtkRequestedSize, nonempty);
+  sizes = g_newa (CtkRequestedSize, nonempty);
 
   j = 0;
   for (i = min - lines->min; i < max - lines->min; i++)
@@ -1211,18 +1211,18 @@ ctk_grid_distribute_non_homogeneous (GtkGridLines *lines,
  * by distributing total_size among lines.
  */
 static void
-ctk_grid_request_allocate (GtkGridRequest *request,
-                           GtkOrientation  orientation,
+ctk_grid_request_allocate (CtkGridRequest *request,
+                           CtkOrientation  orientation,
                            gint            total_size)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridLineData *linedata;
-  GtkGridLines *lines;
-  GtkGridLine *line;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridLineData *linedata;
+  CtkGridLines *lines;
+  CtkGridLine *line;
   gint nonempty1, nonempty2;
   gint expand1, expand2;
   gint i;
-  GtkBaselinePosition baseline_pos;
+  CtkBaselinePosition baseline_pos;
   gint baseline;
   gint extra, extra2;
   gint rest;
@@ -1355,13 +1355,13 @@ ctk_grid_request_allocate (GtkGridRequest *request,
 /* Computes the position fields from allocation and spacing.
  */
 static void
-ctk_grid_request_position (GtkGridRequest *request,
-                           GtkOrientation  orientation)
+ctk_grid_request_position (CtkGridRequest *request,
+                           CtkOrientation  orientation)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridLineData *linedata;
-  GtkGridLines *lines;
-  GtkGridLine *line;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridLineData *linedata;
+  CtkGridLines *lines;
+  CtkGridLine *line;
   gint position, old_position;
   int allocated_baseline;
   gint i, j;
@@ -1407,15 +1407,15 @@ ctk_grid_request_position (GtkGridRequest *request,
 }
 
 static void
-ctk_grid_get_size (GtkGrid        *grid,
-                   GtkOrientation  orientation,
+ctk_grid_get_size (CtkGrid        *grid,
+                   CtkOrientation  orientation,
                    gint           *minimum,
                    gint           *natural,
 		   gint           *minimum_baseline,
 		   gint           *natural_baseline)
 {
-  GtkGridRequest request;
-  GtkGridLines *lines;
+  CtkGridRequest request;
+  CtkGridLines *lines;
 
   *minimum = 0;
   *natural = 0;
@@ -1432,8 +1432,8 @@ ctk_grid_get_size (GtkGrid        *grid,
   request.grid = grid;
   ctk_grid_request_count_lines (&request);
   lines = &request.lines[orientation];
-  lines->lines = g_newa (GtkGridLine, lines->max - lines->min);
-  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (GtkGridLine));
+  lines->lines = g_newa (CtkGridLine, lines->max - lines->min);
+  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (CtkGridLine));
 
   ctk_grid_request_run (&request, orientation, FALSE);
   ctk_grid_request_sum (&request, orientation, minimum, natural,
@@ -1441,16 +1441,16 @@ ctk_grid_get_size (GtkGrid        *grid,
 }
 
 static void
-ctk_grid_get_size_for_size (GtkGrid        *grid,
-                            GtkOrientation  orientation,
+ctk_grid_get_size_for_size (CtkGrid        *grid,
+                            CtkOrientation  orientation,
                             gint            size,
                             gint           *minimum,
                             gint           *natural,
 			    gint           *minimum_baseline,
                             gint           *natural_baseline)
 {
-  GtkGridRequest request;
-  GtkGridLines *lines;
+  CtkGridRequest request;
+  CtkGridLines *lines;
   gint min_size, nat_size;
 
   *minimum = 0;
@@ -1468,11 +1468,11 @@ ctk_grid_get_size_for_size (GtkGrid        *grid,
   request.grid = grid;
   ctk_grid_request_count_lines (&request);
   lines = &request.lines[0];
-  lines->lines = g_newa (GtkGridLine, lines->max - lines->min);
-  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (GtkGridLine));
+  lines->lines = g_newa (CtkGridLine, lines->max - lines->min);
+  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (CtkGridLine));
   lines = &request.lines[1];
-  lines->lines = g_newa (GtkGridLine, lines->max - lines->min);
-  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (GtkGridLine));
+  lines->lines = g_newa (CtkGridLine, lines->max - lines->min);
+  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (CtkGridLine));
 
   ctk_grid_request_run (&request, 1 - orientation, FALSE);
   ctk_grid_request_sum (&request, 1 - orientation, &min_size, &nat_size, NULL, NULL);
@@ -1483,7 +1483,7 @@ ctk_grid_get_size_for_size (GtkGrid        *grid,
 }
 
 static void
-ctk_grid_get_preferred_width (GtkWidget *widget,
+ctk_grid_get_preferred_width (CtkWidget *widget,
                               gint      *minimum,
                               gint      *natural)
 {
@@ -1495,7 +1495,7 @@ ctk_grid_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_grid_get_preferred_height (GtkWidget *widget,
+ctk_grid_get_preferred_height (CtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
@@ -1507,7 +1507,7 @@ ctk_grid_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_grid_get_preferred_width_for_height (GtkWidget *widget,
+ctk_grid_get_preferred_width_for_height (CtkWidget *widget,
                                          gint       height,
                                          gint      *minimum,
                                          gint      *natural)
@@ -1520,7 +1520,7 @@ ctk_grid_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_grid_get_preferred_height_for_width (GtkWidget *widget,
+ctk_grid_get_preferred_height_for_width (CtkWidget *widget,
                                          gint       width,
                                          gint      *minimum,
                                          gint      *natural)
@@ -1533,7 +1533,7 @@ ctk_grid_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_grid_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_grid_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 						      gint       width,
 						      gint      *minimum,
 						      gint      *natural,
@@ -1548,8 +1548,8 @@ ctk_grid_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_grid_measure (GtkCssGadget   *gadget,
-                  GtkOrientation  orientation,
+ctk_grid_measure (CtkCssGadget   *gadget,
+                  CtkOrientation  orientation,
                   int             for_size,
                   int            *minimum,
                   int            *natural,
@@ -1557,8 +1557,8 @@ ctk_grid_measure (GtkCssGadget   *gadget,
                   int            *natural_baseline,
                   gpointer        data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkGrid *grid = CTK_GRID (widget);
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkGrid *grid = CTK_GRID (widget);
 
   if ((orientation == CTK_ORIENTATION_HORIZONTAL &&
        ctk_widget_get_request_mode (widget) == CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT) ||
@@ -1570,18 +1570,18 @@ ctk_grid_measure (GtkCssGadget   *gadget,
 }
 
 static void
-allocate_child (GtkGridRequest *request,
-                GtkOrientation  orientation,
-                GtkGridChild   *child,
+allocate_child (CtkGridRequest *request,
+                CtkOrientation  orientation,
+                CtkGridChild   *child,
                 gint           *position,
                 gint           *size,
 		gint           *baseline)
 {
-  GtkGridPrivate *priv = request->grid->priv;
-  GtkGridLineData *linedata;
-  GtkGridLines *lines;
-  GtkGridLine *line;
-  GtkGridChildAttach *attach;
+  CtkGridPrivate *priv = request->grid->priv;
+  CtkGridLineData *linedata;
+  CtkGridLines *lines;
+  CtkGridLine *line;
+  CtkGridChildAttach *attach;
   gint i;
 
   linedata = &priv->linedata[orientation];
@@ -1603,13 +1603,13 @@ allocate_child (GtkGridRequest *request,
 }
 
 static void
-ctk_grid_request_allocate_children (GtkGridRequest      *request,
-                                    const GtkAllocation *allocation)
+ctk_grid_request_allocate_children (CtkGridRequest      *request,
+                                    const CtkAllocation *allocation)
 {
-  GtkGridPrivate *priv = request->grid->priv;
+  CtkGridPrivate *priv = request->grid->priv;
   GList *list;
-  GtkGridChild *child;
-  GtkAllocation child_allocation;
+  CtkGridChild *child;
+  CtkAllocation child_allocation;
   gint x, y, width, height, baseline, ignore;
 
   for (list = priv->children; list; list = list->next)
@@ -1638,10 +1638,10 @@ ctk_grid_request_allocate_children (GtkGridRequest      *request,
 #define GET_SIZE(allocation, orientation) (orientation == CTK_ORIENTATION_HORIZONTAL ? allocation->width : allocation->height)
 
 static void
-ctk_grid_size_allocate (GtkWidget     *widget,
-                        GtkAllocation *allocation)
+ctk_grid_size_allocate (CtkWidget     *widget,
+                        CtkAllocation *allocation)
 {
-  GtkAllocation clip;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -1654,18 +1654,18 @@ ctk_grid_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_grid_allocate (GtkCssGadget        *gadget,
-                   const GtkAllocation *allocation,
+ctk_grid_allocate (CtkCssGadget        *gadget,
+                   const CtkAllocation *allocation,
                    int                  baseline,
-                   GtkAllocation       *out_clip,
+                   CtkAllocation       *out_clip,
                    gpointer             data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkGrid *grid = CTK_GRID (widget);
-  GtkGridPrivate *priv = grid->priv;
-  GtkGridRequest request;
-  GtkGridLines *lines;
-  GtkOrientation orientation;
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkGrid *grid = CTK_GRID (widget);
+  CtkGridPrivate *priv = grid->priv;
+  CtkGridRequest request;
+  CtkGridLines *lines;
+  CtkOrientation orientation;
 
   if (priv->children == NULL)
     return;
@@ -1674,11 +1674,11 @@ ctk_grid_allocate (GtkCssGadget        *gadget,
 
   ctk_grid_request_count_lines (&request);
   lines = &request.lines[0];
-  lines->lines = g_newa (GtkGridLine, lines->max - lines->min);
-  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (GtkGridLine));
+  lines->lines = g_newa (CtkGridLine, lines->max - lines->min);
+  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (CtkGridLine));
   lines = &request.lines[1];
-  lines->lines = g_newa (GtkGridLine, lines->max - lines->min);
-  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (GtkGridLine));
+  lines->lines = g_newa (CtkGridLine, lines->max - lines->min);
+  memset (lines->lines, 0, (lines->max - lines->min) * sizeof (CtkGridLine));
 
   if (ctk_widget_get_request_mode (widget) == CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT)
     orientation = CTK_ORIENTATION_HORIZONTAL;
@@ -1700,7 +1700,7 @@ ctk_grid_allocate (GtkCssGadget        *gadget,
 }
 
 static gboolean
-ctk_grid_render (GtkCssGadget *gadget,
+ctk_grid_render (CtkCssGadget *gadget,
                  cairo_t      *cr,
                  int           x,
                  int           y,
@@ -1714,7 +1714,7 @@ ctk_grid_render (GtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_grid_draw (GtkWidget *widget,
+ctk_grid_draw (CtkWidget *widget,
                cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_GRID (widget)->priv->gadget, cr);
@@ -1723,11 +1723,11 @@ ctk_grid_draw (GtkWidget *widget,
 }
 
 static void
-ctk_grid_class_init (GtkGridClass *class)
+ctk_grid_class_init (CtkGridClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
 
   object_class->get_property = ctk_grid_get_property;
   object_class->set_property = ctk_grid_set_property;
@@ -1823,9 +1823,9 @@ ctk_grid_class_init (GtkGridClass *class)
 }
 
 static void
-ctk_grid_init (GtkGrid *grid)
+ctk_grid_init (CtkGrid *grid)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
 
   grid->priv = ctk_grid_get_instance_private (grid);
   priv = grid->priv;
@@ -1859,9 +1859,9 @@ ctk_grid_init (GtkGrid *grid)
  *
  * Creates a new grid widget.
  *
- * Returns: the new #GtkGrid
+ * Returns: the new #CtkGrid
  */
-GtkWidget *
+CtkWidget *
 ctk_grid_new (void)
 {
   return g_object_new (CTK_TYPE_GRID, NULL);
@@ -1869,7 +1869,7 @@ ctk_grid_new (void)
 
 /**
  * ctk_grid_attach:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @child: the widget to add
  * @left: the column number to attach the left side of @child to
  * @top: the row number to attach the top side of @child to
@@ -1883,8 +1883,8 @@ ctk_grid_new (void)
  * @width and @height.
  */
 void
-ctk_grid_attach (GtkGrid   *grid,
-                 GtkWidget *child,
+ctk_grid_attach (CtkGrid   *grid,
+                 CtkWidget *child,
                  gint       left,
                  gint       top,
                  gint       width,
@@ -1901,7 +1901,7 @@ ctk_grid_attach (GtkGrid   *grid,
 
 /**
  * ctk_grid_attach_next_to:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @child: the widget to add
  * @sibling: (allow-none): the child of @grid that @child will be placed
  *     next to, or %NULL to place @child at the beginning or end
@@ -1920,20 +1920,20 @@ ctk_grid_attach (GtkGrid   *grid,
  * @side == %CTK_POS_LEFT yields a layout of [3][2][1].
  */
 void
-ctk_grid_attach_next_to (GtkGrid         *grid,
-                         GtkWidget       *child,
-                         GtkWidget       *sibling,
-                         GtkPositionType  side,
+ctk_grid_attach_next_to (CtkGrid         *grid,
+                         CtkWidget       *child,
+                         CtkWidget       *sibling,
+                         CtkPositionType  side,
                          gint             width,
                          gint             height)
 {
-  GtkGridChild *grid_sibling;
+  CtkGridChild *grid_sibling;
   gint left, top;
 
   g_return_if_fail (CTK_IS_GRID (grid));
   g_return_if_fail (CTK_IS_WIDGET (child));
   g_return_if_fail (_ctk_widget_get_parent (child) == NULL);
-  g_return_if_fail (sibling == NULL || _ctk_widget_get_parent (sibling) == (GtkWidget*)grid);
+  g_return_if_fail (sibling == NULL || _ctk_widget_get_parent (sibling) == (CtkWidget*)grid);
   g_return_if_fail (width > 0);
   g_return_if_fail (height > 0);
 
@@ -1995,7 +1995,7 @@ ctk_grid_attach_next_to (GtkGrid         *grid,
 
 /**
  * ctk_grid_get_child_at:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @left: the left edge of the cell
  * @top: the top edge of the cell
  *
@@ -2006,13 +2006,13 @@ ctk_grid_attach_next_to (GtkGrid         *grid,
  *
  * Since: 3.2
  */
-GtkWidget *
-ctk_grid_get_child_at (GtkGrid *grid,
+CtkWidget *
+ctk_grid_get_child_at (CtkGrid *grid,
                        gint     left,
                        gint     top)
 {
-  GtkGridPrivate *priv;
-  GtkGridChild *child;
+  CtkGridPrivate *priv;
+  CtkGridChild *child;
   GList *list;
 
   g_return_val_if_fail (CTK_IS_GRID (grid), NULL);
@@ -2035,7 +2035,7 @@ ctk_grid_get_child_at (GtkGrid *grid,
 
 /**
  * ctk_grid_insert_row:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @position: the position to insert the row at
  *
  * Inserts a row at the specified position.
@@ -2047,11 +2047,11 @@ ctk_grid_get_child_at (GtkGrid *grid,
  * Since: 3.2
  */
 void
-ctk_grid_insert_row (GtkGrid *grid,
+ctk_grid_insert_row (CtkGrid *grid,
                      gint     position)
 {
-  GtkGridPrivate *priv;
-  GtkGridChild *child;
+  CtkGridPrivate *priv;
+  CtkGridChild *child;
   GList *list;
   gint top, height;
 
@@ -2084,7 +2084,7 @@ ctk_grid_insert_row (GtkGrid *grid,
 
   for (list = priv->row_properties; list != NULL; list = list->next)
     {
-      GtkGridRowProperties *prop = list->data;
+      CtkGridRowProperties *prop = list->data;
 
       if (prop->row >= position)
 	prop->row += 1;
@@ -2093,7 +2093,7 @@ ctk_grid_insert_row (GtkGrid *grid,
 
 /**
  * ctk_grid_remove_row:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @position: the position of the row to remove
  *
  * Removes a row from the grid.
@@ -2106,11 +2106,11 @@ ctk_grid_insert_row (GtkGrid *grid,
  * Since: 3.10
  */
 void
-ctk_grid_remove_row (GtkGrid *grid,
+ctk_grid_remove_row (CtkGrid *grid,
                      gint     position)
 {
-  GtkGridPrivate *priv;
-  GtkGridChild *child;
+  CtkGridPrivate *priv;
+  CtkGridChild *child;
   GList *list;
   gint top, height;
 
@@ -2144,7 +2144,7 @@ ctk_grid_remove_row (GtkGrid *grid,
 
 /**
  * ctk_grid_insert_column:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @position: the position to insert the column at
  *
  * Inserts a column at the specified position.
@@ -2156,11 +2156,11 @@ ctk_grid_remove_row (GtkGrid *grid,
  * Since: 3.2
  */
 void
-ctk_grid_insert_column (GtkGrid *grid,
+ctk_grid_insert_column (CtkGrid *grid,
                         gint     position)
 {
-  GtkGridPrivate *priv;
-  GtkGridChild *child;
+  CtkGridPrivate *priv;
+  CtkGridChild *child;
   GList *list;
   gint left, width;
 
@@ -2194,7 +2194,7 @@ ctk_grid_insert_column (GtkGrid *grid,
 
 /**
  * ctk_grid_remove_column:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @position: the position of the column to remove
  *
  * Removes a column from the grid.
@@ -2207,11 +2207,11 @@ ctk_grid_insert_column (GtkGrid *grid,
  * Since: 3.10
  */
 void
-ctk_grid_remove_column (GtkGrid *grid,
+ctk_grid_remove_column (CtkGrid *grid,
                         gint     position)
 {
-  GtkGridPrivate *priv;
-  GtkGridChild *child;
+  CtkGridPrivate *priv;
+  CtkGridChild *child;
   GList *list;
   gint left, width;
 
@@ -2245,7 +2245,7 @@ ctk_grid_remove_column (GtkGrid *grid,
 
 /**
  * ctk_grid_insert_next_to:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @sibling: the child of @grid that the new row or column will be
  *     placed next to
  * @side: the side of @sibling that @child is positioned next to
@@ -2260,15 +2260,15 @@ ctk_grid_remove_column (GtkGrid *grid,
  * Since: 3.2
  */
 void
-ctk_grid_insert_next_to (GtkGrid         *grid,
-                         GtkWidget       *sibling,
-                         GtkPositionType  side)
+ctk_grid_insert_next_to (CtkGrid         *grid,
+                         CtkWidget       *sibling,
+                         CtkPositionType  side)
 {
-  GtkGridChild *child;
+  CtkGridChild *child;
 
   g_return_if_fail (CTK_IS_GRID (grid));
   g_return_if_fail (CTK_IS_WIDGET (sibling));
-  g_return_if_fail (_ctk_widget_get_parent (sibling) == (GtkWidget*)grid);
+  g_return_if_fail (_ctk_widget_get_parent (sibling) == (CtkWidget*)grid);
 
   child = find_grid_child (grid, sibling);
 
@@ -2293,16 +2293,16 @@ ctk_grid_insert_next_to (GtkGrid         *grid,
 
 /**
  * ctk_grid_set_row_homogeneous:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @homogeneous: %TRUE to make rows homogeneous
  *
  * Sets whether all rows of @grid will have the same height.
  */
 void
-ctk_grid_set_row_homogeneous (GtkGrid  *grid,
+ctk_grid_set_row_homogeneous (CtkGrid  *grid,
                               gboolean  homogeneous)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
   g_return_if_fail (CTK_IS_GRID (grid));
 
   priv = grid->priv;
@@ -2321,16 +2321,16 @@ ctk_grid_set_row_homogeneous (GtkGrid  *grid,
 
 /**
  * ctk_grid_get_row_homogeneous:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  *
  * Returns whether all rows of @grid have the same height.
  *
  * Returns: whether all rows of @grid have the same height.
  */
 gboolean
-ctk_grid_get_row_homogeneous (GtkGrid *grid)
+ctk_grid_get_row_homogeneous (CtkGrid *grid)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
   g_return_val_if_fail (CTK_IS_GRID (grid), FALSE);
 
   priv = grid->priv;
@@ -2340,16 +2340,16 @@ ctk_grid_get_row_homogeneous (GtkGrid *grid)
 
 /**
  * ctk_grid_set_column_homogeneous:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @homogeneous: %TRUE to make columns homogeneous
  *
  * Sets whether all columns of @grid will have the same width.
  */
 void
-ctk_grid_set_column_homogeneous (GtkGrid  *grid,
+ctk_grid_set_column_homogeneous (CtkGrid  *grid,
                                  gboolean  homogeneous)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
   g_return_if_fail (CTK_IS_GRID (grid));
 
   priv = grid->priv;
@@ -2368,16 +2368,16 @@ ctk_grid_set_column_homogeneous (GtkGrid  *grid,
 
 /**
  * ctk_grid_get_column_homogeneous:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  *
  * Returns whether all columns of @grid have the same width.
  *
  * Returns: whether all columns of @grid have the same width.
  */
 gboolean
-ctk_grid_get_column_homogeneous (GtkGrid *grid)
+ctk_grid_get_column_homogeneous (CtkGrid *grid)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
   g_return_val_if_fail (CTK_IS_GRID (grid), FALSE);
 
   priv = grid->priv;
@@ -2387,16 +2387,16 @@ ctk_grid_get_column_homogeneous (GtkGrid *grid)
 
 /**
  * ctk_grid_set_row_spacing:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @spacing: the amount of space to insert between rows
  *
  * Sets the amount of space between rows of @grid.
  */
 void
-ctk_grid_set_row_spacing (GtkGrid *grid,
+ctk_grid_set_row_spacing (CtkGrid *grid,
                           guint    spacing)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
   g_return_if_fail (CTK_IS_GRID (grid));
   g_return_if_fail (spacing <= G_MAXINT16);
 
@@ -2415,16 +2415,16 @@ ctk_grid_set_row_spacing (GtkGrid *grid,
 
 /**
  * ctk_grid_get_row_spacing:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  *
  * Returns the amount of space between the rows of @grid.
  *
  * Returns: the row spacing of @grid
  */
 guint
-ctk_grid_get_row_spacing (GtkGrid *grid)
+ctk_grid_get_row_spacing (CtkGrid *grid)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
   g_return_val_if_fail (CTK_IS_GRID (grid), 0);
 
   priv = grid->priv;
@@ -2434,16 +2434,16 @@ ctk_grid_get_row_spacing (GtkGrid *grid)
 
 /**
  * ctk_grid_set_column_spacing:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @spacing: the amount of space to insert between columns
  *
  * Sets the amount of space between columns of @grid.
  */
 void
-ctk_grid_set_column_spacing (GtkGrid *grid,
+ctk_grid_set_column_spacing (CtkGrid *grid,
                              guint    spacing)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
   g_return_if_fail (CTK_IS_GRID (grid));
   g_return_if_fail (spacing <= G_MAXINT16);
 
@@ -2462,16 +2462,16 @@ ctk_grid_set_column_spacing (GtkGrid *grid,
 
 /**
  * ctk_grid_get_column_spacing:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  *
  * Returns the amount of space between the columns of @grid.
  *
  * Returns: the column spacing of @grid
  */
 guint
-ctk_grid_get_column_spacing (GtkGrid *grid)
+ctk_grid_get_column_spacing (CtkGrid *grid)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_GRID (grid), 0);
 
@@ -2480,15 +2480,15 @@ ctk_grid_get_column_spacing (GtkGrid *grid)
   return ROWS (priv)->spacing;
 }
 
-static GtkGridRowProperties *
-find_row_properties (GtkGrid      *grid,
+static CtkGridRowProperties *
+find_row_properties (CtkGrid      *grid,
 		     gint          row)
 {
   GList *l;
 
   for (l = grid->priv->row_properties; l != NULL; l = l->next)
     {
-      GtkGridRowProperties *prop = l->data;
+      CtkGridRowProperties *prop = l->data;
       if (prop->row == row)
 	return prop;
     }
@@ -2497,23 +2497,23 @@ find_row_properties (GtkGrid      *grid,
 }
 
 static void
-ctk_grid_row_properties_free (GtkGridRowProperties *props)
+ctk_grid_row_properties_free (CtkGridRowProperties *props)
 {
-  g_slice_free (GtkGridRowProperties, props);
+  g_slice_free (CtkGridRowProperties, props);
 }
 
-static GtkGridRowProperties *
-get_row_properties_or_create (GtkGrid      *grid,
+static CtkGridRowProperties *
+get_row_properties_or_create (CtkGrid      *grid,
 			      gint          row)
 {
-  GtkGridRowProperties *props;
-  GtkGridPrivate *priv = grid->priv;
+  CtkGridRowProperties *props;
+  CtkGridPrivate *priv = grid->priv;
 
   props = find_row_properties (grid, row);
   if (props)
     return props;
 
-  props = g_slice_new (GtkGridRowProperties);
+  props = g_slice_new (CtkGridRowProperties);
   *props = ctk_grid_row_properties_default;
   props->row = row;
 
@@ -2523,11 +2523,11 @@ get_row_properties_or_create (GtkGrid      *grid,
   return props;
 }
 
-static const GtkGridRowProperties *
-get_row_properties_or_default (GtkGrid      *grid,
+static const CtkGridRowProperties *
+get_row_properties_or_default (CtkGrid      *grid,
 			       gint          row)
 {
-  GtkGridRowProperties *props;
+  CtkGridRowProperties *props;
 
   props = find_row_properties (grid, row);
   if (props)
@@ -2537,9 +2537,9 @@ get_row_properties_or_default (GtkGrid      *grid,
 
 /**
  * ctk_grid_set_row_baseline_position:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @row: a row index
- * @pos: a #GtkBaselinePosition
+ * @pos: a #CtkBaselinePosition
  *
  * Sets how the baseline should be positioned on @row of the
  * grid, in case that row is assigned more space than is requested.
@@ -2547,11 +2547,11 @@ get_row_properties_or_default (GtkGrid      *grid,
  * Since: 3.10
  */
 void
-ctk_grid_set_row_baseline_position (GtkGrid            *grid,
+ctk_grid_set_row_baseline_position (CtkGrid            *grid,
 				    gint                row,
-				    GtkBaselinePosition pos)
+				    CtkBaselinePosition pos)
 {
-  GtkGridRowProperties *props;
+  CtkGridRowProperties *props;
 
   g_return_if_fail (CTK_IS_GRID (grid));
 
@@ -2568,7 +2568,7 @@ ctk_grid_set_row_baseline_position (GtkGrid            *grid,
 
 /**
  * ctk_grid_get_row_baseline_position:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @row: a row index
  *
  * Returns the baseline position of @row as set
@@ -2579,11 +2579,11 @@ ctk_grid_set_row_baseline_position (GtkGrid            *grid,
  *
  * Since: 3.10
  */
-GtkBaselinePosition
-ctk_grid_get_row_baseline_position (GtkGrid      *grid,
+CtkBaselinePosition
+ctk_grid_get_row_baseline_position (CtkGrid      *grid,
 				    gint          row)
 {
-  const GtkGridRowProperties *props;
+  const CtkGridRowProperties *props;
 
   g_return_val_if_fail (CTK_IS_GRID (grid), CTK_BASELINE_POSITION_CENTER);
 
@@ -2594,7 +2594,7 @@ ctk_grid_get_row_baseline_position (GtkGrid      *grid,
 
 /**
  * ctk_grid_set_baseline_row:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  * @row: the row index
  *
  * Sets which row defines the global baseline for the entire grid.
@@ -2605,10 +2605,10 @@ ctk_grid_get_row_baseline_position (GtkGrid      *grid,
  * Since: 3.10
  */
 void
-ctk_grid_set_baseline_row (GtkGrid *grid,
+ctk_grid_set_baseline_row (CtkGrid *grid,
 			   gint     row)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
 
   g_return_if_fail (CTK_IS_GRID (grid));
 
@@ -2626,7 +2626,7 @@ ctk_grid_set_baseline_row (GtkGrid *grid,
 
 /**
  * ctk_grid_get_baseline_row:
- * @grid: a #GtkGrid
+ * @grid: a #CtkGrid
  *
  * Returns which row defines the global baseline of @grid.
  *
@@ -2635,9 +2635,9 @@ ctk_grid_set_baseline_row (GtkGrid *grid,
  * Since: 3.10
  */
 gint
-ctk_grid_get_baseline_row (GtkGrid *grid)
+ctk_grid_get_baseline_row (CtkGrid *grid)
 {
-  GtkGridPrivate *priv;
+  CtkGridPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_GRID (grid), 0);
 

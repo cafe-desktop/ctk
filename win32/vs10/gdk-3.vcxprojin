@@ -145,9 +145,9 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(GdkAdditionalLibs);%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
@@ -168,10 +168,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(GdkAdditionalLibs);$(GdkBroadwayAdditionalLibs);%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
@@ -188,10 +188,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(GdkAdditionalLibs);%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -210,10 +210,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(GdkAdditionalLibs);$(GdkBroadwayAdditionalLibs);%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -235,10 +235,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(GdkAdditionalLibs);%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
@@ -258,10 +258,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(GdkAdditionalLibs);$(GdkBroadwayAdditionalLibs);%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
@@ -278,10 +278,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(GdkAdditionalLibs);%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -300,10 +300,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(GdkAdditionalLibs);$(GdkBroadwayAdditionalLibs);%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).dll</OutputFile>
+      <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(GtkDllPrefix)$(ProjectName)$(GtkDllSuffix).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

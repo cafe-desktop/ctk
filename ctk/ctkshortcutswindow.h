@@ -24,34 +24,34 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SHORTCUTS_WINDOW            (ctk_shortcuts_window_get_type ())
-#define CTK_SHORTCUTS_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindow))
-#define CTK_SHORTCUTS_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindowClass))
+#define CTK_SHORTCUTS_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUTS_WINDOW, CtkShortcutsWindow))
+#define CTK_SHORTCUTS_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUTS_WINDOW, CtkShortcutsWindowClass))
 #define CTK_IS_SHORTCUTS_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SHORTCUTS_WINDOW))
 #define CTK_IS_SHORTCUTS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SHORTCUTS_WINDOW))
-#define CTK_SHORTCUTS_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindowClass))
+#define CTK_SHORTCUTS_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUTS_WINDOW, CtkShortcutsWindowClass))
 
 
-typedef struct _GtkShortcutsWindow         GtkShortcutsWindow;
-typedef struct _GtkShortcutsWindowClass    GtkShortcutsWindowClass;
+typedef struct _CtkShortcutsWindow         CtkShortcutsWindow;
+typedef struct _CtkShortcutsWindowClass    CtkShortcutsWindowClass;
 
 
-struct _GtkShortcutsWindow
+struct _CtkShortcutsWindow
 {
-  GtkWindow window;
+  CtkWindow window;
 };
 
-struct _GtkShortcutsWindowClass
+struct _CtkShortcutsWindowClass
 {
-  GtkWindowClass parent_class;
+  CtkWindowClass parent_class;
 
-  void (*close)  (GtkShortcutsWindow *self);
-  void (*search) (GtkShortcutsWindow *self);
+  void (*close)  (CtkShortcutsWindow *self);
+  void (*search) (CtkShortcutsWindow *self);
 };
 
 GDK_AVAILABLE_IN_3_20
 GType ctk_shortcuts_window_get_type (void) G_GNUC_CONST;
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkShortcutsWindow, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkShortcutsWindow, g_object_unref)
 
 G_END_DECLS
 

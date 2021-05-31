@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="default_width">600</property>
     <property name="default_height">600</property>
     <child>
-      <object class="GtkBox" id="containerbox">
+      <object class="CtkBox" id="containerbox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -14,7 +14,7 @@
         <property name="halign">center</property>
         <property name="spacing">6</property>
         <child>
-          <object class="GtkBox" id="box1">
+          <object class="CtkBox" id="box1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
@@ -22,7 +22,7 @@
             <property name="halign">center</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="CtkButton" id="button1">
                 <property name="label" translatable="yes">Hi, I am a button</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
@@ -37,7 +37,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="button2">
+              <object class="CtkToggleButton" id="button2">
                 <property name="label" translatable="yes">And I'm the suggested action</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
@@ -57,7 +57,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkToolbar" id="toolbar">
+          <object class="CtkToolbar" id="toolbar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
@@ -66,7 +66,7 @@
               <class name="menubar"/>
             </style>
             <child>
-              <object class="GtkToggleToolButton" id="toolbutton7">
+              <object class="CtkToggleToolButton" id="toolbutton7">
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>

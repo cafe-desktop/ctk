@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * ctkfilesystemmodel.c: GtkTreeModel wrapping a GtkFileSystem
+ * ctkfilesystemmodel.c: CtkTreeModel wrapping a CtkFileSystem
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -30,9 +30,9 @@
 #include "ctktreednd.h"
 #include "ctktreemodel.h"
 
-/*** Structure: how GtkFileSystemModel works
+/*** Structure: how CtkFileSystemModel works
  *
- * This is a custom GtkTreeModel used to hold a collection of files for GtkFileChooser.  There are two use cases:
+ * This is a custom CtkTreeModel used to hold a collection of files for CtkFileChooser.  There are two use cases:
  *
  *   1. The model populates itself from a folder, using the GIO file enumerator API.  This happens if you use
  *      _ctk_file_system_model_new_for_directory().  This is the normal usage for showing the contents of a folder.
@@ -67,7 +67,7 @@
  * (model->file_lookup) are already added to the hash table. The hash table will get cleared when we re-sort the
  * files, as the array will be in a different order and the indexes need to be rebuilt.
  *
- * Each FileModelNode has a node->visible field, which indicates whether the node is visible in the GtkTreeView.
+ * Each FileModelNode has a node->visible field, which indicates whether the node is visible in the CtkTreeView.
  * A node may be invisible if, for example, it corresponds to a hidden file and the file chooser is not showing
  * hidden files.  Also, a file filter may be explicitly set onto the model, for example, to only show files that
  * match “*.jpg”.  In this case, node->filtered_out says whether the node failed the filter.  The ultimate
@@ -84,14 +84,14 @@
  *   index - An index in the model->files array.  All variables/fields that represent indexes are either called
  *   “index” or “i_*”, or simply “i” for things like loop counters.
  *
- *   row - An index in the GtkTreeView, i.e. the index of a row within the outward-facing API of the
- *   GtkFileSystemModel.  However, note that our rows are 1-based, not 0-based, for the reason explained in the
+ *   row - An index in the CtkTreeView, i.e. the index of a row within the outward-facing API of the
+ *   CtkFileSystemModel.  However, note that our rows are 1-based, not 0-based, for the reason explained in the
  *   following paragraph.  Variables/fields that represent visible rows are called “row”, or “r_*”, or simply
  *   “r”.
  *
  * Each FileModelNode has a node->row field which is the number of visible rows in the treeview, *before and
  * including* that node.  This means that node->row is 1-based, instead of 0-based --- this makes some code
- * simpler, believe it or not :)  This also means that when the calling GtkTreeView gives us a GtkTreePath, we
+ * simpler, believe it or not :)  This also means that when the calling CtkTreeView gives us a CtkTreePath, we
  * turn the 0-based treepath into a 1-based row for our purposes.  If a node is not visible, it will have the
  * same row number as its closest preceding visible node.
  *
@@ -109,7 +109,7 @@
  * Sorting
  * -------
  *
- * The model implements the GtkTreeSortable interface.  To avoid re-sorting
+ * The model implements the CtkTreeSortable interface.  To avoid re-sorting
  * every time a node gets added (which would lead to O(n^2) performance during
  * the initial population of the model), the model can freeze itself (with
  * freeze_updates()) during the intial population process.  When the model is
@@ -128,7 +128,7 @@
 #define FILES_PER_QUERY 100
 
 typedef struct _FileModelNode           FileModelNode;
-typedef struct _GtkFileSystemModelClass GtkFileSystemModelClass;
+typedef struct _CtkFileSystemModelClass CtkFileSystemModelClass;
 
 struct _FileModelNode
 {
@@ -146,7 +146,7 @@ struct _FileModelNode
   GValue                values[1];      /* actually n_columns values */
 };
 
-struct _GtkFileSystemModel
+struct _CtkFileSystemModel
 {
   GObject               parent_instance;
 
@@ -168,15 +168,15 @@ struct _GtkFileSystemModel
 
   guint                 n_columns;      /* number of columns */
   GType *               column_types;   /* types of each column */
-  GtkFileSystemModelGetValue get_func;  /* function to call to fill in values in columns */
+  CtkFileSystemModelGetValue get_func;  /* function to call to fill in values in columns */
   gpointer              get_data;       /* data to pass to get_func */
 
-  GtkFileFilter *       filter;         /* filter to use for deciding which nodes are visible */
+  CtkFileFilter *       filter;         /* filter to use for deciding which nodes are visible */
 
   int                   sort_column_id; /* current sorting column */
-  GtkSortType           sort_order;     /* current sorting order */
+  CtkSortType           sort_order;     /* current sorting order */
   GList *               sort_list;      /* list of sorting functions */
-  GtkTreeIterCompareFunc default_sort_func; /* default sort function */
+  CtkTreeIterCompareFunc default_sort_func; /* default sort function */
   gpointer              default_sort_data; /* data to pass to default sort func */
   GDestroyNotify        default_sort_destroy; /* function to call to destroy default_sort_data */
 
@@ -191,29 +191,29 @@ struct _GtkFileSystemModel
   guint                 filter_folders :1;/* whether filter applies to folders */
 };
 
-#define CTK_FILE_SYSTEM_MODEL_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_SYSTEM_MODEL, GtkFileSystemModelClass))
+#define CTK_FILE_SYSTEM_MODEL_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_SYSTEM_MODEL, CtkFileSystemModelClass))
 #define CTK_IS_FILE_SYSTEM_MODEL_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FILE_SYSTEM_MODEL))
-#define CTK_FILE_SYSTEM_MODEL_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_SYSTEM_MODEL, GtkFileSystemModelClass))
+#define CTK_FILE_SYSTEM_MODEL_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_SYSTEM_MODEL, CtkFileSystemModelClass))
 
-struct _GtkFileSystemModelClass
+struct _CtkFileSystemModelClass
 {
   GObjectClass parent_class;
 
   /* Signals */
 
-  void (*finished_loading) (GtkFileSystemModel *model, GError *error);
+  void (*finished_loading) (CtkFileSystemModel *model, GError *error);
 };
 
-static void freeze_updates (GtkFileSystemModel *model);
-static void thaw_updates (GtkFileSystemModel *model);
+static void freeze_updates (CtkFileSystemModel *model);
+static void thaw_updates (CtkFileSystemModel *model);
 
-static guint node_get_for_file (GtkFileSystemModel *model,
+static guint node_get_for_file (CtkFileSystemModel *model,
 				GFile              *file);
 
-static void add_file (GtkFileSystemModel *model,
+static void add_file (CtkFileSystemModel *model,
 		      GFile              *file,
 		      GFileInfo          *info);
-static void remove_file (GtkFileSystemModel *model,
+static void remove_file (CtkFileSystemModel *model,
 			 GFile              *file);
 
 /* iter setup:
@@ -247,7 +247,7 @@ static void remove_file (GtkFileSystemModel *model,
  * G_MAXUINT for both arguments for “validate everything”.
  */
 static void
-node_validate_rows (GtkFileSystemModel *model, guint up_to_index, guint up_to_row)
+node_validate_rows (CtkFileSystemModel *model, guint up_to_index, guint up_to_row)
 {
   guint i, row;
 
@@ -274,7 +274,7 @@ node_validate_rows (GtkFileSystemModel *model, guint up_to_index, guint up_to_ro
 }
 
 static guint
-node_get_tree_row (GtkFileSystemModel *model, guint index)
+node_get_tree_row (CtkFileSystemModel *model, guint index)
 {
   if (model->n_nodes_valid <= index)
     node_validate_rows (model, index, G_MAXUINT);
@@ -283,13 +283,13 @@ node_get_tree_row (GtkFileSystemModel *model, guint index)
 }
 
 static void 
-node_invalidate_index (GtkFileSystemModel *model, guint id)
+node_invalidate_index (CtkFileSystemModel *model, guint id)
 {
   model->n_nodes_valid = MIN (model->n_nodes_valid, id);
 }
 
-static GtkTreePath *
-tree_path_new_from_node (GtkFileSystemModel *model, guint id)
+static CtkTreePath *
+tree_path_new_from_node (CtkFileSystemModel *model, guint id)
 {
   guint r = node_get_tree_row (model, id);
 
@@ -299,10 +299,10 @@ tree_path_new_from_node (GtkFileSystemModel *model, guint id)
 }
 
 static void
-emit_row_inserted_for_node (GtkFileSystemModel *model, guint id)
+emit_row_inserted_for_node (CtkFileSystemModel *model, guint id)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   path = tree_path_new_from_node (model, id);
   ITER_INIT_FROM_INDEX (model, &iter, id);
@@ -311,10 +311,10 @@ emit_row_inserted_for_node (GtkFileSystemModel *model, guint id)
 }
 
 static void
-emit_row_changed_for_node (GtkFileSystemModel *model, guint id)
+emit_row_changed_for_node (CtkFileSystemModel *model, guint id)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   path = tree_path_new_from_node (model, id);
   ITER_INIT_FROM_INDEX (model, &iter, id);
@@ -323,9 +323,9 @@ emit_row_changed_for_node (GtkFileSystemModel *model, guint id)
 }
 
 static void
-emit_row_deleted_for_row (GtkFileSystemModel *model, guint row)
+emit_row_deleted_for_row (CtkFileSystemModel *model, guint row)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_path_new_from_indices (row, -1);
   ctk_tree_model_row_deleted (CTK_TREE_MODEL (model), path);
@@ -333,7 +333,7 @@ emit_row_deleted_for_row (GtkFileSystemModel *model, guint row)
 }
 
 static void
-node_set_visible_and_filtered_out (GtkFileSystemModel *model, guint id, gboolean visible, gboolean filtered_out)
+node_set_visible_and_filtered_out (CtkFileSystemModel *model, guint id, gboolean visible, gboolean filtered_out)
 {
   FileModelNode *node = get_node (model, id);
 
@@ -372,11 +372,11 @@ node_set_visible_and_filtered_out (GtkFileSystemModel *model, guint id, gboolean
 }
 
 static gboolean
-node_should_be_filtered_out (GtkFileSystemModel *model, guint id)
+node_should_be_filtered_out (CtkFileSystemModel *model, guint id)
 {
   FileModelNode *node = get_node (model, id);
-  GtkFileFilterInfo filter_info = { 0, };
-  GtkFileFilterFlags required;
+  CtkFileFilterInfo filter_info = { 0, };
+  CtkFileFilterFlags required;
   gboolean result;
   char *mime_type = NULL;
   char *filename = NULL;
@@ -442,7 +442,7 @@ node_should_be_filtered_out (GtkFileSystemModel *model, guint id)
 }
 
 static gboolean
-node_should_be_visible (GtkFileSystemModel *model, guint id, gboolean filtered_out)
+node_should_be_visible (CtkFileSystemModel *model, guint id, gboolean filtered_out)
 {
   FileModelNode *node = get_node (model, id);
   gboolean result;
@@ -474,7 +474,7 @@ node_should_be_visible (GtkFileSystemModel *model, guint id, gboolean filtered_o
 }
 
 static void
-node_compute_visibility_and_filters (GtkFileSystemModel *model, guint id)
+node_compute_visibility_and_filters (CtkFileSystemModel *model, guint id)
 {
   gboolean filtered_out;
   gboolean visible;
@@ -485,28 +485,28 @@ node_compute_visibility_and_filters (GtkFileSystemModel *model, guint id)
   node_set_visible_and_filtered_out (model, id, visible, filtered_out);
 }
 
-/*** GtkTreeModel ***/
+/*** CtkTreeModel ***/
 
-static GtkTreeModelFlags
-ctk_file_system_model_get_flags (GtkTreeModel *tree_model)
+static CtkTreeModelFlags
+ctk_file_system_model_get_flags (CtkTreeModel *tree_model)
 {
   /* CTK_TREE_MODEL_ITERS_PERSIST doesn't work with arrays :( */
   return CTK_TREE_MODEL_LIST_ONLY;
 }
 
 static gint
-ctk_file_system_model_get_n_columns (GtkTreeModel *tree_model)
+ctk_file_system_model_get_n_columns (CtkTreeModel *tree_model)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
   
   return model->n_columns;
 }
 
 static GType
-ctk_file_system_model_get_column_type (GtkTreeModel *tree_model,
+ctk_file_system_model_get_column_type (CtkTreeModel *tree_model,
 				       gint          i)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
   
   g_return_val_if_fail (i >= 0 && (guint) i < model->n_columns, G_TYPE_NONE);
 
@@ -522,12 +522,12 @@ compare_indices (gconstpointer key, gconstpointer _node)
 }
 
 static gboolean
-ctk_file_system_model_iter_nth_child (GtkTreeModel *tree_model,
-				      GtkTreeIter  *iter,
-				      GtkTreeIter  *parent,
+ctk_file_system_model_iter_nth_child (CtkTreeModel *tree_model,
+				      CtkTreeIter  *iter,
+				      CtkTreeIter  *parent,
 				      gint          n)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
   char *node;
   guint id;
   guint row_to_find;
@@ -577,9 +577,9 @@ ctk_file_system_model_iter_nth_child (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_file_system_model_get_iter (GtkTreeModel *tree_model,
-				GtkTreeIter  *iter,
-				GtkTreePath  *path)
+ctk_file_system_model_get_iter (CtkTreeModel *tree_model,
+				CtkTreeIter  *iter,
+				CtkTreePath  *path)
 {
   g_return_val_if_fail (ctk_tree_path_get_depth (path) > 0, FALSE);
 
@@ -592,11 +592,11 @@ ctk_file_system_model_get_iter (GtkTreeModel *tree_model,
                                                ctk_tree_path_get_indices (path)[0]);
 }
 
-static GtkTreePath *
-ctk_file_system_model_get_path (GtkTreeModel *tree_model,
-				GtkTreeIter  *iter)
+static CtkTreePath *
+ctk_file_system_model_get_path (CtkTreeModel *tree_model,
+				CtkTreeIter  *iter)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
       
   g_return_val_if_fail (ITER_IS_VALID (model, iter), NULL);
 
@@ -604,12 +604,12 @@ ctk_file_system_model_get_path (GtkTreeModel *tree_model,
 }
 
 static void
-ctk_file_system_model_get_value (GtkTreeModel *tree_model,
-				 GtkTreeIter  *iter,
+ctk_file_system_model_get_value (CtkTreeModel *tree_model,
+				 CtkTreeIter  *iter,
 				 gint          column,
 				 GValue       *value)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
   const GValue *original;
   
   g_return_if_fail ((guint) column < model->n_columns);
@@ -626,10 +626,10 @@ ctk_file_system_model_get_value (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_file_system_model_iter_next (GtkTreeModel *tree_model,
-				 GtkTreeIter  *iter)
+ctk_file_system_model_iter_next (CtkTreeModel *tree_model,
+				 CtkTreeIter  *iter)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
   guint i;
 
   g_return_val_if_fail (ITER_IS_VALID (model, iter), FALSE);
@@ -649,25 +649,25 @@ ctk_file_system_model_iter_next (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_file_system_model_iter_children (GtkTreeModel *tree_model,
-				     GtkTreeIter  *iter,
-				     GtkTreeIter  *parent)
+ctk_file_system_model_iter_children (CtkTreeModel *tree_model,
+				     CtkTreeIter  *iter,
+				     CtkTreeIter  *parent)
 {
   return FALSE;
 }
 
 static gboolean
-ctk_file_system_model_iter_has_child (GtkTreeModel *tree_model,
-				      GtkTreeIter  *iter)
+ctk_file_system_model_iter_has_child (CtkTreeModel *tree_model,
+				      CtkTreeIter  *iter)
 {
   return FALSE;
 }
 
 static gint
-ctk_file_system_model_iter_n_children (GtkTreeModel *tree_model,
-				       GtkTreeIter  *iter)
+ctk_file_system_model_iter_n_children (CtkTreeModel *tree_model,
+				       CtkTreeIter  *iter)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
 
   if (iter)
     return 0;
@@ -676,29 +676,29 @@ ctk_file_system_model_iter_n_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_file_system_model_iter_parent (GtkTreeModel *tree_model,
-				   GtkTreeIter  *iter,
-				   GtkTreeIter  *child)
+ctk_file_system_model_iter_parent (CtkTreeModel *tree_model,
+				   CtkTreeIter  *iter,
+				   CtkTreeIter  *child)
 {
   return FALSE;
 }
 
 static void
-ctk_file_system_model_ref_node (GtkTreeModel *tree_model,
-				GtkTreeIter  *iter)
+ctk_file_system_model_ref_node (CtkTreeModel *tree_model,
+				CtkTreeIter  *iter)
 {
   /* nothing to do */
 }
 
 static void
-ctk_file_system_model_unref_node (GtkTreeModel *tree_model,
-				  GtkTreeIter  *iter)
+ctk_file_system_model_unref_node (CtkTreeModel *tree_model,
+				  CtkTreeIter  *iter)
 {
   /* nothing to do */
 }
 
 static void
-ctk_file_system_model_iface_init (GtkTreeModelIface *iface)
+ctk_file_system_model_iface_init (CtkTreeModelIface *iface)
 {
   iface->get_flags =       ctk_file_system_model_get_flags;
   iface->get_n_columns =   ctk_file_system_model_get_n_columns;
@@ -716,21 +716,21 @@ ctk_file_system_model_iface_init (GtkTreeModelIface *iface)
   iface->unref_node =      ctk_file_system_model_unref_node;
 }
 
-/*** GtkTreeSortable ***/
+/*** CtkTreeSortable ***/
 
 typedef struct _SortData SortData;
 struct _SortData {
-  GtkFileSystemModel *    model;
-  GtkTreeIterCompareFunc  func;
+  CtkFileSystemModel *    model;
+  CtkTreeIterCompareFunc  func;
   gpointer                data;
   int                     order;        /* -1 to invert sort order or 1 to keep it */
 };
 
 /* returns FALSE if no sort necessary */
 static gboolean
-sort_data_init (SortData *data, GtkFileSystemModel *model)
+sort_data_init (SortData *data, CtkFileSystemModel *model)
 {
-  GtkTreeDataSortHeader *header;
+  CtkTreeDataSortHeader *header;
 
   if (model->files->len <= 2)
     return FALSE;
@@ -763,7 +763,7 @@ static int
 compare_array_element (gconstpointer a, gconstpointer b, gpointer user_data)
 {
   SortData *data = user_data;
-  GtkTreeIter itera, iterb;
+  CtkTreeIter itera, iterb;
 
   ITER_INIT_FROM_INDEX (data->model, &itera, node_index (data->model, a));
   ITER_INIT_FROM_INDEX (data->model, &iterb, node_index (data->model, b));
@@ -771,7 +771,7 @@ compare_array_element (gconstpointer a, gconstpointer b, gpointer user_data)
 }
 
 static void
-ctk_file_system_model_sort (GtkFileSystemModel *model)
+ctk_file_system_model_sort (CtkFileSystemModel *model)
 {
   SortData data;
 
@@ -783,7 +783,7 @@ ctk_file_system_model_sort (GtkFileSystemModel *model)
 
   if (sort_data_init (&data, model))
     {
-      GtkTreePath *path;
+      CtkTreePath *path;
       guint i;
       guint r, n_visible_rows;
 
@@ -831,18 +831,18 @@ ctk_file_system_model_sort (GtkFileSystemModel *model)
 }
 
 static void
-ctk_file_system_model_sort_node (GtkFileSystemModel *model, guint node)
+ctk_file_system_model_sort_node (CtkFileSystemModel *model, guint node)
 {
   /* FIXME: improve */
   ctk_file_system_model_sort (model);
 }
 
 static gboolean
-ctk_file_system_model_get_sort_column_id (GtkTreeSortable  *sortable,
+ctk_file_system_model_get_sort_column_id (CtkTreeSortable  *sortable,
                                           gint             *sort_column_id,
-                                          GtkSortType      *order)
+                                          CtkSortType      *order)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
 
   if (sort_column_id)
     *sort_column_id = model->sort_column_id;
@@ -857,11 +857,11 @@ ctk_file_system_model_get_sort_column_id (GtkTreeSortable  *sortable,
 }
 
 static void
-ctk_file_system_model_set_sort_column_id (GtkTreeSortable  *sortable,
+ctk_file_system_model_set_sort_column_id (CtkTreeSortable  *sortable,
                                           gint              sort_column_id,
-                                          GtkSortType       order)
+                                          CtkSortType       order)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
 
   if ((model->sort_column_id == sort_column_id) &&
       (model->sort_order == order))
@@ -871,7 +871,7 @@ ctk_file_system_model_set_sort_column_id (GtkTreeSortable  *sortable,
     {
       if (sort_column_id != CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID)
 	{
-	  GtkTreeDataSortHeader *header = NULL;
+	  CtkTreeDataSortHeader *header = NULL;
 
 	  header = _ctk_tree_data_list_get_header (model->sort_list, 
 						   sort_column_id);
@@ -896,13 +896,13 @@ ctk_file_system_model_set_sort_column_id (GtkTreeSortable  *sortable,
 }
 
 static void
-ctk_file_system_model_set_sort_func (GtkTreeSortable        *sortable,
+ctk_file_system_model_set_sort_func (CtkTreeSortable        *sortable,
                                      gint                    sort_column_id,
-                                     GtkTreeIterCompareFunc  func,
+                                     CtkTreeIterCompareFunc  func,
                                      gpointer                data,
                                      GDestroyNotify          destroy)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
 
   model->sort_list = _ctk_tree_data_list_set_header (model->sort_list, 
                                                      sort_column_id, 
@@ -913,12 +913,12 @@ ctk_file_system_model_set_sort_func (GtkTreeSortable        *sortable,
 }
 
 static void
-ctk_file_system_model_set_default_sort_func (GtkTreeSortable        *sortable,
-                                             GtkTreeIterCompareFunc  func,
+ctk_file_system_model_set_default_sort_func (CtkTreeSortable        *sortable,
+                                             CtkTreeIterCompareFunc  func,
                                              gpointer                data,
                                              GDestroyNotify          destroy)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
 
   if (model->default_sort_destroy)
     {
@@ -937,15 +937,15 @@ ctk_file_system_model_set_default_sort_func (GtkTreeSortable        *sortable,
 }
 
 static gboolean
-ctk_file_system_model_has_default_sort_func (GtkTreeSortable *sortable)
+ctk_file_system_model_has_default_sort_func (CtkTreeSortable *sortable)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (sortable);
 
   return (model->default_sort_func != NULL);
 }
 
 static void
-ctk_file_system_model_sortable_init (GtkTreeSortableIface *iface)
+ctk_file_system_model_sortable_init (CtkTreeSortableIface *iface)
 {
   iface->get_sort_column_id = ctk_file_system_model_get_sort_column_id;
   iface->set_sort_column_id = ctk_file_system_model_set_sort_column_id;
@@ -954,14 +954,14 @@ ctk_file_system_model_sortable_init (GtkTreeSortableIface *iface)
   iface->has_default_sort_func = ctk_file_system_model_has_default_sort_func;
 }
 
-/*** GtkTreeDragSource ***/
+/*** CtkTreeDragSource ***/
 
 static gboolean
-drag_source_row_draggable (GtkTreeDragSource *drag_source,
-			   GtkTreePath       *path)
+drag_source_row_draggable (CtkTreeDragSource *drag_source,
+			   CtkTreePath       *path)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (drag_source);
-  GtkTreeIter iter;
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (drag_source);
+  CtkTreeIter iter;
 
   if (!ctk_file_system_model_get_iter (CTK_TREE_MODEL (model), &iter, path))
     return FALSE;
@@ -970,13 +970,13 @@ drag_source_row_draggable (GtkTreeDragSource *drag_source,
 }
 
 static gboolean
-drag_source_drag_data_get (GtkTreeDragSource *drag_source,
-			   GtkTreePath       *path,
-			   GtkSelectionData  *selection_data)
+drag_source_drag_data_get (CtkTreeDragSource *drag_source,
+			   CtkTreePath       *path,
+			   CtkSelectionData  *selection_data)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (drag_source);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (drag_source);
   FileModelNode *node;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   char *uris[2]; 
 
   if (!ctk_file_system_model_get_iter (CTK_TREE_MODEL (model), &iter, path))
@@ -995,14 +995,14 @@ drag_source_drag_data_get (GtkTreeDragSource *drag_source,
 }
 
 static void
-drag_source_iface_init (GtkTreeDragSourceIface *iface)
+drag_source_iface_init (CtkTreeDragSourceIface *iface)
 {
   iface->row_draggable = drag_source_row_draggable;
   iface->drag_data_get = drag_source_drag_data_get;
   iface->drag_data_delete = NULL;
 }
 
-/*** GtkFileSystemModel ***/
+/*** CtkFileSystemModel ***/
 
 /* Signal IDs */
 enum {
@@ -1014,7 +1014,7 @@ static guint file_system_model_signals[LAST_SIGNAL] = { 0 };
 
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkFileSystemModel, _ctk_file_system_model, G_TYPE_OBJECT,
+G_DEFINE_TYPE_WITH_CODE (CtkFileSystemModel, _ctk_file_system_model, G_TYPE_OBJECT,
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_MODEL,
 						ctk_file_system_model_iface_init)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_SORTABLE,
@@ -1025,7 +1025,7 @@ G_DEFINE_TYPE_WITH_CODE (GtkFileSystemModel, _ctk_file_system_model, G_TYPE_OBJE
 static void
 ctk_file_system_model_dispose (GObject *object)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (object);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (object);
 
   if (model->dir_thaw_source)
     {
@@ -1044,7 +1044,7 @@ ctk_file_system_model_dispose (GObject *object)
 static void
 ctk_file_system_model_finalize (GObject *object)
 {
-  GtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (object);
+  CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (object);
   guint i;
 
   for (i = 0; i < model->files->len; i++)
@@ -1083,7 +1083,7 @@ ctk_file_system_model_finalize (GObject *object)
 }
 
 static void
-_ctk_file_system_model_class_init (GtkFileSystemModelClass *class)
+_ctk_file_system_model_class_init (CtkFileSystemModelClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
@@ -1094,14 +1094,14 @@ _ctk_file_system_model_class_init (GtkFileSystemModelClass *class)
     g_signal_new (I_("finished-loading"),
 		  G_OBJECT_CLASS_TYPE (gobject_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkFileSystemModelClass, finished_loading),
+		  G_STRUCT_OFFSET (CtkFileSystemModelClass, finished_loading),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, G_TYPE_POINTER);
 }
 
 static void
-_ctk_file_system_model_init (GtkFileSystemModel *model)
+_ctk_file_system_model_init (CtkFileSystemModel *model)
 {
   model->show_files = TRUE;
   model->show_folders = TRUE;
@@ -1125,7 +1125,7 @@ ctk_file_system_model_closed_enumerator (GObject *object, GAsyncResult *res, gpo
 static gboolean
 thaw_func (gpointer data)
 {
-  GtkFileSystemModel *model = data;
+  CtkFileSystemModel *model = data;
 
   thaw_updates (model);
   model->dir_thaw_source = 0;
@@ -1137,7 +1137,7 @@ static void
 ctk_file_system_model_got_files (GObject *object, GAsyncResult *res, gpointer data)
 {
   GFileEnumerator *enumerator = G_FILE_ENUMERATOR (object);
-  GtkFileSystemModel *model = data;
+  CtkFileSystemModel *model = data;
   GList *walk, *files;
   GError *error = NULL;
 
@@ -1220,7 +1220,7 @@ query_done_helper (GObject *     object,
                    gpointer      data,
                    gboolean      do_thaw_updates)
 {
-  GtkFileSystemModel *model;
+  CtkFileSystemModel *model;
   GFile *file = G_FILE (object);
   GFileInfo *info;
   guint id;
@@ -1259,7 +1259,7 @@ ctk_file_system_model_monitor_change (GFileMonitor *      monitor,
                                       GFile *             file,
                                       GFile *             other_file,
                                       GFileMonitorEvent   type,
-                                      GtkFileSystemModel *model)
+                                      CtkFileSystemModel *model)
 {
   switch (type)
     {
@@ -1293,7 +1293,7 @@ ctk_file_system_model_monitor_change (GFileMonitor *      monitor,
 static void
 ctk_file_system_model_got_enumerator (GObject *dir, GAsyncResult *res, gpointer data)
 {
-  GtkFileSystemModel *model = data;
+  CtkFileSystemModel *model = data;
   GFileEnumerator *enumerator;
   GError *error = NULL;
 
@@ -1332,7 +1332,7 @@ ctk_file_system_model_got_enumerator (GObject *dir, GAsyncResult *res, gpointer 
 }
 
 static void
-ctk_file_system_model_set_n_columns (GtkFileSystemModel *model,
+ctk_file_system_model_set_n_columns (CtkFileSystemModel *model,
                                      gint                n_columns,
                                      va_list             args)
 {
@@ -1351,7 +1351,7 @@ ctk_file_system_model_set_n_columns (GtkFileSystemModel *model,
       GType type = va_arg (args, GType);
       if (! _ctk_tree_data_list_check_type (type))
 	{
-	  g_error ("%s: type %s cannot be a column type for GtkFileSystemModel\n", G_STRLOC, g_type_name (type));
+	  g_error ("%s: type %s cannot be a column type for CtkFileSystemModel\n", G_STRLOC, g_type_name (type));
           return; /* not reached */
 	}
 
@@ -1367,7 +1367,7 @@ ctk_file_system_model_set_n_columns (GtkFileSystemModel *model,
 }
 
 static void
-ctk_file_system_model_set_directory (GtkFileSystemModel *model,
+ctk_file_system_model_set_directory (CtkFileSystemModel *model,
                                      GFile *             dir,
 			             const gchar *       attributes)
 {
@@ -1386,13 +1386,13 @@ ctk_file_system_model_set_directory (GtkFileSystemModel *model,
 
 }
 
-static GtkFileSystemModel *
-_ctk_file_system_model_new_valist (GtkFileSystemModelGetValue get_func,
+static CtkFileSystemModel *
+_ctk_file_system_model_new_valist (CtkFileSystemModelGetValue get_func,
                                    gpointer            get_data,
                                    guint               n_columns,
                                    va_list             args)
 {
-  GtkFileSystemModel *model;
+  CtkFileSystemModel *model;
 
   model = g_object_new (CTK_TYPE_FILE_SYSTEM_MODEL, NULL);
   model->get_func = get_func;
@@ -1410,19 +1410,19 @@ _ctk_file_system_model_new_valist (GtkFileSystemModelGetValue get_func,
  * @n_columns: number of columns
  * @...: @n_columns #GType types for the columns
  *
- * Creates a new #GtkFileSystemModel object. You need to add files
+ * Creates a new #CtkFileSystemModel object. You need to add files
  * to the list using _ctk_file_system_model_add_and_query_file()
  * or _ctk_file_system_model_update_file().
  *
- * Returns: the newly created #GtkFileSystemModel
+ * Returns: the newly created #CtkFileSystemModel
  **/
-GtkFileSystemModel *
-_ctk_file_system_model_new (GtkFileSystemModelGetValue get_func,
+CtkFileSystemModel *
+_ctk_file_system_model_new (CtkFileSystemModelGetValue get_func,
                             gpointer            get_data,
                             guint               n_columns,
                             ...)
 {
-  GtkFileSystemModel *model;
+  CtkFileSystemModel *model;
   va_list args;
 
   g_return_val_if_fail (get_func != NULL, NULL);
@@ -1444,24 +1444,24 @@ _ctk_file_system_model_new (GtkFileSystemModelGetValue get_func,
  * @n_columns: number of columns
  * @...: @n_columns #GType types for the columns
  *
- * Creates a new #GtkFileSystemModel object. The #GtkFileSystemModel
- * object wraps the given @directory as a #GtkTreeModel.
+ * Creates a new #CtkFileSystemModel object. The #CtkFileSystemModel
+ * object wraps the given @directory as a #CtkTreeModel.
  * The model will query the given directory with the given @attributes
  * and add all files inside the directory automatically. If supported,
  * it will also monitor the drectory and update the model's
  * contents to reflect changes, if the @directory supports monitoring.
  * 
- * Returns: the newly created #GtkFileSystemModel
+ * Returns: the newly created #CtkFileSystemModel
  **/
-GtkFileSystemModel *
+CtkFileSystemModel *
 _ctk_file_system_model_new_for_directory (GFile *                    dir,
                                           const gchar *              attributes,
-                                          GtkFileSystemModelGetValue get_func,
+                                          CtkFileSystemModelGetValue get_func,
                                           gpointer                   get_data,
                                           guint                      n_columns,
                                           ...)
 {
-  GtkFileSystemModel *model;
+  CtkFileSystemModel *model;
   va_list args;
 
   g_return_val_if_fail (G_IS_FILE (dir), NULL);
@@ -1478,7 +1478,7 @@ _ctk_file_system_model_new_for_directory (GFile *                    dir,
 }
 
 static void
-ctk_file_system_model_refilter_all (GtkFileSystemModel *model)
+ctk_file_system_model_refilter_all (CtkFileSystemModel *model)
 {
   guint i;
 
@@ -1500,14 +1500,14 @@ ctk_file_system_model_refilter_all (GtkFileSystemModel *model)
 
 /**
  * _ctk_file_system_model_set_show_hidden:
- * @model: a #GtkFileSystemModel
+ * @model: a #CtkFileSystemModel
  * @show_hidden: whether hidden files should be displayed
  * 
- * Sets whether hidden files should be included in the #GtkTreeModel
+ * Sets whether hidden files should be included in the #CtkTreeModel
  * for display.
  **/
 void
-_ctk_file_system_model_set_show_hidden (GtkFileSystemModel *model,
+_ctk_file_system_model_set_show_hidden (CtkFileSystemModel *model,
 					gboolean            show_hidden)
 {
   g_return_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model));
@@ -1523,14 +1523,14 @@ _ctk_file_system_model_set_show_hidden (GtkFileSystemModel *model,
 
 /**
  * _ctk_file_system_model_set_show_folders:
- * @model: a #GtkFileSystemModel
+ * @model: a #CtkFileSystemModel
  * @show_folders: whether folders should be displayed
  * 
- * Sets whether folders should be included in the #GtkTreeModel for
+ * Sets whether folders should be included in the #CtkTreeModel for
  * display.
  **/
 void
-_ctk_file_system_model_set_show_folders (GtkFileSystemModel *model,
+_ctk_file_system_model_set_show_folders (CtkFileSystemModel *model,
 					 gboolean            show_folders)
 {
   g_return_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model));
@@ -1546,15 +1546,15 @@ _ctk_file_system_model_set_show_folders (GtkFileSystemModel *model,
 
 /**
  * _ctk_file_system_model_set_show_files:
- * @model: a #GtkFileSystemModel
+ * @model: a #CtkFileSystemModel
  * @show_files: whether files (as opposed to folders) should
  *              be displayed.
  * 
  * Sets whether files (as opposed to folders) should be included
- * in the #GtkTreeModel for display.
+ * in the #CtkTreeModel for display.
  **/
 void
-_ctk_file_system_model_set_show_files (GtkFileSystemModel *model,
+_ctk_file_system_model_set_show_files (CtkFileSystemModel *model,
 				       gboolean            show_files)
 {
   g_return_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model));
@@ -1570,7 +1570,7 @@ _ctk_file_system_model_set_show_files (GtkFileSystemModel *model,
 
 /**
  * _ctk_file_system_model_set_filter_folders:
- * @model: a #GtkFileSystemModel
+ * @model: a #CtkFileSystemModel
  * @filter_folders: whether the filter applies to folders
  * 
  * Sets whether the filter set by _ctk_file_system_model_set_filter()
@@ -1578,7 +1578,7 @@ _ctk_file_system_model_set_show_files (GtkFileSystemModel *model,
  * visible.
  **/
 void
-_ctk_file_system_model_set_filter_folders (GtkFileSystemModel *model,
+_ctk_file_system_model_set_filter_folders (CtkFileSystemModel *model,
 					   gboolean            filter_folders)
 {
   g_return_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model));
@@ -1604,7 +1604,7 @@ _ctk_file_system_model_set_filter_folders (GtkFileSystemModel *model,
  * Returns: The cancellable used by @model
  **/
 GCancellable *
-_ctk_file_system_model_get_cancellable (GtkFileSystemModel *model)
+_ctk_file_system_model_get_cancellable (CtkFileSystemModel *model)
 {
   g_return_val_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model), NULL);
 
@@ -1617,7 +1617,7 @@ _ctk_file_system_model_get_cancellable (GtkFileSystemModel *model)
  * @iter: a valid iterator
  *
  * Checks if the iterator is visible. A visible iterator references
- * a row that is currently exposed using the #GtkTreeModel API. If
+ * a row that is currently exposed using the #CtkTreeModel API. If
  * the iterator is invisible, it references a file that is not shown
  * for some reason, such as being filtered out by the current filter or
  * being a hidden file.
@@ -1625,8 +1625,8 @@ _ctk_file_system_model_get_cancellable (GtkFileSystemModel *model)
  * Returns: %TRUE if the iterator is visible
  **/
 gboolean
-_ctk_file_system_model_iter_is_visible (GtkFileSystemModel *model,
-					GtkTreeIter        *iter)
+_ctk_file_system_model_iter_is_visible (CtkFileSystemModel *model,
+					CtkTreeIter        *iter)
 {
   FileModelNode *node;
 
@@ -1651,8 +1651,8 @@ _ctk_file_system_model_iter_is_visible (GtkFileSystemModel *model,
  * filter would not have let the row pass.
  **/
 gboolean
-_ctk_file_system_model_iter_is_filtered_out (GtkFileSystemModel *model,
-					     GtkTreeIter        *iter)
+_ctk_file_system_model_iter_is_filtered_out (CtkFileSystemModel *model,
+					     CtkTreeIter        *iter)
 {
   FileModelNode *node;
 
@@ -1665,8 +1665,8 @@ _ctk_file_system_model_iter_is_filtered_out (GtkFileSystemModel *model,
 
 /**
  * _ctk_file_system_model_get_info:
- * @model: a #GtkFileSystemModel
- * @iter: a #GtkTreeIter pointing to a row of @model
+ * @model: a #CtkFileSystemModel
+ * @iter: a #CtkTreeIter pointing to a row of @model
  * 
  * Gets the #GFileInfo-struct for a particular row
  * of @model.
@@ -1678,8 +1678,8 @@ _ctk_file_system_model_iter_is_filtered_out (GtkFileSystemModel *model,
  *   freed on later changes to the file system.
  **/
 GFileInfo *
-_ctk_file_system_model_get_info (GtkFileSystemModel *model,
-				 GtkTreeIter        *iter)
+_ctk_file_system_model_get_info (CtkFileSystemModel *model,
+				 CtkTreeIter        *iter)
 {
   FileModelNode *node;
 
@@ -1693,8 +1693,8 @@ _ctk_file_system_model_get_info (GtkFileSystemModel *model,
 
 /**
  * _ctk_file_system_model_get_file:
- * @model: a #GtkFileSystemModel
- * @iter: a #GtkTreeIter pointing to a row of @model
+ * @model: a #CtkFileSystemModel
+ * @iter: a #CtkTreeIter pointing to a row of @model
  * 
  * Gets the file for a particular row in @model. 
  *
@@ -1704,8 +1704,8 @@ _ctk_file_system_model_get_info (GtkFileSystemModel *model,
  *   on later changes to the file system.
  **/
 GFile *
-_ctk_file_system_model_get_file (GtkFileSystemModel *model,
-				 GtkTreeIter        *iter)
+_ctk_file_system_model_get_file (CtkFileSystemModel *model,
+				 CtkTreeIter        *iter)
 {
   FileModelNode *node;
 
@@ -1717,8 +1717,8 @@ _ctk_file_system_model_get_file (GtkFileSystemModel *model,
 
 /**
  * _ctk_file_system_model_get_value:
- * @model: a #GtkFileSystemModel
- * @iter: a #GtkTreeIter pointing to a row of @model
+ * @model: a #CtkFileSystemModel
+ * @iter: a #CtkTreeIter pointing to a row of @model
  * @column: the column to get the value for
  *
  * Gets the value associated with the given row @iter and @column.
@@ -1733,8 +1733,8 @@ _ctk_file_system_model_get_file (GtkFileSystemModel *model,
  *          if no value available yet.
  **/
 const GValue *
-_ctk_file_system_model_get_value (GtkFileSystemModel *model,
-                                  GtkTreeIter *       iter,
+_ctk_file_system_model_get_value (CtkFileSystemModel *model,
+                                  CtkTreeIter *       iter,
                                   int                 column)
 {
   FileModelNode *node;
@@ -1763,7 +1763,7 @@ _ctk_file_system_model_get_value (GtkFileSystemModel *model,
 }
 
 static guint
-node_get_for_file (GtkFileSystemModel *model,
+node_get_for_file (CtkFileSystemModel *model,
                    GFile *             file)
 {
   guint i;
@@ -1808,8 +1808,8 @@ node_get_for_file (GtkFileSystemModel *model,
  * Returns: %TRUE if file is part of the model and @iter was initialized
  **/
 gboolean
-_ctk_file_system_model_get_iter_for_file (GtkFileSystemModel *model,
-					  GtkTreeIter        *iter,
+_ctk_file_system_model_get_iter_for_file (CtkFileSystemModel *model,
+					  CtkTreeIter        *iter,
 					  GFile *             file)
 {
   guint i;
@@ -1834,7 +1834,7 @@ _ctk_file_system_model_get_iter_for_file (GtkFileSystemModel *model,
  * mappings up or down when a node is added or removed, respectively.
  */
 static void
-adjust_file_lookup (GtkFileSystemModel *model, guint id, int increment)
+adjust_file_lookup (CtkFileSystemModel *model, guint id, int increment)
 {
   GHashTableIter iter;
   gpointer key;
@@ -1864,7 +1864,7 @@ adjust_file_lookup (GtkFileSystemModel *model, guint id, int increment)
  * If the model is frozen, the file will only show up after it is thawn.
  **/
 static void
-add_file (GtkFileSystemModel *model,
+add_file (CtkFileSystemModel *model,
 	  GFile              *file,
 	  GFileInfo          *info)
 {
@@ -1899,7 +1899,7 @@ add_file (GtkFileSystemModel *model,
  * @model, this function does nothing.
  **/
 static void
-remove_file (GtkFileSystemModel *model,
+remove_file (CtkFileSystemModel *model,
 	     GFile              *file)
 {
   FileModelNode *node;
@@ -1946,7 +1946,7 @@ remove_file (GtkFileSystemModel *model,
  * @model, it will get added automatically.
  **/
 void
-_ctk_file_system_model_update_file (GtkFileSystemModel *model,
+_ctk_file_system_model_update_file (CtkFileSystemModel *model,
                                     GFile              *file,
                                     GFileInfo          *info)
 {
@@ -1983,7 +1983,7 @@ _ctk_file_system_model_update_file (GtkFileSystemModel *model,
 }
 
 void
-_ctk_file_system_model_update_files (GtkFileSystemModel *model,
+_ctk_file_system_model_update_files (CtkFileSystemModel *model,
                                      GList              *files,
                                      GList              *infos)
 {
@@ -2001,7 +2001,7 @@ _ctk_file_system_model_update_files (GtkFileSystemModel *model,
 
 /**
  * _ctk_file_system_model_set_filter:
- * @mode: a #GtkFileSystemModel
+ * @mode: a #CtkFileSystemModel
  * @filter: (allow-none): %NULL or filter to use
  * 
  * Sets a filter to be used for deciding if a row should be visible or not.
@@ -2009,10 +2009,10 @@ _ctk_file_system_model_update_files (GtkFileSystemModel *model,
  * _ctk_file_system_model_set_filter_folders().
  **/
 void
-_ctk_file_system_model_set_filter (GtkFileSystemModel      *model,
-				   GtkFileFilter *          filter)
+_ctk_file_system_model_set_filter (CtkFileSystemModel      *model,
+				   CtkFileFilter *          filter)
 {
-  GtkFileFilter *old_filter;
+  CtkFileFilter *old_filter;
 
   g_return_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model));
   g_return_if_fail (filter == NULL || CTK_IS_FILE_FILTER (filter));
@@ -2031,7 +2031,7 @@ _ctk_file_system_model_set_filter (GtkFileSystemModel      *model,
 
 /**
  * freeze_updates:
- * @model: a #GtkFileSystemModel
+ * @model: a #CtkFileSystemModel
  *
  * Freezes most updates on the model, so that performing multiple operations on
  * the files in the model do not cause any events.  Use thaw_updates() to resume
@@ -2039,7 +2039,7 @@ _ctk_file_system_model_set_filter (GtkFileSystemModel      *model,
  * freeze and thaw calls are balanced.
  **/
 static void
-freeze_updates (GtkFileSystemModel *model)
+freeze_updates (CtkFileSystemModel *model)
 {
   g_return_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model));
 
@@ -2048,12 +2048,12 @@ freeze_updates (GtkFileSystemModel *model)
 
 /**
  * thaw_updates:
- * @model: a #GtkFileSystemModel
+ * @model: a #CtkFileSystemModel
  *
  * Undoes the effect of a previous call to freeze_updates() 
  **/
 static void
-thaw_updates (GtkFileSystemModel *model)
+thaw_updates (CtkFileSystemModel *model)
 {
   gboolean stuff_added;
 
@@ -2088,7 +2088,7 @@ thaw_updates (GtkFileSystemModel *model)
 
 /**
  * _ctk_file_system_model_clear_cache:
- * @model: a #GtkFileSystemModel
+ * @model: a #CtkFileSystemModel
  * @column: the column to clear or -1 for all columns
  *
  * Clears the cached values in the model for the given @column. Use 
@@ -2098,7 +2098,7 @@ thaw_updates (GtkFileSystemModel *model)
  * invalidate the cached pixbufs.
  **/
 void
-_ctk_file_system_model_clear_cache (GtkFileSystemModel *model,
+_ctk_file_system_model_clear_cache (CtkFileSystemModel *model,
                                     int                 column)
 {
   guint i;
@@ -2141,7 +2141,7 @@ _ctk_file_system_model_clear_cache (GtkFileSystemModel *model,
 
 /**
  * _ctk_file_system_model_add_and_query_file:
- * @model: a #GtkFileSystemModel
+ * @model: a #CtkFileSystemModel
  * @file: the file to add
  * @attributes: attributes to query before adding the file
  *
@@ -2150,7 +2150,7 @@ _ctk_file_system_model_clear_cache (GtkFileSystemModel *model,
  * Upon failure, the @file is discarded.
  **/
 void
-_ctk_file_system_model_add_and_query_file (GtkFileSystemModel *model,
+_ctk_file_system_model_add_and_query_file (CtkFileSystemModel *model,
                                            GFile *             file,
                                            const char *        attributes)
 {
@@ -2176,7 +2176,7 @@ ctk_file_system_model_one_query_done (GObject *     object,
 }
 
 void
-_ctk_file_system_model_add_and_query_files (GtkFileSystemModel *model,
+_ctk_file_system_model_add_and_query_files (CtkFileSystemModel *model,
                                             GList              *list,
                                             const char         *attributes)
 {
@@ -2201,7 +2201,7 @@ _ctk_file_system_model_add_and_query_files (GtkFileSystemModel *model,
 }
 
 GFile *
-_ctk_file_system_model_get_directory (GtkFileSystemModel *model)
+_ctk_file_system_model_get_directory (CtkFileSystemModel *model)
 {
   g_return_val_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model), NULL);
 

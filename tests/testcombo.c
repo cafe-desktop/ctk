@@ -56,14 +56,14 @@ create_color_pixbuf (const char *color)
         return pixbuf;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_combo_box_grid_demo (void)
 {
-        GtkWidget *combo;
-        GtkTreeIter iter;
+        CtkWidget *combo;
+        CtkTreeIter iter;
         GdkPixbuf *pixbuf;
-        GtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
-        GtkListStore *store;
+        CtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
+        CtkListStore *store;
 
         store = ctk_list_store_new (3, GDK_TYPE_PIXBUF, G_TYPE_INT, G_TYPE_INT);
 
@@ -153,12 +153,12 @@ create_combo_box_grid_demo (void)
 }
 
 /* blaat */
-static GtkTreeModel *
+static CtkTreeModel *
 create_tree_blaat (void)
 {
-        GtkWidget *cellview;
-        GtkTreeIter iter, iter2;
-        GtkTreeStore *store;
+        CtkWidget *cellview;
+        CtkTreeIter iter, iter2;
+        CtkTreeStore *store;
 
         cellview = ctk_cell_view_new ();
 
@@ -213,12 +213,12 @@ create_tree_blaat (void)
         return CTK_TREE_MODEL (store);
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_empty_list_blaat (void)
 {
-        GtkWidget *cellview;
-        GtkTreeIter iter;
-        GtkListStore *store;
+        CtkWidget *cellview;
+        CtkTreeIter iter;
+        CtkListStore *store;
 
         cellview = ctk_cell_view_new ();
 
@@ -238,10 +238,10 @@ create_empty_list_blaat (void)
 static void
 populate_list_blaat (gpointer data)
 {
-  GtkComboBox *combo_box = CTK_COMBO_BOX (data);
-  GtkListStore *store;
-  GtkWidget *cellview;
-  GtkTreeIter iter;
+  CtkComboBox *combo_box = CTK_COMBO_BOX (data);
+  CtkListStore *store;
+  CtkWidget *cellview;
+  CtkTreeIter iter;
   
   store = CTK_LIST_STORE (ctk_combo_box_get_model (combo_box));
 
@@ -285,12 +285,12 @@ populate_list_blaat (gpointer data)
   ctk_widget_destroy (cellview);  
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_list_blaat (void)
 {
-        GtkWidget *cellview;
-        GtkTreeIter iter;
-        GtkListStore *store;
+        CtkWidget *cellview;
+        CtkTreeIter iter;
+        CtkListStore *store;
 
         cellview = ctk_cell_view_new ();
 
@@ -338,11 +338,11 @@ create_list_blaat (void)
 }
 
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_list_long (void)
 {
-        GtkTreeIter iter;
-        GtkListStore *store;
+        CtkTreeIter iter;
+        CtkListStore *store;
 
         store = ctk_list_store_new (1, G_TYPE_STRING);
 
@@ -370,11 +370,11 @@ create_list_long (void)
         return CTK_TREE_MODEL (store);
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_food_list (void)
 {
-        GtkTreeIter iter;
-        GtkListStore *store;
+        CtkTreeIter iter;
+        CtkListStore *store;
 
         store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
         ctk_list_store_append (store, &iter);
@@ -412,11 +412,11 @@ create_food_list (void)
 
 
 /* blaat */
-static GtkTreeModel *
+static CtkTreeModel *
 create_phylogenetic_tree (void)
 {
-        GtkTreeIter iter, iter2, iter3;
-        GtkTreeStore *store;
+        CtkTreeIter iter, iter2, iter3;
+        CtkTreeStore *store;
 
 	store = ctk_tree_store_new (1,G_TYPE_STRING);
 
@@ -665,11 +665,11 @@ create_phylogenetic_tree (void)
 
 
 /* blaat */
-static GtkTreeModel *
+static CtkTreeModel *
 create_capital_tree (void)
 {
-        GtkTreeIter iter, iter2;
-        GtkTreeStore *store;
+        CtkTreeIter iter, iter2;
+        CtkTreeStore *store;
 
 	store = ctk_tree_store_new (1, G_TYPE_STRING);
 
@@ -849,10 +849,10 @@ create_capital_tree (void)
 }
 
 static void
-capital_sensitive (GtkCellLayout   *cell_layout,
-		   GtkCellRenderer *cell,
-		   GtkTreeModel    *tree_model,
-		   GtkTreeIter     *iter,
+capital_sensitive (CtkCellLayout   *cell_layout,
+		   CtkCellRenderer *cell,
+		   CtkTreeModel    *tree_model,
+		   CtkTreeIter     *iter,
 		   gpointer         data)
 {
   gboolean sensitive;
@@ -866,9 +866,9 @@ static gboolean
 capital_animation (gpointer data)
 {
   static gint insert_count = 0;
-  GtkTreeModel *model = CTK_TREE_MODEL (data);
-  GtkTreePath *path;
-  GtkTreeIter iter, parent;
+  CtkTreeModel *model = CTK_TREE_MODEL (data);
+  CtkTreePath *path;
+  CtkTreeIter iter, parent;
 
   switch (insert_count % 8)
     {
@@ -946,7 +946,7 @@ capital_animation (gpointer data)
 }
 
 static void
-setup_combo_entry (GtkComboBoxText *combo)
+setup_combo_entry (CtkComboBoxText *combo)
 {
   ctk_combo_box_text_append_text (combo,
 				   "dum de dum");
@@ -1001,13 +1001,13 @@ setup_combo_entry (GtkComboBoxText *combo)
 }
 
 static void
-set_sensitive (GtkCellLayout   *cell_layout,
-	       GtkCellRenderer *cell,
-	       GtkTreeModel    *tree_model,
-	       GtkTreeIter     *iter,
+set_sensitive (CtkCellLayout   *cell_layout,
+	       CtkCellRenderer *cell,
+	       CtkTreeModel    *tree_model,
+	       CtkTreeIter     *iter,
 	       gpointer         data)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
   gint *indices;
   gboolean sensitive;
 
@@ -1020,11 +1020,11 @@ set_sensitive (GtkCellLayout   *cell_layout,
 }
 
 static gboolean
-is_separator (GtkTreeModel *model,
-	      GtkTreeIter  *iter,
+is_separator (CtkTreeModel *model,
+	      CtkTreeIter  *iter,
 	      gpointer      data)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
   gboolean result;
 
   path = ctk_tree_model_get_path (model, iter);
@@ -1036,11 +1036,11 @@ is_separator (GtkTreeModel *model,
 }
 
 static void
-displayed_row_changed (GtkComboBox *combo,
-                       GtkCellView *cell)
+displayed_row_changed (CtkComboBox *combo,
+                       CtkCellView *cell)
 {
   gint row;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   row = ctk_combo_box_get_active (combo);
   path = ctk_tree_path_new_from_indices (row, -1);
@@ -1051,15 +1051,15 @@ displayed_row_changed (GtkComboBox *combo,
 int
 main (int argc, char **argv)
 {
-        GtkWidget *window, *cellview, *mainbox;
-        GtkWidget *combobox, *comboboxtext, *comboboxgrid;
-        GtkWidget *tmp, *boom;
-        GtkCellRenderer *renderer;
-        GtkTreeModel *model;
-	GtkTreePath *path;
-	GtkTreeIter iter;
+        CtkWidget *window, *cellview, *mainbox;
+        CtkWidget *combobox, *comboboxtext, *comboboxgrid;
+        CtkWidget *tmp, *boom;
+        CtkCellRenderer *renderer;
+        CtkTreeModel *model;
+	CtkTreePath *path;
+	CtkTreeIter iter;
 	GdkRGBA color;
-	GtkCellArea *area;
+	CtkCellArea *area;
         gchar *text;
         gint i;
 
@@ -1070,10 +1070,10 @@ main (int argc, char **argv)
 
 	if (g_getenv ("LISTMODE"))
 	  {
-	    GtkCssProvider *provider = ctk_css_provider_new ();
+	    CtkCssProvider *provider = ctk_css_provider_new ();
 
 	    ctk_css_provider_load_from_data (provider,
-					     "* { -GtkComboBox-appears-as-list: true; }", 
+					     "* { -CtkComboBox-appears-as-list: true; }", 
 					     -1, NULL);
 
 	    ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
@@ -1089,8 +1089,8 @@ main (int argc, char **argv)
         mainbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 2);
         ctk_container_add (CTK_CONTAINER (window), mainbox);
 
-        /* GtkCellView */
-        tmp = ctk_frame_new ("GtkCellView");
+        /* CtkCellView */
+        tmp = ctk_frame_new ("CtkCellView");
         ctk_box_pack_start (CTK_BOX (mainbox), tmp, FALSE, FALSE, 0);
 
         boom = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -1111,8 +1111,8 @@ main (int argc, char **argv)
         g_object_set (renderer, "text", "la la la", NULL);
         ctk_container_add (CTK_CONTAINER (boom), cellview);
 
-        /* GtkComboBox list */
-        tmp = ctk_frame_new ("GtkComboBox (list)");
+        /* CtkComboBox list */
+        tmp = ctk_frame_new ("CtkComboBox (list)");
         ctk_box_pack_start (CTK_BOX (mainbox), tmp, FALSE, FALSE, 0);
 
         boom = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -1152,8 +1152,8 @@ main (int argc, char **argv)
 						
         ctk_combo_box_set_active (CTK_COMBO_BOX (combobox), 0);
 
-        /* GtkComboBox dynamic list */
-        tmp = ctk_frame_new ("GtkComboBox (dynamic list)");
+        /* CtkComboBox dynamic list */
+        tmp = ctk_frame_new ("CtkComboBox (dynamic list)");
         ctk_box_pack_start (CTK_BOX (mainbox), tmp, FALSE, FALSE, 0);
 
         boom = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -1196,8 +1196,8 @@ main (int argc, char **argv)
 						
         ctk_combo_box_set_active (CTK_COMBO_BOX (combobox), 0);
 
-        /* GtkComboBox custom entry */
-        tmp = ctk_frame_new ("GtkComboBox (custom)");
+        /* CtkComboBox custom entry */
+        tmp = ctk_frame_new ("CtkComboBox (custom)");
         ctk_box_pack_start (CTK_BOX (mainbox), tmp, FALSE, FALSE, 0);
 
         boom = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -1256,8 +1256,8 @@ main (int argc, char **argv)
            
         ctk_container_add (CTK_CONTAINER (combobox), tmp);
 
-        /* GtkComboBox tree */
-        tmp = ctk_frame_new ("GtkComboBox (tree)");
+        /* CtkComboBox tree */
+        tmp = ctk_frame_new ("CtkComboBox (tree)");
         ctk_box_pack_start (CTK_BOX (mainbox), tmp, FALSE, FALSE, 0);
 
         boom = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -1300,8 +1300,8 @@ main (int argc, char **argv)
 	g_timeout_add (1000, (GSourceFunc) animation_timer, model);
 #endif
 
-        /* GtkComboBox (grid mode) */
-        tmp = ctk_frame_new ("GtkComboBox (grid mode)");
+        /* CtkComboBox (grid mode) */
+        tmp = ctk_frame_new ("CtkComboBox (grid mode)");
         ctk_box_pack_start (CTK_BOX (mainbox), tmp, FALSE, FALSE, 0);
 
         boom = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
@@ -1312,8 +1312,8 @@ main (int argc, char **argv)
         ctk_box_pack_start (CTK_BOX (boom), comboboxgrid, FALSE, FALSE, 0);
 
 
-        /* GtkComboBoxEntry */
-        tmp = ctk_frame_new ("GtkComboBox with entry");
+        /* CtkComboBoxEntry */
+        tmp = ctk_frame_new ("CtkComboBox with entry");
         ctk_box_pack_start (CTK_BOX (mainbox), tmp, FALSE, FALSE, 0);
 
         boom = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);

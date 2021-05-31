@@ -30,29 +30,29 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_CELL_RENDERER_TEXT		(ctk_cell_renderer_text_get_type ())
-#define CTK_CELL_RENDERER_TEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_TEXT, GtkCellRendererText))
-#define CTK_CELL_RENDERER_TEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_TEXT, GtkCellRendererTextClass))
+#define CTK_CELL_RENDERER_TEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_TEXT, CtkCellRendererText))
+#define CTK_CELL_RENDERER_TEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_TEXT, CtkCellRendererTextClass))
 #define CTK_IS_CELL_RENDERER_TEXT(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_TEXT))
 #define CTK_IS_CELL_RENDERER_TEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_TEXT))
-#define CTK_CELL_RENDERER_TEXT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_TEXT, GtkCellRendererTextClass))
+#define CTK_CELL_RENDERER_TEXT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_TEXT, CtkCellRendererTextClass))
 
-typedef struct _GtkCellRendererText              GtkCellRendererText;
-typedef struct _GtkCellRendererTextPrivate       GtkCellRendererTextPrivate;
-typedef struct _GtkCellRendererTextClass         GtkCellRendererTextClass;
+typedef struct _CtkCellRendererText              CtkCellRendererText;
+typedef struct _CtkCellRendererTextPrivate       CtkCellRendererTextPrivate;
+typedef struct _CtkCellRendererTextClass         CtkCellRendererTextClass;
 
-struct _GtkCellRendererText
+struct _CtkCellRendererText
 {
-  GtkCellRenderer parent;
+  CtkCellRenderer parent;
 
   /*< private >*/
-  GtkCellRendererTextPrivate *priv;
+  CtkCellRendererTextPrivate *priv;
 };
 
-struct _GtkCellRendererTextClass
+struct _CtkCellRendererTextClass
 {
-  GtkCellRendererClass parent_class;
+  CtkCellRendererClass parent_class;
 
-  void (* edited) (GtkCellRendererText *cell_renderer_text,
+  void (* edited) (CtkCellRendererText *cell_renderer_text,
 		   const gchar         *path,
 		   const gchar         *new_text);
 
@@ -66,10 +66,10 @@ struct _GtkCellRendererTextClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_text_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer *ctk_cell_renderer_text_new      (void);
+CtkCellRenderer *ctk_cell_renderer_text_new      (void);
 
 GDK_AVAILABLE_IN_ALL
-void             ctk_cell_renderer_text_set_fixed_height_from_font (GtkCellRendererText *renderer,
+void             ctk_cell_renderer_text_set_fixed_height_from_font (CtkCellRendererText *renderer,
 								    gint                 number_of_rows);
 
 

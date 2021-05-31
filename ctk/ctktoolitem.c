@@ -35,26 +35,26 @@
 
 /**
  * SECTION:ctktoolitem
- * @short_description: The base class of widgets that can be added to GtkToolShell
- * @Title: GtkToolItem
- * @see_also: #GtkToolbar, #GtkToolButton, #GtkSeparatorToolItem
+ * @short_description: The base class of widgets that can be added to CtkToolShell
+ * @Title: CtkToolItem
+ * @see_also: #CtkToolbar, #CtkToolButton, #CtkSeparatorToolItem
  *
- * #GtkToolItems are widgets that can appear on a toolbar. To
+ * #CtkToolItems are widgets that can appear on a toolbar. To
  * create a toolbar item that contain something else than a button, use
  * ctk_tool_item_new(). Use ctk_container_add() to add a child
  * widget to the tool item.
  *
- * For toolbar items that contain buttons, see the #GtkToolButton,
- * #GtkToggleToolButton and #GtkRadioToolButton classes.
+ * For toolbar items that contain buttons, see the #CtkToolButton,
+ * #CtkToggleToolButton and #CtkRadioToolButton classes.
  *
- * See the #GtkToolbar class for a description of the toolbar widget, and
- * #GtkToolShell for a description of the tool shell interface.
+ * See the #CtkToolbar class for a description of the toolbar widget, and
+ * #CtkToolShell for a description of the tool shell interface.
  */
 
 /**
- * GtkToolItem:
+ * CtkToolItem:
  *
- * The GtkToolItem struct contains only private data.
+ * The CtkToolItem struct contains only private data.
  * It should only be accessed through the functions described below.
  */
 
@@ -76,7 +76,7 @@ enum {
 };
 
 
-struct _GtkToolItemPrivate
+struct _CtkToolItemPrivate
 {
   gchar *tip_text;
   gchar *tip_private;
@@ -91,15 +91,15 @@ struct _GtkToolItemPrivate
 
   GdkWindow *drag_window;
   gchar *menu_item_id;
-  GtkWidget *menu_item;
+  CtkWidget *menu_item;
 
-  GtkAction *action;
+  CtkAction *action;
 };
 
 static void ctk_tool_item_finalize     (GObject         *object);
 static void ctk_tool_item_dispose      (GObject         *object);
-static void ctk_tool_item_parent_set   (GtkWidget       *toolitem,
-				        GtkWidget       *parent);
+static void ctk_tool_item_parent_set   (CtkWidget       *toolitem,
+				        CtkWidget       *parent);
 static void ctk_tool_item_set_property (GObject         *object,
 					guint            prop_id,
 					const GValue    *value,
@@ -110,49 +110,49 @@ static void ctk_tool_item_get_property (GObject         *object,
 					GParamSpec      *pspec);
 static void ctk_tool_item_property_notify (GObject      *object,
 					   GParamSpec   *pspec);
-static void ctk_tool_item_realize       (GtkWidget      *widget);
-static void ctk_tool_item_unrealize     (GtkWidget      *widget);
-static void ctk_tool_item_map           (GtkWidget      *widget);
-static void ctk_tool_item_unmap         (GtkWidget      *widget);
+static void ctk_tool_item_realize       (CtkWidget      *widget);
+static void ctk_tool_item_unrealize     (CtkWidget      *widget);
+static void ctk_tool_item_map           (CtkWidget      *widget);
+static void ctk_tool_item_unmap         (CtkWidget      *widget);
 static void ctk_tool_item_get_preferred_width
-                                        (GtkWidget      *widget,
+                                        (CtkWidget      *widget,
                                          gint           *minimum,
                                          gint           *natural);
 static void ctk_tool_item_get_preferred_height
-                                        (GtkWidget      *widget,
+                                        (CtkWidget      *widget,
                                          gint           *minimum,
                                          gint           *natural);
-static void ctk_tool_item_size_allocate (GtkWidget      *widget,
-					 GtkAllocation  *allocation);
+static void ctk_tool_item_size_allocate (CtkWidget      *widget,
+					 CtkAllocation  *allocation);
 
-static void ctk_tool_item_activatable_interface_init (GtkActivatableIface  *iface);
-static void ctk_tool_item_update                     (GtkActivatable       *activatable,
-						      GtkAction            *action,
+static void ctk_tool_item_activatable_interface_init (CtkActivatableIface  *iface);
+static void ctk_tool_item_update                     (CtkActivatable       *activatable,
+						      CtkAction            *action,
 						      const gchar          *property_name);
-static void ctk_tool_item_sync_action_properties     (GtkActivatable       *activatable,
-						      GtkAction            *action);
-static void ctk_tool_item_set_related_action         (GtkToolItem          *item, 
-						      GtkAction            *action);
-static void ctk_tool_item_set_use_action_appearance  (GtkToolItem          *item, 
+static void ctk_tool_item_sync_action_properties     (CtkActivatable       *activatable,
+						      CtkAction            *action);
+static void ctk_tool_item_set_related_action         (CtkToolItem          *item, 
+						      CtkAction            *action);
+static void ctk_tool_item_set_use_action_appearance  (CtkToolItem          *item, 
 						      gboolean              use_appearance);
 
 static guint toolitem_signals[LAST_SIGNAL] = { 0 };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkToolItem, ctk_tool_item, CTK_TYPE_BIN,
-                         G_ADD_PRIVATE (GtkToolItem)
+G_DEFINE_TYPE_WITH_CODE (CtkToolItem, ctk_tool_item, CTK_TYPE_BIN,
+                         G_ADD_PRIVATE (CtkToolItem)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_tool_item_activatable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
-ctk_tool_item_class_init (GtkToolItemClass *klass)
+ctk_tool_item_class_init (CtkToolItemClass *klass)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
+  CtkWidgetClass *widget_class;
   
   object_class = (GObjectClass *)klass;
-  widget_class = (GtkWidgetClass *)klass;
+  widget_class = (CtkWidgetClass *)klass;
 
   object_class->set_property = ctk_tool_item_set_property;
   object_class->get_property = ctk_tool_item_get_property;
@@ -200,7 +200,7 @@ ctk_tool_item_class_init (GtkToolItemClass *klass)
 
 
 /**
- * GtkToolItem::create-menu-proxy:
+ * CtkToolItem::create-menu-proxy:
  * @tool_item: the object the signal was emitted on
  *
  * This signal is emitted when the toolbar needs information from @tool_item
@@ -229,17 +229,17 @@ ctk_tool_item_class_init (GtkToolItemClass *klass)
     g_signal_new (I_("create-menu-proxy"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkToolItemClass, create_menu_proxy),
+		  G_STRUCT_OFFSET (CtkToolItemClass, create_menu_proxy),
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
 
 /**
- * GtkToolItem::toolbar-reconfigured:
+ * CtkToolItem::toolbar-reconfigured:
  * @tool_item: the object the signal was emitted on
  *
  * This signal is emitted when some property of the toolbar that the
- * item is a child of changes. For custom subclasses of #GtkToolItem,
+ * item is a child of changes. For custom subclasses of #CtkToolItem,
  * the default handler of this signal use the functions
  * - ctk_tool_shell_get_orientation()
  * - ctk_tool_shell_get_style()
@@ -252,7 +252,7 @@ ctk_tool_item_class_init (GtkToolItemClass *klass)
     g_signal_new (I_("toolbar-reconfigured"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkToolItemClass, toolbar_reconfigured),
+		  G_STRUCT_OFFSET (CtkToolItemClass, toolbar_reconfigured),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
@@ -261,7 +261,7 @@ ctk_tool_item_class_init (GtkToolItemClass *klass)
 }
 
 static void
-ctk_tool_item_init (GtkToolItem *toolitem)
+ctk_tool_item_init (CtkToolItem *toolitem)
 {
   ctk_widget_set_can_focus (CTK_WIDGET (toolitem), FALSE);
 
@@ -276,7 +276,7 @@ ctk_tool_item_init (GtkToolItem *toolitem)
 static void
 ctk_tool_item_finalize (GObject *object)
 {
-  GtkToolItem *item = CTK_TOOL_ITEM (object);
+  CtkToolItem *item = CTK_TOOL_ITEM (object);
 
   g_free (item->priv->menu_item_id);
 
@@ -289,7 +289,7 @@ ctk_tool_item_finalize (GObject *object)
 static void
 ctk_tool_item_dispose (GObject *object)
 {
-  GtkToolItem *item = CTK_TOOL_ITEM (object);
+  CtkToolItem *item = CTK_TOOL_ITEM (object);
 
   if (item->priv->action)
     {
@@ -303,8 +303,8 @@ ctk_tool_item_dispose (GObject *object)
 
 
 static void
-ctk_tool_item_parent_set (GtkWidget   *toolitem,
-			  GtkWidget   *prev_parent)
+ctk_tool_item_parent_set (CtkWidget   *toolitem,
+			  CtkWidget   *prev_parent)
 {
   if (ctk_widget_get_parent (CTK_WIDGET (toolitem)) != NULL)
     ctk_tool_item_toolbar_reconfigured (CTK_TOOL_ITEM (toolitem));
@@ -316,7 +316,7 @@ ctk_tool_item_set_property (GObject      *object,
 			    const GValue *value,
 			    GParamSpec   *pspec)
 {
-  GtkToolItem *toolitem = CTK_TOOL_ITEM (object);
+  CtkToolItem *toolitem = CTK_TOOL_ITEM (object);
 
   switch (prop_id)
     {
@@ -347,7 +347,7 @@ ctk_tool_item_get_property (GObject    *object,
 			    GValue     *value,
 			    GParamSpec *pspec)
 {
-  GtkToolItem *toolitem = CTK_TOOL_ITEM (object);
+  CtkToolItem *toolitem = CTK_TOOL_ITEM (object);
 
   switch (prop_id)
     {
@@ -376,7 +376,7 @@ static void
 ctk_tool_item_property_notify (GObject    *object,
 			       GParamSpec *pspec)
 {
-  GtkToolItem *tool_item = CTK_TOOL_ITEM (object);
+  CtkToolItem *tool_item = CTK_TOOL_ITEM (object);
 
   if (tool_item->priv->menu_item && strcmp (pspec->name, "sensitive") == 0)
     ctk_widget_set_sensitive (tool_item->priv->menu_item,
@@ -387,10 +387,10 @@ ctk_tool_item_property_notify (GObject    *object,
 }
 
 static void
-create_drag_window (GtkToolItem *toolitem)
+create_drag_window (CtkToolItem *toolitem)
 {
-  GtkAllocation allocation;
-  GtkWidget *widget;
+  CtkAllocation allocation;
+  CtkWidget *widget;
   GdkWindowAttr attributes;
   gint attributes_mask;
 
@@ -417,9 +417,9 @@ create_drag_window (GtkToolItem *toolitem)
 }
 
 static void
-ctk_tool_item_realize (GtkWidget *widget)
+ctk_tool_item_realize (CtkWidget *widget)
 {
-  GtkToolItem *toolitem;
+  CtkToolItem *toolitem;
   GdkWindow *window;
 
   toolitem = CTK_TOOL_ITEM (widget);
@@ -434,7 +434,7 @@ ctk_tool_item_realize (GtkWidget *widget)
 }
 
 static void
-destroy_drag_window (GtkToolItem *toolitem)
+destroy_drag_window (CtkToolItem *toolitem)
 {
   if (toolitem->priv->drag_window)
     {
@@ -445,9 +445,9 @@ destroy_drag_window (GtkToolItem *toolitem)
 }
 
 static void
-ctk_tool_item_unrealize (GtkWidget *widget)
+ctk_tool_item_unrealize (CtkWidget *widget)
 {
-  GtkToolItem *toolitem;
+  CtkToolItem *toolitem;
 
   toolitem = CTK_TOOL_ITEM (widget);
 
@@ -457,9 +457,9 @@ ctk_tool_item_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_tool_item_map (GtkWidget *widget)
+ctk_tool_item_map (CtkWidget *widget)
 {
-  GtkToolItem *toolitem;
+  CtkToolItem *toolitem;
 
   toolitem = CTK_TOOL_ITEM (widget);
   CTK_WIDGET_CLASS (ctk_tool_item_parent_class)->map (widget);
@@ -468,9 +468,9 @@ ctk_tool_item_map (GtkWidget *widget)
 }
 
 static void
-ctk_tool_item_unmap (GtkWidget *widget)
+ctk_tool_item_unmap (CtkWidget *widget)
 {
-  GtkToolItem *toolitem;
+  CtkToolItem *toolitem;
 
   toolitem = CTK_TOOL_ITEM (widget);
   if (toolitem->priv->drag_window)
@@ -479,11 +479,11 @@ ctk_tool_item_unmap (GtkWidget *widget)
 }
 
 static void
-ctk_tool_item_get_preferred_width (GtkWidget *widget,
+ctk_tool_item_get_preferred_width (CtkWidget *widget,
                                    gint      *minimum,
                                    gint      *natural)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   *minimum = *natural = 0;
 
@@ -493,11 +493,11 @@ ctk_tool_item_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_tool_item_get_preferred_height (GtkWidget *widget,
+ctk_tool_item_get_preferred_height (CtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   *minimum = *natural = 0;
 
@@ -507,12 +507,12 @@ ctk_tool_item_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_tool_item_size_allocate (GtkWidget     *widget,
-			     GtkAllocation *allocation)
+ctk_tool_item_size_allocate (CtkWidget     *widget,
+			     CtkAllocation *allocation)
 {
-  GtkToolItem *toolitem = CTK_TOOL_ITEM (widget);
-  GtkAllocation child_allocation;
-  GtkWidget *child;
+  CtkToolItem *toolitem = CTK_TOOL_ITEM (widget);
+  CtkAllocation child_allocation;
+  CtkWidget *child;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -538,9 +538,9 @@ ctk_tool_item_size_allocate (GtkWidget     *widget,
 }
 
 gboolean
-_ctk_tool_item_create_menu_proxy (GtkToolItem *item)
+_ctk_tool_item_create_menu_proxy (CtkToolItem *item)
 {
-  GtkWidget *menu_item;
+  CtkWidget *menu_item;
   gboolean visible_overflown;
   gboolean ret = FALSE;
 
@@ -570,15 +570,15 @@ _ctk_tool_item_create_menu_proxy (GtkToolItem *item)
 }
 
 static void
-ctk_tool_item_activatable_interface_init (GtkActivatableIface *iface)
+ctk_tool_item_activatable_interface_init (CtkActivatableIface *iface)
 {
   iface->update = ctk_tool_item_update;
   iface->sync_action_properties = ctk_tool_item_sync_action_properties;
 }
 
 static void
-ctk_tool_item_update (GtkActivatable *activatable,
-		      GtkAction      *action,
+ctk_tool_item_update (CtkActivatable *activatable,
+		      CtkAction      *action,
 	     	      const gchar    *property_name)
 {
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -609,8 +609,8 @@ ctk_tool_item_update (GtkActivatable *activatable,
 }
 
 static void
-ctk_tool_item_sync_action_properties (GtkActivatable *activatable,
-				      GtkAction      *action)
+ctk_tool_item_sync_action_properties (CtkActivatable *activatable,
+				      CtkAction      *action)
 {
   if (!action)
     return;
@@ -637,8 +637,8 @@ ctk_tool_item_sync_action_properties (GtkActivatable *activatable,
 }
 
 static void
-ctk_tool_item_set_related_action (GtkToolItem *item, 
-				  GtkAction   *action)
+ctk_tool_item_set_related_action (CtkToolItem *item, 
+				  CtkAction   *action)
 {
   if (item->priv->action == action)
     return;
@@ -656,7 +656,7 @@ ctk_tool_item_set_related_action (GtkToolItem *item,
 }
 
 static void
-ctk_tool_item_set_use_action_appearance (GtkToolItem *item,
+ctk_tool_item_set_use_action_appearance (CtkToolItem *item,
 					 gboolean     use_appearance)
 {
   if (item->priv->use_action_appearance != use_appearance)
@@ -673,16 +673,16 @@ ctk_tool_item_set_use_action_appearance (GtkToolItem *item,
 /**
  * ctk_tool_item_new:
  * 
- * Creates a new #GtkToolItem
+ * Creates a new #CtkToolItem
  * 
- * Returns: the new #GtkToolItem
+ * Returns: the new #CtkToolItem
  * 
  * Since: 2.4
  **/
-GtkToolItem *
+CtkToolItem *
 ctk_tool_item_new (void)
 {
-  GtkToolItem *item;
+  CtkToolItem *item;
 
   item = g_object_new (CTK_TYPE_TOOL_ITEM, NULL);
 
@@ -691,10 +691,10 @@ ctk_tool_item_new (void)
 
 /**
  * ctk_tool_item_get_ellipsize_mode:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  *
  * Returns the ellipsize mode used for @tool_item. Custom subclasses of
- * #GtkToolItem should call this function to find out how text should
+ * #CtkToolItem should call this function to find out how text should
  * be ellipsized.
  *
  * Returns: a #PangoEllipsizeMode indicating how text in @tool_item
@@ -703,9 +703,9 @@ ctk_tool_item_new (void)
  * Since: 2.20
  **/
 PangoEllipsizeMode
-ctk_tool_item_get_ellipsize_mode (GtkToolItem *tool_item)
+ctk_tool_item_get_ellipsize_mode (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), PANGO_ELLIPSIZE_NONE);
 
@@ -718,21 +718,21 @@ ctk_tool_item_get_ellipsize_mode (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_icon_size:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  * 
  * Returns the icon size used for @tool_item. Custom subclasses of
- * #GtkToolItem should call this function to find out what size icons
+ * #CtkToolItem should call this function to find out what size icons
  * they should use.
  * 
- * Returns: (type int): a #GtkIconSize indicating the icon size
+ * Returns: (type int): a #CtkIconSize indicating the icon size
  * used for @tool_item
  * 
  * Since: 2.4
  **/
-GtkIconSize
-ctk_tool_item_get_icon_size (GtkToolItem *tool_item)
+CtkIconSize
+ctk_tool_item_get_icon_size (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_ICON_SIZE_LARGE_TOOLBAR);
 
@@ -745,21 +745,21 @@ ctk_tool_item_get_icon_size (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_orientation:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
  * Returns the orientation used for @tool_item. Custom subclasses of
- * #GtkToolItem should call this function to find out what size icons
+ * #CtkToolItem should call this function to find out what size icons
  * they should use.
  * 
- * Returns: a #GtkOrientation indicating the orientation
+ * Returns: a #CtkOrientation indicating the orientation
  * used for @tool_item
  * 
  * Since: 2.4
  **/
-GtkOrientation
-ctk_tool_item_get_orientation (GtkToolItem *tool_item)
+CtkOrientation
+ctk_tool_item_get_orientation (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_ORIENTATION_HORIZONTAL);
 
@@ -772,11 +772,11 @@ ctk_tool_item_get_orientation (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_toolbar_style:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
  * Returns the toolbar style used for @tool_item. Custom subclasses of
- * #GtkToolItem should call this function in the handler of the
- * GtkToolItem::toolbar_reconfigured signal to find out in what style
+ * #CtkToolItem should call this function in the handler of the
+ * CtkToolItem::toolbar_reconfigured signal to find out in what style
  * the toolbar is displayed and change themselves accordingly 
  *
  * Possibilities are:
@@ -787,15 +787,15 @@ ctk_tool_item_get_orientation (GtkToolItem *tool_item)
  * - %CTK_TOOLBAR_BOTH_HORIZ, meaning the tool item should show
  *   both an icon and a label, arranged horizontally
  * 
- * Returns: A #GtkToolbarStyle indicating the toolbar style used
+ * Returns: A #CtkToolbarStyle indicating the toolbar style used
  * for @tool_item.
  * 
  * Since: 2.4
  **/
-GtkToolbarStyle
-ctk_tool_item_get_toolbar_style (GtkToolItem *tool_item)
+CtkToolbarStyle
+ctk_tool_item_get_toolbar_style (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_TOOLBAR_ICONS);
 
@@ -808,22 +808,22 @@ ctk_tool_item_get_toolbar_style (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_relief_style:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
  * Returns the relief style of @tool_item. See ctk_button_set_relief().
- * Custom subclasses of #GtkToolItem should call this function in the handler
- * of the #GtkToolItem::toolbar_reconfigured signal to find out the
+ * Custom subclasses of #CtkToolItem should call this function in the handler
+ * of the #CtkToolItem::toolbar_reconfigured signal to find out the
  * relief style of buttons.
  * 
- * Returns: a #GtkReliefStyle indicating the relief style used
+ * Returns: a #CtkReliefStyle indicating the relief style used
  * for @tool_item.
  * 
  * Since: 2.4
  **/
-GtkReliefStyle 
-ctk_tool_item_get_relief_style (GtkToolItem *tool_item)
+CtkReliefStyle 
+ctk_tool_item_get_relief_style (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_RELIEF_NONE);
 
@@ -836,10 +836,10 @@ ctk_tool_item_get_relief_style (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_text_alignment:
- * @tool_item: a #GtkToolItem: 
+ * @tool_item: a #CtkToolItem: 
  * 
  * Returns the text alignment used for @tool_item. Custom subclasses of
- * #GtkToolItem should call this function to find out how text should
+ * #CtkToolItem should call this function to find out how text should
  * be aligned.
  * 
  * Returns: a #gfloat indicating the horizontal text alignment
@@ -848,9 +848,9 @@ ctk_tool_item_get_relief_style (GtkToolItem *tool_item)
  * Since: 2.20
  **/
 gfloat
-ctk_tool_item_get_text_alignment (GtkToolItem *tool_item)
+ctk_tool_item_get_text_alignment (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_ORIENTATION_HORIZONTAL);
 
@@ -863,21 +863,21 @@ ctk_tool_item_get_text_alignment (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_text_orientation:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  *
  * Returns the text orientation used for @tool_item. Custom subclasses of
- * #GtkToolItem should call this function to find out how text should
+ * #CtkToolItem should call this function to find out how text should
  * be orientated.
  *
- * Returns: a #GtkOrientation indicating the text orientation
+ * Returns: a #CtkOrientation indicating the text orientation
  * used for @tool_item
  *
  * Since: 2.20
  */
-GtkOrientation
-ctk_tool_item_get_text_orientation (GtkToolItem *tool_item)
+CtkOrientation
+ctk_tool_item_get_text_orientation (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_ORIENTATION_HORIZONTAL);
 
@@ -890,20 +890,20 @@ ctk_tool_item_get_text_orientation (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_text_size_group:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  *
  * Returns the size group used for labels in @tool_item.
- * Custom subclasses of #GtkToolItem should call this function
+ * Custom subclasses of #CtkToolItem should call this function
  * and use the size group for labels.
  *
- * Returns: (transfer none): a #GtkSizeGroup
+ * Returns: (transfer none): a #CtkSizeGroup
  *
  * Since: 2.20
  */
-GtkSizeGroup *
-ctk_tool_item_get_text_size_group (GtkToolItem *tool_item)
+CtkSizeGroup *
+ctk_tool_item_get_text_size_group (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), NULL);
 
@@ -916,7 +916,7 @@ ctk_tool_item_get_text_size_group (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_set_expand:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  * @expand: Whether @tool_item is allocated extra space
  *
  * Sets whether @tool_item is allocated extra space when there
@@ -927,7 +927,7 @@ ctk_tool_item_get_text_size_group (GtkToolItem *tool_item)
  * Since: 2.4
  */
 void
-ctk_tool_item_set_expand (GtkToolItem *tool_item,
+ctk_tool_item_set_expand (CtkToolItem *tool_item,
 			  gboolean     expand)
 {
   g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
@@ -944,7 +944,7 @@ ctk_tool_item_set_expand (GtkToolItem *tool_item,
 
 /**
  * ctk_tool_item_get_expand:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
  * Returns whether @tool_item is allocated extra space.
  * See ctk_tool_item_set_expand().
@@ -954,7 +954,7 @@ ctk_tool_item_set_expand (GtkToolItem *tool_item,
  * Since: 2.4
  **/
 gboolean
-ctk_tool_item_get_expand (GtkToolItem *tool_item)
+ctk_tool_item_get_expand (CtkToolItem *tool_item)
 {
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), FALSE);
 
@@ -963,7 +963,7 @@ ctk_tool_item_get_expand (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_set_homogeneous:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * @homogeneous: whether @tool_item is the same size as other homogeneous items
  * 
  * Sets whether @tool_item is to be allocated the same size as other
@@ -973,7 +973,7 @@ ctk_tool_item_get_expand (GtkToolItem *tool_item)
  * Since: 2.4
  **/
 void
-ctk_tool_item_set_homogeneous (GtkToolItem *tool_item,
+ctk_tool_item_set_homogeneous (CtkToolItem *tool_item,
 			       gboolean     homogeneous)
 {
   g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
@@ -990,7 +990,7 @@ ctk_tool_item_set_homogeneous (GtkToolItem *tool_item,
 
 /**
  * ctk_tool_item_get_homogeneous:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
  * Returns whether @tool_item is the same size as other homogeneous
  * items. See ctk_tool_item_set_homogeneous().
@@ -1001,7 +1001,7 @@ ctk_tool_item_set_homogeneous (GtkToolItem *tool_item,
  * Since: 2.4
  **/
 gboolean
-ctk_tool_item_get_homogeneous (GtkToolItem *tool_item)
+ctk_tool_item_get_homogeneous (CtkToolItem *tool_item)
 {
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), FALSE);
 
@@ -1010,7 +1010,7 @@ ctk_tool_item_get_homogeneous (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_is_important:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  * 
  * Returns whether @tool_item is considered important. See
  * ctk_tool_item_set_is_important()
@@ -1020,7 +1020,7 @@ ctk_tool_item_get_homogeneous (GtkToolItem *tool_item)
  * Since: 2.4
  **/
 gboolean
-ctk_tool_item_get_is_important (GtkToolItem *tool_item)
+ctk_tool_item_get_is_important (CtkToolItem *tool_item)
 {
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), FALSE);
 
@@ -1029,10 +1029,10 @@ ctk_tool_item_get_is_important (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_set_is_important:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  * @is_important: whether the tool item should be considered important
  * 
- * Sets whether @tool_item should be considered important. The #GtkToolButton
+ * Sets whether @tool_item should be considered important. The #CtkToolButton
  * class uses this property to determine whether to show or hide its label
  * when the toolbar style is %CTK_TOOLBAR_BOTH_HORIZ. The result is that
  * only tool buttons with the “is_important” property set have labels, an
@@ -1041,7 +1041,7 @@ ctk_tool_item_get_is_important (GtkToolItem *tool_item)
  * Since: 2.4
  **/
 void
-ctk_tool_item_set_is_important (GtkToolItem *tool_item, gboolean is_important)
+ctk_tool_item_set_is_important (CtkToolItem *tool_item, gboolean is_important)
 {
   g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
@@ -1059,7 +1059,7 @@ ctk_tool_item_set_is_important (GtkToolItem *tool_item, gboolean is_important)
 
 /**
  * ctk_tool_item_set_tooltip_text:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * @text: text to be used as tooltip for @tool_item
  *
  * Sets the text to be displayed as tooltip on the item.
@@ -1068,10 +1068,10 @@ ctk_tool_item_set_is_important (GtkToolItem *tool_item, gboolean is_important)
  * Since: 2.12
  **/
 void
-ctk_tool_item_set_tooltip_text (GtkToolItem *tool_item,
+ctk_tool_item_set_tooltip_text (CtkToolItem *tool_item,
 			        const gchar *text)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
@@ -1082,7 +1082,7 @@ ctk_tool_item_set_tooltip_text (GtkToolItem *tool_item,
 
 /**
  * ctk_tool_item_set_tooltip_markup:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * @markup: markup text to be used as tooltip for @tool_item
  *
  * Sets the markup text to be displayed as tooltip on the item.
@@ -1091,10 +1091,10 @@ ctk_tool_item_set_tooltip_text (GtkToolItem *tool_item,
  * Since: 2.12
  **/
 void
-ctk_tool_item_set_tooltip_markup (GtkToolItem *tool_item,
+ctk_tool_item_set_tooltip_markup (CtkToolItem *tool_item,
 				  const gchar *markup)
 {
-  GtkWidget *child;
+  CtkWidget *child;
 
   g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
@@ -1105,7 +1105,7 @@ ctk_tool_item_set_tooltip_markup (GtkToolItem *tool_item,
 
 /**
  * ctk_tool_item_set_use_drag_window:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * @use_drag_window: Whether @tool_item has a drag window.
  * 
  * Sets whether @tool_item has a drag window. When %TRUE the
@@ -1116,7 +1116,7 @@ ctk_tool_item_set_tooltip_markup (GtkToolItem *tool_item,
  * Since: 2.4
  **/
 void
-ctk_tool_item_set_use_drag_window (GtkToolItem *toolitem,
+ctk_tool_item_set_use_drag_window (CtkToolItem *toolitem,
 				   gboolean     use_drag_window)
 {
   g_return_if_fail (CTK_IS_TOOL_ITEM (toolitem));
@@ -1146,7 +1146,7 @@ ctk_tool_item_set_use_drag_window (GtkToolItem *toolitem,
 
 /**
  * ctk_tool_item_get_use_drag_window:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
  * Returns whether @tool_item has a drag window. See
  * ctk_tool_item_set_use_drag_window().
@@ -1156,7 +1156,7 @@ ctk_tool_item_set_use_drag_window (GtkToolItem *toolitem,
  * Since: 2.4
  **/
 gboolean
-ctk_tool_item_get_use_drag_window (GtkToolItem *toolitem)
+ctk_tool_item_get_use_drag_window (CtkToolItem *toolitem)
 {
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (toolitem), FALSE);
 
@@ -1165,7 +1165,7 @@ ctk_tool_item_get_use_drag_window (GtkToolItem *toolitem)
 
 /**
  * ctk_tool_item_set_visible_horizontal:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  * @visible_horizontal: Whether @tool_item is visible when in horizontal mode
  * 
  * Sets whether @tool_item is visible when the toolbar is docked horizontally.
@@ -1173,7 +1173,7 @@ ctk_tool_item_get_use_drag_window (GtkToolItem *toolitem)
  * Since: 2.4
  **/
 void
-ctk_tool_item_set_visible_horizontal (GtkToolItem *toolitem,
+ctk_tool_item_set_visible_horizontal (CtkToolItem *toolitem,
 				      gboolean     visible_horizontal)
 {
   g_return_if_fail (CTK_IS_TOOL_ITEM (toolitem));
@@ -1192,7 +1192,7 @@ ctk_tool_item_set_visible_horizontal (GtkToolItem *toolitem,
 
 /**
  * ctk_tool_item_get_visible_horizontal:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
  * Returns whether the @tool_item is visible on toolbars that are
  * docked horizontally.
@@ -1203,7 +1203,7 @@ ctk_tool_item_set_visible_horizontal (GtkToolItem *toolitem,
  * Since: 2.4
  **/
 gboolean
-ctk_tool_item_get_visible_horizontal (GtkToolItem *toolitem)
+ctk_tool_item_get_visible_horizontal (CtkToolItem *toolitem)
 {
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (toolitem), FALSE);
 
@@ -1212,7 +1212,7 @@ ctk_tool_item_get_visible_horizontal (GtkToolItem *toolitem)
 
 /**
  * ctk_tool_item_set_visible_vertical:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * @visible_vertical: whether @tool_item is visible when the toolbar
  * is in vertical mode
  *
@@ -1224,7 +1224,7 @@ ctk_tool_item_get_visible_horizontal (GtkToolItem *toolitem)
  * Since: 2.4
  **/
 void
-ctk_tool_item_set_visible_vertical (GtkToolItem *toolitem,
+ctk_tool_item_set_visible_vertical (CtkToolItem *toolitem,
 				    gboolean     visible_vertical)
 {
   g_return_if_fail (CTK_IS_TOOL_ITEM (toolitem));
@@ -1243,7 +1243,7 @@ ctk_tool_item_set_visible_vertical (GtkToolItem *toolitem,
 
 /**
  * ctk_tool_item_get_visible_vertical:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
  * Returns whether @tool_item is visible when the toolbar is docked vertically.
  * See ctk_tool_item_set_visible_vertical().
@@ -1253,7 +1253,7 @@ ctk_tool_item_set_visible_vertical (GtkToolItem *toolitem,
  * Since: 2.4
  **/
 gboolean
-ctk_tool_item_get_visible_vertical (GtkToolItem *toolitem)
+ctk_tool_item_get_visible_vertical (CtkToolItem *toolitem)
 {
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (toolitem), FALSE);
 
@@ -1262,19 +1262,19 @@ ctk_tool_item_get_visible_vertical (GtkToolItem *toolitem)
 
 /**
  * ctk_tool_item_retrieve_proxy_menu_item:
- * @tool_item: a #GtkToolItem 
+ * @tool_item: a #CtkToolItem 
  * 
- * Returns the #GtkMenuItem that was last set by
- * ctk_tool_item_set_proxy_menu_item(), ie. the #GtkMenuItem
+ * Returns the #CtkMenuItem that was last set by
+ * ctk_tool_item_set_proxy_menu_item(), ie. the #CtkMenuItem
  * that is going to appear in the overflow menu.
  *
- * Returns: (transfer none): The #GtkMenuItem that is going to appear in the
+ * Returns: (transfer none): The #CtkMenuItem that is going to appear in the
  * overflow menu for @tool_item.
  *
  * Since: 2.4
  **/
-GtkWidget *
-ctk_tool_item_retrieve_proxy_menu_item (GtkToolItem *tool_item)
+CtkWidget *
+ctk_tool_item_retrieve_proxy_menu_item (CtkToolItem *tool_item)
 {
   gboolean retval;
   
@@ -1288,25 +1288,25 @@ ctk_tool_item_retrieve_proxy_menu_item (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_get_proxy_menu_item:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  * @menu_item_id: a string used to identify the menu item
  *
  * If @menu_item_id matches the string passed to
- * ctk_tool_item_set_proxy_menu_item() return the corresponding #GtkMenuItem.
+ * ctk_tool_item_set_proxy_menu_item() return the corresponding #CtkMenuItem.
  *
- * Custom subclasses of #GtkToolItem should use this function to
- * update their menu item when the #GtkToolItem changes. That the
- * @menu_item_ids must match ensures that a #GtkToolItem
+ * Custom subclasses of #CtkToolItem should use this function to
+ * update their menu item when the #CtkToolItem changes. That the
+ * @menu_item_ids must match ensures that a #CtkToolItem
  * will not inadvertently change a menu item that they did not create.
  *
- * Returns: (transfer none) (nullable): The #GtkMenuItem passed to
+ * Returns: (transfer none) (nullable): The #CtkMenuItem passed to
  *     ctk_tool_item_set_proxy_menu_item(), if the @menu_item_ids
  *     match.
  *
  * Since: 2.4
  **/
-GtkWidget *
-ctk_tool_item_get_proxy_menu_item (GtkToolItem *tool_item,
+CtkWidget *
+ctk_tool_item_get_proxy_menu_item (CtkToolItem *tool_item,
 				   const gchar *menu_item_id)
 {
   g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), NULL);
@@ -1320,7 +1320,7 @@ ctk_tool_item_get_proxy_menu_item (GtkToolItem *tool_item,
 
 /**
  * ctk_tool_item_rebuild_menu:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  *
  * Calling this function signals to the toolbar that the
  * overflow menu item for @tool_item has changed. If the
@@ -1328,15 +1328,15 @@ ctk_tool_item_get_proxy_menu_item (GtkToolItem *tool_item,
  * the menu will be rebuilt.
  *
  * The function must be called when the tool item changes what it
- * will do in response to the #GtkToolItem::create-menu-proxy signal.
+ * will do in response to the #CtkToolItem::create-menu-proxy signal.
  *
  * Since: 2.6
  */
 void
-ctk_tool_item_rebuild_menu (GtkToolItem *tool_item)
+ctk_tool_item_rebuild_menu (CtkToolItem *tool_item)
 {
-  GtkWidget *parent;
-  GtkWidget *widget;
+  CtkWidget *parent;
+  CtkWidget *widget;
 
   g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
@@ -1349,22 +1349,22 @@ ctk_tool_item_rebuild_menu (GtkToolItem *tool_item)
 
 /**
  * ctk_tool_item_set_proxy_menu_item:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  * @menu_item_id: a string used to identify @menu_item
- * @menu_item: (nullable): a #GtkMenuItem to use in the overflow menu, or %NULL
+ * @menu_item: (nullable): a #CtkMenuItem to use in the overflow menu, or %NULL
  * 
- * Sets the #GtkMenuItem used in the toolbar overflow menu. The
+ * Sets the #CtkMenuItem used in the toolbar overflow menu. The
  * @menu_item_id is used to identify the caller of this function and
  * should also be used with ctk_tool_item_get_proxy_menu_item().
  *
- * See also #GtkToolItem::create-menu-proxy.
+ * See also #CtkToolItem::create-menu-proxy.
  * 
  * Since: 2.4
  **/
 void
-ctk_tool_item_set_proxy_menu_item (GtkToolItem *tool_item,
+ctk_tool_item_set_proxy_menu_item (CtkToolItem *tool_item,
 				   const gchar *menu_item_id,
-				   GtkWidget   *menu_item)
+				   CtkWidget   *menu_item)
 {
   g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
   g_return_if_fail (menu_item == NULL || CTK_IS_MENU_ITEM (menu_item));
@@ -1393,16 +1393,16 @@ ctk_tool_item_set_proxy_menu_item (GtkToolItem *tool_item,
 
 /**
  * ctk_tool_item_toolbar_reconfigured:
- * @tool_item: a #GtkToolItem
+ * @tool_item: a #CtkToolItem
  *
- * Emits the signal #GtkToolItem::toolbar_reconfigured on @tool_item.
- * #GtkToolbar and other #GtkToolShell implementations use this function
+ * Emits the signal #CtkToolItem::toolbar_reconfigured on @tool_item.
+ * #CtkToolbar and other #CtkToolShell implementations use this function
  * to notify children, when some aspect of their configuration changes.
  *
  * Since: 2.14
  **/
 void
-ctk_tool_item_toolbar_reconfigured (GtkToolItem *tool_item)
+ctk_tool_item_toolbar_reconfigured (CtkToolItem *tool_item)
 {
   /* The slightely inaccurate name "ctk_tool_item_toolbar_reconfigured" was
    * choosen over "ctk_tool_item_tool_shell_reconfigured", since the function

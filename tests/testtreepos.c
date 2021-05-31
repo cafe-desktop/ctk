@@ -1,12 +1,12 @@
 #include <ctk/ctk.h>
 
 static gboolean
-clicked_icon (GtkTreeView  *tv,
+clicked_icon (CtkTreeView  *tv,
               gint          x,
               gint          y,
-              GtkTreePath **path)
+              CtkTreePath **path)
 {
-  GtkTreeViewColumn *col;
+  CtkTreeViewColumn *col;
   gint cell_x, cell_y;
   gint cell_pos, cell_width;
   GList *cells, *l;
@@ -53,18 +53,18 @@ clicked_icon (GtkTreeView  *tv,
 }
 
 static gboolean
-release_event (GtkTreeView    *tv,
+release_event (CtkTreeView    *tv,
                GdkEventButton *event)
 {
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   if (event->type != GDK_BUTTON_RELEASE)
     return TRUE;
 
   if (clicked_icon (tv, event->x, event->y, &path))
     {
-      GtkTreeModel *model;
-      GtkTreeIter iter;
+      CtkTreeModel *model;
+      CtkTreeIter iter;
       gchar *text;
 
       model = ctk_tree_view_get_model (tv);
@@ -83,13 +83,13 @@ release_event (GtkTreeView    *tv,
 
 int main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *sw;
-  GtkWidget *tv;
-  GtkTreeViewColumn *col;
-  GtkCellRenderer *cell;
-  GtkTreeStore *store;
-  GtkTreeIter iter;
+  CtkWidget *window;
+  CtkWidget *sw;
+  CtkWidget *tv;
+  CtkTreeViewColumn *col;
+  CtkCellRenderer *cell;
+  CtkTreeStore *store;
+  CtkTreeIter iter;
 
   ctk_init (&argc, &argv);
 

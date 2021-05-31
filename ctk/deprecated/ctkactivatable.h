@@ -27,24 +27,24 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_ACTIVATABLE            (ctk_activatable_get_type ())
-#define CTK_ACTIVATABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACTIVATABLE, GtkActivatable))
-#define CTK_ACTIVATABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_ACTIVATABLE, GtkActivatableIface))
+#define CTK_ACTIVATABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACTIVATABLE, CtkActivatable))
+#define CTK_ACTIVATABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_ACTIVATABLE, CtkActivatableIface))
 #define CTK_IS_ACTIVATABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ACTIVATABLE))
-#define CTK_ACTIVATABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_ACTIVATABLE, GtkActivatableIface))
+#define CTK_ACTIVATABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_ACTIVATABLE, CtkActivatableIface))
 
 
-typedef struct _GtkActivatable      GtkActivatable; /* Dummy typedef */
-typedef struct _GtkActivatableIface GtkActivatableIface;
+typedef struct _CtkActivatable      CtkActivatable; /* Dummy typedef */
+typedef struct _CtkActivatableIface CtkActivatableIface;
 
 
 /**
- * GtkActivatableIface:
+ * CtkActivatableIface:
  * @update: Called to update the activatable when its related action’s properties change.
- * You must check the #GtkActivatable:use-action-appearance property only apply action
+ * You must check the #CtkActivatable:use-action-appearance property only apply action
  * properties that are meant to effect the appearance accordingly.
  * @sync_action_properties: Called to update the activatable completely, this is called internally when
- * #GtkActivatable:related-action property is set or unset and by the implementor when
- * #GtkActivatable:use-action-appearance changes.
+ * #CtkActivatable:related-action property is set or unset and by the implementor when
+ * #CtkActivatable:use-action-appearance changes.
  *
  * > This method can be called with a %NULL action at times.
  *
@@ -53,7 +53,7 @@ typedef struct _GtkActivatableIface GtkActivatableIface;
  * Deprecated: 3.10
  */
 
-struct _GtkActivatableIface
+struct _CtkActivatableIface
 {
   /*< private >*/
   GTypeInterface g_iface;
@@ -61,11 +61,11 @@ struct _GtkActivatableIface
   /*< public >*/
 
   /* virtual table */
-  void   (* update)                   (GtkActivatable *activatable,
-		                       GtkAction      *action,
+  void   (* update)                   (CtkActivatable *activatable,
+		                       CtkAction      *action,
 		                       const gchar    *property_name);
-  void   (* sync_action_properties)   (GtkActivatable *activatable,
-		                       GtkAction      *action);
+  void   (* sync_action_properties)   (CtkActivatable *activatable,
+		                       CtkAction      *action);
 };
 
 
@@ -73,25 +73,25 @@ GDK_DEPRECATED_IN_3_10
 GType      ctk_activatable_get_type                   (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_10
-void       ctk_activatable_sync_action_properties     (GtkActivatable *activatable,
-						       GtkAction      *action);
+void       ctk_activatable_sync_action_properties     (CtkActivatable *activatable,
+						       CtkAction      *action);
 
 GDK_DEPRECATED_IN_3_10
-void       ctk_activatable_set_related_action         (GtkActivatable *activatable,
-						       GtkAction      *action);
+void       ctk_activatable_set_related_action         (CtkActivatable *activatable,
+						       CtkAction      *action);
 GDK_DEPRECATED_IN_3_10
-GtkAction *ctk_activatable_get_related_action         (GtkActivatable *activatable);
+CtkAction *ctk_activatable_get_related_action         (CtkActivatable *activatable);
 
 GDK_DEPRECATED_IN_3_10
-void       ctk_activatable_set_use_action_appearance  (GtkActivatable *activatable,
+void       ctk_activatable_set_use_action_appearance  (CtkActivatable *activatable,
 						       gboolean        use_appearance);
 GDK_DEPRECATED_IN_3_10
-gboolean   ctk_activatable_get_use_action_appearance  (GtkActivatable *activatable);
+gboolean   ctk_activatable_get_use_action_appearance  (CtkActivatable *activatable);
 
 /* For use in activatable implementations */
 GDK_DEPRECATED_IN_3_10
-void       ctk_activatable_do_set_related_action      (GtkActivatable *activatable,
-						       GtkAction      *action);
+void       ctk_activatable_do_set_related_action      (CtkActivatable *activatable,
+						       CtkAction      *action);
 
 G_END_DECLS
 

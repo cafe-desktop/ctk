@@ -36,33 +36,33 @@
 
 /**
  * SECTION:ctkapplicationwindow
- * @title: GtkApplicationWindow
- * @short_description: GtkWindow subclass with GtkApplication support
+ * @title: CtkApplicationWindow
+ * @short_description: CtkWindow subclass with CtkApplication support
  *
- * #GtkApplicationWindow is a #GtkWindow subclass that offers some
- * extra functionality for better integration with #GtkApplication
+ * #CtkApplicationWindow is a #CtkWindow subclass that offers some
+ * extra functionality for better integration with #CtkApplication
  * features.  Notably, it can handle both the application menu as well
  * as the menubar. See ctk_application_set_app_menu() and
  * ctk_application_set_menubar().
  *
  * This class implements the #GActionGroup and #GActionMap interfaces,
  * to let you add window-specific actions that will be exported by the
- * associated #GtkApplication, together with its application-wide
+ * associated #CtkApplication, together with its application-wide
  * actions.  Window-specific actions are prefixed with the “win.”
  * prefix and application-wide actions are prefixed with the “app.”
  * prefix.  Actions must be addressed with the prefixed name when
  * referring to them from a #GMenuModel.
  *
- * Note that widgets that are placed inside a #GtkApplicationWindow
+ * Note that widgets that are placed inside a #CtkApplicationWindow
  * can also activate these actions, if they implement the
- * #GtkActionable interface.
+ * #CtkActionable interface.
  *
- * As with #GtkApplication, the GDK lock will be acquired when
+ * As with #CtkApplication, the GDK lock will be acquired when
  * processing actions arriving from other processes and should therefore
  * be held when activating actions locally (if GDK threads are enabled).
  *
- * The settings #GtkSettings:ctk-shell-shows-app-menu and
- * #GtkSettings:ctk-shell-shows-menubar tell GTK+ whether the
+ * The settings #CtkSettings:ctk-shell-shows-app-menu and
+ * #CtkSettings:ctk-shell-shows-menubar tell GTK+ whether the
  * desktop environment is showing the application menu and menubar
  * models outside the application as part of the desktop shell.
  * For instance, on OS X, both menus will be displayed remotely;
@@ -70,18 +70,18 @@
  * will display the application menu, but not the menubar.
  *
  * If the desktop environment does not display the menubar, then
- * #GtkApplicationWindow will automatically show a #GtkMenuBar for it.
- * This behaviour can be overridden with the #GtkApplicationWindow:show-menubar
+ * #CtkApplicationWindow will automatically show a #CtkMenuBar for it.
+ * This behaviour can be overridden with the #CtkApplicationWindow:show-menubar
  * property. If the desktop environment does not display the application
  * menu, then it will automatically be included in the menubar or in the
  * windows client-side decorations.
  *
- * ## A GtkApplicationWindow with a menubar
+ * ## A CtkApplicationWindow with a menubar
  *
  * |[<!-- language="C" -->
- * GtkApplication *app = ctk_application_new ("org.ctk.test", 0);
+ * CtkApplication *app = ctk_application_new ("org.ctk.test", 0);
  *
- * GtkBuilder *builder = ctk_builder_new_from_string (
+ * CtkBuilder *builder = ctk_builder_new_from_string (
  *     "<interface>"
  *     "  <menu id='menubar'>"
  *     "    <submenu label='_Edit'>"
@@ -99,14 +99,14 @@
  *
  * // ...
  *
- * GtkWidget *window = ctk_application_window_new (app);
+ * CtkWidget *window = ctk_application_window_new (app);
  * ]|
  *
  * ## Handling fallback yourself
  *
  * [A simple example](https://git.gnome.org/browse/ctk+/tree/examples/sunny.c)
  *
- * The XML format understood by #GtkBuilder for #GMenuModel consists
+ * The XML format understood by #CtkBuilder for #GMenuModel consists
  * of a toplevel `<menu>` element, which contains one or more `<item>`
  * elements. Each `<item>` element contains `<attribute>` and `<link>`
  * elements with a mandatory name attribute. `<link>` elements have the
@@ -114,11 +114,11 @@
  * `<link name="section">`, you can use `<submenu>` or `<section>`
  * elements.
  *
- * Attribute values can be translated using gettext, like other #GtkBuilder
+ * Attribute values can be translated using gettext, like other #CtkBuilder
  * content. `<attribute>` elements can be marked for translation with a
  * `translatable="yes"` attribute. It is also possible to specify message
  * context and translator comments, using the context and comments attributes.
- * To make use of this, the #GtkBuilder must have been given the gettext
+ * To make use of this, the #CtkBuilder must have been given the gettext
  * domain to use.
  *
  * The following attributes are used when constructing menu items:
@@ -135,7 +135,7 @@
  * - "label": a user-visible string to use as section heading
  * - "display-hint": a string used to determine special formatting for the section.
  *     Possible values include "horizontal-buttons".
- * - "text-direction": a string used to determine the #GtkTextDirection to use
+ * - "text-direction": a string used to determine the #CtkTextDirection to use
  *     when "display-hint" is set to "horizontal-buttons". Possible values
  *     include "rtl", "ltr", and "none".
  *
@@ -144,16 +144,16 @@
  * - "icon": icon name to display
  */
 
-typedef GSimpleActionGroupClass GtkApplicationWindowActionsClass;
+typedef GSimpleActionGroupClass CtkApplicationWindowActionsClass;
 typedef struct
 {
   GSimpleActionGroup parent_instance;
-  GtkWindow *window;
-} GtkApplicationWindowActions;
+  CtkWindow *window;
+} CtkApplicationWindowActions;
 
 static GType ctk_application_window_actions_get_type   (void);
 static void  ctk_application_window_actions_iface_init (GRemoteActionGroupInterface *iface);
-G_DEFINE_TYPE_WITH_CODE (GtkApplicationWindowActions, ctk_application_window_actions, G_TYPE_SIMPLE_ACTION_GROUP,
+G_DEFINE_TYPE_WITH_CODE (CtkApplicationWindowActions, ctk_application_window_actions, G_TYPE_SIMPLE_ACTION_GROUP,
                          G_IMPLEMENT_INTERFACE (G_TYPE_REMOTE_ACTION_GROUP, ctk_application_window_actions_iface_init))
 
 static void
@@ -162,7 +162,7 @@ ctk_application_window_actions_activate_action_full (GRemoteActionGroup *remote,
                                                      GVariant           *parameter,
                                                      GVariant           *platform_data)
 {
-  GtkApplicationWindowActions *actions = (GtkApplicationWindowActions *) remote;
+  CtkApplicationWindowActions *actions = (CtkApplicationWindowActions *) remote;
   GApplication *application;
   GApplicationClass *class;
 
@@ -180,7 +180,7 @@ ctk_application_window_actions_change_action_state_full (GRemoteActionGroup *rem
                                                          GVariant           *value,
                                                          GVariant           *platform_data)
 {
-  GtkApplicationWindowActions *actions = (GtkApplicationWindowActions *) remote;
+  CtkApplicationWindowActions *actions = (CtkApplicationWindowActions *) remote;
   GApplication *application;
   GApplicationClass *class;
 
@@ -193,7 +193,7 @@ ctk_application_window_actions_change_action_state_full (GRemoteActionGroup *rem
 }
 
 static void
-ctk_application_window_actions_init (GtkApplicationWindowActions *actions)
+ctk_application_window_actions_init (CtkApplicationWindowActions *actions)
 {
 }
 
@@ -205,14 +205,14 @@ ctk_application_window_actions_iface_init (GRemoteActionGroupInterface *iface)
 }
 
 static void
-ctk_application_window_actions_class_init (GtkApplicationWindowActionsClass *class)
+ctk_application_window_actions_class_init (CtkApplicationWindowActionsClass *class)
 {
 }
 
 static GSimpleActionGroup *
-ctk_application_window_actions_new (GtkApplicationWindow *window)
+ctk_application_window_actions_new (CtkApplicationWindow *window)
 {
-  GtkApplicationWindowActions *actions;
+  CtkApplicationWindowActions *actions;
 
   actions = g_object_new (ctk_application_window_actions_get_type (), NULL);
   actions->window = CTK_WINDOW (window);
@@ -220,12 +220,12 @@ ctk_application_window_actions_new (GtkApplicationWindow *window)
   return G_SIMPLE_ACTION_GROUP (actions);
 }
 
-/* Now onto GtkApplicationWindow... */
+/* Now onto CtkApplicationWindow... */
 
-struct _GtkApplicationWindowPrivate
+struct _CtkApplicationWindowPrivate
 {
   GSimpleActionGroup *actions;
-  GtkWidget *menubar;
+  CtkWidget *menubar;
 
   gboolean show_menubar;
   GMenu *app_menu_section;
@@ -233,11 +233,11 @@ struct _GtkApplicationWindowPrivate
 
   guint            id;
 
-  GtkShortcutsWindow *help_overlay;
+  CtkShortcutsWindow *help_overlay;
 };
 
 static void
-ctk_application_window_update_menubar (GtkApplicationWindow *window)
+ctk_application_window_update_menubar (CtkApplicationWindow *window)
 {
   gboolean should_have_menubar;
   gboolean have_menubar;
@@ -300,8 +300,8 @@ ctk_application_window_get_app_desktop_name (void)
 }
 
 static void
-ctk_application_window_update_shell_shows_app_menu (GtkApplicationWindow *window,
-                                                    GtkSettings          *settings)
+ctk_application_window_update_shell_shows_app_menu (CtkApplicationWindow *window,
+                                                    CtkSettings          *settings)
 {
   gboolean shown_by_shell;
   gboolean shown_by_titlebar;
@@ -353,8 +353,8 @@ ctk_application_window_update_shell_shows_app_menu (GtkApplicationWindow *window
 }
 
 static void
-ctk_application_window_update_shell_shows_menubar (GtkApplicationWindow *window,
-                                                   GtkSettings          *settings)
+ctk_application_window_update_shell_shows_menubar (CtkApplicationWindow *window,
+                                                   CtkSettings          *settings)
 {
   gboolean shown_by_shell;
 
@@ -387,7 +387,7 @@ ctk_application_window_shell_shows_app_menu_changed (GObject    *object,
                                                      GParamSpec *pspec,
                                                      gpointer    user_data)
 {
-  GtkApplicationWindow *window = user_data;
+  CtkApplicationWindow *window = user_data;
 
   ctk_application_window_update_shell_shows_app_menu (window, CTK_SETTINGS (object));
   ctk_application_window_update_menubar (window);
@@ -398,7 +398,7 @@ ctk_application_window_shell_shows_menubar_changed (GObject    *object,
                                                     GParamSpec *pspec,
                                                     gpointer    user_data)
 {
-  GtkApplicationWindow *window = user_data;
+  CtkApplicationWindow *window = user_data;
 
   ctk_application_window_update_shell_shows_menubar (window, CTK_SETTINGS (object));
   ctk_application_window_update_menubar (window);
@@ -407,7 +407,7 @@ ctk_application_window_shell_shows_menubar_changed (GObject    *object,
 static gchar **
 ctk_application_window_list_actions (GActionGroup *group)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
 
   /* may be NULL after dispose has run */
   if (!window->priv->actions)
@@ -425,7 +425,7 @@ ctk_application_window_query_action (GActionGroup        *group,
                                      GVariant           **state_hint,
                                      GVariant           **state)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
 
   if (!window->priv->actions)
     return FALSE;
@@ -439,7 +439,7 @@ ctk_application_window_activate_action (GActionGroup *group,
                                         const gchar  *action_name,
                                         GVariant     *parameter)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
 
   if (!window->priv->actions)
     return;
@@ -452,7 +452,7 @@ ctk_application_window_change_action_state (GActionGroup *group,
                                             const gchar  *action_name,
                                             GVariant     *state)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
 
   if (!window->priv->actions)
     return;
@@ -464,7 +464,7 @@ static GAction *
 ctk_application_window_lookup_action (GActionMap  *action_map,
                                       const gchar *action_name)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
 
   if (!window->priv->actions)
     return NULL;
@@ -476,7 +476,7 @@ static void
 ctk_application_window_add_action (GActionMap *action_map,
                                    GAction    *action)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
 
   if (!window->priv->actions)
     return;
@@ -488,7 +488,7 @@ static void
 ctk_application_window_remove_action (GActionMap  *action_map,
                                       const gchar *action_name)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
 
   if (!window->priv->actions)
     return;
@@ -513,8 +513,8 @@ ctk_application_window_map_iface_init (GActionMapInterface *iface)
   iface->remove_action = ctk_application_window_remove_action;
 }
 
-G_DEFINE_TYPE_WITH_CODE (GtkApplicationWindow, ctk_application_window, CTK_TYPE_WINDOW,
-                         G_ADD_PRIVATE (GtkApplicationWindow)
+G_DEFINE_TYPE_WITH_CODE (CtkApplicationWindow, ctk_application_window, CTK_TYPE_WINDOW,
+                         G_ADD_PRIVATE (CtkApplicationWindow)
                          G_IMPLEMENT_INTERFACE (G_TYPE_ACTION_GROUP, ctk_application_window_group_iface_init)
                          G_IMPLEMENT_INTERFACE (G_TYPE_ACTION_MAP, ctk_application_window_map_iface_init))
 
@@ -526,11 +526,11 @@ enum {
 static GParamSpec *ctk_application_window_properties[N_PROPS];
 
 static void
-ctk_application_window_real_get_preferred_height (GtkWidget *widget,
+ctk_application_window_real_get_preferred_height (CtkWidget *widget,
                                                   gint      *minimum_height,
                                                   gint      *natural_height)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   CTK_WIDGET_CLASS (ctk_application_window_parent_class)
     ->get_preferred_height (widget, minimum_height, natural_height);
@@ -546,12 +546,12 @@ ctk_application_window_real_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_application_window_real_get_preferred_height_for_width (GtkWidget *widget,
+ctk_application_window_real_get_preferred_height_for_width (CtkWidget *widget,
                                                             gint       width,
                                                             gint      *minimum_height,
                                                             gint      *natural_height)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   CTK_WIDGET_CLASS (ctk_application_window_parent_class)
     ->get_preferred_height_for_width (widget, width, minimum_height, natural_height);
@@ -567,11 +567,11 @@ ctk_application_window_real_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_application_window_real_get_preferred_width (GtkWidget *widget,
+ctk_application_window_real_get_preferred_width (CtkWidget *widget,
                                                  gint      *minimum_width,
                                                  gint      *natural_width)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   CTK_WIDGET_CLASS (ctk_application_window_parent_class)
     ->get_preferred_width (widget, minimum_width, natural_width);
@@ -580,7 +580,7 @@ ctk_application_window_real_get_preferred_width (GtkWidget *widget,
     {
       gint menubar_min_width, menubar_nat_width;
       gint border_width;
-      GtkBorder border = { 0 };
+      CtkBorder border = { 0 };
 
       ctk_widget_get_preferred_width (window->priv->menubar, &menubar_min_width, &menubar_nat_width);
 
@@ -596,12 +596,12 @@ ctk_application_window_real_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_application_window_real_get_preferred_width_for_height (GtkWidget *widget,
+ctk_application_window_real_get_preferred_width_for_height (CtkWidget *widget,
                                                             gint       height,
                                                             gint      *minimum_width,
                                                             gint      *natural_width)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
   gint menubar_height;
 
   if (window->priv->menubar != NULL)
@@ -616,7 +616,7 @@ ctk_application_window_real_get_preferred_width_for_height (GtkWidget *widget,
     {
       gint menubar_min_width, menubar_nat_width;
       gint border_width;
-      GtkBorder border = { 0 };
+      CtkBorder border = { 0 };
 
       ctk_widget_get_preferred_width_for_height (window->priv->menubar, menubar_height, &menubar_min_width, &menubar_nat_width);
 
@@ -632,17 +632,17 @@ ctk_application_window_real_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_application_window_real_size_allocate (GtkWidget     *widget,
-                                           GtkAllocation *allocation)
+ctk_application_window_real_size_allocate (CtkWidget     *widget,
+                                           CtkAllocation *allocation)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   if (window->priv->menubar != NULL)
     {
-      GtkAllocation menubar_allocation;
-      GtkAllocation child_allocation;
+      CtkAllocation menubar_allocation;
+      CtkAllocation child_allocation;
       gint menubar_height;
-      GtkWidget *child;
+      CtkWidget *child;
 
       _ctk_window_set_allocation (CTK_WINDOW (widget), allocation, &child_allocation);
       menubar_allocation = child_allocation;
@@ -666,10 +666,10 @@ ctk_application_window_real_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_application_window_real_realize (GtkWidget *widget)
+ctk_application_window_real_realize (CtkWidget *widget)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
-  GtkSettings *settings;
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
+  CtkSettings *settings;
 
   settings = ctk_widget_get_settings (widget);
 
@@ -686,9 +686,9 @@ ctk_application_window_real_realize (GtkWidget *widget)
 }
 
 static void
-ctk_application_window_real_unrealize (GtkWidget *widget)
+ctk_application_window_real_unrealize (CtkWidget *widget)
 {
-  GtkSettings *settings;
+  CtkSettings *settings;
 
   settings = ctk_widget_get_settings (widget);
 
@@ -699,15 +699,15 @@ ctk_application_window_real_unrealize (GtkWidget *widget)
 }
 
 GActionGroup *
-ctk_application_window_get_action_group (GtkApplicationWindow *window)
+ctk_application_window_get_action_group (CtkApplicationWindow *window)
 {
   return G_ACTION_GROUP (window->priv->actions);
 }
 
 static void
-ctk_application_window_real_map (GtkWidget *widget)
+ctk_application_window_real_map (CtkWidget *widget)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   /* XXX could eliminate this by tweaking ctk_window_map */
   if (window->priv->menubar)
@@ -717,9 +717,9 @@ ctk_application_window_real_map (GtkWidget *widget)
 }
 
 static void
-ctk_application_window_real_unmap (GtkWidget *widget)
+ctk_application_window_real_unmap (CtkWidget *widget)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   /* XXX could eliminate this by tweaking ctk_window_unmap */
   if (window->priv->menubar)
@@ -729,12 +729,12 @@ ctk_application_window_real_unmap (GtkWidget *widget)
 }
 
 static void
-ctk_application_window_real_forall_internal (GtkContainer *container,
+ctk_application_window_real_forall_internal (CtkContainer *container,
                                              gboolean      include_internal,
-                                             GtkCallback   callback,
+                                             CtkCallback   callback,
                                              gpointer      user_data)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (container);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (container);
 
   if (window->priv->menubar)
     callback (window->priv->menubar, user_data);
@@ -749,7 +749,7 @@ ctk_application_window_get_property (GObject    *object,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
 
   switch (prop_id)
     {
@@ -768,7 +768,7 @@ ctk_application_window_set_property (GObject      *object,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
 
   switch (prop_id)
     {
@@ -784,7 +784,7 @@ ctk_application_window_set_property (GObject      *object,
 static void
 ctk_application_window_dispose (GObject *object)
 {
-  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
+  CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
 
   if (window->priv->menubar)
     {
@@ -804,17 +804,17 @@ ctk_application_window_dispose (GObject *object)
   G_OBJECT_CLASS (ctk_application_window_parent_class)->dispose (object);
 
   /* We do this below the chain-up above to give us a chance to be
-   * removed from the GtkApplication (which is done in the dispose
-   * handler of GtkWindow).
+   * removed from the CtkApplication (which is done in the dispose
+   * handler of CtkWindow).
    *
    * That reduces our chances of being watched as a GActionGroup from a
-   * muxer constructed by GtkApplication.
+   * muxer constructed by CtkApplication.
    */
   g_clear_object (&window->priv->actions);
 }
 
 static void
-ctk_application_window_init (GtkApplicationWindow *window)
+ctk_application_window_init (CtkApplicationWindow *window)
 {
   window->priv = ctk_application_window_get_instance_private (window);
 
@@ -838,10 +838,10 @@ ctk_application_window_init (GtkApplicationWindow *window)
 }
 
 static void
-ctk_application_window_class_init (GtkApplicationWindowClass *class)
+ctk_application_window_class_init (CtkApplicationWindowClass *class)
 {
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
   container_class->forall = ctk_application_window_real_forall_internal;
@@ -859,7 +859,7 @@ ctk_application_window_class_init (GtkApplicationWindowClass *class)
   object_class->dispose = ctk_application_window_dispose;
 
   /**
-   * GtkApplicationWindow:show-menubar:
+   * CtkApplicationWindow:show-menubar:
    *
    * If this property is %TRUE, the window will display a menubar
    * that includes the app menu and menubar, unless these are
@@ -880,16 +880,16 @@ ctk_application_window_class_init (GtkApplicationWindowClass *class)
 
 /**
  * ctk_application_window_new:
- * @application: a #GtkApplication
+ * @application: a #CtkApplication
  *
- * Creates a new #GtkApplicationWindow.
+ * Creates a new #CtkApplicationWindow.
  *
- * Returns: a newly created #GtkApplicationWindow
+ * Returns: a newly created #CtkApplicationWindow
  *
  * Since: 3.4
  */
-GtkWidget *
-ctk_application_window_new (GtkApplication *application)
+CtkWidget *
+ctk_application_window_new (CtkApplication *application)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
@@ -900,7 +900,7 @@ ctk_application_window_new (GtkApplication *application)
 
 /**
  * ctk_application_window_get_show_menubar:
- * @window: a #GtkApplicationWindow
+ * @window: a #CtkApplicationWindow
  *
  * Returns whether the window will display a menubar for the app menu
  * and menubar as needed.
@@ -910,14 +910,14 @@ ctk_application_window_new (GtkApplication *application)
  * Since: 3.4
  */
 gboolean
-ctk_application_window_get_show_menubar (GtkApplicationWindow *window)
+ctk_application_window_get_show_menubar (CtkApplicationWindow *window)
 {
   return window->priv->show_menubar;
 }
 
 /**
  * ctk_application_window_set_show_menubar:
- * @window: a #GtkApplicationWindow
+ * @window: a #CtkApplicationWindow
  * @show_menubar: whether to show a menubar when needed
  *
  * Sets whether the window will display a menubar for the app menu
@@ -926,7 +926,7 @@ ctk_application_window_get_show_menubar (GtkApplicationWindow *window)
  * Since: 3.4
  */
 void
-ctk_application_window_set_show_menubar (GtkApplicationWindow *window,
+ctk_application_window_set_show_menubar (CtkApplicationWindow *window,
                                          gboolean              show_menubar)
 {
   g_return_if_fail (CTK_IS_APPLICATION_WINDOW (window));
@@ -945,18 +945,18 @@ ctk_application_window_set_show_menubar (GtkApplicationWindow *window,
 
 /**
  * ctk_application_window_get_id:
- * @window: a #GtkApplicationWindow
+ * @window: a #CtkApplicationWindow
  *
  * Returns the unique ID of the window. If the window has not yet been added to
- * a #GtkApplication, returns `0`.
+ * a #CtkApplication, returns `0`.
  *
  * Returns: the unique ID for @window, or `0` if the window
- *   has not yet been added to a #GtkApplication
+ *   has not yet been added to a #CtkApplication
  *
  * Since: 3.6
  */
 guint
-ctk_application_window_get_id (GtkApplicationWindow *window)
+ctk_application_window_get_id (CtkApplicationWindow *window)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION_WINDOW (window), 0);
 
@@ -964,7 +964,7 @@ ctk_application_window_get_id (GtkApplicationWindow *window)
 }
 
 void
-ctk_application_window_set_id (GtkApplicationWindow *window,
+ctk_application_window_set_id (CtkApplicationWindow *window,
                                guint                 id)
 {
   g_return_if_fail (CTK_IS_APPLICATION_WINDOW (window));
@@ -976,7 +976,7 @@ show_help_overlay (GSimpleAction *action,
                    GVariant      *parameter,
                    gpointer       user_data)
 {
-  GtkApplicationWindow *window = user_data;
+  CtkApplicationWindow *window = user_data;
 
   if (window->priv->help_overlay)
     ctk_widget_show (CTK_WIDGET (window->priv->help_overlay));
@@ -984,8 +984,8 @@ show_help_overlay (GSimpleAction *action,
 
 /**
  * ctk_application_window_set_help_overlay:
- * @window: a #GtkApplicationWindow
- * @help_overlay: (nullable): a #GtkShortcutsWindow
+ * @window: a #CtkApplicationWindow
+ * @help_overlay: (nullable): a #CtkShortcutsWindow
  *
  * Associates a shortcuts window with the application window, and
  * sets up an action with the name win.show-help-overlay to present
@@ -996,8 +996,8 @@ show_help_overlay (GSimpleAction *action,
  * Since: 3.20
  */
 void
-ctk_application_window_set_help_overlay (GtkApplicationWindow *window,
-                                         GtkShortcutsWindow   *help_overlay)
+ctk_application_window_set_help_overlay (CtkApplicationWindow *window,
+                                         CtkShortcutsWindow   *help_overlay)
 {
   g_return_if_fail (CTK_IS_APPLICATION_WINDOW (window));
   g_return_if_fail (help_overlay == NULL || CTK_IS_SHORTCUTS_WINDOW (help_overlay));
@@ -1030,17 +1030,17 @@ ctk_application_window_set_help_overlay (GtkApplicationWindow *window,
 
 /**
  * ctk_application_window_get_help_overlay:
- * @window: a #GtkApplicationWindow
+ * @window: a #CtkApplicationWindow
  *
- * Gets the #GtkShortcutsWindow that has been set up with
+ * Gets the #CtkShortcutsWindow that has been set up with
  * a prior call to ctk_application_window_set_help_overlay().
  *
  * Returns: (transfer none) (nullable): the help overlay associated with @window, or %NULL
  *
  * Since: 3.20
  */
-GtkShortcutsWindow *
-ctk_application_window_get_help_overlay (GtkApplicationWindow *window)
+CtkShortcutsWindow *
+ctk_application_window_get_help_overlay (CtkApplicationWindow *window)
 {
   g_return_val_if_fail (CTK_IS_APPLICATION_WINDOW (window), NULL);
 

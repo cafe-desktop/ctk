@@ -34,10 +34,10 @@
 #include "deprecated/ctkiconfactoryprivate.h"
 #include "deprecated/ctkstock.h"
 
-struct _GtkIconHelperPrivate {
-  GtkImageDefinition *def;
+struct _CtkIconHelperPrivate {
+  CtkImageDefinition *def;
 
-  GtkIconSize icon_size;
+  CtkIconSize icon_size;
   gint pixel_size;
 
   guint use_fallback : 1;
@@ -47,10 +47,10 @@ struct _GtkIconHelperPrivate {
   cairo_surface_t *rendered_surface;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkIconHelper, ctk_icon_helper, CTK_TYPE_CSS_GADGET)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkIconHelper, ctk_icon_helper, CTK_TYPE_CSS_GADGET)
 
 static void
-ctk_icon_helper_invalidate (GtkIconHelper *self)
+ctk_icon_helper_invalidate (CtkIconHelper *self)
 {
   if (self->priv->rendered_surface != NULL)
     {
@@ -64,10 +64,10 @@ ctk_icon_helper_invalidate (GtkIconHelper *self)
 }
 
 void
-ctk_icon_helper_invalidate_for_change (GtkIconHelper     *self,
-                                       GtkCssStyleChange *change)
+ctk_icon_helper_invalidate_for_change (CtkIconHelper     *self,
+                                       CtkCssStyleChange *change)
 {
-  GtkIconHelperPrivate *priv = self->priv;
+  CtkIconHelperPrivate *priv = self->priv;
 
   if (change == NULL ||
       ((ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_SYMBOLIC_ICON) &&
@@ -80,8 +80,8 @@ ctk_icon_helper_invalidate_for_change (GtkIconHelper     *self,
 }
 
 static void
-ctk_icon_helper_take_definition (GtkIconHelper      *self,
-                                 GtkImageDefinition *def)
+ctk_icon_helper_take_definition (CtkIconHelper      *self,
+                                 CtkImageDefinition *def)
 {
   _ctk_icon_helper_clear (self);
 
@@ -95,7 +95,7 @@ ctk_icon_helper_take_definition (GtkIconHelper      *self,
 }
 
 void
-_ctk_icon_helper_clear (GtkIconHelper *self)
+_ctk_icon_helper_clear (CtkIconHelper *self)
 {
   g_clear_pointer (&self->priv->rendered_surface, cairo_surface_destroy);
 
@@ -108,15 +108,15 @@ _ctk_icon_helper_clear (GtkIconHelper *self)
 }
 
 static void
-ctk_icon_helper_get_preferred_size (GtkCssGadget   *gadget,
-                                    GtkOrientation  orientation,
+ctk_icon_helper_get_preferred_size (CtkCssGadget   *gadget,
+                                    CtkOrientation  orientation,
                                     gint            for_size,
                                     gint           *minimum,
                                     gint           *natural,
                                     gint           *minimum_baseline,
                                     gint           *natural_baseline)
 {
-  GtkIconHelper *self = CTK_ICON_HELPER (gadget);
+  CtkIconHelper *self = CTK_ICON_HELPER (gadget);
   int icon_width, icon_height;
 
   _ctk_icon_helper_get_size (self, &icon_width, &icon_height);
@@ -128,23 +128,23 @@ ctk_icon_helper_get_preferred_size (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_icon_helper_allocate (GtkCssGadget        *gadget,
-                          const GtkAllocation *allocation,
+ctk_icon_helper_allocate (CtkCssGadget        *gadget,
+                          const CtkAllocation *allocation,
                           int                  baseline,
-                          GtkAllocation       *out_clip)
+                          CtkAllocation       *out_clip)
 {
   CTK_CSS_GADGET_CLASS (ctk_icon_helper_parent_class)->allocate (gadget, allocation, baseline, out_clip);
 }
 
 static gboolean
-ctk_icon_helper_draw (GtkCssGadget *gadget,
+ctk_icon_helper_draw (CtkCssGadget *gadget,
                       cairo_t      *cr,
                       int           x,
                       int           y,
                       int           width,
                       int           height)
 {
-  GtkIconHelper *self = CTK_ICON_HELPER (gadget);
+  CtkIconHelper *self = CTK_ICON_HELPER (gadget);
   int icon_width, icon_height;
 
   _ctk_icon_helper_get_size (self, &icon_width, &icon_height);
@@ -157,8 +157,8 @@ ctk_icon_helper_draw (GtkCssGadget *gadget,
 }
 
 static void
-ctk_icon_helper_style_changed (GtkCssGadget      *gadget,
-                               GtkCssStyleChange *change)
+ctk_icon_helper_style_changed (CtkCssGadget      *gadget,
+                               CtkCssStyleChange *change)
 {
   ctk_icon_helper_invalidate_for_change (CTK_ICON_HELPER (gadget), change);
 
@@ -169,8 +169,8 @@ ctk_icon_helper_style_changed (GtkCssGadget      *gadget,
 static void
 ctk_icon_helper_constructed (GObject *object)
 {
-  GtkIconHelper *self = CTK_ICON_HELPER (object);
-  GtkWidget *widget;
+  CtkIconHelper *self = CTK_ICON_HELPER (object);
+  CtkWidget *widget;
 
   widget = ctk_css_gadget_get_owner (CTK_CSS_GADGET (self));
 
@@ -183,8 +183,8 @@ ctk_icon_helper_constructed (GObject *object)
 static void
 ctk_icon_helper_finalize (GObject *object)
 {
-  GtkIconHelper *self = CTK_ICON_HELPER (object);
-  GtkWidget *widget;
+  CtkIconHelper *self = CTK_ICON_HELPER (object);
+  CtkWidget *widget;
 
   widget = ctk_css_gadget_get_owner (CTK_CSS_GADGET (self));
   g_signal_handlers_disconnect_by_func (widget, G_CALLBACK (ctk_icon_helper_invalidate), self);
@@ -196,9 +196,9 @@ ctk_icon_helper_finalize (GObject *object)
 }
 
 static void
-ctk_icon_helper_class_init (GtkIconHelperClass *klass)
+ctk_icon_helper_class_init (CtkIconHelperClass *klass)
 {
-  GtkCssGadgetClass *gadget_class = CTK_CSS_GADGET_CLASS (klass);
+  CtkCssGadgetClass *gadget_class = CTK_CSS_GADGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   
   gadget_class->get_preferred_size = ctk_icon_helper_get_preferred_size;
@@ -211,7 +211,7 @@ ctk_icon_helper_class_init (GtkIconHelperClass *klass)
 }
 
 static void
-ctk_icon_helper_init (GtkIconHelper *self)
+ctk_icon_helper_init (CtkIconHelper *self)
 {
   self->priv = ctk_icon_helper_get_instance_private (self);
 
@@ -223,7 +223,7 @@ ctk_icon_helper_init (GtkIconHelper *self)
 }
 
 static void
-ensure_icon_size (GtkIconHelper *self,
+ensure_icon_size (CtkIconHelper *self,
 		  gint *width_out,
 		  gint *height_out)
 {
@@ -250,13 +250,13 @@ ensure_icon_size (GtkIconHelper *self,
   *height_out = height;
 }
 
-static GtkIconLookupFlags
-get_icon_lookup_flags (GtkIconHelper    *self,
-                       GtkCssStyle      *style,
-                       GtkTextDirection  dir)
+static CtkIconLookupFlags
+get_icon_lookup_flags (CtkIconHelper    *self,
+                       CtkCssStyle      *style,
+                       CtkTextDirection  dir)
 {
-  GtkIconLookupFlags flags;
-  GtkCssIconStyle icon_style;
+  CtkIconLookupFlags flags;
+  CtkCssIconStyle icon_style;
 
   flags = CTK_ICON_LOOKUP_USE_BUILTIN;
 
@@ -289,7 +289,7 @@ get_icon_lookup_flags (GtkIconHelper    *self,
 }
 
 static void
-get_surface_size (GtkIconHelper   *self,
+get_surface_size (CtkIconHelper   *self,
 		  cairo_surface_t *surface,
 		  int *width,
 		  int *height)
@@ -317,14 +317,14 @@ get_surface_size (GtkIconHelper   *self,
 }
 
 static cairo_surface_t *
-ensure_surface_from_surface (GtkIconHelper   *self,
+ensure_surface_from_surface (CtkIconHelper   *self,
                              cairo_surface_t *orig_surface)
 {
   return cairo_surface_reference (orig_surface);
 }
 
 static gboolean
-get_pixbuf_size (GtkIconHelper   *self,
+get_pixbuf_size (CtkIconHelper   *self,
                  gint             scale,
                  GdkPixbuf       *orig_pixbuf,
                  gint             orig_scale,
@@ -374,8 +374,8 @@ get_pixbuf_size (GtkIconHelper   *self,
 }
 
 static cairo_surface_t *
-ensure_surface_from_pixbuf (GtkIconHelper *self,
-                            GtkCssStyle   *style,
+ensure_surface_from_pixbuf (CtkIconHelper *self,
+                            CtkCssStyle   *style,
                             gint           scale,
                             GdkPixbuf     *orig_pixbuf,
                             gint           orig_scale)
@@ -383,7 +383,7 @@ ensure_surface_from_pixbuf (GtkIconHelper *self,
   gint width, height;
   cairo_surface_t *surface;
   GdkPixbuf *pixbuf;
-  GtkCssIconEffect icon_effect;
+  CtkCssIconEffect icon_effect;
 
   if (get_pixbuf_size (self,
                        scale,
@@ -405,11 +405,11 @@ ensure_surface_from_pixbuf (GtkIconHelper *self,
 }
 
 static cairo_surface_t *
-ensure_surface_for_icon_set (GtkIconHelper    *self,
-                             GtkCssStyle      *style,
-                             GtkTextDirection  direction,
+ensure_surface_for_icon_set (CtkIconHelper    *self,
+                             CtkCssStyle      *style,
+                             CtkTextDirection  direction,
                              gint              scale,
-			     GtkIconSet       *icon_set)
+			     CtkIconSet       *icon_set)
 {
   cairo_surface_t *surface;
   GdkPixbuf *pixbuf;
@@ -428,17 +428,17 @@ ensure_surface_for_icon_set (GtkIconHelper    *self,
 }
 
 static cairo_surface_t *
-ensure_surface_for_gicon (GtkIconHelper    *self,
-                          GtkCssStyle      *style,
-                          GtkTextDirection  dir,
+ensure_surface_for_gicon (CtkIconHelper    *self,
+                          CtkCssStyle      *style,
+                          CtkTextDirection  dir,
                           gint              scale,
                           GIcon            *gicon)
 {
-  GtkIconHelperPrivate *priv = self->priv;
-  GtkIconTheme *icon_theme;
+  CtkIconHelperPrivate *priv = self->priv;
+  CtkIconTheme *icon_theme;
   gint width, height;
-  GtkIconInfo *info;
-  GtkIconLookupFlags flags;
+  CtkIconInfo *info;
+  CtkIconLookupFlags flags;
   cairo_surface_t *surface;
   GdkPixbuf *destination;
   gboolean symbolic;
@@ -500,7 +500,7 @@ ensure_surface_for_gicon (GtkIconHelper    *self,
 
   if (!symbolic)
     {
-      GtkCssIconEffect icon_effect;
+      CtkCssIconEffect icon_effect;
 
       icon_effect = _ctk_css_icon_effect_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_EFFECT));
       ctk_css_icon_effect_apply (icon_effect, surface);
@@ -516,11 +516,11 @@ ensure_surface_for_gicon (GtkIconHelper    *self,
 }
 
 cairo_surface_t *
-ctk_icon_helper_load_surface (GtkIconHelper   *self,
+ctk_icon_helper_load_surface (CtkIconHelper   *self,
                               int              scale)
 {
   cairo_surface_t *surface;
-  GtkIconSet *icon_set;
+  CtkIconSet *icon_set;
   GIcon *gicon;
 
   switch (ctk_image_definition_get_storage_type (self->priv->def))
@@ -591,7 +591,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
-ctk_icon_helper_ensure_surface (GtkIconHelper *self)
+ctk_icon_helper_ensure_surface (CtkIconHelper *self)
 {
   int scale;
 
@@ -604,7 +604,7 @@ ctk_icon_helper_ensure_surface (GtkIconHelper *self)
 }
 
 void
-_ctk_icon_helper_get_size (GtkIconHelper *self,
+_ctk_icon_helper_get_size (CtkIconHelper *self,
                            gint *width_out,
                            gint *height_out)
 {
@@ -678,8 +678,8 @@ _ctk_icon_helper_get_size (GtkIconHelper *self,
 }
 
 void
-_ctk_icon_helper_set_definition (GtkIconHelper *self,
-                                 GtkImageDefinition *def)
+_ctk_icon_helper_set_definition (CtkIconHelper *self,
+                                 CtkImageDefinition *def)
 {
   if (def)
     ctk_icon_helper_take_definition (self, ctk_image_definition_ref (def));
@@ -688,65 +688,65 @@ _ctk_icon_helper_set_definition (GtkIconHelper *self,
 }
 
 void 
-_ctk_icon_helper_set_gicon (GtkIconHelper *self,
+_ctk_icon_helper_set_gicon (CtkIconHelper *self,
                             GIcon *gicon,
-                            GtkIconSize icon_size)
+                            CtkIconSize icon_size)
 {
   ctk_icon_helper_take_definition (self, ctk_image_definition_new_gicon (gicon));
   _ctk_icon_helper_set_icon_size (self, icon_size);
 }
 
 void 
-_ctk_icon_helper_set_icon_name (GtkIconHelper *self,
+_ctk_icon_helper_set_icon_name (CtkIconHelper *self,
                                 const gchar *icon_name,
-                                GtkIconSize icon_size)
+                                CtkIconSize icon_size)
 {
   ctk_icon_helper_take_definition (self, ctk_image_definition_new_icon_name (icon_name));
   _ctk_icon_helper_set_icon_size (self, icon_size);
 }
 
 void 
-_ctk_icon_helper_set_icon_set (GtkIconHelper *self,
-                               GtkIconSet *icon_set,
-                               GtkIconSize icon_size)
+_ctk_icon_helper_set_icon_set (CtkIconHelper *self,
+                               CtkIconSet *icon_set,
+                               CtkIconSize icon_size)
 {
   ctk_icon_helper_take_definition (self, ctk_image_definition_new_icon_set (icon_set));
   _ctk_icon_helper_set_icon_size (self, icon_size);
 }
 
 void 
-_ctk_icon_helper_set_pixbuf (GtkIconHelper *self,
+_ctk_icon_helper_set_pixbuf (CtkIconHelper *self,
                              GdkPixbuf *pixbuf)
 {
   ctk_icon_helper_take_definition (self, ctk_image_definition_new_pixbuf (pixbuf, 1));
 }
 
 void 
-_ctk_icon_helper_set_animation (GtkIconHelper *self,
+_ctk_icon_helper_set_animation (CtkIconHelper *self,
                                 GdkPixbufAnimation *animation)
 {
   ctk_icon_helper_take_definition (self, ctk_image_definition_new_animation (animation, 1));
 }
 
 void 
-_ctk_icon_helper_set_surface (GtkIconHelper *self,
+_ctk_icon_helper_set_surface (CtkIconHelper *self,
 			      cairo_surface_t *surface)
 {
   ctk_icon_helper_take_definition (self, ctk_image_definition_new_surface (surface));
 }
 
 void 
-_ctk_icon_helper_set_stock_id (GtkIconHelper *self,
+_ctk_icon_helper_set_stock_id (CtkIconHelper *self,
                                const gchar *stock_id,
-                               GtkIconSize icon_size)
+                               CtkIconSize icon_size)
 {
   ctk_icon_helper_take_definition (self, ctk_image_definition_new_stock (stock_id));
   _ctk_icon_helper_set_icon_size (self, icon_size);
 }
 
 gboolean
-_ctk_icon_helper_set_icon_size (GtkIconHelper *self,
-                                GtkIconSize    icon_size)
+_ctk_icon_helper_set_icon_size (CtkIconHelper *self,
+                                CtkIconSize    icon_size)
 {
   if (self->priv->icon_size != icon_size)
     {
@@ -758,7 +758,7 @@ _ctk_icon_helper_set_icon_size (GtkIconHelper *self,
 }
 
 gboolean
-_ctk_icon_helper_set_pixel_size (GtkIconHelper *self,
+_ctk_icon_helper_set_pixel_size (CtkIconHelper *self,
                                  gint           pixel_size)
 {
   if (self->priv->pixel_size != pixel_size)
@@ -771,7 +771,7 @@ _ctk_icon_helper_set_pixel_size (GtkIconHelper *self,
 }
 
 gboolean
-_ctk_icon_helper_set_use_fallback (GtkIconHelper *self,
+_ctk_icon_helper_set_use_fallback (CtkIconHelper *self,
                                    gboolean       use_fallback)
 {
   if (self->priv->use_fallback != use_fallback)
@@ -783,81 +783,81 @@ _ctk_icon_helper_set_use_fallback (GtkIconHelper *self,
   return FALSE;
 }
 
-GtkImageType
-_ctk_icon_helper_get_storage_type (GtkIconHelper *self)
+CtkImageType
+_ctk_icon_helper_get_storage_type (CtkIconHelper *self)
 {
   return ctk_image_definition_get_storage_type (self->priv->def);
 }
 
 gboolean
-_ctk_icon_helper_get_use_fallback (GtkIconHelper *self)
+_ctk_icon_helper_get_use_fallback (CtkIconHelper *self)
 {
   return self->priv->use_fallback;
 }
 
-GtkIconSize
-_ctk_icon_helper_get_icon_size (GtkIconHelper *self)
+CtkIconSize
+_ctk_icon_helper_get_icon_size (CtkIconHelper *self)
 {
   return self->priv->icon_size;
 }
 
 gint
-_ctk_icon_helper_get_pixel_size (GtkIconHelper *self)
+_ctk_icon_helper_get_pixel_size (CtkIconHelper *self)
 {
   return self->priv->pixel_size;
 }
 
-GtkImageDefinition *
-ctk_icon_helper_get_definition (GtkIconHelper *self)
+CtkImageDefinition *
+ctk_icon_helper_get_definition (CtkIconHelper *self)
 {
   return self->priv->def;
 }
 
 GdkPixbuf *
-_ctk_icon_helper_peek_pixbuf (GtkIconHelper *self)
+_ctk_icon_helper_peek_pixbuf (CtkIconHelper *self)
 {
   return ctk_image_definition_get_pixbuf (self->priv->def);
 }
 
 GIcon *
-_ctk_icon_helper_peek_gicon (GtkIconHelper *self)
+_ctk_icon_helper_peek_gicon (CtkIconHelper *self)
 {
   return ctk_image_definition_get_gicon (self->priv->def);
 }
 
 GdkPixbufAnimation *
-_ctk_icon_helper_peek_animation (GtkIconHelper *self)
+_ctk_icon_helper_peek_animation (CtkIconHelper *self)
 {
   return ctk_image_definition_get_animation (self->priv->def);
 }
 
-GtkIconSet *
-_ctk_icon_helper_peek_icon_set (GtkIconHelper *self)
+CtkIconSet *
+_ctk_icon_helper_peek_icon_set (CtkIconHelper *self)
 {
   return ctk_image_definition_get_icon_set (self->priv->def);
 }
 
 cairo_surface_t *
-_ctk_icon_helper_peek_surface (GtkIconHelper *self)
+_ctk_icon_helper_peek_surface (CtkIconHelper *self)
 {
   return ctk_image_definition_get_surface (self->priv->def);
 }
 
 const gchar *
-_ctk_icon_helper_get_stock_id (GtkIconHelper *self)
+_ctk_icon_helper_get_stock_id (CtkIconHelper *self)
 {
   return ctk_image_definition_get_stock (self->priv->def);
 }
 
 const gchar *
-_ctk_icon_helper_get_icon_name (GtkIconHelper *self)
+_ctk_icon_helper_get_icon_name (CtkIconHelper *self)
 {
   return ctk_image_definition_get_icon_name (self->priv->def);
 }
 
-GtkIconHelper *
-ctk_icon_helper_new (GtkCssNode *node,
-                     GtkWidget  *owner)
+CtkIconHelper *
+ctk_icon_helper_new (CtkCssNode *node,
+                     CtkWidget  *owner)
 {
   g_return_val_if_fail (CTK_IS_CSS_NODE (node), NULL);
   g_return_val_if_fail (CTK_IS_WIDGET (owner), NULL);
@@ -868,12 +868,12 @@ ctk_icon_helper_new (GtkCssNode *node,
                        NULL);
 }
 
-GtkCssGadget *
+CtkCssGadget *
 ctk_icon_helper_new_named (const char *name,
-                           GtkWidget  *owner)
+                           CtkWidget  *owner)
 {
-  GtkIconHelper *result;
-  GtkCssNode *node;
+  CtkIconHelper *result;
+  CtkCssNode *node;
 
   g_return_val_if_fail (name != NULL, NULL);
   g_return_val_if_fail (CTK_IS_WIDGET (owner), NULL);
@@ -889,12 +889,12 @@ ctk_icon_helper_new_named (const char *name,
 }
 
 void
-_ctk_icon_helper_draw (GtkIconHelper *self,
+_ctk_icon_helper_draw (CtkIconHelper *self,
                        cairo_t *cr,
                        gdouble x,
                        gdouble y)
 {
-  GtkCssStyle *style = ctk_css_node_get_style (ctk_css_gadget_get_node (CTK_CSS_GADGET (self)));
+  CtkCssStyle *style = ctk_css_node_get_style (ctk_css_gadget_get_node (CTK_CSS_GADGET (self)));
   ctk_icon_helper_ensure_surface (self);
 
   if (self->priv->rendered_surface != NULL)
@@ -907,19 +907,19 @@ _ctk_icon_helper_draw (GtkIconHelper *self,
 }
 
 gboolean
-_ctk_icon_helper_get_is_empty (GtkIconHelper *self)
+_ctk_icon_helper_get_is_empty (CtkIconHelper *self)
 {
   return ctk_image_definition_get_storage_type (self->priv->def) == CTK_IMAGE_EMPTY;
 }
 
 gboolean
-_ctk_icon_helper_get_force_scale_pixbuf (GtkIconHelper *self)
+_ctk_icon_helper_get_force_scale_pixbuf (CtkIconHelper *self)
 {
   return self->priv->force_scale_pixbuf;
 }
 
 void
-_ctk_icon_helper_set_force_scale_pixbuf (GtkIconHelper *self,
+_ctk_icon_helper_set_force_scale_pixbuf (CtkIconHelper *self,
                                          gboolean       force_scale)
 {
   if (self->priv->force_scale_pixbuf != force_scale)
@@ -930,7 +930,7 @@ _ctk_icon_helper_set_force_scale_pixbuf (GtkIconHelper *self,
 }
 
 void 
-_ctk_icon_helper_set_pixbuf_scale (GtkIconHelper *self,
+_ctk_icon_helper_set_pixbuf_scale (CtkIconHelper *self,
 				   int scale)
 {
   switch (ctk_image_definition_get_storage_type (self->priv->def))

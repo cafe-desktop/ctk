@@ -25,7 +25,7 @@ G_BEGIN_DECLS
 
 void      _ctk_accessibility_init        (void);
 
-gboolean  _ctk_accessibility_key_snooper (GtkWidget   *widget,
+gboolean  _ctk_accessibility_key_snooper (CtkWidget   *widget,
                                           GdkEventKey *event);
 
 G_END_DECLS

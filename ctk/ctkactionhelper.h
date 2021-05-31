@@ -25,35 +25,35 @@
 
 #define CTK_TYPE_ACTION_HELPER                              (ctk_action_helper_get_type ())
 #define CTK_ACTION_HELPER(inst)                             (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
-                                                             CTK_TYPE_ACTION_HELPER, GtkActionHelper))
+                                                             CTK_TYPE_ACTION_HELPER, CtkActionHelper))
 #define CTK_IS_ACTION_HELPER(inst)                          (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
                                                              CTK_TYPE_ACTION_HELPER))
 
-typedef struct _GtkActionHelper                             GtkActionHelper;
+typedef struct _CtkActionHelper                             CtkActionHelper;
 
 G_GNUC_INTERNAL
 GType                   ctk_action_helper_get_type                      (void);
 
 G_GNUC_INTERNAL
-GtkActionHelper *       ctk_action_helper_new                           (GtkActionable   *widget);
+CtkActionHelper *       ctk_action_helper_new                           (CtkActionable   *widget);
 
 G_GNUC_INTERNAL
-void                    ctk_action_helper_set_action_name               (GtkActionHelper *helper,
+void                    ctk_action_helper_set_action_name               (CtkActionHelper *helper,
                                                                          const gchar     *action_name);
 G_GNUC_INTERNAL
-void                    ctk_action_helper_set_action_target_value       (GtkActionHelper *helper,
+void                    ctk_action_helper_set_action_target_value       (CtkActionHelper *helper,
                                                                          GVariant        *action_target);
 G_GNUC_INTERNAL
-const gchar *           ctk_action_helper_get_action_name               (GtkActionHelper *helper);
+const gchar *           ctk_action_helper_get_action_name               (CtkActionHelper *helper);
 G_GNUC_INTERNAL
-GVariant *              ctk_action_helper_get_action_target_value       (GtkActionHelper *helper);
+GVariant *              ctk_action_helper_get_action_target_value       (CtkActionHelper *helper);
 
 G_GNUC_INTERNAL
-gboolean                ctk_action_helper_get_enabled                   (GtkActionHelper *helper);
+gboolean                ctk_action_helper_get_enabled                   (CtkActionHelper *helper);
 G_GNUC_INTERNAL
-gboolean                ctk_action_helper_get_active                    (GtkActionHelper *helper);
+gboolean                ctk_action_helper_get_active                    (CtkActionHelper *helper);
 
 G_GNUC_INTERNAL
-void                    ctk_action_helper_activate                      (GtkActionHelper *helper);
+void                    ctk_action_helper_activate                      (CtkActionHelper *helper);
 
 #endif /* __CTK_ACTION_HELPER_H__ */

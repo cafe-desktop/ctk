@@ -33,20 +33,20 @@ G_BEGIN_DECLS
 #define CTK_TYPE_RECENT_INFO			(ctk_recent_info_get_type ())
 
 #define CTK_TYPE_RECENT_MANAGER			(ctk_recent_manager_get_type ())
-#define CTK_RECENT_MANAGER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_MANAGER, GtkRecentManager))
+#define CTK_RECENT_MANAGER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_MANAGER, CtkRecentManager))
 #define CTK_IS_RECENT_MANAGER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_MANAGER))
-#define CTK_RECENT_MANAGER_CLASS(klass) 	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_MANAGER, GtkRecentManagerClass))
+#define CTK_RECENT_MANAGER_CLASS(klass) 	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_MANAGER, CtkRecentManagerClass))
 #define CTK_IS_RECENT_MANAGER_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RECENT_MANAGER))
-#define CTK_RECENT_MANAGER_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_MANAGER, GtkRecentManagerClass))
+#define CTK_RECENT_MANAGER_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_MANAGER, CtkRecentManagerClass))
 
-typedef struct _GtkRecentInfo		GtkRecentInfo;
-typedef struct _GtkRecentData		GtkRecentData;
-typedef struct _GtkRecentManager	GtkRecentManager;
-typedef struct _GtkRecentManagerClass	GtkRecentManagerClass;
-typedef struct _GtkRecentManagerPrivate GtkRecentManagerPrivate;
+typedef struct _CtkRecentInfo		CtkRecentInfo;
+typedef struct _CtkRecentData		CtkRecentData;
+typedef struct _CtkRecentManager	CtkRecentManager;
+typedef struct _CtkRecentManagerClass	CtkRecentManagerClass;
+typedef struct _CtkRecentManagerPrivate CtkRecentManagerPrivate;
 
 /**
- * GtkRecentData:
+ * CtkRecentData:
  * @display_name: a UTF-8 encoded string, containing the name of the recently
  *   used resource to be displayed, or %NULL;
  * @description: a UTF-8 encoded string, containing a short description of
@@ -66,7 +66,7 @@ typedef struct _GtkRecentManagerPrivate GtkRecentManagerPrivate;
  * Meta-data to be passed to ctk_recent_manager_add_full() when
  * registering a recently used resource.
  **/
-struct _GtkRecentData
+struct _CtkRecentData
 {
   gchar *display_name;
   gchar *description;
@@ -82,34 +82,34 @@ struct _GtkRecentData
 };
 
 /**
- * GtkRecentManager:
+ * CtkRecentManager:
  *
- * #GtkRecentManager-struct contains only private data
+ * #CtkRecentManager-struct contains only private data
  * and should be accessed using the provided API.
  *
  * Since: 2.10
  */
-struct _GtkRecentManager
+struct _CtkRecentManager
 {
   /*< private >*/
   GObject parent_instance;
 
-  GtkRecentManagerPrivate *priv;
+  CtkRecentManagerPrivate *priv;
 };
 
 /**
- * GtkRecentManagerClass:
+ * CtkRecentManagerClass:
  *
- * #GtkRecentManagerClass contains only private data.
+ * #CtkRecentManagerClass contains only private data.
  *
  * Since: 2.10
  */
-struct _GtkRecentManagerClass
+struct _CtkRecentManagerClass
 {
   /*< private >*/
   GObjectClass parent_class;
 
-  void (*changed) (GtkRecentManager *manager);
+  void (*changed) (CtkRecentManager *manager);
 
   /* padding for future expansion */
   void (*_ctk_recent1) (void);
@@ -119,7 +119,7 @@ struct _GtkRecentManagerClass
 };
 
 /**
- * GtkRecentManagerError:
+ * CtkRecentManagerError:
  * @CTK_RECENT_MANAGER_ERROR_NOT_FOUND: the URI specified does not exists in
  *   the recently used resources list.
  * @CTK_RECENT_MANAGER_ERROR_INVALID_URI: the URI specified is not valid.
@@ -133,7 +133,7 @@ struct _GtkRecentManagerClass
  *   resources file.
  * @CTK_RECENT_MANAGER_ERROR_UNKNOWN: unspecified error.
  *
- * Error codes for #GtkRecentManager operations
+ * Error codes for #CtkRecentManager operations
  *
  * Since: 2.10
  */
@@ -146,12 +146,12 @@ typedef enum
   CTK_RECENT_MANAGER_ERROR_READ,
   CTK_RECENT_MANAGER_ERROR_WRITE,
   CTK_RECENT_MANAGER_ERROR_UNKNOWN
-} GtkRecentManagerError;
+} CtkRecentManagerError;
 
 /**
  * CTK_RECENT_MANAGER_ERROR:
  *
- * The #GError domain for #GtkRecentManager errors.
+ * The #GError domain for #CtkRecentManager errors.
  *
  * Since: 2.10
  */
@@ -164,37 +164,37 @@ GDK_AVAILABLE_IN_ALL
 GType 		  ctk_recent_manager_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkRecentManager *ctk_recent_manager_new            (void);
+CtkRecentManager *ctk_recent_manager_new            (void);
 GDK_AVAILABLE_IN_ALL
-GtkRecentManager *ctk_recent_manager_get_default    (void);
+CtkRecentManager *ctk_recent_manager_get_default    (void);
 
 GDK_AVAILABLE_IN_ALL
-gboolean          ctk_recent_manager_add_item       (GtkRecentManager     *manager,
+gboolean          ctk_recent_manager_add_item       (CtkRecentManager     *manager,
 						     const gchar          *uri);
 GDK_AVAILABLE_IN_ALL
-gboolean          ctk_recent_manager_add_full       (GtkRecentManager     *manager,
+gboolean          ctk_recent_manager_add_full       (CtkRecentManager     *manager,
 						     const gchar          *uri,
-						     const GtkRecentData  *recent_data);
+						     const CtkRecentData  *recent_data);
 GDK_AVAILABLE_IN_ALL
-gboolean          ctk_recent_manager_remove_item    (GtkRecentManager     *manager,
+gboolean          ctk_recent_manager_remove_item    (CtkRecentManager     *manager,
 						     const gchar          *uri,
 						     GError              **error);
 GDK_AVAILABLE_IN_ALL
-GtkRecentInfo *   ctk_recent_manager_lookup_item    (GtkRecentManager     *manager,
+CtkRecentInfo *   ctk_recent_manager_lookup_item    (CtkRecentManager     *manager,
 						     const gchar          *uri,
 						     GError              **error);
 GDK_AVAILABLE_IN_ALL
-gboolean          ctk_recent_manager_has_item       (GtkRecentManager     *manager,
+gboolean          ctk_recent_manager_has_item       (CtkRecentManager     *manager,
 						     const gchar          *uri);
 GDK_AVAILABLE_IN_ALL
-gboolean          ctk_recent_manager_move_item      (GtkRecentManager     *manager,
+gboolean          ctk_recent_manager_move_item      (CtkRecentManager     *manager,
 						     const gchar          *uri,
 						     const gchar          *new_uri,
 						     GError              **error);
 GDK_AVAILABLE_IN_ALL
-GList *           ctk_recent_manager_get_items      (GtkRecentManager     *manager);
+GList *           ctk_recent_manager_get_items      (CtkRecentManager     *manager);
 GDK_AVAILABLE_IN_ALL
-gint              ctk_recent_manager_purge_items    (GtkRecentManager     *manager,
+gint              ctk_recent_manager_purge_items    (CtkRecentManager     *manager,
 						     GError              **error);
 
 
@@ -202,68 +202,68 @@ GDK_AVAILABLE_IN_ALL
 GType	              ctk_recent_info_get_type             (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkRecentInfo *       ctk_recent_info_ref                  (GtkRecentInfo  *info);
+CtkRecentInfo *       ctk_recent_info_ref                  (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_recent_info_unref                (GtkRecentInfo  *info);
+void                  ctk_recent_info_unref                (CtkRecentInfo  *info);
 
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_recent_info_get_uri              (GtkRecentInfo  *info);
+const gchar *         ctk_recent_info_get_uri              (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_recent_info_get_display_name     (GtkRecentInfo  *info);
+const gchar *         ctk_recent_info_get_display_name     (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_recent_info_get_description      (GtkRecentInfo  *info);
+const gchar *         ctk_recent_info_get_description      (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_recent_info_get_mime_type        (GtkRecentInfo  *info);
+const gchar *         ctk_recent_info_get_mime_type        (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-time_t                ctk_recent_info_get_added            (GtkRecentInfo  *info);
+time_t                ctk_recent_info_get_added            (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-time_t                ctk_recent_info_get_modified         (GtkRecentInfo  *info);
+time_t                ctk_recent_info_get_modified         (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-time_t                ctk_recent_info_get_visited          (GtkRecentInfo  *info);
+time_t                ctk_recent_info_get_visited          (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_recent_info_get_private_hint     (GtkRecentInfo  *info);
+gboolean              ctk_recent_info_get_private_hint     (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_recent_info_get_application_info (GtkRecentInfo  *info,
+gboolean              ctk_recent_info_get_application_info (CtkRecentInfo  *info,
 							    const gchar    *app_name,
 							    const gchar   **app_exec,
 							    guint          *count,
 							    time_t         *time_);
 GDK_AVAILABLE_IN_ALL
-GAppInfo *            ctk_recent_info_create_app_info      (GtkRecentInfo  *info,
+GAppInfo *            ctk_recent_info_create_app_info      (CtkRecentInfo  *info,
                                                             const gchar    *app_name,
                                                             GError        **error);
 GDK_AVAILABLE_IN_ALL
-gchar **              ctk_recent_info_get_applications     (GtkRecentInfo  *info,
+gchar **              ctk_recent_info_get_applications     (CtkRecentInfo  *info,
 							    gsize          *length) G_GNUC_MALLOC;
 GDK_AVAILABLE_IN_ALL
-gchar *               ctk_recent_info_last_application     (GtkRecentInfo  *info) G_GNUC_MALLOC;
+gchar *               ctk_recent_info_last_application     (CtkRecentInfo  *info) G_GNUC_MALLOC;
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_recent_info_has_application      (GtkRecentInfo  *info,
+gboolean              ctk_recent_info_has_application      (CtkRecentInfo  *info,
 							    const gchar    *app_name);
 GDK_AVAILABLE_IN_ALL
-gchar **              ctk_recent_info_get_groups           (GtkRecentInfo  *info,
+gchar **              ctk_recent_info_get_groups           (CtkRecentInfo  *info,
 							    gsize          *length) G_GNUC_MALLOC;
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_recent_info_has_group            (GtkRecentInfo  *info,
+gboolean              ctk_recent_info_has_group            (CtkRecentInfo  *info,
 							    const gchar    *group_name);
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf *           ctk_recent_info_get_icon             (GtkRecentInfo  *info,
+GdkPixbuf *           ctk_recent_info_get_icon             (CtkRecentInfo  *info,
 							    gint            size);
 GDK_AVAILABLE_IN_ALL
-GIcon *               ctk_recent_info_get_gicon            (GtkRecentInfo  *info);
+GIcon *               ctk_recent_info_get_gicon            (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-gchar *               ctk_recent_info_get_short_name       (GtkRecentInfo  *info) G_GNUC_MALLOC;
+gchar *               ctk_recent_info_get_short_name       (CtkRecentInfo  *info) G_GNUC_MALLOC;
 GDK_AVAILABLE_IN_ALL
-gchar *               ctk_recent_info_get_uri_display      (GtkRecentInfo  *info) G_GNUC_MALLOC;
+gchar *               ctk_recent_info_get_uri_display      (CtkRecentInfo  *info) G_GNUC_MALLOC;
 GDK_AVAILABLE_IN_ALL
-gint                  ctk_recent_info_get_age              (GtkRecentInfo  *info);
+gint                  ctk_recent_info_get_age              (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_recent_info_is_local             (GtkRecentInfo  *info);
+gboolean              ctk_recent_info_is_local             (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_recent_info_exists               (GtkRecentInfo  *info);
+gboolean              ctk_recent_info_exists               (CtkRecentInfo  *info);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_recent_info_match                (GtkRecentInfo  *info_a,
-							    GtkRecentInfo  *info_b);
+gboolean              ctk_recent_info_match                (CtkRecentInfo  *info_a,
+							    CtkRecentInfo  *info_b);
 
 /* private */
 void _ctk_recent_manager_sync (void);

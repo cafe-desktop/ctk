@@ -32,25 +32,25 @@
 /**
  * SECTION:ctkrecentchooserdialog
  * @Short_description: Displays recently used files in a dialog
- * @Title: GtkRecentChooserDialog
- * @See_also:#GtkRecentChooser, #GtkDialog
+ * @Title: CtkRecentChooserDialog
+ * @See_also:#CtkRecentChooser, #CtkDialog
  *
- * #GtkRecentChooserDialog is a dialog box suitable for displaying the recently
- * used documents.  This widgets works by putting a #GtkRecentChooserWidget inside
- * a #GtkDialog.  It exposes the #GtkRecentChooserIface interface, so you can use
- * all the #GtkRecentChooser functions on the recent chooser dialog as well as
- * those for #GtkDialog.
+ * #CtkRecentChooserDialog is a dialog box suitable for displaying the recently
+ * used documents.  This widgets works by putting a #CtkRecentChooserWidget inside
+ * a #CtkDialog.  It exposes the #CtkRecentChooserIface interface, so you can use
+ * all the #CtkRecentChooser functions on the recent chooser dialog as well as
+ * those for #CtkDialog.
  *
- * Note that #GtkRecentChooserDialog does not have any methods of its own.
- * Instead, you should use the functions that work on a #GtkRecentChooser.
+ * Note that #CtkRecentChooserDialog does not have any methods of its own.
+ * Instead, you should use the functions that work on a #CtkRecentChooser.
  *
  * ## Typical usage ## {#ctkrecentchooser-typical-usage}
  *
  * In the simplest of cases, you can use the following code to use
- * a #GtkRecentChooserDialog to select a recently used file:
+ * a #CtkRecentChooserDialog to select a recently used file:
  *
  * |[<!-- language="C" -->
- * GtkWidget *dialog;
+ * CtkWidget *dialog;
  * gint res;
  *
  * dialog = ctk_recent_chooser_dialog_new ("Recent Documents",
@@ -64,8 +64,8 @@
  * res = ctk_dialog_run (CTK_DIALOG (dialog));
  * if (res == CTK_RESPONSE_ACCEPT)
  *   {
- *     GtkRecentInfo *info;
- *     GtkRecentChooser *chooser = CTK_RECENT_CHOOSER (dialog);
+ *     CtkRecentInfo *info;
+ *     CtkRecentChooser *chooser = CTK_RECENT_CHOOSER (dialog);
  *
  *     info = ctk_recent_chooser_get_current_item (chooser);
  *     open_file (ctk_recent_info_get_uri (info));
@@ -79,17 +79,17 @@
  */
 
 
-struct _GtkRecentChooserDialogPrivate
+struct _CtkRecentChooserDialogPrivate
 {
-  GtkRecentManager *manager;
+  CtkRecentManager *manager;
   
-  GtkWidget *chooser;
+  CtkWidget *chooser;
 };
 
 #define CTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE(obj)	(CTK_RECENT_CHOOSER_DIALOG (obj)->priv)
 
-static void ctk_recent_chooser_dialog_class_init (GtkRecentChooserDialogClass *klass);
-static void ctk_recent_chooser_dialog_init       (GtkRecentChooserDialog      *dialog);
+static void ctk_recent_chooser_dialog_class_init (CtkRecentChooserDialogClass *klass);
+static void ctk_recent_chooser_dialog_init       (CtkRecentChooserDialog      *dialog);
 static void ctk_recent_chooser_dialog_finalize   (GObject                     *object);
 
 static void ctk_recent_chooser_dialog_constructed (GObject *object);
@@ -103,15 +103,15 @@ static void ctk_recent_chooser_dialog_get_property (GObject      *object,
 						    GValue       *value,
 						    GParamSpec   *pspec);
 
-G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserDialog,
+G_DEFINE_TYPE_WITH_CODE (CtkRecentChooserDialog,
 			 ctk_recent_chooser_dialog,
 			 CTK_TYPE_DIALOG,
-                         G_ADD_PRIVATE (GtkRecentChooserDialog)
+                         G_ADD_PRIVATE (CtkRecentChooserDialog)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_RECENT_CHOOSER,
 		       				_ctk_recent_chooser_delegate_iface_init))
 
 static void
-ctk_recent_chooser_dialog_class_init (GtkRecentChooserDialogClass *klass)
+ctk_recent_chooser_dialog_class_init (CtkRecentChooserDialogClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   
@@ -124,11 +124,11 @@ ctk_recent_chooser_dialog_class_init (GtkRecentChooserDialogClass *klass)
 }
 
 static void
-ctk_recent_chooser_dialog_init (GtkRecentChooserDialog *dialog)
+ctk_recent_chooser_dialog_init (CtkRecentChooserDialog *dialog)
 {
-  GtkRecentChooserDialogPrivate *priv;
-  GtkWidget *content_area, *action_area;
-  GtkDialog *rc_dialog = CTK_DIALOG (dialog);
+  CtkRecentChooserDialogPrivate *priv;
+  CtkWidget *content_area, *action_area;
+  CtkDialog *rc_dialog = CTK_DIALOG (dialog);
 
   priv = ctk_recent_chooser_dialog_get_instance_private (dialog);
   dialog->priv = priv;
@@ -144,16 +144,16 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_container_set_border_width (CTK_CONTAINER (action_area), 5);
 }
 
-/* we intercept the GtkRecentChooser::item_activated signal and try to
+/* we intercept the CtkRecentChooser::item_activated signal and try to
  * make the dialog emit a valid response signal
  */
 static void
-ctk_recent_chooser_item_activated_cb (GtkRecentChooser *chooser,
+ctk_recent_chooser_item_activated_cb (CtkRecentChooser *chooser,
 				      gpointer          user_data)
 {
-  GtkDialog *rc_dialog;
-  GtkRecentChooserDialog *dialog;
-  GtkWidget *action_area;
+  CtkDialog *rc_dialog;
+  CtkRecentChooserDialog *dialog;
+  CtkWidget *action_area;
   GList *children, *l;
 
   dialog = CTK_RECENT_CHOOSER_DIALOG (user_data);
@@ -169,7 +169,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   
   for (l = children; l; l = l->next)
     {
-      GtkWidget *widget;
+      CtkWidget *widget;
       gint response_id;
       
       widget = CTK_WIDGET (l->data);
@@ -194,8 +194,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 ctk_recent_chooser_dialog_constructed (GObject *object)
 {
-  GtkRecentChooserDialogPrivate *priv;
-  GtkWidget *content_area;
+  CtkRecentChooserDialogPrivate *priv;
+  CtkWidget *content_area;
 
   G_OBJECT_CLASS (ctk_recent_chooser_dialog_parent_class)->constructed (object);
   priv = CTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
@@ -228,7 +228,7 @@ ctk_recent_chooser_dialog_set_property (GObject      *object,
 					const GValue *value,
 					GParamSpec   *pspec)
 {
-  GtkRecentChooserDialogPrivate *priv;
+  CtkRecentChooserDialogPrivate *priv;
   
   priv = CTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
   
@@ -249,7 +249,7 @@ ctk_recent_chooser_dialog_get_property (GObject      *object,
 					GValue       *value,
 					GParamSpec   *pspec)
 {
-  GtkRecentChooserDialogPrivate *priv;
+  CtkRecentChooserDialogPrivate *priv;
   
   priv = CTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
   
@@ -259,21 +259,21 @@ ctk_recent_chooser_dialog_get_property (GObject      *object,
 static void
 ctk_recent_chooser_dialog_finalize (GObject *object)
 {
-  GtkRecentChooserDialog *dialog = CTK_RECENT_CHOOSER_DIALOG (object);
+  CtkRecentChooserDialog *dialog = CTK_RECENT_CHOOSER_DIALOG (object);
  
   dialog->priv->manager = NULL;
   
   G_OBJECT_CLASS (ctk_recent_chooser_dialog_parent_class)->finalize (object);
 }
 
-static GtkWidget *
+static CtkWidget *
 ctk_recent_chooser_dialog_new_valist (const gchar      *title,
-				      GtkWindow        *parent,
-				      GtkRecentManager *manager,
+				      CtkWindow        *parent,
+				      CtkRecentManager *manager,
 				      const gchar      *first_button_text,
 				      va_list           varargs)
 {
-  GtkWidget *result;
+  CtkWidget *result;
   const char *button_text = first_button_text;
   gint response_id;
 
@@ -303,20 +303,20 @@ ctk_recent_chooser_dialog_new_valist (const gchar      *title,
  * @...: response ID for the first button, then additional (button, id)
  *   pairs, ending with %NULL
  *
- * Creates a new #GtkRecentChooserDialog.  This function is analogous to
+ * Creates a new #CtkRecentChooserDialog.  This function is analogous to
  * ctk_dialog_new_with_buttons().
  *
- * Returns: a new #GtkRecentChooserDialog
+ * Returns: a new #CtkRecentChooserDialog
  *
  * Since: 2.10
  */
-GtkWidget *
+CtkWidget *
 ctk_recent_chooser_dialog_new (const gchar *title,
-			       GtkWindow   *parent,
+			       CtkWindow   *parent,
 			       const gchar *first_button_text,
 			       ...)
 {
-  GtkWidget *result;
+  CtkWidget *result;
   va_list varargs;
   
   va_start (varargs, first_button_text);
@@ -334,28 +334,28 @@ ctk_recent_chooser_dialog_new (const gchar *title,
  * ctk_recent_chooser_dialog_new_for_manager:
  * @title: (allow-none): Title of the dialog, or %NULL
  * @parent: (allow-none): Transient parent of the dialog, or %NULL,
- * @manager: a #GtkRecentManager
+ * @manager: a #CtkRecentManager
  * @first_button_text: (allow-none): stock ID or text to go in the first button, or %NULL
  * @...: response ID for the first button, then additional (button, id)
  *   pairs, ending with %NULL
  *
- * Creates a new #GtkRecentChooserDialog with a specified recent manager.
+ * Creates a new #CtkRecentChooserDialog with a specified recent manager.
  *
  * This is useful if you have implemented your own recent manager, or if you
- * have a customized instance of a #GtkRecentManager object.
+ * have a customized instance of a #CtkRecentManager object.
  *
- * Returns: a new #GtkRecentChooserDialog
+ * Returns: a new #CtkRecentChooserDialog
  *
  * Since: 2.10
  */
-GtkWidget *
+CtkWidget *
 ctk_recent_chooser_dialog_new_for_manager (const gchar      *title,
-			                   GtkWindow        *parent,
-			                   GtkRecentManager *manager,
+			                   CtkWindow        *parent,
+			                   CtkRecentManager *manager,
 			                   const gchar      *first_button_text,
 			                   ...)
 {
-  GtkWidget *result;
+  CtkWidget *result;
   va_list varargs;
   
   va_start (varargs, first_button_text);

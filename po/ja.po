@@ -1790,7 +1790,7 @@ msgid ""
 "  --id=ID            Preview only the named object\n"
 "  --css=FILE         Use style from CSS file\n"
 "\n"
-"Perform various tasks on GtkBuilder .ui files.\n"
+"Perform various tasks on CtkBuilder .ui files.\n"
 msgstr ""
 "用法:\n"
 "  ctk-builder-tool [COMMAND] FILE\n"
@@ -1808,7 +1808,7 @@ msgstr ""
 "  --id=ID            指定の名前付きオブジェクトだけを表示する\n"
 "  --css=FILE         指定の CSS ファイルのスタイルを適用する\n"
 "\n"
-"GtkBuilder .ui ファイルに関する様々な操作を行います\n"
+"CtkBuilder .ui ファイルに関する様々な操作を行います\n"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -2656,7 +2656,7 @@ msgstr "アクセス日時"
 msgid "Create Folder"
 msgstr "フォルダーを作成します"
 
-#. The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
+#. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
@@ -7039,7 +7039,7 @@ msgstr "ザナバザル方形文字"
 
 # "このアプリケーションについて"ではなく、旧来の"情報"とした。
 # ボタンラベルの文字列長の制限のため。
-# 参照: https://developer.gnome.org/ctk3/unstable/GtkAboutDialog.html
+# 参照: https://developer.gnome.org/ctk3/unstable/CtkAboutDialog.html
 #: ctk/ui/ctkaboutdialog.ui:137
 msgid "About"
 msgstr "情報"

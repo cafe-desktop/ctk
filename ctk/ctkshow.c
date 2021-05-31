@@ -79,7 +79,7 @@ launch_uri_done (GObject      *source,
                  GAsyncResult *result,
                  gpointer      data)
 {
-  GtkWindow *window = data;
+  CtkWindow *window = data;
 
   g_app_info_launch_default_for_uri_finish (result, NULL);
 
@@ -88,7 +88,7 @@ launch_uri_done (GObject      *source,
 }
 
 static void
-window_handle_exported (GtkWindow  *window,
+window_handle_exported (CtkWindow  *window,
                         const char *handle_str,
                         gpointer    user_data)
 {
@@ -132,7 +132,7 @@ window_handle_exported (GtkWindow  *window,
  * Since: 3.22
  */
 gboolean
-ctk_show_uri_on_window (GtkWindow   *parent,
+ctk_show_uri_on_window (CtkWindow   *parent,
                         const char  *uri,
                         guint32      timestamp,
                         GError     **error)

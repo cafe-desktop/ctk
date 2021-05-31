@@ -27,30 +27,30 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_POPOVER           (ctk_popover_get_type ())
-#define CTK_POPOVER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_POPOVER, GtkPopover))
-#define CTK_POPOVER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_POPOVER, GtkPopoverClass))
+#define CTK_POPOVER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_POPOVER, CtkPopover))
+#define CTK_POPOVER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_POPOVER, CtkPopoverClass))
 #define CTK_IS_POPOVER(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_POPOVER))
 #define CTK_IS_POPOVER_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), CTK_TYPE_POPOVER))
-#define CTK_POPOVER_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_POPOVER, GtkPopoverClass))
+#define CTK_POPOVER_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_POPOVER, CtkPopoverClass))
 
-typedef struct _GtkPopover GtkPopover;
-typedef struct _GtkPopoverClass GtkPopoverClass;
-typedef struct _GtkPopoverPrivate GtkPopoverPrivate;
+typedef struct _CtkPopover CtkPopover;
+typedef struct _CtkPopoverClass CtkPopoverClass;
+typedef struct _CtkPopoverPrivate CtkPopoverPrivate;
 
-struct _GtkPopover
+struct _CtkPopover
 {
-  GtkBin parent_instance;
+  CtkBin parent_instance;
 
   /*< private >*/
 
-  GtkPopoverPrivate *priv;
+  CtkPopoverPrivate *priv;
 };
 
-struct _GtkPopoverClass
+struct _CtkPopoverClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
-  void (* closed) (GtkPopover *popover);
+  void (* closed) (CtkPopover *popover);
 
   /*< private >*/
 
@@ -62,65 +62,65 @@ GDK_AVAILABLE_IN_3_12
 GType           ctk_popover_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_12
-GtkWidget *     ctk_popover_new             (GtkWidget             *relative_to);
+CtkWidget *     ctk_popover_new             (CtkWidget             *relative_to);
 
 GDK_AVAILABLE_IN_3_12
-GtkWidget *     ctk_popover_new_from_model  (GtkWidget             *relative_to,
+CtkWidget *     ctk_popover_new_from_model  (CtkWidget             *relative_to,
                                              GMenuModel            *model);
 
 GDK_AVAILABLE_IN_3_12
-void            ctk_popover_set_relative_to (GtkPopover            *popover,
-                                             GtkWidget             *relative_to);
+void            ctk_popover_set_relative_to (CtkPopover            *popover,
+                                             CtkWidget             *relative_to);
 GDK_AVAILABLE_IN_3_12
-GtkWidget *     ctk_popover_get_relative_to (GtkPopover            *popover);
+CtkWidget *     ctk_popover_get_relative_to (CtkPopover            *popover);
 
 GDK_AVAILABLE_IN_3_12
-void            ctk_popover_set_pointing_to (GtkPopover            *popover,
+void            ctk_popover_set_pointing_to (CtkPopover            *popover,
                                              const GdkRectangle    *rect);
 GDK_AVAILABLE_IN_3_12
-gboolean        ctk_popover_get_pointing_to (GtkPopover            *popover,
+gboolean        ctk_popover_get_pointing_to (CtkPopover            *popover,
                                              GdkRectangle          *rect);
 GDK_AVAILABLE_IN_3_12
-void            ctk_popover_set_position    (GtkPopover            *popover,
-                                             GtkPositionType        position);
+void            ctk_popover_set_position    (CtkPopover            *popover,
+                                             CtkPositionType        position);
 GDK_AVAILABLE_IN_3_12
-GtkPositionType ctk_popover_get_position    (GtkPopover            *popover);
+CtkPositionType ctk_popover_get_position    (CtkPopover            *popover);
 
 GDK_AVAILABLE_IN_3_12
-void            ctk_popover_set_modal       (GtkPopover            *popover,
+void            ctk_popover_set_modal       (CtkPopover            *popover,
                                              gboolean               modal);
 GDK_AVAILABLE_IN_3_12
-gboolean        ctk_popover_get_modal       (GtkPopover            *popover);
+gboolean        ctk_popover_get_modal       (CtkPopover            *popover);
 
 GDK_AVAILABLE_IN_3_12
-void            ctk_popover_bind_model      (GtkPopover            *popover,
+void            ctk_popover_bind_model      (CtkPopover            *popover,
                                              GMenuModel            *model,
                                              const gchar           *action_namespace);
 
 GDK_DEPRECATED_IN_3_22
-void            ctk_popover_set_transitions_enabled (GtkPopover *popover,
+void            ctk_popover_set_transitions_enabled (CtkPopover *popover,
                                                      gboolean    transitions_enabled);
 GDK_DEPRECATED_IN_3_22
-gboolean        ctk_popover_get_transitions_enabled (GtkPopover *popover);
+gboolean        ctk_popover_get_transitions_enabled (CtkPopover *popover);
 
 GDK_AVAILABLE_IN_3_18
-void            ctk_popover_set_default_widget (GtkPopover *popover,
-                                                GtkWidget  *widget);
+void            ctk_popover_set_default_widget (CtkPopover *popover,
+                                                CtkWidget  *widget);
 GDK_AVAILABLE_IN_3_18
-GtkWidget *     ctk_popover_get_default_widget (GtkPopover *popover);
+CtkWidget *     ctk_popover_get_default_widget (CtkPopover *popover);
 
 GDK_AVAILABLE_IN_3_20
-void                 ctk_popover_set_constrain_to (GtkPopover           *popover,
-                                                   GtkPopoverConstraint  constraint);
+void                 ctk_popover_set_constrain_to (CtkPopover           *popover,
+                                                   CtkPopoverConstraint  constraint);
 
 GDK_AVAILABLE_IN_3_20
-GtkPopoverConstraint ctk_popover_get_constrain_to (GtkPopover           *popover);
+CtkPopoverConstraint ctk_popover_get_constrain_to (CtkPopover           *popover);
 
 GDK_AVAILABLE_IN_3_22
-void                 ctk_popover_popup            (GtkPopover *popover);
+void                 ctk_popover_popup            (CtkPopover *popover);
 
 GDK_AVAILABLE_IN_3_22
-void                 ctk_popover_popdown          (GtkPopover *popover);
+void                 ctk_popover_popdown          (CtkPopover *popover);
 
 
 G_END_DECLS

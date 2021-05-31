@@ -6,15 +6,15 @@
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 
-static GtkWidget *window = NULL;
-static GtkWidget *entry1 = NULL;
-static GtkWidget *entry2 = NULL;
+static CtkWidget *window = NULL;
+static CtkWidget *entry1 = NULL;
+static CtkWidget *entry2 = NULL;
 
 static void
-message_dialog_clicked (GtkButton *button,
+message_dialog_clicked (CtkButton *button,
                         gpointer   user_data)
 {
-  GtkWidget *dialog;
+  CtkWidget *dialog;
   static gint i = 1;
 
   dialog = ctk_message_dialog_new (CTK_WINDOW (window),
@@ -31,17 +31,17 @@ message_dialog_clicked (GtkButton *button,
 }
 
 static void
-interactive_dialog_clicked (GtkButton *button,
+interactive_dialog_clicked (CtkButton *button,
                             gpointer   user_data)
 {
-  GtkWidget *content_area;
-  GtkWidget *dialog;
-  GtkWidget *hbox;
-  GtkWidget *image;
-  GtkWidget *table;
-  GtkWidget *local_entry1;
-  GtkWidget *local_entry2;
-  GtkWidget *label;
+  CtkWidget *content_area;
+  CtkWidget *dialog;
+  CtkWidget *hbox;
+  CtkWidget *image;
+  CtkWidget *table;
+  CtkWidget *local_entry1;
+  CtkWidget *local_entry2;
+  CtkWidget *label;
   gint response;
 
   dialog = ctk_dialog_new_with_buttons ("Interactive Dialog",
@@ -93,16 +93,16 @@ interactive_dialog_clicked (GtkButton *button,
   ctk_widget_destroy (dialog);
 }
 
-GtkWidget *
-do_dialog (GtkWidget *do_widget)
+CtkWidget *
+do_dialog (CtkWidget *do_widget)
 {
-  GtkWidget *frame;
-  GtkWidget *vbox;
-  GtkWidget *vbox2;
-  GtkWidget *hbox;
-  GtkWidget *button;
-  GtkWidget *table;
-  GtkWidget *label;
+  CtkWidget *frame;
+  CtkWidget *vbox;
+  CtkWidget *vbox2;
+  CtkWidget *hbox;
+  CtkWidget *button;
+  CtkWidget *table;
+  CtkWidget *label;
 
   if (!window)
     {

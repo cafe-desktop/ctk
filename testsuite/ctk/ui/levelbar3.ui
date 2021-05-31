@@ -1,6 +1,6 @@
 <!-- missing levelbar offset attribute -->
 <interface>
-  <object class="GtkLevelBar">
+  <object class="CtkLevelBar">
     <offsets>
       <offset value="1"/>
     </offsets>

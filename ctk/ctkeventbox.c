@@ -36,14 +36,14 @@
  * SECTION:ctkeventbox
  * @Short_description: A widget used to catch events for widgets which
  *     do not have their own window
- * @Title: GtkEventBox
+ * @Title: CtkEventBox
  *
- * The #GtkEventBox widget is a subclass of #GtkBin which also has its
+ * The #CtkEventBox widget is a subclass of #CtkBin which also has its
  * own window. It is useful since it allows you to catch events for widgets
  * which do not have their own window.
  */
 
-struct _GtkEventBoxPrivate
+struct _CtkEventBoxPrivate
 {
   gboolean above_child;
   GdkWindow *event_window;
@@ -55,25 +55,25 @@ enum {
   PROP_ABOVE_CHILD
 };
 
-static void     ctk_event_box_realize       (GtkWidget        *widget);
-static void     ctk_event_box_unrealize     (GtkWidget        *widget);
-static void     ctk_event_box_map           (GtkWidget        *widget);
-static void     ctk_event_box_unmap         (GtkWidget        *widget);
-static void     ctk_event_box_get_preferred_width  (GtkWidget *widget,
+static void     ctk_event_box_realize       (CtkWidget        *widget);
+static void     ctk_event_box_unrealize     (CtkWidget        *widget);
+static void     ctk_event_box_map           (CtkWidget        *widget);
+static void     ctk_event_box_unmap         (CtkWidget        *widget);
+static void     ctk_event_box_get_preferred_width  (CtkWidget *widget,
                                                     gint      *minimum,
                                                     gint      *natural);
-static void     ctk_event_box_get_preferred_height (GtkWidget *widget,
+static void     ctk_event_box_get_preferred_height (CtkWidget *widget,
                                                     gint      *minimum,
                                                     gint      *natural);
-static void     ctk_event_box_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+static void     ctk_event_box_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 									   gint       width,
 									   gint      *minimum,
 									   gint      *natural,
 									   gint      *minimum_baseline,
 									   gint      *natural_baseline);
-static void     ctk_event_box_size_allocate (GtkWidget        *widget,
-                                             GtkAllocation    *allocation);
-static gboolean ctk_event_box_draw          (GtkWidget        *widget,
+static void     ctk_event_box_size_allocate (CtkWidget        *widget,
+                                             CtkAllocation    *allocation);
+static gboolean ctk_event_box_draw          (CtkWidget        *widget,
                                              cairo_t          *cr);
 static void     ctk_event_box_set_property  (GObject          *object,
                                              guint             prop_id,
@@ -84,14 +84,14 @@ static void     ctk_event_box_get_property  (GObject          *object,
                                              GValue           *value,
                                              GParamSpec       *pspec);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkEventBox, ctk_event_box, CTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkEventBox, ctk_event_box, CTK_TYPE_BIN)
 
 static void
-ctk_event_box_class_init (GtkEventBoxClass *class)
+ctk_event_box_class_init (CtkEventBoxClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
 
   gobject_class->set_property = ctk_event_box_set_property;
   gobject_class->get_property = ctk_event_box_get_property;
@@ -125,7 +125,7 @@ ctk_event_box_class_init (GtkEventBoxClass *class)
 }
 
 static void
-ctk_event_box_init (GtkEventBox *event_box)
+ctk_event_box_init (CtkEventBox *event_box)
 {
   ctk_widget_set_has_window (CTK_WIDGET (event_box), TRUE);
 
@@ -136,11 +136,11 @@ ctk_event_box_init (GtkEventBox *event_box)
 /**
  * ctk_event_box_new:
  *
- * Creates a new #GtkEventBox.
+ * Creates a new #CtkEventBox.
  *
- * Returns: a new #GtkEventBox
+ * Returns: a new #CtkEventBox
  */
-GtkWidget*
+CtkWidget*
 ctk_event_box_new (void)
 {
   return g_object_new (CTK_TYPE_EVENT_BOX, NULL);
@@ -152,7 +152,7 @@ ctk_event_box_set_property (GObject      *object,
                             const GValue *value,
                             GParamSpec   *pspec)
 {
-  GtkEventBox *event_box;
+  CtkEventBox *event_box;
 
   event_box = CTK_EVENT_BOX (object);
 
@@ -178,7 +178,7 @@ ctk_event_box_get_property (GObject     *object,
                             GValue      *value,
                             GParamSpec  *pspec)
 {
-  GtkEventBox *event_box;
+  CtkEventBox *event_box;
 
   event_box = CTK_EVENT_BOX (object);
 
@@ -200,7 +200,7 @@ ctk_event_box_get_property (GObject     *object,
 
 /**
  * ctk_event_box_get_visible_window:
- * @event_box: a #GtkEventBox
+ * @event_box: a #CtkEventBox
  *
  * Returns whether the event box has a visible window.
  * See ctk_event_box_set_visible_window() for details.
@@ -210,7 +210,7 @@ ctk_event_box_get_property (GObject     *object,
  * Since: 2.4
  */
 gboolean
-ctk_event_box_get_visible_window (GtkEventBox *event_box)
+ctk_event_box_get_visible_window (CtkEventBox *event_box)
 {
   g_return_val_if_fail (CTK_IS_EVENT_BOX (event_box), FALSE);
 
@@ -219,7 +219,7 @@ ctk_event_box_get_visible_window (GtkEventBox *event_box)
 
 /**
  * ctk_event_box_set_visible_window:
- * @event_box: a #GtkEventBox
+ * @event_box: a #CtkEventBox
  * @visible_window: %TRUE to make the event box have a visible window
  *
  * Set whether the event box uses a visible or invisible child
@@ -259,10 +259,10 @@ ctk_event_box_get_visible_window (GtkEventBox *event_box)
  * Since: 2.4
  */
 void
-ctk_event_box_set_visible_window (GtkEventBox *event_box,
+ctk_event_box_set_visible_window (CtkEventBox *event_box,
                                   gboolean     visible_window)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   g_return_if_fail (CTK_IS_EVENT_BOX (event_box));
 
@@ -302,7 +302,7 @@ ctk_event_box_set_visible_window (GtkEventBox *event_box,
 
 /**
  * ctk_event_box_get_above_child:
- * @event_box: a #GtkEventBox
+ * @event_box: a #CtkEventBox
  *
  * Returns whether the event box window is above or below the
  * windows of its child. See ctk_event_box_set_above_child()
@@ -314,9 +314,9 @@ ctk_event_box_set_visible_window (GtkEventBox *event_box,
  * Since: 2.4
  */
 gboolean
-ctk_event_box_get_above_child (GtkEventBox *event_box)
+ctk_event_box_get_above_child (CtkEventBox *event_box)
 {
-  GtkEventBoxPrivate *priv = event_box->priv;
+  CtkEventBoxPrivate *priv = event_box->priv;
 
   g_return_val_if_fail (CTK_IS_EVENT_BOX (event_box), FALSE);
 
@@ -325,7 +325,7 @@ ctk_event_box_get_above_child (GtkEventBox *event_box)
 
 /**
  * ctk_event_box_set_above_child:
- * @event_box: a #GtkEventBox
+ * @event_box: a #CtkEventBox
  * @above_child: %TRUE if the event box window is above its child
  *
  * Set whether the event box window is positioned above the windows
@@ -339,11 +339,11 @@ ctk_event_box_get_above_child (GtkEventBox *event_box)
  * Since: 2.4
  */
 void
-ctk_event_box_set_above_child (GtkEventBox *event_box,
+ctk_event_box_set_above_child (CtkEventBox *event_box,
                                gboolean     above_child)
 {
-  GtkEventBoxPrivate *priv = event_box->priv;
-  GtkWidget *widget;
+  CtkEventBoxPrivate *priv = event_box->priv;
+  CtkWidget *widget;
 
   g_return_if_fail (CTK_IS_EVENT_BOX (event_box));
 
@@ -387,10 +387,10 @@ ctk_event_box_set_above_child (GtkEventBox *event_box,
 }
 
 static void
-ctk_event_box_realize (GtkWidget *widget)
+ctk_event_box_realize (CtkWidget *widget)
 {
-  GtkEventBoxPrivate *priv;
-  GtkAllocation allocation;
+  CtkEventBoxPrivate *priv;
+  CtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
@@ -450,9 +450,9 @@ ctk_event_box_realize (GtkWidget *widget)
 }
 
 static void
-ctk_event_box_unrealize (GtkWidget *widget)
+ctk_event_box_unrealize (CtkWidget *widget)
 {
-  GtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
+  CtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
 
   if (priv->event_window != NULL)
     {
@@ -465,9 +465,9 @@ ctk_event_box_unrealize (GtkWidget *widget)
 }
 
 static void
-ctk_event_box_map (GtkWidget *widget)
+ctk_event_box_map (CtkWidget *widget)
 {
-  GtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
+  CtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
 
   if (priv->event_window != NULL && !priv->above_child)
     gdk_window_show (priv->event_window);
@@ -479,9 +479,9 @@ ctk_event_box_map (GtkWidget *widget)
 }
 
 static void
-ctk_event_box_unmap (GtkWidget *widget)
+ctk_event_box_unmap (CtkWidget *widget)
 {
-  GtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
+  CtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
 
   if (priv->event_window != NULL)
     gdk_window_hide (priv->event_window);
@@ -490,12 +490,12 @@ ctk_event_box_unmap (GtkWidget *widget)
 }
 
 static void
-ctk_event_box_get_preferred_width (GtkWidget *widget,
+ctk_event_box_get_preferred_width (CtkWidget *widget,
                                    gint      *minimum,
                                    gint      *natural)
 {
-  GtkBin *bin = CTK_BIN (widget);
-  GtkWidget *child;
+  CtkBin *bin = CTK_BIN (widget);
+  CtkWidget *child;
 
   *minimum = 0;
   *natural = 0;
@@ -506,15 +506,15 @@ ctk_event_box_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_event_box_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_event_box_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 							   gint       width,
 							   gint      *minimum,
 							   gint      *natural,
 							   gint      *minimum_baseline,
 							   gint      *natural_baseline)
 {
-  GtkBin *bin = CTK_BIN (widget);
-  GtkWidget *child;
+  CtkBin *bin = CTK_BIN (widget);
+  CtkWidget *child;
 
   *minimum = 0;
   *natural = 0;
@@ -536,7 +536,7 @@ ctk_event_box_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_event_box_get_preferred_height (GtkWidget *widget,
+ctk_event_box_get_preferred_height (CtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
@@ -546,14 +546,14 @@ ctk_event_box_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_event_box_size_allocate (GtkWidget     *widget,
-                             GtkAllocation *allocation)
+ctk_event_box_size_allocate (CtkWidget     *widget,
+                             CtkAllocation *allocation)
 {
-  GtkBin *bin;
-  GtkAllocation child_allocation;
+  CtkBin *bin;
+  CtkAllocation child_allocation;
   gint baseline;
-  GtkEventBoxPrivate *priv;
-  GtkWidget *child;
+  CtkEventBoxPrivate *priv;
+  CtkWidget *child;
 
   bin = CTK_BIN (widget);
 
@@ -598,13 +598,13 @@ ctk_event_box_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_event_box_draw (GtkWidget *widget,
+ctk_event_box_draw (CtkWidget *widget,
                     cairo_t   *cr)
 {
   if (ctk_widget_get_has_window (widget) &&
       !ctk_widget_get_app_paintable (widget))
     {
-      GtkStyleContext *context;
+      CtkStyleContext *context;
 
       context = ctk_widget_get_style_context (widget);
 

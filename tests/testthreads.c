@@ -34,13 +34,13 @@ static int nthreads = 0;
 static pthread_mutex_t nthreads_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void
-close_cb (GtkWidget *w, gint *flag)
+close_cb (CtkWidget *w, gint *flag)
 {
   *flag = 1;
 }
 
 gint
-delete_cb (GtkWidget *w, GdkEvent *event, gint *flag)
+delete_cb (CtkWidget *w, GdkEvent *event, gint *flag)
 {
   *flag = 1;
   return TRUE;
@@ -54,10 +54,10 @@ counter (void *data)
   gint counter = 0;
   gchar buffer[32];
   
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *label;
+  CtkWidget *button;
 
   gdk_threads_enter();
 

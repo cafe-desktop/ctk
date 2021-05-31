@@ -40,17 +40,17 @@
 /**
  * SECTION:ctkradiobutton
  * @Short_description: A choice from multiple check buttons
- * @Title: GtkRadioButton
- * @See_also: #GtkComboBox
+ * @Title: CtkRadioButton
+ * @See_also: #CtkComboBox
  *
- * A single radio button performs the same basic function as a #GtkCheckButton,
+ * A single radio button performs the same basic function as a #CtkCheckButton,
  * as its position in the object hierarchy reflects. It is only when multiple
  * radio buttons are grouped together that they become a different user
  * interface component in their own right.
  *
  * Every radio button is a member of some group of radio buttons. When one is
  * selected, all other radio buttons in the same group are deselected. A
- * #GtkRadioButton is one way of giving the user a choice from many options.
+ * #CtkRadioButton is one way of giving the user a choice from many options.
  *
  * Radio button widgets are created with ctk_radio_button_new(), passing %NULL
  * as the argument if this is the first radio button in a group. In subsequent
@@ -59,17 +59,17 @@
  * want a text label on the radio button.
  *
  * Alternatively, when adding widgets to an existing group of radio buttons,
- * use ctk_radio_button_new_from_widget() with a #GtkRadioButton that already
+ * use ctk_radio_button_new_from_widget() with a #CtkRadioButton that already
  * has a group assigned to it. The convenience function
  * ctk_radio_button_new_with_label_from_widget() is also provided.
  *
- * To retrieve the group a #GtkRadioButton is assigned to, use
+ * To retrieve the group a #CtkRadioButton is assigned to, use
  * ctk_radio_button_get_group().
  *
- * To remove a #GtkRadioButton from one group and make it part of a new one,
+ * To remove a #CtkRadioButton from one group and make it part of a new one,
  * use ctk_radio_button_set_group().
  *
- * The group list does not need to be freed, as each #GtkRadioButton will remove
+ * The group list does not need to be freed, as each #CtkRadioButton will remove
  * itself and its list item when it is destroyed.
  *
  * # CSS nodes
@@ -80,7 +80,7 @@
  * ╰── <child>
  * ]|
  *
- * A GtkRadioButton with indicator (see ctk_toggle_button_set_mode()) has a
+ * A CtkRadioButton with indicator (see ctk_toggle_button_set_mode()) has a
  * main CSS node with name radiobutton and a subnode with name radio.
  *
  * |[<!-- language="plain" -->
@@ -89,7 +89,7 @@
  * ╰── <child>
  * ]|
  *
- * A GtkRadioButton without indicator changes the name of its main node
+ * A CtkRadioButton without indicator changes the name of its main node
  * to button and adds a .radio style class to it. The subnode is invisible
  * in this case.
  *
@@ -98,12 +98,12 @@
  * |[<!-- language="C" -->
  * void create_radio_buttons (void) {
  *
- *    GtkWidget *window, *radio1, *radio2, *box, *entry;
+ *    CtkWidget *window, *radio1, *radio2, *box, *entry;
  *    window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
  *    box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 2);
  *    ctk_box_set_homogeneous (CTK_BOX (box), TRUE);
  *
- *    // Create a radio button with a GtkEntry widget
+ *    // Create a radio button with a CtkEntry widget
  *    radio1 = ctk_radio_button_new (NULL);
  *    entry = ctk_entry_new ();
  *    ctk_container_add (CTK_CONTAINER (radio1), entry);
@@ -123,14 +123,14 @@
  * ]|
  *
  * When an unselected button in the group is clicked the clicked button
- * receives the #GtkToggleButton::toggled signal, as does the previously
+ * receives the #CtkToggleButton::toggled signal, as does the previously
  * selected button.
- * Inside the #GtkToggleButton::toggled handler, ctk_toggle_button_get_active()
+ * Inside the #CtkToggleButton::toggled handler, ctk_toggle_button_get_active()
  * can be used to determine if the button has been selected or deselected.
  */
 
 
-struct _GtkRadioButtonPrivate
+struct _CtkRadioButtonPrivate
 {
   GSList *group;
 };
@@ -143,10 +143,10 @@ enum {
 
 static GParamSpec *radio_button_props[LAST_PROP] = { NULL, };
 
-static void     ctk_radio_button_destroy        (GtkWidget           *widget);
-static gboolean ctk_radio_button_focus          (GtkWidget           *widget,
-						 GtkDirectionType     direction);
-static void     ctk_radio_button_clicked        (GtkButton           *button);
+static void     ctk_radio_button_destroy        (CtkWidget           *widget);
+static gboolean ctk_radio_button_focus          (CtkWidget           *widget,
+						 CtkDirectionType     direction);
+static void     ctk_radio_button_clicked        (CtkButton           *button);
 static void     ctk_radio_button_set_property   (GObject             *object,
 						 guint                prop_id,
 						 const GValue        *value,
@@ -156,26 +156,26 @@ static void     ctk_radio_button_get_property   (GObject             *object,
 						 GValue              *value,
 						 GParamSpec          *pspec);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioButton, ctk_radio_button, CTK_TYPE_CHECK_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkRadioButton, ctk_radio_button, CTK_TYPE_CHECK_BUTTON)
 
 static guint group_changed_signal = 0;
 
 static void
-ctk_radio_button_class_init (GtkRadioButtonClass *class)
+ctk_radio_button_class_init (CtkRadioButtonClass *class)
 {
   GObjectClass *gobject_class;
-  GtkButtonClass *button_class;
-  GtkWidgetClass *widget_class;
+  CtkButtonClass *button_class;
+  CtkWidgetClass *widget_class;
 
   gobject_class = G_OBJECT_CLASS (class);
-  widget_class = (GtkWidgetClass*) class;
-  button_class = (GtkButtonClass*) class;
+  widget_class = (CtkWidgetClass*) class;
+  button_class = (CtkButtonClass*) class;
 
   gobject_class->set_property = ctk_radio_button_set_property;
   gobject_class->get_property = ctk_radio_button_get_property;
 
   /**
-   * GtkRadioButton:group:
+   * CtkRadioButton:group:
    *
    * Sets a new group for a radio button.
    */
@@ -196,7 +196,7 @@ ctk_radio_button_class_init (GtkRadioButtonClass *class)
   class->group_changed = NULL;
 
   /**
-   * GtkRadioButton::group-changed:
+   * CtkRadioButton::group-changed:
    * @button: the object which received the signal
    *
    * Emitted when the group of radio buttons that a radio button belongs
@@ -211,7 +211,7 @@ ctk_radio_button_class_init (GtkRadioButtonClass *class)
   group_changed_signal = g_signal_new (I_("group-changed"),
 				       G_OBJECT_CLASS_TYPE (gobject_class),
 				       G_SIGNAL_RUN_FIRST,
-				       G_STRUCT_OFFSET (GtkRadioButtonClass, group_changed),
+				       G_STRUCT_OFFSET (CtkRadioButtonClass, group_changed),
 				       NULL, NULL,
 				       NULL,
 				       G_TYPE_NONE, 0);
@@ -221,10 +221,10 @@ ctk_radio_button_class_init (GtkRadioButtonClass *class)
 }
 
 static void
-ctk_radio_button_init (GtkRadioButton *radio_button)
+ctk_radio_button_init (CtkRadioButton *radio_button)
 {
-  GtkRadioButtonPrivate *priv;
-  GtkCssNode *css_node;
+  CtkRadioButtonPrivate *priv;
+  CtkCssNode *css_node;
 
   radio_button->priv = ctk_radio_button_get_instance_private (radio_button);
   priv = radio_button->priv;
@@ -245,14 +245,14 @@ ctk_radio_button_set_property (GObject      *object,
 			       const GValue *value,
 			       GParamSpec   *pspec)
 {
-  GtkRadioButton *radio_button;
+  CtkRadioButton *radio_button;
 
   radio_button = CTK_RADIO_BUTTON (object);
 
   switch (prop_id)
     {
       GSList *slist;
-      GtkRadioButton *button;
+      CtkRadioButton *button;
 
     case PROP_GROUP:
         button = g_value_get_object (value);
@@ -285,22 +285,22 @@ ctk_radio_button_get_property (GObject    *object,
 
 /**
  * ctk_radio_button_set_group:
- * @radio_button: a #GtkRadioButton.
- * @group: (element-type GtkRadioButton) (allow-none): an existing radio
+ * @radio_button: a #CtkRadioButton.
+ * @group: (element-type CtkRadioButton) (allow-none): an existing radio
  *     button group, such as one returned from ctk_radio_button_get_group(), or %NULL.
  *
- * Sets a #GtkRadioButton’s group. It should be noted that this does not change
+ * Sets a #CtkRadioButton’s group. It should be noted that this does not change
  * the layout of your interface in any way, so if you are changing the group,
  * it is likely you will need to re-arrange the user interface to reflect these
  * changes.
  */
 void
-ctk_radio_button_set_group (GtkRadioButton *radio_button,
+ctk_radio_button_set_group (CtkRadioButton *radio_button,
 			    GSList         *group)
 {
-  GtkRadioButtonPrivate *priv;
-  GtkWidget *old_group_singleton = NULL;
-  GtkWidget *new_group_singleton = NULL;
+  CtkRadioButtonPrivate *priv;
+  CtkWidget *old_group_singleton = NULL;
+  CtkWidget *new_group_singleton = NULL;
 
   g_return_if_fail (CTK_IS_RADIO_BUTTON (radio_button));
 
@@ -320,7 +320,7 @@ ctk_radio_button_set_group (GtkRadioButton *radio_button,
 
       for (slist = priv->group; slist; slist = slist->next)
 	{
-	  GtkRadioButton *tmp_button;
+	  CtkRadioButton *tmp_button;
 	  
 	  tmp_button = slist->data;
 
@@ -339,7 +339,7 @@ ctk_radio_button_set_group (GtkRadioButton *radio_button,
       
       for (slist = group; slist; slist = slist->next)
 	{
-	  GtkRadioButton *tmp_button;
+	  CtkRadioButton *tmp_button;
 	  
 	  tmp_button = slist->data;
 
@@ -369,19 +369,19 @@ ctk_radio_button_set_group (GtkRadioButton *radio_button,
 
 /**
  * ctk_radio_button_join_group:
- * @radio_button: the #GtkRadioButton object
+ * @radio_button: the #CtkRadioButton object
  * @group_source: (allow-none): a radio button object whos group we are 
  *   joining, or %NULL to remove the radio button from its group
  *
- * Joins a #GtkRadioButton object to the group of another #GtkRadioButton object
+ * Joins a #CtkRadioButton object to the group of another #CtkRadioButton object
  *
  * Use this in language bindings instead of the ctk_radio_button_get_group() 
  * and ctk_radio_button_set_group() methods
  *
  * A common way to set up a group of radio buttons is the following:
  * |[<!-- language="C" -->
- *   GtkRadioButton *radio_button;
- *   GtkRadioButton *last_button;
+ *   CtkRadioButton *radio_button;
+ *   CtkRadioButton *last_button;
  *
  *   while (some_condition)
  *     {
@@ -395,8 +395,8 @@ ctk_radio_button_set_group (GtkRadioButton *radio_button,
  * Since: 3.0
  */
 void
-ctk_radio_button_join_group (GtkRadioButton *radio_button, 
-			     GtkRadioButton *group_source)
+ctk_radio_button_join_group (CtkRadioButton *radio_button, 
+			     CtkRadioButton *group_source)
 {
   g_return_if_fail (CTK_IS_RADIO_BUTTON (radio_button));
   g_return_if_fail (group_source == NULL || CTK_IS_RADIO_BUTTON (group_source));
@@ -424,18 +424,18 @@ ctk_radio_button_join_group (GtkRadioButton *radio_button,
 
 /**
  * ctk_radio_button_new:
- * @group: (element-type GtkRadioButton) (allow-none): an existing
+ * @group: (element-type CtkRadioButton) (allow-none): an existing
  *         radio button group, or %NULL if you are creating a new group.
  *
- * Creates a new #GtkRadioButton. To be of any practical value, a widget should
+ * Creates a new #CtkRadioButton. To be of any practical value, a widget should
  * then be packed into the radio button.
  *
  * Returns: a new radio button
  */
-GtkWidget*
+CtkWidget*
 ctk_radio_button_new (GSList *group)
 {
-  GtkRadioButton *radio_button;
+  CtkRadioButton *radio_button;
 
   radio_button = g_object_new (CTK_TYPE_RADIO_BUTTON, NULL);
 
@@ -447,19 +447,19 @@ ctk_radio_button_new (GSList *group)
 
 /**
  * ctk_radio_button_new_with_label:
- * @group: (element-type GtkRadioButton) (allow-none): an existing
+ * @group: (element-type CtkRadioButton) (allow-none): an existing
  *         radio button group, or %NULL if you are creating a new group.
  * @label: the text label to display next to the radio button.
  *
- * Creates a new #GtkRadioButton with a text label.
+ * Creates a new #CtkRadioButton with a text label.
  *
  * Returns: a new radio button.
  */
-GtkWidget*
+CtkWidget*
 ctk_radio_button_new_with_label (GSList      *group,
 				 const gchar *label)
 {
-  GtkWidget *radio_button;
+  CtkWidget *radio_button;
 
   radio_button = g_object_new (CTK_TYPE_RADIO_BUTTON, "label", label, NULL) ;
 
@@ -472,23 +472,23 @@ ctk_radio_button_new_with_label (GSList      *group,
 
 /**
  * ctk_radio_button_new_with_mnemonic:
- * @group: (element-type GtkRadioButton) (allow-none): the radio button
+ * @group: (element-type CtkRadioButton) (allow-none): the radio button
  *         group, or %NULL
  * @label: the text of the button, with an underscore in front of the
  *         mnemonic character
  *
- * Creates a new #GtkRadioButton containing a label, adding it to the same
+ * Creates a new #CtkRadioButton containing a label, adding it to the same
  * group as @group. The label will be created using
  * ctk_label_new_with_mnemonic(), so underscores in @label indicate the
  * mnemonic for the button.
  *
- * Returns: a new #GtkRadioButton
+ * Returns: a new #CtkRadioButton
  */
-GtkWidget*
+CtkWidget*
 ctk_radio_button_new_with_mnemonic (GSList      *group,
 				    const gchar *label)
 {
-  GtkWidget *radio_button;
+  CtkWidget *radio_button;
 
   radio_button = g_object_new (CTK_TYPE_RADIO_BUTTON, 
 			       "label", label, 
@@ -503,16 +503,16 @@ ctk_radio_button_new_with_mnemonic (GSList      *group,
 
 /**
  * ctk_radio_button_new_from_widget: (constructor)
- * @radio_group_member: (allow-none): an existing #GtkRadioButton.
+ * @radio_group_member: (allow-none): an existing #CtkRadioButton.
  *
- * Creates a new #GtkRadioButton, adding it to the same group as
+ * Creates a new #CtkRadioButton, adding it to the same group as
  * @radio_group_member. As with ctk_radio_button_new(), a widget
  * should be packed into the radio button.
  *
  * Returns: (transfer none): a new radio button.
  */
-GtkWidget*
-ctk_radio_button_new_from_widget (GtkRadioButton *radio_group_member)
+CtkWidget*
+ctk_radio_button_new_from_widget (CtkRadioButton *radio_group_member)
 {
   GSList *l = NULL;
   if (radio_group_member)
@@ -525,13 +525,13 @@ ctk_radio_button_new_from_widget (GtkRadioButton *radio_group_member)
  * @radio_group_member: (allow-none): widget to get radio group from or %NULL
  * @label: a text string to display next to the radio button.
  *
- * Creates a new #GtkRadioButton with a text label, adding it to
+ * Creates a new #CtkRadioButton with a text label, adding it to
  * the same group as @radio_group_member.
  *
  * Returns: (transfer none): a new radio button.
  */
-GtkWidget*
-ctk_radio_button_new_with_label_from_widget (GtkRadioButton *radio_group_member,
+CtkWidget*
+ctk_radio_button_new_with_label_from_widget (CtkRadioButton *radio_group_member,
 					     const gchar    *label)
 {
   GSList *l = NULL;
@@ -546,14 +546,14 @@ ctk_radio_button_new_with_label_from_widget (GtkRadioButton *radio_group_member,
  * @label: the text of the button, with an underscore in front of the
  *         mnemonic character
  *
- * Creates a new #GtkRadioButton containing a label. The label
+ * Creates a new #CtkRadioButton containing a label. The label
  * will be created using ctk_label_new_with_mnemonic(), so underscores
  * in @label indicate the mnemonic for the button.
  *
- * Returns: (transfer none): a new #GtkRadioButton
+ * Returns: (transfer none): a new #CtkRadioButton
  **/
-GtkWidget*
-ctk_radio_button_new_with_mnemonic_from_widget (GtkRadioButton *radio_group_member,
+CtkWidget*
+ctk_radio_button_new_with_mnemonic_from_widget (CtkRadioButton *radio_group_member,
 					        const gchar    *label)
 {
   GSList *l = NULL;
@@ -565,17 +565,17 @@ ctk_radio_button_new_with_mnemonic_from_widget (GtkRadioButton *radio_group_memb
 
 /**
  * ctk_radio_button_get_group:
- * @radio_button: a #GtkRadioButton.
+ * @radio_button: a #CtkRadioButton.
  *
  * Retrieves the group assigned to a radio button.
  *
- * Returns: (element-type GtkRadioButton) (transfer none): a linked list
+ * Returns: (element-type CtkRadioButton) (transfer none): a linked list
  * containing all the radio buttons in the same group
  * as @radio_button. The returned list is owned by the radio button
  * and must not be modified or freed.
  */
 GSList*
-ctk_radio_button_get_group (GtkRadioButton *radio_button)
+ctk_radio_button_get_group (CtkRadioButton *radio_button)
 {
   g_return_val_if_fail (CTK_IS_RADIO_BUTTON (radio_button), NULL);
 
@@ -584,12 +584,12 @@ ctk_radio_button_get_group (GtkRadioButton *radio_button)
 
 
 static void
-ctk_radio_button_destroy (GtkWidget *widget)
+ctk_radio_button_destroy (CtkWidget *widget)
 {
-  GtkWidget *old_group_singleton = NULL;
-  GtkRadioButton *radio_button = CTK_RADIO_BUTTON (widget);
-  GtkRadioButtonPrivate *priv = radio_button->priv;
-  GtkRadioButton *tmp_button;
+  CtkWidget *old_group_singleton = NULL;
+  CtkRadioButton *radio_button = CTK_RADIO_BUTTON (widget);
+  CtkRadioButtonPrivate *priv = radio_button->priv;
+  CtkRadioButton *tmp_button;
   GSList *tmp_list;
   gboolean was_in_group;
 
@@ -621,11 +621,11 @@ ctk_radio_button_destroy (GtkWidget *widget)
 }
 
 static gboolean
-ctk_radio_button_focus (GtkWidget         *widget,
-			GtkDirectionType   direction)
+ctk_radio_button_focus (CtkWidget         *widget,
+			CtkDirectionType   direction)
 {
-  GtkRadioButton *radio_button = CTK_RADIO_BUTTON (widget);
-  GtkRadioButtonPrivate *priv = radio_button->priv;
+  CtkRadioButton *radio_button = CTK_RADIO_BUTTON (widget);
+  CtkRadioButtonPrivate *priv = radio_button->priv;
   GSList *tmp_slist;
 
   /* Radio buttons with draw_indicator unset focus "normally", since
@@ -637,8 +637,8 @@ ctk_radio_button_focus (GtkWidget         *widget,
   if (ctk_widget_is_focus (widget))
     {
       GList *children, *focus_list, *tmp_list;
-      GtkWidget *toplevel;
-      GtkWidget *new_focus = NULL;
+      CtkWidget *toplevel;
+      CtkWidget *new_focus = NULL;
       GSList *l;
 
       if (direction == CTK_DIR_TAB_FORWARD ||
@@ -659,7 +659,7 @@ ctk_radio_button_focus (GtkWidget         *widget,
 
 	  while (tmp_list)
 	    {
-	      GtkWidget *child = tmp_list->data;
+	      CtkWidget *child = tmp_list->data;
 
 	      if (ctk_widget_get_mapped (child) && ctk_widget_is_sensitive (child))
 		{
@@ -677,7 +677,7 @@ ctk_radio_button_focus (GtkWidget         *widget,
 
 	  while (tmp_list)
 	    {
-	      GtkWidget *child = tmp_list->data;
+	      CtkWidget *child = tmp_list->data;
 
 	      if (ctk_widget_get_mapped (child) && ctk_widget_is_sensitive (child))
 		{
@@ -703,7 +703,7 @@ ctk_radio_button_focus (GtkWidget         *widget,
     }
   else
     {
-      GtkRadioButton *selected_button = NULL;
+      CtkRadioButton *selected_button = NULL;
 
       /* We accept the focus if, we don't have the focus and
        *  - we are the currently active button in the group
@@ -727,12 +727,12 @@ ctk_radio_button_focus (GtkWidget         *widget,
 }
 
 static void
-ctk_radio_button_clicked (GtkButton *button)
+ctk_radio_button_clicked (CtkButton *button)
 {
-  GtkRadioButton *radio_button = CTK_RADIO_BUTTON (button);
-  GtkRadioButtonPrivate *priv = radio_button->priv;
-  GtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (button);
-  GtkToggleButton *tmp_button;
+  CtkRadioButton *radio_button = CTK_RADIO_BUTTON (button);
+  CtkRadioButtonPrivate *priv = radio_button->priv;
+  CtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (button);
+  CtkToggleButton *tmp_button;
   GSList *tmp_list;
   gint toggled;
 

@@ -21,9 +21,9 @@
 #include "ctkrenderercellaccessible.h"
 #include "ctkintl.h"
 
-struct _GtkRendererCellAccessiblePrivate
+struct _CtkRendererCellAccessiblePrivate
 {
-  GtkCellRenderer *renderer;
+  CtkCellRenderer *renderer;
 };
 
 enum {
@@ -31,7 +31,7 @@ enum {
   PROP_RENDERER
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRendererCellAccessible, ctk_renderer_cell_accessible, CTK_TYPE_CELL_ACCESSIBLE)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkRendererCellAccessible, ctk_renderer_cell_accessible, CTK_TYPE_CELL_ACCESSIBLE)
 
 static void
 ctk_renderer_cell_accessible_set_property (GObject         *object,
@@ -39,7 +39,7 @@ ctk_renderer_cell_accessible_set_property (GObject         *object,
                                            const GValue    *value,
                                            GParamSpec      *pspec)
 {
-  GtkRendererCellAccessible *accessible = CTK_RENDERER_CELL_ACCESSIBLE (object);
+  CtkRendererCellAccessible *accessible = CTK_RENDERER_CELL_ACCESSIBLE (object);
 
   switch (prop_id)
     {
@@ -58,7 +58,7 @@ ctk_renderer_cell_accessible_get_property (GObject         *object,
                                            GValue          *value,
                                            GParamSpec      *pspec)
 {
-  GtkRendererCellAccessible *accessible = CTK_RENDERER_CELL_ACCESSIBLE (object);
+  CtkRendererCellAccessible *accessible = CTK_RENDERER_CELL_ACCESSIBLE (object);
 
   switch (prop_id)
     {
@@ -74,7 +74,7 @@ ctk_renderer_cell_accessible_get_property (GObject         *object,
 static void
 ctk_renderer_cell_accessible_finalize (GObject *object)
 {
-  GtkRendererCellAccessible *renderer_cell = CTK_RENDERER_CELL_ACCESSIBLE (object);
+  CtkRendererCellAccessible *renderer_cell = CTK_RENDERER_CELL_ACCESSIBLE (object);
 
   if (renderer_cell->priv->renderer)
     g_object_unref (renderer_cell->priv->renderer);
@@ -83,7 +83,7 @@ ctk_renderer_cell_accessible_finalize (GObject *object)
 }
 
 static void
-ctk_renderer_cell_accessible_class_init (GtkRendererCellAccessibleClass *klass)
+ctk_renderer_cell_accessible_class_init (CtkRendererCellAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -101,13 +101,13 @@ ctk_renderer_cell_accessible_class_init (GtkRendererCellAccessibleClass *klass)
 }
 
 static void
-ctk_renderer_cell_accessible_init (GtkRendererCellAccessible *renderer_cell)
+ctk_renderer_cell_accessible_init (CtkRendererCellAccessible *renderer_cell)
 {
   renderer_cell->priv = ctk_renderer_cell_accessible_get_instance_private (renderer_cell);
 }
 
 AtkObject *
-ctk_renderer_cell_accessible_new (GtkCellRenderer *renderer)
+ctk_renderer_cell_accessible_new (CtkCellRenderer *renderer)
 {
   AtkObject *object;
 

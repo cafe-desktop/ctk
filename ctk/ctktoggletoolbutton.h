@@ -30,37 +30,37 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TOGGLE_TOOL_BUTTON             (ctk_toggle_tool_button_get_type ())
-#define CTK_TOGGLE_TOOL_BUTTON(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOGGLE_TOOL_BUTTON, GtkToggleToolButton))
-#define CTK_TOGGLE_TOOL_BUTTON_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOGGLE_TOOL_BUTTON, GtkToggleToolButtonClass))
+#define CTK_TOGGLE_TOOL_BUTTON(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOGGLE_TOOL_BUTTON, CtkToggleToolButton))
+#define CTK_TOGGLE_TOOL_BUTTON_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOGGLE_TOOL_BUTTON, CtkToggleToolButtonClass))
 #define CTK_IS_TOGGLE_TOOL_BUTTON(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOGGLE_TOOL_BUTTON))
 #define CTK_IS_TOGGLE_TOOL_BUTTON_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TOGGLE_TOOL_BUTTON))
-#define CTK_TOGGLE_TOOL_BUTTON_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_TOGGLE_TOOL_BUTTON, GtkToggleToolButtonClass))
+#define CTK_TOGGLE_TOOL_BUTTON_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_TOGGLE_TOOL_BUTTON, CtkToggleToolButtonClass))
 
-typedef struct _GtkToggleToolButton        GtkToggleToolButton;
-typedef struct _GtkToggleToolButtonClass   GtkToggleToolButtonClass;
-typedef struct _GtkToggleToolButtonPrivate GtkToggleToolButtonPrivate;
+typedef struct _CtkToggleToolButton        CtkToggleToolButton;
+typedef struct _CtkToggleToolButtonClass   CtkToggleToolButtonClass;
+typedef struct _CtkToggleToolButtonPrivate CtkToggleToolButtonPrivate;
 
-struct _GtkToggleToolButton
+struct _CtkToggleToolButton
 {
-  GtkToolButton parent;
+  CtkToolButton parent;
 
   /*< private >*/
-  GtkToggleToolButtonPrivate *priv;
+  CtkToggleToolButtonPrivate *priv;
 };
 
 /**
- * GtkToggleToolButtonClass:
+ * CtkToggleToolButtonClass:
  * @parent_class: The parent class.
  * @toggled: Signal emitted whenever the toggle tool button changes state.
  */
-struct _GtkToggleToolButtonClass
+struct _CtkToggleToolButtonClass
 {
-  GtkToolButtonClass parent_class;
+  CtkToolButtonClass parent_class;
 
   /*< public >*/
 
   /* signal */
-  void (* toggled) (GtkToggleToolButton *button);
+  void (* toggled) (CtkToggleToolButton *button);
 
   /*< private >*/
 
@@ -74,15 +74,15 @@ struct _GtkToggleToolButtonClass
 GDK_AVAILABLE_IN_ALL
 GType        ctk_toggle_tool_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkToolItem *ctk_toggle_tool_button_new            (void);
+CtkToolItem *ctk_toggle_tool_button_new            (void);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_toggle_tool_button_new)
-GtkToolItem *ctk_toggle_tool_button_new_from_stock (const gchar *stock_id);
+CtkToolItem *ctk_toggle_tool_button_new_from_stock (const gchar *stock_id);
 
 GDK_AVAILABLE_IN_ALL
-void         ctk_toggle_tool_button_set_active     (GtkToggleToolButton *button,
+void         ctk_toggle_tool_button_set_active     (CtkToggleToolButton *button,
 						    gboolean             is_active);
 GDK_AVAILABLE_IN_ALL
-gboolean     ctk_toggle_tool_button_get_active     (GtkToggleToolButton *button);
+gboolean     ctk_toggle_tool_button_get_active     (CtkToggleToolButton *button);
 
 G_END_DECLS
 

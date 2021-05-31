@@ -85,7 +85,7 @@ print_escaped (GString *contents, const char *str)
 static gboolean
 query_module (const char *dir, const char *name, GString *contents)
 {
-  void          (*list)   (const GtkIMContextInfo ***contexts,
+  void          (*list)   (const CtkIMContextInfo ***contexts,
                            guint                    *n_contexts);
 
   gpointer list_ptr;
@@ -116,7 +116,7 @@ query_module (const char *dir, const char *name, GString *contents)
       g_module_symbol (module, "im_module_exit", &exit_ptr) &&
       g_module_symbol (module, "im_module_create", &create_ptr))
     {
-      const GtkIMContextInfo **contexts;
+      const CtkIMContextInfo **contexts;
       guint n_contexts;
       int i;
 

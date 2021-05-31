@@ -371,10 +371,10 @@ msgstr "アクショングループ"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"この GtkAction と連携する GtkActionGroup、または NULL (GTK+ 内部で使用) です"
+"この CtkAction と連携する CtkActionGroup、または NULL (GTK+ 内部で使用) です"
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
@@ -938,7 +938,7 @@ msgid "Style context"
 msgstr ""
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
+msgid "CtkStyleContext to get style from"
 msgstr ""
 
 #: ctk/deprecated/ctktable.c:185
@@ -1334,11 +1334,11 @@ msgstr "パックの種類"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
 "親ウィジェットの開始または終了に追従して子ウィジェットがパックされるかどうか "
-"(GtkPackType で指定する)"
+"(CtkPackType で指定する)"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1758
@@ -1407,7 +1407,7 @@ msgstr ""
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
 
 #: ctk/ctkappchooserbutton.c:634
@@ -2096,14 +2096,14 @@ msgstr "パックの種類"
 #: ctk/ctkcellareabox.c:381
 #, fuzzy
 #| msgid ""
-#| "A GtkPackType indicating whether the child is packed with reference to "
+#| "A CtkPackType indicating whether the child is packed with reference to "
 #| "the start or end of the parent"
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
 "親ウィジェットの開始または終了に追従して子ウィジェットがパックされるかどうか "
-"(GtkPackType で指定する)"
+"(CtkPackType で指定する)"
 
 #: ctk/ctkcellarea.c:790
 msgid "Focus Cell"
@@ -2397,8 +2397,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "描画するストックアイコンのストック ID"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "描画したアイコンのサイズを示す GtkIconSize の値です"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "描画したアイコンのサイズを示す CtkIconSize の値です"
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2510,8 +2510,8 @@ msgid "Pulse of the spinner"
 msgstr "スピナーのパルス"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "描画したスピナーのサイズを示す GtkIconSize の値です"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "描画したスピナーのサイズを示す CtkIconSize の値です"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2948,7 +2948,7 @@ msgstr ""
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
+msgid "The CtkCellArea used to layout cells"
 msgstr ""
 
 #: ctk/ctkcellview.c:306
@@ -2956,7 +2956,7 @@ msgid "Cell Area Context"
 msgstr ""
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 
 #: ctk/ctkcellview.c:324
@@ -3203,7 +3203,7 @@ msgstr "テキスト列"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 
 #: ctk/ctkcombobox.c:1129
@@ -4468,7 +4468,7 @@ msgstr "描画するラベル"
 #: ctk/ctkglarea.c:808
 #, fuzzy
 #| msgid "Whether the header can be clicked"
-msgid "Whether the GtkGLArea renders on each redraw"
+msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "ヘッダーがクリック可能かどうか"
 
 #: ctk/ctkglarea.c:828
@@ -4880,14 +4880,14 @@ msgstr "行端の揃え方"
 #| msgid ""
 #| "The alignment of the lines in the text of the label relative to each "
 #| "other. This does NOT affect the alignment of the label within its "
-#| "allocation. See GtkMisc::xalign for that"
+#| "allocation. See CtkMisc::xalign for that"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "お互いにラベルのテキストを配置する位置です。これはラベルが確保する部分の中に"
-"配置されるものではありません。詳細は GtkMisc::xalign を参照してください。"
+"配置されるものではありません。詳細は CtkMisc::xalign を参照してください。"
 
 #: ctk/ctklabel.c:877
 msgid "Pattern"
@@ -5555,9 +5555,9 @@ msgstr "メッセージエリア"
 
 #: ctk/ctkmessagedialog.c:295
 #, fuzzy
-#| msgid "GtkVBox that holds the dialog's primary and secondary labels"
-msgid "GtkBox that holds the dialog's primary and secondary labels"
-msgstr "ダイアログのプライマリとセカンダリのラベルを保持する GtkVBox"
+#| msgid "CtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
+msgstr "ダイアログのプライマリとセカンダリのラベルを保持する CtkVBox"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -6258,9 +6258,9 @@ msgstr ""
 
 #: ctk/ctkpopover.c:1806
 #, fuzzy
-#| msgid "The GtkAdjustment for the vertical position"
+#| msgid "The CtkAdjustment for the vertical position"
 msgid "Constraint for the popover position"
-msgstr "垂直方向の位置に対する GtkAdjustment です"
+msgstr "垂直方向の位置に対する CtkAdjustment です"
 
 #: ctk/ctkpopovermenu.c:359
 #, fuzzy
@@ -6421,16 +6421,16 @@ msgid "Default Page Setup"
 msgstr "デフォルトのページ設定です"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "デフォルトで使用する GtkPageSetup オブジェクトです"
+msgid "The CtkPageSetup used by default"
+msgstr "デフォルトで使用する CtkPageSetup オブジェクトです"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "印刷の設定"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "ダイアログを初期化する際に使用する GtkPrintSettings オブジェクトです"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "ダイアログを初期化する際に使用する CtkPrintSettings オブジェクトです"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -6549,8 +6549,8 @@ msgid "Embed Page Setup"
 msgstr "ページ設定組み込み"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "ページ設定のコンボボックスを GtkPrintUnixDialog に組み込むなら TRUE"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "ページ設定のコンボボックスを CtkPrintUnixDialog に組み込むなら TRUE"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -6561,16 +6561,16 @@ msgid "The number of pages that will be printed."
 msgstr "印刷されるページ数。"
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "使用する GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "使用する CtkPageSetup"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "選択したプリンター"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "選択した GtkPrinter オブジェクトです"
+msgid "The CtkPrinter which is selected"
+msgstr "選択した CtkPrinter オブジェクトです"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6685,8 +6685,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "このウィジェットが属すグループのラジオツールボタンです"
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "このレンジオブジェクトの現在値を格納する GtkAdjustment"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "このレンジオブジェクトの現在値を格納する CtkAdjustment"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6954,8 +6954,8 @@ msgstr "アイコンの大きさです"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "スケールボタンの現在値を格納する GtkAdjustment です"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "スケールボタンの現在値を格納する CtkAdjustment です"
 
 #: ctk/ctkscalebutton.c:246
 msgid "Icons"
@@ -7080,16 +7080,16 @@ msgid "Horizontal Adjustment"
 msgstr "水平方向の調整"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "水平方向の位置に対する GtkAdjustment です"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "水平方向の位置に対する CtkAdjustment です"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "垂直方向の調整"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "垂直方向の位置に対する GtkAdjustment です"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "垂直方向の位置に対する CtkAdjustment です"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -7609,16 +7609,16 @@ msgid "Default file chooser backend"
 msgstr "デフォルトのファイル選択バックエンド"
 
 #: ctk/ctksettings.c:980
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "デフォルトで使用する GtkFileChooser バックエンドの名前です"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "デフォルトで使用する CtkFileChooser バックエンドの名前です"
 
 #: ctk/ctksettings.c:997
 msgid "Default print backend"
 msgstr "デフォルトの印刷バックエンド"
 
 #: ctk/ctksettings.c:998
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "デフォルトで使用する GtkPrintBackend オブジェクトのリストです"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "デフォルトで使用する CtkPrintBackend オブジェクトのリストです"
 
 #: ctk/ctksettings.c:1021
 msgid "Default command to run when displaying a print preview"
@@ -8310,7 +8310,7 @@ msgid "Stack"
 msgstr ""
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
+msgid "Associated stack for this CtkStackSidebar"
 msgstr ""
 
 #: ctk/ctkstackswitcher.c:687
@@ -8368,7 +8368,7 @@ msgid "Value type"
 msgstr "ページの種類"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
 msgstr ""
 
 #: ctk/ctkswitch.c:879
@@ -9302,8 +9302,8 @@ msgid "Fixed Height Mode"
 msgstr "高さが固定のモード"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "すべての行が同じ高さであると仮定することで GtkTreeView を高速にします"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "すべての行が同じ高さであると仮定することで CtkTreeView を高速にします"
 
 #: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
@@ -10145,8 +10145,8 @@ msgid "Focus in Toplevel"
 msgstr "トップレベルのフォーカス"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "この GtkWindow 内部にフォーカスを当てるかどうか"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "この CtkWindow 内部にフォーカスを当てるかどうか"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -10268,13 +10268,13 @@ msgstr "ウィジェットが表示可能かどうか"
 #: ctk/ctkwindow.c:1113
 #, fuzzy
 #| msgid "Application paintable"
-msgid "GtkApplication"
+msgid "CtkApplication"
 msgstr "アプリケーション表示可否"
 
 #: ctk/ctkwindow.c:1114
 #, fuzzy
 #| msgid "The initial position of the window"
-msgid "The GtkApplication for the window"
+msgid "The CtkApplication for the window"
 msgstr "ウィンドウの初期位置"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
@@ -10290,7 +10290,7 @@ msgid "Cloud Print account"
 msgstr ""
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
+msgid "CtkCloudprintAccount instance"
 msgstr ""
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
@@ -10380,8 +10380,8 @@ msgstr "色選択ダイアログのタイトル"
 #~ msgid "The type of values after style lookup"
 #~ msgstr "アクセラレータの種類です"
 
-#~ msgid "TRUE if page setup combos are embedded in GtkPrintDialog"
-#~ msgstr "ページ設定のコンボボックスを GtkPrintDialog に組み込むなら TRUE"
+#~ msgid "TRUE if page setup combos are embedded in CtkPrintDialog"
+#~ msgstr "ページ設定のコンボボックスを CtkPrintDialog に組み込むなら TRUE"
 
 #, fuzzy
 #~ msgid "Event base"
@@ -10439,10 +10439,10 @@ msgstr "色選択ダイアログのタイトル"
 #~ msgid ""
 #~ "The number of steps for the spinner to complete a full loop. The "
 #~ "animation will complete a full cycle in one second by default (see "
-#~ "#GtkSpinner:cycle-duration)."
+#~ "#CtkSpinner:cycle-duration)."
 #~ msgstr ""
 #~ "スピナーが完全に回転するのに要するステップ数です。デフォルトではアニメー"
-#~ "ションは1秒で完全に回転します (#GtkSpinner:cycle-duration を参照)。"
+#~ "ションは1秒で完全に回転します (#CtkSpinner:cycle-duration を参照)。"
 
 #~ msgid ""
 #~ "The length of time in milliseconds for the spinner to complete a full loop"
@@ -10455,14 +10455,14 @@ msgstr "色選択ダイアログのタイトル"
 #~ msgstr "ウィジェットの垂直方向のアジャストメント"
 
 #~ msgid ""
-#~ "The GtkAdjustment that determines the values of the horizontal position "
+#~ "The CtkAdjustment that determines the values of the horizontal position "
 #~ "for this viewport"
-#~ msgstr "このビューポートの水平方向の位置を決定する GtkAdjustment"
+#~ msgstr "このビューポートの水平方向の位置を決定する CtkAdjustment"
 
 #~ msgid ""
-#~ "The GtkAdjustment that determines the values of the vertical position for "
+#~ "The CtkAdjustment that determines the values of the vertical position for "
 #~ "this viewport"
-#~ msgstr "このビューポートの垂直方向の位置を決定する GtkAdjustment"
+#~ msgstr "このビューポートの垂直方向の位置を決定する CtkAdjustment"
 
 #~ msgid "Extension events"
 #~ msgstr "拡張イベント"
@@ -10665,17 +10665,17 @@ msgstr "色選択ダイアログのタイトル"
 #~ msgstr "動作モード"
 
 #~ msgid ""
-#~ "If TRUE, the GtkProgress is in activity mode, meaning that it signals "
+#~ "If TRUE, the CtkProgress is in activity mode, meaning that it signals "
 #~ "something is happening, but not how much of the activity is finished. "
 #~ "This is used when you're doing something but don't know how long it will "
 #~ "take."
 #~ msgstr ""
-#~ "TRUE にすると、GtkProgress が動作モードに入り、何かイベントが発生するとシ"
+#~ "TRUE にすると、CtkProgress が動作モードに入り、何かイベントが発生するとシ"
 #~ "グナルを発行しますが、どれくらいで完了するかは不明です (これは終了時間が不"
 #~ "明な場合に使用します)"
 
-#~ msgid "The GtkAdjustment connected to the progress bar (Deprecated)"
-#~ msgstr "プログレスバーに接続する GtkAdjustment (破棄)"
+#~ msgid "The CtkAdjustment connected to the progress bar (Deprecated)"
+#~ msgstr "プログレスバーに接続する CtkAdjustment (破棄)"
 
 #~ msgid "Bar style"
 #~ msgstr "バーのスタイル"

@@ -27,30 +27,30 @@
 #include <ctk/ctktreemodel.h>
 
 #define CTK_TYPE_INSPECTOR_OBJECT_TREE            (ctk_inspector_object_tree_get_type())
-#define CTK_INSPECTOR_OBJECT_TREE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_OBJECT_TREE, GtkInspectorObjectTree))
-#define CTK_INSPECTOR_OBJECT_TREE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_OBJECT_TREE, GtkInspectorObjectTreeClass))
+#define CTK_INSPECTOR_OBJECT_TREE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_OBJECT_TREE, CtkInspectorObjectTree))
+#define CTK_INSPECTOR_OBJECT_TREE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_OBJECT_TREE, CtkInspectorObjectTreeClass))
 #define CTK_INSPECTOR_IS_OBJECT_TREE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_OBJECT_TREE))
 #define CTK_INSPECTOR_IS_OBJECT_TREE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_OBJECT_TREE))
-#define CTK_INSPECTOR_OBJECT_TREE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_OBJECT_TREE, GtkInspectorObjectTreeClass))
+#define CTK_INSPECTOR_OBJECT_TREE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_OBJECT_TREE, CtkInspectorObjectTreeClass))
 
 
-typedef struct _GtkInspectorObjectTreePrivate GtkInspectorObjectTreePrivate;
+typedef struct _CtkInspectorObjectTreePrivate CtkInspectorObjectTreePrivate;
 
-typedef struct _GtkInspectorObjectTree
+typedef struct _CtkInspectorObjectTree
 {
-  GtkBox parent;
-  GtkInspectorObjectTreePrivate *priv;
-} GtkInspectorObjectTree;
+  CtkBox parent;
+  CtkInspectorObjectTreePrivate *priv;
+} CtkInspectorObjectTree;
 
-typedef struct _GtkInspectorObjectTreeClass
+typedef struct _CtkInspectorObjectTreeClass
 {
-  GtkBoxClass parent;
+  CtkBoxClass parent;
 
-  void (*object_selected)  (GtkInspectorObjectTree *wt,
+  void (*object_selected)  (CtkInspectorObjectTree *wt,
                             GObject                *object);
-  void (*object_activated) (GtkInspectorObjectTree *wt,
+  void (*object_activated) (CtkInspectorObjectTree *wt,
                             GObject                *object);
-} GtkInspectorObjectTreeClass;
+} CtkInspectorObjectTreeClass;
 
 
 G_BEGIN_DECLS
@@ -58,19 +58,19 @@ G_BEGIN_DECLS
 
 GType      ctk_inspector_object_tree_get_type            (void);
 
-void       ctk_inspector_object_tree_scan                (GtkInspectorObjectTree *wt,
-                                                          GtkWidget              *window);
-gboolean   ctk_inspector_object_tree_select_object       (GtkInspectorObjectTree *wt,
+void       ctk_inspector_object_tree_scan                (CtkInspectorObjectTree *wt,
+                                                          CtkWidget              *window);
+gboolean   ctk_inspector_object_tree_select_object       (CtkInspectorObjectTree *wt,
                                                           GObject                *object);
-void       ctk_inspector_object_tree_append_object       (GtkInspectorObjectTree *wt,
+void       ctk_inspector_object_tree_append_object       (CtkInspectorObjectTree *wt,
                                                           GObject                *object,
-                                                          GtkTreeIter            *parent_iter,
+                                                          CtkTreeIter            *parent_iter,
                                                           const gchar            *name);
-gboolean   ctk_inspector_object_tree_find_object         (GtkInspectorObjectTree *wt,
+gboolean   ctk_inspector_object_tree_find_object         (CtkInspectorObjectTree *wt,
                                                           GObject                *object,
-                                                          GtkTreeIter            *iter);
+                                                          CtkTreeIter            *iter);
 
-GObject   *ctk_inspector_object_tree_get_selected        (GtkInspectorObjectTree *wt);
+GObject   *ctk_inspector_object_tree_get_selected        (CtkInspectorObjectTree *wt);
 
 G_END_DECLS
 

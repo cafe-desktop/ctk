@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_IMAGE_ACCESSIBLE                      (ctk_image_accessible_get_type ())
-#define CTK_IMAGE_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IMAGE_ACCESSIBLE, GtkImageAccessible))
-#define CTK_IMAGE_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IMAGE_ACCESSIBLE, GtkImageAccessibleClass))
+#define CTK_IMAGE_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IMAGE_ACCESSIBLE, CtkImageAccessible))
+#define CTK_IMAGE_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IMAGE_ACCESSIBLE, CtkImageAccessibleClass))
 #define CTK_IS_IMAGE_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IMAGE_ACCESSIBLE))
 #define CTK_IS_IMAGE_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IMAGE_ACCESSIBLE))
-#define CTK_IMAGE_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IMAGE_ACCESSIBLE, GtkImageAccessibleClass))
+#define CTK_IMAGE_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IMAGE_ACCESSIBLE, CtkImageAccessibleClass))
 
-typedef struct _GtkImageAccessible        GtkImageAccessible;
-typedef struct _GtkImageAccessibleClass   GtkImageAccessibleClass;
-typedef struct _GtkImageAccessiblePrivate GtkImageAccessiblePrivate;
+typedef struct _CtkImageAccessible        CtkImageAccessible;
+typedef struct _CtkImageAccessibleClass   CtkImageAccessibleClass;
+typedef struct _CtkImageAccessiblePrivate CtkImageAccessiblePrivate;
 
-struct _GtkImageAccessible
+struct _CtkImageAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkImageAccessiblePrivate *priv;
+  CtkImageAccessiblePrivate *priv;
 };
 
-struct _GtkImageAccessibleClass
+struct _CtkImageAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

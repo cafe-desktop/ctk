@@ -35,32 +35,32 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_BIN                  (ctk_bin_get_type ())
-#define CTK_BIN(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BIN, GtkBin))
-#define CTK_BIN_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_BIN, GtkBinClass))
+#define CTK_BIN(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BIN, CtkBin))
+#define CTK_BIN_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_BIN, CtkBinClass))
 #define CTK_IS_BIN(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BIN))
 #define CTK_IS_BIN_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_BIN))
-#define CTK_BIN_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BIN, GtkBinClass))
+#define CTK_BIN_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BIN, CtkBinClass))
 
 
-typedef struct _GtkBin              GtkBin;
-typedef struct _GtkBinPrivate       GtkBinPrivate;
-typedef struct _GtkBinClass         GtkBinClass;
+typedef struct _CtkBin              CtkBin;
+typedef struct _CtkBinPrivate       CtkBinPrivate;
+typedef struct _CtkBinClass         CtkBinClass;
 
-struct _GtkBin
+struct _CtkBin
 {
-  GtkContainer container;
+  CtkContainer container;
 
   /*< private >*/
-  GtkBinPrivate *priv;
+  CtkBinPrivate *priv;
 };
 
 /**
- * GtkBinClass:
+ * CtkBinClass:
  * @parent_class: The parent class.
  */
-struct _GtkBinClass
+struct _CtkBinClass
 {
-  GtkContainerClass parent_class;
+  CtkContainerClass parent_class;
 
   /*< private >*/
 
@@ -76,12 +76,12 @@ GDK_AVAILABLE_IN_ALL
 GType      ctk_bin_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_bin_get_child (GtkBin *bin);
+CtkWidget *ctk_bin_get_child (CtkBin *bin);
 
-void       _ctk_bin_set_child (GtkBin    *bin,
-                               GtkWidget *widget);
+void       _ctk_bin_set_child (CtkBin    *bin,
+                               CtkWidget *widget);
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkBin, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkBin, g_object_unref)
 
 G_END_DECLS
 

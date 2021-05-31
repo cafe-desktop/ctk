@@ -23,7 +23,7 @@
 int
 main (int argc, char **argv)
 {
-  GtkSettings  *settings;
+  CtkSettings  *settings;
   GParamSpec  **props;
   guint         n_properties;
   guint         i;

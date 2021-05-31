@@ -30,23 +30,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_GESTURE_SWIPE         (ctk_gesture_swipe_get_type ())
-#define CTK_GESTURE_SWIPE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_SWIPE, GtkGestureSwipe))
-#define CTK_GESTURE_SWIPE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_SWIPE, GtkGestureSwipeClass))
+#define CTK_GESTURE_SWIPE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_SWIPE, CtkGestureSwipe))
+#define CTK_GESTURE_SWIPE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_SWIPE, CtkGestureSwipeClass))
 #define CTK_IS_GESTURE_SWIPE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_SWIPE))
 #define CTK_IS_GESTURE_SWIPE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_SWIPE))
-#define CTK_GESTURE_SWIPE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_SWIPE, GtkGestureSwipeClass))
+#define CTK_GESTURE_SWIPE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_SWIPE, CtkGestureSwipeClass))
 
-typedef struct _GtkGestureSwipe GtkGestureSwipe;
-typedef struct _GtkGestureSwipeClass GtkGestureSwipeClass;
+typedef struct _CtkGestureSwipe CtkGestureSwipe;
+typedef struct _CtkGestureSwipeClass CtkGestureSwipeClass;
 
 GDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_swipe_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * ctk_gesture_swipe_new       (GtkWidget *widget);
+CtkGesture * ctk_gesture_swipe_new       (CtkWidget *widget);
 
 GDK_AVAILABLE_IN_3_14
-gboolean     ctk_gesture_swipe_get_velocity (GtkGestureSwipe *gesture,
+gboolean     ctk_gesture_swipe_get_velocity (CtkGestureSwipe *gesture,
                                              gdouble         *velocity_x,
                                              gdouble         *velocity_y);
 

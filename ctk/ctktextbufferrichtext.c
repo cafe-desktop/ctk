@@ -34,7 +34,7 @@ typedef struct
   gpointer        function;
   gpointer        user_data;
   GDestroyNotify  user_data_destroy;
-} GtkRichTextFormat;
+} CtkRichTextFormat;
 
 
 static GList   * register_format   (GList             *formats,
@@ -47,7 +47,7 @@ static GList   * unregister_format (GList             *formats,
                                     GdkAtom            atom);
 static GdkAtom * get_formats       (GList             *formats,
                                     gint              *n_formats);
-static void      free_format       (GtkRichTextFormat *format);
+static void      free_format       (CtkRichTextFormat *format);
 static void      free_format_list  (GList             *formats);
 static GQuark    serialize_quark   (void);
 static GQuark    deserialize_quark (void);
@@ -55,7 +55,7 @@ static GQuark    deserialize_quark (void);
 
 /**
  * ctk_text_buffer_register_serialize_format:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @mime_type: the format’s mime-type
  * @function: the serialize function to register
  * @user_data: @function’s user_data
@@ -70,9 +70,9 @@ static GQuark    deserialize_quark (void);
  * Since: 2.10
  **/
 GdkAtom
-ctk_text_buffer_register_serialize_format (GtkTextBuffer              *buffer,
+ctk_text_buffer_register_serialize_format (CtkTextBuffer              *buffer,
                                            const gchar                *mime_type,
-                                           GtkTextBufferSerializeFunc  function,
+                                           CtkTextBufferSerializeFunc  function,
                                            gpointer                    user_data,
                                            GDestroyNotify              user_data_destroy)
 {
@@ -100,12 +100,12 @@ ctk_text_buffer_register_serialize_format (GtkTextBuffer              *buffer,
 
 /**
  * ctk_text_buffer_register_serialize_tagset:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @tagset_name: (allow-none): an optional tagset name, on %NULL
  *
  * This function registers GTK+’s internal rich text serialization
  * format with the passed @buffer. The internal format does not comply
- * to any standard rich text format and only works between #GtkTextBuffer
+ * to any standard rich text format and only works between #CtkTextBuffer
  * instances. It is capable of serializing all of a text buffer’s tags
  * and embedded pixbufs.
  *
@@ -127,7 +127,7 @@ ctk_text_buffer_register_serialize_format (GtkTextBuffer              *buffer,
  * Since: 2.10
  **/
 GdkAtom
-ctk_text_buffer_register_serialize_tagset (GtkTextBuffer *buffer,
+ctk_text_buffer_register_serialize_tagset (CtkTextBuffer *buffer,
                                            const gchar   *tagset_name)
 {
   gchar   *mime_type = "application/x-ctk-text-buffer-rich-text";
@@ -153,7 +153,7 @@ ctk_text_buffer_register_serialize_tagset (GtkTextBuffer *buffer,
 
 /**
  * ctk_text_buffer_register_deserialize_format:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @mime_type: the format’s mime-type
  * @function: the deserialize function to register
  * @user_data: @function’s user_data
@@ -168,9 +168,9 @@ ctk_text_buffer_register_serialize_tagset (GtkTextBuffer *buffer,
  * Since: 2.10
  **/
 GdkAtom
-ctk_text_buffer_register_deserialize_format (GtkTextBuffer                *buffer,
+ctk_text_buffer_register_deserialize_format (CtkTextBuffer                *buffer,
                                              const gchar                  *mime_type,
-                                             GtkTextBufferDeserializeFunc  function,
+                                             CtkTextBufferDeserializeFunc  function,
                                              gpointer                      user_data,
                                              GDestroyNotify                user_data_destroy)
 {
@@ -198,7 +198,7 @@ ctk_text_buffer_register_deserialize_format (GtkTextBuffer                *buffe
 
 /**
  * ctk_text_buffer_register_deserialize_tagset:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @tagset_name: (allow-none): an optional tagset name, on %NULL
  *
  * This function registers GTK+’s internal rich text serialization
@@ -211,7 +211,7 @@ ctk_text_buffer_register_deserialize_format (GtkTextBuffer                *buffe
  * Since: 2.10
  **/
 GdkAtom
-ctk_text_buffer_register_deserialize_tagset (GtkTextBuffer *buffer,
+ctk_text_buffer_register_deserialize_tagset (CtkTextBuffer *buffer,
                                              const gchar   *tagset_name)
 {
   gchar   *mime_type = "application/x-ctk-text-buffer-rich-text";
@@ -237,7 +237,7 @@ ctk_text_buffer_register_deserialize_tagset (GtkTextBuffer *buffer,
 
 /**
  * ctk_text_buffer_unregister_serialize_format:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @format: a #GdkAtom representing a registered rich text format.
  *
  * This function unregisters a rich text format that was previously
@@ -247,7 +247,7 @@ ctk_text_buffer_register_deserialize_tagset (GtkTextBuffer *buffer,
  * Since: 2.10
  **/
 void
-ctk_text_buffer_unregister_serialize_format (GtkTextBuffer *buffer,
+ctk_text_buffer_unregister_serialize_format (CtkTextBuffer *buffer,
                                              GdkAtom        format)
 {
   GList *formats;
@@ -267,7 +267,7 @@ ctk_text_buffer_unregister_serialize_format (GtkTextBuffer *buffer,
 
 /**
  * ctk_text_buffer_unregister_deserialize_format:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @format: a #GdkAtom representing a registered rich text format.
  *
  * This function unregisters a rich text format that was previously
@@ -277,7 +277,7 @@ ctk_text_buffer_unregister_serialize_format (GtkTextBuffer *buffer,
  * Since: 2.10
  **/
 void
-ctk_text_buffer_unregister_deserialize_format (GtkTextBuffer *buffer,
+ctk_text_buffer_unregister_deserialize_format (CtkTextBuffer *buffer,
                                                GdkAtom        format)
 {
   GList *formats;
@@ -297,7 +297,7 @@ ctk_text_buffer_unregister_deserialize_format (GtkTextBuffer *buffer,
 
 /**
  * ctk_text_buffer_deserialize_set_can_create_tags:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @format: a #GdkAtom representing a registered rich text format
  * @can_create_tags: whether deserializing this format may create tags
  *
@@ -322,7 +322,7 @@ ctk_text_buffer_unregister_deserialize_format (GtkTextBuffer *buffer,
  * Since: 2.10
  **/
 void
-ctk_text_buffer_deserialize_set_can_create_tags (GtkTextBuffer *buffer,
+ctk_text_buffer_deserialize_set_can_create_tags (CtkTextBuffer *buffer,
                                                  GdkAtom        format,
                                                  gboolean       can_create_tags)
 {
@@ -337,7 +337,7 @@ ctk_text_buffer_deserialize_set_can_create_tags (GtkTextBuffer *buffer,
 
   for (list = formats; list; list = list->next)
     {
-      GtkRichTextFormat *fmt = list->data;
+      CtkRichTextFormat *fmt = list->data;
 
       if (fmt->atom == format)
         {
@@ -355,7 +355,7 @@ ctk_text_buffer_deserialize_set_can_create_tags (GtkTextBuffer *buffer,
 
 /**
  * ctk_text_buffer_deserialize_get_can_create_tags:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @format: a #GdkAtom representing a registered rich text format
  *
  * This functions returns the value set with
@@ -366,7 +366,7 @@ ctk_text_buffer_deserialize_set_can_create_tags (GtkTextBuffer *buffer,
  * Since: 2.10
  **/
 gboolean
-ctk_text_buffer_deserialize_get_can_create_tags (GtkTextBuffer *buffer,
+ctk_text_buffer_deserialize_get_can_create_tags (CtkTextBuffer *buffer,
                                                  GdkAtom        format)
 {
   GList *formats;
@@ -380,7 +380,7 @@ ctk_text_buffer_deserialize_get_can_create_tags (GtkTextBuffer *buffer,
 
   for (list = formats; list; list = list->next)
     {
-      GtkRichTextFormat *fmt = list->data;
+      CtkRichTextFormat *fmt = list->data;
 
       if (fmt->atom == format)
         {
@@ -399,7 +399,7 @@ ctk_text_buffer_deserialize_get_can_create_tags (GtkTextBuffer *buffer,
 
 /**
  * ctk_text_buffer_get_serialize_formats:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @n_formats: (out): return location for the number of formats
  *
  * This function returns the rich text serialize formats registered
@@ -412,7 +412,7 @@ ctk_text_buffer_deserialize_get_can_create_tags (GtkTextBuffer *buffer,
  * Since: 2.10
  **/
 GdkAtom *
-ctk_text_buffer_get_serialize_formats (GtkTextBuffer *buffer,
+ctk_text_buffer_get_serialize_formats (CtkTextBuffer *buffer,
                                        gint          *n_formats)
 {
   GList *formats;
@@ -427,7 +427,7 @@ ctk_text_buffer_get_serialize_formats (GtkTextBuffer *buffer,
 
 /**
  * ctk_text_buffer_get_deserialize_formats:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  * @n_formats: (out): return location for the number of formats
  *
  * This function returns the rich text deserialize formats registered
@@ -440,7 +440,7 @@ ctk_text_buffer_get_serialize_formats (GtkTextBuffer *buffer,
  * Since: 2.10
  **/
 GdkAtom *
-ctk_text_buffer_get_deserialize_formats (GtkTextBuffer *buffer,
+ctk_text_buffer_get_deserialize_formats (CtkTextBuffer *buffer,
                                          gint          *n_formats)
 {
   GList *formats;
@@ -455,8 +455,8 @@ ctk_text_buffer_get_deserialize_formats (GtkTextBuffer *buffer,
 
 /**
  * ctk_text_buffer_serialize:
- * @register_buffer: the #GtkTextBuffer @format is registered with
- * @content_buffer: the #GtkTextBuffer to serialize
+ * @register_buffer: the #CtkTextBuffer @format is registered with
+ * @content_buffer: the #CtkTextBuffer to serialize
  * @format: the rich text format to use for serializing
  * @start: start of block of text to serialize
  * @end: end of block of test to serialize
@@ -475,11 +475,11 @@ ctk_text_buffer_get_deserialize_formats (GtkTextBuffer *buffer,
  * Since: 2.10
  **/
 guint8 *
-ctk_text_buffer_serialize (GtkTextBuffer     *register_buffer,
-                           GtkTextBuffer     *content_buffer,
+ctk_text_buffer_serialize (CtkTextBuffer     *register_buffer,
+                           CtkTextBuffer     *content_buffer,
                            GdkAtom            format,
-                           const GtkTextIter *start,
-                           const GtkTextIter *end,
+                           const CtkTextIter *start,
+                           const CtkTextIter *end,
                            gsize             *length)
 {
   GList *formats;
@@ -499,11 +499,11 @@ ctk_text_buffer_serialize (GtkTextBuffer     *register_buffer,
 
   for (list = formats; list; list = list->next)
     {
-      GtkRichTextFormat *fmt = list->data;
+      CtkRichTextFormat *fmt = list->data;
 
       if (fmt->atom == format)
         {
-          GtkTextBufferSerializeFunc function = fmt->function;
+          CtkTextBufferSerializeFunc function = fmt->function;
 
           return function (register_buffer, content_buffer,
                            start, end, length, fmt->user_data);
@@ -515,8 +515,8 @@ ctk_text_buffer_serialize (GtkTextBuffer     *register_buffer,
 
 /**
  * ctk_text_buffer_deserialize:
- * @register_buffer: the #GtkTextBuffer @format is registered with
- * @content_buffer: the #GtkTextBuffer to deserialize into
+ * @register_buffer: the #CtkTextBuffer @format is registered with
+ * @content_buffer: the #CtkTextBuffer to deserialize into
  * @format: the rich text format to use for deserializing
  * @iter: insertion point for the deserialized text
  * @data: (array length=length): data to deserialize
@@ -535,10 +535,10 @@ ctk_text_buffer_serialize (GtkTextBuffer     *register_buffer,
  * Since: 2.10
  **/
 gboolean
-ctk_text_buffer_deserialize (GtkTextBuffer  *register_buffer,
-                             GtkTextBuffer  *content_buffer,
+ctk_text_buffer_deserialize (CtkTextBuffer  *register_buffer,
+                             CtkTextBuffer  *content_buffer,
                              GdkAtom         format,
-                             GtkTextIter    *iter,
+                             CtkTextIter    *iter,
                              const guint8   *data,
                              gsize           length,
                              GError        **error)
@@ -558,16 +558,16 @@ ctk_text_buffer_deserialize (GtkTextBuffer  *register_buffer,
 
   for (l = formats; l; l = l->next)
     {
-      GtkRichTextFormat *fmt = l->data;
+      CtkRichTextFormat *fmt = l->data;
 
       if (fmt->atom == format)
         {
-          GtkTextBufferDeserializeFunc function = fmt->function;
+          CtkTextBufferDeserializeFunc function = fmt->function;
           gboolean                     success;
           GSList                      *split_tags;
           GSList                      *list;
-          GtkTextMark                 *left_end        = NULL;
-          GtkTextMark                 *right_start     = NULL;
+          CtkTextMark                 *left_end        = NULL;
+          CtkTextMark                 *right_start     = NULL;
           GSList                      *left_start_list = NULL;
           GSList                      *right_end_list  = NULL;
 
@@ -581,7 +581,7 @@ ctk_text_buffer_deserialize (GtkTextBuffer  *register_buffer,
           list = split_tags;
           while (list)
             {
-              GtkTextTag *tag = list->data;
+              CtkTextTag *tag = list->data;
 
               list = list->next;
 
@@ -604,11 +604,11 @@ ctk_text_buffer_deserialize (GtkTextBuffer  *register_buffer,
 
               for (list = split_tags; list; list = list->next)
                 {
-                  GtkTextTag  *tag             = list->data;
-                  GtkTextIter *backward_toggle = ctk_text_iter_copy (iter);
-                  GtkTextIter *forward_toggle  = ctk_text_iter_copy (iter);
-                  GtkTextMark *left_start      = NULL;
-                  GtkTextMark *right_end       = NULL;
+                  CtkTextTag  *tag             = list->data;
+                  CtkTextIter *backward_toggle = ctk_text_iter_copy (iter);
+                  CtkTextIter *forward_toggle  = ctk_text_iter_copy (iter);
+                  CtkTextMark *left_start      = NULL;
+                  CtkTextMark *right_end       = NULL;
 
                   ctk_text_iter_backward_to_tag_toggle (backward_toggle, tag);
                   left_start = ctk_text_buffer_create_mark (content_buffer,
@@ -652,8 +652,8 @@ ctk_text_buffer_deserialize (GtkTextBuffer  *register_buffer,
             {
               GSList      *left_list;
               GSList      *right_list;
-              GtkTextIter  left_e;
-              GtkTextIter  right_s;
+              CtkTextIter  left_e;
+              CtkTextIter  right_s;
 
               /*  Turn the remembered marks back into iters so they
                *  can by used to re-apply the remembered tags
@@ -671,11 +671,11 @@ ctk_text_buffer_deserialize (GtkTextBuffer  *register_buffer,
                    left_list = left_list->next,
                    right_list = right_list->next)
                 {
-                  GtkTextTag  *tag        = list->data;
-                  GtkTextMark *left_start = left_list->data;
-                  GtkTextMark *right_end  = right_list->data;
-                  GtkTextIter  left_s;
-                  GtkTextIter  right_e;
+                  CtkTextTag  *tag        = list->data;
+                  CtkTextMark *left_start = left_list->data;
+                  CtkTextMark *right_end  = right_list->data;
+                  CtkTextIter  left_s;
+                  CtkTextIter  right_e;
 
                   ctk_text_buffer_get_iter_at_mark (content_buffer,
                                                     &left_s, left_start);
@@ -721,13 +721,13 @@ register_format (GList          *formats,
                  GDestroyNotify  user_data_destroy,
                  GdkAtom        *atom)
 {
-  GtkRichTextFormat *format;
+  CtkRichTextFormat *format;
 
   *atom = gdk_atom_intern (mime_type, FALSE);
 
   formats = unregister_format (formats, *atom);
 
-  format = g_slice_new0 (GtkRichTextFormat);
+  format = g_slice_new0 (CtkRichTextFormat);
 
   format->mime_type         = g_strdup (mime_type);
   format->can_create_tags   = FALSE;
@@ -747,7 +747,7 @@ unregister_format (GList   *formats,
 
   for (list = formats; list; list = list->next)
     {
-      GtkRichTextFormat *format = list->data;
+      CtkRichTextFormat *format = list->data;
 
       if (format->atom == atom)
         {
@@ -773,7 +773,7 @@ get_formats (GList *formats,
 
   for (list = formats, i = 0; list; list = list->next, i++)
     {
-      GtkRichTextFormat *format = list->data;
+      CtkRichTextFormat *format = list->data;
 
       array[i] = format->atom;
     }
@@ -782,13 +782,13 @@ get_formats (GList *formats,
 }
 
 static void
-free_format (GtkRichTextFormat *format)
+free_format (CtkRichTextFormat *format)
 {
   if (format->user_data_destroy)
     format->user_data_destroy (format->user_data);
 
   g_free (format->mime_type);
-  g_slice_free (GtkRichTextFormat, format);
+  g_slice_free (CtkRichTextFormat, format);
 }
 
 static void

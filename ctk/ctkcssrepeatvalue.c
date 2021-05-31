@@ -21,39 +21,39 @@
 
 #include "ctkcssnumbervalueprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
-  GtkCssRepeatStyle x;
-  GtkCssRepeatStyle y;
+  CtkCssRepeatStyle x;
+  CtkCssRepeatStyle y;
 };
 
 static void
-ctk_css_value_repeat_free (GtkCssValue *value)
+ctk_css_value_repeat_free (CtkCssValue *value)
 {
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_repeat_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_repeat_compute (CtkCssValue             *value,
                               guint                    property_id,
-                              GtkStyleProviderPrivate *provider,
-                              GtkCssStyle             *style,
-                              GtkCssStyle             *parent_style)
+                              CtkStyleProviderPrivate *provider,
+                              CtkCssStyle             *style,
+                              CtkCssStyle             *parent_style)
 {
   return _ctk_css_value_ref (value);
 }
 
 static gboolean
-ctk_css_value_repeat_equal (const GtkCssValue *repeat1,
-                            const GtkCssValue *repeat2)
+ctk_css_value_repeat_equal (const CtkCssValue *repeat1,
+                            const CtkCssValue *repeat2)
 {
   return repeat1->x == repeat2->x
       && repeat1->y == repeat2->y;
 }
 
-static GtkCssValue *
-ctk_css_value_repeat_transition (GtkCssValue *start,
-                                 GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_repeat_transition (CtkCssValue *start,
+                                 CtkCssValue *end,
                                  guint        property_id,
                                  double       progress)
 {
@@ -61,7 +61,7 @@ ctk_css_value_repeat_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_background_repeat_print (const GtkCssValue *repeat,
+ctk_css_value_background_repeat_print (const CtkCssValue *repeat,
                                        GString           *string)
 {
   static const char *names[] = {
@@ -94,7 +94,7 @@ ctk_css_value_background_repeat_print (const GtkCssValue *repeat,
 }
 
 static void
-ctk_css_value_border_repeat_print (const GtkCssValue *repeat,
+ctk_css_value_border_repeat_print (const CtkCssValue *repeat,
                                    GString           *string)
 {
   static const char *names[] = {
@@ -112,7 +112,7 @@ ctk_css_value_border_repeat_print (const GtkCssValue *repeat,
     }
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_BACKGROUND_REPEAT = {
+static const CtkCssValueClass CTK_CSS_VALUE_BACKGROUND_REPEAT = {
   ctk_css_value_repeat_free,
   ctk_css_value_repeat_compute,
   ctk_css_value_repeat_equal,
@@ -120,7 +120,7 @@ static const GtkCssValueClass CTK_CSS_VALUE_BACKGROUND_REPEAT = {
   ctk_css_value_background_repeat_print
 };
 
-static const GtkCssValueClass CTK_CSS_VALUE_BORDER_REPEAT = {
+static const CtkCssValueClass CTK_CSS_VALUE_BORDER_REPEAT = {
   ctk_css_value_repeat_free,
   ctk_css_value_repeat_compute,
   ctk_css_value_repeat_equal,
@@ -131,7 +131,7 @@ static const GtkCssValueClass CTK_CSS_VALUE_BORDER_REPEAT = {
 
 static struct {
   const char *name;
-  GtkCssValue values[4];
+  CtkCssValue values[4];
 } background_repeat_values[4] = {
   { "no-repeat",
   { { &CTK_CSS_VALUE_BACKGROUND_REPEAT, 1, CTK_CSS_REPEAT_STYLE_NO_REPEAT, CTK_CSS_REPEAT_STYLE_NO_REPEAT },
@@ -159,16 +159,16 @@ static struct {
   } }
 };
 
-GtkCssValue *
-_ctk_css_background_repeat_value_new (GtkCssRepeatStyle x,
-                                      GtkCssRepeatStyle y)
+CtkCssValue *
+_ctk_css_background_repeat_value_new (CtkCssRepeatStyle x,
+                                      CtkCssRepeatStyle y)
 {
   return _ctk_css_value_ref (&background_repeat_values[x].values[y]);
 }
 
 static gboolean
-_ctk_css_background_repeat_style_try (GtkCssParser      *parser,
-                                      GtkCssRepeatStyle *result)
+_ctk_css_background_repeat_style_try (CtkCssParser      *parser,
+                                      CtkCssRepeatStyle *result)
 {
   guint i;
 
@@ -184,10 +184,10 @@ _ctk_css_background_repeat_style_try (GtkCssParser      *parser,
   return FALSE;
 }
 
-GtkCssValue *
-_ctk_css_background_repeat_value_try_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_background_repeat_value_try_parse (CtkCssParser *parser)
 {
-  GtkCssRepeatStyle x, y;
+  CtkCssRepeatStyle x, y;
 
   g_return_val_if_fail (parser != NULL, NULL);
 
@@ -205,16 +205,16 @@ _ctk_css_background_repeat_value_try_parse (GtkCssParser *parser)
   return _ctk_css_background_repeat_value_new (x, y);
 }
 
-GtkCssRepeatStyle
-_ctk_css_background_repeat_value_get_x (const GtkCssValue *repeat)
+CtkCssRepeatStyle
+_ctk_css_background_repeat_value_get_x (const CtkCssValue *repeat)
 {
   g_return_val_if_fail (repeat->class == &CTK_CSS_VALUE_BACKGROUND_REPEAT, CTK_CSS_REPEAT_STYLE_NO_REPEAT);
 
   return repeat->x;
 }
 
-GtkCssRepeatStyle
-_ctk_css_background_repeat_value_get_y (const GtkCssValue *repeat)
+CtkCssRepeatStyle
+_ctk_css_background_repeat_value_get_y (const CtkCssValue *repeat)
 {
   g_return_val_if_fail (repeat->class == &CTK_CSS_VALUE_BACKGROUND_REPEAT, CTK_CSS_REPEAT_STYLE_NO_REPEAT);
 
@@ -225,7 +225,7 @@ _ctk_css_background_repeat_value_get_y (const GtkCssValue *repeat)
 
 static struct {
   const char *name;
-  GtkCssValue values[4];
+  CtkCssValue values[4];
 } border_repeat_values[4] = {
   { "stretch",
   { { &CTK_CSS_VALUE_BORDER_REPEAT, 1, CTK_CSS_REPEAT_STYLE_STRETCH, CTK_CSS_REPEAT_STYLE_STRETCH },
@@ -253,16 +253,16 @@ static struct {
   } }
 };
 
-GtkCssValue *
-_ctk_css_border_repeat_value_new (GtkCssRepeatStyle x,
-                                  GtkCssRepeatStyle y)
+CtkCssValue *
+_ctk_css_border_repeat_value_new (CtkCssRepeatStyle x,
+                                  CtkCssRepeatStyle y)
 {
   return _ctk_css_value_ref (&border_repeat_values[x].values[y]);
 }
 
 static gboolean
-_ctk_css_border_repeat_style_try (GtkCssParser      *parser,
-                                  GtkCssRepeatStyle *result)
+_ctk_css_border_repeat_style_try (CtkCssParser      *parser,
+                                  CtkCssRepeatStyle *result)
 {
   guint i;
 
@@ -278,10 +278,10 @@ _ctk_css_border_repeat_style_try (GtkCssParser      *parser,
   return FALSE;
 }
 
-GtkCssValue *
-_ctk_css_border_repeat_value_try_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_border_repeat_value_try_parse (CtkCssParser *parser)
 {
-  GtkCssRepeatStyle x, y;
+  CtkCssRepeatStyle x, y;
 
   g_return_val_if_fail (parser != NULL, NULL);
 
@@ -294,16 +294,16 @@ _ctk_css_border_repeat_value_try_parse (GtkCssParser *parser)
   return _ctk_css_border_repeat_value_new (x, y);
 }
 
-GtkCssRepeatStyle
-_ctk_css_border_repeat_value_get_x (const GtkCssValue *repeat)
+CtkCssRepeatStyle
+_ctk_css_border_repeat_value_get_x (const CtkCssValue *repeat)
 {
   g_return_val_if_fail (repeat->class == &CTK_CSS_VALUE_BORDER_REPEAT, CTK_CSS_REPEAT_STYLE_STRETCH);
 
   return repeat->x;
 }
 
-GtkCssRepeatStyle
-_ctk_css_border_repeat_value_get_y (const GtkCssValue *repeat)
+CtkCssRepeatStyle
+_ctk_css_border_repeat_value_get_y (const CtkCssValue *repeat)
 {
   g_return_val_if_fail (repeat->class == &CTK_CSS_VALUE_BORDER_REPEAT, CTK_CSS_REPEAT_STYLE_STRETCH);
 

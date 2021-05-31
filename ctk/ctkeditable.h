@@ -36,91 +36,91 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EDITABLE             (ctk_editable_get_type ())
-#define CTK_EDITABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EDITABLE, GtkEditable))
+#define CTK_EDITABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EDITABLE, CtkEditable))
 #define CTK_IS_EDITABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_EDITABLE))
-#define CTK_EDITABLE_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_EDITABLE, GtkEditableInterface))
+#define CTK_EDITABLE_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_EDITABLE, CtkEditableInterface))
 
-typedef struct _GtkEditable          GtkEditable;         /* Dummy typedef */
-typedef struct _GtkEditableInterface GtkEditableInterface;
+typedef struct _CtkEditable          CtkEditable;         /* Dummy typedef */
+typedef struct _CtkEditableInterface CtkEditableInterface;
 
-struct _GtkEditableInterface
+struct _CtkEditableInterface
 {
   GTypeInterface		   base_iface;
 
   /* signals */
-  void (* insert_text)              (GtkEditable    *editable,
+  void (* insert_text)              (CtkEditable    *editable,
 				     const gchar    *new_text,
 				     gint            new_text_length,
 				     gint           *position);
-  void (* delete_text)              (GtkEditable    *editable,
+  void (* delete_text)              (CtkEditable    *editable,
 				     gint            start_pos,
 				     gint            end_pos);
-  void (* changed)                  (GtkEditable    *editable);
+  void (* changed)                  (CtkEditable    *editable);
 
   /* vtable */
-  void (* do_insert_text)           (GtkEditable    *editable,
+  void (* do_insert_text)           (CtkEditable    *editable,
 				     const gchar    *new_text,
 				     gint            new_text_length,
 				     gint           *position);
-  void (* do_delete_text)           (GtkEditable    *editable,
+  void (* do_delete_text)           (CtkEditable    *editable,
 				     gint            start_pos,
 				     gint            end_pos);
 
-  gchar* (* get_chars)              (GtkEditable    *editable,
+  gchar* (* get_chars)              (CtkEditable    *editable,
 				     gint            start_pos,
 				     gint            end_pos);
-  void (* set_selection_bounds)     (GtkEditable    *editable,
+  void (* set_selection_bounds)     (CtkEditable    *editable,
 				     gint            start_pos,
 				     gint            end_pos);
-  gboolean (* get_selection_bounds) (GtkEditable    *editable,
+  gboolean (* get_selection_bounds) (CtkEditable    *editable,
 				     gint           *start_pos,
 				     gint           *end_pos);
-  void (* set_position)             (GtkEditable    *editable,
+  void (* set_position)             (CtkEditable    *editable,
 				     gint            position);
-  gint (* get_position)             (GtkEditable    *editable);
+  gint (* get_position)             (CtkEditable    *editable);
 };
 
 GDK_AVAILABLE_IN_ALL
 GType    ctk_editable_get_type             (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_select_region        (GtkEditable *editable,
+void     ctk_editable_select_region        (CtkEditable *editable,
 					    gint         start_pos,
 					    gint         end_pos);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_editable_get_selection_bounds (GtkEditable *editable,
+gboolean ctk_editable_get_selection_bounds (CtkEditable *editable,
 					    gint        *start_pos,
 					    gint        *end_pos);
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_insert_text          (GtkEditable *editable,
+void     ctk_editable_insert_text          (CtkEditable *editable,
 					    const gchar *new_text,
 					    gint         new_text_length,
 					    gint        *position);
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_delete_text          (GtkEditable *editable,
+void     ctk_editable_delete_text          (CtkEditable *editable,
 					    gint         start_pos,
 					    gint         end_pos);
 GDK_AVAILABLE_IN_ALL
-gchar*   ctk_editable_get_chars            (GtkEditable *editable,
+gchar*   ctk_editable_get_chars            (CtkEditable *editable,
 					    gint         start_pos,
 					    gint         end_pos);
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_cut_clipboard        (GtkEditable *editable);
+void     ctk_editable_cut_clipboard        (CtkEditable *editable);
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_copy_clipboard       (GtkEditable *editable);
+void     ctk_editable_copy_clipboard       (CtkEditable *editable);
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_paste_clipboard      (GtkEditable *editable);
+void     ctk_editable_paste_clipboard      (CtkEditable *editable);
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_delete_selection     (GtkEditable *editable);
+void     ctk_editable_delete_selection     (CtkEditable *editable);
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_set_position         (GtkEditable *editable,
+void     ctk_editable_set_position         (CtkEditable *editable,
 					    gint         position);
 GDK_AVAILABLE_IN_ALL
-gint     ctk_editable_get_position         (GtkEditable *editable);
+gint     ctk_editable_get_position         (CtkEditable *editable);
 GDK_AVAILABLE_IN_ALL
-void     ctk_editable_set_editable         (GtkEditable *editable,
+void     ctk_editable_set_editable         (CtkEditable *editable,
 					    gboolean     is_editable);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_editable_get_editable         (GtkEditable *editable);
+gboolean ctk_editable_get_editable         (CtkEditable *editable);
 
 G_END_DECLS
 

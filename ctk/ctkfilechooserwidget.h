@@ -29,30 +29,30 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FILE_CHOOSER_WIDGET             (ctk_file_chooser_widget_get_type ())
-#define CTK_FILE_CHOOSER_WIDGET(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER_WIDGET, GtkFileChooserWidget))
-#define CTK_FILE_CHOOSER_WIDGET_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_CHOOSER_WIDGET, GtkFileChooserWidgetClass))
+#define CTK_FILE_CHOOSER_WIDGET(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER_WIDGET, CtkFileChooserWidget))
+#define CTK_FILE_CHOOSER_WIDGET_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_CHOOSER_WIDGET, CtkFileChooserWidgetClass))
 #define CTK_IS_FILE_CHOOSER_WIDGET(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_CHOOSER_WIDGET))
 #define CTK_IS_FILE_CHOOSER_WIDGET_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FILE_CHOOSER_WIDGET))
-#define CTK_FILE_CHOOSER_WIDGET_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_CHOOSER_WIDGET, GtkFileChooserWidgetClass))
+#define CTK_FILE_CHOOSER_WIDGET_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_CHOOSER_WIDGET, CtkFileChooserWidgetClass))
 
-typedef struct _GtkFileChooserWidget        GtkFileChooserWidget;
-typedef struct _GtkFileChooserWidgetPrivate GtkFileChooserWidgetPrivate;
-typedef struct _GtkFileChooserWidgetClass   GtkFileChooserWidgetClass;
+typedef struct _CtkFileChooserWidget        CtkFileChooserWidget;
+typedef struct _CtkFileChooserWidgetPrivate CtkFileChooserWidgetPrivate;
+typedef struct _CtkFileChooserWidgetClass   CtkFileChooserWidgetClass;
 
-struct _GtkFileChooserWidget
+struct _CtkFileChooserWidget
 {
-  GtkBox parent_instance;
+  CtkBox parent_instance;
 
-  GtkFileChooserWidgetPrivate *priv;
+  CtkFileChooserWidgetPrivate *priv;
 };
 
 /**
- * GtkFileChooserWidgetClass:
+ * CtkFileChooserWidgetClass:
  * @parent_class: The parent class.
  */
-struct _GtkFileChooserWidgetClass
+struct _CtkFileChooserWidgetClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
   /*< private >*/
 
@@ -66,7 +66,7 @@ struct _GtkFileChooserWidgetClass
 GDK_AVAILABLE_IN_ALL
 GType      ctk_file_chooser_widget_get_type         (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_file_chooser_widget_new              (GtkFileChooserAction  action);
+CtkWidget *ctk_file_chooser_widget_new              (CtkFileChooserAction  action);
 
 G_END_DECLS
 

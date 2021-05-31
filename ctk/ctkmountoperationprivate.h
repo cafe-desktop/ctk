@@ -30,19 +30,19 @@
 #include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-struct _GtkMountOperationLookupContext;
-typedef struct _GtkMountOperationLookupContext GtkMountOperationLookupContext;
+struct _CtkMountOperationLookupContext;
+typedef struct _CtkMountOperationLookupContext CtkMountOperationLookupContext;
 
-GtkMountOperationLookupContext *_ctk_mount_operation_lookup_context_get  (GdkDisplay *display);
+CtkMountOperationLookupContext *_ctk_mount_operation_lookup_context_get  (GdkDisplay *display);
 
-gboolean _ctk_mount_operation_lookup_info         (GtkMountOperationLookupContext *context,
+gboolean _ctk_mount_operation_lookup_info         (CtkMountOperationLookupContext *context,
                                                    GPid                            pid,
                                                    gint                            size_pixels,
                                                    gchar                         **out_name,
                                                    gchar                         **out_command_line,
                                                    GdkPixbuf                     **out_pixbuf);
 
-void     _ctk_mount_operation_lookup_context_free (GtkMountOperationLookupContext *context);
+void     _ctk_mount_operation_lookup_context_free (CtkMountOperationLookupContext *context);
 
 /* throw G_IO_ERROR_FAILED_HANDLED if a helper already reported the error to the user */
 gboolean _ctk_mount_operation_kill_process (GPid      pid,

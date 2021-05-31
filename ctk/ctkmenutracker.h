@@ -22,34 +22,34 @@
 
 #include "ctkmenutrackeritem.h"
 
-typedef struct _GtkMenuTracker GtkMenuTracker;
+typedef struct _CtkMenuTracker CtkMenuTracker;
 
-typedef void         (* GtkMenuTrackerInsertFunc)                       (GtkMenuTrackerItem       *item,
+typedef void         (* CtkMenuTrackerInsertFunc)                       (CtkMenuTrackerItem       *item,
                                                                          gint                      position,
                                                                          gpointer                  user_data);
 
-typedef void         (* GtkMenuTrackerRemoveFunc)                       (gint                      position,
+typedef void         (* CtkMenuTrackerRemoveFunc)                       (gint                      position,
                                                                          gpointer                  user_data);
 
 
-GtkMenuTracker *        ctk_menu_tracker_new                            (GtkActionObservable      *observer,
+CtkMenuTracker *        ctk_menu_tracker_new                            (CtkActionObservable      *observer,
                                                                          GMenuModel               *model,
                                                                          gboolean                  with_separators,
                                                                          gboolean                  merge_sections,
                                                                          gboolean                  mac_os_mode,
                                                                          const gchar              *action_namespace,
-                                                                         GtkMenuTrackerInsertFunc  insert_func,
-                                                                         GtkMenuTrackerRemoveFunc  remove_func,
+                                                                         CtkMenuTrackerInsertFunc  insert_func,
+                                                                         CtkMenuTrackerRemoveFunc  remove_func,
                                                                          gpointer                  user_data);
 
-GtkMenuTracker *        ctk_menu_tracker_new_for_item_link              (GtkMenuTrackerItem       *item,
+CtkMenuTracker *        ctk_menu_tracker_new_for_item_link              (CtkMenuTrackerItem       *item,
                                                                          const gchar              *link_name,
                                                                          gboolean                  merge_sections,
                                                                          gboolean                  mac_os_mode,
-                                                                         GtkMenuTrackerInsertFunc  insert_func,
-                                                                         GtkMenuTrackerRemoveFunc  remove_func,
+                                                                         CtkMenuTrackerInsertFunc  insert_func,
+                                                                         CtkMenuTrackerRemoveFunc  remove_func,
                                                                          gpointer                  user_data);
 
-void                    ctk_menu_tracker_free                           (GtkMenuTracker           *tracker);
+void                    ctk_menu_tracker_free                           (CtkMenuTracker           *tracker);
 
 #endif /* __CTK_MENU_TRACKER_H__ */

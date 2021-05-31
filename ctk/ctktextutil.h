@@ -28,23 +28,23 @@
 G_BEGIN_DECLS
 
 /* This is a private uninstalled header shared between
- * GtkTextView and GtkEntry
+ * CtkTextView and CtkEntry
  */
 
-typedef void (* GtkTextUtilCharChosenFunc) (const char *text,
+typedef void (* CtkTextUtilCharChosenFunc) (const char *text,
                                             gpointer    data);
 
-void _ctk_text_util_append_special_char_menuitems (GtkMenuShell              *menushell,
-                                                   GtkTextUtilCharChosenFunc  func,
+void _ctk_text_util_append_special_char_menuitems (CtkMenuShell              *menushell,
+                                                   CtkTextUtilCharChosenFunc  func,
                                                    gpointer                   data);
 
-cairo_surface_t * _ctk_text_util_create_drag_icon (GtkWidget     *widget,
+cairo_surface_t * _ctk_text_util_create_drag_icon (CtkWidget     *widget,
                                                    gchar         *text,
                                                    gsize          len);
-cairo_surface_t * _ctk_text_util_create_rich_drag_icon (GtkWidget     *widget,
-                                                   GtkTextBuffer *buffer,
-                                                   GtkTextIter   *start,
-                                                   GtkTextIter   *end);
+cairo_surface_t * _ctk_text_util_create_rich_drag_icon (CtkWidget     *widget,
+                                                   CtkTextBuffer *buffer,
+                                                   CtkTextIter   *start,
+                                                   CtkTextIter   *end);
 
 gboolean _ctk_text_util_get_block_cursor_location (PangoLayout    *layout,
 						   gint            index_,

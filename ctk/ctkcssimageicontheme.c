@@ -29,24 +29,24 @@
 #include "ctkstyleproviderprivate.h"
 #include "ctkiconthemeprivate.h"
 
-G_DEFINE_TYPE (GtkCssImageIconTheme, _ctk_css_image_icon_theme, CTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (CtkCssImageIconTheme, _ctk_css_image_icon_theme, CTK_TYPE_CSS_IMAGE)
 
 static double
-ctk_css_image_icon_theme_get_aspect_ratio (GtkCssImage *image)
+ctk_css_image_icon_theme_get_aspect_ratio (CtkCssImage *image)
 {
   /* icon theme icons only take a single size when requesting, so we insist on being square */
   return 1.0;
 }
 
 static void
-ctk_css_image_icon_theme_draw (GtkCssImage        *image,
+ctk_css_image_icon_theme_draw (CtkCssImage        *image,
                                cairo_t            *cr,
                                double              width,
                                double              height)
 {
-  GtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
+  CtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
   GError *error = NULL;
-  GtkIconInfo *icon_info;
+  CtkIconInfo *icon_info;
   GdkPixbuf *pixbuf;
   gint size;
 
@@ -93,10 +93,10 @@ ctk_css_image_icon_theme_draw (GtkCssImage        *image,
 
 
 static gboolean
-ctk_css_image_icon_theme_parse (GtkCssImage  *image,
-                                GtkCssParser *parser)
+ctk_css_image_icon_theme_parse (CtkCssImage  *image,
+                                CtkCssParser *parser)
 {
-  GtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
+  CtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
 
   if (!_ctk_css_parser_try (parser, "-ctk-icontheme(", TRUE))
     {
@@ -118,25 +118,25 @@ ctk_css_image_icon_theme_parse (GtkCssImage  *image,
 }
 
 static void
-ctk_css_image_icon_theme_print (GtkCssImage *image,
+ctk_css_image_icon_theme_print (CtkCssImage *image,
                                 GString     *string)
 {
-  GtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
+  CtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
 
   g_string_append (string, "-ctk-icontheme(");
   _ctk_css_print_string (string, icon_theme->name);
   g_string_append (string, ")");
 }
 
-static GtkCssImage *
-ctk_css_image_icon_theme_compute (GtkCssImage             *image,
+static CtkCssImage *
+ctk_css_image_icon_theme_compute (CtkCssImage             *image,
                                   guint                    property_id,
-                                  GtkStyleProviderPrivate *provider,
-                                  GtkCssStyle             *style,
-                                  GtkCssStyle             *parent_style)
+                                  CtkStyleProviderPrivate *provider,
+                                  CtkCssStyle             *style,
+                                  CtkCssStyle             *parent_style)
 {
-  GtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
-  GtkCssImageIconTheme *copy;
+  CtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
+  CtkCssImageIconTheme *copy;
 
   copy = g_object_new (CTK_TYPE_CSS_IMAGE_ICON_THEME, NULL);
   copy->name = g_strdup (icon_theme->name);
@@ -148,11 +148,11 @@ ctk_css_image_icon_theme_compute (GtkCssImage             *image,
 }
 
 static gboolean
-ctk_css_image_icon_theme_equal (GtkCssImage *image1,
-                                GtkCssImage *image2)
+ctk_css_image_icon_theme_equal (CtkCssImage *image1,
+                                CtkCssImage *image2)
 {
-  GtkCssImageIconTheme *icon_theme1 = CTK_CSS_IMAGE_ICON_THEME (image1);
-  GtkCssImageIconTheme *icon_theme2 = CTK_CSS_IMAGE_ICON_THEME (image2);
+  CtkCssImageIconTheme *icon_theme1 = CTK_CSS_IMAGE_ICON_THEME (image1);
+  CtkCssImageIconTheme *icon_theme2 = CTK_CSS_IMAGE_ICON_THEME (image2);
 
   return g_str_equal (icon_theme1->name, icon_theme2->name);
 }
@@ -160,7 +160,7 @@ ctk_css_image_icon_theme_equal (GtkCssImage *image1,
 static void
 ctk_css_image_icon_theme_dispose (GObject *object)
 {
-  GtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (object);
+  CtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (object);
 
   g_free (icon_theme->name);
   icon_theme->name = NULL;
@@ -169,9 +169,9 @@ ctk_css_image_icon_theme_dispose (GObject *object)
 }
 
 static void
-_ctk_css_image_icon_theme_class_init (GtkCssImageIconThemeClass *klass)
+_ctk_css_image_icon_theme_class_init (CtkCssImageIconThemeClass *klass)
 {
-  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
+  CtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   image_class->get_aspect_ratio = ctk_css_image_icon_theme_get_aspect_ratio;
@@ -185,7 +185,7 @@ _ctk_css_image_icon_theme_class_init (GtkCssImageIconThemeClass *klass)
 }
 
 static void
-_ctk_css_image_icon_theme_init (GtkCssImageIconTheme *icon_theme)
+_ctk_css_image_icon_theme_init (CtkCssImageIconTheme *icon_theme)
 {
   icon_theme->icon_theme = ctk_icon_theme_get_default ();
   icon_theme->scale = 1;

@@ -26,9 +26,9 @@
 
 G_BEGIN_DECLS
 
-struct _GtkMenuItemPrivate
+struct _CtkMenuItemPrivate
 {
-  GtkWidget *submenu;
+  CtkWidget *submenu;
   GdkWindow *event_window;
 
   guint16 toggle_size;
@@ -38,11 +38,11 @@ struct _GtkMenuItemPrivate
 
   const char *accel_path;
 
-  GtkAction *action;
-  GtkActionHelper *action_helper;
+  CtkAction *action;
+  CtkActionHelper *action_helper;
 
-  GtkCssGadget *gadget;
-  GtkCssGadget *arrow_gadget;
+  CtkCssGadget *gadget;
+  CtkCssGadget *arrow_gadget;
 
   guint submenu_placement      : 1;
   guint submenu_direction      : 1;
@@ -52,23 +52,23 @@ struct _GtkMenuItemPrivate
   guint reserve_indicator      : 1;
 };
 
-GtkCssGadget * _ctk_menu_item_get_gadget     (GtkMenuItem   *menu_item);
-void     _ctk_menu_item_refresh_accel_path   (GtkMenuItem   *menu_item,
+CtkCssGadget * _ctk_menu_item_get_gadget     (CtkMenuItem   *menu_item);
+void     _ctk_menu_item_refresh_accel_path   (CtkMenuItem   *menu_item,
                                               const gchar   *prefix,
-                                              GtkAccelGroup *accel_group,
+                                              CtkAccelGroup *accel_group,
                                               gboolean       group_changed);
-gboolean _ctk_menu_item_is_selectable        (GtkWidget     *menu_item);
-void     _ctk_menu_item_popup_submenu        (GtkWidget     *menu_item,
+gboolean _ctk_menu_item_is_selectable        (CtkWidget     *menu_item);
+void     _ctk_menu_item_popup_submenu        (CtkWidget     *menu_item,
                                               gboolean       with_delay);
-void     _ctk_menu_item_popdown_submenu      (GtkWidget     *menu_item);
-void	  _ctk_menu_item_refresh_accel_path  (GtkMenuItem   *menu_item,
+void     _ctk_menu_item_popdown_submenu      (CtkWidget     *menu_item);
+void	  _ctk_menu_item_refresh_accel_path  (CtkMenuItem   *menu_item,
 					      const gchar   *prefix,
-					      GtkAccelGroup *accel_group,
+					      CtkAccelGroup *accel_group,
 					      gboolean	     group_changed);
-gboolean  _ctk_menu_item_is_selectable       (GtkWidget     *menu_item);
-void      _ctk_menu_item_popup_submenu       (GtkWidget     *menu_item,
+gboolean  _ctk_menu_item_is_selectable       (CtkWidget     *menu_item);
+void      _ctk_menu_item_popup_submenu       (CtkWidget     *menu_item,
 					      gboolean       with_delay);
-void      _ctk_menu_item_popdown_submenu     (GtkWidget     *menu_item);
+void      _ctk_menu_item_popdown_submenu     (CtkWidget     *menu_item);
 
 G_END_DECLS
 

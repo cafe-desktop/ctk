@@ -1,15 +1,15 @@
 /* Entry/Search Entry
  *
- * GtkEntry allows to display icons and progress information.
+ * CtkEntry allows to display icons and progress information.
  * This demo shows how to use these features in a search entry.
  */
 
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 
-static GtkWidget *window = NULL;
-static GtkWidget *menu = NULL;
-static GtkWidget *notebook = NULL;
+static CtkWidget *window = NULL;
+static CtkWidget *menu = NULL;
+static CtkWidget *notebook = NULL;
 
 static guint search_progress_id = 0;
 static guint finish_search_id = 0;
@@ -34,13 +34,13 @@ search_progress (gpointer data)
 }
 
 static void
-search_progress_done (GtkEntry *entry)
+search_progress_done (CtkEntry *entry)
 {
   ctk_entry_set_progress_fraction (entry, 0.0);
 }
 
 static gboolean
-finish_search (GtkButton *button)
+finish_search (CtkButton *button)
 {
   show_find_button ();
   if (search_progress_id)
@@ -61,8 +61,8 @@ start_search_feedback (gpointer data)
 }
 
 static void
-start_search (GtkButton *button,
-              GtkEntry  *entry)
+start_search (CtkButton *button,
+              CtkEntry  *entry)
 {
   show_cancel_button ();
   search_progress_id = g_timeout_add_seconds (1, (GSourceFunc)start_search_feedback, entry);
@@ -71,7 +71,7 @@ start_search (GtkButton *button,
 
 
 static void
-stop_search (GtkButton *button,
+stop_search (CtkButton *button,
              gpointer   data)
 {
   if (finish_search_id)
@@ -83,14 +83,14 @@ stop_search (GtkButton *button,
 }
 
 static void
-clear_entry (GtkEntry *entry)
+clear_entry (CtkEntry *entry)
 {
   ctk_entry_set_text (entry, "");
 }
 
 static void
-search_by_name (GtkWidget *item,
-                GtkEntry  *entry)
+search_by_name (CtkWidget *item,
+                CtkEntry  *entry)
 {
   ctk_entry_set_icon_tooltip_text (entry,
                                    CTK_ENTRY_ICON_PRIMARY,
@@ -100,8 +100,8 @@ search_by_name (GtkWidget *item,
 }
 
 static void
-search_by_description (GtkWidget *item,
-                       GtkEntry  *entry)
+search_by_description (CtkWidget *item,
+                       CtkEntry  *entry)
 {
 
   ctk_entry_set_icon_tooltip_text (entry,
@@ -112,8 +112,8 @@ search_by_description (GtkWidget *item,
 }
 
 static void
-search_by_file (GtkWidget *item,
-                GtkEntry  *entry)
+search_by_file (CtkWidget *item,
+                CtkEntry  *entry)
 {
   ctk_entry_set_icon_tooltip_text (entry,
                                    CTK_ENTRY_ICON_PRIMARY,
@@ -122,11 +122,11 @@ search_by_file (GtkWidget *item,
   ctk_entry_set_placeholder_text (entry, "file name");
 }
 
-GtkWidget *
-create_search_menu (GtkWidget *entry)
+CtkWidget *
+create_search_menu (CtkWidget *entry)
 {
-  GtkWidget *menu;
-  GtkWidget *item;
+  CtkWidget *menu;
+  CtkWidget *item;
 
   menu = ctk_menu_new ();
 
@@ -151,7 +151,7 @@ create_search_menu (GtkWidget *entry)
 }
 
 static void
-icon_press_cb (GtkEntry       *entry,
+icon_press_cb (CtkEntry       *entry,
                gint            position,
                GdkEventButton *event,
                gpointer        data)
@@ -161,8 +161,8 @@ icon_press_cb (GtkEntry       *entry,
 }
 
 static void
-activate_cb (GtkEntry  *entry,
-             GtkButton *button)
+activate_cb (CtkEntry  *entry,
+             CtkButton *button)
 {
   if (search_progress_id != 0)
     return;
@@ -172,7 +172,7 @@ activate_cb (GtkEntry  *entry,
 }
 
 static void
-search_entry_destroyed (GtkWidget *widget)
+search_entry_destroyed (CtkWidget *widget)
 {
   if (finish_search_id != 0)
     {
@@ -190,12 +190,12 @@ search_entry_destroyed (GtkWidget *widget)
 }
 
 static void
-entry_populate_popup (GtkEntry *entry,
-                      GtkMenu  *menu,
+entry_populate_popup (CtkEntry *entry,
+                      CtkMenu  *menu,
                       gpointer user_data)
 {
-  GtkWidget *item;
-  GtkWidget *search_menu;
+  CtkWidget *item;
+  CtkWidget *search_menu;
   gboolean has_text;
 
   has_text = ctk_entry_get_text_length (entry) > 0;
@@ -218,15 +218,15 @@ entry_populate_popup (GtkEntry *entry,
   ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 }
 
-GtkWidget *
-do_search_entry (GtkWidget *do_widget)
+CtkWidget *
+do_search_entry (CtkWidget *do_widget)
 {
-  GtkWidget *vbox;
-  GtkWidget *hbox;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkWidget *find_button;
-  GtkWidget *cancel_button;
+  CtkWidget *vbox;
+  CtkWidget *hbox;
+  CtkWidget *label;
+  CtkWidget *entry;
+  CtkWidget *find_button;
+  CtkWidget *cancel_button;
 
   if (!window)
     {

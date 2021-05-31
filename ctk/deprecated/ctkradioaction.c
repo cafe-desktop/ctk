@@ -39,15 +39,15 @@
 /**
  * SECTION:ctkradioaction
  * @Short_description: An action of which only one in a group can be active
- * @Title: GtkRadioAction
+ * @Title: CtkRadioAction
  *
- * A #GtkRadioAction is similar to #GtkRadioMenuItem. A number of radio
+ * A #CtkRadioAction is similar to #CtkRadioMenuItem. A number of radio
  * actions can be linked together so that only one may be active at any
  * one time.
  */
 
 
-struct _GtkRadioActionPrivate 
+struct _CtkRadioActionPrivate 
 {
   GSList *group;
   gint    value;
@@ -76,19 +76,19 @@ static void ctk_radio_action_get_property (GObject         *object,
 				           guint            prop_id,
 				           GValue          *value,
 				           GParamSpec      *pspec);
-static void ctk_radio_action_activate     (GtkAction *action);
-static GtkWidget *create_menu_item        (GtkAction *action);
+static void ctk_radio_action_activate     (CtkAction *action);
+static CtkWidget *create_menu_item        (CtkAction *action);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioAction, ctk_radio_action, CTK_TYPE_TOGGLE_ACTION)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkRadioAction, ctk_radio_action, CTK_TYPE_TOGGLE_ACTION)
 
 static guint         radio_action_signals[LAST_SIGNAL] = { 0 };
 
 static void
-ctk_radio_action_class_init (GtkRadioActionClass *klass)
+ctk_radio_action_class_init (CtkRadioActionClass *klass)
 {
   GObjectClass *gobject_class;
-  GtkActionClass *action_class;
+  CtkActionClass *action_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   action_class = CTK_ACTION_CLASS (klass);
@@ -102,12 +102,12 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
   action_class->create_menu_item = create_menu_item;
 
   /**
-   * GtkRadioAction:value:
+   * CtkRadioAction:value:
    *
    * The value is an arbitrary integer which can be used as a
    * convenient way to determine which action in the group is 
    * currently active in an ::activate or ::changed signal handler.
-   * See ctk_radio_action_get_current_value() and #GtkRadioActionEntry
+   * See ctk_radio_action_get_current_value() and #CtkRadioActionEntry
    * for convenient ways to get and set this property.
    *
    * Since: 2.4
@@ -125,7 +125,7 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
 						     CTK_PARAM_READWRITE));
 
   /**
-   * GtkRadioAction:group:
+   * CtkRadioAction:group:
    *
    * Sets a new group for a radio action.
    *
@@ -142,7 +142,7 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
 							CTK_PARAM_WRITABLE));
 
   /**
-   * GtkRadioAction:current-value:
+   * CtkRadioAction:current-value:
    *
    * The value property of the currently active member of the group to which
    * this action belongs. 
@@ -162,7 +162,7 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
 						     CTK_PARAM_READWRITE));
 
   /**
-   * GtkRadioAction::changed:
+   * CtkRadioAction::changed:
    * @action: the action on which the signal is emitted
    * @current: the member of @action's group which has just been activated
    *
@@ -178,13 +178,13 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
     g_signal_new (I_("changed"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
-		  G_STRUCT_OFFSET (GtkRadioActionClass, changed),  NULL, NULL,
+		  G_STRUCT_OFFSET (CtkRadioActionClass, changed),  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, CTK_TYPE_RADIO_ACTION);
 }
 
 static void
-ctk_radio_action_init (GtkRadioAction *action)
+ctk_radio_action_init (CtkRadioAction *action)
 {
   action->private_data = ctk_radio_action_get_instance_private (action);
   action->private_data->group = g_slist_prepend (NULL, action);
@@ -204,17 +204,17 @@ ctk_radio_action_init (GtkRadioAction *action)
  * @value: The value which ctk_radio_action_get_current_value() should
  *   return if this action is selected.
  *
- * Creates a new #GtkRadioAction object. To add the action to
- * a #GtkActionGroup and set the accelerator for the action,
+ * Creates a new #CtkRadioAction object. To add the action to
+ * a #CtkActionGroup and set the accelerator for the action,
  * call ctk_action_group_add_action_with_accel().
  *
- * Returns: a new #GtkRadioAction
+ * Returns: a new #CtkRadioAction
  *
  * Since: 2.4
  *
  * Deprecated: 3.10
  */
-GtkRadioAction *
+CtkRadioAction *
 ctk_radio_action_new (const gchar *name,
 		      const gchar *label,
 		      const gchar *tooltip,
@@ -235,7 +235,7 @@ ctk_radio_action_new (const gchar *name,
 static void
 ctk_radio_action_finalize (GObject *object)
 {
-  GtkRadioAction *action;
+  CtkRadioAction *action;
   GSList *tmp_list;
 
   action = CTK_RADIO_ACTION (object);
@@ -246,7 +246,7 @@ ctk_radio_action_finalize (GObject *object)
 
   while (tmp_list)
     {
-      GtkRadioAction *tmp_action = tmp_list->data;
+      CtkRadioAction *tmp_action = tmp_list->data;
 
       tmp_list = tmp_list->next;
       tmp_action->private_data->group = action->private_data->group;
@@ -261,7 +261,7 @@ ctk_radio_action_set_property (GObject         *object,
 			       const GValue    *value,
 			       GParamSpec      *pspec)
 {
-  GtkRadioAction *radio_action;
+  CtkRadioAction *radio_action;
   
   radio_action = CTK_RADIO_ACTION (object);
 
@@ -272,7 +272,7 @@ ctk_radio_action_set_property (GObject         *object,
       break;
     case PROP_GROUP: 
       {
-	GtkRadioAction *arg;
+	CtkRadioAction *arg;
 	GSList *slist = NULL;
 	
 	if (G_VALUE_HOLDS_OBJECT (value)) 
@@ -300,7 +300,7 @@ ctk_radio_action_get_property (GObject    *object,
 			       GValue     *value,
 			       GParamSpec *pspec)
 {
-  GtkRadioAction *radio_action;
+  CtkRadioAction *radio_action;
 
   radio_action = CTK_RADIO_ACTION (object);
 
@@ -320,11 +320,11 @@ ctk_radio_action_get_property (GObject    *object,
 }
 
 static void
-ctk_radio_action_activate (GtkAction *action)
+ctk_radio_action_activate (CtkAction *action)
 {
-  GtkRadioAction *radio_action;
-  GtkToggleAction *toggle_action;
-  GtkToggleAction *tmp_action;
+  CtkRadioAction *radio_action;
+  CtkToggleAction *toggle_action;
+  CtkToggleAction *tmp_action;
   GSList *tmp_list;
   gboolean active;
 
@@ -385,8 +385,8 @@ ctk_radio_action_activate (GtkAction *action)
   ctk_toggle_action_toggled (toggle_action);
 }
 
-static GtkWidget *
-create_menu_item (GtkAction *action)
+static CtkWidget *
+create_menu_item (CtkAction *action)
 {
   return g_object_new (CTK_TYPE_CHECK_MENU_ITEM, 
 		       "draw-as-radio", TRUE,
@@ -404,7 +404,7 @@ create_menu_item (GtkAction *action)
  * A common way to set up a group of radio group is the following:
  * |[<!-- language="C" -->
  *   GSList *group = NULL;
- *   GtkRadioAction *action;
+ *   CtkRadioAction *action;
  *  
  *   while ( ...more actions to add... /)
  *     {
@@ -415,14 +415,14 @@ create_menu_item (GtkAction *action)
  *     }
  * ]|
  *
- * Returns:  (element-type GtkRadioAction) (transfer none): the list representing the radio group for this object
+ * Returns:  (element-type CtkRadioAction) (transfer none): the list representing the radio group for this object
  *
  * Since: 2.4
  *
  * Deprecated: 3.10
  */
 GSList *
-ctk_radio_action_get_group (GtkRadioAction *action)
+ctk_radio_action_get_group (CtkRadioAction *action)
 {
   g_return_val_if_fail (CTK_IS_RADIO_ACTION (action), NULL);
 
@@ -432,7 +432,7 @@ ctk_radio_action_get_group (GtkRadioAction *action)
 /**
  * ctk_radio_action_set_group:
  * @action: the action object
- * @group: (element-type GtkRadioAction) (allow-none): a list representing a radio group, or %NULL
+ * @group: (element-type CtkRadioAction) (allow-none): a list representing a radio group, or %NULL
  *
  * Sets the radio group for the radio action object.
  *
@@ -441,7 +441,7 @@ ctk_radio_action_get_group (GtkRadioAction *action)
  * Deprecated: 3.10
  */
 void
-ctk_radio_action_set_group (GtkRadioAction *action, 
+ctk_radio_action_set_group (CtkRadioAction *action, 
 			    GSList         *group)
 {
   g_return_if_fail (CTK_IS_RADIO_ACTION (action));
@@ -455,7 +455,7 @@ ctk_radio_action_set_group (GtkRadioAction *action,
 
       for (slist = action->private_data->group; slist; slist = slist->next)
 	{
-	  GtkRadioAction *tmp_action = slist->data;
+	  CtkRadioAction *tmp_action = slist->data;
 
 	  tmp_action->private_data->group = action->private_data->group;
 	}
@@ -469,7 +469,7 @@ ctk_radio_action_set_group (GtkRadioAction *action,
 
       for (slist = action->private_data->group; slist; slist = slist->next)
 	{
-	  GtkRadioAction *tmp_action = slist->data;
+	  CtkRadioAction *tmp_action = slist->data;
 
 	  tmp_action->private_data->group = action->private_data->group;
 	}
@@ -493,8 +493,8 @@ ctk_radio_action_set_group (GtkRadioAction *action,
  *
  * A common way to set up a group of radio actions is the following:
  * |[<!-- language="C" -->
- *   GtkRadioAction *action;
- *   GtkRadioAction *last_action;
+ *   CtkRadioAction *action;
+ *   CtkRadioAction *last_action;
  *  
  *   while ( ...more actions to add... /)
  *     {
@@ -510,8 +510,8 @@ ctk_radio_action_set_group (GtkRadioAction *action,
  * Deprecated: 3.10
  */
 void
-ctk_radio_action_join_group (GtkRadioAction *action, 
-			     GtkRadioAction *group_source)
+ctk_radio_action_join_group (CtkRadioAction *action, 
+			     CtkRadioAction *group_source)
 {
   g_return_if_fail (CTK_IS_RADIO_ACTION (action));
   g_return_if_fail (group_source == NULL || CTK_IS_RADIO_ACTION (group_source));  
@@ -539,7 +539,7 @@ ctk_radio_action_join_group (GtkRadioAction *action,
 
 /**
  * ctk_radio_action_get_current_value:
- * @action: a #GtkRadioAction
+ * @action: a #CtkRadioAction
  * 
  * Obtains the value property of the currently active member of 
  * the group to which @action belongs.
@@ -551,7 +551,7 @@ ctk_radio_action_join_group (GtkRadioAction *action,
  * Deprecated: 3.10
  **/
 gint
-ctk_radio_action_get_current_value (GtkRadioAction *action)
+ctk_radio_action_get_current_value (CtkRadioAction *action)
 {
   GSList *slist;
 
@@ -561,7 +561,7 @@ ctk_radio_action_get_current_value (GtkRadioAction *action)
     {
       for (slist = action->private_data->group; slist; slist = slist->next)
 	{
-	  GtkToggleAction *toggle_action = slist->data;
+	  CtkToggleAction *toggle_action = slist->data;
 
 	  if (ctk_toggle_action_get_active (toggle_action))
 	    return CTK_RADIO_ACTION (toggle_action)->private_data->value;
@@ -573,7 +573,7 @@ ctk_radio_action_get_current_value (GtkRadioAction *action)
 
 /**
  * ctk_radio_action_set_current_value:
- * @action: a #GtkRadioAction
+ * @action: a #CtkRadioAction
  * @current_value: the new value
  * 
  * Sets the currently active group member to the member with value
@@ -584,7 +584,7 @@ ctk_radio_action_get_current_value (GtkRadioAction *action)
  * Deprecated: 3.10
  **/
 void
-ctk_radio_action_set_current_value (GtkRadioAction *action,
+ctk_radio_action_set_current_value (CtkRadioAction *action,
                                     gint            current_value)
 {
   GSList *slist;
@@ -595,7 +595,7 @@ ctk_radio_action_set_current_value (GtkRadioAction *action,
     {
       for (slist = action->private_data->group; slist; slist = slist->next)
 	{
-	  GtkRadioAction *radio_action = slist->data;
+	  CtkRadioAction *radio_action = slist->data;
 
 	  if (radio_action->private_data->value == current_value)
             {

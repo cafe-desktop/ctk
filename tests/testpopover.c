@@ -33,21 +33,21 @@ static GActionEntry entries[] = {
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *win;
-  GtkWidget *box;
-  GtkWidget *button;
-  GtkWidget *button2;
-  GtkBuilder *builder;
+  CtkWidget *win;
+  CtkWidget *box;
+  CtkWidget *button;
+  CtkWidget *button2;
+  CtkBuilder *builder;
   GMenuModel *model;
   GSimpleActionGroup *actions;
-  GtkWidget *overlay;
-  GtkWidget *grid;
-  GtkWidget *popover;
-  GtkWidget *popover2;
-  GtkWidget *label;
-  GtkWidget *check;
-  GtkWidget *combo;
-  GtkWidget *header_bar;
+  CtkWidget *overlay;
+  CtkWidget *grid;
+  CtkWidget *popover;
+  CtkWidget *popover2;
+  CtkWidget *label;
+  CtkWidget *check;
+  CtkWidget *combo;
+  CtkWidget *header_bar;
 
   ctk_init (&argc, &argv);
 
@@ -56,7 +56,7 @@ main (int argc, char *argv[])
   header_bar = ctk_header_bar_new ();
   ctk_header_bar_set_show_close_button (CTK_HEADER_BAR (header_bar), TRUE);
   ctk_window_set_titlebar (CTK_WINDOW (win), header_bar);
-  ctk_window_set_title (CTK_WINDOW (win), "Test GtkPopover");
+  ctk_window_set_title (CTK_WINDOW (win), "Test CtkPopover");
   actions = g_simple_action_group_new ();
   g_action_map_add_action_entries (G_ACTION_MAP (actions), entries, G_N_ELEMENTS (entries), NULL);
 
@@ -96,7 +96,7 @@ main (int argc, char *argv[])
   popover = CTK_WIDGET (ctk_menu_button_get_popover (CTK_MENU_BUTTON (button)));
 
   builder = ctk_builder_new_from_file ("popover2.ui");
-  popover2 = (GtkWidget *)ctk_builder_get_object (builder, "popover");
+  popover2 = (CtkWidget *)ctk_builder_get_object (builder, "popover");
   ctk_menu_button_set_popover (CTK_MENU_BUTTON (button2), popover2);
 
   g_object_set (box, "margin", 10, NULL);

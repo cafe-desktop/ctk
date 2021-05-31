@@ -68,38 +68,38 @@
 /**
  * SECTION:ctkcontainer
  * @Short_description: Base class for widgets which contain other widgets
- * @Title: GtkContainer
+ * @Title: CtkContainer
  *
  * A GTK+ user interface is constructed by nesting widgets inside widgets.
  * Container widgets are the inner nodes in the resulting tree of widgets:
- * they contain other widgets. So, for example, you might have a #GtkWindow
- * containing a #GtkFrame containing a #GtkLabel. If you wanted an image instead
- * of a textual label inside the frame, you might replace the #GtkLabel widget
- * with a #GtkImage widget.
+ * they contain other widgets. So, for example, you might have a #CtkWindow
+ * containing a #CtkFrame containing a #CtkLabel. If you wanted an image instead
+ * of a textual label inside the frame, you might replace the #CtkLabel widget
+ * with a #CtkImage widget.
  *
  * There are two major kinds of container widgets in GTK+. Both are subclasses
- * of the abstract GtkContainer base class.
+ * of the abstract CtkContainer base class.
  *
  * The first type of container widget has a single child widget and derives
- * from #GtkBin. These containers are decorators, which
- * add some kind of functionality to the child. For example, a #GtkButton makes
- * its child into a clickable button; a #GtkFrame draws a frame around its child
- * and a #GtkWindow places its child widget inside a top-level window.
+ * from #CtkBin. These containers are decorators, which
+ * add some kind of functionality to the child. For example, a #CtkButton makes
+ * its child into a clickable button; a #CtkFrame draws a frame around its child
+ * and a #CtkWindow places its child widget inside a top-level window.
  *
  * The second type of container can have more than one child; its purpose is to
  * manage layout. This means that these containers assign
- * sizes and positions to their children. For example, a #GtkHBox arranges its
- * children in a horizontal row, and a #GtkGrid arranges the widgets it contains
+ * sizes and positions to their children. For example, a #CtkHBox arranges its
+ * children in a horizontal row, and a #CtkGrid arranges the widgets it contains
  * in a two-dimensional grid.
  *
- * For implementations of #GtkContainer the virtual method #GtkContainerClass.forall()
+ * For implementations of #CtkContainer the virtual method #CtkContainerClass.forall()
  * is always required, since it's used for drawing and other internal operations
  * on the children.
- * If the #GtkContainer implementation expect to have non internal children
- * it's needed to implement both #GtkContainerClass.add() and #GtkContainerClass.remove().
- * If the GtkContainer implementation has internal children, they should be added
+ * If the #CtkContainer implementation expect to have non internal children
+ * it's needed to implement both #CtkContainerClass.add() and #CtkContainerClass.remove().
+ * If the CtkContainer implementation has internal children, they should be added
  * with ctk_widget_set_parent() on init() and removed with ctk_widget_unparent()
- * in the #GtkWidgetClass.destroy() implementation.
+ * in the #CtkWidgetClass.destroy() implementation.
  * See more about implementing custom widgets at https://wiki.gnome.org/HowDoI/CustomWidgets
  *
  * # Height for width geometry management
@@ -113,7 +113,7 @@
  * that make use of GTK+’s height for width geometry management system. First,
  * it’s important to note that a container must prioritize one of its
  * dimensions, that is to say that a widget or container can only have a
- * #GtkSizeRequestMode that is %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
+ * #CtkSizeRequestMode that is %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
  * %CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT. However, every widget and container
  * must be able to respond to the APIs for both dimensions, i.e. even if a
  * widget has a request mode that is height-for-width, it is possible that
@@ -124,7 +124,7 @@
  *
  * Each request mode involves 2 virtual methods. Height-for-width apis run
  * through ctk_widget_get_preferred_width() and then through ctk_widget_get_preferred_height_for_width().
- * When handling requests in the opposite #GtkSizeRequestMode it is important that
+ * When handling requests in the opposite #CtkSizeRequestMode it is important that
  * every widget request at least enough space to display all of its content at all times.
  *
  * When ctk_widget_get_preferred_height() is called on a container that is height-for-width,
@@ -133,7 +133,7 @@
  *
  * |[<!-- language="C" -->
  * static void
- * foo_container_get_preferred_height (GtkWidget *widget,
+ * foo_container_get_preferred_height (CtkWidget *widget,
  *                                     gint *min_height,
  *                                     gint *nat_height)
  * {
@@ -166,7 +166,7 @@
  *
  * |[<!-- language="C" -->
  * static void
- * foo_container_get_preferred_width_for_height (GtkWidget *widget,
+ * foo_container_get_preferred_width_for_height (CtkWidget *widget,
  *                                               gint for_height,
  *                                               gint *min_width,
  *                                               gint *nat_width)
@@ -192,39 +192,39 @@
  * ctk_widget_get_preferred_width() for each of its children.
  *
  * For each potential group of children that are lined up horizontally, the values returned by
- * ctk_widget_get_preferred_width() should be collected in an array of #GtkRequestedSize structures.
+ * ctk_widget_get_preferred_width() should be collected in an array of #CtkRequestedSize structures.
  * Any child spacing should be removed from the input @for_width and then the collective size should be
  * allocated using the ctk_distribute_natural_allocation() convenience function.
  *
  * The container will then move on to request the preferred height for each child by using
- * ctk_widget_get_preferred_height_for_width() and using the sizes stored in the #GtkRequestedSize array.
+ * ctk_widget_get_preferred_height_for_width() and using the sizes stored in the #CtkRequestedSize array.
  *
  * To allocate a height-for-width container, it’s again important
  * to consider that a container must prioritize one dimension over the other. So if
  * a container is a height-for-width container it must first allocate all widgets horizontally
- * using a #GtkRequestedSize array and ctk_distribute_natural_allocation() and then add any
+ * using a #CtkRequestedSize array and ctk_distribute_natural_allocation() and then add any
  * extra space (if and where appropriate) for the widget to expand.
  *
  * After adding all the expand space, the container assumes it was allocated sufficient
  * height to fit all of its content. At this time, the container must use the total horizontal sizes
  * of each widget to request the height-for-width of each of its children and store the requests in a
- * #GtkRequestedSize array for any widgets that stack vertically (for tabular containers this can
+ * #CtkRequestedSize array for any widgets that stack vertically (for tabular containers this can
  * be generalized into the heights and widths of rows and columns).
  * The vertical space must then again be distributed using ctk_distribute_natural_allocation()
  * while this time considering the allocated height of the widget minus any vertical spacing
  * that the container adds. Then vertical expand space should be added where appropriate and available
  * and the container should go on to actually allocating the child widgets.
  *
- * See [GtkWidget’s geometry management section][geometry-management]
+ * See [CtkWidget’s geometry management section][geometry-management]
  * to learn more about implementing height-for-width geometry management for widgets.
  *
  * # Child properties
  *
- * GtkContainer introduces child properties.
+ * CtkContainer introduces child properties.
  * These are object properties that are not specific
  * to either the container or the contained widget, but rather to their relation.
  * Typical examples of child properties are the position or pack-type of a widget
- * which is contained in a #GtkBox.
+ * which is contained in a #CtkBox.
  *
  * Use ctk_container_class_install_child_property() to install child properties
  * for a container class and ctk_container_class_find_child_property() or
@@ -238,9 +238,9 @@
  * ctk_container_child_get_valist(). To emit notification about child property
  * changes, use ctk_widget_child_notify().
  *
- * # GtkContainer as GtkBuildable
+ * # CtkContainer as CtkBuildable
  *
- * The GtkContainer implementation of the GtkBuildable interface supports
+ * The CtkContainer implementation of the CtkBuildable interface supports
  * a <packing> element for children, which can contain multiple <property>
  * elements that specify child properties for the child.
  * 
@@ -254,15 +254,15 @@
  *
  * An example of these properties in UI definitions:
  * |[
- * <object class="GtkBox">
+ * <object class="CtkBox">
  *   <child>
- *     <object class="GtkEntry" id="entry1"/>
+ *     <object class="CtkEntry" id="entry1"/>
  *     <packing>
  *       <property name="pack-type">start</property>
  *     </packing>
  *   </child>
  *   <child>
- *     <object class="GtkEntry" id="entry2"/>
+ *     <object class="CtkEntry" id="entry2"/>
  *   </child>
  *   <focus-chain>
  *     <widget name="entry1"/>
@@ -274,9 +274,9 @@
  */
 
 
-struct _GtkContainerPrivate
+struct _CtkContainerPrivate
 {
-  GtkWidget *focus_child;
+  CtkWidget *focus_child;
 
   GdkFrameClock *resize_clock;
   guint resize_handler;
@@ -315,11 +315,11 @@ static GParamSpec *container_props[LAST_PROP];
 
 
 /* --- prototypes --- */
-static void     ctk_container_base_class_init      (GtkContainerClass *klass);
-static void     ctk_container_base_class_finalize  (GtkContainerClass *klass);
-static void     ctk_container_class_init           (GtkContainerClass *klass);
-static void     ctk_container_init                 (GtkContainer      *container);
-static void     ctk_container_destroy              (GtkWidget         *widget);
+static void     ctk_container_base_class_init      (CtkContainerClass *klass);
+static void     ctk_container_base_class_finalize  (CtkContainerClass *klass);
+static void     ctk_container_class_init           (CtkContainerClass *klass);
+static void     ctk_container_init                 (CtkContainer      *container);
+static void     ctk_container_destroy              (CtkWidget         *widget);
 static void     ctk_container_set_property         (GObject         *object,
                                                     guint            prop_id,
                                                     const GValue    *value,
@@ -328,77 +328,77 @@ static void     ctk_container_get_property         (GObject         *object,
                                                     guint            prop_id,
                                                     GValue          *value,
                                                     GParamSpec      *pspec);
-static void     ctk_container_add_unimplemented    (GtkContainer      *container,
-                                                    GtkWidget         *widget);
-static void     ctk_container_remove_unimplemented (GtkContainer      *container,
-                                                    GtkWidget         *widget);
-static void     ctk_container_real_check_resize    (GtkContainer      *container);
-static void     ctk_container_compute_expand       (GtkWidget         *widget,
+static void     ctk_container_add_unimplemented    (CtkContainer      *container,
+                                                    CtkWidget         *widget);
+static void     ctk_container_remove_unimplemented (CtkContainer      *container,
+                                                    CtkWidget         *widget);
+static void     ctk_container_real_check_resize    (CtkContainer      *container);
+static void     ctk_container_compute_expand       (CtkWidget         *widget,
                                                     gboolean          *hexpand_p,
                                                     gboolean          *vexpand_p);
-static gboolean ctk_container_focus                (GtkWidget         *widget,
-                                                    GtkDirectionType   direction);
-static void     ctk_container_real_set_focus_child (GtkContainer      *container,
-                                                    GtkWidget         *widget);
+static gboolean ctk_container_focus                (CtkWidget         *widget,
+                                                    CtkDirectionType   direction);
+static void     ctk_container_real_set_focus_child (CtkContainer      *container,
+                                                    CtkWidget         *widget);
 
-static gboolean ctk_container_focus_move           (GtkContainer      *container,
+static gboolean ctk_container_focus_move           (CtkContainer      *container,
                                                     GList             *children,
-                                                    GtkDirectionType   direction);
-static void     ctk_container_children_callback    (GtkWidget         *widget,
+                                                    CtkDirectionType   direction);
+static void     ctk_container_children_callback    (CtkWidget         *widget,
                                                     gpointer           client_data);
-static void     ctk_container_show_all             (GtkWidget         *widget);
-static gint     ctk_container_draw                 (GtkWidget         *widget,
+static void     ctk_container_show_all             (CtkWidget         *widget);
+static gint     ctk_container_draw                 (CtkWidget         *widget,
                                                     cairo_t           *cr);
-static void     ctk_container_map                  (GtkWidget         *widget);
-static void     ctk_container_unmap                (GtkWidget         *widget);
-static void     ctk_container_adjust_size_request  (GtkWidget         *widget,
-                                                    GtkOrientation     orientation,
+static void     ctk_container_map                  (CtkWidget         *widget);
+static void     ctk_container_unmap                (CtkWidget         *widget);
+static void     ctk_container_adjust_size_request  (CtkWidget         *widget,
+                                                    CtkOrientation     orientation,
                                                     gint              *minimum_size,
                                                     gint              *natural_size);
-static void     ctk_container_adjust_baseline_request (GtkWidget      *widget,
+static void     ctk_container_adjust_baseline_request (CtkWidget      *widget,
 						       gint           *minimum_baseline,
 						       gint           *natural_baseline);
-static void     ctk_container_adjust_size_allocation (GtkWidget       *widget,
-                                                      GtkOrientation   orientation,
+static void     ctk_container_adjust_size_allocation (CtkWidget       *widget,
+                                                      CtkOrientation   orientation,
                                                       gint            *minimum_size,
                                                       gint            *natural_size,
                                                       gint            *allocated_pos,
                                                       gint            *allocated_size);
-static void     ctk_container_adjust_baseline_allocation (GtkWidget      *widget,
+static void     ctk_container_adjust_baseline_allocation (CtkWidget      *widget,
 							  gint           *baseline);
-static GtkSizeRequestMode ctk_container_get_request_mode (GtkWidget   *widget);
+static CtkSizeRequestMode ctk_container_get_request_mode (CtkWidget   *widget);
 
-static gchar* ctk_container_child_default_composite_name (GtkContainer *container,
-                                                          GtkWidget    *child);
+static gchar* ctk_container_child_default_composite_name (CtkContainer *container,
+                                                          CtkWidget    *child);
 
-static GtkWidgetPath * ctk_container_real_get_path_for_child (GtkContainer *container,
-                                                              GtkWidget    *child);
+static CtkWidgetPath * ctk_container_real_get_path_for_child (CtkContainer *container,
+                                                              CtkWidget    *child);
 
-/* GtkBuildable */
-static void ctk_container_buildable_init           (GtkBuildableIface *iface);
-static void ctk_container_buildable_add_child      (GtkBuildable *buildable,
-                                                    GtkBuilder   *builder,
+/* CtkBuildable */
+static void ctk_container_buildable_init           (CtkBuildableIface *iface);
+static void ctk_container_buildable_add_child      (CtkBuildable *buildable,
+                                                    CtkBuilder   *builder,
                                                     GObject      *child,
                                                     const gchar  *type);
-static gboolean ctk_container_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                                          GtkBuilder    *builder,
+static gboolean ctk_container_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                                          CtkBuilder    *builder,
                                                           GObject       *child,
                                                           const gchar   *tagname,
                                                           GMarkupParser *parser,
                                                           gpointer      *data);
-static void    ctk_container_buildable_custom_tag_end (GtkBuildable *buildable,
-                                                       GtkBuilder   *builder,
+static void    ctk_container_buildable_custom_tag_end (CtkBuildable *buildable,
+                                                       CtkBuilder   *builder,
                                                        GObject      *child,
                                                        const gchar  *tagname,
                                                        gpointer     *data);
-static void    ctk_container_buildable_custom_finished (GtkBuildable *buildable,
-                                                        GtkBuilder   *builder,
+static void    ctk_container_buildable_custom_finished (CtkBuildable *buildable,
+                                                        CtkBuilder   *builder,
                                                         GObject      *child,
                                                         const gchar  *tagname,
                                                         gpointer      data);
 
-static gboolean ctk_container_should_propagate_draw (GtkContainer   *container,
-                                                     GtkWidget      *child,
+static gboolean ctk_container_should_propagate_draw (CtkContainer   *container,
+                                                     CtkWidget      *child,
                                                      cairo_t        *cr);
 
 /* --- variables --- */
@@ -406,18 +406,18 @@ static GQuark                vadjustment_key_id;
 static GQuark                hadjustment_key_id;
 static GQuark                quark_focus_chain;
 static guint                 container_signals[LAST_SIGNAL] = { 0 };
-static gint                  GtkContainer_private_offset;
-static GtkWidgetClass       *parent_class = NULL;
+static gint                  CtkContainer_private_offset;
+static CtkWidgetClass       *parent_class = NULL;
 extern GParamSpecPool       *_ctk_widget_child_property_pool;
 extern GObjectNotifyContext *_ctk_widget_child_property_notify_context;
-static GtkBuildableIface    *parent_buildable_iface;
+static CtkBuildableIface    *parent_buildable_iface;
 
 
 /* --- functions --- */
 static inline gpointer
-ctk_container_get_instance_private (GtkContainer *self)
+ctk_container_get_instance_private (CtkContainer *self)
 {
-  return G_STRUCT_MEMBER_P (self, GtkContainer_private_offset);
+  return G_STRUCT_MEMBER_P (self, CtkContainer_private_offset);
 }
 
 GType
@@ -429,13 +429,13 @@ ctk_container_get_type (void)
     {
       const GTypeInfo container_info =
       {
-        sizeof (GtkContainerClass),
+        sizeof (CtkContainerClass),
         (GBaseInitFunc) ctk_container_base_class_init,
         (GBaseFinalizeFunc) ctk_container_base_class_finalize,
         (GClassInitFunc) ctk_container_class_init,
         NULL        /* class_finalize */,
         NULL        /* class_data */,
-        sizeof (GtkContainer),
+        sizeof (CtkContainer),
         0           /* n_preallocs */,
         (GInstanceInitFunc) ctk_container_init,
         NULL,       /* value_table */
@@ -449,11 +449,11 @@ ctk_container_get_type (void)
       };
 
       container_type =
-        g_type_register_static (CTK_TYPE_WIDGET, I_("GtkContainer"),
+        g_type_register_static (CTK_TYPE_WIDGET, I_("CtkContainer"),
                                 &container_info, G_TYPE_FLAG_ABSTRACT);
 
-      GtkContainer_private_offset =
-        g_type_add_instance_private (container_type, sizeof (GtkContainerPrivate));
+      CtkContainer_private_offset =
+        g_type_add_instance_private (container_type, sizeof (CtkContainerPrivate));
 
       g_type_add_interface_static (container_type,
                                    CTK_TYPE_BUILDABLE,
@@ -465,7 +465,7 @@ ctk_container_get_type (void)
 }
 
 static void
-ctk_container_base_class_init (GtkContainerClass *class)
+ctk_container_base_class_init (CtkContainerClass *class)
 {
   /* reset instance specifc class fields that don't get inherited */
   class->set_child_property = NULL;
@@ -473,7 +473,7 @@ ctk_container_base_class_init (GtkContainerClass *class)
 }
 
 static void
-ctk_container_base_class_finalize (GtkContainerClass *class)
+ctk_container_base_class_finalize (CtkContainerClass *class)
 {
   GList *list, *node;
 
@@ -490,10 +490,10 @@ ctk_container_base_class_finalize (GtkContainerClass *class)
 }
 
 static void
-ctk_container_class_init (GtkContainerClass *class)
+ctk_container_class_init (CtkContainerClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   parent_class = g_type_class_peek_parent (class);
 
@@ -556,7 +556,7 @@ ctk_container_class_init (GtkContainerClass *class)
     g_signal_new (I_("add"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkContainerClass, add),
+                  G_STRUCT_OFFSET (CtkContainerClass, add),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
@@ -565,7 +565,7 @@ ctk_container_class_init (GtkContainerClass *class)
     g_signal_new (I_("remove"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkContainerClass, remove),
+                  G_STRUCT_OFFSET (CtkContainerClass, remove),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
@@ -574,7 +574,7 @@ ctk_container_class_init (GtkContainerClass *class)
     g_signal_new (I_("check-resize"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkContainerClass, check_resize),
+                  G_STRUCT_OFFSET (CtkContainerClass, check_resize),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
@@ -582,20 +582,20 @@ ctk_container_class_init (GtkContainerClass *class)
     g_signal_new (I_("set-focus-child"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
-                  G_STRUCT_OFFSET (GtkContainerClass, set_focus_child),
+                  G_STRUCT_OFFSET (CtkContainerClass, set_focus_child),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
                   CTK_TYPE_WIDGET);
 
-  if (GtkContainer_private_offset != 0)
-    g_type_class_adjust_private_offset (class, &GtkContainer_private_offset);
+  if (CtkContainer_private_offset != 0)
+    g_type_class_adjust_private_offset (class, &CtkContainer_private_offset);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_CONTAINER_ACCESSIBLE);
 }
 
 static void
-ctk_container_buildable_init (GtkBuildableIface *iface)
+ctk_container_buildable_init (CtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
   iface->add_child = ctk_container_buildable_add_child;
@@ -605,8 +605,8 @@ ctk_container_buildable_init (GtkBuildableIface *iface)
 }
 
 static void
-ctk_container_buildable_add_child (GtkBuildable  *buildable,
-                                   GtkBuilder    *builder,
+ctk_container_buildable_add_child (CtkBuildable  *buildable,
+                                   CtkBuilder    *builder,
                                    GObject       *child,
                                    const gchar   *type)
 {
@@ -625,14 +625,14 @@ ctk_container_buildable_add_child (GtkBuildable  *buildable,
 }
 
 static inline void
-container_set_child_property (GtkContainer       *container,
-                              GtkWidget          *child,
+container_set_child_property (CtkContainer       *container,
+                              CtkWidget          *child,
                               GParamSpec         *pspec,
                               const GValue       *value,
                               GObjectNotifyQueue *nqueue)
 {
   GValue tmp_value = G_VALUE_INIT;
-  GtkContainerClass *class = g_type_class_peek (pspec->owner_type);
+  CtkContainerClass *class = g_type_class_peek (pspec->owner_type);
 
   /* provide a copy to work from, convert (if necessary) and validate */
   g_value_init (&tmp_value, G_PARAM_SPEC_VALUE_TYPE (pspec));
@@ -661,9 +661,9 @@ container_set_child_property (GtkContainer       *container,
 }
 
 static void
-ctk_container_buildable_set_child_property (GtkContainer *container,
-                                            GtkBuilder   *builder,
-                                            GtkWidget    *child,
+ctk_container_buildable_set_child_property (CtkContainer *container,
+                                            CtkBuilder   *builder,
+                                            CtkWidget    *child,
                                             gchar        *name,
                                             const gchar  *value)
 {
@@ -672,12 +672,12 @@ ctk_container_buildable_set_child_property (GtkContainer *container,
   GError *error = NULL;
   GObjectNotifyQueue *nqueue;
 
-  if (_ctk_widget_get_parent (child) != (GtkWidget *)container &&
+  if (_ctk_widget_get_parent (child) != (CtkWidget *)container &&
       !SPECIAL_CONTAINER (container))
     {
       /* This can happen with internal children of complex widgets.
        * Silently ignore the child properties in this case. We explicitly
-       * allow it for GtkAssistant, since that is how it works.
+       * allow it for CtkAssistant, since that is how it works.
        */
       return;
     }
@@ -719,9 +719,9 @@ ctk_container_buildable_set_child_property (GtkContainer *container,
 }
 
 typedef struct {
-  GtkBuilder   *builder;
-  GtkContainer *container;
-  GtkWidget    *child;
+  CtkBuilder   *builder;
+  CtkContainer *container;
+  CtkWidget    *child;
   GString      *string;
   gchar        *child_prop_name;
   gchar        *context;
@@ -775,7 +775,7 @@ packing_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkContainer", element_name,
+                                        "CtkContainer", element_name,
                                         error);
     }
 }
@@ -855,7 +855,7 @@ typedef struct
   {
     GSList *items;
     GObject *object;
-    GtkBuilder *builder;
+    CtkBuilder *builder;
     gint line;
     gint col;
   } FocusChainData;
@@ -904,7 +904,7 @@ focus_chain_start_element (GMarkupParseContext  *context,
   else
     {
       _ctk_builder_error_unhandled_tag (data->builder, context,
-                                        "GtkContainer", element_name,
+                                        "CtkContainer", element_name,
                                         error);
     }
 }
@@ -915,8 +915,8 @@ static const GMarkupParser focus_chain_parser =
   };
 
 static gboolean
-ctk_container_buildable_custom_tag_start (GtkBuildable  *buildable,
-                                          GtkBuilder    *builder,
+ctk_container_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                          CtkBuilder    *builder,
                                           GObject       *child,
                                           const gchar   *tagname,
                                           GMarkupParser *parser,
@@ -961,8 +961,8 @@ ctk_container_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-ctk_container_buildable_custom_tag_end (GtkBuildable *buildable,
-                                        GtkBuilder   *builder,
+ctk_container_buildable_custom_tag_end (CtkBuildable *buildable,
+                                        CtkBuilder   *builder,
                                         GObject      *child,
                                         const gchar  *tagname,
                                         gpointer     *parser_data)
@@ -983,8 +983,8 @@ ctk_container_buildable_custom_tag_end (GtkBuildable *buildable,
 }
 
 static void
-ctk_container_buildable_custom_finished (GtkBuildable *buildable,
-                                         GtkBuilder   *builder,
+ctk_container_buildable_custom_finished (CtkBuildable *buildable,
+                                         CtkBuilder   *builder,
                                          GObject      *child,
                                          const gchar  *tagname,
                                          gpointer      parser_data)
@@ -1023,21 +1023,21 @@ ctk_container_buildable_custom_finished (GtkBuildable *buildable,
 
 /**
  * ctk_container_child_type:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Returns the type of the children supported by the container.
  *
  * Note that this may return %G_TYPE_NONE to indicate that no more
- * children can be added, e.g. for a #GtkPaned which already has two
+ * children can be added, e.g. for a #CtkPaned which already has two
  * children.
  *
  * Returns: a #GType.
  **/
 GType
-ctk_container_child_type (GtkContainer *container)
+ctk_container_child_type (CtkContainer *container)
 {
   GType slot;
-  GtkContainerClass *class;
+  CtkContainerClass *class;
 
   g_return_val_if_fail (CTK_IS_CONTAINER (container), 0);
 
@@ -1050,16 +1050,16 @@ ctk_container_child_type (GtkContainer *container)
   return slot;
 }
 
-/* --- GtkContainer child property mechanism --- */
+/* --- CtkContainer child property mechanism --- */
 
 /**
  * ctk_container_child_notify:
- * @container: the #GtkContainer
+ * @container: the #CtkContainer
  * @child: the child widget
  * @child_property: the name of a child property installed on
  *     the class of @container
  *
- * Emits a #GtkWidget::child-notify signal for the
+ * Emits a #CtkWidget::child-notify signal for the
  * [child property][child-properties]
  * @child_property on the child.
  *
@@ -1070,8 +1070,8 @@ ctk_container_child_type (GtkContainer *container)
  * Since: 3.2
  */
 void
-ctk_container_child_notify (GtkContainer *container,
-                            GtkWidget    *child,
+ctk_container_child_notify (CtkContainer *container,
+                            CtkWidget    *child,
                             const gchar  *child_property)
 {
   GObject *obj;
@@ -1115,12 +1115,12 @@ ctk_container_child_notify (GtkContainer *container,
 
 /**
  * ctk_container_child_notify_by_pspec:
- * @container: the #GtkContainer
+ * @container: the #CtkContainer
  * @child: the child widget
  * @pspec: the #GParamSpec of a child property instealled on
  *     the class of @container
  *
- * Emits a #GtkWidget::child-notify signal for the
+ * Emits a #CtkWidget::child-notify signal for the
  * [child property][child-properties] specified by
  * @pspec on the child.
  *
@@ -1129,8 +1129,8 @@ ctk_container_child_notify (GtkContainer *container,
  * Since: 3.18
  */
 void
-ctk_container_child_notify_by_pspec (GtkContainer *container,
-                                     GtkWidget    *child,
+ctk_container_child_notify_by_pspec (CtkContainer *container,
+                                     CtkWidget    *child,
                                      GParamSpec   *pspec)
 {
   GObject *obj = G_OBJECT (child);
@@ -1154,19 +1154,19 @@ ctk_container_child_notify_by_pspec (GtkContainer *container,
 }
 
 static inline void
-container_get_child_property (GtkContainer *container,
-                              GtkWidget    *child,
+container_get_child_property (CtkContainer *container,
+                              CtkWidget    *child,
                               GParamSpec   *pspec,
                               GValue       *value)
 {
-  GtkContainerClass *class = g_type_class_peek (pspec->owner_type);
+  CtkContainerClass *class = g_type_class_peek (pspec->owner_type);
 
   class->get_child_property (container, child, PARAM_SPEC_PARAM_ID (pspec), value, pspec);
 }
 
 /**
  * ctk_container_child_get_valist:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @child: a widget which is a child of @container
  * @first_property_name: the name of the first property to get
  * @var_args: return location for the first property, followed
@@ -1175,8 +1175,8 @@ container_get_child_property (GtkContainer *container,
  * Gets the values of one or more child properties for @child and @container.
  **/
 void
-ctk_container_child_get_valist (GtkContainer *container,
-                                GtkWidget    *child,
+ctk_container_child_get_valist (CtkContainer *container,
+                                CtkWidget    *child,
                                 const gchar  *first_property_name,
                                 va_list       var_args)
 {
@@ -1235,7 +1235,7 @@ ctk_container_child_get_valist (GtkContainer *container,
 
 /**
  * ctk_container_child_get_property:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @child: a widget which is a child of @container
  * @property_name: the name of the property to get
  * @value: a location to return the value
@@ -1243,8 +1243,8 @@ ctk_container_child_get_valist (GtkContainer *container,
  * Gets the value of a child property for @child and @container.
  **/
 void
-ctk_container_child_get_property (GtkContainer *container,
-                                  GtkWidget    *child,
+ctk_container_child_get_property (CtkContainer *container,
+                                  CtkWidget    *child,
                                   const gchar  *property_name,
                                   GValue       *value)
 {
@@ -1308,7 +1308,7 @@ ctk_container_child_get_property (GtkContainer *container,
 
 /**
  * ctk_container_child_set_valist:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @child: a widget which is a child of @container
  * @first_property_name: the name of the first property to set
  * @var_args: a %NULL-terminated list of property names and values, starting
@@ -1317,8 +1317,8 @@ ctk_container_child_get_property (GtkContainer *container,
  * Sets one or more child properties for @child and @container.
  **/
 void
-ctk_container_child_set_valist (GtkContainer *container,
-                                GtkWidget    *child,
+ctk_container_child_set_valist (CtkContainer *container,
+                                CtkWidget    *child,
                                 const gchar  *first_property_name,
                                 va_list       var_args)
 {
@@ -1382,7 +1382,7 @@ ctk_container_child_set_valist (GtkContainer *container,
 
 /**
  * ctk_container_child_set_property:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @child: a widget which is a child of @container
  * @property_name: the name of the property to set
  * @value: the value to set the property to
@@ -1390,8 +1390,8 @@ ctk_container_child_set_valist (GtkContainer *container,
  * Sets a child property for @child and @container.
  **/
 void
-ctk_container_child_set_property (GtkContainer *container,
-                                  GtkWidget    *child,
+ctk_container_child_set_property (CtkContainer *container,
+                                  CtkWidget    *child,
                                   const gchar  *property_name,
                                   const GValue *value)
 {
@@ -1430,7 +1430,7 @@ ctk_container_child_set_property (GtkContainer *container,
 
 /**
  * ctk_container_add_with_properties:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @widget: a widget to be placed inside @container
  * @first_prop_name: the name of the first child property to set
  * @...: a %NULL-terminated list of property names and values, starting
@@ -1440,8 +1440,8 @@ ctk_container_child_set_property (GtkContainer *container,
  * See ctk_container_add() and ctk_container_child_set() for more details.
  */
 void
-ctk_container_add_with_properties (GtkContainer *container,
-                                   GtkWidget    *widget,
+ctk_container_add_with_properties (CtkContainer *container,
+                                   CtkWidget    *widget,
                                    const gchar  *first_prop_name,
                                    ...)
 {
@@ -1470,7 +1470,7 @@ ctk_container_add_with_properties (GtkContainer *container,
 
 /**
  * ctk_container_child_set:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @child: a widget which is a child of @container
  * @first_prop_name: the name of the first property to set
  * @...: a %NULL-terminated list of property names and values, starting
@@ -1479,8 +1479,8 @@ ctk_container_add_with_properties (GtkContainer *container,
  * Sets one or more child properties for @child and @container.
  */
 void
-ctk_container_child_set (GtkContainer      *container,
-                         GtkWidget         *child,
+ctk_container_child_set (CtkContainer      *container,
+                         CtkWidget         *child,
                          const gchar       *first_prop_name,
                          ...)
 {
@@ -1493,7 +1493,7 @@ ctk_container_child_set (GtkContainer      *container,
 
 /**
  * ctk_container_child_get:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @child: a widget which is a child of @container
  * @first_prop_name: the name of the first property to get
  * @...: return location for the first property, followed
@@ -1502,8 +1502,8 @@ ctk_container_child_set (GtkContainer      *container,
  * Gets the values of one or more child properties for @child and @container.
  */
 void
-ctk_container_child_get (GtkContainer      *container,
-                         GtkWidget         *child,
+ctk_container_child_get (CtkContainer      *container,
+                         CtkWidget         *child,
                          const gchar       *first_prop_name,
                          ...)
 {
@@ -1534,14 +1534,14 @@ install_child_property_internal (GType       g_type,
 
 /**
  * ctk_container_class_install_child_property:
- * @cclass: a #GtkContainerClass
+ * @cclass: a #CtkContainerClass
  * @property_id: the id for the property
  * @pspec: the #GParamSpec for the property
  *
  * Installs a child property on a container class.
  **/
 void
-ctk_container_class_install_child_property (GtkContainerClass *cclass,
+ctk_container_class_install_child_property (CtkContainerClass *cclass,
                                             guint              property_id,
                                             GParamSpec        *pspec)
 {
@@ -1561,7 +1561,7 @@ ctk_container_class_install_child_property (GtkContainerClass *cclass,
 
 /**
  * ctk_container_class_install_child_properties:
- * @cclass: a #GtkContainerClass
+ * @cclass: a #CtkContainerClass
  * @n_pspecs: the length of the #GParamSpec array
  * @pspecs: (array length=n_pspecs): the #GParamSpec array defining the new
  *     child properties
@@ -1571,7 +1571,7 @@ ctk_container_class_install_child_property (GtkContainerClass *cclass,
  * Since: 3.18
  */
 void
-ctk_container_class_install_child_properties (GtkContainerClass  *cclass,
+ctk_container_class_install_child_properties (CtkContainerClass  *cclass,
                                               guint               n_pspecs,
                                               GParamSpec        **pspecs)
 {
@@ -1601,7 +1601,7 @@ ctk_container_class_install_child_properties (GtkContainerClass  *cclass,
 
 /**
  * ctk_container_class_find_child_property:
- * @cclass: (type GtkContainerClass): a #GtkContainerClass
+ * @cclass: (type CtkContainerClass): a #CtkContainerClass
  * @property_name: the name of the child property to find
  *
  * Finds a child property of a container class by name.
@@ -1625,7 +1625,7 @@ ctk_container_class_find_child_property (GObjectClass *cclass,
 
 /**
  * ctk_container_class_list_child_properties:
- * @cclass: (type GtkContainerClass): a #GtkContainerClass
+ * @cclass: (type CtkContainerClass): a #CtkContainerClass
  * @n_properties: location to return the number of child properties found
  *
  * Returns all child properties of a container class.
@@ -1653,23 +1653,23 @@ ctk_container_class_list_child_properties (GObjectClass *cclass,
 }
 
 static void
-ctk_container_add_unimplemented (GtkContainer     *container,
-                                 GtkWidget        *widget)
+ctk_container_add_unimplemented (CtkContainer     *container,
+                                 CtkWidget        *widget)
 {
-  g_warning ("GtkContainerClass::add not implemented for '%s'", g_type_name (G_TYPE_FROM_INSTANCE (container)));
+  g_warning ("CtkContainerClass::add not implemented for '%s'", g_type_name (G_TYPE_FROM_INSTANCE (container)));
 }
 
 static void
-ctk_container_remove_unimplemented (GtkContainer     *container,
-                                    GtkWidget        *widget)
+ctk_container_remove_unimplemented (CtkContainer     *container,
+                                    CtkWidget        *widget)
 {
-  g_warning ("GtkContainerClass::remove not implemented for '%s'", g_type_name (G_TYPE_FROM_INSTANCE (container)));
+  g_warning ("CtkContainerClass::remove not implemented for '%s'", g_type_name (G_TYPE_FROM_INSTANCE (container)));
 }
 
 static void
-ctk_container_init (GtkContainer *container)
+ctk_container_init (CtkContainer *container)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   container->priv = ctk_container_get_instance_private (container);
   priv = container->priv;
@@ -1682,10 +1682,10 @@ ctk_container_init (GtkContainer *container)
 }
 
 static void
-ctk_container_destroy (GtkWidget *widget)
+ctk_container_destroy (CtkWidget *widget)
 {
-  GtkContainer *container = CTK_CONTAINER (widget);
-  GtkContainerPrivate *priv = container->priv;
+  CtkContainer *container = CTK_CONTAINER (widget);
+  CtkContainerPrivate *priv = container->priv;
 
   if (priv->restyle_pending)
     priv->restyle_pending = FALSE;
@@ -1698,7 +1698,7 @@ ctk_container_destroy (GtkWidget *widget)
   if (priv->has_focus_chain)
     ctk_container_unset_focus_chain (container);
 
-  ctk_container_foreach (container, (GtkCallback) ctk_widget_destroy, NULL);
+  ctk_container_foreach (container, (CtkCallback) ctk_widget_destroy, NULL);
 
   CTK_WIDGET_CLASS (parent_class)->destroy (widget);
 }
@@ -1709,7 +1709,7 @@ ctk_container_set_property (GObject         *object,
                             const GValue    *value,
                             GParamSpec      *pspec)
 {
-  GtkContainer *container = CTK_CONTAINER (object);
+  CtkContainer *container = CTK_CONTAINER (object);
 
   switch (prop_id)
     {
@@ -1736,8 +1736,8 @@ ctk_container_get_property (GObject         *object,
                             GValue          *value,
                             GParamSpec      *pspec)
 {
-  GtkContainer *container = CTK_CONTAINER (object);
-  GtkContainerPrivate *priv = container->priv;
+  CtkContainer *container = CTK_CONTAINER (object);
+  CtkContainerPrivate *priv = container->priv;
 
   switch (prop_id)
     {
@@ -1754,9 +1754,9 @@ ctk_container_get_property (GObject         *object,
 }
 
 gboolean
-_ctk_container_get_border_width_set (GtkContainer *container)
+_ctk_container_get_border_width_set (CtkContainer *container)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_CONTAINER (container), FALSE);
 
@@ -1766,10 +1766,10 @@ _ctk_container_get_border_width_set (GtkContainer *container)
 }
 
 void
-_ctk_container_set_border_width_set (GtkContainer *container,
+_ctk_container_set_border_width_set (CtkContainer *container,
                                      gboolean      border_width_set)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
 
@@ -1780,7 +1780,7 @@ _ctk_container_set_border_width_set (GtkContainer *container,
 
 /**
  * ctk_container_set_border_width:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @border_width: amount of blank space to leave outside
  *   the container. Valid values are in the range 0-65535 pixels.
  *
@@ -1788,17 +1788,17 @@ _ctk_container_set_border_width_set (GtkContainer *container,
  *
  * The border width of a container is the amount of space to leave
  * around the outside of the container. The only exception to this is
- * #GtkWindow; because toplevel windows can’t leave space outside,
+ * #CtkWindow; because toplevel windows can’t leave space outside,
  * they leave the space inside. The border is added on all sides of
  * the container. To add space to only one side, use a specific
- * #GtkWidget:margin property on the child widget, for example
- * #GtkWidget:margin-top.
+ * #CtkWidget:margin property on the child widget, for example
+ * #CtkWidget:margin-top.
  **/
 void
-ctk_container_set_border_width (GtkContainer *container,
+ctk_container_set_border_width (CtkContainer *container,
                                 guint         border_width)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
 
@@ -1818,7 +1818,7 @@ ctk_container_set_border_width (GtkContainer *container,
 
 /**
  * ctk_container_get_border_width:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Retrieves the border width of the container. See
  * ctk_container_set_border_width().
@@ -1826,7 +1826,7 @@ ctk_container_set_border_width (GtkContainer *container,
  * Returns: the current border width
  **/
 guint
-ctk_container_get_border_width (GtkContainer *container)
+ctk_container_get_border_width (CtkContainer *container)
 {
   g_return_val_if_fail (CTK_IS_CONTAINER (container), 0);
 
@@ -1835,27 +1835,27 @@ ctk_container_get_border_width (GtkContainer *container)
 
 /**
  * ctk_container_add:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @widget: a widget to be placed inside @container
  *
  * Adds @widget to @container. Typically used for simple containers
- * such as #GtkWindow, #GtkFrame, or #GtkButton; for more complicated
- * layout containers such as #GtkBox or #GtkGrid, this function will
+ * such as #CtkWindow, #CtkFrame, or #CtkButton; for more complicated
+ * layout containers such as #CtkBox or #CtkGrid, this function will
  * pick default packing parameters that may not be correct.  So
  * consider functions such as ctk_box_pack_start() and
  * ctk_grid_attach() as an alternative to ctk_container_add() in
  * those cases. A widget may be added to only one container at a time;
  * you can’t place the same widget inside two different containers.
  *
- * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
+ * Note that some containers, such as #CtkScrolledWindow or #CtkListBox,
  * may add intermediate children between the added widget and the
  * container.
  */
 void
-ctk_container_add (GtkContainer *container,
-                   GtkWidget    *widget)
+ctk_container_add (CtkContainer *container,
+                   CtkWidget    *widget)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -1880,7 +1880,7 @@ ctk_container_add (GtkContainer *container,
 
 /**
  * ctk_container_remove:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @widget: a current child of @container
  *
  * Removes @widget from @container. @widget must be inside @container.
@@ -1894,8 +1894,8 @@ ctk_container_add (GtkContainer *container,
  * container and help break any circular reference count cycles.
  **/
 void
-ctk_container_remove (GtkContainer *container,
-                      GtkWidget    *widget)
+ctk_container_remove (CtkContainer *container,
+                      CtkWidget    *widget)
 {
   g_return_if_fail (CTK_IS_CONTAINER (container));
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -1912,11 +1912,11 @@ ctk_container_remove (GtkContainer *container,
 }
 
 static void
-ctk_container_real_set_resize_mode (GtkContainer  *container,
-                                    GtkResizeMode  resize_mode)
+ctk_container_real_set_resize_mode (CtkContainer  *container,
+                                    CtkResizeMode  resize_mode)
 {
-  GtkWidget *widget = CTK_WIDGET (container);
-  GtkContainerPrivate *priv = container->priv;
+  CtkWidget *widget = CTK_WIDGET (container);
+  CtkContainerPrivate *priv = container->priv;
 
   if (_ctk_widget_is_toplevel (widget) &&
       resize_mode == CTK_RESIZE_PARENT)
@@ -1935,7 +1935,7 @@ ctk_container_real_set_resize_mode (GtkContainer  *container,
 
 /**
  * ctk_container_set_resize_mode:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @resize_mode: the new resize mode
  *
  * Sets the resize mode for the container.
@@ -1949,10 +1949,10 @@ ctk_container_real_set_resize_mode (GtkContainer  *container,
  *     used.
  **/
 void
-ctk_container_set_resize_mode (GtkContainer  *container,
-                               GtkResizeMode  resize_mode)
+ctk_container_set_resize_mode (CtkContainer  *container,
+                               CtkResizeMode  resize_mode)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
   g_return_if_fail (resize_mode <= CTK_RESIZE_IMMEDIATE);
@@ -1964,10 +1964,10 @@ ctk_container_set_resize_mode (GtkContainer  *container,
 }
 
 void
-ctk_container_set_default_resize_mode (GtkContainer *container,
-                                       GtkResizeMode resize_mode)
+ctk_container_set_default_resize_mode (CtkContainer *container,
+                                       CtkResizeMode resize_mode)
 {
-  GtkContainerPrivate *priv = container->priv;
+  CtkContainerPrivate *priv = container->priv;
 
   if (priv->resize_mode_set)
     return;
@@ -1977,7 +1977,7 @@ ctk_container_set_default_resize_mode (GtkContainer *container,
 
 /**
  * ctk_container_get_resize_mode:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Returns the resize mode for the container. See
  * ctk_container_set_resize_mode ().
@@ -1988,8 +1988,8 @@ ctk_container_set_default_resize_mode (GtkContainer *container,
  *     anymore since frame clocks and might introduce obscure bugs if
  *     used.
  **/
-GtkResizeMode
-ctk_container_get_resize_mode (GtkContainer *container)
+CtkResizeMode
+ctk_container_get_resize_mode (CtkContainer *container)
 {
   g_return_val_if_fail (CTK_IS_CONTAINER (container), CTK_RESIZE_PARENT);
 
@@ -1998,7 +1998,7 @@ ctk_container_get_resize_mode (GtkContainer *container)
 
 /**
  * ctk_container_set_reallocate_redraws:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @needs_redraws: the new value for the container’s @reallocate_redraws flag
  *
  * Sets the @reallocate_redraws flag of the container to the given value.
@@ -2009,7 +2009,7 @@ ctk_container_get_resize_mode (GtkContainer *container)
  * Deprecated: 3.14: Call ctk_widget_queue_draw() in your size_allocate handler.
  **/
 void
-ctk_container_set_reallocate_redraws (GtkContainer *container,
+ctk_container_set_reallocate_redraws (CtkContainer *container,
                                       gboolean      needs_redraws)
 {
   g_return_if_fail (CTK_IS_CONTAINER (container));
@@ -2018,9 +2018,9 @@ ctk_container_set_reallocate_redraws (GtkContainer *container,
 }
 
 static gboolean
-ctk_container_needs_idle_sizer (GtkContainer *container)
+ctk_container_needs_idle_sizer (CtkContainer *container)
 {
-  GtkContainerPrivate *priv = container->priv;
+  CtkContainerPrivate *priv = container->priv;
 
   if (priv->resize_mode == CTK_RESIZE_PARENT)
     return FALSE;
@@ -2036,7 +2036,7 @@ ctk_container_needs_idle_sizer (GtkContainer *container)
 
 static void
 ctk_container_idle_sizer (GdkFrameClock *clock,
-			  GtkContainer  *container)
+			  CtkContainer  *container)
 {
   /* We validate the style contexts in a single loop before even trying
    * to handle resizes instead of doing validations inline.
@@ -2077,7 +2077,7 @@ ctk_container_idle_sizer (GdkFrameClock *clock,
 }
 
 static void
-ctk_container_start_idle_sizer (GtkContainer *container)
+ctk_container_start_idle_sizer (CtkContainer *container)
 {
   GdkFrameClock *clock;
 
@@ -2099,7 +2099,7 @@ ctk_container_start_idle_sizer (GtkContainer *container)
 }
 
 void
-_ctk_container_stop_idle_sizer (GtkContainer *container)
+_ctk_container_stop_idle_sizer (CtkContainer *container)
 {
   if (container->priv->resize_handler == 0)
     return;
@@ -2111,9 +2111,9 @@ _ctk_container_stop_idle_sizer (GtkContainer *container)
 }
 
 void
-ctk_container_queue_resize_handler (GtkContainer *container)
+ctk_container_queue_resize_handler (CtkContainer *container)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   g_return_if_fail (CTK_IS_RESIZE_CONTAINER (container));
@@ -2145,9 +2145,9 @@ ctk_container_queue_resize_handler (GtkContainer *container)
 }
 
 void
-_ctk_container_queue_restyle (GtkContainer *container)
+_ctk_container_queue_restyle (CtkContainer *container)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_if_fail (CTK_CONTAINER (container));
 
@@ -2161,14 +2161,14 @@ _ctk_container_queue_restyle (GtkContainer *container)
 }
 
 void
-_ctk_container_maybe_start_idle_sizer (GtkContainer *container)
+_ctk_container_maybe_start_idle_sizer (CtkContainer *container)
 {
   if (ctk_container_needs_idle_sizer (container))
     ctk_container_start_idle_sizer (container);
 }
 
 void
-ctk_container_check_resize (GtkContainer *container)
+ctk_container_check_resize (CtkContainer *container)
 {
   g_return_if_fail (CTK_IS_CONTAINER (container));
 
@@ -2176,11 +2176,11 @@ ctk_container_check_resize (GtkContainer *container)
 }
 
 static void
-ctk_container_real_check_resize (GtkContainer *container)
+ctk_container_real_check_resize (CtkContainer *container)
 {
-  GtkWidget *widget = CTK_WIDGET (container);
-  GtkAllocation allocation;
-  GtkRequisition requisition;
+  CtkWidget *widget = CTK_WIDGET (container);
+  CtkAllocation allocation;
+  CtkRequisition requisition;
   int baseline;
 
   if (_ctk_widget_get_alloc_needed (widget))
@@ -2220,15 +2220,15 @@ ctk_container_real_check_resize (GtkContainer *container)
  */
 /**
  * ctk_container_resize_children:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Deprecated: 3.10
  **/
 void
-ctk_container_resize_children (GtkContainer *container)
+ctk_container_resize_children (CtkContainer *container)
 {
-  GtkAllocation allocation;
-  GtkWidget *widget;
+  CtkAllocation allocation;
+  CtkWidget *widget;
   gint baseline;
 
   /* resizing invariants:
@@ -2245,12 +2245,12 @@ ctk_container_resize_children (GtkContainer *container)
 }
 
 static void
-ctk_container_adjust_size_request (GtkWidget         *widget,
-                                   GtkOrientation     orientation,
+ctk_container_adjust_size_request (CtkWidget         *widget,
+                                   CtkOrientation     orientation,
                                    gint              *minimum_size,
                                    gint              *natural_size)
 {
-  GtkContainer *container;
+  CtkContainer *container;
 
   container = CTK_CONTAINER (widget);
 
@@ -2272,11 +2272,11 @@ ctk_container_adjust_size_request (GtkWidget         *widget,
 }
 
 static void
-ctk_container_adjust_baseline_request (GtkWidget         *widget,
+ctk_container_adjust_baseline_request (CtkWidget         *widget,
 				       gint              *minimum_baseline,
 				       gint              *natural_baseline)
 {
-  GtkContainer *container;
+  CtkContainer *container;
 
   container = CTK_CONTAINER (widget);
 
@@ -2294,14 +2294,14 @@ ctk_container_adjust_baseline_request (GtkWidget         *widget,
 }
 
 static void
-ctk_container_adjust_size_allocation (GtkWidget         *widget,
-                                      GtkOrientation     orientation,
+ctk_container_adjust_size_allocation (CtkWidget         *widget,
+                                      CtkOrientation     orientation,
                                       gint              *minimum_size,
                                       gint              *natural_size,
                                       gint              *allocated_pos,
                                       gint              *allocated_size)
 {
-  GtkContainer *container;
+  CtkContainer *container;
   int border_width;
 
   container = CTK_CONTAINER (widget);
@@ -2316,10 +2316,10 @@ ctk_container_adjust_size_allocation (GtkWidget         *widget,
       *natural_size -= border_width * 2;
     }
 
-  /* Chain up to GtkWidgetClass *after* removing our border width from
+  /* Chain up to CtkWidgetClass *after* removing our border width from
    * the proposed allocation size. This is because it's possible that the
    * widget was allocated more space than it needs in a said orientation,
-   * if GtkWidgetClass does any alignments and thus limits the size to the
+   * if CtkWidgetClass does any alignments and thus limits the size to the
    * natural size... then we need that to be done *after* removing any margins
    * and padding values.
    */
@@ -2329,10 +2329,10 @@ ctk_container_adjust_size_allocation (GtkWidget         *widget,
 }
 
 static void
-ctk_container_adjust_baseline_allocation (GtkWidget         *widget,
+ctk_container_adjust_baseline_allocation (CtkWidget         *widget,
 					  gint              *baseline)
 {
-  GtkContainer *container;
+  CtkContainer *container;
   int border_width;
 
   container = CTK_CONTAINER (widget);
@@ -2355,10 +2355,10 @@ typedef struct {
 } RequestModeCount;
 
 static void
-count_request_modes (GtkWidget        *widget,
+count_request_modes (CtkWidget        *widget,
 		     RequestModeCount *count)
 {
-  GtkSizeRequestMode mode = ctk_widget_get_request_mode (widget);
+  CtkSizeRequestMode mode = ctk_widget_get_request_mode (widget);
 
   switch (mode)
     {
@@ -2374,13 +2374,13 @@ count_request_modes (GtkWidget        *widget,
     }
 }
 
-static GtkSizeRequestMode 
-ctk_container_get_request_mode (GtkWidget *widget)
+static CtkSizeRequestMode 
+ctk_container_get_request_mode (CtkWidget *widget)
 {
-  GtkContainer *container = CTK_CONTAINER (widget);
+  CtkContainer *container = CTK_CONTAINER (widget);
   RequestModeCount count = { 0, 0 };
 
-  ctk_container_forall (container, (GtkCallback)count_request_modes, &count);
+  ctk_container_forall (container, (CtkCallback)count_request_modes, &count);
 
   if (!count.hfw && !count.wfh)
     return CTK_SIZE_REQUEST_CONSTANT_SIZE;
@@ -2392,10 +2392,10 @@ ctk_container_get_request_mode (GtkWidget *widget)
 
 /**
  * ctk_container_class_handle_border_width:
- * @klass: the class struct of a #GtkContainer subclass
+ * @klass: the class struct of a #CtkContainer subclass
  *
- * Modifies a subclass of #GtkContainerClass to automatically add and
- * remove the border-width setting on GtkContainer.  This allows the
+ * Modifies a subclass of #CtkContainerClass to automatically add and
+ * remove the border-width setting on CtkContainer.  This allows the
  * subclass to ignore the border width in its size request and
  * allocate methods. The intent is for a subclass to invoke this
  * in its class_init function.
@@ -2406,7 +2406,7 @@ ctk_container_get_request_mode (GtkWidget *widget)
  * for them.
  */
 void
-ctk_container_class_handle_border_width (GtkContainerClass *klass)
+ctk_container_class_handle_border_width (CtkContainerClass *klass)
 {
   g_return_if_fail (CTK_IS_CONTAINER_CLASS (klass));
 
@@ -2415,7 +2415,7 @@ ctk_container_class_handle_border_width (GtkContainerClass *klass)
 
 /**
  * ctk_container_forall: (virtual forall)
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @callback: (scope call) (closure callback_data): a callback
  * @callback_data: callback user data
  *
@@ -2429,11 +2429,11 @@ ctk_container_class_handle_border_width (GtkContainerClass *klass)
  * than ctk_container_forall().
  **/
 void
-ctk_container_forall (GtkContainer *container,
-                      GtkCallback   callback,
+ctk_container_forall (CtkContainer *container,
+                      CtkCallback   callback,
                       gpointer      callback_data)
 {
-  GtkContainerClass *class;
+  CtkContainerClass *class;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
   g_return_if_fail (callback != NULL);
@@ -2446,7 +2446,7 @@ ctk_container_forall (GtkContainer *container,
 
 /**
  * ctk_container_foreach:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @callback: (scope call):  a callback
  * @callback_data: callback user data
  *
@@ -2463,11 +2463,11 @@ ctk_container_forall (GtkContainer *container,
  * rather than ctk_container_forall().
  **/
 void
-ctk_container_foreach (GtkContainer *container,
-                       GtkCallback   callback,
+ctk_container_foreach (CtkContainer *container,
+                       CtkCallback   callback,
                        gpointer      callback_data)
 {
-  GtkContainerClass *class;
+  CtkContainerClass *class;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
   g_return_if_fail (callback != NULL);
@@ -2480,21 +2480,21 @@ ctk_container_foreach (GtkContainer *container,
 
 /**
  * ctk_container_set_focus_child:
- * @container: a #GtkContainer
- * @child: (allow-none): a #GtkWidget, or %NULL
+ * @container: a #CtkContainer
+ * @child: (allow-none): a #CtkWidget, or %NULL
  *
  * Sets, or unsets if @child is %NULL, the focused child of @container.
  *
- * This function emits the GtkContainer::set_focus_child signal of
- * @container. Implementations of #GtkContainer can override the
+ * This function emits the CtkContainer::set_focus_child signal of
+ * @container. Implementations of #CtkContainer can override the
  * default behaviour by overriding the class closure of this signal.
  *
  * This is function is mostly meant to be used by widgets. Applications can use
  * ctk_widget_grab_focus() to manually set the focus to a specific widget.
  */
 void
-ctk_container_set_focus_child (GtkContainer *container,
-                               GtkWidget    *child)
+ctk_container_set_focus_child (CtkContainer *container,
+                               CtkWidget    *child)
 {
   g_return_if_fail (CTK_IS_CONTAINER (container));
   if (child)
@@ -2505,7 +2505,7 @@ ctk_container_set_focus_child (GtkContainer *container,
 
 /**
  * ctk_container_get_focus_child:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Returns the current focus child widget inside @container. This is not the
  * currently focused widget. That can be obtained by calling
@@ -2517,8 +2517,8 @@ ctk_container_set_focus_child (GtkContainer *container,
  *
  * Since: 2.14
  **/
-GtkWidget *
-ctk_container_get_focus_child (GtkContainer *container)
+CtkWidget *
+ctk_container_get_focus_child (CtkContainer *container)
 {
   g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
 
@@ -2527,15 +2527,15 @@ ctk_container_get_focus_child (GtkContainer *container)
 
 /**
  * ctk_container_get_children:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Returns the container’s non-internal children. See
  * ctk_container_forall() for details on what constitutes an "internal" child.
  *
- * Returns: (element-type GtkWidget) (transfer container): a newly-allocated list of the container’s non-internal children.
+ * Returns: (element-type CtkWidget) (transfer container): a newly-allocated list of the container’s non-internal children.
  **/
 GList*
-ctk_container_get_children (GtkContainer *container)
+ctk_container_get_children (CtkContainer *container)
 {
   GList *children = NULL;
 
@@ -2547,11 +2547,11 @@ ctk_container_get_children (GtkContainer *container)
 }
 
 static void
-ctk_container_child_position_callback (GtkWidget *widget,
+ctk_container_child_position_callback (CtkWidget *widget,
                                        gpointer   client_data)
 {
   struct {
-    GtkWidget *child;
+    CtkWidget *child;
     guint i;
     guint index;
   } *data = client_data;
@@ -2562,11 +2562,11 @@ ctk_container_child_position_callback (GtkWidget *widget,
 }
 
 static gchar*
-ctk_container_child_default_composite_name (GtkContainer *container,
-                                            GtkWidget    *child)
+ctk_container_child_default_composite_name (CtkContainer *container,
+                                            CtkWidget    *child)
 {
   struct {
-    GtkWidget *child;
+    CtkWidget *child;
     guint i;
     guint index;
   } data;
@@ -2588,8 +2588,8 @@ ctk_container_child_default_composite_name (GtkContainer *container,
 }
 
 gchar*
-_ctk_container_child_composite_name (GtkContainer *container,
-                                    GtkWidget    *child)
+_ctk_container_child_composite_name (CtkContainer *container,
+                                    CtkWidget    *child)
 {
   gboolean composite_child;
 
@@ -2609,7 +2609,7 @@ _ctk_container_child_composite_name (GtkContainer *container,
       name = g_object_get_qdata (G_OBJECT (child), quark_composite_name);
       if (!name)
         {
-          GtkContainerClass *class;
+          CtkContainerClass *class;
 
           class = CTK_CONTAINER_GET_CLASS (container);
           if (class->composite_name)
@@ -2630,7 +2630,7 @@ typedef struct {
 } ComputeExpandData;
 
 static void
-ctk_container_compute_expand_callback (GtkWidget *widget,
+ctk_container_compute_expand_callback (CtkWidget *widget,
                                        gpointer   client_data)
 {
   ComputeExpandData *data = client_data;
@@ -2639,7 +2639,7 @@ ctk_container_compute_expand_callback (GtkWidget *widget,
    * have to expand, so we only recurse into children until we find
    * one that expands and then we basically don't do any more
    * work. This means that we can leave some children in a
-   * need_compute_expand state, which is fine, as long as GtkWidget
+   * need_compute_expand state, which is fine, as long as CtkWidget
    * doesn't rely on an invariant that "if a child has
    * need_compute_expand, its parents also do"
    *
@@ -2654,7 +2654,7 @@ ctk_container_compute_expand_callback (GtkWidget *widget,
 }
 
 static void
-ctk_container_compute_expand (GtkWidget         *widget,
+ctk_container_compute_expand (CtkWidget         *widget,
                               gboolean          *hexpand_p,
                               gboolean          *vexpand_p)
 {
@@ -2672,10 +2672,10 @@ ctk_container_compute_expand (GtkWidget         *widget,
 }
 
 static void
-ctk_container_real_set_focus_child (GtkContainer     *container,
-                                    GtkWidget        *child)
+ctk_container_real_set_focus_child (CtkContainer     *container,
+                                    CtkWidget        *child)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
   g_return_if_fail (child == NULL || CTK_IS_WIDGET (child));
@@ -2696,10 +2696,10 @@ ctk_container_real_set_focus_child (GtkContainer     *container,
   /* Check for h/v adjustments and scroll to show the focus child if possible */
   if (priv->focus_child)
     {
-      GtkAdjustment *hadj;
-      GtkAdjustment *vadj;
-      GtkAllocation allocation;
-      GtkWidget *focus_child;
+      CtkAdjustment *hadj;
+      CtkAdjustment *vadj;
+      CtkAllocation allocation;
+      CtkWidget *focus_child;
       gint x, y;
 
       hadj = g_object_get_qdata (G_OBJECT (container), hadjustment_key_id);
@@ -2732,7 +2732,7 @@ ctk_container_real_set_focus_child (GtkContainer     *container,
 }
 
 static GList*
-get_focus_chain (GtkContainer *container)
+get_focus_chain (CtkContainer *container)
 {
   return g_object_get_qdata (G_OBJECT (container), quark_focus_chain);
 }
@@ -2740,7 +2740,7 @@ get_focus_chain (GtkContainer *container)
 /* same as ctk_container_get_children, except it includes internals
  */
 GList *
-ctk_container_get_all_children (GtkContainer *container)
+ctk_container_get_all_children (CtkContainer *container)
 {
   GList *children = NULL;
 
@@ -2751,12 +2751,12 @@ ctk_container_get_all_children (GtkContainer *container)
   return children;
 }
 
-static GtkWidgetPath *
-ctk_container_real_get_path_for_child (GtkContainer *container,
-                                       GtkWidget    *child)
+static CtkWidgetPath *
+ctk_container_real_get_path_for_child (CtkContainer *container,
+                                       CtkWidget    *child)
 {
-  GtkWidgetPath *path;
-  GtkWidget *widget = CTK_WIDGET (container);
+  CtkWidgetPath *path;
+  CtkWidget *widget = CTK_WIDGET (container);
 
   path = _ctk_widget_create_path (widget);
 
@@ -2766,14 +2766,14 @@ ctk_container_real_get_path_for_child (GtkContainer *container,
 }
 
 static gboolean
-ctk_container_focus (GtkWidget        *widget,
-                     GtkDirectionType  direction)
+ctk_container_focus (CtkWidget        *widget,
+                     CtkDirectionType  direction)
 {
   GList *children;
   GList *sorted_children;
   gint return_val;
-  GtkContainer *container;
-  GtkContainerPrivate *priv;
+  CtkContainer *container;
+  CtkContainerPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_CONTAINER (widget), FALSE);
 
@@ -2826,14 +2826,14 @@ tab_compare (gconstpointer a,
              gconstpointer b,
              gpointer      data)
 {
-  GtkAllocation child1_allocation, child2_allocation;
-  const GtkWidget *child1 = a;
-  const GtkWidget *child2 = b;
-  GtkTextDirection text_direction = GPOINTER_TO_INT (data);
+  CtkAllocation child1_allocation, child2_allocation;
+  const CtkWidget *child1 = a;
+  const CtkWidget *child2 = b;
+  CtkTextDirection text_direction = GPOINTER_TO_INT (data);
   gint y1, y2;
 
-  _ctk_widget_get_allocation ((GtkWidget *) child1, &child1_allocation);
-  _ctk_widget_get_allocation ((GtkWidget *) child2, &child2_allocation);
+  _ctk_widget_get_allocation ((CtkWidget *) child1, &child1_allocation);
+  _ctk_widget_get_allocation ((CtkWidget *) child2, &child2_allocation);
 
   y1 = child1_allocation.y + child1_allocation.height / 2;
   y2 = child2_allocation.y + child2_allocation.height / 2;
@@ -2853,12 +2853,12 @@ tab_compare (gconstpointer a,
 }
 
 static GList *
-ctk_container_focus_sort_tab (GtkContainer     *container,
+ctk_container_focus_sort_tab (CtkContainer     *container,
                               GList            *children,
-                              GtkDirectionType  direction,
-                              GtkWidget        *old_focus)
+                              CtkDirectionType  direction,
+                              CtkWidget        *old_focus)
 {
-  GtkTextDirection text_direction = _ctk_widget_get_direction (CTK_WIDGET (container));
+  CtkTextDirection text_direction = _ctk_widget_get_direction (CTK_WIDGET (container));
   children = g_list_sort_with_data (children, tab_compare, GINT_TO_POINTER (text_direction));
 
   /* if we are going backwards then reverse the order
@@ -2874,8 +2874,8 @@ ctk_container_focus_sort_tab (GtkContainer     *container,
  * allocation of @container.
  */
 static gboolean
-get_allocation_coords (GtkContainer  *container,
-                       GtkWidget     *widget,
+get_allocation_coords (CtkContainer  *container,
+                       CtkWidget     *widget,
                        GdkRectangle  *allocation)
 {
   ctk_widget_get_allocation (widget, allocation);
@@ -2888,19 +2888,19 @@ get_allocation_coords (GtkContainer  *container,
  * the focus widget and container. This widget, if it exists,
  * acts as the starting widget for focus navigation.
  */
-static GtkWidget *
-find_old_focus (GtkContainer *container,
+static CtkWidget *
+find_old_focus (CtkContainer *container,
                 GList        *children)
 {
   GList *tmp_list = children;
   while (tmp_list)
     {
-      GtkWidget *child = tmp_list->data;
-      GtkWidget *widget = child;
+      CtkWidget *child = tmp_list->data;
+      CtkWidget *widget = child;
 
-      while (widget && widget != (GtkWidget *)container)
+      while (widget && widget != (CtkWidget *)container)
         {
-          GtkWidget *parent;
+          CtkWidget *parent;
 
           parent = _ctk_widget_get_parent (widget);
 
@@ -2920,12 +2920,12 @@ find_old_focus (GtkContainer *container,
 }
 
 static gboolean
-old_focus_coords (GtkContainer *container,
+old_focus_coords (CtkContainer *container,
                   GdkRectangle *old_focus_rect)
 {
-  GtkWidget *widget = CTK_WIDGET (container);
-  GtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
-  GtkWidget *old_focus;
+  CtkWidget *widget = CTK_WIDGET (container);
+  CtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
+  CtkWidget *old_focus;
 
   if (CTK_IS_WINDOW (toplevel))
     {
@@ -2941,7 +2941,7 @@ typedef struct _CompareInfo CompareInfo;
 
 struct _CompareInfo
 {
-  GtkContainer *container;
+  CtkContainer *container;
   gint x;
   gint y;
   gboolean reverse;
@@ -2957,8 +2957,8 @@ up_down_compare (gconstpointer a,
   CompareInfo *compare = data;
   gint y1, y2;
 
-  get_allocation_coords (compare->container, (GtkWidget *)a, &allocation1);
-  get_allocation_coords (compare->container, (GtkWidget *)b, &allocation2);
+  get_allocation_coords (compare->container, (CtkWidget *)a, &allocation1);
+  get_allocation_coords (compare->container, (CtkWidget *)b, &allocation2);
 
   y1 = allocation1.y + allocation1.height / 2;
   y2 = allocation2.y + allocation2.height / 2;
@@ -2978,10 +2978,10 @@ up_down_compare (gconstpointer a,
 }
 
 static GList *
-ctk_container_focus_sort_up_down (GtkContainer     *container,
+ctk_container_focus_sort_up_down (CtkContainer     *container,
                                   GList            *children,
-                                  GtkDirectionType  direction,
-                                  GtkWidget        *old_focus)
+                                  CtkDirectionType  direction,
+                                  CtkWidget        *old_focus)
 {
   CompareInfo compare;
   GList *tmp_list;
@@ -3012,7 +3012,7 @@ ctk_container_focus_sort_up_down (GtkContainer     *container,
       tmp_list = children;
       while (tmp_list)
         {
-          GtkWidget *child = tmp_list->data;
+          CtkWidget *child = tmp_list->data;
           GList *next = tmp_list->next;
           gint child_x1, child_x2;
           GdkRectangle child_allocation;
@@ -3045,8 +3045,8 @@ ctk_container_focus_sort_up_down (GtkContainer     *container,
     {
       /* No old focus widget, need to figure out starting x,y some other way
        */
-      GtkAllocation allocation;
-      GtkWidget *widget = CTK_WIDGET (container);
+      CtkAllocation allocation;
+      CtkWidget *widget = CTK_WIDGET (container);
       GdkRectangle old_focus_rect;
 
       _ctk_widget_get_allocation (widget, &allocation);
@@ -3087,8 +3087,8 @@ left_right_compare (gconstpointer a,
   CompareInfo *compare = data;
   gint x1, x2;
 
-  get_allocation_coords (compare->container, (GtkWidget *)a, &allocation1);
-  get_allocation_coords (compare->container, (GtkWidget *)b, &allocation2);
+  get_allocation_coords (compare->container, (CtkWidget *)a, &allocation1);
+  get_allocation_coords (compare->container, (CtkWidget *)b, &allocation2);
 
   x1 = allocation1.x + allocation1.width / 2;
   x2 = allocation2.x + allocation2.width / 2;
@@ -3108,10 +3108,10 @@ left_right_compare (gconstpointer a,
 }
 
 static GList *
-ctk_container_focus_sort_left_right (GtkContainer     *container,
+ctk_container_focus_sort_left_right (CtkContainer     *container,
                                      GList            *children,
-                                     GtkDirectionType  direction,
-                                     GtkWidget        *old_focus)
+                                     CtkDirectionType  direction,
+                                     CtkWidget        *old_focus)
 {
   CompareInfo compare;
   GList *tmp_list;
@@ -3142,7 +3142,7 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
       tmp_list = children;
       while (tmp_list)
         {
-          GtkWidget *child = tmp_list->data;
+          CtkWidget *child = tmp_list->data;
           GList *next = tmp_list->next;
           gint child_y1, child_y2;
           GdkRectangle child_allocation;
@@ -3175,8 +3175,8 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
     {
       /* No old focus widget, need to figure out starting x,y some other way
        */
-      GtkAllocation allocation;
-      GtkWidget *widget = CTK_WIDGET (container);
+      CtkAllocation allocation;
+      CtkWidget *widget = CTK_WIDGET (container);
       GdkRectangle old_focus_rect;
 
       _ctk_widget_get_allocation (widget, &allocation);
@@ -3209,7 +3209,7 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
 
 /**
  * ctk_container_focus_sort:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @children:  a list of descendents of @container (they don't
  *             have to be direct children)
  * @direction: focus direction
@@ -3227,10 +3227,10 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
  *   removed.
  **/
 GList *
-_ctk_container_focus_sort (GtkContainer     *container,
+_ctk_container_focus_sort (CtkContainer     *container,
                            GList            *children,
-                           GtkDirectionType  direction,
-                           GtkWidget        *old_focus)
+                           CtkDirectionType  direction,
+                           CtkWidget        *old_focus)
 {
   GList *visible_children = NULL;
 
@@ -3260,13 +3260,13 @@ _ctk_container_focus_sort (GtkContainer     *container,
 }
 
 static gboolean
-ctk_container_focus_move (GtkContainer     *container,
+ctk_container_focus_move (CtkContainer     *container,
                           GList            *children,
-                          GtkDirectionType  direction)
+                          CtkDirectionType  direction)
 {
-  GtkContainerPrivate *priv = container->priv;
-  GtkWidget *focus_child;
-  GtkWidget *child;
+  CtkContainerPrivate *priv = container->priv;
+  CtkWidget *focus_child;
+  CtkWidget *child;
 
   focus_child = priv->focus_child;
 
@@ -3301,7 +3301,7 @@ ctk_container_focus_move (GtkContainer     *container,
 
 
 static void
-ctk_container_children_callback (GtkWidget *widget,
+ctk_container_children_callback (CtkWidget *widget,
                                  gpointer   client_data)
 {
   GList **children;
@@ -3311,10 +3311,10 @@ ctk_container_children_callback (GtkWidget *widget,
 }
 
 static void
-chain_widget_destroyed (GtkWidget *widget,
+chain_widget_destroyed (CtkWidget *widget,
                         gpointer   user_data)
 {
-  GtkContainer *container;
+  CtkContainer *container;
   GList *chain;
 
   container = CTK_CONTAINER (user_data);
@@ -3332,8 +3332,8 @@ chain_widget_destroyed (GtkWidget *widget,
 
 /**
  * ctk_container_set_focus_chain:
- * @container: a #GtkContainer
- * @focusable_widgets: (transfer none) (element-type GtkWidget):
+ * @container: a #CtkContainer
+ * @focusable_widgets: (transfer none) (element-type CtkWidget):
  *     the new focus chain
  *
  * Sets a focus chain, overriding the one computed automatically by GTK+.
@@ -3345,15 +3345,15 @@ chain_widget_destroyed (GtkWidget *widget,
  * when the focus chain is actually traversed.
  *
  * Deprecated: 3.24: For overriding focus behavior, use the
- *     GtkWidgetClass::focus signal.
+ *     CtkWidgetClass::focus signal.
  **/
 void
-ctk_container_set_focus_chain (GtkContainer *container,
+ctk_container_set_focus_chain (CtkContainer *container,
                                GList        *focusable_widgets)
 {
   GList *chain;
   GList *tmp_list;
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
 
@@ -3394,8 +3394,8 @@ ctk_container_set_focus_chain (GtkContainer *container,
 
 /**
  * ctk_container_get_focus_chain:
- * @container:         a #GtkContainer
- * @focusable_widgets: (element-type GtkWidget) (out) (transfer container): location
+ * @container:         a #CtkContainer
+ * @focusable_widgets: (element-type CtkWidget) (out) (transfer container): location
  *                     to store the focus chain of the
  *                     container, or %NULL. You should free this list
  *                     using g_list_free() when you are done with it, however
@@ -3412,13 +3412,13 @@ ctk_container_set_focus_chain (GtkContainer *container,
  * has been set explicitly.
  *
  * Deprecated: 3.24: For overriding focus behavior, use the
- *     GtkWidgetClass::focus signal.
+ *     CtkWidgetClass::focus signal.
  **/
 gboolean
-ctk_container_get_focus_chain (GtkContainer *container,
+ctk_container_get_focus_chain (CtkContainer *container,
                                GList       **focus_chain)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_CONTAINER (container), FALSE);
 
@@ -3437,17 +3437,17 @@ ctk_container_get_focus_chain (GtkContainer *container,
 
 /**
  * ctk_container_unset_focus_chain:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Removes a focus chain explicitly set with ctk_container_set_focus_chain().
  *
  * Deprecated: 3.24: For overriding focus behavior, use the
- *     GtkWidgetClass::focus signal.
+ *     CtkWidgetClass::focus signal.
  **/
 void
-ctk_container_unset_focus_chain (GtkContainer  *container)
+ctk_container_unset_focus_chain (CtkContainer  *container)
 {
-  GtkContainerPrivate *priv;
+  CtkContainerPrivate *priv;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));
 
@@ -3480,7 +3480,7 @@ ctk_container_unset_focus_chain (GtkContainer  *container)
 
 /**
  * ctk_container_set_focus_vadjustment:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @adjustment: an adjustment which should be adjusted when the focus
  *   is moved among the descendents of @container
  *
@@ -3495,8 +3495,8 @@ ctk_container_unset_focus_chain (GtkContainer  *container)
  * system as the allocation for immediate children of the container.
  */
 void
-ctk_container_set_focus_vadjustment (GtkContainer  *container,
-                                     GtkAdjustment *adjustment)
+ctk_container_set_focus_vadjustment (CtkContainer  *container,
+                                     CtkAdjustment *adjustment)
 {
   g_return_if_fail (CTK_IS_CONTAINER (container));
   if (adjustment)
@@ -3513,7 +3513,7 @@ ctk_container_set_focus_vadjustment (GtkContainer  *container,
 
 /**
  * ctk_container_get_focus_vadjustment:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Retrieves the vertical focus adjustment for the container. See
  * ctk_container_set_focus_vadjustment().
@@ -3521,10 +3521,10 @@ ctk_container_set_focus_vadjustment (GtkContainer  *container,
  * Returns: (nullable) (transfer none): the vertical focus adjustment, or
  *   %NULL if none has been set.
  **/
-GtkAdjustment *
-ctk_container_get_focus_vadjustment (GtkContainer *container)
+CtkAdjustment *
+ctk_container_get_focus_vadjustment (CtkContainer *container)
 {
-  GtkAdjustment *vadjustment;
+  CtkAdjustment *vadjustment;
 
   g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
 
@@ -3535,7 +3535,7 @@ ctk_container_get_focus_vadjustment (GtkContainer *container)
 
 /**
  * ctk_container_set_focus_hadjustment:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @adjustment: an adjustment which should be adjusted when the focus is
  *   moved among the descendents of @container
  *
@@ -3550,8 +3550,8 @@ ctk_container_get_focus_vadjustment (GtkContainer *container)
  * system as the allocation for immediate children of the container.
  */
 void
-ctk_container_set_focus_hadjustment (GtkContainer  *container,
-                                     GtkAdjustment *adjustment)
+ctk_container_set_focus_hadjustment (CtkContainer  *container,
+                                     CtkAdjustment *adjustment)
 {
   g_return_if_fail (CTK_IS_CONTAINER (container));
   if (adjustment)
@@ -3568,7 +3568,7 @@ ctk_container_set_focus_hadjustment (GtkContainer  *container,
 
 /**
  * ctk_container_get_focus_hadjustment:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  *
  * Retrieves the horizontal focus adjustment for the container. See
  * ctk_container_set_focus_hadjustment ().
@@ -3576,10 +3576,10 @@ ctk_container_set_focus_hadjustment (GtkContainer  *container,
  * Returns: (nullable) (transfer none): the horizontal focus adjustment, or %NULL if
  *   none has been set.
  **/
-GtkAdjustment *
-ctk_container_get_focus_hadjustment (GtkContainer *container)
+CtkAdjustment *
+ctk_container_get_focus_hadjustment (CtkContainer *container)
 {
-  GtkAdjustment *hadjustment;
+  CtkAdjustment *hadjustment;
 
   g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
 
@@ -3590,27 +3590,27 @@ ctk_container_get_focus_hadjustment (GtkContainer *container)
 
 
 static void
-ctk_container_show_all (GtkWidget *widget)
+ctk_container_show_all (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_CONTAINER (widget));
 
   ctk_container_foreach (CTK_CONTAINER (widget),
-                         (GtkCallback) ctk_widget_show_all,
+                         (CtkCallback) ctk_widget_show_all,
                          NULL);
   ctk_widget_show (widget);
 }
 
 typedef struct {
-  GtkWidget *child;
+  CtkWidget *child;
   int window_depth;
 } ChildOrderInfo;
 
 static void
-ctk_container_draw_forall (GtkWidget *widget,
+ctk_container_draw_forall (CtkWidget *widget,
                            gpointer   client_data)
 {
   struct {
-    GtkContainer *container;
+    CtkContainer *container;
     GArray *child_infos;
     cairo_t *cr;
   } *data = client_data;
@@ -3643,15 +3643,15 @@ compare_children_for_draw (gconstpointer  _a,
 }
 
 static gint
-ctk_container_draw (GtkWidget *widget,
+ctk_container_draw (CtkWidget *widget,
                     cairo_t   *cr)
 {
-  GtkContainer *container = CTK_CONTAINER (widget);
+  CtkContainer *container = CTK_CONTAINER (widget);
   GArray *child_infos;
   int i;
   ChildOrderInfo *child_info;
   struct {
-    GtkContainer *container;
+    CtkContainer *container;
     GArray *child_infos;
     cairo_t *cr;
   } data;
@@ -3679,7 +3679,7 @@ ctk_container_draw (GtkWidget *widget,
 }
 
 static void
-ctk_container_map_child (GtkWidget *child,
+ctk_container_map_child (CtkWidget *child,
                          gpointer   client_data)
 {
   if (_ctk_widget_get_visible (child) &&
@@ -3689,7 +3689,7 @@ ctk_container_map_child (GtkWidget *child,
 }
 
 static void
-ctk_container_map (GtkWidget *widget)
+ctk_container_map (CtkWidget *widget)
 {
   ctk_widget_set_mapped (widget, TRUE);
 
@@ -3702,26 +3702,26 @@ ctk_container_map (GtkWidget *widget)
 }
 
 static void
-ctk_container_unmap (GtkWidget *widget)
+ctk_container_unmap (CtkWidget *widget)
 {
   ctk_widget_set_mapped (widget, FALSE);
 
   /* hide our window first so user doesn't see all the child windows
    * vanishing one by one.  (only matters these days if one of the
    * children has an actual native window instead of client-side
-   * window, e.g. a GtkSocket would)
+   * window, e.g. a CtkSocket would)
    */
   if (_ctk_widget_get_has_window (widget))
     gdk_window_hide (_ctk_widget_get_window (widget));
 
   ctk_container_forall (CTK_CONTAINER (widget),
-                        (GtkCallback)ctk_widget_unmap,
+                        (CtkCallback)ctk_widget_unmap,
                         NULL);
 }
 
 static gboolean
-ctk_container_should_propagate_draw (GtkContainer   *container,
-                                     GtkWidget      *child,
+ctk_container_should_propagate_draw (CtkContainer   *container,
+                                     CtkWidget      *child,
                                      cairo_t        *cr)
 {
   GdkWindow *child_in_window;
@@ -3743,11 +3743,11 @@ ctk_container_should_propagate_draw (GtkContainer   *container,
 }
 
 static void
-union_with_clip (GtkWidget *widget,
+union_with_clip (CtkWidget *widget,
                  gpointer   data)
 {
   GdkRectangle *clip = data;
-  GtkAllocation widget_clip;
+  CtkAllocation widget_clip;
 
   if (!ctk_widget_is_visible (widget) ||
       !_ctk_widget_get_child_visible (widget))
@@ -3762,26 +3762,26 @@ union_with_clip (GtkWidget *widget,
 }
 
 void
-ctk_container_get_children_clip (GtkContainer  *container,
-                                 GtkAllocation *out_clip)
+ctk_container_get_children_clip (CtkContainer  *container,
+                                 CtkAllocation *out_clip)
 {
-  memset (out_clip, 0, sizeof (GtkAllocation));
+  memset (out_clip, 0, sizeof (CtkAllocation));
 
   ctk_container_forall (container, union_with_clip, out_clip);
 }
 
 /**
  * ctk_container_propagate_draw:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @child: a child of @container
  * @cr: Cairo context as passed to the container. If you want to use @cr
  *   in container’s draw function, consider using cairo_save() and
  *   cairo_restore() before calling this function.
  *
  * When a container receives a call to the draw function, it must send
- * synthetic #GtkWidget::draw calls to all children that don’t have their
+ * synthetic #CtkWidget::draw calls to all children that don’t have their
  * own #GdkWindows. This function provides a convenient way of doing this.
- * A container, when it receives a call to its #GtkWidget::draw function,
+ * A container, when it receives a call to its #CtkWidget::draw function,
  * calls ctk_container_propagate_draw() once for each child, passing in
  * the @cr the container received.
  *
@@ -3791,15 +3791,15 @@ ctk_container_get_children_clip (GtkContainer  *container,
  * ctk_widget_draw() on the child directly.
  *
  * In most cases, a container can simply either inherit the
- * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
- * and then chain to the ::draw implementation from #GtkContainer.
+ * #CtkWidget::draw implementation from #CtkContainer, or do some drawing
+ * and then chain to the ::draw implementation from #CtkContainer.
  **/
 void
-ctk_container_propagate_draw (GtkContainer *container,
-                              GtkWidget    *child,
+ctk_container_propagate_draw (CtkContainer *container,
+                              CtkWidget    *child,
                               cairo_t      *cr)
 {
-  GtkAllocation allocation;
+  CtkAllocation allocation;
   GdkWindow *window, *w;
   int x, y;
 
@@ -3856,30 +3856,30 @@ ctk_container_propagate_draw (GtkContainer *container,
 }
 
 gboolean
-_ctk_container_get_reallocate_redraws (GtkContainer *container)
+_ctk_container_get_reallocate_redraws (CtkContainer *container)
 {
   return container->priv->reallocate_redraws;
 }
 
 /**
  * ctk_container_get_path_for_child:
- * @container: a #GtkContainer
+ * @container: a #CtkContainer
  * @child: a child of @container
  *
  * Returns a newly created widget path representing all the widget hierarchy
  * from the toplevel down to and including @child.
  *
- * Returns: A newly created #GtkWidgetPath
+ * Returns: A newly created #CtkWidgetPath
  **/
-GtkWidgetPath *
-ctk_container_get_path_for_child (GtkContainer *container,
-                                  GtkWidget    *child)
+CtkWidgetPath *
+ctk_container_get_path_for_child (CtkContainer *container,
+                                  CtkWidget    *child)
 {
-  GtkWidgetPath *path;
+  CtkWidgetPath *path;
 
   g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
   g_return_val_if_fail (CTK_IS_WIDGET (child), NULL);
-  g_return_val_if_fail (container == (GtkContainer *) _ctk_widget_get_parent (child), NULL);
+  g_return_val_if_fail (container == (CtkContainer *) _ctk_widget_get_parent (child), NULL);
 
   path = CTK_CONTAINER_GET_CLASS (container)->get_path_for_child (container, child);
   if (ctk_widget_path_get_object_type (path) != G_OBJECT_TYPE (child))

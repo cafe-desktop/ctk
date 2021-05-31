@@ -1,9 +1,9 @@
 /* Tree View/Tree Store
  *
- * The GtkTreeStore is used to store data in tree form, to be
- * used later on by a GtkTreeView to display it. This demo builds
- * a simple GtkTreeStore and displays it. If you're new to the
- * GtkTreeView widgets and associates, look into the GtkListStore
+ * The CtkTreeStore is used to store data in tree form, to be
+ * used later on by a CtkTreeView to display it. This demo builds
+ * a simple CtkTreeStore and displays it. If you're new to the
+ * CtkTreeView widgets and associates, look into the CtkListStore
  * example first.
  *
  */
@@ -159,11 +159,11 @@ static TreeItem toplevel[] =
 };
 
 
-static GtkTreeModel *
+static CtkTreeModel *
 create_model (void)
 {
-  GtkTreeStore *model;
-  GtkTreeIter iter;
+  CtkTreeStore *model;
+  CtkTreeIter iter;
   TreeItem *month = toplevel;
 
   /* create tree store */
@@ -197,7 +197,7 @@ create_model (void)
       /* add children */
       while (holiday->label)
         {
-          GtkTreeIter child_iter;
+          CtkTreeIter child_iter;
 
           ctk_tree_store_append (model, &child_iter, &iter);
           ctk_tree_store_set (model, &child_iter,
@@ -221,13 +221,13 @@ create_model (void)
 }
 
 static void
-item_toggled (GtkCellRendererToggle *cell,
+item_toggled (CtkCellRendererToggle *cell,
               gchar                 *path_str,
               gpointer               data)
 {
-  GtkTreeModel *model = (GtkTreeModel *)data;
-  GtkTreePath *path = ctk_tree_path_new_from_string (path_str);
-  GtkTreeIter iter;
+  CtkTreeModel *model = (CtkTreeModel *)data;
+  CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
+  CtkTreeIter iter;
   gboolean toggle_item;
 
   gint *column;
@@ -250,12 +250,12 @@ item_toggled (GtkCellRendererToggle *cell,
 }
 
 static void
-add_columns (GtkTreeView *treeview)
+add_columns (CtkTreeView *treeview)
 {
   gint col_offset;
-  GtkCellRenderer *renderer;
-  GtkTreeViewColumn *column;
-  GtkTreeModel *model = ctk_tree_view_get_model (treeview);
+  CtkCellRenderer *renderer;
+  CtkTreeViewColumn *column;
+  CtkTreeModel *model = ctk_tree_view_get_model (treeview);
 
   /* column for holiday names */
   renderer = ctk_cell_renderer_text_new ();
@@ -377,17 +377,17 @@ add_columns (GtkTreeView *treeview)
   ctk_tree_view_column_set_clickable (CTK_TREE_VIEW_COLUMN (column), TRUE);
 }
 
-GtkWidget *
-do_tree_store (GtkWidget *do_widget)
+CtkWidget *
+do_tree_store (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkWidget *vbox;
-      GtkWidget *sw;
-      GtkWidget *treeview;
-      GtkTreeModel *model;
+      CtkWidget *vbox;
+      CtkWidget *sw;
+      CtkWidget *treeview;
+      CtkTreeModel *model;
 
       /* create window, etc */
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);

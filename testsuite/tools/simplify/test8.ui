@@ -1,8 +1,8 @@
 <!-- non-default child property remains -->
 <interface>
-  <object class="GtkBox">
+  <object class="CtkBox">
     <child>
-      <object class="GtkLabel">
+      <object class="CtkLabel">
       </object>
       <packing>
         <property name="expand">True</property>

@@ -1539,7 +1539,7 @@ gdk_device_ungrab (GdkDevice  *device,
  * Note that the pointer should normally be under the
  * control of the user. This function was added to cover
  * some rare use cases like keyboard navigation support
- * for the color picker in the #GtkColorSelectionDialog.
+ * for the color picker in the #CtkColorSelectionDialog.
  *
  * Since: 3.0
  **/

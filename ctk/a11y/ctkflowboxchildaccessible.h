@@ -28,23 +28,23 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE               (ctk_flow_box_child_accessible_get_type ())
-#define CTK_FLOW_BOX_CHILD_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE, GtkFlowBoxChildAccessible))
-#define CTK_FLOW_BOX_CHILD_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE, GtkFlowBoxChildAccessibleClass))
+#define CTK_FLOW_BOX_CHILD_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE, CtkFlowBoxChildAccessible))
+#define CTK_FLOW_BOX_CHILD_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE, CtkFlowBoxChildAccessibleClass))
 #define CTK_IS_FLOW_BOX_CHILD_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE))
 #define CTK_IS_FLOW_BOX_CHILD_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE))
-#define CTK_FLOW_BOX_CHILD_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE, GtkFlowBoxChildAccessibleClass))
+#define CTK_FLOW_BOX_CHILD_ACCESSIBLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE, CtkFlowBoxChildAccessibleClass))
 
-typedef struct _GtkFlowBoxChildAccessible        GtkFlowBoxChildAccessible;
-typedef struct _GtkFlowBoxChildAccessibleClass   GtkFlowBoxChildAccessibleClass;
+typedef struct _CtkFlowBoxChildAccessible        CtkFlowBoxChildAccessible;
+typedef struct _CtkFlowBoxChildAccessibleClass   CtkFlowBoxChildAccessibleClass;
 
-struct _GtkFlowBoxChildAccessible
+struct _CtkFlowBoxChildAccessible
 {
-  GtkContainerAccessible parent;
+  CtkContainerAccessible parent;
 };
 
-struct _GtkFlowBoxChildAccessibleClass
+struct _CtkFlowBoxChildAccessibleClass
 {
-  GtkContainerAccessibleClass parent_class;
+  CtkContainerAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_3_12

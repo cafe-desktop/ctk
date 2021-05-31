@@ -4,7 +4,7 @@ subdir('inspector')
 
 ctk_cargs = [
   '-DCTK_COMPILATION',
-  '-DG_LOG_DOMAIN="Gtk"',
+  '-DG_LOG_DOMAIN="Ctk"',
   '-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED',
   '-DCTK_BINARY_VERSION="@0@"'.format(ctk_binary_version),
   '-DCTK_HOST="@0@"'.format(host_machine.system()),
@@ -750,8 +750,8 @@ ctk_use_quartz_sources = files(
 ctk_stub_sources = files('ctkmountoperation-stub.c')
 
 ctk_dbus_src = gnome.gdbus_codegen('ctkdbusgenerated', 'ctkdbusinterfaces.xml',
-                                   interface_prefix: 'org.Gtk.',
-                                   namespace: '_Gtk')
+                                   interface_prefix: 'org.Ctk.',
+                                   namespace: '_Ctk')
 
 ctkmarshalers = gnome.genmarshal('ctkmarshalers',
                                  sources: 'ctkmarshalers.list',
@@ -1008,9 +1008,9 @@ if build_gir
 
   ctk_gir = gnome.generate_gir(libctk,
                                sources: ctk_introspection_sources,
-                               namespace: 'Gtk',
+                               namespace: 'Ctk',
                                nsversion: ctk_api_version,
-                               identifier_prefix: 'Gtk',
+                               identifier_prefix: 'Ctk',
                                symbol_prefix: 'ctk',
                                export_packages: 'ctk+-3.0',
                                includes: ctk_gir_includes,

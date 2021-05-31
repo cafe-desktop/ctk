@@ -38,15 +38,15 @@
 #include "fallback-c89.c"
 
 static void
-ctk_do_render_check (GtkStyleContext *context,
+ctk_do_render_check (CtkStyleContext *context,
                      cairo_t         *cr,
                      gdouble          x,
                      gdouble          y,
                      gdouble          width,
                      gdouble          height)
 {
-  GtkStateFlags state;
-  GtkCssImageBuiltinType image_type;
+  CtkStateFlags state;
+  CtkCssImageBuiltinType image_type;
 
   state = ctk_style_context_get_state (context);
   if (state & CTK_STATE_FLAG_INCONSISTENT)
@@ -61,14 +61,14 @@ ctk_do_render_check (GtkStyleContext *context,
 
 /**
  * ctk_render_check:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
  * @width: rectangle width
  * @height: rectangle height
  *
- * Renders a checkmark (as in a #GtkCheckButton).
+ * Renders a checkmark (as in a #CtkCheckButton).
  *
  * The %CTK_STATE_FLAG_CHECKED state determines whether the check is
  * on or off, and %CTK_STATE_FLAG_INCONSISTENT determines whether it
@@ -81,7 +81,7 @@ ctk_do_render_check (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_check (GtkStyleContext *context,
+ctk_render_check (CtkStyleContext *context,
                   cairo_t         *cr,
                   gdouble          x,
                   gdouble          y,
@@ -98,15 +98,15 @@ ctk_render_check (GtkStyleContext *context,
 }
 
 static void
-ctk_do_render_option (GtkStyleContext *context,
+ctk_do_render_option (CtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
                       gdouble          width,
                       gdouble          height)
 {
-  GtkStateFlags state;
-  GtkCssImageBuiltinType image_type;
+  CtkStateFlags state;
+  CtkCssImageBuiltinType image_type;
 
   state = ctk_style_context_get_state (context);
   if (state & CTK_STATE_FLAG_INCONSISTENT)
@@ -121,14 +121,14 @@ ctk_do_render_option (GtkStyleContext *context,
 
 /**
  * ctk_render_option:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
  * @width: rectangle width
  * @height: rectangle height
  *
- * Renders an option mark (as in a #GtkRadioButton), the %CTK_STATE_FLAG_CHECKED
+ * Renders an option mark (as in a #CtkRadioButton), the %CTK_STATE_FLAG_CHECKED
  * state will determine whether the option is on or off, and
  * %CTK_STATE_FLAG_INCONSISTENT whether it should be marked as undefined.
  *
@@ -139,7 +139,7 @@ ctk_do_render_option (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_option (GtkStyleContext *context,
+ctk_render_option (CtkStyleContext *context,
                    cairo_t         *cr,
                    gdouble          x,
                    gdouble          y,
@@ -156,14 +156,14 @@ ctk_render_option (GtkStyleContext *context,
 }
 
 static void
-ctk_do_render_arrow (GtkStyleContext *context,
+ctk_do_render_arrow (CtkStyleContext *context,
                      cairo_t         *cr,
                      gdouble          angle,
                      gdouble          x,
                      gdouble          y,
                      gdouble          size)
 {
-  GtkCssImageBuiltinType image_type;
+  CtkCssImageBuiltinType image_type;
 
   /* map [0, 2 * pi) to [0, 4) */
   angle = round (2 * angle / G_PI);
@@ -193,7 +193,7 @@ ctk_do_render_arrow (GtkStyleContext *context,
 
 /**
  * ctk_render_arrow:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @angle: arrow angle from 0 to 2 * %G_PI, being 0 the arrow pointing to the north
  * @x: X origin of the render area
@@ -209,7 +209,7 @@ ctk_do_render_arrow (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_arrow (GtkStyleContext *context,
+ctk_render_arrow (CtkStyleContext *context,
                   cairo_t         *cr,
                   gdouble          angle,
                   gdouble          x,
@@ -227,7 +227,7 @@ ctk_render_arrow (GtkStyleContext *context,
 
 /**
  * ctk_render_background:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
@@ -244,7 +244,7 @@ ctk_render_arrow (GtkStyleContext *context,
  * Since: 3.0.
  **/
 void
-ctk_render_background (GtkStyleContext *context,
+ctk_render_background (CtkStyleContext *context,
                        cairo_t         *cr,
                        gdouble          x,
                        gdouble          y,
@@ -264,7 +264,7 @@ ctk_render_background (GtkStyleContext *context,
 
 /**
  * ctk_render_background_get_clip:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
  * @width: rectangle width
@@ -278,14 +278,14 @@ ctk_render_background (GtkStyleContext *context,
  * Since: 3.20
  */
 void
-ctk_render_background_get_clip (GtkStyleContext *context,
+ctk_render_background_get_clip (CtkStyleContext *context,
                                 gdouble          x,
                                 gdouble          y,
                                 gdouble          width,
                                 gdouble          height,
                                 GdkRectangle    *out_clip)
 {
-  GtkBorder shadow;
+  CtkBorder shadow;
 
   _ctk_css_shadows_value_get_extents (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_BOX_SHADOW), &shadow);
 
@@ -297,7 +297,7 @@ ctk_render_background_get_clip (GtkStyleContext *context,
 
 /**
  * ctk_render_frame:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
@@ -314,7 +314,7 @@ ctk_render_background_get_clip (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_frame (GtkStyleContext *context,
+ctk_render_frame (CtkStyleContext *context,
                   cairo_t         *cr,
                   gdouble          x,
                   gdouble          y,
@@ -335,15 +335,15 @@ ctk_render_frame (GtkStyleContext *context,
 }
 
 static void
-ctk_do_render_expander (GtkStyleContext *context,
+ctk_do_render_expander (CtkStyleContext *context,
                         cairo_t         *cr,
                         gdouble          x,
                         gdouble          y,
                         gdouble          width,
                         gdouble          height)
 {
-  GtkCssImageBuiltinType image_type;
-  GtkStateFlags state;
+  CtkCssImageBuiltinType image_type;
+  CtkStateFlags state;
 
   state = ctk_style_context_get_state (context);
   if (ctk_style_context_has_class (context, "horizontal"))
@@ -374,14 +374,14 @@ ctk_do_render_expander (GtkStyleContext *context,
 
 /**
  * ctk_render_expander:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
  * @width: rectangle width
  * @height: rectangle height
  *
- * Renders an expander (as used in #GtkTreeView and #GtkExpander) in the area
+ * Renders an expander (as used in #CtkTreeView and #CtkExpander) in the area
  * defined by @x, @y, @width, @height. The state %CTK_STATE_FLAG_CHECKED
  * determines whether the expander is collapsed or expanded.
  *
@@ -392,7 +392,7 @@ ctk_do_render_expander (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_expander (GtkStyleContext *context,
+ctk_render_expander (CtkStyleContext *context,
                      cairo_t         *cr,
                      gdouble          x,
                      gdouble          y,
@@ -410,7 +410,7 @@ ctk_render_expander (GtkStyleContext *context,
 
 /**
  * ctk_render_focus:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
@@ -426,7 +426,7 @@ ctk_render_expander (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_focus (GtkStyleContext *context,
+ctk_render_focus (CtkStyleContext *context,
                   cairo_t         *cr,
                   gdouble          x,
                   gdouble          y,
@@ -470,7 +470,7 @@ prepare_context_for_layout (cairo_t *cr,
 }
 
 static void
-ctk_do_render_layout (GtkStyleContext *context,
+ctk_do_render_layout (CtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
@@ -494,7 +494,7 @@ ctk_do_render_layout (GtkStyleContext *context,
 
 /**
  * ctk_render_layout:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin
  * @y: Y origin
@@ -505,7 +505,7 @@ ctk_do_render_layout (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_layout (GtkStyleContext *context,
+ctk_render_layout (CtkStyleContext *context,
                    cairo_t         *cr,
                    gdouble          x,
                    gdouble          y,
@@ -519,7 +519,7 @@ ctk_render_layout (GtkStyleContext *context,
 }
 
 static void
-ctk_do_render_line (GtkStyleContext *context,
+ctk_do_render_line (CtkStyleContext *context,
                     cairo_t         *cr,
                     gdouble          x0,
                     gdouble          y0,
@@ -546,7 +546,7 @@ ctk_do_render_line (GtkStyleContext *context,
 
 /**
  * ctk_render_line:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x0: X coordinate for the origin of the line
  * @y0: Y coordinate for the origin of the line
@@ -558,7 +558,7 @@ ctk_do_render_line (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_line (GtkStyleContext *context,
+ctk_render_line (CtkStyleContext *context,
                  cairo_t         *cr,
                  gdouble          x0,
                  gdouble          y0,
@@ -572,16 +572,16 @@ ctk_render_line (GtkStyleContext *context,
 }
 
 static void
-ctk_do_render_slider (GtkStyleContext *context,
+ctk_do_render_slider (CtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
                       gdouble          width,
                       gdouble          height,
-                      GtkOrientation   orientation)
+                      CtkOrientation   orientation)
 {
-  GtkCssStyle *style;
-  GtkJunctionSides junction;
+  CtkCssStyle *style;
+  CtkJunctionSides junction;
 
   style = ctk_style_context_lookup_style (context);
   junction = ctk_style_context_get_junction_sides (context);
@@ -599,7 +599,7 @@ ctk_do_render_slider (GtkStyleContext *context,
 
 /**
  * ctk_render_slider:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
@@ -607,7 +607,7 @@ ctk_do_render_slider (GtkStyleContext *context,
  * @height: rectangle height
  * @orientation: orientation of the slider
  *
- * Renders a slider (as in #GtkScale) in the rectangle defined by @x, @y,
+ * Renders a slider (as in #CtkScale) in the rectangle defined by @x, @y,
  * @width, @height. @orientation defines whether the slider is vertical
  * or horizontal.
  *
@@ -618,13 +618,13 @@ ctk_do_render_slider (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_slider (GtkStyleContext *context,
+ctk_render_slider (CtkStyleContext *context,
                    cairo_t         *cr,
                    gdouble          x,
                    gdouble          y,
                    gdouble          width,
                    gdouble          height,
-                   GtkOrientation   orientation)
+                   CtkOrientation   orientation)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (cr != NULL);
@@ -636,21 +636,21 @@ ctk_render_slider (GtkStyleContext *context,
 }
 
 static void
-ctk_css_style_render_frame_gap (GtkCssStyle     *style,
+ctk_css_style_render_frame_gap (CtkCssStyle     *style,
                                 cairo_t         *cr,
                                 gdouble          x,
                                 gdouble          y,
                                 gdouble          width,
                                 gdouble          height,
-                                GtkPositionType  gap_side,
+                                CtkPositionType  gap_side,
                                 gdouble          xy0_gap,
                                 gdouble          xy1_gap,
-                                GtkJunctionSides junction)
+                                CtkJunctionSides junction)
 {
   gint border_width;
-  GtkCssValue *corner[4];
+  CtkCssValue *corner[4];
   gdouble x0, y0, x1, y1, xc = 0.0, yc = 0.0, wc = 0.0, hc = 0.0;
-  GtkBorder border;
+  CtkBorder border;
 
   border.top = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
   border.right = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100);
@@ -737,7 +737,7 @@ ctk_css_style_render_frame_gap (GtkCssStyle     *style,
 
 /**
  * ctk_render_frame_gap:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
@@ -762,13 +762,13 @@ ctk_css_style_render_frame_gap (GtkCssStyle     *style,
  *     by omitting borders via CSS.
  **/
 void
-ctk_render_frame_gap (GtkStyleContext *context,
+ctk_render_frame_gap (CtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
                       gdouble          width,
                       gdouble          height,
-                      GtkPositionType  gap_side,
+                      CtkPositionType  gap_side,
                       gdouble          xy0_gap,
                       gdouble          xy1_gap)
 {
@@ -794,15 +794,15 @@ ctk_render_frame_gap (GtkStyleContext *context,
 }
 
 static void
-ctk_css_style_render_extension (GtkCssStyle     *style,
+ctk_css_style_render_extension (CtkCssStyle     *style,
                                 cairo_t         *cr,
                                 gdouble          x,
                                 gdouble          y,
                                 gdouble          width,
                                 gdouble          height,
-                                GtkPositionType  gap_side)
+                                CtkPositionType  gap_side)
 {
-  GtkJunctionSides junction = 0;
+  CtkJunctionSides junction = 0;
   guint hidden_side = 0;
 
   switch (gap_side)
@@ -838,7 +838,7 @@ ctk_css_style_render_extension (GtkCssStyle     *style,
 
 /**
  * ctk_render_extension:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
@@ -846,7 +846,7 @@ ctk_css_style_render_extension (GtkCssStyle     *style,
  * @height: rectangle height
  * @gap_side: side where the gap is
  *
- * Renders a extension (as in a #GtkNotebook tab) in the rectangle
+ * Renders a extension (as in a #CtkNotebook tab) in the rectangle
  * defined by @x, @y, @width, @height. The side where the extension
  * connects to is defined by @gap_side.
  *
@@ -857,13 +857,13 @@ ctk_css_style_render_extension (GtkCssStyle     *style,
  * Since: 3.0
  **/
 void
-ctk_render_extension (GtkStyleContext *context,
+ctk_render_extension (CtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
                       gdouble          width,
                       gdouble          height,
-                      GtkPositionType  gap_side)
+                      CtkPositionType  gap_side)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (cr != NULL);
@@ -878,21 +878,21 @@ ctk_render_extension (GtkStyleContext *context,
 }
 
 static void
-ctk_do_render_handle (GtkStyleContext *context,
+ctk_do_render_handle (CtkStyleContext *context,
                       cairo_t         *cr,
                       gdouble          x,
                       gdouble          y,
                       gdouble          width,
                       gdouble          height)
 {
-  GtkCssImageBuiltinType type;
+  CtkCssImageBuiltinType type;
 
   ctk_render_background (context, cr, x, y, width, height);
   ctk_render_frame (context, cr, x, y, width, height);
 
   if (ctk_style_context_has_class (context, CTK_STYLE_CLASS_GRIP))
     {
-      GtkJunctionSides sides = ctk_style_context_get_junction_sides (context);
+      CtkJunctionSides sides = ctk_style_context_get_junction_sides (context);
 
       /* order is important here for when too many (or too few) sides are set */
       if ((sides & CTK_JUNCTION_CORNER_BOTTOMRIGHT) == CTK_JUNCTION_CORNER_BOTTOMRIGHT)
@@ -928,15 +928,15 @@ ctk_do_render_handle (GtkStyleContext *context,
 
 /**
  * ctk_render_handle:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
  * @width: rectangle width
  * @height: rectangle height
  *
- * Renders a handle (as in #GtkHandleBox, #GtkPaned and
- * #GtkWindow’s resize grip), in the rectangle
+ * Renders a handle (as in #CtkHandleBox, #CtkPaned and
+ * #CtkWindow’s resize grip), in the rectangle
  * determined by @x, @y, @width, @height.
  *
  * Handles rendered for the paned and grip classes:
@@ -946,7 +946,7 @@ ctk_do_render_handle (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-ctk_render_handle (GtkStyleContext *context,
+ctk_render_handle (CtkStyleContext *context,
                    cairo_t         *cr,
                    gdouble          x,
                    gdouble          y,
@@ -964,21 +964,21 @@ ctk_render_handle (GtkStyleContext *context,
 
 /**
  * ctk_render_activity:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin of the rectangle
  * @y: Y origin of the rectangle
  * @width: rectangle width
  * @height: rectangle height
  *
- * Renders an activity indicator (such as in #GtkSpinner).
+ * Renders an activity indicator (such as in #CtkSpinner).
  * The state %CTK_STATE_FLAG_CHECKED determines whether there is
  * activity going on.
  *
  * Since: 3.0
  **/
 void
-ctk_render_activity (GtkStyleContext *context,
+ctk_render_activity (CtkStyleContext *context,
                      cairo_t         *cr,
                      gdouble          x,
                      gdouble          y,
@@ -1010,8 +1010,8 @@ scale_or_ref (GdkPixbuf *src,
 
 GdkPixbuf *
 ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
-                                 GtkIconSize          size,
-                                 GtkCssIconEffect     icon_effect)
+                                 CtkIconSize          size,
+                                 CtkCssIconEffect     icon_effect)
 {
   GdkPixbuf *scaled;
   GdkPixbuf *stated;
@@ -1022,7 +1022,7 @@ ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
   /* If the size was wildcarded, and we're allowed to scale, then scale; otherwise,
    * leave it alone.
    */
-  if (size != (GtkIconSize) -1)
+  if (size != (CtkIconSize) -1)
     {
       int width = 1;
       int height = 1;
@@ -1059,10 +1059,10 @@ ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
 
 /**
  * ctk_render_icon_pixbuf:
- * @context: a #GtkStyleContext
- * @source: the #GtkIconSource specifying the icon to render
- * @size: (type int): the size (#GtkIconSize) to render the icon at.
- *        A size of `(GtkIconSize) -1` means render at the size of the source
+ * @context: a #CtkStyleContext
+ * @source: the #CtkIconSource specifying the icon to render
+ * @size: (type int): the size (#CtkIconSize) to render the icon at.
+ *        A size of `(CtkIconSize) -1` means render at the size of the source
  *        and don’t scale.
  *
  * Renders the icon specified by @source at the given @size, returning the result
@@ -1075,12 +1075,12 @@ ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
  * Deprecated: 3.10: Use ctk_icon_theme_load_icon() instead.
  **/
 GdkPixbuf *
-ctk_render_icon_pixbuf (GtkStyleContext     *context,
-                        const GtkIconSource *source,
-                        GtkIconSize          size)
+ctk_render_icon_pixbuf (CtkStyleContext     *context,
+                        const CtkIconSource *source,
+                        CtkIconSize          size)
 {
   g_return_val_if_fail (CTK_IS_STYLE_CONTEXT (context), NULL);
-  g_return_val_if_fail (size > CTK_ICON_SIZE_INVALID || size == (GtkIconSize)-1, NULL);
+  g_return_val_if_fail (size > CTK_ICON_SIZE_INVALID || size == (CtkIconSize)-1, NULL);
   g_return_val_if_fail (source != NULL, NULL);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -1095,7 +1095,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
 /**
  * ctk_render_icon:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @pixbuf: a #GdkPixbuf containing the icon to draw
  * @x: X position for the @pixbuf
@@ -1113,7 +1113,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  * Since: 3.2
  **/
 void
-ctk_render_icon (GtkStyleContext *context,
+ctk_render_icon (CtkStyleContext *context,
                  cairo_t         *cr,
                  GdkPixbuf       *pixbuf,
                  gdouble          x,
@@ -1136,7 +1136,7 @@ ctk_render_icon (GtkStyleContext *context,
 
 /**
  * ctk_render_icon_surface:
- * @context: a #GtkStyleContext
+ * @context: a #CtkStyleContext
  * @cr: a #cairo_t
  * @surface: a #cairo_surface_t containing the icon to draw
  * @x: X position for the @icon
@@ -1147,7 +1147,7 @@ ctk_render_icon (GtkStyleContext *context,
  * Since: 3.10
  **/
 void
-ctk_render_icon_surface (GtkStyleContext *context,
+ctk_render_icon_surface (CtkStyleContext *context,
 			 cairo_t         *cr,
 			 cairo_surface_t *surface,
 			 gdouble          x,
@@ -1176,17 +1176,17 @@ ctk_render_icon_surface (GtkStyleContext *context,
  *
  * This is useful if you are drawing content that is supposed to
  * fill the whole content area, like the color buttons in
- * #GtkColorChooserDialog.
+ * #CtkColorChooserDialog.
  **/
 void
-ctk_render_content_path (GtkStyleContext *context,
+ctk_render_content_path (CtkStyleContext *context,
                          cairo_t         *cr,
                          double           x,
                          double           y,
                          double           width,
                          double           height)
 {
-  GtkRoundedBox box;
+  CtkRoundedBox box;
 
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (cr != NULL);

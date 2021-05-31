@@ -1,9 +1,9 @@
 #include <ctk/ctk.h>
 
-typedef GtkListStore MyModel;
-typedef GtkListStoreClass MyModelClass;
+typedef CtkListStore MyModel;
+typedef CtkListStoreClass MyModelClass;
 
-static void my_model_drag_source_init (GtkTreeDragSourceIface *iface);
+static void my_model_drag_source_init (CtkTreeDragSourceIface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (MyModel, my_model, CTK_TYPE_LIST_STORE,
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_DRAG_SOURCE,
@@ -23,11 +23,11 @@ my_model_init (MyModel *object)
 }
 
 static gboolean
-my_model_drag_data_get (GtkTreeDragSource *source,
-                        GtkTreePath       *path,
-                        GtkSelectionData  *data)
+my_model_drag_data_get (CtkTreeDragSource *source,
+                        CtkTreePath       *path,
+                        CtkSelectionData  *data)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *text;
 
   ctk_tree_model_get_iter (CTK_TREE_MODEL (source), &iter, path);
@@ -39,9 +39,9 @@ my_model_drag_data_get (GtkTreeDragSource *source,
 }
 
 static void
-my_model_drag_source_init (GtkTreeDragSourceIface *iface)
+my_model_drag_source_init (CtkTreeDragSourceIface *iface)
 {
-  static GtkTreeDragSourceIface *parent;
+  static CtkTreeDragSourceIface *parent;
 
   parent = g_type_interface_peek_parent (iface);
 
@@ -50,7 +50,7 @@ my_model_drag_source_init (GtkTreeDragSourceIface *iface)
   iface->drag_data_get = my_model_drag_data_get;
 }
 
-static GtkTreeModel *
+static CtkTreeModel *
 get_model (void)
 {
   MyModel *model;
@@ -63,18 +63,18 @@ get_model (void)
   return CTK_TREE_MODEL (model);
 }
 
-static GtkTargetEntry entries[] = {
+static CtkTargetEntry entries[] = {
   { "text/plain", 0, 0 }
 };
 
-static GtkWidget *
+static CtkWidget *
 get_dragsource (void)
 {
-  GtkTreeView *tv;
-  GtkCellRenderer *renderer;
-  GtkTreeViewColumn *column;
+  CtkTreeView *tv;
+  CtkCellRenderer *renderer;
+  CtkTreeViewColumn *column;
 
-  tv = (GtkTreeView*) ctk_tree_view_new ();
+  tv = (CtkTreeView*) ctk_tree_view_new ();
   renderer = ctk_cell_renderer_text_new ();
   column = ctk_tree_view_column_new_with_attributes ("Text", renderer, "text", 0, NULL);
   ctk_tree_view_append_column (tv, column);
@@ -86,10 +86,10 @@ get_dragsource (void)
 }
 
 static void
-data_received (GtkWidget *widget,
+data_received (CtkWidget *widget,
                GdkDragContext *context,
                gint x, gint y,
-               GtkSelectionData *selda,
+               CtkSelectionData *selda,
                guint info, guint time,
                gpointer dada)
 {
@@ -100,10 +100,10 @@ data_received (GtkWidget *widget,
   g_free (text);
 }
 
-static GtkWidget *
+static CtkWidget *
 get_droptarget (void)
 {
-  GtkWidget *label;
+  CtkWidget *label;
 
   label = ctk_label_new ("Drop here");
   ctk_drag_dest_set (label, CTK_DEST_DEFAULT_ALL, entries, G_N_ELEMENTS (entries), GDK_ACTION_COPY);
@@ -115,8 +115,8 @@ get_droptarget (void)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *box;
+  CtkWidget *window;
+  CtkWidget *box;
 
   ctk_init (NULL, NULL);
 

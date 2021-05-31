@@ -137,8 +137,8 @@ append_error_value (GString *string,
 }
 
 static void
-parsing_error_cb (GtkCssProvider *provider,
-                  GtkCssSection  *section,
+parsing_error_cb (CtkCssProvider *provider,
+                  CtkCssSection  *section,
                   const GError   *error,
                   GString        *errors)
 {
@@ -164,7 +164,7 @@ parsing_error_cb (GtkCssProvider *provider,
 static void
 parse_css_file (GFile *file, gboolean generate)
 {
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
   char *css, *diff;
   char *css_file, *reference_file, *errors_file;
   GString *errors;

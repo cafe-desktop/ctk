@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
-  <object class="GtkTreeStore" id="model">
+  <object class="CtkTreeStore" id="model">
     <columns>
       <column type="gchararray"/> <!-- type -->
       <column type="gchararray"/> <!-- label -->
@@ -9,23 +9,23 @@
       <column type="gchararray"/> <!-- icon -->
     </columns>
   </object>
-  <template class="GtkInspectorMenu" parent="GtkBox">
+  <template class="CtkInspectorMenu" parent="CtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="CtkScrolledWindow">
         <property name="visible">True</property>
         <property name="expand">True</property>
         <property name="hscrollbar-policy">automatic</property>
         <property name="vscrollbar-policy">always</property>
         <child>
-          <object class= "GtkTreeView">
+          <object class= "CtkTreeView">
             <property name="visible">True</property>
             <property name="model">model</property>
             <child>
-              <object class="GtkTreeViewColumn">
+              <object class="CtkTreeViewColumn">
                 <property name="title" translatable="yes">Label</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                   </object>
                   <attributes>
@@ -35,10 +35,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn">
+              <object class="CtkTreeViewColumn">
                 <property name="title" translatable="yes">Action</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                   </object>
                   <attributes>
@@ -48,10 +48,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn">
+              <object class="CtkTreeViewColumn">
                 <property name="title" translatable="yes">Target</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                   </object>
                   <attributes>
@@ -61,10 +61,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn">
+              <object class="CtkTreeViewColumn">
                 <property name="title" translatable="yes">Icon</property>
                 <child>
-                  <object class="GtkCellRendererText">
+                  <object class="CtkCellRendererText">
                     <property name="scale">0.8</property>
                   </object>
                   <attributes>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <template class="GtkInfoBar" parent="GtkBox">
+  <template class="CtkInfoBar" parent="CtkBox">
     <child>
-      <object class="GtkRevealer" id="revealer">
+      <object class="CtkRevealer" id="revealer">
         <property name="visible">1</property>
         <property name="reveal-child">1</property>
         <child>
-          <object class="GtkBox" id="content">
+          <object class="CtkBox" id="content">
             <property name="visible">1</property>
             <child>
-              <object class="GtkBox" id="content_area">
+              <object class="CtkBox" id="content_area">
                 <property name="visible">1</property>
                 <property name="border-width">8</property>
                 <property name="spacing">16</property>
@@ -21,7 +21,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButtonBox" id="action_area">
+              <object class="CtkButtonBox" id="action_area">
                 <property name="visible">1</property>
                 <property name="border-width">6</property>
                 <property name="spacing">6</property>
@@ -32,7 +32,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="close_button">
+              <object class="CtkButton" id="close_button">
                 <property name="can-focus">1</property>
                 <property name="border-width">6</property>
                 <property name="relief">none</property>
@@ -41,7 +41,7 @@
                   <class name="close"/>
                 </style>
                 <child>
-                  <object class="GtkImage" id="close_image">
+                  <object class="CtkImage" id="close_image">
                     <property name="visible">1</property>
                     <property name="icon-name">window-close-symbolic</property>
                   </object>

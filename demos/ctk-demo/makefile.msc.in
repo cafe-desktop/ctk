@@ -24,7 +24,7 @@ GDK_PIXBUF_LIBS = ../../gdk-pixbuf/gdk_pixbuf-$(GDK_PIXBUF_VER).lib
 INCLUDES = -FImsvc_recommended_pragmas.h -I . -I ../.. -I ../../gdk -I ../../gdk-pixbuf -I ../../ctk
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) $(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = /link /machine:ix86 $(LINKDEBUG)
-DEFINES = -DG_LOG_DOMAIN=\"GtkDemo\" -DCTK_VERSION=\"$(CTK_VER)\" \
+DEFINES = -DG_LOG_DOMAIN=\"CtkDemo\" -DCTK_VERSION=\"$(CTK_VER)\" \
 	-DDEMOCODEDIR=\".\"
 
 TOUCH = copy makefile.msc+nul

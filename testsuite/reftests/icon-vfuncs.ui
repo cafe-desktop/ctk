@@ -2,14 +2,14 @@
 <!-- Generated with glade 3.18.1 -->
 <interface>
   <requires lib="ctk+" version="3.12"/>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="CtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Spinner</property>
@@ -20,7 +20,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSpinner" id="spinner1">
+          <object class="CtkSpinner" id="spinner1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -32,7 +32,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label2">
+          <object class="CtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Check</property>
@@ -43,7 +43,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label3">
+          <object class="CtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Option</property>
@@ -54,7 +54,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label4">
+          <object class="CtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Arrow</property>
@@ -65,7 +65,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label5">
+          <object class="CtkLabel" id="label5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Expander</property>
@@ -76,7 +76,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="checkbutton1">
+          <object class="CtkCheckButton" id="checkbutton1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -91,7 +91,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="radiobutton1">
+          <object class="CtkRadioButton" id="radiobutton1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -107,7 +107,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="arrow1">
+          <object class="CtkImage" id="arrow1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="icon_name">pan-down-symbolic</property>
@@ -121,7 +121,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkExpander" id="expander1">
+          <object class="CtkExpander" id="expander1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">center</property>

@@ -29,27 +29,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_RECENT_CHOOSER_MENU		(ctk_recent_chooser_menu_get_type ())
-#define CTK_RECENT_CHOOSER_MENU(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER_MENU, GtkRecentChooserMenu))
+#define CTK_RECENT_CHOOSER_MENU(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER_MENU, CtkRecentChooserMenu))
 #define CTK_IS_RECENT_CHOOSER_MENU(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_CHOOSER_MENU))
-#define CTK_RECENT_CHOOSER_MENU_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_CHOOSER_MENU, GtkRecentChooserMenuClass))
+#define CTK_RECENT_CHOOSER_MENU_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_CHOOSER_MENU, CtkRecentChooserMenuClass))
 #define CTK_IS_RECENT_CHOOSER_MENU_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RECENT_CHOOSER_MENU))
-#define CTK_RECENT_CHOOSER_MENU_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_CHOOSER_MENU, GtkRecentChooserMenuClass))
+#define CTK_RECENT_CHOOSER_MENU_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_CHOOSER_MENU, CtkRecentChooserMenuClass))
 
-typedef struct _GtkRecentChooserMenu		GtkRecentChooserMenu;
-typedef struct _GtkRecentChooserMenuClass	GtkRecentChooserMenuClass;
-typedef struct _GtkRecentChooserMenuPrivate	GtkRecentChooserMenuPrivate;
+typedef struct _CtkRecentChooserMenu		CtkRecentChooserMenu;
+typedef struct _CtkRecentChooserMenuClass	CtkRecentChooserMenuClass;
+typedef struct _CtkRecentChooserMenuPrivate	CtkRecentChooserMenuPrivate;
 
-struct _GtkRecentChooserMenu
+struct _CtkRecentChooserMenu
 {
-  GtkMenu parent_instance;
+  CtkMenu parent_instance;
 
   /*< private >*/
-  GtkRecentChooserMenuPrivate *priv;
+  CtkRecentChooserMenuPrivate *priv;
 };
 
-struct _GtkRecentChooserMenuClass
+struct _CtkRecentChooserMenuClass
 {
-  GtkMenuClass parent_class;
+  CtkMenuClass parent_class;
 
   /* padding for future expansion */
   void (* ctk_recent1) (void);
@@ -62,14 +62,14 @@ GDK_AVAILABLE_IN_ALL
 GType      ctk_recent_chooser_menu_get_type         (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_recent_chooser_menu_new              (void);
+CtkWidget *ctk_recent_chooser_menu_new              (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *ctk_recent_chooser_menu_new_for_manager  (GtkRecentManager     *manager);
+CtkWidget *ctk_recent_chooser_menu_new_for_manager  (CtkRecentManager     *manager);
 
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_recent_chooser_menu_get_show_numbers (GtkRecentChooserMenu *menu);
+gboolean   ctk_recent_chooser_menu_get_show_numbers (CtkRecentChooserMenu *menu);
 GDK_AVAILABLE_IN_ALL
-void       ctk_recent_chooser_menu_set_show_numbers (GtkRecentChooserMenu *menu,
+void       ctk_recent_chooser_menu_set_show_numbers (CtkRecentChooserMenu *menu,
 						     gboolean              show_numbers);
 
 G_END_DECLS

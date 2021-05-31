@@ -34,31 +34,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_HSCROLLBAR            (ctk_hscrollbar_get_type ())
-#define CTK_HSCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HSCROLLBAR, GtkHScrollbar))
-#define CTK_HSCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HSCROLLBAR, GtkHScrollbarClass))
+#define CTK_HSCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HSCROLLBAR, CtkHScrollbar))
+#define CTK_HSCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HSCROLLBAR, CtkHScrollbarClass))
 #define CTK_IS_HSCROLLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HSCROLLBAR))
 #define CTK_IS_HSCROLLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HSCROLLBAR))
-#define CTK_HSCROLLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HSCROLLBAR, GtkHScrollbarClass))
+#define CTK_HSCROLLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HSCROLLBAR, CtkHScrollbarClass))
 
 
-typedef struct _GtkHScrollbar       GtkHScrollbar;
-typedef struct _GtkHScrollbarClass  GtkHScrollbarClass;
+typedef struct _CtkHScrollbar       CtkHScrollbar;
+typedef struct _CtkHScrollbarClass  CtkHScrollbarClass;
 
-struct _GtkHScrollbar
+struct _CtkHScrollbar
 {
-  GtkScrollbar scrollbar;
+  CtkScrollbar scrollbar;
 };
 
-struct _GtkHScrollbarClass
+struct _CtkHScrollbarClass
 {
-  GtkScrollbarClass parent_class;
+  CtkScrollbarClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType      ctk_hscrollbar_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_scrollbar_new)
-GtkWidget* ctk_hscrollbar_new      (GtkAdjustment *adjustment);
+CtkWidget* ctk_hscrollbar_new      (CtkAdjustment *adjustment);
 
 G_END_DECLS
 

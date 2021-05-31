@@ -23,8 +23,8 @@
 
 #ifndef __GI_SCANNER__
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkSocket, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkPlug, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkSocket, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkPlug, g_object_unref)
 
 #endif
 

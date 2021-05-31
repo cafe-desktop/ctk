@@ -3,7 +3,7 @@
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000      Red Hat, Inc.
- * Tk -> Gtk port by Havoc Pennington <hp@redhat.com>
+ * Tk -> Ctk port by Havoc Pennington <hp@redhat.com>
  *
  * This software is copyrighted by the Regents of the University of
  * California, Sun Microsystems, Inc., and other parties.  The
@@ -49,21 +49,21 @@
 
 /**
  * SECTION:ctktexttag
- * @Title: GtkTextTag
- * @Short_description: A tag that can be applied to text in a GtkTextBuffer
+ * @Title: CtkTextTag
+ * @Short_description: A tag that can be applied to text in a CtkTextBuffer
  *
  * You may wish to begin by reading the
  * [text widget conceptual overview][TextWidget]
  * which gives an overview of all the objects and
  * data types related to the text widget and how they work together.
  *
- * Tags should be in the #GtkTextTagTable for a given #GtkTextBuffer
+ * Tags should be in the #CtkTextTagTable for a given #CtkTextBuffer
  * before using them with that buffer.
  *
  * ctk_text_buffer_create_tag() is the best way to create tags.
  * See “ctk3-demo” for numerous examples.
  *
- * For each property of #GtkTextTag, there is a “set” property, e.g.
+ * For each property of #CtkTextTag, there is a “set” property, e.g.
  * “font-set” corresponds to “font”. These “set” properties reflect
  * whether a property has been set or not.
  * They are maintained by GTK+ and you should not set them independently.
@@ -187,10 +187,10 @@ static void ctk_text_tag_get_property (GObject         *object,
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTextTag, ctk_text_tag, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkTextTag, ctk_text_tag, G_TYPE_OBJECT)
 
 static void
-ctk_text_tag_class_init (GtkTextTagClass *klass)
+ctk_text_tag_class_init (CtkTextTagClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -219,11 +219,11 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         CTK_PARAM_WRITABLE));
 
   /**
-   * GtkTextTag:background-gdk:
+   * CtkTextTag:background-gdk:
    *
    * Background color as a #GdkColor.
    *
-   * Deprecated: 3.4: Use #GtkTextTag:background-rgba instead.
+   * Deprecated: 3.4: Use #CtkTextTag:background-rgba instead.
    */
   g_object_class_install_property (object_class,
                                    PROP_BACKGROUND_GDK,
@@ -234,7 +234,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
-   * GtkTextTag:background-rgba:
+   * CtkTextTag:background-rgba:
    *
    * Background color as a #GdkRGBA.
    *
@@ -265,11 +265,11 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         CTK_PARAM_WRITABLE));
 
   /**
-   * GtkTextTag:foreground-gdk:
+   * CtkTextTag:foreground-gdk:
    *
    * Foreground color as a #GdkColor.
    *
-   * Deprecated: 3.4: Use #GtkTextTag:foreground-rgba instead.
+   * Deprecated: 3.4: Use #CtkTextTag:foreground-rgba instead.
    */
   g_object_class_install_property (object_class,
                                    PROP_FOREGROUND_GDK,
@@ -280,7 +280,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
-   * GtkTextTag:foreground-rgba:
+   * CtkTextTag:foreground-rgba:
    *
    * Foreground color as a #GdkRGBA.
    *
@@ -312,7 +312,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:font:
+   * CtkTextTag:font:
    *
    * Font description as string, e.g. \"Sans Italic 12\". 
    *
@@ -421,7 +421,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                       CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:language:
+   * CtkTextTag:language:
    *
    * The language this text is in, as an ISO code. Pango can use this as a 
    * hint when rendering the text. If not set, an appropriate default will be 
@@ -528,12 +528,12 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                       CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:underline-rgba:
+   * CtkTextTag:underline-rgba:
    *
    * This property modifies the color of underlines. If not set, underlines
    * will use the forground color.
    *
-   * If #GtkTextTag:underline is set to %PANGO_UNDERLINE_ERROR, an alternate
+   * If #CtkTextTag:underline is set to %PANGO_UNDERLINE_ERROR, an alternate
    * color may be applied instead of the foreground. Setting this property
    * will always override those defaults.
    *
@@ -548,7 +548,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:strikethrough-rgba:
+   * CtkTextTag:strikethrough-rgba:
    *
    * This property modifies the color of strikeouts. If not set, strikeouts
    * will use the forground color.
@@ -582,7 +582,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        CTK_PARAM_READWRITE));
   
   /**
-   * GtkTextTag:invisible:
+   * CtkTextTag:invisible:
    *
    * Whether this text is hidden.
    *
@@ -601,7 +601,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:paragraph-background:
+   * CtkTextTag:paragraph-background:
    *
    * The paragraph background color as a string.
    *
@@ -616,13 +616,13 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         CTK_PARAM_WRITABLE));
 
   /**
-   * GtkTextTag:paragraph-background-gdk:
+   * CtkTextTag:paragraph-background-gdk:
    *
    * The paragraph background color as a #GdkColor.
    *
    * Since: 2.8
    *
-   * Deprecated: 3.4: Use #GtkTextTag:paragraph-background-rgba instead.
+   * Deprecated: 3.4: Use #CtkTextTag:paragraph-background-rgba instead.
    */
   g_object_class_install_property (object_class,
                                    PROP_PARAGRAPH_BACKGROUND_GDK,
@@ -633,7 +633,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
-   * GtkTextTag:paragraph-background-rgba:
+   * CtkTextTag:paragraph-background-rgba:
    *
    * The paragraph background color as a #GdkRGBA.
    *
@@ -648,7 +648,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:fallback:
+   * CtkTextTag:fallback:
    *
    * Whether font fallback is enabled.
    *
@@ -666,7 +666,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:letter-spacing:
+   * CtkTextTag:letter-spacing:
    *
    * Extra spacing between graphemes, in Pango units.
    *
@@ -681,7 +681,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:font-features:
+   * CtkTextTag:font-features:
    *
    * OpenType font features, as a string.
    *
@@ -696,7 +696,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         CTK_PARAM_READWRITE));
 
   /**
-   * GtkTextTag:accumulative-margin:
+   * CtkTextTag:accumulative-margin:
    *
    * Whether the margins accumulate or override each other.
    *
@@ -807,9 +807,9 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                 P_("Whether this tag affects underlining"));
 
   /**
-   * GtkTextTag:underline-rgba-set:
+   * CtkTextTag:underline-rgba-set:
    *
-   * If the #GtkTextTag:underline-rgba property has been set.
+   * If the #CtkTextTag:underline-rgba property has been set.
    *
    * Since: 3.16
    */
@@ -818,9 +818,9 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                 P_("Whether this tag affects underlining color"));
 
   /**
-   * GtkTextTag:strikethrough-rgba-set:
+   * CtkTextTag:strikethrough-rgba-set:
    *
-   * If the #GtkTextTag:strikethrough-rgba property has been set.
+   * If the #CtkTextTag:strikethrough-rgba property has been set.
    *
    * Since: 3.16
    */
@@ -857,11 +857,11 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                 P_("Whether this tag affects font features"));
 
   /**
-   * GtkTextTag::event:
-   * @tag: the #GtkTextTag on which the signal is emitted
-   * @object: the object the event was fired from (typically a #GtkTextView)
+   * CtkTextTag::event:
+   * @tag: the #CtkTextTag on which the signal is emitted
+   * @object: the object the event was fired from (typically a #CtkTextView)
    * @event: the event which triggered the signal
-   * @iter: a #GtkTextIter pointing at the location the event occurred
+   * @iter: a #CtkTextIter pointing at the location the event occurred
    *
    * The ::event signal is emitted when an event occurs on a region of the
    * buffer marked with this tag.
@@ -873,7 +873,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
     g_signal_new (I_("event"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GtkTextTagClass, event),
+                  G_STRUCT_OFFSET (CtkTextTagClass, event),
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__OBJECT_BOXED_BOXED,
                   G_TYPE_BOOLEAN,
@@ -887,7 +887,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
 }
 
 static void
-ctk_text_tag_init (GtkTextTag *text_tag)
+ctk_text_tag_init (CtkTextTag *text_tag)
 {
   text_tag->priv = ctk_text_tag_get_instance_private (text_tag);
   text_tag->priv->values = ctk_text_attributes_new ();
@@ -897,15 +897,15 @@ ctk_text_tag_init (GtkTextTag *text_tag)
  * ctk_text_tag_new:
  * @name: (allow-none): tag name, or %NULL
  * 
- * Creates a #GtkTextTag. Configure the tag using object arguments,
+ * Creates a #CtkTextTag. Configure the tag using object arguments,
  * i.e. using g_object_set().
  * 
- * Returns: a new #GtkTextTag
+ * Returns: a new #CtkTextTag
  **/
-GtkTextTag*
+CtkTextTag*
 ctk_text_tag_new (const gchar *name)
 {
-  GtkTextTag *tag;
+  CtkTextTag *tag;
 
   tag = g_object_new (CTK_TYPE_TEXT_TAG, "name", name, NULL);
 
@@ -915,8 +915,8 @@ ctk_text_tag_new (const gchar *name)
 static void
 ctk_text_tag_finalize (GObject *object)
 {
-  GtkTextTag *text_tag = CTK_TEXT_TAG (object);
-  GtkTextTagPrivate *priv = text_tag->priv;
+  CtkTextTag *text_tag = CTK_TEXT_TAG (object);
+  CtkTextTagPrivate *priv = text_tag->priv;
 
   if (priv->table)
     ctk_text_tag_table_remove (priv->table, text_tag);
@@ -952,10 +952,10 @@ copy_gdk_color_to_rgba (GdkColor *src,
 }
 
 static void
-set_underline_rgba (GtkTextTag    *tag,
+set_underline_rgba (CtkTextTag    *tag,
                     const GdkRGBA *rgba)
 {
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTagPrivate *priv = tag->priv;
 
   if (rgba)
     {
@@ -982,10 +982,10 @@ set_underline_rgba (GtkTextTag    *tag,
 }
 
 static void
-set_strikethrough_rgba (GtkTextTag    *tag,
+set_strikethrough_rgba (CtkTextTag    *tag,
                         const GdkRGBA *rgba)
 {
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTagPrivate *priv = tag->priv;
 
   if (rgba)
     {
@@ -1012,9 +1012,9 @@ set_strikethrough_rgba (GtkTextTag    *tag,
 }
 
 static void
-set_bg_rgba (GtkTextTag *tag, GdkRGBA *rgba)
+set_bg_rgba (CtkTextTag *tag, GdkRGBA *rgba)
 {
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTagPrivate *priv = tag->priv;
 
   if (priv->values->appearance.rgba[0])
     gdk_rgba_free (priv->values->appearance.rgba[0]);
@@ -1044,9 +1044,9 @@ set_bg_rgba (GtkTextTag *tag, GdkRGBA *rgba)
 }
 
 static void
-set_fg_rgba (GtkTextTag *tag, GdkRGBA *rgba)
+set_fg_rgba (CtkTextTag *tag, GdkRGBA *rgba)
 {
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTagPrivate *priv = tag->priv;
 
   if (priv->values->appearance.rgba[1])
     gdk_rgba_free (priv->values->appearance.rgba[1]);
@@ -1076,9 +1076,9 @@ set_fg_rgba (GtkTextTag *tag, GdkRGBA *rgba)
 }
 
 static void
-set_pg_bg_rgba (GtkTextTag *tag, GdkRGBA *rgba)
+set_pg_bg_rgba (CtkTextTag *tag, GdkRGBA *rgba)
 {
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTagPrivate *priv = tag->priv;
 
   if (priv->values->pg_bg_rgba)
     gdk_rgba_free (priv->values->pg_bg_rgba);
@@ -1120,7 +1120,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 static void
-set_bg_color (GtkTextTag *tag, GdkColor *color)
+set_bg_color (CtkTextTag *tag, GdkColor *color)
 {
   if (color)
     {
@@ -1134,7 +1134,7 @@ set_bg_color (GtkTextTag *tag, GdkColor *color)
 }
 
 static void
-set_fg_color (GtkTextTag *tag, GdkColor *color)
+set_fg_color (CtkTextTag *tag, GdkColor *color)
 {
   if (color)
     {
@@ -1148,7 +1148,7 @@ set_fg_color (GtkTextTag *tag, GdkColor *color)
 }
 
 static void
-set_pg_bg_color (GtkTextTag *tag, GdkColor *color)
+set_pg_bg_color (CtkTextTag *tag, GdkColor *color)
 {
   if (color)
     {
@@ -1260,10 +1260,10 @@ notify_fields_changed (GObject       *object,
 }
 
 static void
-set_font_description (GtkTextTag           *text_tag,
+set_font_description (CtkTextTag           *text_tag,
                       PangoFontDescription *font_desc)
 {
-  GtkTextTagPrivate *priv = text_tag->priv;
+  CtkTextTagPrivate *priv = text_tag->priv;
   GObject *object = G_OBJECT (text_tag);
   PangoFontDescription *new_font_desc;
   PangoFontMask old_mask, new_mask, changed_mask, set_changed_mask;
@@ -1314,9 +1314,9 @@ set_font_description (GtkTextTag           *text_tag,
 }
 
 static void
-ctk_text_tag_ensure_font (GtkTextTag *text_tag)
+ctk_text_tag_ensure_font (CtkTextTag *text_tag)
 {
-  GtkTextTagPrivate *priv = text_tag->priv;
+  CtkTextTagPrivate *priv = text_tag->priv;
 
   if (!priv->values->font)
     priv->values->font = pango_font_description_new ();
@@ -1328,8 +1328,8 @@ ctk_text_tag_set_property (GObject      *object,
                            const GValue *value,
                            GParamSpec   *pspec)
 {
-  GtkTextTag *text_tag = CTK_TEXT_TAG (object);
-  GtkTextTagPrivate *priv = text_tag->priv;
+  CtkTextTag *text_tag = CTK_TEXT_TAG (object);
+  CtkTextTagPrivate *priv = text_tag->priv;
   gboolean size_changed = FALSE;
 
   switch (prop_id)
@@ -1840,8 +1840,8 @@ ctk_text_tag_get_property (GObject      *object,
                            GValue       *value,
                            GParamSpec   *pspec)
 {
-  GtkTextTag *tag = CTK_TEXT_TAG (object);
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTag *tag = CTK_TEXT_TAG (object);
+  CtkTextTagPrivate *priv = tag->priv;
 
   switch (prop_id)
     {
@@ -2176,9 +2176,9 @@ typedef struct {
 } DeltaData;
 
 static void
-delta_priority_foreach (GtkTextTag *tag, gpointer user_data)
+delta_priority_foreach (CtkTextTag *tag, gpointer user_data)
 {
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTagPrivate *priv = tag->priv;
   DeltaData *dd = user_data;
 
   if (priv->priority >= dd->low && priv->priority <= dd->high)
@@ -2187,14 +2187,14 @@ delta_priority_foreach (GtkTextTag *tag, gpointer user_data)
 
 /**
  * ctk_text_tag_get_priority:
- * @tag: a #GtkTextTag
+ * @tag: a #CtkTextTag
  * 
  * Get the tag priority.
  * 
  * Returns: The tag’s priority.
  **/
 gint
-ctk_text_tag_get_priority (GtkTextTag *tag)
+ctk_text_tag_get_priority (CtkTextTag *tag)
 {
   g_return_val_if_fail (CTK_IS_TEXT_TAG (tag), 0);
 
@@ -2203,10 +2203,10 @@ ctk_text_tag_get_priority (GtkTextTag *tag)
 
 /**
  * ctk_text_tag_set_priority:
- * @tag: a #GtkTextTag
+ * @tag: a #CtkTextTag
  * @priority: the new priority
  *
- * Sets the priority of a #GtkTextTag. Valid priorities
+ * Sets the priority of a #CtkTextTag. Valid priorities
  * start at 0 and go to one less than ctk_text_tag_table_get_size().
  * Each tag in a table has a unique priority; setting the priority
  * of one tag shifts the priorities of all the other tags in the
@@ -2219,10 +2219,10 @@ ctk_text_tag_get_priority (GtkTextTag *tag)
  * automatically.
  **/
 void
-ctk_text_tag_set_priority (GtkTextTag *tag,
+ctk_text_tag_set_priority (CtkTextTag *tag,
                            gint        priority)
 {
-  GtkTextTagPrivate *priv;
+  CtkTextTagPrivate *priv;
   DeltaData dd;
 
   g_return_if_fail (CTK_IS_TEXT_TAG (tag));
@@ -2258,20 +2258,20 @@ ctk_text_tag_set_priority (GtkTextTag *tag,
 
 /**
  * ctk_text_tag_event:
- * @tag: a #GtkTextTag
+ * @tag: a #CtkTextTag
  * @event_object: object that received the event, such as a widget
  * @event: the event
  * @iter: location where the event was received
  * 
- * Emits the “event” signal on the #GtkTextTag.
+ * Emits the “event” signal on the #CtkTextTag.
  * 
  * Returns: result of signal emission (whether the event was handled)
  **/
 gboolean
-ctk_text_tag_event (GtkTextTag        *tag,
+ctk_text_tag_event (CtkTextTag        *tag,
                     GObject           *event_object,
                     GdkEvent          *event,
-                    const GtkTextIter *iter)
+                    const CtkTextIter *iter)
 {
   gboolean retval = FALSE;
 
@@ -2292,29 +2292,29 @@ ctk_text_tag_event (GtkTextTag        *tag,
 
 /**
  * ctk_text_tag_changed:
- * @tag: a #GtkTextTag.
- * @size_changed: whether the change affects the #GtkTextView layout.
+ * @tag: a #CtkTextTag.
+ * @size_changed: whether the change affects the #CtkTextView layout.
  *
- * Emits the #GtkTextTagTable::tag-changed signal on the #GtkTextTagTable where
+ * Emits the #CtkTextTagTable::tag-changed signal on the #CtkTextTagTable where
  * the tag is included.
  *
- * The signal is already emitted when setting a #GtkTextTag property. This
- * function is useful for a #GtkTextTag subclass.
+ * The signal is already emitted when setting a #CtkTextTag property. This
+ * function is useful for a #CtkTextTag subclass.
  *
  * Since: 3.20
  */
 void
-ctk_text_tag_changed (GtkTextTag *tag,
+ctk_text_tag_changed (CtkTextTag *tag,
                       gboolean    size_changed)
 {
-  GtkTextTagPrivate *priv;
+  CtkTextTagPrivate *priv;
 
   g_return_if_fail (CTK_IS_TEXT_TAG (tag));
 
   priv = tag->priv;
 
   /* This is somewhat weird since we emit another object's signal here, but the
-   * two objects are already tightly bound. If a GtkTextTag::changed signal is
+   * two objects are already tightly bound. If a CtkTextTag::changed signal is
    * added, this would increase significantly the number of signal connections.
    */
   if (priv->table != NULL)
@@ -2324,20 +2324,20 @@ ctk_text_tag_changed (GtkTextTag *tag,
 static int
 tag_sort_func (gconstpointer first, gconstpointer second)
 {
-  GtkTextTag *tag1, *tag2;
+  CtkTextTag *tag1, *tag2;
 
-  tag1 = * (GtkTextTag **) first;
-  tag2 = * (GtkTextTag **) second;
+  tag1 = * (CtkTextTag **) first;
+  tag2 = * (CtkTextTag **) second;
   return tag1->priv->priority - tag2->priv->priority;
 }
 
 void
-_ctk_text_tag_array_sort (GtkTextTag** tag_array_p,
+_ctk_text_tag_array_sort (CtkTextTag** tag_array_p,
                           guint len)
 {
   int i, j, prio;
-  GtkTextTag **tag;
-  GtkTextTag **maxPtrPtr, *tmp;
+  CtkTextTag **tag;
+  CtkTextTag **maxPtrPtr, *tmp;
 
   g_return_if_fail (tag_array_p != NULL);
   g_return_if_fail (len > 0);
@@ -2346,7 +2346,7 @@ _ctk_text_tag_array_sort (GtkTextTag** tag_array_p,
     return;
   }
   if (len < 20) {
-    GtkTextTag **iter = tag_array_p;
+    CtkTextTag **iter = tag_array_p;
 
     for (i = len-1; i > 0; i--, iter++) {
       maxPtrPtr = tag = iter;
@@ -2362,7 +2362,7 @@ _ctk_text_tag_array_sort (GtkTextTag** tag_array_p,
       *iter = tmp;
     }
   } else {
-    qsort ((void *) tag_array_p, (unsigned) len, sizeof (GtkTextTag *),
+    qsort ((void *) tag_array_p, (unsigned) len, sizeof (CtkTextTag *),
            tag_sort_func);
   }
 
@@ -2372,7 +2372,7 @@ _ctk_text_tag_array_sort (GtkTextTag** tag_array_p,
     i = 0;
     while (i < len)
       {
-        GtkTextTag *t = tag_array_p[i];
+        CtkTextTag *t = tag_array_p[i];
         printf ("  %s priority %d\n", t->name, t->priority);
 
         ++i;

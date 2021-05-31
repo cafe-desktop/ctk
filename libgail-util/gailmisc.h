@@ -40,11 +40,11 @@ AtkAttributeSet* gail_misc_layout_get_run_attributes
 GDK_AVAILABLE_IN_ALL
 AtkAttributeSet* gail_misc_get_default_attributes (AtkAttributeSet   *attrib_set,
                                                    PangoLayout       *layout,
-                                                   GtkWidget         *widget);
+                                                   CtkWidget         *widget);
 
 GDK_AVAILABLE_IN_ALL
 void             gail_misc_get_extents_from_pango_rectangle
-                                                  (GtkWidget         *widget,
+                                                  (CtkWidget         *widget,
                                                    PangoRectangle    *char_rect,
                                                    gint              x_layout,
                                                    gint              y_layout,
@@ -56,7 +56,7 @@ void             gail_misc_get_extents_from_pango_rectangle
 
 GDK_AVAILABLE_IN_ALL
 gint             gail_misc_get_index_at_point_in_layout
-                                                  (GtkWidget         *widget,
+                                                  (CtkWidget         *widget,
                                                    PangoLayout       *layout, 
                                                    gint              x_layout,
                                                    gint              y_layout,
@@ -65,7 +65,7 @@ gint             gail_misc_get_index_at_point_in_layout
                                                    AtkCoordType      coords);
 
 GDK_AVAILABLE_IN_ALL
-void		 gail_misc_get_origins            (GtkWidget         *widget,
+void		 gail_misc_get_origins            (CtkWidget         *widget,
                                                    gint              *x_window,
 					           gint              *y_window,
 					           gint              *x_toplevel,
@@ -73,7 +73,7 @@ void		 gail_misc_get_origins            (GtkWidget         *widget,
 
 GDK_AVAILABLE_IN_ALL
 AtkAttributeSet* gail_misc_buffer_get_run_attributes
-                                                  (GtkTextBuffer     *buffer,
+                                                  (CtkTextBuffer     *buffer,
                                                    gint              offset,
                                                    gint              *start_offset,
                                                    gint              *end_offset);

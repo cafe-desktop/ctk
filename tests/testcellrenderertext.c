@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * testcellrenderertext.c: Tests for the various properties of GtkCellRendererText
+ * testcellrenderertext.c: Tests for the various properties of CtkCellRendererText
  * Copyright (C) 2005, Novell, Inc.
  *
  * Authors:
@@ -103,10 +103,10 @@ static const struct cell_params cell_params[] = {
   { "0  0  0  0  T  -1 -1 -1 -1 CH F  NO AR", TESTR,  0,  0, 0.0, 0.0, TRUE,  -1, -1, -1, 20, WO, FALSE, NO , AR }, /* 21 */
 };
 
-static GtkListStore *
+static CtkListStore *
 create_list_store (void)
 {
-  GtkListStore *list_store;
+  CtkListStore *list_store;
   int i;
 
   list_store = ctk_list_store_new (NUM_COLS,
@@ -131,7 +131,7 @@ create_list_store (void)
   for (i = 0; i < G_N_ELEMENTS (cell_params); i++)
     {
       const struct cell_params *p;
-      GtkTreeIter iter;
+      CtkTreeIter iter;
       char buf[50];
 
       p = cell_params + i;
@@ -163,14 +163,14 @@ create_list_store (void)
   return list_store;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_tree (gboolean rtl)
 {
-  GtkWidget *sw;
-  GtkWidget *treeview;
-  GtkListStore *list_store;
-  GtkTreeViewColumn *column;
-  GtkCellRenderer *renderer;
+  CtkWidget *sw;
+  CtkWidget *treeview;
+  CtkListStore *list_store;
+  CtkTreeViewColumn *column;
+  CtkCellRenderer *renderer;
   GdkPixbuf *pixbuf;
 
   sw = ctk_scrolled_window_new (NULL, NULL);
@@ -249,10 +249,10 @@ create_tree (gboolean rtl)
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *tree;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *label;
+  CtkWidget *tree;
 
   ctk_init (&argc, &argv);
 

@@ -27,31 +27,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_COLOR_CHOOSER_WIDGET              (ctk_color_chooser_widget_get_type ())
-#define CTK_COLOR_CHOOSER_WIDGET(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_CHOOSER_WIDGET, GtkColorChooserWidget))
-#define CTK_COLOR_CHOOSER_WIDGET_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_CHOOSER_WIDGET, GtkColorChooserWidgetClass))
+#define CTK_COLOR_CHOOSER_WIDGET(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_CHOOSER_WIDGET, CtkColorChooserWidget))
+#define CTK_COLOR_CHOOSER_WIDGET_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_CHOOSER_WIDGET, CtkColorChooserWidgetClass))
 #define CTK_IS_COLOR_CHOOSER_WIDGET(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_CHOOSER_WIDGET))
 #define CTK_IS_COLOR_CHOOSER_WIDGET_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_CHOOSER_WIDGET))
-#define CTK_COLOR_CHOOSER_WIDGET_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_CHOOSER_WIDGET, GtkColorChooserWidgetClass))
+#define CTK_COLOR_CHOOSER_WIDGET_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_CHOOSER_WIDGET, CtkColorChooserWidgetClass))
 
-typedef struct _GtkColorChooserWidget        GtkColorChooserWidget;
-typedef struct _GtkColorChooserWidgetPrivate GtkColorChooserWidgetPrivate;
-typedef struct _GtkColorChooserWidgetClass   GtkColorChooserWidgetClass;
+typedef struct _CtkColorChooserWidget        CtkColorChooserWidget;
+typedef struct _CtkColorChooserWidgetPrivate CtkColorChooserWidgetPrivate;
+typedef struct _CtkColorChooserWidgetClass   CtkColorChooserWidgetClass;
 
-struct _GtkColorChooserWidget
+struct _CtkColorChooserWidget
 {
-  GtkBox parent_instance;
+  CtkBox parent_instance;
 
   /*< private >*/
-  GtkColorChooserWidgetPrivate *priv;
+  CtkColorChooserWidgetPrivate *priv;
 };
 
 /**
- * GtkColorChooserWidgetClass:
+ * CtkColorChooserWidgetClass:
  * @parent_class: The parent class.
  */
-struct _GtkColorChooserWidgetClass
+struct _CtkColorChooserWidgetClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
   /*< private >*/
 
@@ -70,7 +70,7 @@ GDK_AVAILABLE_IN_3_4
 GType       ctk_color_chooser_widget_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_4
-GtkWidget * ctk_color_chooser_widget_new      (void);
+CtkWidget * ctk_color_chooser_widget_new      (void);
 
 G_END_DECLS
 

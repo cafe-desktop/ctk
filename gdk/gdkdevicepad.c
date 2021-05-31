@@ -20,7 +20,7 @@
 /**
  * SECTION:gdkdevicepad
  * @Short_description: Pad device interface
- * @Title: GtkDevicePad
+ * @Title: CtkDevicePad
  *
  * #GdkDevicePad is an interface implemented by devices of type
  * %GDK_SOURCE_TABLET_PAD, it allows querying the features provided

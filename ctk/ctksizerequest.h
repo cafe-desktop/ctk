@@ -26,10 +26,10 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkRequestedSize         GtkRequestedSize;
+typedef struct _CtkRequestedSize         CtkRequestedSize;
 
 /**
- * GtkRequestedSize:
+ * CtkRequestedSize:
  * @data: A client pointer
  * @minimum_size: The minimum size needed for allocation in a given orientation
  * @natural_size: The natural size for allocation in a given orientation
@@ -38,7 +38,7 @@ typedef struct _GtkRequestedSize         GtkRequestedSize;
  * are primarily used in container implementations when allocating a natural
  * size for children calling. See ctk_distribute_natural_allocation().
  */
-struct _GtkRequestedSize
+struct _CtkRequestedSize
 {
   gpointer data;
   gint     minimum_size;
@@ -50,7 +50,7 @@ struct _GtkRequestedSize
 GDK_AVAILABLE_IN_ALL
 gint                ctk_distribute_natural_allocation               (gint              extra_space,
                                                                      guint             n_requested_sizes,
-                                                                     GtkRequestedSize *sizes);
+                                                                     CtkRequestedSize *sizes);
 
 
 G_END_DECLS

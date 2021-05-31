@@ -1,16 +1,16 @@
 #include <ctk/ctk.h>
 
-static GtkTargetEntry entries[] = {
+static CtkTargetEntry entries[] = {
   { "CTK_LIST_BOX_ROW", CTK_TARGET_SAME_APP, 0 }
 };
 
 static void
-drag_begin (GtkWidget      *widget,
+drag_begin (CtkWidget      *widget,
             GdkDragContext *context,
             gpointer        data)
 {
-  GtkWidget *row;
-  GtkAllocation alloc;
+  CtkWidget *row;
+  CtkAllocation alloc;
   cairo_surface_t *surface;
   cairo_t *cr;
   int x, y;
@@ -35,9 +35,9 @@ drag_begin (GtkWidget      *widget,
 }
 
 void
-drag_data_get (GtkWidget        *widget,
+drag_data_get (CtkWidget        *widget,
                GdkDragContext   *context,
-               GtkSelectionData *selection_data,
+               CtkSelectionData *selection_data,
                guint             info,
                guint             time,
                gpointer          data)
@@ -50,18 +50,18 @@ drag_data_get (GtkWidget        *widget,
 }
 
 static void
-drag_data_received (GtkWidget        *widget,
+drag_data_received (CtkWidget        *widget,
                     GdkDragContext   *context,
                     gint              x,
                     gint              y,
-                    GtkSelectionData *selection_data,
+                    CtkSelectionData *selection_data,
                     guint             info,
                     guint32           time,
                     gpointer          data)
 {
-  GtkWidget *target;
-  GtkWidget *row;
-  GtkWidget *source;
+  CtkWidget *target;
+  CtkWidget *row;
+  CtkWidget *source;
   int pos;
 
   target = widget;
@@ -79,10 +79,10 @@ drag_data_received (GtkWidget        *widget,
   g_object_unref (source);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_row (const gchar *text)
 {
-  GtkWidget *row, *handle, *box, *label, *image;
+  CtkWidget *row, *handle, *box, *label, *image;
 
   row = ctk_list_box_row_new ();
 
@@ -117,10 +117,10 @@ static const char *css =
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window, *list, *sw, *row;
+  CtkWidget *window, *list, *sw, *row;
   gint i;
   gchar *text;
-  GtkCssProvider *provider;
+  CtkCssProvider *provider;
 
   ctk_init (NULL, NULL);
 

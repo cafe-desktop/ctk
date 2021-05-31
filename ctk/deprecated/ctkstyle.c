@@ -49,23 +49,23 @@
  * SECTION:ctkstyle
  * @Short_description: Deprecated object that holds style information
  *     for widgets
- * @Title: GtkStyle
+ * @Title: CtkStyle
  *
- * A #GtkStyle object encapsulates the information that provides the look and
+ * A #CtkStyle object encapsulates the information that provides the look and
  * feel for a widget.
  *
- * > In GTK+ 3.0, GtkStyle has been deprecated and replaced by
- * > #GtkStyleContext.
+ * > In GTK+ 3.0, CtkStyle has been deprecated and replaced by
+ * > #CtkStyleContext.
  *
- * Each #GtkWidget has an associated #GtkStyle object that is used when
- * rendering that widget. Also, a #GtkStyle holds information for the five
+ * Each #CtkWidget has an associated #CtkStyle object that is used when
+ * rendering that widget. Also, a #CtkStyle holds information for the five
  * possible widget states though not every widget supports all five
- * states; see #GtkStateType.
+ * states; see #CtkStateType.
  *
- * Usually the #GtkStyle for a widget is the same as the default style that
+ * Usually the #CtkStyle for a widget is the same as the default style that
  * is set by GTK+ and modified the theme engine.
  *
- * Usually applications should not need to use or modify the #GtkStyle of
+ * Usually applications should not need to use or modify the #CtkStyle of
  * their widgets.
  */
 
@@ -81,11 +81,11 @@ typedef struct {
 } PropertyValue;
 
 typedef struct {
-  GtkStyleContext *context;
+  CtkStyleContext *context;
   gulong context_changed_id;
-} GtkStylePrivate;
+} CtkStylePrivate;
 
-#define CTK_STYLE_GET_PRIVATE(obj) ((GtkStylePrivate *) ctk_style_get_instance_private ((GtkStyle *) (obj)))
+#define CTK_STYLE_GET_PRIVATE(obj) ((CtkStylePrivate *) ctk_style_get_instance_private ((CtkStyle *) (obj)))
 
 enum {
   PROP_0,
@@ -104,220 +104,220 @@ static void      ctk_style_get_property         (GObject        *object,
                                                  GValue         *value,
                                                  GParamSpec     *pspec);
 
-static void      ctk_style_real_realize        (GtkStyle	*style);
-static void      ctk_style_real_unrealize      (GtkStyle	*style);
-static void      ctk_style_real_copy           (GtkStyle	*style,
-						GtkStyle	*src);
-static void      ctk_style_real_set_background (GtkStyle	*style,
+static void      ctk_style_real_realize        (CtkStyle	*style);
+static void      ctk_style_real_unrealize      (CtkStyle	*style);
+static void      ctk_style_real_copy           (CtkStyle	*style,
+						CtkStyle	*src);
+static void      ctk_style_real_set_background (CtkStyle	*style,
 						GdkWindow	*window,
-						GtkStateType	 state_type);
-static GtkStyle *ctk_style_real_clone          (GtkStyle	*style);
-static void      ctk_style_real_init_from_rc   (GtkStyle	*style,
-                                                GtkRcStyle	*rc_style);
-static GdkPixbuf *ctk_default_render_icon      (GtkStyle            *style,
-                                                const GtkIconSource *source,
-                                                GtkTextDirection     direction,
-                                                GtkStateType         state,
-                                                GtkIconSize          size,
-                                                GtkWidget           *widget,
+						CtkStateType	 state_type);
+static CtkStyle *ctk_style_real_clone          (CtkStyle	*style);
+static void      ctk_style_real_init_from_rc   (CtkStyle	*style,
+                                                CtkRcStyle	*rc_style);
+static GdkPixbuf *ctk_default_render_icon      (CtkStyle            *style,
+                                                const CtkIconSource *source,
+                                                CtkTextDirection     direction,
+                                                CtkStateType         state,
+                                                CtkIconSize          size,
+                                                CtkWidget           *widget,
                                                 const gchar         *detail);
-static void ctk_default_draw_hline      (GtkStyle        *style,
+static void ctk_default_draw_hline      (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x1,
 					 gint             x2,
 					 gint             y);
-static void ctk_default_draw_vline      (GtkStyle        *style,
+static void ctk_default_draw_vline      (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             y1,
 					 gint             y2,
 					 gint             x);
-static void ctk_default_draw_shadow     (GtkStyle        *style,
+static void ctk_default_draw_shadow     (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_arrow      (GtkStyle        *style,
+static void ctk_default_draw_arrow      (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
-					 GtkArrowType     arrow_type,
+					 CtkArrowType     arrow_type,
 					 gboolean         fill,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_diamond    (GtkStyle        *style,
+static void ctk_default_draw_diamond    (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_box        (GtkStyle        *style,
+static void ctk_default_draw_box        (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_flat_box   (GtkStyle        *style,
+static void ctk_default_draw_flat_box   (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_check      (GtkStyle        *style,
+static void ctk_default_draw_check      (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_option     (GtkStyle        *style,
+static void ctk_default_draw_option     (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_tab        (GtkStyle        *style,
+static void ctk_default_draw_tab        (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_shadow_gap (GtkStyle        *style,
+static void ctk_default_draw_shadow_gap (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height,
-					 GtkPositionType  gap_side,
+					 CtkPositionType  gap_side,
 					 gint             gap_x,
 					 gint             gap_width);
-static void ctk_default_draw_box_gap    (GtkStyle        *style,
+static void ctk_default_draw_box_gap    (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height,
-					 GtkPositionType  gap_side,
+					 CtkPositionType  gap_side,
 					 gint             gap_x,
 					 gint             gap_width);
-static void ctk_default_draw_extension  (GtkStyle        *style,
+static void ctk_default_draw_extension  (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height,
-					 GtkPositionType  gap_side);
-static void ctk_default_draw_focus      (GtkStyle        *style,
+					 CtkPositionType  gap_side);
+static void ctk_default_draw_focus      (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height);
-static void ctk_default_draw_slider     (GtkStyle        *style,
+static void ctk_default_draw_slider     (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height,
-					 GtkOrientation   orientation);
-static void ctk_default_draw_handle     (GtkStyle        *style,
+					 CtkOrientation   orientation);
+static void ctk_default_draw_handle     (CtkStyle        *style,
 					 cairo_t         *cr,
-					 GtkStateType     state_type,
-					 GtkShadowType    shadow_type,
-					 GtkWidget       *widget,
+					 CtkStateType     state_type,
+					 CtkShadowType    shadow_type,
+					 CtkWidget       *widget,
 					 const gchar     *detail,
 					 gint             x,
 					 gint             y,
 					 gint             width,
 					 gint             height,
-					 GtkOrientation   orientation);
-static void ctk_default_draw_expander   (GtkStyle        *style,
+					 CtkOrientation   orientation);
+static void ctk_default_draw_expander   (CtkStyle        *style,
                                          cairo_t         *cr,
-                                         GtkStateType     state_type,
-                                         GtkWidget       *widget,
+                                         CtkStateType     state_type,
+                                         CtkWidget       *widget,
                                          const gchar     *detail,
                                          gint             x,
                                          gint             y,
-					 GtkExpanderStyle expander_style);
-static void ctk_default_draw_layout     (GtkStyle        *style,
+					 CtkExpanderStyle expander_style);
+static void ctk_default_draw_layout     (CtkStyle        *style,
                                          cairo_t         *cr,
-                                         GtkStateType     state_type,
+                                         CtkStateType     state_type,
 					 gboolean         use_text,
-                                         GtkWidget       *widget,
+                                         CtkWidget       *widget,
                                          const gchar     *detail,
                                          gint             x,
                                          gint             y,
                                          PangoLayout     *layout);
-static void ctk_default_draw_resize_grip (GtkStyle       *style,
+static void ctk_default_draw_resize_grip (CtkStyle       *style,
                                           cairo_t        *cr,
-                                          GtkStateType    state_type,
-                                          GtkWidget      *widget,
+                                          CtkStateType    state_type,
+                                          CtkWidget      *widget,
                                           const gchar    *detail,
                                           GdkWindowEdge   edge,
                                           gint            x,
                                           gint            y,
                                           gint            width,
                                           gint            height);
-static void ctk_default_draw_spinner     (GtkStyle       *style,
+static void ctk_default_draw_spinner     (CtkStyle       *style,
                                           cairo_t        *cr,
-					  GtkStateType    state_type,
-                                          GtkWidget      *widget,
+					  CtkStateType    state_type,
+                                          CtkWidget      *widget,
                                           const gchar    *detail,
 					  guint           step,
 					  gint            x,
@@ -333,14 +333,14 @@ static void hls_to_rgb			(gdouble	 *h,
 					 gdouble	 *s);
 
 static void transform_detail_string (const gchar     *detail,
-                                     GtkStyleContext *context);
+                                     CtkStyleContext *context);
 
 /*
  * Data for default check and radio buttons
  */
 
-static const GtkRequisition default_option_indicator_size = { 7, 13 };
-static const GtkBorder default_option_indicator_spacing = { 7, 5, 2, 2 };
+static const CtkRequisition default_option_indicator_size = { 7, 13 };
+static const CtkBorder default_option_indicator_spacing = { 7, 5, 2, 2 };
 
 #define CTK_GRAY		0xdcdc, 0xdada, 0xd5d5
 #define CTK_DARK_GRAY		0xc4c4, 0xc2c2, 0xbdbd
@@ -372,12 +372,12 @@ static GQuark quark_default_style;
 static guint realize_signal = 0;
 static guint unrealize_signal = 0;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkStyle, ctk_style, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkStyle, ctk_style, G_TYPE_OBJECT)
 
 /* --- functions --- */
 
 static void
-ctk_style_init (GtkStyle *style)
+ctk_style_init (CtkStyle *style)
 {
   gint i;
 
@@ -427,7 +427,7 @@ ctk_style_init (GtkStyle *style)
 }
 
 static void
-ctk_style_class_init (GtkStyleClass *klass)
+ctk_style_class_init (CtkStyleClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   
@@ -469,12 +469,12 @@ ctk_style_class_init (GtkStyleClass *klass)
 				   PROP_CONTEXT,
 				   g_param_spec_object ("context",
  							P_("Style context"),
-							P_("GtkStyleContext to get style from"),
+							P_("CtkStyleContext to get style from"),
                                                         CTK_TYPE_STYLE_CONTEXT,
                                                         G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE));
 
   /**
-   * GtkStyle::realize:
+   * CtkStyle::realize:
    * @style: the object which received the signal
    *
    * Emitted when the style has been initialized for a particular
@@ -487,17 +487,17 @@ ctk_style_class_init (GtkStyleClass *klass)
   realize_signal = g_signal_new (I_("realize"),
 				 G_TYPE_FROM_CLASS (object_class),
 				 G_SIGNAL_RUN_FIRST,
-				 G_STRUCT_OFFSET (GtkStyleClass, realize),
+				 G_STRUCT_OFFSET (CtkStyleClass, realize),
 				 NULL, NULL,
 				 NULL,
 				 G_TYPE_NONE, 0);
   /**
-   * GtkStyle::unrealize:
+   * CtkStyle::unrealize:
    * @style: the object which received the signal
    *
    * Emitted when the aspects of the style specific to a particular visual
    * is being cleaned up. A connection to this signal can be useful
-   * if a widget wants to cache objects as object data on #GtkStyle.
+   * if a widget wants to cache objects as object data on #CtkStyle.
    * This signal provides a convenient place to free such cached objects.
    *
    * Since: 2.4
@@ -505,7 +505,7 @@ ctk_style_class_init (GtkStyleClass *klass)
   unrealize_signal = g_signal_new (I_("unrealize"),
 				   G_TYPE_FROM_CLASS (object_class),
 				   G_SIGNAL_RUN_FIRST,
-				   G_STRUCT_OFFSET (GtkStyleClass, unrealize),
+				   G_STRUCT_OFFSET (CtkStyleClass, unrealize),
 				   NULL, NULL,
 				   NULL,
 				   G_TYPE_NONE, 0);
@@ -514,8 +514,8 @@ ctk_style_class_init (GtkStyleClass *klass)
 static void
 ctk_style_finalize (GObject *object)
 {
-  GtkStyle *style = CTK_STYLE (object);
-  GtkStylePrivate *priv = CTK_STYLE_GET_PRIVATE (style);
+  CtkStyle *style = CTK_STYLE (object);
+  CtkStylePrivate *priv = CTK_STYLE_GET_PRIVATE (style);
   gint i;
 
   g_return_if_fail (style->attach_count == 0);
@@ -577,7 +577,7 @@ ctk_style_set_property (GObject      *object,
                         const GValue *value,
                         GParamSpec   *pspec)
 {
-  GtkStylePrivate *priv;
+  CtkStylePrivate *priv;
 
   priv = CTK_STYLE_GET_PRIVATE (object);
 
@@ -598,7 +598,7 @@ ctk_style_get_property (GObject      *object,
                         GValue       *value,
                         GParamSpec   *pspec)
 {
-  GtkStylePrivate *priv;
+  CtkStylePrivate *priv;
 
   priv = CTK_STYLE_GET_PRIVATE (object);
 
@@ -614,14 +614,14 @@ ctk_style_get_property (GObject      *object,
 }
 
 static gboolean
-set_color_from_context (GtkStyle *style,
-                        GtkStateType state,
-                        GtkStyleContext *context,
-                        GtkRcFlags prop)
+set_color_from_context (CtkStyle *style,
+                        CtkStateType state,
+                        CtkStyleContext *context,
+                        CtkRcFlags prop)
 {
   GdkRGBA *color = NULL;
   GdkColor *dest = { 0 }; /* Shut up gcc */
-  GtkStateFlags flags;
+  CtkStateFlags flags;
 
   flags = ctk_style_context_get_state (context);
 
@@ -672,12 +672,12 @@ set_color_from_context (GtkStyle *style,
 }
 
 static void
-set_color (GtkStyle        *style,
-           GtkStyleContext *context,
-           GtkStateType     state,
-           GtkRcFlags       prop)
+set_color (CtkStyle        *style,
+           CtkStyleContext *context,
+           CtkStateType     state,
+           CtkRcFlags       prop)
 {
-  /* Try to fill in the values from the associated GtkStyleContext.
+  /* Try to fill in the values from the associated CtkStyleContext.
    * Since fully-transparent black is a very common default (e.g. for 
    * background-color properties), and we must store the result in a GdkColor
    * to retain API compatibility, in case the fetched color is fully transparent
@@ -694,12 +694,12 @@ set_color (GtkStyle        *style,
 }
 
 static void
-ctk_style_update_from_context (GtkStyle *style)
+ctk_style_update_from_context (CtkStyle *style)
 {
-  GtkStylePrivate *priv;
-  GtkStateType state;
-  GtkStateFlags flags;
-  GtkBorder padding;
+  CtkStylePrivate *priv;
+  CtkStateType state;
+  CtkStateFlags flags;
+  CtkBorder padding;
   gint i;
 
   priv = CTK_STYLE_GET_PRIVATE (style);
@@ -799,7 +799,7 @@ ctk_style_update_from_context (GtkStyle *style)
 }
 
 static void
-style_context_changed (GtkStyleContext *context,
+style_context_changed (CtkStyleContext *context,
                        gpointer         user_data)
 {
   ctk_style_update_from_context (CTK_STYLE (user_data));
@@ -808,7 +808,7 @@ style_context_changed (GtkStyleContext *context,
 static void
 ctk_style_constructed (GObject *object)
 {
-  GtkStylePrivate *priv;
+  CtkStylePrivate *priv;
 
   priv = CTK_STYLE_GET_PRIVATE (object);
 
@@ -823,18 +823,18 @@ ctk_style_constructed (GObject *object)
 
 /**
  * ctk_style_copy:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  *
- * Creates a copy of the passed in #GtkStyle object.
+ * Creates a copy of the passed in #CtkStyle object.
  *
  * Returns: (transfer full): a copy of @style
  *
- * Deprecated:3.0: Use #GtkStyleContext instead
+ * Deprecated:3.0: Use #CtkStyleContext instead
  */
-GtkStyle*
-ctk_style_copy (GtkStyle *style)
+CtkStyle*
+ctk_style_copy (CtkStyle *style)
 {
-  GtkStyle *new_style;
+  CtkStyle *new_style;
   
   g_return_val_if_fail (CTK_IS_STYLE (style), NULL);
   
@@ -844,12 +844,12 @@ ctk_style_copy (GtkStyle *style)
   return new_style;
 }
 
-GtkStyle*
+CtkStyle*
 _ctk_style_new_for_path (GdkScreen     *screen,
-                         GtkWidgetPath *path)
+                         CtkWidgetPath *path)
 {
-  GtkStyleContext *context;
-  GtkStyle *style;
+  CtkStyleContext *context;
+  CtkStyle *style;
 
   context = ctk_style_context_new ();
 
@@ -870,17 +870,17 @@ _ctk_style_new_for_path (GdkScreen     *screen,
 /**
  * ctk_style_new:
  *
- * Creates a new #GtkStyle.
+ * Creates a new #CtkStyle.
  *
- * Returns: a new #GtkStyle.
+ * Returns: a new #CtkStyle.
  *
- * Deprecated: 3.0: Use #GtkStyleContext
+ * Deprecated: 3.0: Use #CtkStyleContext
  */
-GtkStyle*
+CtkStyle*
 ctk_style_new (void)
 {
-  GtkWidgetPath *path;
-  GtkStyle *style;
+  CtkWidgetPath *path;
+  CtkStyle *style;
 
   path = ctk_widget_path_new ();
   ctk_widget_path_append_type (path, CTK_TYPE_WIDGET);
@@ -894,18 +894,18 @@ ctk_style_new (void)
 
 /**
  * ctk_style_has_context:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  *
- * Returns whether @style has an associated #GtkStyleContext.
+ * Returns whether @style has an associated #CtkStyleContext.
  *
- * Returns: %TRUE if @style has a #GtkStyleContext
+ * Returns: %TRUE if @style has a #CtkStyleContext
  *
  * Since: 3.0
  */
 gboolean
-ctk_style_has_context (GtkStyle *style)
+ctk_style_has_context (CtkStyle *style)
 {
-  GtkStylePrivate *priv;
+  CtkStylePrivate *priv;
 
   priv = CTK_STYLE_GET_PRIVATE (style);
 
@@ -914,7 +914,7 @@ ctk_style_has_context (GtkStyle *style)
 
 /**
  * ctk_style_attach: (skip)
- * @style: a #GtkStyle.
+ * @style: a #CtkStyle.
  * @window: a #GdkWindow.
  *
  * Attaches a style to a window; this process allocates the
@@ -927,15 +927,15 @@ ctk_style_has_context (GtkStyle *style)
  * in the following way:
  * `style = ctk_style_attach (style, window)`
  *
- * Returns: Either @style, or a newly-created #GtkStyle.
+ * Returns: Either @style, or a newly-created #CtkStyle.
  *   If the style is newly created, the style parameter
  *   will be unref'ed, and the new style will have
  *   a reference count belonging to the caller.
  *
  * Deprecated:3.0: Use ctk_widget_style_attach() instead
  */
-GtkStyle*
-ctk_style_attach (GtkStyle  *style,
+CtkStyle*
+ctk_style_attach (CtkStyle  *style,
                   GdkWindow *window)
 {
   g_return_val_if_fail (CTK_IS_STYLE (style), NULL);
@@ -946,22 +946,22 @@ ctk_style_attach (GtkStyle  *style,
 
 /**
  * ctk_style_detach:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  *
  * Detaches a style from a window. If the style is not attached
  * to any windows anymore, it is unrealized. See ctk_style_attach().
  *
- * Deprecated:3.0: Use #GtkStyleContext instead
+ * Deprecated:3.0: Use #CtkStyleContext instead
  */
 void
-ctk_style_detach (GtkStyle *style)
+ctk_style_detach (CtkStyle *style)
 {
   g_return_if_fail (CTK_IS_STYLE (style));
 }
 
 /**
  * ctk_style_lookup_icon_set:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @stock_id: an icon name
  *
  * Looks up @stock_id in the icon factories associated with @style
@@ -972,11 +972,11 @@ ctk_style_detach (GtkStyle *style)
  *
  * Deprecated:3.0: Use ctk_style_context_lookup_icon_set() instead
  */
-GtkIconSet*
-ctk_style_lookup_icon_set (GtkStyle   *style,
+CtkIconSet*
+ctk_style_lookup_icon_set (CtkStyle   *style,
                            const char *stock_id)
 {
-  GtkStylePrivate *priv;
+  CtkStylePrivate *priv;
 
   g_return_val_if_fail (CTK_IS_STYLE (style), NULL);
   g_return_val_if_fail (stock_id != NULL, NULL);
@@ -991,14 +991,14 @@ ctk_style_lookup_icon_set (GtkStyle   *style,
 
 /**
  * ctk_style_lookup_color:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @color_name: the name of the logical color to look up
  * @color: (out): the #GdkColor to fill in
  *
  * Looks up @color_name in the style’s logical color mappings,
  * filling in @color and returning %TRUE if found, otherwise
  * returning %FALSE. Do not cache the found mapping, because
- * it depends on the #GtkStyle and might change when a theme
+ * it depends on the #CtkStyle and might change when a theme
  * switch occurs.
  *
  * Returns: %TRUE if the mapping was found.
@@ -1008,11 +1008,11 @@ ctk_style_lookup_icon_set (GtkStyle   *style,
  * Deprecated:3.0: Use ctk_style_context_lookup_color() instead
  **/
 gboolean
-ctk_style_lookup_color (GtkStyle   *style,
+ctk_style_lookup_color (CtkStyle   *style,
                         const char *color_name,
                         GdkColor   *color)
 {
-  GtkStylePrivate *priv;
+  CtkStylePrivate *priv;
   gboolean result;
   GdkRGBA rgba;
 
@@ -1040,7 +1040,7 @@ ctk_style_lookup_color (GtkStyle   *style,
 
 /**
  * ctk_style_set_background:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @window: a #GdkWindow
  * @state_type: a state
  * 
@@ -1050,9 +1050,9 @@ ctk_style_lookup_color (GtkStyle   *style,
  * Deprecated:3.0: Use ctk_style_context_set_background() instead
  */
 void
-ctk_style_set_background (GtkStyle    *style,
+ctk_style_set_background (CtkStyle    *style,
                           GdkWindow   *window,
-                          GtkStateType state_type)
+                          CtkStateType state_type)
 {
   g_return_if_fail (CTK_IS_STYLE (style));
   g_return_if_fail (window != NULL);
@@ -1061,10 +1061,10 @@ ctk_style_set_background (GtkStyle    *style,
 }
 
 /* Default functions */
-static GtkStyle *
-ctk_style_real_clone (GtkStyle *style)
+static CtkStyle *
+ctk_style_real_clone (CtkStyle *style)
 {
-  GtkStylePrivate *priv;
+  CtkStylePrivate *priv;
 
   priv = CTK_STYLE_GET_PRIVATE (style);
 
@@ -1074,8 +1074,8 @@ ctk_style_real_clone (GtkStyle *style)
 }
 
 static void
-ctk_style_real_copy (GtkStyle *style,
-		     GtkStyle *src)
+ctk_style_real_copy (CtkStyle *style,
+		     CtkStyle *src)
 {
   gint i;
   
@@ -1115,15 +1115,15 @@ ctk_style_real_copy (GtkStyle *style,
 }
 
 static void
-ctk_style_real_init_from_rc (GtkStyle   *style,
-			     GtkRcStyle *rc_style)
+ctk_style_real_init_from_rc (CtkStyle   *style,
+			     CtkRcStyle *rc_style)
 {
 }
 
 /**
  * ctk_style_get_style_property:
- * @style: a #GtkStyle
- * @widget_type: the #GType of a descendant of #GtkWidget
+ * @style: a #CtkStyle
+ * @widget_type: the #GType of a descendant of #CtkWidget
  * @property_name: the name of the style property to get
  * @value: (out): a #GValue where the value of the property being
  *     queried will be stored
@@ -1134,13 +1134,13 @@ ctk_style_real_init_from_rc (GtkStyle   *style,
  * Since: 2.16
  */
 void 
-ctk_style_get_style_property (GtkStyle     *style,
+ctk_style_get_style_property (CtkStyle     *style,
                               GType        widget_type,
                               const gchar *property_name,
                               GValue      *value)
 {
-  GtkStylePrivate *priv;
-  GtkWidgetClass *klass;
+  CtkStylePrivate *priv;
+  CtkWidgetClass *klass;
   GParamSpec *pspec;
   const GValue *peek_value;
 
@@ -1175,8 +1175,8 @@ ctk_style_get_style_property (GtkStyle     *style,
 
 /**
  * ctk_style_get_valist:
- * @style: a #GtkStyle
- * @widget_type: the #GType of a descendant of #GtkWidget
+ * @style: a #CtkStyle
+ * @widget_type: the #GType of a descendant of #CtkWidget
  * @first_property_name: the name of the first style property to get
  * @var_args: a va_list of pairs of property names and
  *     locations to return the property values, starting with the
@@ -1188,14 +1188,14 @@ ctk_style_get_style_property (GtkStyle     *style,
  * Since: 2.16
  */
 void 
-ctk_style_get_valist (GtkStyle    *style,
+ctk_style_get_valist (CtkStyle    *style,
                       GType        widget_type,
                       const gchar *first_property_name,
                       va_list      var_args)
 {
-  GtkStylePrivate *priv;
+  CtkStylePrivate *priv;
   const char *property_name;
-  GtkWidgetClass *klass;
+  CtkWidgetClass *klass;
 
   g_return_if_fail (CTK_IS_STYLE (style));
 
@@ -1238,8 +1238,8 @@ ctk_style_get_valist (GtkStyle    *style,
 
 /**
  * ctk_style_get:
- * @style: a #GtkStyle
- * @widget_type: the #GType of a descendant of #GtkWidget
+ * @style: a #CtkStyle
+ * @widget_type: the #GType of a descendant of #CtkWidget
  * @first_property_name: the name of the first style property to get
  * @...: pairs of property names and locations to
  *   return the property values, starting with the location for
@@ -1251,7 +1251,7 @@ ctk_style_get_valist (GtkStyle    *style,
  * Since: 2.16
  */
 void
-ctk_style_get (GtkStyle    *style,
+ctk_style_get (CtkStyle    *style,
                GType        widget_type,
                const gchar *first_property_name,
                ...)
@@ -1264,31 +1264,31 @@ ctk_style_get (GtkStyle    *style,
 }
 
 static void
-ctk_style_real_realize (GtkStyle *style)
+ctk_style_real_realize (CtkStyle *style)
 {
 }
 
 static void
-ctk_style_real_unrealize (GtkStyle *style)
+ctk_style_real_unrealize (CtkStyle *style)
 {
 }
 
 static void
-ctk_style_real_set_background (GtkStyle    *style,
+ctk_style_real_set_background (CtkStyle    *style,
 			       GdkWindow   *window,
-			       GtkStateType state_type)
+			       CtkStateType state_type)
 {
   gdk_window_set_background_pattern (window, style->background[state_type]);
 }
 
 /**
  * ctk_style_render_icon:
- * @style: a #GtkStyle
- * @source: the #GtkIconSource specifying the icon to render
+ * @style: a #CtkStyle
+ * @source: the #CtkIconSource specifying the icon to render
  * @direction: a text direction
  * @state: a state
- * @size: (type int): the size to render the icon at (#GtkIconSize). A size of
- *     `(GtkIconSize)-1` means render at the size of the source and
+ * @size: (type int): the size to render the icon at (#CtkIconSize). A size of
+ *     `(CtkIconSize)-1` means render at the size of the source and
  *     don’t scale.
  * @widget: (allow-none): the widget
  * @detail: (allow-none): a style detail
@@ -1303,12 +1303,12 @@ ctk_style_real_set_background (GtkStyle    *style,
  * Deprecated:3.0: Use ctk_render_icon_pixbuf() instead
  */
 GdkPixbuf *
-ctk_style_render_icon (GtkStyle            *style,
-                       const GtkIconSource *source,
-                       GtkTextDirection     direction,
-                       GtkStateType         state,
-                       GtkIconSize          size,
-                       GtkWidget           *widget,
+ctk_style_render_icon (CtkStyle            *style,
+                       const CtkIconSource *source,
+                       CtkTextDirection     direction,
+                       CtkStateType         state,
+                       CtkIconSize          size,
+                       CtkWidget           *widget,
                        const gchar         *detail)
 {
   GdkPixbuf *pixbuf;
@@ -1337,13 +1337,13 @@ ctk_style_render_icon (GtkStyle            *style,
  * @width:
  * @height:
  *
- * Deprecated:3.0: Use #GtkStyleContext instead
+ * Deprecated:3.0: Use #CtkStyleContext instead
  */
 void
-ctk_style_apply_default_background (GtkStyle          *style,
+ctk_style_apply_default_background (CtkStyle          *style,
                                     cairo_t           *cr,
                                     GdkWindow         *window,
-                                    GtkStateType       state_type,
+                                    CtkStateType       state_type,
                                     gint               x,
                                     gint               y,
                                     gint               width,
@@ -1380,17 +1380,17 @@ out:
 }
 
 static GdkPixbuf *
-ctk_default_render_icon (GtkStyle            *style,
-                         const GtkIconSource *source,
-                         GtkTextDirection     direction,
-                         GtkStateType         state,
-                         GtkIconSize          size,
-                         GtkWidget           *widget,
+ctk_default_render_icon (CtkStyle            *style,
+                         const CtkIconSource *source,
+                         CtkTextDirection     direction,
+                         CtkStateType         state,
+                         CtkIconSize          size,
+                         CtkWidget           *widget,
                          const gchar         *detail)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
   GdkPixbuf *pixbuf;
 
   if (widget)
@@ -1452,7 +1452,7 @@ _cairo_draw_line (cairo_t  *cr,
 
 static void
 transform_detail_string (const gchar     *detail,
-			 GtkStyleContext *context)
+			 CtkStyleContext *context)
 {
   if (!detail)
     return;
@@ -1573,7 +1573,7 @@ transform_detail_string (const gchar     *detail,
     }
   else if (g_str_has_prefix (detail, "cell"))
     {
-      GtkRegionFlags row, col;
+      CtkRegionFlags row, col;
       gboolean ruled = FALSE;
       GStrv tokens;
       guint i;
@@ -1612,17 +1612,17 @@ transform_detail_string (const gchar     *detail,
 }
 
 static void
-ctk_default_draw_hline (GtkStyle     *style,
+ctk_default_draw_hline (CtkStyle     *style,
                         cairo_t       *cr,
-                        GtkStateType  state_type,
-                        GtkWidget     *widget,
+                        CtkStateType  state_type,
+                        CtkWidget     *widget,
                         const gchar   *detail,
                         gint          x1,
                         gint          x2,
                         gint          y)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -1649,17 +1649,17 @@ ctk_default_draw_hline (GtkStyle     *style,
 
 
 static void
-ctk_default_draw_vline (GtkStyle      *style,
+ctk_default_draw_vline (CtkStyle      *style,
                         cairo_t       *cr,
-                        GtkStateType  state_type,
-                        GtkWidget     *widget,
+                        CtkStateType  state_type,
+                        CtkWidget     *widget,
                         const gchar   *detail,
                         gint          y1,
                         gint          y2,
                         gint          x)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -1684,19 +1684,19 @@ ctk_default_draw_vline (GtkStyle      *style,
 }
 
 static void
-ctk_default_draw_shadow (GtkStyle      *style,
+ctk_default_draw_shadow (CtkStyle      *style,
                          cairo_t       *cr,
-                         GtkStateType   state_type,
-                         GtkShadowType  shadow_type,
-                         GtkWidget     *widget,
+                         CtkStateType   state_type,
+                         CtkShadowType  shadow_type,
+                         CtkWidget     *widget,
                          const gchar   *detail,
                          gint           x,
                          gint           y,
                          gint           width,
                          gint           height)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
 
   if (shadow_type == CTK_SHADOW_NONE)
     return;
@@ -1729,7 +1729,7 @@ ctk_default_draw_shadow (GtkStyle      *style,
 static void
 draw_arrow (cairo_t       *cr,
 	    GdkColor      *color,
-	    GtkArrowType   arrow_type,
+	    CtkArrowType   arrow_type,
 	    gint           x,
 	    gint           y,
 	    gint           width,
@@ -1770,22 +1770,22 @@ draw_arrow (cairo_t       *cr,
 }
 
 static void
-ctk_default_draw_arrow (GtkStyle      *style,
+ctk_default_draw_arrow (CtkStyle      *style,
 			cairo_t       *cr,
-			GtkStateType   state,
-			GtkShadowType  shadow,
-			GtkWidget     *widget,
+			CtkStateType   state,
+			CtkShadowType  shadow,
+			CtkWidget     *widget,
 			const gchar   *detail,
-			GtkArrowType   arrow_type,
+			CtkArrowType   arrow_type,
 			gboolean       fill,
 			gint           x,
 			gint           y,
 			gint           width,
 			gint           height)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
   gdouble angle, size;
 
   if (arrow_type == CTK_ARROW_NONE)
@@ -1859,11 +1859,11 @@ ctk_default_draw_arrow (GtkStyle      *style,
 }
 
 static void
-ctk_default_draw_diamond (GtkStyle      *style,
+ctk_default_draw_diamond (CtkStyle      *style,
                           cairo_t       *cr,
-                          GtkStateType   state_type,
-                          GtkShadowType  shadow_type,
-                          GtkWidget     *widget,
+                          CtkStateType   state_type,
+                          CtkShadowType  shadow_type,
+                          CtkWidget     *widget,
                           const gchar   *detail,
                           gint           x,
                           gint           y,
@@ -1974,12 +1974,12 @@ ctk_default_draw_diamond (GtkStyle      *style,
 }
 
 static void
-option_menu_get_props (GtkWidget      *widget,
-		       GtkRequisition *indicator_size,
-		       GtkBorder      *indicator_spacing)
+option_menu_get_props (CtkWidget      *widget,
+		       CtkRequisition *indicator_size,
+		       CtkBorder      *indicator_spacing)
 {
-  GtkRequisition *tmp_size = NULL;
-  GtkBorder *tmp_spacing = NULL;
+  CtkRequisition *tmp_size = NULL;
+  CtkBorder *tmp_spacing = NULL;
 
   if (tmp_size)
     {
@@ -1999,20 +1999,20 @@ option_menu_get_props (GtkWidget      *widget,
 }
 
 static void 
-ctk_default_draw_box (GtkStyle      *style,
+ctk_default_draw_box (CtkStyle      *style,
 		      cairo_t       *cr,
-		      GtkStateType   state_type,
-		      GtkShadowType  shadow_type,
-		      GtkWidget     *widget,
+		      CtkStateType   state_type,
+		      CtkShadowType  shadow_type,
+		      CtkWidget     *widget,
 		      const gchar   *detail,
 		      gint           x,
 		      gint           y,
 		      gint           width,
 		      gint           height)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2062,20 +2062,20 @@ ctk_default_draw_box (GtkStyle      *style,
 }
 
 static void 
-ctk_default_draw_flat_box (GtkStyle      *style,
+ctk_default_draw_flat_box (CtkStyle      *style,
                            cairo_t       *cr,
-                           GtkStateType   state_type,
-                           GtkShadowType  shadow_type,
-                           GtkWidget     *widget,
+                           CtkStateType   state_type,
+                           CtkShadowType  shadow_type,
+                           CtkWidget     *widget,
                            const gchar   *detail,
                            gint           x,
                            gint           y,
                            gint           width,
                            gint           height)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2126,20 +2126,20 @@ ctk_default_draw_flat_box (GtkStyle      *style,
 }
 
 static void 
-ctk_default_draw_check (GtkStyle      *style,
+ctk_default_draw_check (CtkStyle      *style,
 			cairo_t       *cr,
-			GtkStateType   state_type,
-			GtkShadowType  shadow_type,
-			GtkWidget     *widget,
+			CtkStateType   state_type,
+			CtkShadowType  shadow_type,
+			CtkWidget     *widget,
 			const gchar   *detail,
 			gint           x,
 			gint           y,
 			gint           width,
 			gint           height)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2187,20 +2187,20 @@ ctk_default_draw_check (GtkStyle      *style,
 }
 
 static void 
-ctk_default_draw_option (GtkStyle      *style,
+ctk_default_draw_option (CtkStyle      *style,
 			 cairo_t       *cr,
-			 GtkStateType   state_type,
-			 GtkShadowType  shadow_type,
-			 GtkWidget     *widget,
+			 CtkStateType   state_type,
+			 CtkShadowType  shadow_type,
+			 CtkWidget     *widget,
 			 const gchar   *detail,
 			 gint           x,
 			 gint           y,
 			 gint           width,
 			 gint           height)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2249,11 +2249,11 @@ ctk_default_draw_option (GtkStyle      *style,
 }
 
 static void
-ctk_default_draw_tab (GtkStyle      *style,
+ctk_default_draw_tab (CtkStyle      *style,
 		      cairo_t       *cr,
-		      GtkStateType   state_type,
-		      GtkShadowType  shadow_type,
-		      GtkWidget     *widget,
+		      CtkStateType   state_type,
+		      CtkShadowType  shadow_type,
+		      CtkWidget     *widget,
 		      const gchar   *detail,
 		      gint           x,
 		      gint           y,
@@ -2262,8 +2262,8 @@ ctk_default_draw_tab (GtkStyle      *style,
 {
 #define ARROW_SPACE 4
 
-  GtkRequisition indicator_size;
-  GtkBorder indicator_spacing;
+  CtkRequisition indicator_size;
+  CtkBorder indicator_spacing;
   gint arrow_height;
 
   option_menu_get_props (widget, &indicator_size, &indicator_spacing);
@@ -2296,23 +2296,23 @@ ctk_default_draw_tab (GtkStyle      *style,
 }
 
 static void 
-ctk_default_draw_shadow_gap (GtkStyle       *style,
+ctk_default_draw_shadow_gap (CtkStyle       *style,
                              cairo_t        *cr,
-                             GtkStateType    state_type,
-                             GtkShadowType   shadow_type,
-                             GtkWidget      *widget,
+                             CtkStateType    state_type,
+                             CtkShadowType   shadow_type,
+                             CtkWidget      *widget,
                              const gchar    *detail,
                              gint            x,
                              gint            y,
                              gint            width,
                              gint            height,
-                             GtkPositionType gap_side,
+                             CtkPositionType gap_side,
                              gint            gap_x,
                              gint            gap_width)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (shadow_type == CTK_SHADOW_NONE)
     return;
@@ -2365,23 +2365,23 @@ ctk_default_draw_shadow_gap (GtkStyle       *style,
 }
 
 static void 
-ctk_default_draw_box_gap (GtkStyle       *style,
+ctk_default_draw_box_gap (CtkStyle       *style,
                           cairo_t        *cr,
-                          GtkStateType    state_type,
-                          GtkShadowType   shadow_type,
-                          GtkWidget      *widget,
+                          CtkStateType    state_type,
+                          CtkShadowType   shadow_type,
+                          CtkWidget      *widget,
                           const gchar    *detail,
                           gint            x,
                           gint            y,
                           gint            width,
                           gint            height,
-                          GtkPositionType gap_side,
+                          CtkPositionType gap_side,
                           gint            gap_x,
                           gint            gap_width)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2439,21 +2439,21 @@ ctk_default_draw_box_gap (GtkStyle       *style,
 }
 
 static void 
-ctk_default_draw_extension (GtkStyle       *style,
+ctk_default_draw_extension (CtkStyle       *style,
                             cairo_t        *cr,
-                            GtkStateType    state_type,
-                            GtkShadowType   shadow_type,
-                            GtkWidget      *widget,
+                            CtkStateType    state_type,
+                            CtkShadowType   shadow_type,
+                            CtkWidget      *widget,
                             const gchar    *detail,
                             gint            x,
                             gint            y,
                             gint            width,
                             gint            height,
-                            GtkPositionType gap_side)
+                            CtkPositionType gap_side)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2502,18 +2502,18 @@ ctk_default_draw_extension (GtkStyle       *style,
 }
 
 static void 
-ctk_default_draw_focus (GtkStyle      *style,
+ctk_default_draw_focus (CtkStyle      *style,
 			cairo_t       *cr,
-			GtkStateType   state_type,
-			GtkWidget     *widget,
+			CtkStateType   state_type,
+			CtkWidget     *widget,
 			const gchar   *detail,
 			gint           x,
 			gint           y,
 			gint           width,
 			gint           height)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2541,21 +2541,21 @@ ctk_default_draw_focus (GtkStyle      *style,
 }
 
 static void 
-ctk_default_draw_slider (GtkStyle      *style,
+ctk_default_draw_slider (CtkStyle      *style,
                          cairo_t       *cr,
-                         GtkStateType   state_type,
-                         GtkShadowType  shadow_type,
-                         GtkWidget     *widget,
+                         CtkStateType   state_type,
+                         CtkShadowType  shadow_type,
+                         CtkWidget     *widget,
                          const gchar   *detail,
                          gint           x,
                          gint           y,
                          gint           width,
                          gint           height,
-                         GtkOrientation orientation)
+                         CtkOrientation orientation)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2596,21 +2596,21 @@ ctk_default_draw_slider (GtkStyle      *style,
 }
 
 static void 
-ctk_default_draw_handle (GtkStyle      *style,
+ctk_default_draw_handle (CtkStyle      *style,
 			 cairo_t       *cr,
-			 GtkStateType   state_type,
-			 GtkShadowType  shadow_type,
-			 GtkWidget     *widget,
+			 CtkStateType   state_type,
+			 CtkShadowType  shadow_type,
+			 CtkWidget     *widget,
 			 const gchar   *detail,
 			 gint           x,
 			 gint           y,
 			 gint           width,
 			 gint           height,
-			 GtkOrientation orientation)
+			 CtkOrientation orientation)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2655,18 +2655,18 @@ ctk_default_draw_handle (GtkStyle      *style,
 }
 
 static void
-ctk_default_draw_expander (GtkStyle        *style,
+ctk_default_draw_expander (CtkStyle        *style,
                            cairo_t         *cr,
-                           GtkStateType     state_type,
-                           GtkWidget       *widget,
+                           CtkStateType     state_type,
+                           CtkWidget       *widget,
                            const gchar     *detail,
                            gint             x,
                            gint             y,
-			   GtkExpanderStyle expander_style)
+			   CtkExpanderStyle expander_style)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
   gint size;
 
   if (widget)
@@ -2724,19 +2724,19 @@ ctk_default_draw_expander (GtkStyle        *style,
 }
 
 static void
-ctk_default_draw_layout (GtkStyle        *style,
+ctk_default_draw_layout (CtkStyle        *style,
                          cairo_t         *cr,
-                         GtkStateType     state_type,
+                         CtkStateType     state_type,
 			 gboolean         use_text,
-                         GtkWidget       *widget,
+                         CtkWidget       *widget,
                          const gchar     *detail,
                          gint             x,
                          gint             y,
                          PangoLayout     *layout)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2780,10 +2780,10 @@ ctk_default_draw_layout (GtkStyle        *style,
 }
 
 static void
-ctk_default_draw_resize_grip (GtkStyle       *style,
+ctk_default_draw_resize_grip (CtkStyle       *style,
                               cairo_t        *cr,
-                              GtkStateType    state_type,
-                              GtkWidget      *widget,
+                              CtkStateType    state_type,
+                              CtkWidget      *widget,
                               const gchar    *detail,
                               GdkWindowEdge   edge,
                               gint            x,
@@ -2791,10 +2791,10 @@ ctk_default_draw_resize_grip (GtkStyle       *style,
                               gint            width,
                               gint            height)
 {
-  GtkStyleContext *context;
-  GtkStylePrivate *priv;
-  GtkStateFlags flags = 0;
-  GtkJunctionSides sides = 0;
+  CtkStyleContext *context;
+  CtkStylePrivate *priv;
+  CtkStateFlags flags = 0;
+  CtkJunctionSides sides = 0;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -2871,10 +2871,10 @@ ctk_default_draw_resize_grip (GtkStyle       *style,
 }
 
 static void
-ctk_default_draw_spinner (GtkStyle     *style,
+ctk_default_draw_spinner (CtkStyle     *style,
                           cairo_t      *cr,
-                          GtkStateType  state_type,
-                          GtkWidget    *widget,
+                          CtkStateType  state_type,
+                          CtkWidget    *widget,
                           const gchar  *detail,
                           guint         step,
                           gint          x,
@@ -3124,7 +3124,7 @@ hls_to_rgb (gdouble *h,
 
 /**
  * ctk_paint_hline:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #caio_t
  * @state_type: a state
  * @widget: (allow-none): the widget
@@ -3139,10 +3139,10 @@ hls_to_rgb (gdouble *h,
  * Deprecated:3.0: Use ctk_render_line() instead
  **/
 void
-ctk_paint_hline (GtkStyle           *style,
+ctk_paint_hline (CtkStyle           *style,
                  cairo_t            *cr,
-                 GtkStateType        state_type,
-                 GtkWidget          *widget,
+                 CtkStateType        state_type,
+                 CtkWidget          *widget,
                  const gchar        *detail,
                  gint                x1,
                  gint                x2,
@@ -3163,7 +3163,7 @@ ctk_paint_hline (GtkStyle           *style,
 
 /**
  * ctk_paint_vline:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @widget: (allow-none): the widget
@@ -3178,10 +3178,10 @@ ctk_paint_hline (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_line() instead
  */
 void
-ctk_paint_vline (GtkStyle           *style,
+ctk_paint_vline (CtkStyle           *style,
                  cairo_t            *cr,
-                 GtkStateType        state_type,
-                 GtkWidget          *widget,
+                 CtkStateType        state_type,
+                 CtkWidget          *widget,
                  const gchar        *detail,
                  gint                y1_,
                  gint                y2_,
@@ -3202,7 +3202,7 @@ ctk_paint_vline (GtkStyle           *style,
 
 /**
  * ctk_paint_shadow:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: type of shadow to draw
@@ -3219,11 +3219,11 @@ ctk_paint_vline (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_frame() instead
  */
 void
-ctk_paint_shadow (GtkStyle           *style,
+ctk_paint_shadow (CtkStyle           *style,
                   cairo_t            *cr,
-                  GtkStateType        state_type,
-                  GtkShadowType       shadow_type,
-                  GtkWidget          *widget,
+                  CtkStateType        state_type,
+                  CtkShadowType       shadow_type,
+                  CtkWidget          *widget,
                   const gchar        *detail,
                   gint                x,
                   gint                y,
@@ -3247,7 +3247,7 @@ ctk_paint_shadow (GtkStyle           *style,
 
 /**
  * ctk_paint_arrow:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: the type of shadow to draw
@@ -3266,13 +3266,13 @@ ctk_paint_shadow (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_arrow() instead
  */
 void
-ctk_paint_arrow (GtkStyle           *style,
+ctk_paint_arrow (CtkStyle           *style,
                  cairo_t            *cr,
-                 GtkStateType        state_type,
-                 GtkShadowType       shadow_type,
-                 GtkWidget          *widget,
+                 CtkStateType        state_type,
+                 CtkShadowType       shadow_type,
+                 CtkWidget          *widget,
                  const gchar        *detail,
-                 GtkArrowType        arrow_type,
+                 CtkArrowType        arrow_type,
                  gboolean            fill,
                  gint                x,
                  gint                y,
@@ -3296,7 +3296,7 @@ ctk_paint_arrow (GtkStyle           *style,
 
 /**
  * ctk_paint_diamond:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: the type of shadow to draw
@@ -3313,11 +3313,11 @@ ctk_paint_arrow (GtkStyle           *style,
  * Deprecated:3.0: Use cairo instead
  */
 void
-ctk_paint_diamond (GtkStyle           *style,
+ctk_paint_diamond (CtkStyle           *style,
                    cairo_t            *cr,
-                   GtkStateType        state_type,
-                   GtkShadowType       shadow_type,
-                   GtkWidget          *widget,
+                   CtkStateType        state_type,
+                   CtkShadowType       shadow_type,
+                   CtkWidget          *widget,
                    const gchar        *detail,
                    gint                x,
                    gint                y,
@@ -3341,7 +3341,7 @@ ctk_paint_diamond (GtkStyle           *style,
 
 /**
  * ctk_paint_box:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: the type of shadow to draw
@@ -3357,11 +3357,11 @@ ctk_paint_diamond (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_frame() and ctk_render_background() instead
  */
 void
-ctk_paint_box (GtkStyle           *style,
+ctk_paint_box (CtkStyle           *style,
                cairo_t            *cr,
-               GtkStateType        state_type,
-               GtkShadowType       shadow_type,
-               GtkWidget          *widget,
+               CtkStateType        state_type,
+               CtkShadowType       shadow_type,
+               CtkWidget          *widget,
                const gchar        *detail,
                gint                x,
                gint                y,
@@ -3383,7 +3383,7 @@ ctk_paint_box (GtkStyle           *style,
 
 /**
  * ctk_paint_flat_box:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: the type of shadow to draw
@@ -3399,11 +3399,11 @@ ctk_paint_box (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_frame() and ctk_render_background() instead
  */
 void
-ctk_paint_flat_box (GtkStyle           *style,
+ctk_paint_flat_box (CtkStyle           *style,
                     cairo_t            *cr,
-                    GtkStateType        state_type,
-                    GtkShadowType       shadow_type,
-                    GtkWidget          *widget,
+                    CtkStateType        state_type,
+                    CtkShadowType       shadow_type,
+                    CtkWidget          *widget,
                     const gchar        *detail,
                     gint                x,
                     gint                y,
@@ -3427,7 +3427,7 @@ ctk_paint_flat_box (GtkStyle           *style,
 
 /**
  * ctk_paint_check:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: the type of shadow to draw
@@ -3444,11 +3444,11 @@ ctk_paint_flat_box (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_check() instead
  */
 void
-ctk_paint_check (GtkStyle           *style,
+ctk_paint_check (CtkStyle           *style,
                  cairo_t            *cr,
-                 GtkStateType        state_type,
-                 GtkShadowType       shadow_type,
-                 GtkWidget          *widget,
+                 CtkStateType        state_type,
+                 CtkShadowType       shadow_type,
+                 CtkWidget          *widget,
                  const gchar        *detail,
                  gint                x,
                  gint                y,
@@ -3470,7 +3470,7 @@ ctk_paint_check (GtkStyle           *style,
 
 /**
  * ctk_paint_option:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: the type of shadow to draw
@@ -3487,11 +3487,11 @@ ctk_paint_check (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_option() instead
  */
 void
-ctk_paint_option (GtkStyle           *style,
+ctk_paint_option (CtkStyle           *style,
                   cairo_t            *cr,
-                  GtkStateType        state_type,
-                  GtkShadowType       shadow_type,
-                  GtkWidget          *widget,
+                  CtkStateType        state_type,
+                  CtkShadowType       shadow_type,
+                  CtkWidget          *widget,
                   const gchar        *detail,
                   gint                x,
                   gint                y,
@@ -3513,7 +3513,7 @@ ctk_paint_option (GtkStyle           *style,
 
 /**
  * ctk_paint_tab:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: the type of shadow to draw
@@ -3530,11 +3530,11 @@ ctk_paint_option (GtkStyle           *style,
  * Deprecated:3.0: Use cairo instead
  */
 void
-ctk_paint_tab (GtkStyle           *style,
+ctk_paint_tab (CtkStyle           *style,
                cairo_t            *cr,
-               GtkStateType        state_type,
-               GtkShadowType       shadow_type,
-               GtkWidget          *widget,
+               CtkStateType        state_type,
+               CtkShadowType       shadow_type,
+               CtkWidget          *widget,
                const gchar        *detail,
                gint                x,
                gint                y,
@@ -3556,7 +3556,7 @@ ctk_paint_tab (GtkStyle           *style,
 
 /**
  * ctk_paint_shadow_gap:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: type of shadow to draw
@@ -3577,17 +3577,17 @@ ctk_paint_tab (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_frame_gap() instead
  */
 void
-ctk_paint_shadow_gap (GtkStyle           *style,
+ctk_paint_shadow_gap (CtkStyle           *style,
                       cairo_t            *cr,
-                      GtkStateType        state_type,
-                      GtkShadowType       shadow_type,
-                      GtkWidget          *widget,
+                      CtkStateType        state_type,
+                      CtkShadowType       shadow_type,
+                      CtkWidget          *widget,
                       const gchar        *detail,
                       gint                x,
                       gint                y,
                       gint                width,
                       gint                height,
-                      GtkPositionType     gap_side,
+                      CtkPositionType     gap_side,
                       gint                gap_x,
                       gint                gap_width)
 {
@@ -3608,7 +3608,7 @@ ctk_paint_shadow_gap (GtkStyle           *style,
 
 /**
  * ctk_paint_box_gap:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: type of shadow to draw
@@ -3628,17 +3628,17 @@ ctk_paint_shadow_gap (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_frame_gap() instead
  */
 void
-ctk_paint_box_gap (GtkStyle           *style,
+ctk_paint_box_gap (CtkStyle           *style,
                    cairo_t            *cr,
-                   GtkStateType        state_type,
-                   GtkShadowType       shadow_type,
-                   GtkWidget          *widget,
+                   CtkStateType        state_type,
+                   CtkShadowType       shadow_type,
+                   CtkWidget          *widget,
                    const gchar        *detail,
                    gint                x,
                    gint                y,
                    gint                width,
                    gint                height,
-                   GtkPositionType     gap_side,
+                   CtkPositionType     gap_side,
                    gint                gap_x,
                    gint                gap_width)
 {
@@ -3659,7 +3659,7 @@ ctk_paint_box_gap (GtkStyle           *style,
 
 /**
  * ctk_paint_extension:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: type of shadow to draw
@@ -3676,17 +3676,17 @@ ctk_paint_box_gap (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_extension() instead
  **/
 void
-ctk_paint_extension (GtkStyle           *style,
+ctk_paint_extension (CtkStyle           *style,
                      cairo_t            *cr,
-                     GtkStateType        state_type,
-                     GtkShadowType       shadow_type,
-                     GtkWidget          *widget,
+                     CtkStateType        state_type,
+                     CtkShadowType       shadow_type,
+                     CtkWidget          *widget,
                      const gchar        *detail,
                      gint                x,
                      gint                y,
                      gint                width,
                      gint                height,
-                     GtkPositionType     gap_side)
+                     CtkPositionType     gap_side)
 {
   g_return_if_fail (CTK_IS_STYLE (style));
   g_return_if_fail (CTK_STYLE_GET_CLASS (style)->draw_extension != NULL);
@@ -3705,7 +3705,7 @@ ctk_paint_extension (GtkStyle           *style,
 
 /**
  * ctk_paint_focus:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @widget: (allow-none): the widget
@@ -3721,10 +3721,10 @@ ctk_paint_extension (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_focus() instead
  */
 void
-ctk_paint_focus (GtkStyle           *style,
+ctk_paint_focus (CtkStyle           *style,
                  cairo_t            *cr,
-                 GtkStateType        state_type,
-                 GtkWidget          *widget,
+                 CtkStateType        state_type,
+                 CtkWidget          *widget,
                  const gchar        *detail,
                  gint                x,
                  gint                y,
@@ -3748,7 +3748,7 @@ ctk_paint_focus (GtkStyle           *style,
 
 /**
  * ctk_paint_slider:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: a shadow
@@ -3766,17 +3766,17 @@ ctk_paint_focus (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_slider() instead
  **/
 void
-ctk_paint_slider (GtkStyle           *style,
+ctk_paint_slider (CtkStyle           *style,
                   cairo_t            *cr,
-                  GtkStateType        state_type,
-                  GtkShadowType       shadow_type,
-                  GtkWidget          *widget,
+                  CtkStateType        state_type,
+                  CtkShadowType       shadow_type,
+                  CtkWidget          *widget,
                   const gchar        *detail,
                   gint                x,
                   gint                y,
                   gint                width,
                   gint                height,
-                  GtkOrientation      orientation)
+                  CtkOrientation      orientation)
 {
   g_return_if_fail (CTK_IS_STYLE (style));
   g_return_if_fail (CTK_STYLE_GET_CLASS (style)->draw_slider != NULL);
@@ -3795,7 +3795,7 @@ ctk_paint_slider (GtkStyle           *style,
 
 /**
  * ctk_paint_handle:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @shadow_type: type of shadow to draw
@@ -3807,22 +3807,22 @@ ctk_paint_slider (GtkStyle           *style,
  * @height: height of the handle
  * @orientation: the orientation of the handle
  *
- * Draws a handle as used in #GtkHandleBox and #GtkPaned.
+ * Draws a handle as used in #CtkHandleBox and #CtkPaned.
  *
  * Deprecated:3.0: Use ctk_render_handle() instead
  **/
 void
-ctk_paint_handle (GtkStyle           *style,
+ctk_paint_handle (CtkStyle           *style,
                   cairo_t            *cr,
-                  GtkStateType        state_type,
-                  GtkShadowType       shadow_type,
-                  GtkWidget          *widget,
+                  CtkStateType        state_type,
+                  CtkShadowType       shadow_type,
+                  CtkWidget          *widget,
                   const gchar        *detail,
                   gint                x,
                   gint                y,
                   gint                width,
                   gint                height,
-                  GtkOrientation      orientation)
+                  CtkOrientation      orientation)
 {
   g_return_if_fail (CTK_IS_STYLE (style));
   g_return_if_fail (CTK_STYLE_GET_CLASS (style)->draw_handle != NULL);
@@ -3841,7 +3841,7 @@ ctk_paint_handle (GtkStyle           *style,
 
 /**
  * ctk_paint_expander:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @widget: (allow-none): the widget
@@ -3852,7 +3852,7 @@ ctk_paint_handle (GtkStyle           *style,
  *   whether the expander is collapsed, expanded, or in an
  *   intermediate state.
  *
- * Draws an expander as used in #GtkTreeView. @x and @y specify the
+ * Draws an expander as used in #CtkTreeView. @x and @y specify the
  * center the expander. The size of the expander is determined by the
  * “expander-size” style property of @widget.  (If widget is not
  * specified or doesn’t have an “expander-size” property, an
@@ -3865,14 +3865,14 @@ ctk_paint_handle (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_expander() instead
  **/
 void
-ctk_paint_expander (GtkStyle           *style,
+ctk_paint_expander (CtkStyle           *style,
                     cairo_t            *cr,
-                    GtkStateType        state_type,
-                    GtkWidget          *widget,
+                    CtkStateType        state_type,
+                    CtkWidget          *widget,
                     const gchar        *detail,
                     gint                x,
                     gint                y,
-                    GtkExpanderStyle    expander_style)
+                    CtkExpanderStyle    expander_style)
 {
   g_return_if_fail (CTK_IS_STYLE (style));
   g_return_if_fail (CTK_STYLE_GET_CLASS (style)->draw_expander != NULL);
@@ -3889,7 +3889,7 @@ ctk_paint_expander (GtkStyle           *style,
 
 /**
  * ctk_paint_layout:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @use_text: whether to use the text or foreground
@@ -3905,11 +3905,11 @@ ctk_paint_expander (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_layout() instead
  **/
 void
-ctk_paint_layout (GtkStyle           *style,
+ctk_paint_layout (CtkStyle           *style,
                   cairo_t            *cr,
-                  GtkStateType        state_type,
+                  CtkStateType        state_type,
                   gboolean            use_text,
-                  GtkWidget          *widget,
+                  CtkWidget          *widget,
                   const gchar        *detail,
                   gint                x,
                   gint                y,
@@ -3930,7 +3930,7 @@ ctk_paint_layout (GtkStyle           *style,
 
 /**
  * ctk_paint_resize_grip:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @widget: (allow-none): the widget
@@ -3947,10 +3947,10 @@ ctk_paint_layout (GtkStyle           *style,
  * Deprecated:3.0: Use ctk_render_handle() instead
  */
 void
-ctk_paint_resize_grip (GtkStyle           *style,
+ctk_paint_resize_grip (CtkStyle           *style,
                        cairo_t            *cr,
-                       GtkStateType        state_type,
-                       GtkWidget          *widget,
+                       CtkStateType        state_type,
+                       CtkWidget          *widget,
                        const gchar        *detail,
                        GdkWindowEdge       edge,
                        gint                x,
@@ -3972,7 +3972,7 @@ ctk_paint_resize_grip (GtkStyle           *style,
 
 /**
  * ctk_paint_spinner:
- * @style: a #GtkStyle
+ * @style: a #CtkStyle
  * @cr: a #cairo_t
  * @state_type: a state
  * @widget: (allow-none): the widget (may be %NULL)
@@ -3985,14 +3985,14 @@ ctk_paint_resize_grip (GtkStyle           *style,
  *
  * Draws a spinner on @window using the given parameters.
  *
- * Deprecated: 3.0: Use ctk_render_icon() and the #GtkStyleContext
+ * Deprecated: 3.0: Use ctk_render_icon() and the #CtkStyleContext
  *   you are drawing instead
  */
 void
-ctk_paint_spinner (GtkStyle           *style,
+ctk_paint_spinner (CtkStyle           *style,
                    cairo_t            *cr,
-                   GtkStateType        state_type,
-                   GtkWidget          *widget,
+                   CtkStateType        state_type,
+                   CtkWidget          *widget,
                    const gchar        *detail,
                    guint               step,
                    gint                x,
@@ -4013,10 +4013,10 @@ ctk_paint_spinner (GtkStyle           *style,
   cairo_restore (cr);
 }
 
-static GtkStyle *
+static CtkStyle *
 ctk_widget_get_default_style_for_screen (GdkScreen *screen)
 {
-  GtkStyle *default_style;
+  CtkStyle *default_style;
 
   if G_UNLIKELY (quark_default_style == 0)
     quark_default_style = g_quark_from_static_string ("ctk-legacy-default-style");
@@ -4039,18 +4039,18 @@ ctk_widget_get_default_style_for_screen (GdkScreen *screen)
  *
  * Returns the default style used by all widgets initially.
  *
- * Returns: (transfer none): the default style. This #GtkStyle
+ * Returns: (transfer none): the default style. This #CtkStyle
  *     object is owned by GTK+ and should not be modified or freed.
  *
- * Deprecated:3.0: Use #GtkStyleContext instead, and
- *     ctk_css_provider_get_default() to obtain a #GtkStyleProvider
+ * Deprecated:3.0: Use #CtkStyleContext instead, and
+ *     ctk_css_provider_get_default() to obtain a #CtkStyleProvider
  *     with the default widget style information.
  */
-GtkStyle *
+CtkStyle *
 ctk_widget_get_default_style (void)
 {
-  static GtkStyle *default_style = NULL;
-  GtkStyle *style = NULL;
+  static CtkStyle *default_style = NULL;
+  CtkStyle *style = NULL;
   GdkScreen *screen = gdk_screen_get_default ();
 
   if (screen)
@@ -4067,9 +4067,9 @@ ctk_widget_get_default_style (void)
 
 /**
  * ctk_widget_style_attach:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
- * This function attaches the widget’s #GtkStyle to the widget's
+ * This function attaches the widget’s #CtkStyle to the widget's
  * #GdkWindow. It is a replacement for
  *
  * |[
@@ -4079,14 +4079,14 @@ ctk_widget_get_default_style (void)
  * and should only ever be called in a derived widget’s “realize”
  * implementation which does not chain up to its parent class'
  * “realize” implementation, because one of the parent classes
- * (finally #GtkWidget) would attach the style itself.
+ * (finally #CtkWidget) would attach the style itself.
  *
  * Since: 2.20
  *
- * Deprecated: 3.0: This step is unnecessary with #GtkStyleContext.
+ * Deprecated: 3.0: This step is unnecessary with #CtkStyleContext.
  **/
 void
-ctk_widget_style_attach (GtkWidget *widget)
+ctk_widget_style_attach (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (ctk_widget_get_realized (widget));
@@ -4094,7 +4094,7 @@ ctk_widget_style_attach (GtkWidget *widget)
 
 /**
  * ctk_widget_has_rc_style:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Determines if the widget style has been looked up through the rc mechanism.
  *
@@ -4103,10 +4103,10 @@ ctk_widget_style_attach (GtkWidget *widget)
  *
  * Since: 2.20
  *
- * Deprecated:3.0: Use #GtkStyleContext instead
+ * Deprecated:3.0: Use #CtkStyleContext instead
  **/
 gboolean
-ctk_widget_has_rc_style (GtkWidget *widget)
+ctk_widget_has_rc_style (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -4115,26 +4115,26 @@ ctk_widget_has_rc_style (GtkWidget *widget)
 
 /**
  * ctk_widget_set_style:
- * @widget: a #GtkWidget
- * @style: (allow-none): a #GtkStyle, or %NULL to remove the effect
+ * @widget: a #CtkWidget
+ * @style: (allow-none): a #CtkStyle, or %NULL to remove the effect
  *     of a previous call to ctk_widget_set_style() and go back to
  *     the default style
  *
- * Used to set the #GtkStyle for a widget (@widget->style). Since
+ * Used to set the #CtkStyle for a widget (@widget->style). Since
  * GTK 3, this function does nothing, the passed in style is ignored.
  *
- * Deprecated:3.0: Use #GtkStyleContext instead
+ * Deprecated:3.0: Use #CtkStyleContext instead
  */
 void
-ctk_widget_set_style (GtkWidget *widget,
-                      GtkStyle  *style)
+ctk_widget_set_style (CtkWidget *widget,
+                      CtkStyle  *style)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 }
 
 /**
  * ctk_widget_ensure_style:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Ensures that @widget has a style (@widget->style).
  *
@@ -4142,12 +4142,12 @@ ctk_widget_set_style (GtkWidget *widget,
  * want the style, the widget is realized, and realized
  * widgets are guaranteed to have a style already.
  *
- * Deprecated:3.0: Use #GtkStyleContext instead
+ * Deprecated:3.0: Use #CtkStyleContext instead
  */
 void
-ctk_widget_ensure_style (GtkWidget *widget)
+ctk_widget_ensure_style (CtkWidget *widget)
 {
-  GtkStyle *style;
+  CtkStyle *style;
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
   style = _ctk_widget_get_style (widget);
@@ -4160,18 +4160,18 @@ ctk_widget_ensure_style (GtkWidget *widget)
 
 /**
  * ctk_widget_get_style:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Simply an accessor function that returns @widget->style.
  *
- * Returns: (transfer none): the widget’s #GtkStyle
+ * Returns: (transfer none): the widget’s #CtkStyle
  *
- * Deprecated:3.0: Use #GtkStyleContext instead
+ * Deprecated:3.0: Use #CtkStyleContext instead
  */
-GtkStyle*
-ctk_widget_get_style (GtkWidget *widget)
+CtkStyle*
+ctk_widget_get_style (CtkWidget *widget)
 {
-  GtkStyle *style;
+  CtkStyle *style;
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   style = _ctk_widget_get_style (widget);
@@ -4189,15 +4189,15 @@ ctk_widget_get_style (GtkWidget *widget)
 
 /**
  * ctk_widget_modify_style:
- * @widget: a #GtkWidget
- * @style: the #GtkRcStyle-struct holding the style modifications
+ * @widget: a #CtkWidget
+ * @style: the #CtkRcStyle-struct holding the style modifications
  *
  * Modifies style values on the widget.
  *
  * Modifications made using this technique take precedence over
  * style values set via an RC file, however, they will be overridden
  * if a style is explicitly set on the widget using ctk_widget_set_style().
- * The #GtkRcStyle-struct is designed so each field can either be
+ * The #CtkRcStyle-struct is designed so each field can either be
  * set or unset, so it is possible, using this function, to modify some
  * style values and leave the others unchanged.
  *
@@ -4211,11 +4211,11 @@ ctk_widget_get_style (GtkWidget *widget)
  * to such functions ctk_widget_modify_fg() will have a cumulative
  * effect with the initial modifications.
  *
- * Deprecated:3.0: Use #GtkStyleContext with a custom #GtkStyleProvider instead
+ * Deprecated:3.0: Use #CtkStyleContext with a custom #CtkStyleProvider instead
  */
 void
-ctk_widget_modify_style (GtkWidget      *widget,
-                         GtkRcStyle     *style)
+ctk_widget_modify_style (CtkWidget      *widget,
+                         CtkRcStyle     *style)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (CTK_IS_RC_STYLE (style));
@@ -4228,11 +4228,11 @@ ctk_widget_modify_style (GtkWidget      *widget,
 
 /**
  * ctk_widget_get_modifier_style:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  *
  * Returns the current modifier style for the widget. (As set by
  * ctk_widget_modify_style().) If no style has previously set, a new
- * #GtkRcStyle will be created with all values unset, and set as the
+ * #CtkRcStyle will be created with all values unset, and set as the
  * modifier style for the widget. If you make changes to this rc
  * style, you must call ctk_widget_modify_style(), passing in the
  * returned rc style, to make sure that your changes take effect.
@@ -4248,12 +4248,12 @@ ctk_widget_modify_style (GtkWidget      *widget,
  *     pointer to value this around, you must add a refcount using
  *     g_object_ref().
  *
- * Deprecated:3.0: Use #GtkStyleContext with a custom #GtkStyleProvider instead
+ * Deprecated:3.0: Use #CtkStyleContext with a custom #CtkStyleProvider instead
  */
-GtkRcStyle *
-ctk_widget_get_modifier_style (GtkWidget *widget)
+CtkRcStyle *
+ctk_widget_get_modifier_style (CtkWidget *widget)
 {
-  GtkRcStyle *rc_style;
+  CtkRcStyle *rc_style;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -4272,12 +4272,12 @@ ctk_widget_get_modifier_style (GtkWidget *widget)
 }
 
 static void
-ctk_widget_modify_color_component (GtkWidget      *widget,
-                                   GtkRcFlags      component,
-                                   GtkStateType    state,
+ctk_widget_modify_color_component (CtkWidget      *widget,
+                                   CtkRcFlags      component,
+                                   CtkStateType    state,
                                    const GdkColor *color)
 {
-  GtkRcStyle *rc_style = ctk_widget_get_modifier_style (widget);
+  CtkRcStyle *rc_style = ctk_widget_get_modifier_style (widget);
 
   if (color)
     {
@@ -4309,7 +4309,7 @@ ctk_widget_modify_color_component (GtkWidget      *widget,
 
 /**
  * ctk_widget_modify_fg:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @state: the state for which to set the foreground color
  * @color: (allow-none): the color to assign (does not need to be allocated),
  *     or %NULL to undo the effect of previous calls to
@@ -4323,11 +4323,11 @@ ctk_widget_modify_color_component (GtkWidget      *widget,
  * Deprecated:3.0: Use ctk_widget_override_color() instead
  */
 void
-ctk_widget_modify_fg (GtkWidget      *widget,
-                      GtkStateType    state,
+ctk_widget_modify_fg (CtkWidget      *widget,
+                      CtkStateType    state,
                       const GdkColor *color)
 {
-  GtkStateFlags flags;
+  CtkStateFlags flags;
   GdkRGBA rgba;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -4367,7 +4367,7 @@ ctk_widget_modify_fg (GtkWidget      *widget,
 
 /**
  * ctk_widget_modify_bg:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @state: the state for which to set the background color
  * @color: (allow-none): the color to assign (does not need
  *     to be allocated), or %NULL to undo the effect of previous
@@ -4381,21 +4381,21 @@ ctk_widget_modify_fg (GtkWidget      *widget,
  * > Note that “no window” widgets (which have the %CTK_NO_WINDOW
  * > flag set) draw on their parent container’s window and thus may
  * > not draw any background themselves. This is the case for e.g.
- * > #GtkLabel.
+ * > #CtkLabel.
  * >
  * > To modify the background of such widgets, you have to set the
  * > background color on their parent; if you want to set the background
  * > of a rectangular area around a label, try placing the label in
- * > a #GtkEventBox widget and setting the background color on that.
+ * > a #CtkEventBox widget and setting the background color on that.
  *
  * Deprecated:3.0: Use ctk_widget_override_background_color() instead
  */
 void
-ctk_widget_modify_bg (GtkWidget      *widget,
-                      GtkStateType    state,
+ctk_widget_modify_bg (CtkWidget      *widget,
+                      CtkStateType    state,
                       const GdkColor *color)
 {
-  GtkStateFlags flags;
+  CtkStateFlags flags;
   GdkRGBA rgba;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -4435,7 +4435,7 @@ ctk_widget_modify_bg (GtkWidget      *widget,
 
 /**
  * ctk_widget_modify_text:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @state: the state for which to set the text color
  * @color: (allow-none): the color to assign (does not need to
  *     be allocated), or %NULL to undo the effect of previous
@@ -4446,14 +4446,14 @@ ctk_widget_modify_bg (GtkWidget      *widget,
  * All other style values are left untouched.
  * The text color is the foreground color used along with the
  * base color (see ctk_widget_modify_base()) for widgets such
- * as #GtkEntry and #GtkTextView.
+ * as #CtkEntry and #CtkTextView.
  * See also ctk_widget_modify_style().
  *
  * Deprecated:3.0: Use ctk_widget_override_color() instead
  */
 void
-ctk_widget_modify_text (GtkWidget      *widget,
-                        GtkStateType    state,
+ctk_widget_modify_text (CtkWidget      *widget,
+                        CtkStateType    state,
                         const GdkColor *color)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -4464,7 +4464,7 @@ ctk_widget_modify_text (GtkWidget      *widget,
 
 /**
  * ctk_widget_modify_base:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @state: the state for which to set the base color
  * @color: (allow-none): the color to assign (does not need to
  *     be allocated), or %NULL to undo the effect of previous
@@ -4473,24 +4473,24 @@ ctk_widget_modify_text (GtkWidget      *widget,
  * Sets the base color for a widget in a particular state.
  * All other style values are left untouched. The base color
  * is the background color used along with the text color
- * (see ctk_widget_modify_text()) for widgets such as #GtkEntry
- * and #GtkTextView. See also ctk_widget_modify_style().
+ * (see ctk_widget_modify_text()) for widgets such as #CtkEntry
+ * and #CtkTextView. See also ctk_widget_modify_style().
  *
  * > Note that “no window” widgets (which have the %CTK_NO_WINDOW
  * > flag set) draw on their parent container’s window and thus may
  * > not draw any background themselves. This is the case for e.g.
- * > #GtkLabel.
+ * > #CtkLabel.
  * >
  * > To modify the background of such widgets, you have to set the
  * > base color on their parent; if you want to set the background
  * > of a rectangular area around a label, try placing the label in
- * > a #GtkEventBox widget and setting the base color on that.
+ * > a #CtkEventBox widget and setting the base color on that.
  *
  * Deprecated:3.0: Use ctk_widget_override_background_color() instead
  */
 void
-ctk_widget_modify_base (GtkWidget      *widget,
-                        GtkStateType    state,
+ctk_widget_modify_base (CtkWidget      *widget,
+                        CtkStateType    state,
                         const GdkColor *color)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -4501,7 +4501,7 @@ ctk_widget_modify_base (GtkWidget      *widget,
 
 /**
  * ctk_widget_modify_cursor:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @primary: (nullable): the color to use for primary cursor (does not
  *     need to be allocated), or %NULL to undo the effect of previous
  *     calls to of ctk_widget_modify_cursor().
@@ -4509,7 +4509,7 @@ ctk_widget_modify_base (GtkWidget      *widget,
  *     not need to be allocated), or %NULL to undo the effect of
  *     previous calls to of ctk_widget_modify_cursor().
  *
- * Sets the cursor color to use in a widget, overriding the #GtkWidget
+ * Sets the cursor color to use in a widget, overriding the #CtkWidget
  * cursor-color and secondary-cursor-color
  * style properties.
  *
@@ -4521,7 +4521,7 @@ ctk_widget_modify_base (GtkWidget      *widget,
  * Deprecated: 3.0: Use ctk_widget_override_cursor() instead.
  */
 void
-ctk_widget_modify_cursor (GtkWidget      *widget,
+ctk_widget_modify_cursor (CtkWidget      *widget,
                           const GdkColor *primary,
                           const GdkColor *secondary)
 {
@@ -4544,7 +4544,7 @@ ctk_widget_modify_cursor (GtkWidget      *widget,
 
 /**
  * ctk_widget_modify_font:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @font_desc: (allow-none): the font description to use, or %NULL
  *     to undo the effect of previous calls to ctk_widget_modify_font()
  *
@@ -4556,7 +4556,7 @@ ctk_widget_modify_cursor (GtkWidget      *widget,
  * Deprecated:3.0: Use ctk_widget_override_font() instead
  */
 void
-ctk_widget_modify_font (GtkWidget            *widget,
+ctk_widget_modify_font (CtkWidget            *widget,
                         PangoFontDescription *font_desc)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -4566,7 +4566,7 @@ ctk_widget_modify_font (GtkWidget            *widget,
 
 /**
  * ctk_widget_reset_rc_styles:
- * @widget: a #GtkWidget.
+ * @widget: a #CtkWidget.
  *
  * Reset the styles of @widget and all descendents, so when
  * they are looked up again, they get the correct values
@@ -4574,10 +4574,10 @@ ctk_widget_modify_font (GtkWidget            *widget,
  *
  * This function is not useful for applications.
  *
- * Deprecated:3.0: Use #GtkStyleContext instead, and ctk_widget_reset_style()
+ * Deprecated:3.0: Use #CtkStyleContext instead, and ctk_widget_reset_style()
  */
 void
-ctk_widget_reset_rc_styles (GtkWidget *widget)
+ctk_widget_reset_rc_styles (CtkWidget *widget)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -4586,7 +4586,7 @@ ctk_widget_reset_rc_styles (GtkWidget *widget)
 
 /**
  * ctk_widget_path:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @path_length: (out) (allow-none): location to store length of the path,
  *     or %NULL
  * @path: (out) (allow-none): location to store allocated path string,
@@ -4599,7 +4599,7 @@ ctk_widget_reset_rc_styles (GtkWidget *widget)
  * periods. The name of a widget comes from
  * ctk_widget_get_name(). Paths are used to apply styles to a widget
  * in ctkrc configuration files. Widget names are the type of the
- * widget by default (e.g. “GtkButton”) or can be set to an
+ * widget by default (e.g. “CtkButton”) or can be set to an
  * application-specific value with ctk_widget_set_name(). By setting
  * the name of a widget, you allow users or theme authors to apply
  * styles to that specific widget in their ctkrc
@@ -4610,7 +4610,7 @@ ctk_widget_reset_rc_styles (GtkWidget *widget)
  * Deprecated:3.0: Use ctk_widget_get_path() instead
  **/
 void
-ctk_widget_path (GtkWidget *widget,
+ctk_widget_path (CtkWidget *widget,
                  guint     *path_length,
                  gchar    **path,
                  gchar    **path_reversed)
@@ -4666,7 +4666,7 @@ ctk_widget_path (GtkWidget *widget,
 
 /**
  * ctk_widget_class_path:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @path_length: (out) (optional): location to store the length of the
  *     class path, or %NULL
  * @path: (out) (optional): location to store the class path as an
@@ -4680,7 +4680,7 @@ ctk_widget_path (GtkWidget *widget,
  * Deprecated:3.0: Use ctk_widget_get_path() instead
  **/
 void
-ctk_widget_class_path (GtkWidget *widget,
+ctk_widget_class_path (CtkWidget *widget,
                        guint     *path_length,
                        gchar    **path,
                        gchar    **path_reversed)
@@ -4734,9 +4734,9 @@ ctk_widget_class_path (GtkWidget *widget,
 
 /**
  * ctk_widget_render_icon:
- * @widget: a #GtkWidget
+ * @widget: a #CtkWidget
  * @stock_id: a stock ID
- * @size: (type int): a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`
+ * @size: (type int): a stock size (#CtkIconSize). A size of `(CtkIconSize)-1`
  *     means render at the size of the source and don’t scale (if there are
  *     multiple source sizes, GTK+ picks one of the available sizes).
  * @detail: (allow-none): render detail to pass to theme engine
@@ -4759,9 +4759,9 @@ ctk_widget_class_path (GtkWidget *widget,
  * Deprecated: 3.0: Use ctk_widget_render_icon_pixbuf() instead.
  **/
 GdkPixbuf*
-ctk_widget_render_icon (GtkWidget      *widget,
+ctk_widget_render_icon (CtkWidget      *widget,
                         const gchar    *stock_id,
-                        GtkIconSize     size,
+                        CtkIconSize     size,
                         const gchar    *detail)
 {
   ctk_widget_ensure_style (widget);

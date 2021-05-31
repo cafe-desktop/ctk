@@ -1,6 +1,6 @@
 <!-- test invalid scale mark attributes -->
 <interface>
-  <object class="GtkScale">
+  <object class="CtkScale">
     <marks>
       <mark nosuchattribute="" value="0"/>
     </marks>

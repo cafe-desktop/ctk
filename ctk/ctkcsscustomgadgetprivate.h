@@ -25,61 +25,61 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_CUSTOM_GADGET           (ctk_css_custom_gadget_get_type ())
-#define CTK_CSS_CUSTOM_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadget))
-#define CTK_CSS_CUSTOM_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadgetClass))
+#define CTK_CSS_CUSTOM_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_CUSTOM_GADGET, CtkCssCustomGadget))
+#define CTK_CSS_CUSTOM_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_CUSTOM_GADGET, CtkCssCustomGadgetClass))
 #define CTK_IS_CSS_CUSTOM_GADGET(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_CUSTOM_GADGET))
 #define CTK_IS_CSS_CUSTOM_GADGET_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_CUSTOM_GADGET))
-#define CTK_CSS_CUSTOM_GADGET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadgetClass))
+#define CTK_CSS_CUSTOM_GADGET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_CUSTOM_GADGET, CtkCssCustomGadgetClass))
 
-typedef struct _GtkCssCustomGadget           GtkCssCustomGadget;
-typedef struct _GtkCssCustomGadgetClass      GtkCssCustomGadgetClass;
+typedef struct _CtkCssCustomGadget           CtkCssCustomGadget;
+typedef struct _CtkCssCustomGadgetClass      CtkCssCustomGadgetClass;
 
-typedef void    (* GtkCssPreferredSizeFunc)             (GtkCssGadget           *gadget,
-                                                         GtkOrientation          orientation,
+typedef void    (* CtkCssPreferredSizeFunc)             (CtkCssGadget           *gadget,
+                                                         CtkOrientation          orientation,
                                                          gint                    for_size,
                                                          gint                   *minimum,
                                                          gint                   *natural,
                                                          gint                   *minimum_baseline,
                                                          gint                   *natural_baseline,
                                                          gpointer                data);
-typedef void    (* GtkCssAllocateFunc)                  (GtkCssGadget           *gadget,
-                                                         const GtkAllocation    *allocation,
+typedef void    (* CtkCssAllocateFunc)                  (CtkCssGadget           *gadget,
+                                                         const CtkAllocation    *allocation,
                                                          int                     baseline,
-                                                         GtkAllocation          *out_clip,
+                                                         CtkAllocation          *out_clip,
                                                          gpointer                data);
-typedef gboolean (* GtkCssDrawFunc)                     (GtkCssGadget           *gadget,
+typedef gboolean (* CtkCssDrawFunc)                     (CtkCssGadget           *gadget,
                                                          cairo_t                *cr,
                                                          int                     x,
                                                          int                     y,
                                                          int                     width,
                                                          int                     height,
                                                          gpointer                data);
-struct _GtkCssCustomGadget
+struct _CtkCssCustomGadget
 {
-  GtkCssGadget parent;
+  CtkCssGadget parent;
 };
 
-struct _GtkCssCustomGadgetClass
+struct _CtkCssCustomGadgetClass
 {
-  GtkCssGadgetClass  parent_class;
+  CtkCssGadgetClass  parent_class;
 };
 
 GType           ctk_css_custom_gadget_get_type                 (void) G_GNUC_CONST;
 
-GtkCssGadget *  ctk_css_custom_gadget_new                      (const char                      *name,
-                                                                GtkWidget                       *owner,
-                                                                GtkCssGadget                    *parent,
-                                                                GtkCssGadget                    *next_sibling,
-                                                                GtkCssPreferredSizeFunc          get_preferred_size_func,
-                                                                GtkCssAllocateFunc               allocate_func,
-                                                                GtkCssDrawFunc                   draw_func,
+CtkCssGadget *  ctk_css_custom_gadget_new                      (const char                      *name,
+                                                                CtkWidget                       *owner,
+                                                                CtkCssGadget                    *parent,
+                                                                CtkCssGadget                    *next_sibling,
+                                                                CtkCssPreferredSizeFunc          get_preferred_size_func,
+                                                                CtkCssAllocateFunc               allocate_func,
+                                                                CtkCssDrawFunc                   draw_func,
                                                                 gpointer                         data,
                                                                 GDestroyNotify                   destroy_func);
-GtkCssGadget *  ctk_css_custom_gadget_new_for_node             (GtkCssNode                      *node,
-                                                                GtkWidget                       *owner,
-                                                                GtkCssPreferredSizeFunc          preferred_size_func,
-                                                                GtkCssAllocateFunc               allocate_func,
-                                                                GtkCssDrawFunc                   draw_func,
+CtkCssGadget *  ctk_css_custom_gadget_new_for_node             (CtkCssNode                      *node,
+                                                                CtkWidget                       *owner,
+                                                                CtkCssPreferredSizeFunc          preferred_size_func,
+                                                                CtkCssAllocateFunc               allocate_func,
+                                                                CtkCssDrawFunc                   draw_func,
                                                                 gpointer                         data,
                                                                 GDestroyNotify                   destroy_func);
 

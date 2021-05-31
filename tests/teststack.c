@@ -1,38 +1,38 @@
 #include <ctk/ctk.h>
 
-GtkWidget *stack;
-GtkWidget *switcher;
-GtkWidget *sidebar;
-GtkWidget *w1;
+CtkWidget *stack;
+CtkWidget *switcher;
+CtkWidget *sidebar;
+CtkWidget *w1;
 
 static void
-set_visible_child (GtkWidget *button, gpointer data)
+set_visible_child (CtkWidget *button, gpointer data)
 {
   ctk_stack_set_visible_child (CTK_STACK (stack), CTK_WIDGET (data));
 }
 
 static void
-set_visible_child_name (GtkWidget *button, gpointer data)
+set_visible_child_name (CtkWidget *button, gpointer data)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (stack), (const char *)data);
 }
 
 static void
-toggle_hhomogeneous (GtkWidget *button, gpointer data)
+toggle_hhomogeneous (CtkWidget *button, gpointer data)
 {
   gboolean active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
   ctk_stack_set_hhomogeneous (CTK_STACK (stack), active);
 }
 
 static void
-toggle_vhomogeneous (GtkWidget *button, gpointer data)
+toggle_vhomogeneous (CtkWidget *button, gpointer data)
 {
   gboolean active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
   ctk_stack_set_vhomogeneous (CTK_STACK (stack), active);
 }
 
 static void
-toggle_icon_name (GtkWidget *button, gpointer data)
+toggle_icon_name (CtkWidget *button, gpointer data)
 {
   gboolean active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
   ctk_container_child_set (CTK_CONTAINER (stack), w1,
@@ -41,14 +41,14 @@ toggle_icon_name (GtkWidget *button, gpointer data)
 }
 
 static void
-toggle_transitions (GtkWidget *combo, gpointer data)
+toggle_transitions (CtkWidget *combo, gpointer data)
 {
   int id = ctk_combo_box_get_active (CTK_COMBO_BOX (combo));
   ctk_stack_set_transition_type (CTK_STACK (stack), id);
 }
 
 static void
-on_back_button_clicked (GtkButton *button, GtkStack *stack)
+on_back_button_clicked (CtkButton *button, CtkStack *stack)
 {
   const gchar *seq[] = { "1", "2", "3" };
   const gchar *vis;
@@ -67,7 +67,7 @@ on_back_button_clicked (GtkButton *button, GtkStack *stack)
 }
 
 static void
-on_forward_button_clicked (GtkButton *button, GtkStack *stack)
+on_forward_button_clicked (CtkButton *button, CtkStack *stack)
 {
   const gchar *seq[] = { "1", "2", "3" };
   const gchar *vis;
@@ -86,7 +86,7 @@ on_forward_button_clicked (GtkButton *button, GtkStack *stack)
 }
 
 static void
-update_back_button_sensitivity (GtkStack *stack, GParamSpec *pspec, GtkWidget *button)
+update_back_button_sensitivity (CtkStack *stack, GParamSpec *pspec, CtkWidget *button)
 {
   const gchar *vis;
 
@@ -95,7 +95,7 @@ update_back_button_sensitivity (GtkStack *stack, GParamSpec *pspec, GtkWidget *b
 }
 
 static void
-update_forward_button_sensitivity (GtkStack *stack, GParamSpec *pspec, GtkWidget *button)
+update_forward_button_sensitivity (CtkStack *stack, GParamSpec *pspec, CtkWidget *button)
 {
   const gchar *vis;
 
@@ -107,15 +107,15 @@ gint
 main (gint argc,
       gchar ** argv)
 {
-  GtkWidget *window, *box, *button, *hbox, *combo, *layout;
-  GtkWidget *w2, *w3;
-  GtkListStore* store;
-  GtkWidget *tree_view;
-  GtkTreeViewColumn *column;
-  GtkCellRenderer *renderer;
-  GtkWidget *scrolled_win;
+  CtkWidget *window, *box, *button, *hbox, *combo, *layout;
+  CtkWidget *w2, *w3;
+  CtkListStore* store;
+  CtkWidget *tree_view;
+  CtkTreeViewColumn *column;
+  CtkCellRenderer *renderer;
+  CtkWidget *scrolled_win;
   int i;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GEnumClass *class;
 
   ctk_init (&argc, &argv);

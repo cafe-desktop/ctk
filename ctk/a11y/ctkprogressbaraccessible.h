@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PROGRESS_BAR_ACCESSIBLE                      (ctk_progress_bar_accessible_get_type ())
-#define CTK_PROGRESS_BAR_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PROGRESS_BAR_ACCESSIBLE, GtkProgressBarAccessible))
-#define CTK_PROGRESS_BAR_ACCESSIBLE_CLASS(klass)                        (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PROGRESS_BAR_ACCESSIBLE, GtkProgressBarAccessibleClass))
+#define CTK_PROGRESS_BAR_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PROGRESS_BAR_ACCESSIBLE, CtkProgressBarAccessible))
+#define CTK_PROGRESS_BAR_ACCESSIBLE_CLASS(klass)                        (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PROGRESS_BAR_ACCESSIBLE, CtkProgressBarAccessibleClass))
 #define CTK_IS_PROGRESS_BAR_ACCESSIBLE(obj)                       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PROGRESS_BAR_ACCESSIBLE))
 #define CTK_IS_PROGRESS_BAR_ACCESSIBLE_CLASS(klass)               (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PROGRESS_BAR_ACCESSIBLE))
-#define CTK_PROGRESS_BAR_ACCESSIBLE_GET_CLASS(obj)              (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PROGRESS_BAR_ACCESSIBLE, GtkProgressBarAccessibleClass))
+#define CTK_PROGRESS_BAR_ACCESSIBLE_GET_CLASS(obj)              (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PROGRESS_BAR_ACCESSIBLE, CtkProgressBarAccessibleClass))
 
-typedef struct _GtkProgressBarAccessible        GtkProgressBarAccessible;
-typedef struct _GtkProgressBarAccessibleClass   GtkProgressBarAccessibleClass;
-typedef struct _GtkProgressBarAccessiblePrivate GtkProgressBarAccessiblePrivate;
+typedef struct _CtkProgressBarAccessible        CtkProgressBarAccessible;
+typedef struct _CtkProgressBarAccessibleClass   CtkProgressBarAccessibleClass;
+typedef struct _CtkProgressBarAccessiblePrivate CtkProgressBarAccessiblePrivate;
 
-struct _GtkProgressBarAccessible
+struct _CtkProgressBarAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkProgressBarAccessiblePrivate *priv;
+  CtkProgressBarAccessiblePrivate *priv;
 };
 
-struct _GtkProgressBarAccessibleClass
+struct _CtkProgressBarAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

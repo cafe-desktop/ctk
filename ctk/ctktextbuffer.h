@@ -40,11 +40,11 @@ G_BEGIN_DECLS
 
 /*
  * This is the PUBLIC representation of a text buffer.
- * GtkTextBTree is the PRIVATE internal representation of it.
+ * CtkTextBTree is the PRIVATE internal representation of it.
  */
 
 /**
- * GtkTextBufferTargetInfo:
+ * CtkTextBufferTargetInfo:
  * @CTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS: Buffer contents
  * @CTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT: Rich text
  * @CTK_TEXT_BUFFER_TARGET_INFO_TEXT: Text
@@ -61,97 +61,97 @@ typedef enum
   CTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS = - 1,
   CTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT       = - 2,
   CTK_TEXT_BUFFER_TARGET_INFO_TEXT            = - 3
-} GtkTextBufferTargetInfo;
+} CtkTextBufferTargetInfo;
 
-typedef struct _GtkTextBTree GtkTextBTree;
+typedef struct _CtkTextBTree CtkTextBTree;
 
 #define CTK_TYPE_TEXT_BUFFER            (ctk_text_buffer_get_type ())
-#define CTK_TEXT_BUFFER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_BUFFER, GtkTextBuffer))
-#define CTK_TEXT_BUFFER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_BUFFER, GtkTextBufferClass))
+#define CTK_TEXT_BUFFER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_BUFFER, CtkTextBuffer))
+#define CTK_TEXT_BUFFER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_BUFFER, CtkTextBufferClass))
 #define CTK_IS_TEXT_BUFFER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEXT_BUFFER))
 #define CTK_IS_TEXT_BUFFER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_BUFFER))
-#define CTK_TEXT_BUFFER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_BUFFER, GtkTextBufferClass))
+#define CTK_TEXT_BUFFER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_BUFFER, CtkTextBufferClass))
 
-typedef struct _GtkTextBufferPrivate GtkTextBufferPrivate;
-typedef struct _GtkTextBufferClass GtkTextBufferClass;
+typedef struct _CtkTextBufferPrivate CtkTextBufferPrivate;
+typedef struct _CtkTextBufferClass CtkTextBufferClass;
 
-struct _GtkTextBuffer
+struct _CtkTextBuffer
 {
   GObject parent_instance;
 
-  GtkTextBufferPrivate *priv;
+  CtkTextBufferPrivate *priv;
 };
 
 /**
- * GtkTextBufferClass:
+ * CtkTextBufferClass:
  * @parent_class: The object class structure needs to be the first.
- * @insert_text: The class handler for the #GtkTextBuffer::insert-text signal.
- * @insert_pixbuf: The class handler for the #GtkTextBuffer::insert-pixbuf
+ * @insert_text: The class handler for the #CtkTextBuffer::insert-text signal.
+ * @insert_pixbuf: The class handler for the #CtkTextBuffer::insert-pixbuf
  *   signal.
  * @insert_child_anchor: The class handler for the
- *   #GtkTextBuffer::insert-child-anchor signal.
- * @delete_range: The class handler for the #GtkTextBuffer::delete-range signal.
- * @changed: The class handler for the #GtkTextBuffer::changed signal.
- * @modified_changed: The class handler for the #GtkTextBuffer::modified-changed
+ *   #CtkTextBuffer::insert-child-anchor signal.
+ * @delete_range: The class handler for the #CtkTextBuffer::delete-range signal.
+ * @changed: The class handler for the #CtkTextBuffer::changed signal.
+ * @modified_changed: The class handler for the #CtkTextBuffer::modified-changed
  *   signal.
- * @mark_set: The class handler for the #GtkTextBuffer::mark-set signal.
- * @mark_deleted: The class handler for the #GtkTextBuffer::mark-deleted signal.
- * @apply_tag: The class handler for the #GtkTextBuffer::apply-tag signal.
- * @remove_tag: The class handler for the #GtkTextBuffer::remove-tag signal.
+ * @mark_set: The class handler for the #CtkTextBuffer::mark-set signal.
+ * @mark_deleted: The class handler for the #CtkTextBuffer::mark-deleted signal.
+ * @apply_tag: The class handler for the #CtkTextBuffer::apply-tag signal.
+ * @remove_tag: The class handler for the #CtkTextBuffer::remove-tag signal.
  * @begin_user_action: The class handler for the
- *   #GtkTextBuffer::begin-user-action signal.
- * @end_user_action: The class handler for the #GtkTextBuffer::end-user-action
+ *   #CtkTextBuffer::begin-user-action signal.
+ * @end_user_action: The class handler for the #CtkTextBuffer::end-user-action
  *   signal.
- * @paste_done: The class handler for the #GtkTextBuffer::paste-done signal.
+ * @paste_done: The class handler for the #CtkTextBuffer::paste-done signal.
  */
-struct _GtkTextBufferClass
+struct _CtkTextBufferClass
 {
   GObjectClass parent_class;
 
-  void (* insert_text)            (GtkTextBuffer      *buffer,
-                                   GtkTextIter        *pos,
+  void (* insert_text)            (CtkTextBuffer      *buffer,
+                                   CtkTextIter        *pos,
                                    const gchar        *new_text,
                                    gint                new_text_length);
 
-  void (* insert_pixbuf)          (GtkTextBuffer      *buffer,
-                                   GtkTextIter        *iter,
+  void (* insert_pixbuf)          (CtkTextBuffer      *buffer,
+                                   CtkTextIter        *iter,
                                    GdkPixbuf          *pixbuf);
 
-  void (* insert_child_anchor)    (GtkTextBuffer      *buffer,
-                                   GtkTextIter        *iter,
-                                   GtkTextChildAnchor *anchor);
+  void (* insert_child_anchor)    (CtkTextBuffer      *buffer,
+                                   CtkTextIter        *iter,
+                                   CtkTextChildAnchor *anchor);
 
-  void (* delete_range)           (GtkTextBuffer      *buffer,
-                                   GtkTextIter        *start,
-                                   GtkTextIter        *end);
+  void (* delete_range)           (CtkTextBuffer      *buffer,
+                                   CtkTextIter        *start,
+                                   CtkTextIter        *end);
 
-  void (* changed)                (GtkTextBuffer      *buffer);
+  void (* changed)                (CtkTextBuffer      *buffer);
 
-  void (* modified_changed)       (GtkTextBuffer      *buffer);
+  void (* modified_changed)       (CtkTextBuffer      *buffer);
 
-  void (* mark_set)               (GtkTextBuffer      *buffer,
-                                   const GtkTextIter  *location,
-                                   GtkTextMark        *mark);
+  void (* mark_set)               (CtkTextBuffer      *buffer,
+                                   const CtkTextIter  *location,
+                                   CtkTextMark        *mark);
 
-  void (* mark_deleted)           (GtkTextBuffer      *buffer,
-                                   GtkTextMark        *mark);
+  void (* mark_deleted)           (CtkTextBuffer      *buffer,
+                                   CtkTextMark        *mark);
 
-  void (* apply_tag)              (GtkTextBuffer      *buffer,
-                                   GtkTextTag         *tag,
-                                   const GtkTextIter  *start,
-                                   const GtkTextIter  *end);
+  void (* apply_tag)              (CtkTextBuffer      *buffer,
+                                   CtkTextTag         *tag,
+                                   const CtkTextIter  *start,
+                                   const CtkTextIter  *end);
 
-  void (* remove_tag)             (GtkTextBuffer      *buffer,
-                                   GtkTextTag         *tag,
-                                   const GtkTextIter  *start,
-                                   const GtkTextIter  *end);
+  void (* remove_tag)             (CtkTextBuffer      *buffer,
+                                   CtkTextTag         *tag,
+                                   const CtkTextIter  *start,
+                                   const CtkTextIter  *end);
 
-  void (* begin_user_action)      (GtkTextBuffer      *buffer);
+  void (* begin_user_action)      (CtkTextBuffer      *buffer);
 
-  void (* end_user_action)        (GtkTextBuffer      *buffer);
+  void (* end_user_action)        (CtkTextBuffer      *buffer);
 
-  void (* paste_done)             (GtkTextBuffer      *buffer,
-                                   GtkClipboard       *clipboard);
+  void (* paste_done)             (CtkTextBuffer      *buffer,
+                                   CtkClipboard       *clipboard);
 
   /*< private >*/
 
@@ -169,246 +169,246 @@ GType        ctk_text_buffer_get_type       (void) G_GNUC_CONST;
 
 /* table is NULL to create a new one */
 GDK_AVAILABLE_IN_ALL
-GtkTextBuffer *ctk_text_buffer_new            (GtkTextTagTable *table);
+CtkTextBuffer *ctk_text_buffer_new            (CtkTextTagTable *table);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_text_buffer_get_line_count (GtkTextBuffer   *buffer);
+gint           ctk_text_buffer_get_line_count (CtkTextBuffer   *buffer);
 GDK_AVAILABLE_IN_ALL
-gint           ctk_text_buffer_get_char_count (GtkTextBuffer   *buffer);
+gint           ctk_text_buffer_get_char_count (CtkTextBuffer   *buffer);
 
 
 GDK_AVAILABLE_IN_ALL
-GtkTextTagTable* ctk_text_buffer_get_tag_table (GtkTextBuffer  *buffer);
+CtkTextTagTable* ctk_text_buffer_get_tag_table (CtkTextBuffer  *buffer);
 
 /* Delete whole buffer, then insert */
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_set_text          (GtkTextBuffer *buffer,
+void ctk_text_buffer_set_text          (CtkTextBuffer *buffer,
                                         const gchar   *text,
                                         gint           len);
 
 /* Insert into the buffer */
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_insert            (GtkTextBuffer *buffer,
-                                        GtkTextIter   *iter,
+void ctk_text_buffer_insert            (CtkTextBuffer *buffer,
+                                        CtkTextIter   *iter,
                                         const gchar   *text,
                                         gint           len);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_insert_at_cursor  (GtkTextBuffer *buffer,
+void ctk_text_buffer_insert_at_cursor  (CtkTextBuffer *buffer,
                                         const gchar   *text,
                                         gint           len);
 
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_buffer_insert_interactive           (GtkTextBuffer *buffer,
-                                                       GtkTextIter   *iter,
+gboolean ctk_text_buffer_insert_interactive           (CtkTextBuffer *buffer,
+                                                       CtkTextIter   *iter,
                                                        const gchar   *text,
                                                        gint           len,
                                                        gboolean       default_editable);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_buffer_insert_interactive_at_cursor (GtkTextBuffer *buffer,
+gboolean ctk_text_buffer_insert_interactive_at_cursor (CtkTextBuffer *buffer,
                                                        const gchar   *text,
                                                        gint           len,
                                                        gboolean       default_editable);
 
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_buffer_insert_range             (GtkTextBuffer     *buffer,
-                                                   GtkTextIter       *iter,
-                                                   const GtkTextIter *start,
-                                                   const GtkTextIter *end);
+void     ctk_text_buffer_insert_range             (CtkTextBuffer     *buffer,
+                                                   CtkTextIter       *iter,
+                                                   const CtkTextIter *start,
+                                                   const CtkTextIter *end);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_buffer_insert_range_interactive (GtkTextBuffer     *buffer,
-                                                   GtkTextIter       *iter,
-                                                   const GtkTextIter *start,
-                                                   const GtkTextIter *end,
+gboolean ctk_text_buffer_insert_range_interactive (CtkTextBuffer     *buffer,
+                                                   CtkTextIter       *iter,
+                                                   const CtkTextIter *start,
+                                                   const CtkTextIter *end,
                                                    gboolean           default_editable);
 
 GDK_AVAILABLE_IN_ALL
-void    ctk_text_buffer_insert_with_tags          (GtkTextBuffer     *buffer,
-                                                   GtkTextIter       *iter,
+void    ctk_text_buffer_insert_with_tags          (CtkTextBuffer     *buffer,
+                                                   CtkTextIter       *iter,
                                                    const gchar       *text,
                                                    gint               len,
-                                                   GtkTextTag        *first_tag,
+                                                   CtkTextTag        *first_tag,
                                                    ...) G_GNUC_NULL_TERMINATED;
 
 GDK_AVAILABLE_IN_ALL
-void    ctk_text_buffer_insert_with_tags_by_name  (GtkTextBuffer     *buffer,
-                                                   GtkTextIter       *iter,
+void    ctk_text_buffer_insert_with_tags_by_name  (CtkTextBuffer     *buffer,
+                                                   CtkTextIter       *iter,
                                                    const gchar       *text,
                                                    gint               len,
                                                    const gchar       *first_tag_name,
                                                    ...) G_GNUC_NULL_TERMINATED;
 
 GDK_AVAILABLE_IN_3_16
-void     ctk_text_buffer_insert_markup            (GtkTextBuffer     *buffer,
-                                                   GtkTextIter       *iter,
+void     ctk_text_buffer_insert_markup            (CtkTextBuffer     *buffer,
+                                                   CtkTextIter       *iter,
                                                    const gchar       *markup,
                                                    gint               len);
 
 /* Delete from the buffer */
 GDK_AVAILABLE_IN_ALL
-void     ctk_text_buffer_delete             (GtkTextBuffer *buffer,
-					     GtkTextIter   *start,
-					     GtkTextIter   *end);
+void     ctk_text_buffer_delete             (CtkTextBuffer *buffer,
+					     CtkTextIter   *start,
+					     CtkTextIter   *end);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_buffer_delete_interactive (GtkTextBuffer *buffer,
-					     GtkTextIter   *start_iter,
-					     GtkTextIter   *end_iter,
+gboolean ctk_text_buffer_delete_interactive (CtkTextBuffer *buffer,
+					     CtkTextIter   *start_iter,
+					     CtkTextIter   *end_iter,
 					     gboolean       default_editable);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_text_buffer_backspace          (GtkTextBuffer *buffer,
-					     GtkTextIter   *iter,
+gboolean ctk_text_buffer_backspace          (CtkTextBuffer *buffer,
+					     CtkTextIter   *iter,
 					     gboolean       interactive,
 					     gboolean       default_editable);
 
 /* Obtain strings from the buffer */
 GDK_AVAILABLE_IN_ALL
-gchar          *ctk_text_buffer_get_text            (GtkTextBuffer     *buffer,
-                                                     const GtkTextIter *start,
-                                                     const GtkTextIter *end,
+gchar          *ctk_text_buffer_get_text            (CtkTextBuffer     *buffer,
+                                                     const CtkTextIter *start,
+                                                     const CtkTextIter *end,
                                                      gboolean           include_hidden_chars);
 
 GDK_AVAILABLE_IN_ALL
-gchar          *ctk_text_buffer_get_slice           (GtkTextBuffer     *buffer,
-                                                     const GtkTextIter *start,
-                                                     const GtkTextIter *end,
+gchar          *ctk_text_buffer_get_slice           (CtkTextBuffer     *buffer,
+                                                     const CtkTextIter *start,
+                                                     const CtkTextIter *end,
                                                      gboolean           include_hidden_chars);
 
 /* Insert a pixbuf */
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_insert_pixbuf         (GtkTextBuffer *buffer,
-                                            GtkTextIter   *iter,
+void ctk_text_buffer_insert_pixbuf         (CtkTextBuffer *buffer,
+                                            CtkTextIter   *iter,
                                             GdkPixbuf     *pixbuf);
 
 /* Insert a child anchor */
 GDK_AVAILABLE_IN_ALL
-void               ctk_text_buffer_insert_child_anchor (GtkTextBuffer      *buffer,
-                                                        GtkTextIter        *iter,
-                                                        GtkTextChildAnchor *anchor);
+void               ctk_text_buffer_insert_child_anchor (CtkTextBuffer      *buffer,
+                                                        CtkTextIter        *iter,
+                                                        CtkTextChildAnchor *anchor);
 
 /* Convenience, create and insert a child anchor */
 GDK_AVAILABLE_IN_ALL
-GtkTextChildAnchor *ctk_text_buffer_create_child_anchor (GtkTextBuffer *buffer,
-                                                         GtkTextIter   *iter);
+CtkTextChildAnchor *ctk_text_buffer_create_child_anchor (CtkTextBuffer *buffer,
+                                                         CtkTextIter   *iter);
 
 /* Mark manipulation */
 GDK_AVAILABLE_IN_ALL
-void           ctk_text_buffer_add_mark    (GtkTextBuffer     *buffer,
-                                            GtkTextMark       *mark,
-                                            const GtkTextIter *where);
+void           ctk_text_buffer_add_mark    (CtkTextBuffer     *buffer,
+                                            CtkTextMark       *mark,
+                                            const CtkTextIter *where);
 GDK_AVAILABLE_IN_ALL
-GtkTextMark   *ctk_text_buffer_create_mark (GtkTextBuffer     *buffer,
+CtkTextMark   *ctk_text_buffer_create_mark (CtkTextBuffer     *buffer,
                                             const gchar       *mark_name,
-                                            const GtkTextIter *where,
+                                            const CtkTextIter *where,
                                             gboolean           left_gravity);
 GDK_AVAILABLE_IN_ALL
-void           ctk_text_buffer_move_mark   (GtkTextBuffer     *buffer,
-                                            GtkTextMark       *mark,
-                                            const GtkTextIter *where);
+void           ctk_text_buffer_move_mark   (CtkTextBuffer     *buffer,
+                                            CtkTextMark       *mark,
+                                            const CtkTextIter *where);
 GDK_AVAILABLE_IN_ALL
-void           ctk_text_buffer_delete_mark (GtkTextBuffer     *buffer,
-                                            GtkTextMark       *mark);
+void           ctk_text_buffer_delete_mark (CtkTextBuffer     *buffer,
+                                            CtkTextMark       *mark);
 GDK_AVAILABLE_IN_ALL
-GtkTextMark*   ctk_text_buffer_get_mark    (GtkTextBuffer     *buffer,
+CtkTextMark*   ctk_text_buffer_get_mark    (CtkTextBuffer     *buffer,
                                             const gchar       *name);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_move_mark_by_name   (GtkTextBuffer     *buffer,
+void ctk_text_buffer_move_mark_by_name   (CtkTextBuffer     *buffer,
                                           const gchar       *name,
-                                          const GtkTextIter *where);
+                                          const CtkTextIter *where);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_delete_mark_by_name (GtkTextBuffer     *buffer,
+void ctk_text_buffer_delete_mark_by_name (CtkTextBuffer     *buffer,
                                           const gchar       *name);
 
 GDK_AVAILABLE_IN_ALL
-GtkTextMark* ctk_text_buffer_get_insert          (GtkTextBuffer *buffer);
+CtkTextMark* ctk_text_buffer_get_insert          (CtkTextBuffer *buffer);
 GDK_AVAILABLE_IN_ALL
-GtkTextMark* ctk_text_buffer_get_selection_bound (GtkTextBuffer *buffer);
+CtkTextMark* ctk_text_buffer_get_selection_bound (CtkTextBuffer *buffer);
 
 /* efficiently move insert and selection_bound at the same time */
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_place_cursor (GtkTextBuffer     *buffer,
-                                   const GtkTextIter *where);
+void ctk_text_buffer_place_cursor (CtkTextBuffer     *buffer,
+                                   const CtkTextIter *where);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_select_range (GtkTextBuffer     *buffer,
-                                   const GtkTextIter *ins,
-				   const GtkTextIter *bound);
+void ctk_text_buffer_select_range (CtkTextBuffer     *buffer,
+                                   const CtkTextIter *ins,
+				   const CtkTextIter *bound);
 
 
 
 /* Tag manipulation */
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_apply_tag             (GtkTextBuffer     *buffer,
-                                            GtkTextTag        *tag,
-                                            const GtkTextIter *start,
-                                            const GtkTextIter *end);
+void ctk_text_buffer_apply_tag             (CtkTextBuffer     *buffer,
+                                            CtkTextTag        *tag,
+                                            const CtkTextIter *start,
+                                            const CtkTextIter *end);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_remove_tag            (GtkTextBuffer     *buffer,
-                                            GtkTextTag        *tag,
-                                            const GtkTextIter *start,
-                                            const GtkTextIter *end);
+void ctk_text_buffer_remove_tag            (CtkTextBuffer     *buffer,
+                                            CtkTextTag        *tag,
+                                            const CtkTextIter *start,
+                                            const CtkTextIter *end);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_apply_tag_by_name     (GtkTextBuffer     *buffer,
+void ctk_text_buffer_apply_tag_by_name     (CtkTextBuffer     *buffer,
                                             const gchar       *name,
-                                            const GtkTextIter *start,
-                                            const GtkTextIter *end);
+                                            const CtkTextIter *start,
+                                            const CtkTextIter *end);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_remove_tag_by_name    (GtkTextBuffer     *buffer,
+void ctk_text_buffer_remove_tag_by_name    (CtkTextBuffer     *buffer,
                                             const gchar       *name,
-                                            const GtkTextIter *start,
-                                            const GtkTextIter *end);
+                                            const CtkTextIter *start,
+                                            const CtkTextIter *end);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_remove_all_tags       (GtkTextBuffer     *buffer,
-                                            const GtkTextIter *start,
-                                            const GtkTextIter *end);
+void ctk_text_buffer_remove_all_tags       (CtkTextBuffer     *buffer,
+                                            const CtkTextIter *start,
+                                            const CtkTextIter *end);
 
 
 /* You can either ignore the return value, or use it to
  * set the attributes of the tag. tag_name can be NULL
  */
 GDK_AVAILABLE_IN_ALL
-GtkTextTag    *ctk_text_buffer_create_tag (GtkTextBuffer *buffer,
+CtkTextTag    *ctk_text_buffer_create_tag (CtkTextBuffer *buffer,
                                            const gchar   *tag_name,
                                            const gchar   *first_property_name,
                                            ...);
 
 /* Obtain iterators pointed at various places, then you can move the
- * iterator around using the GtkTextIter operators
+ * iterator around using the CtkTextIter operators
  */
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_iter_at_line_offset (GtkTextBuffer *buffer,
-                                              GtkTextIter   *iter,
+void ctk_text_buffer_get_iter_at_line_offset (CtkTextBuffer *buffer,
+                                              CtkTextIter   *iter,
                                               gint           line_number,
                                               gint           char_offset);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_iter_at_line_index  (GtkTextBuffer *buffer,
-                                              GtkTextIter   *iter,
+void ctk_text_buffer_get_iter_at_line_index  (CtkTextBuffer *buffer,
+                                              CtkTextIter   *iter,
                                               gint           line_number,
                                               gint           byte_index);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_iter_at_offset      (GtkTextBuffer *buffer,
-                                              GtkTextIter   *iter,
+void ctk_text_buffer_get_iter_at_offset      (CtkTextBuffer *buffer,
+                                              CtkTextIter   *iter,
                                               gint           char_offset);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_iter_at_line        (GtkTextBuffer *buffer,
-                                              GtkTextIter   *iter,
+void ctk_text_buffer_get_iter_at_line        (CtkTextBuffer *buffer,
+                                              CtkTextIter   *iter,
                                               gint           line_number);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_start_iter          (GtkTextBuffer *buffer,
-                                              GtkTextIter   *iter);
+void ctk_text_buffer_get_start_iter          (CtkTextBuffer *buffer,
+                                              CtkTextIter   *iter);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_end_iter            (GtkTextBuffer *buffer,
-                                              GtkTextIter   *iter);
+void ctk_text_buffer_get_end_iter            (CtkTextBuffer *buffer,
+                                              CtkTextIter   *iter);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_bounds              (GtkTextBuffer *buffer,
-                                              GtkTextIter   *start,
-                                              GtkTextIter   *end);
+void ctk_text_buffer_get_bounds              (CtkTextBuffer *buffer,
+                                              CtkTextIter   *start,
+                                              CtkTextIter   *end);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_iter_at_mark        (GtkTextBuffer *buffer,
-                                              GtkTextIter   *iter,
-                                              GtkTextMark   *mark);
+void ctk_text_buffer_get_iter_at_mark        (CtkTextBuffer *buffer,
+                                              CtkTextIter   *iter,
+                                              CtkTextMark   *mark);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_get_iter_at_child_anchor (GtkTextBuffer      *buffer,
-                                               GtkTextIter        *iter,
-                                               GtkTextChildAnchor *anchor);
+void ctk_text_buffer_get_iter_at_child_anchor (CtkTextBuffer      *buffer,
+                                               CtkTextIter        *iter,
+                                               CtkTextChildAnchor *anchor);
 
 /* There's no get_first_iter because you just get the iter for
    line or char 0 */
@@ -420,53 +420,53 @@ void ctk_text_buffer_get_iter_at_child_anchor (GtkTextBuffer      *buffer,
    the tag/mark signals and call set_modified in your handler */
 
 GDK_AVAILABLE_IN_ALL
-gboolean        ctk_text_buffer_get_modified            (GtkTextBuffer *buffer);
+gboolean        ctk_text_buffer_get_modified            (CtkTextBuffer *buffer);
 GDK_AVAILABLE_IN_ALL
-void            ctk_text_buffer_set_modified            (GtkTextBuffer *buffer,
+void            ctk_text_buffer_set_modified            (CtkTextBuffer *buffer,
                                                          gboolean       setting);
 
 GDK_AVAILABLE_IN_ALL
-gboolean        ctk_text_buffer_get_has_selection       (GtkTextBuffer *buffer);
+gboolean        ctk_text_buffer_get_has_selection       (CtkTextBuffer *buffer);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_add_selection_clipboard    (GtkTextBuffer     *buffer,
-						 GtkClipboard      *clipboard);
+void ctk_text_buffer_add_selection_clipboard    (CtkTextBuffer     *buffer,
+						 CtkClipboard      *clipboard);
 GDK_AVAILABLE_IN_ALL
-void ctk_text_buffer_remove_selection_clipboard (GtkTextBuffer     *buffer,
-						 GtkClipboard      *clipboard);
+void ctk_text_buffer_remove_selection_clipboard (CtkTextBuffer     *buffer,
+						 CtkClipboard      *clipboard);
 
 GDK_AVAILABLE_IN_ALL
-void            ctk_text_buffer_cut_clipboard           (GtkTextBuffer *buffer,
-							 GtkClipboard  *clipboard,
+void            ctk_text_buffer_cut_clipboard           (CtkTextBuffer *buffer,
+							 CtkClipboard  *clipboard,
                                                          gboolean       default_editable);
 GDK_AVAILABLE_IN_ALL
-void            ctk_text_buffer_copy_clipboard          (GtkTextBuffer *buffer,
-							 GtkClipboard  *clipboard);
+void            ctk_text_buffer_copy_clipboard          (CtkTextBuffer *buffer,
+							 CtkClipboard  *clipboard);
 GDK_AVAILABLE_IN_ALL
-void            ctk_text_buffer_paste_clipboard         (GtkTextBuffer *buffer,
-							 GtkClipboard  *clipboard,
-							 GtkTextIter   *override_location,
+void            ctk_text_buffer_paste_clipboard         (CtkTextBuffer *buffer,
+							 CtkClipboard  *clipboard,
+							 CtkTextIter   *override_location,
                                                          gboolean       default_editable);
 
 GDK_AVAILABLE_IN_ALL
-gboolean        ctk_text_buffer_get_selection_bounds    (GtkTextBuffer *buffer,
-                                                         GtkTextIter   *start,
-                                                         GtkTextIter   *end);
+gboolean        ctk_text_buffer_get_selection_bounds    (CtkTextBuffer *buffer,
+                                                         CtkTextIter   *start,
+                                                         CtkTextIter   *end);
 GDK_AVAILABLE_IN_ALL
-gboolean        ctk_text_buffer_delete_selection        (GtkTextBuffer *buffer,
+gboolean        ctk_text_buffer_delete_selection        (CtkTextBuffer *buffer,
                                                          gboolean       interactive,
                                                          gboolean       default_editable);
 
 /* Called to specify atomic user actions, used to implement undo */
 GDK_AVAILABLE_IN_ALL
-void            ctk_text_buffer_begin_user_action       (GtkTextBuffer *buffer);
+void            ctk_text_buffer_begin_user_action       (CtkTextBuffer *buffer);
 GDK_AVAILABLE_IN_ALL
-void            ctk_text_buffer_end_user_action         (GtkTextBuffer *buffer);
+void            ctk_text_buffer_end_user_action         (CtkTextBuffer *buffer);
 
 GDK_AVAILABLE_IN_ALL
-GtkTargetList * ctk_text_buffer_get_copy_target_list    (GtkTextBuffer *buffer);
+CtkTargetList * ctk_text_buffer_get_copy_target_list    (CtkTextBuffer *buffer);
 GDK_AVAILABLE_IN_ALL
-GtkTargetList * ctk_text_buffer_get_paste_target_list   (GtkTextBuffer *buffer);
+CtkTargetList * ctk_text_buffer_get_paste_target_list   (CtkTextBuffer *buffer);
 
 
 G_END_DECLS

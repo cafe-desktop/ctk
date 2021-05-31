@@ -10,14 +10,14 @@
 
 #include "demos.h"
 
-static GtkWidget *info_view;
-static GtkWidget *source_view;
+static CtkWidget *info_view;
+static CtkWidget *source_view;
 
 static gchar *current_file = NULL;
 
-static GtkWidget *notebook;
-static GtkWidget *treeview;
-static GtkWidget *headerbar;
+static CtkWidget *notebook;
+static CtkWidget *treeview;
+static CtkWidget *headerbar;
 
 enum {
   NAME_COLUMN,
@@ -31,8 +31,8 @@ enum {
 typedef struct _CallbackData CallbackData;
 struct _CallbackData
 {
-  GtkTreeModel *model;
-  GtkTreePath *path;
+  CtkTreeModel *model;
+  CtkTreePath *path;
 };
 
 static void
@@ -40,7 +40,7 @@ activate_about (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       user_data)
 {
-  GtkApplication *app = user_data;
+  CtkApplication *app = user_data;
   const gchar *authors[] = {
     "The GTK+ Team",
     NULL
@@ -68,8 +68,8 @@ activate_quit (GSimpleAction *action,
                GVariant      *parameter,
                gpointer       user_data)
 {
-  GtkApplication *app = user_data;
-  GtkWidget *win;
+  CtkApplication *app = user_data;
+  CtkWidget *win;
   GList *list, *next;
 
   list = ctk_application_get_windows (app);
@@ -85,10 +85,10 @@ activate_quit (GSimpleAction *action,
 }
 
 static void
-window_closed_cb (GtkWidget *window, gpointer data)
+window_closed_cb (CtkWidget *window, gpointer data)
 {
   CallbackData *cbdata = data;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   PangoStyle style;
 
   ctk_tree_model_get_iter (cbdata->model, &iter, cbdata->path);
@@ -105,13 +105,13 @@ window_closed_cb (GtkWidget *window, gpointer data)
 }
 
 static void
-run_example_for_row (GtkWidget    *window,
-                     GtkTreeModel *model,
-                     GtkTreeIter  *iter)
+run_example_for_row (CtkWidget    *window,
+                     CtkTreeModel *model,
+                     CtkTreeIter  *iter)
 {
   PangoStyle style;
   GDoDemoFunc func;
-  GtkWidget *demo;
+  CtkWidget *demo;
 
   ctk_tree_model_get (CTK_TREE_MODEL (model),
                       iter,
@@ -152,10 +152,10 @@ activate_run (GSimpleAction *action,
               GVariant      *parameter,
               gpointer       user_data)
 {
-  GtkWidget *window = user_data;
-  GtkTreeSelection *selection;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkWidget *window = user_data;
+  CtkTreeSelection *selection;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
 
   selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview));
   if (ctk_tree_selection_get_selected (selection, &model, &iter))
@@ -217,9 +217,9 @@ static gchar *types[] =
   "FALSE",
   "TRUE",
   "FILE ",
-  "GtkColorSelection ",
-  "GtkWidget ",
-  "GtkButton ",
+  "CtkColorSelection ",
+  "CtkWidget ",
+  "CtkButton ",
   "GdkColor ",
   "GdkRectangle ",
   "GdkEventExpose ",
@@ -228,64 +228,64 @@ static gchar *types[] =
   "GdkPixbuf ",
   "GError",
   "size_t",
-  "GtkAboutDialog ",
-  "GtkAction ",
-  "GtkActionEntry ",
-  "GtkRadioActionEntry ",
-  "GtkIconFactory ",
-  "GtkIconSet ",
-  "GtkTextBuffer ",
-  "GtkStatusbar ",
-  "GtkTextIter ",
-  "GtkTextMark ",
+  "CtkAboutDialog ",
+  "CtkAction ",
+  "CtkActionEntry ",
+  "CtkRadioActionEntry ",
+  "CtkIconFactory ",
+  "CtkIconSet ",
+  "CtkTextBuffer ",
+  "CtkStatusbar ",
+  "CtkTextIter ",
+  "CtkTextMark ",
   "GdkEventWindowState ",
-  "GtkActionGroup ",
-  "GtkUIManager ",
-  "GtkRadioAction ",
-  "GtkActionClass ",
-  "GtkToggleActionEntry ",
-  "GtkAssistant ",
-  "GtkBuilder ",
-  "GtkSizeGroup ",
-  "GtkTreeModel ",
-  "GtkTreeSelection ",
+  "CtkActionGroup ",
+  "CtkUIManager ",
+  "CtkRadioAction ",
+  "CtkActionClass ",
+  "CtkToggleActionEntry ",
+  "CtkAssistant ",
+  "CtkBuilder ",
+  "CtkSizeGroup ",
+  "CtkTreeModel ",
+  "CtkTreeSelection ",
   "GdkDisplay ",
   "GdkScreen ",
   "GdkWindow ",
   "GdkEventButton ",
   "GdkCursor ",
-  "GtkTreeIter ",
-  "GtkTreeViewColumn ",
+  "CtkTreeIter ",
+  "CtkTreeViewColumn ",
   "GdkDisplayManager ",
-  "GtkClipboard ",
-  "GtkIconSize ",
-  "GtkImage ",
+  "CtkClipboard ",
+  "CtkIconSize ",
+  "CtkImage ",
   "GdkDragContext ",
-  "GtkSelectionData ",
-  "GtkDialog ",
-  "GtkMenuItem ",
-  "GtkListStore ",
-  "GtkCellLayout ",
-  "GtkCellRenderer ",
-  "GtkTreePath ",
-  "GtkTreeStore ",
-  "GtkEntry ",
-  "GtkEditable ",
-  "GtkEditableInterface ",
+  "CtkSelectionData ",
+  "CtkDialog ",
+  "CtkMenuItem ",
+  "CtkListStore ",
+  "CtkCellLayout ",
+  "CtkCellRenderer ",
+  "CtkTreePath ",
+  "CtkTreeStore ",
+  "CtkEntry ",
+  "CtkEditable ",
+  "CtkEditableInterface ",
   "GdkPixmap ",
   "GdkEventConfigure ",
   "GdkEventMotion ",
   "GdkModifierType ",
-  "GtkEntryCompletion ",
-  "GtkToolItem ",
+  "CtkEntryCompletion ",
+  "CtkToolItem ",
   "GDir ",
-  "GtkIconView ",
-  "GtkCellRendererText ",
-  "GtkContainer ",
-  "GtkAccelGroup ",
-  "GtkPaned ",
-  "GtkPrintOperation ",
-  "GtkPrintContext ",
+  "CtkIconView ",
+  "CtkCellRendererText ",
+  "CtkContainer ",
+  "CtkAccelGroup ",
+  "CtkPaned ",
+  "CtkPrintOperation ",
+  "CtkPrintContext ",
   "cairo_t ",
   "PangoLayout "
   "PangoFontDescription ",
@@ -293,21 +293,21 @@ static gchar *types[] =
   "PangoMatrix ",
   "PangoContext ",
   "PangoLayout ",
-  "GtkTable ",
-  "GtkToggleButton ",
+  "CtkTable ",
+  "CtkToggleButton ",
   "GString ",
-  "GtkIconSize ",
-  "GtkTreeView ",
-  "GtkTextTag ",
+  "CtkIconSize ",
+  "CtkTreeView ",
+  "CtkTextTag ",
   "GdkEvent ",
   "GdkEventKey ",
-  "GtkTextView ",
+  "CtkTextView ",
   "GdkEventVisibility ",
   "GdkBitmap ",
-  "GtkTextChildAnchor ",
+  "CtkTextChildAnchor ",
   "GArray ",
-  "GtkCellEditable ",
-  "GtkCellRendererToggle ",
+  "CtkCellEditable ",
+  "CtkCellRendererToggle ",
   NULL
 };
 
@@ -462,9 +462,9 @@ parse_chars (gchar     *text,
 
 /* While not as cool as c-mode, this will do as a quick attempt at highlighting */
 static void
-fontify (GtkTextBuffer *source_buffer)
+fontify (CtkTextBuffer *source_buffer)
 {
-  GtkTextIter start_iter, next_iter, tmp_iter;
+  CtkTextIter start_iter, next_iter, tmp_iter;
   gint state;
   gchar *text;
   gchar *start_ptr, *end_ptr;
@@ -535,14 +535,14 @@ fontify (GtkTextBuffer *source_buffer)
     }
 }
 
-static GtkWidget *create_text (GtkWidget **text_view, gboolean is_source);
+static CtkWidget *create_text (CtkWidget **text_view, gboolean is_source);
 
 static void
 add_data_tab (const gchar *demoname)
 {
   gchar *resource_dir, *resource_name;
   gchar **resources;
-  GtkWidget *widget, *label;
+  CtkWidget *widget, *label;
   guint i;
 
   resource_dir = g_strconcat ("/", demoname, NULL);
@@ -575,8 +575,8 @@ add_data_tab (const gchar *demoname)
           if (g_utf8_validate (g_bytes_get_data (bytes, NULL), g_bytes_get_size (bytes), NULL))
             {
               /* Looks like it parses as text. Dump it into a textview then! */
-              GtkTextBuffer *buffer;
-              GtkWidget *textview;
+              CtkTextBuffer *buffer;
+              CtkWidget *textview;
 
               widget = create_text (&textview, FALSE);
               buffer = ctk_text_buffer_new (NULL);
@@ -623,8 +623,8 @@ void
 load_file (const gchar *demoname,
            const gchar *filename)
 {
-  GtkTextBuffer *info_buffer, *source_buffer;
-  GtkTextIter start, end;
+  CtkTextBuffer *info_buffer, *source_buffer;
+  CtkTextIter start, end;
   char *resource_filename;
   GError *err = NULL;
   int state = 0;
@@ -791,10 +791,10 @@ load_file (const gchar *demoname,
 }
 
 static void
-selection_cb (GtkTreeSelection *selection,
-              GtkTreeModel     *model)
+selection_cb (CtkTreeSelection *selection,
+              CtkTreeModel     *model)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   char *name;
   char *filename;
   char *title;
@@ -818,12 +818,12 @@ selection_cb (GtkTreeSelection *selection,
   g_free (filename);
 }
 
-static GtkWidget *
-create_text (GtkWidget **view,
+static CtkWidget *
+create_text (CtkWidget **view,
              gboolean    is_source)
 {
-  GtkWidget *scrolled_window;
-  GtkWidget *text_view;
+  CtkWidget *scrolled_window;
+  CtkWidget *text_view;
 
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);
   ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window),
@@ -862,7 +862,7 @@ create_text (GtkWidget **view,
 }
 
 static void
-populate_model (GtkTreeModel *model)
+populate_model (CtkTreeModel *model)
 {
   Demo *d = ctk_demos;
 
@@ -872,7 +872,7 @@ populate_model (GtkTreeModel *model)
   while (d->title)
     {
       Demo *children = d->children;
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       ctk_tree_store_append (CTK_TREE_STORE (model), &iter, NULL);
 
@@ -892,7 +892,7 @@ populate_model (GtkTreeModel *model)
 
       while (children->title)
         {
-          GtkTreeIter child_iter;
+          CtkTreeIter child_iter;
 
           ctk_tree_store_append (CTK_TREE_STORE (model), &child_iter, &iter);
 
@@ -914,7 +914,7 @@ populate_model (GtkTreeModel *model)
 static void
 startup (GApplication *app)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GMenuModel *appmenu;
   gchar *ids[] = { "appmenu", NULL };
 
@@ -929,13 +929,13 @@ startup (GApplication *app)
 }
 
 static void
-row_activated_cb (GtkWidget         *tree_view,
-                  GtkTreePath       *path,
-                  GtkTreeViewColumn *column)
+row_activated_cb (CtkWidget         *tree_view,
+                  CtkTreePath       *path,
+                  CtkTreeViewColumn *column)
 {
-  GtkTreeIter iter;
-  GtkWidget *window;
-  GtkTreeModel *model;
+  CtkTreeIter iter;
+  CtkWidget *window;
+  CtkTreeModel *model;
 
   window = ctk_widget_get_toplevel (tree_view);
   model = ctk_tree_view_get_model (CTK_TREE_VIEW (tree_view));
@@ -945,25 +945,25 @@ row_activated_cb (GtkWidget         *tree_view,
 }
 
 static void
-start_cb (GtkMenuItem *item, GtkWidget *scrollbar)
+start_cb (CtkMenuItem *item, CtkWidget *scrollbar)
 {
-  GtkAdjustment *adj;
+  CtkAdjustment *adj;
 
   adj = ctk_range_get_adjustment (CTK_RANGE (scrollbar));
   ctk_adjustment_set_value (adj, ctk_adjustment_get_lower (adj));
 }
 
 static void
-end_cb (GtkMenuItem *item, GtkWidget *scrollbar)
+end_cb (CtkMenuItem *item, CtkWidget *scrollbar)
 {
-  GtkAdjustment *adj;
+  CtkAdjustment *adj;
 
   adj = ctk_range_get_adjustment (CTK_RANGE (scrollbar));
   ctk_adjustment_set_value (adj, ctk_adjustment_get_upper (adj) - ctk_adjustment_get_page_size (adj));
 }
 
 static gboolean
-scrollbar_popup (GtkWidget *scrollbar, GtkWidget *menu)
+scrollbar_popup (CtkWidget *scrollbar, CtkWidget *menu)
 {
   ctk_menu_popup_at_pointer (CTK_MENU (menu), NULL);
 
@@ -973,16 +973,16 @@ scrollbar_popup (GtkWidget *scrollbar, GtkWidget *menu)
 static void
 activate (GApplication *app)
 {
-  GtkBuilder *builder;
-  GtkWindow *window;
-  GtkWidget *widget;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkBuilder *builder;
+  CtkWindow *window;
+  CtkWidget *widget;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
   GError *error = NULL;
-  GtkWidget *sw;
-  GtkWidget *scrollbar;
-  GtkWidget *menu;
-  GtkWidget *item;
+  CtkWidget *sw;
+  CtkWidget *scrollbar;
+  CtkWidget *menu;
+  CtkWidget *item;
 
   static GActionEntry win_entries[] = {
     { "run", activate_run, NULL, NULL, NULL }
@@ -996,21 +996,21 @@ activate (GApplication *app)
       exit (1);
     }
 
-  window = (GtkWindow *)ctk_builder_get_object (builder, "window");
+  window = (CtkWindow *)ctk_builder_get_object (builder, "window");
   ctk_application_add_window (CTK_APPLICATION (app), window);
   g_action_map_add_action_entries (G_ACTION_MAP (window),
                                    win_entries, G_N_ELEMENTS (win_entries),
                                    window);
 
-  notebook = (GtkWidget *)ctk_builder_get_object (builder, "notebook");
+  notebook = (CtkWidget *)ctk_builder_get_object (builder, "notebook");
 
-  info_view = (GtkWidget *)ctk_builder_get_object (builder, "info-textview");
-  source_view = (GtkWidget *)ctk_builder_get_object (builder, "source-textview");
-  headerbar = (GtkWidget *)ctk_builder_get_object (builder, "headerbar");
-  treeview = (GtkWidget *)ctk_builder_get_object (builder, "treeview");
+  info_view = (CtkWidget *)ctk_builder_get_object (builder, "info-textview");
+  source_view = (CtkWidget *)ctk_builder_get_object (builder, "source-textview");
+  headerbar = (CtkWidget *)ctk_builder_get_object (builder, "headerbar");
+  treeview = (CtkWidget *)ctk_builder_get_object (builder, "treeview");
   model = ctk_tree_view_get_model (CTK_TREE_VIEW (treeview));
 
-  sw = (GtkWidget *)ctk_builder_get_object (builder, "source-scrolledwindow");
+  sw = (CtkWidget *)ctk_builder_get_object (builder, "source-scrolledwindow");
   scrollbar = ctk_scrolled_window_get_vscrollbar (CTK_SCROLLED_WINDOW (sw));
 
   menu = ctk_menu_new ();
@@ -1033,7 +1033,7 @@ activate (GApplication *app)
 
   g_signal_connect (treeview, "row-activated", G_CALLBACK (row_activated_cb), model);
 
-  widget = (GtkWidget *)ctk_builder_get_object (builder, "treeview-selection");
+  widget = (CtkWidget *)ctk_builder_get_object (builder, "treeview-selection");
   g_signal_connect (widget, "changed", G_CALLBACK (selection_cb), model);
 
   ctk_tree_model_get_iter_first (ctk_tree_view_get_model (CTK_TREE_VIEW (treeview)), &iter);
@@ -1085,7 +1085,7 @@ command_line (GApplication            *app,
   gboolean list = FALSE;
   Demo *d, *c;
   GDoDemoFunc func = 0;
-  GtkWidget *window, *demo;
+  CtkWidget *window, *demo;
 
   activate (app);
 
@@ -1173,7 +1173,7 @@ local_options (GApplication *app,
 int
 main (int argc, char **argv)
 {
-  GtkApplication *app;
+  CtkApplication *app;
   static GActionEntry app_entries[] = {
     { "about", activate_about, NULL, NULL, NULL },
     { "quit", activate_quit, NULL, NULL, NULL },

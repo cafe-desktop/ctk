@@ -192,7 +192,7 @@ gdk_frame_clock_class_init (GdkFrameClockClass *klass)
    * application processing of the frame. The frame is
    * repainted. GDK normally handles this internally and
    * produces expose events, which are turned into GTK+
-   * #GtkWidget::draw signals.
+   * #CtkWidget::draw signals.
    */
   signals[PAINT] =
     g_signal_new (g_intern_static_string ("paint"),

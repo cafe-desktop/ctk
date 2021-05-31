@@ -32,14 +32,14 @@
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkSwitchAccessible, ctk_switch_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkSwitchAccessible, ctk_switch_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static AtkStateSet *
 ctk_switch_accessible_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_switch_accessible_parent_class)->ref_state_set (accessible);
 
@@ -54,7 +54,7 @@ ctk_switch_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-ctk_switch_accessible_class_init (GtkSwitchAccessibleClass *klass)
+ctk_switch_accessible_class_init (CtkSwitchAccessibleClass *klass)
 {
   AtkObjectClass *atk_class = ATK_OBJECT_CLASS (klass);
 
@@ -62,7 +62,7 @@ ctk_switch_accessible_class_init (GtkSwitchAccessibleClass *klass)
 }
 
 static void
-ctk_switch_accessible_init (GtkSwitchAccessible *self)
+ctk_switch_accessible_init (CtkSwitchAccessible *self)
 {
 }
 
@@ -103,8 +103,8 @@ static gboolean
 ctk_switch_action_do_action (AtkAction *action,
                              gint       i)
 {
-  GtkSwitch *sw;
-  GtkWidget *widget;
+  CtkSwitch *sw;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)

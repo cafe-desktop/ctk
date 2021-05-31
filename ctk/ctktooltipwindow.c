@@ -41,48 +41,48 @@
 
 #define MAX_TOOLTIP_LINE_WIDTH  70
 
-struct _GtkTooltipWindow
+struct _CtkTooltipWindow
 {
-  GtkWindow parent_type;
+  CtkWindow parent_type;
 
-  GtkWidget *box;
-  GtkWidget *image;
-  GtkWidget *label;
-  GtkWidget *custom_widget;
+  CtkWidget *box;
+  CtkWidget *image;
+  CtkWidget *label;
+  CtkWidget *custom_widget;
 };
 
-struct _GtkTooltipWindowClass
+struct _CtkTooltipWindowClass
 {
-  GtkWindowClass parent_class;
+  CtkWindowClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkTooltipWindow, ctk_tooltip_window, CTK_TYPE_WINDOW)
+G_DEFINE_TYPE (CtkTooltipWindow, ctk_tooltip_window, CTK_TYPE_WINDOW)
 
 static void
-ctk_tooltip_window_class_init (GtkTooltipWindowClass *klass)
+ctk_tooltip_window_class_init (CtkTooltipWindowClass *klass)
 {
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_css_name (widget_class, I_("tooltip"));
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_TOOL_TIP);
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctktooltipwindow.ui");
 
-  ctk_widget_class_bind_template_child (widget_class, GtkTooltipWindow, box);
-  ctk_widget_class_bind_template_child (widget_class, GtkTooltipWindow, image);
-  ctk_widget_class_bind_template_child (widget_class, GtkTooltipWindow, label);
+  ctk_widget_class_bind_template_child (widget_class, CtkTooltipWindow, box);
+  ctk_widget_class_bind_template_child (widget_class, CtkTooltipWindow, image);
+  ctk_widget_class_bind_template_child (widget_class, CtkTooltipWindow, label);
 }
 
 static void
-ctk_tooltip_window_init (GtkTooltipWindow *self)
+ctk_tooltip_window_init (CtkTooltipWindow *self)
 {
-  GtkWindow *window = CTK_WINDOW (self);
+  CtkWindow *window = CTK_WINDOW (self);
 
   ctk_widget_init_template (CTK_WIDGET (self));
 
   _ctk_window_request_csd (window);
 }
 
-GtkWidget *
+CtkWidget *
 ctk_tooltip_window_new (void)
 {
   return g_object_new (CTK_TYPE_TOOLTIP_WINDOW,
@@ -91,7 +91,7 @@ ctk_tooltip_window_new (void)
 }
 
 void
-ctk_tooltip_window_set_label_markup (GtkTooltipWindow *window,
+ctk_tooltip_window_set_label_markup (CtkTooltipWindow *window,
                                      const char       *markup)
 {
   if (markup != NULL)
@@ -106,7 +106,7 @@ ctk_tooltip_window_set_label_markup (GtkTooltipWindow *window,
 }
 
 void
-ctk_tooltip_window_set_label_text (GtkTooltipWindow *window,
+ctk_tooltip_window_set_label_text (CtkTooltipWindow *window,
                                    const char       *text)
 {
   if (text != NULL)
@@ -121,7 +121,7 @@ ctk_tooltip_window_set_label_text (GtkTooltipWindow *window,
 }
 
 void
-ctk_tooltip_window_set_image_icon (GtkTooltipWindow *window,
+ctk_tooltip_window_set_image_icon (CtkTooltipWindow *window,
                                    GdkPixbuf        *pixbuf)
 {
 
@@ -137,9 +137,9 @@ ctk_tooltip_window_set_image_icon (GtkTooltipWindow *window,
 }
 
 void
-ctk_tooltip_window_set_image_icon_from_stock (GtkTooltipWindow *window,
+ctk_tooltip_window_set_image_icon_from_stock (CtkTooltipWindow *window,
                                               const char       *stock_id,
-                                              GtkIconSize       icon_size)
+                                              CtkIconSize       icon_size)
 {
   if (stock_id != NULL)
     {
@@ -156,9 +156,9 @@ ctk_tooltip_window_set_image_icon_from_stock (GtkTooltipWindow *window,
 }
 
 void
-ctk_tooltip_window_set_image_icon_from_name (GtkTooltipWindow *window,
+ctk_tooltip_window_set_image_icon_from_name (CtkTooltipWindow *window,
                                              const char       *icon_name,
-                                             GtkIconSize       icon_size)
+                                             CtkIconSize       icon_size)
 {
   if (icon_name)
     {
@@ -172,9 +172,9 @@ ctk_tooltip_window_set_image_icon_from_name (GtkTooltipWindow *window,
 }
 
 void
-ctk_tooltip_window_set_image_icon_from_gicon (GtkTooltipWindow *window,
+ctk_tooltip_window_set_image_icon_from_gicon (CtkTooltipWindow *window,
                                               GIcon            *gicon,
-                                              GtkIconSize       icon_size)
+                                              CtkIconSize       icon_size)
 {
   if (gicon != NULL)
     {
@@ -188,8 +188,8 @@ ctk_tooltip_window_set_image_icon_from_gicon (GtkTooltipWindow *window,
 }
 
 void
-ctk_tooltip_window_set_custom_widget (GtkTooltipWindow *window,
-                                      GtkWidget        *custom_widget)
+ctk_tooltip_window_set_custom_widget (CtkTooltipWindow *window,
+                                      CtkWidget        *custom_widget)
 {
   /* No need to do anything if the custom widget stays the same */
   if (window->custom_widget == custom_widget)
@@ -197,7 +197,7 @@ ctk_tooltip_window_set_custom_widget (GtkTooltipWindow *window,
 
   if (window->custom_widget != NULL)
     {
-      GtkWidget *custom = window->custom_widget;
+      CtkWidget *custom = window->custom_widget;
 
       /* Note: We must reset window->custom_widget first,
        * since ctk_container_remove() will recurse into

@@ -24,15 +24,15 @@
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorSwatchAccessible, _ctk_color_swatch_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (CtkColorSwatchAccessible, _ctk_color_swatch_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static void
-state_changed_cb (GtkWidget     *widget,
-                  GtkStateFlags  previous_flags)
+state_changed_cb (CtkWidget     *widget,
+                  CtkStateFlags  previous_flags)
 {
   AtkObject *accessible;
-  GtkStateFlags flags;
+  CtkStateFlags flags;
   gboolean was_selected;
   gboolean selected;
 
@@ -63,7 +63,7 @@ ctk_color_swatch_accessible_initialize (AtkObject *obj,
 static AtkStateSet *
 ctk_color_swatch_accessible_ref_state_set (AtkObject *accessible)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
   AtkStateSet *state_set;
 
   state_set = ATK_OBJECT_CLASS (_ctk_color_swatch_accessible_parent_class)->ref_state_set (accessible);
@@ -82,7 +82,7 @@ static void
 ctk_color_swatch_accessible_notify_ctk (GObject    *obj,
                                         GParamSpec *pspec)
 {
-  GtkWidget *widget = CTK_WIDGET (obj);
+  CtkWidget *widget = CTK_WIDGET (obj);
   AtkObject *atk_obj = ctk_widget_get_accessible (widget);
 
   if (strcmp (pspec->name, "selectable") == 0)
@@ -97,10 +97,10 @@ ctk_color_swatch_accessible_notify_ctk (GObject    *obj,
 }
 
 static void
-_ctk_color_swatch_accessible_class_init (GtkColorSwatchAccessibleClass *klass)
+_ctk_color_swatch_accessible_class_init (CtkColorSwatchAccessibleClass *klass)
 {
   AtkObjectClass *atk_class = ATK_OBJECT_CLASS (klass);
-  GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass *)klass;
+  CtkWidgetAccessibleClass *widget_class = (CtkWidgetAccessibleClass *)klass;
 
   atk_class->initialize = ctk_color_swatch_accessible_initialize;
   atk_class->ref_state_set = ctk_color_swatch_accessible_ref_state_set;
@@ -109,7 +109,7 @@ _ctk_color_swatch_accessible_class_init (GtkColorSwatchAccessibleClass *klass)
 }
 
 static void
-_ctk_color_swatch_accessible_init (GtkColorSwatchAccessible *scale)
+_ctk_color_swatch_accessible_init (CtkColorSwatchAccessible *scale)
 {
 }
 
@@ -169,7 +169,7 @@ static gboolean
 ctk_color_swatch_accessible_do_action (AtkAction *action,
                                        gint       i)
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)

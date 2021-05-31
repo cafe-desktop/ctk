@@ -1,9 +1,9 @@
 <interface>
-  <template class="MyDialog2" parent="GtkDialog">
+  <template class="MyDialog2" parent="CtkDialog">
     <child internal-child="vbox">
-      <object class="GtkBox">
+      <object class="CtkBox">
         <child>
-          <object class="GtkLabel" id="content">
+          <object class="CtkLabel" id="content">
             <property name="visible">True</property>
             <property name="label">template content</property>
           </object>

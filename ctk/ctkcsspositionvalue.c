@@ -21,29 +21,29 @@
 
 #include "ctkcssnumbervalueprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
-  GtkCssValue *x;
-  GtkCssValue *y;
+  CtkCssValue *x;
+  CtkCssValue *y;
 };
 
 static void
-ctk_css_value_position_free (GtkCssValue *value)
+ctk_css_value_position_free (CtkCssValue *value)
 {
   _ctk_css_value_unref (value->x);
   _ctk_css_value_unref (value->y);
 
-  g_slice_free (GtkCssValue, value);
+  g_slice_free (CtkCssValue, value);
 }
 
-static GtkCssValue *
-ctk_css_value_position_compute (GtkCssValue             *position,
+static CtkCssValue *
+ctk_css_value_position_compute (CtkCssValue             *position,
                                 guint                    property_id,
-                                GtkStyleProviderPrivate *provider,
-                                GtkCssStyle             *style,
-                                GtkCssStyle             *parent_style)
+                                CtkStyleProviderPrivate *provider,
+                                CtkCssStyle             *style,
+                                CtkCssStyle             *parent_style)
 {
-  GtkCssValue *x, *y;
+  CtkCssValue *x, *y;
 
   x = _ctk_css_value_compute (position->x, property_id, provider, style, parent_style);
   y = _ctk_css_value_compute (position->y, property_id, provider, style, parent_style);
@@ -58,20 +58,20 @@ ctk_css_value_position_compute (GtkCssValue             *position,
 }
 
 static gboolean
-ctk_css_value_position_equal (const GtkCssValue *position1,
-                              const GtkCssValue *position2)
+ctk_css_value_position_equal (const CtkCssValue *position1,
+                              const CtkCssValue *position2)
 {
   return _ctk_css_value_equal (position1->x, position2->x)
       && _ctk_css_value_equal (position1->y, position2->y);
 }
 
-static GtkCssValue *
-ctk_css_value_position_transition (GtkCssValue *start,
-                                   GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_position_transition (CtkCssValue *start,
+                                   CtkCssValue *end,
                                    guint        property_id,
                                    double       progress)
 {
-  GtkCssValue *x, *y;
+  CtkCssValue *x, *y;
 
   x = _ctk_css_value_transition (start->x, end->x, property_id, progress);
   if (x == NULL)
@@ -87,18 +87,18 @@ ctk_css_value_position_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_position_print (const GtkCssValue *position,
+ctk_css_value_position_print (const CtkCssValue *position,
                               GString           *string)
 {
   struct {
     const char *x_name;
     const char *y_name;
-    GtkCssValue *number;
+    CtkCssValue *number;
   } values[] = { 
     { "left",   "top",    _ctk_css_number_value_new (0, CTK_CSS_PERCENT) },
     { "right",  "bottom", _ctk_css_number_value_new (100, CTK_CSS_PERCENT) }
   };
-  GtkCssValue *center = _ctk_css_number_value_new (50, CTK_CSS_PERCENT);
+  CtkCssValue *center = _ctk_css_number_value_new (50, CTK_CSS_PERCENT);
   guint i;
 
   if (_ctk_css_value_equal (position->x, center))
@@ -149,7 +149,7 @@ done:
   _ctk_css_value_unref (center);
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_POSITION = {
+static const CtkCssValueClass CTK_CSS_VALUE_POSITION = {
   ctk_css_value_position_free,
   ctk_css_value_position_compute,
   ctk_css_value_position_equal,
@@ -157,21 +157,21 @@ static const GtkCssValueClass CTK_CSS_VALUE_POSITION = {
   ctk_css_value_position_print
 };
 
-GtkCssValue *
-_ctk_css_position_value_new (GtkCssValue *x,
-                             GtkCssValue *y)
+CtkCssValue *
+_ctk_css_position_value_new (CtkCssValue *x,
+                             CtkCssValue *y)
 {
-  GtkCssValue *result;
+  CtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_POSITION);
+  result = _ctk_css_value_new (CtkCssValue, &CTK_CSS_VALUE_POSITION);
   result->x = x;
   result->y = y;
 
   return result;
 }
 
-static GtkCssValue *
-position_value_parse (GtkCssParser *parser, gboolean try)
+static CtkCssValue *
+position_value_parse (CtkCssParser *parser, gboolean try)
 {
   static const struct {
     const char *name;
@@ -187,8 +187,8 @@ position_value_parse (GtkCssParser *parser, gboolean try)
     { NULL    ,   0, TRUE,  FALSE }, /* used for numbers */
     { NULL    ,  50, TRUE,  TRUE  }  /* used for no value */
   };
-  GtkCssValue *x, *y;
-  GtkCssValue **missing;
+  CtkCssValue *x, *y;
+  CtkCssValue **missing;
   guint first, second;
 
   for (first = 0; names[first].name != NULL; first++)
@@ -279,20 +279,20 @@ position_value_parse (GtkCssParser *parser, gboolean try)
   return _ctk_css_position_value_new (x, y);
 }
 
-GtkCssValue *
-_ctk_css_position_value_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_position_value_parse (CtkCssParser *parser)
 {
   return position_value_parse (parser, FALSE);
 }
 
-GtkCssValue *
-_ctk_css_position_value_try_parse (GtkCssParser *parser)
+CtkCssValue *
+_ctk_css_position_value_try_parse (CtkCssParser *parser)
 {
   return position_value_parse (parser, TRUE);
 }
 
 double
-_ctk_css_position_value_get_x (const GtkCssValue *position,
+_ctk_css_position_value_get_x (const CtkCssValue *position,
                                double             one_hundred_percent)
 {
   g_return_val_if_fail (position != NULL, 0.0);
@@ -302,7 +302,7 @@ _ctk_css_position_value_get_x (const GtkCssValue *position,
 }
 
 double
-_ctk_css_position_value_get_y (const GtkCssValue *position,
+_ctk_css_position_value_get_y (const CtkCssValue *position,
                                double             one_hundred_percent)
 {
   g_return_val_if_fail (position != NULL, 0.0);

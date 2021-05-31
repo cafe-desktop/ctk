@@ -38,7 +38,7 @@
 G_BEGIN_DECLS
 
 /**
- * GtkDestDefaults:
+ * CtkDestDefaults:
  * @CTK_DEST_DEFAULT_MOTION: If set for a widget, GTK+, during a drag over this
  *   widget will check if the drag matches this widget’s list of possible targets
  *   and actions.
@@ -55,7 +55,7 @@ G_BEGIN_DECLS
  * @CTK_DEST_DEFAULT_ALL: If set, specifies that all default actions should
  *   be taken.
  *
- * The #GtkDestDefaults enumeration specifies the various
+ * The #CtkDestDefaults enumeration specifies the various
  * types of action that will be taken on behalf
  * of the user for a drag destination site.
  */
@@ -64,45 +64,45 @@ typedef enum {
   CTK_DEST_DEFAULT_HIGHLIGHT  = 1 << 1,
   CTK_DEST_DEFAULT_DROP       = 1 << 2,
   CTK_DEST_DEFAULT_ALL        = 0x07
-} GtkDestDefaults;
+} CtkDestDefaults;
 
 GDK_AVAILABLE_IN_ALL
-void ctk_drag_dest_set   (GtkWidget            *widget,
-                          GtkDestDefaults       flags,
-                          const GtkTargetEntry *targets,
+void ctk_drag_dest_set   (CtkWidget            *widget,
+                          CtkDestDefaults       flags,
+                          const CtkTargetEntry *targets,
                           gint                  n_targets,
                           GdkDragAction         actions);
 
 GDK_DEPRECATED_IN_3_22
-void ctk_drag_dest_set_proxy (GtkWidget      *widget,
+void ctk_drag_dest_set_proxy (CtkWidget      *widget,
                               GdkWindow      *proxy_window,
                               GdkDragProtocol protocol,
                               gboolean        use_coordinates);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_drag_dest_unset (GtkWidget          *widget);
+void ctk_drag_dest_unset (CtkWidget          *widget);
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom        ctk_drag_dest_find_target     (GtkWidget      *widget,
+GdkAtom        ctk_drag_dest_find_target     (CtkWidget      *widget,
                                               GdkDragContext *context,
-                                              GtkTargetList  *target_list);
+                                              CtkTargetList  *target_list);
 GDK_AVAILABLE_IN_ALL
-GtkTargetList* ctk_drag_dest_get_target_list (GtkWidget      *widget);
+CtkTargetList* ctk_drag_dest_get_target_list (CtkWidget      *widget);
 GDK_AVAILABLE_IN_ALL
-void           ctk_drag_dest_set_target_list (GtkWidget      *widget,
-                                              GtkTargetList  *target_list);
+void           ctk_drag_dest_set_target_list (CtkWidget      *widget,
+                                              CtkTargetList  *target_list);
 GDK_AVAILABLE_IN_ALL
-void           ctk_drag_dest_add_text_targets  (GtkWidget    *widget);
+void           ctk_drag_dest_add_text_targets  (CtkWidget    *widget);
 GDK_AVAILABLE_IN_ALL
-void           ctk_drag_dest_add_image_targets (GtkWidget    *widget);
+void           ctk_drag_dest_add_image_targets (CtkWidget    *widget);
 GDK_AVAILABLE_IN_ALL
-void           ctk_drag_dest_add_uri_targets   (GtkWidget    *widget);
+void           ctk_drag_dest_add_uri_targets   (CtkWidget    *widget);
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_drag_dest_set_track_motion  (GtkWidget *widget,
+void           ctk_drag_dest_set_track_motion  (CtkWidget *widget,
                                                 gboolean   track_motion);
 GDK_AVAILABLE_IN_ALL
-gboolean       ctk_drag_dest_get_track_motion  (GtkWidget *widget);
+gboolean       ctk_drag_dest_get_track_motion  (CtkWidget *widget);
 
 
 G_END_DECLS

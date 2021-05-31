@@ -34,39 +34,39 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_VSCALE            (ctk_vscale_get_type ())
-#define CTK_VSCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VSCALE, GtkVScale))
-#define CTK_VSCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VSCALE, GtkVScaleClass))
+#define CTK_VSCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VSCALE, CtkVScale))
+#define CTK_VSCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VSCALE, CtkVScaleClass))
 #define CTK_IS_VSCALE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VSCALE))
 #define CTK_IS_VSCALE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VSCALE))
-#define CTK_VSCALE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VSCALE, GtkVScaleClass))
+#define CTK_VSCALE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VSCALE, CtkVScaleClass))
 
 
-typedef struct _GtkVScale       GtkVScale;
-typedef struct _GtkVScaleClass  GtkVScaleClass;
+typedef struct _CtkVScale       CtkVScale;
+typedef struct _CtkVScaleClass  CtkVScaleClass;
 
 /**
- * GtkVScale:
+ * CtkVScale:
  *
- * The #GtkVScale struct contains private data only, and
+ * The #CtkVScale struct contains private data only, and
  * should be accessed using the functions below.
  */
-struct _GtkVScale
+struct _CtkVScale
 {
-  GtkScale scale;
+  CtkScale scale;
 };
 
-struct _GtkVScaleClass
+struct _CtkVScaleClass
 {
-  GtkScaleClass parent_class;
+  CtkScaleClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType      ctk_vscale_get_type       (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_scale_new)
-GtkWidget* ctk_vscale_new            (GtkAdjustment *adjustment);
+CtkWidget* ctk_vscale_new            (CtkAdjustment *adjustment);
 GDK_DEPRECATED_IN_3_2_FOR(ctk_scale_new_with_range)
-GtkWidget* ctk_vscale_new_with_range (gdouble        min,
+CtkWidget* ctk_vscale_new_with_range (gdouble        min,
                                       gdouble        max,
                                       gdouble        step);
 

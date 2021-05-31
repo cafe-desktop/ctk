@@ -27,11 +27,11 @@
 #include <ctk/ctkwindow.h>
 
 #define CTK_TYPE_INSPECTOR_WINDOW            (ctk_inspector_window_get_type())
-#define CTK_INSPECTOR_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindow))
-#define CTK_INSPECTOR_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindowClass))
+#define CTK_INSPECTOR_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_WINDOW, CtkInspectorWindow))
+#define CTK_INSPECTOR_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_WINDOW, CtkInspectorWindowClass))
 #define CTK_INSPECTOR_IS_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_WINDOW))
 #define CTK_INSPECTOR_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_WINDOW))
-#define CTK_INSPECTOR_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindowClass))
+#define CTK_INSPECTOR_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_WINDOW, CtkInspectorWindowClass))
 
 
 #define TREE_TEXT_SCALE 0.8
@@ -39,39 +39,39 @@
 
 typedef struct
 {
-  GtkWindow parent;
+  CtkWindow parent;
 
-  GtkWidget *top_stack;
-  GtkWidget *object_stack;
-  GtkWidget *button_stack;
-  GtkWidget *object_tree;
-  GtkWidget *object_id;
-  GtkWidget *object_details;
-  GtkWidget *object_buttons;
-  GtkWidget *object_details_button;
-  GtkWidget *select_object;
-  GtkWidget *object_start_stack;
-  GtkWidget *object_center_stack;
-  GtkWidget *object_title;
-  GtkWidget *prop_list;
-  GtkWidget *child_prop_list;
-  GtkWidget *selector;
-  GtkWidget *signals_list;
-  GtkWidget *style_prop_list;
-  GtkWidget *classes_list;
-  GtkWidget *widget_css_node_tree;
-  GtkWidget *object_hierarchy;
-  GtkWidget *size_groups;
-  GtkWidget *data_list;
-  GtkWidget *actions;
-  GtkWidget *menu;
-  GtkWidget *misc_info;
-  GtkWidget *gestures;
-  GtkWidget *magnifier;
+  CtkWidget *top_stack;
+  CtkWidget *object_stack;
+  CtkWidget *button_stack;
+  CtkWidget *object_tree;
+  CtkWidget *object_id;
+  CtkWidget *object_details;
+  CtkWidget *object_buttons;
+  CtkWidget *object_details_button;
+  CtkWidget *select_object;
+  CtkWidget *object_start_stack;
+  CtkWidget *object_center_stack;
+  CtkWidget *object_title;
+  CtkWidget *prop_list;
+  CtkWidget *child_prop_list;
+  CtkWidget *selector;
+  CtkWidget *signals_list;
+  CtkWidget *style_prop_list;
+  CtkWidget *classes_list;
+  CtkWidget *widget_css_node_tree;
+  CtkWidget *object_hierarchy;
+  CtkWidget *size_groups;
+  CtkWidget *data_list;
+  CtkWidget *actions;
+  CtkWidget *menu;
+  CtkWidget *misc_info;
+  CtkWidget *gestures;
+  CtkWidget *magnifier;
 
-  GtkWidget *invisible;
-  GtkWidget *selected_widget;
-  GtkWidget *flash_widget;
+  CtkWidget *invisible;
+  CtkWidget *selected_widget;
+  CtkWidget *flash_widget;
 
   GList *extra_pages;
 
@@ -80,30 +80,30 @@ typedef struct
   gint flash_count;
   gint flash_cnx;
 
-} GtkInspectorWindow;
+} CtkInspectorWindow;
 
 typedef struct
 {
-  GtkWindowClass parent;
-} GtkInspectorWindowClass;
+  CtkWindowClass parent;
+} CtkInspectorWindowClass;
 
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_window_get_type    (void);
-GtkWidget *ctk_inspector_window_new         (void);
+CtkWidget *ctk_inspector_window_new         (void);
 
-void       ctk_inspector_flash_widget       (GtkInspectorWindow *iw,
-                                             GtkWidget          *widget);
-void       ctk_inspector_start_highlight    (GtkWidget          *widget);
-void       ctk_inspector_stop_highlight     (GtkWidget          *widget);
+void       ctk_inspector_flash_widget       (CtkInspectorWindow *iw,
+                                             CtkWidget          *widget);
+void       ctk_inspector_start_highlight    (CtkWidget          *widget);
+void       ctk_inspector_stop_highlight     (CtkWidget          *widget);
 
-void       ctk_inspector_on_inspect         (GtkWidget          *widget,
-                                             GtkInspectorWindow *iw);
+void       ctk_inspector_on_inspect         (CtkWidget          *widget,
+                                             CtkInspectorWindow *iw);
 
-void       ctk_inspector_window_select_widget_under_pointer (GtkInspectorWindow *iw);
+void       ctk_inspector_window_select_widget_under_pointer (CtkInspectorWindow *iw);
 
-void       ctk_inspector_window_rescan     (GtkWidget          *iw);
+void       ctk_inspector_window_rescan     (CtkWidget          *iw);
 
 G_END_DECLS
 

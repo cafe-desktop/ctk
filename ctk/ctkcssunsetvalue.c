@@ -23,26 +23,26 @@
 #include "ctkcssinitialvalueprivate.h"
 #include "ctkcssstylepropertyprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
 };
 
 static void
-ctk_css_value_unset_free (GtkCssValue *value)
+ctk_css_value_unset_free (CtkCssValue *value)
 {
   /* Can only happen if the unique value gets unreffed too often */
   g_assert_not_reached ();
 }
 
-static GtkCssValue *
-ctk_css_value_unset_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_unset_compute (CtkCssValue             *value,
                              guint                    property_id,
-                             GtkStyleProviderPrivate *provider,
-                             GtkCssStyle             *style,
-                             GtkCssStyle             *parent_style)
+                             CtkStyleProviderPrivate *provider,
+                             CtkCssStyle             *style,
+                             CtkCssStyle             *parent_style)
 {
-  GtkCssStyleProperty *property;
-  GtkCssValue *unset_value;
+  CtkCssStyleProperty *property;
+  CtkCssValue *unset_value;
   
   property = _ctk_css_style_property_lookup_by_id (property_id);
 
@@ -59,15 +59,15 @@ ctk_css_value_unset_compute (GtkCssValue             *value,
 }
 
 static gboolean
-ctk_css_value_unset_equal (const GtkCssValue *value1,
-                           const GtkCssValue *value2)
+ctk_css_value_unset_equal (const CtkCssValue *value1,
+                           const CtkCssValue *value2)
 {
   return TRUE;
 }
 
-static GtkCssValue *
-ctk_css_value_unset_transition (GtkCssValue *start,
-                                GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_unset_transition (CtkCssValue *start,
+                                CtkCssValue *end,
                                 guint        property_id,
                                 double       progress)
 {
@@ -75,13 +75,13 @@ ctk_css_value_unset_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_unset_print (const GtkCssValue *value,
+ctk_css_value_unset_print (const CtkCssValue *value,
                              GString           *string)
 {
   g_string_append (string, "unset");
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_UNSET = {
+static const CtkCssValueClass CTK_CSS_VALUE_UNSET = {
   ctk_css_value_unset_free,
   ctk_css_value_unset_compute,
   ctk_css_value_unset_equal,
@@ -89,9 +89,9 @@ static const GtkCssValueClass CTK_CSS_VALUE_UNSET = {
   ctk_css_value_unset_print
 };
 
-static GtkCssValue unset = { &CTK_CSS_VALUE_UNSET, 1 };
+static CtkCssValue unset = { &CTK_CSS_VALUE_UNSET, 1 };
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_unset_value_new (void)
 {
   return _ctk_css_value_ref (&unset);

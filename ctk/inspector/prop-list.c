@@ -56,35 +56,35 @@ enum
   PROP_SEARCH_ENTRY
 };
 
-struct _GtkInspectorPropListPrivate
+struct _CtkInspectorPropListPrivate
 {
   GObject *object;
-  GtkListStore *model;
+  CtkListStore *model;
   GHashTable *prop_iters;
   gulong notify_handler_id;
-  GtkInspectorObjectTree *object_tree;
+  CtkInspectorObjectTree *object_tree;
   gboolean child_properties;
-  GtkTreeViewColumn *name_column;
-  GtkTreeViewColumn *attribute_column;
-  GtkWidget *tree;
-  GtkWidget *search_entry;
-  GtkWidget *search_stack;
+  CtkTreeViewColumn *name_column;
+  CtkTreeViewColumn *attribute_column;
+  CtkWidget *tree;
+  CtkWidget *search_entry;
+  CtkWidget *search_stack;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorPropList, ctk_inspector_prop_list, CTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorPropList, ctk_inspector_prop_list, CTK_TYPE_BOX)
 
 static void
-search_close_clicked (GtkWidget            *button,
-                      GtkInspectorPropList *pl)
+search_close_clicked (CtkWidget            *button,
+                      CtkInspectorPropList *pl)
 {
   ctk_entry_set_text (CTK_ENTRY (pl->priv->search_entry), "");
   ctk_stack_set_visible_child_name (CTK_STACK (pl->priv->search_stack), "title");
 }
 
 static gboolean
-key_press_event (GtkWidget            *window,
+key_press_event (CtkWidget            *window,
                  GdkEvent             *event,
-                 GtkInspectorPropList *pl)
+                 CtkInspectorPropList *pl)
 {
   if (!ctk_widget_get_mapped (CTK_WIDGET (pl)))
     return GDK_EVENT_PROPAGATE;
@@ -98,8 +98,8 @@ key_press_event (GtkWidget            *window,
 }
 
 static void
-hierarchy_changed (GtkWidget *widget,
-                   GtkWidget *previous_toplevel)
+hierarchy_changed (CtkWidget *widget,
+                   CtkWidget *previous_toplevel)
 {
   if (previous_toplevel)
     g_signal_handlers_disconnect_by_func (previous_toplevel, key_press_event, widget);
@@ -108,7 +108,7 @@ hierarchy_changed (GtkWidget *widget,
 }
 
 static void
-ctk_inspector_prop_list_init (GtkInspectorPropList *pl)
+ctk_inspector_prop_list_init (CtkInspectorPropList *pl)
 {
   pl->priv = ctk_inspector_prop_list_get_instance_private (pl);
   ctk_widget_init_template (CTK_WIDGET (pl));
@@ -127,7 +127,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
+  CtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
 
   switch (param_id)
     {
@@ -155,7 +155,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
+  CtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
 
   switch (param_id)
     {
@@ -178,14 +178,14 @@ set_property (GObject      *object,
 }
 
 static void
-show_object (GtkInspectorPropEditor *editor,
+show_object (CtkInspectorPropEditor *editor,
              GObject                *object,
              const gchar            *name,
              const gchar            *tab,
-             GtkInspectorPropList   *pl)
+             CtkInspectorPropList   *pl)
 {
-  GtkTreeIter iter;
-  GtkWidget *popover;
+  CtkTreeIter iter;
+  CtkWidget *popover;
 
   popover = ctk_widget_get_ancestor (CTK_WIDGET (editor), CTK_TYPE_POPOVER);
   ctk_widget_hide (popover);
@@ -202,21 +202,21 @@ show_object (GtkInspectorPropEditor *editor,
     }
   else
     {
-      g_warning ("GtkInspector: couldn't find the widget in the tree");
+      g_warning ("CtkInspector: couldn't find the widget in the tree");
     }
 }
 
 static void
-row_activated (GtkTreeView *tv,
-               GtkTreePath *path,
-               GtkTreeViewColumn *col,
-               GtkInspectorPropList *pl)
+row_activated (CtkTreeView *tv,
+               CtkTreePath *path,
+               CtkTreeViewColumn *col,
+               CtkInspectorPropList *pl)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GdkRectangle rect;
   gchar *name;
-  GtkWidget *editor;
-  GtkWidget *popover;
+  CtkWidget *editor;
+  CtkWidget *popover;
 
   ctk_tree_model_get_iter (CTK_TREE_MODEL (pl->priv->model), &iter, path);
   ctk_tree_model_get (CTK_TREE_MODEL (pl->priv->model), &iter, COLUMN_NAME, &name, -1);
@@ -243,12 +243,12 @@ row_activated (GtkTreeView *tv,
   g_free (name);
 }
 
-static void cleanup_object (GtkInspectorPropList *pl);
+static void cleanup_object (CtkInspectorPropList *pl);
 
 static void
 finalize (GObject *object)
 {
-  GtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
+  CtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
 
   cleanup_object (pl);
   g_hash_table_unref (pl->priv->prop_iters);
@@ -259,7 +259,7 @@ finalize (GObject *object)
 static void
 constructed (GObject *object)
 {
-  GtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
+  CtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
 
   pl->priv->search_stack = ctk_widget_get_parent (pl->priv->search_entry);
 
@@ -271,10 +271,10 @@ constructed (GObject *object)
 }
 
 static void
-ctk_inspector_prop_list_class_init (GtkInspectorPropListClass *klass)
+ctk_inspector_prop_list_class_init (CtkInspectorPropListClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->finalize = finalize;
   object_class->get_property = get_property;
@@ -293,9 +293,9 @@ ctk_inspector_prop_list_class_init (GtkInspectorPropListClass *klass)
                            CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/prop-list.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorPropList, model);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorPropList, attribute_column);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorPropList, tree);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorPropList, model);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorPropList, attribute_column);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorPropList, tree);
   ctk_widget_class_bind_template_callback (widget_class, row_activated);
   ctk_widget_class_bind_template_callback (widget_class, search_close_clicked);
   ctk_widget_class_bind_template_callback (widget_class, hierarchy_changed);
@@ -404,8 +404,8 @@ strdup_value_contents (const GValue  *value,
 }
 
 static void
-ctk_inspector_prop_list_update_prop (GtkInspectorPropList *pl,
-                                     GtkTreeIter          *iter,
+ctk_inspector_prop_list_update_prop (CtkInspectorPropList *pl,
+                                     CtkTreeIter          *iter,
                                      GParamSpec           *prop)
 {
   GValue gvalue = {0};
@@ -417,7 +417,7 @@ ctk_inspector_prop_list_update_prop (GtkInspectorPropList *pl,
   g_value_init (&gvalue, prop->value_type);
   if (pl->priv->child_properties)
     {
-      GtkWidget *parent;
+      CtkWidget *parent;
 
       parent = ctk_widget_get_parent (CTK_WIDGET (pl->priv->object));
       ctk_container_child_get_property (CTK_CONTAINER (parent),
@@ -432,7 +432,7 @@ ctk_inspector_prop_list_update_prop (GtkInspectorPropList *pl,
   if (CTK_IS_CELL_RENDERER (pl->priv->object))
     {
       gpointer *layout;
-      GtkCellArea *area;
+      CtkCellArea *area;
       gint column = -1;
 
       area = NULL;
@@ -470,9 +470,9 @@ ctk_inspector_prop_list_update_prop (GtkInspectorPropList *pl,
 static void
 ctk_inspector_prop_list_prop_changed_cb (GObject              *pspec,
                                          GParamSpec           *prop,
-                                         GtkInspectorPropList *pl)
+                                         CtkInspectorPropList *pl)
 {
-  GtkTreeIter *iter;
+  CtkTreeIter *iter;
 
   if (!pl->priv->object)
     return;
@@ -483,7 +483,7 @@ ctk_inspector_prop_list_prop_changed_cb (GObject              *pspec,
 }
 
 static void
-cleanup_object (GtkInspectorPropList *pl)
+cleanup_object (CtkInspectorPropList *pl)
 {
   if (pl->priv->object &&
       g_signal_handler_is_connected (pl->priv->object, pl->priv->notify_handler_id))
@@ -498,10 +498,10 @@ cleanup_object (GtkInspectorPropList *pl)
 }
 
 gboolean
-ctk_inspector_prop_list_set_object (GtkInspectorPropList *pl,
+ctk_inspector_prop_list_set_object (CtkInspectorPropList *pl,
                                     GObject              *object)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   GParamSpec **props;
   guint num_properties;
   guint i;
@@ -519,7 +519,7 @@ ctk_inspector_prop_list_set_object (GtkInspectorPropList *pl,
 
   if (pl->priv->child_properties)
     {
-      GtkWidget *parent;
+      CtkWidget *parent;
 
       if (!CTK_IS_WIDGET (object))
         {

@@ -26,30 +26,30 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY            (ctk_inspector_object_hierarchy_get_type())
-#define CTK_INSPECTOR_OBJECT_HIERARCHY(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, GtkInspectorObjectHierarchy))
-#define CTK_INSPECTOR_OBJECT_HIERARCHY_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, GtkInspectorObjectHierarchyClass))
+#define CTK_INSPECTOR_OBJECT_HIERARCHY(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, CtkInspectorObjectHierarchy))
+#define CTK_INSPECTOR_OBJECT_HIERARCHY_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, CtkInspectorObjectHierarchyClass))
 #define CTK_INSPECTOR_IS_OBJECT_HIERARCHY(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY))
 #define CTK_INSPECTOR_IS_OBJECT_HIERARCHY_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY))
-#define CTK_INSPECTOR_OBJECT_HIERARCHY_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, GtkInspectorObjectHierarchyClass))
+#define CTK_INSPECTOR_OBJECT_HIERARCHY_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY, CtkInspectorObjectHierarchyClass))
 
 
-typedef struct _GtkInspectorObjectHierarchyPrivate GtkInspectorObjectHierarchyPrivate;
+typedef struct _CtkInspectorObjectHierarchyPrivate CtkInspectorObjectHierarchyPrivate;
 
-typedef struct _GtkInspectorObjectHierarchy
+typedef struct _CtkInspectorObjectHierarchy
 {
-  GtkBox parent;
-  GtkInspectorObjectHierarchyPrivate *priv;
-} GtkInspectorObjectHierarchy;
+  CtkBox parent;
+  CtkInspectorObjectHierarchyPrivate *priv;
+} CtkInspectorObjectHierarchy;
 
-typedef struct _GtkInspectorObjectHierarchyClass
+typedef struct _CtkInspectorObjectHierarchyClass
 {
-  GtkBoxClass parent;
-} GtkInspectorObjectHierarchyClass;
+  CtkBoxClass parent;
+} CtkInspectorObjectHierarchyClass;
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_object_hierarchy_get_type   (void);
-void       ctk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
+void       ctk_inspector_object_hierarchy_set_object (CtkInspectorObjectHierarchy *oh,
                                                       GObject                     *object);
 
 G_END_DECLS

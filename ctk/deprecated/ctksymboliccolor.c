@@ -32,40 +32,40 @@
 /**
  * SECTION:ctksymboliccolor
  * @Short_description: Symbolic colors
- * @Title: GtkSymbolicColor
+ * @Title: CtkSymbolicColor
  *
- * GtkSymbolicColor is a boxed type that represents a symbolic color.
+ * CtkSymbolicColor is a boxed type that represents a symbolic color.
  * It is the result of parsing a
  * [color expression][ctkcssprovider-symbolic-colors].
- * To obtain the color represented by a GtkSymbolicColor, it has to
+ * To obtain the color represented by a CtkSymbolicColor, it has to
  * be resolved with ctk_symbolic_color_resolve(), which replaces all
  * symbolic color references by the colors they refer to (in a given
  * context) and evaluates mix, shade and other expressions, resulting
  * in a #GdkRGBA value.
  *
- * It is not normally necessary to deal directly with #GtkSymbolicColors,
- * since they are mostly used behind the scenes by #GtkStyleContext and
- * #GtkCssProvider.
+ * It is not normally necessary to deal directly with #CtkSymbolicColors,
+ * since they are mostly used behind the scenes by #CtkStyleContext and
+ * #CtkCssProvider.
  *
- * #GtkSymbolicColor is deprecated. Symbolic colors are considered an
+ * #CtkSymbolicColor is deprecated. Symbolic colors are considered an
  * implementation detail of GTK+.
  */
 
-G_DEFINE_BOXED_TYPE (GtkSymbolicColor, ctk_symbolic_color,
+G_DEFINE_BOXED_TYPE (CtkSymbolicColor, ctk_symbolic_color,
                      ctk_symbolic_color_ref, ctk_symbolic_color_unref)
 
-struct _GtkSymbolicColor
+struct _CtkSymbolicColor
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
   gint ref_count;
 };
 
-static GtkSymbolicColor *
-ctk_symbolic_color_new (GtkCssValue *value)
+static CtkSymbolicColor *
+ctk_symbolic_color_new (CtkCssValue *value)
 {
-  GtkSymbolicColor *symbolic;
+  CtkSymbolicColor *symbolic;
 
-  symbolic = g_slice_new0 (GtkSymbolicColor);
+  symbolic = g_slice_new0 (CtkSymbolicColor);
   symbolic->value = value;
   symbolic->ref_count = 1;
 
@@ -78,13 +78,13 @@ ctk_symbolic_color_new (GtkCssValue *value)
  *
  * Creates a symbolic color pointing to a literal color.
  *
- * Returns: a newly created #GtkSymbolicColor
+ * Returns: a newly created #CtkSymbolicColor
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
-GtkSymbolicColor *
+CtkSymbolicColor *
 ctk_symbolic_color_new_literal (const GdkRGBA *color)
 {
   g_return_val_if_fail (color != NULL, NULL);
@@ -100,13 +100,13 @@ ctk_symbolic_color_new_literal (const GdkRGBA *color)
  * color. See ctk_style_context_lookup_color() and
  * ctk_style_properties_lookup_color().
  *
- * Returns: a newly created #GtkSymbolicColor
+ * Returns: a newly created #CtkSymbolicColor
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
-GtkSymbolicColor *
+CtkSymbolicColor *
 ctk_symbolic_color_new_name (const gchar *name)
 {
   g_return_val_if_fail (name != NULL, NULL);
@@ -116,7 +116,7 @@ ctk_symbolic_color_new_name (const gchar *name)
 
 /**
  * ctk_symbolic_color_new_shade: (constructor)
- * @color: another #GtkSymbolicColor
+ * @color: another #CtkSymbolicColor
  * @factor: shading factor to apply to @color
  *
  * Creates a symbolic color defined as a shade of
@@ -124,14 +124,14 @@ ctk_symbolic_color_new_name (const gchar *name)
  * a brighter color, while < 1.0 would resolve to
  * a darker color.
  *
- * Returns: A newly created #GtkSymbolicColor
+ * Returns: A newly created #CtkSymbolicColor
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
-GtkSymbolicColor *
-ctk_symbolic_color_new_shade (GtkSymbolicColor *color,
+CtkSymbolicColor *
+ctk_symbolic_color_new_shade (CtkSymbolicColor *color,
                               gdouble           factor)
 {
   g_return_val_if_fail (color != NULL, NULL);
@@ -142,7 +142,7 @@ ctk_symbolic_color_new_shade (GtkSymbolicColor *color,
 
 /**
  * ctk_symbolic_color_new_alpha: (constructor)
- * @color: another #GtkSymbolicColor
+ * @color: another #CtkSymbolicColor
  * @factor: factor to apply to @color alpha
  *
  * Creates a symbolic color by modifying the relative alpha
@@ -150,14 +150,14 @@ ctk_symbolic_color_new_shade (GtkSymbolicColor *color,
  * transparent color, while > 1.0 would resolve to a more
  * opaque color.
  *
- * Returns: A newly created #GtkSymbolicColor
+ * Returns: A newly created #CtkSymbolicColor
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
-GtkSymbolicColor *
-ctk_symbolic_color_new_alpha (GtkSymbolicColor *color,
+CtkSymbolicColor *
+ctk_symbolic_color_new_alpha (CtkSymbolicColor *color,
                               gdouble           factor)
 {
   g_return_val_if_fail (color != NULL, NULL);
@@ -176,15 +176,15 @@ ctk_symbolic_color_new_alpha (GtkSymbolicColor *color,
  * two colors. a mix factor of 0 would resolve to @color1,
  * while a factor of 1 would resolve to @color2.
  *
- * Returns: A newly created #GtkSymbolicColor
+ * Returns: A newly created #CtkSymbolicColor
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
-GtkSymbolicColor *
-ctk_symbolic_color_new_mix (GtkSymbolicColor *color1,
-                            GtkSymbolicColor *color2,
+CtkSymbolicColor *
+ctk_symbolic_color_new_mix (CtkSymbolicColor *color1,
+                            CtkSymbolicColor *color2,
                             gdouble           factor)
 {
   g_return_val_if_fail (color1 != NULL, NULL);
@@ -207,13 +207,13 @@ ctk_symbolic_color_new_mix (GtkSymbolicColor *color1,
  * the actual value returned is not reliable on non-win32
  * platforms.
  *
- * Returns: A newly created #GtkSymbolicColor
+ * Returns: A newly created #CtkSymbolicColor
  *
  * Since: 3.4
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  */
-GtkSymbolicColor *
+CtkSymbolicColor *
 ctk_symbolic_color_new_win32 (const gchar *theme_class,
                               gint         id)
 {
@@ -224,7 +224,7 @@ ctk_symbolic_color_new_win32 (const gchar *theme_class,
 
 /**
  * ctk_symbolic_color_ref:
- * @color: a #GtkSymbolicColor
+ * @color: a #CtkSymbolicColor
  *
  * Increases the reference count of @color
  *
@@ -232,10 +232,10 @@ ctk_symbolic_color_new_win32 (const gchar *theme_class,
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
-GtkSymbolicColor *
-ctk_symbolic_color_ref (GtkSymbolicColor *color)
+CtkSymbolicColor *
+ctk_symbolic_color_ref (CtkSymbolicColor *color)
 {
   g_return_val_if_fail (color != NULL, NULL);
 
@@ -246,17 +246,17 @@ ctk_symbolic_color_ref (GtkSymbolicColor *color)
 
 /**
  * ctk_symbolic_color_unref:
- * @color: a #GtkSymbolicColor
+ * @color: a #CtkSymbolicColor
  *
  * Decreases the reference count of @color, freeing its memory if the
  * reference count reaches 0.
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
 void
-ctk_symbolic_color_unref (GtkSymbolicColor *color)
+ctk_symbolic_color_unref (CtkSymbolicColor *color)
 {
   g_return_if_fail (color != NULL);
 
@@ -265,13 +265,13 @@ ctk_symbolic_color_unref (GtkSymbolicColor *color)
 
   _ctk_css_value_unref (color->value);
 
-  g_slice_free (GtkSymbolicColor, color);
+  g_slice_free (CtkSymbolicColor, color);
 }
 
 /**
  * ctk_symbolic_color_resolve:
- * @color: a #GtkSymbolicColor
- * @props: (allow-none): #GtkStyleProperties to use when resolving
+ * @color: a #CtkSymbolicColor
+ * @props: (allow-none): #CtkStyleProperties to use when resolving
  *    named colors, or %NULL
  * @resolved_color: (out): return location for the resolved color
  *
@@ -288,15 +288,15 @@ ctk_symbolic_color_unref (GtkSymbolicColor *color)
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
 gboolean
-ctk_symbolic_color_resolve (GtkSymbolicColor   *color,
-			    GtkStyleProperties *props,
+ctk_symbolic_color_resolve (CtkSymbolicColor   *color,
+			    CtkStyleProperties *props,
 			    GdkRGBA            *resolved_color)
 {
   GdkRGBA pink = { 1.0, 0.5, 0.5, 1.0 };
-  GtkCssValue *v, *current;
+  CtkCssValue *v, *current;
 
   g_return_val_if_fail (color != NULL, FALSE);
   g_return_val_if_fail (resolved_color != NULL, FALSE);
@@ -328,20 +328,20 @@ ctk_symbolic_color_resolve (GtkSymbolicColor   *color,
  *
  * Returns: a new string representing @color
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
 char *
-ctk_symbolic_color_to_string (GtkSymbolicColor *color)
+ctk_symbolic_color_to_string (CtkSymbolicColor *color)
 {
   g_return_val_if_fail (color != NULL, NULL);
 
   return _ctk_css_value_to_string (color->value);
 }
 
-GtkSymbolicColor *
-_ctk_css_symbolic_value_new (GtkCssParser *parser)
+CtkSymbolicColor *
+_ctk_css_symbolic_value_new (CtkCssParser *parser)
 {
-  GtkCssValue *value;
+  CtkCssValue *value;
 
   value = _ctk_css_color_value_parse (parser);
   if (value == NULL)
@@ -350,8 +350,8 @@ _ctk_css_symbolic_value_new (GtkCssParser *parser)
   return ctk_symbolic_color_new (value);
 }
 
-GtkCssValue *
-_ctk_symbolic_color_get_css_value (GtkSymbolicColor *symbolic)
+CtkCssValue *
+_ctk_symbolic_color_get_css_value (CtkSymbolicColor *symbolic)
 {
   return symbolic->value;
 }

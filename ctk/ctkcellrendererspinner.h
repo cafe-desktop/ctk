@@ -30,27 +30,27 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_RENDERER_SPINNER            (ctk_cell_renderer_spinner_get_type ())
-#define CTK_CELL_RENDERER_SPINNER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinner))
-#define CTK_CELL_RENDERER_SPINNER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinnerClass))
+#define CTK_CELL_RENDERER_SPINNER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_SPINNER, CtkCellRendererSpinner))
+#define CTK_CELL_RENDERER_SPINNER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_SPINNER, CtkCellRendererSpinnerClass))
 #define CTK_IS_CELL_RENDERER_SPINNER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_SPINNER))
 #define CTK_IS_CELL_RENDERER_SPINNER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_SPINNER))
-#define CTK_CELL_RENDERER_SPINNER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinnerClass))
+#define CTK_CELL_RENDERER_SPINNER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_SPINNER, CtkCellRendererSpinnerClass))
 
-typedef struct _GtkCellRendererSpinner        GtkCellRendererSpinner;
-typedef struct _GtkCellRendererSpinnerClass   GtkCellRendererSpinnerClass;
-typedef struct _GtkCellRendererSpinnerPrivate GtkCellRendererSpinnerPrivate;
+typedef struct _CtkCellRendererSpinner        CtkCellRendererSpinner;
+typedef struct _CtkCellRendererSpinnerClass   CtkCellRendererSpinnerClass;
+typedef struct _CtkCellRendererSpinnerPrivate CtkCellRendererSpinnerPrivate;
 
-struct _GtkCellRendererSpinner
+struct _CtkCellRendererSpinner
 {
-  GtkCellRenderer                parent;
+  CtkCellRenderer                parent;
 
   /*< private >*/
-  GtkCellRendererSpinnerPrivate *priv;
+  CtkCellRendererSpinnerPrivate *priv;
 };
 
-struct _GtkCellRendererSpinnerClass
+struct _CtkCellRendererSpinnerClass
 {
-  GtkCellRendererClass parent_class;
+  CtkCellRendererClass parent_class;
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -62,7 +62,7 @@ struct _GtkCellRendererSpinnerClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_spinner_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer *ctk_cell_renderer_spinner_new      (void);
+CtkCellRenderer *ctk_cell_renderer_spinner_new      (void);
 
 G_END_DECLS
 

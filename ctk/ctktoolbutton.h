@@ -30,41 +30,41 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_TOOL_BUTTON            (ctk_tool_button_get_type ())
-#define CTK_TOOL_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOOL_BUTTON, GtkToolButton))
-#define CTK_TOOL_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOOL_BUTTON, GtkToolButtonClass))
+#define CTK_TOOL_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOOL_BUTTON, CtkToolButton))
+#define CTK_TOOL_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOOL_BUTTON, CtkToolButtonClass))
 #define CTK_IS_TOOL_BUTTON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOOL_BUTTON))
 #define CTK_IS_TOOL_BUTTON_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TOOL_BUTTON))
-#define CTK_TOOL_BUTTON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_TOOL_BUTTON, GtkToolButtonClass))
+#define CTK_TOOL_BUTTON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_TOOL_BUTTON, CtkToolButtonClass))
 
-typedef struct _GtkToolButton        GtkToolButton;
-typedef struct _GtkToolButtonClass   GtkToolButtonClass;
-typedef struct _GtkToolButtonPrivate GtkToolButtonPrivate;
+typedef struct _CtkToolButton        CtkToolButton;
+typedef struct _CtkToolButtonClass   CtkToolButtonClass;
+typedef struct _CtkToolButtonPrivate CtkToolButtonPrivate;
 
-struct _GtkToolButton
+struct _CtkToolButton
 {
-  GtkToolItem parent;
+  CtkToolItem parent;
 
   /*< private >*/
-  GtkToolButtonPrivate *priv;
+  CtkToolButtonPrivate *priv;
 };
 
 /**
- * GtkToolButtonClass:
+ * CtkToolButtonClass:
  * @parent_class: The parent class.
  * @button_type: 
  * @clicked: Signal emitted when the tool button is clicked with the
  *    mouse or activated with the keyboard.
  */
-struct _GtkToolButtonClass
+struct _CtkToolButtonClass
 {
-  GtkToolItemClass parent_class;
+  CtkToolItemClass parent_class;
 
   GType button_type;
 
   /*< public >*/
 
   /* signal */
-  void       (* clicked)             (GtkToolButton    *tool_item);
+  void       (* clicked)             (CtkToolButton    *tool_item);
 
   /*< private >*/
 
@@ -78,45 +78,45 @@ struct _GtkToolButtonClass
 GDK_AVAILABLE_IN_ALL
 GType        ctk_tool_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkToolItem *ctk_tool_button_new            (GtkWidget   *icon_widget,
+CtkToolItem *ctk_tool_button_new            (CtkWidget   *icon_widget,
 					     const gchar *label);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_new)
-GtkToolItem *ctk_tool_button_new_from_stock (const gchar *stock_id);
+CtkToolItem *ctk_tool_button_new_from_stock (const gchar *stock_id);
 
 GDK_AVAILABLE_IN_ALL
-void                  ctk_tool_button_set_label         (GtkToolButton *button,
+void                  ctk_tool_button_set_label         (CtkToolButton *button,
 							 const gchar   *label);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_tool_button_get_label         (GtkToolButton *button);
+const gchar *         ctk_tool_button_get_label         (CtkToolButton *button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_tool_button_set_use_underline (GtkToolButton *button,
+void                  ctk_tool_button_set_use_underline (CtkToolButton *button,
 							 gboolean       use_underline);
 GDK_AVAILABLE_IN_ALL
-gboolean              ctk_tool_button_get_use_underline (GtkToolButton *button);
+gboolean              ctk_tool_button_get_use_underline (CtkToolButton *button);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_set_icon_name)
-void                  ctk_tool_button_set_stock_id      (GtkToolButton *button,
+void                  ctk_tool_button_set_stock_id      (CtkToolButton *button,
 							 const gchar   *stock_id);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_get_icon_name)
-const gchar *         ctk_tool_button_get_stock_id      (GtkToolButton *button);
+const gchar *         ctk_tool_button_get_stock_id      (CtkToolButton *button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_tool_button_set_icon_name     (GtkToolButton *button,
+void                  ctk_tool_button_set_icon_name     (CtkToolButton *button,
 							 const gchar   *icon_name);
 GDK_AVAILABLE_IN_ALL
-const gchar *         ctk_tool_button_get_icon_name     (GtkToolButton *button);
+const gchar *         ctk_tool_button_get_icon_name     (CtkToolButton *button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_tool_button_set_icon_widget   (GtkToolButton *button,
-							 GtkWidget     *icon_widget);
+void                  ctk_tool_button_set_icon_widget   (CtkToolButton *button,
+							 CtkWidget     *icon_widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *           ctk_tool_button_get_icon_widget   (GtkToolButton *button);
+CtkWidget *           ctk_tool_button_get_icon_widget   (CtkToolButton *button);
 GDK_AVAILABLE_IN_ALL
-void                  ctk_tool_button_set_label_widget  (GtkToolButton *button,
-							 GtkWidget     *label_widget);
+void                  ctk_tool_button_set_label_widget  (CtkToolButton *button,
+							 CtkWidget     *label_widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *           ctk_tool_button_get_label_widget  (GtkToolButton *button);
+CtkWidget *           ctk_tool_button_get_label_widget  (CtkToolButton *button);
 
 
 /* internal function */
-GtkWidget *_ctk_tool_button_get_button (GtkToolButton *button);
+CtkWidget *_ctk_tool_button_get_button (CtkToolButton *button);
 
 G_END_DECLS
 

@@ -22,9 +22,9 @@
 #include "ctkcssstylepropertyprivate.h"
 
 void
-ctk_css_style_change_init (GtkCssStyleChange *change,
-                           GtkCssStyle       *old_style,
-                           GtkCssStyle       *new_style)
+ctk_css_style_change_init (CtkCssStyleChange *change,
+                           CtkCssStyle       *old_style,
+                           CtkCssStyle       *new_style)
 {
   change->old_style = g_object_ref (old_style);
   change->new_style = g_object_ref (new_style);
@@ -40,27 +40,27 @@ ctk_css_style_change_init (GtkCssStyleChange *change,
 }
 
 void
-ctk_css_style_change_finish (GtkCssStyleChange *change)
+ctk_css_style_change_finish (CtkCssStyleChange *change)
 {
   g_object_unref (change->old_style);
   g_object_unref (change->new_style);
   _ctk_bitmask_free (change->changes);
 }
 
-GtkCssStyle *
-ctk_css_style_change_get_old_style (GtkCssStyleChange *change)
+CtkCssStyle *
+ctk_css_style_change_get_old_style (CtkCssStyleChange *change)
 {
   return change->old_style;
 }
 
-GtkCssStyle *
-ctk_css_style_change_get_new_style (GtkCssStyleChange *change)
+CtkCssStyle *
+ctk_css_style_change_get_new_style (CtkCssStyleChange *change)
 {
   return change->new_style;
 }
 
 static gboolean
-ctk_css_style_compare_next_value (GtkCssStyleChange *change)
+ctk_css_style_compare_next_value (CtkCssStyleChange *change)
 {
   if (change->n_compared == CTK_CSS_PROPERTY_N_PROPERTIES)
     return FALSE;
@@ -78,7 +78,7 @@ ctk_css_style_compare_next_value (GtkCssStyleChange *change)
 }
 
 gboolean
-ctk_css_style_change_has_change (GtkCssStyleChange *change)
+ctk_css_style_change_has_change (CtkCssStyleChange *change)
 {
   do {
     if (!_ctk_bitmask_is_empty (change->changes))
@@ -89,8 +89,8 @@ ctk_css_style_change_has_change (GtkCssStyleChange *change)
 }
 
 gboolean
-ctk_css_style_change_affects (GtkCssStyleChange *change,
-                              GtkCssAffects      affects)
+ctk_css_style_change_affects (CtkCssStyleChange *change,
+                              CtkCssAffects      affects)
 {
   do {
     if (change->affects & affects)
@@ -101,7 +101,7 @@ ctk_css_style_change_affects (GtkCssStyleChange *change,
 }
 
 gboolean
-ctk_css_style_change_changes_property (GtkCssStyleChange *change,
+ctk_css_style_change_changes_property (CtkCssStyleChange *change,
                                        guint              id)
 {
   while (change->n_compared <= id)
@@ -111,19 +111,19 @@ ctk_css_style_change_changes_property (GtkCssStyleChange *change,
 }
 
 void
-ctk_css_style_change_print (GtkCssStyleChange *change,
+ctk_css_style_change_print (CtkCssStyleChange *change,
                             GString           *string)
 {
   int i;
-  GtkCssStyle *old = ctk_css_style_change_get_old_style (change);
-  GtkCssStyle *new = ctk_css_style_change_get_new_style (change);
+  CtkCssStyle *old = ctk_css_style_change_get_old_style (change);
+  CtkCssStyle *new = ctk_css_style_change_get_new_style (change);
 
   for (i = 0; i < CTK_CSS_PROPERTY_N_PROPERTIES; i ++)
     {
       if (ctk_css_style_change_changes_property (change, i))
         {
-          GtkCssStyleProperty *prop;
-          GtkCssValue *value;
+          CtkCssStyleProperty *prop;
+          CtkCssValue *value;
           const char *name;
 
           prop = _ctk_css_style_property_lookup_by_id (i);
@@ -146,7 +146,7 @@ ctk_css_style_change_print (GtkCssStyleChange *change,
 }
 
 char *
-ctk_css_style_change_to_string (GtkCssStyleChange *change)
+ctk_css_style_change_to_string (CtkCssStyleChange *change)
 {
   GString *string = g_string_new ("");
 

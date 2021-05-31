@@ -3,7 +3,7 @@
  * Copyright (c) 1992-1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
  * Copyright (c) 2000      Red Hat, Inc.
- * Tk -> Gtk port by Havoc Pennington <hp@redhat.com>
+ * Tk -> Ctk port by Havoc Pennington <hp@redhat.com>
  *
  * This software is copyrighted by the Regents of the University of
  * California, Sun Microsystems, Inc., and other parties.  The
@@ -56,18 +56,18 @@
 /**
  * ctk_text_attributes_new:
  * 
- * Creates a #GtkTextAttributes, which describes
+ * Creates a #CtkTextAttributes, which describes
  * a set of properties on some text.
  * 
- * Returns: a new #GtkTextAttributes,
+ * Returns: a new #CtkTextAttributes,
  *     free with ctk_text_attributes_unref().
  */
-GtkTextAttributes*
+CtkTextAttributes*
 ctk_text_attributes_new (void)
 {
-  GtkTextAttributes *values;
+  CtkTextAttributes *values;
 
-  values = g_slice_new0 (GtkTextAttributes);
+  values = g_slice_new0 (CtkTextAttributes);
 
   /* 0 is a valid value for most of the struct */
   values->refcount = 1;
@@ -83,17 +83,17 @@ ctk_text_attributes_new (void)
 
 /**
  * ctk_text_attributes_copy:
- * @src: a #GtkTextAttributes to be copied
+ * @src: a #CtkTextAttributes to be copied
  *
- * Copies @src and returns a new #GtkTextAttributes.
+ * Copies @src and returns a new #CtkTextAttributes.
  *
  * Returns: a copy of @src,
  *     free with ctk_text_attributes_unref()
  */
-GtkTextAttributes*
-ctk_text_attributes_copy (GtkTextAttributes *src)
+CtkTextAttributes*
+ctk_text_attributes_copy (CtkTextAttributes *src)
 {
-  GtkTextAttributes *dest;
+  CtkTextAttributes *dest;
 
   dest = ctk_text_attributes_new ();
   ctk_text_attributes_copy_values (src, dest);
@@ -101,21 +101,21 @@ ctk_text_attributes_copy (GtkTextAttributes *src)
   return dest;
 }
 
-G_DEFINE_BOXED_TYPE (GtkTextAttributes, ctk_text_attributes,
+G_DEFINE_BOXED_TYPE (CtkTextAttributes, ctk_text_attributes,
                      ctk_text_attributes_ref,
                      ctk_text_attributes_unref)
 
 /**
  * ctk_text_attributes_copy_values:
- * @src: a #GtkTextAttributes
- * @dest: another #GtkTextAttributes
+ * @src: a #CtkTextAttributes
+ * @dest: another #CtkTextAttributes
  *
  * Copies the values from @src to @dest so that @dest has
  * the same values as @src. Frees existing values in @dest.
  */
 void
-ctk_text_attributes_copy_values (GtkTextAttributes *src,
-                                 GtkTextAttributes *dest)
+ctk_text_attributes_copy_values (CtkTextAttributes *src,
+                                 CtkTextAttributes *dest)
 {
   guint orig_refcount;
 
@@ -181,14 +181,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 /**
  * ctk_text_attributes_ref:
- * @values: a #GtkTextAttributes
+ * @values: a #CtkTextAttributes
  *
  * Increments the reference count on @values.
  *
- * Returns: the #GtkTextAttributes that were passed in
+ * Returns: the #CtkTextAttributes that were passed in
  **/
-GtkTextAttributes *
-ctk_text_attributes_ref (GtkTextAttributes *values)
+CtkTextAttributes *
+ctk_text_attributes_ref (CtkTextAttributes *values)
 {
   g_return_val_if_fail (values != NULL, NULL);
 
@@ -199,13 +199,13 @@ ctk_text_attributes_ref (GtkTextAttributes *values)
 
 /**
  * ctk_text_attributes_unref:
- * @values: a #GtkTextAttributes
+ * @values: a #CtkTextAttributes
  * 
  * Decrements the reference count on @values, freeing the structure
  * if the reference count reaches 0.
  **/
 void
-ctk_text_attributes_unref (GtkTextAttributes *values)
+ctk_text_attributes_unref (CtkTextAttributes *values)
 {
   g_return_if_fail (values != NULL);
   g_return_if_fail (values->refcount > 0);
@@ -237,13 +237,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       if (values->font_features)
         g_free (values->font_features);
 
-      g_slice_free (GtkTextAttributes, values);
+      g_slice_free (CtkTextAttributes, values);
     }
 }
 
 void
-_ctk_text_attributes_fill_from_tags (GtkTextAttributes *dest,
-                                     GtkTextTag**       tags,
+_ctk_text_attributes_fill_from_tags (CtkTextAttributes *dest,
+                                     CtkTextTag**       tags,
                                      guint              n_tags)
 {
   guint n = 0;
@@ -253,8 +253,8 @@ _ctk_text_attributes_fill_from_tags (GtkTextAttributes *dest,
 
   while (n < n_tags)
     {
-      GtkTextTag *tag = tags[n];
-      GtkTextAttributes *vals = tag->priv->values;
+      CtkTextTag *tag = tags[n];
+      CtkTextAttributes *vals = tag->priv->values;
 
       g_assert (tag->priv->table != NULL);
       if (n > 0)
@@ -423,9 +423,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 gboolean
-_ctk_text_tag_affects_size (GtkTextTag *tag)
+_ctk_text_tag_affects_size (CtkTextTag *tag)
 {
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTagPrivate *priv = tag->priv;
 
   return
     (priv->values->font && pango_font_description_get_set_fields (priv->values->font) != 0) ||
@@ -447,9 +447,9 @@ _ctk_text_tag_affects_size (GtkTextTag *tag)
 }
 
 gboolean
-_ctk_text_tag_affects_nonsize_appearance (GtkTextTag *tag)
+_ctk_text_tag_affects_nonsize_appearance (CtkTextTag *tag)
 {
-  GtkTextTagPrivate *priv = tag->priv;
+  CtkTextTagPrivate *priv = tag->priv;
 
   return
     priv->bg_color_set ||

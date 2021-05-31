@@ -29,7 +29,7 @@
 
 
 typedef struct {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GList *classes;
   gboolean packing;
   gboolean packing_started;
@@ -91,7 +91,7 @@ get_property_pspec (MyParserData *data,
     {
       GObjectClass *cell_class;
 
-      /* We're just assuming that the cell layout is using a GtkCellAreaBox. */
+      /* We're just assuming that the cell layout is using a CtkCellAreaBox. */
       cell_class = g_type_class_ref (CTK_TYPE_CELL_AREA_BOX);
       pspec = ctk_cell_area_class_find_cell_property (CTK_CELL_AREA_CLASS (cell_class), canonical_name);
       g_type_class_unref (cell_class);
@@ -187,20 +187,20 @@ needs_explicit_setting (MyParserData *data,
     const char *property;
     gboolean packing;
   } props[] = {
-    { "GtkAboutDialog", "program-name", 0 },
-    { "GtkCalendar", "year", 0 },
-    { "GtkCalendar", "month", 0 },
-    { "GtkCalendar", "day", 0 },
-    { "GtkDialog", "border-width", 0 },
-    { "GtkPlacesSidebar", "show-desktop", 0 },
-    { "GtkRadioButton", "draw-indicator", 0 },
-    { "GtkGrid", "left-attach", 1 },
-    { "GtkGrid", "top-attach", 1 },
-    { "GtkWidget", "hexpand", 0 },
-    { "GtkWidget", "vexpand", 0 },
-    { "GtkContainer", "border-width", 0 },
-    { "GtkVBox", "expand", 1 },
-    { "GtkHBox", "expand", 1 },
+    { "CtkAboutDialog", "program-name", 0 },
+    { "CtkCalendar", "year", 0 },
+    { "CtkCalendar", "month", 0 },
+    { "CtkCalendar", "day", 0 },
+    { "CtkDialog", "border-width", 0 },
+    { "CtkPlacesSidebar", "show-desktop", 0 },
+    { "CtkRadioButton", "draw-indicator", 0 },
+    { "CtkGrid", "left-attach", 1 },
+    { "CtkGrid", "top-attach", 1 },
+    { "CtkWidget", "hexpand", 0 },
+    { "CtkWidget", "vexpand", 0 },
+    { "CtkContainer", "border-width", 0 },
+    { "CtkVBox", "expand", 1 },
+    { "CtkHBox", "expand", 1 },
     { NULL, NULL, 0 }
   };
   gchar *canonical_name;
@@ -453,7 +453,7 @@ start_element (GMarkupParseContext  *context,
     {
       /* attribute in label has no content */
       if (data->classes == NULL ||
-          strcmp ((gchar *)data->classes->data, "GtkLabel") != 0)
+          strcmp ((gchar *)data->classes->data, "CtkLabel") != 0)
         data->value = g_string_new ("");
     }
   else if (stack_is (context, "item", "items", NULL) ||
@@ -744,13 +744,13 @@ do_validate_template (const gchar *filename,
                       const gchar *parent_name)
 {
   GType template_type;
-  GtkWidget *widget;
-  GtkBuilder *builder;
+  CtkWidget *widget;
+  CtkBuilder *builder;
   GError *error = NULL;
   gint ret;
 
   /* Only make a fake type if it doesn't exist yet.
-   * This lets us e.g. validate the GtkFileChooserWidget template.
+   * This lets us e.g. validate the CtkFileChooserWidget template.
    */
   template_type = g_type_from_name (type_name);
   if (template_type == G_TYPE_INVALID)
@@ -809,7 +809,7 @@ parse_template_error (const gchar  *message,
 static void
 do_validate (const gchar *filename)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
   gint ret;
   gchar *class_name = NULL;
@@ -846,7 +846,7 @@ object_get_name (GObject *object)
 static void
 do_enumerate (const gchar *filename)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
   gint ret;
   GSList *list, *l;
@@ -878,7 +878,7 @@ do_enumerate (const gchar *filename)
 }
 
 static void
-set_window_title (GtkWindow  *window,
+set_window_title (CtkWindow  *window,
                   const char *filename,
                   const char *id)
 {
@@ -903,14 +903,14 @@ preview_file (const char *filename,
               const char *id,
               const char *cssfile)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
   GObject *object;
-  GtkWidget *window;
+  CtkWidget *window;
 
   if (cssfile)
     {
-      GtkCssProvider *provider;
+      CtkCssProvider *provider;
 
       provider = ctk_css_provider_new ();
       if (!ctk_css_provider_load_from_path (provider, cssfile, &error))
@@ -979,7 +979,7 @@ preview_file (const char *filename,
     window = CTK_WIDGET (object);
   else
     {
-      GtkWidget *widget = CTK_WIDGET (object);
+      CtkWidget *widget = CTK_WIDGET (object);
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
@@ -1071,7 +1071,7 @@ usage (void)
              "  --id=ID            Preview only the named object\n"
              "  --css=FILE         Use style from CSS file\n"
              "\n"
-             "Perform various tasks on GtkBuilder .ui files.\n"));
+             "Perform various tasks on CtkBuilder .ui files.\n"));
   exit (1);
 }
 

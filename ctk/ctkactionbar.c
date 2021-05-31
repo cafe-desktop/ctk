@@ -35,10 +35,10 @@
 /**
  * SECTION:ctkactionbar
  * @Short_description: A full width bar for presenting contextual actions
- * @Title: GtkActionBar
- * @See_also: #GtkBox
+ * @Title: CtkActionBar
+ * @See_also: #CtkBox
  *
- * GtkActionBar is designed to present contextual actions. It is
+ * CtkActionBar is designed to present contextual actions. It is
  * expected to be displayed below the content and expand horizontally
  * to fill the area.
  *
@@ -49,14 +49,14 @@
  *
  * # CSS nodes
  *
- * GtkActionBar has a single CSS node with name actionbar.
+ * CtkActionBar has a single CSS node with name actionbar.
  */
 
-struct _GtkActionBarPrivate
+struct _CtkActionBarPrivate
 {
-  GtkWidget *box;
-  GtkWidget *revealer;
-  GtkCssGadget *gadget;
+  CtkWidget *box;
+  CtkWidget *revealer;
+  CtkCssGadget *gadget;
 };
 
 enum {
@@ -66,17 +66,17 @@ enum {
 };
 
 static void ctk_action_bar_finalize (GObject *object);
-static void ctk_action_bar_buildable_interface_init (GtkBuildableIface *iface);
+static void ctk_action_bar_buildable_interface_init (CtkBuildableIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkActionBar, ctk_action_bar, CTK_TYPE_BIN,
-                         G_ADD_PRIVATE (GtkActionBar)
+G_DEFINE_TYPE_WITH_CODE (CtkActionBar, ctk_action_bar, CTK_TYPE_BIN,
+                         G_ADD_PRIVATE (CtkActionBar)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_action_bar_buildable_interface_init))
 
 static void
-ctk_action_bar_show (GtkWidget *widget)
+ctk_action_bar_show (CtkWidget *widget)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
 
   CTK_WIDGET_CLASS (ctk_action_bar_parent_class)->show (widget);
 
@@ -84,7 +84,7 @@ ctk_action_bar_show (GtkWidget *widget)
 }
 
 static void
-child_revealed (GObject *object, GParamSpec *pspec, GtkWidget *widget)
+child_revealed (GObject *object, GParamSpec *pspec, CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_action_bar_parent_class)->hide (widget);
   g_signal_handlers_disconnect_by_func (object, child_revealed, widget);
@@ -92,9 +92,9 @@ child_revealed (GObject *object, GParamSpec *pspec, GtkWidget *widget)
 }
 
 static void
-ctk_action_bar_hide (GtkWidget *widget)
+ctk_action_bar_hide (CtkWidget *widget)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
 
   g_signal_connect_object (priv->revealer, "notify::child-revealed",
                             G_CALLBACK (child_revealed), widget, 0);
@@ -102,10 +102,10 @@ ctk_action_bar_hide (GtkWidget *widget)
 }
 
 static void
-ctk_action_bar_add (GtkContainer *container,
-                    GtkWidget    *child)
+ctk_action_bar_add (CtkContainer *container,
+                    CtkWidget    *child)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
 
   /* When constructing the widget, we want the revealer to be added
    * as the first child of the bar, as an implementation detail.
@@ -120,10 +120,10 @@ ctk_action_bar_add (GtkContainer *container,
 }
 
 static void
-ctk_action_bar_remove (GtkContainer *container,
-                       GtkWidget    *child)
+ctk_action_bar_remove (CtkContainer *container,
+                       CtkWidget    *child)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
 
   if (child == priv->revealer)
     CTK_CONTAINER_CLASS (ctk_action_bar_parent_class)->remove (container, child);
@@ -132,12 +132,12 @@ ctk_action_bar_remove (GtkContainer *container,
 }
 
 static void
-ctk_action_bar_forall (GtkContainer *container,
+ctk_action_bar_forall (CtkContainer *container,
                        gboolean      include_internals,
-                       GtkCallback   callback,
+                       CtkCallback   callback,
                        gpointer      callback_data)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
 
   if (include_internals)
     (* callback) (priv->revealer, callback_data);
@@ -146,9 +146,9 @@ ctk_action_bar_forall (GtkContainer *container,
 }
 
 static void
-ctk_action_bar_destroy (GtkWidget *widget)
+ctk_action_bar_destroy (CtkWidget *widget)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
 
   if (priv->revealer)
     {
@@ -160,19 +160,19 @@ ctk_action_bar_destroy (GtkWidget *widget)
 }
 
 static GType
-ctk_action_bar_child_type (GtkContainer *container)
+ctk_action_bar_child_type (CtkContainer *container)
 {
   return CTK_TYPE_WIDGET;
 }
 
 static void
-ctk_action_bar_get_child_property (GtkContainer *container,
-                                   GtkWidget    *child,
+ctk_action_bar_get_child_property (CtkContainer *container,
+                                   CtkWidget    *child,
                                    guint         property_id,
                                    GValue       *value,
                                    GParamSpec   *pspec)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
 
   if (child == priv->revealer)
     g_param_value_set_default (pspec, value);
@@ -184,13 +184,13 @@ ctk_action_bar_get_child_property (GtkContainer *container,
 }
 
 static void
-ctk_action_bar_set_child_property (GtkContainer *container,
-                                   GtkWidget    *child,
+ctk_action_bar_set_child_property (CtkContainer *container,
+                                   CtkWidget    *child,
                                    guint         property_id,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (container));
 
   if (child != priv->revealer)
     ctk_container_child_set_property (CTK_CONTAINER (priv->box),
@@ -200,7 +200,7 @@ ctk_action_bar_set_child_property (GtkContainer *container,
 }
 
 static gboolean
-ctk_action_bar_render (GtkCssGadget *gadget,
+ctk_action_bar_render (CtkCssGadget *gadget,
                        cairo_t      *cr,
                        int           x,
                        int           y,
@@ -214,10 +214,10 @@ ctk_action_bar_render (GtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_action_bar_draw (GtkWidget *widget,
+ctk_action_bar_draw (CtkWidget *widget,
                      cairo_t   *cr)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
 
   ctk_css_gadget_draw (priv->gadget, cr);
 
@@ -225,26 +225,26 @@ ctk_action_bar_draw (GtkWidget *widget,
 }
 
 static void
-ctk_action_bar_allocate (GtkCssGadget        *gadget,
-                         const GtkAllocation *allocation,
+ctk_action_bar_allocate (CtkCssGadget        *gadget,
+                         const CtkAllocation *allocation,
                          int                  baseline,
-                         GtkAllocation       *out_clip,
+                         CtkAllocation       *out_clip,
                          gpointer             data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
 
-  ctk_widget_size_allocate (priv->revealer, (GtkAllocation *)allocation);
+  ctk_widget_size_allocate (priv->revealer, (CtkAllocation *)allocation);
 
   ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
 }
 
 static void
-ctk_action_bar_size_allocate (GtkWidget     *widget,
-                              GtkAllocation *allocation)
+ctk_action_bar_size_allocate (CtkWidget     *widget,
+                              CtkAllocation *allocation)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
-  GtkAllocation clip;
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -254,8 +254,8 @@ ctk_action_bar_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_action_bar_measure (GtkCssGadget   *gadget,
-                        GtkOrientation  orientation,
+ctk_action_bar_measure (CtkCssGadget   *gadget,
+                        CtkOrientation  orientation,
                         int             for_size,
                         int            *minimum,
                         int            *natural,
@@ -263,8 +263,8 @@ ctk_action_bar_measure (GtkCssGadget   *gadget,
                         int            *natural_baseline,
                         gpointer        data)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
 
   if (orientation == CTK_ORIENTATION_HORIZONTAL)
     ctk_widget_get_preferred_width_for_height (priv->revealer, for_size, minimum, natural);
@@ -273,12 +273,12 @@ ctk_action_bar_measure (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_action_bar_get_preferred_width_for_height (GtkWidget *widget,
+ctk_action_bar_get_preferred_width_for_height (CtkWidget *widget,
                                                gint       height,
                                                gint      *minimum,
                                                gint      *natural)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
 
   ctk_css_gadget_get_preferred_size (priv->gadget,
                                      CTK_ORIENTATION_HORIZONTAL,
@@ -288,14 +288,14 @@ ctk_action_bar_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_action_bar_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_action_bar_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
                                                             gint       width,
                                                             gint      *minimum,
                                                             gint      *natural,
                                                             gint      *minimum_baseline,
                                                             gint      *natural_baseline)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
 
   ctk_css_gadget_get_preferred_size (priv->gadget,
                                      CTK_ORIENTATION_VERTICAL,
@@ -305,11 +305,11 @@ ctk_action_bar_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_action_bar_class_init (GtkActionBarClass *klass)
+ctk_action_bar_class_init (CtkActionBarClass *klass)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
-  GtkContainerClass *container_class;
+  CtkWidgetClass *widget_class;
+  CtkContainerClass *container_class;
 
   object_class = G_OBJECT_CLASS (klass);
   widget_class = CTK_WIDGET_CLASS (klass);
@@ -336,7 +336,7 @@ ctk_action_bar_class_init (GtkActionBarClass *klass)
                                               CHILD_PROP_PACK_TYPE,
                                               g_param_spec_enum ("pack-type",
                                                                  P_("Pack type"),
-                                                                 P_("A GtkPackType indicating whether the child is packed with reference to the start or end of the parent"),
+                                                                 P_("A CtkPackType indicating whether the child is packed with reference to the start or end of the parent"),
                                                                  CTK_TYPE_PACK_TYPE, CTK_PACK_START,
                                                                  G_PARAM_READWRITE));
   ctk_container_class_install_child_property (container_class,
@@ -348,18 +348,18 @@ ctk_action_bar_class_init (GtkActionBarClass *klass)
                                                                 G_PARAM_READWRITE));
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkactionbar.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkActionBar, box);
-  ctk_widget_class_bind_template_child_private (widget_class, GtkActionBar, revealer);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkActionBar, box);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkActionBar, revealer);
 
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_PANEL);
   ctk_widget_class_set_css_name (widget_class, "actionbar");
 }
 
 static void
-ctk_action_bar_init (GtkActionBar *action_bar)
+ctk_action_bar_init (CtkActionBar *action_bar)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
-  GtkCssNode *widget_node;
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
+  CtkCssNode *widget_node;
 
   ctk_widget_init_template (CTK_WIDGET (action_bar));
 
@@ -378,8 +378,8 @@ ctk_action_bar_init (GtkActionBar *action_bar)
 static void
 ctk_action_bar_finalize (GObject *object)
 {
-  GtkActionBar *action_bar = CTK_ACTION_BAR (object);
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
+  CtkActionBar *action_bar = CTK_ACTION_BAR (object);
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
 
   g_clear_object (&priv->gadget);
 
@@ -387,13 +387,13 @@ ctk_action_bar_finalize (GObject *object)
 }
 
 static void
-ctk_action_bar_buildable_add_child (GtkBuildable *buildable,
-                                    GtkBuilder   *builder,
+ctk_action_bar_buildable_add_child (CtkBuildable *buildable,
+                                    CtkBuilder   *builder,
                                     GObject      *child,
                                     const gchar  *type)
 {
-  GtkActionBar *action_bar = CTK_ACTION_BAR (buildable);
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
+  CtkActionBar *action_bar = CTK_ACTION_BAR (buildable);
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
 
   if (type && strcmp (type, "center") == 0)
     ctk_box_set_center_widget (CTK_BOX (priv->box), CTK_WIDGET (child));
@@ -403,10 +403,10 @@ ctk_action_bar_buildable_add_child (GtkBuildable *buildable,
     CTK_BUILDER_WARN_INVALID_CHILD_TYPE (action_bar, type);
 }
 
-static GtkBuildableIface *parent_buildable_iface;
+static CtkBuildableIface *parent_buildable_iface;
 
 static void
-ctk_action_bar_buildable_interface_init (GtkBuildableIface *iface)
+ctk_action_bar_buildable_interface_init (CtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
   iface->add_child = ctk_action_bar_buildable_add_child;
@@ -414,8 +414,8 @@ ctk_action_bar_buildable_interface_init (GtkBuildableIface *iface)
 
 /**
  * ctk_action_bar_pack_start:
- * @action_bar: A #GtkActionBar
- * @child: the #GtkWidget to be added to @action_bar
+ * @action_bar: A #CtkActionBar
+ * @child: the #CtkWidget to be added to @action_bar
  *
  * Adds @child to @action_bar, packed with reference to the
  * start of the @action_bar.
@@ -423,18 +423,18 @@ ctk_action_bar_buildable_interface_init (GtkBuildableIface *iface)
  * Since: 3.12
  */
 void
-ctk_action_bar_pack_start (GtkActionBar *action_bar,
-                           GtkWidget    *child)
+ctk_action_bar_pack_start (CtkActionBar *action_bar,
+                           CtkWidget    *child)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
 
   ctk_box_pack_start (CTK_BOX (priv->box), child, FALSE, TRUE, 0);
 }
 
 /**
  * ctk_action_bar_pack_end:
- * @action_bar: A #GtkActionBar
- * @child: the #GtkWidget to be added to @action_bar
+ * @action_bar: A #CtkActionBar
+ * @child: the #CtkWidget to be added to @action_bar
  *
  * Adds @child to @action_bar, packed with reference to the
  * end of the @action_bar.
@@ -442,46 +442,46 @@ ctk_action_bar_pack_start (GtkActionBar *action_bar,
  * Since: 3.12
  */
 void
-ctk_action_bar_pack_end (GtkActionBar *action_bar,
-                         GtkWidget    *child)
+ctk_action_bar_pack_end (CtkActionBar *action_bar,
+                         CtkWidget    *child)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
 
   ctk_box_pack_end (CTK_BOX (priv->box), child, FALSE, TRUE, 0);
 }
 
 /**
  * ctk_action_bar_set_center_widget:
- * @action_bar: a #GtkActionBar
+ * @action_bar: a #CtkActionBar
  * @center_widget: (allow-none): a widget to use for the center
  *
- * Sets the center widget for the #GtkActionBar.
+ * Sets the center widget for the #CtkActionBar.
  *
  * Since: 3.12
  */
 void
-ctk_action_bar_set_center_widget (GtkActionBar *action_bar,
-                                  GtkWidget    *center_widget)
+ctk_action_bar_set_center_widget (CtkActionBar *action_bar,
+                                  CtkWidget    *center_widget)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
 
   ctk_box_set_center_widget (CTK_BOX (priv->box), center_widget);
 }
 
 /**
  * ctk_action_bar_get_center_widget:
- * @action_bar: a #GtkActionBar
+ * @action_bar: a #CtkActionBar
  *
  * Retrieves the center bar widget of the bar.
  *
- * Returns: (transfer none) (nullable): the center #GtkWidget or %NULL.
+ * Returns: (transfer none) (nullable): the center #CtkWidget or %NULL.
  *
  * Since: 3.12
  */
-GtkWidget *
-ctk_action_bar_get_center_widget (GtkActionBar *action_bar)
+CtkWidget *
+ctk_action_bar_get_center_widget (CtkActionBar *action_bar)
 {
-  GtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
+  CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (action_bar);
 
   g_return_val_if_fail (CTK_IS_ACTION_BAR (action_bar), NULL);
 
@@ -491,13 +491,13 @@ ctk_action_bar_get_center_widget (GtkActionBar *action_bar)
 /**
  * ctk_action_bar_new:
  *
- * Creates a new #GtkActionBar widget.
+ * Creates a new #CtkActionBar widget.
  *
- * Returns: a new #GtkActionBar
+ * Returns: a new #CtkActionBar
  *
  * Since: 3.12
  */
-GtkWidget *
+CtkWidget *
 ctk_action_bar_new (void)
 {
   return CTK_WIDGET (g_object_new (CTK_TYPE_ACTION_BAR, NULL));

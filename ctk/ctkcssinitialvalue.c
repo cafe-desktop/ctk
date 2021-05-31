@@ -26,25 +26,25 @@
 #include "ctksettingsprivate.h"
 #include "ctkstyleproviderprivate.h"
 
-struct _GtkCssValue {
+struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
 };
 
 static void
-ctk_css_value_initial_free (GtkCssValue *value)
+ctk_css_value_initial_free (CtkCssValue *value)
 {
   /* Can only happen if the unique value gets unreffed too often */
   g_assert_not_reached ();
 }
 
-static GtkCssValue *
-ctk_css_value_initial_compute (GtkCssValue             *value,
+static CtkCssValue *
+ctk_css_value_initial_compute (CtkCssValue             *value,
                                guint                    property_id,
-                               GtkStyleProviderPrivate *provider,
-                               GtkCssStyle             *style,
-                               GtkCssStyle             *parent_style)
+                               CtkStyleProviderPrivate *provider,
+                               CtkCssStyle             *style,
+                               CtkCssStyle             *parent_style)
 {
-  GtkSettings *settings;
+  CtkSettings *settings;
 
   switch (property_id)
     {
@@ -78,15 +78,15 @@ ctk_css_value_initial_compute (GtkCssValue             *value,
 }
 
 static gboolean
-ctk_css_value_initial_equal (const GtkCssValue *value1,
-                             const GtkCssValue *value2)
+ctk_css_value_initial_equal (const CtkCssValue *value1,
+                             const CtkCssValue *value2)
 {
   return TRUE;
 }
 
-static GtkCssValue *
-ctk_css_value_initial_transition (GtkCssValue *start,
-                                  GtkCssValue *end,
+static CtkCssValue *
+ctk_css_value_initial_transition (CtkCssValue *start,
+                                  CtkCssValue *end,
                                   guint        property_id,
                                   double       progress)
 {
@@ -94,13 +94,13 @@ ctk_css_value_initial_transition (GtkCssValue *start,
 }
 
 static void
-ctk_css_value_initial_print (const GtkCssValue *value,
+ctk_css_value_initial_print (const CtkCssValue *value,
                              GString           *string)
 {
   g_string_append (string, "initial");
 }
 
-static const GtkCssValueClass CTK_CSS_VALUE_INITIAL = {
+static const CtkCssValueClass CTK_CSS_VALUE_INITIAL = {
   ctk_css_value_initial_free,
   ctk_css_value_initial_compute,
   ctk_css_value_initial_equal,
@@ -108,15 +108,15 @@ static const GtkCssValueClass CTK_CSS_VALUE_INITIAL = {
   ctk_css_value_initial_print
 };
 
-static GtkCssValue initial = { &CTK_CSS_VALUE_INITIAL, 1 };
+static CtkCssValue initial = { &CTK_CSS_VALUE_INITIAL, 1 };
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_initial_value_new (void)
 {
   return _ctk_css_value_ref (&initial);
 }
 
-GtkCssValue *
+CtkCssValue *
 _ctk_css_initial_value_get (void)
 {
   return &initial;

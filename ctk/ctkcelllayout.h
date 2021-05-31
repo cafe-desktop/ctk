@@ -30,51 +30,51 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CELL_LAYOUT            (ctk_cell_layout_get_type ())
-#define CTK_CELL_LAYOUT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_LAYOUT, GtkCellLayout))
+#define CTK_CELL_LAYOUT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_LAYOUT, CtkCellLayout))
 #define CTK_IS_CELL_LAYOUT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_LAYOUT))
-#define CTK_CELL_LAYOUT_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_CELL_LAYOUT, GtkCellLayoutIface))
+#define CTK_CELL_LAYOUT_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_CELL_LAYOUT, CtkCellLayoutIface))
 
-typedef struct _GtkCellLayout           GtkCellLayout; /* dummy typedef */
-typedef struct _GtkCellLayoutIface      GtkCellLayoutIface;
+typedef struct _CtkCellLayout           CtkCellLayout; /* dummy typedef */
+typedef struct _CtkCellLayoutIface      CtkCellLayoutIface;
 
-/* keep in sync with GtkTreeCellDataFunc */
+/* keep in sync with CtkTreeCellDataFunc */
 /**
- * GtkCellLayoutDataFunc:
- * @cell_layout: a #GtkCellLayout
+ * CtkCellLayoutDataFunc:
+ * @cell_layout: a #CtkCellLayout
  * @cell: the cell renderer whose value is to be set
  * @tree_model: the model
- * @iter: a #GtkTreeIter indicating the row to set the value for
+ * @iter: a #CtkTreeIter indicating the row to set the value for
  * @data: (closure): user data passed to ctk_cell_layout_set_cell_data_func()
  *
  * A function which should set the value of @cell_layout’s cell renderer(s)
  * as appropriate. 
  */
-typedef void (* GtkCellLayoutDataFunc) (GtkCellLayout   *cell_layout,
-                                        GtkCellRenderer *cell,
-                                        GtkTreeModel    *tree_model,
-                                        GtkTreeIter     *iter,
+typedef void (* CtkCellLayoutDataFunc) (CtkCellLayout   *cell_layout,
+                                        CtkCellRenderer *cell,
+                                        CtkTreeModel    *tree_model,
+                                        CtkTreeIter     *iter,
                                         gpointer         data);
 
 /**
- * GtkCellLayoutIface:
+ * CtkCellLayoutIface:
  * @pack_start: Packs the cell into the beginning of cell_layout.
  * @pack_end: Adds the cell to the end of cell_layout.
  * @clear: Unsets all the mappings on all renderers on cell_layout and
  *    removes all renderers from cell_layout.
  * @add_attribute: Adds an attribute mapping to the list in
  *    cell_layout.
- * @set_cell_data_func: Sets the #GtkCellLayoutDataFunc to use for
+ * @set_cell_data_func: Sets the #CtkCellLayoutDataFunc to use for
  *    cell_layout.
  * @clear_attributes: Clears all existing attributes previously set
  *    with ctk_cell_layout_set_attributes().
  * @reorder: Re-inserts cell at position.
  * @get_cells: Get the cell renderers which have been added to
  *    cell_layout.
- * @get_area: Get the underlying #GtkCellArea which might be
- *    cell_layout if called on a #GtkCellArea or might be NULL if no
- *    #GtkCellArea is used by cell_layout.
+ * @get_area: Get the underlying #CtkCellArea which might be
+ *    cell_layout if called on a #CtkCellArea or might be NULL if no
+ *    #CtkCellArea is used by cell_layout.
  */
-struct _GtkCellLayoutIface
+struct _CtkCellLayoutIface
 {
   /*< private >*/
   GTypeInterface g_iface;
@@ -82,84 +82,84 @@ struct _GtkCellLayoutIface
   /*< public >*/
 
   /* Virtual Table */
-  void (* pack_start)         (GtkCellLayout         *cell_layout,
-                               GtkCellRenderer       *cell,
+  void (* pack_start)         (CtkCellLayout         *cell_layout,
+                               CtkCellRenderer       *cell,
                                gboolean               expand);
-  void (* pack_end)           (GtkCellLayout         *cell_layout,
-                               GtkCellRenderer       *cell,
+  void (* pack_end)           (CtkCellLayout         *cell_layout,
+                               CtkCellRenderer       *cell,
                                gboolean               expand);
-  void (* clear)              (GtkCellLayout         *cell_layout);
-  void (* add_attribute)      (GtkCellLayout         *cell_layout,
-                               GtkCellRenderer       *cell,
+  void (* clear)              (CtkCellLayout         *cell_layout);
+  void (* add_attribute)      (CtkCellLayout         *cell_layout,
+                               CtkCellRenderer       *cell,
                                const gchar           *attribute,
                                gint                   column);
-  void (* set_cell_data_func) (GtkCellLayout         *cell_layout,
-                               GtkCellRenderer       *cell,
-                               GtkCellLayoutDataFunc  func,
+  void (* set_cell_data_func) (CtkCellLayout         *cell_layout,
+                               CtkCellRenderer       *cell,
+                               CtkCellLayoutDataFunc  func,
                                gpointer               func_data,
                                GDestroyNotify         destroy);
-  void (* clear_attributes)   (GtkCellLayout         *cell_layout,
-                               GtkCellRenderer       *cell);
-  void (* reorder)            (GtkCellLayout         *cell_layout,
-                               GtkCellRenderer       *cell,
+  void (* clear_attributes)   (CtkCellLayout         *cell_layout,
+                               CtkCellRenderer       *cell);
+  void (* reorder)            (CtkCellLayout         *cell_layout,
+                               CtkCellRenderer       *cell,
                                gint                   position);
-  GList* (* get_cells)        (GtkCellLayout         *cell_layout);
+  GList* (* get_cells)        (CtkCellLayout         *cell_layout);
 
-  GtkCellArea *(* get_area)   (GtkCellLayout         *cell_layout);
+  CtkCellArea *(* get_area)   (CtkCellLayout         *cell_layout);
 };
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_cell_layout_get_type           (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_layout_pack_start         (GtkCellLayout         *cell_layout,
-                                          GtkCellRenderer       *cell,
+void  ctk_cell_layout_pack_start         (CtkCellLayout         *cell_layout,
+                                          CtkCellRenderer       *cell,
                                           gboolean               expand);
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_layout_pack_end           (GtkCellLayout         *cell_layout,
-                                          GtkCellRenderer       *cell,
+void  ctk_cell_layout_pack_end           (CtkCellLayout         *cell_layout,
+                                          CtkCellRenderer       *cell,
                                           gboolean               expand);
 GDK_AVAILABLE_IN_ALL
-GList *ctk_cell_layout_get_cells         (GtkCellLayout         *cell_layout);
+GList *ctk_cell_layout_get_cells         (CtkCellLayout         *cell_layout);
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_layout_clear              (GtkCellLayout         *cell_layout);
+void  ctk_cell_layout_clear              (CtkCellLayout         *cell_layout);
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_layout_set_attributes     (GtkCellLayout         *cell_layout,
-                                          GtkCellRenderer       *cell,
+void  ctk_cell_layout_set_attributes     (CtkCellLayout         *cell_layout,
+                                          CtkCellRenderer       *cell,
                                           ...) G_GNUC_NULL_TERMINATED;
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_layout_add_attribute      (GtkCellLayout         *cell_layout,
-                                          GtkCellRenderer       *cell,
+void  ctk_cell_layout_add_attribute      (CtkCellLayout         *cell_layout,
+                                          CtkCellRenderer       *cell,
                                           const gchar           *attribute,
                                           gint                   column);
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_layout_set_cell_data_func (GtkCellLayout         *cell_layout,
-                                          GtkCellRenderer       *cell,
-                                          GtkCellLayoutDataFunc  func,
+void  ctk_cell_layout_set_cell_data_func (CtkCellLayout         *cell_layout,
+                                          CtkCellRenderer       *cell,
+                                          CtkCellLayoutDataFunc  func,
                                           gpointer               func_data,
                                           GDestroyNotify         destroy);
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_layout_clear_attributes   (GtkCellLayout         *cell_layout,
-                                          GtkCellRenderer       *cell);
+void  ctk_cell_layout_clear_attributes   (CtkCellLayout         *cell_layout,
+                                          CtkCellRenderer       *cell);
 GDK_AVAILABLE_IN_ALL
-void  ctk_cell_layout_reorder            (GtkCellLayout         *cell_layout,
-                                          GtkCellRenderer       *cell,
+void  ctk_cell_layout_reorder            (CtkCellLayout         *cell_layout,
+                                          CtkCellRenderer       *cell,
                                           gint                   position);
 GDK_AVAILABLE_IN_ALL
-GtkCellArea *ctk_cell_layout_get_area    (GtkCellLayout         *cell_layout);
+CtkCellArea *ctk_cell_layout_get_area    (CtkCellLayout         *cell_layout);
 
-gboolean _ctk_cell_layout_buildable_custom_tag_start (GtkBuildable  *buildable,
-						      GtkBuilder    *builder,
+gboolean _ctk_cell_layout_buildable_custom_tag_start (CtkBuildable  *buildable,
+						      CtkBuilder    *builder,
 						      GObject       *child,
 						      const gchar   *tagname,
 						      GMarkupParser *parser,
 						      gpointer      *data);
-gboolean _ctk_cell_layout_buildable_custom_tag_end   (GtkBuildable  *buildable,
-						      GtkBuilder    *builder,
+gboolean _ctk_cell_layout_buildable_custom_tag_end   (CtkBuildable  *buildable,
+						      CtkBuilder    *builder,
 						      GObject       *child,
 						      const gchar   *tagname,
 						      gpointer      *data);
-void _ctk_cell_layout_buildable_add_child            (GtkBuildable  *buildable,
-						      GtkBuilder    *builder,
+void _ctk_cell_layout_buildable_add_child            (CtkBuildable  *buildable,
+						      CtkBuilder    *builder,
 						      GObject       *child,
 						      const gchar   *type);
 

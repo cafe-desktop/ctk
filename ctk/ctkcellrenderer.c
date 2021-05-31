@@ -28,16 +28,16 @@
 /**
  * SECTION:ctkcellrenderer
  * @Short_description: An object for rendering a single cell
- * @Title: GtkCellRenderer
- * @See_also: #GtkCellEditable
+ * @Title: CtkCellRenderer
+ * @See_also: #CtkCellEditable
  *
- * The #GtkCellRenderer is a base class of a set of objects used for
+ * The #CtkCellRenderer is a base class of a set of objects used for
  * rendering a cell to a #cairo_t.  These objects are used primarily by
- * the #GtkTreeView widget, though they aren’t tied to them in any
- * specific way.  It is worth noting that #GtkCellRenderer is not a
- * #GtkWidget and cannot be treated as such.
+ * the #CtkTreeView widget, though they aren’t tied to them in any
+ * specific way.  It is worth noting that #CtkCellRenderer is not a
+ * #CtkWidget and cannot be treated as such.
  *
- * The primary use of a #GtkCellRenderer is for drawing a certain graphical
+ * The primary use of a #CtkCellRenderer is for drawing a certain graphical
  * elements on a #cairo_t. Typically, one cell renderer is used to
  * draw many cells on the screen.  To this extent, it isn’t expected that a
  * CellRenderer keep any permanent state around.  Instead, any state is set
@@ -46,23 +46,23 @@
  * is rendered in the correct location using ctk_cell_renderer_render().
  *
  * There are a number of rules that must be followed when writing a new
- * #GtkCellRenderer.  First and foremost, it’s important that a certain set
+ * #CtkCellRenderer.  First and foremost, it’s important that a certain set
  * of properties will always yield a cell renderer of the same size,
- * barring a #GtkStyle change.  The #GtkCellRenderer also has a number of
+ * barring a #CtkStyle change.  The #CtkCellRenderer also has a number of
  * generic properties that are expected to be honored by all children.
  *
  * Beyond merely rendering a cell, cell renderers can optionally
  * provide active user interface elements. A cell renderer can be
- * “activatable” like #GtkCellRendererToggle,
+ * “activatable” like #CtkCellRendererToggle,
  * which toggles when it gets activated by a mouse click, or it can be
- * “editable” like #GtkCellRendererText, which
+ * “editable” like #CtkCellRendererText, which
  * allows the user to edit the text using a widget implementing the
- * #GtkCellEditable interface, e.g. #GtkEntry.
+ * #CtkCellEditable interface, e.g. #CtkEntry.
  * To make a cell renderer activatable or editable, you have to
- * implement the #GtkCellRendererClass.activate or
- * #GtkCellRendererClass.start_editing virtual functions, respectively.
+ * implement the #CtkCellRendererClass.activate or
+ * #CtkCellRendererClass.start_editing virtual functions, respectively.
  *
- * Many properties of #GtkCellRenderer and its subclasses have a
+ * Many properties of #CtkCellRenderer and its subclasses have a
  * corresponding “set” property, e.g. “cell-background-set” corresponds
  * to “cell-background”. These “set” properties reflect whether a property
  * has been set or not. You should not set them independently.
@@ -71,8 +71,8 @@
 
 #define DEBUG_CELL_SIZE_REQUEST 0
 
-static void ctk_cell_renderer_init          (GtkCellRenderer      *cell);
-static void ctk_cell_renderer_class_init    (GtkCellRendererClass *class);
+static void ctk_cell_renderer_init          (CtkCellRenderer      *cell);
+static void ctk_cell_renderer_class_init    (CtkCellRendererClass *class);
 static void ctk_cell_renderer_get_property  (GObject              *object,
 					     guint                 param_id,
 					     GValue               *value,
@@ -81,37 +81,37 @@ static void ctk_cell_renderer_set_property  (GObject              *object,
 					     guint                 param_id,
 					     const GValue         *value,
 					     GParamSpec           *pspec);
-static void set_cell_bg_color               (GtkCellRenderer      *cell,
+static void set_cell_bg_color               (CtkCellRenderer      *cell,
 					     GdkRGBA              *rgba);
 
-/* Fallback GtkCellRenderer    implementation to use remaining ->get_size() implementations */
-static GtkSizeRequestMode ctk_cell_renderer_real_get_request_mode(GtkCellRenderer         *cell);
-static void ctk_cell_renderer_real_get_preferred_width           (GtkCellRenderer         *cell,
-                                                                  GtkWidget               *widget,
+/* Fallback CtkCellRenderer    implementation to use remaining ->get_size() implementations */
+static CtkSizeRequestMode ctk_cell_renderer_real_get_request_mode(CtkCellRenderer         *cell);
+static void ctk_cell_renderer_real_get_preferred_width           (CtkCellRenderer         *cell,
+                                                                  CtkWidget               *widget,
                                                                   gint                    *minimum_size,
                                                                   gint                    *natural_size);
-static void ctk_cell_renderer_real_get_preferred_height          (GtkCellRenderer         *cell,
-                                                                  GtkWidget               *widget,
+static void ctk_cell_renderer_real_get_preferred_height          (CtkCellRenderer         *cell,
+                                                                  CtkWidget               *widget,
                                                                   gint                    *minimum_size,
                                                                   gint                    *natural_size);
-static void ctk_cell_renderer_real_get_preferred_height_for_width(GtkCellRenderer         *cell,
-                                                                  GtkWidget               *widget,
+static void ctk_cell_renderer_real_get_preferred_height_for_width(CtkCellRenderer         *cell,
+                                                                  CtkWidget               *widget,
                                                                   gint                     width,
                                                                   gint                    *minimum_height,
                                                                   gint                    *natural_height);
-static void ctk_cell_renderer_real_get_preferred_width_for_height(GtkCellRenderer         *cell,
-                                                                  GtkWidget               *widget,
+static void ctk_cell_renderer_real_get_preferred_width_for_height(CtkCellRenderer         *cell,
+                                                                  CtkWidget               *widget,
                                                                   gint                     height,
                                                                   gint                    *minimum_width,
                                                                   gint                    *natural_width);
-static void ctk_cell_renderer_real_get_aligned_area              (GtkCellRenderer         *cell,
-								  GtkWidget               *widget,
-								  GtkCellRendererState     flags,
+static void ctk_cell_renderer_real_get_aligned_area              (CtkCellRenderer         *cell,
+								  CtkWidget               *widget,
+								  CtkCellRendererState     flags,
 								  const GdkRectangle      *cell_area,
 								  GdkRectangle            *aligned_area);
 
 
-struct _GtkCellRendererPrivate
+struct _CtkCellRendererPrivate
 {
   gfloat xalign;
   gfloat yalign;
@@ -133,7 +133,7 @@ struct _GtkCellRendererPrivate
   GdkRGBA cell_background;
 };
 
-struct _GtkCellRendererClassPrivate
+struct _CtkCellRendererClassPrivate
 {
   GType accessible_type;
 };
@@ -165,19 +165,19 @@ enum {
   LAST_SIGNAL
 };
 
-static gint GtkCellRenderer_private_offset;
+static gint CtkCellRenderer_private_offset;
 static guint  cell_renderer_signals[LAST_SIGNAL] = { 0 };
 
 static inline gpointer
-ctk_cell_renderer_get_instance_private (GtkCellRenderer *self)
+ctk_cell_renderer_get_instance_private (CtkCellRenderer *self)
 {
-  return (G_STRUCT_MEMBER_P (self, GtkCellRenderer_private_offset));
+  return (G_STRUCT_MEMBER_P (self, CtkCellRenderer_private_offset));
 }
 
 static void
-ctk_cell_renderer_init (GtkCellRenderer *cell)
+ctk_cell_renderer_init (CtkCellRenderer *cell)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   cell->priv = ctk_cell_renderer_get_instance_private (cell);
   priv = cell->priv;
@@ -197,7 +197,7 @@ ctk_cell_renderer_init (GtkCellRenderer *cell)
 }
 
 static void
-ctk_cell_renderer_class_init (GtkCellRendererClass *class)
+ctk_cell_renderer_class_init (CtkCellRendererClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
@@ -214,7 +214,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
   class->get_aligned_area               = ctk_cell_renderer_real_get_aligned_area;
 
   /**
-   * GtkCellRenderer::editing-canceled:
+   * CtkCellRenderer::editing-canceled:
    * @renderer: the object which received the signal
    *
    * This signal gets emitted when the user cancels the process of editing a
@@ -229,21 +229,21 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
     g_signal_new (I_("editing-canceled"),
 		  G_OBJECT_CLASS_TYPE (object_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkCellRendererClass, editing_canceled),
+		  G_STRUCT_OFFSET (CtkCellRendererClass, editing_canceled),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
-   * GtkCellRenderer::editing-started:
+   * CtkCellRenderer::editing-started:
    * @renderer: the object which received the signal
-   * @editable: the #GtkCellEditable
+   * @editable: the #CtkCellEditable
    * @path: the path identifying the edited cell
    *
    * This signal gets emitted when a cell starts to be edited.
    * The intended use of this signal is to do special setup
-   * on @editable, e.g. adding a #GtkEntryCompletion or setting
-   * up additional columns in a #GtkComboBox.
+   * on @editable, e.g. adding a #CtkEntryCompletion or setting
+   * up additional columns in a #CtkComboBox.
    *
    * See ctk_cell_editable_start_editing() for information on the lifecycle of
    * the @editable and a way to do setup that doesn’t depend on the @renderer.
@@ -254,16 +254,16 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
    * before doing any specific setup, as in the following example:
    * |[<!-- language="C" -->
    * static void
-   * text_editing_started (GtkCellRenderer *cell,
-   *                       GtkCellEditable *editable,
+   * text_editing_started (CtkCellRenderer *cell,
+   *                       CtkCellEditable *editable,
    *                       const gchar     *path,
    *                       gpointer         data)
    * {
    *   if (CTK_IS_ENTRY (editable)) 
    *     {
-   *       GtkEntry *entry = CTK_ENTRY (editable);
+   *       CtkEntry *entry = CTK_ENTRY (editable);
    *       
-   *       // ... create a GtkEntryCompletion
+   *       // ... create a CtkEntryCompletion
    *       
    *       ctk_entry_set_completion (entry, completion);
    *     }
@@ -276,7 +276,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
     g_signal_new (I_("editing-started"),
 		  G_OBJECT_CLASS_TYPE (object_class),
 		  G_SIGNAL_RUN_FIRST,
-		  G_STRUCT_OFFSET (GtkCellRendererClass, editing_started),
+		  G_STRUCT_OFFSET (CtkCellRendererClass, editing_started),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_STRING,
 		  G_TYPE_NONE, 2,
@@ -396,11 +396,11 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 							CTK_PARAM_WRITABLE));
 
   /**
-   * GtkCellRenderer:cell-background-gdk:
+   * CtkCellRenderer:cell-background-gdk:
    *
    * Cell background as a #GdkColor
    *
-   * Deprecated: 3.4: Use #GtkCellRenderer:cell-background-rgba instead.
+   * Deprecated: 3.4: Use #CtkCellRenderer:cell-background-rgba instead.
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_object_class_install_property (object_class,
@@ -412,7 +412,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 						       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   /**
-   * GtkCellRenderer:cell-background-rgba:
+   * CtkCellRenderer:cell-background-rgba:
    *
    * Cell background as a #GdkRGBA
    *
@@ -441,8 +441,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                 P_("Cell background set"),
                 P_("Whether the cell background color is set"));
 
-  if (GtkCellRenderer_private_offset != 0)
-    g_type_class_adjust_private_offset (class, &GtkCellRenderer_private_offset);
+  if (CtkCellRenderer_private_offset != 0)
+    g_type_class_adjust_private_offset (class, &CtkCellRenderer_private_offset);
 
   ctk_cell_renderer_class_set_accessible_type (class, CTK_TYPE_RENDERER_CELL_ACCESSIBLE);
 }
@@ -450,9 +450,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 ctk_cell_renderer_base_class_init (gpointer g_class)
 {
-  GtkCellRendererClass *klass = g_class;
+  CtkCellRendererClass *klass = g_class;
 
-  klass->priv = G_TYPE_CLASS_GET_PRIVATE (g_class, CTK_TYPE_CELL_RENDERER, GtkCellRendererClassPrivate);
+  klass->priv = G_TYPE_CLASS_GET_PRIVATE (g_class, CTK_TYPE_CELL_RENDERER, CtkCellRendererClassPrivate);
 }
 
 GType
@@ -464,23 +464,23 @@ ctk_cell_renderer_get_type (void)
     {
       const GTypeInfo cell_renderer_info =
       {
-	sizeof (GtkCellRendererClass),
+	sizeof (CtkCellRendererClass),
 	ctk_cell_renderer_base_class_init,
         NULL,
 	(GClassInitFunc) ctk_cell_renderer_class_init,
 	NULL,		/* class_finalize */
 	NULL,		/* class_init */
-	sizeof (GtkWidget),
+	sizeof (CtkWidget),
 	0,		/* n_preallocs */
 	(GInstanceInitFunc) ctk_cell_renderer_init,
 	NULL,		/* value_table */
       };
-      cell_renderer_type = g_type_register_static (G_TYPE_INITIALLY_UNOWNED, "GtkCellRenderer",
+      cell_renderer_type = g_type_register_static (G_TYPE_INITIALLY_UNOWNED, "CtkCellRenderer",
                                                    &cell_renderer_info, G_TYPE_FLAG_ABSTRACT);
 
-      GtkCellRenderer_private_offset =
-        g_type_add_instance_private (cell_renderer_type, sizeof (GtkCellRendererPrivate));
-      g_type_add_class_private (cell_renderer_type, sizeof (GtkCellRendererClassPrivate));
+      CtkCellRenderer_private_offset =
+        g_type_add_instance_private (cell_renderer_type, sizeof (CtkCellRendererPrivate));
+      g_type_add_class_private (cell_renderer_type, sizeof (CtkCellRendererClassPrivate));
     }
 
   return cell_renderer_type;
@@ -492,8 +492,8 @@ ctk_cell_renderer_get_property (GObject     *object,
 				GValue      *value,
 				GParamSpec  *pspec)
 {
-  GtkCellRenderer *cell = CTK_CELL_RENDERER (object);
-  GtkCellRendererPrivate *priv = cell->priv;
+  CtkCellRenderer *cell = CTK_CELL_RENDERER (object);
+  CtkCellRendererPrivate *priv = cell->priv;
 
   switch (param_id)
     {
@@ -564,8 +564,8 @@ ctk_cell_renderer_set_property (GObject      *object,
 				const GValue *value,
 				GParamSpec   *pspec)
 {
-  GtkCellRenderer *cell = CTK_CELL_RENDERER (object);
-  GtkCellRendererPrivate *priv = cell->priv;
+  CtkCellRenderer *cell = CTK_CELL_RENDERER (object);
+  CtkCellRendererPrivate *priv = cell->priv;
 
   switch (param_id)
     {
@@ -700,10 +700,10 @@ ctk_cell_renderer_set_property (GObject      *object,
 }
 
 static void
-set_cell_bg_color (GtkCellRenderer *cell,
+set_cell_bg_color (CtkCellRenderer *cell,
                    GdkRGBA         *rgba)
 {
-  GtkCellRendererPrivate *priv = cell->priv;
+  CtkCellRendererPrivate *priv = cell->priv;
 
   if (rgba)
     {
@@ -728,7 +728,7 @@ set_cell_bg_color (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_size:
- * @cell: a #GtkCellRenderer
+ * @cell: a #CtkCellRenderer
  * @widget: the widget the renderer is rendering to
  * @cell_area: (allow-none): The area a cell will be allocated, or %NULL
  * @x_offset: (out) (allow-none): location to return x offset of cell relative to @cell_area, or %NULL
@@ -748,15 +748,15 @@ set_cell_bg_color (GtkCellRenderer *cell,
  * Deprecated: 3.0: Use ctk_cell_renderer_get_preferred_size() instead.
  **/
 void
-ctk_cell_renderer_get_size (GtkCellRenderer    *cell,
-			    GtkWidget          *widget,
+ctk_cell_renderer_get_size (CtkCellRenderer    *cell,
+			    CtkWidget          *widget,
 			    const GdkRectangle *cell_area,
 			    gint               *x_offset,
 			    gint               *y_offset,
 			    gint               *width,
 			    gint               *height)
 {
-  GtkRequisition request;
+  CtkRequisition request;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
@@ -775,7 +775,7 @@ ctk_cell_renderer_get_size (GtkCellRenderer    *cell,
 
 /**
  * ctk_cell_renderer_render:
- * @cell: a #GtkCellRenderer
+ * @cell: a #CtkCellRenderer
  * @cr: a cairo context to draw to
  * @widget: the widget owning @window
  * @background_area: entire cell area (including tree expanders and maybe 
@@ -783,26 +783,26 @@ ctk_cell_renderer_get_size (GtkCellRenderer    *cell,
  * @cell_area: area normally rendered by a cell renderer
  * @flags: flags that affect rendering
  *
- * Invokes the virtual render function of the #GtkCellRenderer. The three
+ * Invokes the virtual render function of the #CtkCellRenderer. The three
  * passed-in rectangles are areas in @cr. Most renderers will draw within
- * @cell_area; the xalign, yalign, xpad, and ypad fields of the #GtkCellRenderer
+ * @cell_area; the xalign, yalign, xpad, and ypad fields of the #CtkCellRenderer
  * should be honored with respect to @cell_area. @background_area includes the
  * blank space around the cell, and also the area containing the tree expander;
  * so the @background_area rectangles for all cells tile to cover the entire
  * @window.
  **/
 void
-ctk_cell_renderer_render (GtkCellRenderer      *cell,
+ctk_cell_renderer_render (CtkCellRenderer      *cell,
                           cairo_t              *cr,
-                          GtkWidget            *widget,
+                          CtkWidget            *widget,
                           const GdkRectangle   *background_area,
                           const GdkRectangle   *cell_area,
-                          GtkCellRendererState  flags)
+                          CtkCellRendererState  flags)
 {
   gboolean selected = FALSE;
-  GtkCellRendererPrivate *priv = cell->priv;
-  GtkStyleContext *context;
-  GtkStateFlags state;
+  CtkCellRendererPrivate *priv = cell->priv;
+  CtkStyleContext *context;
+  CtkStateFlags state;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (CTK_CELL_RENDERER_GET_CLASS (cell)->render != NULL);
@@ -842,31 +842,31 @@ ctk_cell_renderer_render (GtkCellRenderer      *cell,
 
 /**
  * ctk_cell_renderer_activate:
- * @cell: a #GtkCellRenderer
+ * @cell: a #CtkCellRenderer
  * @event: a #GdkEvent
  * @widget: widget that received the event
  * @path: widget-dependent string representation of the event location; 
- *    e.g. for #GtkTreeView, a string representation of #GtkTreePath
+ *    e.g. for #CtkTreeView, a string representation of #CtkTreePath
  * @background_area: background area as passed to ctk_cell_renderer_render()
  * @cell_area: cell area as passed to ctk_cell_renderer_render()
  * @flags: render flags
  *
  * Passes an activate event to the cell renderer for possible processing.  
- * Some cell renderers may use events; for example, #GtkCellRendererToggle 
+ * Some cell renderers may use events; for example, #CtkCellRendererToggle 
  * toggles when it gets a mouse click.
  *
  * Returns: %TRUE if the event was consumed/handled
  **/
 gboolean
-ctk_cell_renderer_activate (GtkCellRenderer      *cell,
+ctk_cell_renderer_activate (CtkCellRenderer      *cell,
 			    GdkEvent             *event,
-			    GtkWidget            *widget,
+			    CtkWidget            *widget,
 			    const gchar          *path,
 			    const GdkRectangle   *background_area,
 			    const GdkRectangle   *cell_area,
-			    GtkCellRendererState  flags)
+			    CtkCellRendererState  flags)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
@@ -889,33 +889,33 @@ ctk_cell_renderer_activate (GtkCellRenderer      *cell,
 
 /**
  * ctk_cell_renderer_start_editing:
- * @cell: a #GtkCellRenderer
+ * @cell: a #CtkCellRenderer
  * @event: (nullable): a #GdkEvent
  * @widget: widget that received the event
  * @path: widget-dependent string representation of the event location;
- *    e.g. for #GtkTreeView, a string representation of #GtkTreePath
+ *    e.g. for #CtkTreeView, a string representation of #CtkTreePath
  * @background_area: background area as passed to ctk_cell_renderer_render()
  * @cell_area: cell area as passed to ctk_cell_renderer_render()
  * @flags: render flags
  *
- * Starts editing the contents of this @cell, through a new #GtkCellEditable
- * widget created by the #GtkCellRendererClass.start_editing virtual function.
+ * Starts editing the contents of this @cell, through a new #CtkCellEditable
+ * widget created by the #CtkCellRendererClass.start_editing virtual function.
  *
- * Returns: (nullable) (transfer none): A new #GtkCellEditable for editing this
+ * Returns: (nullable) (transfer none): A new #CtkCellEditable for editing this
  *   @cell, or %NULL if editing is not possible
  **/
-GtkCellEditable *
-ctk_cell_renderer_start_editing (GtkCellRenderer      *cell,
+CtkCellEditable *
+ctk_cell_renderer_start_editing (CtkCellRenderer      *cell,
 				 GdkEvent             *event,
-				 GtkWidget            *widget,
+				 CtkWidget            *widget,
 				 const gchar          *path,
 				 const GdkRectangle   *background_area,
 				 const GdkRectangle   *cell_area,
-				 GtkCellRendererState  flags)
+				 CtkCellRendererState  flags)
 
 {
-  GtkCellRendererPrivate *priv;
-  GtkCellEditable *editable;
+  CtkCellRendererPrivate *priv;
+  CtkCellEditable *editable;
 
   g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), NULL);
 
@@ -951,18 +951,18 @@ ctk_cell_renderer_start_editing (GtkCellRenderer      *cell,
 
 /**
  * ctk_cell_renderer_set_fixed_size:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @width: the width of the cell renderer, or -1
  * @height: the height of the cell renderer, or -1
  *
  * Sets the renderer size to be explicit, independent of the properties set.
  **/
 void
-ctk_cell_renderer_set_fixed_size (GtkCellRenderer *cell,
+ctk_cell_renderer_set_fixed_size (CtkCellRenderer *cell,
 				  gint             width,
 				  gint             height)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (width >= -1 && height >= -1);
@@ -991,18 +991,18 @@ ctk_cell_renderer_set_fixed_size (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_fixed_size:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @width: (out) (allow-none): location to fill in with the fixed width of the cell, or %NULL
  * @height: (out) (allow-none): location to fill in with the fixed height of the cell, or %NULL
  *
  * Fills in @width and @height with the appropriate size of @cell.
  **/
 void
-ctk_cell_renderer_get_fixed_size (GtkCellRenderer *cell,
+ctk_cell_renderer_get_fixed_size (CtkCellRenderer *cell,
 				  gint            *width,
 				  gint            *height)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
@@ -1016,7 +1016,7 @@ ctk_cell_renderer_get_fixed_size (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_set_alignment:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @xalign: the x alignment of the cell renderer
  * @yalign: the y alignment of the cell renderer
  *
@@ -1025,11 +1025,11 @@ ctk_cell_renderer_get_fixed_size (GtkCellRenderer *cell,
  * Since: 2.18
  **/
 void
-ctk_cell_renderer_set_alignment (GtkCellRenderer *cell,
+ctk_cell_renderer_set_alignment (CtkCellRenderer *cell,
                                  gfloat           xalign,
                                  gfloat           yalign)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (xalign >= 0.0 && xalign <= 1.0);
@@ -1059,7 +1059,7 @@ ctk_cell_renderer_set_alignment (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_alignment:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @xalign: (out) (allow-none): location to fill in with the x alignment of the cell, or %NULL
  * @yalign: (out) (allow-none): location to fill in with the y alignment of the cell, or %NULL
  *
@@ -1068,11 +1068,11 @@ ctk_cell_renderer_set_alignment (GtkCellRenderer *cell,
  * Since: 2.18
  **/
 void
-ctk_cell_renderer_get_alignment (GtkCellRenderer *cell,
+ctk_cell_renderer_get_alignment (CtkCellRenderer *cell,
                                  gfloat          *xalign,
                                  gfloat          *yalign)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
@@ -1086,7 +1086,7 @@ ctk_cell_renderer_get_alignment (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_set_padding:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @xpad: the x padding of the cell renderer
  * @ypad: the y padding of the cell renderer
  *
@@ -1095,11 +1095,11 @@ ctk_cell_renderer_get_alignment (GtkCellRenderer *cell,
  * Since: 2.18
  **/
 void
-ctk_cell_renderer_set_padding (GtkCellRenderer *cell,
+ctk_cell_renderer_set_padding (CtkCellRenderer *cell,
                                gint             xpad,
                                gint             ypad)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (xpad >= 0 && ypad >= 0);
@@ -1128,7 +1128,7 @@ ctk_cell_renderer_set_padding (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_padding:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @xpad: (out) (allow-none): location to fill in with the x padding of the cell, or %NULL
  * @ypad: (out) (allow-none): location to fill in with the y padding of the cell, or %NULL
  *
@@ -1137,11 +1137,11 @@ ctk_cell_renderer_set_padding (GtkCellRenderer *cell,
  * Since: 2.18
  **/
 void
-ctk_cell_renderer_get_padding (GtkCellRenderer *cell,
+ctk_cell_renderer_get_padding (CtkCellRenderer *cell,
                                gint            *xpad,
                                gint            *ypad)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
@@ -1155,7 +1155,7 @@ ctk_cell_renderer_get_padding (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_set_visible:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @visible: the visibility of the cell
  *
  * Sets the cell renderer’s visibility.
@@ -1163,10 +1163,10 @@ ctk_cell_renderer_get_padding (GtkCellRenderer *cell,
  * Since: 2.18
  **/
 void
-ctk_cell_renderer_set_visible (GtkCellRenderer *cell,
+ctk_cell_renderer_set_visible (CtkCellRenderer *cell,
                                gboolean         visible)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
@@ -1181,7 +1181,7 @@ ctk_cell_renderer_set_visible (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_visible:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  *
  * Returns the cell renderer’s visibility.
  *
@@ -1190,7 +1190,7 @@ ctk_cell_renderer_set_visible (GtkCellRenderer *cell,
  * Since: 2.18
  */
 gboolean
-ctk_cell_renderer_get_visible (GtkCellRenderer *cell)
+ctk_cell_renderer_get_visible (CtkCellRenderer *cell)
 {
   g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
@@ -1199,7 +1199,7 @@ ctk_cell_renderer_get_visible (GtkCellRenderer *cell)
 
 /**
  * ctk_cell_renderer_set_sensitive:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @sensitive: the sensitivity of the cell
  *
  * Sets the cell renderer’s sensitivity.
@@ -1207,10 +1207,10 @@ ctk_cell_renderer_get_visible (GtkCellRenderer *cell)
  * Since: 2.18
  **/
 void
-ctk_cell_renderer_set_sensitive (GtkCellRenderer *cell,
+ctk_cell_renderer_set_sensitive (CtkCellRenderer *cell,
                                  gboolean         sensitive)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
@@ -1225,7 +1225,7 @@ ctk_cell_renderer_set_sensitive (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_sensitive:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  *
  * Returns the cell renderer’s sensitivity.
  *
@@ -1234,7 +1234,7 @@ ctk_cell_renderer_set_sensitive (GtkCellRenderer *cell,
  * Since: 2.18
  */
 gboolean
-ctk_cell_renderer_get_sensitive (GtkCellRenderer *cell)
+ctk_cell_renderer_get_sensitive (CtkCellRenderer *cell)
 {
   g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
@@ -1244,7 +1244,7 @@ ctk_cell_renderer_get_sensitive (GtkCellRenderer *cell)
 
 /**
  * ctk_cell_renderer_is_activatable:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  *
  * Checks whether the cell renderer can do something when activated.
  *
@@ -1253,9 +1253,9 @@ ctk_cell_renderer_get_sensitive (GtkCellRenderer *cell)
  * Since: 3.0
  */
 gboolean
-ctk_cell_renderer_is_activatable (GtkCellRenderer *cell)
+ctk_cell_renderer_is_activatable (CtkCellRenderer *cell)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
@@ -1269,24 +1269,24 @@ ctk_cell_renderer_is_activatable (GtkCellRenderer *cell)
 
 /**
  * ctk_cell_renderer_stop_editing:
- * @cell: A #GtkCellRenderer
+ * @cell: A #CtkCellRenderer
  * @canceled: %TRUE if the editing has been canceled
  * 
  * Informs the cell renderer that the editing is stopped.
  * If @canceled is %TRUE, the cell renderer will emit the 
- * #GtkCellRenderer::editing-canceled signal. 
+ * #CtkCellRenderer::editing-canceled signal. 
  *
  * This function should be called by cell renderer implementations 
- * in response to the #GtkCellEditable::editing-done signal of 
- * #GtkCellEditable.
+ * in response to the #CtkCellEditable::editing-done signal of 
+ * #CtkCellEditable.
  *
  * Since: 2.6
  **/
 void
-ctk_cell_renderer_stop_editing (GtkCellRenderer *cell,
+ctk_cell_renderer_stop_editing (CtkCellRenderer *cell,
 				gboolean         canceled)
 {
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
@@ -1301,13 +1301,13 @@ ctk_cell_renderer_stop_editing (GtkCellRenderer *cell,
 }
 
 static void
-ctk_cell_renderer_real_get_preferred_size (GtkCellRenderer   *cell,
-                                           GtkWidget         *widget,
-                                           GtkOrientation     orientation,
+ctk_cell_renderer_real_get_preferred_size (CtkCellRenderer   *cell,
+                                           CtkWidget         *widget,
+                                           CtkOrientation     orientation,
                                            gint              *minimum_size,
                                            gint              *natural_size)
 {
-  GtkRequisition min_req;
+  CtkRequisition min_req;
 
   /* Fallback on the old API to get the size. */
   if (CTK_CELL_RENDERER_GET_CLASS (cell)->get_size)
@@ -1337,16 +1337,16 @@ ctk_cell_renderer_real_get_preferred_size (GtkCellRenderer   *cell,
     }
 }
 
-static GtkSizeRequestMode 
-ctk_cell_renderer_real_get_request_mode (GtkCellRenderer *cell)
+static CtkSizeRequestMode 
+ctk_cell_renderer_real_get_request_mode (CtkCellRenderer *cell)
 {
   /* By default cell renderers are height-for-width. */
   return CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
 }
 
 static void
-ctk_cell_renderer_real_get_preferred_width (GtkCellRenderer *cell,
-                                            GtkWidget       *widget,
+ctk_cell_renderer_real_get_preferred_width (CtkCellRenderer *cell,
+                                            CtkWidget       *widget,
                                             gint            *minimum_size,
                                             gint            *natural_size)
 {
@@ -1355,8 +1355,8 @@ ctk_cell_renderer_real_get_preferred_width (GtkCellRenderer *cell,
 }
 
 static void
-ctk_cell_renderer_real_get_preferred_height (GtkCellRenderer *cell,
-                                             GtkWidget       *widget,
+ctk_cell_renderer_real_get_preferred_height (CtkCellRenderer *cell,
+                                             CtkWidget       *widget,
                                              gint            *minimum_size,
                                              gint            *natural_size)
 {
@@ -1366,8 +1366,8 @@ ctk_cell_renderer_real_get_preferred_height (GtkCellRenderer *cell,
 
 
 static void
-ctk_cell_renderer_real_get_preferred_height_for_width (GtkCellRenderer *cell,
-                                                       GtkWidget       *widget,
+ctk_cell_renderer_real_get_preferred_height_for_width (CtkCellRenderer *cell,
+                                                       CtkWidget       *widget,
                                                        gint             width,
                                                        gint            *minimum_height,
                                                        gint            *natural_height)
@@ -1377,8 +1377,8 @@ ctk_cell_renderer_real_get_preferred_height_for_width (GtkCellRenderer *cell,
 }
 
 static void
-ctk_cell_renderer_real_get_preferred_width_for_height (GtkCellRenderer *cell,
-                                                       GtkWidget       *widget,
+ctk_cell_renderer_real_get_preferred_width_for_height (CtkCellRenderer *cell,
+                                                       CtkWidget       *widget,
                                                        gint             height,
                                                        gint            *minimum_width,
                                                        gint            *natural_width)
@@ -1392,9 +1392,9 @@ ctk_cell_renderer_real_get_preferred_width_for_height (GtkCellRenderer *cell,
  * space than its natural size (this is fine for toggles and pixbufs etc
  * but needs to be overridden from wrapping/ellipsizing text renderers) */
 static void
-ctk_cell_renderer_real_get_aligned_area (GtkCellRenderer         *cell,
-					 GtkWidget               *widget,
-					 GtkCellRendererState     flags,
+ctk_cell_renderer_real_get_aligned_area (CtkCellRenderer         *cell,
+					 CtkWidget               *widget,
+					 CtkCellRendererState     flags,
 					 const GdkRectangle      *cell_area,
 					 GdkRectangle            *aligned_area)
 {
@@ -1455,15 +1455,15 @@ ctk_cell_renderer_real_get_aligned_area (GtkCellRenderer         *cell,
  * Note this is only a trivial “align * (allocation - request)” operation.
  */
 void
-_ctk_cell_renderer_calc_offset    (GtkCellRenderer      *cell,
+_ctk_cell_renderer_calc_offset    (CtkCellRenderer      *cell,
 				   const GdkRectangle   *cell_area,
-				   GtkTextDirection      direction,
+				   CtkTextDirection      direction,
 				   gint                  width,
 				   gint                  height,
 				   gint                 *x_offset,
 				   gint                 *y_offset)
 { 
-  GtkCellRendererPrivate *priv;
+  CtkCellRendererPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (cell_area != NULL);
@@ -1488,17 +1488,17 @@ _ctk_cell_renderer_calc_offset    (GtkCellRenderer      *cell,
 
 /**
  * ctk_cell_renderer_get_request_mode:
- * @cell: a #GtkCellRenderer    instance
+ * @cell: a #CtkCellRenderer    instance
  *
  * Gets whether the cell renderer prefers a height-for-width layout
  * or a width-for-height layout.
  *
- * Returns: The #GtkSizeRequestMode preferred by this renderer.
+ * Returns: The #CtkSizeRequestMode preferred by this renderer.
  *
  * Since: 3.0
  */
-GtkSizeRequestMode
-ctk_cell_renderer_get_request_mode (GtkCellRenderer *cell)
+CtkSizeRequestMode
+ctk_cell_renderer_get_request_mode (CtkCellRenderer *cell)
 {
   g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
@@ -1507,8 +1507,8 @@ ctk_cell_renderer_get_request_mode (GtkCellRenderer *cell)
 
 /**
  * ctk_cell_renderer_get_preferred_width:
- * @cell: a #GtkCellRenderer instance
- * @widget: the #GtkWidget this cell will be rendering to
+ * @cell: a #CtkCellRenderer instance
+ * @widget: the #CtkWidget this cell will be rendering to
  * @minimum_size: (out) (allow-none): location to store the minimum size, or %NULL
  * @natural_size: (out) (allow-none): location to store the natural size, or %NULL
  *
@@ -1517,12 +1517,12 @@ ctk_cell_renderer_get_request_mode (GtkCellRenderer *cell)
  * Since: 3.0
  */
 void
-ctk_cell_renderer_get_preferred_width (GtkCellRenderer *cell,
-                                       GtkWidget       *widget,
+ctk_cell_renderer_get_preferred_width (CtkCellRenderer *cell,
+                                       CtkWidget       *widget,
                                        gint            *minimum_size,
                                        gint            *natural_size)
 {
-  GtkCellRendererClass *klass;
+  CtkCellRendererClass *klass;
   gint width;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
@@ -1555,8 +1555,8 @@ ctk_cell_renderer_get_preferred_width (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_preferred_height:
- * @cell: a #GtkCellRenderer instance
- * @widget: the #GtkWidget this cell will be rendering to
+ * @cell: a #CtkCellRenderer instance
+ * @widget: the #CtkWidget this cell will be rendering to
  * @minimum_size: (out) (allow-none): location to store the minimum size, or %NULL
  * @natural_size: (out) (allow-none): location to store the natural size, or %NULL
  *
@@ -1565,12 +1565,12 @@ ctk_cell_renderer_get_preferred_width (GtkCellRenderer *cell,
  * Since: 3.0
  */
 void
-ctk_cell_renderer_get_preferred_height (GtkCellRenderer *cell,
-                                        GtkWidget       *widget,
+ctk_cell_renderer_get_preferred_height (CtkCellRenderer *cell,
+                                        CtkWidget       *widget,
                                         gint            *minimum_size,
                                         gint            *natural_size)
 {
-  GtkCellRendererClass *klass;
+  CtkCellRendererClass *klass;
   gint height;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
@@ -1603,8 +1603,8 @@ ctk_cell_renderer_get_preferred_height (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_preferred_width_for_height:
- * @cell: a #GtkCellRenderer instance
- * @widget: the #GtkWidget this cell will be rendering to
+ * @cell: a #CtkCellRenderer instance
+ * @widget: the #CtkWidget this cell will be rendering to
  * @height: the size which is available for allocation
  * @minimum_width: (out) (allow-none): location for storing the minimum size, or %NULL
  * @natural_width: (out) (allow-none): location for storing the preferred size, or %NULL
@@ -1615,13 +1615,13 @@ ctk_cell_renderer_get_preferred_height (GtkCellRenderer *cell,
  * Since: 3.0
  */
 void
-ctk_cell_renderer_get_preferred_width_for_height (GtkCellRenderer *cell,
-                                                  GtkWidget       *widget,
+ctk_cell_renderer_get_preferred_width_for_height (CtkCellRenderer *cell,
+                                                  CtkWidget       *widget,
                                                   gint             height,
                                                   gint            *minimum_width,
                                                   gint            *natural_width)
 {
-  GtkCellRendererClass *klass;
+  CtkCellRendererClass *klass;
   gint width;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
@@ -1653,8 +1653,8 @@ ctk_cell_renderer_get_preferred_width_for_height (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_preferred_height_for_width:
- * @cell: a #GtkCellRenderer instance
- * @widget: the #GtkWidget this cell will be rendering to
+ * @cell: a #CtkCellRenderer instance
+ * @widget: the #CtkWidget this cell will be rendering to
  * @width: the size which is available for allocation
  * @minimum_height: (out) (allow-none): location for storing the minimum size, or %NULL
  * @natural_height: (out) (allow-none): location for storing the preferred size, or %NULL
@@ -1665,13 +1665,13 @@ ctk_cell_renderer_get_preferred_width_for_height (GtkCellRenderer *cell,
  * Since: 3.0
  */
 void
-ctk_cell_renderer_get_preferred_height_for_width (GtkCellRenderer *cell,
-                                                  GtkWidget       *widget,
+ctk_cell_renderer_get_preferred_height_for_width (CtkCellRenderer *cell,
+                                                  CtkWidget       *widget,
                                                   gint             width,
                                                   gint            *minimum_height,
                                                   gint            *natural_height)
 {
-  GtkCellRendererClass *klass;
+  CtkCellRendererClass *klass;
   gint height;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
@@ -1703,8 +1703,8 @@ ctk_cell_renderer_get_preferred_height_for_width (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_preferred_size:
- * @cell: a #GtkCellRenderer instance
- * @widget: the #GtkWidget this cell will be rendering to
+ * @cell: a #CtkCellRenderer instance
+ * @widget: the #CtkWidget this cell will be rendering to
  * @minimum_size: (out) (allow-none): location for storing the minimum size, or %NULL
  * @natural_size: (out) (allow-none): location for storing the natural size, or %NULL
  *
@@ -1714,10 +1714,10 @@ ctk_cell_renderer_get_preferred_height_for_width (GtkCellRenderer *cell,
  * Since: 3.0
  */
 void
-ctk_cell_renderer_get_preferred_size (GtkCellRenderer *cell,
-                                      GtkWidget       *widget,
-                                      GtkRequisition  *minimum_size,
-                                      GtkRequisition  *natural_size)
+ctk_cell_renderer_get_preferred_size (CtkCellRenderer *cell,
+                                      CtkWidget       *widget,
+                                      CtkRequisition  *minimum_size,
+                                      CtkRequisition  *natural_size)
 {
   gint min_width, nat_width;
   gint min_height, nat_height;
@@ -1764,8 +1764,8 @@ ctk_cell_renderer_get_preferred_size (GtkCellRenderer *cell,
 
 /**
  * ctk_cell_renderer_get_aligned_area:
- * @cell: a #GtkCellRenderer instance
- * @widget: the #GtkWidget this cell will be rendering to
+ * @cell: a #CtkCellRenderer instance
+ * @widget: the #CtkWidget this cell will be rendering to
  * @flags: render flags
  * @cell_area: cell area which would be passed to ctk_cell_renderer_render()
  * @aligned_area: (out): the return location for the space inside @cell_area
@@ -1777,13 +1777,13 @@ ctk_cell_renderer_get_preferred_size (GtkCellRenderer *cell,
  * Since: 3.0
  */
 void
-ctk_cell_renderer_get_aligned_area (GtkCellRenderer      *cell,
-				    GtkWidget            *widget,
-				    GtkCellRendererState  flags,
+ctk_cell_renderer_get_aligned_area (CtkCellRenderer      *cell,
+				    CtkWidget            *widget,
+				    CtkCellRendererState  flags,
 				    const GdkRectangle   *cell_area,
 				    GdkRectangle         *aligned_area)
 {
-  GtkCellRendererClass *klass;
+  CtkCellRendererClass *klass;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -1801,24 +1801,24 @@ ctk_cell_renderer_get_aligned_area (GtkCellRenderer      *cell,
 
 /**
  * ctk_cell_renderer_get_state:
- * @cell: (nullable): a #GtkCellRenderer, or %NULL
- * @widget: (nullable): a #GtkWidget, or %NULL
+ * @cell: (nullable): a #CtkCellRenderer, or %NULL
+ * @widget: (nullable): a #CtkWidget, or %NULL
  * @cell_state: cell renderer state
  *
- * Translates the cell renderer state to #GtkStateFlags,
+ * Translates the cell renderer state to #CtkStateFlags,
  * based on the cell renderer and widget sensitivity, and
- * the given #GtkCellRendererState.
+ * the given #CtkCellRendererState.
  *
  * Returns: the widget state flags applying to @cell
  *
  * Since: 3.0
  **/
-GtkStateFlags
-ctk_cell_renderer_get_state (GtkCellRenderer      *cell,
-			     GtkWidget            *widget,
-			     GtkCellRendererState  cell_state)
+CtkStateFlags
+ctk_cell_renderer_get_state (CtkCellRenderer      *cell,
+			     CtkWidget            *widget,
+			     CtkCellRendererState  cell_state)
 {
-  GtkStateFlags state = 0;
+  CtkStateFlags state = 0;
 
   g_return_val_if_fail (!cell || CTK_IS_CELL_RENDERER (cell), 0);
   g_return_val_if_fail (!widget || CTK_IS_WIDGET (widget), 0);
@@ -1854,7 +1854,7 @@ ctk_cell_renderer_get_state (GtkCellRenderer      *cell,
  * ctk_cell_renderer_class_set_accessible_type:
  * @renderer_class: class to set the accessible type for
  * @type: The object type that implements the accessible for @widget_class.
- *     The type must be a subtype of #GtkRendererCellAccessible
+ *     The type must be a subtype of #CtkRendererCellAccessible
  *
  * Sets the type to be used for creating accessibles for cells rendered by
  * cell renderers of @renderer_class. Note that multiple accessibles will
@@ -1864,10 +1864,10 @@ ctk_cell_renderer_get_state (GtkCellRenderer      *cell,
  * renderers.
  **/
 void
-ctk_cell_renderer_class_set_accessible_type (GtkCellRendererClass *renderer_class,
+ctk_cell_renderer_class_set_accessible_type (CtkCellRendererClass *renderer_class,
                                              GType                 type)
 {
-  GtkCellRendererClassPrivate *priv;
+  CtkCellRendererClassPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_RENDERER_CLASS (renderer_class));
   g_return_if_fail (g_type_is_a (type, CTK_TYPE_RENDERER_CELL_ACCESSIBLE));
@@ -1878,7 +1878,7 @@ ctk_cell_renderer_class_set_accessible_type (GtkCellRendererClass *renderer_clas
 }
 
 GType
-_ctk_cell_renderer_get_accessible_type (GtkCellRenderer *renderer)
+_ctk_cell_renderer_get_accessible_type (CtkCellRenderer *renderer)
 {
   g_return_val_if_fail (CTK_IS_CELL_RENDERER (renderer), CTK_TYPE_RENDERER_CELL_ACCESSIBLE);
 

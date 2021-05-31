@@ -1,6 +1,6 @@
 <!-- test invalid scale subelement -->
 <interface>
-  <object class="GtkScale">
+  <object class="CtkScale">
     <marks>
     </marks>
     <foo/>

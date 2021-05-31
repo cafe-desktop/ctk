@@ -1,4 +1,4 @@
-/* Extensive GtkListStore tests.
+/* Extensive CtkListStore tests.
  * Copyright (C) 2007  Imendio AB
  * Authors: Kristian Rietveld  <kris@imendio.com>
  *
@@ -28,8 +28,8 @@
 #include "treemodel.h"
 
 static inline gboolean
-iters_equal (GtkTreeIter *a,
-	     GtkTreeIter *b)
+iters_equal (CtkTreeIter *a,
+	     CtkTreeIter *b)
 {
   if (a->stamp != b->stamp)
     return FALSE;
@@ -37,18 +37,18 @@ iters_equal (GtkTreeIter *a,
   if (a->user_data != b->user_data)
     return FALSE;
 
-  /* user_data2 and user_data3 are not used in GtkListStore */
+  /* user_data2 and user_data3 are not used in CtkListStore */
 
   return TRUE;
 }
 
 static gboolean
-iter_position (GtkListStore *store,
-	       GtkTreeIter  *iter,
+iter_position (CtkListStore *store,
+	       CtkTreeIter  *iter,
 	       int           n)
 {
   gboolean ret = TRUE;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), iter);
   if (!path)
@@ -67,8 +67,8 @@ iter_position (GtkListStore *store,
  */
 typedef struct
 {
-  GtkTreeIter iter[5];
-  GtkListStore *store;
+  CtkTreeIter iter[5];
+  CtkListStore *store;
 } ListStore;
 
 static void
@@ -103,7 +103,7 @@ check_model (ListStore *fixture,
 	     gint       skip)
 {
   int i;
-  GtkTreePath *path;
+  CtkTreePath *path;
 
   path = ctk_tree_path_new ();
   ctk_tree_path_down (path);
@@ -113,7 +113,7 @@ check_model (ListStore *fixture,
    */
   for (i = 0; i < 5; i++)
     {
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       if (i == skip)
 	continue;
@@ -138,9 +138,9 @@ check_model (ListStore *fixture,
 static void
 list_store_test_insert_high_values (void)
 {
-  GtkTreeIter iter, iter2;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter, iter2;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -182,9 +182,9 @@ list_store_test_insert_high_values (void)
 static void
 list_store_test_append (void)
 {
-  GtkTreeIter iter, iter2;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter, iter2;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -226,9 +226,9 @@ list_store_test_append (void)
 static void
 list_store_test_prepend (void)
 {
-  GtkTreeIter iter, iter2;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter, iter2;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -270,9 +270,9 @@ list_store_test_prepend (void)
 static void
 list_store_test_insert_after (void)
 {
-  GtkTreeIter iter, iter2, iter3;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter, iter2, iter3;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -321,9 +321,9 @@ list_store_test_insert_after (void)
 static void
 list_store_test_insert_after_NULL (void)
 {
-  GtkTreeIter iter, iter2;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter, iter2;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -364,9 +364,9 @@ list_store_test_insert_after_NULL (void)
 static void
 list_store_test_insert_before (void)
 {
-  GtkTreeIter iter, iter2, iter3;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter, iter2, iter3;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -418,9 +418,9 @@ list_store_test_insert_before (void)
 static void
 list_store_test_insert_before_NULL (void)
 {
-  GtkTreeIter iter, iter2;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter, iter2;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -459,8 +459,8 @@ list_store_test_insert_before_NULL (void)
 static void
 list_store_set_gvalue_to_transform (void)
 {
-  GtkListStore *store;
-  GtkTreeIter iter;
+  CtkListStore *store;
+  CtkTreeIter iter;
   GValue value = G_VALUE_INIT;
 
   /* https://bugzilla.gnome.org/show_bug.cgi?id=677649 */
@@ -478,8 +478,8 @@ list_store_test_remove_begin (ListStore     *fixture,
 			      gconstpointer  user_data)
 {
   int new_order[5] = { -1, 1, 2, 3, 4 };
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   /* Remove node at 0 */
   path = ctk_tree_path_new_from_indices (0, -1);
@@ -498,8 +498,8 @@ list_store_test_remove_middle (ListStore     *fixture,
 			       gconstpointer  user_data)
 {
   int new_order[5] = { 0, 1, -1, 3, 4 };
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   /* Remove node at 2 */
   path = ctk_tree_path_new_from_indices (2, -1);
@@ -518,8 +518,8 @@ list_store_test_remove_end (ListStore     *fixture,
 			    gconstpointer  user_data)
 {
   int new_order[5] = { 0, 1, 2, 3, -1 };
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   /* Remove node at 4 */
   path = ctk_tree_path_new_from_indices (4, -1);
@@ -567,8 +567,8 @@ list_store_test_swap_begin (ListStore     *fixture,
   /* We swap nodes 0 and 1 at the beginning */
   int new_order[5] = { 1, 0, 2, 3, 4 };
 
-  GtkTreeIter iter_a;
-  GtkTreeIter iter_b;
+  CtkTreeIter iter_a;
+  CtkTreeIter iter_b;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_a, "0"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_b, "1"));
@@ -584,8 +584,8 @@ list_store_test_swap_middle_next (ListStore     *fixture,
   /* We swap nodes 2 and 3 in the middle that are next to each other */
   int new_order[5] = { 0, 1, 3, 2, 4 };
 
-  GtkTreeIter iter_a;
-  GtkTreeIter iter_b;
+  CtkTreeIter iter_a;
+  CtkTreeIter iter_b;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_a, "2"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_b, "3"));
@@ -601,8 +601,8 @@ list_store_test_swap_middle_apart (ListStore     *fixture,
   /* We swap nodes 1 and 3 in the middle that are apart from each other */
   int new_order[5] = { 0, 3, 2, 1, 4 };
 
-  GtkTreeIter iter_a;
-  GtkTreeIter iter_b;
+  CtkTreeIter iter_a;
+  CtkTreeIter iter_b;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_a, "1"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_b, "3"));
@@ -618,8 +618,8 @@ list_store_test_swap_end (ListStore     *fixture,
   /* We swap nodes 3 and 4 at the end */
   int new_order[5] = { 0, 1, 2, 4, 3 };
 
-  GtkTreeIter iter_a;
-  GtkTreeIter iter_b;
+  CtkTreeIter iter_a;
+  CtkTreeIter iter_b;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_a, "3"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_b, "4"));
@@ -631,9 +631,9 @@ list_store_test_swap_end (ListStore     *fixture,
 static void
 list_store_test_swap_single (void)
 {
-  GtkTreeIter iter;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -661,8 +661,8 @@ list_store_test_move_after_from_start (ListStore     *fixture,
   /* We move node 0 after 2 */
   int new_order[5] = { 1, 2, 0, 3, 4 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "0"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "2"));
@@ -678,8 +678,8 @@ list_store_test_move_after_next (ListStore     *fixture,
   /* We move node 2 after 3 */
   int new_order[5] = { 0, 1, 3, 2, 4 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "3"));
@@ -695,8 +695,8 @@ list_store_test_move_after_apart (ListStore     *fixture,
   /* We move node 1 after 3 */
   int new_order[5] = { 0, 2, 3, 1, 4 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "1"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "3"));
@@ -712,8 +712,8 @@ list_store_test_move_after_end (ListStore     *fixture,
   /* We move node 2 after 4 */
   int new_order[5] = { 0, 1, 3, 4, 2 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "4"));
@@ -729,8 +729,8 @@ list_store_test_move_after_from_end (ListStore     *fixture,
   /* We move node 4 after 1 */
   int new_order[5] = { 0, 1, 4, 2, 3 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "4"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "1"));
@@ -748,8 +748,8 @@ list_store_test_move_after_change_ends (ListStore     *fixture,
    */
   int new_order[5] = { 1, 2, 3, 4, 0 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "0"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "4"));
@@ -765,7 +765,7 @@ list_store_test_move_after_NULL (ListStore     *fixture,
   /* We move node 2, NULL should prepend */
   int new_order[5] = { 2, 0, 1, 3, 4 };
 
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
 
@@ -776,9 +776,9 @@ list_store_test_move_after_NULL (ListStore     *fixture,
 static void
 list_store_test_move_after_single (void)
 {
-  GtkTreeIter iter;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -811,8 +811,8 @@ list_store_test_move_before_next (ListStore     *fixture,
   /* We move node 3 before 2 */
   int new_order[5] = { 0, 1, 3, 2, 4 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "3"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "2"));
@@ -828,8 +828,8 @@ list_store_test_move_before_apart (ListStore     *fixture,
   /* We move node 1 before 3 */
   int new_order[5] = { 0, 2, 1, 3, 4 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "1"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "3"));
@@ -845,8 +845,8 @@ list_store_test_move_before_to_start (ListStore     *fixture,
   /* We move node 2 before 0 */
   int new_order[5] = { 2, 0, 1, 3, 4 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "0"));
@@ -862,8 +862,8 @@ list_store_test_move_before_from_end (ListStore     *fixture,
   /* We move node 4 before 2 (replace end) */
   int new_order[5] = { 0, 1, 4, 2, 3 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "4"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "2"));
@@ -879,8 +879,8 @@ list_store_test_move_before_change_ends (ListStore     *fixture,
   /* We move node 4 before 0 */
   int new_order[5] = { 4, 0, 1, 2, 3 };
 
-  GtkTreeIter iter;
-  GtkTreeIter position;
+  CtkTreeIter iter;
+  CtkTreeIter position;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "4"));
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "0"));
@@ -896,7 +896,7 @@ list_store_test_move_before_NULL (ListStore     *fixture,
   /* We move node 2, NULL should append */
   int new_order[5] = { 0, 1, 3, 4, 2 };
 
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
 
@@ -907,9 +907,9 @@ list_store_test_move_before_NULL (ListStore     *fixture,
 static void
 list_store_test_move_before_single (void)
 {
-  GtkTreeIter iter;
-  GtkTreeIter iter_copy;
-  GtkListStore *store;
+  CtkTreeIter iter;
+  CtkTreeIter iter_copy;
+  CtkListStore *store;
 
   store = ctk_list_store_new (1, G_TYPE_INT);
 
@@ -940,7 +940,7 @@ static void
 list_store_test_iter_previous_invalid (ListStore     *fixture,
                                        gconstpointer  user_data)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   ctk_tree_model_get_iter_first (CTK_TREE_MODEL (fixture->store), &iter);
 
@@ -954,8 +954,8 @@ static void
 list_store_test_iter_next_invalid (ListStore     *fixture,
                                    gconstpointer  user_data)
 {
-  GtkTreePath *path;
-  GtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeIter iter;
 
   path = ctk_tree_path_new_from_indices (4, -1);
   ctk_tree_model_get_iter (CTK_TREE_MODEL (fixture->store), &iter, path);
@@ -971,7 +971,7 @@ static void
 list_store_test_iter_children_invalid (ListStore     *fixture,
                                        gconstpointer  user_data)
 {
-  GtkTreeIter iter, child;
+  CtkTreeIter iter, child;
 
   ctk_tree_model_get_iter_first (CTK_TREE_MODEL (fixture->store), &iter);
   g_assert (ctk_list_store_iter_is_valid (fixture->store, &iter) == TRUE);
@@ -986,7 +986,7 @@ static void
 list_store_test_iter_nth_child_invalid (ListStore     *fixture,
                                         gconstpointer  user_data)
 {
-  GtkTreeIter iter, child;
+  CtkTreeIter iter, child;
 
   ctk_tree_model_get_iter_first (CTK_TREE_MODEL (fixture->store), &iter);
   g_assert (ctk_list_store_iter_is_valid (fixture->store, &iter) == TRUE);
@@ -1001,7 +1001,7 @@ static void
 list_store_test_iter_parent_invalid (ListStore     *fixture,
                                      gconstpointer  user_data)
 {
-  GtkTreeIter iter, child;
+  CtkTreeIter iter, child;
 
   ctk_tree_model_get_iter_first (CTK_TREE_MODEL (fixture->store), &child);
   g_assert (ctk_list_store_iter_is_valid (fixture->store, &child) == TRUE);

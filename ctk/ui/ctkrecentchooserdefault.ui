@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="ctk30">
   <!-- interface-requires ctk+ 3.10 -->
-  <object class="GtkListStore" id="recent_store">
+  <object class="CtkListStore" id="recent_store">
     <columns>
       <!-- column-name uri -->
       <column type="gchararray"/>
       <!-- column-name display-name -->
       <column type="gchararray"/>
       <!-- column-name info -->
-      <column type="GtkRecentInfo"/>
+      <column type="CtkRecentInfo"/>
     </columns>
   </object>
-  <template class="GtkRecentChooserDefault" parent="GtkBox">
+  <template class="CtkRecentChooserDefault" parent="CtkBox">
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <property name="spacing">6</property>
     <child>
-      <object class="GtkScrolledWindow" id="scrolledwindow">
+      <object class="CtkScrolledWindow" id="scrolledwindow">
         <property name="visible">1</property>
         <property name="can-focus">1</property>
         <property name="hscrollbar-policy">never</property>
         <property name="shadow-type">in</property>
         <property name="vexpand">1</property>
         <child>
-          <object class="GtkTreeView" id="recent_view">
+          <object class="CtkTreeView" id="recent_view">
             <property name="visible">1</property>
             <property name="can-focus">1</property>
             <property name="has-tooltip">1</property>
@@ -35,26 +35,26 @@
             <signal name="query-tooltip" handler="recent_view_query_tooltip_cb" swapped="no"/>
             <signal name="row-activated" handler="row_activated_cb" swapped="no"/>
             <child internal-child="selection">
-              <object class="GtkTreeSelection" id="selection">
+              <object class="CtkTreeSelection" id="selection">
                 <signal name="changed" handler="selection_changed_cb" swapped="no"/>
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="icon_column">
+              <object class="CtkTreeViewColumn" id="icon_column">
                 <property name="title">icon</property>
                 <child>
-                  <object class="GtkCellRendererPixbuf" id="icon_renderer">
+                  <object class="CtkCellRendererPixbuf" id="icon_renderer">
                     <property name="stock-size">4</property>
                   </object>
                 </child>
               </object>
             </child>
             <child>
-              <object class="GtkTreeViewColumn" id="meta_column">
+              <object class="CtkTreeViewColumn" id="meta_column">
                 <property name="title">meta</property>
                 <property name="expand">1</property>
                 <child>
-                  <object class="GtkCellRendererText" id="meta_renderer">
+                  <object class="CtkCellRendererText" id="meta_renderer">
                     <property name="ellipsize">end</property>
                   </object>
                 </child>
@@ -70,10 +70,10 @@
       </packing>
     </child>
     <child>
-      <object class="GtkBox" id="filter_combo_hbox">
+      <object class="CtkBox" id="filter_combo_hbox">
         <property name="spacing">12</property>
         <child>
-          <object class="GtkComboBoxText" id="filter_combo">
+          <object class="CtkComboBoxText" id="filter_combo">
             <property name="visible">1</property>
             <property name="tooltip-text" translatable="yes">Select which type of documents are shown</property>
             <property name="focus-on-click">0</property>

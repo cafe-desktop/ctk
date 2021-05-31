@@ -42,22 +42,22 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 /**
  * SECTION:ctkstyleproperties
  * @Short_description: Store for style property information
- * @Title: GtkStyleProperties
+ * @Title: CtkStyleProperties
  *
- * GtkStyleProperties provides the storage for style information
- * that is used by #GtkStyleContext and other #GtkStyleProvider
+ * CtkStyleProperties provides the storage for style information
+ * that is used by #CtkStyleContext and other #CtkStyleProvider
  * implementations.
  *
- * Before style properties can be stored in GtkStyleProperties, they
+ * Before style properties can be stored in CtkStyleProperties, they
  * must be registered with ctk_style_properties_register_property().
  *
- * Unless you are writing a #GtkStyleProvider implementation, you
+ * Unless you are writing a #CtkStyleProvider implementation, you
  * are unlikely to use this API directly, as ctk_style_context_get()
  * and its variants are the preferred way to access styling information
  * from widget implementations and theming engine implementations
- * should use the APIs provided by #GtkThemingEngine instead.
+ * should use the APIs provided by #CtkThemingEngine instead.
  *
- * #GtkStyleProperties has been deprecated in GTK 3.16. The CSS
+ * #CtkStyleProperties has been deprecated in GTK 3.16. The CSS
  * machinery does not use it anymore and all users of this object
  * have been deprecated.
  */
@@ -67,8 +67,8 @@ typedef struct ValueData ValueData;
 
 struct ValueData
 {
-  GtkStateFlags state;
-  GtkCssValue *value;
+  CtkStateFlags state;
+  CtkCssValue *value;
 };
 
 struct PropertyData
@@ -76,26 +76,26 @@ struct PropertyData
   GArray *values;
 };
 
-struct _GtkStylePropertiesPrivate
+struct _CtkStylePropertiesPrivate
 {
   GHashTable *color_map;
   GHashTable *properties;
 };
 
-static void ctk_style_properties_provider_init         (GtkStyleProviderIface            *iface);
-static void ctk_style_properties_provider_private_init (GtkStyleProviderPrivateInterface *iface);
+static void ctk_style_properties_provider_init         (CtkStyleProviderIface            *iface);
+static void ctk_style_properties_provider_private_init (CtkStyleProviderPrivateInterface *iface);
 static void ctk_style_properties_finalize              (GObject                          *object);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkStyleProperties, ctk_style_properties, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (GtkStyleProperties)
+G_DEFINE_TYPE_WITH_CODE (CtkStyleProperties, ctk_style_properties, G_TYPE_OBJECT,
+                         G_ADD_PRIVATE (CtkStyleProperties)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER,
                                                 ctk_style_properties_provider_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER_PRIVATE,
                                                 ctk_style_properties_provider_private_init));
 
 static void
-ctk_style_properties_class_init (GtkStylePropertiesClass *klass)
+ctk_style_properties_class_init (CtkStylePropertiesClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -142,7 +142,7 @@ property_data_free (PropertyData *data)
 
 static gboolean
 property_data_find_position (PropertyData  *data,
-                             GtkStateFlags  state,
+                             CtkStateFlags  state,
                              guint         *pos)
 {
   gint min, max, mid;
@@ -192,7 +192,7 @@ property_data_find_position (PropertyData  *data,
 
 static ValueData *
 property_data_get_value (PropertyData  *data,
-                         GtkStateFlags  state)
+                         CtkStateFlags  state)
 {
   guint pos;
 
@@ -207,9 +207,9 @@ property_data_get_value (PropertyData  *data,
   return &g_array_index (data->values, ValueData, pos);
 }
 
-static GtkCssValue *
+static CtkCssValue *
 property_data_match_state (PropertyData  *data,
-                           GtkStateFlags  state)
+                           CtkStateFlags  state)
 {
   guint pos;
   gint i;
@@ -254,7 +254,7 @@ property_data_match_state (PropertyData  *data,
 }
 
 static void
-ctk_style_properties_init (GtkStyleProperties *props)
+ctk_style_properties_init (CtkStyleProperties *props)
 {
   props->priv = ctk_style_properties_get_instance_private (props);
   props->priv->properties = g_hash_table_new_full (NULL, NULL, NULL,
@@ -264,8 +264,8 @@ ctk_style_properties_init (GtkStyleProperties *props)
 static void
 ctk_style_properties_finalize (GObject *object)
 {
-  GtkStylePropertiesPrivate *priv;
-  GtkStyleProperties *props;
+  CtkStylePropertiesPrivate *priv;
+  CtkStyleProperties *props;
 
   props = CTK_STYLE_PROPERTIES (object);
   priv = props->priv;
@@ -278,15 +278,15 @@ ctk_style_properties_finalize (GObject *object)
 }
 
 static void
-ctk_style_properties_provider_init (GtkStyleProviderIface *iface)
+ctk_style_properties_provider_init (CtkStyleProviderIface *iface)
 {
 }
 
-static GtkCssValue *
-ctk_style_properties_provider_get_color (GtkStyleProviderPrivate *provider,
+static CtkCssValue *
+ctk_style_properties_provider_get_color (CtkStyleProviderPrivate *provider,
                                          const char              *name)
 {
-  GtkSymbolicColor *symbolic;
+  CtkSymbolicColor *symbolic;
 
   symbolic = ctk_style_properties_lookup_color (CTK_STYLE_PROPERTIES (provider), name);
   if (symbolic == NULL)
@@ -296,13 +296,13 @@ ctk_style_properties_provider_get_color (GtkStyleProviderPrivate *provider,
 }
 
 static void
-ctk_style_properties_provider_lookup (GtkStyleProviderPrivate *provider,
-                                      const GtkCssMatcher     *matcher,
-                                      GtkCssLookup            *lookup,
-                                      GtkCssChange            *change)
+ctk_style_properties_provider_lookup (CtkStyleProviderPrivate *provider,
+                                      const CtkCssMatcher     *matcher,
+                                      CtkCssLookup            *lookup,
+                                      CtkCssChange            *change)
 {
-  GtkStyleProperties *props;
-  GtkStylePropertiesPrivate *priv;
+  CtkStyleProperties *props;
+  CtkStylePropertiesPrivate *priv;
   GHashTableIter iter;
   gpointer key, value;
 
@@ -314,9 +314,9 @@ ctk_style_properties_provider_lookup (GtkStyleProviderPrivate *provider,
 
   while (g_hash_table_iter_next (&iter, &key, &value))
     {
-      GtkCssStyleProperty *prop = key;
+      CtkCssStyleProperty *prop = key;
       PropertyData *data = value;
-      GtkCssValue *val;
+      CtkCssValue *val;
       guint id;
 
       id = _ctk_css_style_property_get_id (prop);
@@ -336,24 +336,24 @@ ctk_style_properties_provider_lookup (GtkStyleProviderPrivate *provider,
 }
 
 static void
-ctk_style_properties_provider_private_init (GtkStyleProviderPrivateInterface *iface)
+ctk_style_properties_provider_private_init (CtkStyleProviderPrivateInterface *iface)
 {
   iface->get_color = ctk_style_properties_provider_get_color;
   iface->lookup = ctk_style_properties_provider_lookup;
 }
 
-/* GtkStyleProperties methods */
+/* CtkStyleProperties methods */
 
 /**
  * ctk_style_properties_new:
  *
- * Returns a newly created #GtkStyleProperties
+ * Returns a newly created #CtkStyleProperties
  *
- * Returns: a new #GtkStyleProperties
+ * Returns: a new #CtkStyleProperties
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
-GtkStyleProperties *
+CtkStyleProperties *
 ctk_style_properties_new (void)
 {
   return g_object_new (CTK_TYPE_STYLE_PROPERTIES, NULL);
@@ -361,23 +361,23 @@ ctk_style_properties_new (void)
 
 /**
  * ctk_style_properties_map_color:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @name: color name
- * @color: #GtkSymbolicColor to map @name to
+ * @color: #CtkSymbolicColor to map @name to
  *
  * Maps @color so it can be referenced by @name. See
  * ctk_style_properties_lookup_color()
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
 void
-ctk_style_properties_map_color (GtkStyleProperties *props,
+ctk_style_properties_map_color (CtkStyleProperties *props,
                                 const gchar        *name,
-                                GtkSymbolicColor   *color)
+                                CtkSymbolicColor   *color)
 {
-  GtkStylePropertiesPrivate *priv;
+  CtkStylePropertiesPrivate *priv;
 
   g_return_if_fail (CTK_IS_STYLE_PROPERTIES (props));
   g_return_if_fail (name != NULL);
@@ -400,7 +400,7 @@ ctk_style_properties_map_color (GtkStyleProperties *props,
 
 /**
  * ctk_style_properties_lookup_color:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @name: color name to lookup
  *
  * Returns the symbolic color that is mapped
@@ -410,13 +410,13 @@ ctk_style_properties_map_color (GtkStyleProperties *props,
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: #GtkSymbolicColor is deprecated.
+ * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
-GtkSymbolicColor *
-ctk_style_properties_lookup_color (GtkStyleProperties *props,
+CtkSymbolicColor *
+ctk_style_properties_lookup_color (CtkStyleProperties *props,
                                    const gchar        *name)
 {
-  GtkStylePropertiesPrivate *priv;
+  CtkStylePropertiesPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_STYLE_PROPERTIES (props), NULL);
   g_return_val_if_fail (name != NULL, NULL);
@@ -430,12 +430,12 @@ ctk_style_properties_lookup_color (GtkStyleProperties *props,
 }
 
 void
-_ctk_style_properties_set_property_by_property (GtkStyleProperties  *props,
-                                                GtkCssStyleProperty *style_prop,
-                                                GtkStateFlags        state,
-                                                GtkCssValue         *value)
+_ctk_style_properties_set_property_by_property (CtkStyleProperties  *props,
+                                                CtkCssStyleProperty *style_prop,
+                                                CtkStateFlags        state,
+                                                CtkCssValue         *value)
 {
-  GtkStylePropertiesPrivate *priv;
+  CtkStylePropertiesPrivate *priv;
   PropertyData *prop;
   ValueData *val;
 
@@ -458,7 +458,7 @@ _ctk_style_properties_set_property_by_property (GtkStyleProperties  *props,
 
 /**
  * ctk_style_properties_set_property:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @property: styling property to set
  * @state: state to set the value for
  * @value: new value for the property
@@ -467,15 +467,15 @@ _ctk_style_properties_set_property_by_property (GtkStyleProperties  *props,
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
-ctk_style_properties_set_property (GtkStyleProperties *props,
+ctk_style_properties_set_property (CtkStyleProperties *props,
                                    const gchar        *property,
-                                   GtkStateFlags       state,
+                                   CtkStateFlags       state,
                                    const GValue       *value)
 {
-  GtkStyleProperty *node;
+  CtkStyleProperty *node;
 
   g_return_if_fail (CTK_IS_STYLE_PROPERTIES (props));
   g_return_if_fail (property != NULL);
@@ -499,7 +499,7 @@ ctk_style_properties_set_property (GtkStyleProperties *props,
 
 /**
  * ctk_style_properties_set_valist:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @state: state to set the values for
  * @args: va_list of property name/value pairs, followed by %NULL
  *
@@ -507,11 +507,11 @@ ctk_style_properties_set_property (GtkStyleProperties *props,
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
-ctk_style_properties_set_valist (GtkStyleProperties *props,
-                                 GtkStateFlags       state,
+ctk_style_properties_set_valist (CtkStyleProperties *props,
+                                 CtkStateFlags       state,
                                  va_list             args)
 {
   const gchar *property_name;
@@ -522,7 +522,7 @@ ctk_style_properties_set_valist (GtkStyleProperties *props,
 
   while (property_name)
     {
-      GtkStyleProperty *node;
+      CtkStyleProperty *node;
       gchar *error = NULL;
       GType val_type;
       GValue val = G_VALUE_INIT;
@@ -561,7 +561,7 @@ ctk_style_properties_set_valist (GtkStyleProperties *props,
 
 /**
  * ctk_style_properties_set:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @state: state to set the values for
  * @...: property name/value pairs, followed by %NULL
  *
@@ -569,11 +569,11 @@ ctk_style_properties_set_valist (GtkStyleProperties *props,
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
-ctk_style_properties_set (GtkStyleProperties *props,
-                          GtkStateFlags       state,
+ctk_style_properties_set (CtkStyleProperties *props,
+                          CtkStateFlags       state,
                           ...)
 {
   va_list args;
@@ -586,11 +586,11 @@ ctk_style_properties_set (GtkStyleProperties *props,
 }
 
 typedef struct {
-  GtkStyleProperties *props;
-  GtkStateFlags       state;
+  CtkStyleProperties *props;
+  CtkStateFlags       state;
 } StyleQueryData;
 
-static GtkCssValue *
+static CtkCssValue *
 style_query_func (guint    id,
                   gpointer data)
 {
@@ -607,7 +607,7 @@ style_query_func (guint    id,
 
 /**
  * ctk_style_properties_get_property:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @property: style property name
  * @state: state to retrieve the property value for
  * @value: (out) (transfer full):  return location for the style property value.
@@ -619,16 +619,16 @@ style_query_func (guint    id,
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 gboolean
-ctk_style_properties_get_property (GtkStyleProperties *props,
+ctk_style_properties_get_property (CtkStyleProperties *props,
                                    const gchar        *property,
-                                   GtkStateFlags       state,
+                                   CtkStateFlags       state,
                                    GValue             *value)
 {
   StyleQueryData query = { props, state };
-  GtkStyleProperty *node;
+  CtkStyleProperty *node;
 
   g_return_val_if_fail (CTK_IS_STYLE_PROPERTIES (props), FALSE);
   g_return_val_if_fail (property != NULL, FALSE);
@@ -656,7 +656,7 @@ ctk_style_properties_get_property (GtkStyleProperties *props,
 
 /**
  * ctk_style_properties_get_valist:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @state: state to retrieve the property values for
  * @args: va_list of property name/return location pairs, followed by %NULL
  *
@@ -664,11 +664,11 @@ ctk_style_properties_get_property (GtkStyleProperties *props,
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
-ctk_style_properties_get_valist (GtkStyleProperties *props,
-                                 GtkStateFlags       state,
+ctk_style_properties_get_valist (CtkStyleProperties *props,
+                                 CtkStateFlags       state,
                                  va_list             args)
 {
   const gchar *property_name;
@@ -704,7 +704,7 @@ ctk_style_properties_get_valist (GtkStyleProperties *props,
 
 /**
  * ctk_style_properties_get:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @state: state to retrieve the property values for
  * @...: property name /return value pairs, followed by %NULL
  *
@@ -713,11 +713,11 @@ ctk_style_properties_get_valist (GtkStyleProperties *props,
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
-ctk_style_properties_get (GtkStyleProperties *props,
-                          GtkStateFlags       state,
+ctk_style_properties_get (CtkStyleProperties *props,
+                          CtkStateFlags       state,
                           ...)
 {
   va_list args;
@@ -731,7 +731,7 @@ ctk_style_properties_get (GtkStyleProperties *props,
 
 /**
  * ctk_style_properties_unset_property:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  * @property: property to unset
  * @state: state to unset
  *
@@ -739,15 +739,15 @@ ctk_style_properties_get (GtkStyleProperties *props,
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
-ctk_style_properties_unset_property (GtkStyleProperties *props,
+ctk_style_properties_unset_property (CtkStyleProperties *props,
                                      const gchar        *property,
-                                     GtkStateFlags       state)
+                                     CtkStateFlags       state)
 {
-  GtkStylePropertiesPrivate *priv;
-  GtkStyleProperty *node;
+  CtkStylePropertiesPrivate *priv;
+  CtkStyleProperty *node;
   PropertyData *prop;
   guint pos;
 
@@ -769,11 +769,11 @@ ctk_style_properties_unset_property (GtkStyleProperties *props,
 
   if (CTK_IS_CSS_SHORTHAND_PROPERTY (node))
     {
-      GtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (node);
+      CtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (node);
 
       for (pos = 0; pos < _ctk_css_shorthand_property_get_n_subproperties (shorthand); pos++)
         {
-          GtkCssStyleProperty *sub = _ctk_css_shorthand_property_get_subproperty (shorthand, pos);
+          CtkCssStyleProperty *sub = _ctk_css_shorthand_property_get_subproperty (shorthand, pos);
           ctk_style_properties_unset_property (props,
                                                _ctk_style_property_get_name (CTK_STYLE_PROPERTY (sub)),
                                                state);
@@ -804,16 +804,16 @@ ctk_style_properties_unset_property (GtkStyleProperties *props,
 
 /**
  * ctk_style_properties_clear:
- * @props: a #GtkStyleProperties
+ * @props: a #CtkStyleProperties
  *
  * Clears all style information from @props.
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
-ctk_style_properties_clear (GtkStyleProperties *props)
+ctk_style_properties_clear (CtkStyleProperties *props)
 {
-  GtkStylePropertiesPrivate *priv;
+  CtkStylePropertiesPrivate *priv;
 
   g_return_if_fail (CTK_IS_STYLE_PROPERTIES (props));
 
@@ -825,8 +825,8 @@ ctk_style_properties_clear (GtkStyleProperties *props)
 
 /**
  * ctk_style_properties_merge:
- * @props: a #GtkStyleProperties
- * @props_to_merge: a second #GtkStyleProperties
+ * @props: a #CtkStyleProperties
+ * @props_to_merge: a second #CtkStyleProperties
  * @replace: whether to replace values or not
  *
  * Merges into @props all the style information contained
@@ -836,14 +836,14 @@ ctk_style_properties_clear (GtkStyleProperties *props)
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #GtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
-ctk_style_properties_merge (GtkStyleProperties       *props,
-                            const GtkStyleProperties *props_to_merge,
+ctk_style_properties_merge (CtkStyleProperties       *props,
+                            const CtkStyleProperties *props_to_merge,
                             gboolean                  replace)
 {
-  GtkStylePropertiesPrivate *priv, *priv_to_merge;
+  CtkStylePropertiesPrivate *priv, *priv_to_merge;
   GHashTableIter iter;
   gpointer key, val;
 
@@ -861,7 +861,7 @@ ctk_style_properties_merge (GtkStyleProperties       *props,
       while (g_hash_table_iter_next (&iter, &key, &val))
         {
           const gchar *name;
-          GtkSymbolicColor *color;
+          CtkSymbolicColor *color;
 
           name = key;
           color = val;

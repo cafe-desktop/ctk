@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkListStore" id="store">
+  <object class="CtkListStore" id="store">
     <columns>
       <column type="gchararray"/>
       <column type="gchararray"/>
@@ -12,20 +12,20 @@
       <row><col id="0">40.000</col><col id="1">999999</col></row>
     </data>
   </object>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkTreeView" id="tv">
+      <object class="CtkTreeView" id="tv">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="model">store</property>
         <child>
-          <object class="GtkTreeViewColumn" id="col">
+          <object class="CtkTreeViewColumn" id="col">
             <property name="title">Test</property>
             <property name="visible">True</property>
             <child>
-              <object class="GtkCellRendererText" id="cell1">
+              <object class="CtkCellRendererText" id="cell1">
                 <property name="visible">True</property>
               </object>
               <attributes>
@@ -33,7 +33,7 @@
               </attributes>
             </child>
             <child>
-              <object class="GtkCellRendererText" id="cell2">
+              <object class="CtkCellRendererText" id="cell2">
                 <property name="visible">True</property>
               </object>
               <attributes>

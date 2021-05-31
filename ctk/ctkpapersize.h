@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GtkPaperSize GtkPaperSize;
+typedef struct _CtkPaperSize CtkPaperSize;
 
 #define CTK_TYPE_PAPER_SIZE    (ctk_paper_size_get_type ())
 
@@ -88,86 +88,86 @@ GDK_AVAILABLE_IN_ALL
 GType ctk_paper_size_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkPaperSize *ctk_paper_size_new          (const gchar  *name);
+CtkPaperSize *ctk_paper_size_new          (const gchar  *name);
 GDK_AVAILABLE_IN_ALL
-GtkPaperSize *ctk_paper_size_new_from_ppd (const gchar  *ppd_name,
+CtkPaperSize *ctk_paper_size_new_from_ppd (const gchar  *ppd_name,
 					   const gchar  *ppd_display_name,
 					   gdouble       width,
 					   gdouble       height);
 GDK_AVAILABLE_IN_ALL
-GtkPaperSize *ctk_paper_size_new_from_ipp (const gchar  *ipp_name,
+CtkPaperSize *ctk_paper_size_new_from_ipp (const gchar  *ipp_name,
 					   gdouble       width,
 					   gdouble       height);
 GDK_AVAILABLE_IN_ALL
-GtkPaperSize *ctk_paper_size_new_custom   (const gchar  *name,
+CtkPaperSize *ctk_paper_size_new_custom   (const gchar  *name,
 					   const gchar  *display_name,
 					   gdouble       width,
 					   gdouble       height,
-					   GtkUnit       unit);
+					   CtkUnit       unit);
 GDK_AVAILABLE_IN_ALL
-GtkPaperSize *ctk_paper_size_copy         (GtkPaperSize *other);
+CtkPaperSize *ctk_paper_size_copy         (CtkPaperSize *other);
 GDK_AVAILABLE_IN_ALL
-void          ctk_paper_size_free         (GtkPaperSize *size);
+void          ctk_paper_size_free         (CtkPaperSize *size);
 GDK_AVAILABLE_IN_ALL
-gboolean      ctk_paper_size_is_equal     (GtkPaperSize *size1,
-					   GtkPaperSize *size2);
+gboolean      ctk_paper_size_is_equal     (CtkPaperSize *size1,
+					   CtkPaperSize *size2);
 
 GDK_AVAILABLE_IN_ALL
 GList        *ctk_paper_size_get_paper_sizes (gboolean include_custom);
 
 /* The width is always the shortest side, measure in mm */
 GDK_AVAILABLE_IN_ALL
-const gchar *ctk_paper_size_get_name         (GtkPaperSize *size);
+const gchar *ctk_paper_size_get_name         (CtkPaperSize *size);
 GDK_AVAILABLE_IN_ALL
-const gchar *ctk_paper_size_get_display_name (GtkPaperSize *size);
+const gchar *ctk_paper_size_get_display_name (CtkPaperSize *size);
 GDK_AVAILABLE_IN_ALL
-const gchar *ctk_paper_size_get_ppd_name     (GtkPaperSize *size);
+const gchar *ctk_paper_size_get_ppd_name     (CtkPaperSize *size);
 
 GDK_AVAILABLE_IN_ALL
-gdouble  ctk_paper_size_get_width        (GtkPaperSize *size, GtkUnit unit);
+gdouble  ctk_paper_size_get_width        (CtkPaperSize *size, CtkUnit unit);
 GDK_AVAILABLE_IN_ALL
-gdouble  ctk_paper_size_get_height       (GtkPaperSize *size, GtkUnit unit);
+gdouble  ctk_paper_size_get_height       (CtkPaperSize *size, CtkUnit unit);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_paper_size_is_custom        (GtkPaperSize *size);
+gboolean ctk_paper_size_is_custom        (CtkPaperSize *size);
 GDK_AVAILABLE_IN_ALL
-gboolean ctk_paper_size_is_ipp           (GtkPaperSize *size);
+gboolean ctk_paper_size_is_ipp           (CtkPaperSize *size);
 
 /* Only for custom sizes: */
 GDK_AVAILABLE_IN_ALL
-void    ctk_paper_size_set_size                  (GtkPaperSize *size, 
+void    ctk_paper_size_set_size                  (CtkPaperSize *size, 
                                                   gdouble       width, 
                                                   gdouble       height, 
-                                                  GtkUnit       unit);
+                                                  CtkUnit       unit);
 
 GDK_AVAILABLE_IN_ALL
-gdouble ctk_paper_size_get_default_top_margin    (GtkPaperSize *size,
-						  GtkUnit       unit);
+gdouble ctk_paper_size_get_default_top_margin    (CtkPaperSize *size,
+						  CtkUnit       unit);
 GDK_AVAILABLE_IN_ALL
-gdouble ctk_paper_size_get_default_bottom_margin (GtkPaperSize *size,
-						  GtkUnit       unit);
+gdouble ctk_paper_size_get_default_bottom_margin (CtkPaperSize *size,
+						  CtkUnit       unit);
 GDK_AVAILABLE_IN_ALL
-gdouble ctk_paper_size_get_default_left_margin   (GtkPaperSize *size,
-						  GtkUnit       unit);
+gdouble ctk_paper_size_get_default_left_margin   (CtkPaperSize *size,
+						  CtkUnit       unit);
 GDK_AVAILABLE_IN_ALL
-gdouble ctk_paper_size_get_default_right_margin  (GtkPaperSize *size,
-						  GtkUnit       unit);
+gdouble ctk_paper_size_get_default_right_margin  (CtkPaperSize *size,
+						  CtkUnit       unit);
 
 GDK_AVAILABLE_IN_ALL
 const gchar *ctk_paper_size_get_default (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkPaperSize *ctk_paper_size_new_from_key_file (GKeyFile    *key_file,
+CtkPaperSize *ctk_paper_size_new_from_key_file (GKeyFile    *key_file,
 					        const gchar *group_name,
 					        GError     **error);
 GDK_AVAILABLE_IN_ALL
-void     ctk_paper_size_to_key_file            (GtkPaperSize *size,
+void     ctk_paper_size_to_key_file            (CtkPaperSize *size,
 					        GKeyFile     *key_file,
 					        const gchar  *group_name);
 
 GDK_AVAILABLE_IN_3_22
-GtkPaperSize *ctk_paper_size_new_from_gvariant (GVariant     *variant);
+CtkPaperSize *ctk_paper_size_new_from_gvariant (GVariant     *variant);
 GDK_AVAILABLE_IN_3_22
-GVariant     *ctk_paper_size_to_gvariant       (GtkPaperSize *paper_size);
+GVariant     *ctk_paper_size_to_gvariant       (CtkPaperSize *paper_size);
 
 G_END_DECLS
 

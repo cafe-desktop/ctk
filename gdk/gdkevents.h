@@ -878,7 +878,7 @@ struct _GdkEventScroll
  * @length: the length of @string.
  * @string: a string containing an approximation of the text that
  *   would result from this keypress. The only correct way to handle text
- *   input of text is using input methods (see #GtkIMContext), so this
+ *   input of text is using input methods (see #CtkIMContext), so this
  *   field is deprecated and should never be used.
  *   (gdk_unicode_to_keyval() provides a non-deprecated way of getting
  *   an approximate translation for a key.) The string is encoded in the

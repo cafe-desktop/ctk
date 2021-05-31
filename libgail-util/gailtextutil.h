@@ -54,7 +54,7 @@ struct _GailTextUtil
 {
   GObject parent;
 
-  GtkTextBuffer *buffer;
+  CtkTextBuffer *buffer;
 };
 
 struct _GailTextUtilClass
@@ -72,7 +72,7 @@ void          gail_text_util_text_setup    (GailTextUtil    *textutil,
                                             const gchar     *text);
 GDK_AVAILABLE_IN_ALL
 void          gail_text_util_buffer_setup  (GailTextUtil    *textutil,
-                                            GtkTextBuffer   *buffer);
+                                            CtkTextBuffer   *buffer);
 GDK_AVAILABLE_IN_ALL
 gchar*        gail_text_util_get_text      (GailTextUtil    *textutil,
                                              gpointer        layout,

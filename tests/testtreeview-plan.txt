@@ -1,5 +1,5 @@
 This document is a laundry list of stuff to check if you want to
-verify that GtkTreeView and associated objects are working properly.
+verify that CtkTreeView and associated objects are working properly.
 It isn't a very formal test plan or anything.
  
 Launching:

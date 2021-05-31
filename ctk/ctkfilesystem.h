@@ -25,86 +25,86 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_FILE_SYSTEM         (_ctk_file_system_get_type ())
-#define CTK_FILE_SYSTEM(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_FILE_SYSTEM, GtkFileSystem))
-#define CTK_FILE_SYSTEM_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_FILE_SYSTEM, GtkFileSystemClass))
+#define CTK_FILE_SYSTEM(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_FILE_SYSTEM, CtkFileSystem))
+#define CTK_FILE_SYSTEM_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_FILE_SYSTEM, CtkFileSystemClass))
 #define CTK_IS_FILE_SYSTEM(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_FILE_SYSTEM))
 #define CTK_IS_FILE_SYSTEM_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), CTK_TYPE_FILE_SYSTEM))
-#define CTK_FILE_SYSTEM_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_FILE_SYSTEM, GtkFileSystemClass))
+#define CTK_FILE_SYSTEM_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_FILE_SYSTEM, CtkFileSystemClass))
 
-typedef struct GtkFileSystem          GtkFileSystem;
-typedef struct GtkFileSystemPrivate      GtkFileSystemPrivate;
-typedef struct GtkFileSystemClass     GtkFileSystemClass;
-
-
-typedef struct GtkFileSystemVolume GtkFileSystemVolume; /* opaque struct */
+typedef struct CtkFileSystem          CtkFileSystem;
+typedef struct CtkFileSystemPrivate      CtkFileSystemPrivate;
+typedef struct CtkFileSystemClass     CtkFileSystemClass;
 
 
-struct GtkFileSystem
+typedef struct CtkFileSystemVolume CtkFileSystemVolume; /* opaque struct */
+
+
+struct CtkFileSystem
 {
   GObject parent_object;
 
-  GtkFileSystemPrivate *priv;
+  CtkFileSystemPrivate *priv;
 };
 
-struct GtkFileSystemClass
+struct CtkFileSystemClass
 {
   GObjectClass parent_class;
 
-  void (*volumes_changed)   (GtkFileSystem *file_system);
+  void (*volumes_changed)   (CtkFileSystem *file_system);
 };
 
 
-typedef void (* GtkFileSystemGetInfoCallback)      (GCancellable        *cancellable,
+typedef void (* CtkFileSystemGetInfoCallback)      (GCancellable        *cancellable,
 						    GFileInfo           *file_info,
 						    const GError        *error,
 						    gpointer             data);
-typedef void (* GtkFileSystemVolumeMountCallback)  (GCancellable        *cancellable,
-						    GtkFileSystemVolume *volume,
+typedef void (* CtkFileSystemVolumeMountCallback)  (GCancellable        *cancellable,
+						    CtkFileSystemVolume *volume,
 						    const GError        *error,
 						    gpointer             data);
 
-/* GtkFileSystem methods */
+/* CtkFileSystem methods */
 GType           _ctk_file_system_get_type     (void) G_GNUC_CONST;
 
-GtkFileSystem * _ctk_file_system_new          (void);
+CtkFileSystem * _ctk_file_system_new          (void);
 
-GSList *        _ctk_file_system_list_volumes   (GtkFileSystem *file_system);
+GSList *        _ctk_file_system_list_volumes   (CtkFileSystem *file_system);
 
-GCancellable *  _ctk_file_system_get_info               (GtkFileSystem                     *file_system,
+GCancellable *  _ctk_file_system_get_info               (CtkFileSystem                     *file_system,
 							 GFile                             *file,
 							 const gchar                       *attributes,
-							 GtkFileSystemGetInfoCallback       callback,
+							 CtkFileSystemGetInfoCallback       callback,
 							 gpointer                           data);
-GCancellable *  _ctk_file_system_mount_volume           (GtkFileSystem                     *file_system,
-							 GtkFileSystemVolume               *volume,
+GCancellable *  _ctk_file_system_mount_volume           (CtkFileSystem                     *file_system,
+							 CtkFileSystemVolume               *volume,
 							 GMountOperation                   *mount_operation,
-							 GtkFileSystemVolumeMountCallback   callback,
+							 CtkFileSystemVolumeMountCallback   callback,
 							 gpointer                           data);
-GCancellable *  _ctk_file_system_mount_enclosing_volume (GtkFileSystem                     *file_system,
+GCancellable *  _ctk_file_system_mount_enclosing_volume (CtkFileSystem                     *file_system,
 							 GFile                             *file,
 							 GMountOperation                   *mount_operation,
-							 GtkFileSystemVolumeMountCallback   callback,
+							 CtkFileSystemVolumeMountCallback   callback,
 							 gpointer                           data);
 
-GtkFileSystemVolume * _ctk_file_system_get_volume_for_file (GtkFileSystem       *file_system,
+CtkFileSystemVolume * _ctk_file_system_get_volume_for_file (CtkFileSystem       *file_system,
 							    GFile               *file);
 
-/* GtkFileSystemVolume methods */
-gchar *               _ctk_file_system_volume_get_display_name (GtkFileSystemVolume *volume);
-gboolean              _ctk_file_system_volume_is_mounted       (GtkFileSystemVolume *volume);
-GFile *               _ctk_file_system_volume_get_root         (GtkFileSystemVolume *volume);
-GIcon *               _ctk_file_system_volume_get_symbolic_icon (GtkFileSystemVolume *volume);
-cairo_surface_t *     _ctk_file_system_volume_render_icon      (GtkFileSystemVolume  *volume,
-							        GtkWidget            *widget,
+/* CtkFileSystemVolume methods */
+gchar *               _ctk_file_system_volume_get_display_name (CtkFileSystemVolume *volume);
+gboolean              _ctk_file_system_volume_is_mounted       (CtkFileSystemVolume *volume);
+GFile *               _ctk_file_system_volume_get_root         (CtkFileSystemVolume *volume);
+GIcon *               _ctk_file_system_volume_get_symbolic_icon (CtkFileSystemVolume *volume);
+cairo_surface_t *     _ctk_file_system_volume_render_icon      (CtkFileSystemVolume  *volume,
+							        CtkWidget            *widget,
 							        gint                  icon_size,
 							        GError              **error);
 
-GtkFileSystemVolume  *_ctk_file_system_volume_ref              (GtkFileSystemVolume *volume);
-void                  _ctk_file_system_volume_unref            (GtkFileSystemVolume *volume);
+CtkFileSystemVolume  *_ctk_file_system_volume_ref              (CtkFileSystemVolume *volume);
+void                  _ctk_file_system_volume_unref            (CtkFileSystemVolume *volume);
 
 /* GFileInfo helper functions */
 cairo_surface_t *     _ctk_file_info_render_icon (GFileInfo *info,
-						  GtkWidget *widget,
+						  CtkWidget *widget,
 						  gint       icon_size);
 
 gboolean	_ctk_file_info_consider_as_directory (GFileInfo *info);

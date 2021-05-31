@@ -21,13 +21,13 @@
 #include <ctk/ctkicontheme.h>
 #include <ctk/ctkcssstyleprivate.h>
 
-void        ctk_icon_theme_lookup_symbolic_colors       (GtkCssStyle    *style,
+void        ctk_icon_theme_lookup_symbolic_colors       (CtkCssStyle    *style,
                                                          GdkRGBA        *color_out,
                                                          GdkRGBA        *success_out,
                                                          GdkRGBA        *warning_out,
                                                          GdkRGBA        *error_out);
 
-GtkIconInfo *ctk_icon_info_new_for_file (GFile *file,
+CtkIconInfo *ctk_icon_info_new_for_file (GFile *file,
                                          gint   size,
                                          gint   scale);
 

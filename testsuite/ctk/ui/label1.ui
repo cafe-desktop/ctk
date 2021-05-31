@@ -1,6 +1,6 @@
 <!-- test all valid label attributes -->
 <interface>
-  <object class="GtkLabel">
+  <object class="CtkLabel">
     <attributes>
       <attribute name="language" value="de" start="5" end="10"/>
       <attribute name="style" value="italic"/>

@@ -23,28 +23,28 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CSS_TRANSIENT_NODE           (ctk_css_transient_node_get_type ())
-#define CTK_CSS_TRANSIENT_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_TRANSIENT_NODE, GtkCssTransientNode))
-#define CTK_CSS_TRANSIENT_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_TRANSIENT_NODE, GtkCssTransientNodeClass))
+#define CTK_CSS_TRANSIENT_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_TRANSIENT_NODE, CtkCssTransientNode))
+#define CTK_CSS_TRANSIENT_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_TRANSIENT_NODE, CtkCssTransientNodeClass))
 #define CTK_IS_CSS_TRANSIENT_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_TRANSIENT_NODE))
 #define CTK_IS_CSS_TRANSIENT_NODE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_TRANSIENT_NODE))
-#define CTK_CSS_TRANSIENT_NODE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_TRANSIENT_NODE, GtkCssTransientNodeClass))
+#define CTK_CSS_TRANSIENT_NODE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_TRANSIENT_NODE, CtkCssTransientNodeClass))
 
-typedef struct _GtkCssTransientNode           GtkCssTransientNode;
-typedef struct _GtkCssTransientNodeClass      GtkCssTransientNodeClass;
+typedef struct _CtkCssTransientNode           CtkCssTransientNode;
+typedef struct _CtkCssTransientNodeClass      CtkCssTransientNodeClass;
 
-struct _GtkCssTransientNode
+struct _CtkCssTransientNode
 {
-  GtkCssNode node;
+  CtkCssNode node;
 };
 
-struct _GtkCssTransientNodeClass
+struct _CtkCssTransientNodeClass
 {
-  GtkCssNodeClass node_class;
+  CtkCssNodeClass node_class;
 };
 
 GType                   ctk_css_transient_node_get_type         (void) G_GNUC_CONST;
 
-GtkCssNode *            ctk_css_transient_node_new              (GtkCssNode     *parent);
+CtkCssNode *            ctk_css_transient_node_new              (CtkCssNode     *parent);
 
 G_END_DECLS
 

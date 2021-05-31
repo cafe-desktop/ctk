@@ -521,7 +521,7 @@ gboolean _gdk_win32_window_fill_min_max_info    (GdkWindow  *window,
 
 gboolean _gdk_win32_window_lacks_wm_decorations (GdkWindow *window);
 
-BOOL WINAPI GtkShowWindow (GdkWindow *window,
+BOOL WINAPI CtkShowWindow (GdkWindow *window,
                            int        cmd_show);
 
 void     _gdk_win32_screen_set_font_resolution (GdkWin32Screen *win32_screen);

@@ -24,8 +24,8 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-typedef struct _GtkEventController GtkEventController;
-typedef struct _GtkEventControllerClass GtkEventControllerClass;
+typedef struct _CtkEventController CtkEventController;
+typedef struct _CtkEventControllerClass CtkEventControllerClass;
 
 #include <gdk/gdk.h>
 #include <ctk/ctktypes.h>
@@ -34,31 +34,31 @@ typedef struct _GtkEventControllerClass GtkEventControllerClass;
 G_BEGIN_DECLS
 
 #define CTK_TYPE_EVENT_CONTROLLER         (ctk_event_controller_get_type ())
-#define CTK_EVENT_CONTROLLER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER, GtkEventController))
-#define CTK_EVENT_CONTROLLER_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER, GtkEventControllerClass))
+#define CTK_EVENT_CONTROLLER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER, CtkEventController))
+#define CTK_EVENT_CONTROLLER_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER, CtkEventControllerClass))
 #define CTK_IS_EVENT_CONTROLLER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_EVENT_CONTROLLER))
 #define CTK_IS_EVENT_CONTROLLER_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_EVENT_CONTROLLER))
-#define CTK_EVENT_CONTROLLER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER, GtkEventControllerClass))
+#define CTK_EVENT_CONTROLLER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER, CtkEventControllerClass))
 
 
 GDK_AVAILABLE_IN_3_14
 GType        ctk_event_controller_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkWidget  * ctk_event_controller_get_widget     (GtkEventController *controller);
+CtkWidget  * ctk_event_controller_get_widget     (CtkEventController *controller);
 
 GDK_AVAILABLE_IN_3_14
-gboolean     ctk_event_controller_handle_event   (GtkEventController *controller,
+gboolean     ctk_event_controller_handle_event   (CtkEventController *controller,
                                                   const GdkEvent     *event);
 GDK_AVAILABLE_IN_3_14
-void         ctk_event_controller_reset          (GtkEventController *controller);
+void         ctk_event_controller_reset          (CtkEventController *controller);
 
 GDK_AVAILABLE_IN_3_14
-GtkPropagationPhase ctk_event_controller_get_propagation_phase (GtkEventController *controller);
+CtkPropagationPhase ctk_event_controller_get_propagation_phase (CtkEventController *controller);
 
 GDK_AVAILABLE_IN_3_14
-void                ctk_event_controller_set_propagation_phase (GtkEventController  *controller,
-                                                                GtkPropagationPhase  phase);
+void                ctk_event_controller_set_propagation_phase (CtkEventController  *controller,
+                                                                CtkPropagationPhase  phase);
 
 G_END_DECLS
 

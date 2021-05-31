@@ -19,9 +19,9 @@
 #include "config.h"
 #include <ctk/ctk.h>
 
-GtkTreeModel *model = NULL;
+CtkTreeModel *model = NULL;
 static GRand *grand = NULL;
-GtkTreeSelection *selection = NULL;
+CtkTreeSelection *selection = NULL;
 enum
 {
   TEXT_COLUMN,
@@ -47,9 +47,9 @@ static void
 initialize_model (void)
 {
   gint i;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
-  model = (GtkTreeModel *) ctk_list_store_new (NUM_COLUMNS, G_TYPE_STRING);
+  model = (CtkTreeModel *) ctk_list_store_new (NUM_COLUMNS, G_TYPE_STRING);
   grand = g_rand_new ();
   for (i = 0; i < NUM_ROWS; i++)
     {
@@ -64,9 +64,9 @@ static void
 futz_row (void)
 {
   gint i;
-  GtkTreePath *path;
-  GtkTreeIter iter;
-  GtkTreeIter iter2;
+  CtkTreePath *path;
+  CtkTreeIter iter;
+  CtkTreeIter iter2;
 
   i = g_rand_int_range (grand, 0,
 			ctk_tree_model_iter_n_children (model, NULL));
@@ -119,13 +119,13 @@ futz (void)
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *vbox;
-  GtkWidget *scrolled_window;
-  GtkWidget *tree_view;
-  GtkWidget *hbox;
-  GtkWidget *button;
-  GtkTreePath *path;
+  CtkWidget *window;
+  CtkWidget *vbox;
+  CtkWidget *scrolled_window;
+  CtkWidget *tree_view;
+  CtkWidget *hbox;
+  CtkWidget *button;
+  CtkTreePath *path;
 
   ctk_init (&argc, &argv);
 

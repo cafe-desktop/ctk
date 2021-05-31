@@ -1,6 +1,6 @@
 /* Printing/Page Setup
  *
- * GtkPageSetupUnixDialog can be used if page setup is needed
+ * CtkPageSetupUnixDialog can be used if page setup is needed
  * independent of a full printing dialog.
  */
 
@@ -9,15 +9,15 @@
 #include <ctk/ctkunixprint.h>
 
 static void
-done_cb (GtkDialog *dialog, gint response, gpointer data)
+done_cb (CtkDialog *dialog, gint response, gpointer data)
 {
   ctk_widget_destroy (CTK_WIDGET (dialog));
 }
 
-GtkWidget *
-do_pagesetup (GtkWidget *do_widget)
+CtkWidget *
+do_pagesetup (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {

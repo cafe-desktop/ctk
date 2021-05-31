@@ -27,24 +27,24 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE            (ctk_notebook_page_accessible_get_type ())
-#define CTK_NOTEBOOK_PAGE_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE, GtkNotebookPageAccessible))
-#define CTK_NOTEBOOK_PAGE_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE, GtkNotebookPageAccessibleClass))
+#define CTK_NOTEBOOK_PAGE_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE, CtkNotebookPageAccessible))
+#define CTK_NOTEBOOK_PAGE_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE, CtkNotebookPageAccessibleClass))
 #define CTK_IS_NOTEBOOK_PAGE_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE))
 #define CTK_IS_NOTEBOOK_PAGE_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE))
-#define CTK_NOTEBOOK_PAGE_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE, GtkNotebookPageAccessibleClass))
+#define CTK_NOTEBOOK_PAGE_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NOTEBOOK_PAGE_ACCESSIBLE, CtkNotebookPageAccessibleClass))
 
-typedef struct _GtkNotebookPageAccessible        GtkNotebookPageAccessible;
-typedef struct _GtkNotebookPageAccessibleClass   GtkNotebookPageAccessibleClass;
-typedef struct _GtkNotebookPageAccessiblePrivate GtkNotebookPageAccessiblePrivate;
+typedef struct _CtkNotebookPageAccessible        CtkNotebookPageAccessible;
+typedef struct _CtkNotebookPageAccessibleClass   CtkNotebookPageAccessibleClass;
+typedef struct _CtkNotebookPageAccessiblePrivate CtkNotebookPageAccessiblePrivate;
 
-struct _GtkNotebookPageAccessible
+struct _CtkNotebookPageAccessible
 {
   AtkObject parent;
 
-  GtkNotebookPageAccessiblePrivate *priv;
+  CtkNotebookPageAccessiblePrivate *priv;
 };
 
-struct _GtkNotebookPageAccessibleClass
+struct _CtkNotebookPageAccessibleClass
 {
   AtkObjectClass parent_class;
 };
@@ -53,11 +53,11 @@ GDK_AVAILABLE_IN_ALL
 GType      ctk_notebook_page_accessible_get_type   (void);
 
 GDK_AVAILABLE_IN_ALL
-AtkObject *ctk_notebook_page_accessible_new        (GtkNotebookAccessible     *notebook,
-                                                    GtkWidget                 *child);
+AtkObject *ctk_notebook_page_accessible_new        (CtkNotebookAccessible     *notebook,
+                                                    CtkWidget                 *child);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_notebook_page_accessible_invalidate (GtkNotebookPageAccessible *page);
+void       ctk_notebook_page_accessible_invalidate (CtkNotebookPageAccessible *page);
 
 G_END_DECLS
 

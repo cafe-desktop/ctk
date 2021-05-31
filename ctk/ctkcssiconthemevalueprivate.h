@@ -27,11 +27,11 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   ctk_css_icon_theme_value_new            (GtkIconTheme           *icontheme);
+CtkCssValue *   ctk_css_icon_theme_value_new            (CtkIconTheme           *icontheme);
 
-GtkCssValue *   ctk_css_icon_theme_value_parse          (GtkCssParser           *parser);
+CtkCssValue *   ctk_css_icon_theme_value_parse          (CtkCssParser           *parser);
 
-GtkIconTheme *  ctk_css_icon_theme_value_get_icon_theme (GtkCssValue            *value);
+CtkIconTheme *  ctk_css_icon_theme_value_get_icon_theme (CtkCssValue            *value);
 
 G_END_DECLS
 

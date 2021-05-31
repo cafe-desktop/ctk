@@ -34,8 +34,8 @@
 #include "gdk/quartz/GdkQuartzView.h"
 
 #define CTK_IM_CONTEXT_TYPE_QUARTZ (type_quartz)
-#define CTK_IM_CONTEXT_QUARTZ(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_IM_CONTEXT_TYPE_QUARTZ, GtkIMContextQuartz))
-#define CTK_IM_CONTEXT_QUARTZ_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_IM_CONTEXT_TYPE_QUARTZ, GtkIMContextQuartzClass))
+#define CTK_IM_CONTEXT_QUARTZ(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_IM_CONTEXT_TYPE_QUARTZ, CtkIMContextQuartz))
+#define CTK_IM_CONTEXT_QUARTZ_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_IM_CONTEXT_TYPE_QUARTZ, CtkIMContextQuartzClass))
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 10120
 #define NS_EVENT_KEY_DOWN NSKeyDown
@@ -43,27 +43,27 @@
 #define NS_EVENT_KEY_DOWN NSEventTypeKeyDown
 #endif
 
-typedef struct _GtkIMContextQuartz
+typedef struct _CtkIMContextQuartz
 {
-  GtkIMContext parent;
-  GtkIMContext *slave;
+  CtkIMContext parent;
+  CtkIMContext *slave;
   GdkWindow *client_window;
   gchar *preedit_str;
   unsigned int cursor_index;
   unsigned int selected_len;
   GdkRectangle *cursor_rect;
   gboolean focused;
-} GtkIMContextQuartz;
+} CtkIMContextQuartz;
 
-typedef struct _GtkIMContextQuartzClass
+typedef struct _CtkIMContextQuartzClass
 {
-  GtkIMContextClass parent_class;
-} GtkIMContextQuartzClass;
+  CtkIMContextClass parent_class;
+} CtkIMContextQuartzClass;
 
 GType type_quartz = 0;
 static GObjectClass *parent_class;
 
-static const GtkIMContextInfo imquartz_info =
+static const CtkIMContextInfo imquartz_info =
 {
   "quartz",
   NC_("input method menu", "Mac OS X Quartz"),
@@ -72,7 +72,7 @@ static const GtkIMContextInfo imquartz_info =
   "ja:ko:zh:*",
 };
 
-static const GtkIMContextInfo *info_list[] =
+static const CtkIMContextInfo *info_list[] =
 {
   &imquartz_info,
 };
@@ -84,12 +84,12 @@ static const GtkIMContextInfo *info_list[] =
 #endif
 
 static void
-quartz_get_preedit_string (GtkIMContext *context,
+quartz_get_preedit_string (CtkIMContext *context,
                            gchar **str,
                            PangoAttrList **attrs,
                            gint *cursor_pos)
 {
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
 
   CTK_NOTE (MISC, g_print ("quartz_get_preedit_string\n"));
 
@@ -135,10 +135,10 @@ quartz_get_preedit_string (GtkIMContext *context,
 }
 
 static gboolean
-output_result (GtkIMContext *context,
+output_result (CtkIMContext *context,
                GdkWindow *win)
 {
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
   gboolean retval = FALSE;
   int fixed_str_replace_len;
   gchar *fixed_str, *marked_str;
@@ -203,10 +203,10 @@ output_result (GtkIMContext *context,
 }
 
 static gboolean
-quartz_filter_keypress (GtkIMContext *context,
+quartz_filter_keypress (CtkIMContext *context,
                         GdkEventKey *event)
 {
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
   gboolean retval;
   NSView *nsview;
   GdkWindow *win;
@@ -262,9 +262,9 @@ quartz_filter_keypress (GtkIMContext *context,
 }
 
 static void
-discard_preedit (GtkIMContext *context)
+discard_preedit (CtkIMContext *context)
 {
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
 
   if (!qc->client_window)
     return;
@@ -295,16 +295,16 @@ discard_preedit (GtkIMContext *context)
 }
 
 static void
-quartz_reset (GtkIMContext *context)
+quartz_reset (CtkIMContext *context)
 {
   CTK_NOTE (MISC, g_print ("quartz_reset\n"));
   discard_preedit (context);
 }
 
 static void
-quartz_set_client_window (GtkIMContext *context, GdkWindow *window)
+quartz_set_client_window (CtkIMContext *context, GdkWindow *window)
 {
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
 
   CTK_NOTE (MISC, g_print ("quartz_set_client_window: %p\n", window));
 
@@ -312,20 +312,20 @@ quartz_set_client_window (GtkIMContext *context, GdkWindow *window)
 }
 
 static void
-quartz_focus_in (GtkIMContext *context)
+quartz_focus_in (CtkIMContext *context)
 {
   CTK_NOTE (MISC, g_print ("quartz_focus_in\n"));
 
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
   qc->focused = TRUE;
 }
 
 static void
-quartz_focus_out (GtkIMContext *context)
+quartz_focus_out (CtkIMContext *context)
 {
   CTK_NOTE (MISC, g_print ("quartz_focus_out\n"));
 
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
   qc->focused = FALSE;
 
   /* Commit any partially built strings or it'll mess up other GTK+ widgets in the window */
@@ -333,9 +333,9 @@ quartz_focus_out (GtkIMContext *context)
 }
 
 static void
-quartz_set_cursor_location (GtkIMContext *context, GdkRectangle *area)
+quartz_set_cursor_location (CtkIMContext *context, GdkRectangle *area)
 {
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
   gint x, y;
   NSView *nsview;
   GdkWindow *win;
@@ -367,13 +367,13 @@ quartz_set_cursor_location (GtkIMContext *context, GdkRectangle *area)
 }
 
 static void
-quartz_set_use_preedit (GtkIMContext *context, gboolean use_preedit)
+quartz_set_use_preedit (CtkIMContext *context, gboolean use_preedit)
 {
   CTK_NOTE (MISC, g_print ("quartz_set_use_preedit: %d\n", use_preedit));
 }
 
 static void
-commit_cb (GtkIMContext *context, const gchar *str, GtkIMContextQuartz *qc)
+commit_cb (CtkIMContext *context, const gchar *str, CtkIMContextQuartz *qc)
 {
   g_signal_emit_by_name (qc, "commit", str);
 }
@@ -383,7 +383,7 @@ imquartz_finalize (GObject *obj)
 {
   CTK_NOTE (MISC, g_print ("imquartz_finalize\n"));
 
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (obj);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (obj);
   g_free (qc->preedit_str);
   qc->preedit_str = NULL;
   g_free (qc->cursor_rect);
@@ -396,7 +396,7 @@ imquartz_finalize (GObject *obj)
 }
 
 static void
-ctk_im_context_quartz_class_init (GtkIMContextClass *klass)
+ctk_im_context_quartz_class_init (CtkIMContextClass *klass)
 {
   CTK_NOTE (MISC, g_print ("ctk_im_context_quartz_class_init\n"));
 
@@ -416,11 +416,11 @@ ctk_im_context_quartz_class_init (GtkIMContextClass *klass)
 }
 
 static void
-ctk_im_context_quartz_init (GtkIMContext *im_context)
+ctk_im_context_quartz_init (CtkIMContext *im_context)
 {
   CTK_NOTE (MISC, g_print ("ctk_im_context_quartz_init\n"));
 
-  GtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (im_context);
+  CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (im_context);
   qc->preedit_str = g_strdup ("");
   qc->cursor_index = 0;
   qc->selected_len = 0;
@@ -436,13 +436,13 @@ ctk_im_context_quartz_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (GtkIMContextQuartzClass),
+    sizeof (CtkIMContextQuartzClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
     (GClassInitFunc) ctk_im_context_quartz_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
-    sizeof (GtkIMContextQuartz),
+    sizeof (CtkIMContextQuartz),
     0,
     (GInstanceInitFunc) ctk_im_context_quartz_init,
   };
@@ -450,7 +450,7 @@ ctk_im_context_quartz_register_type (GTypeModule *module)
   type_quartz =
     g_type_module_register_type (module,
                                  CTK_TYPE_IM_CONTEXT,
-                                 "GtkIMContextQuartz",
+                                 "CtkIMContextQuartz",
                                  &object_info, 0);
 }
 
@@ -463,13 +463,13 @@ MODULE_ENTRY (void, exit) (void)
 {
 }
 
-MODULE_ENTRY (void, list) (const GtkIMContextInfo *** contexts, int *n_contexts)
+MODULE_ENTRY (void, list) (const CtkIMContextInfo *** contexts, int *n_contexts)
 {
   *contexts = info_list;
   *n_contexts = G_N_ELEMENTS (info_list);
 }
 
-MODULE_ENTRY (GtkIMContext *, create) (const gchar * context_id)
+MODULE_ENTRY (CtkIMContext *, create) (const gchar * context_id)
 {
   g_return_val_if_fail (context_id, NULL);
 

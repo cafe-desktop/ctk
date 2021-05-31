@@ -28,32 +28,32 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_CONTAINER_ACCESSIBLE                  (ctk_container_accessible_get_type ())
-#define CTK_CONTAINER_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CONTAINER_ACCESSIBLE, GtkContainerAccessible))
-#define CTK_CONTAINER_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CONTAINER_ACCESSIBLE, GtkContainerAccessibleClass))
+#define CTK_CONTAINER_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CONTAINER_ACCESSIBLE, CtkContainerAccessible))
+#define CTK_CONTAINER_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CONTAINER_ACCESSIBLE, CtkContainerAccessibleClass))
 #define CTK_IS_CONTAINER_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CONTAINER_ACCESSIBLE))
 #define CTK_IS_CONTAINER_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CONTAINER_ACCESSIBLE))
-#define CTK_CONTAINER_ACCESSIBLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CONTAINER_ACCESSIBLE, GtkContainerAccessibleClass))
+#define CTK_CONTAINER_ACCESSIBLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CONTAINER_ACCESSIBLE, CtkContainerAccessibleClass))
 
-typedef struct _GtkContainerAccessible        GtkContainerAccessible;
-typedef struct _GtkContainerAccessibleClass   GtkContainerAccessibleClass;
-typedef struct _GtkContainerAccessiblePrivate GtkContainerAccessiblePrivate;
+typedef struct _CtkContainerAccessible        CtkContainerAccessible;
+typedef struct _CtkContainerAccessibleClass   CtkContainerAccessibleClass;
+typedef struct _CtkContainerAccessiblePrivate CtkContainerAccessiblePrivate;
 
-struct _GtkContainerAccessible
+struct _CtkContainerAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkContainerAccessiblePrivate *priv;
+  CtkContainerAccessiblePrivate *priv;
 };
 
-struct _GtkContainerAccessibleClass
+struct _CtkContainerAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 
-  gint (*add_ctk)    (GtkContainer *container,
-                      GtkWidget    *widget,
+  gint (*add_ctk)    (CtkContainer *container,
+                      CtkWidget    *widget,
                       gpointer     data);
-  gint (*remove_ctk) (GtkContainer *container,
-                      GtkWidget    *widget,
+  gint (*remove_ctk) (CtkContainer *container,
+                      CtkWidget    *widget,
                       gpointer     data);
 };
 

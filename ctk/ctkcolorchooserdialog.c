@@ -32,18 +32,18 @@
 /**
  * SECTION:ctkcolorchooserdialog
  * @Short_description: A dialog for choosing colors
- * @Title: GtkColorChooserDialog
- * @See_also: #GtkColorChooser, #GtkDialog
+ * @Title: CtkColorChooserDialog
+ * @See_also: #CtkColorChooser, #CtkDialog
  *
- * The #GtkColorChooserDialog widget is a dialog for choosing
- * a color. It implements the #GtkColorChooser interface.
+ * The #CtkColorChooserDialog widget is a dialog for choosing
+ * a color. It implements the #CtkColorChooser interface.
  *
  * Since: 3.4
  */
 
-struct _GtkColorChooserDialogPrivate
+struct _CtkColorChooserDialogPrivate
 {
-  GtkWidget *chooser;
+  CtkWidget *chooser;
 };
 
 enum
@@ -54,23 +54,23 @@ enum
   PROP_SHOW_EDITOR
 };
 
-static void ctk_color_chooser_dialog_iface_init (GtkColorChooserInterface *iface);
+static void ctk_color_chooser_dialog_iface_init (CtkColorChooserInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorChooserDialog, ctk_color_chooser_dialog, CTK_TYPE_DIALOG,
-                         G_ADD_PRIVATE (GtkColorChooserDialog)
+G_DEFINE_TYPE_WITH_CODE (CtkColorChooserDialog, ctk_color_chooser_dialog, CTK_TYPE_DIALOG,
+                         G_ADD_PRIVATE (CtkColorChooserDialog)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_CHOOSER,
                                                 ctk_color_chooser_dialog_iface_init))
 
 static void
 propagate_notify (GObject               *o,
                   GParamSpec            *pspec,
-                  GtkColorChooserDialog *cc)
+                  CtkColorChooserDialog *cc)
 {
   g_object_notify (G_OBJECT (cc), pspec->name);
 }
 
 static void
-save_color (GtkColorChooserDialog *dialog)
+save_color (CtkColorChooserDialog *dialog)
 {
   GdkRGBA color;
 
@@ -82,16 +82,16 @@ save_color (GtkColorChooserDialog *dialog)
 }
 
 static void
-color_activated_cb (GtkColorChooser *chooser,
+color_activated_cb (CtkColorChooser *chooser,
                     GdkRGBA         *color,
-                    GtkDialog       *dialog)
+                    CtkDialog       *dialog)
 {
   save_color (CTK_COLOR_CHOOSER_DIALOG (dialog));
   ctk_dialog_response (dialog, CTK_RESPONSE_OK);
 }
 
 static void
-ctk_color_chooser_dialog_response (GtkDialog *dialog,
+ctk_color_chooser_dialog_response (CtkDialog *dialog,
                                    gint       response_id,
                                    gpointer   user_data)
 {
@@ -100,7 +100,7 @@ ctk_color_chooser_dialog_response (GtkDialog *dialog,
 }
 
 static void
-ctk_color_chooser_dialog_init (GtkColorChooserDialog *cc)
+ctk_color_chooser_dialog_init (CtkColorChooserDialog *cc)
 {
   cc->priv = ctk_color_chooser_dialog_get_instance_private (cc);
 
@@ -119,7 +119,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_color_chooser_dialog_unmap (GtkWidget *widget)
+ctk_color_chooser_dialog_unmap (CtkWidget *widget)
 {
   CTK_WIDGET_CLASS (ctk_color_chooser_dialog_parent_class)->unmap (widget);
 
@@ -135,8 +135,8 @@ ctk_color_chooser_dialog_get_property (GObject    *object,
                                        GValue     *value,
                                        GParamSpec *pspec)
 {
-  GtkColorChooserDialog *cd = CTK_COLOR_CHOOSER_DIALOG (object);
-  GtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
+  CtkColorChooserDialog *cd = CTK_COLOR_CHOOSER_DIALOG (object);
+  CtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
 
   switch (prop_id)
     {
@@ -170,8 +170,8 @@ ctk_color_chooser_dialog_set_property (GObject      *object,
                                        const GValue *value,
                                        GParamSpec   *pspec)
 {
-  GtkColorChooserDialog *cd = CTK_COLOR_CHOOSER_DIALOG (object);
-  GtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
+  CtkColorChooserDialog *cd = CTK_COLOR_CHOOSER_DIALOG (object);
+  CtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
 
   switch (prop_id)
     {
@@ -197,10 +197,10 @@ ctk_color_chooser_dialog_set_property (GObject      *object,
 }
 
 static void
-ctk_color_chooser_dialog_class_init (GtkColorChooserDialogClass *class)
+ctk_color_chooser_dialog_class_init (CtkColorChooserDialogClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->get_property = ctk_color_chooser_dialog_get_property;
   object_class->set_property = ctk_color_chooser_dialog_set_property;
@@ -217,44 +217,44 @@ ctk_color_chooser_dialog_class_init (GtkColorChooserDialogClass *class)
    */
   ctk_widget_class_set_template_from_resource (widget_class,
 					       "/org/ctk/libctk/ui/ctkcolorchooserdialog.ui");
-  ctk_widget_class_bind_template_child_private (widget_class, GtkColorChooserDialog, chooser);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkColorChooserDialog, chooser);
   ctk_widget_class_bind_template_callback (widget_class, propagate_notify);
   ctk_widget_class_bind_template_callback (widget_class, color_activated_cb);
 }
 
 static void
-ctk_color_chooser_dialog_get_rgba (GtkColorChooser *chooser,
+ctk_color_chooser_dialog_get_rgba (CtkColorChooser *chooser,
                                    GdkRGBA         *color)
 {
-  GtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
+  CtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
 
   ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (cc->priv->chooser), color);
 }
 
 static void
-ctk_color_chooser_dialog_set_rgba (GtkColorChooser *chooser,
+ctk_color_chooser_dialog_set_rgba (CtkColorChooser *chooser,
                                    const GdkRGBA   *color)
 {
-  GtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
+  CtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
 
   ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (cc->priv->chooser), color);
 }
 
 static void
-ctk_color_chooser_dialog_add_palette (GtkColorChooser *chooser,
-                                      GtkOrientation   orientation,
+ctk_color_chooser_dialog_add_palette (CtkColorChooser *chooser,
+                                      CtkOrientation   orientation,
                                       gint             colors_per_line,
                                       gint             n_colors,
                                       GdkRGBA         *colors)
 {
-  GtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
+  CtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
 
   ctk_color_chooser_add_palette (CTK_COLOR_CHOOSER (cc->priv->chooser),
                                  orientation, colors_per_line, n_colors, colors);
 }
 
 static void
-ctk_color_chooser_dialog_iface_init (GtkColorChooserInterface *iface)
+ctk_color_chooser_dialog_iface_init (CtkColorChooserInterface *iface)
 {
   iface->get_rgba = ctk_color_chooser_dialog_get_rgba;
   iface->set_rgba = ctk_color_chooser_dialog_set_rgba;
@@ -266,17 +266,17 @@ ctk_color_chooser_dialog_iface_init (GtkColorChooserInterface *iface)
  * @title: (allow-none): Title of the dialog, or %NULL
  * @parent: (allow-none): Transient parent of the dialog, or %NULL
  *
- * Creates a new #GtkColorChooserDialog.
+ * Creates a new #CtkColorChooserDialog.
  *
- * Returns: a new #GtkColorChooserDialog
+ * Returns: a new #CtkColorChooserDialog
  *
  * Since: 3.4
  */
-GtkWidget *
+CtkWidget *
 ctk_color_chooser_dialog_new (const gchar *title,
-                              GtkWindow   *parent)
+                              CtkWindow   *parent)
 {
-  GtkColorChooserDialog *dialog;
+  CtkColorChooserDialog *dialog;
 
   dialog = g_object_new (CTK_TYPE_COLOR_CHOOSER_DIALOG,
                          "title", title,

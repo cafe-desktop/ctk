@@ -9,10 +9,10 @@
 
 
 static void
-combo_changed_cb (GtkWidget *combo,
+combo_changed_cb (CtkWidget *combo,
 		  gpointer   data)
 {
-  GtkWidget *label = CTK_WIDGET (data);
+  CtkWidget *label = CTK_WIDGET (data);
   gint active;
 
   active = ctk_combo_box_get_active (CTK_COMBO_BOX (combo));
@@ -21,10 +21,10 @@ combo_changed_cb (GtkWidget *combo,
 }
 
 static gboolean
-layout_draw_handler (GtkWidget *widget,
+layout_draw_handler (CtkWidget *widget,
                      cairo_t   *cr)
 {
-  GtkLayout *layout = CTK_LAYOUT (widget);
+  CtkLayout *layout = CTK_LAYOUT (widget);
   GdkWindow *bin_window = ctk_layout_get_bin_window (layout);
   GdkRectangle clip;
 
@@ -60,8 +60,8 @@ layout_draw_handler (GtkWidget *widget,
 static gboolean
 scroll_layout (gpointer data)
 {
-  GtkWidget *layout = data;
-  GtkAdjustment *adj;
+  CtkWidget *layout = data;
+  CtkAdjustment *adj;
 
   adj = ctk_scrollable_get_hadjustment (CTK_SCROLLABLE (layout));
   ctk_adjustment_set_value (adj, ctk_adjustment_get_value (adj) + 5.0);
@@ -71,13 +71,13 @@ scroll_layout (gpointer data)
 static guint layout_timeout;
 
 static void
-create_layout (GtkWidget *vbox)
+create_layout (CtkWidget *vbox)
 {
-  GtkAdjustment *hadjustment, *vadjustment;
-  GtkLayout *layout;
-  GtkWidget *layout_widget;
-  GtkWidget *scrolledwindow;
-  GtkWidget *button;
+  CtkAdjustment *hadjustment, *vadjustment;
+  CtkLayout *layout;
+  CtkWidget *layout_widget;
+  CtkWidget *scrolledwindow;
+  CtkWidget *button;
   gchar buf[16];
   gint i, j;
 
@@ -93,7 +93,7 @@ create_layout (GtkWidget *vbox)
   layout = CTK_LAYOUT (layout_widget);
   ctk_container_add (CTK_CONTAINER (scrolledwindow), layout_widget);
 
-  /* We set step sizes here since GtkLayout does not set
+  /* We set step sizes here since CtkLayout does not set
    * them itself.
    */
   hadjustment = ctk_scrollable_get_hadjustment (CTK_SCROLLABLE (layout));
@@ -139,12 +139,12 @@ create_layout (GtkWidget *vbox)
 }
 
 static void
-create_treeview (GtkWidget *vbox)
+create_treeview (CtkWidget *vbox)
 {
-  GtkWidget *scrolledwindow;
-  GtkListStore *store;
-  GtkWidget *tree_view;
-  GtkIconTheme *icon_theme;
+  CtkWidget *scrolledwindow;
+  CtkListStore *store;
+  CtkWidget *tree_view;
+  CtkIconTheme *icon_theme;
   GList *icon_names;
   GList *list;
 
@@ -188,12 +188,12 @@ create_treeview (GtkWidget *vbox)
   g_list_free_full (icon_names, g_free);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_widgets (void)
 {
-  GtkWidget *main_hbox, *main_vbox;
-  GtkWidget *vbox, *hbox, *label, *combo, *entry, *button, *cb;
-  GtkWidget *sw, *text_view;
+  CtkWidget *main_hbox, *main_vbox;
+  CtkWidget *vbox, *hbox, *label, *combo, *entry, *button, *cb;
+  CtkWidget *sw, *text_view;
 
   main_vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
 
@@ -267,17 +267,17 @@ create_widgets (void)
 
 
 static void
-scale_changed (GtkRange        *range,
-	       GtkOffscreenBox *offscreen_box)
+scale_changed (CtkRange        *range,
+	       CtkOffscreenBox *offscreen_box)
 {
   ctk_offscreen_box_set_angle (offscreen_box, ctk_range_get_value (range));
 }
 
-static GtkWidget *scale = NULL;
+static CtkWidget *scale = NULL;
 
 static void
-remove_clicked (GtkButton *button,
-                GtkWidget *widget)
+remove_clicked (CtkButton *button,
+                CtkWidget *widget)
 {
   ctk_widget_destroy (widget);
   g_source_remove (layout_timeout);
@@ -290,8 +290,8 @@ int
 main (int   argc,
       char *argv[])
 {
-  GtkWidget *window, *widget, *vbox, *button;
-  GtkWidget *offscreen = NULL;
+  CtkWidget *window, *widget, *vbox, *button;
+  CtkWidget *offscreen = NULL;
   gboolean use_offscreen;
 
   ctk_init (&argc, &argv);
@@ -340,7 +340,7 @@ main (int   argc,
   widget = create_widgets ();
   if (1)
     {
-      GtkWidget *widget2, *box2, *offscreen2;
+      CtkWidget *widget2, *box2, *offscreen2;
 
       offscreen2 = ctk_offscreen_box_new ();
       ctk_box_pack_start (CTK_BOX (widget), offscreen2, FALSE, FALSE, 0);

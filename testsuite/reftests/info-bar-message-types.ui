@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkInfoBar" id="infobar1">
+          <object class="CtkInfoBar" id="infobar1">
             <property name="visible">True</property>
             <property name="app_paintable">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
             <property name="message_type">info</property>
             <child internal-child="content_area">
-              <object class="GtkBox" id="infobar-content_area1">
+              <object class="CtkBox" id="infobar-content_area1">
                 <property name="can_focus">False</property>
                 <property name="border_width">8</property>
                 <property name="spacing">16</property>
                 <child>
-                  <object class="GtkLabel" id="label1">
+                  <object class="CtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Info</property>
@@ -35,7 +35,7 @@
               </object>
             </child>
             <child internal-child="action_area">
-              <object class="GtkButtonBox" id="infobar-action_area1">
+              <object class="CtkButtonBox" id="infobar-action_area1">
                 <property name="can_focus">False</property>
                 <property name="border_width">0</property>
                 <property name="orientation">vertical</property>
@@ -52,19 +52,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInfoBar" id="infobar2">
+          <object class="CtkInfoBar" id="infobar2">
             <property name="visible">True</property>
             <property name="app_paintable">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
             <property name="message_type">warning</property>
             <child internal-child="content_area">
-              <object class="GtkBox" id="infobar-content_area2">
+              <object class="CtkBox" id="infobar-content_area2">
                 <property name="can_focus">False</property>
                 <property name="border_width">8</property>
                 <property name="spacing">16</property>
                 <child>
-                  <object class="GtkLabel" id="label2">
+                  <object class="CtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Warning</property>
@@ -78,7 +78,7 @@
               </object>
             </child>
             <child internal-child="action_area">
-              <object class="GtkButtonBox" id="infobar-action_area2">
+              <object class="CtkButtonBox" id="infobar-action_area2">
                 <property name="can_focus">False</property>
                 <property name="border_width">0</property>
                 <property name="orientation">vertical</property>
@@ -95,19 +95,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInfoBar" id="infobar3">
+          <object class="CtkInfoBar" id="infobar3">
             <property name="visible">True</property>
             <property name="app_paintable">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
             <property name="message_type">question</property>
             <child internal-child="content_area">
-              <object class="GtkBox" id="infobar-content_area3">
+              <object class="CtkBox" id="infobar-content_area3">
                 <property name="can_focus">False</property>
                 <property name="border_width">8</property>
                 <property name="spacing">16</property>
                 <child>
-                  <object class="GtkLabel" id="label3">
+                  <object class="CtkLabel" id="label3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Question</property>
@@ -121,7 +121,7 @@
               </object>
             </child>
             <child internal-child="action_area">
-              <object class="GtkButtonBox" id="infobar-action_area3">
+              <object class="CtkButtonBox" id="infobar-action_area3">
                 <property name="can_focus">False</property>
                 <property name="border_width">0</property>
                 <property name="orientation">vertical</property>
@@ -138,19 +138,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInfoBar" id="infobar4">
+          <object class="CtkInfoBar" id="infobar4">
             <property name="visible">True</property>
             <property name="app_paintable">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
             <property name="message_type">error</property>
             <child internal-child="content_area">
-              <object class="GtkBox" id="infobar-content_area4">
+              <object class="CtkBox" id="infobar-content_area4">
                 <property name="can_focus">False</property>
                 <property name="border_width">8</property>
                 <property name="spacing">16</property>
                 <child>
-                  <object class="GtkLabel" id="label4">
+                  <object class="CtkLabel" id="label4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Error</property>
@@ -164,7 +164,7 @@
               </object>
             </child>
             <child internal-child="action_area">
-              <object class="GtkButtonBox" id="infobar-action_area4">
+              <object class="CtkButtonBox" id="infobar-action_area4">
                 <property name="can_focus">False</property>
                 <property name="border_width">0</property>
                 <property name="orientation">vertical</property>
@@ -181,19 +181,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkInfoBar" id="infobar5">
+          <object class="CtkInfoBar" id="infobar5">
             <property name="visible">True</property>
             <property name="app_paintable">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">horizontal</property>
             <property name="message_type">other</property>
             <child internal-child="content_area">
-              <object class="GtkBox" id="infobar-content_area5">
+              <object class="CtkBox" id="infobar-content_area5">
                 <property name="can_focus">False</property>
                 <property name="border_width">8</property>
                 <property name="spacing">16</property>
                 <child>
-                  <object class="GtkLabel" id="label5">
+                  <object class="CtkLabel" id="label5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Other</property>
@@ -207,7 +207,7 @@
               </object>
             </child>
             <child internal-child="action_area">
-              <object class="GtkButtonBox" id="infobar-action_area5">
+              <object class="CtkButtonBox" id="infobar-action_area5">
                 <property name="can_focus">False</property>
                 <property name="border_width">0</property>
                 <property name="orientation">vertical</property>

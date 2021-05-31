@@ -3,12 +3,12 @@
 static void
 test_type (GType t)
 {
-  GtkWidget *w;
+  CtkWidget *w;
   AtkObject *a;
 
   if (g_type_is_a (t, CTK_TYPE_WIDGET))
     {
-      w = (GtkWidget *)g_object_new (t, NULL);
+      w = (CtkWidget *)g_object_new (t, NULL);
       a = ctk_widget_get_accessible (w);
 
       g_assert (CTK_IS_ACCESSIBLE (a));

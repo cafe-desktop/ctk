@@ -64,10 +64,10 @@
  *
  * A #GdkWindow is a (usually) rectangular region on the screen.
  * It’s a low-level object, used to implement high-level objects such as
- * #GtkWidget and #GtkWindow on the GTK+ level. A #GtkWindow is a toplevel
+ * #CtkWidget and #CtkWindow on the GTK+ level. A #CtkWindow is a toplevel
  * window, the thing a user might think of as a “window” with a titlebar
- * and so on; a #GtkWindow may contain many #GdkWindows. For example,
- * each #GtkButton has a #GdkWindow associated with it.
+ * and so on; a #CtkWindow may contain many #GdkWindows. For example,
+ * each #CtkButton has a #GdkWindow associated with it.
  *
  * # Composited Windows # {#COMPOSITED-WINDOWS}
  *
@@ -2224,11 +2224,11 @@ gdk_window_destroy (GdkWindow *window)
  *
  * For most purposes this function is deprecated in favor of
  * g_object_set_data(). However, for historical reasons GTK+ stores
- * the #GtkWidget that owns a #GdkWindow as user data on the
+ * the #CtkWidget that owns a #GdkWindow as user data on the
  * #GdkWindow. So, custom widget implementations should use
  * this function for that. If GTK+ receives an event for a #GdkWindow,
  * and the user data for the window is non-%NULL, GTK+ will assume the
- * user data is a #GtkWidget, and forward the event to that widget.
+ * user data is a #CtkWidget, and forward the event to that widget.
  *
  **/
 void
@@ -3223,7 +3223,7 @@ gdk_window_begin_paint_region (GdkWindow            *window,
  *
  * When using GTK+, the widget system automatically places calls to
  * gdk_window_begin_draw_frame() and gdk_window_end_draw_frame() around
- * emissions of the `GtkWidget::draw` signal. That is, if you’re
+ * emissions of the `CtkWidget::draw` signal. That is, if you’re
  * drawing the contents of the widget yourself, you can assume that the
  * widget has a cleared background, is already set as the clip region,
  * and already has a backing store. Therefore in most cases, application
@@ -5650,7 +5650,7 @@ gdk_window_restack (GdkWindow     *window,
  * This function maps a window so it’s visible onscreen. Its opposite
  * is gdk_window_hide().
  *
- * When implementing a #GtkWidget, you should call this function on the widget's
+ * When implementing a #CtkWidget, you should call this function on the widget's
  * #GdkWindow as part of the “map” method.
  */
 void
@@ -6166,7 +6166,7 @@ gdk_window_move_resize_internal (GdkWindow *window,
  *
  * Repositions a window relative to its parent window.
  * For toplevel windows, window managers may ignore or modify the move;
- * you should probably use ctk_window_move() on a #GtkWindow widget
+ * you should probably use ctk_window_move() on a #CtkWindow widget
  * anyway, instead of using GDK functions. For child windows,
  * the move will reliably succeed.
  *
@@ -8622,7 +8622,7 @@ _gdk_display_set_window_under_pointer (GdkDisplay *display,
  * Pointer grabs are used for operations which need complete control over mouse
  * events, even if the mouse leaves the application.
  * For example in GTK+ it is used for Drag and Drop, for dragging the handle in
- * the #GtkHPaned and #GtkVPaned widgets.
+ * the #CtkHPaned and #CtkVPaned widgets.
  *
  * Note that if the event mask of an X window has selected both button press and
  * button release events, then a button press event will cause an automatic
@@ -10295,7 +10295,7 @@ gdk_window_create_similar_image_surface (GdkWindow *     window,
  * @timestamp: timestamp of the event triggering the window focus
  *
  * Sets keyboard focus to @window. In most cases, ctk_window_present_with_time()
- * should be used on a #GtkWindow, rather than calling this function.
+ * should be used on a #CtkWindow, rather than calling this function.
  *
  **/
 void
@@ -10535,8 +10535,8 @@ gdk_window_set_startup_id (GdkWindow   *window,
  * window manager to do things like center @window on @parent and
  * keep @window above @parent.
  *
- * See ctk_window_set_transient_for() if you’re using #GtkWindow or
- * #GtkDialog.
+ * See ctk_window_set_transient_for() if you’re using #CtkWindow or
+ * #CtkDialog.
  **/
 void
 gdk_window_set_transient_for (GdkWindow *window,
@@ -10602,7 +10602,7 @@ gdk_window_get_frame_extents (GdkWindow    *window,
  * can’t see the override redirect window at all.
  *
  * Override redirect should only be used for short-lived temporary
- * windows, such as popup menus. #GtkMenu uses an override redirect
+ * windows, such as popup menus. #CtkMenu uses an override redirect
  * window in its implementation, for example.
  *
  **/
@@ -10753,7 +10753,7 @@ gdk_window_set_icon_name (GdkWindow   *window,
  *
  * Asks to iconify (minimize) @window. The window manager may choose
  * to ignore the request, but normally will honor it. Using
- * ctk_window_iconify() is preferred, if you have a #GtkWindow widget.
+ * ctk_window_iconify() is preferred, if you have a #CtkWindow widget.
  *
  * This function only makes sense when @window is a toplevel window.
  *
@@ -10787,7 +10787,7 @@ gdk_window_deiconify (GdkWindow *window)
  *
  * “Pins” a window such that it’s on all workspaces and does not scroll
  * with viewports, for window managers that have scrollable viewports.
- * (When using #GtkWindow, ctk_window_stick() may be more useful.)
+ * (When using #CtkWindow, ctk_window_stick() may be more useful.)
  *
  * On the X11 platform, this function depends on window manager
  * support, so may have no effect with many window managers. However,
@@ -11092,7 +11092,7 @@ gdk_window_set_group (GdkWindow *window,
  * “Decorations” are the features the window manager adds to a toplevel #GdkWindow.
  * This function sets the traditional Motif window manager hints that tell the
  * window manager which decorations you would like your window to have.
- * Usually you should use ctk_window_set_decorated() on a #GtkWindow instead of
+ * Usually you should use ctk_window_set_decorated() on a #CtkWindow instead of
  * using the GDK function directly.
  *
  * The @decorations argument is the logical OR of the fields in
@@ -11168,7 +11168,7 @@ gdk_window_set_functions (GdkWindow    *window,
  *
  * Begins a window resize operation (for a toplevel window).
  * You might use this function to implement a “window resize grip,” for
- * example; in fact #GtkStatusbar uses it. The function works best
+ * example; in fact #CtkStatusbar uses it. The function works best
  * with window managers that support the
  * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
  * but has a fallback implementation for other window managers.
@@ -11896,7 +11896,7 @@ gdk_window_get_unscaled_size (GdkWindow *window,
  * GTK+ will update this property automatically if
  * the @window background is opaque, as we know where the opaque regions
  * are. If your window background is not opaque, please update this
- * property in your #GtkWidget::style-updated handler.
+ * property in your #CtkWidget::style-updated handler.
  *
  * Since: 3.10
  */

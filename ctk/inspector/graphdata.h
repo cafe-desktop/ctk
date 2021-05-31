@@ -23,25 +23,25 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_GRAPH_DATA            (ctk_graph_data_get_type ())
-#define CTK_GRAPH_DATA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_GRAPH_DATA, GtkGraphData))
-#define CTK_GRAPH_DATA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_GRAPH_DATA, GtkGraphDataClass))
+#define CTK_GRAPH_DATA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_GRAPH_DATA, CtkGraphData))
+#define CTK_GRAPH_DATA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_GRAPH_DATA, CtkGraphDataClass))
 #define CTK_IS_GRAPH_DATA(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_GRAPH_DATA))
 #define CTK_IS_GRAPH_DATA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_GRAPH_DATA))
-#define CTK_GRAPH_DATA_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_GRAPH_DATA, GtkGraphDataClass))
+#define CTK_GRAPH_DATA_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_GRAPH_DATA, CtkGraphDataClass))
 
-typedef struct _GtkGraphData        GtkGraphData;
-typedef struct _GtkGraphDataClass   GtkGraphDataClass;
-typedef struct _GtkGraphDataPrivate GtkGraphDataPrivate;
+typedef struct _CtkGraphData        CtkGraphData;
+typedef struct _CtkGraphDataClass   CtkGraphDataClass;
+typedef struct _CtkGraphDataPrivate CtkGraphDataPrivate;
 
-struct _GtkGraphData
+struct _CtkGraphData
 {
   GObject              object;
 
   /*< private >*/
-  GtkGraphDataPrivate *priv;
+  CtkGraphDataPrivate *priv;
 };
 
-struct _GtkGraphDataClass
+struct _CtkGraphDataClass
 {
   GObjectClass parent_class;
 
@@ -55,15 +55,15 @@ struct _GtkGraphDataClass
 
 GType            ctk_graph_data_get_type        (void) G_GNUC_CONST;
 
-GtkGraphData    *ctk_graph_data_new             (guint           n_values);
+CtkGraphData    *ctk_graph_data_new             (guint           n_values);
 
-guint            ctk_graph_data_get_n_values    (GtkGraphData   *data);
-double           ctk_graph_data_get_value       (GtkGraphData   *data,
+guint            ctk_graph_data_get_n_values    (CtkGraphData   *data);
+double           ctk_graph_data_get_value       (CtkGraphData   *data,
                                                  guint           i);
-double           ctk_graph_data_get_minimum     (GtkGraphData   *data);
-double           ctk_graph_data_get_maximum     (GtkGraphData   *data);
+double           ctk_graph_data_get_minimum     (CtkGraphData   *data);
+double           ctk_graph_data_get_maximum     (CtkGraphData   *data);
 
-void             ctk_graph_data_prepend_value   (GtkGraphData   *data,
+void             ctk_graph_data_prepend_value   (CtkGraphData   *data,
                                                  double          value);
 
 G_END_DECLS

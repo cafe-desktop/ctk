@@ -43,30 +43,30 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_SCALE_BUTTON                 (ctk_scale_button_get_type ())
-#define CTK_SCALE_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCALE_BUTTON, GtkScaleButton))
-#define CTK_SCALE_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCALE_BUTTON, GtkScaleButtonClass))
+#define CTK_SCALE_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCALE_BUTTON, CtkScaleButton))
+#define CTK_SCALE_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCALE_BUTTON, CtkScaleButtonClass))
 #define CTK_IS_SCALE_BUTTON(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCALE_BUTTON))
 #define CTK_IS_SCALE_BUTTON_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCALE_BUTTON))
-#define CTK_SCALE_BUTTON_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCALE_BUTTON, GtkScaleButtonClass))
+#define CTK_SCALE_BUTTON_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCALE_BUTTON, CtkScaleButtonClass))
 
-typedef struct _GtkScaleButton        GtkScaleButton;
-typedef struct _GtkScaleButtonClass   GtkScaleButtonClass;
-typedef struct _GtkScaleButtonPrivate GtkScaleButtonPrivate;
+typedef struct _CtkScaleButton        CtkScaleButton;
+typedef struct _CtkScaleButtonClass   CtkScaleButtonClass;
+typedef struct _CtkScaleButtonPrivate CtkScaleButtonPrivate;
 
-struct _GtkScaleButton
+struct _CtkScaleButton
 {
-  GtkButton parent;
+  CtkButton parent;
 
   /*< private >*/
-  GtkScaleButtonPrivate *priv;
+  CtkScaleButtonPrivate *priv;
 };
 
-struct _GtkScaleButtonClass
+struct _CtkScaleButtonClass
 {
-  GtkButtonClass parent_class;
+  CtkButtonClass parent_class;
 
   /* signals */
-  void	(* value_changed) (GtkScaleButton *button,
+  void	(* value_changed) (CtkScaleButton *button,
                            gdouble         value);
 
   /* Padding for future expansion */
@@ -79,30 +79,30 @@ struct _GtkScaleButtonClass
 GDK_AVAILABLE_IN_ALL
 GType            ctk_scale_button_get_type         (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *      ctk_scale_button_new              (GtkIconSize      size,
+CtkWidget *      ctk_scale_button_new              (CtkIconSize      size,
                                                     gdouble          min,
                                                     gdouble          max,
                                                     gdouble          step,
                                                     const gchar    **icons);
 GDK_AVAILABLE_IN_ALL
-void             ctk_scale_button_set_icons        (GtkScaleButton  *button,
+void             ctk_scale_button_set_icons        (CtkScaleButton  *button,
                                                     const gchar    **icons);
 GDK_AVAILABLE_IN_ALL
-gdouble          ctk_scale_button_get_value        (GtkScaleButton  *button);
+gdouble          ctk_scale_button_get_value        (CtkScaleButton  *button);
 GDK_AVAILABLE_IN_ALL
-void             ctk_scale_button_set_value        (GtkScaleButton  *button,
+void             ctk_scale_button_set_value        (CtkScaleButton  *button,
                                                     gdouble          value);
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment *  ctk_scale_button_get_adjustment   (GtkScaleButton  *button);
+CtkAdjustment *  ctk_scale_button_get_adjustment   (CtkScaleButton  *button);
 GDK_AVAILABLE_IN_ALL
-void             ctk_scale_button_set_adjustment   (GtkScaleButton  *button,
-                                                    GtkAdjustment   *adjustment);
+void             ctk_scale_button_set_adjustment   (CtkScaleButton  *button,
+                                                    CtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *      ctk_scale_button_get_plus_button  (GtkScaleButton  *button);
+CtkWidget *      ctk_scale_button_get_plus_button  (CtkScaleButton  *button);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *      ctk_scale_button_get_minus_button (GtkScaleButton  *button);
+CtkWidget *      ctk_scale_button_get_minus_button (CtkScaleButton  *button);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *      ctk_scale_button_get_popup        (GtkScaleButton  *button);
+CtkWidget *      ctk_scale_button_get_popup        (CtkScaleButton  *button);
 
 G_END_DECLS
 

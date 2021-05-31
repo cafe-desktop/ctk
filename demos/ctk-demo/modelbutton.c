@@ -1,21 +1,21 @@
 /* Model Button
  *
- * GtkModelButton is a button widget that is designed to be used with
+ * CtkModelButton is a button widget that is designed to be used with
  * a GAction as model. The button will adjust its appearance according
  * to the kind of action it is connected to.
  *
- * It is also possible to use GtkModelButton without a GAction. In this
+ * It is also possible to use CtkModelButton without a GAction. In this
  * case, you should set the "role" attribute yourself, and connect to the
  * "clicked" signal as you would for any other button.
  *
- * A common use of GtkModelButton is to implement menu-like content
+ * A common use of CtkModelButton is to implement menu-like content
  * in popovers.
  */
 
 #include <ctk/ctk.h>
 
 static void
-tool_clicked (GtkButton *button)
+tool_clicked (CtkButton *button)
 {
   gboolean active;
 
@@ -23,10 +23,10 @@ tool_clicked (GtkButton *button)
   g_object_set (button, "active", !active, NULL);
 }
 
-GtkWidget *
-do_modelbutton (GtkWidget *do_widget)
+CtkWidget *
+do_modelbutton (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
   static GActionEntry win_entries[] = {
     { "color", NULL, "s", "'red'", NULL },
     { "chocolate", NULL, NULL, "true", NULL },
@@ -36,7 +36,7 @@ do_modelbutton (GtkWidget *do_widget)
 
   if (!window)
     {
-      GtkBuilder *builder;
+      CtkBuilder *builder;
       GActionGroup *actions;
 
       builder = ctk_builder_new_from_resource ("/modelbutton/modelbutton.ui");

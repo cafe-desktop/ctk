@@ -23,11 +23,11 @@
 
 #define CUSTOM_ITEM "custom-item"
 
-static GtkWidget *toplevel, *combobox, *box;
-static GtkWidget *sel_image, *sel_name;
+static CtkWidget *toplevel, *combobox, *box;
+static CtkWidget *sel_image, *sel_name;
 
 static void
-combo_changed_cb (GtkComboBox *cb,
+combo_changed_cb (CtkComboBox *cb,
                   gpointer     user_data)
 {
   GAppInfo *app_info;
@@ -45,7 +45,7 @@ combo_changed_cb (GtkComboBox *cb,
 }
 
 static void
-special_item_activated_cb (GtkAppChooserButton *b,
+special_item_activated_cb (CtkAppChooserButton *b,
                            const gchar *item_name,
                            gpointer user_data)
 {
@@ -55,7 +55,7 @@ special_item_activated_cb (GtkAppChooserButton *b,
 }
 
 static void
-action_cb (GtkAppChooserButton *b,
+action_cb (CtkAppChooserButton *b,
            const gchar *item_name,
            gpointer user_data)
 {
@@ -66,7 +66,7 @@ int
 main (int argc,
       char **argv)
 {
-  GtkWidget *w;
+  CtkWidget *w;
 
   ctk_init (&argc, &argv);
 

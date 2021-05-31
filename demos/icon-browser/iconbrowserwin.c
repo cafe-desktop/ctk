@@ -5,7 +5,7 @@
 #include <ctk/ctk.h>
 
 /* Drag 'n Drop */
-static GtkTargetEntry target_table[] = {
+static CtkTargetEntry target_table[] = {
   { "text/uri-list", 0, 0 },
 };
 
@@ -29,42 +29,42 @@ context_free (gpointer data)
 
 struct _IconBrowserWindow
 {
-  GtkApplicationWindow parent;
+  CtkApplicationWindow parent;
   GHashTable *contexts;
 
-  GtkWidget *context_list;
+  CtkWidget *context_list;
   Context *current_context;
   gboolean symbolic;
-  GtkWidget *symbolic_radio;
-  GtkTreeModelFilter *filter_model;
-  GtkWidget *details;
+  CtkWidget *symbolic_radio;
+  CtkTreeModelFilter *filter_model;
+  CtkWidget *details;
 
-  GtkListStore *store;
-  GtkCellRenderer *cell;
-  GtkCellRenderer *text_cell;
-  GtkWidget *search;
-  GtkWidget *searchbar;
-  GtkWidget *searchentry;
-  GtkWidget *list;
-  GtkWidget *image1;
-  GtkWidget *image2;
-  GtkWidget *image3;
-  GtkWidget *image4;
-  GtkWidget *image5;
-  GtkWidget *image6;
-  GtkWidget *label6;
-  GtkWidget *description;
+  CtkListStore *store;
+  CtkCellRenderer *cell;
+  CtkCellRenderer *text_cell;
+  CtkWidget *search;
+  CtkWidget *searchbar;
+  CtkWidget *searchentry;
+  CtkWidget *list;
+  CtkWidget *image1;
+  CtkWidget *image2;
+  CtkWidget *image3;
+  CtkWidget *image4;
+  CtkWidget *image5;
+  CtkWidget *image6;
+  CtkWidget *label6;
+  CtkWidget *description;
 };
 
 struct _IconBrowserWindowClass
 {
-  GtkApplicationWindowClass parent_class;
+  CtkApplicationWindowClass parent_class;
 };
 
 G_DEFINE_TYPE(IconBrowserWindow, icon_browser_window, CTK_TYPE_APPLICATION_WINDOW);
 
 static void
-search_text_changed (GtkEntry *entry, IconBrowserWindow *win)
+search_text_changed (CtkEntry *entry, IconBrowserWindow *win)
 {
   const gchar *text;
 
@@ -77,10 +77,10 @@ search_text_changed (GtkEntry *entry, IconBrowserWindow *win)
 }
 
 static GdkPixbuf *
-get_icon (GtkWidget *image, const gchar *name, gint size)
+get_icon (CtkWidget *image, const gchar *name, gint size)
 {
-  GtkIconInfo *info;
-  GtkStyleContext *context;
+  CtkIconInfo *info;
+  CtkStyleContext *context;
   GdkPixbuf *pixbuf;
 
   context = ctk_widget_get_style_context (image);
@@ -92,7 +92,7 @@ get_icon (GtkWidget *image, const gchar *name, gint size)
 }
 
 static void
-set_image (GtkWidget *image, const gchar *name, gint size)
+set_image (CtkWidget *image, const gchar *name, gint size)
 {
   GdkPixbuf *pixbuf;
 
@@ -104,9 +104,9 @@ set_image (GtkWidget *image, const gchar *name, gint size)
 }
 
 static void
-item_activated (GtkIconView *icon_view, GtkTreePath *path, IconBrowserWindow *win)
+item_activated (CtkIconView *icon_view, CtkTreePath *path, IconBrowserWindow *win)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gchar *name;
   gchar *description;
   gint column;
@@ -201,7 +201,7 @@ add_context (IconBrowserWindow *win,
              const gchar       *description)
 {
   Context *c;
-  GtkWidget *row;
+  CtkWidget *row;
 
   c = g_new (Context, 1);
   c->id = g_strdup (id);
@@ -226,10 +226,10 @@ add_context (IconBrowserWindow *win,
 }
 
 static void
-selected_context_changed (GtkListBox *list, IconBrowserWindow *win)
+selected_context_changed (CtkListBox *list, IconBrowserWindow *win)
 {
-  GtkWidget *row;
-  GtkWidget *label;
+  CtkWidget *row;
+  CtkWidget *label;
 
   row = CTK_WIDGET (ctk_list_box_get_selected_row (list));
   if (row == NULL)
@@ -292,7 +292,7 @@ populate (IconBrowserWindow *win)
 }
 
 static gboolean
-key_press_event_cb (GtkWidget *widget,
+key_press_event_cb (CtkWidget *widget,
                     GdkEvent  *event,
                     gpointer   data)
 {
@@ -302,18 +302,18 @@ key_press_event_cb (GtkWidget *widget,
 }
 
 static void
-copy_to_clipboard (GtkButton         *button,
+copy_to_clipboard (CtkButton         *button,
                    IconBrowserWindow *win)
 {
-  GtkClipboard *clipboard;
+  CtkClipboard *clipboard;
 
   clipboard = ctk_clipboard_get_default (gdk_display_get_default ());
   ctk_clipboard_set_text (clipboard, ctk_window_get_title (CTK_WINDOW (win->details)), -1);
 }
 
 static gboolean
-icon_visible_func (GtkTreeModel *model,
-                   GtkTreeIter  *iter,
+icon_visible_func (CtkTreeModel *model,
+                   CtkTreeIter  *iter,
                    gpointer      data)
 {
   IconBrowserWindow *win = data;
@@ -350,7 +350,7 @@ icon_visible_func (GtkTreeModel *model,
 }
 
 static void
-symbolic_toggled (GtkToggleButton *toggle, IconBrowserWindow *win)
+symbolic_toggled (CtkToggleButton *toggle, IconBrowserWindow *win)
 {
   gint column;
 
@@ -378,14 +378,14 @@ search_mode_toggled (GObject *searchbar, GParamSpec *pspec, IconBrowserWindow *w
 }
 
 static void
-get_image_data (GtkWidget        *widget,
+get_image_data (CtkWidget        *widget,
                 GdkDragContext   *context,
-                GtkSelectionData *selection,
+                CtkSelectionData *selection,
                 guint             target_info,
                 guint             time,
                 gpointer          data)
 {
-  GtkWidget *image;
+  CtkWidget *image;
   const gchar *name;
   gint size;
   GdkPixbuf *pixbuf;
@@ -401,16 +401,16 @@ get_image_data (GtkWidget        *widget,
 }
 
 static void
-get_scalable_image_data (GtkWidget        *widget,
+get_scalable_image_data (CtkWidget        *widget,
                          GdkDragContext   *context,
-                         GtkSelectionData *selection,
+                         CtkSelectionData *selection,
                          guint             target_info,
                          guint             time,
                          gpointer          data)
 {
   gchar *uris[2];
-  GtkIconInfo *info;
-  GtkWidget *image;
+  CtkIconInfo *info;
+  CtkWidget *image;
   GFile *file;
   const gchar *name;
 
@@ -430,9 +430,9 @@ get_scalable_image_data (GtkWidget        *widget,
 }
 
 static void
-setup_image_dnd (GtkWidget *image)
+setup_image_dnd (CtkWidget *image)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   parent = ctk_widget_get_parent (image);
   ctk_drag_source_set (parent, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
@@ -441,9 +441,9 @@ setup_image_dnd (GtkWidget *image)
 }
 
 static void
-setup_scalable_image_dnd (GtkWidget *image)
+setup_scalable_image_dnd (CtkWidget *image)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
 
   parent = ctk_widget_get_parent (image);
   ctk_drag_source_set (parent, GDK_BUTTON1_MASK,
@@ -456,8 +456,8 @@ setup_scalable_image_dnd (GtkWidget *image)
 static void
 icon_browser_window_init (IconBrowserWindow *win)
 {
-  GtkTargetList *list;
-  GtkTargetEntry *targets;
+  CtkTargetList *list;
+  CtkTargetEntry *targets;
   gint n_targets;
 
   ctk_widget_init_template (CTK_WIDGET (win));

@@ -1,22 +1,22 @@
 #include <ctk/ctk.h>
 
 static gboolean
-window_key_press_event_cb (GtkWidget *window,
+window_key_press_event_cb (CtkWidget *window,
     GdkEvent *event,
-    GtkSearchBar *search_bar)
+    CtkSearchBar *search_bar)
 {
   return ctk_search_bar_handle_event (search_bar, event);
 }
 
 static void
-activate_cb (GtkApplication *app,
+activate_cb (CtkApplication *app,
     gpointer user_data)
 {
-  GtkWidget *window;
-  GtkWidget *search_bar;
-  GtkWidget *box;
-  GtkWidget *entry;
-  GtkWidget *menu_button;
+  CtkWidget *window;
+  CtkWidget *search_bar;
+  CtkWidget *box;
+  CtkWidget *entry;
+  CtkWidget *menu_button;
 
   window = ctk_application_window_new (app);
   ctk_widget_show (window);
@@ -47,9 +47,9 @@ gint
 main (gint argc,
     gchar *argv[])
 {
-  GtkApplication *app;
+  CtkApplication *app;
 
-  app = ctk_application_new ("org.ctk.Example.GtkSearchBar",
+  app = ctk_application_new ("org.ctk.Example.CtkSearchBar",
       G_APPLICATION_FLAGS_NONE);
   g_signal_connect (app, "activate",
       G_CALLBACK (activate_cb), NULL);

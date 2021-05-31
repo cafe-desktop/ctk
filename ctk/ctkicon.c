@@ -25,7 +25,7 @@
 #include "ctkiconprivate.h"
 #include "ctkwidgetprivate.h"
 
-/* GtkIcon is a minimal widget wrapped around a GtkBuiltinIcon gadget,
+/* CtkIcon is a minimal widget wrapped around a CtkBuiltinIcon gadget,
  * It should be used whenever builtin-icon functionality is desired
  * but a widget is needed for other reasons.
  */
@@ -37,18 +37,18 @@ enum {
 
 static GParamSpec *icon_props[NUM_PROPERTIES] = { NULL, };
 
-typedef struct _GtkIconPrivate GtkIconPrivate;
-struct _GtkIconPrivate {
-  GtkCssGadget *gadget;
+typedef struct _CtkIconPrivate CtkIconPrivate;
+struct _CtkIconPrivate {
+  CtkCssGadget *gadget;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkIcon, ctk_icon, CTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkIcon, ctk_icon, CTK_TYPE_WIDGET)
 
 static void
 ctk_icon_finalize (GObject *object)
 {
-  GtkIcon *self = CTK_ICON (object);
-  GtkIconPrivate *priv = ctk_icon_get_instance_private (self);
+  CtkIcon *self = CTK_ICON (object);
+  CtkIconPrivate *priv = ctk_icon_get_instance_private (self);
 
   g_clear_object (&priv->gadget);
 
@@ -61,7 +61,7 @@ ctk_icon_get_property (GObject      *object,
                        GValue       *value,
                        GParamSpec   *pspec)
 {
-  GtkIcon *self = CTK_ICON (object);
+  CtkIcon *self = CTK_ICON (object);
 
   switch (property_id)
     {
@@ -80,7 +80,7 @@ ctk_icon_set_property (GObject      *object,
                        const GValue *value,
                        GParamSpec   *pspec)
 {
-  GtkIcon *self = CTK_ICON (object);
+  CtkIcon *self = CTK_ICON (object);
 
   switch (property_id)
     {
@@ -94,15 +94,15 @@ ctk_icon_set_property (GObject      *object,
 }
 
 static void
-ctk_icon_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_icon_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
                                                       gint       for_width,
                                                       gint      *minimum,
                                                       gint      *natural,
                                                       gint      *minimum_baseline,
                                                       gint      *natural_baseline)
 {
-  GtkIcon *self = CTK_ICON (widget);
-  GtkIconPrivate *priv = ctk_icon_get_instance_private (self);
+  CtkIcon *self = CTK_ICON (widget);
+  CtkIconPrivate *priv = ctk_icon_get_instance_private (self);
 
   ctk_css_gadget_get_preferred_size (priv->gadget,
                                      CTK_ORIENTATION_VERTICAL,
@@ -112,7 +112,7 @@ ctk_icon_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_icon_get_preferred_height (GtkWidget *widget,
+ctk_icon_get_preferred_height (CtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
@@ -122,12 +122,12 @@ ctk_icon_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_icon_get_preferred_width (GtkWidget *widget,
+ctk_icon_get_preferred_width (CtkWidget *widget,
                               gint      *minimum,
                               gint      *natural)
 {
-  GtkIcon *self = CTK_ICON (widget);
-  GtkIconPrivate *priv = ctk_icon_get_instance_private (self);
+  CtkIcon *self = CTK_ICON (widget);
+  CtkIconPrivate *priv = ctk_icon_get_instance_private (self);
 
   ctk_css_gadget_get_preferred_size (priv->gadget,
                                      CTK_ORIENTATION_HORIZONTAL,
@@ -137,12 +137,12 @@ ctk_icon_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_icon_size_allocate (GtkWidget     *widget,
-                        GtkAllocation *allocation)
+ctk_icon_size_allocate (CtkWidget     *widget,
+                        CtkAllocation *allocation)
 {
-  GtkIcon *self = CTK_ICON (widget);
-  GtkIconPrivate *priv = ctk_icon_get_instance_private (self);
-  GtkAllocation clip;
+  CtkIcon *self = CTK_ICON (widget);
+  CtkIconPrivate *priv = ctk_icon_get_instance_private (self);
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
   ctk_css_gadget_allocate (priv->gadget, allocation,
@@ -153,11 +153,11 @@ ctk_icon_size_allocate (GtkWidget     *widget,
 }
 
 static gboolean
-ctk_icon_draw (GtkWidget *widget,
+ctk_icon_draw (CtkWidget *widget,
                cairo_t   *cr)
 {
-  GtkIcon *self = CTK_ICON (widget);
-  GtkIconPrivate *priv = ctk_icon_get_instance_private (self);
+  CtkIcon *self = CTK_ICON (widget);
+  CtkIconPrivate *priv = ctk_icon_get_instance_private (self);
 
   ctk_css_gadget_draw (priv->gadget, cr);
 
@@ -165,10 +165,10 @@ ctk_icon_draw (GtkWidget *widget,
 }
 
 static void
-ctk_icon_class_init (GtkIconClass *klass)
+ctk_icon_class_init (CtkIconClass *klass)
 {
   GObjectClass *oclass = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *wclass = CTK_WIDGET_CLASS (klass);
+  CtkWidgetClass *wclass = CTK_WIDGET_CLASS (klass);
 
   oclass->get_property = ctk_icon_get_property;
   oclass->set_property = ctk_icon_set_property;
@@ -191,11 +191,11 @@ ctk_icon_class_init (GtkIconClass *klass)
 }
 
 static void
-ctk_icon_init (GtkIcon *self)
+ctk_icon_init (CtkIcon *self)
 {
-  GtkWidget *widget = CTK_WIDGET (self);
-  GtkIconPrivate *priv = ctk_icon_get_instance_private (self);
-  GtkCssNode *widget_node;
+  CtkWidget *widget = CTK_WIDGET (self);
+  CtkIconPrivate *priv = ctk_icon_get_instance_private (self);
+  CtkCssNode *widget_node;
 
   ctk_widget_set_has_window (widget, FALSE);
 
@@ -203,7 +203,7 @@ ctk_icon_init (GtkIcon *self)
   priv->gadget = ctk_builtin_icon_new_for_node (widget_node, widget);
 }
 
-GtkWidget *
+CtkWidget *
 ctk_icon_new (const char *css_name)
 {
   return g_object_new (CTK_TYPE_ICON,
@@ -212,16 +212,16 @@ ctk_icon_new (const char *css_name)
 }
 
 const char *
-ctk_icon_get_css_name (GtkIcon *self)
+ctk_icon_get_css_name (CtkIcon *self)
 {
-  GtkCssNode *widget_node = ctk_widget_get_css_node (CTK_WIDGET (self));
+  CtkCssNode *widget_node = ctk_widget_get_css_node (CTK_WIDGET (self));
   return ctk_css_node_get_name (widget_node);
 }
 
 void
-ctk_icon_set_css_name (GtkIcon    *self,
+ctk_icon_set_css_name (CtkIcon    *self,
                        const char *css_name)
 {
-  GtkCssNode *widget_node = ctk_widget_get_css_node (CTK_WIDGET (self));
+  CtkCssNode *widget_node = ctk_widget_get_css_node (CTK_WIDGET (self));
   ctk_css_node_set_name (widget_node, g_intern_string (css_name));
 }

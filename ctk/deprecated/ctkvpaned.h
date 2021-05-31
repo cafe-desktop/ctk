@@ -34,31 +34,31 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_VPANED            (ctk_vpaned_get_type ())
-#define CTK_VPANED(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VPANED, GtkVPaned))
-#define CTK_VPANED_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VPANED, GtkVPanedClass))
+#define CTK_VPANED(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VPANED, CtkVPaned))
+#define CTK_VPANED_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VPANED, CtkVPanedClass))
 #define CTK_IS_VPANED(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VPANED))
 #define CTK_IS_VPANED_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VPANED))
-#define CTK_VPANED_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VPANED, GtkVPanedClass))
+#define CTK_VPANED_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VPANED, CtkVPanedClass))
 
 
-typedef struct _GtkVPaned      GtkVPaned;
-typedef struct _GtkVPanedClass GtkVPanedClass;
+typedef struct _CtkVPaned      CtkVPaned;
+typedef struct _CtkVPanedClass CtkVPanedClass;
 
-struct _GtkVPaned
+struct _CtkVPaned
 {
-  GtkPaned paned;
+  CtkPaned paned;
 };
 
-struct _GtkVPanedClass
+struct _CtkVPanedClass
 {
-  GtkPanedClass parent_class;
+  CtkPanedClass parent_class;
 };
 
 
 GDK_DEPRECATED_IN_3_2
 GType       ctk_vpaned_get_type (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_2_FOR(ctk_paned_new)
-GtkWidget * ctk_vpaned_new      (void);
+CtkWidget * ctk_vpaned_new      (void);
 
 G_END_DECLS
 

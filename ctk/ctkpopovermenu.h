@@ -27,18 +27,18 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_POPOVER_MENU           (ctk_popover_menu_get_type ())
-#define CTK_POPOVER_MENU(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_POPOVER_MENU, GtkPopoverMenu))
-#define CTK_POPOVER_MENU_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_POPOVER_MENU, GtkPopoverMenuClass))
+#define CTK_POPOVER_MENU(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_POPOVER_MENU, CtkPopoverMenu))
+#define CTK_POPOVER_MENU_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_POPOVER_MENU, CtkPopoverMenuClass))
 #define CTK_IS_POPOVER_MENU(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_POPOVER_MENU))
 #define CTK_IS_POPOVER_MENU_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), CTK_TYPE_POPOVER_MENU))
-#define CTK_POPOVER_MENU_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_POPOVER_MENU, GtkPopoverMenuClass))
+#define CTK_POPOVER_MENU_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_POPOVER_MENU, CtkPopoverMenuClass))
 
-typedef struct _GtkPopoverMenu GtkPopoverMenu;
-typedef struct _GtkPopoverMenuClass GtkPopoverMenuClass;
+typedef struct _CtkPopoverMenu CtkPopoverMenu;
+typedef struct _CtkPopoverMenuClass CtkPopoverMenuClass;
 
-struct _GtkPopoverMenuClass
+struct _CtkPopoverMenuClass
 {
-  GtkPopoverClass parent_class;
+  CtkPopoverClass parent_class;
 
   /*< private >*/
 
@@ -50,10 +50,10 @@ GDK_AVAILABLE_IN_3_16
 GType       ctk_popover_menu_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_16
-GtkWidget * ctk_popover_menu_new      (void);
+CtkWidget * ctk_popover_menu_new      (void);
 
 GDK_AVAILABLE_IN_3_16
-void        ctk_popover_menu_open_submenu (GtkPopoverMenu *popover,
+void        ctk_popover_menu_open_submenu (CtkPopoverMenu *popover,
                                            const gchar    *name);
 
 

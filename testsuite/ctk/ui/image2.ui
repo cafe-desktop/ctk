@@ -1,6 +1,6 @@
 
 <interface>
-  <object class="GtkButton">
+  <object class="CtkButton">
     <property name="visible" bind-source="xyzzy" bind-property="ooo"/>
   </object>
 </interface>

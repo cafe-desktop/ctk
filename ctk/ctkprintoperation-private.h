@@ -29,22 +29,22 @@ typedef enum
   CTK_PAGE_DRAWING_STATE_READY,
   CTK_PAGE_DRAWING_STATE_DRAWING,
   CTK_PAGE_DRAWING_STATE_DEFERRED_DRAWING
-} GtkPageDrawingState;
+} CtkPageDrawingState;
 
-struct _GtkPrintOperationPrivate
+struct _CtkPrintOperationPrivate
 {
-  GtkPrintOperationAction action;
-  GtkPrintStatus status;
+  CtkPrintOperationAction action;
+  CtkPrintStatus status;
   GError *error;
   gchar *status_string;
-  GtkPageSetup *default_page_setup;
-  GtkPrintSettings *print_settings;
+  CtkPageSetup *default_page_setup;
+  CtkPrintSettings *print_settings;
   gchar *job_name;
   gint nr_of_pages;
   gint nr_of_pages_to_print;
   gint page_position;
   gint current_page;
-  GtkUnit unit;
+  CtkUnit unit;
   gchar *export_filename;
   guint use_full_page      : 1;
   guint track_print_status : 1;
@@ -56,15 +56,15 @@ struct _GtkPrintOperationPrivate
   guint has_selection      : 1;
   guint embed_page_setup   : 1;
 
-  GtkPageDrawingState      page_drawing_state;
+  CtkPageDrawingState      page_drawing_state;
 
   guint print_pages_idle_id;
   guint show_progress_timeout_id;
 
-  GtkPrintContext *print_context;
+  CtkPrintContext *print_context;
   
-  GtkPrintPages print_pages;
-  GtkPageRange *page_ranges;
+  CtkPrintPages print_pages;
+  CtkPageRange *page_ranges;
   gint num_page_ranges;
   
   gint manual_num_copies;
@@ -72,11 +72,11 @@ struct _GtkPrintOperationPrivate
   guint manual_reverse     : 1;
   guint manual_orientation : 1;
   double manual_scale;
-  GtkPageSet manual_page_set;
+  CtkPageSet manual_page_set;
   guint manual_number_up;
-  GtkNumberUpLayout manual_number_up_layout;
+  CtkNumberUpLayout manual_number_up_layout;
 
-  GtkWidget *custom_widget;
+  CtkWidget *custom_widget;
   gchar *custom_tab_label;
   
   gpointer platform_data;
@@ -84,62 +84,62 @@ struct _GtkPrintOperationPrivate
 
   GMainLoop *rloop; /* recursive mainloop */
 
-  void (*start_page) (GtkPrintOperation *operation,
-		      GtkPrintContext   *print_context,
-		      GtkPageSetup      *page_setup);
-  void (*end_page)   (GtkPrintOperation *operation,
-		      GtkPrintContext   *print_context);
-  void (*end_run)    (GtkPrintOperation *operation,
+  void (*start_page) (CtkPrintOperation *operation,
+		      CtkPrintContext   *print_context,
+		      CtkPageSetup      *page_setup);
+  void (*end_page)   (CtkPrintOperation *operation,
+		      CtkPrintContext   *print_context);
+  void (*end_run)    (CtkPrintOperation *operation,
 		      gboolean           wait,
 		      gboolean           cancelled);
 };
 
 
-typedef void (* GtkPrintOperationPrintFunc) (GtkPrintOperation      *op,
-					     GtkWindow              *parent,
+typedef void (* CtkPrintOperationPrintFunc) (CtkPrintOperation      *op,
+					     CtkWindow              *parent,
 					     gboolean                do_print,
-					     GtkPrintOperationResult result);
+					     CtkPrintOperationResult result);
 
-GtkPrintOperationResult _ctk_print_operation_platform_backend_run_dialog             (GtkPrintOperation           *operation,
+CtkPrintOperationResult _ctk_print_operation_platform_backend_run_dialog             (CtkPrintOperation           *operation,
 										      gboolean                     show_dialog,
-										      GtkWindow                   *parent,
+										      CtkWindow                   *parent,
 										      gboolean                    *do_print);
-void                    _ctk_print_operation_platform_backend_run_dialog_async       (GtkPrintOperation           *op,
+void                    _ctk_print_operation_platform_backend_run_dialog_async       (CtkPrintOperation           *op,
 										      gboolean                     show_dialog,
-										      GtkWindow                   *parent,
-										      GtkPrintOperationPrintFunc   print_cb);
-void                    _ctk_print_operation_platform_backend_launch_preview         (GtkPrintOperation           *op,
+										      CtkWindow                   *parent,
+										      CtkPrintOperationPrintFunc   print_cb);
+void                    _ctk_print_operation_platform_backend_launch_preview         (CtkPrintOperation           *op,
 										      cairo_surface_t             *surface,
-										      GtkWindow                   *parent,
+										      CtkWindow                   *parent,
 										      const char                  *filename);
-cairo_surface_t *       _ctk_print_operation_platform_backend_create_preview_surface (GtkPrintOperation           *op,
-										      GtkPageSetup                *page_setup,
+cairo_surface_t *       _ctk_print_operation_platform_backend_create_preview_surface (CtkPrintOperation           *op,
+										      CtkPageSetup                *page_setup,
 										      gdouble                     *dpi_x,
 										      gdouble                     *dpi_y,
 										      gchar                       **target);
-void                    _ctk_print_operation_platform_backend_resize_preview_surface (GtkPrintOperation           *op,
-										      GtkPageSetup                *page_setup,
+void                    _ctk_print_operation_platform_backend_resize_preview_surface (CtkPrintOperation           *op,
+										      CtkPageSetup                *page_setup,
 										      cairo_surface_t             *surface);
-void                    _ctk_print_operation_platform_backend_preview_start_page     (GtkPrintOperation *op,
+void                    _ctk_print_operation_platform_backend_preview_start_page     (CtkPrintOperation *op,
 										      cairo_surface_t *surface,
 										      cairo_t *cr);
-void                    _ctk_print_operation_platform_backend_preview_end_page       (GtkPrintOperation *op,
+void                    _ctk_print_operation_platform_backend_preview_end_page       (CtkPrintOperation *op,
 										      cairo_surface_t *surface,
 										      cairo_t *cr);
 
-void _ctk_print_operation_set_status (GtkPrintOperation *op,
-				      GtkPrintStatus     status,
+void _ctk_print_operation_set_status (CtkPrintOperation *op,
+				      CtkPrintStatus     status,
 				      const gchar       *string);
 
-/* GtkPrintContext private functions: */
+/* CtkPrintContext private functions: */
 
-GtkPrintContext *_ctk_print_context_new                             (GtkPrintOperation *op);
-void             _ctk_print_context_set_page_setup                  (GtkPrintContext   *context,
-								     GtkPageSetup      *page_setup);
-void             _ctk_print_context_translate_into_margin           (GtkPrintContext   *context);
-void             _ctk_print_context_rotate_according_to_orientation (GtkPrintContext   *context);
-void             _ctk_print_context_reverse_according_to_orientation (GtkPrintContext *context);
-void             _ctk_print_context_set_hard_margins                (GtkPrintContext   *context,
+CtkPrintContext *_ctk_print_context_new                             (CtkPrintOperation *op);
+void             _ctk_print_context_set_page_setup                  (CtkPrintContext   *context,
+								     CtkPageSetup      *page_setup);
+void             _ctk_print_context_translate_into_margin           (CtkPrintContext   *context);
+void             _ctk_print_context_rotate_according_to_orientation (CtkPrintContext   *context);
+void             _ctk_print_context_reverse_according_to_orientation (CtkPrintContext *context);
+void             _ctk_print_context_set_hard_margins                (CtkPrintContext   *context,
 								     gdouble            top,
 								     gdouble            bottom,
 								     gdouble            left,

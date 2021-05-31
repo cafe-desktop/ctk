@@ -42,36 +42,36 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define CTK_TYPE_INFO_BAR              (ctk_info_bar_get_type())
-#define CTK_INFO_BAR(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INFO_BAR, GtkInfoBar))
-#define CTK_INFO_BAR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INFO_BAR, GtkInfoBarClass))
+#define CTK_INFO_BAR(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INFO_BAR, CtkInfoBar))
+#define CTK_INFO_BAR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INFO_BAR, CtkInfoBarClass))
 #define CTK_IS_INFO_BAR(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INFO_BAR))
 #define CTK_IS_INFO_BAR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_INFO_BAR))
-#define CTK_INFO_BAR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INFO_BAR, GtkInfoBarClass))
+#define CTK_INFO_BAR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INFO_BAR, CtkInfoBarClass))
 
 
-typedef struct _GtkInfoBarPrivate GtkInfoBarPrivate;
-typedef struct _GtkInfoBarClass GtkInfoBarClass;
-typedef struct _GtkInfoBar GtkInfoBar;
+typedef struct _CtkInfoBarPrivate CtkInfoBarPrivate;
+typedef struct _CtkInfoBarClass CtkInfoBarClass;
+typedef struct _CtkInfoBar CtkInfoBar;
 
 
-struct _GtkInfoBar
+struct _CtkInfoBar
 {
-  GtkBox parent;
+  CtkBox parent;
 
   /*< private > */
-  GtkInfoBarPrivate *priv;
+  CtkInfoBarPrivate *priv;
 };
 
 
-struct _GtkInfoBarClass
+struct _CtkInfoBarClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
   /* Signals */
-  void (* response) (GtkInfoBar *info_bar, gint response_id);
+  void (* response) (CtkInfoBar *info_bar, gint response_id);
 
   /* Keybinding signals */
-  void (* close)    (GtkInfoBar *info_bar);
+  void (* close)    (CtkInfoBar *info_bar);
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
@@ -83,58 +83,58 @@ struct _GtkInfoBarClass
 GDK_AVAILABLE_IN_ALL
 GType          ctk_info_bar_get_type               (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *ctk_info_bar_new                    (void);
+CtkWidget     *ctk_info_bar_new                    (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *ctk_info_bar_new_with_buttons       (const gchar    *first_button_text,
+CtkWidget     *ctk_info_bar_new_with_buttons       (const gchar    *first_button_text,
                                                     ...);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *ctk_info_bar_get_action_area        (GtkInfoBar     *info_bar);
+CtkWidget     *ctk_info_bar_get_action_area        (CtkInfoBar     *info_bar);
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *ctk_info_bar_get_content_area       (GtkInfoBar     *info_bar);
+CtkWidget     *ctk_info_bar_get_content_area       (CtkInfoBar     *info_bar);
 GDK_AVAILABLE_IN_ALL
-void           ctk_info_bar_add_action_widget      (GtkInfoBar     *info_bar,
-                                                    GtkWidget      *child,
+void           ctk_info_bar_add_action_widget      (CtkInfoBar     *info_bar,
+                                                    CtkWidget      *child,
                                                     gint            response_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *ctk_info_bar_add_button             (GtkInfoBar     *info_bar,
+CtkWidget     *ctk_info_bar_add_button             (CtkInfoBar     *info_bar,
                                                     const gchar    *button_text,
                                                     gint            response_id);
 GDK_AVAILABLE_IN_ALL
-void           ctk_info_bar_add_buttons            (GtkInfoBar     *info_bar,
+void           ctk_info_bar_add_buttons            (CtkInfoBar     *info_bar,
                                                     const gchar    *first_button_text,
                                                     ...);
 GDK_AVAILABLE_IN_ALL
-void           ctk_info_bar_set_response_sensitive (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_response_sensitive (CtkInfoBar     *info_bar,
                                                     gint            response_id,
                                                     gboolean        setting);
 GDK_AVAILABLE_IN_ALL
-void           ctk_info_bar_set_default_response   (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_default_response   (CtkInfoBar     *info_bar,
                                                     gint            response_id);
 
 /* Emit response signal */
 GDK_AVAILABLE_IN_ALL
-void           ctk_info_bar_response               (GtkInfoBar     *info_bar,
+void           ctk_info_bar_response               (CtkInfoBar     *info_bar,
                                                     gint            response_id);
 
 GDK_AVAILABLE_IN_ALL
-void           ctk_info_bar_set_message_type       (GtkInfoBar     *info_bar,
-                                                    GtkMessageType  message_type);
+void           ctk_info_bar_set_message_type       (CtkInfoBar     *info_bar,
+                                                    CtkMessageType  message_type);
 GDK_AVAILABLE_IN_ALL
-GtkMessageType ctk_info_bar_get_message_type       (GtkInfoBar     *info_bar);
+CtkMessageType ctk_info_bar_get_message_type       (CtkInfoBar     *info_bar);
 
 GDK_AVAILABLE_IN_3_10
-void           ctk_info_bar_set_show_close_button  (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_show_close_button  (CtkInfoBar     *info_bar,
                                                     gboolean        setting);
 GDK_AVAILABLE_IN_3_10
-gboolean       ctk_info_bar_get_show_close_button  (GtkInfoBar     *info_bar);
+gboolean       ctk_info_bar_get_show_close_button  (CtkInfoBar     *info_bar);
 
 GDK_AVAILABLE_IN_3_22
-void           ctk_info_bar_set_revealed           (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_revealed           (CtkInfoBar     *info_bar,
                                                     gboolean        revealed);
 GDK_AVAILABLE_IN_3_22
-gboolean       ctk_info_bar_get_revealed           (GtkInfoBar     *info_bar);
+gboolean       ctk_info_bar_get_revealed           (CtkInfoBar     *info_bar);
 
 G_END_DECLS
 

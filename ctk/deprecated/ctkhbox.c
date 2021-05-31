@@ -34,39 +34,39 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkhbox
  * @Short_description: A horizontal container box
- * @Title: GtkHBox
- * @See_also: #GtkVBox
+ * @Title: CtkHBox
+ * @See_also: #CtkVBox
  *
- * #GtkHBox is a container that organizes child widgets into a single row.
+ * #CtkHBox is a container that organizes child widgets into a single row.
  *
- * Use the #GtkBox packing interface to determine the arrangement,
- * spacing, width, and alignment of #GtkHBox children.
+ * Use the #CtkBox packing interface to determine the arrangement,
+ * spacing, width, and alignment of #CtkHBox children.
  *
  * All children are allocated the same height.
  *
- * GtkHBox has been deprecated. You can use #GtkBox instead, which is a
+ * CtkHBox has been deprecated. You can use #CtkBox instead, which is a
  * very quick and easy change. If you have derived your own classes from
- * GtkHBox, you can simply change the inheritance to derive directly
- * from #GtkBox. No further changes are needed, since the default
- * value of the #GtkOrientable:orientation property is
+ * CtkHBox, you can simply change the inheritance to derive directly
+ * from #CtkBox. No further changes are needed, since the default
+ * value of the #CtkOrientable:orientation property is
  * %CTK_ORIENTATION_HORIZONTAL.
  *
  * If you have a grid-like layout composed of nested boxes, and you don’t
  * need first-child or last-child styling, the recommendation is to switch
- * to #GtkGrid. For more information about migrating to #GtkGrid, see
- * [Migrating from other containers to GtkGrid][ctk-migrating-GtkGrid].
+ * to #CtkGrid. For more information about migrating to #CtkGrid, see
+ * [Migrating from other containers to CtkGrid][ctk-migrating-CtkGrid].
  */
 
 
-G_DEFINE_TYPE (GtkHBox, ctk_hbox, CTK_TYPE_BOX)
+G_DEFINE_TYPE (CtkHBox, ctk_hbox, CTK_TYPE_BOX)
 
 static void
-ctk_hbox_class_init (GtkHBoxClass *class)
+ctk_hbox_class_init (CtkHBoxClass *class)
 {
 }
 
 static void
-ctk_hbox_init (GtkHBox *hbox)
+ctk_hbox_init (CtkHBox *hbox)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (hbox),
                                   CTK_ORIENTATION_HORIZONTAL);
@@ -79,16 +79,16 @@ ctk_hbox_init (GtkHBox *hbox)
  * @homogeneous: %TRUE if all children are to be given equal space allotments.
  * @spacing: the number of pixels to place by default between children.
  *
- * Creates a new #GtkHBox.
+ * Creates a new #CtkHBox.
  *
- * Returns: a new #GtkHBox.
+ * Returns: a new #CtkHBox.
  *
  * Deprecated: 3.2: You can use ctk_box_new() with %CTK_ORIENTATION_HORIZONTAL instead,
  *   which is a quick and easy change. But the recommendation is to switch to
- *   #GtkGrid, since #GtkBox is going to go away eventually.
- *   See [Migrating from other containers to GtkGrid][ctk-migrating-GtkGrid].
+ *   #CtkGrid, since #CtkBox is going to go away eventually.
+ *   See [Migrating from other containers to CtkGrid][ctk-migrating-CtkGrid].
  */
-GtkWidget *
+CtkWidget *
 ctk_hbox_new (gboolean homogeneous,
 	      gint     spacing)
 {

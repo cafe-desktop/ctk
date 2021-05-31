@@ -6,7 +6,7 @@
  *
  * This demo is not all that educational, but looks cool. It was written
  * by Extreme Pixbuf Hacker Federico Mena Quintero. It also shows
- * off how to use GtkDrawingArea to do a simple animation.
+ * off how to use CtkDrawingArea to do a simple animation.
  *
  * Look at the Image demo for additional pixbuf usage examples.
  *
@@ -32,7 +32,7 @@ static const char *image_names[] = {
 #define N_IMAGES G_N_ELEMENTS (image_names)
 
 /* demo window */
-static GtkWidget *window = NULL;
+static CtkWidget *window = NULL;
 
 /* Current frame */
 static GdkPixbuf *frame;
@@ -45,7 +45,7 @@ static gint back_width, back_height;
 static GdkPixbuf *images[N_IMAGES];
 
 /* Widgets */
-static GtkWidget *da;
+static CtkWidget *da;
 
 /* Loads the images for the demo and returns whether the operation succeeded */
 static gboolean
@@ -76,7 +76,7 @@ load_pixbufs (GError **error)
 
 /* Expose callback for the drawing area */
 static gint
-draw_cb (GtkWidget *widget,
+draw_cb (CtkWidget *widget,
          cairo_t   *cr,
          gpointer   data)
 {
@@ -92,7 +92,7 @@ static gint64 start_time;
 
 /* Handler to regenerate the frame */
 static gboolean
-on_tick (GtkWidget     *widget,
+on_tick (CtkWidget     *widget,
          GdkFrameClock *frame_clock,
          gpointer       data)
 {
@@ -167,8 +167,8 @@ on_tick (GtkWidget     *widget,
   return G_SOURCE_CONTINUE;
 }
 
-GtkWidget *
-do_pixbufs (GtkWidget *do_widget)
+CtkWidget *
+do_pixbufs (CtkWidget *do_widget)
 {
   if (!window)
     {
@@ -186,7 +186,7 @@ do_pixbufs (GtkWidget *do_widget)
       error = NULL;
       if (!load_pixbufs (&error))
         {
-          GtkWidget *dialog;
+          CtkWidget *dialog;
 
           dialog = ctk_message_dialog_new (CTK_WINDOW (window),
                                            CTK_DIALOG_DESTROY_WITH_PARENT,

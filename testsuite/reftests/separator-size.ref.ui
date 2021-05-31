@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires ctk+ 3.0 -->
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <child>
-      <object class="GtkGrid" id="grid1">
+      <object class="CtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkImage" id="image1">
+          <object class="CtkImage" id="image1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="icon_name">help-about</property>
@@ -22,7 +22,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image2">
+          <object class="CtkImage" id="image2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="icon_name">help-about</property>
@@ -35,7 +35,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image3">
+          <object class="CtkImage" id="image3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="icon_name">help-about</property>
@@ -48,7 +48,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="image4">
+          <object class="CtkImage" id="image4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="icon_name">help-about</property>
@@ -61,7 +61,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSeparator" id="separator1">
+          <object class="CtkSeparator" id="separator1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
@@ -74,7 +74,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSeparator" id="separator2">
+          <object class="CtkSeparator" id="separator2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
           </object>
@@ -86,7 +86,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSeparator" id="separator3">
+          <object class="CtkSeparator" id="separator3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
           </object>
@@ -98,7 +98,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSeparator" id="separator4">
+          <object class="CtkSeparator" id="separator4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>

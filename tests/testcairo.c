@@ -114,7 +114,7 @@ draw_3circles (cairo_t *cr,
 }
 
 static gboolean
-on_draw (GtkWidget *widget,
+on_draw (CtkWidget *widget,
          cairo_t   *cr)
 {
   cairo_surface_t *overlay, *punch, *circles;
@@ -188,7 +188,7 @@ on_draw (GtkWidget *widget,
 int
 main (int argc, char **argv)
 {
-  GtkWidget *window, *darea;
+  CtkWidget *window, *darea;
 
   ctk_init (&argc, &argv);
 

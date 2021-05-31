@@ -28,26 +28,26 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_LEVEL_BAR_ACCESSIBLE                      (ctk_level_bar_accessible_get_type ())
-#define CTK_LEVEL_BAR_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LEVEL_BAR_ACCESSIBLE, GtkLevelBarAccessible))
-#define CTK_LEVEL_BAR_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LEVEL_BAR_ACCESSIBLE, GtkLevelBarAccessibleClass))
+#define CTK_LEVEL_BAR_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LEVEL_BAR_ACCESSIBLE, CtkLevelBarAccessible))
+#define CTK_LEVEL_BAR_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LEVEL_BAR_ACCESSIBLE, CtkLevelBarAccessibleClass))
 #define CTK_IS_LEVEL_BAR_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LEVEL_BAR_ACCESSIBLE))
 #define CTK_IS_LEVEL_BAR_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LEVEL_BAR_ACCESSIBLE))
-#define CTK_LEVEL_BAR_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LEVEL_BAR_ACCESSIBLE, GtkLevelBarAccessibleClass))
+#define CTK_LEVEL_BAR_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LEVEL_BAR_ACCESSIBLE, CtkLevelBarAccessibleClass))
 
-typedef struct _GtkLevelBarAccessible        GtkLevelBarAccessible;
-typedef struct _GtkLevelBarAccessibleClass   GtkLevelBarAccessibleClass;
-typedef struct _GtkLevelBarAccessiblePrivate GtkLevelBarAccessiblePrivate;
+typedef struct _CtkLevelBarAccessible        CtkLevelBarAccessible;
+typedef struct _CtkLevelBarAccessibleClass   CtkLevelBarAccessibleClass;
+typedef struct _CtkLevelBarAccessiblePrivate CtkLevelBarAccessiblePrivate;
 
-struct _GtkLevelBarAccessible
+struct _CtkLevelBarAccessible
 {
-  GtkWidgetAccessible parent;
+  CtkWidgetAccessible parent;
 
-  GtkLevelBarAccessiblePrivate *priv;
+  CtkLevelBarAccessiblePrivate *priv;
 };
 
-struct _GtkLevelBarAccessibleClass
+struct _CtkLevelBarAccessibleClass
 {
-  GtkWidgetAccessibleClass parent_class;
+  CtkWidgetAccessibleClass parent_class;
 };
 
 GDK_AVAILABLE_IN_ALL

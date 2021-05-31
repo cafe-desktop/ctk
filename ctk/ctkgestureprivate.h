@@ -22,30 +22,30 @@
 #include "ctkeventcontrollerprivate.h"
 #include "ctkgesture.h"
 
-struct _GtkGesture
+struct _CtkGesture
 {
-  GtkEventController parent_instance;
+  CtkEventController parent_instance;
 };
 
-struct _GtkGestureClass
+struct _CtkGestureClass
 {
-  GtkEventControllerClass parent_class;
+  CtkEventControllerClass parent_class;
 
-  gboolean (* check)  (GtkGesture       *gesture);
+  gboolean (* check)  (CtkGesture       *gesture);
 
-  void     (* begin)  (GtkGesture       *gesture,
+  void     (* begin)  (CtkGesture       *gesture,
                        GdkEventSequence *sequence);
-  void     (* update) (GtkGesture       *gesture,
+  void     (* update) (CtkGesture       *gesture,
                        GdkEventSequence *sequence);
-  void     (* end)    (GtkGesture       *gesture,
-                       GdkEventSequence *sequence);
-
-  void     (* cancel) (GtkGesture       *gesture,
+  void     (* end)    (CtkGesture       *gesture,
                        GdkEventSequence *sequence);
 
-  void     (* sequence_state_changed) (GtkGesture            *gesture,
+  void     (* cancel) (CtkGesture       *gesture,
+                       GdkEventSequence *sequence);
+
+  void     (* sequence_state_changed) (CtkGesture            *gesture,
                                        GdkEventSequence      *sequence,
-                                       GtkEventSequenceState  state);
+                                       CtkEventSequenceState  state);
 
   /*< private >*/
   gpointer padding[10];
@@ -54,19 +54,19 @@ struct _GtkGestureClass
 
 G_BEGIN_DECLS
 
-gboolean _ctk_gesture_check                  (GtkGesture       *gesture);
+gboolean _ctk_gesture_check                  (CtkGesture       *gesture);
 
-gboolean _ctk_gesture_handled_sequence_press (GtkGesture       *gesture,
+gboolean _ctk_gesture_handled_sequence_press (CtkGesture       *gesture,
                                               GdkEventSequence *sequence);
 
 gboolean _ctk_gesture_get_pointer_emulating_sequence
-                                                (GtkGesture        *gesture,
+                                                (CtkGesture        *gesture,
                                                  GdkEventSequence **sequence);
 
-gboolean _ctk_gesture_cancel_sequence        (GtkGesture       *gesture,
+gboolean _ctk_gesture_cancel_sequence        (CtkGesture       *gesture,
                                               GdkEventSequence *sequence);
 
-gboolean _ctk_gesture_get_last_update_time   (GtkGesture       *gesture,
+gboolean _ctk_gesture_get_last_update_time   (CtkGesture       *gesture,
                                               GdkEventSequence *sequence,
                                               guint32          *evtime);
 

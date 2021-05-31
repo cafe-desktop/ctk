@@ -22,10 +22,10 @@
 #include "ctk/ctkflowbox.h"
 
 
-G_DEFINE_TYPE (GtkFlowBoxChildAccessible, ctk_flow_box_child_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (CtkFlowBoxChildAccessible, ctk_flow_box_child_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-ctk_flow_box_child_accessible_init (GtkFlowBoxChildAccessible *accessible)
+ctk_flow_box_child_accessible_init (CtkFlowBoxChildAccessible *accessible)
 {
 }
 
@@ -42,7 +42,7 @@ static AtkStateSet *
 ctk_flow_box_child_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  GtkWidget *widget, *parent;
+  CtkWidget *widget, *parent;
 
   state_set = ATK_OBJECT_CLASS (ctk_flow_box_child_accessible_parent_class)->ref_state_set (obj);
 
@@ -61,7 +61,7 @@ ctk_flow_box_child_accessible_ref_state_set (AtkObject *obj)
 }
 
 static void
-ctk_flow_box_child_accessible_class_init (GtkFlowBoxChildAccessibleClass *klass)
+ctk_flow_box_child_accessible_class_init (CtkFlowBoxChildAccessibleClass *klass)
 {
   AtkObjectClass *object_class = ATK_OBJECT_CLASS (klass);
 

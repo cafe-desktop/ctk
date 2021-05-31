@@ -26,63 +26,63 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_ACTION_OBSERVER                            (ctk_action_observer_get_type ())
 #define CTK_ACTION_OBSERVER(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             CTK_TYPE_ACTION_OBSERVER, GtkActionObserver))
+                                                             CTK_TYPE_ACTION_OBSERVER, CtkActionObserver))
 #define CTK_IS_ACTION_OBSERVER(inst)                        (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
                                                              CTK_TYPE_ACTION_OBSERVER))
 #define CTK_ACTION_OBSERVER_GET_IFACE(inst)                 (G_TYPE_INSTANCE_GET_INTERFACE ((inst),                  \
-                                                             CTK_TYPE_ACTION_OBSERVER, GtkActionObserverInterface))
+                                                             CTK_TYPE_ACTION_OBSERVER, CtkActionObserverInterface))
 
-typedef struct _GtkActionObserverInterface                  GtkActionObserverInterface;
-typedef struct _GtkActionObservable                         GtkActionObservable;
-typedef struct _GtkActionObserver                           GtkActionObserver;
+typedef struct _CtkActionObserverInterface                  CtkActionObserverInterface;
+typedef struct _CtkActionObservable                         CtkActionObservable;
+typedef struct _CtkActionObserver                           CtkActionObserver;
 
-struct _GtkActionObserverInterface
+struct _CtkActionObserverInterface
 {
   GTypeInterface g_iface;
 
-  void (* action_added)           (GtkActionObserver    *observer,
-                                   GtkActionObservable  *observable,
+  void (* action_added)           (CtkActionObserver    *observer,
+                                   CtkActionObservable  *observable,
                                    const gchar          *action_name,
                                    const GVariantType   *parameter_type,
                                    gboolean              enabled,
                                    GVariant             *state);
-  void (* action_enabled_changed) (GtkActionObserver    *observer,
-                                   GtkActionObservable  *observable,
+  void (* action_enabled_changed) (CtkActionObserver    *observer,
+                                   CtkActionObservable  *observable,
                                    const gchar          *action_name,
                                    gboolean              enabled);
-  void (* action_state_changed)   (GtkActionObserver    *observer,
-                                   GtkActionObservable  *observable,
+  void (* action_state_changed)   (CtkActionObserver    *observer,
+                                   CtkActionObservable  *observable,
                                    const gchar          *action_name,
                                    GVariant             *state);
-  void (* action_removed)         (GtkActionObserver    *observer,
-                                   GtkActionObservable  *observable,
+  void (* action_removed)         (CtkActionObserver    *observer,
+                                   CtkActionObservable  *observable,
                                    const gchar          *action_name);
-  void (* primary_accel_changed)  (GtkActionObserver    *observer,
-                                   GtkActionObservable  *observable,
+  void (* primary_accel_changed)  (CtkActionObserver    *observer,
+                                   CtkActionObservable  *observable,
                                    const gchar          *action_name,
                                    const gchar          *action_and_target);
 };
 
 GType                   ctk_action_observer_get_type                    (void);
-void                    ctk_action_observer_action_added                (GtkActionObserver   *observer,
-                                                                         GtkActionObservable *observable,
+void                    ctk_action_observer_action_added                (CtkActionObserver   *observer,
+                                                                         CtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          const GVariantType  *parameter_type,
                                                                          gboolean             enabled,
                                                                          GVariant            *state);
-void                    ctk_action_observer_action_enabled_changed      (GtkActionObserver   *observer,
-                                                                         GtkActionObservable *observable,
+void                    ctk_action_observer_action_enabled_changed      (CtkActionObserver   *observer,
+                                                                         CtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          gboolean             enabled);
-void                    ctk_action_observer_action_state_changed        (GtkActionObserver   *observer,
-                                                                         GtkActionObservable *observable,
+void                    ctk_action_observer_action_state_changed        (CtkActionObserver   *observer,
+                                                                         CtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          GVariant            *state);
-void                    ctk_action_observer_action_removed              (GtkActionObserver   *observer,
-                                                                         GtkActionObservable *observable,
+void                    ctk_action_observer_action_removed              (CtkActionObserver   *observer,
+                                                                         CtkActionObservable *observable,
                                                                          const gchar         *action_name);
-void                    ctk_action_observer_primary_accel_changed       (GtkActionObserver   *observer,
-                                                                         GtkActionObservable *observable,
+void                    ctk_action_observer_primary_accel_changed       (CtkActionObserver   *observer,
+                                                                         CtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          const gchar         *action_and_target);
 

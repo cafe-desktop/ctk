@@ -37,29 +37,29 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * SECTION:ctkvscrollbar
  * @Short_description: A vertical scrollbar
- * @Title: GtkVScrollbar
- * @See_also:#GtkScrollbar, #GtkScrolledWindow
+ * @Title: CtkVScrollbar
+ * @See_also:#CtkScrollbar, #CtkScrolledWindow
  *
- * The #GtkVScrollbar widget is a widget arranged vertically creating a
- * scrollbar. See #GtkScrollbar for details on
- * scrollbars. #GtkAdjustment pointers may be added to handle the
+ * The #CtkVScrollbar widget is a widget arranged vertically creating a
+ * scrollbar. See #CtkScrollbar for details on
+ * scrollbars. #CtkAdjustment pointers may be added to handle the
  * adjustment of the scrollbar or it may be left %NULL in which case one
- * will be created for you. See #GtkScrollbar for a description of what the
+ * will be created for you. See #CtkScrollbar for a description of what the
  * fields in an adjustment represent for a scrollbar.
  *
- * GtkVScrollbar has been deprecated, use #GtkScrollbar instead.
+ * CtkVScrollbar has been deprecated, use #CtkScrollbar instead.
  */
 
-G_DEFINE_TYPE (GtkVScrollbar, ctk_vscrollbar, CTK_TYPE_SCROLLBAR)
+G_DEFINE_TYPE (CtkVScrollbar, ctk_vscrollbar, CTK_TYPE_SCROLLBAR)
 
 static void
-ctk_vscrollbar_class_init (GtkVScrollbarClass *class)
+ctk_vscrollbar_class_init (CtkVScrollbarClass *class)
 {
   CTK_RANGE_CLASS (class)->stepper_detail = "vscrollbar";
 }
 
 static void
-ctk_vscrollbar_init (GtkVScrollbar *vscrollbar)
+ctk_vscrollbar_init (CtkVScrollbar *vscrollbar)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (vscrollbar),
                                   CTK_ORIENTATION_VERTICAL);
@@ -67,16 +67,16 @@ ctk_vscrollbar_init (GtkVScrollbar *vscrollbar)
 
 /**
  * ctk_vscrollbar_new:
- * @adjustment: (allow-none): the #GtkAdjustment to use, or %NULL to create a new adjustment
+ * @adjustment: (allow-none): the #CtkAdjustment to use, or %NULL to create a new adjustment
  *
  * Creates a new vertical scrollbar.
  *
- * Returns: the new #GtkVScrollbar
+ * Returns: the new #CtkVScrollbar
  *
  * Deprecated: 3.2: Use ctk_scrollbar_new() with %CTK_ORIENTATION_VERTICAL instead
  */
-GtkWidget *
-ctk_vscrollbar_new (GtkAdjustment *adjustment)
+CtkWidget *
+ctk_vscrollbar_new (CtkAdjustment *adjustment)
 {
   g_return_val_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment),
                         NULL);

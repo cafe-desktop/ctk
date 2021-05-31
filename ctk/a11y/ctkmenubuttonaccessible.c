@@ -22,7 +22,7 @@
 #include "ctkmenubuttonaccessible.h"
 
 
-G_DEFINE_TYPE (GtkMenuButtonAccessible, ctk_menu_button_accessible, CTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE)
+G_DEFINE_TYPE (CtkMenuButtonAccessible, ctk_menu_button_accessible, CTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE)
 
 static void
 ctk_menu_button_accessible_initialize (AtkObject *accessible,
@@ -34,8 +34,8 @@ ctk_menu_button_accessible_initialize (AtkObject *accessible,
 static gint
 ctk_menu_button_accessible_get_n_children (AtkObject* obj)
 {
-  GtkWidget *widget;
-  GtkWidget *submenu;
+  CtkWidget *widget;
+  CtkWidget *submenu;
   gint count = 0;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
@@ -59,8 +59,8 @@ ctk_menu_button_accessible_ref_child (AtkObject *obj,
                                       gint       i)
 {
   AtkObject *accessible = NULL;
-  GtkWidget *widget;
-  GtkWidget *submenu;
+  CtkWidget *widget;
+  CtkWidget *submenu;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -89,7 +89,7 @@ static const gchar *
 ctk_menu_button_accessible_get_name (AtkObject *obj)
 {
   const gchar *name = NULL;
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -103,7 +103,7 @@ ctk_menu_button_accessible_get_name (AtkObject *obj)
 }
 
 static void
-ctk_menu_button_accessible_class_init (GtkMenuButtonAccessibleClass *klass)
+ctk_menu_button_accessible_class_init (CtkMenuButtonAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
@@ -114,6 +114,6 @@ ctk_menu_button_accessible_class_init (GtkMenuButtonAccessibleClass *klass)
 }
 
 static void
-ctk_menu_button_accessible_init (GtkMenuButtonAccessible *menu_button)
+ctk_menu_button_accessible_init (CtkMenuButtonAccessible *menu_button)
 {
 }

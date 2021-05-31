@@ -5,7 +5,7 @@
 
 #include <ctk/ctk.h>
 
-#define WID(x) ((GtkWidget*) ctk_builder_get_object (builder, x))
+#define WID(x) ((CtkWidget*) ctk_builder_get_object (builder, x))
 
 /*
  * These are the available blend modes.
@@ -37,7 +37,7 @@ struct {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
 static void
-update_css_for_blend_mode (GtkCssProvider *provider,
+update_css_for_blend_mode (CtkCssProvider *provider,
                            const gchar    *blend_mode)
 {
   GBytes *bytes;
@@ -58,9 +58,9 @@ update_css_for_blend_mode (GtkCssProvider *provider,
 #pragma GCC diagnostic pop
 
 static void
-row_activated (GtkListBox     *listbox,
-               GtkListBoxRow  *row,
-               GtkCssProvider *provider)
+row_activated (CtkListBox     *listbox,
+               CtkListBoxRow  *row,
+               CtkCssProvider *provider)
 {
   const gchar *blend_mode;
 
@@ -70,11 +70,11 @@ row_activated (GtkListBox     *listbox,
 }
 
 static void
-setup_listbox (GtkBuilder       *builder,
-               GtkStyleProvider *provider)
+setup_listbox (CtkBuilder       *builder,
+               CtkStyleProvider *provider)
 {
-  GtkWidget *normal_row;
-  GtkWidget *listbox;
+  CtkWidget *normal_row;
+  CtkWidget *listbox;
   gint i;
 
   normal_row = NULL;
@@ -86,8 +86,8 @@ setup_listbox (GtkBuilder       *builder,
   /* Add a row for each blend mode available */
   for (i = 0; blend_modes[i].name != NULL; i++)
     {
-      GtkWidget *label;
-      GtkWidget *row;
+      CtkWidget *label;
+      CtkWidget *row;
 
       row = ctk_list_box_row_new ();
       label = g_object_new (CTK_TYPE_LABEL,
@@ -111,15 +111,15 @@ setup_listbox (GtkBuilder       *builder,
   ctk_widget_grab_focus (normal_row);
 }
 
-GtkWidget *
-do_css_blendmodes (GtkWidget *do_widget)
+CtkWidget *
+do_css_blendmodes (CtkWidget *do_widget)
 {
-  static GtkWidget *window = NULL;
+  static CtkWidget *window = NULL;
 
   if (!window)
     {
-      GtkStyleProvider *provider;
-      GtkBuilder *builder;
+      CtkStyleProvider *provider;
+      CtkBuilder *builder;
 
       builder = ctk_builder_new_from_resource ("/css_blendmodes/blendmodes.ui");
 

@@ -4,10 +4,10 @@
 
 #define SCALABLE_IMAGE_SIZE (128)
 
-static GtkIconTheme *
+static CtkIconTheme *
 get_test_icontheme (gboolean force_reload)
 {
-  static GtkIconTheme *icon_theme = NULL;
+  static CtkIconTheme *icon_theme = NULL;
   const char *current_dir;
 
   if (force_reload)
@@ -25,7 +25,7 @@ get_test_icontheme (gboolean force_reload)
 }
 
 static char *
-lookup_flags_to_string (GtkIconLookupFlags flags)
+lookup_flags_to_string (CtkIconLookupFlags flags)
 {
   GValue flags_value = { 0, }, string_value = { 0, };
   char *result;
@@ -50,11 +50,11 @@ lookup_flags_to_string (GtkIconLookupFlags flags)
 static void
 assert_icon_lookup_size (const char         *icon_name,
                          gint                size,
-                         GtkIconLookupFlags  flags,
+                         CtkIconLookupFlags  flags,
                          const char         *filename,
                          gint                pixbuf_size)
 {
-  GtkIconInfo *info;
+  CtkIconInfo *info;
 
   info = ctk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
   if (info == NULL)
@@ -96,7 +96,7 @@ assert_icon_lookup_size (const char         *icon_name,
 static void
 assert_icon_lookup (const char         *icon_name,
                     gint                size,
-                    GtkIconLookupFlags  flags,
+                    CtkIconLookupFlags  flags,
                     const char         *filename)
 {
   assert_icon_lookup_size (icon_name, size, flags, filename, -1);
@@ -105,9 +105,9 @@ assert_icon_lookup (const char         *icon_name,
 static void
 assert_icon_lookup_fails (const char         *icon_name,
                           gint                size,
-                          GtkIconLookupFlags  flags)
+                          CtkIconLookupFlags  flags)
 {
-  GtkIconInfo *info;
+  CtkIconInfo *info;
 
   info = ctk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
 
@@ -140,7 +140,7 @@ log_writer (GLogLevelFlags   log_level,
         msg = fields[i].value;
     }
 
-  if (log_level != G_LOG_LEVEL_MESSAGE || g_strcmp0 (domain, "Gtk") != 0)
+  if (log_level != G_LOG_LEVEL_MESSAGE || g_strcmp0 (domain, "Ctk") != 0)
     return g_log_writer_default (log_level, fields, n_fields, user_data);
 
   if (g_str_has_prefix (msg, "\tlookup name: "))
@@ -156,14 +156,14 @@ log_writer (GLogLevelFlags   log_level,
 static void
 assert_lookup_order (const char         *icon_name,
                      gint                size,
-                     GtkIconLookupFlags  flags,
+                     CtkIconLookupFlags  flags,
                      const char         *first,
                      ...)
 {
   guint debug_flags;
   va_list args;
   const gchar *s;
-  GtkIconInfo *info;
+  CtkIconInfo *info;
   GList *l;
 
 /* this hack is only usable in debug builds */
@@ -578,7 +578,7 @@ test_size (void)
 static void
 test_list (void)
 {
-  GtkIconTheme *theme;
+  CtkIconTheme *theme;
   GList *icons;
 
   theme = get_test_icontheme (TRUE);
@@ -620,7 +620,7 @@ load_icon (GObject      *source,
            GAsyncResult *res,
            gpointer      data)
 {
-  GtkIconInfo *info = (GtkIconInfo *)source;
+  CtkIconInfo *info = (CtkIconInfo *)source;
   GError *error = NULL;
   GdkPixbuf *pixbuf;
 
@@ -637,7 +637,7 @@ load_symbolic (GObject      *source,
                GAsyncResult *res,
                gpointer      data)
 {
-  GtkIconInfo *info = (GtkIconInfo *)source;
+  CtkIconInfo *info = (CtkIconInfo *)source;
   GError *error = NULL;
   gboolean symbolic;
   GdkPixbuf *pixbuf;
@@ -666,8 +666,8 @@ quit_loop (gpointer data)
 static void
 test_async (void)
 {
-  GtkIconInfo *info1, *info2;
-  GtkIconTheme *theme;
+  CtkIconInfo *info1, *info2;
+  CtkIconTheme *theme;
   GMainLoop *loop;
   GdkRGBA fg, red, green, blue;
 
@@ -728,8 +728,8 @@ static void
 test_nonsquare_symbolic (void)
 {
   gint width, height;
-  GtkIconTheme *icon_theme;
-  GtkIconInfo *info;
+  CtkIconTheme *icon_theme;
+  CtkIconInfo *info;
   GFile *file;
   GIcon *icon;
   GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
@@ -750,7 +750,7 @@ test_nonsquare_symbolic (void)
   height = gdk_pixbuf_get_height (pixbuf);
   g_assert_cmpint (width, !=, height);
 
-  /* now load it through GtkIconTheme */
+  /* now load it through CtkIconTheme */
   icon_theme = ctk_icon_theme_get_default ();
   file = g_file_new_for_path (path);
   icon = g_file_icon_new (file);

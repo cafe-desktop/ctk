@@ -35,20 +35,20 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_WINDOW_GROUP             (ctk_window_group_get_type ())
-#define CTK_WINDOW_GROUP(object)          (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_WINDOW_GROUP, GtkWindowGroup))
-#define CTK_WINDOW_GROUP_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_WINDOW_GROUP, GtkWindowGroupClass))
+#define CTK_WINDOW_GROUP(object)          (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_WINDOW_GROUP, CtkWindowGroup))
+#define CTK_WINDOW_GROUP_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_WINDOW_GROUP, CtkWindowGroupClass))
 #define CTK_IS_WINDOW_GROUP(object)       (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_WINDOW_GROUP))
 #define CTK_IS_WINDOW_GROUP_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_WINDOW_GROUP))
-#define CTK_WINDOW_GROUP_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_WINDOW_GROUP, GtkWindowGroupClass))
+#define CTK_WINDOW_GROUP_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_WINDOW_GROUP, CtkWindowGroupClass))
 
-struct _GtkWindowGroup
+struct _CtkWindowGroup
 {
   GObject parent_instance;
 
-  GtkWindowGroupPrivate *priv;
+  CtkWindowGroupPrivate *priv;
 };
 
-struct _GtkWindowGroupClass
+struct _CtkWindowGroupClass
 {
   GObjectClass parent_class;
 
@@ -66,20 +66,20 @@ GDK_AVAILABLE_IN_ALL
 GType            ctk_window_group_get_type      (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWindowGroup * ctk_window_group_new           (void);
+CtkWindowGroup * ctk_window_group_new           (void);
 GDK_AVAILABLE_IN_ALL
-void             ctk_window_group_add_window    (GtkWindowGroup     *window_group,
-                                                 GtkWindow          *window);
+void             ctk_window_group_add_window    (CtkWindowGroup     *window_group,
+                                                 CtkWindow          *window);
 GDK_AVAILABLE_IN_ALL
-void             ctk_window_group_remove_window (GtkWindowGroup     *window_group,
-                                                 GtkWindow          *window);
+void             ctk_window_group_remove_window (CtkWindowGroup     *window_group,
+                                                 CtkWindow          *window);
 GDK_AVAILABLE_IN_ALL
-GList *          ctk_window_group_list_windows  (GtkWindowGroup     *window_group);
+GList *          ctk_window_group_list_windows  (CtkWindowGroup     *window_group);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *      ctk_window_group_get_current_grab (GtkWindowGroup *window_group);
+CtkWidget *      ctk_window_group_get_current_grab (CtkWindowGroup *window_group);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *      ctk_window_group_get_current_device_grab (GtkWindowGroup *window_group,
+CtkWidget *      ctk_window_group_get_current_device_grab (CtkWindowGroup *window_group,
                                                            GdkDevice      *device);
 
 

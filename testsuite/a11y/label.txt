@@ -55,7 +55,7 @@ window1
       start index: 27
       end index: 36
       anchors: http://www.google.com
-    unnamed-GtkLabelAccessibleLinkImpl-0
+    unnamed-CtkLabelAccessibleLinkImpl-0
       "link"
       parent: label1
       state: enabled focusable multi-line sensitive has-tooltip
@@ -64,7 +64,7 @@ window1
         start index: 10
         end index: 22
         anchors: http://www.ctk.org
-    unnamed-GtkLabelAccessibleLinkImpl-1
+    unnamed-CtkLabelAccessibleLinkImpl-1
       "link"
       parent: label1
       state: enabled focusable multi-line sensitive has-tooltip

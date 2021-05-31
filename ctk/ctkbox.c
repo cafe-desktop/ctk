@@ -25,43 +25,43 @@
 /**
  * SECTION:ctkbox
  * @Short_description: A container for packing widgets in a single row or column
- * @Title: GtkBox
- * @See_also: #GtkGrid
+ * @Title: CtkBox
+ * @See_also: #CtkGrid
  *
- * The GtkBox widget arranges child widgets into a single row or column,
- * depending upon the value of its #GtkOrientable:orientation property. Within
+ * The CtkBox widget arranges child widgets into a single row or column,
+ * depending upon the value of its #CtkOrientable:orientation property. Within
  * the other dimension, all children are allocated the same size. Of course,
- * the #GtkWidget:halign and #GtkWidget:valign properties can be used on
+ * the #CtkWidget:halign and #CtkWidget:valign properties can be used on
  * the children to influence their allocation.
  *
- * GtkBox uses a notion of packing. Packing refers
+ * CtkBox uses a notion of packing. Packing refers
  * to adding widgets with reference to a particular position in a
- * #GtkContainer. For a GtkBox, there are two reference positions: the
+ * #CtkContainer. For a CtkBox, there are two reference positions: the
  * start and the end of the box.
- * For a vertical #GtkBox, the start is defined as the top of the box and
- * the end is defined as the bottom. For a horizontal #GtkBox the start
+ * For a vertical #CtkBox, the start is defined as the top of the box and
+ * the end is defined as the bottom. For a horizontal #CtkBox the start
  * is defined as the left side and the end is defined as the right side.
  *
  * Use repeated calls to ctk_box_pack_start() to pack widgets into a
- * GtkBox from start to end. Use ctk_box_pack_end() to add widgets from
+ * CtkBox from start to end. Use ctk_box_pack_end() to add widgets from
  * end to start. You may intersperse these calls and add widgets from
- * both ends of the same GtkBox.
+ * both ends of the same CtkBox.
  *
- * Because GtkBox is a #GtkContainer, you may also use ctk_container_add()
+ * Because CtkBox is a #CtkContainer, you may also use ctk_container_add()
  * to insert widgets into the box, and they will be packed with the default
  * values for expand and fill child properties. Use ctk_container_remove()
- * to remove widgets from the GtkBox.
+ * to remove widgets from the CtkBox.
  *
  * Use ctk_box_set_homogeneous() to specify whether or not all children
- * of the GtkBox are forced to get the same amount of space.
+ * of the CtkBox are forced to get the same amount of space.
  *
  * Use ctk_box_set_spacing() to determine how much space will be
- * minimally placed between all children in the GtkBox. Note that
+ * minimally placed between all children in the CtkBox. Note that
  * spacing is added between the children, while
  * padding added by ctk_box_pack_start() or ctk_box_pack_end() is added
  * on either side of the widget it belongs to.
  *
- * Use ctk_box_reorder_child() to move a GtkBox child to a different
+ * Use ctk_box_reorder_child() to move a CtkBox child to a different
  * place in the box.
  *
  * Use ctk_box_set_child_packing() to reset the expand,
@@ -70,7 +70,7 @@
  *
  * # CSS nodes
  *
- * GtkBox uses a single CSS node with name box.
+ * CtkBox uses a single CSS node with name box.
  *
  * In horizontal orientation, the nodes of the children are always arranged
  * from left to right. So :first-child will always select the leftmost child,
@@ -116,15 +116,15 @@ enum {
   LAST_CHILD_PROP
 };
 
-typedef struct _GtkBoxChild        GtkBoxChild;
+typedef struct _CtkBoxChild        CtkBoxChild;
 
-struct _GtkBoxPrivate
+struct _CtkBoxPrivate
 {
   GList          *children;
-  GtkBoxChild    *center;
-  GtkCssGadget   *gadget;
+  CtkBoxChild    *center;
+  CtkCssGadget   *gadget;
 
-  GtkOrientation  orientation;
+  CtkOrientation  orientation;
   gint16          spacing;
 
   guint           default_expand : 1;
@@ -137,22 +137,22 @@ static GParamSpec *props[LAST_PROP] = { NULL, };
 static GParamSpec *child_props[LAST_CHILD_PROP] = { NULL, };
 
 /*
- * GtkBoxChild:
- * @widget: the child widget, packed into the GtkBox.
+ * CtkBoxChild:
+ * @widget: the child widget, packed into the CtkBox.
  * @padding: the number of extra pixels to put between this child and its
  *  neighbors, set when packed, zero by default.
  * @expand: flag indicates whether extra space should be given to this child.
- *  Any extra space given to the parent GtkBox is divided up among all children
+ *  Any extra space given to the parent CtkBox is divided up among all children
  *  with this attribute set to %TRUE; set when packed, %TRUE by default.
  * @fill: flag indicates whether any extra space given to this child due to its
  *  @expand attribute being set is actually allocated to the child, rather than
  *  being used as padding around the widget; set when packed, %TRUE by default.
- * @pack: one of #GtkPackType indicating whether the child is packed with
- *  reference to the start (top/left) or end (bottom/right) of the GtkBox.
+ * @pack: one of #CtkPackType indicating whether the child is packed with
+ *  reference to the start (top/left) or end (bottom/right) of the CtkBox.
  */
-struct _GtkBoxChild
+struct _CtkBoxChild
 {
-  GtkWidget *widget;
+  CtkWidget *widget;
 
   guint16    padding;
 
@@ -161,13 +161,13 @@ struct _GtkBoxChild
   guint      pack   : 1;
 };
 
-static void ctk_box_size_allocate         (GtkWidget              *widget,
-                                           GtkAllocation          *allocation);
-static gboolean ctk_box_draw           (GtkWidget        *widget,
+static void ctk_box_size_allocate         (CtkWidget              *widget,
+                                           CtkAllocation          *allocation);
+static gboolean ctk_box_draw           (CtkWidget        *widget,
                                         cairo_t          *cr);
 
-static void ctk_box_direction_changed  (GtkWidget        *widget,
-                                        GtkTextDirection  previous_direction);
+static void ctk_box_direction_changed  (CtkWidget        *widget,
+                                        CtkTextDirection  previous_direction);
 
 static void ctk_box_set_property       (GObject        *object,
                                         guint           prop_id,
@@ -177,63 +177,63 @@ static void ctk_box_get_property       (GObject        *object,
                                         guint           prop_id,
                                         GValue         *value,
                                         GParamSpec     *pspec);
-static void ctk_box_add                (GtkContainer   *container,
-                                        GtkWidget      *widget);
-static void ctk_box_remove             (GtkContainer   *container,
-                                        GtkWidget      *widget);
-static void ctk_box_forall             (GtkContainer   *container,
+static void ctk_box_add                (CtkContainer   *container,
+                                        CtkWidget      *widget);
+static void ctk_box_remove             (CtkContainer   *container,
+                                        CtkWidget      *widget);
+static void ctk_box_forall             (CtkContainer   *container,
                                         gboolean        include_internals,
-                                        GtkCallback     callback,
+                                        CtkCallback     callback,
                                         gpointer        callback_data);
-static void ctk_box_set_child_property (GtkContainer   *container,
-                                        GtkWidget      *child,
+static void ctk_box_set_child_property (CtkContainer   *container,
+                                        CtkWidget      *child,
                                         guint           property_id,
                                         const GValue   *value,
                                         GParamSpec     *pspec);
-static void ctk_box_get_child_property (GtkContainer   *container,
-                                        GtkWidget      *child,
+static void ctk_box_get_child_property (CtkContainer   *container,
+                                        CtkWidget      *child,
                                         guint           property_id,
                                         GValue         *value,
                                         GParamSpec     *pspec);
-static GType ctk_box_child_type        (GtkContainer   *container);
-static GtkWidgetPath * ctk_box_get_path_for_child
-                                       (GtkContainer   *container,
-                                        GtkWidget      *child);
+static GType ctk_box_child_type        (CtkContainer   *container);
+static CtkWidgetPath * ctk_box_get_path_for_child
+                                       (CtkContainer   *container,
+                                        CtkWidget      *child);
 
 
-static void               ctk_box_get_preferred_width            (GtkWidget           *widget,
+static void               ctk_box_get_preferred_width            (CtkWidget           *widget,
                                                                   gint                *minimum_size,
                                                                   gint                *natural_size);
-static void               ctk_box_get_preferred_height           (GtkWidget           *widget,
+static void               ctk_box_get_preferred_height           (CtkWidget           *widget,
                                                                   gint                *minimum_size,
                                                                   gint                *natural_size);
-static void               ctk_box_get_preferred_width_for_height (GtkWidget           *widget,
+static void               ctk_box_get_preferred_width_for_height (CtkWidget           *widget,
                                                                   gint                 height,
                                                                   gint                *minimum_width,
                                                                   gint                *natural_width);
-static void               ctk_box_get_preferred_height_for_width (GtkWidget           *widget,
+static void               ctk_box_get_preferred_height_for_width (CtkWidget           *widget,
                                                                   gint                 width,
                                                                   gint                *minimum_height,
                                                                   gint                *natural_height);
-static void  ctk_box_get_preferred_height_and_baseline_for_width (GtkWidget           *widget,
+static void  ctk_box_get_preferred_height_and_baseline_for_width (CtkWidget           *widget,
 								  gint                 width,
 								  gint                *minimum_height,
 								  gint                *natural_height,
 								  gint                *minimum_baseline,
 								  gint                *natural_baseline);
 
-static void               ctk_box_buildable_init                 (GtkBuildableIface  *iface);
+static void               ctk_box_buildable_init                 (CtkBuildableIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkBox, ctk_box, CTK_TYPE_CONTAINER,
-                         G_ADD_PRIVATE (GtkBox)
+G_DEFINE_TYPE_WITH_CODE (CtkBox, ctk_box, CTK_TYPE_CONTAINER,
+                         G_ADD_PRIVATE (CtkBox)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE, ctk_box_buildable_init))
 
 static void
 ctk_box_dispose (GObject *object)
 {
-  GtkBox *box = CTK_BOX (object);
-  GtkBoxPrivate *priv = box->priv;
+  CtkBox *box = CTK_BOX (object);
+  CtkBoxPrivate *priv = box->priv;
 
   g_clear_object (&priv->gadget);
 
@@ -241,11 +241,11 @@ ctk_box_dispose (GObject *object)
 }
 
 static void
-ctk_box_class_init (GtkBoxClass *class)
+ctk_box_class_init (CtkBoxClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
-  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
 
   object_class->set_property = ctk_box_set_property;
   object_class->get_property = ctk_box_get_property;
@@ -298,19 +298,19 @@ ctk_box_class_init (GtkBoxClass *class)
   g_object_class_install_properties (object_class, LAST_PROP, props);
 
   /**
-   * GtkBox:expand:
+   * CtkBox:expand:
    *
    * Whether the child should receive extra space when the parent grows.
    *
-   * Note that the default value for this property is %FALSE for GtkBox,
-   * but #GtkHBox, #GtkVBox and other subclasses use the old default
+   * Note that the default value for this property is %FALSE for CtkBox,
+   * but #CtkHBox, #CtkVBox and other subclasses use the old default
    * of %TRUE.
    *
-   * Note: The #GtkWidget:hexpand or #GtkWidget:vexpand properties are the
+   * Note: The #CtkWidget:hexpand or #CtkWidget:vexpand properties are the
    * preferred way to influence whether the child receives extra space, by
    * setting the child’s expand property corresponding to the box’s orientation.
    *
-   * In contrast to #GtkWidget:hexpand, the expand child property does
+   * In contrast to #CtkWidget:hexpand, the expand child property does
    * not cause the box to expand itself.
    */
   child_props[CHILD_PROP_EXPAND] =
@@ -321,11 +321,11 @@ ctk_box_class_init (GtkBoxClass *class)
                             CTK_PARAM_READWRITE);
 
   /**
-   * GtkBox:fill:
+   * CtkBox:fill:
    *
    * Whether the child should fill extra space or use it as padding.
    *
-   * Note: The #GtkWidget:halign or #GtkWidget:valign properties are the
+   * Note: The #CtkWidget:halign or #CtkWidget:valign properties are the
    * preferred way to influence whether the child fills available space, by
    * setting the child’s align property corresponding to the box’s orientation
    * to %CTK_ALIGN_FILL to fill, or to something else to refrain from filling.
@@ -338,7 +338,7 @@ ctk_box_class_init (GtkBoxClass *class)
                             CTK_PARAM_READWRITE);
 
   /**
-   * GtkBox:padding:
+   * CtkBox:padding:
    *
    * Extra space to put between the child and its neighbors, in pixels.
    *
@@ -356,7 +356,7 @@ ctk_box_class_init (GtkBoxClass *class)
   child_props[CHILD_PROP_PACK_TYPE] =
       g_param_spec_enum ("pack-type",
                          P_("Pack type"),
-                         P_("A GtkPackType indicating whether the child is packed with reference to the start or end of the parent"),
+                         P_("A CtkPackType indicating whether the child is packed with reference to the start or end of the parent"),
                          CTK_TYPE_PACK_TYPE, CTK_PACK_START,
                          CTK_PARAM_READWRITE);
 
@@ -380,14 +380,14 @@ ctk_box_set_property (GObject      *object,
                       const GValue *value,
                       GParamSpec   *pspec)
 {
-  GtkBox *box = CTK_BOX (object);
-  GtkBoxPrivate *private = box->priv;
+  CtkBox *box = CTK_BOX (object);
+  CtkBoxPrivate *private = box->priv;
 
   switch (prop_id)
     {
     case PROP_ORIENTATION:
       {
-        GtkOrientation orientation = g_value_get_enum (value);
+        CtkOrientation orientation = g_value_get_enum (value);
         if (private->orientation != orientation)
           {
             private->orientation = orientation;
@@ -418,8 +418,8 @@ ctk_box_get_property (GObject    *object,
                       GValue     *value,
                       GParamSpec *pspec)
 {
-  GtkBox *box = CTK_BOX (object);
-  GtkBoxPrivate *private = box->priv;
+  CtkBox *box = CTK_BOX (object);
+  CtkBoxPrivate *private = box->priv;
 
   switch (prop_id)
     {
@@ -442,7 +442,7 @@ ctk_box_get_property (GObject    *object,
 }
 
 static gboolean
-ctk_box_draw_contents (GtkCssGadget *gadget,
+ctk_box_draw_contents (CtkCssGadget *gadget,
                        cairo_t      *cr,
                        int           x,
                        int           y,
@@ -456,7 +456,7 @@ ctk_box_draw_contents (GtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_box_draw (GtkWidget *widget,
+ctk_box_draw (CtkWidget *widget,
               cairo_t   *cr)
 {
   ctk_css_gadget_draw (CTK_BOX (widget)->priv->gadget, cr);
@@ -466,13 +466,13 @@ ctk_box_draw (GtkWidget *widget,
 
 
 static void
-count_expand_children (GtkBox *box,
+count_expand_children (CtkBox *box,
                        gint *visible_children,
                        gint *expand_children)
 {
-  GtkBoxPrivate  *private = box->priv;
+  CtkBoxPrivate  *private = box->priv;
   GList       *children;
-  GtkBoxChild *child;
+  CtkBoxChild *child;
 
   *visible_children = *expand_children = 0;
 
@@ -490,26 +490,26 @@ count_expand_children (GtkBox *box,
 }
 
 static void
-ctk_box_size_allocate_no_center (GtkWidget           *widget,
-                                 const GtkAllocation *allocation)
+ctk_box_size_allocate_no_center (CtkWidget           *widget,
+                                 const CtkAllocation *allocation)
 {
-  GtkBox *box = CTK_BOX (widget);
-  GtkBoxPrivate *private = box->priv;
-  GtkBoxChild *child;
+  CtkBox *box = CTK_BOX (widget);
+  CtkBoxPrivate *private = box->priv;
+  CtkBoxChild *child;
   GList *children;
   gint nvis_children;
   gint nexpand_children;
 
-  GtkTextDirection direction;
-  GtkAllocation child_allocation;
-  GtkRequestedSize *sizes;
+  CtkTextDirection direction;
+  CtkAllocation child_allocation;
+  CtkRequestedSize *sizes;
   gint child_minimum_baseline, child_natural_baseline;
   gint minimum_above, natural_above;
   gint minimum_below, natural_below;
   gboolean have_baseline;
   gint baseline;
 
-  GtkPackType packing;
+  CtkPackType packing;
 
   gint size;
   gint extra;
@@ -525,8 +525,8 @@ ctk_box_size_allocate_no_center (GtkWidget           *widget,
     return;
 
   direction = ctk_widget_get_direction (widget);
-  sizes = g_newa (GtkRequestedSize, nvis_children);
-  memset (sizes, 0, nvis_children * sizeof (GtkRequestedSize));
+  sizes = g_newa (CtkRequestedSize, nvis_children);
+  memset (sizes, 0, nvis_children * sizeof (CtkRequestedSize));
 
   if (private->orientation == CTK_ORIENTATION_HORIZONTAL)
     size = allocation->width - (nvis_children - 1) * private->spacing;
@@ -559,7 +559,7 @@ ctk_box_size_allocate_no_center (GtkWidget           *widget,
 
       /* Assert the api is working properly */
       if (sizes[i].minimum_size < 0)
-	g_error ("GtkBox child %s minimum %s: %d < 0 for %s %d",
+	g_error ("CtkBox child %s minimum %s: %d < 0 for %s %d",
 		 ctk_widget_get_name (CTK_WIDGET (child->widget)),
 		 (private->orientation == CTK_ORIENTATION_HORIZONTAL) ? "width" : "height",
 		 sizes[i].minimum_size,
@@ -567,7 +567,7 @@ ctk_box_size_allocate_no_center (GtkWidget           *widget,
 		 (private->orientation == CTK_ORIENTATION_HORIZONTAL) ? allocation->height : allocation->width);
 
       if (sizes[i].natural_size < sizes[i].minimum_size)
-	g_error ("GtkBox child %s natural %s: %d < minimum %d for %s %d",
+	g_error ("CtkBox child %s natural %s: %d < minimum %d for %s %d",
 		 ctk_widget_get_name (CTK_WIDGET (child->widget)),
 		 (private->orientation == CTK_ORIENTATION_HORIZONTAL) ? "width" : "height",
 		 sizes[i].natural_size,
@@ -824,19 +824,19 @@ ctk_box_size_allocate_no_center (GtkWidget           *widget,
 }
 
 static void
-ctk_box_size_allocate_with_center (GtkWidget           *widget,
-                                   const GtkAllocation *allocation)
+ctk_box_size_allocate_with_center (CtkWidget           *widget,
+                                   const CtkAllocation *allocation)
 {
-  GtkBox *box = CTK_BOX (widget);
-  GtkBoxPrivate *priv = box->priv;
-  GtkBoxChild *child;
+  CtkBox *box = CTK_BOX (widget);
+  CtkBoxPrivate *priv = box->priv;
+  CtkBoxChild *child;
   GList *children;
   gint nvis[2];
   gint nexp[2];
-  GtkTextDirection direction;
-  GtkAllocation child_allocation;
-  GtkRequestedSize *sizes[2];
-  GtkRequestedSize center_req = {0, 0};
+  CtkTextDirection direction;
+  CtkAllocation child_allocation;
+  CtkRequestedSize *sizes[2];
+  CtkRequestedSize center_req = {0, 0};
   gint child_minimum_baseline, child_natural_baseline;
   gint minimum_above, natural_above;
   gint minimum_below, natural_below;
@@ -847,7 +847,7 @@ ctk_box_size_allocate_with_center (GtkWidget           *widget,
   gint center_size;
   gint box_size;
   gint side[2];
-  GtkPackType packing;
+  CtkPackType packing;
   gint min_size[2];
   gint nat_size[2];
   gint extra[2];
@@ -871,8 +871,8 @@ ctk_box_size_allocate_with_center (GtkWidget           *widget,
     }
 
   direction = ctk_widget_get_direction (widget);
-  sizes[0] = g_newa (GtkRequestedSize, nvis[0]);
-  sizes[1] = g_newa (GtkRequestedSize, nvis[1]);
+  sizes[0] = g_newa (CtkRequestedSize, nvis[0]);
+  sizes[1] = g_newa (CtkRequestedSize, nvis[1]);
 
   if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     box_size = allocation->width;
@@ -890,7 +890,7 @@ ctk_box_size_allocate_with_center (GtkWidget           *widget,
   idx[0] = idx[1] = 0;
   for (children = priv->children; children; children = children->next)
     {
-      GtkRequestedSize *req;
+      CtkRequestedSize *req;
 
       child = children->data;
 
@@ -1195,14 +1195,14 @@ ctk_box_size_allocate_with_center (GtkWidget           *widget,
 }
 
 static void
-ctk_box_allocate_contents (GtkCssGadget        *gadget,
-                           const GtkAllocation *allocation,
+ctk_box_allocate_contents (CtkCssGadget        *gadget,
+                           const CtkAllocation *allocation,
                            int                  baseline,
-                           GtkAllocation       *out_clip,
+                           CtkAllocation       *out_clip,
                            gpointer             unused)
 {
-  GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkBox *box = CTK_BOX (widget);
+  CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
+  CtkBox *box = CTK_BOX (widget);
 
   if (box->priv->center &&
       _ctk_widget_get_visible (box->priv->center->widget))
@@ -1214,11 +1214,11 @@ ctk_box_allocate_contents (GtkCssGadget        *gadget,
 }
 
 static void
-ctk_box_size_allocate (GtkWidget     *widget,
-                       GtkAllocation *allocation)
+ctk_box_size_allocate (CtkWidget     *widget,
+                       CtkAllocation *allocation)
 {
-  GtkBoxPrivate *priv = CTK_BOX (widget)->priv;
-  GtkAllocation clip;
+  CtkBoxPrivate *priv = CTK_BOX (widget)->priv;
+  CtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -1231,14 +1231,14 @@ ctk_box_size_allocate (GtkWidget     *widget,
 }
 
 static GType
-ctk_box_child_type (GtkContainer   *container)
+ctk_box_child_type (CtkContainer   *container)
 {
   return CTK_TYPE_WIDGET;
 }
 
 static void
-ctk_box_set_child_property (GtkContainer *container,
-                            GtkWidget    *child,
+ctk_box_set_child_property (CtkContainer *container,
+                            CtkWidget    *child,
                             guint         property_id,
                             const GValue *value,
                             GParamSpec   *pspec)
@@ -1246,7 +1246,7 @@ ctk_box_set_child_property (GtkContainer *container,
   gboolean expand = 0;
   gboolean fill = 0;
   guint padding = 0;
-  GtkPackType pack_type = 0;
+  CtkPackType pack_type = 0;
 
   if (property_id != CHILD_PROP_POSITION)
     ctk_box_query_child_packing (CTK_BOX (container),
@@ -1301,8 +1301,8 @@ ctk_box_set_child_property (GtkContainer *container,
 }
 
 static void
-ctk_box_get_child_property (GtkContainer *container,
-			    GtkWidget    *child,
+ctk_box_get_child_property (CtkContainer *container,
+			    CtkWidget    *child,
 			    guint         property_id,
 			    GValue       *value,
 			    GParamSpec   *pspec)
@@ -1310,7 +1310,7 @@ ctk_box_get_child_property (GtkContainer *container,
   gboolean expand = FALSE;
   gboolean fill = FALSE;
   guint padding = 0;
-  GtkPackType pack_type = 0;
+  CtkPackType pack_type = 0;
   GList *list;
 
   if (property_id != CHILD_PROP_POSITION)
@@ -1339,7 +1339,7 @@ ctk_box_get_child_property (GtkContainer *container,
       i = 0;
       for (list = CTK_BOX (container)->priv->children; list; list = list->next)
 	{
-	  GtkBoxChild *child_entry;
+	  CtkBoxChild *child_entry;
 
 	  child_entry = list->data;
 	  if (child_entry->widget == child)
@@ -1356,14 +1356,14 @@ ctk_box_get_child_property (GtkContainer *container,
 
 typedef struct _CountingData CountingData;
 struct _CountingData {
-  GtkWidget *widget;
+  CtkWidget *widget;
   gboolean found;
   guint before;
   guint after;
 };
 
 static void
-count_widget_position (GtkWidget *widget,
+count_widget_position (CtkWidget *widget,
                        gpointer   data)
 {
   CountingData *count = data;
@@ -1380,8 +1380,8 @@ count_widget_position (GtkWidget *widget,
 }
 
 static gint
-ctk_box_get_visible_position (GtkBox    *box,
-                              GtkWidget *child)
+ctk_box_get_visible_position (CtkBox    *box,
+                              CtkWidget *child)
 {
   CountingData count = { child, FALSE, 0, 0 };
 
@@ -1404,13 +1404,13 @@ ctk_box_get_visible_position (GtkBox    *box,
     return count.before;
 }
 
-static GtkWidgetPath *
-ctk_box_get_path_for_child (GtkContainer *container,
-                            GtkWidget    *child)
+static CtkWidgetPath *
+ctk_box_get_path_for_child (CtkContainer *container,
+                            CtkWidget    *child)
 {
-  GtkWidgetPath *path, *sibling_path;
-  GtkBox *box;
-  GtkBoxPrivate *private;
+  CtkWidgetPath *path, *sibling_path;
+  CtkBox *box;
+  CtkBoxPrivate *private;
   GList *list, *children;
 
   box = CTK_BOX (container);
@@ -1456,8 +1456,8 @@ ctk_box_get_path_for_child (GtkContainer *container,
 }
 
 static void
-ctk_box_buildable_add_child (GtkBuildable *buildable,
-                             GtkBuilder   *builder,
+ctk_box_buildable_add_child (CtkBuildable *buildable,
+                             CtkBuilder   *builder,
                              GObject      *child,
                              const gchar  *type)
 {
@@ -1470,24 +1470,24 @@ ctk_box_buildable_add_child (GtkBuildable *buildable,
 }
 
 static void
-ctk_box_buildable_init (GtkBuildableIface *iface)
+ctk_box_buildable_init (CtkBuildableIface *iface)
 {
   iface->add_child = ctk_box_buildable_add_child;
 }
 
 static void
-ctk_box_update_child_css_position (GtkBox      *box,
-                                   GtkBoxChild *child_info)
+ctk_box_update_child_css_position (CtkBox      *box,
+                                   CtkBoxChild *child_info)
 {
-  GtkBoxPrivate *priv = box->priv;
-  GtkBoxChild *prev;
+  CtkBoxPrivate *priv = box->priv;
+  CtkBoxChild *prev;
   gboolean reverse;
   GList *l;
 
   prev = NULL;
   for (l = priv->children; l->data != child_info; l = l->next)
     {
-      GtkBoxChild *cur = l->data;
+      CtkBoxChild *cur = l->data;
 
       if (cur->pack == child_info->pack)
         prev = cur;
@@ -1509,32 +1509,32 @@ ctk_box_update_child_css_position (GtkBox      *box,
 }
 
 static void
-ctk_box_direction_changed (GtkWidget        *widget,
-                           GtkTextDirection  previous_direction)
+ctk_box_direction_changed (CtkWidget        *widget,
+                           CtkTextDirection  previous_direction)
 {
-  GtkBox *box = CTK_BOX (widget);
+  CtkBox *box = CTK_BOX (widget);
 
   if (box->priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     ctk_css_node_reverse_children (ctk_widget_get_css_node (widget));
 }
 
-static GtkBoxChild *
-ctk_box_pack (GtkBox      *box,
-              GtkWidget   *child,
+static CtkBoxChild *
+ctk_box_pack (CtkBox      *box,
+              CtkWidget   *child,
               gboolean     expand,
               gboolean     fill,
               guint        padding,
-              GtkPackType  pack_type)
+              CtkPackType  pack_type)
 {
-  GtkContainer *container = CTK_CONTAINER (box);
-  GtkBoxPrivate *private = box->priv;
-  GtkBoxChild *child_info;
+  CtkContainer *container = CTK_CONTAINER (box);
+  CtkBoxPrivate *private = box->priv;
+  CtkBoxChild *child_info;
 
   g_return_val_if_fail (CTK_IS_BOX (box), NULL);
   g_return_val_if_fail (CTK_IS_WIDGET (child), NULL);
   g_return_val_if_fail (_ctk_widget_get_parent (child) == NULL, NULL);
 
-  child_info = g_new (GtkBoxChild, 1);
+  child_info = g_new (CtkBoxChild, 1);
   child_info->widget = child;
   child_info->padding = padding;
   child_info->expand = expand ? TRUE : FALSE;
@@ -1564,15 +1564,15 @@ ctk_box_pack (GtkBox      *box,
 }
 
 static void
-ctk_box_get_size (GtkWidget      *widget,
-		  GtkOrientation  orientation,
+ctk_box_get_size (CtkWidget      *widget,
+		  CtkOrientation  orientation,
 		  gint           *minimum_size,
 		  gint           *natural_size,
 		  gint           *minimum_baseline,
 		  gint           *natural_baseline)
 {
-  GtkBox *box;
-  GtkBoxPrivate *private;
+  CtkBox *box;
+  CtkBoxPrivate *private;
   GList *children;
   gint nvis_children;
   gint minimum, natural;
@@ -1597,7 +1597,7 @@ ctk_box_get_size (GtkWidget      *widget,
 
   for (children = private->children; children; children = children->next)
     {
-      GtkBoxChild *child = children->data;
+      CtkBoxChild *child = children->data;
 
       if (_ctk_widget_get_visible (child->widget))
         {
@@ -1715,7 +1715,7 @@ ctk_box_get_size (GtkWidget      *widget,
 }
 
 static void
-ctk_box_get_preferred_width (GtkWidget *widget,
+ctk_box_get_preferred_width (CtkWidget *widget,
                              gint      *minimum,
                              gint      *natural)
 {
@@ -1727,7 +1727,7 @@ ctk_box_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_box_get_preferred_height (GtkWidget *widget,
+ctk_box_get_preferred_height (CtkWidget *widget,
                               gint      *minimum,
                               gint      *natural)
 {
@@ -1739,15 +1739,15 @@ ctk_box_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_box_compute_size_for_opposing_orientation (GtkBox *box,
+ctk_box_compute_size_for_opposing_orientation (CtkBox *box,
 					       gint    avail_size,
 					       gint   *minimum_size,
 					       gint   *natural_size,
 					       gint   *minimum_baseline,
 					       gint   *natural_baseline)
 {
-  GtkBoxPrivate       *private = box->priv;
-  GtkBoxChild      *child;
+  CtkBoxPrivate       *private = box->priv;
+  CtkBoxChild      *child;
   GList            *children;
   gint              nvis_children;
   gint              nexpand_children;
@@ -1755,8 +1755,8 @@ ctk_box_compute_size_for_opposing_orientation (GtkBox *box,
   gint              computed_minimum_above = 0, computed_natural_above = 0;
   gint              computed_minimum_below = 0, computed_natural_below = 0;
   gint              computed_minimum_baseline = -1, computed_natural_baseline = -1;
-  GtkRequestedSize *sizes;
-  GtkPackType       packing;
+  CtkRequestedSize *sizes;
+  CtkPackType       packing;
   gint              size, extra, i;
   gint              child_size, child_minimum, child_natural;
   gint              child_minimum_baseline, child_natural_baseline;
@@ -1768,8 +1768,8 @@ ctk_box_compute_size_for_opposing_orientation (GtkBox *box,
   if (nvis_children <= 0)
     return;
 
-  sizes = g_newa (GtkRequestedSize, nvis_children);
-  memset (sizes, 0, nvis_children * sizeof (GtkRequestedSize));
+  sizes = g_newa (CtkRequestedSize, nvis_children);
+  memset (sizes, 0, nvis_children * sizeof (CtkRequestedSize));
   size = avail_size - (nvis_children - 1) * private->spacing;
 
   /* Retrieve desired size for visible children */
@@ -1790,13 +1790,13 @@ ctk_box_compute_size_for_opposing_orientation (GtkBox *box,
 
 	  /* Assert the api is working properly */
 	  if (sizes[i].minimum_size < 0)
-	    g_error ("GtkBox child %s minimum %s: %d < 0",
+	    g_error ("CtkBox child %s minimum %s: %d < 0",
 		     ctk_widget_get_name (CTK_WIDGET (child->widget)),
 		     (private->orientation == CTK_ORIENTATION_HORIZONTAL) ? "width" : "height",
 		     sizes[i].minimum_size);
 
 	  if (sizes[i].natural_size < sizes[i].minimum_size)
-	    g_error ("GtkBox child %s natural %s: %d < minimum %d",
+	    g_error ("CtkBox child %s natural %s: %d < minimum %d",
 		     ctk_widget_get_name (CTK_WIDGET (child->widget)),
 		     (private->orientation == CTK_ORIENTATION_HORIZONTAL) ? "width" : "height",
 		     sizes[i].natural_size,
@@ -1960,12 +1960,12 @@ ctk_box_compute_size_for_opposing_orientation (GtkBox *box,
 }
 
 static void
-ctk_box_compute_size_for_orientation (GtkBox *box,
+ctk_box_compute_size_for_orientation (CtkBox *box,
 				      gint    avail_size,
 				      gint   *minimum_size,
 				      gint   *natural_size)
 {
-  GtkBoxPrivate    *private = box->priv;
+  CtkBoxPrivate    *private = box->priv;
   GList         *children;
   gint           nvis_children = 0;
   gint           required_size = 0, required_natural = 0, child_size, child_natural;
@@ -1974,7 +1974,7 @@ ctk_box_compute_size_for_orientation (GtkBox *box,
   for (children = private->children; children != NULL;
        children = children->next)
     {
-      GtkBoxChild *child = children->data;
+      CtkBoxChild *child = children->data;
 
       if (_ctk_widget_get_visible (child->widget))
         {
@@ -2023,7 +2023,7 @@ ctk_box_compute_size_for_orientation (GtkBox *box,
 }
 
 static void
-ctk_box_get_preferred_width_for_height (GtkWidget *widget,
+ctk_box_get_preferred_width_for_height (CtkWidget *widget,
                                         gint       height,
                                         gint      *minimum,
                                         gint      *natural)
@@ -2036,7 +2036,7 @@ ctk_box_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_box_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_box_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
 						     gint       width,
 						     gint      *minimum,
 						     gint      *natural,
@@ -2051,8 +2051,8 @@ ctk_box_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_box_get_content_size (GtkCssGadget   *gadget,
-                          GtkOrientation  orientation,
+ctk_box_get_content_size (CtkCssGadget   *gadget,
+                          CtkOrientation  orientation,
                           gint            for_size,
                           gint           *minimum,
                           gint           *natural,
@@ -2060,9 +2060,9 @@ ctk_box_get_content_size (GtkCssGadget   *gadget,
                           gint           *natural_baseline,
                           gpointer        unused)
 {
-  GtkWidget     *widget  = ctk_css_gadget_get_owner (gadget);
-  GtkBox        *box     = CTK_BOX (widget);
-  GtkBoxPrivate *private = box->priv;
+  CtkWidget     *widget  = ctk_css_gadget_get_owner (gadget);
+  CtkBox        *box     = CTK_BOX (widget);
+  CtkBoxPrivate *private = box->priv;
 
   if (for_size < 0)
     ctk_box_get_size (widget, orientation, minimum, natural, minimum_baseline, natural_baseline);
@@ -2082,7 +2082,7 @@ ctk_box_get_content_size (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_box_get_preferred_height_for_width (GtkWidget *widget,
+ctk_box_get_preferred_height_for_width (CtkWidget *widget,
                                         gint       width,
                                         gint      *minimum_height,
                                         gint      *natural_height)
@@ -2091,9 +2091,9 @@ ctk_box_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_box_init (GtkBox *box)
+ctk_box_init (CtkBox *box)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
 
   box->priv = ctk_box_get_instance_private (box);
   private = box->priv;
@@ -2120,8 +2120,8 @@ ctk_box_init (GtkBox *box)
   _ctk_orientable_set_style_classes (CTK_ORIENTABLE (box));
 }
 
-GtkCssGadget *
-ctk_box_get_gadget (GtkBox *box)
+CtkCssGadget *
+ctk_box_get_gadget (CtkBox *box)
 {
   return box->priv->gadget;
 }
@@ -2131,14 +2131,14 @@ ctk_box_get_gadget (GtkBox *box)
  * @orientation: the box’s orientation.
  * @spacing: the number of pixels to place by default between children.
  *
- * Creates a new #GtkBox.
+ * Creates a new #CtkBox.
  *
- * Returns: a new #GtkBox.
+ * Returns: a new #CtkBox.
  *
  * Since: 3.0
  **/
-GtkWidget*
-ctk_box_new (GtkOrientation orientation,
+CtkWidget*
+ctk_box_new (CtkOrientation orientation,
              gint           spacing)
 {
   return g_object_new (CTK_TYPE_BOX,
@@ -2149,19 +2149,19 @@ ctk_box_new (GtkOrientation orientation,
 
 /**
  * ctk_box_pack_start:
- * @box: a #GtkBox
- * @child: the #GtkWidget to be added to @box
+ * @box: a #CtkBox
+ * @child: the #CtkWidget to be added to @box
  * @expand: %TRUE if the new child is to be given extra space allocated
  *     to @box. The extra space will be divided evenly between all children
  *     that use this option
  * @fill: %TRUE if space given to @child by the @expand option is
  *     actually allocated to @child, rather than just padding it.  This
  *     parameter has no effect if @expand is set to %FALSE.  A child is
- *     always allocated the full height of a horizontal #GtkBox and the full width
- *     of a vertical #GtkBox. This option affects the other dimension
+ *     always allocated the full height of a horizontal #CtkBox and the full width
+ *     of a vertical #CtkBox. This option affects the other dimension
  * @padding: extra space in pixels to put between this child and its
  *   neighbors, over and above the global amount specified by
- *   #GtkBox:spacing property.  If @child is a widget at one of the
+ *   #CtkBox:spacing property.  If @child is a widget at one of the
  *   reference ends of @box, then @padding pixels are also put between
  *   @child and the reference edge of @box
  *
@@ -2170,8 +2170,8 @@ ctk_box_new (GtkOrientation orientation,
  * to the start of @box.
  */
 void
-ctk_box_pack_start (GtkBox    *box,
-		    GtkWidget *child,
+ctk_box_pack_start (CtkBox    *box,
+		    CtkWidget *child,
 		    gboolean   expand,
 		    gboolean   fill,
 		    guint      padding)
@@ -2181,19 +2181,19 @@ ctk_box_pack_start (GtkBox    *box,
 
 /**
  * ctk_box_pack_end:
- * @box: a #GtkBox
- * @child: the #GtkWidget to be added to @box
+ * @box: a #CtkBox
+ * @child: the #CtkWidget to be added to @box
  * @expand: %TRUE if the new child is to be given extra space allocated
  *   to @box. The extra space will be divided evenly between all children
  *   of @box that use this option
  * @fill: %TRUE if space given to @child by the @expand option is
  *   actually allocated to @child, rather than just padding it.  This
  *   parameter has no effect if @expand is set to %FALSE.  A child is
- *   always allocated the full height of a horizontal #GtkBox and the full width
- *   of a vertical #GtkBox.  This option affects the other dimension
+ *   always allocated the full height of a horizontal #CtkBox and the full width
+ *   of a vertical #CtkBox.  This option affects the other dimension
  * @padding: extra space in pixels to put between this child and its
  *   neighbors, over and above the global amount specified by
- *   #GtkBox:spacing property.  If @child is a widget at one of the
+ *   #CtkBox:spacing property.  If @child is a widget at one of the
  *   reference ends of @box, then @padding pixels are also put between
  *   @child and the reference edge of @box
  *
@@ -2202,8 +2202,8 @@ ctk_box_pack_start (GtkBox    *box,
  * packed with reference to the end of @box.
  */
 void
-ctk_box_pack_end (GtkBox    *box,
-		  GtkWidget *child,
+ctk_box_pack_end (CtkBox    *box,
+		  CtkWidget *child,
 		  gboolean   expand,
 		  gboolean   fill,
 		  guint      padding)
@@ -2213,19 +2213,19 @@ ctk_box_pack_end (GtkBox    *box,
 
 /**
  * ctk_box_set_homogeneous:
- * @box: a #GtkBox
+ * @box: a #CtkBox
  * @homogeneous: a boolean value, %TRUE to create equal allotments,
  *   %FALSE for variable allotments
  *
- * Sets the #GtkBox:homogeneous property of @box, controlling
+ * Sets the #CtkBox:homogeneous property of @box, controlling
  * whether or not all children of @box are given equal space
  * in the box.
  */
 void
-ctk_box_set_homogeneous (GtkBox  *box,
+ctk_box_set_homogeneous (CtkBox  *box,
 			 gboolean homogeneous)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
 
   g_return_if_fail (CTK_IS_BOX (box));
 
@@ -2243,7 +2243,7 @@ ctk_box_set_homogeneous (GtkBox  *box,
 
 /**
  * ctk_box_get_homogeneous:
- * @box: a #GtkBox
+ * @box: a #CtkBox
  *
  * Returns whether the box is homogeneous (all children are the
  * same size). See ctk_box_set_homogeneous().
@@ -2251,7 +2251,7 @@ ctk_box_set_homogeneous (GtkBox  *box,
  * Returns: %TRUE if the box is homogeneous.
  **/
 gboolean
-ctk_box_get_homogeneous (GtkBox *box)
+ctk_box_get_homogeneous (CtkBox *box)
 {
   g_return_val_if_fail (CTK_IS_BOX (box), FALSE);
 
@@ -2260,17 +2260,17 @@ ctk_box_get_homogeneous (GtkBox *box)
 
 /**
  * ctk_box_set_spacing:
- * @box: a #GtkBox
+ * @box: a #CtkBox
  * @spacing: the number of pixels to put between children
  *
- * Sets the #GtkBox:spacing property of @box, which is the
+ * Sets the #CtkBox:spacing property of @box, which is the
  * number of pixels to place between children of @box.
  */
 void
-ctk_box_set_spacing (GtkBox *box,
+ctk_box_set_spacing (CtkBox *box,
 		     gint    spacing)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
 
   g_return_if_fail (CTK_IS_BOX (box));
 
@@ -2289,14 +2289,14 @@ ctk_box_set_spacing (GtkBox *box,
 
 /**
  * ctk_box_get_spacing:
- * @box: a #GtkBox
+ * @box: a #CtkBox
  *
  * Gets the value set by ctk_box_set_spacing().
  *
  * Returns: spacing between children
  **/
 gint
-ctk_box_get_spacing (GtkBox *box)
+ctk_box_get_spacing (CtkBox *box)
 {
   g_return_val_if_fail (CTK_IS_BOX (box), 0);
 
@@ -2305,8 +2305,8 @@ ctk_box_get_spacing (GtkBox *box)
 
 /**
  * ctk_box_set_baseline_position:
- * @box: a #GtkBox
- * @position: a #GtkBaselinePosition
+ * @box: a #CtkBox
+ * @position: a #CtkBaselinePosition
  *
  * Sets the baseline position of a box. This affects
  * only horizontal boxes with at least one baseline aligned
@@ -2318,10 +2318,10 @@ ctk_box_get_spacing (GtkBox *box)
  * Since: 3.10
  */
 void
-ctk_box_set_baseline_position (GtkBox             *box,
-			       GtkBaselinePosition position)
+ctk_box_set_baseline_position (CtkBox             *box,
+			       CtkBaselinePosition position)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
 
   g_return_if_fail (CTK_IS_BOX (box));
 
@@ -2339,7 +2339,7 @@ ctk_box_set_baseline_position (GtkBox             *box,
 
 /**
  * ctk_box_get_baseline_position:
- * @box: a #GtkBox
+ * @box: a #CtkBox
  *
  * Gets the value set by ctk_box_set_baseline_position().
  *
@@ -2347,8 +2347,8 @@ ctk_box_set_baseline_position (GtkBox             *box,
  *
  * Since: 3.10
  **/
-GtkBaselinePosition
-ctk_box_get_baseline_position (GtkBox *box)
+CtkBaselinePosition
+ctk_box_get_baseline_position (CtkBox *box)
 {
   g_return_val_if_fail (CTK_IS_BOX (box), CTK_BASELINE_POSITION_CENTER);
 
@@ -2357,10 +2357,10 @@ ctk_box_get_baseline_position (GtkBox *box)
 
 
 void
-_ctk_box_set_spacing_set (GtkBox  *box,
+_ctk_box_set_spacing_set (CtkBox  *box,
                           gboolean spacing_set)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
 
   g_return_if_fail (CTK_IS_BOX (box));
 
@@ -2370,9 +2370,9 @@ _ctk_box_set_spacing_set (GtkBox  *box,
 }
 
 gboolean
-_ctk_box_get_spacing_set (GtkBox *box)
+_ctk_box_get_spacing_set (CtkBox *box)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
 
   g_return_val_if_fail (CTK_IS_BOX (box), FALSE);
 
@@ -2383,8 +2383,8 @@ _ctk_box_get_spacing_set (GtkBox *box)
 
 /**
  * ctk_box_reorder_child:
- * @box: a #GtkBox
- * @child: the #GtkWidget to move
+ * @box: a #CtkBox
+ * @child: the #CtkWidget to move
  * @position: the new position for @child in the list of children
  *   of @box, starting from 0. If negative, indicates the end of
  *   the list
@@ -2400,14 +2400,14 @@ _ctk_box_get_spacing_set (GtkBox *box)
  * same packing type that appear earlier in the list.
  */
 void
-ctk_box_reorder_child (GtkBox    *box,
-		       GtkWidget *child,
+ctk_box_reorder_child (CtkBox    *box,
+		       CtkWidget *child,
 		       gint       position)
 {
-  GtkBoxPrivate *priv;
+  CtkBoxPrivate *priv;
   GList *old_link;
   GList *new_link;
-  GtkBoxChild *child_info = NULL;
+  CtkBoxChild *child_info = NULL;
   gint old_position;
 
   g_return_if_fail (CTK_IS_BOX (box));
@@ -2452,8 +2452,8 @@ ctk_box_reorder_child (GtkBox    *box,
 
 /**
  * ctk_box_query_child_packing:
- * @box: a #GtkBox
- * @child: the #GtkWidget of the child to query
+ * @box: a #CtkBox
+ * @child: the #CtkWidget of the child to query
  * @expand: (out): pointer to return location for expand child
  *     property
  * @fill: (out): pointer to return location for fill child
@@ -2466,16 +2466,16 @@ ctk_box_reorder_child (GtkBox    *box,
  * Obtains information about how @child is packed into @box.
  */
 void
-ctk_box_query_child_packing (GtkBox      *box,
-			     GtkWidget   *child,
+ctk_box_query_child_packing (CtkBox      *box,
+			     CtkWidget   *child,
 			     gboolean    *expand,
 			     gboolean    *fill,
 			     guint       *padding,
-			     GtkPackType *pack_type)
+			     CtkPackType *pack_type)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
   GList *list;
-  GtkBoxChild *child_info = NULL;
+  CtkBoxChild *child_info = NULL;
 
   g_return_if_fail (CTK_IS_BOX (box));
   g_return_if_fail (CTK_IS_WIDGET (child));
@@ -2507,8 +2507,8 @@ ctk_box_query_child_packing (GtkBox      *box,
 
 /**
  * ctk_box_set_child_packing:
- * @box: a #GtkBox
- * @child: the #GtkWidget of the child to set
+ * @box: a #CtkBox
+ * @child: the #CtkWidget of the child to set
  * @expand: the new value of the expand child property
  * @fill: the new value of the fill child property
  * @padding: the new value of the padding child property
@@ -2517,16 +2517,16 @@ ctk_box_query_child_packing (GtkBox      *box,
  * Sets the way @child is packed into @box.
  */
 void
-ctk_box_set_child_packing (GtkBox      *box,
-			   GtkWidget   *child,
+ctk_box_set_child_packing (CtkBox      *box,
+			   CtkWidget   *child,
 			   gboolean     expand,
 			   gboolean     fill,
 			   guint        padding,
-			   GtkPackType  pack_type)
+			   CtkPackType  pack_type)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
   GList *list;
-  GtkBoxChild *child_info = NULL;
+  CtkBoxChild *child_info = NULL;
 
   g_return_if_fail (CTK_IS_BOX (box));
   g_return_if_fail (CTK_IS_WIDGET (child));
@@ -2585,9 +2585,9 @@ ctk_box_set_child_packing (GtkBox      *box,
 }
 
 void
-_ctk_box_set_old_defaults (GtkBox *box)
+_ctk_box_set_old_defaults (CtkBox *box)
 {
-  GtkBoxPrivate *private;
+  CtkBoxPrivate *private;
 
   g_return_if_fail (CTK_IS_BOX (box));
 
@@ -2597,10 +2597,10 @@ _ctk_box_set_old_defaults (GtkBox *box)
 }
 
 static void
-ctk_box_add (GtkContainer *container,
-	     GtkWidget    *widget)
+ctk_box_add (CtkContainer *container,
+	     CtkWidget    *widget)
 {
-  GtkBoxPrivate *priv = CTK_BOX (container)->priv;
+  CtkBoxPrivate *priv = CTK_BOX (container)->priv;
 
   ctk_box_pack_start (CTK_BOX (container), widget,
                       priv->default_expand,
@@ -2609,12 +2609,12 @@ ctk_box_add (GtkContainer *container,
 }
 
 static void
-ctk_box_remove (GtkContainer *container,
-		GtkWidget    *widget)
+ctk_box_remove (CtkContainer *container,
+		CtkWidget    *widget)
 {
-  GtkBox *box = CTK_BOX (container);
-  GtkBoxPrivate *priv = box->priv;
-  GtkBoxChild *child;
+  CtkBox *box = CTK_BOX (container);
+  CtkBoxPrivate *priv = box->priv;
+  CtkBoxChild *child;
   GList *children;
 
   children = priv->children;
@@ -2652,14 +2652,14 @@ ctk_box_remove (GtkContainer *container,
 }
 
 static void
-ctk_box_forall (GtkContainer *container,
+ctk_box_forall (CtkContainer *container,
 		gboolean      include_internals,
-		GtkCallback   callback,
+		CtkCallback   callback,
 		gpointer      callback_data)
 {
-  GtkBox *box = CTK_BOX (container);
-  GtkBoxPrivate *priv = box->priv;
-  GtkBoxChild *child;
+  CtkBox *box = CTK_BOX (container);
+  CtkBoxPrivate *priv = box->priv;
+  CtkBoxChild *child;
   GList *children;
 
   children = priv->children;
@@ -2693,10 +2693,10 @@ ctk_box_forall (GtkContainer *container,
 }
 
 GList *
-_ctk_box_get_children (GtkBox *box)
+_ctk_box_get_children (CtkBox *box)
 {
-  GtkBoxPrivate *priv;
-  GtkBoxChild *child;
+  CtkBoxPrivate *priv;
+  CtkBoxChild *child;
   GList *children;
   GList *retval = NULL;
 
@@ -2718,7 +2718,7 @@ _ctk_box_get_children (GtkBox *box)
 
 /**
  * ctk_box_set_center_widget:
- * @box: a #GtkBox
+ * @box: a #CtkBox
  * @widget: (allow-none): the widget to center
  *
  * Sets a center widget; that is a child widget that will be
@@ -2729,11 +2729,11 @@ _ctk_box_get_children (GtkBox *box)
  * Since: 3.12
  */
 void
-ctk_box_set_center_widget (GtkBox    *box,
-                           GtkWidget *widget)
+ctk_box_set_center_widget (CtkBox    *box,
+                           CtkWidget *widget)
 {
-  GtkBoxPrivate *priv = box->priv;
-  GtkWidget *old_center = NULL;
+  CtkBoxPrivate *priv = box->priv;
+  CtkWidget *old_center = NULL;
 
   g_return_if_fail (CTK_IS_BOX (box));
 
@@ -2753,7 +2753,7 @@ ctk_box_set_center_widget (GtkBox    *box,
 
 /**
  * ctk_box_get_center_widget:
- * @box: a #GtkBox
+ * @box: a #CtkBox
  *
  * Retrieves the center widget of the box.
  *
@@ -2762,10 +2762,10 @@ ctk_box_set_center_widget (GtkBox    *box,
  *
  * Since: 3.12
  */
-GtkWidget *
-ctk_box_get_center_widget (GtkBox *box)
+CtkWidget *
+ctk_box_get_center_widget (CtkBox *box)
 {
-  GtkBoxPrivate *priv = box->priv;
+  CtkBoxPrivate *priv = box->priv;
 
   g_return_val_if_fail (CTK_IS_BOX (box), NULL);
 

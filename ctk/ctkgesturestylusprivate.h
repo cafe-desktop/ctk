@@ -22,25 +22,25 @@
 #include "ctkgesturesingleprivate.h"
 #include "ctkgesturestylus.h"
 
-struct _GtkGestureStylus
+struct _CtkGestureStylus
 {
-  GtkGestureSingle parent_instance;
+  CtkGestureSingle parent_instance;
 };
 
-struct _GtkGestureStylusClass
+struct _CtkGestureStylusClass
 {
-  GtkGestureSingleClass parent_class;
+  CtkGestureSingleClass parent_class;
 
-  void (*proximity) (GtkGestureStylus *gesture,
+  void (*proximity) (CtkGestureStylus *gesture,
                      gdouble           x,
                      gdouble           y);
-  void (*down)      (GtkGestureStylus *gesture,
+  void (*down)      (CtkGestureStylus *gesture,
                      gdouble           x,
                      gdouble           y);
-  void (*motion)    (GtkGestureStylus *gesture,
+  void (*motion)    (CtkGestureStylus *gesture,
                      gdouble           x,
                      gdouble           y);
-  void (*up)        (GtkGestureStylus *gesture,
+  void (*up)        (CtkGestureStylus *gesture,
                      gdouble           x,
                      gdouble           y);
 

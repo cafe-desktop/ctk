@@ -363,9 +363,9 @@ msgstr "동작 그룹"
 
 #: ctk/deprecated/ctkaction.c:498
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
-msgstr "이 GtkAction과 연결한 GtkActionGroup, 혹은 NULL (내부적으로 사용)."
+msgstr "이 CtkAction과 연결한 CtkActionGroup, 혹은 NULL (내부적으로 사용)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
@@ -911,8 +911,8 @@ msgid "Style context"
 msgstr "스타일 컨텍스트"
 
 #: ctk/deprecated/ctkstyle.c:472
-msgid "GtkStyleContext to get style from"
-msgstr "스타일을 읽어 올 GtkStyleContext"
+msgid "CtkStyleContext to get style from"
+msgstr "스타일을 읽어 올 CtkStyleContext"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1287,10 +1287,10 @@ msgstr "묶음 유형"
 
 #: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"하위 위젯을 상위 위젯의 시작 혹은 끝을 기준으로 배치할지 나타내는 GtkPackType"
+"하위 위젯을 상위 위젯의 시작 혹은 끝을 기준으로 배치할지 나타내는 CtkPackType"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
@@ -1359,8 +1359,8 @@ msgstr "'기타…' 항목 포함"
 #: ctk/ctkappchooserbutton.c:619
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
-msgstr "콤보 상자에 GtkAppChooserDialog를 실행하는 항목을 넣을지 여부"
+"CtkAppChooserDialog"
+msgstr "콤보 상자에 CtkAppChooserDialog를 실행하는 항목을 넣을지 여부"
 
 #: ctk/ctkappchooserbutton.c:634
 msgid "Show default item"
@@ -1970,9 +1970,9 @@ msgstr "묶음 종류"
 
 #: ctk/ctkcellareabox.c:381
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
-msgstr "셀을 셀 영역의 시작과 끝에 따라 배치할지 나타내는 GtkPackType"
+msgstr "셀을 셀 영역의 시작과 끝에 따라 배치할지 나타내는 CtkPackType"
 
 #: ctk/ctkcellarea.c:790
 msgid "Focus Cell"
@@ -2248,8 +2248,8 @@ msgid "The stock ID of the stock icon to render"
 msgstr "표시할 스톡 아이콘의 스톡 ID"
 
 #: ctk/ctkcellrendererpixbuf.c:211
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "표시할 아이콘 크기를 지정하는 GtkIconSize 값"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "표시할 아이콘 크기를 지정하는 CtkIconSize 값"
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2360,8 +2360,8 @@ msgid "Pulse of the spinner"
 msgstr "스피너의 박자"
 
 #: ctk/ctkcellrendererspinner.c:160
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
-msgstr "표시할 스피너 크기를 지정하는 GtkIconSize 값"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
+msgstr "표시할 스피너 크기를 지정하는 CtkIconSize 값"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2797,16 +2797,16 @@ msgstr "셀 영역"
 
 #: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
-msgid "The GtkCellArea used to layout cells"
-msgstr "셀을 배치할 때 사용할 GtkCellArea"
+msgid "The CtkCellArea used to layout cells"
+msgstr "셀을 배치할 때 사용할 CtkCellArea"
 
 #: ctk/ctkcellview.c:306
 msgid "Cell Area Context"
 msgstr "셀 영역 컨텍스트"
 
 #: ctk/ctkcellview.c:307
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
-msgstr "셀 뷰의 위치와 크기를 계산할 때 사용할 GtkCellAreaContext"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
+msgstr "셀 뷰의 위치와 크기를 계산할 때 사용할 CtkCellAreaContext"
 
 #: ctk/ctkcellview.c:324
 msgid "Draw Sensitive"
@@ -3021,9 +3021,9 @@ msgstr "입력창 텍스트 열"
 #: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
-"콤보 상자가 #GtkComboBox:has-entry = %TRUE 속성으로 만들어졌을 경우, 입력란"
+"콤보 상자가 #CtkComboBox:has-entry = %TRUE 속성으로 만들어졌을 경우, 입력란"
 "의 문자열과 연결될 콤보 상자의 모델의 열."
 
 #: ctk/ctkcombobox.c:1129
@@ -4165,8 +4165,8 @@ msgid "Auto render"
 msgstr "자동 렌더링"
 
 #: ctk/ctkglarea.c:808
-msgid "Whether the GtkGLArea renders on each redraw"
-msgstr "다시 그릴 때마다 GtkGLArea에서 렌더링을 할지 여부"
+msgid "Whether the CtkGLArea renders on each redraw"
+msgstr "다시 그릴 때마다 CtkGLArea에서 렌더링을 할지 여부"
 
 #: ctk/ctkglarea.c:828
 msgid "Has alpha"
@@ -4529,10 +4529,10 @@ msgstr "행 맞춤"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkLabel:xalign for that"
+"CtkLabel:xalign for that"
 msgstr ""
 "레이블의 텍스트 내의 라인들간의 맞춤.  이 등록 정보는 이 레이블의 정렬 상태"
-"에 영향을 미치지 않습니다. 레이블의 정렬 상태에 대해서는 GtkMisc:xalign을 참"
+"에 영향을 미치지 않습니다. 레이블의 정렬 상태에 대해서는 CtkMisc:xalign을 참"
 "고하십시오."
 
 #: ctk/ctklabel.c:877
@@ -5137,8 +5137,8 @@ msgid "Message area"
 msgstr "메시지 영역"
 
 #: ctk/ctkmessagedialog.c:295
-msgid "GtkBox that holds the dialog's primary and secondary labels"
-msgstr "대화 상자의 주요/보조 레이블이 들어 있는 GtkBox"
+msgid "CtkBox that holds the dialog's primary and secondary labels"
+msgstr "대화 상자의 주요/보조 레이블이 들어 있는 CtkBox"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -5876,16 +5876,16 @@ msgid "Default Page Setup"
 msgstr "기본 페이지 설정"
 
 #: ctk/ctkprintoperation.c:1110
-msgid "The GtkPageSetup used by default"
-msgstr "기본으로 사용하는 GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "기본으로 사용하는 CtkPageSetup"
 
 #: ctk/ctkprintoperation.c:1128 ctk/ctkprintunixdialog.c:431
 msgid "Print Settings"
 msgstr "프린터 설정"
 
 #: ctk/ctkprintoperation.c:1129 ctk/ctkprintunixdialog.c:432
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "대화 상자를 초기화할 때 사용하는 GtkPrintSettings"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "대화 상자를 초기화할 때 사용하는 CtkPrintSettings"
 
 #: ctk/ctkprintoperation.c:1147
 msgid "Job Name"
@@ -6004,8 +6004,8 @@ msgid "Embed Page Setup"
 msgstr "페이지 설정 포함"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
-msgstr "참이면 페이지 설정 콤보가 GtkPrintUnixDialog에 포함됩니다"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
+msgstr "참이면 페이지 설정 콤보가 CtkPrintUnixDialog에 포함됩니다"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -6016,16 +6016,16 @@ msgid "The number of pages that will be printed."
 msgstr "인쇄할 페이지의 수."
 
 #: ctk/ctkprintunixdialog.c:414
-msgid "The GtkPageSetup to use"
-msgstr "사용할 GtkPageSetup"
+msgid "The CtkPageSetup to use"
+msgstr "사용할 CtkPageSetup"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
 msgstr "선택한 프린터"
 
 #: ctk/ctkprintunixdialog.c:440
-msgid "The GtkPrinter which is selected"
-msgstr "선택한 GtkPrinter"
+msgid "The CtkPrinter which is selected"
+msgstr "선택한 CtkPrinter"
 
 #: ctk/ctkprintunixdialog.c:447
 msgid "Manual Capabilities"
@@ -6140,8 +6140,8 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "이 단추가 속한 그룹의 라디오 단추."
 
 #: ctk/ctkrange.c:435
-msgid "The GtkAdjustment that contains the current value of this range object"
-msgstr "이 범위 개체의 현재값을 갖고 있는 GtkAdjustment"
+msgid "The CtkAdjustment that contains the current value of this range object"
+msgstr "이 범위 개체의 현재값을 갖고 있는 CtkAdjustment"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
@@ -6390,8 +6390,8 @@ msgstr "아이콘 크기"
 
 #: ctk/ctkscalebutton.c:218
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
-msgstr "이 크기 조정 단추의 현재 값이 들어 있는 GtkAdjustment"
+"The CtkAdjustment that contains the current value of this scale button object"
+msgstr "이 크기 조정 단추의 현재 값이 들어 있는 CtkAdjustment"
 
 #: ctk/ctkscalebutton.c:246
 msgid "Icons"
@@ -6508,16 +6508,16 @@ msgid "Horizontal Adjustment"
 msgstr "가로 조정"
 
 #: ctk/ctkscrolledwindow.c:570
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "가로 위치의 GtkAdjustment"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "가로 위치의 CtkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:576
 msgid "Vertical Adjustment"
 msgstr "세로 조정"
 
 #: ctk/ctkscrolledwindow.c:577
-msgid "The GtkAdjustment for the vertical position"
-msgstr "세로 위치의 GtkAdjustment"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "세로 위치의 CtkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -6999,16 +6999,16 @@ msgid "Default file chooser backend"
 msgstr "기본 파일 선택창 백엔드"
 
 #: ctk/ctksettings.c:990
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "기본적으로 사용할 GtkFileChooser 백엔드의 이름"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "기본적으로 사용할 CtkFileChooser 백엔드의 이름"
 
 #: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "기본 인쇄 백엔드"
 
 #: ctk/ctksettings.c:1008
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "기본적으로 사용할 GtkPrintBackend 백엔드의 목록"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "기본적으로 사용할 CtkPrintBackend 백엔드의 목록"
 
 #: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
@@ -7622,8 +7622,8 @@ msgid "Stack"
 msgstr "스택"
 
 #: ctk/ctkstacksidebar.c:450
-msgid "Associated stack for this GtkStackSidebar"
-msgstr "이 GtkStackSidebar의 연결된 스택"
+msgid "Associated stack for this CtkStackSidebar"
+msgstr "이 CtkStackSidebar의 연결된 스택"
 
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
@@ -7666,8 +7666,8 @@ msgid "Value type"
 msgstr "값 형식"
 
 #: ctk/ctkstyleproperty.c:117
-msgid "The value type returned by GtkStyleContext"
-msgstr "GtkStyleContext에서 리턴한 값 형식"
+msgid "The value type returned by CtkStyleContext"
+msgstr "CtkStyleContext에서 리턴한 값 형식"
 
 #: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
@@ -8535,8 +8535,8 @@ msgid "Fixed Height Mode"
 msgstr "고정 높이 모드"
 
 #: ctk/ctktreeview.c:1108
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
-msgstr "모든 열의 높이가 같다고 가정합니다 - GtkTreeView의 속도를 높입니다"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
+msgstr "모든 열의 높이가 같다고 가정합니다 - CtkTreeView의 속도를 높입니다"
 
 #: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
@@ -9331,8 +9331,8 @@ msgid "Focus in Toplevel"
 msgstr "최상위 위젯의 포커스"
 
 #: ctk/ctkwindow.c:912
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "입력 포커스가 이 GtkWindow에 있는 지의 여부"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "입력 포커스가 이 CtkWindow에 있는 지의 여부"
 
 #: ctk/ctkwindow.c:918
 msgid "Type hint"
@@ -9443,12 +9443,12 @@ msgid "Whether the window is maximized"
 msgstr "창을 최대화할지 여부"
 
 #: ctk/ctkwindow.c:1113
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ctk/ctkwindow.c:1114
-msgid "The GtkApplication for the window"
-msgstr "창의 GtkApplication"
+msgid "The CtkApplication for the window"
+msgstr "창의 CtkApplication"
 
 #: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
@@ -9463,8 +9463,8 @@ msgid "Cloud Print account"
 msgstr "클라우드 인쇄 계정"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
-msgid "GtkCloudprintAccount instance"
-msgstr "GtkCloudprintAccount 인스턴스"
+msgid "CtkCloudprintAccount instance"
+msgstr "CtkCloudprintAccount 인스턴스"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"

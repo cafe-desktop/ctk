@@ -23,8 +23,8 @@
  */
 int main (int argc, char *argv[])
 {
-  GtkWidget *window;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *button;
   GdkDisplay *display;
 
   ctk_parse_args (&argc, &argv);

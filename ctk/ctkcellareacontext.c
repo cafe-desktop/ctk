@@ -21,18 +21,18 @@
 
 /**
  * SECTION:ctkcellareacontext
- * @Short_Description: Stores geometrical information for a series of rows in a GtkCellArea
- * @Title: GtkCellAreaContext
+ * @Short_Description: Stores geometrical information for a series of rows in a CtkCellArea
+ * @Title: CtkCellAreaContext
  *
- * The #GtkCellAreaContext object is created by a given #GtkCellArea
- * implementation via its #GtkCellAreaClass.create_context() virtual
+ * The #CtkCellAreaContext object is created by a given #CtkCellArea
+ * implementation via its #CtkCellAreaClass.create_context() virtual
  * method and is used to store cell sizes and alignments for a series of
- * #GtkTreeModel rows that are requested and rendered in the same context.
+ * #CtkTreeModel rows that are requested and rendered in the same context.
  *
- * #GtkCellLayout widgets can create any number of contexts in which to
+ * #CtkCellLayout widgets can create any number of contexts in which to
  * request and render groups of data rows. However, it’s important that the
- * same context which was used to request sizes for a given #GtkTreeModel
- * row also be used for the same row when calling other #GtkCellArea APIs
+ * same context which was used to request sizes for a given #CtkTreeModel
+ * row also be used for the same row when calling other #CtkCellArea APIs
  * such as ctk_cell_area_render() and ctk_cell_area_event().
  */
 
@@ -53,15 +53,15 @@ static void ctk_cell_area_context_set_property  (GObject            *object,
                                                  const GValue       *value,
                                                  GParamSpec         *pspec);
 
-/* GtkCellAreaContextClass */
-static void ctk_cell_area_context_real_reset    (GtkCellAreaContext *context);
-static void ctk_cell_area_context_real_allocate (GtkCellAreaContext *context,
+/* CtkCellAreaContextClass */
+static void ctk_cell_area_context_real_reset    (CtkCellAreaContext *context);
+static void ctk_cell_area_context_real_allocate (CtkCellAreaContext *context,
                                                  gint                width,
                                                  gint                height);
 
-struct _GtkCellAreaContextPrivate
+struct _CtkCellAreaContextPrivate
 {
-  GtkCellArea *cell_area;
+  CtkCellArea *cell_area;
 
   gint         min_width;
   gint         nat_width;
@@ -80,16 +80,16 @@ enum {
   PROP_NAT_HEIGHT
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellAreaContext, ctk_cell_area_context, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkCellAreaContext, ctk_cell_area_context, G_TYPE_OBJECT)
 
 static void
-ctk_cell_area_context_init (GtkCellAreaContext *context)
+ctk_cell_area_context_init (CtkCellAreaContext *context)
 {
   context->priv = ctk_cell_area_context_get_instance_private (context);
 }
 
 static void
-ctk_cell_area_context_class_init (GtkCellAreaContextClass *class)
+ctk_cell_area_context_class_init (CtkCellAreaContextClass *class)
 {
   GObjectClass     *object_class = G_OBJECT_CLASS (class);
 
@@ -98,14 +98,14 @@ ctk_cell_area_context_class_init (GtkCellAreaContextClass *class)
   object_class->get_property = ctk_cell_area_context_get_property;
   object_class->set_property = ctk_cell_area_context_set_property;
 
-  /* GtkCellAreaContextClass */
+  /* CtkCellAreaContextClass */
   class->reset    = ctk_cell_area_context_real_reset;
   class->allocate = ctk_cell_area_context_real_allocate;
 
   /**
-   * GtkCellAreaContext:area:
+   * CtkCellAreaContext:area:
    *
-   * The #GtkCellArea this context was created by
+   * The #CtkCellArea this context was created by
    *
    * Since: 3.0
    */
@@ -118,10 +118,10 @@ ctk_cell_area_context_class_init (GtkCellAreaContextClass *class)
                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   /**
-   * GtkCellAreaContext:minimum-width:
+   * CtkCellAreaContext:minimum-width:
    *
-   * The minimum width for the #GtkCellArea in this context
-   * for all #GtkTreeModel rows that this context was requested
+   * The minimum width for the #CtkCellArea in this context
+   * for all #CtkTreeModel rows that this context was requested
    * for using ctk_cell_area_get_preferred_width().
    *
    * Since: 3.0
@@ -137,10 +137,10 @@ ctk_cell_area_context_class_init (GtkCellAreaContextClass *class)
                                                      G_PARAM_READABLE));
 
   /**
-   * GtkCellAreaContext:natural-width:
+   * CtkCellAreaContext:natural-width:
    *
-   * The natural width for the #GtkCellArea in this context
-   * for all #GtkTreeModel rows that this context was requested
+   * The natural width for the #CtkCellArea in this context
+   * for all #CtkTreeModel rows that this context was requested
    * for using ctk_cell_area_get_preferred_width().
    *
    * Since: 3.0
@@ -156,10 +156,10 @@ ctk_cell_area_context_class_init (GtkCellAreaContextClass *class)
                                                      G_PARAM_READABLE));
 
   /**
-   * GtkCellAreaContext:minimum-height:
+   * CtkCellAreaContext:minimum-height:
    *
-   * The minimum height for the #GtkCellArea in this context
-   * for all #GtkTreeModel rows that this context was requested
+   * The minimum height for the #CtkCellArea in this context
+   * for all #CtkTreeModel rows that this context was requested
    * for using ctk_cell_area_get_preferred_height().
    *
    * Since: 3.0
@@ -175,10 +175,10 @@ ctk_cell_area_context_class_init (GtkCellAreaContextClass *class)
                                                      G_PARAM_READABLE));
 
   /**
-   * GtkCellAreaContext:natural-height:
+   * CtkCellAreaContext:natural-height:
    *
-   * The natural height for the #GtkCellArea in this context
-   * for all #GtkTreeModel rows that this context was requested
+   * The natural height for the #CtkCellArea in this context
+   * for all #CtkTreeModel rows that this context was requested
    * for using ctk_cell_area_get_preferred_height().
    *
    * Since: 3.0
@@ -200,8 +200,8 @@ ctk_cell_area_context_class_init (GtkCellAreaContextClass *class)
 static void
 ctk_cell_area_context_dispose (GObject *object)
 {
-  GtkCellAreaContext        *context = CTK_CELL_AREA_CONTEXT (object);
-  GtkCellAreaContextPrivate *priv = context->priv;
+  CtkCellAreaContext        *context = CTK_CELL_AREA_CONTEXT (object);
+  CtkCellAreaContextPrivate *priv = context->priv;
 
   if (priv->cell_area)
     {
@@ -219,8 +219,8 @@ ctk_cell_area_context_set_property (GObject      *object,
                                     const GValue *value,
                                     GParamSpec   *pspec)
 {
-  GtkCellAreaContext        *context = CTK_CELL_AREA_CONTEXT (object);
-  GtkCellAreaContextPrivate *priv = context->priv;
+  CtkCellAreaContext        *context = CTK_CELL_AREA_CONTEXT (object);
+  CtkCellAreaContextPrivate *priv = context->priv;
 
   switch (prop_id)
     {
@@ -239,8 +239,8 @@ ctk_cell_area_context_get_property (GObject     *object,
                                     GValue      *value,
                                     GParamSpec  *pspec)
 {
-  GtkCellAreaContext        *context = CTK_CELL_AREA_CONTEXT (object);
-  GtkCellAreaContextPrivate *priv = context->priv;
+  CtkCellAreaContext        *context = CTK_CELL_AREA_CONTEXT (object);
+  CtkCellAreaContextPrivate *priv = context->priv;
 
   switch (prop_id)
     {
@@ -266,12 +266,12 @@ ctk_cell_area_context_get_property (GObject     *object,
 }
 
 /*************************************************************
- *                    GtkCellAreaContextClass                *
+ *                    CtkCellAreaContextClass                *
  *************************************************************/
 static void
-ctk_cell_area_context_real_reset (GtkCellAreaContext *context)
+ctk_cell_area_context_real_reset (CtkCellAreaContext *context)
 {
-  GtkCellAreaContextPrivate *priv = context->priv;
+  CtkCellAreaContextPrivate *priv = context->priv;
 
   g_object_freeze_notify (G_OBJECT (context));
 
@@ -306,11 +306,11 @@ ctk_cell_area_context_real_reset (GtkCellAreaContext *context)
 }
 
 static void
-ctk_cell_area_context_real_allocate (GtkCellAreaContext *context,
+ctk_cell_area_context_real_allocate (CtkCellAreaContext *context,
                                      gint                width,
                                      gint                height)
 {
-  GtkCellAreaContextPrivate *priv = context->priv;
+  CtkCellAreaContextPrivate *priv = context->priv;
 
   priv->alloc_width  = width;
   priv->alloc_height = height;
@@ -321,27 +321,27 @@ ctk_cell_area_context_real_allocate (GtkCellAreaContext *context,
  *************************************************************/
 /**
  * ctk_cell_area_context_get_area:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  *
- * Fetches the #GtkCellArea this @context was created by.
+ * Fetches the #CtkCellArea this @context was created by.
  *
  * This is generally unneeded by layouting widgets; however,
  * it is important for the context implementation itself to
  * fetch information about the area it is being used for.
  *
- * For instance at #GtkCellAreaContextClass.allocate() time
+ * For instance at #CtkCellAreaContextClass.allocate() time
  * it’s important to know details about any cell spacing
- * that the #GtkCellArea is configured with in order to
+ * that the #CtkCellArea is configured with in order to
  * compute a proper allocation.
  *
- * Returns: (transfer none): the #GtkCellArea this context was created by.
+ * Returns: (transfer none): the #CtkCellArea this context was created by.
  *
  * Since: 3.0
  */
-GtkCellArea *
-ctk_cell_area_context_get_area (GtkCellAreaContext *context)
+CtkCellArea *
+ctk_cell_area_context_get_area (CtkCellAreaContext *context)
 {
-  GtkCellAreaContextPrivate *priv;
+  CtkCellAreaContextPrivate *priv;
 
   g_return_val_if_fail (CTK_IS_CELL_AREA_CONTEXT (context), NULL);
 
@@ -352,12 +352,12 @@ ctk_cell_area_context_get_area (GtkCellAreaContext *context)
 
 /**
  * ctk_cell_area_context_reset:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  *
  * Resets any previously cached request and allocation
  * data.
  *
- * When underlying #GtkTreeModel data changes its
+ * When underlying #CtkTreeModel data changes its
  * important to reset the context if the content
  * size is allowed to shrink. If the content size
  * is only allowed to grow (this is usually an option
@@ -380,7 +380,7 @@ ctk_cell_area_context_get_area (GtkCellAreaContext *context)
  * Since 3.0
  */
 void
-ctk_cell_area_context_reset (GtkCellAreaContext *context)
+ctk_cell_area_context_reset (CtkCellAreaContext *context)
 {
   g_return_if_fail (CTK_IS_CELL_AREA_CONTEXT (context));
 
@@ -389,10 +389,10 @@ ctk_cell_area_context_reset (GtkCellAreaContext *context)
 
 /**
  * ctk_cell_area_context_allocate:
- * @context: a #GtkCellAreaContext
- * @width: the allocated width for all #GtkTreeModel rows rendered
+ * @context: a #CtkCellAreaContext
+ * @width: the allocated width for all #CtkTreeModel rows rendered
  *     with @context, or -1.
- * @height: the allocated height for all #GtkTreeModel rows rendered
+ * @height: the allocated height for all #CtkTreeModel rows rendered
  *     with @context, or -1.
  *
  * Allocates a width and/or a height for all rows which are to be
@@ -403,13 +403,13 @@ ctk_cell_area_context_reset (GtkCellAreaContext *context)
  * side vertically or horizontally and share either the same width
  * or the same height. Sometimes they are allocated in both horizontal
  * and vertical orientations producing a homogeneous effect of the
- * rows. This is generally the case for #GtkTreeView when
- * #GtkTreeView:fixed-height-mode is enabled.
+ * rows. This is generally the case for #CtkTreeView when
+ * #CtkTreeView:fixed-height-mode is enabled.
  *
  * Since 3.0
  */
 void
-ctk_cell_area_context_allocate (GtkCellAreaContext *context,
+ctk_cell_area_context_allocate (CtkCellAreaContext *context,
                                 gint                width,
                                 gint                height)
 {
@@ -420,7 +420,7 @@ ctk_cell_area_context_allocate (GtkCellAreaContext *context,
 
 /**
  * ctk_cell_area_context_get_preferred_width:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  * @minimum_width: (out) (allow-none): location to store the minimum width,
  *     or %NULL
  * @natural_width: (out) (allow-none): location to store the natural width,
@@ -430,16 +430,16 @@ ctk_cell_area_context_allocate (GtkCellAreaContext *context,
  * requested with this context.
  *
  * After ctk_cell_area_context_reset() is called and/or before ever
- * requesting the size of a #GtkCellArea, the returned values are 0.
+ * requesting the size of a #CtkCellArea, the returned values are 0.
  *
  * Since: 3.0
  */
 void
-ctk_cell_area_context_get_preferred_width (GtkCellAreaContext *context,
+ctk_cell_area_context_get_preferred_width (CtkCellAreaContext *context,
                                            gint               *minimum_width,
                                            gint               *natural_width)
 {
-  GtkCellAreaContextPrivate *priv;
+  CtkCellAreaContextPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_AREA_CONTEXT (context));
 
@@ -454,7 +454,7 @@ ctk_cell_area_context_get_preferred_width (GtkCellAreaContext *context,
 
 /**
  * ctk_cell_area_context_get_preferred_height:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  * @minimum_height: (out) (allow-none): location to store the minimum height,
  *     or %NULL
  * @natural_height: (out) (allow-none): location to store the natural height,
@@ -464,16 +464,16 @@ ctk_cell_area_context_get_preferred_width (GtkCellAreaContext *context,
  * requested with this context.
  *
  * After ctk_cell_area_context_reset() is called and/or before ever
- * requesting the size of a #GtkCellArea, the returned values are 0.
+ * requesting the size of a #CtkCellArea, the returned values are 0.
  *
  * Since: 3.0
  */
 void
-ctk_cell_area_context_get_preferred_height (GtkCellAreaContext *context,
+ctk_cell_area_context_get_preferred_height (CtkCellAreaContext *context,
                                             gint               *minimum_height,
                                             gint               *natural_height)
 {
-  GtkCellAreaContextPrivate *priv;
+  CtkCellAreaContextPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_AREA_CONTEXT (context));
 
@@ -488,7 +488,7 @@ ctk_cell_area_context_get_preferred_height (GtkCellAreaContext *context,
 
 /**
  * ctk_cell_area_context_get_preferred_height_for_width:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  * @width: a proposed width for allocation
  * @minimum_height: (out) (allow-none): location to store the minimum height,
  *     or %NULL
@@ -499,12 +499,12 @@ ctk_cell_area_context_get_preferred_height (GtkCellAreaContext *context,
  * which have been requested for the same said @width with this context.
  *
  * After ctk_cell_area_context_reset() is called and/or before ever
- * requesting the size of a #GtkCellArea, the returned values are -1.
+ * requesting the size of a #CtkCellArea, the returned values are -1.
  *
  * Since: 3.0
  */
 void
-ctk_cell_area_context_get_preferred_height_for_width (GtkCellAreaContext *context,
+ctk_cell_area_context_get_preferred_height_for_width (CtkCellAreaContext *context,
                                                       gint                width,
                                                       gint               *minimum_height,
                                                       gint               *natural_height)
@@ -520,7 +520,7 @@ ctk_cell_area_context_get_preferred_height_for_width (GtkCellAreaContext *contex
 
 /**
  * ctk_cell_area_context_get_preferred_width_for_height:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  * @height: a proposed height for allocation
  * @minimum_width: (out) (allow-none): location to store the minimum width,
  *     or %NULL
@@ -531,12 +531,12 @@ ctk_cell_area_context_get_preferred_height_for_width (GtkCellAreaContext *contex
  * have been requested for the same said @height with this context.
  *
  * After ctk_cell_area_context_reset() is called and/or before ever
- * requesting the size of a #GtkCellArea, the returned values are -1.
+ * requesting the size of a #CtkCellArea, the returned values are -1.
  *
  * Since: 3.0
  */
 void
-ctk_cell_area_context_get_preferred_width_for_height (GtkCellAreaContext *context,
+ctk_cell_area_context_get_preferred_width_for_height (CtkCellAreaContext *context,
                                                       gint                height,
                                                       gint               *minimum_width,
                                                       gint               *natural_width)
@@ -552,7 +552,7 @@ ctk_cell_area_context_get_preferred_width_for_height (GtkCellAreaContext *contex
 
 /**
  * ctk_cell_area_context_get_allocation:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  * @width: (out) (allow-none): location to store the allocated width, or %NULL
  * @height: (out) (allow-none): location to store the allocated height, or %NULL
  *
@@ -565,11 +565,11 @@ ctk_cell_area_context_get_preferred_width_for_height (GtkCellAreaContext *contex
  * Since: 3.0
  */
 void
-ctk_cell_area_context_get_allocation (GtkCellAreaContext *context,
+ctk_cell_area_context_get_allocation (CtkCellAreaContext *context,
                                       gint               *width,
                                       gint               *height)
 {
-  GtkCellAreaContextPrivate *priv;
+  CtkCellAreaContextPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_AREA_CONTEXT (context));
 
@@ -584,26 +584,26 @@ ctk_cell_area_context_get_allocation (GtkCellAreaContext *context,
 
 /**
  * ctk_cell_area_context_push_preferred_width:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  * @minimum_width: the proposed new minimum width for @context
  * @natural_width: the proposed new natural width for @context
  *
  * Causes the minimum and/or natural width to grow if the new
  * proposed sizes exceed the current minimum and natural width.
  *
- * This is used by #GtkCellAreaContext implementations during
- * the request process over a series of #GtkTreeModel rows to
+ * This is used by #CtkCellAreaContext implementations during
+ * the request process over a series of #CtkTreeModel rows to
  * progressively push the requested width over a series of
  * ctk_cell_area_get_preferred_width() requests.
  *
  * Since: 3.0
  */
 void
-ctk_cell_area_context_push_preferred_width (GtkCellAreaContext *context,
+ctk_cell_area_context_push_preferred_width (CtkCellAreaContext *context,
                                             gint                minimum_width,
                                             gint                natural_width)
 {
-  GtkCellAreaContextPrivate *priv;
+  CtkCellAreaContextPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_AREA_CONTEXT (context));
 
@@ -630,26 +630,26 @@ ctk_cell_area_context_push_preferred_width (GtkCellAreaContext *context,
 
 /**
  * ctk_cell_area_context_push_preferred_height:
- * @context: a #GtkCellAreaContext
+ * @context: a #CtkCellAreaContext
  * @minimum_height: the proposed new minimum height for @context
  * @natural_height: the proposed new natural height for @context
  *
  * Causes the minimum and/or natural height to grow if the new
  * proposed sizes exceed the current minimum and natural height.
  *
- * This is used by #GtkCellAreaContext implementations during
- * the request process over a series of #GtkTreeModel rows to
+ * This is used by #CtkCellAreaContext implementations during
+ * the request process over a series of #CtkTreeModel rows to
  * progressively push the requested height over a series of
  * ctk_cell_area_get_preferred_height() requests.
  *
  * Since: 3.0
  */
 void
-ctk_cell_area_context_push_preferred_height (GtkCellAreaContext *context,
+ctk_cell_area_context_push_preferred_height (CtkCellAreaContext *context,
                                              gint                minimum_height,
                                              gint                natural_height)
 {
-  GtkCellAreaContextPrivate *priv;
+  CtkCellAreaContextPrivate *priv;
 
   g_return_if_fail (CTK_IS_CELL_AREA_CONTEXT (context));
 

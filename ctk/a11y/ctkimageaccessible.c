@@ -23,7 +23,7 @@
 #include "ctktoolbarprivate.h"
 #include "ctkintl.h"
 
-struct _GtkImageAccessiblePrivate
+struct _CtkImageAccessiblePrivate
 {
   gchar *image_description;
   gchar *stock_name;
@@ -31,8 +31,8 @@ struct _GtkImageAccessiblePrivate
 
 static void atk_image_interface_init (AtkImageIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkImageAccessible, ctk_image_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
-                         G_ADD_PRIVATE (GtkImageAccessible)
+G_DEFINE_TYPE_WITH_CODE (CtkImageAccessible, ctk_image_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
+                         G_ADD_PRIVATE (CtkImageAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_IMAGE, atk_image_interface_init))
 
 static void
@@ -157,7 +157,7 @@ name_from_icon_name (const gchar *icon_name)
 static void
 ctk_image_accessible_finalize (GObject *object)
 {
-  GtkImageAccessible *aimage = CTK_IMAGE_ACCESSIBLE (object);
+  CtkImageAccessible *aimage = CTK_IMAGE_ACCESSIBLE (object);
 
   g_free (aimage->priv->image_description);
   g_free (aimage->priv->stock_name);
@@ -168,13 +168,13 @@ ctk_image_accessible_finalize (GObject *object)
 static const gchar *
 ctk_image_accessible_get_name (AtkObject *accessible)
 {
-  GtkWidget* widget;
-  GtkImage *image;
-  GtkImageAccessible *image_accessible;
-  GtkStockItem stock_item;
+  CtkWidget* widget;
+  CtkImage *image;
+  CtkImageAccessible *image_accessible;
+  CtkStockItem stock_item;
   gchar *stock_id;
   const gchar *name;
-  GtkImageType storage_type;
+  CtkImageType storage_type;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
@@ -230,7 +230,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
-ctk_image_accessible_class_init (GtkImageAccessibleClass *klass)
+ctk_image_accessible_class_init (CtkImageAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass  *class = ATK_OBJECT_CLASS (klass);
@@ -241,7 +241,7 @@ ctk_image_accessible_class_init (GtkImageAccessibleClass *klass)
 }
 
 static void
-ctk_image_accessible_init (GtkImageAccessible *image)
+ctk_image_accessible_init (CtkImageAccessible *image)
 {
   image->priv = ctk_image_accessible_get_instance_private (image);
 }
@@ -249,7 +249,7 @@ ctk_image_accessible_init (GtkImageAccessible *image)
 static const gchar *
 ctk_image_accessible_get_image_description (AtkImage *image)
 {
-  GtkImageAccessible *accessible = CTK_IMAGE_ACCESSIBLE (image);
+  CtkImageAccessible *accessible = CTK_IMAGE_ACCESSIBLE (image);
 
   return accessible->priv->image_description;
 }
@@ -269,9 +269,9 @@ ctk_image_accessible_get_image_size (AtkImage *image,
                                      gint     *width,
                                      gint     *height)
 {
-  GtkWidget* widget;
-  GtkImage *ctk_image;
-  GtkImageType image_type;
+  CtkWidget* widget;
+  CtkImage *ctk_image;
+  CtkImageType image_type;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
   if (widget == NULL)
@@ -300,7 +300,7 @@ ctk_image_accessible_get_image_size (AtkImage *image,
     case CTK_IMAGE_ICON_NAME:
     case CTK_IMAGE_GICON:
       {
-        GtkIconSize size;
+        CtkIconSize size;
 
         g_object_get (ctk_image, "icon-size", &size, NULL);
         ctk_icon_size_lookup (size, width, height);
@@ -328,7 +328,7 @@ static gboolean
 ctk_image_accessible_set_image_description (AtkImage    *image,
                                             const gchar *description)
 {
-  GtkImageAccessible* accessible = CTK_IMAGE_ACCESSIBLE (image);
+  CtkImageAccessible* accessible = CTK_IMAGE_ACCESSIBLE (image);
 
   g_free (accessible->priv->image_description);
   accessible->priv->image_description = g_strdup (description);

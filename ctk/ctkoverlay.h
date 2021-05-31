@@ -30,38 +30,38 @@
 G_BEGIN_DECLS
 
 #define CTK_TYPE_OVERLAY             (ctk_overlay_get_type ())
-#define CTK_OVERLAY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_OVERLAY, GtkOverlay))
-#define CTK_OVERLAY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_OVERLAY, GtkOverlayClass))
+#define CTK_OVERLAY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_OVERLAY, CtkOverlay))
+#define CTK_OVERLAY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_OVERLAY, CtkOverlayClass))
 #define CTK_IS_OVERLAY(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_OVERLAY))
 #define CTK_IS_OVERLAY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_OVERLAY))
-#define CTK_OVERLAY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_OVERLAY, GtkOverlayClass))
+#define CTK_OVERLAY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_OVERLAY, CtkOverlayClass))
 
-typedef struct _GtkOverlay         GtkOverlay;
-typedef struct _GtkOverlayClass    GtkOverlayClass;
-typedef struct _GtkOverlayPrivate  GtkOverlayPrivate;
+typedef struct _CtkOverlay         CtkOverlay;
+typedef struct _CtkOverlayClass    CtkOverlayClass;
+typedef struct _CtkOverlayPrivate  CtkOverlayPrivate;
 
-struct _GtkOverlay
+struct _CtkOverlay
 {
-  GtkBin parent;
+  CtkBin parent;
 
-  GtkOverlayPrivate *priv;
+  CtkOverlayPrivate *priv;
 };
 
 /**
- * GtkOverlayClass:
+ * CtkOverlayClass:
  * @parent_class: The parent class.
  * @get_child_position: Signal emitted to determine the position and
  *    size of any overlay child widgets.
  */
-struct _GtkOverlayClass
+struct _CtkOverlayClass
 {
-  GtkBinClass parent_class;
+  CtkBinClass parent_class;
 
   /*< public >*/
 
-  gboolean (*get_child_position) (GtkOverlay    *overlay,
-                                  GtkWidget     *widget,
-                                  GtkAllocation *allocation);
+  gboolean (*get_child_position) (CtkOverlay    *overlay,
+                                  CtkWidget     *widget,
+                                  CtkAllocation *allocation);
 
   /*< private >*/
 
@@ -79,20 +79,20 @@ struct _GtkOverlayClass
 GDK_AVAILABLE_IN_3_2
 GType      ctk_overlay_get_type    (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_2
-GtkWidget *ctk_overlay_new         (void);
+CtkWidget *ctk_overlay_new         (void);
 GDK_AVAILABLE_IN_3_2
-void       ctk_overlay_add_overlay (GtkOverlay *overlay,
-                                    GtkWidget  *widget);
+void       ctk_overlay_add_overlay (CtkOverlay *overlay,
+                                    CtkWidget  *widget);
 GDK_AVAILABLE_IN_3_18
-void       ctk_overlay_reorder_overlay (GtkOverlay *overlay,
-                                        GtkWidget  *child,
+void       ctk_overlay_reorder_overlay (CtkOverlay *overlay,
+                                        CtkWidget  *child,
                                         int         index_);
 GDK_AVAILABLE_IN_3_18
-gboolean   ctk_overlay_get_overlay_pass_through (GtkOverlay *overlay,
-						 GtkWidget  *widget);
+gboolean   ctk_overlay_get_overlay_pass_through (CtkOverlay *overlay,
+						 CtkWidget  *widget);
 GDK_AVAILABLE_IN_3_18
-void       ctk_overlay_set_overlay_pass_through (GtkOverlay *overlay,
-						 GtkWidget  *widget,
+void       ctk_overlay_set_overlay_pass_through (CtkOverlay *overlay,
+						 CtkWidget  *widget,
 						 gboolean    pass_through);
 
 G_END_DECLS

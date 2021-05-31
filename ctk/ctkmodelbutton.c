@@ -44,61 +44,61 @@
 /**
  * SECTION:ctkmodelbutton
  * @Short_description: A button that uses a GAction as model
- * @Title: GtkModelButton
+ * @Title: CtkModelButton
  *
- * GtkModelButton is a button class that can use a #GAction as its model.
- * In contrast to #GtkToggleButton or #GtkRadioButton, which can also
- * be backed by a #GAction via the #GtkActionable:action-name property,
- * GtkModelButton will adapt its appearance according to the kind of
+ * CtkModelButton is a button class that can use a #GAction as its model.
+ * In contrast to #CtkToggleButton or #CtkRadioButton, which can also
+ * be backed by a #GAction via the #CtkActionable:action-name property,
+ * CtkModelButton will adapt its appearance according to the kind of
  * action it is backed by, and appear either as a plain, check or
  * radio button.
  *
  * Model buttons are used when popovers from a menu model with
  * ctk_popover_new_from_model(); they can also be used manually in
- * a #GtkPopoverMenu.
+ * a #CtkPopoverMenu.
  *
- * When the action is specified via the #GtkActionable:action-name
- * and #GtkActionable:action-target properties, the role of the button
+ * When the action is specified via the #CtkActionable:action-name
+ * and #CtkActionable:action-target properties, the role of the button
  * (i.e. whether it is a plain, check or radio button) is determined by
  * the type of the action and doesn't have to be explicitly specified
- * with the #GtkModelButton:role property.
+ * with the #CtkModelButton:role property.
  *
- * The content of the button is specified by the #GtkModelButton:text
- * and #GtkModelButton:icon properties.
+ * The content of the button is specified by the #CtkModelButton:text
+ * and #CtkModelButton:icon properties.
  *
  * The appearance of model buttons can be influenced with the
- * #GtkModelButton:centered and #GtkModelButton:iconic properties.
+ * #CtkModelButton:centered and #CtkModelButton:iconic properties.
  *
- * Model buttons have built-in support for submenus in #GtkPopoverMenu.
- * To make a GtkModelButton that opens a submenu when activated, set
- * the #GtkModelButton:menu-name property. To make a button that goes
- * back to the parent menu, you should set the #GtkModelButton:inverted
+ * Model buttons have built-in support for submenus in #CtkPopoverMenu.
+ * To make a CtkModelButton that opens a submenu when activated, set
+ * the #CtkModelButton:menu-name property. To make a button that goes
+ * back to the parent menu, you should set the #CtkModelButton:inverted
  * property to place the submenu indicator at the opposite side.
  *
  * # Example
  *
  * |[
- * <object class="GtkPopoverMenu">
+ * <object class="CtkPopoverMenu">
  *   <child>
- *     <object class="GtkBox">
+ *     <object class="CtkBox">
  *       <property name="visible">True</property>
  *       <property name="margin">10</property>
  *       <child>
- *         <object class="GtkModelButton">
+ *         <object class="CtkModelButton">
  *           <property name="visible">True</property>
  *           <property name="action-name">view.cut</property>
  *           <property name="text" translatable="yes">Cut</property>
  *         </object>
  *       </child>
  *       <child>
- *         <object class="GtkModelButton">
+ *         <object class="CtkModelButton">
  *           <property name="visible">True</property>
  *           <property name="action-name">view.copy</property>
  *           <property name="text" translatable="yes">Copy</property>
  *         </object>
  *       </child>
  *       <child>
- *         <object class="GtkModelButton">
+ *         <object class="CtkModelButton">
  *           <property name="visible">True</property>
  *           <property name="action-name">view.paste</property>
  *           <property name="text" translatable="yes">Paste</property>
@@ -129,7 +129,7 @@
  * ╰── arrow
  * ]|
  *
- * GtkModelButton has a main CSS node with name modelbutton, and a subnode,
+ * CtkModelButton has a main CSS node with name modelbutton, and a subnode,
  * which will have the name check, radio or arrow, depending on the role
  * of the button and whether it has a menu name set.
  *
@@ -142,31 +142,31 @@
  * ╰── check
  * ]|
  *
- * Iconic model buttons (see #GtkModelButton:iconic) change the name of
+ * Iconic model buttons (see #CtkModelButton:iconic) change the name of
  * their main node to button and add a .model style class to it. The indicator
  * subnode is invisible in this case.
  */
 
-struct _GtkModelButton
+struct _CtkModelButton
 {
-  GtkButton parent_instance;
+  CtkButton parent_instance;
 
-  GtkWidget *box;
-  GtkWidget *image;
-  GtkWidget *label;
-  GtkCssGadget *gadget;
-  GtkCssGadget *indicator_gadget;
+  CtkWidget *box;
+  CtkWidget *image;
+  CtkWidget *label;
+  CtkCssGadget *gadget;
+  CtkCssGadget *indicator_gadget;
   gboolean active;
   gboolean centered;
   gboolean inverted;
   gboolean iconic;
   gchar *menu_name;
-  GtkButtonRole role;
+  CtkButtonRole role;
 };
 
-typedef GtkButtonClass GtkModelButtonClass;
+typedef CtkButtonClass CtkModelButtonClass;
 
-G_DEFINE_TYPE (GtkModelButton, ctk_model_button, CTK_TYPE_BUTTON)
+G_DEFINE_TYPE (CtkModelButton, ctk_model_button, CTK_TYPE_BUTTON)
 
 enum
 {
@@ -186,20 +186,20 @@ enum
 static GParamSpec *properties[LAST_PROPERTY] = { NULL, };
 
 static gboolean
-indicator_is_left (GtkWidget *widget)
+indicator_is_left (CtkWidget *widget)
 {
-  GtkModelButton *button = CTK_MODEL_BUTTON (widget);
+  CtkModelButton *button = CTK_MODEL_BUTTON (widget);
 
   return ((ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL && !button->inverted) ||
           (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_LTR && button->inverted));
 }
 
 static void
-ctk_model_button_update_state (GtkModelButton *button)
+ctk_model_button_update_state (CtkModelButton *button)
 {
-  GtkStateFlags state;
-  GtkStateFlags indicator_state;
-  GtkCssImageBuiltinType image_type = CTK_CSS_IMAGE_BUILTIN_NONE;
+  CtkStateFlags state;
+  CtkStateFlags indicator_state;
+  CtkCssImageBuiltinType image_type = CTK_CSS_IMAGE_BUILTIN_NONE;
 
   state = ctk_widget_get_state_flags (CTK_WIDGET (button));
   indicator_state = state;
@@ -259,9 +259,9 @@ ctk_model_button_update_state (GtkModelButton *button)
 }
 
 static void
-update_node_ordering (GtkModelButton *button)
+update_node_ordering (CtkModelButton *button)
 {
-  GtkCssNode *widget_node, *indicator_node, *node;
+  CtkCssNode *widget_node, *indicator_node, *node;
 
   widget_node = ctk_widget_get_css_node (CTK_WIDGET (button));
   indicator_node = ctk_css_gadget_get_node (button->indicator_gadget);
@@ -287,8 +287,8 @@ update_node_ordering (GtkModelButton *button)
 }
 
 static void
-ctk_model_button_state_flags_changed (GtkWidget     *widget,
-                                      GtkStateFlags  previous_flags)
+ctk_model_button_state_flags_changed (CtkWidget     *widget,
+                                      CtkStateFlags  previous_flags)
 {
   ctk_model_button_update_state (CTK_MODEL_BUTTON (widget));
 
@@ -296,10 +296,10 @@ ctk_model_button_state_flags_changed (GtkWidget     *widget,
 }
 
 static void
-ctk_model_button_direction_changed (GtkWidget        *widget,
-                                    GtkTextDirection  previous_dir)
+ctk_model_button_direction_changed (CtkWidget        *widget,
+                                    CtkTextDirection  previous_dir)
 {
-  GtkModelButton *button = CTK_MODEL_BUTTON (widget);
+  CtkModelButton *button = CTK_MODEL_BUTTON (widget);
 
   ctk_model_button_update_state (button);
   update_node_ordering (button);
@@ -308,13 +308,13 @@ ctk_model_button_direction_changed (GtkWidget        *widget,
 }
 
 static void
-update_node_name (GtkModelButton *button)
+update_node_name (CtkModelButton *button)
 {
   AtkObject *accessible;
   AtkRole a11y_role;
   const gchar *indicator_name;
   gboolean indicator_visible;
-  GtkCssNode *indicator_node;
+  CtkCssNode *indicator_node;
 
   accessible = ctk_widget_get_accessible (CTK_WIDGET (button));
   switch (button->role)
@@ -360,8 +360,8 @@ update_node_name (GtkModelButton *button)
 }
 
 static void
-ctk_model_button_set_role (GtkModelButton *button,
-                           GtkButtonRole   role)
+ctk_model_button_set_role (CtkModelButton *button,
+                           CtkButtonRole   role)
 {
   if (role == button->role)
     return;
@@ -376,7 +376,7 @@ ctk_model_button_set_role (GtkModelButton *button,
 }
 
 static void
-update_visibility (GtkModelButton *button)
+update_visibility (CtkModelButton *button)
 {
   gboolean has_icon;
   gboolean has_text;
@@ -389,7 +389,7 @@ update_visibility (GtkModelButton *button)
 }
 
 static void
-ctk_model_button_set_icon (GtkModelButton *button,
+ctk_model_button_set_icon (CtkModelButton *button,
                            GIcon          *icon)
 {
   ctk_image_set_from_gicon (CTK_IMAGE (button->image), icon, CTK_ICON_SIZE_MENU);
@@ -398,7 +398,7 @@ ctk_model_button_set_icon (GtkModelButton *button,
 }
 
 static void
-ctk_model_button_set_text (GtkModelButton *button,
+ctk_model_button_set_text (CtkModelButton *button,
                            const gchar    *text)
 {
   ctk_label_set_text_with_mnemonic (CTK_LABEL (button->label), text);
@@ -407,7 +407,7 @@ ctk_model_button_set_text (GtkModelButton *button,
 }
 
 static void
-ctk_model_button_set_use_markup (GtkModelButton *button,
+ctk_model_button_set_use_markup (CtkModelButton *button,
                                  gboolean        use_markup)
 {
   use_markup = !!use_markup;
@@ -420,7 +420,7 @@ ctk_model_button_set_use_markup (GtkModelButton *button,
 }
 
 static void
-ctk_model_button_set_active (GtkModelButton *button,
+ctk_model_button_set_active (CtkModelButton *button,
                              gboolean        active)
 {
   active = !!active;
@@ -434,7 +434,7 @@ ctk_model_button_set_active (GtkModelButton *button,
 }
 
 static void
-ctk_model_button_set_menu_name (GtkModelButton *button,
+ctk_model_button_set_menu_name (CtkModelButton *button,
                                 const gchar    *menu_name)
 {
   g_free (button->menu_name);
@@ -448,7 +448,7 @@ ctk_model_button_set_menu_name (GtkModelButton *button,
 }
 
 static void
-ctk_model_button_set_inverted (GtkModelButton *button,
+ctk_model_button_set_inverted (CtkModelButton *button,
                                gboolean        inverted)
 {
   inverted = !!inverted;
@@ -463,7 +463,7 @@ ctk_model_button_set_inverted (GtkModelButton *button,
 }
 
 static void
-ctk_model_button_set_centered (GtkModelButton *button,
+ctk_model_button_set_centered (CtkModelButton *button,
                                gboolean        centered)
 {
   centered = !!centered;
@@ -477,11 +477,11 @@ ctk_model_button_set_centered (GtkModelButton *button,
 }
 
 static void
-ctk_model_button_set_iconic (GtkModelButton *button,
+ctk_model_button_set_iconic (CtkModelButton *button,
                              gboolean        iconic)
 {
-  GtkCssNode *widget_node;
-  GtkCssNode *indicator_node;
+  CtkCssNode *widget_node;
+  CtkCssNode *indicator_node;
 
   iconic = !!iconic;
   if (button->iconic == iconic)
@@ -521,7 +521,7 @@ ctk_model_button_get_property (GObject    *object,
                                GValue     *value,
                                GParamSpec *pspec)
 {
-  GtkModelButton *button = CTK_MODEL_BUTTON (object);
+  CtkModelButton *button = CTK_MODEL_BUTTON (object);
 
   switch (prop_id)
     {
@@ -577,7 +577,7 @@ ctk_model_button_set_property (GObject      *object,
                                const GValue *value,
                                GParamSpec   *pspec)
 {
-  GtkModelButton *button = CTK_MODEL_BUTTON (object);
+  CtkModelButton *button = CTK_MODEL_BUTTON (object);
 
   switch (prop_id)
     {
@@ -624,12 +624,12 @@ ctk_model_button_set_property (GObject      *object,
 }
 
 static gboolean
-has_sibling_with_indicator (GtkWidget *button)
+has_sibling_with_indicator (CtkWidget *button)
 {
-  GtkWidget *parent;
+  CtkWidget *parent;
   gboolean has_indicator;
   GList *children, *l;
-  GtkModelButton *sibling;
+  CtkModelButton *sibling;
 
   has_indicator = FALSE;
 
@@ -660,7 +660,7 @@ has_sibling_with_indicator (GtkWidget *button)
 }
 
 static gboolean
-needs_indicator (GtkModelButton *button)
+needs_indicator (CtkModelButton *button)
 {
   if (button->role != CTK_BUTTON_ROLE_NORMAL)
     return TRUE;
@@ -669,12 +669,12 @@ needs_indicator (GtkModelButton *button)
 }
 
 static void
-ctk_model_button_get_preferred_width_for_height (GtkWidget *widget,
+ctk_model_button_get_preferred_width_for_height (CtkWidget *widget,
                                                  gint       height,
                                                  gint      *minimum,
                                                  gint      *natural)
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
 
   if (CTK_MODEL_BUTTON (widget)->iconic)
     gadget = CTK_BUTTON (widget)->priv->gadget;
@@ -689,11 +689,11 @@ ctk_model_button_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-ctk_model_button_get_preferred_width (GtkWidget *widget,
+ctk_model_button_get_preferred_width (CtkWidget *widget,
                                       gint      *minimum,
                                       gint      *natural)
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
 
   if (CTK_MODEL_BUTTON (widget)->iconic)
     gadget = CTK_BUTTON (widget)->priv->gadget;
@@ -708,14 +708,14 @@ ctk_model_button_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-ctk_model_button_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_model_button_get_preferred_height_and_baseline_for_width (CtkWidget *widget,
                                                               gint       width,
                                                               gint      *minimum,
                                                               gint      *natural,
                                                               gint      *minimum_baseline,
                                                               gint      *natural_baseline)
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
 
   if (CTK_MODEL_BUTTON (widget)->iconic)
     gadget = CTK_BUTTON (widget)->priv->gadget;
@@ -730,12 +730,12 @@ ctk_model_button_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_model_button_get_preferred_height_for_width (GtkWidget *widget,
+ctk_model_button_get_preferred_height_for_width (CtkWidget *widget,
                                                  gint       width,
                                                  gint      *minimum,
                                                  gint      *natural)
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
 
   if (CTK_MODEL_BUTTON (widget)->iconic)
     gadget = CTK_BUTTON (widget)->priv->gadget;
@@ -750,11 +750,11 @@ ctk_model_button_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-ctk_model_button_get_preferred_height (GtkWidget *widget,
+ctk_model_button_get_preferred_height (CtkWidget *widget,
                                        gint      *minimum,
                                        gint      *natural)
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
 
   if (CTK_MODEL_BUTTON (widget)->iconic)
     gadget = CTK_BUTTON (widget)->priv->gadget;
@@ -769,8 +769,8 @@ ctk_model_button_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-ctk_model_button_measure (GtkCssGadget   *gadget,
-                          GtkOrientation  orientation,
+ctk_model_button_measure (CtkCssGadget   *gadget,
+                          CtkOrientation  orientation,
                           int             for_size,
                           int            *minimum,
                           int            *natural,
@@ -778,9 +778,9 @@ ctk_model_button_measure (GtkCssGadget   *gadget,
                           int            *natural_baseline,
                           gpointer        data)
 {
-  GtkWidget *widget;
-  GtkModelButton *button;
-  GtkWidget *child;
+  CtkWidget *widget;
+  CtkModelButton *button;
+  CtkWidget *child;
 
   widget = ctk_css_gadget_get_owner (gadget);
   button = CTK_MODEL_BUTTON (widget);
@@ -891,10 +891,10 @@ ctk_model_button_measure (GtkCssGadget   *gadget,
 }
 
 static void
-ctk_model_button_size_allocate (GtkWidget     *widget,
-                                GtkAllocation *allocation)
+ctk_model_button_size_allocate (CtkWidget     *widget,
+                                CtkAllocation *allocation)
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
   GdkRectangle clip;
 
   if (CTK_MODEL_BUTTON (widget)->iconic)
@@ -912,18 +912,18 @@ ctk_model_button_size_allocate (GtkWidget     *widget,
 }
 
 static void
-ctk_model_button_allocate (GtkCssGadget        *gadget,
-                           const GtkAllocation *allocation,
+ctk_model_button_allocate (CtkCssGadget        *gadget,
+                           const CtkAllocation *allocation,
                            int                  baseline,
-                           GtkAllocation       *out_clip,
+                           CtkAllocation       *out_clip,
                            gpointer             unused)
 {
-  GtkWidget *widget;
-  GtkModelButton *button;
+  CtkWidget *widget;
+  CtkModelButton *button;
   PangoContext *pango_context;
   PangoFontMetrics *metrics;
-  GtkAllocation child_allocation;
-  GtkWidget *child;
+  CtkAllocation child_allocation;
+  CtkWidget *child;
   gint check_min_width, check_nat_width;
   gint check_min_height, check_nat_height;
   GdkRectangle check_clip;
@@ -960,7 +960,7 @@ ctk_model_button_allocate (GtkCssGadget        *gadget,
 
   if (child && ctk_widget_get_visible (child))
     {
-      GtkBorder border = { 0, };
+      CtkBorder border = { 0, };
 
       if (button->centered)
         {
@@ -999,7 +999,7 @@ ctk_model_button_allocate (GtkCssGadget        *gadget,
 
   if (ctk_widget_get_realized (widget))
     {
-      GtkAllocation border_allocation;
+      CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
 
       gdk_window_move_resize (ctk_button_get_event_window (CTK_BUTTON (widget)),
@@ -1014,10 +1014,10 @@ ctk_model_button_allocate (GtkCssGadget        *gadget,
 }
 
 static gint
-ctk_model_button_draw (GtkWidget *widget,
+ctk_model_button_draw (CtkWidget *widget,
                        cairo_t   *cr)
 {
-  GtkCssGadget *gadget;
+  CtkCssGadget *gadget;
 
   if (CTK_MODEL_BUTTON (widget)->iconic)
     gadget = CTK_BUTTON (widget)->priv->gadget;
@@ -1030,7 +1030,7 @@ ctk_model_button_draw (GtkWidget *widget,
 }
 
 static gboolean
-ctk_model_button_render (GtkCssGadget *gadget,
+ctk_model_button_render (CtkCssGadget *gadget,
                          cairo_t      *cr,
                          int           x,
                          int           y,
@@ -1038,9 +1038,9 @@ ctk_model_button_render (GtkCssGadget *gadget,
                          int           height,
                          gpointer      data)
 {
-  GtkWidget *widget;
-  GtkModelButton *button;
-  GtkWidget *child;
+  CtkWidget *widget;
+  CtkModelButton *button;
+  CtkWidget *child;
 
   widget = ctk_css_gadget_get_owner (gadget);
   button = CTK_MODEL_BUTTON (widget);
@@ -1056,9 +1056,9 @@ ctk_model_button_render (GtkCssGadget *gadget,
 }
 
 static void
-ctk_model_button_destroy (GtkWidget *widget)
+ctk_model_button_destroy (CtkWidget *widget)
 {
-  GtkModelButton *model_button = CTK_MODEL_BUTTON (widget);
+  CtkModelButton *model_button = CTK_MODEL_BUTTON (widget);
 
   g_clear_pointer (&model_button->menu_name, g_free);
 
@@ -1066,13 +1066,13 @@ ctk_model_button_destroy (GtkWidget *widget)
 }
 
 static void
-ctk_model_button_clicked (GtkButton *button)
+ctk_model_button_clicked (CtkButton *button)
 {
-  GtkModelButton *model_button = CTK_MODEL_BUTTON (button);
+  CtkModelButton *model_button = CTK_MODEL_BUTTON (button);
 
   if (model_button->menu_name != NULL)
     {
-      GtkWidget *stack;
+      CtkWidget *stack;
 
       stack = ctk_widget_get_ancestor (CTK_WIDGET (button), CTK_TYPE_STACK);
       if (stack != NULL)
@@ -1080,7 +1080,7 @@ ctk_model_button_clicked (GtkButton *button)
     }
   else if (model_button->role == CTK_BUTTON_ROLE_NORMAL)
     {
-      GtkWidget *popover;
+      CtkWidget *popover;
 
       popover = ctk_widget_get_ancestor (CTK_WIDGET (button), CTK_TYPE_POPOVER);
       if (popover != NULL)
@@ -1091,7 +1091,7 @@ ctk_model_button_clicked (GtkButton *button)
 static void
 ctk_model_button_finalize (GObject *object)
 {
-  GtkModelButton *button = CTK_MODEL_BUTTON (object);
+  CtkModelButton *button = CTK_MODEL_BUTTON (object);
 
   g_clear_object (&button->indicator_gadget);
   g_clear_object (&button->gadget);
@@ -1100,7 +1100,7 @@ ctk_model_button_finalize (GObject *object)
 }
 
 static AtkObject *
-ctk_model_button_get_accessible (GtkWidget *widget)
+ctk_model_button_get_accessible (CtkWidget *widget)
 {
   AtkObject *object;
 
@@ -1112,11 +1112,11 @@ ctk_model_button_get_accessible (GtkWidget *widget)
 }
 
 static void
-ctk_model_button_class_init (GtkModelButtonClass *class)
+ctk_model_button_class_init (CtkModelButtonClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
-  GtkButtonClass *button_class = CTK_BUTTON_CLASS (class);
+  CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  CtkButtonClass *button_class = CTK_BUTTON_CLASS (class);
 
   object_class->finalize = ctk_model_button_finalize;
   object_class->get_property = ctk_model_button_get_property;
@@ -1137,10 +1137,10 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
   button_class->clicked = ctk_model_button_clicked;
 
   /**
-   * GtkModelButton:role:
+   * CtkModelButton:role:
    *
    * Specifies whether the button is a plain, check or radio button.
-   * When #GtkActionable:action-name is set, the role will be determined
+   * When #CtkActionable:action-name is set, the role will be determined
    * from the action and does not have to be set explicitly.
    *
    * Since: 3.16
@@ -1154,7 +1154,7 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
                        G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkModelButton:icon:
+   * CtkModelButton:icon:
    *
    * A #GIcon that will be used if iconic appearance for the button is
    * desired.
@@ -1169,7 +1169,7 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
                          G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkModelButton:text:
+   * CtkModelButton:text:
    *
    * The label for the button.
    *
@@ -1183,7 +1183,7 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
                          G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkModelButton:use-markup:
+   * CtkModelButton:use-markup:
    *
    * If %TRUE, XML tags in the text of the button are interpreted as by
    * pango_parse_markup() to format the enclosed spans of text. If %FALSE, the
@@ -1199,7 +1199,7 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
                           G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkModelButton:active:
+   * CtkModelButton:active:
    *
    * The state of the button. This is reflecting the state of the associated
    * #GAction.
@@ -1214,7 +1214,7 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
                           G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkModelButton:menu-name:
+   * CtkModelButton:menu-name:
    *
    * The name of a submenu to open when the button is activated.
    * If this is set, the button should not have an action associated with it.
@@ -1229,7 +1229,7 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
                          G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkModelButton:inverted:
+   * CtkModelButton:inverted:
    *
    * Whether to show the submenu indicator at the opposite side than normal.
    * This property should be set for model buttons that 'go back' to a parent
@@ -1245,7 +1245,7 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
                           G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkModelButton:centered:
+   * CtkModelButton:centered:
    *
    * Whether to render the button contents centered instead of left-aligned.
    * This property should be set for title-like items.
@@ -1260,7 +1260,7 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
                           G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GtkModelButton:iconic:
+   * CtkModelButton:iconic:
    *
    * If this property is set, the button will show an icon if one is set.
    * If no icon is set, the text will be used. This is typically used for
@@ -1281,9 +1281,9 @@ ctk_model_button_class_init (GtkModelButtonClass *class)
 }
 
 static void
-ctk_model_button_init (GtkModelButton *button)
+ctk_model_button_init (CtkModelButton *button)
 {
-  GtkCssNode *widget_node;
+  CtkCssNode *widget_node;
 
   button->role = CTK_BUTTON_ROLE_NORMAL;
   ctk_button_set_relief (CTK_BUTTON (button), CTK_RELIEF_NONE);
@@ -1318,13 +1318,13 @@ ctk_model_button_init (GtkModelButton *button)
 /**
  * ctk_model_button_new:
  *
- * Creates a new GtkModelButton.
+ * Creates a new CtkModelButton.
  *
- * Returns: the newly created #GtkModelButton widget
+ * Returns: the newly created #CtkModelButton widget
  *
  * Since: 3.16
  */
-GtkWidget *
+CtkWidget *
 ctk_model_button_new (void)
 {
   return g_object_new (CTK_TYPE_MODEL_BUTTON, NULL);

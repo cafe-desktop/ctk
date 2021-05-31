@@ -14,19 +14,19 @@
   font-size: 16px;
 }
 
-:not(GtkButton) {
+:not(CtkButton) {
   font-size: 2px;
 }
 
-:not(GtkButton) {
+:not(CtkButton) {
   font-size: 7px;
 }
 
-:not(GtkButton) {
+:not(CtkButton) {
   font-size: 12px;
 }
 
-:not(GtkButton) {
+:not(CtkButton) {
   font-size: 17px;
 }
 

@@ -319,8 +319,8 @@ msgid "Style context"
 msgstr "Контекст за стила"
 
 #: ../ctk/deprecated/ctkstyle.c:475
-msgid "GtkStyleContext to get style from"
-msgstr "GtkStyleContext, от който да се вземе стилът"
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext, от който да се вземе стилът"
 
 #: ../ctk/deprecated/ctktable.c:191
 msgid "Rows"
@@ -752,10 +752,10 @@ msgstr "Група на действия"
 
 #: ../ctk/ctkaction.c:394
 msgid ""
-"The GtkActionGroup this GtkAction is associated with, or NULL (for internal "
+"The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"Обектът GtkActionGroup, с който този GtkAction е свързан, или NULL (за "
+"Обектът CtkActionGroup, с който този CtkAction е свързан, или NULL (за "
 "вътрешно ползване)."
 
 #: ../ctk/ctkaction.c:412 ../ctk/ctkbutton.c:353 ../ctk/ctkimagemenuitem.c:192
@@ -943,9 +943,9 @@ msgstr "Включване на елемент „Друго…“"
 #: ../ctk/ctkappchooserbutton.c:615
 msgid ""
 "Whether the combobox should include an item that triggers a "
-"GtkAppChooserDialog"
+"CtkAppChooserDialog"
 msgstr ""
-"Дали падащото меню да съдържа елемент, който стартира GtkAppChooserDialog"
+"Дали падащото меню да съдържа елемент, който стартира CtkAppChooserDialog"
 
 #: ../ctk/ctkappchooserbutton.c:631
 msgid "Show default item"
@@ -1300,10 +1300,10 @@ msgstr "Вид пакетиране"
 
 #: ../ctk/ctkbox.c:304
 msgid ""
-"A GtkPackType indicating whether the child is packed with reference to the "
+"A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
-"GtkPackType, който указва, дали дъщерният елемент е пакетиран спрямо "
+"CtkPackType, който указва, дали дъщерният елемент е пакетиран спрямо "
 "началото или края на контейнера"
 
 #: ../ctk/ctkbox.c:310 ../ctk/ctknotebook.c:768 ../ctk/ctkpaned.c:348
@@ -1603,10 +1603,10 @@ msgstr "Вид пакетиране"
 
 #: ../ctk/ctkcellareabox.c:386
 msgid ""
-"A GtkPackType indicating whether the cell is packed with reference to the "
+"A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
 msgstr ""
-"GtkPackType, който указва, дали клетката е пакетирана спрямо началото или "
+"CtkPackType, който указва, дали клетката е пакетирана спрямо началото или "
 "края на зоната на клетките"
 
 #: ../ctk/ctkcellarea.c:803
@@ -1885,8 +1885,8 @@ msgid "Size"
 msgstr "Размер"
 
 #: ../ctk/ctkcellrendererpixbuf.c:184
-msgid "The GtkIconSize value that specifies the size of the rendered icon"
-msgstr "Стойността на GtkIconSize, която определя големината на иконата"
+msgid "The CtkIconSize value that specifies the size of the rendered icon"
+msgstr "Стойността на CtkIconSize, която определя големината на иконата"
 
 #: ../ctk/ctkcellrendererpixbuf.c:193
 msgid "Detail"
@@ -2007,9 +2007,9 @@ msgid "Pulse of the spinner"
 msgstr "Ритъм на индикатора за прогрес"
 
 #: ../ctk/ctkcellrendererspinner.c:158
-msgid "The GtkIconSize value that specifies the size of the rendered spinner"
+msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
-"Стойността на GtkIconSize, която определя размера на индикатора за прогрес"
+"Стойността на CtkIconSize, която определя размера на индикатора за прогрес"
 
 #: ../ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2468,17 +2468,17 @@ msgstr "Зона за клетки"
 #: ../ctk/ctkcellview.c:253 ../ctk/ctkcombobox.c:1008
 #: ../ctk/ctkentrycompletion.c:452 ../ctk/ctkiconview.c:638
 #: ../ctk/ctktreemenu.c:333 ../ctk/ctktreeviewcolumn.c:427
-msgid "The GtkCellArea used to layout cells"
-msgstr "GtkCellArea за подредба на клетките"
+msgid "The CtkCellArea used to layout cells"
+msgstr "CtkCellArea за подредба на клетките"
 
 #: ../ctk/ctkcellview.c:276
 msgid "Cell Area Context"
 msgstr "Контекст на зона за клетки"
 
 #: ../ctk/ctkcellview.c:277
-msgid "The GtkCellAreaContext used to compute the geometry of the cell view"
+msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
-"The GtkCellAreaContext за изчисляването на геометрията на изгледа с клетки"
+"The CtkCellAreaContext за изчисляването на геометрията на изгледа с клетки"
 
 #: ../ctk/ctkcellview.c:294
 msgid "Draw Sensitive"
@@ -2697,10 +2697,10 @@ msgstr "Колона за текст"
 #: ../ctk/ctkcombobox.c:938
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
-"if the combo was created with #GtkComboBox:has-entry = %TRUE"
+"if the combo was created with #CtkComboBox:has-entry = %TRUE"
 msgstr ""
 "Колоната в модела на падащото меню, която е свързана с низовете от елемента, "
-"когато менюто е създадено с настройка #GtkComboBox:has-entry = %TRUE"
+"когато менюто е създадено с настройка #CtkComboBox:has-entry = %TRUE"
 
 #: ../ctk/ctkcombobox.c:955
 msgid "ID Column"
@@ -3935,10 +3935,10 @@ msgstr "Подравняване"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
-"GtkMisc::xalign for that"
+"CtkMisc::xalign for that"
 msgstr ""
 "Подравняването на редовете в текста на етикета един спрямо друг. Това НЕ "
-"влияе на подравняването на етикета в неговото място. За това Виж GtkMisc::"
+"влияе на подравняването на етикета в неговото място. За това Виж CtkMisc::"
 "xalign"
 
 #: ../ctk/ctklabel.c:759
@@ -4477,9 +4477,9 @@ msgid "Message area"
 msgstr "Област за съобщения"
 
 #: ../ctk/ctkmessagedialog.c:310
-msgid "GtkVBox that holds the dialog's primary and secondary labels"
+msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgstr ""
-"Елемент GtkVBok, съдържащ главния и допълнителния етикет на диалоговия "
+"Елемент CtkVBok, съдържащ главния и допълнителния етикет на диалоговия "
 "прозорец"
 
 #: ../ctk/ctkmisc.c:113
@@ -4986,16 +4986,16 @@ msgid "Default Page Setup"
 msgstr "Стандартни настройки на страницата"
 
 #: ../ctk/ctkprintoperation.c:1088
-msgid "The GtkPageSetup used by default"
-msgstr "Стандартен GtkPageSetup"
+msgid "The CtkPageSetup used by default"
+msgstr "Стандартен CtkPageSetup"
 
 #: ../ctk/ctkprintoperation.c:1106 ../ctk/ctkprintunixdialog.c:384
 msgid "Print Settings"
 msgstr "Настройки за печат"
 
 #: ../ctk/ctkprintoperation.c:1107 ../ctk/ctkprintunixdialog.c:385
-msgid "The GtkPrintSettings used for initializing the dialog"
-msgstr "GtkPrintSettings, който се ползва за инициализирането на диалога"
+msgid "The CtkPrintSettings used for initializing the dialog"
+msgstr "CtkPrintSettings, който се ползва за инициализирането на диалога"
 
 #: ../ctk/ctkprintoperation.c:1125
 msgid "Job Name"
@@ -5114,10 +5114,10 @@ msgid "Embed Page Setup"
 msgstr "Вграждане на настройките на страницата"
 
 #: ../ctk/ctkprintoperation.c:1403 ../ctk/ctkprintunixdialog.c:426
-msgid "TRUE if page setup combos are embedded in GtkPrintUnixDialog"
+msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
 msgstr ""
 "Истина, когато падащите менюта за настройки на страницата са вградени в "
-"GtkPrintUnixDialog"
+"CtkPrintUnixDialog"
 
 #: ../ctk/ctkprintoperation.c:1424
 msgid "Number of Pages To Print"
@@ -5128,16 +5128,16 @@ msgid "The number of pages that will be printed."
 msgstr "Броят страници, които ще бъдат отпечатани."
 
 #: ../ctk/ctkprintunixdialog.c:367
-msgid "The GtkPageSetup to use"
-msgstr "GtkPageSetup, който да се ползва"
+msgid "The CtkPageSetup to use"
+msgstr "CtkPageSetup, който да се ползва"
 
 #: ../ctk/ctkprintunixdialog.c:392
 msgid "Selected Printer"
 msgstr "Избраният принтер"
 
 #: ../ctk/ctkprintunixdialog.c:393
-msgid "The GtkPrinter which is selected"
-msgstr "GtkPrinter, който е избран"
+msgid "The CtkPrinter which is selected"
+msgstr "CtkPrinter, който е избран"
 
 #: ../ctk/ctkprintunixdialog.c:400
 msgid "Manual Capabilities"
@@ -5287,9 +5287,9 @@ msgid "The radio tool button whose group this button belongs to."
 msgstr "Радио бутонът, към чиято група принадлежи този бутон."
 
 #: ../ctk/ctkrange.c:425
-msgid "The GtkAdjustment that contains the current value of this range object"
+msgid "The CtkAdjustment that contains the current value of this range object"
 msgstr ""
-"GtkAdjustment, който съдържа текущата стойност на този обект за диапазон"
+"CtkAdjustment, който съдържа текущата стойност на този обект за диапазон"
 
 #: ../ctk/ctkrange.c:433
 msgid "Invert direction slider moves to increase range value"
@@ -5525,9 +5525,9 @@ msgstr "Размер на иконите"
 
 #: ../ctk/ctkscalebutton.c:238
 msgid ""
-"The GtkAdjustment that contains the current value of this scale button object"
+"The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
-"GtkAdjustment, който съдържа текущата стойност на този обект за бутон за "
+"CtkAdjustment, който съдържа текущата стойност на този обект за бутон за "
 "мащабиране"
 
 #: ../ctk/ctkscalebutton.c:266
@@ -5652,16 +5652,16 @@ msgid "Horizontal Adjustment"
 msgstr "Хоризонтално регулиране"
 
 #: ../ctk/ctkscrolledwindow.c:368
-msgid "The GtkAdjustment for the horizontal position"
-msgstr "GtkAdjustment за хоризонталната позиция"
+msgid "The CtkAdjustment for the horizontal position"
+msgstr "CtkAdjustment за хоризонталната позиция"
 
 #: ../ctk/ctkscrolledwindow.c:374
 msgid "Vertical Adjustment"
 msgstr "Вертикално регулиране"
 
 #: ../ctk/ctkscrolledwindow.c:375
-msgid "The GtkAdjustment for the vertical position"
-msgstr "GtkAdjustment за вертикалната позиция"
+msgid "The CtkAdjustment for the vertical position"
+msgstr "CtkAdjustment за вертикалната позиция"
 
 #: ../ctk/ctkscrolledwindow.c:381
 msgid "Horizontal Scrollbar Policy"
@@ -6134,16 +6134,16 @@ msgid "Default file chooser backend"
 msgstr "Стандартният модул за файлова система"
 
 #: ../ctk/ctksettings.c:882
-msgid "Name of the GtkFileChooser backend to use by default"
-msgstr "Име на модула за GtkFileChooser, който стандартно да се използва"
+msgid "Name of the CtkFileChooser backend to use by default"
+msgstr "Име на модула за CtkFileChooser, който стандартно да се използва"
 
 #: ../ctk/ctksettings.c:899
 msgid "Default print backend"
 msgstr "Стандартният модулът за печат"
 
 #: ../ctk/ctksettings.c:900
-msgid "List of the GtkPrintBackend backends to use by default"
-msgstr "Списък с модули GtkPrintBackend, които стандартно да се използват"
+msgid "List of the CtkPrintBackend backends to use by default"
+msgstr "Списък с модули CtkPrintBackend, които стандартно да се използват"
 
 #: ../ctk/ctksettings.c:923
 msgid "Default command to run when displaying a print preview"
@@ -6601,8 +6601,8 @@ msgid "Value type"
 msgstr "Вид на стойността"
 
 #: ../ctk/ctkstyleproperty.c:118
-msgid "The value type returned by GtkStyleContext"
-msgstr "Видът на стойността върната от GtkStyleContext"
+msgid "The value type returned by CtkStyleContext"
+msgstr "Видът на стойността върната от CtkStyleContext"
 
 #: ../ctk/ctkswitch.c:815
 msgid "Whether the switch is on or off"
@@ -7426,9 +7426,9 @@ msgid "Fixed Height Mode"
 msgstr "Режим „еднаква височина“"
 
 #: ../ctk/ctktreeview.c:1076
-msgid "Speeds up GtkTreeView by assuming that all rows have the same height"
+msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
-"Ускоряване на GtkTreeView чрез предположението, че всички редове имат същата "
+"Ускоряване на CtkTreeView чрез предположението, че всички редове имат същата "
 "височина"
 
 #: ../ctk/ctktreeview.c:1096
@@ -8220,8 +8220,8 @@ msgid "Focus in Toplevel"
 msgstr "Фокусиране на най-горния"
 
 #: ../ctk/ctkwindow.c:798
-msgid "Whether the input focus is within this GtkWindow"
-msgstr "Дали фокусът за въвеждане е в този GtkWindow"
+msgid "Whether the input focus is within this CtkWindow"
+msgstr "Дали фокусът за въвеждане е в този CtkWindow"
 
 #: ../ctk/ctkwindow.c:805
 msgid "Type hint"
@@ -8348,12 +8348,12 @@ msgid "Height of resize grip"
 msgstr "Височина на дръжката за преоразмеряване"
 
 #: ../ctk/ctkwindow.c:1037
-msgid "GtkApplication"
-msgstr "GtkApplication"
+msgid "CtkApplication"
+msgstr "CtkApplication"
 
 #: ../ctk/ctkwindow.c:1038
-msgid "The GtkApplication for the window"
-msgstr "GtkApplication на прозореца"
+msgid "The CtkApplication for the window"
+msgstr "CtkApplication на прозореца"
 
 #: ../modules/printbackends/cups/ctkprintercups.c:93
 msgid "Color Profile Title"

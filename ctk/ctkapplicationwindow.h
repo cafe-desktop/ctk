@@ -31,35 +31,35 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_APPLICATION_WINDOW            (ctk_application_window_get_type ())
 #define CTK_APPLICATION_WINDOW(inst)           (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
-                                                CTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindow))
+                                                CTK_TYPE_APPLICATION_WINDOW, CtkApplicationWindow))
 #define CTK_APPLICATION_WINDOW_CLASS(class)    (G_TYPE_CHECK_CLASS_CAST ((class),   \
-                                                CTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindowClass))
+                                                CTK_TYPE_APPLICATION_WINDOW, CtkApplicationWindowClass))
 #define CTK_IS_APPLICATION_WINDOW(inst)        (G_TYPE_CHECK_INSTANCE_TYPE ((inst), \
                                                 CTK_TYPE_APPLICATION_WINDOW))
 #define CTK_IS_APPLICATION_WINDOW_CLASS(class) (G_TYPE_CHECK_CLASS_TYPE ((class),   \
                                                 CTK_TYPE_APPLICATION_WINDOW))
 #define CTK_APPLICATION_WINDOW_GET_CLASS(inst) (G_TYPE_INSTANCE_GET_CLASS ((inst),  \
-                                                CTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindowClass))
+                                                CTK_TYPE_APPLICATION_WINDOW, CtkApplicationWindowClass))
 
-typedef struct _GtkApplicationWindowPrivate GtkApplicationWindowPrivate;
-typedef struct _GtkApplicationWindowClass   GtkApplicationWindowClass;
-typedef struct _GtkApplicationWindow        GtkApplicationWindow;
+typedef struct _CtkApplicationWindowPrivate CtkApplicationWindowPrivate;
+typedef struct _CtkApplicationWindowClass   CtkApplicationWindowClass;
+typedef struct _CtkApplicationWindow        CtkApplicationWindow;
 
-struct _GtkApplicationWindow
+struct _CtkApplicationWindow
 {
-  GtkWindow parent_instance;
+  CtkWindow parent_instance;
 
   /*< private >*/
-  GtkApplicationWindowPrivate *priv;
+  CtkApplicationWindowPrivate *priv;
 };
 
 /**
- * GtkApplicationWindowClass:
+ * CtkApplicationWindowClass:
  * @parent_class: The parent class.
  */
-struct _GtkApplicationWindowClass
+struct _CtkApplicationWindowClass
 {
-  GtkWindowClass parent_class;
+  CtkWindowClass parent_class;
 
   /*< private >*/
   gpointer padding[14];
@@ -68,23 +68,23 @@ struct _GtkApplicationWindowClass
 GDK_AVAILABLE_IN_3_4
 GType       ctk_application_window_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_4
-GtkWidget * ctk_application_window_new               (GtkApplication      *application);
+CtkWidget * ctk_application_window_new               (CtkApplication      *application);
 
 GDK_AVAILABLE_IN_3_4
-void        ctk_application_window_set_show_menubar (GtkApplicationWindow *window,
+void        ctk_application_window_set_show_menubar (CtkApplicationWindow *window,
                                                      gboolean              show_menubar);
 GDK_AVAILABLE_IN_3_4
-gboolean    ctk_application_window_get_show_menubar (GtkApplicationWindow *window);
+gboolean    ctk_application_window_get_show_menubar (CtkApplicationWindow *window);
 
 GDK_AVAILABLE_IN_3_6
-guint       ctk_application_window_get_id           (GtkApplicationWindow *window);
+guint       ctk_application_window_get_id           (CtkApplicationWindow *window);
 
 GDK_AVAILABLE_IN_3_20
-void        ctk_application_window_set_help_overlay (GtkApplicationWindow *window,
-                                                     GtkShortcutsWindow   *help_overlay);
+void        ctk_application_window_set_help_overlay (CtkApplicationWindow *window,
+                                                     CtkShortcutsWindow   *help_overlay);
 GDK_AVAILABLE_IN_3_20
-GtkShortcutsWindow *
-            ctk_application_window_get_help_overlay (GtkApplicationWindow *window);
+CtkShortcutsWindow *
+            ctk_application_window_get_help_overlay (CtkApplicationWindow *window);
 
 G_END_DECLS
 

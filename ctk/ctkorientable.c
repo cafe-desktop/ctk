@@ -30,27 +30,27 @@
 /**
  * SECTION:ctkorientable
  * @Short_description: An interface for flippable widgets
- * @Title: GtkOrientable
+ * @Title: CtkOrientable
  *
- * The #GtkOrientable interface is implemented by all widgets that can be
+ * The #CtkOrientable interface is implemented by all widgets that can be
  * oriented horizontally or vertically. Historically, such widgets have been
- * realized as subclasses of a common base class (e.g #GtkBox/#GtkHBox/#GtkVBox
- * or #GtkScale/#GtkHScale/#GtkVScale). #GtkOrientable is more flexible in that
+ * realized as subclasses of a common base class (e.g #CtkBox/#CtkHBox/#CtkVBox
+ * or #CtkScale/#CtkHScale/#CtkVScale). #CtkOrientable is more flexible in that
  * it allows the orientation to be changed at runtime, allowing the widgets
  * to “flip”.
  *
- * #GtkOrientable was introduced in GTK+ 2.16.
+ * #CtkOrientable was introduced in GTK+ 2.16.
  */
 
 
-typedef GtkOrientableIface GtkOrientableInterface;
-G_DEFINE_INTERFACE (GtkOrientable, ctk_orientable, G_TYPE_OBJECT)
+typedef CtkOrientableIface CtkOrientableInterface;
+G_DEFINE_INTERFACE (CtkOrientable, ctk_orientable, G_TYPE_OBJECT)
 
 static void
-ctk_orientable_default_init (GtkOrientableInterface *iface)
+ctk_orientable_default_init (CtkOrientableInterface *iface)
 {
   /**
-   * GtkOrientable:orientation:
+   * CtkOrientable:orientation:
    *
    * The orientation of the orientable.
    *
@@ -67,7 +67,7 @@ ctk_orientable_default_init (GtkOrientableInterface *iface)
 
 /**
  * ctk_orientable_set_orientation:
- * @orientable: a #GtkOrientable
+ * @orientable: a #CtkOrientable
  * @orientation: the orientable’s new orientation.
  *
  * Sets the orientation of the @orientable.
@@ -75,8 +75,8 @@ ctk_orientable_default_init (GtkOrientableInterface *iface)
  * Since: 2.16
  **/
 void
-ctk_orientable_set_orientation (GtkOrientable  *orientable,
-                                GtkOrientation  orientation)
+ctk_orientable_set_orientation (CtkOrientable  *orientable,
+                                CtkOrientation  orientation)
 {
   g_return_if_fail (CTK_IS_ORIENTABLE (orientable));
 
@@ -90,7 +90,7 @@ ctk_orientable_set_orientation (GtkOrientable  *orientable,
 
 /**
  * ctk_orientable_get_orientation:
- * @orientable: a #GtkOrientable
+ * @orientable: a #CtkOrientable
  *
  * Retrieves the orientation of the @orientable.
  *
@@ -98,10 +98,10 @@ ctk_orientable_set_orientation (GtkOrientable  *orientable,
  *
  * Since: 2.16
  **/
-GtkOrientation
-ctk_orientable_get_orientation (GtkOrientable *orientable)
+CtkOrientation
+ctk_orientable_get_orientation (CtkOrientable *orientable)
 {
-  GtkOrientation orientation;
+  CtkOrientation orientation;
 
   g_return_val_if_fail (CTK_IS_ORIENTABLE (orientable),
                         CTK_ORIENTATION_HORIZONTAL);
@@ -114,10 +114,10 @@ ctk_orientable_get_orientation (GtkOrientable *orientable)
 }
 
 void
-_ctk_orientable_set_style_classes (GtkOrientable *orientable)
+_ctk_orientable_set_style_classes (CtkOrientable *orientable)
 {
-  GtkStyleContext *context;
-  GtkOrientation orientation;
+  CtkStyleContext *context;
+  CtkOrientation orientation;
 
   g_return_if_fail (CTK_IS_ORIENTABLE (orientable));
   g_return_if_fail (CTK_IS_WIDGET (orientable));

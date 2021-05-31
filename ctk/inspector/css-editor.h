@@ -26,30 +26,30 @@
 #include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_CSS_EDITOR            (ctk_inspector_css_editor_get_type())
-#define CTK_INSPECTOR_CSS_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_CSS_EDITOR, GtkInspectorCssEditor))
-#define CTK_INSPECTOR_CSS_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_CSS_EDITOR, GtkInspectorCssEditorClass))
+#define CTK_INSPECTOR_CSS_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_CSS_EDITOR, CtkInspectorCssEditor))
+#define CTK_INSPECTOR_CSS_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_CSS_EDITOR, CtkInspectorCssEditorClass))
 #define CTK_INSPECTOR_IS_CSS_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_CSS_EDITOR))
 #define CTK_INSPECTOR_IS_CSS_EDITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_CSS_EDITOR))
-#define CTK_INSPECTOR_CSS_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_CSS_EDITOR, GtkInspectorCssEditorClass))
+#define CTK_INSPECTOR_CSS_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_CSS_EDITOR, CtkInspectorCssEditorClass))
 
 
-typedef struct _GtkInspectorCssEditorPrivate GtkInspectorCssEditorPrivate;
+typedef struct _CtkInspectorCssEditorPrivate CtkInspectorCssEditorPrivate;
 
-typedef struct _GtkInspectorCssEditor
+typedef struct _CtkInspectorCssEditor
 {
-  GtkBox parent;
-  GtkInspectorCssEditorPrivate *priv;
-} GtkInspectorCssEditor;
+  CtkBox parent;
+  CtkInspectorCssEditorPrivate *priv;
+} CtkInspectorCssEditor;
 
-typedef struct _GtkInspectorCssEditorClass
+typedef struct _CtkInspectorCssEditorClass
 {
-  GtkBoxClass parent;
-} GtkInspectorCssEditorClass;
+  CtkBoxClass parent;
+} CtkInspectorCssEditorClass;
 
 G_BEGIN_DECLS
 
 GType      ctk_inspector_css_editor_get_type   (void);
-void       ctk_inspector_css_editor_set_object (GtkInspectorCssEditor *ce,
+void       ctk_inspector_css_editor_set_object (CtkInspectorCssEditor *ce,
                                                 GObject               *object);
 
 G_END_DECLS
