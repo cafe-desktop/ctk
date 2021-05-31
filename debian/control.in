@@ -1,0 +1,298 @@
+Source: gtk+3.0
+Section: libs
+Priority: optional
+Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Uploaders: Simon McVittie <smcv@debian.org>, @GNOME_TEAM@
+Build-Depends: adwaita-icon-theme <!nocheck>,
+               at-spi2-core <!nocheck>,
+               dbus <!nocheck>,
+               debhelper-compat (= 12),
+               dh-sequence-gir,
+               fonts-cantarell <!nocheck>,
+               fonts-dejavu-core <!nocheck>,
+               gnome-pkg-tools (>= 0.11),
+               gobject-introspection (>= 1.41.3),
+               gsettings-desktop-schemas <!nocheck>,
+               gtk-doc-tools (>= 1.20),
+               libatk-bridge2.0-dev (>= 2.15.1),
+               libatk1.0-dev (>= 2.35.1),
+               libcairo2-dev (>= 1.14.0),
+               libcolord-dev (>= 0.1.9),
+               libcups2-dev (>= 1.7),
+               libegl1-mesa-dev [linux-any],
+               libepoxy-dev (>= 1.4),
+               libfontconfig1-dev,
+               libfribidi-dev (>= 0.19.7),
+               libgdk-pixbuf-2.0-dev (>= 2.40.0) | libgdk-pixbuf2.0-dev (>= 2.40.0),
+               libgirepository1.0-dev (>= 1.39.0),
+               libglib2.0-dev (>= 2.57.2),
+               libharfbuzz-dev (>= 0.9),
+               libjson-glib-dev,
+               libpango1.0-dev (>= 1.41.0),
+               librest-dev,
+               librsvg2-common <!nocheck>,
+               libwayland-dev (>= 1.14.91) [linux-any],
+               libx11-dev,
+               libxcomposite-dev,
+               libxcursor-dev,
+               libxdamage-dev,
+               libxext-dev,
+               libxfixes-dev,
+               libxi-dev,
+               libxinerama-dev,
+               libxkbcommon-dev (>= 0.2.0),
+               libxkbfile-dev,
+               libxml2-utils,
+               libxrandr-dev (>= 2:1.5.0),
+               pkg-config,
+               sassc,
+               wayland-protocols (>= 1.17) [linux-any],
+               xauth <!nocheck>,
+               xvfb <!nocheck>
+Build-Depends-Indep: docbook-xml,
+                     docbook-xsl,
+                     libatk1.0-doc,
+                     libcairo2-doc,
+                     libglib2.0-doc,
+                     libpango1.0-doc,
+                     xsltproc
+Rules-Requires-Root: no
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/gnome-team/gtk3
+Vcs-Git: https://salsa.debian.org/gnome-team/gtk3.git
+Homepage: https://www.gtk.org/
+
+Package: @SHARED_PKG@
+Architecture: any
+Multi-Arch: same
+Depends: adwaita-icon-theme,
+         hicolor-icon-theme,
+         shared-mime-info,
+         ${misc:Depends},
+         ${shlibs:Depends},
+         @COMMON_PKG@ (>= ${source:Version})
+Provides: @GTK_BINVER_DEP@
+Recommends: @BIN_PKG@,
+            librsvg2-common
+Suggests: gvfs,
+Description: GTK graphical user interface library
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the shared libraries.
+
+Package: @UDEB_PKG@
+Build-Profiles: <!noudeb>
+Package-Type: udeb
+Section: debian-installer
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Provides: @GTK_BINVER_DEP@
+Description: GTK graphical user interface library - minimal runtime
+ This is a udeb, or a microdeb, for the debian-installer.
+ .
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the minimal runtime library using X11 needed
+ by the Debian installer.
+
+Package: @COMMON_PKG@
+Section: misc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Recommends: @SHARED_PKG@
+Description: common files for the GTK graphical user interface library
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the common files which the libraries need.
+
+Package: @BIN_PKG@
+Section: misc
+Architecture: any
+Multi-Arch: foreign
+Depends: gtk-update-icon-cache,
+         ${misc:Depends},
+         ${shlibs:Depends},
+         @COMMON_PKG@ (>= ${source:Version}),
+         @SHARED_PKG@ (>= ${source:Version})
+Breaks: @EXAMPLES_PKG@ (<< 3.24.13)
+Replaces: @EXAMPLES_PKG@ (<< 3.24.13)
+Description: programs for the GTK graphical user interface library
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the utilities which are used by the libraries
+ and other packages.
+
+Package: @DEV_PKG@
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: gir1.2-gtk-3.0 (= ${binary:Version}),
+         libatk-bridge2.0-dev (>= 2.15.1),
+         libatk1.0-dev (>= 2.35.1),
+         libcairo2-dev (>= 1.14.0),
+         libegl1-mesa-dev [linux-any],
+         libepoxy-dev (>= 1.0),
+         libfontconfig1-dev,
+         libfribidi-dev (>= 0.19.7),
+         libgdk-pixbuf-2.0-dev (>= 2.40.0) | libgdk-pixbuf2.0-dev (>= 2.40.0),
+         libglib2.0-dev (>= 2.57.2),
+         libpango1.0-dev (>= 1.41),
+         libwayland-dev (>= 1.9.91) [linux-any],
+         libx11-dev,
+         libxcomposite-dev,
+         libxcursor-dev,
+         libxdamage-dev,
+         libxext-dev,
+         libxfixes-dev,
+         libxi-dev,
+         libxinerama-dev,
+         libxkbcommon-dev,
+         libxrandr-dev,
+         pkg-config,
+         wayland-protocols (>= 1.17) [linux-any],
+         ${misc:Depends},
+         ${shlibs:Depends},
+         @COMMON_PKG@,
+         @SHARED_PKG@ (= ${binary:Version})
+Suggests: @DOC_PKG@
+Description: development files for the GTK library
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the header and development files which are
+ needed for building GTK applications.
+
+Package: @DOC_PKG@
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Recommends: libatk1.0-doc,
+            libglib2.0-doc,
+            libpango1.0-doc
+Suggests: devhelp
+Description: documentation for the GTK graphical user interface library
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the HTML documentation for the GTK library
+ in /usr/share/doc/@DOC_PKG@/ .
+
+Package: @EXAMPLES_PKG@
+Section: x11
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         @SHARED_PKG@ (= ${binary:Version})
+Description: example files for GTK 3
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the example files and a demonstration program
+ for GTK3. It also contains the installed tests.
+
+Package: gir1.2-gtk-3.0
+Section: introspection
+Architecture: any
+Multi-Arch: same
+Depends: ${gir:Depends},
+         ${misc:Depends},
+         ${shlibs:Depends},
+         @COMMON_PKG@
+Breaks: python-gi (<< 3.18),
+        python3-gi (<< 3.18)
+Provides: gir1.2-gdk-3.0 (= ${binary:Version}),
+          gir1.2-gdkx11-3.0 (= ${binary:Version})
+Description: GTK graphical user interface library -- gir bindings
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package can be used by other packages using the GIRepository format to
+ generate dynamic bindings.
+
+Package: gtk-update-icon-cache
+Section: misc
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Breaks: libgtk-3-bin (<< 3.20.6-1),
+        libgtk2.0-bin (<< 2.24.30-2)
+Replaces: libgtk-3-bin (<< 3.20.6-1),
+          libgtk2.0-bin (<< 2.24.30-2)
+Description: icon theme caching utility
+ gtk-update-icon-cache creates mmap()able cache files for icon themes.
+ .
+ GTK can use the cache files created by gtk-update-icon-cache to avoid a lot
+ of system call and disk seek overhead when the application starts. Since the
+ format of the cache files allows them to be mmap()ed shared between multiple
+ applications, the overall memory consumption is reduced as well.
+
+Package: libgail-3-0
+Architecture: any
+Multi-Arch: same
+Depends: at-spi2-core,
+         ${misc:Depends},
+         ${shlibs:Depends},
+         @SHARED_PKG@ (= ${binary:Version})
+Description: GNOME Accessibility Implementation Library -- shared libraries
+ Gail implements ATK interfaces for GTK widgets which are dynamically
+ loadable at runtime by a GTK application. Once loaded, those parts of
+ an application that use standard GTK widgets will have a basic level
+ of accessibility, without the need to modify the application at all.
+ .
+ This package contains the shared library.
+
+Package: libgail-3-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: libatk1.0-dev,
+         libgail-3-0 (= ${binary:Version}),
+         pkg-config,
+         ${misc:Depends},
+         @DEV_PKG@ (= ${binary:Version})
+Suggests: libgail-3-doc
+Description: GNOME Accessibility Implementation Library -- development files
+ Gail implements ATK interfaces for GTK widgets which are dynamically
+ loadable at runtime by a GTK application. Once loaded, those parts of
+ an application that use standard GTK widgets will have a basic level
+ of accessibility, without the need to modify the application at all.
+ .
+ This package contains the development files for Gail.
+
+Package: libgail-3-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${misc:Depends}
+Suggests: devhelp
+Description: documentation files of the Gail library
+ Gail implements ATK interfaces for GTK widgets which are dynamically
+ loadable at runtime by a GTK application. Once loaded, those parts of
+ an application that use standard GTK widgets will have a basic level
+ of accessibility, without the need to modify the application at all.
+ .
+ This package contains the documentation files for Gail.

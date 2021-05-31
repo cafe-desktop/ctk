@@ -1,0 +1,19 @@
+#!/bin/sh
+# autopkgtest check: Run the installed-tests to verify GTK works correctly
+# Based on glib2.0's d/tests/installed-tests, (C) 2013 Canonical Ltd.
+
+set -e
+
+# Disable gvfs if it happens to be installed. We want to test the built-in
+# stuff
+export GIO_USE_VFS=local
+export GIO_USE_VOLUME_MONITOR=unix
+
+export XDG_RUNTIME_DIR="$AUTOPKGTEST_TMP"
+
+exec dbus-run-session -- \
+xvfb-run -a -s "-screen 0 1024x768x24" \
+gnome-desktop-testing-runner \
+--report-directory="$AUTOPKGTEST_ARTIFACTS" \
+--tap \
+"gtk+/reftests"

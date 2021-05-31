@@ -1,0 +1,38 @@
+Debugging reftest failures
+==========================
+
+In a local build
+----------------
+
+There must be a better way to do this, but this works...
+
+top_srcdir=<path to unpacked package>
+top_builddir=${srcdir}/debian/build/deb
+srcdir=${srcdir}/testsuite/reftests
+builddir=${builddir}/testsuite/reftests
+
+cd "${builddir}"
+xvfb-run -a \
+dbus-run-session -- \
+env \
+    -u XDG_RUNTIME_DIR \
+    REFTEST_MODULE_DIR="${builddir}" \
+    G_TEST_SRCDIR="${srcdir}" \
+    G_TEST_BUILDDIR="${builddir}" \
+./gtk-reftest \
+    -o "${builddir}/output" \
+    -d "${srcdir}" \
+    -k \
+2>&1 | tee test.log
+
+Look for "not ok" in test.log.
+
+Compare output/foo.ref.png and output/foo.out.png.
+
+output/foo.diff.png shows an artificially-emphasized difference, if you
+are having trouble spotting what is different.
+
+On a buildd
+-----------
+
+You can't. Good luck reproducing it locally :-(

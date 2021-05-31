@@ -1,0 +1,58 @@
+#!/bin/sh
+# autopkgtest check: Build and run a program against GTK, to verify that the
+# headers and pkg-config file are installed correctly
+# (C) 2012 Canonical Ltd.
+# Author: Martin Pitt <martin.pitt@ubuntu.com>
+
+set -e
+set -u
+set -x
+
+WORKDIR=$(mktemp -d)
+cleanup () {
+    rm -fr "$WORKDIR"
+}
+trap cleanup 0 INT QUIT ABRT PIPE TERM
+cd "$WORKDIR"
+
+if [ -n "${DEB_HOST_GNU_TYPE:-}" ]; then
+    CROSS_COMPILE="$DEB_HOST_GNU_TYPE-"
+else
+    CROSS_COMPILE=
+fi
+
+cat <<EOF > gtktest.c
+#include <glib.h>
+#include <gtk/gtk.h>
+
+static gboolean
+do_quit (gpointer user_data)
+{
+    gtk_main_quit ();
+    return G_SOURCE_REMOVE;
+}
+
+int main(int argc, char **argv)
+{
+    GtkWidget *dialog;
+
+    gtk_init (&argc, &argv);
+    dialog = gtk_dialog_new_with_buttons ("Test dialog", NULL,
+                                          GTK_DIALOG_MODAL,
+                                          "OK", GTK_RESPONSE_ACCEPT,
+                                          NULL);
+    gtk_widget_show_all (dialog);
+    g_timeout_add_seconds (1, do_quit, NULL);
+    gtk_main();
+    return 0;
+}
+EOF
+
+# Deliberately word-splitting, that's how pkg-config works:
+# shellcheck disable=SC2046
+"${CROSS_COMPILE}gcc" -o gtktest gtktest.c $("${CROSS_COMPILE}pkg-config" --cflags --libs gtk+-3.0)
+echo "build: OK"
+[ -x gtktest ]
+xvfb-run -a -s "-screen 0 1024x768x24" \
+./gtktest
+echo "run: OK"

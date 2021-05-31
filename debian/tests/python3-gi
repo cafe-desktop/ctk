@@ -1,0 +1,20 @@
+#!/bin/sh
+
+xvfb-run -a -s "-screen 0 1024x768x24" \
+python3 <<EOF
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import GLib, Gtk
+
+def do_quit(user_data):
+    Gtk.main_quit()
+    return GLib.SOURCE_REMOVE
+
+dialog = Gtk.Dialog()
+dialog.set_title('Test dialog')
+dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
+dialog.show_all()
+GLib.timeout_add_seconds(1, do_quit, None)
+Gtk.main()
+EOF
+

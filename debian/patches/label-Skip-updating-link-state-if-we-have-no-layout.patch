@@ -1,0 +1,31 @@
+From: =?utf-8?q?Timm_B=C3=A4der?= <mail@baedert.org>
+Date: Fri, 11 Jan 2019 17:46:12 +0100
+Subject: label: Skip updating link state if we have no layout
+
+This can happen whenever the ::activate-link handler sets different
+markup on the label, causing all links to be recreated. In this case,
+the GtkLabelLink* passed to emit_activate_link is garbage after the
+g_signal_emit call and we shouldn't try to do anything with it.
+
+Bug: https://gitlab.gnome.org/GNOME/gtk/-/issues/1498
+Origin: upstream, 3.24.27, commit:bfe0f7dd4dbc37048e111caafdd9b5f555bd8d16
+---
+ gtk/gtklabel.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/gtk/gtklabel.c b/gtk/gtklabel.c
+index 1a2453f..4bb92fd 100644
+--- a/gtk/gtklabel.c
++++ b/gtk/gtklabel.c
+@@ -6755,6 +6755,11 @@ emit_activate_link (GtkLabel     *label,
+   GtkStateFlags state;
+ 
+   g_signal_emit (label, signals[ACTIVATE_LINK], 0, link->uri, &handled);
++
++  /* signal handler might have invalidated the layout */
++  if (!priv->layout)
++    return;
++
+   if (handled && priv->track_links && !link->visited &&
+       priv->select_info && priv->select_info->links)
+     {

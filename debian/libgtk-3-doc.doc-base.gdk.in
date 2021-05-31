@@ -1,0 +1,13 @@
+Document: gdk3
+Title: GDK Reference Manual
+Author: Damon Chaplin et al.
+Abstract: The GDK library provides an OS-independant wrapper around the
+ most fundamental graphical user interface functions.  This allows
+ GTK to be ported to non-X11 systems, as long as GDK is ported first.
+ .
+ This document covers programming in GDK.
+Section: Programming/C
+
+Format: HTML
+Index: /usr/share/doc/@DOC_PKG@/gdk3/index.html
+Files: /usr/share/doc/@DOC_PKG@/gdk3/*.html

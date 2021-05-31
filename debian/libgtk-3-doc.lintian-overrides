@@ -1,0 +1,2 @@
+# https://bugs.debian.org/970275
+libgtk-3-doc: package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/*

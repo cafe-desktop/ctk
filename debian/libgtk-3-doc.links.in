@@ -1,0 +1,12 @@
+usr/share/gtk-doc/html/gdk3 usr/share/doc/@DEV_PKG@/gdk3
+usr/share/gtk-doc/html/gdk3 usr/share/doc/@DOC_PKG@/gdk3
+usr/share/gtk-doc/html/gtk3 usr/share/doc/@DEV_PKG@/gtk3
+usr/share/gtk-doc/html/gtk3 usr/share/doc/@DOC_PKG@/gtk3
+usr/share/doc/libatk1.0-doc/atk usr/share/doc/@DEV_PKG@/atk
+usr/share/doc/libatk1.0-doc/atk usr/share/doc/@DOC_PKG@/atk
+usr/share/doc/libglib2.0-doc/glib usr/share/doc/@DEV_PKG@/glib
+usr/share/doc/libglib2.0-doc/glib usr/share/doc/@DOC_PKG@/glib
+usr/share/doc/libglib2.0-doc/gobject usr/share/doc/@DEV_PKG@/gobject
+usr/share/doc/libglib2.0-doc/gobject usr/share/doc/@DOC_PKG@/gobject
+usr/share/doc/libpango1.0-doc/pango usr/share/doc/@DEV_PKG@/pango
+usr/share/doc/libpango1.0-doc/pango usr/share/doc/@DOC_PKG@/pango

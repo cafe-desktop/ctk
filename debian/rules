@@ -1,0 +1,248 @@
+#!/usr/bin/make -f
+
+DISABLE_UPDATE_UPLOADERS = 1
+include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
+include /usr/share/dpkg/default.mk
+include /usr/share/dpkg/pkg-info.mk
+
+built_binaries := $(shell dh_listpackages)
+all_binaries := $(shell sed -ne 's/^Package: *//p' < debian/control)
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+# Ensure the build aborts when there are still references to undefined symbols
+# currently fails at least in the im-multipress im module
+#LDFLAGS += -Wl,-z,defs
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,-O1 -Wl,--as-needed
+
+APIVER := 3
+SONAME := 0
+
+LIBDIR := usr/lib/$(DEB_HOST_MULTIARCH)
+
+# earliest version that this release has backwards binary compatibility for
+GTK_BINARY_VERSION := 3.0.0
+
+# Gtk binary version virtual Provide
+GTK_BINVER_DEP := gtk$(APIVER)-binver-$(GTK_BINARY_VERSION)
+
+# relative base directory for configuration
+CONFDIR := etc/gtk-3.0
+
+# relative base directory for all types of modules
+MODULES_BASE_PATH := $(LIBDIR)/gtk-3.0/$(GTK_BINARY_VERSION)
+OLD_MODULES_BASE_PATH := usr/lib/gtk-3.0/$(GTK_BINARY_VERSION)
+
+# package names
+SHARED_PKG := libgtk-$(APIVER)-$(SONAME)
+COMMON_PKG := libgtk-$(APIVER)-common
+DEV_PKG := libgtk-$(APIVER)-dev
+UDEB_PKG := $(SHARED_PKG)-udeb
+DOC_PKG := libgtk-$(APIVER)-doc
+BIN_PKG := libgtk-$(APIVER)-bin
+EXAMPLES_PKG := gtk-$(APIVER)-examples
+
+# files larger than 4k in size will be compressed by dh_compress
+# so append a .gz suffix to avoid dangling symlinks
+NEWS := NEWS$(shell find -maxdepth 1 -size +4k -name NEWS -exec echo ".gz" \;)
+README := README$(shell find -maxdepth 1 -size +4k -name README -exec echo ".gz" \;)
+
+# Avoid test failures on buildd environments
+export HOME=$(CURDIR)/debian/build
+export XDG_RUNTIME_DIR=$(HOME)
+# So that gsettings can find the (uninstalled) gtk schemas
+export XDG_DATA_DIRS=/usr/share:$(CURDIR)/debian/build
+# Put these back to their defaults if we are not running with a clean
+# environment, so that they are based on the temporary $HOME above
+unexport XDG_CACHE_HOME
+unexport XDG_CONFIG_DIRS
+unexport XDG_CONFIG_HOME
+unexport XDG_DATA_HOME
+# Get failing tests' stdout/err so we have some information when a build fails
+export VERBOSE=1
+
+# macro computing the list of 'debian/<pkg>.*" files which have a
+# corresponding ".in" file; pass the list of packages in $(1)
+dh_subst_files = $(patsubst %.in,%,$(wildcard $(addprefix debian/, $(addsuffix *.in, $(1)))))
+
+debian/%: debian/%.in
+	dh_testdir
+	sed \
+		-e "s#@SONAME@#$(SONAME)#g" \
+		-e "s#@APIVER@#$(APIVER)#g" \
+		-e "s#@VERSION@#$(DEB_VERSION_UPSTREAM)#g" \
+		-e "s#@GTK_BINVER_DEP@#$(GTK_BINVER_DEP)#g" \
+		-e "s#@SHARED_PKG@#$(SHARED_PKG)#g" \
+		-e "s#@COMMON_PKG@#$(COMMON_PKG)#g" \
+		-e "s#@DEV_PKG@#$(DEV_PKG)#g" \
+		-e "s#@UDEB_PKG@#$(UDEB_PKG)#g" \
+		-e "s#@DOC_PKG@#$(DOC_PKG)#g" \
+		-e "s#@BIN_PKG@#$(BIN_PKG)#g" \
+		-e "s#@EXAMPLES_PKG@#$(EXAMPLES_PKG)#g" \
+		-e "s#@GNOME_TEAM@#$(UPLOADERS)#g" \
+		-e "s#@GTK_BINARY_VERSION@#$(GTK_BINARY_VERSION)#g" \
+		-e "s#@LIBDIR@#$(LIBDIR)#g" \
+		-e 's#@CONFDIR@#$(CONFDIR)#g' \
+		-e "s#@MODULES_BASE_PATH@#$(MODULES_BASE_PATH)#g" \
+		-e "s#@OLD_MODULES_BASE_PATH@#$(OLD_MODULES_BASE_PATH)#g" \
+		-e "s#@NEWS@#$(NEWS)#g" \
+		-e "s#@README@#$(README)#g" \
+		$@.in > $@
+
+configure_flags_common = \
+	--libdir=/$(LIBDIR) \
+	--enable-test-print-backend
+
+configure_flags_deb = \
+	--enable-broadway-backend \
+	--enable-x11-backend \
+	--enable-gtk-doc \
+	--enable-man \
+	--enable-shared \
+	--enable-introspection \
+	--enable-cloudprint \
+	--disable-static \
+	--enable-installed-tests
+
+ifeq (,$(filter stage1,$(DEB_BUILD_PROFILES)))
+configure_flags_deb += --enable-colord
+else
+configure_flags_deb += --disable-colord
+endif
+
+ifeq (linux,$(DEB_HOST_ARCH_OS))
+configure_flags_deb += --enable-wayland-backend
+else
+configure_flags_deb += --disable-wayland-backend
+endif
+
+ifeq ($(filter %-doc,$(built_binaries)),)
+configure_flags_deb += --disable-gtk-doc --disable-man
+endif
+
+configure_flags_udeb = \
+	--disable-broadway-backend \
+	--disable-wayland-backend \
+	--enable-x11-backend \
+	--disable-introspection \
+	--disable-cloudprint \
+	--disable-colord \
+	--disable-xcomposite \
+	--disable-xdamage \
+	--disable-xfixes \
+	--disable-xrandr
+
+%:
+	dh $@ --buildsystem=autoconf
+
+override_dh_clean: debian/control
+	# gross kludge to force control generation with the %.in target
+	touch debian/control.in
+	rm -f $(call dh_subst_files,$(all_binaries))
+	rm -f testsuite/reftests/*.ui.known_fail
+	rm -rf debian/build debian/install
+	# The build system does not automatically update the GResource files
+	# when resources change. Force an update in case we ship a patch which
+	# modifies the theme CSS files.
+	rm -f gtk/gtkresources.c gtk/gtkresources.h
+	rm -f gtk/theme/Adwaita/gtk-contained.css
+	rm -f gtk/theme/Adwaita/gtk-contained-dark.css
+	rm -f gtk/theme/HighContrast/gtk-contained.css
+	rm -f gtk/theme/HighContrast/gtk-contained-inverse.css
+	# We just don't want to have to review these...
+	rm -f demos/gtk-demo/demo_resources.[ch]
+	rm -f demos/icon-browser/resources.[ch]
+	rm -f demos/widget-factory/widget_factory_resources.[ch]
+	rm -f docs/reference/gtk/getting_started.xml
+	rm -f examples/application*/resources.[ch]
+	rm -f gdk/gdkenumtypes.[ch]
+	rm -f gdk/gdkmarshalers.[ch]
+	rm -f gdk/gdkresources.[ch]
+	rm -f gtk/gtkmarshalers.[ch]
+	rm -f gtk/gtkprivatetypebuiltins.[ch]
+	rm -f gtk/gtkresources.[ch]
+	rm -f gtk/gtktypebuiltins.[ch]
+	rm -f testsuite/css/style/resources.[ch]
+	rm -f testsuite/gtk/gtkresources.[ch]
+	dh_clean
+
+# Add dependencies to generate files from the debian/*.in ones
+override_dh_auto_build: $(call dh_subst_files,$(all_binaries))
+
+override_dh_autoreconf:
+	NOCONFIGURE=true dh_autoreconf ./autogen.sh
+
+override_dh_auto_configure: debian/control
+	dh_auto_configure \
+		--builddirectory=debian/build/deb \
+		-- \
+		$(configure_flags_common) \
+		$(configure_flags_deb) \
+		$(NULL)
+ifneq ($(filter %-udeb,$(built_binaries)),)
+	dh_auto_configure \
+		--builddirectory=debian/build/udeb \
+		-- \
+		$(configure_flags_common) \
+		$(configure_flags_udeb) \
+		$(NULL)
+endif
+
+override_dh_auto_build:
+	( cd gtk/theme/Adwaita; ./parse-sass.sh )
+	( cd gtk/theme/HighContrast; ./parse-sass.sh )
+	dh_auto_build --builddirectory=debian/build/deb
+ifneq ($(filter %-udeb,$(built_binaries)),)
+	dh_auto_build --builddirectory=debian/build/udeb
+endif
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	# Mark reftests with known failures as non-fatal
+	# (See also somehow_broken in testsuite/reftests/meson.build)
+	touch testsuite/reftests/button-wrapping.ui.known_fail
+	touch testsuite/reftests/cellrenderer-pixbuf-stock-rtl.ui.known_fail
+	touch testsuite/reftests/flipping-icons.ui.known_fail
+	touch testsuite/reftests/label-sizing.ui.known_fail
+	touch testsuite/reftests/label-wrap-justify.ui.known_fail
+	touch testsuite/reftests/quit-mnemonic.ui.known_fail
+	touch testsuite/reftests/symbolic-icon-translucent-color.ui.known_fail
+	touch testsuite/reftests/window-height-for-width.ui.known_fail
+	# So that gsettings can find the (uninstalled) gtk schemas
+	mkdir -p debian/build/glib-2.0/schemas/
+	cp gtk/org.gtk.* debian/build/glib-2.0/schemas/
+	glib-compile-schemas debian/build/glib-2.0/schemas/
+	# Remove LD_PRELOAD so we don't run with fakeroot, which makes dbus-related tests fail
+	env -u LD_PRELOAD xvfb-run -a dh_auto_test --builddirectory=debian/build/deb -- -k check -j1
+endif
+
+override_dh_auto_install:
+	dh_auto_install --builddirectory=debian/build/deb --destdir=debian/install/deb
+	rm -v -f debian/install/deb/usr/libexec/installed-tests/gtk+/reftests/libreftest.la
+ifneq ($(filter %-udeb,$(built_binaries)),)
+	dh_auto_install --builddirectory=debian/build/udeb --destdir=debian/install/udeb
+endif
+
+override_dh_install:
+	dh_install -p$(UDEB_PKG) --sourcedir=debian/install/udeb
+	dh_install --remaining-packages --sourcedir=debian/install/deb
+
+override_dh_missing:
+ifneq ($(filter %-udeb,$(built_binaries)),)
+	dh_missing --sourcedir=debian/install/udeb --list-missing -X.la
+endif
+	dh_missing --sourcedir=debian/install/deb --list-missing -X.la
+
+override_dh_installchangelogs:
+	dh_installchangelogs -XChangeLog
+
+override_dh_installdocs:
+	dh_installdocs -p$(COMMON_PKG) AUTHORS README NEWS
+	# We need to install AUTHORS in /u/s/d/l-doc, not -dev according to
+	# debhelper 11's defaults, otherwise it would have file conflicts
+	dh_installdocs -p$(DOC_PKG) --doc-main-package=$(DOC_PKG) AUTHORS -X.in
+	dh_installdocs --remaining-packages -A AUTHORS
+
+override_dh_makeshlibs:
+	dh_makeshlibs -p$(SHARED_PKG) --add-udeb=$(UDEB_PKG) -X$(MODULES_BASE_PATH) -- -c4
+	dh_makeshlibs -plibgail-3-0 -- -c4
+	dh_makeshlibs --remaining-packages -X$(MODULES_BASE_PATH)

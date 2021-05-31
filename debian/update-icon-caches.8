@@ -1,0 +1,19 @@
+.TH UPDATE-ICON-CACHES 8 "13 July 2007"
+.SH NAME
+update-icon-caches \- Update wrapper script for the icon caches
+.SH SYNOPSIS
+\fBupdate-icon-caches\fP \fIdirectory\fP [ \fI...\fP ]
+.SH DESCRIPTION
+\fBupdate-icon-caches\fP is a wrapper script for updating the icon
+caches in a list of directories.
+.P
+In each of the directories passed as arguments, the icon cache is
+updated if it is already present. It is not created if it does not
+already exist.
+.P
+If the theme index file is not present, the icon cache is removed.
+.SH SEE ALSO
+.BR gtk-update-icon-cache (1)
+.SH AUTHOR
+This manual page was written by Josselin Mouette <joss@debian.org>,
+for the Debian GNU/Linux system.

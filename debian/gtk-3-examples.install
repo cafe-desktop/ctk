@@ -1,0 +1,17 @@
+usr/bin/gtk3-demo
+usr/bin/gtk3-demo-application
+usr/bin/gtk3-icon-browser
+usr/bin/gtk3-widget-factory
+usr/libexec/installed-tests/gtk+
+usr/share/applications/gtk3-demo.desktop
+usr/share/applications/gtk3-icon-browser.desktop
+usr/share/applications/gtk3-widget-factory.desktop
+usr/share/glib-2.0/schemas/org.gtk.Demo.gschema.xml
+usr/share/glib-2.0/schemas/org.gtk.exampleapp.gschema.xml
+usr/share/icons/hicolor/*/*/gtk3-demo*
+usr/share/icons/hicolor/*/*/gtk3-widget-factory*
+usr/share/installed-tests/gtk+
+usr/share/man/*/gtk3-demo-application.*
+usr/share/man/*/gtk3-demo.*
+usr/share/man/*/gtk3-icon-browser.*
+usr/share/man/*/gtk3-widget-factory.*

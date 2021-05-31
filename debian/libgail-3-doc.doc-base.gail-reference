@@ -1,0 +1,9 @@
+Document: gail-reference-3
+Title: Gail Reference Manual
+Author: Padraig O'Briain <padraig.obriain@sun.com>
+Abstract: This manual describes APIs for libgail-util
+Section: Accessibility
+
+Format: HTML
+Index: /usr/share/doc/libgail-3-doc/html/index.html
+Files: /usr/share/doc/libgail-3-doc/html/*.html

@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+IMMODULES_DIR=/@MODULES_BASE_PATH@/immodules
+IMMODULES_DIR_OLD=/@OLD_MODULES_BASE_PATH@/immodules
+
+if [ "$1" = triggered ]; then
+    # This is triggered everytime an application installs a
+    # GTK immodule loader
+    /@LIBDIR@/@SHARED_PKG@/gtk-query-immodules-3.0 --update-cache || true
+    exit 0
+fi
+
+#DEBHELPER#
+
+# Also handle the initial installation
+if [ -d $IMMODULES_DIR ] || [ -d $IMMODULES_DIR_OLD ]; then
+     /@LIBDIR@/@SHARED_PKG@/gtk-query-immodules-3.0 --update-cache || true
+fi
+

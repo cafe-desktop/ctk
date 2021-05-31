@@ -1,0 +1,6 @@
+@CONFDIR@/im-multipress.conf
+usr/share/locale
+usr/share/themes
+usr/share/glib-2.0/schemas/org.gtk.Settings.EmojiChooser.gschema.xml
+usr/share/glib-2.0/schemas/org.gtk.Settings.FileChooser.gschema.xml
+usr/share/glib-2.0/schemas/org.gtk.Settings.ColorChooser.gschema.xml

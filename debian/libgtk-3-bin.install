@@ -1,0 +1,13 @@
+usr/bin/broadwayd
+usr/bin/gtk-builder-tool
+usr/bin/gtk-encode-symbolic-svg
+usr/bin/gtk-launch
+usr/bin/gtk-query-settings
+usr/share/gettext/its/gtkbuilder.its
+usr/share/gettext/its/gtkbuilder.loc
+usr/share/man/*/gtk-encode-symbolic-svg.*
+usr/share/man/man1/broadwayd.1
+usr/share/man/man1/gtk-builder-tool.1
+usr/share/man/man1/gtk-launch.1
+usr/share/man/man1/gtk-query-immodules-3.0.1
+usr/share/man/man1/gtk-query-settings.1

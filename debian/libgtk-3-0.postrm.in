@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+#DEBHELPER#
+
+if [ -d /@MODULES_BASE_PATH@ ]; then
+    # Purge the cache
+    rm -f /@MODULES_BASE_PATH@/immodules.cache
+    rmdir -p --ignore-fail-on-non-empty /@MODULES_BASE_PATH@
+fi

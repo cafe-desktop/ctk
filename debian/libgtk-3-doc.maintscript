@@ -1,0 +1,4 @@
+dir_to_symlink /usr/share/doc/libgtk-3-doc/gdk3 ../../gtk-doc/html/gdk3 3.24.10-2~
+dir_to_symlink /usr/share/doc/libgtk-3-doc/gtk3 ../../gtk-doc/html/gtk3 3.24.10-2~
+symlink_to_dir /usr/share/gtk-doc/html/gdk3 ../../doc/libgtk-3-doc/gdk3 3.24.10-2~
+symlink_to_dir /usr/share/gtk-doc/html/gtk3 ../../doc/libgtk-3-doc/gtk3 3.24.10-2~

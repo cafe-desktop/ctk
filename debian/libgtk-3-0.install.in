@@ -1,0 +1,5 @@
+usr/bin/gtk-query-immodules-3.0 @LIBDIR@/@SHARED_PKG@
+@MODULES_BASE_PATH@/immodules/*.so
+@MODULES_BASE_PATH@/printbackends/*.so
+@LIBDIR@/libgtk*.so.*
+@LIBDIR@/libgdk*.so.*

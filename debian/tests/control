@@ -1,0 +1,11 @@
+Tests: build python3-gi
+Depends: libgtk-3-dev, build-essential, xauth, xvfb, python3-gi, gir1.2-gtk-3.0, dbus
+Restrictions: allow-stderr, superficial
+
+Tests: installed-tests
+Depends: at-spi2-core, dbus (>= 1.8), gnome-desktop-testing (>= 2018.1-1~), gtk-3-examples, librsvg2-common, xauth, xvfb
+Restrictions: allow-stderr
+
+Tests: installed-tests-a11ystate installed-tests-reftests
+Depends: at-spi2-core, dbus (>= 1.8), gnome-desktop-testing (>= 2018.1-1~), gtk-3-examples, librsvg2-common, xauth, xvfb
+Restrictions: allow-stderr, flaky

@@ -1,0 +1,46 @@
+From: Ondrej Holy <oholy@redhat.com>
+Date: Tue, 13 Apr 2021 15:55:19 +0200
+Subject: placesview: Open location even if mount was not found
+
+Some locations have to be mounted, but their mounts are not user-visible
+(e.g. smb-browse). Though this is maybe a bit weird, it is how it works
+for years. The problem is that the commit 267ea755, which tries to get the
+default location for opening, caused regression as it doesn't expect such
+possibility. Before this commit, such locations were opened without any
+issue, but nothing happens currently after clicking to "Connect" except of
+clearing the "Connect to Server" entry. Let's fallback to the original
+location if the mount was not found to fix this regression.
+
+Bug: https://gitlab.gnome.org/GNOME/nautilus/-/issues/1811
+Origin: upstream, 3.24.29, commit:4fe7b3ec25a1a82e0682963a26bbe642072b4fa0
+---
+ gtk/gtkplacesview.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/gtk/gtkplacesview.c b/gtk/gtkplacesview.c
+index 62eb5d09..89f7ace 100644
+--- a/gtk/gtkplacesview.c
++++ b/gtk/gtkplacesview.c
+@@ -1267,6 +1267,11 @@ server_mount_ready_cb (GObject      *source_file,
+           GMount *mount;
+           GFile *root;
+ 
++          /*
++           * If the mount is not found at this point, it is probably user-
++           * invisible, which happens e.g for smb-browse, but the location
++           * should be opened anyway...
++           */
+           mount = g_file_find_enclosing_mount (location, priv->cancellable, NULL);
+           if (mount)
+             {
+@@ -1277,6 +1282,10 @@ server_mount_ready_cb (GObject      *source_file,
+               g_object_unref (root);
+               g_object_unref (mount);
+             }
++          else
++            {
++              emit_open_location (view, location, priv->open_flags);
++            }
+         }
+     }
+ 

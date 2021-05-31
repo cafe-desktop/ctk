@@ -1,0 +1,33 @@
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 14 Jan 2021 15:47:36 +0100
+Subject: gdk/wayland: Mark matched settings from the portal as valid
+
+Commit e6209de9625 added some checks on TranslationEntry.valid in
+order to figure out whether using the new font settings or the
+old g-s-d ones. However that's only set in the non-sandboxed case.
+
+This makes sandboxed applications fallback to the old (and also
+non-existing with modern g-s-d) settings, possibly resulting in
+ugly defaults being picked.
+
+Fix this by also marking TranslationEntry elements as valid when
+using the settings portal, precisely those entries that we are able
+to read and match with our own table.
+
+Origin: upstream, 3.24.25, commit:02a02fac56f3291108c987bb0448406478150056
+---
+ gdk/wayland/gdkscreen-wayland.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gdk/wayland/gdkscreen-wayland.c b/gdk/wayland/gdkscreen-wayland.c
+index 01e420c..e52f917 100644
+--- a/gdk/wayland/gdkscreen-wayland.c
++++ b/gdk/wayland/gdkscreen-wayland.c
+@@ -765,6 +765,7 @@ init_settings (GdkScreen *screen)
+                   char *a = g_variant_print (v, FALSE);
+                   g_debug ("Using portal setting for %s %s: %s\n", schema, key, a);
+                   g_free (a);
++                  entry->valid = TRUE;
+                   apply_portal_setting (entry, v, screen);
+                 }
+               else

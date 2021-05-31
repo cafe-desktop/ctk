@@ -1,0 +1,39 @@
+Missing sources from gtk+3.0
+============================
+
+zlib.js-0.1.6
+-------------
+
+Source for: gdk/broadway/rawinflate.min.js
+Obtained from: <https://github.com/imaya/zlib.js> tag "0.1.6"
+Files removed:
+    bin/* except for rawinflate.min.js* (precompiled, not needed here)
+    .travis/, .travis.yml (regression tests, not needed here)
+    test/ (regression tests, not needed here)
+    vendor/google-closure-compiler/ (third-party, source not included)
+    vendor/mt.js/ (third-party, only needed for tests)
+
+gdk/broadway/rawinflate.min.js is identical to bin/rawinflate.min.js.
+
+Debian's closure-compiler_20130227+dfsg1-6 is not identical to the one
+originally distributed with zlib.js, but produces output closely resembling
+bin/rawinflate.min.js when invoked like this (command line adapted from
+build.xml, using bin/rawinflate.min.js.map to determine minimal sources):
+
+    cat LICENSE_min
+    echo -n '(function() {'
+    closure-compiler --compilation_level=ADVANCED_OPTIMIZATIONS \
+        --warning_level=VERBOSE \
+        --define=goog.DEBUG=false \
+        --summary_detail_level=3 \
+        --language_in=ECMASCRIPT5_STRICT \
+        --source_map_format=V3 \
+        --process_closure_primitives \
+        --js closure-primitives/base.js \
+        --js define/typedarray/hybrid.js \
+        --js=src/export_object.js \
+        --js=src/huffman.js \
+        --js=src/rawinflate.js \
+        --js=src/zlib.js \
+        --js=export/rawinflate.js
+    echo -n '}).call(this); //@ sourceMappingURL=rawinflate.min.js.map'

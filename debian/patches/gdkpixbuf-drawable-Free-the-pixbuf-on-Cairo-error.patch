@@ -1,0 +1,23 @@
+From: Adrien Plazas <kekun.plazas@laposte.net>
+Date: Mon, 14 Dec 2020 13:39:42 +0100
+Subject: gdkpixbuf-drawable: Free the pixbuf on Cairo error
+
+This avoids leaking the pixbuf.
+
+Origin: upstream, 3.24.25, commit:c4f8eb7ec998f1200a5e662e00bad04acf0eb0ea
+---
+ gdk/gdkpixbuf-drawable.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gdk/gdkpixbuf-drawable.c b/gdk/gdkpixbuf-drawable.c
+index d2c142a..603c8ff 100644
+--- a/gdk/gdkpixbuf-drawable.c
++++ b/gdk/gdkpixbuf-drawable.c
+@@ -288,6 +288,7 @@ gdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
+   if (cairo_surface_status (surface) || dest == NULL)
+     {
+       cairo_surface_destroy (surface);
++      g_clear_object (&dest);
+       return NULL;
+     }
+ 
