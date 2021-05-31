@@ -92,9 +92,10 @@ requires:
     - libcairo2-doc
     - libglib2.0-doc
     - libpango1.0-doc
+    - curl
 
 build_scripts:
-  - dpkg-buildpackage -b -rfakeroot -us -uc
+  - ./buildPackages.sh $CPU_COUNT
 
 releases:
   draft: false
