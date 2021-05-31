@@ -32,7 +32,7 @@ typedef struct
 
 } GtkApplicationImplX11;
 
-G_DEFINE_TYPE (GtkApplicationImplX11, ctk_application_impl_x11, GTK_TYPE_APPLICATION_IMPL_DBUS)
+G_DEFINE_TYPE (GtkApplicationImplX11, ctk_application_impl_x11, CTK_TYPE_APPLICATION_IMPL_DBUS)
 
 static void
 ctk_application_impl_x11_handle_window_realize (GtkApplicationImpl *impl,
@@ -42,19 +42,19 @@ ctk_application_impl_x11_handle_window_realize (GtkApplicationImpl *impl,
   GdkWindow *gdk_window;
   gchar *window_path;
 
-  gdk_window = ctk_widget_get_window (GTK_WIDGET (window));
+  gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
   if (!GDK_IS_X11_WINDOW (gdk_window))
     return;
 
   window_path = ctk_application_impl_dbus_get_window_path (dbus, window);
 
-  gdk_x11_window_set_utf8_property (gdk_window, "_GTK_APPLICATION_ID", dbus->application_id);
-  gdk_x11_window_set_utf8_property (gdk_window, "_GTK_UNIQUE_BUS_NAME", dbus->unique_name);
-  gdk_x11_window_set_utf8_property (gdk_window, "_GTK_APPLICATION_OBJECT_PATH", dbus->object_path);
-  gdk_x11_window_set_utf8_property (gdk_window, "_GTK_WINDOW_OBJECT_PATH", window_path);
-  gdk_x11_window_set_utf8_property (gdk_window, "_GTK_APP_MENU_OBJECT_PATH", dbus->app_menu_path);
-  gdk_x11_window_set_utf8_property (gdk_window, "_GTK_MENUBAR_OBJECT_PATH", dbus->menubar_path);
+  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_APPLICATION_ID", dbus->application_id);
+  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_UNIQUE_BUS_NAME", dbus->unique_name);
+  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_APPLICATION_OBJECT_PATH", dbus->object_path);
+  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_WINDOW_OBJECT_PATH", window_path);
+  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_APP_MENU_OBJECT_PATH", dbus->app_menu_path);
+  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_MENUBAR_OBJECT_PATH", dbus->menubar_path);
 
   g_free (window_path);
 }
@@ -65,12 +65,12 @@ ctk_application_impl_x11_get_window_system_id (GtkApplicationImplDBus *dbus,
 {
   GdkWindow *gdk_window;
 
-  gdk_window = ctk_widget_get_window (GTK_WIDGET (window));
+  gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
   if (GDK_IS_X11_WINDOW (gdk_window))
     return g_variant_new_uint32 (GDK_WINDOW_XID (gdk_window));
 
-  return GTK_APPLICATION_IMPL_DBUS_CLASS (ctk_application_impl_x11_parent_class)->get_window_system_id (dbus, window);
+  return CTK_APPLICATION_IMPL_DBUS_CLASS (ctk_application_impl_x11_parent_class)->get_window_system_id (dbus, window);
 }
 
 static void
@@ -92,8 +92,8 @@ ctk_application_impl_x11_before_emit (GtkApplicationImpl *impl,
 static void
 ctk_application_impl_x11_class_init (GtkApplicationImplX11Class *class)
 {
-  GtkApplicationImplDBusClass *dbus_class = GTK_APPLICATION_IMPL_DBUS_CLASS (class);
-  GtkApplicationImplClass *impl_class = GTK_APPLICATION_IMPL_CLASS (class);
+  GtkApplicationImplDBusClass *dbus_class = CTK_APPLICATION_IMPL_DBUS_CLASS (class);
+  GtkApplicationImplClass *impl_class = CTK_APPLICATION_IMPL_CLASS (class);
 
   impl_class->handle_window_realize = ctk_application_impl_x11_handle_window_realize;
   dbus_class->get_window_system_id = ctk_application_impl_x11_get_window_system_id;

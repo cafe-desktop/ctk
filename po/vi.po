@@ -4140,16 +4140,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Bật thống kê bằng GOBJECT_DEBUG=instance-count"
 
 #: gtk/inspector/visual.c:263 gtk/inspector/visual.c:278
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "Chủ đề bị có định do GTK_THEME"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "Chủ đề bị có định do CTK_THEME"
 
 #: gtk/inspector/visual.c:453
 msgid "Backend does not support window scaling"
 msgstr "Phần ứng dụng chạy phía sau không hỗ trợ co dãn cửa sổ"
 
 #: gtk/inspector/visual.c:492
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "Cài đặt bị cố định bởi GTK_TEST_TOUCHSCREEN"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "Cài đặt bị cố định bởi CTK_TEST_TOUCHSCREEN"
 
 #: gtk/inspector/visual.c:557
 msgid ""

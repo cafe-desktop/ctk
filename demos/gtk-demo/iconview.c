@@ -142,12 +142,12 @@ create_store (void)
                               G_TYPE_BOOLEAN);
 
   /* Set sort column and function */
-  ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
+  ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (store),
                                            sort_func,
                                            NULL, NULL);
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
-                                        GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
-                                        GTK_SORT_ASCENDING);
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (store),
+                                        CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+                                        CTK_SORT_ASCENDING);
 
   return store;
 }
@@ -162,11 +162,11 @@ item_activated (GtkIconView *icon_view,
   GtkTreeIter iter;
   gboolean is_dir;
 
-  store = GTK_LIST_STORE (user_data);
+  store = CTK_LIST_STORE (user_data);
 
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (store),
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (store),
                            &iter, tree_path);
-  ctk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+  ctk_tree_model_get (CTK_TREE_MODEL (store), &iter,
                       COL_PATH, &path,
                       COL_IS_DIRECTORY, &is_dir,
                       -1);
@@ -184,7 +184,7 @@ item_activated (GtkIconView *icon_view,
   fill_store (store);
 
   /* Sensitize the up button */
-  ctk_widget_set_sensitive (GTK_WIDGET (up_button), TRUE);
+  ctk_widget_set_sensitive (CTK_WIDGET (up_button), TRUE);
 }
 
 static void
@@ -194,7 +194,7 @@ up_clicked (GtkToolItem *item,
   GtkListStore *store;
   gchar *dir_name;
 
-  store = GTK_LIST_STORE (user_data);
+  store = CTK_LIST_STORE (user_data);
 
   dir_name = g_path_get_dirname (parent);
   g_free (parent);
@@ -204,7 +204,7 @@ up_clicked (GtkToolItem *item,
   fill_store (store);
 
   /* Maybe de-sensitize the up button */
-  ctk_widget_set_sensitive (GTK_WIDGET (up_button),
+  ctk_widget_set_sensitive (CTK_WIDGET (up_button),
                             strcmp (parent, "/") != 0);
 }
 
@@ -214,7 +214,7 @@ home_clicked (GtkToolItem *item,
 {
   GtkListStore *store;
 
-  store = GTK_LIST_STORE (user_data);
+  store = CTK_LIST_STORE (user_data);
 
   g_free (parent);
   parent = g_strdup (g_get_home_dir ());
@@ -222,7 +222,7 @@ home_clicked (GtkToolItem *item,
   fill_store (store);
 
   /* Sensitize the up button */
-  ctk_widget_set_sensitive (GTK_WIDGET (up_button),
+  ctk_widget_set_sensitive (CTK_WIDGET (up_button),
                             TRUE);
 }
 
@@ -250,57 +250,57 @@ do_iconview (GtkWidget *do_widget)
       GtkWidget *tool_bar;
       GtkToolItem *home_button;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_default_size (GTK_WINDOW (window), 650, 400);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_default_size (CTK_WINDOW (window), 650, 400);
 
-      ctk_window_set_screen (GTK_WINDOW (window),
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Icon View Basics");
+      ctk_window_set_title (CTK_WINDOW (window), "Icon View Basics");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (close_window), NULL);
 
       load_pixbufs ();
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
 
       tool_bar = ctk_toolbar_new ();
-      ctk_box_pack_start (GTK_BOX (vbox), tool_bar, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), tool_bar, FALSE, FALSE, 0);
 
       up_button = ctk_tool_button_new (NULL, NULL);
-      ctk_tool_button_set_label (GTK_TOOL_BUTTON (up_button), _("_Up"));
-      ctk_tool_button_set_use_underline (GTK_TOOL_BUTTON (up_button), TRUE);
-      ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (up_button), "go-up");
+      ctk_tool_button_set_label (CTK_TOOL_BUTTON (up_button), _("_Up"));
+      ctk_tool_button_set_use_underline (CTK_TOOL_BUTTON (up_button), TRUE);
+      ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (up_button), "go-up");
       ctk_tool_item_set_is_important (up_button, TRUE);
-      ctk_widget_set_sensitive (GTK_WIDGET (up_button), FALSE);
-      ctk_toolbar_insert (GTK_TOOLBAR (tool_bar), up_button, -1);
+      ctk_widget_set_sensitive (CTK_WIDGET (up_button), FALSE);
+      ctk_toolbar_insert (CTK_TOOLBAR (tool_bar), up_button, -1);
 
       home_button = ctk_tool_button_new (NULL, NULL);
-      ctk_tool_button_set_label (GTK_TOOL_BUTTON (home_button), _("_Home"));
-      ctk_tool_button_set_use_underline (GTK_TOOL_BUTTON (home_button), TRUE);
-      ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (home_button), "go-home");
+      ctk_tool_button_set_label (CTK_TOOL_BUTTON (home_button), _("_Home"));
+      ctk_tool_button_set_use_underline (CTK_TOOL_BUTTON (home_button), TRUE);
+      ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (home_button), "go-home");
       ctk_tool_item_set_is_important (home_button, TRUE);
-      ctk_toolbar_insert (GTK_TOOLBAR (tool_bar), home_button, -1);
+      ctk_toolbar_insert (CTK_TOOLBAR (tool_bar), home_button, -1);
 
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-                                           GTK_SHADOW_ETCHED_IN);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
+      ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
+                                           CTK_SHADOW_ETCHED_IN);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
 
-      ctk_box_pack_start (GTK_BOX (vbox), sw, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), sw, TRUE, TRUE, 0);
 
       /* Create the store and fill it with the contents of '/' */
       parent = g_strdup ("/");
       store = create_store ();
       fill_store (store);
 
-      icon_view = ctk_icon_view_new_with_model (GTK_TREE_MODEL (store));
-      ctk_icon_view_set_selection_mode (GTK_ICON_VIEW (icon_view),
-                                        GTK_SELECTION_MULTIPLE);
+      icon_view = ctk_icon_view_new_with_model (CTK_TREE_MODEL (store));
+      ctk_icon_view_set_selection_mode (CTK_ICON_VIEW (icon_view),
+                                        CTK_SELECTION_MULTIPLE);
       g_object_unref (store);
 
       /* Connect to the "clicked" signal of the "Up" tool button */
@@ -314,13 +314,13 @@ do_iconview (GtkWidget *do_widget)
       /* We now set which model columns that correspond to the text
        * and pixbuf of each item
        */
-      ctk_icon_view_set_text_column (GTK_ICON_VIEW (icon_view), COL_DISPLAY_NAME);
-      ctk_icon_view_set_pixbuf_column (GTK_ICON_VIEW (icon_view), COL_PIXBUF);
+      ctk_icon_view_set_text_column (CTK_ICON_VIEW (icon_view), COL_DISPLAY_NAME);
+      ctk_icon_view_set_pixbuf_column (CTK_ICON_VIEW (icon_view), COL_PIXBUF);
 
       /* Connect to the "item-activated" signal */
       g_signal_connect (icon_view, "item-activated",
                         G_CALLBACK (item_activated), store);
-      ctk_container_add (GTK_CONTAINER (sw), icon_view);
+      ctk_container_add (CTK_CONTAINER (sw), icon_view);
 
       ctk_widget_grab_focus (icon_view);
     }

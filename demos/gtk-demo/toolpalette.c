@@ -43,11 +43,11 @@ canvas_item_new (GtkWidget     *widget,
 
   icon_name = ctk_tool_button_get_icon_name (button);
   icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (widget));
-  ctk_icon_size_lookup (GTK_ICON_SIZE_DIALOG, &width, NULL);
+  ctk_icon_size_lookup (CTK_ICON_SIZE_DIALOG, &width, NULL);
   pixbuf = ctk_icon_theme_load_icon (icon_theme,
                                      icon_name,
                                      width,
-                                     GTK_ICON_LOOKUP_GENERIC_FALLBACK,
+                                     CTK_ICON_LOOKUP_GENERIC_FALLBACK,
                                      NULL);
 
   if (pixbuf)
@@ -115,28 +115,28 @@ palette_drop_item (GtkToolItem      *drag_item,
                    gint              x,
                    gint              y)
 {
-  GtkWidget *drag_group = ctk_widget_get_parent (GTK_WIDGET (drag_item));
+  GtkWidget *drag_group = ctk_widget_get_parent (CTK_WIDGET (drag_item));
   GtkToolItem *drop_item = ctk_tool_item_group_get_drop_item (drop_group, x, y);
   gint drop_position = -1;
 
   if (drop_item)
-    drop_position = ctk_tool_item_group_get_item_position (GTK_TOOL_ITEM_GROUP (drop_group), drop_item);
+    drop_position = ctk_tool_item_group_get_item_position (CTK_TOOL_ITEM_GROUP (drop_group), drop_item);
 
-  if (GTK_TOOL_ITEM_GROUP (drag_group) != drop_group)
+  if (CTK_TOOL_ITEM_GROUP (drag_group) != drop_group)
     {
       gboolean homogeneous, expand, fill, new_row;
 
       g_object_ref (drag_item);
-      ctk_container_child_get (GTK_CONTAINER (drag_group), GTK_WIDGET (drag_item),
+      ctk_container_child_get (CTK_CONTAINER (drag_group), CTK_WIDGET (drag_item),
                                "homogeneous", &homogeneous,
                                "expand", &expand,
                                "fill", &fill,
                                "new-row", &new_row,
                                NULL);
-      ctk_container_remove (GTK_CONTAINER (drag_group), GTK_WIDGET (drag_item));
-      ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (drop_group),
+      ctk_container_remove (CTK_CONTAINER (drag_group), CTK_WIDGET (drag_item));
+      ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (drop_group),
                                   drag_item, drop_position);
-      ctk_container_child_set (GTK_CONTAINER (drop_group), GTK_WIDGET (drag_item),
+      ctk_container_child_set (CTK_CONTAINER (drop_group), CTK_WIDGET (drag_item),
                                "homogeneous", homogeneous,
                                "expand", expand,
                                "fill", fill,
@@ -145,7 +145,7 @@ palette_drop_item (GtkToolItem      *drag_item,
       g_object_unref (drag_item);
     }
   else
-    ctk_tool_item_group_set_item_position (GTK_TOOL_ITEM_GROUP (drop_group),
+    ctk_tool_item_group_set_item_position (CTK_TOOL_ITEM_GROUP (drop_group),
                                            drag_item, drop_position);
 }
 
@@ -177,25 +177,25 @@ palette_drag_data_received (GtkWidget        *widget,
   GtkWidget        *drag_palette = ctk_drag_get_source_widget (context);
   GtkWidget        *drag_item = NULL;
 
-  while (drag_palette && !GTK_IS_TOOL_PALETTE (drag_palette))
+  while (drag_palette && !CTK_IS_TOOL_PALETTE (drag_palette))
     drag_palette = ctk_widget_get_parent (drag_palette);
 
   if (drag_palette)
     {
-      drag_item = ctk_tool_palette_get_drag_item (GTK_TOOL_PALETTE (drag_palette),
+      drag_item = ctk_tool_palette_get_drag_item (CTK_TOOL_PALETTE (drag_palette),
                                                   selection);
-      drop_group = ctk_tool_palette_get_drop_group (GTK_TOOL_PALETTE (widget),
+      drop_group = ctk_tool_palette_get_drop_group (CTK_TOOL_PALETTE (widget),
                                                     x, y);
     }
 
-  if (GTK_IS_TOOL_ITEM_GROUP (drag_item))
-    palette_drop_group (GTK_TOOL_PALETTE (drag_palette),
-                        GTK_TOOL_ITEM_GROUP (drag_item),
+  if (CTK_IS_TOOL_ITEM_GROUP (drag_item))
+    palette_drop_group (CTK_TOOL_PALETTE (drag_palette),
+                        CTK_TOOL_ITEM_GROUP (drag_item),
                         drop_group);
-  else if (GTK_IS_TOOL_ITEM (drag_item) && drop_group)
+  else if (CTK_IS_TOOL_ITEM (drag_item) && drop_group)
     {
-      ctk_widget_get_allocation (GTK_WIDGET (drop_group), &allocation);
-      palette_drop_item (GTK_TOOL_ITEM (drag_item),
+      ctk_widget_get_allocation (CTK_WIDGET (drop_group), &allocation);
+      palette_drop_item (CTK_TOOL_ITEM (drag_item),
                          drop_group,
                          x - allocation.x,
                          y - allocation.y);
@@ -222,19 +222,19 @@ passive_canvas_drag_data_received (GtkWidget        *widget,
   CanvasItem *canvas_item = NULL;
   GtkWidget *tool_item = NULL;
 
-  while (palette && !GTK_IS_TOOL_PALETTE (palette))
+  while (palette && !CTK_IS_TOOL_PALETTE (palette))
     palette = ctk_widget_get_parent (palette);
 
   if (palette)
-    tool_item = ctk_tool_palette_get_drag_item (GTK_TOOL_PALETTE (palette),
+    tool_item = ctk_tool_palette_get_drag_item (CTK_TOOL_PALETTE (palette),
                                                 selection);
 
   g_assert (NULL == drop_item);
 
   /* append a new canvas item when a tool button was found */
 
-  if (GTK_IS_TOOL_ITEM (tool_item))
-    canvas_item = canvas_item_new (widget, GTK_TOOL_BUTTON (tool_item), x, y);
+  if (CTK_IS_TOOL_ITEM (tool_item))
+    canvas_item = canvas_item_new (widget, CTK_TOOL_BUTTON (tool_item), x, y);
 
   if (canvas_item)
     {
@@ -298,18 +298,18 @@ interactive_canvas_drag_data_received (GtkWidget        *widget,
   GtkWidget *tool_item = NULL;
   CanvasItem *item;
 
-  while (palette && !GTK_IS_TOOL_PALETTE (palette))
+  while (palette && !CTK_IS_TOOL_PALETTE (palette))
     palette = ctk_widget_get_parent (palette);
 
   if (palette)
-    tool_item = ctk_tool_palette_get_drag_item (GTK_TOOL_PALETTE (palette),
+    tool_item = ctk_tool_palette_get_drag_item (CTK_TOOL_PALETTE (palette),
                                                 selection);
 
   /* create a canvas item when a tool button was found */
 
   g_assert (NULL == drop_item);
 
-  if (!GTK_IS_TOOL_ITEM (tool_item))
+  if (!CTK_IS_TOOL_ITEM (tool_item))
     return;
 
   if (drop_item)
@@ -318,7 +318,7 @@ interactive_canvas_drag_data_received (GtkWidget        *widget,
       drop_item = NULL;
     }
 
-  item = canvas_item_new (widget, GTK_TOOL_BUTTON (tool_item), x, y);
+  item = canvas_item_new (widget, CTK_TOOL_BUTTON (tool_item), x, y);
 
   /* Either create a new item or just create a preview item, 
      depending on why the drag data was requested. */
@@ -361,7 +361,7 @@ interactive_canvas_drag_leave (gpointer data)
 {
   if (drop_item)
     {
-      GtkWidget *widget = GTK_WIDGET (data);
+      GtkWidget *widget = CTK_WIDGET (data);
 
       canvas_item_free (drop_item);
       drop_item = NULL;
@@ -375,32 +375,32 @@ static void
 on_combo_orientation_changed (GtkComboBox *combo_box,
                               gpointer     user_data)
 {
-  GtkToolPalette *palette = GTK_TOOL_PALETTE (user_data);
+  GtkToolPalette *palette = CTK_TOOL_PALETTE (user_data);
   GtkScrolledWindow *sw;
   GtkTreeModel *model = ctk_combo_box_get_model (combo_box);
   GtkTreeIter iter;
   gint val = 0;
 
-  sw = GTK_SCROLLED_WINDOW (ctk_widget_get_parent (GTK_WIDGET (palette)));
+  sw = CTK_SCROLLED_WINDOW (ctk_widget_get_parent (CTK_WIDGET (palette)));
 
   if (!ctk_combo_box_get_active_iter (combo_box, &iter))
     return;
 
   ctk_tree_model_get (model, &iter, 1, &val, -1);
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (palette), val);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (palette), val);
 
-  if (val == GTK_ORIENTATION_HORIZONTAL)
-    ctk_scrolled_window_set_policy (sw, GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
+  if (val == CTK_ORIENTATION_HORIZONTAL)
+    ctk_scrolled_window_set_policy (sw, CTK_POLICY_AUTOMATIC, CTK_POLICY_NEVER);
   else
-    ctk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+    ctk_scrolled_window_set_policy (sw, CTK_POLICY_NEVER, CTK_POLICY_AUTOMATIC);
 }
 
 static void
 on_combo_style_changed (GtkComboBox *combo_box,
                         gpointer     user_data)
 {
-  GtkToolPalette *palette = GTK_TOOL_PALETTE (user_data);
+  GtkToolPalette *palette = CTK_TOOL_PALETTE (user_data);
   GtkTreeModel *model = ctk_combo_box_get_model (combo_box);
   GtkTreeIter iter;
   gint val = 0;
@@ -435,105 +435,105 @@ do_toolpalette (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Tool Palette");
-      ctk_window_set_default_size (GTK_WINDOW (window), 200, 600);
+      ctk_window_set_title (CTK_WINDOW (window), "Tool Palette");
+      ctk_window_set_default_size (CTK_WINDOW (window), 200, 600);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
-      ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+      ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
       /* Add widgets to control the ToolPalette appearance: */
-      box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-      ctk_container_add (GTK_CONTAINER (window), box);
+      box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+      ctk_container_add (CTK_CONTAINER (window), box);
 
       /* Orientation combo box: */
       orientation_model = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT);
       ctk_list_store_append (orientation_model, &iter);
       ctk_list_store_set (orientation_model, &iter,
                           0, "Horizontal",
-                          1, GTK_ORIENTATION_HORIZONTAL,
+                          1, CTK_ORIENTATION_HORIZONTAL,
                           -1);
       ctk_list_store_append (orientation_model, &iter);
       ctk_list_store_set (orientation_model, &iter,
                           0, "Vertical",
-                          1, GTK_ORIENTATION_VERTICAL,
+                          1, CTK_ORIENTATION_VERTICAL,
                           -1);
 
       combo_orientation =
-        ctk_combo_box_new_with_model (GTK_TREE_MODEL (orientation_model));
+        ctk_combo_box_new_with_model (CTK_TREE_MODEL (orientation_model));
       cell_renderer = ctk_cell_renderer_text_new ();
-      ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo_orientation),
+      ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo_orientation),
                                   cell_renderer,
                                   TRUE);
-      ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo_orientation),
+      ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (combo_orientation),
                                       cell_renderer,
                                       "text", 0,
                                       NULL);
-      ctk_combo_box_set_active_iter (GTK_COMBO_BOX (combo_orientation), &iter);
-      ctk_box_pack_start (GTK_BOX (box), combo_orientation, FALSE, FALSE, 0);
+      ctk_combo_box_set_active_iter (CTK_COMBO_BOX (combo_orientation), &iter);
+      ctk_box_pack_start (CTK_BOX (box), combo_orientation, FALSE, FALSE, 0);
 
       /* Style combo box: */
       style_model = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT);
       ctk_list_store_append (style_model, &iter);
       ctk_list_store_set (style_model, &iter,
                           0, "Text",
-                          1, GTK_TOOLBAR_TEXT,
+                          1, CTK_TOOLBAR_TEXT,
                           -1);
       ctk_list_store_append (style_model, &iter);
       ctk_list_store_set (style_model, &iter,
                           0, "Both",
-                          1, GTK_TOOLBAR_BOTH,
+                          1, CTK_TOOLBAR_BOTH,
                           -1);
       ctk_list_store_append (style_model, &iter);
       ctk_list_store_set (style_model, &iter,
                           0, "Both: Horizontal",
-                          1, GTK_TOOLBAR_BOTH_HORIZ,
+                          1, CTK_TOOLBAR_BOTH_HORIZ,
                           -1);
       ctk_list_store_append (style_model, &iter);
       ctk_list_store_set (style_model, &iter,
                           0, "Icons",
-                          1, GTK_TOOLBAR_ICONS,
+                          1, CTK_TOOLBAR_ICONS,
                           -1);
       ctk_list_store_append (style_model, &iter);
       ctk_list_store_set (style_model, &iter,
                           0, "Default",
                           1, -1,  /* A custom meaning for this demo. */
                           -1);
-      combo_style = ctk_combo_box_new_with_model (GTK_TREE_MODEL (style_model));
+      combo_style = ctk_combo_box_new_with_model (CTK_TREE_MODEL (style_model));
       cell_renderer = ctk_cell_renderer_text_new ();
-      ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo_style),
+      ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo_style),
                                   cell_renderer,
                                   TRUE);
-      ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo_style),
+      ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (combo_style),
                                       cell_renderer,
                                       "text", 0,
                                       NULL);
-      ctk_combo_box_set_active_iter (GTK_COMBO_BOX (combo_style), &iter);
-      ctk_box_pack_start (GTK_BOX (box), combo_style, FALSE, FALSE, 0);
+      ctk_combo_box_set_active_iter (CTK_COMBO_BOX (combo_style), &iter);
+      ctk_box_pack_start (CTK_BOX (box), combo_style, FALSE, FALSE, 0);
 
       /* Add hbox */
-      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
-      ctk_box_pack_start (GTK_BOX (box), hbox, TRUE, TRUE, 0);
+      hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 5);
+      ctk_box_pack_start (CTK_BOX (box), hbox, TRUE, TRUE, 0);
 
       /* Add and fill the ToolPalette: */
       palette = ctk_tool_palette_new ();
 
-      load_icon_items (GTK_TOOL_PALETTE (palette));
-      load_toggle_items (GTK_TOOL_PALETTE (palette));
-      load_special_items (GTK_TOOL_PALETTE (palette));
+      load_icon_items (CTK_TOOL_PALETTE (palette));
+      load_toggle_items (CTK_TOOL_PALETTE (palette));
+      load_special_items (CTK_TOOL_PALETTE (palette));
 
       palette_scroller = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (palette_scroller),
-                                      GTK_POLICY_NEVER,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_container_set_border_width (GTK_CONTAINER (palette_scroller), 6);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (palette_scroller),
+                                      CTK_POLICY_NEVER,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_container_set_border_width (CTK_CONTAINER (palette_scroller), 6);
       ctk_widget_set_hexpand (palette_scroller, TRUE);
 
-      ctk_container_add (GTK_CONTAINER (palette_scroller), palette);
-      ctk_container_add (GTK_CONTAINER (hbox), palette_scroller);
+      ctk_container_add (CTK_CONTAINER (palette_scroller), palette);
+      ctk_container_add (CTK_CONTAINER (hbox), palette_scroller);
 
       ctk_widget_show_all (box);
 
@@ -544,24 +544,24 @@ do_toolpalette (GtkWidget *do_widget)
                         G_CALLBACK (on_combo_style_changed), palette);
 
       /* Keep the widgets in sync: */
-      on_combo_orientation_changed (GTK_COMBO_BOX (combo_orientation), palette);
+      on_combo_orientation_changed (CTK_COMBO_BOX (combo_orientation), palette);
 
       /* ===== notebook ===== */
 
       notebook = ctk_notebook_new ();
-      ctk_container_set_border_width (GTK_CONTAINER (notebook), 6);
-      ctk_box_pack_end (GTK_BOX(hbox), notebook, FALSE, FALSE, 0);
+      ctk_container_set_border_width (CTK_CONTAINER (notebook), 6);
+      ctk_box_pack_end (CTK_BOX(hbox), notebook, FALSE, FALSE, 0);
 
       /* ===== DnD for tool items ===== */
 
       g_signal_connect (palette, "drag-data-received",
                         G_CALLBACK (palette_drag_data_received), NULL);
 
-      ctk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette),
+      ctk_tool_palette_add_drag_dest (CTK_TOOL_PALETTE (palette),
                                       palette,
-                                      GTK_DEST_DEFAULT_ALL,
-                                      GTK_TOOL_PALETTE_DRAG_ITEMS |
-                                      GTK_TOOL_PALETTE_DRAG_GROUPS,
+                                      CTK_DEST_DEFAULT_ALL,
+                                      CTK_TOOL_PALETTE_DRAG_ITEMS |
+                                      CTK_TOOL_PALETTE_DRAG_GROUPS,
                                       GDK_ACTION_MOVE);
 
       /* ===== passive DnD dest ===== */
@@ -574,20 +574,20 @@ do_toolpalette (GtkWidget *do_widget)
                         "signal::drag-data-received", passive_canvas_drag_data_received, NULL,
                         NULL);
 
-      ctk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette),
+      ctk_tool_palette_add_drag_dest (CTK_TOOL_PALETTE (palette),
                                       contents,
-                                      GTK_DEST_DEFAULT_ALL,
-                                      GTK_TOOL_PALETTE_DRAG_ITEMS,
+                                      CTK_DEST_DEFAULT_ALL,
+                                      CTK_TOOL_PALETTE_DRAG_ITEMS,
                                       GDK_ACTION_COPY);
 
       contents_scroller = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (contents_scroller),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_ALWAYS);
-      ctk_container_add (GTK_CONTAINER (contents_scroller), contents);
-      ctk_container_set_border_width (GTK_CONTAINER (contents_scroller), 6);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (contents_scroller),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_ALWAYS);
+      ctk_container_add (CTK_CONTAINER (contents_scroller), contents);
+      ctk_container_set_border_width (CTK_CONTAINER (contents_scroller), 6);
 
-      ctk_notebook_append_page (GTK_NOTEBOOK (notebook),
+      ctk_notebook_append_page (CTK_NOTEBOOK (notebook),
                                 contents_scroller,
                                 ctk_label_new ("Passive DnD Mode"));
 
@@ -604,20 +604,20 @@ do_toolpalette (GtkWidget *do_widget)
                         "signal::drag-drop", interactive_canvas_drag_drop, NULL,
                         NULL);
 
-      ctk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette),
+      ctk_tool_palette_add_drag_dest (CTK_TOOL_PALETTE (palette),
                                       contents,
-                                      GTK_DEST_DEFAULT_HIGHLIGHT,
-                                      GTK_TOOL_PALETTE_DRAG_ITEMS,
+                                      CTK_DEST_DEFAULT_HIGHLIGHT,
+                                      CTK_TOOL_PALETTE_DRAG_ITEMS,
                                       GDK_ACTION_COPY);
 
       contents_scroller = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (contents_scroller),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_ALWAYS);
-      ctk_container_add (GTK_CONTAINER (contents_scroller), contents);
-      ctk_container_set_border_width (GTK_CONTAINER (contents_scroller), 6);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (contents_scroller),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_ALWAYS);
+      ctk_container_add (CTK_CONTAINER (contents_scroller), contents);
+      ctk_container_set_border_width (CTK_CONTAINER (contents_scroller), 6);
 
-      ctk_notebook_append_page (GTK_NOTEBOOK (notebook), contents_scroller,
+      ctk_notebook_append_page (CTK_NOTEBOOK (notebook), contents_scroller,
                                 ctk_label_new ("Interactive DnD Mode"));
     }
 
@@ -642,7 +642,7 @@ load_icon_items (GtkToolPalette *palette)
   GList *l;
   GtkIconTheme *icon_theme;
 
-  icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (GTK_WIDGET (palette)));
+  icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (CTK_WIDGET (palette)));
 
   contexts = ctk_icon_theme_list_contexts (icon_theme);
   for (l = contexts; l; l = l->next)
@@ -654,7 +654,7 @@ load_icon_items (GtkToolPalette *palette)
       guint icons_count = 0;
 
       GtkWidget *group = ctk_tool_item_group_new (context);
-      ctk_container_add (GTK_CONTAINER (palette), group);
+      ctk_container_add (CTK_CONTAINER (palette), group);
 
       if (g_strcmp0 (context, "Animations") == 0)
         continue;
@@ -677,9 +677,9 @@ load_icon_items (GtkToolPalette *palette)
           g_message ("Got id '%s'", id);
 
           item = ctk_tool_button_new (NULL, NULL);
-          ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), id);
-          ctk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (item), id);
-          ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
+          ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), id);
+          ctk_tool_item_set_tooltip_text (CTK_TOOL_ITEM (item), id);
+          ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
 
           /* Prevent us having an insane number of icons: */
           ++icons_count;
@@ -703,17 +703,17 @@ load_toggle_items (GtkToolPalette *palette)
   int i;
 
   group = ctk_tool_item_group_new ("Radio Item");
-  ctk_container_add (GTK_CONTAINER (palette), group);
+  ctk_container_add (CTK_CONTAINER (palette), group);
 
   for (i = 1; i <= 10; ++i)
     {
       label = g_strdup_printf ("#%d", i);
       item = ctk_radio_tool_button_new (toggle_group);
-      ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), label);
+      ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), label);
       g_free (label);
 
-      ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
-      toggle_group = ctk_radio_tool_button_get_group (GTK_RADIO_TOOL_BUTTON (item));
+      ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
+      toggle_group = ctk_radio_tool_button_get_group (CTK_RADIO_TOOL_BUTTON (item));
     }
 }
 
@@ -724,11 +724,11 @@ create_entry_item (const char *text)
   GtkWidget *entry;
 
   entry = ctk_entry_new ();
-  ctk_entry_set_text (GTK_ENTRY (entry), text);
-  ctk_entry_set_width_chars (GTK_ENTRY (entry), 5);
+  ctk_entry_set_text (CTK_ENTRY (entry), text);
+  ctk_entry_set_width_chars (CTK_ENTRY (entry), 5);
 
   item = ctk_tool_item_new ();
-  ctk_container_add (GTK_CONTAINER (item), entry);
+  ctk_container_add (CTK_CONTAINER (item), entry);
 
   return item;
 }
@@ -743,62 +743,62 @@ load_special_items (GtkToolPalette *palette)
   group = ctk_tool_item_group_new (NULL);
   label_button = ctk_button_new_with_label ("Advanced Features");
   ctk_widget_show (label_button);
-  ctk_tool_item_group_set_label_widget (GTK_TOOL_ITEM_GROUP (group),
+  ctk_tool_item_group_set_label_widget (CTK_TOOL_ITEM_GROUP (group),
                                         label_button);
-  ctk_container_add (GTK_CONTAINER (palette), group);
+  ctk_container_add (CTK_CONTAINER (palette), group);
 
   item = create_entry_item ("homogeneous=FALSE");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
-  ctk_container_child_set (GTK_CONTAINER (group), GTK_WIDGET (item),
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_container_child_set (CTK_CONTAINER (group), CTK_WIDGET (item),
                            "homogeneous", FALSE, NULL);
 
   item = create_entry_item ("homogeneous=FALSE, expand=TRUE");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
-  ctk_container_child_set (GTK_CONTAINER (group), GTK_WIDGET (item),
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_container_child_set (CTK_CONTAINER (group), CTK_WIDGET (item),
                            "homogeneous", FALSE, "expand", TRUE,
                            NULL);
 
   item = create_entry_item ("homogeneous=FALSE, expand=TRUE, fill=FALSE");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
-  ctk_container_child_set (GTK_CONTAINER (group), GTK_WIDGET (item),
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_container_child_set (CTK_CONTAINER (group), CTK_WIDGET (item),
                            "homogeneous", FALSE, "expand", TRUE,
                            "fill", FALSE, NULL);
 
   item = create_entry_item ("homogeneous=FALSE, expand=TRUE, new-row=TRUE");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
-  ctk_container_child_set (GTK_CONTAINER (group), GTK_WIDGET (item),
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_container_child_set (CTK_CONTAINER (group), CTK_WIDGET (item),
                            "homogeneous", FALSE, "expand", TRUE,
                            "new-row", TRUE, NULL);
 
   item = ctk_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "go-up");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "go-up");
   ctk_tool_item_set_tooltip_text (item, "Show on vertical palettes only");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
   ctk_tool_item_set_visible_horizontal (item, FALSE);
 
   item = ctk_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "go-next");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "go-next");
   ctk_tool_item_set_tooltip_text (item, "Show on horizontal palettes only");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
   ctk_tool_item_set_visible_vertical (item, FALSE);
 
   item = ctk_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "edit-delete");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "edit-delete");
   ctk_tool_item_set_tooltip_text (item, "Do not show at all");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
-  ctk_widget_set_no_show_all (GTK_WIDGET (item), TRUE);
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_widget_set_no_show_all (CTK_WIDGET (item), TRUE);
 
   item = ctk_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "view-fullscreen");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "view-fullscreen");
   ctk_tool_item_set_tooltip_text (item, "Expanded this item");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
-  ctk_container_child_set (GTK_CONTAINER (group), GTK_WIDGET (item),
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_container_child_set (CTK_CONTAINER (group), CTK_WIDGET (item),
                            "homogeneous", FALSE,
                            "expand", TRUE,
                            NULL);
 
   item = ctk_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "help-browser");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "help-browser");
   ctk_tool_item_set_tooltip_text (item, "A regular item");
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (group), item, -1);
 }

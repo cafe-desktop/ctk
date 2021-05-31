@@ -46,7 +46,7 @@ main (int argc, char **argv)
 
   button = ctk_button_new_with_label ("Test");
   ctk_widget_set_size_request (button, 50, 50);
-  ctk_container_add (GTK_CONTAINER (offscreen), button);
+  ctk_container_add (CTK_CONTAINER (offscreen), button);
   ctk_widget_show (button);
 
   ctk_widget_show (offscreen);
@@ -59,11 +59,11 @@ main (int argc, char **argv)
    */
   ctk_widget_queue_draw (offscreen);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "delete-event",
                     G_CALLBACK (ctk_main_quit), window);
   da = ctk_drawing_area_new ();
-  ctk_container_add (GTK_CONTAINER (window), da);
+  ctk_container_add (CTK_CONTAINER (window), da);
 
   g_signal_connect (da,
                     "draw",

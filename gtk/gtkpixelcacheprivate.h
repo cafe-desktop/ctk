@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_PIXEL_CACHE_PRIVATE_H__
-#define __GTK_PIXEL_CACHE_PRIVATE_H__
+#ifndef __CTK_PIXEL_CACHE_PRIVATE_H__
+#define __CTK_PIXEL_CACHE_PRIVATE_H__
 
 #include <glib-object.h>
 #include <gtkwidget.h>
@@ -60,4 +60,4 @@ void           ctk_pixel_cache_set_is_opaque     (GtkPixelCache         *cache,
 
 G_END_DECLS
 
-#endif /* __GTK_PIXEL_CACHE_PRIVATE_H__ */
+#endif /* __CTK_PIXEL_CACHE_PRIVATE_H__ */

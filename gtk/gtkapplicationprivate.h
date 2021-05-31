@@ -18,8 +18,8 @@
  */
 
 
-#ifndef __GTK_APPLICATION_PRIVATE_H__
-#define __GTK_APPLICATION_PRIVATE_H__
+#ifndef __CTK_APPLICATION_PRIVATE_H__
+#define __CTK_APPLICATION_PRIVATE_H__
 
 #include "gtkapplicationwindow.h"
 #include "gtkwindowprivate.h"
@@ -48,12 +48,12 @@ GtkApplicationAccels *  ctk_application_get_application_accels          (GtkAppl
 void                    ctk_application_set_screensaver_active          (GtkApplication           *application,
                                                                          gboolean                  active);
 
-#define GTK_TYPE_APPLICATION_IMPL                           (ctk_application_impl_get_type ())
-#define GTK_APPLICATION_IMPL_CLASS(class)                   (G_TYPE_CHECK_CLASS_CAST ((class),                     \
-                                                             GTK_TYPE_APPLICATION_IMPL,                            \
+#define CTK_TYPE_APPLICATION_IMPL                           (ctk_application_impl_get_type ())
+#define CTK_APPLICATION_IMPL_CLASS(class)                   (G_TYPE_CHECK_CLASS_CAST ((class),                     \
+                                                             CTK_TYPE_APPLICATION_IMPL,                            \
                                                              GtkApplicationImplClass))
-#define GTK_APPLICATION_IMPL_GET_CLASS(obj)                 (G_TYPE_INSTANCE_GET_CLASS ((obj),                     \
-                                                             GTK_TYPE_APPLICATION_IMPL,                            \
+#define CTK_APPLICATION_IMPL_GET_CLASS(obj)                 (G_TYPE_INSTANCE_GET_CLASS ((obj),                     \
+                                                             CTK_TYPE_APPLICATION_IMPL,                            \
                                                              GtkApplicationImplClass))
 
 typedef struct
@@ -104,12 +104,12 @@ typedef struct
 
 } GtkApplicationImplClass;
 
-#define GTK_TYPE_APPLICATION_IMPL_DBUS                      (ctk_application_impl_dbus_get_type ())
-#define GTK_APPLICATION_IMPL_DBUS_CLASS(class)              (G_TYPE_CHECK_CLASS_CAST ((class),                     \
-                                                             GTK_TYPE_APPLICATION_IMPL_DBUS,                       \
+#define CTK_TYPE_APPLICATION_IMPL_DBUS                      (ctk_application_impl_dbus_get_type ())
+#define CTK_APPLICATION_IMPL_DBUS_CLASS(class)              (G_TYPE_CHECK_CLASS_CAST ((class),                     \
+                                                             CTK_TYPE_APPLICATION_IMPL_DBUS,                       \
                                                              GtkApplicationImplDBusClass))
-#define GTK_APPLICATION_IMPL_DBUS_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj),                     \
-                                                             GTK_TYPE_APPLICATION_IMPL_DBUS,                       \
+#define CTK_APPLICATION_IMPL_DBUS_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj),                     \
+                                                             CTK_TYPE_APPLICATION_IMPL_DBUS,                       \
                                                              GtkApplicationImplDBusClass))
 
 typedef struct
@@ -197,4 +197,4 @@ void                    ctk_application_impl_quartz_setup_menu          (GMenuMo
 
 G_END_DECLS
 
-#endif /* __GTK_APPLICATION_PRIVATE_H__ */
+#endif /* __CTK_APPLICATION_PRIVATE_H__ */

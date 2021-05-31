@@ -1,8 +1,8 @@
 /*** BEGIN file-header ***/
-#ifndef __GTK_TYPE_BUILTINS_H__
-#define __GTK_TYPE_BUILTINS_H__
+#ifndef __CTK_TYPE_BUILTINS_H__
+#define __CTK_TYPE_BUILTINS_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -25,5 +25,5 @@ GDK_AVAILABLE_IN_ALL GType @enum_name@_get_type (void) G_GNUC_CONST;
 /*** BEGIN file-tail ***/
 G_END_DECLS
 
-#endif /* __GTK_TYPE_BUILTINS_H__ */
+#endif /* __CTK_TYPE_BUILTINS_H__ */
 /*** END file-tail ***/

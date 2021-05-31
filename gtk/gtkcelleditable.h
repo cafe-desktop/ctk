@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_EDITABLE_H__
-#define __GTK_CELL_EDITABLE_H__
+#ifndef __CTK_CELL_EDITABLE_H__
+#define __CTK_CELL_EDITABLE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -26,11 +26,11 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_EDITABLE            (ctk_cell_editable_get_type ())
-#define GTK_CELL_EDITABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_EDITABLE, GtkCellEditable))
-#define GTK_CELL_EDITABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), GTK_TYPE_CELL_EDITABLE, GtkCellEditableIface))
-#define GTK_IS_CELL_EDITABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_EDITABLE))
-#define GTK_CELL_EDITABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_CELL_EDITABLE, GtkCellEditableIface))
+#define CTK_TYPE_CELL_EDITABLE            (ctk_cell_editable_get_type ())
+#define CTK_CELL_EDITABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_EDITABLE, GtkCellEditable))
+#define CTK_CELL_EDITABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_CELL_EDITABLE, GtkCellEditableIface))
+#define CTK_IS_CELL_EDITABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_EDITABLE))
+#define CTK_CELL_EDITABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_CELL_EDITABLE, GtkCellEditableIface))
 
 typedef struct _GtkCellEditable      GtkCellEditable; /* Dummy typedef */
 typedef struct _GtkCellEditableIface GtkCellEditableIface;
@@ -74,4 +74,4 @@ void  ctk_cell_editable_remove_widget (GtkCellEditable *cell_editable);
 
 G_END_DECLS
 
-#endif /* __GTK_CELL_EDITABLE_H__ */
+#endif /* __CTK_CELL_EDITABLE_H__ */

@@ -15,17 +15,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _GTK_INSPECTOR_SIZE_GROUPS_H_
-#define _GTK_INSPECTOR_SIZE_GROUPS_H_
+#ifndef _CTK_INSPECTOR_SIZE_GROUPS_H_
+#define _CTK_INSPECTOR_SIZE_GROUPS_H_
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_SIZE_GROUPS            (ctk_inspector_size_groups_get_type())
-#define GTK_INSPECTOR_SIZE_GROUPS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroups))
-#define GTK_INSPECTOR_SIZE_GROUPS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroupsClass))
-#define GTK_INSPECTOR_IS_SIZE_GROUPS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_SIZE_GROUPS))
-#define GTK_INSPECTOR_IS_SIZE_GROUPS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), GTK_TYPE_INSPECTOR_SIZE_GROUPS))
-#define GTK_INSPECTOR_SIZE_GROUPS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroupsClass))
+#define CTK_TYPE_INSPECTOR_SIZE_GROUPS            (ctk_inspector_size_groups_get_type())
+#define CTK_INSPECTOR_SIZE_GROUPS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroups))
+#define CTK_INSPECTOR_SIZE_GROUPS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroupsClass))
+#define CTK_INSPECTOR_IS_SIZE_GROUPS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS))
+#define CTK_INSPECTOR_IS_SIZE_GROUPS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_SIZE_GROUPS))
+#define CTK_INSPECTOR_SIZE_GROUPS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroupsClass))
 
 
 typedef struct _GtkInspectorSizeGroups
@@ -46,6 +46,6 @@ void  ctk_inspector_size_groups_set_object (GtkInspectorSizeGroups *sl,
 
 G_END_DECLS
 
-#endif // _GTK_INSPECTOR_SIZE_GROUPS_H_
+#endif // _CTK_INSPECTOR_SIZE_GROUPS_H_
 
 // vim: set et sw=2 ts=2:

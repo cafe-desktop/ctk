@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_MODEL_CSS_NODE_H__
-#define __GTK_TREE_MODEL_CSS_NODE_H__
+#ifndef __CTK_TREE_MODEL_CSS_NODE_H__
+#define __CTK_TREE_MODEL_CSS_NODE_H__
 
 #include <gtk/gtktreemodel.h>
 
@@ -26,12 +26,12 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_TREE_MODEL_CSS_NODE			(ctk_tree_model_css_node_get_type ())
-#define GTK_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNode))
-#define GTK_TREE_MODEL_CSS_NODE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNodeClass))
-#define GTK_IS_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_MODEL_CSS_NODE))
-#define GTK_IS_TREE_MODEL_CSS_NODE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TREE_MODEL_CSS_NODE))
-#define GTK_TREE_MODEL_CSS_NODE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNodeClass))
+#define CTK_TYPE_TREE_MODEL_CSS_NODE			(ctk_tree_model_css_node_get_type ())
+#define CTK_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNode))
+#define CTK_TREE_MODEL_CSS_NODE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNodeClass))
+#define CTK_IS_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_MODEL_CSS_NODE))
+#define CTK_IS_TREE_MODEL_CSS_NODE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TREE_MODEL_CSS_NODE))
+#define CTK_TREE_MODEL_CSS_NODE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNodeClass))
 
 typedef struct _GtkTreeModelCssNode        GtkTreeModelCssNode;
 typedef struct _GtkTreeModelCssNodeClass   GtkTreeModelCssNodeClass;
@@ -77,4 +77,4 @@ void          ctk_tree_model_css_node_get_iter_from_node(GtkTreeModelCssNode    
 G_END_DECLS
 
 
-#endif /* __GTK_TREE_MODEL_CSS_NODE_H__ */
+#endif /* __CTK_TREE_MODEL_CSS_NODE_H__ */

@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINTER_PRIVATE_H__
-#define __GTK_PRINTER_PRIVATE_H__
+#ifndef __CTK_PRINTER_PRIVATE_H__
+#define __CTK_PRINTER_PRIVATE_H__
 
 #include <gtk/gtk.h>
 #include <gtk/gtkunixprint.h>
@@ -57,4 +57,4 @@ void ctk_print_job_set_status (GtkPrintJob   *job,
 			       GtkPrintStatus status);
 
 G_END_DECLS
-#endif /* __GTK_PRINT_OPERATION_PRIVATE_H__ */
+#endif /* __CTK_PRINT_OPERATION_PRIVATE_H__ */

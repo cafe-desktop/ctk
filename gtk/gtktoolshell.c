@@ -42,7 +42,7 @@
 
 
 typedef GtkToolShellIface GtkToolShellInterface;
-G_DEFINE_INTERFACE (GtkToolShell, ctk_tool_shell, GTK_TYPE_WIDGET);
+G_DEFINE_INTERFACE (GtkToolShell, ctk_tool_shell, CTK_TYPE_WIDGET);
 
 static GtkReliefStyle ctk_tool_shell_real_get_relief_style (GtkToolShell *shell);
 static GtkOrientation ctk_tool_shell_real_get_text_orientation (GtkToolShell *shell);
@@ -61,13 +61,13 @@ ctk_tool_shell_default_init (GtkToolShellInterface *iface)
 static GtkReliefStyle
 ctk_tool_shell_real_get_relief_style (GtkToolShell *shell)
 {
-  return GTK_RELIEF_NONE;
+  return CTK_RELIEF_NONE;
 }
 
 static GtkOrientation
 ctk_tool_shell_real_get_text_orientation (GtkToolShell *shell)
 {
-  return GTK_ORIENTATION_HORIZONTAL;
+  return CTK_ORIENTATION_HORIZONTAL;
 }
 
 static gfloat
@@ -97,7 +97,7 @@ ctk_tool_shell_real_get_ellipsize_mode (GtkToolShell *shell)
 GtkIconSize
 ctk_tool_shell_get_icon_size (GtkToolShell *shell)
 {
-  return GTK_TOOL_SHELL_GET_IFACE (shell)->get_icon_size (shell);
+  return CTK_TOOL_SHELL_GET_IFACE (shell)->get_icon_size (shell);
 }
 
 /**
@@ -115,7 +115,7 @@ ctk_tool_shell_get_icon_size (GtkToolShell *shell)
 GtkOrientation
 ctk_tool_shell_get_orientation (GtkToolShell *shell)
 {
-  return GTK_TOOL_SHELL_GET_IFACE (shell)->get_orientation (shell);
+  return CTK_TOOL_SHELL_GET_IFACE (shell)->get_orientation (shell);
 }
 
 /**
@@ -133,7 +133,7 @@ ctk_tool_shell_get_orientation (GtkToolShell *shell)
 GtkToolbarStyle
 ctk_tool_shell_get_style (GtkToolShell *shell)
 {
-  return GTK_TOOL_SHELL_GET_IFACE (shell)->get_style (shell);
+  return CTK_TOOL_SHELL_GET_IFACE (shell)->get_style (shell);
 }
 
 /**
@@ -150,7 +150,7 @@ ctk_tool_shell_get_style (GtkToolShell *shell)
 GtkReliefStyle
 ctk_tool_shell_get_relief_style (GtkToolShell *shell)
 {
-  GtkToolShellIface *iface = GTK_TOOL_SHELL_GET_IFACE (shell);
+  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   return iface->get_relief_style (shell);
 }
@@ -171,7 +171,7 @@ ctk_tool_shell_get_relief_style (GtkToolShell *shell)
 void
 ctk_tool_shell_rebuild_menu (GtkToolShell *shell)
 {
-  GtkToolShellIface *iface = GTK_TOOL_SHELL_GET_IFACE (shell);
+  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   if (iface->rebuild_menu)
     iface->rebuild_menu (shell);
@@ -192,7 +192,7 @@ ctk_tool_shell_rebuild_menu (GtkToolShell *shell)
 GtkOrientation
 ctk_tool_shell_get_text_orientation (GtkToolShell *shell)
 {
-  GtkToolShellIface *iface = GTK_TOOL_SHELL_GET_IFACE (shell);
+  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   return iface->get_text_orientation (shell);
 }
@@ -212,7 +212,7 @@ ctk_tool_shell_get_text_orientation (GtkToolShell *shell)
 gfloat
 ctk_tool_shell_get_text_alignment (GtkToolShell *shell)
 {
-  GtkToolShellIface *iface = GTK_TOOL_SHELL_GET_IFACE (shell);
+  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   return iface->get_text_alignment (shell);
 }
@@ -232,7 +232,7 @@ ctk_tool_shell_get_text_alignment (GtkToolShell *shell)
 PangoEllipsizeMode
 ctk_tool_shell_get_ellipsize_mode (GtkToolShell *shell)
 {
-  GtkToolShellIface *iface = GTK_TOOL_SHELL_GET_IFACE (shell);
+  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   return iface->get_ellipsize_mode (shell);
 }
@@ -252,10 +252,10 @@ ctk_tool_shell_get_ellipsize_mode (GtkToolShell *shell)
 GtkSizeGroup *
 ctk_tool_shell_get_text_size_group (GtkToolShell *shell)
 {
-  GtkToolShellIface *iface = GTK_TOOL_SHELL_GET_IFACE (shell);
+  GtkToolShellIface *iface = CTK_TOOL_SHELL_GET_IFACE (shell);
 
   if (iface->get_text_size_group)
-    return GTK_TOOL_SHELL_GET_IFACE (shell)->get_text_size_group (shell);
+    return CTK_TOOL_SHELL_GET_IFACE (shell)->get_text_size_group (shell);
 
   return NULL;
 }

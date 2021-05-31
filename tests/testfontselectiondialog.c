@@ -31,9 +31,9 @@ main (int argc, char *argv[])
 
   dialog = ctk_font_selection_dialog_new (NULL);
 
-  ok = ctk_font_selection_dialog_get_ok_button (GTK_FONT_SELECTION_DIALOG (dialog));
+  ok = ctk_font_selection_dialog_get_ok_button (CTK_FONT_SELECTION_DIALOG (dialog));
 
-  ctk_dialog_run (GTK_DIALOG (dialog));
+  ctk_dialog_run (CTK_DIALOG (dialog));
 
   ctk_widget_destroy (dialog);
 

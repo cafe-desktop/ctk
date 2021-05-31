@@ -59,7 +59,7 @@ create_icon (void)
 {
   GtkWidget *image;
 
-  image = ctk_image_new_from_icon_name (get_random_icon_name (ctk_icon_theme_get_default ()), GTK_ICON_SIZE_DND);
+  image = ctk_image_new_from_icon_name (get_random_icon_name (ctk_icon_theme_get_default ()), CTK_ICON_SIZE_DND);
 
   return image;
 }
@@ -91,7 +91,7 @@ create_level_bar (void)
 {
   GtkWidget *w = ctk_level_bar_new_for_interval (0, 100);
 
-  ctk_level_bar_set_value (GTK_LEVEL_BAR (w), 50);
+  ctk_level_bar_set_value (CTK_LEVEL_BAR (w), 50);
 
   /* Force them to be a bit larger */
   ctk_widget_set_size_request (w, 200, -1);
@@ -104,7 +104,7 @@ create_spinner (void)
 {
   GtkWidget *w = ctk_spinner_new ();
 
-  ctk_spinner_start (GTK_SPINNER (w));
+  ctk_spinner_start (CTK_SPINNER (w));
 
   return w;
 }
@@ -122,8 +122,8 @@ create_label (void)
 {
   GtkWidget *w = ctk_label_new ("pLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.");
 
-  ctk_label_set_line_wrap (GTK_LABEL (w), TRUE);
-  ctk_label_set_max_width_chars (GTK_LABEL (w), 100);
+  ctk_label_set_line_wrap (CTK_LABEL (w), TRUE);
+  ctk_label_set_max_width_chars (CTK_LABEL (w), 100);
 
   return w;
 }
@@ -145,7 +145,7 @@ create_switch (void)
 {
   GtkWidget *w = ctk_switch_new ();
 
-  ctk_switch_set_state (GTK_SWITCH (w), TRUE);
+  ctk_switch_set_state (CTK_SWITCH (w), TRUE);
 
   return w;
 }
@@ -183,9 +183,9 @@ set_widget_type (GtkFishbowl *fishbowl,
   ctk_fishbowl_set_creation_func (fishbowl,
                                   widget_types[selected_widget_type].create_func);
 
-  window = ctk_widget_get_toplevel (GTK_WIDGET (fishbowl));
-  headerbar = ctk_window_get_titlebar (GTK_WINDOW (window));
-  ctk_header_bar_set_title (GTK_HEADER_BAR (headerbar),
+  window = ctk_widget_get_toplevel (CTK_WIDGET (fishbowl));
+  headerbar = ctk_window_get_titlebar (CTK_WINDOW (window));
+  ctk_header_bar_set_title (CTK_HEADER_BAR (headerbar),
                             widget_types[selected_widget_type].name);
 }
 
@@ -231,8 +231,8 @@ do_fishbowl (GtkWidget *do_widget)
       provider = ctk_css_provider_new ();
       ctk_css_provider_load_from_data (provider, css, -1, NULL);
       ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                                 GTK_STYLE_PROVIDER (provider),
-                                                 GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                                 CTK_STYLE_PROVIDER (provider),
+                                                 CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
   if (!window)
@@ -240,7 +240,7 @@ do_fishbowl (GtkWidget *do_widget)
       GtkBuilder *builder;
       GtkWidget *bowl;
 
-      g_type_ensure (GTK_TYPE_FISHBOWL);
+      g_type_ensure (CTK_TYPE_FISHBOWL);
 
       builder = ctk_builder_new_from_resource ("/fishbowl/fishbowl.ui");
       ctk_builder_add_callback_symbols (builder,
@@ -248,10 +248,10 @@ do_fishbowl (GtkWidget *do_widget)
                                         "prev_button_clicked_cb", G_CALLBACK (prev_button_clicked_cb),
                                         NULL);
       ctk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (ctk_builder_get_object (builder, "window"));
-      bowl = GTK_WIDGET (ctk_builder_get_object (builder, "bowl"));
-      set_widget_type (GTK_FISHBOWL (bowl), 0);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = CTK_WIDGET (ctk_builder_get_object (builder, "window"));
+      bowl = CTK_WIDGET (ctk_builder_get_object (builder, "bowl"));
+      set_widget_type (CTK_FISHBOWL (bowl), 0);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);

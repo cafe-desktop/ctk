@@ -326,7 +326,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       if (tag->priv->justification_set)
         dest->justification = vals->justification;
 
-      if (vals->direction != GTK_TEXT_DIR_NONE)
+      if (vals->direction != CTK_TEXT_DIR_NONE)
         dest->direction = vals->direction;
 
       if (tag->priv->left_margin_set)
@@ -373,25 +373,25 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       if (tag->priv->underline_set)
         dest->appearance.underline = vals->appearance.underline;
 
-      if (GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&vals->appearance))
+      if (CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&vals->appearance))
         {
           GdkRGBA rgba;
 
-          GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (&vals->appearance, &rgba);
-          GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA (&dest->appearance, &rgba);
-          GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET (&dest->appearance, TRUE);
+          CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (&vals->appearance, &rgba);
+          CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA (&dest->appearance, &rgba);
+          CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET (&dest->appearance, TRUE);
         }
 
       if (tag->priv->strikethrough_set)
         dest->appearance.strikethrough = vals->appearance.strikethrough;
 
-      if (GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&vals->appearance))
+      if (CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&vals->appearance))
         {
           GdkRGBA rgba;
 
-          GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (&vals->appearance, &rgba);
-          GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA (&dest->appearance, &rgba);
-          GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET (&dest->appearance, TRUE);
+          CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (&vals->appearance, &rgba);
+          CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA (&dest->appearance, &rgba);
+          CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET (&dest->appearance, TRUE);
         }
 
       if (tag->priv->invisible_set)
@@ -458,6 +458,6 @@ _ctk_text_tag_affects_nonsize_appearance (GtkTextTag *tag)
     priv->bg_full_height_set ||
     priv->pg_bg_color_set ||
     priv->fallback_set ||
-    GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance) ||
-    GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance);
+    CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance) ||
+    CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance);
 }

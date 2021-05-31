@@ -71,14 +71,14 @@ struct _GtkInspectorPropListPrivate
   GtkWidget *search_stack;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorPropList, ctk_inspector_prop_list, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorPropList, ctk_inspector_prop_list, CTK_TYPE_BOX)
 
 static void
 search_close_clicked (GtkWidget            *button,
                       GtkInspectorPropList *pl)
 {
-  ctk_entry_set_text (GTK_ENTRY (pl->priv->search_entry), "");
-  ctk_stack_set_visible_child_name (GTK_STACK (pl->priv->search_stack), "title");
+  ctk_entry_set_text (CTK_ENTRY (pl->priv->search_entry), "");
+  ctk_stack_set_visible_child_name (CTK_STACK (pl->priv->search_stack), "title");
 }
 
 static gboolean
@@ -86,12 +86,12 @@ key_press_event (GtkWidget            *window,
                  GdkEvent             *event,
                  GtkInspectorPropList *pl)
 {
-  if (!ctk_widget_get_mapped (GTK_WIDGET (pl)))
+  if (!ctk_widget_get_mapped (CTK_WIDGET (pl)))
     return GDK_EVENT_PROPAGATE;
 
-  if (ctk_search_entry_handle_event (GTK_SEARCH_ENTRY (pl->priv->search_entry), event))
+  if (ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (pl->priv->search_entry), event))
     {
-      ctk_stack_set_visible_child (GTK_STACK (pl->priv->search_stack), pl->priv->search_entry);
+      ctk_stack_set_visible_child (CTK_STACK (pl->priv->search_stack), pl->priv->search_entry);
       return GDK_EVENT_STOP;
     }
   return GDK_EVENT_PROPAGATE;
@@ -111,10 +111,10 @@ static void
 ctk_inspector_prop_list_init (GtkInspectorPropList *pl)
 {
   pl->priv = ctk_inspector_prop_list_get_instance_private (pl);
-  ctk_widget_init_template (GTK_WIDGET (pl));
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (pl->priv->model),
+  ctk_widget_init_template (CTK_WIDGET (pl));
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (pl->priv->model),
                                         COLUMN_NAME,
-                                        GTK_SORT_ASCENDING);
+                                        CTK_SORT_ASCENDING);
   pl->priv->prop_iters = g_hash_table_new_full (g_str_hash,
                                                 g_str_equal,
                                                 NULL,
@@ -127,7 +127,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorPropList *pl = GTK_INSPECTOR_PROP_LIST (object);
+  GtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
 
   switch (param_id)
     {
@@ -155,7 +155,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorPropList *pl = GTK_INSPECTOR_PROP_LIST (object);
+  GtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
 
   switch (param_id)
     {
@@ -187,7 +187,7 @@ show_object (GtkInspectorPropEditor *editor,
   GtkTreeIter iter;
   GtkWidget *popover;
 
-  popover = ctk_widget_get_ancestor (GTK_WIDGET (editor), GTK_TYPE_POPOVER);
+  popover = ctk_widget_get_ancestor (CTK_WIDGET (editor), CTK_TYPE_POPOVER);
   ctk_widget_hide (popover);
 
   g_object_set_data (G_OBJECT (pl->priv->object_tree), "next-tab", (gpointer)tab);
@@ -218,25 +218,25 @@ row_activated (GtkTreeView *tv,
   GtkWidget *editor;
   GtkWidget *popover;
 
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (pl->priv->model), &iter, path);
-  ctk_tree_model_get (GTK_TREE_MODEL (pl->priv->model), &iter, COLUMN_NAME, &name, -1);
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (pl->priv->model), &iter, path);
+  ctk_tree_model_get (CTK_TREE_MODEL (pl->priv->model), &iter, COLUMN_NAME, &name, -1);
   ctk_tree_view_get_cell_area (tv, path, col, &rect);
   ctk_tree_view_convert_bin_window_to_widget_coords (tv, rect.x, rect.y, &rect.x, &rect.y);
 
-  popover = ctk_popover_new (GTK_WIDGET (tv));
-  ctk_popover_set_pointing_to (GTK_POPOVER (popover), &rect);
+  popover = ctk_popover_new (CTK_WIDGET (tv));
+  ctk_popover_set_pointing_to (CTK_POPOVER (popover), &rect);
 
   editor = ctk_inspector_prop_editor_new (pl->priv->object, name, pl->priv->child_properties);
   ctk_widget_show (editor);
 
-  ctk_container_add (GTK_CONTAINER (popover), editor);
+  ctk_container_add (CTK_CONTAINER (popover), editor);
 
-  if (ctk_inspector_prop_editor_should_expand (GTK_INSPECTOR_PROP_EDITOR (editor)))
+  if (ctk_inspector_prop_editor_should_expand (CTK_INSPECTOR_PROP_EDITOR (editor)))
     ctk_widget_set_vexpand (popover, TRUE);
 
   g_signal_connect (editor, "show-object", G_CALLBACK (show_object), pl);
 
-  ctk_popover_popup (GTK_POPOVER (popover));
+  ctk_popover_popup (CTK_POPOVER (popover));
 
   g_signal_connect (popover, "unmap", G_CALLBACK (ctk_widget_destroy), NULL);
 
@@ -248,7 +248,7 @@ static void cleanup_object (GtkInspectorPropList *pl);
 static void
 finalize (GObject *object)
 {
-  GtkInspectorPropList *pl = GTK_INSPECTOR_PROP_LIST (object);
+  GtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
 
   cleanup_object (pl);
   g_hash_table_unref (pl->priv->prop_iters);
@@ -259,12 +259,12 @@ finalize (GObject *object)
 static void
 constructed (GObject *object)
 {
-  GtkInspectorPropList *pl = GTK_INSPECTOR_PROP_LIST (object);
+  GtkInspectorPropList *pl = CTK_INSPECTOR_PROP_LIST (object);
 
   pl->priv->search_stack = ctk_widget_get_parent (pl->priv->search_entry);
 
-  ctk_tree_view_set_search_entry (GTK_TREE_VIEW (pl->priv->tree),
-                                  GTK_ENTRY (pl->priv->search_entry));
+  ctk_tree_view_set_search_entry (CTK_TREE_VIEW (pl->priv->tree),
+                                  CTK_ENTRY (pl->priv->search_entry));
 
   g_signal_connect (pl->priv->search_entry, "stop-search",
                     G_CALLBACK (search_close_clicked), pl);
@@ -274,7 +274,7 @@ static void
 ctk_inspector_prop_list_class_init (GtkInspectorPropListClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->finalize = finalize;
   object_class->get_property = get_property;
@@ -283,14 +283,14 @@ ctk_inspector_prop_list_class_init (GtkInspectorPropListClass *klass)
 
   g_object_class_install_property (object_class, PROP_OBJECT_TREE,
       g_param_spec_object ("object-tree", "Object Tree", "Object tree",
-                           GTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                           CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
   g_object_class_install_property (object_class, PROP_CHILD_PROPERTIES,
       g_param_spec_boolean ("child-properties", "Child properties", "Child properties",
                             FALSE, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   g_object_class_install_property (object_class, PROP_SEARCH_ENTRY,
       g_param_spec_object ("search-entry", "Search Entry", "Search Entry",
-                           GTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                           CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/prop-list.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorPropList, model);
@@ -419,9 +419,9 @@ ctk_inspector_prop_list_update_prop (GtkInspectorPropList *pl,
     {
       GtkWidget *parent;
 
-      parent = ctk_widget_get_parent (GTK_WIDGET (pl->priv->object));
-      ctk_container_child_get_property (GTK_CONTAINER (parent),
-                                        GTK_WIDGET (pl->priv->object),
+      parent = ctk_widget_get_parent (CTK_WIDGET (pl->priv->object));
+      ctk_container_child_get_property (CTK_CONTAINER (parent),
+                                        CTK_WIDGET (pl->priv->object),
                                         prop->name, &gvalue);
     }
   else
@@ -429,7 +429,7 @@ ctk_inspector_prop_list_update_prop (GtkInspectorPropList *pl,
 
   strdup_value_contents (&gvalue, &value, &type);
 
-  if (GTK_IS_CELL_RENDERER (pl->priv->object))
+  if (CTK_IS_CELL_RENDERER (pl->priv->object))
     {
       gpointer *layout;
       GtkCellArea *area;
@@ -438,10 +438,10 @@ ctk_inspector_prop_list_update_prop (GtkInspectorPropList *pl,
       area = NULL;
       layout = g_object_get_data (pl->priv->object, "gtk-inspector-cell-layout");
       if (layout)
-        area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (layout));
+        area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (layout));
       if (area)
         column = ctk_cell_area_attribute_get_column (area,
-                                                     GTK_CELL_RENDERER (pl->priv->object),
+                                                     CTK_CELL_RENDERER (pl->priv->object),
                                                      prop->name);
 
        if (column != -1)
@@ -514,23 +514,23 @@ ctk_inspector_prop_list_set_object (GtkInspectorPropList *pl,
 
   cleanup_object (pl);
 
-  ctk_entry_set_text (GTK_ENTRY (pl->priv->search_entry), "");
-  ctk_stack_set_visible_child_name (GTK_STACK (pl->priv->search_stack), "title");
+  ctk_entry_set_text (CTK_ENTRY (pl->priv->search_entry), "");
+  ctk_stack_set_visible_child_name (CTK_STACK (pl->priv->search_stack), "title");
 
   if (pl->priv->child_properties)
     {
       GtkWidget *parent;
 
-      if (!GTK_IS_WIDGET (object))
+      if (!CTK_IS_WIDGET (object))
         {
-          ctk_widget_hide (GTK_WIDGET (pl));
+          ctk_widget_hide (CTK_WIDGET (pl));
           return TRUE;
         }
 
-      parent = ctk_widget_get_parent (GTK_WIDGET (object));
+      parent = ctk_widget_get_parent (CTK_WIDGET (object));
       if (!parent)
         {
-          ctk_widget_hide (GTK_WIDGET (pl));
+          ctk_widget_hide (CTK_WIDGET (pl));
           return TRUE;
         }
 
@@ -540,7 +540,7 @@ ctk_inspector_prop_list_set_object (GtkInspectorPropList *pl,
     }
   else
     {
-      ctk_tree_view_column_set_visible (pl->priv->attribute_column, GTK_IS_CELL_RENDERER (object));
+      ctk_tree_view_column_set_visible (pl->priv->attribute_column, CTK_IS_CELL_RENDERER (object));
 
       props = g_object_class_list_properties (G_OBJECT_GET_CLASS (object), &num_properties);
     }
@@ -562,7 +562,7 @@ ctk_inspector_prop_list_set_object (GtkInspectorPropList *pl,
 
   g_free (props);
 
-  if (GTK_IS_WIDGET (object))
+  if (CTK_IS_WIDGET (object))
     g_signal_connect_object (object, "destroy", G_CALLBACK (cleanup_object), pl, G_CONNECT_SWAPPED);
 
   /* Listen for updates */
@@ -572,7 +572,7 @@ ctk_inspector_prop_list_set_object (GtkInspectorPropList *pl,
                                G_CALLBACK (ctk_inspector_prop_list_prop_changed_cb),
                                pl, 0);
 
-  ctk_widget_show (GTK_WIDGET (pl));
+  ctk_widget_show (CTK_WIDGET (pl));
 
   return TRUE;
 }

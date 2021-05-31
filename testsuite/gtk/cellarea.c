@@ -35,9 +35,9 @@ test_iconview_new (void)
 
   view = ctk_icon_view_new ();
 
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == ctk_icon_view_get_item_orientation (GTK_ICON_VIEW (view)));
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == ctk_icon_view_get_item_orientation (CTK_ICON_VIEW (view)));
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -52,7 +52,7 @@ test_iconview_new_with_area (void)
 
   area = ctk_cell_area_box_new ();
   view = ctk_icon_view_new_with_area (area);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)) == area);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)) == area);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -66,10 +66,10 @@ test_iconview_object_new (void)
   GtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_HORIZONTAL);
-  view = g_object_new (GTK_TYPE_ICON_VIEW, "cell-area", area, NULL);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)) == area);
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == ctk_icon_view_get_item_orientation (GTK_ICON_VIEW (view)));
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
+  view = g_object_new (CTK_TYPE_ICON_VIEW, "cell-area", area, NULL);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)) == area);
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == ctk_icon_view_get_item_orientation (CTK_ICON_VIEW (view)));
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -80,7 +80,7 @@ typedef GtkIconViewClass MyIconViewClass;
 
 GType my_icon_view_get_type (void);
 
-G_DEFINE_TYPE (MyIconView, my_icon_view, GTK_TYPE_ICON_VIEW)
+G_DEFINE_TYPE (MyIconView, my_icon_view, CTK_TYPE_ICON_VIEW)
 
 static void
 my_icon_view_class_init (MyIconViewClass *klass)
@@ -100,10 +100,10 @@ my_icon_view_init (MyIconView *view)
     }
   else if (subclass_init == 1)
     {
-      area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-      g_assert (GTK_IS_CELL_AREA_BOX (area));
-      g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
-      ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_HORIZONTAL);
+      area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+      g_assert (CTK_IS_CELL_AREA_BOX (area));
+      g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
+      ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
     }
 }
 
@@ -117,9 +117,9 @@ test_iconview_subclass0 (void)
   subclass_init = 0;
 
   view = g_object_new (my_icon_view_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -136,8 +136,8 @@ test_iconview_subclass1 (void)
 
   area = ctk_cell_area_box_new ();
   view = g_object_new (my_icon_view_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -153,9 +153,9 @@ test_iconview_subclass2 (void)
   subclass_init = 1;
 
   view = g_object_new (my_icon_view_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -171,8 +171,8 @@ test_iconview_subclass3_subprocess (void)
 
   area = ctk_cell_area_box_new ();
   view = g_object_new (my_icon_view_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
   g_object_ref_sink (view);
   g_object_unref (view);
 }
@@ -195,8 +195,8 @@ test_combobox_new (void)
 
   view = ctk_combo_box_new ();
 
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -211,7 +211,7 @@ test_combobox_new_with_area (void)
 
   area = ctk_cell_area_box_new ();
   view = ctk_combo_box_new_with_area (area);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)) == area);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)) == area);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -225,9 +225,9 @@ test_combobox_object_new (void)
   GtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_HORIZONTAL);
-  view = g_object_new (GTK_TYPE_COMBO_BOX, "cell-area", area, NULL);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)) == area);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
+  view = g_object_new (CTK_TYPE_COMBO_BOX, "cell-area", area, NULL);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)) == area);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -238,7 +238,7 @@ typedef GtkComboBoxClass MyComboBoxClass;
 
 GType my_combo_box_get_type (void);
 
-G_DEFINE_TYPE (MyComboBox, my_combo_box, GTK_TYPE_COMBO_BOX)
+G_DEFINE_TYPE (MyComboBox, my_combo_box, CTK_TYPE_COMBO_BOX)
 
 static void
 my_combo_box_class_init (MyComboBoxClass *klass)
@@ -256,10 +256,10 @@ my_combo_box_init (MyComboBox *view)
     }
   else if (subclass_init == 1)
     {
-      area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-      g_assert (GTK_IS_CELL_AREA_BOX (area));
-      g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
-      ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_VERTICAL);
+      area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+      g_assert (CTK_IS_CELL_AREA_BOX (area));
+      g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
+      ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_VERTICAL);
     }
 }
 
@@ -273,9 +273,9 @@ test_combobox_subclass0 (void)
   subclass_init = 0;
 
   view = g_object_new (my_combo_box_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -292,8 +292,8 @@ test_combobox_subclass1 (void)
 
   area = ctk_cell_area_box_new ();
   view = g_object_new (my_combo_box_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -309,9 +309,9 @@ test_combobox_subclass2 (void)
   subclass_init = 1;
 
   view = g_object_new (my_combo_box_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -327,8 +327,8 @@ test_combobox_subclass3_subprocess (void)
 
   area = ctk_cell_area_box_new ();
   view = g_object_new (my_combo_box_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -352,8 +352,8 @@ test_cellview_new (void)
 
   view = ctk_cell_view_new ();
 
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -370,7 +370,7 @@ test_cellview_new_with_context (void)
   area = ctk_cell_area_box_new ();
   context = ctk_cell_area_create_context (area);
   view = ctk_cell_view_new_with_context (area, context);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)) == area);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)) == area);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -384,9 +384,9 @@ test_cellview_object_new (void)
   GtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_HORIZONTAL);
-  view = g_object_new (GTK_TYPE_CELL_VIEW, "cell-area", area, NULL);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)) == area);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
+  view = g_object_new (CTK_TYPE_CELL_VIEW, "cell-area", area, NULL);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)) == area);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -397,7 +397,7 @@ typedef GtkCellViewClass MyCellViewClass;
 
 GType my_cell_view_get_type (void);
 
-G_DEFINE_TYPE (MyCellView, my_cell_view, GTK_TYPE_CELL_VIEW)
+G_DEFINE_TYPE (MyCellView, my_cell_view, CTK_TYPE_CELL_VIEW)
 
 static void
 my_cell_view_class_init (MyCellViewClass *klass)
@@ -415,10 +415,10 @@ my_cell_view_init (MyCellView *view)
     }
   else if (subclass_init == 1)
     {
-      area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-      g_assert (GTK_IS_CELL_AREA_BOX (area));
-      g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
-      ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_VERTICAL);
+      area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+      g_assert (CTK_IS_CELL_AREA_BOX (area));
+      g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
+      ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_VERTICAL);
     }
 }
 
@@ -432,9 +432,9 @@ test_cellview_subclass0 (void)
   subclass_init = 0;
 
   view = g_object_new (my_cell_view_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -451,8 +451,8 @@ test_cellview_subclass1 (void)
 
   area = ctk_cell_area_box_new ();
   view = g_object_new (my_cell_view_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -468,9 +468,9 @@ test_cellview_subclass2 (void)
   subclass_init = 1;
 
   view = g_object_new (my_cell_view_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -486,8 +486,8 @@ test_cellview_subclass3_subprocess (void)
 
   area = ctk_cell_area_box_new ();
   view = g_object_new (my_cell_view_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (view)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (view)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (view);
   g_object_unref (view);
@@ -511,8 +511,8 @@ test_column_new (void)
 
   col = ctk_tree_view_column_new ();
 
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (col));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (col));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
 
   g_object_ref_sink (col);
   g_object_unref (col);
@@ -527,7 +527,7 @@ test_column_new_with_area (void)
 
   area = ctk_cell_area_box_new ();
   col = ctk_tree_view_column_new_with_area (area);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (col)) == area);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (col)) == area);
 
   g_object_ref_sink (col);
   g_object_unref (col);
@@ -541,9 +541,9 @@ test_column_object_new (void)
   GtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_HORIZONTAL);
-  col = g_object_new (GTK_TYPE_TREE_VIEW_COLUMN, "cell-area", area, NULL);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (col)) == area);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
+  col = g_object_new (CTK_TYPE_TREE_VIEW_COLUMN, "cell-area", area, NULL);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (col)) == area);
 
   g_object_ref_sink (col);
   g_object_unref (col);
@@ -554,7 +554,7 @@ typedef GtkTreeViewColumnClass MyTreeViewColumnClass;
 
 GType my_tree_view_column_get_type (void);
 
-G_DEFINE_TYPE (MyTreeViewColumn, my_tree_view_column, GTK_TYPE_TREE_VIEW_COLUMN)
+G_DEFINE_TYPE (MyTreeViewColumn, my_tree_view_column, CTK_TYPE_TREE_VIEW_COLUMN)
 
 static void
 my_tree_view_column_class_init (MyTreeViewColumnClass *klass)
@@ -572,10 +572,10 @@ my_tree_view_column_init (MyTreeViewColumn *col)
     }
   else if (subclass_init == 1)
     {
-      area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (col));
-      g_assert (GTK_IS_CELL_AREA_BOX (area));
-      g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
-      ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_VERTICAL);
+      area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (col));
+      g_assert (CTK_IS_CELL_AREA_BOX (area));
+      g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
+      ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_VERTICAL);
     }
 }
 
@@ -589,9 +589,9 @@ test_column_subclass0 (void)
   subclass_init = 0;
 
   col = g_object_new (my_tree_view_column_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (col));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (col));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (col);
   g_object_unref (col);
@@ -608,8 +608,8 @@ test_column_subclass1 (void)
 
   area = ctk_cell_area_box_new ();
   col = g_object_new (my_tree_view_column_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (col)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (col)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (col);
   g_object_unref (col);
@@ -625,9 +625,9 @@ test_column_subclass2 (void)
   subclass_init = 1;
 
   col = g_object_new (my_tree_view_column_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (col));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (col));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (col);
   g_object_unref (col);
@@ -643,8 +643,8 @@ test_column_subclass3_subprocess (void)
 
   area = ctk_cell_area_box_new ();
   col = g_object_new (my_tree_view_column_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (col)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (col)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (col);
   g_object_unref (col);
@@ -668,8 +668,8 @@ test_completion_new (void)
 
   c = ctk_entry_completion_new ();
 
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (c));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (c));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
 
   g_object_ref_sink (c);
   g_object_unref (c);
@@ -684,7 +684,7 @@ test_completion_new_with_area (void)
 
   area = ctk_cell_area_box_new ();
   c = ctk_entry_completion_new_with_area (area);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (c)) == area);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (c)) == area);
 
   g_object_ref_sink (c);
   g_object_unref (c);
@@ -698,9 +698,9 @@ test_completion_object_new (void)
   GtkCellArea *area;
 
   area = ctk_cell_area_box_new ();
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_HORIZONTAL);
-  c = g_object_new (GTK_TYPE_ENTRY_COMPLETION, "cell-area", area, NULL);
-  g_assert (ctk_cell_layout_get_area (GTK_CELL_LAYOUT (c)) == area);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_HORIZONTAL);
+  c = g_object_new (CTK_TYPE_ENTRY_COMPLETION, "cell-area", area, NULL);
+  g_assert (ctk_cell_layout_get_area (CTK_CELL_LAYOUT (c)) == area);
 
   g_object_ref_sink (c);
   g_object_unref (c);
@@ -711,7 +711,7 @@ typedef GtkEntryCompletionClass MyEntryCompletionClass;
 
 GType my_entry_completion_get_type (void);
 
-G_DEFINE_TYPE (MyEntryCompletion, my_entry_completion, GTK_TYPE_ENTRY_COMPLETION)
+G_DEFINE_TYPE (MyEntryCompletion, my_entry_completion, CTK_TYPE_ENTRY_COMPLETION)
 
 static void
 my_entry_completion_class_init (MyEntryCompletionClass *klass)
@@ -729,10 +729,10 @@ my_entry_completion_init (MyEntryCompletion *c)
     }
   else if (subclass_init == 1)
     {
-      area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (c));
-      g_assert (GTK_IS_CELL_AREA_BOX (area));
-      g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
-      ctk_orientable_set_orientation (GTK_ORIENTABLE (area), GTK_ORIENTATION_VERTICAL);
+      area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (c));
+      g_assert (CTK_IS_CELL_AREA_BOX (area));
+      g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
+      ctk_orientable_set_orientation (CTK_ORIENTABLE (area), CTK_ORIENTATION_VERTICAL);
     }
 }
 
@@ -746,9 +746,9 @@ test_completion_subclass0 (void)
   subclass_init = 0;
 
   c = g_object_new (my_entry_completion_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (c));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (c));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (c);
   g_object_unref (c);
@@ -765,8 +765,8 @@ test_completion_subclass1 (void)
 
   area = ctk_cell_area_box_new ();
   c = g_object_new (my_entry_completion_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (c)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_HORIZONTAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (c)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_HORIZONTAL);
 
   g_object_ref_sink (c);
   g_object_unref (c);
@@ -782,9 +782,9 @@ test_completion_subclass2 (void)
   subclass_init = 1;
 
   c = g_object_new (my_entry_completion_get_type (), NULL);
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (c));
-  g_assert (GTK_IS_CELL_AREA_BOX (area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (c));
+  g_assert (CTK_IS_CELL_AREA_BOX (area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (c);
   g_object_unref (c);
@@ -800,8 +800,8 @@ test_completion_subclass3_subprocess (void)
 
   area = ctk_cell_area_box_new ();
   c = g_object_new (my_entry_completion_get_type (), "cell-area", area, NULL);
-  g_assert (area == ctk_cell_layout_get_area (GTK_CELL_LAYOUT (c)));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (area)) == GTK_ORIENTATION_VERTICAL);
+  g_assert (area == ctk_cell_layout_get_area (CTK_CELL_LAYOUT (c)));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (area)) == CTK_ORIENTATION_VERTICAL);
 
   g_object_ref_sink (c);
   g_object_unref (c);

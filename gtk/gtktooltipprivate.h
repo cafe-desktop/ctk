@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TOOLTIP_PRIVATE_H__
-#define __GTK_TOOLTIP_PRIVATE_H__
+#ifndef __CTK_TOOLTIP_PRIVATE_H__
+#define __CTK_TOOLTIP_PRIVATE_H__
 
 
 #include <gtk/gtktooltip.h>
@@ -47,4 +47,4 @@ GtkWidget * _ctk_widget_find_at_coords   (GdkWindow          *window,
 G_END_DECLS
 
 
-#endif /* __GTK_TOOLTIP_PRIVATE_H__ */
+#endif /* __CTK_TOOLTIP_PRIVATE_H__ */

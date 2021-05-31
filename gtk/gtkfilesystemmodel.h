@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_SYSTEM_MODEL_H__
-#define __GTK_FILE_SYSTEM_MODEL_H__
+#ifndef __CTK_FILE_SYSTEM_MODEL_H__
+#define __CTK_FILE_SYSTEM_MODEL_H__
 
 #include <gio/gio.h>
 #include <gtk/gtkfilefilter.h>
@@ -25,9 +25,9 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_SYSTEM_MODEL             (_ctk_file_system_model_get_type ())
-#define GTK_FILE_SYSTEM_MODEL(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_SYSTEM_MODEL, GtkFileSystemModel))
-#define GTK_IS_FILE_SYSTEM_MODEL(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_SYSTEM_MODEL))
+#define CTK_TYPE_FILE_SYSTEM_MODEL             (_ctk_file_system_model_get_type ())
+#define CTK_FILE_SYSTEM_MODEL(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_SYSTEM_MODEL, GtkFileSystemModel))
+#define CTK_IS_FILE_SYSTEM_MODEL(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_SYSTEM_MODEL))
 
 typedef struct _GtkFileSystemModel      GtkFileSystemModel;
 
@@ -96,4 +96,4 @@ void                _ctk_file_system_model_set_filter       (GtkFileSystemModel 
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_SYSTEM_MODEL_H__ */
+#endif /* __CTK_FILE_SYSTEM_MODEL_H__ */

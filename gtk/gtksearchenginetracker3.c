@@ -78,7 +78,7 @@ static void ctk_search_engine_tracker3_initable_iface_init (GInitableIface *ifac
 
 G_DEFINE_TYPE_WITH_CODE (GtkSearchEngineTracker3,
                          ctk_search_engine_tracker3,
-                         GTK_TYPE_SEARCH_ENGINE,
+                         CTK_TYPE_SEARCH_ENGINE,
                          G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE,
                                                 ctk_search_engine_tracker3_initable_iface_init))
 
@@ -89,7 +89,7 @@ finalize (GObject *object)
 
   g_debug ("Finalizing GtkSearchEngineTracker3");
 
-  engine = GTK_SEARCH_ENGINE_TRACKER3 (object);
+  engine = CTK_SEARCH_ENGINE_TRACKER3 (object);
 
   if (engine->cancellable)
     {
@@ -157,7 +157,7 @@ query_callback (TrackerSparqlStatement *statement,
   GError *error = NULL;
   GtkSearchHit *hit;
 
-  engine = GTK_SEARCH_ENGINE_TRACKER3 (user_data);
+  engine = CTK_SEARCH_ENGINE_TRACKER3 (user_data);
 
   engine->query_pending = FALSE;
 
@@ -165,7 +165,7 @@ query_callback (TrackerSparqlStatement *statement,
 
   if (!cursor)
     {
-      _ctk_search_engine_error (GTK_SEARCH_ENGINE (engine), error->message);
+      _ctk_search_engine_error (CTK_SEARCH_ENGINE (engine), error->message);
       g_error_free (error);
       g_object_unref (engine);
       return;
@@ -184,8 +184,8 @@ query_callback (TrackerSparqlStatement *statement,
 
   tracker_sparql_cursor_close (cursor);
 
-  _ctk_search_engine_hits_added (GTK_SEARCH_ENGINE (engine), hits);
-  _ctk_search_engine_finished (GTK_SEARCH_ENGINE (engine), hits != NULL);
+  _ctk_search_engine_hits_added (CTK_SEARCH_ENGINE (engine), hits);
+  _ctk_search_engine_finished (CTK_SEARCH_ENGINE (engine), hits != NULL);
 
   g_list_free_full (hits, free_hit);
   g_object_unref (engine);
@@ -202,7 +202,7 @@ ctk_search_engine_tracker3_start (GtkSearchEngine *engine)
   gchar *match;
   GFile *location;
 
-  tracker = GTK_SEARCH_ENGINE_TRACKER3 (engine);
+  tracker = CTK_SEARCH_ENGINE_TRACKER3 (engine);
 
   if (tracker->query_pending)
     {
@@ -261,7 +261,7 @@ ctk_search_engine_tracker3_stop (GtkSearchEngine *engine)
 {
   GtkSearchEngineTracker3 *tracker;
 
-  tracker = GTK_SEARCH_ENGINE_TRACKER3 (engine);
+  tracker = CTK_SEARCH_ENGINE_TRACKER3 (engine);
 
   if (tracker->query && tracker->query_pending)
     {
@@ -276,7 +276,7 @@ ctk_search_engine_tracker3_set_query (GtkSearchEngine *engine,
 {
   GtkSearchEngineTracker3 *tracker;
 
-  tracker = GTK_SEARCH_ENGINE_TRACKER3 (engine);
+  tracker = CTK_SEARCH_ENGINE_TRACKER3 (engine);
 
   if (query)
     g_object_ref (query);
@@ -291,7 +291,7 @@ static void
 ctk_search_engine_tracker3_class_init (GtkSearchEngineTracker3Class *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkSearchEngineClass *engine_class = GTK_SEARCH_ENGINE_CLASS (class);
+  GtkSearchEngineClass *engine_class = CTK_SEARCH_ENGINE_CLASS (class);
 
   gobject_class->finalize = finalize;
 
@@ -314,7 +314,7 @@ ctk_search_engine_tracker3_initable_init (GInitable     *initable,
 {
   GtkSearchEngineTracker3 *engine;
 
-  engine = GTK_SEARCH_ENGINE_TRACKER3 (initable);
+  engine = CTK_SEARCH_ENGINE_TRACKER3 (initable);
 
   engine->sparql_conn = tracker_sparql_connection_bus_new (MINER_FS_BUS_NAME,
                                                            NULL, NULL,
@@ -387,7 +387,7 @@ ctk_search_engine_tracker3_new (void)
 
   g_debug ("Creating GtkSearchEngineTracker3...");
 
-  engine = g_initable_new (GTK_TYPE_SEARCH_ENGINE_TRACKER3,
+  engine = g_initable_new (CTK_TYPE_SEARCH_ENGINE_TRACKER3,
                            NULL, &error, NULL);
   if (!engine)
     {
@@ -396,7 +396,7 @@ ctk_search_engine_tracker3_new (void)
       g_error_free (error);
     }
 
-  return GTK_SEARCH_ENGINE (engine);
+  return CTK_SEARCH_ENGINE (engine);
 }
 
 gboolean

@@ -39,14 +39,14 @@ static void ctk_color_picker_shell_iface_init (GtkColorPickerInterface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (GtkColorPickerShell, ctk_color_picker_shell, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, ctk_color_picker_shell_initable_iface_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_COLOR_PICKER, ctk_color_picker_shell_iface_init))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_PICKER, ctk_color_picker_shell_iface_init))
 
 static gboolean
 ctk_color_picker_shell_initable_init (GInitable     *initable,
                                       GCancellable  *cancellable,
                                       GError       **error)
 {
-  GtkColorPickerShell *picker = GTK_COLOR_PICKER_SHELL (initable);
+  GtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (initable);
   char *owner;
 
   picker->shell_proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
@@ -91,7 +91,7 @@ ctk_color_picker_shell_init (GtkColorPickerShell *picker)
 static void
 ctk_color_picker_shell_finalize (GObject *object)
 {
-  GtkColorPickerShell *picker = GTK_COLOR_PICKER_SHELL (object);
+  GtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (object);
 
   g_clear_object (&picker->shell_proxy);
 
@@ -109,7 +109,7 @@ ctk_color_picker_shell_class_init (GtkColorPickerShellClass *class)
 GtkColorPicker *
 ctk_color_picker_shell_new (void)
 {
-  return GTK_COLOR_PICKER (g_initable_new (GTK_TYPE_COLOR_PICKER_SHELL, NULL, NULL, NULL));
+  return CTK_COLOR_PICKER (g_initable_new (CTK_TYPE_COLOR_PICKER_SHELL, NULL, NULL, NULL));
 }
 
 static void
@@ -117,7 +117,7 @@ color_picked (GObject      *source,
               GAsyncResult *res,
               gpointer      data)
 {
-  GtkColorPickerShell *picker = GTK_COLOR_PICKER_SHELL (data);
+  GtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (data);
   GError *error = NULL;
   GVariant *ret, *dict;
 
@@ -151,7 +151,7 @@ ctk_color_picker_shell_pick (GtkColorPicker      *cp,
                              GAsyncReadyCallback  callback,
                              gpointer             user_data)
 {
-  GtkColorPickerShell *picker = GTK_COLOR_PICKER_SHELL (cp);
+  GtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (cp);
 
   if (picker->task)
     return;

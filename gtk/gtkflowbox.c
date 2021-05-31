@@ -274,7 +274,7 @@ struct _GtkFlowBoxChildPrivate
 
 #define CHILD_PRIV(child) ((GtkFlowBoxChildPrivate*)ctk_flow_box_child_get_instance_private ((GtkFlowBoxChild*)(child)))
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkFlowBoxChild, ctk_flow_box_child, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkFlowBoxChild, ctk_flow_box_child, CTK_TYPE_BIN)
 
 /* Internal API {{{2 */
 
@@ -283,9 +283,9 @@ ctk_flow_box_child_get_box (GtkFlowBoxChild *child)
 {
   GtkWidget *parent;
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (child));
-  if (parent && GTK_IS_FLOW_BOX (parent))
-    return GTK_FLOW_BOX (parent);
+  parent = ctk_widget_get_parent (CTK_WIDGET (child));
+  if (parent && CTK_IS_FLOW_BOX (parent))
+    return CTK_FLOW_BOX (parent);
 
   return NULL;
 }
@@ -300,7 +300,7 @@ ctk_flow_box_child_set_focus (GtkFlowBoxChild *child)
   if (box == NULL)
     return;
 
-  get_current_selection_modifiers (GTK_WIDGET (box), &modify, &extend);
+  get_current_selection_modifiers (CTK_WIDGET (box), &modify, &extend);
 
   if (modify)
     ctk_flow_box_update_cursor (box, child);
@@ -317,7 +317,7 @@ ctk_flow_box_child_focus (GtkWidget        *widget,
   gboolean had_focus = FALSE;
   GtkWidget *child;
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
 
   /* Without "can-focus" flag try to pass the focus to the child immediately */
   if (!ctk_widget_get_can_focus (widget))
@@ -327,9 +327,9 @@ ctk_flow_box_child_focus (GtkWidget        *widget,
           if (ctk_widget_child_focus (child, direction))
             {
               GtkFlowBox *box;
-              box = ctk_flow_box_child_get_box (GTK_FLOW_BOX_CHILD (widget));
+              box = ctk_flow_box_child_get_box (CTK_FLOW_BOX_CHILD (widget));
               if (box)
-                ctk_flow_box_update_cursor (box, GTK_FLOW_BOX_CHILD (widget));
+                ctk_flow_box_update_cursor (box, CTK_FLOW_BOX_CHILD (widget));
               return TRUE;
             }
         }
@@ -341,24 +341,24 @@ ctk_flow_box_child_focus (GtkWidget        *widget,
     {
       /* If on row, going right, enter into possible container */
       if (child &&
-          (direction == GTK_DIR_RIGHT || direction == GTK_DIR_TAB_FORWARD))
+          (direction == CTK_DIR_RIGHT || direction == CTK_DIR_TAB_FORWARD))
         {
-          if (ctk_widget_child_focus (GTK_WIDGET (child), direction))
+          if (ctk_widget_child_focus (CTK_WIDGET (child), direction))
             return TRUE;
         }
 
       return FALSE;
     }
-  else if (ctk_container_get_focus_child (GTK_CONTAINER (widget)) != NULL)
+  else if (ctk_container_get_focus_child (CTK_CONTAINER (widget)) != NULL)
     {
       /* Child has focus, always navigate inside it first */
       if (ctk_widget_child_focus (child, direction))
         return TRUE;
 
       /* If exiting child container to the left, select child  */
-      if (direction == GTK_DIR_LEFT || direction == GTK_DIR_TAB_BACKWARD)
+      if (direction == CTK_DIR_LEFT || direction == CTK_DIR_TAB_BACKWARD)
         {
-          ctk_flow_box_child_set_focus (GTK_FLOW_BOX_CHILD (widget));
+          ctk_flow_box_child_set_focus (CTK_FLOW_BOX_CHILD (widget));
           return TRUE;
         }
 
@@ -368,13 +368,13 @@ ctk_flow_box_child_focus (GtkWidget        *widget,
     {
       /* If coming from the left, enter into possible container */
       if (child &&
-          (direction == GTK_DIR_LEFT || direction == GTK_DIR_TAB_BACKWARD))
+          (direction == CTK_DIR_LEFT || direction == CTK_DIR_TAB_BACKWARD))
         {
           if (ctk_widget_child_focus (child, direction))
             return TRUE;
         }
 
-      ctk_flow_box_child_set_focus (GTK_FLOW_BOX_CHILD (widget));
+      ctk_flow_box_child_set_focus (CTK_FLOW_BOX_CHILD (widget));
       return TRUE;
     }
 }
@@ -393,7 +393,7 @@ static gboolean
 ctk_flow_box_child_draw (GtkWidget *widget,
                          cairo_t   *cr)
 {
-  ctk_css_gadget_draw (CHILD_PRIV (GTK_FLOW_BOX_CHILD (widget))->gadget, cr);
+  ctk_css_gadget_draw (CHILD_PRIV (CTK_FLOW_BOX_CHILD (widget))->gadget, cr);
 
   return FALSE;
 }
@@ -411,7 +411,7 @@ ctk_flow_box_child_render (GtkCssGadget *gadget,
 
   widget = ctk_css_gadget_get_owner (gadget);
 
-  GTK_WIDGET_CLASS (ctk_flow_box_child_parent_class)->draw (widget, cr);
+  CTK_WIDGET_CLASS (ctk_flow_box_child_parent_class)->draw (widget, cr);
 
   return ctk_widget_has_visible_focus (widget);
 }
@@ -423,11 +423,11 @@ ctk_flow_box_child_get_request_mode (GtkWidget *widget)
 {
   GtkFlowBox *box;
 
-  box = ctk_flow_box_child_get_box (GTK_FLOW_BOX_CHILD (widget));
+  box = ctk_flow_box_child_get_box (CTK_FLOW_BOX_CHILD (widget));
   if (box)
-    return ctk_widget_get_request_mode (GTK_WIDGET (box));
+    return ctk_widget_get_request_mode (CTK_WIDGET (box));
   else
-    return GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
+    return CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
 }
 
 static void
@@ -435,8 +435,8 @@ ctk_flow_box_child_get_preferred_height (GtkWidget *widget,
                                          gint      *minimum,
                                          gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (CHILD_PRIV (GTK_FLOW_BOX_CHILD (widget))->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (CHILD_PRIV (CTK_FLOW_BOX_CHILD (widget))->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -448,8 +448,8 @@ ctk_flow_box_child_get_preferred_height_for_width (GtkWidget *widget,
                                                    gint      *minimum,
                                                    gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (CHILD_PRIV (GTK_FLOW_BOX_CHILD (widget))->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (CHILD_PRIV (CTK_FLOW_BOX_CHILD (widget))->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      NULL, NULL);
@@ -460,8 +460,8 @@ ctk_flow_box_child_get_preferred_width (GtkWidget *widget,
                                         gint      *minimum,
                                         gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (CHILD_PRIV (GTK_FLOW_BOX_CHILD (widget))->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (CHILD_PRIV (CTK_FLOW_BOX_CHILD (widget))->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -473,8 +473,8 @@ ctk_flow_box_child_get_preferred_width_for_height (GtkWidget *widget,
                                                    gint      *minimum,
                                                    gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (CHILD_PRIV (GTK_FLOW_BOX_CHILD (widget))->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (CHILD_PRIV (CTK_FLOW_BOX_CHILD (widget))->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum, natural,
                                      NULL, NULL);
@@ -494,18 +494,18 @@ ctk_flow_box_child_measure (GtkCssGadget   *gadget,
   GtkWidget *child;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
   if (!child || ! ctk_widget_get_visible (child))
     {
       *minimum = *natural = 0;
       return;
     }
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       if (for_size < 0)
         {
-          if (ctk_flow_box_child_get_request_mode (widget) == GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
+          if (ctk_flow_box_child_get_request_mode (widget) == CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
             {
               ctk_widget_get_preferred_width (child, minimum, natural);
             }
@@ -518,7 +518,7 @@ ctk_flow_box_child_measure (GtkCssGadget   *gadget,
         }
       else
         {
-          if (ctk_flow_box_child_get_request_mode (widget) == GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
+          if (ctk_flow_box_child_get_request_mode (widget) == CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
             ctk_widget_get_preferred_width (child, minimum, natural);
           else
             ctk_widget_get_preferred_width_for_height (child, for_size, minimum, natural);
@@ -528,7 +528,7 @@ ctk_flow_box_child_measure (GtkCssGadget   *gadget,
     {
       if (for_size < 0)
         {
-          if (ctk_flow_box_child_get_request_mode (widget) == GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
+          if (ctk_flow_box_child_get_request_mode (widget) == CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
             {
               gint width;
               ctk_widget_get_preferred_width (child, NULL, &width);
@@ -541,7 +541,7 @@ ctk_flow_box_child_measure (GtkCssGadget   *gadget,
         }
       else
         {
-          if (ctk_flow_box_child_get_request_mode (widget) == GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
+          if (ctk_flow_box_child_get_request_mode (widget) == CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
             ctk_widget_get_preferred_height_for_width (child, for_size, minimum, natural);
           else
             ctk_widget_get_preferred_height (child, minimum, natural);
@@ -557,7 +557,7 @@ ctk_flow_box_child_size_allocate (GtkWidget     *widget,
 
   ctk_widget_set_allocation (widget, allocation);
 
-  ctk_css_gadget_allocate (CHILD_PRIV (GTK_FLOW_BOX_CHILD (widget))->gadget,
+  ctk_css_gadget_allocate (CHILD_PRIV (CTK_FLOW_BOX_CHILD (widget))->gadget,
                            allocation,
                            ctk_widget_get_allocated_baseline (widget),
                            &clip);
@@ -577,11 +577,11 @@ ctk_flow_box_child_allocate (GtkCssGadget        *gadget,
 
   widget = ctk_css_gadget_get_owner (gadget);
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
   if (child && ctk_widget_get_visible (child))
     ctk_widget_size_allocate (child, (GtkAllocation *)allocation);
 
-  ctk_container_get_children_clip (GTK_CONTAINER (widget), out_clip);
+  ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
 }
 
 /* GObject implementation {{{2 */
@@ -589,7 +589,7 @@ ctk_flow_box_child_allocate (GtkCssGadget        *gadget,
 static void
 ctk_flow_box_child_finalize (GObject *object)
 {
-  g_clear_object (&CHILD_PRIV (GTK_FLOW_BOX_CHILD (object))->gadget);
+  g_clear_object (&CHILD_PRIV (CTK_FLOW_BOX_CHILD (object))->gadget);
 
   G_OBJECT_CLASS (ctk_flow_box_child_parent_class)->finalize (object);
 }
@@ -598,7 +598,7 @@ static void
 ctk_flow_box_child_class_init (GtkFlowBoxChildClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->finalize = ctk_flow_box_child_finalize;
 
@@ -642,10 +642,10 @@ ctk_flow_box_child_class_init (GtkFlowBoxChildClass *class)
 static void
 ctk_flow_box_child_init (GtkFlowBoxChild *child)
 {
-  ctk_widget_set_can_focus (GTK_WIDGET (child), TRUE);
+  ctk_widget_set_can_focus (CTK_WIDGET (child), TRUE);
 
-  CHILD_PRIV (child)->gadget = ctk_css_custom_gadget_new_for_node (ctk_widget_get_css_node (GTK_WIDGET (child)),
-                                                     GTK_WIDGET (child),
+  CHILD_PRIV (child)->gadget = ctk_css_custom_gadget_new_for_node (ctk_widget_get_css_node (CTK_WIDGET (child)),
+                                                     CTK_WIDGET (child),
                                                      ctk_flow_box_child_measure,
                                                      ctk_flow_box_child_allocate,
                                                      ctk_flow_box_child_render,
@@ -668,7 +668,7 @@ ctk_flow_box_child_init (GtkFlowBoxChild *child)
 GtkWidget *
 ctk_flow_box_child_new (void)
 {
-  return g_object_new (GTK_TYPE_FLOW_BOX_CHILD, NULL);
+  return g_object_new (CTK_TYPE_FLOW_BOX_CHILD, NULL);
 }
 
 /**
@@ -687,7 +687,7 @@ ctk_flow_box_child_get_index (GtkFlowBoxChild *child)
 {
   GtkFlowBoxChildPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_FLOW_BOX_CHILD (child), -1);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX_CHILD (child), -1);
 
   priv = CHILD_PRIV (child);
 
@@ -711,7 +711,7 @@ ctk_flow_box_child_get_index (GtkFlowBoxChild *child)
 gboolean
 ctk_flow_box_child_is_selected (GtkFlowBoxChild *child)
 {
-  g_return_val_if_fail (GTK_IS_FLOW_BOX_CHILD (child), FALSE);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX_CHILD (child), FALSE);
 
   return CHILD_PRIV (child)->selected;
 }
@@ -744,7 +744,7 @@ ctk_flow_box_child_changed (GtkFlowBoxChild *child)
 {
   GtkFlowBox *box;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX_CHILD (child));
+  g_return_if_fail (CTK_IS_FLOW_BOX_CHILD (child));
 
   box = ctk_flow_box_child_get_box (child);
 
@@ -853,21 +853,21 @@ struct _GtkFlowBoxPrivate {
 
 #define BOX_PRIV(box) ((GtkFlowBoxPrivate*)ctk_flow_box_get_instance_private ((GtkFlowBox*)(box)))
 
-G_DEFINE_TYPE_WITH_CODE (GtkFlowBox, ctk_flow_box, GTK_TYPE_CONTAINER,
+G_DEFINE_TYPE_WITH_CODE (GtkFlowBox, ctk_flow_box, CTK_TYPE_CONTAINER,
                          G_ADD_PRIVATE (GtkFlowBox)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE, NULL))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL))
 
 /*  Internal API, utilities {{{2 */
 
 #define ORIENTATION_ALIGN(box)                              \
-  (BOX_PRIV(box)->orientation == GTK_ORIENTATION_HORIZONTAL \
-   ? ctk_widget_get_halign (GTK_WIDGET (box))               \
-   : ctk_widget_get_valign (GTK_WIDGET (box)))
+  (BOX_PRIV(box)->orientation == CTK_ORIENTATION_HORIZONTAL \
+   ? ctk_widget_get_halign (CTK_WIDGET (box))               \
+   : ctk_widget_get_valign (CTK_WIDGET (box)))
 
 #define OPPOSING_ORIENTATION_ALIGN(box)                     \
-  (BOX_PRIV(box)->orientation == GTK_ORIENTATION_HORIZONTAL \
-   ? ctk_widget_get_valign (GTK_WIDGET (box))               \
-   : ctk_widget_get_halign (GTK_WIDGET (box)))
+  (BOX_PRIV(box)->orientation == CTK_ORIENTATION_HORIZONTAL \
+   ? ctk_widget_get_valign (CTK_WIDGET (box))               \
+   : ctk_widget_get_halign (CTK_WIDGET (box)))
 
 /* Children are visible if they are shown by the app (visible)
  * and not filtered out (child_visible) by the box
@@ -911,7 +911,7 @@ ctk_flow_box_update_active (GtkFlowBox      *box,
       val != priv->active_child_active)
     {
       priv->active_child_active = val;
-      ctk_widget_queue_draw (GTK_WIDGET (box));
+      ctk_widget_queue_draw (CTK_WIDGET (box));
     }
 }
 
@@ -926,7 +926,7 @@ ctk_flow_box_apply_filter (GtkFlowBox      *box,
   if (priv->filter_func != NULL)
     do_show = priv->filter_func (child, priv->filter_data);
 
-  ctk_widget_set_child_visible (GTK_WIDGET (child), do_show);
+  ctk_widget_set_child_visible (CTK_WIDGET (child), do_show);
 }
 
 static void
@@ -943,7 +943,7 @@ ctk_flow_box_apply_filter_all (GtkFlowBox *box)
       child = g_sequence_get (iter);
       ctk_flow_box_apply_filter (box, child);
     }
-  ctk_widget_queue_resize (GTK_WIDGET (box));
+  ctk_widget_queue_resize (CTK_WIDGET (box));
 }
 
 static void
@@ -954,7 +954,7 @@ ctk_flow_box_apply_sort (GtkFlowBox      *box,
     {
       g_sequence_sort_changed (CHILD_PRIV (child)->iter,
                                (GCompareDataFunc)ctk_flow_box_sort, box);
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
     }
 }
 
@@ -968,11 +968,11 @@ ctk_flow_box_child_set_selected (GtkFlowBoxChild *child,
     {
       CHILD_PRIV (child)->selected = selected;
       if (selected)
-        ctk_widget_set_state_flags (GTK_WIDGET (child),
-                                    GTK_STATE_FLAG_SELECTED, FALSE);
+        ctk_widget_set_state_flags (CTK_WIDGET (child),
+                                    CTK_STATE_FLAG_SELECTED, FALSE);
       else
-        ctk_widget_unset_state_flags (GTK_WIDGET (child),
-                                      GTK_STATE_FLAG_SELECTED);
+        ctk_widget_unset_state_flags (CTK_WIDGET (child),
+                                      CTK_STATE_FLAG_SELECTED);
 
       return TRUE;
     }
@@ -987,7 +987,7 @@ ctk_flow_box_unselect_all_internal (GtkFlowBox *box)
   GSequenceIter *iter;
   gboolean dirty = FALSE;
 
-  if (BOX_PRIV (box)->selection_mode == GTK_SELECTION_NONE)
+  if (BOX_PRIV (box)->selection_mode == CTK_SELECTION_NONE)
     return FALSE;
 
   for (iter = g_sequence_get_begin_iter (BOX_PRIV (box)->children);
@@ -1008,9 +1008,9 @@ ctk_flow_box_unselect_child_internal (GtkFlowBox      *box,
   if (!CHILD_PRIV (child)->selected)
     return;
 
-  if (BOX_PRIV (box)->selection_mode == GTK_SELECTION_NONE)
+  if (BOX_PRIV (box)->selection_mode == CTK_SELECTION_NONE)
     return;
-  else if (BOX_PRIV (box)->selection_mode != GTK_SELECTION_MULTIPLE)
+  else if (BOX_PRIV (box)->selection_mode != CTK_SELECTION_MULTIPLE)
     ctk_flow_box_unselect_all_internal (box);
   else
     ctk_flow_box_child_set_selected (child, FALSE);
@@ -1023,9 +1023,9 @@ ctk_flow_box_update_cursor (GtkFlowBox      *box,
                             GtkFlowBoxChild *child)
 {
   BOX_PRIV (box)->cursor_child = child;
-  ctk_widget_grab_focus (GTK_WIDGET (child));
-  ctk_widget_queue_draw (GTK_WIDGET (child));
-  _ctk_flow_box_accessible_update_cursor (GTK_WIDGET (box), GTK_WIDGET (child));
+  ctk_widget_grab_focus (CTK_WIDGET (child));
+  ctk_widget_queue_draw (CTK_WIDGET (child));
+  _ctk_flow_box_accessible_update_cursor (CTK_WIDGET (box), CTK_WIDGET (child));
 }
 
 static void
@@ -1035,9 +1035,9 @@ ctk_flow_box_select_child_internal (GtkFlowBox      *box,
   if (CHILD_PRIV (child)->selected)
     return;
 
-  if (BOX_PRIV (box)->selection_mode == GTK_SELECTION_NONE)
+  if (BOX_PRIV (box)->selection_mode == CTK_SELECTION_NONE)
     return;
-  if (BOX_PRIV (box)->selection_mode != GTK_SELECTION_MULTIPLE)
+  if (BOX_PRIV (box)->selection_mode != CTK_SELECTION_MULTIPLE)
     ctk_flow_box_unselect_all_internal (box);
 
   ctk_flow_box_child_set_selected (child, TRUE);
@@ -1081,9 +1081,9 @@ ctk_flow_box_select_all_between (GtkFlowBox      *box,
       if (child_is_visible (child))
         {
           if (modify)
-            ctk_flow_box_child_set_selected (GTK_FLOW_BOX_CHILD (child), !CHILD_PRIV (child)->selected);
+            ctk_flow_box_child_set_selected (CTK_FLOW_BOX_CHILD (child), !CHILD_PRIV (child)->selected);
           else
-            ctk_flow_box_child_set_selected (GTK_FLOW_BOX_CHILD (child), TRUE);
+            ctk_flow_box_child_set_selected (CTK_FLOW_BOX_CHILD (child), TRUE);
 	}
 
       if (g_sequence_iter_compare (iter, iter2) == 0)
@@ -1101,16 +1101,16 @@ ctk_flow_box_update_selection (GtkFlowBox      *box,
 
   ctk_flow_box_update_cursor (box, child);
 
-  if (priv->selection_mode == GTK_SELECTION_NONE)
+  if (priv->selection_mode == CTK_SELECTION_NONE)
     return;
 
-  if (priv->selection_mode == GTK_SELECTION_BROWSE)
+  if (priv->selection_mode == CTK_SELECTION_BROWSE)
     {
       ctk_flow_box_unselect_all_internal (box);
       ctk_flow_box_child_set_selected (child, TRUE);
       priv->selected_child = child;
     }
-  else if (priv->selection_mode == GTK_SELECTION_SINGLE)
+  else if (priv->selection_mode == CTK_SELECTION_SINGLE)
     {
       gboolean was_selected;
 
@@ -1119,7 +1119,7 @@ ctk_flow_box_update_selection (GtkFlowBox      *box,
       ctk_flow_box_child_set_selected (child, modify ? !was_selected : TRUE);
       priv->selected_child = CHILD_PRIV (child)->selected ? child : NULL;
     }
-  else /* GTK_SELECTION_MULTIPLE */
+  else /* CTK_SELECTION_MULTIPLE */
     {
       if (extend)
         {
@@ -1174,8 +1174,8 @@ ctk_flow_box_get_previous_focusable (GtkFlowBox    *box,
     {
       iter = g_sequence_iter_prev (iter);
       child = g_sequence_get (iter);
-      if (child_is_visible (GTK_WIDGET (child)) &&
-          ctk_widget_is_sensitive (GTK_WIDGET (child)))
+      if (child_is_visible (CTK_WIDGET (child)) &&
+          ctk_widget_is_sensitive (CTK_WIDGET (child)))
         return iter;
     }
 
@@ -1194,8 +1194,8 @@ ctk_flow_box_get_next_focusable (GtkFlowBox    *box,
       if (g_sequence_iter_is_end (iter))
         return NULL;
       child = g_sequence_get (iter);
-      if (child_is_visible (GTK_WIDGET (child)) &&
-          ctk_widget_is_sensitive (GTK_WIDGET (child)))
+      if (child_is_visible (CTK_WIDGET (child)) &&
+          ctk_widget_is_sensitive (CTK_WIDGET (child)))
         return iter;
     }
 
@@ -1213,8 +1213,8 @@ ctk_flow_box_get_first_focusable (GtkFlowBox *box)
     return NULL;
 
   child = g_sequence_get (iter);
-  if (child_is_visible (GTK_WIDGET (child)) &&
-      ctk_widget_is_sensitive (GTK_WIDGET (child)))
+  if (child_is_visible (CTK_WIDGET (child)) &&
+      ctk_widget_is_sensitive (CTK_WIDGET (child)))
     return iter;
 
   return ctk_flow_box_get_next_focusable (box, iter);
@@ -1246,10 +1246,10 @@ ctk_flow_box_get_above_focusable (GtkFlowBox    *box,
             return NULL;
           iter = g_sequence_iter_prev (iter);
           child = g_sequence_get (iter);
-          if (child_is_visible (GTK_WIDGET (child)))
+          if (child_is_visible (CTK_WIDGET (child)))
             i++;
         }
-      if (child && ctk_widget_get_sensitive (GTK_WIDGET (child)))
+      if (child && ctk_widget_get_sensitive (CTK_WIDGET (child)))
         return iter;
     }
 
@@ -1272,10 +1272,10 @@ ctk_flow_box_get_below_focusable (GtkFlowBox    *box,
           if (g_sequence_iter_is_end (iter))
             return NULL;
           child = g_sequence_get (iter);
-          if (child_is_visible (GTK_WIDGET (child)))
+          if (child_is_visible (CTK_WIDGET (child)))
             i++;
         }
-      if (child && ctk_widget_get_sensitive (GTK_WIDGET (child)))
+      if (child && ctk_widget_get_sensitive (CTK_WIDGET (child)))
         return iter;
     }
 
@@ -1311,7 +1311,7 @@ get_max_item_size (GtkFlowBox     *box,
       if (!child_is_visible (child))
         continue;
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         ctk_widget_get_preferred_width (child, &child_min, &child_nat);
       else
         ctk_widget_get_preferred_height (child, &child_min, &child_nat);
@@ -1354,7 +1354,7 @@ get_largest_size_for_opposing_orientation (GtkFlowBox     *box,
       if (!child_is_visible (child))
         continue;
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         ctk_widget_get_preferred_height_for_width (child,
                                                    item_size,
                                                    &child_min, &child_nat);
@@ -1409,13 +1409,13 @@ get_largest_size_for_line_in_opposing_orientation (GtkFlowBox       *box,
       /* Distribute the extra pixels to the first children in the line
        * (could be fancier and spread them out more evenly) */
       this_item_size = item_sizes[i].minimum_size;
-      if (extra_pixels > 0 && ORIENTATION_ALIGN (box) == GTK_ALIGN_FILL)
+      if (extra_pixels > 0 && ORIENTATION_ALIGN (box) == CTK_ALIGN_FILL)
         {
           this_item_size++;
           extra_pixels--;
         }
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         ctk_widget_get_preferred_height_for_width (child,
                                                    this_item_size,
                                                    &child_min, &child_nat);
@@ -1470,7 +1470,7 @@ gather_aligned_item_requests (GtkFlowBox       *box,
       if (!child_is_visible (child))
         continue;
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         ctk_widget_get_preferred_width (child,
                                         &child_min, &child_nat);
       else
@@ -1481,7 +1481,7 @@ gather_aligned_item_requests (GtkFlowBox       *box,
       position = i % line_length;
 
       item_align = ORIENTATION_ALIGN (box);
-      if (item_align == GTK_ALIGN_END && i >= n_children - extra_items)
+      if (item_align == CTK_ALIGN_END && i >= n_children - extra_items)
         position += line_length - extra_items;
 
       /* Round up the size of every column/row */
@@ -1566,14 +1566,14 @@ get_offset_pixels (GtkAlign align,
   gint offset;
 
   switch (align) {
-  case GTK_ALIGN_START:
-  case GTK_ALIGN_FILL:
+  case CTK_ALIGN_START:
+  case CTK_ALIGN_FILL:
     offset = 0;
     break;
-  case GTK_ALIGN_CENTER:
+  case CTK_ALIGN_CENTER:
     offset = pixels / 2;
     break;
-  case GTK_ALIGN_END:
+  case CTK_ALIGN_END:
     offset = pixels;
     break;
   default:
@@ -1621,7 +1621,7 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
                        gpointer             unused)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkFlowBoxPrivate  *priv = BOX_PRIV (box);
   GtkAllocation child_allocation;
   gint avail_size, avail_other_size, min_items, item_spacing, line_spacing;
@@ -1641,13 +1641,13 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
 
   min_items = MAX (1, priv->min_children_per_line);
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       avail_size = allocation->width;
       avail_other_size = allocation->height;
       item_spacing = priv->column_spacing; line_spacing = priv->row_spacing;
     }
-  else /* GTK_ORIENTATION_VERTICAL */
+  else /* CTK_ORIENTATION_VERTICAL */
     {
       avail_size = allocation->height;
       avail_other_size = allocation->width;
@@ -1698,7 +1698,7 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
       item_size = (avail_size - (line_length - 1) * item_spacing) / line_length;
 
       /* Cut out the expand space if we're not distributing any */
-      if (item_align != GTK_ALIGN_FILL)
+      if (item_align != CTK_ALIGN_FILL)
         item_size = MIN (item_size, nat_item_size);
 
       get_largest_size_for_opposing_orientation (box,
@@ -1710,10 +1710,10 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
       /* resolve a fixed 'line_size' */
       line_size = (avail_other_size - (n_lines - 1) * line_spacing) / n_lines;
 
-      if (line_align != GTK_ALIGN_FILL)
+      if (line_align != CTK_ALIGN_FILL)
         line_size = MIN (line_size, nat_fixed_line_size);
 
-      /* Get the real extra pixels incase of GTK_ALIGN_START lines */
+      /* Get the real extra pixels incase of CTK_ALIGN_START lines */
       extra_pixels = avail_size - (line_length - 1) * item_spacing - item_size * line_length;
       extra_line_pixels = avail_other_size - (n_lines - 1) * line_spacing - line_size * n_lines;
     }
@@ -1802,14 +1802,14 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
    */
 
   /* Calculate expand space per item */
-  if (item_align == GTK_ALIGN_FILL)
+  if (item_align == CTK_ALIGN_FILL)
     {
       extra_per_item = extra_pixels / line_length;
       extra_extra    = extra_pixels % line_length;
     }
 
   /* Calculate expand space per line */
-  if (line_align == GTK_ALIGN_FILL)
+  if (line_align == CTK_ALIGN_FILL)
     {
       extra_per_line   = extra_line_pixels / n_lines;
       extra_line_extra = extra_line_pixels % n_lines;
@@ -1833,7 +1833,7 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
     {
       this_line_size = line_sizes[0].minimum_size;
 
-      if (line_align == GTK_ALIGN_FILL)
+      if (line_align == CTK_ALIGN_FILL)
         {
           this_line_size += extra_per_line;
 
@@ -1875,7 +1875,7 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
             {
               this_line_size = line_sizes[line_count].minimum_size;
 
-              if (line_align == GTK_ALIGN_FILL)
+              if (line_align == CTK_ALIGN_FILL)
                 {
                   this_line_size += extra_per_line;
 
@@ -1886,11 +1886,11 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
 
           item_offset = allocation->x;
 
-          if (item_align == GTK_ALIGN_CENTER)
+          if (item_align == CTK_ALIGN_CENTER)
             {
               item_offset += get_offset_pixels (item_align, extra_pixels);
             }
-          else if (item_align == GTK_ALIGN_END)
+          else if (item_align == CTK_ALIGN_END)
             {
               item_offset += get_offset_pixels (item_align, extra_pixels);
 
@@ -1920,7 +1920,7 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
         }
 
       /* Push the index along for the last line when spreading to the end */
-      if (item_align == GTK_ALIGN_END && line_count == n_lines -1)
+      if (item_align == CTK_ALIGN_END && line_count == n_lines -1)
         {
           gint extra_items = n_children % line_length;
 
@@ -1932,7 +1932,7 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
       else
         this_item_size = item_sizes[position].minimum_size;
 
-      if (item_align == GTK_ALIGN_FILL)
+      if (item_align == CTK_ALIGN_FILL)
         {
           this_item_size += extra_per_item;
 
@@ -1941,14 +1941,14 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
         }
 
       /* Do the actual allocation */
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           child_allocation.x = item_offset;
           child_allocation.y = line_offset;
           child_allocation.width = this_item_size;
           child_allocation.height = this_line_size;
         }
-      else /* GTK_ORIENTATION_VERTICAL */
+      else /* CTK_ORIENTATION_VERTICAL */
         {
           child_allocation.x = line_offset;
           child_allocation.y = item_offset;
@@ -1956,7 +1956,7 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
           child_allocation.height = this_item_size;
         }
 
-      if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+      if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
         child_allocation.x = allocation->width - child_allocation.x - child_allocation.width;
       ctk_widget_size_allocate (child, &child_allocation);
 
@@ -1969,16 +1969,16 @@ ctk_flow_box_allocate (GtkCssGadget        *gadget,
   g_free (item_sizes);
   g_free (line_sizes);
 
-  ctk_container_get_children_clip (GTK_CONTAINER (widget), out_clip);
+  ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
 }
 
 static GtkSizeRequestMode
 ctk_flow_box_get_request_mode (GtkWidget *widget)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
 
-  return (BOX_PRIV (box)->orientation == GTK_ORIENTATION_HORIZONTAL) ?
-    GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH : GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
+  return (BOX_PRIV (box)->orientation == CTK_ORIENTATION_HORIZONTAL) ?
+    CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH : CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
 }
 
 /* Gets the largest minimum and natural length of
@@ -1996,7 +1996,7 @@ get_largest_aligned_line_length (GtkFlowBox     *box,
   gint spacing, i;
   GtkRequestedSize *aligned_item_sizes;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     spacing = BOX_PRIV (box)->column_spacing;
   else
     spacing = BOX_PRIV (box)->row_spacing;
@@ -2017,10 +2017,10 @@ get_largest_aligned_line_length (GtkFlowBox     *box,
       if (!child_is_visible (child))
         continue;
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         ctk_widget_get_preferred_width (child,
                                         &child_min, &child_nat);
-      else /* GTK_ORIENTATION_VERTICAL */
+      else /* CTK_ORIENTATION_VERTICAL */
         ctk_widget_get_preferred_height (child,
                                          &child_min, &child_nat);
 
@@ -2058,7 +2058,7 @@ ctk_flow_box_get_preferred_width (GtkWidget *widget,
                                   gint      *natural)
 {
   ctk_css_gadget_get_preferred_size (BOX_PRIV (widget)->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -2070,7 +2070,7 @@ ctk_flow_box_get_preferred_height (GtkWidget *widget,
                                    gint      *natural)
 {
   ctk_css_gadget_get_preferred_size (BOX_PRIV (widget)->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -2083,7 +2083,7 @@ ctk_flow_box_get_preferred_height_for_width (GtkWidget *widget,
                                              gint      *natural)
 {
   ctk_css_gadget_get_preferred_size (BOX_PRIV (widget)->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      NULL, NULL);
@@ -2096,7 +2096,7 @@ ctk_flow_box_get_preferred_width_for_height (GtkWidget *widget,
                                              gint      *natural)
 {
   ctk_css_gadget_get_preferred_size (BOX_PRIV (widget)->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum, natural,
                                      NULL, NULL);
@@ -2113,10 +2113,10 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                       gpointer        data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       if (for_size < 0)
         {
@@ -2127,7 +2127,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
           min_items = MAX (1, priv->min_children_per_line);
           nat_items = MAX (min_items, priv->max_children_per_line);
 
-          if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+          if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
             {
               min_width = nat_width = 0;
 
@@ -2139,7 +2139,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                   if (min_items == 1)
                     {
                       get_max_item_size (box,
-                                         GTK_ORIENTATION_HORIZONTAL,
+                                         CTK_ORIENTATION_HORIZONTAL,
                                          &min_item_width,
                                          &nat_item_width);
 
@@ -2151,14 +2151,14 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                       gint min_line_length, nat_line_length;
 
                       get_largest_aligned_line_length (box,
-                                                       GTK_ORIENTATION_HORIZONTAL,
+                                                       CTK_ORIENTATION_HORIZONTAL,
                                                        min_items,
                                                        &min_line_length,
                                                        &nat_line_length);
 
                       if (nat_items > min_items)
                         get_largest_aligned_line_length (box,
-                                                         GTK_ORIENTATION_HORIZONTAL,
+                                                         CTK_ORIENTATION_HORIZONTAL,
                                                          nat_items,
                                                          NULL,
                                                          &nat_line_length);
@@ -2170,7 +2170,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
               else /* In homogeneous mode; horizontally oriented boxs
                     * give the same width to all children */
                 {
-                  get_max_item_size (box, GTK_ORIENTATION_HORIZONTAL,
+                  get_max_item_size (box, CTK_ORIENTATION_HORIZONTAL,
                                      &min_item_width, &nat_item_width);
 
                   min_width += min_item_width * min_items;
@@ -2180,18 +2180,18 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                   nat_width += (nat_items -1) * priv->column_spacing;
                 }
             }
-          else /* GTK_ORIENTATION_VERTICAL */
+          else /* CTK_ORIENTATION_VERTICAL */
             {
               /* Return the width for the minimum height */
               gint min_height;
 
               ctk_css_gadget_get_preferred_size (gadget,
-                                                 GTK_ORIENTATION_VERTICAL,
+                                                 CTK_ORIENTATION_VERTICAL,
                                                  -1,
                                                  &min_height, NULL,
                                                  NULL, NULL);
               ctk_css_gadget_get_preferred_size (gadget,
-                                                 GTK_ORIENTATION_HORIZONTAL,
+                                                 CTK_ORIENTATION_HORIZONTAL,
                                                  min_height,
                                                  &min_width, &nat_width,
                                                  NULL, NULL);
@@ -2212,16 +2212,16 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
           min_width = 0;
           nat_width = 0;
 
-          if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+          if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
             {
               /* Return the minimum width */
               ctk_css_gadget_get_preferred_size (gadget,
-                                                 GTK_ORIENTATION_HORIZONTAL,
+                                                 CTK_ORIENTATION_HORIZONTAL,
                                                  -1,
                                                  &min_width, &nat_width,
                                                  NULL, NULL);
             }
-          else /* GTK_ORIENTATION_VERTICAL */
+          else /* CTK_ORIENTATION_VERTICAL */
             {
               gint min_height;
               gint line_length;
@@ -2233,7 +2233,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
 
               /* Make sure its no smaller than the minimum */
               ctk_css_gadget_get_preferred_size (gadget,
-                                                 GTK_ORIENTATION_VERTICAL,
+                                                 CTK_ORIENTATION_VERTICAL,
                                                  -1,
                                                  &min_height, NULL,
                                                  NULL, NULL);
@@ -2242,7 +2242,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
               if (avail_size <= 0)
                 goto out_width;
 
-              get_max_item_size (box, GTK_ORIENTATION_VERTICAL, &min_item_height, &nat_item_height);
+              get_max_item_size (box, CTK_ORIENTATION_VERTICAL, &min_item_height, &nat_item_height);
 
               /* By default flow at the natural item width */
               line_length = avail_size / (nat_item_height + priv->row_spacing);
@@ -2261,7 +2261,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
               item_size = (avail_size - (line_length - 1) * priv->row_spacing) / line_length;
 
               /* Cut out the expand space if we're not distributing any */
-              if (ctk_widget_get_valign (widget) != GTK_ALIGN_FILL)
+              if (ctk_widget_get_valign (widget) != CTK_ALIGN_FILL)
                 {
                   item_size = MIN (item_size, nat_item_height);
                   extra_pixels = 0;
@@ -2279,7 +2279,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                    * add up the size accordingly
                    */
                   get_largest_size_for_opposing_orientation (box,
-                                                             GTK_ORIENTATION_VERTICAL,
+                                                             CTK_ORIENTATION_VERTICAL,
                                                              item_size,
                                                              &min_item_width,
                                                              &nat_item_width);
@@ -2326,7 +2326,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                        !g_sequence_iter_is_end (iter);)
                     {
                       iter = get_largest_size_for_line_in_opposing_orientation (box,
-                                                                                GTK_ORIENTATION_VERTICAL,
+                                                                                CTK_ORIENTATION_VERTICAL,
                                                                                 iter,
                                                                                 line_length,
                                                                                 item_sizes,
@@ -2369,23 +2369,23 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
           min_items = MAX (1, priv->min_children_per_line);
           nat_items = MAX (min_items, priv->max_children_per_line);
 
-          if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+          if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
             {
               /* Return the height for the minimum width */
               gint min_width;
 
               ctk_css_gadget_get_preferred_size (gadget,
-                                                 GTK_ORIENTATION_HORIZONTAL,
+                                                 CTK_ORIENTATION_HORIZONTAL,
                                                  -1,
                                                  &min_width, NULL,
                                                  NULL, NULL);
               ctk_css_gadget_get_preferred_size (gadget,
-                                                 GTK_ORIENTATION_VERTICAL,
+                                                 CTK_ORIENTATION_VERTICAL,
                                                  min_width,
                                                  &min_height, &nat_height,
                                                  NULL, NULL);
             }
-          else /* GTK_ORIENTATION_VERTICAL */
+          else /* CTK_ORIENTATION_VERTICAL */
             {
               min_height = nat_height = 0;
 
@@ -2396,7 +2396,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                    */
                   if (min_items == 1)
                     {
-                      get_max_item_size (box, GTK_ORIENTATION_VERTICAL,
+                      get_max_item_size (box, CTK_ORIENTATION_VERTICAL,
                                          &min_item_height, &nat_item_height);
 
                       min_height += min_item_height;
@@ -2407,14 +2407,14 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                       gint min_line_length, nat_line_length;
 
                       get_largest_aligned_line_length (box,
-                                                       GTK_ORIENTATION_VERTICAL,
+                                                       CTK_ORIENTATION_VERTICAL,
                                                        min_items,
                                                        &min_line_length,
                                                        &nat_line_length);
 
                       if (nat_items > min_items)
                         get_largest_aligned_line_length (box,
-                                                         GTK_ORIENTATION_VERTICAL,
+                                                         CTK_ORIENTATION_VERTICAL,
                                                          nat_items,
                                                          NULL,
                                                          &nat_line_length);
@@ -2430,7 +2430,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                    * give the same height to all children
                    */
                   get_max_item_size (box,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      &min_item_height,
                                      &nat_item_height);
 
@@ -2457,7 +2457,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
           min_height = 0;
           nat_height = 0;
 
-          if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+          if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
             {
               gint min_width;
               gint line_length;
@@ -2469,7 +2469,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
 
               /* Make sure its no smaller than the minimum */
               ctk_css_gadget_get_preferred_size (gadget,
-                                                 GTK_ORIENTATION_HORIZONTAL,
+                                                 CTK_ORIENTATION_HORIZONTAL,
                                                  -1,
                                                  &min_width, NULL,
                                                  NULL, NULL);
@@ -2478,7 +2478,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
               if (avail_size <= 0)
                 goto out_height;
 
-              get_max_item_size (box, GTK_ORIENTATION_HORIZONTAL, &min_item_width, &nat_item_width);
+              get_max_item_size (box, CTK_ORIENTATION_HORIZONTAL, &min_item_width, &nat_item_width);
               if (nat_item_width <= 0)
                 goto out_height;
 
@@ -2499,7 +2499,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
               item_size = (avail_size - (line_length - 1) * priv->column_spacing) / line_length;
 
               /* Cut out the expand space if we're not distributing any */
-              if (ctk_widget_get_halign (widget) != GTK_ALIGN_FILL)
+              if (ctk_widget_get_halign (widget) != CTK_ALIGN_FILL)
                 {
                   item_size    = MIN (item_size, nat_item_width);
                   extra_pixels = 0;
@@ -2517,7 +2517,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                    * add up the size accordingly
                    */
                   get_largest_size_for_opposing_orientation (box,
-                                                             GTK_ORIENTATION_HORIZONTAL,
+                                                             CTK_ORIENTATION_HORIZONTAL,
                                                              item_size,
                                                              &min_item_height,
                                                              &nat_item_height);
@@ -2563,7 +2563,7 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                        !g_sequence_iter_is_end (iter);)
                     {
                       iter = get_largest_size_for_line_in_opposing_orientation (box,
-                                                                                GTK_ORIENTATION_HORIZONTAL,
+                                                                                CTK_ORIENTATION_HORIZONTAL,
                                                                                 iter,
                                                                                 line_length,
                                                                                 item_sizes,
@@ -2589,11 +2589,11 @@ ctk_flow_box_measure (GtkCssGadget   *gadget,
                   g_free (item_sizes);
                 }
             }
-          else /* GTK_ORIENTATION_VERTICAL */
+          else /* CTK_ORIENTATION_VERTICAL */
             {
               /* Return the minimum height */
               ctk_css_gadget_get_preferred_size (gadget,
-                                                 GTK_ORIENTATION_VERTICAL,
+                                                 CTK_ORIENTATION_VERTICAL,
                                                  -1,
                                                  &min_height, &nat_height,
                                                  NULL, NULL);
@@ -2627,10 +2627,10 @@ ctk_flow_box_render (GtkCssGadget *gadget,
                      gpointer      data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
 
-  GTK_WIDGET_CLASS (ctk_flow_box_parent_class)->draw (widget, cr);
+  CTK_WIDGET_CLASS (ctk_flow_box_parent_class)->draw (widget, cr);
 
   if (priv->rubberband_first && priv->rubberband_last)
     {
@@ -2640,9 +2640,9 @@ ctk_flow_box_render (GtkCssGadget *gadget,
       GArray *lines;
       gboolean vertical;
 
-      context = ctk_widget_get_style_context (GTK_WIDGET (box));
+      context = ctk_widget_get_style_context (CTK_WIDGET (box));
 
-      vertical = priv->orientation == GTK_ORIENTATION_VERTICAL;
+      vertical = priv->orientation == CTK_ORIENTATION_VERTICAL;
 
       cairo_save (cr);
 
@@ -2669,7 +2669,7 @@ ctk_flow_box_render (GtkCssGadget *gadget,
           GtkWidget *child;
 
           child = g_sequence_get (iter);
-          ctk_widget_get_allocation (GTK_WIDGET (child), &rect);
+          ctk_widget_get_allocation (CTK_WIDGET (child), &rect);
           if (line_rect.width == 0)
             line_rect = rect;
           else
@@ -2744,11 +2744,11 @@ remove_autoscroll (GtkFlowBox *box)
 
   if (priv->autoscroll_id)
     {
-      ctk_widget_remove_tick_callback (GTK_WIDGET (box), priv->autoscroll_id);
+      ctk_widget_remove_tick_callback (CTK_WIDGET (box), priv->autoscroll_id);
       priv->autoscroll_id = 0;
     }
 
-  priv->autoscroll_mode = GTK_SCROLL_NONE;
+  priv->autoscroll_mode = CTK_SCROLL_NONE;
 }
 
 static gboolean
@@ -2756,30 +2756,30 @@ autoscroll_cb (GtkWidget     *widget,
                GdkFrameClock *frame_clock,
                gpointer       data)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (data);
+  GtkFlowBox *box = CTK_FLOW_BOX (data);
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
   GtkAdjustment *adjustment;
   gdouble factor;
   gdouble increment;
   gdouble value;
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     adjustment = priv->vadjustment;
   else
     adjustment = priv->hadjustment;
 
   switch (priv->autoscroll_mode)
     {
-    case GTK_SCROLL_STEP_FORWARD:
+    case CTK_SCROLL_STEP_FORWARD:
       factor = AUTOSCROLL_FACTOR;
       break;
-    case GTK_SCROLL_STEP_BACKWARD:
+    case CTK_SCROLL_STEP_BACKWARD:
       factor = - AUTOSCROLL_FACTOR;
       break;
-    case GTK_SCROLL_PAGE_FORWARD:
+    case CTK_SCROLL_PAGE_FORWARD:
       factor = AUTOSCROLL_FACTOR_FAST;
       break;
-    case GTK_SCROLL_PAGE_BACKWARD:
+    case CTK_SCROLL_PAGE_BACKWARD:
       factor = - AUTOSCROLL_FACTOR_FAST;
       break;
     default:
@@ -2798,7 +2798,7 @@ autoscroll_cb (GtkWidget     *widget,
       gdouble x, y;
       GtkFlowBoxChild *child;
 
-      sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (priv->drag_gesture));
+      sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (priv->drag_gesture));
       ctk_gesture_get_point (priv->drag_gesture, sequence, &x, &y);
 
       child = ctk_flow_box_get_child_at_pos (box, x, y);
@@ -2818,10 +2818,10 @@ add_autoscroll (GtkFlowBox *box)
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
 
   if (priv->autoscroll_id != 0 ||
-      priv->autoscroll_mode == GTK_SCROLL_NONE)
+      priv->autoscroll_mode == CTK_SCROLL_NONE)
     return;
 
-  priv->autoscroll_id = ctk_widget_add_tick_callback (GTK_WIDGET (box),
+  priv->autoscroll_id = ctk_widget_add_tick_callback (CTK_WIDGET (box),
                                                       autoscroll_cb,
                                                       box,
                                                       NULL);
@@ -2835,10 +2835,10 @@ get_view_rect (GtkFlowBox   *box,
   GtkWidget *parent;
   GdkWindow *view;
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (box));
-  if (GTK_IS_VIEWPORT (parent))
+  parent = ctk_widget_get_parent (CTK_WIDGET (box));
+  if (CTK_IS_VIEWPORT (parent))
     {
-      view = ctk_viewport_get_view_window (GTK_VIEWPORT (parent));
+      view = ctk_viewport_get_view_window (CTK_VIEWPORT (parent));
       rect->x = rect->y = 0;
 
       rect->x = ctk_adjustment_get_value (priv->hadjustment);
@@ -2857,13 +2857,13 @@ update_autoscroll_mode (GtkFlowBox *box,
                         gint        y)
 {
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
-  GtkScrollType mode = GTK_SCROLL_NONE;
+  GtkScrollType mode = CTK_SCROLL_NONE;
   GdkRectangle rect;
   gint size, pos;
 
   if (priv->rubberband_select && get_view_rect (box, &rect))
     {
-      if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+      if (priv->orientation == CTK_ORIENTATION_VERTICAL)
         {
           size = rect.width;
           pos = x - rect.x;
@@ -2875,13 +2875,13 @@ update_autoscroll_mode (GtkFlowBox *box,
         }
 
       if (pos < 0 - AUTOSCROLL_FAST_DISTANCE)
-        mode = GTK_SCROLL_PAGE_BACKWARD;
+        mode = CTK_SCROLL_PAGE_BACKWARD;
       else if (pos > size + AUTOSCROLL_FAST_DISTANCE)
-        mode = GTK_SCROLL_PAGE_FORWARD;
+        mode = CTK_SCROLL_PAGE_FORWARD;
       else if (pos < 0)
-        mode = GTK_SCROLL_STEP_BACKWARD;
+        mode = CTK_SCROLL_STEP_BACKWARD;
       else if (pos > size)
-        mode = GTK_SCROLL_STEP_FORWARD;
+        mode = CTK_SCROLL_STEP_FORWARD;
     }
 
   if (mode != priv->autoscroll_mode)
@@ -2898,10 +2898,10 @@ static gboolean
 ctk_flow_box_enter_notify_event (GtkWidget        *widget,
                                  GdkEventCrossing *event)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkFlowBoxChild *child;
 
-  if (event->window != ctk_widget_get_window (GTK_WIDGET (box)))
+  if (event->window != ctk_widget_get_window (CTK_WIDGET (box)))
     return FALSE;
 
   child = ctk_flow_box_get_child_at_pos (box, event->x, event->y);
@@ -2914,10 +2914,10 @@ static gboolean
 ctk_flow_box_leave_notify_event (GtkWidget        *widget,
                                  GdkEventCrossing *event)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkFlowBoxChild *child = NULL;
 
-  if (event->window != ctk_widget_get_window (GTK_WIDGET (box)))
+  if (event->window != ctk_widget_get_window (CTK_WIDGET (box)))
     return FALSE;
 
   if (event->detail != GDK_NOTIFY_INFERIOR)
@@ -2949,7 +2949,7 @@ ctk_flow_box_drag_gesture_update (GtkGestureDrag *gesture,
       priv->rubberband_select = TRUE;
       priv->rubberband_first = ctk_flow_box_get_child_at_pos (box, start_x, start_y);
   
-      widget_node = ctk_widget_get_css_node (GTK_WIDGET (box));
+      widget_node = ctk_widget_get_css_node (CTK_WIDGET (box));
       priv->rubberband_node = ctk_css_node_new ();
       ctk_css_node_set_name (priv->rubberband_node, I_("rubberband"));
       ctk_css_node_set_parent (priv->rubberband_node, widget_node);
@@ -2959,7 +2959,7 @@ ctk_flow_box_drag_gesture_update (GtkGestureDrag *gesture,
       /* Grab focus here, so Escape-to-stop-rubberband  works */
       if (priv->rubberband_first)
         ctk_flow_box_update_cursor (box, priv->rubberband_first);
-      ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
+      ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_CLAIMED);
     }
 
   if (priv->rubberband_select)
@@ -2977,7 +2977,7 @@ ctk_flow_box_drag_gesture_update (GtkGestureDrag *gesture,
         priv->rubberband_last = child;
 
       update_autoscroll_mode (box, start_x + offset_x, start_y + offset_y);
-      ctk_widget_queue_draw (GTK_WIDGET (box));
+      ctk_widget_queue_draw (CTK_WIDGET (box));
     }
 }
 
@@ -2985,7 +2985,7 @@ static gboolean
 ctk_flow_box_motion_notify_event (GtkWidget      *widget,
                                   GdkEventMotion *event)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkFlowBoxChild *child;
   GdkWindow *window;
   GdkWindow *event_window;
@@ -2994,7 +2994,7 @@ ctk_flow_box_motion_notify_event (GtkWidget      *widget,
   gdouble parent_x;
   gdouble parent_y;
 
-  window = ctk_widget_get_window (GTK_WIDGET (box));
+  window = ctk_widget_get_window (CTK_WIDGET (box));
   event_window = event->window;
   relative_x = event->x;
   relative_y = event->y;
@@ -3012,7 +3012,7 @@ ctk_flow_box_motion_notify_event (GtkWidget      *widget,
   child = ctk_flow_box_get_child_at_pos (box, relative_x, relative_y);
   ctk_flow_box_update_active (box, child);
 
-  return GTK_WIDGET_CLASS (ctk_flow_box_parent_class)->motion_notify_event (widget, event);
+  return CTK_WIDGET_CLASS (ctk_flow_box_parent_class)->motion_notify_event (widget, event);
 }
 
 static void
@@ -3032,16 +3032,16 @@ ctk_flow_box_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
 
   /* The drag gesture is only triggered by first press */
   if (n_press != 1)
-    ctk_gesture_set_state (priv->drag_gesture, GTK_EVENT_SEQUENCE_DENIED);
+    ctk_gesture_set_state (priv->drag_gesture, CTK_EVENT_SEQUENCE_DENIED);
 
   priv->active_child = child;
   priv->active_child_active = TRUE;
-  ctk_widget_queue_draw (GTK_WIDGET (box));
+  ctk_widget_queue_draw (CTK_WIDGET (box));
 
   if (n_press == 2 && !priv->activate_on_single_click)
     {
-      ctk_gesture_set_state (GTK_GESTURE (gesture),
-                             GTK_EVENT_SEQUENCE_CLAIMED);
+      ctk_gesture_set_state (CTK_GESTURE (gesture),
+                             CTK_EVENT_SEQUENCE_CLAIMED);
       g_signal_emit (box, signals[CHILD_ACTIVATED], 0, child);
     }
 }
@@ -3057,8 +3057,8 @@ ctk_flow_box_multipress_gesture_released (GtkGestureMultiPress *gesture,
 
   if (priv->active_child != NULL && priv->active_child_active)
     {
-      ctk_gesture_set_state (GTK_GESTURE (gesture),
-                             GTK_EVENT_SEQUENCE_CLAIMED);
+      ctk_gesture_set_state (CTK_GESTURE (gesture),
+                             CTK_EVENT_SEQUENCE_CLAIMED);
 
       if (priv->activate_on_single_click)
         ctk_flow_box_select_and_activate (box, priv->active_child);
@@ -3070,15 +3070,15 @@ ctk_flow_box_multipress_gesture_released (GtkGestureMultiPress *gesture,
           gboolean modify;
           gboolean extend;
 
-          get_current_selection_modifiers (GTK_WIDGET (box), &modify, &extend);
+          get_current_selection_modifiers (CTK_WIDGET (box), &modify, &extend);
 
           /* With touch, we default to modifying the selection.
            * You can still clear the selection and start over
            * by holding Ctrl.
            */
 
-          sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
-          event = ctk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
+          sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
+          event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
           source = gdk_device_get_source (gdk_event_get_source_device (event));
 
           if (source == GDK_SOURCE_TOUCHSCREEN)
@@ -3097,7 +3097,7 @@ ctk_flow_box_multipress_gesture_stopped (GtkGestureMultiPress *gesture,
 
   priv->active_child = NULL;
   priv->active_child_active = FALSE;
-  ctk_widget_queue_draw (GTK_WIDGET (box));
+  ctk_widget_queue_draw (CTK_WIDGET (box));
 }
 
 static void
@@ -3108,9 +3108,9 @@ ctk_flow_box_drag_gesture_begin (GtkGestureDrag *gesture,
 {
   GtkFlowBoxPrivate *priv = BOX_PRIV (widget);
 
-  if (priv->selection_mode != GTK_SELECTION_MULTIPLE)
+  if (priv->selection_mode != CTK_SELECTION_MULTIPLE)
     {
-      ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
+      ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_DENIED);
       return;
     }
 
@@ -3134,7 +3134,7 @@ ctk_flow_box_stop_rubberband (GtkFlowBox *box)
 
   remove_autoscroll (box);
 
-  ctk_widget_queue_draw (GTK_WIDGET (box));
+  ctk_widget_queue_draw (CTK_WIDGET (box));
 }
 
 static void
@@ -3149,9 +3149,9 @@ ctk_flow_box_drag_gesture_end (GtkGestureDrag *gesture,
   if (!priv->rubberband_select)
     return;
 
-  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
-  if (ctk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
+  if (ctk_gesture_handles_sequence (CTK_GESTURE (gesture), sequence))
     {
       if (!priv->rubberband_extend && !priv->rubberband_modify)
         ctk_flow_box_unselect_all_internal (box);
@@ -3166,14 +3166,14 @@ ctk_flow_box_drag_gesture_end (GtkGestureDrag *gesture,
   else
     ctk_flow_box_stop_rubberband (box);
 
-  ctk_widget_queue_draw (GTK_WIDGET (box));
+  ctk_widget_queue_draw (CTK_WIDGET (box));
 }
 
 static gboolean
 ctk_flow_box_key_press_event (GtkWidget   *widget,
                               GdkEventKey *event)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
 
   if (priv->rubberband_select)
@@ -3185,7 +3185,7 @@ ctk_flow_box_key_press_event (GtkWidget   *widget,
         }
     }
 
-  return GTK_WIDGET_CLASS (ctk_flow_box_parent_class)->key_press_event (widget, event);
+  return CTK_WIDGET_CLASS (ctk_flow_box_parent_class)->key_press_event (widget, event);
 }
 
 /* Realize and map {{{3 */
@@ -3193,20 +3193,20 @@ ctk_flow_box_key_press_event (GtkWidget   *widget,
 static void
 ctk_flow_box_realize (GtkWidget *widget)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkAllocation allocation;
   GdkWindowAttr attributes = {0};
   GdkWindow *window;
 
-  ctk_widget_get_allocation (GTK_WIDGET (box), &allocation);
-  ctk_widget_set_realized (GTK_WIDGET (box), TRUE);
+  ctk_widget_get_allocation (CTK_WIDGET (box), &allocation);
+  ctk_widget_set_realized (CTK_WIDGET (box), TRUE);
 
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
   attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.event_mask = ctk_widget_get_events (GTK_WIDGET (box))
+  attributes.event_mask = ctk_widget_get_events (CTK_WIDGET (box))
                                 | GDK_ENTER_NOTIFY_MASK
                                 | GDK_LEAVE_NOTIFY_MASK
                                 | GDK_POINTER_MOTION_MASK
@@ -3215,20 +3215,20 @@ ctk_flow_box_realize (GtkWidget *widget)
                                 | GDK_BUTTON_RELEASE_MASK;
   attributes.wclass = GDK_INPUT_OUTPUT;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (GTK_WIDGET (box)),
+  window = gdk_window_new (ctk_widget_get_parent_window (CTK_WIDGET (box)),
                            &attributes, GDK_WA_X | GDK_WA_Y);
-  ctk_widget_register_window (GTK_WIDGET (box), window);
-  ctk_widget_set_window (GTK_WIDGET (box), window);
+  ctk_widget_register_window (CTK_WIDGET (box), window);
+  ctk_widget_set_window (CTK_WIDGET (box), window);
 }
 
 static void
 ctk_flow_box_unmap (GtkWidget *widget)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
 
   remove_autoscroll (box);
 
-  GTK_WIDGET_CLASS (ctk_flow_box_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_flow_box_parent_class)->unmap (widget);
 }
 
 /* GtkContainer implementation {{{2 */
@@ -3237,32 +3237,32 @@ static void
 ctk_flow_box_add (GtkContainer *container,
                   GtkWidget    *child)
 {
-  ctk_flow_box_insert (GTK_FLOW_BOX (container), child, -1);
+  ctk_flow_box_insert (CTK_FLOW_BOX (container), child, -1);
 }
 
 static void
 ctk_flow_box_remove (GtkContainer *container,
                      GtkWidget    *widget)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (container);
+  GtkFlowBox *box = CTK_FLOW_BOX (container);
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
   gboolean was_visible;
   gboolean was_selected;
   GtkFlowBoxChild *child;
 
-  if (GTK_IS_FLOW_BOX_CHILD (widget))
-    child = GTK_FLOW_BOX_CHILD (widget);
+  if (CTK_IS_FLOW_BOX_CHILD (widget))
+    child = CTK_FLOW_BOX_CHILD (widget);
   else
     {
       child = (GtkFlowBoxChild*)ctk_widget_get_parent (widget);
-      if (!GTK_IS_FLOW_BOX_CHILD (child))
+      if (!CTK_IS_FLOW_BOX_CHILD (child))
         {
           g_warning ("Tried to remove non-child %p", widget);
           return;
         }
     }
 
-  was_visible = child_is_visible (GTK_WIDGET (child));
+  was_visible = child_is_visible (CTK_WIDGET (child));
   was_selected = CHILD_PRIV (child)->selected;
 
   if (child == priv->active_child)
@@ -3271,12 +3271,12 @@ ctk_flow_box_remove (GtkContainer *container,
     priv->selected_child = NULL;
 
   g_sequence_remove (CHILD_PRIV (child)->iter);
-  ctk_widget_unparent (GTK_WIDGET (child));
+  ctk_widget_unparent (CTK_WIDGET (child));
 
-  if (was_visible && ctk_widget_get_visible (GTK_WIDGET (box)))
-    ctk_widget_queue_resize (GTK_WIDGET (box));
+  if (was_visible && ctk_widget_get_visible (CTK_WIDGET (box)))
+    ctk_widget_queue_resize (CTK_WIDGET (box));
 
-  if (was_selected && !ctk_widget_in_destruction (GTK_WIDGET (box)))
+  if (was_selected && !ctk_widget_in_destruction (CTK_WIDGET (box)))
     g_signal_emit (box, signals[SELECTED_CHILDREN_CHANGED], 0);
 }
 
@@ -3301,7 +3301,7 @@ ctk_flow_box_forall (GtkContainer *container,
 static GType
 ctk_flow_box_child_type (GtkContainer *container)
 {
-  return GTK_TYPE_FLOW_BOX_CHILD;
+  return CTK_TYPE_FLOW_BOX_CHILD;
 }
 
 /* Keynav {{{2 */
@@ -3310,7 +3310,7 @@ static gboolean
 ctk_flow_box_focus (GtkWidget        *widget,
                     GtkDirectionType  direction)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (widget);
+  GtkFlowBox *box = CTK_FLOW_BOX (widget);
   GtkWidget *focus_child;
   GSequenceIter *iter;
   GtkFlowBoxChild *next_focus_child;
@@ -3318,10 +3318,10 @@ ctk_flow_box_focus (GtkWidget        *widget,
   /* Without "can-focus" flag fall back to the default behavior immediately */
   if (!ctk_widget_get_can_focus (widget))
     {
-      return GTK_WIDGET_CLASS (ctk_flow_box_parent_class)->focus (widget, direction);
+      return CTK_WIDGET_CLASS (ctk_flow_box_parent_class)->focus (widget, direction);
     }
 
-  focus_child = ctk_container_get_focus_child (GTK_CONTAINER (box));
+  focus_child = ctk_container_get_focus_child (CTK_CONTAINER (box));
   next_focus_child = NULL;
 
   if (focus_child != NULL)
@@ -3331,13 +3331,13 @@ ctk_flow_box_focus (GtkWidget        *widget,
 
       iter = CHILD_PRIV (focus_child)->iter;
 
-      if (direction == GTK_DIR_LEFT || direction == GTK_DIR_TAB_BACKWARD)
+      if (direction == CTK_DIR_LEFT || direction == CTK_DIR_TAB_BACKWARD)
         iter = ctk_flow_box_get_previous_focusable (box, iter);
-      else if (direction == GTK_DIR_RIGHT || direction == GTK_DIR_TAB_FORWARD)
+      else if (direction == CTK_DIR_RIGHT || direction == CTK_DIR_TAB_FORWARD)
         iter = ctk_flow_box_get_next_focusable (box, iter);
-      else if (direction == GTK_DIR_UP)
+      else if (direction == CTK_DIR_UP)
         iter = ctk_flow_box_get_above_focusable (box, iter);
-      else if (direction == GTK_DIR_DOWN)
+      else if (direction == CTK_DIR_DOWN)
         iter = ctk_flow_box_get_below_focusable (box, iter);
 
       if (iter != NULL)
@@ -3349,7 +3349,7 @@ ctk_flow_box_focus (GtkWidget        *widget,
         next_focus_child = BOX_PRIV (box)->selected_child;
       else
         {
-          if (direction == GTK_DIR_UP || direction == GTK_DIR_TAB_BACKWARD)
+          if (direction == CTK_DIR_UP || direction == CTK_DIR_TAB_BACKWARD)
             iter = ctk_flow_box_get_last_focusable (box);
           else
             iter = ctk_flow_box_get_first_focusable (box);
@@ -3361,17 +3361,17 @@ ctk_flow_box_focus (GtkWidget        *widget,
 
   if (next_focus_child == NULL)
     {
-      if (direction == GTK_DIR_UP || direction == GTK_DIR_DOWN ||
-          direction == GTK_DIR_LEFT || direction == GTK_DIR_RIGHT)
+      if (direction == CTK_DIR_UP || direction == CTK_DIR_DOWN ||
+          direction == CTK_DIR_LEFT || direction == CTK_DIR_RIGHT)
         {
-          if (ctk_widget_keynav_failed (GTK_WIDGET (box), direction))
+          if (ctk_widget_keynav_failed (CTK_WIDGET (box), direction))
             return TRUE;
         }
 
       return FALSE;
     }
 
-  if (ctk_widget_child_focus (GTK_WIDGET (next_focus_child), direction))
+  if (ctk_widget_child_focus (CTK_WIDGET (next_focus_child), direction))
     return TRUE;
 
   return TRUE;
@@ -3399,22 +3399,22 @@ ctk_flow_box_add_move_binding (GtkBindingSet   *binding_set,
 
   ctk_binding_entry_add_signal (binding_set, keyval, modmask,
                                 "move-cursor", 2,
-                                GTK_TYPE_MOVEMENT_STEP, step,
+                                CTK_TYPE_MOVEMENT_STEP, step,
                                 G_TYPE_INT, count,
                                 NULL);
   ctk_binding_entry_add_signal (binding_set, keyval, modmask | extend_mod_mask,
                                 "move-cursor", 2,
-                                GTK_TYPE_MOVEMENT_STEP, step,
+                                CTK_TYPE_MOVEMENT_STEP, step,
                                 G_TYPE_INT, count,
                                 NULL);
   ctk_binding_entry_add_signal (binding_set, keyval, modmask | modify_mod_mask,
                                 "move-cursor", 2,
-                                GTK_TYPE_MOVEMENT_STEP, step,
+                                CTK_TYPE_MOVEMENT_STEP, step,
                                 G_TYPE_INT, count,
                                 NULL);
   ctk_binding_entry_add_signal (binding_set, keyval, modmask | extend_mod_mask | modify_mod_mask,
                                 "move-cursor", 2,
-                                GTK_TYPE_MOVEMENT_STEP, step,
+                                CTK_TYPE_MOVEMENT_STEP, step,
                                 G_TYPE_INT, count,
                                 NULL);
 }
@@ -3433,8 +3433,8 @@ ctk_flow_box_toggle_cursor_child (GtkFlowBox *box)
   if (priv->cursor_child == NULL)
     return;
 
-  if ((priv->selection_mode == GTK_SELECTION_SINGLE ||
-       priv->selection_mode == GTK_SELECTION_MULTIPLE) &&
+  if ((priv->selection_mode == CTK_SELECTION_SINGLE ||
+       priv->selection_mode == CTK_SELECTION_MULTIPLE) &&
       CHILD_PRIV (priv->cursor_child)->selected)
     ctk_flow_box_unselect_child_internal (box, priv->cursor_child);
   else
@@ -3460,20 +3460,20 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
   gboolean vertical;
 
   /* Without "can-focus" flag fall back to the default behavior immediately */
-  if (!ctk_widget_get_can_focus (GTK_WIDGET (box)))
+  if (!ctk_widget_get_can_focus (CTK_WIDGET (box)))
     return FALSE;
 
-  vertical = priv->orientation == GTK_ORIENTATION_VERTICAL;
+  vertical = priv->orientation == CTK_ORIENTATION_VERTICAL;
 
   if (vertical)
     {
        switch (step)
          {
-         case GTK_MOVEMENT_VISUAL_POSITIONS:
-           step = GTK_MOVEMENT_DISPLAY_LINES;
+         case CTK_MOVEMENT_VISUAL_POSITIONS:
+           step = CTK_MOVEMENT_DISPLAY_LINES;
            break;
-         case GTK_MOVEMENT_DISPLAY_LINES:
-           step = GTK_MOVEMENT_VISUAL_POSITIONS;
+         case CTK_MOVEMENT_DISPLAY_LINES:
+           step = CTK_MOVEMENT_VISUAL_POSITIONS;
            break;
          default: ;
          }
@@ -3482,11 +3482,11 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
   child = NULL;
   switch (step)
     {
-    case GTK_MOVEMENT_VISUAL_POSITIONS:
+    case CTK_MOVEMENT_VISUAL_POSITIONS:
       if (priv->cursor_child != NULL)
         {
           iter = CHILD_PRIV (priv->cursor_child)->iter;
-          if (ctk_widget_get_direction (GTK_WIDGET (box)) == GTK_TEXT_DIR_RTL)
+          if (ctk_widget_get_direction (CTK_WIDGET (box)) == CTK_TEXT_DIR_RTL)
             count = - count;
 
           while (count < 0 && iter != NULL)
@@ -3505,7 +3505,7 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
         }
       break;
 
-    case GTK_MOVEMENT_BUFFER_ENDS:
+    case CTK_MOVEMENT_BUFFER_ENDS:
       if (count < 0)
         iter = ctk_flow_box_get_first_focusable (box);
       else
@@ -3514,7 +3514,7 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
         child = g_sequence_get (iter);
       break;
 
-    case GTK_MOVEMENT_DISPLAY_LINES:
+    case CTK_MOVEMENT_DISPLAY_LINES:
       if (priv->cursor_child != NULL)
         {
           iter = CHILD_PRIV (priv->cursor_child)->iter;
@@ -3535,7 +3535,7 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
         }
       break;
 
-    case GTK_MOVEMENT_PAGES:
+    case CTK_MOVEMENT_PAGES:
       page_size = 100;
       adjustment = vertical ? priv->hadjustment : priv->vadjustment;
       if (adjustment)
@@ -3545,7 +3545,7 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
         {
           child = priv->cursor_child;
           iter = CHILD_PRIV (child)->iter;
-          ctk_widget_get_allocation (GTK_WIDGET (child), &allocation);
+          ctk_widget_get_allocation (CTK_WIDGET (child), &allocation);
           start = vertical ? allocation.x : allocation.y;
 
           if (count < 0)
@@ -3564,7 +3564,7 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
                   /* go up an even number of rows */
                   if (i % priv->cur_children_per_line == 0)
                     {
-                      ctk_widget_get_allocation (GTK_WIDGET (prev), &allocation);
+                      ctk_widget_get_allocation (CTK_WIDGET (prev), &allocation);
                       if ((vertical ? allocation.x : allocation.y) < start - page_size)
                         break;
                     }
@@ -3588,7 +3588,7 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
 
                   if (i % priv->cur_children_per_line == 0)
                     {
-                      ctk_widget_get_allocation (GTK_WIDGET (next), &allocation);
+                      ctk_widget_get_allocation (CTK_WIDGET (next), &allocation);
                       if ((vertical ? allocation.x : allocation.y) > start + page_size)
                         break;
                     }
@@ -3597,7 +3597,7 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
                   i++;
                 }
             }
-          ctk_widget_get_allocation (GTK_WIDGET (child), &allocation);
+          ctk_widget_get_allocation (CTK_WIDGET (child), &allocation);
         }
       break;
 
@@ -3607,9 +3607,9 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
 
   if (child == NULL || child == priv->cursor_child)
     {
-      GtkDirectionType direction = count < 0 ? GTK_DIR_UP : GTK_DIR_DOWN;
+      GtkDirectionType direction = count < 0 ? CTK_DIR_UP : CTK_DIR_DOWN;
 
-      if (!ctk_widget_keynav_failed (GTK_WIDGET (box), direction))
+      if (!ctk_widget_keynav_failed (CTK_WIDGET (box), direction))
         {
           return FALSE;
         }
@@ -3620,19 +3620,19 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
   /* If the child has its "can-focus" property set to FALSE then it will
    * not grab the focus. We must pass the focus to its child directly.
    */
-  if (!ctk_widget_get_can_focus (GTK_WIDGET (child)))
+  if (!ctk_widget_get_can_focus (CTK_WIDGET (child)))
     {
       GtkWidget *subchild;
 
-      subchild = ctk_bin_get_child (GTK_BIN (child));
+      subchild = ctk_bin_get_child (CTK_BIN (child));
       if (subchild)
         {
-          GtkDirectionType direction = count < 0 ? GTK_DIR_TAB_BACKWARD : GTK_DIR_TAB_FORWARD;
+          GtkDirectionType direction = count < 0 ? CTK_DIR_TAB_BACKWARD : CTK_DIR_TAB_FORWARD;
           ctk_widget_child_focus (subchild, direction);
         }
     }
 
-  get_current_selection_modifiers (GTK_WIDGET (box), &modify, &extend);
+  get_current_selection_modifiers (CTK_WIDGET (box), &modify, &extend);
 
   ctk_flow_box_update_cursor (box, child);
   if (!modify)
@@ -3645,7 +3645,7 @@ ctk_flow_box_move_cursor (GtkFlowBox      *box,
 static void
 ctk_flow_box_selected_children_changed (GtkFlowBox *box)
 {
-  _ctk_flow_box_accessible_selection_changed (GTK_WIDGET (box));
+  _ctk_flow_box_accessible_selection_changed (CTK_WIDGET (box));
 }
 
 /* GObject implementation {{{2 */
@@ -3656,7 +3656,7 @@ ctk_flow_box_get_property (GObject    *object,
                            GValue     *value,
                            GParamSpec *pspec)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (object);
+  GtkFlowBox *box = CTK_FLOW_BOX (object);
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
 
   switch (prop_id)
@@ -3697,7 +3697,7 @@ ctk_flow_box_set_property (GObject      *object,
                            const GValue *value,
                            GParamSpec   *pspec)
 {
-  GtkFlowBox *box = GTK_FLOW_BOX (object);
+  GtkFlowBox *box = CTK_FLOW_BOX (object);
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
 
   switch (prop_id)
@@ -3706,9 +3706,9 @@ ctk_flow_box_set_property (GObject      *object,
       if (priv->orientation != g_value_get_enum (value))
         {
           priv->orientation = g_value_get_enum (value);
-          _ctk_orientable_set_style_classes (GTK_ORIENTABLE (box));
+          _ctk_orientable_set_style_classes (CTK_ORIENTABLE (box));
           /* Re-box the children in the new orientation */
-          ctk_widget_queue_resize (GTK_WIDGET (box));
+          ctk_widget_queue_resize (CTK_WIDGET (box));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -3774,8 +3774,8 @@ static void
 ctk_flow_box_class_init (GtkFlowBoxClass *class)
 {
   GObjectClass      *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass    *widget_class = GTK_WIDGET_CLASS (class);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (class);
+  GtkWidgetClass    *widget_class = CTK_WIDGET_CLASS (class);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
   GtkBindingSet     *binding_set;
 
   object_class->finalize = ctk_flow_box_finalize;
@@ -3821,8 +3821,8 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
     g_param_spec_enum ("selection-mode",
                        P_("Selection mode"),
                        P_("The selection mode"),
-                       GTK_TYPE_SELECTION_MODE,
-                       GTK_SELECTION_SINGLE,
+                       CTK_TYPE_SELECTION_MODE,
+                       CTK_SELECTION_SINGLE,
                        G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -3918,13 +3918,13 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
    * activated by the user.
    */
   signals[CHILD_ACTIVATED] = g_signal_new (I_("child-activated"),
-                                           GTK_TYPE_FLOW_BOX,
+                                           CTK_TYPE_FLOW_BOX,
                                            G_SIGNAL_RUN_LAST,
                                            G_STRUCT_OFFSET (GtkFlowBoxClass, child_activated),
                                            NULL, NULL,
                                            NULL,
                                            G_TYPE_NONE, 1,
-                                           GTK_TYPE_FLOW_BOX_CHILD);
+                                           CTK_TYPE_FLOW_BOX_CHILD);
 
   /**
    * GtkFlowBox::selected-children-changed:
@@ -3938,7 +3938,7 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
    * selected children.
    */
   signals[SELECTED_CHILDREN_CHANGED] = g_signal_new (I_("selected-children-changed"),
-                                                     GTK_TYPE_FLOW_BOX,
+                                                     CTK_TYPE_FLOW_BOX,
                                                      G_SIGNAL_RUN_FIRST,
                                                      G_STRUCT_OFFSET (GtkFlowBoxClass, selected_children_changed),
                                                      NULL, NULL,
@@ -3954,7 +3954,7 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
    * which gets emitted when the user activates the @box.
    */
   signals[ACTIVATE_CURSOR_CHILD] = g_signal_new (I_("activate-cursor-child"),
-                                                 GTK_TYPE_FLOW_BOX,
+                                                 CTK_TYPE_FLOW_BOX,
                                                  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                                  G_STRUCT_OFFSET (GtkFlowBoxClass, activate_cursor_child),
                                                  NULL, NULL,
@@ -3972,7 +3972,7 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
    * The default binding for this signal is Ctrl-Space.
    */
   signals[TOGGLE_CURSOR_CHILD] = g_signal_new (I_("toggle-cursor-child"),
-                                               GTK_TYPE_FLOW_BOX,
+                                               CTK_TYPE_FLOW_BOX,
                                                G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                                G_STRUCT_OFFSET (GtkFlowBoxClass, toggle_cursor_child),
                                                NULL, NULL,
@@ -4005,13 +4005,13 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
    * %FALSE to propagate the event further.
    */
   signals[MOVE_CURSOR] = g_signal_new (I_("move-cursor"),
-                                       GTK_TYPE_FLOW_BOX,
+                                       CTK_TYPE_FLOW_BOX,
                                        G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                        G_STRUCT_OFFSET (GtkFlowBoxClass, move_cursor),
                                        NULL, NULL,
                                        _ctk_marshal_BOOLEAN__ENUM_INT,
                                        G_TYPE_BOOLEAN, 2,
-                                       GTK_TYPE_MOVEMENT_STEP, G_TYPE_INT);
+                                       CTK_TYPE_MOVEMENT_STEP, G_TYPE_INT);
   g_signal_set_va_marshaller (signals[MOVE_CURSOR],
                               G_TYPE_FROM_CLASS (class),
                               _ctk_marshal_BOOLEAN__ENUM_INTv);
@@ -4027,7 +4027,7 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
    * The default bindings for this signal is Ctrl-a.
    */
   signals[SELECT_ALL] = g_signal_new (I_("select-all"),
-                                      GTK_TYPE_FLOW_BOX,
+                                      CTK_TYPE_FLOW_BOX,
                                       G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                       G_STRUCT_OFFSET (GtkFlowBoxClass, select_all),
                                       NULL, NULL,
@@ -4046,7 +4046,7 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
    * The default bindings for this signal is Ctrl-Shift-a.
    */
   signals[UNSELECT_ALL] = g_signal_new (I_("unselect-all"),
-                                        GTK_TYPE_FLOW_BOX,
+                                        CTK_TYPE_FLOW_BOX,
                                         G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                         G_STRUCT_OFFSET (GtkFlowBoxClass, unselect_all),
                                         NULL, NULL,
@@ -4057,38 +4057,38 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
 
   binding_set = ctk_binding_set_by_class (class);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Home, 0,
-                                 GTK_MOVEMENT_BUFFER_ENDS, -1);
+                                 CTK_MOVEMENT_BUFFER_ENDS, -1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Home, 0,
-                                 GTK_MOVEMENT_BUFFER_ENDS, -1);
+                                 CTK_MOVEMENT_BUFFER_ENDS, -1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_End, 0,
-                                 GTK_MOVEMENT_BUFFER_ENDS, 1);
+                                 CTK_MOVEMENT_BUFFER_ENDS, 1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_End, 0,
-                                 GTK_MOVEMENT_BUFFER_ENDS, 1);
+                                 CTK_MOVEMENT_BUFFER_ENDS, 1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Up, 0,
-                                 GTK_MOVEMENT_DISPLAY_LINES, -1);
+                                 CTK_MOVEMENT_DISPLAY_LINES, -1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Up, 0,
-                                 GTK_MOVEMENT_DISPLAY_LINES, -1);
+                                 CTK_MOVEMENT_DISPLAY_LINES, -1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Down, 0,
-                                 GTK_MOVEMENT_DISPLAY_LINES, 1);
+                                 CTK_MOVEMENT_DISPLAY_LINES, 1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Down, 0,
-                                 GTK_MOVEMENT_DISPLAY_LINES, 1);
+                                 CTK_MOVEMENT_DISPLAY_LINES, 1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Page_Up, 0,
-                                 GTK_MOVEMENT_PAGES, -1);
+                                 CTK_MOVEMENT_PAGES, -1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Page_Up, 0,
-                                 GTK_MOVEMENT_PAGES, -1);
+                                 CTK_MOVEMENT_PAGES, -1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Page_Down, 0,
-                                 GTK_MOVEMENT_PAGES, 1);
+                                 CTK_MOVEMENT_PAGES, 1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Page_Down, 0,
-                                 GTK_MOVEMENT_PAGES, 1);
+                                 CTK_MOVEMENT_PAGES, 1);
 
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Right, 0,
-                                 GTK_MOVEMENT_VISUAL_POSITIONS, 1);
+                                 CTK_MOVEMENT_VISUAL_POSITIONS, 1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Right, 0,
-                                 GTK_MOVEMENT_VISUAL_POSITIONS, 1);
+                                 CTK_MOVEMENT_VISUAL_POSITIONS, 1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Left, 0,
-                                 GTK_MOVEMENT_VISUAL_POSITIONS, -1);
+                                 CTK_MOVEMENT_VISUAL_POSITIONS, -1);
   ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Left, 0,
-                                 GTK_MOVEMENT_VISUAL_POSITIONS, -1);
+                                 CTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, GDK_CONTROL_MASK,
                                 "toggle-cursor-child", 0, NULL);
@@ -4100,7 +4100,7 @@ ctk_flow_box_class_init (GtkFlowBoxClass *class)
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK | GDK_SHIFT_MASK,
                                 "unselect-all", 0);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_FLOW_BOX_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_FLOW_BOX_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "flowbox");
 }
 
@@ -4110,26 +4110,26 @@ ctk_flow_box_init (GtkFlowBox *box)
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
   GtkCssNode *widget_node;
 
-  ctk_widget_set_has_window (GTK_WIDGET (box), TRUE);
+  ctk_widget_set_has_window (CTK_WIDGET (box), TRUE);
 
-  priv->orientation = GTK_ORIENTATION_HORIZONTAL;
-  priv->selection_mode = GTK_SELECTION_SINGLE;
+  priv->orientation = CTK_ORIENTATION_HORIZONTAL;
+  priv->selection_mode = CTK_SELECTION_SINGLE;
   priv->max_children_per_line = DEFAULT_MAX_CHILDREN_PER_LINE;
   priv->column_spacing = 0;
   priv->row_spacing = 0;
   priv->activate_on_single_click = TRUE;
 
-  _ctk_orientable_set_style_classes (GTK_ORIENTABLE (box));
+  _ctk_orientable_set_style_classes (CTK_ORIENTABLE (box));
 
   priv->children = g_sequence_new (NULL);
 
-  priv->multipress_gesture = ctk_gesture_multi_press_new (GTK_WIDGET (box));
-  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (priv->multipress_gesture),
+  priv->multipress_gesture = ctk_gesture_multi_press_new (CTK_WIDGET (box));
+  ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->multipress_gesture),
                                      FALSE);
-  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (priv->multipress_gesture),
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->multipress_gesture),
                                  GDK_BUTTON_PRIMARY);
-  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (priv->multipress_gesture),
-                                              GTK_PHASE_BUBBLE);
+  ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (priv->multipress_gesture),
+                                              CTK_PHASE_BUBBLE);
   g_signal_connect (priv->multipress_gesture, "pressed",
                     G_CALLBACK (ctk_flow_box_multipress_gesture_pressed), box);
   g_signal_connect (priv->multipress_gesture, "released",
@@ -4137,13 +4137,13 @@ ctk_flow_box_init (GtkFlowBox *box)
   g_signal_connect (priv->multipress_gesture, "stopped",
                     G_CALLBACK (ctk_flow_box_multipress_gesture_stopped), box);
 
-  priv->drag_gesture = ctk_gesture_drag_new (GTK_WIDGET (box));
-  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (priv->drag_gesture),
+  priv->drag_gesture = ctk_gesture_drag_new (CTK_WIDGET (box));
+  ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->drag_gesture),
                                      FALSE);
-  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (priv->drag_gesture),
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->drag_gesture),
                                  GDK_BUTTON_PRIMARY);
-  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (priv->drag_gesture),
-                                              GTK_PHASE_CAPTURE);
+  ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (priv->drag_gesture),
+                                              CTK_PHASE_CAPTURE);
   g_signal_connect (priv->drag_gesture, "drag-begin",
                     G_CALLBACK (ctk_flow_box_drag_gesture_begin), box);
   g_signal_connect (priv->drag_gesture, "drag-update",
@@ -4151,9 +4151,9 @@ ctk_flow_box_init (GtkFlowBox *box)
   g_signal_connect (priv->drag_gesture, "drag-end",
                     G_CALLBACK (ctk_flow_box_drag_gesture_end), box);
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (box));
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (box));
   priv->gadget = ctk_css_custom_gadget_new_for_node (widget_node,
-                                                     GTK_WIDGET (box),
+                                                     CTK_WIDGET (box),
                                                      ctk_flow_box_measure,
                                                      ctk_flow_box_allocate,
                                                      ctk_flow_box_render,
@@ -4177,7 +4177,7 @@ ctk_flow_box_bound_model_changed (GListModel *list,
       GtkFlowBoxChild *child;
 
       child = ctk_flow_box_get_child_at_index (box, position);
-      ctk_widget_destroy (GTK_WIDGET (child));
+      ctk_widget_destroy (CTK_WIDGET (child));
     }
 
   for (i = 0; i < added; i++)
@@ -4221,7 +4221,7 @@ ctk_flow_box_bound_model_changed (GListModel *list,
 GtkWidget *
 ctk_flow_box_new (void)
 {
-  return (GtkWidget *)g_object_new (GTK_TYPE_FLOW_BOX, NULL);
+  return (GtkWidget *)g_object_new (CTK_TYPE_FLOW_BOX, NULL);
 }
 
 static void
@@ -4237,7 +4237,7 @@ ctk_flow_box_insert_css_node (GtkFlowBox    *box,
   if (prev_iter != iter)
     {
       sibling = g_sequence_get (prev_iter);
-      ctk_css_node_insert_after (ctk_widget_get_css_node (GTK_WIDGET (box)),
+      ctk_css_node_insert_after (ctk_widget_get_css_node (CTK_WIDGET (box)),
                                  ctk_widget_get_css_node (child),
                                  ctk_widget_get_css_node (sibling));
     }
@@ -4269,18 +4269,18 @@ ctk_flow_box_insert (GtkFlowBox *box,
   GtkFlowBoxChild *child;
   GSequenceIter *iter;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = BOX_PRIV (box);
 
-  if (GTK_IS_FLOW_BOX_CHILD (widget))
-    child = GTK_FLOW_BOX_CHILD (widget);
+  if (CTK_IS_FLOW_BOX_CHILD (widget))
+    child = CTK_FLOW_BOX_CHILD (widget);
   else
     {
-      child = GTK_FLOW_BOX_CHILD (ctk_flow_box_child_new ());
-      ctk_widget_show (GTK_WIDGET (child));
-      ctk_container_add (GTK_CONTAINER (child), widget);
+      child = CTK_FLOW_BOX_CHILD (ctk_flow_box_child_new ());
+      ctk_widget_show (CTK_WIDGET (child));
+      ctk_container_add (CTK_CONTAINER (child), widget);
     }
 
   if (priv->sort_func != NULL)
@@ -4297,10 +4297,10 @@ ctk_flow_box_insert (GtkFlowBox *box,
       iter = g_sequence_insert_before (pos, child);
     }
 
-  ctk_flow_box_insert_css_node (box, GTK_WIDGET (child), iter);
+  ctk_flow_box_insert_css_node (box, CTK_WIDGET (child), iter);
 
   CHILD_PRIV (child)->iter = iter;
-  ctk_widget_set_parent (GTK_WIDGET (child), GTK_WIDGET (box));
+  ctk_widget_set_parent (CTK_WIDGET (child), CTK_WIDGET (box));
   ctk_flow_box_apply_filter (box, child);
 }
 
@@ -4323,7 +4323,7 @@ ctk_flow_box_get_child_at_index (GtkFlowBox *box,
 {
   GSequenceIter *iter;
 
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), NULL);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), NULL);
 
   iter = g_sequence_get_iter_at_pos (BOX_PRIV (box)->children, idx);
   if (!g_sequence_iter_is_end (iter))
@@ -4365,7 +4365,7 @@ ctk_flow_box_get_child_at_pos (GtkFlowBox *box,
       ctk_widget_get_allocation (child, &allocation);
       if (x >= allocation.x && x < (allocation.x + allocation.width) &&
           y >= allocation.y && y < (allocation.y + allocation.height))
-        return GTK_FLOW_BOX_CHILD (child);
+        return CTK_FLOW_BOX_CHILD (child);
     }
 
   return NULL;
@@ -4396,8 +4396,8 @@ ctk_flow_box_set_hadjustment (GtkFlowBox    *box,
 {
   GtkFlowBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   priv = BOX_PRIV (box);
 
@@ -4405,7 +4405,7 @@ ctk_flow_box_set_hadjustment (GtkFlowBox    *box,
   if (priv->hadjustment)
     g_object_unref (priv->hadjustment);
   priv->hadjustment = adjustment;
-  ctk_container_set_focus_hadjustment (GTK_CONTAINER (box), adjustment);
+  ctk_container_set_focus_hadjustment (CTK_CONTAINER (box), adjustment);
 }
 
 /**
@@ -4433,8 +4433,8 @@ ctk_flow_box_set_vadjustment (GtkFlowBox    *box,
 {
   GtkFlowBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   priv = BOX_PRIV (box);
 
@@ -4442,7 +4442,7 @@ ctk_flow_box_set_vadjustment (GtkFlowBox    *box,
   if (priv->vadjustment)
     g_object_unref (priv->vadjustment);
   priv->vadjustment = adjustment;
-  ctk_container_set_focus_vadjustment (GTK_CONTAINER (box), adjustment);
+  ctk_container_set_focus_vadjustment (CTK_CONTAINER (box), adjustment);
 }
 
 static void
@@ -4491,7 +4491,7 @@ ctk_flow_box_bind_model (GtkFlowBox                 *box,
 {
   GtkFlowBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
   g_return_if_fail (model == NULL || G_IS_LIST_MODEL (model));
   g_return_if_fail (model == NULL || create_widget_func != NULL);
 
@@ -4504,7 +4504,7 @@ ctk_flow_box_bind_model (GtkFlowBox                 *box,
       g_clear_object (&priv->bound_model);
     }
 
-  ctk_flow_box_forall (GTK_CONTAINER (box), FALSE, (GtkCallback) ctk_widget_destroy, NULL);
+  ctk_flow_box_forall (CTK_CONTAINER (box), FALSE, (GtkCallback) ctk_widget_destroy, NULL);
 
   if (model == NULL)
     return;
@@ -4536,7 +4536,7 @@ ctk_flow_box_bind_model (GtkFlowBox                 *box,
 gboolean
 ctk_flow_box_get_homogeneous (GtkFlowBox *box)
 {
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), FALSE);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), FALSE);
 
   return BOX_PRIV (box)->homogeneous;
 }
@@ -4557,7 +4557,7 @@ void
 ctk_flow_box_set_homogeneous (GtkFlowBox *box,
                               gboolean    homogeneous)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   homogeneous = homogeneous != FALSE;
 
@@ -4566,7 +4566,7 @@ ctk_flow_box_set_homogeneous (GtkFlowBox *box,
       BOX_PRIV (box)->homogeneous = homogeneous;
 
       g_object_notify_by_pspec (G_OBJECT (box), props[PROP_HOMOGENEOUS]);
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
     }
 }
 
@@ -4584,13 +4584,13 @@ void
 ctk_flow_box_set_row_spacing (GtkFlowBox *box,
                               guint       spacing)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   if (BOX_PRIV (box)->row_spacing != spacing)
     {
       BOX_PRIV (box)->row_spacing = spacing;
 
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
       g_object_notify_by_pspec (G_OBJECT (box), props[PROP_ROW_SPACING]);
     }
 }
@@ -4608,7 +4608,7 @@ ctk_flow_box_set_row_spacing (GtkFlowBox *box,
 guint
 ctk_flow_box_get_row_spacing (GtkFlowBox *box)
 {
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), FALSE);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), FALSE);
 
   return BOX_PRIV (box)->row_spacing;
 }
@@ -4627,13 +4627,13 @@ void
 ctk_flow_box_set_column_spacing (GtkFlowBox *box,
                                  guint       spacing)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   if (BOX_PRIV (box)->column_spacing != spacing)
     {
       BOX_PRIV (box)->column_spacing = spacing;
 
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
       g_object_notify_by_pspec (G_OBJECT (box), props[PROP_COLUMN_SPACING]);
     }
 }
@@ -4651,7 +4651,7 @@ ctk_flow_box_set_column_spacing (GtkFlowBox *box,
 guint
 ctk_flow_box_get_column_spacing (GtkFlowBox *box)
 {
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), FALSE);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), FALSE);
 
   return BOX_PRIV (box)->column_spacing;
 }
@@ -4670,13 +4670,13 @@ void
 ctk_flow_box_set_min_children_per_line (GtkFlowBox *box,
                                         guint       n_children)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   if (BOX_PRIV (box)->min_children_per_line != n_children)
     {
       BOX_PRIV (box)->min_children_per_line = n_children;
 
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
       g_object_notify_by_pspec (G_OBJECT (box), props[PROP_MIN_CHILDREN_PER_LINE]);
     }
 }
@@ -4694,7 +4694,7 @@ ctk_flow_box_set_min_children_per_line (GtkFlowBox *box,
 guint
 ctk_flow_box_get_min_children_per_line (GtkFlowBox *box)
 {
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), FALSE);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), FALSE);
 
   return BOX_PRIV (box)->min_children_per_line;
 }
@@ -4717,14 +4717,14 @@ void
 ctk_flow_box_set_max_children_per_line (GtkFlowBox *box,
                                         guint       n_children)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
   g_return_if_fail (n_children > 0);
 
   if (BOX_PRIV (box)->max_children_per_line != n_children)
     {
       BOX_PRIV (box)->max_children_per_line = n_children;
 
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
       g_object_notify_by_pspec (G_OBJECT (box), props[PROP_MAX_CHILDREN_PER_LINE]);
     }
 }
@@ -4742,7 +4742,7 @@ ctk_flow_box_set_max_children_per_line (GtkFlowBox *box,
 guint
 ctk_flow_box_get_max_children_per_line (GtkFlowBox *box)
 {
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), FALSE);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), FALSE);
 
   return BOX_PRIV (box)->max_children_per_line;
 }
@@ -4761,7 +4761,7 @@ void
 ctk_flow_box_set_activate_on_single_click (GtkFlowBox *box,
                                            gboolean    single)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   single = single != FALSE;
 
@@ -4786,7 +4786,7 @@ ctk_flow_box_set_activate_on_single_click (GtkFlowBox *box,
 gboolean
 ctk_flow_box_get_activate_on_single_click (GtkFlowBox *box)
 {
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), FALSE);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), FALSE);
 
   return BOX_PRIV (box)->activate_on_single_click;
 }
@@ -4812,7 +4812,7 @@ ctk_flow_box_get_selected_children (GtkFlowBox *box)
   GSequenceIter *iter;
   GList *selected = NULL;
 
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), NULL);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), NULL);
 
   for (iter = g_sequence_get_begin_iter (BOX_PRIV (box)->children);
        !g_sequence_iter_is_end (iter);
@@ -4840,8 +4840,8 @@ void
 ctk_flow_box_select_child (GtkFlowBox      *box,
                            GtkFlowBoxChild *child)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
-  g_return_if_fail (GTK_IS_FLOW_BOX_CHILD (child));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX_CHILD (child));
 
   ctk_flow_box_select_child_internal (box, child);
 }
@@ -4860,8 +4860,8 @@ void
 ctk_flow_box_unselect_child (GtkFlowBox      *box,
                              GtkFlowBoxChild *child)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
-  g_return_if_fail (GTK_IS_FLOW_BOX_CHILD (child));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX_CHILD (child));
 
   ctk_flow_box_unselect_child_internal (box, child);
 }
@@ -4878,9 +4878,9 @@ ctk_flow_box_unselect_child (GtkFlowBox      *box,
 void
 ctk_flow_box_select_all (GtkFlowBox *box)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
-  if (BOX_PRIV (box)->selection_mode != GTK_SELECTION_MULTIPLE)
+  if (BOX_PRIV (box)->selection_mode != CTK_SELECTION_MULTIPLE)
     return;
 
   if (g_sequence_get_length (BOX_PRIV (box)->children) > 0)
@@ -4904,9 +4904,9 @@ ctk_flow_box_unselect_all (GtkFlowBox *box)
 {
   gboolean dirty = FALSE;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
-  if (BOX_PRIV (box)->selection_mode == GTK_SELECTION_BROWSE)
+  if (BOX_PRIV (box)->selection_mode == CTK_SELECTION_BROWSE)
     return;
 
   dirty = ctk_flow_box_unselect_all_internal (box);
@@ -4948,7 +4948,7 @@ ctk_flow_box_selected_foreach (GtkFlowBox            *box,
   GtkFlowBoxChild *child;
   GSequenceIter *iter;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   for (iter = g_sequence_get_begin_iter (BOX_PRIV (box)->children);
        !g_sequence_iter_is_end (iter);
@@ -4976,13 +4976,13 @@ ctk_flow_box_set_selection_mode (GtkFlowBox       *box,
 {
   gboolean dirty = FALSE;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   if (mode == BOX_PRIV (box)->selection_mode)
     return;
 
-  if (mode == GTK_SELECTION_NONE ||
-      BOX_PRIV (box)->selection_mode == GTK_SELECTION_MULTIPLE)
+  if (mode == CTK_SELECTION_NONE ||
+      BOX_PRIV (box)->selection_mode == CTK_SELECTION_MULTIPLE)
     {
       dirty = ctk_flow_box_unselect_all_internal (box);
       BOX_PRIV (box)->selected_child = NULL;
@@ -5009,7 +5009,7 @@ ctk_flow_box_set_selection_mode (GtkFlowBox       *box,
 GtkSelectionMode
 ctk_flow_box_get_selection_mode (GtkFlowBox *box)
 {
-  g_return_val_if_fail (GTK_IS_FLOW_BOX (box), GTK_SELECTION_SINGLE);
+  g_return_val_if_fail (CTK_IS_FLOW_BOX (box), CTK_SELECTION_SINGLE);
 
   return BOX_PRIV (box)->selection_mode;
 }
@@ -5060,7 +5060,7 @@ ctk_flow_box_set_filter_func (GtkFlowBox           *box,
 {
   GtkFlowBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   priv = BOX_PRIV (box);
 
@@ -5093,7 +5093,7 @@ ctk_flow_box_set_filter_func (GtkFlowBox           *box,
 void
 ctk_flow_box_invalidate_filter (GtkFlowBox *box)
 {
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   if (BOX_PRIV (box)->filter_func != NULL)
     ctk_flow_box_apply_filter_all (box);
@@ -5145,7 +5145,7 @@ ctk_flow_box_set_sort_func (GtkFlowBox         *box,
 {
   GtkFlowBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   priv = BOX_PRIV (box);
 
@@ -5209,7 +5209,7 @@ ctk_flow_box_invalidate_sort (GtkFlowBox *box)
   GtkFlowBoxPrivate *priv;
   GtkWidget *previous = NULL;
 
-  g_return_if_fail (GTK_IS_FLOW_BOX (box));
+  g_return_if_fail (CTK_IS_FLOW_BOX (box));
 
   priv = BOX_PRIV (box);
 
@@ -5217,7 +5217,7 @@ ctk_flow_box_invalidate_sort (GtkFlowBox *box)
     {
       g_sequence_sort (priv->children, (GCompareDataFunc)ctk_flow_box_sort, box);
       g_sequence_foreach (priv->children, ctk_flow_box_css_node_foreach, &previous);
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
     }
 }
 

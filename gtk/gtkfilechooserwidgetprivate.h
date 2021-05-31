@@ -18,8 +18,8 @@
  * Authors: Matthias Clasen
  */
 
-#ifndef __GTK_FILE_CHOOSER_WIDGET_PRIVATE_H__
-#define __GTK_FILE_CHOOSER_WIDGET_PRIVATE_H__
+#ifndef __CTK_FILE_CHOOSER_WIDGET_PRIVATE_H__
+#define __CTK_FILE_CHOOSER_WIDGET_PRIVATE_H__
 
 #include <glib.h>
 #include "gtkfilechooserwidget.h"
@@ -32,4 +32,4 @@ ctk_file_chooser_widget_set_save_entry (GtkFileChooserWidget *chooser,
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_CHOOSER_WIDGET_PRIVATE_H__ */
+#endif /* __CTK_FILE_CHOOSER_WIDGET_PRIVATE_H__ */

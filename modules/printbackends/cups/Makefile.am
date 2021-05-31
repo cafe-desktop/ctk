@@ -8,17 +8,17 @@ AM_CPPFLAGS = \
 	-I$(top_builddir)/gdk				\
 	$(CUPS_CFLAGS)					\
 	$(COLORD_CFLAGS)				\
-	-DGTK_COMPILATION				\
-	-DGTK_PRINT_BACKEND_ENABLE_UNSUPPORTED		\
-	$(GTK_DEP_CFLAGS)				\
-	$(GTK_DEBUG_FLAGS)
+	-DCTK_COMPILATION				\
+	-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED		\
+	$(CTK_DEP_CFLAGS)				\
+	$(CTK_DEBUG_FLAGS)
 
 LDADDS = \
 	$(top_builddir)/gtk/libgtk-3.la	\
 	$(COLORD_LIBS)			\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
-backenddir = $(libdir)/gtk-3.0/$(GTK_BINARY_VERSION)/printbackends
+backenddir = $(libdir)/gtk-3.0/$(CTK_BINARY_VERSION)/printbackends
 
 backend_LTLIBRARIES = libprintbackend-cups.la
 

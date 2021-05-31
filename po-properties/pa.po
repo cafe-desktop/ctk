@@ -326,9 +326,9 @@ msgstr "ਖਾਸ ਹੈ"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
-"ਕੀ ਕਾਰਵਾਈ ਨੂੰ ਜ਼ਰੂਰੀ  ਮੰਨਣਾ ਹੈ  ਜੇਕਰ ਹਾਂ ਤਾਂ GTK_TOOLBAR_BOTH_HORIZ ਮੋਡ ਵਿੱਚ"
+"ਕੀ ਕਾਰਵਾਈ ਨੂੰ ਜ਼ਰੂਰੀ  ਮੰਨਣਾ ਹੈ  ਜੇਕਰ ਹਾਂ ਤਾਂ CTK_TOOLBAR_BOTH_HORIZ ਮੋਡ ਵਿੱਚ"
 " ਟੂਲ-ਆਈਟਮ "
 "ਪਰਾਕਸੀ ਲਈ ਇਹ ਕਾਰਵਾਈ ਟੈਕਸਟ ਰੂਪੀ ਵੇਖਾਵੇਗੀ।"
 
@@ -1780,8 +1780,8 @@ msgid "Default Spacing"
 msgstr "ਮੂਲ ਫਾਸਲਾ"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT ਬਟਨਾਂ ਲਈ ਹੋਰ ਥਾਂ ਸ਼ਾਮਲ ਕੀਤੀ"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT ਬਟਨਾਂ ਲਈ ਹੋਰ ਥਾਂ ਸ਼ਾਮਲ ਕੀਤੀ"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1789,10 +1789,10 @@ msgstr "ਮੂਲ ਬਾਹਰੀ ਖਾਲ਼ੀ ਥਾਂ"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"ਬਟਨਾਂ GTK_CAN_DEFAULT ਲਈ ਵੱਖਰੀ ਥਾਂ ਜੋੜੋ, ਹੋ ਕਿ ਹਾਸ਼ੀਏ ਤੋਂ ਹਮੇਸ਼ਾ ਬਾਹਰ ਖਿੱਚੀ"
+"ਬਟਨਾਂ CTK_CAN_DEFAULT ਲਈ ਵੱਖਰੀ ਥਾਂ ਜੋੜੋ, ਹੋ ਕਿ ਹਾਸ਼ੀਏ ਤੋਂ ਹਮੇਸ਼ਾ ਬਾਹਰ ਖਿੱਚੀ"
 " ਜਾਵੇ"
 
 #: gtk/gtkbutton.c:556
@@ -4262,8 +4262,8 @@ msgid "Baseline Row"
 msgstr "ਮੂਲ-ਲਾਈਨ ਕਤਾਰ"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
-msgstr "valign GTK_ALIGN_BASELINE ਹੋਣ ਉੱਤੇ ਕਤਾਰ ਨੂੰ ਮੂਲ ਲਾਈਨ ਦੇ ਨਾਲ ਇਕਸਾਰ ਕਰੋ"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
+msgstr "valign CTK_ALIGN_BASELINE ਹੋਣ ਉੱਤੇ ਕਤਾਰ ਨੂੰ ਮੂਲ ਲਾਈਨ ਦੇ ਨਾਲ ਇਕਸਾਰ ਕਰੋ"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8419,10 +8419,10 @@ msgstr "ਆਈਕਾਨ ਅਤੇ ਲੇਬਲ ਵਿੱਚ ਪਿਕਸਲ ਅ�
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "ਕੀ ਟੂਲਬਾਰ ਦੀ ਆਈਟਮ ਨੂੰ ਖਾਸ ਮੰਨਣਾ ਹੈ  ਜੇਕਰ ਸੱਚ ਹੈ ਤਾਂ ਟੂਲਬਾਰ ਦੇ"
-" ਬਟਨGTK_TOOLBAR_BOTH_HORIZ "
+" ਬਟਨCTK_TOOLBAR_BOTH_HORIZ "
 "ਮੋਡ ਵਿੱਚ ਸ਼ਬਦ ਵੇਖਾਉਣਗੇ।"
 
 #: gtk/gtktoolitemgroup.c:1640

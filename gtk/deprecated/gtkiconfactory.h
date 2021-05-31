@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_ICON_FACTORY_H__
-#define __GTK_ICON_FACTORY_H__
+#ifndef __CTK_ICON_FACTORY_H__
+#define __CTK_ICON_FACTORY_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -36,14 +36,14 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_ICON_FACTORY              (ctk_icon_factory_get_type ())
-#define GTK_ICON_FACTORY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_ICON_FACTORY, GtkIconFactory))
-#define GTK_ICON_FACTORY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ICON_FACTORY, GtkIconFactoryClass))
-#define GTK_IS_ICON_FACTORY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_ICON_FACTORY))
-#define GTK_IS_ICON_FACTORY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ICON_FACTORY))
-#define GTK_ICON_FACTORY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ICON_FACTORY, GtkIconFactoryClass))
-#define GTK_TYPE_ICON_SET                  (ctk_icon_set_get_type ())
-#define GTK_TYPE_ICON_SOURCE               (ctk_icon_source_get_type ())
+#define CTK_TYPE_ICON_FACTORY              (ctk_icon_factory_get_type ())
+#define CTK_ICON_FACTORY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_ICON_FACTORY, GtkIconFactory))
+#define CTK_ICON_FACTORY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ICON_FACTORY, GtkIconFactoryClass))
+#define CTK_IS_ICON_FACTORY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_ICON_FACTORY))
+#define CTK_IS_ICON_FACTORY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ICON_FACTORY))
+#define CTK_ICON_FACTORY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON_FACTORY, GtkIconFactoryClass))
+#define CTK_TYPE_ICON_SET                  (ctk_icon_set_get_type ())
+#define CTK_TYPE_ICON_SOURCE               (ctk_icon_source_get_type ())
 
 typedef struct _GtkIconFactory              GtkIconFactory;
 typedef struct _GtkIconFactoryPrivate       GtkIconFactoryPrivate;
@@ -223,4 +223,4 @@ GtkIconSize      ctk_icon_source_get_size                 (const GtkIconSource *
 
 G_END_DECLS
 
-#endif /* __GTK_ICON_FACTORY_H__ */
+#endif /* __CTK_ICON_FACTORY_H__ */

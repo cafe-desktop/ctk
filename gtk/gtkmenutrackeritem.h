@@ -17,25 +17,25 @@
  * Author: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_MENU_TRACKER_ITEM_H__
-#define __GTK_MENU_TRACKER_ITEM_H__
+#ifndef __CTK_MENU_TRACKER_ITEM_H__
+#define __CTK_MENU_TRACKER_ITEM_H__
 
 #include "gtkactionobservable.h"
 
-#define GTK_TYPE_MENU_TRACKER_ITEM                          (ctk_menu_tracker_item_get_type ())
-#define GTK_MENU_TRACKER_ITEM(inst)                         (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
-                                                             GTK_TYPE_MENU_TRACKER_ITEM, GtkMenuTrackerItem))
-#define GTK_IS_MENU_TRACKER_ITEM(inst)                      (G_TYPE_CHECK_INSTANCE_TYPE ((inst), \
-                                                             GTK_TYPE_MENU_TRACKER_ITEM))
+#define CTK_TYPE_MENU_TRACKER_ITEM                          (ctk_menu_tracker_item_get_type ())
+#define CTK_MENU_TRACKER_ITEM(inst)                         (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
+                                                             CTK_TYPE_MENU_TRACKER_ITEM, GtkMenuTrackerItem))
+#define CTK_IS_MENU_TRACKER_ITEM(inst)                      (G_TYPE_CHECK_INSTANCE_TYPE ((inst), \
+                                                             CTK_TYPE_MENU_TRACKER_ITEM))
 
 typedef struct _GtkMenuTrackerItem GtkMenuTrackerItem;
 
-#define GTK_TYPE_MENU_TRACKER_ITEM_ROLE                     (ctk_menu_tracker_item_role_get_type ())
+#define CTK_TYPE_MENU_TRACKER_ITEM_ROLE                     (ctk_menu_tracker_item_role_get_type ())
 
 typedef enum  {
-  GTK_MENU_TRACKER_ITEM_ROLE_NORMAL,
-  GTK_MENU_TRACKER_ITEM_ROLE_CHECK,
-  GTK_MENU_TRACKER_ITEM_ROLE_RADIO,
+  CTK_MENU_TRACKER_ITEM_ROLE_NORMAL,
+  CTK_MENU_TRACKER_ITEM_ROLE_CHECK,
+  CTK_MENU_TRACKER_ITEM_ROLE_RADIO,
 } GtkMenuTrackerItemRole;
 
 GType                   ctk_menu_tracker_item_get_type                  (void) G_GNUC_CONST;

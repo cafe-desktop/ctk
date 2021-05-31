@@ -271,14 +271,14 @@
 /* Define to `int' if <sys/types.h> doesn't define. */
 #mesondefine uid_t
 
-#mesondefine GTK_DATADIR
+#mesondefine CTK_DATADIR
 
-#mesondefine GTK_LIBDIR
+#mesondefine CTK_LIBDIR
 
-#mesondefine GTK_PRINT_BACKENDS
+#mesondefine CTK_PRINT_BACKENDS
 
 /* Define the location where the catalogs will be installed */
-#mesondefine GTK_LOCALEDIR
+#mesondefine CTK_LOCALEDIR
 
 #mesondefine ISO_CODES_PREFIX
 

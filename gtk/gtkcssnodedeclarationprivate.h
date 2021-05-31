@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_NODE_DECLARATION_PRIVATE_H__
-#define __GTK_CSS_NODE_DECLARATION_PRIVATE_H__
+#ifndef __CTK_CSS_NODE_DECLARATION_PRIVATE_H__
+#define __CTK_CSS_NODE_DECLARATION_PRIVATE_H__
 
 #include "gtkcsstypesprivate.h"
 #include "gtkenums.h"
@@ -78,4 +78,4 @@ void                    ctk_css_node_declaration_print                  (const G
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_NODE_DECLARATION_PRIVATE_H__ */
+#endif /* __CTK_CSS_NODE_DECLARATION_PRIVATE_H__ */

@@ -75,8 +75,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_LAYOUT_H__
-#define __GTK_TEXT_LAYOUT_H__
+#ifndef __CTK_TEXT_LAYOUT_H__
+#define __CTK_TEXT_LAYOUT_H__
 
 /* This is a "semi-private" header; it is intended for
  * use by the text widget, and the text canvas item,
@@ -84,7 +84,7 @@
  * canvas item can use it, but users are not supposed
  * to use it.
  */
-#ifndef GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+#ifndef CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #error "You are not supposed to be including this file; the equivalent public API is in gtktextview.h"
 #endif
 
@@ -98,12 +98,12 @@ G_BEGIN_DECLS
 typedef struct _GtkTextLine     GtkTextLine;
 typedef struct _GtkTextLineData GtkTextLineData;
 
-#define GTK_TYPE_TEXT_LAYOUT             (ctk_text_layout_get_type ())
-#define GTK_TEXT_LAYOUT(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TEXT_LAYOUT, GtkTextLayout))
-#define GTK_TEXT_LAYOUT_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEXT_LAYOUT, GtkTextLayoutClass))
-#define GTK_IS_TEXT_LAYOUT(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TEXT_LAYOUT))
-#define GTK_IS_TEXT_LAYOUT_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TEXT_LAYOUT))
-#define GTK_TEXT_LAYOUT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TEXT_LAYOUT, GtkTextLayoutClass))
+#define CTK_TYPE_TEXT_LAYOUT             (ctk_text_layout_get_type ())
+#define CTK_TEXT_LAYOUT(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_LAYOUT, GtkTextLayout))
+#define CTK_TEXT_LAYOUT_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_LAYOUT, GtkTextLayoutClass))
+#define CTK_IS_TEXT_LAYOUT(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEXT_LAYOUT))
+#define CTK_IS_TEXT_LAYOUT_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_LAYOUT))
+#define CTK_TEXT_LAYOUT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_LAYOUT, GtkTextLayoutClass))
 
 typedef struct _GtkTextLayout         GtkTextLayout;
 typedef struct _GtkTextLayoutClass    GtkTextLayoutClass;
@@ -158,7 +158,7 @@ struct _GtkTextLayout
   /* Whether to show the insertion cursor */
   guint cursor_visible : 1;
 
-  /* For what GtkTextDirection to draw cursor GTK_TEXT_DIR_NONE -
+  /* For what GtkTextDirection to draw cursor CTK_TEXT_DIR_NONE -
    * means draw both cursors.
    */
   guint cursor_direction : 2;
@@ -260,7 +260,7 @@ struct _GtkTextLineDisplay
   GdkRGBA *pg_bg_rgba;
 };
 
-#ifdef GTK_COMPILATION
+#ifdef CTK_COMPILATION
 extern G_GNUC_INTERNAL PangoAttrType ctk_text_attr_appearance_type;
 #endif
 
@@ -477,4 +477,4 @@ void ctk_text_layout_spew (GtkTextLayout *layout);
 
 G_END_DECLS
 
-#endif  /* __GTK_TEXT_LAYOUT_H__ */
+#endif  /* __CTK_TEXT_LAYOUT_H__ */

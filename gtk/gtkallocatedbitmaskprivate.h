@@ -18,8 +18,8 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_ALLOCATED_BITMASK_PRIVATE_H__
-#define __GTK_ALLOCATED_BITMASK_PRIVATE_H__
+#ifndef __CTK_ALLOCATED_BITMASK_PRIVATE_H__
+#define __CTK_ALLOCATED_BITMASK_PRIVATE_H__
 
 #include <glib.h>
 
@@ -36,7 +36,7 @@ typedef struct _GtkBitmask GtkBitmask;
 #define _ctk_bitmask_is_allocated(mask) \
   (!(GPOINTER_TO_SIZE (mask) & 1))
 
-#define GTK_BITMASK_N_DIRECT_BITS (sizeof (gsize) * 8 - 1)
+#define CTK_BITMASK_N_DIRECT_BITS (sizeof (gsize) * 8 - 1)
 
 
 GtkBitmask *   _ctk_allocated_bitmask_copy              (const GtkBitmask  *mask);
@@ -69,4 +69,4 @@ gboolean       _ctk_allocated_bitmask_intersects        (const GtkBitmask  *mask
 
 G_END_DECLS
 
-#endif /* __GTK_ALLOCATED_BITMASK_PRIVATE_H__ */
+#endif /* __CTK_ALLOCATED_BITMASK_PRIVATE_H__ */

@@ -19,8 +19,8 @@
  * Authors: Cosimo Cecchi <ccecchi@redhat.com>
  */
 
-#ifndef __GTK_APP_CHOOSER_PRIVATE_H__
-#define __GTK_APP_CHOOSER_PRIVATE_H__
+#ifndef __CTK_APP_CHOOSER_PRIVATE_H__
+#define __CTK_APP_CHOOSER_PRIVATE_H__
 
 #include <glib.h>
 #include <gio/gio.h>
@@ -34,7 +34,7 @@ G_BEGIN_DECLS
 typedef struct _GtkAppChooserIface GtkAppChooserIface;
 typedef GtkAppChooserIface GtkAppChooserInterface;
 
-#define GTK_APP_CHOOSER_GET_IFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_APP_CHOOSER, GtkAppChooserIface))
+#define CTK_APP_CHOOSER_GET_IFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_APP_CHOOSER, GtkAppChooserIface))
 
 struct _GtkAppChooserIface {
   GTypeInterface base_iface;
@@ -50,4 +50,4 @@ _ctk_app_chooser_widget_set_search_entry (GtkAppChooserWidget *self,
 
 G_END_DECLS
 
-#endif /* __GTK_APP_CHOOSER_PRIVATE_H__ */
+#endif /* __CTK_APP_CHOOSER_PRIVATE_H__ */

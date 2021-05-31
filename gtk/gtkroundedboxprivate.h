@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ROUNDED_BOX_PRIVATE_H__
-#define __GTK_ROUNDED_BOX_PRIVATE_H__
+#ifndef __CTK_ROUNDED_BOX_PRIVATE_H__
+#define __CTK_ROUNDED_BOX_PRIVATE_H__
 
 #include <glib-object.h>
 #include <cairo.h>
@@ -104,4 +104,4 @@ gboolean        _ctk_rounded_box_contains_rectangle             (const GtkRounde
 
 G_END_DECLS
 
-#endif /* __GTK_ROUNDED_BOX_PRIVATE_H__ */
+#endif /* __CTK_ROUNDED_BOX_PRIVATE_H__ */

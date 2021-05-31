@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_HBUTTON_BOX_H__
-#define __GTK_HBUTTON_BOX_H__
+#ifndef __CTK_HBUTTON_BOX_H__
+#define __CTK_HBUTTON_BOX_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HBUTTON_BOX                  (ctk_hbutton_box_get_type ())
-#define GTK_HBUTTON_BOX(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HBUTTON_BOX, GtkHButtonBox))
-#define GTK_HBUTTON_BOX_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HBUTTON_BOX, GtkHButtonBoxClass))
-#define GTK_IS_HBUTTON_BOX(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HBUTTON_BOX))
-#define GTK_IS_HBUTTON_BOX_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_HBUTTON_BOX))
-#define GTK_HBUTTON_BOX_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_HBUTTON_BOX, GtkHButtonBoxClass))
+#define CTK_TYPE_HBUTTON_BOX                  (ctk_hbutton_box_get_type ())
+#define CTK_HBUTTON_BOX(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HBUTTON_BOX, GtkHButtonBox))
+#define CTK_HBUTTON_BOX_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HBUTTON_BOX, GtkHButtonBoxClass))
+#define CTK_IS_HBUTTON_BOX(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HBUTTON_BOX))
+#define CTK_IS_HBUTTON_BOX_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HBUTTON_BOX))
+#define CTK_HBUTTON_BOX_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HBUTTON_BOX, GtkHButtonBoxClass))
 
 
 typedef struct _GtkHButtonBox       GtkHButtonBox;
@@ -63,4 +63,4 @@ GtkWidget* ctk_hbutton_box_new      (void);
 
 G_END_DECLS
 
-#endif /* __GTK_HBUTTON_BOX_H__ */
+#endif /* __CTK_HBUTTON_BOX_H__ */

@@ -409,38 +409,38 @@ checkbutton:indeterminate {
             <entry><phrase role="nowrap">E:link, E:visited</phrase></entry>
             <entry>any E node which represents a hyperlink, not yet visited (:link) or already visited (:visited)</entry>
             <entry><ulink url="https://www.w3.org/TR/css3-selectors/#link">CSS</ulink></entry>
-            <entry>Corresponds to GTK_STATE_FLAG_LINK and GTK_STATE_FLAGS_VISITED</entry>
+            <entry>Corresponds to CTK_STATE_FLAG_LINK and CTK_STATE_FLAGS_VISITED</entry>
           </row>
           <row>
             <entry><phrase role="nowrap">E:active, E:hover, E:focus</phrase></entry>
             <entry>any E node which is part of a widget with the corresponding state</entry>
             <entry><ulink url="https://www.w3.org/TR/css3-selectors/#useraction-pseudos">CSS</ulink></entry>
-            <entry>Corresponds to GTK_STATE_FLAG_ACTIVE, GTK_STATE_FLAG_PRELIGHT and GTK_STATE_FLAGS_FOCUSED; GTK+ also allows E:prelight and E:focused</entry>
+            <entry>Corresponds to CTK_STATE_FLAG_ACTIVE, CTK_STATE_FLAG_PRELIGHT and CTK_STATE_FLAGS_FOCUSED; GTK+ also allows E:prelight and E:focused</entry>
           </row>
           <row>
             <entry><phrase role="nowrap">E:disabled</phrase></entry>
             <entry>any E node which is part of a widget which is disabled</entry>
             <entry><ulink url="https://www.w3.org/TR/css3-selectors/#UIstates">CSS</ulink></entry>
-            <entry>Corresponds to GTK_STATE_FLAG_INSENSITIVE; GTK+ also allows E:insensitive</entry>
+            <entry>Corresponds to CTK_STATE_FLAG_INSENSITIVE; GTK+ also allows E:insensitive</entry>
           </row>
           <row>
             <entry><phrase role="nowrap">E:checked</phrase></entry>
             <entry>any E node which is part of a widget (e.g. radio- or checkbuttons) which is checked</entry>
             <entry><ulink url="https://www.w3.org/TR/css3-selectors/#UIstates">CSS</ulink></entry>
-            <entry>Corresponds to GTK_STATE_FLAG_CHECKED</entry>
+            <entry>Corresponds to CTK_STATE_FLAG_CHECKED</entry>
           </row>
           <row>
             <entry><phrase role="nowrap">E:indeterminate</phrase></entry>
             <entry>any E node which is part of a widget (e.g. radio- or checkbuttons) which is in an indeterminate state</entry>
             <entry><ulink url="https://www.w3.org/TR/css3-selectors/#indeterminate">CSS3</ulink>,
                    <ulink url="https://drafts.csswg.org/selectors/#indeterminate">CSS4</ulink></entry>
-            <entry>Corresponds to GTK_STATE_FLAG_INCONSISTENT; GTK+ also allows E:inconsistent</entry>
+            <entry>Corresponds to CTK_STATE_FLAG_INCONSISTENT; GTK+ also allows E:inconsistent</entry>
           </row>
           <row>
             <entry><phrase role="nowrap">E:backdrop, E:selected</phrase></entry>
             <entry>any E node which is part of a widget with the corresponding state</entry>
             <entry></entry>
-            <entry>Corresponds to GTK_STATE_FLAG_BACKDROP, GTK_STATE_FLAG_SELECTED</entry>
+            <entry>Corresponds to CTK_STATE_FLAG_BACKDROP, CTK_STATE_FLAG_SELECTED</entry>
           </row>
           <row>
             <entry><phrase role="nowrap">E:not(〈selector〉)</phrase></entry>

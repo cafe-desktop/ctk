@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_WIN32_H__
-#define __GTK_PRINT_WIN32_H__
+#ifndef __CTK_PRINT_WIN32_H__
+#define __CTK_PRINT_WIN32_H__
 
 #include "win32/gdkwin32.h"
 
@@ -61,4 +61,4 @@ HGLOBAL ctk_print_win32_devnames_to_win32_from_printer_name (const char *printer
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_WIN32_H__ */
+#endif /* __CTK_PRINT_WIN32_H__ */

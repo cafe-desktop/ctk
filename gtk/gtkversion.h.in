@@ -22,12 +22,12 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
-#ifndef __GTK_VERSION_H__
-#define __GTK_VERSION_H__
+#ifndef __CTK_VERSION_H__
+#define __CTK_VERSION_H__
 
 /**
  * SECTION:gtkfeatures
@@ -40,52 +40,52 @@
  */
 
 /**
- * GTK_MAJOR_VERSION:
+ * CTK_MAJOR_VERSION:
  *
  * Like ctk_get_major_version(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-#define GTK_MAJOR_VERSION (@GTK_MAJOR_VERSION@)
+#define CTK_MAJOR_VERSION (@CTK_MAJOR_VERSION@)
 
 /**
- * GTK_MINOR_VERSION:
+ * CTK_MINOR_VERSION:
  *
  * Like ctk_get_minor_version(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-#define GTK_MINOR_VERSION (@GTK_MINOR_VERSION@)
+#define CTK_MINOR_VERSION (@CTK_MINOR_VERSION@)
 
 /**
- * GTK_MICRO_VERSION:
+ * CTK_MICRO_VERSION:
  *
  * Like ctk_get_micro_version(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-#define GTK_MICRO_VERSION (@GTK_MICRO_VERSION@)
+#define CTK_MICRO_VERSION (@CTK_MICRO_VERSION@)
 
 /**
- * GTK_BINARY_AGE:
+ * CTK_BINARY_AGE:
  *
  * Like ctk_get_binary_age(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-#define GTK_BINARY_AGE    (@GTK_BINARY_AGE@)
+#define CTK_BINARY_AGE    (@CTK_BINARY_AGE@)
 
 /**
- * GTK_INTERFACE_AGE:
+ * CTK_INTERFACE_AGE:
  *
  * Like ctk_get_interface_age(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-#define GTK_INTERFACE_AGE (@GTK_INTERFACE_AGE@)
+#define CTK_INTERFACE_AGE (@CTK_INTERFACE_AGE@)
 
 /**
- * GTK_CHECK_VERSION:
+ * CTK_CHECK_VERSION:
  * @major: major version (e.g. 1 for version 1.2.5)
  * @minor: minor version (e.g. 2 for version 1.2.5)
  * @micro: micro version (e.g. 5 for version 1.2.5)
@@ -95,10 +95,10 @@
  *
  * Returns: %TRUE if GTK+ headers are new enough
  */
-#define GTK_CHECK_VERSION(major,minor,micro)                          \
-    (GTK_MAJOR_VERSION > (major) ||                                   \
-     (GTK_MAJOR_VERSION == (major) && GTK_MINOR_VERSION > (minor)) || \
-     (GTK_MAJOR_VERSION == (major) && GTK_MINOR_VERSION == (minor) && \
-      GTK_MICRO_VERSION >= (micro)))
+#define CTK_CHECK_VERSION(major,minor,micro)                          \
+    (CTK_MAJOR_VERSION > (major) ||                                   \
+     (CTK_MAJOR_VERSION == (major) && CTK_MINOR_VERSION > (minor)) || \
+     (CTK_MAJOR_VERSION == (major) && CTK_MINOR_VERSION == (minor) && \
+      CTK_MICRO_VERSION >= (micro)))
 
-#endif /* __GTK_VERSION_H__ */
+#endif /* __CTK_VERSION_H__ */

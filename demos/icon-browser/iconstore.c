@@ -15,8 +15,8 @@ struct _IconStoreClass
 
 static void icon_store_drag_source_init (GtkTreeDragSourceIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (IconStore, icon_store, GTK_TYPE_LIST_STORE,
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_SOURCE,
+G_DEFINE_TYPE_WITH_CODE (IconStore, icon_store, CTK_TYPE_LIST_STORE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_DRAG_SOURCE,
                                                 icon_store_drag_source_init))
 
 
@@ -25,7 +25,7 @@ icon_store_init (IconStore *store)
 {
   GType types[4] = { G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING };
 
-  ctk_list_store_set_column_types (GTK_LIST_STORE (store), 4, types);
+  ctk_list_store_set_column_types (CTK_LIST_STORE (store), 4, types);
 
   store->text_column = ICON_STORE_NAME_COLUMN;
 }
@@ -48,8 +48,8 @@ drag_data_delete (GtkTreeDragSource *drag_source,
 {
   GtkTreeIter iter;
 
-  if (ctk_tree_model_get_iter (GTK_TREE_MODEL (drag_source), &iter, path))
-    return ctk_list_store_remove (GTK_LIST_STORE (drag_source), &iter);
+  if (ctk_tree_model_get_iter (CTK_TREE_MODEL (drag_source), &iter, path))
+    return ctk_list_store_remove (CTK_LIST_STORE (drag_source), &iter);
   return FALSE;
 }
 
@@ -61,10 +61,10 @@ drag_data_get (GtkTreeDragSource *drag_source,
   GtkTreeIter iter;
   gchar *text;
 
-  if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (drag_source), &iter, path))
+  if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (drag_source), &iter, path))
     return FALSE;
 
-  ctk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
+  ctk_tree_model_get (CTK_TREE_MODEL (drag_source), &iter,
                       ICON_STORE (drag_source)->text_column, &text,
                       -1);
 

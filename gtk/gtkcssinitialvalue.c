@@ -27,7 +27,7 @@
 #include "gtkstyleproviderprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
 };
 
 static void
@@ -48,7 +48,7 @@ ctk_css_value_initial_compute (GtkCssValue             *value,
 
   switch (property_id)
     {
-    case GTK_CSS_PROPERTY_DPI:
+    case CTK_CSS_PROPERTY_DPI:
       settings = _ctk_style_provider_private_get_settings (provider);
       if (settings)
         {
@@ -56,11 +56,11 @@ ctk_css_value_initial_compute (GtkCssValue             *value,
           double resolution = gdk_screen_get_resolution (screen);
 
           if (resolution > 0.0)
-            return _ctk_css_number_value_new (resolution, GTK_CSS_NUMBER);
+            return _ctk_css_number_value_new (resolution, CTK_CSS_NUMBER);
         }
       break;
 
-    case GTK_CSS_PROPERTY_FONT_FAMILY:
+    case CTK_CSS_PROPERTY_FONT_FAMILY:
       settings = _ctk_style_provider_private_get_settings (provider);
       if (settings && ctk_settings_get_font_family (settings) != NULL)
         return _ctk_css_array_value_new (_ctk_css_string_value_new (ctk_settings_get_font_family (settings)));
@@ -100,7 +100,7 @@ ctk_css_value_initial_print (const GtkCssValue *value,
   g_string_append (string, "initial");
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_INITIAL = {
+static const GtkCssValueClass CTK_CSS_VALUE_INITIAL = {
   ctk_css_value_initial_free,
   ctk_css_value_initial_compute,
   ctk_css_value_initial_equal,
@@ -108,7 +108,7 @@ static const GtkCssValueClass GTK_CSS_VALUE_INITIAL = {
   ctk_css_value_initial_print
 };
 
-static GtkCssValue initial = { &GTK_CSS_VALUE_INITIAL, 1 };
+static GtkCssValue initial = { &CTK_CSS_VALUE_INITIAL, 1 };
 
 GtkCssValue *
 _ctk_css_initial_value_new (void)

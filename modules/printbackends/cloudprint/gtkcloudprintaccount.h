@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CLOUDPRINT_ACCOUNT_H__
-#define __GTK_CLOUDPRINT_ACCOUNT_H__
+#ifndef __CTK_CLOUDPRINT_ACCOUNT_H__
+#define __CTK_CLOUDPRINT_ACCOUNT_H__
 
 #include <glib-object.h>
 #include <json-glib/json-glib.h>
@@ -25,9 +25,9 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CLOUDPRINT_ACCOUNT	(ctk_cloudprint_account_get_type ())
-#define GTK_CLOUDPRINT_ACCOUNT(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CLOUDPRINT_ACCOUNT, GtkCloudprintAccount))
-#define GTK_IS_CLOUDPRINT_ACCOUNT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CLOUDPRINT_ACCOUNT))
+#define CTK_TYPE_CLOUDPRINT_ACCOUNT	(ctk_cloudprint_account_get_type ())
+#define CTK_CLOUDPRINT_ACCOUNT(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CLOUDPRINT_ACCOUNT, GtkCloudprintAccount))
+#define CTK_IS_CLOUDPRINT_ACCOUNT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CLOUDPRINT_ACCOUNT))
 
 typedef struct _GtkPrinterCloudprint	GtkPrinterCloudprint;
 typedef struct _GtkCloudprintAccount	GtkCloudprintAccount;
@@ -71,4 +71,4 @@ const gchar *ctk_cloudprint_account_get_presentation_identity (GtkCloudprintAcco
 
 G_END_DECLS
 
-#endif /* __GTK_CLOUDPRINT_ACCOUNT_H__ */
+#endif /* __CTK_CLOUDPRINT_ACCOUNT_H__ */

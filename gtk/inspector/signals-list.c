@@ -60,7 +60,7 @@ struct _GtkInspectorSignalsListPrivate
   gboolean tracing;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorSignalsList, ctk_inspector_signals_list, GTK_TYPE_PANED)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorSignalsList, ctk_inspector_signals_list, CTK_TYPE_PANED)
 
 static GType *
 get_types (GObject *object, guint *length)
@@ -191,7 +191,7 @@ static void
 ctk_inspector_signals_list_init (GtkInspectorSignalsList *sl)
 {
   sl->priv = ctk_inspector_signals_list_get_instance_private (sl);
-  ctk_widget_init_template (GTK_WIDGET (sl));
+  ctk_widget_init_template (CTK_WIDGET (sl));
 
   ctk_tree_view_column_set_cell_data_func (sl->priv->count_column,
                                            sl->priv->count_renderer,
@@ -222,7 +222,7 @@ trace_hook (GSignalInvocationHint *ihint,
 
       iter = (GtkTreeIter *)g_hash_table_lookup (sl->priv->iters, GINT_TO_POINTER (ihint->signal_id));
 
-      ctk_tree_model_get (GTK_TREE_MODEL (sl->priv->model), iter, COLUMN_COUNT, &count, -1);
+      ctk_tree_model_get (CTK_TREE_MODEL (sl->priv->model), iter, COLUMN_COUNT, &count, -1);
       ctk_list_store_set (sl->priv->model, iter, COLUMN_COUNT, count + 1, -1);
     }
 
@@ -253,7 +253,7 @@ start_tracing_cb (GtkTreeModel *model,
     {
       hook_id = g_signal_add_emission_hook (signal_id, 0, trace_hook, sl, NULL);
 
-      ctk_list_store_set (GTK_LIST_STORE (model), iter,
+      ctk_list_store_set (CTK_LIST_STORE (model), iter,
                           COLUMN_COUNT, 0,
                           COLUMN_HOOK_ID, hook_id,
                           -1);
@@ -281,7 +281,7 @@ stop_tracing_cb (GtkTreeModel *model,
   if (hook_id != 0)
     {
       g_signal_remove_emission_hook (signal_id, hook_id);
-      ctk_list_store_set (GTK_LIST_STORE (model), iter,
+      ctk_list_store_set (CTK_LIST_STORE (model), iter,
                           COLUMN_HOOK_ID, 0,
                           -1);
     }
@@ -293,15 +293,15 @@ static void
 start_tracing (GtkInspectorSignalsList *sl)
 {
   sl->priv->tracing = TRUE;
-  ctk_tree_model_foreach (GTK_TREE_MODEL (sl->priv->model), start_tracing_cb, sl);
+  ctk_tree_model_foreach (CTK_TREE_MODEL (sl->priv->model), start_tracing_cb, sl);
 }
 
 static void
 stop_tracing (GtkInspectorSignalsList *sl)
 {
   sl->priv->tracing = FALSE;
-  ctk_tree_model_foreach (GTK_TREE_MODEL (sl->priv->model), stop_tracing_cb, sl);
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (sl->priv->trace_button), FALSE);
+  ctk_tree_model_foreach (CTK_TREE_MODEL (sl->priv->model), stop_tracing_cb, sl);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (sl->priv->trace_button), FALSE);
 }
 
 static void
@@ -324,7 +324,7 @@ clear_log_cb (GtkTreeModel *model,
               GtkTreeIter  *iter,
               gpointer      data)
 {
-  ctk_list_store_set (GTK_LIST_STORE (model), iter, COLUMN_COUNT, 0, -1);
+  ctk_list_store_set (CTK_LIST_STORE (model), iter, COLUMN_COUNT, 0, -1);
   return FALSE;
 }
 
@@ -333,7 +333,7 @@ clear_log (GtkButton *button, GtkInspectorSignalsList *sl)
 {
   ctk_text_buffer_set_text (sl->priv->text, "", -1);
 
-  ctk_tree_model_foreach (GTK_TREE_MODEL (sl->priv->model), clear_log_cb, sl);
+  ctk_tree_model_foreach (CTK_TREE_MODEL (sl->priv->model), clear_log_cb, sl);
 }
 
 static void
@@ -342,7 +342,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorSignalsList *sl = GTK_INSPECTOR_SIGNALS_LIST (object);
+  GtkInspectorSignalsList *sl = CTK_INSPECTOR_SIGNALS_LIST (object);
 
   switch (param_id)
     {
@@ -366,7 +366,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorSignalsList *sl = GTK_INSPECTOR_SIGNALS_LIST (object);
+  GtkInspectorSignalsList *sl = CTK_INSPECTOR_SIGNALS_LIST (object);
 
   switch (param_id)
     {
@@ -387,7 +387,7 @@ set_property (GObject      *object,
 static void
 constructed (GObject *object)
 {
-  GtkInspectorSignalsList *sl = GTK_INSPECTOR_SIGNALS_LIST (object);
+  GtkInspectorSignalsList *sl = CTK_INSPECTOR_SIGNALS_LIST (object);
 
   g_signal_connect (sl->priv->trace_button, "toggled",
                     G_CALLBACK (toggle_tracing), sl);
@@ -399,7 +399,7 @@ static void
 ctk_inspector_signals_list_class_init (GtkInspectorSignalsListClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->constructed = constructed;
   object_class->get_property = get_property;
@@ -407,11 +407,11 @@ ctk_inspector_signals_list_class_init (GtkInspectorSignalsListClass *klass)
 
   g_object_class_install_property (object_class, PROP_TRACE_BUTTON,
       g_param_spec_object ("trace-button", NULL, NULL,
-                           GTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                           CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   g_object_class_install_property (object_class, PROP_CLEAR_BUTTON,
       g_param_spec_object ("clear-button", NULL, NULL,
-                           GTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                           CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/signals-list.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorSignalsList, view);

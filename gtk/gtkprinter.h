@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINTER_H__
-#define __GTK_PRINTER_H__
+#ifndef __CTK_PRINTER_H__
+#define __CTK_PRINTER_H__
 
-#if !defined (__GTK_UNIX_PRINT_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_UNIX_PRINT_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtkunixprint.h> can be included directly."
 #endif
 
@@ -27,56 +27,56 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_CAPABILITIES (ctk_print_capabilities_get_type ())
+#define CTK_TYPE_PRINT_CAPABILITIES (ctk_print_capabilities_get_type ())
 
 /* Note, this type is manually registered with GObject in gtkprinter.c
  * If you add any flags, update the registration as well!
  */
 /**
  * GtkPrintCapabilities:
- * @GTK_PRINT_CAPABILITY_PAGE_SET: Print dialog will offer printing even/odd pages.
- * @GTK_PRINT_CAPABILITY_COPIES: Print dialog will allow to print multiple copies.
- * @GTK_PRINT_CAPABILITY_COLLATE: Print dialog will allow to collate multiple copies.
- * @GTK_PRINT_CAPABILITY_REVERSE: Print dialog will allow to print pages in reverse order.
- * @GTK_PRINT_CAPABILITY_SCALE: Print dialog will allow to scale the output.
- * @GTK_PRINT_CAPABILITY_GENERATE_PDF: The program will send the document to
+ * @CTK_PRINT_CAPABILITY_PAGE_SET: Print dialog will offer printing even/odd pages.
+ * @CTK_PRINT_CAPABILITY_COPIES: Print dialog will allow to print multiple copies.
+ * @CTK_PRINT_CAPABILITY_COLLATE: Print dialog will allow to collate multiple copies.
+ * @CTK_PRINT_CAPABILITY_REVERSE: Print dialog will allow to print pages in reverse order.
+ * @CTK_PRINT_CAPABILITY_SCALE: Print dialog will allow to scale the output.
+ * @CTK_PRINT_CAPABILITY_GENERATE_PDF: The program will send the document to
  *   the printer in PDF format
- * @GTK_PRINT_CAPABILITY_GENERATE_PS: The program will send the document to
+ * @CTK_PRINT_CAPABILITY_GENERATE_PS: The program will send the document to
  *   the printer in Postscript format
- * @GTK_PRINT_CAPABILITY_PREVIEW: Print dialog will offer a preview
- * @GTK_PRINT_CAPABILITY_NUMBER_UP: Print dialog will offer printing multiple
+ * @CTK_PRINT_CAPABILITY_PREVIEW: Print dialog will offer a preview
+ * @CTK_PRINT_CAPABILITY_NUMBER_UP: Print dialog will offer printing multiple
  *   pages per sheet. Since 2.12
- * @GTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT: Print dialog will allow to rearrange
+ * @CTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT: Print dialog will allow to rearrange
  *   pages when printing multiple pages per sheet. Since 2.14
  *
  * An enum for specifying which features the print dialog should offer.
- * If neither %GTK_PRINT_CAPABILITY_GENERATE_PDF nor
- * %GTK_PRINT_CAPABILITY_GENERATE_PS is specified, GTK+ assumes that all
+ * If neither %CTK_PRINT_CAPABILITY_GENERATE_PDF nor
+ * %CTK_PRINT_CAPABILITY_GENERATE_PS is specified, GTK+ assumes that all
  * formats are supported.
  */
 typedef enum
 {
-  GTK_PRINT_CAPABILITY_PAGE_SET         = 1 << 0,
-  GTK_PRINT_CAPABILITY_COPIES           = 1 << 1,
-  GTK_PRINT_CAPABILITY_COLLATE          = 1 << 2,
-  GTK_PRINT_CAPABILITY_REVERSE          = 1 << 3,
-  GTK_PRINT_CAPABILITY_SCALE            = 1 << 4,
-  GTK_PRINT_CAPABILITY_GENERATE_PDF     = 1 << 5,
-  GTK_PRINT_CAPABILITY_GENERATE_PS      = 1 << 6,
-  GTK_PRINT_CAPABILITY_PREVIEW          = 1 << 7,
-  GTK_PRINT_CAPABILITY_NUMBER_UP        = 1 << 8,
-  GTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT = 1 << 9
+  CTK_PRINT_CAPABILITY_PAGE_SET         = 1 << 0,
+  CTK_PRINT_CAPABILITY_COPIES           = 1 << 1,
+  CTK_PRINT_CAPABILITY_COLLATE          = 1 << 2,
+  CTK_PRINT_CAPABILITY_REVERSE          = 1 << 3,
+  CTK_PRINT_CAPABILITY_SCALE            = 1 << 4,
+  CTK_PRINT_CAPABILITY_GENERATE_PDF     = 1 << 5,
+  CTK_PRINT_CAPABILITY_GENERATE_PS      = 1 << 6,
+  CTK_PRINT_CAPABILITY_PREVIEW          = 1 << 7,
+  CTK_PRINT_CAPABILITY_NUMBER_UP        = 1 << 8,
+  CTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT = 1 << 9
 } GtkPrintCapabilities;
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_print_capabilities_get_type (void) G_GNUC_CONST;
 
-#define GTK_TYPE_PRINTER                  (ctk_printer_get_type ())
-#define GTK_PRINTER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER, GtkPrinter))
-#define GTK_PRINTER_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINTER, GtkPrinterClass))
-#define GTK_IS_PRINTER(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER))
-#define GTK_IS_PRINTER_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINTER))
-#define GTK_PRINTER_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINTER, GtkPrinterClass))
+#define CTK_TYPE_PRINTER                  (ctk_printer_get_type ())
+#define CTK_PRINTER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER, GtkPrinter))
+#define CTK_PRINTER_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER, GtkPrinterClass))
+#define CTK_IS_PRINTER(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER))
+#define CTK_IS_PRINTER_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINTER))
+#define CTK_PRINTER_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER, GtkPrinterClass))
 
 typedef struct _GtkPrinter          GtkPrinter;
 typedef struct _GtkPrinterClass     GtkPrinterClass;
@@ -189,4 +189,4 @@ void                     ctk_enumerate_printers        (GtkPrinterFunc   func,
 
 G_END_DECLS
 
-#endif /* __GTK_PRINTER_H__ */
+#endif /* __CTK_PRINTER_H__ */

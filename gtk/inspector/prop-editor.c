@@ -68,7 +68,7 @@ enum
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorPropEditor, ctk_inspector_prop_editor, GTK_TYPE_BOX);
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorPropEditor, ctk_inspector_prop_editor, CTK_TYPE_BOX);
 
 static gboolean
 is_child_property (GParamSpec *pspec)
@@ -89,7 +89,7 @@ find_property (GtkInspectorPropEditor *editor)
 {
   if (editor->priv->is_child_property)
     {
-      GtkWidget *widget = GTK_WIDGET (editor->priv->object);
+      GtkWidget *widget = CTK_WIDGET (editor->priv->object);
       GtkWidget *parent = ctk_widget_get_parent (widget);
 
       return mark_child_property (ctk_container_class_find_child_property (G_OBJECT_GET_CLASS (parent), editor->priv->name));
@@ -225,10 +225,10 @@ get_property_value (GObject *object, GParamSpec *pspec, GValue *value)
 {
   if (is_child_property (pspec))
     {
-      GtkWidget *widget = GTK_WIDGET (object);
+      GtkWidget *widget = CTK_WIDGET (object);
       GtkWidget *parent = ctk_widget_get_parent (widget);
 
-      ctk_container_child_get_property (GTK_CONTAINER (parent),
+      ctk_container_child_get_property (CTK_CONTAINER (parent),
                                         widget, pspec->name, value);
     }
   else
@@ -240,10 +240,10 @@ set_property_value (GObject *object, GParamSpec *pspec, GValue *value)
 {
   if (is_child_property (pspec))
     {
-      GtkWidget *widget = GTK_WIDGET (object);
+      GtkWidget *widget = CTK_WIDGET (object);
       GtkWidget *parent = ctk_widget_get_parent (widget);
 
-      ctk_container_child_set_property (GTK_CONTAINER (parent),
+      ctk_container_child_set_property (CTK_CONTAINER (parent),
                                         widget, pspec->name, value);
     }
   else
@@ -255,10 +255,10 @@ notify_property (GObject *object, GParamSpec *pspec)
 {
   if (is_child_property (pspec))
     {
-      GtkWidget *widget = GTK_WIDGET (object);
+      GtkWidget *widget = CTK_WIDGET (object);
       GtkWidget *parent = ctk_widget_get_parent (widget);
 
-      ctk_container_child_notify (GTK_CONTAINER (parent), widget, pspec->name);
+      ctk_container_child_notify (CTK_CONTAINER (parent), widget, pspec->name);
     }
   else
     g_object_notify (object, pspec->name);
@@ -278,7 +278,7 @@ int_modified (GtkAdjustment *adj, ObjectProperty *p)
 static void
 int_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkAdjustment *adj = GTK_ADJUSTMENT (data);
+  GtkAdjustment *adj = CTK_ADJUSTMENT (data);
   GValue val = G_VALUE_INIT;
 
   g_value_init (&val, G_TYPE_INT);
@@ -307,7 +307,7 @@ uint_modified (GtkAdjustment *adj, ObjectProperty *p)
 static void
 uint_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkAdjustment *adj = GTK_ADJUSTMENT (data);
+  GtkAdjustment *adj = CTK_ADJUSTMENT (data);
   GValue val = G_VALUE_INIT;
 
   g_value_init (&val, G_TYPE_UINT);
@@ -337,7 +337,7 @@ float_modified (GtkAdjustment *adj, ObjectProperty *p)
 static void
 float_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkAdjustment *adj = GTK_ADJUSTMENT (data);
+  GtkAdjustment *adj = CTK_ADJUSTMENT (data);
   GValue val = G_VALUE_INIT;
 
   g_value_init (&val, G_TYPE_FLOAT);
@@ -367,7 +367,7 @@ double_modified (GtkAdjustment *adj, ObjectProperty *p)
 static void
 double_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkAdjustment *adj = GTK_ADJUSTMENT (data);
+  GtkAdjustment *adj = CTK_ADJUSTMENT (data);
   GValue val = G_VALUE_INIT;
 
   g_value_init (&val, G_TYPE_DOUBLE);
@@ -401,15 +401,15 @@ intern_string_modified (GtkEntry *entry, ObjectProperty *p)
 
   s = g_intern_string (ctk_entry_get_text (entry));
   if (g_str_equal (p->spec->name, "id"))
-    ctk_css_node_set_id (GTK_CSS_NODE (p->obj), s);
+    ctk_css_node_set_id (CTK_CSS_NODE (p->obj), s);
   else if (g_str_equal (p->spec->name, "name"))
-    ctk_css_node_set_name (GTK_CSS_NODE (p->obj), s);
+    ctk_css_node_set_name (CTK_CSS_NODE (p->obj), s);
 }
 
 static void
 string_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkEntry *entry = GTK_ENTRY (data);
+  GtkEntry *entry = CTK_ENTRY (data);
   GValue val = G_VALUE_INIT;
   const gchar *str;
   const gchar *text;
@@ -477,7 +477,7 @@ bool_modified (GtkToggleButton *tb, ObjectProperty *p)
 static void
 bool_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkToggleButton *tb = GTK_TOGGLE_BUTTON (data);
+  GtkToggleButton *tb = CTK_TOGGLE_BUTTON (data);
   GValue val = G_VALUE_INIT;
 
   g_value_init (&val, G_TYPE_BOOLEAN);
@@ -490,7 +490,7 @@ bool_changed (GObject *object, GParamSpec *pspec, gpointer data)
       unblock_controller (G_OBJECT (tb));
     }
 
-  ctk_button_set_label (GTK_BUTTON (tb),
+  ctk_button_set_label (CTK_BUTTON (tb),
                         g_value_get_boolean (&val) ? "TRUE" : "FALSE");
 
   g_value_unset (&val);
@@ -503,7 +503,7 @@ enum_modified (GtkToggleButton *button, ObjectProperty *p)
   GEnumClass *eclass;
   GValue val = G_VALUE_INIT;
 
-  if (!ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
+  if (!ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     return;
 
   eclass = G_ENUM_CLASS (g_type_class_peek (p->spec->value_type));
@@ -539,9 +539,9 @@ enum_changed (GObject *object, GParamSpec *pspec, gpointer data)
     }
   g_value_unset (&val);
 
-  viewport = ctk_bin_get_child (GTK_BIN (data));
-  box = ctk_bin_get_child (GTK_BIN (viewport));
-  children = ctk_container_get_children (GTK_CONTAINER (box));
+  viewport = ctk_bin_get_child (CTK_BIN (data));
+  box = ctk_bin_get_child (CTK_BIN (viewport));
+  children = ctk_container_get_children (CTK_CONTAINER (box));
 
   for (c = children; c; c = c->next)
     block_controller (G_OBJECT (c->data));
@@ -549,7 +549,7 @@ enum_changed (GObject *object, GParamSpec *pspec, gpointer data)
   for (c = children, j = 0; c; c = c->next, j++)
     {
       if (j == i)
-        ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (c->data), TRUE);
+        ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (c->data), TRUE);
     }
 
   for (c = children; c; c = c->next)
@@ -565,7 +565,7 @@ flags_modified (GtkCheckButton *button, ObjectProperty *p)
   gint i;
   GValue val = G_VALUE_INIT;
 
-  active = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+  active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
   i = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button), "index"));
   fclass = G_FLAGS_CLASS (g_type_class_peek (p->spec->value_type));
 
@@ -599,15 +599,15 @@ flags_changed (GObject *object, GParamSpec *pspec, gpointer data)
   flags = g_value_get_flags (&val);
   g_value_unset (&val);
 
-  viewport = ctk_bin_get_child (GTK_BIN (data));
-  box = ctk_bin_get_child (GTK_BIN (viewport));
-  children = ctk_container_get_children (GTK_CONTAINER (box));
+  viewport = ctk_bin_get_child (CTK_BIN (data));
+  box = ctk_bin_get_child (CTK_BIN (viewport));
+  children = ctk_container_get_children (CTK_CONTAINER (box));
 
   for (c = children; c; c = c->next)
     block_controller (G_OBJECT (c->data));
 
   for (c = children, i = 0; c; c = c->next, i++)
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (c->data),
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (c->data),
                                   (fclass->values[i].value & flags) != 0);
 
   for (c = children; c; c = c->next)
@@ -641,7 +641,7 @@ unichar_modified (GtkEntry *entry, ObjectProperty *p)
 static void
 unichar_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkEntry *entry = GTK_ENTRY (data);
+  GtkEntry *entry = CTK_ENTRY (data);
   gunichar new_val;
   gunichar old_val = unichar_get_value (entry);
   GValue val = G_VALUE_INIT;
@@ -670,7 +670,7 @@ unichar_changed (GObject *object, GParamSpec *pspec, gpointer data)
 static void
 pointer_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkLabel *label = GTK_LABEL (data);
+  GtkLabel *label = CTK_LABEL (data);
   gchar *str;
   gpointer ptr;
 
@@ -702,15 +702,15 @@ object_changed (GObject *object, GParamSpec *pspec, gpointer data)
   gchar *str;
   GObject *obj;
 
-  GList *children = ctk_container_get_children (GTK_CONTAINER (data));
-  label = GTK_WIDGET (children->data);
-  button = GTK_WIDGET (children->next->data);
+  GList *children = ctk_container_get_children (CTK_CONTAINER (data));
+  label = CTK_WIDGET (children->data);
+  button = CTK_WIDGET (children->next->data);
   g_object_get (object, pspec->name, &obj, NULL);
   g_list_free (children);
 
   str = object_label (obj, pspec);
 
-  ctk_label_set_text (GTK_LABEL (label), str);
+  ctk_label_set_text (CTK_LABEL (label), str);
   ctk_widget_set_sensitive (button, G_IS_OBJECT (obj));
 
   if (obj)
@@ -743,7 +743,7 @@ rgba_modified (GtkColorButton *cb, GParamSpec *ignored, ObjectProperty *p)
 static void
 rgba_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkColorChooser *cb = GTK_COLOR_CHOOSER (data);
+  GtkColorChooser *cb = CTK_COLOR_CHOOSER (data);
   GValue val = G_VALUE_INIT;
   GdkRGBA *color;
   GdkRGBA cb_color;
@@ -752,12 +752,12 @@ rgba_changed (GObject *object, GParamSpec *pspec, gpointer data)
   get_property_value (object, pspec, &val);
 
   color = g_value_get_boxed (&val);
-  ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (cb), &cb_color);
+  ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (cb), &cb_color);
 
   if (color != NULL && !gdk_rgba_equal (color, &cb_color))
     {
       block_controller (G_OBJECT (cb));
-      ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (cb), color);
+      ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (cb), color);
       unblock_controller (G_OBJECT (cb));
     }
  g_value_unset (&val);
@@ -770,7 +770,7 @@ color_modified (GtkColorButton *cb, GParamSpec *ignored, ObjectProperty *p)
   GdkColor color;
   GValue val = G_VALUE_INIT;
 
-  ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (cb), &rgba);
+  ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (cb), &rgba);
   color.red = 65535 * rgba.red;
   color.green = 65535 * rgba.green;
   color.blue = 65535 * rgba.blue;
@@ -785,7 +785,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 static void
 color_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkColorChooser *cb = GTK_COLOR_CHOOSER (data);
+  GtkColorChooser *cb = CTK_COLOR_CHOOSER (data);
   GValue val = G_VALUE_INIT;
   GdkColor *color;
   GdkRGBA rgba;
@@ -823,7 +823,7 @@ font_modified (GtkFontChooser *fb, GParamSpec *pspec, ObjectProperty *p)
 static void
 font_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
-  GtkFontChooser *fb = GTK_FONT_CHOOSER (data);
+  GtkFontChooser *fb = CTK_FONT_CHOOSER (data);
   GValue val = G_VALUE_INIT;
   const PangoFontDescription *font_desc;
   PangoFontDescription *fb_font_desc;
@@ -935,7 +935,7 @@ property_editor (GObject                *object,
                                  G_CALLBACK (string_changed),
                                  prop_edit, G_OBJECT (prop_edit));
 
-      if (GTK_IS_CSS_NODE (object))
+      if (CTK_IS_CSS_NODE (object))
         connect_controller (G_OBJECT (prop_edit), "changed",
                             object, spec, G_CALLBACK (intern_string_modified));
       else
@@ -964,12 +964,12 @@ property_editor (GObject                *object,
         prop_edit = ctk_scrolled_window_new (NULL, NULL);
         g_object_set (prop_edit,
                       "expand", TRUE,
-                      "hscrollbar-policy", GTK_POLICY_NEVER,
-                      "vscrollbar-policy", GTK_POLICY_NEVER,
+                      "hscrollbar-policy", CTK_POLICY_NEVER,
+                      "vscrollbar-policy", CTK_POLICY_NEVER,
                       NULL);
-        box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+        box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
         ctk_widget_show (box);
-        ctk_container_add (GTK_CONTAINER (prop_edit), box);
+        ctk_container_add (CTK_CONTAINER (prop_edit), box);
 
         eclass = G_ENUM_CLASS (g_type_class_ref (spec->value_type));
 
@@ -984,14 +984,14 @@ property_editor (GObject                *object,
               first = b;
             g_object_set_data (G_OBJECT (b), "index", GINT_TO_POINTER (j));
             ctk_widget_show (b);
-            ctk_box_pack_start (GTK_BOX (box), b, FALSE, FALSE, 0);
+            ctk_box_pack_start (CTK_BOX (box), b, FALSE, FALSE, 0);
             connect_controller (G_OBJECT (b), "toggled",
                                 object, spec, G_CALLBACK (enum_modified));
             ++j;
           }
 
         if (j >= 10)
-          g_object_set (prop_edit, "vscrollbar-policy", GTK_POLICY_AUTOMATIC, NULL);
+          g_object_set (prop_edit, "vscrollbar-policy", CTK_POLICY_AUTOMATIC, NULL);
 
         g_type_class_unref (eclass);
 
@@ -1010,12 +1010,12 @@ property_editor (GObject                *object,
         prop_edit = ctk_scrolled_window_new (NULL, NULL);
         g_object_set (prop_edit,
                       "expand", TRUE,
-                      "hscrollbar-policy", GTK_POLICY_NEVER,
-                      "vscrollbar-policy", GTK_POLICY_NEVER,
+                      "hscrollbar-policy", CTK_POLICY_NEVER,
+                      "vscrollbar-policy", CTK_POLICY_NEVER,
                       NULL);
-        box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+        box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
         ctk_widget_show (box);
-        ctk_container_add (GTK_CONTAINER (prop_edit), box);
+        ctk_container_add (CTK_CONTAINER (prop_edit), box);
 
         fclass = G_FLAGS_CLASS (g_type_class_ref (spec->value_type));
 
@@ -1026,13 +1026,13 @@ property_editor (GObject                *object,
             b = ctk_check_button_new_with_label (fclass->values[j].value_name);
             g_object_set_data (G_OBJECT (b), "index", GINT_TO_POINTER (j));
             ctk_widget_show (b);
-            ctk_box_pack_start (GTK_BOX (box), b, FALSE, FALSE, 0);
+            ctk_box_pack_start (CTK_BOX (box), b, FALSE, FALSE, 0);
             connect_controller (G_OBJECT (b), "toggled",
                                 object, spec, G_CALLBACK (flags_modified));
           }
 
         if (j >= 10)
-          g_object_set (prop_edit, "vscrollbar-policy", GTK_POLICY_AUTOMATIC, NULL);
+          g_object_set (prop_edit, "vscrollbar-policy", CTK_POLICY_AUTOMATIC, NULL);
 
         g_type_class_unref (fclass);
 
@@ -1044,7 +1044,7 @@ property_editor (GObject                *object,
   else if (type == G_TYPE_PARAM_UNICHAR)
     {
       prop_edit = ctk_entry_new ();
-      ctk_entry_set_max_length (GTK_ENTRY (prop_edit), 1);
+      ctk_entry_set_max_length (CTK_ENTRY (prop_edit), 1);
 
       g_object_connect_property (object, spec,
                                  G_CALLBACK (unichar_changed),
@@ -1065,15 +1065,15 @@ property_editor (GObject                *object,
     {
       GtkWidget *label, *button;
 
-      prop_edit = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+      prop_edit = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 5);
 
       label = ctk_label_new ("");
       button = ctk_button_new_with_label (_("Properties"));
       g_signal_connect_swapped (button, "clicked",
                                 G_CALLBACK (object_properties),
                                 editor);
-      ctk_container_add (GTK_CONTAINER (prop_edit), label);
-      ctk_container_add (GTK_CONTAINER (prop_edit), button);
+      ctk_container_add (CTK_CONTAINER (prop_edit), label);
+      ctk_container_add (CTK_CONTAINER (prop_edit), button);
       ctk_widget_show (label);
       ctk_widget_show (button);
 
@@ -1085,7 +1085,7 @@ property_editor (GObject                *object,
            G_PARAM_SPEC_VALUE_TYPE (spec) == GDK_TYPE_RGBA)
     {
       prop_edit = ctk_color_chooser_widget_new ();
-      ctk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (prop_edit), TRUE);
+      ctk_color_chooser_set_use_alpha (CTK_COLOR_CHOOSER (prop_edit), TRUE);
 
       g_object_connect_property (object, spec,
                                  G_CALLBACK (rgba_changed),
@@ -1098,7 +1098,7 @@ property_editor (GObject                *object,
            G_PARAM_SPEC_VALUE_TYPE (spec) == g_type_from_name ("GdkColor"))
     {
       prop_edit = ctk_color_chooser_widget_new ();
-      ctk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (prop_edit), FALSE);
+      ctk_color_chooser_set_use_alpha (CTK_COLOR_CHOOSER (prop_edit), FALSE);
 
       g_object_connect_property (object, spec,
                                  G_CALLBACK (color_changed),
@@ -1133,8 +1133,8 @@ property_editor (GObject                *object,
       connect_controller (G_OBJECT (prop_edit), "changed",
                           object, spec, G_CALLBACK (strv_modified));
 
-      ctk_widget_set_halign (prop_edit, GTK_ALIGN_START);
-      ctk_widget_set_valign (prop_edit, GTK_ALIGN_CENTER);
+      ctk_widget_set_halign (prop_edit, CTK_ALIGN_START);
+      ctk_widget_set_valign (prop_edit, CTK_ALIGN_CENTER);
     }
   else
     {
@@ -1142,8 +1142,8 @@ property_editor (GObject                *object,
                              g_type_name (G_PARAM_SPEC_TYPE (spec)));
       prop_edit = ctk_label_new (msg);
       g_free (msg);
-      ctk_widget_set_halign (prop_edit, GTK_ALIGN_START);
-      ctk_widget_set_valign (prop_edit, GTK_ALIGN_CENTER);
+      ctk_widget_set_halign (prop_edit, CTK_ALIGN_START);
+      ctk_widget_set_valign (prop_edit, CTK_ALIGN_CENTER);
     }
 
   if (g_param_spec_get_blurb (spec))
@@ -1159,7 +1159,7 @@ ctk_inspector_prop_editor_init (GtkInspectorPropEditor *editor)
 {
   editor->priv = ctk_inspector_prop_editor_get_instance_private (editor);
   g_object_set (editor,
-                "orientation", GTK_ORIENTATION_VERTICAL,
+                "orientation", CTK_ORIENTATION_VERTICAL,
                 "spacing", 10,
                 "margin", 10,
                 NULL);
@@ -1168,12 +1168,12 @@ ctk_inspector_prop_editor_init (GtkInspectorPropEditor *editor)
 static GtkTreeModel *
 ctk_cell_layout_get_model (GtkCellLayout *layout)
 {
-  if (GTK_IS_TREE_VIEW_COLUMN (layout))
-    return ctk_tree_view_get_model (GTK_TREE_VIEW (ctk_tree_view_column_get_tree_view (GTK_TREE_VIEW_COLUMN (layout))));
-  else if (GTK_IS_ICON_VIEW (layout))
-    return ctk_icon_view_get_model (GTK_ICON_VIEW (layout));
-  else if (GTK_IS_COMBO_BOX (layout)) 
-    return ctk_combo_box_get_model (GTK_COMBO_BOX (layout));
+  if (CTK_IS_TREE_VIEW_COLUMN (layout))
+    return ctk_tree_view_get_model (CTK_TREE_VIEW (ctk_tree_view_column_get_tree_view (CTK_TREE_VIEW_COLUMN (layout))));
+  else if (CTK_IS_ICON_VIEW (layout))
+    return ctk_icon_view_get_model (CTK_ICON_VIEW (layout));
+  else if (CTK_IS_COMBO_BOX (layout)) 
+    return ctk_combo_box_get_model (CTK_COMBO_BOX (layout));
   else
     return NULL;
 }
@@ -1181,10 +1181,10 @@ ctk_cell_layout_get_model (GtkCellLayout *layout)
 static GtkWidget *
 ctk_cell_layout_get_widget (GtkCellLayout *layout)
 {
-  if (GTK_IS_TREE_VIEW_COLUMN (layout))
-    return ctk_tree_view_column_get_tree_view (GTK_TREE_VIEW_COLUMN (layout));
-  else if (GTK_IS_WIDGET (layout))
-    return GTK_WIDGET (layout);
+  if (CTK_IS_TREE_VIEW_COLUMN (layout))
+    return ctk_tree_view_column_get_tree_view (CTK_TREE_VIEW_COLUMN (layout));
+  else if (CTK_IS_WIDGET (layout))
+    return CTK_WIDGET (layout);
   else
     return NULL;
 }
@@ -1210,16 +1210,16 @@ attribute_mapping_changed (GtkComboBox            *combo,
 
   col = ctk_combo_box_get_active (combo) - 1;
   layout = g_object_get_data (editor->priv->object, "gtk-inspector-cell-layout");
-  if (GTK_IS_CELL_LAYOUT (layout))
+  if (CTK_IS_CELL_LAYOUT (layout))
     {
-      cell = GTK_CELL_RENDERER (editor->priv->object);
-      area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (layout));
+      cell = CTK_CELL_RENDERER (editor->priv->object);
+      area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (layout));
       ctk_cell_area_attribute_disconnect (area, cell, editor->priv->name);
       if (col != -1)
         ctk_cell_area_attribute_connect (area, cell, editor->priv->name, col);
       ctk_widget_set_sensitive (editor->priv->editor, col == -1);
       notify_property (editor->priv->object, find_property (editor));
-      ctk_widget_queue_draw (ctk_cell_layout_get_widget (GTK_CELL_LAYOUT (layout)));
+      ctk_widget_queue_draw (ctk_cell_layout_get_widget (CTK_CELL_LAYOUT (layout)));
     }
 }
 
@@ -1245,39 +1245,39 @@ attribute_editor (GObject                *object,
   GtkTreeIter iter;
 
   layout = g_object_get_data (object, "gtk-inspector-cell-layout");
-  if (GTK_IS_CELL_LAYOUT (layout))
+  if (CTK_IS_CELL_LAYOUT (layout))
     {
-      area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (layout));
+      area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (layout));
       col = ctk_cell_area_attribute_get_column (area,
-                                                GTK_CELL_RENDERER (object), 
+                                                CTK_CELL_RENDERER (object), 
                                                 editor->priv->name);
-      model = ctk_cell_layout_get_model (GTK_CELL_LAYOUT (layout));
+      model = ctk_cell_layout_get_model (CTK_CELL_LAYOUT (layout));
     }
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
 
   label = ctk_label_new (_("Attribute mapping"));
   ctk_widget_set_margin_top (label, 10);
-  ctk_container_add (GTK_CONTAINER (vbox), label);
+  ctk_container_add (CTK_CONTAINER (vbox), label);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  ctk_container_add (GTK_CONTAINER (box), ctk_label_new (_("Model:")));
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_container_add (CTK_CONTAINER (box), ctk_label_new (_("Model:")));
   text = g_strdup_printf (_("%p (%s)"), model, model ? g_type_name (G_TYPE_FROM_INSTANCE (model)) : "null" );
-  ctk_container_add (GTK_CONTAINER (box), ctk_label_new (text));
+  ctk_container_add (CTK_CONTAINER (box), ctk_label_new (text));
   g_free (text);
   button = ctk_button_new_with_label (_("Properties"));
   g_object_set_data (G_OBJECT (button), "model", model);
   g_signal_connect (button, "clicked", G_CALLBACK (model_properties), editor);
-  ctk_container_add (GTK_CONTAINER (box), button);
-  ctk_container_add (GTK_CONTAINER (vbox), box);
+  ctk_container_add (CTK_CONTAINER (box), button);
+  ctk_container_add (CTK_CONTAINER (vbox), box);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  ctk_container_add (GTK_CONTAINER (box), ctk_label_new (_("Column:")));
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_container_add (CTK_CONTAINER (box), ctk_label_new (_("Column:")));
   store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
-  combo = ctk_combo_box_new_with_model (GTK_TREE_MODEL (store));
+  combo = ctk_combo_box_new_with_model (CTK_TREE_MODEL (store));
   renderer = ctk_cell_renderer_text_new ();
-  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, FALSE);
-  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
+  ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo), renderer, FALSE);
+  ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (combo), renderer,
                                   "text", 0,
                                   "sensitive", 1,
                                   NULL);
@@ -1292,12 +1292,12 @@ attribute_editor (GObject                *object,
       ctk_list_store_set (store, &iter, 0, text, 1, sensitive, -1);
       g_free (text);
     }
-  ctk_combo_box_set_active (GTK_COMBO_BOX (combo), col + 1);
-  attribute_mapping_changed (GTK_COMBO_BOX (combo), editor);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (combo), col + 1);
+  attribute_mapping_changed (CTK_COMBO_BOX (combo), editor);
   g_signal_connect (combo, "changed",
                     G_CALLBACK (attribute_mapping_changed), editor);
-  ctk_container_add (GTK_CONTAINER (box), combo);
-  ctk_container_add (GTK_CONTAINER (vbox), box);
+  ctk_container_add (CTK_CONTAINER (box), combo);
+  ctk_container_add (CTK_CONTAINER (vbox), box);
   ctk_widget_show_all (vbox);
 
   return vbox;
@@ -1306,10 +1306,10 @@ attribute_editor (GObject                *object,
 static GtkWidget *
 action_ancestor (GtkWidget *widget)
 {
-  if (GTK_IS_MENU (widget))
-    return ctk_menu_get_attach_widget (GTK_MENU (widget));
-  else if (GTK_IS_POPOVER (widget))
-    return ctk_popover_get_relative_to (GTK_POPOVER (widget));
+  if (CTK_IS_MENU (widget))
+    return ctk_menu_get_attach_widget (CTK_MENU (widget));
+  else if (CTK_IS_POPOVER (widget))
+    return ctk_popover_get_relative_to (CTK_POPOVER (widget));
   else
     return ctk_widget_get_parent (widget);
 }
@@ -1317,7 +1317,7 @@ action_ancestor (GtkWidget *widget)
 static GObject *
 find_action_owner (GtkActionable *actionable)
 {
-  GtkWidget *widget = GTK_WIDGET (actionable);
+  GtkWidget *widget = CTK_WIDGET (actionable);
   const gchar *full_name;
   const gchar *dot;
   const gchar *name;
@@ -1333,7 +1333,7 @@ find_action_owner (GtkActionable *actionable)
   prefix = g_strndup (full_name, dot - full_name);
   name = dot + 1;
 
-  win = ctk_widget_get_ancestor (widget, GTK_TYPE_APPLICATION_WINDOW);
+  win = ctk_widget_get_ancestor (widget, CTK_TYPE_APPLICATION_WINDOW);
   if (g_strcmp0 (prefix, "win") == 0)
     {
       if (G_IS_OBJECT (win))
@@ -1341,8 +1341,8 @@ find_action_owner (GtkActionable *actionable)
     }
   else if (g_strcmp0 (prefix, "app") == 0)
     {  
-      if (GTK_IS_WINDOW (win))
-        return (GObject *)ctk_window_get_application (GTK_WINDOW (win));
+      if (CTK_IS_WINDOW (win))
+        return (GObject *)ctk_window_get_application (CTK_WINDOW (win));
     }
 
   while (widget != NULL)
@@ -1377,25 +1377,25 @@ action_editor (GObject                *object,
   GObject *owner;
   gchar *text;
 
-  owner = find_action_owner (GTK_ACTIONABLE (object));
+  owner = find_action_owner (CTK_ACTIONABLE (object));
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   if (owner)
     {
       label = ctk_label_new (_("Action"));
       ctk_widget_set_margin_top (label, 10);
-      ctk_container_add (GTK_CONTAINER (vbox), label);
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+      ctk_container_add (CTK_CONTAINER (vbox), label);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
       text = g_strdup_printf (_("Defined at: %p (%s)"),
                               owner, g_type_name_from_instance ((GTypeInstance *)owner));
-      ctk_container_add (GTK_CONTAINER (box), ctk_label_new (text));
+      ctk_container_add (CTK_CONTAINER (box), ctk_label_new (text));
       g_free (text);
       button = ctk_button_new_with_label (_("Properties"));
       g_object_set_data (G_OBJECT (button), "owner", owner);
       g_signal_connect (button, "clicked",
                         G_CALLBACK (show_action_owner), editor);
-      ctk_container_add (GTK_CONTAINER (box), button);
-      ctk_container_add (GTK_CONTAINER (vbox), box);
+      ctk_container_add (CTK_CONTAINER (box), button);
+      ctk_container_add (CTK_CONTAINER (vbox), box);
       ctk_widget_show_all (vbox);
     }
 
@@ -1491,24 +1491,24 @@ add_binding_info (GtkInspectorPropEditor *editor)
             }
         }
 
-      row = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-      ctk_container_add (GTK_CONTAINER (row), ctk_label_new (_("Binding:")));
+      row = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+      ctk_container_add (CTK_CONTAINER (row), ctk_label_new (_("Binding:")));
       label = ctk_label_new (direction);
       if (tip)
         ctk_widget_set_tooltip_text (label, tip);
-      ctk_container_add (GTK_CONTAINER (row), label);
+      ctk_container_add (CTK_CONTAINER (row), label);
       str = g_strdup_printf ("%p :: %s", other, property);
       label = ctk_label_new (str);
-      ctk_container_add (GTK_CONTAINER (row), label);
+      ctk_container_add (CTK_CONTAINER (row), label);
       g_free (str);
       button = ctk_button_new_with_label (_("Properties"));
       g_object_set_data (G_OBJECT (button), "object", other);
       g_signal_connect (button, "clicked",
                         G_CALLBACK (binding_object_properties), editor);
-      ctk_container_add (GTK_CONTAINER (row), button);
+      ctk_container_add (CTK_CONTAINER (row), button);
 
        ctk_widget_show_all (row);
-       ctk_container_add (GTK_CONTAINER (editor), row);
+       ctk_container_add (CTK_CONTAINER (editor), row);
     }
 }
 
@@ -1561,17 +1561,17 @@ static void
 add_attribute_info (GtkInspectorPropEditor *editor,
                     GParamSpec             *spec)
 {
-  if (GTK_IS_CELL_RENDERER (editor->priv->object))
-    ctk_container_add (GTK_CONTAINER (editor),
+  if (CTK_IS_CELL_RENDERER (editor->priv->object))
+    ctk_container_add (CTK_CONTAINER (editor),
                        attribute_editor (editor->priv->object, spec, editor));
 }
 
 static void
 add_actionable_info (GtkInspectorPropEditor *editor)
 {
-  if (GTK_IS_ACTIONABLE (editor->priv->object) &&
+  if (CTK_IS_ACTIONABLE (editor->priv->object) &&
       g_strcmp0 (editor->priv->name, "action-name") == 0)
-    ctk_container_add (GTK_CONTAINER (editor),
+    ctk_container_add (CTK_CONTAINER (editor),
                        action_editor (editor->priv->object, editor));
 }
 
@@ -1619,28 +1619,28 @@ add_settings_info (GtkInspectorPropEditor *editor)
       tip = NULL;
     }
 
-  row = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  ctk_container_add (GTK_CONTAINER (row), ctk_label_new (_("Setting:")));
+  row = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_container_add (CTK_CONTAINER (row), ctk_label_new (_("Setting:")));
   label = ctk_label_new (direction);
   if (tip)
     ctk_widget_set_tooltip_text (label, tip);
-  ctk_container_add (GTK_CONTAINER (row), label);
+  ctk_container_add (CTK_CONTAINER (row), label);
   
   str = g_strdup_printf ("%s %s",
                          g_settings_schema_get_id (binding->key.schema),
                          binding->key.name);
   label = ctk_label_new (str);
-  ctk_container_add (GTK_CONTAINER (row), label);
+  ctk_container_add (CTK_CONTAINER (row), label);
   g_free (str);
 
   ctk_widget_show_all (row);
-  ctk_container_add (GTK_CONTAINER (editor), row);
+  ctk_container_add (CTK_CONTAINER (editor), row);
 }
 
 static void
 reset_setting (GtkInspectorPropEditor *editor)
 {
-  ctk_settings_reset_property (GTK_SETTINGS (editor->priv->object),
+  ctk_settings_reset_property (CTK_SETTINGS (editor->priv->object),
                                editor->priv->name);
 }
 
@@ -1656,32 +1656,32 @@ add_ctk_settings_info (GtkInspectorPropEditor *editor)
   object = editor->priv->object;
   name = editor->priv->name;
 
-  if (!GTK_IS_SETTINGS (object))
+  if (!CTK_IS_SETTINGS (object))
     return;
 
-  row = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  ctk_container_add (GTK_CONTAINER (row), ctk_label_new (_("Source:")));
+  row = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_container_add (CTK_CONTAINER (row), ctk_label_new (_("Source:")));
 
   button = ctk_button_new_with_label (_("Reset"));
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (reset_setting), editor);
 
-  ctk_widget_set_halign (button, GTK_ALIGN_END);
+  ctk_widget_set_halign (button, CTK_ALIGN_END);
   ctk_widget_show (button);
   ctk_widget_set_sensitive (button, FALSE);
-  ctk_box_pack_end (GTK_BOX (row), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (row), button, FALSE, FALSE, 0);
 
-  switch (_ctk_settings_get_setting_source (GTK_SETTINGS (object), name))
+  switch (_ctk_settings_get_setting_source (CTK_SETTINGS (object), name))
     {
-    case GTK_SETTINGS_SOURCE_DEFAULT:
+    case CTK_SETTINGS_SOURCE_DEFAULT:
       source = _("Default");
       break;
-    case GTK_SETTINGS_SOURCE_THEME:
+    case CTK_SETTINGS_SOURCE_THEME:
       source = _("Theme");
       break;
-    case GTK_SETTINGS_SOURCE_XSETTING:
+    case CTK_SETTINGS_SOURCE_XSETTING:
       source = _("XSettings");
       break;
-    case GTK_SETTINGS_SOURCE_APPLICATION:
+    case CTK_SETTINGS_SOURCE_APPLICATION:
       ctk_widget_set_sensitive (button, TRUE);
       source = _("Application");
       break;
@@ -1689,16 +1689,16 @@ add_ctk_settings_info (GtkInspectorPropEditor *editor)
       source = _("Unknown");
       break;
     }
-  ctk_container_add (GTK_CONTAINER (row), ctk_label_new (source));
+  ctk_container_add (CTK_CONTAINER (row), ctk_label_new (source));
 
   ctk_widget_show_all (row);
-  ctk_container_add (GTK_CONTAINER (editor), row);
+  ctk_container_add (CTK_CONTAINER (editor), row);
 }
 
 static void
 constructed (GObject *object)
 {
-  GtkInspectorPropEditor *editor = GTK_INSPECTOR_PROP_EDITOR (object);
+  GtkInspectorPropEditor *editor = CTK_INSPECTOR_PROP_EDITOR (object);
   GParamSpec *spec;
   GtkWidget *label;
   gboolean can_modify;
@@ -1707,7 +1707,7 @@ constructed (GObject *object)
 
   label = ctk_label_new (g_param_spec_get_nick (spec));
   ctk_widget_show (label);
-  ctk_container_add (GTK_CONTAINER (editor), label);
+  ctk_container_add (CTK_CONTAINER (editor), label);
 
   can_modify = ((spec->flags & G_PARAM_WRITABLE) != 0 &&
                 (spec->flags & G_PARAM_CONSTRUCT_ONLY) == 0);
@@ -1722,8 +1722,8 @@ constructed (GObject *object)
   if (label)
     {
       ctk_widget_show (label);
-      ctk_style_context_add_class (ctk_widget_get_style_context (label), GTK_STYLE_CLASS_DIM_LABEL);
-      ctk_container_add (GTK_CONTAINER (editor), label);
+      ctk_style_context_add_class (ctk_widget_get_style_context (label), CTK_STYLE_CLASS_DIM_LABEL);
+      ctk_container_add (CTK_CONTAINER (editor), label);
     }
 
   /* By reaching this, we already know the property is readable.
@@ -1738,7 +1738,7 @@ constructed (GObject *object)
 
   editor->priv->editor = property_editor (editor->priv->object, spec, editor);
   ctk_widget_show (editor->priv->editor);
-  ctk_container_add (GTK_CONTAINER (editor), editor->priv->editor);
+  ctk_container_add (CTK_CONTAINER (editor), editor->priv->editor);
 
   add_attribute_info (editor, spec);
   add_actionable_info (editor);
@@ -1750,7 +1750,7 @@ constructed (GObject *object)
 static void
 finalize (GObject *object)
 {
-  GtkInspectorPropEditor *editor = GTK_INSPECTOR_PROP_EDITOR (object);
+  GtkInspectorPropEditor *editor = CTK_INSPECTOR_PROP_EDITOR (object);
 
   g_free (editor->priv->name);
 
@@ -1763,7 +1763,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorPropEditor *r = GTK_INSPECTOR_PROP_EDITOR (object);
+  GtkInspectorPropEditor *r = CTK_INSPECTOR_PROP_EDITOR (object);
 
   switch (param_id)
     {
@@ -1791,7 +1791,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorPropEditor *r = GTK_INSPECTOR_PROP_EDITOR (object);
+  GtkInspectorPropEditor *r = CTK_INSPECTOR_PROP_EDITOR (object);
 
   switch (param_id)
     {
@@ -1850,7 +1850,7 @@ ctk_inspector_prop_editor_new (GObject     *object,
                                const gchar *name,
                                gboolean     is_child_property)
 {
-  return g_object_new (GTK_TYPE_INSPECTOR_PROP_EDITOR,
+  return g_object_new (CTK_TYPE_INSPECTOR_PROP_EDITOR,
                        "object", object,
                        "name", name,
                        "is-child-property", is_child_property,
@@ -1860,12 +1860,12 @@ ctk_inspector_prop_editor_new (GObject     *object,
 gboolean
 ctk_inspector_prop_editor_should_expand (GtkInspectorPropEditor *editor)
 {
-  if (GTK_IS_SCROLLED_WINDOW (editor->priv->editor))
+  if (CTK_IS_SCROLLED_WINDOW (editor->priv->editor))
     {
       GtkPolicyType policy;
 
       g_object_get (editor->priv->editor, "vscrollbar-policy", &policy, NULL);
-      if (policy != GTK_POLICY_NEVER)
+      if (policy != CTK_POLICY_NEVER)
         return TRUE;
     }
 

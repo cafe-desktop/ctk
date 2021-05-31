@@ -133,7 +133,7 @@ void
 on_window_realize (GtkWidget  *window,
                    FrameStats *frame_stats)
 {
-  frame_stats->frame_clock = ctk_widget_get_frame_clock (GTK_WIDGET (window));
+  frame_stats->frame_clock = ctk_widget_get_frame_clock (CTK_WIDGET (window));
   g_signal_connect (frame_stats->frame_clock, "after-paint",
                     G_CALLBACK (on_frame_clock_after_paint), frame_stats);
 }
@@ -177,6 +177,6 @@ frame_stats_ensure (GtkWindow *window)
   g_signal_connect (window, "destroy",
                     G_CALLBACK (on_window_destroy), frame_stats);
 
-  if (ctk_widget_get_realized (GTK_WIDGET (window)))
-    on_window_realize (GTK_WIDGET (window), frame_stats);
+  if (ctk_widget_get_realized (CTK_WIDGET (window)))
+    on_window_realize (CTK_WIDGET (window), frame_stats);
 }

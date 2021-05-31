@@ -18,8 +18,8 @@ show_shortcuts (GtkWidget   *window,
   path = g_strdup_printf ("/shortcuts/%s.ui", id);
   builder = ctk_builder_new_from_resource (path);
   g_free (path);
-  overlay = GTK_WIDGET (ctk_builder_get_object (builder, id));
-  ctk_window_set_transient_for (GTK_WINDOW (overlay), GTK_WINDOW (window));
+  overlay = CTK_WIDGET (ctk_builder_get_object (builder, id));
+  ctk_window_set_transient_for (CTK_WINDOW (overlay), CTK_WINDOW (window));
   g_object_set (overlay, "view-name", view, NULL);
   ctk_widget_show (overlay);
   g_object_unref (builder);
@@ -96,8 +96,8 @@ do_shortcuts (GtkWidget *do_widget)
                                         "boxes_shortcuts_display", G_CALLBACK (boxes_shortcuts_display),
                                         NULL);
       ctk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = CTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);

@@ -48,9 +48,9 @@ ctk_action_observable_register_observer (GtkActionObservable *observable,
                                          const gchar         *action_name,
                                          GtkActionObserver   *observer)
 {
-  g_return_if_fail (GTK_IS_ACTION_OBSERVABLE (observable));
+  g_return_if_fail (CTK_IS_ACTION_OBSERVABLE (observable));
 
-  GTK_ACTION_OBSERVABLE_GET_IFACE (observable)
+  CTK_ACTION_OBSERVABLE_GET_IFACE (observable)
     ->register_observer (observable, action_name, observer);
 }
 
@@ -71,8 +71,8 @@ ctk_action_observable_unregister_observer (GtkActionObservable *observable,
                                            const gchar         *action_name,
                                            GtkActionObserver   *observer)
 {
-  g_return_if_fail (GTK_IS_ACTION_OBSERVABLE (observable));
+  g_return_if_fail (CTK_IS_ACTION_OBSERVABLE (observable));
 
-  GTK_ACTION_OBSERVABLE_GET_IFACE (observable)
+  CTK_ACTION_OBSERVABLE_GET_IFACE (observable)
     ->unregister_observer (observable, action_name, observer);
 }

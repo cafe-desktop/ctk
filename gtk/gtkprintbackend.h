@@ -16,14 +16,14 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_BACKEND_H__
-#define __GTK_PRINT_BACKEND_H__
+#ifndef __CTK_PRINT_BACKEND_H__
+#define __CTK_PRINT_BACKEND_H__
 
 /* This is a "semi-private" header; it is meant only for
  * alternate GtkPrintDialog backend modules; no stability guarantees
  * are made at this point
  */
-#ifndef GTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
+#ifndef CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
 #error "GtkPrintBackend is not supported API for general use"
 #endif
 
@@ -36,29 +36,29 @@ G_BEGIN_DECLS
 typedef struct _GtkPrintBackendClass    GtkPrintBackendClass;
 typedef struct _GtkPrintBackendPrivate  GtkPrintBackendPrivate;
 
-#define GTK_PRINT_BACKEND_ERROR (ctk_print_backend_error_quark ())
+#define CTK_PRINT_BACKEND_ERROR (ctk_print_backend_error_quark ())
 
 typedef enum
 {
   /* TODO: add specific errors */
-  GTK_PRINT_BACKEND_ERROR_GENERIC
+  CTK_PRINT_BACKEND_ERROR_GENERIC
 } GtkPrintBackendError;
 
 GDK_AVAILABLE_IN_ALL
 GQuark     ctk_print_backend_error_quark      (void);
 
-#define GTK_TYPE_PRINT_BACKEND                  (ctk_print_backend_get_type ())
-#define GTK_PRINT_BACKEND(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_BACKEND, GtkPrintBackend))
-#define GTK_PRINT_BACKEND_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINT_BACKEND, GtkPrintBackendClass))
-#define GTK_IS_PRINT_BACKEND(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_BACKEND))
-#define GTK_IS_PRINT_BACKEND_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINT_BACKEND))
-#define GTK_PRINT_BACKEND_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINT_BACKEND, GtkPrintBackendClass))
+#define CTK_TYPE_PRINT_BACKEND                  (ctk_print_backend_get_type ())
+#define CTK_PRINT_BACKEND(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND, GtkPrintBackend))
+#define CTK_PRINT_BACKEND_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND, GtkPrintBackendClass))
+#define CTK_IS_PRINT_BACKEND(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_BACKEND))
+#define CTK_IS_PRINT_BACKEND_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_BACKEND))
+#define CTK_PRINT_BACKEND_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_BACKEND, GtkPrintBackendClass))
 
 typedef enum 
 {
-  GTK_PRINT_BACKEND_STATUS_UNKNOWN,
-  GTK_PRINT_BACKEND_STATUS_OK,
-  GTK_PRINT_BACKEND_STATUS_UNAVAILABLE
+  CTK_PRINT_BACKEND_STATUS_UNKNOWN,
+  CTK_PRINT_BACKEND_STATUS_OK,
+  CTK_PRINT_BACKEND_STATUS_UNAVAILABLE
 } GtkPrintBackendStatus;
 
 struct _GtkPrintBackend
@@ -231,4 +231,4 @@ gboolean    ctk_printer_set_state_message     (GtkPrinter      *printer,
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_BACKEND_H__ */
+#endif /* __CTK_PRINT_BACKEND_H__ */

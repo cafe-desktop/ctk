@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_UTIL_H__
-#define __GTK_TEXT_UTIL_H__
+#ifndef __CTK_TEXT_UTIL_H__
+#define __CTK_TEXT_UTIL_H__
 
 G_BEGIN_DECLS
 
@@ -53,4 +53,4 @@ gboolean _ctk_text_util_get_block_cursor_location (PangoLayout    *layout,
 
 G_END_DECLS
 
-#endif /* __GTK_TEXT_UTIL_H__ */
+#endif /* __CTK_TEXT_UTIL_H__ */

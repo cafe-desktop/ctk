@@ -43,7 +43,7 @@ static void ctk_tree_model_css_node_tree_model_init (GtkTreeModelIface   *iface)
 
 G_DEFINE_TYPE_WITH_CODE (GtkTreeModelCssNode, ctk_tree_model_css_node, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkTreeModelCssNode)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_MODEL,
 						ctk_tree_model_css_node_tree_model_init))
 
 static GtkCssNode *
@@ -72,13 +72,13 @@ get_node_index (GtkCssNode *node)
 static GtkTreeModelFlags
 ctk_tree_model_css_node_get_flags (GtkTreeModel *tree_model)
 {
-  return GTK_TREE_MODEL_ITERS_PERSIST;
+  return CTK_TREE_MODEL_ITERS_PERSIST;
 }
 
 static gint
 ctk_tree_model_css_node_get_n_columns (GtkTreeModel *tree_model)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
 
   return priv->n_columns;
@@ -88,7 +88,7 @@ static GType
 ctk_tree_model_css_node_get_column_type (GtkTreeModel *tree_model,
                                          gint          column)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
 
   g_return_val_if_fail (column < priv->n_columns, G_TYPE_INVALID);
@@ -101,7 +101,7 @@ ctk_tree_model_css_node_get_iter (GtkTreeModel *tree_model,
                                   GtkTreeIter  *iter,
                                   GtkTreePath  *path)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
   GtkCssNode *node;
   int *indices;
@@ -132,7 +132,7 @@ static GtkTreePath *
 ctk_tree_model_css_node_get_path (GtkTreeModel *tree_model,
 			          GtkTreeIter  *iter)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
   GtkCssNode *node;
   GtkTreePath *path;
@@ -159,7 +159,7 @@ ctk_tree_model_css_node_get_value (GtkTreeModel *tree_model,
                                    gint          column,
                                    GValue       *value)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
 
   g_value_init (value, priv->column_types[column]);
@@ -173,7 +173,7 @@ static gboolean
 ctk_tree_model_css_node_iter_next (GtkTreeModel  *tree_model,
 			           GtkTreeIter   *iter)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
   GtkCssNode *node;
 
@@ -193,7 +193,7 @@ static gboolean
 ctk_tree_model_css_node_iter_previous (GtkTreeModel  *tree_model,
 			               GtkTreeIter   *iter)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
   GtkCssNode *node;
 
@@ -214,7 +214,7 @@ ctk_tree_model_css_node_iter_children (GtkTreeModel *tree_model,
                                        GtkTreeIter  *iter,
                                        GtkTreeIter  *parent)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
   GtkCssNode *node;
 
@@ -238,7 +238,7 @@ static gboolean
 ctk_tree_model_css_node_iter_has_child (GtkTreeModel *tree_model,
 			                GtkTreeIter  *iter)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkCssNode *node;
 
   node = ctk_tree_model_css_node_get_node_from_iter (nodemodel, iter);
@@ -250,7 +250,7 @@ static gint
 ctk_tree_model_css_node_iter_n_children (GtkTreeModel *tree_model,
                                          GtkTreeIter  *iter)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
   GtkCssNode *node;
 
@@ -272,7 +272,7 @@ ctk_tree_model_css_node_iter_nth_child (GtkTreeModel *tree_model,
                                         GtkTreeIter  *parent,
                                         gint          n)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
   GtkCssNode *node;
 
@@ -301,7 +301,7 @@ ctk_tree_model_css_node_iter_parent (GtkTreeModel *tree_model,
                                      GtkTreeIter  *iter,
                                      GtkTreeIter  *child)
 {
-  GtkTreeModelCssNode *nodemodel = GTK_TREE_MODEL_CSS_NODE (tree_model);
+  GtkTreeModelCssNode *nodemodel = CTK_TREE_MODEL_CSS_NODE (tree_model);
   GtkTreeModelCssNodePrivate *priv = nodemodel->priv;
   GtkCssNode *node;
 
@@ -336,7 +336,7 @@ ctk_tree_model_css_node_tree_model_init (GtkTreeModelIface *iface)
 static void
 ctk_tree_model_css_node_finalize (GObject *object)
 {
-  GtkTreeModelCssNode *model = GTK_TREE_MODEL_CSS_NODE (object);
+  GtkTreeModelCssNode *model = CTK_TREE_MODEL_CSS_NODE (object);
   GtkTreeModelCssNodePrivate *priv = model->priv;
 
   if (priv->root)
@@ -404,14 +404,14 @@ ctk_tree_model_css_node_newv (GtkTreeModelCssNodeGetFunc  get_func,
   g_return_val_if_fail (n_columns > 0, NULL);
   g_return_val_if_fail (types != NULL, NULL);
 
-  result = g_object_new (GTK_TYPE_TREE_MODEL_CSS_NODE, NULL);
+  result = g_object_new (CTK_TYPE_TREE_MODEL_CSS_NODE, NULL);
   priv = result->priv;
 
   priv->get_func = get_func;
   priv->n_columns = n_columns;
   priv->column_types = g_memdup (types, sizeof (GType) * n_columns);
 
-  return GTK_TREE_MODEL (result);
+  return CTK_TREE_MODEL (result);
 }
 
 static void
@@ -441,9 +441,9 @@ notify_cb (GtkCssNode          *node,
   GtkTreePath *path;
 
   ctk_tree_model_css_node_get_iter_from_node (model, &iter, node);
-  path = ctk_tree_model_css_node_get_path (GTK_TREE_MODEL (model), &iter);
+  path = ctk_tree_model_css_node_get_path (CTK_TREE_MODEL (model), &iter);
 
-  ctk_tree_model_row_changed (GTK_TREE_MODEL (model), path, &iter);
+  ctk_tree_model_row_changed (CTK_TREE_MODEL (model), path, &iter);
 
   ctk_tree_path_free (path);
 }
@@ -457,9 +457,9 @@ style_changed_cb (GtkCssNode          *node,
   GtkTreePath *path;
 
   ctk_tree_model_css_node_get_iter_from_node (model, &iter, node);
-  path = ctk_tree_model_css_node_get_path (GTK_TREE_MODEL (model), &iter);
+  path = ctk_tree_model_css_node_get_path (CTK_TREE_MODEL (model), &iter);
 
-  ctk_tree_model_row_changed (GTK_TREE_MODEL (model), path, &iter);
+  ctk_tree_model_row_changed (CTK_TREE_MODEL (model), path, &iter);
 
   ctk_tree_path_free (path);
 }
@@ -471,7 +471,7 @@ ctk_tree_model_css_node_connect_node (GtkTreeModelCssNode *model,
 {
   GtkCssNode *child;
 
-  if (GTK_IS_CSS_TRANSIENT_NODE (node))
+  if (CTK_IS_CSS_TRANSIENT_NODE (node))
     return;
 
   g_object_ref (node);
@@ -499,16 +499,16 @@ ctk_tree_model_css_node_connect_node (GtkTreeModelCssNode *model,
         {
           /* We're the first child of the parent */
           ctk_tree_model_css_node_get_iter_from_node (model, &iter, ctk_css_node_get_parent (node));
-          path = ctk_tree_model_css_node_get_path (GTK_TREE_MODEL (model), &iter);
-          ctk_tree_model_row_has_child_toggled (GTK_TREE_MODEL (model), path, &iter);
+          path = ctk_tree_model_css_node_get_path (CTK_TREE_MODEL (model), &iter);
+          ctk_tree_model_row_has_child_toggled (CTK_TREE_MODEL (model), path, &iter);
           ctk_tree_path_free (path);
         }
 
       ctk_tree_model_css_node_get_iter_from_node (model, &iter, node);
-      path = ctk_tree_model_css_node_get_path (GTK_TREE_MODEL (model), &iter);
-      ctk_tree_model_row_inserted (GTK_TREE_MODEL (model), path, &iter);
+      path = ctk_tree_model_css_node_get_path (CTK_TREE_MODEL (model), &iter);
+      ctk_tree_model_row_inserted (CTK_TREE_MODEL (model), path, &iter);
       if (ctk_css_node_get_first_child (node))
-        ctk_tree_model_row_has_child_toggled (GTK_TREE_MODEL (model), path, &iter);
+        ctk_tree_model_row_has_child_toggled (CTK_TREE_MODEL (model), path, &iter);
 
       ctk_tree_path_free (path);
     }
@@ -523,7 +523,7 @@ ctk_tree_model_css_node_disconnect_node (GtkTreeModelCssNode *model,
 {
   GtkCssNode *child;
 
-  if (GTK_IS_CSS_TRANSIENT_NODE (node))
+  if (CTK_IS_CSS_TRANSIENT_NODE (node))
     return;
 
   g_signal_handlers_disconnect_by_func (node, G_CALLBACK (child_added_cb), model);
@@ -546,7 +546,7 @@ ctk_tree_model_css_node_disconnect_node (GtkTreeModelCssNode *model,
       if (parent)
         {
           ctk_tree_model_css_node_get_iter_from_node (model, &iter, parent);
-          path = ctk_tree_model_css_node_get_path (GTK_TREE_MODEL (model), &iter);
+          path = ctk_tree_model_css_node_get_path (CTK_TREE_MODEL (model), &iter);
         }
       else
         {
@@ -557,12 +557,12 @@ ctk_tree_model_css_node_disconnect_node (GtkTreeModelCssNode *model,
       else
         ctk_tree_path_append_index (path, 0);
 
-      ctk_tree_model_row_deleted (GTK_TREE_MODEL (model), path);
+      ctk_tree_model_row_deleted (CTK_TREE_MODEL (model), path);
 
       if (parent && ctk_css_node_get_first_child (parent) == NULL)
         {
           ctk_tree_path_up (path);
-          ctk_tree_model_row_has_child_toggled (GTK_TREE_MODEL (model), path, &iter);
+          ctk_tree_model_row_has_child_toggled (CTK_TREE_MODEL (model), path, &iter);
         }
 
       ctk_tree_path_free (path);
@@ -577,8 +577,8 @@ ctk_tree_model_css_node_set_root_node (GtkTreeModelCssNode *model,
 {
   GtkTreeModelCssNodePrivate *priv;
 
-  g_return_if_fail (GTK_IS_TREE_MODEL_CSS_NODE (model));
-  g_return_if_fail (node == NULL || GTK_IS_CSS_NODE (node));
+  g_return_if_fail (CTK_IS_TREE_MODEL_CSS_NODE (model));
+  g_return_if_fail (node == NULL || CTK_IS_CSS_NODE (node));
 
   priv = model->priv;
 
@@ -601,7 +601,7 @@ ctk_tree_model_css_node_set_root_node (GtkTreeModelCssNode *model,
 GtkCssNode *
 ctk_tree_model_css_node_get_root_node (GtkTreeModelCssNode *model)
 {
-  g_return_val_if_fail (GTK_IS_TREE_MODEL_CSS_NODE (model), NULL);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL_CSS_NODE (model), NULL);
 
   return model->priv->root;
 }
@@ -610,10 +610,10 @@ GtkCssNode *
 ctk_tree_model_css_node_get_node_from_iter (GtkTreeModelCssNode *model,
                                             GtkTreeIter         *iter)
 {
-  g_return_val_if_fail (GTK_IS_TREE_MODEL_CSS_NODE (model), NULL);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL_CSS_NODE (model), NULL);
   g_return_val_if_fail (iter != NULL, NULL);
   g_return_val_if_fail (iter->user_data == model, NULL);
-  g_return_val_if_fail (GTK_IS_CSS_NODE (iter->user_data2), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_NODE (iter->user_data2), NULL);
 
   return iter->user_data2;
 }
@@ -623,9 +623,9 @@ ctk_tree_model_css_node_get_iter_from_node (GtkTreeModelCssNode *model,
                                             GtkTreeIter         *iter,
                                             GtkCssNode          *node)
 {
-  g_return_if_fail (GTK_IS_TREE_MODEL_CSS_NODE (model));
+  g_return_if_fail (CTK_IS_TREE_MODEL_CSS_NODE (model));
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_CSS_NODE (node));
+  g_return_if_fail (CTK_IS_CSS_NODE (node));
 
   iter->user_data = model;
   iter->user_data2 = node;

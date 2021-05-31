@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_MENU_ITEM_PRIVATE_H__
-#define __GTK_MENU_ITEM_PRIVATE_H__
+#ifndef __CTK_MENU_ITEM_PRIVATE_H__
+#define __CTK_MENU_ITEM_PRIVATE_H__
 
 #include <gtk/gtkmenuitem.h>
 #include <gtk/deprecated/gtkaction.h>
@@ -72,4 +72,4 @@ void      _ctk_menu_item_popdown_submenu     (GtkWidget     *menu_item);
 
 G_END_DECLS
 
-#endif /* __GTK_MENU_ITEM_PRIVATE_H__ */
+#endif /* __CTK_MENU_ITEM_PRIVATE_H__ */

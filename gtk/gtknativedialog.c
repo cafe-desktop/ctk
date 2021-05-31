@@ -106,7 +106,7 @@ ctk_native_dialog_set_property (GObject      *object,
                                 GParamSpec   *pspec)
 
 {
-  GtkNativeDialog *self = GTK_NATIVE_DIALOG (object);
+  GtkNativeDialog *self = CTK_NATIVE_DIALOG (object);
 
   switch (prop_id)
     {
@@ -141,7 +141,7 @@ ctk_native_dialog_get_property (GObject    *object,
                                 GValue     *value,
                                 GParamSpec *pspec)
 {
-  GtkNativeDialog *self = GTK_NATIVE_DIALOG (object);
+  GtkNativeDialog *self = CTK_NATIVE_DIALOG (object);
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
   switch (prop_id)
@@ -171,7 +171,7 @@ ctk_native_dialog_get_property (GObject    *object,
 static void
 ctk_native_dialog_dispose (GObject *object)
 {
-  GtkNativeDialog *self = GTK_NATIVE_DIALOG (object);
+  GtkNativeDialog *self = CTK_NATIVE_DIALOG (object);
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
   if (priv->visible)
@@ -183,7 +183,7 @@ ctk_native_dialog_dispose (GObject *object)
 static void
 ctk_native_dialog_finalize (GObject *object)
 {
-  GtkNativeDialog *self = GTK_NATIVE_DIALOG (object);
+  GtkNativeDialog *self = CTK_NATIVE_DIALOG (object);
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
   g_clear_pointer (&priv->title, g_free);
@@ -214,7 +214,7 @@ ctk_native_dialog_class_init (GtkNativeDialogClass *class)
                          P_("Dialog Title"),
                          P_("The title of the file chooser dialog"),
                          NULL,
-                         GTK_PARAM_READWRITE);
+                         CTK_PARAM_READWRITE);
 
   /**
    * GtkNativeDialog:modal:
@@ -228,7 +228,7 @@ ctk_native_dialog_class_init (GtkNativeDialogClass *class)
                           P_("Modal"),
                           P_("If TRUE, the dialog is modal (other windows are not usable while this one is up)"),
                           FALSE,
-                          GTK_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
+                          CTK_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkNativeDialog:visible:
@@ -242,7 +242,7 @@ ctk_native_dialog_class_init (GtkNativeDialogClass *class)
                           P_("Visible"),
                           P_("Whether the dialog is currently visible"),
                           FALSE,
-                          GTK_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
+                          CTK_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkNativeDialog:transient-for:
@@ -255,8 +255,8 @@ ctk_native_dialog_class_init (GtkNativeDialogClass *class)
     g_param_spec_object ("transient-for",
                          P_("Transient for Window"),
                          P_("The transient parent of the dialog"),
-                         GTK_TYPE_WINDOW,
-                         GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_EXPLICIT_NOTIFY);
+                         CTK_TYPE_WINDOW,
+                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_EXPLICIT_NOTIFY);
 
   g_object_class_install_properties (gobject_class, LAST_ARG, native_props);
 
@@ -309,12 +309,12 @@ ctk_native_dialog_show (GtkNativeDialog *self)
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
   GtkNativeDialogClass *klass;
 
-  g_return_if_fail (GTK_IS_NATIVE_DIALOG (self));
+  g_return_if_fail (CTK_IS_NATIVE_DIALOG (self));
 
   if (priv->visible)
     return;
 
-  klass = GTK_NATIVE_DIALOG_GET_CLASS (self);
+  klass = CTK_NATIVE_DIALOG_GET_CLASS (self);
 
   g_return_if_fail (klass->show != NULL);
 
@@ -342,14 +342,14 @@ ctk_native_dialog_hide (GtkNativeDialog *self)
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
   GtkNativeDialogClass *klass;
 
-  g_return_if_fail (GTK_IS_NATIVE_DIALOG (self));
+  g_return_if_fail (CTK_IS_NATIVE_DIALOG (self));
 
   if (!priv->visible)
     return;
 
   priv->visible = FALSE;
 
-  klass = GTK_NATIVE_DIALOG_GET_CLASS (self);
+  klass = CTK_NATIVE_DIALOG_GET_CLASS (self);
 
   g_return_if_fail (klass->hide != NULL);
 
@@ -380,7 +380,7 @@ ctk_native_dialog_hide (GtkNativeDialog *self)
 void
 ctk_native_dialog_destroy (GtkNativeDialog *self)
 {
-  g_return_if_fail (GTK_IS_NATIVE_DIALOG (self));
+  g_return_if_fail (CTK_IS_NATIVE_DIALOG (self));
 
   g_object_run_dispose (G_OBJECT (self));
 }
@@ -411,7 +411,7 @@ ctk_native_dialog_get_visible (GtkNativeDialog *self)
 {
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
-  g_return_val_if_fail (GTK_IS_NATIVE_DIALOG (self), FALSE);
+  g_return_val_if_fail (CTK_IS_NATIVE_DIALOG (self), FALSE);
 
   return priv->visible;
 }
@@ -436,7 +436,7 @@ ctk_native_dialog_set_modal (GtkNativeDialog *self,
 {
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
-  g_return_if_fail (GTK_IS_NATIVE_DIALOG (self));
+  g_return_if_fail (CTK_IS_NATIVE_DIALOG (self));
 
   modal = modal != FALSE;
 
@@ -462,7 +462,7 @@ ctk_native_dialog_get_modal (GtkNativeDialog *self)
 {
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
-  g_return_val_if_fail (GTK_IS_NATIVE_DIALOG (self), FALSE);
+  g_return_val_if_fail (CTK_IS_NATIVE_DIALOG (self), FALSE);
 
   return priv->modal;
 }
@@ -482,7 +482,7 @@ ctk_native_dialog_set_title (GtkNativeDialog *self,
 {
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
-  g_return_if_fail (GTK_IS_NATIVE_DIALOG (self));
+  g_return_if_fail (CTK_IS_NATIVE_DIALOG (self));
 
   g_free (priv->title);
   priv->title = g_strdup (title);
@@ -507,7 +507,7 @@ ctk_native_dialog_get_title (GtkNativeDialog *self)
 {
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
-  g_return_val_if_fail (GTK_IS_NATIVE_DIALOG (self), NULL);
+  g_return_val_if_fail (CTK_IS_NATIVE_DIALOG (self), NULL);
 
   return priv->title;
 }
@@ -533,7 +533,7 @@ ctk_native_dialog_set_transient_for (GtkNativeDialog *self,
 {
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
-  g_return_if_fail (GTK_IS_NATIVE_DIALOG (self));
+  g_return_if_fail (CTK_IS_NATIVE_DIALOG (self));
 
   if (g_set_object (&priv->transient_for, parent))
     g_object_notify_by_pspec (G_OBJECT (self), native_props[PROP_TRANSIENT_FOR]);
@@ -556,7 +556,7 @@ ctk_native_dialog_get_transient_for (GtkNativeDialog *self)
 {
   GtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
-  g_return_val_if_fail (GTK_IS_NATIVE_DIALOG (self), NULL);
+  g_return_val_if_fail (CTK_IS_NATIVE_DIALOG (self), NULL);
 
   return priv->transient_for;
 }
@@ -588,10 +588,10 @@ run_response_cb (GtkNativeDialog *self,
  *
  * Typical usage of this function might be:
  * |[<!-- language="C" -->
- *   gint result = ctk_native_dialog_run (GTK_NATIVE_DIALOG (dialog));
+ *   gint result = ctk_native_dialog_run (CTK_NATIVE_DIALOG (dialog));
  *   switch (result)
  *     {
- *       case GTK_RESPONSE_ACCEPT:
+ *       case CTK_RESPONSE_ACCEPT:
  *          do_application_specific_something ();
  *          break;
  *       default:
@@ -618,7 +618,7 @@ ctk_native_dialog_run (GtkNativeDialog *self)
   gboolean was_modal;
   guint response_handler;
 
-  g_return_val_if_fail (GTK_IS_NATIVE_DIALOG (self), -1);
+  g_return_val_if_fail (CTK_IS_NATIVE_DIALOG (self), -1);
   g_return_val_if_fail (!priv->visible, -1);
   g_return_val_if_fail (priv->run_loop == NULL, -1);
 
@@ -627,7 +627,7 @@ ctk_native_dialog_run (GtkNativeDialog *self)
 
   g_object_ref (self);
 
-  priv->run_response_id = GTK_RESPONSE_NONE;
+  priv->run_response_id = CTK_RESPONSE_NONE;
   priv->run_loop = g_main_loop_new (NULL, FALSE);
 
   was_modal = priv->modal;

@@ -56,7 +56,7 @@ gchar *tabs4 [] = {
 };
 
 static const GtkTargetEntry button_targets[] = {
-  { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, 0 },
+  { "CTK_NOTEBOOK_TAB", CTK_TARGET_SAME_APP, 0 },
 };
 
 static GtkNotebook*
@@ -68,21 +68,21 @@ window_creation_function (GtkNotebook *source_notebook,
 {
   GtkWidget *window, *notebook;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   notebook = ctk_notebook_new ();
   g_signal_connect (notebook, "create-window",
                     G_CALLBACK (window_creation_function), NULL);
 
-  ctk_notebook_set_group_name (GTK_NOTEBOOK (notebook),
+  ctk_notebook_set_group_name (CTK_NOTEBOOK (notebook),
                                ctk_notebook_get_group_name (source_notebook));
 
-  ctk_container_add (GTK_CONTAINER (window), notebook);
+  ctk_container_add (CTK_CONTAINER (window), notebook);
 
-  ctk_window_set_default_size (GTK_WINDOW (window), 300, 300);
-  ctk_window_move (GTK_WINDOW (window), x, y);
+  ctk_window_set_default_size (CTK_WINDOW (window), 300, 300);
+  ctk_window_move (CTK_WINDOW (window), x, y);
   ctk_widget_show_all (window);
 
-  return GTK_NOTEBOOK (notebook);
+  return CTK_NOTEBOOK (notebook);
 }
 
 static void
@@ -99,7 +99,7 @@ on_notebook_drag_begin (GtkWidget      *widget,
   GdkPixbuf *pixbuf;
   guint page_num;
 
-  page_num = ctk_notebook_get_current_page (GTK_NOTEBOOK (widget));
+  page_num = ctk_notebook_get_current_page (CTK_NOTEBOOK (widget));
 
   if (page_num > 2)
     {
@@ -107,11 +107,11 @@ on_notebook_drag_begin (GtkWidget      *widget,
       int width;
 
       icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (widget));
-      ctk_icon_size_lookup (GTK_ICON_SIZE_DND, &width, NULL);
+      ctk_icon_size_lookup (CTK_ICON_SIZE_DND, &width, NULL);
       pixbuf = ctk_icon_theme_load_icon (icon_theme,
                                          (page_num % 2) ? "help-browser" : "process-stop",
                                          width,
-                                         GTK_ICON_LOOKUP_GENERIC_FALLBACK,
+                                         CTK_ICON_LOOKUP_GENERIC_FALLBACK,
                                          NULL);
 
       ctk_drag_set_icon_pixbuf (context, pixbuf, 0, 0);
@@ -126,9 +126,9 @@ remove_in_idle (gpointer data)
   GtkWidget *parent = ctk_widget_get_parent (child);
   GtkWidget *tab_label;
 
-  tab_label = ctk_notebook_get_tab_label (GTK_NOTEBOOK (parent), child);
-  g_print ("Removing tab: %s\n", ctk_label_get_text (GTK_LABEL (tab_label)));
-  ctk_container_remove (GTK_CONTAINER (parent), child);
+  tab_label = ctk_notebook_get_tab_label (CTK_NOTEBOOK (parent), child);
+  g_print ("Removing tab: %s\n", ctk_label_get_text (CTK_LABEL (tab_label)));
+  ctk_container_remove (CTK_CONTAINER (parent), child);
 
   return G_SOURCE_REMOVE;
 }
@@ -157,14 +157,14 @@ action_clicked_cb (GtkWidget *button,
   GtkWidget *page, *title;
 
   page = ctk_entry_new ();
-  ctk_entry_set_text (GTK_ENTRY (page), "Addition");
+  ctk_entry_set_text (CTK_ENTRY (page), "Addition");
   ctk_widget_show (page);
 
   title = ctk_label_new ("Addition");
 
-  ctk_notebook_append_page (GTK_NOTEBOOK (notebook), page, title);
-  ctk_notebook_set_tab_reorderable (GTK_NOTEBOOK (notebook), page, TRUE);
-  ctk_notebook_set_tab_detachable (GTK_NOTEBOOK (notebook), page, TRUE);
+  ctk_notebook_append_page (CTK_NOTEBOOK (notebook), page, title);
+  ctk_notebook_set_tab_reorderable (CTK_NOTEBOOK (notebook), page, TRUE);
+  ctk_notebook_set_tab_detachable (CTK_NOTEBOOK (notebook), page, TRUE);
 }
 
 static GtkWidget*
@@ -178,34 +178,34 @@ create_notebook (gchar           **labels,
   ctk_widget_set_vexpand (notebook, TRUE);
   ctk_widget_set_hexpand (notebook, TRUE);
 
-  action_widget = ctk_button_new_from_icon_name ("list-add-symbolic", GTK_ICON_SIZE_BUTTON);
+  action_widget = ctk_button_new_from_icon_name ("list-add-symbolic", CTK_ICON_SIZE_BUTTON);
   g_signal_connect (action_widget, "clicked", G_CALLBACK (action_clicked_cb), notebook);
   ctk_widget_show (action_widget);
-  ctk_notebook_set_action_widget (GTK_NOTEBOOK (notebook), action_widget, GTK_PACK_END);
+  ctk_notebook_set_action_widget (CTK_NOTEBOOK (notebook), action_widget, CTK_PACK_END);
 
   g_signal_connect (notebook, "create-window",
                     G_CALLBACK (window_creation_function), NULL);
 
-  ctk_notebook_set_tab_pos (GTK_NOTEBOOK (notebook), pos);
-  ctk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
-  ctk_container_set_border_width (GTK_CONTAINER (notebook), 6);
-  ctk_notebook_set_group_name (GTK_NOTEBOOK (notebook), group);
+  ctk_notebook_set_tab_pos (CTK_NOTEBOOK (notebook), pos);
+  ctk_notebook_set_scrollable (CTK_NOTEBOOK (notebook), TRUE);
+  ctk_container_set_border_width (CTK_CONTAINER (notebook), 6);
+  ctk_notebook_set_group_name (CTK_NOTEBOOK (notebook), group);
 
   while (*labels)
     {
       page = ctk_entry_new ();
-      ctk_entry_set_text (GTK_ENTRY (page), *labels);
+      ctk_entry_set_text (CTK_ENTRY (page), *labels);
 
       title = ctk_label_new (*labels);
 
-      ctk_notebook_append_page (GTK_NOTEBOOK (notebook), page, title);
-      ctk_notebook_set_tab_reorderable (GTK_NOTEBOOK (notebook), page, TRUE);
-      ctk_notebook_set_tab_detachable (GTK_NOTEBOOK (notebook), page, TRUE);
+      ctk_notebook_append_page (CTK_NOTEBOOK (notebook), page, title);
+      ctk_notebook_set_tab_reorderable (CTK_NOTEBOOK (notebook), page, TRUE);
+      ctk_notebook_set_tab_detachable (CTK_NOTEBOOK (notebook), page, TRUE);
 
       labels++;
     }
 
-  g_signal_connect (GTK_NOTEBOOK (notebook), "page-reordered",
+  g_signal_connect (CTK_NOTEBOOK (notebook), "page-reordered",
                     G_CALLBACK (on_page_reordered), NULL);
   g_signal_connect_after (G_OBJECT (notebook), "drag-begin",
                           G_CALLBACK (on_notebook_drag_begin), NULL);
@@ -223,18 +223,18 @@ create_notebook_non_dragable_content (gchar           **labels,
   ctk_widget_set_vexpand (notebook, TRUE);
   ctk_widget_set_hexpand (notebook, TRUE);
 
-  action_widget = ctk_button_new_from_icon_name ("list-add-symbolic", GTK_ICON_SIZE_BUTTON);
+  action_widget = ctk_button_new_from_icon_name ("list-add-symbolic", CTK_ICON_SIZE_BUTTON);
   g_signal_connect (action_widget, "clicked", G_CALLBACK (action_clicked_cb), notebook);
   ctk_widget_show (action_widget);
-  ctk_notebook_set_action_widget (GTK_NOTEBOOK (notebook), action_widget, GTK_PACK_END);
+  ctk_notebook_set_action_widget (CTK_NOTEBOOK (notebook), action_widget, CTK_PACK_END);
 
   g_signal_connect (notebook, "create-window",
                     G_CALLBACK (window_creation_function), NULL);
 
-  ctk_notebook_set_tab_pos (GTK_NOTEBOOK (notebook), pos);
-  ctk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
-  ctk_container_set_border_width (GTK_CONTAINER (notebook), 6);
-  ctk_notebook_set_group_name (GTK_NOTEBOOK (notebook), group);
+  ctk_notebook_set_tab_pos (CTK_NOTEBOOK (notebook), pos);
+  ctk_notebook_set_scrollable (CTK_NOTEBOOK (notebook), TRUE);
+  ctk_container_set_border_width (CTK_CONTAINER (notebook), 6);
+  ctk_notebook_set_group_name (CTK_NOTEBOOK (notebook), group);
 
   while (*labels)
     {
@@ -243,18 +243,18 @@ create_notebook_non_dragable_content (gchar           **labels,
       /* Use GtkListBox since it bubbles up motion notify event, which can
        * experience more issues than GtkBox. */
       page = ctk_list_box_new ();
-      ctk_container_add (GTK_CONTAINER (page), button);
+      ctk_container_add (CTK_CONTAINER (page), button);
 
       title = ctk_label_new (*labels);
 
-      ctk_notebook_append_page (GTK_NOTEBOOK (notebook), page, title);
-      ctk_notebook_set_tab_reorderable (GTK_NOTEBOOK (notebook), page, TRUE);
-      ctk_notebook_set_tab_detachable (GTK_NOTEBOOK (notebook), page, TRUE);
+      ctk_notebook_append_page (CTK_NOTEBOOK (notebook), page, title);
+      ctk_notebook_set_tab_reorderable (CTK_NOTEBOOK (notebook), page, TRUE);
+      ctk_notebook_set_tab_detachable (CTK_NOTEBOOK (notebook), page, TRUE);
 
       labels++;
     }
 
-  g_signal_connect (GTK_NOTEBOOK (notebook), "page-reordered",
+  g_signal_connect (CTK_NOTEBOOK (notebook), "page-reordered",
                     G_CALLBACK (on_page_reordered), NULL);
   g_signal_connect_after (G_OBJECT (notebook), "drag-begin",
                           G_CALLBACK (on_notebook_drag_begin), NULL);
@@ -273,27 +273,27 @@ create_notebook_with_notebooks (gchar           **labels,
   g_signal_connect (notebook, "create-window",
                     G_CALLBACK (window_creation_function), NULL);
 
-  ctk_notebook_set_tab_pos (GTK_NOTEBOOK (notebook), pos);
-  ctk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
-  ctk_container_set_border_width (GTK_CONTAINER (notebook), 6);
-  ctk_notebook_set_group_name (GTK_NOTEBOOK (notebook), group);
+  ctk_notebook_set_tab_pos (CTK_NOTEBOOK (notebook), pos);
+  ctk_notebook_set_scrollable (CTK_NOTEBOOK (notebook), TRUE);
+  ctk_container_set_border_width (CTK_CONTAINER (notebook), 6);
+  ctk_notebook_set_group_name (CTK_NOTEBOOK (notebook), group);
 
   while (*labels)
     {
       page = create_notebook (labels, group, pos);
-      ctk_notebook_popup_enable (GTK_NOTEBOOK (page));
+      ctk_notebook_popup_enable (CTK_NOTEBOOK (page));
 
       title = ctk_label_new (*labels);
 
-      ctk_notebook_append_page (GTK_NOTEBOOK (notebook), page, title);
-      ctk_notebook_set_tab_reorderable (GTK_NOTEBOOK (notebook), page, TRUE);
-      ctk_notebook_set_tab_detachable (GTK_NOTEBOOK (notebook), page, TRUE);
+      ctk_notebook_append_page (CTK_NOTEBOOK (notebook), page, title);
+      ctk_notebook_set_tab_reorderable (CTK_NOTEBOOK (notebook), page, TRUE);
+      ctk_notebook_set_tab_detachable (CTK_NOTEBOOK (notebook), page, TRUE);
 
       count++;
       labels++;
     }
 
-  g_signal_connect (GTK_NOTEBOOK (notebook), "page-reordered",
+  g_signal_connect (CTK_NOTEBOOK (notebook), "page-reordered",
                     G_CALLBACK (on_page_reordered), NULL);
   g_signal_connect_after (G_OBJECT (notebook), "drag-begin",
                           G_CALLBACK (on_notebook_drag_begin), NULL);
@@ -308,7 +308,7 @@ create_trash_button (void)
   button = ctk_button_new_with_mnemonic ("_Delete");
 
   ctk_drag_dest_set (button,
-                     GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_DROP,
+                     CTK_DEST_DEFAULT_MOTION | CTK_DEST_DEFAULT_DROP,
                      button_targets,
                      G_N_ELEMENTS (button_targets),
                      GDK_ACTION_MOVE);
@@ -325,31 +325,31 @@ main (gint argc, gchar *argv[])
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   grid = ctk_grid_new ();
 
-  ctk_grid_attach (GTK_GRID (grid),
-                   create_notebook_non_dragable_content (tabs1, GROUP_A, GTK_POS_TOP),
+  ctk_grid_attach (CTK_GRID (grid),
+                   create_notebook_non_dragable_content (tabs1, GROUP_A, CTK_POS_TOP),
                    0, 0, 1, 1);
 
-  ctk_grid_attach (GTK_GRID (grid),
-                   create_notebook (tabs2, GROUP_B, GTK_POS_BOTTOM),
+  ctk_grid_attach (CTK_GRID (grid),
+                   create_notebook (tabs2, GROUP_B, CTK_POS_BOTTOM),
                    0, 1, 1, 1);
 
-  ctk_grid_attach (GTK_GRID (grid),
-                   create_notebook (tabs3, GROUP_B, GTK_POS_LEFT),
+  ctk_grid_attach (CTK_GRID (grid),
+                   create_notebook (tabs3, GROUP_B, CTK_POS_LEFT),
                    1, 0, 1, 1);
 
-  ctk_grid_attach (GTK_GRID (grid),
-                   create_notebook_with_notebooks (tabs4, GROUP_A, GTK_POS_RIGHT),
+  ctk_grid_attach (CTK_GRID (grid),
+                   create_notebook_with_notebooks (tabs4, GROUP_A, CTK_POS_RIGHT),
                    1, 1, 1, 1);
 
-  ctk_grid_attach (GTK_GRID (grid),
+  ctk_grid_attach (CTK_GRID (grid),
                    create_trash_button (),
                    1, 2, 1, 1);
 
-  ctk_container_add (GTK_CONTAINER (window), grid);
-  ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+  ctk_container_add (CTK_CONTAINER (window), grid);
+  ctk_window_set_default_size (CTK_WINDOW (window), 400, 400);
   ctk_widget_show_all (window);
 
   ctk_main ();

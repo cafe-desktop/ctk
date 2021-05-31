@@ -249,7 +249,7 @@ ifiledialogevents_OnTypeChange (IFileDialogEvents * self,
     }
 
   fileType--; // fileTypeIndex starts at 1 
-  filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (events->data->self));
+  filters = ctk_file_chooser_list_filters (CTK_FILE_CHOOSER (events->data->self));
   events->data->self->current_filter = g_slist_nth_data (filters, fileType);
   g_slist_free (filters);
   g_object_notify (G_OBJECT (events->data->self), "filter");
@@ -379,7 +379,7 @@ filechooser_win32_thread_done (gpointer _data)
       self->custom_files = data->files;
       data->files = NULL;
 
-      _ctk_native_dialog_emit_response (GTK_NATIVE_DIALOG (data->self),
+      _ctk_native_dialog_emit_response (CTK_NATIVE_DIALOG (data->self),
                                         data->response);
     }
 
@@ -426,7 +426,7 @@ data_add_shell_item (FilechooserWin32ThreadData *data,
   if (file != NULL)
     {
       data->files = g_slist_prepend (data->files, file);
-      data->response = GTK_RESPONSE_ACCEPT;
+      data->response = CTK_RESPONSE_ACCEPT;
     }
 }
 
@@ -602,7 +602,7 @@ filechooser_win32_thread (gpointer _data)
 
       if (data->self->current_filter)
         {
-          GSList *filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (data->self));
+          GSList *filters = ctk_file_chooser_list_filters (CTK_FILE_CHOOSER (data->self));
 	  gint current_filter_index = g_slist_index (filters, data->self->current_filter);
 	  g_slist_free (filters);
 
@@ -691,7 +691,7 @@ filechooser_win32_thread (gpointer _data)
         }
     }
 
-  data->response = GTK_RESPONSE_CANCEL;
+  data->response = CTK_RESPONSE_CANCEL;
 
   hr = IFileDialog_Advise (pfd, data->events, &cookie);
   if (FAILED (hr))
@@ -878,17 +878,17 @@ ctk_file_chooser_native_win32_show (GtkFileChooserNative *self)
   GSList *filters, *l;
   int n_filters, i;
 
-  if (ctk_file_chooser_get_extra_widget (GTK_FILE_CHOOSER (self)) != NULL &&
+  if (ctk_file_chooser_get_extra_widget (CTK_FILE_CHOOSER (self)) != NULL &&
       self->choices == NULL)
     return FALSE;
 
-  update_preview_signal = g_signal_lookup ("update-preview", GTK_TYPE_FILE_CHOOSER);
+  update_preview_signal = g_signal_lookup ("update-preview", CTK_TYPE_FILE_CHOOSER);
   if (g_signal_has_handler_pending (self, update_preview_signal, 0, TRUE))
     return FALSE;
 
   data = g_new0 (FilechooserWin32ThreadData, 1);
 
-  filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (self));
+  filters = ctk_file_chooser_list_filters (CTK_FILE_CHOOSER (self));
   n_filters = g_slist_length (filters);
   if (n_filters > 0)
     {
@@ -902,7 +902,7 @@ ctk_file_chooser_native_win32_show (GtkFileChooserNative *self)
               return FALSE;
             }
         }
-      self->current_filter = ctk_file_chooser_get_filter (GTK_FILE_CHOOSER (self));
+      self->current_filter = ctk_file_chooser_get_filter (CTK_FILE_CHOOSER (self));
     }
   else
     {
@@ -913,43 +913,43 @@ ctk_file_chooser_native_win32_show (GtkFileChooserNative *self)
   data->self = g_object_ref (self);
 
   data->shortcut_uris =
-    ctk_file_chooser_list_shortcut_folder_uris (GTK_FILE_CHOOSER (self->dialog));
+    ctk_file_chooser_list_shortcut_folder_uris (CTK_FILE_CHOOSER (self->dialog));
 
   data->accept_label = translate_mnemonics (self->accept_label);
   data->cancel_label = translate_mnemonics (self->cancel_label);
 
-  action = ctk_file_chooser_get_action (GTK_FILE_CHOOSER (self->dialog));
-  if (action == GTK_FILE_CHOOSER_ACTION_SAVE ||
-      action == GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER)
+  action = ctk_file_chooser_get_action (CTK_FILE_CHOOSER (self->dialog));
+  if (action == CTK_FILE_CHOOSER_ACTION_SAVE ||
+      action == CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER)
     data->save = TRUE;
 
-  if (action == GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ||
-      action == GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER)
+  if (action == CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ||
+      action == CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER)
     data->folder = TRUE;
 
-  if ((action == GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ||
-       action == GTK_FILE_CHOOSER_ACTION_OPEN) &&
-      ctk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (self->dialog)))
+  if ((action == CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ||
+       action == CTK_FILE_CHOOSER_ACTION_OPEN) &&
+      ctk_file_chooser_get_select_multiple (CTK_FILE_CHOOSER (self->dialog)))
     data->select_multiple = TRUE;
 
-  if (ctk_file_chooser_get_do_overwrite_confirmation (GTK_FILE_CHOOSER (self->dialog)))
+  if (ctk_file_chooser_get_do_overwrite_confirmation (CTK_FILE_CHOOSER (self->dialog)))
     data->overwrite_confirmation = TRUE;
 
-  if (ctk_file_chooser_get_show_hidden (GTK_FILE_CHOOSER (self->dialog)))
+  if (ctk_file_chooser_get_show_hidden (CTK_FILE_CHOOSER (self->dialog)))
     data->show_hidden = TRUE;
 
-  transient_for = ctk_native_dialog_get_transient_for (GTK_NATIVE_DIALOG (self));
+  transient_for = ctk_native_dialog_get_transient_for (CTK_NATIVE_DIALOG (self));
   if (transient_for)
     {
-      ctk_widget_realize (GTK_WIDGET (transient_for));
-      data->parent = gdk_win32_window_get_handle (ctk_widget_get_window (GTK_WIDGET (transient_for)));
+      ctk_widget_realize (CTK_WIDGET (transient_for));
+      data->parent = gdk_win32_window_get_handle (ctk_widget_get_window (CTK_WIDGET (transient_for)));
 
-      if (ctk_native_dialog_get_modal (GTK_NATIVE_DIALOG (self)))
+      if (ctk_native_dialog_get_modal (CTK_NATIVE_DIALOG (self)))
         data->modal = TRUE;
     }
 
   data->title =
-    g_strdup (ctk_native_dialog_get_title (GTK_NATIVE_DIALOG (self)));
+    g_strdup (ctk_native_dialog_get_title (CTK_NATIVE_DIALOG (self)));
 
   if (self->current_file)
     data->current_file = g_object_ref (self->current_file);
@@ -958,8 +958,8 @@ ctk_file_chooser_native_win32_show (GtkFileChooserNative *self)
       if (self->current_folder)
         data->current_folder = g_object_ref (self->current_folder);
 
-      if (action == GTK_FILE_CHOOSER_ACTION_SAVE ||
-          action == GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER)
+      if (action == CTK_FILE_CHOOSER_ACTION_SAVE ||
+          action == CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER)
         data->current_name = g_strdup (self->current_name);
     }
 

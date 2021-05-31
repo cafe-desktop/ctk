@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_WIDGET_PRIVATE_H__
-#define __GTK_WIDGET_PRIVATE_H__
+#ifndef __CTK_WIDGET_PRIVATE_H__
+#define __CTK_WIDGET_PRIVATE_H__
 
 #include "gtkcsstypesprivate.h"
 #include "gtkwidget.h"
@@ -34,14 +34,14 @@
 
 G_BEGIN_DECLS
 
-#define GTK_STATE_FLAGS_BITS 13
+#define CTK_STATE_FLAGS_BITS 13
 
 struct _GtkWidgetPrivate
 {
   /* The state of the widget. Needs to be able to hold all GtkStateFlags bits
    * (defined in "gtkenums.h").
    */
-  guint state_flags : GTK_STATE_FLAGS_BITS;
+  guint state_flags : CTK_STATE_FLAGS_BITS;
 
   guint direction             : 2;
 
@@ -370,7 +370,7 @@ extern GtkTextDirection ctk_default_direction;
 static inline GtkTextDirection
 _ctk_widget_get_direction (GtkWidget *widget)
 {
-  if (widget->priv->direction == GTK_TEXT_DIR_NONE)
+  if (widget->priv->direction == CTK_TEXT_DIR_NONE)
     return ctk_default_direction;
   else
     return widget->priv->direction;
@@ -415,4 +415,4 @@ _ctk_widget_get_allocation (GtkWidget     *widget,
 
 G_END_DECLS
 
-#endif /* __GTK_WIDGET_PRIVATE_H__ */
+#endif /* __CTK_WIDGET_PRIVATE_H__ */

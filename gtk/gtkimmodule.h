@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_IM_MODULE_H__
-#define __GTK_IM_MODULE_H__
+#ifndef __CTK_IM_MODULE_H__
+#define __CTK_IM_MODULE_H__
 
 #include <gtk/gtk.h>
 
@@ -31,4 +31,4 @@ void          im_module_exit   (void);
 GtkIMContext *im_module_create (const gchar              *context_id);
 */
 
-#endif /* __GTK_IM_MODULE_H__ */
+#endif /* __CTK_IM_MODULE_H__ */

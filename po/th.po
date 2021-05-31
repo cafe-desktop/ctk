@@ -4226,16 +4226,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "เปิดใช้สถิติได้โดยใช้ GOBJECT_DEBUG=instance-count"
 
 #: gtk/inspector/visual.c:371 gtk/inspector/visual.c:386
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "ชุดตกแต่งถูกกำหนดค่าตายดัวด้วย GTK_THEME"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "ชุดตกแต่งถูกกำหนดค่าตายดัวด้วย CTK_THEME"
 
 #: gtk/inspector/visual.c:592
 msgid "Backend does not support window scaling"
 msgstr "แบกเอนด์ไม่รองรับการย่อ-ขยายหน้าต่าง"
 
 #: gtk/inspector/visual.c:687
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "ค่าตั้งถูกกำหนดตายตัวด้วย GTK_TEST_TOUCHSCREEN"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "ค่าตั้งถูกกำหนดตายตัวด้วย CTK_TEST_TOUCHSCREEN"
 
 #: gtk/inspector/visual.c:752
 msgid ""

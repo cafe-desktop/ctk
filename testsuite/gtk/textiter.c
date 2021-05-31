@@ -140,10 +140,10 @@ test_search_full_buffer (void)
 {
   check_found_forward ("foo", "foo", 0, 0, 3, "foo");
   check_found_backward ("foo", "foo", 0, 0, 3, "foo");
-  check_found_forward ("foo", "foo", GTK_TEXT_SEARCH_CASE_INSENSITIVE, 0, 3, "foo");
-  check_found_backward ("foo", "foo", GTK_TEXT_SEARCH_CASE_INSENSITIVE, 0, 3, "foo");
-  check_found_forward ("foo", "Foo", GTK_TEXT_SEARCH_CASE_INSENSITIVE, 0, 3, "foo");
-  check_found_backward ("foo", "Foo", GTK_TEXT_SEARCH_CASE_INSENSITIVE, 0, 3, "foo");
+  check_found_forward ("foo", "foo", CTK_TEXT_SEARCH_CASE_INSENSITIVE, 0, 3, "foo");
+  check_found_backward ("foo", "foo", CTK_TEXT_SEARCH_CASE_INSENSITIVE, 0, 3, "foo");
+  check_found_forward ("foo", "Foo", CTK_TEXT_SEARCH_CASE_INSENSITIVE, 0, 3, "foo");
+  check_found_backward ("foo", "Foo", CTK_TEXT_SEARCH_CASE_INSENSITIVE, 0, 3, "foo");
 }
 
 static void
@@ -199,7 +199,7 @@ test_search_caseless (void)
 {
   GtkTextSearchFlags flags;
 
-  flags = GTK_TEXT_SEARCH_CASE_INSENSITIVE;
+  flags = CTK_TEXT_SEARCH_CASE_INSENSITIVE;
 
   /* simple match */
   check_found_forward ("This is some foo text", "foo", flags, 13, 16, "foo");

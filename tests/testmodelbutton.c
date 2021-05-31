@@ -14,7 +14,7 @@ static void
 on_application_activate (GApplication *gapplication,
                          void         *user_data)
 {
-  GtkApplication *application = GTK_APPLICATION (gapplication);
+  GtkApplication *application = CTK_APPLICATION (gapplication);
   GtkCssProvider *css_provider = ctk_css_provider_new ();
   GdkScreen *screen = gdk_screen_get_default ();
 
@@ -36,61 +36,61 @@ on_application_activate (GApplication *gapplication,
     , -1, NULL);
   g_assert (GDK_IS_SCREEN (screen));
   ctk_style_context_add_provider_for_screen (screen,
-                                             GTK_STYLE_PROVIDER (css_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                             CTK_STYLE_PROVIDER (css_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
   action = g_simple_action_new ("beep", NULL);
   g_signal_connect (action, "activate", G_CALLBACK (on_action_beep), NULL);
   g_action_map_add_action (G_ACTION_MAP (application), G_ACTION (action));
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
 
   gicon = g_themed_icon_new ("face-smile");
 
-  model_button = g_object_new (GTK_TYPE_MODEL_BUTTON,
+  model_button = g_object_new (CTK_TYPE_MODEL_BUTTON,
                                "action-name", "app.beep",
                                "text", "It’s-a-me! ModelButton",
                                "icon", gicon,
                                NULL);
-  ctk_container_add (GTK_CONTAINER (box), model_button);
+  ctk_container_add (CTK_CONTAINER (box), model_button);
 
   g_object_unref (gicon);
 
   widget = ctk_combo_box_text_new ();
-  ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (widget),
-                             NULL, "GTK_BUTTON_ROLE_NORMAL");
-  ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (widget),
-                             NULL, "GTK_BUTTON_ROLE_CHECK");
-  ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (widget),
-                             NULL, "GTK_BUTTON_ROLE_RADIO");
-  ctk_combo_box_set_active (GTK_COMBO_BOX (widget), 0);
+  ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (widget),
+                             NULL, "CTK_BUTTON_ROLE_NORMAL");
+  ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (widget),
+                             NULL, "CTK_BUTTON_ROLE_CHECK");
+  ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (widget),
+                             NULL, "CTK_BUTTON_ROLE_RADIO");
+  ctk_combo_box_set_active (CTK_COMBO_BOX (widget), 0);
   g_object_bind_property (widget, "active",
                           model_button, "role",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-  ctk_container_add (GTK_CONTAINER (box), widget);
+  ctk_container_add (CTK_CONTAINER (box), widget);
 
   widget = ctk_toggle_button_new_with_label (":centered");
   g_object_bind_property (widget, "active",
                           model_button, "centered",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-  ctk_container_add (GTK_CONTAINER (box), widget);
+  ctk_container_add (CTK_CONTAINER (box), widget);
 
   widget = ctk_toggle_button_new_with_label (":iconic");
   g_object_bind_property (widget, "active",
                           model_button, "iconic",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-  ctk_container_add (GTK_CONTAINER (box), widget);
+  ctk_container_add (CTK_CONTAINER (box), widget);
 
   widget = ctk_toggle_button_new_with_label (":inverted");
   g_object_bind_property (widget, "active",
                           model_button, "inverted",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-  ctk_container_add (GTK_CONTAINER (box), widget);
+  ctk_container_add (CTK_CONTAINER (box), widget);
 
-  widget = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_container_add (GTK_CONTAINER (widget), box);
+  widget = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_container_add (CTK_CONTAINER (widget), box);
   ctk_widget_show_all (widget);
-  ctk_application_add_window (GTK_APPLICATION (application), GTK_WINDOW (widget));
+  ctk_application_add_window (CTK_APPLICATION (application), CTK_WINDOW (widget));
 }
 
 int

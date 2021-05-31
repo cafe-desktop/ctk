@@ -109,18 +109,18 @@ load_ui_file (GFile *file, gboolean generate)
   ui_file = g_file_get_path (file);
 
   if (g_str_has_suffix (ui_file, ".rtl.ui"))
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
   else
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_LTR);
 
   builder = ctk_builder_new_from_file (ui_file);
-  window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+  window = CTK_WIDGET (ctk_builder_get_object (builder, "window1"));
 
   g_assert (window != NULL);
 
   context = ctk_widget_get_style_context (window);
 
-  output = ctk_style_context_to_string (context, GTK_STYLE_CONTEXT_PRINT_RECURSE);
+  output = ctk_style_context_to_string (context, CTK_STYLE_CONTEXT_PRINT_RECURSE);
 
   if (generate)
     {
@@ -229,7 +229,7 @@ add_tests_for_files_in_directory (GFile *dir)
 int
 main (int argc, char **argv)
 {
-  g_setenv ("GTK_CSS_DEBUG", "1", TRUE);
+  g_setenv ("CTK_CSS_DEBUG", "1", TRUE);
 
   ctk_test_init (&argc, &argv);
 

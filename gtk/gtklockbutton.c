@@ -99,12 +99,12 @@ static void on_permission_changed (GPermission *permission,
                                    GParamSpec  *pspec,
                                    gpointer     user_data);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkLockButton, ctk_lock_button, GTK_TYPE_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkLockButton, ctk_lock_button, CTK_TYPE_BUTTON)
 
 static void
 ctk_lock_button_finalize (GObject *object)
 {
-  GtkLockButton *button = GTK_LOCK_BUTTON (object);
+  GtkLockButton *button = CTK_LOCK_BUTTON (object);
   GtkLockButtonPrivate *priv = button->priv;
 
   g_free (priv->tooltip_lock);
@@ -137,7 +137,7 @@ ctk_lock_button_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkLockButton *button = GTK_LOCK_BUTTON (object);
+  GtkLockButton *button = CTK_LOCK_BUTTON (object);
   GtkLockButtonPrivate *priv = button->priv;
 
   switch (property_id)
@@ -147,11 +147,11 @@ ctk_lock_button_get_property (GObject    *object,
       break;
 
     case PROP_TEXT_LOCK:
-      g_value_set_string (value, ctk_label_get_text (GTK_LABEL (priv->label_lock)));
+      g_value_set_string (value, ctk_label_get_text (CTK_LABEL (priv->label_lock)));
       break;
 
     case PROP_TEXT_UNLOCK:
-      g_value_set_string (value, ctk_label_get_text (GTK_LABEL (priv->label_unlock)));
+      g_value_set_string (value, ctk_label_get_text (CTK_LABEL (priv->label_unlock)));
       break;
 
     case PROP_TOOLTIP_LOCK:
@@ -178,7 +178,7 @@ ctk_lock_button_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkLockButton *button = GTK_LOCK_BUTTON (object);
+  GtkLockButton *button = CTK_LOCK_BUTTON (object);
   GtkLockButtonPrivate *priv = button->priv;
 
   switch (property_id)
@@ -188,12 +188,12 @@ ctk_lock_button_set_property (GObject      *object,
       break;
 
     case PROP_TEXT_LOCK:
-      ctk_label_set_text (GTK_LABEL (priv->label_lock), g_value_get_string (value));
+      ctk_label_set_text (CTK_LABEL (priv->label_lock), g_value_get_string (value));
       _ctk_lock_button_accessible_name_changed (button);
       break;
 
     case PROP_TEXT_UNLOCK:
-      ctk_label_set_text (GTK_LABEL (priv->label_unlock), g_value_get_string (value));
+      ctk_label_set_text (CTK_LABEL (priv->label_unlock), g_value_get_string (value));
       _ctk_lock_button_accessible_name_changed (button);
       break;
 
@@ -229,7 +229,7 @@ ctk_lock_button_init (GtkLockButton *button)
 
   button->priv = priv = ctk_lock_button_get_instance_private (button);
 
-  ctk_widget_init_template (GTK_WIDGET (button));
+  ctk_widget_init_template (CTK_WIDGET (button));
 
   names[0] = "changes-allow-symbolic";
   names[1] = "changes-allow";
@@ -243,7 +243,7 @@ ctk_lock_button_init (GtkLockButton *button)
 
   update_state (button);
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (button));
+  context = ctk_widget_get_style_context (CTK_WIDGET (button));
   ctk_style_context_add_class (context, "lock");
 }
 
@@ -251,8 +251,8 @@ static void
 ctk_lock_button_class_init (GtkLockButtonClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  GtkButtonClass *button_class = GTK_BUTTON_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  GtkButtonClass *button_class = CTK_BUTTON_CLASS (klass);
 
   gobject_class->finalize     = ctk_lock_button_finalize;
   gobject_class->get_property = ctk_lock_button_get_property;
@@ -322,7 +322,7 @@ ctk_lock_button_class_init (GtkLockButtonClass *klass)
   ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, label_unlock);
   ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, stack);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_LOCK_BUTTON_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_LOCK_BUTTON_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "button");
 }
 
@@ -384,13 +384,13 @@ update_state (GtkLockButton *button)
       g_assert_not_reached ();
     }
 
-  ctk_image_set_from_gicon (GTK_IMAGE (priv->image), icon, GTK_ICON_SIZE_MENU);
-  ctk_stack_set_visible_child (GTK_STACK (priv->stack),
+  ctk_image_set_from_gicon (CTK_IMAGE (priv->image), icon, CTK_ICON_SIZE_MENU);
+  ctk_stack_set_visible_child (CTK_STACK (priv->stack),
                                allowed ? priv->label_lock : priv->label_unlock);
   _ctk_lock_button_accessible_name_changed (button);
-  ctk_widget_set_tooltip_markup (GTK_WIDGET (button), tooltip);
-  ctk_widget_set_sensitive (GTK_WIDGET (button), sensitive);
-  ctk_widget_set_visible (GTK_WIDGET (button), visible);
+  ctk_widget_set_tooltip_markup (CTK_WIDGET (button), tooltip);
+  ctk_widget_set_sensitive (CTK_WIDGET (button), sensitive);
+  ctk_widget_set_visible (CTK_WIDGET (button), visible);
 }
 
 static void
@@ -398,7 +398,7 @@ on_permission_changed (GPermission *permission,
                        GParamSpec  *pspec,
                        gpointer     user_data)
 {
-  GtkLockButton *button = GTK_LOCK_BUTTON (user_data);
+  GtkLockButton *button = CTK_LOCK_BUTTON (user_data);
 
   update_state (button);
 }
@@ -408,7 +408,7 @@ acquire_cb (GObject      *source,
             GAsyncResult *result,
             gpointer      user_data)
 {
-  GtkLockButton *button = GTK_LOCK_BUTTON (user_data);
+  GtkLockButton *button = CTK_LOCK_BUTTON (user_data);
   GtkLockButtonPrivate *priv = button->priv;
   GError *error;
 
@@ -430,7 +430,7 @@ release_cb (GObject      *source,
             GAsyncResult *result,
             gpointer      user_data)
 {
-  GtkLockButton *button = GTK_LOCK_BUTTON (user_data);
+  GtkLockButton *button = CTK_LOCK_BUTTON (user_data);
   GtkLockButtonPrivate *priv = button->priv;
   GError *error;
 
@@ -450,7 +450,7 @@ release_cb (GObject      *source,
 static void
 ctk_lock_button_clicked (GtkButton *button)
 {
-  GtkLockButtonPrivate *priv = GTK_LOCK_BUTTON (button)->priv;
+  GtkLockButtonPrivate *priv = CTK_LOCK_BUTTON (button)->priv;
 
   /* if we already have a pending interactive check or permission is not set,
    * then do nothing
@@ -497,7 +497,7 @@ ctk_lock_button_clicked (GtkButton *button)
 GtkWidget *
 ctk_lock_button_new (GPermission *permission)
 {
-  return GTK_WIDGET (g_object_new (GTK_TYPE_LOCK_BUTTON,
+  return CTK_WIDGET (g_object_new (CTK_TYPE_LOCK_BUTTON,
                                    "permission", permission,
                                    NULL));
 }
@@ -515,7 +515,7 @@ ctk_lock_button_new (GPermission *permission)
 GPermission *
 ctk_lock_button_get_permission (GtkLockButton *button)
 {
-  g_return_val_if_fail (GTK_IS_LOCK_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_LOCK_BUTTON (button), NULL);
 
   return button->priv->permission;
 }
@@ -535,7 +535,7 @@ ctk_lock_button_set_permission (GtkLockButton *button,
 {
   GtkLockButtonPrivate *priv;
 
-  g_return_if_fail (GTK_IS_LOCK_BUTTON (button));
+  g_return_if_fail (CTK_IS_LOCK_BUTTON (button));
   g_return_if_fail (permission == NULL || G_IS_PERMISSION (permission));
 
   priv = button->priv;
@@ -570,10 +570,10 @@ _ctk_lock_button_get_current_text (GtkLockButton *button)
 {
   GtkWidget *label;
 
-  g_return_val_if_fail (GTK_IS_LOCK_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_LOCK_BUTTON (button), NULL);
 
-  label = ctk_stack_get_visible_child (GTK_STACK (button->priv->stack));
+  label = ctk_stack_get_visible_child (CTK_STACK (button->priv->stack));
 
-  return ctk_label_get_text (GTK_LABEL (label));
+  return ctk_label_get_text (CTK_LABEL (label));
 }
 

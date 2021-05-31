@@ -98,8 +98,8 @@ parse_margin (GtkCssShorthandProperty  *shorthand,
   return parse_four_numbers (shorthand,
                              values,
                              parser,
-                             GTK_CSS_NUMBER_AS_PIXELS
-                             | GTK_CSS_PARSE_LENGTH);
+                             CTK_CSS_NUMBER_AS_PIXELS
+                             | CTK_CSS_PARSE_LENGTH);
 }
 
 static gboolean
@@ -110,9 +110,9 @@ parse_padding (GtkCssShorthandProperty  *shorthand,
   return parse_four_numbers (shorthand,
                              values,
                              parser,
-                             GTK_CSS_POSITIVE_ONLY
-                             | GTK_CSS_NUMBER_AS_PIXELS
-                             | GTK_CSS_PARSE_LENGTH);
+                             CTK_CSS_POSITIVE_ONLY
+                             | CTK_CSS_NUMBER_AS_PIXELS
+                             | CTK_CSS_PARSE_LENGTH);
 }
 
 static gboolean
@@ -123,9 +123,9 @@ parse_border_width (GtkCssShorthandProperty  *shorthand,
   return parse_four_numbers (shorthand,
                              values,
                              parser,
-                             GTK_CSS_POSITIVE_ONLY
-                             | GTK_CSS_NUMBER_AS_PIXELS
-                             | GTK_CSS_PARSE_LENGTH);
+                             CTK_CSS_POSITIVE_ONLY
+                             | CTK_CSS_NUMBER_AS_PIXELS
+                             | CTK_CSS_PARSE_LENGTH);
 }
 
 static gboolean 
@@ -141,10 +141,10 @@ parse_border_radius (GtkCssShorthandProperty  *shorthand,
       if (!ctk_css_number_value_can_parse (parser))
         break;
       x[i] = _ctk_css_number_value_parse (parser,
-                                          GTK_CSS_POSITIVE_ONLY
-                                          | GTK_CSS_PARSE_PERCENT
-                                          | GTK_CSS_NUMBER_AS_PIXELS
-                                          | GTK_CSS_PARSE_LENGTH);
+                                          CTK_CSS_POSITIVE_ONLY
+                                          | CTK_CSS_PARSE_PERCENT
+                                          | CTK_CSS_NUMBER_AS_PIXELS
+                                          | CTK_CSS_PARSE_LENGTH);
       if (x[i] == NULL)
         goto fail;
     }
@@ -168,10 +168,10 @@ parse_border_radius (GtkCssShorthandProperty  *shorthand,
           if (!ctk_css_number_value_can_parse (parser))
             break;
           y[i] = _ctk_css_number_value_parse (parser,
-                                              GTK_CSS_POSITIVE_ONLY
-                                              | GTK_CSS_PARSE_PERCENT
-                                              | GTK_CSS_NUMBER_AS_PIXELS
-                                              | GTK_CSS_PARSE_LENGTH);
+                                              CTK_CSS_POSITIVE_ONLY
+                                              | CTK_CSS_PARSE_PERCENT
+                                              | CTK_CSS_NUMBER_AS_PIXELS
+                                              | CTK_CSS_PARSE_LENGTH);
           if (y[i] == NULL)
             goto fail;
         }
@@ -292,9 +292,9 @@ parse_border_image (GtkCssShorthandProperty  *shorthand,
       else if (values[1] == NULL)
         {
           values[1] = _ctk_css_border_value_parse (parser,
-                                                   GTK_CSS_PARSE_PERCENT
-                                                   | GTK_CSS_PARSE_NUMBER
-                                                   | GTK_CSS_POSITIVE_ONLY,
+                                                   CTK_CSS_PARSE_PERCENT
+                                                   | CTK_CSS_PARSE_NUMBER
+                                                   | CTK_CSS_POSITIVE_ONLY,
                                                    FALSE,
                                                    TRUE);
           if (values[1] == NULL)
@@ -303,10 +303,10 @@ parse_border_image (GtkCssShorthandProperty  *shorthand,
           if (_ctk_css_parser_try (parser, "/", TRUE))
             {
               values[2] = _ctk_css_border_value_parse (parser,
-                                                       GTK_CSS_PARSE_PERCENT
-                                                       | GTK_CSS_PARSE_LENGTH
-                                                       | GTK_CSS_PARSE_NUMBER
-                                                       | GTK_CSS_POSITIVE_ONLY,
+                                                       CTK_CSS_PARSE_PERCENT
+                                                       | CTK_CSS_PARSE_LENGTH
+                                                       | CTK_CSS_PARSE_NUMBER
+                                                       | CTK_CSS_POSITIVE_ONLY,
                                                        TRUE,
                                                        FALSE);
               if (values[2] == NULL)
@@ -338,9 +338,9 @@ parse_border_side (GtkCssShorthandProperty  *shorthand,
         ctk_css_number_value_can_parse (parser))
       {
         values[0] = _ctk_css_number_value_parse (parser,
-                                                 GTK_CSS_POSITIVE_ONLY
-                                                 | GTK_CSS_NUMBER_AS_PIXELS
-                                                 | GTK_CSS_PARSE_LENGTH);
+                                                 CTK_CSS_POSITIVE_ONLY
+                                                 | CTK_CSS_NUMBER_AS_PIXELS
+                                                 | CTK_CSS_PARSE_LENGTH);
         if (values[0] == NULL)
           return FALSE;
       }
@@ -380,9 +380,9 @@ parse_border (GtkCssShorthandProperty  *shorthand,
         ctk_css_number_value_can_parse (parser))
       {
         values[0] = _ctk_css_number_value_parse (parser,
-                                                 GTK_CSS_POSITIVE_ONLY
-                                                 | GTK_CSS_NUMBER_AS_PIXELS
-                                                 | GTK_CSS_PARSE_LENGTH);
+                                                 CTK_CSS_POSITIVE_ONLY
+                                                 | CTK_CSS_NUMBER_AS_PIXELS
+                                                 | CTK_CSS_PARSE_LENGTH);
         if (values[0] == NULL)
           return FALSE;
         values[1] = _ctk_css_value_ref (values[0]);
@@ -464,7 +464,7 @@ parse_font_with_pango (GtkCssShorthandProperty  *shorthand,
     }
   if (mask & PANGO_FONT_MASK_SIZE)
     {
-      values[5] = _ctk_css_number_value_new ((double) pango_font_description_get_size (desc) / PANGO_SCALE, GTK_CSS_PX);
+      values[5] = _ctk_css_number_value_new ((double) pango_font_description_get_size (desc) / PANGO_SCALE, CTK_CSS_PX);
     }
 
   pango_font_description_free (desc);
@@ -517,7 +517,7 @@ parse_font (GtkCssShorthandProperty  *shorthand,
       if (parse_font_with_pango (shorthand, values, parser))
         {
           _ctk_css_parser_error_full (parser,
-                                      GTK_CSS_PROVIDER_ERROR_DEPRECATED,
+                                      CTK_CSS_PROVIDER_ERROR_DEPRECATED,
                                       "Using Pango syntax for the font: style property is deprecated; please use CSS syntax");
           return TRUE;
         }
@@ -678,7 +678,7 @@ parse_one_transition (GtkCssShorthandProperty  *shorthand,
       if (values[2] == NULL &&
           ctk_css_number_value_can_parse (parser) && !_ctk_css_parser_begins_with (parser, '-'))
         {
-          GtkCssValue *number = _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_TIME);
+          GtkCssValue *number = _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_TIME);
 
           if (number == NULL)
             return FALSE;
@@ -778,7 +778,7 @@ parse_one_animation (GtkCssShorthandProperty  *shorthand,
     {
       if (values[1] == NULL && _ctk_css_parser_try (parser, "infinite", TRUE))
         {
-          values[1] = _ctk_css_number_value_new (HUGE_VAL, GTK_CSS_NUMBER);
+          values[1] = _ctk_css_number_value_new (HUGE_VAL, CTK_CSS_NUMBER);
         }
       else if ((values[1] == NULL || values[3] == NULL) &&
                ctk_css_number_value_can_parse (parser))
@@ -786,13 +786,13 @@ parse_one_animation (GtkCssShorthandProperty  *shorthand,
           GtkCssValue *value;
           
           value = _ctk_css_number_value_parse (parser,
-                                               GTK_CSS_POSITIVE_ONLY
-                                               | (values[1] == NULL ? GTK_CSS_PARSE_NUMBER : 0)
-                                               | (values[3] == NULL ? GTK_CSS_PARSE_TIME : 0));
+                                               CTK_CSS_POSITIVE_ONLY
+                                               | (values[1] == NULL ? CTK_CSS_PARSE_NUMBER : 0)
+                                               | (values[3] == NULL ? CTK_CSS_PARSE_TIME : 0));
           if (value == NULL)
             return FALSE;
 
-          if (ctk_css_number_value_get_dimension (value) == GTK_CSS_DIMENSION_NUMBER)
+          if (ctk_css_number_value_get_dimension (value) == CTK_CSS_DIMENSION_NUMBER)
             values[1] = value;
           else if (values[2] == NULL)
             values[2] = value;
@@ -947,13 +947,13 @@ unpack_border (GtkCssShorthandProperty *shorthand,
   g_value_init (&v, G_TYPE_INT);
 
   g_value_set_int (&v, border->top);
-  _ctk_style_property_assign (GTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 0)), props, state, &v);
+  _ctk_style_property_assign (CTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 0)), props, state, &v);
   g_value_set_int (&v, border->right);
-  _ctk_style_property_assign (GTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 1)), props, state, &v);
+  _ctk_style_property_assign (CTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 1)), props, state, &v);
   g_value_set_int (&v, border->bottom);
-  _ctk_style_property_assign (GTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 2)), props, state, &v);
+  _ctk_style_property_assign (CTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 2)), props, state, &v);
   g_value_set_int (&v, border->left);
-  _ctk_style_property_assign (GTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 3)), props, state, &v);
+  _ctk_style_property_assign (CTK_STYLE_PROPERTY (_ctk_css_shorthand_property_get_subproperty (shorthand, 3)), props, state, &v);
 
   g_value_unset (&v);
 }
@@ -969,26 +969,26 @@ pack_border (GtkCssShorthandProperty *shorthand,
   GValue v;
 
   prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 0);
-  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
+  _ctk_style_property_query (CTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
   border.top = g_value_get_int (&v);
   g_value_unset (&v);
 
   prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 1);
-  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
+  _ctk_style_property_query (CTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
   border.right = g_value_get_int (&v);
   g_value_unset (&v);
 
   prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 2);
-  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
+  _ctk_style_property_query (CTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
   border.bottom = g_value_get_int (&v);
   g_value_unset (&v);
 
   prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 3);
-  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
+  _ctk_style_property_query (CTK_STYLE_PROPERTY (prop), &v, query_func, query_data);
   border.left = g_value_get_int (&v);
   g_value_unset (&v);
 
-  g_value_init (value, GTK_TYPE_BORDER);
+  g_value_init (value, CTK_TYPE_BORDER);
   g_value_set_boxed (value, &border);
 }
 
@@ -1001,8 +1001,8 @@ unpack_border_radius (GtkCssShorthandProperty *shorthand,
   GtkCssValue *css_value;
   guint i;
   
-  css_value = _ctk_css_corner_value_new (_ctk_css_number_value_new (g_value_get_int (value), GTK_CSS_PX),
-                                         _ctk_css_number_value_new (g_value_get_int (value), GTK_CSS_PX));
+  css_value = _ctk_css_corner_value_new (_ctk_css_number_value_new (g_value_get_int (value), CTK_CSS_PX),
+                                         _ctk_css_number_value_new (g_value_get_int (value), CTK_CSS_PX));
 
   for (i = 0; i < 4; i++)
     _ctk_style_properties_set_property_by_property (props,
@@ -1023,7 +1023,7 @@ pack_border_radius (GtkCssShorthandProperty *shorthand,
   GtkCssValue *v;
   int i = 0;
 
-  prop = GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("border-top-left-radius"));
+  prop = CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("border-top-left-radius"));
   v = (* query_func) (_ctk_css_style_property_get_id (prop), query_data);
   if (v)
     i = _ctk_css_corner_value_get_x (v, 100);
@@ -1143,7 +1143,7 @@ pack_font_description (GtkCssShorthandProperty *shorthand,
 
   description = pango_font_description_new ();
 
-  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-family"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-family"))), query_data);
   if (v)
     {
       int i;
@@ -1160,25 +1160,25 @@ pack_font_description (GtkCssShorthandProperty *shorthand,
       g_string_free (s, TRUE);
     }
 
-  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("-gtk-dpi"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("-gtk-dpi"))), query_data);
   dpi = _ctk_css_number_value_get (v, 96);
-  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-size"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-size"))), query_data);
   if (v)
     pango_font_description_set_size (description, round (_ctk_css_number_value_get (v, 100) * PANGO_SCALE * 72 / dpi));
 
-  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-style"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-style"))), query_data);
   if (v)
     pango_font_description_set_style (description, _ctk_css_font_style_value_get (v));
 
-  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-variant"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-variant"))), query_data);
   if (v)
     pango_font_description_set_variant (description, _ctk_css_font_variant_value_get (v));
 
-  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-weight"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-weight"))), query_data);
   if (v)
     pango_font_description_set_weight (description, _ctk_css_font_weight_value_get (v));
 
-  v = (* query_func) (_ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-stretch"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-stretch"))), query_data);
   if (v)
     pango_font_description_set_stretch (description, _ctk_css_font_stretch_value_get (v));
 
@@ -1200,7 +1200,7 @@ unpack_to_everything (GtkCssShorthandProperty *shorthand,
   for (i = 0; i < n; i++)
     {
       prop = _ctk_css_shorthand_property_get_subproperty (shorthand, i);
-      _ctk_style_property_assign (GTK_STYLE_PROPERTY (prop), props, state, value);
+      _ctk_style_property_assign (CTK_STYLE_PROPERTY (prop), props, state, value);
     }
 }
 
@@ -1218,7 +1218,7 @@ pack_first_element (GtkCssShorthandProperty *shorthand,
    * Lesson learned: Don't query the shorthand, query the 
    * real properties instead. */
   prop = _ctk_css_shorthand_property_get_subproperty (shorthand, 0);
-  _ctk_style_property_query (GTK_STYLE_PROPERTY (prop),
+  _ctk_style_property_query (CTK_STYLE_PROPERTY (prop),
                              value,
                              query_func,
                              query_data);
@@ -1234,7 +1234,7 @@ _ctk_css_shorthand_property_register (const char                        *name,
 {
   GtkCssShorthandProperty *node;
 
-  node = g_object_new (GTK_TYPE_CSS_SHORTHAND_PROPERTY,
+  node = g_object_new (CTK_TYPE_CSS_SHORTHAND_PROPERTY,
                        "name", name,
                        "value-type", value_type,
                        "subproperties", subproperties,
@@ -1258,7 +1258,7 @@ get_all_subproperties (void)
 
   for (i = 0; i < n; i++)
     {
-      properties[i] = _ctk_style_property_get_name (GTK_STYLE_PROPERTY (_ctk_css_style_property_lookup_by_id (i)));
+      properties[i] = _ctk_style_property_get_name (CTK_STYLE_PROPERTY (_ctk_css_style_property_lookup_by_id (i)));
     }
 
   return properties;
@@ -1304,19 +1304,19 @@ _ctk_css_shorthand_property_init_properties (void)
                                           unpack_font_description,
                                           pack_font_description);
   _ctk_css_shorthand_property_register   ("margin",
-                                          GTK_TYPE_BORDER,
+                                          CTK_TYPE_BORDER,
                                           margin_subproperties,
                                           parse_margin,
                                           unpack_border,
                                           pack_border);
   _ctk_css_shorthand_property_register   ("padding",
-                                          GTK_TYPE_BORDER,
+                                          CTK_TYPE_BORDER,
                                           padding_subproperties,
                                           parse_padding,
                                           unpack_border,
                                           pack_border);
   _ctk_css_shorthand_property_register   ("border-width",
-                                          GTK_TYPE_BORDER,
+                                          CTK_TYPE_BORDER,
                                           border_width_subproperties,
                                           parse_border_width,
                                           unpack_border,
@@ -1334,7 +1334,7 @@ _ctk_css_shorthand_property_init_properties (void)
                                           unpack_to_everything,
                                           pack_first_element);
   _ctk_css_shorthand_property_register   ("border-style",
-                                          GTK_TYPE_BORDER_STYLE,
+                                          CTK_TYPE_BORDER_STYLE,
                                           border_style_subproperties,
                                           parse_border_style,
                                           unpack_to_everything,

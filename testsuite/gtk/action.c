@@ -60,7 +60,7 @@ menu_item_label_notify_count (ActionTest    *fixture,
   g_signal_connect (item, "notify::label",
 		    G_CALLBACK (notify_count_emmisions), &emmisions);
 
-  ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (item),
+  ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (item),
 					 fixture->action);
 
   g_assert_cmpuint (emmisions, ==, 1);
@@ -109,12 +109,12 @@ g_test_action_muxer (void)
   GActionGroup *group2;
   GActionGroup *grp;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   button = ctk_button_new_with_label ("test");
 
-  ctk_container_add (GTK_CONTAINER (window), box);
-  ctk_container_add (GTK_CONTAINER (box), button);
+  ctk_container_add (CTK_CONTAINER (window), box);
+  ctk_container_add (CTK_CONTAINER (box), button);
 
   win = G_ACTION_GROUP (g_simple_action_group_new ());
   ctk_widget_insert_action_group (window, "win", win);

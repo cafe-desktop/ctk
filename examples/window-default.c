@@ -7,8 +7,8 @@ activate (GtkApplication* app,
   GtkWidget *window;
 
   window = ctk_application_window_new (app);
-  ctk_window_set_title (GTK_WINDOW (window), "Window");
-  ctk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+  ctk_window_set_title (CTK_WINDOW (window), "Window");
+  ctk_window_set_default_size (CTK_WINDOW (window), 200, 200);
   ctk_widget_show_all (window);
 }
 

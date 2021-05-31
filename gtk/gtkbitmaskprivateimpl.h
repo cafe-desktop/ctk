@@ -91,7 +91,7 @@ _ctk_bitmask_get (const GtkBitmask *mask,
   if (_ctk_bitmask_is_allocated (mask))
     return _ctk_allocated_bitmask_get (mask, index_);
   else
-    return index_ < GTK_BITMASK_N_DIRECT_BITS
+    return index_ < CTK_BITMASK_N_DIRECT_BITS
            ? !!(_ctk_bitmask_to_bits (mask) & (((gsize) 1) << index_))
            : FALSE;
 }
@@ -102,9 +102,9 @@ _ctk_bitmask_set (GtkBitmask *mask,
                   gboolean    value)
 {
   if (_ctk_bitmask_is_allocated (mask) ||
-      (index_ >= GTK_BITMASK_N_DIRECT_BITS && value))
+      (index_ >= CTK_BITMASK_N_DIRECT_BITS && value))
     return _ctk_allocated_bitmask_set (mask, index_, value);
-  else if (index_ < GTK_BITMASK_N_DIRECT_BITS)
+  else if (index_ < CTK_BITMASK_N_DIRECT_BITS)
     {
       gsize bits = _ctk_bitmask_to_bits (mask);
 
@@ -125,7 +125,7 @@ _ctk_bitmask_invert_range (GtkBitmask *mask,
                            guint       end)
 {
   if (_ctk_bitmask_is_allocated (mask) ||
-      (end > GTK_BITMASK_N_DIRECT_BITS))
+      (end > CTK_BITMASK_N_DIRECT_BITS))
     return _ctk_allocated_bitmask_invert_range (mask, start, end);
   else
     {

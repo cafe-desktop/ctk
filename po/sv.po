@@ -4530,16 +4530,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Aktivera statistik med GOBJECT_DEBUG=instance-count"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "Temat är hårdkodat med GTK_THEME"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "Temat är hårdkodat med CTK_THEME"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "Bakände stöder inte fönsterskalning"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "Inställningen är hårdkodad med GTK_TEST_TOUCHSCREEN"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "Inställningen är hårdkodad med CTK_TEST_TOUCHSCREEN"
 
 #: gtk/inspector/visual.c:817
 msgid ""

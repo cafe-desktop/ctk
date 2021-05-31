@@ -155,7 +155,7 @@ rgba_value_parse (GtkCssParser *parser,
   else
     {
       g_value_unset (value);
-      g_value_init (value, GTK_TYPE_SYMBOLIC_COLOR);
+      g_value_init (value, CTK_TYPE_SYMBOLIC_COLOR);
       g_value_take_boxed (value, symbolic);
     }
 
@@ -193,7 +193,7 @@ rgba_value_compute (GtkStyleProviderPrivate *provider,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  if (G_VALUE_HOLDS (value, GTK_TYPE_SYMBOLIC_COLOR))
+  if (G_VALUE_HOLDS (value, CTK_TYPE_SYMBOLIC_COLOR))
     {
       GtkSymbolicColor *symbolic = g_value_get_boxed (value);
       GtkCssValue *val;
@@ -202,7 +202,7 @@ rgba_value_compute (GtkStyleProviderPrivate *provider,
 
       val = _ctk_css_color_value_resolve (_ctk_symbolic_color_get_css_value (symbolic),
                                           provider,
-                                          ctk_css_style_get_value (values, GTK_CSS_PROPERTY_COLOR),
+                                          ctk_css_style_get_value (values, CTK_CSS_PROPERTY_COLOR),
                                           NULL);
       if (val != NULL)
         {
@@ -249,7 +249,7 @@ color_value_parse (GtkCssParser *parser,
   else
     {
       g_value_unset (value);
-      g_value_init (value, GTK_TYPE_SYMBOLIC_COLOR);
+      g_value_init (value, CTK_TYPE_SYMBOLIC_COLOR);
       g_value_take_boxed (value, symbolic);
     }
 
@@ -289,14 +289,14 @@ color_value_compute (GtkStyleProviderPrivate *provider,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  if (G_VALUE_HOLDS (value, GTK_TYPE_SYMBOLIC_COLOR))
+  if (G_VALUE_HOLDS (value, CTK_TYPE_SYMBOLIC_COLOR))
     {
       GValue new_value = G_VALUE_INIT;
       GtkCssValue *val;
 
       val = _ctk_css_color_value_resolve (_ctk_symbolic_color_get_css_value (g_value_get_boxed (value)),
                                           provider,
-                                          ctk_css_style_get_value (values, GTK_CSS_PROPERTY_COLOR),
+                                          ctk_css_style_get_value (values, CTK_CSS_PROPERTY_COLOR),
                                           NULL);
       if (val != NULL)
         {
@@ -433,7 +433,7 @@ int_value_parse (GtkCssParser *parser,
 
   if (_ctk_css_parser_has_prefix (parser, "-gtk"))
     {
-      GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, GTK_CSS_PARSE_NUMBER | GTK_CSS_NUMBER_AS_PIXELS);
+      GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_NUMBER_AS_PIXELS);
 
       if (cssvalue)
         {
@@ -620,7 +620,7 @@ border_value_parse (GtkCssParser *parser,
     {
       if (_ctk_css_parser_has_prefix (parser, "-gtk"))
         {
-          GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, GTK_CSS_PARSE_NUMBER | GTK_CSS_NUMBER_AS_PIXELS);
+          GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_NUMBER_AS_PIXELS);
 
           if (cssvalue)
             {
@@ -727,7 +727,7 @@ pattern_value_parse (GtkCssParser *parser,
 
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-      g_value_init (value, GTK_TYPE_GRADIENT);
+      g_value_init (value, CTK_TYPE_GRADIENT);
       return gradient_value_parse (parser, value);
 
       G_GNUC_END_IGNORE_DEPRECATIONS;
@@ -852,7 +852,7 @@ pattern_value_compute (GtkStyleProviderPrivate *provider,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  if (G_VALUE_HOLDS (value, GTK_TYPE_GRADIENT))
+  if (G_VALUE_HOLDS (value, CTK_TYPE_GRADIENT))
     {
       GValue new_value = G_VALUE_INIT;
       cairo_pattern_t *gradient;
@@ -986,7 +986,7 @@ ctk_css_style_funcs_init (void)
                                 color_value_print,
                                 color_value_compute);
 
-  register_conversion_function (GTK_TYPE_SYMBOLIC_COLOR,
+  register_conversion_function (CTK_TYPE_SYMBOLIC_COLOR,
                                 symbolic_color_value_parse,
                                 symbolic_color_value_print,
                                 NULL);
@@ -1024,21 +1024,21 @@ ctk_css_style_funcs_init (void)
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
-  register_conversion_function (GTK_TYPE_THEMING_ENGINE,
+  register_conversion_function (CTK_TYPE_THEMING_ENGINE,
                                 theming_engine_value_parse,
                                 theming_engine_value_print,
                                 NULL);
 
   G_GNUC_END_IGNORE_DEPRECATIONS
 
-  register_conversion_function (GTK_TYPE_BORDER,
+  register_conversion_function (CTK_TYPE_BORDER,
                                 border_value_parse,
                                 border_value_print,
                                 NULL);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  register_conversion_function (GTK_TYPE_GRADIENT,
+  register_conversion_function (CTK_TYPE_GRADIENT,
                                 gradient_value_parse,
                                 gradient_value_print,
                                 NULL);
@@ -1155,9 +1155,9 @@ _ctk_css_style_funcs_compute_value (GtkStyleProviderPrivate *provider,
 {
   GtkStyleComputeFunc func;
 
-  g_return_val_if_fail (GTK_IS_STYLE_PROVIDER (provider), NULL);
-  g_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
-  g_return_val_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
+  g_return_val_if_fail (parent_style == NULL || CTK_IS_CSS_STYLE (parent_style), NULL);
 
   ctk_css_style_funcs_init ();
 

@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_CHOOSER_H__
-#define __GTK_FILE_CHOOSER_H__
+#ifndef __CTK_FILE_CHOOSER_H__
+#define __CTK_FILE_CHOOSER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,23 +28,23 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_CHOOSER             (ctk_file_chooser_get_type ())
-#define GTK_FILE_CHOOSER(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_CHOOSER, GtkFileChooser))
-#define GTK_IS_FILE_CHOOSER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_CHOOSER))
+#define CTK_TYPE_FILE_CHOOSER             (ctk_file_chooser_get_type ())
+#define CTK_FILE_CHOOSER(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER, GtkFileChooser))
+#define CTK_IS_FILE_CHOOSER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_CHOOSER))
 
 typedef struct _GtkFileChooser      GtkFileChooser;
 
 /**
  * GtkFileChooserAction:
- * @GTK_FILE_CHOOSER_ACTION_OPEN: Indicates open mode.  The file chooser
+ * @CTK_FILE_CHOOSER_ACTION_OPEN: Indicates open mode.  The file chooser
  *  will only let the user pick an existing file.
- * @GTK_FILE_CHOOSER_ACTION_SAVE: Indicates save mode.  The file chooser
+ * @CTK_FILE_CHOOSER_ACTION_SAVE: Indicates save mode.  The file chooser
  *  will let the user pick an existing file, or type in a new
  *  filename.
- * @GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER: Indicates an Open mode for
+ * @CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER: Indicates an Open mode for
  *  selecting folders.  The file chooser will let the user pick an
  *  existing folder.
- * @GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER: Indicates a mode for creating a
+ * @CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER: Indicates a mode for creating a
  *  new folder.  The file chooser will let the user name an existing or
  *  new folder.
  *
@@ -53,19 +53,19 @@ typedef struct _GtkFileChooser      GtkFileChooser;
  */
 typedef enum
 {
-  GTK_FILE_CHOOSER_ACTION_OPEN,
-  GTK_FILE_CHOOSER_ACTION_SAVE,
-  GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
-  GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER
+  CTK_FILE_CHOOSER_ACTION_OPEN,
+  CTK_FILE_CHOOSER_ACTION_SAVE,
+  CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
+  CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER
 } GtkFileChooserAction;
 
 /**
  * GtkFileChooserConfirmation:
- * @GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM: The file chooser will present
+ * @CTK_FILE_CHOOSER_CONFIRMATION_CONFIRM: The file chooser will present
  *  its stock dialog to confirm about overwriting an existing file.
- * @GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME: The file chooser will
+ * @CTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME: The file chooser will
  *  terminate and accept the user’s choice of a file name.
- * @GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN: The file chooser will
+ * @CTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN: The file chooser will
  *  continue running, so as to let the user select another file name.
  *
  * Used as a return value of handlers for the
@@ -78,9 +78,9 @@ typedef enum
  */
 typedef enum
 {
-  GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM,
-  GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME,
-  GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN
+  CTK_FILE_CHOOSER_CONFIRMATION_CONFIRM,
+  CTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME,
+  CTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN
 } GtkFileChooserConfirmation;
 
 GDK_AVAILABLE_IN_ALL
@@ -88,28 +88,28 @@ GType ctk_file_chooser_get_type (void) G_GNUC_CONST;
 
 /* GError enumeration for GtkFileChooser */
 /**
- * GTK_FILE_CHOOSER_ERROR:
+ * CTK_FILE_CHOOSER_ERROR:
  *
  * Used to get the #GError quark for #GtkFileChooser errors.
  */
-#define GTK_FILE_CHOOSER_ERROR (ctk_file_chooser_error_quark ())
+#define CTK_FILE_CHOOSER_ERROR (ctk_file_chooser_error_quark ())
 
 /**
  * GtkFileChooserError:
- * @GTK_FILE_CHOOSER_ERROR_NONEXISTENT: Indicates that a file does not exist.
- * @GTK_FILE_CHOOSER_ERROR_BAD_FILENAME: Indicates a malformed filename.
- * @GTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS: Indicates a duplicate path (e.g. when
+ * @CTK_FILE_CHOOSER_ERROR_NONEXISTENT: Indicates that a file does not exist.
+ * @CTK_FILE_CHOOSER_ERROR_BAD_FILENAME: Indicates a malformed filename.
+ * @CTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS: Indicates a duplicate path (e.g. when
  *  adding a bookmark).
- * @GTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME: Indicates an incomplete hostname (e.g. "http://foo" without a slash after that).
+ * @CTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME: Indicates an incomplete hostname (e.g. "http://foo" without a slash after that).
  *
  * These identify the various errors that can occur while calling
  * #GtkFileChooser functions.
  */
 typedef enum {
-  GTK_FILE_CHOOSER_ERROR_NONEXISTENT,
-  GTK_FILE_CHOOSER_ERROR_BAD_FILENAME,
-  GTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS,
-  GTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME
+  CTK_FILE_CHOOSER_ERROR_NONEXISTENT,
+  CTK_FILE_CHOOSER_ERROR_BAD_FILENAME,
+  CTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS,
+  CTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME
 } GtkFileChooserError;
 
 GDK_AVAILABLE_IN_ALL
@@ -323,4 +323,4 @@ const char *ctk_file_chooser_get_choice              (GtkFileChooser  *chooser,
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_CHOOSER_H__ */
+#endif /* __CTK_FILE_CHOOSER_H__ */

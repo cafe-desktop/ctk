@@ -136,21 +136,21 @@ activate (GtkApplication *app,
   GtkWidget *drawing_area;
 
   window = ctk_application_window_new (app);
-  ctk_window_set_title (GTK_WINDOW (window), "Drawing Area");
+  ctk_window_set_title (CTK_WINDOW (window), "Drawing Area");
 
   g_signal_connect (window, "destroy", G_CALLBACK (close_window), NULL);
 
-  ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+  ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
   frame = ctk_frame_new (NULL);
-  ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-  ctk_container_add (GTK_CONTAINER (window), frame);
+  ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+  ctk_container_add (CTK_CONTAINER (window), frame);
 
   drawing_area = ctk_drawing_area_new ();
   /* set a minimum size */
   ctk_widget_set_size_request (drawing_area, 100, 100);
 
-  ctk_container_add (GTK_CONTAINER (frame), drawing_area);
+  ctk_container_add (CTK_CONTAINER (frame), drawing_area);
 
   /* Signals used to handle the backing surface */
   g_signal_connect (drawing_area, "draw",

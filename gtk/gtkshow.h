@@ -18,10 +18,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SHOW_H__
-#define __GTK_SHOW_H__
+#ifndef __CTK_SHOW_H__
+#define __CTK_SHOW_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -43,4 +43,4 @@ gboolean ctk_show_uri_on_window (GtkWindow   *parent,
 
 G_END_DECLS
 
-#endif /* __GTK_SHOW_H__ */
+#endif /* __CTK_SHOW_H__ */

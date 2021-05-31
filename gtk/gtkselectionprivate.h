@@ -28,8 +28,8 @@
  * sent.
  */
 
-#ifndef __GTK_SELECTION_PRIVATE_H__
-#define __GTK_SELECTION_PRIVATE_H__
+#ifndef __CTK_SELECTION_PRIVATE_H__
+#define __CTK_SELECTION_PRIVATE_H__
 
 #include "gtkselection.h"
 
@@ -67,4 +67,4 @@ gboolean _ctk_selection_property_notify (GtkWidget         *widget,
 
 G_END_DECLS
 
-#endif /* __GTK_SELECTION_PRIVATE_H__ */
+#endif /* __CTK_SELECTION_PRIVATE_H__ */

@@ -374,9 +374,9 @@ main(int argc, char **argv)
       return 1;
     }
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_app_paintable (window, TRUE);
-  ctk_window_set_default_size (GTK_WINDOW (window), 300, 300);
+  ctk_window_set_default_size (CTK_WINDOW (window), 300, 300);
 
   g_signal_connect (window, "draw",
                     G_CALLBACK (on_window_draw), NULL);

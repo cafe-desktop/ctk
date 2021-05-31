@@ -143,7 +143,7 @@ endif
 
 # Pass the source dir here so programs can change into the source directory
 # and find .ui files and .png files and such that they load at runtime
-test_args = ['-DGTK_SRCDIR="@0@"'.format(meson.current_source_dir())]
+test_args = ['-DCTK_SRCDIR="@0@"'.format(meson.current_source_dir())]
 
 foreach t: ctk_tests
   test_name = t.get(0)

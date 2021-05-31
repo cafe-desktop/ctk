@@ -18,8 +18,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_RECENT_CHOOSER_PRIVATE_H__
-#define __GTK_RECENT_CHOOSER_PRIVATE_H__
+#ifndef __CTK_RECENT_CHOOSER_PRIVATE_H__
+#define __CTK_RECENT_CHOOSER_PRIVATE_H__
 
 #include "gtkrecentmanager.h"
 #include "gtkrecentchooser.h"
@@ -50,4 +50,4 @@ gboolean          _ctk_recent_chooser_get_use_action_appearance (GtkRecentChoose
 
 G_END_DECLS
 
-#endif /* ! __GTK_RECENT_CHOOSER_PRIVATE_H__ */
+#endif /* ! __CTK_RECENT_CHOOSER_PRIVATE_H__ */

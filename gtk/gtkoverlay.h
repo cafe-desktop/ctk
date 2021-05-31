@@ -18,10 +18,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_OVERLAY_H__
-#define __GTK_OVERLAY_H__
+#ifndef __CTK_OVERLAY_H__
+#define __CTK_OVERLAY_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_OVERLAY             (ctk_overlay_get_type ())
-#define GTK_OVERLAY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_OVERLAY, GtkOverlay))
-#define GTK_OVERLAY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_OVERLAY, GtkOverlayClass))
-#define GTK_IS_OVERLAY(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_OVERLAY))
-#define GTK_IS_OVERLAY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_OVERLAY))
-#define GTK_OVERLAY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_OVERLAY, GtkOverlayClass))
+#define CTK_TYPE_OVERLAY             (ctk_overlay_get_type ())
+#define CTK_OVERLAY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_OVERLAY, GtkOverlay))
+#define CTK_OVERLAY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_OVERLAY, GtkOverlayClass))
+#define CTK_IS_OVERLAY(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_OVERLAY))
+#define CTK_IS_OVERLAY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_OVERLAY))
+#define CTK_OVERLAY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_OVERLAY, GtkOverlayClass))
 
 typedef struct _GtkOverlay         GtkOverlay;
 typedef struct _GtkOverlayClass    GtkOverlayClass;
@@ -97,4 +97,4 @@ void       ctk_overlay_set_overlay_pass_through (GtkOverlay *overlay,
 
 G_END_DECLS
 
-#endif /* __GTK_OVERLAY_H__ */
+#endif /* __CTK_OVERLAY_H__ */

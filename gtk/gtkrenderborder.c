@@ -55,13 +55,13 @@ static gboolean
 ctk_border_image_init (GtkBorderImage *image,
                        GtkCssStyle    *style)
 {
-  image->source = _ctk_css_image_value_get_image (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE));
+  image->source = _ctk_css_image_value_get_image (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE));
   if (image->source == NULL)
     return FALSE;
 
-  image->slice = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_IMAGE_SLICE);
-  image->width = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_IMAGE_WIDTH);
-  image->repeat = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_IMAGE_REPEAT);
+  image->slice = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_IMAGE_SLICE);
+  image->width = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_IMAGE_WIDTH);
+  image->repeat = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_IMAGE_REPEAT);
 
   return TRUE;
 }
@@ -83,11 +83,11 @@ ctk_border_image_compute_border_size (GtkBorderImageSliceSize  sizes[3],
 {
   double start, end;
 
-  if (ctk_css_number_value_get_dimension (start_border) == GTK_CSS_DIMENSION_NUMBER)
+  if (ctk_css_number_value_get_dimension (start_border) == CTK_CSS_DIMENSION_NUMBER)
     start = start_border_width * _ctk_css_number_value_get (start_border, 100);
   else
     start = _ctk_css_number_value_get (start_border, area_size);
-  if (ctk_css_number_value_get_dimension (end_border) == GTK_CSS_DIMENSION_NUMBER)
+  if (ctk_css_number_value_get_dimension (end_border) == CTK_CSS_DIMENSION_NUMBER)
     end = end_border_width * _ctk_css_number_value_get (end_border, 100);
   else
     end = _ctk_css_number_value_get (end_border, area_size);
@@ -126,7 +126,7 @@ ctk_border_image_render_slice (cairo_t           *cr,
   cairo_pattern_t *pattern;
 
   /* We can't draw center tiles yet */
-  g_assert (hrepeat == GTK_CSS_REPEAT_STYLE_STRETCH || vrepeat == GTK_CSS_REPEAT_STYLE_STRETCH);
+  g_assert (hrepeat == CTK_CSS_REPEAT_STYLE_STRETCH || vrepeat == CTK_CSS_REPEAT_STYLE_STRETCH);
 
   hscale = width / slice_width;
   vscale = height / slice_height;
@@ -135,11 +135,11 @@ ctk_border_image_render_slice (cairo_t           *cr,
 
   switch (hrepeat)
     {
-    case GTK_CSS_REPEAT_STYLE_REPEAT:
+    case CTK_CSS_REPEAT_STYLE_REPEAT:
       extend = CAIRO_EXTEND_REPEAT;
       hscale = vscale;
       break;
-    case GTK_CSS_REPEAT_STYLE_SPACE:
+    case CTK_CSS_REPEAT_STYLE_SPACE:
       {
         double space, n;
 
@@ -154,9 +154,9 @@ ctk_border_image_render_slice (cairo_t           *cr,
         width -= 2 * space;
       }
       break;
-    case GTK_CSS_REPEAT_STYLE_STRETCH:
+    case CTK_CSS_REPEAT_STYLE_STRETCH:
       break;
-    case GTK_CSS_REPEAT_STYLE_ROUND:
+    case CTK_CSS_REPEAT_STYLE_ROUND:
       extend = CAIRO_EXTEND_REPEAT;
       hscale = width / (slice_width * MAX (round (width / (slice_width * vscale)), 1));
       break;
@@ -167,11 +167,11 @@ ctk_border_image_render_slice (cairo_t           *cr,
 
   switch (vrepeat)
     {
-    case GTK_CSS_REPEAT_STYLE_REPEAT:
+    case CTK_CSS_REPEAT_STYLE_REPEAT:
       extend = CAIRO_EXTEND_REPEAT;
       vscale = hscale;
       break;
-    case GTK_CSS_REPEAT_STYLE_SPACE:
+    case CTK_CSS_REPEAT_STYLE_SPACE:
       {
         double space, n;
 
@@ -186,9 +186,9 @@ ctk_border_image_render_slice (cairo_t           *cr,
         height -= 2 * space;
       }
       break;
-    case GTK_CSS_REPEAT_STYLE_STRETCH:
+    case CTK_CSS_REPEAT_STYLE_STRETCH:
       break;
-    case GTK_CSS_REPEAT_STYLE_ROUND:
+    case CTK_CSS_REPEAT_STYLE_ROUND:
       extend = CAIRO_EXTEND_REPEAT;
       vscale = height / (slice_height * MAX (round (height / (slice_height * hscale)), 1));
       break;
@@ -200,12 +200,12 @@ ctk_border_image_render_slice (cairo_t           *cr,
   pattern = cairo_pattern_create_for_surface (slice);
 
   cairo_matrix_init_translate (&matrix,
-                               hrepeat == GTK_CSS_REPEAT_STYLE_REPEAT ? slice_width / 2 : 0,
-                               vrepeat == GTK_CSS_REPEAT_STYLE_REPEAT ? slice_height / 2 : 0);
+                               hrepeat == CTK_CSS_REPEAT_STYLE_REPEAT ? slice_width / 2 : 0,
+                               vrepeat == CTK_CSS_REPEAT_STYLE_REPEAT ? slice_height / 2 : 0);
   cairo_matrix_scale (&matrix, 1 / hscale, 1 / vscale);
   cairo_matrix_translate (&matrix,
-                          hrepeat == GTK_CSS_REPEAT_STYLE_REPEAT ? - width / 2 : 0,
-                          vrepeat == GTK_CSS_REPEAT_STYLE_REPEAT ? - height / 2 : 0);
+                          hrepeat == CTK_CSS_REPEAT_STYLE_REPEAT ? - width / 2 : 0,
+                          vrepeat == CTK_CSS_REPEAT_STYLE_REPEAT ? - height / 2 : 0);
 
   cairo_pattern_set_matrix (pattern, &matrix);
   cairo_pattern_set_extend (pattern, extend);
@@ -284,15 +284,15 @@ ctk_border_image_render (GtkBorderImage   *image,
   ctk_border_image_compute_border_size (horizontal_border,
                                         x,
                                         width,
-                                        border_width[GTK_CSS_LEFT],
-                                        border_width[GTK_CSS_RIGHT],
+                                        border_width[CTK_CSS_LEFT],
+                                        border_width[CTK_CSS_RIGHT],
                                         _ctk_css_border_value_get_left (image->width),
                                         _ctk_css_border_value_get_right (image->width));
   ctk_border_image_compute_border_size (vertical_border,
                                         y,
                                         height,
-                                        border_width[GTK_CSS_TOP],
-                                        border_width[GTK_CSS_BOTTOM],
+                                        border_width[CTK_CSS_TOP],
+                                        border_width[CTK_CSS_BOTTOM],
                                         _ctk_css_border_value_get_top (image->width),
                                         _ctk_css_border_value_get_bottom(image->width));
   
@@ -325,8 +325,8 @@ ctk_border_image_render (GtkBorderImage   *image,
                                          vertical_border[v].offset,
                                          horizontal_border[h].size,
                                          vertical_border[v].size,
-                                         h == 1 ? _ctk_css_border_repeat_value_get_x (image->repeat) : GTK_CSS_REPEAT_STYLE_STRETCH,
-                                         v == 1 ? _ctk_css_border_repeat_value_get_y (image->repeat) : GTK_CSS_REPEAT_STYLE_STRETCH);
+                                         h == 1 ? _ctk_css_border_repeat_value_get_x (image->repeat) : CTK_CSS_REPEAT_STYLE_STRETCH,
+                                         v == 1 ? _ctk_css_border_repeat_value_get_y (image->repeat) : CTK_CSS_REPEAT_STYLE_STRETCH);
 
           cairo_surface_destroy (slice);
         }
@@ -361,10 +361,10 @@ render_frame_fill (cairo_t       *cr,
 
   padding_box = *border_box;
   _ctk_rounded_box_shrink (&padding_box,
-                           border_width[GTK_CSS_TOP],
-                           border_width[GTK_CSS_RIGHT],
-                           border_width[GTK_CSS_BOTTOM],
-                           border_width[GTK_CSS_LEFT]);
+                           border_width[CTK_CSS_TOP],
+                           border_width[CTK_CSS_RIGHT],
+                           border_width[CTK_CSS_BOTTOM],
+                           border_width[CTK_CSS_LEFT]);
 
   if (hidden_side == 0 &&
       gdk_rgba_equal (&colors[0], &colors[1]) &&
@@ -428,7 +428,7 @@ set_stroke_style (cairo_t        *cr,
 
   cairo_set_line_width (cr, line_width);
 
-  if (style == GTK_BORDER_STYLE_DOTTED)
+  if (style == CTK_BORDER_STYLE_DOTTED)
     {
       n = round (0.5 * length / line_width);
 
@@ -485,10 +485,10 @@ render_frame_stroke (cairo_t       *cr,
 
   stroke_box = *border_box;
   _ctk_rounded_box_shrink (&stroke_box,
-                           border_width[GTK_CSS_TOP] / 2.0,
-                           border_width[GTK_CSS_RIGHT] / 2.0,
-                           border_width[GTK_CSS_BOTTOM] / 2.0,
-                           border_width[GTK_CSS_LEFT] / 2.0);
+                           border_width[CTK_CSS_TOP] / 2.0,
+                           border_width[CTK_CSS_RIGHT] / 2.0,
+                           border_width[CTK_CSS_BOTTOM] / 2.0,
+                           border_width[CTK_CSS_LEFT] / 2.0);
 
   if (!different_colors && !different_borders && hidden_side == 0)
     {
@@ -512,10 +512,10 @@ render_frame_stroke (cairo_t       *cr,
 
       padding_box = *border_box;
       _ctk_rounded_box_shrink (&padding_box,
-                               border_width[GTK_CSS_TOP],
-                               border_width[GTK_CSS_RIGHT],
-                               border_width[GTK_CSS_BOTTOM],
-                               border_width[GTK_CSS_LEFT]);
+                               border_width[CTK_CSS_TOP],
+                               border_width[CTK_CSS_RIGHT],
+                               border_width[CTK_CSS_BOTTOM],
+                               border_width[CTK_CSS_LEFT]);
 
       for (i = 0; i < 4; i++)
         {
@@ -591,20 +591,20 @@ render_border (cairo_t       *cr,
 
       switch (border_style[i])
         {
-        case GTK_BORDER_STYLE_NONE:
-        case GTK_BORDER_STYLE_HIDDEN:
-        case GTK_BORDER_STYLE_SOLID:
+        case CTK_BORDER_STYLE_NONE:
+        case CTK_BORDER_STYLE_HIDDEN:
+        case CTK_BORDER_STYLE_SOLID:
           break;
-        case GTK_BORDER_STYLE_INSET:
+        case CTK_BORDER_STYLE_INSET:
           if (i == 1 || i == 2)
             color_shade (&colors[i], 1.8, &colors[i]);
           break;
-        case GTK_BORDER_STYLE_OUTSET:
+        case CTK_BORDER_STYLE_OUTSET:
           if (i == 0 || i == 3)
             color_shade (&colors[i], 1.8, &colors[i]);
           break;
-        case GTK_BORDER_STYLE_DOTTED:
-        case GTK_BORDER_STYLE_DASHED:
+        case CTK_BORDER_STYLE_DOTTED:
+        case CTK_BORDER_STYLE_DASHED:
           {
             guint dont_draw = hidden_side;
 
@@ -619,7 +619,7 @@ render_border (cairo_t       *cr,
             render_frame_stroke (cr, border_box, border_width, colors, dont_draw, border_style[i]);
           }
           break;
-        case GTK_BORDER_STYLE_DOUBLE:
+        case CTK_BORDER_STYLE_DOUBLE:
           {
             GtkRoundedBox other_box;
             double other_border[4];
@@ -627,7 +627,7 @@ render_border (cairo_t       *cr,
 
             for (j = 0; j < 4; j++)
               {
-                if (border_style[j] == GTK_BORDER_STYLE_DOUBLE)
+                if (border_style[j] == CTK_BORDER_STYLE_DOUBLE)
                   hidden_side |= (1 << j);
                 else
                   dont_draw |= (1 << j);
@@ -639,15 +639,15 @@ render_border (cairo_t       *cr,
             
             other_box = *border_box;
             _ctk_rounded_box_shrink (&other_box,
-                                     2 * other_border[GTK_CSS_TOP],
-                                     2 * other_border[GTK_CSS_RIGHT],
-                                     2 * other_border[GTK_CSS_BOTTOM],
-                                     2 * other_border[GTK_CSS_LEFT]);
+                                     2 * other_border[CTK_CSS_TOP],
+                                     2 * other_border[CTK_CSS_RIGHT],
+                                     2 * other_border[CTK_CSS_BOTTOM],
+                                     2 * other_border[CTK_CSS_LEFT]);
             render_frame_fill (cr, &other_box, other_border, colors, dont_draw);
           }
           break;
-        case GTK_BORDER_STYLE_GROOVE:
-        case GTK_BORDER_STYLE_RIDGE:
+        case CTK_BORDER_STYLE_GROOVE:
+        case CTK_BORDER_STYLE_RIDGE:
           {
             GtkRoundedBox other_box;
             GdkRGBA other_colors[4];
@@ -657,12 +657,12 @@ render_border (cairo_t       *cr,
             for (j = 0; j < 4; j++)
               {
                 other_colors[j] = colors[j];
-                if ((j == 0 || j == 3) ^ (border_style[j] == GTK_BORDER_STYLE_RIDGE))
+                if ((j == 0 || j == 3) ^ (border_style[j] == CTK_BORDER_STYLE_RIDGE))
                   color_shade (&other_colors[j], 1.8, &other_colors[j]);
                 else
                   color_shade (&colors[j], 1.8, &colors[j]);
-                if (border_style[j] == GTK_BORDER_STYLE_GROOVE ||
-                    border_style[j] == GTK_BORDER_STYLE_RIDGE)
+                if (border_style[j] == CTK_BORDER_STYLE_GROOVE ||
+                    border_style[j] == CTK_BORDER_STYLE_RIDGE)
                   hidden_side |= (1 << j);
                 else
                   dont_draw |= (1 << j);
@@ -673,10 +673,10 @@ render_border (cairo_t       *cr,
             
             other_box = *border_box;
             _ctk_rounded_box_shrink (&other_box,
-                                     other_border[GTK_CSS_TOP],
-                                     other_border[GTK_CSS_RIGHT],
-                                     other_border[GTK_CSS_BOTTOM],
-                                     other_border[GTK_CSS_LEFT]);
+                                     other_border[CTK_CSS_TOP],
+                                     other_border[CTK_CSS_RIGHT],
+                                     other_border[CTK_CSS_BOTTOM],
+                                     other_border[CTK_CSS_LEFT]);
             render_frame_fill (cr, &other_box, other_border, other_colors, dont_draw);
           }
           break;
@@ -694,13 +694,13 @@ render_border (cairo_t       *cr,
 gboolean
 ctk_css_style_render_has_border (GtkCssStyle *style)
 {
-  if (_ctk_css_image_value_get_image (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE)))
+  if (_ctk_css_image_value_get_image (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE)))
     return TRUE;
 
-  return _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100) > 0
-      || _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100) > 0
-      || _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100) > 0
-      || _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100) > 0;
+  return _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100) > 0
+      || _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100) > 0
+      || _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100) > 0
+      || _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100) > 0;
 }
 
 void
@@ -716,10 +716,10 @@ ctk_css_style_render_border (GtkCssStyle      *style,
   GtkBorderImage border_image;
   double border_width[4];
 
-  border_width[0] = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
-  border_width[1] = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100);
-  border_width[2] = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100);
-  border_width[3] = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100);
+  border_width[0] = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
+  border_width[1] = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100);
+  border_width[2] = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100);
+  border_width[3] = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100);
 
   if (ctk_border_image_init (&border_image, style))
     {
@@ -738,17 +738,17 @@ ctk_css_style_render_border (GtkCssStyle      *style,
           border_width[3] == 0)
         return;
 
-      border_style[0] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_STYLE));
-      border_style[1] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_RIGHT_STYLE));
-      border_style[2] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_STYLE));
-      border_style[3] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_LEFT_STYLE));
+      border_style[0] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_TOP_STYLE));
+      border_style[1] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_RIGHT_STYLE));
+      border_style[2] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_BOTTOM_STYLE));
+      border_style[3] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_LEFT_STYLE));
 
       hide_border_sides (border_width, border_style, hidden_side);
 
-      colors[0] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_COLOR));
-      colors[1] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_RIGHT_COLOR));
-      colors[2] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR));
-      colors[3] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_LEFT_COLOR));
+      colors[0] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_TOP_COLOR));
+      colors[1] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_RIGHT_COLOR));
+      colors[2] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR));
+      colors[3] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_LEFT_COLOR));
 
       _ctk_rounded_box_init_rect (&border_box, x, y, width, height);
       _ctk_rounded_box_apply_border_radius_for_style (&border_box, style, junction);
@@ -779,7 +779,7 @@ ctk_css_style_render_border_get_clip (GtkCssStyle  *style,
 gboolean
 ctk_css_style_render_has_outline (GtkCssStyle *style)
 {
-  return _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_WIDTH), 100) > 0;
+  return _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_OUTLINE_WIDTH), 100) > 0;
 }
 
 static void
@@ -792,8 +792,8 @@ compute_outline_rect (GtkCssStyle       *style,
 {
   double offset, owidth;
 
-  owidth = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_WIDTH), 100);
-  offset = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_OFFSET), 100);
+  owidth = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_OUTLINE_WIDTH), 100);
+  offset = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_OUTLINE_OFFSET), 100);
 
   if (width <= -2 * offset)
     {
@@ -834,21 +834,21 @@ ctk_css_style_render_outline (GtkCssStyle *style,
   double border_width[4];
   GdkRGBA colors[4];
 
-  border_style[0] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_STYLE));
-  if (border_style[0] != GTK_BORDER_STYLE_NONE)
+  border_style[0] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_OUTLINE_STYLE));
+  if (border_style[0] != CTK_BORDER_STYLE_NONE)
     {
       cairo_rectangle_t rect;
 
       compute_outline_rect (style, x, y, width, height, &rect);
 
       border_style[1] = border_style[2] = border_style[3] = border_style[0];
-      border_width[0] = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_WIDTH), 100);
+      border_width[0] = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_OUTLINE_WIDTH), 100);
       border_width[3] = border_width[2] = border_width[1] = border_width[0];
-      colors[0] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_OUTLINE_COLOR));
+      colors[0] = *_ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_OUTLINE_COLOR));
       colors[3] = colors[2] = colors[1] = colors[0];
 
       _ctk_rounded_box_init_rect (&border_box, rect.x, rect.y, rect.width, rect.height);
-      _ctk_rounded_box_apply_outline_radius_for_style (&border_box, style, GTK_JUNCTION_NONE);
+      _ctk_rounded_box_apply_outline_radius_for_style (&border_box, style, CTK_JUNCTION_NONE);
 
       render_border (cr, &border_box, border_width, 0, colors, border_style);
     }

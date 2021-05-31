@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_SELECTION_H__
-#define __GTK_SELECTION_H__
+#ifndef __CTK_SELECTION_H__
+#define __CTK_SELECTION_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -66,28 +66,28 @@ struct _GtkTargetPair
 typedef struct _GtkTargetList  GtkTargetList;
 typedef struct _GtkTargetEntry GtkTargetEntry;
 
-#define GTK_TYPE_SELECTION_DATA (ctk_selection_data_get_type ())
-#define GTK_TYPE_TARGET_LIST    (ctk_target_list_get_type ())
+#define CTK_TYPE_SELECTION_DATA (ctk_selection_data_get_type ())
+#define CTK_TYPE_TARGET_LIST    (ctk_target_list_get_type ())
 
 /**
  * GtkTargetFlags:
- * @GTK_TARGET_SAME_APP: If this is set, the target will only be selected
+ * @CTK_TARGET_SAME_APP: If this is set, the target will only be selected
  *   for drags within a single application.
- * @GTK_TARGET_SAME_WIDGET: If this is set, the target will only be selected
+ * @CTK_TARGET_SAME_WIDGET: If this is set, the target will only be selected
  *   for drags within a single widget.
- * @GTK_TARGET_OTHER_APP: If this is set, the target will not be selected
+ * @CTK_TARGET_OTHER_APP: If this is set, the target will not be selected
  *   for drags within a single application.
- * @GTK_TARGET_OTHER_WIDGET: If this is set, the target will not be selected
+ * @CTK_TARGET_OTHER_WIDGET: If this is set, the target will not be selected
  *   for drags withing a single widget.
  *
  * The #GtkTargetFlags enumeration is used to specify
  * constraints on a #GtkTargetEntry.
  */
 typedef enum {
-  GTK_TARGET_SAME_APP = 1 << 0,    /*< nick=same-app >*/
-  GTK_TARGET_SAME_WIDGET = 1 << 1, /*< nick=same-widget >*/
-  GTK_TARGET_OTHER_APP = 1 << 2,   /*< nick=other-app >*/
-  GTK_TARGET_OTHER_WIDGET = 1 << 3 /*< nick=other-widget >*/
+  CTK_TARGET_SAME_APP = 1 << 0,    /*< nick=same-app >*/
+  CTK_TARGET_SAME_WIDGET = 1 << 1, /*< nick=same-widget >*/
+  CTK_TARGET_OTHER_APP = 1 << 2,   /*< nick=other-app >*/
+  CTK_TARGET_OTHER_WIDGET = 1 << 3 /*< nick=other-widget >*/
 } GtkTargetFlags;
 
 /**
@@ -282,4 +282,4 @@ void              ctk_target_entry_free       (GtkTargetEntry *data);
 
 G_END_DECLS
 
-#endif /* __GTK_SELECTION_H__ */
+#endif /* __CTK_SELECTION_H__ */

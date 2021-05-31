@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_NODE_PRIVATE_H__
-#define __GTK_CSS_NODE_PRIVATE_H__
+#ifndef __CTK_CSS_NODE_PRIVATE_H__
+#define __CTK_CSS_NODE_PRIVATE_H__
 
 #include "gtkcssnodedeclarationprivate.h"
 #include "gtkcssnodestylecacheprivate.h"
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_NODE           (ctk_css_node_get_type ())
-#define GTK_CSS_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_NODE, GtkCssNode))
-#define GTK_CSS_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_NODE, GtkCssNodeClass))
-#define GTK_IS_CSS_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_NODE))
-#define GTK_IS_CSS_NODE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_NODE))
-#define GTK_CSS_NODE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_NODE, GtkCssNodeClass))
+#define CTK_TYPE_CSS_NODE           (ctk_css_node_get_type ())
+#define CTK_CSS_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_NODE, GtkCssNode))
+#define CTK_CSS_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_NODE, GtkCssNodeClass))
+#define CTK_IS_CSS_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_NODE))
+#define CTK_IS_CSS_NODE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_NODE))
+#define CTK_CSS_NODE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_NODE, GtkCssNodeClass))
 
 typedef struct _GtkCssNodeClass         GtkCssNodeClass;
 
@@ -180,4 +180,4 @@ void                    ctk_css_node_print              (GtkCssNode             
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_NODE_PRIVATE_H__ */
+#endif /* __CTK_CSS_NODE_PRIVATE_H__ */

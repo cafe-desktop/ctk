@@ -23,7 +23,7 @@
 #include "gtkstylepropertyprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   GtkThemingEngine *engine;
 };
 
@@ -77,7 +77,7 @@ ctk_css_value_engine_print (const GtkCssValue *value,
   g_free (name);
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_ENGINE = {
+static const GtkCssValueClass CTK_CSS_VALUE_ENGINE = {
   ctk_css_value_engine_free,
   ctk_css_value_engine_compute,
   ctk_css_value_engine_equal,
@@ -90,9 +90,9 @@ _ctk_css_engine_value_new (GtkThemingEngine *engine)
 {
   GtkCssValue *result;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), NULL);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), NULL);
 
-  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_ENGINE);
+  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_ENGINE);
   result->engine = g_object_ref (engine);
 
   return result;
@@ -133,7 +133,7 @@ _ctk_css_engine_value_parse (GtkCssParser *parser)
 GtkThemingEngine *
 _ctk_css_engine_value_get_engine (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_ENGINE, NULL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_ENGINE, NULL);
 
   return value->engine;
 }

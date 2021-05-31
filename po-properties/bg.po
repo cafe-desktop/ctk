@@ -714,10 +714,10 @@ msgstr "Е важно"
 #: ../gtk/gtkaction.c:364
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Дали действието е важно. Когато е истина, представянето на този елемент от "
-"инструментите съдържа и текст в режима GTK_TOOLBAR_BOTH_HORIZ."
+"инструментите съдържа и текст в режима CTK_TOOLBAR_BOTH_HORIZ."
 
 #: ../gtk/gtkaction.c:372
 msgid "Hide if empty"
@@ -1401,8 +1401,8 @@ msgid "Default Spacing"
 msgstr "Стандартна разредка"
 
 #: ../gtk/gtkbutton.c:477
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Допълнително пространство за добавяне на бутоните GTK_CAN_DEFAULT "
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Допълнително пространство за добавяне на бутоните CTK_CAN_DEFAULT "
 
 #: ../gtk/gtkbutton.c:491
 msgid "Default Outside Spacing"
@@ -1410,10 +1410,10 @@ msgstr "Стандартна външна разредка"
 
 #: ../gtk/gtkbutton.c:492
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Допълнително пространство за добавяне към бутоните GTK_CAN_DEFAULT, което "
+"Допълнително пространство за добавяне към бутоните CTK_CAN_DEFAULT, което "
 "винаги се показва извън рамката"
 
 #: ../gtk/gtkbutton.c:497
@@ -7194,10 +7194,10 @@ msgstr "Разстояние между иконата и етикета в пи
 #: ../gtk/gtktoolitem.c:206
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Дали елементът от лентата за инструменти е важен. Ако е зададено истина, "
-"бутонът на лентата с инструменти показва текст в режим GTK_TOOLBAR_BOTH_HORIZ"
+"бутонът на лентата с инструменти показва текст в режим CTK_TOOLBAR_BOTH_HORIZ"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

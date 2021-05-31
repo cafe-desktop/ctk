@@ -42,20 +42,20 @@ ctk_css_style_render_icon (GtkCssStyle            *style,
   cairo_matrix_t matrix, transform_matrix, saved_matrix;
   GtkCssImage *image;
 
-  g_return_if_fail (GTK_IS_CSS_STYLE (style));
+  g_return_if_fail (CTK_IS_CSS_STYLE (style));
   g_return_if_fail (cr != NULL);
 
-  image = _ctk_css_image_value_get_image (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SOURCE));
+  image = _ctk_css_image_value_get_image (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_SOURCE));
   if (image == NULL)
     return;
 
   cairo_get_matrix (cr, &saved_matrix);
 
-  shadows = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW);
+  shadows = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_SHADOW);
 
   cairo_translate (cr, x, y);
 
-  if (_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
+  if (_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
     {
       /* XXX: Implement -gtk-icon-transform-origin instead of hardcoding "50% 50%" here */
       cairo_matrix_init_translate (&matrix, width / 2, height / 2);
@@ -106,17 +106,17 @@ ctk_css_style_render_icon_surface (GtkCssStyle            *style,
   cairo_matrix_t matrix, transform_matrix, saved_matrix;
   GdkRectangle extents;
 
-  g_return_if_fail (GTK_IS_CSS_STYLE (style));
+  g_return_if_fail (CTK_IS_CSS_STYLE (style));
   g_return_if_fail (cr != NULL);
   g_return_if_fail (surface != NULL);
 
-  shadows = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW);
+  shadows = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_SHADOW);
 
   if (!get_surface_extents (surface, &extents))
     {
       /* weird infinite surface, no special magic for you */
       cairo_set_source_surface (cr, surface, x, y);
-      _ctk_css_shadows_value_paint_icon (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW), cr);
+      _ctk_css_shadows_value_paint_icon (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_SHADOW), cr);
       cairo_paint (cr);
       return;
     }
@@ -124,7 +124,7 @@ ctk_css_style_render_icon_surface (GtkCssStyle            *style,
   cairo_get_matrix (cr, &saved_matrix);
   cairo_translate (cr, x + extents.x, y + extents.y);
 
-  if (_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
+  if (_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
     {
       cairo_pattern_t *pattern;
 
@@ -194,7 +194,7 @@ ctk_css_style_render_icon_get_extents (GtkCssStyle  *style,
   GtkBorder border;
   GdkRectangle rect;
 
-  g_return_if_fail (GTK_IS_CSS_STYLE (style));
+  g_return_if_fail (CTK_IS_CSS_STYLE (style));
   g_return_if_fail (extents != NULL);
 
   extents->x = x;
@@ -202,7 +202,7 @@ ctk_css_style_render_icon_get_extents (GtkCssStyle  *style,
   extents->width = width;
   extents->height = height;
 
-  if (!_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
+  if (!_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
     return;
   
   cairo_matrix_init_translate (&matrix, x + width / 2.0, y + height / 2.0);
@@ -214,7 +214,7 @@ ctk_css_style_render_icon_get_extents (GtkCssStyle  *style,
   rect.height = (height + 1) & ~1;
   ctk_cairo_rectangle_transform (extents, &rect, &matrix);
 
-  _ctk_css_shadows_value_get_extents (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW), &border);
+  _ctk_css_shadows_value_get_extents (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_SHADOW), &border);
 
   extents->x -= border.left;
   extents->y -= border.top;

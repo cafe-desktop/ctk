@@ -39,7 +39,7 @@ G_DEFINE_ABSTRACT_TYPE (GtkStyleProperty, _ctk_style_property, G_TYPE_OBJECT)
 static void
 ctk_style_property_finalize (GObject *object)
 {
-  GtkStyleProperty *property = GTK_STYLE_PROPERTY (object);
+  GtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
 
   g_warning ("finalizing %s '%s', how could this happen?", G_OBJECT_TYPE_NAME (object), property->name);
 
@@ -52,8 +52,8 @@ ctk_style_property_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkStyleProperty *property = GTK_STYLE_PROPERTY (object);
-  GtkStylePropertyClass *klass = GTK_STYLE_PROPERTY_GET_CLASS (property);
+  GtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
+  GtkStylePropertyClass *klass = CTK_STYLE_PROPERTY_GET_CLASS (property);
 
   switch (prop_id)
     {
@@ -78,7 +78,7 @@ ctk_style_property_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkStyleProperty *property = GTK_STYLE_PROPERTY (object);
+  GtkStyleProperty *property = CTK_STYLE_PROPERTY (object);
 
   switch (prop_id)
     {
@@ -150,10 +150,10 @@ _ctk_style_property_parse_value (GtkStyleProperty *property,
 {
   GtkStylePropertyClass *klass;
 
-  g_return_val_if_fail (GTK_IS_STYLE_PROPERTY (property), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_PROPERTY (property), NULL);
   g_return_val_if_fail (parser != NULL, NULL);
 
-  klass = GTK_STYLE_PROPERTY_GET_CLASS (property);
+  klass = CTK_STYLE_PROPERTY_GET_CLASS (property);
 
   return klass->parse_value (property, parser);
 }
@@ -178,13 +178,13 @@ _ctk_style_property_assign (GtkStyleProperty   *property,
 {
   GtkStylePropertyClass *klass;
 
-  g_return_if_fail (GTK_IS_STYLE_PROPERTY (property));
+  g_return_if_fail (CTK_IS_STYLE_PROPERTY (property));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  g_return_if_fail (GTK_IS_STYLE_PROPERTIES (props));
+  g_return_if_fail (CTK_IS_STYLE_PROPERTIES (props));
 G_GNUC_END_IGNORE_DEPRECATIONS;
   g_return_if_fail (value != NULL);
 
-  klass = GTK_STYLE_PROPERTY_GET_CLASS (property);
+  klass = CTK_STYLE_PROPERTY_GET_CLASS (property);
 
   klass->assign (property, props, state, value);
 }
@@ -210,10 +210,10 @@ _ctk_style_property_query (GtkStyleProperty  *property,
   GtkStylePropertyClass *klass;
 
   g_return_if_fail (value != NULL);
-  g_return_if_fail (GTK_IS_STYLE_PROPERTY (property));
+  g_return_if_fail (CTK_IS_STYLE_PROPERTY (property));
   g_return_if_fail (query_func != NULL);
 
-  klass = GTK_STYLE_PROPERTY_GET_CLASS (property);
+  klass = CTK_STYLE_PROPERTY_GET_CLASS (property);
 
   klass->query (property, value, query_func, query_data);
 }
@@ -243,7 +243,7 @@ _ctk_style_property_add_alias (const gchar *name,
   g_return_if_fail (name != NULL);
   g_return_if_fail (alias != NULL);
 
-  klass = g_type_class_peek (GTK_TYPE_STYLE_PROPERTY);
+  klass = g_type_class_peek (CTK_TYPE_STYLE_PROPERTY);
 
   property = g_hash_table_lookup (klass->properties, name);
 
@@ -272,7 +272,7 @@ _ctk_style_property_lookup (const char *name)
 
   _ctk_style_property_init_properties ();
 
-  klass = g_type_class_peek (GTK_TYPE_STYLE_PROPERTY);
+  klass = g_type_class_peek (CTK_TYPE_STYLE_PROPERTY);
 
   return g_hash_table_lookup (klass->properties, name);
 }
@@ -288,7 +288,7 @@ _ctk_style_property_lookup (const char *name)
 const char *
 _ctk_style_property_get_name (GtkStyleProperty *property)
 {
-  g_return_val_if_fail (GTK_IS_STYLE_PROPERTY (property), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_PROPERTY (property), NULL);
 
   return property->name;
 }
@@ -307,7 +307,7 @@ _ctk_style_property_get_name (GtkStyleProperty *property)
 GType
 _ctk_style_property_get_value_type (GtkStyleProperty *property)
 {
-  g_return_val_if_fail (GTK_IS_STYLE_PROPERTY (property), G_TYPE_NONE);
+  g_return_val_if_fail (CTK_IS_STYLE_PROPERTY (property), G_TYPE_NONE);
 
   return property->value_type;
 }

@@ -47,11 +47,11 @@
  *
  */
 
-#ifndef __GTK_TEXT_ATTRIBUTES_H__
-#define __GTK_TEXT_ATTRIBUTES_H__
+#ifndef __CTK_TEXT_ATTRIBUTES_H__
+#define __CTK_TEXT_ATTRIBUTES_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -63,7 +63,7 @@ G_BEGIN_DECLS
 
 typedef struct _GtkTextAttributes GtkTextAttributes;
 
-#define GTK_TYPE_TEXT_ATTRIBUTES     (ctk_text_attributes_get_type ())
+#define CTK_TYPE_TEXT_ATTRIBUTES     (ctk_text_attributes_get_type ())
 
 typedef struct _GtkTextAppearance GtkTextAppearance;
 

@@ -359,17 +359,17 @@ main (int argc, char **argv)
         pixbuf = gdk_pixbuf_get_from_window (root,
                                              0, 0, 150, 160);
    
-        window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+        window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
         g_signal_connect (window, "delete_event",
 			  G_CALLBACK (close_app), NULL);
         g_signal_connect (window, "destroy",   
 			  G_CALLBACK (close_app), NULL);
    
-        vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-        ctk_container_add (GTK_CONTAINER (window), vbox);  
+        vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+        ctk_container_add (CTK_CONTAINER (window), vbox);  
    
         drawing_area = ctk_drawing_area_new ();
-        ctk_widget_set_size_request (GTK_WIDGET (drawing_area),
+        ctk_widget_set_size_request (CTK_WIDGET (drawing_area),
                                      gdk_pixbuf_get_width (pixbuf),
                                      gdk_pixbuf_get_height (pixbuf));
         g_signal_connect (drawing_area, "draw",
@@ -381,7 +381,7 @@ main (int argc, char **argv)
 			  G_CALLBACK (keypress_check), drawing_area);    
         g_object_set_data_full (G_OBJECT (drawing_area), "pixbuf", pixbuf,
                                 (GDestroyNotify) g_object_unref);
-        ctk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
+        ctk_box_pack_start (CTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
    
         ctk_widget_show_all (window);
         ctk_main ();

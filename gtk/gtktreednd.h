@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_DND_H__
-#define __GTK_TREE_DND_H__
+#ifndef __CTK_TREE_DND_H__
+#define __CTK_TREE_DND_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -27,10 +27,10 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TREE_DRAG_SOURCE            (ctk_tree_drag_source_get_type ())
-#define GTK_TREE_DRAG_SOURCE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_DRAG_SOURCE, GtkTreeDragSource))
-#define GTK_IS_TREE_DRAG_SOURCE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_DRAG_SOURCE))
-#define GTK_TREE_DRAG_SOURCE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_TREE_DRAG_SOURCE, GtkTreeDragSourceIface))
+#define CTK_TYPE_TREE_DRAG_SOURCE            (ctk_tree_drag_source_get_type ())
+#define CTK_TREE_DRAG_SOURCE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_DRAG_SOURCE, GtkTreeDragSource))
+#define CTK_IS_TREE_DRAG_SOURCE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_DRAG_SOURCE))
+#define CTK_TREE_DRAG_SOURCE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_TREE_DRAG_SOURCE, GtkTreeDragSourceIface))
 
 typedef struct _GtkTreeDragSource      GtkTreeDragSource; /* Dummy typedef */
 typedef struct _GtkTreeDragSourceIface GtkTreeDragSourceIface;
@@ -85,10 +85,10 @@ gboolean ctk_tree_drag_source_drag_data_get    (GtkTreeDragSource *drag_source,
                                                 GtkTreePath       *path,
                                                 GtkSelectionData  *selection_data);
 
-#define GTK_TYPE_TREE_DRAG_DEST            (ctk_tree_drag_dest_get_type ())
-#define GTK_TREE_DRAG_DEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_DRAG_DEST, GtkTreeDragDest))
-#define GTK_IS_TREE_DRAG_DEST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_DRAG_DEST))
-#define GTK_TREE_DRAG_DEST_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_TREE_DRAG_DEST, GtkTreeDragDestIface))
+#define CTK_TYPE_TREE_DRAG_DEST            (ctk_tree_drag_dest_get_type ())
+#define CTK_TREE_DRAG_DEST(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_DRAG_DEST, GtkTreeDragDest))
+#define CTK_IS_TREE_DRAG_DEST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_DRAG_DEST))
+#define CTK_TREE_DRAG_DEST_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_TREE_DRAG_DEST, GtkTreeDragDestIface))
 
 typedef struct _GtkTreeDragDest      GtkTreeDragDest; /* Dummy typedef */
 typedef struct _GtkTreeDragDestIface GtkTreeDragDestIface;
@@ -138,7 +138,7 @@ gboolean ctk_tree_drag_dest_row_drop_possible  (GtkTreeDragDest   *drag_dest,
 						GtkSelectionData  *selection_data);
 
 
-/* The selection data would normally have target type GTK_TREE_MODEL_ROW in this
+/* The selection data would normally have target type CTK_TREE_MODEL_ROW in this
  * case. If the target is wrong these functions return FALSE.
  */
 GDK_AVAILABLE_IN_ALL
@@ -152,4 +152,4 @@ gboolean ctk_tree_get_row_drag_data            (GtkSelectionData  *selection_dat
 
 G_END_DECLS
 
-#endif /* __GTK_TREE_DND_H__ */
+#endif /* __CTK_TREE_DND_H__ */

@@ -69,7 +69,7 @@ add_window_cb (GtkTreeModel      *model,
   GList **selected = data;
   GdkWindow *window;
 
-  ctk_tree_model_get (GTK_TREE_MODEL (window_store),
+  ctk_tree_model_get (CTK_TREE_MODEL (window_store),
 		      iter,
 		      0, &window,
 		      -1);
@@ -83,7 +83,7 @@ get_selected_windows (void)
   GtkTreeSelection *sel;
   GList *selected;
 
-  sel = ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+  sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview));
 
   selected = NULL;
   ctk_tree_selection_selected_foreach (sel, add_window_cb, &selected);
@@ -129,10 +129,10 @@ find_window (GdkWindow *window,
 {
   GtkTreeIter iter;
 
-  if (!ctk_tree_model_get_iter_first  (GTK_TREE_MODEL (window_store), &iter))
+  if (!ctk_tree_model_get_iter_first  (CTK_TREE_MODEL (window_store), &iter))
     return FALSE;
 
-  return find_window_helper (GTK_TREE_MODEL (window_store),
+  return find_window_helper (CTK_TREE_MODEL (window_store),
 			     window,
 			     &iter,
 			     window_iter);
@@ -144,7 +144,7 @@ toggle_selection_window (GdkWindow *window)
   GtkTreeSelection *selection;
   GtkTreeIter iter;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview));
 
   if (window != NULL &&
       find_window (window, &iter))
@@ -161,7 +161,7 @@ unselect_windows (void)
 {
   GtkTreeSelection *selection;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview));
   
   ctk_tree_selection_unselect_all (selection);
 }
@@ -173,7 +173,7 @@ select_window (GdkWindow *window)
   GtkTreeSelection *selection;
   GtkTreeIter iter;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview));
 
   if (window != NULL &&
       find_window (window, &iter))
@@ -187,7 +187,7 @@ select_windows (GList *windows)
   GtkTreeIter iter;
   GList *l;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview));
   ctk_tree_selection_unselect_all (selection);
   
   for (l = windows; l != NULL; l = l->next)
@@ -295,16 +295,16 @@ save_clicked (GtkWidget *button,
 
   dialog = ctk_file_chooser_dialog_new ("Filename for window data",
 					NULL,
-					GTK_FILE_CHOOSER_ACTION_SAVE,
-					"_Cancel", GTK_RESPONSE_CANCEL,
-					"_Save", GTK_RESPONSE_ACCEPT,
+					CTK_FILE_CHOOSER_ACTION_SAVE,
+					"_Cancel", CTK_RESPONSE_CANCEL,
+					"_Save", CTK_RESPONSE_ACCEPT,
 					NULL);
   
-  ctk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
+  ctk_file_chooser_set_do_overwrite_confirmation (CTK_FILE_CHOOSER (dialog), TRUE);
   
-  if (ctk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
+  if (ctk_dialog_run (CTK_DIALOG (dialog)) == CTK_RESPONSE_ACCEPT)
     {
-      file = ctk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+      file = ctk_file_chooser_get_file (CTK_FILE_CHOOSER (dialog));
 
       g_file_replace_contents (file,
 			       s->str, s->len,
@@ -411,16 +411,16 @@ move_window_clicked (GtkWidget *button,
       gdk_window_get_position (window, &x, &y);
       
       switch (direction) {
-      case GTK_DIR_UP:
+      case CTK_DIR_UP:
 	y -= 10;
 	break;
-      case GTK_DIR_DOWN:
+      case CTK_DIR_DOWN:
 	y += 10;
 	break;
-      case GTK_DIR_LEFT:
+      case CTK_DIR_LEFT:
 	x -= 10;
 	break;
-      case GTK_DIR_RIGHT:
+      case CTK_DIR_RIGHT:
 	x += 10;
 	break;
       default:
@@ -453,57 +453,57 @@ manual_clicked (GtkWidget *button,
   h = gdk_window_get_height (selected->data);
 
   dialog = ctk_dialog_new_with_buttons ("Select new position and size",
-					GTK_WINDOW (main_window),
-					GTK_DIALOG_MODAL,
-					"_OK", GTK_RESPONSE_OK,
+					CTK_WINDOW (main_window),
+					CTK_DIALOG_MODAL,
+					"_OK", CTK_RESPONSE_OK,
 					NULL);
   
 
   grid = ctk_grid_new ();
-  ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dialog))),
+  ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dialog))),
 		      grid,
 		      FALSE, FALSE,
 		      2);
 
   
   label = ctk_label_new ("x:");
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 0, 1, 1);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 0, 1, 1);
   label = ctk_label_new ("y:");
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 1, 1, 1);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 1, 1, 1);
   label = ctk_label_new ("width:");
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 2, 1, 1);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 2, 1, 1);
   label = ctk_label_new ("height:");
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 3, 1, 1);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 3, 1, 1);
 
   xspin = ctk_spin_button_new_with_range (G_MININT, G_MAXINT, 1);
   ctk_widget_set_hexpand (xspin, TRUE);
-  ctk_spin_button_set_value (GTK_SPIN_BUTTON (xspin), x);
-  ctk_grid_attach (GTK_GRID (grid), xspin, 1, 0, 1, 1);
+  ctk_spin_button_set_value (CTK_SPIN_BUTTON (xspin), x);
+  ctk_grid_attach (CTK_GRID (grid), xspin, 1, 0, 1, 1);
   yspin = ctk_spin_button_new_with_range (G_MININT, G_MAXINT, 1);
   ctk_widget_set_hexpand (yspin, TRUE);
-  ctk_spin_button_set_value (GTK_SPIN_BUTTON (yspin), y);
-  ctk_grid_attach (GTK_GRID (grid), yspin, 1, 1, 1, 1);
+  ctk_spin_button_set_value (CTK_SPIN_BUTTON (yspin), y);
+  ctk_grid_attach (CTK_GRID (grid), yspin, 1, 1, 1, 1);
   wspin = ctk_spin_button_new_with_range (G_MININT, G_MAXINT, 1);
   ctk_widget_set_hexpand (wspin, TRUE);
-  ctk_spin_button_set_value (GTK_SPIN_BUTTON (wspin), w);
-  ctk_grid_attach (GTK_GRID (grid), wspin, 1, 2, 1, 1);
+  ctk_spin_button_set_value (CTK_SPIN_BUTTON (wspin), w);
+  ctk_grid_attach (CTK_GRID (grid), wspin, 1, 2, 1, 1);
   hspin = ctk_spin_button_new_with_range (G_MININT, G_MAXINT, 1);
   ctk_widget_set_hexpand (hspin, TRUE);
-  ctk_spin_button_set_value (GTK_SPIN_BUTTON (hspin), h);
-  ctk_grid_attach (GTK_GRID (grid), hspin, 1, 3, 1, 1);
+  ctk_spin_button_set_value (CTK_SPIN_BUTTON (hspin), h);
+  ctk_grid_attach (CTK_GRID (grid), hspin, 1, 3, 1, 1);
   
   ctk_widget_show_all (dialog);
   
-  ctk_dialog_run (GTK_DIALOG (dialog));
+  ctk_dialog_run (CTK_DIALOG (dialog));
 
-  x = ctk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (xspin));
-  y = ctk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (yspin));
-  w = ctk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (wspin));
-  h = ctk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (hspin));
+  x = ctk_spin_button_get_value_as_int (CTK_SPIN_BUTTON (xspin));
+  y = ctk_spin_button_get_value_as_int (CTK_SPIN_BUTTON (yspin));
+  w = ctk_spin_button_get_value_as_int (CTK_SPIN_BUTTON (wspin));
+  h = ctk_spin_button_get_value_as_int (CTK_SPIN_BUTTON (hspin));
 
   ctk_widget_destroy (dialog);
   
@@ -554,16 +554,16 @@ scroll_window_clicked (GtkWidget *button,
 
   dx = 0; dy = 0;
   switch (direction) {
-  case GTK_DIR_UP:
+  case CTK_DIR_UP:
     dy = 10;
     break;
-  case GTK_DIR_DOWN:
+  case CTK_DIR_DOWN:
     dy = -10;
     break;
-  case GTK_DIR_LEFT:
+  case CTK_DIR_LEFT:
     dx = 10;
     break;
-  case GTK_DIR_RIGHT:
+  case CTK_DIR_RIGHT:
     dx = -10;
     break;
   default:
@@ -755,7 +755,7 @@ render_window_cell (GtkTreeViewColumn *tree_column,
   GdkWindow *window;
   char *name;
 
-  ctk_tree_model_get (GTK_TREE_MODEL (window_store),
+  ctk_tree_model_get (CTK_TREE_MODEL (window_store),
 		      iter,
 		      0, &window,
 		      -1);
@@ -801,7 +801,7 @@ update_store (void)
   ctk_tree_store_clear (window_store);
 
   add_children (window_store, ctk_widget_get_window (darea), NULL);
-  ctk_tree_view_expand_all (GTK_TREE_VIEW (treeview));
+  ctk_tree_view_expand_all (CTK_TREE_VIEW (treeview));
 
   select_windows (selected);
   g_list_free (selected);
@@ -819,17 +819,17 @@ main (int argc, char **argv)
   
   ctk_init (&argc, &argv);
 
-  main_window = window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_container_set_border_width (GTK_CONTAINER (window), 0);
+  main_window = window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_container_set_border_width (CTK_CONTAINER (window), 0);
 
   g_signal_connect (G_OBJECT (window), "delete-event", ctk_main_quit, NULL);
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
-  ctk_container_add (GTK_CONTAINER (window), hbox);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 5);
+  ctk_container_add (CTK_CONTAINER (window), hbox);
   ctk_widget_show (hbox);
 
   frame = ctk_frame_new ("GdkWindows");
-  ctk_box_pack_start (GTK_BOX (hbox),
+  ctk_box_pack_start (CTK_BOX (hbox),
 		      frame,
 		      FALSE, FALSE,
 		      5);
@@ -843,13 +843,13 @@ main (int argc, char **argv)
 		    NULL);
 
   
-  ctk_container_add (GTK_CONTAINER (frame), darea);
+  ctk_container_add (CTK_CONTAINER (frame), darea);
   ctk_widget_realize (darea);
   ctk_widget_show (darea);
 
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  ctk_box_pack_start (GTK_BOX (hbox),
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
+  ctk_box_pack_start (CTK_BOX (hbox),
 		      vbox,
 		      FALSE, FALSE,
 		      5);
@@ -857,9 +857,9 @@ main (int argc, char **argv)
 
   window_store = ctk_tree_store_new (1, GDK_TYPE_WINDOW);
   
-  treeview = ctk_tree_view_new_with_model (GTK_TREE_MODEL (window_store));
-  ctk_tree_selection_set_mode (ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview)),
-			       GTK_SELECTION_MULTIPLE);
+  treeview = ctk_tree_view_new_with_model (CTK_TREE_MODEL (window_store));
+  ctk_tree_selection_set_mode (ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview)),
+			       CTK_SELECTION_MULTIPLE);
   column = ctk_tree_view_column_new ();
   ctk_tree_view_column_set_title (column, "Window");
   renderer = ctk_cell_renderer_text_new ();
@@ -869,13 +869,13 @@ main (int argc, char **argv)
 					   render_window_cell,
 					   NULL, NULL);
 
-  ctk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (treeview), column);
 
 
   scrolled = ctk_scrolled_window_new (NULL, NULL);
   ctk_widget_set_size_request (scrolled, 200, 400);
-  ctk_container_add (GTK_CONTAINER (scrolled), treeview);
-  ctk_box_pack_start (GTK_BOX (vbox),
+  ctk_container_add (CTK_CONTAINER (scrolled), treeview);
+  ctk_box_pack_start (CTK_BOX (vbox),
 		      scrolled,
 		      FALSE, FALSE,
 		      5);
@@ -883,52 +883,52 @@ main (int argc, char **argv)
   ctk_widget_show (treeview);
   
   grid = ctk_grid_new ();
-  ctk_grid_set_row_homogeneous (GTK_GRID (grid), TRUE);
-  ctk_grid_set_column_homogeneous (GTK_GRID (grid), TRUE);
-  ctk_box_pack_start (GTK_BOX (vbox),
+  ctk_grid_set_row_homogeneous (CTK_GRID (grid), TRUE);
+  ctk_grid_set_column_homogeneous (CTK_GRID (grid), TRUE);
+  ctk_box_pack_start (CTK_BOX (vbox),
 		      grid,
 		      FALSE, FALSE,
 		      2);
   ctk_widget_show (grid);
 
   button = ctk_button_new ();
-  ctk_button_set_image (GTK_BUTTON (button),
+  ctk_button_set_image (CTK_BUTTON (button),
 			ctk_image_new_from_icon_name ("go-previous-symbolic",
-                                                      GTK_ICON_SIZE_BUTTON));
+                                                      CTK_ICON_SIZE_BUTTON));
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (move_window_clicked), 
-		    GINT_TO_POINTER (GTK_DIR_LEFT));
-  ctk_grid_attach (GTK_GRID (grid), button, 0, 1, 1, 1);
+		    GINT_TO_POINTER (CTK_DIR_LEFT));
+  ctk_grid_attach (CTK_GRID (grid), button, 0, 1, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new ();
-  ctk_button_set_image (GTK_BUTTON (button),
+  ctk_button_set_image (CTK_BUTTON (button),
 			ctk_image_new_from_icon_name ("go-up-symbolic",
-                                                      GTK_ICON_SIZE_BUTTON));
+                                                      CTK_ICON_SIZE_BUTTON));
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (move_window_clicked), 
-		    GINT_TO_POINTER (GTK_DIR_UP));
-  ctk_grid_attach (GTK_GRID (grid), button, 1, 0, 1, 1);
+		    GINT_TO_POINTER (CTK_DIR_UP));
+  ctk_grid_attach (CTK_GRID (grid), button, 1, 0, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new ();
-  ctk_button_set_image (GTK_BUTTON (button),
+  ctk_button_set_image (CTK_BUTTON (button),
 			ctk_image_new_from_icon_name ("go-next-symbolic",
-                                                      GTK_ICON_SIZE_BUTTON));
+                                                      CTK_ICON_SIZE_BUTTON));
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (move_window_clicked), 
-		    GINT_TO_POINTER (GTK_DIR_RIGHT));
-  ctk_grid_attach (GTK_GRID (grid), button, 2, 1, 1, 1);
+		    GINT_TO_POINTER (CTK_DIR_RIGHT));
+  ctk_grid_attach (CTK_GRID (grid), button, 2, 1, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new ();
-  ctk_button_set_image (GTK_BUTTON (button),
+  ctk_button_set_image (CTK_BUTTON (button),
 			ctk_image_new_from_icon_name ("go-down-symbolic",
-                                                      GTK_ICON_SIZE_BUTTON));
+                                                      CTK_ICON_SIZE_BUTTON));
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (move_window_clicked), 
-		    GINT_TO_POINTER (GTK_DIR_DOWN));
-  ctk_grid_attach (GTK_GRID (grid), button, 1, 2, 1, 1);
+		    GINT_TO_POINTER (CTK_DIR_DOWN));
+  ctk_grid_attach (CTK_GRID (grid), button, 1, 2, 1, 1);
   ctk_widget_show (button);
 
 
@@ -936,14 +936,14 @@ main (int argc, char **argv)
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (raise_window_clicked), 
 		    NULL);
-  ctk_grid_attach (GTK_GRID (grid), button, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 0, 0, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("Lower");
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (lower_window_clicked), 
 		    NULL);
-  ctk_grid_attach (GTK_GRID (grid), button, 0, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 0, 2, 1, 1);
   ctk_widget_show (button);
 
 
@@ -951,81 +951,81 @@ main (int argc, char **argv)
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (smaller_window_clicked), 
 		    NULL);
-  ctk_grid_attach (GTK_GRID (grid), button, 2, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 2, 0, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("Larger");
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (larger_window_clicked), 
 		    NULL);
-  ctk_grid_attach (GTK_GRID (grid), button, 2, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 2, 2, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("Native");
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (native_window_clicked), 
 		    NULL);
-  ctk_grid_attach (GTK_GRID (grid), button, 1, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 1, 1, 1, 1);
   ctk_widget_show (button);
 
 
   button = ctk_button_new_with_label ("scroll");
-  ctk_button_set_image (GTK_BUTTON (button),
+  ctk_button_set_image (CTK_BUTTON (button),
 			ctk_image_new_from_icon_name ("go-up-symbolic",
-                                                      GTK_ICON_SIZE_BUTTON));
+                                                      CTK_ICON_SIZE_BUTTON));
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (scroll_window_clicked), 
-		    GINT_TO_POINTER (GTK_DIR_UP));
-  ctk_grid_attach (GTK_GRID (grid), button, 3, 0, 1, 1);
+		    GINT_TO_POINTER (CTK_DIR_UP));
+  ctk_grid_attach (CTK_GRID (grid), button, 3, 0, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("scroll");
-  ctk_button_set_image (GTK_BUTTON (button),
+  ctk_button_set_image (CTK_BUTTON (button),
 			ctk_image_new_from_icon_name ("go-down-symbolic",
-                                                      GTK_ICON_SIZE_BUTTON));
+                                                      CTK_ICON_SIZE_BUTTON));
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (scroll_window_clicked), 
-		    GINT_TO_POINTER (GTK_DIR_DOWN));
-  ctk_grid_attach (GTK_GRID (grid), button, 3, 1, 1, 1);
+		    GINT_TO_POINTER (CTK_DIR_DOWN));
+  ctk_grid_attach (CTK_GRID (grid), button, 3, 1, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("Manual");
   g_signal_connect (button, "clicked", 
 		    G_CALLBACK (manual_clicked),
 		    NULL);
-  ctk_grid_attach (GTK_GRID (grid), button, 3, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 3, 2, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("More transparent");
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (alpha_clicked),
 		    GINT_TO_POINTER (-1));
-  ctk_grid_attach (GTK_GRID (grid), button, 0, 3, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 0, 3, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("Less transparent");
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (alpha_clicked),
 		    GINT_TO_POINTER (1));
-  ctk_grid_attach (GTK_GRID (grid), button, 1, 3, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 1, 3, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("Restack above");
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (restack_clicked),
 		    GINT_TO_POINTER (1));
-  ctk_grid_attach (GTK_GRID (grid), button, 2, 3, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 2, 3, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("Restack below");
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (restack_clicked),
 		    0);
-  ctk_grid_attach (GTK_GRID (grid), button, 3, 3, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 3, 3, 1, 1);
   ctk_widget_show (button);
 
   button = ctk_button_new_with_label ("Add window");
-  ctk_box_pack_start (GTK_BOX (vbox),
+  ctk_box_pack_start (CTK_BOX (vbox),
 		      button,
 		      FALSE, FALSE,
 		      2);
@@ -1035,7 +1035,7 @@ main (int argc, char **argv)
 		    NULL);
   
   button = ctk_button_new_with_label ("Remove window");
-  ctk_box_pack_start (GTK_BOX (vbox),
+  ctk_box_pack_start (CTK_BOX (vbox),
 		      button,
 		      FALSE, FALSE,
 		      2);
@@ -1045,7 +1045,7 @@ main (int argc, char **argv)
 		    NULL);
 
   button = ctk_button_new_with_label ("Save");
-  ctk_box_pack_start (GTK_BOX (vbox),
+  ctk_box_pack_start (CTK_BOX (vbox),
 		      button,
 		      FALSE, FALSE,
 		      2);
@@ -1055,7 +1055,7 @@ main (int argc, char **argv)
 		    NULL);
 
   button = ctk_button_new_with_label ("Refresh");
-  ctk_box_pack_start (GTK_BOX (vbox),
+  ctk_box_pack_start (CTK_BOX (vbox),
 		      button,
 		      FALSE, FALSE,
 		      2);

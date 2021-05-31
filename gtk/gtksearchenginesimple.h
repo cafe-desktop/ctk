@@ -19,19 +19,19 @@
  * Based on nautilus-search-engine-simple.h
  */
 
-#ifndef __GTK_SEARCH_ENGINE_SIMPLE_H__
-#define __GTK_SEARCH_ENGINE_SIMPLE_H__
+#ifndef __CTK_SEARCH_ENGINE_SIMPLE_H__
+#define __CTK_SEARCH_ENGINE_SIMPLE_H__
 
 #include "gtksearchengine.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_ENGINE_SIMPLE		(_ctk_search_engine_simple_get_type ())
-#define GTK_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimple))
-#define GTK_SEARCH_ENGINE_SIMPLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimpleClass))
-#define GTK_IS_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEARCH_ENGINE_SIMPLE))
-#define GTK_IS_SEARCH_ENGINE_SIMPLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SEARCH_ENGINE_SIMPLE))
-#define GTK_SEARCH_ENGINE_SIMPLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimpleClass))
+#define CTK_TYPE_SEARCH_ENGINE_SIMPLE		(_ctk_search_engine_simple_get_type ())
+#define CTK_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimple))
+#define CTK_SEARCH_ENGINE_SIMPLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimpleClass))
+#define CTK_IS_SEARCH_ENGINE_SIMPLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEARCH_ENGINE_SIMPLE))
+#define CTK_IS_SEARCH_ENGINE_SIMPLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEARCH_ENGINE_SIMPLE))
+#define CTK_SEARCH_ENGINE_SIMPLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_SIMPLE, GtkSearchEngineSimpleClass))
 
 typedef struct _GtkSearchEngineSimple GtkSearchEngineSimple;
 typedef struct _GtkSearchEngineSimpleClass GtkSearchEngineSimpleClass;
@@ -49,4 +49,4 @@ void             _ctk_search_engine_simple_set_indexed_cb (GtkSearchEngineSimple
 
 G_END_DECLS
 
-#endif /* __GTK_SEARCH_ENGINE_SIMPLE_H__ */
+#endif /* __CTK_SEARCH_ENGINE_SIMPLE_H__ */

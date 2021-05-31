@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_ARRAY_VALUE_PRIVATE_H__
-#define __GTK_CSS_ARRAY_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_ARRAY_VALUE_PRIVATE_H__
+#define __CTK_CSS_ARRAY_VALUE_PRIVATE_H__
 
 #include "gtkcssparserprivate.h"
 #include "gtkcssvalueprivate.h"
@@ -39,4 +39,4 @@ guint               _ctk_css_array_value_get_n_values   (const GtkCssValue     *
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_ARRAY_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_ARRAY_VALUE_PRIVATE_H__ */

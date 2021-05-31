@@ -67,7 +67,7 @@
 
 struct _GtkIMContextSimplePrivate
 {
-  guint16        compose_buffer[GTK_MAX_COMPOSE_LEN + 1];
+  guint16        compose_buffer[CTK_MAX_COMPOSE_LEN + 1];
   gunichar       tentative_match;
   gint           tentative_match_len;
 
@@ -120,12 +120,12 @@ static void     ctk_im_context_simple_get_preedit_string (GtkIMContext          
 static void     ctk_im_context_simple_set_client_window  (GtkIMContext             *context,
                                                           GdkWindow                *window);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkIMContextSimple, ctk_im_context_simple, GTK_TYPE_IM_CONTEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkIMContextSimple, ctk_im_context_simple, CTK_TYPE_IM_CONTEXT)
 
 static void
 ctk_im_context_simple_class_init (GtkIMContextSimpleClass *class)
 {
-  GtkIMContextClass *im_context_class = GTK_IM_CONTEXT_CLASS (class);
+  GtkIMContextClass *im_context_class = CTK_IM_CONTEXT_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
   im_context_class->filter_keypress = ctk_im_context_simple_filter_keypress;
@@ -238,9 +238,9 @@ init_compose_table_thread_cb (GTask            *task,
   if (g_task_return_error_if_cancelled (task))
     return;
 
-  g_return_if_fail (GTK_IS_IM_CONTEXT_SIMPLE (task_data));
+  g_return_if_fail (CTK_IS_IM_CONTEXT_SIMPLE (task_data));
 
-  ctk_im_context_simple_init_compose_table (GTK_IM_CONTEXT_SIMPLE (task_data));
+  ctk_im_context_simple_init_compose_table (CTK_IM_CONTEXT_SIMPLE (task_data));
 }
 
 void
@@ -278,14 +278,14 @@ ctk_im_context_simple_finalize (GObject *obj)
 GtkIMContext *
 ctk_im_context_simple_new (void)
 {
-  return g_object_new (GTK_TYPE_IM_CONTEXT_SIMPLE, NULL);
+  return g_object_new (CTK_TYPE_IM_CONTEXT_SIMPLE, NULL);
 }
 
 static void
 ctk_im_context_simple_commit_char (GtkIMContext *context,
 				   gunichar ch)
 {
-  GtkIMContextSimple *context_simple = GTK_IM_CONTEXT_SIMPLE (context);
+  GtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   GtkIMContextSimplePrivate *priv = context_simple->priv;
   gchar buf[10];
   gint len;
@@ -400,7 +400,7 @@ check_table (GtkIMContextSimple    *context_simple,
 		}
 	    }
 
-	  ctk_im_context_simple_commit_char (GTK_IM_CONTEXT (context_simple), value);
+	  ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple), value);
 	  priv->compose_buffer[0] = 0;
 	}
       
@@ -448,7 +448,7 @@ check_win32_special_cases (GtkIMContextSimple    *context_simple,
 	}
       if (value > 0)
 	{
-	  ctk_im_context_simple_commit_char (GTK_IM_CONTEXT (context_simple), value);
+	  ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple), value);
 	  priv->compose_buffer[0] = 0;
 
 	  return TRUE;
@@ -471,7 +471,7 @@ check_win32_special_case_after_compact_match (GtkIMContextSimple    *context_sim
       priv->compose_buffer[0] == priv->compose_buffer[1] &&
       IS_DEAD_KEY (priv->compose_buffer[0]))
     {
-      ctk_im_context_simple_commit_char (GTK_IM_CONTEXT (context_simple), value);
+      ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple), value);
     }
 }
 
@@ -524,7 +524,7 @@ check_quartz_special_cases (GtkIMContextSimple *context_simple,
 
   if (value > 0)
     {
-      ctk_im_context_simple_commit_char (GTK_IM_CONTEXT (context_simple),
+      ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple),
                                          gdk_keyval_to_unicode (value));
       priv->compose_buffer[0] = 0;
 
@@ -642,7 +642,7 @@ ctk_check_compact_table (const GtkComposeTableCompact  *table,
 static gboolean
 check_normalize_nfc (gunichar* combination_buffer, gint n_compose)
 {
-  gunichar combination_buffer_temp[GTK_MAX_COMPOSE_LEN];
+  gunichar combination_buffer_temp[CTK_MAX_COMPOSE_LEN];
   gchar *combination_utf8_temp = NULL;
   gchar *nfc_temp = NULL;
   gint n_combinations;
@@ -665,7 +665,7 @@ check_normalize_nfc (gunichar* combination_buffer, gint n_compose)
           combination_buffer[i] = 0x342;
     }
 
-  memcpy (combination_buffer_temp, combination_buffer, GTK_MAX_COMPOSE_LEN * sizeof (gunichar) );
+  memcpy (combination_buffer_temp, combination_buffer, CTK_MAX_COMPOSE_LEN * sizeof (gunichar) );
 
   for (i = 0; i < n_combinations; i++ )
     {
@@ -675,7 +675,7 @@ check_normalize_nfc (gunichar* combination_buffer, gint n_compose)
 
       if (g_utf8_strlen (nfc_temp, -1) == 1)
         {
-          memcpy (combination_buffer, combination_buffer_temp, GTK_MAX_COMPOSE_LEN * sizeof (gunichar) );
+          memcpy (combination_buffer, combination_buffer_temp, CTK_MAX_COMPOSE_LEN * sizeof (gunichar) );
 
           g_free (combination_utf8_temp);
           g_free (nfc_temp);
@@ -706,13 +706,13 @@ ctk_check_algorithmically (const guint16       *compose_buffer,
 
 {
   gint i;
-  gunichar combination_buffer[GTK_MAX_COMPOSE_LEN];
+  gunichar combination_buffer[CTK_MAX_COMPOSE_LEN];
   gchar *combination_utf8, *nfc;
 
   if (output_char)
     *output_char = 0;
 
-  if (n_compose >= GTK_MAX_COMPOSE_LEN)
+  if (n_compose >= CTK_MAX_COMPOSE_LEN)
     return FALSE;
 
   for (i = 0; i < n_compose && IS_DEAD_KEY (compose_buffer[i]); i++)
@@ -888,7 +888,7 @@ no_sequence_matches (GtkIMContextSimple *context_simple,
   GtkIMContext *context;
   gunichar ch;
   
-  context = GTK_IM_CONTEXT (context_simple);
+  context = CTK_IM_CONTEXT (context_simple);
   
   /* No compose sequences found, check first if we have a partial
    * match pending.
@@ -988,7 +988,7 @@ static gboolean
 ctk_im_context_simple_filter_keypress (GtkIMContext *context,
 				       GdkEventKey  *event)
 {
-  GtkIMContextSimple *context_simple = GTK_IM_CONTEXT_SIMPLE (context);
+  GtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   GtkIMContextSimplePrivate *priv = context_simple->priv;
   GdkDisplay *display = gdk_window_get_display (event->window);
   GSList *tmp_list;  
@@ -1234,7 +1234,7 @@ ctk_im_context_simple_filter_keypress (GtkIMContext *context,
               for (i = 0; i < output_size; i++)
                 {
                   output_char = gdk_keyval_to_unicode (output[i]);
-                  ctk_im_context_simple_commit_char (GTK_IM_CONTEXT (context_simple),
+                  ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple),
                                                      output_char);
                 }
               priv->compose_buffer[0] = 0;
@@ -1282,7 +1282,7 @@ ctk_im_context_simple_filter_keypress (GtkIMContext *context,
             {
               if (compose_match)
                 {
-                  ctk_im_context_simple_commit_char (GTK_IM_CONTEXT (context_simple),
+                  ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple),
                                                      output_char);
 #ifdef G_OS_WIN32
                   check_win32_special_case_after_compact_match (context_simple,
@@ -1310,7 +1310,7 @@ ctk_im_context_simple_filter_keypress (GtkIMContext *context,
         {
           if (output_char)
             {
-              ctk_im_context_simple_commit_char (GTK_IM_CONTEXT (context_simple),
+              ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple),
                                                  output_char);
               priv->compose_buffer[0] = 0;
             }
@@ -1325,7 +1325,7 @@ ctk_im_context_simple_filter_keypress (GtkIMContext *context,
 static void
 ctk_im_context_simple_reset (GtkIMContext *context)
 {
-  GtkIMContextSimple *context_simple = GTK_IM_CONTEXT_SIMPLE (context);
+  GtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   GtkIMContextSimplePrivate *priv = context_simple->priv;
 
   priv->compose_buffer[0] = 0;
@@ -1346,7 +1346,7 @@ ctk_im_context_simple_get_preedit_string (GtkIMContext   *context,
 					  PangoAttrList **attrs,
 					  gint           *cursor_pos)
 {
-  GtkIMContextSimple *context_simple = GTK_IM_CONTEXT_SIMPLE (context);
+  GtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   GtkIMContextSimplePrivate *priv = context_simple->priv;
   char outbuf[37]; /* up to 6 hex digits */
   int len = 0;
@@ -1396,7 +1396,7 @@ static void
 ctk_im_context_simple_set_client_window  (GtkIMContext *context,
                                           GdkWindow    *window)
 {
-  GtkIMContextSimple *im_context_simple = GTK_IM_CONTEXT_SIMPLE (context);
+  GtkIMContextSimple *im_context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   gboolean run_compose_table = FALSE;
 
   if (!window)
@@ -1421,7 +1421,7 @@ ctk_im_context_simple_set_client_window  (GtkIMContext *context,
  * @context_simple: A #GtkIMContextSimple
  * @data: (array): the table
  * @max_seq_len: Maximum length of a sequence in the table
- *               (cannot be greater than #GTK_MAX_COMPOSE_LEN)
+ *               (cannot be greater than #CTK_MAX_COMPOSE_LEN)
  * @n_seqs: number of sequences in the table
  * 
  * Adds an additional table to search to the input context.
@@ -1440,7 +1440,7 @@ ctk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
 				 gint                max_seq_len,
 				 gint                n_seqs)
 {
-  g_return_if_fail (GTK_IS_IM_CONTEXT_SIMPLE (context_simple));
+  g_return_if_fail (CTK_IS_IM_CONTEXT_SIMPLE (context_simple));
 
   G_LOCK (global_tables);
 
@@ -1463,7 +1463,7 @@ void
 ctk_im_context_simple_add_compose_file (GtkIMContextSimple *context_simple,
                                         const gchar        *compose_file)
 {
-  g_return_if_fail (GTK_IS_IM_CONTEXT_SIMPLE (context_simple));
+  g_return_if_fail (CTK_IS_IM_CONTEXT_SIMPLE (context_simple));
 
   G_LOCK (global_tables);
 

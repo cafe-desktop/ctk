@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_ACCESSIBLE_PRIVATE_H__
-#define __GTK_CELL_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_CELL_ACCESSIBLE_PRIVATE_H__
+#define __CTK_CELL_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtkcellaccessible.h>
 
@@ -39,4 +39,4 @@ gboolean _ctk_cell_accessible_remove_state  (GtkCellAccessible *cell,
 
 G_END_DECLS
 
-#endif /* __GTK_CELL_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_CELL_ACCESSIBLE_PRIVATE_H__ */

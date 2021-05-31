@@ -22,7 +22,7 @@
 #include "gtkcheckmenuitemaccessible.h"
 
 
-G_DEFINE_TYPE (GtkCheckMenuItemAccessible, ctk_check_menu_item_accessible, GTK_TYPE_MENU_ITEM_ACCESSIBLE)
+G_DEFINE_TYPE (GtkCheckMenuItemAccessible, ctk_check_menu_item_accessible, CTK_TYPE_MENU_ITEM_ACCESSIBLE)
 
 static void
 toggled_cb (GtkWidget *widget)
@@ -31,7 +31,7 @@ toggled_cb (GtkWidget *widget)
   GtkCheckMenuItem *check_menu_item;
   gboolean active;
 
-  check_menu_item = GTK_CHECK_MENU_ITEM (widget);
+  check_menu_item = CTK_CHECK_MENU_ITEM (widget);
   active = ctk_check_menu_item_get_active (check_menu_item);
 
   accessible = ctk_widget_get_accessible (widget);
@@ -56,13 +56,13 @@ ctk_check_menu_item_accessible_ref_state_set (AtkObject *accessible)
   GtkCheckMenuItem *check_menu_item;
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
   state_set = ATK_OBJECT_CLASS (ctk_check_menu_item_accessible_parent_class)->ref_state_set (accessible);
 
-  check_menu_item = GTK_CHECK_MENU_ITEM (widget);
+  check_menu_item = CTK_CHECK_MENU_ITEM (widget);
 
   if (ctk_check_menu_item_get_active (check_menu_item))
     atk_state_set_add_state (state_set, ATK_STATE_CHECKED);
@@ -80,14 +80,14 @@ static void
 ctk_check_menu_item_accessible_notify_gtk (GObject    *obj,
                                            GParamSpec *pspec)
 {
-  GtkCheckMenuItem *check_menu_item = GTK_CHECK_MENU_ITEM (obj);
+  GtkCheckMenuItem *check_menu_item = CTK_CHECK_MENU_ITEM (obj);
   AtkObject *atk_obj;
   gboolean sensitive;
   gboolean inconsistent;
   gboolean active;
 
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (check_menu_item));
-  sensitive = ctk_widget_get_sensitive (GTK_WIDGET (check_menu_item));
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (check_menu_item));
+  sensitive = ctk_widget_get_sensitive (CTK_WIDGET (check_menu_item));
   inconsistent = ctk_check_menu_item_get_inconsistent (check_menu_item);
   active = ctk_check_menu_item_get_active (check_menu_item);
 
@@ -107,7 +107,7 @@ ctk_check_menu_item_accessible_notify_gtk (GObject    *obj,
       atk_object_notify_state_change (atk_obj, ATK_STATE_CHECKED, active);
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_check_menu_item_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_check_menu_item_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static void

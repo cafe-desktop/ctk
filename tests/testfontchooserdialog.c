@@ -55,7 +55,7 @@ notify_font_cb (GtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
 static void
 notify_preview_text_cb (GObject *fontchooser, GParamSpec *pspec, gpointer data)
 {
-  g_debug ("Changed preview text %s", ctk_font_chooser_get_preview_text (GTK_FONT_CHOOSER (fontchooser)));
+  g_debug ("Changed preview text %s", ctk_font_chooser_get_preview_text (CTK_FONT_CHOOSER (fontchooser)));
 }
 
 static void
@@ -89,13 +89,13 @@ main (int argc, char *argv[])
 
       fontmap = pango_cairo_font_map_new_for_font_type (CAIRO_FONT_TYPE_FT);
       pango_fc_font_map_set_config (PANGO_FC_FONT_MAP (fontmap), config);
-      ctk_font_chooser_set_font_map (GTK_FONT_CHOOSER (font_button), fontmap);
+      ctk_font_chooser_set_font_map (CTK_FONT_CHOOSER (font_button), fontmap);
     }
 
-  ctk_font_button_set_use_font (GTK_FONT_BUTTON (font_button), TRUE);
+  ctk_font_button_set_use_font (CTK_FONT_BUTTON (font_button), TRUE);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_container_add (GTK_CONTAINER (window), font_button);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_container_add (CTK_CONTAINER (window), font_button);
   ctk_widget_show_all (window);
 
   g_signal_connect (font_button, "notify::font",
@@ -107,7 +107,7 @@ main (int argc, char *argv[])
 
   if (argc >= 2 && strcmp (argv[1], "--monospace") == 0)
     {
-      ctk_font_chooser_set_filter_func (GTK_FONT_CHOOSER (font_button),
+      ctk_font_chooser_set_filter_func (CTK_FONT_CHOOSER (font_button),
                                         monospace_filter, NULL, NULL);
     }
 

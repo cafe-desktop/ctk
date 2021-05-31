@@ -271,8 +271,8 @@ msgstr "重要的"
 #: ../gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
-msgstr "是否該指令被視為重要指令。當設為 TRUE 時，代理此指令的工具列項目會根據GTK_TOOLBAR_BOTH_HORIZ 模式顯示對應文字。"
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
+msgstr "是否該指令被視為重要指令。當設為 TRUE 時，代理此指令的工具列項目會根據CTK_TOOLBAR_BOTH_HORIZ 模式顯示對應文字。"
 
 #: ../gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1675,8 +1675,8 @@ msgid "Default Spacing"
 msgstr "預設間隔"
 
 #: ../gtk/gtkbutton.c:494
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "加給 GTK_CAN_DEFAULT 的額外空間"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "加給 CTK_CAN_DEFAULT 的額外空間"
 
 #: ../gtk/gtkbutton.c:510
 msgid "Default Outside Spacing"
@@ -1684,9 +1684,9 @@ msgstr "預設外部間隔"
 
 #: ../gtk/gtkbutton.c:511
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
-msgstr "加給 GTK_CAN_DEFAULT 按鈕邊緣外部的額外空間"
+msgstr "加給 CTK_CAN_DEFAULT 按鈕邊緣外部的額外空間"
 
 #: ../gtk/gtkbutton.c:516
 msgid "Child X Displacement"
@@ -3958,8 +3958,8 @@ msgid "Baseline Row"
 msgstr "基線列"
 
 #: ../gtk/gtkgrid.c:1763
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
-msgstr "當 valign 為 GTK_ALIGN_BASELINE 時要對齊基線的列"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
+msgstr "當 valign 為 CTK_ALIGN_BASELINE 時要對齊基線的列"
 
 #: ../gtk/gtkgrid.c:1781
 msgid "The row number to attach the top side of a child widget to"
@@ -7418,8 +7418,8 @@ msgstr "圖示與標籤間的間距(像素)"
 #: ../gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
-msgstr "是否工具列物件被視為重要的。若為 TRUE, 工具列按鈕以GTK_TOOLBAR_BOTH_HORIZ模式顯示文字"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
+msgstr "是否工具列物件被視為重要的。若為 TRUE, 工具列按鈕以CTK_TOOLBAR_BOTH_HORIZ模式顯示文字"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

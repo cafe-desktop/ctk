@@ -295,7 +295,7 @@ ctk_application_load_resources (GtkApplication *application)
 static void
 ctk_application_startup (GApplication *g_application)
 {
-  GtkApplication *application = GTK_APPLICATION (g_application);
+  GtkApplication *application = CTK_APPLICATION (g_application);
 
   G_APPLICATION_CLASS (ctk_application_parent_class)->startup (g_application);
 
@@ -312,7 +312,7 @@ ctk_application_startup (GApplication *g_application)
 static void
 ctk_application_shutdown (GApplication *g_application)
 {
-  GtkApplication *application = GTK_APPLICATION (g_application);
+  GtkApplication *application = CTK_APPLICATION (g_application);
 
   if (application->priv->impl == NULL)
     return;
@@ -365,7 +365,7 @@ static void
 ctk_application_before_emit (GApplication *g_application,
                              GVariant     *platform_data)
 {
-  GtkApplication *application = GTK_APPLICATION (g_application);
+  GtkApplication *application = CTK_APPLICATION (g_application);
 
   gdk_threads_enter ();
 
@@ -410,19 +410,19 @@ ctk_application_window_added (GtkApplication *application,
 {
   GtkApplicationPrivate *priv = application->priv;
 
-  if (GTK_IS_APPLICATION_WINDOW (window))
+  if (CTK_IS_APPLICATION_WINDOW (window))
     {
-      ctk_application_window_set_id (GTK_APPLICATION_WINDOW (window), ++priv->last_window_id);
+      ctk_application_window_set_id (CTK_APPLICATION_WINDOW (window), ++priv->last_window_id);
       if (priv->help_overlay_path)
         {
           GtkBuilder *builder;
           GtkWidget *help_overlay;
 
           builder = ctk_builder_new_from_resource (priv->help_overlay_path);
-          help_overlay = GTK_WIDGET (ctk_builder_get_object (builder, "help_overlay"));
-          if (GTK_IS_SHORTCUTS_WINDOW (help_overlay))
-            ctk_application_window_set_help_overlay (GTK_APPLICATION_WINDOW (window),
-                                                     GTK_SHORTCUTS_WINDOW (help_overlay));
+          help_overlay = CTK_WIDGET (ctk_builder_get_object (builder, "help_overlay"));
+          if (CTK_IS_SHORTCUTS_WINDOW (help_overlay))
+            ctk_application_window_set_help_overlay (CTK_APPLICATION_WINDOW (window),
+                                                     CTK_SHORTCUTS_WINDOW (help_overlay));
           g_object_unref (builder);
         }
     }
@@ -537,7 +537,7 @@ ctk_application_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkApplication *application = GTK_APPLICATION (object);
+  GtkApplication *application = CTK_APPLICATION (object);
 
   switch (prop_id)
     {
@@ -573,7 +573,7 @@ ctk_application_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkApplication *application = GTK_APPLICATION (object);
+  GtkApplication *application = CTK_APPLICATION (object);
 
   switch (prop_id)
     {
@@ -598,7 +598,7 @@ ctk_application_set_property (GObject      *object,
 static void
 ctk_application_finalize (GObject *object)
 {
-  GtkApplication *application = GTK_APPLICATION (object);
+  GtkApplication *application = CTK_APPLICATION (object);
 
   g_clear_object (&application->priv->menus_builder);
   g_clear_object (&application->priv->app_menu);
@@ -697,7 +697,7 @@ ctk_application_dbus_register (GApplication     *application,
                                const char       *obect_path,
                                GError          **error)
 {
-  GtkApplicationPrivate *priv = ctk_application_get_instance_private (GTK_APPLICATION (application));
+  GtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
   GDBusInterfaceVTable vtable = {
     sysprof_profiler_method_call,
     NULL,
@@ -733,7 +733,7 @@ ctk_application_dbus_unregister (GApplication     *application,
                                  GDBusConnection  *connection,
                                  const char       *obect_path)
 {
-  GtkApplicationPrivate *priv = ctk_application_get_instance_private (GTK_APPLICATION (application));
+  GtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
 
   g_dbus_connection_unregister_object (connection, priv->profiler_id);
 }
@@ -791,11 +791,11 @@ ctk_application_class_init (GtkApplicationClass *class)
    * Since: 3.2
    */
   ctk_application_signals[WINDOW_ADDED] =
-    g_signal_new (I_("window-added"), GTK_TYPE_APPLICATION, G_SIGNAL_RUN_FIRST,
+    g_signal_new (I_("window-added"), CTK_TYPE_APPLICATION, G_SIGNAL_RUN_FIRST,
                   G_STRUCT_OFFSET (GtkApplicationClass, window_added),
                   NULL, NULL,
                   NULL,
-                  G_TYPE_NONE, 1, GTK_TYPE_WINDOW);
+                  G_TYPE_NONE, 1, CTK_TYPE_WINDOW);
 
   /**
    * GtkApplication::window-removed:
@@ -809,11 +809,11 @@ ctk_application_class_init (GtkApplicationClass *class)
    * Since: 3.2
    */
   ctk_application_signals[WINDOW_REMOVED] =
-    g_signal_new (I_("window-removed"), GTK_TYPE_APPLICATION, G_SIGNAL_RUN_FIRST,
+    g_signal_new (I_("window-removed"), CTK_TYPE_APPLICATION, G_SIGNAL_RUN_FIRST,
                   G_STRUCT_OFFSET (GtkApplicationClass, window_removed),
                   NULL, NULL,
                   NULL,
-                  G_TYPE_NONE, 1, GTK_TYPE_WINDOW);
+                  G_TYPE_NONE, 1, CTK_TYPE_WINDOW);
 
   /**
    * GtkApplication::query-end:
@@ -822,13 +822,13 @@ ctk_application_class_init (GtkApplicationClass *class)
    * Emitted when the session manager is about to end the session, only
    * if #GtkApplication::register-session is %TRUE. Applications can
    * connect to this signal and call ctk_application_inhibit() with
-   * %GTK_APPLICATION_INHIBIT_LOGOUT to delay the end of the session
+   * %CTK_APPLICATION_INHIBIT_LOGOUT to delay the end of the session
    * until state has been saved.
    *
    * Since: 3.24.8
    */
   ctk_application_signals[QUERY_END] =
-    g_signal_new (I_("query-end"), GTK_TYPE_APPLICATION, G_SIGNAL_RUN_FIRST,
+    g_signal_new (I_("query-end"), CTK_TYPE_APPLICATION, G_SIGNAL_RUN_FIRST,
                   0,
                   NULL, NULL,
                   NULL,
@@ -883,7 +883,7 @@ ctk_application_class_init (GtkApplicationClass *class)
     g_param_spec_object ("active-window",
                          P_("Active window"),
                          P_("The window which most recently had focus"),
-                         GTK_TYPE_WINDOW,
+                         CTK_TYPE_WINDOW,
                          G_PARAM_READABLE|G_PARAM_STATIC_STRINGS);
 
   g_object_class_install_properties (object_class, NUM_PROPERTIES, ctk_application_props);
@@ -929,7 +929,7 @@ ctk_application_new (const gchar       *application_id,
 {
   g_return_val_if_fail (application_id == NULL || g_application_id_is_valid (application_id), NULL);
 
-  return g_object_new (GTK_TYPE_APPLICATION,
+  return g_object_new (CTK_TYPE_APPLICATION,
                        "application-id", application_id,
                        "flags", flags,
                        NULL);
@@ -962,8 +962,8 @@ void
 ctk_application_add_window (GtkApplication *application,
                             GtkWindow      *window)
 {
-  g_return_if_fail (GTK_IS_APPLICATION (application));
-  g_return_if_fail (GTK_IS_WINDOW (window));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_WINDOW (window));
 
   if (!g_application_get_is_registered (G_APPLICATION (application)))
     {
@@ -997,8 +997,8 @@ void
 ctk_application_remove_window (GtkApplication *application,
                                GtkWindow      *window)
 {
-  g_return_if_fail (GTK_IS_APPLICATION (application));
-  g_return_if_fail (GTK_IS_WINDOW (window));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_WINDOW (window));
 
   if (g_list_find (application->priv->windows, window))
     g_signal_emit (application,
@@ -1026,7 +1026,7 @@ ctk_application_remove_window (GtkApplication *application,
 GList *
 ctk_application_get_windows (GtkApplication *application)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
   return application->priv->windows;
 }
@@ -1052,12 +1052,12 @@ ctk_application_get_window_by_id (GtkApplication *application,
 {
   GList *l;
 
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
   for (l = application->priv->windows; l != NULL; l = l->next) 
     {
-      if (GTK_IS_APPLICATION_WINDOW (l->data) &&
-          ctk_application_window_get_id (GTK_APPLICATION_WINDOW (l->data)) == id)
+      if (CTK_IS_APPLICATION_WINDOW (l->data) &&
+          ctk_application_window_get_id (CTK_APPLICATION_WINDOW (l->data)) == id)
         return l->data;
     }
 
@@ -1083,7 +1083,7 @@ ctk_application_get_window_by_id (GtkApplication *application,
 GtkWindow *
 ctk_application_get_active_window (GtkApplication *application)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
   return application->priv->windows ? application->priv->windows->data : NULL;
 }
@@ -1135,7 +1135,7 @@ ctk_application_add_accelerator (GtkApplication *application,
   const gchar *accelerators[2] = { accelerator, NULL };
   gchar *detailed_action_name;
 
-  g_return_if_fail (GTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
   g_return_if_fail (accelerator != NULL);
   g_return_if_fail (action_name != NULL);
 
@@ -1166,7 +1166,7 @@ ctk_application_remove_accelerator (GtkApplication *application,
   const gchar *accelerators[1] = { NULL };
   gchar *detailed_action_name;
 
-  g_return_if_fail (GTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
   g_return_if_fail (action_name != NULL);
 
   detailed_action_name = g_action_print_detailed_name (action_name, parameter);
@@ -1220,7 +1220,7 @@ ctk_application_remove_accelerator (GtkApplication *application,
 gboolean
 ctk_application_prefers_app_menu (GtkApplication *application)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), FALSE);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), FALSE);
   g_return_val_if_fail (application->priv->impl != NULL, FALSE);
 
   return ctk_application_impl_prefers_app_menu (application->priv->impl);
@@ -1255,7 +1255,7 @@ void
 ctk_application_set_app_menu (GtkApplication *application,
                               GMenuModel     *app_menu)
 {
-  g_return_if_fail (GTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
   g_return_if_fail (g_application_get_is_registered (G_APPLICATION (application)));
   g_return_if_fail (!g_application_get_is_remote (G_APPLICATION (application)));
   g_return_if_fail (app_menu == NULL || G_IS_MENU_MODEL (app_menu));
@@ -1286,7 +1286,7 @@ ctk_application_set_app_menu (GtkApplication *application,
 GMenuModel *
 ctk_application_get_app_menu (GtkApplication *application)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
   return application->priv->app_menu;
 }
@@ -1321,7 +1321,7 @@ void
 ctk_application_set_menubar (GtkApplication *application,
                              GMenuModel     *menubar)
 {
-  g_return_if_fail (GTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
   g_return_if_fail (g_application_get_is_registered (G_APPLICATION (application)));
   g_return_if_fail (!g_application_get_is_remote (G_APPLICATION (application)));
   g_return_if_fail (menubar == NULL || G_IS_MENU_MODEL (menubar));
@@ -1351,19 +1351,19 @@ ctk_application_set_menubar (GtkApplication *application,
 GMenuModel *
 ctk_application_get_menubar (GtkApplication *application)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
   return application->priv->menubar;
 }
 
 /**
  * GtkApplicationInhibitFlags:
- * @GTK_APPLICATION_INHIBIT_LOGOUT: Inhibit ending the user session
+ * @CTK_APPLICATION_INHIBIT_LOGOUT: Inhibit ending the user session
  *     by logging out or by shutting down the computer
- * @GTK_APPLICATION_INHIBIT_SWITCH: Inhibit user switching
- * @GTK_APPLICATION_INHIBIT_SUSPEND: Inhibit suspending the
+ * @CTK_APPLICATION_INHIBIT_SWITCH: Inhibit user switching
+ * @CTK_APPLICATION_INHIBIT_SUSPEND: Inhibit suspending the
  *     session or computer
- * @GTK_APPLICATION_INHIBIT_IDLE: Inhibit the session being
+ * @CTK_APPLICATION_INHIBIT_IDLE: Inhibit the session being
  *     marked as idle (and possibly locked)
  *
  * Types of user actions that may be blocked by ctk_application_inhibit().
@@ -1414,9 +1414,9 @@ ctk_application_inhibit (GtkApplication             *application,
                          GtkApplicationInhibitFlags  flags,
                          const gchar                *reason)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), 0);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), 0);
   g_return_val_if_fail (!g_application_get_is_remote (G_APPLICATION (application)), 0);
-  g_return_val_if_fail (window == NULL || GTK_IS_WINDOW (window), 0);
+  g_return_val_if_fail (window == NULL || CTK_IS_WINDOW (window), 0);
 
   return ctk_application_impl_inhibit (application->priv->impl, window, flags, reason);
 }
@@ -1435,7 +1435,7 @@ void
 ctk_application_uninhibit (GtkApplication *application,
                            guint           cookie)
 {
-  g_return_if_fail (GTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
   g_return_if_fail (!g_application_get_is_remote (G_APPLICATION (application)));
   g_return_if_fail (cookie > 0);
 
@@ -1461,7 +1461,7 @@ gboolean
 ctk_application_is_inhibited (GtkApplication             *application,
                               GtkApplicationInhibitFlags  flags)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), FALSE);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), FALSE);
   g_return_val_if_fail (!g_application_get_is_remote (G_APPLICATION (application)), FALSE);
 
   return ctk_application_impl_is_inhibited (application->priv->impl, flags);
@@ -1501,7 +1501,7 @@ ctk_application_get_application_accels (GtkApplication *application)
 gchar **
 ctk_application_list_action_descriptions (GtkApplication *application)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
   return ctk_application_accels_list_action_descriptions (application->priv->accels);
 }
@@ -1533,7 +1533,7 @@ ctk_application_set_accels_for_action (GtkApplication      *application,
 {
   gchar *action_and_target;
 
-  g_return_if_fail (GTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
   g_return_if_fail (detailed_action_name != NULL);
   g_return_if_fail (accels != NULL);
 
@@ -1566,7 +1566,7 @@ gchar **
 ctk_application_get_accels_for_action (GtkApplication *application,
                                        const gchar    *detailed_action_name)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
   g_return_val_if_fail (detailed_action_name != NULL, NULL);
 
   return ctk_application_accels_get_accels_for_action (application->priv->accels,
@@ -1602,7 +1602,7 @@ gchar **
 ctk_application_get_actions_for_accel (GtkApplication *application,
                                        const gchar    *accel)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
   g_return_val_if_fail (accel != NULL, NULL);
 
   return ctk_application_accels_get_actions_for_accel (application->priv->accels, accel);
@@ -1660,7 +1660,7 @@ ctk_application_get_menu_by_id (GtkApplication *application,
 {
   GObject *object;
 
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
   g_return_val_if_fail (id != NULL, NULL);
 
   if (!application->priv->menus_builder)

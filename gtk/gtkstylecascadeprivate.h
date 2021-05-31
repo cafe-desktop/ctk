@@ -15,20 +15,20 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_STYLECASCADE_PRIVATE_H__
-#define __GTK_STYLECASCADE_PRIVATE_H__
+#ifndef __CTK_STYLECASCADE_PRIVATE_H__
+#define __CTK_STYLECASCADE_PRIVATE_H__
 
 #include <gdk/gdk.h>
 #include <gtk/gtkstyleproviderprivate.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STYLE_CASCADE           (_ctk_style_cascade_get_type ())
-#define GTK_STYLE_CASCADE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_STYLE_CASCADE, GtkStyleCascade))
-#define GTK_STYLE_CASCADE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_STYLE_CASCADE, GtkStyleCascadeClass))
-#define GTK_IS_STYLE_CASCADE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_STYLE_CASCADE))
-#define GTK_IS_STYLE_CASCADE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_STYLE_CASCADE))
-#define GTK_STYLE_CASCADE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_STYLE_CASCADE, GtkStyleCascadeClass))
+#define CTK_TYPE_STYLE_CASCADE           (_ctk_style_cascade_get_type ())
+#define CTK_STYLE_CASCADE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_STYLE_CASCADE, GtkStyleCascade))
+#define CTK_STYLE_CASCADE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_STYLE_CASCADE, GtkStyleCascadeClass))
+#define CTK_IS_STYLE_CASCADE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_STYLE_CASCADE))
+#define CTK_IS_STYLE_CASCADE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_STYLE_CASCADE))
+#define CTK_STYLE_CASCADE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STYLE_CASCADE, GtkStyleCascadeClass))
 
 typedef struct _GtkStyleCascade           GtkStyleCascade;
 typedef struct _GtkStyleCascadeClass      GtkStyleCascadeClass;
@@ -66,4 +66,4 @@ void                  _ctk_style_cascade_remove_provider        (GtkStyleCascade
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_STYLECASCADE_PRIVATE_H__ */
+#endif /* __CTK_CSS_STYLECASCADE_PRIVATE_H__ */

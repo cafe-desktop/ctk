@@ -38,7 +38,7 @@ static GtkWidget*
 create_image (void)
 {
   return ctk_image_new_from_icon_name ("document-open",
-                                       GTK_ICON_SIZE_BUTTON);
+                                       CTK_ICON_SIZE_BUTTON);
 }
 
 static GtkWidget*
@@ -50,10 +50,10 @@ create_label (gboolean vertical,
   widget = ctk_label_new ("This is a label, label label label");
 
   if (vertical)
-    ctk_label_set_angle (GTK_LABEL (widget), 90);
+    ctk_label_set_angle (CTK_LABEL (widget), 90);
 
   if (wrap)
-    ctk_label_set_line_wrap (GTK_LABEL (widget), TRUE);
+    ctk_label_set_line_wrap (CTK_LABEL (widget), TRUE);
 
   return widget;
 }
@@ -100,13 +100,13 @@ open_test_window (void)
   GtkWidget *grid;
   int i;
 
-  test_window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (test_window), "Tests");
+  test_window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (test_window), "Tests");
 
   g_signal_connect (test_window, "delete-event",
                     G_CALLBACK (ctk_main_quit), test_window);
 
-  ctk_window_set_resizable (GTK_WINDOW (test_window), FALSE);
+  ctk_window_set_resizable (CTK_WINDOW (test_window), FALSE);
 
   test_widgets[TEST_WIDGET_IMAGE] = create_image ();
   test_widgets[TEST_WIDGET_LABEL] = create_label (FALSE, FALSE);
@@ -117,11 +117,11 @@ open_test_window (void)
 
   grid = ctk_grid_new ();
 
-  ctk_container_add (GTK_CONTAINER (test_window), grid);
+  ctk_container_add (CTK_CONTAINER (test_window), grid);
 
   for (i = 0; i < TEST_WIDGET_LAST; ++i)
     {
-      ctk_grid_attach (GTK_GRID (grid), test_widgets[i], i % 3, i / 3, 1, 1);
+      ctk_grid_attach (CTK_GRID (grid), test_widgets[i], i % 3, i / 3, 1, 1);
     }
 
   ctk_widget_show_all (test_window);
@@ -134,13 +134,13 @@ on_toggle_border_widths (GtkToggleButton *button,
   gboolean has_border;
   int i;
 
-  has_border = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+  has_border = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
 
   for (i = 0; i < TEST_WIDGET_LAST; ++i)
     {
-      if (GTK_IS_CONTAINER (test_widgets[i]))
+      if (CTK_IS_CONTAINER (test_widgets[i]))
         {
-          ctk_container_set_border_width (GTK_CONTAINER (test_widgets[i]),
+          ctk_container_set_border_width (CTK_CONTAINER (test_widgets[i]),
                                           has_border ? 50 : 0);
         }
     }
@@ -153,7 +153,7 @@ on_set_small_size_requests (GtkToggleButton *button,
   gboolean has_small_size_requests;
   int i;
 
-  has_small_size_requests = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+  has_small_size_requests = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
 
   for (i = 0; i < TEST_WIDGET_LAST; ++i)
     {
@@ -170,7 +170,7 @@ on_set_large_size_requests (GtkToggleButton *button,
   gboolean has_large_size_requests;
   int i;
 
-  has_large_size_requests = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+  has_large_size_requests = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
 
   for (i = 0; i < TEST_WIDGET_LAST; ++i)
     {
@@ -187,41 +187,41 @@ open_control_window (void)
   GtkWidget *box;
   GtkWidget *toggle;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), "Controls");
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), "Controls");
 
   g_signal_connect (window, "delete-event",
                     G_CALLBACK (ctk_main_quit), window);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   toggle =
     ctk_toggle_button_new_with_label ("Containers have borders");
   g_signal_connect (G_OBJECT (toggle),
                     "toggled", G_CALLBACK (on_toggle_border_widths),
                     NULL);
-  ctk_container_add (GTK_CONTAINER (box), toggle);
+  ctk_container_add (CTK_CONTAINER (box), toggle);
 
   toggle =
     ctk_toggle_button_new_with_label ("Set small size requests");
   g_signal_connect (G_OBJECT (toggle),
                     "toggled", G_CALLBACK (on_set_small_size_requests),
                     NULL);
-  ctk_container_add (GTK_CONTAINER (box), toggle);
+  ctk_container_add (CTK_CONTAINER (box), toggle);
 
   toggle =
     ctk_toggle_button_new_with_label ("Set large size requests");
   g_signal_connect (G_OBJECT (toggle),
                     "toggled", G_CALLBACK (on_set_large_size_requests),
                     NULL);
-  ctk_container_add (GTK_CONTAINER (box), toggle);
+  ctk_container_add (CTK_CONTAINER (box), toggle);
 
 
   ctk_widget_show_all (window);
 }
 
-#define TEST_WIDGET(outer) (ctk_bin_get_child (GTK_BIN (ctk_bin_get_child (GTK_BIN(outer)))))
+#define TEST_WIDGET(outer) (ctk_bin_get_child (CTK_BIN (ctk_bin_get_child (CTK_BIN(outer)))))
 
 static GtkWidget*
 create_widget_visible_border (const char *text)
@@ -235,19 +235,19 @@ create_widget_visible_border (const char *text)
   ctk_style_context_add_class (ctk_widget_get_style_context (outer_box), "black-bg");
 
   inner_box = ctk_event_box_new ();
-  ctk_container_set_border_width (GTK_CONTAINER (inner_box), 5);
+  ctk_container_set_border_width (CTK_CONTAINER (inner_box), 5);
   ctk_style_context_add_class (ctk_widget_get_style_context (inner_box), "blue-bg");
 
-  ctk_container_add (GTK_CONTAINER (outer_box), inner_box);
+  ctk_container_add (CTK_CONTAINER (outer_box), inner_box);
 
 
   test_widget = ctk_event_box_new ();
   ctk_style_context_add_class (ctk_widget_get_style_context (test_widget), "red-bg");
 
-  ctk_container_add (GTK_CONTAINER (inner_box), test_widget);
+  ctk_container_add (CTK_CONTAINER (inner_box), test_widget);
 
   label = ctk_label_new (text);
-  ctk_container_add (GTK_CONTAINER (test_widget), label);
+  ctk_container_add (CTK_CONTAINER (test_widget), label);
 
   g_assert (TEST_WIDGET (outer_box) == test_widget);
 
@@ -275,8 +275,8 @@ create_aligned (GtkAlign halign,
   char *label;
 
   label = g_strdup_printf ("h=%s v=%s",
-                           enum_to_string (GTK_TYPE_ALIGN, halign),
-                           enum_to_string (GTK_TYPE_ALIGN, valign));
+                           enum_to_string (CTK_TYPE_ALIGN, halign),
+                           enum_to_string (CTK_TYPE_ALIGN, valign));
 
   widget = create_widget_visible_border (label);
 
@@ -297,22 +297,22 @@ open_alignment_window (void)
   int i;
   GEnumClass *align_class;
 
-  test_window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (test_window), "Alignment");
+  test_window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (test_window), "Alignment");
 
   g_signal_connect (test_window, "delete-event",
                     G_CALLBACK (ctk_main_quit), test_window);
 
-  ctk_window_set_resizable (GTK_WINDOW (test_window), TRUE);
-  ctk_window_set_default_size (GTK_WINDOW (test_window), 500, 500);
+  ctk_window_set_resizable (CTK_WINDOW (test_window), TRUE);
+  ctk_window_set_default_size (CTK_WINDOW (test_window), 500, 500);
 
-  align_class = g_type_class_peek (GTK_TYPE_ALIGN);
+  align_class = g_type_class_peek (CTK_TYPE_ALIGN);
 
   grid = ctk_grid_new ();
-  ctk_grid_set_row_homogeneous (GTK_GRID (grid), TRUE);
-  ctk_grid_set_column_homogeneous (GTK_GRID (grid), TRUE);
+  ctk_grid_set_row_homogeneous (CTK_GRID (grid), TRUE);
+  ctk_grid_set_column_homogeneous (CTK_GRID (grid), TRUE);
 
-  ctk_container_add (GTK_CONTAINER (test_window), grid);
+  ctk_container_add (CTK_CONTAINER (test_window), grid);
 
   for (i = 0; i < align_class->n_values; ++i)
     {
@@ -323,7 +323,7 @@ open_alignment_window (void)
             create_aligned(align_class->values[i].value,
                            align_class->values[j].value);
 
-          ctk_grid_attach (GTK_GRID (grid), child, i, j, 1, 1);
+          ctk_grid_attach (CTK_GRID (grid), child, i, j, 1, 1);
         }
     }
 
@@ -359,24 +359,24 @@ open_margin_window (void)
     "margin"
   };
 
-  test_window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (test_window), "Margin");
+  test_window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (test_window), "Margin");
 
   g_signal_connect (test_window, "delete-event",
                     G_CALLBACK (ctk_main_quit), test_window);
 
-  ctk_window_set_resizable (GTK_WINDOW (test_window), TRUE);
+  ctk_window_set_resizable (CTK_WINDOW (test_window), TRUE);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
 
-  ctk_container_add (GTK_CONTAINER (test_window), box);
+  ctk_container_add (CTK_CONTAINER (test_window), box);
 
   for (i = 0; i < (int) G_N_ELEMENTS (margins); ++i)
     {
       GtkWidget *child =
         create_margined(margins[i]);
 
-      ctk_container_add (GTK_CONTAINER (box), child);
+      ctk_container_add (CTK_CONTAINER (box), child);
     }
 
   ctk_widget_show_all (test_window);
@@ -387,36 +387,36 @@ open_valigned_label_window (void)
 {
   GtkWidget *window, *box, *label, *frame;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   g_signal_connect (test_window, "delete-event",
                     G_CALLBACK (ctk_main_quit), test_window);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   ctk_widget_show (box);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   label = ctk_label_new ("Both labels expand");
   ctk_widget_show (label);
-  ctk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), label, TRUE, TRUE, 0);
 
   label = ctk_label_new ("Some wrapping text with width-chars = 15 and max-width-chars = 35");
-  ctk_label_set_line_wrap  (GTK_LABEL (label), TRUE);
-  ctk_label_set_width_chars  (GTK_LABEL (label), 15);
-  ctk_label_set_max_width_chars  (GTK_LABEL (label), 35);
+  ctk_label_set_line_wrap  (CTK_LABEL (label), TRUE);
+  ctk_label_set_width_chars  (CTK_LABEL (label), 15);
+  ctk_label_set_max_width_chars  (CTK_LABEL (label), 35);
 
   ctk_widget_show (label);
 
   frame  = ctk_frame_new (NULL);
   ctk_widget_show (frame);
-  ctk_container_add (GTK_CONTAINER (frame), label);
+  ctk_container_add (CTK_CONTAINER (frame), label);
 
-  ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-  ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (frame, CTK_ALIGN_CENTER);
+  ctk_widget_set_halign (frame, CTK_ALIGN_CENTER);
 
-  ctk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), frame, TRUE, TRUE, 0);
 
-  ctk_window_present (GTK_WINDOW (window));
+  ctk_window_present (CTK_WINDOW (window));
 }
 
 int
@@ -432,12 +432,12 @@ main (int argc, char *argv[])
     ".red-bg { background-color: red; }"
     ".blue-bg { background-color: blue; }", -1, NULL);
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                             CTK_STYLE_PROVIDER (provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   g_object_unref (provider);
   
   if (g_getenv ("RTL"))
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
   open_test_window ();
   open_control_window ();

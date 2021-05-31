@@ -33,9 +33,9 @@
  * refers to adding cell renderers with reference to a particular position
  * in a #GtkCellAreaBox. There are two reference positions: the
  * start and the end of the box.
- * When the #GtkCellAreaBox is oriented in the %GTK_ORIENTATION_VERTICAL
+ * When the #GtkCellAreaBox is oriented in the %CTK_ORIENTATION_VERTICAL
  * orientation, the start is defined as the top of the box and the end is
- * defined as the bottom. In the %GTK_ORIENTATION_HORIZONTAL orientation
+ * defined as the bottom. In the %CTK_ORIENTATION_HORIZONTAL orientation
  * start is defined as the left side and the end is defined as the right
  * side.
  *
@@ -234,11 +234,11 @@ enum {
   CELL_PROP_PACK_TYPE
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkCellAreaBox, ctk_cell_area_box, GTK_TYPE_CELL_AREA,
+G_DEFINE_TYPE_WITH_CODE (GtkCellAreaBox, ctk_cell_area_box, CTK_TYPE_CELL_AREA,
                          G_ADD_PRIVATE (GtkCellAreaBox)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_CELL_LAYOUT,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_CELL_LAYOUT,
                                                 ctk_cell_area_box_cell_layout_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE, NULL))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL))
 
 static void
 ctk_cell_area_box_init (GtkCellAreaBox *box)
@@ -248,7 +248,7 @@ ctk_cell_area_box_init (GtkCellAreaBox *box)
   box->priv = ctk_cell_area_box_get_instance_private (box);
   priv = box->priv;
 
-  priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+  priv->orientation = CTK_ORIENTATION_HORIZONTAL;
   priv->groups      = g_array_new (FALSE, TRUE, sizeof (CellGroup));
   priv->cells       = NULL;
   priv->contexts    = NULL;
@@ -267,7 +267,7 @@ static void
 ctk_cell_area_box_class_init (GtkCellAreaBoxClass *class)
 {
   GObjectClass     *object_class = G_OBJECT_CLASS (class);
-  GtkCellAreaClass *area_class   = GTK_CELL_AREA_CLASS (class);
+  GtkCellAreaClass *area_class   = CTK_CELL_AREA_CLASS (class);
 
   /* GObjectClass */
   object_class->finalize     = ctk_cell_area_box_finalize;
@@ -312,7 +312,7 @@ ctk_cell_area_box_class_init (GtkCellAreaBoxClass *class)
                                                      0,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /* Cell Properties */
   /**
@@ -330,7 +330,7 @@ ctk_cell_area_box_class_init (GtkCellAreaBoxClass *class)
                                               P_("Expand"),
                                               P_("Whether the cell expands"),
                                               FALSE,
-                                              GTK_PARAM_READWRITE));
+                                              CTK_PARAM_READWRITE));
 
   /**
    * GtkCellAreaBox:align:
@@ -346,7 +346,7 @@ ctk_cell_area_box_class_init (GtkCellAreaBoxClass *class)
                                               P_("Align"),
                                               P_("Whether cell should align with adjacent rows"),
                                               FALSE,
-                                              GTK_PARAM_READWRITE));
+                                              CTK_PARAM_READWRITE));
 
   /**
    * GtkCellAreaBox:fixed-size:
@@ -363,7 +363,7 @@ ctk_cell_area_box_class_init (GtkCellAreaBoxClass *class)
                                               P_("Fixed Size"),
                                               P_("Whether cells should be the same size in all rows"),
                                               TRUE,
-                                              GTK_PARAM_READWRITE));
+                                              CTK_PARAM_READWRITE));
 
   /**
    * GtkCellAreaBox:pack-type:
@@ -380,8 +380,8 @@ ctk_cell_area_box_class_init (GtkCellAreaBoxClass *class)
                                               P_("Pack Type"),
                                               P_("A GtkPackType indicating whether the cell is packed with "
                                                  "reference to the start or end of the cell area"),
-                                              GTK_TYPE_PACK_TYPE, GTK_PACK_START,
-                                              GTK_PARAM_READWRITE));
+                                              CTK_TYPE_PACK_TYPE, CTK_PACK_START,
+                                              CTK_PARAM_READWRITE));
 }
 
 
@@ -455,7 +455,7 @@ list_consecutive_cells (GtkCellAreaBox *box)
     {
       info = l->data;
 
-      if (info->pack == GTK_PACK_START)
+      if (info->pack == CTK_PACK_START)
         consecutive_cells = g_list_prepend (consecutive_cells, info);
     }
 
@@ -463,7 +463,7 @@ list_consecutive_cells (GtkCellAreaBox *box)
     {
       info = l->data;
 
-      if (info->pack == GTK_PACK_END)
+      if (info->pack == CTK_PACK_END)
         pack_end_cells = g_list_prepend (pack_end_cells, info);
     }
 
@@ -693,8 +693,8 @@ allocate_cells_manually (GtkCellAreaBox        *box,
   /* For vertical oriented boxes, we just let the cell renderers
    * realign themselves for rtl
    */
-  rtl = (priv->orientation == GTK_ORIENTATION_HORIZONTAL &&
-         ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
+  rtl = (priv->orientation == CTK_ORIENTATION_HORIZONTAL &&
+         ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
 
   cells = list_consecutive_cells (box);
 
@@ -713,7 +713,7 @@ allocate_cells_manually (GtkCellAreaBox        *box,
       return NULL;
     }
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       full_size = avail_size = width;
       for_size  = height;
@@ -733,7 +733,7 @@ allocate_cells_manually (GtkCellAreaBox        *box,
       if (!ctk_cell_renderer_get_visible (info->renderer))
         continue;
 
-      ctk_cell_area_request_renderer (GTK_CELL_AREA (box), info->renderer,
+      ctk_cell_area_request_renderer (CTK_CELL_AREA (box), info->renderer,
                                       priv->orientation,
                                       widget, for_size,
                                       &sizes[i].minimum_size,
@@ -812,7 +812,7 @@ get_allocated_cells (GtkCellAreaBox        *box,
                      gint                   height)
 {
   GtkCellAreaBoxAllocation *group_allocs;
-  GtkCellArea              *area = GTK_CELL_AREA (box);
+  GtkCellArea              *area = CTK_CELL_AREA (box);
   GtkCellAreaBoxPrivate    *priv = box->priv;
   GList                    *cell_list;
   GSList                   *allocated_cells = NULL;
@@ -824,7 +824,7 @@ get_allocated_cells (GtkCellAreaBox        *box,
   if (!group_allocs)
     return allocate_cells_manually (box, widget, width, height);
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       full_size = width;
       for_size  = height;
@@ -838,8 +838,8 @@ get_allocated_cells (GtkCellAreaBox        *box,
   /* For vertical oriented boxes, we just let the cell renderers
    * realign themselves for rtl
    */
-  rtl = (priv->orientation == GTK_ORIENTATION_HORIZONTAL &&
-         ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
+  rtl = (priv->orientation == CTK_ORIENTATION_HORIZONTAL &&
+         ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
 
   for (position = 0, i = 0; i < n_allocs; i++)
     {
@@ -1015,7 +1015,7 @@ ctk_cell_area_box_focus_changed (GtkCellArea        *area,
 static void
 ctk_cell_area_box_finalize (GObject *object)
 {
-  GtkCellAreaBox        *box = GTK_CELL_AREA_BOX (object);
+  GtkCellAreaBox        *box = CTK_CELL_AREA_BOX (object);
   GtkCellAreaBoxPrivate *priv = box->priv;
   GSList                *l;
 
@@ -1045,7 +1045,7 @@ ctk_cell_area_box_set_property (GObject       *object,
                                 const GValue  *value,
                                 GParamSpec    *pspec)
 {
-  GtkCellAreaBox *box = GTK_CELL_AREA_BOX (object);
+  GtkCellAreaBox *box = CTK_CELL_AREA_BOX (object);
 
   switch (prop_id)
     {
@@ -1073,7 +1073,7 @@ ctk_cell_area_box_get_property (GObject     *object,
                                 GValue      *value,
                                 GParamSpec  *pspec)
 {
-  GtkCellAreaBox *box = GTK_CELL_AREA_BOX (object);
+  GtkCellAreaBox *box = CTK_CELL_AREA_BOX (object);
 
   switch (prop_id)
     {
@@ -1096,7 +1096,7 @@ static void
 ctk_cell_area_box_add (GtkCellArea        *area,
                        GtkCellRenderer    *renderer)
 {
-  ctk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area),
+  ctk_cell_area_box_pack_start (CTK_CELL_AREA_BOX (area),
                                 renderer, FALSE, FALSE, TRUE);
 }
 
@@ -1104,7 +1104,7 @@ static void
 ctk_cell_area_box_remove (GtkCellArea        *area,
                           GtkCellRenderer    *renderer)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv = box->priv;
   GList                 *node;
 
@@ -1134,7 +1134,7 @@ ctk_cell_area_box_foreach (GtkCellArea        *area,
                            GtkCellCallback     callback,
                            gpointer            callback_data)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv = box->priv;
   GList                 *list;
 
@@ -1156,15 +1156,15 @@ ctk_cell_area_box_foreach_alloc (GtkCellArea          *area,
                                  GtkCellAllocCallback  callback,
                                  gpointer              callback_data)
 {
-  GtkCellAreaBox        *box      = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box      = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv     = box->priv;
-  GtkCellAreaBoxContext *box_context = GTK_CELL_AREA_BOX_CONTEXT (context);
+  GtkCellAreaBoxContext *box_context = CTK_CELL_AREA_BOX_CONTEXT (context);
   GSList                *allocated_cells, *l;
   GdkRectangle           cell_alloc, cell_background;
   gboolean               rtl;
 
-  rtl = (priv->orientation == GTK_ORIENTATION_HORIZONTAL &&
-         ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
+  rtl = (priv->orientation == CTK_ORIENTATION_HORIZONTAL &&
+         ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
 
   cell_alloc = *cell_area;
 
@@ -1178,7 +1178,7 @@ ctk_cell_area_box_foreach_alloc (GtkCellArea          *area,
     {
       AllocatedCell *cell = l->data;
 
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           cell_alloc.x     = cell_area->x + cell->position;
           cell_alloc.width = cell->size;
@@ -1241,7 +1241,7 @@ ctk_cell_area_box_foreach_alloc (GtkCellArea          *area,
        */
       cell_background = cell_alloc;
 
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           if (l == allocated_cells)
             {
@@ -1302,12 +1302,12 @@ ctk_cell_area_box_apply_attributes (GtkCellArea  *area,
 				    gboolean      is_expander,
 				    gboolean      is_expanded)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv = box->priv;
   gint                   i;
 
   /* Call the parent class to apply the attributes */
-  GTK_CELL_AREA_CLASS
+  CTK_CELL_AREA_CLASS
     (ctk_cell_area_box_parent_class)->apply_attributes (area, tree_model, iter,
 							is_expander, is_expanded);
 
@@ -1336,7 +1336,7 @@ ctk_cell_area_box_set_cell_property (GtkCellArea        *area,
                                      const GValue       *value,
                                      GParamSpec         *pspec)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv = box->priv;
   GList                 *node;
   CellInfo              *info;
@@ -1393,7 +1393,7 @@ ctk_cell_area_box_set_cell_property (GtkCellArea        *area,
         }
       break;
     default:
-      GTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID (area, prop_id, pspec);
+      CTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID (area, prop_id, pspec);
       break;
     }
 
@@ -1409,7 +1409,7 @@ ctk_cell_area_box_get_cell_property (GtkCellArea        *area,
                                      GValue             *value,
                                      GParamSpec         *pspec)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv = box->priv;
   GList                 *node;
   CellInfo              *info;
@@ -1439,7 +1439,7 @@ ctk_cell_area_box_get_cell_property (GtkCellArea        *area,
       g_value_set_enum (value, info->pack);
       break;
     default:
-      GTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID (area, prop_id, pspec);
+      CTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID (area, prop_id, pspec);
       break;
     }
 }
@@ -1448,10 +1448,10 @@ ctk_cell_area_box_get_cell_property (GtkCellArea        *area,
 static GtkCellAreaContext *
 ctk_cell_area_box_create_context (GtkCellArea *area)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv = box->priv;
   GtkCellAreaContext    *context =
-    (GtkCellAreaContext *)g_object_new (GTK_TYPE_CELL_AREA_BOX_CONTEXT,
+    (GtkCellAreaContext *)g_object_new (CTK_TYPE_CELL_AREA_BOX_CONTEXT,
                                      "area", area, NULL);
 
   priv->contexts = g_slist_prepend (priv->contexts, context);
@@ -1459,7 +1459,7 @@ ctk_cell_area_box_create_context (GtkCellArea *area)
   g_object_weak_ref (G_OBJECT (context), (GWeakNotify)context_weak_notify, box);
 
   /* Tell the new group about our cell layout */
-  init_context_group (box, GTK_CELL_AREA_BOX_CONTEXT (context));
+  init_context_group (box, CTK_CELL_AREA_BOX_CONTEXT (context));
 
   return context;
 }
@@ -1468,11 +1468,11 @@ static GtkCellAreaContext *
 ctk_cell_area_box_copy_context (GtkCellArea        *area,
                                 GtkCellAreaContext *context)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv = box->priv;
   GtkCellAreaContext    *copy =
-    (GtkCellAreaContext *)_ctk_cell_area_box_context_copy (GTK_CELL_AREA_BOX (area),
-                                                          GTK_CELL_AREA_BOX_CONTEXT (context));
+    (GtkCellAreaContext *)_ctk_cell_area_box_context_copy (CTK_CELL_AREA_BOX (area),
+                                                          CTK_CELL_AREA_BOX_CONTEXT (context));
 
   priv->contexts = g_slist_prepend (priv->contexts, copy);
 
@@ -1484,12 +1484,12 @@ ctk_cell_area_box_copy_context (GtkCellArea        *area,
 static GtkSizeRequestMode
 ctk_cell_area_box_get_request_mode (GtkCellArea *area)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv = box->priv;
 
-  return (priv->orientation) == GTK_ORIENTATION_HORIZONTAL ?
-    GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH :
-    GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
+  return (priv->orientation) == CTK_ORIENTATION_HORIZONTAL ?
+    CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH :
+    CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
 }
 
 static void
@@ -1502,7 +1502,7 @@ compute_size (GtkCellAreaBox        *box,
               gint                  *natural_size)
 {
   GtkCellAreaBoxPrivate *priv = box->priv;
-  GtkCellArea           *area = GTK_CELL_AREA (box);
+  GtkCellArea           *area = CTK_CELL_AREA (box);
   GList                 *list;
   gint                   i;
   gint                   min_size = 0;
@@ -1553,7 +1553,7 @@ compute_size (GtkCellAreaBox        *box,
             }
         }
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           if (for_size < 0)
             _ctk_cell_area_box_context_push_group_width (context, group->id, group_min_size, group_nat_size);
@@ -1575,8 +1575,8 @@ compute_size (GtkCellAreaBox        *box,
   *natural_size = nat_size;
 
   /* Update rtl state for focus navigation to work */
-  priv->rtl = (priv->orientation == GTK_ORIENTATION_HORIZONTAL &&
-               ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
+  priv->rtl = (priv->orientation == CTK_ORIENTATION_HORIZONTAL &&
+               ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
 }
 
 static GtkRequestedSize *
@@ -1622,7 +1622,7 @@ compute_group_size_for_opposing_orientation (GtkCellAreaBox     *box,
                                              gint               *natural_size)
 {
   GtkCellAreaBoxPrivate *priv = box->priv;
-  GtkCellArea           *area = GTK_CELL_AREA (box);
+  GtkCellArea           *area = CTK_CELL_AREA (box);
 
   /* Exception for single cell groups */
   if (group->n_cells == 1)
@@ -1714,7 +1714,7 @@ compute_size_for_opposing_orientation (GtkCellAreaBox        *box,
 
   n_expand_groups = count_expand_groups (box);
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     orientation_sizes = _ctk_cell_area_box_context_get_widths (context, &n_groups);
   else
     orientation_sizes = _ctk_cell_area_box_context_get_heights (context, &n_groups);
@@ -1769,7 +1769,7 @@ compute_size_for_opposing_orientation (GtkCellAreaBox        *box,
       min_size = MAX (min_size, group_min);
       nat_size = MAX (nat_size, group_nat);
 
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           _ctk_cell_area_box_context_push_group_height_for_width (context, group_idx, for_size,
                                                                  group_min, group_nat);
@@ -1787,8 +1787,8 @@ compute_size_for_opposing_orientation (GtkCellAreaBox        *box,
   g_free (orientation_sizes);
 
   /* Update rtl state for focus navigation to work */
-  priv->rtl = (priv->orientation == GTK_ORIENTATION_HORIZONTAL &&
-               ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
+  priv->rtl = (priv->orientation == CTK_ORIENTATION_HORIZONTAL &&
+               ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
 }
 
 
@@ -1800,18 +1800,18 @@ ctk_cell_area_box_get_preferred_width (GtkCellArea        *area,
                                        gint               *minimum_width,
                                        gint               *natural_width)
 {
-  GtkCellAreaBox        *box = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxContext *box_context;
   gint                   min_width, nat_width;
 
-  g_return_if_fail (GTK_IS_CELL_AREA_BOX_CONTEXT (context));
+  g_return_if_fail (CTK_IS_CELL_AREA_BOX_CONTEXT (context));
 
-  box_context = GTK_CELL_AREA_BOX_CONTEXT (context);
+  box_context = CTK_CELL_AREA_BOX_CONTEXT (context);
 
   /* Compute the size of all renderers for current row data,
    * bumping cell alignments in the context along the way
    */
-  compute_size (box, GTK_ORIENTATION_HORIZONTAL,
+  compute_size (box, CTK_ORIENTATION_HORIZONTAL,
                 box_context, widget, -1, &min_width, &nat_width);
 
   if (minimum_width)
@@ -1828,18 +1828,18 @@ ctk_cell_area_box_get_preferred_height (GtkCellArea        *area,
                                         gint               *minimum_height,
                                         gint               *natural_height)
 {
-  GtkCellAreaBox        *box = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxContext *box_context;
   gint                   min_height, nat_height;
 
-  g_return_if_fail (GTK_IS_CELL_AREA_BOX_CONTEXT (context));
+  g_return_if_fail (CTK_IS_CELL_AREA_BOX_CONTEXT (context));
 
-  box_context = GTK_CELL_AREA_BOX_CONTEXT (context);
+  box_context = CTK_CELL_AREA_BOX_CONTEXT (context);
 
   /* Compute the size of all renderers for current row data,
    * bumping cell alignments in the context along the way
    */
-  compute_size (box, GTK_ORIENTATION_VERTICAL,
+  compute_size (box, CTK_ORIENTATION_VERTICAL,
                 box_context, widget, -1, &min_height, &nat_height);
 
   if (minimum_height)
@@ -1857,17 +1857,17 @@ ctk_cell_area_box_get_preferred_height_for_width (GtkCellArea        *area,
                                                   gint               *minimum_height,
                                                   gint               *natural_height)
 {
-  GtkCellAreaBox        *box = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxContext *box_context;
   GtkCellAreaBoxPrivate *priv;
   gint                   min_height, nat_height;
 
-  g_return_if_fail (GTK_IS_CELL_AREA_BOX_CONTEXT (context));
+  g_return_if_fail (CTK_IS_CELL_AREA_BOX_CONTEXT (context));
 
-  box_context = GTK_CELL_AREA_BOX_CONTEXT (context);
+  box_context = CTK_CELL_AREA_BOX_CONTEXT (context);
   priv        = box->priv;
 
-  if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (priv->orientation == CTK_ORIENTATION_VERTICAL)
     {
       /* Add up vertical requests of height for width and push
        * the overall cached sizes for alignments
@@ -1898,17 +1898,17 @@ ctk_cell_area_box_get_preferred_width_for_height (GtkCellArea        *area,
                                                   gint               *minimum_width,
                                                   gint               *natural_width)
 {
-  GtkCellAreaBox        *box = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxContext *box_context;
   GtkCellAreaBoxPrivate *priv;
   gint                   min_width, nat_width;
 
-  g_return_if_fail (GTK_IS_CELL_AREA_BOX_CONTEXT (context));
+  g_return_if_fail (CTK_IS_CELL_AREA_BOX_CONTEXT (context));
 
-  box_context = GTK_CELL_AREA_BOX_CONTEXT (context);
+  box_context = CTK_CELL_AREA_BOX_CONTEXT (context);
   priv        = box->priv;
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       /* Add up horizontal requests of width for height and push
        * the overall cached sizes for alignments
@@ -1942,7 +1942,7 @@ static gboolean
 ctk_cell_area_box_focus (GtkCellArea      *area,
                          GtkDirectionType  direction)
 {
-  GtkCellAreaBox        *box   = GTK_CELL_AREA_BOX (area);
+  GtkCellAreaBox        *box   = CTK_CELL_AREA_BOX (area);
   GtkCellAreaBoxPrivate *priv  = box->priv;
   gint                   cycle = FOCUS_NONE;
   gboolean               cycled_focus = FALSE;
@@ -1962,32 +1962,32 @@ ctk_cell_area_box_focus (GtkCellArea      *area,
 
   switch (direction)
     {
-    case GTK_DIR_TAB_FORWARD:
+    case CTK_DIR_TAB_FORWARD:
       cycle = priv->rtl ? FOCUS_PREV : FOCUS_NEXT;
       break;
-    case GTK_DIR_TAB_BACKWARD:
+    case CTK_DIR_TAB_BACKWARD:
       cycle = priv->rtl ? FOCUS_NEXT : FOCUS_PREV;
       break;
-    case GTK_DIR_UP:
-      if (priv->orientation == GTK_ORIENTATION_VERTICAL || !priv->last_focus_cell)
+    case CTK_DIR_UP:
+      if (priv->orientation == CTK_ORIENTATION_VERTICAL || !priv->last_focus_cell)
         cycle = FOCUS_PREV;
       else if (!focus_cell)
         cycle = FOCUS_LAST_CELL;
       break;
-    case GTK_DIR_DOWN:
-      if (priv->orientation == GTK_ORIENTATION_VERTICAL || !priv->last_focus_cell)
+    case CTK_DIR_DOWN:
+      if (priv->orientation == CTK_ORIENTATION_VERTICAL || !priv->last_focus_cell)
         cycle = FOCUS_NEXT;
       else if (!focus_cell)
         cycle = FOCUS_LAST_CELL;
       break;
-    case GTK_DIR_LEFT:
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL || !priv->last_focus_cell)
+    case CTK_DIR_LEFT:
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL || !priv->last_focus_cell)
         cycle = priv->rtl ? FOCUS_NEXT : FOCUS_PREV;
       else if (!focus_cell)
         cycle = FOCUS_LAST_CELL;
       break;
-    case GTK_DIR_RIGHT:
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL || !priv->last_focus_cell)
+    case CTK_DIR_RIGHT:
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL || !priv->last_focus_cell)
         cycle = priv->rtl ? FOCUS_PREV : FOCUS_NEXT;
       else if (!focus_cell)
         cycle = FOCUS_LAST_CELL;
@@ -2057,7 +2057,7 @@ ctk_cell_area_box_layout_pack_start (GtkCellLayout      *cell_layout,
                                      GtkCellRenderer    *renderer,
                                      gboolean            expand)
 {
-  ctk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (cell_layout), renderer, expand, FALSE, TRUE);
+  ctk_cell_area_box_pack_start (CTK_CELL_AREA_BOX (cell_layout), renderer, expand, FALSE, TRUE);
 }
 
 static void
@@ -2065,7 +2065,7 @@ ctk_cell_area_box_layout_pack_end (GtkCellLayout      *cell_layout,
                                    GtkCellRenderer    *renderer,
                                    gboolean            expand)
 {
-  ctk_cell_area_box_pack_end (GTK_CELL_AREA_BOX (cell_layout), renderer, expand, FALSE, TRUE);
+  ctk_cell_area_box_pack_end (CTK_CELL_AREA_BOX (cell_layout), renderer, expand, FALSE, TRUE);
 }
 
 static void
@@ -2073,7 +2073,7 @@ ctk_cell_area_box_layout_reorder (GtkCellLayout      *cell_layout,
                                   GtkCellRenderer    *renderer,
                                   gint                position)
 {
-  GtkCellAreaBox        *box  = GTK_CELL_AREA_BOX (cell_layout);
+  GtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (cell_layout);
   GtkCellAreaBoxPrivate *priv = box->priv;
   GList                 *node;
   CellInfo              *info;
@@ -2125,7 +2125,7 @@ _ctk_cell_area_box_group_visible (GtkCellAreaBox  *box,
 GtkCellArea *
 ctk_cell_area_box_new (void)
 {
-  return (GtkCellArea *)g_object_new (GTK_TYPE_CELL_AREA_BOX, NULL);
+  return (GtkCellArea *)g_object_new (CTK_TYPE_CELL_AREA_BOX, NULL);
 }
 
 /**
@@ -2154,8 +2154,8 @@ ctk_cell_area_box_pack_start  (GtkCellAreaBox  *box,
   GtkCellAreaBoxPrivate *priv;
   CellInfo              *info;
 
-  g_return_if_fail (GTK_IS_CELL_AREA_BOX (box));
-  g_return_if_fail (GTK_IS_CELL_RENDERER (renderer));
+  g_return_if_fail (CTK_IS_CELL_AREA_BOX (box));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (renderer));
 
   priv = box->priv;
 
@@ -2166,7 +2166,7 @@ ctk_cell_area_box_pack_start  (GtkCellAreaBox  *box,
       return;
     }
 
-  info = cell_info_new (renderer, GTK_PACK_START, expand, align, fixed);
+  info = cell_info_new (renderer, CTK_PACK_START, expand, align, fixed);
 
   priv->cells = g_list_append (priv->cells, info);
 
@@ -2199,8 +2199,8 @@ ctk_cell_area_box_pack_end (GtkCellAreaBox  *box,
   GtkCellAreaBoxPrivate *priv;
   CellInfo              *info;
 
-  g_return_if_fail (GTK_IS_CELL_AREA_BOX (box));
-  g_return_if_fail (GTK_IS_CELL_RENDERER (renderer));
+  g_return_if_fail (CTK_IS_CELL_AREA_BOX (box));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (renderer));
 
   priv = box->priv;
 
@@ -2211,7 +2211,7 @@ ctk_cell_area_box_pack_end (GtkCellAreaBox  *box,
       return;
     }
 
-  info = cell_info_new (renderer, GTK_PACK_END, expand, align, fixed);
+  info = cell_info_new (renderer, CTK_PACK_END, expand, align, fixed);
 
   priv->cells = g_list_append (priv->cells, info);
 
@@ -2231,7 +2231,7 @@ ctk_cell_area_box_pack_end (GtkCellAreaBox  *box,
 gint
 ctk_cell_area_box_get_spacing (GtkCellAreaBox  *box)
 {
-  g_return_val_if_fail (GTK_IS_CELL_AREA_BOX (box), 0);
+  g_return_val_if_fail (CTK_IS_CELL_AREA_BOX (box), 0);
 
   return box->priv->spacing;
 }
@@ -2251,7 +2251,7 @@ ctk_cell_area_box_set_spacing (GtkCellAreaBox  *box,
 {
   GtkCellAreaBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_AREA_BOX (box));
+  g_return_if_fail (CTK_IS_CELL_AREA_BOX (box));
 
   priv = box->priv;
 

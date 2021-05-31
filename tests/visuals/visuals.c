@@ -36,21 +36,21 @@ dark_button_toggled_cb (GtkToggleButton *button,
 static void
 create_dark_popup (GtkWidget *parent)
 {
-  GtkWidget *popup = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  GtkWidget *popup = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   GtkWidget *button = ctk_toggle_button_new_with_label ("Dark");
 
-  ctk_window_set_decorated (GTK_WINDOW (popup), FALSE);
+  ctk_window_set_decorated (CTK_WINDOW (popup), FALSE);
   ctk_widget_set_size_request (popup, 100, 100);
-  ctk_window_set_resizable (GTK_WINDOW (popup), FALSE);
+  ctk_window_set_resizable (CTK_WINDOW (popup), FALSE);
 
   g_signal_connect (popup, "delete-event",
                     G_CALLBACK (ctk_true), NULL);
 
-  ctk_container_add (GTK_CONTAINER (popup), button);
+  ctk_container_add (CTK_CONTAINER (popup), button);
   g_signal_connect (button, "toggled",
                     G_CALLBACK (dark_button_toggled_cb), NULL);
 
-  ctk_window_set_transient_for (GTK_WINDOW (popup), GTK_WINDOW (parent));
+  ctk_window_set_transient_for (CTK_WINDOW (popup), CTK_WINDOW (parent));
 
   ctk_widget_show_all (popup);
 }
@@ -72,7 +72,7 @@ main (int argc, char *argv[])
   ctk_builder_add_from_file (builder, filename, NULL);
   ctk_builder_connect_signals (builder, NULL);
 
-  window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+  window = CTK_WIDGET (ctk_builder_get_object (builder, "window1"));
   g_object_unref (G_OBJECT (builder));
   g_signal_connect (window, "destroy",
                     G_CALLBACK (ctk_main_quit), NULL);

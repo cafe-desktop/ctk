@@ -10,22 +10,22 @@ AM_CPPFLAGS =				\
 	-I$(top_builddir)/gdk           \
 	-I$(top_srcdir)/gdk             \
 	-DGDK_DISABLE_DEPRECATED        \
-	-DGTK_DISABLE_DEPRECATED        \
-	-DGTK_VERSION=\"$(GTK_VERSION)\"\
-	$(GTK_DEBUG_FLAGS)              \
-	$(GTK_DEP_CFLAGS)
+	-DCTK_DISABLE_DEPRECATED        \
+	-DCTK_VERSION=\"$(CTK_VERSION)\"\
+	$(CTK_DEBUG_FLAGS)              \
+	$(CTK_DEP_CFLAGS)
 
 LDADD = \
 	$(top_builddir)/gdk/libgdk-3.la \
 	$(top_builddir)/gtk/libgtk-3.la \
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 # work around random file systems showing up in the file chooser,
 # breaking the 'pickers' test
 TESTS_ENVIRONMENT = 			\
 	GIO_USE_VOLUME_MONITOR=unix 	\
 	GSETTINGS_BACKEND=memory	\
-	GTK_CSD=1			\
+	CTK_CSD=1			\
 	G_ENABLE_DIAGNOSTIC=0
 
 TEST_PROGS += accessibility-dump
@@ -101,14 +101,14 @@ test_in_files = \
 
 EXTRA_DIST += $(test_in_files) $(testdata) meson.build
 
-GTK_GSETTINGS_SCHEMAS = \
+CTK_GSETTINGS_SCHEMAS = \
 	$(top_srcdir)/gtk/org.gtk.Settings.ColorChooser.gschema.xml \
 	$(top_srcdir)/gtk/org.gtk.Settings.FileChooser.gschema.xml \
 	$(NULL)
 
-gschemas.compiled: $(GTK_GSETTINGS_SCHEMAS)
+gschemas.compiled: $(CTK_GSETTINGS_SCHEMAS)
 	$(AM_V_GEN) $(GLIB_COMPILE_SCHEMAS) \
-		$(addprefix --schema-file=,$(GTK_GSETTINGS_SCHEMAS)) \
+		$(addprefix --schema-file=,$(CTK_GSETTINGS_SCHEMAS)) \
 		--targetdir=$(builddir)
 
 BUILT_SOURCES = gschemas.compiled

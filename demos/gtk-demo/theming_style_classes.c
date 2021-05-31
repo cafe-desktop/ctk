@@ -20,12 +20,12 @@ do_theming_style_classes (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Style Classes");
-      ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
-      ctk_container_set_border_width (GTK_CONTAINER (window), 12);
+      ctk_window_set_title (CTK_WINDOW (window), "Style Classes");
+      ctk_window_set_resizable (CTK_WINDOW (window), FALSE);
+      ctk_container_set_border_width (CTK_CONTAINER (window), 12);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
@@ -33,7 +33,7 @@ do_theming_style_classes (GtkWidget *do_widget)
 
       grid = (GtkWidget *)ctk_builder_get_object (builder, "grid");
       ctk_widget_show_all (grid);
-      ctk_container_add (GTK_CONTAINER (window), grid);
+      ctk_container_add (CTK_CONTAINER (window), grid);
       g_object_unref (builder);
     }
 

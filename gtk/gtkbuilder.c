@@ -119,7 +119,7 @@
  * as %TRUE, strings like “FALSE”, “f”, “no”, “n”, “0” are interpreted
  * as %FALSE), enumerations (can be specified by their name, nick or
  * integer value), flags (can be specified by their name, nick, integer
- * value, optionally combined with “|”, e.g. “GTK_VISIBLE|GTK_REALIZED”)
+ * value, optionally combined with “|”, e.g. “CTK_VISIBLE|CTK_REALIZED”)
  * and colors (in a format understood by gdk_rgba_parse()).
  *
  * GVariants can be specified in the format understood by g_variant_parse(),
@@ -292,7 +292,7 @@ ctk_builder_class_init (GtkBuilderClass *klass)
                            P_("Translation Domain"),
                            P_("The translation domain used by gettext"),
                            NULL,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   g_object_class_install_properties (gobject_class, LAST_PROP, builder_props);
 }
@@ -314,7 +314,7 @@ ctk_builder_init (GtkBuilder *builder)
 static void
 ctk_builder_finalize (GObject *object)
 {
-  GtkBuilderPrivate *priv = GTK_BUILDER (object)->priv;
+  GtkBuilderPrivate *priv = CTK_BUILDER (object)->priv;
 
   g_free (priv->domain);
   g_free (priv->filename);
@@ -335,7 +335,7 @@ ctk_builder_set_property (GObject      *object,
                           const GValue *value,
                           GParamSpec   *pspec)
 {
-  GtkBuilder *builder = GTK_BUILDER (object);
+  GtkBuilder *builder = CTK_BUILDER (object);
 
   switch (prop_id)
     {
@@ -354,7 +354,7 @@ ctk_builder_get_property (GObject    *object,
                           GValue     *value,
                           GParamSpec *pspec)
 {
-  GtkBuilder *builder = GTK_BUILDER (object);
+  GtkBuilder *builder = CTK_BUILDER (object);
 
   switch (prop_id)
     {
@@ -559,8 +559,8 @@ ctk_builder_get_parameters (GtkBuilder  *builder,
 static const gchar *
 object_get_name (GObject *object)
 {
-  if (GTK_IS_BUILDABLE (object))
-    return ctk_buildable_get_name (GTK_BUILDABLE (object));
+  if (CTK_IS_BUILDABLE (object))
+    return ctk_buildable_get_name (CTK_BUILDABLE (object));
   else
     return g_object_get_data (object, "gtk-builder-name");
 }
@@ -582,12 +582,12 @@ ctk_builder_get_internal_child (GtkBuilder   *builder,
       if (!info)
         break;
 
-      GTK_NOTE (BUILDER,
+      CTK_NOTE (BUILDER,
                 g_message ("Trying to get internal child %s from %s",
                            childname, object_get_name (info->object)));
 
-      if (GTK_IS_BUILDABLE (info->object))
-          obj = ctk_buildable_get_internal_child (GTK_BUILDABLE (info->object),
+      if (CTK_IS_BUILDABLE (info->object))
+          obj = ctk_buildable_get_internal_child (CTK_BUILDABLE (info->object),
                                                   builder,
                                                   childname);
     };
@@ -595,8 +595,8 @@ ctk_builder_get_internal_child (GtkBuilder   *builder,
   if (!obj)
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_INVALID_VALUE,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_INVALID_VALUE,
                    "Unknown internal child: %s", childname);
     }
   return obj;
@@ -606,8 +606,8 @@ static inline void
 object_set_name (GObject     *object,
                  const gchar *name)
 {
-  if (GTK_IS_BUILDABLE (object))
-    ctk_buildable_set_name (GTK_BUILDABLE (object), name);
+  if (CTK_IS_BUILDABLE (object))
+    ctk_buildable_set_name (CTK_BUILDABLE (object), name);
   else
     g_object_set_data_full (object, "gtk-builder-name", g_strdup (name), g_free);
 }
@@ -656,8 +656,8 @@ _ctk_builder_construct (GtkBuilder  *builder,
       g_type_is_a (info->type, builder->priv->template_type))
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED,
                    "Refused to build object of type '%s' because it "
                    "conforms to the template type '%s', avoiding infinite recursion.",
                    g_type_name (info->type), g_type_name (builder->priv->template_type));
@@ -697,8 +697,8 @@ _ctk_builder_construct (GtkBuilder  *builder,
       if (constructor == NULL)
         {
           g_set_error (error,
-                       GTK_BUILDER_ERROR,
-                       GTK_BUILDER_ERROR_INVALID_VALUE,
+                       CTK_BUILDER_ERROR,
+                       CTK_BUILDER_ERROR_INVALID_VALUE,
                        "Unknown object constructor for %s: %s",
                        info->id,
                        info->constructor);
@@ -706,7 +706,7 @@ _ctk_builder_construct (GtkBuilder  *builder,
           g_array_free (construct_parameters, TRUE);
           return NULL;
         }
-      obj = ctk_buildable_construct_child (GTK_BUILDABLE (constructor),
+      obj = ctk_buildable_construct_child (CTK_BUILDABLE (constructor),
                                            builder,
                                            info->id);
       g_assert (obj != NULL);
@@ -747,7 +747,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       if (G_IS_INITIALLY_UNOWNED (obj))
         g_object_ref_sink (obj);
 
-      GTK_NOTE (BUILDER,
+      CTK_NOTE (BUILDER,
                 g_message ("created %s of type %s", info->id, g_type_name (info->type)));
 
       for (i = 0; i < construct_parameters->len; i++)
@@ -763,10 +763,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   custom_set_property = FALSE;
   buildable = NULL;
   iface = NULL;
-  if (GTK_IS_BUILDABLE (obj))
+  if (CTK_IS_BUILDABLE (obj))
     {
-      buildable = GTK_BUILDABLE (obj);
-      iface = GTK_BUILDABLE_GET_IFACE (obj);
+      buildable = CTK_BUILDABLE (obj);
+      iface = CTK_BUILDABLE_GET_IFACE (obj);
       if (iface->set_buildable_property)
         custom_set_property = TRUE;
     }
@@ -785,7 +785,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         g_object_set_property (obj, param->name, &param->value);
 
 #ifdef G_ENABLE_DEBUG
-      if (GTK_DEBUG_CHECK (BUILDER))
+      if (CTK_DEBUG_CHECK (BUILDER))
         {
           gchar *str = g_strdup_value_contents ((const GValue*)&param->value);
           g_message ("set %s: %s = %s", info->id, param->name, str);
@@ -836,10 +836,10 @@ _ctk_builder_apply_properties (GtkBuilder  *builder,
   custom_set_property = FALSE;
   buildable = NULL;
   iface = NULL;
-  if (GTK_IS_BUILDABLE (info->object))
+  if (CTK_IS_BUILDABLE (info->object))
     {
-      buildable = GTK_BUILDABLE (info->object);
-      iface = GTK_BUILDABLE_GET_IFACE (info->object);
+      buildable = CTK_BUILDABLE (info->object);
+      iface = CTK_BUILDABLE_GET_IFACE (info->object);
       if (iface->set_buildable_property)
         custom_set_property = TRUE;
     }
@@ -855,7 +855,7 @@ _ctk_builder_apply_properties (GtkBuilder  *builder,
         g_object_set_property (info->object, param->name, &param->value);
 
 #ifdef G_ENABLE_DEBUG
-      if (GTK_DEBUG_CHECK (BUILDER))
+      if (CTK_DEBUG_CHECK (BUILDER))
         {
           gchar *str = g_strdup_value_contents ((const GValue*)&param->value);
           g_message ("set %s: %s = %s", info->id, param->name, str);
@@ -898,12 +898,12 @@ _ctk_builder_add (GtkBuilder *builder,
   g_assert (object != NULL);
 
   parent = ((ObjectInfo*)child_info->parent)->object;
-  g_assert (GTK_IS_BUILDABLE (parent));
+  g_assert (CTK_IS_BUILDABLE (parent));
 
-  GTK_NOTE (BUILDER,
+  CTK_NOTE (BUILDER,
             g_message ("adding %s to %s", object_get_name (object), object_get_name (parent)));
 
-  ctk_buildable_add_child (GTK_BUILDABLE (parent), builder, object,
+  ctk_buildable_add_child (CTK_BUILDABLE (parent), builder, object,
                            child_info->type);
 
   child_info->added = TRUE;
@@ -1010,7 +1010,7 @@ _ctk_builder_finish (GtkBuilder *builder)
 GtkBuilder *
 ctk_builder_new (void)
 {
-  return g_object_new (GTK_TYPE_BUILDER, NULL);
+  return g_object_new (CTK_TYPE_BUILDER, NULL);
 }
 
 /**
@@ -1025,7 +1025,7 @@ ctk_builder_new (void)
  * Most users will probably want to use ctk_builder_new_from_file().
  *
  * If an error occurs, 0 will be returned and @error will be assigned a
- * #GError from the #GTK_BUILDER_ERROR, #G_MARKUP_ERROR or #G_FILE_ERROR
+ * #GError from the #CTK_BUILDER_ERROR, #G_MARKUP_ERROR or #G_FILE_ERROR
  * domain.
  *
  * It’s not really reasonable to attempt to handle failures of this
@@ -1048,7 +1048,7 @@ ctk_builder_add_from_file (GtkBuilder   *builder,
   gsize length;
   GError *tmp_error;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), 0);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), 0);
   g_return_val_if_fail (filename != NULL, 0);
   g_return_val_if_fail (error == NULL || *error == NULL, 0);
 
@@ -1093,7 +1093,7 @@ ctk_builder_add_from_file (GtkBuilder   *builder,
  * them with the current contents of @builder.
  *
  * Upon errors 0 will be returned and @error will be assigned a
- * #GError from the #GTK_BUILDER_ERROR, #G_MARKUP_ERROR or #G_FILE_ERROR
+ * #GError from the #CTK_BUILDER_ERROR, #G_MARKUP_ERROR or #G_FILE_ERROR
  * domain.
  *
  * If you are adding an object that depends on an object that is not
@@ -1114,7 +1114,7 @@ ctk_builder_add_objects_from_file (GtkBuilder   *builder,
   gsize length;
   GError *tmp_error;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), 0);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), 0);
   g_return_val_if_fail (filename != NULL, 0);
   g_return_val_if_fail (object_ids != NULL && object_ids[0] != NULL, 0);
   g_return_val_if_fail (error == NULL || *error == NULL, 0);
@@ -1176,8 +1176,8 @@ ctk_builder_extend_with_template (GtkBuilder   *builder,
 {
   GError *tmp_error;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), 0);
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
   g_return_val_if_fail (g_type_name (template_type) != NULL, 0);
   g_return_val_if_fail (g_type_is_a (G_OBJECT_TYPE (widget), template_type), 0);
   g_return_val_if_fail (buffer && buffer[0], 0);
@@ -1217,7 +1217,7 @@ ctk_builder_extend_with_template (GtkBuilder   *builder,
  * Most users will probably want to use ctk_builder_new_from_resource().
  *
  * If an error occurs, 0 will be returned and @error will be assigned a
- * #GError from the #GTK_BUILDER_ERROR, #G_MARKUP_ERROR or #G_RESOURCE_ERROR
+ * #GError from the #CTK_BUILDER_ERROR, #G_MARKUP_ERROR or #G_RESOURCE_ERROR
  * domain.
  *
  * It’s not really reasonable to attempt to handle failures of this
@@ -1238,7 +1238,7 @@ ctk_builder_add_from_resource (GtkBuilder   *builder,
   char *filename_for_errors;
   char *slash;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), 0);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), 0);
   g_return_val_if_fail (resource_path != NULL, 0);
   g_return_val_if_fail (error == NULL || *error == NULL, 0);
 
@@ -1294,7 +1294,7 @@ ctk_builder_add_from_resource (GtkBuilder   *builder,
  * them with the current contents of @builder.
  *
  * Upon errors 0 will be returned and @error will be assigned a
- * #GError from the #GTK_BUILDER_ERROR, #G_MARKUP_ERROR or #G_RESOURCE_ERROR
+ * #GError from the #CTK_BUILDER_ERROR, #G_MARKUP_ERROR or #G_RESOURCE_ERROR
  * domain.
  *
  * If you are adding an object that depends on an object that is not
@@ -1316,7 +1316,7 @@ ctk_builder_add_objects_from_resource (GtkBuilder   *builder,
   char *filename_for_errors;
   char *slash;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), 0);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), 0);
   g_return_val_if_fail (resource_path != NULL, 0);
   g_return_val_if_fail (object_ids != NULL && object_ids[0] != NULL, 0);
   g_return_val_if_fail (error == NULL || *error == NULL, 0);
@@ -1373,7 +1373,7 @@ ctk_builder_add_objects_from_resource (GtkBuilder   *builder,
  * Most users will probably want to use ctk_builder_new_from_string().
  *
  * Upon errors 0 will be returned and @error will be assigned a
- * #GError from the #GTK_BUILDER_ERROR, #G_MARKUP_ERROR or
+ * #GError from the #CTK_BUILDER_ERROR, #G_MARKUP_ERROR or
  * #G_VARIANT_PARSE_ERROR domain.
  *
  * It’s not really reasonable to attempt to handle failures of this
@@ -1392,7 +1392,7 @@ ctk_builder_add_from_string (GtkBuilder   *builder,
 {
   GError *tmp_error;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), 0);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), 0);
   g_return_val_if_fail (buffer != NULL, 0);
   g_return_val_if_fail (error == NULL || *error == NULL, 0);
 
@@ -1429,7 +1429,7 @@ ctk_builder_add_from_string (GtkBuilder   *builder,
  * them with the current contents of @builder.
  *
  * Upon errors 0 will be returned and @error will be assigned a
- * #GError from the #GTK_BUILDER_ERROR or #G_MARKUP_ERROR domain.
+ * #GError from the #CTK_BUILDER_ERROR or #G_MARKUP_ERROR domain.
  *
  * If you are adding an object that depends on an object that is not
  * its child (for instance a #GtkTreeView that depends on its
@@ -1448,7 +1448,7 @@ ctk_builder_add_objects_from_string (GtkBuilder   *builder,
 {
   GError *tmp_error;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), 0);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), 0);
   g_return_val_if_fail (buffer != NULL, 0);
   g_return_val_if_fail (object_ids != NULL && object_ids[0] != NULL, 0);
   g_return_val_if_fail (error == NULL || *error == NULL, 0);
@@ -1491,7 +1491,7 @@ GObject *
 ctk_builder_get_object (GtkBuilder  *builder,
                         const gchar *name)
 {
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), NULL);
   g_return_val_if_fail (name != NULL, NULL);
 
   return g_hash_table_lookup (builder->priv->objects, name);
@@ -1518,7 +1518,7 @@ ctk_builder_get_objects (GtkBuilder *builder)
   GObject *object;
   GHashTableIter iter;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), NULL);
 
   g_hash_table_iter_init (&iter, builder->priv->objects);
   while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&object))
@@ -1543,7 +1543,7 @@ ctk_builder_set_translation_domain (GtkBuilder  *builder,
 {
   gchar *new_domain;
 
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
 
   new_domain = g_strdup (domain);
   g_free (builder->priv->domain);
@@ -1566,7 +1566,7 @@ ctk_builder_set_translation_domain (GtkBuilder  *builder,
 const gchar *
 ctk_builder_get_translation_domain (GtkBuilder *builder)
 {
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), NULL);
 
   return builder->priv->domain;
 }
@@ -1587,7 +1587,7 @@ ctk_builder_expose_object (GtkBuilder    *builder,
                            const gchar   *name,
                            GObject       *object)
 {
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
   g_return_if_fail (name && name[0]);
   g_return_if_fail (!g_hash_table_contains (builder->priv->objects, name));
 
@@ -1674,7 +1674,7 @@ ctk_builder_connect_signals (GtkBuilder *builder,
 {
   ConnectArgs args;
 
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
 
   args.data = user_data;
 
@@ -1732,7 +1732,7 @@ ctk_builder_connect_signals_full (GtkBuilder            *builder,
   GObject *connect_object;
   GString *detailed_id = NULL;
 
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
   g_return_if_fail (func != NULL);
 
   if (!builder->priv->signals)
@@ -1804,7 +1804,7 @@ ctk_builder_connect_signals_full (GtkBuilder            *builder,
  * still to come.
  *
  * Upon errors %FALSE will be returned and @error will be assigned a
- * #GError from the #GTK_BUILDER_ERROR domain.
+ * #GError from the #CTK_BUILDER_ERROR domain.
  *
  * Returns: %TRUE on success
  *
@@ -1817,7 +1817,7 @@ ctk_builder_value_from_string (GtkBuilder   *builder,
                                GValue       *value,
                                GError      **error)
 {
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), FALSE);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), FALSE);
   g_return_val_if_fail (G_IS_PARAM_SPEC (pspec), FALSE);
   g_return_val_if_fail (string != NULL, FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
@@ -1881,7 +1881,7 @@ ctk_builder_value_from_string (GtkBuilder   *builder,
  * need not be initialised beforehand.
  *
  * Upon errors %FALSE will be returned and @error will be assigned a
- * #GError from the #GTK_BUILDER_ERROR domain.
+ * #GError from the #CTK_BUILDER_ERROR domain.
  *
  * Returns: %TRUE on success
  *
@@ -1933,8 +1933,8 @@ ctk_builder_value_from_string_type (GtkBuilder   *builder,
         if (errno || endptr == string)
           {
             g_set_error (error,
-                         GTK_BUILDER_ERROR,
-                         GTK_BUILDER_ERROR_INVALID_VALUE,
+                         CTK_BUILDER_ERROR,
+                         CTK_BUILDER_ERROR_INVALID_VALUE,
                          "Could not parse integer '%s'",
                          string);
             ret = FALSE;
@@ -1959,8 +1959,8 @@ ctk_builder_value_from_string_type (GtkBuilder   *builder,
         if (errno || endptr == string)
           {
             g_set_error (error,
-                         GTK_BUILDER_ERROR,
-                         GTK_BUILDER_ERROR_INVALID_VALUE,
+                         CTK_BUILDER_ERROR,
+                         CTK_BUILDER_ERROR_INVALID_VALUE,
                          "Could not parse unsigned integer '%s'",
                          string);
             ret = FALSE;
@@ -2007,8 +2007,8 @@ ctk_builder_value_from_string_type (GtkBuilder   *builder,
         if (errno || endptr == string)
           {
             g_set_error (error,
-                         GTK_BUILDER_ERROR,
-                         GTK_BUILDER_ERROR_INVALID_VALUE,
+                         CTK_BUILDER_ERROR,
+                         CTK_BUILDER_ERROR_INVALID_VALUE,
                          "Could not parse double '%s'",
                          string);
             ret = FALSE;
@@ -2045,8 +2045,8 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           else
             {
               g_set_error (error,
-                           GTK_BUILDER_ERROR,
-                           GTK_BUILDER_ERROR_INVALID_VALUE,
+                           CTK_BUILDER_ERROR,
+                           CTK_BUILDER_ERROR_INVALID_VALUE,
                            "Could not parse color '%s'",
                            string);
               ret = FALSE;
@@ -2062,8 +2062,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           else
             {
               g_set_error (error,
-                           GTK_BUILDER_ERROR,
-                           GTK_BUILDER_ERROR_INVALID_VALUE,
+                           CTK_BUILDER_ERROR,
+                           CTK_BUILDER_ERROR_INVALID_VALUE,
                            "Could not parse RGBA color '%s'",
                            string);
               ret = FALSE;
@@ -2077,8 +2077,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       else
         {
           g_set_error (error,
-                       GTK_BUILDER_ERROR,
-                       GTK_BUILDER_ERROR_INVALID_VALUE,
+                       CTK_BUILDER_ERROR,
+                       CTK_BUILDER_ERROR_INVALID_VALUE,
                        "Could not parse '%s' as a %s",
                        string, G_VALUE_TYPE_NAME (value));
           ret = FALSE;
@@ -2095,8 +2095,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           if (g_hash_table_contains (builder->priv->objects, string))
             {
               g_set_error (error,
-                           GTK_BUILDER_ERROR,
-                           GTK_BUILDER_ERROR_INVALID_VALUE,
+                           CTK_BUILDER_ERROR,
+                           CTK_BUILDER_ERROR_INVALID_VALUE,
                            "Could not load image '%s': "
                            " '%s' is already used as object id",
                            string, string);
@@ -2132,7 +2132,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
               pixbuf = ctk_icon_theme_load_icon (theme,
                                                  "image-missing",
                                                  16,
-                                                 GTK_ICON_LOOKUP_USE_BUILTIN,
+                                                 CTK_ICON_LOOKUP_USE_BUILTIN,
                                                  NULL);
             }
 
@@ -2153,8 +2153,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           if (g_hash_table_contains (builder->priv->objects, string))
             {
               g_set_error (error,
-                           GTK_BUILDER_ERROR,
-                           GTK_BUILDER_ERROR_INVALID_VALUE,
+                           CTK_BUILDER_ERROR,
+                           CTK_BUILDER_ERROR_INVALID_VALUE,
                            "Could not create file '%s': "
                            " '%s' is already used as object id",
                            string, string);
@@ -2181,8 +2181,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    */
   if (!ret && error && *error == NULL)
     g_set_error (error,
-                 GTK_BUILDER_ERROR,
-                 GTK_BUILDER_ERROR_INVALID_VALUE,
+                 CTK_BUILDER_ERROR,
+                 CTK_BUILDER_ERROR_INVALID_VALUE,
                  "Unsupported GType '%s'", g_type_name (type));
 
   return ret;
@@ -2222,8 +2222,8 @@ _ctk_builder_enum_from_string (GType         type,
       else
         {
           g_set_error (error,
-                       GTK_BUILDER_ERROR,
-                       GTK_BUILDER_ERROR_INVALID_VALUE,
+                       CTK_BUILDER_ERROR,
+                       CTK_BUILDER_ERROR_INVALID_VALUE,
                        "Could not parse enum: '%s'",
                        string);
           ret = FALSE;
@@ -2330,8 +2330,8 @@ _ctk_builder_flags_from_string (GType         type,
               else
                 {
                   g_set_error (error,
-                               GTK_BUILDER_ERROR,
-                               GTK_BUILDER_ERROR_INVALID_VALUE,
+                               CTK_BUILDER_ERROR,
+                               CTK_BUILDER_ERROR_INVALID_VALUE,
                                "Unknown flag: '%s'",
                                flag);
                   ret = FALSE;
@@ -2393,8 +2393,8 @@ _ctk_builder_boolean_from_string (const gchar  *string,
 
 error:
   g_set_error (error,
-               GTK_BUILDER_ERROR,
-               GTK_BUILDER_ERROR_INVALID_VALUE,
+               CTK_BUILDER_ERROR,
+               CTK_BUILDER_ERROR_INVALID_VALUE,
                "Could not parse boolean '%s'",
                string);
   return FALSE;
@@ -2420,10 +2420,10 @@ ctk_builder_get_type_from_name (GtkBuilder  *builder,
 {
   GType type;
 
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), G_TYPE_INVALID);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), G_TYPE_INVALID);
   g_return_val_if_fail (type_name != NULL, G_TYPE_INVALID);
 
-  type = GTK_BUILDER_GET_CLASS (builder)->get_type_from_name (builder, type_name);
+  type = CTK_BUILDER_GET_CLASS (builder)->get_type_from_name (builder, type_name);
 
   if (G_TYPE_IS_CLASSED (type))
     g_type_class_unref (g_type_class_ref (type));
@@ -2506,7 +2506,7 @@ ctk_builder_add_callback_symbol (GtkBuilder  *builder,
                                  const gchar *callback_name,
                                  GCallback    callback_symbol)
 {
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
   g_return_if_fail (callback_name && callback_name[0]);
   g_return_if_fail (callback_symbol != NULL);
 
@@ -2539,7 +2539,7 @@ ctk_builder_add_callback_symbols (GtkBuilder  *builder,
   const gchar *callback_name;
   GCallback callback_symbol;
 
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
   g_return_if_fail (first_callback_name && first_callback_name[0]);
   g_return_if_fail (first_callback_symbol != NULL);
 
@@ -2582,7 +2582,7 @@ GCallback
 ctk_builder_lookup_callback_symbol (GtkBuilder  *builder,
                                     const gchar *callback_name)
 {
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), NULL);
   g_return_val_if_fail (callback_name && callback_name[0], NULL);
 
   if (!builder->priv->callbacks)
@@ -2695,8 +2695,8 @@ void
 ctk_builder_set_application (GtkBuilder     *builder,
                              GtkApplication *application)
 {
-  g_return_if_fail (GTK_IS_BUILDER (builder));
-  g_return_if_fail (GTK_IS_APPLICATION (application));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_APPLICATION (application));
 
   if (builder->priv->application)
     g_object_unref (builder->priv->application);
@@ -2725,15 +2725,15 @@ ctk_builder_set_application (GtkBuilder     *builder,
 GtkApplication *
 ctk_builder_get_application (GtkBuilder *builder)
 {
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), NULL);
 
   if (!builder->priv->application)
     {
       GApplication *application;
 
       application = g_application_get_default ();
-      if (application && GTK_IS_APPLICATION (application))
-        builder->priv->application = g_object_ref (GTK_APPLICATION (application));
+      if (application && CTK_IS_APPLICATION (application))
+        builder->priv->application = g_object_ref (CTK_APPLICATION (application));
     }
 
   return builder->priv->application;
@@ -2788,8 +2788,8 @@ _ctk_builder_error_unhandled_tag (GtkBuilder           *builder,
 
   g_markup_parse_context_get_position (context, &line, &col);
   g_set_error (error,
-               GTK_BUILDER_ERROR,
-               GTK_BUILDER_ERROR_UNHANDLED_TAG,
+               CTK_BUILDER_ERROR,
+               CTK_BUILDER_ERROR_UNHANDLED_TAG,
                "%s:%d:%d Unsupported tag for %s: <%s>",
                builder->priv->filename, line, col,
                object, element_name);
@@ -2831,8 +2831,8 @@ _ctk_builder_check_parent (GtkBuilder           *builder,
 
   g_markup_parse_context_get_position (context, &line, &col);
   g_set_error (error,
-               GTK_BUILDER_ERROR,
-               GTK_BUILDER_ERROR_INVALID_TAG,
+               CTK_BUILDER_ERROR,
+               CTK_BUILDER_ERROR_INVALID_TAG,
                "%s:%d:%d Can't use <%s> here",
                builder->priv->filename, line, col, element);
 
@@ -2869,7 +2869,7 @@ _ctk_builder_lookup_object (GtkBuilder  *builder,
   if (!obj && !error)
     {
       g_set_error (&error,
-                   GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_ID,
+                   CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_ID,
                    "%s:%d:%d Object with ID %s not found",
                    builder->priv->filename, line, col, name);
       g_object_set_data_full (G_OBJECT (builder), "lookup-error",

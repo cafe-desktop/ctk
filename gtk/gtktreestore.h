@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_STORE_H__
-#define __GTK_TREE_STORE_H__
+#ifndef __CTK_TREE_STORE_H__
+#define __CTK_TREE_STORE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_TREE_STORE			(ctk_tree_store_get_type ())
-#define GTK_TREE_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_STORE, GtkTreeStore))
-#define GTK_TREE_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TREE_STORE, GtkTreeStoreClass))
-#define GTK_IS_TREE_STORE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_STORE))
-#define GTK_IS_TREE_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TREE_STORE))
-#define GTK_TREE_STORE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TREE_STORE, GtkTreeStoreClass))
+#define CTK_TYPE_TREE_STORE			(ctk_tree_store_get_type ())
+#define CTK_TREE_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_STORE, GtkTreeStore))
+#define CTK_TREE_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_STORE, GtkTreeStoreClass))
+#define CTK_IS_TREE_STORE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_STORE))
+#define CTK_IS_TREE_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TREE_STORE))
+#define CTK_TREE_STORE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_STORE, GtkTreeStoreClass))
 
 typedef struct _GtkTreeStore        GtkTreeStore;
 typedef struct _GtkTreeStoreClass   GtkTreeStoreClass;
@@ -168,4 +168,4 @@ void          ctk_tree_store_move_after       (GtkTreeStore *tree_store,
 G_END_DECLS
 
 
-#endif /* __GTK_TREE_STORE_H__ */
+#endif /* __CTK_TREE_STORE_H__ */

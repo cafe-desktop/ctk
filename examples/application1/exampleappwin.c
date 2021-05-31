@@ -8,7 +8,7 @@ struct _ExampleAppWindow
   GtkApplicationWindow parent;
 };
 
-G_DEFINE_TYPE(ExampleAppWindow, example_app_window, GTK_TYPE_APPLICATION_WINDOW);
+G_DEFINE_TYPE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
 
 static void
 example_app_window_init (ExampleAppWindow *app)

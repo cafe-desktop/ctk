@@ -144,7 +144,7 @@ struct _FilterRule
 };
 
 G_DEFINE_TYPE_WITH_CODE (GtkRecentFilter, ctk_recent_filter, G_TYPE_INITIALLY_UNOWNED,
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_recent_filter_buildable_init))
 
 
@@ -188,7 +188,7 @@ filter_rule_free (FilterRule *rule)
 static void
 ctk_recent_filter_finalize (GObject *object)
 {
-  GtkRecentFilter *filter = GTK_RECENT_FILTER (object);
+  GtkRecentFilter *filter = CTK_RECENT_FILTER (object);
   
   g_free (filter->name);
   g_slist_free_full (filter->rules, (GDestroyNotify) filter_rule_free);
@@ -355,7 +355,7 @@ ctk_recent_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
       data = g_slice_new0 (SubParserData);
       data->string = g_string_new ("");
       data->type = PARSE_MIME_TYPES;
-      data->filter = GTK_RECENT_FILTER (buildable);
+      data->filter = CTK_RECENT_FILTER (buildable);
       data->builder = builder;
 
       *parser = sub_parser;
@@ -366,7 +366,7 @@ ctk_recent_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
       data = g_slice_new0 (SubParserData);
       data->string = g_string_new ("");
       data->type = PARSE_PATTERNS;
-      data->filter = GTK_RECENT_FILTER (buildable);
+      data->filter = CTK_RECENT_FILTER (buildable);
       data->builder = builder;
 
       *parser = sub_parser;
@@ -377,7 +377,7 @@ ctk_recent_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
       data = g_slice_new0 (SubParserData);
       data->string = g_string_new ("");
       data->type = PARSE_APPLICATIONS;
-      data->filter = GTK_RECENT_FILTER (buildable);
+      data->filter = CTK_RECENT_FILTER (buildable);
       data->builder = builder;
 
       *parser = sub_parser;
@@ -430,7 +430,7 @@ ctk_recent_filter_buildable_custom_tag_end (GtkBuildable *buildable,
 GtkRecentFilter *
 ctk_recent_filter_new (void)
 {
-  return g_object_new (GTK_TYPE_RECENT_FILTER, NULL);
+  return g_object_new (CTK_TYPE_RECENT_FILTER, NULL);
 }
 
 /**
@@ -448,7 +448,7 @@ void
 ctk_recent_filter_set_name (GtkRecentFilter *filter,
 			    const gchar     *name)
 {
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   
   g_free (filter->name);
   
@@ -471,7 +471,7 @@ ctk_recent_filter_set_name (GtkRecentFilter *filter,
 const gchar *
 ctk_recent_filter_get_name (GtkRecentFilter *filter)
 {
-  g_return_val_if_fail (GTK_IS_RECENT_FILTER (filter), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_FILTER (filter), NULL);
   
   return filter->name;
 }
@@ -521,12 +521,12 @@ ctk_recent_filter_add_mime_type (GtkRecentFilter *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   g_return_if_fail (mime_type != NULL);
   
   rule = g_new0 (FilterRule, 1);
   rule->type = FILTER_RULE_MIME_TYPE;
-  rule->needed = GTK_RECENT_FILTER_MIME_TYPE;
+  rule->needed = CTK_RECENT_FILTER_MIME_TYPE;
   rule->u.mime_type = g_strdup (mime_type);
   
   recent_filter_add_rule (filter, rule);
@@ -548,12 +548,12 @@ ctk_recent_filter_add_pattern (GtkRecentFilter *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   g_return_if_fail (pattern != NULL);
   
   rule = g_new0 (FilterRule, 1);
   rule->type = FILTER_RULE_DISPLAY_NAME;
-  rule->needed = GTK_RECENT_FILTER_DISPLAY_NAME;
+  rule->needed = CTK_RECENT_FILTER_DISPLAY_NAME;
   rule->u.pattern = g_strdup (pattern);
   
   recent_filter_add_rule (filter, rule);
@@ -573,11 +573,11 @@ ctk_recent_filter_add_pixbuf_formats (GtkRecentFilter *filter)
 {
   FilterRule *rule;
 
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
 
   rule = g_new0 (FilterRule, 1);
   rule->type = FILTER_RULE_PIXBUF_FORMATS;
-  rule->needed = GTK_RECENT_FILTER_MIME_TYPE;
+  rule->needed = CTK_RECENT_FILTER_MIME_TYPE;
   rule->u.pixbuf_formats = gdk_pixbuf_get_formats ();
   
   recent_filter_add_rule (filter, rule);
@@ -599,12 +599,12 @@ ctk_recent_filter_add_application (GtkRecentFilter *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   g_return_if_fail (application != NULL);
   
   rule = g_new0 (FilterRule, 1);
   rule->type = FILTER_RULE_APPLICATION;
-  rule->needed = GTK_RECENT_FILTER_APPLICATION;
+  rule->needed = CTK_RECENT_FILTER_APPLICATION;
   rule->u.application = g_strdup (application);
   
   recent_filter_add_rule (filter, rule);
@@ -626,12 +626,12 @@ ctk_recent_filter_add_group (GtkRecentFilter *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   g_return_if_fail (group != NULL);
   
   rule = g_new0 (FilterRule, 1);
   rule->type = FILTER_RULE_GROUP;
-  rule->needed = GTK_RECENT_FILTER_GROUP;
+  rule->needed = CTK_RECENT_FILTER_GROUP;
   rule->u.group = g_strdup (group);
   
   recent_filter_add_rule (filter, rule);
@@ -653,11 +653,11 @@ ctk_recent_filter_add_age (GtkRecentFilter *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   
   rule = g_new0 (FilterRule, 1);
   rule->type = FILTER_RULE_AGE;
-  rule->needed = GTK_RECENT_FILTER_AGE;
+  rule->needed = CTK_RECENT_FILTER_AGE;
   rule->u.age = days;
   
   recent_filter_add_rule (filter, rule);
@@ -690,7 +690,7 @@ ctk_recent_filter_add_custom (GtkRecentFilter      *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   g_return_if_fail (func != NULL);
 
   rule = g_new0 (FilterRule, 1);
@@ -730,7 +730,7 @@ ctk_recent_filter_filter (GtkRecentFilter           *filter,
 {
   GSList *l;
   
-  g_return_val_if_fail (GTK_IS_RECENT_FILTER (filter), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_FILTER (filter), FALSE);
   g_return_val_if_fail (filter_info != NULL, FALSE);
   
   for (l = filter->rules; l != NULL; l = l->next)

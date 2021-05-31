@@ -53,7 +53,7 @@ viqr_register_type (GTypeModule *module)
 
   type_viqr_translit = 
     g_type_module_register_type (module,
-				 GTK_TYPE_IM_CONTEXT_SIMPLE,
+				 CTK_TYPE_IM_CONTEXT_SIMPLE,
 				 "GtkIMContextViqr",
 				 &object_info, 0);
 }
@@ -241,7 +241,7 @@ static const GtkIMContextInfo viqr_info = {
   "viqr",		   /* ID */
   NC_("input method menu", "Vietnamese (VIQR)"), /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
-   GTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
   ""			   /* Languages for which this module is the default */
 };
 

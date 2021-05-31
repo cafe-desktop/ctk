@@ -25,8 +25,8 @@ about_activate (GSimpleAction *action,
   GtkWidget *about_dlg;
 
   builder = g_object_get_data (G_OBJECT (window), "builder");
-  about_dlg = GTK_WIDGET (ctk_builder_get_object (builder, "aboutdialog1"));
-  ctk_dialog_run (GTK_DIALOG (about_dlg));
+  about_dlg = CTK_WIDGET (ctk_builder_get_object (builder, "aboutdialog1"));
+  ctk_dialog_run (CTK_DIALOG (about_dlg));
   ctk_widget_hide (about_dlg);
 }
 
@@ -60,12 +60,12 @@ do_builder (GtkWidget *do_widget)
       builder = ctk_builder_new_from_resource ("/builder/demo.ui");
 
       ctk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = CTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
-      toolbar = GTK_WIDGET (ctk_builder_get_object (builder, "toolbar1"));
+      toolbar = CTK_WIDGET (ctk_builder_get_object (builder, "toolbar1"));
       ctk_style_context_add_class (ctk_widget_get_style_context (toolbar),
                                    "primary-toolbar");
       actions = (GActionGroup*)g_simple_action_group_new ();
@@ -74,43 +74,43 @@ do_builder (GtkWidget *do_widget)
                                        window);
       ctk_widget_insert_action_group (window, "win", actions);
       accel_group = ctk_accel_group_new ();
-      ctk_window_add_accel_group (GTK_WINDOW (window), accel_group);
+      ctk_window_add_accel_group (CTK_WINDOW (window), accel_group);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "new_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_n, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_n, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "open_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_o, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_o, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "save_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_s, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_s, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "quit_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_q, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_q, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "copy_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_c, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_c, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "cut_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_x, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_x, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "paste_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_v, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_v, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "help_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_F1, 0, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_F1, 0, CTK_ACCEL_VISIBLE);
 
       item = (GtkWidget*)ctk_builder_get_object (builder, "about_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_F7, 0, GTK_ACCEL_VISIBLE);
+                                  GDK_KEY_F7, 0, CTK_ACCEL_VISIBLE);
 
       g_object_set_data_full (G_OBJECT(window), "builder", builder, g_object_unref);
     }

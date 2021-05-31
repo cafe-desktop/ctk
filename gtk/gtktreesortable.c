@@ -60,7 +60,7 @@ ctk_tree_sortable_get_type (void)
 	g_type_register_static (G_TYPE_INTERFACE, I_("GtkTreeSortable"),
 				&tree_sortable_info, 0);
 
-      g_type_interface_add_prerequisite (tree_sortable_type, GTK_TYPE_TREE_MODEL);
+      g_type_interface_add_prerequisite (tree_sortable_type, CTK_TYPE_TREE_MODEL);
     }
 
   return tree_sortable_type;
@@ -82,7 +82,7 @@ ctk_tree_sortable_base_init (gpointer g_class)
        * the contents of @sortable are resorted.
        */
       g_signal_new (I_("sort-column-changed"),
-                    GTK_TYPE_TREE_SORTABLE,
+                    CTK_TYPE_TREE_SORTABLE,
                     G_SIGNAL_RUN_LAST,
                     G_STRUCT_OFFSET (GtkTreeSortableIface, sort_column_changed),
                     NULL, NULL,
@@ -101,7 +101,7 @@ ctk_tree_sortable_base_init (gpointer g_class)
 void
 ctk_tree_sortable_sort_column_changed (GtkTreeSortable *sortable)
 {
-  g_return_if_fail (GTK_IS_TREE_SORTABLE (sortable));
+  g_return_if_fail (CTK_IS_TREE_SORTABLE (sortable));
 
   g_signal_emit_by_name (sortable, "sort-column-changed");
 }
@@ -114,8 +114,8 @@ ctk_tree_sortable_sort_column_changed (GtkTreeSortable *sortable)
  * 
  * Fills in @sort_column_id and @order with the current sort column and the
  * order. It returns %TRUE unless the @sort_column_id is 
- * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID or 
- * %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
+ * %CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID or 
+ * %CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
  * 
  * Returns: %TRUE if the sort column is not one of the special sort
  *   column ids.
@@ -127,9 +127,9 @@ ctk_tree_sortable_get_sort_column_id (GtkTreeSortable  *sortable,
 {
   GtkTreeSortableIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_SORTABLE (sortable), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_SORTABLE (sortable), FALSE);
 
-  iface = GTK_TREE_SORTABLE_GET_IFACE (sortable);
+  iface = CTK_TREE_SORTABLE_GET_IFACE (sortable);
 
   g_return_val_if_fail (iface != NULL, FALSE);
   g_return_val_if_fail (iface->get_sort_column_id != NULL, FALSE);
@@ -148,10 +148,10 @@ ctk_tree_sortable_get_sort_column_id (GtkTreeSortable  *sortable,
  * #GtkTreeSortable::sort-column-changed signal. @sort_column_id may either be
  * a regular column id, or one of the following special values:
  * 
- * - %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID: the default sort function
+ * - %CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID: the default sort function
  *   will be used, if it is set
  * 
- * - %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID: no sorting will occur
+ * - %CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID: no sorting will occur
  */
 void
 ctk_tree_sortable_set_sort_column_id (GtkTreeSortable  *sortable,
@@ -160,9 +160,9 @@ ctk_tree_sortable_set_sort_column_id (GtkTreeSortable  *sortable,
 {
   GtkTreeSortableIface *iface;
 
-  g_return_if_fail (GTK_IS_TREE_SORTABLE (sortable));
+  g_return_if_fail (CTK_IS_TREE_SORTABLE (sortable));
 
-  iface = GTK_TREE_SORTABLE_GET_IFACE (sortable);
+  iface = CTK_TREE_SORTABLE_GET_IFACE (sortable);
 
   g_return_if_fail (iface != NULL);
   g_return_if_fail (iface->set_sort_column_id != NULL);
@@ -191,10 +191,10 @@ ctk_tree_sortable_set_sort_func (GtkTreeSortable        *sortable,
 {
   GtkTreeSortableIface *iface;
 
-  g_return_if_fail (GTK_IS_TREE_SORTABLE (sortable));
+  g_return_if_fail (CTK_IS_TREE_SORTABLE (sortable));
   g_return_if_fail (sort_func != NULL);
 
-  iface = GTK_TREE_SORTABLE_GET_IFACE (sortable);
+  iface = CTK_TREE_SORTABLE_GET_IFACE (sortable);
 
   g_return_if_fail (iface != NULL);
   g_return_if_fail (iface->set_sort_func != NULL);
@@ -212,13 +212,13 @@ ctk_tree_sortable_set_sort_func (GtkTreeSortable        *sortable,
  * 
  * Sets the default comparison function used when sorting to be @sort_func.  
  * If the current sort column id of @sortable is
- * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, then the model will sort using 
+ * %CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, then the model will sort using 
  * this function.
  *
  * If @sort_func is %NULL, then there will be no default comparison function.
  * This means that once the model  has been sorted, it can’t go back to the
  * default state. In this case, when the current sort column id of @sortable 
- * is %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, the model will be unsorted.
+ * is %CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, the model will be unsorted.
  */
 void
 ctk_tree_sortable_set_default_sort_func (GtkTreeSortable        *sortable,
@@ -228,9 +228,9 @@ ctk_tree_sortable_set_default_sort_func (GtkTreeSortable        *sortable,
 {
   GtkTreeSortableIface *iface;
 
-  g_return_if_fail (GTK_IS_TREE_SORTABLE (sortable));
+  g_return_if_fail (CTK_IS_TREE_SORTABLE (sortable));
 
-  iface = GTK_TREE_SORTABLE_GET_IFACE (sortable);
+  iface = CTK_TREE_SORTABLE_GET_IFACE (sortable);
 
   g_return_if_fail (iface != NULL);
   g_return_if_fail (iface->set_default_sort_func != NULL);
@@ -253,9 +253,9 @@ ctk_tree_sortable_has_default_sort_func (GtkTreeSortable *sortable)
 {
   GtkTreeSortableIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_SORTABLE (sortable), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_SORTABLE (sortable), FALSE);
 
-  iface = GTK_TREE_SORTABLE_GET_IFACE (sortable);
+  iface = CTK_TREE_SORTABLE_GET_IFACE (sortable);
 
   g_return_val_if_fail (iface != NULL, FALSE);
   g_return_val_if_fail (iface->has_default_sort_func != NULL, FALSE);

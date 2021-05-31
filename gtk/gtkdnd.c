@@ -90,9 +90,9 @@ typedef struct _GtkDragDestInfo GtkDragDestInfo;
 
 typedef enum 
 {
-  GTK_DRAG_STATUS_DRAG,
-  GTK_DRAG_STATUS_WAIT,
-  GTK_DRAG_STATUS_DROP
+  CTK_DRAG_STATUS_DRAG,
+  CTK_DRAG_STATUS_WAIT,
+  CTK_DRAG_STATUS_DROP
 } GtkDragStatus;
 
 struct _GtkDragSourceInfo 
@@ -309,10 +309,10 @@ ctk_drag_get_ipc_widget_for_screen (GdkScreen *screen)
     }
   else
     {
-      result = ctk_window_new (GTK_WINDOW_POPUP);
-      ctk_window_set_screen (GTK_WINDOW (result), screen);
-      ctk_window_resize (GTK_WINDOW (result), 1, 1);
-      ctk_window_move (GTK_WINDOW (result), -99, -99);
+      result = ctk_window_new (CTK_WINDOW_POPUP);
+      ctk_window_set_screen (CTK_WINDOW (result), screen);
+      ctk_window_resize (CTK_WINDOW (result), 1, 1);
+      ctk_window_move (CTK_WINDOW (result), -99, -99);
       ctk_widget_show (result);
     }  
 
@@ -329,11 +329,11 @@ ctk_drag_get_ipc_widget (GtkWidget *widget)
   
   toplevel = ctk_widget_get_toplevel (widget);
   
-  if (GTK_IS_WINDOW (toplevel))
+  if (CTK_IS_WINDOW (toplevel))
     {
-      if (ctk_window_has_group (GTK_WINDOW (toplevel)))
-        ctk_window_group_add_window (ctk_window_get_group (GTK_WINDOW (toplevel)),
-                                     GTK_WINDOW (result));
+      if (ctk_window_has_group (CTK_WINDOW (toplevel)))
+        ctk_window_group_add_window (ctk_window_get_group (CTK_WINDOW (toplevel)),
+                                     CTK_WINDOW (result));
     }
 
   return result;
@@ -604,7 +604,7 @@ ungrab_dnd_keys (GtkWidget *widget,
 static void
 ctk_drag_release_ipc_widget (GtkWidget *widget)
 {
-  GtkWindow *window = GTK_WINDOW (widget);
+  GtkWindow *window = CTK_WINDOW (widget);
   GdkScreen *screen = ctk_widget_get_screen (widget);
   GdkDragContext *context = g_object_get_data (G_OBJECT (widget), "drag-context");
   GSList *drag_widgets = g_object_get_data (G_OBJECT (screen),
@@ -872,7 +872,7 @@ ctk_drag_update_cursor (GtkDragSourceInfo *info)
  * #GtkWidget::drag-data-received signal. Failure of the retrieval
  * is indicated by the length field of the @selection_data
  * signal parameter being negative. However, when ctk_drag_get_data()
- * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
+ * is called implicitely because the %CTK_DEST_DEFAULT_DROP was set,
  * then the widget will not receive notification of failed
  * drops.
  */
@@ -884,7 +884,7 @@ ctk_drag_get_data (GtkWidget      *widget,
 {
   GtkWidget *selection_widget;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
 
   selection_widget = ctk_drag_get_ipc_widget (widget);
@@ -992,14 +992,14 @@ ctk_drag_finish (GdkDragContext *context,
  *
  * Highlights a widget as a currently hovered drop target.
  * To end the highlight, call ctk_drag_unhighlight().
- * GTK+ calls this automatically if %GTK_DEST_DEFAULT_HIGHLIGHT is set.
+ * GTK+ calls this automatically if %CTK_DEST_DEFAULT_HIGHLIGHT is set.
  */
 void
 ctk_drag_highlight (GtkWidget  *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  ctk_widget_set_state_flags (widget, GTK_STATE_FLAG_DROP_ACTIVE, FALSE);
+  ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_DROP_ACTIVE, FALSE);
 }
 
 /**
@@ -1012,9 +1012,9 @@ ctk_drag_highlight (GtkWidget  *widget)
 void
 ctk_drag_unhighlight (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  ctk_widget_unset_state_flags (widget, GTK_STATE_FLAG_DROP_ACTIVE);
+  ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_DROP_ACTIVE);
 }
 
 /*
@@ -1082,7 +1082,7 @@ _ctk_drag_dest_handle_event (GtkWidget *toplevel,
          * information for embedded windows, so we call the much more
          * expensive gdk_window_get_origin().
          */
-        if (GTK_IS_PLUG (toplevel))
+        if (CTK_IS_PLUG (toplevel))
           gdk_window_get_origin (window, &tx, &ty);
         else
 #endif /* GDK_WINDOWING_X11 */
@@ -1175,7 +1175,7 @@ ctk_drag_selection_received (GtkWidget        *widget,
                                     target,
                                     &target_info))
             {
-              if (!(site->flags & GTK_DEST_DEFAULT_DROP) ||
+              if (!(site->flags & CTK_DEST_DEFAULT_DROP) ||
                   ctk_selection_data_get_length (selection_data) >= 0)
                 g_signal_emit_by_name (drop_widget,
                                        "drag-data-received",
@@ -1193,7 +1193,7 @@ ctk_drag_selection_received (GtkWidget        *widget,
                                  0, time);
         }
       
-      if (site && site->flags & GTK_DEST_DEFAULT_DROP)
+      if (site && site->flags & CTK_DEST_DEFAULT_DROP)
         {
 
           ctk_drag_finish (context, 
@@ -1245,7 +1245,7 @@ ctk_drag_find_widget (GtkWidget           *widget,
       if (!ctk_widget_get_mapped (widget))
         return FALSE;
 
-      if (ctk_widget_get_state_flags (widget) & GTK_STATE_FLAG_INSENSITIVE)
+      if (ctk_widget_get_state_flags (widget) & CTK_STATE_FLAG_INSENSITIVE)
         {
           widget = ctk_widget_get_parent (widget);
           continue;
@@ -1456,10 +1456,10 @@ ctk_drag_dest_leave (GtkWidget      *widget,
     }
   else
     {
-      if ((site->flags & GTK_DEST_DEFAULT_HIGHLIGHT) && site->have_drag)
+      if ((site->flags & CTK_DEST_DEFAULT_HIGHLIGHT) && site->have_drag)
         ctk_drag_unhighlight (widget);
 
-      if (!(site->flags & GTK_DEST_DEFAULT_MOTION) || site->have_drag ||
+      if (!(site->flags & CTK_DEST_DEFAULT_MOTION) || site->have_drag ||
           site->track_motion)
         g_signal_emit_by_name (widget, "drag-leave", context, time);
       
@@ -1531,7 +1531,7 @@ ctk_drag_dest_motion (GtkWidget      *widget,
       return TRUE;
     }
 
-  if (site->track_motion || site->flags & GTK_DEST_DEFAULT_MOTION)
+  if (site->track_motion || site->flags & CTK_DEST_DEFAULT_MOTION)
     {
       if (gdk_drag_context_get_suggested_action (context) & site->actions)
         action = gdk_drag_context_get_suggested_action (context);
@@ -1555,7 +1555,7 @@ ctk_drag_dest_motion (GtkWidget      *widget,
           if (!site->have_drag)
             {
               site->have_drag = TRUE;
-              if (site->flags & GTK_DEST_DEFAULT_HIGHLIGHT)
+              if (site->flags & CTK_DEST_DEFAULT_HIGHLIGHT)
                 ctk_drag_highlight (widget);
             }
 
@@ -1572,7 +1572,7 @@ ctk_drag_dest_motion (GtkWidget      *widget,
   g_signal_emit_by_name (widget, "drag-motion",
                          context, x, y, time, &retval);
 
-  return (site->flags & GTK_DEST_DEFAULT_MOTION) ? TRUE : retval;
+  return (site->flags & CTK_DEST_DEFAULT_MOTION) ? TRUE : retval;
 }
 
 static gboolean
@@ -1658,7 +1658,7 @@ ctk_drag_dest_drop (GtkWidget      *widget,
     {
       gboolean retval;
 
-      if (site->flags & GTK_DEST_DEFAULT_DROP)
+      if (site->flags & CTK_DEST_DEFAULT_DROP)
         {
           GdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
 
@@ -1674,7 +1674,7 @@ ctk_drag_dest_drop (GtkWidget      *widget,
       g_signal_emit_by_name (widget, "drag-drop",
                              context, x, y, time, &retval);
 
-      return (site->flags & GTK_DEST_DEFAULT_DROP) ? TRUE : retval;
+      return (site->flags & CTK_DEST_DEFAULT_DROP) ? TRUE : retval;
     }
 }
 
@@ -1852,7 +1852,7 @@ ctk_drag_begin_internal (GtkWidget           *widget,
 
   info->possible_actions = actions;
 
-  info->status = GTK_DRAG_STATUS_DRAG;
+  info->status = CTK_DRAG_STATUS_DRAG;
   info->last_event = NULL;
   info->selections = NULL;
   info->icon_window = NULL;
@@ -1988,7 +1988,7 @@ ctk_drag_begin_with_coordinates (GtkWidget     *widget,
                                  gint           x,
                                  gint           y)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (ctk_widget_get_realized (widget), NULL);
   g_return_val_if_fail (targets != NULL, NULL);
 
@@ -2020,7 +2020,7 @@ ctk_drag_begin (GtkWidget     *widget,
                 gint           button,
                 GdkEvent      *event)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (ctk_widget_get_realized (widget), NULL);
   g_return_val_if_fail (targets != NULL, NULL);
 
@@ -2040,7 +2040,7 @@ ctk_drag_update_icon_window (GtkDragSourceInfo *info)
 {
   if (!ctk_drag_is_managed (info->widget) && info->icon_window)
     {
-      ctk_window_move (GTK_WINDOW (info->icon_window),
+      ctk_window_move (CTK_WINDOW (info->icon_window),
                        info->cur_x - info->hot_x,
                        info->cur_y - info->hot_y);
 
@@ -2095,9 +2095,9 @@ ctk_drag_set_icon_widget_internal (GdkDragContext *context,
       visual = gdk_screen_get_rgba_visual (screen);
       has_rgba = visual != NULL && gdk_screen_is_composited (screen);
 
-      info->icon_window = ctk_window_new (GTK_WINDOW_POPUP);
-      ctk_window_set_type_hint (GTK_WINDOW (info->icon_window), GDK_WINDOW_TYPE_HINT_DND);
-      ctk_window_set_screen (GTK_WINDOW (info->icon_window), screen);
+      info->icon_window = ctk_window_new (CTK_WINDOW_POPUP);
+      ctk_window_set_type_hint (CTK_WINDOW (info->icon_window), GDK_WINDOW_TYPE_HINT_DND);
+      ctk_window_set_screen (CTK_WINDOW (info->icon_window), screen);
       ctk_widget_set_size_request (info->icon_window, 24, 24);
       if (visual)
         ctk_widget_set_visual (info->icon_window, visual);
@@ -2106,12 +2106,12 @@ ctk_drag_set_icon_widget_internal (GdkDragContext *context,
       if (has_rgba)
         ctk_widget_set_app_paintable (info->icon_window, TRUE);
 
-      ctk_window_set_hardcoded_window (GTK_WINDOW (info->icon_window),
+      ctk_window_set_hardcoded_window (CTK_WINDOW (info->icon_window),
                                        gdk_drag_context_get_drag_window (context));
       ctk_widget_show (info->icon_window);
     }
 
-  if (GTK_IS_WINDOW (widget))
+  if (CTK_IS_WINDOW (widget))
     {
       ctk_widget_hide (widget);
       ctk_widget_unrealize (widget);
@@ -2119,9 +2119,9 @@ ctk_drag_set_icon_widget_internal (GdkDragContext *context,
       ctk_widget_show (widget);
     }
 
-  if (ctk_bin_get_child (GTK_BIN (info->icon_window)))
-    ctk_container_remove (GTK_CONTAINER (info->icon_window), ctk_bin_get_child (GTK_BIN (info->icon_window)));
-  ctk_container_add (GTK_CONTAINER (info->icon_window), widget);
+  if (ctk_bin_get_child (CTK_BIN (info->icon_window)))
+    ctk_container_remove (CTK_CONTAINER (info->icon_window), ctk_bin_get_child (CTK_BIN (info->icon_window)));
+  ctk_container_add (CTK_CONTAINER (info->icon_window), widget);
 
 out:
   ctk_drag_update_cursor (info);
@@ -2148,7 +2148,7 @@ ctk_drag_set_icon_widget (GdkDragContext *context,
                           gint            hot_y)
 {
   g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   ctk_drag_set_icon_widget_internal (context, widget, hot_x, hot_y, FALSE);
 }
@@ -2192,7 +2192,7 @@ set_icon_helper (GdkDragContext     *context,
   widget = ctk_image_new ();
   ctk_widget_show (widget);
 
-  ctk_image_set_from_definition (GTK_IMAGE (widget), def, GTK_ICON_SIZE_DND);
+  ctk_image_set_from_definition (CTK_IMAGE (widget), def, CTK_ICON_SIZE_DND);
 
   ctk_drag_set_icon_widget_internal (context, widget, hot_x, hot_y, TRUE);
 }
@@ -2338,15 +2338,15 @@ ctk_drag_set_icon_surface (GdkDragContext  *context,
   screen = gdk_window_get_screen (gdk_drag_context_get_source_window (context));
   rgba_visual = gdk_screen_get_rgba_visual (screen);
 
-  window = ctk_window_new (GTK_WINDOW_POPUP);
+  window = ctk_window_new (CTK_WINDOW_POPUP);
   has_rgba = rgba_visual != NULL && gdk_screen_is_composited (screen);
 
-  ctk_window_set_screen (GTK_WINDOW (window), screen);
+  ctk_window_set_screen (CTK_WINDOW (window), screen);
 
   if (has_rgba)
-    ctk_widget_set_visual (GTK_WIDGET (window), rgba_visual);
+    ctk_widget_set_visual (CTK_WIDGET (window), rgba_visual);
 
-  ctk_window_set_type_hint (GTK_WINDOW (window), GDK_WINDOW_TYPE_HINT_DND);
+  ctk_window_set_type_hint (CTK_WINDOW (window), GDK_WINDOW_TYPE_HINT_DND);
 
   ctk_widget_set_events (window, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
   ctk_widget_set_app_paintable (window, TRUE);
@@ -2380,7 +2380,7 @@ ctk_drag_set_icon_surface (GdkDragContext  *context,
  * Sets the icon for a given drag from a named themed icon. See
  * the docs for #GtkIconTheme for more details. Note that the
  * size of the icon depends on the icon theme (the icon is
- * loaded at the symbolic size #GTK_ICON_SIZE_DND), thus 
+ * loaded at the symbolic size #CTK_ICON_SIZE_DND), thus 
  * @hot_x and @hot_y have to be used with care.
  *
  * Since: 2.8
@@ -2526,7 +2526,7 @@ _ctk_drag_source_handle_event (GtkWidget *widget,
       break;
       
     case GDK_DROP_FINISHED:
-      ctk_drag_drop_finished (info, GTK_DRAG_RESULT_SUCCESS, event->dnd.time);
+      ctk_drag_drop_finished (info, CTK_DRAG_RESULT_SUCCESS, event->dnd.time);
       break;
     default:
       g_assert_not_reached ();
@@ -2582,7 +2582,7 @@ ctk_drag_drop_finished (GtkDragSourceInfo *info,
 {
   gboolean success;
 
-  success = (result == GTK_DRAG_RESULT_SUCCESS);
+  success = (result == CTK_DRAG_RESULT_SUCCESS);
   ctk_drag_source_release_selections (info, time); 
 
   if (info->proxy_dest)
@@ -2655,12 +2655,12 @@ ctk_drag_drop (GtkDragSourceInfo *info,
                                      time);
 
               /* FIXME: Should we check for length >= 0 here? */
-              ctk_drag_drop_finished (info, GTK_DRAG_RESULT_SUCCESS, time);
+              ctk_drag_drop_finished (info, CTK_DRAG_RESULT_SUCCESS, time);
               return;
             }
           tmp_list = tmp_list->next;
         }
-      ctk_drag_drop_finished (info, GTK_DRAG_RESULT_NO_TARGET, time);
+      ctk_drag_drop_finished (info, CTK_DRAG_RESULT_NO_TARGET, time);
     }
   else
     {
@@ -2749,7 +2749,7 @@ ctk_drag_remove_icon (GtkDragSourceInfo *info)
       if (info->destroy_icon)
         ctk_widget_destroy (widget);
       else
-        ctk_container_remove (GTK_CONTAINER (info->icon_window), widget);
+        ctk_container_remove (CTK_CONTAINER (info->icon_window), widget);
 
       g_object_unref (widget);
     }
@@ -3015,14 +3015,14 @@ ctk_drag_context_cancel_cb (GdkDragContext      *context,
   switch (reason)
     {
     case GDK_DRAG_CANCEL_NO_TARGET:
-      result = GTK_DRAG_RESULT_NO_TARGET;
+      result = CTK_DRAG_RESULT_NO_TARGET;
       break;
     case GDK_DRAG_CANCEL_USER_CANCELLED:
-      result = GTK_DRAG_RESULT_USER_CANCELLED;
+      result = CTK_DRAG_RESULT_USER_CANCELLED;
       break;
     case GDK_DRAG_CANCEL_ERROR:
     default:
-      result = GTK_DRAG_RESULT_ERROR;
+      result = CTK_DRAG_RESULT_ERROR;
       break;
     }
   ctk_drag_cancel_internal (info, result, GDK_CURRENT_TIME);
@@ -3123,7 +3123,7 @@ ctk_drag_key_cb (GtkWidget   *widget,
       switch (event->keyval)
         {
         case GDK_KEY_Escape:
-          ctk_drag_cancel_internal (info, GTK_DRAG_RESULT_USER_CANCELLED, event->time);
+          ctk_drag_cancel_internal (info, CTK_DRAG_RESULT_USER_CANCELLED, event->time);
           return TRUE;
 
         case GDK_KEY_space:
@@ -3139,7 +3139,7 @@ ctk_drag_key_cb (GtkWidget   *widget,
             }
           else
             {
-              ctk_drag_cancel_internal (info, GTK_DRAG_RESULT_NO_TARGET, event->time);
+              ctk_drag_cancel_internal (info, CTK_DRAG_RESULT_NO_TARGET, event->time);
             }
 
           return TRUE;
@@ -3206,7 +3206,7 @@ ctk_drag_grab_broken_event_cb (GtkWidget          *widget,
       || event->grab_window == ctk_widget_get_window (info->ipc_widget))
     return FALSE;
 
-  ctk_drag_cancel_internal (info, GTK_DRAG_RESULT_GRAB_BROKEN, ctk_get_current_event_time ());
+  ctk_drag_cancel_internal (info, CTK_DRAG_RESULT_GRAB_BROKEN, ctk_get_current_event_time ());
   return TRUE;
 }
 
@@ -3226,7 +3226,7 @@ ctk_drag_grab_notify_cb (GtkWidget *widget,
        * ctk_drag_cancel_internal calls ctk_grab_remove (via ctk_drag_end)
        */
       g_signal_handlers_block_by_func (widget, ctk_drag_grab_notify_cb, data);
-      ctk_drag_cancel_internal (info, GTK_DRAG_RESULT_GRAB_BROKEN, ctk_get_current_event_time ());
+      ctk_drag_cancel_internal (info, CTK_DRAG_RESULT_GRAB_BROKEN, ctk_get_current_event_time ());
       g_signal_handlers_unblock_by_func (widget, ctk_drag_grab_notify_cb, data);
     }
 }
@@ -3250,7 +3250,7 @@ ctk_drag_button_release_cb (GtkWidget      *widget,
     }
   else
     {
-      ctk_drag_cancel_internal (info, GTK_DRAG_RESULT_NO_TARGET, event->time);
+      ctk_drag_cancel_internal (info, CTK_DRAG_RESULT_NO_TARGET, event->time);
     }
 
   return TRUE;
@@ -3266,7 +3266,7 @@ ctk_drag_abort_timeout (gpointer data)
     time = info->proxy_dest->proxy_drop_time;
 
   info->drop_timeout = 0;
-  ctk_drag_drop_finished (info, GTK_DRAG_RESULT_TIMEOUT_EXPIRED, time);
+  ctk_drag_drop_finished (info, CTK_DRAG_RESULT_TIMEOUT_EXPIRED, time);
   
   return FALSE;
 }
@@ -3294,7 +3294,7 @@ ctk_drag_check_threshold (GtkWidget *widget,
 {
   gint drag_threshold;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   drag_threshold = ctk_settings_get_dnd_drag_threshold (ctk_widget_get_settings (widget));
 
@@ -3317,7 +3317,7 @@ ctk_drag_check_threshold (GtkWidget *widget,
  * function does nothing.
  *
  * If a drag is cancelled in this way, the @result argument of
- * #GtkWidget::drag-failed is set to @GTK_DRAG_RESULT_ERROR.
+ * #GtkWidget::drag-failed is set to @CTK_DRAG_RESULT_ERROR.
  *
  * Since: 3.16
  */
@@ -3330,5 +3330,5 @@ ctk_drag_cancel (GdkDragContext *context)
 
   info = ctk_drag_get_source_info (context, FALSE);
   if (info != NULL)
-    ctk_drag_cancel_internal (info, GTK_DRAG_RESULT_ERROR, ctk_get_current_event_time ());
+    ctk_drag_cancel_internal (info, CTK_DRAG_RESULT_ERROR, ctk_get_current_event_time ());
 }

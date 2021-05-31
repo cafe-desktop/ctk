@@ -217,7 +217,7 @@ create_model (void)
       month++;
     }
 
-  return GTK_TREE_MODEL (model);
+  return CTK_TREE_MODEL (model);
 }
 
 static void
@@ -242,7 +242,7 @@ item_toggled (GtkCellRendererToggle *cell,
   toggle_item ^= 1;
 
   /* set new value */
-  ctk_tree_store_set (GTK_TREE_STORE (model), &iter, column,
+  ctk_tree_store_set (CTK_TREE_STORE (model), &iter, column,
                       toggle_item, -1);
 
   /* clean up */
@@ -261,13 +261,13 @@ add_columns (GtkTreeView *treeview)
   renderer = ctk_cell_renderer_text_new ();
   g_object_set (renderer, "xalign", 0.0, NULL);
 
-  col_offset = ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  col_offset = ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                             -1, "Holiday",
                                                             renderer, "text",
                                                             HOLIDAY_NAME_COLUMN,
                                                             NULL);
-  column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), col_offset - 1);
-  ctk_tree_view_column_set_clickable (GTK_TREE_VIEW_COLUMN (column), TRUE);
+  column = ctk_tree_view_get_column (CTK_TREE_VIEW (treeview), col_offset - 1);
+  ctk_tree_view_column_set_clickable (CTK_TREE_VIEW_COLUMN (column), TRUE);
 
   /* alex column */
   renderer = ctk_cell_renderer_toggle_new ();
@@ -276,7 +276,7 @@ add_columns (GtkTreeView *treeview)
 
   g_signal_connect (renderer, "toggled", G_CALLBACK (item_toggled), model);
 
-  col_offset = ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  col_offset = ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                             -1, "Alex",
                                                             renderer,
                                                             "active",
@@ -286,10 +286,10 @@ add_columns (GtkTreeView *treeview)
                                                             "activatable",
                                                             WORLD_COLUMN, NULL);
 
-  column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), col_offset - 1);
-  ctk_tree_view_column_set_sizing (GTK_TREE_VIEW_COLUMN (column),
-                                   GTK_TREE_VIEW_COLUMN_FIXED);
-  ctk_tree_view_column_set_clickable (GTK_TREE_VIEW_COLUMN (column), TRUE);
+  column = ctk_tree_view_get_column (CTK_TREE_VIEW (treeview), col_offset - 1);
+  ctk_tree_view_column_set_sizing (CTK_TREE_VIEW_COLUMN (column),
+                                   CTK_TREE_VIEW_COLUMN_FIXED);
+  ctk_tree_view_column_set_clickable (CTK_TREE_VIEW_COLUMN (column), TRUE);
 
   /* havoc column */
   renderer = ctk_cell_renderer_toggle_new ();
@@ -298,7 +298,7 @@ add_columns (GtkTreeView *treeview)
 
   g_signal_connect (renderer, "toggled", G_CALLBACK (item_toggled), model);
 
-  col_offset = ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  col_offset = ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                             -1, "Havoc",
                                                             renderer,
                                                             "active",
@@ -307,10 +307,10 @@ add_columns (GtkTreeView *treeview)
                                                             VISIBLE_COLUMN,
                                                             NULL);
 
-  column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), col_offset - 1);
-  ctk_tree_view_column_set_sizing (GTK_TREE_VIEW_COLUMN (column),
-                                   GTK_TREE_VIEW_COLUMN_FIXED);
-  ctk_tree_view_column_set_clickable (GTK_TREE_VIEW_COLUMN (column), TRUE);
+  column = ctk_tree_view_get_column (CTK_TREE_VIEW (treeview), col_offset - 1);
+  ctk_tree_view_column_set_sizing (CTK_TREE_VIEW_COLUMN (column),
+                                   CTK_TREE_VIEW_COLUMN_FIXED);
+  ctk_tree_view_column_set_clickable (CTK_TREE_VIEW_COLUMN (column), TRUE);
 
   /* tim column */
   renderer = ctk_cell_renderer_toggle_new ();
@@ -319,7 +319,7 @@ add_columns (GtkTreeView *treeview)
 
   g_signal_connect (renderer, "toggled", G_CALLBACK (item_toggled), model);
 
-  col_offset = ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  col_offset = ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                             -1, "Tim",
                                                             renderer,
                                                             "active",
@@ -329,10 +329,10 @@ add_columns (GtkTreeView *treeview)
                                                             "activatable",
                                                             WORLD_COLUMN, NULL);
 
-  column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), col_offset - 1);
-  ctk_tree_view_column_set_sizing (GTK_TREE_VIEW_COLUMN (column),
-                                   GTK_TREE_VIEW_COLUMN_FIXED);
-  ctk_tree_view_column_set_clickable (GTK_TREE_VIEW_COLUMN (column), TRUE);
+  column = ctk_tree_view_get_column (CTK_TREE_VIEW (treeview), col_offset - 1);
+  ctk_tree_view_column_set_sizing (CTK_TREE_VIEW_COLUMN (column),
+                                   CTK_TREE_VIEW_COLUMN_FIXED);
+  ctk_tree_view_column_set_clickable (CTK_TREE_VIEW_COLUMN (column), TRUE);
 
   /* owen column */
   renderer = ctk_cell_renderer_toggle_new ();
@@ -341,7 +341,7 @@ add_columns (GtkTreeView *treeview)
 
   g_signal_connect (renderer, "toggled", G_CALLBACK (item_toggled), model);
 
-  col_offset = ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  col_offset = ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                             -1, "Owen",
                                                             renderer,
                                                             "active",
@@ -350,10 +350,10 @@ add_columns (GtkTreeView *treeview)
                                                             VISIBLE_COLUMN,
                                                             NULL);
 
-  column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), col_offset - 1);
-  ctk_tree_view_column_set_sizing (GTK_TREE_VIEW_COLUMN (column),
-                                   GTK_TREE_VIEW_COLUMN_FIXED);
-  ctk_tree_view_column_set_clickable (GTK_TREE_VIEW_COLUMN (column), TRUE);
+  column = ctk_tree_view_get_column (CTK_TREE_VIEW (treeview), col_offset - 1);
+  ctk_tree_view_column_set_sizing (CTK_TREE_VIEW_COLUMN (column),
+                                   CTK_TREE_VIEW_COLUMN_FIXED);
+  ctk_tree_view_column_set_clickable (CTK_TREE_VIEW_COLUMN (column), TRUE);
 
   /* dave column */
   renderer = ctk_cell_renderer_toggle_new ();
@@ -362,7 +362,7 @@ add_columns (GtkTreeView *treeview)
 
   g_signal_connect (renderer, "toggled", G_CALLBACK (item_toggled), model);
 
-  col_offset = ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  col_offset = ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                             -1, "Dave",
                                                             renderer,
                                                             "active",
@@ -371,10 +371,10 @@ add_columns (GtkTreeView *treeview)
                                                             VISIBLE_COLUMN,
                                                             NULL);
 
-  column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), col_offset - 1);
-  ctk_tree_view_column_set_sizing (GTK_TREE_VIEW_COLUMN (column),
-                                   GTK_TREE_VIEW_COLUMN_FIXED);
-  ctk_tree_view_column_set_clickable (GTK_TREE_VIEW_COLUMN (column), TRUE);
+  column = ctk_tree_view_get_column (CTK_TREE_VIEW (treeview), col_offset - 1);
+  ctk_tree_view_column_set_sizing (CTK_TREE_VIEW_COLUMN (column),
+                                   CTK_TREE_VIEW_COLUMN_FIXED);
+  ctk_tree_view_column_set_clickable (CTK_TREE_VIEW_COLUMN (column), TRUE);
 }
 
 GtkWidget *
@@ -390,28 +390,28 @@ do_tree_store (GtkWidget *do_widget)
       GtkTreeModel *model;
 
       /* create window, etc */
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Tree Store");
+      ctk_window_set_title (CTK_WINDOW (window), "Tree Store");
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
 
-      ctk_box_pack_start (GTK_BOX (vbox),
+      ctk_box_pack_start (CTK_BOX (vbox),
                           ctk_label_new ("Jonathan's Holiday Card Planning Sheet"),
                           FALSE, FALSE, 0);
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-                                           GTK_SHADOW_ETCHED_IN);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_box_pack_start (GTK_BOX (vbox), sw, TRUE, TRUE, 0);
+      ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
+                                           CTK_SHADOW_ETCHED_IN);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_box_pack_start (CTK_BOX (vbox), sw, TRUE, TRUE, 0);
 
       /* create model */
       model = create_model ();
@@ -419,17 +419,17 @@ do_tree_store (GtkWidget *do_widget)
       /* create tree view */
       treeview = ctk_tree_view_new_with_model (model);
       g_object_unref (model);
-      ctk_tree_selection_set_mode (ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview)),
-                                   GTK_SELECTION_MULTIPLE);
+      ctk_tree_selection_set_mode (ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview)),
+                                   CTK_SELECTION_MULTIPLE);
 
-      add_columns (GTK_TREE_VIEW (treeview));
+      add_columns (CTK_TREE_VIEW (treeview));
 
-      ctk_container_add (GTK_CONTAINER (sw), treeview);
+      ctk_container_add (CTK_CONTAINER (sw), treeview);
 
       /* expand all rows after the treeview widget has been realized */
       g_signal_connect (treeview, "realize",
                         G_CALLBACK (ctk_tree_view_expand_all), NULL);
-      ctk_window_set_default_size (GTK_WINDOW (window), 650, 400);
+      ctk_window_set_default_size (CTK_WINDOW (window), 650, 400);
     }
 
   if (!ctk_widget_get_visible (window))

@@ -17,10 +17,10 @@
  *
  */
 
-#ifndef __GTK_STACK_SWITCHER_H__
-#define __GTK_STACK_SWITCHER_H__
+#ifndef __CTK_STACK_SWITCHER_H__
+#define __CTK_STACK_SWITCHER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STACK_SWITCHER            (ctk_stack_switcher_get_type ())
-#define GTK_STACK_SWITCHER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_STACK_SWITCHER, GtkStackSwitcher))
-#define GTK_STACK_SWITCHER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_STACK_SWITCHER, GtkStackSwitcherClass))
-#define GTK_IS_STACK_SWITCHER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_STACK_SWITCHER))
-#define GTK_IS_STACK_SWITCHER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_STACK_SWITCHER))
-#define GTK_STACK_SWITCHER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_STACK_SWITCHER, GtkStackSwitcherClass))
+#define CTK_TYPE_STACK_SWITCHER            (ctk_stack_switcher_get_type ())
+#define CTK_STACK_SWITCHER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STACK_SWITCHER, GtkStackSwitcher))
+#define CTK_STACK_SWITCHER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STACK_SWITCHER, GtkStackSwitcherClass))
+#define CTK_IS_STACK_SWITCHER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_STACK_SWITCHER))
+#define CTK_IS_STACK_SWITCHER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_STACK_SWITCHER))
+#define CTK_STACK_SWITCHER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STACK_SWITCHER, GtkStackSwitcherClass))
 
 typedef struct _GtkStackSwitcher              GtkStackSwitcher;
 typedef struct _GtkStackSwitcherClass         GtkStackSwitcherClass;
@@ -67,4 +67,4 @@ GtkStack *   ctk_stack_switcher_get_stack         (GtkStackSwitcher *switcher);
 
 G_END_DECLS
 
-#endif /* __GTK_STACK_SWITCHER_H__ */
+#endif /* __CTK_STACK_SWITCHER_H__ */

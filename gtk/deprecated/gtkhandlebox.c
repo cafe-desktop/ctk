@@ -65,7 +65,7 @@
  * instance, if the handlebox is packed at the bottom of a VBox, then
  * when the handlebox is detached, the bottom edge of the handlebox's
  * allocation will remain fixed as the height of the handlebox shrinks,
- * so the snap edge should be set to %GTK_POS_BOTTOM.
+ * so the snap edge should be set to %CTK_POS_BOTTOM.
  *
  * > #GtkHandleBox has been deprecated. It is very specialized, lacks features
  * > to make it useful and most importantly does not fit well into modern
@@ -201,7 +201,7 @@ static void     ctk_handle_box_end_drag      (GtkHandleBox   *hb,
 
 static guint handle_box_signals[SIGNAL_LAST] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkHandleBox, ctk_handle_box, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkHandleBox, ctk_handle_box, CTK_TYPE_BIN)
 
 static void
 ctk_handle_box_class_init (GtkHandleBoxClass *class)
@@ -222,27 +222,27 @@ ctk_handle_box_class_init (GtkHandleBoxClass *class)
                                    g_param_spec_enum ("shadow-type",
                                                       P_("Shadow type"),
                                                       P_("Appearance of the shadow that surrounds the container"),
-						      GTK_TYPE_SHADOW_TYPE,
-						      GTK_SHADOW_OUT,
-                                                      GTK_PARAM_READWRITE));
+						      CTK_TYPE_SHADOW_TYPE,
+						      CTK_SHADOW_OUT,
+                                                      CTK_PARAM_READWRITE));
   
   g_object_class_install_property (gobject_class,
                                    PROP_HANDLE_POSITION,
                                    g_param_spec_enum ("handle-position",
                                                       P_("Handle position"),
                                                       P_("Position of the handle relative to the child widget"),
-						      GTK_TYPE_POSITION_TYPE,
-						      GTK_POS_LEFT,
-                                                      GTK_PARAM_READWRITE));
+						      CTK_TYPE_POSITION_TYPE,
+						      CTK_POS_LEFT,
+                                                      CTK_PARAM_READWRITE));
   
   g_object_class_install_property (gobject_class,
                                    PROP_SNAP_EDGE,
                                    g_param_spec_enum ("snap-edge",
                                                       P_("Snap edge"),
                                                       P_("Side of the handlebox that's lined up with the docking point to dock the handlebox"),
-						      GTK_TYPE_POSITION_TYPE,
-						      GTK_POS_TOP,
-                                                      GTK_PARAM_READWRITE));
+						      CTK_TYPE_POSITION_TYPE,
+						      CTK_POS_TOP,
+                                                      CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_SNAP_EDGE_SET,
@@ -250,7 +250,7 @@ ctk_handle_box_class_init (GtkHandleBoxClass *class)
 							 P_("Snap edge set"),
 							 P_("Whether to use the value from the snap_edge property or a value derived from handle_position"),
 							 FALSE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_CHILD_DETACHED,
@@ -258,7 +258,7 @@ ctk_handle_box_class_init (GtkHandleBoxClass *class)
 							 P_("Child Detached"),
 							 P_("A boolean value indicating whether the handlebox's child is attached or detached."),
 							 FALSE,
-							 GTK_PARAM_READABLE));
+							 CTK_PARAM_READABLE));
 
   widget_class->map = ctk_handle_box_map;
   widget_class->unmap = ctk_handle_box_unmap;
@@ -298,7 +298,7 @@ ctk_handle_box_class_init (GtkHandleBoxClass *class)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_WIDGET);
+		  CTK_TYPE_WIDGET);
 
   /**
    * GtkHandleBox::child-detached:
@@ -320,7 +320,7 @@ ctk_handle_box_class_init (GtkHandleBoxClass *class)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_WIDGET);
+		  CTK_TYPE_WIDGET);
 }
 
 static void
@@ -332,20 +332,20 @@ ctk_handle_box_init (GtkHandleBox *handle_box)
   handle_box->priv = ctk_handle_box_get_instance_private (handle_box);
   priv = handle_box->priv;
 
-  ctk_widget_set_has_window (GTK_WIDGET (handle_box), TRUE);
+  ctk_widget_set_has_window (CTK_WIDGET (handle_box), TRUE);
 
   priv->bin_window = NULL;
   priv->float_window = NULL;
-  priv->shadow_type = GTK_SHADOW_OUT;
-  priv->handle_position = GTK_POS_LEFT;
+  priv->shadow_type = CTK_SHADOW_OUT;
+  priv->handle_position = CTK_POS_LEFT;
   priv->float_window_mapped = FALSE;
   priv->child_detached = FALSE;
   priv->in_drag = FALSE;
   priv->shrink_on_detach = TRUE;
   priv->snap_edge = -1;
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (handle_box));
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_DOCK);
+  context = ctk_widget_get_style_context (CTK_WIDGET (handle_box));
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_DOCK);
 }
 
 static void 
@@ -354,7 +354,7 @@ ctk_handle_box_set_property (GObject         *object,
 			     const GValue    *value,
 			     GParamSpec      *pspec)
 {
-  GtkHandleBox *handle_box = GTK_HANDLE_BOX (object);
+  GtkHandleBox *handle_box = CTK_HANDLE_BOX (object);
 
   switch (prop_id)
     {
@@ -383,7 +383,7 @@ ctk_handle_box_get_property (GObject         *object,
 			     GValue          *value,
 			     GParamSpec      *pspec)
 {
-  GtkHandleBox *handle_box = GTK_HANDLE_BOX (object);
+  GtkHandleBox *handle_box = CTK_HANDLE_BOX (object);
   GtkHandleBoxPrivate *priv = handle_box->priv;
 
   switch (prop_id)
@@ -397,7 +397,7 @@ ctk_handle_box_get_property (GObject         *object,
     case PROP_SNAP_EDGE:
       g_value_set_enum (value,
 			(priv->snap_edge == -1 ?
-			 GTK_POS_TOP : priv->snap_edge));
+			 CTK_POS_TOP : priv->snap_edge));
       break;
     case PROP_SNAP_EDGE_SET:
       g_value_set_boolean (value, priv->snap_edge != -1);
@@ -423,15 +423,15 @@ ctk_handle_box_get_property (GObject         *object,
 GtkWidget*
 ctk_handle_box_new (void)
 {
-  return g_object_new (GTK_TYPE_HANDLE_BOX, NULL);
+  return g_object_new (CTK_TYPE_HANDLE_BOX, NULL);
 }
 
 static void
 ctk_handle_box_map (GtkWidget *widget)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkWidget *child;
 
   ctk_widget_set_mapped (widget, TRUE);
@@ -455,7 +455,7 @@ ctk_handle_box_map (GtkWidget *widget)
 static void
 ctk_handle_box_unmap (GtkWidget *widget)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
 
   ctk_widget_set_mapped (widget, FALSE);
@@ -467,13 +467,13 @@ ctk_handle_box_unmap (GtkWidget *widget)
       priv->float_window_mapped = FALSE;
     }
 
-  GTK_WIDGET_CLASS (ctk_handle_box_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_handle_box_parent_class)->unmap (widget);
 }
 
 static void
 ctk_handle_box_realize (GtkWidget *widget)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
   GtkAllocation allocation;
   GtkRequisition requisition;
@@ -518,7 +518,7 @@ ctk_handle_box_realize (GtkWidget *widget)
                                      &attributes, attributes_mask);
   gdk_window_set_user_data (priv->bin_window, widget);
 
-  child = ctk_bin_get_child (GTK_BIN (hb));
+  child = ctk_bin_get_child (CTK_BIN (hb));
   if (child)
     ctk_widget_set_parent_window (child, priv->bin_window);
 
@@ -554,7 +554,7 @@ ctk_handle_box_realize (GtkWidget *widget)
 static void
 ctk_handle_box_unrealize (GtkWidget *widget)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
 
   gdk_window_set_user_data (priv->bin_window, NULL);
@@ -564,16 +564,16 @@ ctk_handle_box_unrealize (GtkWidget *widget)
   gdk_window_destroy (priv->float_window);
   priv->float_window = NULL;
 
-  GTK_WIDGET_CLASS (ctk_handle_box_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_handle_box_parent_class)->unrealize (widget);
 }
 
 static void
 ctk_handle_box_style_updated (GtkWidget *widget)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
 
-  GTK_WIDGET_CLASS (ctk_handle_box_parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (ctk_handle_box_parent_class)->style_updated (widget);
 
   if (ctk_widget_get_realized (widget) &&
       ctk_widget_get_has_window (widget))
@@ -601,17 +601,17 @@ effective_handle_position (GtkHandleBox *hb)
   GtkHandleBoxPrivate *priv = hb->priv;
   int handle_position;
 
-  if (ctk_widget_get_direction (GTK_WIDGET (hb)) == GTK_TEXT_DIR_LTR)
+  if (ctk_widget_get_direction (CTK_WIDGET (hb)) == CTK_TEXT_DIR_LTR)
     handle_position = priv->handle_position;
   else
     {
       switch (priv->handle_position)
 	{
-	case GTK_POS_LEFT:
-	  handle_position = GTK_POS_RIGHT;
+	case CTK_POS_LEFT:
+	  handle_position = CTK_POS_RIGHT;
 	  break;
-	case GTK_POS_RIGHT:
-	  handle_position = GTK_POS_LEFT;
+	case CTK_POS_RIGHT:
+	  handle_position = CTK_POS_LEFT;
 	  break;
 	default:
 	  handle_position = priv->handle_position;
@@ -626,8 +626,8 @@ static void
 ctk_handle_box_size_request (GtkWidget      *widget,
 			     GtkRequisition *requisition)
 {
-  GtkBin *bin = GTK_BIN (widget);
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkBin *bin = CTK_BIN (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
   GtkRequisition child_requisition;
   GtkWidget *child;
@@ -635,8 +635,8 @@ ctk_handle_box_size_request (GtkWidget      *widget,
 
   handle_position = effective_handle_position (hb);
 
-  if (handle_position == GTK_POS_LEFT ||
-      handle_position == GTK_POS_RIGHT)
+  if (handle_position == CTK_POS_LEFT ||
+      handle_position == CTK_POS_RIGHT)
     {
       requisition->width = DRAG_HANDLE_SIZE;
       requisition->height = 0;
@@ -666,8 +666,8 @@ ctk_handle_box_size_request (GtkWidget      *widget,
       /* FIXME: This doesn't work currently */
       if (!priv->shrink_on_detach)
 	{
-	  if (handle_position == GTK_POS_LEFT ||
-	      handle_position == GTK_POS_RIGHT)
+	  if (handle_position == CTK_POS_LEFT ||
+	      handle_position == CTK_POS_RIGHT)
 	    requisition->height += child_requisition.height;
 	  else
 	    requisition->width += child_requisition.width;
@@ -682,8 +682,8 @@ ctk_handle_box_size_request (GtkWidget      *widget,
           state = ctk_widget_get_state_flags (widget);
           ctk_style_context_get_padding (context, state, &padding);
 
-	  if (handle_position == GTK_POS_LEFT ||
-	      handle_position == GTK_POS_RIGHT)
+	  if (handle_position == CTK_POS_LEFT ||
+	      handle_position == CTK_POS_RIGHT)
 	    requisition->height += padding.top;
 	  else
 	    requisition->width += padding.left;
@@ -693,7 +693,7 @@ ctk_handle_box_size_request (GtkWidget      *widget,
     {
       guint border_width;
 
-      border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+      border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
       requisition->width += border_width * 2;
       requisition->height += border_width * 2;
       
@@ -739,8 +739,8 @@ static void
 ctk_handle_box_size_allocate (GtkWidget     *widget,
 			      GtkAllocation *allocation)
 {
-  GtkBin *bin = GTK_BIN (widget);
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkBin *bin = CTK_BIN (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
   GtkRequisition child_requisition;
   GtkWidget *child;
@@ -772,13 +772,13 @@ ctk_handle_box_size_allocate (GtkWidget     *widget,
       GtkAllocation child_allocation;
       guint border_width;
 
-      border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+      border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
       child_allocation.x = border_width;
       child_allocation.y = border_width;
-      if (handle_position == GTK_POS_LEFT)
+      if (handle_position == CTK_POS_LEFT)
 	child_allocation.x += DRAG_HANDLE_SIZE;
-      else if (handle_position == GTK_POS_TOP)
+      else if (handle_position == CTK_POS_TOP)
 	child_allocation.y += DRAG_HANDLE_SIZE;
 
       if (priv->child_detached)
@@ -792,8 +792,8 @@ ctk_handle_box_size_allocate (GtkWidget     *widget,
 	  float_width = child_allocation.width + 2 * border_width;
 	  float_height = child_allocation.height + 2 * border_width;
 	  
-	  if (handle_position == GTK_POS_LEFT ||
-	      handle_position == GTK_POS_RIGHT)
+	  if (handle_position == CTK_POS_LEFT ||
+	      handle_position == CTK_POS_RIGHT)
 	    float_width += DRAG_HANDLE_SIZE;
 	  else
 	    float_height += DRAG_HANDLE_SIZE;
@@ -815,8 +815,8 @@ ctk_handle_box_size_allocate (GtkWidget     *widget,
 	  child_allocation.width = MAX (1, (gint) allocation->width - 2 * border_width);
 	  child_allocation.height = MAX (1, (gint) allocation->height - 2 * border_width);
 
-	  if (handle_position == GTK_POS_LEFT ||
-	      handle_position == GTK_POS_RIGHT)
+	  if (handle_position == CTK_POS_LEFT ||
+	      handle_position == CTK_POS_RIGHT)
 	    child_allocation.width -= DRAG_HANDLE_SIZE;
 	  else
 	    child_allocation.height -= DRAG_HANDLE_SIZE;
@@ -837,7 +837,7 @@ static void
 ctk_handle_box_draw_ghost (GtkHandleBox *hb,
                            cairo_t      *cr)
 {
-  GtkWidget *widget = GTK_WIDGET (hb);
+  GtkWidget *widget = CTK_WIDGET (hb);
   GtkStateFlags state;
   GtkStyleContext *context;
   guint x;
@@ -852,10 +852,10 @@ ctk_handle_box_draw_ghost (GtkHandleBox *hb,
   allocation_width = ctk_widget_get_allocated_width (widget);
   allocation_height = ctk_widget_get_allocated_height (widget);
 
-  if (handle_position == GTK_POS_LEFT ||
-      handle_position == GTK_POS_RIGHT)
+  if (handle_position == CTK_POS_LEFT ||
+      handle_position == CTK_POS_RIGHT)
     {
-      x = handle_position == GTK_POS_LEFT ? 0 : allocation_width - DRAG_HANDLE_SIZE;
+      x = handle_position == CTK_POS_LEFT ? 0 : allocation_width - DRAG_HANDLE_SIZE;
       y = 0;
       width = DRAG_HANDLE_SIZE;
       height = allocation_height;
@@ -863,7 +863,7 @@ ctk_handle_box_draw_ghost (GtkHandleBox *hb,
   else
     {
       x = 0;
-      y = handle_position == GTK_POS_TOP ? 0 : allocation_height - DRAG_HANDLE_SIZE;
+      y = handle_position == CTK_POS_TOP ? 0 : allocation_height - DRAG_HANDLE_SIZE;
       width = allocation_width;
       height = DRAG_HANDLE_SIZE;
     }
@@ -877,19 +877,19 @@ ctk_handle_box_draw_ghost (GtkHandleBox *hb,
   ctk_render_background (context, cr, x, y, width, height);
   ctk_render_frame (context, cr, x, y, width, height);
 
-  if (handle_position == GTK_POS_LEFT ||
-      handle_position == GTK_POS_RIGHT)
+  if (handle_position == CTK_POS_LEFT ||
+      handle_position == CTK_POS_RIGHT)
     ctk_render_line (context, cr,
-                     handle_position == GTK_POS_LEFT ? DRAG_HANDLE_SIZE : 0,
+                     handle_position == CTK_POS_LEFT ? DRAG_HANDLE_SIZE : 0,
                      allocation_height / 2,
-                     handle_position == GTK_POS_LEFT ? allocation_width : allocation_width - DRAG_HANDLE_SIZE,
+                     handle_position == CTK_POS_LEFT ? allocation_width : allocation_width - DRAG_HANDLE_SIZE,
                      allocation_height / 2);
   else
     ctk_render_line (context, cr,
                      allocation_width / 2,
-                     handle_position == GTK_POS_TOP ? DRAG_HANDLE_SIZE : 0,
+                     handle_position == CTK_POS_TOP ? DRAG_HANDLE_SIZE : 0,
                      allocation_width / 2,
-                     handle_position == GTK_POS_TOP ? allocation_height : allocation_height - DRAG_HANDLE_SIZE);
+                     handle_position == CTK_POS_TOP ? allocation_height : allocation_height - DRAG_HANDLE_SIZE);
 
   ctk_style_context_restore (context);
 }
@@ -910,7 +910,7 @@ ctk_handle_box_set_shadow_type (GtkHandleBox  *handle_box,
 {
   GtkHandleBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_HANDLE_BOX (handle_box));
+  g_return_if_fail (CTK_IS_HANDLE_BOX (handle_box));
 
   priv = handle_box->priv;
 
@@ -918,7 +918,7 @@ ctk_handle_box_set_shadow_type (GtkHandleBox  *handle_box,
     {
       priv->shadow_type = type;
       g_object_notify (G_OBJECT (handle_box), "shadow-type");
-      ctk_widget_queue_resize (GTK_WIDGET (handle_box));
+      ctk_widget_queue_resize (CTK_WIDGET (handle_box));
     }
 }
 
@@ -936,7 +936,7 @@ ctk_handle_box_set_shadow_type (GtkHandleBox  *handle_box,
 GtkShadowType
 ctk_handle_box_get_shadow_type (GtkHandleBox *handle_box)
 {
-  g_return_val_if_fail (GTK_IS_HANDLE_BOX (handle_box), GTK_SHADOW_ETCHED_OUT);
+  g_return_val_if_fail (CTK_IS_HANDLE_BOX (handle_box), CTK_SHADOW_ETCHED_OUT);
 
   return handle_box->priv->shadow_type;
 }
@@ -956,7 +956,7 @@ ctk_handle_box_set_handle_position  (GtkHandleBox    *handle_box,
 {
   GtkHandleBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_HANDLE_BOX (handle_box));
+  g_return_if_fail (CTK_IS_HANDLE_BOX (handle_box));
 
   priv = handle_box->priv;
 
@@ -964,7 +964,7 @@ ctk_handle_box_set_handle_position  (GtkHandleBox    *handle_box,
     {
       priv->handle_position = position;
       g_object_notify (G_OBJECT (handle_box), "handle-position");
-      ctk_widget_queue_resize (GTK_WIDGET (handle_box));
+      ctk_widget_queue_resize (CTK_WIDGET (handle_box));
     }
 }
 
@@ -982,7 +982,7 @@ ctk_handle_box_set_handle_position  (GtkHandleBox    *handle_box,
 GtkPositionType
 ctk_handle_box_get_handle_position (GtkHandleBox *handle_box)
 {
-  g_return_val_if_fail (GTK_IS_HANDLE_BOX (handle_box), GTK_POS_LEFT);
+  g_return_val_if_fail (CTK_IS_HANDLE_BOX (handle_box), CTK_POS_LEFT);
 
   return handle_box->priv->handle_position;
 }
@@ -1004,9 +1004,9 @@ ctk_handle_box_get_handle_position (GtkHandleBox *handle_box)
  *
  * If the snap edge is not set, then an appropriate value
  * will be guessed from the handle position. If the
- * handle position is %GTK_POS_RIGHT or %GTK_POS_LEFT,
- * then the snap edge will be %GTK_POS_TOP, otherwise
- * it will be %GTK_POS_LEFT.
+ * handle position is %CTK_POS_RIGHT or %CTK_POS_LEFT,
+ * then the snap edge will be %CTK_POS_TOP, otherwise
+ * it will be %CTK_POS_LEFT.
  *
  * Deprecated: 3.4: #GtkHandleBox has been deprecated.
  */
@@ -1016,7 +1016,7 @@ ctk_handle_box_set_snap_edge        (GtkHandleBox    *handle_box,
 {
   GtkHandleBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_HANDLE_BOX (handle_box));
+  g_return_if_fail (CTK_IS_HANDLE_BOX (handle_box));
 
   priv = handle_box->priv;
 
@@ -1047,7 +1047,7 @@ ctk_handle_box_set_snap_edge        (GtkHandleBox    *handle_box,
 GtkPositionType
 ctk_handle_box_get_snap_edge (GtkHandleBox *handle_box)
 {
-  g_return_val_if_fail (GTK_IS_HANDLE_BOX (handle_box), (GtkPositionType)-1);
+  g_return_val_if_fail (CTK_IS_HANDLE_BOX (handle_box), (GtkPositionType)-1);
 
   return (GtkPositionType)handle_box->priv->snap_edge;
 }
@@ -1067,7 +1067,7 @@ ctk_handle_box_get_snap_edge (GtkHandleBox *handle_box)
 gboolean
 ctk_handle_box_get_child_detached (GtkHandleBox *handle_box)
 {
-  g_return_val_if_fail (GTK_IS_HANDLE_BOX (handle_box), FALSE);
+  g_return_val_if_fail (CTK_IS_HANDLE_BOX (handle_box), FALSE);
 
   return handle_box->priv->child_detached;
 }
@@ -1076,9 +1076,9 @@ static void
 ctk_handle_box_paint (GtkWidget *widget,
                       cairo_t   *cr)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkStyleContext *context;
   GtkStateFlags state;
   GtkWidget *child;
@@ -1102,25 +1102,25 @@ ctk_handle_box_paint (GtkWidget *widget,
 
   switch (handle_position)
     {
-    case GTK_POS_LEFT:
+    case CTK_POS_LEFT:
       rect.x = 0;
       rect.y = 0;
       rect.width = DRAG_HANDLE_SIZE;
       rect.height = height;
       break;
-    case GTK_POS_RIGHT:
+    case CTK_POS_RIGHT:
       rect.x = width - DRAG_HANDLE_SIZE;
       rect.y = 0;
       rect.width = DRAG_HANDLE_SIZE;
       rect.height = height;
       break;
-    case GTK_POS_TOP:
+    case CTK_POS_TOP:
       rect.x = 0;
       rect.y = 0;
       rect.width = width;
       rect.height = DRAG_HANDLE_SIZE;
       break;
-    case GTK_POS_BOTTOM:
+    case CTK_POS_BOTTOM:
       rect.x = 0;
       rect.y = height - DRAG_HANDLE_SIZE;
       rect.width = width;
@@ -1136,7 +1136,7 @@ ctk_handle_box_paint (GtkWidget *widget,
 
   child = ctk_bin_get_child (bin);
   if (child != NULL && ctk_widget_get_visible (child))
-    GTK_WIDGET_CLASS (ctk_handle_box_parent_class)->draw (widget, cr);
+    CTK_WIDGET_CLASS (ctk_handle_box_parent_class)->draw (widget, cr);
 
   ctk_style_context_restore (context);
 }
@@ -1145,7 +1145,7 @@ static gboolean
 ctk_handle_box_draw (GtkWidget *widget,
 		     cairo_t   *cr)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
 
   if (ctk_cairo_should_draw_window (cr, ctk_widget_get_window (widget)))
@@ -1191,7 +1191,7 @@ ctk_handle_box_grab_event (GtkWidget    *widget,
       break;
 
     case GDK_MOTION_NOTIFY:
-      return ctk_handle_box_motion (GTK_WIDGET (hb), (GdkEventMotion *)event);
+      return ctk_handle_box_motion (CTK_WIDGET (hb), (GdkEventMotion *)event);
       break;
 
     default:
@@ -1205,7 +1205,7 @@ static gboolean
 ctk_handle_box_button_press (GtkWidget      *widget,
                              GdkEventButton *event)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
   gboolean event_handled;
   GdkCursor *fleur;
@@ -1223,7 +1223,7 @@ ctk_handle_box_button_press (GtkWidget      *widget,
       if (event->window != priv->bin_window)
 	return FALSE;
 
-      child = ctk_bin_get_child (GTK_BIN (hb));
+      child = ctk_bin_get_child (CTK_BIN (hb));
 
       if (child)
 	{
@@ -1231,20 +1231,20 @@ ctk_handle_box_button_press (GtkWidget      *widget,
           guint border_width;
 
           ctk_widget_get_allocation (child, &child_allocation);
-          border_width = ctk_container_get_border_width (GTK_CONTAINER (hb));
+          border_width = ctk_container_get_border_width (CTK_CONTAINER (hb));
 
 	  switch (handle_position)
 	    {
-	    case GTK_POS_LEFT:
+	    case CTK_POS_LEFT:
 	      in_handle = event->x < DRAG_HANDLE_SIZE;
 	      break;
-	    case GTK_POS_TOP:
+	    case CTK_POS_TOP:
 	      in_handle = event->y < DRAG_HANDLE_SIZE;
 	      break;
-	    case GTK_POS_RIGHT:
+	    case CTK_POS_RIGHT:
 	      in_handle = event->x > 2 * border_width + child_allocation.width;
 	      break;
-	    case GTK_POS_BOTTOM:
+	    case CTK_POS_BOTTOM:
 	      in_handle = event->y > 2 * border_width + child_allocation.height;
 	      break;
 	    default:
@@ -1266,8 +1266,8 @@ ctk_handle_box_button_press (GtkWidget      *widget,
               GdkWindow *window;
 	      gint root_x, root_y;
 
-              ctk_invisible_set_screen (GTK_INVISIBLE (invisible),
-                                        ctk_widget_get_screen (GTK_WIDGET (hb)));
+              ctk_invisible_set_screen (CTK_INVISIBLE (invisible),
+                                        ctk_widget_get_screen (CTK_WIDGET (hb)));
 	      gdk_window_get_origin (priv->bin_window, &root_x, &root_y);
 
 	      priv->orig_x = event->x_root;
@@ -1336,7 +1336,7 @@ static gboolean
 ctk_handle_box_motion (GtkWidget      *widget,
 		       GdkEventMotion *event)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
   GtkWidget *child;
   gint new_x, new_y;
@@ -1370,18 +1370,18 @@ ctk_handle_box_motion (GtkWidget      *widget,
 
   snap_edge = priv->snap_edge;
   if (snap_edge == -1)
-    snap_edge = (handle_position == GTK_POS_LEFT ||
-		 handle_position == GTK_POS_RIGHT) ?
-      GTK_POS_TOP : GTK_POS_LEFT;
+    snap_edge = (handle_position == CTK_POS_LEFT ||
+		 handle_position == CTK_POS_RIGHT) ?
+      CTK_POS_TOP : CTK_POS_LEFT;
 
-  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL) 
+  if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL) 
     switch (snap_edge) 
       {
-      case GTK_POS_LEFT:
-	snap_edge = GTK_POS_RIGHT;
+      case CTK_POS_LEFT:
+	snap_edge = CTK_POS_RIGHT;
 	break;
-      case GTK_POS_RIGHT:
-	snap_edge = GTK_POS_LEFT;
+      case CTK_POS_RIGHT:
+	snap_edge = CTK_POS_LEFT;
 	break;
       default:
 	break;
@@ -1391,17 +1391,17 @@ ctk_handle_box_motion (GtkWidget      *widget,
    */
   switch (snap_edge)
     {
-    case GTK_POS_TOP:
+    case CTK_POS_TOP:
       is_snapped = abs (priv->attach_allocation.y - new_y) < TOLERANCE;
       break;
-    case GTK_POS_BOTTOM:
+    case CTK_POS_BOTTOM:
       is_snapped = abs (priv->attach_allocation.y + (gint)priv->attach_allocation.height -
 			new_y - (gint)priv->float_allocation.height) < TOLERANCE;
       break;
-    case GTK_POS_LEFT:
+    case CTK_POS_LEFT:
       is_snapped = abs (priv->attach_allocation.x - new_x) < TOLERANCE;
       break;
-    case GTK_POS_RIGHT:
+    case CTK_POS_RIGHT:
       is_snapped = abs (priv->attach_allocation.x + (gint)priv->attach_allocation.width -
 			new_x - (gint)priv->float_allocation.width) < TOLERANCE;
       break;
@@ -1419,15 +1419,15 @@ ctk_handle_box_motion (GtkWidget      *widget,
       
       switch (snap_edge)
 	{
-	case GTK_POS_TOP:
-	case GTK_POS_BOTTOM:
+	case CTK_POS_TOP:
+	case CTK_POS_BOTTOM:
 	  attach_pos1 = priv->attach_allocation.x;
 	  attach_pos2 = priv->attach_allocation.x + priv->attach_allocation.width;
 	  float_pos1 = new_x;
 	  float_pos2 = new_x + priv->float_allocation.width;
 	  break;
-	case GTK_POS_LEFT:
-	case GTK_POS_RIGHT:
+	case CTK_POS_LEFT:
+	case CTK_POS_RIGHT:
 	  attach_pos1 = priv->attach_allocation.y;
 	  attach_pos2 = priv->attach_allocation.y + priv->attach_allocation.height;
 	  float_pos1 = new_y;
@@ -1441,7 +1441,7 @@ ctk_handle_box_motion (GtkWidget      *widget,
 		    (float_pos2 + TOLERANCE > attach_pos2));
     }
 
-  child = ctk_bin_get_child (GTK_BIN (hb));
+  child = ctk_bin_get_child (CTK_BIN (hb));
 
   if (is_snapped)
     {
@@ -1468,17 +1468,17 @@ ctk_handle_box_motion (GtkWidget      *widget,
 
       switch (handle_position)
 	{
-	case GTK_POS_LEFT:
+	case CTK_POS_LEFT:
 	  new_y += ((gint)priv->float_allocation.height - height) / 2;
 	  break;
-	case GTK_POS_RIGHT:
+	case CTK_POS_RIGHT:
 	  new_x += (gint)priv->float_allocation.width - width;
 	  new_y += ((gint)priv->float_allocation.height - height) / 2;
 	  break;
-	case GTK_POS_TOP:
+	case CTK_POS_TOP:
 	  new_x += ((gint)priv->float_allocation.width - width) / 2;
 	  break;
-	case GTK_POS_BOTTOM:
+	case CTK_POS_BOTTOM:
 	  new_x += ((gint)priv->float_allocation.width - width) / 2;
 	  new_y += (gint)priv->float_allocation.height - height;
 	  break;
@@ -1506,11 +1506,11 @@ ctk_handle_box_motion (GtkWidget      *widget,
 	      child_requisition.height = 0;
 	    }      
 
-          border_width = ctk_container_get_border_width (GTK_CONTAINER (hb));
+          border_width = ctk_container_get_border_width (CTK_CONTAINER (hb));
 	  width = child_requisition.width + 2 * border_width;
 	  height = child_requisition.height + 2 * border_width;
 
-	  if (handle_position == GTK_POS_LEFT || handle_position == GTK_POS_RIGHT)
+	  if (handle_position == CTK_POS_LEFT || handle_position == CTK_POS_RIGHT)
 	    width += DRAG_HANDLE_SIZE;
 	  else
 	    height += DRAG_HANDLE_SIZE;
@@ -1544,26 +1544,26 @@ static void
 ctk_handle_box_add (GtkContainer *container,
 		    GtkWidget    *widget)
 {
-  GtkHandleBoxPrivate *priv = GTK_HANDLE_BOX (container)->priv;
+  GtkHandleBoxPrivate *priv = CTK_HANDLE_BOX (container)->priv;
 
   ctk_widget_set_parent_window (widget, priv->bin_window);
-  GTK_CONTAINER_CLASS (ctk_handle_box_parent_class)->add (container, widget);
+  CTK_CONTAINER_CLASS (ctk_handle_box_parent_class)->add (container, widget);
 }
 
 static void
 ctk_handle_box_remove (GtkContainer *container,
 		       GtkWidget    *widget)
 {
-  GTK_CONTAINER_CLASS (ctk_handle_box_parent_class)->remove (container, widget);
+  CTK_CONTAINER_CLASS (ctk_handle_box_parent_class)->remove (container, widget);
 
-  ctk_handle_box_reattach (GTK_HANDLE_BOX (container));
+  ctk_handle_box_reattach (CTK_HANDLE_BOX (container));
 }
 
 static gint
 ctk_handle_box_delete_event (GtkWidget *widget,
 			     GdkEventAny  *event)
 {
-  GtkHandleBox *hb = GTK_HANDLE_BOX (widget);
+  GtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   GtkHandleBoxPrivate *priv = hb->priv;
 
   if (event->window == priv->float_window)
@@ -1581,7 +1581,7 @@ ctk_handle_box_reattach (GtkHandleBox *hb)
 {
   GtkHandleBoxPrivate *priv = hb->priv;
   GtkWidget *child;
-  GtkWidget *widget = GTK_WIDGET (hb);
+  GtkWidget *widget = CTK_WIDGET (hb);
   
   if (priv->child_detached)
     {
@@ -1592,7 +1592,7 @@ ctk_handle_box_reattach (GtkHandleBox *hb)
           gdk_window_reparent (priv->bin_window, ctk_widget_get_window (widget),
                                0, 0);
 
-          child = ctk_bin_get_child (GTK_BIN (hb));
+          child = ctk_bin_get_child (CTK_BIN (hb));
 	  if (child)
 	    g_signal_emit (hb,
 			   handle_box_signals[SIGNAL_CHILD_ATTACHED],
@@ -1605,7 +1605,7 @@ ctk_handle_box_reattach (GtkHandleBox *hb)
   if (priv->in_drag)
     ctk_handle_box_end_drag (hb, GDK_CURRENT_TIME);
 
-  ctk_widget_queue_resize (GTK_WIDGET (hb));
+  ctk_widget_queue_resize (CTK_WIDGET (hb));
 }
 
 static void

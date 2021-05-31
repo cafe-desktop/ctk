@@ -403,10 +403,10 @@ msgstr "Vacibdir"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Gedişatın vacim sayılması. TRUE isə, bu gedişatın toolitem vəkilləri mətni "
-"GTK_TOOLBAR_BOTH_HORIZ modunda göstərəcəkdir."
+"CTK_TOOLBAR_BOTH_HORIZ modunda göstərəcəkdir."
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -949,7 +949,7 @@ msgstr "Ön Qurğulu Boşluq"
 
 #: gtk/gtkbutton.c:461
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CAN_DEFAULT düymələrinə əlavə ediləcək əlavə sahə"
 
 #: gtk/gtkbutton.c:475
@@ -959,7 +959,7 @@ msgstr "Ön Qurğulu Xarici Boşluq"
 #: gtk/gtkbutton.c:476
 #, fuzzy
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
 "Kənarı həmişə xaricində göstərilən CAN_DEFAULT düymələri üçün əlavə ediləcək "
@@ -6463,10 +6463,10 @@ msgstr "Step düymələri və thumb arasındakı məsafə"
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Vasitə çubuğu üzvünün vacib sayılması. TRUE isə, vasitə çubuğu düymələri "
-"mətni GTK_TOOLBAR_BOTH_HORIZ modunda göstərəcəkdir"
+"mətni CTK_TOOLBAR_BOTH_HORIZ modunda göstərəcəkdir"
 
 #: gtk/gtktoolitemgroup.c:1572
 #, fuzzy

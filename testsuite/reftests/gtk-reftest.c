@@ -38,7 +38,7 @@ typedef enum {
 } SnapshotMode;
 
 /* This is exactly the style information you've been looking for */
-#define GTK_STYLE_PROVIDER_PRIORITY_FORCE G_MAXUINT
+#define CTK_STYLE_PROVIDER_PRIORITY_FORCE G_MAXUINT
 
 static char *arg_output_dir = NULL;
 static char *arg_base_dir = NULL;
@@ -78,14 +78,14 @@ parse_command_line (int *argc, char ***argv)
 
   /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
-  if (g_getenv ("GTK_TEST_MESON") == NULL)
+  if (g_getenv ("CTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
   g_free (schema_dir);
 
   if (g_strcmp0 (arg_direction, "rtl") == 0)
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
   else if (g_strcmp0 (arg_direction, "ltr") == 0)
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_LTR);
   else if (arg_direction != NULL)
     g_printerr ("Invalid argument passed to --direction argument. Valid arguments are 'ltr' and 'rtl'\n");
 
@@ -224,13 +224,13 @@ add_extra_css (const char *testname,
   if (css_file == NULL)
     return NULL;
 
-  provider = GTK_STYLE_PROVIDER (ctk_css_provider_new ());
-  ctk_css_provider_load_from_path (GTK_CSS_PROVIDER (provider),
+  provider = CTK_STYLE_PROVIDER (ctk_css_provider_new ());
+  ctk_css_provider_load_from_path (CTK_CSS_PROVIDER (provider),
                                    css_file,
                                    NULL);
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                              provider,
-                                             GTK_STYLE_PROVIDER_PRIORITY_FORCE);
+                                             CTK_STYLE_PROVIDER_PRIORITY_FORCE);
 
   g_free (css_file);
   

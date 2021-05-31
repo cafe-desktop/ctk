@@ -85,11 +85,11 @@ edited (GtkCellRendererText *cell,
   GtkTreeIter iter;
   GtkTreePath *path;
 
-  model = ctk_icon_view_get_model (GTK_ICON_VIEW (data));
+  model = ctk_icon_view_get_model (CTK_ICON_VIEW (data));
   path = ctk_tree_path_new_from_string (path_string);
 
   ctk_tree_model_get_iter (model, &iter, path);
-  ctk_list_store_set (GTK_LIST_STORE (model), &iter,
+  ctk_list_store_set (CTK_LIST_STORE (model), &iter,
                       COL_TEXT, text, -1);
 
   ctk_tree_path_free (path);
@@ -106,11 +106,11 @@ do_iconview_edit (GtkWidget *do_widget)
       GtkListStore *store;
       GtkCellRenderer *renderer;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
-      ctk_window_set_screen (GTK_WINDOW (window),
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Editing and Drag-and-Drop");
+      ctk_window_set_title (CTK_WINDOW (window), "Editing and Drag-and-Drop");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
@@ -118,35 +118,35 @@ do_iconview_edit (GtkWidget *do_widget)
       store = create_store ();
       fill_store (store);
 
-      icon_view = ctk_icon_view_new_with_model (GTK_TREE_MODEL (store));
+      icon_view = ctk_icon_view_new_with_model (CTK_TREE_MODEL (store));
       g_object_unref (store);
 
-      ctk_icon_view_set_selection_mode (GTK_ICON_VIEW (icon_view),
-                                        GTK_SELECTION_SINGLE);
-      ctk_icon_view_set_item_orientation (GTK_ICON_VIEW (icon_view),
-                                          GTK_ORIENTATION_HORIZONTAL);
-      ctk_icon_view_set_columns (GTK_ICON_VIEW (icon_view), 2);
-      ctk_icon_view_set_reorderable (GTK_ICON_VIEW (icon_view), TRUE);
+      ctk_icon_view_set_selection_mode (CTK_ICON_VIEW (icon_view),
+                                        CTK_SELECTION_SINGLE);
+      ctk_icon_view_set_item_orientation (CTK_ICON_VIEW (icon_view),
+                                          CTK_ORIENTATION_HORIZONTAL);
+      ctk_icon_view_set_columns (CTK_ICON_VIEW (icon_view), 2);
+      ctk_icon_view_set_reorderable (CTK_ICON_VIEW (icon_view), TRUE);
 
       renderer = ctk_cell_renderer_pixbuf_new ();
-      ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (icon_view),
+      ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (icon_view),
                                   renderer, TRUE);
-      ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (icon_view),
+      ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (icon_view),
                                           renderer,
                                           set_cell_color,
                                           NULL, NULL);
 
       renderer = ctk_cell_renderer_text_new ();
-      ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (icon_view),
+      ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (icon_view),
                                   renderer, TRUE);
       g_object_set (renderer, "editable", TRUE, NULL);
       g_signal_connect (renderer, "edited", G_CALLBACK (edited), icon_view);
-      ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (icon_view),
+      ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (icon_view),
                                       renderer,
                                       "text", COL_TEXT,
                                       NULL);
 
-      ctk_container_add (GTK_CONTAINER (window), icon_view);
+      ctk_container_add (CTK_CONTAINER (window), icon_view);
     }
 
   if (!ctk_widget_get_visible (window))

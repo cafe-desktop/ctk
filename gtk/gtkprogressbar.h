@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_PROGRESS_BAR_H__
-#define __GTK_PROGRESS_BAR_H__
+#ifndef __CTK_PROGRESS_BAR_H__
+#define __CTK_PROGRESS_BAR_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PROGRESS_BAR            (ctk_progress_bar_get_type ())
-#define GTK_PROGRESS_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PROGRESS_BAR, GtkProgressBar))
-#define GTK_PROGRESS_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PROGRESS_BAR, GtkProgressBarClass))
-#define GTK_IS_PROGRESS_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PROGRESS_BAR))
-#define GTK_IS_PROGRESS_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PROGRESS_BAR))
-#define GTK_PROGRESS_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PROGRESS_BAR, GtkProgressBarClass))
+#define CTK_TYPE_PROGRESS_BAR            (ctk_progress_bar_get_type ())
+#define CTK_PROGRESS_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PROGRESS_BAR, GtkProgressBar))
+#define CTK_PROGRESS_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PROGRESS_BAR, GtkProgressBarClass))
+#define CTK_IS_PROGRESS_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PROGRESS_BAR))
+#define CTK_IS_PROGRESS_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PROGRESS_BAR))
+#define CTK_PROGRESS_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PROGRESS_BAR, GtkProgressBarClass))
 
 
 typedef struct _GtkProgressBar              GtkProgressBar;
@@ -109,4 +109,4 @@ gboolean           ctk_progress_bar_get_show_text (GtkProgressBar     *pbar);
 
 G_END_DECLS
 
-#endif /* __GTK_PROGRESS_BAR_H__ */
+#endif /* __CTK_PROGRESS_BAR_H__ */

@@ -340,7 +340,7 @@ Overview of Changes in GTK+ 3.24.14
 
 * x11:
  - Fix root window scaling
- - Support _GTK_WORKAREAS_Dn property
+ - Support _CTK_WORKAREAS_Dn property
 
 * wayland:
  - Support a terminal purpose in input methods
@@ -954,7 +954,7 @@ Overview of Changes in GTK+ 3.23.0
  772817 File Chooser: Path arrow button frames are reversed and detached ...
  773299 gtk/language-names.c: Fix build on non-GCC/CLang
  775279 early calls to libepoxy cause all gtk3 programs to abort when the...
- 786524 ocument GTK_OVERLAY_SCROLLING environment variable
+ 786524 ocument CTK_OVERLAY_SCROLLING environment variable
  787867 OSX macports pango text size appears to vary between version 1.40...
  789215 GtkScrolledWindow and GtkIconView atk objects can cause a segfaul...
  791542 GDK 3 Selections documentation makes references to X
@@ -1092,7 +1092,7 @@ Overview of Changes in GTK+ 3.22.29
  786123 GtkPlacesSidebar: Add support for libcloudproviders
  786509 GDK W32: OLE2 DnD is completely broken
  786528 Please make the output deterministic
- 787089 win32: GtkWindow of type GTK_WINDOW_POPUP/GDK_WINDOW_TEMP leaks memory...
+ 787089 win32: GtkWindow of type CTK_WINDOW_POPUP/GDK_WINDOW_TEMP leaks memory...
  787128 Re-add FUSE network mounts in local-only mode
  789054 Firefox crashes @gdk_window_begin_move_drag() on WM without _NET_WM_MO...
  789160 Add Windows compatible emoji shortcuts
@@ -1147,7 +1147,7 @@ Overview of Changes in GTK+ 3.22.26
  789630 Distribute protocol/server-decoration.xml in tarballs
  787142 input/IME: Defer the emit of the "commit" signal
  789134 icon-browser: Centre Copy button in dialog again
- 789678 AboutDialog: Fix accepting GTK_LICENSE_AGPL_3_0
+ 789678 AboutDialog: Fix accepting CTK_LICENSE_AGPL_3_0
  788898 Inspector: better default split of CSS nodes/props
  789733 Fix GtkEntry:has-frame not working
  789213 gdk/win32: Fix Win32 GL Context switching
@@ -1934,7 +1934,7 @@ Overview of Changes in GTK+ 3.21.6
 
 * Bugs fixed:
  764979 Connect to server is unusable after cancelling a password dialog
- 766569 Better size requisition for GTK_SCROLL_NATURAL children
+ 766569 Better size requisition for CTK_SCROLL_NATURAL children
  767391 cross-fade() not cross-fading
  769498 Scrollbars are broken
  770278 modernize example applications
@@ -2146,7 +2146,7 @@ Overview of Changes in GTK+ 3.21.3
  765595 Modal popover does not close when focus leaves it
  766341 Do not rely on memfd as it requires a fairly recent kernel
  766372 Scale omits value in various size calculations, causing in...
- 766569 Better size requisition for GTK_SCROLL_NATURAL children
+ 766569 Better size requisition for CTK_SCROLL_NATURAL children
  766675 Add appropriate frame drawing API to GdkWindow
  766860 tiled (snapped, half-maximized) windows in Wayland aren't ...
  766878 placesview: Do not mark icon name as translatable
@@ -2184,7 +2184,7 @@ Overview of Changes in GTK+ 3.21.2
   connected outputs
 
 * Bugs fixed:
- 373745 Do not use AM_GLIB_DEFINE_LOCALEDIR(GTK_LOCALEDIR) and use gettext...
+ 373745 Do not use AM_GLIB_DEFINE_LOCALEDIR(CTK_LOCALEDIR) and use gettext...
  682080 Gtk:ERROR:gtktoolbar.c:2271:logical_to_physical: assertion failed:...
  747206 gtktextview: note on how to get line spacing between two paragraphs
  756570 gtkplacesview no longer provides guidance on address formats
@@ -2221,7 +2221,7 @@ Overview of Changes in GTK+ 3.21.2
  766458 widget: fix GtkLabelAccessible NULL links.
  766530 scrolledwindow: Fix typo in get_preferred_height calculation
  766566 Wayland: gdk_screen_get_monitor_at_window() unreliable under Wayland
- 766569 Better size requisition for GTK_SCROLL_NATURAL children
+ 766569 Better size requisition for CTK_SCROLL_NATURAL children
  766642 Switches in HeaderBars Are Badly Integrated
  766643 Frozen windows when unmapped with pending configure event
  766737 stack: Only map children when necessary
@@ -2255,7 +2255,7 @@ Overview of Changes in GTK+ 3.21.1
 * GdkSeat and GdkDevice gained API for device tools, to support drawing tablets
 
 * GtkInspector can now slow down (or speed up) animations. This functionality
-  is also available via the GTK_SLOWDOWN environment variable
+  is also available via the CTK_SLOWDOWN environment variable
 
 * GdkGLContext can now be instructed to use GLES
 
@@ -2287,7 +2287,7 @@ Overview of Changes in GTK+ 3.21.1
  763627 menu-traditional puts popover beneath the text editor widget
  763768 Wrong margin used for the sidebar separator
  763783 GDK W32: Erase hidden layered windows before showing them
- 763850 Add License GTK_LICENSE_AGPL_3_0 to GtkLicense enum
+ 763850 Add License CTK_LICENSE_AGPL_3_0 to GtkLicense enum
  763851 GDK W32: show_window_menu() is not implemented
  763907 GDK W32: Clipboard handling is not tight enough
  763913 GDK W32: Not all relevant debug info is printed for events
@@ -2339,7 +2339,7 @@ Overview of Changes in GTK+ 3.21.1
  765565 Wayland: Inspector GtkLabel drag'n'drop crashes client
  765576 gtk+ leaks and hangs
  765577 gdk/dnd: Add missing signal parameter documentation
- 765632 typo in GTK_STYLE_CLASS_LIST_ROW docs
+ 765632 typo in CTK_STYLE_CLASS_LIST_ROW docs
  765640 pixelcache: reuse existing timeout source when possible
  765644 Widget sizing problems with GtkProgressBar
 
@@ -2370,7 +2370,7 @@ Overview of Changes in GTK+ 3.20.1
  763350 drawing performance worse than X
  763604 The search button of a GtkShortcutsWindow should have the image-button...
  763659 DND Drop on root with Pixbuf leaves image behind
- 763731 Return GTK_PRINT_OPERATION_RESULT_ERROR even if error == NULL
+ 763731 Return CTK_PRINT_OPERATION_RESULT_ERROR even if error == NULL
  763741 Wavy/squiggly underline not properly removed
  763758 Do not use fixed values for widgets size in foreign drawing demo
  763779 [PATCH] quartz: fix pixelated image surfaces in retina/hidpi mode
@@ -2671,7 +2671,7 @@ Overview of Changes in GTK+ 3.19.9
  761402 GtkRange doesn't reset in_drag flag correctly
  761428 GtkLevelBar no longer expands vertically
  761474 x11: Scaling factor is applied twice on screen work area
- 761476 Set _GTK_THEME_VARIANT property also for light theme variant
+ 761476 Set _CTK_THEME_VARIANT property also for light theme variant
  761484 Spinbuttons in headerbars are way too tall
  761552 Warnings in filechooser when typing-to-search in Recent
  761571 Opaque region incorrectly calculated for fullscreen windows
@@ -4018,7 +4018,7 @@ Overview of Changes in GTK+ 3.15.12
 Overview of Changes in GTK+ 3.15.11
 ===================================
 
-* Go back to requiring GTK_FRAME_EXTENTS support for CSD,
+* Go back to requiring CTK_FRAME_EXTENTS support for CSD,
   to fix shadow problems in KDE.
 
 * Bug fixes:
@@ -4357,7 +4357,7 @@ Overview of Changes in GTK+ 3.15.4
  741702 Right margin not respected with RTL text in non-wrapping mode only
  741827 typo in testsuite/reftests/Makefile.am causes build failure on Min...
  741897 documentation fix
- 741969 GTK_STOCK_COPY
+ 741969 CTK_STOCK_COPY
  742010 GtkLabel eats thumb-button clicks
  742170 cut/copy/paste binding entries are registered 2x
  742181 "show images in menus" causes weird padding outside GNOME
@@ -4466,7 +4466,7 @@ Overview of Changes in GTK+ 3.15.3
  740682 gtkapplication: Use actions from focused widget to activ...
  740742 Don't scale before translation
  740770 Missing style when the GtkCellRenderer:sensitive propert...
- 740812 Gtk-CRITICAL **: ctk_widget_is_ancestor: assertion 'GTK_...
+ 740812 Gtk-CRITICAL **: ctk_widget_is_ancestor: assertion 'CTK_...
  740851 widget-factory: Add a row separator to the tree view
  740857 HighContrast: in-app notifications lack padding
  740860 HighContrast: vertical linking
@@ -4559,7 +4559,7 @@ Overview of Changes in GTK+ 3.15.2
  739474 radiobutton: don't consider hidden buttons in the group for focus
  739750 Fix handling of windows with sizes that aren't a multiple of...
  739781 Make global GDK libctk_only functions more private
- 739885 gtk3-3.14.5 - fail to link - undefined reference to `GTK_IS_PLUG'
+ 739885 gtk3-3.14.5 - fail to link - undefined reference to `CTK_IS_PLUG'
  739977 Don't wait for ENTER to initiate search
  740011 overscroll overlay is opaque in unfocused mode sidebars
  740346 Mir backend needs support for GdkGLContext 
@@ -4643,7 +4643,7 @@ Overview of Changes in GTK+ 3.15.0
  - No more missing icons
 
 * GtkScrolledWindow
- - A new policy, GTK_POLICY_EXTERNAL, which allows scrolling
+ - A new policy, CTK_POLICY_EXTERNAL, which allows scrolling
    without showing a scrollbar
  - Scroll events can now overshoot as well
  - The new signal ::edge-overshot is emitted when the scrolled
@@ -4877,7 +4877,7 @@ Overview of Changes in GTK+ 3.13.7 to 3.13.8
  346886 GtkTreeModelFilter doesn't allow multiple calls to set_visible_func
  415415 tree lines drawn in black
  602443 Can't use .glade with GtkListStore, gint64/guint64 and design-time data
- 641638 Remove AM_PATH_GTK_3_0 macro
+ 641638 Remove AM_PATH_CTK_3_0 macro
  658722 Drag and Drop sometimes stops working
  674264 Credentials from gnome-keyring is not used while printing
  680067 Credits in About dialog don't support https
@@ -5208,7 +5208,7 @@ Overview of Changes in GTK+ 3.13.2 to 3.13.3
  - Include the Adwaita theme
  - The default theme is now Adwaita
  - Icon loading now respects limits specified in the icon theme,
-   unless GTK_ICON_LOOKUP_FORCE_SIZE is set
+   unless CTK_ICON_LOOKUP_FORCE_SIZE is set
  - Don't include image content in icon caches, to avoid huge caches
  - GtkSwitch gained a hover state
 
@@ -5258,7 +5258,7 @@ Overview of Changes in GTK+ 3.13.1 to 3.13.2
 * Interactive debugging support. The GtkInspector
   window can be triggered with the Ctrl-Shift-I
   or Ctrl-Shift-D keyboard shortcuts, or via the
-  GTK_DEBUG environment variable.
+  CTK_DEBUG environment variable.
 
 * Gesture support has landed. New classes include
   GtkGestureLongPress, GtkGestureMultiPress, GtkGestureSwipe,
@@ -5316,7 +5316,7 @@ Overview of Changes in GTK+ 3.13.1 to 3.13.2
  645966 gtk-demo leaks a GtkSizeGroup
  698396 GtkTreeStore crashes when reordering 0 elements
  708037 Allow live updates on widgets implementing GtkColorChooser
- 720330 Gtk-CRITICAL **: ctk_entry_completion_set_model: assertion 'GTK_IS_E...
+ 720330 Gtk-CRITICAL **: ctk_entry_completion_set_model: assertion 'CTK_IS_E...
  721069 ctk_win32_embed_widget_show infinite recursion
  726676 More GtkStack transition counterparts of OVER_UP_DOWN
  727147 Search bar is too narrow
@@ -5378,7 +5378,7 @@ Overview of Changes in GTK+ 3.12.0 to 3.13.1
  - Supports dialog actions
 
 * Client-side decorations
- - The requirement for _GTK_FRAME_EXTENTS has been dropped
+ - The requirement for _CTK_FRAME_EXTENTS has been dropped
    to avoid 'double headers' with most window managers
  - Drawing of DND highlights around the entire window works
 
@@ -5484,7 +5484,7 @@ Overview of Changes in GTK+ 3.11.9 to 3.12.0
  726825 possible invalid reads on delete event
  726838 crash when unsetting GtkTreeView model
  726855 When subdirectory selected, subdirectory name only briefly appears...
- 726858 GTK_ENABLE_DEBUG should be G_ENABLE_DEBUG
+ 726858 CTK_ENABLE_DEBUG should be G_ENABLE_DEBUG
  726900 ctk_recent_filter_filter() requirements aren't fully documented 
 
 * Translation updates:
@@ -5697,7 +5697,7 @@ Overview of Changes in GTK+ 3.11.4 to 3.11.5
  - Docbook markup is being phased out in favor of markdown
 
 * Bugs fixed:
- 350190 Need specific icon for GTK_ICON_SIZE_SMALL_TOOLBAR for...
+ 350190 Need specific icon for CTK_ICON_SIZE_SMALL_TOOLBAR for...
  566945 ctk_widget_override_color() documentation should menti...
  630217 RGBA visual by default
  634793 Use g_object_notify_by_pspec() / g_object_class_instal...
@@ -6178,7 +6178,7 @@ Overview of Changes in GTK+ 3.9.12 to 3.9.14
  706740 a typo in ctk_icon_view_key_release()
  706756 GtkAssistant behaviour changed and now throws 'Page flow...
  706778 GtkMessageDialog contains translatable space
- 706802 Missing docs for GTK_PRINT_SETTINGS_OUTPUT_DIR and GTK_P...
+ 706802 Missing docs for CTK_PRINT_SETTINGS_OUTPUT_DIR and CTK_P...
  706870 serial number jump bigger than 1000 warnings
  706922 Set the opaque region when using CSD
  706929 HeaderBar padding - account for double bottom button border
@@ -6463,7 +6463,7 @@ Overview of Changes in GTK+ 3.9.0 to 3.9.2
 
 * The GDK drawing and scrolling has been simplified. We no longer use
   XCopyArea for scrolling, instead an offscreen cache is used. There
-  is a new debug flag, GTK_DEBUG=pixel-cache for this.
+  is a new debug flag, CTK_DEBUG=pixel-cache for this.
 
 * Window sizing issues have been addressed.
 
@@ -6540,7 +6540,7 @@ Overview of Changes in GTK+ 3.7 to 3.9
 * GtkWindow:
  - Initial support for client-side decorations has been added. This
    is going to be used by default under Wayland. To try it with other
-   backends, set the GTK_CSD=1 environment variable.
+   backends, set the CTK_CSD=1 environment variable.
  - ctk_window_set_titlebar: A new function that can set a custom,
    client-side titlebar on toplevel windows.
 
@@ -6904,7 +6904,7 @@ Overview of Changes in GTK+ 3.7.8
 Overview of Changes in GTK+ 3.7.6
 =================================
 
-* We now use state flags for text direction: GTK_STATE_FLAG_LTR/RTL.
+* We now use state flags for text direction: CTK_STATE_FLAG_LTR/RTL.
   ctk_style_context_set_direction() has been deprecated.
 
 * We install headers for accessible implementations of GTK+ widgets.
@@ -7564,7 +7564,7 @@ Overview of Changes in GTK+ 3.5.1
  674200 ./configure gives wrong error message if -lXext is ...
  674286 "Delete confirmation" dialog has wrong padding
  674326 Use localizations of option names and values contai...
- 674468 Add GTK_STYLE_CLASS_DIM_LABEL
+ 674468 Add CTK_STYLE_CLASS_DIM_LABEL
  674577 Non static variable in GtkStyleProviderPrivate
  674587 treemodelsort: allow iter_previous() to go past the...
  674806 icontheme: search first in all themes if the reques...
@@ -8042,7 +8042,7 @@ Overview of Changes in GTK+ 3.3.4
 
 * The beagle search backend has been dropped
 
-* Stop using GDK/GTK_DISABLE_DEPRECATED guards for deprecated
+* Stop using GDK/CTK_DISABLE_DEPRECATED guards for deprecated
   functions; instead use function attributes
 
 * Make GtkCellRendererAccel support naked keyvals, so it can
@@ -8174,7 +8174,7 @@ Overview of Changes in GTK+ 3.3.2
  660833 all: add an 'only-child' pseudo-class selector
  661032 out-of-tree builds result in broken gtk-doc documentation
  661089 gtkfontbutton.c will not compile on Solaris
- 661780 GTK_STOCK_INDENT references wrong images
+ 661780 CTK_STOCK_INDENT references wrong images
  661835 GMountOperation on OpenBSD: remove the need for kvm(3)
  662024 tests/css/parser/selector.errors missing from EXTRA_DIST
  662132 --sync
@@ -8339,13 +8339,13 @@ Overview of Changes in GTK+ 3.1.18
 
 * Bugs fixed
  530253 typo ifaces under ctk_tree_view_set_reorderable
- 566202 GTK_SELECTION_MULTIPLE description unclear
+ 566202 CTK_SELECTION_MULTIPLE description unclear
  581435 ctk_tree_view_set_drag_dest_row() needs more documentation
  655631 Description of x and y parameters in ctk_render_arrow is in...
  657793 Support NULL sibling in ctk_grid_attach_next_to
  657882 ctk_css_provider_propagate_error's signature not updated...
  657963 themingengine: remove xthickness FIXME from ctk_render_line()
- 657985 reeview: add GTK_STYLE_CLASS_SEPARATOR for tree view separators
+ 657985 reeview: add CTK_STYLE_CLASS_SEPARATOR for tree view separators
  658008 Centered text alignment in GtkAssistant is wrong
  658077 Add theming support to GtkPathBar
  658111 ctk_label_set_pattern() is reset by a call to ctk_box_pack_...
@@ -8571,7 +8571,7 @@ Overview of Changes in GTK+ 3.1.6
  641087 Wish: GtkApplication::window-added signal
  642768 Make tracker search backend a bit less verbose
  642773 Make file search non-case sensitive
- 642929 GtkFileChooserDialog with GTK_FILE_CHOOSER_ACTION_CREATE_...
+ 642929 GtkFileChooserDialog with CTK_FILE_CHOOSER_ACTION_CREATE_...
  644906 gtkimcontextime.c: NULL pointer reference
  646859 GtkCssProvider.load_from_data introspection
  649314 Add support for the text-shadow property
@@ -8683,7 +8683,7 @@ Overview of Changes in GTK+ 3.1.2
  - Fix problems with transparent backgrounds in panel applets
  - Style classes for 'inline' and 'primary' toolbars and sidebars
  - Dark theme information is made available to window managers via
-   the _GTK_THEME_VARIANT property
+   the _CTK_THEME_VARIANT property
  - Improved rendering of insensitive text
  - Support non-uniform border withs in the default engine
  - Fix prelight on treeview expanders
@@ -8760,7 +8760,7 @@ Overview of Changes in GTK+ 3.1.2
  646882 Theming fixes for GtkButton and GtkCombobox
  646886 Do not leak list when drawing notebook.
  647086 Mismatched style_context_[save/restore] calls
- 647152 Assertion `GTK_IS_PRINTER (printer)' failed...
+ 647152 Assertion `CTK_IS_PRINTER (printer)' failed...
  647244 Toggling the 'Deletable' option under the general...
  647275 Opening messages in Evolution and Empathy...
  647278 Small cleanup in statusbar
@@ -8853,7 +8853,7 @@ Overview of Changes in GTK+ 3.0.2
 Overview of Changes in GTK+ 3.0.1
 =================================
 
-* A autoconf macro, GTK_CHECK_BACKEND, has been added
+* A autoconf macro, CTK_CHECK_BACKEND, has been added
   to allow easy checking for certain gdk backends
 
 * A number of memory leaks and segfaults involving accessibility
@@ -8866,7 +8866,7 @@ Overview of Changes in GTK+ 3.0.1
  630971 gailstatusbar attempts to cast a GtkHBox to a GtkBin
  633291 Handle Shift-keys in X11 gdk_test_simulate_key()
  642213 ctk_widget_render_icon_pixbuf fails with non-standard...
- 642263 undefined reference to "GTK_IS_SOCKET" and "GTK_IS_PLUG"
+ 642263 undefined reference to "CTK_IS_SOCKET" and "CTK_IS_PLUG"
  642541 Missing semi-colon in gtkseparatormenuitem.c
  642677 "migrating" guide not in sync with GTK+ 3.0
  642681 ctk_combo_box_text_get_active_text doesn't work as stated
@@ -8993,7 +8993,7 @@ Overview of Changes in GTK+ 2.99.3
 
 * Bug fixes
  322926 FileChooser: Alt-Shift-Down should work like Alt-Down
- 351755 GTK_RANGE (range) -> round_digits should be exposed...
+ 351755 CTK_RANGE (range) -> round_digits should be exposed...
  586635 ctk_info_bar_add_button() should return GtkButton*
  590459 Text is sometimes not pasted at the right location
  598952 Implement object attribute to expose toolkit/source
@@ -9211,7 +9211,7 @@ Overview of Changes from GTK+ 2.91.7 to 2.99.0
  638231 GtkSwitch states translation
  638386 gdk_x11_display_init_input careless
  638580 'application' window's property released too late
- 638608 gtkenums: add GTK_STATE_FLAG_NORMAL = 0
+ 638608 gtkenums: add CTK_STATE_FLAG_NORMAL = 0
 
 * Updated translations:
  Estonian
@@ -9639,7 +9639,7 @@ Overview of Changes from GTK+ 2.90.7 to 2.91.0
 * Fixed Bugs:
  323904 GtkEditable header is slightly incorrect
  339745 Return value of ctk_link_button_set_uri_hook not usable
- 468672 GTK_POLICY_AUTOMATIC should be the default policy...
+ 468672 CTK_POLICY_AUTOMATIC should be the default policy...
  486839 Filechooser 'Places' items should not move up and down...
  601731 Drag and Drop from Workspace to Activities Overview
  617316 Move documentation to inline comments: GtkEditable
@@ -9681,15 +9681,15 @@ Overview of Changes from GTK+ 2.90.6 to 2.90.7
  - the GtkRange::trough-side-details style property
  - the GtkRange::stepper-position-details style property
  - the GtkRange::activate-slider style property
- - the GTK_CALENDAR_WEEK_START_MONDAY option
+ - the CTK_CALENDAR_WEEK_START_MONDAY option
  - the GtkFrame::shadow and GtkHandleBox::shadow properties
  - the GtkTextView::page-horizontally signal
  - the GDK_WINDOW_DIALOG window type
- - the GTK_SELECTION_EXTENDED selection mode
+ - the CTK_SELECTION_EXTENDED selection mode
  - the GtkProgressBarOrientation, GtkAnchorType and GtkVisibility
    enumerations
  - GtkDialog separators, including the GtkDialog::has-separator
-   property, including setter/getter, the GTK_DIALOG_NO_SEPARATOR
+   property, including setter/getter, the CTK_DIALOG_NO_SEPARATOR
    flag and the GtkMessageDialog::use-separator style property
  - ctk_status_icon_set/get_blinking
  - gdk_window_et_deskrelative_origin
@@ -9838,7 +9838,7 @@ Overview of Changes from GTK+ 2.90.5 to 2.90.6
  615474 ctk_widget_set_has_window() documentation is not correct
  618327 GtkNotebookPage should be deprecated
  621571 Fix damage events on offscreen windows
- 622658 GTK_STOCK_FILE Stock Label
+ 622658 CTK_STOCK_FILE Stock Label
  623603 meld built with pygtk-2.16.0 giving warnings
  623865 gtkdnd: pointer grab may never finish (ungrab before grab)
  624087 Missing accessor for GdkCursor.type
@@ -10004,11 +10004,11 @@ Overview of Changes from GTK+ 2.90.2 to 2.90.3
  - Misc annotation fixes
 
 * Cleanups:
- - GTK_OBJECT_FLAGS and GtkObjectFlags have been depreated
+ - CTK_OBJECT_FLAGS and GtkObjectFlags have been depreated
 
 * Bugs fixed:
  620618 get rid of GtkProgress
- 615666 GTK_OBJECT_FLAGS() should be deprecated
+ 615666 CTK_OBJECT_FLAGS() should be deprecated
  617444 GNU emacs warnings with extended layout GTK+
  621631 Non-consistent style in GtkUIManager docs
  621136 GtkCalendar: Some functions always return TRUE
@@ -10242,7 +10242,7 @@ Overview of Changes from GTK+ 2.19.6 to 2.19.7
 
 * Bug fixes:
  611707 Move documentation from templates to inline comments
-  69872 GTK_WIDGET_SET_FLAGS should be deprecated
+  69872 CTK_WIDGET_SET_FLAGS should be deprecated
  612066 empathy hangs when clicked on information about contact...
  557420 Some compose sequences don't work anymore...
  569042 gailbooleancell does not seem to attend to changes...
@@ -10405,23 +10405,23 @@ Overview of Changes from GTK+ 2.19.2 to 2.19.3
 
 * GSeal:
  - Deprecate widget flag macros
-   GTK_WIDGET_STATE
-   GTK_WIDGET_SAVED_STATE
-   GTK_WIDGET_FLAGS
-   GTK_WIDGET_TOPLEVEL
-   GTK_WIDGET_NO_WINDOW
-   GTK_WIDGET_COMPOSITE_CHILD
-   GTK_WIDGET_APP_PAINTABLE
-   GTK_WIDGET_CAN_DEFAULT
-   GTK_WIDGET_CAN_FOCUS
-   GTK_WIDGET_DOUBLE_BUFFERED
-   GTK_WIDGET_HAS_DEFAULT
-   GTK_WIDGET_HAS_GRAB
-   GTK_WIDGET_RECEIVES_DEFAULT
+   CTK_WIDGET_STATE
+   CTK_WIDGET_SAVED_STATE
+   CTK_WIDGET_FLAGS
+   CTK_WIDGET_TOPLEVEL
+   CTK_WIDGET_NO_WINDOW
+   CTK_WIDGET_COMPOSITE_CHILD
+   CTK_WIDGET_APP_PAINTABLE
+   CTK_WIDGET_CAN_DEFAULT
+   CTK_WIDGET_CAN_FOCUS
+   CTK_WIDGET_DOUBLE_BUFFERED
+   CTK_WIDGET_HAS_DEFAULT
+   CTK_WIDGET_HAS_GRAB
+   CTK_WIDGET_RECEIVES_DEFAULT
  - Also deprecate the type macros
-   GTK_WIDGET_TYPE
-   GTK_OBJECT_TYPE_NAME
-   GTK_OBJECT_TYPE
+   CTK_WIDGET_TYPE
+   CTK_OBJECT_TYPE_NAME
+   CTK_OBJECT_TYPE
 
 * GtkOffscreenWindow: A new toplevel container widget to manage
   offscreen rendering of child widgets
@@ -10559,14 +10559,14 @@ Overview of Changes from GTK+ 2.19.0 to 2.19.1
  561973 Problem dragging images from Firefox to GTK+ app on Windows
  601512 Remove unnecessary check in GtkTreeModelFilter
  600222 Check for existence of cairo-svg.h in configure.in
- 595498 No accesor for GTK_WINDOW ()->type
+ 595498 No accesor for CTK_WINDOW ()->type
  116650 "action area" for GtkNotebook (e.g. for tab close button)
  600150 GtkColorSelection tooltip issues
  480065 wrong tree collapsed (or expanded) after having scrolled
  596473 Second double-click of GtkTreeView row doesn't emit...
  601869 GtkUIManager assumes too much about popup menus
  581145 Wrong positioning for fullscreen gedit toolbar animation
- 602724 gailimage doesn't handle GTK_IMAGE_{GICON,ICON_NAME}...
+ 602724 gailimage doesn't handle CTK_IMAGE_{GICON,ICON_NAME}...
  561130 get_monitor_geometry segfaults if called with non-existant...
  597026 Missing include for memset()
  585383 Segfault in gdk_pixbuf__ico_image_save
@@ -10655,7 +10655,7 @@ Overview of Changes from GTK+ 2.18.x to 2.19.0
  563010 GtkFileChooserButton cannot have none file selected again
  596019 No accesors for GtkDialog buttons
  366217 Add QTIF image support
- 594962 No accessor for GTK_ENTRY (entry)->editing_canceled
+ 594962 No accessor for CTK_ENTRY (entry)->editing_canceled
 
 * Updated translations:
  Arabic
@@ -10820,7 +10820,7 @@ Overview of Changes from GTK+ 2.17.10 to 2.17.11
 
 * GSEAL:
  - Add ctk_widget_set_receives_default and ctk_widget_get_receives_default
-   accessors for GTK_RECEIVES_DEFAULT
+   accessors for CTK_RECEIVES_DEFAULT
 
 * GtkTreeView:
  - Correctly propagate insensitive state to cell renderers
@@ -11220,7 +11220,7 @@ Overview of Changes from GTK+ 2.17.1 to 2.17.2
 * Bugs fixed:
  584021 titchy leak
  579590 ctk_entry_set_icon_from_stock should warn when invalid st...
- 584125 GtkAssistant asserts if last page is GTK_ASSISTANT_PAGE_C...
+ 584125 GtkAssistant asserts if last page is CTK_ASSISTANT_PAGE_C...
  171416 Resume editing if name of new folder is "Type name of new...
  420335 Page assignment when printing 4 pages to a sheet
  161670 Bad behaviour from ctk_file_chooser_set_filename
@@ -11391,7 +11391,7 @@ Overview of Changes from GTK+ 2.16.0 to 2.16.1
  577789 about dialogue doesn't linkify licence text
  577824 empathy_chat_window_init: GClosure is leaked
  577964 Page Range entry is not accessible
- 578221 Assertion warning `GTK_IS_TEXT_LAYOUT (layout)' failed
+ 578221 Assertion warning `CTK_IS_TEXT_LAYOUT (layout)' failed
  578271 PageSetup should be sent to the previewer
  578276 gtk-builder-convert improperly converts GtkComboBox
  578290 two memory leaks
@@ -11954,7 +11954,7 @@ Overview of Changes from GTK+ 2.14.x to 2.15.0
  561186 GdkPixbuf API type checking needs cleanup
  559009 ctk_radio_button_get_group documentation needs to say...
  523264 Update GTK+ reference documentation screenshots
- 563876 [Regression] GTK_MODULES env var is no longer relevant
+ 563876 [Regression] CTK_MODULES env var is no longer relevant
  554950 gail must make itself resident
  555953 libferret missing link against libgtk-x11
  554002 Orca App-Preferences dialog page tabs are "off" by one...
@@ -12959,7 +12959,7 @@ Overview of Changes from GTK+ 2.11.2 to 2.11.3
  350460 Popup windows (esp. menus) misbehave wrt focus
  410815 Icon view gets confused when scaling down the pixbuf column
  435471 small GtkComboBox cleanup
- 435840 GTK_WIDGET_SAVED_STATE inconsistency
+ 435840 CTK_WIDGET_SAVED_STATE inconsistency
  442617 gdk_spawn overrides envp, breaking child setup funcs whic...
  443913 When .recently-used.xbel is empty, recently-used uses %10...
  444097 Cannot compile gtksearchenginesimple.c
@@ -13131,10 +13131,10 @@ Overview of Changes from GTK+ 2.10.x to 2.11
 
 * GtkTextView:
  - Support accumulative and negative margins
- - GTK_JUSTIFY_FILL works
+ - CTK_JUSTIFY_FILL works
 
 * GtkLabel:
- - GTK_JUSTIFY_FILL works
+ - CTK_JUSTIFY_FILL works
 
 * GtkStatusIcon: 
  - Multiscreen support
@@ -13338,7 +13338,7 @@ Overview of Changes from GTK+ 2.10.1 to 2.10.2
  348728	GtkTable Row and Column Spacing
  351241	swapped argument description
  350023	"Running GTK+ Applications" chapter does not 
-        document new GTK_DEBUG possibilities
+        document new CTK_DEBUG possibilities
  351812 file print backend filename encoding issue
 
 * New and updated translations (bg,bn_IN,de,dz,el,es,
@@ -14002,8 +14002,8 @@ Overview of Changes from GTK+ 2.7.0 to GTK+ 2.7.1
  - Make movement by paragraphs up/down symmetric [Behnam 
    Esfahbod]
  - Improve invisible text support [Matthias Clasen]
-* Some new stock items: GTK_STOCK_INFO, GTK_STOCK_FULLSCREEN,
-  GTK_STOCK_LEAVE_FULLSCREEN [Kristof Vansant]
+* Some new stock items: CTK_STOCK_INFO, CTK_STOCK_FULLSCREEN,
+  CTK_STOCK_LEAVE_FULLSCREEN [Kristof Vansant]
 * Handle broken grabs in many places [John Ehresman, Matthias]
 * GDK
  - Add a function to move a region [Søren Sandmann]
@@ -14167,7 +14167,7 @@ Overview of Changes from GTK+ 2.6.0 to GTK+ 2.6.1
 =================================================
 * GtkFileChooser
  - Fix some possible threading deadlocks [Matthias Clasen]
- - Don't return errors from the private GTK_FILE_SYSTEM_ERROR
+ - Don't return errors from the private CTK_FILE_SYSTEM_ERROR
    domain [Murray Cumming]
  - Fix some crashes with unreadable directories [Federico Mena 
    Quintero]
@@ -15146,7 +15146,7 @@ Overview of Changes from GTK+-2.2.x to GTK+-2.3.0
  - Add ctk_text_buffer_select_range()
  - Implement drag-selection by words/lines (also for Gtkentry)
  - Some fixes to invisible text handling
- - Add support for GTK_WRAP_WORD_CHAR [David Brigada]
+ - Add support for CTK_WRAP_WORD_CHAR [David Brigada]
  - Clean up handling of horizontal paging
  - Fix scrolling with non-visible cursor
  - Add internals documentation [Havoc Pennington]
@@ -15514,7 +15514,7 @@ Widget improvements:
 * Handle painting text on dark-colored progressbars [Soeren]
 * GtkTreeView  [Kristian Rietveld]
   - Privatize ctk_tree_store_move(), add ctk_tree_store_move_before/after()
-  - Add GTK_CELL_RENDERER_FOCUSED flag
+  - Add CTK_CELL_RENDERER_FOCUSED flag
   - Keynav fixes, including adding boolean return values for keybinding
     signals (API breakage for API that no one should have been using)
     [Narayana Pattipati]
@@ -15738,7 +15738,7 @@ Overview of Changes in GTK+ 2.0.6
   Josh Green, Matthias Clasen]
 * Fix problem with keynav and insensitive menu items [Owen Taylor]
 * Fix pixbuf_from_drawable() for LSB -> MSB [Federico Mena Quintero]
-* Use GTK2_RC_FILES envvar instead of GTK_RC_FILES [Owen]
+* Use GTK2_RC_FILES envvar instead of CTK_RC_FILES [Owen]
 * Focus check/radio buttons when activating with a mnemonic [Padraig O'Briain]
 * Cycle between multiple menubars with F10, not control-tab 
   [Calum Benson, Padraig]
@@ -15885,7 +15885,7 @@ Overview of Changes in GTK+ 1.3.15
   [Tuomas Kuosmanen, Jakub Steiner, Anders Carlsson]
 * Widget drawing improvements for check and radio buttons,
   spinbuttons [Soeren Sandmann]
-* Clean up module search path algorithm, use GTK_PATH [Owen Taylor]
+* Clean up module search path algorithm, use CTK_PATH [Owen Taylor]
 * Add GtkSetting for font name. [Richard Hestilow]
 * Much improved key matching code, accelerators work independent
   of group [Owen]
@@ -16359,7 +16359,7 @@ Overview of Changes in GTK+ 1.2.5:
 * fonts (and fontsets) are cached now.
 * more autogeneration make rules and dependency fixups, we should be
   save with autogeneration up to make -j12 now ;)
-* new window position GTK_WIN_POS_CENTER_ALWAYS, which will recenter the
+* new window position CTK_WIN_POS_CENTER_ALWAYS, which will recenter the
   GtkWindow on every size change.
 * major rework of window manager hints handling code, fixed a bunch of
   races with the new resizing code.
@@ -16483,7 +16483,7 @@ What is new in GTK+ 1.1.14:
 * Additions to docs/Changes-1.2.txt
 * Just warn when loading theme engine fails
 * CLAMP GtkScale digits to a meaningful range
-* GTK_LOCALDIR is now defined in a better fashion
+* CTK_LOCALDIR is now defined in a better fashion
 * New functions (feature freeze, we know...):
     ctk_menu_set_title()
     ctk_toggle_button_get_active()
@@ -16552,7 +16552,7 @@ What is new in GTK+ 1.1.8:
   dialogs.
 * Added line-wrapping for the label, and JUSTIFY_FILL
 * Support reordering via drag and drop in  CList and CTree.
-* Replaced GtkDrawWindow widget with a GTK_USER_DRAW flag
+* Replaced GtkDrawWindow widget with a CTK_USER_DRAW flag
 * Extended gtkpaned API to support minimum sizes and proportional
   resizing.
 * Changed the handling of shared memory segments so as to 
@@ -16585,14 +16585,14 @@ What is new in GTK+ 1.1.6:
   variants are provided for a long time now.
 * Dnd abort timeout increased to 10 minutes.
 * GtkScrolledWindow inherits from GtkBin now.
-* GTK_POLICY_NEVER is implemented for scrolled windows now.
+* CTK_POLICY_NEVER is implemented for scrolled windows now.
 * Lots of API clean ups.
 * Incremental freezing abilities.
 * Integrated widgets from the GNOME tree: GtkLayout, GtkPlug and GtkSocket.
 * New window functions for transient relationship, default size, and 
   geometry hints
 * Default rc files are now read in (<sysconfdir/etc/gtkrc and ~/.gtkrc)
-  GTK_RC_FILES environment variable and functions are provided to configure
+  CTK_RC_FILES environment variable and functions are provided to configure
   this behavior
 * Read doc/Changes-1.2.txt to properly adapt your code.
 * Bug Fixes.
@@ -16633,7 +16633,7 @@ What is new in GTK+ 1.1.3:
 * Must enhanced DND support, removed old DND code
 * Idle functions are now implemented via GHook, giving a slight speed
   improvement
-* An environment variable GTK_MODULES which takes a colon separated
+* An environment variable CTK_MODULES which takes a colon separated
   list of module names GTK+ will now automatically load at ctk_init() startup
 * GtkFontSel now has support for an extra 'base' filter
 * New function gdk_window_set_root_origin to get the real geometry taking

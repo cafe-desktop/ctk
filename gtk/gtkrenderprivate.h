@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_RENDER_PRIVATE_H__
-#define __GTK_RENDER_PRIVATE_H__
+#ifndef __CTK_RENDER_PRIVATE_H__
+#define __CTK_RENDER_PRIVATE_H__
 
 #include <cairo.h>
 #include <pango/pango.h>
@@ -35,4 +35,4 @@ GdkPixbuf * ctk_render_icon_pixbuf_unpacked     (GdkPixbuf              *base_pi
                                                  GtkIconSize             size,
                                                  GtkCssIconEffect        icon_effect);
 
-#endif /* __GTK_RENDER_PRIVATE_H__ */
+#endif /* __CTK_RENDER_PRIVATE_H__ */

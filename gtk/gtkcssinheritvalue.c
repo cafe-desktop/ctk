@@ -23,7 +23,7 @@
 #include "gtkstylecontextprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
 };
 
 static void
@@ -77,7 +77,7 @@ ctk_css_value_inherit_print (const GtkCssValue *value,
   g_string_append (string, "inherit");
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_INHERIT = {
+static const GtkCssValueClass CTK_CSS_VALUE_INHERIT = {
   ctk_css_value_inherit_free,
   ctk_css_value_inherit_compute,
   ctk_css_value_inherit_equal,
@@ -85,7 +85,7 @@ static const GtkCssValueClass GTK_CSS_VALUE_INHERIT = {
   ctk_css_value_inherit_print
 };
 
-static GtkCssValue inherit = { &GTK_CSS_VALUE_INHERIT, 1 };
+static GtkCssValue inherit = { &CTK_CSS_VALUE_INHERIT, 1 };
 
 GtkCssValue *
 _ctk_css_inherit_value_new (void)

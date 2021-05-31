@@ -703,11 +703,11 @@ msgstr "महत्वपूर्ण है"
 #: ../gtk/gtkaction.c:364
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "क्या यह काम महत्वपूर्ण माना जाता है. जब सही है, इस काम के लिये टूलआइटम "
 "प्रॉक्सी "
-"GTK_TOOLBAR_BOTH_HORIZ मोड में पाठ दिखाता है."
+"CTK_TOOLBAR_BOTH_HORIZ मोड में पाठ दिखाता है."
 
 #: ../gtk/gtkaction.c:372
 msgid "Hide if empty"
@@ -1381,8 +1381,8 @@ msgid "Default Spacing"
 msgstr "मूलभूत दूरी"
 
 #: ../gtk/gtkbutton.c:477
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT बटन के लिये जोड़े जाने वाला अतिरिक्त स्थान"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT बटन के लिये जोड़े जाने वाला अतिरिक्त स्थान"
 
 #: ../gtk/gtkbutton.c:491
 msgid "Default Outside Spacing"
@@ -1390,10 +1390,10 @@ msgstr "मूलभूत बाहरी दूरी"
 
 #: ../gtk/gtkbutton.c:492
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"GTK_CAN_DEFAULT बटन के लिये जोड़ने के लिये अतिरिक्त स्थान जो कि किनारे से "
+"CTK_CAN_DEFAULT बटन के लिये जोड़ने के लिये अतिरिक्त स्थान जो कि किनारे से "
 "हमेशा बाहर है"
 
 #: ../gtk/gtkbutton.c:497
@@ -7110,10 +7110,10 @@ msgstr "प्रतीक व लेवल के बीच पिक्से�
 #: ../gtk/gtktoolitem.c:206
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "क्या टूलबार मद महत्वपूर्ण माना जाता है. जब सही हो, टूलबार बटन "
-"GTK_TOOLBAR_BOTH_HORIZ मोड में पाठ दिखाता है"
+"CTK_TOOLBAR_BOTH_HORIZ मोड में पाठ दिखाता है"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

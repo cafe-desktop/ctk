@@ -16,11 +16,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PAGE_SETUP_H__
-#define __GTK_PAGE_SETUP_H__
+#ifndef __CTK_PAGE_SETUP_H__
+#define __CTK_PAGE_SETUP_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,9 +31,9 @@ G_BEGIN_DECLS
 
 typedef struct _GtkPageSetup GtkPageSetup;
 
-#define GTK_TYPE_PAGE_SETUP    (ctk_page_setup_get_type ())
-#define GTK_PAGE_SETUP(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PAGE_SETUP, GtkPageSetup))
-#define GTK_IS_PAGE_SETUP(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PAGE_SETUP))
+#define CTK_TYPE_PAGE_SETUP    (ctk_page_setup_get_type ())
+#define CTK_PAGE_SETUP(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PAGE_SETUP, GtkPageSetup))
+#define CTK_IS_PAGE_SETUP(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PAGE_SETUP))
 
 GDK_AVAILABLE_IN_ALL
 GType              ctk_page_setup_get_type          (void) G_GNUC_CONST;
@@ -134,4 +134,4 @@ GtkPageSetup      *ctk_page_setup_new_from_gvariant (GVariant            *varian
 
 G_END_DECLS
 
-#endif /* __GTK_PAGE_SETUP_H__ */
+#endif /* __CTK_PAGE_SETUP_H__ */

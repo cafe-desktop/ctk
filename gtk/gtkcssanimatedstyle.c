@@ -38,13 +38,13 @@
 #include "gtkstylepropertyprivate.h"
 #include "gtkstyleproviderprivate.h"
 
-G_DEFINE_TYPE (GtkCssAnimatedStyle, ctk_css_animated_style, GTK_TYPE_CSS_STYLE)
+G_DEFINE_TYPE (GtkCssAnimatedStyle, ctk_css_animated_style, CTK_TYPE_CSS_STYLE)
 
 static GtkCssValue *
 ctk_css_animated_style_get_value (GtkCssStyle *style,
                                   guint        id)
 {
-  GtkCssAnimatedStyle *animated = GTK_CSS_ANIMATED_STYLE (style);
+  GtkCssAnimatedStyle *animated = CTK_CSS_ANIMATED_STYLE (style);
 
   if (animated->animated_values &&
       id < animated->animated_values->len &&
@@ -58,7 +58,7 @@ static GtkCssSection *
 ctk_css_animated_style_get_section (GtkCssStyle *style,
                                     guint        id)
 {
-  GtkCssAnimatedStyle *animated = GTK_CSS_ANIMATED_STYLE (style);
+  GtkCssAnimatedStyle *animated = CTK_CSS_ANIMATED_STYLE (style);
 
   return ctk_css_style_get_section (animated->style, id);
 }
@@ -66,7 +66,7 @@ ctk_css_animated_style_get_section (GtkCssStyle *style,
 static gboolean
 ctk_css_animated_style_is_static (GtkCssStyle *style)
 {
-  GtkCssAnimatedStyle *animated = GTK_CSS_ANIMATED_STYLE (style);
+  GtkCssAnimatedStyle *animated = CTK_CSS_ANIMATED_STYLE (style);
   GSList *list;
 
   for (list = animated->animations; list; list = list->next)
@@ -81,7 +81,7 @@ ctk_css_animated_style_is_static (GtkCssStyle *style)
 static void
 ctk_css_animated_style_dispose (GObject *object)
 {
-  GtkCssAnimatedStyle *style = GTK_CSS_ANIMATED_STYLE (object);
+  GtkCssAnimatedStyle *style = CTK_CSS_ANIMATED_STYLE (object);
 
   if (style->animated_values)
     {
@@ -98,7 +98,7 @@ ctk_css_animated_style_dispose (GObject *object)
 static void
 ctk_css_animated_style_finalize (GObject *object)
 {
-  GtkCssAnimatedStyle *style = GTK_CSS_ANIMATED_STYLE (object);
+  GtkCssAnimatedStyle *style = CTK_CSS_ANIMATED_STYLE (object);
 
   g_object_unref (style->style);
 
@@ -109,7 +109,7 @@ static void
 ctk_css_animated_style_class_init (GtkCssAnimatedStyleClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkCssStyleClass *style_class = GTK_CSS_STYLE_CLASS (klass);
+  GtkCssStyleClass *style_class = CTK_CSS_STYLE_CLASS (klass);
 
   object_class->dispose = ctk_css_animated_style_dispose;
   object_class->finalize = ctk_css_animated_style_finalize;
@@ -129,7 +129,7 @@ ctk_css_animated_style_set_animated_value (GtkCssAnimatedStyle *style,
                                            guint                id,
                                            GtkCssValue         *value)
 {
-  ctk_internal_return_if_fail (GTK_IS_CSS_ANIMATED_STYLE (style));
+  ctk_internal_return_if_fail (CTK_IS_CSS_ANIMATED_STYLE (style));
   ctk_internal_return_if_fail (value != NULL);
 
   if (style->animated_values == NULL)
@@ -147,7 +147,7 @@ GtkCssValue *
 ctk_css_animated_style_get_intrinsic_value (GtkCssAnimatedStyle *style,
                                             guint                id)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_ANIMATED_STYLE (style), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_ANIMATED_STYLE (style), NULL);
 
   return ctk_css_style_get_value (style->style, id);
 }
@@ -161,7 +161,7 @@ struct _TransitionInfo {
 };
 
 static void
-transition_info_add (TransitionInfo    infos[GTK_CSS_PROPERTY_N_PROPERTIES],
+transition_info_add (TransitionInfo    infos[CTK_CSS_PROPERTY_N_PROPERTIES],
                      GtkStyleProperty *property,
                      guint             index)
 {
@@ -173,30 +173,30 @@ transition_info_add (TransitionInfo    infos[GTK_CSS_PROPERTY_N_PROPERTIES],
         {
           GtkCssStyleProperty *prop = _ctk_css_style_property_lookup_by_id (i);
 
-          transition_info_add (infos, GTK_STYLE_PROPERTY (prop), index);
+          transition_info_add (infos, CTK_STYLE_PROPERTY (prop), index);
         }
     }
-  else if (GTK_IS_CSS_SHORTHAND_PROPERTY (property))
+  else if (CTK_IS_CSS_SHORTHAND_PROPERTY (property))
     {
-      GtkCssShorthandProperty *shorthand = GTK_CSS_SHORTHAND_PROPERTY (property);
+      GtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
       guint i;
 
       for (i = 0; i < _ctk_css_shorthand_property_get_n_subproperties (shorthand); i++)
         {
           GtkCssStyleProperty *prop = _ctk_css_shorthand_property_get_subproperty (shorthand, i);
 
-          transition_info_add (infos, GTK_STYLE_PROPERTY (prop), index);
+          transition_info_add (infos, CTK_STYLE_PROPERTY (prop), index);
         }
     }
-  else if (GTK_IS_CSS_STYLE_PROPERTY (property))
+  else if (CTK_IS_CSS_STYLE_PROPERTY (property))
     {
       guint id;
       
-      if (!_ctk_css_style_property_is_animated (GTK_CSS_STYLE_PROPERTY (property)))
+      if (!_ctk_css_style_property_is_animated (CTK_CSS_STYLE_PROPERTY (property)))
         return;
 
-      id = _ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (property));
-      g_assert (id < GTK_CSS_PROPERTY_N_PROPERTIES);
+      id = _ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (property));
+      g_assert (id < CTK_CSS_PROPERTY_N_PROPERTIES);
       infos[id].index = index;
       infos[id].pending = TRUE;
     }
@@ -207,7 +207,7 @@ transition_info_add (TransitionInfo    infos[GTK_CSS_PROPERTY_N_PROPERTIES],
 }
 
 static void
-transition_infos_set (TransitionInfo  infos[GTK_CSS_PROPERTY_N_PROPERTIES],
+transition_infos_set (TransitionInfo  infos[CTK_CSS_PROPERTY_N_PROPERTIES],
                       GtkCssValue    *transitions)
 {
   guint i;
@@ -239,7 +239,7 @@ ctk_css_animated_style_find_transition (GtkCssAnimatedStyle *style,
 
   for (list = style->animations; list; list = list->next)
     {
-      if (!GTK_IS_CSS_TRANSITION (list->data))
+      if (!CTK_IS_CSS_TRANSITION (list->data))
         continue;
 
       if (_ctk_css_transition_get_property (list->data) == property_id)
@@ -255,17 +255,17 @@ ctk_css_animated_style_create_css_transitions (GSList              *animations,
                                                gint64               timestamp,
                                                GtkCssStyle         *source)
 {
-  TransitionInfo transitions[GTK_CSS_PROPERTY_N_PROPERTIES] = { { 0, } };
+  TransitionInfo transitions[CTK_CSS_PROPERTY_N_PROPERTIES] = { { 0, } };
   GtkCssValue *durations, *delays, *timing_functions;
   guint i;
 
-  transition_infos_set (transitions, ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_TRANSITION_PROPERTY));
+  transition_infos_set (transitions, ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_TRANSITION_PROPERTY));
 
-  durations = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_TRANSITION_DURATION);
-  delays = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_TRANSITION_DELAY);
-  timing_functions = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_TRANSITION_TIMING_FUNCTION);
+  durations = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_TRANSITION_DURATION);
+  delays = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_TRANSITION_DELAY);
+  timing_functions = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_TRANSITION_TIMING_FUNCTION);
 
-  for (i = 0; i < GTK_CSS_PROPERTY_N_PROPERTIES; i++)
+  for (i = 0; i < CTK_CSS_PROPERTY_N_PROPERTIES; i++)
     {
       GtkStyleAnimation *animation;
       GtkCssValue *start, *end;
@@ -279,14 +279,14 @@ ctk_css_animated_style_create_css_transitions (GSList              *animations,
       if (duration + delay == 0.0)
         continue;
 
-      if (GTK_IS_CSS_ANIMATED_STYLE (source))
+      if (CTK_IS_CSS_ANIMATED_STYLE (source))
         {
-          start = ctk_css_animated_style_get_intrinsic_value (GTK_CSS_ANIMATED_STYLE (source), i);
+          start = ctk_css_animated_style_get_intrinsic_value (CTK_CSS_ANIMATED_STYLE (source), i);
           end = ctk_css_style_get_value (base_style, i);
 
           if (_ctk_css_value_equal (start, end))
             {
-              animation = ctk_css_animated_style_find_transition (GTK_CSS_ANIMATED_STYLE (source), i);
+              animation = ctk_css_animated_style_find_transition (CTK_CSS_ANIMATED_STYLE (source), i);
               if (animation)
                 {
                   animation = _ctk_style_animation_advance (animation, timestamp);
@@ -321,7 +321,7 @@ ctk_css_animated_style_find_animation (GSList     *animations,
 
   for (list = animations; list; list = list->next)
     {
-      if (!GTK_IS_CSS_ANIMATION (list->data))
+      if (!CTK_IS_CSS_ANIMATION (list->data))
         continue;
 
       if (g_str_equal (_ctk_css_animation_get_name (list->data), name))
@@ -343,14 +343,14 @@ ctk_css_animated_style_create_css_animations (GSList                  *animation
   GtkCssValue *iteration_counts, *directions, *play_states, *fill_modes;
   guint i;
 
-  animation_names = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_ANIMATION_NAME);
-  durations = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_ANIMATION_DURATION);
-  delays = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_ANIMATION_DELAY);
-  timing_functions = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_ANIMATION_TIMING_FUNCTION);
-  iteration_counts = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_ANIMATION_ITERATION_COUNT);
-  directions = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_ANIMATION_DIRECTION);
-  play_states = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_ANIMATION_PLAY_STATE);
-  fill_modes = ctk_css_style_get_value (base_style, GTK_CSS_PROPERTY_ANIMATION_FILL_MODE);
+  animation_names = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_ANIMATION_NAME);
+  durations = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_ANIMATION_DURATION);
+  delays = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_ANIMATION_DELAY);
+  timing_functions = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_ANIMATION_TIMING_FUNCTION);
+  iteration_counts = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_ANIMATION_ITERATION_COUNT);
+  directions = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_ANIMATION_DIRECTION);
+  play_states = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_ANIMATION_PLAY_STATE);
+  fill_modes = ctk_css_style_get_value (base_style, CTK_CSS_PROPERTY_ANIMATION_FILL_MODE);
 
   for (i = 0; i < _ctk_css_array_value_get_n_values (animation_names); i++)
     {
@@ -366,12 +366,12 @@ ctk_css_animated_style_create_css_animations (GSList                  *animation
       if (animation)
         continue;
 
-      if (GTK_IS_CSS_ANIMATED_STYLE (source))
-        animation = ctk_css_animated_style_find_animation (GTK_CSS_ANIMATED_STYLE (source)->animations, name);
+      if (CTK_IS_CSS_ANIMATED_STYLE (source))
+        animation = ctk_css_animated_style_find_animation (CTK_CSS_ANIMATED_STYLE (source)->animations, name);
 
       if (animation)
         {
-          animation = _ctk_css_animation_advance_with_play_state (GTK_CSS_ANIMATION (animation),
+          animation = _ctk_css_animation_advance_with_play_state (CTK_CSS_ANIMATION (animation),
                                                                   timestamp,
                                                                   _ctk_css_play_state_value_get (_ctk_css_array_value_get_nth (play_states, i)));
         }
@@ -413,7 +413,7 @@ ctk_css_animated_style_apply_animations (GtkCssAnimatedStyle *style)
       GtkStyleAnimation *animation = l->data;
       
       _ctk_style_animation_apply_values (animation,
-                                         GTK_CSS_ANIMATED_STYLE (style));
+                                         CTK_CSS_ANIMATED_STYLE (style));
     }
 }
 
@@ -427,10 +427,10 @@ ctk_css_animated_style_new (GtkCssStyle             *base_style,
   GtkCssAnimatedStyle *result;
   GSList *animations;
   
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (base_style), NULL);
-  ctk_internal_return_val_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style), NULL);
-  ctk_internal_return_val_if_fail (GTK_IS_STYLE_PROVIDER (provider), NULL);
-  ctk_internal_return_val_if_fail (previous_style == NULL || GTK_IS_CSS_STYLE (previous_style), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (base_style), NULL);
+  ctk_internal_return_val_if_fail (parent_style == NULL || CTK_IS_CSS_STYLE (parent_style), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), NULL);
+  ctk_internal_return_val_if_fail (previous_style == NULL || CTK_IS_CSS_STYLE (previous_style), NULL);
 
   if (timestamp == 0)
     return g_object_ref (base_style);
@@ -444,7 +444,7 @@ ctk_css_animated_style_new (GtkCssStyle             *base_style,
   if (animations == NULL)
     return g_object_ref (base_style);
 
-  result = g_object_new (GTK_TYPE_CSS_ANIMATED_STYLE, NULL);
+  result = g_object_new (CTK_TYPE_CSS_ANIMATED_STYLE, NULL);
 
   result->style = g_object_ref (base_style);
   result->current_time = timestamp;
@@ -452,7 +452,7 @@ ctk_css_animated_style_new (GtkCssStyle             *base_style,
 
   ctk_css_animated_style_apply_animations (result);
 
-  return GTK_CSS_STYLE (result);
+  return CTK_CSS_STYLE (result);
 }
 
 GtkCssStyle *
@@ -463,8 +463,8 @@ ctk_css_animated_style_new_advance (GtkCssAnimatedStyle *source,
   GtkCssAnimatedStyle *result;
   GSList *l, *animations;
 
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_ANIMATED_STYLE (source), NULL);
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (base), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_ANIMATED_STYLE (source), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (base), NULL);
   
   if (timestamp == 0 || timestamp == source->current_time)
     return g_object_ref (source->style);
@@ -487,7 +487,7 @@ ctk_css_animated_style_new_advance (GtkCssAnimatedStyle *source,
   if (animations == NULL)
     return g_object_ref (source->style);
 
-  result = g_object_new (GTK_TYPE_CSS_ANIMATED_STYLE, NULL);
+  result = g_object_new (CTK_TYPE_CSS_ANIMATED_STYLE, NULL);
 
   result->style = g_object_ref (base);
   result->current_time = timestamp;
@@ -495,5 +495,5 @@ ctk_css_animated_style_new_advance (GtkCssAnimatedStyle *source,
 
   ctk_css_animated_style_apply_animations (result);
 
-  return GTK_CSS_STYLE (result);
+  return CTK_CSS_STYLE (result);
 }

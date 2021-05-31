@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_WIDGET_PATH_PRIVATE_H__
-#define __GTK_WIDGET_PATH_PRIVATE_H__
+#ifndef __CTK_WIDGET_PATH_PRIVATE_H__
+#define __CTK_WIDGET_PATH_PRIVATE_H__
 
 #include <gtk/gtkwidgetpath.h>
 
@@ -28,4 +28,4 @@ void ctk_widget_path_iter_add_qclass (GtkWidgetPath *path,
 
 G_END_DECLS
 
-#endif /* __GTK_WIDGET_PATH_PRIVATE_H__ */
+#endif /* __CTK_WIDGET_PATH_PRIVATE_H__ */

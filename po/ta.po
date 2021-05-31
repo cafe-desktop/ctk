@@ -3749,16 +3749,16 @@ msgid "Location"
 msgstr "இடம்"
 
 #: ../gtk/inspector/visual.c:243 ../gtk/inspector/visual.c:269
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "தீமானது GTK_THEME ஆல் உள்குறியீடாக்கப்பட்டது"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "தீமானது CTK_THEME ஆல் உள்குறியீடாக்கப்பட்டது"
 
 #: ../gtk/inspector/visual.c:387
 msgid "Backend does not support window scaling"
 msgstr "பின்புல முறைமை சாளர அளவுமாற்றத்தை ஆதரிக்காது"
 
 #: ../gtk/inspector/visual.c:426
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "அமைவு GTK_TEST_TOUCHSCREEN ஆல் உள்குறியீடாக்கப்பட்டது"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "அமைவு CTK_TEST_TOUCHSCREEN ஆல் உள்குறியீடாக்கப்பட்டது"
 
 #. vim: set et sw=2 ts=2:
 #: ../gtk/inspector/visual.ui.h:1

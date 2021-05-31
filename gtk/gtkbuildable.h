@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_BUILDABLE_H__
-#define __GTK_BUILDABLE_H__
+#ifndef __CTK_BUILDABLE_H__
+#define __CTK_BUILDABLE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -27,11 +27,11 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_BUILDABLE            (ctk_buildable_get_type ())
-#define GTK_BUILDABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_BUILDABLE, GtkBuildable))
-#define GTK_BUILDABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), GTK_TYPE_BUILDABLE, GtkBuildableIface))
-#define GTK_IS_BUILDABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_BUILDABLE))
-#define GTK_BUILDABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_BUILDABLE, GtkBuildableIface))
+#define CTK_TYPE_BUILDABLE            (ctk_buildable_get_type ())
+#define CTK_BUILDABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BUILDABLE, GtkBuildable))
+#define CTK_BUILDABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_BUILDABLE, GtkBuildableIface))
+#define CTK_IS_BUILDABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BUILDABLE))
+#define CTK_BUILDABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_BUILDABLE, GtkBuildableIface))
 
 
 typedef struct _GtkBuildable      GtkBuildable; /* Dummy typedef */
@@ -181,4 +181,4 @@ GObject * ctk_buildable_get_internal_child     (GtkBuildable        *buildable,
 
 G_END_DECLS
 
-#endif /* __GTK_BUILDABLE_H__ */
+#endif /* __CTK_BUILDABLE_H__ */

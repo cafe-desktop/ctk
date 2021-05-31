@@ -121,7 +121,7 @@
 /* Maximum size of a sent chunk, in bytes. Also the default size of
    our buffers */
 #ifdef GDK_WINDOWING_X11
-#define GTK_SELECTION_MAX_SIZE(display)                                 \
+#define CTK_SELECTION_MAX_SIZE(display)                                 \
   GDK_IS_X11_DISPLAY (display) ?                                        \
   MIN(262144,                                                           \
       XExtendedMaxRequestSize (GDK_DISPLAY_XDISPLAY (display)) == 0     \
@@ -130,7 +130,7 @@
   : G_MAXINT
 #else
 /* No chunks on Win32 */
-#define GTK_SELECTION_MAX_SIZE(display) G_MAXINT
+#define CTK_SELECTION_MAX_SIZE(display) G_MAXINT
 #endif
 
 #define IDLE_ABORT_TIME 30
@@ -417,7 +417,7 @@ ctk_target_list_add_rich_text_targets (GtkTargetList  *list,
   gint     i;
 
   g_return_if_fail (list != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   if (deserializable)
     atoms = ctk_text_buffer_get_deserialize_formats (buffer, &n_atoms);
@@ -806,7 +806,7 @@ ctk_selection_owner_set (GtkWidget *widget,
     display = ctk_widget_get_display (widget);
   else
     {
-      GTK_NOTE (MULTIHEAD,
+      CTK_NOTE (MULTIHEAD,
 		g_warning ("ctk_selection_owner_set (NULL,...) is not multihead safe"));
 		 
       display = gdk_display_get_default ();
@@ -892,7 +892,7 @@ ctk_selection_clear_targets (GtkWidget *widget,
   GList *tmp_list;
   GList *lists;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (selection != GDK_NONE);
 
 #ifdef GDK_WINDOWING_WAYLAND
@@ -943,7 +943,7 @@ ctk_selection_add_target (GtkWidget	    *widget,
 {
   GtkTargetList *list;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (selection != GDK_NONE);
 
   list = ctk_selection_target_list_get (widget, selection);
@@ -976,7 +976,7 @@ ctk_selection_add_targets (GtkWidget            *widget,
 {
   GtkTargetList *list;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (selection != GDK_NONE);
   g_return_if_fail (targets != NULL);
   
@@ -1028,7 +1028,7 @@ ctk_selection_remove_all (GtkWidget *widget)
   GList *next;
   GtkSelectionInfo *selection_info;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   /* Remove pending requests/incrs for this widget */
   
@@ -1101,7 +1101,7 @@ ctk_selection_convert (GtkWidget *widget,
   GdkDisplay *display;
   guint id;
   
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (selection != GDK_NONE, FALSE);
   
   if (initialize)
@@ -2042,7 +2042,7 @@ ctk_targets_include_rich_text (GdkAtom       *targets,
   gboolean result = FALSE;
 
   g_return_val_if_fail (targets != NULL || n_targets == 0, FALSE);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
   init_atoms ();
 
@@ -2122,7 +2122,7 @@ ctk_selection_data_targets_include_rich_text (const GtkSelectionData *selection_
   gboolean result = FALSE;
 
   g_return_val_if_fail (selection_data != NULL, FALSE);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
   init_atoms ();
 
@@ -2379,7 +2379,7 @@ _ctk_selection_request (GtkWidget *widget,
   if (initialize)
     ctk_selection_init ();
   
-  selection_max_size = GTK_SELECTION_MAX_SIZE (display);
+  selection_max_size = CTK_SELECTION_MAX_SIZE (display);
 
   /* Check if we own selection */
   
@@ -2658,7 +2658,7 @@ _ctk_selection_incr_event (GdkWindow	   *window,
   g_message ("PropertyDelete, property %ld", event->atom);
 #endif
 
-  selection_max_size = GTK_SELECTION_MAX_SIZE (gdk_window_get_display (window));  
+  selection_max_size = CTK_SELECTION_MAX_SIZE (gdk_window_get_display (window));  
 
   /* Now find the appropriate ongoing INCR */
   tmp_list = current_incrs;

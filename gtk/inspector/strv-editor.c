@@ -34,7 +34,7 @@ enum
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE (GtkInspectorStrvEditor, ctk_inspector_strv_editor, GTK_TYPE_BOX);
+G_DEFINE_TYPE (GtkInspectorStrvEditor, ctk_inspector_strv_editor, CTK_TYPE_BOX);
 
 static void
 emit_changed (GtkInspectorStrvEditor *editor)
@@ -49,7 +49,7 @@ static void
 remove_string (GtkButton              *button,
                GtkInspectorStrvEditor *editor)
 {
-  ctk_widget_destroy (ctk_widget_get_parent (GTK_WIDGET (button)));
+  ctk_widget_destroy (ctk_widget_get_parent (CTK_WIDGET (button)));
   emit_changed (editor);
 }
 
@@ -61,24 +61,24 @@ add_string (GtkInspectorStrvEditor *editor,
   GtkWidget *entry;
   GtkWidget *button;
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_style_context_add_class (ctk_widget_get_style_context (box), "linked");
   ctk_widget_show (box);
 
   entry = ctk_entry_new ();
-  ctk_entry_set_text (GTK_ENTRY (entry), str);
+  ctk_entry_set_text (CTK_ENTRY (entry), str);
   ctk_widget_show (entry);
-  ctk_box_pack_start (GTK_BOX (box), entry, FALSE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), entry, FALSE, TRUE, 0);
   g_object_set_data (G_OBJECT (box), "entry", entry);
   g_signal_connect_swapped (entry, "notify::text", G_CALLBACK (emit_changed), editor);
 
-  button = ctk_button_new_from_icon_name ("user-trash-symbolic", GTK_ICON_SIZE_MENU);
+  button = ctk_button_new_from_icon_name ("user-trash-symbolic", CTK_ICON_SIZE_MENU);
   ctk_style_context_add_class (ctk_widget_get_style_context (button), "image-button");
   ctk_widget_show (button);
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked", G_CALLBACK (remove_string), editor);
 
-  ctk_box_pack_start (GTK_BOX (editor->box), box, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (editor->box), box, FALSE, FALSE, 0);
 
   ctk_widget_grab_focus (entry);
 
@@ -95,20 +95,20 @@ add_cb (GtkButton              *button,
 static void
 ctk_inspector_strv_editor_init (GtkInspectorStrvEditor *editor)
 {
-  ctk_box_set_spacing (GTK_BOX (editor), 6);
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (editor), GTK_ORIENTATION_VERTICAL);
-  editor->box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  ctk_box_set_spacing (CTK_BOX (editor), 6);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (editor), CTK_ORIENTATION_VERTICAL);
+  editor->box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
   ctk_widget_show (editor->box);
 
-  editor->button = ctk_button_new_from_icon_name ("list-add-symbolic", GTK_ICON_SIZE_MENU);
+  editor->button = ctk_button_new_from_icon_name ("list-add-symbolic", CTK_ICON_SIZE_MENU);
   ctk_style_context_add_class (ctk_widget_get_style_context (editor->button), "image-button");
   ctk_widget_set_focus_on_click (editor->button, FALSE);
-  ctk_widget_set_halign (editor->button, GTK_ALIGN_END);
+  ctk_widget_set_halign (editor->button, CTK_ALIGN_END);
   ctk_widget_show (editor->button);
   g_signal_connect (editor->button, "clicked", G_CALLBACK (add_cb), editor);
 
-  ctk_box_pack_start (GTK_BOX (editor), editor->box, FALSE, TRUE, 0);
-  ctk_box_pack_start (GTK_BOX (editor), editor->button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (editor), editor->box, FALSE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (editor), editor->button, FALSE, FALSE, 0);
 }
 
 static void
@@ -133,9 +133,9 @@ ctk_inspector_strv_editor_set_strv (GtkInspectorStrvEditor  *editor,
 
   editor->blocked = TRUE;
 
-  children = ctk_container_get_children (GTK_CONTAINER (editor->box));
+  children = ctk_container_get_children (CTK_CONTAINER (editor->box));
   for (l = children; l; l = l->next)
-    ctk_widget_destroy (GTK_WIDGET (l->data));
+    ctk_widget_destroy (CTK_WIDGET (l->data));
   g_list_free (children);
 
   if (strv)
@@ -157,12 +157,12 @@ ctk_inspector_strv_editor_get_strv (GtkInspectorStrvEditor *editor)
 
   p = g_ptr_array_new ();
 
-  children = ctk_container_get_children (GTK_CONTAINER (editor->box));
+  children = ctk_container_get_children (CTK_CONTAINER (editor->box));
   for (l = children; l; l = l->next)
     {
       GtkEntry *entry;
 
-      entry = GTK_ENTRY (g_object_get_data (G_OBJECT (l->data), "entry"));
+      entry = CTK_ENTRY (g_object_get_data (G_OBJECT (l->data), "entry"));
       g_ptr_array_add (p, g_strdup (ctk_entry_get_text (entry)));
     }
   g_list_free (children);

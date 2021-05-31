@@ -22,7 +22,7 @@
 #include "gtk/gtkflowbox.h"
 
 
-G_DEFINE_TYPE (GtkFlowBoxChildAccessible, ctk_flow_box_child_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkFlowBoxChildAccessible, ctk_flow_box_child_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
 ctk_flow_box_child_accessible_init (GtkFlowBoxChildAccessible *accessible)
@@ -46,14 +46,14 @@ ctk_flow_box_child_accessible_ref_state_set (AtkObject *obj)
 
   state_set = ATK_OBJECT_CLASS (ctk_flow_box_child_accessible_parent_class)->ref_state_set (obj);
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget != NULL)
     {
       parent = ctk_widget_get_parent (widget);
-      if (ctk_flow_box_get_selection_mode (GTK_FLOW_BOX (parent)) != GTK_SELECTION_NONE)
+      if (ctk_flow_box_get_selection_mode (CTK_FLOW_BOX (parent)) != CTK_SELECTION_NONE)
         atk_state_set_add_state (state_set, ATK_STATE_SELECTABLE);
 
-      if (ctk_flow_box_child_is_selected (GTK_FLOW_BOX_CHILD (widget)))
+      if (ctk_flow_box_child_is_selected (CTK_FLOW_BOX_CHILD (widget)))
         atk_state_set_add_state (state_set, ATK_STATE_SELECTED);
     }
 

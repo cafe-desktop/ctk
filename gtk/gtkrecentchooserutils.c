@@ -74,34 +74,34 @@ void
 _ctk_recent_chooser_install_properties (GObjectClass *klass)
 {
   g_object_class_override_property (klass,
-  				    GTK_RECENT_CHOOSER_PROP_RECENT_MANAGER,
+  				    CTK_RECENT_CHOOSER_PROP_RECENT_MANAGER,
   				    "recent-manager");  				    
   g_object_class_override_property (klass,
-  				    GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE,
+  				    CTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE,
   				    "show-private");
   g_object_class_override_property (klass,
-  				    GTK_RECENT_CHOOSER_PROP_SHOW_TIPS,
+  				    CTK_RECENT_CHOOSER_PROP_SHOW_TIPS,
   				    "show-tips");
   g_object_class_override_property (klass,
-  				    GTK_RECENT_CHOOSER_PROP_SHOW_ICONS,
+  				    CTK_RECENT_CHOOSER_PROP_SHOW_ICONS,
   				    "show-icons");
   g_object_class_override_property (klass,
-  				    GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND,
+  				    CTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND,
   				    "show-not-found");
   g_object_class_override_property (klass,
-  				    GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE,
+  				    CTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE,
   				    "select-multiple");
   g_object_class_override_property (klass,
-  				    GTK_RECENT_CHOOSER_PROP_LIMIT,
+  				    CTK_RECENT_CHOOSER_PROP_LIMIT,
   				    "limit");
   g_object_class_override_property (klass,
-		  		    GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY,
+		  		    CTK_RECENT_CHOOSER_PROP_LOCAL_ONLY,
 				    "local-only");
   g_object_class_override_property (klass,
-		  		    GTK_RECENT_CHOOSER_PROP_SORT_TYPE,
+		  		    CTK_RECENT_CHOOSER_PROP_SORT_TYPE,
 				    "sort-type");
   g_object_class_override_property (klass,
-  				    GTK_RECENT_CHOOSER_PROP_FILTER,
+  				    CTK_RECENT_CHOOSER_PROP_FILTER,
   				    "filter");
 }
 
@@ -148,8 +148,8 @@ void
 _ctk_recent_chooser_set_delegate (GtkRecentChooser *receiver,
 				  GtkRecentChooser *delegate)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (receiver));
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (delegate));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (receiver));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (delegate));
   
   g_object_set_data (G_OBJECT (receiver),
   		    "gtk-recent-chooser-delegate", delegate);
@@ -177,7 +177,7 @@ static GtkRecentChooser *
 get_delegate (GtkRecentChooser *receiver)
 {
   return g_object_get_qdata (G_OBJECT (receiver),
-  			     GTK_RECENT_CHOOSER_DELEGATE_QUARK);
+  			     CTK_RECENT_CHOOSER_DELEGATE_QUARK);
 }
 
 static void
@@ -282,14 +282,14 @@ static void
 delegate_selection_changed (GtkRecentChooser *receiver,
 			    gpointer          user_data)
 {
-  _ctk_recent_chooser_selection_changed (GTK_RECENT_CHOOSER (user_data));
+  _ctk_recent_chooser_selection_changed (CTK_RECENT_CHOOSER (user_data));
 }
 
 static void
 delegate_item_activated (GtkRecentChooser *receiver,
 			 gpointer          user_data)
 {
-  _ctk_recent_chooser_item_activated (GTK_RECENT_CHOOSER (user_data));
+  _ctk_recent_chooser_item_activated (CTK_RECENT_CHOOSER (user_data));
 }
 
 static gint
@@ -347,39 +347,39 @@ get_is_recent_filtered (GtkRecentFilter *filter,
   
   needed = ctk_recent_filter_get_needed (filter);
   
-  filter_info.contains = GTK_RECENT_FILTER_URI | GTK_RECENT_FILTER_MIME_TYPE;
+  filter_info.contains = CTK_RECENT_FILTER_URI | CTK_RECENT_FILTER_MIME_TYPE;
   
   filter_info.uri = ctk_recent_info_get_uri (info);
   filter_info.mime_type = ctk_recent_info_get_mime_type (info);
   
-  if (needed & GTK_RECENT_FILTER_DISPLAY_NAME)
+  if (needed & CTK_RECENT_FILTER_DISPLAY_NAME)
     {
       filter_info.display_name = ctk_recent_info_get_display_name (info);
-      filter_info.contains |= GTK_RECENT_FILTER_DISPLAY_NAME;
+      filter_info.contains |= CTK_RECENT_FILTER_DISPLAY_NAME;
     }
   else
     filter_info.uri = NULL;
   
-  if (needed & GTK_RECENT_FILTER_APPLICATION)
+  if (needed & CTK_RECENT_FILTER_APPLICATION)
     {
       filter_info.applications = (const gchar **) ctk_recent_info_get_applications (info, NULL);
-      filter_info.contains |= GTK_RECENT_FILTER_APPLICATION;
+      filter_info.contains |= CTK_RECENT_FILTER_APPLICATION;
     }
   else
     filter_info.applications = NULL;
 
-  if (needed & GTK_RECENT_FILTER_GROUP)
+  if (needed & CTK_RECENT_FILTER_GROUP)
     {
       filter_info.groups = (const gchar **) ctk_recent_info_get_groups (info, NULL);
-      filter_info.contains |= GTK_RECENT_FILTER_GROUP;
+      filter_info.contains |= CTK_RECENT_FILTER_GROUP;
     }
   else
     filter_info.groups = NULL;
 
-  if (needed & GTK_RECENT_FILTER_AGE)
+  if (needed & CTK_RECENT_FILTER_AGE)
     {
       filter_info.age = ctk_recent_info_get_age (info);
-      filter_info.contains |= GTK_RECENT_FILTER_AGE;
+      filter_info.contains |= CTK_RECENT_FILTER_AGE;
     }
   else
     filter_info.age = -1;
@@ -423,7 +423,7 @@ _ctk_recent_chooser_get_items (GtkRecentChooser  *chooser,
   GCompareDataFunc compare_func;
   gint length;
 
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
 
   manager = _ctk_recent_chooser_get_recent_manager (chooser);
   if (!manager)
@@ -484,16 +484,16 @@ _ctk_recent_chooser_get_items (GtkRecentChooser  *chooser,
   sort_type = ctk_recent_chooser_get_sort_type (chooser);
   switch (sort_type)
     {
-    case GTK_RECENT_SORT_NONE:
+    case CTK_RECENT_SORT_NONE:
       compare_func = NULL;
       break;
-    case GTK_RECENT_SORT_MRU:
+    case CTK_RECENT_SORT_MRU:
       compare_func = (GCompareDataFunc) sort_recent_items_mru;
       break;
-    case GTK_RECENT_SORT_LRU:
+    case CTK_RECENT_SORT_LRU:
       compare_func = (GCompareDataFunc) sort_recent_items_lru;
       break;
-    case GTK_RECENT_SORT_CUSTOM:
+    case CTK_RECENT_SORT_CUSTOM:
       compare_func = (GCompareDataFunc) sort_recent_items_proxy;
       break;
     default:

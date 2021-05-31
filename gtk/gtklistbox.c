@@ -186,13 +186,13 @@ static void     ctk_list_box_buildable_interface_init   (GtkBuildableIface *ifac
 
 static void     ctk_list_box_row_actionable_iface_init  (GtkActionableInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkListBox, ctk_list_box, GTK_TYPE_CONTAINER,
+G_DEFINE_TYPE_WITH_CODE (GtkListBox, ctk_list_box, CTK_TYPE_CONTAINER,
                          G_ADD_PRIVATE (GtkListBox)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_list_box_buildable_interface_init))
-G_DEFINE_TYPE_WITH_CODE (GtkListBoxRow, ctk_list_box_row, GTK_TYPE_BIN,
+G_DEFINE_TYPE_WITH_CODE (GtkListBoxRow, ctk_list_box_row, CTK_TYPE_BIN,
                          G_ADD_PRIVATE (GtkListBoxRow)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIONABLE, ctk_list_box_row_actionable_iface_init))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIONABLE, ctk_list_box_row_actionable_iface_init))
 
 static void                 ctk_list_box_apply_filter_all             (GtkListBox          *box);
 static void                 ctk_list_box_update_header                (GtkListBox          *box,
@@ -345,7 +345,7 @@ static guint row_signals[ROW__LAST_SIGNAL] = { 0 };
 GtkWidget *
 ctk_list_box_new (void)
 {
-  return g_object_new (GTK_TYPE_LIST_BOX, NULL);
+  return g_object_new (CTK_TYPE_LIST_BOX, NULL);
 }
 
 static void
@@ -376,7 +376,7 @@ ctk_list_box_set_property (GObject      *obj,
                            const GValue *value,
                            GParamSpec   *pspec)
 {
-  GtkListBox *box = GTK_LIST_BOX (obj);
+  GtkListBox *box = CTK_LIST_BOX (obj);
 
   switch (property_id)
     {
@@ -443,11 +443,11 @@ static void
 ctk_list_box_class_init (GtkListBoxClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
   GtkBindingSet *binding_set;
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_LIST_BOX_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_LIST_BOX_ACCESSIBLE);
 
   object_class->get_property = ctk_list_box_get_property;
   object_class->set_property = ctk_list_box_set_property;
@@ -484,8 +484,8 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
     g_param_spec_enum ("selection-mode",
                        P_("Selection mode"),
                        P_("The selection mode"),
-                       GTK_TYPE_SELECTION_MODE,
-                       GTK_SELECTION_SINGLE,
+                       CTK_TYPE_SELECTION_MODE,
+                       CTK_SELECTION_SINGLE,
                        G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
 
   properties[PROP_ACTIVATE_ON_SINGLE_CLICK] =
@@ -505,7 +505,7 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
    * The ::row-selected signal is emitted when a new row is selected, or
    * (with a %NULL @row) when the selection is cleared.
    *
-   * When the @box is using #GTK_SELECTION_MULTIPLE, this signal will not
+   * When the @box is using #CTK_SELECTION_MULTIPLE, this signal will not
    * give you the full picture of selection changes, and you should use
    * the #GtkListBox::selected-rows-changed signal instead.
    *
@@ -513,13 +513,13 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
    */
   signals[ROW_SELECTED] =
     g_signal_new (I_("row-selected"),
-                  GTK_TYPE_LIST_BOX,
+                  CTK_TYPE_LIST_BOX,
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkListBoxClass, row_selected),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GTK_TYPE_LIST_BOX_ROW);
+                  CTK_TYPE_LIST_BOX_ROW);
 
   /**
    * GtkListBox::selected-rows-changed:
@@ -531,7 +531,7 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
    * Since: 3.14
    */
   signals[SELECTED_ROWS_CHANGED] = g_signal_new (I_("selected-rows-changed"),
-                                                 GTK_TYPE_LIST_BOX,
+                                                 CTK_TYPE_LIST_BOX,
                                                  G_SIGNAL_RUN_FIRST,
                                                  G_STRUCT_OFFSET (GtkListBoxClass, selected_rows_changed),
                                                  NULL, NULL,
@@ -551,7 +551,7 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
    * Since: 3.14
    */
   signals[SELECT_ALL] = g_signal_new (I_("select-all"),
-                                      GTK_TYPE_LIST_BOX,
+                                      CTK_TYPE_LIST_BOX,
                                       G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                       G_STRUCT_OFFSET (GtkListBoxClass, select_all),
                                       NULL, NULL,
@@ -571,7 +571,7 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
    * Since: 3.14
    */
   signals[UNSELECT_ALL] = g_signal_new (I_("unselect-all"),
-                                        GTK_TYPE_LIST_BOX,
+                                        CTK_TYPE_LIST_BOX,
                                         G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                         G_STRUCT_OFFSET (GtkListBoxClass, unselect_all),
                                         NULL, NULL,
@@ -589,16 +589,16 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
    */
   signals[ROW_ACTIVATED] =
     g_signal_new (I_("row-activated"),
-                  GTK_TYPE_LIST_BOX,
+                  CTK_TYPE_LIST_BOX,
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkListBoxClass, row_activated),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GTK_TYPE_LIST_BOX_ROW);
+                  CTK_TYPE_LIST_BOX_ROW);
   signals[ACTIVATE_CURSOR_ROW] =
     g_signal_new (I_("activate-cursor-row"),
-                  GTK_TYPE_LIST_BOX,
+                  CTK_TYPE_LIST_BOX,
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkListBoxClass, activate_cursor_row),
                   NULL, NULL,
@@ -606,7 +606,7 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
                   G_TYPE_NONE, 0);
   signals[TOGGLE_CURSOR_ROW] =
     g_signal_new (I_("toggle-cursor-row"),
-                  GTK_TYPE_LIST_BOX,
+                  CTK_TYPE_LIST_BOX,
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkListBoxClass, toggle_cursor_row),
                   NULL, NULL,
@@ -614,13 +614,13 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
                   G_TYPE_NONE, 0);
   signals[MOVE_CURSOR] =
     g_signal_new (I_("move-cursor"),
-                  GTK_TYPE_LIST_BOX,
+                  CTK_TYPE_LIST_BOX,
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkListBoxClass, move_cursor),
                   NULL, NULL,
                   _ctk_marshal_VOID__ENUM_INT,
                   G_TYPE_NONE, 2,
-                  GTK_TYPE_MOVEMENT_STEP, G_TYPE_INT);
+                  CTK_TYPE_MOVEMENT_STEP, G_TYPE_INT);
   g_signal_set_va_marshaller (signals[MOVE_CURSOR],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__ENUM_INTv);
@@ -629,29 +629,29 @@ ctk_list_box_class_init (GtkListBoxClass *klass)
 
   binding_set = ctk_binding_set_by_class (klass);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_Home, 0,
-                                 GTK_MOVEMENT_BUFFER_ENDS, -1);
+                                 CTK_MOVEMENT_BUFFER_ENDS, -1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_KP_Home, 0,
-                                 GTK_MOVEMENT_BUFFER_ENDS, -1);
+                                 CTK_MOVEMENT_BUFFER_ENDS, -1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_End, 0,
-                                 GTK_MOVEMENT_BUFFER_ENDS, 1);
+                                 CTK_MOVEMENT_BUFFER_ENDS, 1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_KP_End, 0,
-                                 GTK_MOVEMENT_BUFFER_ENDS, 1);
+                                 CTK_MOVEMENT_BUFFER_ENDS, 1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_Up, 0,
-                                 GTK_MOVEMENT_DISPLAY_LINES, -1);
+                                 CTK_MOVEMENT_DISPLAY_LINES, -1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_KP_Up, 0,
-                                 GTK_MOVEMENT_DISPLAY_LINES, -1);
+                                 CTK_MOVEMENT_DISPLAY_LINES, -1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_Down, 0,
-                                 GTK_MOVEMENT_DISPLAY_LINES, 1);
+                                 CTK_MOVEMENT_DISPLAY_LINES, 1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_KP_Down, 0,
-                                 GTK_MOVEMENT_DISPLAY_LINES, 1);
+                                 CTK_MOVEMENT_DISPLAY_LINES, 1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_Page_Up, 0,
-                                 GTK_MOVEMENT_PAGES, -1);
+                                 CTK_MOVEMENT_PAGES, -1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_KP_Page_Up, 0,
-                                 GTK_MOVEMENT_PAGES, -1);
+                                 CTK_MOVEMENT_PAGES, -1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_Page_Down, 0,
-                                 GTK_MOVEMENT_PAGES, 1);
+                                 CTK_MOVEMENT_PAGES, 1);
   ctk_list_box_add_move_binding (binding_set, GDK_KEY_KP_Page_Down, 0,
-                                 GTK_MOVEMENT_PAGES, 1);
+                                 CTK_MOVEMENT_PAGES, 1);
 
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, GDK_CONTROL_MASK,
                                 "toggle-cursor-row", 0, NULL);
@@ -670,31 +670,31 @@ static void
 ctk_list_box_init (GtkListBox *box)
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
-  GtkWidget *widget = GTK_WIDGET (box);
+  GtkWidget *widget = CTK_WIDGET (box);
   GtkCssNode *widget_node;
 
   ctk_widget_set_has_window (widget, TRUE);
-  priv->selection_mode = GTK_SELECTION_SINGLE;
+  priv->selection_mode = CTK_SELECTION_SINGLE;
   priv->activate_single_click = TRUE;
 
   priv->children = g_sequence_new (NULL);
   priv->header_hash = g_hash_table_new_full (g_direct_hash, g_direct_equal, NULL, NULL);
 
   priv->multipress_gesture = ctk_gesture_multi_press_new (widget);
-  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (priv->multipress_gesture),
-                                              GTK_PHASE_BUBBLE);
-  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (priv->multipress_gesture),
+  ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (priv->multipress_gesture),
+                                              CTK_PHASE_BUBBLE);
+  ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->multipress_gesture),
                                      FALSE);
-  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (priv->multipress_gesture),
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->multipress_gesture),
                                  GDK_BUTTON_PRIMARY);
   g_signal_connect (priv->multipress_gesture, "pressed",
                     G_CALLBACK (ctk_list_box_multipress_gesture_pressed), box);
   g_signal_connect (priv->multipress_gesture, "released",
                     G_CALLBACK (ctk_list_box_multipress_gesture_released), box);
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (box));
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (box));
   priv->gadget = ctk_css_custom_gadget_new_for_node (widget_node,
-                                                     GTK_WIDGET (box),
+                                                     CTK_WIDGET (box),
                                                      ctk_list_box_measure,
                                                      ctk_list_box_allocate,
                                                      ctk_list_box_render,
@@ -720,7 +720,7 @@ ctk_list_box_init (GtkListBox *box)
 GtkListBoxRow *
 ctk_list_box_get_selected_row (GtkListBox *box)
 {
-  g_return_val_if_fail (GTK_IS_LIST_BOX (box), NULL);
+  g_return_val_if_fail (CTK_IS_LIST_BOX (box), NULL);
 
   return BOX_PRIV (box)->selected_row;
 }
@@ -744,7 +744,7 @@ ctk_list_box_get_row_at_index (GtkListBox *box,
 {
   GSequenceIter *iter;
 
-  g_return_val_if_fail (GTK_IS_LIST_BOX (box), NULL);
+  g_return_val_if_fail (CTK_IS_LIST_BOX (box), NULL);
 
   iter = g_sequence_get_iter_at_pos (BOX_PRIV (box)->children, index_);
   if (!g_sequence_iter_is_end (iter))
@@ -788,7 +788,7 @@ ctk_list_box_get_row_at_y (GtkListBox *box,
 {
   GSequenceIter *iter;
 
-  g_return_val_if_fail (GTK_IS_LIST_BOX (box), NULL);
+  g_return_val_if_fail (CTK_IS_LIST_BOX (box), NULL);
 
   iter = g_sequence_lookup (BOX_PRIV (box)->children,
                             GINT_TO_POINTER (y),
@@ -796,7 +796,7 @@ ctk_list_box_get_row_at_y (GtkListBox *box,
                             NULL);
 
   if (iter)
-    return GTK_LIST_BOX_ROW (g_sequence_get (iter));
+    return CTK_LIST_BOX_ROW (g_sequence_get (iter));
 
   return NULL;
 }
@@ -816,8 +816,8 @@ ctk_list_box_select_row (GtkListBox    *box,
 {
   gboolean dirty = FALSE;
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
-  g_return_if_fail (row == NULL || GTK_IS_LIST_BOX_ROW (row));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
+  g_return_if_fail (row == NULL || CTK_IS_LIST_BOX_ROW (row));
 
   if (row)
     ctk_list_box_select_row_internal (box, row);
@@ -844,8 +844,8 @@ void
 ctk_list_box_unselect_row (GtkListBox    *box,
                            GtkListBoxRow *row)
 {
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
-  g_return_if_fail (GTK_IS_LIST_BOX_ROW (row));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX_ROW (row));
   
   ctk_list_box_unselect_row_internal (box, row);
 } 
@@ -861,9 +861,9 @@ ctk_list_box_unselect_row (GtkListBox    *box,
 void
 ctk_list_box_select_all (GtkListBox *box)
 {
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
-  if (BOX_PRIV (box)->selection_mode != GTK_SELECTION_MULTIPLE)
+  if (BOX_PRIV (box)->selection_mode != CTK_SELECTION_MULTIPLE)
     return;
 
   if (g_sequence_get_length (BOX_PRIV (box)->children) > 0)
@@ -886,9 +886,9 @@ ctk_list_box_unselect_all (GtkListBox *box)
 {
   gboolean dirty = FALSE;
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
-  if (BOX_PRIV (box)->selection_mode == GTK_SELECTION_BROWSE)
+  if (BOX_PRIV (box)->selection_mode == CTK_SELECTION_BROWSE)
     return;
 
   dirty = ctk_list_box_unselect_all_internal (box);
@@ -938,7 +938,7 @@ ctk_list_box_selected_foreach (GtkListBox            *box,
   GtkListBoxRow *row;
   GSequenceIter *iter;
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   for (iter = g_sequence_get_begin_iter (BOX_PRIV (box)->children);
        !g_sequence_iter_is_end (iter);
@@ -969,7 +969,7 @@ ctk_list_box_get_selected_rows (GtkListBox *box)
   GSequenceIter *iter;
   GList *selected = NULL;
 
-  g_return_val_if_fail (GTK_IS_LIST_BOX (box), NULL);
+  g_return_val_if_fail (CTK_IS_LIST_BOX (box), NULL);
 
   for (iter = g_sequence_get_begin_iter (BOX_PRIV (box)->children);
        !g_sequence_iter_is_end (iter);
@@ -999,20 +999,20 @@ ctk_list_box_set_placeholder (GtkListBox *box,
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   if (priv->placeholder)
     {
       ctk_widget_unparent (priv->placeholder);
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
     }
 
   priv->placeholder = placeholder;
 
   if (placeholder)
     {
-      ctk_widget_set_parent (GTK_WIDGET (placeholder), GTK_WIDGET (box));
-      ctk_widget_set_child_visible (GTK_WIDGET (placeholder),
+      ctk_widget_set_parent (CTK_WIDGET (placeholder), CTK_WIDGET (box));
+      ctk_widget_set_child_visible (CTK_WIDGET (placeholder),
                                     priv->n_visible_rows == 0);
     }
 }
@@ -1040,8 +1040,8 @@ ctk_list_box_set_adjustment (GtkListBox    *box,
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
-  g_return_if_fail (adjustment == NULL || GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
+  g_return_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment));
 
   if (adjustment)
     g_object_ref_sink (adjustment);
@@ -1064,7 +1064,7 @@ ctk_list_box_set_adjustment (GtkListBox    *box,
 GtkAdjustment *
 ctk_list_box_get_adjustment (GtkListBox *box)
 {
-  g_return_val_if_fail (GTK_IS_LIST_BOX (box), NULL);
+  g_return_val_if_fail (CTK_IS_LIST_BOX (box), NULL);
 
   return BOX_PRIV (box)->adjustment;
 }
@@ -1076,8 +1076,8 @@ adjustment_changed (GObject    *object,
 {
   GtkAdjustment *adjustment;
 
-  adjustment = ctk_scrollable_get_vadjustment (GTK_SCROLLABLE (object));
-  ctk_list_box_set_adjustment (GTK_LIST_BOX (data), adjustment);
+  adjustment = ctk_scrollable_get_vadjustment (CTK_SCROLLABLE (object));
+  ctk_list_box_set_adjustment (CTK_LIST_BOX (data), adjustment);
 }
 
 static void
@@ -1088,18 +1088,18 @@ ctk_list_box_parent_set (GtkWidget *widget,
 
   parent = ctk_widget_get_parent (widget);
 
-  if (prev_parent && GTK_IS_SCROLLABLE (prev_parent))
+  if (prev_parent && CTK_IS_SCROLLABLE (prev_parent))
     g_signal_handlers_disconnect_by_func (prev_parent,
                                           G_CALLBACK (adjustment_changed), widget);
 
-  if (parent && GTK_IS_SCROLLABLE (parent))
+  if (parent && CTK_IS_SCROLLABLE (parent))
     {
       adjustment_changed (G_OBJECT (parent), NULL, widget);
       g_signal_connect (parent, "notify::vadjustment",
                         G_CALLBACK (adjustment_changed), widget);
     }
   else
-    ctk_list_box_set_adjustment (GTK_LIST_BOX (widget), NULL);
+    ctk_list_box_set_adjustment (CTK_LIST_BOX (widget), NULL);
 }
 
 /**
@@ -1119,13 +1119,13 @@ ctk_list_box_set_selection_mode (GtkListBox       *box,
   GtkListBoxPrivate *priv = BOX_PRIV (box);
   gboolean dirty = FALSE;
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   if (priv->selection_mode == mode)
     return;
 
-  if (mode == GTK_SELECTION_NONE ||
-      priv->selection_mode == GTK_SELECTION_MULTIPLE)
+  if (mode == CTK_SELECTION_NONE ||
+      priv->selection_mode == CTK_SELECTION_MULTIPLE)
     dirty = ctk_list_box_unselect_all_internal (box);
 
   priv->selection_mode = mode;
@@ -1154,7 +1154,7 @@ ctk_list_box_set_selection_mode (GtkListBox       *box,
 GtkSelectionMode
 ctk_list_box_get_selection_mode (GtkListBox *box)
 {
-  g_return_val_if_fail (GTK_IS_LIST_BOX (box), GTK_SELECTION_NONE);
+  g_return_val_if_fail (CTK_IS_LIST_BOX (box), CTK_SELECTION_NONE);
 
   return BOX_PRIV (box)->selection_mode;
 }
@@ -1187,7 +1187,7 @@ ctk_list_box_set_filter_func (GtkListBox           *box,
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   if (priv->filter_func_target_destroy_notify != NULL)
     priv->filter_func_target_destroy_notify (priv->filter_func_target);
@@ -1237,7 +1237,7 @@ ctk_list_box_set_header_func (GtkListBox                 *box,
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   if (priv->update_header_func_target_destroy_notify != NULL)
     priv->update_header_func_target_destroy_notify (priv->update_header_func_target);
@@ -1263,11 +1263,11 @@ ctk_list_box_set_header_func (GtkListBox                 *box,
 void
 ctk_list_box_invalidate_filter (GtkListBox *box)
 {
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   ctk_list_box_apply_filter_all (box);
   ctk_list_box_invalidate_headers (box);
-  ctk_widget_queue_resize (GTK_WIDGET (box));
+  ctk_widget_queue_resize (CTK_WIDGET (box));
 }
 
 static gint
@@ -1317,7 +1317,7 @@ ctk_list_box_invalidate_sort (GtkListBox *box)
   GtkListBoxPrivate *priv = BOX_PRIV (box);
   GtkWidget *previous = NULL;
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   if (priv->sort_func == NULL)
     return;
@@ -1326,7 +1326,7 @@ ctk_list_box_invalidate_sort (GtkListBox *box)
   g_sequence_foreach (priv->children, ctk_list_box_css_node_foreach, &previous);
 
   ctk_list_box_invalidate_headers (box);
-  ctk_widget_queue_resize (GTK_WIDGET (box));
+  ctk_widget_queue_resize (CTK_WIDGET (box));
 }
 
 static void
@@ -1339,7 +1339,7 @@ ctk_list_box_do_reseparate (GtkListBox *box)
        iter = g_sequence_iter_next (iter))
     ctk_list_box_update_header (box, iter);
 
-  ctk_widget_queue_resize (GTK_WIDGET (box));
+  ctk_widget_queue_resize (CTK_WIDGET (box));
 }
 
 
@@ -1356,9 +1356,9 @@ ctk_list_box_do_reseparate (GtkListBox *box)
 void
 ctk_list_box_invalidate_headers (GtkListBox *box)
 {
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
-  if (!ctk_widget_get_visible (GTK_WIDGET (box)))
+  if (!ctk_widget_get_visible (CTK_WIDGET (box)))
     return;
 
   ctk_list_box_do_reseparate (box);
@@ -1391,7 +1391,7 @@ ctk_list_box_set_sort_func (GtkListBox         *box,
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   if (priv->sort_func_target_destroy_notify != NULL)
     priv->sort_func_target_destroy_notify (priv->sort_func_target);
@@ -1413,8 +1413,8 @@ ctk_list_box_got_row_changed (GtkListBox    *box,
   GtkListBoxRowPrivate *row_priv = ROW_PRIV (row);
   GSequenceIter *prev_next, *next;
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
-  g_return_if_fail (GTK_IS_LIST_BOX_ROW (row));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX_ROW (row));
 
   prev_next = ctk_list_box_get_next_visible (box, row_priv->iter);
   if (priv->sort_func != NULL)
@@ -1422,10 +1422,10 @@ ctk_list_box_got_row_changed (GtkListBox    *box,
       g_sequence_sort_changed (row_priv->iter,
                                (GCompareDataFunc)do_sort,
                                box);
-      ctk_widget_queue_resize (GTK_WIDGET (box));
+      ctk_widget_queue_resize (CTK_WIDGET (box));
     }
   ctk_list_box_apply_filter (box, row);
-  if (ctk_widget_get_visible (GTK_WIDGET (box)))
+  if (ctk_widget_get_visible (CTK_WIDGET (box)))
     {
       next = ctk_list_box_get_next_visible (box, row_priv->iter);
       ctk_list_box_update_header (box, row_priv->iter);
@@ -1448,7 +1448,7 @@ void
 ctk_list_box_set_activate_on_single_click (GtkListBox *box,
                                            gboolean    single)
 {
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   single = single != FALSE;
 
@@ -1473,7 +1473,7 @@ ctk_list_box_set_activate_on_single_click (GtkListBox *box,
 gboolean
 ctk_list_box_get_activate_on_single_click (GtkListBox *box)
 {
-  g_return_val_if_fail (GTK_IS_LIST_BOX (box), FALSE);
+  g_return_val_if_fail (CTK_IS_LIST_BOX (box), FALSE);
 
   return BOX_PRIV (box)->activate_single_click;
 }
@@ -1501,22 +1501,22 @@ ctk_list_box_add_move_binding (GtkBindingSet   *binding_set,
 
   ctk_binding_entry_add_signal (binding_set, keyval, modmask,
                                 "move-cursor", 2,
-                                GTK_TYPE_MOVEMENT_STEP, step,
+                                CTK_TYPE_MOVEMENT_STEP, step,
                                 G_TYPE_INT, count,
                                 NULL);
   ctk_binding_entry_add_signal (binding_set, keyval, modmask | extend_mod_mask,
                                 "move-cursor", 2,
-                                GTK_TYPE_MOVEMENT_STEP, step,
+                                CTK_TYPE_MOVEMENT_STEP, step,
                                 G_TYPE_INT, count,
                                 NULL);
   ctk_binding_entry_add_signal (binding_set, keyval, modmask | modify_mod_mask,
                                 "move-cursor", 2,
-                                GTK_TYPE_MOVEMENT_STEP, step,
+                                CTK_TYPE_MOVEMENT_STEP, step,
                                 G_TYPE_INT, count,
                                 NULL);
   ctk_binding_entry_add_signal (binding_set, keyval, modmask | extend_mod_mask | modify_mod_mask,
                                 "move-cursor", 2,
-                                GTK_TYPE_MOVEMENT_STEP, step,
+                                CTK_TYPE_MOVEMENT_STEP, step,
                                 G_TYPE_INT, count,
                                 NULL);
 }
@@ -1533,13 +1533,13 @@ ensure_row_visible (GtkListBox    *box,
   if (!priv->adjustment)
     return;
 
-  ctk_widget_get_allocation (GTK_WIDGET (row), &allocation);
+  ctk_widget_get_allocation (CTK_WIDGET (row), &allocation);
   y = allocation.y;
   height = allocation.height;
 
   /* If the row has a header, we want to ensure that it is visible as well. */
   header = ROW_PRIV (row)->header;
-  if (GTK_IS_WIDGET (header) && ctk_widget_is_drawable (header))
+  if (CTK_IS_WIDGET (header) && ctk_widget_is_drawable (header))
     {
       ctk_widget_get_allocation (header, &allocation);
       y = allocation.y;
@@ -1557,8 +1557,8 @@ ctk_list_box_update_cursor (GtkListBox    *box,
   BOX_PRIV (box)->cursor_row = row;
   ensure_row_visible (box, row);
   if (grab_focus)
-    ctk_widget_grab_focus (GTK_WIDGET (row));
-  ctk_widget_queue_draw (GTK_WIDGET (row));
+    ctk_widget_grab_focus (CTK_WIDGET (row));
+  ctk_widget_queue_draw (CTK_WIDGET (row));
   _ctk_list_box_accessible_update_cursor (box, row);
 }
 
@@ -1567,9 +1567,9 @@ ctk_list_box_row_get_box (GtkListBoxRow *row)
 {
   GtkWidget *parent;
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (row));
-  if (parent && GTK_IS_LIST_BOX (parent))
-    return GTK_LIST_BOX (parent);
+  parent = ctk_widget_get_parent (CTK_WIDGET (row));
+  if (parent && CTK_IS_LIST_BOX (parent))
+    return CTK_LIST_BOX (parent);
 
   return NULL;
 }
@@ -1591,11 +1591,11 @@ ctk_list_box_row_set_selected (GtkListBoxRow *row,
     {
       ROW_PRIV (row)->selected = selected;
       if (selected)
-        ctk_widget_set_state_flags (GTK_WIDGET (row),
-                                    GTK_STATE_FLAG_SELECTED, FALSE);
+        ctk_widget_set_state_flags (CTK_WIDGET (row),
+                                    CTK_STATE_FLAG_SELECTED, FALSE);
       else
-        ctk_widget_unset_state_flags (GTK_WIDGET (row),
-                                      GTK_STATE_FLAG_SELECTED);
+        ctk_widget_unset_state_flags (CTK_WIDGET (row),
+                                      CTK_STATE_FLAG_SELECTED);
 
       return TRUE;
     }
@@ -1610,7 +1610,7 @@ ctk_list_box_unselect_all_internal (GtkListBox *box)
   GSequenceIter *iter;
   gboolean dirty = FALSE;
 
-  if (BOX_PRIV (box)->selection_mode == GTK_SELECTION_NONE)
+  if (BOX_PRIV (box)->selection_mode == CTK_SELECTION_NONE)
     return FALSE;
 
   for (iter = g_sequence_get_begin_iter (BOX_PRIV (box)->children);
@@ -1633,9 +1633,9 @@ ctk_list_box_unselect_row_internal (GtkListBox    *box,
   if (!ROW_PRIV (row)->selected)
     return;
 
-  if (BOX_PRIV (box)->selection_mode == GTK_SELECTION_NONE)
+  if (BOX_PRIV (box)->selection_mode == CTK_SELECTION_NONE)
     return;
-  else if (BOX_PRIV (box)->selection_mode != GTK_SELECTION_MULTIPLE)
+  else if (BOX_PRIV (box)->selection_mode != CTK_SELECTION_MULTIPLE)
     ctk_list_box_unselect_all_internal (box);
   else
     ctk_list_box_row_set_selected (row, FALSE);
@@ -1654,10 +1654,10 @@ ctk_list_box_select_row_internal (GtkListBox    *box,
   if (ROW_PRIV (row)->selected)
     return;
 
-  if (BOX_PRIV (box)->selection_mode == GTK_SELECTION_NONE)
+  if (BOX_PRIV (box)->selection_mode == CTK_SELECTION_NONE)
     return;
 
-  if (BOX_PRIV (box)->selection_mode != GTK_SELECTION_MULTIPLE)
+  if (BOX_PRIV (box)->selection_mode != CTK_SELECTION_MULTIPLE)
     ctk_list_box_unselect_all_internal (box);
 
   ctk_list_box_row_set_selected (row, TRUE);
@@ -1698,7 +1698,7 @@ ctk_list_box_select_all_between (GtkListBox    *box,
     {
       GtkListBoxRow *row;
 
-      row = GTK_LIST_BOX_ROW (g_sequence_get (iter));
+      row = CTK_LIST_BOX_ROW (g_sequence_get (iter));
       if (row_is_visible (row))
         {
           if (modify)
@@ -1725,20 +1725,20 @@ ctk_list_box_update_selection_full (GtkListBox    *box,
 
   ctk_list_box_update_cursor (box, row, grab_cursor);
 
-  if (priv->selection_mode == GTK_SELECTION_NONE)
+  if (priv->selection_mode == CTK_SELECTION_NONE)
     return;
 
   if (!ROW_PRIV (row)->selectable)
     return;
 
-  if (priv->selection_mode == GTK_SELECTION_BROWSE)
+  if (priv->selection_mode == CTK_SELECTION_BROWSE)
     {
       ctk_list_box_unselect_all_internal (box);
       ctk_list_box_row_set_selected (row, TRUE);
       priv->selected_row = row;
       g_signal_emit (box, signals[ROW_SELECTED], 0, row);
     }
-  else if (priv->selection_mode == GTK_SELECTION_SINGLE)
+  else if (priv->selection_mode == CTK_SELECTION_SINGLE)
     {
       gboolean was_selected;
 
@@ -1748,7 +1748,7 @@ ctk_list_box_update_selection_full (GtkListBox    *box,
       priv->selected_row = ROW_PRIV (row)->selected ? row : NULL;
       g_signal_emit (box, signals[ROW_SELECTED], 0, priv->selected_row);
     }
-  else /* GTK_SELECTION_MULTIPLE */
+  else /* CTK_SELECTION_MULTIPLE */
     {
       if (extend)
         {
@@ -1827,14 +1827,14 @@ ctk_list_box_update_prelight (GtkListBox    *box,
   if (row != priv->prelight_row)
     {
       if (priv->prelight_row)
-        ctk_widget_unset_state_flags (GTK_WIDGET (priv->prelight_row),
-                                      GTK_STATE_FLAG_PRELIGHT);
+        ctk_widget_unset_state_flags (CTK_WIDGET (priv->prelight_row),
+                                      CTK_STATE_FLAG_PRELIGHT);
 
-      if (row != NULL && ctk_widget_is_sensitive (GTK_WIDGET (row)))
+      if (row != NULL && ctk_widget_is_sensitive (CTK_WIDGET (row)))
         {
           priv->prelight_row = row;
-          ctk_widget_set_state_flags (GTK_WIDGET (priv->prelight_row),
-                                      GTK_STATE_FLAG_PRELIGHT,
+          ctk_widget_set_state_flags (CTK_WIDGET (priv->prelight_row),
+                                      CTK_STATE_FLAG_PRELIGHT,
                                       FALSE);
         }
       else
@@ -1857,12 +1857,12 @@ ctk_list_box_update_active (GtkListBox    *box,
     {
       priv->active_row_active = val;
       if (priv->active_row_active)
-        ctk_widget_set_state_flags (GTK_WIDGET (priv->active_row),
-                                    GTK_STATE_FLAG_ACTIVE,
+        ctk_widget_set_state_flags (CTK_WIDGET (priv->active_row),
+                                    CTK_STATE_FLAG_ACTIVE,
                                     FALSE);
       else
-        ctk_widget_unset_state_flags (GTK_WIDGET (priv->active_row),
-                                      GTK_STATE_FLAG_ACTIVE);
+        ctk_widget_unset_state_flags (CTK_WIDGET (priv->active_row),
+                                      CTK_STATE_FLAG_ACTIVE);
     }
 }
 
@@ -1870,7 +1870,7 @@ static gboolean
 ctk_list_box_enter_notify_event (GtkWidget        *widget,
                                  GdkEventCrossing *event)
 {
-  GtkListBox *box = GTK_LIST_BOX (widget);
+  GtkListBox *box = CTK_LIST_BOX (widget);
   GtkListBoxRow *row;
 
   if (event->window != ctk_widget_get_window (widget))
@@ -1889,7 +1889,7 @@ static gboolean
 ctk_list_box_leave_notify_event (GtkWidget        *widget,
                                  GdkEventCrossing *event)
 {
-  GtkListBox *box = GTK_LIST_BOX (widget);
+  GtkListBox *box = CTK_LIST_BOX (widget);
   GtkListBoxRow *row = NULL;
 
   if (event->window != ctk_widget_get_window (widget))
@@ -1913,7 +1913,7 @@ static gboolean
 ctk_list_box_motion_notify_event (GtkWidget      *widget,
                                   GdkEventMotion *event)
 {
-  GtkListBox *box = GTK_LIST_BOX (widget);
+  GtkListBox *box = CTK_LIST_BOX (widget);
   GtkListBoxRow *row;
   GdkWindow *window, *event_window;
   gint relative_y;
@@ -1953,12 +1953,12 @@ ctk_list_box_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
   priv->active_row = NULL;
   row = ctk_list_box_get_row_at_y (box, y);
 
-  if (row != NULL && ctk_widget_is_sensitive (GTK_WIDGET (row)))
+  if (row != NULL && ctk_widget_is_sensitive (CTK_WIDGET (row)))
     {
       priv->active_row = row;
       priv->active_row_active = TRUE;
-      ctk_widget_set_state_flags (GTK_WIDGET (priv->active_row),
-                                  GTK_STATE_FLAG_ACTIVE,
+      ctk_widget_set_state_flags (CTK_WIDGET (priv->active_row),
+                                  CTK_STATE_FLAG_ACTIVE,
                                   FALSE);
 
       if (n_press == 2 && !priv->activate_single_click)
@@ -2004,10 +2004,10 @@ ctk_list_box_multipress_gesture_released (GtkGestureMultiPress *gesture,
 
   if (priv->active_row != NULL && priv->active_row_active)
     {
-      gboolean focus_on_click = ctk_widget_get_focus_on_click (GTK_WIDGET (priv->active_row));
+      gboolean focus_on_click = ctk_widget_get_focus_on_click (CTK_WIDGET (priv->active_row));
 
-      ctk_widget_unset_state_flags (GTK_WIDGET (priv->active_row),
-                                    GTK_STATE_FLAG_ACTIVE);
+      ctk_widget_unset_state_flags (CTK_WIDGET (priv->active_row),
+                                    CTK_STATE_FLAG_ACTIVE);
 
       if (n_press == 1 && priv->activate_single_click)
         ctk_list_box_select_and_activate_full (box, priv->active_row, focus_on_click);
@@ -2019,13 +2019,13 @@ ctk_list_box_multipress_gesture_released (GtkGestureMultiPress *gesture,
           gboolean modify;
           gboolean extend;
 
-          get_current_selection_modifiers (GTK_WIDGET (box), &modify, &extend);
+          get_current_selection_modifiers (CTK_WIDGET (box), &modify, &extend);
           /* With touch, we default to modifying the selection.
            * You can still clear the selection and start over
            * by holding Ctrl.
            */
-          sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
-          event = ctk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
+          sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
+          event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
           source = gdk_device_get_source (gdk_event_get_source_device (event));
 
           if (source == GDK_SOURCE_TOUCHSCREEN)
@@ -2044,16 +2044,16 @@ ctk_list_box_multipress_gesture_released (GtkGestureMultiPress *gesture,
 static void
 ctk_list_box_show (GtkWidget *widget)
 {
-  ctk_list_box_do_reseparate (GTK_LIST_BOX (widget));
+  ctk_list_box_do_reseparate (CTK_LIST_BOX (widget));
 
-  GTK_WIDGET_CLASS (ctk_list_box_parent_class)->show (widget);
+  CTK_WIDGET_CLASS (ctk_list_box_parent_class)->show (widget);
 }
 
 static gboolean
 ctk_list_box_focus (GtkWidget        *widget,
                     GtkDirectionType  direction)
 {
-  GtkListBox *box = GTK_LIST_BOX (widget);
+  GtkListBox *box = CTK_LIST_BOX (widget);
   GtkListBoxPrivate *priv = BOX_PRIV (box);
   GtkWidget *focus_child;
   GtkListBoxRow *next_focus_row;
@@ -2070,22 +2070,22 @@ ctk_list_box_focus (GtkWidget        *widget,
       if (ctk_widget_child_focus (focus_child, direction))
         return TRUE;
 
-      if (direction == GTK_DIR_UP || direction == GTK_DIR_TAB_BACKWARD)
+      if (direction == CTK_DIR_UP || direction == CTK_DIR_TAB_BACKWARD)
         {
-          if (GTK_IS_LIST_BOX_ROW (focus_child))
+          if (CTK_IS_LIST_BOX_ROW (focus_child))
             {
-              header = ROW_PRIV (GTK_LIST_BOX_ROW (focus_child))->header;
+              header = ROW_PRIV (CTK_LIST_BOX_ROW (focus_child))->header;
               if (header && ctk_widget_child_focus (header, direction))
                 return TRUE;
             }
 
-          if (GTK_IS_LIST_BOX_ROW (focus_child))
+          if (CTK_IS_LIST_BOX_ROW (focus_child))
             row = focus_child;
           else
             row = g_hash_table_lookup (priv->header_hash, focus_child);
 
-          if (GTK_IS_LIST_BOX_ROW (row))
-            i = ctk_list_box_get_previous_visible (box, ROW_PRIV (GTK_LIST_BOX_ROW (row))->iter);
+          if (CTK_IS_LIST_BOX_ROW (row))
+            i = ctk_list_box_get_previous_visible (box, ROW_PRIV (CTK_LIST_BOX_ROW (row))->iter);
           else
             i = NULL;
 
@@ -2100,15 +2100,15 @@ ctk_list_box_focus (GtkWidget        *widget,
               i = ctk_list_box_get_previous_visible (box, i);
             }
         }
-      else if (direction == GTK_DIR_DOWN || direction == GTK_DIR_TAB_FORWARD)
+      else if (direction == CTK_DIR_DOWN || direction == CTK_DIR_TAB_FORWARD)
         {
-          if (GTK_IS_LIST_BOX_ROW (focus_child))
-            i = ctk_list_box_get_next_visible (box, ROW_PRIV (GTK_LIST_BOX_ROW (focus_child))->iter);
+          if (CTK_IS_LIST_BOX_ROW (focus_child))
+            i = ctk_list_box_get_next_visible (box, ROW_PRIV (CTK_LIST_BOX_ROW (focus_child))->iter);
           else
             {
               row = g_hash_table_lookup (priv->header_hash, focus_child);
-              if (GTK_IS_LIST_BOX_ROW (row))
-                i = ROW_PRIV (GTK_LIST_BOX_ROW (row))->iter;
+              if (CTK_IS_LIST_BOX_ROW (row))
+                i = ROW_PRIV (CTK_LIST_BOX_ROW (row))->iter;
               else
                 i = NULL;
             }
@@ -2130,8 +2130,8 @@ ctk_list_box_focus (GtkWidget        *widget,
       /* No current focus row */
       switch (direction)
         {
-        case GTK_DIR_UP:
-        case GTK_DIR_TAB_BACKWARD:
+        case CTK_DIR_UP:
+        case CTK_DIR_TAB_BACKWARD:
           next_focus_row = priv->selected_row;
           if (next_focus_row == NULL)
             next_focus_row = ctk_list_box_get_last_focusable (box);
@@ -2146,23 +2146,23 @@ ctk_list_box_focus (GtkWidget        *widget,
 
   if (next_focus_row == NULL)
     {
-      if (direction == GTK_DIR_UP || direction == GTK_DIR_DOWN)
+      if (direction == CTK_DIR_UP || direction == CTK_DIR_DOWN)
         {
-          if (ctk_widget_keynav_failed (GTK_WIDGET (box), direction))
+          if (ctk_widget_keynav_failed (CTK_WIDGET (box), direction))
             return TRUE;
         }
 
       return FALSE;
     }
 
-  if (direction == GTK_DIR_DOWN || direction == GTK_DIR_TAB_FORWARD)
+  if (direction == CTK_DIR_DOWN || direction == CTK_DIR_TAB_FORWARD)
     {
       header = ROW_PRIV (next_focus_row)->header;
       if (header && ctk_widget_child_focus (header, direction))
         return TRUE;
     }
 
-  if (ctk_widget_child_focus (GTK_WIDGET (next_focus_row), direction))
+  if (ctk_widget_child_focus (CTK_WIDGET (next_focus_row), direction))
     return TRUE;
 
   return FALSE;
@@ -2188,7 +2188,7 @@ ctk_list_box_render (GtkCssGadget *gadget,
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
 
-  GTK_WIDGET_CLASS (ctk_list_box_parent_class)->draw (widget, cr);
+  CTK_WIDGET_CLASS (ctk_list_box_parent_class)->draw (widget, cr);
 
   return FALSE;
 }
@@ -2231,7 +2231,7 @@ list_box_add_visible_rows (GtkListBox *box,
 
   if (priv->placeholder &&
       (was_zero || priv->n_visible_rows == 0))
-    ctk_widget_set_child_visible (GTK_WIDGET (priv->placeholder),
+    ctk_widget_set_child_visible (CTK_WIDGET (priv->placeholder),
                                   priv->n_visible_rows == 0);
 }
 
@@ -2248,8 +2248,8 @@ update_row_is_visible (GtkListBox    *box,
   was_visible = row_priv->visible;
 
   row_priv->visible =
-    ctk_widget_get_visible (GTK_WIDGET (row)) &&
-    ctk_widget_get_child_visible (GTK_WIDGET (row));
+    ctk_widget_get_visible (CTK_WIDGET (row)) &&
+    ctk_widget_get_child_visible (CTK_WIDGET (row));
 
   if (was_visible && !row_priv->visible)
     list_box_add_visible_rows (box, -1);
@@ -2268,7 +2268,7 @@ ctk_list_box_apply_filter (GtkListBox    *box,
   if (priv->filter_func != NULL)
     do_show = priv->filter_func (row, priv->filter_func_target);
 
-  ctk_widget_set_child_visible (GTK_WIDGET (row), do_show);
+  ctk_widget_set_child_visible (CTK_WIDGET (row), do_show);
 
   update_row_is_visible (box, row);
 }
@@ -2299,7 +2299,7 @@ ctk_list_box_get_first_focusable (GtkListBox *box)
        iter = g_sequence_iter_next (iter))
     {
         row = g_sequence_get (iter);
-        if (row_is_visible (row) && ctk_widget_is_sensitive (GTK_WIDGET (row)))
+        if (row_is_visible (row) && ctk_widget_is_sensitive (CTK_WIDGET (row)))
           return row;
     }
 
@@ -2317,7 +2317,7 @@ ctk_list_box_get_last_focusable (GtkListBox *box)
     {
       iter = g_sequence_iter_prev (iter);
       row = g_sequence_get (iter);
-      if (row_is_visible (row) && ctk_widget_is_sensitive (GTK_WIDGET (row)))
+      if (row_is_visible (row) && ctk_widget_is_sensitive (CTK_WIDGET (row)))
         return row;
     }
 
@@ -2437,10 +2437,10 @@ ctk_list_box_update_header (GtkListBox    *box,
           if (ROW_PRIV (row)->header != NULL)
             {
               g_hash_table_insert (priv->header_hash, ROW_PRIV (row)->header, row);
-              ctk_widget_set_parent (ROW_PRIV (row)->header, GTK_WIDGET (box));
+              ctk_widget_set_parent (ROW_PRIV (row)->header, CTK_WIDGET (box));
               ctk_widget_show (ROW_PRIV (row)->header);
             }
-          ctk_widget_queue_resize (GTK_WIDGET (box));
+          ctk_widget_queue_resize (CTK_WIDGET (box));
         }
       if (old_header)
         g_object_unref (old_header);
@@ -2452,7 +2452,7 @@ ctk_list_box_update_header (GtkListBox    *box,
           g_hash_table_remove (priv->header_hash, ROW_PRIV (row)->header);
           ctk_widget_unparent (ROW_PRIV (row)->header);
           ctk_list_box_row_set_header (row, NULL);
-          ctk_widget_queue_resize (GTK_WIDGET (box));
+          ctk_widget_queue_resize (CTK_WIDGET (box));
         }
     }
   if (before_row)
@@ -2466,7 +2466,7 @@ ctk_list_box_row_visibility_changed (GtkListBox    *box,
 {
   update_row_is_visible (box, row);
 
-  if (ctk_widget_get_visible (GTK_WIDGET (box)))
+  if (ctk_widget_get_visible (CTK_WIDGET (box)))
     {
       ctk_list_box_update_header (box, ROW_PRIV (row)->iter);
       ctk_list_box_update_header (box,
@@ -2478,15 +2478,15 @@ static void
 ctk_list_box_add (GtkContainer *container,
                   GtkWidget    *child)
 {
-  ctk_list_box_insert (GTK_LIST_BOX (container), child, -1);
+  ctk_list_box_insert (CTK_LIST_BOX (container), child, -1);
 }
 
 static void
 ctk_list_box_remove (GtkContainer *container,
                      GtkWidget    *child)
 {
-  GtkWidget *widget = GTK_WIDGET (container);
-  GtkListBox *box = GTK_LIST_BOX (container);
+  GtkWidget *widget = CTK_WIDGET (container);
+  GtkListBox *box = CTK_LIST_BOX (container);
   GtkListBoxPrivate *priv = BOX_PRIV (box);
   gboolean was_visible;
   gboolean was_selected;
@@ -2495,7 +2495,7 @@ ctk_list_box_remove (GtkContainer *container,
 
   was_visible = ctk_widget_get_visible (child);
 
-  if (!GTK_IS_LIST_BOX_ROW (child))
+  if (!CTK_IS_LIST_BOX_ROW (child))
     {
       row = g_hash_table_lookup (priv->header_hash, child);
       if (row != NULL)
@@ -2513,7 +2513,7 @@ ctk_list_box_remove (GtkContainer *container,
       return;
     }
 
-  row = GTK_LIST_BOX_ROW (child);
+  row = CTK_LIST_BOX_ROW (child);
   if (g_sequence_iter_get_sequence (ROW_PRIV (row)->iter) != priv->children)
     {
       g_warning ("Tried to remove non-child %p", child);
@@ -2536,14 +2536,14 @@ ctk_list_box_remove (GtkContainer *container,
     priv->selected_row = NULL;
   if (row == priv->prelight_row)
     {
-      ctk_widget_unset_state_flags (GTK_WIDGET (row), GTK_STATE_FLAG_PRELIGHT);
+      ctk_widget_unset_state_flags (CTK_WIDGET (row), CTK_STATE_FLAG_PRELIGHT);
       priv->prelight_row = NULL;
     }
   if (row == priv->cursor_row)
     priv->cursor_row = NULL;
   if (row == priv->active_row)
     {
-      ctk_widget_unset_state_flags (GTK_WIDGET (row), GTK_STATE_FLAG_ACTIVE);
+      ctk_widget_unset_state_flags (CTK_WIDGET (row), CTK_STATE_FLAG_ACTIVE);
       priv->active_row = NULL;
     }
 
@@ -2556,7 +2556,7 @@ ctk_list_box_remove (GtkContainer *container,
   if (ctk_widget_get_visible (widget))
     ctk_list_box_update_header (box, next);
 
-  if (was_visible && ctk_widget_get_visible (GTK_WIDGET (box)))
+  if (was_visible && ctk_widget_get_visible (CTK_WIDGET (box)))
     ctk_widget_queue_resize (widget);
 
   if (was_selected && !ctk_widget_in_destruction (widget))
@@ -2586,7 +2586,7 @@ ctk_list_box_forall (GtkContainer *container,
       iter = g_sequence_iter_next (iter);
       if (ROW_PRIV (row)->header != NULL && include_internals)
         callback (ROW_PRIV (row)->header, callback_target);
-      callback (GTK_WIDGET (row), callback_target);
+      callback (CTK_WIDGET (row), callback_target);
     }
 }
 
@@ -2595,7 +2595,7 @@ ctk_list_box_compute_expand (GtkWidget *widget,
                              gboolean  *hexpand,
                              gboolean  *vexpand)
 {
-  GTK_WIDGET_CLASS (ctk_list_box_parent_class)->compute_expand (widget,
+  CTK_WIDGET_CLASS (ctk_list_box_parent_class)->compute_expand (widget,
                                                                 hexpand, vexpand);
 
   /* We don't expand vertically beyound the minimum size */
@@ -2610,13 +2610,13 @@ ctk_list_box_child_type (GtkContainer *container)
    * more like a C helper function, in an abstract sense we only support
    * row children, so that is what tools accessing this should use.
    */
-  return GTK_TYPE_LIST_BOX_ROW;
+  return CTK_TYPE_LIST_BOX_ROW;
 }
 
 static GtkSizeRequestMode
 ctk_list_box_get_request_mode (GtkWidget *widget)
 {
-  return GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
+  return CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
 }
 
 static void
@@ -2625,7 +2625,7 @@ ctk_list_box_get_preferred_height (GtkWidget *widget,
                                    gint      *natural)
 {
   ctk_css_gadget_get_preferred_size (BOX_PRIV (widget)->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -2638,7 +2638,7 @@ ctk_list_box_get_preferred_height_for_width (GtkWidget *widget,
                                              gint      *natural)
 {
   ctk_css_gadget_get_preferred_size (BOX_PRIV (widget)->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      NULL, NULL);
@@ -2650,7 +2650,7 @@ ctk_list_box_get_preferred_width (GtkWidget *widget,
                                   gint      *natural)
 {
   ctk_css_gadget_get_preferred_size (BOX_PRIV (widget)->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -2663,7 +2663,7 @@ ctk_list_box_get_preferred_width_for_height (GtkWidget *widget,
                                              gint      *natural)
 {
   ctk_css_gadget_get_preferred_size (BOX_PRIV (widget)->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum, natural,
                                      NULL, NULL);
@@ -2683,7 +2683,7 @@ ctk_list_box_measure (GtkCssGadget   *gadget,
   GtkListBoxPrivate *priv = BOX_PRIV (widget);
   GSequenceIter *iter;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       *minimum = 0;
       *natural = 0;
@@ -2704,10 +2704,10 @@ ctk_list_box_measure (GtkCssGadget   *gadget,
           /* We *do* take visible but filtered rows into account here so that
            * the list width doesn't change during filtering
            */
-          if (!ctk_widget_get_visible (GTK_WIDGET (row)))
+          if (!ctk_widget_get_visible (CTK_WIDGET (row)))
             continue;
 
-          ctk_widget_get_preferred_width (GTK_WIDGET (row), &row_min, &row_nat);
+          ctk_widget_get_preferred_width (CTK_WIDGET (row), &row_min, &row_nat);
           *minimum = MAX (*minimum, row_min);
           *natural = MAX (*natural, row_nat);
 
@@ -2723,7 +2723,7 @@ ctk_list_box_measure (GtkCssGadget   *gadget,
     {
       if (for_size < 0)
         ctk_css_gadget_get_preferred_size (priv->gadget,
-                                           GTK_ORIENTATION_HORIZONTAL,
+                                           CTK_ORIENTATION_HORIZONTAL,
                                            -1,
                                            NULL, &for_size,
                                            NULL, NULL);
@@ -2750,7 +2750,7 @@ ctk_list_box_measure (GtkCssGadget   *gadget,
               ctk_widget_get_preferred_height_for_width (ROW_PRIV (row)->header, for_size, &row_min, NULL);
               *minimum += row_min;
             }
-          ctk_widget_get_preferred_height_for_width (GTK_WIDGET (row), for_size, &row_min, NULL);
+          ctk_widget_get_preferred_height_for_width (CTK_WIDGET (row), for_size, &row_min, NULL);
           *minimum += row_min;
         }
 
@@ -2851,16 +2851,16 @@ ctk_list_box_allocate (GtkCssGadget        *gadget,
 
       ROW_PRIV (row)->y = child_allocation.y;
 
-      ctk_widget_get_preferred_height_for_width (GTK_WIDGET (row),
+      ctk_widget_get_preferred_height_for_width (CTK_WIDGET (row),
                                                  child_allocation.width, &child_min, NULL);
       child_allocation.height = child_min;
 
       ROW_PRIV (row)->height = child_allocation.height;
-      ctk_widget_size_allocate (GTK_WIDGET (row), &child_allocation);
+      ctk_widget_size_allocate (CTK_WIDGET (row), &child_allocation);
       child_allocation.y += child_min;
     }
 
-  ctk_container_get_children_clip (GTK_CONTAINER (widget), out_clip);
+  ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
 }
 
 /**
@@ -2896,7 +2896,7 @@ ctk_list_box_insert_css_node (GtkListBox    *box,
   else
     sibling = NULL;
 
-  ctk_css_node_insert_after (ctk_widget_get_css_node (GTK_WIDGET (box)),
+  ctk_css_node_insert_after (ctk_widget_get_css_node (CTK_WIDGET (box)),
                              ctk_widget_get_css_node (child),
                              sibling);
 }
@@ -2925,16 +2925,16 @@ ctk_list_box_insert (GtkListBox *box,
   GtkListBoxRow *row;
   GSequenceIter *iter = NULL;
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_WIDGET (child));
 
-  if (GTK_IS_LIST_BOX_ROW (child))
-    row = GTK_LIST_BOX_ROW (child);
+  if (CTK_IS_LIST_BOX_ROW (child))
+    row = CTK_LIST_BOX_ROW (child);
   else
     {
-      row = GTK_LIST_BOX_ROW (ctk_list_box_row_new ());
-      ctk_widget_show (GTK_WIDGET (row));
-      ctk_container_add (GTK_CONTAINER (row), child);
+      row = CTK_LIST_BOX_ROW (ctk_list_box_row_new ());
+      ctk_widget_show (CTK_WIDGET (row));
+      ctk_container_add (CTK_CONTAINER (row), child);
     }
 
   if (priv->sort_func != NULL)
@@ -2952,17 +2952,17 @@ ctk_list_box_insert (GtkListBox *box,
       iter = g_sequence_insert_before (current_iter, row);
     }
 
-  ctk_list_box_insert_css_node (box, GTK_WIDGET (row), iter);
+  ctk_list_box_insert_css_node (box, CTK_WIDGET (row), iter);
 
   ROW_PRIV (row)->iter = iter;
-  ctk_widget_set_parent (GTK_WIDGET (row), GTK_WIDGET (box));
-  ctk_widget_set_child_visible (GTK_WIDGET (row), TRUE);
-  ROW_PRIV (row)->visible = ctk_widget_get_visible (GTK_WIDGET (row));
+  ctk_widget_set_parent (CTK_WIDGET (row), CTK_WIDGET (box));
+  ctk_widget_set_child_visible (CTK_WIDGET (row), TRUE);
+  ROW_PRIV (row)->visible = ctk_widget_get_visible (CTK_WIDGET (row));
   if (ROW_PRIV (row)->visible)
     list_box_add_visible_rows (box, 1);
   ctk_list_box_apply_filter (box, row);
   ctk_list_box_update_row_style (box, row);
-  if (ctk_widget_get_visible (GTK_WIDGET (box)))
+  if (ctk_widget_get_visible (CTK_WIDGET (box)))
     {
       ctk_list_box_update_header (box, ROW_PRIV (row)->iter);
       ctk_list_box_update_header (box,
@@ -2984,12 +2984,12 @@ ctk_list_box_drag_unhighlight_row (GtkListBox *box)
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
 
   if (priv->drag_highlighted_row == NULL)
     return;
 
-  ctk_drag_unhighlight (GTK_WIDGET (priv->drag_highlighted_row));
+  ctk_drag_unhighlight (CTK_WIDGET (priv->drag_highlighted_row));
   g_clear_object (&priv->drag_highlighted_row);
 }
 
@@ -3013,14 +3013,14 @@ ctk_list_box_drag_highlight_row (GtkListBox    *box,
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
-  g_return_if_fail (GTK_IS_LIST_BOX_ROW (row));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX_ROW (row));
 
   if (priv->drag_highlighted_row == row)
     return;
 
   ctk_list_box_drag_unhighlight_row (box);
-  ctk_drag_highlight (GTK_WIDGET (row));
+  ctk_drag_highlight (CTK_WIDGET (row));
   priv->drag_highlighted_row = g_object_ref (row);
 }
 
@@ -3029,7 +3029,7 @@ ctk_list_box_drag_leave (GtkWidget      *widget,
                          GdkDragContext *context,
                          guint           time_)
 {
-  ctk_list_box_drag_unhighlight_row (GTK_LIST_BOX (widget));
+  ctk_list_box_drag_unhighlight_row (CTK_LIST_BOX (widget));
 }
 
 static void
@@ -3046,8 +3046,8 @@ ctk_list_box_toggle_cursor_row (GtkListBox *box)
   if (priv->cursor_row == NULL)
     return;
 
-  if ((priv->selection_mode == GTK_SELECTION_SINGLE ||
-       priv->selection_mode == GTK_SELECTION_MULTIPLE) &&
+  if ((priv->selection_mode == CTK_SELECTION_SINGLE ||
+       priv->selection_mode == CTK_SELECTION_MULTIPLE) &&
       ROW_PRIV (priv->cursor_row)->selected)
     ctk_list_box_unselect_row_internal (box, priv->cursor_row);
   else
@@ -3072,13 +3072,13 @@ ctk_list_box_move_cursor (GtkListBox      *box,
   row = NULL;
   switch (step)
     {
-    case GTK_MOVEMENT_BUFFER_ENDS:
+    case CTK_MOVEMENT_BUFFER_ENDS:
       if (count < 0)
         row = ctk_list_box_get_first_focusable (box);
       else
         row = ctk_list_box_get_last_focusable (box);
       break;
-    case GTK_MOVEMENT_DISPLAY_LINES:
+    case CTK_MOVEMENT_DISPLAY_LINES:
       if (priv->cursor_row != NULL)
         {
           gint i = count;
@@ -3100,7 +3100,7 @@ ctk_list_box_move_cursor (GtkListBox      *box,
             row = g_sequence_get (iter);
         }
       break;
-    case GTK_MOVEMENT_PAGES:
+    case CTK_MOVEMENT_PAGES:
       page_size = 100;
       if (priv->adjustment != NULL)
         page_size = ctk_adjustment_get_page_increment (priv->adjustment);
@@ -3108,7 +3108,7 @@ ctk_list_box_move_cursor (GtkListBox      *box,
       if (priv->cursor_row != NULL)
         {
           start_y = ROW_PRIV (priv->cursor_row)->y;
-          height = ctk_widget_get_allocated_height (GTK_WIDGET (box));
+          height = ctk_widget_get_allocated_height (CTK_WIDGET (box));
           end_y = CLAMP (start_y + page_size * count, 0, height - 1);
           row = ctk_list_box_get_row_at_y (box, end_y);
 
@@ -3162,24 +3162,24 @@ ctk_list_box_move_cursor (GtkListBox      *box,
 
   if (row == NULL || row == priv->cursor_row)
     {
-      GtkDirectionType direction = count < 0 ? GTK_DIR_UP : GTK_DIR_DOWN;
+      GtkDirectionType direction = count < 0 ? CTK_DIR_UP : CTK_DIR_DOWN;
 
-      if (!ctk_widget_keynav_failed (GTK_WIDGET (box), direction))
+      if (!ctk_widget_keynav_failed (CTK_WIDGET (box), direction))
         {
-          GtkWidget *toplevel = ctk_widget_get_toplevel (GTK_WIDGET (box));
+          GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (box));
 
           if (toplevel)
             ctk_widget_child_focus (toplevel,
-                                    direction == GTK_DIR_UP ?
-                                    GTK_DIR_TAB_BACKWARD :
-                                    GTK_DIR_TAB_FORWARD);
+                                    direction == CTK_DIR_UP ?
+                                    CTK_DIR_TAB_BACKWARD :
+                                    CTK_DIR_TAB_FORWARD);
 
         }
 
       return;
     }
 
-  get_current_selection_modifiers (GTK_WIDGET (box), &modify, &extend);
+  get_current_selection_modifiers (CTK_WIDGET (box), &modify, &extend);
 
   ctk_list_box_update_cursor (box, row, TRUE);
   if (!modify)
@@ -3199,7 +3199,7 @@ ctk_list_box_move_cursor (GtkListBox      *box,
 GtkWidget *
 ctk_list_box_row_new (void)
 {
-  return g_object_new (GTK_TYPE_LIST_BOX_ROW, NULL);
+  return g_object_new (CTK_TYPE_LIST_BOX_ROW, NULL);
 }
 
 static void
@@ -3212,7 +3212,7 @@ ctk_list_box_row_set_focus (GtkListBoxRow *row)
   if (!box)
     return;
 
-  get_current_selection_modifiers (GTK_WIDGET (row), &modify, &extend);
+  get_current_selection_modifiers (CTK_WIDGET (row), &modify, &extend);
 
   if (modify)
     ctk_list_box_update_cursor (box, row, TRUE);
@@ -3224,33 +3224,33 @@ static gboolean
 ctk_list_box_row_focus (GtkWidget        *widget,
                         GtkDirectionType  direction)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (widget);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (widget);
   gboolean had_focus = FALSE;
   GtkWidget *child;
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
 
   g_object_get (widget, "has-focus", &had_focus, NULL);
   if (had_focus)
     {
       /* If on row, going right, enter into possible container */
       if (child &&
-          (direction == GTK_DIR_RIGHT || direction == GTK_DIR_TAB_FORWARD))
+          (direction == CTK_DIR_RIGHT || direction == CTK_DIR_TAB_FORWARD))
         {
-          if (ctk_widget_child_focus (GTK_WIDGET (child), direction))
+          if (ctk_widget_child_focus (CTK_WIDGET (child), direction))
             return TRUE;
         }
 
       return FALSE;
     }
-  else if (ctk_container_get_focus_child (GTK_CONTAINER (row)) != NULL)
+  else if (ctk_container_get_focus_child (CTK_CONTAINER (row)) != NULL)
     {
       /* Child has focus, always navigate inside it first */
       if (ctk_widget_child_focus (child, direction))
         return TRUE;
 
       /* If exiting child container to the left, select row  */
-      if (direction == GTK_DIR_LEFT || direction == GTK_DIR_TAB_BACKWARD)
+      if (direction == CTK_DIR_LEFT || direction == CTK_DIR_TAB_BACKWARD)
         {
           ctk_list_box_row_set_focus (row);
           return TRUE;
@@ -3262,7 +3262,7 @@ ctk_list_box_row_focus (GtkWidget        *widget,
     {
       /* If coming from the left, enter into possible container */
       if (child &&
-          (direction == GTK_DIR_LEFT || direction == GTK_DIR_TAB_BACKWARD))
+          (direction == CTK_DIR_LEFT || direction == CTK_DIR_TAB_BACKWARD))
         {
           if (ctk_widget_child_focus (child, direction))
             return TRUE;
@@ -3286,10 +3286,10 @@ ctk_list_box_row_activate (GtkListBoxRow *row)
 static void
 ctk_list_box_row_show (GtkWidget *widget)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (widget);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (widget);
   GtkListBox *box;
 
-  GTK_WIDGET_CLASS (ctk_list_box_row_parent_class)->show (widget);
+  CTK_WIDGET_CLASS (ctk_list_box_row_parent_class)->show (widget);
 
   box = ctk_list_box_row_get_box (row);
   if (box)
@@ -3299,10 +3299,10 @@ ctk_list_box_row_show (GtkWidget *widget)
 static void
 ctk_list_box_row_hide (GtkWidget *widget)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (widget);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (widget);
   GtkListBox *box;
 
-  GTK_WIDGET_CLASS (ctk_list_box_row_parent_class)->hide (widget);
+  CTK_WIDGET_CLASS (ctk_list_box_row_parent_class)->hide (widget);
 
   box = ctk_list_box_row_get_box (row);
   if (box)
@@ -3313,7 +3313,7 @@ static gboolean
 ctk_list_box_row_draw (GtkWidget *widget,
                        cairo_t   *cr)
 {
-  ctk_css_gadget_draw (ROW_PRIV (GTK_LIST_BOX_ROW (widget))->gadget, cr);
+  ctk_css_gadget_draw (ROW_PRIV (CTK_LIST_BOX_ROW (widget))->gadget, cr);
 
   return GDK_EVENT_PROPAGATE;
 }
@@ -3331,7 +3331,7 @@ ctk_list_box_row_render (GtkCssGadget *gadget,
 
   widget = ctk_css_gadget_get_owner (gadget);
 
-  GTK_WIDGET_CLASS (ctk_list_box_row_parent_class)->draw (widget, cr);
+  CTK_WIDGET_CLASS (ctk_list_box_row_parent_class)->draw (widget, cr);
 
   return ctk_widget_has_visible_focus (widget);
 }
@@ -3350,9 +3350,9 @@ ctk_list_box_row_measure (GtkCssGadget   *gadget,
   GtkWidget *child;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
 
-  if (orientation == GTK_ORIENTATION_VERTICAL)
+  if (orientation == CTK_ORIENTATION_VERTICAL)
     {
       if (child && ctk_widget_get_visible (child))
         {
@@ -3378,8 +3378,8 @@ ctk_list_box_row_get_preferred_height (GtkWidget *widget,
                                        gint      *minimum,
                                        gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (ROW_PRIV (GTK_LIST_BOX_ROW (widget))->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (ROW_PRIV (CTK_LIST_BOX_ROW (widget))->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -3391,8 +3391,8 @@ ctk_list_box_row_get_preferred_height_for_width (GtkWidget *widget,
                                                  gint      *minimum,
                                                  gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (ROW_PRIV (GTK_LIST_BOX_ROW (widget))->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (ROW_PRIV (CTK_LIST_BOX_ROW (widget))->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      NULL, NULL);
@@ -3403,8 +3403,8 @@ ctk_list_box_row_get_preferred_width (GtkWidget *widget,
                                       gint      *minimum,
                                       gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (ROW_PRIV (GTK_LIST_BOX_ROW (widget))->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (ROW_PRIV (CTK_LIST_BOX_ROW (widget))->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -3416,8 +3416,8 @@ ctk_list_box_row_get_preferred_width_for_height (GtkWidget *widget,
                                                  gint      *minimum,
                                                  gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (ROW_PRIV (GTK_LIST_BOX_ROW (widget))->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (ROW_PRIV (CTK_LIST_BOX_ROW (widget))->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum, natural,
                                      NULL, NULL);
@@ -3431,7 +3431,7 @@ ctk_list_box_row_size_allocate (GtkWidget     *widget,
 
   ctk_widget_set_allocation (widget, allocation);
 
-  ctk_css_gadget_allocate (ROW_PRIV (GTK_LIST_BOX_ROW (widget))->gadget,
+  ctk_css_gadget_allocate (ROW_PRIV (CTK_LIST_BOX_ROW (widget))->gadget,
                            allocation,
                            ctk_widget_get_allocated_baseline (widget),
                            &clip);
@@ -3451,11 +3451,11 @@ ctk_list_box_row_allocate (GtkCssGadget        *gadget,
 
   widget = ctk_css_gadget_get_owner (gadget);
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
   if (child && ctk_widget_get_visible (child))
     ctk_widget_size_allocate (child, (GtkAllocation *)allocation);
 
-  ctk_container_get_children_clip (GTK_CONTAINER (widget), out_clip);
+  ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
 }
 
 /**
@@ -3486,7 +3486,7 @@ ctk_list_box_row_changed (GtkListBoxRow *row)
 {
   GtkListBox *box;
 
-  g_return_if_fail (GTK_IS_LIST_BOX_ROW (row));
+  g_return_if_fail (CTK_IS_LIST_BOX_ROW (row));
 
   box = ctk_list_box_row_get_box (row);
   if (box)
@@ -3508,7 +3508,7 @@ ctk_list_box_row_changed (GtkListBoxRow *row)
 GtkWidget *
 ctk_list_box_row_get_header (GtkListBoxRow *row)
 {
-  g_return_val_if_fail (GTK_IS_LIST_BOX_ROW (row), NULL);
+  g_return_val_if_fail (CTK_IS_LIST_BOX_ROW (row), NULL);
 
   return ROW_PRIV (row)->header;
 }
@@ -3530,8 +3530,8 @@ ctk_list_box_row_set_header (GtkListBoxRow *row,
 {
   GtkListBoxRowPrivate *priv;
 
-  g_return_if_fail (GTK_IS_LIST_BOX_ROW (row));
-  g_return_if_fail (header == NULL || GTK_IS_WIDGET (header));
+  g_return_if_fail (CTK_IS_LIST_BOX_ROW (row));
+  g_return_if_fail (header == NULL || CTK_IS_WIDGET (header));
 
   priv = ROW_PRIV (row);
 
@@ -3559,7 +3559,7 @@ ctk_list_box_row_get_index (GtkListBoxRow *row)
 {
   GtkListBoxRowPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_LIST_BOX_ROW (row), -1);
+  g_return_val_if_fail (CTK_IS_LIST_BOX_ROW (row), -1);
 
   priv = ROW_PRIV (row);
 
@@ -3583,7 +3583,7 @@ ctk_list_box_row_get_index (GtkListBoxRow *row)
 gboolean
 ctk_list_box_row_is_selected (GtkListBoxRow *row)
 {
-  g_return_val_if_fail (GTK_IS_LIST_BOX_ROW (row), FALSE);
+  g_return_val_if_fail (CTK_IS_LIST_BOX_ROW (row), FALSE);
 
   return ROW_PRIV (row)->selected;
 }
@@ -3595,12 +3595,12 @@ ctk_list_box_update_row_style (GtkListBox    *box,
   GtkStyleContext *context;
   gboolean can_select;
 
-  if (box && BOX_PRIV (box)->selection_mode != GTK_SELECTION_NONE)
+  if (box && BOX_PRIV (box)->selection_mode != CTK_SELECTION_NONE)
     can_select = TRUE;
   else
     can_select = FALSE;
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (row));
+  context = ctk_widget_get_style_context (CTK_WIDGET (row));
   if (ROW_PRIV (row)->activatable ||
       (ROW_PRIV (row)->selectable && can_select))
     ctk_style_context_add_class (context, "activatable");
@@ -3636,7 +3636,7 @@ void
 ctk_list_box_row_set_activatable (GtkListBoxRow *row,
                                   gboolean       activatable)
 {
-  g_return_if_fail (GTK_IS_LIST_BOX_ROW (row));
+  g_return_if_fail (CTK_IS_LIST_BOX_ROW (row));
 
   activatable = activatable != FALSE;
 
@@ -3663,7 +3663,7 @@ ctk_list_box_row_set_activatable (GtkListBoxRow *row,
 gboolean
 ctk_list_box_row_get_activatable (GtkListBoxRow *row)
 {
-  g_return_val_if_fail (GTK_IS_LIST_BOX_ROW (row), TRUE);
+  g_return_val_if_fail (CTK_IS_LIST_BOX_ROW (row), TRUE);
 
   return ROW_PRIV (row)->activatable;
 }
@@ -3681,7 +3681,7 @@ void
 ctk_list_box_row_set_selectable (GtkListBoxRow *row,
                                  gboolean       selectable)
 {
-  g_return_if_fail (GTK_IS_LIST_BOX_ROW (row));
+  g_return_if_fail (CTK_IS_LIST_BOX_ROW (row));
 
   selectable = selectable != FALSE;
 
@@ -3711,7 +3711,7 @@ ctk_list_box_row_set_selectable (GtkListBoxRow *row,
 gboolean
 ctk_list_box_row_get_selectable (GtkListBoxRow *row)
 {
-  g_return_val_if_fail (GTK_IS_LIST_BOX_ROW (row), TRUE);
+  g_return_val_if_fail (CTK_IS_LIST_BOX_ROW (row), TRUE);
 
   return ROW_PRIV (row)->selectable;
 }
@@ -3720,7 +3720,7 @@ static void
 ctk_list_box_row_set_action_name (GtkActionable *actionable,
                                   const gchar   *action_name)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (actionable);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (actionable);
   GtkListBoxRowPrivate *priv = ROW_PRIV (row);
 
   if (!priv->action_helper)
@@ -3733,7 +3733,7 @@ static void
 ctk_list_box_row_set_action_target_value (GtkActionable *actionable,
                                           GVariant      *action_target)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (actionable);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (actionable);
   GtkListBoxRowPrivate *priv = ROW_PRIV (row);
 
   if (!priv->action_helper)
@@ -3748,7 +3748,7 @@ ctk_list_box_row_get_property (GObject    *obj,
                                GValue     *value,
                                GParamSpec *pspec)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (obj);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (obj);
 
   switch (property_id)
     {
@@ -3776,7 +3776,7 @@ ctk_list_box_row_set_property (GObject      *obj,
                                const GValue *value,
                                GParamSpec   *pspec)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (obj);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (obj);
 
   switch (property_id)
     {
@@ -3787,10 +3787,10 @@ ctk_list_box_row_set_property (GObject      *obj,
       ctk_list_box_row_set_selectable (row, g_value_get_boolean (value));
       break;
     case ROW_PROP_ACTION_NAME:
-      ctk_list_box_row_set_action_name (GTK_ACTIONABLE (row), g_value_get_string (value));
+      ctk_list_box_row_set_action_name (CTK_ACTIONABLE (row), g_value_get_string (value));
       break;
     case ROW_PROP_ACTION_TARGET:
-      ctk_list_box_row_set_action_target_value (GTK_ACTIONABLE (row), g_value_get_variant (value));
+      ctk_list_box_row_set_action_target_value (CTK_ACTIONABLE (row), g_value_get_variant (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (obj, property_id, pspec);
@@ -3801,7 +3801,7 @@ ctk_list_box_row_set_property (GObject      *obj,
 static const gchar *
 ctk_list_box_row_get_action_name (GtkActionable *actionable)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (actionable);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (actionable);
 
   return ctk_action_helper_get_action_name (ROW_PRIV (row)->action_helper);
 }
@@ -3809,7 +3809,7 @@ ctk_list_box_row_get_action_name (GtkActionable *actionable)
 static GVariant *
 ctk_list_box_row_get_action_target_value (GtkActionable *actionable)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (actionable);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (actionable);
 
   return ctk_action_helper_get_action_target_value (ROW_PRIV (row)->action_helper);
 }
@@ -3826,8 +3826,8 @@ ctk_list_box_row_actionable_iface_init (GtkActionableInterface *iface)
 static void
 ctk_list_box_row_finalize (GObject *obj)
 {
-  g_clear_object (&ROW_PRIV (GTK_LIST_BOX_ROW (obj))->header);
-  g_clear_object (&ROW_PRIV (GTK_LIST_BOX_ROW (obj))->gadget);
+  g_clear_object (&ROW_PRIV (CTK_LIST_BOX_ROW (obj))->header);
+  g_clear_object (&ROW_PRIV (CTK_LIST_BOX_ROW (obj))->gadget);
 
   G_OBJECT_CLASS (ctk_list_box_row_parent_class)->finalize (obj);
 }
@@ -3835,7 +3835,7 @@ ctk_list_box_row_finalize (GObject *obj)
 static void
 ctk_list_box_row_dispose (GObject *object)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (object);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (object);
   GtkListBoxRowPrivate *priv = ROW_PRIV (row);
 
   g_clear_object (&priv->action_helper);
@@ -3846,7 +3846,7 @@ ctk_list_box_row_dispose (GObject *object)
 static void
 ctk_list_box_row_grab_focus (GtkWidget *widget)
 {
-  GtkListBoxRow *row = GTK_LIST_BOX_ROW (widget);
+  GtkListBoxRow *row = CTK_LIST_BOX_ROW (widget);
   GtkListBox *box = ctk_list_box_row_get_box (row);
 
   g_return_if_fail (box != NULL);
@@ -3854,16 +3854,16 @@ ctk_list_box_row_grab_focus (GtkWidget *widget)
   if (BOX_PRIV (box)->cursor_row != row)
     ctk_list_box_update_cursor (box, row, FALSE);
 
-  GTK_WIDGET_CLASS (ctk_list_box_row_parent_class)->grab_focus (widget);
+  CTK_WIDGET_CLASS (ctk_list_box_row_parent_class)->grab_focus (widget);
 }
 
 static void
 ctk_list_box_row_class_init (GtkListBoxRowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_LIST_BOX_ROW_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_LIST_BOX_ROW_ACCESSIBLE);
 
   object_class->get_property = ctk_list_box_row_get_property;
   object_class->set_property = ctk_list_box_row_set_property;
@@ -3944,13 +3944,13 @@ ctk_list_box_row_class_init (GtkListBoxRowClass *klass)
 static void
 ctk_list_box_row_init (GtkListBoxRow *row)
 {
-  ctk_widget_set_can_focus (GTK_WIDGET (row), TRUE);
+  ctk_widget_set_can_focus (CTK_WIDGET (row), TRUE);
 
   ROW_PRIV (row)->activatable = TRUE;
   ROW_PRIV (row)->selectable = TRUE;
 
-  ROW_PRIV (row)->gadget = ctk_css_custom_gadget_new_for_node (ctk_widget_get_css_node (GTK_WIDGET (row)),
-                                                     GTK_WIDGET (row),
+  ROW_PRIV (row)->gadget = ctk_css_custom_gadget_new_for_node (ctk_widget_get_css_node (CTK_WIDGET (row)),
+                                                     CTK_WIDGET (row),
                                                      ctk_list_box_row_measure,
                                                      ctk_list_box_row_allocate,
                                                      ctk_list_box_row_render,
@@ -3966,11 +3966,11 @@ ctk_list_box_buildable_add_child (GtkBuildable *buildable,
                                   const gchar  *type)
 {
   if (type && strcmp (type, "placeholder") == 0)
-    ctk_list_box_set_placeholder (GTK_LIST_BOX (buildable), GTK_WIDGET (child));
+    ctk_list_box_set_placeholder (CTK_LIST_BOX (buildable), CTK_WIDGET (child));
   else if (!type)
-    ctk_container_add (GTK_CONTAINER (buildable), GTK_WIDGET (child));
+    ctk_container_add (CTK_CONTAINER (buildable), CTK_WIDGET (child));
   else
-    GTK_BUILDER_WARN_INVALID_CHILD_TYPE (buildable, type);
+    CTK_BUILDER_WARN_INVALID_CHILD_TYPE (buildable, type);
 }
 
 static void
@@ -3995,7 +3995,7 @@ ctk_list_box_bound_model_changed (GListModel *list,
       GtkListBoxRow *row;
 
       row = ctk_list_box_get_row_at_index (box, position);
-      ctk_widget_destroy (GTK_WIDGET (row));
+      ctk_widget_destroy (CTK_WIDGET (row));
     }
 
   for (i = 0; i < added; i++)
@@ -4071,7 +4071,7 @@ ctk_list_box_bind_model (GtkListBox                 *box,
 {
   GtkListBoxPrivate *priv = BOX_PRIV (box);
 
-  g_return_if_fail (GTK_IS_LIST_BOX (box));
+  g_return_if_fail (CTK_IS_LIST_BOX (box));
   g_return_if_fail (model == NULL || G_IS_LIST_MODEL (model));
   g_return_if_fail (model == NULL || create_widget_func != NULL);
 
@@ -4084,7 +4084,7 @@ ctk_list_box_bind_model (GtkListBox                 *box,
       g_clear_object (&priv->bound_model);
     }
 
-  ctk_list_box_forall (GTK_CONTAINER (box), FALSE, (GtkCallback) ctk_widget_destroy, NULL);
+  ctk_list_box_forall (CTK_CONTAINER (box), FALSE, (GtkCallback) ctk_widget_destroy, NULL);
 
   if (model == NULL)
     return;

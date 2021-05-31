@@ -17,20 +17,20 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_IMAGE_BUILTIN_PRIVATE_H__
-#define __GTK_CSS_IMAGE_BUILTIN_PRIVATE_H__
+#ifndef __CTK_CSS_IMAGE_BUILTIN_PRIVATE_H__
+#define __CTK_CSS_IMAGE_BUILTIN_PRIVATE_H__
 
 #include "gtk/gtkcssimageprivate.h"
 #include "gtk/gtkicontheme.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_BUILTIN           (ctk_css_image_builtin_get_type ())
-#define GTK_CSS_IMAGE_BUILTIN(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltin))
-#define GTK_CSS_IMAGE_BUILTIN_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltinClass))
-#define GTK_IS_CSS_IMAGE_BUILTIN(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_BUILTIN))
-#define GTK_IS_CSS_IMAGE_BUILTIN_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_IMAGE_BUILTIN))
-#define GTK_CSS_IMAGE_BUILTIN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltinClass))
+#define CTK_TYPE_CSS_IMAGE_BUILTIN           (ctk_css_image_builtin_get_type ())
+#define CTK_CSS_IMAGE_BUILTIN(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltin))
+#define CTK_CSS_IMAGE_BUILTIN_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltinClass))
+#define CTK_IS_CSS_IMAGE_BUILTIN(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_BUILTIN))
+#define CTK_IS_CSS_IMAGE_BUILTIN_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_BUILTIN))
+#define CTK_CSS_IMAGE_BUILTIN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltinClass))
 
 typedef struct _GtkCssImageBuiltin           GtkCssImageBuiltin;
 typedef struct _GtkCssImageBuiltinClass      GtkCssImageBuiltinClass;
@@ -60,4 +60,4 @@ void           ctk_css_image_builtin_draw                  (GtkCssImage         
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_IMAGE_BUILTIN_PRIVATE_H__ */
+#endif /* __CTK_CSS_IMAGE_BUILTIN_PRIVATE_H__ */

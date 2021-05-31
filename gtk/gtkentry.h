@@ -26,11 +26,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_ENTRY_H__
-#define __GTK_ENTRY_H__
+#ifndef __CTK_ENTRY_H__
+#define __CTK_ENTRY_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -45,17 +45,17 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ENTRY                  (ctk_entry_get_type ())
-#define GTK_ENTRY(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ENTRY, GtkEntry))
-#define GTK_ENTRY_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ENTRY, GtkEntryClass))
-#define GTK_IS_ENTRY(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ENTRY))
-#define GTK_IS_ENTRY_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ENTRY))
-#define GTK_ENTRY_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ENTRY, GtkEntryClass))
+#define CTK_TYPE_ENTRY                  (ctk_entry_get_type ())
+#define CTK_ENTRY(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ENTRY, GtkEntry))
+#define CTK_ENTRY_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ENTRY, GtkEntryClass))
+#define CTK_IS_ENTRY(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ENTRY))
+#define CTK_IS_ENTRY_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ENTRY))
+#define CTK_ENTRY_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ENTRY, GtkEntryClass))
 
 /**
  * GtkEntryIconPosition:
- * @GTK_ENTRY_ICON_PRIMARY: At the beginning of the entry (depending on the text direction).
- * @GTK_ENTRY_ICON_SECONDARY: At the end of the entry (depending on the text direction).
+ * @CTK_ENTRY_ICON_PRIMARY: At the beginning of the entry (depending on the text direction).
+ * @CTK_ENTRY_ICON_SECONDARY: At the end of the entry (depending on the text direction).
  *
  * Specifies the side of the entry at which an icon is placed.
  *
@@ -63,8 +63,8 @@ G_BEGIN_DECLS
  */
 typedef enum
 {
-  GTK_ENTRY_ICON_PRIMARY,
-  GTK_ENTRY_ICON_SECONDARY
+  CTK_ENTRY_ICON_PRIMARY,
+  CTK_ENTRY_ICON_SECONDARY
 } GtkEntryIconPosition;
 
 typedef struct _GtkEntry              GtkEntry;
@@ -423,4 +423,4 @@ void           ctk_entry_grab_focus_without_selecting        (GtkEntry          
 
 G_END_DECLS
 
-#endif /* __GTK_ENTRY_H__ */
+#endif /* __CTK_ENTRY_H__ */

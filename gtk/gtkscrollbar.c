@@ -84,12 +84,12 @@
 
 static void ctk_scrollbar_style_updated (GtkWidget *widget);
 
-G_DEFINE_TYPE (GtkScrollbar, ctk_scrollbar, GTK_TYPE_RANGE)
+G_DEFINE_TYPE (GtkScrollbar, ctk_scrollbar, CTK_TYPE_RANGE)
 
 static void
 ctk_scrollbar_class_init (GtkScrollbarClass *class)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   widget_class->style_updated = ctk_scrollbar_style_updated;
 
@@ -108,42 +108,42 @@ ctk_scrollbar_class_init (GtkScrollbarClass *class)
 							     0,
 							     G_MAXINT,
 							     21,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   ctk_widget_class_install_style_property (widget_class,
 					   g_param_spec_boolean ("fixed-slider-length",
                                                                  P_("Fixed slider size"),
                                                                  P_("Don't change slider size, just lock it to the minimum length"),
                                                                  FALSE,
-                                                                 GTK_PARAM_READABLE));
+                                                                 CTK_PARAM_READABLE));
 
   ctk_widget_class_install_style_property (widget_class,
 					   g_param_spec_boolean ("has-backward-stepper",
                                                                  P_("Backward stepper"),
                                                                  P_("Display the standard backward arrow button"),
                                                                  TRUE,
-                                                                 GTK_PARAM_READABLE));
+                                                                 CTK_PARAM_READABLE));
 
   ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_boolean ("has-forward-stepper",
                                                                  P_("Forward stepper"),
                                                                  P_("Display the standard forward arrow button"),
                                                                  TRUE,
-                                                                 GTK_PARAM_READABLE));
+                                                                 CTK_PARAM_READABLE));
 
   ctk_widget_class_install_style_property (widget_class,
 					   g_param_spec_boolean ("has-secondary-backward-stepper",
                                                                  P_("Secondary backward stepper"),
                                                                  P_("Display a second backward arrow button on the opposite end of the scrollbar"),
                                                                  FALSE,
-                                                                 GTK_PARAM_READABLE));
+                                                                 CTK_PARAM_READABLE));
 
   ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_boolean ("has-secondary-forward-stepper",
                                                                  P_("Secondary forward stepper"),
                                                                  P_("Display a second forward arrow button on the opposite end of the scrollbar"),
                                                                  FALSE,
-                                                                 GTK_PARAM_READABLE));
+                                                                 CTK_PARAM_READABLE));
 
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_SCROLL_BAR);
   ctk_widget_class_set_css_name (widget_class, "scrollbar");
@@ -154,8 +154,8 @@ ctk_scrollbar_update_style (GtkScrollbar *scrollbar)
 {
   gboolean fixed_size;
   gboolean has_a, has_b, has_c, has_d;
-  GtkRange *range = GTK_RANGE (scrollbar);
-  GtkWidget *widget = GTK_WIDGET (scrollbar);
+  GtkRange *range = CTK_RANGE (scrollbar);
+  GtkWidget *widget = CTK_WIDGET (scrollbar);
 
   ctk_widget_style_get (widget,
                         "fixed-slider-length", &fixed_size,
@@ -173,14 +173,14 @@ static void
 ctk_scrollbar_init (GtkScrollbar *scrollbar)
 {
   ctk_scrollbar_update_style (scrollbar);
-  ctk_range_set_slider_use_min_size (GTK_RANGE (scrollbar), TRUE);
+  ctk_range_set_slider_use_min_size (CTK_RANGE (scrollbar), TRUE);
 }
 
 static void
 ctk_scrollbar_style_updated (GtkWidget *widget)
 {
-  ctk_scrollbar_update_style (GTK_SCROLLBAR (widget));
-  GTK_WIDGET_CLASS (ctk_scrollbar_parent_class)->style_updated (widget);
+  ctk_scrollbar_update_style (CTK_SCROLLBAR (widget));
+  CTK_WIDGET_CLASS (ctk_scrollbar_parent_class)->style_updated (widget);
 }
 
 /**
@@ -198,10 +198,10 @@ GtkWidget *
 ctk_scrollbar_new (GtkOrientation  orientation,
                    GtkAdjustment  *adjustment)
 {
-  g_return_val_if_fail (adjustment == NULL || GTK_IS_ADJUSTMENT (adjustment),
+  g_return_val_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment),
                         NULL);
 
-  return g_object_new (GTK_TYPE_SCROLLBAR,
+  return g_object_new (CTK_TYPE_SCROLLBAR,
                        "orientation", orientation,
                        "adjustment",  adjustment,
                        NULL);

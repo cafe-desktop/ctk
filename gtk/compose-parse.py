@@ -76,8 +76,8 @@ headerfile_start = """/* GTK - The GIMP Tool Kit
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_IM_CONTEXT_SIMPLE_SEQS_H__
-#define __GTK_IM_CONTEXT_SIMPLE_SEQS_H__
+#ifndef __CTK_IM_CONTEXT_SIMPLE_SEQS_H__
+#define __CTK_IM_CONTEXT_SIMPLE_SEQS_H__
 
 /* === These are the original comments of the file; we keep for historical purposes ===
  *
@@ -108,7 +108,7 @@ static const guint16 ctk_compose_seqs_compact[] = {"""
 
 headerfile_end = """};
 
-#endif /* __GTK_IM_CONTEXT_SIMPLE_SEQS_H__ */
+#endif /* __CTK_IM_CONTEXT_SIMPLE_SEQS_H__ */
 """
 
 def stringtohex(str): return atoi(str, 16)

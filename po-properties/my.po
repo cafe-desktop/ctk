@@ -383,10 +383,10 @@ msgstr "အရေးကြီးသလား"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "လှုပ်ရှားမှုကို အရေးတကြီး သဘောထား မထား။ မှန်ကန်တဲ့အခါ၊ ဒီလှုပ်ရှားမှုအတွက် ကိရိယာ ကြားခံများက "
-"GTK_TOOLBAR_BOTH_HORIZ စနစ်နဲ့ ပြသွားတယ်။"
+"CTK_TOOLBAR_BOTH_HORIZ စနစ်နဲ့ ပြသွားတယ်။"
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -906,7 +906,7 @@ msgstr "စံထားချက် ကြားအကွာအဝေး"
 
 #: gtk/gtkbutton.c:461
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CAN_DEFAULT ခလုတ်များအ​တွက် ထည့်သွင်းဖို့ အပို​ နေရာလပ်"
 
 #: gtk/gtkbutton.c:475
@@ -916,7 +916,7 @@ msgstr "စံထားချက် ပြင်ပ ကြားအ​ကွာ�
 #: gtk/gtkbutton.c:476
 #, fuzzy
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr "အနားသတ် ပြင်ပမှ အမြဲဆွဲထားတဲ့ CAN_DEFAULT ခလုတ်များကို ထည့်သွင်းရန် အပို နေရာလပ်"
 
@@ -6084,10 +6084,10 @@ msgstr "ပုံသင်္ကေတနဲ့ အမှတ်တံဆိပ�
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "ခလုတ်တန်း အချက်ကို အရေးတကြီး အဖြစ် မှတ်ယူ၊ မမှတ်ယူ။ မှန်ရင်၊ ခလုတ်တန်း ခလုတ်များက စသားကို "
-"GTK_TOOLBAR_BOTH_HORIZ စနစ်နဲပ ပြသတယ်။"
+"CTK_TOOLBAR_BOTH_HORIZ စနစ်နဲပ ပြသတယ်။"
 
 #: gtk/gtktoolitemgroup.c:1572
 #, fuzzy

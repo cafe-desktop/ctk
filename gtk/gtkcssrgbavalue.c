@@ -23,7 +23,7 @@
 #include "gtkstylecontextprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   GdkRGBA rgba;
 };
 
@@ -97,7 +97,7 @@ ctk_css_value_rgba_print (const GtkCssValue *rgba,
   g_free (s);
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_RGBA = {
+static const GtkCssValueClass CTK_CSS_VALUE_RGBA = {
   ctk_css_value_rgba_free,
   ctk_css_value_rgba_compute,
   ctk_css_value_rgba_equal,
@@ -112,7 +112,7 @@ _ctk_css_rgba_value_new_from_rgba (const GdkRGBA *rgba)
 
   g_return_val_if_fail (rgba != NULL, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_RGBA);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_RGBA);
   value->rgba = *rgba;
 
   return value;
@@ -121,7 +121,7 @@ _ctk_css_rgba_value_new_from_rgba (const GdkRGBA *rgba)
 const GdkRGBA *
 _ctk_css_rgba_value_get_rgba (const GtkCssValue *rgba)
 {
-  g_return_val_if_fail (rgba->class == &GTK_CSS_VALUE_RGBA, NULL);
+  g_return_val_if_fail (rgba->class == &CTK_CSS_VALUE_RGBA, NULL);
 
   return &rgba->rgba;
 }

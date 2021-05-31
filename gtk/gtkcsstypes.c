@@ -27,36 +27,36 @@ _ctk_css_blend_mode_get_operator (GtkCssBlendMode mode)
 {
   switch (mode)
     {
-    case GTK_CSS_BLEND_MODE_COLOR:
+    case CTK_CSS_BLEND_MODE_COLOR:
       return CAIRO_OPERATOR_HSL_COLOR;
-    case GTK_CSS_BLEND_MODE_COLOR_BURN:
+    case CTK_CSS_BLEND_MODE_COLOR_BURN:
       return CAIRO_OPERATOR_COLOR_BURN;
-    case GTK_CSS_BLEND_MODE_COLOR_DODGE:
+    case CTK_CSS_BLEND_MODE_COLOR_DODGE:
       return CAIRO_OPERATOR_COLOR_DODGE;
-    case GTK_CSS_BLEND_MODE_DARKEN:
+    case CTK_CSS_BLEND_MODE_DARKEN:
       return CAIRO_OPERATOR_DARKEN;
-    case GTK_CSS_BLEND_MODE_DIFFERENCE:
+    case CTK_CSS_BLEND_MODE_DIFFERENCE:
       return CAIRO_OPERATOR_DIFFERENCE;
-    case GTK_CSS_BLEND_MODE_EXCLUSION:
+    case CTK_CSS_BLEND_MODE_EXCLUSION:
       return CAIRO_OPERATOR_EXCLUSION;
-    case GTK_CSS_BLEND_MODE_HARD_LIGHT:
+    case CTK_CSS_BLEND_MODE_HARD_LIGHT:
       return CAIRO_OPERATOR_HARD_LIGHT;
-    case GTK_CSS_BLEND_MODE_HUE:
+    case CTK_CSS_BLEND_MODE_HUE:
       return CAIRO_OPERATOR_HSL_HUE;
-    case GTK_CSS_BLEND_MODE_LIGHTEN:
+    case CTK_CSS_BLEND_MODE_LIGHTEN:
       return CAIRO_OPERATOR_LIGHTEN;
-    case GTK_CSS_BLEND_MODE_LUMINOSITY:
+    case CTK_CSS_BLEND_MODE_LUMINOSITY:
       return CAIRO_OPERATOR_HSL_LUMINOSITY;
-    case GTK_CSS_BLEND_MODE_MULTIPLY:
+    case CTK_CSS_BLEND_MODE_MULTIPLY:
       return CAIRO_OPERATOR_MULTIPLY;
-    case GTK_CSS_BLEND_MODE_OVERLAY:
+    case CTK_CSS_BLEND_MODE_OVERLAY:
       return CAIRO_OPERATOR_OVERLAY;
-    case GTK_CSS_BLEND_MODE_SATURATE:
+    case CTK_CSS_BLEND_MODE_SATURATE:
       return CAIRO_OPERATOR_SATURATE;
-    case GTK_CSS_BLEND_MODE_SCREEN:
+    case CTK_CSS_BLEND_MODE_SCREEN:
       return CAIRO_OPERATOR_SCREEN;
 
-    case GTK_CSS_BLEND_MODE_NORMAL:
+    case CTK_CSS_BLEND_MODE_NORMAL:
     default:
       return CAIRO_OPERATOR_OVER;
     }
@@ -65,18 +65,18 @@ _ctk_css_blend_mode_get_operator (GtkCssBlendMode mode)
 GtkCssChange
 _ctk_css_change_for_sibling (GtkCssChange match)
 {
-#define BASE_STATES ( GTK_CSS_CHANGE_CLASS \
-                    | GTK_CSS_CHANGE_NAME \
-                    | GTK_CSS_CHANGE_ID \
-                    | GTK_CSS_CHANGE_FIRST_CHILD \
-                    | GTK_CSS_CHANGE_LAST_CHILD \
-                    | GTK_CSS_CHANGE_NTH_CHILD \
-                    | GTK_CSS_CHANGE_NTH_LAST_CHILD \
-                    | GTK_CSS_CHANGE_STATE )
+#define BASE_STATES ( CTK_CSS_CHANGE_CLASS \
+                    | CTK_CSS_CHANGE_NAME \
+                    | CTK_CSS_CHANGE_ID \
+                    | CTK_CSS_CHANGE_FIRST_CHILD \
+                    | CTK_CSS_CHANGE_LAST_CHILD \
+                    | CTK_CSS_CHANGE_NTH_CHILD \
+                    | CTK_CSS_CHANGE_NTH_LAST_CHILD \
+                    | CTK_CSS_CHANGE_STATE )
 
-#define KEEP_STATES ( ~(BASE_STATES|GTK_CSS_CHANGE_SOURCE|GTK_CSS_CHANGE_PARENT_STYLE) \
-                    | GTK_CSS_CHANGE_NTH_CHILD \
-                    | GTK_CSS_CHANGE_NTH_LAST_CHILD)
+#define KEEP_STATES ( ~(BASE_STATES|CTK_CSS_CHANGE_SOURCE|CTK_CSS_CHANGE_PARENT_STYLE) \
+                    | CTK_CSS_CHANGE_NTH_CHILD \
+                    | CTK_CSS_CHANGE_NTH_LAST_CHILD)
 
 #define SIBLING_SHIFT 8
 
@@ -90,26 +90,26 @@ _ctk_css_change_for_sibling (GtkCssChange match)
 GtkCssChange
 _ctk_css_change_for_child (GtkCssChange match)
 {
-#define BASE_STATES ( GTK_CSS_CHANGE_CLASS \
-                    | GTK_CSS_CHANGE_NAME \
-                    | GTK_CSS_CHANGE_ID \
-                    | GTK_CSS_CHANGE_FIRST_CHILD \
-                    | GTK_CSS_CHANGE_LAST_CHILD \
-                    | GTK_CSS_CHANGE_NTH_CHILD \
-                    | GTK_CSS_CHANGE_NTH_LAST_CHILD \
-                    | GTK_CSS_CHANGE_STATE \
-                    | GTK_CSS_CHANGE_SIBLING_CLASS \
-                    | GTK_CSS_CHANGE_SIBLING_NAME \
-                    | GTK_CSS_CHANGE_SIBLING_ID \
-                    | GTK_CSS_CHANGE_SIBLING_FIRST_CHILD \
-                    | GTK_CSS_CHANGE_SIBLING_LAST_CHILD \
-                    | GTK_CSS_CHANGE_SIBLING_NTH_CHILD \
-                    | GTK_CSS_CHANGE_SIBLING_NTH_LAST_CHILD \
-                    | GTK_CSS_CHANGE_SIBLING_STATE )
+#define BASE_STATES ( CTK_CSS_CHANGE_CLASS \
+                    | CTK_CSS_CHANGE_NAME \
+                    | CTK_CSS_CHANGE_ID \
+                    | CTK_CSS_CHANGE_FIRST_CHILD \
+                    | CTK_CSS_CHANGE_LAST_CHILD \
+                    | CTK_CSS_CHANGE_NTH_CHILD \
+                    | CTK_CSS_CHANGE_NTH_LAST_CHILD \
+                    | CTK_CSS_CHANGE_STATE \
+                    | CTK_CSS_CHANGE_SIBLING_CLASS \
+                    | CTK_CSS_CHANGE_SIBLING_NAME \
+                    | CTK_CSS_CHANGE_SIBLING_ID \
+                    | CTK_CSS_CHANGE_SIBLING_FIRST_CHILD \
+                    | CTK_CSS_CHANGE_SIBLING_LAST_CHILD \
+                    | CTK_CSS_CHANGE_SIBLING_NTH_CHILD \
+                    | CTK_CSS_CHANGE_SIBLING_NTH_LAST_CHILD \
+                    | CTK_CSS_CHANGE_SIBLING_STATE )
 
 #define PARENT_SHIFT 16
 
-  return (match & ~(BASE_STATES|GTK_CSS_CHANGE_SOURCE|GTK_CSS_CHANGE_PARENT_STYLE)) | ((match & BASE_STATES) << PARENT_SHIFT);
+  return (match & ~(BASE_STATES|CTK_CSS_CHANGE_SOURCE|CTK_CSS_CHANGE_PARENT_STYLE)) | ((match & BASE_STATES) << PARENT_SHIFT);
 
 #undef BASE_STATES
 #undef PARENT_SHIFT
@@ -123,42 +123,42 @@ ctk_css_change_print (GtkCssChange  change,
     GtkCssChange flags;
     const char *name;
   } names[] = {
-    { GTK_CSS_CHANGE_CLASS, "class" },
-    { GTK_CSS_CHANGE_NAME, "name" },
-    { GTK_CSS_CHANGE_ID, "id" },
-    { GTK_CSS_CHANGE_FIRST_CHILD, "first-child" },
-    { GTK_CSS_CHANGE_LAST_CHILD, "last-child" },
-    { GTK_CSS_CHANGE_NTH_CHILD, "nth-child" },
-    { GTK_CSS_CHANGE_NTH_LAST_CHILD, "nth-last-child" },
-    { GTK_CSS_CHANGE_STATE, "state" },
-    { GTK_CSS_CHANGE_SIBLING_CLASS, "sibling-class" },
-    { GTK_CSS_CHANGE_SIBLING_NAME, "sibling-name" },
-    { GTK_CSS_CHANGE_SIBLING_ID, "sibling-id" },
-    { GTK_CSS_CHANGE_SIBLING_FIRST_CHILD, "sibling-first-child" },
-    { GTK_CSS_CHANGE_SIBLING_LAST_CHILD, "sibling-last-child" },
-    { GTK_CSS_CHANGE_SIBLING_NTH_CHILD, "sibling-nth-child" },
-    { GTK_CSS_CHANGE_SIBLING_NTH_LAST_CHILD, "sibling-nth-last-child" },
-    { GTK_CSS_CHANGE_SIBLING_STATE, "sibling-state" },
-    { GTK_CSS_CHANGE_PARENT_CLASS, "parent-class" },
-    { GTK_CSS_CHANGE_PARENT_NAME, "parent-name" },
-    { GTK_CSS_CHANGE_PARENT_ID, "parent-id" },
-    { GTK_CSS_CHANGE_PARENT_FIRST_CHILD, "parent-first-child" },
-    { GTK_CSS_CHANGE_PARENT_LAST_CHILD, "parent-last-child" },
-    { GTK_CSS_CHANGE_PARENT_NTH_CHILD, "parent-nth-child" },
-    { GTK_CSS_CHANGE_PARENT_NTH_LAST_CHILD, "parent-nth-last-child" },
-    { GTK_CSS_CHANGE_PARENT_STATE, "parent-state" },
-    { GTK_CSS_CHANGE_PARENT_SIBLING_CLASS, "parent-sibling-" },
-    { GTK_CSS_CHANGE_PARENT_SIBLING_NAME, "parent-sibling-name" },
-    { GTK_CSS_CHANGE_PARENT_SIBLING_ID, "parent-sibling-id" },
-    { GTK_CSS_CHANGE_PARENT_SIBLING_FIRST_CHILD, "parent-sibling-first-child" },
-    { GTK_CSS_CHANGE_PARENT_SIBLING_LAST_CHILD, "parent-sibling-last-child" },
-    { GTK_CSS_CHANGE_PARENT_SIBLING_NTH_CHILD, "parent-sibling-nth-child" },
-    { GTK_CSS_CHANGE_PARENT_SIBLING_NTH_LAST_CHILD, "parent-sibling-nth-last-child" },
-    { GTK_CSS_CHANGE_PARENT_SIBLING_STATE, "parent-sibling-state" },
-    { GTK_CSS_CHANGE_SOURCE, "source" },
-    { GTK_CSS_CHANGE_PARENT_STYLE, "parent-style" },
-    { GTK_CSS_CHANGE_TIMESTAMP, "timestamp" },
-    { GTK_CSS_CHANGE_ANIMATIONS, "animations" },
+    { CTK_CSS_CHANGE_CLASS, "class" },
+    { CTK_CSS_CHANGE_NAME, "name" },
+    { CTK_CSS_CHANGE_ID, "id" },
+    { CTK_CSS_CHANGE_FIRST_CHILD, "first-child" },
+    { CTK_CSS_CHANGE_LAST_CHILD, "last-child" },
+    { CTK_CSS_CHANGE_NTH_CHILD, "nth-child" },
+    { CTK_CSS_CHANGE_NTH_LAST_CHILD, "nth-last-child" },
+    { CTK_CSS_CHANGE_STATE, "state" },
+    { CTK_CSS_CHANGE_SIBLING_CLASS, "sibling-class" },
+    { CTK_CSS_CHANGE_SIBLING_NAME, "sibling-name" },
+    { CTK_CSS_CHANGE_SIBLING_ID, "sibling-id" },
+    { CTK_CSS_CHANGE_SIBLING_FIRST_CHILD, "sibling-first-child" },
+    { CTK_CSS_CHANGE_SIBLING_LAST_CHILD, "sibling-last-child" },
+    { CTK_CSS_CHANGE_SIBLING_NTH_CHILD, "sibling-nth-child" },
+    { CTK_CSS_CHANGE_SIBLING_NTH_LAST_CHILD, "sibling-nth-last-child" },
+    { CTK_CSS_CHANGE_SIBLING_STATE, "sibling-state" },
+    { CTK_CSS_CHANGE_PARENT_CLASS, "parent-class" },
+    { CTK_CSS_CHANGE_PARENT_NAME, "parent-name" },
+    { CTK_CSS_CHANGE_PARENT_ID, "parent-id" },
+    { CTK_CSS_CHANGE_PARENT_FIRST_CHILD, "parent-first-child" },
+    { CTK_CSS_CHANGE_PARENT_LAST_CHILD, "parent-last-child" },
+    { CTK_CSS_CHANGE_PARENT_NTH_CHILD, "parent-nth-child" },
+    { CTK_CSS_CHANGE_PARENT_NTH_LAST_CHILD, "parent-nth-last-child" },
+    { CTK_CSS_CHANGE_PARENT_STATE, "parent-state" },
+    { CTK_CSS_CHANGE_PARENT_SIBLING_CLASS, "parent-sibling-" },
+    { CTK_CSS_CHANGE_PARENT_SIBLING_NAME, "parent-sibling-name" },
+    { CTK_CSS_CHANGE_PARENT_SIBLING_ID, "parent-sibling-id" },
+    { CTK_CSS_CHANGE_PARENT_SIBLING_FIRST_CHILD, "parent-sibling-first-child" },
+    { CTK_CSS_CHANGE_PARENT_SIBLING_LAST_CHILD, "parent-sibling-last-child" },
+    { CTK_CSS_CHANGE_PARENT_SIBLING_NTH_CHILD, "parent-sibling-nth-child" },
+    { CTK_CSS_CHANGE_PARENT_SIBLING_NTH_LAST_CHILD, "parent-sibling-nth-last-child" },
+    { CTK_CSS_CHANGE_PARENT_SIBLING_STATE, "parent-sibling-state" },
+    { CTK_CSS_CHANGE_SOURCE, "source" },
+    { CTK_CSS_CHANGE_PARENT_STYLE, "parent-style" },
+    { CTK_CSS_CHANGE_TIMESTAMP, "timestamp" },
+    { CTK_CSS_CHANGE_ANIMATIONS, "animations" },
   };
   guint i;
   gboolean first;
@@ -183,36 +183,36 @@ ctk_css_unit_get_dimension (GtkCssUnit unit)
 {
   switch (unit)
     {
-    case GTK_CSS_NUMBER:
-      return GTK_CSS_DIMENSION_NUMBER;
+    case CTK_CSS_NUMBER:
+      return CTK_CSS_DIMENSION_NUMBER;
 
-    case GTK_CSS_PERCENT:
-      return GTK_CSS_DIMENSION_PERCENTAGE;
+    case CTK_CSS_PERCENT:
+      return CTK_CSS_DIMENSION_PERCENTAGE;
 
-    case GTK_CSS_PX:
-    case GTK_CSS_PT:
-    case GTK_CSS_EM:
-    case GTK_CSS_EX:
-    case GTK_CSS_REM:
-    case GTK_CSS_PC:
-    case GTK_CSS_IN:
-    case GTK_CSS_CM:
-    case GTK_CSS_MM:
-      return GTK_CSS_DIMENSION_LENGTH;
+    case CTK_CSS_PX:
+    case CTK_CSS_PT:
+    case CTK_CSS_EM:
+    case CTK_CSS_EX:
+    case CTK_CSS_REM:
+    case CTK_CSS_PC:
+    case CTK_CSS_IN:
+    case CTK_CSS_CM:
+    case CTK_CSS_MM:
+      return CTK_CSS_DIMENSION_LENGTH;
 
-    case GTK_CSS_RAD:
-    case GTK_CSS_DEG:
-    case GTK_CSS_GRAD:
-    case GTK_CSS_TURN:
-      return GTK_CSS_DIMENSION_ANGLE;
+    case CTK_CSS_RAD:
+    case CTK_CSS_DEG:
+    case CTK_CSS_GRAD:
+    case CTK_CSS_TURN:
+      return CTK_CSS_DIMENSION_ANGLE;
 
-    case GTK_CSS_S:
-    case GTK_CSS_MS:
-      return GTK_CSS_DIMENSION_TIME;
+    case CTK_CSS_S:
+    case CTK_CSS_MS:
+      return CTK_CSS_DIMENSION_TIME;
 
     default:
       g_assert_not_reached ();
-      return GTK_CSS_DIMENSION_PERCENTAGE;
+      return CTK_CSS_DIMENSION_PERCENTAGE;
     }
 }
 

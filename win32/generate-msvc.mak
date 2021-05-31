@@ -25,8 +25,8 @@ GDK_CONFIG_TEMPLATE = ..\gdk\gdkconfig.h.win32
 
 GDK_MARSHALERS_FLAGS = --prefix=_gdk_marshal --valist-marshallers
 GDK_RESOURCES_ARGS = ..\gdk\gdk.gresource.xml --target=$@ --sourcedir=..\gdk --c-name _gdk --manual-register
-GTK_MARSHALERS_FLAGS = --prefix=_ctk_marshal --valist-marshallers
-GTK_RESOURCES_ARGS = ..\gtk\gtk.gresource.xml --target=$@ --sourcedir=..\gtk --c-name _gtk --manual-register
+CTK_MARSHALERS_FLAGS = --prefix=_ctk_marshal --valist-marshallers
+CTK_RESOURCES_ARGS = ..\gtk\gtk.gresource.xml --target=$@ --sourcedir=..\gtk --c-name _gtk --manual-register
 
 all:	\
 	..\config.h	\
@@ -72,7 +72,7 @@ all:	\
 
 ..\gdk\gdkversionmacros.h: ..\gdk\gdkversionmacros.h.in
 	@echo Generating $@...
-	@$(PYTHON) gen-gdkversionmacros-h.py --version=$(GTK_VERSION)
+	@$(PYTHON) gen-gdkversionmacros-h.py --version=$(CTK_VERSION)
 
 ..\gdk\gdkmarshalers.h: ..\gdk\gdkmarshalers.list
 	@echo Generating $@...
@@ -124,13 +124,13 @@ all:	\
 
 ..\gtk\gtktypefuncs.inc: ..\gtk\gentypefuncs.py
 	@echo Generating $@...
-	@echo #undef GTK_COMPILATION > $(@R).preproc.c
+	@echo #undef CTK_COMPILATION > $(@R).preproc.c
 	@echo #include "gtkx.h" >> $(@R).preproc.c
-	@cl /EP $(GTK_PREPROCESSOR_FLAGS) $(@R).preproc.c > $(@R).combined.c
+	@cl /EP $(CTK_PREPROCESSOR_FLAGS) $(@R).preproc.c > $(@R).combined.c
 	@$(PYTHON) $** $@ $(@R).combined.c
 	@del $(@R).preproc.c $(@R).combined.c
 
-..\gtk\gtk.gresource.xml: $(GTK_RESOURCES)
+..\gtk\gtk.gresource.xml: $(CTK_RESOURCES)
 	@echo Generating $@...
 	@echo ^<?xml version='1.0' encoding='UTF-8'?^>> $@
 	@echo ^<gresources^>>> $@
@@ -165,27 +165,27 @@ all:	\
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
 	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
-	@start /min $(GLIB_COMPILE_RESOURCES) $(GTK_RESOURCES_ARGS) --generate-header
+	@start /min $(GLIB_COMPILE_RESOURCES) $(CTK_RESOURCES_ARGS) --generate-header
 
-..\gtk\gtkresources.c: ..\gtk\gtk.gresource.xml $(GTK_RESOURCES)
+..\gtk\gtkresources.c: ..\gtk\gtk.gresource.xml $(CTK_RESOURCES)
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
 	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
-	@start /min $(GLIB_COMPILE_RESOURCES) $(GTK_RESOURCES_ARGS) --generate-source
+	@start /min $(GLIB_COMPILE_RESOURCES) $(CTK_RESOURCES_ARGS) --generate-source
 
 ..\gtk\gtkmarshalers.h: ..\gtk\gtkmarshalers.list
 	@echo Generating $@...
-	@$(PYTHON) $(GLIB_GENMARSHAL) $(GTK_MARSHALERS_FLAGS) --header $** > $@.tmp
+	@$(PYTHON) $(GLIB_GENMARSHAL) $(CTK_MARSHALERS_FLAGS) --header $** > $@.tmp
 	@move $@.tmp $@
 
 ..\gtk\gtkmarshalers.c: ..\gtk\gtkmarshalers.list
 	@echo Generating $@...
 	@echo #undef G_ENABLE_DEBUG> $@.tmp
-	@$(PYTHON) $(GLIB_GENMARSHAL) $(GTK_MARSHALERS_FLAGS) --body $** >> $@.tmp
+	@$(PYTHON) $(GLIB_GENMARSHAL) $(CTK_MARSHALERS_FLAGS) --body $** >> $@.tmp
 	@move $@.tmp $@
 
-..\demos\gtk-demo\demo_resources.c: ..\demos\gtk-demo\demo.gresource.xml $(GTK_DEMO_RESOURCES)
+..\demos\gtk-demo\demo_resources.c: ..\demos\gtk-demo\demo.gresource.xml $(CTK_DEMO_RESOURCES)
 	@echo Generating $@...
 	@$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(@D) --generate-source $(@D)\demo.gresource.xml
 

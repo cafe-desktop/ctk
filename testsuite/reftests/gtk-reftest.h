@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_REFTEST_H__
-#define __GTK_REFTEST_H__
+#ifndef __CTK_REFTEST_H__
+#define __CTK_REFTEST_H__
 
 G_BEGIN_DECLS
 
@@ -29,4 +29,4 @@ void reftest_uninhibit_snapshot (void);
 
 G_END_DECLS
 
-#endif /* __GTK_REFTEST_H__ */
+#endif /* __CTK_REFTEST_H__ */

@@ -61,24 +61,24 @@ counter (void *data)
 
   gdk_threads_enter();
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), name);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), name);
   ctk_widget_set_size_request (window, 100, 50);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, FALSE, 0);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, FALSE, 0);
 
   g_signal_connect (window, "delete-event",
                     G_CALLBACK (delete_cb), &flag);
 
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   label = ctk_label_new ("0");
-  ctk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), label, TRUE, FALSE, 0);
 
   button = ctk_button_new_with_label ("Close");
   g_signal_connect (button, "clicked",
                     G_CALLBACK (close_cb), &flag);
-  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   ctk_widget_show_all (window);
 
@@ -88,7 +88,7 @@ counter (void *data)
   while (!flag)
     {
       sprintf(buffer, "%d", counter);
-      ctk_label_set_text (GTK_LABEL (label), buffer);
+      ctk_label_set_text (CTK_LABEL (label), buffer);
       gdk_threads_leave();
       counter++;
       /* Give someone else a chance to get the lock next time.

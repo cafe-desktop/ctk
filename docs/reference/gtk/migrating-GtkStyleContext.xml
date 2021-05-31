@@ -19,7 +19,7 @@
 
     <para>
       From GTK+ 3.0 on, theme engines must implement #GtkThemingEngine and be
-      installed in <filename>$libdir/gtk+-3.0/$GTK_VERSION/theming-engines</filename>,
+      installed in <filename>$libdir/gtk+-3.0/$CTK_VERSION/theming-engines</filename>,
       and the files containing style information must be written in the CSS-like
       format that is understood by #GtkCssProvider. For a theme named
       "Clearlooks", the CSS file parsed by default is
@@ -66,11 +66,11 @@
       </listitem>
       <listitem>
         ctk_paint_resize_grip() has been subsumed by ctk_render_handle()
-        with a #GTK_STYLE_CLASS_GRIP class set in the style context.
+        with a #CTK_STYLE_CLASS_GRIP class set in the style context.
       </listitem>
       <listitem>
         ctk_paint_spinner() disappears in favor of ctk_render_activity()
-        with a #GTK_STYLE_CLASS_SPINNER class set in the style context.
+        with a #CTK_STYLE_CLASS_SPINNER class set in the style context.
       </listitem>
     </orderedlist>
 
@@ -150,8 +150,8 @@
       of style information between widgets, regardless of their type.
       Regions and style classes can be used in style sheets to associate
       styles, and them engines can also access them. There are several
-      predefined classes and regions such as %GTK_STYLE_CLASS_BUTTON or
-      %GTK_STYLE_REGION_TAB in <filename>gtkstylecontext.h</filename>,
+      predefined classes and regions such as %CTK_STYLE_CLASS_BUTTON or
+      %CTK_STYLE_REGION_TAB in <filename>gtkstylecontext.h</filename>,
       although custom widgets may define their own, which themes may
       attempt to handle.
     </para>
@@ -389,7 +389,7 @@
       GdkColor *color1;
       GdkColor color2;
 
-      color1 = &amp;style->bg[GTK_STATE_PRELIGHT];
+      color1 = &amp;style->bg[CTK_STATE_PRELIGHT];
       ctk_style_lookup_color (style, "focus_color", &amp;color2);
       </programlisting></informalexample>
       With #GtkStyleContext, you generally use #GdkRGBA instead of #GdkColor
@@ -398,7 +398,7 @@
       GdkRGBA *color1;
       GdkRGBA  color2;
 
-      ctk_style_context_get (context, GTK_STATE_FLAG_PRELIGHT,
+      ctk_style_context_get (context, CTK_STATE_FLAG_PRELIGHT,
                              "background-color", &amp;color1,
                              NULL);
       ctk_style_context_lookup_color (context, "focus_color", &amp;color2);
@@ -455,10 +455,10 @@
 
               ...
 
-              context = ctk_widget_get_style_context (GTK_WIDGET (button));
+              context = ctk_widget_get_style_context (CTK_WIDGET (button));
 
               /* Set the "button" class */
-              ctk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
+              ctk_style_context_add_class (context, CTK_STYLE_CLASS_BUTTON);
             }
           </programlisting>
         </example>
@@ -478,10 +478,10 @@
 
               ...
 
-              context = ctk_widget_get_style_context (GTK_WIDGET (spin));
+              context = ctk_widget_get_style_context (CTK_WIDGET (spin));
 
               ctk_style_context_save (context);
-              ctk_style_context_add_class (context, GTK_STYLE_CLASS_ENTRY);
+              ctk_style_context_add_class (context, CTK_STYLE_CLASS_ENTRY);
 
               /* Call to entry draw impl with "entry" class */
               parent_class->draw (spin, cr);
@@ -490,7 +490,7 @@
               ctk_style_context_save (context);
 
               /* Render up/down buttons with the "button" class */
-              ctk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
+              ctk_style_context_add_class (context, CTK_STYLE_CLASS_BUTTON);
               draw_up_button (spin, cr);
               draw_down_button (spin, cr);
 
@@ -525,16 +525,16 @@
           <title>Rendering with a specific state</title>
           <programlisting>
             ctk_style_context_save (context);
-            ctk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
+            ctk_style_context_set_state (context, CTK_STATE_FLAG_ACTIVE);
             ctk_render_check (context, cr, x, y, width, height);
             ctk_style_context_restore (context);
           </programlisting>
         </example>
         <para>
           For ctk_render_check() and ctk_render_option(), the @shadow_type
-          parameter is replaced by the #GTK_STATE_FLAG_ACTIVE and
-          #GTK_STATE_FLAG_INCONSISTENT state flags. For things such as
-          pressed/unpressed button states, #GTK_STATE_FLAG_ACTIVE is used,
+          parameter is replaced by the #CTK_STATE_FLAG_ACTIVE and
+          #CTK_STATE_FLAG_INCONSISTENT state flags. For things such as
+          pressed/unpressed button states, #CTK_STATE_FLAG_ACTIVE is used,
           and the CSS may style normal/active states differently to render
           outset/inset borders, respectively.
         </para>
@@ -579,13 +579,13 @@
 
         context = ctk_widget_get_style_context (widget);
         provider = ctk_css_provider_new ();
-        ctk_css_provider_load_from_data (GTK_CSS_PROVIDER (provider),
+        ctk_css_provider_load_from_data (CTK_CSS_PROVIDER (provider),
                                          ".frame1 {\n"
                                          "   border-image: url('gradient1.png') 10 10 10 10 stretch;\n"
                                          "}\n", -1, NULL);
         ctk_style_context_add_provider (context,
-                                        GTK_STYLE_PROVIDER (provider),
-                                        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                        CTK_STYLE_PROVIDER (provider),
+                                        CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
         g_object_unref (provider);
       </programlisting>
     </example>

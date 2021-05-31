@@ -5,7 +5,7 @@
  *                       Grid Test                     *
  *******************************************************/
 
-#if _GTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
+#if _CTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
 static GdkPixbuf *
 create_color_pixbuf (const char *color)
 {
@@ -51,11 +51,11 @@ create_menu_grid_demo (void)
   
   store = ctk_list_store_new (1, GDK_TYPE_PIXBUF);
 
-  menu = ctk_tree_menu_new_full (NULL, GTK_TREE_MODEL (store), NULL);
-  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (menu), cell, TRUE);
-  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (menu), cell, "pixbuf", 0, NULL);
+  menu = ctk_tree_menu_new_full (NULL, CTK_TREE_MODEL (store), NULL);
+  ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (menu), cell, TRUE);
+  ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (menu), cell, "pixbuf", 0, NULL);
   
-  ctk_tree_menu_set_wrap_width (GTK_TREE_MENU (menu), 3);
+  ctk_tree_menu_set_wrap_width (CTK_TREE_MENU (menu), 3);
 
   /* first row */
   pixbuf = create_color_pixbuf ("red");
@@ -284,12 +284,12 @@ create_cell_area (void)
   area = ctk_cell_area_box_new ();
 
   cell_1 = renderer = ctk_cell_renderer_text_new ();
-  ctk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, FALSE, FALSE, FALSE);
+  ctk_cell_area_box_pack_start (CTK_CELL_AREA_BOX (area), renderer, FALSE, FALSE, FALSE);
   ctk_cell_area_attribute_connect (area, renderer, "text", SIMPLE_COLUMN_NAME);
 
   cell_2 = renderer = ctk_cell_renderer_pixbuf_new ();
   g_object_set (G_OBJECT (renderer), "xalign", 0.0F, NULL);
-  ctk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, TRUE, FALSE, FALSE);
+  ctk_cell_area_box_pack_start (CTK_CELL_AREA_BOX (area), renderer, TRUE, FALSE, FALSE);
   ctk_cell_area_attribute_connect (area, renderer, "icon-name", SIMPLE_COLUMN_ICON);
 
   cell_3 = renderer = ctk_cell_renderer_text_new ();
@@ -297,13 +297,13 @@ create_cell_area (void)
 		"wrap-mode", PANGO_WRAP_WORD,
 		"wrap-width", 215,
 		NULL);
-  ctk_cell_area_box_pack_start (GTK_CELL_AREA_BOX (area), renderer, FALSE, TRUE, FALSE);
+  ctk_cell_area_box_pack_start (CTK_CELL_AREA_BOX (area), renderer, FALSE, TRUE, FALSE);
   ctk_cell_area_attribute_connect (area, renderer, "text", SIMPLE_COLUMN_DESCRIPTION);
 
   return area;
 }
 
-#if _GTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
+#if _CTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
 static GtkWidget *
 simple_tree_menu (GtkCellArea *area)
 {
@@ -313,7 +313,7 @@ simple_tree_menu (GtkCellArea *area)
   model = simple_tree_model ();
 
   menu = ctk_tree_menu_new_with_area (area);
-  ctk_tree_menu_set_model (GTK_TREE_MENU (menu), model);
+  ctk_tree_menu_set_model (CTK_TREE_MENU (menu), model);
 
   return menu;
 }
@@ -325,7 +325,7 @@ orientation_changed (GtkComboBox  *combo,
 {
   GtkOrientation orientation = ctk_combo_box_get_active (combo);
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (area), orientation);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (area), orientation);
 }
 
 static void
@@ -382,7 +382,7 @@ enable_submenu_headers (GtkTreeModel      *model,
 }
 
 
-#if _GTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
+#if _CTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
 static void
 menu_activated_cb (GtkTreeMenu *menu,
 		   const gchar *path,
@@ -428,11 +428,11 @@ tree_menu (void)
   GtkCellArea *area;
   GtkTreeModel *store;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
-  ctk_window_set_title (GTK_WINDOW (window), "GtkTreeMenu");
+  ctk_window_set_title (CTK_WINDOW (window), "GtkTreeMenu");
 
-  vbox  = ctk_box_new (GTK_ORIENTATION_VERTICAL, 4);
+  vbox  = ctk_box_new (CTK_ORIENTATION_VERTICAL, 4);
   ctk_widget_show (vbox);
 
   menubar = ctk_menu_bar_new ();
@@ -441,103 +441,103 @@ tree_menu (void)
   store = simple_tree_model ();
   area  = create_cell_area ();
 
-#if _GTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
+#if _CTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
   menuitem = ctk_menu_item_new_with_label ("Grid");
   menu = create_menu_grid_demo ();
   ctk_widget_show (menu);
   ctk_widget_show (menuitem);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
-  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menubar), menuitem);
+  ctk_menu_item_set_submenu (CTK_MENU_ITEM (menuitem), menu);
 
   menuitem = ctk_menu_item_new_with_label ("Tree");
   menu = simple_tree_menu ();
   ctk_widget_show (menu);
   ctk_widget_show (menuitem);
-  ctk_menu_shell_prepend (GTK_MENU_SHELL (menubar), menuitem);
-  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
+  ctk_menu_shell_prepend (CTK_MENU_SHELL (menubar), menuitem);
+  ctk_menu_item_set_submenu (CTK_MENU_ITEM (menuitem), menu);
 
   g_signal_connect (menu, "menu-activate", G_CALLBACK (menu_activated_cb), NULL);
 
-  ctk_box_pack_start (GTK_BOX (vbox), menubar, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), menubar, FALSE, FALSE, 0);
 #endif
 
   /* Add a combo box with the same menu ! */
   widget = ctk_combo_box_new_with_area (area);
-  ctk_combo_box_set_model (GTK_COMBO_BOX (widget), store);
-  ctk_combo_box_set_active (GTK_COMBO_BOX (widget), 0);
+  ctk_combo_box_set_model (CTK_COMBO_BOX (widget), store);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (widget), 0);
   ctk_widget_show (widget);
-  ctk_box_pack_end (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
 
   /* Now add some controls */
   widget = ctk_combo_box_text_new ();
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Horizontal");
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Vertical");
-  ctk_combo_box_set_active (GTK_COMBO_BOX (widget), 0);
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (widget), "Horizontal");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (widget), "Vertical");
+  ctk_combo_box_set_active (CTK_COMBO_BOX (widget), 0);
   ctk_widget_show (widget);
-  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
 
   g_signal_connect (G_OBJECT (widget), "changed",
                     G_CALLBACK (orientation_changed), area);
 
   widget = ctk_check_button_new_with_label ("Align 2nd Cell");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), FALSE);
   ctk_widget_show (widget);
-  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (align_cell_2_toggled), area);
 
   widget = ctk_check_button_new_with_label ("Align 3rd Cell");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), TRUE);
   ctk_widget_show (widget);
-  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (align_cell_3_toggled), area);
 
   widget = ctk_check_button_new_with_label ("Expand 1st Cell");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), FALSE);
   ctk_widget_show (widget);
-  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (expand_cell_1_toggled), area);
 
   widget = ctk_check_button_new_with_label ("Expand 2nd Cell");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), TRUE);
   ctk_widget_show (widget);
-  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (expand_cell_2_toggled), area);
 
   widget = ctk_check_button_new_with_label ("Expand 3rd Cell");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), FALSE);
   ctk_widget_show (widget);
-  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (expand_cell_3_toggled), area);
 
-#if _GTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
+#if _CTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
   widget = ctk_check_button_new_with_label ("Submenu Headers");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), FALSE);
   ctk_widget_show (widget);
-  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (submenu_headers_toggled), menu);
 
   widget = ctk_check_button_new_with_label ("Tearoff menu");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), FALSE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (widget), FALSE);
   ctk_widget_show (widget);
-  ctk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), widget, FALSE, FALSE, 0);
   
   g_signal_connect (G_OBJECT (widget), "toggled",
                     G_CALLBACK (tearoff_toggled), menu);
 #endif
 
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   ctk_widget_show (window);
 }

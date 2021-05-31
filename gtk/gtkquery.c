@@ -39,7 +39,7 @@ finalize (GObject *object)
 {
   GtkQuery *query;
 
-  query = GTK_QUERY (object);
+  query = CTK_QUERY (object);
 
   g_clear_object (&query->priv->location);
   g_free (query->priv->text);
@@ -66,7 +66,7 @@ ctk_query_init (GtkQuery *query)
 GtkQuery *
 ctk_query_new (void)
 {
-  return g_object_new (GTK_TYPE_QUERY,  NULL);
+  return g_object_new (CTK_TYPE_QUERY,  NULL);
 }
 
 

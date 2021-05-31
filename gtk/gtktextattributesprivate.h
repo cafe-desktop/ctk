@@ -19,8 +19,8 @@
  *
  */
 
-#ifndef __GTK_TEXT_ATTRIBUTE_PRIVATE_H__
-#define __GTK_TEXT_ATTRIBUTE_PRIVATE_H__
+#ifndef __CTK_TEXT_ATTRIBUTE_PRIVATE_H__
+#define __CTK_TEXT_ATTRIBUTE_PRIVATE_H__
 
 /*
  * The following macros are used to store and extract information about the
@@ -30,20 +30,20 @@
  * In 4.0, we should revisit this.
  */
 
-#define GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET(appr) \
+#define CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET(appr) \
     (((guint8*)&(appr)->bg_color)[3] != 0)
-#define GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET(appr,val) \
+#define CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET(appr,val) \
   G_STMT_START { \
     ((guint8*)&(appr)->bg_color)[3] = !!val; \
   } G_STMT_END
-#define GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA(appr,rgba) \
+#define CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA(appr,rgba) \
   G_STMT_START { \
     (rgba)->red = ((guint8*)&(appr)->bg_color)[0] / 255.; \
     (rgba)->green = ((guint8*)&(appr)->bg_color)[1] / 255.; \
     (rgba)->blue = ((guint8*)&(appr)->bg_color)[2] / 255.; \
     (rgba)->alpha = 1.0; \
   } G_STMT_END
-#define GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA(appr,rgba) \
+#define CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA(appr,rgba) \
   G_STMT_START { \
     ((guint8*)&(appr)->bg_color)[0] = (rgba)->red * 255; \
     ((guint8*)&(appr)->bg_color)[1] = (rgba)->green * 255; \
@@ -51,20 +51,20 @@
   } G_STMT_END
 
 
-#define GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET(appr) \
+#define CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET(appr) \
     (((guint8*)&(appr)->fg_color)[3] != 0)
-#define GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET(appr,val) \
+#define CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET(appr,val) \
   G_STMT_START { \
     ((guint8*)&(appr)->fg_color)[3] = !!val; \
   } G_STMT_END
-#define GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA(appr,rgba) \
+#define CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA(appr,rgba) \
   G_STMT_START { \
     (rgba)->red = ((guint8*)&(appr)->fg_color)[0] / 255.; \
     (rgba)->green = ((guint8*)&(appr)->fg_color)[1] / 255.; \
     (rgba)->blue = ((guint8*)&(appr)->fg_color)[2] / 255.; \
     (rgba)->alpha = 1.0; \
   } G_STMT_END
-#define GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA(appr,rgba) \
+#define CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA(appr,rgba) \
   G_STMT_START { \
     ((guint8*)&(appr)->fg_color)[0] = (rgba)->red * 255; \
     ((guint8*)&(appr)->fg_color)[1] = (rgba)->green * 255; \
@@ -72,4 +72,4 @@
   } G_STMT_END
 
 
-#endif /* __GTK_TEXT_ATTRIBUTE_PRIVATE_H__ */
+#endif /* __CTK_TEXT_ATTRIBUTE_PRIVATE_H__ */

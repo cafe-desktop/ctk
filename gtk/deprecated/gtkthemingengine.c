@@ -192,9 +192,9 @@ struct GtkThemingModuleClass
   GTypeModuleClass parent_class;
 };
 
-#define GTK_TYPE_THEMING_MODULE  (ctk_theming_module_get_type ())
-#define GTK_THEMING_MODULE(o)    (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_THEMING_MODULE, GtkThemingModule))
-#define GTK_IS_THEMING_MODULE(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_THEMING_MODULE))
+#define CTK_TYPE_THEMING_MODULE  (ctk_theming_module_get_type ())
+#define CTK_THEMING_MODULE(o)    (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_THEMING_MODULE, GtkThemingModule))
+#define CTK_IS_THEMING_MODULE(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_THEMING_MODULE))
 
 _GDK_EXTERN
 GType ctk_theming_module_get_type (void);
@@ -247,7 +247,7 @@ ctk_theming_engine_class_init (GtkThemingEngineClass *klass)
                                                         P_("Name"),
                                                         P_("Theming engine name"),
                                                         NULL,
-                                                        G_PARAM_CONSTRUCT_ONLY | GTK_PARAM_READWRITE));
+                                                        G_PARAM_CONSTRUCT_ONLY | CTK_PARAM_READWRITE));
 }
 
 static void
@@ -261,7 +261,7 @@ ctk_theming_engine_finalize (GObject *object)
 {
   GtkThemingEnginePrivate *priv;
 
-  priv = GTK_THEMING_ENGINE (object)->priv;
+  priv = CTK_THEMING_ENGINE (object)->priv;
   g_free (priv->name);
 
   G_OBJECT_CLASS (ctk_theming_engine_parent_class)->finalize (object);
@@ -275,7 +275,7 @@ ctk_theming_engine_impl_set_property (GObject      *object,
 {
   GtkThemingEnginePrivate *priv;
 
-  priv = GTK_THEMING_ENGINE (object)->priv;
+  priv = CTK_THEMING_ENGINE (object)->priv;
 
   switch (prop_id)
     {
@@ -298,7 +298,7 @@ ctk_theming_engine_impl_get_property (GObject    *object,
 {
   GtkThemingEnginePrivate *priv;
 
-  priv = GTK_THEMING_ENGINE (object)->priv;
+  priv = CTK_THEMING_ENGINE (object)->priv;
 
   switch (prop_id)
     {
@@ -335,7 +335,7 @@ ctk_theming_engine_get_property (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
   g_return_if_fail (property != NULL);
   g_return_if_fail (value != NULL);
 
@@ -363,7 +363,7 @@ ctk_theming_engine_get_valist (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
   ctk_style_context_get_valist (priv->context, state, args);
@@ -390,7 +390,7 @@ ctk_theming_engine_get (GtkThemingEngine *engine,
   GtkThemingEnginePrivate *priv;
   va_list args;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
 
@@ -419,7 +419,7 @@ ctk_theming_engine_get_style_property (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
   g_return_if_fail (property_name != NULL);
 
   priv = engine->priv;
@@ -444,7 +444,7 @@ ctk_theming_engine_get_style_valist (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
   ctk_style_context_get_style_valist (priv->context, args);
@@ -469,7 +469,7 @@ ctk_theming_engine_get_style (GtkThemingEngine *engine,
   GtkThemingEnginePrivate *priv;
   va_list args;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
 
@@ -499,7 +499,7 @@ ctk_theming_engine_lookup_color (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), FALSE);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), FALSE);
   g_return_val_if_fail (color_name != NULL, FALSE);
 
   priv = engine->priv;
@@ -523,7 +523,7 @@ ctk_theming_engine_get_state (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), 0);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), 0);
 
   priv = engine->priv;
   return ctk_style_context_get_state (priv->context);
@@ -555,7 +555,7 @@ ctk_theming_engine_state_is_running (GtkThemingEngine *engine,
                                      GtkStateType      state,
                                      gdouble          *progress)
 {
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), FALSE);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), FALSE);
 
   return FALSE;
 }
@@ -577,7 +577,7 @@ ctk_theming_engine_get_path (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), NULL);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), NULL);
 
   priv = engine->priv;
   return ctk_style_context_get_path (priv->context);
@@ -603,7 +603,7 @@ ctk_theming_engine_has_class (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), FALSE);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), FALSE);
 
   priv = engine->priv;
   return ctk_style_context_has_class (priv->context, style_class);
@@ -635,7 +635,7 @@ ctk_theming_engine_has_region (GtkThemingEngine *engine,
   if (flags)
     *flags = 0;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), FALSE);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), FALSE);
 
   priv = engine->priv;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -654,15 +654,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * Since: 3.0
  *
  * Deprecated: 3.8: Use ctk_theming_engine_get_state() and
- *   check for #GTK_STATE_FLAG_DIR_LTR and
- *   #GTK_STATE_FLAG_DIR_RTL instead.
+ *   check for #CTK_STATE_FLAG_DIR_LTR and
+ *   #CTK_STATE_FLAG_DIR_RTL instead.
  **/
 GtkTextDirection
 ctk_theming_engine_get_direction (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), GTK_TEXT_DIR_LTR);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), CTK_TEXT_DIR_LTR);
 
   priv = engine->priv;
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -687,7 +687,7 @@ ctk_theming_engine_get_junction_sides (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), 0);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), 0);
 
   priv = engine->priv;
   return ctk_style_context_get_junction_sides (priv->context);
@@ -712,7 +712,7 @@ ctk_theming_engine_get_color (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
   ctk_style_context_get_color (priv->context, state, color);
@@ -737,7 +737,7 @@ ctk_theming_engine_get_background_color (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
   ctk_style_context_get_background_color (priv->context, state, color);
@@ -762,7 +762,7 @@ ctk_theming_engine_get_border_color (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
   ctk_style_context_get_border_color (priv->context, state, color);
@@ -787,7 +787,7 @@ ctk_theming_engine_get_border (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
   ctk_style_context_get_border (priv->context, state, border);
@@ -812,7 +812,7 @@ ctk_theming_engine_get_padding (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
   ctk_style_context_get_padding (priv->context, state, padding);
@@ -837,7 +837,7 @@ ctk_theming_engine_get_margin (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
+  g_return_if_fail (CTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
   ctk_style_context_get_margin (priv->context, state, margin);
@@ -864,7 +864,7 @@ ctk_theming_engine_get_font (GtkThemingEngine *engine,
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), NULL);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), NULL);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   priv = engine->priv;
@@ -881,7 +881,7 @@ ctk_theming_module_load (GTypeModule *type_module)
   GModule *module;
   gchar *name, *module_path;
 
-  theming_module = GTK_THEMING_MODULE (type_module);
+  theming_module = CTK_THEMING_MODULE (type_module);
   name = theming_module->name;
   module_path = _ctk_find_module (name, "theming-engines");
 
@@ -918,7 +918,7 @@ ctk_theming_module_unload (GTypeModule *type_module)
 {
   GtkThemingModule *theming_module;
 
-  theming_module = GTK_THEMING_MODULE (type_module);
+  theming_module = CTK_THEMING_MODULE (type_module);
 
   theming_module->exit ();
 
@@ -974,7 +974,7 @@ ctk_theming_engine_load (const gchar *name)
         {
           GtkThemingModule *module;
 
-          module = g_object_new (GTK_TYPE_THEMING_MODULE, NULL);
+          module = g_object_new (CTK_TYPE_THEMING_MODULE, NULL);
           g_type_module_set_name (G_TYPE_MODULE (module), name);
           module->name = g_strdup (name);
 
@@ -990,7 +990,7 @@ ctk_theming_engine_load (const gchar *name)
   else
     {
       if (G_UNLIKELY (!default_engine))
-        default_engine = g_object_new (GTK_TYPE_THEMING_ENGINE, NULL);
+        default_engine = g_object_new (CTK_TYPE_THEMING_ENGINE, NULL);
 
       engine = default_engine;
     }
@@ -1013,7 +1013,7 @@ ctk_theming_engine_get_screen (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), NULL);
+  g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), NULL);
 
   priv = engine->priv;
   return ctk_style_context_get_screen (priv->context);

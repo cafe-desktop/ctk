@@ -55,19 +55,19 @@ button_clicked_cb (GtkButton *b,
   g_assert (error == NULL);
 
   style = ctk_widget_get_style_context (d->image);
-  ctk_style_context_add_provider (style, GTK_STYLE_PROVIDER (provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
+  ctk_style_context_add_provider (style, CTK_STYLE_PROVIDER (provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER);
 
   if (d->odd) {
-    ctk_numerable_icon_set_background_icon_name (GTK_NUMERABLE_ICON (d->numerable), NULL);
-    ctk_numerable_icon_set_count (GTK_NUMERABLE_ICON (d->numerable), g_random_int_range (-99, 99));
+    ctk_numerable_icon_set_background_icon_name (CTK_NUMERABLE_ICON (d->numerable), NULL);
+    ctk_numerable_icon_set_count (CTK_NUMERABLE_ICON (d->numerable), g_random_int_range (-99, 99));
   } else {
-    ctk_numerable_icon_set_background_icon_name (GTK_NUMERABLE_ICON (d->numerable),
+    ctk_numerable_icon_set_background_icon_name (CTK_NUMERABLE_ICON (d->numerable),
                                                  "emblem-favorite");
-    ctk_numerable_icon_set_label (GTK_NUMERABLE_ICON (d->numerable), "IVX");
+    ctk_numerable_icon_set_label (CTK_NUMERABLE_ICON (d->numerable), "IVX");
   }
   
-  ctk_image_set_from_gicon (GTK_IMAGE (d->image), d->numerable, d->size);
+  ctk_image_set_from_gicon (CTK_IMAGE (d->image), d->numerable, d->size);
 
   d->odd = !d->odd;
 
@@ -85,7 +85,7 @@ refresh_cb (GtkWidget *button,
 {
   PackData *d = user_data;
 
-  ctk_image_set_from_gicon (GTK_IMAGE (d->image), d->numerable, d->size);
+  ctk_image_set_from_gicon (CTK_IMAGE (d->image), d->numerable, d->size);
 }
 
 static void
@@ -108,27 +108,27 @@ pack_numerable (GtkWidget *parent,
   d->odd = FALSE;
   d->size = size;
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-  ctk_box_pack_start (GTK_BOX (parent), vbox, FALSE, FALSE, 0);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
+  ctk_box_pack_start (CTK_BOX (parent), vbox, FALSE, FALSE, 0);
 
-  ctk_numerable_icon_set_count (GTK_NUMERABLE_ICON (numerable), 42);
-  ctk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
-  ctk_numerable_icon_set_style_context (GTK_NUMERABLE_ICON (numerable),
+  ctk_numerable_icon_set_count (CTK_NUMERABLE_ICON (numerable), 42);
+  ctk_box_pack_start (CTK_BOX (vbox), image, FALSE, FALSE, 0);
+  ctk_numerable_icon_set_style_context (CTK_NUMERABLE_ICON (numerable),
                                         ctk_widget_get_style_context (image));
-  ctk_image_set_from_gicon (GTK_IMAGE (image), numerable, size);
+  ctk_image_set_from_gicon (CTK_IMAGE (image), numerable, size);
 
   label = ctk_label_new (NULL);
   str = g_strdup_printf ("Numerable icon, hash %u", g_icon_hash (numerable));
-  ctk_label_set_label (GTK_LABEL (label), str);
-  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_label (CTK_LABEL (label), str);
+  ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   button = ctk_button_new_with_label ("Change icon number");
-  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked",
                     G_CALLBACK (button_clicked_cb), d);
 
   button = ctk_button_new_with_label ("Refresh");
-  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked",
                     G_CALLBACK (refresh_cb), d);
 }
@@ -141,12 +141,12 @@ main (int argc,
 
   ctk_init (&argc, &argv);
 
-  toplevel = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  ctk_container_add (GTK_CONTAINER (toplevel), hbox);
+  toplevel = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_container_add (CTK_CONTAINER (toplevel), hbox);
 
-  pack_numerable (hbox, GTK_ICON_SIZE_DIALOG);
-  pack_numerable (hbox, GTK_ICON_SIZE_BUTTON);
+  pack_numerable (hbox, CTK_ICON_SIZE_DIALOG);
+  pack_numerable (hbox, CTK_ICON_SIZE_BUTTON);
 
   ctk_widget_show_all (toplevel);
 

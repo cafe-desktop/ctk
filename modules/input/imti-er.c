@@ -56,7 +56,7 @@ ti_er_register_type (GTypeModule *module)
 
   type_ti_er_translit = 
     g_type_module_register_type (module,
-				 GTK_TYPE_IM_CONTEXT_SIMPLE,
+				 CTK_TYPE_IM_CONTEXT_SIMPLE,
 				 "GtkIMContextTigrignaEritrea",
 				 &object_info, 0);
 }
@@ -450,7 +450,7 @@ static const GtkIMContextInfo ti_er_info = {
   "ti_er",		   /* ID */
   NC_("input method menu", "Tigrigna-Eritrean (EZ+)"), /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
-   GTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
   "ti"			   /* Languages for which this module is the default */
 };
 

@@ -42,19 +42,19 @@ struct _GtkInspectorObjectHierarchyPrivate
   GtkTreeView *tree;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorObjectHierarchy, ctk_inspector_object_hierarchy, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorObjectHierarchy, ctk_inspector_object_hierarchy, CTK_TYPE_BOX)
 
 static void
 ctk_inspector_object_hierarchy_init (GtkInspectorObjectHierarchy *oh)
 {
   oh->priv = ctk_inspector_object_hierarchy_get_instance_private (oh);
-  ctk_widget_init_template (GTK_WIDGET (oh));
+  ctk_widget_init_template (CTK_WIDGET (oh));
 }
 
 static void
 ctk_inspector_object_hierarchy_class_init (GtkInspectorObjectHierarchyClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/object-hierarchy.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, model);

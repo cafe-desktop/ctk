@@ -43,14 +43,14 @@ void ctk_glade_catalog_init (const gchar *catalog_name);
 void
 ctk_glade_catalog_init (const gchar *catalog_name)
 {
-  g_type_ensure (GTK_TYPE_PATH_BAR);
-  g_type_ensure (GTK_TYPE_PLACES_VIEW);
-  g_type_ensure (GTK_TYPE_COLOR_SWATCH);
-  g_type_ensure (GTK_TYPE_COLOR_PLANE);
-  g_type_ensure (GTK_TYPE_COLOR_SCALE);
-  g_type_ensure (GTK_TYPE_COLOR_EDITOR);
+  g_type_ensure (CTK_TYPE_PATH_BAR);
+  g_type_ensure (CTK_TYPE_PLACES_VIEW);
+  g_type_ensure (CTK_TYPE_COLOR_SWATCH);
+  g_type_ensure (CTK_TYPE_COLOR_PLANE);
+  g_type_ensure (CTK_TYPE_COLOR_SCALE);
+  g_type_ensure (CTK_TYPE_COLOR_EDITOR);
 
 #ifdef G_OS_UNIX
-  g_type_ensure (GTK_TYPE_PRINTER_OPTION_WIDGET);
+  g_type_ensure (CTK_TYPE_PRINTER_OPTION_WIDGET);
 #endif
 }

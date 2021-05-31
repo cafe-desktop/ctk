@@ -1,6 +1,6 @@
 include $(top_srcdir)/Makefile.decl
 
-backenddir = $(libdir)/gtk-3.0/$(GTK_BINARY_VERSION)/printbackends
+backenddir = $(libdir)/gtk-3.0/$(CTK_BINARY_VERSION)/printbackends
 
 backend_LTLIBRARIES = libprintbackend-file.la
 
@@ -13,12 +13,12 @@ libprintbackend_file_la_CPPFLAGS = \
 	-I$(top_builddir)/gtk				\
 	-I$(top_srcdir)/gdk				\
 	-I$(top_builddir)/gdk				\
-	-DGTK_COMPILATION				\
-	-DGTK_PRINT_BACKEND_ENABLE_UNSUPPORTED		\
+	-DCTK_COMPILATION				\
+	-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED		\
 	$(AM_CPPFLAGS)
 
 libprintbackend_file_la_CFLAGS = \
-	$(GTK_DEP_CFLAGS)				\
+	$(CTK_DEP_CFLAGS)				\
 	$(AM_CFLAGS)
 
 libprintbackend_file_la_LDFLAGS =  \
@@ -26,7 +26,7 @@ libprintbackend_file_la_LDFLAGS =  \
 
 libprintbackend_file_la_LIBADD = \
 	$(top_builddir)/gtk/libgtk-3.la	\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 noinst_HEADERS =			\
 	gtkprintbackendfile.h

@@ -17,8 +17,8 @@
  */
 
 
-#ifndef __GTK_CONTAINER_PRIVATE_H__
-#define __GTK_CONTAINER_PRIVATE_H__
+#ifndef __CTK_CONTAINER_PRIVATE_H__
+#define __CTK_CONTAINER_PRIVATE_H__
 
 #include "gtkcontainer.h"
 
@@ -50,4 +50,4 @@ void      ctk_container_set_default_resize_mode (GtkContainer *container,
 
 G_END_DECLS
 
-#endif /* __GTK_CONTAINER_PRIVATE_H__ */
+#endif /* __CTK_CONTAINER_PRIVATE_H__ */

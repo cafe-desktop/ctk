@@ -45,7 +45,7 @@
  * columned data. In other words, the model can be seen as a tree where
  * every node has different values depending on which column is being
  * queried. The type of data found in a column is determined by using
- * the GType system (ie. #G_TYPE_INT, #GTK_TYPE_BUTTON, #G_TYPE_POINTER,
+ * the GType system (ie. #G_TYPE_INT, #CTK_TYPE_BUTTON, #G_TYPE_POINTER,
  * etc). The types are homogeneous per column across all nodes. It is
  * important to note that this interface only provides a way of examining
  * a model and observing changes. The implementation of each individual
@@ -104,7 +104,7 @@
  * Although generally uninteresting, as one always has to allow for
  * the case where iterators do not persist beyond a signal, some very
  * important performance enhancements were made in the sort model.
- * As a result, the #GTK_TREE_MODEL_ITERS_PERSIST flag was added to
+ * As a result, the #CTK_TREE_MODEL_ITERS_PERSIST flag was added to
  * indicate this behavior.
  *
  * To help show some common operation of a model, some examples are
@@ -338,13 +338,13 @@ ctk_tree_model_base_init (gpointer g_class)
       GType row_deleted_params[1];
       GType rows_reordered_params[3];
 
-      row_inserted_params[0] = GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE;
-      row_inserted_params[1] = GTK_TYPE_TREE_ITER;
+      row_inserted_params[0] = CTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE;
+      row_inserted_params[1] = CTK_TYPE_TREE_ITER;
 
-      row_deleted_params[0] = GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE;
+      row_deleted_params[0] = CTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE;
 
-      rows_reordered_params[0] = GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE;
-      rows_reordered_params[1] = GTK_TYPE_TREE_ITER;
+      rows_reordered_params[0] = CTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE;
+      rows_reordered_params[1] = CTK_TYPE_TREE_ITER;
       rows_reordered_params[2] = G_TYPE_POINTER;
 
       /**
@@ -357,14 +357,14 @@ ctk_tree_model_base_init (gpointer g_class)
        */
       tree_model_signals[ROW_CHANGED] =
         g_signal_new (I_("row-changed"),
-                      GTK_TYPE_TREE_MODEL,
+                      CTK_TYPE_TREE_MODEL,
                       G_SIGNAL_RUN_LAST, 
                       G_STRUCT_OFFSET (GtkTreeModelIface, row_changed),
                       NULL, NULL,
                       _ctk_marshal_VOID__BOXED_BOXED,
                       G_TYPE_NONE, 2,
-                      GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE,
-                      GTK_TYPE_TREE_ITER);
+                      CTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE,
+                      CTK_TYPE_TREE_ITER);
       g_signal_set_va_marshaller (tree_model_signals[ROW_CHANGED],
                                   G_TYPE_FROM_CLASS (g_class),
                                   _ctk_marshal_VOID__BOXED_BOXEDv);
@@ -399,7 +399,7 @@ ctk_tree_model_base_init (gpointer g_class)
       g_closure_set_marshal (closure, row_inserted_marshal);
       tree_model_signals[ROW_INSERTED] =
         g_signal_newv (I_("row-inserted"),
-                       GTK_TYPE_TREE_MODEL,
+                       CTK_TYPE_TREE_MODEL,
                        G_SIGNAL_RUN_FIRST,
                        closure,
                        NULL, NULL,
@@ -421,14 +421,14 @@ ctk_tree_model_base_init (gpointer g_class)
        */
       tree_model_signals[ROW_HAS_CHILD_TOGGLED] =
         g_signal_new (I_("row-has-child-toggled"),
-                      GTK_TYPE_TREE_MODEL,
+                      CTK_TYPE_TREE_MODEL,
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (GtkTreeModelIface, row_has_child_toggled),
                       NULL, NULL,
                       _ctk_marshal_VOID__BOXED_BOXED,
                       G_TYPE_NONE, 2,
-                      GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE,
-                      GTK_TYPE_TREE_ITER);
+                      CTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE,
+                      CTK_TYPE_TREE_ITER);
       g_signal_set_va_marshaller (tree_model_signals[ROW_HAS_CHILD_TOGGLED],
                                   G_TYPE_FROM_CLASS (g_class),
                                   _ctk_marshal_VOID__BOXED_BOXEDv);
@@ -451,7 +451,7 @@ ctk_tree_model_base_init (gpointer g_class)
       g_closure_set_marshal (closure, row_deleted_marshal);
       tree_model_signals[ROW_DELETED] =
         g_signal_newv (I_("row-deleted"),
-                       GTK_TYPE_TREE_MODEL,
+                       CTK_TYPE_TREE_MODEL,
                        G_SIGNAL_RUN_FIRST,
                        closure,
                        NULL, NULL,
@@ -481,7 +481,7 @@ ctk_tree_model_base_init (gpointer g_class)
       g_closure_set_marshal (closure, rows_reordered_marshal);
       tree_model_signals[ROWS_REORDERED] =
         g_signal_newv (I_("rows-reordered"),
-                       GTK_TYPE_TREE_MODEL,
+                       CTK_TYPE_TREE_MODEL,
                        G_SIGNAL_RUN_FIRST,
                        closure,
                        NULL, NULL,
@@ -518,14 +518,14 @@ row_inserted_marshal (GClosure          *closure,
                              path, iter);
 
   /* fetch the interface ->row_inserted implementation */
-  iface = GTK_TREE_MODEL_GET_IFACE (model);
+  iface = CTK_TREE_MODEL_GET_IFACE (model);
   row_inserted_callback = G_STRUCT_MEMBER (gpointer, iface,
                               G_STRUCT_OFFSET (GtkTreeModelIface,
                                                row_inserted));
 
   /* Call that default signal handler, it if has been set */
   if (row_inserted_callback)
-    row_inserted_callback (GTK_TREE_MODEL (model), path, iter);
+    row_inserted_callback (CTK_TREE_MODEL (model), path, iter);
 }
 
 static void
@@ -547,14 +547,14 @@ row_deleted_marshal (GClosure          *closure,
                             path);
 
   /* fetch the interface ->row_deleted implementation */
-  iface = GTK_TREE_MODEL_GET_IFACE (model);
+  iface = CTK_TREE_MODEL_GET_IFACE (model);
   row_deleted_callback = G_STRUCT_MEMBER (gpointer, iface,
                               G_STRUCT_OFFSET (GtkTreeModelIface,
                                                row_deleted));
 
   /* Call that default signal handler, it if has been set */
   if (row_deleted_callback)
-    row_deleted_callback (GTK_TREE_MODEL (model), path);
+    row_deleted_callback (CTK_TREE_MODEL (model), path);
 }
 
 static void
@@ -581,14 +581,14 @@ rows_reordered_marshal (GClosure          *closure,
                               path, iter, new_order);
 
   /* fetch the interface ->rows_reordered implementation */
-  iface = GTK_TREE_MODEL_GET_IFACE (model);
+  iface = CTK_TREE_MODEL_GET_IFACE (model);
   rows_reordered_callback = G_STRUCT_MEMBER (gpointer, iface,
                               G_STRUCT_OFFSET (GtkTreeModelIface,
                                                rows_reordered));
 
   /* Call that default signal handler, it if has been set */
   if (rows_reordered_callback)
-    rows_reordered_callback (GTK_TREE_MODEL (model), path, iter, new_order);
+    rows_reordered_callback (CTK_TREE_MODEL (model), path, iter, new_order);
 }
 
 /**
@@ -1198,9 +1198,9 @@ ctk_tree_model_get_flags (GtkTreeModel *tree_model)
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), 0);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), 0);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   if (iface->get_flags)
     return (* iface->get_flags) (tree_model);
 
@@ -1219,9 +1219,9 @@ gint
 ctk_tree_model_get_n_columns (GtkTreeModel *tree_model)
 {
   GtkTreeModelIface *iface;
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), 0);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), 0);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->get_n_columns != NULL, 0);
 
   return (* iface->get_n_columns) (tree_model);
@@ -1242,9 +1242,9 @@ ctk_tree_model_get_column_type (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), G_TYPE_INVALID);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), G_TYPE_INVALID);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->get_column_type != NULL, G_TYPE_INVALID);
   g_return_val_if_fail (index >= 0, G_TYPE_INVALID);
 
@@ -1269,11 +1269,11 @@ ctk_tree_model_get_iter (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (path != NULL, FALSE);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->get_iter != NULL, FALSE);
   g_return_val_if_fail (path->depth > 0, FALSE);
 
@@ -1301,7 +1301,7 @@ ctk_tree_model_get_iter_from_string (GtkTreeModel *tree_model,
   gboolean retval;
   GtkTreePath *path;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (path_string != NULL, FALSE);
 
@@ -1338,7 +1338,7 @@ ctk_tree_model_get_string_from_iter (GtkTreeModel *tree_model,
   GtkTreePath *path;
   gchar *ret;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), NULL);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), NULL);
   g_return_val_if_fail (iter != NULL, NULL);
 
   path = ctk_tree_model_get_path (tree_model, iter);
@@ -1369,7 +1369,7 @@ ctk_tree_model_get_iter_first (GtkTreeModel *tree_model,
   GtkTreePath *path;
   gboolean retval;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
   path = ctk_tree_path_new_first ();
@@ -1396,10 +1396,10 @@ ctk_tree_model_get_path (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), NULL);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), NULL);
   g_return_val_if_fail (iter != NULL, NULL);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->get_path != NULL, NULL);
 
   return (* iface->get_path) (tree_model, iter);
@@ -1425,11 +1425,11 @@ ctk_tree_model_get_value (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (iter != NULL);
   g_return_if_fail (value != NULL);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_if_fail (iface->get_value != NULL);
 
   (* iface->get_value) (tree_model, iter, column, value);
@@ -1453,10 +1453,10 @@ ctk_tree_model_iter_next (GtkTreeModel  *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->iter_next != NULL, FALSE);
 
   return (* iface->iter_next) (tree_model, iter);
@@ -1504,10 +1504,10 @@ ctk_tree_model_iter_previous (GtkTreeModel *tree_model,
   gboolean retval;
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
 
   if (iface->iter_previous)
     retval = (* iface->iter_previous) (tree_model, iter);
@@ -1541,10 +1541,10 @@ ctk_tree_model_iter_children (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->iter_children != NULL, FALSE);
 
   INITIALIZE_TREE_ITER (iter);
@@ -1567,10 +1567,10 @@ ctk_tree_model_iter_has_child (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->iter_has_child != NULL, FALSE);
 
   return (* iface->iter_has_child) (tree_model, iter);
@@ -1594,9 +1594,9 @@ ctk_tree_model_iter_n_children (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), 0);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), 0);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->iter_n_children != NULL, 0);
 
   return (* iface->iter_n_children) (tree_model, iter);
@@ -1627,11 +1627,11 @@ ctk_tree_model_iter_nth_child (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (n >= 0, FALSE);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->iter_nth_child != NULL, FALSE);
 
   INITIALIZE_TREE_ITER (iter);
@@ -1664,11 +1664,11 @@ ctk_tree_model_iter_parent (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (tree_model), FALSE);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (child != NULL, FALSE);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   g_return_val_if_fail (iface->iter_parent != NULL, FALSE);
 
   INITIALIZE_TREE_ITER (iter);
@@ -1705,9 +1705,9 @@ ctk_tree_model_ref_node (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   if (iface->ref_node)
     (* iface->ref_node) (tree_model, iter);
 }
@@ -1732,10 +1732,10 @@ ctk_tree_model_unref_node (GtkTreeModel *tree_model,
 {
   GtkTreeModelIface *iface;
 
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (iter != NULL);
 
-  iface = GTK_TREE_MODEL_GET_IFACE (tree_model);
+  iface = CTK_TREE_MODEL_GET_IFACE (tree_model);
   if (iface->unref_node)
     (* iface->unref_node) (tree_model, iter);
 }
@@ -1767,7 +1767,7 @@ ctk_tree_model_get (GtkTreeModel *tree_model,
 {
   va_list var_args;
 
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (iter != NULL);
 
   va_start (var_args, iter);
@@ -1791,7 +1791,7 @@ ctk_tree_model_get_valist (GtkTreeModel *tree_model,
 {
   gint column;
 
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (iter != NULL);
 
   column = va_arg (var_args, gint);
@@ -1807,7 +1807,7 @@ ctk_tree_model_get_valist (GtkTreeModel *tree_model,
           break;
         }
 
-      ctk_tree_model_get_value (GTK_TREE_MODEL (tree_model), iter, column, &value);
+      ctk_tree_model_get_value (CTK_TREE_MODEL (tree_model), iter, column, &value);
 
       G_VALUE_LCOPY (&value, var_args, 0, &error);
       if (error)
@@ -1840,7 +1840,7 @@ ctk_tree_model_row_changed (GtkTreeModel *tree_model,
                             GtkTreePath  *path,
                             GtkTreeIter  *iter)
 {
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (path != NULL);
   g_return_if_fail (iter != NULL);
 
@@ -1860,7 +1860,7 @@ ctk_tree_model_row_inserted (GtkTreeModel *tree_model,
                              GtkTreePath  *path,
                              GtkTreeIter  *iter)
 {
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (path != NULL);
   g_return_if_fail (iter != NULL);
 
@@ -1882,7 +1882,7 @@ ctk_tree_model_row_has_child_toggled (GtkTreeModel *tree_model,
                                       GtkTreePath  *path,
                                       GtkTreeIter  *iter)
 {
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (path != NULL);
   g_return_if_fail (iter != NULL);
 
@@ -1908,7 +1908,7 @@ void
 ctk_tree_model_row_deleted (GtkTreeModel *tree_model,
                             GtkTreePath  *path)
 {
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (path != NULL);
 
   g_signal_emit (tree_model, tree_model_signals[ROW_DELETED], 0, path);
@@ -1936,7 +1936,7 @@ ctk_tree_model_rows_reordered (GtkTreeModel *tree_model,
                                GtkTreeIter  *iter,
                                gint         *new_order)
 {
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (new_order != NULL);
 
   g_signal_emit (tree_model, tree_model_signals[ROWS_REORDERED], 0, path, iter, new_order);
@@ -1970,7 +1970,7 @@ ctk_tree_model_rows_reordered_with_length (GtkTreeModel *tree_model,
                                            gint         *new_order,
                                            gint          length)
 {
-  g_return_if_fail (GTK_IS_TREE_MODEL (tree_model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (tree_model));
   g_return_if_fail (new_order != NULL);
   g_return_if_fail (length == ctk_tree_model_iter_n_children (tree_model, iter));
 
@@ -1986,7 +1986,7 @@ ctk_tree_model_foreach_helper (GtkTreeModel            *model,
 {
   gboolean iters_persist;
 
-  iters_persist = ctk_tree_model_get_flags (model) & GTK_TREE_MODEL_ITERS_PERSIST;
+  iters_persist = ctk_tree_model_get_flags (model) & CTK_TREE_MODEL_ITERS_PERSIST;
 
   do
     {
@@ -2035,7 +2035,7 @@ ctk_tree_model_foreach (GtkTreeModel            *model,
   GtkTreePath *path;
   GtkTreeIter iter;
 
-  g_return_if_fail (GTK_IS_TREE_MODEL (model));
+  g_return_if_fail (CTK_IS_TREE_MODEL (model));
   g_return_if_fail (func != NULL);
 
   path = ctk_tree_path_new_first ();
@@ -2224,7 +2224,7 @@ ctk_tree_row_ref_reordered (RowRefList  *refs,
     {
       GtkTreeRowReference *reference = tmp_list->data;
 
-      length = ctk_tree_model_iter_n_children (GTK_TREE_MODEL (reference->model), iter);
+      length = ctk_tree_model_iter_n_children (CTK_TREE_MODEL (reference->model), iter);
 
       if (length < 2)
         return;
@@ -2308,7 +2308,7 @@ GtkTreeRowReference *
 ctk_tree_row_reference_new (GtkTreeModel *model,
                             GtkTreePath  *path)
 {
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (model), NULL);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (model), NULL);
   g_return_val_if_fail (path != NULL, NULL);
 
   /* We use the model itself as the proxy object; and call
@@ -2362,7 +2362,7 @@ ctk_tree_row_reference_new_proxy (GObject      *proxy,
   gint i;
 
   g_return_val_if_fail (G_IS_OBJECT (proxy), NULL);
-  g_return_val_if_fail (GTK_IS_TREE_MODEL (model), NULL);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL (model), NULL);
   g_return_val_if_fail (path != NULL, NULL);
   g_return_val_if_fail (path->depth > 0, NULL);
 

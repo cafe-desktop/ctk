@@ -59,11 +59,11 @@
  * inside internal structure as direct children for the purpose
  * of forall().
  */
-#define SPECIAL_CONTAINER(x) (GTK_IS_ASSISTANT (x) || \
-                              GTK_IS_ACTION_BAR (x) || \
-                              GTK_IS_POPOVER_MENU (x) || \
-                              GTK_IS_SHORTCUTS_SECTION (x) || \
-                              GTK_IS_SHORTCUTS_WINDOW (x))
+#define SPECIAL_CONTAINER(x) (CTK_IS_ASSISTANT (x) || \
+                              CTK_IS_ACTION_BAR (x) || \
+                              CTK_IS_POPOVER_MENU (x) || \
+                              CTK_IS_SHORTCUTS_SECTION (x) || \
+                              CTK_IS_SHORTCUTS_WINDOW (x))
 
 /**
  * SECTION:gtkcontainer
@@ -113,8 +113,8 @@
  * that make use of GTK+’s height for width geometry management system. First,
  * it’s important to note that a container must prioritize one of its
  * dimensions, that is to say that a widget or container can only have a
- * #GtkSizeRequestMode that is %GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
- * %GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT. However, every widget and container
+ * #GtkSizeRequestMode that is %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
+ * %CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT. However, every widget and container
  * must be able to respond to the APIs for both dimensions, i.e. even if a
  * widget has a request mode that is height-for-width, it is possible that
  * its parent will request its sizes using the width-for-height APIs.
@@ -141,10 +141,10 @@
  *      {
  *        gint min_width;
  *
- *        GTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget,
+ *        CTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget,
  *                                                            &min_width,
  *                                                            NULL);
- *        GTK_WIDGET_GET_CLASS (widget)->get_preferred_height_for_width
+ *        CTK_WIDGET_GET_CLASS (widget)->get_preferred_height_for_width
  *                                                           (widget,
  *                                                            min_width,
  *                                                            min_height,
@@ -173,7 +173,7 @@
  * {
  *    if (i_am_in_height_for_width_mode)
  *      {
- *        GTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget,
+ *        CTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget,
  *                                                            min_width,
  *                                                            nat_width);
  *      }
@@ -449,14 +449,14 @@ ctk_container_get_type (void)
       };
 
       container_type =
-        g_type_register_static (GTK_TYPE_WIDGET, I_("GtkContainer"),
+        g_type_register_static (CTK_TYPE_WIDGET, I_("GtkContainer"),
                                 &container_info, G_TYPE_FLAG_ABSTRACT);
 
       GtkContainer_private_offset =
         g_type_add_instance_private (container_type, sizeof (GtkContainerPrivate));
 
       g_type_add_interface_static (container_type,
-                                   GTK_TYPE_BUILDABLE,
+                                   CTK_TYPE_BUILDABLE,
                                    &buildable_info);
 
     }
@@ -493,7 +493,7 @@ static void
 ctk_container_class_init (GtkContainerClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   parent_class = g_type_class_peek_parent (class);
 
@@ -531,9 +531,9 @@ ctk_container_class_init (GtkContainerClass *class)
       g_param_spec_enum ("resize-mode",
                          P_("Resize mode"),
                          P_("Specify how resize events are handled"),
-                         GTK_TYPE_RESIZE_MODE,
-                         GTK_RESIZE_PARENT,
-                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
+                         CTK_TYPE_RESIZE_MODE,
+                         CTK_RESIZE_PARENT,
+                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   container_props[PROP_BORDER_WIDTH] =
       g_param_spec_uint ("border-width",
@@ -541,14 +541,14 @@ ctk_container_class_init (GtkContainerClass *class)
                          P_("The width of the empty border outside the containers children"),
                          0, 65535,
                          0,
-                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   container_props[PROP_CHILD] =
       g_param_spec_object ("child",
                            P_("Child"),
                            P_("Can be used to add a new child to the container"),
-                           GTK_TYPE_WIDGET,
-                           GTK_PARAM_WRITABLE|G_PARAM_DEPRECATED);
+                           CTK_TYPE_WIDGET,
+                           CTK_PARAM_WRITABLE|G_PARAM_DEPRECATED);
 
   g_object_class_install_properties (gobject_class, LAST_PROP, container_props);
 
@@ -560,7 +560,7 @@ ctk_container_class_init (GtkContainerClass *class)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GTK_TYPE_WIDGET);
+                  CTK_TYPE_WIDGET);
   container_signals[REMOVE] =
     g_signal_new (I_("remove"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
@@ -569,7 +569,7 @@ ctk_container_class_init (GtkContainerClass *class)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GTK_TYPE_WIDGET);
+                  CTK_TYPE_WIDGET);
   container_signals[CHECK_RESIZE] =
     g_signal_new (I_("check-resize"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
@@ -586,12 +586,12 @@ ctk_container_class_init (GtkContainerClass *class)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GTK_TYPE_WIDGET);
+                  CTK_TYPE_WIDGET);
 
   if (GtkContainer_private_offset != 0)
     g_type_class_adjust_private_offset (class, &GtkContainer_private_offset);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_CONTAINER_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_CONTAINER_ACCESSIBLE);
 }
 
 static void
@@ -612,12 +612,12 @@ ctk_container_buildable_add_child (GtkBuildable  *buildable,
 {
   if (type)
     {
-      GTK_BUILDER_WARN_INVALID_CHILD_TYPE (buildable, type);
+      CTK_BUILDER_WARN_INVALID_CHILD_TYPE (buildable, type);
     }
-  else if (GTK_IS_WIDGET (child) &&
-           _ctk_widget_get_parent (GTK_WIDGET (child)) == NULL)
+  else if (CTK_IS_WIDGET (child) &&
+           _ctk_widget_get_parent (CTK_WIDGET (child)) == NULL)
     {
-      ctk_container_add (GTK_CONTAINER (buildable), GTK_WIDGET (child));
+      ctk_container_add (CTK_CONTAINER (buildable), CTK_WIDGET (child));
     }
   else
     g_warning ("Cannot add an object of type %s to a container of type %s",
@@ -933,8 +933,8 @@ ctk_container_buildable_custom_tag_start (GtkBuildable  *buildable,
       data = g_slice_new0 (PackingData);
       data->string = g_string_new ("");
       data->builder = builder;
-      data->container = GTK_CONTAINER (buildable);
-      data->child = GTK_WIDGET (child);
+      data->container = CTK_CONTAINER (buildable);
+      data->child = CTK_WIDGET (child);
       data->child_prop_name = NULL;
 
       *parser = packing_parser;
@@ -1007,7 +1007,7 @@ ctk_container_buildable_custom_finished (GtkBuildable *buildable,
           chain = g_list_prepend (chain, object);
         }
 
-      ctk_container_set_focus_chain (GTK_CONTAINER (data->object), chain);
+      ctk_container_set_focus_chain (CTK_CONTAINER (data->object), chain);
       g_list_free (chain);
 
       g_slist_free_full (data->items, focus_chain_widget_free);
@@ -1039,9 +1039,9 @@ ctk_container_child_type (GtkContainer *container)
   GType slot;
   GtkContainerClass *class;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), 0);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), 0);
 
-  class = GTK_CONTAINER_GET_CLASS (container);
+  class = CTK_CONTAINER_GET_CLASS (container);
   if (class->child_type)
     slot = class->child_type (container);
   else
@@ -1077,8 +1077,8 @@ ctk_container_child_notify (GtkContainer *container,
   GObject *obj;
   GParamSpec *pspec;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (child));
   g_return_if_fail (child_property != NULL);
 
   obj = G_OBJECT (child);
@@ -1136,8 +1136,8 @@ ctk_container_child_notify_by_pspec (GtkContainer *container,
   GObject *obj = G_OBJECT (child);
   GObjectNotifyQueue *nqueue;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (child));
   g_return_if_fail (G_IS_PARAM_SPEC (pspec));
 
   if (obj->ref_count == 0)
@@ -1182,8 +1182,8 @@ ctk_container_child_get_valist (GtkContainer *container,
 {
   const gchar *name;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (child));
 
   g_object_ref (container);
   g_object_ref (child);
@@ -1250,8 +1250,8 @@ ctk_container_child_get_property (GtkContainer *container,
 {
   GParamSpec *pspec;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (child));
   g_return_if_fail (property_name != NULL);
   g_return_if_fail (G_IS_VALUE (value));
 
@@ -1325,8 +1325,8 @@ ctk_container_child_set_valist (GtkContainer *container,
   GObjectNotifyQueue *nqueue;
   const gchar *name;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (child));
 
   g_object_ref (container);
   g_object_ref (child);
@@ -1398,8 +1398,8 @@ ctk_container_child_set_property (GtkContainer *container,
   GObjectNotifyQueue *nqueue;
   GParamSpec *pspec;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (child));
   g_return_if_fail (property_name != NULL);
   g_return_if_fail (G_IS_VALUE (value));
 
@@ -1445,8 +1445,8 @@ ctk_container_add_with_properties (GtkContainer *container,
                                    const gchar  *first_prop_name,
                                    ...)
 {
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (_ctk_widget_get_parent (widget) == NULL);
 
   g_object_ref (container);
@@ -1545,7 +1545,7 @@ ctk_container_class_install_child_property (GtkContainerClass *cclass,
                                             guint              property_id,
                                             GParamSpec        *pspec)
 {
-  g_return_if_fail (GTK_IS_CONTAINER_CLASS (cclass));
+  g_return_if_fail (CTK_IS_CONTAINER_CLASS (cclass));
   g_return_if_fail (G_IS_PARAM_SPEC (pspec));
   if (pspec->flags & G_PARAM_WRITABLE)
     g_return_if_fail (cclass->set_child_property != NULL);
@@ -1577,7 +1577,7 @@ ctk_container_class_install_child_properties (GtkContainerClass  *cclass,
 {
   gint i;
 
-  g_return_if_fail (GTK_IS_CONTAINER_CLASS (cclass));
+  g_return_if_fail (CTK_IS_CONTAINER_CLASS (cclass));
   g_return_if_fail (n_pspecs > 1);
   g_return_if_fail (pspecs[0] == NULL);
 
@@ -1614,7 +1614,7 @@ GParamSpec*
 ctk_container_class_find_child_property (GObjectClass *cclass,
                                          const gchar  *property_name)
 {
-  g_return_val_if_fail (GTK_IS_CONTAINER_CLASS (cclass), NULL);
+  g_return_val_if_fail (CTK_IS_CONTAINER_CLASS (cclass), NULL);
   g_return_val_if_fail (property_name != NULL, NULL);
 
   return g_param_spec_pool_lookup (_ctk_widget_child_property_pool,
@@ -1641,7 +1641,7 @@ ctk_container_class_list_child_properties (GObjectClass *cclass,
   GParamSpec **pspecs;
   guint n;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER_CLASS (cclass), NULL);
+  g_return_val_if_fail (CTK_IS_CONTAINER_CLASS (cclass), NULL);
 
   pspecs = g_param_spec_pool_list (_ctk_widget_child_property_pool,
                                    G_OBJECT_CLASS_TYPE (cclass),
@@ -1676,7 +1676,7 @@ ctk_container_init (GtkContainer *container)
 
   priv->focus_child = NULL;
   priv->border_width = 0;
-  priv->resize_mode = GTK_RESIZE_PARENT;
+  priv->resize_mode = CTK_RESIZE_PARENT;
   priv->reallocate_redraws = FALSE;
   priv->border_width_set = FALSE;
 }
@@ -1684,7 +1684,7 @@ ctk_container_init (GtkContainer *container)
 static void
 ctk_container_destroy (GtkWidget *widget)
 {
-  GtkContainer *container = GTK_CONTAINER (widget);
+  GtkContainer *container = CTK_CONTAINER (widget);
   GtkContainerPrivate *priv = container->priv;
 
   if (priv->restyle_pending)
@@ -1700,7 +1700,7 @@ ctk_container_destroy (GtkWidget *widget)
 
   ctk_container_foreach (container, (GtkCallback) ctk_widget_destroy, NULL);
 
-  GTK_WIDGET_CLASS (parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (parent_class)->destroy (widget);
 }
 
 static void
@@ -1709,7 +1709,7 @@ ctk_container_set_property (GObject         *object,
                             const GValue    *value,
                             GParamSpec      *pspec)
 {
-  GtkContainer *container = GTK_CONTAINER (object);
+  GtkContainer *container = CTK_CONTAINER (object);
 
   switch (prop_id)
     {
@@ -1722,7 +1722,7 @@ ctk_container_set_property (GObject         *object,
       G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_CHILD:
-      ctk_container_add (container, GTK_WIDGET (g_value_get_object (value)));
+      ctk_container_add (container, CTK_WIDGET (g_value_get_object (value)));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1736,7 +1736,7 @@ ctk_container_get_property (GObject         *object,
                             GValue          *value,
                             GParamSpec      *pspec)
 {
-  GtkContainer *container = GTK_CONTAINER (object);
+  GtkContainer *container = CTK_CONTAINER (object);
   GtkContainerPrivate *priv = container->priv;
 
   switch (prop_id)
@@ -1758,7 +1758,7 @@ _ctk_container_get_border_width_set (GtkContainer *container)
 {
   GtkContainerPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), FALSE);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), FALSE);
 
   priv = container->priv;
 
@@ -1771,7 +1771,7 @@ _ctk_container_set_border_width_set (GtkContainer *container,
 {
   GtkContainerPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
 
   priv = container->priv;
 
@@ -1800,7 +1800,7 @@ ctk_container_set_border_width (GtkContainer *container,
 {
   GtkContainerPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
 
   priv = container->priv;
 
@@ -1811,8 +1811,8 @@ ctk_container_set_border_width (GtkContainer *container,
 
       g_object_notify_by_pspec (G_OBJECT (container), container_props[PROP_BORDER_WIDTH]);
 
-      if (_ctk_widget_get_realized (GTK_WIDGET (container)))
-        ctk_widget_queue_resize (GTK_WIDGET (container));
+      if (_ctk_widget_get_realized (CTK_WIDGET (container)))
+        ctk_widget_queue_resize (CTK_WIDGET (container));
     }
 }
 
@@ -1828,7 +1828,7 @@ ctk_container_set_border_width (GtkContainer *container,
 guint
 ctk_container_get_border_width (GtkContainer *container)
 {
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), 0);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), 0);
 
   return container->priv->border_width;
 }
@@ -1857,8 +1857,8 @@ ctk_container_add (GtkContainer *container,
 {
   GtkWidget *parent;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   parent = _ctk_widget_get_parent (widget);
 
@@ -1875,7 +1875,7 @@ ctk_container_add (GtkContainer *container,
 
   g_signal_emit (container, container_signals[ADD], 0, widget);
 
-  _ctk_container_accessible_add (GTK_WIDGET (container), widget);
+  _ctk_container_accessible_add (CTK_WIDGET (container), widget);
 }
 
 /**
@@ -1897,15 +1897,15 @@ void
 ctk_container_remove (GtkContainer *container,
                       GtkWidget    *widget)
 {
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   g_object_ref (container);
   g_object_ref (widget);
 
   g_signal_emit (container, container_signals[REMOVE], 0, widget);
 
-  _ctk_container_accessible_remove (GTK_WIDGET (container), widget);
+  _ctk_container_accessible_remove (CTK_WIDGET (container), widget);
 
   g_object_unref (widget);
   g_object_unref (container);
@@ -1915,13 +1915,13 @@ static void
 ctk_container_real_set_resize_mode (GtkContainer  *container,
                                     GtkResizeMode  resize_mode)
 {
-  GtkWidget *widget = GTK_WIDGET (container);
+  GtkWidget *widget = CTK_WIDGET (container);
   GtkContainerPrivate *priv = container->priv;
 
   if (_ctk_widget_is_toplevel (widget) &&
-      resize_mode == GTK_RESIZE_PARENT)
+      resize_mode == CTK_RESIZE_PARENT)
     {
-      resize_mode = GTK_RESIZE_QUEUE;
+      resize_mode = CTK_RESIZE_QUEUE;
     }
 
   if (priv->resize_mode != resize_mode)
@@ -1954,8 +1954,8 @@ ctk_container_set_resize_mode (GtkContainer  *container,
 {
   GtkContainerPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (resize_mode <= GTK_RESIZE_IMMEDIATE);
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (resize_mode <= CTK_RESIZE_IMMEDIATE);
 
   priv = container->priv;
   priv->resize_mode_set = TRUE;
@@ -1991,7 +1991,7 @@ ctk_container_set_default_resize_mode (GtkContainer *container,
 GtkResizeMode
 ctk_container_get_resize_mode (GtkContainer *container)
 {
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), GTK_RESIZE_PARENT);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), CTK_RESIZE_PARENT);
 
   return container->priv->resize_mode;
 }
@@ -2012,7 +2012,7 @@ void
 ctk_container_set_reallocate_redraws (GtkContainer *container,
                                       gboolean      needs_redraws)
 {
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
 
   container->priv->reallocate_redraws = needs_redraws ? TRUE : FALSE;
 }
@@ -2022,16 +2022,16 @@ ctk_container_needs_idle_sizer (GtkContainer *container)
 {
   GtkContainerPrivate *priv = container->priv;
 
-  if (priv->resize_mode == GTK_RESIZE_PARENT)
+  if (priv->resize_mode == CTK_RESIZE_PARENT)
     return FALSE;
 
   if (container->priv->restyle_pending)
     return TRUE;
 
-  if (priv->resize_mode == GTK_RESIZE_IMMEDIATE)
+  if (priv->resize_mode == CTK_RESIZE_IMMEDIATE)
     return FALSE;
 
-  return ctk_widget_needs_allocate (GTK_WIDGET (container));
+  return ctk_widget_needs_allocate (CTK_WIDGET (container));
 }
 
 static void
@@ -2051,7 +2051,7 @@ ctk_container_idle_sizer (GdkFrameClock *clock,
   if (container->priv->restyle_pending)
     {
       container->priv->restyle_pending = FALSE;
-      ctk_css_node_validate (ctk_widget_get_css_node (GTK_WIDGET (container)));
+      ctk_css_node_validate (ctk_widget_get_css_node (CTK_WIDGET (container)));
     }
 
   /* we may be invoked with a container_resize_queue of NULL, because
@@ -2060,7 +2060,7 @@ ctk_container_idle_sizer (GdkFrameClock *clock,
    * than trying to explicitly work around them with some extra flags,
    * since it doesn't cause any actual harm.
    */
-  if (ctk_widget_needs_allocate (GTK_WIDGET (container)))
+  if (ctk_widget_needs_allocate (CTK_WIDGET (container)))
     {
       ctk_container_check_resize (container);
     }
@@ -2084,11 +2084,11 @@ ctk_container_start_idle_sizer (GtkContainer *container)
   if (container->priv->resize_handler != 0)
     return;
 
-  clock = ctk_widget_get_frame_clock (GTK_WIDGET (container));
+  clock = ctk_widget_get_frame_clock (CTK_WIDGET (container));
   if (clock == NULL)
     return;
 
-  if (!GTK_WIDGET (container)->priv->frameclock_connected)
+  if (!CTK_WIDGET (container)->priv->frameclock_connected)
     return;
 
   container->priv->resize_clock = clock;
@@ -2116,10 +2116,10 @@ ctk_container_queue_resize_handler (GtkContainer *container)
   GtkWidget *widget;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  g_return_if_fail (GTK_IS_RESIZE_CONTAINER (container));
+  g_return_if_fail (CTK_IS_RESIZE_CONTAINER (container));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  widget = GTK_WIDGET (container);
+  widget = CTK_WIDGET (container);
 
   if (_ctk_widget_get_visible (widget) &&
       (_ctk_widget_is_toplevel (widget) ||
@@ -2127,16 +2127,16 @@ ctk_container_queue_resize_handler (GtkContainer *container)
     {
       switch (container->priv->resize_mode)
         {
-        case GTK_RESIZE_QUEUE:
+        case CTK_RESIZE_QUEUE:
           if (ctk_widget_needs_allocate (widget))
             ctk_container_start_idle_sizer (container);
           break;
 
-        case GTK_RESIZE_IMMEDIATE:
+        case CTK_RESIZE_IMMEDIATE:
           ctk_container_check_resize (container);
           break;
 
-        case GTK_RESIZE_PARENT:
+        case CTK_RESIZE_PARENT:
         default:
           g_assert_not_reached ();
           break;
@@ -2149,7 +2149,7 @@ _ctk_container_queue_restyle (GtkContainer *container)
 {
   GtkContainerPrivate *priv;
 
-  g_return_if_fail (GTK_CONTAINER (container));
+  g_return_if_fail (CTK_CONTAINER (container));
 
   priv = container->priv;
 
@@ -2170,7 +2170,7 @@ _ctk_container_maybe_start_idle_sizer (GtkContainer *container)
 void
 ctk_container_check_resize (GtkContainer *container)
 {
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
 
   g_signal_emit (container, container_signals[CHECK_RESIZE], 0);
 }
@@ -2178,7 +2178,7 @@ ctk_container_check_resize (GtkContainer *container)
 static void
 ctk_container_real_check_resize (GtkContainer *container)
 {
-  GtkWidget *widget = GTK_WIDGET (container);
+  GtkWidget *widget = CTK_WIDGET (container);
   GtkAllocation allocation;
   GtkRequisition requisition;
   int baseline;
@@ -2192,7 +2192,7 @@ ctk_container_real_check_resize (GtkContainer *container)
           requisition.height > allocation.height)
         {
           G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-          if (GTK_IS_RESIZE_CONTAINER (container))
+          if (CTK_IS_RESIZE_CONTAINER (container))
             {
               ctk_widget_size_allocate (widget, &allocation);
             }
@@ -2216,7 +2216,7 @@ ctk_container_real_check_resize (GtkContainer *container)
  *  is not sufficient for the requisition of some child.
  *  We’ve already performed a size request at this point,
  *  so we simply need to reallocate and let the allocation
- *  trickle down via GTK_WIDGET_ALLOC_NEEDED flags.
+ *  trickle down via CTK_WIDGET_ALLOC_NEEDED flags.
  */
 /**
  * ctk_container_resize_children:
@@ -2232,13 +2232,13 @@ ctk_container_resize_children (GtkContainer *container)
   gint baseline;
 
   /* resizing invariants:
-   * toplevels have *always* resize_mode != GTK_RESIZE_PARENT set.
+   * toplevels have *always* resize_mode != CTK_RESIZE_PARENT set.
    * containers that have an idle sizer pending must be flagged with
    * RESIZE_PENDING.
    */
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
 
-  widget = GTK_WIDGET (container);
+  widget = CTK_WIDGET (container);
   ctk_widget_get_allocated_size (widget, &allocation, &baseline);
 
   ctk_widget_size_allocate_with_baseline (widget, &allocation, baseline);
@@ -2252,9 +2252,9 @@ ctk_container_adjust_size_request (GtkWidget         *widget,
 {
   GtkContainer *container;
 
-  container = GTK_CONTAINER (widget);
+  container = CTK_CONTAINER (widget);
 
-  if (GTK_CONTAINER_GET_CLASS (widget)->_handle_border_width)
+  if (CTK_CONTAINER_GET_CLASS (widget)->_handle_border_width)
     {
       int border_width;
 
@@ -2278,9 +2278,9 @@ ctk_container_adjust_baseline_request (GtkWidget         *widget,
 {
   GtkContainer *container;
 
-  container = GTK_CONTAINER (widget);
+  container = CTK_CONTAINER (widget);
 
-  if (GTK_CONTAINER_GET_CLASS (widget)->_handle_border_width)
+  if (CTK_CONTAINER_GET_CLASS (widget)->_handle_border_width)
     {
       int border_width;
 
@@ -2304,9 +2304,9 @@ ctk_container_adjust_size_allocation (GtkWidget         *widget,
   GtkContainer *container;
   int border_width;
 
-  container = GTK_CONTAINER (widget);
+  container = CTK_CONTAINER (widget);
 
-  if (GTK_CONTAINER_GET_CLASS (widget)->_handle_border_width)
+  if (CTK_CONTAINER_GET_CLASS (widget)->_handle_border_width)
     {
       border_width = container->priv->border_width;
 
@@ -2335,9 +2335,9 @@ ctk_container_adjust_baseline_allocation (GtkWidget         *widget,
   GtkContainer *container;
   int border_width;
 
-  container = GTK_CONTAINER (widget);
+  container = CTK_CONTAINER (widget);
 
-  if (GTK_CONTAINER_GET_CLASS (widget)->_handle_border_width)
+  if (CTK_CONTAINER_GET_CLASS (widget)->_handle_border_width)
     {
       border_width = container->priv->border_width;
 
@@ -2362,13 +2362,13 @@ count_request_modes (GtkWidget        *widget,
 
   switch (mode)
     {
-    case GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH:
+    case CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH:
       count->hfw++;
       break;
-    case GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT:
+    case CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT:
       count->wfh++;
       break;
-    case GTK_SIZE_REQUEST_CONSTANT_SIZE:
+    case CTK_SIZE_REQUEST_CONSTANT_SIZE:
     default:
       break;
     }
@@ -2377,17 +2377,17 @@ count_request_modes (GtkWidget        *widget,
 static GtkSizeRequestMode 
 ctk_container_get_request_mode (GtkWidget *widget)
 {
-  GtkContainer *container = GTK_CONTAINER (widget);
+  GtkContainer *container = CTK_CONTAINER (widget);
   RequestModeCount count = { 0, 0 };
 
   ctk_container_forall (container, (GtkCallback)count_request_modes, &count);
 
   if (!count.hfw && !count.wfh)
-    return GTK_SIZE_REQUEST_CONSTANT_SIZE;
+    return CTK_SIZE_REQUEST_CONSTANT_SIZE;
   else
     return count.wfh > count.hfw ? 
-        GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT :
-	GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
+        CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT :
+	CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
 }
 
 /**
@@ -2408,7 +2408,7 @@ ctk_container_get_request_mode (GtkWidget *widget)
 void
 ctk_container_class_handle_border_width (GtkContainerClass *klass)
 {
-  g_return_if_fail (GTK_IS_CONTAINER_CLASS (klass));
+  g_return_if_fail (CTK_IS_CONTAINER_CLASS (klass));
 
   klass->_handle_border_width = TRUE;
 }
@@ -2435,10 +2435,10 @@ ctk_container_forall (GtkContainer *container,
 {
   GtkContainerClass *class;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
   g_return_if_fail (callback != NULL);
 
-  class = GTK_CONTAINER_GET_CLASS (container);
+  class = CTK_CONTAINER_GET_CLASS (container);
 
   if (class->forall)
     class->forall (container, TRUE, callback, callback_data);
@@ -2469,10 +2469,10 @@ ctk_container_foreach (GtkContainer *container,
 {
   GtkContainerClass *class;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
   g_return_if_fail (callback != NULL);
 
-  class = GTK_CONTAINER_GET_CLASS (container);
+  class = CTK_CONTAINER_GET_CLASS (container);
 
   if (class->forall)
     class->forall (container, FALSE, callback, callback_data);
@@ -2496,9 +2496,9 @@ void
 ctk_container_set_focus_child (GtkContainer *container,
                                GtkWidget    *child)
 {
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
   if (child)
-    g_return_if_fail (GTK_IS_WIDGET (child));
+    g_return_if_fail (CTK_IS_WIDGET (child));
 
   g_signal_emit (container, container_signals[SET_FOCUS_CHILD], 0, child);
 }
@@ -2520,7 +2520,7 @@ ctk_container_set_focus_child (GtkContainer *container,
 GtkWidget *
 ctk_container_get_focus_child (GtkContainer *container)
 {
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), NULL);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
 
   return container->priv->focus_child;
 }
@@ -2593,9 +2593,9 @@ _ctk_container_child_composite_name (GtkContainer *container,
 {
   gboolean composite_child;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), NULL);
-  g_return_val_if_fail (GTK_IS_WIDGET (child), NULL);
-  g_return_val_if_fail (_ctk_widget_get_parent (child) == GTK_WIDGET (container), NULL);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (child), NULL);
+  g_return_val_if_fail (_ctk_widget_get_parent (child) == CTK_WIDGET (container), NULL);
 
   g_object_get (child, "composite-child", &composite_child, NULL);
   if (composite_child)
@@ -2611,7 +2611,7 @@ _ctk_container_child_composite_name (GtkContainer *container,
         {
           GtkContainerClass *class;
 
-          class = GTK_CONTAINER_GET_CLASS (container);
+          class = CTK_CONTAINER_GET_CLASS (container);
           if (class->composite_name)
             name = class->composite_name (container, child);
         }
@@ -2647,10 +2647,10 @@ ctk_container_compute_expand_callback (GtkWidget *widget,
    * child is !visible so that's taken care of.
    */
   data->hexpand = data->hexpand ||
-    ctk_widget_compute_expand (widget, GTK_ORIENTATION_HORIZONTAL);
+    ctk_widget_compute_expand (widget, CTK_ORIENTATION_HORIZONTAL);
 
   data->vexpand = data->vexpand ||
-    ctk_widget_compute_expand (widget, GTK_ORIENTATION_VERTICAL);
+    ctk_widget_compute_expand (widget, CTK_ORIENTATION_VERTICAL);
 }
 
 static void
@@ -2663,7 +2663,7 @@ ctk_container_compute_expand (GtkWidget         *widget,
   data.hexpand = FALSE;
   data.vexpand = FALSE;
 
-  ctk_container_forall (GTK_CONTAINER (widget),
+  ctk_container_forall (CTK_CONTAINER (widget),
                         ctk_container_compute_expand_callback,
                         &data);
 
@@ -2677,8 +2677,8 @@ ctk_container_real_set_focus_child (GtkContainer     *container,
 {
   GtkContainerPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (child == NULL || GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (child == NULL || CTK_IS_WIDGET (child));
 
   priv = container->priv;
 
@@ -2707,9 +2707,9 @@ ctk_container_real_set_focus_child (GtkContainer     *container,
       if (hadj || vadj)
         {
           focus_child = priv->focus_child;
-          while (GTK_IS_CONTAINER (focus_child) && ctk_container_get_focus_child (GTK_CONTAINER (focus_child)))
+          while (CTK_IS_CONTAINER (focus_child) && ctk_container_get_focus_child (CTK_CONTAINER (focus_child)))
             {
-              focus_child = ctk_container_get_focus_child (GTK_CONTAINER (focus_child));
+              focus_child = ctk_container_get_focus_child (CTK_CONTAINER (focus_child));
             }
 
           if (!ctk_widget_translate_coordinates (focus_child, priv->focus_child,
@@ -2756,7 +2756,7 @@ ctk_container_real_get_path_for_child (GtkContainer *container,
                                        GtkWidget    *child)
 {
   GtkWidgetPath *path;
-  GtkWidget *widget = GTK_WIDGET (container);
+  GtkWidget *widget = CTK_WIDGET (container);
 
   path = _ctk_widget_create_path (widget);
 
@@ -2775,9 +2775,9 @@ ctk_container_focus (GtkWidget        *widget,
   GtkContainer *container;
   GtkContainerPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_CONTAINER (widget), FALSE);
 
-  container = GTK_CONTAINER (widget);
+  container = CTK_CONTAINER (widget);
   priv = container->priv;
 
   return_val = FALSE;
@@ -2801,12 +2801,12 @@ ctk_container_focus (GtkWidget        *widget,
         children = ctk_container_get_all_children (container);
 
       if (priv->has_focus_chain &&
-          (direction == GTK_DIR_TAB_FORWARD ||
-           direction == GTK_DIR_TAB_BACKWARD))
+          (direction == CTK_DIR_TAB_FORWARD ||
+           direction == CTK_DIR_TAB_BACKWARD))
         {
           sorted_children = g_list_copy (children);
 
-          if (direction == GTK_DIR_TAB_BACKWARD)
+          if (direction == CTK_DIR_TAB_BACKWARD)
             sorted_children = g_list_reverse (sorted_children);
         }
       else
@@ -2843,7 +2843,7 @@ tab_compare (gconstpointer a,
       gint x1 = child1_allocation.x + child1_allocation.width / 2;
       gint x2 = child2_allocation.x + child2_allocation.width / 2;
 
-      if (text_direction == GTK_TEXT_DIR_RTL)
+      if (text_direction == CTK_TEXT_DIR_RTL)
         return (x1 < x2) ? 1 : ((x1 == x2) ? 0 : -1);
       else
         return (x1 < x2) ? -1 : ((x1 == x2) ? 0 : 1);
@@ -2858,13 +2858,13 @@ ctk_container_focus_sort_tab (GtkContainer     *container,
                               GtkDirectionType  direction,
                               GtkWidget        *old_focus)
 {
-  GtkTextDirection text_direction = _ctk_widget_get_direction (GTK_WIDGET (container));
+  GtkTextDirection text_direction = _ctk_widget_get_direction (CTK_WIDGET (container));
   children = g_list_sort_with_data (children, tab_compare, GINT_TO_POINTER (text_direction));
 
   /* if we are going backwards then reverse the order
    *  of the children.
    */
-  if (direction == GTK_DIR_TAB_BACKWARD)
+  if (direction == CTK_DIR_TAB_BACKWARD)
     children = g_list_reverse (children);
 
   return children;
@@ -2880,7 +2880,7 @@ get_allocation_coords (GtkContainer  *container,
 {
   ctk_widget_get_allocation (widget, allocation);
 
-  return ctk_widget_translate_coordinates (widget, GTK_WIDGET (container),
+  return ctk_widget_translate_coordinates (widget, CTK_WIDGET (container),
                                            0, 0, &allocation->x, &allocation->y);
 }
 
@@ -2904,7 +2904,7 @@ find_old_focus (GtkContainer *container,
 
           parent = _ctk_widget_get_parent (widget);
 
-          if (parent && (ctk_container_get_focus_child (GTK_CONTAINER (parent)) != widget))
+          if (parent && (ctk_container_get_focus_child (CTK_CONTAINER (parent)) != widget))
             goto next;
 
           widget = parent;
@@ -2923,13 +2923,13 @@ static gboolean
 old_focus_coords (GtkContainer *container,
                   GdkRectangle *old_focus_rect)
 {
-  GtkWidget *widget = GTK_WIDGET (container);
+  GtkWidget *widget = CTK_WIDGET (container);
   GtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
   GtkWidget *old_focus;
 
-  if (GTK_IS_WINDOW (toplevel))
+  if (CTK_IS_WINDOW (toplevel))
     {
-      old_focus = ctk_window_get_focus (GTK_WINDOW (toplevel));
+      old_focus = ctk_window_get_focus (CTK_WINDOW (toplevel));
       if (old_focus)
         return get_allocation_coords (container, old_focus, old_focus_rect);
     }
@@ -2988,7 +2988,7 @@ ctk_container_focus_sort_up_down (GtkContainer     *container,
   GdkRectangle old_allocation;
 
   compare.container = container;
-  compare.reverse = (direction == GTK_DIR_UP);
+  compare.reverse = (direction == CTK_DIR_UP);
 
   if (!old_focus)
       old_focus = find_old_focus (container, children);
@@ -3004,7 +3004,7 @@ ctk_container_focus_sort_up_down (GtkContainer     *container,
       compare_x1 = old_allocation.x;
       compare_x2 = old_allocation.x + old_allocation.width;
 
-      if (direction == GTK_DIR_UP)
+      if (direction == CTK_DIR_UP)
         compare_y = old_allocation.y;
       else
         compare_y = old_allocation.y + old_allocation.height;
@@ -3025,8 +3025,8 @@ ctk_container_focus_sort_up_down (GtkContainer     *container,
                   child_x2 = child_allocation.x + child_allocation.width;
 
                   if ((child_x2 <= compare_x1 || child_x1 >= compare_x2) /* No horizontal overlap */ ||
-                      (direction == GTK_DIR_DOWN && child_allocation.y + child_allocation.height < compare_y) || /* Not below */
-                      (direction == GTK_DIR_UP && child_allocation.y > compare_y)) /* Not above */
+                      (direction == CTK_DIR_DOWN && child_allocation.y + child_allocation.height < compare_y) || /* Not below */
+                      (direction == CTK_DIR_UP && child_allocation.y > compare_y)) /* Not above */
                     {
                       children = g_list_delete_link (children, tmp_list);
                     }
@@ -3046,7 +3046,7 @@ ctk_container_focus_sort_up_down (GtkContainer     *container,
       /* No old focus widget, need to figure out starting x,y some other way
        */
       GtkAllocation allocation;
-      GtkWidget *widget = GTK_WIDGET (container);
+      GtkWidget *widget = CTK_WIDGET (container);
       GdkRectangle old_focus_rect;
 
       _ctk_widget_get_allocation (widget, &allocation);
@@ -3064,9 +3064,9 @@ ctk_container_focus_sort_up_down (GtkContainer     *container,
         }
 
       if (!_ctk_widget_get_has_window (widget))
-        compare.y = (direction == GTK_DIR_DOWN) ? allocation.y : allocation.y + allocation.height;
+        compare.y = (direction == CTK_DIR_DOWN) ? allocation.y : allocation.y + allocation.height;
       else
-        compare.y = (direction == GTK_DIR_DOWN) ? 0 : + allocation.height;
+        compare.y = (direction == CTK_DIR_DOWN) ? 0 : + allocation.height;
     }
 
   children = g_list_sort_with_data (children, up_down_compare, &compare);
@@ -3118,7 +3118,7 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
   GdkRectangle old_allocation;
 
   compare.container = container;
-  compare.reverse = (direction == GTK_DIR_LEFT);
+  compare.reverse = (direction == CTK_DIR_LEFT);
 
   if (!old_focus)
     old_focus = find_old_focus (container, children);
@@ -3134,7 +3134,7 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
       compare_y1 = old_allocation.y;
       compare_y2 = old_allocation.y + old_allocation.height;
 
-      if (direction == GTK_DIR_LEFT)
+      if (direction == CTK_DIR_LEFT)
         compare_x = old_allocation.x;
       else
         compare_x = old_allocation.x + old_allocation.width;
@@ -3155,8 +3155,8 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
                   child_y2 = child_allocation.y + child_allocation.height;
 
                   if ((child_y2 <= compare_y1 || child_y1 >= compare_y2) /* No vertical overlap */ ||
-                      (direction == GTK_DIR_RIGHT && child_allocation.x + child_allocation.width < compare_x) || /* Not to left */
-                      (direction == GTK_DIR_LEFT && child_allocation.x > compare_x)) /* Not to right */
+                      (direction == CTK_DIR_RIGHT && child_allocation.x + child_allocation.width < compare_x) || /* Not to left */
+                      (direction == CTK_DIR_LEFT && child_allocation.x > compare_x)) /* Not to right */
                     {
                       children = g_list_delete_link (children, tmp_list);
                     }
@@ -3176,7 +3176,7 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
       /* No old focus widget, need to figure out starting x,y some other way
        */
       GtkAllocation allocation;
-      GtkWidget *widget = GTK_WIDGET (container);
+      GtkWidget *widget = CTK_WIDGET (container);
       GdkRectangle old_focus_rect;
 
       _ctk_widget_get_allocation (widget, &allocation);
@@ -3194,9 +3194,9 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
         }
 
       if (!_ctk_widget_get_has_window (widget))
-        compare.x = (direction == GTK_DIR_RIGHT) ? allocation.x : allocation.x + allocation.width;
+        compare.x = (direction == CTK_DIR_RIGHT) ? allocation.x : allocation.x + allocation.width;
       else
-        compare.x = (direction == GTK_DIR_RIGHT) ? 0 : allocation.width;
+        compare.x = (direction == CTK_DIR_RIGHT) ? 0 : allocation.width;
     }
 
   children = g_list_sort_with_data (children, left_right_compare, &compare);
@@ -3215,7 +3215,7 @@ ctk_container_focus_sort_left_right (GtkContainer     *container,
  * @direction: focus direction
  * @old_focus: (allow-none): widget to use for the starting position, or %NULL
  *             to determine this automatically.
- *             (Note, this argument isn’t used for GTK_DIR_TAB_*,
+ *             (Note, this argument isn’t used for CTK_DIR_TAB_*,
  *              which is the only @direction we use currently,
  *              so perhaps this argument should be removed)
  *
@@ -3243,14 +3243,14 @@ _ctk_container_focus_sort (GtkContainer     *container,
 
   switch (direction)
     {
-    case GTK_DIR_TAB_FORWARD:
-    case GTK_DIR_TAB_BACKWARD:
+    case CTK_DIR_TAB_FORWARD:
+    case CTK_DIR_TAB_BACKWARD:
       return ctk_container_focus_sort_tab (container, visible_children, direction, old_focus);
-    case GTK_DIR_UP:
-    case GTK_DIR_DOWN:
+    case CTK_DIR_UP:
+    case CTK_DIR_DOWN:
       return ctk_container_focus_sort_up_down (container, visible_children, direction, old_focus);
-    case GTK_DIR_LEFT:
-    case GTK_DIR_RIGHT:
+    case CTK_DIR_LEFT:
+    case CTK_DIR_RIGHT:
       return ctk_container_focus_sort_left_right (container, visible_children, direction, old_focus);
     }
 
@@ -3289,7 +3289,7 @@ ctk_container_focus_move (GtkContainer     *container,
             }
         }
       else if (_ctk_widget_is_drawable (child) &&
-               ctk_widget_is_ancestor (child, GTK_WIDGET (container)))
+               ctk_widget_is_ancestor (child, CTK_WIDGET (container)))
         {
           if (ctk_widget_child_focus (child, direction))
             return TRUE;
@@ -3317,7 +3317,7 @@ chain_widget_destroyed (GtkWidget *widget,
   GtkContainer *container;
   GList *chain;
 
-  container = GTK_CONTAINER (user_data);
+  container = CTK_CONTAINER (user_data);
 
   chain = g_object_get_qdata (G_OBJECT (container), quark_focus_chain);
 
@@ -3355,7 +3355,7 @@ ctk_container_set_focus_chain (GtkContainer *container,
   GList *tmp_list;
   GtkContainerPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
 
   priv = container->priv;
 
@@ -3368,7 +3368,7 @@ ctk_container_set_focus_chain (GtkContainer *container,
   tmp_list = focusable_widgets;
   while (tmp_list != NULL)
     {
-      g_return_if_fail (GTK_IS_WIDGET (tmp_list->data));
+      g_return_if_fail (CTK_IS_WIDGET (tmp_list->data));
 
       /* In principle each widget in the chain should be a descendant
        * of the container, but we don't want to check that here. It's
@@ -3420,7 +3420,7 @@ ctk_container_get_focus_chain (GtkContainer *container,
 {
   GtkContainerPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), FALSE);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), FALSE);
 
   priv = container->priv;
 
@@ -3449,7 +3449,7 @@ ctk_container_unset_focus_chain (GtkContainer  *container)
 {
   GtkContainerPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
 
   priv = container->priv;
 
@@ -3498,9 +3498,9 @@ void
 ctk_container_set_focus_vadjustment (GtkContainer  *container,
                                      GtkAdjustment *adjustment)
 {
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
   if (adjustment)
-    g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+    g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   if (adjustment)
     g_object_ref (adjustment);
@@ -3526,7 +3526,7 @@ ctk_container_get_focus_vadjustment (GtkContainer *container)
 {
   GtkAdjustment *vadjustment;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), NULL);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
 
   vadjustment = g_object_get_qdata (G_OBJECT (container), vadjustment_key_id);
 
@@ -3553,9 +3553,9 @@ void
 ctk_container_set_focus_hadjustment (GtkContainer  *container,
                                      GtkAdjustment *adjustment)
 {
-  g_return_if_fail (GTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
   if (adjustment)
-    g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+    g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   if (adjustment)
     g_object_ref (adjustment);
@@ -3581,7 +3581,7 @@ ctk_container_get_focus_hadjustment (GtkContainer *container)
 {
   GtkAdjustment *hadjustment;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), NULL);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
 
   hadjustment = g_object_get_qdata (G_OBJECT (container), hadjustment_key_id);
 
@@ -3592,9 +3592,9 @@ ctk_container_get_focus_hadjustment (GtkContainer *container)
 static void
 ctk_container_show_all (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_CONTAINER (widget));
+  g_return_if_fail (CTK_IS_CONTAINER (widget));
 
-  ctk_container_foreach (GTK_CONTAINER (widget),
+  ctk_container_foreach (CTK_CONTAINER (widget),
                          (GtkCallback) ctk_widget_show_all,
                          NULL);
   ctk_widget_show (widget);
@@ -3623,7 +3623,7 @@ ctk_container_draw_forall (GtkWidget *widget,
       info.child = widget;
       info.window_depth = G_MAXINT;
       window = _ctk_widget_get_window (widget);
-      if (window != ctk_widget_get_window (GTK_WIDGET (data->container)))
+      if (window != ctk_widget_get_window (CTK_WIDGET (data->container)))
         {
           siblings = gdk_window_peek_children (gdk_window_get_parent (window));
           info.window_depth = g_list_index (siblings, window);
@@ -3646,7 +3646,7 @@ static gint
 ctk_container_draw (GtkWidget *widget,
                     cairo_t   *cr)
 {
-  GtkContainer *container = GTK_CONTAINER (widget);
+  GtkContainer *container = CTK_CONTAINER (widget);
   GArray *child_infos;
   int i;
   ChildOrderInfo *child_info;
@@ -3693,7 +3693,7 @@ ctk_container_map (GtkWidget *widget)
 {
   ctk_widget_set_mapped (widget, TRUE);
 
-  ctk_container_forall (GTK_CONTAINER (widget),
+  ctk_container_forall (CTK_CONTAINER (widget),
                         ctk_container_map_child,
                         NULL);
 
@@ -3714,7 +3714,7 @@ ctk_container_unmap (GtkWidget *widget)
   if (_ctk_widget_get_has_window (widget))
     gdk_window_hide (_ctk_widget_get_window (widget));
 
-  ctk_container_forall (GTK_CONTAINER (widget),
+  ctk_container_forall (CTK_CONTAINER (widget),
                         (GtkCallback)ctk_widget_unmap,
                         NULL);
 }
@@ -3803,18 +3803,18 @@ ctk_container_propagate_draw (GtkContainer *container,
   GdkWindow *window, *w;
   int x, y;
 
-  g_return_if_fail (GTK_IS_CONTAINER (container));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_CONTAINER (container));
+  g_return_if_fail (CTK_IS_WIDGET (child));
   g_return_if_fail (cr != NULL);
-  g_return_if_fail (_ctk_widget_get_parent (child) == GTK_WIDGET (container));
+  g_return_if_fail (_ctk_widget_get_parent (child) == CTK_WIDGET (container));
 
   if (!ctk_container_should_propagate_draw (container, child, cr))
     return;
 
   /* translate coordinates. Ugly business, that. */
-  if (!_ctk_widget_get_has_window (GTK_WIDGET (container)))
+  if (!_ctk_widget_get_has_window (CTK_WIDGET (container)))
     {
-      _ctk_widget_get_allocation (GTK_WIDGET (container), &allocation);
+      _ctk_widget_get_allocation (CTK_WIDGET (container), &allocation);
       x = -allocation.x;
       y = -allocation.y;
     }
@@ -3824,7 +3824,7 @@ ctk_container_propagate_draw (GtkContainer *container,
       y = 0;
     }
 
-  window = _ctk_widget_get_window (GTK_WIDGET (container));
+  window = _ctk_widget_get_window (CTK_WIDGET (container));
 
   for (w = _ctk_widget_get_window (child); w && w != window; w = gdk_window_get_parent (w))
     {
@@ -3877,11 +3877,11 @@ ctk_container_get_path_for_child (GtkContainer *container,
 {
   GtkWidgetPath *path;
 
-  g_return_val_if_fail (GTK_IS_CONTAINER (container), NULL);
-  g_return_val_if_fail (GTK_IS_WIDGET (child), NULL);
+  g_return_val_if_fail (CTK_IS_CONTAINER (container), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (child), NULL);
   g_return_val_if_fail (container == (GtkContainer *) _ctk_widget_get_parent (child), NULL);
 
-  path = GTK_CONTAINER_GET_CLASS (container)->get_path_for_child (container, child);
+  path = CTK_CONTAINER_GET_CLASS (container)->get_path_for_child (container, child);
   if (ctk_widget_path_get_object_type (path) != G_OBJECT_TYPE (child))
     {
       g_critical ("%s %p returned a widget path for type %s, but child is %s",

@@ -28,7 +28,7 @@ rgba_changed (GtkColorChooser *chooser, GParamSpec *pspec, gpointer data)
   s = gdk_rgba_to_string (&color);
 
   g_signal_handlers_block_by_func (entry, text_activated, chooser);
-  ctk_entry_set_text (GTK_ENTRY (entry), s);
+  ctk_entry_set_text (CTK_ENTRY (entry), s);
   g_signal_handlers_unblock_by_func (entry, text_activated, chooser);
 
   g_free (s);
@@ -44,9 +44,9 @@ int main (int argc, char *argv[])
   ctk_init (NULL, NULL);
 
   builder = ctk_builder_new_from_file ("testcolorchooser2.ui");
-  window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
-  chooser = GTK_WIDGET (ctk_builder_get_object (builder, "chooser"));
-  entry = GTK_WIDGET (ctk_builder_get_object (builder, "entry"));
+  window = CTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+  chooser = CTK_WIDGET (ctk_builder_get_object (builder, "chooser"));
+  entry = CTK_WIDGET (ctk_builder_get_object (builder, "entry"));
 
   g_signal_connect (chooser, "notify::rgba", G_CALLBACK (rgba_changed), entry);
   g_signal_connect (entry, "activate", G_CALLBACK (text_activated), chooser);

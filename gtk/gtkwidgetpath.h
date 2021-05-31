@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_WIDGET_PATH_H__
-#define __GTK_WIDGET_PATH_H__
+#ifndef __CTK_WIDGET_PATH_H__
+#define __CTK_WIDGET_PATH_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_WIDGET_PATH (ctk_widget_path_get_type ())
+#define CTK_TYPE_WIDGET_PATH (ctk_widget_path_get_type ())
 
 GDK_AVAILABLE_IN_ALL
 GType           ctk_widget_path_get_type            (void) G_GNUC_CONST;
@@ -174,4 +174,4 @@ gboolean        ctk_widget_path_has_parent (const GtkWidgetPath *path,
 
 G_END_DECLS
 
-#endif /* __GTK_WIDGET_PATH_H__ */
+#endif /* __CTK_WIDGET_PATH_H__ */

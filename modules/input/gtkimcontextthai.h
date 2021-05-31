@@ -17,8 +17,8 @@
  *
  */
 
-#ifndef __GTK_IM_CONTEXT_THAI_H__
-#define __GTK_IM_CONTEXT_THAI_H__
+#ifndef __CTK_IM_CONTEXT_THAI_H__
+#define __CTK_IM_CONTEXT_THAI_H__
 
 #include <gtk/gtk.h>
 
@@ -26,12 +26,12 @@ G_BEGIN_DECLS
 
 extern GType ctk_type_im_context_thai;
 
-#define GTK_TYPE_IM_CONTEXT_THAI            (ctk_type_im_context_thai)
-#define GTK_IM_CONTEXT_THAI(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThai))
-#define GTK_IM_CONTEXT_THAI_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThaiClass))
-#define GTK_IS_IM_CONTEXT_THAI(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IM_CONTEXT_THAI))
-#define GTK_IS_IM_CONTEXT_THAI_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_IM_CONTEXT_THAI))
-#define GTK_IM_CONTEXT_THAI_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThaiClass))
+#define CTK_TYPE_IM_CONTEXT_THAI            (ctk_type_im_context_thai)
+#define CTK_IM_CONTEXT_THAI(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThai))
+#define CTK_IM_CONTEXT_THAI_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThaiClass))
+#define CTK_IS_IM_CONTEXT_THAI(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT_THAI))
+#define CTK_IS_IM_CONTEXT_THAI_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT_THAI))
+#define CTK_IM_CONTEXT_THAI_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_THAI, GtkIMContextThaiClass))
 
 
 typedef struct _GtkIMContextThai       GtkIMContextThai;
@@ -43,15 +43,15 @@ typedef enum
   ISC_BASICCHECK,
   ISC_STRICT
 } GtkIMContextThaiISCMode;
-#define GTK_IM_CONTEXT_THAI_BUFF_SIZE 2
+#define CTK_IM_CONTEXT_THAI_BUFF_SIZE 2
 
 struct _GtkIMContextThai
 {
   GtkIMContext object;
 
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
-  gunichar                char_buff[GTK_IM_CONTEXT_THAI_BUFF_SIZE];
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
+  gunichar                char_buff[CTK_IM_CONTEXT_THAI_BUFF_SIZE];
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
   GtkIMContextThaiISCMode isc_mode;
 };
 
@@ -72,4 +72,4 @@ GtkIMContextThaiISCMode
 
 G_END_DECLS
 
-#endif /* __GTK_IM_CONTEXT_THAI_H__ */
+#endif /* __CTK_IM_CONTEXT_THAI_H__ */

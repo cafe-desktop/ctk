@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ICON_FACTORY_PRIVATE_H__
-#define __GTK_ICON_FACTORY_PRIVATE_H__
+#ifndef __CTK_ICON_FACTORY_PRIVATE_H__
+#define __CTK_ICON_FACTORY_PRIVATE_H__
 
 #include <gtk/deprecated/gtkiconfactory.h>
 
@@ -29,4 +29,4 @@ GdkPixbuf * ctk_icon_set_render_icon_pixbuf_for_scale   (GtkIconSet             
                                                          GtkIconSize             size,
                                                          gint                    scale);
 
-#endif /* __GTK_ICON_FACTORY_PRIVATE_H__ */
+#endif /* __CTK_ICON_FACTORY_PRIVATE_H__ */

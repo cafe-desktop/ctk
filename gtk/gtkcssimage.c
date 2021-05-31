@@ -117,9 +117,9 @@ _ctk_css_image_get_width (GtkCssImage *image)
 {
   GtkCssImageClass *klass;
 
-  g_return_val_if_fail (GTK_IS_CSS_IMAGE (image), 0);
+  g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), 0);
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (image);
+  klass = CTK_CSS_IMAGE_GET_CLASS (image);
 
   return klass->get_width (image);
 }
@@ -129,9 +129,9 @@ _ctk_css_image_get_height (GtkCssImage *image)
 {
   GtkCssImageClass *klass;
 
-  g_return_val_if_fail (GTK_IS_CSS_IMAGE (image), 0);
+  g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), 0);
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (image);
+  klass = CTK_CSS_IMAGE_GET_CLASS (image);
 
   return klass->get_height (image);
 }
@@ -141,9 +141,9 @@ _ctk_css_image_get_aspect_ratio (GtkCssImage *image)
 {
   GtkCssImageClass *klass;
 
-  g_return_val_if_fail (GTK_IS_CSS_IMAGE (image), 0);
+  g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), 0);
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (image);
+  klass = CTK_CSS_IMAGE_GET_CLASS (image);
 
   return klass->get_aspect_ratio (image);
 }
@@ -157,11 +157,11 @@ _ctk_css_image_compute (GtkCssImage             *image,
 {
   GtkCssImageClass *klass;
 
-  g_return_val_if_fail (GTK_IS_CSS_IMAGE (image), NULL);
-  g_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
-  g_return_val_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
+  g_return_val_if_fail (parent_style == NULL || CTK_IS_CSS_STYLE (parent_style), NULL);
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (image);
+  klass = CTK_CSS_IMAGE_GET_CLASS (image);
 
   return klass->compute (image, property_id, provider, style, parent_style);
 }
@@ -174,8 +174,8 @@ _ctk_css_image_transition (GtkCssImage *start,
 {
   GtkCssImageClass *klass;
 
-  g_return_val_if_fail (start == NULL || GTK_IS_CSS_IMAGE (start), NULL);
-  g_return_val_if_fail (end == NULL || GTK_IS_CSS_IMAGE (end), NULL);
+  g_return_val_if_fail (start == NULL || CTK_IS_CSS_IMAGE (start), NULL);
+  g_return_val_if_fail (end == NULL || CTK_IS_CSS_IMAGE (end), NULL);
 
   progress = CLAMP (progress, 0.0, 1.0);
 
@@ -191,7 +191,7 @@ _ctk_css_image_transition (GtkCssImage *start,
         }
     }
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (start);
+  klass = CTK_CSS_IMAGE_GET_CLASS (start);
 
   return klass->transition (start, end, property_id, progress);
 }
@@ -202,8 +202,8 @@ _ctk_css_image_equal (GtkCssImage *image1,
 {
   GtkCssImageClass *klass;
 
-  g_return_val_if_fail (image1 == NULL || GTK_IS_CSS_IMAGE (image1), FALSE);
-  g_return_val_if_fail (image2 == NULL || GTK_IS_CSS_IMAGE (image2), FALSE);
+  g_return_val_if_fail (image1 == NULL || CTK_IS_CSS_IMAGE (image1), FALSE);
+  g_return_val_if_fail (image2 == NULL || CTK_IS_CSS_IMAGE (image2), FALSE);
 
   if (image1 == image2)
     return TRUE;
@@ -214,7 +214,7 @@ _ctk_css_image_equal (GtkCssImage *image1,
   if (G_OBJECT_TYPE (image1) != G_OBJECT_TYPE (image2))
     return FALSE;
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (image1);
+  klass = CTK_CSS_IMAGE_GET_CLASS (image1);
 
   return klass->equal (image1, image2);
 }
@@ -227,14 +227,14 @@ _ctk_css_image_draw (GtkCssImage        *image,
 {
   GtkCssImageClass *klass;
 
-  g_return_if_fail (GTK_IS_CSS_IMAGE (image));
+  g_return_if_fail (CTK_IS_CSS_IMAGE (image));
   g_return_if_fail (cr != NULL);
   g_return_if_fail (width > 0);
   g_return_if_fail (height > 0);
 
   cairo_save (cr);
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (image);
+  klass = CTK_CSS_IMAGE_GET_CLASS (image);
 
   klass->draw (image, cr, width, height);
 
@@ -247,10 +247,10 @@ _ctk_css_image_print (GtkCssImage *image,
 {
   GtkCssImageClass *klass;
 
-  g_return_if_fail (GTK_IS_CSS_IMAGE (image));
+  g_return_if_fail (CTK_IS_CSS_IMAGE (image));
   g_return_if_fail (string != NULL);
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (image);
+  klass = CTK_CSS_IMAGE_GET_CLASS (image);
 
   klass->print (image, string);
 }
@@ -269,7 +269,7 @@ _ctk_css_image_get_concrete_size (GtkCssImage *image,
 {
   double image_width, image_height, image_aspect;
 
-  g_return_if_fail (GTK_IS_CSS_IMAGE (image));
+  g_return_if_fail (CTK_IS_CSS_IMAGE (image));
   g_return_if_fail (specified_width >= 0);
   g_return_if_fail (specified_height >= 0);
   g_return_if_fail (default_width > 0);
@@ -389,7 +389,7 @@ _ctk_css_image_get_surface (GtkCssImage     *image,
   cairo_surface_t *result;
   cairo_t *cr;
 
-  g_return_val_if_fail (GTK_IS_CSS_IMAGE (image), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_IMAGE (image), NULL);
   g_return_val_if_fail (surface_width > 0, NULL);
   g_return_val_if_fail (surface_height > 0, NULL);
 
@@ -476,7 +476,7 @@ _ctk_css_image_new_parse (GtkCssParser *parser)
 
   image = g_object_new (image_type, NULL);
 
-  klass = GTK_CSS_IMAGE_GET_CLASS (image);
+  klass = CTK_CSS_IMAGE_GET_CLASS (image);
   if (!klass->parse (image, parser))
     {
       g_object_unref (image);

@@ -107,7 +107,7 @@ volumes_changed (GVolumeMonitor *volume_monitor,
 
   gdk_threads_enter ();
 
-  file_system = GTK_FILE_SYSTEM (user_data);
+  file_system = CTK_FILE_SYSTEM (user_data);
   g_signal_emit (file_system, fs_signals[VOLUMES_CHANGED], 0, volume);
   gdk_threads_leave ();
 }
@@ -115,7 +115,7 @@ volumes_changed (GVolumeMonitor *volume_monitor,
 static void
 ctk_file_system_dispose (GObject *object)
 {
-  GtkFileSystem *file_system = GTK_FILE_SYSTEM (object);
+  GtkFileSystem *file_system = CTK_FILE_SYSTEM (object);
   GtkFileSystemPrivate *priv = file_system->priv;
 
   DEBUG ("dispose");
@@ -362,7 +362,7 @@ _ctk_file_system_init (GtkFileSystem *file_system)
 GtkFileSystem *
 _ctk_file_system_new (void)
 {
-  return g_object_new (GTK_TYPE_FILE_SYSTEM, NULL);
+  return g_object_new (CTK_TYPE_FILE_SYSTEM, NULL);
 }
 
 GSList *
@@ -438,7 +438,7 @@ _ctk_file_system_get_info (GtkFileSystem                *file_system,
   GCancellable *cancellable;
   AsyncFuncData *async_data;
 
-  g_return_val_if_fail (GTK_IS_FILE_SYSTEM (file_system), NULL);
+  g_return_val_if_fail (CTK_IS_FILE_SYSTEM (file_system), NULL);
   g_return_val_if_fail (G_IS_FILE (file), NULL);
 
   cancellable = g_cancellable_new ();
@@ -586,7 +586,7 @@ _ctk_file_system_mount_enclosing_volume (GtkFileSystem                     *file
   GCancellable *cancellable;
   AsyncFuncData *async_data;
 
-  g_return_val_if_fail (GTK_IS_FILE_SYSTEM (file_system), NULL);
+  g_return_val_if_fail (CTK_IS_FILE_SYSTEM (file_system), NULL);
   g_return_val_if_fail (G_IS_FILE (file), NULL);
 
   DEBUG ("mount_enclosing_volume");
@@ -716,13 +716,13 @@ get_surface_from_gicon (GIcon      *icon,
 
   context = ctk_widget_get_style_context (widget);
   icon_theme = ctk_css_icon_theme_value_get_icon_theme
-    (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_ICON_THEME));
+    (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_ICON_THEME));
 
   icon_info = ctk_icon_theme_lookup_by_gicon_for_scale (icon_theme,
                                                         icon,
                                                         icon_size,
                                                         ctk_widget_get_scale_factor (widget),
-                                                        GTK_ICON_LOOKUP_USE_BUILTIN);
+                                                        CTK_ICON_LOOKUP_USE_BUILTIN);
 
   if (!icon_info)
     return NULL;

@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_STYLE_CONTEXT_PRIVATE_H__
-#define __GTK_STYLE_CONTEXT_PRIVATE_H__
+#ifndef __CTK_STYLE_CONTEXT_PRIVATE_H__
+#define __CTK_STYLE_CONTEXT_PRIVATE_H__
 
 #include "gtkstylecontext.h"
 
@@ -79,4 +79,4 @@ AtkAttributeSet *_ctk_style_context_get_attributes           (AtkAttributeSet   
 
 G_END_DECLS
 
-#endif /* __GTK_STYLE_CONTEXT_PRIVATE_H__ */
+#endif /* __CTK_STYLE_CONTEXT_PRIVATE_H__ */

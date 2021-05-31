@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_ICON_THEME_VALUE_PRIVATE_H__
-#define __GTK_CSS_ICON_THEME_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_ICON_THEME_VALUE_PRIVATE_H__
+#define __CTK_CSS_ICON_THEME_VALUE_PRIVATE_H__
 
 #include "gtkicontheme.h"
 
@@ -35,4 +35,4 @@ GtkIconTheme *  ctk_css_icon_theme_value_get_icon_theme (GtkCssValue            
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_ICON_THEME_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_ICON_THEME_VALUE_PRIVATE_H__ */

@@ -104,7 +104,7 @@ static GdkFilterReturn ctk_tray_icon_manager_filter (GdkXEvent *xevent,
 						     gpointer   user_data);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTrayIcon, ctk_tray_icon, GTK_TYPE_PLUG)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkTrayIcon, ctk_tray_icon, CTK_TYPE_PLUG)
 
 static void
 ctk_tray_icon_class_init (GtkTrayIconClass *class)
@@ -126,9 +126,9 @@ ctk_tray_icon_class_init (GtkTrayIconClass *class)
 				   g_param_spec_enum ("orientation",
 						      P_("Orientation"),
 						      P_("The orientation of the tray"),
-						      GTK_TYPE_ORIENTATION,
-						      GTK_ORIENTATION_HORIZONTAL,
-						      GTK_PARAM_READABLE));
+						      CTK_TYPE_ORIENTATION,
+						      CTK_ORIENTATION_HORIZONTAL,
+						      CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_FG_COLOR,
@@ -136,7 +136,7 @@ ctk_tray_icon_class_init (GtkTrayIconClass *class)
                                                        P_("Foreground color"),
                                                        P_("Foreground color for symbolic icons"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READABLE));
+                                                       CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_ERROR_COLOR,
@@ -144,7 +144,7 @@ ctk_tray_icon_class_init (GtkTrayIconClass *class)
                                                        P_("Error color"),
                                                        P_("Error color for symbolic icons"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READABLE));
+                                                       CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_WARNING_COLOR,
@@ -152,7 +152,7 @@ ctk_tray_icon_class_init (GtkTrayIconClass *class)
                                                        P_("Warning color"),
                                                        P_("Warning color for symbolic icons"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READABLE));
+                                                       CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_SUCCESS_COLOR,
@@ -160,7 +160,7 @@ ctk_tray_icon_class_init (GtkTrayIconClass *class)
                                                        P_("Success color"),
                                                        P_("Success color for symbolic icons"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READABLE));
+                                                       CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
 				   PROP_PADDING,
@@ -170,7 +170,7 @@ ctk_tray_icon_class_init (GtkTrayIconClass *class)
 						     0,
                                                      G_MAXINT,
                                                      0,
-						     GTK_PARAM_READABLE));
+						     CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
 				   PROP_ICON_SIZE,
@@ -180,7 +180,7 @@ ctk_tray_icon_class_init (GtkTrayIconClass *class)
 						     0,
                                                      G_MAXINT,
                                                      0,
-						     GTK_PARAM_READABLE));
+						     CTK_PARAM_READABLE));
 }
 
 static void
@@ -188,7 +188,7 @@ ctk_tray_icon_init (GtkTrayIcon *icon)
 {
   icon->priv = ctk_tray_icon_get_instance_private (icon);
   icon->priv->stamp = 1;
-  icon->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+  icon->priv->orientation = CTK_ORIENTATION_HORIZONTAL;
   icon->priv->fg_color.red        = 0.0;
   icon->priv->fg_color.green      = 0.0;
   icon->priv->fg_color.blue       = 0.0;
@@ -208,8 +208,8 @@ ctk_tray_icon_init (GtkTrayIcon *icon)
   icon->priv->padding = 0;
   icon->priv->icon_size = 0;
 
-  ctk_widget_set_app_paintable (GTK_WIDGET (icon), TRUE);
-  ctk_widget_add_events (GTK_WIDGET (icon), GDK_PROPERTY_CHANGE_MASK);
+  ctk_widget_set_app_paintable (CTK_WIDGET (icon), TRUE);
+  ctk_widget_add_events (CTK_WIDGET (icon), GDK_PROPERTY_CHANGE_MASK);
 }
 
 static void
@@ -217,10 +217,10 @@ ctk_tray_icon_constructed (GObject *object)
 {
   /* Do setup that depends on the screen; screen has been set at this point */
 
-  GtkTrayIcon *icon = GTK_TRAY_ICON (object);
-  GdkScreen *screen = ctk_widget_get_screen (GTK_WIDGET (object));
+  GtkTrayIcon *icon = CTK_TRAY_ICON (object);
+  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (object));
   GdkWindow *root_window = gdk_screen_get_root_window (screen);
-  GdkDisplay *display = ctk_widget_get_display (GTK_WIDGET (object));
+  GdkDisplay *display = ctk_widget_get_display (CTK_WIDGET (object));
   Display *xdisplay = gdk_x11_display_get_xdisplay (display);
   char buffer[256];
   
@@ -268,7 +268,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 ctk_tray_icon_clear_manager_window (GtkTrayIcon *icon)
 {
-  GdkDisplay *display = ctk_widget_get_display (GTK_WIDGET (icon));
+  GdkDisplay *display = ctk_widget_get_display (CTK_WIDGET (icon));
 
   if (icon->priv->manager_window != None)
     {
@@ -287,8 +287,8 @@ ctk_tray_icon_clear_manager_window (GtkTrayIcon *icon)
 static void
 ctk_tray_icon_dispose (GObject *object)
 {
-  GtkTrayIcon *icon = GTK_TRAY_ICON (object);
-  GtkWidget *widget = GTK_WIDGET (object);
+  GtkTrayIcon *icon = CTK_TRAY_ICON (object);
+  GtkWidget *widget = CTK_WIDGET (object);
   GdkWindow *root_window = gdk_screen_get_root_window (ctk_widget_get_screen (widget));
 
   ctk_tray_icon_clear_manager_window (icon);
@@ -304,7 +304,7 @@ ctk_tray_icon_get_property (GObject    *object,
 			    GValue     *value,
 			    GParamSpec *pspec)
 {
-  GtkTrayIcon *icon = GTK_TRAY_ICON (object);
+  GtkTrayIcon *icon = CTK_TRAY_ICON (object);
 
   switch (prop_id)
     {
@@ -339,7 +339,7 @@ static gboolean
 ctk_tray_icon_draw (GtkWidget *widget, 
 		    cairo_t   *cr)
 {
-  GtkTrayIcon *icon = GTK_TRAY_ICON (widget);
+  GtkTrayIcon *icon = CTK_TRAY_ICON (widget);
   GtkWidget *focus_child;
   GdkWindow *window;
   gint border_width;
@@ -380,15 +380,15 @@ ctk_tray_icon_draw (GtkWidget *widget,
         }
     }
 
-  if (GTK_WIDGET_CLASS (ctk_tray_icon_parent_class)->draw)
-    retval = GTK_WIDGET_CLASS (ctk_tray_icon_parent_class)->draw (widget, cr);
+  if (CTK_WIDGET_CLASS (ctk_tray_icon_parent_class)->draw)
+    retval = CTK_WIDGET_CLASS (ctk_tray_icon_parent_class)->draw (widget, cr);
 
-  focus_child = ctk_container_get_focus_child (GTK_CONTAINER (widget));
+  focus_child = ctk_container_get_focus_child (CTK_CONTAINER (widget));
   if (focus_child && ctk_widget_has_visible_focus (focus_child))
     {
       GtkStyleContext *context;
 
-      border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+      border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
       context = ctk_widget_get_style_context (widget);
 
       ctk_render_focus (context, cr, border_width, border_width,
@@ -402,7 +402,7 @@ ctk_tray_icon_draw (GtkWidget *widget,
 static void
 ctk_tray_icon_get_orientation_property (GtkTrayIcon *icon)
 {
-  GdkScreen *screen = ctk_widget_get_screen (GTK_WIDGET (icon));
+  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   GdkDisplay *display = gdk_screen_get_display (screen);
   Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
 
@@ -437,8 +437,8 @@ ctk_tray_icon_get_orientation_property (GtkTrayIcon *icon)
       GtkOrientation orientation;
 
       orientation = (prop.prop [0] == SYSTEM_TRAY_ORIENTATION_HORZ) ?
-					GTK_ORIENTATION_HORIZONTAL :
-					GTK_ORIENTATION_VERTICAL;
+					CTK_ORIENTATION_HORIZONTAL :
+					CTK_ORIENTATION_VERTICAL;
 
       if (icon->priv->orientation != orientation)
 	{
@@ -455,7 +455,7 @@ ctk_tray_icon_get_orientation_property (GtkTrayIcon *icon)
 static void
 ctk_tray_icon_get_visual_property (GtkTrayIcon *icon)
 {
-  GdkScreen *screen = ctk_widget_get_screen (GTK_WIDGET (icon));
+  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   GdkDisplay *display = gdk_screen_get_display (screen);
   Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
 
@@ -509,7 +509,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   /* For the background-relative hack we use when we aren't
    * using a real RGBA visual, we can't be double-buffered
    */
-  ctk_widget_set_double_buffered (GTK_WIDGET (icon), icon->priv->manager_visual_rgba);
+  ctk_widget_set_double_buffered (CTK_WIDGET (icon), icon->priv->manager_visual_rgba);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (type != None)
@@ -519,7 +519,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 ctk_tray_icon_get_colors_property (GtkTrayIcon *icon)
 {
-  GdkScreen *screen = ctk_widget_get_screen (GTK_WIDGET (icon));
+  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   GdkDisplay *display = gdk_screen_get_display (screen);
   Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
 
@@ -610,7 +610,7 @@ ctk_tray_icon_get_colors_property (GtkTrayIcon *icon)
 static void
 ctk_tray_icon_get_padding_property (GtkTrayIcon *icon)
 {
-  GdkScreen *screen = ctk_widget_get_screen (GTK_WIDGET (icon));
+  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   GdkDisplay *display = gdk_screen_get_display (screen);
   Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
 
@@ -659,7 +659,7 @@ ctk_tray_icon_get_padding_property (GtkTrayIcon *icon)
 static void
 ctk_tray_icon_get_icon_size_property (GtkTrayIcon *icon)
 {
-  GdkScreen *screen = ctk_widget_get_screen (GTK_WIDGET (icon));
+  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   GdkDisplay *display = gdk_screen_get_display (screen);
   Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
 
@@ -717,7 +717,7 @@ ctk_tray_icon_manager_filter (GdkXEvent *xevent,
       xev->xclient.message_type == icon->priv->manager_atom &&
       xev->xclient.data.l[1] == icon->priv->selection_atom)
     {
-      GTK_NOTE (PLUGSOCKET,
+      CTK_NOTE (PLUGSOCKET,
                 g_message ("GtkStatusIcon %p: tray manager appeared", icon));
 
       ctk_tray_icon_update_manager_window (icon);
@@ -727,7 +727,7 @@ ctk_tray_icon_manager_filter (GdkXEvent *xevent,
       if (xev->xany.type == PropertyNotify &&
 	  xev->xproperty.atom == icon->priv->orientation_atom)
 	{
-          GTK_NOTE (PLUGSOCKET,
+          CTK_NOTE (PLUGSOCKET,
                     g_message ("GtkStatusIcon %p: got PropertyNotify on manager window for orientation atom", icon));
 
 	  ctk_tray_icon_get_orientation_property (icon);
@@ -735,7 +735,7 @@ ctk_tray_icon_manager_filter (GdkXEvent *xevent,
       else if (xev->xany.type == PropertyNotify &&
                xev->xproperty.atom == icon->priv->colors_atom)
         {
-          GTK_NOTE (PLUGSOCKET,
+          CTK_NOTE (PLUGSOCKET,
                     g_message ("GtkStatusIcon %p: got PropertyNotify on manager window for colors atom", icon));
 
           ctk_tray_icon_get_colors_property (icon);
@@ -752,14 +752,14 @@ ctk_tray_icon_manager_filter (GdkXEvent *xevent,
         }
       else if (xev->xany.type == DestroyNotify)
 	{
-          GTK_NOTE (PLUGSOCKET,
+          CTK_NOTE (PLUGSOCKET,
                     g_message ("GtkStatusIcon %p: got DestroyNotify for manager window", icon));
 
 	  ctk_tray_icon_manager_window_destroyed (icon);
 	}
       else
         {
-          GTK_NOTE (PLUGSOCKET,
+          CTK_NOTE (PLUGSOCKET,
                     g_message ("GtkStatusIcon %p: got other message on manager window", icon));
         }
     }
@@ -780,7 +780,7 @@ ctk_tray_icon_send_manager_message (GtkTrayIcon *icon,
   GdkDisplay *display;
   Display *xdisplay;
 
-  widget = GTK_WIDGET (icon);
+  widget = CTK_WIDGET (icon);
 
   memset (&ev, 0, sizeof (ev));
   ev.type = ClientMessage;
@@ -807,33 +807,33 @@ ctk_tray_icon_send_manager_message (GtkTrayIcon *icon,
 static void
 ctk_tray_icon_send_dock_request (GtkTrayIcon *icon)
 {
-  GTK_NOTE (PLUGSOCKET,
+  CTK_NOTE (PLUGSOCKET,
             g_message ("GtkStatusIcon %p: sending dock request to manager window %lx",
                        icon, (gulong) icon->priv->manager_window));
 
   ctk_tray_icon_send_manager_message (icon,
 				      SYSTEM_TRAY_REQUEST_DOCK,
 				      icon->priv->manager_window,
-				      ctk_plug_get_id (GTK_PLUG (icon)),
+				      ctk_plug_get_id (CTK_PLUG (icon)),
 				      0, 0);
 }
 
 static void
 ctk_tray_icon_update_manager_window (GtkTrayIcon *icon)
 {
-  GtkWidget *widget = GTK_WIDGET (icon);
+  GtkWidget *widget = CTK_WIDGET (icon);
   GdkScreen *screen = ctk_widget_get_screen (widget);
   GdkDisplay *display = gdk_screen_get_display (screen);
   Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
 
-  GTK_NOTE (PLUGSOCKET,
+  CTK_NOTE (PLUGSOCKET,
             g_message ("GtkStatusIcon %p: updating tray icon manager window, current manager window: %lx",
                        icon, (gulong) icon->priv->manager_window));
 
   if (icon->priv->manager_window != None)
     return;
 
-  GTK_NOTE (PLUGSOCKET,
+  CTK_NOTE (PLUGSOCKET,
             g_message ("GtkStatusIcon %p: trying to find manager window", icon));
 
   XGrabServer (xdisplay);
@@ -852,7 +852,7 @@ ctk_tray_icon_update_manager_window (GtkTrayIcon *icon)
     {
       GdkWindow *gdkwin;
 
-      GTK_NOTE (PLUGSOCKET,
+      CTK_NOTE (PLUGSOCKET,
                 g_message ("GtkStatusIcon %p: is being managed by window %lx",
                            icon, (gulong) icon->priv->manager_window));
 
@@ -867,7 +867,7 @@ ctk_tray_icon_update_manager_window (GtkTrayIcon *icon)
       ctk_tray_icon_get_padding_property (icon);
       ctk_tray_icon_get_icon_size_property (icon);
 
-      if (ctk_widget_get_realized (GTK_WIDGET (icon)))
+      if (ctk_widget_get_realized (CTK_WIDGET (icon)))
 	{
 	  if ((icon->priv->manager_visual == NULL &&
 	       ctk_widget_get_visual (widget) == gdk_screen_get_system_visual (screen)) ||
@@ -889,7 +889,7 @@ ctk_tray_icon_update_manager_window (GtkTrayIcon *icon)
     }
   else
     {
-      GTK_NOTE (PLUGSOCKET,
+      CTK_NOTE (PLUGSOCKET,
                 g_message ("GtkStatusIcon %p: no tray manager found", icon));
     }
 }
@@ -899,7 +899,7 @@ ctk_tray_icon_manager_window_destroyed (GtkTrayIcon *icon)
 {
   g_return_if_fail (icon->priv->manager_window != None);
 
-  GTK_NOTE (PLUGSOCKET,
+  CTK_NOTE (PLUGSOCKET,
             g_message ("GtkStatusIcon %p: tray manager window destroyed", icon));
 
   ctk_tray_icon_clear_manager_window (icon);
@@ -909,9 +909,9 @@ static gboolean
 ctk_tray_icon_delete (GtkWidget   *widget,
 		      GdkEventAny *event)
 {
-  GTK_NOTE (PLUGSOCKET,
+  CTK_NOTE (PLUGSOCKET,
             g_message ("GtkStatusIcon %p: delete notify, tray manager window %lx",
-                       widget, (gulong) GTK_TRAY_ICON (widget)->priv->manager_window));
+                       widget, (gulong) CTK_TRAY_ICON (widget)->priv->manager_window));
 
   /* A bug in X server versions up to x.org 1.5.0 means that:
    * XFixesChangeSaveSet(...., SaveSetRoot, SaveSetUnmap) doesn't work properly
@@ -929,7 +929,7 @@ ctk_tray_icon_delete (GtkWidget   *widget,
 static void
 ctk_tray_icon_set_visual (GtkTrayIcon *icon)
 {
-  GdkScreen *screen = ctk_widget_get_screen (GTK_WIDGET (icon));
+  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   GdkVisual *visual = icon->priv->manager_visual;
 
   /* To avoid uncertainty about colormaps, _NET_SYSTEM_TRAY_VISUAL is supposed
@@ -942,19 +942,19 @@ ctk_tray_icon_set_visual (GtkTrayIcon *icon)
   if (visual == NULL)
     visual = gdk_screen_get_system_visual (screen);
 
-  ctk_widget_set_visual (GTK_WIDGET (icon), visual);
+  ctk_widget_set_visual (CTK_WIDGET (icon), visual);
 }
 
 static void
 ctk_tray_icon_realize (GtkWidget *widget)
 {
-  GtkTrayIcon *icon = GTK_TRAY_ICON (widget);
+  GtkTrayIcon *icon = CTK_TRAY_ICON (widget);
   GdkWindow *window;
 
   /* Set our visual before realizing */
   ctk_tray_icon_set_visual (icon);
 
-  GTK_WIDGET_CLASS (ctk_tray_icon_parent_class)->realize (widget);
+  CTK_WIDGET_CLASS (ctk_tray_icon_parent_class)->realize (widget);
   window = ctk_widget_get_window (widget);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (icon->priv->manager_visual_rgba)
@@ -971,12 +971,12 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     }
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  GTK_NOTE (PLUGSOCKET,
+  CTK_NOTE (PLUGSOCKET,
             g_message ("GtkStatusIcon %p: realized, window: %lx, socket window: %lx",
                        widget,
                        (gulong) GDK_WINDOW_XID (window),
-                       ctk_plug_get_socket_window (GTK_PLUG (icon))
-                       ? (gulong) GDK_WINDOW_XID (ctk_plug_get_socket_window (GTK_PLUG (icon)))
+                       ctk_plug_get_socket_window (CTK_PLUG (icon))
+                       ? (gulong) GDK_WINDOW_XID (ctk_plug_get_socket_window (CTK_PLUG (icon)))
                        : 0UL));
 
   if (icon->priv->manager_window != None)
@@ -1002,7 +1002,7 @@ _ctk_tray_icon_send_message (GtkTrayIcon *icon,
   GdkDisplay *display;
   Display *xdisplay;
  
-  g_return_val_if_fail (GTK_IS_TRAY_ICON (icon), 0);
+  g_return_val_if_fail (CTK_IS_TRAY_ICON (icon), 0);
   g_return_val_if_fail (timeout >= 0, 0);
   g_return_val_if_fail (message != NULL, 0);
 
@@ -1016,11 +1016,11 @@ _ctk_tray_icon_send_message (GtkTrayIcon *icon,
   
   /* Get ready to send the message */
   ctk_tray_icon_send_manager_message (icon, SYSTEM_TRAY_BEGIN_MESSAGE,
-				      (Window)ctk_plug_get_id (GTK_PLUG (icon)),
+				      (Window)ctk_plug_get_id (CTK_PLUG (icon)),
 				      timeout, len, stamp);
 
   /* Now to send the actual message */
-  display = ctk_widget_get_display (GTK_WIDGET (icon));
+  display = ctk_widget_get_display (CTK_WIDGET (icon));
   xdisplay = GDK_DISPLAY_XDISPLAY (display);
   gdk_x11_display_error_trap_push (display);
   while (len > 0)
@@ -1029,7 +1029,7 @@ _ctk_tray_icon_send_message (GtkTrayIcon *icon,
 
       memset (&ev, 0, sizeof (ev));
       ev.type = ClientMessage;
-      ev.window = (Window)ctk_plug_get_id (GTK_PLUG (icon));
+      ev.window = (Window)ctk_plug_get_id (CTK_PLUG (icon));
       ev.format = 8;
       ev.message_type = XInternAtom (xdisplay,
 				     "_NET_SYSTEM_TRAY_MESSAGE_DATA", False);
@@ -1058,11 +1058,11 @@ void
 _ctk_tray_icon_cancel_message (GtkTrayIcon *icon,
 			       guint        id)
 {
-  g_return_if_fail (GTK_IS_TRAY_ICON (icon));
+  g_return_if_fail (CTK_IS_TRAY_ICON (icon));
   g_return_if_fail (id > 0);
   
   ctk_tray_icon_send_manager_message (icon, SYSTEM_TRAY_CANCEL_MESSAGE,
-				      (Window)ctk_plug_get_id (GTK_PLUG (icon)),
+				      (Window)ctk_plug_get_id (CTK_PLUG (icon)),
 				      id, 0, 0);
 }
 
@@ -1072,7 +1072,7 @@ _ctk_tray_icon_new_for_screen (GdkScreen  *screen,
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
-  return g_object_new (GTK_TYPE_TRAY_ICON, 
+  return g_object_new (CTK_TYPE_TRAY_ICON, 
 		       "screen", screen, 
 		       "title", name, 
 		       NULL);
@@ -1081,7 +1081,7 @@ _ctk_tray_icon_new_for_screen (GdkScreen  *screen,
 GtkTrayIcon*
 _ctk_tray_icon_new (const gchar *name)
 {
-  return g_object_new (GTK_TYPE_TRAY_ICON, 
+  return g_object_new (CTK_TYPE_TRAY_ICON, 
 		       "title", name, 
 		       NULL);
 }
@@ -1089,7 +1089,7 @@ _ctk_tray_icon_new (const gchar *name)
 GtkOrientation
 _ctk_tray_icon_get_orientation (GtkTrayIcon *icon)
 {
-  g_return_val_if_fail (GTK_IS_TRAY_ICON (icon), GTK_ORIENTATION_HORIZONTAL);
+  g_return_val_if_fail (CTK_IS_TRAY_ICON (icon), CTK_ORIENTATION_HORIZONTAL);
 
   return icon->priv->orientation;
 }
@@ -1097,7 +1097,7 @@ _ctk_tray_icon_get_orientation (GtkTrayIcon *icon)
 gint
 _ctk_tray_icon_get_padding (GtkTrayIcon *icon)
 {
-  g_return_val_if_fail (GTK_IS_TRAY_ICON (icon), 0);
+  g_return_val_if_fail (CTK_IS_TRAY_ICON (icon), 0);
 
   return icon->priv->padding;
 }
@@ -1105,7 +1105,7 @@ _ctk_tray_icon_get_padding (GtkTrayIcon *icon)
 gint
 _ctk_tray_icon_get_icon_size (GtkTrayIcon *icon)
 {
-  g_return_val_if_fail (GTK_IS_TRAY_ICON (icon), 0);
+  g_return_val_if_fail (CTK_IS_TRAY_ICON (icon), 0);
 
   return icon->priv->icon_size;
 }

@@ -61,7 +61,7 @@
  *   if (settings == NULL)
  *     settings = ctk_print_settings_new ();
  *
- *   new_page_setup = ctk_print_run_page_setup_dialog (GTK_WINDOW (main_window),
+ *   new_page_setup = ctk_print_run_page_setup_dialog (CTK_WINDOW (main_window),
  *                                                     page_setup, settings);
  *
  *   if (page_setup)
@@ -78,9 +78,9 @@
 
 typedef struct _GtkPageSetupClass GtkPageSetupClass;
 
-#define GTK_IS_PAGE_SETUP_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PAGE_SETUP))
-#define GTK_PAGE_SETUP_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PAGE_SETUP, GtkPageSetupClass))
-#define GTK_PAGE_SETUP_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PAGE_SETUP, GtkPageSetupClass))
+#define CTK_IS_PAGE_SETUP_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PAGE_SETUP))
+#define CTK_PAGE_SETUP_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PAGE_SETUP, GtkPageSetupClass))
+#define CTK_PAGE_SETUP_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PAGE_SETUP, GtkPageSetupClass))
 
 struct _GtkPageSetup
 {
@@ -102,7 +102,7 @@ G_DEFINE_TYPE (GtkPageSetup, ctk_page_setup, G_TYPE_OBJECT)
 static void
 ctk_page_setup_finalize (GObject *object)
 {
-  GtkPageSetup *setup = GTK_PAGE_SETUP (object);
+  GtkPageSetup *setup = CTK_PAGE_SETUP (object);
   
   ctk_paper_size_free (setup->paper_size);
   
@@ -113,11 +113,11 @@ static void
 ctk_page_setup_init (GtkPageSetup *setup)
 {
   setup->paper_size = ctk_paper_size_new (NULL);
-  setup->orientation = GTK_PAGE_ORIENTATION_PORTRAIT;
-  setup->top_margin = ctk_paper_size_get_default_top_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->bottom_margin = ctk_paper_size_get_default_bottom_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->left_margin = ctk_paper_size_get_default_left_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->right_margin = ctk_paper_size_get_default_right_margin (setup->paper_size, GTK_UNIT_MM);
+  setup->orientation = CTK_PAGE_ORIENTATION_PORTRAIT;
+  setup->top_margin = ctk_paper_size_get_default_top_margin (setup->paper_size, CTK_UNIT_MM);
+  setup->bottom_margin = ctk_paper_size_get_default_bottom_margin (setup->paper_size, CTK_UNIT_MM);
+  setup->left_margin = ctk_paper_size_get_default_left_margin (setup->paper_size, CTK_UNIT_MM);
+  setup->right_margin = ctk_paper_size_get_default_right_margin (setup->paper_size, CTK_UNIT_MM);
 }
 
 static void
@@ -140,7 +140,7 @@ ctk_page_setup_class_init (GtkPageSetupClass *class)
 GtkPageSetup *
 ctk_page_setup_new (void)
 {
-  return g_object_new (GTK_TYPE_PAGE_SETUP, NULL);
+  return g_object_new (CTK_TYPE_PAGE_SETUP, NULL);
 }
 
 /**
@@ -215,7 +215,7 @@ ctk_page_setup_set_orientation (GtkPageSetup       *setup,
 GtkPaperSize *
 ctk_page_setup_get_paper_size (GtkPageSetup *setup)
 {
-  g_return_val_if_fail (GTK_IS_PAGE_SETUP (setup), NULL);
+  g_return_val_if_fail (CTK_IS_PAGE_SETUP (setup), NULL);
 
   return setup->paper_size;
 }
@@ -237,7 +237,7 @@ ctk_page_setup_set_paper_size (GtkPageSetup *setup,
 {
   GtkPaperSize *old_size;
 
-  g_return_if_fail (GTK_IS_PAGE_SETUP (setup));
+  g_return_if_fail (CTK_IS_PAGE_SETUP (setup));
   g_return_if_fail (size != NULL);
 
   old_size = setup->paper_size;
@@ -263,10 +263,10 @@ ctk_page_setup_set_paper_size_and_default_margins (GtkPageSetup *setup,
 						   GtkPaperSize *size)
 {
   ctk_page_setup_set_paper_size (setup, size);
-  setup->top_margin = ctk_paper_size_get_default_top_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->bottom_margin = ctk_paper_size_get_default_bottom_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->left_margin = ctk_paper_size_get_default_left_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->right_margin = ctk_paper_size_get_default_right_margin (setup->paper_size, GTK_UNIT_MM);
+  setup->top_margin = ctk_paper_size_get_default_top_margin (setup->paper_size, CTK_UNIT_MM);
+  setup->bottom_margin = ctk_paper_size_get_default_bottom_margin (setup->paper_size, CTK_UNIT_MM);
+  setup->left_margin = ctk_paper_size_get_default_left_margin (setup->paper_size, CTK_UNIT_MM);
+  setup->right_margin = ctk_paper_size_get_default_right_margin (setup->paper_size, CTK_UNIT_MM);
 }
 
 /**
@@ -432,8 +432,8 @@ gdouble
 ctk_page_setup_get_paper_width (GtkPageSetup *setup,
 				GtkUnit       unit)
 {
-  if (setup->orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-      setup->orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
+  if (setup->orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
+      setup->orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
     return ctk_paper_size_get_width (setup->paper_size, unit);
   else
     return ctk_paper_size_get_height (setup->paper_size, unit);
@@ -458,8 +458,8 @@ gdouble
 ctk_page_setup_get_paper_height (GtkPageSetup *setup,
 				 GtkUnit       unit)
 {
-  if (setup->orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-      setup->orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
+  if (setup->orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
+      setup->orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
     return ctk_paper_size_get_height (setup->paper_size, unit);
   else
     return ctk_paper_size_get_width (setup->paper_size, unit);
@@ -486,9 +486,9 @@ ctk_page_setup_get_page_width (GtkPageSetup *setup,
 {
   gdouble width;
 
-  width = ctk_page_setup_get_paper_width (setup, GTK_UNIT_MM);
-  if (setup->orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-      setup->orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
+  width = ctk_page_setup_get_paper_width (setup, CTK_UNIT_MM);
+  if (setup->orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
+      setup->orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
     width -= setup->left_margin + setup->right_margin;
   else
     width -= setup->top_margin + setup->bottom_margin;
@@ -517,9 +517,9 @@ ctk_page_setup_get_page_height (GtkPageSetup *setup,
 {
   gdouble height;
 
-  height = ctk_page_setup_get_paper_height (setup, GTK_UNIT_MM);
-  if (setup->orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-      setup->orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
+  height = ctk_page_setup_get_paper_height (setup, CTK_UNIT_MM);
+  if (setup->orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
+      setup->orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
     height -= setup->top_margin + setup->bottom_margin;
   else
     height -= setup->left_margin + setup->right_margin;
@@ -548,7 +548,7 @@ ctk_page_setup_load_file (GtkPageSetup *setup,
   gboolean retval = FALSE;
   GKeyFile *key_file;
 
-  g_return_val_if_fail (GTK_IS_PAGE_SETUP (setup), FALSE);
+  g_return_val_if_fail (CTK_IS_PAGE_SETUP (setup), FALSE);
   g_return_val_if_fail (file_name != NULL, FALSE);
 
   key_file = g_key_file_new ();
@@ -638,7 +638,7 @@ ctk_page_setup_load_key_file (GtkPageSetup *setup,
   gboolean retval = FALSE;
   GError *err = NULL;
 
-  g_return_val_if_fail (GTK_IS_PAGE_SETUP (setup), FALSE);
+  g_return_val_if_fail (CTK_IS_PAGE_SETUP (setup), FALSE);
   g_return_val_if_fail (key_file != NULL, FALSE);
 
   if (!group_name)
@@ -647,8 +647,8 @@ ctk_page_setup_load_key_file (GtkPageSetup *setup,
   if (!g_key_file_has_group (key_file, group_name))
     {
       g_set_error_literal (error,
-                           GTK_PRINT_ERROR,
-                           GTK_PRINT_ERROR_INVALID_FILE,
+                           CTK_PRINT_ERROR,
+                           CTK_PRINT_ERROR_INVALID_FILE,
                            _("Not a valid page setup file"));
       goto out;
     }
@@ -678,17 +678,17 @@ ctk_page_setup_load_key_file (GtkPageSetup *setup,
   ctk_page_setup_set_paper_size (setup, paper_size);
   ctk_paper_size_free (paper_size);
 
-  ctk_page_setup_set_top_margin (setup, top, GTK_UNIT_MM);
-  ctk_page_setup_set_bottom_margin (setup, bottom, GTK_UNIT_MM);
-  ctk_page_setup_set_left_margin (setup, left, GTK_UNIT_MM);
-  ctk_page_setup_set_right_margin (setup, right, GTK_UNIT_MM);
+  ctk_page_setup_set_top_margin (setup, top, CTK_UNIT_MM);
+  ctk_page_setup_set_bottom_margin (setup, bottom, CTK_UNIT_MM);
+  ctk_page_setup_set_left_margin (setup, left, CTK_UNIT_MM);
+  ctk_page_setup_set_right_margin (setup, right, CTK_UNIT_MM);
 
   orientation = g_key_file_get_string (key_file, group_name,
 				       "Orientation", NULL);
   if (orientation)
     {
       ctk_page_setup_set_orientation (setup,
-				      string_to_enum (GTK_TYPE_PAGE_ORIENTATION,
+				      string_to_enum (CTK_TYPE_PAGE_ORIENTATION,
 						      orientation));
       g_free (orientation);
     }
@@ -753,7 +753,7 @@ ctk_page_setup_to_file (GtkPageSetup  *setup,
   char *data = NULL;
   gsize len;
 
-  g_return_val_if_fail (GTK_IS_PAGE_SETUP (setup), FALSE);
+  g_return_val_if_fail (CTK_IS_PAGE_SETUP (setup), FALSE);
   g_return_val_if_fail (file_name != NULL, FALSE);
 
   key_file = g_key_file_new ();
@@ -811,7 +811,7 @@ ctk_page_setup_to_key_file (GtkPageSetup *setup,
   GtkPaperSize *paper_size;
   char *orientation;
 
-  g_return_if_fail (GTK_IS_PAGE_SETUP (setup));
+  g_return_if_fail (CTK_IS_PAGE_SETUP (setup));
   g_return_if_fail (key_file != NULL);
 
   if (!group_name)
@@ -823,15 +823,15 @@ ctk_page_setup_to_key_file (GtkPageSetup *setup,
   ctk_paper_size_to_key_file (paper_size, key_file, group_name);
 
   g_key_file_set_double (key_file, group_name,
-			 "MarginTop", ctk_page_setup_get_top_margin (setup, GTK_UNIT_MM));
+			 "MarginTop", ctk_page_setup_get_top_margin (setup, CTK_UNIT_MM));
   g_key_file_set_double (key_file, group_name,
-			 "MarginBottom", ctk_page_setup_get_bottom_margin (setup, GTK_UNIT_MM));
+			 "MarginBottom", ctk_page_setup_get_bottom_margin (setup, CTK_UNIT_MM));
   g_key_file_set_double (key_file, group_name,
-			 "MarginLeft", ctk_page_setup_get_left_margin (setup, GTK_UNIT_MM));
+			 "MarginLeft", ctk_page_setup_get_left_margin (setup, CTK_UNIT_MM));
   g_key_file_set_double (key_file, group_name,
-			 "MarginRight", ctk_page_setup_get_right_margin (setup, GTK_UNIT_MM));
+			 "MarginRight", ctk_page_setup_get_right_margin (setup, CTK_UNIT_MM));
 
-  orientation = enum_to_string (GTK_TYPE_PAGE_ORIENTATION,
+  orientation = enum_to_string (CTK_TYPE_PAGE_ORIENTATION,
 				ctk_page_setup_get_orientation (setup));
   g_key_file_set_string (key_file, group_name,
 			 "Orientation", orientation);
@@ -866,12 +866,12 @@ ctk_page_setup_to_gvariant (GtkPageSetup *setup)
     g_variant_builder_add_value (&builder, g_variant_get_child_value (variant, i));
   g_variant_unref (variant);
 
-  g_variant_builder_add (&builder, "{sv}", "MarginTop", g_variant_new_double (ctk_page_setup_get_top_margin (setup, GTK_UNIT_MM)));
-  g_variant_builder_add (&builder, "{sv}", "MarginBottom", g_variant_new_double (ctk_page_setup_get_bottom_margin (setup, GTK_UNIT_MM)));
-  g_variant_builder_add (&builder, "{sv}", "MarginLeft", g_variant_new_double (ctk_page_setup_get_left_margin (setup, GTK_UNIT_MM)));
-  g_variant_builder_add (&builder, "{sv}", "MarginRight", g_variant_new_double (ctk_page_setup_get_right_margin (setup, GTK_UNIT_MM)));
+  g_variant_builder_add (&builder, "{sv}", "MarginTop", g_variant_new_double (ctk_page_setup_get_top_margin (setup, CTK_UNIT_MM)));
+  g_variant_builder_add (&builder, "{sv}", "MarginBottom", g_variant_new_double (ctk_page_setup_get_bottom_margin (setup, CTK_UNIT_MM)));
+  g_variant_builder_add (&builder, "{sv}", "MarginLeft", g_variant_new_double (ctk_page_setup_get_left_margin (setup, CTK_UNIT_MM)));
+  g_variant_builder_add (&builder, "{sv}", "MarginRight", g_variant_new_double (ctk_page_setup_get_right_margin (setup, CTK_UNIT_MM)));
 
-  orientation = enum_to_string (GTK_TYPE_PAGE_ORIENTATION,
+  orientation = enum_to_string (CTK_TYPE_PAGE_ORIENTATION,
                                 ctk_page_setup_get_orientation (setup));
   g_variant_builder_add (&builder, "{sv}", "Orientation", g_variant_new_take_string (orientation));
 
@@ -909,16 +909,16 @@ ctk_page_setup_new_from_gvariant (GVariant *variant)
     }
 
   if (g_variant_lookup (variant, "MarginTop", "d", &margin))
-    ctk_page_setup_set_top_margin (setup, margin, GTK_UNIT_MM);
+    ctk_page_setup_set_top_margin (setup, margin, CTK_UNIT_MM);
   if (g_variant_lookup (variant, "MarginBottom", "d", &margin))
-    ctk_page_setup_set_bottom_margin (setup, margin, GTK_UNIT_MM);
+    ctk_page_setup_set_bottom_margin (setup, margin, CTK_UNIT_MM);
   if (g_variant_lookup (variant, "MarginLeft", "d", &margin))
-    ctk_page_setup_set_left_margin (setup, margin, GTK_UNIT_MM);
+    ctk_page_setup_set_left_margin (setup, margin, CTK_UNIT_MM);
   if (g_variant_lookup (variant, "MarginRight", "d", &margin))
-    ctk_page_setup_set_right_margin (setup, margin, GTK_UNIT_MM);
+    ctk_page_setup_set_right_margin (setup, margin, CTK_UNIT_MM);
 
   if (g_variant_lookup (variant, "Orientation", "&s", &orientation))
-    ctk_page_setup_set_orientation (setup, string_to_enum (GTK_TYPE_PAGE_ORIENTATION,
+    ctk_page_setup_set_orientation (setup, string_to_enum (CTK_TYPE_PAGE_ORIENTATION,
                                                            orientation));
 
   return setup;

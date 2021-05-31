@@ -19,8 +19,8 @@ do_stack (GtkWidget *do_widget)
 
       builder = ctk_builder_new_from_resource ("/stack/stack.ui");
       ctk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = CTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);

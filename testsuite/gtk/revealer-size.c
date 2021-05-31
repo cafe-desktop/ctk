@@ -11,33 +11,33 @@ keep_size (int      direction,
   gboolean animations_before;
   int min_height, min_width;
   int min_child_width, min_child_height;
-  GtkRevealer *revealer = GTK_REVEALER (ctk_revealer_new ());
+  GtkRevealer *revealer = CTK_REVEALER (ctk_revealer_new ());
   GtkWidget   *child    = ctk_button_new_with_label ("Some Text!");
   GtkSettings *settings = ctk_settings_get_default ();
 
   g_object_get (settings, "gtk-enable-animations", &animations_before, NULL);
   g_object_set (settings, "gtk-enable-animations", animations, NULL);
 
-  ctk_container_add (GTK_CONTAINER (revealer), child);
-  ctk_widget_show_all (GTK_WIDGET (revealer));
+  ctk_container_add (CTK_CONTAINER (revealer), child);
+  ctk_widget_show_all (CTK_WIDGET (revealer));
 
   ctk_revealer_set_transition_type (revealer, transition_type);
 
   ctk_revealer_set_reveal_child (revealer, TRUE);
 
-  ctk_widget_get_preferred_width (GTK_WIDGET (child), &min_child_width, NULL);
-  ctk_widget_get_preferred_height (GTK_WIDGET (child), &min_child_height, NULL);
+  ctk_widget_get_preferred_width (CTK_WIDGET (child), &min_child_width, NULL);
+  ctk_widget_get_preferred_height (CTK_WIDGET (child), &min_child_height, NULL);
 
-  ctk_widget_get_preferred_width (GTK_WIDGET (revealer), &min_width, NULL);
-  ctk_widget_get_preferred_height (GTK_WIDGET (revealer), &min_height, NULL);
+  ctk_widget_get_preferred_width (CTK_WIDGET (revealer), &min_width, NULL);
+  ctk_widget_get_preferred_height (CTK_WIDGET (revealer), &min_height, NULL);
 
   g_assert_cmpint (min_width, ==, min_child_width);
   g_assert_cmpint (min_height, ==, min_child_height);
 
 
   ctk_revealer_set_reveal_child (revealer, FALSE);
-  ctk_widget_get_preferred_width (GTK_WIDGET (revealer), &min_width, NULL);
-  ctk_widget_get_preferred_height (GTK_WIDGET (revealer), &min_height, NULL);
+  ctk_widget_get_preferred_width (CTK_WIDGET (revealer), &min_width, NULL);
+  ctk_widget_get_preferred_height (CTK_WIDGET (revealer), &min_height, NULL);
 
   if (direction & KEEP_WIDTH)
     g_assert_cmpint (min_width, ==, min_child_width);
@@ -56,73 +56,73 @@ keep_size (int      direction,
 static void
 slide_right_animations ()
 {
-  keep_size (KEEP_HEIGHT, GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT, TRUE);
+  keep_size (KEEP_HEIGHT, CTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT, TRUE);
 }
 
 static void
 slide_right_no_animations ()
 {
-  keep_size (KEEP_HEIGHT, GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT, FALSE);
+  keep_size (KEEP_HEIGHT, CTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT, FALSE);
 }
 
 static void
 slide_left_animations ()
 {
-  keep_size (KEEP_HEIGHT, GTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT, TRUE);
+  keep_size (KEEP_HEIGHT, CTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT, TRUE);
 }
 
 static void
 slide_left_no_animations ()
 {
-  keep_size (KEEP_HEIGHT, GTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT, FALSE);
+  keep_size (KEEP_HEIGHT, CTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT, FALSE);
 }
 
 static void
 none_animations ()
 {
-  keep_size (0, GTK_REVEALER_TRANSITION_TYPE_NONE, TRUE);
+  keep_size (0, CTK_REVEALER_TRANSITION_TYPE_NONE, TRUE);
 }
 
 static void
 none_no_animations ()
 {
-  keep_size (0, GTK_REVEALER_TRANSITION_TYPE_NONE, FALSE);
+  keep_size (0, CTK_REVEALER_TRANSITION_TYPE_NONE, FALSE);
 }
 
 static void
 crossfade_animations()
 {
-  keep_size (KEEP_WIDTH | KEEP_HEIGHT, GTK_REVEALER_TRANSITION_TYPE_CROSSFADE, TRUE);
+  keep_size (KEEP_WIDTH | KEEP_HEIGHT, CTK_REVEALER_TRANSITION_TYPE_CROSSFADE, TRUE);
 }
 
 static void
 crossfade_no_animations ()
 {
-  keep_size (KEEP_WIDTH | KEEP_HEIGHT, GTK_REVEALER_TRANSITION_TYPE_CROSSFADE, FALSE);
+  keep_size (KEEP_WIDTH | KEEP_HEIGHT, CTK_REVEALER_TRANSITION_TYPE_CROSSFADE, FALSE);
 }
 
 static void
 slide_down_animations ()
 {
-  keep_size (KEEP_WIDTH, GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN, TRUE);
+  keep_size (KEEP_WIDTH, CTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN, TRUE);
 }
 
 static void
 slide_down_no_animations ()
 {
-  keep_size (KEEP_WIDTH, GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN, FALSE);
+  keep_size (KEEP_WIDTH, CTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN, FALSE);
 }
 
 static void
 slide_up_animations ()
 {
-  keep_size (KEEP_WIDTH, GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP, TRUE);
+  keep_size (KEEP_WIDTH, CTK_REVEALER_TRANSITION_TYPE_SLIDE_UP, TRUE);
 }
 
 static void
 slide_up_no_animations ()
 {
-  keep_size (KEEP_WIDTH, GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP, FALSE);
+  keep_size (KEEP_WIDTH, CTK_REVEALER_TRANSITION_TYPE_SLIDE_UP, FALSE);
 }
 
 int

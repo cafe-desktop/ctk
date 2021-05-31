@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_MODULES_PRIVATE_H__
-#define __GTK_MODULES_PRIVATE_H__
+#ifndef __CTK_MODULES_PRIVATE_H__
+#define __CTK_MODULES_PRIVATE_H__
 
 G_BEGIN_DECLS
 
@@ -43,4 +43,4 @@ gboolean _ctk_module_has_mixed_deps    (GModule       *module);
 
 G_END_DECLS
 
-#endif /* __GTK_MODULES_PRIVATE_H__ */
+#endif /* __CTK_MODULES_PRIVATE_H__ */

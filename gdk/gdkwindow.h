@@ -428,8 +428,8 @@ struct _GdkWindowAttr
  *         hints.width_inc = terminal->char_width;
  *         hints.height_inc = terminal->char_height;
  *
- *  ctk_window_set_geometry_hints (GTK_WINDOW (toplevel),
- *                                 GTK_WIDGET (terminal),
+ *  ctk_window_set_geometry_hints (CTK_WINDOW (toplevel),
+ *                                 CTK_WIDGET (terminal),
  *                                 &hints,
  *                                 GDK_HINT_RESIZE_INC |
  *                                 GDK_HINT_MIN_SIZE |

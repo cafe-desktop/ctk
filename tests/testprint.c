@@ -33,7 +33,7 @@ request_page_setup (GtkPrintOperation *operation,
     {
       GtkPaperSize *a5_size = ctk_paper_size_new ("iso_a5");
       
-      ctk_page_setup_set_orientation (setup, GTK_PAGE_ORIENTATION_LANDSCAPE);
+      ctk_page_setup_set_orientation (setup, CTK_PAGE_ORIENTATION_LANDSCAPE);
       ctk_page_setup_set_paper_size (setup, a5_size);
       ctk_paper_size_free (a5_size);
     }
@@ -103,17 +103,17 @@ main (int argc, char **argv)
   /* Test some random drawing, with per-page paper settings */
   print = ctk_print_operation_new ();
   ctk_print_operation_set_n_pages (print, 2);
-  ctk_print_operation_set_unit (print, GTK_UNIT_MM);
+  ctk_print_operation_set_unit (print, CTK_UNIT_MM);
   ctk_print_operation_set_export_filename (print, "test.pdf");
   g_signal_connect (print, "draw_page", G_CALLBACK (draw_page), NULL);
   g_signal_connect (print, "request_page_setup", G_CALLBACK (request_page_setup), NULL);
-  ctk_print_operation_run (print, GTK_PRINT_OPERATION_ACTION_EXPORT, NULL, NULL);
+  ctk_print_operation_run (print, CTK_PRINT_OPERATION_ACTION_EXPORT, NULL, NULL);
 
   /* Test subclassing of GtkPrintOperation */
   print_file = test_print_file_operation_new ("testprint.c");
   test_print_file_operation_set_font_size (print_file, 12.0);
-  ctk_print_operation_set_export_filename (GTK_PRINT_OPERATION (print_file), "test2.pdf");
-  ctk_print_operation_run (GTK_PRINT_OPERATION (print_file), GTK_PRINT_OPERATION_ACTION_EXPORT, NULL, NULL);
+  ctk_print_operation_set_export_filename (CTK_PRINT_OPERATION (print_file), "test2.pdf");
+  ctk_print_operation_run (CTK_PRINT_OPERATION (print_file), CTK_PRINT_OPERATION_ACTION_EXPORT, NULL, NULL);
   
   return 0;
 }

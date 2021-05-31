@@ -57,7 +57,7 @@ enum {
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE (GtkEventControllerMotion, ctk_event_controller_motion, GTK_TYPE_EVENT_CONTROLLER)
+G_DEFINE_TYPE (GtkEventControllerMotion, ctk_event_controller_motion, CTK_TYPE_EVENT_CONTROLLER)
 
 static void
 get_coords (GtkWidget      *widget,
@@ -115,7 +115,7 @@ ctk_event_controller_motion_handle_event (GtkEventController *controller,
       g_signal_emit (controller, signals[MOTION], 0, x, y);
     }
 
-  parent_class = GTK_EVENT_CONTROLLER_CLASS (ctk_event_controller_motion_parent_class);
+  parent_class = CTK_EVENT_CONTROLLER_CLASS (ctk_event_controller_motion_parent_class);
 
   return parent_class->handle_event (controller, event);
 }
@@ -123,7 +123,7 @@ ctk_event_controller_motion_handle_event (GtkEventController *controller,
 static void
 ctk_event_controller_motion_class_init (GtkEventControllerMotionClass *klass)
 {
-  GtkEventControllerClass *controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
+  GtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
 
   controller_class->handle_event = ctk_event_controller_motion_handle_event;
 
@@ -137,7 +137,7 @@ ctk_event_controller_motion_class_init (GtkEventControllerMotionClass *klass)
    */
   signals[ENTER] =
     g_signal_new (I_("enter"),
-                  GTK_TYPE_EVENT_CONTROLLER_MOTION,
+                  CTK_TYPE_EVENT_CONTROLLER_MOTION,
                   G_SIGNAL_RUN_FIRST,
                   0, NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
@@ -154,7 +154,7 @@ ctk_event_controller_motion_class_init (GtkEventControllerMotionClass *klass)
    */
   signals[LEAVE] =
     g_signal_new (I_("leave"),
-                  GTK_TYPE_EVENT_CONTROLLER_MOTION,
+                  CTK_TYPE_EVENT_CONTROLLER_MOTION,
                   G_SIGNAL_RUN_FIRST,
                   0, NULL, NULL,
                   NULL,
@@ -170,7 +170,7 @@ ctk_event_controller_motion_class_init (GtkEventControllerMotionClass *klass)
    */
   signals[MOTION] =
     g_signal_new (I_("motion"),
-                  GTK_TYPE_EVENT_CONTROLLER_MOTION,
+                  CTK_TYPE_EVENT_CONTROLLER_MOTION,
                   G_SIGNAL_RUN_FIRST,
                   0, NULL, NULL,
                   _ctk_marshal_VOID__DOUBLE_DOUBLE,
@@ -199,9 +199,9 @@ ctk_event_controller_motion_init (GtkEventControllerMotion *motion)
 GtkEventController *
 ctk_event_controller_motion_new (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  return g_object_new (GTK_TYPE_EVENT_CONTROLLER_MOTION,
+  return g_object_new (CTK_TYPE_EVENT_CONTROLLER_MOTION,
                        "widget", widget,
                        NULL);
 }

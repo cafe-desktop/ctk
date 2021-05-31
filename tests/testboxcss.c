@@ -19,7 +19,7 @@
 #include <gtk/gtk.h>
 
 /* This is exactly the style information you've been looking for */
-#define GTK_STYLE_PROVIDER_PRIORITY_FORCE G_MAXUINT
+#define CTK_STYLE_PROVIDER_PRIORITY_FORCE G_MAXUINT
 
 #define DEFAULT_CSS \
   ".play {\n" \
@@ -62,7 +62,7 @@ show_parsing_error (GtkCssProvider *provider,
                                           ctk_css_section_get_end_line (section),
                                           ctk_css_section_get_end_position (section));
 
-  if (g_error_matches (error, GTK_CSS_PROVIDER_ERROR, GTK_CSS_PROVIDER_ERROR_DEPRECATED))
+  if (g_error_matches (error, CTK_CSS_PROVIDER_ERROR, CTK_CSS_PROVIDER_ERROR_DEPRECATED))
     tag_name = "warning";
   else
     tag_name = "error";
@@ -91,7 +91,7 @@ css_text_changed (GtkTextBuffer  *buffer,
 static void
 remove_widget (GtkWidget *widget)
 {
-  ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (widget)), widget);
+  ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (widget)), widget);
 }
 
 static int count = 0;
@@ -111,7 +111,7 @@ add_button (GtkBox *box)
                             G_CALLBACK (remove_widget),
                             button);
   ctk_widget_show (button);
-  ctk_container_add (GTK_CONTAINER (box), button);
+  ctk_container_add (CTK_CONTAINER (box), button);
 }
 
 static void
@@ -129,13 +129,13 @@ add_toolbutton (GtkToolbar *toolbar)
                             G_CALLBACK (remove_widget),
                             button);
   ctk_widget_show (button);
-  ctk_container_add (GTK_CONTAINER (toolbar), button);
+  ctk_container_add (CTK_CONTAINER (toolbar), button);
 }
 
 static void
 set_orientation (GtkSwitch *switch_)
 {
-  ctk_widget_set_default_direction (ctk_switch_get_active (switch_) ? GTK_TEXT_DIR_LTR : GTK_TEXT_DIR_RTL);
+  ctk_widget_set_default_direction (ctk_switch_get_active (switch_) ? CTK_TEXT_DIR_LTR : CTK_TEXT_DIR_RTL);
 }
 
 gint
@@ -158,32 +158,32 @@ main (gint argc, gchar **argv)
                               "background", "rgba(255,0,0,0.3)",
                               NULL);
 
-  provider = GTK_STYLE_PROVIDER (ctk_css_provider_new ());
+  provider = CTK_STYLE_PROVIDER (ctk_css_provider_new ());
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                              provider,
-                                             GTK_STYLE_PROVIDER_PRIORITY_FORCE);
+                                             CTK_STYLE_PROVIDER_PRIORITY_FORCE);
   
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   g_signal_connect (window, "destroy", G_CALLBACK(ctk_main_quit), NULL);
   g_signal_connect (window, "delete_event", G_CALLBACK (ctk_main_quit), NULL);
 
-  main_box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), main_box);
+  main_box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), main_box);
 
   toolbar = ctk_toolbar_new ();
-  ctk_toolbar_set_style (GTK_TOOLBAR (toolbar), GTK_TOOLBAR_TEXT);
-  ctk_box_pack_start (GTK_BOX (main_box), toolbar, FALSE, TRUE, 0);
+  ctk_toolbar_set_style (CTK_TOOLBAR (toolbar), CTK_TOOLBAR_TEXT);
+  ctk_box_pack_start (CTK_BOX (main_box), toolbar, FALSE, TRUE, 0);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_box_pack_start (GTK_BOX (main_box), box, FALSE, TRUE, 0);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_start (CTK_BOX (main_box), box, FALSE, TRUE, 0);
 
   container = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (container), 200);
-  ctk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (container), 200);
-  ctk_box_pack_start (GTK_BOX (main_box), container, TRUE, TRUE, 0);
+  ctk_scrolled_window_set_min_content_width (CTK_SCROLLED_WINDOW (container), 200);
+  ctk_scrolled_window_set_min_content_height (CTK_SCROLLED_WINDOW (container), 200);
+  ctk_box_pack_start (CTK_BOX (main_box), container, TRUE, TRUE, 0);
   child = ctk_text_view_new_with_buffer (css);
-  ctk_container_add (GTK_CONTAINER (container), child);
+  ctk_container_add (CTK_CONTAINER (container), child);
   g_signal_connect (css,
                     "changed",
                     G_CALLBACK (css_text_changed),
@@ -194,41 +194,41 @@ main (gint argc, gchar **argv)
   g_signal_connect (provider,
                     "parsing-error",
                     G_CALLBACK (show_parsing_error),
-                    ctk_text_view_get_buffer (GTK_TEXT_VIEW (child)));
+                    ctk_text_view_get_buffer (CTK_TEXT_VIEW (child)));
 
-  container = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_box_pack_start (GTK_BOX (main_box), container, FALSE, TRUE, 0);
+  container = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_start (CTK_BOX (main_box), container, FALSE, TRUE, 0);
   child = ctk_switch_new ();
-  ctk_switch_set_active (GTK_SWITCH (child), ctk_widget_get_default_direction () == GTK_TEXT_DIR_LTR);
+  ctk_switch_set_active (CTK_SWITCH (child), ctk_widget_get_default_direction () == CTK_TEXT_DIR_LTR);
   g_signal_connect (child,
                     "notify::active",
                     G_CALLBACK (set_orientation),
                     NULL);
-  ctk_box_pack_start (GTK_BOX (container), child, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (container), child, FALSE, FALSE, 0);
   child = ctk_label_new ("left-to-right");
-  ctk_box_pack_start (GTK_BOX (container), child, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (container), child, FALSE, FALSE, 0);
   child = ctk_button_new_with_label ("Add button");
   g_signal_connect_swapped (child,
                             "clicked",
                             G_CALLBACK (add_button),
                             box);
-  ctk_box_pack_end (GTK_BOX (container), child, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (container), child, FALSE, FALSE, 0);
   child = ctk_button_new_with_label ("Add toolbutton");
   g_signal_connect_swapped (child,
                             "clicked",
                             G_CALLBACK (add_toolbutton),
                             toolbar);
-  ctk_box_pack_end (GTK_BOX (container), child, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (container), child, FALSE, FALSE, 0);
 
-  add_toolbutton (GTK_TOOLBAR (toolbar));
-  add_toolbutton (GTK_TOOLBAR (toolbar));
-  add_toolbutton (GTK_TOOLBAR (toolbar));
-  add_toolbutton (GTK_TOOLBAR (toolbar));
+  add_toolbutton (CTK_TOOLBAR (toolbar));
+  add_toolbutton (CTK_TOOLBAR (toolbar));
+  add_toolbutton (CTK_TOOLBAR (toolbar));
+  add_toolbutton (CTK_TOOLBAR (toolbar));
 
-  add_button (GTK_BOX (box));
-  add_button (GTK_BOX (box));
-  add_button (GTK_BOX (box));
-  add_button (GTK_BOX (box));
+  add_button (CTK_BOX (box));
+  add_button (CTK_BOX (box));
+  add_button (CTK_BOX (box));
+  add_button (CTK_BOX (box));
 
   ctk_widget_show_all (window);
 

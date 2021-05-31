@@ -15,35 +15,35 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TEXT_HANDLE_PRIVATE_H__
-#define __GTK_TEXT_HANDLE_PRIVATE_H__
+#ifndef __CTK_TEXT_HANDLE_PRIVATE_H__
+#define __CTK_TEXT_HANDLE_PRIVATE_H__
 
 #include <gtk/gtkwidget.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TEXT_HANDLE           (_ctk_text_handle_get_type ())
-#define GTK_TEXT_HANDLE(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_TEXT_HANDLE, GtkTextHandle))
-#define GTK_TEXT_HANDLE_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), GTK_TYPE_TEXT_HANDLE, GtkTextHandleClass))
-#define GTK_IS_TEXT_HANDLE(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_TEXT_HANDLE))
-#define GTK_IS_TEXT_HANDLE_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), GTK_TYPE_TEXT_HANDLE))
-#define GTK_TEXT_HANDLE_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_TEXT_HANDLE, GtkTextHandleClass))
+#define CTK_TYPE_TEXT_HANDLE           (_ctk_text_handle_get_type ())
+#define CTK_TEXT_HANDLE(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_TEXT_HANDLE, GtkTextHandle))
+#define CTK_TEXT_HANDLE_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_TEXT_HANDLE, GtkTextHandleClass))
+#define CTK_IS_TEXT_HANDLE(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_TEXT_HANDLE))
+#define CTK_IS_TEXT_HANDLE_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), CTK_TYPE_TEXT_HANDLE))
+#define CTK_TEXT_HANDLE_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_TEXT_HANDLE, GtkTextHandleClass))
 
 typedef struct _GtkTextHandle GtkTextHandle;
 typedef struct _GtkTextHandleClass GtkTextHandleClass;
 
 typedef enum
 {
-  GTK_TEXT_HANDLE_POSITION_CURSOR,
-  GTK_TEXT_HANDLE_POSITION_SELECTION_START,
-  GTK_TEXT_HANDLE_POSITION_SELECTION_END = GTK_TEXT_HANDLE_POSITION_CURSOR
+  CTK_TEXT_HANDLE_POSITION_CURSOR,
+  CTK_TEXT_HANDLE_POSITION_SELECTION_START,
+  CTK_TEXT_HANDLE_POSITION_SELECTION_END = CTK_TEXT_HANDLE_POSITION_CURSOR
 } GtkTextHandlePosition;
 
 typedef enum
 {
-  GTK_TEXT_HANDLE_MODE_NONE,
-  GTK_TEXT_HANDLE_MODE_CURSOR,
-  GTK_TEXT_HANDLE_MODE_SELECTION
+  CTK_TEXT_HANDLE_MODE_NONE,
+  CTK_TEXT_HANDLE_MODE_CURSOR,
+  CTK_TEXT_HANDLE_MODE_SELECTION
 } GtkTextHandleMode;
 
 struct _GtkTextHandle
@@ -87,4 +87,4 @@ void            _ctk_text_handle_set_direction (GtkTextHandle         *handle,
 
 G_END_DECLS
 
-#endif /* __GTK_TEXT_HANDLE_PRIVATE_H__ */
+#endif /* __CTK_TEXT_HANDLE_PRIVATE_H__ */

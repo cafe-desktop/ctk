@@ -331,11 +331,11 @@ msgstr "Es important"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Indica se l'accion es considerada coma importanta. Se verai (TRUE), l'aisina "
 "mandatària d'aquesta action aficha lo tèxte dins lo mòde "
-"GTK_TOOLBAR_BOTH_HORIZ."
+"CTK_TOOLBAR_BOTH_HORIZ."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1847,8 +1847,8 @@ msgid "Default Spacing"
 msgstr "Espaçament per defaut"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Espaçament suplementari pels botons GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Espaçament suplementari pels botons CTK_CAN_DEFAULT"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1856,10 +1856,10 @@ msgstr "Espaçament exterior per defaut"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Espaci suplementari qu'enquadra los botons GTK_CAN_DEFAULT ; es totjorn "
+"Espaci suplementari qu'enquadra los botons CTK_CAN_DEFAULT ; es totjorn "
 "dispausat al defòra de la bordadura"
 
 #: gtk/gtkbutton.c:556
@@ -4370,10 +4370,10 @@ msgid "Baseline Row"
 msgstr "Linha de basa"
 
 #: gtk/gtkgrid.c:1790
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 "La linha sus la quala cal alinhar la linha de basa quand valign val "
-"GTK_ALIGN_BASELINE"
+"CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1808
 msgid "The row number to attach the top side of a child widget to"
@@ -8683,11 +8683,11 @@ msgstr "Espaci en pixèls entre l'icòna e son etiqueta"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Indica se l'element de la barra d'aisinas es qualificat d'important. Se "
 "verai (TRUE), los botons de la barra d'aisinas afichan lo tèxte dins lo mòde "
-"« GTK_TOOLBAR_BOTH_HORIZ »"
+"« CTK_TOOLBAR_BOTH_HORIZ »"
 
 #: gtk/gtktoolitemgroup.c:1642
 msgid "The human-readable title of this item group"

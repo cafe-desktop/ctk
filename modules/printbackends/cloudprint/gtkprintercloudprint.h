@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINTER_CLOUDPRINT_H__
-#define __GTK_PRINTER_CLOUDPRINT_H__
+#ifndef __CTK_PRINTER_CLOUDPRINT_H__
+#define __CTK_PRINTER_CLOUDPRINT_H__
 
 #include <glib-object.h>
 #include <gtk/gtkprinter-private.h>
@@ -26,9 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_CLOUDPRINT	(ctk_printer_cloudprint_get_type ())
-#define GTK_PRINTER_CLOUDPRINT(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_CLOUDPRINT, GtkPrinterCloudprint))
-#define GTK_IS_PRINTER_CLOUDPRINT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_CLOUDPRINT))
+#define CTK_TYPE_PRINTER_CLOUDPRINT	(ctk_printer_cloudprint_get_type ())
+#define CTK_PRINTER_CLOUDPRINT(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_CLOUDPRINT, GtkPrinterCloudprint))
+#define CTK_IS_PRINTER_CLOUDPRINT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER_CLOUDPRINT))
 
 void	ctk_printer_cloudprint_register_type (GTypeModule *module);
 GtkPrinterCloudprint *ctk_printer_cloudprint_new	(const char *name,
@@ -40,4 +40,4 @@ GType	ctk_printer_cloudprint_get_type			(void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GTK_PRINTER_CLOUDPRINT_H__ */
+#endif /* __CTK_PRINTER_CLOUDPRINT_H__ */

@@ -56,16 +56,16 @@
  * dialog = ctk_recent_chooser_dialog_new ("Recent Documents",
  *                                         parent_window,
  *                                         _("_Cancel"),
- *                                         GTK_RESPONSE_CANCEL,
+ *                                         CTK_RESPONSE_CANCEL,
  *                                         _("_Open"),
- *                                         GTK_RESPONSE_ACCEPT,
+ *                                         CTK_RESPONSE_ACCEPT,
  *                                         NULL);
  *
- * res = ctk_dialog_run (GTK_DIALOG (dialog));
- * if (res == GTK_RESPONSE_ACCEPT)
+ * res = ctk_dialog_run (CTK_DIALOG (dialog));
+ * if (res == CTK_RESPONSE_ACCEPT)
  *   {
  *     GtkRecentInfo *info;
- *     GtkRecentChooser *chooser = GTK_RECENT_CHOOSER (dialog);
+ *     GtkRecentChooser *chooser = CTK_RECENT_CHOOSER (dialog);
  *
  *     info = ctk_recent_chooser_get_current_item (chooser);
  *     open_file (ctk_recent_info_get_uri (info));
@@ -86,7 +86,7 @@ struct _GtkRecentChooserDialogPrivate
   GtkWidget *chooser;
 };
 
-#define GTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE(obj)	(GTK_RECENT_CHOOSER_DIALOG (obj)->priv)
+#define CTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE(obj)	(CTK_RECENT_CHOOSER_DIALOG (obj)->priv)
 
 static void ctk_recent_chooser_dialog_class_init (GtkRecentChooserDialogClass *klass);
 static void ctk_recent_chooser_dialog_init       (GtkRecentChooserDialog      *dialog);
@@ -105,9 +105,9 @@ static void ctk_recent_chooser_dialog_get_property (GObject      *object,
 
 G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserDialog,
 			 ctk_recent_chooser_dialog,
-			 GTK_TYPE_DIALOG,
+			 CTK_TYPE_DIALOG,
                          G_ADD_PRIVATE (GtkRecentChooserDialog)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_RECENT_CHOOSER,
 		       				_ctk_recent_chooser_delegate_iface_init))
 
 static void
@@ -128,20 +128,20 @@ ctk_recent_chooser_dialog_init (GtkRecentChooserDialog *dialog)
 {
   GtkRecentChooserDialogPrivate *priv;
   GtkWidget *content_area, *action_area;
-  GtkDialog *rc_dialog = GTK_DIALOG (dialog);
+  GtkDialog *rc_dialog = CTK_DIALOG (dialog);
 
   priv = ctk_recent_chooser_dialog_get_instance_private (dialog);
   dialog->priv = priv;
-  ctk_dialog_set_use_header_bar_from_setting (GTK_DIALOG (dialog));
+  ctk_dialog_set_use_header_bar_from_setting (CTK_DIALOG (dialog));
 
   content_area = ctk_dialog_get_content_area (rc_dialog);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   action_area = ctk_dialog_get_action_area (rc_dialog);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  ctk_container_set_border_width (GTK_CONTAINER (rc_dialog), 5);
-  ctk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
-  ctk_container_set_border_width (GTK_CONTAINER (action_area), 5);
+  ctk_container_set_border_width (CTK_CONTAINER (rc_dialog), 5);
+  ctk_box_set_spacing (CTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
+  ctk_container_set_border_width (CTK_CONTAINER (action_area), 5);
 }
 
 /* we intercept the GtkRecentChooser::item_activated signal and try to
@@ -156,33 +156,33 @@ ctk_recent_chooser_item_activated_cb (GtkRecentChooser *chooser,
   GtkWidget *action_area;
   GList *children, *l;
 
-  dialog = GTK_RECENT_CHOOSER_DIALOG (user_data);
-  rc_dialog = GTK_DIALOG (dialog);
+  dialog = CTK_RECENT_CHOOSER_DIALOG (user_data);
+  rc_dialog = CTK_DIALOG (dialog);
 
-  if (ctk_window_activate_default (GTK_WINDOW (dialog)))
+  if (ctk_window_activate_default (CTK_WINDOW (dialog)))
     return;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   action_area = ctk_dialog_get_action_area (rc_dialog);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  children = ctk_container_get_children (GTK_CONTAINER (action_area));
+  children = ctk_container_get_children (CTK_CONTAINER (action_area));
   
   for (l = children; l; l = l->next)
     {
       GtkWidget *widget;
       gint response_id;
       
-      widget = GTK_WIDGET (l->data);
+      widget = CTK_WIDGET (l->data);
       response_id = ctk_dialog_get_response_for_widget (rc_dialog, widget);
       
-      if (response_id == GTK_RESPONSE_ACCEPT ||
-          response_id == GTK_RESPONSE_OK     ||
-          response_id == GTK_RESPONSE_YES    ||
-          response_id == GTK_RESPONSE_APPLY)
+      if (response_id == CTK_RESPONSE_ACCEPT ||
+          response_id == CTK_RESPONSE_OK     ||
+          response_id == CTK_RESPONSE_YES    ||
+          response_id == CTK_RESPONSE_APPLY)
         {
           g_list_free (children);
 	  
-          ctk_dialog_response (GTK_DIALOG (dialog), response_id);
+          ctk_dialog_response (CTK_DIALOG (dialog), response_id);
 
           return;
         }
@@ -198,28 +198,28 @@ ctk_recent_chooser_dialog_constructed (GObject *object)
   GtkWidget *content_area;
 
   G_OBJECT_CLASS (ctk_recent_chooser_dialog_parent_class)->constructed (object);
-  priv = GTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
+  priv = CTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
 
   if (priv->manager)
-    priv->chooser = g_object_new (GTK_TYPE_RECENT_CHOOSER_WIDGET,
+    priv->chooser = g_object_new (CTK_TYPE_RECENT_CHOOSER_WIDGET,
   				  "recent-manager", priv->manager,
   				  NULL);
   else
-    priv->chooser = g_object_new (GTK_TYPE_RECENT_CHOOSER_WIDGET, NULL);
+    priv->chooser = g_object_new (CTK_TYPE_RECENT_CHOOSER_WIDGET, NULL);
   
   g_signal_connect (priv->chooser, "item-activated",
   		    G_CALLBACK (ctk_recent_chooser_item_activated_cb),
   		    object);
 
-  content_area = ctk_dialog_get_content_area (GTK_DIALOG (object));
+  content_area = ctk_dialog_get_content_area (CTK_DIALOG (object));
 
-  ctk_container_set_border_width (GTK_CONTAINER (priv->chooser), 5);
-  ctk_box_pack_start (GTK_BOX (content_area),
+  ctk_container_set_border_width (CTK_CONTAINER (priv->chooser), 5);
+  ctk_box_pack_start (CTK_BOX (content_area),
                       priv->chooser, TRUE, TRUE, 0);
   ctk_widget_show (priv->chooser);
   
-  _ctk_recent_chooser_set_delegate (GTK_RECENT_CHOOSER (object),
-  				    GTK_RECENT_CHOOSER (priv->chooser));
+  _ctk_recent_chooser_set_delegate (CTK_RECENT_CHOOSER (object),
+  				    CTK_RECENT_CHOOSER (priv->chooser));
 }
 
 static void
@@ -230,11 +230,11 @@ ctk_recent_chooser_dialog_set_property (GObject      *object,
 {
   GtkRecentChooserDialogPrivate *priv;
   
-  priv = GTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
+  priv = CTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
   
   switch (prop_id)
     {
-    case GTK_RECENT_CHOOSER_PROP_RECENT_MANAGER:
+    case CTK_RECENT_CHOOSER_PROP_RECENT_MANAGER:
       priv->manager = g_value_get_object (value);
       break;
     default:
@@ -251,7 +251,7 @@ ctk_recent_chooser_dialog_get_property (GObject      *object,
 {
   GtkRecentChooserDialogPrivate *priv;
   
-  priv = GTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
+  priv = CTK_RECENT_CHOOSER_DIALOG_GET_PRIVATE (object);
   
   g_object_get_property (G_OBJECT (priv->chooser), pspec->name, value);
 }
@@ -259,7 +259,7 @@ ctk_recent_chooser_dialog_get_property (GObject      *object,
 static void
 ctk_recent_chooser_dialog_finalize (GObject *object)
 {
-  GtkRecentChooserDialog *dialog = GTK_RECENT_CHOOSER_DIALOG (object);
+  GtkRecentChooserDialog *dialog = CTK_RECENT_CHOOSER_DIALOG (object);
  
   dialog->priv->manager = NULL;
   
@@ -277,18 +277,18 @@ ctk_recent_chooser_dialog_new_valist (const gchar      *title,
   const char *button_text = first_button_text;
   gint response_id;
 
-  result = g_object_new (GTK_TYPE_RECENT_CHOOSER_DIALOG,
+  result = g_object_new (CTK_TYPE_RECENT_CHOOSER_DIALOG,
                          "title", title,
                          "recent-manager", manager,
                          NULL);
   
   if (parent)
-    ctk_window_set_transient_for (GTK_WINDOW (result), parent);
+    ctk_window_set_transient_for (CTK_WINDOW (result), parent);
   
   while (button_text)
     {
       response_id = va_arg (varargs, gint);
-      ctk_dialog_add_button (GTK_DIALOG (result), button_text, response_id);
+      ctk_dialog_add_button (CTK_DIALOG (result), button_text, response_id);
       button_text = va_arg (varargs, const gchar *);
     }
   

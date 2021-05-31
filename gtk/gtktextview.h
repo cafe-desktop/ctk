@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_VIEW_H__
-#define __GTK_TEXT_VIEW_H__
+#ifndef __CTK_TEXT_VIEW_H__
+#define __CTK_TEXT_VIEW_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -36,59 +36,59 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TEXT_VIEW             (ctk_text_view_get_type ())
-#define GTK_TEXT_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TEXT_VIEW, GtkTextView))
-#define GTK_TEXT_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEXT_VIEW, GtkTextViewClass))
-#define GTK_IS_TEXT_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TEXT_VIEW))
-#define GTK_IS_TEXT_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TEXT_VIEW))
-#define GTK_TEXT_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TEXT_VIEW, GtkTextViewClass))
+#define CTK_TYPE_TEXT_VIEW             (ctk_text_view_get_type ())
+#define CTK_TEXT_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_VIEW, GtkTextView))
+#define CTK_TEXT_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_VIEW, GtkTextViewClass))
+#define CTK_IS_TEXT_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEXT_VIEW))
+#define CTK_IS_TEXT_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_VIEW))
+#define CTK_TEXT_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_VIEW, GtkTextViewClass))
 
 /**
  * GtkTextWindowType:
- * @GTK_TEXT_WINDOW_PRIVATE: Invalid value, used as a marker
- * @GTK_TEXT_WINDOW_WIDGET: Window that floats over scrolling areas.
- * @GTK_TEXT_WINDOW_TEXT: Scrollable text window.
- * @GTK_TEXT_WINDOW_LEFT: Left side border window.
- * @GTK_TEXT_WINDOW_RIGHT: Right side border window.
- * @GTK_TEXT_WINDOW_TOP: Top border window.
- * @GTK_TEXT_WINDOW_BOTTOM: Bottom border window.
+ * @CTK_TEXT_WINDOW_PRIVATE: Invalid value, used as a marker
+ * @CTK_TEXT_WINDOW_WIDGET: Window that floats over scrolling areas.
+ * @CTK_TEXT_WINDOW_TEXT: Scrollable text window.
+ * @CTK_TEXT_WINDOW_LEFT: Left side border window.
+ * @CTK_TEXT_WINDOW_RIGHT: Right side border window.
+ * @CTK_TEXT_WINDOW_TOP: Top border window.
+ * @CTK_TEXT_WINDOW_BOTTOM: Bottom border window.
  *
  * Used to reference the parts of #GtkTextView.
  */
 typedef enum
 {
-  GTK_TEXT_WINDOW_PRIVATE,
-  GTK_TEXT_WINDOW_WIDGET,
-  GTK_TEXT_WINDOW_TEXT,
-  GTK_TEXT_WINDOW_LEFT,
-  GTK_TEXT_WINDOW_RIGHT,
-  GTK_TEXT_WINDOW_TOP,
-  GTK_TEXT_WINDOW_BOTTOM
+  CTK_TEXT_WINDOW_PRIVATE,
+  CTK_TEXT_WINDOW_WIDGET,
+  CTK_TEXT_WINDOW_TEXT,
+  CTK_TEXT_WINDOW_LEFT,
+  CTK_TEXT_WINDOW_RIGHT,
+  CTK_TEXT_WINDOW_TOP,
+  CTK_TEXT_WINDOW_BOTTOM
 } GtkTextWindowType;
 
 /**
  * GtkTextViewLayer:
- * @GTK_TEXT_VIEW_LAYER_BELOW: Old deprecated layer, use %GTK_TEXT_VIEW_LAYER_BELOW_TEXT instead
- * @GTK_TEXT_VIEW_LAYER_ABOVE: Old deprecated layer, use %GTK_TEXT_VIEW_LAYER_ABOVE_TEXT instead
- * @GTK_TEXT_VIEW_LAYER_BELOW_TEXT: The layer rendered below the text (but above the background).  Since: 3.20
- * @GTK_TEXT_VIEW_LAYER_ABOVE_TEXT: The layer rendered above the text.  Since: 3.20
+ * @CTK_TEXT_VIEW_LAYER_BELOW: Old deprecated layer, use %CTK_TEXT_VIEW_LAYER_BELOW_TEXT instead
+ * @CTK_TEXT_VIEW_LAYER_ABOVE: Old deprecated layer, use %CTK_TEXT_VIEW_LAYER_ABOVE_TEXT instead
+ * @CTK_TEXT_VIEW_LAYER_BELOW_TEXT: The layer rendered below the text (but above the background).  Since: 3.20
+ * @CTK_TEXT_VIEW_LAYER_ABOVE_TEXT: The layer rendered above the text.  Since: 3.20
  *
  * Used to reference the layers of #GtkTextView for the purpose of customized
  * drawing with the ::draw_layer vfunc.
  */
 typedef enum
 {
-  GTK_TEXT_VIEW_LAYER_BELOW,
-  GTK_TEXT_VIEW_LAYER_ABOVE,
-  GTK_TEXT_VIEW_LAYER_BELOW_TEXT,
-  GTK_TEXT_VIEW_LAYER_ABOVE_TEXT
+  CTK_TEXT_VIEW_LAYER_BELOW,
+  CTK_TEXT_VIEW_LAYER_ABOVE,
+  CTK_TEXT_VIEW_LAYER_BELOW_TEXT,
+  CTK_TEXT_VIEW_LAYER_ABOVE_TEXT
 } GtkTextViewLayer;
 
 /**
  * GtkTextExtendSelection:
- * @GTK_TEXT_EXTEND_SELECTION_WORD: Selects the current word. It is triggered by
+ * @CTK_TEXT_EXTEND_SELECTION_WORD: Selects the current word. It is triggered by
  *   a double-click for example.
- * @GTK_TEXT_EXTEND_SELECTION_LINE: Selects the current line. It is triggered by
+ * @CTK_TEXT_EXTEND_SELECTION_LINE: Selects the current line. It is triggered by
  *   a triple-click for example.
  *
  * Granularity types that extend the text selection. Use the
@@ -98,17 +98,17 @@ typedef enum
  */
 typedef enum
 {
-  GTK_TEXT_EXTEND_SELECTION_WORD,
-  GTK_TEXT_EXTEND_SELECTION_LINE
+  CTK_TEXT_EXTEND_SELECTION_WORD,
+  CTK_TEXT_EXTEND_SELECTION_LINE
 } GtkTextExtendSelection;
 
 /**
- * GTK_TEXT_VIEW_PRIORITY_VALIDATE: (value 125)
+ * CTK_TEXT_VIEW_PRIORITY_VALIDATE: (value 125)
  *
  * The priority at which the text view validates onscreen lines
  * in an idle job in the background.
  */
-#define GTK_TEXT_VIEW_PRIORITY_VALIDATE (GDK_PRIORITY_REDRAW + 5)
+#define CTK_TEXT_VIEW_PRIORITY_VALIDATE (GDK_PRIORITY_REDRAW + 5)
 
 typedef struct _GtkTextView        GtkTextView;
 typedef struct _GtkTextViewPrivate GtkTextViewPrivate;
@@ -152,9 +152,9 @@ struct _GtkTextView
  * @draw_layer: The draw_layer vfunc is called before and after the text
  *   view is drawing its own text. Applications can override this vfunc
  *   in a subclass to draw customized content underneath or above the
- *   text. In the %GTK_TEXT_VIEW_LAYER_BELOW_TEXT and %GTK_TEXT_VIEW_LAYER_ABOVE_TEXT
+ *   text. In the %CTK_TEXT_VIEW_LAYER_BELOW_TEXT and %CTK_TEXT_VIEW_LAYER_ABOVE_TEXT
  *   the drawing is done in the buffer coordinate space, but the older (deprecated)
- *   layers %GTK_TEXT_VIEW_LAYER_BELOW and %GTK_TEXT_VIEW_LAYER_ABOVE work in viewport
+ *   layers %CTK_TEXT_VIEW_LAYER_BELOW and %CTK_TEXT_VIEW_LAYER_ABOVE work in viewport
  *   coordinates, which makes them unnecessarily hard to use. Since: 3.14
  * @extend_selection: The class handler for the #GtkTextView::extend-selection
  *   signal. Since 3.16
@@ -459,4 +459,4 @@ gboolean         ctk_text_view_get_monospace          (GtkTextView      *text_vi
 
 G_END_DECLS
 
-#endif /* __GTK_TEXT_VIEW_H__ */
+#endif /* __CTK_TEXT_VIEW_H__ */

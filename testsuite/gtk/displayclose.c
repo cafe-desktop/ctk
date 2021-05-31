@@ -20,7 +20,7 @@ main (int argc, char **argv)
 
   gdk_display_manager_set_default_display (gdk_display_manager_get (), display);
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (win, "destroy",
 		    G_CALLBACK (ctk_main_quit), NULL);
   g_signal_connect (win, "delete-event",
@@ -29,7 +29,7 @@ main (int argc, char **argv)
   but = ctk_button_new_with_label ("Try to Exit");
   g_signal_connect_swapped (but, "clicked",
 			    G_CALLBACK (ctk_widget_destroy), win);
-  ctk_container_add (GTK_CONTAINER (win), but);
+  ctk_container_add (CTK_CONTAINER (win), but);
 
   ctk_widget_show_all (win);
 

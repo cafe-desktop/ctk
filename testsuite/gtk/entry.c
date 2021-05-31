@@ -122,9 +122,9 @@ test_insert (void)
   entry = ctk_entry_new ();
   g_object_ref_sink (entry);
 
-  ctk_entry_set_text (GTK_ENTRY (entry), "bar");
-  ctk_editable_set_position (GTK_EDITABLE (entry), -1);
-  pos = ctk_editable_get_position (GTK_EDITABLE (entry));
+  ctk_entry_set_text (CTK_ENTRY (entry), "bar");
+  ctk_editable_set_position (CTK_EDITABLE (entry), -1);
+  pos = ctk_editable_get_position (CTK_EDITABLE (entry));
   g_assert_cmpint (pos, ==, 3);
 
   data1.count = 0;
@@ -147,10 +147,10 @@ test_insert (void)
                     G_CALLBACK (changed), &data6);
 
   pos = 0;
-  ctk_editable_insert_text (GTK_EDITABLE (entry), "foo", -1, &pos);
+  ctk_editable_insert_text (CTK_EDITABLE (entry), "foo", -1, &pos);
   g_assert_cmpint (pos, ==, 3);
 
-  pos = ctk_editable_get_position (GTK_EDITABLE (entry));
+  pos = ctk_editable_get_position (CTK_EDITABLE (entry));
   g_assert_cmpint (pos, ==, 6);
 
   /* Check that notification for ::text, ::cursor-position and
@@ -224,9 +224,9 @@ test_delete (void)
   entry = ctk_entry_new ();
   g_object_ref_sink (entry);
 
-  ctk_entry_set_text (GTK_ENTRY (entry), "foobar");
-  ctk_editable_set_position (GTK_EDITABLE (entry), -1);
-  pos = ctk_editable_get_position (GTK_EDITABLE (entry));
+  ctk_entry_set_text (CTK_ENTRY (entry), "foobar");
+  ctk_editable_set_position (CTK_EDITABLE (entry), -1);
+  pos = ctk_editable_get_position (CTK_EDITABLE (entry));
   g_assert_cmpint (pos, ==, 6);
 
   data1.count = 0;
@@ -248,9 +248,9 @@ test_delete (void)
   g_signal_connect (entry, "changed",
                     G_CALLBACK (changed), &data6);
 
-  ctk_editable_delete_text (GTK_EDITABLE (entry), 0, 3);
+  ctk_editable_delete_text (CTK_EDITABLE (entry), 0, 3);
 
-  pos = ctk_editable_get_position (GTK_EDITABLE (entry));
+  pos = ctk_editable_get_position (CTK_EDITABLE (entry));
   g_assert_cmpint (pos, ==, 3);
 
   /* Check that notification for ::text, ::cursor-position and

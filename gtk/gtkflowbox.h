@@ -22,10 +22,10 @@
  *      William Jon McCann <jmccann@redhat.com>
  */
 
-#ifndef __GTK_FLOW_BOX_H__
-#define __GTK_FLOW_BOX_H__
+#ifndef __CTK_FLOW_BOX_H__
+#define __CTK_FLOW_BOX_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_FLOW_BOX                  (ctk_flow_box_get_type ())
-#define GTK_FLOW_BOX(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FLOW_BOX, GtkFlowBox))
-#define GTK_FLOW_BOX_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FLOW_BOX, GtkFlowBoxClass))
-#define GTK_IS_FLOW_BOX(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FLOW_BOX))
-#define GTK_IS_FLOW_BOX_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FLOW_BOX))
-#define GTK_FLOW_BOX_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FLOW_BOX, GtkFlowBoxClass))
+#define CTK_TYPE_FLOW_BOX                  (ctk_flow_box_get_type ())
+#define CTK_FLOW_BOX(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FLOW_BOX, GtkFlowBox))
+#define CTK_FLOW_BOX_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FLOW_BOX, GtkFlowBoxClass))
+#define CTK_IS_FLOW_BOX(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FLOW_BOX))
+#define CTK_IS_FLOW_BOX_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FLOW_BOX))
+#define CTK_FLOW_BOX_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FLOW_BOX, GtkFlowBoxClass))
 
 typedef struct _GtkFlowBox            GtkFlowBox;
 typedef struct _GtkFlowBoxClass       GtkFlowBoxClass;
@@ -76,12 +76,12 @@ struct _GtkFlowBoxClass
   void (*_ctk_reserved6) (void);
 };
 
-#define GTK_TYPE_FLOW_BOX_CHILD            (ctk_flow_box_child_get_type ())
-#define GTK_FLOW_BOX_CHILD(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FLOW_BOX_CHILD, GtkFlowBoxChild))
-#define GTK_FLOW_BOX_CHILD_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FLOW_BOX_CHILD, GtkFlowBoxChildClass))
-#define GTK_IS_FLOW_BOX_CHILD(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FLOW_BOX_CHILD))
-#define GTK_IS_FLOW_BOX_CHILD_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FLOW_BOX_CHILD))
-#define GTK_FLOW_BOX_CHILD_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), EG_TYPE_FLOW_BOX_CHILD, GtkFlowBoxChildClass))
+#define CTK_TYPE_FLOW_BOX_CHILD            (ctk_flow_box_child_get_type ())
+#define CTK_FLOW_BOX_CHILD(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FLOW_BOX_CHILD, GtkFlowBoxChild))
+#define CTK_FLOW_BOX_CHILD_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FLOW_BOX_CHILD, GtkFlowBoxChildClass))
+#define CTK_IS_FLOW_BOX_CHILD(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FLOW_BOX_CHILD))
+#define CTK_IS_FLOW_BOX_CHILD_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FLOW_BOX_CHILD))
+#define CTK_FLOW_BOX_CHILD_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), EG_TYPE_FLOW_BOX_CHILD, GtkFlowBoxChildClass))
 
 struct _GtkFlowBoxChild
 {
@@ -244,4 +244,4 @@ void                  ctk_flow_box_invalidate_sort              (GtkFlowBox     
 G_END_DECLS
 
 
-#endif /* __GTK_FLOW_BOX_H__ */
+#endif /* __CTK_FLOW_BOX_H__ */

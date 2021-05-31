@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ENTRY_COMPLETION_H__
-#define __GTK_ENTRY_COMPLETION_H__
+#ifndef __CTK_ENTRY_COMPLETION_H__
+#define __CTK_ENTRY_COMPLETION_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ENTRY_COMPLETION            (ctk_entry_completion_get_type ())
-#define GTK_ENTRY_COMPLETION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ENTRY_COMPLETION, GtkEntryCompletion))
-#define GTK_ENTRY_COMPLETION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ENTRY_COMPLETION, GtkEntryCompletionClass))
-#define GTK_IS_ENTRY_COMPLETION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ENTRY_COMPLETION))
-#define GTK_IS_ENTRY_COMPLETION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ENTRY_COMPLETION))
-#define GTK_ENTRY_COMPLETION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ENTRY_COMPLETION, GtkEntryCompletionClass))
+#define CTK_TYPE_ENTRY_COMPLETION            (ctk_entry_completion_get_type ())
+#define CTK_ENTRY_COMPLETION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ENTRY_COMPLETION, GtkEntryCompletion))
+#define CTK_ENTRY_COMPLETION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ENTRY_COMPLETION, GtkEntryCompletionClass))
+#define CTK_IS_ENTRY_COMPLETION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ENTRY_COMPLETION))
+#define CTK_IS_ENTRY_COMPLETION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ENTRY_COMPLETION))
+#define CTK_ENTRY_COMPLETION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ENTRY_COMPLETION, GtkEntryCompletionClass))
 
 typedef struct _GtkEntryCompletion            GtkEntryCompletion;
 typedef struct _GtkEntryCompletionClass       GtkEntryCompletionClass;
@@ -54,7 +54,7 @@ typedef struct _GtkEntryCompletionPrivate     GtkEntryCompletionPrivate;
  * Note that @key is normalized and case-folded (see g_utf8_normalize()
  * and g_utf8_casefold()). If this is not appropriate, match functions
  * have access to the unmodified key via
- * `ctk_entry_get_text (GTK_ENTRY (ctk_entry_completion_get_entry ()))`.
+ * `ctk_entry_get_text (CTK_ENTRY (ctk_entry_completion_get_entry ()))`.
  *
  * Returns: %TRUE if @iter should be displayed as a possible completion
  *     for @key
@@ -179,4 +179,4 @@ gint                ctk_entry_completion_get_text_column        (GtkEntryComplet
 
 G_END_DECLS
 
-#endif /* __GTK_ENTRY_COMPLETION_H__ */
+#endif /* __CTK_ENTRY_COMPLETION_H__ */

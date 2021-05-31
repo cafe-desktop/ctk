@@ -1479,15 +1479,15 @@ msgstr "Büyük Harif Kiliti (Caps Lock) faaldir"
 #. *   GtkWidget *button;
 #. *
 #. *   button = ctk_file_chooser_button_new (_("Select a file"),
-#. *                                         GTK_FILE_CHOOSER_ACTION_OPEN);
-#. *   ctk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (button),
+#. *                                         CTK_FILE_CHOOSER_ACTION_OPEN);
+#. *   ctk_file_chooser_set_current_folder (CTK_FILE_CHOOSER (button),
 #. *                                        "/etc");
 #. * }
 #. * </programlisting>
 #. * </example>
 #. *
 #. * The #GtkFileChooserButton supports the #GtkFileChooserAction<!-- -->s
-#. * %GTK_FILE_CHOOSER_ACTION_OPEN and %GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER.
+#. * %CTK_FILE_CHOOSER_ACTION_OPEN and %CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER.
 #. *
 #. * <important>
 #. * The #GtkFileChooserButton will ellipsize the label,

@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ACCESSIBILITY_UTIL_H__
-#define __GTK_ACCESSIBILITY_UTIL_H__
+#ifndef __CTK_ACCESSIBILITY_UTIL_H__
+#define __CTK_ACCESSIBILITY_UTIL_H__
 
 #include <atk/atk.h>
 
@@ -26,4 +26,4 @@ void _ctk_accessibility_override_atk_util (void);
 
 G_END_DECLS
 
-#endif /* __GTK_ACCESSIBILITY_UTIL_H__ */
+#endif /* __CTK_ACCESSIBILITY_UTIL_H__ */

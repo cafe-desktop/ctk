@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ICON_THEME_PRIVATE_H__
-#define __GTK_ICON_THEME_PRIVATE_H__
+#ifndef __CTK_ICON_THEME_PRIVATE_H__
+#define __CTK_ICON_THEME_PRIVATE_H__
 
 #include <gtk/gtkicontheme.h>
 #include <gtk/gtkcssstyleprivate.h>
@@ -38,4 +38,4 @@ GdkPixbuf * ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
                                                   const GdkRGBA *error_color);
 
 
-#endif /* __GTK_ICON_THEME_PRIVATE_H__ */
+#endif /* __CTK_ICON_THEME_PRIVATE_H__ */

@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_A11Y_H__
-#define __GTK_A11Y_H__
+#ifndef __CTK_A11Y_H__
+#define __CTK_A11Y_H__
 
-#define __GTK_A11Y_H_INSIDE__
+#define __CTK_A11Y_H_INSIDE__
 
 #include <gtk/gtk.h>
 #include <gtk/a11y/gtkarrowaccessible.h>
@@ -84,6 +84,6 @@
 
 #include <gtk/a11y/gtk-a11y-autocleanups.h>
 
-#undef __GTK_A11Y_H_INSIDE__
+#undef __CTK_A11Y_H_INSIDE__
 
-#endif /* __GTK_A11Y_H__ */
+#endif /* __CTK_A11Y_H__ */

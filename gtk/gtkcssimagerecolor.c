@@ -28,14 +28,14 @@
 
 #include "gtkstyleproviderprivate.h"
 
-G_DEFINE_TYPE (GtkCssImageRecolor, _ctk_css_image_recolor, GTK_TYPE_CSS_IMAGE_URL)
+G_DEFINE_TYPE (GtkCssImageRecolor, _ctk_css_image_recolor, CTK_TYPE_CSS_IMAGE_URL)
 
 static void
 ctk_css_image_recolor_print (GtkCssImage *image,
                              GString     *string)
 {
-  GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (image);
-  GtkCssImageRecolor *recolor = GTK_CSS_IMAGE_RECOLOR (image);
+  GtkCssImageUrl *url = CTK_CSS_IMAGE_URL (image);
+  GtkCssImageRecolor *recolor = CTK_CSS_IMAGE_RECOLOR (image);
   char *uri;
 
   g_string_append (string, "-gtk-recolor(url(");
@@ -54,7 +54,7 @@ ctk_css_image_recolor_print (GtkCssImage *image,
 static void
 ctk_css_image_recolor_dispose (GObject *object)
 {
-  GtkCssImageRecolor *recolor = GTK_CSS_IMAGE_RECOLOR (object);
+  GtkCssImageRecolor *recolor = CTK_CSS_IMAGE_RECOLOR (object);
 
   if (recolor->palette)
     {
@@ -76,7 +76,7 @@ lookup_symbolic_colors (GtkCssStyle *style,
   GtkCssValue *color;
   const GdkRGBA *lookup;
 
-  color = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR);
+  color = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_COLOR);
   *color_out = *_ctk_css_rgba_value_get_rgba (color);
 
   lookup = ctk_css_palette_value_get_color (palette, "success");
@@ -105,7 +105,7 @@ ctk_css_image_recolor_load (GtkCssImageRecolor  *recolor,
                             gint                 scale,
                             GError             **gerror)
 {
-  GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (recolor);
+  GtkCssImageUrl *url = CTK_CSS_IMAGE_URL (recolor);
   GtkIconInfo *info;
   GdkRGBA fg, success, warning, error;
   GdkPixbuf *pixbuf;
@@ -128,8 +128,8 @@ ctk_css_image_recolor_load (GtkCssImageRecolor  *recolor,
 
           uri = g_file_get_uri (url->file);
           g_set_error (gerror,
-                       GTK_CSS_PROVIDER_ERROR,
-                       GTK_CSS_PROVIDER_ERROR_FAILED,
+                       CTK_CSS_PROVIDER_ERROR,
+                       CTK_CSS_PROVIDER_ERROR_FAILED,
                        "Error loading image '%s': %s", uri, local_error->message);
           g_error_free (local_error);
           g_free (uri);
@@ -154,7 +154,7 @@ ctk_css_image_recolor_compute (GtkCssImage             *image,
                                GtkCssStyle             *style,
                                GtkCssStyle             *parent_style)
 {
-  GtkCssImageRecolor *recolor = GTK_CSS_IMAGE_RECOLOR (image);
+  GtkCssImageRecolor *recolor = CTK_CSS_IMAGE_RECOLOR (image);
   GtkCssValue *palette;
   GtkCssImage *img;
   int scale;
@@ -165,7 +165,7 @@ ctk_css_image_recolor_compute (GtkCssImage             *image,
   if (recolor->palette)
     palette = _ctk_css_value_compute (recolor->palette, property_id, provider, style, parent_style);
   else
-    palette = _ctk_css_value_ref (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_PALETTE));
+    palette = _ctk_css_value_ref (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_PALETTE));
 
   img = ctk_css_image_recolor_load (recolor, style, palette, scale, &error);
 
@@ -185,8 +185,8 @@ static gboolean
 ctk_css_image_recolor_parse (GtkCssImage  *image,
                              GtkCssParser *parser)
 {
-  GtkCssImageUrl *url = GTK_CSS_IMAGE_URL (image);
-  GtkCssImageRecolor *recolor = GTK_CSS_IMAGE_RECOLOR (image);
+  GtkCssImageUrl *url = CTK_CSS_IMAGE_URL (image);
+  GtkCssImageRecolor *recolor = CTK_CSS_IMAGE_RECOLOR (image);
 
   if (!_ctk_css_parser_try (parser, "-gtk-recolor", TRUE))
     {
@@ -230,7 +230,7 @@ ctk_css_image_recolor_parse (GtkCssImage  *image,
 static void
 _ctk_css_image_recolor_class_init (GtkCssImageRecolorClass *klass)
 {
-  GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
+  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   image_class->parse = ctk_css_image_recolor_parse;

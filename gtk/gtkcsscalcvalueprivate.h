@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_CALC_VALUE_PRIVATE_H__
-#define __GTK_CSS_CALC_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_CALC_VALUE_PRIVATE_H__
+#define __CTK_CSS_CALC_VALUE_PRIVATE_H__
 
 #include "gtkcssnumbervalueprivate.h"
 
@@ -30,4 +30,4 @@ GtkCssValue *   ctk_css_calc_value_parse            (GtkCssParser           *par
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_CALC_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_CALC_VALUE_PRIVATE_H__ */

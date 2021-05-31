@@ -3,14 +3,14 @@ include $(top_srcdir)/Makefile.decl
 NULL =
 
 AM_CPPFLAGS = \
-	-DGTK_LOCALEDIR=\"$(localedir)\"\
+	-DCTK_LOCALEDIR=\"$(localedir)\"\
 	-I$(top_srcdir)			\
 	-I$(top_builddir)/gdk		\
 	-I$(top_srcdir)/gdk		\
 	-I$(top_builddir)/gtk		\
 	-I$(top_srcdir)/gtk		\
-	$(GTK_DEBUG_FLAGS)		\
-	$(GTK_DEP_CFLAGS)
+	$(CTK_DEBUG_FLAGS)		\
+	$(CTK_DEP_CFLAGS)
 
 if OS_UNIX
 AM_CPPFLAGS += -DHAVE_UNIX_PRINT_WIDGETS
@@ -22,7 +22,7 @@ DEPS = \
 LDADD = \
 	$(top_builddir)/gtk/libgtk-3.la	\
 	$(top_builddir)/gdk/libgdk-3.la	\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 BUILT_SOURCES =
 
@@ -115,8 +115,8 @@ treemodel_SOURCES = 		\
 
 builder_LDFLAGS = -export-dynamic
 
-rbtree_CFLAGS  = -DGTK_COMPILATION -UG_ENABLE_DEBUG
-rbtree_LDADD = $(GTK_DEP_LIBS)
+rbtree_CFLAGS  = -DCTK_COMPILATION -UG_ENABLE_DEBUG
+rbtree_LDADD = $(CTK_DEP_LIBS)
 rbtree_SOURCES = 			\
 	rbtree.c 			\
 	gtkrbtree.c			\
@@ -127,8 +127,8 @@ gtkrbtree.c: $(top_srcdir)/gtk/gtkrbtree.c
 
 CLEANFILES += gtkrbtree.c
 
-bitmask_CFLAGS  = -DGTK_COMPILATION -UG_ENABLE_DEBUG
-bitmask_LDADD = $(GTK_DEP_LIBS)
+bitmask_CFLAGS  = -DCTK_COMPILATION -UG_ENABLE_DEBUG
+bitmask_LDADD = $(CTK_DEP_LIBS)
 bitmask_SOURCES = 			\
 	bitmask.c 			\
 	gtkallocatedbitmask.c		\
@@ -140,11 +140,11 @@ gtkallocatedbitmask.c: $(top_srcdir)/gtk/gtkallocatedbitmask.c
 CLEANFILES += gtkallocatedbitmask.c
 
 keyhash_CFLAGS =					\
-	-DGTK_COMPILATION 				\
-	-DGTK_LIBDIR=\"$(libdir)\" 			\
-	-DGTK_DATADIR=\"$(datadir)\" 			\
-	-DGTK_DATA_PREFIX=\"$(prefix)\" 		\
-	-DGTK_SYSCONFDIR=\"$(sysconfdir)\"		\
+	-DCTK_COMPILATION 				\
+	-DCTK_LIBDIR=\"$(libdir)\" 			\
+	-DCTK_DATADIR=\"$(datadir)\" 			\
+	-DCTK_DATA_PREFIX=\"$(prefix)\" 		\
+	-DCTK_SYSCONFDIR=\"$(sysconfdir)\"		\
 	$(NULL)
 
 keyhash_SOURCES	=		\
@@ -269,7 +269,7 @@ EXTRA_DIST +=				\
 	gtk.test.in \
 	$(NULL)
 
-GTK_GSETTINGS_SCHEMAS = \
+CTK_GSETTINGS_SCHEMAS = \
 	$(top_srcdir)/gtk/org.gtk.Settings.ColorChooser.gschema.xml \
 	$(top_srcdir)/gtk/org.gtk.Settings.FileChooser.gschema.xml \
 	$(NULL)
@@ -278,9 +278,9 @@ BUILT_SOURCES += gschemas.compiled
 
 CLEANFILES += gschemas.compiled
 
-gschemas.compiled: $(GTK_GSETTINGS_SCHEMAS)
+gschemas.compiled: $(CTK_GSETTINGS_SCHEMAS)
 	$(AM_V_GEN) $(GLIB_COMPILE_SCHEMAS) \
-		$(addprefix --schema-file=,$(GTK_GSETTINGS_SCHEMAS)) \
+		$(addprefix --schema-file=,$(CTK_GSETTINGS_SCHEMAS)) \
 		--targetdir=$(builddir)
 
 all-am: gschemas.compiled

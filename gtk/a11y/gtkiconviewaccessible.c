@@ -28,9 +28,9 @@
 #include "gtk/gtkpango.h"
 #include "gtk/gtkwidgetprivate.h"
 
-#define GTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE      (_ctk_icon_view_item_accessible_get_type ())
-#define GTK_ICON_VIEW_ITEM_ACCESSIBLE(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE, GtkIconViewItemAccessible))
-#define GTK_IS_ICON_VIEW_ITEM_ACCESSIBLE(obj)   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE))
+#define CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE      (_ctk_icon_view_item_accessible_get_type ())
+#define CTK_ICON_VIEW_ITEM_ACCESSIBLE(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE, GtkIconViewItemAccessible))
+#define CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE(obj)   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE))
 
 struct _GtkIconViewAccessiblePrivate
 {
@@ -80,12 +80,12 @@ idle_do_action (gpointer data)
   GtkIconView *icon_view;
   GtkTreePath *path;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (data);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (data);
   item->action_idle_handler = 0;
 
   if (item->widget != NULL)
     {
-      icon_view = GTK_ICON_VIEW (item->widget);
+      icon_view = CTK_ICON_VIEW (item->widget);
       path = ctk_tree_path_new_from_indices (item->item->index, -1);
       ctk_icon_view_item_activated (icon_view, path);
       ctk_tree_path_free (path);
@@ -103,9 +103,9 @@ ctk_icon_view_item_accessible_do_action (AtkAction *action,
   if (i != 0)
     return FALSE;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (action);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (action);
 
-  if (!GTK_IS_ICON_VIEW (item->widget))
+  if (!CTK_IS_ICON_VIEW (item->widget))
     return FALSE;
 
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
@@ -135,7 +135,7 @@ ctk_icon_view_item_accessible_get_description (AtkAction *action,
   if (i != 0)
     return NULL;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (action);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (action);
 
   if (item->action_description)
     return item->action_description;
@@ -163,7 +163,7 @@ ctk_icon_view_item_accessible_set_description (AtkAction   *action,
   if (i != 0)
     return FALSE;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (action);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (action);
 
   g_free (item->action_description);
   item->action_description = g_strdup (description);
@@ -186,7 +186,7 @@ ctk_icon_view_item_accessible_get_image_description (AtkImage *image)
 {
   GtkIconViewItemAccessible *item;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
 
   return item->image_description;
 }
@@ -197,7 +197,7 @@ ctk_icon_view_item_accessible_set_image_description (AtkImage    *image,
 {
   GtkIconViewItemAccessible *item;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
 
   g_free (item->image_description);
   item->image_description = g_strdup (description);
@@ -216,7 +216,7 @@ get_pixbuf_foreach (GtkCellRenderer    *renderer,
                     const GdkRectangle *cell_background,
                     GetPixbufBoxData   *data)
 {
-  if (GTK_IS_CELL_RENDERER_PIXBUF (renderer))
+  if (CTK_IS_CELL_RENDERER_PIXBUF (renderer))
     {
       data->box = *cell_area;
       data->pixbuf_found = TRUE;
@@ -236,7 +236,7 @@ get_pixbuf_box (GtkIconView     *icon_view,
 
   _ctk_icon_view_set_cell_data (icon_view, item);
   ctk_cell_area_foreach_alloc (icon_view->priv->cell_area, context,
-                               GTK_WIDGET (icon_view),
+                               CTK_WIDGET (icon_view),
                                &item->cell_area, &item->cell_area,
                                (GtkCellAllocCallback)get_pixbuf_foreach, &data);
 
@@ -249,7 +249,7 @@ static gboolean
 get_text_foreach (GtkCellRenderer  *renderer,
                   gchar           **text)
 {
-  if (GTK_IS_CELL_RENDERER_TEXT (renderer))
+  if (CTK_IS_CELL_RENDERER_TEXT (renderer))
     {
       g_object_get (renderer, "text", text, NULL);
       return TRUE;
@@ -278,9 +278,9 @@ ctk_icon_view_item_accessible_get_image_size (AtkImage *image,
   GtkIconViewItemAccessible *item;
   GdkRectangle box;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
 
-  if (!GTK_IS_ICON_VIEW (item->widget))
+  if (!CTK_IS_ICON_VIEW (item->widget))
     return;
 
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
@@ -289,7 +289,7 @@ ctk_icon_view_item_accessible_get_image_size (AtkImage *image,
   *width = 0;
   *height = 0;
 
-  if (get_pixbuf_box (GTK_ICON_VIEW (item->widget), item->item, &box))
+  if (get_pixbuf_box (CTK_ICON_VIEW (item->widget), item->item, &box))
     {
       *width = box.width;
       *height = box.height;
@@ -305,9 +305,9 @@ ctk_icon_view_item_accessible_get_image_position (AtkImage    *image,
   GtkIconViewItemAccessible *item;
   GdkRectangle box;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
 
-  if (!GTK_IS_ICON_VIEW (item->widget))
+  if (!CTK_IS_ICON_VIEW (item->widget))
     return;
 
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
@@ -316,7 +316,7 @@ ctk_icon_view_item_accessible_get_image_position (AtkImage    *image,
   atk_component_get_extents (ATK_COMPONENT (image), x, y, NULL, NULL,
                              coord_type);
 
-  if (get_pixbuf_box (GTK_ICON_VIEW (item->widget), item->item, &box))
+  if (get_pixbuf_box (CTK_ICON_VIEW (item->widget), item->item, &box))
     {
       *x+= box.x - item->item->cell_area.x;
       *y+= box.y - item->item->cell_area.y;
@@ -340,7 +340,7 @@ ctk_icon_view_item_accessible_get_text (AtkText *text,
 {
   GtkIconViewItemAccessible *item;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
     return NULL;
 
@@ -358,7 +358,7 @@ ctk_icon_view_item_accessible_get_character_at_offset (AtkText *text,
   gchar *string;
   gchar *index;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
     return '\0';
 
@@ -396,7 +396,7 @@ ctk_icon_view_item_accessible_get_text_before_offset (AtkText         *atk_text,
   PangoLayout *layout;
   gchar *text;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (atk_text);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (atk_text);
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
     return NULL;
 
@@ -418,7 +418,7 @@ ctk_icon_view_item_accessible_get_text_at_offset (AtkText         *atk_text,
   PangoLayout *layout;
   gchar *text;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (atk_text);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (atk_text);
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
     return NULL;
 
@@ -440,7 +440,7 @@ ctk_icon_view_item_accessible_get_text_after_offset (AtkText         *atk_text,
   PangoLayout *layout;
   gchar *text;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (atk_text);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (atk_text);
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
     return NULL;
 
@@ -456,7 +456,7 @@ ctk_icon_view_item_accessible_get_character_count (AtkText *text)
 {
   GtkIconViewItemAccessible *item;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
     return 0;
 
@@ -483,16 +483,16 @@ ctk_icon_view_item_accessible_get_character_extents (AtkText      *text,
   gint index;
 #endif
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
 
-  if (!GTK_IS_ICON_VIEW (item->widget))
+  if (!CTK_IS_ICON_VIEW (item->widget))
     return;
 
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
     return;
 
 #if 0
-  icon_view = GTK_ICON_VIEW (item->widget);
+  icon_view = CTK_ICON_VIEW (item->widget);
       /* FIXME we probably have to use GailTextCell to salvage this */
   ctk_icon_view_update_item_text (icon_view, item->item);
   item_text = pango_layout_get_text (icon_view->priv->layout);
@@ -524,16 +524,16 @@ ctk_icon_view_item_accessible_get_offset_at_point (AtkText      *text,
   gint l_x, l_y;
 #endif
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (text);
 
-  if (!GTK_IS_ICON_VIEW (item->widget))
+  if (!CTK_IS_ICON_VIEW (item->widget))
     return -1;
 
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
     return -1;
 
 #if 0
-  icon_view = GTK_ICON_VIEW (item->widget);
+  icon_view = CTK_ICON_VIEW (item->widget);
       /* FIXME we probably have to use GailTextCell to salvage this */
   ctk_icon_view_update_item_text (icon_view, item->item);
   atk_component_get_position (ATK_COMPONENT (text), &l_x, &l_y, coord_type);
@@ -584,10 +584,10 @@ ctk_icon_view_item_accessible_get_extents (AtkComponent *component,
   AtkObject *parent_obj;
   gint l_x, l_y;
 
-  g_return_if_fail (GTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (component));
+  g_return_if_fail (CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (component));
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (component);
-  if (!GTK_IS_WIDGET (item->widget))
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (component);
+  if (!CTK_IS_WIDGET (item->widget))
     return;
 
   if (atk_state_set_contains_state (item->state_set, ATK_STATE_DEFUNCT))
@@ -616,19 +616,19 @@ ctk_icon_view_item_accessible_grab_focus (AtkComponent *component)
   GtkIconViewItemAccessible *item;
   GtkWidget *toplevel;
 
-  g_return_val_if_fail (GTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (component), FALSE);
+  g_return_val_if_fail (CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (component), FALSE);
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (component);
-  if (!GTK_IS_WIDGET (item->widget))
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (component);
+  if (!CTK_IS_WIDGET (item->widget))
     return FALSE;
 
   ctk_widget_grab_focus (item->widget);
-  _ctk_icon_view_set_cursor_item (GTK_ICON_VIEW (item->widget), item->item, NULL);
-  toplevel = ctk_widget_get_toplevel (GTK_WIDGET (item->widget));
+  _ctk_icon_view_set_cursor_item (CTK_ICON_VIEW (item->widget), item->item, NULL);
+  toplevel = ctk_widget_get_toplevel (CTK_WIDGET (item->widget));
   if (ctk_widget_is_toplevel (toplevel))
     {
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      ctk_window_present (GTK_WINDOW (toplevel));
+      ctk_window_present (CTK_WINDOW (toplevel));
       G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
@@ -706,7 +706,7 @@ ctk_icon_view_item_accessible_is_showing (GtkIconViewItemAccessible *item)
   /* An item is considered "SHOWING" if any part of the item
    * is in the visible rectangle.
    */
-  if (!GTK_IS_ICON_VIEW (item->widget))
+  if (!CTK_IS_ICON_VIEW (item->widget))
     return FALSE;
 
   if (item->item == NULL)
@@ -714,7 +714,7 @@ ctk_icon_view_item_accessible_is_showing (GtkIconViewItemAccessible *item)
 
   ctk_widget_get_allocation (item->widget, &allocation);
 
-  icon_view = GTK_ICON_VIEW (item->widget);
+  icon_view = CTK_ICON_VIEW (item->widget);
   visible_rect.x = 0;
   if (icon_view->priv->hadjustment)
     visible_rect.x += ctk_adjustment_get_value (icon_view->priv->hadjustment);
@@ -769,7 +769,7 @@ _ctk_icon_view_item_accessible_finalize (GObject *object)
 {
   GtkIconViewItemAccessible *item;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (object);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (object);
 
   if (item->widget)
     g_object_remove_weak_pointer (G_OBJECT (item->widget), (gpointer) &item->widget);
@@ -796,8 +796,8 @@ _ctk_icon_view_item_accessible_get_parent (AtkObject *obj)
 {
   GtkIconViewItemAccessible *item;
 
-  g_return_val_if_fail (GTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (obj), NULL);
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
+  g_return_val_if_fail (CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (obj), NULL);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
 
   if (item->widget)
     return ctk_widget_get_accessible (item->widget);
@@ -810,8 +810,8 @@ _ctk_icon_view_item_accessible_get_index_in_parent (AtkObject *obj)
 {
   GtkIconViewItemAccessible *item;
 
-  g_return_val_if_fail (GTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (obj), 0);
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
+  g_return_val_if_fail (CTK_IS_ICON_VIEW_ITEM_ACCESSIBLE (obj), 0);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
 
   return item->item->index;
 }
@@ -822,13 +822,13 @@ _ctk_icon_view_item_accessible_ref_state_set (AtkObject *obj)
   GtkIconViewItemAccessible *item;
   GtkIconView *icon_view;
 
-  item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
+  item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
   g_return_val_if_fail (item->state_set, NULL);
 
   if (!item->widget)
     return NULL;
 
-  icon_view = GTK_ICON_VIEW (item->widget);
+  icon_view = CTK_ICON_VIEW (item->widget);
   if (icon_view->priv->cursor_item == item->item)
     atk_state_set_add_state (item->state_set, ATK_STATE_FOCUSED);
   else
@@ -860,7 +860,7 @@ _ctk_icon_view_item_accessible_class_init (GtkIconViewItemAccessibleClass *klass
 static void atk_component_interface_init (AtkComponentIface *iface);
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkIconViewAccessible, ctk_icon_view_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkIconViewAccessible, ctk_icon_view_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkIconViewAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
@@ -903,11 +903,11 @@ ctk_icon_view_accessible_get_n_children (AtkObject *accessible)
   GtkIconView *icon_view;
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (!widget)
       return 0;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
 
   return g_list_length (icon_view->priv->items);
 }
@@ -943,11 +943,11 @@ ctk_icon_view_accessible_ref_child (AtkObject *accessible,
   AtkObject *obj;
   GtkIconViewItemAccessible *a11y_item;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (!widget)
     return NULL;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
   icons = g_list_nth (icon_view->priv->items, index);
   obj = NULL;
   if (icons)
@@ -958,10 +958,10 @@ ctk_icon_view_accessible_ref_child (AtkObject *accessible,
       obj = ctk_icon_view_accessible_find_child (accessible, index);
       if (!obj)
         {
-          obj = g_object_new (GTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE, NULL);
+          obj = g_object_new (CTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE, NULL);
           ctk_icon_view_item_accessible_info_new (accessible, obj, index);
           obj->role = ATK_ROLE_ICON;
-          a11y_item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
+          a11y_item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (obj);
           a11y_item->item = item;
           a11y_item->widget = widget;
 
@@ -989,7 +989,7 @@ ctk_icon_view_accessible_traverse_items (GtkIconViewAccessible *view,
       GtkWidget *widget;
       gboolean act_on_item;
 
-      widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (view));
+      widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (view));
       if (widget == NULL)
         return;
 
@@ -1001,7 +1001,7 @@ ctk_icon_view_accessible_traverse_items (GtkIconViewAccessible *view,
         {
 
           info = (GtkIconViewItemAccessibleInfo *)items->data;
-          item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
+          item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
 
           if (act_on_item == FALSE && list == items)
             act_on_item = TRUE;
@@ -1019,7 +1019,7 @@ _ctk_icon_view_accessible_adjustment_changed (GtkIconView *icon_view)
 {
   GtkIconViewAccessible *view;
 
-  view = GTK_ICON_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (GTK_WIDGET (icon_view)));
+  view = CTK_ICON_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (CTK_WIDGET (icon_view)));
   if (view == NULL)
     return;
 
@@ -1040,15 +1040,15 @@ ctk_icon_view_accessible_model_row_changed (GtkTreeModel *tree_model,
   GtkIconViewItemAccessible *a11y_item;
   const gchar *name;
 
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (user_data));
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (user_data));
   index = ctk_tree_path_get_indices(path)[0];
-  a11y_item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (
+  a11y_item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (
       ctk_icon_view_accessible_find_child (atk_obj, index));
 
   if (a11y_item)
     {
-      widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (atk_obj));
-      icon_view = GTK_ICON_VIEW (widget);
+      widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (atk_obj));
+      icon_view = CTK_ICON_VIEW (widget);
       item = a11y_item->item;
 
       name = atk_object_get_name (ATK_OBJECT (a11y_item));
@@ -1079,15 +1079,15 @@ ctk_icon_view_accessible_model_row_inserted (GtkTreeModel *tree_model,
   gint index;
 
   index = ctk_tree_path_get_indices(path)[0];
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (user_data));
-  view = GTK_ICON_VIEW_ACCESSIBLE (atk_obj);
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (user_data));
+  view = CTK_ICON_VIEW_ACCESSIBLE (atk_obj);
 
   items = view->priv->items;
   tmp_list = NULL;
   while (items)
     {
       info = items->data;
-      item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
+      item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
       if (info->index != item->item->index)
         {
           if (info->index < index)
@@ -1122,8 +1122,8 @@ ctk_icon_view_accessible_model_row_deleted (GtkTreeModel *tree_model,
   gint index;
 
   index = ctk_tree_path_get_indices(path)[0];
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (user_data));
-  view = GTK_ICON_VIEW_ACCESSIBLE (atk_obj);
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (user_data));
+  view = CTK_ICON_VIEW_ACCESSIBLE (atk_obj);
 
   items = view->priv->items;
   tmp_list = NULL;
@@ -1132,7 +1132,7 @@ ctk_icon_view_accessible_model_row_deleted (GtkTreeModel *tree_model,
   while (items)
     {
       info = items->data;
-      item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
+      item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
       if (info->index == index)
         {
           deleted_item = items;
@@ -1150,7 +1150,7 @@ ctk_icon_view_accessible_model_row_deleted (GtkTreeModel *tree_model,
   if (deleted_item)
     {
       info = deleted_item->data;
-      ctk_icon_view_item_accessible_add_state (GTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item), ATK_STATE_DEFUNCT, TRUE);
+      ctk_icon_view_item_accessible_add_state (CTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item), ATK_STATE_DEFUNCT, TRUE);
       g_signal_emit_by_name (atk_obj, "children-changed::remove",
                              index, NULL, NULL);
       view->priv->items = g_list_delete_link (view->priv->items, deleted_item);
@@ -1185,8 +1185,8 @@ ctk_icon_view_accessible_model_rows_reordered (GtkTreeModel *tree_model,
   gint *order;
   gint length, i;
 
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (user_data));
-  icon_view = GTK_ICON_VIEW (user_data);
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (user_data));
+  icon_view = CTK_ICON_VIEW (user_data);
   view = (GtkIconViewAccessible*)atk_obj;
 
   length = ctk_tree_model_iter_n_children (tree_model, NULL);
@@ -1199,7 +1199,7 @@ ctk_icon_view_accessible_model_rows_reordered (GtkTreeModel *tree_model,
   while (items)
     {
       info = items->data;
-      item = GTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
+      item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item);
       info->index = order[info->index];
       item->item = g_list_nth_data (icon_view->priv->items, info->index);
       items = items->next;
@@ -1254,7 +1254,7 @@ ctk_icon_view_accessible_clear_cache (GtkIconViewAccessible *view)
   while (items)
     {
       info = (GtkIconViewItemAccessibleInfo *) items->data;
-      ctk_icon_view_item_accessible_add_state (GTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item), ATK_STATE_DEFUNCT, TRUE);
+      ctk_icon_view_item_accessible_add_state (CTK_ICON_VIEW_ITEM_ACCESSIBLE (info->item), ATK_STATE_DEFUNCT, TRUE);
       g_object_unref (info->item);
       g_free (items->data);
       items = items->next;
@@ -1274,7 +1274,7 @@ ctk_icon_view_accessible_notify_gtk (GObject    *obj,
 
   if (strcmp (pspec->name, "model") == 0)
     {
-      widget = GTK_WIDGET (obj);
+      widget = CTK_WIDGET (obj);
       atk_obj = ctk_widget_get_accessible (widget);
       view = (GtkIconViewAccessible*)atk_obj;
       if (view->priv->model)
@@ -1285,7 +1285,7 @@ ctk_icon_view_accessible_notify_gtk (GObject    *obj,
         }
       ctk_icon_view_accessible_clear_cache (view);
 
-      icon_view = GTK_ICON_VIEW (obj);
+      icon_view = CTK_ICON_VIEW (obj);
       view->priv->model = icon_view->priv->model;
       /* If there is no model the GtkIconView is probably being destroyed */
       if (view->priv->model)
@@ -1367,11 +1367,11 @@ ctk_icon_view_accessible_ref_accessible_at_point (AtkComponent *component,
   GtkIconViewItem *item;
   gint x_pos, y_pos;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
     return NULL;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
   atk_component_get_extents (component, &x_pos, &y_pos, NULL, NULL, coord_type);
   item = _ctk_icon_view_get_item_at_coords (icon_view, x - x_pos, y - y_pos, TRUE, NULL);
   if (item)
@@ -1394,11 +1394,11 @@ ctk_icon_view_accessible_add_selection (AtkSelection *selection,
   GtkIconView *icon_view;
   GtkIconViewItem *item;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
 
   item = g_list_nth_data (icon_view->priv->items, i);
   if (!item)
@@ -1415,11 +1415,11 @@ ctk_icon_view_accessible_clear_selection (AtkSelection *selection)
   GtkWidget *widget;
   GtkIconView *icon_view;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
   ctk_icon_view_unselect_all (icon_view);
 
   return TRUE;
@@ -1434,11 +1434,11 @@ ctk_icon_view_accessible_ref_selection (AtkSelection *selection,
   GtkIconView *icon_view;
   GtkIconViewItem *item;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return NULL;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
 
   l = icon_view->priv->items;
   while (l)
@@ -1466,11 +1466,11 @@ ctk_icon_view_accessible_get_selection_count (AtkSelection *selection)
   GList *l;
   gint count;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return 0;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
 
   l = icon_view->priv->items;
   count = 0;
@@ -1495,11 +1495,11 @@ ctk_icon_view_accessible_is_child_selected (AtkSelection *selection,
   GtkIconView *icon_view;
   GtkIconViewItem *item;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
 
   item = g_list_nth_data (icon_view->priv->items, i);
   if (!item)
@@ -1518,11 +1518,11 @@ ctk_icon_view_accessible_remove_selection (AtkSelection *selection,
   GList *l;
   gint count;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
   l = icon_view->priv->items;
   count = 0;
   while (l)
@@ -1549,11 +1549,11 @@ ctk_icon_view_accessible_select_all_selection (AtkSelection *selection)
   GtkWidget *widget;
   GtkIconView *icon_view;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  icon_view = GTK_ICON_VIEW (widget);
+  icon_view = CTK_ICON_VIEW (widget);
   ctk_icon_view_select_all (icon_view);
   return TRUE;
 }

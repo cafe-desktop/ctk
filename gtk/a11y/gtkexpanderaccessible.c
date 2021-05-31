@@ -23,7 +23,7 @@
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkExpanderAccessible, ctk_expander_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkExpanderAccessible, ctk_expander_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static const gchar *
@@ -33,10 +33,10 @@ ctk_expander_accessible_get_full_text (GtkExpander *widget)
 
   label_widget = ctk_expander_get_label_widget (widget);
 
-  if (!GTK_IS_LABEL (label_widget))
+  if (!CTK_IS_LABEL (label_widget))
     return NULL;
 
-  return ctk_label_get_text (GTK_LABEL (label_widget));
+  return ctk_label_get_text (CTK_LABEL (label_widget));
 }
 
 static const gchar *
@@ -45,7 +45,7 @@ ctk_expander_accessible_get_name (AtkObject *obj)
   GtkWidget *widget;
   const gchar *name;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
@@ -53,7 +53,7 @@ ctk_expander_accessible_get_name (AtkObject *obj)
   if (name != NULL)
     return name;
 
-  return ctk_expander_accessible_get_full_text (GTK_EXPANDER (widget));
+  return ctk_expander_accessible_get_full_text (CTK_EXPANDER (widget));
 }
 
 static gint
@@ -63,18 +63,18 @@ ctk_expander_accessible_get_n_children (AtkObject *obj)
   GList *children;
   gint count = 0;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return 0;
 
-  children = ctk_container_get_children (GTK_CONTAINER(widget));
+  children = ctk_container_get_children (CTK_CONTAINER(widget));
   count = g_list_length (children);
   g_list_free (children);
 
   /* See if there is a label - if there is, reduce our count by 1
    * since we don't want the label included with the children.
    */
-  if (ctk_expander_get_label_widget (GTK_EXPANDER (widget)))
+  if (ctk_expander_get_label_widget (CTK_EXPANDER (widget)))
     count -= 1;
 
   return count;
@@ -90,22 +90,22 @@ ctk_expander_accessible_ref_child (AtkObject *obj,
   GtkWidget *label;
   gint index;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  children = ctk_container_get_children (GTK_CONTAINER (widget));
+  children = ctk_container_get_children (CTK_CONTAINER (widget));
 
   /* See if there is a label - if there is, we need to skip it
    * since we don't want the label included with the children.
    */
-  label = ctk_expander_get_label_widget (GTK_EXPANDER (widget));
+  label = ctk_expander_get_label_widget (CTK_EXPANDER (widget));
   if (label)
     {
       for (index = 0; index <= i; index++)
         {
           tmp_list = g_list_nth (children, index);
-          if (label == GTK_WIDGET (tmp_list->data))
+          if (label == CTK_WIDGET (tmp_list->data))
             {
               i += 1;
               break;
@@ -119,7 +119,7 @@ ctk_expander_accessible_ref_child (AtkObject *obj,
       g_list_free (children);
       return NULL;
     }
-  accessible = ctk_widget_get_accessible (GTK_WIDGET (tmp_list->data));
+  accessible = ctk_widget_get_accessible (CTK_WIDGET (tmp_list->data));
 
   g_list_free (children);
   g_object_ref (accessible);
@@ -142,8 +142,8 @@ ctk_expander_accessible_notify_gtk (GObject    *obj,
   AtkObject* atk_obj;
   GtkExpander *expander;
 
-  expander = GTK_EXPANDER (obj);
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (expander));
+  expander = CTK_EXPANDER (obj);
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (expander));
 ;
   if (g_strcmp0 (pspec->name, "label") == 0)
     {
@@ -160,7 +160,7 @@ ctk_expander_accessible_notify_gtk (GObject    *obj,
       g_signal_emit_by_name (atk_obj, "visible-data-changed");
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_expander_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_expander_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static AtkStateSet *
@@ -170,13 +170,13 @@ ctk_expander_accessible_ref_state_set (AtkObject *obj)
   GtkWidget *widget;
   GtkExpander *expander;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
   state_set = ATK_OBJECT_CLASS (ctk_expander_accessible_parent_class)->ref_state_set (obj);
 
-  expander = GTK_EXPANDER (widget);
+  expander = CTK_EXPANDER (widget);
 
   atk_state_set_add_state (state_set, ATK_STATE_EXPANDABLE);
 
@@ -216,7 +216,7 @@ ctk_expander_accessible_do_action (AtkAction *action,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (action));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
     return FALSE;
 
@@ -244,19 +244,19 @@ ctk_expander_accessible_get_keybinding (AtkAction *action,
   GtkWidget *widget;
   GtkWidget *label;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (action));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
     return NULL;
 
   if (i != 0)
     return NULL;
 
-  label = ctk_expander_get_label_widget (GTK_EXPANDER (widget));
-  if (GTK_IS_LABEL (label))
+  label = ctk_expander_get_label_widget (CTK_EXPANDER (widget));
+  if (CTK_IS_LABEL (label))
     {
       guint key_val;
 
-      key_val = ctk_label_get_mnemonic_keyval (GTK_LABEL (label));
+      key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (label));
       if (key_val != GDK_KEY_VoidSymbol)
         return_value = ctk_accelerator_name (key_val, GDK_MOD1_MASK);
     }

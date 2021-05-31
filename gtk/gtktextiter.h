@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_ITER_H__
-#define __GTK_TEXT_ITER_H__
+#ifndef __CTK_TEXT_ITER_H__
+#define __CTK_TEXT_ITER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -37,23 +37,23 @@ G_BEGIN_DECLS
 
 /**
  * GtkTextSearchFlags:
- * @GTK_TEXT_SEARCH_VISIBLE_ONLY: Search only visible data. A search match may
+ * @CTK_TEXT_SEARCH_VISIBLE_ONLY: Search only visible data. A search match may
  * have invisible text interspersed.
- * @GTK_TEXT_SEARCH_TEXT_ONLY: Search only text. A match may have pixbufs or
+ * @CTK_TEXT_SEARCH_TEXT_ONLY: Search only text. A match may have pixbufs or
  * child widgets mixed inside the matched range.
- * @GTK_TEXT_SEARCH_CASE_INSENSITIVE: The text will be matched regardless of
+ * @CTK_TEXT_SEARCH_CASE_INSENSITIVE: The text will be matched regardless of
  * what case it is in.
  *
  * Flags affecting how a search is done.
  *
- * If neither #GTK_TEXT_SEARCH_VISIBLE_ONLY nor #GTK_TEXT_SEARCH_TEXT_ONLY are
+ * If neither #CTK_TEXT_SEARCH_VISIBLE_ONLY nor #CTK_TEXT_SEARCH_TEXT_ONLY are
  * enabled, the match must be exact; the special 0xFFFC character will match
  * embedded pixbufs or child widgets.
  */
 typedef enum {
-  GTK_TEXT_SEARCH_VISIBLE_ONLY     = 1 << 0,
-  GTK_TEXT_SEARCH_TEXT_ONLY        = 1 << 1,
-  GTK_TEXT_SEARCH_CASE_INSENSITIVE = 1 << 2
+  CTK_TEXT_SEARCH_VISIBLE_ONLY     = 1 << 0,
+  CTK_TEXT_SEARCH_TEXT_ONLY        = 1 << 1,
+  CTK_TEXT_SEARCH_CASE_INSENSITIVE = 1 << 2
   /* Possible future plans: SEARCH_REGEXP */
 } GtkTextSearchFlags;
 
@@ -65,7 +65,7 @@ typedef enum {
 
 typedef struct _GtkTextBuffer GtkTextBuffer;
 
-#define GTK_TYPE_TEXT_ITER     (ctk_text_iter_get_type ())
+#define CTK_TYPE_TEXT_ITER     (ctk_text_iter_get_type ())
 
 struct _GtkTextIter {
   /* GtkTextIter is an opaque datatype; ignore all these fields.

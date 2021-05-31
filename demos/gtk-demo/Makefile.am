@@ -90,9 +90,9 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir) 			\
 	-I$(top_builddir)/gdk			\
 	-DGDK_DISABLE_DEPRECATED		\
-	-DGTK_DISABLE_DEPRECATED 		\
-	$(GTK_DEBUG_FLAGS)			\
-	$(GTK_DEP_CFLAGS)
+	-DCTK_DISABLE_DEPRECATED 		\
+	$(CTK_DEBUG_FLAGS)			\
+	$(CTK_DEP_CFLAGS)
 
 DEPS = \
 	$(top_builddir)/gtk/libgtk-3.la
@@ -100,7 +100,7 @@ DEPS = \
 LDADDS = \
 	$(top_builddir)/gtk/libgtk-3.la		\
 	$(top_builddir)/gdk/libgdk-3.la		\
-	$(GTK_DEP_LIBS)				\
+	$(CTK_DEP_LIBS)				\
 	$(GDK_DEP_LIBS)				\
 	-lm
 

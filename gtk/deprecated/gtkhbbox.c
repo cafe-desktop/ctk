@@ -58,7 +58,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  */
 
 
-G_DEFINE_TYPE (GtkHButtonBox, ctk_hbutton_box, GTK_TYPE_BUTTON_BOX)
+G_DEFINE_TYPE (GtkHButtonBox, ctk_hbutton_box, CTK_TYPE_BUTTON_BOX)
 
 static void
 ctk_hbutton_box_class_init (GtkHButtonBoxClass *class)
@@ -68,8 +68,8 @@ ctk_hbutton_box_class_init (GtkHButtonBoxClass *class)
 static void
 ctk_hbutton_box_init (GtkHButtonBox *hbutton_box)
 {
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (hbutton_box),
-                                  GTK_ORIENTATION_HORIZONTAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (hbutton_box),
+                                  CTK_ORIENTATION_HORIZONTAL);
 }
 
 /**
@@ -79,11 +79,11 @@ ctk_hbutton_box_init (GtkHButtonBox *hbutton_box)
  *
  * Returns: a new button box #GtkWidget.
  *
- * Deprecated: 3.2: Use ctk_button_box_new() with %GTK_ORIENTATION_HORIZONTAL instead
+ * Deprecated: 3.2: Use ctk_button_box_new() with %CTK_ORIENTATION_HORIZONTAL instead
  */
 GtkWidget *
 ctk_hbutton_box_new (void)
 {
-  return g_object_new (GTK_TYPE_HBUTTON_BOX, NULL);
+  return g_object_new (CTK_TYPE_HBUTTON_BOX, NULL);
 }
 

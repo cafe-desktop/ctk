@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ICON_HELPER_H__
-#define __GTK_ICON_HELPER_H__
+#ifndef __CTK_ICON_HELPER_H__
+#define __CTK_ICON_HELPER_H__
 
 #include "gtk/gtkimage.h"
 #include "gtk/gtktypes.h"
@@ -28,27 +28,27 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ICON_HELPER ctk_icon_helper_get_type()
+#define CTK_TYPE_ICON_HELPER ctk_icon_helper_get_type()
 
-#define GTK_ICON_HELPER(obj) \
+#define CTK_ICON_HELPER(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
-   GTK_TYPE_ICON_HELPER, GtkIconHelper))
+   CTK_TYPE_ICON_HELPER, GtkIconHelper))
 
-#define GTK_ICON_HELPER_CLASS(klass) \
+#define CTK_ICON_HELPER_CLASS(klass) \
   (G_TYPE_CHECK_CLASS_CAST ((klass), \
-   GTK_TYPE_ICON_HELPER, GtkIconHelperClass))
+   CTK_TYPE_ICON_HELPER, GtkIconHelperClass))
 
-#define GTK_IS_ICON_HELPER(obj) \
+#define CTK_IS_ICON_HELPER(obj) \
   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), \
-   GTK_TYPE_ICON_HELPER))
+   CTK_TYPE_ICON_HELPER))
 
-#define GTK_IS_ICON_HELPER_CLASS(klass) \
+#define CTK_IS_ICON_HELPER_CLASS(klass) \
   (G_TYPE_CHECK_CLASS_TYPE ((klass), \
-   GTK_TYPE_ICON_HELPER))
+   CTK_TYPE_ICON_HELPER))
 
-#define GTK_ICON_HELPER_GET_CLASS(obj) \
+#define CTK_ICON_HELPER_GET_CLASS(obj) \
   (G_TYPE_INSTANCE_GET_CLASS ((obj), \
-   GTK_TYPE_ICON_HELPER, GtkIconHelperClass))
+   CTK_TYPE_ICON_HELPER, GtkIconHelperClass))
 
 typedef struct _GtkIconHelper GtkIconHelper;
 typedef struct _GtkIconHelperClass GtkIconHelperClass;
@@ -143,4 +143,4 @@ void      ctk_icon_helper_invalidate_for_change (GtkIconHelper     *self,
 
 G_END_DECLS
 
-#endif /* __GTK_ICON_HELPER_H__ */
+#endif /* __CTK_ICON_HELPER_H__ */

@@ -29,7 +29,7 @@ progressive_prepared_callback (GdkPixbufLoader *loader,
   GdkPixbuf *pixbuf;
   GtkWidget *image;
 
-  image = GTK_WIDGET (data);
+  image = CTK_WIDGET (data);
 
   pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
 
@@ -38,7 +38,7 @@ progressive_prepared_callback (GdkPixbufLoader *loader,
    */
   gdk_pixbuf_fill (pixbuf, 0xaaaaaaff);
 
-  ctk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+  ctk_image_set_from_pixbuf (CTK_IMAGE (image), pixbuf);
 }
 
 static void
@@ -52,7 +52,7 @@ progressive_updated_callback (GdkPixbufLoader *loader,
   GtkWidget *image;
   GdkPixbuf *pixbuf;
 
-  image = GTK_WIDGET (data);
+  image = CTK_WIDGET (data);
 
   /* We know the pixbuf inside the GtkImage has changed, but the image
    * itself doesn't know this; so give it a hint by setting the pixbuf
@@ -61,9 +61,9 @@ progressive_updated_callback (GdkPixbufLoader *loader,
    * from the cache.
    */
 
-  pixbuf = ctk_image_get_pixbuf (GTK_IMAGE (image));
+  pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
   g_object_ref (pixbuf);
-  ctk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+  ctk_image_set_from_pixbuf (CTK_IMAGE (image), pixbuf);
   g_object_unref (pixbuf);
 }
 
@@ -72,7 +72,7 @@ progressive_timeout (gpointer data)
 {
   GtkWidget *image;
 
-  image = GTK_WIDGET (data);
+  image = CTK_WIDGET (data);
 
   /* This shows off fully-paranoid error handling, so looks scary.
    * You could factor out the error handling code into a nice separate
@@ -91,10 +91,10 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
 
-          dialog = ctk_message_dialog_new (GTK_WINDOW (window),
-                                           GTK_DIALOG_DESTROY_WITH_PARENT,
-                                           GTK_MESSAGE_ERROR,
-                                           GTK_BUTTONS_CLOSE,
+          dialog = ctk_message_dialog_new (CTK_WINDOW (window),
+                                           CTK_DIALOG_DESTROY_WITH_PARENT,
+                                           CTK_MESSAGE_ERROR,
+                                           CTK_BUTTONS_CLOSE,
                                            "Failure reading image file 'alphatest.png': %s",
                                            error->message);
           g_error_free (error);
@@ -118,10 +118,10 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
 
-          dialog = ctk_message_dialog_new (GTK_WINDOW (window),
-                                           GTK_DIALOG_DESTROY_WITH_PARENT,
-                                           GTK_MESSAGE_ERROR,
-                                           GTK_BUTTONS_CLOSE,
+          dialog = ctk_message_dialog_new (CTK_WINDOW (window),
+                                           CTK_DIALOG_DESTROY_WITH_PARENT,
+                                           CTK_MESSAGE_ERROR,
+                                           CTK_BUTTONS_CLOSE,
                                            "Failed to load image: %s",
                                            error->message);
 
@@ -151,10 +151,10 @@ progressive_timeout (gpointer data)
             {
               GtkWidget *dialog;
 
-              dialog = ctk_message_dialog_new (GTK_WINDOW (window),
-                                               GTK_DIALOG_DESTROY_WITH_PARENT,
-                                               GTK_MESSAGE_ERROR,
-                                               GTK_BUTTONS_CLOSE,
+              dialog = ctk_message_dialog_new (CTK_WINDOW (window),
+                                               CTK_DIALOG_DESTROY_WITH_PARENT,
+                                               CTK_MESSAGE_ERROR,
+                                               CTK_BUTTONS_CLOSE,
                                                "Failed to load image: %s",
                                                error->message);
 
@@ -188,10 +188,10 @@ progressive_timeout (gpointer data)
             {
               GtkWidget *dialog;
 
-              dialog = ctk_message_dialog_new (GTK_WINDOW (window),
-                                               GTK_DIALOG_DESTROY_WITH_PARENT,
-                                               GTK_MESSAGE_ERROR,
-                                               GTK_BUTTONS_CLOSE,
+              dialog = ctk_message_dialog_new (CTK_WINDOW (window),
+                                               CTK_DIALOG_DESTROY_WITH_PARENT,
+                                               CTK_MESSAGE_ERROR,
+                                               CTK_BUTTONS_CLOSE,
                                                "Failed to load image: %s",
                                                error->message);
 
@@ -224,10 +224,10 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
 
-          dialog = ctk_message_dialog_new (GTK_WINDOW (window),
-                                           GTK_DIALOG_DESTROY_WITH_PARENT,
-                                           GTK_MESSAGE_ERROR,
-                                           GTK_BUTTONS_CLOSE,
+          dialog = ctk_message_dialog_new (CTK_WINDOW (window),
+                                           CTK_DIALOG_DESTROY_WITH_PARENT,
+                                           CTK_MESSAGE_ERROR,
+                                           CTK_BUTTONS_CLOSE,
                                            "%s", error->message);
           g_error_free (error);
 
@@ -314,9 +314,9 @@ toggle_sensitivity_callback (GtkWidget *togglebutton,
   while (tmp != NULL)
     {
       /* don't disable our toggle */
-      if (GTK_WIDGET (tmp->data) != togglebutton)
-        ctk_widget_set_sensitive (GTK_WIDGET (tmp->data),
-                                  !ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (togglebutton)));
+      if (CTK_WIDGET (tmp->data) != togglebutton)
+        ctk_widget_set_sensitive (CTK_WIDGET (tmp->data),
+                                  !ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (togglebutton)));
 
       tmp = tmp->next;
     }
@@ -337,98 +337,98 @@ do_images (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Images");
+      ctk_window_set_title (CTK_WINDOW (window), "Images");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (cleanup_callback), NULL);
 
-      ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+      ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
 
       label = ctk_label_new (NULL);
-      ctk_label_set_markup (GTK_LABEL (label),
+      ctk_label_set_markup (CTK_LABEL (label),
                             "<u>Image loaded from a file</u>");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
       frame = ctk_frame_new (NULL);
-      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
-      ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-      ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+      ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+      ctk_widget_set_halign (frame, CTK_ALIGN_CENTER);
+      ctk_widget_set_valign (frame, CTK_ALIGN_CENTER);
+      ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-      image = ctk_image_new_from_icon_name ("gtk3-demo", GTK_ICON_SIZE_DIALOG);
+      image = ctk_image_new_from_icon_name ("gtk3-demo", CTK_ICON_SIZE_DIALOG);
 
-      ctk_container_add (GTK_CONTAINER (frame), image);
+      ctk_container_add (CTK_CONTAINER (frame), image);
 
 
       /* Animation */
 
       label = ctk_label_new (NULL);
-      ctk_label_set_markup (GTK_LABEL (label),
+      ctk_label_set_markup (CTK_LABEL (label),
                             "<u>Animation loaded from a file</u>");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
       frame = ctk_frame_new (NULL);
-      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
-      ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-      ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+      ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+      ctk_widget_set_halign (frame, CTK_ALIGN_CENTER);
+      ctk_widget_set_valign (frame, CTK_ALIGN_CENTER);
+      ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
       image = ctk_image_new_from_resource ("/images/floppybuddy.gif");
 
-      ctk_container_add (GTK_CONTAINER (frame), image);
+      ctk_container_add (CTK_CONTAINER (frame), image);
 
       /* Symbolic icon */
 
       label = ctk_label_new (NULL);
-      ctk_label_set_markup (GTK_LABEL (label),
+      ctk_label_set_markup (CTK_LABEL (label),
                             "<u>Symbolic themed icon</u>");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
       frame = ctk_frame_new (NULL);
-      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
-      ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-      ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+      ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+      ctk_widget_set_halign (frame, CTK_ALIGN_CENTER);
+      ctk_widget_set_valign (frame, CTK_ALIGN_CENTER);
+      ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
       gicon = g_themed_icon_new_with_default_fallbacks ("battery-caution-charging-symbolic");
-      image = ctk_image_new_from_gicon (gicon, GTK_ICON_SIZE_DIALOG);
+      image = ctk_image_new_from_gicon (gicon, CTK_ICON_SIZE_DIALOG);
 
-      ctk_container_add (GTK_CONTAINER (frame), image);
+      ctk_container_add (CTK_CONTAINER (frame), image);
 
 
       /* Progressive */
 
       label = ctk_label_new (NULL);
-      ctk_label_set_markup (GTK_LABEL (label),
+      ctk_label_set_markup (CTK_LABEL (label),
                             "<u>Progressive image loading</u>");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
       frame = ctk_frame_new (NULL);
-      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
-      ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-      ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+      ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+      ctk_widget_set_halign (frame, CTK_ALIGN_CENTER);
+      ctk_widget_set_valign (frame, CTK_ALIGN_CENTER);
+      ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
       /* Create an empty image for now; the progressive loader
        * will create the pixbuf and fill it in.
        */
       image = ctk_image_new_from_pixbuf (NULL);
-      ctk_container_add (GTK_CONTAINER (frame), image);
+      ctk_container_add (CTK_CONTAINER (frame), image);
 
       start_progressive_loading (image);
 
       /* Sensitivity control */
       button = ctk_toggle_button_new_with_mnemonic ("_Insensitive");
-      ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
       g_signal_connect (button, "toggled",
                         G_CALLBACK (toggle_sensitivity_callback),

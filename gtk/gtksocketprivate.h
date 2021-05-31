@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
  */
 
-#ifndef __GTK_SOCKET_PRIVATE_H__
-#define __GTK_SOCKET_PRIVATE_H__
+#ifndef __CTK_SOCKET_PRIVATE_H__
+#define __CTK_SOCKET_PRIVATE_H__
 
 #include "gtkplug.h"
 #include "gtksocket.h"
@@ -58,4 +58,4 @@ void _ctk_plug_add_to_socket      (GtkPlug   *plug,
 void _ctk_plug_remove_from_socket (GtkPlug   *plug,
 				   GtkSocket *socket_);
 
-#endif /* __GTK_SOCKET_PRIVATE_H__ */
+#endif /* __CTK_SOCKET_PRIVATE_H__ */

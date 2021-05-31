@@ -139,9 +139,9 @@ static void ctk_tool_item_set_use_action_appearance  (GtkToolItem          *item
 static guint toolitem_signals[LAST_SIGNAL] = { 0 };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkToolItem, ctk_tool_item, GTK_TYPE_BIN,
+G_DEFINE_TYPE_WITH_CODE (GtkToolItem, ctk_tool_item, CTK_TYPE_BIN,
                          G_ADD_PRIVATE (GtkToolItem)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_tool_item_activatable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -169,7 +169,7 @@ ctk_tool_item_class_init (GtkToolItemClass *klass)
   widget_class->size_allocate = ctk_tool_item_size_allocate;
   widget_class->parent_set    = ctk_tool_item_parent_set;
 
-  ctk_container_class_handle_border_width (GTK_CONTAINER_CLASS (klass));
+  ctk_container_class_handle_border_width (CTK_CONTAINER_CLASS (klass));
 
   klass->create_menu_proxy = _ctk_tool_item_create_menu_proxy;
   
@@ -179,21 +179,21 @@ ctk_tool_item_class_init (GtkToolItemClass *klass)
 							 P_("Visible when horizontal"),
 							 P_("Whether the toolbar item is visible when the toolbar is in a horizontal orientation."),
 							 TRUE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   g_object_class_install_property (object_class,
 				   PROP_VISIBLE_VERTICAL,
 				   g_param_spec_boolean ("visible-vertical",
 							 P_("Visible when vertical"),
 							 P_("Whether the toolbar item is visible when the toolbar is in a vertical orientation."),
 							 TRUE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   g_object_class_install_property (object_class,
  				   PROP_IS_IMPORTANT,
  				   g_param_spec_boolean ("is-important",
  							 P_("Is important"),
- 							 P_("Whether the toolbar item is considered important. When TRUE, toolbar buttons show text in GTK_TOOLBAR_BOTH_HORIZ mode"),
+ 							 P_("Whether the toolbar item is considered important. When TRUE, toolbar buttons show text in CTK_TOOLBAR_BOTH_HORIZ mode"),
  							 FALSE,
- 							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+ 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_override_property (object_class, PROP_ACTIVATABLE_RELATED_ACTION, "related-action");
   g_object_class_override_property (object_class, PROP_ACTIVATABLE_USE_ACTION_APPEARANCE, "use-action-appearance");
@@ -263,7 +263,7 @@ ctk_tool_item_class_init (GtkToolItemClass *klass)
 static void
 ctk_tool_item_init (GtkToolItem *toolitem)
 {
-  ctk_widget_set_can_focus (GTK_WIDGET (toolitem), FALSE);
+  ctk_widget_set_can_focus (CTK_WIDGET (toolitem), FALSE);
 
   toolitem->priv = ctk_tool_item_get_instance_private (toolitem);
   toolitem->priv->visible_horizontal = TRUE;
@@ -276,7 +276,7 @@ ctk_tool_item_init (GtkToolItem *toolitem)
 static void
 ctk_tool_item_finalize (GObject *object)
 {
-  GtkToolItem *item = GTK_TOOL_ITEM (object);
+  GtkToolItem *item = CTK_TOOL_ITEM (object);
 
   g_free (item->priv->menu_item_id);
 
@@ -289,12 +289,12 @@ ctk_tool_item_finalize (GObject *object)
 static void
 ctk_tool_item_dispose (GObject *object)
 {
-  GtkToolItem *item = GTK_TOOL_ITEM (object);
+  GtkToolItem *item = CTK_TOOL_ITEM (object);
 
   if (item->priv->action)
     {
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (item), NULL);      
+      ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (item), NULL);      
       G_GNUC_END_IGNORE_DEPRECATIONS;
       item->priv->action = NULL;
     }
@@ -306,8 +306,8 @@ static void
 ctk_tool_item_parent_set (GtkWidget   *toolitem,
 			  GtkWidget   *prev_parent)
 {
-  if (ctk_widget_get_parent (GTK_WIDGET (toolitem)) != NULL)
-    ctk_tool_item_toolbar_reconfigured (GTK_TOOL_ITEM (toolitem));
+  if (ctk_widget_get_parent (CTK_WIDGET (toolitem)) != NULL)
+    ctk_tool_item_toolbar_reconfigured (CTK_TOOL_ITEM (toolitem));
 }
 
 static void
@@ -316,7 +316,7 @@ ctk_tool_item_set_property (GObject      *object,
 			    const GValue *value,
 			    GParamSpec   *pspec)
 {
-  GtkToolItem *toolitem = GTK_TOOL_ITEM (object);
+  GtkToolItem *toolitem = CTK_TOOL_ITEM (object);
 
   switch (prop_id)
     {
@@ -347,7 +347,7 @@ ctk_tool_item_get_property (GObject    *object,
 			    GValue     *value,
 			    GParamSpec *pspec)
 {
-  GtkToolItem *toolitem = GTK_TOOL_ITEM (object);
+  GtkToolItem *toolitem = CTK_TOOL_ITEM (object);
 
   switch (prop_id)
     {
@@ -376,11 +376,11 @@ static void
 ctk_tool_item_property_notify (GObject    *object,
 			       GParamSpec *pspec)
 {
-  GtkToolItem *tool_item = GTK_TOOL_ITEM (object);
+  GtkToolItem *tool_item = CTK_TOOL_ITEM (object);
 
   if (tool_item->priv->menu_item && strcmp (pspec->name, "sensitive") == 0)
     ctk_widget_set_sensitive (tool_item->priv->menu_item,
-			      ctk_widget_get_sensitive (GTK_WIDGET (tool_item)));
+			      ctk_widget_get_sensitive (CTK_WIDGET (tool_item)));
 
   if (G_OBJECT_CLASS (ctk_tool_item_parent_class)->notify)
     G_OBJECT_CLASS (ctk_tool_item_parent_class)->notify (object, pspec);
@@ -396,7 +396,7 @@ create_drag_window (GtkToolItem *toolitem)
 
   g_return_if_fail (toolitem->priv->use_drag_window == TRUE);
 
-  widget = GTK_WIDGET (toolitem);
+  widget = CTK_WIDGET (toolitem);
 
   ctk_widget_get_allocation (widget, &allocation);
 
@@ -422,7 +422,7 @@ ctk_tool_item_realize (GtkWidget *widget)
   GtkToolItem *toolitem;
   GdkWindow *window;
 
-  toolitem = GTK_TOOL_ITEM (widget);
+  toolitem = CTK_TOOL_ITEM (widget);
   ctk_widget_set_realized (widget, TRUE);
 
   window = ctk_widget_get_parent_window (widget);
@@ -438,7 +438,7 @@ destroy_drag_window (GtkToolItem *toolitem)
 {
   if (toolitem->priv->drag_window)
     {
-      ctk_widget_unregister_window (GTK_WIDGET (toolitem), toolitem->priv->drag_window);
+      ctk_widget_unregister_window (CTK_WIDGET (toolitem), toolitem->priv->drag_window);
       gdk_window_destroy (toolitem->priv->drag_window);
       toolitem->priv->drag_window = NULL;
     }
@@ -449,11 +449,11 @@ ctk_tool_item_unrealize (GtkWidget *widget)
 {
   GtkToolItem *toolitem;
 
-  toolitem = GTK_TOOL_ITEM (widget);
+  toolitem = CTK_TOOL_ITEM (widget);
 
   destroy_drag_window (toolitem);
   
-  GTK_WIDGET_CLASS (ctk_tool_item_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_tool_item_parent_class)->unrealize (widget);
 }
 
 static void
@@ -461,8 +461,8 @@ ctk_tool_item_map (GtkWidget *widget)
 {
   GtkToolItem *toolitem;
 
-  toolitem = GTK_TOOL_ITEM (widget);
-  GTK_WIDGET_CLASS (ctk_tool_item_parent_class)->map (widget);
+  toolitem = CTK_TOOL_ITEM (widget);
+  CTK_WIDGET_CLASS (ctk_tool_item_parent_class)->map (widget);
   if (toolitem->priv->drag_window)
     gdk_window_show (toolitem->priv->drag_window);
 }
@@ -472,10 +472,10 @@ ctk_tool_item_unmap (GtkWidget *widget)
 {
   GtkToolItem *toolitem;
 
-  toolitem = GTK_TOOL_ITEM (widget);
+  toolitem = CTK_TOOL_ITEM (widget);
   if (toolitem->priv->drag_window)
     gdk_window_hide (toolitem->priv->drag_window);
-  GTK_WIDGET_CLASS (ctk_tool_item_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_tool_item_parent_class)->unmap (widget);
 }
 
 static void
@@ -487,7 +487,7 @@ ctk_tool_item_get_preferred_width (GtkWidget *widget,
 
   *minimum = *natural = 0;
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
   if (child && ctk_widget_get_visible (child))
     ctk_widget_get_preferred_width (child, minimum, natural);
 }
@@ -501,7 +501,7 @@ ctk_tool_item_get_preferred_height (GtkWidget *widget,
 
   *minimum = *natural = 0;
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
   if (child && ctk_widget_get_visible (child))
     ctk_widget_get_preferred_height (child, minimum, natural);
 }
@@ -510,7 +510,7 @@ static void
 ctk_tool_item_size_allocate (GtkWidget     *widget,
 			     GtkAllocation *allocation)
 {
-  GtkToolItem *toolitem = GTK_TOOL_ITEM (widget);
+  GtkToolItem *toolitem = CTK_TOOL_ITEM (widget);
   GtkAllocation child_allocation;
   GtkWidget *child;
 
@@ -523,7 +523,7 @@ ctk_tool_item_size_allocate (GtkWidget     *widget,
                             allocation->width,
                             allocation->height);
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
   if (child && ctk_widget_get_visible (child))
     {
       child_allocation.x = allocation->x;
@@ -586,23 +586,23 @@ ctk_tool_item_update (GtkActivatable *activatable,
   if (strcmp (property_name, "visible") == 0)
     {
       if (ctk_action_is_visible (action))
-	ctk_widget_show (GTK_WIDGET (activatable));
+	ctk_widget_show (CTK_WIDGET (activatable));
       else
-	ctk_widget_hide (GTK_WIDGET (activatable));
+	ctk_widget_hide (CTK_WIDGET (activatable));
     }
   else if (strcmp (property_name, "sensitive") == 0)
-    ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
+    ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
   else if (strcmp (property_name, "tooltip") == 0)
-    ctk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (activatable),
+    ctk_tool_item_set_tooltip_text (CTK_TOOL_ITEM (activatable),
 				    ctk_action_get_tooltip (action));
   else if (strcmp (property_name, "visible-horizontal") == 0)
-    ctk_tool_item_set_visible_horizontal (GTK_TOOL_ITEM (activatable),
+    ctk_tool_item_set_visible_horizontal (CTK_TOOL_ITEM (activatable),
 					  ctk_action_get_visible_horizontal (action));
   else if (strcmp (property_name, "visible-vertical") == 0)
-    ctk_tool_item_set_visible_vertical (GTK_TOOL_ITEM (activatable),
+    ctk_tool_item_set_visible_vertical (CTK_TOOL_ITEM (activatable),
 					ctk_action_get_visible_vertical (action));
   else if (strcmp (property_name, "is-important") == 0)
-    ctk_tool_item_set_is_important (GTK_TOOL_ITEM (activatable),
+    ctk_tool_item_set_is_important (CTK_TOOL_ITEM (activatable),
 				    ctk_action_get_is_important (action));
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
@@ -618,19 +618,19 @@ ctk_tool_item_sync_action_properties (GtkActivatable *activatable,
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
   if (ctk_action_is_visible (action))
-    ctk_widget_show (GTK_WIDGET (activatable));
+    ctk_widget_show (CTK_WIDGET (activatable));
   else
-    ctk_widget_hide (GTK_WIDGET (activatable));
+    ctk_widget_hide (CTK_WIDGET (activatable));
   
-  ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
+  ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
   
-  ctk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (activatable),
+  ctk_tool_item_set_tooltip_text (CTK_TOOL_ITEM (activatable),
 				  ctk_action_get_tooltip (action));
-  ctk_tool_item_set_visible_horizontal (GTK_TOOL_ITEM (activatable),
+  ctk_tool_item_set_visible_horizontal (CTK_TOOL_ITEM (activatable),
 					ctk_action_get_visible_horizontal (action));
-  ctk_tool_item_set_visible_vertical (GTK_TOOL_ITEM (activatable),
+  ctk_tool_item_set_visible_vertical (CTK_TOOL_ITEM (activatable),
 				      ctk_action_get_visible_vertical (action));
-  ctk_tool_item_set_is_important (GTK_TOOL_ITEM (activatable),
+  ctk_tool_item_set_is_important (CTK_TOOL_ITEM (activatable),
 				  ctk_action_get_is_important (action));
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
@@ -644,7 +644,7 @@ ctk_tool_item_set_related_action (GtkToolItem *item,
     return;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (item), action);
+  ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (item), action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   item->priv->action = action;
@@ -664,7 +664,7 @@ ctk_tool_item_set_use_action_appearance (GtkToolItem *item,
       item->priv->use_action_appearance = use_appearance;
 
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      ctk_activatable_sync_action_properties (GTK_ACTIVATABLE (item), item->priv->action);
+      ctk_activatable_sync_action_properties (CTK_ACTIVATABLE (item), item->priv->action);
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
@@ -684,7 +684,7 @@ ctk_tool_item_new (void)
 {
   GtkToolItem *item;
 
-  item = g_object_new (GTK_TYPE_TOOL_ITEM, NULL);
+  item = g_object_new (CTK_TYPE_TOOL_ITEM, NULL);
 
   return item;
 }
@@ -707,13 +707,13 @@ ctk_tool_item_get_ellipsize_mode (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
   
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), PANGO_ELLIPSIZE_NONE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), PANGO_ELLIPSIZE_NONE);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (tool_item));
-  if (!parent || !GTK_IS_TOOL_SHELL (parent))
+  parent = ctk_widget_get_parent (CTK_WIDGET (tool_item));
+  if (!parent || !CTK_IS_TOOL_SHELL (parent))
     return PANGO_ELLIPSIZE_NONE;
 
-  return ctk_tool_shell_get_ellipsize_mode (GTK_TOOL_SHELL (parent));
+  return ctk_tool_shell_get_ellipsize_mode (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -734,13 +734,13 @@ ctk_tool_item_get_icon_size (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
 
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), GTK_ICON_SIZE_LARGE_TOOLBAR);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_ICON_SIZE_LARGE_TOOLBAR);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (tool_item));
-  if (!parent || !GTK_IS_TOOL_SHELL (parent))
-    return GTK_ICON_SIZE_LARGE_TOOLBAR;
+  parent = ctk_widget_get_parent (CTK_WIDGET (tool_item));
+  if (!parent || !CTK_IS_TOOL_SHELL (parent))
+    return CTK_ICON_SIZE_LARGE_TOOLBAR;
 
-  return ctk_tool_shell_get_icon_size (GTK_TOOL_SHELL (parent));
+  return ctk_tool_shell_get_icon_size (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -761,13 +761,13 @@ ctk_tool_item_get_orientation (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
   
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), GTK_ORIENTATION_HORIZONTAL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_ORIENTATION_HORIZONTAL);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (tool_item));
-  if (!parent || !GTK_IS_TOOL_SHELL (parent))
-    return GTK_ORIENTATION_HORIZONTAL;
+  parent = ctk_widget_get_parent (CTK_WIDGET (tool_item));
+  if (!parent || !CTK_IS_TOOL_SHELL (parent))
+    return CTK_ORIENTATION_HORIZONTAL;
 
-  return ctk_tool_shell_get_orientation (GTK_TOOL_SHELL (parent));
+  return ctk_tool_shell_get_orientation (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -780,11 +780,11 @@ ctk_tool_item_get_orientation (GtkToolItem *tool_item)
  * the toolbar is displayed and change themselves accordingly 
  *
  * Possibilities are:
- * - %GTK_TOOLBAR_BOTH, meaning the tool item should show
+ * - %CTK_TOOLBAR_BOTH, meaning the tool item should show
  *   both an icon and a label, stacked vertically
- * - %GTK_TOOLBAR_ICONS, meaning the toolbar shows only icons
- * - %GTK_TOOLBAR_TEXT, meaning the tool item should only show text
- * - %GTK_TOOLBAR_BOTH_HORIZ, meaning the tool item should show
+ * - %CTK_TOOLBAR_ICONS, meaning the toolbar shows only icons
+ * - %CTK_TOOLBAR_TEXT, meaning the tool item should only show text
+ * - %CTK_TOOLBAR_BOTH_HORIZ, meaning the tool item should show
  *   both an icon and a label, arranged horizontally
  * 
  * Returns: A #GtkToolbarStyle indicating the toolbar style used
@@ -797,13 +797,13 @@ ctk_tool_item_get_toolbar_style (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
   
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), GTK_TOOLBAR_ICONS);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_TOOLBAR_ICONS);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (tool_item));
-  if (!parent || !GTK_IS_TOOL_SHELL (parent))
-    return GTK_TOOLBAR_ICONS;
+  parent = ctk_widget_get_parent (CTK_WIDGET (tool_item));
+  if (!parent || !CTK_IS_TOOL_SHELL (parent))
+    return CTK_TOOLBAR_ICONS;
 
-  return ctk_tool_shell_get_style (GTK_TOOL_SHELL (parent));
+  return ctk_tool_shell_get_style (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -825,13 +825,13 @@ ctk_tool_item_get_relief_style (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
   
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), GTK_RELIEF_NONE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_RELIEF_NONE);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (tool_item));
-  if (!parent || !GTK_IS_TOOL_SHELL (parent))
-    return GTK_RELIEF_NONE;
+  parent = ctk_widget_get_parent (CTK_WIDGET (tool_item));
+  if (!parent || !CTK_IS_TOOL_SHELL (parent))
+    return CTK_RELIEF_NONE;
 
-  return ctk_tool_shell_get_relief_style (GTK_TOOL_SHELL (parent));
+  return ctk_tool_shell_get_relief_style (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -852,13 +852,13 @@ ctk_tool_item_get_text_alignment (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
   
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), GTK_ORIENTATION_HORIZONTAL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_ORIENTATION_HORIZONTAL);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (tool_item));
-  if (!parent || !GTK_IS_TOOL_SHELL (parent))
+  parent = ctk_widget_get_parent (CTK_WIDGET (tool_item));
+  if (!parent || !CTK_IS_TOOL_SHELL (parent))
     return 0.5;
 
-  return ctk_tool_shell_get_text_alignment (GTK_TOOL_SHELL (parent));
+  return ctk_tool_shell_get_text_alignment (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -879,13 +879,13 @@ ctk_tool_item_get_text_orientation (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
   
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), GTK_ORIENTATION_HORIZONTAL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), CTK_ORIENTATION_HORIZONTAL);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (tool_item));
-  if (!parent || !GTK_IS_TOOL_SHELL (parent))
-    return GTK_ORIENTATION_HORIZONTAL;
+  parent = ctk_widget_get_parent (CTK_WIDGET (tool_item));
+  if (!parent || !CTK_IS_TOOL_SHELL (parent))
+    return CTK_ORIENTATION_HORIZONTAL;
 
-  return ctk_tool_shell_get_text_orientation (GTK_TOOL_SHELL (parent));
+  return ctk_tool_shell_get_text_orientation (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -905,13 +905,13 @@ ctk_tool_item_get_text_size_group (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
   
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), NULL);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (tool_item));
-  if (!parent || !GTK_IS_TOOL_SHELL (parent))
+  parent = ctk_widget_get_parent (CTK_WIDGET (tool_item));
+  if (!parent || !CTK_IS_TOOL_SHELL (parent))
     return NULL;
 
-  return ctk_tool_shell_get_text_size_group (GTK_TOOL_SHELL (parent));
+  return ctk_tool_shell_get_text_size_group (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -930,15 +930,15 @@ void
 ctk_tool_item_set_expand (GtkToolItem *tool_item,
 			  gboolean     expand)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM (tool_item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
     
   expand = expand != FALSE;
 
   if (tool_item->priv->expand != expand)
     {
       tool_item->priv->expand = expand;
-      ctk_widget_child_notify (GTK_WIDGET (tool_item), "expand");
-      ctk_widget_queue_resize (GTK_WIDGET (tool_item));
+      ctk_widget_child_notify (CTK_WIDGET (tool_item), "expand");
+      ctk_widget_queue_resize (CTK_WIDGET (tool_item));
     }
 }
 
@@ -956,7 +956,7 @@ ctk_tool_item_set_expand (GtkToolItem *tool_item,
 gboolean
 ctk_tool_item_get_expand (GtkToolItem *tool_item)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), FALSE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), FALSE);
 
   return tool_item->priv->expand;
 }
@@ -976,15 +976,15 @@ void
 ctk_tool_item_set_homogeneous (GtkToolItem *tool_item,
 			       gboolean     homogeneous)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM (tool_item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
     
   homogeneous = homogeneous != FALSE;
 
   if (tool_item->priv->homogeneous != homogeneous)
     {
       tool_item->priv->homogeneous = homogeneous;
-      ctk_widget_child_notify (GTK_WIDGET (tool_item), "homogeneous");
-      ctk_widget_queue_resize (GTK_WIDGET (tool_item));
+      ctk_widget_child_notify (CTK_WIDGET (tool_item), "homogeneous");
+      ctk_widget_queue_resize (CTK_WIDGET (tool_item));
     }
 }
 
@@ -1003,7 +1003,7 @@ ctk_tool_item_set_homogeneous (GtkToolItem *tool_item,
 gboolean
 ctk_tool_item_get_homogeneous (GtkToolItem *tool_item)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), FALSE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), FALSE);
 
   return tool_item->priv->homogeneous;
 }
@@ -1022,7 +1022,7 @@ ctk_tool_item_get_homogeneous (GtkToolItem *tool_item)
 gboolean
 ctk_tool_item_get_is_important (GtkToolItem *tool_item)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), FALSE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), FALSE);
 
   return tool_item->priv->is_important;
 }
@@ -1034,7 +1034,7 @@ ctk_tool_item_get_is_important (GtkToolItem *tool_item)
  * 
  * Sets whether @tool_item should be considered important. The #GtkToolButton
  * class uses this property to determine whether to show or hide its label
- * when the toolbar style is %GTK_TOOLBAR_BOTH_HORIZ. The result is that
+ * when the toolbar style is %CTK_TOOLBAR_BOTH_HORIZ. The result is that
  * only tool buttons with the “is_important” property set have labels, an
  * effect known as “priority text”
  * 
@@ -1043,7 +1043,7 @@ ctk_tool_item_get_is_important (GtkToolItem *tool_item)
 void
 ctk_tool_item_set_is_important (GtkToolItem *tool_item, gboolean is_important)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM (tool_item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
   is_important = is_important != FALSE;
 
@@ -1051,7 +1051,7 @@ ctk_tool_item_set_is_important (GtkToolItem *tool_item, gboolean is_important)
     {
       tool_item->priv->is_important = is_important;
 
-      ctk_widget_queue_resize (GTK_WIDGET (tool_item));
+      ctk_widget_queue_resize (CTK_WIDGET (tool_item));
 
       g_object_notify (G_OBJECT (tool_item), "is-important");
     }
@@ -1073,9 +1073,9 @@ ctk_tool_item_set_tooltip_text (GtkToolItem *tool_item,
 {
   GtkWidget *child;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM (tool_item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
-  child = ctk_bin_get_child (GTK_BIN (tool_item));
+  child = ctk_bin_get_child (CTK_BIN (tool_item));
   if (child)
     ctk_widget_set_tooltip_text (child, text);
 }
@@ -1096,9 +1096,9 @@ ctk_tool_item_set_tooltip_markup (GtkToolItem *tool_item,
 {
   GtkWidget *child;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM (tool_item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
-  child = ctk_bin_get_child (GTK_BIN (tool_item));
+  child = ctk_bin_get_child (CTK_BIN (tool_item));
   if (child)
     ctk_widget_set_tooltip_markup (child, markup);
 }
@@ -1119,7 +1119,7 @@ void
 ctk_tool_item_set_use_drag_window (GtkToolItem *toolitem,
 				   gboolean     use_drag_window)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM (toolitem));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (toolitem));
 
   use_drag_window = use_drag_window != FALSE;
 
@@ -1130,10 +1130,10 @@ ctk_tool_item_set_use_drag_window (GtkToolItem *toolitem,
       if (use_drag_window)
 	{
 	  if (!toolitem->priv->drag_window &&
-              ctk_widget_get_realized (GTK_WIDGET (toolitem)))
+              ctk_widget_get_realized (CTK_WIDGET (toolitem)))
 	    {
 	      create_drag_window(toolitem);
-	      if (ctk_widget_get_mapped (GTK_WIDGET (toolitem)))
+	      if (ctk_widget_get_mapped (CTK_WIDGET (toolitem)))
 		gdk_window_show (toolitem->priv->drag_window);
 	    }
 	}
@@ -1158,7 +1158,7 @@ ctk_tool_item_set_use_drag_window (GtkToolItem *toolitem,
 gboolean
 ctk_tool_item_get_use_drag_window (GtkToolItem *toolitem)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (toolitem), FALSE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (toolitem), FALSE);
 
   return toolitem->priv->use_drag_window;
 }
@@ -1176,7 +1176,7 @@ void
 ctk_tool_item_set_visible_horizontal (GtkToolItem *toolitem,
 				      gboolean     visible_horizontal)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM (toolitem));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (toolitem));
 
   visible_horizontal = visible_horizontal != FALSE;
 
@@ -1186,7 +1186,7 @@ ctk_tool_item_set_visible_horizontal (GtkToolItem *toolitem,
 
       g_object_notify (G_OBJECT (toolitem), "visible-horizontal");
 
-      ctk_widget_queue_resize (GTK_WIDGET (toolitem));
+      ctk_widget_queue_resize (CTK_WIDGET (toolitem));
     }
 }
 
@@ -1205,7 +1205,7 @@ ctk_tool_item_set_visible_horizontal (GtkToolItem *toolitem,
 gboolean
 ctk_tool_item_get_visible_horizontal (GtkToolItem *toolitem)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (toolitem), FALSE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (toolitem), FALSE);
 
   return toolitem->priv->visible_horizontal;
 }
@@ -1227,7 +1227,7 @@ void
 ctk_tool_item_set_visible_vertical (GtkToolItem *toolitem,
 				    gboolean     visible_vertical)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM (toolitem));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (toolitem));
 
   visible_vertical = visible_vertical != FALSE;
 
@@ -1237,7 +1237,7 @@ ctk_tool_item_set_visible_vertical (GtkToolItem *toolitem,
 
       g_object_notify (G_OBJECT (toolitem), "visible-vertical");
 
-      ctk_widget_queue_resize (GTK_WIDGET (toolitem));
+      ctk_widget_queue_resize (CTK_WIDGET (toolitem));
     }
 }
 
@@ -1255,7 +1255,7 @@ ctk_tool_item_set_visible_vertical (GtkToolItem *toolitem,
 gboolean
 ctk_tool_item_get_visible_vertical (GtkToolItem *toolitem)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (toolitem), FALSE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (toolitem), FALSE);
 
   return toolitem->priv->visible_vertical;
 }
@@ -1278,7 +1278,7 @@ ctk_tool_item_retrieve_proxy_menu_item (GtkToolItem *tool_item)
 {
   gboolean retval;
   
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), NULL);
 
   g_signal_emit (tool_item, toolitem_signals[CREATE_MENU_PROXY], 0,
 		 &retval);
@@ -1309,7 +1309,7 @@ GtkWidget *
 ctk_tool_item_get_proxy_menu_item (GtkToolItem *tool_item,
 				   const gchar *menu_item_id)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (tool_item), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (tool_item), NULL);
   g_return_val_if_fail (menu_item_id != NULL, NULL);
 
   if (tool_item->priv->menu_item_id && strcmp (tool_item->priv->menu_item_id, menu_item_id) == 0)
@@ -1338,13 +1338,13 @@ ctk_tool_item_rebuild_menu (GtkToolItem *tool_item)
   GtkWidget *parent;
   GtkWidget *widget;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM (tool_item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
-  widget = GTK_WIDGET (tool_item);
+  widget = CTK_WIDGET (tool_item);
 
   parent = ctk_widget_get_parent (widget);
-  if (GTK_IS_TOOL_SHELL (parent))
-    ctk_tool_shell_rebuild_menu (GTK_TOOL_SHELL (parent));
+  if (CTK_IS_TOOL_SHELL (parent))
+    ctk_tool_shell_rebuild_menu (CTK_TOOL_SHELL (parent));
 }
 
 /**
@@ -1366,8 +1366,8 @@ ctk_tool_item_set_proxy_menu_item (GtkToolItem *tool_item,
 				   const gchar *menu_item_id,
 				   GtkWidget   *menu_item)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM (tool_item));
-  g_return_if_fail (menu_item == NULL || GTK_IS_MENU_ITEM (menu_item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
+  g_return_if_fail (menu_item == NULL || CTK_IS_MENU_ITEM (menu_item));
   g_return_if_fail (menu_item_id != NULL);
 
   g_free (tool_item->priv->menu_item_id);
@@ -1384,7 +1384,7 @@ ctk_tool_item_set_proxy_menu_item (GtkToolItem *tool_item,
 	  g_object_ref_sink (menu_item);
 
 	  ctk_widget_set_sensitive (menu_item,
-				    ctk_widget_get_sensitive (GTK_WIDGET (tool_item)));
+				    ctk_widget_get_sensitive (CTK_WIDGET (tool_item)));
 	}
       
       tool_item->priv->menu_item = menu_item;
@@ -1411,12 +1411,12 @@ ctk_tool_item_toolbar_reconfigured (GtkToolItem *tool_item)
    * indicated by the function name would be quite confusing. That's the
    * price of providing stable APIs.
    */
-  g_return_if_fail (GTK_IS_TOOL_ITEM (tool_item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (tool_item));
 
   g_signal_emit (tool_item, toolitem_signals[TOOLBAR_RECONFIGURED], 0);
   
   if (tool_item->priv->drag_window)
     gdk_window_raise (tool_item->priv->drag_window);
 
-  ctk_widget_queue_resize (GTK_WIDGET (tool_item));
+  ctk_widget_queue_resize (CTK_WIDGET (tool_item));
 }

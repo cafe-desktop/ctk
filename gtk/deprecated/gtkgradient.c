@@ -268,7 +268,7 @@ ctk_gradient_resolve (GtkGradient         *gradient,
   guint i;
 
   g_return_val_if_fail (gradient != NULL, FALSE);
-  g_return_val_if_fail (GTK_IS_STYLE_PROPERTIES (props), FALSE);
+  g_return_val_if_fail (CTK_IS_STYLE_PROPERTIES (props), FALSE);
   g_return_val_if_fail (resolved_gradient != NULL, FALSE);
 
   if (gradient->radius0 == 0 && gradient->radius1 == 0)
@@ -312,9 +312,9 @@ _ctk_gradient_resolve_full (GtkGradient             *gradient,
   guint i;
 
   g_return_val_if_fail (gradient != NULL, NULL);
-  g_return_val_if_fail (GTK_IS_STYLE_PROVIDER (provider), NULL);
-  g_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
-  g_return_val_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
+  g_return_val_if_fail (parent_style == NULL || CTK_IS_CSS_STYLE (parent_style), NULL);
 
   if (gradient->radius0 == 0 && gradient->radius1 == 0)
     pattern = cairo_pattern_create_linear (gradient->x0, gradient->y0,
@@ -336,7 +336,7 @@ _ctk_gradient_resolve_full (GtkGradient             *gradient,
       /* if color resolving fails, assume transparency */
       val = _ctk_css_color_value_resolve (_ctk_symbolic_color_get_css_value (stop->color),
                                           provider,
-                                          ctk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR),
+                                          ctk_css_style_get_value (style, CTK_CSS_PROPERTY_COLOR),
                                           NULL);
       if (val)
         {

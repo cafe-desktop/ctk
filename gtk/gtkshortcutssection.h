@@ -16,20 +16,20 @@
  *  License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SHORTCUTS_SECTION_H__
-#define __GTK_SHORTCUTS_SECTION_H__
+#ifndef __CTK_SHORTCUTS_SECTION_H__
+#define __CTK_SHORTCUTS_SECTION_H__
 
 #include <gtk/gtkbox.h>
 #include <gtk/gtkshortcutsgroup.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SHORTCUTS_SECTION (ctk_shortcuts_section_get_type ())
-#define GTK_SHORTCUTS_SECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSection))
-#define GTK_SHORTCUTS_SECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSectionClass))
-#define GTK_IS_SHORTCUTS_SECTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SHORTCUTS_SECTION))
-#define GTK_IS_SHORTCUTS_SECTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SHORTCUTS_SECTION))
-#define GTK_SHORTCUTS_SECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSectionClass))
+#define CTK_TYPE_SHORTCUTS_SECTION (ctk_shortcuts_section_get_type ())
+#define CTK_SHORTCUTS_SECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSection))
+#define CTK_SHORTCUTS_SECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSectionClass))
+#define CTK_IS_SHORTCUTS_SECTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SHORTCUTS_SECTION))
+#define CTK_IS_SHORTCUTS_SECTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SHORTCUTS_SECTION))
+#define CTK_SHORTCUTS_SECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUTS_SECTION, GtkShortcutsSectionClass))
 
 
 typedef struct _GtkShortcutsSection      GtkShortcutsSection;
@@ -40,4 +40,4 @@ GType        ctk_shortcuts_section_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GTK_SHORTCUTS_SECTION_H__ */
+#endif /* __CTK_SHORTCUTS_SECTION_H__ */

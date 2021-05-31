@@ -40,7 +40,7 @@ ctk_graph_data_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkGraphData *graph = GTK_GRAPH_DATA (object);
+  GtkGraphData *graph = CTK_GRAPH_DATA (object);
   GtkGraphDataPrivate *priv = graph->priv;
 
   switch (param_id)
@@ -56,7 +56,7 @@ ctk_graph_data_get_property (GObject    *object,
 static void
 ctk_graph_data_finalize (GObject *object)
 {
-  GtkGraphData *graph = GTK_GRAPH_DATA (object);
+  GtkGraphData *graph = CTK_GRAPH_DATA (object);
   GtkGraphDataPrivate *priv = graph->priv;
 
   g_free (priv->values);
@@ -70,7 +70,7 @@ ctk_graph_data_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkGraphData *graph = GTK_GRAPH_DATA (object);
+  GtkGraphData *graph = CTK_GRAPH_DATA (object);
   GtkGraphDataPrivate *priv = graph->priv;
 
   switch (param_id)
@@ -111,7 +111,7 @@ ctk_graph_data_init (GtkGraphData *graph)
 GtkGraphData *
 ctk_graph_data_new (guint n_values)
 {
-  return g_object_new (GTK_TYPE_GRAPH_DATA,
+  return g_object_new (CTK_TYPE_GRAPH_DATA,
                        "n-values", n_values,
                        NULL);
 }

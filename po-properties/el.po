@@ -351,11 +351,11 @@ msgstr "Είναι σημαντικό"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Αν η ενέργεια θεωρείται σημαντική. Αν ΑΛΗΘΕΣ, οι διαμεσολαβητές αντικειμένου "
 "εργαλείου για αυτή την ενέργεια θα εμφανίζουν κείμενο σε λειτουργία "
-"GTK_TOOLBAR_BOTH_HORIZ."
+"CTK_TOOLBAR_BOTH_HORIZ."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1853,8 +1853,8 @@ msgid "Default Spacing"
 msgstr "Προεπιλεγμένο διάκενο"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Επιπλέον διάστημα για να προστεθεί στα κουμπιά GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Επιπλέον διάστημα για να προστεθεί στα κουμπιά CTK_CAN_DEFAULT"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1862,10 +1862,10 @@ msgstr "Προεπιλεγμένο εξωτερικό διάκενο"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Επιπλέον διάστημα για να προστεθεί στα κουμπιά GTK_CAN_DEFAULT τα οποία "
+"Επιπλέον διάστημα για να προστεθεί στα κουμπιά CTK_CAN_DEFAULT τα οποία "
 "σχεδιάζονται πάντα έξω από το όριο"
 
 #: gtk/gtkbutton.c:556
@@ -4383,10 +4383,10 @@ msgid "Baseline Row"
 msgstr "Σειρά γραμμή βάσης"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 "Η σειρά για στοίχιση στη γραμμή βάσης όταν η κάθετη στοίχιση είναι "
-"GTK_ALIGN_BASELINE"
+"CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8665,10 +8665,10 @@ msgstr "Διάκενο μεταξύ εικονιδίου και ετικέτας
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Αν το αντικείμενο εργαλειοθήκης θα θεωρείται σημαντικό. Οταν ΑΛΗΘΕΣ, τα "
-"κουμπιά εργαλειοθήκης εμφανίζουν κείμενο σε λειτουργία GTK_TOOLBAR_BOTH_HORIZ"
+"κουμπιά εργαλειοθήκης εμφανίζουν κείμενο σε λειτουργία CTK_TOOLBAR_BOTH_HORIZ"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

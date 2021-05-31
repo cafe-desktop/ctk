@@ -18,8 +18,8 @@
  * Authors: Carlos Soriano <csoriano@gnome.org>
  */
 
-#ifndef __GTK_PLACES_SIDEBAR_PRIVATE_H__
-#define __GTK_PLACES_SIDEBAR_PRIVATE_H__
+#ifndef __CTK_PLACES_SIDEBAR_PRIVATE_H__
+#define __CTK_PLACES_SIDEBAR_PRIVATE_H__
 
 #include <glib.h>
 #include "gtkplacessidebar.h"
@@ -57,4 +57,4 @@ gchar *ctk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar);
 
 G_END_DECLS
 
-#endif /* __GTK_PLACES_SIDEBAR_PRIVATE_H__ */
+#endif /* __CTK_PLACES_SIDEBAR_PRIVATE_H__ */

@@ -80,7 +80,7 @@ static void ctk_radio_action_activate     (GtkAction *action);
 static GtkWidget *create_menu_item        (GtkAction *action);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioAction, ctk_radio_action, GTK_TYPE_TOGGLE_ACTION)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioAction, ctk_radio_action, CTK_TYPE_TOGGLE_ACTION)
 
 static guint         radio_action_signals[LAST_SIGNAL] = { 0 };
 
@@ -91,7 +91,7 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
   GtkActionClass *action_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  action_class = GTK_ACTION_CLASS (klass);
+  action_class = CTK_ACTION_CLASS (klass);
 
   gobject_class->finalize = ctk_radio_action_finalize;
   gobject_class->set_property = ctk_radio_action_set_property;
@@ -122,7 +122,7 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
 						     G_MININT,
 						     G_MAXINT,
 						     0,
-						     GTK_PARAM_READWRITE));
+						     CTK_PARAM_READWRITE));
 
   /**
    * GtkRadioAction:group:
@@ -138,8 +138,8 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
 				   g_param_spec_object ("group",
 							P_("Group"),
 							P_("The radio action whose group this action belongs to."),
-							GTK_TYPE_RADIO_ACTION,
-							GTK_PARAM_WRITABLE));
+							CTK_TYPE_RADIO_ACTION,
+							CTK_PARAM_WRITABLE));
 
   /**
    * GtkRadioAction:current-value:
@@ -159,7 +159,7 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
 						     G_MININT,
 						     G_MAXINT,
 						     0,
-						     GTK_PARAM_READWRITE));
+						     CTK_PARAM_READWRITE));
 
   /**
    * GtkRadioAction::changed:
@@ -180,7 +180,7 @@ ctk_radio_action_class_init (GtkRadioActionClass *klass)
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
 		  G_STRUCT_OFFSET (GtkRadioActionClass, changed),  NULL, NULL,
 		  NULL,
-		  G_TYPE_NONE, 1, GTK_TYPE_RADIO_ACTION);
+		  G_TYPE_NONE, 1, CTK_TYPE_RADIO_ACTION);
 }
 
 static void
@@ -190,7 +190,7 @@ ctk_radio_action_init (GtkRadioAction *action)
   action->private_data->group = g_slist_prepend (NULL, action);
   action->private_data->value = 0;
 
-  ctk_toggle_action_set_draw_as_radio (GTK_TOGGLE_ACTION (action), TRUE);
+  ctk_toggle_action_set_draw_as_radio (CTK_TOGGLE_ACTION (action), TRUE);
 }
 
 /**
@@ -223,7 +223,7 @@ ctk_radio_action_new (const gchar *name,
 {
   g_return_val_if_fail (name != NULL, NULL);
 
-  return g_object_new (GTK_TYPE_RADIO_ACTION,
+  return g_object_new (CTK_TYPE_RADIO_ACTION,
                        "name", name,
                        "label", label,
                        "tooltip", tooltip,
@@ -238,7 +238,7 @@ ctk_radio_action_finalize (GObject *object)
   GtkRadioAction *action;
   GSList *tmp_list;
 
-  action = GTK_RADIO_ACTION (object);
+  action = CTK_RADIO_ACTION (object);
 
   action->private_data->group = g_slist_remove (action->private_data->group, action);
 
@@ -263,7 +263,7 @@ ctk_radio_action_set_property (GObject         *object,
 {
   GtkRadioAction *radio_action;
   
-  radio_action = GTK_RADIO_ACTION (object);
+  radio_action = CTK_RADIO_ACTION (object);
 
   switch (prop_id)
     {
@@ -277,7 +277,7 @@ ctk_radio_action_set_property (GObject         *object,
 	
 	if (G_VALUE_HOLDS_OBJECT (value)) 
 	  {
-	    arg = GTK_RADIO_ACTION (g_value_get_object (value));
+	    arg = CTK_RADIO_ACTION (g_value_get_object (value));
 	    if (arg)
 	      slist = ctk_radio_action_get_group (arg);
 	    ctk_radio_action_set_group (radio_action, slist);
@@ -302,7 +302,7 @@ ctk_radio_action_get_property (GObject    *object,
 {
   GtkRadioAction *radio_action;
 
-  radio_action = GTK_RADIO_ACTION (object);
+  radio_action = CTK_RADIO_ACTION (object);
 
   switch (prop_id)
     {
@@ -328,8 +328,8 @@ ctk_radio_action_activate (GtkAction *action)
   GSList *tmp_list;
   gboolean active;
 
-  radio_action = GTK_RADIO_ACTION (action);
-  toggle_action = GTK_TOGGLE_ACTION (action);
+  radio_action = CTK_RADIO_ACTION (action);
+  toggle_action = CTK_TOGGLE_ACTION (action);
 
   active = ctk_toggle_action_get_active (toggle_action);
   if (active)
@@ -365,7 +365,7 @@ ctk_radio_action_activate (GtkAction *action)
           if (ctk_toggle_action_get_active (tmp_action) &&
               (tmp_action != toggle_action))
 	    {
-	      _ctk_action_emit_activate (GTK_ACTION (tmp_action));
+	      _ctk_action_emit_activate (CTK_ACTION (tmp_action));
 	      break;
 	    }
 	}
@@ -388,7 +388,7 @@ ctk_radio_action_activate (GtkAction *action)
 static GtkWidget *
 create_menu_item (GtkAction *action)
 {
-  return g_object_new (GTK_TYPE_CHECK_MENU_ITEM, 
+  return g_object_new (CTK_TYPE_CHECK_MENU_ITEM, 
 		       "draw-as-radio", TRUE,
 		       NULL);
 }
@@ -424,7 +424,7 @@ create_menu_item (GtkAction *action)
 GSList *
 ctk_radio_action_get_group (GtkRadioAction *action)
 {
-  g_return_val_if_fail (GTK_IS_RADIO_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_RADIO_ACTION (action), NULL);
 
   return action->private_data->group;
 }
@@ -444,7 +444,7 @@ void
 ctk_radio_action_set_group (GtkRadioAction *action, 
 			    GSList         *group)
 {
-  g_return_if_fail (GTK_IS_RADIO_ACTION (action));
+  g_return_if_fail (CTK_IS_RADIO_ACTION (action));
   g_return_if_fail (!g_slist_find (group, action));
 
   if (action->private_data->group)
@@ -476,7 +476,7 @@ ctk_radio_action_set_group (GtkRadioAction *action,
     }
   else
     {
-      ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+      ctk_toggle_action_set_active (CTK_TOGGLE_ACTION (action), TRUE);
     }
 }
 
@@ -513,8 +513,8 @@ void
 ctk_radio_action_join_group (GtkRadioAction *action, 
 			     GtkRadioAction *group_source)
 {
-  g_return_if_fail (GTK_IS_RADIO_ACTION (action));
-  g_return_if_fail (group_source == NULL || GTK_IS_RADIO_ACTION (group_source));  
+  g_return_if_fail (CTK_IS_RADIO_ACTION (action));
+  g_return_if_fail (group_source == NULL || CTK_IS_RADIO_ACTION (group_source));  
 
   if (group_source)
     {
@@ -555,7 +555,7 @@ ctk_radio_action_get_current_value (GtkRadioAction *action)
 {
   GSList *slist;
 
-  g_return_val_if_fail (GTK_IS_RADIO_ACTION (action), 0);
+  g_return_val_if_fail (CTK_IS_RADIO_ACTION (action), 0);
 
   if (action->private_data->group)
     {
@@ -564,7 +564,7 @@ ctk_radio_action_get_current_value (GtkRadioAction *action)
 	  GtkToggleAction *toggle_action = slist->data;
 
 	  if (ctk_toggle_action_get_active (toggle_action))
-	    return GTK_RADIO_ACTION (toggle_action)->private_data->value;
+	    return CTK_RADIO_ACTION (toggle_action)->private_data->value;
 	}
     }
 
@@ -589,7 +589,7 @@ ctk_radio_action_set_current_value (GtkRadioAction *action,
 {
   GSList *slist;
 
-  g_return_if_fail (GTK_IS_RADIO_ACTION (action));
+  g_return_if_fail (CTK_IS_RADIO_ACTION (action));
 
   if (action->private_data->group)
     {
@@ -599,7 +599,7 @@ ctk_radio_action_set_current_value (GtkRadioAction *action,
 
 	  if (radio_action->private_data->value == current_value)
             {
-              ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (radio_action),
+              ctk_toggle_action_set_active (CTK_TOGGLE_ACTION (radio_action),
                                             TRUE);
               return;
             }
@@ -607,7 +607,7 @@ ctk_radio_action_set_current_value (GtkRadioAction *action,
     }
 
   if (action->private_data->value == current_value)
-    ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+    ctk_toggle_action_set_active (CTK_TOGGLE_ACTION (action), TRUE);
   else
     g_warning ("Radio group does not contain an action with value '%d'",
 	       current_value);

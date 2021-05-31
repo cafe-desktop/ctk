@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_BUTTON_BOX_H__
-#define __GTK_BUTTON_BOX_H__
+#ifndef __CTK_BUTTON_BOX_H__
+#define __CTK_BUTTON_BOX_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS  
 
-#define GTK_TYPE_BUTTON_BOX             (ctk_button_box_get_type ())
-#define GTK_BUTTON_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_BUTTON_BOX, GtkButtonBox))
-#define GTK_BUTTON_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_BUTTON_BOX, GtkButtonBoxClass))
-#define GTK_IS_BUTTON_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_BUTTON_BOX))
-#define GTK_IS_BUTTON_BOX_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_BUTTON_BOX))
-#define GTK_BUTTON_BOX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_BUTTON_BOX, GtkButtonBoxClass))
+#define CTK_TYPE_BUTTON_BOX             (ctk_button_box_get_type ())
+#define CTK_BUTTON_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BUTTON_BOX, GtkButtonBox))
+#define CTK_BUTTON_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_BUTTON_BOX, GtkButtonBoxClass))
+#define CTK_IS_BUTTON_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BUTTON_BOX))
+#define CTK_IS_BUTTON_BOX_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_BUTTON_BOX))
+#define CTK_BUTTON_BOX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BUTTON_BOX, GtkButtonBoxClass))
 
 
 typedef struct _GtkButtonBox              GtkButtonBox;
@@ -74,14 +74,14 @@ struct _GtkButtonBoxClass
 
 /**
  * GtkButtonBoxStyle:
- * @GTK_BUTTONBOX_SPREAD: Buttons are evenly spread across the box.
- * @GTK_BUTTONBOX_EDGE: Buttons are placed at the edges of the box.
- * @GTK_BUTTONBOX_START: Buttons are grouped towards the start of the box,
+ * @CTK_BUTTONBOX_SPREAD: Buttons are evenly spread across the box.
+ * @CTK_BUTTONBOX_EDGE: Buttons are placed at the edges of the box.
+ * @CTK_BUTTONBOX_START: Buttons are grouped towards the start of the box,
  *   (on the left for a HBox, or the top for a VBox).
- * @GTK_BUTTONBOX_END: Buttons are grouped towards the end of the box,
+ * @CTK_BUTTONBOX_END: Buttons are grouped towards the end of the box,
  *   (on the right for a HBox, or the bottom for a VBox).
- * @GTK_BUTTONBOX_CENTER: Buttons are centered in the box. Since 2.12.
- * @GTK_BUTTONBOX_EXPAND: Buttons expand to fill the box. This entails giving
+ * @CTK_BUTTONBOX_CENTER: Buttons are centered in the box. Since 2.12.
+ * @CTK_BUTTONBOX_EXPAND: Buttons expand to fill the box. This entails giving
  *   buttons a "linked" appearance, making button sizes homogeneous, and
  *   setting spacing to 0 (same as calling ctk_box_set_homogeneous() and
  *   ctk_box_set_spacing() manually). Since 3.12.
@@ -91,12 +91,12 @@ struct _GtkButtonBoxClass
  */
 typedef enum
 {
-  GTK_BUTTONBOX_SPREAD = 1,
-  GTK_BUTTONBOX_EDGE,
-  GTK_BUTTONBOX_START,
-  GTK_BUTTONBOX_END,
-  GTK_BUTTONBOX_CENTER,
-  GTK_BUTTONBOX_EXPAND
+  CTK_BUTTONBOX_SPREAD = 1,
+  CTK_BUTTONBOX_EDGE,
+  CTK_BUTTONBOX_START,
+  CTK_BUTTONBOX_END,
+  CTK_BUTTONBOX_CENTER,
+  CTK_BUTTONBOX_EXPAND
 } GtkButtonBoxStyle;
 
 
@@ -127,4 +127,4 @@ void              ctk_button_box_set_child_non_homogeneous (GtkButtonBox *widget
 
 G_END_DECLS
 
-#endif /* __GTK_BUTTON_BOX_H__ */
+#endif /* __CTK_BUTTON_BOX_H__ */

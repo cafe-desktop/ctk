@@ -21,8 +21,8 @@
  *
  */
 
-#ifndef _GTK_CAIRO_BLUR_H
-#define _GTK_CAIRO_BLUR_H
+#ifndef _CTK_CAIRO_BLUR_H
+#define _CTK_CAIRO_BLUR_H
 
 #include <glib.h>
 #include <cairo.h>
@@ -30,10 +30,10 @@
 G_BEGIN_DECLS
 
 typedef enum {
-  GTK_BLUR_NONE = 0,
-  GTK_BLUR_X = 1<<0,
-  GTK_BLUR_Y = 1<<1,
-  GTK_BLUR_REPEAT = 1<<2
+  CTK_BLUR_NONE = 0,
+  CTK_BLUR_X = 1<<0,
+  CTK_BLUR_Y = 1<<1,
+  CTK_BLUR_REPEAT = 1<<2
 } GtkBlurFlags;
 
 void            _ctk_cairo_blur_surface         (cairo_surface_t *surface,
@@ -43,4 +43,4 @@ int             _ctk_cairo_blur_compute_pixels  (double           radius);
 
 G_END_DECLS
 
-#endif /* _GTK_CAIRO_BLUR_H */
+#endif /* _CTK_CAIRO_BLUR_H */

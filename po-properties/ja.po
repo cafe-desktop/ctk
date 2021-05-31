@@ -332,10 +332,10 @@ msgstr "重要か"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "このアクションを重要と見なすかどうかを表します。TRUE の場合、このアクションの"
-"ツールアイテムプロキシは GTK_TOOLBAR_BOTH_HORIZ モードでテキストを表示しま"
+"ツールアイテムプロキシは CTK_TOOLBAR_BOTH_HORIZ モードでテキストを表示しま"
 "す。"
 
 #: gtk/deprecated/gtkaction.c:451
@@ -1889,8 +1889,8 @@ msgid "Default Spacing"
 msgstr "デフォルトの間隔"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT ボタンに加える余分な空白です"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT ボタンに加える余分な空白です"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1898,10 +1898,10 @@ msgstr "デフォルトの外部の空白"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"ボーダーの外に常に描画する GTK_CAN_DEFAULT ボタンに加える余分な空白です"
+"ボーダーの外に常に描画する CTK_CAN_DEFAULT ボタンに加える余分な空白です"
 
 #: gtk/gtkbutton.c:556
 msgid "Child X Displacement"
@@ -4540,7 +4540,7 @@ msgid "Baseline Row"
 msgstr ""
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 
 #: gtk/gtkgrid.c:1803
@@ -9082,10 +9082,10 @@ msgstr "アイコンとラベルの間に挿入する間隔 (ピクセル単位)
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "ツールバーの項目を重要と見なすかどうか。TRUE の場合、ツールバーのボタンは "
-"GTK_TOOLBAR_BOTH_HORIZ モードで表示されます。"
+"CTK_TOOLBAR_BOTH_HORIZ モードで表示されます。"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

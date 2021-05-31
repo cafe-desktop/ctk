@@ -469,8 +469,8 @@ typedef enum
  * @GDK_CROSSING_NORMAL: crossing because of pointer motion.
  * @GDK_CROSSING_GRAB: crossing because a grab is activated.
  * @GDK_CROSSING_UNGRAB: crossing because a grab is deactivated.
- * @GDK_CROSSING_GTK_GRAB: crossing because a GTK+ grab is activated.
- * @GDK_CROSSING_GTK_UNGRAB: crossing because a GTK+ grab is deactivated.
+ * @GDK_CROSSING_CTK_GRAB: crossing because a GTK+ grab is activated.
+ * @GDK_CROSSING_CTK_UNGRAB: crossing because a GTK+ grab is deactivated.
  * @GDK_CROSSING_STATE_CHANGED: crossing because a GTK+ widget changed
  *   state (e.g. sensitivity).
  * @GDK_CROSSING_TOUCH_BEGIN: crossing because a touch sequence has begun,
@@ -488,8 +488,8 @@ typedef enum
   GDK_CROSSING_NORMAL,
   GDK_CROSSING_GRAB,
   GDK_CROSSING_UNGRAB,
-  GDK_CROSSING_GTK_GRAB,
-  GDK_CROSSING_GTK_UNGRAB,
+  GDK_CROSSING_CTK_GRAB,
+  GDK_CROSSING_CTK_UNGRAB,
   GDK_CROSSING_STATE_CHANGED,
   GDK_CROSSING_TOUCH_BEGIN,
   GDK_CROSSING_TOUCH_END,
@@ -921,8 +921,8 @@ struct _GdkEventKey
  * @x_root: the x coordinate of the pointer relative to the root of the screen.
  * @y_root: the y coordinate of the pointer relative to the root of the screen.
  * @mode: the crossing mode (%GDK_CROSSING_NORMAL, %GDK_CROSSING_GRAB,
- *  %GDK_CROSSING_UNGRAB, %GDK_CROSSING_GTK_GRAB, %GDK_CROSSING_GTK_UNGRAB or
- *  %GDK_CROSSING_STATE_CHANGED).  %GDK_CROSSING_GTK_GRAB, %GDK_CROSSING_GTK_UNGRAB,
+ *  %GDK_CROSSING_UNGRAB, %GDK_CROSSING_CTK_GRAB, %GDK_CROSSING_CTK_UNGRAB or
+ *  %GDK_CROSSING_STATE_CHANGED).  %GDK_CROSSING_CTK_GRAB, %GDK_CROSSING_CTK_UNGRAB,
  *  and %GDK_CROSSING_STATE_CHANGED were added in 2.14 and are always synthesized,
  *  never native.
  * @detail: the kind of crossing that happened (%GDK_NOTIFY_INFERIOR,

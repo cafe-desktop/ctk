@@ -17,20 +17,20 @@
  * Authors: Matthias Clasen <mclasen@redhat.com>
  */
 
-#ifndef __GTK_CSS_IMAGE_RADIAL_PRIVATE_H__
-#define __GTK_CSS_IMAGE_RADIAL_PRIVATE_H__
+#ifndef __CTK_CSS_IMAGE_RADIAL_PRIVATE_H__
+#define __CTK_CSS_IMAGE_RADIAL_PRIVATE_H__
 
 #include "gtk/gtkcssimageprivate.h"
 #include "gtk/gtkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_RADIAL           (_ctk_css_image_radial_get_type ())
-#define GTK_CSS_IMAGE_RADIAL(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_RADIAL, GtkCssImageRadial))
-#define GTK_CSS_IMAGE_RADIAL_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_RADIAL, GtkCssImageRadialClass))
-#define GTK_IS_CSS_IMAGE_RADIAL(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_RADIAL))
-#define GTK_IS_CSS_IMAGE_RADIAL_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_IMAGE_RADIAL))
-#define GTK_CSS_IMAGE_RADIAL_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_IMAGE_RADIAL, GtkCssImageRadialClass))
+#define CTK_TYPE_CSS_IMAGE_RADIAL           (_ctk_css_image_radial_get_type ())
+#define CTK_CSS_IMAGE_RADIAL(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_RADIAL, GtkCssImageRadial))
+#define CTK_CSS_IMAGE_RADIAL_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_RADIAL, GtkCssImageRadialClass))
+#define CTK_IS_CSS_IMAGE_RADIAL(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_RADIAL))
+#define CTK_IS_CSS_IMAGE_RADIAL_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_RADIAL))
+#define CTK_CSS_IMAGE_RADIAL_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_RADIAL, GtkCssImageRadialClass))
 
 typedef struct _GtkCssImageRadial           GtkCssImageRadial;
 typedef struct _GtkCssImageRadialClass      GtkCssImageRadialClass;
@@ -42,11 +42,11 @@ struct _GtkCssImageRadialColorStop {
 };
 
 typedef enum {
-  GTK_CSS_EXPLICIT_SIZE,
-  GTK_CSS_CLOSEST_SIDE,
-  GTK_CSS_FARTHEST_SIDE,
-  GTK_CSS_CLOSEST_CORNER,
-  GTK_CSS_FARTHEST_CORNER
+  CTK_CSS_EXPLICIT_SIZE,
+  CTK_CSS_CLOSEST_SIDE,
+  CTK_CSS_FARTHEST_SIDE,
+  CTK_CSS_CLOSEST_CORNER,
+  CTK_CSS_FARTHEST_CORNER
 } GtkCssRadialSize;
 
 struct _GtkCssImageRadial
@@ -70,4 +70,4 @@ GType          _ctk_css_image_radial_get_type             (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_IMAGE_RADIAL_PRIVATE_H__ */
+#endif /* __CTK_CSS_IMAGE_RADIAL_PRIVATE_H__ */

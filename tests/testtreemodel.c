@@ -45,7 +45,7 @@ list_store_append (GtkTreeModel *model,
 		   gint          items,
 		   gint          i)
 {
-  GtkListStore *store = GTK_LIST_STORE (model);
+  GtkListStore *store = CTK_LIST_STORE (model);
   GtkTreeIter iter;
   gchar *text;
 
@@ -60,7 +60,7 @@ list_store_prepend (GtkTreeModel *model,
 		    gint          items,
 		    gint          i)
 {
-  GtkListStore *store = GTK_LIST_STORE (model);
+  GtkListStore *store = CTK_LIST_STORE (model);
   GtkTreeIter iter;
   gchar *text;
 
@@ -75,7 +75,7 @@ list_store_insert (GtkTreeModel *model,
 		   gint          items,
 		   gint          i)
 {
-  GtkListStore *store = GTK_LIST_STORE (model);
+  GtkListStore *store = CTK_LIST_STORE (model);
   GtkTreeIter iter;
   gchar *text;
   gint n;
@@ -112,7 +112,7 @@ tree_store_append (GtkTreeModel *model,
 		   gint          items,
 		   gint          i)
 {
-  GtkTreeStore *store = GTK_TREE_STORE (model);
+  GtkTreeStore *store = CTK_TREE_STORE (model);
   GtkTreeIter iter;
   gchar *text;
 
@@ -127,7 +127,7 @@ tree_store_prepend (GtkTreeModel *model,
 		    gint          items,
 		    gint          i)
 {
-  GtkTreeStore *store = GTK_TREE_STORE (model);
+  GtkTreeStore *store = CTK_TREE_STORE (model);
   GtkTreeIter iter;
   gchar *text;
 
@@ -142,7 +142,7 @@ tree_store_insert_flat (GtkTreeModel *model,
 			gint          items,
 			gint          i)
 {
-  GtkTreeStore *store = GTK_TREE_STORE (model);
+  GtkTreeStore *store = CTK_TREE_STORE (model);
   GtkTreeIter iter;
   gchar *text;
   gint n;
@@ -186,7 +186,7 @@ tree_store_insert_deep (GtkTreeModel *model,
 			gint          items,
 			gint          i)
 {
-  GtkTreeStore *store = GTK_TREE_STORE (model);
+  GtkTreeStore *store = CTK_TREE_STORE (model);
   GtkTreeIter iter;
   gchar *text;
   FindData data;
@@ -259,7 +259,7 @@ main (int argc, char *argv[])
   
   ctk_init_with_args (&argc, &argv, NULL, entries, NULL, NULL);
 
-  model = GTK_TREE_MODEL (ctk_list_store_new (2, G_TYPE_INT, G_TYPE_STRING));
+  model = CTK_TREE_MODEL (ctk_list_store_new (2, G_TYPE_INT, G_TYPE_STRING));
   
   test_run ("list store append", 
 	    model, 
@@ -276,11 +276,11 @@ main (int argc, char *argv[])
 	    (ClearFunc*)ctk_list_store_clear, 
 	    (InsertFunc*)list_store_insert);
 
-  ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model), 
+  ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (model), 
 					   compare, NULL, NULL);
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model), 
-					GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
-					GTK_SORT_ASCENDING);
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (model), 
+					CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+					CTK_SORT_ASCENDING);
 
   test_run ("list store insert (sorted)", 
 	    model, 
@@ -289,7 +289,7 @@ main (int argc, char *argv[])
 
   g_object_unref (model);
   
-  model = GTK_TREE_MODEL (ctk_tree_store_new (2, G_TYPE_INT, G_TYPE_STRING));
+  model = CTK_TREE_MODEL (ctk_tree_store_new (2, G_TYPE_INT, G_TYPE_STRING));
 
   test_run ("tree store append", 
 	    model, 
@@ -311,11 +311,11 @@ main (int argc, char *argv[])
 	    (ClearFunc*)ctk_tree_store_clear, 
 	    (InsertFunc*)tree_store_insert_deep);
 
-  ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model), 
+  ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (model), 
 					   compare, NULL, NULL);
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model), 
-					GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
-					GTK_SORT_ASCENDING);
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (model), 
+					CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+					CTK_SORT_ASCENDING);
 
   test_run ("tree store insert (flat, sorted)", 
 	    model, 

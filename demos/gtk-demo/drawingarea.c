@@ -207,38 +207,38 @@ do_drawingarea (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Drawing Area");
+      ctk_window_set_title (CTK_WINDOW (window), "Drawing Area");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (close_window), NULL);
 
-      ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+      ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
 
       /*
        * Create the checkerboard area
        */
 
       label = ctk_label_new (NULL);
-      ctk_label_set_markup (GTK_LABEL (label),
+      ctk_label_set_markup (CTK_LABEL (label),
                             "<u>Checkerboard pattern</u>");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
       frame = ctk_frame_new (NULL);
-      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      ctk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+      ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+      ctk_box_pack_start (CTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
       da = ctk_drawing_area_new ();
       /* set a minimum size */
       ctk_widget_set_size_request (da, 100, 100);
 
-      ctk_container_add (GTK_CONTAINER (frame), da);
+      ctk_container_add (CTK_CONTAINER (frame), da);
 
       g_signal_connect (da, "draw",
                         G_CALLBACK (checkerboard_draw), NULL);
@@ -248,19 +248,19 @@ do_drawingarea (GtkWidget *do_widget)
        */
 
       label = ctk_label_new (NULL);
-      ctk_label_set_markup (GTK_LABEL (label),
+      ctk_label_set_markup (CTK_LABEL (label),
                             "<u>Scribble area</u>");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
       frame = ctk_frame_new (NULL);
-      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      ctk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+      ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+      ctk_box_pack_start (CTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
       da = ctk_drawing_area_new ();
       /* set a minimum size */
       ctk_widget_set_size_request (da, 100, 100);
 
-      ctk_container_add (GTK_CONTAINER (frame), da);
+      ctk_container_add (CTK_CONTAINER (frame), da);
 
       /* Signals used to handle backing surface */
 

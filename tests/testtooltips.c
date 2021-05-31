@@ -31,9 +31,9 @@ query_tooltip_cb (GtkWidget  *widget,
 		  GtkTooltip *tooltip,
 		  gpointer    data)
 {
-  ctk_tooltip_set_markup (tooltip, ctk_button_get_label (GTK_BUTTON (widget)));
+  ctk_tooltip_set_markup (tooltip, ctk_button_get_label (CTK_BUTTON (widget)));
   ctk_tooltip_set_icon_from_icon_name (tooltip, "edit-delete",
-                                       GTK_ICON_SIZE_MENU);
+                                       CTK_ICON_SIZE_MENU);
 
   return TRUE;
 }
@@ -59,7 +59,7 @@ query_tooltip_custom_cb (GtkWidget  *widget,
 {
   GtkWindow *window = ctk_widget_get_tooltip_window (widget);
 
-  ctk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
+  ctk_widget_set_app_paintable (CTK_WIDGET (window), TRUE);
   g_signal_connect (window, "draw", G_CALLBACK (draw_tooltip), NULL);
 
   return TRUE;
@@ -75,7 +75,7 @@ query_tooltip_text_view_cb (GtkWidget  *widget,
 {
   GtkTextTag *tag = data;
   GtkTextIter iter;
-  GtkTextView *text_view = GTK_TEXT_VIEW (widget);
+  GtkTextView *text_view = CTK_TEXT_VIEW (widget);
   GtkTextBuffer *buffer = ctk_text_view_get_buffer (text_view);
 
   if (keyboard_tip)
@@ -89,7 +89,7 @@ query_tooltip_text_view_cb (GtkWidget  *widget,
     {
       gint bx, by, trailing;
 
-      ctk_text_view_window_to_buffer_coords (text_view, GTK_TEXT_WINDOW_TEXT,
+      ctk_text_view_window_to_buffer_coords (text_view, CTK_TEXT_WINDOW_TEXT,
 					     x, y, &bx, &by);
       ctk_text_view_get_iter_at_position (text_view, &iter, &trailing, bx, by);
     }
@@ -111,7 +111,7 @@ query_tooltip_tree_view_cb (GtkWidget  *widget,
 			    gpointer    data)
 {
   GtkTreeIter iter;
-  GtkTreeView *tree_view = GTK_TREE_VIEW (widget);
+  GtkTreeView *tree_view = CTK_TREE_VIEW (widget);
   GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
   GtkTreePath *path = NULL;
   gchar *tmp;
@@ -161,7 +161,7 @@ create_model (void)
   ctk_tree_store_insert_with_values (store, &iter, NULL, 0,
 				     0, "Word Processor", -1);
 
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 static void
@@ -280,19 +280,19 @@ main (int argc, char *argv[])
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), "Tooltips test");
-  ctk_container_set_border_width (GTK_CONTAINER (window), 10);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), "Tooltips test");
+  ctk_container_set_border_width (CTK_CONTAINER (window), 10);
   g_signal_connect (window, "delete_event",
 		    G_CALLBACK (ctk_main_quit), NULL);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 3);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   /* A check button using the tooltip-markup property */
   button = ctk_check_button_new_with_label ("This one uses the tooltip-markup property");
   ctk_widget_set_tooltip_text (button, "Hello, I am a static tooltip.");
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
 
   text = ctk_widget_get_tooltip_text (button);
   markup = ctk_widget_get_tooltip_markup (button);
@@ -305,13 +305,13 @@ main (int argc, char *argv[])
   g_object_set (button, "has-tooltip", TRUE, NULL);
   g_signal_connect (button, "query-tooltip",
 		    G_CALLBACK (query_tooltip_cb), NULL);
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
 
   /* A label */
   button = ctk_label_new ("I am just a label");
-  ctk_label_set_selectable (GTK_LABEL (button), FALSE);
+  ctk_label_set_selectable (CTK_LABEL (button), FALSE);
   ctk_widget_set_tooltip_text (button, "Label & and tooltip");
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
 
   text = ctk_widget_get_tooltip_text (button);
   markup = ctk_widget_get_tooltip_markup (button);
@@ -321,9 +321,9 @@ main (int argc, char *argv[])
 
   /* A selectable label */
   button = ctk_label_new ("I am a selectable label");
-  ctk_label_set_selectable (GTK_LABEL (button), TRUE);
+  ctk_label_set_selectable (CTK_LABEL (button), TRUE);
   ctk_widget_set_tooltip_markup (button, "<b>Another</b> Label tooltip");
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
 
   text = ctk_widget_get_tooltip_text (button);
   markup = ctk_widget_get_tooltip_markup (button);
@@ -333,18 +333,18 @@ main (int argc, char *argv[])
 
   /* Another one, with a custom tooltip window */
   button = ctk_check_button_new_with_label ("This one has a custom tooltip window!");
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
 
-  tooltip_window = ctk_window_new (GTK_WINDOW_POPUP);
+  tooltip_window = ctk_window_new (CTK_WINDOW_POPUP);
   tooltip_button = ctk_label_new ("blaat!");
-  ctk_container_add (GTK_CONTAINER (tooltip_window), tooltip_button);
+  ctk_container_add (CTK_CONTAINER (tooltip_window), tooltip_button);
   ctk_widget_show (tooltip_button);
 
-  ctk_widget_set_tooltip_window (button, GTK_WINDOW (tooltip_window));
-  ctk_window_set_type_hint (GTK_WINDOW (tooltip_window),
+  ctk_widget_set_tooltip_window (button, CTK_WINDOW (tooltip_window));
+  ctk_window_set_type_hint (CTK_WINDOW (tooltip_window),
                             GDK_WINDOW_TYPE_HINT_TOOLTIP);
-  ctk_window_set_transient_for (GTK_WINDOW (tooltip_window),
-                                GTK_WINDOW (window));
+  ctk_window_set_transient_for (CTK_WINDOW (tooltip_window),
+                                CTK_WINDOW (window));
 
   g_signal_connect (button, "query-tooltip",
 		    G_CALLBACK (query_tooltip_custom_cb), NULL);
@@ -354,13 +354,13 @@ main (int argc, char *argv[])
   button = ctk_button_new_with_label ("This one is insensitive");
   ctk_widget_set_sensitive (button, FALSE);
   g_object_set (button, "tooltip-text", "Insensitive!", NULL);
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
 
   /* Testcases from Kris without a tree view don't exist. */
   tree_view = ctk_tree_view_new_with_model (create_model ());
   ctk_widget_set_size_request (tree_view, 200, 240);
 
-  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (tree_view),
 					       0, "Test",
 					       ctk_cell_renderer_text_new (),
 					       "text", 0,
@@ -369,15 +369,15 @@ main (int argc, char *argv[])
   g_object_set (tree_view, "has-tooltip", TRUE, NULL);
   g_signal_connect (tree_view, "query-tooltip",
 		    G_CALLBACK (query_tooltip_tree_view_cb), NULL);
-  g_signal_connect (ctk_tree_view_get_selection (GTK_TREE_VIEW (tree_view)),
+  g_signal_connect (ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view)),
 		    "changed", G_CALLBACK (selection_changed_cb), tree_view);
 
   /* Set a tooltip on the column */
-  column = ctk_tree_view_get_column (GTK_TREE_VIEW (tree_view), 0);
+  column = ctk_tree_view_get_column (CTK_TREE_VIEW (tree_view), 0);
   ctk_tree_view_column_set_clickable (column, TRUE);
   g_object_set (ctk_tree_view_column_get_button (column), "tooltip-text", "Header", NULL);
 
-  ctk_box_pack_start (GTK_BOX (box), tree_view, FALSE, FALSE, 2);
+  ctk_box_pack_start (CTK_BOX (box), tree_view, FALSE, FALSE, 2);
 
   /* And a text view for Matthias */
   buffer = ctk_text_buffer_new (NULL);
@@ -401,7 +401,7 @@ main (int argc, char *argv[])
   g_signal_connect (text_view, "query-tooltip",
 		    G_CALLBACK (query_tooltip_text_view_cb), tag);
 
-  ctk_box_pack_start (GTK_BOX (box), text_view, FALSE, FALSE, 2);
+  ctk_box_pack_start (CTK_BOX (box), text_view, FALSE, FALSE, 2);
 
   /* Drawing area */
   drawing_area = ctk_drawing_area_new ();
@@ -411,7 +411,7 @@ main (int argc, char *argv[])
 		    G_CALLBACK (drawing_area_draw), NULL);
   g_signal_connect (drawing_area, "query-tooltip",
 		    G_CALLBACK (query_tooltip_drawing_area_cb), NULL);
-  ctk_box_pack_start (GTK_BOX (box), drawing_area, FALSE, FALSE, 2);
+  ctk_box_pack_start (CTK_BOX (box), drawing_area, FALSE, FALSE, 2);
 
   button = ctk_label_new ("Custom tooltip I");
   label = ctk_label_new ("See, custom");
@@ -419,13 +419,13 @@ main (int argc, char *argv[])
   g_object_set (button, "has-tooltip", TRUE, NULL);
   g_signal_connect (button, "query-tooltip",
 		    G_CALLBACK (query_tooltip_label_cb), label);
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 2);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 2);
 
   button = ctk_label_new ("Custom tooltip II");
   label = ctk_label_new ("See, custom, too");
   g_object_ref_sink (label);
   g_object_set (button, "has-tooltip", TRUE, NULL);
-  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 2);
+  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 2);
   g_signal_connect (button, "query-tooltip",
 		    G_CALLBACK (query_tooltip_label_cb), label);
 

@@ -17,19 +17,19 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_CUSTOM_GADGET_PRIVATE_H__
-#define __GTK_CSS_CUSTOM_GADGET_PRIVATE_H__
+#ifndef __CTK_CSS_CUSTOM_GADGET_PRIVATE_H__
+#define __CTK_CSS_CUSTOM_GADGET_PRIVATE_H__
 
 #include "gtk/gtkcssgadgetprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_CUSTOM_GADGET           (ctk_css_custom_gadget_get_type ())
-#define GTK_CSS_CUSTOM_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadget))
-#define GTK_CSS_CUSTOM_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadgetClass))
-#define GTK_IS_CSS_CUSTOM_GADGET(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_CUSTOM_GADGET))
-#define GTK_IS_CSS_CUSTOM_GADGET_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_CUSTOM_GADGET))
-#define GTK_CSS_CUSTOM_GADGET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadgetClass))
+#define CTK_TYPE_CSS_CUSTOM_GADGET           (ctk_css_custom_gadget_get_type ())
+#define CTK_CSS_CUSTOM_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadget))
+#define CTK_CSS_CUSTOM_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadgetClass))
+#define CTK_IS_CSS_CUSTOM_GADGET(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_CUSTOM_GADGET))
+#define CTK_IS_CSS_CUSTOM_GADGET_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_CUSTOM_GADGET))
+#define CTK_CSS_CUSTOM_GADGET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadgetClass))
 
 typedef struct _GtkCssCustomGadget           GtkCssCustomGadget;
 typedef struct _GtkCssCustomGadgetClass      GtkCssCustomGadgetClass;
@@ -85,4 +85,4 @@ GtkCssGadget *  ctk_css_custom_gadget_new_for_node             (GtkCssNode      
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_CUSTOM_GADGET_PRIVATE_H__ */
+#endif /* __CTK_CSS_CUSTOM_GADGET_PRIVATE_H__ */

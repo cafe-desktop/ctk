@@ -53,16 +53,16 @@ ctk_drag_source_gesture_begin (GtkGesture       *gesture,
   GtkDragSourceSite *site = data;
   guint button;
 
-  if (ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture)))
+  if (ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture)))
     button = 1;
   else
-    button = ctk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (gesture));
+    button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture));
 
   g_assert (button >= 1);
 
   if (!site->start_button_mask ||
       !(site->start_button_mask & (GDK_BUTTON1_MASK << (button - 1))))
-    ctk_gesture_set_state (gesture, GTK_EVENT_SEQUENCE_DENIED);
+    ctk_gesture_set_state (gesture, CTK_EVENT_SEQUENCE_DENIED);
 }
 
 static gboolean
@@ -73,13 +73,13 @@ ctk_drag_source_event_cb (GtkWidget *widget,
   gdouble start_x, start_y, offset_x, offset_y;
   GtkDragSourceSite *site = data;
 
-  ctk_event_controller_handle_event (GTK_EVENT_CONTROLLER (site->drag_gesture), event);
+  ctk_event_controller_handle_event (CTK_EVENT_CONTROLLER (site->drag_gesture), event);
 
   if (ctk_gesture_is_recognized (site->drag_gesture))
     {
-      ctk_gesture_drag_get_start_point (GTK_GESTURE_DRAG (site->drag_gesture),
+      ctk_gesture_drag_get_start_point (CTK_GESTURE_DRAG (site->drag_gesture),
                                         &start_x, &start_y);
-      ctk_gesture_drag_get_offset (GTK_GESTURE_DRAG (site->drag_gesture),
+      ctk_gesture_drag_get_offset (CTK_GESTURE_DRAG (site->drag_gesture),
                                    &offset_x, &offset_y);
 
       if (ctk_drag_check_threshold (widget, start_x, start_y,
@@ -91,11 +91,11 @@ ctk_drag_source_event_cb (GtkWidget *widget,
           gboolean needs_icon;
           GdkDragContext *context;
 
-          sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (site->drag_gesture));
+          sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (site->drag_gesture));
           last_event = gdk_event_copy (ctk_gesture_get_last_event (site->drag_gesture, sequence));
 
-          button = ctk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (site->drag_gesture));
-          ctk_event_controller_reset (GTK_EVENT_CONTROLLER (site->drag_gesture));
+          button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (site->drag_gesture));
+          ctk_event_controller_reset (CTK_EVENT_CONTROLLER (site->drag_gesture));
 
           context = ctk_drag_begin_internal (widget, &needs_icon, site->target_list,
                                              site->actions, button, last_event,
@@ -147,7 +147,7 @@ ctk_drag_source_set (GtkWidget            *widget,
 {
   GtkDragSourceSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
 
@@ -166,9 +166,9 @@ ctk_drag_source_set (GtkWidget            *widget,
       site = g_slice_new0 (GtkDragSourceSite);
       site->image_def = ctk_image_definition_new_empty ();
       site->drag_gesture = ctk_gesture_drag_new (widget);
-      ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (site->drag_gesture),
-                                                  GTK_PHASE_NONE);
-      ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (site->drag_gesture), 0);
+      ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (site->drag_gesture),
+                                                  CTK_PHASE_NONE);
+      ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (site->drag_gesture), 0);
       g_signal_connect (site->drag_gesture, "begin",
                         G_CALLBACK (ctk_drag_source_gesture_begin),
                         site);
@@ -205,7 +205,7 @@ ctk_drag_source_unset (GtkWidget *widget)
 {
   GtkDragSourceSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
 
@@ -234,7 +234,7 @@ ctk_drag_source_get_target_list (GtkWidget *widget)
 {
   GtkDragSourceSite *site;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
 
@@ -258,7 +258,7 @@ ctk_drag_source_set_target_list (GtkWidget     *widget,
 {
   GtkDragSourceSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
   if (site == NULL)
@@ -373,7 +373,7 @@ ctk_drag_source_set_icon_pixbuf (GtkWidget *widget,
 {
   GtkDragSourceSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
@@ -399,7 +399,7 @@ ctk_drag_source_set_icon_stock (GtkWidget   *widget,
 {
   GtkDragSourceSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (stock_id != NULL);
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
@@ -425,7 +425,7 @@ ctk_drag_source_set_icon_name (GtkWidget   *widget,
 {
   GtkDragSourceSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (icon_name != NULL);
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");
@@ -451,7 +451,7 @@ ctk_drag_source_set_icon_gicon (GtkWidget *widget,
 {
   GtkDragSourceSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (icon != NULL);
   
   site = g_object_get_data (G_OBJECT (widget), "gtk-site-data");

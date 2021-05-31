@@ -27,7 +27,7 @@ struct _GtkRadioMenuItemAccessiblePrivate
 
 G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioMenuItemAccessible,
                             ctk_radio_menu_item_accessible,
-                            GTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE)
+                            CTK_TYPE_CHECK_MENU_ITEM_ACCESSIBLE)
 
 
 static AtkRelationSet *
@@ -38,16 +38,16 @@ ctk_radio_menu_item_accessible_ref_relation_set (AtkObject *obj)
   GSList *list;
   GtkRadioMenuItemAccessible *radio_menu_item;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  radio_menu_item = GTK_RADIO_MENU_ITEM_ACCESSIBLE (obj);
+  radio_menu_item = CTK_RADIO_MENU_ITEM_ACCESSIBLE (obj);
 
   relation_set = ATK_OBJECT_CLASS (ctk_radio_menu_item_accessible_parent_class)->ref_relation_set (obj);
 
   /* If the radio menu_item's group has changed remove the relation */
-  list = ctk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (widget));
+  list = ctk_radio_menu_item_get_group (CTK_RADIO_MENU_ITEM (widget));
 
   if (radio_menu_item->priv->old_group != list)
     {

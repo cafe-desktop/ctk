@@ -26,7 +26,7 @@
 
 static void atk_value_interface_init (AtkValueIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkProgressBarAccessible, ctk_progress_bar_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkProgressBarAccessible, ctk_progress_bar_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
@@ -42,7 +42,7 @@ static void
 ctk_progress_bar_accessible_notify_gtk (GObject    *obj,
                                         GParamSpec *pspec)
 {
-  GtkWidget *widget = GTK_WIDGET (obj);
+  GtkWidget *widget = CTK_WIDGET (obj);
   AtkObject *accessible;
 
   accessible = ctk_widget_get_accessible (widget);
@@ -50,7 +50,7 @@ ctk_progress_bar_accessible_notify_gtk (GObject    *obj,
   if (strcmp (pspec->name, "fraction") == 0)
     g_object_notify (G_OBJECT (accessible), "accessible-value");
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_progress_bar_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_progress_bar_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static void
@@ -75,11 +75,11 @@ ctk_progress_bar_accessible_get_current_value (AtkValue *obj,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 
   memset (value, 0, sizeof (GValue));
   g_value_init (value, G_TYPE_DOUBLE);
-  g_value_set_double (value, ctk_progress_bar_get_fraction (GTK_PROGRESS_BAR (widget)));
+  g_value_set_double (value, ctk_progress_bar_get_fraction (CTK_PROGRESS_BAR (widget)));
 }
 
 static void
@@ -107,9 +107,9 @@ ctk_progress_bar_accessible_get_value_and_text (AtkValue  *obj,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 
-  *value = ctk_progress_bar_get_fraction (GTK_PROGRESS_BAR (widget));
+  *value = ctk_progress_bar_get_fraction (CTK_PROGRESS_BAR (widget));
   *text = NULL;
 }
 

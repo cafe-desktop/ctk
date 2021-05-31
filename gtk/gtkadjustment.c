@@ -106,7 +106,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkAdjustment, ctk_adjustment, G_TYPE_INITIALLY_UNOW
 static void
 ctk_adjustment_finalize (GObject *object)
 {
-  GtkAdjustment *adjustment = GTK_ADJUSTMENT (object);
+  GtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
   GtkAdjustmentPrivate *priv = adjustment->priv;
 
   if (priv->tick_id)
@@ -143,7 +143,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            P_("The value of the adjustment"),
                            -G_MAXDOUBLE, G_MAXDOUBLE,
                            0.0,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkAdjustment:lower:
@@ -158,7 +158,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            P_("The minimum value of the adjustment"),
                            -G_MAXDOUBLE, G_MAXDOUBLE,
                            0.0,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkAdjustment:upper:
@@ -176,7 +176,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            P_("The maximum value of the adjustment"),
                            -G_MAXDOUBLE, G_MAXDOUBLE,
                            0.0,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkAdjustment:step-increment:
@@ -191,7 +191,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            P_("The step increment of the adjustment"),
                            -G_MAXDOUBLE, G_MAXDOUBLE,
                            0.0,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkAdjustment:page-increment:
@@ -206,7 +206,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            P_("The page increment of the adjustment"),
                            -G_MAXDOUBLE, G_MAXDOUBLE,
                            0.0,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkAdjustment:page-size:
@@ -224,7 +224,7 @@ ctk_adjustment_class_init (GtkAdjustmentClass *class)
                            P_("The page size of the adjustment"),
                            -G_MAXDOUBLE, G_MAXDOUBLE,
                            0.0,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, adjustment_props);
 
@@ -272,7 +272,7 @@ ctk_adjustment_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkAdjustment *adjustment = GTK_ADJUSTMENT (object);
+  GtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
   GtkAdjustmentPrivate *priv = adjustment->priv;
 
   switch (prop_id)
@@ -307,7 +307,7 @@ ctk_adjustment_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkAdjustment *adjustment = GTK_ADJUSTMENT (object);
+  GtkAdjustment *adjustment = CTK_ADJUSTMENT (object);
   gdouble double_value = g_value_get_double (value);
   GtkAdjustmentPrivate *priv = adjustment->priv;
 
@@ -377,7 +377,7 @@ ctk_adjustment_dispatch_properties_changed (GObject     *object,
   if (changed)
     {
       adjustment_changed_stamp++;
-      emit_changed (GTK_ADJUSTMENT (object));
+      emit_changed (CTK_ADJUSTMENT (object));
     }
 }
 
@@ -402,7 +402,7 @@ ctk_adjustment_new (gdouble value,
 		    gdouble page_increment,
 		    gdouble page_size)
 {
-  return g_object_new (GTK_TYPE_ADJUSTMENT,
+  return g_object_new (CTK_TYPE_ADJUSTMENT,
 		       "lower", lower,
 		       "upper", upper,
 		       "step-increment", step_increment,
@@ -424,7 +424,7 @@ ctk_adjustment_new (gdouble value,
 gdouble
 ctk_adjustment_get_value (GtkAdjustment *adjustment)
 {
-  g_return_val_if_fail (GTK_IS_ADJUSTMENT (adjustment), 0.0);
+  g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
   return adjustment->priv->value;
 }
@@ -432,7 +432,7 @@ ctk_adjustment_get_value (GtkAdjustment *adjustment)
 gdouble
 ctk_adjustment_get_target_value (GtkAdjustment *adjustment)
 {
-  g_return_val_if_fail (GTK_IS_ADJUSTMENT (adjustment), 0.0);
+  g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
   if (adjustment->priv->tick_id)
     return adjustment->priv->target;
@@ -562,7 +562,7 @@ void
 ctk_adjustment_set_value (GtkAdjustment *adjustment,
 			  gdouble        value)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   ctk_adjustment_set_value_internal (adjustment, value, FALSE);
 }
@@ -571,7 +571,7 @@ void
 ctk_adjustment_animate_to_value (GtkAdjustment *adjustment,
 			         gdouble        value)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   ctk_adjustment_set_value_internal (adjustment, value, TRUE);
 }
@@ -589,7 +589,7 @@ ctk_adjustment_animate_to_value (GtkAdjustment *adjustment,
 gdouble
 ctk_adjustment_get_lower (GtkAdjustment *adjustment)
 {
-  g_return_val_if_fail (GTK_IS_ADJUSTMENT (adjustment), 0.0);
+  g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
   return adjustment->priv->lower;
 }
@@ -619,7 +619,7 @@ void
 ctk_adjustment_set_lower (GtkAdjustment *adjustment,
                           gdouble        lower)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   if (lower != adjustment->priv->lower)
     g_object_set (adjustment, "lower", lower, NULL);
@@ -638,7 +638,7 @@ ctk_adjustment_set_lower (GtkAdjustment *adjustment,
 gdouble
 ctk_adjustment_get_upper (GtkAdjustment *adjustment)
 {
-  g_return_val_if_fail (GTK_IS_ADJUSTMENT (adjustment), 0.0);
+  g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
   return adjustment->priv->upper;
 }
@@ -663,7 +663,7 @@ void
 ctk_adjustment_set_upper (GtkAdjustment *adjustment,
                           gdouble        upper)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   if (upper != adjustment->priv->upper)
     g_object_set (adjustment, "upper", upper, NULL);
@@ -682,7 +682,7 @@ ctk_adjustment_set_upper (GtkAdjustment *adjustment,
 gdouble
 ctk_adjustment_get_step_increment (GtkAdjustment *adjustment)
 {
-  g_return_val_if_fail (GTK_IS_ADJUSTMENT (adjustment), 0.0);
+  g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
   return adjustment->priv->step_increment;
 }
@@ -704,7 +704,7 @@ void
 ctk_adjustment_set_step_increment (GtkAdjustment *adjustment,
                                    gdouble        step_increment)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   if (step_increment != adjustment->priv->step_increment)
     g_object_set (adjustment, "step-increment", step_increment, NULL);
@@ -723,7 +723,7 @@ ctk_adjustment_set_step_increment (GtkAdjustment *adjustment,
 gdouble
 ctk_adjustment_get_page_increment (GtkAdjustment *adjustment)
 {
-  g_return_val_if_fail (GTK_IS_ADJUSTMENT (adjustment), 0.0);
+  g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
   return adjustment->priv->page_increment;
 }
@@ -745,7 +745,7 @@ void
 ctk_adjustment_set_page_increment (GtkAdjustment *adjustment,
                                    gdouble        page_increment)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   if (page_increment != adjustment->priv->page_increment)
     g_object_set (adjustment, "page-increment", page_increment, NULL);
@@ -764,7 +764,7 @@ ctk_adjustment_set_page_increment (GtkAdjustment *adjustment,
 gdouble
 ctk_adjustment_get_page_size (GtkAdjustment *adjustment)
 {
-  g_return_val_if_fail (GTK_IS_ADJUSTMENT (adjustment), 0.0);
+  g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0.0);
 
   return adjustment->priv->page_size;
 }
@@ -786,7 +786,7 @@ void
 ctk_adjustment_set_page_size (GtkAdjustment *adjustment,
                               gdouble        page_size)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   if (page_size != adjustment->priv->page_size)
     g_object_set (adjustment, "page-size", page_size, NULL);
@@ -824,7 +824,7 @@ ctk_adjustment_configure (GtkAdjustment *adjustment,
   gboolean value_changed = FALSE;
   guint64 old_stamp = adjustment_changed_stamp;
 
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   priv = adjustment->priv;
 
@@ -876,7 +876,7 @@ ctk_adjustment_configure (GtkAdjustment *adjustment,
 void
 ctk_adjustment_changed (GtkAdjustment *adjustment)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
   emit_changed (adjustment);
 }
 
@@ -894,7 +894,7 @@ ctk_adjustment_changed (GtkAdjustment *adjustment)
 void
 ctk_adjustment_value_changed (GtkAdjustment *adjustment)
 {
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
   emit_value_changed (adjustment);
 }
 
@@ -920,7 +920,7 @@ ctk_adjustment_clamp_page (GtkAdjustment *adjustment,
   GtkAdjustmentPrivate *priv;
   gboolean need_emission;
 
-  g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   priv = adjustment->priv;
 
@@ -960,7 +960,7 @@ ctk_adjustment_get_minimum_increment (GtkAdjustment *adjustment)
   GtkAdjustmentPrivate *priv;
   gdouble minimum_increment;
 
-  g_return_val_if_fail (GTK_IS_ADJUSTMENT (adjustment), 0);
+  g_return_val_if_fail (CTK_IS_ADJUSTMENT (adjustment), 0);
 
   priv = adjustment->priv;
 

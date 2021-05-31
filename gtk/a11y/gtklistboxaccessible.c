@@ -23,7 +23,7 @@
 
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkListBoxAccessible, ctk_list_box_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkListBoxAccessible, ctk_list_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
 static void
@@ -47,7 +47,7 @@ ctk_list_box_accessible_ref_state_set (AtkObject *obj)
   GtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_list_box_accessible_parent_class)->ref_state_set (obj);
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 
   if (widget != NULL)
     atk_state_set_add_state (state_set, ATK_STATE_MANAGES_DESCENDANTS);
@@ -71,14 +71,14 @@ ctk_list_box_accessible_add_selection (AtkSelection *selection,
   GtkWidget *box;
   GtkListBoxRow *row;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  row = ctk_list_box_get_row_at_index (GTK_LIST_BOX (box), idx);
+  row = ctk_list_box_get_row_at_index (CTK_LIST_BOX (box), idx);
   if (row)
     {
-      ctk_list_box_select_row (GTK_LIST_BOX (box), row);
+      ctk_list_box_select_row (CTK_LIST_BOX (box), row);
       return TRUE;
     }
   return FALSE;
@@ -91,14 +91,14 @@ ctk_list_box_accessible_remove_selection (AtkSelection *selection,
   GtkWidget *box;
   GtkListBoxRow *row;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  row = ctk_list_box_get_row_at_index (GTK_LIST_BOX (box), idx);
+  row = ctk_list_box_get_row_at_index (CTK_LIST_BOX (box), idx);
   if (row)
     {
-      ctk_list_box_unselect_row (GTK_LIST_BOX (box), row);
+      ctk_list_box_unselect_row (CTK_LIST_BOX (box), row);
       return TRUE;
     }
   return FALSE;
@@ -109,11 +109,11 @@ ctk_list_box_accessible_clear_selection (AtkSelection *selection)
 {
   GtkWidget *box;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  ctk_list_box_unselect_all (GTK_LIST_BOX (box));
+  ctk_list_box_unselect_all (CTK_LIST_BOX (box));
   return TRUE;
 }
 
@@ -122,11 +122,11 @@ ctk_list_box_accessible_select_all (AtkSelection *selection)
 {
   GtkWidget *box;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  ctk_list_box_select_all (GTK_LIST_BOX (box));
+  ctk_list_box_select_all (CTK_LIST_BOX (box));
   return TRUE;
 }
 
@@ -146,7 +146,7 @@ find_selected_row (GtkListBox    *box,
   if (d->idx == 0)
     {
       if (d->row == NULL)
-        d->row = GTK_WIDGET (row);
+        d->row = CTK_WIDGET (row);
     }
   else
     d->idx -= 1;
@@ -160,13 +160,13 @@ ctk_list_box_accessible_ref_selection (AtkSelection *selection,
   AtkObject *accessible;
   FindSelectedData data;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return NULL;
 
   data.idx = idx;
   data.row = NULL;
-  ctk_list_box_selected_foreach (GTK_LIST_BOX (box), find_selected_row, &data);
+  ctk_list_box_selected_foreach (CTK_LIST_BOX (box), find_selected_row, &data);
 
   if (data.row == NULL)
     return NULL;
@@ -191,12 +191,12 @@ ctk_list_box_accessible_get_selection_count (AtkSelection *selection)
   GtkWidget *box;
   gint count;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return 0;
 
   count = 0;
-  ctk_list_box_selected_foreach (GTK_LIST_BOX (box), count_selected, &count);
+  ctk_list_box_selected_foreach (CTK_LIST_BOX (box), count_selected, &count);
 
   return count;
 }
@@ -208,11 +208,11 @@ ctk_list_box_accessible_is_child_selected (AtkSelection *selection,
   GtkWidget *box;
   GtkListBoxRow *row;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  row = ctk_list_box_get_row_at_index (GTK_LIST_BOX (box), idx);
+  row = ctk_list_box_get_row_at_index (CTK_LIST_BOX (box), idx);
 
   return ctk_list_box_row_is_selected (row);
 }
@@ -232,7 +232,7 @@ void
 _ctk_list_box_accessible_selection_changed (GtkListBox *box)
 {
   AtkObject *accessible;
-  accessible = ctk_widget_get_accessible (GTK_WIDGET (box));
+  accessible = ctk_widget_get_accessible (CTK_WIDGET (box));
   g_signal_emit_by_name (accessible, "selection-changed");
 }
 
@@ -242,7 +242,7 @@ _ctk_list_box_accessible_update_cursor (GtkListBox *box,
 {
   AtkObject *accessible;
   AtkObject *descendant;
-  accessible = ctk_widget_get_accessible (GTK_WIDGET (box));
-  descendant = row ? ctk_widget_get_accessible (GTK_WIDGET (row)) : NULL;
+  accessible = ctk_widget_get_accessible (CTK_WIDGET (box));
+  descendant = row ? ctk_widget_get_accessible (CTK_WIDGET (row)) : NULL;
   g_signal_emit_by_name (accessible, "active-descendant-changed", descendant);
 }

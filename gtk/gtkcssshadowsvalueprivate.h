@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_SHADOWS_VALUE_H__
-#define __GTK_CSS_SHADOWS_VALUE_H__
+#ifndef __CTK_CSS_SHADOWS_VALUE_H__
+#define __CTK_CSS_SHADOWS_VALUE_H__
 
 #include <cairo.h>
 #include <pango/pango.h>
@@ -53,4 +53,4 @@ void            _ctk_css_shadows_value_get_extents    (const GtkCssValue        
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_SHADOWS_VALUE_H__ */
+#endif /* __CTK_CSS_SHADOWS_VALUE_H__ */

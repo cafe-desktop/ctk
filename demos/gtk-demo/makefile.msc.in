@@ -14,17 +14,17 @@ PERL = perl
 ################################################################
 
 # Possibly override versions from build/win32/module.defs
-GTK_VER = 2.0
+CTK_VER = 2.0
 GDK_PIXBUF_VER = 2.0
 
-GDK_LIBS = ../../gdk/gdk-win32-$(GTK_VER).lib
-GTK_LIBS = ../../gtk/gtk-win32-$(GTK_VER).lib
+GDK_LIBS = ../../gdk/gdk-win32-$(CTK_VER).lib
+CTK_LIBS = ../../gtk/gtk-win32-$(CTK_VER).lib
 GDK_PIXBUF_LIBS = ../../gdk-pixbuf/gdk_pixbuf-$(GDK_PIXBUF_VER).lib
 
 INCLUDES = -FImsvc_recommended_pragmas.h -I . -I ../.. -I ../../gdk -I ../../gdk-pixbuf -I ../../gtk
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) $(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = /link /machine:ix86 $(LINKDEBUG)
-DEFINES = -DG_LOG_DOMAIN=\"GtkDemo\" -DGTK_VERSION=\"$(GTK_VER)\" \
+DEFINES = -DG_LOG_DOMAIN=\"GtkDemo\" -DCTK_VERSION=\"$(CTK_VER)\" \
 	-DDEMOCODEDIR=\".\"
 
 TOUCH = copy makefile.msc+nul
@@ -86,6 +86,6 @@ OBJECTS = \
 	main.obj \
 
 gtk-demo.exe : demos.h $(OBJECTS)
-	$(CC) $(CFLAGS) -Fegtk-demo.exe $(OBJECTS) $(GTK_LIBS) $(GDK_LIBS) $(GDK_PIXBUF_LIBS) \
+	$(CC) $(CFLAGS) -Fegtk-demo.exe $(OBJECTS) $(CTK_LIBS) $(GDK_LIBS) $(GDK_PIXBUF_LIBS) \
 	$(CAIRO_LIBS) $(PANGOCAIRO_LIBS) $(PANGO_LIBS) $(GLIB_LIBS) $(LDFLAGS)
 

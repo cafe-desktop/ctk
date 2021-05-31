@@ -113,7 +113,7 @@ typedef struct
 } ViewsParserData;
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkShortcutsWindow, ctk_shortcuts_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkShortcutsWindow, ctk_shortcuts_window, CTK_TYPE_WINDOW)
 
 
 enum {
@@ -154,9 +154,9 @@ update_title_stack (GtkShortcutsWindow *self)
 
   visible_child = ctk_stack_get_visible_child (priv->stack);
 
-  if (GTK_IS_SHORTCUTS_SECTION (visible_child))
+  if (CTK_IS_SHORTCUTS_SECTION (visible_child))
     {
-      if (number_of_children (GTK_CONTAINER (priv->stack)) > 3)
+      if (number_of_children (CTK_CONTAINER (priv->stack)) > 3)
         {
           gchar *title;
 
@@ -195,7 +195,7 @@ ctk_shortcuts_window_add_search_item (GtkWidget *child, gpointer data)
   gchar *str;
   gchar *keywords;
 
-  if (GTK_IS_SHORTCUTS_SHORTCUT (child))
+  if (CTK_IS_SHORTCUTS_SHORTCUT (child))
     {
       GEnumClass *class;
       GEnumValue *value;
@@ -210,7 +210,7 @@ ctk_shortcuts_window_add_search_item (GtkWidget *child, gpointer data)
                     "action-name", &action_name,
                     NULL);
 
-      class = G_ENUM_CLASS (g_type_class_ref (GTK_TYPE_SHORTCUT_TYPE));
+      class = G_ENUM_CLASS (g_type_class_ref (CTK_TYPE_SHORTCUT_TYPE));
       value = g_enum_get_value (class, shortcut_type);
 
       hash_key = g_strdup_printf ("%s-%s-%s", title, value->value_nick, accelerator);
@@ -227,7 +227,7 @@ ctk_shortcuts_window_add_search_item (GtkWidget *child, gpointer data)
 
       g_hash_table_insert (priv->search_items_hash, hash_key, GINT_TO_POINTER (1));
 
-      item = g_object_new (GTK_TYPE_SHORTCUTS_SHORTCUT,
+      item = g_object_new (CTK_TYPE_SHORTCUTS_SHORTCUT,
                            "accelerator", accelerator,
                            "title", title,
                            "direction", direction,
@@ -252,19 +252,19 @@ ctk_shortcuts_window_add_search_item (GtkWidget *child, gpointer data)
       keywords = g_utf8_strdown (str, -1);
 
       g_hash_table_insert (priv->keywords, item, keywords);
-      if (shortcut_type == GTK_SHORTCUT_ACCELERATOR)
-        ctk_container_add (GTK_CONTAINER (priv->search_shortcuts), item);
+      if (shortcut_type == CTK_SHORTCUT_ACCELERATOR)
+        ctk_container_add (CTK_CONTAINER (priv->search_shortcuts), item);
       else
-        ctk_container_add (GTK_CONTAINER (priv->search_gestures), item);
+        ctk_container_add (CTK_CONTAINER (priv->search_gestures), item);
 
       g_free (title);
       g_free (accelerator);
       g_free (str);
       g_free (action_name);
     }
-  else if (GTK_IS_CONTAINER (child))
+  else if (CTK_IS_CONTAINER (child))
     {
-      ctk_container_foreach (GTK_CONTAINER (child), ctk_shortcuts_window_add_search_item, self);
+      ctk_container_foreach (CTK_CONTAINER (child), ctk_shortcuts_window_add_search_item, self);
     }
 }
 
@@ -281,7 +281,7 @@ section_notify_cb (GObject    *section,
       gchar *name;
 
       g_object_get (section, "section-name", &name, NULL);
-      ctk_container_child_set (GTK_CONTAINER (priv->stack), GTK_WIDGET (section), "name", name, NULL);
+      ctk_container_child_set (CTK_CONTAINER (priv->stack), CTK_WIDGET (section), "name", name, NULL);
       g_free (name);
     }
   else if (strcmp (pspec->name, "title") == 0)
@@ -291,7 +291,7 @@ section_notify_cb (GObject    *section,
 
       label = g_object_get_data (section, "gtk-shortcuts-title");
       g_object_get (section, "title", &title, NULL);
-      ctk_label_set_label (GTK_LABEL (label), title);
+      ctk_label_set_label (CTK_LABEL (label), title);
       g_free (title);
     }
 }
@@ -307,7 +307,7 @@ ctk_shortcuts_window_add_section (GtkShortcutsWindow  *self,
   const gchar *visible_section;
   GtkWidget *label;
 
-  ctk_container_foreach (GTK_CONTAINER (section), ctk_shortcuts_window_add_search_item, self);
+  ctk_container_foreach (CTK_CONTAINER (section), ctk_shortcuts_window_add_search_item, self);
 
   g_object_get (section,
                 "section-name", &name,
@@ -319,26 +319,26 @@ ctk_shortcuts_window_add_section (GtkShortcutsWindow  *self,
   if (name == NULL)
     name = g_strdup ("shortcuts");
 
-  ctk_stack_add_titled (priv->stack, GTK_WIDGET (section), name, title);
+  ctk_stack_add_titled (priv->stack, CTK_WIDGET (section), name, title);
 
   visible_section = ctk_stack_get_visible_child_name (priv->stack);
   if (strcmp (visible_section, "internal-search") == 0 ||
       (priv->initial_section && strcmp (priv->initial_section, visible_section) == 0))
-    ctk_stack_set_visible_child (priv->stack, GTK_WIDGET (section));
+    ctk_stack_set_visible_child (priv->stack, CTK_WIDGET (section));
 
-  row = g_object_new (GTK_TYPE_LIST_BOX_ROW,
+  row = g_object_new (CTK_TYPE_LIST_BOX_ROW,
                       "visible", TRUE,
                       NULL);
   g_object_set_data (G_OBJECT (row), "gtk-shortcuts-section", section);
-  label = g_object_new (GTK_TYPE_LABEL,
+  label = g_object_new (CTK_TYPE_LABEL,
                         "margin", 6,
                         "label", title,
                         "xalign", 0.5f,
                         "visible", TRUE,
                         NULL);
   g_object_set_data (G_OBJECT (section), "gtk-shortcuts-title", label);
-  ctk_container_add (GTK_CONTAINER (row), GTK_WIDGET (label));
-  ctk_container_add (GTK_CONTAINER (priv->list_box), GTK_WIDGET (row));
+  ctk_container_add (CTK_CONTAINER (row), CTK_WIDGET (label));
+  ctk_container_add (CTK_CONTAINER (priv->list_box), CTK_WIDGET (row));
 
   update_title_stack (self);
 
@@ -352,8 +352,8 @@ ctk_shortcuts_window_add (GtkContainer *container,
 {
   GtkShortcutsWindow *self = (GtkShortcutsWindow *)container;
 
-  if (GTK_IS_SHORTCUTS_SECTION (widget))
-    ctk_shortcuts_window_add_section (self, GTK_SHORTCUTS_SECTION (widget));
+  if (CTK_IS_SHORTCUTS_SECTION (widget))
+    ctk_shortcuts_window_add_section (self, CTK_SHORTCUTS_SECTION (widget));
   else
     g_warning ("Can't add children of type %s to %s",
                G_OBJECT_TYPE_NAME (widget),
@@ -371,9 +371,9 @@ ctk_shortcuts_window_remove (GtkContainer *container,
 
   if (widget == (GtkWidget *)priv->header_bar ||
       widget == (GtkWidget *)priv->main_box)
-    GTK_CONTAINER_CLASS (ctk_shortcuts_window_parent_class)->remove (container, widget);
+    CTK_CONTAINER_CLASS (ctk_shortcuts_window_parent_class)->remove (container, widget);
   else
-    ctk_container_remove (GTK_CONTAINER (priv->stack), widget);
+    ctk_container_remove (CTK_CONTAINER (priv->stack), widget);
 }
 
 static void
@@ -387,7 +387,7 @@ ctk_shortcuts_window_forall (GtkContainer *container,
 
   if (include_internal)
     {
-      GTK_CONTAINER_CLASS (ctk_shortcuts_window_parent_class)->forall (container, include_internal, callback, callback_data);
+      CTK_CONTAINER_CLASS (ctk_shortcuts_window_parent_class)->forall (container, include_internal, callback, callback_data);
     }
   else
     {
@@ -397,9 +397,9 @@ ctk_shortcuts_window_forall (GtkContainer *container,
           GtkWidget *search;
           GtkWidget *empty;
 
-          search = ctk_stack_get_child_by_name (GTK_STACK (priv->stack), "internal-search");
-          empty = ctk_stack_get_child_by_name (GTK_STACK (priv->stack), "no-search-results");
-          children = ctk_container_get_children (GTK_CONTAINER (priv->stack));
+          search = ctk_stack_get_child_by_name (CTK_STACK (priv->stack), "internal-search");
+          empty = ctk_stack_get_child_by_name (CTK_STACK (priv->stack), "no-search-results");
+          children = ctk_container_get_children (CTK_CONTAINER (priv->stack));
           for (l = children; l; l = l->next)
             {
               GtkWidget *child = l->data;
@@ -423,12 +423,12 @@ ctk_shortcuts_window_set_view_name (GtkShortcutsWindow *self,
   g_free (priv->view_name);
   priv->view_name = g_strdup (view_name);
 
-  sections = ctk_container_get_children (GTK_CONTAINER (priv->stack));
+  sections = ctk_container_get_children (CTK_CONTAINER (priv->stack));
   for (l = sections; l; l = l->next)
     {
       GtkShortcutsSection *section = l->data;
 
-      if (GTK_IS_SHORTCUTS_SECTION (section))
+      if (CTK_IS_SHORTCUTS_SECTION (section))
         g_object_set (section, "view-name", priv->view_name, NULL);
     }
   g_list_free (sections);
@@ -457,10 +457,10 @@ update_accels_cb (GtkWidget *widget,
   GtkShortcutsWindow *self = data;
   GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
-  if (GTK_IS_SHORTCUTS_SHORTCUT (widget))
-    ctk_shortcuts_shortcut_update_accel (GTK_SHORTCUTS_SHORTCUT (widget), priv->window);
-  else if (GTK_IS_CONTAINER (widget))
-    ctk_container_foreach (GTK_CONTAINER (widget), update_accels_cb, self);
+  if (CTK_IS_SHORTCUTS_SHORTCUT (widget))
+    ctk_shortcuts_shortcut_update_accel (CTK_SHORTCUTS_SHORTCUT (widget), priv->window);
+  else if (CTK_IS_CONTAINER (widget))
+    ctk_container_foreach (CTK_CONTAINER (widget), update_accels_cb, self);
 }
 
 static void
@@ -469,7 +469,7 @@ update_accels_for_actions (GtkShortcutsWindow *self)
   GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   if (priv->window)
-    ctk_container_forall (GTK_CONTAINER (self), update_accels_cb, self);
+    ctk_container_forall (CTK_CONTAINER (self), update_accels_cb, self);
 }
 
 static void
@@ -517,12 +517,12 @@ ctk_shortcuts_window__list_box__row_activated (GtkShortcutsWindow *self,
 static gboolean
 hidden_by_direction (GtkWidget *widget)
 {
-  if (GTK_IS_SHORTCUTS_SHORTCUT (widget))
+  if (CTK_IS_SHORTCUTS_SHORTCUT (widget))
     {
       GtkTextDirection dir;
 
       g_object_get (widget, "direction", &dir, NULL);
-      if (dir != GTK_TEXT_DIR_NONE &&
+      if (dir != CTK_TEXT_DIR_NONE &&
           dir != ctk_widget_get_direction (widget))
         return TRUE;
     }
@@ -543,7 +543,7 @@ ctk_shortcuts_window__entry__changed (GtkShortcutsWindow *self,
   gpointer value;
   gboolean has_result;
 
-  text = ctk_entry_get_text (GTK_ENTRY (search_entry));
+  text = ctk_entry_get_text (CTK_ENTRY (search_entry));
 
   if (!text || !*text)
     {
@@ -607,7 +607,7 @@ ctk_shortcuts_window__search_mode__changed (GtkShortcutsWindow *self)
 static void
 ctk_shortcuts_window_close (GtkShortcutsWindow *self)
 {
-  ctk_window_close (GTK_WINDOW (self));
+  ctk_window_close (CTK_WINDOW (self));
 }
 
 static void
@@ -660,7 +660,7 @@ ctk_shortcuts_window_dispose (GObject *object)
 
   if (priv->header_bar)
     {
-      ctk_widget_destroy (GTK_WIDGET (priv->header_bar));
+      ctk_widget_destroy (CTK_WIDGET (priv->header_bar));
       priv->header_bar = NULL;
       priv->popover = NULL;
     }
@@ -670,7 +670,7 @@ ctk_shortcuts_window_dispose (GObject *object)
 #if 0
   if (priv->main_box)
     {
-      ctk_widget_destroy (GTK_WIDGET (priv->main_box));
+      ctk_widget_destroy (CTK_WIDGET (priv->main_box));
       priv->main_box = NULL;
     }
 #endif
@@ -695,7 +695,7 @@ ctk_shortcuts_window_get_property (GObject    *object,
           {
             gchar *name = NULL;
 
-            ctk_container_child_get (GTK_CONTAINER (priv->stack), child,
+            ctk_container_child_get (CTK_CONTAINER (priv->stack), child,
                                      "name", &name,
                                      NULL);
             g_value_take_string (value, name);
@@ -743,21 +743,21 @@ ctk_shortcuts_window_unmap (GtkWidget *widget)
 
   ctk_search_bar_set_search_mode (priv->search_bar, FALSE);
 
-  GTK_WIDGET_CLASS (ctk_shortcuts_window_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_shortcuts_window_parent_class)->unmap (widget);
 }
 
 static GType
 ctk_shortcuts_window_child_type (GtkContainer *container)
 {
-  return GTK_TYPE_SHORTCUTS_SECTION;
+  return CTK_TYPE_SHORTCUTS_SECTION;
 }
 
 static void
 ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
   GtkBindingSet *binding_set = ctk_binding_set_by_class (klass);
 
   object_class->constructed = ctk_shortcuts_window_constructed;
@@ -843,8 +843,8 @@ ctk_shortcuts_window_class_init (GtkShortcutsWindowClass *klass)
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_f, GDK_CONTROL_MASK, "search", 0);
 
-  g_type_ensure (GTK_TYPE_SHORTCUTS_GROUP);
-  g_type_ensure (GTK_TYPE_SHORTCUTS_SHORTCUT);
+  g_type_ensure (CTK_TYPE_SHORTCUTS_GROUP);
+  g_type_ensure (CTK_TYPE_SHORTCUTS_SHORTCUT);
 }
 
 static gboolean
@@ -852,7 +852,7 @@ window_key_press_event_cb (GtkWidget *window,
                            GdkEvent  *event,
                            gpointer   data)
 {
-  GtkShortcutsWindow *self = GTK_SHORTCUTS_WINDOW (window);
+  GtkShortcutsWindow *self = CTK_SHORTCUTS_WINDOW (window);
   GtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
 
   return ctk_search_bar_handle_event (priv->search_bar, event);
@@ -871,8 +871,8 @@ ctk_shortcuts_window_init (GtkShortcutsWindow *self)
   GtkWidget *empty;
   PangoAttrList *attributes;
 
-  ctk_window_set_resizable (GTK_WINDOW (self), FALSE);
-  ctk_window_set_type_hint (GTK_WINDOW (self), GDK_WINDOW_TYPE_HINT_DIALOG);
+  ctk_window_set_resizable (CTK_WINDOW (self), FALSE);
+  ctk_window_set_type_hint (CTK_WINDOW (self), GDK_WINDOW_TYPE_HINT_DIALOG);
 
   g_signal_connect (self, "key-press-event",
                     G_CALLBACK (window_key_press_event_cb), NULL);
@@ -880,98 +880,98 @@ ctk_shortcuts_window_init (GtkShortcutsWindow *self)
   priv->keywords = g_hash_table_new_full (NULL, NULL, NULL, g_free);
   priv->search_items_hash = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 
-  priv->search_text_group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-  priv->search_image_group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+  priv->search_text_group = ctk_size_group_new (CTK_SIZE_GROUP_HORIZONTAL);
+  priv->search_image_group = ctk_size_group_new (CTK_SIZE_GROUP_HORIZONTAL);
 
-  priv->header_bar = g_object_new (GTK_TYPE_HEADER_BAR,
+  priv->header_bar = g_object_new (CTK_TYPE_HEADER_BAR,
                                    "show-close-button", TRUE,
                                    "visible", TRUE,
                                    NULL);
-  ctk_window_set_titlebar (GTK_WINDOW (self), GTK_WIDGET (priv->header_bar));
+  ctk_window_set_titlebar (CTK_WINDOW (self), CTK_WIDGET (priv->header_bar));
 
-  search_button = g_object_new (GTK_TYPE_TOGGLE_BUTTON,
-                                "child", g_object_new (GTK_TYPE_IMAGE,
+  search_button = g_object_new (CTK_TYPE_TOGGLE_BUTTON,
+                                "child", g_object_new (CTK_TYPE_IMAGE,
                                                        "visible", TRUE,
                                                        "icon-name", "edit-find-symbolic",
                                                        NULL),
                                 "visible", TRUE,
                                 NULL);
-  ctk_style_context_add_class (ctk_widget_get_style_context (GTK_WIDGET (search_button)), "image-button");
-  ctk_container_add (GTK_CONTAINER (priv->header_bar), GTK_WIDGET (search_button));
+  ctk_style_context_add_class (ctk_widget_get_style_context (CTK_WIDGET (search_button)), "image-button");
+  ctk_container_add (CTK_CONTAINER (priv->header_bar), CTK_WIDGET (search_button));
 
-  priv->main_box = g_object_new (GTK_TYPE_BOX,
-                           "orientation", GTK_ORIENTATION_VERTICAL,
+  priv->main_box = g_object_new (CTK_TYPE_BOX,
+                           "orientation", CTK_ORIENTATION_VERTICAL,
                            "visible", TRUE,
                            NULL);
-  GTK_CONTAINER_CLASS (ctk_shortcuts_window_parent_class)->add (GTK_CONTAINER (self), GTK_WIDGET (priv->main_box));
+  CTK_CONTAINER_CLASS (ctk_shortcuts_window_parent_class)->add (CTK_CONTAINER (self), CTK_WIDGET (priv->main_box));
 
-  priv->search_bar = g_object_new (GTK_TYPE_SEARCH_BAR,
+  priv->search_bar = g_object_new (CTK_TYPE_SEARCH_BAR,
                                    "visible", TRUE,
                                    NULL);
   g_object_bind_property (priv->search_bar, "search-mode-enabled",
                           search_button, "active",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-  ctk_container_add (GTK_CONTAINER (priv->main_box), GTK_WIDGET (priv->search_bar));
+  ctk_container_add (CTK_CONTAINER (priv->main_box), CTK_WIDGET (priv->search_bar));
 
-  priv->stack = g_object_new (GTK_TYPE_STACK,
+  priv->stack = g_object_new (CTK_TYPE_STACK,
                               "expand", TRUE,
                               "homogeneous", TRUE,
-                              "transition-type", GTK_STACK_TRANSITION_TYPE_CROSSFADE,
+                              "transition-type", CTK_STACK_TRANSITION_TYPE_CROSSFADE,
                               "visible", TRUE,
                               NULL);
-  ctk_container_add (GTK_CONTAINER (priv->main_box), GTK_WIDGET (priv->stack));
+  ctk_container_add (CTK_CONTAINER (priv->main_box), CTK_WIDGET (priv->stack));
 
-  priv->title_stack = g_object_new (GTK_TYPE_STACK,
+  priv->title_stack = g_object_new (CTK_TYPE_STACK,
                                     "visible", TRUE,
                                     NULL);
-  ctk_header_bar_set_custom_title (priv->header_bar, GTK_WIDGET (priv->title_stack));
+  ctk_header_bar_set_custom_title (priv->header_bar, CTK_WIDGET (priv->title_stack));
 
   label = ctk_label_new (_("Shortcuts"));
   ctk_widget_show (label);
-  ctk_style_context_add_class (ctk_widget_get_style_context (label), GTK_STYLE_CLASS_TITLE);
+  ctk_style_context_add_class (ctk_widget_get_style_context (label), CTK_STYLE_CLASS_TITLE);
   ctk_stack_add_named (priv->title_stack, label, "title");
 
   label = ctk_label_new (_("Search Results"));
   ctk_widget_show (label);
-  ctk_style_context_add_class (ctk_widget_get_style_context (label), GTK_STYLE_CLASS_TITLE);
+  ctk_style_context_add_class (ctk_widget_get_style_context (label), CTK_STYLE_CLASS_TITLE);
   ctk_stack_add_named (priv->title_stack, label, "search");
 
-  priv->menu_button = g_object_new (GTK_TYPE_MENU_BUTTON,
+  priv->menu_button = g_object_new (CTK_TYPE_MENU_BUTTON,
                                     "focus-on-click", FALSE,
                                     "visible", TRUE,
-                                    "relief", GTK_RELIEF_NONE,
+                                    "relief", CTK_RELIEF_NONE,
                                     NULL);
-  ctk_stack_add_named (priv->title_stack, GTK_WIDGET (priv->menu_button), "sections");
+  ctk_stack_add_named (priv->title_stack, CTK_WIDGET (priv->menu_button), "sections");
 
-  menu_box = g_object_new (GTK_TYPE_BOX,
-                           "orientation", GTK_ORIENTATION_HORIZONTAL,
+  menu_box = g_object_new (CTK_TYPE_BOX,
+                           "orientation", CTK_ORIENTATION_HORIZONTAL,
                            "spacing", 6,
                            "visible", TRUE,
                            NULL);
-  ctk_container_add (GTK_CONTAINER (priv->menu_button), GTK_WIDGET (menu_box));
+  ctk_container_add (CTK_CONTAINER (priv->menu_button), CTK_WIDGET (menu_box));
 
-  priv->menu_label = g_object_new (GTK_TYPE_LABEL,
+  priv->menu_label = g_object_new (CTK_TYPE_LABEL,
                                    "visible", TRUE,
                                    NULL);
-  ctk_container_add (GTK_CONTAINER (menu_box), GTK_WIDGET (priv->menu_label));
+  ctk_container_add (CTK_CONTAINER (menu_box), CTK_WIDGET (priv->menu_label));
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  arrow = g_object_new (GTK_TYPE_ARROW,
-                        "arrow-type", GTK_ARROW_DOWN,
+  arrow = g_object_new (CTK_TYPE_ARROW,
+                        "arrow-type", CTK_ARROW_DOWN,
                         "visible", TRUE,
                         NULL);
-  ctk_container_add (GTK_CONTAINER (menu_box), GTK_WIDGET (arrow));
+  ctk_container_add (CTK_CONTAINER (menu_box), CTK_WIDGET (arrow));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  priv->popover = g_object_new (GTK_TYPE_POPOVER,
+  priv->popover = g_object_new (CTK_TYPE_POPOVER,
                                 "border-width", 6,
                                 "relative-to", priv->menu_button,
-                                "position", GTK_POS_BOTTOM,
+                                "position", CTK_POS_BOTTOM,
                                 NULL);
-  ctk_menu_button_set_popover (priv->menu_button, GTK_WIDGET (priv->popover));
+  ctk_menu_button_set_popover (priv->menu_button, CTK_WIDGET (priv->popover));
 
-  priv->list_box = g_object_new (GTK_TYPE_LIST_BOX,
-                                 "selection-mode", GTK_SELECTION_NONE,
+  priv->list_box = g_object_new (CTK_TYPE_LIST_BOX,
+                                 "selection-mode", CTK_SELECTION_NONE,
                                  "visible", TRUE,
                                  NULL);
   g_signal_connect_object (priv->list_box,
@@ -979,11 +979,11 @@ ctk_shortcuts_window_init (GtkShortcutsWindow *self)
                            G_CALLBACK (ctk_shortcuts_window__list_box__row_activated),
                            self,
                            G_CONNECT_SWAPPED);
-  ctk_container_add (GTK_CONTAINER (priv->popover), GTK_WIDGET (priv->list_box));
+  ctk_container_add (CTK_CONTAINER (priv->popover), CTK_WIDGET (priv->list_box));
 
-  priv->search_entry = GTK_SEARCH_ENTRY (ctk_search_entry_new ());
-  ctk_widget_show (GTK_WIDGET (priv->search_entry));
-  ctk_container_add (GTK_CONTAINER (priv->search_bar), GTK_WIDGET (priv->search_entry));
+  priv->search_entry = CTK_SEARCH_ENTRY (ctk_search_entry_new ());
+  ctk_widget_show (CTK_WIDGET (priv->search_entry));
+  ctk_container_add (CTK_CONTAINER (priv->search_bar), CTK_WIDGET (priv->search_entry));
   g_object_set (priv->search_entry,
                 "placeholder-text", _("Search Shortcuts"),
                 "width-chars", 40,
@@ -999,47 +999,47 @@ ctk_shortcuts_window_init (GtkShortcutsWindow *self)
                            self,
                            G_CONNECT_SWAPPED);
 
-  scroller = g_object_new (GTK_TYPE_SCROLLED_WINDOW,
+  scroller = g_object_new (CTK_TYPE_SCROLLED_WINDOW,
                            "visible", TRUE,
                            NULL);
-  box = g_object_new (GTK_TYPE_BOX,
+  box = g_object_new (CTK_TYPE_BOX,
                       "border-width", 24,
-                      "halign", GTK_ALIGN_CENTER,
+                      "halign", CTK_ALIGN_CENTER,
                       "spacing", 24,
-                      "orientation", GTK_ORIENTATION_VERTICAL,
+                      "orientation", CTK_ORIENTATION_VERTICAL,
                       "visible", TRUE,
                       NULL);
-  ctk_container_add (GTK_CONTAINER (scroller), GTK_WIDGET (box));
+  ctk_container_add (CTK_CONTAINER (scroller), CTK_WIDGET (box));
   ctk_stack_add_named (priv->stack, scroller, "internal-search");
 
-  priv->search_shortcuts = g_object_new (GTK_TYPE_BOX,
-                                         "halign", GTK_ALIGN_CENTER,
+  priv->search_shortcuts = g_object_new (CTK_TYPE_BOX,
+                                         "halign", CTK_ALIGN_CENTER,
                                          "spacing", 6,
-                                         "orientation", GTK_ORIENTATION_VERTICAL,
+                                         "orientation", CTK_ORIENTATION_VERTICAL,
                                          "visible", TRUE,
                                          NULL);
-  ctk_container_add (GTK_CONTAINER (box), GTK_WIDGET (priv->search_shortcuts));
+  ctk_container_add (CTK_CONTAINER (box), CTK_WIDGET (priv->search_shortcuts));
 
-  priv->search_gestures = g_object_new (GTK_TYPE_BOX,
-                                        "halign", GTK_ALIGN_CENTER,
+  priv->search_gestures = g_object_new (CTK_TYPE_BOX,
+                                        "halign", CTK_ALIGN_CENTER,
                                         "spacing", 6,
-                                        "orientation", GTK_ORIENTATION_VERTICAL,
+                                        "orientation", CTK_ORIENTATION_VERTICAL,
                                         "visible", TRUE,
                                         NULL);
-  ctk_container_add (GTK_CONTAINER (box), GTK_WIDGET (priv->search_gestures));
+  ctk_container_add (CTK_CONTAINER (box), CTK_WIDGET (priv->search_gestures));
 
-  empty = g_object_new (GTK_TYPE_GRID,
+  empty = g_object_new (CTK_TYPE_GRID,
                         "visible", TRUE,
                         "row-spacing", 12,
                         "margin", 12,
                         "hexpand", TRUE,
                         "vexpand", TRUE,
-                        "halign", GTK_ALIGN_CENTER,
-                        "valign", GTK_ALIGN_CENTER,
+                        "halign", CTK_ALIGN_CENTER,
+                        "valign", CTK_ALIGN_CENTER,
                         NULL);
-  ctk_style_context_add_class (ctk_widget_get_style_context (empty), GTK_STYLE_CLASS_DIM_LABEL);
-  ctk_grid_attach (GTK_GRID (empty),
-                   g_object_new (GTK_TYPE_IMAGE,
+  ctk_style_context_add_class (ctk_widget_get_style_context (empty), CTK_STYLE_CLASS_DIM_LABEL);
+  ctk_grid_attach (CTK_GRID (empty),
+                   g_object_new (CTK_TYPE_IMAGE,
                                  "visible", TRUE,
                                  "icon-name", "edit-find-symbolic",
                                  "pixel-size", 72,
@@ -1048,18 +1048,18 @@ ctk_shortcuts_window_init (GtkShortcutsWindow *self)
   attributes = pango_attr_list_new ();
   pango_attr_list_insert (attributes, pango_attr_weight_new (PANGO_WEIGHT_BOLD));
   pango_attr_list_insert (attributes, pango_attr_scale_new (1.44));
-  label = g_object_new (GTK_TYPE_LABEL,
+  label = g_object_new (CTK_TYPE_LABEL,
                         "visible", TRUE,
                         "label", _("No Results Found"),
                         "attributes", attributes,
                         NULL);
   pango_attr_list_unref (attributes);
-  ctk_grid_attach (GTK_GRID (empty), label, 0, 1, 1, 1);
-  label = g_object_new (GTK_TYPE_LABEL,
+  ctk_grid_attach (CTK_GRID (empty), label, 0, 1, 1, 1);
+  label = g_object_new (CTK_TYPE_LABEL,
                         "visible", TRUE,
                         "label", _("Try a different search"),
                         NULL);
-  ctk_grid_attach (GTK_GRID (empty), label, 0, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (empty), label, 0, 2, 1, 1);
 
   ctk_stack_add_named (priv->stack, empty, "no-search-results");
 

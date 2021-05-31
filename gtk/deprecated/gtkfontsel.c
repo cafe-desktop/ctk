@@ -219,13 +219,13 @@ static void     ctk_font_selection_ref_family            (GtkFontSelection *font
 static void     ctk_font_selection_ref_face              (GtkFontSelection *fontsel,
 							  PangoFontFace    *face);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkFontSelection, ctk_font_selection, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkFontSelection, ctk_font_selection, CTK_TYPE_BOX)
 
 static void
 ctk_font_selection_class_init (GtkFontSelectionClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->finalize = ctk_font_selection_finalize;
   gobject_class->set_property = ctk_font_selection_set_property;
@@ -240,14 +240,14 @@ ctk_font_selection_class_init (GtkFontSelectionClass *klass)
                                                         P_("Font name"),
                                                         P_("The string that represents this font"),
                                                         DEFAULT_FONT_NAME,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_PREVIEW_TEXT,
                                    g_param_spec_string ("preview-text",
                                                         P_("Preview text"),
                                                         P_("The text to display in order to demonstrate the selected font"),
                                                         _(PREVIEW_TEXT),
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 }
 
 static void 
@@ -258,7 +258,7 @@ ctk_font_selection_set_property (GObject         *object,
 {
   GtkFontSelection *fontsel;
 
-  fontsel = GTK_FONT_SELECTION (object);
+  fontsel = CTK_FONT_SELECTION (object);
 
   switch (prop_id)
     {
@@ -281,7 +281,7 @@ static void ctk_font_selection_get_property (GObject         *object,
 {
   GtkFontSelection *fontsel;
 
-  fontsel = GTK_FONT_SELECTION (object);
+  fontsel = CTK_FONT_SELECTION (object);
 
   switch (prop_id)
     {
@@ -306,8 +306,8 @@ list_row_activated (GtkWidget *widget)
   GtkWidget *default_widget, *focus_widget;
   GtkWindow *window;
   
-  window = GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (widget)));
-  if (!ctk_widget_is_toplevel (GTK_WIDGET (window)))
+  window = CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (widget)));
+  if (!ctk_widget_is_toplevel (CTK_WIDGET (window)))
     window = NULL;
 
   if (window)
@@ -340,42 +340,42 @@ ctk_font_selection_init (GtkFontSelection *fontsel)
   fontsel->priv = ctk_font_selection_get_instance_private (fontsel);
   priv = fontsel->priv;
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (fontsel),
-                                  GTK_ORIENTATION_VERTICAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (fontsel),
+                                  CTK_ORIENTATION_VERTICAL);
 
   ctk_widget_push_composite_child ();
 
-  ctk_box_set_spacing (GTK_BOX (fontsel), 12);
+  ctk_box_set_spacing (CTK_BOX (fontsel), 12);
   priv->size = 12 * PANGO_SCALE;
   
   /* Create the table of font, style & size. */
   table = ctk_table_new (3, 3, FALSE);
   ctk_widget_show (table);
-  ctk_table_set_row_spacings (GTK_TABLE (table), 6);
-  ctk_table_set_col_spacings (GTK_TABLE (table), 12);
-  ctk_box_pack_start (GTK_BOX (fontsel), table, TRUE, TRUE, 0);
+  ctk_table_set_row_spacings (CTK_TABLE (table), 6);
+  ctk_table_set_col_spacings (CTK_TABLE (table), 12);
+  ctk_box_pack_start (CTK_BOX (fontsel), table, TRUE, TRUE, 0);
 
 #ifdef INCLUDE_FONT_ENTRIES
   priv->font_entry = ctk_entry_new ();
-  ctk_editable_set_editable (GTK_EDITABLE (priv->font_entry), FALSE);
+  ctk_editable_set_editable (CTK_EDITABLE (priv->font_entry), FALSE);
   ctk_widget_set_size_request (priv->font_entry, 20, -1);
   ctk_widget_show (priv->font_entry);
-  ctk_table_attach (GTK_TABLE (table), priv->font_entry, 0, 1, 1, 2,
-		    GTK_FILL, 0, 0, 0);
+  ctk_table_attach (CTK_TABLE (table), priv->font_entry, 0, 1, 1, 2,
+		    CTK_FILL, 0, 0, 0);
   
   priv->font_style_entry = ctk_entry_new ();
-  ctk_editable_set_editable (GTK_EDITABLE (priv->font_style_entry), FALSE);
+  ctk_editable_set_editable (CTK_EDITABLE (priv->font_style_entry), FALSE);
   ctk_widget_set_size_request (priv->font_style_entry, 20, -1);
   ctk_widget_show (priv->font_style_entry);
-  ctk_table_attach (GTK_TABLE (table), priv->font_style_entry, 1, 2, 1, 2,
-		    GTK_FILL, 0, 0, 0);
+  ctk_table_attach (CTK_TABLE (table), priv->font_style_entry, 1, 2, 1, 2,
+		    CTK_FILL, 0, 0, 0);
 #endif /* INCLUDE_FONT_ENTRIES */
   
   priv->size_entry = ctk_entry_new ();
   ctk_widget_set_size_request (priv->size_entry, 20, -1);
   ctk_widget_show (priv->size_entry);
-  ctk_table_attach (GTK_TABLE (table), priv->size_entry, 2, 3, 1, 2,
-		    GTK_FILL, 0, 0, 0);
+  ctk_table_attach (CTK_TABLE (table), priv->size_entry, 2, 3, 1, 2,
+		    CTK_FILL, 0, 0, 0);
   g_signal_connect (priv->size_entry, "activate",
 		    G_CALLBACK (ctk_font_selection_size_activate),
 		    fontsel);
@@ -384,27 +384,27 @@ ctk_font_selection_init (GtkFontSelection *fontsel)
 			  fontsel);
   
   font_label = ctk_label_new_with_mnemonic (_("_Family:"));
-  ctk_widget_set_halign (font_label, GTK_ALIGN_START);
-  ctk_widget_set_valign (font_label, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (font_label, CTK_ALIGN_START);
+  ctk_widget_set_valign (font_label, CTK_ALIGN_CENTER);
   ctk_widget_show (font_label);
-  ctk_table_attach (GTK_TABLE (table), font_label, 0, 1, 0, 1,
-		    GTK_FILL, 0, 0, 0);  
+  ctk_table_attach (CTK_TABLE (table), font_label, 0, 1, 0, 1,
+		    CTK_FILL, 0, 0, 0);  
 
   style_label = ctk_label_new_with_mnemonic (_("_Style:"));
-  ctk_widget_set_halign (style_label, GTK_ALIGN_START);
-  ctk_widget_set_valign (style_label, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (style_label, CTK_ALIGN_START);
+  ctk_widget_set_valign (style_label, CTK_ALIGN_CENTER);
   ctk_widget_show (style_label);
-  ctk_table_attach (GTK_TABLE (table), style_label, 1, 2, 0, 1,
-		    GTK_FILL, 0, 0, 0);
+  ctk_table_attach (CTK_TABLE (table), style_label, 1, 2, 0, 1,
+		    CTK_FILL, 0, 0, 0);
   
   label = ctk_label_new_with_mnemonic (_("Si_ze:"));
-  ctk_label_set_mnemonic_widget (GTK_LABEL (label),
+  ctk_label_set_mnemonic_widget (CTK_LABEL (label),
                                  priv->size_entry);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_CENTER);
   ctk_widget_show (label);
-  ctk_table_attach (GTK_TABLE (table), label, 2, 3, 0, 1,
-		    GTK_FILL, 0, 0, 0);
+  ctk_table_attach (CTK_TABLE (table), label, 2, 3, 0, 1,
+		    CTK_FILL, 0, 0, 0);
   
   
   /* Create the lists  */
@@ -412,7 +412,7 @@ ctk_font_selection_init (GtkFontSelection *fontsel)
   model = ctk_list_store_new (2,
 			      G_TYPE_OBJECT,  /* FAMILY_COLUMN */
 			      G_TYPE_STRING); /* FAMILY_NAME_COLUMN */
-  priv->family_list = ctk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+  priv->family_list = ctk_tree_view_new_with_model (CTK_TREE_MODEL (model));
   g_object_unref (model);
 
   g_signal_connect (priv->family_list, "row-activated",
@@ -422,69 +422,69 @@ ctk_font_selection_init (GtkFontSelection *fontsel)
 						     ctk_cell_renderer_text_new (),
 						     "text", FAMILY_NAME_COLUMN,
 						     NULL);
-  ctk_tree_view_column_set_sizing (column, GTK_TREE_VIEW_COLUMN_AUTOSIZE);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (priv->family_list), column);
+  ctk_tree_view_column_set_sizing (column, CTK_TREE_VIEW_COLUMN_AUTOSIZE);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (priv->family_list), column);
 
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (priv->family_list), FALSE);
-  ctk_tree_selection_set_mode (ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->family_list)),
-			       GTK_SELECTION_BROWSE);
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (priv->family_list), FALSE);
+  ctk_tree_selection_set_mode (ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->family_list)),
+			       CTK_SELECTION_BROWSE);
   
-  ctk_label_set_mnemonic_widget (GTK_LABEL (font_label), priv->family_list);
+  ctk_label_set_mnemonic_widget (CTK_LABEL (font_label), priv->family_list);
 
   scrolled_win = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_win), GTK_SHADOW_IN);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolled_win), CTK_SHADOW_IN);
   ctk_widget_set_size_request (scrolled_win,
 			       FONT_LIST_WIDTH, FONT_LIST_HEIGHT);
-  ctk_container_add (GTK_CONTAINER (scrolled_win), priv->family_list);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_win),
-				  GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
+  ctk_container_add (CTK_CONTAINER (scrolled_win), priv->family_list);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_win),
+				  CTK_POLICY_AUTOMATIC, CTK_POLICY_ALWAYS);
   ctk_widget_show (priv->family_list);
   ctk_widget_show (scrolled_win);
 
-  ctk_table_attach (GTK_TABLE (table), scrolled_win, 0, 1, 1, 3,
-		    GTK_EXPAND | GTK_FILL,
-		    GTK_EXPAND | GTK_FILL, 0, 0);
+  ctk_table_attach (CTK_TABLE (table), scrolled_win, 0, 1, 1, 3,
+		    CTK_EXPAND | CTK_FILL,
+		    CTK_EXPAND | CTK_FILL, 0, 0);
   focus_chain = g_list_append (focus_chain, scrolled_win);
   
   model = ctk_list_store_new (2,
 			      G_TYPE_OBJECT,  /* FACE_COLUMN */
 			      G_TYPE_STRING); /* FACE_NAME_COLUMN */
-  priv->face_list = ctk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+  priv->face_list = ctk_tree_view_new_with_model (CTK_TREE_MODEL (model));
   g_object_unref (model);
   g_signal_connect (priv->face_list, "row-activated",
 		    G_CALLBACK (list_row_activated), fontsel);
 
-  ctk_label_set_mnemonic_widget (GTK_LABEL (style_label), priv->face_list);
+  ctk_label_set_mnemonic_widget (CTK_LABEL (style_label), priv->face_list);
 
   column = ctk_tree_view_column_new_with_attributes ("Face",
 						     ctk_cell_renderer_text_new (),
 						     "text", FACE_NAME_COLUMN,
 						     NULL);
-  ctk_tree_view_column_set_sizing (column, GTK_TREE_VIEW_COLUMN_AUTOSIZE);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (priv->face_list), column);
+  ctk_tree_view_column_set_sizing (column, CTK_TREE_VIEW_COLUMN_AUTOSIZE);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (priv->face_list), column);
 
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (priv->face_list), FALSE);
-  ctk_tree_selection_set_mode (ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->face_list)),
-			       GTK_SELECTION_BROWSE);
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (priv->face_list), FALSE);
+  ctk_tree_selection_set_mode (ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->face_list)),
+			       CTK_SELECTION_BROWSE);
   
   scrolled_win = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_win), GTK_SHADOW_IN);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolled_win), CTK_SHADOW_IN);
   ctk_widget_set_size_request (scrolled_win,
 			       FONT_STYLE_LIST_WIDTH, FONT_LIST_HEIGHT);
-  ctk_container_add (GTK_CONTAINER (scrolled_win), priv->face_list);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_win),
-				  GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
+  ctk_container_add (CTK_CONTAINER (scrolled_win), priv->face_list);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_win),
+				  CTK_POLICY_AUTOMATIC, CTK_POLICY_ALWAYS);
   ctk_widget_show (priv->face_list);
   ctk_widget_show (scrolled_win);
-  ctk_table_attach (GTK_TABLE (table), scrolled_win, 1, 2, 1, 3,
-		    GTK_EXPAND | GTK_FILL,
-		    GTK_EXPAND | GTK_FILL, 0, 0);
+  ctk_table_attach (CTK_TABLE (table), scrolled_win, 1, 2, 1, 3,
+		    CTK_EXPAND | CTK_FILL,
+		    CTK_EXPAND | CTK_FILL, 0, 0);
   focus_chain = g_list_append (focus_chain, scrolled_win);
   
   focus_chain = g_list_append (focus_chain, priv->size_entry);
 
   model = ctk_list_store_new (1, G_TYPE_INT);
-  priv->size_list = ctk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+  priv->size_list = ctk_tree_view_new_with_model (CTK_TREE_MODEL (model));
   g_object_unref (model);
   g_signal_connect (priv->size_list, "row-activated",
 		    G_CALLBACK (list_row_activated), fontsel);
@@ -493,43 +493,43 @@ ctk_font_selection_init (GtkFontSelection *fontsel)
 						     ctk_cell_renderer_text_new (),
 						     "text", SIZE_COLUMN,
 						     NULL);
-  ctk_tree_view_column_set_sizing (column, GTK_TREE_VIEW_COLUMN_AUTOSIZE);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (priv->size_list), column);
+  ctk_tree_view_column_set_sizing (column, CTK_TREE_VIEW_COLUMN_AUTOSIZE);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (priv->size_list), column);
 
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (priv->size_list), FALSE);
-  ctk_tree_selection_set_mode (ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->size_list)),
-			       GTK_SELECTION_BROWSE);
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (priv->size_list), FALSE);
+  ctk_tree_selection_set_mode (ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->size_list)),
+			       CTK_SELECTION_BROWSE);
   
   scrolled_win = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_win), GTK_SHADOW_IN);
-  ctk_container_add (GTK_CONTAINER (scrolled_win), priv->size_list);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolled_win), CTK_SHADOW_IN);
+  ctk_container_add (CTK_CONTAINER (scrolled_win), priv->size_list);
   ctk_widget_set_size_request (scrolled_win, -1, FONT_LIST_HEIGHT);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_win),
-				  GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_win),
+				  CTK_POLICY_NEVER, CTK_POLICY_ALWAYS);
   ctk_widget_show (priv->size_list);
   ctk_widget_show (scrolled_win);
-  ctk_table_attach (GTK_TABLE (table), scrolled_win, 2, 3, 2, 3,
-		    GTK_FILL, GTK_EXPAND | GTK_FILL, 0, 0);
+  ctk_table_attach (CTK_TABLE (table), scrolled_win, 2, 3, 2, 3,
+		    CTK_FILL, CTK_EXPAND | CTK_FILL, 0, 0);
   focus_chain = g_list_append (focus_chain, scrolled_win);
 
-  ctk_container_set_focus_chain (GTK_CONTAINER (table), focus_chain);
+  ctk_container_set_focus_chain (CTK_CONTAINER (table), focus_chain);
   g_list_free (focus_chain);
   
   /* Insert the fonts. */
-  g_signal_connect (ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->family_list)), "changed",
+  g_signal_connect (ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->family_list)), "changed",
 		    G_CALLBACK (ctk_font_selection_select_font), fontsel);
 
   g_signal_connect_after (priv->family_list, "map",
 			  G_CALLBACK (ctk_font_selection_scroll_on_map),
 			  fontsel);
   
-  g_signal_connect (ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->face_list)), "changed",
+  g_signal_connect (ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->face_list)), "changed",
 		    G_CALLBACK (ctk_font_selection_select_style), fontsel);
 
-  g_signal_connect (ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->size_list)), "changed",
+  g_signal_connect (ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->size_list)), "changed",
 		    G_CALLBACK (ctk_font_selection_select_size), fontsel);
   atk_obj = ctk_widget_get_accessible (priv->size_list);
-  if (GTK_IS_ACCESSIBLE (atk_obj))
+  if (CTK_IS_ACCESSIBLE (atk_obj))
     {
       /* Accessibility support is enabled.
        * Make the label ATK_RELATON_LABEL_FOR for the size list as well.
@@ -569,31 +569,31 @@ ctk_font_selection_init (GtkFontSelection *fontsel)
       g_object_unref (relation_set);
     }
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
   ctk_widget_show (vbox);
-  ctk_box_pack_start (GTK_BOX (fontsel), vbox, FALSE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (fontsel), vbox, FALSE, TRUE, 0);
   
   /* create the text entry widget */
   label = ctk_label_new_with_mnemonic (_("_Preview:"));
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_CENTER);
   ctk_widget_show (label);
-  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, TRUE, 0);
 
-  text_box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  text_box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_show (text_box);
-  ctk_box_pack_start (GTK_BOX (vbox), text_box, FALSE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), text_box, FALSE, TRUE, 0);
   
   priv->preview_entry = ctk_entry_new ();
-  ctk_label_set_mnemonic_widget (GTK_LABEL (label), priv->preview_entry);
-  ctk_entry_set_text (GTK_ENTRY (priv->preview_entry), _(PREVIEW_TEXT));
+  ctk_label_set_mnemonic_widget (CTK_LABEL (label), priv->preview_entry);
+  ctk_entry_set_text (CTK_ENTRY (priv->preview_entry), _(PREVIEW_TEXT));
   
   ctk_widget_show (priv->preview_entry);
   g_signal_connect (priv->preview_entry, "changed",
 		    G_CALLBACK (ctk_font_selection_preview_changed), fontsel);
   ctk_widget_set_size_request (priv->preview_entry,
 			       -1, INITIAL_PREVIEW_HEIGHT);
-  ctk_box_pack_start (GTK_BOX (text_box), priv->preview_entry,
+  ctk_box_pack_start (CTK_BOX (text_box), priv->preview_entry,
 		      TRUE, TRUE, 0);
   ctk_widget_pop_composite_child();
 }
@@ -612,15 +612,15 @@ ctk_font_selection_new (void)
 {
   GtkFontSelection *fontsel;
   
-  fontsel = g_object_new (GTK_TYPE_FONT_SELECTION, NULL);
+  fontsel = g_object_new (CTK_TYPE_FONT_SELECTION, NULL);
   
-  return GTK_WIDGET (fontsel);
+  return CTK_WIDGET (fontsel);
 }
 
 static void
 ctk_font_selection_finalize (GObject *object)
 {
-  GtkFontSelection *fontsel = GTK_FONT_SELECTION (object);
+  GtkFontSelection *fontsel = CTK_FONT_SELECTION (object);
 
   ctk_font_selection_ref_family (fontsel, NULL);
   ctk_font_selection_ref_face (fontsel, NULL);
@@ -656,7 +656,7 @@ static void ctk_font_selection_ref_face (GtkFontSelection *fontsel,
 static void
 ctk_font_selection_reload_fonts (GtkFontSelection *fontsel)
 {
-  if (ctk_widget_has_screen (GTK_WIDGET (fontsel)))
+  if (ctk_widget_has_screen (CTK_WIDGET (fontsel)))
     {
       PangoFontDescription *desc;
       desc = ctk_font_selection_get_font_description (fontsel);
@@ -676,16 +676,16 @@ static void
 ctk_font_selection_screen_changed (GtkWidget *widget,
 				   GdkScreen *previous_screen)
 {
-  ctk_font_selection_reload_fonts (GTK_FONT_SELECTION (widget));
+  ctk_font_selection_reload_fonts (CTK_FONT_SELECTION (widget));
 }
 
 static void
 ctk_font_selection_style_updated (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (ctk_font_selection_parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (ctk_font_selection_parent_class)->style_updated (widget);
 
   /* Maybe fonts where installed or removed... */
-  ctk_font_selection_reload_fonts (GTK_FONT_SELECTION (widget));
+  ctk_font_selection_reload_fonts (CTK_FONT_SELECTION (widget));
 }
 
 static void
@@ -728,13 +728,13 @@ ctk_font_selection_scroll_to_selection (GtkFontSelection *fontsel)
   GtkFontSelectionPrivate *priv = fontsel->priv;
 
   /* Try to scroll the font family list to the selected item */
-  scroll_to_selection (GTK_TREE_VIEW (priv->family_list));
+  scroll_to_selection (CTK_TREE_VIEW (priv->family_list));
 
   /* Try to scroll the font family list to the selected item */
-  scroll_to_selection (GTK_TREE_VIEW (priv->face_list));
+  scroll_to_selection (CTK_TREE_VIEW (priv->face_list));
 
   /* Try to scroll the font family list to the selected item */
-  scroll_to_selection (GTK_TREE_VIEW (priv->size_list));
+  scroll_to_selection (CTK_TREE_VIEW (priv->size_list));
 /* This is called when the list is mapped. Here we scroll to the current
    font if necessary. */
 }
@@ -743,7 +743,7 @@ static void
 ctk_font_selection_scroll_on_map (GtkWidget		*widget,
                                   gpointer		 data)
 {
-  ctk_font_selection_scroll_to_selection (GTK_FONT_SELECTION (data));
+  ctk_font_selection_scroll_to_selection (CTK_FONT_SELECTION (data));
 }
 
 /* This is called when a family is selected in the list. */
@@ -759,7 +759,7 @@ ctk_font_selection_select_font (GtkTreeSelection *selection,
   const gchar *family_name;
 #endif
 
-  fontsel = GTK_FONT_SELECTION (data);
+  fontsel = CTK_FONT_SELECTION (data);
   priv = fontsel->priv;
 
   if (ctk_tree_selection_get_selected (selection, &model, &iter))
@@ -773,7 +773,7 @@ ctk_font_selection_select_font (GtkTreeSelection *selection,
 
 #ifdef INCLUDE_FONT_ENTRIES
 	  family_name = pango_font_family_get_name (priv->family);
-	  ctk_entry_set_text (GTK_ENTRY (priv->font_entry), family_name);
+	  ctk_entry_set_text (CTK_ENTRY (priv->font_entry), family_name);
 #endif
 
 	  ctk_font_selection_show_available_styles (fontsel);
@@ -803,9 +803,9 @@ ctk_font_selection_show_available_fonts (GtkFontSelection *fontsel)
   gint n_families, i;
   GtkTreeIter match_row;
 
-  model = GTK_LIST_STORE (ctk_tree_view_get_model (GTK_TREE_VIEW (priv->family_list)));
+  model = CTK_LIST_STORE (ctk_tree_view_get_model (CTK_TREE_VIEW (priv->family_list)));
 
-  pango_context_list_families (ctk_widget_get_pango_context (GTK_WIDGET (fontsel)),
+  pango_context_list_families (ctk_widget_get_pango_context (CTK_WIDGET (fontsel)),
 			       &families, &n_families);
   qsort (families, n_families, sizeof (PangoFontFamily *), cmp_families);
 
@@ -831,9 +831,9 @@ ctk_font_selection_show_available_fonts (GtkFontSelection *fontsel)
   ctk_font_selection_ref_family (fontsel, match_family);
   if (match_family)
     {
-      set_cursor_to_iter (GTK_TREE_VIEW (priv->family_list), &match_row);
+      set_cursor_to_iter (CTK_TREE_VIEW (priv->family_list), &match_row);
 #ifdef INCLUDE_FONT_ENTRIES
-      ctk_entry_set_text (GTK_ENTRY (priv->font_entry), 
+      ctk_entry_set_text (CTK_ENTRY (priv->font_entry), 
 			  pango_font_family_get_name (match_family));
 #endif /* INCLUDE_FONT_ENTRIES */
     }
@@ -900,7 +900,7 @@ ctk_font_selection_show_available_styles (GtkFontSelection *fontsel)
   GtkTreeIter match_row;
   PangoFontFace *match_face = NULL;
 
-  model = GTK_LIST_STORE (ctk_tree_view_get_model (GTK_TREE_VIEW (priv->face_list)));
+  model = CTK_LIST_STORE (ctk_tree_view_get_model (CTK_TREE_VIEW (priv->face_list)));
 
   if (priv->face)
     old_desc = pango_font_face_describe (priv->face);
@@ -950,9 +950,9 @@ ctk_font_selection_show_available_styles (GtkFontSelection *fontsel)
 #ifdef INCLUDE_FONT_ENTRIES
       const gchar *str = pango_font_face_get_face_name (priv->face);
 
-      ctk_entry_set_text (GTK_ENTRY (priv->font_style_entry), str);
+      ctk_entry_set_text (CTK_ENTRY (priv->font_style_entry), str);
 #endif
-      set_cursor_to_iter (GTK_TREE_VIEW (priv->face_list), &match_row);
+      set_cursor_to_iter (CTK_TREE_VIEW (priv->face_list), &match_row);
     }
 
   g_free (faces);
@@ -971,12 +971,12 @@ ctk_font_selection_select_best_style (GtkFontSelection *fontsel,
   GtkTreeIter iter;
   GtkTreeModel *model;
 
-  model = ctk_tree_view_get_model (GTK_TREE_VIEW (priv->face_list));
+  model = ctk_tree_view_get_model (CTK_TREE_VIEW (priv->face_list));
 
   if (ctk_tree_model_get_iter_first (model, &iter))
     {
-      set_cursor_to_iter (GTK_TREE_VIEW (priv->face_list), &iter);
-      scroll_to_selection (GTK_TREE_VIEW (priv->face_list));
+      set_cursor_to_iter (CTK_TREE_VIEW (priv->face_list), &iter);
+      scroll_to_selection (CTK_TREE_VIEW (priv->face_list));
     }
 
   ctk_font_selection_show_available_sizes (fontsel, FALSE);
@@ -989,7 +989,7 @@ static void
 ctk_font_selection_select_style (GtkTreeSelection *selection,
 				 gpointer          data)
 {
-  GtkFontSelection *fontsel = GTK_FONT_SELECTION (data);
+  GtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
   GtkTreeModel *model;
   GtkTreeIter iter;
 
@@ -1016,7 +1016,7 @@ ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
   gchar buffer[128];
   gchar *p;
 
-  model = GTK_LIST_STORE (ctk_tree_view_get_model (GTK_TREE_VIEW (priv->size_list)));
+  model = CTK_LIST_STORE (ctk_tree_view_get_model (CTK_TREE_VIEW (priv->size_list)));
 
   /* Insert the standard font sizes */
   if (first_time)
@@ -1031,7 +1031,7 @@ ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
 	                                     SIZE_COLUMN, font_sizes[i], -1);
 
 	  if (font_sizes[i] * PANGO_SCALE == priv->size)
-	    set_cursor_to_iter (GTK_TREE_VIEW (priv->size_list), &iter);
+	    set_cursor_to_iter (CTK_TREE_VIEW (priv->size_list), &iter);
 	}
     }
   else
@@ -1039,22 +1039,22 @@ ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
       GtkTreeIter iter;
       gboolean found = FALSE;
 
-      ctk_tree_model_get_iter_first (GTK_TREE_MODEL (model), &iter);
+      ctk_tree_model_get_iter_first (CTK_TREE_MODEL (model), &iter);
       for (i = 0; i < G_N_ELEMENTS (font_sizes) && !found; i++)
 	{
 	  if (font_sizes[i] * PANGO_SCALE == priv->size)
 	    {
-	      set_cursor_to_iter (GTK_TREE_VIEW (priv->size_list), &iter);
+	      set_cursor_to_iter (CTK_TREE_VIEW (priv->size_list), &iter);
 	      found = TRUE;
 	    }
 
-          if (!ctk_tree_model_iter_next (GTK_TREE_MODEL (model), &iter))
+          if (!ctk_tree_model_iter_next (CTK_TREE_MODEL (model), &iter))
             break;
 	}
 
       if (!found)
 	{
-	  GtkTreeSelection *selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->size_list));
+	  GtkTreeSelection *selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->size_list));
 	  ctk_tree_selection_unselect_all (selection);
 	}
     }
@@ -1074,8 +1074,8 @@ ctk_font_selection_show_available_sizes (GtkFontSelection *fontsel,
     }
 
   /* Compare, to avoid moving the cursor unecessarily */
-  if (strcmp (ctk_entry_get_text (GTK_ENTRY (priv->size_entry)), buffer) != 0)
-    ctk_entry_set_text (GTK_ENTRY (priv->size_entry), buffer);
+  if (strcmp (ctk_entry_get_text (CTK_ENTRY (priv->size_entry)), buffer) != 0)
+    ctk_entry_set_text (CTK_ENTRY (priv->size_entry), buffer);
 }
 
 static void
@@ -1105,12 +1105,12 @@ static void
 ctk_font_selection_size_activate (GtkWidget   *w,
                                   gpointer     data)
 {
-  GtkFontSelection *fontsel = GTK_FONT_SELECTION (data);
+  GtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
   GtkFontSelectionPrivate *priv = fontsel->priv;
   gint new_size;
   const gchar *text;
 
-  text = ctk_entry_get_text (GTK_ENTRY (priv->size_entry));
+  text = ctk_entry_get_text (CTK_ENTRY (priv->size_entry));
   new_size = (int) MAX (0.1, atof (text) * PANGO_SCALE + 0.5);
 
   if (priv->size != new_size)
@@ -1124,12 +1124,12 @@ ctk_font_selection_size_focus_out (GtkWidget     *w,
 				   GdkEventFocus *event,
 				   gpointer       data)
 {
-  GtkFontSelection *fontsel = GTK_FONT_SELECTION (data);
+  GtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
   GtkFontSelectionPrivate *priv = fontsel->priv;
   gint new_size;
   const gchar *text;
 
-  text = ctk_entry_get_text (GTK_ENTRY (priv->size_entry));
+  text = ctk_entry_get_text (CTK_ENTRY (priv->size_entry));
   new_size = (int) MAX (0.1, atof (text) * PANGO_SCALE + 0.5);
 
   ctk_font_selection_set_size (fontsel, new_size);
@@ -1142,7 +1142,7 @@ static void
 ctk_font_selection_select_size (GtkTreeSelection *selection,
 				gpointer          data)
 {
-  GtkFontSelection *fontsel = GTK_FONT_SELECTION (data);
+  GtkFontSelection *fontsel = CTK_FONT_SELECTION (data);
   GtkTreeModel *model;
   GtkTreeIter iter;
   gint new_size;
@@ -1190,10 +1190,10 @@ ctk_font_selection_update_preview (GtkFontSelection *fontsel)
                             ctk_font_selection_get_font_description (fontsel));
 
   /* This sets the preview text, if it hasn't been set already. */
-  text = ctk_entry_get_text (GTK_ENTRY (preview_entry));
+  text = ctk_entry_get_text (CTK_ENTRY (preview_entry));
   if (strlen (text) == 0)
-    ctk_entry_set_text (GTK_ENTRY (preview_entry), _(PREVIEW_TEXT));
-  ctk_editable_set_position (GTK_EDITABLE (preview_entry), 0);
+    ctk_entry_set_text (CTK_ENTRY (preview_entry), _(PREVIEW_TEXT));
+  ctk_editable_set_position (CTK_EDITABLE (preview_entry), 0);
 }
 
 
@@ -1217,7 +1217,7 @@ ctk_font_selection_update_preview (GtkFontSelection *fontsel)
 GtkWidget *
 ctk_font_selection_get_family_list (GtkFontSelection *fontsel)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
   return fontsel->priv->family_list;
 }
@@ -1238,7 +1238,7 @@ ctk_font_selection_get_family_list (GtkFontSelection *fontsel)
 GtkWidget *
 ctk_font_selection_get_face_list (GtkFontSelection *fontsel)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
   return fontsel->priv->face_list;
 }
@@ -1259,7 +1259,7 @@ ctk_font_selection_get_face_list (GtkFontSelection *fontsel)
 GtkWidget *
 ctk_font_selection_get_size_entry (GtkFontSelection *fontsel)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
   return fontsel->priv->size_entry;
 }
@@ -1279,7 +1279,7 @@ ctk_font_selection_get_size_entry (GtkFontSelection *fontsel)
 GtkWidget *
 ctk_font_selection_get_size_list (GtkFontSelection *fontsel)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
   return fontsel->priv->size_list;
 }
@@ -1299,7 +1299,7 @@ ctk_font_selection_get_size_list (GtkFontSelection *fontsel)
 GtkWidget *
 ctk_font_selection_get_preview_entry (GtkFontSelection *fontsel)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
   return fontsel->priv->preview_entry;
 }
@@ -1322,7 +1322,7 @@ ctk_font_selection_get_preview_entry (GtkFontSelection *fontsel)
 PangoFontFamily *
 ctk_font_selection_get_family (GtkFontSelection *fontsel)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
   return fontsel->priv->family;
 }
@@ -1345,7 +1345,7 @@ ctk_font_selection_get_family (GtkFontSelection *fontsel)
 PangoFontFace *
 ctk_font_selection_get_face (GtkFontSelection *fontsel)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
   return fontsel->priv->face;
 }
@@ -1366,7 +1366,7 @@ ctk_font_selection_get_face (GtkFontSelection *fontsel)
 gint
 ctk_font_selection_get_size (GtkFontSelection *fontsel)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), -1);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), -1);
 
   return fontsel->priv->size;
 }
@@ -1429,7 +1429,7 @@ ctk_font_selection_select_font_desc (GtkFontSelection      *fontsel,
 
   /* Check to make sure that this is in the list of allowed fonts 
    */
-  model = ctk_tree_view_get_model (GTK_TREE_VIEW (priv->family_list));
+  model = ctk_tree_view_get_model (CTK_TREE_VIEW (priv->family_list));
   for (valid = ctk_tree_model_get_iter_first (model, &iter);
        valid;
        valid = ctk_tree_model_iter_next (model, &iter))
@@ -1455,10 +1455,10 @@ ctk_font_selection_select_font_desc (GtkFontSelection      *fontsel,
     *pfamily = new_family;
   else
     g_object_unref (new_family);
-  set_cursor_to_iter (GTK_TREE_VIEW (priv->family_list), &iter);
+  set_cursor_to_iter (CTK_TREE_VIEW (priv->family_list), &iter);
   ctk_font_selection_show_available_styles (fontsel);
 
-  model = ctk_tree_view_get_model (GTK_TREE_VIEW (priv->face_list));
+  model = ctk_tree_view_get_model (CTK_TREE_VIEW (priv->face_list));
   for (valid = ctk_tree_model_get_iter_first (model, &iter);
        valid;
        valid = ctk_tree_model_iter_next (model, &iter))
@@ -1497,7 +1497,7 @@ ctk_font_selection_select_font_desc (GtkFontSelection      *fontsel,
     *pface = new_face;
   else if (new_face)
     g_object_unref (new_face);
-  set_cursor_to_iter (GTK_TREE_VIEW (priv->face_list), &match_iter);  
+  set_cursor_to_iter (CTK_TREE_VIEW (priv->face_list), &match_iter);  
 
   ctk_font_selection_set_size (fontsel, pango_font_description_get_size (new_desc));
 
@@ -1532,9 +1532,9 @@ ctk_font_selection_set_font_name (GtkFontSelection *fontsel,
   PangoFontFace *face = NULL;
   PangoFontDescription *new_desc;
   
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), FALSE);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), FALSE);
 
-  if (!ctk_widget_has_screen (GTK_WIDGET (fontsel)))
+  if (!ctk_widget_has_screen (CTK_WIDGET (fontsel)))
     return FALSE;
 
   new_desc = pango_font_description_from_string (fontname);
@@ -1574,11 +1574,11 @@ ctk_font_selection_get_preview_text (GtkFontSelection *fontsel)
 {
   GtkFontSelectionPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION (fontsel), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION (fontsel), NULL);
 
   priv = fontsel->priv;
 
-  return ctk_entry_get_text (GTK_ENTRY (priv->preview_entry));
+  return ctk_entry_get_text (CTK_ENTRY (priv->preview_entry));
 }
 
 
@@ -1598,12 +1598,12 @@ ctk_font_selection_set_preview_text  (GtkFontSelection *fontsel,
 {
   GtkFontSelectionPrivate *priv;
 
-  g_return_if_fail (GTK_IS_FONT_SELECTION (fontsel));
+  g_return_if_fail (CTK_IS_FONT_SELECTION (fontsel));
   g_return_if_fail (text != NULL);
 
   priv = fontsel->priv;
 
-  ctk_entry_set_text (GTK_ENTRY (priv->preview_entry), text);
+  ctk_entry_set_text (CTK_ENTRY (priv->preview_entry), text);
 }
 
 
@@ -1640,9 +1640,9 @@ static GObject * ctk_font_selection_dialog_buildable_get_internal_child (GtkBuil
 									  const gchar  *childname);
 
 G_DEFINE_TYPE_WITH_CODE (GtkFontSelectionDialog, ctk_font_selection_dialog,
-			 GTK_TYPE_DIALOG,
+			 CTK_TYPE_DIALOG,
                          G_ADD_PRIVATE (GtkFontSelectionDialog)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
 						ctk_font_selection_dialog_buildable_interface_init))
 
 static GtkBuildableIface *parent_buildable_iface;
@@ -1650,7 +1650,7 @@ static GtkBuildableIface *parent_buildable_iface;
 static void
 ctk_font_selection_dialog_class_init (GtkFontSelectionDialogClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_FONT_CHOOSER);
 }
@@ -1659,7 +1659,7 @@ static void
 ctk_font_selection_dialog_init (GtkFontSelectionDialog *fontseldiag)
 {
   GtkFontSelectionDialogPrivate *priv;
-  GtkDialog *dialog = GTK_DIALOG (fontseldiag);
+  GtkDialog *dialog = CTK_DIALOG (fontseldiag);
   GtkWidget *action_area, *content_area;
 
   fontseldiag->priv = ctk_font_selection_dialog_get_instance_private (fontseldiag);
@@ -1668,44 +1668,44 @@ ctk_font_selection_dialog_init (GtkFontSelectionDialog *fontseldiag)
   content_area = ctk_dialog_get_content_area (dialog);
   action_area = ctk_dialog_get_action_area (dialog);
 
-  ctk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-  ctk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
-  ctk_container_set_border_width (GTK_CONTAINER (action_area), 5);
-  ctk_box_set_spacing (GTK_BOX (action_area), 6);
+  ctk_container_set_border_width (CTK_CONTAINER (dialog), 5);
+  ctk_box_set_spacing (CTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
+  ctk_container_set_border_width (CTK_CONTAINER (action_area), 5);
+  ctk_box_set_spacing (CTK_BOX (action_area), 6);
 
   ctk_widget_push_composite_child ();
 
-  ctk_window_set_resizable (GTK_WINDOW (fontseldiag), TRUE);
+  ctk_window_set_resizable (CTK_WINDOW (fontseldiag), TRUE);
 
   /* Create the content area */
   priv->fontsel = ctk_font_selection_new ();
-  ctk_container_set_border_width (GTK_CONTAINER (priv->fontsel), 5);
+  ctk_container_set_border_width (CTK_CONTAINER (priv->fontsel), 5);
   ctk_widget_show (priv->fontsel);
-  ctk_box_pack_start (GTK_BOX (content_area),
+  ctk_box_pack_start (CTK_BOX (content_area),
 		      priv->fontsel, TRUE, TRUE, 0);
 
   /* Create the action area */
   priv->cancel_button = ctk_dialog_add_button (dialog,
                                                _("_Cancel"),
-                                               GTK_RESPONSE_CANCEL);
+                                               CTK_RESPONSE_CANCEL);
 
   priv->apply_button = ctk_dialog_add_button (dialog,
                                               _("_Apply"),
-                                              GTK_RESPONSE_APPLY);
+                                              CTK_RESPONSE_APPLY);
   ctk_widget_hide (priv->apply_button);
 
   priv->ok_button = ctk_dialog_add_button (dialog,
                                            _("_OK"),
-                                           GTK_RESPONSE_OK);
+                                           CTK_RESPONSE_OK);
   ctk_widget_grab_default (priv->ok_button);
 
-  ctk_dialog_set_alternative_button_order (GTK_DIALOG (fontseldiag),
-					   GTK_RESPONSE_OK,
-					   GTK_RESPONSE_APPLY,
-					   GTK_RESPONSE_CANCEL,
+  ctk_dialog_set_alternative_button_order (CTK_DIALOG (fontseldiag),
+					   CTK_RESPONSE_OK,
+					   CTK_RESPONSE_APPLY,
+					   CTK_RESPONSE_CANCEL,
 					   -1);
 
-  ctk_window_set_title (GTK_WINDOW (fontseldiag),
+  ctk_window_set_title (CTK_WINDOW (fontseldiag),
                         _("Font Selection"));
 
   ctk_widget_pop_composite_child ();
@@ -1726,12 +1726,12 @@ ctk_font_selection_dialog_new (const gchar *title)
 {
   GtkFontSelectionDialog *fontseldiag;
   
-  fontseldiag = g_object_new (GTK_TYPE_FONT_SELECTION_DIALOG, NULL);
+  fontseldiag = g_object_new (CTK_TYPE_FONT_SELECTION_DIALOG, NULL);
 
   if (title)
-    ctk_window_set_title (GTK_WINDOW (fontseldiag), title);
+    ctk_window_set_title (CTK_WINDOW (fontseldiag), title);
   
-  return GTK_WIDGET (fontseldiag);
+  return CTK_WIDGET (fontseldiag);
 }
 
 /**
@@ -1749,7 +1749,7 @@ ctk_font_selection_dialog_new (const gchar *title)
 GtkWidget*
 ctk_font_selection_dialog_get_font_selection (GtkFontSelectionDialog *fsd)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
   return fsd->priv->fontsel;
 }
@@ -1771,7 +1771,7 @@ ctk_font_selection_dialog_get_font_selection (GtkFontSelectionDialog *fsd)
 GtkWidget *
 ctk_font_selection_dialog_get_ok_button (GtkFontSelectionDialog *fsd)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
   return fsd->priv->ok_button;
 }
@@ -1792,7 +1792,7 @@ ctk_font_selection_dialog_get_ok_button (GtkFontSelectionDialog *fsd)
 GtkWidget *
 ctk_font_selection_dialog_get_cancel_button (GtkFontSelectionDialog *fsd)
 {
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
   return fsd->priv->cancel_button;
 }
@@ -1811,7 +1811,7 @@ ctk_font_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable,
 {
   GtkFontSelectionDialogPrivate *priv;
 
-  priv = GTK_FONT_SELECTION_DIALOG (buildable)->priv;
+  priv = CTK_FONT_SELECTION_DIALOG (buildable)->priv;
 
   if (g_strcmp0 (childname, "ok_button") == 0)
     return G_OBJECT (priv->ok_button);
@@ -1848,11 +1848,11 @@ ctk_font_selection_dialog_get_font_name (GtkFontSelectionDialog *fsd)
 {
   GtkFontSelectionDialogPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
   priv = fsd->priv;
 
-  return ctk_font_selection_get_font_name (GTK_FONT_SELECTION (priv->fontsel));
+  return ctk_font_selection_get_font_name (CTK_FONT_SELECTION (priv->fontsel));
 }
 
 /**
@@ -1873,12 +1873,12 @@ ctk_font_selection_dialog_set_font_name (GtkFontSelectionDialog *fsd,
 {
   GtkFontSelectionDialogPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION_DIALOG (fsd), FALSE);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), FALSE);
   g_return_val_if_fail (fontname, FALSE);
 
   priv = fsd->priv;
 
-  return ctk_font_selection_set_font_name (GTK_FONT_SELECTION (priv->fontsel), fontname);
+  return ctk_font_selection_set_font_name (CTK_FONT_SELECTION (priv->fontsel), fontname);
 }
 
 /**
@@ -1898,11 +1898,11 @@ ctk_font_selection_dialog_get_preview_text (GtkFontSelectionDialog *fsd)
 {
   GtkFontSelectionDialogPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
+  g_return_val_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd), NULL);
 
   priv = fsd->priv;
 
-  return ctk_font_selection_get_preview_text (GTK_FONT_SELECTION (priv->fontsel));
+  return ctk_font_selection_get_preview_text (CTK_FONT_SELECTION (priv->fontsel));
 }
 
 /**
@@ -1920,10 +1920,10 @@ ctk_font_selection_dialog_set_preview_text (GtkFontSelectionDialog *fsd,
 {
   GtkFontSelectionDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_FONT_SELECTION_DIALOG (fsd));
+  g_return_if_fail (CTK_IS_FONT_SELECTION_DIALOG (fsd));
   g_return_if_fail (text != NULL);
 
   priv = fsd->priv;
 
-  ctk_font_selection_set_preview_text (GTK_FONT_SELECTION (priv->fontsel), text);
+  ctk_font_selection_set_preview_text (CTK_FONT_SELECTION (priv->fontsel), text);
 }

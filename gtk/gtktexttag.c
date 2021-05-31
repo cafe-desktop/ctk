@@ -206,7 +206,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         P_("Tag name"),
                                                         P_("Name used to refer to the text tag. NULL for anonymous tags"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                                                        CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   /* Style args */
 
@@ -216,7 +216,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         P_("Background color name"),
                                                         P_("Background color as a string"),
                                                         NULL,
-                                                        GTK_PARAM_WRITABLE));
+                                                        CTK_PARAM_WRITABLE));
 
   /**
    * GtkTextTag:background-gdk:
@@ -231,7 +231,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Background color"),
                                                        P_("Background color as a GdkColor"),
                                                        g_type_from_name ("GdkColor"),
-                                                       GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
    * GtkTextTag:background-rgba:
@@ -246,7 +246,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Background RGBA"),
                                                        P_("Background color as a GdkRGBA"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_BACKGROUND_FULL_HEIGHT,
@@ -254,7 +254,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          P_("Background full height"),
                                                          P_("Whether the background color fills the entire line height or only the height of the tagged characters"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
   
   g_object_class_install_property (object_class,
                                    PROP_FOREGROUND,
@@ -262,7 +262,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         P_("Foreground color name"),
                                                         P_("Foreground color as a string"),
                                                         NULL,
-                                                        GTK_PARAM_WRITABLE));
+                                                        CTK_PARAM_WRITABLE));
 
   /**
    * GtkTextTag:foreground-gdk:
@@ -277,7 +277,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Foreground color"),
                                                        P_("Foreground color as a GdkColor"),
                                                        g_type_from_name ("GdkColor"),
-                                                       GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
    * GtkTextTag:foreground-rgba:
@@ -292,16 +292,16 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Foreground RGBA"),
                                                        P_("Foreground color as a GdkRGBA"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_DIRECTION,
                                    g_param_spec_enum ("direction",
                                                       P_("Text direction"),
                                                       P_("Text direction, e.g. right-to-left or left-to-right"),
-                                                      GTK_TYPE_TEXT_DIRECTION,
-                                                      GTK_TEXT_DIR_NONE,
-                                                      GTK_PARAM_READWRITE));
+                                                      CTK_TYPE_TEXT_DIRECTION,
+                                                      CTK_TEXT_DIR_NONE,
+                                                      CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_EDITABLE,
@@ -309,7 +309,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          P_("Editable"),
                                                          P_("Whether the text can be modified by the user"),
                                                          TRUE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:font:
@@ -325,7 +325,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         P_("Font"),
                                                         P_("Font description as a string, e.g. \"Sans Italic 12\""),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_FONT_DESC,
@@ -333,7 +333,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Font"),
                                                        P_("Font description as a PangoFontDescription struct"),
                                                        PANGO_TYPE_FONT_DESCRIPTION,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
   
   g_object_class_install_property (object_class,
                                    PROP_FAMILY,
@@ -341,7 +341,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         P_("Font family"),
                                                         P_("Name of the font family, e.g. Sans, Helvetica, Times, Monospace"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_STYLE,
@@ -350,7 +350,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                       P_("Font style as a PangoStyle, e.g. PANGO_STYLE_ITALIC"),
                                                       PANGO_TYPE_STYLE,
                                                       PANGO_STYLE_NORMAL,
-                                                      GTK_PARAM_READWRITE));
+                                                      CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_VARIANT,
@@ -359,7 +359,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      P_("Font variant as a PangoVariant, e.g. PANGO_VARIANT_SMALL_CAPS"),
                                                       PANGO_TYPE_VARIANT,
                                                       PANGO_VARIANT_NORMAL,
-                                                      GTK_PARAM_READWRITE));
+                                                      CTK_PARAM_READWRITE));
   
   g_object_class_install_property (object_class,
                                    PROP_WEIGHT,
@@ -369,7 +369,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      0,
                                                      G_MAXINT,
                                                      PANGO_WEIGHT_NORMAL,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
   
 
   g_object_class_install_property (object_class,
@@ -379,7 +379,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                       P_("Font stretch as a PangoStretch, e.g. PANGO_STRETCH_CONDENSED"),
                                                       PANGO_TYPE_STRETCH,
                                                       PANGO_STRETCH_NORMAL,
-                                                      GTK_PARAM_READWRITE));
+                                                      CTK_PARAM_READWRITE));
   
   g_object_class_install_property (object_class,
                                    PROP_SIZE,
@@ -389,7 +389,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      0,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_SCALE,
@@ -399,7 +399,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         0.0,
                                                         G_MAXDOUBLE,
                                                         1.0,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
   
   g_object_class_install_property (object_class,
                                    PROP_SIZE_POINTS,
@@ -409,16 +409,16 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         0.0,
                                                         G_MAXDOUBLE,
                                                         0.0,
-                                                        GTK_PARAM_READWRITE));  
+                                                        CTK_PARAM_READWRITE));  
 
   g_object_class_install_property (object_class,
                                    PROP_JUSTIFICATION,
                                    g_param_spec_enum ("justification",
                                                       P_("Justification"),
                                                       P_("Left, right, or center justification"),
-                                                      GTK_TYPE_JUSTIFICATION,
-                                                      GTK_JUSTIFY_LEFT,
-                                                      GTK_PARAM_READWRITE));
+                                                      CTK_TYPE_JUSTIFICATION,
+                                                      CTK_JUSTIFY_LEFT,
+                                                      CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:language:
@@ -436,7 +436,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         P_("Language"),
                                                         P_("The language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If not set, an appropriate default will be used."),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE));  
+                                                        CTK_PARAM_READWRITE));  
 
   g_object_class_install_property (object_class,
                                    PROP_LEFT_MARGIN,
@@ -446,7 +446,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      0,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_RIGHT_MARGIN,
@@ -456,7 +456,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      0,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   
   g_object_class_install_property (object_class,
@@ -467,7 +467,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      G_MININT,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   
   g_object_class_install_property (object_class,
@@ -478,7 +478,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
 						     G_MININT,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_PIXELS_ABOVE_LINES,
@@ -488,7 +488,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      0,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
   
   g_object_class_install_property (object_class,
                                    PROP_PIXELS_BELOW_LINES,
@@ -498,7 +498,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      0,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_PIXELS_INSIDE_WRAP,
@@ -508,7 +508,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      0,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_STRIKETHROUGH,
@@ -516,7 +516,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          P_("Strikethrough"),
                                                          P_("Whether to strike through the text"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
   
   g_object_class_install_property (object_class,
                                    PROP_UNDERLINE,
@@ -525,7 +525,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                       P_("Style of underline for this text"),
                                                       PANGO_TYPE_UNDERLINE,
                                                       PANGO_UNDERLINE_NONE,
-                                                      GTK_PARAM_READWRITE));
+                                                      CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:underline-rgba:
@@ -545,7 +545,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Underline RGBA"),
                                                        P_("Color of underline for this text"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:strikethrough-rgba:
@@ -561,16 +561,16 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Strikethrough RGBA"),
                                                        P_("Color of strikethrough for this text"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_WRAP_MODE,
                                    g_param_spec_enum ("wrap-mode",
                                                      P_("Wrap mode"),
                                                      P_("Whether to wrap lines never, at word boundaries, or at character boundaries"),
-                                                      GTK_TYPE_WRAP_MODE,
-                                                      GTK_WRAP_NONE,
-                                                      GTK_PARAM_READWRITE));
+                                                      CTK_TYPE_WRAP_MODE,
+                                                      CTK_WRAP_NONE,
+                                                      CTK_PARAM_READWRITE));
   
 
   g_object_class_install_property (object_class,
@@ -579,7 +579,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Tabs"),
                                                        P_("Custom tabs for this text"),
                                                        PANGO_TYPE_TAB_ARRAY,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
   
   /**
    * GtkTextTag:invisible:
@@ -598,7 +598,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          P_("Invisible"),
                                                          P_("Whether this text is hidden."),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:paragraph-background:
@@ -613,7 +613,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         P_("Paragraph background color name"),
                                                         P_("Paragraph background color as a string"),
                                                         NULL,
-                                                        GTK_PARAM_WRITABLE));
+                                                        CTK_PARAM_WRITABLE));
 
   /**
    * GtkTextTag:paragraph-background-gdk:
@@ -630,7 +630,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Paragraph background color"),
                                                        P_("Paragraph background color as a GdkColor"),
                                                        g_type_from_name ("GdkColor"),
-                                                       GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
    * GtkTextTag:paragraph-background-rgba:
@@ -645,7 +645,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                        P_("Paragraph background RGBA"),
                                                        P_("Paragraph background RGBA as a GdkRGBA"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:fallback:
@@ -663,7 +663,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          P_("Fallback"),
                                                          P_("Whether font fallback is enabled."),
                                                          TRUE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:letter-spacing:
@@ -678,7 +678,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                      P_("Letter Spacing"),
                                                      P_("Extra spacing between graphemes"),
                                                      0, G_MAXINT, 0,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:font-features:
@@ -693,7 +693,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                         P_("Font Features"),
                                                         P_("OpenType Font Features to use"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * GtkTextTag:accumulative-margin:
@@ -712,11 +712,11 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                                                          P_("Margin Accumulates"),
                                                          P_("Whether left and right margins accumulate."),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
 
   /* Style props are set or not */
 
-#define ADD_SET_PROP(propname, propval, nick, blurb) g_object_class_install_property (object_class, propval, g_param_spec_boolean (propname, nick, blurb, FALSE, GTK_PARAM_READWRITE))
+#define ADD_SET_PROP(propname, propval, nick, blurb) g_object_class_install_property (object_class, propval, g_param_spec_boolean (propname, nick, blurb, FALSE, CTK_PARAM_READWRITE))
 
   ADD_SET_PROP ("background-set", PROP_BACKGROUND_SET,
                 P_("Background set"),
@@ -880,7 +880,7 @@ ctk_text_tag_class_init (GtkTextTagClass *klass)
                   3,
                   G_TYPE_OBJECT,
                   GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,
-                  GTK_TYPE_TEXT_ITER);
+                  CTK_TYPE_TEXT_ITER);
   g_signal_set_va_marshaller (signals[EVENT],
                               G_OBJECT_CLASS_TYPE (object_class),
                               _ctk_marshal_BOOLEAN__OBJECT_BOXED_BOXEDv);
@@ -907,7 +907,7 @@ ctk_text_tag_new (const gchar *name)
 {
   GtkTextTag *tag;
 
-  tag = g_object_new (GTK_TYPE_TEXT_TAG, "name", name, NULL);
+  tag = g_object_new (CTK_TYPE_TEXT_TAG, "name", name, NULL);
 
   return tag;
 }
@@ -915,7 +915,7 @@ ctk_text_tag_new (const gchar *name)
 static void
 ctk_text_tag_finalize (GObject *object)
 {
-  GtkTextTag *text_tag = GTK_TEXT_TAG (object);
+  GtkTextTag *text_tag = CTK_TEXT_TAG (object);
   GtkTextTagPrivate *priv = text_tag->priv;
 
   if (priv->table)
@@ -959,11 +959,11 @@ set_underline_rgba (GtkTextTag    *tag,
 
   if (rgba)
     {
-      GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA (&priv->values->appearance, rgba);
+      CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA (&priv->values->appearance, rgba);
 
-      if (!GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance))
+      if (!CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance))
         {
-          GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET (&priv->values->appearance, TRUE);
+          CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET (&priv->values->appearance, TRUE);
           g_object_notify (G_OBJECT (tag), "underline-rgba-set");
         }
     }
@@ -971,11 +971,11 @@ set_underline_rgba (GtkTextTag    *tag,
     {
       GdkRGBA black = { 0 };
 
-      GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA (&priv->values->appearance, &black);
+      CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA (&priv->values->appearance, &black);
 
-      if (GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance))
+      if (CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance))
         {
-          GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET (&priv->values->appearance, FALSE);
+          CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET (&priv->values->appearance, FALSE);
           g_object_notify (G_OBJECT (tag), "underline-rgba-set");
         }
     }
@@ -989,11 +989,11 @@ set_strikethrough_rgba (GtkTextTag    *tag,
 
   if (rgba)
     {
-      GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA (&priv->values->appearance, rgba);
+      CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA (&priv->values->appearance, rgba);
 
-      if (!GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance))
+      if (!CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance))
         {
-          GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance, TRUE);
+          CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance, TRUE);
           g_object_notify (G_OBJECT (tag), "strikethrough-rgba-set");
         }
     }
@@ -1001,11 +1001,11 @@ set_strikethrough_rgba (GtkTextTag    *tag,
     {
       GdkRGBA black = { 0 };
 
-      GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA (&priv->values->appearance, &black);
+      CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA (&priv->values->appearance, &black);
 
-      if (GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance))
+      if (CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance))
         {
-          GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance, FALSE);
+          CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance, FALSE);
           g_object_notify (G_OBJECT (tag), "strikethrough-rgba-set");
         }
     }
@@ -1328,7 +1328,7 @@ ctk_text_tag_set_property (GObject      *object,
                            const GValue *value,
                            GParamSpec   *pspec)
 {
-  GtkTextTag *text_tag = GTK_TEXT_TAG (object);
+  GtkTextTag *text_tag = CTK_TEXT_TAG (object);
   GtkTextTagPrivate *priv = text_tag->priv;
   gboolean size_changed = FALSE;
 
@@ -1763,7 +1763,7 @@ ctk_text_tag_set_property (GObject      *object,
       break;
 
     case PROP_STRIKETHROUGH_RGBA_SET:
-      GTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance,
+      CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance,
                                                       g_value_get_boolean (value));
       break;
 
@@ -1777,7 +1777,7 @@ ctk_text_tag_set_property (GObject      *object,
       break;
 
     case PROP_UNDERLINE_RGBA_SET:
-      GTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET (&priv->values->appearance,
+      CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA_SET (&priv->values->appearance,
                                                   g_value_get_boolean (value));
       break;
 
@@ -1840,7 +1840,7 @@ ctk_text_tag_get_property (GObject      *object,
                            GValue       *value,
                            GParamSpec   *pspec)
 {
-  GtkTextTag *tag = GTK_TEXT_TAG (object);
+  GtkTextTag *tag = CTK_TEXT_TAG (object);
   GtkTextTagPrivate *priv = tag->priv;
 
   switch (prop_id)
@@ -1966,11 +1966,11 @@ ctk_text_tag_get_property (GObject      *object,
       break;
 
     case PROP_STRIKETHROUGH_RGBA:
-      if (GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance))
+      if (CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance))
         {
           GdkRGBA rgba;
 
-          GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (&priv->values->appearance, &rgba);
+          CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (&priv->values->appearance, &rgba);
           g_value_set_boxed (value, &rgba);
         }
       break;
@@ -1984,11 +1984,11 @@ ctk_text_tag_get_property (GObject      *object,
       break;
 
     case PROP_UNDERLINE_RGBA:
-      if (GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance))
+      if (CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance))
         {
           GdkRGBA rgba;
 
-          GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (&priv->values->appearance, &rgba);
+          CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (&priv->values->appearance, &rgba);
           g_value_set_boxed (value, &rgba);
         }
       break;
@@ -2102,7 +2102,7 @@ ctk_text_tag_get_property (GObject      *object,
 
     case PROP_STRIKETHROUGH_RGBA_SET:
       g_value_set_boolean (value,
-                           GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance));
+                           CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&priv->values->appearance));
       break;
 
     case PROP_RIGHT_MARGIN_SET:
@@ -2115,7 +2115,7 @@ ctk_text_tag_get_property (GObject      *object,
 
     case PROP_UNDERLINE_RGBA_SET:
       g_value_set_boolean (value,
-                           GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance));
+                           CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&priv->values->appearance));
       break;
 
     case PROP_RISE_SET:
@@ -2196,7 +2196,7 @@ delta_priority_foreach (GtkTextTag *tag, gpointer user_data)
 gint
 ctk_text_tag_get_priority (GtkTextTag *tag)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_TAG (tag), 0);
+  g_return_val_if_fail (CTK_IS_TEXT_TAG (tag), 0);
 
   return tag->priv->priority;
 }
@@ -2225,7 +2225,7 @@ ctk_text_tag_set_priority (GtkTextTag *tag,
   GtkTextTagPrivate *priv;
   DeltaData dd;
 
-  g_return_if_fail (GTK_IS_TEXT_TAG (tag));
+  g_return_if_fail (CTK_IS_TEXT_TAG (tag));
 
   priv = tag->priv;
 
@@ -2275,7 +2275,7 @@ ctk_text_tag_event (GtkTextTag        *tag,
 {
   gboolean retval = FALSE;
 
-  g_return_val_if_fail (GTK_IS_TEXT_TAG (tag), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_TAG (tag), FALSE);
   g_return_val_if_fail (G_IS_OBJECT (event_object), FALSE);
   g_return_val_if_fail (event != NULL, FALSE);
 
@@ -2309,7 +2309,7 @@ ctk_text_tag_changed (GtkTextTag *tag,
 {
   GtkTextTagPrivate *priv;
 
-  g_return_if_fail (GTK_IS_TEXT_TAG (tag));
+  g_return_if_fail (CTK_IS_TEXT_TAG (tag));
 
   priv = tag->priv;
 

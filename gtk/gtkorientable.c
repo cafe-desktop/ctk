@@ -60,9 +60,9 @@ ctk_orientable_default_init (GtkOrientableInterface *iface)
                                        g_param_spec_enum ("orientation",
                                                           P_("Orientation"),
                                                           P_("The orientation of the orientable"),
-                                                          GTK_TYPE_ORIENTATION,
-                                                          GTK_ORIENTATION_HORIZONTAL,
-                                                          GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                          CTK_TYPE_ORIENTATION,
+                                                          CTK_ORIENTATION_HORIZONTAL,
+                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 }
 
 /**
@@ -78,13 +78,13 @@ void
 ctk_orientable_set_orientation (GtkOrientable  *orientable,
                                 GtkOrientation  orientation)
 {
-  g_return_if_fail (GTK_IS_ORIENTABLE (orientable));
+  g_return_if_fail (CTK_IS_ORIENTABLE (orientable));
 
   g_object_set (orientable,
                 "orientation", orientation,
                 NULL);
 
-  if (GTK_IS_WIDGET (orientable))
+  if (CTK_IS_WIDGET (orientable))
     _ctk_orientable_set_style_classes (orientable);
 }
 
@@ -103,8 +103,8 @@ ctk_orientable_get_orientation (GtkOrientable *orientable)
 {
   GtkOrientation orientation;
 
-  g_return_val_if_fail (GTK_IS_ORIENTABLE (orientable),
-                        GTK_ORIENTATION_HORIZONTAL);
+  g_return_val_if_fail (CTK_IS_ORIENTABLE (orientable),
+                        CTK_ORIENTATION_HORIZONTAL);
 
   g_object_get (orientable,
                 "orientation", &orientation,
@@ -119,20 +119,20 @@ _ctk_orientable_set_style_classes (GtkOrientable *orientable)
   GtkStyleContext *context;
   GtkOrientation orientation;
 
-  g_return_if_fail (GTK_IS_ORIENTABLE (orientable));
-  g_return_if_fail (GTK_IS_WIDGET (orientable));
+  g_return_if_fail (CTK_IS_ORIENTABLE (orientable));
+  g_return_if_fail (CTK_IS_WIDGET (orientable));
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (orientable));
+  context = ctk_widget_get_style_context (CTK_WIDGET (orientable));
   orientation = ctk_orientable_get_orientation (orientable);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
-      ctk_style_context_add_class (context, GTK_STYLE_CLASS_HORIZONTAL);
-      ctk_style_context_remove_class (context, GTK_STYLE_CLASS_VERTICAL);
+      ctk_style_context_add_class (context, CTK_STYLE_CLASS_HORIZONTAL);
+      ctk_style_context_remove_class (context, CTK_STYLE_CLASS_VERTICAL);
     }
   else
     {
-      ctk_style_context_add_class (context, GTK_STYLE_CLASS_VERTICAL);
-      ctk_style_context_remove_class (context, GTK_STYLE_CLASS_HORIZONTAL);
+      ctk_style_context_add_class (context, CTK_STYLE_CLASS_VERTICAL);
+      ctk_style_context_remove_class (context, CTK_STYLE_CLASS_HORIZONTAL);
     }
 }

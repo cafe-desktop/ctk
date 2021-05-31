@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_H__
-#define __GTK_H__
+#ifndef __CTK_H__
+#define __CTK_H__
 
-#define __GTK_H_INSIDE__
+#define __CTK_H_INSIDE__
 
 #include <gdk/gdk.h>
 #include <gtk/gtkaboutdialog.h>
@@ -247,7 +247,7 @@
 #include <gtk/gtkwindow.h>
 #include <gtk/gtkwindowgroup.h>
 
-#ifndef GTK_DISABLE_DEPRECATED
+#ifndef CTK_DISABLE_DEPRECATED
 #include <gtk/deprecated/gtkarrow.h>
 #include <gtk/deprecated/gtkactivatable.h>
 #include <gtk/deprecated/gtkaction.h>
@@ -288,10 +288,10 @@
 #include <gtk/deprecated/gtkvscale.h>
 #include <gtk/deprecated/gtkvscrollbar.h>
 #include <gtk/deprecated/gtkvseparator.h>
-#endif /* GTK_DISABLE_DEPRECATED */
+#endif /* CTK_DISABLE_DEPRECATED */
 
 #include <gtk/gtk-autocleanups.h>
 
-#undef __GTK_H_INSIDE__
+#undef __CTK_H_INSIDE__
 
-#endif /* __GTK_H__ */
+#endif /* __CTK_H__ */

@@ -332,10 +332,10 @@ msgstr "Yra svarbus"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Ar veiksmas yra laikomas svarbiu. Jei reikšmė TEIGIAMA, šio veiksmo toolitem "
-"tarpinės GTK_TOOLBAR_BOTH_HORIZ veiksenoje bus rodomi kaip tekstas."
+"tarpinės CTK_TOOLBAR_BOTH_HORIZ veiksenoje bus rodomi kaip tekstas."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1799,8 +1799,8 @@ msgid "Default Spacing"
 msgstr "Numatyti tarpai"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Papildoma erdvė pridedama prie GTK_CAN_DEFAULT tipo mygtukų"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Papildoma erdvė pridedama prie CTK_CAN_DEFAULT tipo mygtukų"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1808,10 +1808,10 @@ msgstr "Numatyti Išoriniai Tarpai"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Papildoma erdvė pridedama prie GTK_CAN_DEFAULT tipo mygtukų, visada išvedama "
+"Papildoma erdvė pridedama prie CTK_CAN_DEFAULT tipo mygtukų, visada išvedama "
 "už rėmelio ribų"
 
 #: gtk/gtkbutton.c:556
@@ -4268,9 +4268,9 @@ msgid "Baseline Row"
 msgstr "Kontrolinė eilutė"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
-"Eilutė, lygiuojama pagal kontrolinę liniją, kai valign yra GTK_ALIGN_BASELINE"
+"Eilutė, lygiuojama pagal kontrolinę liniją, kai valign yra CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8427,10 +8427,10 @@ msgstr "Protarpis pikseliais tarp piktogramos ir užrašo"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Ar įrankių juostos elementas yra laikomas svarbiu. Jei reikšmė TEIGIAMA, "
-"įrankių juostos mygtukai GTK_TOOLBAR_BOTH_HORIZ veiksenoje rodys tekstą"
+"įrankių juostos mygtukai CTK_TOOLBAR_BOTH_HORIZ veiksenoje rodys tekstą"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

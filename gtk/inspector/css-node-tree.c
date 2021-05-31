@@ -76,7 +76,7 @@ struct _GtkInspectorCssNodeTreePrivate
   GtkCssNode *node;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorCssNodeTree, ctk_inspector_css_node_tree, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorCssNodeTree, ctk_inspector_css_node_tree, CTK_TYPE_BOX)
 
 typedef struct {
   GtkCssNode *node;
@@ -91,18 +91,18 @@ show_node_prop_editor (NodePropEditor *npe)
   GtkWidget *popover;
   GtkWidget *editor;
 
-  popover = ctk_popover_new (GTK_WIDGET (npe->cnt->priv->node_tree));
-  ctk_popover_set_pointing_to (GTK_POPOVER (popover), &npe->rect);
+  popover = ctk_popover_new (CTK_WIDGET (npe->cnt->priv->node_tree));
+  ctk_popover_set_pointing_to (CTK_POPOVER (popover), &npe->rect);
 
   editor = ctk_inspector_prop_editor_new (G_OBJECT (npe->node), npe->prop_name, FALSE);
   ctk_widget_show (editor);
 
-  ctk_container_add (GTK_CONTAINER (popover), editor);
+  ctk_container_add (CTK_CONTAINER (popover), editor);
 
-  if (ctk_inspector_prop_editor_should_expand (GTK_INSPECTOR_PROP_EDITOR (editor)))
+  if (ctk_inspector_prop_editor_should_expand (CTK_INSPECTOR_PROP_EDITOR (editor)))
     ctk_widget_set_vexpand (popover, TRUE);
 
-  ctk_popover_popup (GTK_POPOVER (popover));
+  ctk_popover_popup (CTK_POPOVER (popover));
 
   g_signal_connect (popover, "unmap", G_CALLBACK (ctk_widget_destroy), NULL);
 }
@@ -128,7 +128,7 @@ row_activated (GtkTreeView             *tv,
     return;
 
   ctk_tree_model_get_iter (cnt->priv->node_model, &iter, path);
-  npe.node = ctk_tree_model_css_node_get_node_from_iter (GTK_TREE_MODEL_CSS_NODE (cnt->priv->node_model), &iter);
+  npe.node = ctk_tree_model_css_node_get_node_from_iter (CTK_TREE_MODEL_CSS_NODE (cnt->priv->node_model), &iter);
   ctk_tree_view_get_cell_area (tv, path, col, &npe.rect);
   ctk_tree_view_convert_bin_window_to_widget_coords (tv, npe.rect.x, npe.rect.y, &npe.rect.x, &npe.rect.y);
 
@@ -148,7 +148,7 @@ selection_changed (GtkTreeSelection *selection, GtkInspectorCssNodeTree *cnt)
   if (!ctk_tree_selection_get_selected (selection, NULL, &iter))
     return;
 
-  node = ctk_tree_model_css_node_get_node_from_iter (GTK_TREE_MODEL_CSS_NODE (cnt->priv->node_model), &iter);
+  node = ctk_tree_model_css_node_get_node_from_iter (CTK_TREE_MODEL_CSS_NODE (cnt->priv->node_model), &iter);
   ctk_inspector_css_node_tree_set_node (cnt, node);
 }
 
@@ -171,7 +171,7 @@ ctk_inspector_css_node_tree_unset_node (GtkInspectorCssNodeTree *cnt)
 static void
 ctk_inspector_css_node_tree_finalize (GObject *object)
 {
-  GtkInspectorCssNodeTree *cnt = GTK_INSPECTOR_CSS_NODE_TREE (object);
+  GtkInspectorCssNodeTree *cnt = CTK_INSPECTOR_CSS_NODE_TREE (object);
 
   ctk_inspector_css_node_tree_unset_node (cnt);
 
@@ -198,7 +198,7 @@ static void
 ctk_inspector_css_node_tree_class_init (GtkInspectorCssNodeTreeClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ensure_css_sections ();
 
@@ -313,7 +313,7 @@ ctk_inspector_css_node_tree_init (GtkInspectorCssNodeTree *cnt)
   gint i;
 
   cnt->priv = ctk_inspector_css_node_tree_get_instance_private (cnt);
-  ctk_widget_init_template (GTK_WIDGET (cnt));
+  ctk_widget_init_template (CTK_WIDGET (cnt));
   priv = cnt->priv;
 
   priv->node_model = ctk_tree_model_css_node_new (ctk_inspector_css_node_tree_get_node_value,
@@ -323,12 +323,12 @@ ctk_inspector_css_node_tree_init (GtkInspectorCssNodeTree *cnt)
                                                   G_TYPE_STRING,
                                                   G_TYPE_STRING,
                                                   G_TYPE_STRING);
-  ctk_tree_view_set_model (GTK_TREE_VIEW (priv->node_tree), priv->node_model);
+  ctk_tree_view_set_model (CTK_TREE_VIEW (priv->node_tree), priv->node_model);
   g_object_unref (priv->node_model);
 
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (cnt->priv->prop_model),
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (cnt->priv->prop_model),
                                         COLUMN_PROP_NAME,
-                                        GTK_SORT_ASCENDING);
+                                        CTK_SORT_ASCENDING);
 
   priv->prop_iters = g_hash_table_new_full (g_str_hash, g_str_equal,
                                             NULL, (GDestroyNotify) ctk_tree_iter_free);
@@ -340,7 +340,7 @@ ctk_inspector_css_node_tree_init (GtkInspectorCssNodeTree *cnt)
       const gchar *name;
 
       prop = _ctk_css_style_property_lookup_by_id (i);
-      name = _ctk_style_property_get_name (GTK_STYLE_PROPERTY (prop));
+      name = _ctk_style_property_get_name (CTK_STYLE_PROPERTY (prop));
 
       ctk_list_store_append (cnt->priv->prop_model, &iter);
       ctk_list_store_set (cnt->priv->prop_model, &iter, COLUMN_PROP_NAME, name, -1);
@@ -357,30 +357,30 @@ ctk_inspector_css_node_tree_set_object (GtkInspectorCssNodeTree *cnt,
   GtkTreePath *path;
   GtkTreeIter iter;
 
-  g_return_if_fail (GTK_INSPECTOR_IS_CSS_NODE_TREE (cnt));
+  g_return_if_fail (CTK_INSPECTOR_IS_CSS_NODE_TREE (cnt));
 
   priv = cnt->priv;
 
-  if (!GTK_IS_WIDGET (object))
+  if (!CTK_IS_WIDGET (object))
     {
-      ctk_widget_hide (GTK_WIDGET (cnt));
+      ctk_widget_hide (CTK_WIDGET (cnt));
       return;
     }
 
-  ctk_widget_show (GTK_WIDGET (cnt));
+  ctk_widget_show (CTK_WIDGET (cnt));
 
-  root = node = ctk_widget_get_css_node (GTK_WIDGET (object));
+  root = node = ctk_widget_get_css_node (CTK_WIDGET (object));
   while (ctk_css_node_get_parent (root))
     root = ctk_css_node_get_parent (root);
 
-  ctk_tree_model_css_node_set_root_node (GTK_TREE_MODEL_CSS_NODE (priv->node_model), root);
+  ctk_tree_model_css_node_set_root_node (CTK_TREE_MODEL_CSS_NODE (priv->node_model), root);
 
-  ctk_tree_model_css_node_get_iter_from_node (GTK_TREE_MODEL_CSS_NODE (priv->node_model), &iter, node);
+  ctk_tree_model_css_node_get_iter_from_node (CTK_TREE_MODEL_CSS_NODE (priv->node_model), &iter, node);
   path = ctk_tree_model_get_path (priv->node_model, &iter);
 
-  ctk_tree_view_expand_to_path (GTK_TREE_VIEW (priv->node_tree), path);
-  ctk_tree_view_set_cursor (GTK_TREE_VIEW (priv->node_tree), path, NULL, FALSE);
-  ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (priv->node_tree), path, NULL, TRUE, 0.5, 0.0);
+  ctk_tree_view_expand_to_path (CTK_TREE_VIEW (priv->node_tree), path);
+  ctk_tree_view_set_cursor (CTK_TREE_VIEW (priv->node_tree), path, NULL, FALSE);
+  ctk_tree_view_scroll_to_cell (CTK_TREE_VIEW (priv->node_tree), path, NULL, TRUE, 0.5, 0.0);
 
   ctk_tree_path_free (path);
 }
@@ -402,7 +402,7 @@ ctk_inspector_css_node_tree_update_style (GtkInspectorCssNodeTree *cnt,
       gchar *value;
 
       prop = _ctk_css_style_property_lookup_by_id (i);
-      name = _ctk_style_property_get_name (GTK_STYLE_PROPERTY (prop));
+      name = _ctk_style_property_get_name (CTK_STYLE_PROPERTY (prop));
 
       iter = (GtkTreeIter *)g_hash_table_lookup (priv->prop_iters, name);
 

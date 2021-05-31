@@ -38,7 +38,7 @@ toggle_action (GtkAction *action)
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
 
   g_message ("Action %s (type=%s) activated (active=%d)", name, typename,
-	     ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+	     ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
 }
 
 
@@ -49,8 +49,8 @@ radio_action (GtkAction *action)
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
 
   g_message ("Action %s (type=%s) activated (active=%d) (value %d)", name, typename,
-	     ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)),
-	     ctk_radio_action_get_current_value (GTK_RADIO_ACTION (action)));
+	     ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)),
+	     ctk_radio_action_get_current_value (CTK_RADIO_ACTION (action)));
 }
 
 static void
@@ -58,7 +58,7 @@ recent_action (GtkAction *action)
 {
   const gchar *name = ctk_action_get_name (action);
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
-  gchar *uri = ctk_recent_chooser_get_current_uri (GTK_RECENT_CHOOSER (action));
+  gchar *uri = ctk_recent_chooser_get_current_uri (CTK_RECENT_CHOOSER (action));
 
   g_message ("Action %s (type=%s) activated (uri=%s)",
              name, typename,
@@ -71,7 +71,7 @@ toggle_cnp_actions (GtkAction *action)
 {
   gboolean sensitive;
 
-  sensitive = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+  sensitive = ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action));
   action = ctk_action_group_get_action (action_group, "cut");
   g_object_set (action, "sensitive", sensitive, NULL);
   action = ctk_action_group_get_action (action_group, "copy");
@@ -101,7 +101,7 @@ toolbar_style (GtkAction *action)
 
   radio_action (action);
 
-  style = ctk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+  style = ctk_radio_action_get_current_value (CTK_RADIO_ACTION (action));
 
   ctk_toolbar_set_style (toolbar, style);
 }
@@ -111,7 +111,7 @@ toolbar_size_small (GtkAction *action)
 {
   g_return_if_fail (toolbar != NULL);
 
-  ctk_toolbar_set_icon_size (toolbar, GTK_ICON_SIZE_SMALL_TOOLBAR);
+  ctk_toolbar_set_icon_size (toolbar, CTK_ICON_SIZE_SMALL_TOOLBAR);
 }
 
 static void
@@ -119,7 +119,7 @@ toolbar_size_large (GtkAction *action)
 {
   g_return_if_fail (toolbar != NULL);
 
-  ctk_toolbar_set_icon_size (toolbar, GTK_ICON_SIZE_LARGE_TOOLBAR);
+  ctk_toolbar_set_icon_size (toolbar, CTK_ICON_SIZE_LARGE_TOOLBAR);
 }
 
 /* convenience functions for declaring actions */
@@ -130,13 +130,13 @@ static GtkActionEntry entries[] = {
 
   { "attach", "mail-attachment", "_Attachment...", "<Control>m",
     "Attach a file", G_CALLBACK (activate_action) },
-  { "cut", GTK_STOCK_CUT, "C_ut", "<control>X",
+  { "cut", CTK_STOCK_CUT, "C_ut", "<control>X",
     "Cut the selected text to the clipboard", G_CALLBACK (activate_action) },
-  { "copy", GTK_STOCK_COPY, "_Copy", "<control>C",
+  { "copy", CTK_STOCK_COPY, "_Copy", "<control>C",
     "Copy the selected text to the clipboard", G_CALLBACK (activate_action) },
-  { "paste", GTK_STOCK_PASTE, "_Paste", "<control>V",
+  { "paste", CTK_STOCK_PASTE, "_Paste", "<control>V",
     "Paste the text from the clipboard", G_CALLBACK (activate_action) },
-  { "quit", GTK_STOCK_QUIT,  NULL, "<control>Q",
+  { "quit", CTK_STOCK_QUIT,  NULL, "<control>Q",
     "Quit the application", G_CALLBACK (ctk_main_quit) },
   { "customise-accels", NULL, "Customise _Accels", NULL,
     "Customise keyboard shortcuts", G_CALLBACK (show_accel_dialog) },
@@ -148,7 +148,7 @@ static GtkActionEntry entries[] = {
 static guint n_entries = G_N_ELEMENTS (entries);
 
 static GtkToggleActionEntry toggle_entries[] = {
-  { "bold", GTK_STOCK_BOLD, "_Bold", "<control>B",
+  { "bold", CTK_STOCK_BOLD, "_Bold", "<control>B",
     "Change to bold face", 
     G_CALLBACK (toggle_action), FALSE },
   { "toggle-cnp", NULL, "Enable Cut/Copy/Paste", NULL,
@@ -165,22 +165,22 @@ enum {
 };
 
 static GtkRadioActionEntry justify_entries[] = {
-  { "justify-left", GTK_STOCK_JUSTIFY_LEFT, "_Left", "<control>L",
+  { "justify-left", CTK_STOCK_JUSTIFY_LEFT, "_Left", "<control>L",
     "Left justify the text", JUSTIFY_LEFT },
-  { "justify-center", GTK_STOCK_JUSTIFY_CENTER, "C_enter", "<control>E",
+  { "justify-center", CTK_STOCK_JUSTIFY_CENTER, "C_enter", "<control>E",
     "Center justify the text", JUSTIFY_CENTER },
-  { "justify-right", GTK_STOCK_JUSTIFY_RIGHT, "_Right", "<control>R",
+  { "justify-right", CTK_STOCK_JUSTIFY_RIGHT, "_Right", "<control>R",
     "Right justify the text", JUSTIFY_RIGHT },
-  { "justify-fill", GTK_STOCK_JUSTIFY_FILL, "_Fill", "<control>J",
+  { "justify-fill", CTK_STOCK_JUSTIFY_FILL, "_Fill", "<control>J",
     "Fill justify the text", JUSTIFY_FILL }
 };
 static guint n_justify_entries = G_N_ELEMENTS (justify_entries);
 
 static GtkRadioActionEntry toolbar_entries[] = {
-  { "toolbar-icons", NULL, "Icons", NULL, NULL, GTK_TOOLBAR_ICONS },
-  { "toolbar-text", NULL, "Text", NULL, NULL, GTK_TOOLBAR_TEXT },
-  { "toolbar-both", NULL, "Both", NULL, NULL, GTK_TOOLBAR_BOTH },
-  { "toolbar-both-horiz", NULL, "Both Horizontal", NULL, NULL, GTK_TOOLBAR_BOTH_HORIZ }
+  { "toolbar-icons", NULL, "Icons", NULL, NULL, CTK_TOOLBAR_ICONS },
+  { "toolbar-text", NULL, "Text", NULL, NULL, CTK_TOOLBAR_TEXT },
+  { "toolbar-both", NULL, "Both", NULL, NULL, CTK_TOOLBAR_BOTH },
+  { "toolbar-both-horiz", NULL, "Both Horizontal", NULL, NULL, CTK_TOOLBAR_BOTH_HORIZ }
 };
 static guint n_toolbar_entries = G_N_ELEMENTS (toolbar_entries);
 
@@ -254,12 +254,12 @@ add_widget (GtkUIManager *merge,
 	    GtkContainer *container)
 {
 
-  ctk_box_pack_start (GTK_BOX (container), widget, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (container), widget, FALSE, FALSE, 0);
   ctk_widget_show (widget);
 
-  if (GTK_IS_TOOLBAR (widget)) 
+  if (CTK_IS_TOOLBAR (widget)) 
     {
-      toolbar = GTK_TOOLBAR (widget);
+      toolbar = CTK_TOOLBAR (widget);
       ctk_toolbar_set_show_arrow (toolbar, TRUE);
     }
 }
@@ -299,7 +299,7 @@ add_cb (GtkWidget *button,
     return;
   
   spinbutton = g_object_get_data (G_OBJECT (button), "spinbutton");
-  num = ctk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (spinbutton));
+  num = ctk_spin_button_get_value_as_int (CTK_SPIN_BUTTON (spinbutton));
   
   dag = ctk_action_group_new ("DynamicActions");
   ctk_ui_manager_insert_action_group (manager, dag, 0);
@@ -311,7 +311,7 @@ add_cb (GtkWidget *button,
       name = g_strdup_printf ("DynAction%u", i);
       label = g_strdup_printf ("Dynamic Item %d", i);
       
-      action = g_object_new (GTK_TYPE_ACTION,
+      action = g_object_new (CTK_TYPE_ACTION,
 			     "name", name,
 			     "label", label,
 			     NULL);
@@ -320,7 +320,7 @@ add_cb (GtkWidget *button,
       
       ctk_ui_manager_add_ui (manager, ui_id, "/menubar/DynamicMenu",
 			     name, name,
-			     GTK_UI_MANAGER_MENUITEM, FALSE);
+			     CTK_UI_MANAGER_MENUITEM, FALSE);
     }
   
   ensure_update (manager);
@@ -353,20 +353,20 @@ create_window (GtkActionGroup *action_group)
 
   merge = ctk_ui_manager_new ();
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (window), -1, -1);
-  ctk_window_set_title (GTK_WINDOW (window), "Action Test");
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (window), -1, -1);
+  ctk_window_set_title (CTK_WINDOW (window), "Action Test");
   g_signal_connect_swapped (window, "destroy", G_CALLBACK (g_object_unref), merge);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), box);
   ctk_widget_show (box);
 
   ctk_ui_manager_insert_action_group (merge, action_group, 0);
   g_signal_connect (merge, "add_widget", G_CALLBACK (add_widget), box);
 
-  ctk_window_add_accel_group (GTK_WINDOW (window), 
+  ctk_window_add_accel_group (CTK_WINDOW (window), 
 			      ctk_ui_manager_get_accel_group (merge));
 
   if (!ctk_ui_manager_add_ui_from_string (merge, ui_info, -1, &error))
@@ -375,23 +375,23 @@ create_window (GtkActionGroup *action_group)
       g_error_free (error);
     }
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_box_pack_end (GTK_BOX (box), hbox, FALSE, FALSE, 0);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_end (CTK_BOX (box), hbox, FALSE, FALSE, 0);
   ctk_widget_show (hbox);
   
   spinbutton = ctk_spin_button_new_with_range (100, 10000, 100);
-  ctk_box_pack_start (GTK_BOX (hbox), spinbutton, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), spinbutton, FALSE, FALSE, 0);
   ctk_widget_show (spinbutton);
   
   button = ctk_button_new_with_label ("Add");
-  ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), button, FALSE, FALSE, 0);
   ctk_widget_show (button);
   
   g_object_set_data (G_OBJECT (button), "spinbutton", spinbutton);
   g_signal_connect (button, "clicked", G_CALLBACK (add_cb), merge);
   
   button = ctk_button_new_with_label ("Remove");
-  ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), button, FALSE, FALSE, 0);
   ctk_widget_show (button);
   
   g_signal_connect (button, "clicked", G_CALLBACK (remove_cb), merge);
@@ -432,7 +432,7 @@ main (int argc, char **argv)
 				      G_CALLBACK (radio_action), NULL);
   ctk_action_group_add_radio_actions (action_group, 
 				      toolbar_entries, n_toolbar_entries, 
-				      GTK_TOOLBAR_BOTH,
+				      CTK_TOOLBAR_BOTH,
 				      G_CALLBACK (toolbar_style), NULL);
   ctk_action_group_add_action_with_accel (action_group, action, NULL);
 

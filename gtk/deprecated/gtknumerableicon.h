@@ -19,10 +19,10 @@
  * Authors: Cosimo Cecchi <cosimoc@redhat.com>
  */
 
-#ifndef __GTK_NUMERABLE_ICON_H__
-#define __GTK_NUMERABLE_ICON_H__
+#ifndef __CTK_NUMERABLE_ICON_H__
+#define __CTK_NUMERABLE_ICON_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_NUMERABLE_ICON                  (ctk_numerable_icon_get_type ())
-#define GTK_NUMERABLE_ICON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_NUMERABLE_ICON, GtkNumerableIcon))
-#define GTK_NUMERABLE_ICON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_NUMERABLE_ICON, GtkNumerableIconClass))
-#define GTK_IS_NUMERABLE_ICON(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_NUMERABLE_ICON))
-#define GTK_IS_NUMERABLE_ICON_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_NUMERABLE_ICON))
-#define GTK_NUMERABLE_ICON_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_NUMERABLE_ICON, GtkNumerableIconClass))
+#define CTK_TYPE_NUMERABLE_ICON                  (ctk_numerable_icon_get_type ())
+#define CTK_NUMERABLE_ICON(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NUMERABLE_ICON, GtkNumerableIcon))
+#define CTK_NUMERABLE_ICON_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NUMERABLE_ICON, GtkNumerableIconClass))
+#define CTK_IS_NUMERABLE_ICON(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_NUMERABLE_ICON))
+#define CTK_IS_NUMERABLE_ICON_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_NUMERABLE_ICON))
+#define CTK_NUMERABLE_ICON_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NUMERABLE_ICON, GtkNumerableIconClass))
 
 typedef struct _GtkNumerableIcon        GtkNumerableIcon;
 typedef struct _GtkNumerableIconClass   GtkNumerableIconClass;
@@ -97,4 +97,4 @@ const gchar *     ctk_numerable_icon_get_background_icon_name (GtkNumerableIcon 
 
 G_END_DECLS
 
-#endif /* __GTK_NUMERABLE_ICON_H__ */
+#endif /* __CTK_NUMERABLE_ICON_H__ */

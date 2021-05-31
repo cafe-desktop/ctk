@@ -23,8 +23,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_SHORTCUTS_WINDOW_PRIVATE_H__
-#define __GTK_SHORTCUTS_WINDOW_PRIVATE_H__
+#ifndef __CTK_SHORTCUTS_WINDOW_PRIVATE_H__
+#define __CTK_SHORTCUTS_WINDOW_PRIVATE_H__
 
 #include "gtkshortcutswindow.h"
 
@@ -35,4 +35,4 @@ void ctk_shortcuts_window_set_window (GtkShortcutsWindow *self,
 
 G_END_DECLS
 
-#endif /* __GTK_sHORTCUTS_WINDOW_PRIVATE_H__ */
+#endif /* __CTK_sHORTCUTS_WINDOW_PRIVATE_H__ */

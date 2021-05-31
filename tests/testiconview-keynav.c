@@ -95,7 +95,7 @@ get_view (gboolean first)
   GtkWidget *view;
 
   view = ctk_icon_view_new_with_model (get_filter_model (first));
-  ctk_icon_view_set_text_column (GTK_ICON_VIEW (view), 0);
+  ctk_icon_view_set_text_column (CTK_ICON_VIEW (view), 0);
   ctk_widget_set_size_request (view, 0, -1);
 
   return view;
@@ -120,45 +120,45 @@ keynav_failed (GtkWidget        *view,
   gint col;
   GtkTreePath *sel;
 
-  if (view == views->view1 && direction == GTK_DIR_DOWN)
+  if (view == views->view1 && direction == CTK_DIR_DOWN)
     {
-      if (ctk_icon_view_get_cursor (GTK_ICON_VIEW (views->view1), &path, NULL))
+      if (ctk_icon_view_get_cursor (CTK_ICON_VIEW (views->view1), &path, NULL))
         {
-          col = ctk_icon_view_get_item_column (GTK_ICON_VIEW (views->view1), path);
+          col = ctk_icon_view_get_item_column (CTK_ICON_VIEW (views->view1), path);
           ctk_tree_path_free (path);
 
           sel = NULL;
-          model = ctk_icon_view_get_model (GTK_ICON_VIEW (views->view2));
+          model = ctk_icon_view_get_model (CTK_ICON_VIEW (views->view2));
           ctk_tree_model_get_iter_first (model, &iter);
           do {
             path = ctk_tree_model_get_path (model, &iter);
-            if (ctk_icon_view_get_item_column (GTK_ICON_VIEW (views->view2), path) == col)
+            if (ctk_icon_view_get_item_column (CTK_ICON_VIEW (views->view2), path) == col)
               {
                 sel = path;
                 break;
               }
           } while (ctk_tree_model_iter_next (model, &iter));
 
-          ctk_icon_view_set_cursor (GTK_ICON_VIEW (views->view2), sel, NULL, FALSE);
+          ctk_icon_view_set_cursor (CTK_ICON_VIEW (views->view2), sel, NULL, FALSE);
           ctk_tree_path_free (sel);
         }
       ctk_widget_grab_focus (views->view2);
       return TRUE;
     }
 
-  if (view == views->view2 && direction == GTK_DIR_UP)
+  if (view == views->view2 && direction == CTK_DIR_UP)
     {
-      if (ctk_icon_view_get_cursor (GTK_ICON_VIEW (views->view2), &path, NULL))
+      if (ctk_icon_view_get_cursor (CTK_ICON_VIEW (views->view2), &path, NULL))
         {
-          col = ctk_icon_view_get_item_column (GTK_ICON_VIEW (views->view2), path);
+          col = ctk_icon_view_get_item_column (CTK_ICON_VIEW (views->view2), path);
           ctk_tree_path_free (path);
 
           sel = NULL;
-          model = ctk_icon_view_get_model (GTK_ICON_VIEW (views->view1));
+          model = ctk_icon_view_get_model (CTK_ICON_VIEW (views->view1));
           ctk_tree_model_get_iter_first (model, &iter);
           do {
             path = ctk_tree_model_get_path (model, &iter);
-            if (ctk_icon_view_get_item_column (GTK_ICON_VIEW (views->view1), path) == col)
+            if (ctk_icon_view_get_item_column (CTK_ICON_VIEW (views->view1), path) == col)
               {
                 if (sel)
                   ctk_tree_path_free (sel);
@@ -168,7 +168,7 @@ keynav_failed (GtkWidget        *view,
               ctk_tree_path_free (path);
           } while (ctk_tree_model_iter_next (model, &iter));
 
-          ctk_icon_view_set_cursor (GTK_ICON_VIEW (views->view1), sel, NULL, FALSE);
+          ctk_icon_view_set_cursor (CTK_ICON_VIEW (views->view1), sel, NULL, FALSE);
           ctk_tree_path_free (sel);
         }
       ctk_widget_grab_focus (views->view1);
@@ -183,7 +183,7 @@ focus_out (GtkWidget     *view,
            GdkEventFocus *event,
            gpointer       data)
 {
-  ctk_icon_view_unselect_all (GTK_ICON_VIEW (view));
+  ctk_icon_view_unselect_all (CTK_ICON_VIEW (view));
 
   return FALSE;
 }
@@ -195,13 +195,13 @@ focus_in (GtkWidget     *view,
 {
   GtkTreePath *path;
 
-  if (!ctk_icon_view_get_cursor (GTK_ICON_VIEW (view), &path, NULL))
+  if (!ctk_icon_view_get_cursor (CTK_ICON_VIEW (view), &path, NULL))
     {
       path = ctk_tree_path_new_from_indices (0, -1);
-      ctk_icon_view_set_cursor (GTK_ICON_VIEW (view), path, NULL, FALSE);
+      ctk_icon_view_set_cursor (CTK_ICON_VIEW (view), path, NULL, FALSE);
     }
 
-  ctk_icon_view_select_path (GTK_ICON_VIEW (view), path);
+  ctk_icon_view_select_path (CTK_ICON_VIEW (view), path);
   ctk_tree_path_free (path);
 
   return FALSE;
@@ -227,8 +227,8 @@ set_styles (void)
 
   screen = gdk_display_get_default_screen (gdk_display_get_default ());
 
-  ctk_style_context_add_provider_for_screen (screen, GTK_STYLE_PROVIDER (provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  ctk_style_context_add_provider_for_screen (screen, CTK_STYLE_PROVIDER (provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 int
@@ -242,17 +242,17 @@ main (int argc, char *argv[])
 
   set_styles ();
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
-  views.header1 = g_object_new (GTK_TYPE_LABEL,
+  views.header1 = g_object_new (CTK_TYPE_LABEL,
                                 "label", "<b>Group 1</b>",
                                 "use-markup", TRUE,
                                 "xalign", 0.0,
                                 NULL);
   views.view1 = get_view (TRUE);
-  views.header2 = g_object_new (GTK_TYPE_LABEL,
+  views.header2 = g_object_new (CTK_TYPE_LABEL,
                                 "label", "<b>Group 2</b>",
                                 "use-markup", TRUE,
                                 "xalign", 0.0,
@@ -272,10 +272,10 @@ main (int argc, char *argv[])
   g_signal_connect (views.view2, "focus-out-event",
                     G_CALLBACK (focus_out), NULL);
 
-  ctk_container_add (GTK_CONTAINER (vbox), views.header1);
-  ctk_container_add (GTK_CONTAINER (vbox), views.view1);
-  ctk_container_add (GTK_CONTAINER (vbox), views.header2);
-  ctk_container_add (GTK_CONTAINER (vbox), views.view2);
+  ctk_container_add (CTK_CONTAINER (vbox), views.header1);
+  ctk_container_add (CTK_CONTAINER (vbox), views.view1);
+  ctk_container_add (CTK_CONTAINER (vbox), views.header2);
+  ctk_container_add (CTK_CONTAINER (vbox), views.view2);
 
   ctk_widget_show_all (window);
 

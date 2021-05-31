@@ -27,10 +27,10 @@
  * their parents.
  */
 
-#ifndef __GTK_HANDLE_BOX_H__
-#define __GTK_HANDLE_BOX_H__
+#ifndef __CTK_HANDLE_BOX_H__
+#define __CTK_HANDLE_BOX_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -38,12 +38,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HANDLE_BOX            (ctk_handle_box_get_type ())
-#define GTK_HANDLE_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HANDLE_BOX, GtkHandleBox))
-#define GTK_HANDLE_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HANDLE_BOX, GtkHandleBoxClass))
-#define GTK_IS_HANDLE_BOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HANDLE_BOX))
-#define GTK_IS_HANDLE_BOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_HANDLE_BOX))
-#define GTK_HANDLE_BOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_HANDLE_BOX, GtkHandleBoxClass))
+#define CTK_TYPE_HANDLE_BOX            (ctk_handle_box_get_type ())
+#define CTK_HANDLE_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HANDLE_BOX, GtkHandleBox))
+#define CTK_HANDLE_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HANDLE_BOX, GtkHandleBoxClass))
+#define CTK_IS_HANDLE_BOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HANDLE_BOX))
+#define CTK_IS_HANDLE_BOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HANDLE_BOX))
+#define CTK_HANDLE_BOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HANDLE_BOX, GtkHandleBoxClass))
 
 typedef struct _GtkHandleBox              GtkHandleBox;
 typedef struct _GtkHandleBoxPrivate       GtkHandleBoxPrivate;
@@ -108,4 +108,4 @@ gboolean      ctk_handle_box_get_child_detached   (GtkHandleBox    *handle_box);
 
 G_END_DECLS
 
-#endif /* __GTK_HANDLE_BOX_H__ */
+#endif /* __CTK_HANDLE_BOX_H__ */

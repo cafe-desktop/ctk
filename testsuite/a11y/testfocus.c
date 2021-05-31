@@ -6,14 +6,14 @@ get_name (gpointer obj)
   GtkWidget *widget;
   if (obj == NULL)
     return "(nil)";
-  else if (GTK_IS_WIDGET (obj))
-    widget = GTK_WIDGET (obj);
-  else if (GTK_IS_ACCESSIBLE (obj))
-    widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  else if (CTK_IS_WIDGET (obj))
+    widget = CTK_WIDGET (obj);
+  else if (CTK_IS_ACCESSIBLE (obj))
+    widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   else
     return "OOPS";
-  if (GTK_IS_BUILDABLE (widget))
-    return ctk_buildable_get_name (GTK_BUILDABLE (widget));
+  if (CTK_IS_BUILDABLE (widget))
+    return ctk_buildable_get_name (CTK_BUILDABLE (widget));
   else
     return G_OBJECT_TYPE_NAME (widget);
 }
@@ -41,7 +41,7 @@ compare_focus (gpointer data)
     }
   g_list_free (list);
 
-  if (GTK_IS_WIDGET (focus_widget))
+  if (CTK_IS_WIDGET (focus_widget))
     ctk_focus = ctk_widget_get_accessible (focus_widget);
   else
     ctk_focus = NULL;
@@ -95,7 +95,7 @@ main (int argc, char *argv[])
   o = ctk_builder_get_objects (builder);
   for (l = o; l;l = l->next)
     {
-       if (!GTK_IS_WIDGET (l->data))
+       if (!CTK_IS_WIDGET (l->data))
          continue;
 
        widget = l->data;

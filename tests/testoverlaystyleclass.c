@@ -56,102 +56,102 @@ main (int argc, char *argv[])
                                    ".right { border-right-style: none; border-top-right-radius: 0px; border-bottom-right-radius: 0px; }",
                                    -1, NULL);
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                             CTK_STYLE_PROVIDER (provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (win), 600, 600);
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (win), 600, 600);
 
   grid = ctk_grid_new ();
   child = ctk_event_box_new ();
   ctk_widget_set_hexpand (child, TRUE);
   ctk_widget_set_vexpand (child, TRUE);
-  ctk_container_add (GTK_CONTAINER (grid), child);
+  ctk_container_add (CTK_CONTAINER (grid), child);
   label = ctk_label_new ("Out of overlay");
-  ctk_container_add (GTK_CONTAINER (child), label);
+  ctk_container_add (CTK_CONTAINER (child), label);
 
   overlay = ctk_overlay_new ();
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                  GTK_POLICY_ALWAYS,
-                                  GTK_POLICY_ALWAYS);
-  ctk_container_add (GTK_CONTAINER (overlay), sw);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                  CTK_POLICY_ALWAYS,
+                                  CTK_POLICY_ALWAYS);
+  ctk_container_add (CTK_CONTAINER (overlay), sw);
 
   main_child = ctk_event_box_new ();
-  ctk_container_add (GTK_CONTAINER (sw), main_child);
+  ctk_container_add (CTK_CONTAINER (sw), main_child);
   ctk_widget_set_hexpand (main_child, TRUE);
   ctk_widget_set_vexpand (main_child, TRUE);
   label = ctk_label_new ("Main child");
-  ctk_widget_set_halign (label, GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
-  ctk_container_add (GTK_CONTAINER (main_child), label);
+  ctk_widget_set_halign (label, CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (label, CTK_ALIGN_CENTER);
+  ctk_container_add (CTK_CONTAINER (main_child), label);
 
   child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  ctk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (CTK_LABEL (child), str);
   g_free (str);
   g_print ("Bottom/Right child: %p\n", child);
-  ctk_widget_set_halign (child, GTK_ALIGN_END);
-  ctk_widget_set_valign (child, GTK_ALIGN_END);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_END);
+  ctk_widget_set_valign (child, CTK_ALIGN_END);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
 
   child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  ctk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (CTK_LABEL (child), str);
   g_free (str);
   g_print ("Left/Top child: %p\n", child);
-  ctk_widget_set_halign (child, GTK_ALIGN_START);
-  ctk_widget_set_valign (child, GTK_ALIGN_START);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_START);
+  ctk_widget_set_valign (child, CTK_ALIGN_START);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
 
   child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  ctk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (CTK_LABEL (child), str);
   g_free (str);
   g_print ("Right/Center child: %p\n", child);
-  ctk_widget_set_halign (child, GTK_ALIGN_END);
-  ctk_widget_set_valign (child, GTK_ALIGN_CENTER);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_END);
+  ctk_widget_set_valign (child, CTK_ALIGN_CENTER);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
 
   child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  ctk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (CTK_LABEL (child), str);
   g_free (str);
   ctk_widget_set_margin_start (child, 55);
   ctk_widget_set_margin_top (child, 4);
   g_print ("Left/Top margined child: %p\n", child);
-  ctk_widget_set_halign (child, GTK_ALIGN_START);
-  ctk_widget_set_valign (child, GTK_ALIGN_START);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_START);
+  ctk_widget_set_valign (child, CTK_ALIGN_START);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
 
   child = ctk_label_new (NULL);
   str = g_strdup_printf ("%p", child);
-  ctk_label_set_text (GTK_LABEL (child), str);
+  ctk_label_set_text (CTK_LABEL (child), str);
   g_free (str);
   g_print ("Custom get-child-position child: %p\n", child);
-  ctk_widget_set_halign (child, GTK_ALIGN_START);
-  ctk_widget_set_valign (child, GTK_ALIGN_START);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_START);
+  ctk_widget_set_valign (child, CTK_ALIGN_START);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
 
   g_signal_connect (child, "size-allocate",
                     G_CALLBACK (child_size_allocate), overlay);
   g_signal_connect (overlay, "get-child-position",
                     G_CALLBACK (overlay_get_child_position), child);
 
-  ctk_grid_attach (GTK_GRID (grid), overlay, 1, 0, 1, 3);
-  ctk_container_add (GTK_CONTAINER (win), grid);
+  ctk_grid_attach (CTK_GRID (grid), overlay, 1, 0, 1, 3);
+  ctk_container_add (CTK_CONTAINER (win), grid);
 
   g_print ("\n");
 

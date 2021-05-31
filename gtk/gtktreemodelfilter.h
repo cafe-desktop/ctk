@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_MODEL_FILTER_H__
-#define __GTK_TREE_MODEL_FILTER_H__
+#ifndef __CTK_TREE_MODEL_FILTER_H__
+#define __CTK_TREE_MODEL_FILTER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -27,12 +27,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TREE_MODEL_FILTER              (ctk_tree_model_filter_get_type ())
-#define GTK_TREE_MODEL_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilter))
-#define GTK_TREE_MODEL_FILTER_CLASS(vtable)     (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilterClass))
-#define GTK_IS_TREE_MODEL_FILTER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_MODEL_FILTER))
-#define GTK_IS_TREE_MODEL_FILTER_CLASS(vtable)  (G_TYPE_CHECK_CLASS_TYPE ((vtable), GTK_TYPE_TREE_MODEL_FILTER))
-#define GTK_TREE_MODEL_FILTER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilterClass))
+#define CTK_TYPE_TREE_MODEL_FILTER              (ctk_tree_model_filter_get_type ())
+#define CTK_TREE_MODEL_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilter))
+#define CTK_TREE_MODEL_FILTER_CLASS(vtable)     (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilterClass))
+#define CTK_IS_TREE_MODEL_FILTER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_MODEL_FILTER))
+#define CTK_IS_TREE_MODEL_FILTER_CLASS(vtable)  (G_TYPE_CHECK_CLASS_TYPE ((vtable), CTK_TYPE_TREE_MODEL_FILTER))
+#define CTK_TREE_MODEL_FILTER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilterClass))
 
 /**
  * GtkTreeModelFilterVisibleFunc:
@@ -153,4 +153,4 @@ void          ctk_tree_model_filter_clear_cache                (GtkTreeModelFilt
 
 G_END_DECLS
 
-#endif /* __GTK_TREE_MODEL_FILTER_H__ */
+#endif /* __CTK_TREE_MODEL_FILTER_H__ */

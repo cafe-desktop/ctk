@@ -6,19 +6,19 @@ create_level_bar (void)
   GtkWidget *bar;
 
   bar = ctk_level_bar_new ();
-  ctk_level_bar_set_min_value (GTK_LEVEL_BAR (bar), 0.0);
-  ctk_level_bar_set_max_value (GTK_LEVEL_BAR (bar), 10.0);
+  ctk_level_bar_set_min_value (CTK_LEVEL_BAR (bar), 0.0);
+  ctk_level_bar_set_max_value (CTK_LEVEL_BAR (bar), 10.0);
 
-  ctk_level_bar_add_offset_value (GTK_LEVEL_BAR (bar),
-                                  GTK_LEVEL_BAR_OFFSET_LOW, 1.0);
+  ctk_level_bar_add_offset_value (CTK_LEVEL_BAR (bar),
+                                  CTK_LEVEL_BAR_OFFSET_LOW, 1.0);
 
-  ctk_level_bar_add_offset_value (GTK_LEVEL_BAR (bar),
-                                  GTK_LEVEL_BAR_OFFSET_HIGH, 9.0);
+  ctk_level_bar_add_offset_value (CTK_LEVEL_BAR (bar),
+                                  CTK_LEVEL_BAR_OFFSET_HIGH, 9.0);
 
-  ctk_level_bar_add_offset_value (GTK_LEVEL_BAR (bar),
+  ctk_level_bar_add_offset_value (CTK_LEVEL_BAR (bar),
                                   "full", 10.0);
 
-  ctk_level_bar_add_offset_value (GTK_LEVEL_BAR (bar),
+  ctk_level_bar_add_offset_value (CTK_LEVEL_BAR (bar),
                                   "my-offset", 5.0);
 
   return bar;
@@ -36,8 +36,8 @@ add_custom_css (void)
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (provider, data, -1, NULL);
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                             CTK_STYLE_PROVIDER (provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 static gboolean
@@ -68,9 +68,9 @@ static void
 toggle (GtkSwitch *sw, GParamSpec *pspec, GtkLevelBar *bar)
 {
   if (ctk_switch_get_active (sw))
-    ctk_level_bar_set_mode (bar, GTK_LEVEL_BAR_MODE_DISCRETE);
+    ctk_level_bar_set_mode (bar, CTK_LEVEL_BAR_MODE_DISCRETE);
   else
-    ctk_level_bar_set_mode (bar, GTK_LEVEL_BAR_MODE_CONTINUOUS);
+    ctk_level_bar_set_mode (bar, CTK_LEVEL_BAR_MODE_CONTINUOUS);
 }
 
 int
@@ -86,18 +86,18 @@ main (int argc, char *argv[])
 
   add_custom_css ();
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (window), 500, 100);
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 10);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (window), 500, 100);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 10);
   g_object_set (box, "margin", 20, NULL);
   bar = create_level_bar ();
-  ctk_container_add (GTK_CONTAINER (window), box);
-  ctk_container_add (GTK_CONTAINER (box), bar);
-  box2 = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  ctk_container_add (GTK_CONTAINER (box), box2);
-  ctk_container_add (GTK_CONTAINER (box2), ctk_label_new ("Discrete"));
+  ctk_container_add (CTK_CONTAINER (window), box);
+  ctk_container_add (CTK_CONTAINER (box), bar);
+  box2 = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_container_add (CTK_CONTAINER (box), box2);
+  ctk_container_add (CTK_CONTAINER (box2), ctk_label_new ("Discrete"));
   sw = ctk_switch_new ();
-  ctk_container_add (GTK_CONTAINER (box2), sw);
+  ctk_container_add (CTK_CONTAINER (box2), sw);
   g_signal_connect (sw, "notify::active", G_CALLBACK (toggle), bar);
 
   ctk_widget_show_all (window);

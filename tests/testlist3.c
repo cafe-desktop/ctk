@@ -1,7 +1,7 @@
 #include <gtk/gtk.h>
 
 static GtkTargetEntry entries[] = {
-  { "GTK_LIST_BOX_ROW", GTK_TARGET_SAME_APP, 0 }
+  { "CTK_LIST_BOX_ROW", CTK_TARGET_SAME_APP, 0 }
 };
 
 static void
@@ -16,7 +16,7 @@ drag_begin (GtkWidget      *widget,
   int x, y;
   double sx, sy;
 
-  row = ctk_widget_get_ancestor (widget, GTK_TYPE_LIST_BOX_ROW);
+  row = ctk_widget_get_ancestor (widget, CTK_TYPE_LIST_BOX_ROW);
   ctk_widget_get_allocation (row, &alloc);
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, alloc.width, alloc.height);
   cr = cairo_create (surface);
@@ -44,7 +44,7 @@ drag_end (GtkWidget      *widget,
 {
   GtkWidget *row;
 
-  row = ctk_widget_get_ancestor (widget, GTK_TYPE_LIST_BOX_ROW);
+  row = ctk_widget_get_ancestor (widget, CTK_TYPE_LIST_BOX_ROW);
   g_object_set_data (G_OBJECT (ctk_widget_get_parent (row)), "drag-row", NULL);
   ctk_style_context_remove_class (ctk_widget_get_style_context (row), "drag-row");
   ctk_style_context_remove_class (ctk_widget_get_style_context (row), "drag-hover");
@@ -59,7 +59,7 @@ drag_data_get (GtkWidget        *widget,
                gpointer          data)
 {
   ctk_selection_data_set (selection_data,
-                          gdk_atom_intern_static_string ("GTK_LIST_BOX_ROW"),
+                          gdk_atom_intern_static_string ("CTK_LIST_BOX_ROW"),
                           32,
                           (const guchar *)&widget,
                           sizeof (gpointer));
@@ -115,8 +115,8 @@ drag_data_received (GtkWidget        *widget,
   GtkWidget *source;
   int pos;
 
-  row_before = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-before"));
-  row_after = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-after"));
+  row_before = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-before"));
+  row_after = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-after"));
 
   g_object_set_data (G_OBJECT (widget), "row-before", NULL);
   g_object_set_data (G_OBJECT (widget), "row-after", NULL);
@@ -127,20 +127,20 @@ drag_data_received (GtkWidget        *widget,
     ctk_style_context_remove_class (ctk_widget_get_style_context (row_after), "drag-hover-top");
 
   row = (gpointer)* (gpointer*)ctk_selection_data_get_data (selection_data);
-  source = ctk_widget_get_ancestor (row, GTK_TYPE_LIST_BOX_ROW);
+  source = ctk_widget_get_ancestor (row, CTK_TYPE_LIST_BOX_ROW);
 
   if (source == row_after)
     return;
 
   g_object_ref (source);
-  ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (source)), source);
+  ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (source)), source);
 
   if (row_after)
-    pos = ctk_list_box_row_get_index (GTK_LIST_BOX_ROW (row_after));
+    pos = ctk_list_box_row_get_index (CTK_LIST_BOX_ROW (row_after));
   else
-    pos = ctk_list_box_row_get_index (GTK_LIST_BOX_ROW (row_before)) + 1;
+    pos = ctk_list_box_row_get_index (CTK_LIST_BOX_ROW (row_before)) + 1;
 
-  ctk_list_box_insert (GTK_LIST_BOX (widget), source, pos);
+  ctk_list_box_insert (CTK_LIST_BOX (widget), source, pos);
   g_object_unref (source);
 }
 
@@ -159,11 +159,11 @@ drag_motion (GtkWidget      *widget,
   GtkWidget *row_before;
   GtkWidget *row_after;
 
-  row = GTK_WIDGET (ctk_list_box_get_row_at_y (GTK_LIST_BOX (widget), y));
+  row = CTK_WIDGET (ctk_list_box_get_row_at_y (CTK_LIST_BOX (widget), y));
 
-  drag_row = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "drag-row"));
-  row_before = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-before"));
-  row_after = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-after"));
+  drag_row = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "drag-row"));
+  row_before = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-before"));
+  row_after = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-after"));
 
   ctk_style_context_remove_class (ctk_widget_get_style_context (drag_row), "drag-hover");
   if (row_before)
@@ -180,17 +180,17 @@ drag_motion (GtkWidget      *widget,
       if (y < hover_row_y + hover_row_height/2)
         {
           row_after = row;
-          row_before = GTK_WIDGET (get_row_before (GTK_LIST_BOX (widget), GTK_LIST_BOX_ROW (row)));
+          row_before = CTK_WIDGET (get_row_before (CTK_LIST_BOX (widget), CTK_LIST_BOX_ROW (row)));
         }
       else
         {
           row_before = row;
-          row_after = GTK_WIDGET (get_row_after (GTK_LIST_BOX (widget), GTK_LIST_BOX_ROW (row)));
+          row_after = CTK_WIDGET (get_row_after (CTK_LIST_BOX (widget), CTK_LIST_BOX_ROW (row)));
         }
     }
   else
     {
-      row_before = GTK_WIDGET (get_last_row (GTK_LIST_BOX (widget)));
+      row_before = CTK_WIDGET (get_last_row (CTK_LIST_BOX (widget)));
       row_after = NULL;
     }
 
@@ -220,9 +220,9 @@ drag_leave (GtkWidget      *widget,
   GtkWidget *row_before;
   GtkWidget *row_after;
 
-  drag_row = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "drag-row"));
-  row_before = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-before"));
-  row_after = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-after"));
+  drag_row = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "drag-row"));
+  row_before = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-before"));
+  row_after = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "row-after"));
 
   ctk_style_context_remove_class (ctk_widget_get_style_context (drag_row), "drag-hover");
   if (row_before)
@@ -239,13 +239,13 @@ create_row (const gchar *text)
   row = ctk_list_box_row_new ();
   ebox = ctk_event_box_new ();
   image = ctk_image_new_from_icon_name ("open-menu-symbolic", 1);
-  ctk_container_add (GTK_CONTAINER (ebox), image);
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_container_add (CTK_CONTAINER (ebox), image);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
   g_object_set (box, "margin-start", 10, "margin-end", 10, NULL);
   label = ctk_label_new (text);
-  ctk_container_add (GTK_CONTAINER (row), box);
-  ctk_box_pack_start (GTK_BOX (box), label, TRUE, FALSE, 0);
-  ctk_container_add (GTK_CONTAINER (box), ebox);
+  ctk_container_add (CTK_CONTAINER (row), box);
+  ctk_box_pack_start (CTK_BOX (box), label, TRUE, FALSE, 0);
+  ctk_container_add (CTK_CONTAINER (box), ebox);
 
   ctk_style_context_add_class (ctk_widget_get_style_context (row), "row");
   ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
@@ -261,7 +261,7 @@ on_row_activated (GtkListBox *self,
                   GtkWidget  *child)
 {
   const char *id;
-  id = g_object_get_data (G_OBJECT (ctk_bin_get_child (GTK_BIN (child))), "id");
+  id = g_object_get_data (G_OBJECT (ctk_bin_get_child (CTK_BIN (child))), "id");
   g_message ("Row activated %p: %s", child, id);
 }
 
@@ -335,20 +335,20 @@ main (int argc, char *argv[])
 
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (provider, css, -1, NULL);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (), GTK_STYLE_PROVIDER (provider), 800);
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (window), -1, 300);
+  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (), CTK_STYLE_PROVIDER (provider), 800);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (window), -1, 300);
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  ctk_container_add (GTK_CONTAINER (window), hbox);
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_container_add (CTK_CONTAINER (window), hbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
   g_object_set (vbox, "margin", 12, NULL);
-  ctk_container_add (GTK_CONTAINER (hbox), vbox);
+  ctk_container_add (CTK_CONTAINER (hbox), vbox);
 
   list = ctk_list_box_new ();
-  ctk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
+  ctk_list_box_set_selection_mode (CTK_LIST_BOX (list), CTK_SELECTION_NONE);
 
-  ctk_drag_dest_set (list, GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_DROP, entries, 1, GDK_ACTION_MOVE);
+  ctk_drag_dest_set (list, CTK_DEST_DEFAULT_MOTION | CTK_DEST_DEFAULT_DROP, entries, 1, GDK_ACTION_MOVE);
   g_signal_connect (list, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
   g_signal_connect (list, "drag-motion", G_CALLBACK (drag_motion), NULL);
   g_signal_connect (list, "drag-leave", G_CALLBACK (drag_leave), NULL);
@@ -359,30 +359,30 @@ main (int argc, char *argv[])
 
   sw = ctk_scrolled_window_new (NULL, NULL);
   ctk_widget_set_hexpand (sw, TRUE);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
-  ctk_container_add (GTK_CONTAINER (hbox), sw);
-  ctk_container_add (GTK_CONTAINER (sw), list);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw), CTK_POLICY_NEVER, CTK_POLICY_ALWAYS);
+  ctk_container_add (CTK_CONTAINER (hbox), sw);
+  ctk_container_add (CTK_CONTAINER (sw), list);
 
   button = ctk_check_button_new_with_label ("Activate on single click");
   g_object_bind_property (list, "activate-on-single-click",
                           button, "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  ctk_container_add (GTK_CONTAINER (vbox), button);
+  ctk_container_add (CTK_CONTAINER (vbox), button);
 
   combo = ctk_combo_box_text_new ();
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "None");
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Single");
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Browse");
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Multiple");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "None");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "Single");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "Browse");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "Multiple");
   g_signal_connect (combo, "changed", G_CALLBACK (selection_mode_changed), list);
-  ctk_container_add (GTK_CONTAINER (vbox), combo);
-  ctk_combo_box_set_active (GTK_COMBO_BOX (combo), ctk_list_box_get_selection_mode (GTK_LIST_BOX (list)));
+  ctk_container_add (CTK_CONTAINER (vbox), combo);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (combo), ctk_list_box_get_selection_mode (CTK_LIST_BOX (list)));
 
   for (i = 0; i < 20; i++)
     {
       text = g_strdup_printf ("Row %d", i);
       row = create_row (text);
-      ctk_list_box_insert (GTK_LIST_BOX (list), row, -1);
+      ctk_list_box_insert (CTK_LIST_BOX (list), row, -1);
     }
 
   ctk_widget_show_all (window);

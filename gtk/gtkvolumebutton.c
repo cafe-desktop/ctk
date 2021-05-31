@@ -80,7 +80,7 @@ static void	cb_value_changed (GtkVolumeButton *button,
                                   gdouble          value,
                                   gpointer         user_data);
 
-G_DEFINE_TYPE (GtkVolumeButton, ctk_volume_button, GTK_TYPE_SCALE_BUTTON)
+G_DEFINE_TYPE (GtkVolumeButton, ctk_volume_button, CTK_TYPE_SCALE_BUTTON)
 
 static gboolean
 get_symbolic (GtkScaleButton *button)
@@ -106,7 +106,7 @@ ctk_volume_button_set_property (GObject       *object,
 				const GValue  *value,
 				GParamSpec    *pspec)
 {
-  GtkScaleButton *button = GTK_SCALE_BUTTON (object);
+  GtkScaleButton *button = CTK_SCALE_BUTTON (object);
 
   switch (prop_id)
     {
@@ -135,7 +135,7 @@ ctk_volume_button_get_property (GObject     *object,
   switch (prop_id)
     {
     case PROP_SYMBOLIC:
-      g_value_set_boolean (value, get_symbolic (GTK_SCALE_BUTTON (object)));
+      g_value_set_boolean (value, get_symbolic (CTK_SCALE_BUTTON (object)));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -147,7 +147,7 @@ static void
 ctk_volume_button_class_init (GtkVolumeButtonClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->set_property = ctk_volume_button_set_property;
   gobject_class->get_property = ctk_volume_button_get_property;
@@ -180,12 +180,12 @@ ctk_volume_button_class_init (GtkVolumeButtonClass *klass)
 static void
 ctk_volume_button_init (GtkVolumeButton *button)
 {
-  GtkWidget *widget = GTK_WIDGET (button);
+  GtkWidget *widget = CTK_WIDGET (button);
 
   ctk_widget_init_template (widget);
 
   /* The atk action description is not supported by GtkBuilder */
-  atk_action_set_description (ATK_ACTION (ctk_widget_get_accessible (GTK_WIDGET (widget))),
+  atk_action_set_description (ATK_ACTION (ctk_widget_get_accessible (CTK_WIDGET (widget))),
 			      1, _("Adjusts the volume"));
 }
 
@@ -204,8 +204,8 @@ GtkWidget *
 ctk_volume_button_new (void)
 {
   GObject *button;
-  button = g_object_new (GTK_TYPE_VOLUME_BUTTON, NULL);
-  return GTK_WIDGET (button);
+  button = g_object_new (CTK_TYPE_VOLUME_BUTTON, NULL);
+  return CTK_WIDGET (button);
 }
 
 static gboolean
@@ -216,7 +216,7 @@ cb_query_tooltip (GtkWidget  *button,
 		  GtkTooltip *tooltip,
 		  gpointer    user_data)
 {
-  GtkScaleButton *scale_button = GTK_SCALE_BUTTON (button);
+  GtkScaleButton *scale_button = CTK_SCALE_BUTTON (button);
   GtkAdjustment *adjustment;
   gdouble val;
   char *str;
@@ -259,5 +259,5 @@ cb_query_tooltip (GtkWidget  *button,
 static void
 cb_value_changed (GtkVolumeButton *button, gdouble value, gpointer user_data)
 {
-  ctk_widget_trigger_tooltip_query (GTK_WIDGET (button));
+  ctk_widget_trigger_tooltip_query (CTK_WIDGET (button));
 }

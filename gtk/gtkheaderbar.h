@@ -17,10 +17,10 @@
  *
  */
 
-#ifndef __GTK_HEADER_BAR_H__
-#define __GTK_HEADER_BAR_H__
+#ifndef __CTK_HEADER_BAR_H__
+#define __CTK_HEADER_BAR_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,12 +28,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HEADER_BAR            (ctk_header_bar_get_type ())
-#define GTK_HEADER_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HEADER_BAR, GtkHeaderBar))
-#define GTK_HEADER_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HEADER_BAR, GtkHeaderBarClass))
-#define GTK_IS_HEADER_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HEADER_BAR))
-#define GTK_IS_HEADER_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_HEADER_BAR))
-#define GTK_HEADER_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_HEADER_BAR, GtkHeaderBarClass))
+#define CTK_TYPE_HEADER_BAR            (ctk_header_bar_get_type ())
+#define CTK_HEADER_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HEADER_BAR, GtkHeaderBar))
+#define CTK_HEADER_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HEADER_BAR, GtkHeaderBarClass))
+#define CTK_IS_HEADER_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HEADER_BAR))
+#define CTK_IS_HEADER_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HEADER_BAR))
+#define CTK_HEADER_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HEADER_BAR, GtkHeaderBarClass))
 
 typedef struct _GtkHeaderBar              GtkHeaderBar;
 typedef struct _GtkHeaderBarPrivate       GtkHeaderBarPrivate;
@@ -104,4 +104,4 @@ const gchar *ctk_header_bar_get_decoration_layout (GtkHeaderBar *bar);
 
 G_END_DECLS
 
-#endif /* __GTK_HEADER_BAR_H__ */
+#endif /* __CTK_HEADER_BAR_H__ */

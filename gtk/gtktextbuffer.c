@@ -27,7 +27,7 @@
 #include <string.h>
 #include <stdarg.h>
 
-#define GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+#define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "gtkclipboard.h"
 #include "gtkdnd.h"
 #include "gtkinvisible.h"
@@ -201,8 +201,8 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
       g_param_spec_object ("tag-table",
                            P_("Tag Table"),
                            P_("Text Tag Table"),
-                           GTK_TYPE_TEXT_TAG_TABLE,
-                           GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+                           CTK_TYPE_TEXT_TAG_TABLE,
+                           CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   /* Normal properties */
 
@@ -219,7 +219,7 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                            P_("Text"),
                            P_("Current text of the buffer"),
                            "",
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkTextBuffer:has-selection:
@@ -233,7 +233,7 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                             P_("Has selection"),
                             P_("Whether the buffer has some text currently selected"),
                             FALSE,
-                            GTK_PARAM_READABLE);
+                            CTK_PARAM_READABLE);
 
   /**
    * GtkTextBuffer:cursor-position:
@@ -250,7 +250,7 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                         P_("The position of the insert mark (as offset from the beginning of the buffer)"),
 			0, G_MAXINT,
                         0,
-                        GTK_PARAM_READABLE);
+                        CTK_PARAM_READABLE);
 
   /**
    * GtkTextBuffer:copy-target-list:
@@ -264,8 +264,8 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
       g_param_spec_boxed ("copy-target-list",
                           P_("Copy target list"),
                           P_("The list of targets this buffer supports for clipboard copying and DND source"),
-                          GTK_TYPE_TARGET_LIST,
-                          GTK_PARAM_READABLE);
+                          CTK_TYPE_TARGET_LIST,
+                          CTK_PARAM_READABLE);
 
   /**
    * GtkTextBuffer:paste-target-list:
@@ -279,8 +279,8 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
       g_param_spec_boxed ("paste-target-list",
                           P_("Paste target list"),
                           P_("The list of targets this buffer supports for clipboard pasting and DND destination"),
-                          GTK_TYPE_TARGET_LIST,
-                          GTK_PARAM_READABLE);
+                          CTK_TYPE_TARGET_LIST,
+                          CTK_PARAM_READABLE);
 
   g_object_class_install_properties (object_class, LAST_PROP, text_buffer_props);
 
@@ -312,7 +312,7 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   _ctk_marshal_VOID__BOXED_STRING_INT,
                   G_TYPE_NONE,
                   3,
-                  GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
+                  CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
                   G_TYPE_STRING | G_SIGNAL_TYPE_STATIC_SCOPE,
                   G_TYPE_INT);
   g_signal_set_va_marshaller (signals[INSERT_TEXT], G_TYPE_FROM_CLASS (klass),
@@ -343,7 +343,7 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   _ctk_marshal_VOID__BOXED_OBJECT,
                   G_TYPE_NONE,
                   2,
-                  GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
+                  CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
                   GDK_TYPE_PIXBUF);
   g_signal_set_va_marshaller (signals[INSERT_PIXBUF],
                               G_TYPE_FROM_CLASS (klass),
@@ -376,8 +376,8 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   _ctk_marshal_VOID__BOXED_OBJECT,
                   G_TYPE_NONE,
                   2,
-                  GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
-                  GTK_TYPE_TEXT_CHILD_ANCHOR);
+                  CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
+                  CTK_TYPE_TEXT_CHILD_ANCHOR);
   g_signal_set_va_marshaller (signals[INSERT_CHILD_ANCHOR],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__BOXED_OBJECTv);
@@ -409,8 +409,8 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   _ctk_marshal_VOID__BOXED_BOXED,
                   G_TYPE_NONE,
                   2,
-                  GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
-                  GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE);
+                  CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
+                  CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (signals[DELETE_RANGE],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__BOXED_BOXEDv);
@@ -474,8 +474,8 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   _ctk_marshal_VOID__BOXED_OBJECT,
                   G_TYPE_NONE,
                   2,
-                  GTK_TYPE_TEXT_ITER,
-                  GTK_TYPE_TEXT_MARK);
+                  CTK_TYPE_TEXT_ITER,
+                  CTK_TYPE_TEXT_MARK);
   g_signal_set_va_marshaller (signals[MARK_SET],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__BOXED_OBJECTv);
@@ -500,7 +500,7 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   NULL,
                   G_TYPE_NONE,
                   1,
-                  GTK_TYPE_TEXT_MARK);
+                  CTK_TYPE_TEXT_MARK);
 
    /**
    * GtkTextBuffer::apply-tag:
@@ -530,9 +530,9 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   _ctk_marshal_VOID__OBJECT_BOXED_BOXED,
                   G_TYPE_NONE,
                   3,
-                  GTK_TYPE_TEXT_TAG,
-                  GTK_TYPE_TEXT_ITER,
-                  GTK_TYPE_TEXT_ITER);
+                  CTK_TYPE_TEXT_TAG,
+                  CTK_TYPE_TEXT_ITER,
+                  CTK_TYPE_TEXT_ITER);
   g_signal_set_va_marshaller (signals[APPLY_TAG],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__OBJECT_BOXED_BOXEDv);
@@ -564,9 +564,9 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   _ctk_marshal_VOID__OBJECT_BOXED_BOXED,
                   G_TYPE_NONE,
                   3,
-                  GTK_TYPE_TEXT_TAG,
-                  GTK_TYPE_TEXT_ITER,
-                  GTK_TYPE_TEXT_ITER);
+                  CTK_TYPE_TEXT_TAG,
+                  CTK_TYPE_TEXT_ITER,
+                  CTK_TYPE_TEXT_ITER);
   g_signal_set_va_marshaller (signals[REMOVE_TAG],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__OBJECT_BOXED_BOXEDv);
@@ -642,7 +642,7 @@ ctk_text_buffer_class_init (GtkTextBufferClass *klass)
                   NULL,
                   G_TYPE_NONE,
                   1,
-                  GTK_TYPE_CLIPBOARD);
+                  CTK_TYPE_CLIPBOARD);
 }
 
 static void
@@ -693,7 +693,7 @@ ctk_text_buffer_set_property (GObject         *object,
 {
   GtkTextBuffer *text_buffer;
 
-  text_buffer = GTK_TEXT_BUFFER (object);
+  text_buffer = CTK_TEXT_BUFFER (object);
 
   switch (prop_id)
     {
@@ -721,7 +721,7 @@ ctk_text_buffer_get_property (GObject         *object,
   GtkTextBuffer *text_buffer;
   GtkTextIter iter;
 
-  text_buffer = GTK_TEXT_BUFFER (object);
+  text_buffer = CTK_TEXT_BUFFER (object);
 
   switch (prop_id)
     {
@@ -773,7 +773,7 @@ ctk_text_buffer_notify (GObject    *object,
   if (!strcmp (pspec->name, "copy-target-list") ||
       !strcmp (pspec->name, "paste-target-list"))
     {
-      ctk_text_buffer_free_target_lists (GTK_TEXT_BUFFER (object));
+      ctk_text_buffer_free_target_lists (CTK_TEXT_BUFFER (object));
     }
 }
 
@@ -790,7 +790,7 @@ ctk_text_buffer_new (GtkTextTagTable *table)
 {
   GtkTextBuffer *text_buffer;
 
-  text_buffer = g_object_new (GTK_TYPE_TEXT_BUFFER, "tag-table", table, NULL);
+  text_buffer = g_object_new (CTK_TYPE_TEXT_BUFFER, "tag-table", table, NULL);
 
   return text_buffer;
 }
@@ -801,7 +801,7 @@ ctk_text_buffer_finalize (GObject *object)
   GtkTextBuffer *buffer;
   GtkTextBufferPrivate *priv;
 
-  buffer = GTK_TEXT_BUFFER (object);
+  buffer = CTK_TEXT_BUFFER (object);
   priv = buffer->priv;
 
   remove_all_selection_clipboards (buffer);
@@ -858,7 +858,7 @@ _ctk_text_buffer_get_btree (GtkTextBuffer *buffer)
 GtkTextTagTable*
 ctk_text_buffer_get_tag_table (GtkTextBuffer *buffer)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
   return get_table (buffer);
 }
@@ -879,7 +879,7 @@ ctk_text_buffer_set_text (GtkTextBuffer *buffer,
 {
   GtkTextIter start, end;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (text != NULL);
 
   if (len < 0)
@@ -908,7 +908,7 @@ ctk_text_buffer_real_insert_text (GtkTextBuffer *buffer,
                                   const gchar   *text,
                                   gint           len)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
   
   _ctk_text_btree_insert (iter, text, len);
@@ -923,7 +923,7 @@ ctk_text_buffer_emit_insert (GtkTextBuffer *buffer,
                              const gchar   *text,
                              gint           len)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
   g_return_if_fail (text != NULL);
 
@@ -960,7 +960,7 @@ ctk_text_buffer_insert (GtkTextBuffer *buffer,
                         const gchar   *text,
                         gint           len)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
   g_return_if_fail (text != NULL);
   g_return_if_fail (ctk_text_iter_get_buffer (iter) == buffer);
@@ -984,7 +984,7 @@ ctk_text_buffer_insert_at_cursor (GtkTextBuffer *buffer,
 {
   GtkTextIter iter;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (text != NULL);
 
   ctk_text_buffer_get_iter_at_mark (buffer, &iter,
@@ -1019,7 +1019,7 @@ ctk_text_buffer_insert_interactive (GtkTextBuffer *buffer,
                                     gint           len,
                                     gboolean       default_editable)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
   g_return_val_if_fail (text != NULL, FALSE);
   g_return_val_if_fail (ctk_text_iter_get_buffer (iter) == buffer, FALSE);
 
@@ -1058,7 +1058,7 @@ ctk_text_buffer_insert_interactive_at_cursor (GtkTextBuffer *buffer,
 {
   GtkTextIter iter;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
   g_return_val_if_fail (text != NULL, FALSE);
 
   ctk_text_buffer_get_iter_at_mark (buffer, &iter,
@@ -1072,7 +1072,7 @@ static gboolean
 possibly_not_text (gunichar ch,
                    gpointer user_data)
 {
-  return ch == GTK_TEXT_UNKNOWN_CHAR;
+  return ch == CTK_TEXT_UNKNOWN_CHAR;
 }
 
 static void
@@ -1207,7 +1207,7 @@ insert_range_untagged (GtkTextBuffer     *buffer,
               /* nothing left to do */
               break;
             }
-          else if (ctk_text_iter_get_char (&range_end) == GTK_TEXT_UNKNOWN_CHAR)
+          else if (ctk_text_iter_get_char (&range_end) == CTK_TEXT_UNKNOWN_CHAR)
             {
               GdkPixbuf *pixbuf = NULL;
               GtkTextChildAnchor *anchor = NULL;
@@ -1240,7 +1240,7 @@ insert_range_untagged (GtkTextBuffer     *buffer,
                 }
               else
                 {
-                  /* The GTK_TEXT_UNKNOWN_CHAR was in a text segment, so
+                  /* The CTK_TEXT_UNKNOWN_CHAR was in a text segment, so
                    * keep going. 
                    */
                   ctk_text_iter_forward_find_char (&range_end,
@@ -1439,7 +1439,7 @@ ctk_text_buffer_insert_range (GtkTextBuffer     *buffer,
                               const GtkTextIter *start,
                               const GtkTextIter *end)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
@@ -1475,7 +1475,7 @@ ctk_text_buffer_insert_range_interactive (GtkTextBuffer     *buffer,
                                           const GtkTextIter *end,
                                           gboolean           default_editable)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (start != NULL, FALSE);
   g_return_val_if_fail (end != NULL, FALSE);
@@ -1521,7 +1521,7 @@ ctk_text_buffer_insert_with_tags (GtkTextBuffer *buffer,
   va_list args;
   GtkTextTag *tag;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
   g_return_if_fail (text != NULL);
   g_return_if_fail (ctk_text_iter_get_buffer (iter) == buffer);
@@ -1572,7 +1572,7 @@ ctk_text_buffer_insert_with_tags_by_name  (GtkTextBuffer *buffer,
   va_list args;
   const gchar *tag_name;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
   g_return_if_fail (text != NULL);
   g_return_if_fail (ctk_text_iter_get_buffer (iter) == buffer);
@@ -1622,7 +1622,7 @@ ctk_text_buffer_real_delete_range (GtkTextBuffer *buffer,
 {
   gboolean has_selection;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
 
@@ -1647,7 +1647,7 @@ ctk_text_buffer_emit_delete (GtkTextBuffer *buffer,
                              GtkTextIter *start,
                              GtkTextIter *end)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
 
@@ -1681,7 +1681,7 @@ ctk_text_buffer_delete (GtkTextBuffer *buffer,
                         GtkTextIter   *start,
                         GtkTextIter   *end)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
   g_return_if_fail (ctk_text_iter_get_buffer (start) == buffer);
@@ -1719,7 +1719,7 @@ ctk_text_buffer_delete_interactive (GtkTextBuffer *buffer,
 
   /* Delete all editable text in the range start_iter, end_iter */
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
   g_return_val_if_fail (start_iter != NULL, FALSE);
   g_return_val_if_fail (end_iter != NULL, FALSE);
   g_return_val_if_fail (ctk_text_iter_get_buffer (start_iter) == buffer, FALSE);
@@ -1857,7 +1857,7 @@ ctk_text_buffer_get_text (GtkTextBuffer     *buffer,
                           const GtkTextIter *end,
                           gboolean           include_hidden_chars)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
   g_return_val_if_fail (ctk_text_iter_get_buffer (start) == buffer, NULL);
@@ -1895,7 +1895,7 @@ ctk_text_buffer_get_slice (GtkTextBuffer     *buffer,
                            const GtkTextIter *end,
                            gboolean           include_hidden_chars)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
   g_return_val_if_fail (ctk_text_iter_get_buffer (start) == buffer, NULL);
@@ -1941,7 +1941,7 @@ ctk_text_buffer_insert_pixbuf (GtkTextBuffer *buffer,
                                GtkTextIter   *iter,
                                GdkPixbuf     *pixbuf)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
   g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
   g_return_if_fail (ctk_text_iter_get_buffer (iter) == buffer);
@@ -1988,9 +1988,9 @@ ctk_text_buffer_insert_child_anchor (GtkTextBuffer      *buffer,
                                      GtkTextIter        *iter,
                                      GtkTextChildAnchor *anchor)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_TEXT_CHILD_ANCHOR (anchor));
+  g_return_if_fail (CTK_IS_TEXT_CHILD_ANCHOR (anchor));
   g_return_if_fail (ctk_text_iter_get_buffer (iter) == buffer);
   
   g_signal_emit (buffer, signals[INSERT_CHILD_ANCHOR], 0,
@@ -2016,7 +2016,7 @@ ctk_text_buffer_create_child_anchor (GtkTextBuffer *buffer,
 {
   GtkTextChildAnchor *anchor;
   
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (iter != NULL, NULL);
   g_return_val_if_fail (ctk_text_iter_get_buffer (iter) == buffer, NULL);
   
@@ -2137,7 +2137,7 @@ ctk_text_buffer_create_mark (GtkTextBuffer     *buffer,
                              const GtkTextIter *where,
                              gboolean           left_gravity)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
   return ctk_text_buffer_set_mark (buffer, NULL, mark_name, where,
                                    left_gravity, FALSE);
@@ -2165,8 +2165,8 @@ ctk_text_buffer_add_mark (GtkTextBuffer     *buffer,
 {
   const gchar *name;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  g_return_if_fail (GTK_IS_TEXT_MARK (mark));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_MARK (mark));
   g_return_if_fail (where != NULL);
   g_return_if_fail (ctk_text_mark_get_buffer (mark) == NULL);
 
@@ -2195,9 +2195,9 @@ ctk_text_buffer_move_mark (GtkTextBuffer     *buffer,
                            GtkTextMark       *mark,
                            const GtkTextIter *where)
 {
-  g_return_if_fail (GTK_IS_TEXT_MARK (mark));
+  g_return_if_fail (CTK_IS_TEXT_MARK (mark));
   g_return_if_fail (!ctk_text_mark_get_deleted (mark));
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   ctk_text_buffer_set_mark (buffer, mark, NULL, where, FALSE, TRUE);
 }
@@ -2215,9 +2215,9 @@ ctk_text_buffer_get_iter_at_mark (GtkTextBuffer *buffer,
                                   GtkTextIter   *iter,
                                   GtkTextMark   *mark)
 {
-  g_return_if_fail (GTK_IS_TEXT_MARK (mark));
+  g_return_if_fail (CTK_IS_TEXT_MARK (mark));
   g_return_if_fail (!ctk_text_mark_get_deleted (mark));
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   _ctk_text_btree_get_iter_at_mark (get_btree (buffer),
                                     iter,
@@ -2243,9 +2243,9 @@ void
 ctk_text_buffer_delete_mark (GtkTextBuffer *buffer,
                              GtkTextMark   *mark)
 {
-  g_return_if_fail (GTK_IS_TEXT_MARK (mark));
+  g_return_if_fail (CTK_IS_TEXT_MARK (mark));
   g_return_if_fail (!ctk_text_mark_get_deleted (mark));
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   g_object_ref (mark);
 
@@ -2278,7 +2278,7 @@ ctk_text_buffer_get_mark (GtkTextBuffer *buffer,
 {
   GtkTextMark *mark;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (name != NULL, NULL);
 
   mark = _ctk_text_btree_get_mark_by_name (get_btree (buffer), name);
@@ -2302,7 +2302,7 @@ ctk_text_buffer_move_mark_by_name (GtkTextBuffer     *buffer,
 {
   GtkTextMark *mark;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (name != NULL);
 
   mark = _ctk_text_btree_get_mark_by_name (get_btree (buffer), name);
@@ -2330,7 +2330,7 @@ ctk_text_buffer_delete_mark_by_name (GtkTextBuffer *buffer,
 {
   GtkTextMark *mark;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (name != NULL);
 
   mark = _ctk_text_btree_get_mark_by_name (get_btree (buffer), name);
@@ -2358,7 +2358,7 @@ ctk_text_buffer_delete_mark_by_name (GtkTextBuffer *buffer,
 GtkTextMark*
 ctk_text_buffer_get_insert (GtkTextBuffer *buffer)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
   return _ctk_text_btree_get_insert (get_btree (buffer));
 }
@@ -2384,7 +2384,7 @@ ctk_text_buffer_get_insert (GtkTextBuffer *buffer)
 GtkTextMark*
 ctk_text_buffer_get_selection_bound (GtkTextBuffer *buffer)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
   return _ctk_text_btree_get_selection_bound (get_btree (buffer));
 }
@@ -2402,9 +2402,9 @@ ctk_text_buffer_get_iter_at_child_anchor (GtkTextBuffer      *buffer,
                                           GtkTextIter        *iter,
                                           GtkTextChildAnchor *anchor)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_TEXT_CHILD_ANCHOR (anchor));
+  g_return_if_fail (CTK_IS_TEXT_CHILD_ANCHOR (anchor));
   g_return_if_fail (!ctk_text_child_anchor_get_deleted (anchor));
   
   _ctk_text_btree_get_iter_at_child_anchor (get_btree (buffer),
@@ -2456,7 +2456,7 @@ ctk_text_buffer_select_range (GtkTextBuffer     *buffer,
   GtkTextIter real_ins;
   GtkTextIter real_bound;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   real_ins = *ins;
   real_bound = *bound;
@@ -2503,7 +2503,7 @@ ctk_text_buffer_create_tag (GtkTextBuffer *buffer,
   GtkTextTag *tag;
   va_list list;
   
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
   tag = ctk_text_tag_new (tag_name);
 
@@ -2634,8 +2634,8 @@ ctk_text_buffer_apply_tag (GtkTextBuffer     *buffer,
                            const GtkTextIter *start,
                            const GtkTextIter *end)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  g_return_if_fail (GTK_IS_TEXT_TAG (tag));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_TAG (tag));
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
   g_return_if_fail (ctk_text_iter_get_buffer (start) == buffer);
@@ -2663,8 +2663,8 @@ ctk_text_buffer_remove_tag (GtkTextBuffer     *buffer,
                             const GtkTextIter *end)
 
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  g_return_if_fail (GTK_IS_TEXT_TAG (tag));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_TAG (tag));
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
   g_return_if_fail (ctk_text_iter_get_buffer (start) == buffer);
@@ -2692,7 +2692,7 @@ ctk_text_buffer_apply_tag_by_name (GtkTextBuffer     *buffer,
 {
   GtkTextTag *tag;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (name != NULL);
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
@@ -2729,7 +2729,7 @@ ctk_text_buffer_remove_tag_by_name (GtkTextBuffer     *buffer,
 {
   GtkTextTag *tag;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (name != NULL);
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
@@ -2783,7 +2783,7 @@ ctk_text_buffer_remove_all_tags (GtkTextBuffer     *buffer,
   GSList *prev, *next;
   GtkTextTag *tag;
   
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
   g_return_if_fail (ctk_text_iter_get_buffer (start) == buffer);
@@ -2849,7 +2849,7 @@ ctk_text_buffer_remove_all_tags (GtkTextBuffer     *buffer,
       else
         {
           /* not a duplicate */
-          tag = GTK_TEXT_TAG (tmp_list->data);
+          tag = CTK_TEXT_TAG (tmp_list->data);
           prev = tmp_list;
           tmp_list = tmp_list->next;
         }
@@ -2860,7 +2860,7 @@ ctk_text_buffer_remove_all_tags (GtkTextBuffer     *buffer,
   tmp_list = tags;
   while (tmp_list != NULL)
     {
-      tag = GTK_TEXT_TAG (tmp_list->data);
+      tag = CTK_TEXT_TAG (tmp_list->data);
 
       ctk_text_buffer_remove_tag (buffer, tag, &first, &second);
       
@@ -2900,7 +2900,7 @@ ctk_text_buffer_get_iter_at_line_offset (GtkTextBuffer *buffer,
   GtkTextIter end_line_iter;
 
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   if (line_number >= ctk_text_buffer_get_line_count (buffer))
     {
@@ -2946,7 +2946,7 @@ ctk_text_buffer_get_iter_at_line_index  (GtkTextBuffer *buffer,
   GtkTextIter end_line_iter;
 
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   if (line_number >= ctk_text_buffer_get_line_count (buffer))
     {
@@ -2981,7 +2981,7 @@ ctk_text_buffer_get_iter_at_line (GtkTextBuffer *buffer,
                                   gint           line_number)
 {
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   ctk_text_buffer_get_iter_at_line_offset (buffer, iter, line_number, 0);
 }
@@ -3003,7 +3003,7 @@ ctk_text_buffer_get_iter_at_offset (GtkTextBuffer *buffer,
                                     gint           char_offset)
 {
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   _ctk_text_btree_get_iter_at_char (get_btree (buffer), iter, char_offset);
 }
@@ -3022,7 +3022,7 @@ ctk_text_buffer_get_start_iter (GtkTextBuffer *buffer,
                                 GtkTextIter   *iter)
 {
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   _ctk_text_btree_get_iter_at_char (get_btree (buffer), iter, 0);
 }
@@ -3044,7 +3044,7 @@ ctk_text_buffer_get_end_iter (GtkTextBuffer *buffer,
                               GtkTextIter   *iter)
 {
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   _ctk_text_btree_get_end_iter (get_btree (buffer), iter);
 }
@@ -3065,7 +3065,7 @@ ctk_text_buffer_get_bounds (GtkTextBuffer *buffer,
 {
   g_return_if_fail (start != NULL);
   g_return_if_fail (end != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   _ctk_text_btree_get_iter_at_char (get_btree (buffer), start, 0);
   _ctk_text_btree_get_end_iter (get_btree (buffer), end);
@@ -3089,7 +3089,7 @@ ctk_text_buffer_get_bounds (GtkTextBuffer *buffer,
 gboolean
 ctk_text_buffer_get_modified (GtkTextBuffer *buffer)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
   return buffer->priv->modified;
 }
@@ -3111,7 +3111,7 @@ ctk_text_buffer_set_modified (GtkTextBuffer *buffer,
 {
   gboolean fixed_setting;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   fixed_setting = setting != FALSE;
 
@@ -3137,7 +3137,7 @@ ctk_text_buffer_set_modified (GtkTextBuffer *buffer,
 gboolean
 ctk_text_buffer_get_has_selection (GtkTextBuffer *buffer)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
   return buffer->priv->has_selection;
 }
@@ -3159,7 +3159,7 @@ ctk_text_buffer_get_has_selection (GtkTextBuffer *buffer)
 gint
 ctk_text_buffer_get_line_count (GtkTextBuffer *buffer)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), 0);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), 0);
 
   return _ctk_text_btree_line_count (get_btree (buffer));
 }
@@ -3178,7 +3178,7 @@ ctk_text_buffer_get_line_count (GtkTextBuffer *buffer)
 gint
 ctk_text_buffer_get_char_count (GtkTextBuffer *buffer)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), 0);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), 0);
 
   return _ctk_text_btree_char_count (get_btree (buffer));
 }
@@ -3192,7 +3192,7 @@ clipboard_clear_selection_cb (GtkClipboard *clipboard,
   /* Move selection_bound to the insertion point */
   GtkTextIter insert;
   GtkTextIter selection_bound;
-  GtkTextBuffer *buffer = GTK_TEXT_BUFFER (data);
+  GtkTextBuffer *buffer = CTK_TEXT_BUFFER (data);
 
   ctk_text_buffer_get_iter_at_mark (buffer, &insert,
                                     ctk_text_buffer_get_insert (buffer));
@@ -3214,12 +3214,12 @@ clipboard_get_selection_cb (GtkClipboard     *clipboard,
                             guint             info,
                             gpointer          data)
 {
-  GtkTextBuffer *buffer = GTK_TEXT_BUFFER (data);
+  GtkTextBuffer *buffer = CTK_TEXT_BUFFER (data);
   GtkTextIter start, end;
 
   if (ctk_text_buffer_get_selection_bounds (buffer, &start, &end))
     {
-      if (info == GTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS)
+      if (info == CTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS)
         {
           /* Provide the address of the buffer; this will only be
            * used within-process
@@ -3230,7 +3230,7 @@ clipboard_get_selection_cb (GtkClipboard     *clipboard,
                                   (void*)&buffer,
                                   sizeof (buffer));
         }
-      else if (info == GTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT)
+      else if (info == CTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT)
         {
           guint8 *str;
           gsize   len;
@@ -3285,11 +3285,11 @@ clipboard_get_contents_cb (GtkClipboard     *clipboard,
                            guint             info,
                            gpointer          data)
 {
-  GtkTextBuffer *contents = GTK_TEXT_BUFFER (data);
+  GtkTextBuffer *contents = CTK_TEXT_BUFFER (data);
 
   g_assert (contents); /* This should never be called unless we own the clipboard */
 
-  if (info == GTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS)
+  if (info == CTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS)
     {
       /* Provide the address of the clipboard buffer; this will only
        * be used within-process. OK to supply a NULL value for contents.
@@ -3300,7 +3300,7 @@ clipboard_get_contents_cb (GtkClipboard     *clipboard,
                               (void*)&contents,
                               sizeof (contents));
     }
-  else if (info == GTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT)
+  else if (info == CTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT)
     {
       GtkTextBuffer *clipboard_source_buffer;
       GtkTextIter start, end;
@@ -3339,7 +3339,7 @@ static void
 clipboard_clear_contents_cb (GtkClipboard *clipboard,
                              gpointer      data)
 {
-  GtkTextBuffer *contents = GTK_TEXT_BUFFER (data);
+  GtkTextBuffer *contents = CTK_TEXT_BUFFER (data);
 
   g_object_unref (contents);
 }
@@ -3476,7 +3476,7 @@ selection_data_get_buffer (GtkSelectionData *selection_data,
   if (gdk_window_get_window_type (owner) == GDK_WINDOW_FOREIGN)
     return NULL;
 
-  if (ctk_selection_data_get_data_type (selection_data) != gdk_atom_intern_static_string ("GTK_TEXT_BUFFER_CONTENTS"))
+  if (ctk_selection_data_get_data_type (selection_data) != gdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"))
     return NULL;
 
   if (ctk_selection_data_get_length (selection_data) != sizeof (src_buffer))
@@ -3487,7 +3487,7 @@ selection_data_get_buffer (GtkSelectionData *selection_data,
   if (src_buffer == NULL)
     return NULL;
   
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (src_buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (src_buffer), NULL);
 
   if (ctk_text_buffer_get_tag_table (src_buffer) !=
       ctk_text_buffer_get_tag_table (request_data->buffer))
@@ -3751,7 +3751,7 @@ ctk_text_buffer_add_selection_clipboard (GtkTextBuffer *buffer,
 {
   SelectionClipboard *selection_clipboard;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (clipboard != NULL);
 
   selection_clipboard = find_selection_clipboard (buffer, clipboard);
@@ -3786,7 +3786,7 @@ ctk_text_buffer_remove_selection_clipboard (GtkTextBuffer *buffer,
 {
   SelectionClipboard *selection_clipboard;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (clipboard != NULL);
 
   selection_clipboard = find_selection_clipboard (buffer, clipboard);
@@ -3870,7 +3870,7 @@ ctk_text_buffer_paste_clipboard (GtkTextBuffer *buffer,
     data->replace_selection = TRUE;
 
   ctk_clipboard_request_contents (clipboard,
-				  gdk_atom_intern_static_string ("GTK_TEXT_BUFFER_CONTENTS"),
+				  gdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"),
 				  clipboard_clipboard_buffer_received, data);
 }
 
@@ -3946,7 +3946,7 @@ ctk_text_buffer_backspace (GtkTextBuffer *buffer,
   gint offset;
   gboolean backspace_deletes_character;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
   start = *iter;
@@ -4125,7 +4125,7 @@ ctk_text_buffer_get_selection_bounds (GtkTextBuffer *buffer,
                                       GtkTextIter   *start,
                                       GtkTextIter   *end)
 {
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
   return _ctk_text_btree_get_selection_bounds (get_btree (buffer), start, end);
 }
@@ -4155,7 +4155,7 @@ ctk_text_buffer_get_selection_bounds (GtkTextBuffer *buffer,
 void
 ctk_text_buffer_begin_user_action (GtkTextBuffer *buffer)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   buffer->priv->user_action_count += 1;
   
@@ -4176,7 +4176,7 @@ ctk_text_buffer_begin_user_action (GtkTextBuffer *buffer)
 void
 ctk_text_buffer_end_user_action (GtkTextBuffer *buffer)
 {
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (buffer->priv->user_action_count > 0);
   
   buffer->priv->user_action_count -= 1;
@@ -4227,17 +4227,17 @@ ctk_text_buffer_get_target_list (GtkTextBuffer   *buffer,
   target_list = ctk_target_list_new (NULL, 0);
 
   ctk_target_list_add (target_list,
-                       gdk_atom_intern_static_string ("GTK_TEXT_BUFFER_CONTENTS"),
-                       GTK_TARGET_SAME_APP,
-                       GTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS);
+                       gdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"),
+                       CTK_TARGET_SAME_APP,
+                       CTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS);
 
   ctk_target_list_add_rich_text_targets (target_list,
-                                         GTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT,
+                                         CTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT,
                                          deserializable,
                                          buffer);
 
   ctk_target_list_add_text_targets (target_list,
-                                    GTK_TEXT_BUFFER_TARGET_INFO_TEXT);
+                                    CTK_TEXT_BUFFER_TARGET_INFO_TEXT);
 
   *entries = ctk_target_table_new_from_list (target_list, n_entries);
 
@@ -4263,7 +4263,7 @@ ctk_text_buffer_get_copy_target_list (GtkTextBuffer *buffer)
 {
   GtkTextBufferPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
   priv = buffer->priv;
 
@@ -4295,7 +4295,7 @@ ctk_text_buffer_get_paste_target_list (GtkTextBuffer *buffer)
 {
   GtkTextBufferPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
   priv = buffer->priv;
 
@@ -4402,7 +4402,7 @@ _ctk_text_buffer_get_line_log_attrs (GtkTextBuffer     *buffer,
   GtkTextLogAttrCache *cache;
   gint i;
   
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (anywhere_in_line != NULL, NULL);
 
   priv = buffer->priv;
@@ -4912,7 +4912,7 @@ ctk_text_buffer_insert_with_attributes (GtkTextBuffer *buffer,
   PangoAttrIterator *attr;
   GtkTextTagTable *tags;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
 
   if (!attributes)
     {

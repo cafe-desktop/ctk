@@ -401,11 +401,11 @@ msgstr "Կարևո՞ր է"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Արդյոք այս գործողությունը համարվում է կարևոր։ Երբ ՃՇՄԱՐԻՏ է, գործիքների "
 "տարրի պրոքսիները այս գործողության համար ցուցադրում են տեքստը "
-"GTK_TOOLBAR_BOTH_HORIZ ռեժիմում։"
+"CTK_TOOLBAR_BOTH_HORIZ ռեժիմում։"
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -939,8 +939,8 @@ msgid "Default Spacing"
 msgstr "Լռելյայն Տարածություն"
 
 #: gtk/gtkbutton.c:461
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Հավելյալ տարածք GTK_CAN_DEFAULT կոճակներն ավելացնելու համար"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Հավելյալ տարածք CTK_CAN_DEFAULT կոճակներն ավելացնելու համար"
 
 #: gtk/gtkbutton.c:475
 msgid "Default Outside Spacing"
@@ -948,10 +948,10 @@ msgstr "Լռելյայն Արտաքին Տարածություն"
 
 #: gtk/gtkbutton.c:476
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Հավելյալ տարածք GTK_CAN_DEFAULT կոճակներն ավելացնելու համար, որը միշտ "
+"Հավելյալ տարածք CTK_CAN_DEFAULT կոճակներն ավելացնելու համար, որը միշտ "
 "գծագրվում է կոճակի եզրագծից դուրս"
 
 #: gtk/gtkbutton.c:481
@@ -6193,10 +6193,10 @@ msgstr "Պատկերակի և պիտակի միջև տարածությունը �
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Գործիքների վահանակի տարրը համարվի արդյոք կարևոր։ Եթե ՃՇՄԱՐԻՏ է, ապա "
-"գործիքների վահանակի կոճակները ցույց կտան տեքստը GTK_TOOLBAR_BOTH_HORIZ "
+"գործիքների վահանակի կոճակները ցույց կտան տեքստը CTK_TOOLBAR_BOTH_HORIZ "
 "ռեժիմում"
 
 #: gtk/gtktoolitemgroup.c:1572

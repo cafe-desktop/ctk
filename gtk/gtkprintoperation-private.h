@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_OPERATION_PRIVATE_H__
-#define __GTK_PRINT_OPERATION_PRIVATE_H__
+#ifndef __CTK_PRINT_OPERATION_PRIVATE_H__
+#define __CTK_PRINT_OPERATION_PRIVATE_H__
 
 #include "gtkprintoperation.h"
 
@@ -26,9 +26,9 @@ G_BEGIN_DECLS
 /* Page drawing states */
 typedef enum
 {
-  GTK_PAGE_DRAWING_STATE_READY,
-  GTK_PAGE_DRAWING_STATE_DRAWING,
-  GTK_PAGE_DRAWING_STATE_DEFERRED_DRAWING
+  CTK_PAGE_DRAWING_STATE_READY,
+  CTK_PAGE_DRAWING_STATE_DRAWING,
+  CTK_PAGE_DRAWING_STATE_DEFERRED_DRAWING
 } GtkPageDrawingState;
 
 struct _GtkPrintOperationPrivate
@@ -147,4 +147,4 @@ void             _ctk_print_context_set_hard_margins                (GtkPrintCon
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_OPERATION_PRIVATE_H__ */
+#endif /* __CTK_PRINT_OPERATION_PRIVATE_H__ */

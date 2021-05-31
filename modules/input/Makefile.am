@@ -2,14 +2,14 @@
 include $(top_srcdir)/Makefile.decl
 
 AM_CPPFLAGS = \
-	-DGTK_LOCALEDIR=\"$(localedir)\" \
+	-DCTK_LOCALEDIR=\"$(localedir)\" \
 	-I$(top_srcdir) 		\
 	-I$(top_srcdir)/gdk		\
 	-I$(top_builddir)/gdk		\
-	$(GTK_DEBUG_FLAGS)		\
-	$(GTK_XIM_FLAGS)		\
-	$(GTK_DEP_CFLAGS)		\
-	-DGTK_COMPILATION		\
+	$(CTK_DEBUG_FLAGS)		\
+	$(CTK_XIM_FLAGS)		\
+	$(CTK_DEP_CFLAGS)		\
+	-DCTK_COMPILATION		\
 	$(INCLUDED_IMMODULE_DEFINE)
 
 DEPS = \
@@ -17,9 +17,9 @@ DEPS = \
 
 LDADDS = \
 	$(top_builddir)/gtk/libgtk-3.la	\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
-moduledir = $(libdir)/gtk-3.0/$(GTK_BINARY_VERSION)/immodules
+moduledir = $(libdir)/gtk-3.0/$(CTK_BINARY_VERSION)/immodules
 
 im_xim_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
 im_xim_la_SOURCES = 		\
@@ -201,10 +201,10 @@ im_waylandctk_la_SOURCES = imwaylandgtk.c $(protocol_built_sources_gtk)
 libstatic_im_waylandctk_la_SOURCES = $(im_waylandctk_la_SOURCES)
 im_waylandctk_la_LIBADD = $(LDADDS)
 if INCLUDE_IM_WAYLAND
-STATIC_WAYLANDGTK_MODULE = libstatic-im-waylandgtk.la
+STATIC_WAYLANDCTK_MODULE = libstatic-im-waylandgtk.la
 else
 if USE_WAYLAND
-WAYLANDGTK_MODULE = im-waylandgtk.la
+WAYLANDCTK_MODULE = im-waylandgtk.la
 endif
 endif
 
@@ -270,7 +270,7 @@ module_LTLIBRARIES =			\
 	$(QUARTZ_MODULE)		\
 	$(BROADWAY_MODULE)		\
 	$(WAYLAND_MODULE)		\
-	$(WAYLANDGTK_MODULE)	\
+	$(WAYLANDCTK_MODULE)	\
 	$(THAI_MODULE)			\
 	$(TI_ER_MODULE)			\
 	$(TI_ET_MODULE)			\
@@ -290,7 +290,7 @@ noinst_LTLIBRARIES =				\
 	$(STATIC_QUARTZ_MODULE)			\
 	$(STATIC_BROADWAY_MODULE)		\
 	$(STATIC_WAYLAND_MODULE)		\
-	$(STATIC_WAYLANDGTK_MODULE)		\
+	$(STATIC_WAYLANDCTK_MODULE)		\
 	$(STATIC_THAI_MODULE)			\
 	$(STATIC_TI_ER_MODULE)			\
 	$(STATIC_TI_ET_MODULE)			\

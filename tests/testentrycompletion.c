@@ -116,7 +116,7 @@ create_simple_completion_model (void)
   ctk_list_store_append (store, &iter);
   ctk_list_store_set (store, &iter, 0, "a\303\246z", -1);
  
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 /* Creates a tree model containing the completions */
@@ -152,7 +152,7 @@ create_completion_model (void)
   ctk_list_store_append (store, &iter);
   ctk_list_store_set (store, &iter, 0, pixbuf, 1, "Laminated arch", -1);
  
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 static gboolean
@@ -225,7 +225,7 @@ animation_timer (GtkEntryCompletion *completion)
   gint n_completions = G_N_ELEMENTS (dynamic_completions);
   gint n;
   static GtkListStore *old_store = NULL;
-  GtkListStore *store = GTK_LIST_STORE (ctk_entry_completion_get_model (completion));
+  GtkListStore *store = CTK_LIST_STORE (ctk_entry_completion_get_model (completion));
 
   if (timer_count % 10 == 0)
     {
@@ -233,14 +233,14 @@ animation_timer (GtkEntryCompletion *completion)
 	{
 	  g_print ("removing model!\n");
 
-	  old_store = GTK_LIST_STORE (g_object_ref (store));
+	  old_store = CTK_LIST_STORE (g_object_ref (store));
 	  ctk_entry_completion_set_model (completion, NULL);
 	}
       else
 	{
 	  g_print ("readding model!\n");
 	  
-	  ctk_entry_completion_set_model (completion, GTK_TREE_MODEL (old_store));
+	  ctk_entry_completion_set_model (completion, CTK_TREE_MODEL (old_store));
 	  g_object_unref (old_store);
 	  old_store = NULL;
 	}
@@ -260,7 +260,7 @@ animation_timer (GtkEntryCompletion *completion)
 	}
       else
 	{
-	  if (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter))
+	  if (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter))
 	    ctk_list_store_remove (store, &iter);
 	}
     }
@@ -278,9 +278,9 @@ match_selected_cb (GtkEntryCompletion *completion,
   GtkWidget *entry;
 
   entry = ctk_entry_completion_get_entry (completion);
-  ctk_tree_model_get (GTK_TREE_MODEL (model), iter, 1, &str, -1);
-  ctk_entry_set_text (GTK_ENTRY (entry), str);
-  ctk_editable_set_position (GTK_EDITABLE (entry), -1);
+  ctk_tree_model_get (CTK_TREE_MODEL (model), iter, 1, &str, -1);
+  ctk_entry_set_text (CTK_ENTRY (entry), str);
+  ctk_editable_set_position (CTK_EDITABLE (entry), -1);
   g_free (str);
 
   return TRUE;
@@ -298,19 +298,19 @@ main (int argc, char *argv[])
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_container_set_border_width (GTK_CONTAINER (window), 5);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_container_set_border_width (CTK_CONTAINER (window), 5);
   g_signal_connect (window, "delete_event", ctk_main_quit, NULL);
   
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 2);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
     
-  ctk_container_set_border_width (GTK_CONTAINER (vbox), 5);
+  ctk_container_set_border_width (CTK_CONTAINER (vbox), 5);
   
   label = ctk_label_new (NULL);
 
-  ctk_label_set_markup (GTK_LABEL (label), "Completion demo, try writing <b>total</b> or <b>gnome</b> for example.");
-  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_markup (CTK_LABEL (label), "Completion demo, try writing <b>total</b> or <b>gnome</b> for example.");
+  ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   /* Create our first entry */
   entry = ctk_entry_new ();
@@ -320,10 +320,10 @@ main (int argc, char *argv[])
   ctk_entry_completion_set_inline_completion (completion, TRUE);
   
   /* Assign the completion to the entry */
-  ctk_entry_set_completion (GTK_ENTRY (entry), completion);
+  ctk_entry_set_completion (CTK_ENTRY (entry), completion);
   g_object_unref (completion);
   
-  ctk_container_add (GTK_CONTAINER (vbox), entry);
+  ctk_container_add (CTK_CONTAINER (vbox), entry);
 
   /* Create a tree model and use it as the completion model */
   completion_model = create_simple_completion_model ();
@@ -340,10 +340,10 @@ main (int argc, char *argv[])
   completion = ctk_entry_completion_new ();
   
   /* Assign the completion to the entry */
-  ctk_entry_set_completion (GTK_ENTRY (entry), completion);
+  ctk_entry_set_completion (CTK_ENTRY (entry), completion);
   g_object_unref (completion);
   
-  ctk_container_add (GTK_CONTAINER (vbox), entry);
+  ctk_container_add (CTK_CONTAINER (vbox), entry);
 
   /* Create a tree model and use it as the completion model */
   completion_model = create_completion_model ();
@@ -353,13 +353,13 @@ main (int argc, char *argv[])
   
   /* Use model column 1 as the text column */
   cell = ctk_cell_renderer_pixbuf_new ();
-  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, FALSE);
-  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (completion), cell, 
+  ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (completion), cell, FALSE);
+  ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (completion), cell, 
 				  "pixbuf", 0, NULL); 
 
   cell = ctk_cell_renderer_text_new ();
-  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, FALSE);
-  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (completion), cell, 
+  ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (completion), cell, FALSE);
+  ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (completion), cell, 
 				  "text", 1, NULL); 
   
   ctk_entry_completion_set_match_func (completion, match_func, NULL, NULL);
@@ -377,13 +377,13 @@ main (int argc, char *argv[])
   completion = ctk_entry_completion_new ();
   
   /* Assign the completion to the entry */
-  ctk_entry_set_completion (GTK_ENTRY (entry), completion);
+  ctk_entry_set_completion (CTK_ENTRY (entry), completion);
   g_object_unref (completion);
   
-  ctk_container_add (GTK_CONTAINER (vbox), entry);
+  ctk_container_add (CTK_CONTAINER (vbox), entry);
 
   /* Create a tree model and use it as the completion model */
-  completion_model = GTK_TREE_MODEL (ctk_list_store_new (1, G_TYPE_STRING));
+  completion_model = CTK_TREE_MODEL (ctk_list_store_new (1, G_TYPE_STRING));
 
   ctk_entry_completion_set_model (completion, completion_model);
   g_object_unref (completion_model);
@@ -395,7 +395,7 @@ main (int argc, char *argv[])
   gdk_threads_add_timeout (1000, (GSourceFunc) animation_timer, completion);
 
   /* Fourth entry */
-  ctk_box_pack_start (GTK_BOX (vbox), ctk_label_new ("Model-less entry completion"), FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), ctk_label_new ("Model-less entry completion"), FALSE, FALSE, 0);
 
   entry = ctk_entry_new ();
 
@@ -403,10 +403,10 @@ main (int argc, char *argv[])
   completion = ctk_entry_completion_new ();
   
   /* Assign the completion to the entry */
-  ctk_entry_set_completion (GTK_ENTRY (entry), completion);
+  ctk_entry_set_completion (CTK_ENTRY (entry), completion);
   g_object_unref (completion);
   
-  ctk_container_add (GTK_CONTAINER (vbox), entry);
+  ctk_container_add (CTK_CONTAINER (vbox), entry);
 
   ctk_widget_show_all (window);
 

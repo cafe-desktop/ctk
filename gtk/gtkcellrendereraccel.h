@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_RENDERER_ACCEL_H__
-#define __GTK_CELL_RENDERER_ACCEL_H__
+#ifndef __CTK_CELL_RENDERER_ACCEL_H__
+#define __CTK_CELL_RENDERER_ACCEL_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_RENDERER_ACCEL            (ctk_cell_renderer_accel_get_type ())
-#define GTK_CELL_RENDERER_ACCEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccel))
-#define GTK_CELL_RENDERER_ACCEL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccelClass))
-#define GTK_IS_CELL_RENDERER_ACCEL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_RENDERER_ACCEL))
-#define GTK_IS_CELL_RENDERER_ACCEL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CELL_RENDERER_ACCEL))
-#define GTK_CELL_RENDERER_ACCEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccelClass))
+#define CTK_TYPE_CELL_RENDERER_ACCEL            (ctk_cell_renderer_accel_get_type ())
+#define CTK_CELL_RENDERER_ACCEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccel))
+#define CTK_CELL_RENDERER_ACCEL_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccelClass))
+#define CTK_IS_CELL_RENDERER_ACCEL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_ACCEL))
+#define CTK_IS_CELL_RENDERER_ACCEL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_ACCEL))
+#define CTK_CELL_RENDERER_ACCEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_ACCEL, GtkCellRendererAccelClass))
 
 typedef struct _GtkCellRendererAccel              GtkCellRendererAccel;
 typedef struct _GtkCellRendererAccelPrivate       GtkCellRendererAccelPrivate;
@@ -39,8 +39,8 @@ typedef struct _GtkCellRendererAccelClass         GtkCellRendererAccelClass;
 
 /**
  * GtkCellRendererAccelMode:
- * @GTK_CELL_RENDERER_ACCEL_MODE_GTK: GTK+ accelerators mode
- * @GTK_CELL_RENDERER_ACCEL_MODE_OTHER: Other accelerator mode
+ * @CTK_CELL_RENDERER_ACCEL_MODE_GTK: GTK+ accelerators mode
+ * @CTK_CELL_RENDERER_ACCEL_MODE_OTHER: Other accelerator mode
  *
  * Determines if the edited accelerators are GTK+ accelerators. If
  * they are, consumed modifiers are suppressed, only accelerators
@@ -49,8 +49,8 @@ typedef struct _GtkCellRendererAccelClass         GtkCellRendererAccelClass;
  */
 typedef enum
 {
-  GTK_CELL_RENDERER_ACCEL_MODE_GTK,
-  GTK_CELL_RENDERER_ACCEL_MODE_OTHER
+  CTK_CELL_RENDERER_ACCEL_MODE_GTK,
+  CTK_CELL_RENDERER_ACCEL_MODE_OTHER
 } GtkCellRendererAccelMode;
 
 
@@ -92,4 +92,4 @@ GtkCellRenderer *ctk_cell_renderer_accel_new             (void);
 G_END_DECLS
 
 
-#endif /* __GTK_CELL_RENDERER_ACCEL_H__ */
+#endif /* __CTK_CELL_RENDERER_ACCEL_H__ */

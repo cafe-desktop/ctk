@@ -53,8 +53,8 @@ initialize_model (void)
   grand = g_rand_new ();
   for (i = 0; i < NUM_ROWS; i++)
     {
-      ctk_list_store_append (GTK_LIST_STORE (model), &iter);
-      ctk_list_store_set (GTK_LIST_STORE (model), &iter,
+      ctk_list_store_append (CTK_LIST_STORE (model), &iter);
+      ctk_list_store_set (CTK_LIST_STORE (model), &iter,
 			  TEXT_COLUMN, words[g_rand_int_range (grand, 0, NUM_WORDS)],
 			  -1);
     }
@@ -81,9 +81,9 @@ futz_row (void)
     {
     case 0:
       /* insert */
-            ctk_list_store_insert_after (GTK_LIST_STORE (model),
+            ctk_list_store_insert_after (CTK_LIST_STORE (model),
             				   &iter2, &iter);
-            ctk_list_store_set (GTK_LIST_STORE (model), &iter2,
+            ctk_list_store_set (CTK_LIST_STORE (model), &iter2,
             			  TEXT_COLUMN, words[g_rand_int_range (grand, 0, NUM_WORDS)],
             			  -1);
       break;
@@ -91,14 +91,14 @@ futz_row (void)
       /* delete */
       if (ctk_tree_model_iter_n_children (model, NULL) == 0)
 	return;
-      ctk_list_store_remove (GTK_LIST_STORE (model), &iter);
+      ctk_list_store_remove (CTK_LIST_STORE (model), &iter);
       break;
     case 2:
       /* modify */
       return;
       if (ctk_tree_model_iter_n_children (model, NULL) == 0)
 	return;
-      ctk_list_store_set (GTK_LIST_STORE (model), &iter,
+      ctk_list_store_set (CTK_LIST_STORE (model), &iter,
       			  TEXT_COLUMN, words[g_rand_int_range (grand, 0, NUM_WORDS)],
       			  -1);
       break;
@@ -130,40 +130,40 @@ main (int argc, char *argv[])
   ctk_init (&argc, &argv);
 
   path = ctk_tree_path_new_from_string ("80");
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), "Reflow test");
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), "Reflow test");
   g_signal_connect (window, "destroy", ctk_main_quit, NULL);
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-  ctk_box_pack_start (GTK_BOX (vbox), ctk_label_new ("Incremental Reflow Test"), FALSE, FALSE, 0);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+  ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
+  ctk_box_pack_start (CTK_BOX (vbox), ctk_label_new ("Incremental Reflow Test"), FALSE, FALSE, 0);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-				  GTK_POLICY_AUTOMATIC,
-				  GTK_POLICY_AUTOMATIC);
-  ctk_box_pack_start (GTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window),
+				  CTK_POLICY_AUTOMATIC,
+				  CTK_POLICY_AUTOMATIC);
+  ctk_box_pack_start (CTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
   
   initialize_model ();
   tree_view = ctk_tree_view_new_with_model (model);
-  ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view), path, NULL, TRUE, 0.5, 0.0);
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
+  ctk_tree_view_scroll_to_cell (CTK_TREE_VIEW (tree_view), path, NULL, TRUE, 0.5, 0.0);
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view));
   ctk_tree_selection_select_path (selection, path);
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), FALSE);
-  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (tree_view), FALSE);
+  ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (tree_view),
 					       -1,
 					       NULL,
 					       ctk_cell_renderer_text_new (),
 					       "text", TEXT_COLUMN,
 					       NULL);
-  ctk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+  ctk_container_add (CTK_CONTAINER (scrolled_window), tree_view);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), hbox, FALSE, FALSE, 0);
   button = ctk_button_new_with_mnemonic ("<b>_Futz!!</b>");
-  ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
-  ctk_label_set_use_markup (GTK_LABEL (ctk_bin_get_child (GTK_BIN (button))), TRUE);
+  ctk_box_pack_start (CTK_BOX (hbox), button, FALSE, FALSE, 0);
+  ctk_label_set_use_markup (CTK_LABEL (ctk_bin_get_child (CTK_BIN (button))), TRUE);
   g_signal_connect (button, "clicked", G_CALLBACK (futz), NULL);
   g_signal_connect (button, "realize", G_CALLBACK (ctk_widget_grab_focus), NULL);
-  ctk_window_set_default_size (GTK_WINDOW (window), 300, 400);
+  ctk_window_set_default_size (CTK_WINDOW (window), 300, 400);
   ctk_widget_show_all (window);
   gdk_threads_add_timeout (1000, (GSourceFunc) futz, NULL);
   ctk_main ();

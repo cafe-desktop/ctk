@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_PANED_H__
-#define __GTK_PANED_H__
+#ifndef __CTK_PANED_H__
+#define __CTK_PANED_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PANED                  (ctk_paned_get_type ())
-#define GTK_PANED(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PANED, GtkPaned))
-#define GTK_PANED_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PANED, GtkPanedClass))
-#define GTK_IS_PANED(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PANED))
-#define GTK_IS_PANED_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PANED))
-#define GTK_PANED_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PANED, GtkPanedClass))
+#define CTK_TYPE_PANED                  (ctk_paned_get_type ())
+#define CTK_PANED(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PANED, GtkPaned))
+#define CTK_PANED_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PANED, GtkPanedClass))
+#define CTK_IS_PANED(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PANED))
+#define CTK_IS_PANED_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PANED))
+#define CTK_PANED_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PANED, GtkPanedClass))
 
 
 typedef struct _GtkPaned        GtkPaned;
@@ -119,4 +119,4 @@ gboolean    ctk_paned_get_wide_handle (GtkPaned    *paned);
 
 G_END_DECLS
 
-#endif /* __GTK_PANED_H__ */
+#endif /* __CTK_PANED_H__ */

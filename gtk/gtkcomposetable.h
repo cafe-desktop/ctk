@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_COMPOSETABLE_H__
-#define __GTK_COMPOSETABLE_H__
+#ifndef __CTK_COMPOSETABLE_H__
+#define __CTK_COMPOSETABLE_H__
 
 #include <glib.h>
 
@@ -52,4 +52,4 @@ GSList *ctk_compose_table_list_add_file           (GSList        *compose_tables
 
 G_END_DECLS
 
-#endif /* __GTK_COMPOSETABLE_H__ */
+#endif /* __CTK_COMPOSETABLE_H__ */

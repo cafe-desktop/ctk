@@ -79,10 +79,10 @@
  *   g_signal_connect (print, "begin_print", G_CALLBACK (begin_print), NULL);
  *   g_signal_connect (print, "draw_page", G_CALLBACK (draw_page), NULL);
  *
- *   res = ctk_print_operation_run (print, GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
- *                                  GTK_WINDOW (main_window), NULL);
+ *   res = ctk_print_operation_run (print, CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
+ *                                  CTK_WINDOW (main_window), NULL);
  *
- *   if (res == GTK_PRINT_OPERATION_RESULT_APPLY)
+ *   if (res == CTK_PRINT_OPERATION_RESULT_APPLY)
  *     {
  *       if (settings != NULL)
  *         g_object_unref (settings);
@@ -159,7 +159,7 @@ static void          clamp_page_ranges       (PrintPagesData *data);
 
 G_DEFINE_TYPE_WITH_CODE (GtkPrintOperation, ctk_print_operation, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkPrintOperation)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_PRINT_OPERATION_PREVIEW,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_PRINT_OPERATION_PREVIEW,
 						preview_iface_init))
 
 /**
@@ -183,7 +183,7 @@ ctk_print_error_quark (void)
 static void
 ctk_print_operation_finalize (GObject *object)
 {
-  GtkPrintOperation *print_operation = GTK_PRINT_OPERATION (object);
+  GtkPrintOperation *print_operation = CTK_PRINT_OPERATION (object);
   GtkPrintOperationPrivate *priv = print_operation->priv;
 
   if (priv->free_platform_data &&
@@ -227,7 +227,7 @@ ctk_print_operation_init (GtkPrintOperation *operation)
 
   priv = operation->priv = ctk_print_operation_get_instance_private (operation);
 
-  priv->status = GTK_PRINT_STATUS_INITIAL;
+  priv->status = CTK_PRINT_STATUS_INITIAL;
   priv->status_string = g_strdup ("");
   priv->default_page_setup = NULL;
   priv->print_settings = NULL;
@@ -244,10 +244,10 @@ ctk_print_operation_init (GtkPrintOperation *operation)
   priv->has_selection = FALSE;
   priv->embed_page_setup = FALSE;
 
-  priv->page_drawing_state = GTK_PAGE_DRAWING_STATE_READY;
+  priv->page_drawing_state = CTK_PAGE_DRAWING_STATE_READY;
 
   priv->rloop = NULL;
-  priv->unit = GTK_UNIT_NONE;
+  priv->unit = CTK_UNIT_NONE;
 
   appname = g_get_application_name ();
   if (appname == NULL)
@@ -266,7 +266,7 @@ preview_iface_render_page (GtkPrintOperationPreview *preview,
 
   GtkPrintOperation *op;
 
-  op = GTK_PRINT_OPERATION (preview);
+  op = CTK_PRINT_OPERATION (preview);
   common_render_page (op, page_nr);
 }
 
@@ -276,7 +276,7 @@ preview_iface_end_preview (GtkPrintOperationPreview *preview)
   GtkPrintOperation *op;
   GtkPrintOperationResult result;
   
-  op = GTK_PRINT_OPERATION (preview);
+  op = CTK_PRINT_OPERATION (preview);
 
   g_signal_emit (op, signals[END_PRINT], 0, op->priv->print_context);
 
@@ -286,14 +286,14 @@ preview_iface_end_preview (GtkPrintOperationPreview *preview)
   if (op->priv->end_run)
     op->priv->end_run (op, op->priv->is_sync, TRUE);
   
-  _ctk_print_operation_set_status (op, GTK_PRINT_STATUS_FINISHED, NULL);
+  _ctk_print_operation_set_status (op, CTK_PRINT_STATUS_FINISHED, NULL);
 
   if (op->priv->error)
-    result = GTK_PRINT_OPERATION_RESULT_ERROR;
+    result = CTK_PRINT_OPERATION_RESULT_ERROR;
   else if (op->priv->cancelled)
-    result = GTK_PRINT_OPERATION_RESULT_CANCEL;
+    result = CTK_PRINT_OPERATION_RESULT_CANCEL;
   else
-    result = GTK_PRINT_OPERATION_RESULT_APPLY;
+    result = CTK_PRINT_OPERATION_RESULT_APPLY;
 
   g_signal_emit (op, signals[DONE], 0, result);
 }
@@ -306,17 +306,17 @@ preview_iface_is_selected (GtkPrintOperationPreview *preview,
   GtkPrintOperationPrivate *priv;
   int i;
   
-  op = GTK_PRINT_OPERATION (preview);
+  op = CTK_PRINT_OPERATION (preview);
   priv = op->priv;
   
   switch (priv->print_pages)
     {
-    case GTK_PRINT_PAGES_SELECTION:
-    case GTK_PRINT_PAGES_ALL:
+    case CTK_PRINT_PAGES_SELECTION:
+    case CTK_PRINT_PAGES_ALL:
       return (page_nr >= 0) && (page_nr < priv->nr_of_pages);
-    case GTK_PRINT_PAGES_CURRENT:
+    case CTK_PRINT_PAGES_CURRENT:
       return page_nr == priv->current_page;
-    case GTK_PRINT_PAGES_RANGES:
+    case CTK_PRINT_PAGES_RANGES:
       for (i = 0; i < priv->num_page_ranges; i++)
 	{
 	  if (page_nr >= priv->page_ranges[i].start &&
@@ -376,7 +376,7 @@ ctk_print_operation_set_property (GObject      *object,
 				  const GValue *value,
 				  GParamSpec   *pspec)
 {
-  GtkPrintOperation *op = GTK_PRINT_OPERATION (object);
+  GtkPrintOperation *op = CTK_PRINT_OPERATION (object);
   
   switch (prop_id)
     {
@@ -437,7 +437,7 @@ ctk_print_operation_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *pspec)
 {
-  GtkPrintOperation *op = GTK_PRINT_OPERATION (object);
+  GtkPrintOperation *op = CTK_PRINT_OPERATION (object);
   GtkPrintOperationPrivate *priv = op->priv;
 
   switch (prop_id)
@@ -544,11 +544,11 @@ preview_print_idle_done (gpointer data)
   GtkPrintOperation *op;
   PreviewOp *pop = (PreviewOp *) data;
 
-  op = GTK_PRINT_OPERATION (pop->preview);
+  op = CTK_PRINT_OPERATION (pop->preview);
 
   cairo_surface_finish (pop->surface);
 
-  if (op->priv->status == GTK_PRINT_STATUS_FINISHED_ABORTED)
+  if (op->priv->status == CTK_PRINT_STATUS_FINISHED_ABORTED)
     {
       cairo_surface_destroy (pop->surface);
     }
@@ -582,15 +582,15 @@ preview_print_idle (gpointer data)
   gboolean done = FALSE;
 
   pop = (PreviewOp *) data;
-  op = GTK_PRINT_OPERATION (pop->preview);
+  op = CTK_PRINT_OPERATION (pop->preview);
   priv = op->priv;
 
-  if (priv->page_drawing_state == GTK_PAGE_DRAWING_STATE_READY)
+  if (priv->page_drawing_state == CTK_PAGE_DRAWING_STATE_READY)
     {
       if (priv->cancelled)
 	{
 	  done = TRUE;
-          _ctk_print_operation_set_status (op, GTK_PRINT_STATUS_FINISHED_ABORTED, NULL);
+          _ctk_print_operation_set_status (op, CTK_PRINT_STATUS_FINISHED_ABORTED, NULL);
 	}
       else if (!pop->pages_data->initialized)
         {
@@ -604,7 +604,7 @@ preview_print_idle (gpointer data)
           if (!pop->pages_data->done)
             ctk_print_operation_preview_render_page (pop->preview, pop->pages_data->page);
           else
-            done = priv->page_drawing_state == GTK_PAGE_DRAWING_STATE_READY;
+            done = priv->page_drawing_state == CTK_PAGE_DRAWING_STATE_READY;
         }
     }
 
@@ -617,7 +617,7 @@ preview_got_page_size (GtkPrintOperationPreview *preview,
 		       GtkPageSetup             *page_setup,
 		       PreviewOp                *pop)
 {
-  GtkPrintOperation *op = GTK_PRINT_OPERATION (preview);
+  GtkPrintOperation *op = CTK_PRINT_OPERATION (preview);
   cairo_t *cr;
 
   _ctk_print_operation_platform_backend_resize_preview_surface (op, page_setup, pop->surface);
@@ -662,7 +662,7 @@ ctk_print_operation_preview_handler (GtkPrintOperation        *op,
   pop->preview = preview;
   pop->parent = parent;
   pop->pages_data = g_new0 (PrintPagesData, 1);
-  pop->pages_data->op = g_object_ref (GTK_PRINT_OPERATION (preview));
+  pop->pages_data->op = g_object_ref (CTK_PRINT_OPERATION (preview));
   pop->pages_data->is_preview = TRUE;
 
   page_setup = ctk_print_context_get_page_setup (context);
@@ -770,7 +770,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
    * everything required for printing. 
    *
    * @result gives you information about what happened during the run. 
-   * If @result is %GTK_PRINT_OPERATION_RESULT_ERROR then you can call
+   * If @result is %CTK_PRINT_OPERATION_RESULT_ERROR then you can call
    * ctk_print_operation_get_error() for more information.
    *
    * If you enabled print status tracking then 
@@ -786,7 +786,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, done),
 		  NULL, NULL,
 		  NULL,
-		  G_TYPE_NONE, 1, GTK_TYPE_PRINT_OPERATION_RESULT);
+		  G_TYPE_NONE, 1, CTK_TYPE_PRINT_OPERATION_RESULT);
 
   /**
    * GtkPrintOperation::begin-print:
@@ -809,7 +809,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, begin_print),
 		  NULL, NULL,
 		  NULL,
-		  G_TYPE_NONE, 1, GTK_TYPE_PRINT_CONTEXT);
+		  G_TYPE_NONE, 1, CTK_TYPE_PRINT_CONTEXT);
 
    /**
    * GtkPrintOperation::paginate:
@@ -841,7 +841,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, paginate),
 		  paginate_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT,
-		  G_TYPE_BOOLEAN, 1, GTK_TYPE_PRINT_CONTEXT);
+		  G_TYPE_BOOLEAN, 1, CTK_TYPE_PRINT_CONTEXT);
 
 
   /**
@@ -865,9 +865,9 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_INT_OBJECT,
 		  G_TYPE_NONE, 3,
-		  GTK_TYPE_PRINT_CONTEXT,
+		  CTK_TYPE_PRINT_CONTEXT,
 		  G_TYPE_INT,
-		  GTK_TYPE_PAGE_SETUP);
+		  CTK_TYPE_PAGE_SETUP);
 
   /**
    * GtkPrintOperation::draw-page:
@@ -934,7 +934,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_INT,
 		  G_TYPE_NONE, 2,
-		  GTK_TYPE_PRINT_CONTEXT,
+		  CTK_TYPE_PRINT_CONTEXT,
 		  G_TYPE_INT);
 
   /**
@@ -955,7 +955,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, end_print),
 		  NULL, NULL,
 		  NULL,
-		  G_TYPE_NONE, 1, GTK_TYPE_PRINT_CONTEXT);
+		  G_TYPE_NONE, 1, CTK_TYPE_PRINT_CONTEXT);
 
   /**
    * GtkPrintOperation::status-changed:
@@ -1027,7 +1027,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, update_custom_widget),
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_OBJECT_OBJECT,
-		  G_TYPE_NONE, 3, GTK_TYPE_WIDGET, GTK_TYPE_PAGE_SETUP, GTK_TYPE_PRINT_SETTINGS);
+		  G_TYPE_NONE, 3, CTK_TYPE_WIDGET, CTK_TYPE_PAGE_SETUP, CTK_TYPE_PRINT_SETTINGS);
 
   /**
    * GtkPrintOperation::custom-widget-apply:
@@ -1049,7 +1049,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, custom_widget_apply),
 		  NULL, NULL,
 		  NULL,
-		  G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
+		  G_TYPE_NONE, 1, CTK_TYPE_WIDGET);
 
    /**
    * GtkPrintOperation::preview:
@@ -1087,9 +1087,9 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT_OBJECT_OBJECT,
 		  G_TYPE_BOOLEAN, 3,
-		  GTK_TYPE_PRINT_OPERATION_PREVIEW,
-		  GTK_TYPE_PRINT_CONTEXT,
-		  GTK_TYPE_WINDOW);
+		  CTK_TYPE_PRINT_OPERATION_PREVIEW,
+		  CTK_TYPE_PRINT_CONTEXT,
+		  CTK_TYPE_WINDOW);
 
   
   /**
@@ -1108,8 +1108,8 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 				   g_param_spec_object ("default-page-setup",
 							P_("Default Page Setup"),
 							P_("The GtkPageSetup used by default"),
-							GTK_TYPE_PAGE_SETUP,
-							GTK_PARAM_READWRITE));
+							CTK_TYPE_PAGE_SETUP,
+							CTK_PARAM_READWRITE));
 
   /**
    * GtkPrintOperation:print-settings:
@@ -1127,8 +1127,8 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 				   g_param_spec_object ("print-settings",
 							P_("Print Settings"),
 							P_("The GtkPrintSettings used for initializing the dialog"),
-							GTK_TYPE_PRINT_SETTINGS,
-							GTK_PARAM_READWRITE));
+							CTK_TYPE_PRINT_SETTINGS,
+							CTK_PARAM_READWRITE));
   
   /**
    * GtkPrintOperation:job-name:
@@ -1147,7 +1147,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							P_("Job Name"),
 							P_("A string used for identifying the print job."),
 							"",
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
 
   /**
    * GtkPrintOperation:n-pages:
@@ -1174,7 +1174,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 						     -1,
 						     G_MAXINT,
 						     -1,
-						     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkPrintOperation:current-page:
@@ -1196,7 +1196,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 						     -1,
 						     G_MAXINT,
 						     -1,
-						     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
    * GtkPrintOperation:use-full-page:
@@ -1216,7 +1216,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 P_("Use full page"),
 							 P_("TRUE if the origin of the context should be at the corner of the page and not the corner of the imageable area"),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
 
   /**
@@ -1237,7 +1237,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 P_("Track Print Status"),
 							 P_("TRUE if the print operation will continue to report on the print job status after the print data has been sent to the printer or print server."),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
 
   /**
@@ -1254,9 +1254,9 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 				   g_param_spec_enum ("unit",
 						      P_("Unit"),
 						      P_("The unit in which distances can be measured in the context"),
-						      GTK_TYPE_UNIT,
-						      GTK_UNIT_NONE,
-						      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						      CTK_TYPE_UNIT,
+						      CTK_UNIT_NONE,
+						      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   
   /**
@@ -1273,7 +1273,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 P_("Show Dialog"),
 							 P_("TRUE if a progress dialog is shown while printing."),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkPrintOperation:allow-async:
@@ -1281,13 +1281,13 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
    * Determines whether the print operation may run asynchronously or not.
    *
    * Some systems don't support asynchronous printing, but those that do
-   * will return %GTK_PRINT_OPERATION_RESULT_IN_PROGRESS as the status, and
+   * will return %CTK_PRINT_OPERATION_RESULT_IN_PROGRESS as the status, and
    * emit the #GtkPrintOperation::done signal when the operation is actually 
    * done.
    *
    * The Windows port does not support asynchronous operation at all (this 
    * is unlikely to change). On other platforms, all actions except for 
-   * %GTK_PRINT_OPERATION_ACTION_EXPORT support asynchronous operation.
+   * %CTK_PRINT_OPERATION_ACTION_EXPORT support asynchronous operation.
    *
    * Since: 2.10
    */
@@ -1297,7 +1297,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 P_("Allow Async"),
 							 P_("TRUE if print process may run asynchronous."),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
    * GtkPrintOperation:export-filename:
@@ -1320,7 +1320,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							P_("Export filename"),
 							P_("Export filename"),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
   
   /**
    * GtkPrintOperation:status:
@@ -1334,9 +1334,9 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 				   g_param_spec_enum ("status",
 						      P_("Status"),
 						      P_("The status of the print operation"),
-						      GTK_TYPE_PRINT_STATUS,
-						      GTK_PRINT_STATUS_INITIAL,
-						      GTK_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY));
+						      CTK_TYPE_PRINT_STATUS,
+						      CTK_PRINT_STATUS_INITIAL,
+						      CTK_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
    * GtkPrintOperation:status-string:
@@ -1356,7 +1356,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							P_("Status String"),
 							P_("A human-readable description of the status"),
 							"",
-							GTK_PARAM_READABLE));
+							CTK_PARAM_READABLE));
   
 
   /**
@@ -1375,7 +1375,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							P_("Custom tab label"),
 							P_("Label for the tab containing custom widgets."),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
 
   /**
    * GtkPrintOperation:support-selection:
@@ -1391,7 +1391,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 P_("Support Selection"),
 							 P_("TRUE if the print operation will support print of selection."),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkPrintOperation:has-selection:
@@ -1408,7 +1408,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 P_("Has Selection"),
 							 P_("TRUE if a selection exists."),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
 
   /**
@@ -1424,18 +1424,18 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 							 P_("Embed Page Setup"),
 							 P_("TRUE if page setup combos are embedded in GtkPrintUnixDialog"),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   /**
    * GtkPrintOperation:n-pages-to-print:
    *
    * The number of pages that will be printed.
    *
    * Note that this value is set during print preparation phase
-   * (%GTK_PRINT_STATUS_PREPARING), so this value should never be
-   * get before the data generation phase (%GTK_PRINT_STATUS_GENERATING_DATA).
+   * (%CTK_PRINT_STATUS_PREPARING), so this value should never be
+   * get before the data generation phase (%CTK_PRINT_STATUS_GENERATING_DATA).
    * You can connect to the #GtkPrintOperation::status-changed signal
    * and call ctk_print_operation_get_n_pages_to_print() when
-   * print status is %GTK_PRINT_STATUS_GENERATING_DATA.
+   * print status is %CTK_PRINT_STATUS_GENERATING_DATA.
    * This is typically used to track the progress of print operation.
    *
    * Since: 2.18
@@ -1448,7 +1448,7 @@ ctk_print_operation_class_init (GtkPrintOperationClass *class)
 						     -1,
 						     G_MAXINT,
 						     -1,
-						     GTK_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY));
+						     CTK_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY));
 }
 
 /**
@@ -1465,7 +1465,7 @@ ctk_print_operation_new (void)
 {
   GtkPrintOperation *print_operation;
 
-  print_operation = g_object_new (GTK_TYPE_PRINT_OPERATION, NULL);
+  print_operation = g_object_new (CTK_TYPE_PRINT_OPERATION, NULL);
   
   return print_operation;
 }
@@ -1489,9 +1489,9 @@ ctk_print_operation_set_default_page_setup (GtkPrintOperation *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (default_page_setup == NULL || 
-                    GTK_IS_PAGE_SETUP (default_page_setup));
+                    CTK_IS_PAGE_SETUP (default_page_setup));
 
   priv = op->priv;
 
@@ -1523,7 +1523,7 @@ ctk_print_operation_set_default_page_setup (GtkPrintOperation *op,
 GtkPageSetup *
 ctk_print_operation_get_default_page_setup (GtkPrintOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), NULL);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), NULL);
 
   return op->priv->default_page_setup;
 }
@@ -1546,9 +1546,9 @@ ctk_print_operation_set_print_settings (GtkPrintOperation *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (print_settings == NULL || 
-                    GTK_IS_PRINT_SETTINGS (print_settings));
+                    CTK_IS_PRINT_SETTINGS (print_settings));
 
   priv = op->priv;
 
@@ -1583,7 +1583,7 @@ ctk_print_operation_set_print_settings (GtkPrintOperation *op,
 GtkPrintSettings *
 ctk_print_operation_get_print_settings (GtkPrintOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), NULL);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), NULL);
 
   return op->priv->print_settings;
 }
@@ -1607,7 +1607,7 @@ ctk_print_operation_set_job_name (GtkPrintOperation *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (job_name != NULL);
 
   priv = op->priv;
@@ -1646,7 +1646,7 @@ ctk_print_operation_set_n_pages (GtkPrintOperation *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (n_pages > 0);
 
   priv = op->priv;
@@ -1681,7 +1681,7 @@ ctk_print_operation_set_current_page (GtkPrintOperation *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   g_return_if_fail (current_page >= 0);
 
   priv = op->priv;
@@ -1716,7 +1716,7 @@ ctk_print_operation_set_use_full_page (GtkPrintOperation *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   full_page = full_page != FALSE;
  
@@ -1747,7 +1747,7 @@ ctk_print_operation_set_unit (GtkPrintOperation *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -1780,7 +1780,7 @@ ctk_print_operation_set_track_print_status (GtkPrintOperation  *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -1810,8 +1810,8 @@ _ctk_print_operation_set_status (GtkPrintOperation *op,
     NC_("print operation status", "Finished with error")
   };
 
-  if (status > GTK_PRINT_STATUS_FINISHED_ABORTED)
-    status = GTK_PRINT_STATUS_FINISHED_ABORTED;
+  if (status > CTK_PRINT_STATUS_FINISHED_ABORTED)
+    status = CTK_PRINT_STATUS_FINISHED_ABORTED;
 
   if (string == NULL)
     string = g_dpgettext2 (GETTEXT_PACKAGE, "print operation status", status_strs[status]);
@@ -1845,8 +1845,8 @@ _ctk_print_operation_set_status (GtkPrintOperation *op,
 GtkPrintStatus
 ctk_print_operation_get_status (GtkPrintOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), 
-                        GTK_PRINT_STATUS_FINISHED_ABORTED);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), 
+                        CTK_PRINT_STATUS_FINISHED_ABORTED);
 
   return op->priv->status;
 }
@@ -1870,7 +1870,7 @@ ctk_print_operation_get_status (GtkPrintOperation *op)
 const gchar *
 ctk_print_operation_get_status_string (GtkPrintOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), "");
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), "");
 
   return op->priv->status_string;
 }
@@ -1880,8 +1880,8 @@ ctk_print_operation_get_status_string (GtkPrintOperation *op)
  * @op: a #GtkPrintOperation
  * 
  * A convenience function to find out if the print operation
- * is finished, either successfully (%GTK_PRINT_STATUS_FINISHED)
- * or unsuccessfully (%GTK_PRINT_STATUS_FINISHED_ABORTED).
+ * is finished, either successfully (%CTK_PRINT_STATUS_FINISHED)
+ * or unsuccessfully (%CTK_PRINT_STATUS_FINISHED_ABORTED).
  * 
  * Note: when you enable print status tracking the print operation
  * can be in a non-finished state even after done has been called, as
@@ -1896,12 +1896,12 @@ ctk_print_operation_is_finished (GtkPrintOperation *op)
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), TRUE);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), TRUE);
 
   priv = op->priv;
   return
-    priv->status == GTK_PRINT_STATUS_FINISHED_ABORTED ||
-    priv->status == GTK_PRINT_STATUS_FINISHED;
+    priv->status == CTK_PRINT_STATUS_FINISHED_ABORTED ||
+    priv->status == CTK_PRINT_STATUS_FINISHED;
 }
 
 /**
@@ -1920,7 +1920,7 @@ ctk_print_operation_set_show_progress (GtkPrintOperation  *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -1951,7 +1951,7 @@ ctk_print_operation_set_allow_async (GtkPrintOperation  *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -1981,7 +1981,7 @@ ctk_print_operation_set_custom_tab_label (GtkPrintOperation  *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -2014,7 +2014,7 @@ ctk_print_operation_set_export_filename (GtkPrintOperation *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -2052,7 +2052,7 @@ create_page_setup (GtkPrintOperation *op)
     {
       GtkPaperSize *paper_size;
       
-      if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_ORIENTATION))
+      if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_ORIENTATION))
 	ctk_page_setup_set_orientation (page_setup,
 					ctk_print_settings_get_orientation (settings));
 
@@ -2078,8 +2078,8 @@ pdf_start_page (GtkPrintOperation *op,
   cairo_surface_t *surface = op->priv->platform_data;
   gdouble w, h;
 
-  w = ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_POINTS);
-  h = ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_POINTS);
+  w = ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_POINTS);
+  h = ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_POINTS);
   
   cairo_pdf_surface_set_size (surface, w, h);
 }
@@ -2131,8 +2131,8 @@ run_pdf (GtkPrintOperation  *op,
 
   /* This will be overwritten later by the non-default size, but
      we need to pass some size: */
-  width = ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_POINTS);
-  height = ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_POINTS);
+  width = ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_POINTS);
+  height = ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_POINTS);
   g_object_unref (page_setup);
   
   surface = cairo_pdf_surface_create (priv->export_filename,
@@ -2140,11 +2140,11 @@ run_pdf (GtkPrintOperation  *op,
   if (cairo_surface_status (surface) != CAIRO_STATUS_SUCCESS)
     {
       g_set_error_literal (&priv->error,
-                           GTK_PRINT_ERROR,
-                           GTK_PRINT_ERROR_GENERAL,
+                           CTK_PRINT_ERROR,
+                           CTK_PRINT_ERROR_GENERAL,
                            cairo_status_to_string (cairo_surface_status (surface)));
       *do_print = FALSE;
-      return GTK_PRINT_OPERATION_RESULT_ERROR;
+      return CTK_PRINT_OPERATION_RESULT_ERROR;
     }
 
   /* this would crash on a nil surface */
@@ -2159,18 +2159,18 @@ run_pdf (GtkPrintOperation  *op,
   cairo_destroy (cr);
 
   
-  priv->print_pages = GTK_PRINT_PAGES_ALL;
+  priv->print_pages = CTK_PRINT_PAGES_ALL;
   priv->page_ranges = NULL;
   priv->num_page_ranges = 0;
 
   priv->manual_num_copies = 1;
   priv->manual_collation = FALSE;
   priv->manual_reverse = FALSE;
-  priv->manual_page_set = GTK_PAGE_SET_ALL;
+  priv->manual_page_set = CTK_PAGE_SET_ALL;
   priv->manual_scale = 1.0;
   priv->manual_orientation = FALSE;
   priv->manual_number_up = 1;
-  priv->manual_number_up_layout = GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
+  priv->manual_number_up_layout = CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
   
   *do_print = TRUE;
   
@@ -2178,7 +2178,7 @@ run_pdf (GtkPrintOperation  *op,
   priv->end_page = pdf_end_page;
   priv->end_run = pdf_end_run;
   
-  return GTK_PRINT_OPERATION_RESULT_APPLY; 
+  return CTK_PRINT_OPERATION_RESULT_APPLY; 
 }
 
 
@@ -2289,8 +2289,8 @@ increment_page_sequence (PrintPagesData *data)
                 data->collated = 0;
             }
 
-          if (priv->manual_page_set == GTK_PAGE_SET_ODD ||
-              priv->manual_page_set == GTK_PAGE_SET_EVEN)
+          if (priv->manual_page_set == CTK_PAGE_SET_ODD ||
+              priv->manual_page_set == CTK_PAGE_SET_EVEN)
             data->sheet += 2 * inc;
           else
             data->sheet += inc;
@@ -2344,11 +2344,11 @@ print_pages_idle_done (gpointer user_data)
       GtkPrintOperationResult result;
 
       if (priv->error)
-        result = GTK_PRINT_OPERATION_RESULT_ERROR;
+        result = CTK_PRINT_OPERATION_RESULT_ERROR;
       else if (priv->cancelled)
-        result = GTK_PRINT_OPERATION_RESULT_CANCEL;
+        result = CTK_PRINT_OPERATION_RESULT_CANCEL;
       else
-        result = GTK_PRINT_OPERATION_RESULT_APPLY;
+        result = CTK_PRINT_OPERATION_RESULT_APPLY;
 
       g_signal_emit (data->op, signals[DONE], 0, result);
     }
@@ -2368,14 +2368,14 @@ update_progress (PrintPagesData *data)
  
   if (data->progress)
     {
-      if (priv->status == GTK_PRINT_STATUS_PREPARING)
+      if (priv->status == CTK_PRINT_STATUS_PREPARING)
 	{
 	  if (priv->nr_of_pages_to_print > 0)
 	    text = g_strdup_printf (_("Preparing %d"), priv->nr_of_pages_to_print);
 	  else
 	    text = g_strdup (_("Preparing"));
 	}
-      else if (priv->status == GTK_PRINT_STATUS_GENERATING_DATA)
+      else if (priv->status == CTK_PRINT_STATUS_GENERATING_DATA)
 	text = g_strdup_printf (_("Printing %d"), data->total);
       
       if (text)
@@ -2403,9 +2403,9 @@ ctk_print_operation_set_defer_drawing (GtkPrintOperation *op)
 {
   GtkPrintOperationPrivate *priv = op->priv;
 
-  g_return_if_fail (priv->page_drawing_state == GTK_PAGE_DRAWING_STATE_DRAWING);
+  g_return_if_fail (priv->page_drawing_state == CTK_PAGE_DRAWING_STATE_DRAWING);
 
-  priv->page_drawing_state = GTK_PAGE_DRAWING_STATE_DEFERRED_DRAWING;
+  priv->page_drawing_state = CTK_PAGE_DRAWING_STATE_DEFERRED_DRAWING;
 }
 
 /**
@@ -2424,7 +2424,7 @@ ctk_print_operation_set_embed_page_setup (GtkPrintOperation  *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -2449,7 +2449,7 @@ ctk_print_operation_set_embed_page_setup (GtkPrintOperation  *op,
 gboolean
 ctk_print_operation_get_embed_page_setup (GtkPrintOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), FALSE);
 
   return op->priv->embed_page_setup;
 }
@@ -2487,7 +2487,7 @@ ctk_print_operation_draw_page_finish (GtkPrintOperation *op)
 
   g_object_unref (page_setup);
 
-  priv->page_drawing_state = GTK_PAGE_DRAWING_STATE_READY;
+  priv->page_drawing_state = CTK_PAGE_DRAWING_STATE_READY;
 }
 
 static void
@@ -2543,19 +2543,19 @@ common_render_page (GtkPrintOperation *op,
       page_setup = ctk_print_context_get_page_setup (print_context);
       orientation = ctk_page_setup_get_orientation (page_setup);
 
-      top_margin = ctk_page_setup_get_top_margin (page_setup, GTK_UNIT_POINTS);
-      bottom_margin = ctk_page_setup_get_bottom_margin (page_setup, GTK_UNIT_POINTS);
-      left_margin = ctk_page_setup_get_left_margin (page_setup, GTK_UNIT_POINTS);
-      right_margin = ctk_page_setup_get_right_margin (page_setup, GTK_UNIT_POINTS);
+      top_margin = ctk_page_setup_get_top_margin (page_setup, CTK_UNIT_POINTS);
+      bottom_margin = ctk_page_setup_get_bottom_margin (page_setup, CTK_UNIT_POINTS);
+      left_margin = ctk_page_setup_get_left_margin (page_setup, CTK_UNIT_POINTS);
+      right_margin = ctk_page_setup_get_right_margin (page_setup, CTK_UNIT_POINTS);
 
-      paper_width = ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_POINTS);
-      paper_height = ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_POINTS);
+      paper_width = ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_POINTS);
+      paper_height = ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_POINTS);
 
       context_width = ctk_print_context_get_width (print_context);
       context_height = ctk_print_context_get_height (print_context);
 
-      if (orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-          orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
+      if (orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
+          orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
         {
           page_width = paper_width - (left_margin + right_margin);
           page_height = paper_height - (top_margin + bottom_margin);
@@ -2566,8 +2566,8 @@ common_render_page (GtkPrintOperation *op,
           page_height = paper_height - (left_margin + right_margin);
         }
 
-      if (orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-          orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
+      if (orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
+          orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
         cairo_translate (cr, left_margin, top_margin);
       else
         cairo_translate (cr, top_margin, left_margin);
@@ -2600,8 +2600,8 @@ common_render_page (GtkPrintOperation *op,
             break;
         }
 
-      if (orientation == GTK_PAGE_ORIENTATION_LANDSCAPE ||
-          orientation == GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE)
+      if (orientation == CTK_PAGE_ORIENTATION_LANDSCAPE ||
+          orientation == CTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE)
         {
           tmp_length = columns;
           columns = rows;
@@ -2610,35 +2610,35 @@ common_render_page (GtkPrintOperation *op,
 
       switch (priv->manual_number_up_layout)
         {
-          case GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM:
+          case CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM:
             x = priv->page_position % columns;
             y = (priv->page_position / columns) % rows;
             break;
-          case GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP:
+          case CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP:
             x = priv->page_position % columns;
             y = rows - 1 - (priv->page_position / columns) % rows;
             break;
-          case GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM:
+          case CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM:
             x = columns - 1 - priv->page_position % columns;
             y = (priv->page_position / columns) % rows;
             break;
-          case GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP:
+          case CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP:
             x = columns - 1 - priv->page_position % columns;
             y = rows - 1 - (priv->page_position / columns) % rows;
             break;
-          case GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT:
+          case CTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT:
             x = (priv->page_position / rows) % columns;
             y = priv->page_position % rows;
             break;
-          case GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT:
+          case CTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT:
             x = columns - 1 - (priv->page_position / rows) % columns;
             y = priv->page_position % rows;
             break;
-          case GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT:
+          case CTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT:
             x = (priv->page_position / rows) % columns;
             y = rows - 1 - priv->page_position % rows;
             break;
-          case GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT:
+          case CTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT:
             x = columns - 1 - (priv->page_position / rows) % columns;
             y = rows - 1 - priv->page_position % rows;
             break;
@@ -2708,12 +2708,12 @@ common_render_page (GtkPrintOperation *op,
         }
     }
   
-  priv->page_drawing_state = GTK_PAGE_DRAWING_STATE_DRAWING;
+  priv->page_drawing_state = CTK_PAGE_DRAWING_STATE_DRAWING;
 
   g_signal_emit (op, signals[DRAW_PAGE], 0, 
 		 print_context, page_nr);
 
-  if (priv->page_drawing_state == GTK_PAGE_DRAWING_STATE_DRAWING)
+  if (priv->page_drawing_state == CTK_PAGE_DRAWING_STATE_DRAWING)
     ctk_print_operation_draw_page_finish (op);
 }
 
@@ -2757,7 +2757,7 @@ prepare_data (PrintPagesData *data)
 
   /* Initialize parts of PrintPagesData that depend on nr_of_pages
    */
-  if (priv->print_pages == GTK_PRINT_PAGES_RANGES)
+  if (priv->print_pages == CTK_PRINT_PAGES_RANGES)
     {
       if (priv->page_ranges == NULL) 
         {
@@ -2772,7 +2772,7 @@ prepare_data (PrintPagesData *data)
             data->ranges[i].end >= priv->nr_of_pages)
           data->ranges[i].end = priv->nr_of_pages - 1;
     }
-  else if (priv->print_pages == GTK_PRINT_PAGES_CURRENT &&
+  else if (priv->print_pages == CTK_PRINT_PAGES_CURRENT &&
    priv->current_page != -1)
     {
       data->ranges = &data->one_range;
@@ -2826,9 +2826,9 @@ prepare_data (PrintPagesData *data)
   if (priv->manual_reverse)
     {
       /* data->sheet is 0-based */
-      if (priv->manual_page_set == GTK_PAGE_SET_ODD)
+      if (priv->manual_page_set == CTK_PAGE_SET_ODD)
         data->sheet = (data->num_of_sheets - 1) - (data->num_of_sheets - 1) % 2;
-      else if (priv->manual_page_set == GTK_PAGE_SET_EVEN)
+      else if (priv->manual_page_set == CTK_PAGE_SET_EVEN)
         data->sheet = (data->num_of_sheets - 1) - (1 - (data->num_of_sheets - 1) % 2);
       else
         data->sheet = data->num_of_sheets - 1;
@@ -2836,9 +2836,9 @@ prepare_data (PrintPagesData *data)
   else
     {
       /* data->sheet is 0-based */
-      if (priv->manual_page_set == GTK_PAGE_SET_ODD)
+      if (priv->manual_page_set == CTK_PAGE_SET_ODD)
         data->sheet = 0;
-      else if (priv->manual_page_set == GTK_PAGE_SET_EVEN)
+      else if (priv->manual_page_set == CTK_PAGE_SET_EVEN)
         {
           if (data->num_of_sheets > 1)
             data->sheet = 1;
@@ -2863,18 +2863,18 @@ prepare_data (PrintPagesData *data)
 
   if (priv->manual_reverse)
     {
-      if (priv->manual_page_set == GTK_PAGE_SET_ODD)
+      if (priv->manual_page_set == CTK_PAGE_SET_ODD)
         data->last_position = MIN (priv->manual_number_up - 1, priv->nr_of_pages_to_print - 1);
-      else if (priv->manual_page_set == GTK_PAGE_SET_EVEN)
+      else if (priv->manual_page_set == CTK_PAGE_SET_EVEN)
         data->last_position = MIN (2 * priv->manual_number_up - 1, priv->nr_of_pages_to_print - 1);
       else
         data->last_position = MIN (priv->manual_number_up - 1, priv->nr_of_pages_to_print - 1);
     }
   else
     {
-      if (priv->manual_page_set == GTK_PAGE_SET_ODD)
+      if (priv->manual_page_set == CTK_PAGE_SET_ODD)
         data->last_position = MIN (((data->num_of_sheets - 1) - ((data->num_of_sheets - 1) % 2)) * priv->manual_number_up - 1, priv->nr_of_pages_to_print - 1);
-      else if (priv->manual_page_set == GTK_PAGE_SET_EVEN)
+      else if (priv->manual_page_set == CTK_PAGE_SET_EVEN)
         data->last_position = MIN (((data->num_of_sheets - 1) - (1 - (data->num_of_sheets - 1) % 2)) * priv->manual_number_up - 1, priv->nr_of_pages_to_print - 1);
       else
         data->last_position = priv->nr_of_pages_to_print - 1;
@@ -2882,7 +2882,7 @@ prepare_data (PrintPagesData *data)
 
 
   _ctk_print_operation_set_status (data->op, 
-                                   GTK_PRINT_STATUS_GENERATING_DATA, 
+                                   CTK_PRINT_STATUS_GENERATING_DATA, 
                                    NULL);
 }
 
@@ -2896,9 +2896,9 @@ print_pages_idle (gpointer user_data)
   data = (PrintPagesData*)user_data;
   priv = data->op->priv;
 
-  if (priv->page_drawing_state == GTK_PAGE_DRAWING_STATE_READY)
+  if (priv->page_drawing_state == CTK_PAGE_DRAWING_STATE_READY)
     {
-      if (priv->status == GTK_PRINT_STATUS_PREPARING)
+      if (priv->status == CTK_PRINT_STATUS_PREPARING)
         {
           prepare_data (data);
           goto out;
@@ -2917,13 +2917,13 @@ print_pages_idle (gpointer user_data)
       if (!data->done)
         common_render_page (data->op, data->page);
       else
-        done = priv->page_drawing_state == GTK_PAGE_DRAWING_STATE_READY;
+        done = priv->page_drawing_state == CTK_PAGE_DRAWING_STATE_READY;
 
  out:
 
       if (priv->cancelled)
         {
-          _ctk_print_operation_set_status (data->op, GTK_PRINT_STATUS_FINISHED_ABORTED, NULL);
+          _ctk_print_operation_set_status (data->op, CTK_PRINT_STATUS_FINISHED_ABORTED, NULL);
 
           data->is_preview = FALSE;
           done = TRUE;
@@ -2956,7 +2956,7 @@ static gboolean
 show_progress_timeout (PrintPagesData *data)
 {
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  ctk_window_present (GTK_WINDOW (data->progress));
+  ctk_window_present (CTK_WINDOW (data->progress));
   G_GNUC_END_IGNORE_DEPRECATIONS
 
   data->op->priv->show_progress_timeout_id = 0;
@@ -2977,12 +2977,12 @@ print_pages (GtkPrintOperation       *op,
     {
       GtkPrintOperationResult tmp_result;
 
-      _ctk_print_operation_set_status (op, GTK_PRINT_STATUS_FINISHED_ABORTED, NULL);
+      _ctk_print_operation_set_status (op, CTK_PRINT_STATUS_FINISHED_ABORTED, NULL);
 
       if (priv->error)
-        tmp_result = GTK_PRINT_OPERATION_RESULT_ERROR;
+        tmp_result = CTK_PRINT_OPERATION_RESULT_ERROR;
       else if (priv->cancelled)
-        tmp_result = GTK_PRINT_OPERATION_RESULT_CANCEL;
+        tmp_result = CTK_PRINT_OPERATION_RESULT_CANCEL;
       else
         tmp_result = result;
 
@@ -2991,19 +2991,19 @@ print_pages (GtkPrintOperation       *op,
       return;
   }
   
-  _ctk_print_operation_set_status (op, GTK_PRINT_STATUS_PREPARING, NULL);  
+  _ctk_print_operation_set_status (op, CTK_PRINT_STATUS_PREPARING, NULL);  
 
   data = g_new0 (PrintPagesData, 1);
   data->op = g_object_ref (op);
-  data->is_preview = (priv->action == GTK_PRINT_OPERATION_ACTION_PREVIEW);
+  data->is_preview = (priv->action == CTK_PRINT_OPERATION_ACTION_PREVIEW);
 
   if (priv->show_progress)
     {
       GtkWidget *progress;
 
       progress = ctk_message_dialog_new (parent, 0, 
-					 GTK_MESSAGE_OTHER,
-					 GTK_BUTTONS_CANCEL,
+					 CTK_MESSAGE_OTHER,
+					 CTK_BUTTONS_CANCEL,
 					 _("Preparing"));
       g_signal_connect (progress, "response", 
 			G_CALLBACK (handle_progress_response), op);
@@ -3022,7 +3022,7 @@ print_pages (GtkPrintOperation       *op,
       gboolean handled;
       
       g_signal_emit_by_name (op, "preview",
-			     GTK_PRINT_OPERATION_PREVIEW (op),
+			     CTK_PRINT_OPERATION_PREVIEW (op),
 			     priv->print_context,
 			     parent,
 			     &handled);
@@ -3032,17 +3032,17 @@ print_pages (GtkPrintOperation       *op,
           GtkWidget *error_dialog;
 
           error_dialog = ctk_message_dialog_new (parent,
-                                                 GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                 GTK_MESSAGE_ERROR,
-                                                 GTK_BUTTONS_OK,
+                                                 CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
+                                                 CTK_MESSAGE_ERROR,
+                                                 CTK_BUTTONS_OK,
                                                  _("Error creating print preview"));
 
-          ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (error_dialog),
+          ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (error_dialog),
                                                     _("The most probable reason is that a temporary file could not be created."));
 
           if (parent && ctk_window_has_group (parent))
             ctk_window_group_add_window (ctk_window_get_group (parent),
-                                         GTK_WINDOW (error_dialog));
+                                         CTK_WINDOW (error_dialog));
 
           g_signal_connect (error_dialog, "response",
                             G_CALLBACK (ctk_widget_destroy), NULL);
@@ -3105,7 +3105,7 @@ print_pages (GtkPrintOperation       *op,
  * @error: return location for the error
  * 
  * Call this when the result of a print operation is
- * %GTK_PRINT_OPERATION_RESULT_ERROR, either as returned by 
+ * %CTK_PRINT_OPERATION_RESULT_ERROR, either as returned by 
  * ctk_print_operation_run(), or in the #GtkPrintOperation::done signal 
  * handler. The returned #GError will contain more details on what went wrong.
  *
@@ -3115,7 +3115,7 @@ void
 ctk_print_operation_get_error (GtkPrintOperation  *op,
 			       GError            **error)
 {
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   
   g_propagate_error (error, op->priv->error);
 
@@ -3158,16 +3158,16 @@ ctk_print_operation_get_error (GtkPrintOperation  *op,
  *                   G_CALLBACK (draw_page), &data);
  *  
  * res = ctk_print_operation_run (print, 
- *                                GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, 
+ *                                CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, 
  *                                parent, 
  *                                &error);
  *  
- * if (res == GTK_PRINT_OPERATION_RESULT_ERROR)
+ * if (res == CTK_PRINT_OPERATION_RESULT_ERROR)
  *  {
- *    error_dialog = ctk_message_dialog_new (GTK_WINDOW (parent),
- *   			                     GTK_DIALOG_DESTROY_WITH_PARENT,
- * 					     GTK_MESSAGE_ERROR,
- * 					     GTK_BUTTONS_CLOSE,
+ *    error_dialog = ctk_message_dialog_new (CTK_WINDOW (parent),
+ *   			                     CTK_DIALOG_DESTROY_WITH_PARENT,
+ * 					     CTK_MESSAGE_ERROR,
+ * 					     CTK_BUTTONS_CLOSE,
  * 					     "Error printing file:\n%s",
  * 					     error->message);
  *    g_signal_connect (error_dialog, "response", 
@@ -3175,7 +3175,7 @@ ctk_print_operation_get_error (GtkPrintOperation  *op,
  *    ctk_widget_show (error_dialog);
  *    g_error_free (error);
  *  }
- * else if (res == GTK_PRINT_OPERATION_RESULT_APPLY)
+ * else if (res == CTK_PRINT_OPERATION_RESULT_APPLY)
  *  {
  *    if (settings != NULL)
  *	g_object_unref (settings);
@@ -3187,11 +3187,11 @@ ctk_print_operation_get_error (GtkPrintOperation  *op,
  * given #GtkPrintOperation.
  *
  * Returns: the result of the print operation. A return value of 
- *   %GTK_PRINT_OPERATION_RESULT_APPLY indicates that the printing was
+ *   %CTK_PRINT_OPERATION_RESULT_APPLY indicates that the printing was
  *   completed successfully. In this case, it is a good idea to obtain 
  *   the used print settings with ctk_print_operation_get_print_settings() 
  *   and store them for reuse with the next print operation. A value of
- *   %GTK_PRINT_OPERATION_RESULT_IN_PROGRESS means the operation is running
+ *   %CTK_PRINT_OPERATION_RESULT_IN_PROGRESS means the operation is running
  *   asynchronously, and will emit the #GtkPrintOperation::done signal when 
  *   done.
  *
@@ -3209,10 +3209,10 @@ ctk_print_operation_run (GtkPrintOperation        *op,
   gboolean do_print;
   gboolean run_print_pages;
   
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), 
-                        GTK_PRINT_OPERATION_RESULT_ERROR);
-  g_return_val_if_fail (op->priv->status == GTK_PRINT_STATUS_INITIAL,
-                        GTK_PRINT_OPERATION_RESULT_ERROR);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), 
+                        CTK_PRINT_OPERATION_RESULT_ERROR);
+  g_return_val_if_fail (op->priv->status == CTK_PRINT_STATUS_INITIAL,
+                        CTK_PRINT_OPERATION_RESULT_ERROR);
   priv = op->priv;
   
   run_print_pages = TRUE;
@@ -3223,16 +3223,16 @@ ctk_print_operation_run (GtkPrintOperation        *op,
   if (priv->print_settings == NULL)
     priv->print_settings = ctk_print_settings_new ();
   
-  if (action == GTK_PRINT_OPERATION_ACTION_EXPORT)
+  if (action == CTK_PRINT_OPERATION_ACTION_EXPORT)
     {
       /* note: if you implement async EXPORT, update the docs
        * docs for the allow-async property.
        */
       priv->is_sync = TRUE;
-      g_return_val_if_fail (priv->export_filename != NULL, GTK_PRINT_OPERATION_RESULT_ERROR);
+      g_return_val_if_fail (priv->export_filename != NULL, CTK_PRINT_OPERATION_RESULT_ERROR);
       result = run_pdf (op, parent, &do_print);
     }
-  else if (action == GTK_PRINT_OPERATION_ACTION_PREVIEW)
+  else if (action == CTK_PRINT_OPERATION_ACTION_PREVIEW)
     {
       priv->is_sync = !priv->allow_async;
       priv->print_context = _ctk_print_context_new (op);
@@ -3240,17 +3240,17 @@ ctk_print_operation_run (GtkPrintOperation        *op,
       _ctk_print_context_set_page_setup (priv->print_context, page_setup);
       g_object_unref (page_setup);
       do_print = TRUE;
-      result = priv->is_sync ? GTK_PRINT_OPERATION_RESULT_APPLY : GTK_PRINT_OPERATION_RESULT_IN_PROGRESS;
+      result = priv->is_sync ? CTK_PRINT_OPERATION_RESULT_APPLY : CTK_PRINT_OPERATION_RESULT_IN_PROGRESS;
     }
 #ifndef G_OS_WIN32
   else if (priv->allow_async)
     {
       priv->is_sync = FALSE;
       _ctk_print_operation_platform_backend_run_dialog_async (op,
-							      action == GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
+							      action == CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
 							      parent,
 							      print_pages);
-      result = GTK_PRINT_OPERATION_RESULT_IN_PROGRESS;
+      result = CTK_PRINT_OPERATION_RESULT_IN_PROGRESS;
       run_print_pages = FALSE; /* print_pages is called asynchronously from dialog */
     }
 #endif
@@ -3258,7 +3258,7 @@ ctk_print_operation_run (GtkPrintOperation        *op,
     {
       priv->is_sync = TRUE;
       result = _ctk_print_operation_platform_backend_run_dialog (op, 
-								 action == GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
+								 action == CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
 								 parent,
 								 &do_print);
     }
@@ -3273,10 +3273,10 @@ ctk_print_operation_run (GtkPrintOperation        *op,
     {
       if (error)
         *error = g_error_copy (priv->error);
-      result = GTK_PRINT_OPERATION_RESULT_ERROR;
+      result = CTK_PRINT_OPERATION_RESULT_ERROR;
     }
   else if (priv->cancelled)
-    result = GTK_PRINT_OPERATION_RESULT_CANCEL;
+    result = CTK_PRINT_OPERATION_RESULT_CANCEL;
  
   g_object_unref (op);
   return result;
@@ -3297,7 +3297,7 @@ ctk_print_operation_run (GtkPrintOperation        *op,
 void
 ctk_print_operation_cancel (GtkPrintOperation *op)
 {
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
   
   op->priv->cancelled = TRUE;
 }
@@ -3317,7 +3317,7 @@ ctk_print_operation_set_support_selection (GtkPrintOperation  *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -3342,7 +3342,7 @@ ctk_print_operation_set_support_selection (GtkPrintOperation  *op,
 gboolean
 ctk_print_operation_get_support_selection (GtkPrintOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), FALSE);
 
   return op->priv->support_selection;
 }
@@ -3366,7 +3366,7 @@ ctk_print_operation_set_has_selection (GtkPrintOperation  *op,
 {
   GtkPrintOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_OPERATION (op));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION (op));
 
   priv = op->priv;
 
@@ -3391,7 +3391,7 @@ ctk_print_operation_set_has_selection (GtkPrintOperation  *op,
 gboolean
 ctk_print_operation_get_has_selection (GtkPrintOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), FALSE);
 
   return op->priv->has_selection;
 }
@@ -3403,11 +3403,11 @@ ctk_print_operation_get_has_selection (GtkPrintOperation *op)
  * Returns the number of pages that will be printed.
  *
  * Note that this value is set during print preparation phase
- * (%GTK_PRINT_STATUS_PREPARING), so this function should never be
- * called before the data generation phase (%GTK_PRINT_STATUS_GENERATING_DATA).
+ * (%CTK_PRINT_STATUS_PREPARING), so this function should never be
+ * called before the data generation phase (%CTK_PRINT_STATUS_GENERATING_DATA).
  * You can connect to the #GtkPrintOperation::status-changed signal
  * and call ctk_print_operation_get_n_pages_to_print() when
- * print status is %GTK_PRINT_STATUS_GENERATING_DATA.
+ * print status is %CTK_PRINT_STATUS_GENERATING_DATA.
  * This is typically used to track the progress of print operation.
  *
  * Returns: the number of pages that will be printed
@@ -3417,7 +3417,7 @@ ctk_print_operation_get_has_selection (GtkPrintOperation *op)
 gint
 ctk_print_operation_get_n_pages_to_print (GtkPrintOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), -1);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION (op), -1);
 
   return op->priv->nr_of_pages_to_print;
 }

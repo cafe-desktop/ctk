@@ -143,11 +143,11 @@ ctk_entry_buffer_normal_insert_text (GtkEntryBuffer *buffer,
             pv->normal_text_size = MIN_SIZE;
           else
             {
-              if (2 * pv->normal_text_size < GTK_ENTRY_BUFFER_MAX_SIZE)
+              if (2 * pv->normal_text_size < CTK_ENTRY_BUFFER_MAX_SIZE)
                 pv->normal_text_size *= 2;
               else
                 {
-                  pv->normal_text_size = GTK_ENTRY_BUFFER_MAX_SIZE;
+                  pv->normal_text_size = CTK_ENTRY_BUFFER_MAX_SIZE;
                   if (n_bytes > pv->normal_text_size - pv->normal_text_bytes - 1)
                     {
                       n_bytes = pv->normal_text_size - pv->normal_text_bytes - 1;
@@ -259,7 +259,7 @@ ctk_entry_buffer_init (GtkEntryBuffer *buffer)
 static void
 ctk_entry_buffer_finalize (GObject *obj)
 {
-  GtkEntryBuffer *buffer = GTK_ENTRY_BUFFER (obj);
+  GtkEntryBuffer *buffer = CTK_ENTRY_BUFFER (obj);
   GtkEntryBufferPrivate *pv = buffer->priv;
 
   if (pv->normal_text)
@@ -280,7 +280,7 @@ ctk_entry_buffer_set_property (GObject      *obj,
                                const GValue *value,
                                GParamSpec   *pspec)
 {
-  GtkEntryBuffer *buffer = GTK_ENTRY_BUFFER (obj);
+  GtkEntryBuffer *buffer = CTK_ENTRY_BUFFER (obj);
 
   switch (prop_id)
     {
@@ -302,7 +302,7 @@ ctk_entry_buffer_get_property (GObject    *obj,
                                GValue     *value,
                                GParamSpec *pspec)
 {
-  GtkEntryBuffer *buffer = GTK_ENTRY_BUFFER (obj);
+  GtkEntryBuffer *buffer = CTK_ENTRY_BUFFER (obj);
 
   switch (prop_id)
     {
@@ -350,7 +350,7 @@ ctk_entry_buffer_class_init (GtkEntryBufferClass *klass)
                            P_("Text"),
                            P_("The contents of the buffer"),
                            "",
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkEntryBuffer:length:
@@ -363,8 +363,8 @@ ctk_entry_buffer_class_init (GtkEntryBufferClass *klass)
        g_param_spec_uint ("length",
                           P_("Text length"),
                           P_("Length of the text currently in the buffer"),
-                          0, GTK_ENTRY_BUFFER_MAX_SIZE, 0,
-                          GTK_PARAM_READABLE);
+                          0, CTK_ENTRY_BUFFER_MAX_SIZE, 0,
+                          CTK_PARAM_READABLE);
 
   /**
    * GtkEntryBuffer:max-length:
@@ -377,8 +377,8 @@ ctk_entry_buffer_class_init (GtkEntryBufferClass *klass)
       g_param_spec_int ("max-length",
                         P_("Maximum length"),
                         P_("Maximum number of characters for this entry. Zero if no maximum"),
-                        0, GTK_ENTRY_BUFFER_MAX_SIZE, 0,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        0, CTK_ENTRY_BUFFER_MAX_SIZE, 0,
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, entry_buffer_props);
 
@@ -394,7 +394,7 @@ ctk_entry_buffer_class_init (GtkEntryBufferClass *klass)
    * Since: 2.18
    */
   signals[INSERTED_TEXT] = g_signal_new (I_("inserted-text"),
-                                         GTK_TYPE_ENTRY_BUFFER,
+                                         CTK_TYPE_ENTRY_BUFFER,
                                          G_SIGNAL_RUN_FIRST,
                                          G_STRUCT_OFFSET (GtkEntryBufferClass, inserted_text),
                                          NULL, NULL,
@@ -415,7 +415,7 @@ ctk_entry_buffer_class_init (GtkEntryBufferClass *klass)
    * Since: 2.18
    */
   signals[DELETED_TEXT] =  g_signal_new (I_("deleted-text"),
-                                         GTK_TYPE_ENTRY_BUFFER,
+                                         CTK_TYPE_ENTRY_BUFFER,
                                          G_SIGNAL_RUN_FIRST,
                                          G_STRUCT_OFFSET (GtkEntryBufferClass, deleted_text),
                                          NULL, NULL,
@@ -446,7 +446,7 @@ GtkEntryBuffer*
 ctk_entry_buffer_new (const gchar *initial_chars,
                       gint         n_initial_chars)
 {
-  GtkEntryBuffer *buffer = g_object_new (GTK_TYPE_ENTRY_BUFFER, NULL);
+  GtkEntryBuffer *buffer = g_object_new (CTK_TYPE_ENTRY_BUFFER, NULL);
   if (initial_chars)
     ctk_entry_buffer_set_text (buffer, initial_chars, n_initial_chars);
   return buffer;
@@ -467,9 +467,9 @@ ctk_entry_buffer_get_length (GtkEntryBuffer *buffer)
 {
   GtkEntryBufferClass *klass;
 
-  g_return_val_if_fail (GTK_IS_ENTRY_BUFFER (buffer), 0);
+  g_return_val_if_fail (CTK_IS_ENTRY_BUFFER (buffer), 0);
 
-  klass = GTK_ENTRY_BUFFER_GET_CLASS (buffer);
+  klass = CTK_ENTRY_BUFFER_GET_CLASS (buffer);
   g_return_val_if_fail (klass->get_length != NULL, 0);
 
   return (*klass->get_length) (buffer);
@@ -492,9 +492,9 @@ ctk_entry_buffer_get_bytes (GtkEntryBuffer *buffer)
   GtkEntryBufferClass *klass;
   gsize bytes = 0;
 
-  g_return_val_if_fail (GTK_IS_ENTRY_BUFFER (buffer), 0);
+  g_return_val_if_fail (CTK_IS_ENTRY_BUFFER (buffer), 0);
 
-  klass = GTK_ENTRY_BUFFER_GET_CLASS (buffer);
+  klass = CTK_ENTRY_BUFFER_GET_CLASS (buffer);
   g_return_val_if_fail (klass->get_text != NULL, 0);
 
   (*klass->get_text) (buffer, &bytes);
@@ -522,9 +522,9 @@ ctk_entry_buffer_get_text (GtkEntryBuffer *buffer)
 {
   GtkEntryBufferClass *klass;
 
-  g_return_val_if_fail (GTK_IS_ENTRY_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_ENTRY_BUFFER (buffer), NULL);
 
-  klass = GTK_ENTRY_BUFFER_GET_CLASS (buffer);
+  klass = CTK_ENTRY_BUFFER_GET_CLASS (buffer);
   g_return_val_if_fail (klass->get_text != NULL, NULL);
 
   return (*klass->get_text) (buffer, NULL);
@@ -550,7 +550,7 @@ ctk_entry_buffer_set_text (GtkEntryBuffer *buffer,
                            const gchar    *chars,
                            gint            n_chars)
 {
-  g_return_if_fail (GTK_IS_ENTRY_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_ENTRY_BUFFER (buffer));
   g_return_if_fail (chars != NULL);
 
   g_object_freeze_notify (G_OBJECT (buffer));
@@ -576,9 +576,9 @@ void
 ctk_entry_buffer_set_max_length (GtkEntryBuffer *buffer,
                                  gint            max_length)
 {
-  g_return_if_fail (GTK_IS_ENTRY_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_ENTRY_BUFFER (buffer));
 
-  max_length = CLAMP (max_length, 0, GTK_ENTRY_BUFFER_MAX_SIZE);
+  max_length = CLAMP (max_length, 0, CTK_ENTRY_BUFFER_MAX_SIZE);
 
   if (buffer->priv->max_length == max_length)
     return;
@@ -605,7 +605,7 @@ ctk_entry_buffer_set_max_length (GtkEntryBuffer *buffer,
 gint
 ctk_entry_buffer_get_max_length (GtkEntryBuffer *buffer)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_BUFFER (buffer), 0);
+  g_return_val_if_fail (CTK_IS_ENTRY_BUFFER (buffer), 0);
   return buffer->priv->max_length;
 }
 
@@ -640,7 +640,7 @@ ctk_entry_buffer_insert_text (GtkEntryBuffer *buffer,
   GtkEntryBufferPrivate *pv;
   guint length;
 
-  g_return_val_if_fail (GTK_IS_ENTRY_BUFFER (buffer), 0);
+  g_return_val_if_fail (CTK_IS_ENTRY_BUFFER (buffer), 0);
 
   length = ctk_entry_buffer_get_length (buffer);
   pv = buffer->priv;
@@ -664,7 +664,7 @@ ctk_entry_buffer_insert_text (GtkEntryBuffer *buffer,
   if (n_chars == 0)
     return 0;
 
-  klass = GTK_ENTRY_BUFFER_GET_CLASS (buffer);
+  klass = CTK_ENTRY_BUFFER_GET_CLASS (buffer);
   g_return_val_if_fail (klass->insert_text != NULL, 0);
 
   return (*klass->insert_text) (buffer, position, chars, n_chars);
@@ -697,7 +697,7 @@ ctk_entry_buffer_delete_text (GtkEntryBuffer *buffer,
   GtkEntryBufferClass *klass;
   guint length;
 
-  g_return_val_if_fail (GTK_IS_ENTRY_BUFFER (buffer), 0);
+  g_return_val_if_fail (CTK_IS_ENTRY_BUFFER (buffer), 0);
 
   length = ctk_entry_buffer_get_length (buffer);
   if (n_chars < 0)
@@ -707,7 +707,7 @@ ctk_entry_buffer_delete_text (GtkEntryBuffer *buffer,
   if (position + n_chars > length)
     n_chars = length - position;
 
-  klass = GTK_ENTRY_BUFFER_GET_CLASS (buffer);
+  klass = CTK_ENTRY_BUFFER_GET_CLASS (buffer);
   g_return_val_if_fail (klass->delete_text != NULL, 0);
 
   return (*klass->delete_text) (buffer, position, n_chars);
@@ -730,7 +730,7 @@ ctk_entry_buffer_emit_inserted_text (GtkEntryBuffer *buffer,
                                      const gchar    *chars,
                                      guint           n_chars)
 {
-  g_return_if_fail (GTK_IS_ENTRY_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_ENTRY_BUFFER (buffer));
   g_signal_emit (buffer, signals[INSERTED_TEXT], 0, position, chars, n_chars);
 }
 
@@ -749,6 +749,6 @@ ctk_entry_buffer_emit_deleted_text (GtkEntryBuffer *buffer,
                                     guint           position,
                                     guint           n_chars)
 {
-  g_return_if_fail (GTK_IS_ENTRY_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_ENTRY_BUFFER (buffer));
   g_signal_emit (buffer, signals[DELETED_TEXT], 0, position, n_chars);
 }

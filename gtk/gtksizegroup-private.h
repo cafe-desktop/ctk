@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SIZE_GROUP_PRIVATE_H__
-#define __GTK_SIZE_GROUP_PRIVATE_H__
+#ifndef __CTK_SIZE_GROUP_PRIVATE_H__
+#define __CTK_SIZE_GROUP_PRIVATE_H__
 
 #include <gtk/gtksizegroup.h>
 
@@ -28,4 +28,4 @@ GHashTable * _ctk_size_group_get_widget_peers (GtkWidget           *for_widget,
 
 G_END_DECLS
 
-#endif /* __GTK_SIZE_GROUP_PRIVATE_H__ */
+#endif /* __CTK_SIZE_GROUP_PRIVATE_H__ */

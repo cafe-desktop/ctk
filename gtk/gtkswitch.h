@@ -23,10 +23,10 @@
  * Based on similar code from Mx.
  */
 
-#ifndef __GTK_SWITCH_H__
-#define __GTK_SWITCH_H__
+#ifndef __CTK_SWITCH_H__
+#define __CTK_SWITCH_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SWITCH                 (ctk_switch_get_type ())
-#define GTK_SWITCH(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SWITCH, GtkSwitch))
-#define GTK_IS_SWITCH(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SWITCH))
-#define GTK_SWITCH_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SWITCH, GtkSwitchClass))
-#define GTK_IS_SWITCH_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SWITCH))
-#define GTK_SWITCH_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SWITCH, GtkSwitchClass))
+#define CTK_TYPE_SWITCH                 (ctk_switch_get_type ())
+#define CTK_SWITCH(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SWITCH, GtkSwitch))
+#define CTK_IS_SWITCH(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SWITCH))
+#define CTK_SWITCH_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SWITCH, GtkSwitchClass))
+#define CTK_IS_SWITCH_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SWITCH))
+#define CTK_SWITCH_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SWITCH, GtkSwitchClass))
 
 typedef struct _GtkSwitch               GtkSwitch;
 typedef struct _GtkSwitchPrivate        GtkSwitchPrivate;
@@ -103,4 +103,4 @@ gboolean        ctk_switch_get_state   (GtkSwitch *sw);
 
 G_END_DECLS
 
-#endif /* __GTK_SWITCH_H__ */
+#endif /* __CTK_SWITCH_H__ */

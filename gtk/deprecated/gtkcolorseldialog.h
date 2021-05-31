@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_COLOR_SELECTION_DIALOG_H__
-#define __GTK_COLOR_SELECTION_DIALOG_H__
+#ifndef __CTK_COLOR_SELECTION_DIALOG_H__
+#define __CTK_COLOR_SELECTION_DIALOG_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_SELECTION_DIALOG            (ctk_color_selection_dialog_get_type ())
-#define GTK_COLOR_SELECTION_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialog))
-#define GTK_COLOR_SELECTION_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialogClass))
-#define GTK_IS_COLOR_SELECTION_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_SELECTION_DIALOG))
-#define GTK_IS_COLOR_SELECTION_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_COLOR_SELECTION_DIALOG))
-#define GTK_COLOR_SELECTION_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialogClass))
+#define CTK_TYPE_COLOR_SELECTION_DIALOG            (ctk_color_selection_dialog_get_type ())
+#define CTK_COLOR_SELECTION_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialog))
+#define CTK_COLOR_SELECTION_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialogClass))
+#define CTK_IS_COLOR_SELECTION_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_SELECTION_DIALOG))
+#define CTK_IS_COLOR_SELECTION_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_SELECTION_DIALOG))
+#define CTK_COLOR_SELECTION_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_SELECTION_DIALOG, GtkColorSelectionDialogClass))
 
 
 typedef struct _GtkColorSelectionDialog              GtkColorSelectionDialog;
@@ -78,4 +78,4 @@ GtkWidget* ctk_color_selection_dialog_get_color_selection (GtkColorSelectionDial
 
 G_END_DECLS
 
-#endif /* __GTK_COLOR_SELECTION_DIALOG_H__ */
+#endif /* __CTK_COLOR_SELECTION_DIALOG_H__ */

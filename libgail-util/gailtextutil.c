@@ -287,9 +287,9 @@ gail_text_util_get_text (GailTextUtil    *textutil,
               end = start;
               ctk_text_iter_backward_line (&start);
             }
-          else if GTK_IS_TEXT_VIEW (layout)
+          else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = GTK_TEXT_VIEW (layout);
+              GtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_backward_display_line_start (view, &start);
               end = start;
@@ -328,9 +328,9 @@ gail_text_util_get_text (GailTextUtil    *textutil,
                   ctk_text_iter_forward_to_line_end (&end);
                 }
             }
-          else if GTK_IS_TEXT_VIEW (layout)
+          else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = GTK_TEXT_VIEW (layout);
+              GtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_backward_display_line_start (view, &start);
               if (!ctk_text_iter_is_start (&start))
@@ -429,9 +429,9 @@ gail_text_util_get_text (GailTextUtil    *textutil,
                 }
               ctk_text_iter_forward_line (&end);
             }
-          else if GTK_IS_TEXT_VIEW (layout)
+          else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = GTK_TEXT_VIEW (layout);
+              GtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_backward_display_line_start (view, &start);
               /*
@@ -474,9 +474,9 @@ gail_text_util_get_text (GailTextUtil    *textutil,
                 }
               ctk_text_iter_forward_to_line_end (&end);
             }
-          else if GTK_IS_TEXT_VIEW (layout)
+          else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = GTK_TEXT_VIEW (layout);
+              GtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_backward_display_line_start (view, &start);
               if (!ctk_text_iter_is_start (&start))
@@ -564,9 +564,9 @@ gail_text_util_get_text (GailTextUtil    *textutil,
               start = end;
               ctk_text_iter_forward_line (&end);
             }
-          else if GTK_IS_TEXT_VIEW (layout)
+          else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = GTK_TEXT_VIEW (layout);
+              GtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_forward_display_line (view, &end);
               start = end; 
@@ -598,9 +598,9 @@ gail_text_util_get_text (GailTextUtil    *textutil,
                   ctk_text_iter_forward_to_line_end (&end);
                 }
             }
-          else if GTK_IS_TEXT_VIEW (layout)
+          else if CTK_IS_TEXT_VIEW (layout)
             {
-              GtkTextView *view = GTK_TEXT_VIEW (layout);
+              GtkTextView *view = CTK_TEXT_VIEW (layout);
 
               ctk_text_view_forward_display_line_end (view, &end);
               start = end; 

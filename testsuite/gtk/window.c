@@ -52,28 +52,28 @@ test_default_size (void)
   GtkWidget *box;
   gint w, h;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "draw", G_CALLBACK (on_draw), NULL);
   if (interactive)
     g_signal_connect (window, "key-press-event", G_CALLBACK (on_keypress), NULL);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   /* check that default size is unset initially */
-  ctk_window_get_default_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_default_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, -1);
   g_assert_cmpint (h, ==, -1);
 
   /* check that setting default size before realize works */
-  ctk_window_set_default_size (GTK_WINDOW (window), 300, 300);
+  ctk_window_set_default_size (CTK_WINDOW (window), 300, 300);
 
-  ctk_window_get_default_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_default_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 300);
   g_assert_cmpint (h, ==, 300);
 
   /* check that the window size is also reported accordingly */
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 300);
   g_assert_cmpint (h, ==, 300);
 
@@ -84,7 +84,7 @@ test_default_size (void)
   ctk_main ();
 
   /* check that the window and its content actually gets the right size */
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 300);
   g_assert_cmpint (h, ==, 300);
 
@@ -94,8 +94,8 @@ test_default_size (void)
   /* check that setting default size after the fact does not change
    * window size
    */
-  ctk_window_set_default_size (GTK_WINDOW (window), 100, 600);
-  ctk_window_get_default_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_set_default_size (CTK_WINDOW (window), 100, 600);
+  ctk_window_get_default_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 100);
   g_assert_cmpint (h, ==, 600);
 
@@ -103,7 +103,7 @@ test_default_size (void)
     g_timeout_add (200, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 300);
   g_assert_cmpint (h, ==, 300);
 
@@ -115,7 +115,7 @@ test_default_size (void)
     g_timeout_add (200, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 300);
   g_assert_cmpint (h, ==, 300);
 
@@ -129,24 +129,24 @@ test_resize (void)
   GtkWidget *box;
   gint w, h;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "draw", G_CALLBACK (on_draw), NULL);
   if (interactive)
     g_signal_connect (window, "key-press-event", G_CALLBACK (on_keypress), NULL);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   /* test that resize before show overrides default size */
-  ctk_window_set_default_size (GTK_WINDOW (window), 500, 500);
+  ctk_window_set_default_size (CTK_WINDOW (window), 500, 500);
 
-  ctk_window_resize (GTK_WINDOW (window), 1, 1);
+  ctk_window_resize (CTK_WINDOW (window), 1, 1);
 
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 1);
   g_assert_cmpint (h, ==, 1);
 
-  ctk_window_resize (GTK_WINDOW (window), 400, 200);
+  ctk_window_resize (CTK_WINDOW (window), 400, 200);
 
   ctk_widget_show_all (window);
 
@@ -155,7 +155,7 @@ test_resize (void)
   ctk_main ();
 
   /* test that resize before show works */
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 400);
   g_assert_cmpint (h, ==, 200);
 
@@ -163,13 +163,13 @@ test_resize (void)
    * for making things bigger and for making things
    * smaller
    */
-  ctk_window_resize (GTK_WINDOW (window), 200, 400);
+  ctk_window_resize (CTK_WINDOW (window), 200, 400);
 
   if (!interactive)
     g_timeout_add (200, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (w, ==, 200);
   g_assert_cmpint (h, ==, 400);
 
@@ -183,13 +183,13 @@ test_resize_popup (void)
   gint x, y, w, h;
 
   /* testcase for the dnd window */
-  window = ctk_window_new (GTK_WINDOW_POPUP);
-  ctk_window_set_screen (GTK_WINDOW (window), gdk_screen_get_default ());
-  ctk_window_resize (GTK_WINDOW (window), 1, 1);
-  ctk_window_move (GTK_WINDOW (window), -99, -99);
+  window = ctk_window_new (CTK_WINDOW_POPUP);
+  ctk_window_set_screen (CTK_WINDOW (window), gdk_screen_get_default ());
+  ctk_window_resize (CTK_WINDOW (window), 1, 1);
+  ctk_window_move (CTK_WINDOW (window), -99, -99);
 
-  ctk_window_get_position (GTK_WINDOW (window), &x, &y);
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_position (CTK_WINDOW (window), &x, &y);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (x, ==, -99);
   g_assert_cmpint (y, ==, -99);
   g_assert_cmpint (w, ==, 1);
@@ -200,8 +200,8 @@ test_resize_popup (void)
   g_timeout_add (200, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_position (GTK_WINDOW (window), &x, &y);
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_position (CTK_WINDOW (window), &x, &y);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   g_assert_cmpint (x, ==, -99);
   g_assert_cmpint (y, ==, -99);
   g_assert_cmpint (w, ==, 1);
@@ -220,21 +220,21 @@ test_show_hide (void)
 
   /* test that hide/show does not affect the size */
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   ctk_widget_show (window);
 
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
 
   ctk_widget_hide (window);
 
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w1, &h1);
+  ctk_window_get_size (CTK_WINDOW (window), &w1, &h1);
   g_assert_cmpint (w, ==, w1);
   g_assert_cmpint (h, ==, h1);
 
@@ -243,7 +243,7 @@ test_show_hide (void)
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w1, &h1);
+  ctk_window_get_size (CTK_WINDOW (window), &w1, &h1);
   g_assert_cmpint (w, ==, w1);
   g_assert_cmpint (h, ==, h1);
 
@@ -262,31 +262,31 @@ test_show_hide2 (void)
    * even when get_position/move is called
    */
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   ctk_widget_show (window);
 
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_position (GTK_WINDOW (window), &x, &y);
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_position (CTK_WINDOW (window), &x, &y);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   ctk_widget_hide (window);
 
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w1, &h1);
+  ctk_window_get_size (CTK_WINDOW (window), &w1, &h1);
   g_assert_cmpint (w, ==, w1);
   g_assert_cmpint (h, ==, h1);
 
-  ctk_window_move (GTK_WINDOW (window), x, y);
+  ctk_window_move (CTK_WINDOW (window), x, y);
   ctk_widget_show (window);
 
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w1, &h1);
+  ctk_window_get_size (CTK_WINDOW (window), &w1, &h1);
   g_assert_cmpint (w, ==, w1);
   g_assert_cmpint (h, ==, h1);
 
@@ -306,32 +306,32 @@ test_show_hide3 (void)
    * a default size is set
    */
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (window), 200, 200);
 
   ctk_widget_show (window);
 
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_position (GTK_WINDOW (window), &x, &y);
-  ctk_window_get_size (GTK_WINDOW (window), &w, &h);
+  ctk_window_get_position (CTK_WINDOW (window), &x, &y);
+  ctk_window_get_size (CTK_WINDOW (window), &w, &h);
   ctk_widget_hide (window);
 
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w1, &h1);
+  ctk_window_get_size (CTK_WINDOW (window), &w1, &h1);
   g_assert_cmpint (w, ==, w1);
   g_assert_cmpint (h, ==, h1);
 
-  ctk_window_move (GTK_WINDOW (window), x, y);
+  ctk_window_move (CTK_WINDOW (window), x, y);
   ctk_widget_show (window);
 
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-  ctk_window_get_size (GTK_WINDOW (window), &w1, &h1);
+  ctk_window_get_size (CTK_WINDOW (window), &w1, &h1);
   g_assert_cmpint (w, ==, w1);
   g_assert_cmpint (h, ==, h1);
 
@@ -357,14 +357,14 @@ test_hide_titlebar_when_maximized (void)
    * on the window, if it's set before the window is realized.
    */
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   g_signal_connect (window,
                     "map-event",
                     G_CALLBACK (on_map_event),
                     NULL);
 
-  ctk_window_set_hide_titlebar_when_maximized (GTK_WINDOW (window), TRUE);
+  ctk_window_set_hide_titlebar_when_maximized (CTK_WINDOW (window), TRUE);
 
   ctk_widget_show (window);
 
@@ -382,7 +382,7 @@ test_hide_titlebar_when_maximized (void)
 
       XGetWindowProperty (gdk_x11_get_default_xdisplay (),
                           GDK_WINDOW_XID (ctk_widget_get_window (window)),
-                          gdk_x11_get_xatom_by_name ("_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"),
+                          gdk_x11_get_xatom_by_name ("_CTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"),
                           0,
                           G_MAXLONG,
                           False,

@@ -145,7 +145,7 @@ remove_entry (GtkApplicationAccels *accels,
 static void
 ctk_application_accels_finalize (GObject *object)
 {
-  GtkApplicationAccels *accels = GTK_APPLICATION_ACCELS (object);
+  GtkApplicationAccels *accels = CTK_APPLICATION_ACCELS (object);
 
   g_hash_table_unref (accels->accel_to_actions);
   g_hash_table_unref (accels->action_to_accels);
@@ -172,7 +172,7 @@ ctk_application_accels_init (GtkApplicationAccels *accels)
 GtkApplicationAccels *
 ctk_application_accels_new (void)
 {
-  return g_object_new (GTK_TYPE_APPLICATION_ACCELS, NULL);
+  return g_object_new (CTK_TYPE_APPLICATION_ACCELS, NULL);
 }
 
 void

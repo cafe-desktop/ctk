@@ -11,7 +11,7 @@
 static void
 done_cb (GtkDialog *dialog, gint response, gpointer data)
 {
-  ctk_widget_destroy (GTK_WIDGET (dialog));
+  ctk_widget_destroy (CTK_WIDGET (dialog));
 }
 
 GtkWidget *
@@ -21,7 +21,7 @@ do_pagesetup (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_page_setup_unix_dialog_new ("Page Setup", GTK_WINDOW (do_widget));
+      window = ctk_page_setup_unix_dialog_new ("Page Setup", CTK_WINDOW (do_widget));
       g_signal_connect (window, "destroy", G_CALLBACK (ctk_widget_destroyed), &window);
       g_signal_connect (window, "response", G_CALLBACK (done_cb), NULL);
     }

@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TABLE_H__
-#define __GTK_TABLE_H__
+#ifndef __CTK_TABLE_H__
+#define __CTK_TABLE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TABLE			(ctk_table_get_type ())
-#define GTK_TABLE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TABLE, GtkTable))
-#define GTK_TABLE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TABLE, GtkTableClass))
-#define GTK_IS_TABLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TABLE))
-#define GTK_IS_TABLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TABLE))
-#define GTK_TABLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TABLE, GtkTableClass))
+#define CTK_TYPE_TABLE			(ctk_table_get_type ())
+#define CTK_TABLE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TABLE, GtkTable))
+#define CTK_TABLE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TABLE, GtkTableClass))
+#define CTK_IS_TABLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TABLE))
+#define CTK_IS_TABLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TABLE))
+#define CTK_TABLE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TABLE, GtkTableClass))
 
 
 typedef struct _GtkTable              GtkTable;
@@ -97,19 +97,19 @@ struct _GtkTableRowCol
 
 /**
  * GtkAttachOptions:
- * @GTK_EXPAND: the widget should expand to take up any extra space in its
+ * @CTK_EXPAND: the widget should expand to take up any extra space in its
  * container that has been allocated.
- * @GTK_SHRINK: the widget should shrink as and when possible.
- * @GTK_FILL: the widget should fill the space allocated to it.
+ * @CTK_SHRINK: the widget should shrink as and when possible.
+ * @CTK_FILL: the widget should fill the space allocated to it.
  *
  * Denotes the expansion properties that a widget will have when it (or its
  * parent) is resized.
  */
 typedef enum
 {
-  GTK_EXPAND = 1 << 0,
-  GTK_SHRINK = 1 << 1,
-  GTK_FILL   = 1 << 2
+  CTK_EXPAND = 1 << 0,
+  CTK_SHRINK = 1 << 1,
+  CTK_FILL   = 1 << 2
 } GtkAttachOptions;
 
 
@@ -177,4 +177,4 @@ void       ctk_table_get_size         (GtkTable        *table,
 
 G_END_DECLS
 
-#endif /* __GTK_TABLE_H__ */
+#endif /* __CTK_TABLE_H__ */

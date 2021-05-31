@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_BOOLEAN_CELL_ACCESSIBLE_H__
-#define __GTK_BOOLEAN_CELL_ACCESSIBLE_H__
+#ifndef __CTK_BOOLEAN_CELL_ACCESSIBLE_H__
+#define __CTK_BOOLEAN_CELL_ACCESSIBLE_H__
 
-#if !defined (__GTK_A11Y_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_A11Y_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk-a11y.h> can be included directly."
 #endif
 
@@ -27,12 +27,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_BOOLEAN_CELL_ACCESSIBLE            (ctk_boolean_cell_accessible_get_type ())
-#define GTK_BOOLEAN_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, GtkBooleanCellAccessible))
-#define GTK_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_BOOLEAN_CELL, GtkBooleanCellAccessibleClass))
-#define GTK_IS_BOOLEAN_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_BOOLEAN_CELL_ACCESSIBLE))
-#define GTK_IS_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_BOOLEAN_CELL_ACCESSIBLE))
-#define GTK_BOOLEAN_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, GtkBooleanCellAccessibleClass))
+#define CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE            (ctk_boolean_cell_accessible_get_type ())
+#define CTK_BOOLEAN_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, GtkBooleanCellAccessible))
+#define CTK_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_BOOLEAN_CELL, GtkBooleanCellAccessibleClass))
+#define CTK_IS_BOOLEAN_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE))
+#define CTK_IS_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE))
+#define CTK_BOOLEAN_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, GtkBooleanCellAccessibleClass))
 
 typedef struct _GtkBooleanCellAccessible        GtkBooleanCellAccessible;
 typedef struct _GtkBooleanCellAccessibleClass   GtkBooleanCellAccessibleClass;

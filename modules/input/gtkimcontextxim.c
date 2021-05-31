@@ -171,7 +171,7 @@ ctk_im_context_xim_register_type (GTypeModule *type_module)
 
   ctk_type_im_context_xim = 
     g_type_module_register_type (type_module,
-				 GTK_TYPE_IM_CONTEXT,
+				 CTK_TYPE_IM_CONTEXT,
 				 "GtkIMContextXIM",
 				 &im_context_xim_info, 0);
 }
@@ -472,7 +472,7 @@ get_im (GdkWindow *client_window,
 static void
 ctk_im_context_xim_class_init (GtkIMContextXIMClass *class)
 {
-  GtkIMContextClass *im_context_class = GTK_IM_CONTEXT_CLASS (class);
+  GtkIMContextClass *im_context_class = CTK_IM_CONTEXT_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
   parent_class = g_type_class_peek_parent (class);
@@ -501,7 +501,7 @@ ctk_im_context_xim_init (GtkIMContextXIM *im_context_xim)
 static void
 ctk_im_context_xim_finalize (GObject *obj)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (obj);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (obj);
 
   context_xim->finalizing = TRUE;
 
@@ -586,7 +586,7 @@ static void
 ctk_im_context_xim_set_client_window (GtkIMContext          *context,
 				      GdkWindow             *client_window)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   set_ic_client_window (context_xim, client_window);
 }
@@ -599,14 +599,14 @@ ctk_im_context_xim_new (void)
 
   if (!GDK_IS_X11_DISPLAY(gdk_display_get_default()))
     return NULL;
-  result = g_object_new (GTK_TYPE_IM_CONTEXT_XIM, NULL);
+  result = g_object_new (CTK_TYPE_IM_CONTEXT_XIM, NULL);
 
   result->locale = g_strdup (setlocale (LC_CTYPE, NULL));
   
   g_get_charset (&charset);
   result->mb_charset = g_strdup (charset);
 
-  return GTK_IM_CONTEXT (result);
+  return CTK_IM_CONTEXT (result);
 }
 
 static char *
@@ -637,7 +637,7 @@ static gboolean
 ctk_im_context_xim_filter_keypress (GtkIMContext *context,
 				    GdkEventKey  *event)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   XIC ic = ctk_im_context_xim_get_ic (context_xim);
   gchar static_buffer[256];
   gchar *buffer = static_buffer;
@@ -733,7 +733,7 @@ ctk_im_context_xim_filter_keypress (GtkIMContext *context,
 static void
 ctk_im_context_xim_focus_in (GtkIMContext *context)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   if (!context_xim->has_focus)
     {
@@ -752,7 +752,7 @@ ctk_im_context_xim_focus_in (GtkIMContext *context)
 static void
 ctk_im_context_xim_focus_out (GtkIMContext *context)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   if (context_xim->has_focus)
     {
@@ -772,7 +772,7 @@ static void
 ctk_im_context_xim_set_cursor_location (GtkIMContext *context,
 					GdkRectangle *area)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   XIC ic = ctk_im_context_xim_get_ic (context_xim);
 
   XVaNestedList preedit_attr;
@@ -799,7 +799,7 @@ static void
 ctk_im_context_xim_set_use_preedit (GtkIMContext *context,
 				    gboolean      use_preedit)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   use_preedit = use_preedit != FALSE;
 
@@ -815,7 +815,7 @@ ctk_im_context_xim_set_use_preedit (GtkIMContext *context,
 static void
 ctk_im_context_xim_reset (GtkIMContext *context)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   XIC ic = ctk_im_context_xim_get_ic (context_xim);
   gchar *result;
 
@@ -922,7 +922,7 @@ ctk_im_context_xim_get_preedit_string (GtkIMContext   *context,
 				       PangoAttrList **attrs,
 				       gint           *cursor_pos)
 {
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   gchar *utf8 = g_ucs4_to_utf8 (context_xim->preedit_chars, context_xim->preedit_length, NULL, NULL, NULL);
 
   if (attrs)
@@ -964,8 +964,8 @@ preedit_start_callback (XIC      xic,
 			XPointer client_data,
 			XPointer call_data)
 {
-  GtkIMContext *context = GTK_IM_CONTEXT (client_data);
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContext *context = CTK_IM_CONTEXT (client_data);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   
   if (!context_xim->finalizing)
     g_signal_emit_by_name (context, "preedit-start");
@@ -978,8 +978,8 @@ preedit_done_callback (XIC      xic,
 		     XPointer client_data,
 		     XPointer call_data)
 {
-  GtkIMContext *context = GTK_IM_CONTEXT (client_data);
-  GtkIMContextXIM *context_xim = GTK_IM_CONTEXT_XIM (context);
+  GtkIMContext *context = CTK_IM_CONTEXT (client_data);
+  GtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
   if (context_xim->preedit_length)
     {
@@ -1050,7 +1050,7 @@ preedit_draw_callback (XIC                           xic,
 		       XPointer                      client_data,
 		       XIMPreeditDrawCallbackStruct *call_data)
 {
-  GtkIMContextXIM *context = GTK_IM_CONTEXT_XIM (client_data);
+  GtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
 
   XIMText *new_xim_text = call_data->text;
   gint new_text_length;
@@ -1123,7 +1123,7 @@ preedit_caret_callback (XIC                            xic,
 			XPointer                       client_data,
 			XIMPreeditCaretCallbackStruct *call_data)
 {
-  GtkIMContextXIM *context = GTK_IM_CONTEXT_XIM (client_data);
+  GtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
   
   if (call_data->direction == XIMAbsolutePosition)
     {
@@ -1159,7 +1159,7 @@ status_draw_callback (XIC      xic,
 		      XPointer client_data,
 		      XIMStatusDrawCallbackStruct *call_data)
 {
-  GtkIMContextXIM *context = GTK_IM_CONTEXT_XIM (client_data);
+  GtkIMContextXIM *context = CTK_IM_CONTEXT_XIM (client_data);
 
   if (call_data->type == XIMTextType)
     {
@@ -1611,8 +1611,8 @@ on_status_toplevel_notify_screen (GtkWindow    *toplevel,
 				  StatusWindow *status_window)
 {
   if (status_window->window)
-    ctk_window_set_screen (GTK_WINDOW (status_window->window),
-			   ctk_widget_get_screen (GTK_WIDGET (toplevel)));
+    ctk_window_set_screen (CTK_WINDOW (status_window->window),
+			   ctk_widget_get_screen (CTK_WIDGET (toplevel)));
 }
 
 /* Called when the toplevel window is moved; updates the position of
@@ -1644,7 +1644,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       else
 	y = height - requisition.height;
       
-      ctk_window_move (GTK_WINDOW (status_window->window), rect.x, y);
+      ctk_window_move (CTK_WINDOW (status_window->window), rect.x, y);
     }
 
   return FALSE;
@@ -1718,18 +1718,18 @@ status_window_make_window (StatusWindow *status_window)
   GtkWidget *window;
   GtkWidget *status_label;
   
-  status_window->window = ctk_window_new (GTK_WINDOW_POPUP);
+  status_window->window = ctk_window_new (CTK_WINDOW_POPUP);
   window = status_window->window;
 
-  ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
+  ctk_window_set_resizable (CTK_WINDOW (window), FALSE);
 
   status_label = ctk_label_new ("");
   g_object_set (status_label, "margin", 1, NULL);
   ctk_widget_show (status_label);
   
-  ctk_container_add (GTK_CONTAINER (window), status_label);
+  ctk_container_add (CTK_CONTAINER (window), status_label);
   
-  ctk_window_set_screen (GTK_WINDOW (status_window->window),
+  ctk_window_set_screen (CTK_WINDOW (status_window->window),
 			 ctk_widget_get_screen (status_window->toplevel));
 
   on_status_toplevel_configure (status_window->toplevel, NULL, status_window);
@@ -1749,8 +1749,8 @@ status_window_set_text (StatusWindow *status_window,
       if (!status_window->window)
 	status_window_make_window (status_window);
       
-      label = ctk_bin_get_child (GTK_BIN (status_window->window));
-      ctk_label_set_text (GTK_LABEL (label), text);
+      label = ctk_bin_get_child (CTK_BIN (status_window->window));
+      ctk_label_set_text (CTK_LABEL (label), text);
   
       ctk_widget_show (status_window->window);
     }

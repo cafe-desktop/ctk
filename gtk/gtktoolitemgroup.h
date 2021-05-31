@@ -18,10 +18,10 @@
  *      Mathias Hasselmann
  */
 
-#ifndef __GTK_TOOL_ITEM_GROUP_H__
-#define __GTK_TOOL_ITEM_GROUP_H__
+#ifndef __CTK_TOOL_ITEM_GROUP_H__
+#define __CTK_TOOL_ITEM_GROUP_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,12 +30,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOL_ITEM_GROUP           (ctk_tool_item_group_get_type ())
-#define GTK_TOOL_ITEM_GROUP(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_TOOL_ITEM_GROUP, GtkToolItemGroup))
-#define GTK_TOOL_ITEM_GROUP_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_TOOL_ITEM_GROUP, GtkToolItemGroupClass))
-#define GTK_IS_TOOL_ITEM_GROUP(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_TOOL_ITEM_GROUP))
-#define GTK_IS_TOOL_ITEM_GROUP_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_TOOL_ITEM_GROUP))
-#define GTK_TOOL_ITEM_GROUP_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TOOL_ITEM_GROUP, GtkToolItemGroupClass))
+#define CTK_TYPE_TOOL_ITEM_GROUP           (ctk_tool_item_group_get_type ())
+#define CTK_TOOL_ITEM_GROUP(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_TOOL_ITEM_GROUP, GtkToolItemGroup))
+#define CTK_TOOL_ITEM_GROUP_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_TOOL_ITEM_GROUP, GtkToolItemGroupClass))
+#define CTK_IS_TOOL_ITEM_GROUP(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_TOOL_ITEM_GROUP))
+#define CTK_IS_TOOL_ITEM_GROUP_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_TOOL_ITEM_GROUP))
+#define CTK_TOOL_ITEM_GROUP_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOOL_ITEM_GROUP, GtkToolItemGroupClass))
 
 typedef struct _GtkToolItemGroup        GtkToolItemGroup;
 typedef struct _GtkToolItemGroupClass   GtkToolItemGroupClass;
@@ -125,4 +125,4 @@ GtkToolItem*          ctk_tool_item_group_get_drop_item     (GtkToolItemGroup   
 
 G_END_DECLS
 
-#endif /* __GTK_TOOL_ITEM_GROUP_H__ */
+#endif /* __CTK_TOOL_ITEM_GROUP_H__ */

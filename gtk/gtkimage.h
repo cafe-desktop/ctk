@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_IMAGE_H__
-#define __GTK_IMAGE_H__
+#ifndef __CTK_IMAGE_H__
+#define __CTK_IMAGE_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -36,12 +36,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_IMAGE                  (ctk_image_get_type ())
-#define GTK_IMAGE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IMAGE, GtkImage))
-#define GTK_IMAGE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IMAGE, GtkImageClass))
-#define GTK_IS_IMAGE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IMAGE))
-#define GTK_IS_IMAGE_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_IMAGE))
-#define GTK_IMAGE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_IMAGE, GtkImageClass))
+#define CTK_TYPE_IMAGE                  (ctk_image_get_type ())
+#define CTK_IMAGE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IMAGE, GtkImage))
+#define CTK_IMAGE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IMAGE, GtkImageClass))
+#define CTK_IS_IMAGE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IMAGE))
+#define CTK_IS_IMAGE_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IMAGE))
+#define CTK_IMAGE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IMAGE, GtkImageClass))
 
 
 typedef struct _GtkImage              GtkImage;
@@ -50,36 +50,36 @@ typedef struct _GtkImageClass         GtkImageClass;
 
 /**
  * GtkImageType:
- * @GTK_IMAGE_EMPTY: there is no image displayed by the widget
- * @GTK_IMAGE_PIXBUF: the widget contains a #GdkPixbuf
- * @GTK_IMAGE_STOCK: the widget contains a [stock item name][gtkstock]
- * @GTK_IMAGE_ICON_SET: the widget contains a #GtkIconSet
- * @GTK_IMAGE_ANIMATION: the widget contains a #GdkPixbufAnimation
- * @GTK_IMAGE_ICON_NAME: the widget contains a named icon.
+ * @CTK_IMAGE_EMPTY: there is no image displayed by the widget
+ * @CTK_IMAGE_PIXBUF: the widget contains a #GdkPixbuf
+ * @CTK_IMAGE_STOCK: the widget contains a [stock item name][gtkstock]
+ * @CTK_IMAGE_ICON_SET: the widget contains a #GtkIconSet
+ * @CTK_IMAGE_ANIMATION: the widget contains a #GdkPixbufAnimation
+ * @CTK_IMAGE_ICON_NAME: the widget contains a named icon.
  *  This image type was added in GTK+ 2.6
- * @GTK_IMAGE_GICON: the widget contains a #GIcon.
+ * @CTK_IMAGE_GICON: the widget contains a #GIcon.
  *  This image type was added in GTK+ 2.14
- * @GTK_IMAGE_SURFACE: the widget contains a #cairo_surface_t.
+ * @CTK_IMAGE_SURFACE: the widget contains a #cairo_surface_t.
  *  This image type was added in GTK+ 3.10
  *
  * Describes the image data representation used by a #GtkImage. If you
  * want to get the image from the widget, you can only get the
  * currently-stored representation. e.g.  if the
- * ctk_image_get_storage_type() returns #GTK_IMAGE_PIXBUF, then you can
+ * ctk_image_get_storage_type() returns #CTK_IMAGE_PIXBUF, then you can
  * call ctk_image_get_pixbuf() but not ctk_image_get_stock().  For empty
  * images, you can request any storage type (call any of the "get"
  * functions), but they will all return %NULL values.
  */
 typedef enum
 {
-  GTK_IMAGE_EMPTY,
-  GTK_IMAGE_PIXBUF,
-  GTK_IMAGE_STOCK,
-  GTK_IMAGE_ICON_SET,
-  GTK_IMAGE_ANIMATION,
-  GTK_IMAGE_ICON_NAME,
-  GTK_IMAGE_GICON,
-  GTK_IMAGE_SURFACE
+  CTK_IMAGE_EMPTY,
+  CTK_IMAGE_PIXBUF,
+  CTK_IMAGE_STOCK,
+  CTK_IMAGE_ICON_SET,
+  CTK_IMAGE_ANIMATION,
+  CTK_IMAGE_ICON_NAME,
+  CTK_IMAGE_GICON,
+  CTK_IMAGE_SURFACE
 } GtkImageType;
 
 /**
@@ -200,4 +200,4 @@ gint       ctk_image_get_pixel_size (GtkImage             *image);
 
 G_END_DECLS
 
-#endif /* __GTK_IMAGE_H__ */
+#endif /* __CTK_IMAGE_H__ */

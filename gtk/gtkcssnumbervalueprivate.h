@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_NUMBER_VALUE_PRIVATE_H__
-#define __GTK_CSS_NUMBER_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_NUMBER_VALUE_PRIVATE_H__
+#define __CTK_CSS_NUMBER_VALUE_PRIVATE_H__
 
 #include "gtkcssparserprivate.h"
 #include "gtkcsstypesprivate.h"
@@ -27,13 +27,13 @@
 G_BEGIN_DECLS
 
 typedef enum /*< skip >*/ {
-  GTK_CSS_POSITIVE_ONLY = (1 << 0),
-  GTK_CSS_PARSE_PERCENT = (1 << 1),
-  GTK_CSS_PARSE_NUMBER = (1 << 2),
-  GTK_CSS_NUMBER_AS_PIXELS = (1 << 3),
-  GTK_CSS_PARSE_LENGTH = (1 << 4),
-  GTK_CSS_PARSE_ANGLE = (1 << 5),
-  GTK_CSS_PARSE_TIME = (1 << 6)
+  CTK_CSS_POSITIVE_ONLY = (1 << 0),
+  CTK_CSS_PARSE_PERCENT = (1 << 1),
+  CTK_CSS_PARSE_NUMBER = (1 << 2),
+  CTK_CSS_NUMBER_AS_PIXELS = (1 << 3),
+  CTK_CSS_PARSE_LENGTH = (1 << 4),
+  CTK_CSS_PARSE_ANGLE = (1 << 5),
+  CTK_CSS_PARSE_TIME = (1 << 6)
 } GtkCssNumberParseFlags;
 
 typedef struct _GtkCssNumberValueClass GtkCssNumberValueClass;
@@ -78,4 +78,4 @@ double          _ctk_css_number_value_get           (const GtkCssValue      *num
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_NUMBER_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_NUMBER_VALUE_PRIVATE_H__ */

@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_GRADIENT_PRIVATE_H__
-#define __GTK_GRADIENT_PRIVATE_H__
+#ifndef __CTK_GRADIENT_PRIVATE_H__
+#define __CTK_GRADIENT_PRIVATE_H__
 
 #include "gtkgradient.h"
 #include "gtkcsstypesprivate.h"
@@ -35,4 +35,4 @@ GtkGradient *           _ctk_gradient_transition              (GtkGradient      
 
 G_END_DECLS
 
-#endif /* __GTK_STYLE_PROPERTIES_PRIVATE_H__ */
+#endif /* __CTK_STYLE_PROPERTIES_PRIVATE_H__ */

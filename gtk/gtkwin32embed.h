@@ -18,12 +18,12 @@
 
 /* By Tor Lillqvist <tml@novell.com> 2005 */
 
-#ifndef __GTK_WIN32_EMBED_H__
-#define __GTK_WIN32_EMBED_H__
+#ifndef __CTK_WIN32_EMBED_H__
+#define __CTK_WIN32_EMBED_H__
 
 G_BEGIN_DECLS
 
-#define GTK_WIN32_EMBED_PROTOCOL_VERSION 1
+#define CTK_WIN32_EMBED_PROTOCOL_VERSION 1
 
 /*
  * When the plug and socket are in separate processes they use a
@@ -44,36 +44,36 @@ typedef enum {					/* send or post? */
   /* First those sent from the socket
    * to the plug
    */
-  GTK_WIN32_EMBED_WINDOW_ACTIVATE,		/* post */
-  GTK_WIN32_EMBED_WINDOW_DEACTIVATE,		/* post */
-  GTK_WIN32_EMBED_FOCUS_IN,			/* post */
-  GTK_WIN32_EMBED_FOCUS_OUT,			/* post */
-  GTK_WIN32_EMBED_MODALITY_ON,			/* post */
-  GTK_WIN32_EMBED_MODALITY_OFF,			/* post */
+  CTK_WIN32_EMBED_WINDOW_ACTIVATE,		/* post */
+  CTK_WIN32_EMBED_WINDOW_DEACTIVATE,		/* post */
+  CTK_WIN32_EMBED_FOCUS_IN,			/* post */
+  CTK_WIN32_EMBED_FOCUS_OUT,			/* post */
+  CTK_WIN32_EMBED_MODALITY_ON,			/* post */
+  CTK_WIN32_EMBED_MODALITY_OFF,			/* post */
 
   /* Then the ones sent from the plug
    * to the socket.
    */
-  GTK_WIN32_EMBED_PARENT_NOTIFY,		/* post */
-  GTK_WIN32_EMBED_EVENT_PLUG_MAPPED,		/* post */
-  GTK_WIN32_EMBED_PLUG_RESIZED,			/* post */
-  GTK_WIN32_EMBED_REQUEST_FOCUS,		/* post */
-  GTK_WIN32_EMBED_FOCUS_NEXT,			/* post */
-  GTK_WIN32_EMBED_FOCUS_PREV,			/* post */
-  GTK_WIN32_EMBED_GRAB_KEY,			/* post */
-  GTK_WIN32_EMBED_UNGRAB_KEY,			/* post */
-  GTK_WIN32_EMBED_LAST
+  CTK_WIN32_EMBED_PARENT_NOTIFY,		/* post */
+  CTK_WIN32_EMBED_EVENT_PLUG_MAPPED,		/* post */
+  CTK_WIN32_EMBED_PLUG_RESIZED,			/* post */
+  CTK_WIN32_EMBED_REQUEST_FOCUS,		/* post */
+  CTK_WIN32_EMBED_FOCUS_NEXT,			/* post */
+  CTK_WIN32_EMBED_FOCUS_PREV,			/* post */
+  CTK_WIN32_EMBED_GRAB_KEY,			/* post */
+  CTK_WIN32_EMBED_UNGRAB_KEY,			/* post */
+  CTK_WIN32_EMBED_LAST
 } GtkWin32EmbedMessageType;
 
-/* wParam values for GTK_WIN32_EMBED_FOCUS_IN: */
-#define GTK_WIN32_EMBED_FOCUS_CURRENT 0
-#define GTK_WIN32_EMBED_FOCUS_FIRST 1
-#define GTK_WIN32_EMBED_FOCUS_LAST 2
+/* wParam values for CTK_WIN32_EMBED_FOCUS_IN: */
+#define CTK_WIN32_EMBED_FOCUS_CURRENT 0
+#define CTK_WIN32_EMBED_FOCUS_FIRST 1
+#define CTK_WIN32_EMBED_FOCUS_LAST 2
 
-/* Flags for lParam in GTK_WIN32_EMBED_FOCUS_IN, GTK_WIN32_EMBED_FOCUS_NEXT,
- * GTK_WIN32_EMBED_FOCUS_PREV
+/* Flags for lParam in CTK_WIN32_EMBED_FOCUS_IN, CTK_WIN32_EMBED_FOCUS_NEXT,
+ * CTK_WIN32_EMBED_FOCUS_PREV
  */
-#define GTK_WIN32_EMBED_FOCUS_WRAPAROUND         (1 << 0)
+#define CTK_WIN32_EMBED_FOCUS_WRAPAROUND         (1 << 0)
 
 guint _ctk_win32_embed_message_type (GtkWin32EmbedMessageType type);
 void _ctk_win32_embed_push_message (MSG *msg);
@@ -90,4 +90,4 @@ gboolean _ctk_win32_embed_get_focus_wrapped  (void);
 
 G_END_DECLS
 
-#endif /*  __GTK_WIN32_EMBED_H__ */
+#endif /*  __CTK_WIN32_EMBED_H__ */

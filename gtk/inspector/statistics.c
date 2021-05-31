@@ -75,7 +75,7 @@ enum
   COLUMN_CUMULATIVE_DATA
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorStatistics, ctk_inspector_statistics, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorStatistics, ctk_inspector_statistics, CTK_TYPE_BOX)
 
 static gint
 add_type_count (GtkInspectorStatistics *sl, GType type)
@@ -100,8 +100,8 @@ add_type_count (GtkInspectorStatistics *sl, GType type)
       data->type = type;
       data->self = ctk_graph_data_new (60);
       data->cumulative = ctk_graph_data_new (60);
-      ctk_list_store_append (GTK_LIST_STORE (sl->priv->model), &data->treeiter);
-      ctk_list_store_set (GTK_LIST_STORE (sl->priv->model), &data->treeiter,
+      ctk_list_store_append (CTK_LIST_STORE (sl->priv->model), &data->treeiter);
+      ctk_list_store_set (CTK_LIST_STORE (sl->priv->model), &data->treeiter,
                           COLUMN_TYPE, data->type,
                           COLUMN_TYPE_NAME, g_type_name (data->type),
                           COLUMN_SELF_DATA, data->self,
@@ -116,7 +116,7 @@ add_type_count (GtkInspectorStatistics *sl, GType type)
   ctk_graph_data_prepend_value (data->self, self);
   ctk_graph_data_prepend_value (data->cumulative, cumulative);
 
-  ctk_list_store_set (GTK_LIST_STORE (sl->priv->model), &data->treeiter,
+  ctk_list_store_set (CTK_LIST_STORE (sl->priv->model), &data->treeiter,
                       COLUMN_SELF1, (int) ctk_graph_data_get_value (data->self, 1),
                       COLUMN_CUMULATIVE1, (int) ctk_graph_data_get_value (data->cumulative, 1),
                       COLUMN_SELF2, (int) ctk_graph_data_get_value (data->self, 0),
@@ -171,7 +171,7 @@ toggle_record (GtkToggleButton        *button,
 static gboolean
 has_instance_counts (void)
 {
-  return g_type_get_instance_count (GTK_TYPE_LABEL) > 0;
+  return g_type_get_instance_count (CTK_TYPE_LABEL) > 0;
 }
 
 static gboolean
@@ -257,7 +257,7 @@ key_press_event (GtkWidget              *window,
                  GdkEvent               *event,
                  GtkInspectorStatistics *sl)
 {
-  if (ctk_widget_get_mapped (GTK_WIDGET (sl)))
+  if (ctk_widget_get_mapped (CTK_WIDGET (sl)))
     {
       if (event->key.keyval == GDK_KEY_Return ||
           event->key.keyval == GDK_KEY_ISO_Enter ||
@@ -281,7 +281,7 @@ key_press_event (GtkWidget              *window,
             return GDK_EVENT_PROPAGATE;
         }
 
-      return ctk_search_bar_handle_event (GTK_SEARCH_BAR (sl->priv->search_bar), event);
+      return ctk_search_bar_handle_event (CTK_SEARCH_BAR (sl->priv->search_bar), event);
     }
   else
     return GDK_EVENT_PROPAGATE;
@@ -337,26 +337,26 @@ static void
 ctk_inspector_statistics_init (GtkInspectorStatistics *sl)
 {
   sl->priv = ctk_inspector_statistics_get_instance_private (sl);
-  ctk_widget_init_template (GTK_WIDGET (sl));
-  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_self1),
+  ctk_widget_init_template (CTK_WIDGET (sl));
+  ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (sl->priv->column_self1),
                                       sl->priv->renderer_self1,
                                       cell_data_data,
                                       GINT_TO_POINTER (COLUMN_SELF1), NULL);
-  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_cumulative1),
+  ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (sl->priv->column_cumulative1),
                                       sl->priv->renderer_cumulative1,
                                       cell_data_data,
                                       GINT_TO_POINTER (COLUMN_CUMULATIVE1), NULL);
-  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_self2),
+  ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (sl->priv->column_self2),
                                       sl->priv->renderer_self2,
                                       cell_data_delta,
                                       GINT_TO_POINTER (COLUMN_SELF2), NULL);
-  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_cumulative2),
+  ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (sl->priv->column_cumulative2),
                                       sl->priv->renderer_cumulative2,
                                       cell_data_delta,
                                       GINT_TO_POINTER (COLUMN_CUMULATIVE2), NULL);
   sl->priv->counts = g_hash_table_new_full (NULL, NULL, NULL, type_data_free);
 
-  ctk_tree_view_set_search_entry (sl->priv->view, GTK_ENTRY (sl->priv->search_entry));
+  ctk_tree_view_set_search_entry (sl->priv->view, CTK_ENTRY (sl->priv->search_entry));
   ctk_tree_view_set_search_equal_func (sl->priv->view, match_row, sl, NULL);
   g_signal_connect (sl, "hierarchy-changed", G_CALLBACK (hierarchy_changed), NULL);
 }
@@ -364,7 +364,7 @@ ctk_inspector_statistics_init (GtkInspectorStatistics *sl)
 static void
 constructed (GObject *object)
 {
-  GtkInspectorStatistics *sl = GTK_INSPECTOR_STATISTICS (object);
+  GtkInspectorStatistics *sl = CTK_INSPECTOR_STATISTICS (object);
 
   g_signal_connect (sl->priv->button, "toggled",
                     G_CALLBACK (toggle_record), sl);
@@ -374,8 +374,8 @@ constructed (GObject *object)
   else
     {
       if (instance_counts_enabled ())
-        ctk_label_set_text (GTK_LABEL (sl->priv->excuse), _("GLib must be configured with --enable-debug"));
-      ctk_stack_set_visible_child_name (GTK_STACK (sl->priv->stack), "excuse");
+        ctk_label_set_text (CTK_LABEL (sl->priv->excuse), _("GLib must be configured with --enable-debug"));
+      ctk_stack_set_visible_child_name (CTK_STACK (sl->priv->stack), "excuse");
       ctk_widget_set_sensitive (sl->priv->button, FALSE);
     }
 }
@@ -383,7 +383,7 @@ constructed (GObject *object)
 static void
 finalize (GObject *object)
 {
-  GtkInspectorStatistics *sl = GTK_INSPECTOR_STATISTICS (object);
+  GtkInspectorStatistics *sl = CTK_INSPECTOR_STATISTICS (object);
 
   if (sl->priv->update_source_id)
     g_source_remove (sl->priv->update_source_id);
@@ -399,7 +399,7 @@ get_property (GObject    *object,
               GValue     *value,
               GParamSpec *pspec)
 {
-  GtkInspectorStatistics *sl = GTK_INSPECTOR_STATISTICS (object);
+  GtkInspectorStatistics *sl = CTK_INSPECTOR_STATISTICS (object);
 
   switch (param_id)
     {
@@ -419,7 +419,7 @@ set_property (GObject      *object,
               const GValue *value,
               GParamSpec   *pspec)
 {
-  GtkInspectorStatistics *sl = GTK_INSPECTOR_STATISTICS (object);
+  GtkInspectorStatistics *sl = CTK_INSPECTOR_STATISTICS (object);
 
   switch (param_id)
     {
@@ -437,7 +437,7 @@ static void
 ctk_inspector_statistics_class_init (GtkInspectorStatisticsClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->get_property = get_property;
   object_class->set_property = set_property;
@@ -446,7 +446,7 @@ ctk_inspector_statistics_class_init (GtkInspectorStatisticsClass *klass)
 
   g_object_class_install_property (object_class, PROP_BUTTON,
       g_param_spec_object ("button", NULL, NULL,
-                           GTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                           CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/statistics.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, view);

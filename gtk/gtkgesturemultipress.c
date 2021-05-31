@@ -66,7 +66,7 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureMultiPress, ctk_gesture_multi_press, GTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureMultiPress, ctk_gesture_multi_press, CTK_TYPE_GESTURE_SINGLE)
 
 static void
 ctk_gesture_multi_press_finalize (GObject *object)
@@ -74,7 +74,7 @@ ctk_gesture_multi_press_finalize (GObject *object)
   GtkGestureMultiPressPrivate *priv;
   GtkGestureMultiPress *gesture;
 
-  gesture = GTK_GESTURE_MULTI_PRESS (object);
+  gesture = CTK_GESTURE_MULTI_PRESS (object);
   priv = ctk_gesture_multi_press_get_instance_private (gesture);
 
   if (priv->double_click_timeout_id)
@@ -94,7 +94,7 @@ ctk_gesture_multi_press_check (GtkGesture *gesture)
   GList *sequences;
   gboolean active;
 
-  multi_press = GTK_GESTURE_MULTI_PRESS (gesture);
+  multi_press = CTK_GESTURE_MULTI_PRESS (gesture);
   priv = ctk_gesture_multi_press_get_instance_private (multi_press);
   sequences = ctk_gesture_get_sequences (gesture);
 
@@ -118,7 +118,7 @@ _ctk_gesture_multi_press_stop (GtkGestureMultiPress *gesture)
   priv->current_button = 0;
   priv->n_presses = 0;
   g_signal_emit (gesture, signals[STOPPED], 0);
-  _ctk_gesture_check (GTK_GESTURE (gesture));
+  _ctk_gesture_check (CTK_GESTURE (gesture));
 }
 
 static gboolean
@@ -147,7 +147,7 @@ _ctk_gesture_multi_press_update_timeout (GtkGestureMultiPress *gesture)
   if (priv->double_click_timeout_id)
     g_source_remove (priv->double_click_timeout_id);
 
-  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
+  widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
   settings = ctk_widget_get_settings (widget);
   g_object_get (settings, "gtk-double-click-time", &double_click_time, NULL);
 
@@ -172,7 +172,7 @@ _ctk_gesture_multi_press_check_within_threshold (GtkGestureMultiPress *gesture,
   if (priv->n_presses == 0)
     return TRUE;
 
-  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
+  widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
   settings = ctk_widget_get_settings (widget);
   g_object_get (settings,
                 "gtk-double-click-distance", &double_click_distance,
@@ -205,10 +205,10 @@ ctk_gesture_multi_press_begin (GtkGesture       *gesture,
   if (!ctk_gesture_handles_sequence (gesture, sequence))
     return;
 
-  multi_press = GTK_GESTURE_MULTI_PRESS (gesture);
+  multi_press = CTK_GESTURE_MULTI_PRESS (gesture);
   priv = ctk_gesture_multi_press_get_instance_private (multi_press);
   event = ctk_gesture_get_last_event (gesture, sequence);
-  current = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   device = gdk_event_get_source_device (event);
 
   if (event->type == GDK_BUTTON_PRESS)
@@ -258,8 +258,8 @@ ctk_gesture_multi_press_update (GtkGesture       *gesture,
   GdkEventSequence *current;
   gdouble x, y;
 
-  multi_press = GTK_GESTURE_MULTI_PRESS (gesture);
-  current = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  multi_press = CTK_GESTURE_MULTI_PRESS (gesture);
+  current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   ctk_gesture_get_point (gesture, current, &x, &y);
 
   if (!_ctk_gesture_multi_press_check_within_threshold (multi_press, x, y))
@@ -277,13 +277,13 @@ ctk_gesture_multi_press_end (GtkGesture       *gesture,
   gboolean interpreted;
   GtkEventSequenceState state;
 
-  multi_press = GTK_GESTURE_MULTI_PRESS (gesture);
+  multi_press = CTK_GESTURE_MULTI_PRESS (gesture);
   priv = ctk_gesture_multi_press_get_instance_private (multi_press);
-  current = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   interpreted = ctk_gesture_get_point (gesture, current, &x, &y);
   state = ctk_gesture_get_sequence_state (gesture, current);
 
-  if (state != GTK_EVENT_SEQUENCE_DENIED && interpreted)
+  if (state != CTK_EVENT_SEQUENCE_DENIED && interpreted)
     g_signal_emit (gesture, signals[RELEASED], 0, priv->n_release, x, y);
 
   priv->n_release = 0;
@@ -293,23 +293,23 @@ static void
 ctk_gesture_multi_press_cancel (GtkGesture       *gesture,
                                 GdkEventSequence *sequence)
 {
-  _ctk_gesture_multi_press_stop (GTK_GESTURE_MULTI_PRESS (gesture));
-  GTK_GESTURE_CLASS (ctk_gesture_multi_press_parent_class)->cancel (gesture, sequence);
+  _ctk_gesture_multi_press_stop (CTK_GESTURE_MULTI_PRESS (gesture));
+  CTK_GESTURE_CLASS (ctk_gesture_multi_press_parent_class)->cancel (gesture, sequence);
 }
 
 static void
 ctk_gesture_multi_press_reset (GtkEventController *controller)
 {
-  _ctk_gesture_multi_press_stop (GTK_GESTURE_MULTI_PRESS (controller));
-  GTK_EVENT_CONTROLLER_CLASS (ctk_gesture_multi_press_parent_class)->reset (controller);
+  _ctk_gesture_multi_press_stop (CTK_GESTURE_MULTI_PRESS (controller));
+  CTK_EVENT_CONTROLLER_CLASS (ctk_gesture_multi_press_parent_class)->reset (controller);
 }
 
 static void
 ctk_gesture_multi_press_class_init (GtkGestureMultiPressClass *klass)
 {
-  GtkEventControllerClass *controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
+  GtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkGestureClass *gesture_class = GTK_GESTURE_CLASS (klass);
+  GtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
 
   object_class->finalize = ctk_gesture_multi_press_finalize;
 
@@ -408,9 +408,9 @@ ctk_gesture_multi_press_init (GtkGestureMultiPress *gesture)
 GtkGesture *
 ctk_gesture_multi_press_new (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  return g_object_new (GTK_TYPE_GESTURE_MULTI_PRESS,
+  return g_object_new (CTK_TYPE_GESTURE_MULTI_PRESS,
                        "widget", widget,
                        NULL);
 }
@@ -438,7 +438,7 @@ ctk_gesture_multi_press_set_area (GtkGestureMultiPress *gesture,
 {
   GtkGestureMultiPressPrivate *priv;
 
-  g_return_if_fail (GTK_IS_GESTURE_MULTI_PRESS (gesture));
+  g_return_if_fail (CTK_IS_GESTURE_MULTI_PRESS (gesture));
 
   priv = ctk_gesture_multi_press_get_instance_private (gesture);
 
@@ -471,7 +471,7 @@ ctk_gesture_multi_press_get_area (GtkGestureMultiPress *gesture,
 {
   GtkGestureMultiPressPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_GESTURE_MULTI_PRESS (gesture), FALSE);
+  g_return_val_if_fail (CTK_IS_GESTURE_MULTI_PRESS (gesture), FALSE);
 
   priv = ctk_gesture_multi_press_get_instance_private (gesture);
 

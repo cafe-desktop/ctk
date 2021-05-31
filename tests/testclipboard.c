@@ -42,7 +42,7 @@ image_request_cb (GtkClipboard *clipboard,
       factor = MAX ((SIZE / height), (SIZE / width));
 
       copy = gdk_pixbuf_scale_simple (pixbuf, width * factor, height * factor, GDK_INTERP_BILINEAR);
-      ctk_image_set_from_pixbuf (GTK_IMAGE (image), copy);
+      ctk_image_set_from_pixbuf (CTK_IMAGE (image), copy);
       g_object_unref (copy);
       str = g_strdup_printf ("<b>Image</b> %d \342\234\225 %d", width, height);
     }
@@ -50,7 +50,7 @@ image_request_cb (GtkClipboard *clipboard,
     {
       str = g_strdup ("<b>No image data</b>");
     }
-  ctk_label_set_markup (GTK_LABEL (label), str);
+  ctk_label_set_markup (CTK_LABEL (label), str);
   g_free (str);
 }
 
@@ -97,7 +97,7 @@ on_response (GtkDialog *dialog,
         ctk_clipboard_set_image (clipboard, pixbuf);
       }
       break;
-    case GTK_RESPONSE_CLOSE:
+    case CTK_RESPONSE_CLOSE:
     default:
       ctk_main_quit ();
       break;
@@ -116,13 +116,13 @@ main (int argc, char **argv)
                                         0,
                                         "Copy Large", 0,
                                         "Copy Small", 1,
-                                        "_Close", GTK_RESPONSE_CLOSE,
+                                        "_Close", CTK_RESPONSE_CLOSE,
                                         NULL);
 
   image = ctk_image_new ();
-  ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (window))), image, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (window))), image, FALSE, FALSE, 0);
   label = ctk_label_new ("No data found");
-  ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (window))), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (window))), label, FALSE, FALSE, 0);
 
   g_signal_connect (window, "response", G_CALLBACK (on_response), NULL);
 

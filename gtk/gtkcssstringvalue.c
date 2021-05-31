@@ -22,7 +22,7 @@
 #include <string.h>
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   char *string;
 };
 
@@ -116,7 +116,7 @@ out:
   ;
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_STRING = {
+static const GtkCssValueClass CTK_CSS_VALUE_STRING = {
   ctk_css_value_string_free,
   ctk_css_value_string_compute,
   ctk_css_value_string_equal,
@@ -124,7 +124,7 @@ static const GtkCssValueClass GTK_CSS_VALUE_STRING = {
   ctk_css_value_string_print
 };
 
-static const GtkCssValueClass GTK_CSS_VALUE_IDENT = {
+static const GtkCssValueClass CTK_CSS_VALUE_IDENT = {
   ctk_css_value_string_free,
   ctk_css_value_string_compute,
   ctk_css_value_string_equal,
@@ -143,7 +143,7 @@ _ctk_css_string_value_new_take (char *string)
 {
   GtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_STRING);
+  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_STRING);
   result->string = string;
 
   return result;
@@ -167,7 +167,7 @@ const char *
 _ctk_css_string_value_get (const GtkCssValue *value)
 {
   g_return_val_if_fail (value != NULL, NULL);
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_STRING, NULL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_STRING, NULL);
 
   return value->string;
 }
@@ -183,7 +183,7 @@ _ctk_css_ident_value_new_take (char *ident)
 {
   GtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_IDENT);
+  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_IDENT);
   result->string = ident;
 
   return result;
@@ -207,7 +207,7 @@ const char *
 _ctk_css_ident_value_get (const GtkCssValue *value)
 {
   g_return_val_if_fail (value != NULL, NULL);
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_IDENT, NULL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_IDENT, NULL);
 
   return value->string;
 }

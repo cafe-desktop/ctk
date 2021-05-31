@@ -26,10 +26,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_UI_MANAGER_H__
-#define __GTK_UI_MANAGER_H__
+#ifndef __CTK_UI_MANAGER_H__
+#define __CTK_UI_MANAGER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -40,12 +40,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_UI_MANAGER            (ctk_ui_manager_get_type ())
-#define GTK_UI_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_UI_MANAGER, GtkUIManager))
-#define GTK_UI_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_UI_MANAGER, GtkUIManagerClass))
-#define GTK_IS_UI_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_UI_MANAGER))
-#define GTK_IS_UI_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_UI_MANAGER))
-#define GTK_UI_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_UI_MANAGER, GtkUIManagerClass))
+#define CTK_TYPE_UI_MANAGER            (ctk_ui_manager_get_type ())
+#define CTK_UI_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_UI_MANAGER, GtkUIManager))
+#define CTK_UI_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_UI_MANAGER, GtkUIManagerClass))
+#define CTK_IS_UI_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_UI_MANAGER))
+#define CTK_IS_UI_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_UI_MANAGER))
+#define CTK_UI_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_UI_MANAGER, GtkUIManagerClass))
 
 typedef struct _GtkUIManager      GtkUIManager;
 typedef struct _GtkUIManagerClass GtkUIManagerClass;
@@ -92,17 +92,17 @@ struct _GtkUIManagerClass {
 
 /**
  * GtkUIManagerItemType:
- * @GTK_UI_MANAGER_AUTO: Pick the type of the UI element according to context.
- * @GTK_UI_MANAGER_MENUBAR: Create a menubar.
- * @GTK_UI_MANAGER_MENU: Create a menu.
- * @GTK_UI_MANAGER_TOOLBAR: Create a toolbar.
- * @GTK_UI_MANAGER_PLACEHOLDER: Insert a placeholder.
- * @GTK_UI_MANAGER_POPUP: Create a popup menu.
- * @GTK_UI_MANAGER_MENUITEM: Create a menuitem.
- * @GTK_UI_MANAGER_TOOLITEM: Create a toolitem.
- * @GTK_UI_MANAGER_SEPARATOR: Create a separator.
- * @GTK_UI_MANAGER_ACCELERATOR: Install an accelerator.
- * @GTK_UI_MANAGER_POPUP_WITH_ACCELS: Same as %GTK_UI_MANAGER_POPUP, but the
+ * @CTK_UI_MANAGER_AUTO: Pick the type of the UI element according to context.
+ * @CTK_UI_MANAGER_MENUBAR: Create a menubar.
+ * @CTK_UI_MANAGER_MENU: Create a menu.
+ * @CTK_UI_MANAGER_TOOLBAR: Create a toolbar.
+ * @CTK_UI_MANAGER_PLACEHOLDER: Insert a placeholder.
+ * @CTK_UI_MANAGER_POPUP: Create a popup menu.
+ * @CTK_UI_MANAGER_MENUITEM: Create a menuitem.
+ * @CTK_UI_MANAGER_TOOLITEM: Create a toolitem.
+ * @CTK_UI_MANAGER_SEPARATOR: Create a separator.
+ * @CTK_UI_MANAGER_ACCELERATOR: Install an accelerator.
+ * @CTK_UI_MANAGER_POPUP_WITH_ACCELS: Same as %CTK_UI_MANAGER_POPUP, but the
  *   actions’ accelerators are shown.
  *
  * These enumeration values are used by ctk_ui_manager_add_ui() to determine
@@ -111,17 +111,17 @@ struct _GtkUIManagerClass {
  * Deprecated: 3.10
  */
 typedef enum {
-  GTK_UI_MANAGER_AUTO              = 0,
-  GTK_UI_MANAGER_MENUBAR           = 1 << 0,
-  GTK_UI_MANAGER_MENU              = 1 << 1,
-  GTK_UI_MANAGER_TOOLBAR           = 1 << 2,
-  GTK_UI_MANAGER_PLACEHOLDER       = 1 << 3,
-  GTK_UI_MANAGER_POPUP             = 1 << 4,
-  GTK_UI_MANAGER_MENUITEM          = 1 << 5,
-  GTK_UI_MANAGER_TOOLITEM          = 1 << 6,
-  GTK_UI_MANAGER_SEPARATOR         = 1 << 7,
-  GTK_UI_MANAGER_ACCELERATOR       = 1 << 8,
-  GTK_UI_MANAGER_POPUP_WITH_ACCELS = 1 << 9
+  CTK_UI_MANAGER_AUTO              = 0,
+  CTK_UI_MANAGER_MENUBAR           = 1 << 0,
+  CTK_UI_MANAGER_MENU              = 1 << 1,
+  CTK_UI_MANAGER_TOOLBAR           = 1 << 2,
+  CTK_UI_MANAGER_PLACEHOLDER       = 1 << 3,
+  CTK_UI_MANAGER_POPUP             = 1 << 4,
+  CTK_UI_MANAGER_MENUITEM          = 1 << 5,
+  CTK_UI_MANAGER_TOOLITEM          = 1 << 6,
+  CTK_UI_MANAGER_SEPARATOR         = 1 << 7,
+  CTK_UI_MANAGER_ACCELERATOR       = 1 << 8,
+  CTK_UI_MANAGER_POPUP_WITH_ACCELS = 1 << 9
 } GtkUIManagerItemType;
 
 GDK_DEPRECATED_IN_3_10
@@ -187,4 +187,4 @@ guint          ctk_ui_manager_new_merge_id        (GtkUIManager          *manage
 
 G_END_DECLS
 
-#endif /* __GTK_UI_MANAGER_H__ */
+#endif /* __CTK_UI_MANAGER_H__ */

@@ -112,14 +112,14 @@ ctk_drag_dest_set_internal (GtkWidget       *widget,
  * The default behaviors listed in @flags have an effect similar
  * to installing default handlers for the widget’s drag-and-drop signals
  * (#GtkWidget::drag-motion, #GtkWidget::drag-drop, ...). They all exist
- * for convenience. When passing #GTK_DEST_DEFAULT_ALL for instance it is
+ * for convenience. When passing #CTK_DEST_DEFAULT_ALL for instance it is
  * sufficient to connect to the widget’s #GtkWidget::drag-data-received
  * signal to get primitive, but consistent drag-and-drop support.
  *
  * Things become more complicated when you try to preview the dragged data,
  * as described in the documentation for #GtkWidget::drag-motion. The default
  * behaviors described by @flags make some assumptions, that can conflict
- * with your own signal handlers. For instance #GTK_DEST_DEFAULT_DROP causes
+ * with your own signal handlers. For instance #CTK_DEST_DEFAULT_DROP causes
  * invokations of gdk_drag_status() in the context of #GtkWidget::drag-motion,
  * and invokations of ctk_drag_finish() in #GtkWidget::drag-data-received.
  * Especially the later is dramatic, when your own #GtkWidget::drag-motion
@@ -156,7 +156,7 @@ ctk_drag_dest_set (GtkWidget            *widget,
 {
   GtkDragDestSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   site = g_slice_new0 (GtkDragDestSite);
 
@@ -196,7 +196,7 @@ ctk_drag_dest_set_proxy (GtkWidget       *widget,
 {
   GtkDragDestSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (!proxy_window || GDK_IS_WINDOW (proxy_window));
 
   site = g_slice_new (GtkDragDestSite);
@@ -229,7 +229,7 @@ ctk_drag_dest_unset (GtkWidget *widget)
 {
   GtkDragDestSite *old_site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   old_site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
   if (old_site)
@@ -259,7 +259,7 @@ ctk_drag_dest_get_target_list (GtkWidget *widget)
 {
   GtkDragDestSite *site;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
 
@@ -281,7 +281,7 @@ ctk_drag_dest_set_target_list (GtkWidget     *widget,
 {
   GtkDragDestSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
 
@@ -389,7 +389,7 @@ ctk_drag_dest_add_uri_targets (GtkWidget *widget)
  *
  * Tells the widget to emit #GtkWidget::drag-motion and
  * #GtkWidget::drag-leave events regardless of the targets and the
- * %GTK_DEST_DEFAULT_MOTION flag.
+ * %CTK_DEST_DEFAULT_MOTION flag.
  *
  * This may be used when a widget wants to do generic
  * actions regardless of the targets that the source offers.
@@ -402,7 +402,7 @@ ctk_drag_dest_set_track_motion (GtkWidget *widget,
 {
   GtkDragDestSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
 
@@ -428,7 +428,7 @@ ctk_drag_dest_get_track_motion (GtkWidget *widget)
 {
   GtkDragDestSite *site;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   site = g_object_get_data (G_OBJECT (widget), I_("gtk-drag-dest"));
 
@@ -465,7 +465,7 @@ ctk_drag_dest_find_target (GtkWidget      *widget,
   GList *tmp_source = NULL;
   GtkWidget *source_widget;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), GDK_NONE);
   g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_NONE);
 
   source_widget = ctk_drag_get_source_widget (context);
@@ -484,10 +484,10 @@ ctk_drag_dest_find_target (GtkWidget      *widget,
         {
           if (tmp_source->data == GUINT_TO_POINTER (pair->target))
             {
-              if ((!(pair->flags & GTK_TARGET_SAME_APP) || source_widget) &&
-                  (!(pair->flags & GTK_TARGET_SAME_WIDGET) || (source_widget == widget)) &&
-                  (!(pair->flags & GTK_TARGET_OTHER_APP) || !source_widget) &&
-                  (!(pair->flags & GTK_TARGET_OTHER_WIDGET) || (source_widget != widget)))
+              if ((!(pair->flags & CTK_TARGET_SAME_APP) || source_widget) &&
+                  (!(pair->flags & CTK_TARGET_SAME_WIDGET) || (source_widget == widget)) &&
+                  (!(pair->flags & CTK_TARGET_OTHER_APP) || !source_widget) &&
+                  (!(pair->flags & CTK_TARGET_OTHER_WIDGET) || (source_widget != widget)))
                 return pair->target;
               else
                 break;

@@ -69,12 +69,12 @@ struct _GtkSearchEngineSimpleClass
   GtkSearchEngineClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkSearchEngineSimple, _ctk_search_engine_simple, GTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE (GtkSearchEngineSimple, _ctk_search_engine_simple, CTK_TYPE_SEARCH_ENGINE)
 
 static void
 ctk_search_engine_simple_dispose (GObject *object)
 {
-  GtkSearchEngineSimple *simple = GTK_SEARCH_ENGINE_SIMPLE (object);
+  GtkSearchEngineSimple *simple = CTK_SEARCH_ENGINE_SIMPLE (object);
 
   g_clear_object (&simple->query);
 
@@ -140,7 +140,7 @@ search_thread_done_idle (gpointer user_data)
 
   if (!g_cancellable_is_cancelled (data->cancellable))
     {
-      _ctk_search_engine_finished (GTK_SEARCH_ENGINE (data->engine),
+      _ctk_search_engine_finished (CTK_SEARCH_ENGINE (data->engine),
                                    data->got_results);
     }
 
@@ -162,7 +162,7 @@ search_thread_add_hits_idle (gpointer user_data)
   Batch *batch = user_data;
 
   if (!g_cancellable_is_cancelled (batch->thread_data->cancellable))
-    _ctk_search_engine_hits_added (GTK_SEARCH_ENGINE (batch->thread_data->engine), batch->hits);
+    _ctk_search_engine_hits_added (CTK_SEARCH_ENGINE (batch->thread_data->engine), batch->hits);
 
   g_list_free_full (batch->hits, (GDestroyNotify)_ctk_search_hit_free);
   g_free (batch);
@@ -305,7 +305,7 @@ ctk_search_engine_simple_start (GtkSearchEngine *engine)
   GtkSearchEngineSimple *simple;
   SearchThreadData *data;
 
-  simple = GTK_SEARCH_ENGINE_SIMPLE (engine);
+  simple = CTK_SEARCH_ENGINE_SIMPLE (engine);
 
   if (simple->active_search != NULL)
     return;
@@ -325,7 +325,7 @@ ctk_search_engine_simple_stop (GtkSearchEngine *engine)
 {
   GtkSearchEngineSimple *simple;
 
-  simple = GTK_SEARCH_ENGINE_SIMPLE (engine);
+  simple = CTK_SEARCH_ENGINE_SIMPLE (engine);
 
   if (simple->active_search != NULL)
     {
@@ -340,7 +340,7 @@ ctk_search_engine_simple_set_query (GtkSearchEngine *engine,
 {
   GtkSearchEngineSimple *simple;
 
-  simple = GTK_SEARCH_ENGINE_SIMPLE (engine);
+  simple = CTK_SEARCH_ENGINE_SIMPLE (engine);
 
   if (query)
     g_object_ref (query);
@@ -360,7 +360,7 @@ _ctk_search_engine_simple_class_init (GtkSearchEngineSimpleClass *class)
   gobject_class = G_OBJECT_CLASS (class);
   gobject_class->dispose = ctk_search_engine_simple_dispose;
 
-  engine_class = GTK_SEARCH_ENGINE_CLASS (class);
+  engine_class = CTK_SEARCH_ENGINE_CLASS (class);
   engine_class->set_query = ctk_search_engine_simple_set_query;
   engine_class->start = ctk_search_engine_simple_start;
   engine_class->stop = ctk_search_engine_simple_stop;
@@ -374,7 +374,7 @@ _ctk_search_engine_simple_init (GtkSearchEngineSimple *engine)
 GtkSearchEngine *
 _ctk_search_engine_simple_new (void)
 {
-  return g_object_new (GTK_TYPE_SEARCH_ENGINE_SIMPLE, NULL);
+  return g_object_new (CTK_TYPE_SEARCH_ENGINE_SIMPLE, NULL);
 }
 
 void

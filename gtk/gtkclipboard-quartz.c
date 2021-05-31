@@ -220,7 +220,7 @@ ctk_clipboard_finalize (GObject *object)
   GtkClipboard *clipboard;
   GSList *clipboards;
 
-  clipboard = GTK_CLIPBOARD (object);
+  clipboard = CTK_CLIPBOARD (object);
 
   clipboards = g_object_get_data (G_OBJECT (clipboard->display), "gtk-clipboard-list");
   if (g_slist_index (clipboards, clipboard) >= 0)
@@ -974,8 +974,8 @@ ctk_clipboard_wait_is_rich_text_available (GtkClipboard  *clipboard,
   GtkSelectionData *data;
   gboolean result = FALSE;
 
-  g_return_val_if_fail (GTK_IS_CLIPBOARD (clipboard), FALSE);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
   data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
   if (data)
@@ -1128,7 +1128,7 @@ clipboard_peek (GdkDisplay *display,
     {
       NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
       NSString *pasteboard_name;
-      clipboard = g_object_new (GTK_TYPE_CLIPBOARD, NULL);
+      clipboard = g_object_new (CTK_TYPE_CLIPBOARD, NULL);
 
       if (selection == GDK_SELECTION_CLIPBOARD)
 	pasteboard_name = NSGeneralPboard;
@@ -1136,7 +1136,7 @@ clipboard_peek (GdkDisplay *display,
 	{
 	  char *atom_string = gdk_atom_name (selection);
 
-	  pasteboard_name = [NSString stringWithFormat:@"_GTK_%@",
+	  pasteboard_name = [NSString stringWithFormat:@"_CTK_%@",
 			     [NSString stringWithUTF8String:atom_string]];
 	  g_free (atom_string);
 	}
@@ -1221,7 +1221,7 @@ ctk_clipboard_store (GtkClipboard *clipboard)
   int n_targets = 0;
   GtkTargetEntry *targets;
 
-  g_return_if_fail (GTK_IS_CLIPBOARD (clipboard));
+  g_return_if_fail (CTK_IS_CLIPBOARD (clipboard));
 
   if (!clipboard->target_list || !clipboard->get_func)
     return;
@@ -1300,7 +1300,7 @@ _ctk_clipboard_store_all (void)
 GdkAtom
 ctk_clipboard_get_selection (GtkClipboard *clipboard)
 {
-  g_return_val_if_fail (GTK_IS_CLIPBOARD (clipboard), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), GDK_NONE);
 
   return clipboard->selection;
 }

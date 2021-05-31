@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_POPOVER_H__
-#define __GTK_POPOVER_H__
+#ifndef __CTK_POPOVER_H__
+#define __CTK_POPOVER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_POPOVER           (ctk_popover_get_type ())
-#define GTK_POPOVER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_POPOVER, GtkPopover))
-#define GTK_POPOVER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), GTK_TYPE_POPOVER, GtkPopoverClass))
-#define GTK_IS_POPOVER(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_POPOVER))
-#define GTK_IS_POPOVER_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), GTK_TYPE_POPOVER))
-#define GTK_POPOVER_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_POPOVER, GtkPopoverClass))
+#define CTK_TYPE_POPOVER           (ctk_popover_get_type ())
+#define CTK_POPOVER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_POPOVER, GtkPopover))
+#define CTK_POPOVER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_POPOVER, GtkPopoverClass))
+#define CTK_IS_POPOVER(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_POPOVER))
+#define CTK_IS_POPOVER_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), CTK_TYPE_POPOVER))
+#define CTK_POPOVER_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_POPOVER, GtkPopoverClass))
 
 typedef struct _GtkPopover GtkPopover;
 typedef struct _GtkPopoverClass GtkPopoverClass;
@@ -125,4 +125,4 @@ void                 ctk_popover_popdown          (GtkPopover *popover);
 
 G_END_DECLS
 
-#endif /* __GTK_POPOVER_H__ */
+#endif /* __CTK_POPOVER_H__ */

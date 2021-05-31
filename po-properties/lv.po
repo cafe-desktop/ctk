@@ -326,10 +326,10 @@ msgstr "Ir svarīgs"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Vai darbība tiek uzskatīta par svarīgu. Ja PATIESS, rīka instrumenta "
-"starpnieks šai darbībai rāda tekstu GTK_TOOLBAR_BOTH_HORIZ režīmā."
+"starpnieks šai darbībai rāda tekstu CTK_TOOLBAR_BOTH_HORIZ režīmā."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1795,8 +1795,8 @@ msgid "Default Spacing"
 msgstr "Noklusētā atstarpe"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Papildu atstarpe, ko pievienot GTK_CAN_DEFAULT pogām"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Papildu atstarpe, ko pievienot CTK_CAN_DEFAULT pogām"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1804,10 +1804,10 @@ msgstr "Noklusētā ārējā atstarpe"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Papildu vieta, ko atvēlēt GTK_CAN_DEFAULT pogām, kas vienmēr tiek zīmētas "
+"Papildu vieta, ko atvēlēt CTK_CAN_DEFAULT pogām, kas vienmēr tiek zīmētas "
 "ārpus robežas"
 
 #: gtk/gtkbutton.c:556
@@ -4261,8 +4261,8 @@ msgid "Baseline Row"
 msgstr "Bāzes līnijas rinda"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
-msgstr "Rinda, ko līdzināt gar bāzes līniju, kad valign ir GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
+msgstr "Rinda, ko līdzināt gar bāzes līniju, kad valign ir CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8427,10 +8427,10 @@ msgstr "Atstarpe starp ikonu un iezīmi, pikseļos"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Vai rīkjoslas sadaļa ir jāuzskata par svarīgu. Ja PATIESS, rīkjoslas pogas, "
-"rada tekstu GTK_TOOLBAR_BOTH_HORIZ režīmā"
+"rada tekstu CTK_TOOLBAR_BOTH_HORIZ režīmā"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

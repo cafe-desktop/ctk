@@ -24,7 +24,7 @@
 #include "gtkcsswin32sizevalueprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
 };
 
 GtkCssDimension

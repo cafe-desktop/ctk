@@ -68,7 +68,7 @@
  *   ctk_init (&argc, &argv);
  *
  *   // Create the main window
- *   mainwin = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+ *   mainwin = ctk_window_new (CTK_WINDOW_TOPLEVEL);
  *
  *   // Set up our GUI elements
  *
@@ -169,28 +169,28 @@ DisplayDebugFlags debug_flags[N_DEBUG_DISPLAYS];
 
 #ifdef G_ENABLE_DEBUG
 static const GDebugKey ctk_debug_keys[] = {
-  { "misc", GTK_DEBUG_MISC },
-  { "plugsocket", GTK_DEBUG_PLUGSOCKET },
-  { "text", GTK_DEBUG_TEXT },
-  { "tree", GTK_DEBUG_TREE },
-  { "updates", GTK_DEBUG_UPDATES },
-  { "keybindings", GTK_DEBUG_KEYBINDINGS },
-  { "multihead", GTK_DEBUG_MULTIHEAD },
-  { "modules", GTK_DEBUG_MODULES },
-  { "geometry", GTK_DEBUG_GEOMETRY },
-  { "icontheme", GTK_DEBUG_ICONTHEME },
-  { "printing", GTK_DEBUG_PRINTING} ,
-  { "builder", GTK_DEBUG_BUILDER },
-  { "size-request", GTK_DEBUG_SIZE_REQUEST },
-  { "no-css-cache", GTK_DEBUG_NO_CSS_CACHE },
-  { "baselines", GTK_DEBUG_BASELINES },
-  { "pixel-cache", GTK_DEBUG_PIXEL_CACHE },
-  { "no-pixel-cache", GTK_DEBUG_NO_PIXEL_CACHE },
-  { "interactive", GTK_DEBUG_INTERACTIVE },
-  { "touchscreen", GTK_DEBUG_TOUCHSCREEN },
-  { "actions", GTK_DEBUG_ACTIONS },
-  { "resize", GTK_DEBUG_RESIZE },
-  { "layout", GTK_DEBUG_LAYOUT }
+  { "misc", CTK_DEBUG_MISC },
+  { "plugsocket", CTK_DEBUG_PLUGSOCKET },
+  { "text", CTK_DEBUG_TEXT },
+  { "tree", CTK_DEBUG_TREE },
+  { "updates", CTK_DEBUG_UPDATES },
+  { "keybindings", CTK_DEBUG_KEYBINDINGS },
+  { "multihead", CTK_DEBUG_MULTIHEAD },
+  { "modules", CTK_DEBUG_MODULES },
+  { "geometry", CTK_DEBUG_GEOMETRY },
+  { "icontheme", CTK_DEBUG_ICONTHEME },
+  { "printing", CTK_DEBUG_PRINTING} ,
+  { "builder", CTK_DEBUG_BUILDER },
+  { "size-request", CTK_DEBUG_SIZE_REQUEST },
+  { "no-css-cache", CTK_DEBUG_NO_CSS_CACHE },
+  { "baselines", CTK_DEBUG_BASELINES },
+  { "pixel-cache", CTK_DEBUG_PIXEL_CACHE },
+  { "no-pixel-cache", CTK_DEBUG_NO_PIXEL_CACHE },
+  { "interactive", CTK_DEBUG_INTERACTIVE },
+  { "touchscreen", CTK_DEBUG_TOUCHSCREEN },
+  { "actions", CTK_DEBUG_ACTIONS },
+  { "resize", CTK_DEBUG_RESIZE },
+  { "layout", CTK_DEBUG_LAYOUT }
 };
 #endif /* G_ENABLE_DEBUG */
 
@@ -201,7 +201,7 @@ static const GDebugKey ctk_debug_keys[] = {
  * (e.g. in GTK+ version 3.1.5 this is 3.)
  *
  * This function is in the library, so it represents the GTK+ library
- * your code is running against. Contrast with the #GTK_MAJOR_VERSION
+ * your code is running against. Contrast with the #CTK_MAJOR_VERSION
  * macro, which represents the major version of the GTK+ headers you
  * have included when compiling your code.
  *
@@ -212,7 +212,7 @@ static const GDebugKey ctk_debug_keys[] = {
 guint
 ctk_get_major_version (void)
 {
-  return GTK_MAJOR_VERSION;
+  return CTK_MAJOR_VERSION;
 }
 
 /**
@@ -223,7 +223,7 @@ ctk_get_major_version (void)
  *
  * This function is in the library, so it represents the GTK+ library
  * your code is are running against. Contrast with the
- * #GTK_MINOR_VERSION macro, which represents the minor version of the
+ * #CTK_MINOR_VERSION macro, which represents the minor version of the
  * GTK+ headers you have included when compiling your code.
  *
  * Returns: the minor version number of the GTK+ library
@@ -233,7 +233,7 @@ ctk_get_major_version (void)
 guint
 ctk_get_minor_version (void)
 {
-  return GTK_MINOR_VERSION;
+  return CTK_MINOR_VERSION;
 }
 
 /**
@@ -244,7 +244,7 @@ ctk_get_minor_version (void)
  *
  * This function is in the library, so it represents the GTK+ library
  * your code is are running against. Contrast with the
- * #GTK_MICRO_VERSION macro, which represents the micro version of the
+ * #CTK_MICRO_VERSION macro, which represents the micro version of the
  * GTK+ headers you have included when compiling your code.
  *
  * Returns: the micro version number of the GTK+ library
@@ -254,7 +254,7 @@ ctk_get_minor_version (void)
 guint
 ctk_get_micro_version (void)
 {
-  return GTK_MICRO_VERSION;
+  return CTK_MICRO_VERSION;
 }
 
 /**
@@ -272,7 +272,7 @@ ctk_get_micro_version (void)
 guint
 ctk_get_binary_age (void)
 {
-  return GTK_BINARY_AGE;
+  return CTK_BINARY_AGE;
 }
 
 /**
@@ -290,7 +290,7 @@ ctk_get_binary_age (void)
 guint
 ctk_get_interface_age (void)
 {
-  return GTK_INTERFACE_AGE;
+  return CTK_INTERFACE_AGE;
 }
 
 /**
@@ -301,7 +301,7 @@ ctk_get_interface_age (void)
  *
  * Checks that the GTK+ library in use is compatible with the
  * given version. Generally you would pass in the constants
- * #GTK_MAJOR_VERSION, #GTK_MINOR_VERSION, #GTK_MICRO_VERSION
+ * #CTK_MAJOR_VERSION, #CTK_MINOR_VERSION, #CTK_MICRO_VERSION
  * as the three arguments to this function; that produces
  * a check that the library in use is compatible with
  * the version of GTK+ the application or module was compiled
@@ -332,14 +332,14 @@ ctk_check_version (guint required_major,
                    guint required_minor,
                    guint required_micro)
 {
-  gint ctk_effective_micro = 100 * GTK_MINOR_VERSION + GTK_MICRO_VERSION;
+  gint ctk_effective_micro = 100 * CTK_MINOR_VERSION + CTK_MICRO_VERSION;
   gint required_effective_micro = 100 * required_minor + required_micro;
 
-  if (required_major > GTK_MAJOR_VERSION)
+  if (required_major > CTK_MAJOR_VERSION)
     return "GTK+ version too old (major mismatch)";
-  if (required_major < GTK_MAJOR_VERSION)
+  if (required_major < CTK_MAJOR_VERSION)
     return "GTK+ version too new (major mismatch)";
-  if (required_effective_micro < ctk_effective_micro - GTK_BINARY_AGE)
+  if (required_effective_micro < ctk_effective_micro - CTK_BINARY_AGE)
     return "GTK+ version too new (micro mismatch)";
   if (required_effective_micro > ctk_effective_micro)
     return "GTK+ version too old (micro mismatch)";
@@ -657,7 +657,7 @@ do_pre_parse_initialization (int    *argc,
   GDK_PRIVATE_CALL (gdk_pre_parse) ();
   gdk_event_handler_set ((GdkEventFunc)ctk_main_do_event, NULL, NULL);
 
-  env_string = g_getenv ("GTK_DEBUG");
+  env_string = g_getenv ("CTK_DEBUG");
   if (env_string != NULL)
     {
 #ifdef G_ENABLE_DEBUG
@@ -665,7 +665,7 @@ do_pre_parse_initialization (int    *argc,
                                                    ctk_debug_keys,
                                                    G_N_ELEMENTS (ctk_debug_keys));
 #else
-      g_warning ("GTK_DEBUG set but ignored because gtk isn't built with G_ENABLE_DEBUG");
+      g_warning ("CTK_DEBUG set but ignored because gtk isn't built with G_ENABLE_DEBUG");
 #endif  /* G_ENABLE_DEBUG */
       env_string = NULL;
     }
@@ -674,7 +674,7 @@ do_pre_parse_initialization (int    *argc,
   if (env_string)
     ctk_modules_string = g_string_new (env_string);
 
-  env_string = g_getenv ("GTK_MODULES");
+  env_string = g_getenv ("CTK_MODULES");
   if (env_string)
     {
       if (ctk_modules_string)
@@ -685,7 +685,7 @@ do_pre_parse_initialization (int    *argc,
       g_string_append (ctk_modules_string, env_string);
     }
 
-  env_string = g_getenv ("GTK_SLOWDOWN");
+  env_string = g_getenv ("CTK_SLOWDOWN");
   if (env_string)
     {
       slowdown = g_ascii_strtod (env_string, NULL);
@@ -740,7 +740,7 @@ do_post_parse_initialization (int    *argc,
     }
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (debug_flags[0].flags & GTK_DEBUG_UPDATES)
+  if (debug_flags[0].flags & CTK_DEBUG_UPDATES)
     gdk_window_set_debug_updates (TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -813,7 +813,7 @@ post_parse_hook (GOptionContext *context,
           return FALSE;
         }
 
-      if (ctk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
+      if (ctk_get_debug_flags () & CTK_DEBUG_INTERACTIVE)
         ctk_window_set_interactive_debugging (TRUE);
     }
 
@@ -886,9 +886,9 @@ ctk_simulate_touchscreen (void)
   static gint test_touchscreen;
 
   if (test_touchscreen == 0)
-    test_touchscreen = g_getenv ("GTK_TEST_TOUCHSCREEN") != NULL ? 1 : -1;
+    test_touchscreen = g_getenv ("CTK_TEST_TOUCHSCREEN") != NULL ? 1 : -1;
 
-  return test_touchscreen > 0 || (ctk_get_debug_flags () & GTK_DEBUG_TOUCHSCREEN) != 0;
+  return test_touchscreen > 0 || (ctk_get_debug_flags () & CTK_DEBUG_TOUCHSCREEN) != 0;
  }
 
 /**
@@ -1007,7 +1007,7 @@ done:
       return FALSE;
     }
 
-  if (ctk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
+  if (ctk_get_debug_flags () & CTK_DEBUG_INTERACTIVE)
     ctk_window_set_interactive_debugging (TRUE);
 
   return TRUE;
@@ -1108,7 +1108,7 @@ ctk_init_check (int    *argc,
 
   ret = GDK_PRIVATE_CALL (gdk_display_open_default) () != NULL;
 
-  if (ctk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
+  if (ctk_get_debug_flags () & CTK_DEBUG_INTERACTIVE)
     ctk_window_set_interactive_debugging (TRUE);
 
   return ret;
@@ -1242,8 +1242,8 @@ ctk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof
  * reading direction for text and UI.
  *
  * This function depends on the current locale being set with
- * setlocale() and will default to setting the %GTK_TEXT_DIR_LTR
- * direction otherwise. %GTK_TEXT_DIR_NONE will never be returned.
+ * setlocale() and will default to setting the %CTK_TEXT_DIR_LTR
+ * direction otherwise. %CTK_TEXT_DIR_NONE will never be returned.
  *
  * GTK+ sets the default text direction according to the locale
  * during ctk_init(), and you should normally use
@@ -1273,10 +1273,10 @@ ctk_get_locale_direction (void)
    * it isn't default:LTR or default:RTL it will not work
    */
   gchar            *e   = _("default:LTR");
-  GtkTextDirection  dir = GTK_TEXT_DIR_LTR;
+  GtkTextDirection  dir = CTK_TEXT_DIR_LTR;
 
   if (g_strcmp0 (e, "default:RTL") == 0)
-    dir = GTK_TEXT_DIR_RTL;
+    dir = CTK_TEXT_DIR_RTL;
   else if (g_strcmp0 (e, "default:LTR") != 0)
     g_warning ("Whoever translated default:LTR did so wrongly. Defaulting to LTR.");
 
@@ -1603,16 +1603,16 @@ widget_get_popover_ancestor (GtkWidget *widget,
 {
   GtkWidget *parent = ctk_widget_get_parent (widget);
 
-  while (parent && parent != GTK_WIDGET (window))
+  while (parent && parent != CTK_WIDGET (window))
     {
       widget = parent;
       parent = ctk_widget_get_parent (widget);
     }
 
-  if (!parent || parent != GTK_WIDGET (window))
+  if (!parent || parent != CTK_WIDGET (window))
     return NULL;
 
-  if (_ctk_window_is_popover_widget (GTK_WINDOW (window), widget))
+  if (_ctk_window_is_popover_widget (CTK_WINDOW (window), widget))
     return widget;
 
   return NULL;
@@ -1627,17 +1627,17 @@ check_event_in_child_popover (GtkWidget *event_widget,
   if (grab_widget == event_widget)
     return FALSE;
 
-  window = ctk_widget_get_ancestor (event_widget, GTK_TYPE_WINDOW);
+  window = ctk_widget_get_ancestor (event_widget, CTK_TYPE_WINDOW);
 
   if (!window)
     return FALSE;
 
-  popover = widget_get_popover_ancestor (event_widget, GTK_WINDOW (window));
+  popover = widget_get_popover_ancestor (event_widget, CTK_WINDOW (window));
 
   if (!popover)
     return FALSE;
 
-  popover_parent = _ctk_window_get_popover_parent (GTK_WINDOW (window), popover);
+  popover_parent = _ctk_window_get_popover_parent (CTK_WINDOW (window), popover);
 
   if (!popover_parent)
     return FALSE;
@@ -1756,7 +1756,7 @@ ctk_main_do_event (GdkEvent *event)
   if (!grab_widget)
     grab_widget = ctk_window_group_get_current_grab (window_group);
 
-  if (GTK_IS_WINDOW (event_widget) ||
+  if (CTK_IS_WINDOW (event_widget) ||
       (grab_widget && grab_widget != event_widget &&
        !ctk_widget_is_ancestor (event_widget, grab_widget)))
     {
@@ -1870,8 +1870,8 @@ ctk_main_do_event (GdkEvent *event)
         GtkWidget *window;
 
         window = ctk_widget_get_toplevel (grab_widget);
-        if (GTK_IS_WINDOW (window))
-          ctk_window_set_focus_visible (GTK_WINDOW (window), TRUE);
+        if (CTK_IS_WINDOW (window))
+          ctk_window_set_focus_visible (CTK_WINDOW (window), TRUE);
       }
 
       /* Catch alt press to enable auto-mnemonics;
@@ -1880,7 +1880,7 @@ ctk_main_do_event (GdkEvent *event)
        */
       if ((event->key.keyval == GDK_KEY_Alt_L || event->key.keyval == GDK_KEY_Alt_R) &&
           ((event->key.state & (ctk_accelerator_get_default_mod_mask ()) & ~(GDK_RELEASE_MASK|GDK_MOD1_MASK)) == 0) &&
-          !GTK_IS_MENU_SHELL (grab_widget))
+          !CTK_IS_MENU_SHELL (grab_widget))
         {
           gboolean mnemonics_visible;
           GtkWidget *window;
@@ -1888,12 +1888,12 @@ ctk_main_do_event (GdkEvent *event)
           mnemonics_visible = (event->type == GDK_KEY_PRESS);
 
           window = ctk_widget_get_toplevel (grab_widget);
-          if (GTK_IS_WINDOW (window))
+          if (CTK_IS_WINDOW (window))
             {
               if (mnemonics_visible)
-                _ctk_window_schedule_mnemonics_visible (GTK_WINDOW (window));
+                _ctk_window_schedule_mnemonics_visible (CTK_WINDOW (window));
               else
-                ctk_window_set_mnemonics_visible (GTK_WINDOW (window), FALSE);
+                ctk_window_set_mnemonics_visible (CTK_WINDOW (window), FALSE);
             }
         }
       /* else fall through */
@@ -1988,7 +1988,7 @@ ctk_main_do_event (GdkEvent *event)
  *
  *   ctk_init (&argc, &argv);
  *
- *   win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+ *   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
  *   g_signal_connect (win,
  *                     "delete-event",
  *                     G_CALLBACK (ctk_true),
@@ -2001,7 +2001,7 @@ ctk_main_do_event (GdkEvent *event)
  *   g_signal_connect_swapped (but, "clicked",
  *                             G_CALLBACK (ctk_object_destroy),
  *                             win);
- *   ctk_container_add (GTK_CONTAINER (win), but);
+ *   ctk_container_add (CTK_CONTAINER (win), but);
  *
  *   ctk_widget_show_all (win);
  *
@@ -2041,8 +2041,8 @@ ctk_main_get_window_group (GtkWidget *widget)
   if (widget)
     toplevel = ctk_widget_get_toplevel (widget);
 
-  if (GTK_IS_WINDOW (toplevel))
-    return ctk_window_get_group (GTK_WINDOW (toplevel));
+  if (CTK_IS_WINDOW (toplevel))
+    return ctk_window_get_group (CTK_WINDOW (toplevel));
   else
     return ctk_window_get_group (NULL);
 }
@@ -2133,8 +2133,8 @@ ctk_grab_notify_foreach (GtkWidget *child,
 
   g_object_ref (child);
 
-  if ((was_shadowed || is_shadowed) && GTK_IS_CONTAINER (child))
-    ctk_container_forall (GTK_CONTAINER (child), ctk_grab_notify_foreach, info);
+  if ((was_shadowed || is_shadowed) && CTK_IS_CONTAINER (child))
+    ctk_container_forall (CTK_CONTAINER (child), ctk_grab_notify_foreach, info);
 
   if (info->device &&
       _ctk_widget_get_device_window (child, info->device))
@@ -2152,7 +2152,7 @@ ctk_grab_notify_foreach (GtkWidget *child,
           ctk_widget_is_sensitive (child))
         synth_crossing_for_grab_notify (child, info->new_grab_widget,
                                         info, devices,
-                                        GDK_CROSSING_GTK_GRAB);
+                                        GDK_CROSSING_CTK_GRAB);
     }
   else
     {
@@ -2161,8 +2161,8 @@ ctk_grab_notify_foreach (GtkWidget *child,
           ctk_widget_is_sensitive (child))
         synth_crossing_for_grab_notify (info->old_grab_widget, child,
                                         info, devices,
-                                        info->from_grab ? GDK_CROSSING_GTK_GRAB :
-                                        GDK_CROSSING_GTK_UNGRAB);
+                                        info->from_grab ? GDK_CROSSING_CTK_GRAB :
+                                        GDK_CROSSING_CTK_UNGRAB);
     }
 
   if (was_shadowed != is_shadowed)
@@ -2207,7 +2207,7 @@ ctk_grab_notify (GtkWindowGroup *group,
       info.is_grabbed = FALSE;
 
       if (group == ctk_window_get_group (toplevel))
-        ctk_grab_notify_foreach (GTK_WIDGET (toplevel), &info);
+        ctk_grab_notify_foreach (CTK_WIDGET (toplevel), &info);
       g_object_unref (toplevel);
     }
 
@@ -2322,7 +2322,7 @@ ctk_device_grab_add (GtkWidget *widget,
   GtkWindowGroup *group;
   GtkWidget *old_grab_widget;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
 
   group = ctk_main_get_window_group (widget);
@@ -2353,7 +2353,7 @@ ctk_device_grab_remove (GtkWidget *widget,
   GtkWindowGroup *group;
   GtkWidget *new_grab_widget;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
 
   group = ctk_main_get_window_group (widget);
@@ -2666,7 +2666,7 @@ propagate_event (GtkWidget *widget,
       GtkWidget *window;
 
       window = ctk_widget_get_toplevel (widget);
-      if (GTK_IS_WINDOW (window))
+      if (CTK_IS_WINDOW (window))
         {
           g_object_ref (widget);
           /* If there is a grab within the window, give the grab widget
@@ -2718,7 +2718,7 @@ void
 ctk_propagate_event (GtkWidget *widget,
                      GdkEvent  *event)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (event != NULL);
 
   propagate_event (widget, event, FALSE, NULL);

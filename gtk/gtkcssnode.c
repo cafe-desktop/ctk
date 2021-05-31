@@ -85,7 +85,7 @@
 
 /* When these change we do a full restyling. Otherwise we try to figure out
  * if we need to change things. */
-#define GTK_CSS_RADICAL_CHANGE (GTK_CSS_CHANGE_ID | GTK_CSS_CHANGE_NAME | GTK_CSS_CHANGE_CLASS | GTK_CSS_CHANGE_SOURCE | GTK_CSS_CHANGE_PARENT_STYLE)
+#define CTK_CSS_RADICAL_CHANGE (CTK_CSS_CHANGE_ID | CTK_CSS_CHANGE_NAME | CTK_CSS_CHANGE_CLASS | CTK_CSS_CHANGE_SOURCE | CTK_CSS_CHANGE_PARENT_STYLE)
 
 G_DEFINE_TYPE (GtkCssNode, ctk_css_node, G_TYPE_OBJECT)
 
@@ -118,7 +118,7 @@ static GParamSpec *cssnode_properties[NUM_PROPERTIES];
 static GtkStyleProviderPrivate *
 ctk_css_node_get_style_provider_or_null (GtkCssNode *cssnode)
 {
-  return GTK_CSS_NODE_GET_CLASS (cssnode)->get_style_provider (cssnode);
+  return CTK_CSS_NODE_GET_CLASS (cssnode)->get_style_provider (cssnode);
 }
 
 static void
@@ -140,9 +140,9 @@ ctk_css_node_set_invalid (GtkCssNode *node,
       else
         {
           if (invalid)
-            GTK_CSS_NODE_GET_CLASS (node)->queue_validate (node);
+            CTK_CSS_NODE_GET_CLASS (node)->queue_validate (node);
           else
-            GTK_CSS_NODE_GET_CLASS (node)->dequeue_validate (node);
+            CTK_CSS_NODE_GET_CLASS (node)->dequeue_validate (node);
         }
     }
 }
@@ -153,7 +153,7 @@ ctk_css_node_get_property (GObject    *object,
                            GValue     *value,
                            GParamSpec *pspec)
 {
-  GtkCssNode *cssnode = GTK_CSS_NODE (object);
+  GtkCssNode *cssnode = CTK_CSS_NODE (object);
 
   switch (property_id)
     {
@@ -192,7 +192,7 @@ ctk_css_node_set_property (GObject      *object,
                            const GValue *value,
                            GParamSpec   *pspec)
 {
-  GtkCssNode *cssnode = GTK_CSS_NODE (object);
+  GtkCssNode *cssnode = CTK_CSS_NODE (object);
 
   switch (property_id)
     {
@@ -228,7 +228,7 @@ ctk_css_node_set_property (GObject      *object,
 static void
 ctk_css_node_dispose (GObject *object)
 {
-  GtkCssNode *cssnode = GTK_CSS_NODE (object);
+  GtkCssNode *cssnode = CTK_CSS_NODE (object);
 
   while (cssnode->first_child)
     {
@@ -245,7 +245,7 @@ ctk_css_node_dispose (GObject *object)
 static void
 ctk_css_node_finalize (GObject *object)
 {
-  GtkCssNode *cssnode = GTK_CSS_NODE (object);
+  GtkCssNode *cssnode = CTK_CSS_NODE (object);
 
   if (cssnode->style)
     g_object_unref (cssnode->style);
@@ -334,7 +334,7 @@ store_in_global_parent_cache (GtkCssNode                  *node,
 {
   GtkCssNode *parent;
 
-  g_assert (GTK_IS_CSS_STATIC_STYLE (style));
+  g_assert (CTK_IS_CSS_STATIC_STYLE (style));
 
   parent = node->parent;
 
@@ -384,7 +384,7 @@ ctk_css_node_create_style (GtkCssNode *cssnode)
 static gboolean
 should_create_transitions (GtkCssChange change)
 {
-  return (change & GTK_CSS_CHANGE_ANIMATIONS) == 0;
+  return (change & CTK_CSS_CHANGE_ANIMATIONS) == 0;
 }
 
 static gboolean
@@ -392,13 +392,13 @@ ctk_css_style_needs_recreation (GtkCssStyle  *style,
                                 GtkCssChange  change)
 {
   /* Try to avoid invalidating if we can */
-  if (change & GTK_CSS_RADICAL_CHANGE)
+  if (change & CTK_CSS_RADICAL_CHANGE)
     return TRUE;
 
-  if (GTK_IS_CSS_ANIMATED_STYLE (style))
-    style = GTK_CSS_ANIMATED_STYLE (style)->style;
+  if (CTK_IS_CSS_ANIMATED_STYLE (style))
+    style = CTK_CSS_ANIMATED_STYLE (style)->style;
 
-  if (ctk_css_static_style_get_change (GTK_CSS_STATIC_STYLE (style)) & change)
+  if (ctk_css_static_style_get_change (CTK_CSS_STATIC_STYLE (style)) & change)
     return TRUE;
   else
     return FALSE;
@@ -412,9 +412,9 @@ ctk_css_node_real_update_style (GtkCssNode   *cssnode,
 {
   GtkCssStyle *static_style, *new_static_style, *new_style;
 
-  if (GTK_IS_CSS_ANIMATED_STYLE (style))
+  if (CTK_IS_CSS_ANIMATED_STYLE (style))
     {
-      static_style = GTK_CSS_ANIMATED_STYLE (style)->style;
+      static_style = CTK_CSS_ANIMATED_STYLE (style)->style;
     }
   else
     {
@@ -426,7 +426,7 @@ ctk_css_node_real_update_style (GtkCssNode   *cssnode,
   else
     new_static_style = g_object_ref (static_style);
 
-  if (new_static_style != static_style || (change & GTK_CSS_CHANGE_ANIMATIONS))
+  if (new_static_style != static_style || (change & CTK_CSS_CHANGE_ANIMATIONS))
     {
       GtkCssNode *parent = ctk_css_node_get_parent (cssnode);
       new_style = ctk_css_animated_style_new (new_static_style,
@@ -439,9 +439,9 @@ ctk_css_node_real_update_style (GtkCssNode   *cssnode,
        * may have populated it. */
       g_clear_pointer (&cssnode->cache, ctk_css_node_style_cache_unref);
     }
-  else if (static_style != style && (change & GTK_CSS_CHANGE_TIMESTAMP))
+  else if (static_style != style && (change & CTK_CSS_CHANGE_TIMESTAMP))
     {
-      new_style = ctk_css_animated_style_new_advance (GTK_CSS_ANIMATED_STYLE (style),
+      new_style = ctk_css_animated_style_new_advance (CTK_CSS_ANIMATED_STYLE (style),
                                                       static_style,
                                                       timestamp);
     }
@@ -596,7 +596,7 @@ ctk_css_node_class_init (GtkCssNodeClass *klass)
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_OBJECT,
 		  G_TYPE_NONE, 2,
-		  GTK_TYPE_CSS_NODE, GTK_TYPE_CSS_NODE);
+		  CTK_TYPE_CSS_NODE, CTK_TYPE_CSS_NODE);
   g_signal_set_va_marshaller (cssnode_signals[NODE_ADDED],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__OBJECT_OBJECTv);
@@ -609,7 +609,7 @@ ctk_css_node_class_init (GtkCssNodeClass *klass)
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_OBJECT,
 		  G_TYPE_NONE, 2,
-		  GTK_TYPE_CSS_NODE, GTK_TYPE_CSS_NODE);
+		  CTK_TYPE_CSS_NODE, CTK_TYPE_CSS_NODE);
   g_signal_set_va_marshaller (cssnode_signals[NODE_REMOVED],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__OBJECT_OBJECTv);
@@ -641,7 +641,7 @@ ctk_css_node_class_init (GtkCssNodeClass *klass)
                          | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
   cssnode_properties[PROP_STATE] =
     g_param_spec_flags ("state", P_("State"), P_("State flags"),
-                        GTK_TYPE_STATE_FLAGS,
+                        CTK_TYPE_STATE_FLAGS,
                         0,
                         G_PARAM_READWRITE
                         | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
@@ -679,7 +679,7 @@ ctk_css_node_init (GtkCssNode *cssnode)
 GtkCssNode *
 ctk_css_node_new (void)
 {
-  return g_object_new (GTK_TYPE_CSS_NODE, NULL);
+  return g_object_new (CTK_TYPE_CSS_NODE, NULL);
 }
 
 static GdkFrameClock *
@@ -688,7 +688,7 @@ ctk_css_node_get_frame_clock_or_null (GtkCssNode *cssnode)
   while (cssnode->parent)
     cssnode = cssnode->parent;
 
-  return GTK_CSS_NODE_GET_CLASS (cssnode)->get_frame_clock (cssnode);
+  return CTK_CSS_NODE_GET_CLASS (cssnode)->get_frame_clock (cssnode);
 }
 
 static gint64
@@ -707,14 +707,14 @@ static void
 ctk_css_node_parent_was_unset (GtkCssNode *node)
 {
   if (node->visible && node->invalid)
-    GTK_CSS_NODE_GET_CLASS (node)->queue_validate (node);
+    CTK_CSS_NODE_GET_CLASS (node)->queue_validate (node);
 }
 
 static void
 ctk_css_node_parent_will_be_set (GtkCssNode *node)
 {
   if (node->visible && node->invalid)
-    GTK_CSS_NODE_GET_CLASS (node)->dequeue_validate (node);
+    CTK_CSS_NODE_GET_CLASS (node)->dequeue_validate (node);
 }
 
 static void
@@ -750,18 +750,18 @@ ctk_css_node_reposition (GtkCssNode *node,
     {
       if (node->next_sibling)
         ctk_css_node_invalidate (node->next_sibling,
-                                 GTK_CSS_CHANGE_ANY_SIBLING
-                                 | GTK_CSS_CHANGE_NTH_CHILD
-                                 | (node->previous_sibling ? 0 : GTK_CSS_CHANGE_FIRST_CHILD));
+                                 CTK_CSS_CHANGE_ANY_SIBLING
+                                 | CTK_CSS_CHANGE_NTH_CHILD
+                                 | (node->previous_sibling ? 0 : CTK_CSS_CHANGE_FIRST_CHILD));
       else if (node->previous_sibling)
-        ctk_css_node_invalidate (node->previous_sibling, GTK_CSS_CHANGE_LAST_CHILD);
+        ctk_css_node_invalidate (node->previous_sibling, CTK_CSS_CHANGE_LAST_CHILD);
     }
 
   if (old_parent != NULL)
     {
       g_signal_emit (old_parent, cssnode_signals[NODE_REMOVED], 0, node, node->previous_sibling);
       if (old_parent->first_child && node->visible)
-        ctk_css_node_invalidate (old_parent->first_child, GTK_CSS_CHANGE_NTH_LAST_CHILD);
+        ctk_css_node_invalidate (old_parent->first_child, CTK_CSS_CHANGE_NTH_LAST_CHILD);
     }
 
   if (old_parent != new_parent)
@@ -777,7 +777,7 @@ ctk_css_node_reposition (GtkCssNode *node,
 
       if (ctk_css_node_get_style_provider_or_null (node) == NULL)
         ctk_css_node_invalidate_style_provider (node);
-      ctk_css_node_invalidate (node, GTK_CSS_CHANGE_TIMESTAMP | GTK_CSS_CHANGE_ANIMATIONS);
+      ctk_css_node_invalidate (node, CTK_CSS_CHANGE_TIMESTAMP | CTK_CSS_CHANGE_ANIMATIONS);
 
       if (new_parent)
         {
@@ -798,7 +798,7 @@ ctk_css_node_reposition (GtkCssNode *node,
     {
       g_signal_emit (new_parent, cssnode_signals[NODE_ADDED], 0, node, previous);
       if (node->visible)
-        ctk_css_node_invalidate (new_parent->first_child, GTK_CSS_CHANGE_NTH_LAST_CHILD);
+        ctk_css_node_invalidate (new_parent->first_child, CTK_CSS_CHANGE_NTH_LAST_CHILD);
     }
 
   if (node->visible)
@@ -806,13 +806,13 @@ ctk_css_node_reposition (GtkCssNode *node,
       if (node->next_sibling)
         {
           if (node->previous_sibling == NULL)
-            ctk_css_node_invalidate (node->next_sibling, GTK_CSS_CHANGE_FIRST_CHILD);
+            ctk_css_node_invalidate (node->next_sibling, CTK_CSS_CHANGE_FIRST_CHILD);
           else
             ctk_css_node_invalidate_style (node->next_sibling);
         }
       else if (node->previous_sibling)
         {
-          ctk_css_node_invalidate (node->previous_sibling, GTK_CSS_CHANGE_LAST_CHILD);
+          ctk_css_node_invalidate (node->previous_sibling, CTK_CSS_CHANGE_LAST_CHILD);
         }
     }
   else
@@ -821,11 +821,11 @@ ctk_css_node_reposition (GtkCssNode *node,
         ctk_css_node_invalidate_style (node->next_sibling);
     }
 
-  ctk_css_node_invalidate (node, GTK_CSS_CHANGE_ANY_PARENT
-                                 | GTK_CSS_CHANGE_ANY_SIBLING
-                                 | GTK_CSS_CHANGE_NTH_CHILD
-                                 | (node->previous_sibling ? 0 : GTK_CSS_CHANGE_FIRST_CHILD)
-                                 | (node->next_sibling ? 0 : GTK_CSS_CHANGE_LAST_CHILD));
+  ctk_css_node_invalidate (node, CTK_CSS_CHANGE_ANY_PARENT
+                                 | CTK_CSS_CHANGE_ANY_SIBLING
+                                 | CTK_CSS_CHANGE_NTH_CHILD
+                                 | (node->previous_sibling ? 0 : CTK_CSS_CHANGE_FIRST_CHILD)
+                                 | (node->next_sibling ? 0 : CTK_CSS_CHANGE_LAST_CHILD));
 
   g_object_unref (node);
 }
@@ -939,7 +939,7 @@ ctk_css_node_set_style (GtkCssNode  *cssnode,
       g_signal_emit (cssnode, cssnode_signals[STYLE_CHANGED], 0, &change);
     }
   else if (cssnode->style != style &&
-           (GTK_IS_CSS_ANIMATED_STYLE (cssnode->style) || GTK_IS_CSS_ANIMATED_STYLE (style)))
+           (CTK_IS_CSS_ANIMATED_STYLE (cssnode->style) || CTK_IS_CSS_ANIMATED_STYLE (style)))
     {
       /* This is when animations are starting/stopping but they didn't change any CSS this frame */
       g_set_object (&cssnode->style, style);
@@ -959,7 +959,7 @@ ctk_css_node_propagate_pending_changes (GtkCssNode *cssnode,
 
   change = _ctk_css_change_for_child (cssnode->pending_changes);
   if (style_changed)
-    change |= GTK_CSS_CHANGE_PARENT_STYLE;
+    change |= CTK_CSS_CHANGE_PARENT_STYLE;
 
   if (!cssnode->needs_propagation && change == 0)
     return;
@@ -1004,7 +1004,7 @@ ctk_css_node_ensure_style (GtkCssNode *cssnode,
 
       g_clear_pointer (&cssnode->cache, ctk_css_node_style_cache_unref);
 
-      new_style = GTK_CSS_NODE_GET_CLASS (cssnode)->update_style (cssnode,
+      new_style = CTK_CSS_NODE_GET_CLASS (cssnode)->update_style (cssnode,
                                                                   cssnode->pending_changes,
                                                                   current_time,
                                                                   cssnode->style);
@@ -1055,25 +1055,25 @@ ctk_css_node_set_visible (GtkCssNode *cssnode,
           if (cssnode->parent)
             ctk_css_node_set_invalid (cssnode->parent, TRUE);
           else
-            GTK_CSS_NODE_GET_CLASS (cssnode)->queue_validate (cssnode);
+            CTK_CSS_NODE_GET_CLASS (cssnode)->queue_validate (cssnode);
         }
       else
         {
           if (cssnode->parent == NULL)
-            GTK_CSS_NODE_GET_CLASS (cssnode)->dequeue_validate (cssnode);
+            CTK_CSS_NODE_GET_CLASS (cssnode)->dequeue_validate (cssnode);
         }
     }
 
   if (cssnode->next_sibling)
     {
-      ctk_css_node_invalidate (cssnode->next_sibling, GTK_CSS_CHANGE_ANY_SIBLING | GTK_CSS_CHANGE_NTH_CHILD);
+      ctk_css_node_invalidate (cssnode->next_sibling, CTK_CSS_CHANGE_ANY_SIBLING | CTK_CSS_CHANGE_NTH_CHILD);
       if (ctk_css_node_is_first_child (cssnode))
         {
           for (iter = cssnode->next_sibling;
                iter != NULL;
                iter = iter->next_sibling)
             {
-              ctk_css_node_invalidate (iter, GTK_CSS_CHANGE_FIRST_CHILD);
+              ctk_css_node_invalidate (iter, CTK_CSS_CHANGE_FIRST_CHILD);
               if (iter->visible)
                 break;
             }
@@ -1088,12 +1088,12 @@ ctk_css_node_set_visible (GtkCssNode *cssnode,
                iter != NULL;
                iter = iter->previous_sibling)
             {
-              ctk_css_node_invalidate (iter, GTK_CSS_CHANGE_LAST_CHILD);
+              ctk_css_node_invalidate (iter, CTK_CSS_CHANGE_LAST_CHILD);
               if (iter->visible)
                 break;
             }
         }
-      ctk_css_node_invalidate (cssnode->parent->first_child, GTK_CSS_CHANGE_NTH_LAST_CHILD);
+      ctk_css_node_invalidate (cssnode->parent->first_child, CTK_CSS_CHANGE_NTH_LAST_CHILD);
     }
 }
 
@@ -1109,7 +1109,7 @@ ctk_css_node_set_name (GtkCssNode              *cssnode,
 {
   if (ctk_css_node_declaration_set_name (&cssnode->decl, name))
     {
-      ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_NAME);
+      ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_NAME);
       g_object_notify_by_pspec (G_OBJECT (cssnode), cssnode_properties[PROP_NAME]);
     }
 }
@@ -1126,7 +1126,7 @@ ctk_css_node_set_widget_type (GtkCssNode *cssnode,
 {
   if (ctk_css_node_declaration_set_type (&cssnode->decl, widget_type))
     {
-      ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_NAME);
+      ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_NAME);
       g_object_notify_by_pspec (G_OBJECT (cssnode), cssnode_properties[PROP_WIDGET_TYPE]);
     }
 }
@@ -1143,7 +1143,7 @@ ctk_css_node_set_id (GtkCssNode                *cssnode,
 {
   if (ctk_css_node_declaration_set_id (&cssnode->decl, id))
     {
-      ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_ID);
+      ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_ID);
       g_object_notify_by_pspec (G_OBJECT (cssnode), cssnode_properties[PROP_ID]);
     }
 }
@@ -1160,7 +1160,7 @@ ctk_css_node_set_state (GtkCssNode    *cssnode,
 {
   if (ctk_css_node_declaration_set_state (&cssnode->decl, state_flags))
     {
-      ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_STATE);
+      ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_STATE);
       g_object_notify_by_pspec (G_OBJECT (cssnode), cssnode_properties[PROP_STATE]);
     }
 }
@@ -1189,7 +1189,7 @@ ctk_css_node_clear_classes (GtkCssNode *cssnode)
 {
   if (ctk_css_node_declaration_clear_classes (&cssnode->decl))
     {
-      ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_CLASS);
+      ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_CLASS);
       g_object_notify_by_pspec (G_OBJECT (cssnode), cssnode_properties[PROP_CLASSES]);
     }
 }
@@ -1240,7 +1240,7 @@ ctk_css_node_add_class (GtkCssNode *cssnode,
 {
   if (ctk_css_node_declaration_add_class (&cssnode->decl, style_class))
     {
-      ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_CLASS);
+      ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_CLASS);
       g_object_notify_by_pspec (G_OBJECT (cssnode), cssnode_properties[PROP_CLASSES]);
     }
 }
@@ -1251,7 +1251,7 @@ ctk_css_node_remove_class (GtkCssNode *cssnode,
 {
   if (ctk_css_node_declaration_remove_class (&cssnode->decl, style_class))
     {
-      ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_CLASS);
+      ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_CLASS);
       g_object_notify_by_pspec (G_OBJECT (cssnode), cssnode_properties[PROP_CLASSES]);
     }
 }
@@ -1311,7 +1311,7 @@ ctk_css_node_invalidate_style_provider (GtkCssNode *cssnode)
 {
   GtkCssNode *child;
 
-  ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_SOURCE);
+  ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_SOURCE);
 
   for (child = cssnode->first_child;
        child;
@@ -1331,7 +1331,7 @@ ctk_css_node_invalidate_timestamp (GtkCssNode *cssnode)
     return;
 
   if (!ctk_css_style_is_static (cssnode->style))
-    ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_TIMESTAMP);
+    ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_TIMESTAMP);
 
   for (child = cssnode->first_child; child; child = child->next_sibling)
     {
@@ -1350,7 +1350,7 @@ ctk_css_node_invalidate_frame_clock (GtkCssNode *cssnode,
   ctk_css_node_invalidate_timestamp (cssnode);
 
   if (!just_timestamp)
-    ctk_css_node_invalidate (cssnode, GTK_CSS_CHANGE_ANIMATIONS);
+    ctk_css_node_invalidate (cssnode, CTK_CSS_CHANGE_ANIMATIONS);
 }
 
 void
@@ -1358,14 +1358,14 @@ ctk_css_node_invalidate (GtkCssNode   *cssnode,
                          GtkCssChange  change)
 {
   if (!cssnode->invalid)
-    change &= ~GTK_CSS_CHANGE_TIMESTAMP;
+    change &= ~CTK_CSS_CHANGE_TIMESTAMP;
 
   if (change == 0)
     return;
 
   cssnode->pending_changes |= change;
 
-  GTK_CSS_NODE_GET_CLASS (cssnode)->invalidate (cssnode);
+  CTK_CSS_NODE_GET_CLASS (cssnode)->invalidate (cssnode);
 
   if (cssnode->parent)
     cssnode->parent->needs_propagation = TRUE;
@@ -1388,7 +1388,7 @@ ctk_css_node_validate_internal (GtkCssNode *cssnode,
   if (!ctk_css_style_is_static (cssnode->style))
     ctk_css_node_set_invalid (cssnode, TRUE);
 
-  GTK_CSS_NODE_GET_CLASS (cssnode)->validate (cssnode);
+  CTK_CSS_NODE_GET_CLASS (cssnode)->validate (cssnode);
 
   for (child = ctk_css_node_get_first_child (cssnode);
        child;
@@ -1413,19 +1413,19 @@ gboolean
 ctk_css_node_init_matcher (GtkCssNode     *cssnode,
                            GtkCssMatcher  *matcher)
 {
-  return GTK_CSS_NODE_GET_CLASS (cssnode)->init_matcher (cssnode, matcher);
+  return CTK_CSS_NODE_GET_CLASS (cssnode)->init_matcher (cssnode, matcher);
 }
 
 GtkWidgetPath *
 ctk_css_node_create_widget_path (GtkCssNode *cssnode)
 {
-  return GTK_CSS_NODE_GET_CLASS (cssnode)->create_widget_path (cssnode);
+  return CTK_CSS_NODE_GET_CLASS (cssnode)->create_widget_path (cssnode);
 }
 
 const GtkWidgetPath *
 ctk_css_node_get_widget_path (GtkCssNode *cssnode)
 {
-  return GTK_CSS_NODE_GET_CLASS (cssnode)->get_widget_path (cssnode);
+  return CTK_CSS_NODE_GET_CLASS (cssnode)->get_widget_path (cssnode);
 }
 
 GtkStyleProviderPrivate *
@@ -1445,7 +1445,7 @@ ctk_css_node_get_style_provider (GtkCssNode *cssnode)
   if (!settings)
     return NULL;
 
-  return GTK_STYLE_PROVIDER_PRIVATE (_ctk_settings_get_style_cascade (settings, 1));
+  return CTK_STYLE_PROVIDER_PRIVATE (_ctk_settings_get_style_cascade (settings, 1));
 }
 
 void
@@ -1468,10 +1468,10 @@ ctk_css_node_print (GtkCssNode                *cssnode,
 
   g_string_append_c (string, '\n');
 
-  if (flags & GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE)
+  if (flags & CTK_STYLE_CONTEXT_PRINT_SHOW_STYLE)
     need_newline = ctk_css_style_print (ctk_css_node_get_style (cssnode), string, indent + 2, TRUE);
 
-  if (flags & GTK_STYLE_CONTEXT_PRINT_RECURSE)
+  if (flags & CTK_STYLE_CONTEXT_PRINT_RECURSE)
     {
       GtkCssNode *node;
 

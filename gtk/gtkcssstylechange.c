@@ -36,7 +36,7 @@ ctk_css_style_change_init (GtkCssStyleChange *change,
   
   /* Make sure we don't do extra work if old and new are equal. */
   if (old_style == new_style)
-    change->n_compared = GTK_CSS_PROPERTY_N_PROPERTIES;
+    change->n_compared = CTK_CSS_PROPERTY_N_PROPERTIES;
 }
 
 void
@@ -62,7 +62,7 @@ ctk_css_style_change_get_new_style (GtkCssStyleChange *change)
 static gboolean
 ctk_css_style_compare_next_value (GtkCssStyleChange *change)
 {
-  if (change->n_compared == GTK_CSS_PROPERTY_N_PROPERTIES)
+  if (change->n_compared == CTK_CSS_PROPERTY_N_PROPERTIES)
     return FALSE;
 
   if (!_ctk_css_value_equal (ctk_css_style_get_value (change->old_style, change->n_compared),
@@ -118,7 +118,7 @@ ctk_css_style_change_print (GtkCssStyleChange *change,
   GtkCssStyle *old = ctk_css_style_change_get_old_style (change);
   GtkCssStyle *new = ctk_css_style_change_get_new_style (change);
 
-  for (i = 0; i < GTK_CSS_PROPERTY_N_PROPERTIES; i ++)
+  for (i = 0; i < CTK_CSS_PROPERTY_N_PROPERTIES; i ++)
     {
       if (ctk_css_style_change_changes_property (change, i))
         {
@@ -127,7 +127,7 @@ ctk_css_style_change_print (GtkCssStyleChange *change,
           const char *name;
 
           prop = _ctk_css_style_property_lookup_by_id (i);
-          name = _ctk_style_property_get_name (GTK_STYLE_PROPERTY (prop));
+          name = _ctk_style_property_get_name (CTK_STYLE_PROPERTY (prop));
 
           value = ctk_css_style_get_value (old, i);
           _ctk_css_value_print (value, string);

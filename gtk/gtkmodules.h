@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_MODULES_H__
-#define __GTK_MODULES_H__
+#ifndef __CTK_MODULES_H__
+#define __CTK_MODULES_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -53,4 +53,4 @@ typedef void     (*GtkModuleDisplayInitFunc) (GdkDisplay   *display);
 G_END_DECLS
 
 
-#endif /* __GTK_MODULES_H__ */
+#endif /* __CTK_MODULES_H__ */

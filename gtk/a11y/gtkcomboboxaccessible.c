@@ -31,7 +31,7 @@ struct _GtkComboBoxAccessiblePrivate
 static void atk_action_interface_init    (AtkActionIface    *iface);
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkComboBoxAccessible, ctk_combo_box_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkComboBoxAccessible, ctk_combo_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkComboBoxAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
@@ -44,11 +44,11 @@ changed_cb (GtkWidget *widget)
   GtkComboBoxAccessible *accessible;
   gint index;
 
-  combo_box = GTK_COMBO_BOX (widget);
+  combo_box = CTK_COMBO_BOX (widget);
 
   index = ctk_combo_box_get_active (combo_box);
   obj = ctk_widget_get_accessible (widget);
-  accessible = GTK_COMBO_BOX_ACCESSIBLE (obj);
+  accessible = CTK_COMBO_BOX_ACCESSIBLE (obj);
   if (accessible->priv->old_selection != index)
     {
       accessible->priv->old_selection = index;
@@ -67,8 +67,8 @@ ctk_combo_box_accessible_initialize (AtkObject *obj,
 
   ATK_OBJECT_CLASS (ctk_combo_box_accessible_parent_class)->initialize (obj, data);
 
-  combo_box = GTK_COMBO_BOX (data);
-  accessible = GTK_COMBO_BOX_ACCESSIBLE (obj);
+  combo_box = CTK_COMBO_BOX (data);
+  accessible = CTK_COMBO_BOX_ACCESSIBLE (obj);
 
   g_signal_connect (combo_box, "changed", G_CALLBACK (changed_cb), NULL);
   accessible->priv->old_selection = ctk_combo_box_get_active (combo_box);
@@ -80,7 +80,7 @@ ctk_combo_box_accessible_initialize (AtkObject *obj,
       accessible->priv->popup_set = TRUE;
     }
   if (ctk_combo_box_get_has_entry (combo_box))
-    atk_object_set_parent (ctk_widget_get_accessible (ctk_bin_get_child (GTK_BIN (combo_box))), obj);
+    atk_object_set_parent (ctk_widget_get_accessible (ctk_bin_get_child (CTK_BIN (combo_box))), obj);
 
   obj->role = ATK_ROLE_COMBO_BOX;
 }
@@ -88,7 +88,7 @@ ctk_combo_box_accessible_initialize (AtkObject *obj,
 static void
 ctk_combo_box_accessible_finalize (GObject *object)
 {
-  GtkComboBoxAccessible *combo_box = GTK_COMBO_BOX_ACCESSIBLE (object);
+  GtkComboBoxAccessible *combo_box = CTK_COMBO_BOX_ACCESSIBLE (object);
 
   g_free (combo_box->priv->name);
 
@@ -111,12 +111,12 @@ ctk_combo_box_accessible_get_name (AtkObject *obj)
   if (name)
     return name;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  combo_box = GTK_COMBO_BOX (widget);
-  accessible = GTK_COMBO_BOX_ACCESSIBLE (obj);
+  combo_box = CTK_COMBO_BOX (widget);
+  accessible = CTK_COMBO_BOX_ACCESSIBLE (obj);
   if (ctk_combo_box_get_active_iter (combo_box, &iter))
     {
       model = ctk_combo_box_get_model (combo_box);
@@ -146,12 +146,12 @@ ctk_combo_box_accessible_get_n_children (AtkObject* obj)
   gint n_children = 0;
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return 0;
 
   n_children++;
-  if (ctk_combo_box_get_has_entry (GTK_COMBO_BOX (widget)))
+  if (ctk_combo_box_get_has_entry (CTK_COMBO_BOX (widget)))
     n_children++;
 
   return n_children;
@@ -165,23 +165,23 @@ ctk_combo_box_accessible_ref_child (AtkObject *obj,
   AtkObject *child;
   GtkComboBoxAccessible *box;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
   if (i == 0)
     {
-      child = ctk_combo_box_get_popup_accessible (GTK_COMBO_BOX (widget));
-      box = GTK_COMBO_BOX_ACCESSIBLE (obj);
+      child = ctk_combo_box_get_popup_accessible (CTK_COMBO_BOX (widget));
+      box = CTK_COMBO_BOX_ACCESSIBLE (obj);
       if (!box->priv->popup_set)
         {
           atk_object_set_parent (child, obj);
           box->priv->popup_set = TRUE;
         }
     }
-  else if (i == 1 && ctk_combo_box_get_has_entry (GTK_COMBO_BOX (widget)))
+  else if (i == 1 && ctk_combo_box_get_has_entry (CTK_COMBO_BOX (widget)))
     {
-      child = ctk_widget_get_accessible (ctk_bin_get_child (GTK_BIN (widget)));
+      child = ctk_widget_get_accessible (ctk_bin_get_child (CTK_BIN (widget)));
     }
   else
     {
@@ -222,7 +222,7 @@ ctk_combo_box_accessible_do_action (AtkAction *action,
   GtkWidget *widget;
   gboolean popup_shown;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (action));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
     return FALSE;
 
@@ -232,7 +232,7 @@ ctk_combo_box_accessible_do_action (AtkAction *action,
   if (i != 0)
     return FALSE;
 
-  combo_box = GTK_COMBO_BOX (widget);
+  combo_box = CTK_COMBO_BOX (widget);
   g_object_get (combo_box, "popup-shown", &popup_shown, NULL);
   if (popup_shown)
     ctk_combo_box_popdown (combo_box);
@@ -265,8 +265,8 @@ ctk_combo_box_accessible_get_keybinding (AtkAction *action,
   if (i != 0)
     return NULL;
 
-  combo_box = GTK_COMBO_BOX_ACCESSIBLE (action);
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (combo_box));
+  combo_box = CTK_COMBO_BOX_ACCESSIBLE (action);
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (combo_box));
   if (widget == NULL)
     return NULL;
 
@@ -280,12 +280,12 @@ ctk_combo_box_accessible_get_keybinding (AtkAction *action,
     {
       target = atk_relation_get_target (relation);
       target_object = g_ptr_array_index (target, 0);
-      label = ctk_accessible_get_widget (GTK_ACCESSIBLE (target_object));
+      label = ctk_accessible_get_widget (CTK_ACCESSIBLE (target_object));
     }
   g_object_unref (set);
-  if (GTK_IS_LABEL (label))
+  if (CTK_IS_LABEL (label))
     {
-      key_val = ctk_label_get_mnemonic_keyval (GTK_LABEL (label));
+      key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (label));
       if (key_val != GDK_KEY_VoidSymbol)
         return_value = ctk_accelerator_name (key_val, GDK_MOD1_MASK);
     }
@@ -337,11 +337,11 @@ ctk_combo_box_accessible_add_selection (AtkSelection *selection,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  ctk_combo_box_set_active (GTK_COMBO_BOX (widget), i);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (widget), i);
 
   return TRUE;
 }
@@ -351,11 +351,11 @@ ctk_combo_box_accessible_clear_selection (AtkSelection *selection)
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  ctk_combo_box_set_active (GTK_COMBO_BOX (widget), -1);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (widget), -1);
 
   return TRUE;
 }
@@ -369,14 +369,14 @@ ctk_combo_box_accessible_ref_selection (AtkSelection *selection,
   AtkObject *obj;
   gint index;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return NULL;
 
   if (i != 0)
     return NULL;
 
-  combo_box = GTK_COMBO_BOX (widget);
+  combo_box = CTK_COMBO_BOX (widget);
 
   obj = ctk_combo_box_get_popup_accessible (combo_box);
   index = ctk_combo_box_get_active (combo_box);
@@ -389,11 +389,11 @@ ctk_combo_box_accessible_get_selection_count (AtkSelection *selection)
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return 0;
 
-  return (ctk_combo_box_get_active (GTK_COMBO_BOX (widget)) == -1) ? 0 : 1;
+  return (ctk_combo_box_get_active (CTK_COMBO_BOX (widget)) == -1) ? 0 : 1;
 }
 
 static gboolean
@@ -403,12 +403,12 @@ ctk_combo_box_accessible_is_child_selected (AtkSelection *selection,
   GtkWidget *widget;
   gint j;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
 
   if (widget == NULL)
     return FALSE;
 
-  j = ctk_combo_box_get_active (GTK_COMBO_BOX (widget));
+  j = ctk_combo_box_get_active (CTK_COMBO_BOX (widget));
 
   return (j == i);
 }

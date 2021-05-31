@@ -71,7 +71,7 @@ static void ctk_invisible_get_property  (GObject           *object,
 					 GParamSpec        *pspec);
 static void ctk_invisible_constructed   (GObject           *object);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInvisible, ctk_invisible, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInvisible, ctk_invisible, CTK_TYPE_WIDGET)
 
 static void
 ctk_invisible_class_init (GtkInvisibleClass *class)
@@ -98,7 +98,7 @@ ctk_invisible_class_init (GtkInvisibleClass *class)
  							P_("Screen"),
  							P_("The screen where this window will be displayed"),
 							GDK_TYPE_SCREEN,
- 							GTK_PARAM_READWRITE));
+ 							CTK_PARAM_READWRITE));
 }
 
 static void
@@ -109,8 +109,8 @@ ctk_invisible_init (GtkInvisible *invisible)
   invisible->priv = ctk_invisible_get_instance_private (invisible);
   priv = invisible->priv;
 
-  ctk_widget_set_has_window (GTK_WIDGET (invisible), TRUE);
-  _ctk_widget_set_is_toplevel (GTK_WIDGET (invisible), TRUE);
+  ctk_widget_set_has_window (CTK_WIDGET (invisible), TRUE);
+  _ctk_widget_set_is_toplevel (CTK_WIDGET (invisible), TRUE);
 
   g_object_ref_sink (invisible);
 
@@ -121,7 +121,7 @@ ctk_invisible_init (GtkInvisible *invisible)
 static void
 ctk_invisible_destroy (GtkWidget *widget)
 {
-  GtkInvisible *invisible = GTK_INVISIBLE (widget);
+  GtkInvisible *invisible = CTK_INVISIBLE (widget);
   GtkInvisiblePrivate *priv = invisible->priv;
 
   if (priv->has_user_ref_count)
@@ -130,7 +130,7 @@ ctk_invisible_destroy (GtkWidget *widget)
       g_object_unref (invisible);
     }
 
-  GTK_WIDGET_CLASS (ctk_invisible_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_invisible_parent_class)->destroy (widget);
 }
 
 /**
@@ -149,7 +149,7 @@ ctk_invisible_new_for_screen (GdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
   
-  return g_object_new (GTK_TYPE_INVISIBLE, "screen", screen, NULL);
+  return g_object_new (CTK_TYPE_INVISIBLE, "screen", screen, NULL);
 }
 
 /**
@@ -162,7 +162,7 @@ ctk_invisible_new_for_screen (GdkScreen *screen)
 GtkWidget*
 ctk_invisible_new (void)
 {
-  return g_object_new (GTK_TYPE_INVISIBLE, NULL);
+  return g_object_new (CTK_TYPE_INVISIBLE, NULL);
 }
 
 /**
@@ -183,7 +183,7 @@ ctk_invisible_set_screen (GtkInvisible *invisible,
   GdkScreen *previous_screen;
   gboolean was_realized;
 
-  g_return_if_fail (GTK_IS_INVISIBLE (invisible));
+  g_return_if_fail (CTK_IS_INVISIBLE (invisible));
   g_return_if_fail (GDK_IS_SCREEN (screen));
 
   priv = invisible->priv;
@@ -191,7 +191,7 @@ ctk_invisible_set_screen (GtkInvisible *invisible,
   if (screen == priv->screen)
     return;
 
-  widget = GTK_WIDGET (invisible);
+  widget = CTK_WIDGET (invisible);
 
   previous_screen = priv->screen;
   was_realized = ctk_widget_get_realized (widget);
@@ -221,7 +221,7 @@ ctk_invisible_set_screen (GtkInvisible *invisible,
 GdkScreen *
 ctk_invisible_get_screen (GtkInvisible *invisible)
 {
-  g_return_val_if_fail (GTK_IS_INVISIBLE (invisible), NULL);
+  g_return_val_if_fail (CTK_IS_INVISIBLE (invisible), NULL);
 
   return invisible->priv->screen;
 }
@@ -283,7 +283,7 @@ ctk_invisible_set_property  (GObject      *object,
 			     const GValue *value,
 			     GParamSpec   *pspec)
 {
-  GtkInvisible *invisible = GTK_INVISIBLE (object);
+  GtkInvisible *invisible = CTK_INVISIBLE (object);
   
   switch (prop_id)
     {
@@ -302,7 +302,7 @@ ctk_invisible_get_property  (GObject      *object,
 			     GValue	  *value,
 			     GParamSpec   *pspec)
 {
-  GtkInvisible *invisible = GTK_INVISIBLE (object);
+  GtkInvisible *invisible = CTK_INVISIBLE (object);
   GtkInvisiblePrivate *priv = invisible->priv;
 
   switch (prop_id)
@@ -324,5 +324,5 @@ ctk_invisible_constructed (GObject *object)
 {
   G_OBJECT_CLASS (ctk_invisible_parent_class)->constructed (object);
 
-  ctk_widget_realize (GTK_WIDGET (object));
+  ctk_widget_realize (CTK_WIDGET (object));
 }

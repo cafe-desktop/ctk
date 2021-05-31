@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_SELECTOR_PRIVATE_H__
-#define __GTK_CSS_SELECTOR_PRIVATE_H__
+#ifndef __CTK_CSS_SELECTOR_PRIVATE_H__
+#define __CTK_CSS_SELECTOR_PRIVATE_H__
 
 #include "gtk/gtkcssmatcherprivate.h"
 #include "gtk/gtkcssparserprivate.h"
@@ -61,4 +61,4 @@ const char *ctk_css_pseudoclass_name (GtkStateFlags flags);
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_SELECTOR_PRIVATE_H__ */
+#endif /* __CTK_CSS_SELECTOR_PRIVATE_H__ */

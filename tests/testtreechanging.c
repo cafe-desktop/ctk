@@ -146,7 +146,7 @@ delete (GtkTreeView *treeview)
 
   n_rows -= count_children (model, &iter) + 1;
   log_operation (model, &iter, "remove");
-  ctk_tree_store_remove (GTK_TREE_STORE (model), &iter);
+  ctk_tree_store_remove (CTK_TREE_STORE (model), &iter);
   set_rows (treeview, n_rows);
 }
 
@@ -166,7 +166,7 @@ add_one (GtkTreeModel *model,
       return;
     }
 
-  ctk_tree_store_insert_with_values (GTK_TREE_STORE (model),
+  ctk_tree_store_insert_with_values (CTK_TREE_STORE (model),
                                      &new_iter,
                                      iter,
                                      g_random_int_range (-1, n),
@@ -477,33 +477,33 @@ main (int    argc,
   ctk_init (&argc, &argv);
 
   if (g_getenv ("RTL"))
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
-  ctk_window_set_default_size (GTK_WINDOW (window), 430, 400);
+  ctk_window_set_default_size (CTK_WINDOW (window), 430, 400);
 
   sw = ctk_scrolled_window_new (NULL, NULL);
   ctk_widget_set_hexpand (sw, TRUE);
   ctk_widget_set_vexpand (sw, TRUE);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                  GTK_POLICY_AUTOMATIC,
-                                  GTK_POLICY_AUTOMATIC);
-  ctk_container_add (GTK_CONTAINER (window), sw);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                  CTK_POLICY_AUTOMATIC,
+                                  CTK_POLICY_AUTOMATIC);
+  ctk_container_add (CTK_CONTAINER (window), sw);
 
-  model = GTK_TREE_MODEL (ctk_tree_store_new (1, G_TYPE_UINT));
+  model = CTK_TREE_MODEL (ctk_tree_store_new (1, G_TYPE_UINT));
   treeview = ctk_tree_view_new_with_model (model);
   g_object_unref (model);
-  setup_sanity_checks (GTK_TREE_VIEW (treeview));
-  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  setup_sanity_checks (CTK_TREE_VIEW (treeview));
+  ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                0,
                                                "Counter",
                                                ctk_cell_renderer_text_new (),
                                                "text", 0,
                                                NULL);
   for (i = 0; i < (MIN_ROWS + MAX_ROWS) / 2; i++)
-    add (GTK_TREE_VIEW (treeview));
-  ctk_container_add (GTK_CONTAINER (sw), treeview);
+    add (CTK_TREE_VIEW (treeview));
+  ctk_container_add (CTK_CONTAINER (sw), treeview);
 
   ctk_widget_show_all (window);
 

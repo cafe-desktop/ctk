@@ -17,15 +17,15 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_VALUE_PRIVATE_H__
-#define __GTK_CSS_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_VALUE_PRIVATE_H__
+#define __CTK_CSS_VALUE_PRIVATE_H__
 
 #include <glib-object.h>
 #include "gtkcsstypesprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_VALUE           (_ctk_css_value_get_type ())
+#define CTK_TYPE_CSS_VALUE           (_ctk_css_value_get_type ())
 
 /* A GtkCssValue is a refcounted immutable value type */
 
@@ -33,7 +33,7 @@ typedef struct _GtkCssValue           GtkCssValue;
 typedef struct _GtkCssValueClass      GtkCssValueClass;
 
 /* using define instead of struct here so compilers get the packing right */
-#define GTK_CSS_VALUE_BASE \
+#define CTK_CSS_VALUE_BASE \
   const GtkCssValueClass *class; \
   gint ref_count;
 
@@ -84,4 +84,4 @@ void         _ctk_css_value_print                     (const GtkCssValue        
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_VALUE_PRIVATE_H__ */

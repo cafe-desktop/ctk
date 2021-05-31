@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_RECENT_FILTER_H__
-#define __GTK_RECENT_FILTER_H__
+#ifndef __CTK_RECENT_FILTER_H__
+#define __CTK_RECENT_FILTER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,35 +28,35 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RECENT_FILTER		(ctk_recent_filter_get_type ())
-#define GTK_RECENT_FILTER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RECENT_FILTER, GtkRecentFilter))
-#define GTK_IS_RECENT_FILTER(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RECENT_FILTER))
+#define CTK_TYPE_RECENT_FILTER		(ctk_recent_filter_get_type ())
+#define CTK_RECENT_FILTER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_FILTER, GtkRecentFilter))
+#define CTK_IS_RECENT_FILTER(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_FILTER))
 
 typedef struct _GtkRecentFilter		GtkRecentFilter;
 typedef struct _GtkRecentFilterInfo	GtkRecentFilterInfo;
 
 /**
  * GtkRecentFilterFlags:
- * @GTK_RECENT_FILTER_URI: the URI of the file being tested
- * @GTK_RECENT_FILTER_DISPLAY_NAME: the string that will be used to
+ * @CTK_RECENT_FILTER_URI: the URI of the file being tested
+ * @CTK_RECENT_FILTER_DISPLAY_NAME: the string that will be used to
  *  display the file in the recent chooser
- * @GTK_RECENT_FILTER_MIME_TYPE: the mime type of the file
- * @GTK_RECENT_FILTER_APPLICATION: the list of applications that have
+ * @CTK_RECENT_FILTER_MIME_TYPE: the mime type of the file
+ * @CTK_RECENT_FILTER_APPLICATION: the list of applications that have
  *  registered the file
- * @GTK_RECENT_FILTER_GROUP: the groups to which the file belongs to
- * @GTK_RECENT_FILTER_AGE: the number of days elapsed since the file
+ * @CTK_RECENT_FILTER_GROUP: the groups to which the file belongs to
+ * @CTK_RECENT_FILTER_AGE: the number of days elapsed since the file
  *  has been registered
  *
  * These flags indicate what parts of a #GtkRecentFilterInfo struct
  * are filled or need to be filled.
  */
 typedef enum {
-  GTK_RECENT_FILTER_URI          = 1 << 0,
-  GTK_RECENT_FILTER_DISPLAY_NAME = 1 << 1,
-  GTK_RECENT_FILTER_MIME_TYPE    = 1 << 2,
-  GTK_RECENT_FILTER_APPLICATION  = 1 << 3,
-  GTK_RECENT_FILTER_GROUP        = 1 << 4,
-  GTK_RECENT_FILTER_AGE          = 1 << 5
+  CTK_RECENT_FILTER_URI          = 1 << 0,
+  CTK_RECENT_FILTER_DISPLAY_NAME = 1 << 1,
+  CTK_RECENT_FILTER_MIME_TYPE    = 1 << 2,
+  CTK_RECENT_FILTER_APPLICATION  = 1 << 3,
+  CTK_RECENT_FILTER_GROUP        = 1 << 4,
+  CTK_RECENT_FILTER_AGE          = 1 << 5
 } GtkRecentFilterFlags;
 
 /**
@@ -147,4 +147,4 @@ gboolean             ctk_recent_filter_filter     (GtkRecentFilter           *fi
 
 G_END_DECLS
 
-#endif /* ! __GTK_RECENT_FILTER_H__ */
+#endif /* ! __CTK_RECENT_FILTER_H__ */

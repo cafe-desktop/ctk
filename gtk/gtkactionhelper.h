@@ -17,17 +17,17 @@
  * Authors: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_ACTION_HELPER_H__
-#define __GTK_ACTION_HELPER_H__
+#ifndef __CTK_ACTION_HELPER_H__
+#define __CTK_ACTION_HELPER_H__
 
 #include <gtk/gtkapplication.h>
 #include <gtk/gtkactionable.h>
 
-#define GTK_TYPE_ACTION_HELPER                              (ctk_action_helper_get_type ())
-#define GTK_ACTION_HELPER(inst)                             (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
-                                                             GTK_TYPE_ACTION_HELPER, GtkActionHelper))
-#define GTK_IS_ACTION_HELPER(inst)                          (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
-                                                             GTK_TYPE_ACTION_HELPER))
+#define CTK_TYPE_ACTION_HELPER                              (ctk_action_helper_get_type ())
+#define CTK_ACTION_HELPER(inst)                             (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
+                                                             CTK_TYPE_ACTION_HELPER, GtkActionHelper))
+#define CTK_IS_ACTION_HELPER(inst)                          (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
+                                                             CTK_TYPE_ACTION_HELPER))
 
 typedef struct _GtkActionHelper                             GtkActionHelper;
 
@@ -56,4 +56,4 @@ gboolean                ctk_action_helper_get_active                    (GtkActi
 G_GNUC_INTERNAL
 void                    ctk_action_helper_activate                      (GtkActionHelper *helper);
 
-#endif /* __GTK_ACTION_HELPER_H__ */
+#endif /* __CTK_ACTION_HELPER_H__ */

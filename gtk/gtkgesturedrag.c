@@ -56,7 +56,7 @@ enum {
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureDrag, ctk_gesture_drag, GTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureDrag, ctk_gesture_drag, CTK_TYPE_GESTURE_SINGLE)
 
 static gboolean
 ctk_gesture_drag_filter_event (GtkEventController *controller,
@@ -75,7 +75,7 @@ ctk_gesture_drag_filter_event (GtkEventController *controller,
         return TRUE;
     }
 
-  return GTK_EVENT_CONTROLLER_CLASS (ctk_gesture_drag_parent_class)->filter_event (controller, event);
+  return CTK_EVENT_CONTROLLER_CLASS (ctk_gesture_drag_parent_class)->filter_event (controller, event);
 }
 
 static void
@@ -85,9 +85,9 @@ ctk_gesture_drag_begin (GtkGesture       *gesture,
   GtkGestureDragPrivate *priv;
   GdkEventSequence *current;
 
-  current = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
-  priv = ctk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
+  priv = ctk_gesture_drag_get_instance_private (CTK_GESTURE_DRAG (gesture));
   ctk_gesture_get_point (gesture, current, &priv->start_x, &priv->start_y);
   priv->last_x = priv->start_x;
   priv->last_y = priv->start_y;
@@ -102,7 +102,7 @@ ctk_gesture_drag_update (GtkGesture       *gesture,
   GtkGestureDragPrivate *priv;
   gdouble x, y;
 
-  priv = ctk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
+  priv = ctk_gesture_drag_get_instance_private (CTK_GESTURE_DRAG (gesture));
   ctk_gesture_get_point (gesture, sequence, &priv->last_x, &priv->last_y);
   x = priv->last_x - priv->start_x;
   y = priv->last_y - priv->start_y;
@@ -118,9 +118,9 @@ ctk_gesture_drag_end (GtkGesture       *gesture,
   GdkEventSequence *current;
   gdouble x, y;
 
-  current = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
-  priv = ctk_gesture_drag_get_instance_private (GTK_GESTURE_DRAG (gesture));
+  priv = ctk_gesture_drag_get_instance_private (CTK_GESTURE_DRAG (gesture));
   ctk_gesture_get_point (gesture, current, &priv->last_x, &priv->last_y);
   x = priv->last_x - priv->start_x;
   y = priv->last_y - priv->start_y;
@@ -131,8 +131,8 @@ ctk_gesture_drag_end (GtkGesture       *gesture,
 static void
 ctk_gesture_drag_class_init (GtkGestureDragClass *klass)
 {
-  GtkGestureClass *gesture_class = GTK_GESTURE_CLASS (klass);
-  GtkEventControllerClass *event_controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
+  GtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
+  GtkEventControllerClass *event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
 
   event_controller_class->filter_event = ctk_gesture_drag_filter_event;
 
@@ -223,9 +223,9 @@ ctk_gesture_drag_init (GtkGestureDrag *gesture)
 GtkGesture *
 ctk_gesture_drag_new (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  return g_object_new (GTK_TYPE_GESTURE_DRAG,
+  return g_object_new (CTK_TYPE_GESTURE_DRAG,
                        "widget", widget,
                        NULL);
 }
@@ -252,11 +252,11 @@ ctk_gesture_drag_get_start_point (GtkGestureDrag *gesture,
   GtkGestureDragPrivate *priv;
   GdkEventSequence *sequence;
 
-  g_return_val_if_fail (GTK_IS_GESTURE_DRAG (gesture), FALSE);
+  g_return_val_if_fail (CTK_IS_GESTURE_DRAG (gesture), FALSE);
 
-  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
-  if (!ctk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
+  if (!ctk_gesture_handles_sequence (CTK_GESTURE (gesture), sequence))
     return FALSE;
 
   priv = ctk_gesture_drag_get_instance_private (gesture);
@@ -292,11 +292,11 @@ ctk_gesture_drag_get_offset (GtkGestureDrag *gesture,
   GtkGestureDragPrivate *priv;
   GdkEventSequence *sequence;
 
-  g_return_val_if_fail (GTK_IS_GESTURE_DRAG (gesture), FALSE);
+  g_return_val_if_fail (CTK_IS_GESTURE_DRAG (gesture), FALSE);
 
-  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
-  if (!ctk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
+  if (!ctk_gesture_handles_sequence (CTK_GESTURE (gesture), sequence))
     return FALSE;
 
   priv = ctk_gesture_drag_get_instance_private (gesture);

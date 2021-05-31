@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_NATIVE_DIALOG_H__
-#define __GTK_NATIVE_DIALOG_H__
+#ifndef __CTK_NATIVE_DIALOG_H__
+#define __CTK_NATIVE_DIALOG_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_NATIVE_DIALOG             (ctk_native_dialog_get_type ())
+#define CTK_TYPE_NATIVE_DIALOG             (ctk_native_dialog_get_type ())
 
 GDK_AVAILABLE_IN_3_20
 G_DECLARE_DERIVABLE_TYPE (GtkNativeDialog, ctk_native_dialog, GTK, NATIVE_DIALOG, GObject)
@@ -78,4 +78,4 @@ gint                  ctk_native_dialog_run (GtkNativeDialog *self);
 
 G_END_DECLS
 
-#endif /* __GTK_NATIVE_DIALOG_H__ */
+#endif /* __CTK_NATIVE_DIALOG_H__ */

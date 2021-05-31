@@ -338,7 +338,7 @@ msgstr "महत्वपूर्ण छ"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for this action show "
-"text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "जब कार्यलाई महत्वपूर्ण रूपमा ममन गरिन्छ । ठीक छ भने औजार आइटम प्रतिनिधिले यो कार्यका लागि "
 "जीटीके_औजारबार_दुवै_समतलीय मोडमा पाठ देखाउँछ"
@@ -1860,7 +1860,7 @@ msgstr "पूर्वनिर्धारित स्पेसिङ्ग:"
 
 #: gtk/gtkbutton.c:524
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "क्यान_पूर्वनिर्धारित बटनहरुका लागि अतिरिक्त ठाँउ थप"
 
 #: gtk/gtkbutton.c:541
@@ -1869,7 +1869,7 @@ msgstr "पूर्वनिर्धारित बाहिरपट्ट�
 
 #: gtk/gtkbutton.c:542
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside the border"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside the border"
 msgstr "क्यान_पूर्वनिर्धारित बटनहरुका लागि अतिरिक्त ठाँउ थप जसले सँधै सीमारेखाको बाहिर रेखाङ्कित गर्छ "
 
 #: gtk/gtkbutton.c:556
@@ -4505,7 +4505,7 @@ msgid "Baseline Row"
 msgstr "आधार पङ्ति"
 
 #: gtk/gtkgrid.c:1787
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 
 #: gtk/gtkgrid.c:1805
@@ -9098,7 +9098,7 @@ msgstr "पाइला बटनहरु र औंलाको बीचक�
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons show text in "
-"GTK_TOOLBAR_BOTH_HORIZ mode"
+"CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr "औजारबार आइटमलाई महत्व दिँदा ठीक छभने औजारबार बटनले जीटीके_औजारबार_दवै_समतलीय मोडमा पाठ देखाउँछ"
 
 #: gtk/gtktoolitemgroup.c:1642

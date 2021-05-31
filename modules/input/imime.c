@@ -63,7 +63,7 @@ MODULE_ENTRY (GtkIMContext *, create) (const gchar * context_id)
   g_return_val_if_fail (context_id, NULL);
 
   if (!strcmp (context_id, "ime"))
-    return g_object_new (GTK_TYPE_IM_CONTEXT_IME, NULL);
+    return g_object_new (CTK_TYPE_IM_CONTEXT_IME, NULL);
   else
     return NULL;
 }

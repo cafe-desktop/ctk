@@ -63,8 +63,8 @@ test_finalize_object (gconstpointer data)
   g_object_weak_ref (object, check_finalized, &finalized);
 
   /* Toplevels are owned by GTK+, just tell GTK+ to destroy it */
-  if (GTK_IS_WINDOW (object) || GTK_IS_INVISIBLE (object))
-    ctk_widget_destroy (GTK_WIDGET (object));
+  if (CTK_IS_WINDOW (object) || CTK_IS_INVISIBLE (object))
+    ctk_widget_destroy (CTK_WIDGET (object));
   else
     g_object_unref (object);
 
@@ -92,7 +92,7 @@ main (int argc, char **argv)
 
   /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
-  if (g_getenv ("GTK_TEST_MESON") == NULL)
+  if (g_getenv ("CTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
 
   /* Create one test bus for all tests, as we have a lot of very small

@@ -76,9 +76,9 @@
 typedef struct _GtkFileFilterClass GtkFileFilterClass;
 typedef struct _FilterRule FilterRule;
 
-#define GTK_FILE_FILTER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FILE_FILTER, GtkFileFilterClass))
-#define GTK_IS_FILE_FILTER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FILE_FILTER))
-#define GTK_FILE_FILTER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FILE_FILTER, GtkFileFilterClass))
+#define CTK_FILE_FILTER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_FILTER, GtkFileFilterClass))
+#define CTK_IS_FILE_FILTER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FILE_FILTER))
+#define CTK_FILE_FILTER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_FILTER, GtkFileFilterClass))
 
 typedef enum {
   FILTER_RULE_PATTERN,
@@ -141,7 +141,7 @@ static void     ctk_file_filter_buildable_custom_tag_end       (GtkBuildable  *b
 								gpointer      *data);
 
 G_DEFINE_TYPE_WITH_CODE (GtkFileFilter, ctk_file_filter, G_TYPE_INITIALLY_UNOWNED,
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_file_filter_buildable_init))
 
 static void
@@ -185,7 +185,7 @@ filter_rule_free (FilterRule *rule)
 static void
 ctk_file_filter_finalize (GObject  *object)
 {
-  GtkFileFilter *filter = GTK_FILE_FILTER (object);
+  GtkFileFilter *filter = CTK_FILE_FILTER (object);
 
   g_slist_free_full (filter->rules, (GDestroyNotify)filter_rule_free);
 
@@ -210,13 +210,13 @@ static void
 ctk_file_filter_buildable_set_name (GtkBuildable *buildable,
                                     const gchar  *name)
 {
-  ctk_file_filter_set_name (GTK_FILE_FILTER (buildable), name);
+  ctk_file_filter_set_name (CTK_FILE_FILTER (buildable), name);
 }
 
 static const gchar *
 ctk_file_filter_buildable_get_name (GtkBuildable *buildable)
 {
-  return ctk_file_filter_get_name (GTK_FILE_FILTER (buildable));
+  return ctk_file_filter_get_name (CTK_FILE_FILTER (buildable));
 }
 
 typedef enum {
@@ -340,7 +340,7 @@ ctk_file_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
       data = g_slice_new0 (SubParserData);
       data->string = g_string_new ("");
       data->type = PARSE_MIME_TYPES;
-      data->filter = GTK_FILE_FILTER (buildable);
+      data->filter = CTK_FILE_FILTER (buildable);
       data->builder = builder;
 
       *parser = sub_parser;
@@ -351,7 +351,7 @@ ctk_file_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
       data = g_slice_new0 (SubParserData);
       data->string = g_string_new ("");
       data->type = PARSE_PATTERNS;
-      data->filter = GTK_FILE_FILTER (buildable);
+      data->filter = CTK_FILE_FILTER (buildable);
       data->builder = builder;
 
       *parser = sub_parser;
@@ -400,7 +400,7 @@ ctk_file_filter_buildable_custom_tag_end (GtkBuildable *buildable,
 GtkFileFilter *
 ctk_file_filter_new (void)
 {
-  return g_object_new (GTK_TYPE_FILE_FILTER, NULL);
+  return g_object_new (CTK_TYPE_FILE_FILTER, NULL);
 }
 
 /**
@@ -419,7 +419,7 @@ void
 ctk_file_filter_set_name (GtkFileFilter *filter,
 			  const gchar   *name)
 {
-  g_return_if_fail (GTK_IS_FILE_FILTER (filter));
+  g_return_if_fail (CTK_IS_FILE_FILTER (filter));
   
   g_free (filter->name);
 
@@ -441,7 +441,7 @@ ctk_file_filter_set_name (GtkFileFilter *filter,
 const gchar *
 ctk_file_filter_get_name (GtkFileFilter *filter)
 {
-  g_return_val_if_fail (GTK_IS_FILE_FILTER (filter), NULL);
+  g_return_val_if_fail (CTK_IS_FILE_FILTER (filter), NULL);
   
   return filter->name;
 }
@@ -469,12 +469,12 @@ ctk_file_filter_add_mime_type (GtkFileFilter *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_FILE_FILTER (filter));
+  g_return_if_fail (CTK_IS_FILE_FILTER (filter));
   g_return_if_fail (mime_type != NULL);
 
   rule = g_slice_new (FilterRule);
   rule->type = FILTER_RULE_MIME_TYPE;
-  rule->needed = GTK_FILE_FILTER_MIME_TYPE;
+  rule->needed = CTK_FILE_FILTER_MIME_TYPE;
   rule->u.mime_type = g_strdup (mime_type);
 
   file_filter_add_rule (filter, rule);
@@ -495,12 +495,12 @@ ctk_file_filter_add_pattern (GtkFileFilter *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_FILE_FILTER (filter));
+  g_return_if_fail (CTK_IS_FILE_FILTER (filter));
   g_return_if_fail (pattern != NULL);
 
   rule = g_slice_new (FilterRule);
   rule->type = FILTER_RULE_PATTERN;
-  rule->needed = GTK_FILE_FILTER_DISPLAY_NAME;
+  rule->needed = CTK_FILE_FILTER_DISPLAY_NAME;
   rule->u.pattern = g_strdup (pattern);
 
   file_filter_add_rule (filter, rule);
@@ -520,11 +520,11 @@ ctk_file_filter_add_pixbuf_formats (GtkFileFilter *filter)
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_FILE_FILTER (filter));
+  g_return_if_fail (CTK_IS_FILE_FILTER (filter));
 
   rule = g_slice_new (FilterRule);
   rule->type = FILTER_RULE_PIXBUF_FORMATS;
-  rule->needed = GTK_FILE_FILTER_MIME_TYPE;
+  rule->needed = CTK_FILE_FILTER_MIME_TYPE;
   rule->u.pixbuf_formats = gdk_pixbuf_get_formats ();
   file_filter_add_rule (filter, rule);
 }
@@ -557,7 +557,7 @@ ctk_file_filter_add_custom (GtkFileFilter         *filter,
 {
   FilterRule *rule;
   
-  g_return_if_fail (GTK_IS_FILE_FILTER (filter));
+  g_return_if_fail (CTK_IS_FILE_FILTER (filter));
   g_return_if_fail (func != NULL);
 
   rule = g_slice_new (FilterRule);

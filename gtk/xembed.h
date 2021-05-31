@@ -14,8 +14,8 @@ typedef enum {
   XEMBED_MODALITY_OFF           = 11,
 
 /* Non standard messages*/
-  XEMBED_GTK_GRAB_KEY           = 108, 
-  XEMBED_GTK_UNGRAB_KEY         = 109
+  XEMBED_CTK_GRAB_KEY           = 108, 
+  XEMBED_CTK_UNGRAB_KEY         = 109
 } XEmbedMessageType;
 
 /* Details for  XEMBED_FOCUS_IN: */

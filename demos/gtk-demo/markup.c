@@ -16,24 +16,24 @@ static void
 source_toggled (GtkToggleButton *button)
 {
   if (ctk_toggle_button_get_active (button))
-    ctk_stack_set_visible_child_name (GTK_STACK (stack), "source");
+    ctk_stack_set_visible_child_name (CTK_STACK (stack), "source");
   else
     {
       GtkTextBuffer *buffer;
       GtkTextIter start, end;
       gchar *markup;
 
-      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view2));
+      buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view2));
       ctk_text_buffer_get_bounds (buffer, &start, &end);
       markup = ctk_text_buffer_get_text (buffer, &start, &end, FALSE);
 
-      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+      buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
       ctk_text_buffer_get_bounds (buffer, &start, &end);
       ctk_text_buffer_delete (buffer, &start, &end);
       ctk_text_buffer_insert_markup (buffer, &start, markup, -1);
       g_free (markup);
 
-      ctk_stack_set_visible_child_name (GTK_STACK (stack), "formatted");
+      ctk_stack_set_visible_child_name (CTK_STACK (stack), "formatted");
     }
 }
 
@@ -52,66 +52,66 @@ do_markup (GtkWidget *do_widget)
       GtkWidget *header;
       GtkWidget *show_source;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_default_size (GTK_WINDOW (window), 450, 450);
+      ctk_window_set_default_size (CTK_WINDOW (window), 450, 450);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
       stack = ctk_stack_new ();
       ctk_widget_show (stack);
-      ctk_container_add (GTK_CONTAINER (window), stack);
+      ctk_container_add (CTK_CONTAINER (window), stack);
 
       show_source = ctk_check_button_new_with_label ("Source");
-      ctk_widget_set_valign (show_source, GTK_ALIGN_CENTER);
+      ctk_widget_set_valign (show_source, CTK_ALIGN_CENTER);
       g_signal_connect (show_source, "toggled", G_CALLBACK (source_toggled), stack);
 
       header = ctk_header_bar_new ();
-      ctk_header_bar_set_show_close_button (GTK_HEADER_BAR (header), TRUE);
-      ctk_header_bar_pack_start (GTK_HEADER_BAR (header), show_source);
+      ctk_header_bar_set_show_close_button (CTK_HEADER_BAR (header), TRUE);
+      ctk_header_bar_pack_start (CTK_HEADER_BAR (header), show_source);
       ctk_widget_show_all (header);
-      ctk_window_set_titlebar (GTK_WINDOW (window), header);
+      ctk_window_set_titlebar (CTK_WINDOW (window), header);
 
-      ctk_window_set_title (GTK_WINDOW (window), "Markup");
+      ctk_window_set_title (CTK_WINDOW (window), "Markup");
 
       view = ctk_text_view_new ();
-      ctk_text_view_set_editable (GTK_TEXT_VIEW (view), FALSE);
-      ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view), GTK_WRAP_WORD);
-      ctk_text_view_set_left_margin (GTK_TEXT_VIEW (view), 10);
-      ctk_text_view_set_right_margin (GTK_TEXT_VIEW (view), 10);
+      ctk_text_view_set_editable (CTK_TEXT_VIEW (view), FALSE);
+      ctk_text_view_set_wrap_mode (CTK_TEXT_VIEW (view), CTK_WRAP_WORD);
+      ctk_text_view_set_left_margin (CTK_TEXT_VIEW (view), 10);
+      ctk_text_view_set_right_margin (CTK_TEXT_VIEW (view), 10);
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_container_add (GTK_CONTAINER (sw), view);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_container_add (CTK_CONTAINER (sw), view);
       ctk_widget_show_all (sw);
 
-      ctk_stack_add_named (GTK_STACK (stack), sw, "formatted");
+      ctk_stack_add_named (CTK_STACK (stack), sw, "formatted");
 
       view2 = ctk_text_view_new ();
-      ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view2), GTK_WRAP_WORD);
-      ctk_text_view_set_left_margin (GTK_TEXT_VIEW (view2), 10);
-      ctk_text_view_set_right_margin (GTK_TEXT_VIEW (view2), 10);
+      ctk_text_view_set_wrap_mode (CTK_TEXT_VIEW (view2), CTK_WRAP_WORD);
+      ctk_text_view_set_left_margin (CTK_TEXT_VIEW (view2), 10);
+      ctk_text_view_set_right_margin (CTK_TEXT_VIEW (view2), 10);
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_container_add (GTK_CONTAINER (sw), view2);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_container_add (CTK_CONTAINER (sw), view2);
       ctk_widget_show_all (sw);
 
-      ctk_stack_add_named (GTK_STACK (stack), sw, "source");
+      ctk_stack_add_named (CTK_STACK (stack), sw, "source");
 
       bytes = g_resources_lookup_data ("/markup/markup.txt", 0, NULL);
       markup = (const gchar *)g_bytes_get_data (bytes, NULL);
 
-      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+      buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
       ctk_text_buffer_get_start_iter (buffer, &iter);
       ctk_text_buffer_insert_markup (buffer, &iter, markup, -1);
 
-      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view2));
+      buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view2));
       ctk_text_buffer_get_start_iter (buffer, &iter);
       ctk_text_buffer_insert (buffer, &iter, markup, -1);
 

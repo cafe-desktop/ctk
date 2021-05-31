@@ -16,19 +16,19 @@
  *  License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SHORTCUTS_WINDOW_H__
-#define __GTK_SHORTCUTS_WINDOW_H__
+#ifndef __CTK_SHORTCUTS_WINDOW_H__
+#define __CTK_SHORTCUTS_WINDOW_H__
 
 #include <gtk/gtkwindow.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SHORTCUTS_WINDOW            (ctk_shortcuts_window_get_type ())
-#define GTK_SHORTCUTS_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindow))
-#define GTK_SHORTCUTS_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindowClass))
-#define GTK_IS_SHORTCUTS_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SHORTCUTS_WINDOW))
-#define GTK_IS_SHORTCUTS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SHORTCUTS_WINDOW))
-#define GTK_SHORTCUTS_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindowClass))
+#define CTK_TYPE_SHORTCUTS_WINDOW            (ctk_shortcuts_window_get_type ())
+#define CTK_SHORTCUTS_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindow))
+#define CTK_SHORTCUTS_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindowClass))
+#define CTK_IS_SHORTCUTS_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SHORTCUTS_WINDOW))
+#define CTK_IS_SHORTCUTS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SHORTCUTS_WINDOW))
+#define CTK_SHORTCUTS_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SHORTCUTS_WINDOW, GtkShortcutsWindowClass))
 
 
 typedef struct _GtkShortcutsWindow         GtkShortcutsWindow;
@@ -55,4 +55,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkShortcutsWindow, g_object_unref)
 
 G_END_DECLS
 
-#endif /* GTK_SHORTCUTS_WINDOW _H */
+#endif /* CTK_SHORTCUTS_WINDOW _H */

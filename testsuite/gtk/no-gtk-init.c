@@ -47,7 +47,7 @@ main (int   argc,
 {
   /* Keep in sync with ctk_test_init() */
   g_test_init (&argc, &argv, NULL);
-  g_setenv ("GTK_MODULES", "", TRUE);
+  g_setenv ("CTK_MODULES", "", TRUE);
   setlocale (LC_ALL, "C");
   g_test_bug_base ("http://bugzilla.gnome.org/show_bug.cgi?id=%s");
 

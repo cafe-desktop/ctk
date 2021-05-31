@@ -18,8 +18,8 @@
  *      Mathias Hasselmann
  */
 
-#ifndef __GTK_TOOL_PALETTE_PRIVATE_H__
-#define __GTK_TOOL_PALETTE_PRIVATE_H__
+#ifndef __CTK_TOOL_PALETTE_PRIVATE_H__
+#define __CTK_TOOL_PALETTE_PRIVATE_H__
 
 #include <gtk/gtk.h>
 
@@ -53,4 +53,4 @@ GtkSizeGroup *_ctk_tool_palette_get_size_group (GtkToolPalette   *palette);
 
 G_END_DECLS
 
-#endif /* __GTK_TOOL_PALETTE_PRIVATE_H__ */
+#endif /* __CTK_TOOL_PALETTE_PRIVATE_H__ */

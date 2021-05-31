@@ -1,24 +1,24 @@
-#ifndef __GTK_GEARS_H__
-#define __GTK_GEARS_H__
+#ifndef __CTK_GEARS_H__
+#define __CTK_GEARS_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
 enum {
-  GTK_GEARS_X_AXIS,
-  GTK_GEARS_Y_AXIS,
-  GTK_GEARS_Z_AXIS,
+  CTK_GEARS_X_AXIS,
+  CTK_GEARS_Y_AXIS,
+  CTK_GEARS_Z_AXIS,
 
-  GTK_GEARS_N_AXIS
+  CTK_GEARS_N_AXIS
 };
 
-#define GTK_TYPE_GEARS      (ctk_gears_get_type ())
-#define GTK_GEARS(inst)     (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
-                             GTK_TYPE_GEARS,             \
+#define CTK_TYPE_GEARS      (ctk_gears_get_type ())
+#define CTK_GEARS(inst)     (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
+                             CTK_TYPE_GEARS,             \
                              GtkGears))
-#define GTK_IS_GEARS(inst)  (G_TYPE_CHECK_INSTANCE_TYPE ((inst), \
-                             GTK_TYPE_GEARS))
+#define CTK_IS_GEARS(inst)  (G_TYPE_CHECK_INSTANCE_TYPE ((inst), \
+                             CTK_TYPE_GEARS))
 
 typedef struct _GtkGears GtkGears;
 typedef struct _GtkGearsClass GtkGearsClass;
@@ -45,4 +45,4 @@ void       ctk_gears_set_fps_label (GtkGears *gears,
 
 G_END_DECLS
 
-#endif /* __GTK_GEARS_H__ */
+#endif /* __CTK_GEARS_H__ */

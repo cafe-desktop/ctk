@@ -62,7 +62,7 @@ Overview of Changes in GTK+ 0.99.4:
 * Reference counting revolution integrated.
   Refer to docs/refcounting.txt on this issue.
 * Implementation of a decent debugging system, you would want
-  to export GTK_DEBUG=objects if you are going to develop gtk applications,
+  to export CTK_DEBUG=objects if you are going to develop gtk applications,
   refer to docs/debugging.txt for further information.
 * Additions on the signal code for querying information about certain signals,
   and pending handlers of signals.
@@ -87,7 +87,7 @@ Overview of Changes in GTK+ 0.99.4:
 * Text widget more complete.
 * Additions to GtkStatusBar to make it complete.
 * Gdk now supports regions.
-* Access masks for widget arguments (GTK_ARG_READABLE/GTK_ARG_WRITABLE).
+* Access masks for widget arguments (CTK_ARG_READABLE/CTK_ARG_WRITABLE).
 * Function replacements:
   g_string_hash() -> g_str_hash()
   g_string_equal() -> g_str_equal()

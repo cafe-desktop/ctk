@@ -108,7 +108,7 @@
 #include "gtkmarshalers.h"
 
 /* the file where we store the recently used items */
-#define GTK_RECENTLY_USED_FILE  "recently-used.xbel"
+#define CTK_RECENTLY_USED_FILE  "recently-used.xbel"
 
 /* return all items by default */
 #define DEFAULT_LIMIT   -1
@@ -117,7 +117,7 @@
 #define MAX_LIST_SIZE 1000
 
 /* keep in sync with xdgmime */
-#define GTK_RECENT_DEFAULT_MIME "application/octet-stream"
+#define CTK_RECENT_DEFAULT_MIME "application/octet-stream"
 
 typedef struct
 {
@@ -354,7 +354,7 @@ ctk_recent_manager_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkRecentManager *recent_manager = GTK_RECENT_MANAGER (object);
+  GtkRecentManager *recent_manager = CTK_RECENT_MANAGER (object);
 
   switch (prop_id)
     {
@@ -373,7 +373,7 @@ ctk_recent_manager_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkRecentManager *recent_manager = GTK_RECENT_MANAGER (object);
+  GtkRecentManager *recent_manager = CTK_RECENT_MANAGER (object);
 
   switch (prop_id)
     {
@@ -392,7 +392,7 @@ ctk_recent_manager_get_property (GObject    *object,
 static void
 ctk_recent_manager_finalize (GObject *object)
 {
-  GtkRecentManager *manager = GTK_RECENT_MANAGER (object);
+  GtkRecentManager *manager = CTK_RECENT_MANAGER (object);
   GtkRecentManagerPrivate *priv = manager->priv;
 
   g_free (priv->filename);
@@ -406,7 +406,7 @@ ctk_recent_manager_finalize (GObject *object)
 static void
 ctk_recent_manager_dispose (GObject *gobject)
 {
-  GtkRecentManager *manager = GTK_RECENT_MANAGER (gobject);
+  GtkRecentManager *manager = CTK_RECENT_MANAGER (gobject);
   GtkRecentManagerPrivate *priv = manager->priv;
 
   if (priv->monitor != NULL)
@@ -577,7 +577,7 @@ get_default_filename (void)
     }
 
   return g_build_filename (g_get_user_data_dir (),
-                           GTK_RECENTLY_USED_FILE,
+                           CTK_RECENTLY_USED_FILE,
                            NULL);
 }
 
@@ -589,7 +589,7 @@ ctk_recent_manager_set_filename (GtkRecentManager *manager,
   GFile *file;
   GError *error;
 
-  g_assert (GTK_IS_RECENT_MANAGER (manager));
+  g_assert (CTK_IS_RECENT_MANAGER (manager));
 
   priv = manager->priv;
 
@@ -742,7 +742,7 @@ build_recent_items_list (GtkRecentManager *manager)
 GtkRecentManager *
 ctk_recent_manager_new (void)
 {
-  return g_object_new (GTK_TYPE_RECENT_MANAGER, NULL);
+  return g_object_new (CTK_TYPE_RECENT_MANAGER, NULL);
 }
 
 /**
@@ -791,7 +791,7 @@ ctk_recent_manager_add_item_query_info (GObject      *source_object,
       if (G_LIKELY (content_type))
         recent_data.mime_type = g_content_type_get_mime_type (content_type);
       else
-        recent_data.mime_type = g_strdup (GTK_RECENT_DEFAULT_MIME);
+        recent_data.mime_type = g_strdup (CTK_RECENT_DEFAULT_MIME);
 
       g_free (content_type);
       g_object_unref (file_info);
@@ -856,7 +856,7 @@ ctk_recent_manager_add_item (GtkRecentManager *manager,
 {
   GFile* file;
 
-  g_return_val_if_fail (GTK_IS_RECENT_MANAGER (manager), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), FALSE);
   g_return_val_if_fail (uri != NULL, FALSE);
 
   file = g_file_new_for_uri (uri);
@@ -914,7 +914,7 @@ ctk_recent_manager_add_full (GtkRecentManager    *manager,
   GtkSettings *settings;
   gboolean enabled;
 
-  g_return_val_if_fail (GTK_IS_RECENT_MANAGER (manager), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), FALSE);
   g_return_val_if_fail (uri != NULL, FALSE);
   g_return_val_if_fail (data != NULL, FALSE);
 
@@ -1037,7 +1037,7 @@ ctk_recent_manager_remove_item (GtkRecentManager  *manager,
   GtkRecentManagerPrivate *priv;
   GError *remove_error = NULL;
 
-  g_return_val_if_fail (GTK_IS_RECENT_MANAGER (manager), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), FALSE);
   g_return_val_if_fail (uri != NULL, FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
@@ -1048,8 +1048,8 @@ ctk_recent_manager_remove_item (GtkRecentManager  *manager,
       priv->recent_items = g_bookmark_file_new ();
       priv->size = 0;
 
-      g_set_error (error, GTK_RECENT_MANAGER_ERROR,
-                   GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_MANAGER_ERROR,
+                   CTK_RECENT_MANAGER_ERROR_NOT_FOUND,
                    _("Unable to find an item with URI '%s'"),
                    uri);
 
@@ -1061,8 +1061,8 @@ ctk_recent_manager_remove_item (GtkRecentManager  *manager,
     {
       g_error_free (remove_error);
 
-      g_set_error (error, GTK_RECENT_MANAGER_ERROR,
-                   GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_MANAGER_ERROR,
+                   CTK_RECENT_MANAGER_ERROR_NOT_FOUND,
                    _("Unable to find an item with URI '%s'"),
                    uri);
 
@@ -1093,7 +1093,7 @@ ctk_recent_manager_has_item (GtkRecentManager *manager,
 {
   GtkRecentManagerPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_RECENT_MANAGER (manager), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), FALSE);
   g_return_val_if_fail (uri != NULL, FALSE);
 
   priv = manager->priv;
@@ -1188,7 +1188,7 @@ ctk_recent_manager_lookup_item (GtkRecentManager  *manager,
   GtkRecentManagerPrivate *priv;
   GtkRecentInfo *info = NULL;
 
-  g_return_val_if_fail (GTK_IS_RECENT_MANAGER (manager), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), NULL);
   g_return_val_if_fail (uri != NULL, NULL);
   g_return_val_if_fail (error == NULL || *error == NULL, NULL);
 
@@ -1198,8 +1198,8 @@ ctk_recent_manager_lookup_item (GtkRecentManager  *manager,
       priv->recent_items = g_bookmark_file_new ();
       priv->size = 0;
 
-      g_set_error (error, GTK_RECENT_MANAGER_ERROR,
-                   GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_MANAGER_ERROR,
+                   CTK_RECENT_MANAGER_ERROR_NOT_FOUND,
                    _("Unable to find an item with URI '%s'"),
                    uri);
 
@@ -1208,8 +1208,8 @@ ctk_recent_manager_lookup_item (GtkRecentManager  *manager,
 
   if (!g_bookmark_file_has_item (priv->recent_items, uri))
     {
-      g_set_error (error, GTK_RECENT_MANAGER_ERROR,
-                   GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_MANAGER_ERROR,
+                   CTK_RECENT_MANAGER_ERROR_NOT_FOUND,
                    _("Unable to find an item with URI '%s'"),
                    uri);
       return NULL;
@@ -1252,7 +1252,7 @@ ctk_recent_manager_move_item (GtkRecentManager  *recent_manager,
   GtkRecentManagerPrivate *priv;
   GError *move_error;
 
-  g_return_val_if_fail (GTK_IS_RECENT_MANAGER (recent_manager), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_MANAGER (recent_manager), FALSE);
   g_return_val_if_fail (uri != NULL, FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
@@ -1260,8 +1260,8 @@ ctk_recent_manager_move_item (GtkRecentManager  *recent_manager,
 
   if (!priv->recent_items)
     {
-      g_set_error (error, GTK_RECENT_MANAGER_ERROR,
-                   GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_MANAGER_ERROR,
+                   CTK_RECENT_MANAGER_ERROR_NOT_FOUND,
                    _("Unable to find an item with URI '%s'"),
                    uri);
       return FALSE;
@@ -1269,8 +1269,8 @@ ctk_recent_manager_move_item (GtkRecentManager  *recent_manager,
 
   if (!g_bookmark_file_has_item (priv->recent_items, uri))
     {
-      g_set_error (error, GTK_RECENT_MANAGER_ERROR,
-                   GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_MANAGER_ERROR,
+                   CTK_RECENT_MANAGER_ERROR_NOT_FOUND,
                    _("Unable to find an item with URI '%s'"),
                    uri);
       return FALSE;
@@ -1284,8 +1284,8 @@ ctk_recent_manager_move_item (GtkRecentManager  *recent_manager,
     {
       g_error_free (move_error);
 
-      g_set_error (error, GTK_RECENT_MANAGER_ERROR,
-                   GTK_RECENT_MANAGER_ERROR_UNKNOWN,
+      g_set_error (error, CTK_RECENT_MANAGER_ERROR,
+                   CTK_RECENT_MANAGER_ERROR_UNKNOWN,
                    _("Unable to move the item with URI '%s' to '%s'"),
                    uri, new_uri);
       return FALSE;
@@ -1318,7 +1318,7 @@ ctk_recent_manager_get_items (GtkRecentManager *manager)
   gchar **uris;
   gsize uris_len, i;
 
-  g_return_val_if_fail (GTK_IS_RECENT_MANAGER (manager), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), NULL);
 
   priv = manager->priv;
   if (!priv->recent_items)
@@ -1377,7 +1377,7 @@ ctk_recent_manager_purge_items (GtkRecentManager  *manager,
   GtkRecentManagerPrivate *priv;
   gint count, purged;
 
-  g_return_val_if_fail (GTK_IS_RECENT_MANAGER (manager), -1);
+  g_return_val_if_fail (CTK_IS_RECENT_MANAGER (manager), -1);
 
   priv = manager->priv;
   if (!priv->recent_items)
@@ -1668,7 +1668,7 @@ ctk_recent_info_get_mime_type (GtkRecentInfo *info)
   g_return_val_if_fail (info != NULL, NULL);
 
   if (!info->mime_type)
-    info->mime_type = g_strdup (GTK_RECENT_DEFAULT_MIME);
+    info->mime_type = g_strdup (CTK_RECENT_DEFAULT_MIME);
 
   return info->mime_type;
 }
@@ -1970,7 +1970,7 @@ get_icon_for_mime_type (const gchar *mime_type,
   info = ctk_icon_theme_lookup_by_gicon (icon_theme,
                                          icon,
                                          pixel_size,
-                                         GTK_ICON_LOOKUP_USE_BUILTIN);
+                                         CTK_ICON_LOOKUP_USE_BUILTIN);
   g_free (content_type);
   g_object_unref (icon);
 
@@ -1994,7 +1994,7 @@ get_icon_fallback (const gchar *icon_name,
 
   retval = ctk_icon_theme_load_icon (icon_theme, icon_name,
                                      size,
-                                     GTK_ICON_LOOKUP_USE_BUILTIN,
+                                     CTK_ICON_LOOKUP_USE_BUILTIN,
                                      NULL);
   g_assert (retval != NULL);
 
@@ -2469,7 +2469,7 @@ ctk_recent_info_has_group (GtkRecentInfo *info,
  *
  * Returns: (nullable) (transfer full): the newly created #GAppInfo, or %NULL.
  *   In case of error, @error will be set either with a
- *   %GTK_RECENT_MANAGER_ERROR or a %G_IO_ERROR
+ *   %CTK_RECENT_MANAGER_ERROR or a %G_IO_ERROR
  */
 GAppInfo *
 ctk_recent_info_create_app_info (GtkRecentInfo  *info,
@@ -2502,8 +2502,8 @@ ctk_recent_info_create_app_info (GtkRecentInfo  *info,
   ai = g_hash_table_lookup (info->apps_lookup, app_name);
   if (ai == NULL)
     {
-      g_set_error (error, GTK_RECENT_MANAGER_ERROR,
-                   GTK_RECENT_MANAGER_ERROR_NOT_REGISTERED,
+      g_set_error (error, CTK_RECENT_MANAGER_ERROR,
+                   CTK_RECENT_MANAGER_ERROR_NOT_REGISTERED,
                    _("No registered application with name '%s' for item with URI '%s' found"),
                    app_name,
                    info->uri);

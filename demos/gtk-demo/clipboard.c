@@ -20,14 +20,14 @@ copy_button_clicked (GtkWidget *button,
   GtkWidget *entry;
   GtkClipboard *clipboard;
 
-  entry = GTK_WIDGET (user_data);
+  entry = CTK_WIDGET (user_data);
 
   /* Get the clipboard object */
   clipboard = ctk_widget_get_clipboard (entry,
                                         GDK_SELECTION_CLIPBOARD);
 
   /* Set clipboard text */
-  ctk_clipboard_set_text (clipboard, ctk_entry_get_text (GTK_ENTRY (entry)), -1);
+  ctk_clipboard_set_text (clipboard, ctk_entry_get_text (CTK_ENTRY (entry)), -1);
 }
 
 void
@@ -37,11 +37,11 @@ paste_received (GtkClipboard *clipboard,
 {
   GtkWidget *entry;
 
-  entry = GTK_WIDGET (user_data);
+  entry = CTK_WIDGET (user_data);
 
   /* Set the entry text */
   if(text)
-    ctk_entry_set_text (GTK_ENTRY (entry), text);
+    ctk_entry_set_text (CTK_ENTRY (entry), text);
 }
 
 void
@@ -51,7 +51,7 @@ paste_button_clicked (GtkWidget *button,
   GtkWidget *entry;
   GtkClipboard *clipboard;
 
-  entry = GTK_WIDGET (user_data);
+  entry = CTK_WIDGET (user_data);
 
   /* Get the clipboard object */
   clipboard = ctk_widget_get_clipboard (entry,
@@ -74,16 +74,16 @@ get_image_pixbuf (GtkImage *image)
 
   switch (ctk_image_get_storage_type (image))
     {
-    case GTK_IMAGE_PIXBUF:
+    case CTK_IMAGE_PIXBUF:
       return g_object_ref (ctk_image_get_pixbuf (image));
-    case GTK_IMAGE_ICON_NAME:
+    case CTK_IMAGE_ICON_NAME:
       ctk_image_get_icon_name (image, &icon_name, &size);
-      icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (GTK_WIDGET (image)));
+      icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (CTK_WIDGET (image)));
       ctk_icon_size_lookup (size, &width, NULL);
       return ctk_icon_theme_load_icon (icon_theme,
                                        icon_name,
                                        width,
-                                       GTK_ICON_LOOKUP_GENERIC_FALLBACK,
+                                       CTK_ICON_LOOKUP_GENERIC_FALLBACK,
                                        NULL);
     default:
       g_warning ("Image storage type %d not handled",
@@ -99,7 +99,7 @@ drag_begin (GtkWidget      *widget,
 {
   GdkPixbuf *pixbuf;
 
-  pixbuf = get_image_pixbuf (GTK_IMAGE (data));
+  pixbuf = get_image_pixbuf (CTK_IMAGE (data));
   ctk_drag_set_icon_pixbuf (context, pixbuf, -2, -2);
   g_object_unref (pixbuf);
 }
@@ -114,7 +114,7 @@ drag_data_get (GtkWidget        *widget,
 {
   GdkPixbuf *pixbuf;
 
-  pixbuf = get_image_pixbuf (GTK_IMAGE (data));
+  pixbuf = get_image_pixbuf (CTK_IMAGE (data));
   ctk_selection_data_set_pixbuf (selection_data, pixbuf);
   g_object_unref (pixbuf);
 }
@@ -134,7 +134,7 @@ drag_data_received (GtkWidget        *widget,
   if (ctk_selection_data_get_length (selection_data) > 0)
     {
       pixbuf = ctk_selection_data_get_pixbuf (selection_data);
-      ctk_image_set_from_pixbuf (GTK_IMAGE (data), pixbuf);
+      ctk_image_set_from_pixbuf (CTK_IMAGE (data), pixbuf);
       g_object_unref (pixbuf);
     }
 }
@@ -147,7 +147,7 @@ copy_image (GtkMenuItem *item,
   GdkPixbuf *pixbuf;
 
   clipboard = ctk_clipboard_get (GDK_SELECTION_CLIPBOARD);
-  pixbuf = get_image_pixbuf (GTK_IMAGE (data));
+  pixbuf = get_image_pixbuf (CTK_IMAGE (data));
 
   ctk_clipboard_set_image (clipboard, pixbuf);
   g_object_unref (pixbuf);
@@ -165,7 +165,7 @@ paste_image (GtkMenuItem *item,
 
   if (pixbuf)
     {
-      ctk_image_set_from_pixbuf (GTK_IMAGE (data), pixbuf);
+      ctk_image_set_from_pixbuf (CTK_IMAGE (data), pixbuf);
       g_object_unref (pixbuf);
     }
 }
@@ -186,14 +186,14 @@ button_press (GtkWidget      *widget,
   item = ctk_menu_item_new_with_mnemonic (_("_Copy"));
   g_signal_connect (item, "activate", G_CALLBACK (copy_image), data);
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 
   item = ctk_menu_item_new_with_mnemonic (_("_Paste"));
   g_signal_connect (item, "activate", G_CALLBACK (paste_image), data);
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 
-  ctk_menu_popup_at_pointer (GTK_MENU (menu), (GdkEvent *) button);
+  ctk_menu_popup_at_pointer (CTK_MENU (menu), (GdkEvent *) button);
   return TRUE;
 }
 
@@ -210,67 +210,67 @@ do_clipboard (GtkWidget *do_widget)
       GtkWidget *ebox, *image;
       GtkClipboard *clipboard;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Clipboard");
+      ctk_window_set_title (CTK_WINDOW (window), "Clipboard");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
 
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
 
       label = ctk_label_new ("\"Copy\" will copy the text\nin the entry to the clipboard");
 
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-      ctk_container_set_border_width (GTK_CONTAINER (hbox), 8);
-      ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+      hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
+      ctk_container_set_border_width (CTK_CONTAINER (hbox), 8);
+      ctk_box_pack_start (CTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
       /* Create the first entry */
       entry = ctk_entry_new ();
-      ctk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (hbox), entry, TRUE, TRUE, 0);
 
       /* Create the button */
       button = ctk_button_new_with_mnemonic (_("_Copy"));
-      ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (hbox), button, FALSE, FALSE, 0);
       g_signal_connect (button, "clicked",
                         G_CALLBACK (copy_button_clicked), entry);
 
       label = ctk_label_new ("\"Paste\" will paste the text from the clipboard to the entry");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-      ctk_container_set_border_width (GTK_CONTAINER (hbox), 8);
-      ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+      hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
+      ctk_container_set_border_width (CTK_CONTAINER (hbox), 8);
+      ctk_box_pack_start (CTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
       /* Create the second entry */
       entry = ctk_entry_new ();
-      ctk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (hbox), entry, TRUE, TRUE, 0);
 
       /* Create the button */
       button = ctk_button_new_with_mnemonic (_("_Paste"));
-      ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (hbox), button, FALSE, FALSE, 0);
       g_signal_connect (button, "clicked",
                         G_CALLBACK (paste_button_clicked), entry);
 
       label = ctk_label_new ("Images can be transferred via the clipboard, too");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-      ctk_container_set_border_width (GTK_CONTAINER (hbox), 8);
-      ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+      hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
+      ctk_container_set_border_width (CTK_CONTAINER (hbox), 8);
+      ctk_box_pack_start (CTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
       /* Create the first image */
       image = ctk_image_new_from_icon_name ("dialog-warning",
-                                            GTK_ICON_SIZE_BUTTON);
+                                            CTK_ICON_SIZE_BUTTON);
       ebox = ctk_event_box_new ();
-      ctk_container_add (GTK_CONTAINER (ebox), image);
-      ctk_container_add (GTK_CONTAINER (hbox), ebox);
+      ctk_container_add (CTK_CONTAINER (ebox), image);
+      ctk_container_add (CTK_CONTAINER (hbox), ebox);
 
       /* make ebox a drag source */
       ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
@@ -281,7 +281,7 @@ do_clipboard (GtkWidget *do_widget)
                         G_CALLBACK (drag_data_get), image);
 
       /* accept drops on ebox */
-      ctk_drag_dest_set (ebox, GTK_DEST_DEFAULT_ALL,
+      ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL,
                          NULL, 0, GDK_ACTION_COPY);
       ctk_drag_dest_add_image_targets (ebox);
       g_signal_connect (ebox, "drag-data-received",
@@ -293,10 +293,10 @@ do_clipboard (GtkWidget *do_widget)
 
       /* Create the second image */
       image = ctk_image_new_from_icon_name ("process-stop",
-                                            GTK_ICON_SIZE_BUTTON);
+                                            CTK_ICON_SIZE_BUTTON);
       ebox = ctk_event_box_new ();
-      ctk_container_add (GTK_CONTAINER (ebox), image);
-      ctk_container_add (GTK_CONTAINER (hbox), ebox);
+      ctk_container_add (CTK_CONTAINER (ebox), image);
+      ctk_container_add (CTK_CONTAINER (hbox), ebox);
 
       /* make ebox a drag source */
       ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
@@ -307,7 +307,7 @@ do_clipboard (GtkWidget *do_widget)
                         G_CALLBACK (drag_data_get), image);
 
       /* accept drops on ebox */
-      ctk_drag_dest_set (ebox, GTK_DEST_DEFAULT_ALL,
+      ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL,
                          NULL, 0, GDK_ACTION_COPY);
       ctk_drag_dest_add_image_targets (ebox);
       g_signal_connect (ebox, "drag-data-received",

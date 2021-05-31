@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_LABEL_PRIVATE_H__
-#define __GTK_LABEL_PRIVATE_H__
+#ifndef __CTK_LABEL_PRIVATE_H__
+#define __CTK_LABEL_PRIVATE_H__
 
 
 #include <gtk/gtklabel.h>
@@ -47,4 +47,4 @@ gboolean     _ctk_label_get_link_focused (GtkLabel *label,
                              
 G_END_DECLS
 
-#endif /* __GTK_LABEL_PRIVATE_H__ */
+#endif /* __CTK_LABEL_PRIVATE_H__ */

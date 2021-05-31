@@ -4461,16 +4461,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "啟用 GOBJECT_DEBUG=instance-count 統計"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "布景主題由 GTK_THEME 控制"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "布景主題由 CTK_THEME 控制"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "後端不支援視窗縮放"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "設定值是由 GTK_TEST_TOUCHSCREEN 所設定"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "設定值是由 CTK_TEST_TOUCHSCREEN 所設定"
 
 #: gtk/inspector/visual.c:817
 msgid ""

@@ -163,15 +163,15 @@ do_printing (GtkWidget *do_widget)
                     G_CALLBACK (end_print), data);
 
   ctk_print_operation_set_use_full_page (operation, FALSE);
-  ctk_print_operation_set_unit (operation, GTK_UNIT_POINTS);
+  ctk_print_operation_set_unit (operation, CTK_UNIT_POINTS);
   ctk_print_operation_set_embed_page_setup (operation, TRUE);
 
   settings = ctk_print_settings_new ();
 
-  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_BASENAME, "gtk-demo");
+  ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_OUTPUT_BASENAME, "gtk-demo");
   ctk_print_operation_set_print_settings (operation, settings);
 
-  ctk_print_operation_run (operation, GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, GTK_WINDOW (do_widget), &error);
+  ctk_print_operation_run (operation, CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, CTK_WINDOW (do_widget), &error);
 
   g_object_unref (operation);
   g_object_unref (settings);
@@ -180,10 +180,10 @@ do_printing (GtkWidget *do_widget)
     {
       GtkWidget *dialog;
 
-      dialog = ctk_message_dialog_new (GTK_WINDOW (do_widget),
-                                       GTK_DIALOG_DESTROY_WITH_PARENT,
-                                       GTK_MESSAGE_ERROR,
-                                       GTK_BUTTONS_CLOSE,
+      dialog = ctk_message_dialog_new (CTK_WINDOW (do_widget),
+                                       CTK_DIALOG_DESTROY_WITH_PARENT,
+                                       CTK_MESSAGE_ERROR,
+                                       CTK_BUTTONS_CLOSE,
                                        "%s", error->message);
       g_error_free (error);
 

@@ -20,7 +20,7 @@
 #include "gtkcsstransientnodeprivate.h"
 #include "gtkprivate.h"
 
-G_DEFINE_TYPE (GtkCssTransientNode, ctk_css_transient_node, GTK_TYPE_CSS_NODE)
+G_DEFINE_TYPE (GtkCssTransientNode, ctk_css_transient_node, CTK_TYPE_CSS_NODE)
 
 static GtkWidgetPath *
 ctk_css_transient_node_create_widget_path (GtkCssNode *node)
@@ -59,13 +59,13 @@ ctk_css_transient_node_update_style (GtkCssNode   *cssnode,
                                      GtkCssStyle  *style)
 {
   /* This should get rid of animations */
-  return GTK_CSS_NODE_CLASS (ctk_css_transient_node_parent_class)->update_style (cssnode, change, 0, style);
+  return CTK_CSS_NODE_CLASS (ctk_css_transient_node_parent_class)->update_style (cssnode, change, 0, style);
 }
 
 static void
 ctk_css_transient_node_class_init (GtkCssTransientNodeClass *klass)
 {
-  GtkCssNodeClass *node_class = GTK_CSS_NODE_CLASS (klass);
+  GtkCssNodeClass *node_class = CTK_CSS_NODE_CLASS (klass);
 
   node_class->create_widget_path = ctk_css_transient_node_create_widget_path;
   node_class->get_widget_path = ctk_css_transient_node_get_widget_path;
@@ -75,7 +75,7 @@ ctk_css_transient_node_class_init (GtkCssTransientNodeClass *klass)
 static void
 ctk_css_transient_node_init (GtkCssTransientNode *cssnode)
 {
-  ctk_css_node_set_visible (GTK_CSS_NODE (cssnode), FALSE);
+  ctk_css_node_set_visible (CTK_CSS_NODE (cssnode), FALSE);
 }
 
 GtkCssNode *
@@ -83,9 +83,9 @@ ctk_css_transient_node_new (GtkCssNode *parent)
 {
   GtkCssNode *result;
 
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_NODE (parent), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_NODE (parent), NULL);
 
-  result = g_object_new (GTK_TYPE_CSS_TRANSIENT_NODE, NULL);
+  result = g_object_new (CTK_TYPE_CSS_TRANSIENT_NODE, NULL);
   ctk_css_node_declaration_unref (result->decl);
   result->decl = ctk_css_node_declaration_ref (parent->decl);
 

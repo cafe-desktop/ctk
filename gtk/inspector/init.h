@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _GTK_INSPECTOR_INIT_H_
-#define _GTK_INSPECTOR_INIT_H_
+#ifndef _CTK_INSPECTOR_INIT_H_
+#define _CTK_INSPECTOR_INIT_H_
 
 G_BEGIN_DECLS
 
@@ -24,6 +24,6 @@ void ctk_inspector_init (void);
 
 G_END_DECLS
 
-#endif // _GTK_INSPECTOR_INIT_H_
+#endif // _CTK_INSPECTOR_INIT_H_
 
 // vim: set et sw=2 ts=2:

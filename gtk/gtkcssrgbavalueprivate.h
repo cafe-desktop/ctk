@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_RGBA_VALUE_PRIVATE_H__
-#define __GTK_CSS_RGBA_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_RGBA_VALUE_PRIVATE_H__
+#define __CTK_CSS_RGBA_VALUE_PRIVATE_H__
 
 #include "gtkcssparserprivate.h"
 #include "gtkcsstypesprivate.h"
@@ -33,4 +33,4 @@ const GdkRGBA * _ctk_css_rgba_value_get_rgba      (const GtkCssValue      *rgba)
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_RGBA_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_RGBA_VALUE_PRIVATE_H__ */

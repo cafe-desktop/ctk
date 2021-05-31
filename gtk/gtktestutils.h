@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TEST_UTILS_H__
-#define __GTK_TEST_UTILS_H__
+#ifndef __CTK_TEST_UTILS_H__
+#define __CTK_TEST_UTILS_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -87,4 +87,4 @@ GtkWidget*      ctk_test_find_label             (GtkWidget      *widget,
                                                  const gchar    *label_pattern);
 G_END_DECLS
 
-#endif /* __GTK_TEST_UTILS_H__ */
+#endif /* __CTK_TEST_UTILS_H__ */

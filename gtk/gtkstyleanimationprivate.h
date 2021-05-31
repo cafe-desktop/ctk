@@ -17,19 +17,19 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_STYLE_ANIMATION_PRIVATE_H__
-#define __GTK_STYLE_ANIMATION_PRIVATE_H__
+#ifndef __CTK_STYLE_ANIMATION_PRIVATE_H__
+#define __CTK_STYLE_ANIMATION_PRIVATE_H__
 
 #include "gtkcssanimatedstyleprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STYLE_ANIMATION           (_ctk_style_animation_get_type ())
-#define GTK_STYLE_ANIMATION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_STYLE_ANIMATION, GtkStyleAnimation))
-#define GTK_STYLE_ANIMATION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_STYLE_ANIMATION, GtkStyleAnimationClass))
-#define GTK_IS_STYLE_ANIMATION(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_STYLE_ANIMATION))
-#define GTK_IS_STYLE_ANIMATION_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_STYLE_ANIMATION))
-#define GTK_STYLE_ANIMATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_STYLE_ANIMATION, GtkStyleAnimationClass))
+#define CTK_TYPE_STYLE_ANIMATION           (_ctk_style_animation_get_type ())
+#define CTK_STYLE_ANIMATION(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_STYLE_ANIMATION, GtkStyleAnimation))
+#define CTK_STYLE_ANIMATION_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_STYLE_ANIMATION, GtkStyleAnimationClass))
+#define CTK_IS_STYLE_ANIMATION(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_STYLE_ANIMATION))
+#define CTK_IS_STYLE_ANIMATION_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_STYLE_ANIMATION))
+#define CTK_STYLE_ANIMATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STYLE_ANIMATION, GtkStyleAnimationClass))
 
 typedef struct _GtkStyleAnimation           GtkStyleAnimation;
 typedef struct _GtkStyleAnimationClass      GtkStyleAnimationClass;
@@ -63,4 +63,4 @@ gboolean        _ctk_style_animation_is_static          (GtkStyleAnimation      
 
 G_END_DECLS
 
-#endif /* __GTK_STYLE_ANIMATION_PRIVATE_H__ */
+#endif /* __CTK_STYLE_ANIMATION_PRIVATE_H__ */

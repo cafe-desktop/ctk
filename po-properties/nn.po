@@ -401,7 +401,7 @@ msgstr "Er viktig"
 #, fuzzy
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr "Om handlinga vert rekna for viktig. Når sann,"
 
 #: gtk/gtkaction.c:374
@@ -961,7 +961,7 @@ msgstr "Standard mellomrom"
 
 #: gtk/gtkbutton.c:461
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "Ekstra plass som skal brukast til CAN_DEFAULT-knappar"
 
 #: gtk/gtkbutton.c:475
@@ -971,7 +971,7 @@ msgstr "Standard utvendig mellomrom"
 #: gtk/gtkbutton.c:476
 #, fuzzy
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
 "Ekstra mellomrom som skal leggjast til på CAN_DEFAULT-knapparsom alltid vert "
@@ -6512,10 +6512,10 @@ msgstr "Ekstra mellomrom å setja mellom barnet og merkelappen"
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Om verktøylinjeoppføringa vert rekna som viktig. Når denne er sann, vil "
-"verktøylinjeknappane visa tekst i GTK_TOOLBAR_BOTH_HORIZ-modus"
+"verktøylinjeknappane visa tekst i CTK_TOOLBAR_BOTH_HORIZ-modus"
 
 #: gtk/gtktoolitemgroup.c:1572
 #, fuzzy

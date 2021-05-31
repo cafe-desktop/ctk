@@ -17,10 +17,10 @@
  * Global clipboard abstraction.
  */
 
-#ifndef __GTK_CLIPBOARD_H__
-#define __GTK_CLIPBOARD_H__
+#ifndef __CTK_CLIPBOARD_H__
+#define __CTK_CLIPBOARD_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,9 +28,9 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CLIPBOARD            (ctk_clipboard_get_type ())
-#define GTK_CLIPBOARD(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CLIPBOARD, GtkClipboard))
-#define GTK_IS_CLIPBOARD(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CLIPBOARD))
+#define CTK_TYPE_CLIPBOARD            (ctk_clipboard_get_type ())
+#define CTK_CLIPBOARD(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CLIPBOARD, GtkClipboard))
+#define CTK_IS_CLIPBOARD(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CLIPBOARD))
 
 /**
  * GtkClipboardReceivedFunc:
@@ -295,4 +295,4 @@ GdkAtom ctk_clipboard_get_selection (GtkClipboard *clipboard);
 
 G_END_DECLS
 
-#endif /* __GTK_CLIPBOARD_H__ */
+#endif /* __CTK_CLIPBOARD_H__ */

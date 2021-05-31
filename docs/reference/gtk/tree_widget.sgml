@@ -153,7 +153,7 @@ ctk_tree_store_set (store, &iter2,
     <informalexample><programlisting><![CDATA[
 GtkWidget *tree;
 
-tree = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+tree = ctk_tree_view_new_with_model (CTK_TREE_MODEL (store));
 ]]></programlisting></informalexample>
 
     <refsect2>
@@ -184,7 +184,7 @@ column = ctk_tree_view_column_new_with_attributes ("Author",
                                                    renderer,
                                                    "text", AUTHOR_COLUMN,
                                                    NULL);
-ctk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+ctk_tree_view_append_column (CTK_TREE_VIEW (tree), column);
 </programlisting></informalexample>
       <para>
        At this point, all the steps in creating a displayable tree have been
@@ -208,8 +208,8 @@ static void tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 /* Setup the selection handler */
 GtkTreeSelection *select;
 
-select = ctk_tree_view_get_selection (GTK_TREE_VIEW (tree));
-ctk_tree_selection_set_mode (select, GTK_SELECTION_SINGLE);
+select = ctk_tree_view_get_selection (CTK_TREE_VIEW (tree));
+ctk_tree_selection_set_mode (select, CTK_SELECTION_SINGLE);
 g_signal_connect (G_OBJECT (select), "changed",
                   G_CALLBACK (tree_selection_changed_cb),
                   NULL);
@@ -274,7 +274,7 @@ setup_tree (void)
    populate_tree_model (store);
 
    /* Create a view */
-   tree = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+   tree = ctk_tree_view_new_with_model (CTK_TREE_MODEL (store));
 
    /* The view now holds a reference.  We can get rid of our own
     * reference */
@@ -294,7 +294,7 @@ setup_tree (void)
                                                       NULL);
 
    /* Add the column to the view. */
-   ctk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+   ctk_tree_view_append_column (CTK_TREE_VIEW (tree), column);
 
    /* Second column.. title of the book. */
    renderer = ctk_cell_renderer_text_new (<!-- -->);
@@ -302,7 +302,7 @@ setup_tree (void)
                                                       renderer,
                                                       "text", TITLE_COLUMN,
                                                       NULL);
-   ctk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+   ctk_tree_view_append_column (CTK_TREE_VIEW (tree), column);
 
    /* Last column.. whether a book is checked out. */
    renderer = ctk_cell_renderer_toggle_new (<!-- -->);
@@ -310,7 +310,7 @@ setup_tree (void)
                                                       renderer,
                                                       "active", CHECKED_COLUMN,
                                                       NULL);
-   ctk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+   ctk_tree_view_append_column (CTK_TREE_VIEW (tree), column);
 
    /* Now we can manipulate the view just like any other GTK widget */
    ...

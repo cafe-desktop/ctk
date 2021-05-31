@@ -15,32 +15,32 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_SECTION_H__
-#define __GTK_CSS_SECTION_H__
+#ifndef __CTK_CSS_SECTION_H__
+#define __CTK_CSS_SECTION_H__
 
 #include <gio/gio.h>
 #include <gdk/gdk.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_SECTION         (ctk_css_section_get_type ())
+#define CTK_TYPE_CSS_SECTION         (ctk_css_section_get_type ())
 
 /**
  * GtkCssSectionType:
- * @GTK_CSS_SECTION_DOCUMENT: The section describes a complete document.
+ * @CTK_CSS_SECTION_DOCUMENT: The section describes a complete document.
  *   This section time is the only one where ctk_css_section_get_parent()
  *   might return %NULL.
- * @GTK_CSS_SECTION_IMPORT: The section defines an import rule.
- * @GTK_CSS_SECTION_COLOR_DEFINITION: The section defines a color. This
+ * @CTK_CSS_SECTION_IMPORT: The section defines an import rule.
+ * @CTK_CSS_SECTION_COLOR_DEFINITION: The section defines a color. This
  *   is a GTK extension to CSS.
- * @GTK_CSS_SECTION_BINDING_SET: The section defines a binding set. This
+ * @CTK_CSS_SECTION_BINDING_SET: The section defines a binding set. This
  *   is a GTK extension to CSS.
- * @GTK_CSS_SECTION_RULESET: The section defines a CSS ruleset.
- * @GTK_CSS_SECTION_SELECTOR: The section defines a CSS selector.
- * @GTK_CSS_SECTION_DECLARATION: The section defines the declaration of
+ * @CTK_CSS_SECTION_RULESET: The section defines a CSS ruleset.
+ * @CTK_CSS_SECTION_SELECTOR: The section defines a CSS selector.
+ * @CTK_CSS_SECTION_DECLARATION: The section defines the declaration of
  *   a CSS variable.
- * @GTK_CSS_SECTION_VALUE: The section defines the value of a CSS declaration.
- * @GTK_CSS_SECTION_KEYFRAMES: The section defines keyframes. See [CSS
+ * @CTK_CSS_SECTION_VALUE: The section defines the value of a CSS declaration.
+ * @CTK_CSS_SECTION_KEYFRAMES: The section defines keyframes. See [CSS
  *   Animations](http://dev.w3.org/csswg/css3-animations/#keyframes) for details. Since 3.6
  *
  * The different types of sections indicate parts of a CSS document as
@@ -55,15 +55,15 @@ G_BEGIN_DECLS
  */
 typedef enum
 {
-  GTK_CSS_SECTION_DOCUMENT,
-  GTK_CSS_SECTION_IMPORT,
-  GTK_CSS_SECTION_COLOR_DEFINITION,
-  GTK_CSS_SECTION_BINDING_SET,
-  GTK_CSS_SECTION_RULESET,
-  GTK_CSS_SECTION_SELECTOR,
-  GTK_CSS_SECTION_DECLARATION,
-  GTK_CSS_SECTION_VALUE,
-  GTK_CSS_SECTION_KEYFRAMES
+  CTK_CSS_SECTION_DOCUMENT,
+  CTK_CSS_SECTION_IMPORT,
+  CTK_CSS_SECTION_COLOR_DEFINITION,
+  CTK_CSS_SECTION_BINDING_SET,
+  CTK_CSS_SECTION_RULESET,
+  CTK_CSS_SECTION_SELECTOR,
+  CTK_CSS_SECTION_DECLARATION,
+  CTK_CSS_SECTION_VALUE,
+  CTK_CSS_SECTION_KEYFRAMES
 } GtkCssSectionType;
 
 /**
@@ -102,4 +102,4 @@ guint              ctk_css_section_get_end_position    (const GtkCssSection  *se
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_SECTION_H__ */
+#endif /* __CTK_CSS_SECTION_H__ */

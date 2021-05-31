@@ -68,14 +68,14 @@ struct _GtkGestureLongPressPrivate
 
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureLongPress, ctk_gesture_long_press, GTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureLongPress, ctk_gesture_long_press, CTK_TYPE_GESTURE_SINGLE)
 
 static void
 ctk_gesture_long_press_init (GtkGestureLongPress *gesture)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (CTK_GESTURE_LONG_PRESS (gesture));
   priv->delay_factor = 1.0;
 }
 
@@ -84,12 +84,12 @@ ctk_gesture_long_press_check (GtkGesture *gesture)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (CTK_GESTURE_LONG_PRESS (gesture));
 
   if (priv->cancelled)
     return FALSE;
 
-  return GTK_GESTURE_CLASS (ctk_gesture_long_press_parent_class)->check (gesture);
+  return CTK_GESTURE_CLASS (ctk_gesture_long_press_parent_class)->check (gesture);
 }
 
 static gboolean
@@ -101,8 +101,8 @@ _ctk_gesture_long_press_timeout (gpointer user_data)
   gdouble x, y;
 
   priv = ctk_gesture_long_press_get_instance_private (gesture);
-  sequence = ctk_gesture_get_last_updated_sequence (GTK_GESTURE (gesture));
-  ctk_gesture_get_point (GTK_GESTURE (gesture), sequence, &x, &y);
+  sequence = ctk_gesture_get_last_updated_sequence (CTK_GESTURE (gesture));
+  ctk_gesture_get_point (CTK_GESTURE (gesture), sequence, &x, &y);
 
   priv->timeout_id = 0;
   priv->triggered = TRUE;
@@ -120,8 +120,8 @@ ctk_gesture_long_press_begin (GtkGesture       *gesture,
   GtkWidget *widget;
   gint delay;
 
-  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
-  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (CTK_GESTURE_LONG_PRESS (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (gesture, sequence);
 
   if (!event ||
@@ -129,7 +129,7 @@ ctk_gesture_long_press_begin (GtkGesture       *gesture,
        event->type != GDK_TOUCH_BEGIN))
     return;
 
-  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
+  widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
   g_object_get (ctk_widget_get_settings (widget),
                 "gtk-long-press-time", &delay,
                 NULL);
@@ -152,8 +152,8 @@ ctk_gesture_long_press_update (GtkGesture       *gesture,
   GtkWidget *widget;
   gdouble x, y;
 
-  widget = ctk_event_controller_get_widget (GTK_EVENT_CONTROLLER (gesture));
-  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (CTK_GESTURE_LONG_PRESS (gesture));
   ctk_gesture_get_point (gesture, sequence, &x, &y);
 
   if (ctk_drag_check_threshold (widget, priv->initial_x, priv->initial_y, x, y))
@@ -176,7 +176,7 @@ ctk_gesture_long_press_end (GtkGesture       *gesture,
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (gesture));
+  priv = ctk_gesture_long_press_get_instance_private (CTK_GESTURE_LONG_PRESS (gesture));
 
   if (priv->timeout_id)
     {
@@ -193,7 +193,7 @@ ctk_gesture_long_press_cancel (GtkGesture       *gesture,
                                GdkEventSequence *sequence)
 {
   ctk_gesture_long_press_end (gesture, sequence);
-  GTK_GESTURE_CLASS (ctk_gesture_long_press_parent_class)->cancel (gesture, sequence);
+  CTK_GESTURE_CLASS (ctk_gesture_long_press_parent_class)->cancel (gesture, sequence);
 }
 
 static void
@@ -201,7 +201,7 @@ ctk_gesture_long_press_sequence_state_changed (GtkGesture            *gesture,
                                                GdkEventSequence      *sequence,
                                                GtkEventSequenceState  state)
 {
-  if (state == GTK_EVENT_SEQUENCE_DENIED)
+  if (state == CTK_EVENT_SEQUENCE_DENIED)
     ctk_gesture_long_press_end (gesture, sequence);
 }
 
@@ -210,7 +210,7 @@ ctk_gesture_long_press_finalize (GObject *object)
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
+  priv = ctk_gesture_long_press_get_instance_private (CTK_GESTURE_LONG_PRESS (object));
 
   if (priv->timeout_id)
     g_source_remove (priv->timeout_id);
@@ -226,7 +226,7 @@ ctk_gesture_long_press_get_property (GObject    *object,
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
+  priv = ctk_gesture_long_press_get_instance_private (CTK_GESTURE_LONG_PRESS (object));
 
   switch (property_id)
     {
@@ -248,7 +248,7 @@ ctk_gesture_long_press_set_property (GObject      *object,
 {
   GtkGestureLongPressPrivate *priv;
 
-  priv = ctk_gesture_long_press_get_instance_private (GTK_GESTURE_LONG_PRESS (object));
+  priv = ctk_gesture_long_press_get_instance_private (CTK_GESTURE_LONG_PRESS (object));
 
   switch (property_id)
     {
@@ -266,7 +266,7 @@ static void
 ctk_gesture_long_press_class_init (GtkGestureLongPressClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkGestureClass *gesture_class = GTK_GESTURE_CLASS (klass);
+  GtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
 
   object_class->finalize = ctk_gesture_long_press_finalize;
   object_class->get_property = ctk_gesture_long_press_get_property;
@@ -340,9 +340,9 @@ ctk_gesture_long_press_class_init (GtkGestureLongPressClass *klass)
 GtkGesture *
 ctk_gesture_long_press_new (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  return g_object_new (GTK_TYPE_GESTURE_LONG_PRESS,
+  return g_object_new (CTK_TYPE_GESTURE_LONG_PRESS,
                        "widget", widget,
                        NULL);
 }

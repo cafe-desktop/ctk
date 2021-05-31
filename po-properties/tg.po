@@ -279,10 +279,10 @@ msgstr "Муҳим аст"
 #: ../gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Оё амал муҳим пешбинӣ шудааст ё на. Вақте ки ДУРУСТ аст, ваколати объекти "
-"абзор барои ин амал матнро дар шакли GTK_TOOLBAR_BOTH_HORIZ нишон медиҳад."
+"абзор барои ин амал матнро дар шакли CTK_TOOLBAR_BOTH_HORIZ нишон медиҳад."
 
 #: ../gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1506,8 +1506,8 @@ msgid "Default Spacing"
 msgstr "Фосилагузории пешфарз"
 
 #: ../gtk/gtkbutton.c:504
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Фосилаи иловагӣ барои илова кардан ба тугмаҳои GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Фосилаи иловагӣ барои илова кардан ба тугмаҳои CTK_CAN_DEFAULT"
 
 #: ../gtk/gtkbutton.c:518
 msgid "Default Outside Spacing"
@@ -1515,10 +1515,10 @@ msgstr "Фосилагузории берунии пешфарз"
 
 #: ../gtk/gtkbutton.c:519
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Фосилаи иловагӣ барои илова кардан ба тугмаҳои GTK_CAN_DEFAULT , ки ҳамеша "
+"Фосилаи иловагӣ барои илова кардан ба тугмаҳои CTK_CAN_DEFAULT , ки ҳамеша "
 "аз марз берун мебароянд"
 
 #: ../gtk/gtkbutton.c:524
@@ -3822,9 +3822,9 @@ msgid "Baseline Row"
 msgstr "Сатри зерхат"
 
 #: ../gtk/gtkgrid.c:1764
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
-"Сатр барои мосшудави ба зерхат вақте ки valign  GTK_ALIGN_BASELINE мебошад"
+"Сатр барои мосшудави ба зерхат вақте ки valign  CTK_ALIGN_BASELINE мебошад"
 
 #: ../gtk/gtkgrid.c:1782
 msgid "The row number to attach the top side of a child widget to"
@@ -7584,10 +7584,10 @@ msgstr "Фосилагузорӣ бо аиксел байни нишона ва 
 #: ../gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Оё объекти навори абзор муҳим ба ҳисоб меравад. Агар TRUE бошад, тугмаҳои "
-"навори абзор ҳолати GTK_TOOLBAR_BOTH_HORIZ -ро нишон медиҳанд"
+"навори абзор ҳолати CTK_TOOLBAR_BOTH_HORIZ -ро нишон медиҳанд"
 
 #: ../gtk/gtktoolitemgroup.c:1594
 msgid "The human-readable title of this item group"

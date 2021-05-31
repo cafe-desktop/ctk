@@ -55,7 +55,7 @@ struct _GtkSearchEngineQuartzPrivate
   gboolean query_finished;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkSearchEngineQuartz, _ctk_search_engine_quartz, GTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkSearchEngineQuartz, _ctk_search_engine_quartz, CTK_TYPE_SEARCH_ENGINE)
 
 
 /* Implementation of the objective-C object */
@@ -63,7 +63,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkSearchEngineQuartz, _ctk_search_engine_quartz, GT
 
 - (void) setEngine:(GtkSearchEngine *)quartz_engine
 {
-  g_return_if_fail (GTK_IS_SEARCH_ENGINE (quartz_engine));
+  g_return_if_fail (CTK_IS_SEARCH_ENGINE (quartz_engine));
 
   engine = quartz_engine;
   submitted_hits = 0;
@@ -145,7 +145,7 @@ ctk_search_engine_quartz_finalize (GObject *object)
 
   QUARTZ_POOL_ALLOC;
 
-  quartz = GTK_SEARCH_ENGINE_QUARTZ (object);
+  quartz = CTK_SEARCH_ENGINE_QUARTZ (object);
 
   [[NSNotificationCenter defaultCenter] removeObserver:quartz->priv->receiver];
 
@@ -170,7 +170,7 @@ ctk_search_engine_quartz_start (GtkSearchEngine *engine)
 
   QUARTZ_POOL_ALLOC;
 
-  quartz = GTK_SEARCH_ENGINE_QUARTZ (engine);
+  quartz = CTK_SEARCH_ENGINE_QUARTZ (engine);
 
   [quartz->priv->ns_query startQuery];
 
@@ -184,7 +184,7 @@ ctk_search_engine_quartz_stop (GtkSearchEngine *engine)
 
   QUARTZ_POOL_ALLOC;
 
-  quartz = GTK_SEARCH_ENGINE_QUARTZ (engine);
+  quartz = CTK_SEARCH_ENGINE_QUARTZ (engine);
 
   [quartz->priv->ns_query stopQuery];
 
@@ -201,7 +201,7 @@ ctk_search_engine_quartz_set_query (GtkSearchEngine *engine,
 
   QUARTZ_POOL_ALLOC;
 
-  quartz = GTK_SEARCH_ENGINE_QUARTZ (engine);
+  quartz = CTK_SEARCH_ENGINE_QUARTZ (engine);
 
   if (query)
     g_object_ref (query);
@@ -249,7 +249,7 @@ _ctk_search_engine_quartz_class_init (GtkSearchEngineQuartzClass *class)
   gobject_class = G_OBJECT_CLASS (class);
   gobject_class->finalize = ctk_search_engine_quartz_finalize;
   
-  engine_class = GTK_SEARCH_ENGINE_CLASS (class);
+  engine_class = CTK_SEARCH_ENGINE_CLASS (class);
   engine_class->set_query = ctk_search_engine_quartz_set_query;
   engine_class->start = ctk_search_engine_quartz_start;
   engine_class->stop = ctk_search_engine_quartz_stop;
@@ -265,7 +265,7 @@ _ctk_search_engine_quartz_init (GtkSearchEngineQuartz *engine)
   engine->priv->ns_query = [[NSMetadataQuery alloc] init];
   engine->priv->receiver = [[ResultReceiver alloc] init];
 
-  [engine->priv->receiver setEngine:GTK_SEARCH_ENGINE (engine)];
+  [engine->priv->receiver setEngine:CTK_SEARCH_ENGINE (engine)];
 
   [[NSNotificationCenter defaultCenter] addObserver:engine->priv->receiver
 				        selector:@selector(queryUpdate:)
@@ -288,7 +288,7 @@ GtkSearchEngine *
 _ctk_search_engine_quartz_new (void)
 {
 #ifdef GDK_WINDOWING_QUARTZ
-  return g_object_new (GTK_TYPE_SEARCH_ENGINE_QUARTZ, NULL);
+  return g_object_new (CTK_TYPE_SEARCH_ENGINE_QUARTZ, NULL);
 #else
   return NULL;
 #endif

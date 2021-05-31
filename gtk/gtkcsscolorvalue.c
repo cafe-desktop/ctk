@@ -40,7 +40,7 @@ typedef enum {
 
 struct _GtkCssValue
 {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   ColorType type;
   GtkCssValue *last_value;
 
@@ -110,32 +110,32 @@ ctk_css_value_color_get_fallback (guint                    property_id,
 
   switch (property_id)
     {
-      case GTK_CSS_PROPERTY_BACKGROUND_IMAGE:
-      case GTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE:
-      case GTK_CSS_PROPERTY_TEXT_SHADOW:
-      case GTK_CSS_PROPERTY_ICON_SHADOW:
-      case GTK_CSS_PROPERTY_BOX_SHADOW:
+      case CTK_CSS_PROPERTY_BACKGROUND_IMAGE:
+      case CTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE:
+      case CTK_CSS_PROPERTY_TEXT_SHADOW:
+      case CTK_CSS_PROPERTY_ICON_SHADOW:
+      case CTK_CSS_PROPERTY_BOX_SHADOW:
         return _ctk_css_rgba_value_new_from_rgba (&transparent);
-      case GTK_CSS_PROPERTY_COLOR:
-      case GTK_CSS_PROPERTY_BACKGROUND_COLOR:
-      case GTK_CSS_PROPERTY_BORDER_TOP_COLOR:
-      case GTK_CSS_PROPERTY_BORDER_RIGHT_COLOR:
-      case GTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR:
-      case GTK_CSS_PROPERTY_BORDER_LEFT_COLOR:
-      case GTK_CSS_PROPERTY_OUTLINE_COLOR:
-      case GTK_CSS_PROPERTY_CARET_COLOR:
-      case GTK_CSS_PROPERTY_SECONDARY_CARET_COLOR:
+      case CTK_CSS_PROPERTY_COLOR:
+      case CTK_CSS_PROPERTY_BACKGROUND_COLOR:
+      case CTK_CSS_PROPERTY_BORDER_TOP_COLOR:
+      case CTK_CSS_PROPERTY_BORDER_RIGHT_COLOR:
+      case CTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR:
+      case CTK_CSS_PROPERTY_BORDER_LEFT_COLOR:
+      case CTK_CSS_PROPERTY_OUTLINE_COLOR:
+      case CTK_CSS_PROPERTY_CARET_COLOR:
+      case CTK_CSS_PROPERTY_SECONDARY_CARET_COLOR:
         return _ctk_css_value_compute (_ctk_css_style_property_get_initial_value (_ctk_css_style_property_lookup_by_id (property_id)),
                                        property_id,
                                        provider,
                                        style,
                                        parent_style);
-      case GTK_CSS_PROPERTY_ICON_PALETTE:
-        return _ctk_css_value_ref (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR));
+      case CTK_CSS_PROPERTY_ICON_PALETTE:
+        return _ctk_css_value_ref (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_COLOR));
       default:
-        if (property_id < GTK_CSS_PROPERTY_N_PROPERTIES)
+        if (property_id < CTK_CSS_PROPERTY_N_PROPERTIES)
           g_warning ("No fallback color defined for property '%s'", 
-                     _ctk_style_property_get_name (GTK_STYLE_PROPERTY (_ctk_css_style_property_lookup_by_id (property_id))));
+                     _ctk_style_property_get_name (CTK_STYLE_PROPERTY (_ctk_css_style_property_lookup_by_id (property_id))));
         return _ctk_css_rgba_value_new_from_rgba (&transparent);
     }
 }
@@ -149,7 +149,7 @@ _ctk_css_color_value_resolve (GtkCssValue             *color,
   GtkCssValue *value;
 
   ctk_internal_return_val_if_fail (color != NULL, NULL);
-  ctk_internal_return_val_if_fail (provider == NULL || GTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
+  ctk_internal_return_val_if_fail (provider == NULL || CTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
 
   switch (color->type)
     {
@@ -259,7 +259,7 @@ _ctk_css_color_value_resolve (GtkCssValue             *color,
         }
       else
         {
-          return _ctk_css_color_value_resolve (_ctk_css_style_property_get_initial_value (_ctk_css_style_property_lookup_by_id (GTK_CSS_PROPERTY_COLOR)),
+          return _ctk_css_color_value_resolve (_ctk_css_style_property_get_initial_value (_ctk_css_style_property_lookup_by_id (CTK_CSS_PROPERTY_COLOR)),
                                                provider,
                                                NULL,
                                                cycle_list);
@@ -299,16 +299,16 @@ ctk_css_value_color_compute (GtkCssValue             *value,
    * value of the ‘color’ property. If the ‘currentColor’ keyword is
    * set on the ‘color’ property itself, it is treated as ‘color: inherit’. 
    */
-  if (property_id == GTK_CSS_PROPERTY_COLOR)
+  if (property_id == CTK_CSS_PROPERTY_COLOR)
     {
       if (parent_style)
-        current = ctk_css_style_get_value (parent_style, GTK_CSS_PROPERTY_COLOR);
+        current = ctk_css_style_get_value (parent_style, CTK_CSS_PROPERTY_COLOR);
       else
         current = NULL;
     }
   else
     {
-      current = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR);
+      current = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_COLOR);
     }
   
   resolved = _ctk_css_color_value_resolve (value,
@@ -423,7 +423,7 @@ ctk_css_value_color_print (const GtkCssValue *value,
     case COLOR_TYPE_WIN32:
       {
         const char *name;
-        g_string_append (string, GTK_WIN32_THEME_SYMBOLIC_COLOR_NAME"(");
+        g_string_append (string, CTK_WIN32_THEME_SYMBOLIC_COLOR_NAME"(");
         ctk_win32_theme_print (value->sym_col.win32.theme, string);
         g_string_append (string, ", ");
         name = ctk_win32_get_sys_color_name_for_id (value->sym_col.win32.id);
@@ -442,7 +442,7 @@ ctk_css_value_color_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_COLOR = {
+static const GtkCssValueClass CTK_CSS_VALUE_COLOR = {
   ctk_css_value_color_free,
   ctk_css_value_color_compute,
   ctk_css_value_color_equal,
@@ -457,7 +457,7 @@ _ctk_css_color_value_new_literal (const GdkRGBA *color)
 
   g_return_val_if_fail (color != NULL, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_LITERAL;
   value->last_value = _ctk_css_rgba_value_new_from_rgba (color);
 
@@ -482,7 +482,7 @@ _ctk_css_color_value_new_name (const gchar *name)
 
   ctk_internal_return_val_if_fail (name != NULL, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_NAME;
   value->sym_col.name = g_strdup (name);
 
@@ -495,9 +495,9 @@ _ctk_css_color_value_new_shade (GtkCssValue *color,
 {
   GtkCssValue *value;
 
-  ctk_internal_return_val_if_fail (color->class == &GTK_CSS_VALUE_COLOR, NULL);
+  ctk_internal_return_val_if_fail (color->class == &CTK_CSS_VALUE_COLOR, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_SHADE;
   value->sym_col.shade.color = _ctk_css_value_ref (color);
   value->sym_col.shade.factor = factor;
@@ -511,9 +511,9 @@ _ctk_css_color_value_new_alpha (GtkCssValue *color,
 {
   GtkCssValue *value;
 
-  ctk_internal_return_val_if_fail (color->class == &GTK_CSS_VALUE_COLOR, NULL);
+  ctk_internal_return_val_if_fail (color->class == &CTK_CSS_VALUE_COLOR, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_ALPHA;
   value->sym_col.alpha.color = _ctk_css_value_ref (color);
   value->sym_col.alpha.factor = factor;
@@ -528,10 +528,10 @@ _ctk_css_color_value_new_mix (GtkCssValue *color1,
 {
   GtkCssValue *value;
 
-  ctk_internal_return_val_if_fail (color1->class == &GTK_CSS_VALUE_COLOR, NULL);
-  ctk_internal_return_val_if_fail (color2->class == &GTK_CSS_VALUE_COLOR, NULL);
+  ctk_internal_return_val_if_fail (color1->class == &CTK_CSS_VALUE_COLOR, NULL);
+  ctk_internal_return_val_if_fail (color2->class == &CTK_CSS_VALUE_COLOR, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_MIX;
   value->sym_col.mix.color1 = _ctk_css_value_ref (color1);
   value->sym_col.mix.color2 = _ctk_css_value_ref (color2);
@@ -548,7 +548,7 @@ ctk_css_color_value_new_win32_for_theme (GtkWin32Theme *theme,
 
   ctk_internal_return_val_if_fail (theme != NULL, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_WIN32;
   value->sym_col.win32.theme = ctk_win32_theme_ref (theme);
   value->sym_col.win32.id = id;
@@ -575,7 +575,7 @@ _ctk_css_color_value_new_win32 (const gchar *theme_class,
 GtkCssValue *
 _ctk_css_color_value_new_current_color (void)
 {
-  static GtkCssValue current_color = { &GTK_CSS_VALUE_COLOR, 1, COLOR_TYPE_CURRENT_COLOR, NULL, };
+  static GtkCssValue current_color = { &CTK_CSS_VALUE_COLOR, 1, COLOR_TYPE_CURRENT_COLOR, NULL, };
 
   return _ctk_css_value_ref (&current_color);
 }
@@ -797,7 +797,7 @@ _ctk_css_color_value_parse (GtkCssParser *parser)
   GdkRGBA rgba;
   guint color;
   const char *names[] = {"rgba", "rgb",  "lighter", "darker", "shade", "alpha", "mix",
-			 GTK_WIN32_THEME_SYMBOLIC_COLOR_NAME};
+			 CTK_WIN32_THEME_SYMBOLIC_COLOR_NAME};
   char *name;
 
   if (_ctk_css_parser_try (parser, "currentColor", TRUE))

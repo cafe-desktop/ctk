@@ -332,10 +332,10 @@ msgstr "Är viktig"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Huruvida åtgärden anses viktig. Då TRUE visar ombud för verktygsobjektet för "
-"denna åtgärd text i GTK_TOOLBAR_BOTH_HORIZ-läge."
+"denna åtgärd text i CTK_TOOLBAR_BOTH_HORIZ-läge."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1820,8 +1820,8 @@ msgid "Default Spacing"
 msgstr "Standardavstånd"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Extra utrymme att lägga till för GTK_CAN_DEFAULT-knappar"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Extra utrymme att lägga till för CTK_CAN_DEFAULT-knappar"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1829,10 +1829,10 @@ msgstr "Standardavstånd på utsidan"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Extra utrymme att lägga till för GTK_CAN_DEFAULT-knappar som alltid visas "
+"Extra utrymme att lägga till för CTK_CAN_DEFAULT-knappar som alltid visas "
 "utanför kanten"
 
 #: gtk/gtkbutton.c:556
@@ -4324,8 +4324,8 @@ msgid "Baseline Row"
 msgstr "Rad för baslinje"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
-msgstr "Raden som ska justeras till baslinjen när valign är GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
+msgstr "Raden som ska justeras till baslinjen när valign är CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8527,10 +8527,10 @@ msgstr "Avstånd mellan ikonen och etikett (i bildpunkter)"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Huruvida verktygsfältsobjektet är viktigt. Då detta är TRUE visar "
-"verktygsfältsknappar text i GTK_TOOLBAR_BOTH_HORIZ-läge"
+"verktygsfältsknappar text i CTK_TOOLBAR_BOTH_HORIZ-läge"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

@@ -87,7 +87,7 @@ progressive_prepared_callback (GdkPixbufLoader* loader,
   GdkPixbuf* pixbuf;
   GtkWidget* image;
 
-  image = GTK_WIDGET (data);
+  image = CTK_WIDGET (data);
     
   pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
 
@@ -99,7 +99,7 @@ progressive_prepared_callback (GdkPixbufLoader* loader,
   /* Could set the pixbuf instead, if we only wanted to display
    * static images.
    */
-  ctk_image_set_from_animation (GTK_IMAGE (image),
+  ctk_image_set_from_animation (CTK_IMAGE (image),
                                 gdk_pixbuf_loader_get_animation (loader));
 }
 
@@ -110,7 +110,7 @@ progressive_updated_callback (GdkPixbufLoader* loader,
 {
   GtkWidget* image;
   
-  image = GTK_WIDGET (data);
+  image = CTK_WIDGET (data);
 
   /* We know the pixbuf inside the GtkImage has changed, but the image
    * itself doesn't know this; so queue a redraw.  If we wanted to be
@@ -134,7 +134,7 @@ progressive_timeout (gpointer data)
   GtkWidget *image;
   LoadContext *lc;
   
-  image = GTK_WIDGET (data);
+  image = CTK_WIDGET (data);
   lc = get_load_context (image);
   
   /* This shows off fully-paranoid error handling, so looks scary.
@@ -154,10 +154,10 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
           
-          dialog = ctk_message_dialog_new (GTK_WINDOW (lc->window),
-                                           GTK_DIALOG_DESTROY_WITH_PARENT,
-                                           GTK_MESSAGE_ERROR,
-                                           GTK_BUTTONS_CLOSE,
+          dialog = ctk_message_dialog_new (CTK_WINDOW (lc->window),
+                                           CTK_DIALOG_DESTROY_WITH_PARENT,
+                                           CTK_MESSAGE_ERROR,
+                                           CTK_BUTTONS_CLOSE,
                                            "Failure reading image file 'alphatest.png': %s",
                                            g_strerror (errno));
 
@@ -180,10 +180,10 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
           
-          dialog = ctk_message_dialog_new (GTK_WINDOW (lc->window),
-                                           GTK_DIALOG_DESTROY_WITH_PARENT,
-                                           GTK_MESSAGE_ERROR,
-                                           GTK_BUTTONS_CLOSE,
+          dialog = ctk_message_dialog_new (CTK_WINDOW (lc->window),
+                                           CTK_DIALOG_DESTROY_WITH_PARENT,
+                                           CTK_MESSAGE_ERROR,
+                                           CTK_BUTTONS_CLOSE,
                                            "Failed to load image: %s",
                                            error->message);
 
@@ -217,10 +217,10 @@ progressive_timeout (gpointer data)
             {
               GtkWidget *dialog;
               
-              dialog = ctk_message_dialog_new (GTK_WINDOW (lc->window),
-                                               GTK_DIALOG_DESTROY_WITH_PARENT,
-                                               GTK_MESSAGE_ERROR,
-                                               GTK_BUTTONS_CLOSE,
+              dialog = ctk_message_dialog_new (CTK_WINDOW (lc->window),
+                                               CTK_DIALOG_DESTROY_WITH_PARENT,
+                                               CTK_MESSAGE_ERROR,
+                                               CTK_BUTTONS_CLOSE,
                                                "Failed to load image: %s",
                                                error->message);
               
@@ -251,10 +251,10 @@ progressive_timeout (gpointer data)
         {
           GtkWidget *dialog;
           
-          dialog = ctk_message_dialog_new (GTK_WINDOW (lc->window),
-                                           GTK_DIALOG_DESTROY_WITH_PARENT,
-                                           GTK_MESSAGE_ERROR,
-                                           GTK_BUTTONS_CLOSE,
+          dialog = ctk_message_dialog_new (CTK_WINDOW (lc->window),
+                                           CTK_DIALOG_DESTROY_WITH_PARENT,
+                                           CTK_MESSAGE_ERROR,
+                                           CTK_BUTTONS_CLOSE,
                                            "Unable to open image file '%s': %s",
                                            lc->filename,
                                            g_strerror (errno));
@@ -318,34 +318,34 @@ do_image (const char *filename)
   gchar *str, *escaped;
   LoadContext *lc;
   
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), "Image Loading");
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), "Image Loading");
 
-  ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+  ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+  ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   label = ctk_label_new (NULL);
-  ctk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+  ctk_label_set_line_wrap (CTK_LABEL (label), TRUE);
   escaped = g_markup_escape_text (filename, -1);
   str = g_strdup_printf ("Progressively loading: <b>%s</b>", escaped);
-  ctk_label_set_markup (GTK_LABEL (label),
+  ctk_label_set_markup (CTK_LABEL (label),
                         str);
   g_free (escaped);
   g_free (str);
   
-  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
       
   frame = ctk_frame_new (NULL);
-  ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-  ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-  ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+  ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+  ctk_widget_set_halign (frame, CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (frame, CTK_ALIGN_CENTER);
+  ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
   image = ctk_image_new_from_pixbuf (NULL);
-  ctk_container_add (GTK_CONTAINER (frame), image);
+  ctk_container_add (CTK_CONTAINER (frame), image);
 
   lc = get_load_context (image);
 
@@ -375,34 +375,34 @@ do_nonprogressive (const gchar *filename)
   GtkWidget *window;
   gchar *str, *escaped;
   
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), "Animation");
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), "Animation");
 
-  ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+  ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+  ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   label = ctk_label_new (NULL);
-  ctk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+  ctk_label_set_line_wrap (CTK_LABEL (label), TRUE);
   escaped = g_markup_escape_text (filename, -1);
   str = g_strdup_printf ("Loaded from file: <b>%s</b>", escaped);
-  ctk_label_set_markup (GTK_LABEL (label),
+  ctk_label_set_markup (CTK_LABEL (label),
                         str);
   g_free (escaped);
   g_free (str);
   
-  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
       
   frame = ctk_frame_new (NULL);
-  ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-  ctk_widget_set_halign (frame, GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (frame, GTK_ALIGN_CENTER);
-  ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+  ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+  ctk_widget_set_halign (frame, CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (frame, CTK_ALIGN_CENTER);
+  ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
   image = ctk_image_new_from_file (filename);
-  ctk_container_add (GTK_CONTAINER (frame), image);
+  ctk_container_add (CTK_CONTAINER (frame), image);
 
   g_signal_connect (window, "destroy",
 		    G_CALLBACK (ctk_main_quit), NULL);

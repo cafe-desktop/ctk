@@ -17,10 +17,10 @@
  * Author: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_APPLICATION_H__
-#define __GTK_APPLICATION_H__
+#ifndef __CTK_APPLICATION_H__
+#define __CTK_APPLICATION_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APPLICATION            (ctk_application_get_type ())
-#define GTK_APPLICATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_APPLICATION, GtkApplication))
-#define GTK_APPLICATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_APPLICATION, GtkApplicationClass))
-#define GTK_IS_APPLICATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_APPLICATION))
-#define GTK_IS_APPLICATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_APPLICATION))
-#define GTK_APPLICATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_APPLICATION, GtkApplicationClass))
+#define CTK_TYPE_APPLICATION            (ctk_application_get_type ())
+#define CTK_APPLICATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_APPLICATION, GtkApplication))
+#define CTK_APPLICATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_APPLICATION, GtkApplicationClass))
+#define CTK_IS_APPLICATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_APPLICATION))
+#define CTK_IS_APPLICATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_APPLICATION))
+#define CTK_APPLICATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_APPLICATION, GtkApplicationClass))
 
 typedef struct _GtkApplication        GtkApplication;
 typedef struct _GtkApplicationClass   GtkApplicationClass;
@@ -114,10 +114,10 @@ void             ctk_application_remove_accelerator (GtkApplication *application
 
 typedef enum
 {
-  GTK_APPLICATION_INHIBIT_LOGOUT  = (1 << 0),
-  GTK_APPLICATION_INHIBIT_SWITCH  = (1 << 1),
-  GTK_APPLICATION_INHIBIT_SUSPEND = (1 << 2),
-  GTK_APPLICATION_INHIBIT_IDLE    = (1 << 3)
+  CTK_APPLICATION_INHIBIT_LOGOUT  = (1 << 0),
+  CTK_APPLICATION_INHIBIT_SWITCH  = (1 << 1),
+  CTK_APPLICATION_INHIBIT_SUSPEND = (1 << 2),
+  CTK_APPLICATION_INHIBIT_IDLE    = (1 << 3)
 } GtkApplicationInhibitFlags;
 
 GDK_AVAILABLE_IN_3_4
@@ -166,4 +166,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkApplication, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __GTK_APPLICATION_H__ */
+#endif /* __CTK_APPLICATION_H__ */

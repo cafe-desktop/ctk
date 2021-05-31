@@ -114,7 +114,7 @@
 
     <para>
       $HOME/.gtk-3.0 is no longer in the default module load path.
-      If you want to load modules from there, add it to the GTK_PATH
+      If you want to load modules from there, add it to the CTK_PATH
       environment variable.
     </para>
   </section>
@@ -225,7 +225,7 @@
     <title>Changes in GTK+ 3.14</title>
 
     <para>
-      A new state, GTK_STATE_FLAG_CHECKED, has been added for checked states
+      A new state, CTK_STATE_FLAG_CHECKED, has been added for checked states
       of radio and check buttons and menuitems. Applications that are using
       GTK+ styles without widgets will need adjustments.
     </para>
@@ -237,7 +237,7 @@
     <para>
       The icon theme code has become a little pickier about sizes and is not
       automatically scaling icons beyond the limits defined in the icon theme
-      unless explicitly asked to do so with GTK_ICON_LOOKUP_FORCE_SIZE.
+      unless explicitly asked to do so with CTK_ICON_LOOKUP_FORCE_SIZE.
     </para>
 
     <para>

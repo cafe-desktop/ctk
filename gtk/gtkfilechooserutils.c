@@ -97,37 +97,37 @@ void
 _ctk_file_chooser_install_properties (GObjectClass *klass)
 {
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_ACTION,
+				    CTK_FILE_CHOOSER_PROP_ACTION,
 				    "action");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_EXTRA_WIDGET,
+				    CTK_FILE_CHOOSER_PROP_EXTRA_WIDGET,
 				    "extra-widget");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_FILTER,
+				    CTK_FILE_CHOOSER_PROP_FILTER,
 				    "filter");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_LOCAL_ONLY,
+				    CTK_FILE_CHOOSER_PROP_LOCAL_ONLY,
 				    "local-only");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_PREVIEW_WIDGET,
+				    CTK_FILE_CHOOSER_PROP_PREVIEW_WIDGET,
 				    "preview-widget");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_PREVIEW_WIDGET_ACTIVE,
+				    CTK_FILE_CHOOSER_PROP_PREVIEW_WIDGET_ACTIVE,
 				    "preview-widget-active");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_USE_PREVIEW_LABEL,
+				    CTK_FILE_CHOOSER_PROP_USE_PREVIEW_LABEL,
 				    "use-preview-label");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_SELECT_MULTIPLE,
+				    CTK_FILE_CHOOSER_PROP_SELECT_MULTIPLE,
 				    "select-multiple");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_SHOW_HIDDEN,
+				    CTK_FILE_CHOOSER_PROP_SHOW_HIDDEN,
 				    "show-hidden");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_DO_OVERWRITE_CONFIRMATION,
+				    CTK_FILE_CHOOSER_PROP_DO_OVERWRITE_CONFIRMATION,
 				    "do-overwrite-confirmation");
   g_object_class_override_property (klass,
-				    GTK_FILE_CHOOSER_PROP_CREATE_FOLDERS,
+				    CTK_FILE_CHOOSER_PROP_CREATE_FOLDERS,
 				    "create-folders");
 }
 
@@ -183,8 +183,8 @@ void
 _ctk_file_chooser_set_delegate (GtkFileChooser *receiver,
 				GtkFileChooser *delegate)
 {
-  g_return_if_fail (GTK_IS_FILE_CHOOSER (receiver));
-  g_return_if_fail (GTK_IS_FILE_CHOOSER (delegate));
+  g_return_if_fail (CTK_IS_FILE_CHOOSER (receiver));
+  g_return_if_fail (CTK_IS_FILE_CHOOSER (delegate));
 
   g_object_set_data (G_OBJECT (receiver), I_("gtk-file-chooser-delegate"), delegate);
   g_signal_connect (delegate, "notify",
@@ -216,7 +216,7 @@ static GtkFileChooser *
 get_delegate (GtkFileChooser *receiver)
 {
   return g_object_get_qdata (G_OBJECT (receiver),
-			     GTK_FILE_CHOOSER_DELEGATE_QUARK);
+			     CTK_FILE_CHOOSER_DELEGATE_QUARK);
 }
 
 static gboolean

@@ -73,7 +73,7 @@ static void               ctk_bin_get_preferred_height_for_width  (GtkWidget    
 static void               ctk_bin_size_allocate                   (GtkWidget           *widget,
                                                                    GtkAllocation       *allocation);
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkBin, ctk_bin, GTK_TYPE_CONTAINER)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkBin, ctk_bin, CTK_TYPE_CONTAINER)
 
 static void
 ctk_bin_class_init (GtkBinClass *class)
@@ -98,17 +98,17 @@ ctk_bin_init (GtkBin *bin)
 {
   bin->priv = ctk_bin_get_instance_private (bin);
 
-  ctk_widget_set_has_window (GTK_WIDGET (bin), FALSE);
+  ctk_widget_set_has_window (CTK_WIDGET (bin), FALSE);
 }
 
 
 static GType
 ctk_bin_child_type (GtkContainer *container)
 {
-  GtkBinPrivate *priv = GTK_BIN (container)->priv;
+  GtkBinPrivate *priv = CTK_BIN (container)->priv;
 
   if (!priv->child)
-    return GTK_TYPE_WIDGET;
+    return CTK_TYPE_WIDGET;
   else
     return G_TYPE_NONE;
 }
@@ -117,7 +117,7 @@ static void
 ctk_bin_add (GtkContainer *container,
 	     GtkWidget    *child)
 {
-  GtkBin *bin = GTK_BIN (container);
+  GtkBin *bin = CTK_BIN (container);
   GtkBinPrivate *priv = bin->priv;
 
   if (priv->child != NULL)
@@ -132,7 +132,7 @@ ctk_bin_add (GtkContainer *container,
       return;
     }
 
-  ctk_widget_set_parent (child, GTK_WIDGET (bin));
+  ctk_widget_set_parent (child, CTK_WIDGET (bin));
   priv->child = child;
 }
 
@@ -140,7 +140,7 @@ static void
 ctk_bin_remove (GtkContainer *container,
 		GtkWidget    *child)
 {
-  GtkBin *bin = GTK_BIN (container);
+  GtkBin *bin = CTK_BIN (container);
   GtkBinPrivate *priv = bin->priv;
   gboolean widget_was_visible;
 
@@ -155,7 +155,7 @@ ctk_bin_remove (GtkContainer *container,
    * since that's what is needed by toplevels, which derive from GtkBin.
    */
   if (widget_was_visible)
-    ctk_widget_queue_resize (GTK_WIDGET (container));
+    ctk_widget_queue_resize (CTK_WIDGET (container));
 }
 
 static void
@@ -164,7 +164,7 @@ ctk_bin_forall (GtkContainer *container,
 		GtkCallback   callback,
 		gpointer      callback_data)
 {
-  GtkBin *bin = GTK_BIN (container);
+  GtkBin *bin = CTK_BIN (container);
   GtkBinPrivate *priv = bin->priv;
 
   if (priv->child)
@@ -174,10 +174,10 @@ ctk_bin_forall (GtkContainer *container,
 static int
 ctk_bin_get_effective_border_width (GtkBin *bin)
 {
-  if (GTK_CONTAINER_CLASS (GTK_BIN_GET_CLASS (bin))->_handle_border_width)
+  if (CTK_CONTAINER_CLASS (CTK_BIN_GET_CLASS (bin))->_handle_border_width)
     return 0;
 
-  return ctk_container_get_border_width (GTK_CONTAINER (bin));
+  return ctk_container_get_border_width (CTK_CONTAINER (bin));
 }
 
 static void
@@ -185,7 +185,7 @@ ctk_bin_get_preferred_width (GtkWidget *widget,
                              gint      *minimum_width,
                              gint      *natural_width)
 {
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkBinPrivate *priv = bin->priv;
   gint border_width;
 
@@ -211,7 +211,7 @@ ctk_bin_get_preferred_height (GtkWidget *widget,
                               gint      *minimum_height,
                               gint      *natural_height)
 {
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkBinPrivate *priv = bin->priv;
   gint border_width;
 
@@ -238,7 +238,7 @@ ctk_bin_get_preferred_width_for_height (GtkWidget *widget,
                                         gint      *minimum_width,
                                         gint      *natural_width)
 {
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkBinPrivate *priv = bin->priv;
   gint border_width;
 
@@ -267,7 +267,7 @@ ctk_bin_get_preferred_height_for_width  (GtkWidget *widget,
                                          gint      *minimum_height,
                                          gint      *natural_height)
 {
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkBinPrivate *priv = bin->priv;
   gint border_width;
 
@@ -294,7 +294,7 @@ static void
 ctk_bin_size_allocate (GtkWidget     *widget,
                        GtkAllocation *allocation)
 {
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkBinPrivate *priv = bin->priv;
 
   ctk_widget_set_allocation (widget, allocation);
@@ -327,7 +327,7 @@ ctk_bin_size_allocate (GtkWidget     *widget,
 GtkWidget*
 ctk_bin_get_child (GtkBin *bin)
 {
-  g_return_val_if_fail (GTK_IS_BIN (bin), NULL);
+  g_return_val_if_fail (CTK_IS_BIN (bin), NULL);
 
   return bin->priv->child;
 }

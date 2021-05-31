@@ -3849,16 +3849,16 @@ msgid "Location"
 msgstr "ठिकाण"
 
 #: ../gtk/inspector/visual.c:243 ../gtk/inspector/visual.c:269
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "GTK_THEME द्वारे रंग रूप हार्डकोड केले जाते"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "CTK_THEME द्वारे रंग रूप हार्डकोड केले जाते"
 
 #: ../gtk/inspector/visual.c:387
 msgid "Backend does not support window scaling"
 msgstr "बॅकएंड विंडो स्केलिंगकरिता समर्थन पुरवत नाही"
 
 #: ../gtk/inspector/visual.c:426
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "GTK_TEST_TOUCHSCREEN द्वारे सेटिंग हार्डकोड केले जाते"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "CTK_TEST_TOUCHSCREEN द्वारे सेटिंग हार्डकोड केले जाते"
 
 #. vim: set et sw=2 ts=2:
 #: ../gtk/inspector/visual.ui.h:1

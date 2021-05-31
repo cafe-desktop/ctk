@@ -92,7 +92,7 @@ builder_get_toplevel (GtkBuilder *builder)
   list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
     {
-      if (GTK_IS_WINDOW (walk->data) &&
+      if (CTK_IS_WINDOW (walk->data) &&
           ctk_widget_get_parent (walk->data) == NULL)
         {
           window = walk->data;
@@ -254,7 +254,7 @@ test_a11y_tree_focus (void)
   ctk_tree_path_down (path);
   data.count = 0;
   data.descendant = NULL;
-  accessible = ctk_widget_get_accessible (GTK_WIDGET (tv));
+  accessible = ctk_widget_get_accessible (CTK_WIDGET (tv));
   g_signal_connect (accessible, "active_descendant_changed",
                     G_CALLBACK (active_descendant_changed), &data);
   ctk_tree_view_set_cursor (tv, path, focus_column, FALSE);
@@ -277,7 +277,7 @@ test_a11y_tree_focus (void)
 static AtkObject *
 find_root_accessible (GtkTreeView *tv, const char *name)
 {
-  AtkObject *tvaccessible = ctk_widget_get_accessible (GTK_WIDGET (tv));
+  AtkObject *tvaccessible = ctk_widget_get_accessible (CTK_WIDGET (tv));
   int i = 0;
 
   for (i = 0;;i++)

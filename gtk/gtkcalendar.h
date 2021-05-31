@@ -25,11 +25,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_CALENDAR_H__
-#define __GTK_CALENDAR_H__
+#ifndef __CTK_CALENDAR_H__
+#define __CTK_CALENDAR_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -38,12 +38,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CALENDAR                  (ctk_calendar_get_type ())
-#define GTK_CALENDAR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CALENDAR, GtkCalendar))
-#define GTK_CALENDAR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CALENDAR, GtkCalendarClass))
-#define GTK_IS_CALENDAR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CALENDAR))
-#define GTK_IS_CALENDAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CALENDAR))
-#define GTK_CALENDAR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CALENDAR, GtkCalendarClass))
+#define CTK_TYPE_CALENDAR                  (ctk_calendar_get_type ())
+#define CTK_CALENDAR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CALENDAR, GtkCalendar))
+#define CTK_CALENDAR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CALENDAR, GtkCalendarClass))
+#define CTK_IS_CALENDAR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CALENDAR))
+#define CTK_IS_CALENDAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CALENDAR))
+#define CTK_CALENDAR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CALENDAR, GtkCalendarClass))
 
 
 typedef struct _GtkCalendar	       GtkCalendar;
@@ -53,23 +53,23 @@ typedef struct _GtkCalendarPrivate     GtkCalendarPrivate;
 
 /**
  * GtkCalendarDisplayOptions:
- * @GTK_CALENDAR_SHOW_HEADING: Specifies that the month and year should be displayed.
- * @GTK_CALENDAR_SHOW_DAY_NAMES: Specifies that three letter day descriptions should be present.
- * @GTK_CALENDAR_NO_MONTH_CHANGE: Prevents the user from switching months with the calendar.
- * @GTK_CALENDAR_SHOW_WEEK_NUMBERS: Displays each week numbers of the current year, down the
+ * @CTK_CALENDAR_SHOW_HEADING: Specifies that the month and year should be displayed.
+ * @CTK_CALENDAR_SHOW_DAY_NAMES: Specifies that three letter day descriptions should be present.
+ * @CTK_CALENDAR_NO_MONTH_CHANGE: Prevents the user from switching months with the calendar.
+ * @CTK_CALENDAR_SHOW_WEEK_NUMBERS: Displays each week numbers of the current year, down the
  * left side of the calendar.
- * @GTK_CALENDAR_SHOW_DETAILS: Just show an indicator, not the full details
+ * @CTK_CALENDAR_SHOW_DETAILS: Just show an indicator, not the full details
  * text when details are provided. See ctk_calendar_set_detail_func().
  *
  * These options can be used to influence the display and behaviour of a #GtkCalendar.
  */
 typedef enum
 {
-  GTK_CALENDAR_SHOW_HEADING		= 1 << 0,
-  GTK_CALENDAR_SHOW_DAY_NAMES		= 1 << 1,
-  GTK_CALENDAR_NO_MONTH_CHANGE		= 1 << 2,
-  GTK_CALENDAR_SHOW_WEEK_NUMBERS	= 1 << 3,
-  GTK_CALENDAR_SHOW_DETAILS		= 1 << 5
+  CTK_CALENDAR_SHOW_HEADING		= 1 << 0,
+  CTK_CALENDAR_SHOW_DAY_NAMES		= 1 << 1,
+  CTK_CALENDAR_NO_MONTH_CHANGE		= 1 << 2,
+  CTK_CALENDAR_SHOW_WEEK_NUMBERS	= 1 << 3,
+  CTK_CALENDAR_SHOW_DETAILS		= 1 << 5
 } GtkCalendarDisplayOptions;
 
 /**
@@ -182,4 +182,4 @@ gboolean   ctk_calendar_get_day_is_marked      (GtkCalendar    *calendar,
 
 G_END_DECLS
 
-#endif /* __GTK_CALENDAR_H__ */
+#endif /* __CTK_CALENDAR_H__ */

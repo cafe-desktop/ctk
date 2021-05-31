@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_BORDER_H__
-#define __GTK_BORDER_H__
+#ifndef __CTK_BORDER_H__
+#define __CTK_BORDER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -36,7 +36,7 @@ G_BEGIN_DECLS
 
 typedef struct _GtkBorder GtkBorder;
 
-#define GTK_TYPE_BORDER (ctk_border_get_type ())
+#define CTK_TYPE_BORDER (ctk_border_get_type ())
 
 /**
  * GtkBorder:
@@ -69,4 +69,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkBorder, ctk_border_free)
 
 G_END_DECLS
 
-#endif /* __GTK_BORDER_H__ */
+#endif /* __CTK_BORDER_H__ */

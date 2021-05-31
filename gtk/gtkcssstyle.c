@@ -69,18 +69,18 @@ GtkCssValue *
 ctk_css_style_get_value (GtkCssStyle *style,
                           guint        id)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
 
-  return GTK_CSS_STYLE_GET_CLASS (style)->get_value (style, id);
+  return CTK_CSS_STYLE_GET_CLASS (style)->get_value (style, id);
 }
 
 GtkCssSection *
 ctk_css_style_get_section (GtkCssStyle *style,
                            guint        id)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
 
-  return GTK_CSS_STYLE_GET_CLASS (style)->get_section (style, id);
+  return CTK_CSS_STYLE_GET_CLASS (style)->get_section (style, id);
 }
 
 GtkBitmask *
@@ -110,9 +110,9 @@ ctk_css_style_add_difference (GtkBitmask  *accumulated,
 gboolean
 ctk_css_style_is_static (GtkCssStyle *style)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), TRUE);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (style), TRUE);
 
-  return GTK_CSS_STYLE_GET_CLASS (style)->is_static (style);
+  return CTK_CSS_STYLE_GET_CLASS (style)->is_static (style);
 }
 
 /*
@@ -138,7 +138,7 @@ ctk_css_style_print (GtkCssStyle *style,
   guint i;
   gboolean retval = FALSE;
 
-  g_return_val_if_fail (GTK_IS_CSS_STYLE (style), FALSE);
+  g_return_val_if_fail (CTK_IS_CSS_STYLE (style), FALSE);
   g_return_val_if_fail (string != NULL, FALSE);
 
   for (i = 0; i < _ctk_css_style_property_get_n_properties (); i++)
@@ -153,7 +153,7 @@ ctk_css_style_print (GtkCssStyle *style,
         continue;
 
       prop = _ctk_css_style_property_lookup_by_id (i);
-      name = _ctk_style_property_get_name (GTK_STYLE_PROPERTY (prop));
+      name = _ctk_style_property_get_name (CTK_STYLE_PROPERTY (prop));
       value = ctk_css_style_get_value (style, i);
 
       g_string_append_printf (string, "%*s%s: ", indent, "", name);
@@ -180,7 +180,7 @@ ctk_css_style_to_string (GtkCssStyle *style)
 {
   GString *string;
 
-  g_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
 
   string = g_string_new ("");
 
@@ -194,11 +194,11 @@ get_pango_underline_from_style (GtkTextDecorationStyle style)
 {
   switch (style)
     {
-    case GTK_CSS_TEXT_DECORATION_STYLE_DOUBLE:
+    case CTK_CSS_TEXT_DECORATION_STYLE_DOUBLE:
       return PANGO_UNDERLINE_DOUBLE;
-    case GTK_CSS_TEXT_DECORATION_STYLE_WAVY:
+    case CTK_CSS_TEXT_DECORATION_STYLE_WAVY:
       return PANGO_UNDERLINE_ERROR;
-    case GTK_CSS_TEXT_DECORATION_STYLE_SOLID:
+    case CTK_CSS_TEXT_DECORATION_STYLE_SOLID:
     default:
       return PANGO_UNDERLINE_SINGLE;
     }
@@ -230,41 +230,41 @@ ctk_css_style_get_pango_attributes (GtkCssStyle *style)
   const char *font_feature_settings;
 
   /* text-decoration */
-  decoration_line = _ctk_css_text_decoration_line_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_LINE));
-  decoration_style = _ctk_css_text_decoration_style_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_STYLE));
-  color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR));
-  decoration_color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_COLOR));
+  decoration_line = _ctk_css_text_decoration_line_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_TEXT_DECORATION_LINE));
+  decoration_style = _ctk_css_text_decoration_style_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_TEXT_DECORATION_STYLE));
+  color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_COLOR));
+  decoration_color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_TEXT_DECORATION_COLOR));
 
   switch (decoration_line)
     {
-    case GTK_CSS_TEXT_DECORATION_LINE_UNDERLINE:
+    case CTK_CSS_TEXT_DECORATION_LINE_UNDERLINE:
       attrs = add_pango_attr (attrs, pango_attr_underline_new (get_pango_underline_from_style (decoration_style)));
       if (!gdk_rgba_equal (color, decoration_color))
         attrs = add_pango_attr (attrs, pango_attr_underline_color_new (decoration_color->red * 65535. + 0.5,
                                                                        decoration_color->green * 65535. + 0.5,
                                                                        decoration_color->blue * 65535. + 0.5));
       break;
-    case GTK_CSS_TEXT_DECORATION_LINE_LINE_THROUGH:
+    case CTK_CSS_TEXT_DECORATION_LINE_LINE_THROUGH:
       attrs = add_pango_attr (attrs, pango_attr_strikethrough_new (TRUE));
       if (!gdk_rgba_equal (color, decoration_color))
         attrs = add_pango_attr (attrs, pango_attr_strikethrough_color_new (decoration_color->red * 65535. + 0.5,
                                                                            decoration_color->green * 65535. + 0.5,
                                                                            decoration_color->blue * 65535. + 0.5));
       break;
-    case GTK_CSS_TEXT_DECORATION_LINE_NONE:
+    case CTK_CSS_TEXT_DECORATION_LINE_NONE:
     default:
       break;
     }
 
   /* letter-spacing */
-  letter_spacing = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_LETTER_SPACING), 100);
+  letter_spacing = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_LETTER_SPACING), 100);
   if (letter_spacing != 0)
     {
       attrs = add_pango_attr (attrs, pango_attr_letter_spacing_new (letter_spacing * PANGO_SCALE));
     }
 
   /* font-feature-settings */
-  font_feature_settings = _ctk_css_string_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_FONT_FEATURE_SETTINGS));
+  font_feature_settings = _ctk_css_string_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_FONT_FEATURE_SETTINGS));
   if (font_feature_settings != NULL)
     {
       attrs = add_pango_attr (attrs, pango_attr_font_features_new (font_feature_settings));

@@ -53,7 +53,7 @@ iter_position (GtkTreeStore *store,
   gboolean ret = TRUE;
   GtkTreePath *path;
 
-  path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
+  path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), iter);
   if (!path)
     return FALSE;
 
@@ -125,7 +125,7 @@ check_model (TreeStore *fixture,
        * at i.
        */
 
-      ctk_tree_model_get_iter (GTK_TREE_MODEL (fixture->store),
+      ctk_tree_model_get_iter (CTK_TREE_MODEL (fixture->store),
 			       &iter, path);
 
       g_assert (ctk_tree_store_iter_is_valid (fixture->store, &iter));
@@ -149,35 +149,35 @@ tree_store_test_insert_high_values (void)
 
   ctk_tree_store_insert (store, &iter, NULL, 1234);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 1);
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 1);
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
   ctk_tree_store_insert (store, &iter2, NULL, 765);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter2));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 2);
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 2);
 
   /* Walk over the model */
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 1));
 
-  g_assert (!ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 1));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 1));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 1));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
-  g_assert (!ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
 
   g_object_unref (store);
 }
@@ -193,35 +193,35 @@ tree_store_test_append (void)
 
   ctk_tree_store_append (store, &iter, NULL);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 1);
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 1);
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
   ctk_tree_store_append (store, &iter2, NULL);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter2));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 2);
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 2);
 
   /* Walk over the model */
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 1));
 
-  g_assert (!ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 1));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 1));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 1));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
-  g_assert (!ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
 
   g_object_unref (store);
 }
@@ -237,35 +237,35 @@ tree_store_test_prepend (void)
 
   ctk_tree_store_prepend (store, &iter, NULL);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 1);
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 1);
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
   ctk_tree_store_prepend (store, &iter2, NULL);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter2));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 2);
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 2);
 
   /* Walk over the model */
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 0));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 1));
 
-  g_assert (!ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 1));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 1));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 1));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 0));
 
-  g_assert (!ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
 
   g_object_unref (store);
 }
@@ -284,39 +284,39 @@ tree_store_test_insert_after (void)
 
   ctk_tree_store_insert_after (store, &iter3, NULL, &iter);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter3));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 3);
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 1));
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 3);
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 1));
   g_assert (iters_equal (&iter3, &iter_copy));
   g_assert (iter_position (store, &iter3, 1));
 
   /* Walk over the model */
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter_copy, 0));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter3, &iter_copy));
   g_assert (iter_position (store, &iter_copy, 1));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter_copy, 2));
 
-  g_assert (!ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 2));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 2));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 2));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter3, &iter_copy));
   g_assert (iter_position (store, &iter3, 1));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
-  g_assert (!ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
 
   g_object_unref (store);
 }
@@ -335,31 +335,31 @@ tree_store_test_insert_after_NULL (void)
   /* move_after NULL is basically a prepend */
   ctk_tree_store_insert_after (store, &iter2, NULL, NULL);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter2));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 2);
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 2);
 
   /* Walk over the model */
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 0));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 1));
 
-  g_assert (!ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 0));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 0));
   g_assert (iters_equal (&iter2, &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 1));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 1));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 1));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 0));
 
-  g_assert (!ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
 
   g_object_unref (store);
 }
@@ -378,42 +378,42 @@ tree_store_test_insert_before (void)
 
   ctk_tree_store_insert_before (store, &iter3, NULL, &iter2);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter3));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 3);
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 1));
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 3);
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 1));
   g_assert (iters_equal (&iter3, &iter_copy));
   g_assert (iter_position (store, &iter3, 1));
 
   /* Walk over the model */
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter_copy, 0));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter3, &iter_copy));
   g_assert (iter_position (store, &iter_copy, 1));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter_copy, 2));
 
-  g_assert (!ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 1));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 1));
   g_assert (iters_equal (&iter3, &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 2));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 2));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 2));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter3, &iter_copy));
   g_assert (iter_position (store, &iter3, 1));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
-  g_assert (!ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
 
   g_object_unref (store);
 }
@@ -432,28 +432,28 @@ tree_store_test_insert_before_NULL (void)
   /* move_before NULL is basically an append */
   ctk_tree_store_insert_before (store, &iter2, NULL, NULL);
   g_assert (ctk_tree_store_iter_is_valid (store, &iter2));
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL) == 2);
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (store), NULL) == 2);
 
   /* Walk over the model */
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 1));
 
-  g_assert (!ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter_copy));
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (store), &iter_copy, NULL, 1));
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (store), &iter_copy, NULL, 1));
   g_assert (iters_equal (&iter2, &iter_copy));
   g_assert (iter_position (store, &iter2, 1));
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
   g_assert (iters_equal (&iter, &iter_copy));
   g_assert (iter_position (store, &iter, 0));
 
-  g_assert (!ctk_tree_model_iter_previous (GTK_TREE_MODEL (store), &iter_copy));
+  g_assert (!ctk_tree_model_iter_previous (CTK_TREE_MODEL (store), &iter_copy));
 
   g_object_unref (store);
 }
@@ -486,7 +486,7 @@ tree_store_test_remove_begin (TreeStore     *fixture,
 
   /* Remove node at 0 */
   path = ctk_tree_path_new_from_indices (0, -1);
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (fixture->store), &iter, path);
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (fixture->store), &iter, path);
   ctk_tree_path_free (path);
 
   g_assert (ctk_tree_store_remove (fixture->store, &iter) == TRUE);
@@ -506,7 +506,7 @@ tree_store_test_remove_middle (TreeStore     *fixture,
 
   /* Remove node at 2 */
   path = ctk_tree_path_new_from_indices (2, -1);
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (fixture->store), &iter, path);
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (fixture->store), &iter, path);
   ctk_tree_path_free (path);
 
   g_assert (ctk_tree_store_remove (fixture->store, &iter) == TRUE);
@@ -526,7 +526,7 @@ tree_store_test_remove_end (TreeStore     *fixture,
 
   /* Remove node at 4 */
   path = ctk_tree_path_new_from_indices (4, -1);
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (fixture->store), &iter, path);
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (fixture->store), &iter, path);
   ctk_tree_path_free (path);
 
   g_assert (ctk_tree_store_remove (fixture->store, &iter) == FALSE);
@@ -543,7 +543,7 @@ tree_store_test_clear (TreeStore     *fixture,
 
   ctk_tree_store_clear (fixture->store);
 
-  g_assert (ctk_tree_model_iter_n_children (GTK_TREE_MODEL (fixture->store), NULL) == 0);
+  g_assert (ctk_tree_model_iter_n_children (CTK_TREE_MODEL (fixture->store), NULL) == 0);
 
   for (i = 0; i < 5; i++)
     g_assert (!ctk_tree_store_iter_is_valid (fixture->store, &fixture->iter[i]));
@@ -573,8 +573,8 @@ tree_store_test_swap_begin (TreeStore     *fixture,
   GtkTreeIter iter_a;
   GtkTreeIter iter_b;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter_a, "0"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter_b, "1"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_a, "0"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_b, "1"));
 
   ctk_tree_store_swap (fixture->store, &iter_a, &iter_b);
   check_model (fixture, new_order, -1);
@@ -590,8 +590,8 @@ tree_store_test_swap_middle_next (TreeStore     *fixture,
   GtkTreeIter iter_a;
   GtkTreeIter iter_b;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter_a, "2"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter_b, "3"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_a, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_b, "3"));
 
   ctk_tree_store_swap (fixture->store, &iter_a, &iter_b);
   check_model (fixture, new_order, -1);
@@ -607,8 +607,8 @@ tree_store_test_swap_middle_apart (TreeStore     *fixture,
   GtkTreeIter iter_a;
   GtkTreeIter iter_b;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter_a, "1"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter_b, "3"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_a, "1"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_b, "3"));
 
   ctk_tree_store_swap (fixture->store, &iter_a, &iter_b);
   check_model (fixture, new_order, -1);
@@ -624,8 +624,8 @@ tree_store_test_swap_end (TreeStore     *fixture,
   GtkTreeIter iter_a;
   GtkTreeIter iter_b;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter_a, "3"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter_b, "4"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_a, "3"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter_b, "4"));
 
   ctk_tree_store_swap (fixture->store, &iter_a, &iter_b);
   check_model (fixture, new_order, -1);
@@ -649,7 +649,7 @@ tree_store_test_swap_single (void)
 
   ctk_tree_store_swap (store, &iter, &iter);
   g_assert (iters_equal (&iter, &iter_copy));
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter));
   g_assert (iters_equal (&iter, &iter_copy));
 
   g_object_unref (store);
@@ -667,8 +667,8 @@ tree_store_test_move_after_from_start (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "0"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "0"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "2"));
 
   ctk_tree_store_move_after (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -684,8 +684,8 @@ tree_store_test_move_after_next (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "2"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "3"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "3"));
 
   ctk_tree_store_move_after (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -701,8 +701,8 @@ tree_store_test_move_after_apart (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "1"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "3"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "1"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "3"));
 
   ctk_tree_store_move_after (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -718,8 +718,8 @@ tree_store_test_move_after_end (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "2"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "4"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "4"));
 
   ctk_tree_store_move_after (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -735,8 +735,8 @@ tree_store_test_move_after_from_end (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "4"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "1"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "4"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "1"));
 
   ctk_tree_store_move_after (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -754,8 +754,8 @@ tree_store_test_move_after_change_ends (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "0"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "4"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "0"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "4"));
 
   ctk_tree_store_move_after (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -770,7 +770,7 @@ tree_store_test_move_after_NULL (TreeStore     *fixture,
 
   GtkTreeIter iter;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
 
   ctk_tree_store_move_after (fixture->store, &iter, NULL);
   check_model (fixture, new_order, -1);
@@ -794,12 +794,12 @@ tree_store_test_move_after_single (void)
 
   ctk_tree_store_move_after (store, &iter, NULL);
   g_assert (iters_equal (&iter, &iter_copy));
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter));
   g_assert (iters_equal (&iter, &iter_copy));
 
   ctk_tree_store_move_after (store, &iter, &iter);
   g_assert (iters_equal (&iter, &iter_copy));
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter));
   g_assert (iters_equal (&iter, &iter_copy));
 
   g_object_unref (store);
@@ -817,8 +817,8 @@ tree_store_test_move_before_next (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "3"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "3"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "2"));
 
   ctk_tree_store_move_before (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -834,8 +834,8 @@ tree_store_test_move_before_apart (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "1"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "3"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "1"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "3"));
 
   ctk_tree_store_move_before (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -851,8 +851,8 @@ tree_store_test_move_before_to_start (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "2"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "0"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "0"));
 
   ctk_tree_store_move_before (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -868,8 +868,8 @@ tree_store_test_move_before_from_end (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "4"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "4"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "2"));
 
   ctk_tree_store_move_before (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -885,8 +885,8 @@ tree_store_test_move_before_change_ends (TreeStore     *fixture,
   GtkTreeIter iter;
   GtkTreeIter position;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "4"));
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &position, "0"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "4"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &position, "0"));
 
   ctk_tree_store_move_before (fixture->store, &iter, &position);
   check_model (fixture, new_order, -1);
@@ -901,7 +901,7 @@ tree_store_test_move_before_NULL (TreeStore     *fixture,
 
   GtkTreeIter iter;
 
-  g_assert (ctk_tree_model_get_iter_from_string (GTK_TREE_MODEL (fixture->store), &iter, "2"));
+  g_assert (ctk_tree_model_get_iter_from_string (CTK_TREE_MODEL (fixture->store), &iter, "2"));
 
   ctk_tree_store_move_before (fixture->store, &iter, NULL);
   check_model (fixture, new_order, -1);
@@ -925,12 +925,12 @@ tree_store_test_move_before_single (void)
 
   ctk_tree_store_move_before (store, &iter, NULL);
   g_assert (iters_equal (&iter, &iter_copy));
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter));
   g_assert (iters_equal (&iter, &iter_copy));
 
   ctk_tree_store_move_before (store, &iter, &iter);
   g_assert (iters_equal (&iter, &iter_copy));
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter));
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter));
   g_assert (iters_equal (&iter, &iter_copy));
 
   g_object_unref (store);
@@ -945,9 +945,9 @@ tree_store_test_iter_previous_invalid (TreeStore     *fixture,
 {
   GtkTreeIter iter;
 
-  ctk_tree_model_get_iter_first (GTK_TREE_MODEL (fixture->store), &iter);
+  ctk_tree_model_get_iter_first (CTK_TREE_MODEL (fixture->store), &iter);
 
-  g_assert (ctk_tree_model_iter_previous (GTK_TREE_MODEL (fixture->store),
+  g_assert (ctk_tree_model_iter_previous (CTK_TREE_MODEL (fixture->store),
                                           &iter) == FALSE);
   g_assert (ctk_tree_store_iter_is_valid (fixture->store, &iter) == FALSE);
   g_assert (iter.stamp == 0);
@@ -961,10 +961,10 @@ tree_store_test_iter_next_invalid (TreeStore     *fixture,
   GtkTreeIter iter;
 
   path = ctk_tree_path_new_from_indices (4, -1);
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (fixture->store), &iter, path);
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (fixture->store), &iter, path);
   ctk_tree_path_free (path);
 
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (fixture->store),
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (fixture->store),
                                       &iter) == FALSE);
   g_assert (ctk_tree_store_iter_is_valid (fixture->store, &iter) == FALSE);
   g_assert (iter.stamp == 0);
@@ -976,10 +976,10 @@ tree_store_test_iter_children_invalid (TreeStore     *fixture,
 {
   GtkTreeIter iter, child;
 
-  ctk_tree_model_get_iter_first (GTK_TREE_MODEL (fixture->store), &iter);
+  ctk_tree_model_get_iter_first (CTK_TREE_MODEL (fixture->store), &iter);
   g_assert (ctk_tree_store_iter_is_valid (fixture->store, &iter) == TRUE);
 
-  g_assert (ctk_tree_model_iter_children (GTK_TREE_MODEL (fixture->store),
+  g_assert (ctk_tree_model_iter_children (CTK_TREE_MODEL (fixture->store),
                                           &child, &iter) == FALSE);
   g_assert (ctk_tree_store_iter_is_valid (fixture->store, &child) == FALSE);
   g_assert (child.stamp == 0);
@@ -991,10 +991,10 @@ tree_store_test_iter_nth_child_invalid (TreeStore     *fixture,
 {
   GtkTreeIter iter, child;
 
-  ctk_tree_model_get_iter_first (GTK_TREE_MODEL (fixture->store), &iter);
+  ctk_tree_model_get_iter_first (CTK_TREE_MODEL (fixture->store), &iter);
   g_assert (ctk_tree_store_iter_is_valid (fixture->store, &iter) == TRUE);
 
-  g_assert (ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (fixture->store),
+  g_assert (ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (fixture->store),
                                            &child, &iter, 0) == FALSE);
   g_assert (ctk_tree_store_iter_is_valid (fixture->store, &child) == FALSE);
   g_assert (child.stamp == 0);
@@ -1006,10 +1006,10 @@ tree_store_test_iter_parent_invalid (TreeStore     *fixture,
 {
   GtkTreeIter iter, child;
 
-  ctk_tree_model_get_iter_first (GTK_TREE_MODEL (fixture->store), &child);
+  ctk_tree_model_get_iter_first (CTK_TREE_MODEL (fixture->store), &child);
   g_assert (ctk_tree_store_iter_is_valid (fixture->store, &child) == TRUE);
 
-  g_assert (ctk_tree_model_iter_parent (GTK_TREE_MODEL (fixture->store),
+  g_assert (ctk_tree_model_iter_parent (CTK_TREE_MODEL (fixture->store),
                                         &iter, &child) == FALSE);
   g_assert (ctk_tree_store_iter_is_valid (fixture->store, &iter) == FALSE);
   g_assert (iter.stamp == 0);
@@ -1040,7 +1040,7 @@ specific_bug_77977 (void)
   ctk_tree_store_set (tree_store, &iter3, 0, "Button1", -1);
 
   path = ctk_tree_path_new_from_indices (0, 0, 0, -1);
-  row_ref = ctk_tree_row_reference_new (GTK_TREE_MODEL (tree_store), path);
+  row_ref = ctk_tree_row_reference_new (CTK_TREE_MODEL (tree_store), path);
   ctk_tree_path_free (path);
 
   ctk_tree_store_remove (tree_store, &iter1);

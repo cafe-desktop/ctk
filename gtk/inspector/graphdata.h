@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_GRAPH_DATA_H__
-#define __GTK_GRAPH_DATA_H__
+#ifndef __CTK_GRAPH_DATA_H__
+#define __CTK_GRAPH_DATA_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GRAPH_DATA            (ctk_graph_data_get_type ())
-#define GTK_GRAPH_DATA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_GRAPH_DATA, GtkGraphData))
-#define GTK_GRAPH_DATA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_GRAPH_DATA, GtkGraphDataClass))
-#define GTK_IS_GRAPH_DATA(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_GRAPH_DATA))
-#define GTK_IS_GRAPH_DATA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_GRAPH_DATA))
-#define GTK_GRAPH_DATA_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_GRAPH_DATA, GtkGraphDataClass))
+#define CTK_TYPE_GRAPH_DATA            (ctk_graph_data_get_type ())
+#define CTK_GRAPH_DATA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_GRAPH_DATA, GtkGraphData))
+#define CTK_GRAPH_DATA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_GRAPH_DATA, GtkGraphDataClass))
+#define CTK_IS_GRAPH_DATA(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_GRAPH_DATA))
+#define CTK_IS_GRAPH_DATA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_GRAPH_DATA))
+#define CTK_GRAPH_DATA_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_GRAPH_DATA, GtkGraphDataClass))
 
 typedef struct _GtkGraphData        GtkGraphData;
 typedef struct _GtkGraphDataClass   GtkGraphDataClass;
@@ -68,4 +68,4 @@ void             ctk_graph_data_prepend_value   (GtkGraphData   *data,
 
 G_END_DECLS
 
-#endif /* __GTK_GRAPH_DATA_H__ */
+#endif /* __CTK_GRAPH_DATA_H__ */

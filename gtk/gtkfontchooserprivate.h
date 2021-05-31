@@ -18,12 +18,12 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FONT_CHOOSER_PRIVATE_H__
-#define __GTK_FONT_CHOOSER_PRIVATE_H__
+#ifndef __CTK_FONT_CHOOSER_PRIVATE_H__
+#define __CTK_FONT_CHOOSER_PRIVATE_H__
 
 #include "gtkfontchooser.h"
 
-#define GTK_FONT_CHOOSER_DEFAULT_FONT_NAME "Sans 10"
+#define CTK_FONT_CHOOSER_DEFAULT_FONT_NAME "Sans 10"
 
 G_BEGIN_DECLS
 
@@ -32,4 +32,4 @@ void            _ctk_font_chooser_font_activated        (GtkFontChooser *chooser
 
 G_END_DECLS
 
-#endif /* ! __GTK_FONT_CHOOSER_PRIVATE_H__ */
+#endif /* ! __CTK_FONT_CHOOSER_PRIVATE_H__ */

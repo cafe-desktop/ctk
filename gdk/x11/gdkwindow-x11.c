@@ -3721,7 +3721,7 @@ gdk_x11_window_set_hide_titlebar_when_maximized (GdkWindow *window,
       gulong hide = 1;
       XChangeProperty (GDK_DISPLAY_XDISPLAY (display),
                        GDK_WINDOW_XID (window),
-                       gdk_x11_get_xatom_by_name_for_display (display, "_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"),
+                       gdk_x11_get_xatom_by_name_for_display (display, "_CTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"),
                        XA_CARDINAL, 32,
                        PropModeReplace, (guchar *)&hide, 1);
     }
@@ -3729,7 +3729,7 @@ gdk_x11_window_set_hide_titlebar_when_maximized (GdkWindow *window,
     {
       XDeleteProperty (GDK_DISPLAY_XDISPLAY (display),
                        GDK_WINDOW_XID (window),
-                       gdk_x11_get_xatom_by_name_for_display (display, "_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"));
+                       gdk_x11_get_xatom_by_name_for_display (display, "_CTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"));
     }
 }
 
@@ -3750,7 +3750,7 @@ gdk_x11_window_set_shadow_width (GdkWindow *window,
   };
 
   frame_extents = gdk_x11_get_xatom_by_name_for_display (gdk_window_get_display (window),
-                                                         "_GTK_FRAME_EXTENTS");
+                                                         "_CTK_FRAME_EXTENTS");
   XChangeProperty (GDK_WINDOW_XDISPLAY (window),
                    GDK_WINDOW_XID (window),
                    frame_extents, XA_CARDINAL,
@@ -3791,7 +3791,7 @@ gdk_x11_window_set_frame_extents (GdkWindow *window,
  * GTK+ applications can request a dark theme variant. In order to
  * make other applications - namely window managers using GTK+ for
  * themeing - aware of this choice, GTK+ uses this function to
- * export the requested theme variant as _GTK_THEME_VARIANT property
+ * export the requested theme variant as _CTK_THEME_VARIANT property
  * on toplevel windows.
  *
  * Note that this property is automatically updated by GTK+, so this
@@ -3804,7 +3804,7 @@ void
 gdk_x11_window_set_theme_variant (GdkWindow *window,
                                   char      *variant)
 {
-  gdk_x11_window_set_utf8_property (window, "_GTK_THEME_VARIANT",
+  gdk_x11_window_set_utf8_property (window, "_CTK_THEME_VARIANT",
                                     variant ? variant : "");
 }
 
@@ -5764,7 +5764,7 @@ gdk_x11_window_show_window_menu (GdkWindow *window,
     }
 
   if (!gdk_x11_screen_supports_net_wm_hint (GDK_WINDOW_SCREEN (window),
-                                            gdk_atom_intern_static_string ("_GTK_SHOW_WINDOW_MENU")))
+                                            gdk_atom_intern_static_string ("_CTK_SHOW_WINDOW_MENU")))
     return FALSE;
 
   gdk_event_get_root_coords (event, &x_root, &y_root);
@@ -5778,7 +5778,7 @@ gdk_x11_window_show_window_menu (GdkWindow *window,
 
   xclient.type = ClientMessage;
   xclient.window = GDK_WINDOW_XID (window);
-  xclient.message_type = gdk_x11_get_xatom_by_name_for_display (display, "_GTK_SHOW_WINDOW_MENU");
+  xclient.message_type = gdk_x11_get_xatom_by_name_for_display (display, "_CTK_SHOW_WINDOW_MENU");
   xclient.data.l[0] = device_id;
   xclient.data.l[1] = x_root * impl->window_scale;
   xclient.data.l[2] = y_root * impl->window_scale;

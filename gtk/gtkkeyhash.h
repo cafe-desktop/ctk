@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_KEY_HASH_H__
-#define __GTK_KEY_HASH_H__
+#ifndef __CTK_KEY_HASH_H__
+#define __CTK_KEY_HASH_H__
 
 #include <gdk/gdk.h>
 
@@ -46,4 +46,4 @@ void        _ctk_key_hash_free          (GtkKeyHash      *key_hash);
 
 G_END_DECLS
 
-#endif /* __GTK_KEY_HASH_H__ */
+#endif /* __CTK_KEY_HASH_H__ */

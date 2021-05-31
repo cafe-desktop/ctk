@@ -5,7 +5,7 @@ color_changed (GObject *o, GParamSpec *pspect, gpointer data)
 {
   GdkRGBA color;
 
-  ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (o), &color);
+  ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (o), &color);
   g_print ("color changed: %g %g %g %g\n",
            color.red, color.green, color.blue, color.alpha);
 }
@@ -17,8 +17,8 @@ dialog_response (GtkDialog *dialog, gint response)
 
   switch (response)
     {
-    case GTK_RESPONSE_OK:
-      ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog), &color);
+    case CTK_RESPONSE_OK:
+      ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (dialog), &color);
       g_print ("color accepted: %g %g %g %g\n",
            color.red, color.green, color.blue, color.alpha);
       break;
@@ -45,7 +45,7 @@ main (int argc, char *argv[])
       if (g_strcmp0 (argv[i], "--no-alpha") == 0)
         {
           g_print ("turning alpha off\n");
-          ctk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (dialog), FALSE);
+          ctk_color_chooser_set_use_alpha (CTK_COLOR_CHOOSER (dialog), FALSE);
         }
       else if (g_strcmp0 (argv[i], "--edit") == 0)
         {
@@ -79,15 +79,15 @@ main (int argc, char *argv[])
                   colors[i*9 + j].alpha = 1;
                 }
             }
-          ctk_color_chooser_add_palette (GTK_COLOR_CHOOSER (dialog),
-                                         GTK_ORIENTATION_VERTICAL,
+          ctk_color_chooser_add_palette (CTK_COLOR_CHOOSER (dialog),
+                                         CTK_ORIENTATION_VERTICAL,
                                          9, 9*9,
                                          colors);
         }
       else if (g_strcmp0 (argv[i], "--no-palette") == 0)
         {
-          ctk_color_chooser_add_palette (GTK_COLOR_CHOOSER (dialog), 
-                                         GTK_ORIENTATION_VERTICAL, 0, 0, NULL);
+          ctk_color_chooser_add_palette (CTK_COLOR_CHOOSER (dialog), 
+                                         CTK_ORIENTATION_VERTICAL, 0, 0, NULL);
         }
     }
 

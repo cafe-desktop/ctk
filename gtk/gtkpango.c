@@ -28,12 +28,12 @@
 #include <fribidi.h>
 #include "gtkintl.h"
 
-#define GTK_TYPE_FILL_LAYOUT_RENDERER            (_ctk_fill_layout_renderer_get_type())
-#define GTK_FILL_LAYOUT_RENDERER(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRenderer))
-#define GTK_IS_FILL_LAYOUT_RENDERER(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_FILL_LAYOUT_RENDERER))
-#define GTK_FILL_LAYOUT_RENDERER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRendererClass))
-#define GTK_IS_FILL_LAYOUT_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FILL_LAYOUT_RENDERER))
-#define GTK_FILL_LAYOUT_RENDERER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRendererClass))
+#define CTK_TYPE_FILL_LAYOUT_RENDERER            (_ctk_fill_layout_renderer_get_type())
+#define CTK_FILL_LAYOUT_RENDERER(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRenderer))
+#define CTK_IS_FILL_LAYOUT_RENDERER(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_FILL_LAYOUT_RENDERER))
+#define CTK_FILL_LAYOUT_RENDERER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRendererClass))
+#define CTK_IS_FILL_LAYOUT_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FILL_LAYOUT_RENDERER))
+#define CTK_FILL_LAYOUT_RENDERER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILL_LAYOUT_RENDERER, GtkFillLayoutRendererClass))
 
 typedef struct _GtkFillLayoutRenderer      GtkFillLayoutRenderer;
 typedef struct _GtkFillLayoutRendererClass GtkFillLayoutRendererClass;
@@ -61,7 +61,7 @@ ctk_fill_layout_renderer_draw_glyphs (PangoRenderer     *renderer,
                                       int                x,
                                       int                y)
 {
-  GtkFillLayoutRenderer *text_renderer = GTK_FILL_LAYOUT_RENDERER (renderer);
+  GtkFillLayoutRenderer *text_renderer = CTK_FILL_LAYOUT_RENDERER (renderer);
 
   cairo_move_to (text_renderer->cr, (double)x / PANGO_SCALE, (double)y / PANGO_SCALE);
   pango_cairo_show_glyph_string (text_renderer->cr, font, glyphs);
@@ -74,7 +74,7 @@ ctk_fill_layout_renderer_draw_glyph_item (PangoRenderer     *renderer,
                                           int                x,
                                           int                y)
 {
-  GtkFillLayoutRenderer *text_renderer = GTK_FILL_LAYOUT_RENDERER (renderer);
+  GtkFillLayoutRenderer *text_renderer = CTK_FILL_LAYOUT_RENDERER (renderer);
 
   cairo_move_to (text_renderer->cr, (double)x / PANGO_SCALE, (double)y / PANGO_SCALE);
   pango_cairo_show_glyph_item (text_renderer->cr, text, glyph_item);
@@ -88,7 +88,7 @@ ctk_fill_layout_renderer_draw_rectangle (PangoRenderer     *renderer,
                                          int                width,
                                          int                height)
 {
-  GtkFillLayoutRenderer *text_renderer = GTK_FILL_LAYOUT_RENDERER (renderer);
+  GtkFillLayoutRenderer *text_renderer = CTK_FILL_LAYOUT_RENDERER (renderer);
 
   if (part == PANGO_RENDER_PART_BACKGROUND)
     return;
@@ -109,7 +109,7 @@ ctk_fill_layout_renderer_draw_trapezoid (PangoRenderer     *renderer,
                                          double             x12,
                                          double             x22)
 {
-  GtkFillLayoutRenderer *text_renderer = GTK_FILL_LAYOUT_RENDERER (renderer);
+  GtkFillLayoutRenderer *text_renderer = CTK_FILL_LAYOUT_RENDERER (renderer);
   cairo_matrix_t matrix;
   cairo_t *cr;
 
@@ -141,7 +141,7 @@ ctk_fill_layout_renderer_draw_error_underline (PangoRenderer *renderer,
                                                int            width,
                                                int            height)
 {
-  GtkFillLayoutRenderer *text_renderer = GTK_FILL_LAYOUT_RENDERER (renderer);
+  GtkFillLayoutRenderer *text_renderer = CTK_FILL_LAYOUT_RENDERER (renderer);
 
   pango_cairo_show_error_underline (text_renderer->cr,
                                     (double)x / PANGO_SCALE, (double)y / PANGO_SCALE,
@@ -154,7 +154,7 @@ ctk_fill_layout_renderer_draw_shape (PangoRenderer   *renderer,
                                      int              x,
                                      int              y)
 {
-  GtkFillLayoutRenderer *text_renderer = GTK_FILL_LAYOUT_RENDERER (renderer);
+  GtkFillLayoutRenderer *text_renderer = CTK_FILL_LAYOUT_RENDERER (renderer);
   cairo_t *cr = text_renderer->cr;
   PangoLayout *layout;
   PangoCairoShapeRendererFunc shape_renderer;
@@ -220,7 +220,7 @@ _ctk_pango_fill_layout (cairo_t     *cr,
   cairo_get_current_point (cr, &current_x, &current_y);
 
   if (renderer == NULL)
-    renderer = g_object_new (GTK_TYPE_FILL_LAYOUT_RENDERER, NULL);
+    renderer = g_object_new (CTK_TYPE_FILL_LAYOUT_RENDERER, NULL);
 
   cairo_save (cr);
   cairo_translate (cr, current_x, current_y);

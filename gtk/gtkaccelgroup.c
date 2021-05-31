@@ -172,7 +172,7 @@ ctk_accel_group_class_init (GtkAccelGroupClass *class)
 static void
 ctk_accel_group_finalize (GObject *object)
 {
-  GtkAccelGroup *accel_group = GTK_ACCEL_GROUP (object);
+  GtkAccelGroup *accel_group = CTK_ACCEL_GROUP (object);
   guint i;
 
   for (i = 0; i < accel_group->priv->n_accels; i++)
@@ -202,7 +202,7 @@ ctk_accel_group_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkAccelGroup *accel_group = GTK_ACCEL_GROUP (object);
+  GtkAccelGroup *accel_group = CTK_ACCEL_GROUP (object);
 
   switch (param_id)
     {
@@ -243,7 +243,7 @@ ctk_accel_group_init (GtkAccelGroup *accel_group)
 GtkAccelGroup*
 ctk_accel_group_new (void)
 {
-  return g_object_new (GTK_TYPE_ACCEL_GROUP, NULL);
+  return g_object_new (CTK_TYPE_ACCEL_GROUP, NULL);
 }
 
 /**
@@ -261,7 +261,7 @@ ctk_accel_group_new (void)
 gboolean
 ctk_accel_group_get_is_locked (GtkAccelGroup *accel_group)
 {
-  g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), FALSE);
+  g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), FALSE);
 
   return accel_group->priv->lock_count > 0;
 }
@@ -280,7 +280,7 @@ ctk_accel_group_get_is_locked (GtkAccelGroup *accel_group)
 GdkModifierType
 ctk_accel_group_get_modifier_mask (GtkAccelGroup *accel_group)
 {
-  g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), 0);
+  g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), 0);
 
   return accel_group->priv->modifier_mask;
 }
@@ -309,7 +309,7 @@ _ctk_accel_group_attach (GtkAccelGroup *accel_group,
 {
   GSList *slist;
 
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
   g_return_if_fail (G_IS_OBJECT (object));
   g_return_if_fail (g_slist_find (accel_group->priv->acceleratables, object) == NULL);
 
@@ -333,7 +333,7 @@ _ctk_accel_group_detach (GtkAccelGroup *accel_group,
 {
   GSList *slist;
 
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
   g_return_if_fail (G_IS_OBJECT (object));
   g_return_if_fail (g_slist_find (accel_group->priv->acceleratables, object) != NULL);
 
@@ -389,7 +389,7 @@ ctk_accel_group_find (GtkAccelGroup         *accel_group,
   GtkAccelKey *key = NULL;
   guint i;
 
-  g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), NULL);
+  g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), NULL);
   g_return_val_if_fail (find_func != NULL, NULL);
 
   g_object_ref (accel_group);
@@ -423,7 +423,7 @@ ctk_accel_group_find (GtkAccelGroup         *accel_group,
 void
 ctk_accel_group_lock (GtkAccelGroup *accel_group)
 {
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
 
   accel_group->priv->lock_count += 1;
 
@@ -442,7 +442,7 @@ ctk_accel_group_lock (GtkAccelGroup *accel_group)
 void
 ctk_accel_group_unlock (GtkAccelGroup *accel_group)
 {
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
   g_return_if_fail (accel_group->priv->lock_count > 0);
 
   accel_group->priv->lock_count -= 1;
@@ -457,7 +457,7 @@ static void
 accel_closure_invalidate (gpointer  data,
                           GClosure *closure)
 {
-  GtkAccelGroup *accel_group = GTK_ACCEL_GROUP (data);
+  GtkAccelGroup *accel_group = CTK_ACCEL_GROUP (data);
 
   ctk_accel_group_disconnect (accel_group, closure);
 }
@@ -630,7 +630,7 @@ ctk_accel_group_connect (GtkAccelGroup   *accel_group,
                          GtkAccelFlags    accel_flags,
                          GClosure        *closure)
 {
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
   g_return_if_fail (closure != NULL);
   g_return_if_fail (accel_key > 0);
   g_return_if_fail (ctk_accel_group_from_accel_closure (closure) == NULL);
@@ -671,7 +671,7 @@ ctk_accel_group_connect_by_path (GtkAccelGroup *accel_group,
   GdkModifierType accel_mods = 0;
   GtkAccelKey key;
 
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
   g_return_if_fail (closure != NULL);
   g_return_if_fail (_ctk_accel_path_is_valid (accel_path));
 
@@ -686,7 +686,7 @@ ctk_accel_group_connect_by_path (GtkAccelGroup *accel_group,
       accel_mods = key.accel_mods;
     }
 
-  quick_accel_add (accel_group, accel_key, accel_mods, GTK_ACCEL_VISIBLE, closure,
+  quick_accel_add (accel_group, accel_key, accel_mods, CTK_ACCEL_VISIBLE, closure,
                    g_quark_from_string (accel_path));
 
   g_object_unref (accel_group);
@@ -711,7 +711,7 @@ ctk_accel_group_disconnect (GtkAccelGroup *accel_group,
 {
   guint i;
 
-  g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), FALSE);
+  g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), FALSE);
 
   for (i = 0; i < accel_group->priv->n_accels; i++)
     if (accel_group->priv->priv_accels[i].closure == closure)
@@ -746,7 +746,7 @@ ctk_accel_group_disconnect_key (GtkAccelGroup   *accel_group,
   gboolean removed_one = FALSE;
   guint n;
 
-  g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), FALSE);
+  g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), FALSE);
 
   g_object_ref (accel_group);
 
@@ -780,7 +780,7 @@ _ctk_accel_group_reconnect (GtkAccelGroup *accel_group,
   GSList *slist, *clist = NULL;
   guint i;
 
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
 
   g_object_ref (accel_group);
 
@@ -808,7 +808,7 @@ _ctk_accel_group_reconnect (GtkAccelGroup *accel_group,
 GSList*
 _ctk_accel_group_get_accelerables (GtkAccelGroup *accel_group)
 {
-    g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), NULL);
+    g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), NULL);
 
     return accel_group->priv->acceleratables;
 }
@@ -837,7 +837,7 @@ ctk_accel_group_query (GtkAccelGroup   *accel_group,
   GtkAccelGroupEntry *entries;
   guint n;
 
-  g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), NULL);
+  g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), NULL);
 
   entries = quick_accel_find (accel_group, gdk_keyval_to_lower (accel_key), accel_mods, &n);
 
@@ -903,7 +903,7 @@ ctk_accel_group_activate (GtkAccelGroup   *accel_group,
 {
   gboolean was_handled;
 
-  g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), FALSE);
+  g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), FALSE);
   g_return_val_if_fail (G_IS_OBJECT (acceleratable), FALSE);
 
   was_handled = FALSE;
@@ -1708,7 +1708,7 @@ ctk_accelerator_get_label (guint           accelerator_key,
   GtkAccelLabelClass *klass;
   gchar *label;
 
-  klass = g_type_class_ref (GTK_TYPE_ACCEL_LABEL);
+  klass = g_type_class_ref (CTK_TYPE_ACCEL_LABEL);
   label = _ctk_accel_label_class_get_accelerator_label (klass,
                                                         accelerator_key,
                                                         accelerator_mods);

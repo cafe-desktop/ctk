@@ -58,7 +58,7 @@ AM_CPPFLAGS = 			\
 	-I$(top_srcdir)		\
 	-I$(top_builddir)	\
 	-I$(top_builddir)/gdk	\
-	$(GTK_DEBUG_FLAGS)	\
+	$(CTK_DEBUG_FLAGS)	\
 	$(GDK_DEP_CFLAGS)
 
 GTKDOC_LIBS = $(top_builddir)/gdk/libgdk-3.la $(GDK_DEP_LIBS)
@@ -202,7 +202,7 @@ EXTRA_DIST += \
 	version.xml.in \
 	meson.build
 
-if ENABLE_GTK_DOC
+if ENABLE_CTK_DOC
 TESTS_ENVIRONMENT = cd $(srcdir) && \
   DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
   SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)

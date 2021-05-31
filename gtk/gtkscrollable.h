@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SCROLLABLE_H__
-#define __GTK_SCROLLABLE_H__
+#ifndef __CTK_SCROLLABLE_H__
+#define __CTK_SCROLLABLE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,10 +29,10 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SCROLLABLE            (ctk_scrollable_get_type ())
-#define GTK_SCROLLABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),     GTK_TYPE_SCROLLABLE, GtkScrollable))
-#define GTK_IS_SCROLLABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),     GTK_TYPE_SCROLLABLE))
-#define GTK_SCROLLABLE_GET_IFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_SCROLLABLE, GtkScrollableInterface))
+#define CTK_TYPE_SCROLLABLE            (ctk_scrollable_get_type ())
+#define CTK_SCROLLABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),     CTK_TYPE_SCROLLABLE, GtkScrollable))
+#define CTK_IS_SCROLLABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),     CTK_TYPE_SCROLLABLE))
+#define CTK_SCROLLABLE_GET_IFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_SCROLLABLE, GtkScrollableInterface))
 
 typedef struct _GtkScrollable          GtkScrollable; /* Dummy */
 typedef struct _GtkScrollableInterface GtkScrollableInterface;
@@ -75,4 +75,4 @@ gboolean             ctk_scrollable_get_border             (GtkScrollable       
 
 G_END_DECLS
 
-#endif /* __GTK_SCROLLABLE_H__ */
+#endif /* __CTK_SCROLLABLE_H__ */

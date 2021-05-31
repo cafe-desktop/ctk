@@ -25,11 +25,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_BINDINGS_H__
-#define __GTK_BINDINGS_H__
+#ifndef __CTK_BINDINGS_H__
+#define __CTK_BINDINGS_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -190,4 +190,4 @@ void           ctk_binding_entry_remove      (GtkBindingSet       *binding_set,
 
 G_END_DECLS
 
-#endif /* __GTK_BINDINGS_H__ */
+#endif /* __CTK_BINDINGS_H__ */

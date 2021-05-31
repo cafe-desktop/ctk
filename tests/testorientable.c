@@ -26,18 +26,18 @@ orient_toggled (GtkToggleButton *button, gpointer user_data)
 
   if (state)
     {
-      orientation = GTK_ORIENTATION_VERTICAL;
-      ctk_button_set_label (GTK_BUTTON (button), "Vertical");
+      orientation = CTK_ORIENTATION_VERTICAL;
+      ctk_button_set_label (CTK_BUTTON (button), "Vertical");
     }
   else
     {
-      orientation = GTK_ORIENTATION_HORIZONTAL;
-      ctk_button_set_label (GTK_BUTTON (button), "Horizontal");
+      orientation = CTK_ORIENTATION_HORIZONTAL;
+      ctk_button_set_label (CTK_BUTTON (button), "Horizontal");
     }
 
   for (ptr = orientables; ptr; ptr = ptr->next)
     {
-      GtkOrientable *orientable = GTK_ORIENTABLE (ptr->data);
+      GtkOrientable *orientable = CTK_ORIENTABLE (ptr->data);
 
       ctk_orientable_set_orientation (orientable, orientation);
     }
@@ -53,50 +53,50 @@ main (int argc, char **argv)
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   grid= ctk_grid_new ();
-  ctk_grid_set_row_spacing (GTK_GRID (grid), 12);
-  ctk_grid_set_column_spacing (GTK_GRID (grid), 12);
+  ctk_grid_set_row_spacing (CTK_GRID (grid), 12);
+  ctk_grid_set_column_spacing (CTK_GRID (grid), 12);
 
   /* GtkBox */
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
   orientables = g_list_prepend (orientables, box);
-  ctk_grid_attach (GTK_GRID (grid), box, 0, 1, 1, 1);
-  ctk_box_pack_start (GTK_BOX (box),
+  ctk_grid_attach (CTK_GRID (grid), box, 0, 1, 1, 1);
+  ctk_box_pack_start (CTK_BOX (box),
                   ctk_button_new_with_label ("GtkBox 1"),
                   TRUE, TRUE, 0);
-  ctk_box_pack_start (GTK_BOX (box),
+  ctk_box_pack_start (CTK_BOX (box),
                   ctk_button_new_with_label ("GtkBox 2"),
                   TRUE, TRUE, 0);
-  ctk_box_pack_start (GTK_BOX (box),
+  ctk_box_pack_start (CTK_BOX (box),
                   ctk_button_new_with_label ("GtkBox 3"),
                   TRUE, TRUE, 0);
 
   /* GtkButtonBox */
-  box = ctk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+  box = ctk_button_box_new (CTK_ORIENTATION_HORIZONTAL);
   orientables = g_list_prepend (orientables, box);
-  ctk_grid_attach (GTK_GRID (grid), box, 1, 1, 1, 1);
-  ctk_box_pack_start (GTK_BOX (box),
+  ctk_grid_attach (CTK_GRID (grid), box, 1, 1, 1, 1);
+  ctk_box_pack_start (CTK_BOX (box),
                   ctk_button_new_with_label ("GtkButtonBox 1"),
                   TRUE, TRUE, 0);
-  ctk_box_pack_start (GTK_BOX (box),
+  ctk_box_pack_start (CTK_BOX (box),
                   ctk_button_new_with_label ("GtkButtonBox 2"),
                   TRUE, TRUE, 0);
-  ctk_box_pack_start (GTK_BOX (box),
+  ctk_box_pack_start (CTK_BOX (box),
                   ctk_button_new_with_label ("GtkButtonBox 3"),
                   TRUE, TRUE, 0);
 
   /* GtkSeparator */
-  box = ctk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+  box = ctk_separator_new (CTK_ORIENTATION_HORIZONTAL);
   orientables = g_list_prepend (orientables, box);
-  ctk_grid_attach (GTK_GRID (grid), box, 2, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), box, 2, 1, 1, 1);
 
   button = ctk_toggle_button_new_with_label ("Horizontal");
-  ctk_grid_attach (GTK_GRID (grid), button, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 0, 0, 1, 1);
   g_signal_connect (button, "toggled",
                   G_CALLBACK (orient_toggled), orientables);
 
-  ctk_container_add (GTK_CONTAINER (window), grid);
+  ctk_container_add (CTK_CONTAINER (window), grid);
   ctk_widget_show_all (window);
 
   g_signal_connect (window, "destroy",

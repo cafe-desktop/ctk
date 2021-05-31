@@ -4494,16 +4494,16 @@ msgstr ""
 "ださい"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "テーマは GTK_THEME によってハードコードされています"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "テーマは CTK_THEME によってハードコードされています"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "バックエンドがウィンドウスケーリングをサポートしていません"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "設定は GTK_TEST_TOUCHSCREEN によってハードコードされています"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "設定は CTK_TEST_TOUCHSCREEN によってハードコードされています"
 
 #: gtk/inspector/visual.c:817
 msgid ""

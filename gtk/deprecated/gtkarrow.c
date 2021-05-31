@@ -44,7 +44,7 @@
  * GtkArrow has been deprecated; you can simply use a #GtkImage with a
  * suitable icon name, such as “pan-down-symbolic“. When replacing 
  * GtkArrow by an image, pay attention to the fact that GtkArrow is
- * doing automatic flipping between #GTK_ARROW_LEFT and #GTK_ARROW_RIGHT,
+ * doing automatic flipping between #CTK_ARROW_LEFT and #CTK_ARROW_RIGHT,
  * depending on the text direction. To get the same effect with an image,
  * use the icon names “pan-start-symbolic“ and “pan-end-symbolic“, which
  * react to the text direction.
@@ -96,7 +96,7 @@ static void     ctk_arrow_get_preferred_height        (GtkWidget           *widg
                                                        gint                *natural_size);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-G_DEFINE_TYPE_WITH_PRIVATE (GtkArrow, ctk_arrow, GTK_TYPE_MISC)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkArrow, ctk_arrow, CTK_TYPE_MISC)
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
@@ -120,27 +120,27 @@ ctk_arrow_class_init (GtkArrowClass *class)
                                    g_param_spec_enum ("arrow-type",
                                                       P_("Arrow direction"),
                                                       P_("The direction the arrow should point"),
-						      GTK_TYPE_ARROW_TYPE,
-						      GTK_ARROW_RIGHT,
-                                                      GTK_PARAM_READWRITE));
+						      CTK_TYPE_ARROW_TYPE,
+						      CTK_ARROW_RIGHT,
+                                                      CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_SHADOW_TYPE,
                                    g_param_spec_enum ("shadow-type",
                                                       P_("Arrow shadow"),
                                                       P_("Appearance of the shadow surrounding the arrow"),
-						      GTK_TYPE_SHADOW_TYPE,
-						      GTK_SHADOW_OUT,
-                                                      GTK_PARAM_READWRITE));
+						      CTK_TYPE_SHADOW_TYPE,
+						      CTK_SHADOW_OUT,
+                                                      CTK_PARAM_READWRITE));
 
   ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_float ("arrow-scaling",
                                                                P_("Arrow Scaling"),
                                                                P_("Amount of space used up by arrow"),
                                                                0.0, 1.0, 0.7,
-                                                               GTK_PARAM_READABLE));
+                                                               CTK_PARAM_READABLE));
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_ARROW_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_ARROW_ACCESSIBLE);
 }
 
 static void
@@ -149,7 +149,7 @@ ctk_arrow_set_property (GObject         *object,
 			const GValue    *value,
 			GParamSpec      *pspec)
 {
-  GtkArrow *arrow = GTK_ARROW (object);
+  GtkArrow *arrow = CTK_ARROW (object);
   GtkArrowPrivate *priv = arrow->priv;
 
   switch (prop_id)
@@ -176,7 +176,7 @@ ctk_arrow_get_property (GObject         *object,
 			GValue          *value,
 			GParamSpec      *pspec)
 {
-  GtkArrow *arrow = GTK_ARROW (object);
+  GtkArrow *arrow = CTK_ARROW (object);
   GtkArrowPrivate *priv = arrow->priv;
 
   switch (prop_id)
@@ -198,10 +198,10 @@ ctk_arrow_init (GtkArrow *arrow)
 {
   arrow->priv = ctk_arrow_get_instance_private (arrow);
 
-  ctk_widget_set_has_window (GTK_WIDGET (arrow), FALSE);
+  ctk_widget_set_has_window (CTK_WIDGET (arrow), FALSE);
 
-  arrow->priv->arrow_type = GTK_ARROW_RIGHT;
-  arrow->priv->shadow_type = GTK_SHADOW_OUT;
+  arrow->priv->arrow_type = CTK_ARROW_RIGHT;
+  arrow->priv->shadow_type = CTK_SHADOW_OUT;
 }
 
 static void
@@ -212,7 +212,7 @@ ctk_arrow_get_preferred_width (GtkWidget *widget,
   GtkBorder border;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  _ctk_misc_get_padding_and_border (GTK_MISC (widget), &border);
+  _ctk_misc_get_padding_and_border (CTK_MISC (widget), &border);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   *minimum_size = MIN_ARROW_SIZE + border.left + border.right;
@@ -227,7 +227,7 @@ ctk_arrow_get_preferred_height (GtkWidget *widget,
   GtkBorder border;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  _ctk_misc_get_padding_and_border (GTK_MISC (widget), &border);
+  _ctk_misc_get_padding_and_border (CTK_MISC (widget), &border);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   *minimum_size = MIN_ARROW_SIZE + border.top + border.bottom;
@@ -252,14 +252,14 @@ ctk_arrow_new (GtkArrowType  arrow_type,
   GtkArrowPrivate *priv;
   GtkArrow *arrow;
 
-  arrow = g_object_new (GTK_TYPE_ARROW, NULL);
+  arrow = g_object_new (CTK_TYPE_ARROW, NULL);
 
   priv = arrow->priv;
 
   priv->arrow_type = arrow_type;
   priv->shadow_type = shadow_type;
 
-  return GTK_WIDGET (arrow);
+  return CTK_WIDGET (arrow);
 }
 
 /**
@@ -280,7 +280,7 @@ ctk_arrow_set (GtkArrow      *arrow,
   GtkArrowPrivate *priv;
   GtkWidget *widget;
 
-  g_return_if_fail (GTK_IS_ARROW (arrow));
+  g_return_if_fail (CTK_IS_ARROW (arrow));
 
   priv = arrow->priv;
 
@@ -303,7 +303,7 @@ ctk_arrow_set (GtkArrow      *arrow,
 
       g_object_thaw_notify (G_OBJECT (arrow));
 
-      widget = GTK_WIDGET (arrow);
+      widget = CTK_WIDGET (arrow);
       if (ctk_widget_is_drawable (widget))
 	ctk_widget_queue_draw (widget);
     }
@@ -313,7 +313,7 @@ static gboolean
 ctk_arrow_draw (GtkWidget *widget,
                 cairo_t   *cr)
 {
-  GtkArrow *arrow = GTK_ARROW (widget);
+  GtkArrow *arrow = CTK_ARROW (widget);
   GtkArrowPrivate *priv = arrow->priv;
   GtkStyleContext *context;
   gdouble x, y;
@@ -325,15 +325,15 @@ ctk_arrow_draw (GtkWidget *widget,
   gfloat arrow_scaling;
   gdouble angle;
 
-  if (priv->arrow_type == GTK_ARROW_NONE)
+  if (priv->arrow_type == CTK_ARROW_NONE)
     return FALSE;
 
   context = ctk_widget_get_style_context (widget);
   ctk_widget_style_get (widget, "arrow-scaling", &arrow_scaling, NULL);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  _ctk_misc_get_padding_and_border (GTK_MISC (widget), &border);
-  ctk_misc_get_alignment (GTK_MISC (widget), &xalign, &yalign);
+  _ctk_misc_get_padding_and_border (CTK_MISC (widget), &border);
+  ctk_misc_get_alignment (CTK_MISC (widget), &xalign, &yalign);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   width = ctk_widget_get_allocated_width (widget) - border.left - border.right;
@@ -342,13 +342,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   extent = MIN (width, height) * arrow_scaling;
   effective_arrow_type = priv->arrow_type;
 
-  if (ctk_widget_get_direction (widget) != GTK_TEXT_DIR_LTR)
+  if (ctk_widget_get_direction (widget) != CTK_TEXT_DIR_LTR)
     {
       xalign = 1.0 - xalign;
-      if (priv->arrow_type == GTK_ARROW_LEFT)
-        effective_arrow_type = GTK_ARROW_RIGHT;
-      else if (priv->arrow_type == GTK_ARROW_RIGHT)
-        effective_arrow_type = GTK_ARROW_LEFT;
+      if (priv->arrow_type == CTK_ARROW_LEFT)
+        effective_arrow_type = CTK_ARROW_RIGHT;
+      else if (priv->arrow_type == CTK_ARROW_RIGHT)
+        effective_arrow_type = CTK_ARROW_LEFT;
     }
 
   x = border.left + ((width - extent) * xalign);
@@ -356,16 +356,16 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   switch (effective_arrow_type)
     {
-    case GTK_ARROW_UP:
+    case CTK_ARROW_UP:
       angle = 0;
       break;
-    case GTK_ARROW_RIGHT:
+    case CTK_ARROW_RIGHT:
       angle = G_PI / 2;
       break;
-    case GTK_ARROW_DOWN:
+    case CTK_ARROW_DOWN:
       angle = G_PI;
       break;
-    case GTK_ARROW_LEFT:
+    case CTK_ARROW_LEFT:
     default:
       angle = (3 * G_PI) / 2;
       break;

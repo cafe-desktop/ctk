@@ -18,7 +18,7 @@ struct _ExampleAppPrefsPrivate
   GtkWidget *transition;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppPrefs, example_app_prefs, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppPrefs, example_app_prefs, CTK_TYPE_DIALOG)
 
 static void
 example_app_prefs_init (ExampleAppPrefs *prefs)
@@ -26,7 +26,7 @@ example_app_prefs_init (ExampleAppPrefs *prefs)
   ExampleAppPrefsPrivate *priv;
 
   priv = example_app_prefs_get_instance_private (prefs);
-  ctk_widget_init_template (GTK_WIDGET (prefs));
+  ctk_widget_init_template (CTK_WIDGET (prefs));
   priv->settings = g_settings_new ("org.gtk.exampleapp");
 
   g_settings_bind (priv->settings, "font",
@@ -53,10 +53,10 @@ example_app_prefs_class_init (ExampleAppPrefsClass *class)
 {
   G_OBJECT_CLASS (class)->dispose = example_app_prefs_dispose;
 
-  ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
                                                "/org/gtk/exampleapp/prefs.ui");
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppPrefs, font);
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppPrefs, transition);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppPrefs, font);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppPrefs, transition);
 }
 
 ExampleAppPrefs *

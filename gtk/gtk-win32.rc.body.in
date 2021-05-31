@@ -1,8 +1,8 @@
 #include <winver.h>
 
 VS_VERSION_INFO VERSIONINFO
-  FILEVERSION @GTK_MAJOR_VERSION@,@GTK_MINOR_VERSION@,@GTK_MICRO_VERSION@,0
-  PRODUCTVERSION @GTK_MAJOR_VERSION@,@GTK_MINOR_VERSION@,@GTK_MICRO_VERSION@,0
+  FILEVERSION @CTK_MAJOR_VERSION@,@CTK_MINOR_VERSION@,@CTK_MICRO_VERSION@,0
+  PRODUCTVERSION @CTK_MAJOR_VERSION@,@CTK_MINOR_VERSION@,@CTK_MICRO_VERSION@,0
   FILEFLAGSMASK 0
   FILEFLAGS 0
   FILEOS VOS__WINDOWS32
@@ -15,12 +15,12 @@ VS_VERSION_INFO VERSIONINFO
       BEGIN
 	VALUE "CompanyName", "The GTK developer community"
 	VALUE "FileDescription", "GIMP Toolkit"
-	VALUE "FileVersion", "@GTK_VERSION@.0"
-	VALUE "InternalName", "libgtk-win32-@GTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@"
+	VALUE "FileVersion", "@CTK_VERSION@.0"
+	VALUE "InternalName", "libgtk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@"
 	VALUE "LegalCopyright", "Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald. Modified by the GTK+ Team and others 1997-2011."
-	VALUE "OriginalFilename", "libgtk-win32-@GTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll"
+	VALUE "OriginalFilename", "libgtk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll"
 	VALUE "ProductName", "GTK+"
-	VALUE "ProductVersion", "@GTK_VERSION@"
+	VALUE "ProductVersion", "@CTK_VERSION@"
       END
     END
     BLOCK "VarFileInfo"

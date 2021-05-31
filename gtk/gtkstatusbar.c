@@ -114,12 +114,12 @@ static void     ctk_statusbar_destroy           (GtkWidget         *widget);
 
 static guint              statusbar_signals[SIGNAL_LAST] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkStatusbar, ctk_statusbar, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkStatusbar, ctk_statusbar, CTK_TYPE_BOX)
 
 static void
 ctk_statusbar_class_init (GtkStatusbarClass *class)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   widget_class->destroy = ctk_statusbar_destroy;
 
@@ -176,9 +176,9 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
                                            g_param_spec_enum ("shadow-type",
                                                               P_("Shadow type"),
                                                               P_("Style of bevel around the statusbar text"),
-                                                              GTK_TYPE_SHADOW_TYPE,
-                                                              GTK_SHADOW_IN,
-                                                              GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                              CTK_TYPE_SHADOW_TYPE,
+                                                              CTK_SHADOW_IN,
+                                                              CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /* Bind class to template
    */
@@ -187,7 +187,7 @@ ctk_statusbar_class_init (GtkStatusbarClass *class)
   ctk_widget_class_bind_template_child_private (widget_class, GtkStatusbar, frame);
   ctk_widget_class_bind_template_child_private (widget_class, GtkStatusbar, label);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_STATUSBAR_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_STATUSBAR_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "statusbar");
 }
 
@@ -204,7 +204,7 @@ ctk_statusbar_init (GtkStatusbar *statusbar)
   priv->messages = NULL;
   priv->keys = NULL;
 
-  ctk_widget_init_template (GTK_WIDGET (statusbar));
+  ctk_widget_init_template (CTK_WIDGET (statusbar));
 }
 
 /**
@@ -217,7 +217,7 @@ ctk_statusbar_init (GtkStatusbar *statusbar)
 GtkWidget* 
 ctk_statusbar_new (void)
 {
-  return g_object_new (GTK_TYPE_STATUSBAR, NULL);
+  return g_object_new (CTK_TYPE_STATUSBAR, NULL);
 }
 
 static void
@@ -227,14 +227,14 @@ ctk_statusbar_update (GtkStatusbar *statusbar,
 {
   GtkStatusbarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_STATUSBAR (statusbar));
+  g_return_if_fail (CTK_IS_STATUSBAR (statusbar));
 
   priv = statusbar->priv;
 
   if (!text)
     text = "";
 
-  ctk_label_set_text (GTK_LABEL (priv->label), text);
+  ctk_label_set_text (CTK_LABEL (priv->label), text);
 }
 
 /**
@@ -257,7 +257,7 @@ ctk_statusbar_get_context_id (GtkStatusbar *statusbar,
   gchar *string;
   guint id;
   
-  g_return_val_if_fail (GTK_IS_STATUSBAR (statusbar), 0);
+  g_return_val_if_fail (CTK_IS_STATUSBAR (statusbar), 0);
   g_return_val_if_fail (context_description != NULL, 0);
 
   priv = statusbar->priv;
@@ -320,7 +320,7 @@ ctk_statusbar_push (GtkStatusbar *statusbar,
   GtkStatusbarPrivate *priv;
   GtkStatusbarMsg *msg;
 
-  g_return_val_if_fail (GTK_IS_STATUSBAR (statusbar), 0);
+  g_return_val_if_fail (CTK_IS_STATUSBAR (statusbar), 0);
   g_return_val_if_fail (text != NULL, 0);
 
   priv = statusbar->priv;
@@ -356,7 +356,7 @@ ctk_statusbar_pop (GtkStatusbar *statusbar,
   GtkStatusbarPrivate *priv;
   GtkStatusbarMsg *msg;
 
-  g_return_if_fail (GTK_IS_STATUSBAR (statusbar));
+  g_return_if_fail (CTK_IS_STATUSBAR (statusbar));
 
   priv = statusbar->priv;
 
@@ -404,7 +404,7 @@ ctk_statusbar_remove (GtkStatusbar *statusbar,
   GtkStatusbarPrivate *priv;
   GtkStatusbarMsg *msg;
 
-  g_return_if_fail (GTK_IS_STATUSBAR (statusbar));
+  g_return_if_fail (CTK_IS_STATUSBAR (statusbar));
   g_return_if_fail (message_id > 0);
 
   priv = statusbar->priv;
@@ -457,7 +457,7 @@ ctk_statusbar_remove_all (GtkStatusbar *statusbar,
   GtkStatusbarMsg *msg;
   GSList *prev, *list;
 
-  g_return_if_fail (GTK_IS_STATUSBAR (statusbar));
+  g_return_if_fail (CTK_IS_STATUSBAR (statusbar));
 
   priv = statusbar->priv;
 
@@ -515,7 +515,7 @@ ctk_statusbar_get_message_area (GtkStatusbar *statusbar)
 {
   GtkStatusbarPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_STATUSBAR (statusbar), NULL);
+  g_return_val_if_fail (CTK_IS_STATUSBAR (statusbar), NULL);
 
   priv = statusbar->priv;
 
@@ -525,7 +525,7 @@ ctk_statusbar_get_message_area (GtkStatusbar *statusbar)
 static void
 ctk_statusbar_destroy (GtkWidget *widget)
 {
-  GtkStatusbar *statusbar = GTK_STATUSBAR (widget);
+  GtkStatusbar *statusbar = CTK_STATUSBAR (widget);
   GtkStatusbarPrivate *priv = statusbar->priv;
 
   g_slist_free_full (priv->messages, (GDestroyNotify) ctk_statusbar_msg_free);
@@ -534,5 +534,5 @@ ctk_statusbar_destroy (GtkWidget *widget)
   g_slist_free_full (priv->keys, g_free);
   priv->keys = NULL;
 
-  GTK_WIDGET_CLASS (ctk_statusbar_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_statusbar_parent_class)->destroy (widget);
 }

@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined (__GTKX_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__GTKX_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtkx.h> can be included directly."
 #endif
 

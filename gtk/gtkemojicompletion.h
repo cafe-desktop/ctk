@@ -17,7 +17,7 @@
 
 #pragma once
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -25,12 +25,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EMOJI_COMPLETION                 (ctk_emoji_completion_get_type ())
-#define GTK_EMOJI_COMPLETION(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletion))
-#define GTK_EMOJI_COMPLETION_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletionClass))
-#define GTK_IS_EMOJI_COMPLETION(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_EMOJI_COMPLETION))
-#define GTK_IS_EMOJI_COMPLETION_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_EMOJI_COMPLETION))
-#define GTK_EMOJI_COMPLETION_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletionClass))
+#define CTK_TYPE_EMOJI_COMPLETION                 (ctk_emoji_completion_get_type ())
+#define CTK_EMOJI_COMPLETION(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletion))
+#define CTK_EMOJI_COMPLETION_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletionClass))
+#define CTK_IS_EMOJI_COMPLETION(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_EMOJI_COMPLETION))
+#define CTK_IS_EMOJI_COMPLETION_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_EMOJI_COMPLETION))
+#define CTK_EMOJI_COMPLETION_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletionClass))
 
 typedef struct _GtkEmojiCompletion      GtkEmojiCompletion;
 typedef struct _GtkEmojiCompletionClass GtkEmojiCompletionClass;

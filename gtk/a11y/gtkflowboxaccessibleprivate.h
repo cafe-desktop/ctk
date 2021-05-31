@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__
-#define __GTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__
+#define __CTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtkflowboxaccessible.h>
 
@@ -27,4 +27,4 @@ void _ctk_flow_box_accessible_update_cursor     (GtkWidget *box,
                                                  GtkWidget *child);
 G_END_DECLS
 
-#endif /* __GTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__ */

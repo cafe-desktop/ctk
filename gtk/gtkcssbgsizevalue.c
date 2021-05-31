@@ -22,7 +22,7 @@
 #include "gtkcssnumbervalueprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   guint cover :1;
   guint contain :1;
   GtkCssValue *x;
@@ -152,7 +152,7 @@ ctk_css_value_bg_size_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_BG_SIZE = {
+static const GtkCssValueClass CTK_CSS_VALUE_BG_SIZE = {
   ctk_css_value_bg_size_free,
   ctk_css_value_bg_size_compute,
   ctk_css_value_bg_size_equal,
@@ -160,9 +160,9 @@ static const GtkCssValueClass GTK_CSS_VALUE_BG_SIZE = {
   ctk_css_value_bg_size_print
 };
 
-static GtkCssValue auto_singleton = { &GTK_CSS_VALUE_BG_SIZE, 1, FALSE, FALSE, NULL, NULL };
-static GtkCssValue cover_singleton = { &GTK_CSS_VALUE_BG_SIZE, 1, TRUE, FALSE, NULL, NULL };
-static GtkCssValue contain_singleton = { &GTK_CSS_VALUE_BG_SIZE, 1, FALSE, TRUE, NULL, NULL };
+static GtkCssValue auto_singleton = { &CTK_CSS_VALUE_BG_SIZE, 1, FALSE, FALSE, NULL, NULL };
+static GtkCssValue cover_singleton = { &CTK_CSS_VALUE_BG_SIZE, 1, TRUE, FALSE, NULL, NULL };
+static GtkCssValue contain_singleton = { &CTK_CSS_VALUE_BG_SIZE, 1, FALSE, TRUE, NULL, NULL };
 
 GtkCssValue *
 _ctk_css_bg_size_value_new (GtkCssValue *x,
@@ -173,7 +173,7 @@ _ctk_css_bg_size_value_new (GtkCssValue *x,
   if (x == NULL && y == NULL)
     return _ctk_css_value_ref (&auto_singleton);
 
-  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_BG_SIZE);
+  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_BG_SIZE);
   result->x = x;
   result->y = y;
 
@@ -195,9 +195,9 @@ _ctk_css_bg_size_value_parse (GtkCssParser *parser)
   else
     {
       x = _ctk_css_number_value_parse (parser,
-                                       GTK_CSS_POSITIVE_ONLY
-                                       | GTK_CSS_PARSE_PERCENT
-                                       | GTK_CSS_PARSE_LENGTH);
+                                       CTK_CSS_POSITIVE_ONLY
+                                       | CTK_CSS_PARSE_PERCENT
+                                       | CTK_CSS_PARSE_LENGTH);
       if (x == NULL)
         return NULL;
     }
@@ -209,9 +209,9 @@ _ctk_css_bg_size_value_parse (GtkCssParser *parser)
   else
     {
       y = _ctk_css_number_value_parse (parser,
-                                       GTK_CSS_POSITIVE_ONLY
-                                       | GTK_CSS_PARSE_PERCENT
-                                       | GTK_CSS_PARSE_LENGTH);
+                                       CTK_CSS_POSITIVE_ONLY
+                                       | CTK_CSS_PARSE_PERCENT
+                                       | CTK_CSS_PARSE_LENGTH);
       if (y == NULL)
         {
           _ctk_css_value_unref (x);
@@ -263,7 +263,7 @@ _ctk_css_bg_size_value_compute_size (const GtkCssValue *value,
                                      double            *out_width,
                                      double            *out_height)
 {
-  g_return_if_fail (value->class == &GTK_CSS_VALUE_BG_SIZE);
+  g_return_if_fail (value->class == &CTK_CSS_VALUE_BG_SIZE);
 
   if (value->contain || value->cover)
     {

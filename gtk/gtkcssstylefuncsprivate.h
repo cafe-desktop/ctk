@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_STYLE_FUNCS_PRIVATE_H__
-#define __GTK_CSS_STYLE_FUNCS_PRIVATE_H__
+#ifndef __CTK_CSS_STYLE_FUNCS_PRIVATE_H__
+#define __CTK_CSS_STYLE_FUNCS_PRIVATE_H__
 
 #include "gtkcssparserprivate.h"
 #include "gtkstylecontext.h"
@@ -36,4 +36,4 @@ GtkCssValue *       _ctk_css_style_funcs_compute_value     (GtkStyleProviderPriv
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_STYLE_FUNCS_PRIVATE_H__ */
+#endif /* __CTK_CSS_STYLE_FUNCS_PRIVATE_H__ */

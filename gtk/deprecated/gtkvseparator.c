@@ -43,7 +43,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * GtkVSeparator has been deprecated, use #GtkSeparator instead.
  */
 
-G_DEFINE_TYPE (GtkVSeparator, ctk_vseparator, GTK_TYPE_SEPARATOR)
+G_DEFINE_TYPE (GtkVSeparator, ctk_vseparator, CTK_TYPE_SEPARATOR)
 
 static void
 ctk_vseparator_class_init (GtkVSeparatorClass *klass)
@@ -53,8 +53,8 @@ ctk_vseparator_class_init (GtkVSeparatorClass *klass)
 static void
 ctk_vseparator_init (GtkVSeparator *vseparator)
 {
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (vseparator),
-                                  GTK_ORIENTATION_VERTICAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (vseparator),
+                                  CTK_ORIENTATION_VERTICAL);
 }
 
 /**
@@ -64,10 +64,10 @@ ctk_vseparator_init (GtkVSeparator *vseparator)
  *
  * Returns: a new #GtkVSeparator.
  *
- * Deprecated: 3.2: Use ctk_separator_new() with %GTK_ORIENTATION_VERTICAL instead
+ * Deprecated: 3.2: Use ctk_separator_new() with %CTK_ORIENTATION_VERTICAL instead
  */
 GtkWidget *
 ctk_vseparator_new (void)
 {
-  return g_object_new (GTK_TYPE_VSEPARATOR, NULL);
+  return g_object_new (CTK_TYPE_VSEPARATOR, NULL);
 }

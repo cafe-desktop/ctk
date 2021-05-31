@@ -45,7 +45,7 @@ image_recording_surface_set (GtkWidget *widget,
   cairo_paint (cr);
   cairo_destroy (cr);
 
-  ctk_image_set_from_surface (GTK_IMAGE (widget), surface);
+  ctk_image_set_from_surface (CTK_IMAGE (widget), surface);
 
   cairo_surface_destroy (surface);
   g_object_unref (pixbuf);

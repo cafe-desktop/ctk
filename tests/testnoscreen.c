@@ -29,13 +29,13 @@ int main (int argc, char *argv[])
 
   ctk_parse_args (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   button = ctk_button_new ();
-  ctk_container_add (GTK_CONTAINER (window), button);
+  ctk_container_add (CTK_CONTAINER (window), button);
 
   display = gdk_display_open (NULL);
 
-  ctk_window_set_screen (GTK_WINDOW (window), gdk_display_get_default_screen (display));
+  ctk_window_set_screen (CTK_WINDOW (window), gdk_display_get_default_screen (display));
 
   ctk_widget_show_all (window);
 

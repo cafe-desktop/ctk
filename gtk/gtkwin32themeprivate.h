@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_WIN32_THEME_PART_H__
-#define __GTK_WIN32_THEME_PART_H__
+#ifndef __CTK_WIN32_THEME_PART_H__
+#define __CTK_WIN32_THEME_PART_H__
 
 #include "gtkcssparserprivate.h"
 
@@ -26,7 +26,7 @@ G_BEGIN_DECLS
 
 typedef struct _GtkWin32Theme GtkWin32Theme;
 
-#define GTK_WIN32_THEME_SYMBOLIC_COLOR_NAME "-gtk-win32-color"
+#define CTK_WIN32_THEME_SYMBOLIC_COLOR_NAME "-gtk-win32-color"
 
 GtkWin32Theme *         ctk_win32_theme_lookup          (const char     *class_name);
 GtkWin32Theme *         ctk_win32_theme_parse           (GtkCssParser   *parser);
@@ -66,4 +66,4 @@ void                    ctk_win32_theme_get_color       (GtkWin32Theme  *theme,
 
 G_END_DECLS
 
-#endif /* __GTK_WIN32_THEME_PART_H__ */
+#endif /* __CTK_WIN32_THEME_PART_H__ */

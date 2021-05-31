@@ -76,31 +76,31 @@
  *   GtkWidget *box;
  *   const char *text;
  *
- *   window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
- *   box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
+ *   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+ *   box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
  *
  *   text = "Hi, I’m a toggle button.";
  *   toggle1 = ctk_toggle_button_new_with_label (text);
  *
  *   // Makes this toggle button invisible
- *   ctk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (toggle1),
+ *   ctk_toggle_button_set_mode (CTK_TOGGLE_BUTTON (toggle1),
  *                               TRUE);
  *
  *   g_signal_connect (toggle1, "toggled",
  *                     G_CALLBACK (output_state),
  *                     NULL);
- *   ctk_container_add (GTK_CONTAINER (box), toggle1);
+ *   ctk_container_add (CTK_CONTAINER (box), toggle1);
  *
  *   text = "Hi, I’m a toggle button.";
  *   toggle2 = ctk_toggle_button_new_with_label (text);
- *   ctk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (toggle2),
+ *   ctk_toggle_button_set_mode (CTK_TOGGLE_BUTTON (toggle2),
  *                               FALSE);
  *   g_signal_connect (toggle2, "toggled",
  *                     G_CALLBACK (output_state),
  *                     NULL);
- *   ctk_container_add (GTK_CONTAINER (box), toggle2);
+ *   ctk_container_add (CTK_CONTAINER (box), toggle2);
  *
- *   ctk_container_add (GTK_CONTAINER (window), box);
+ *   ctk_container_add (CTK_CONTAINER (window), box);
  *   ctk_widget_show_all (window);
  * }
  * ]|
@@ -157,9 +157,9 @@ static GtkActivatableIface *parent_activatable_iface;
 static guint                toggle_button_signals[LAST_SIGNAL] = { 0 };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkToggleButton, ctk_toggle_button, GTK_TYPE_BUTTON,
+G_DEFINE_TYPE_WITH_CODE (GtkToggleButton, ctk_toggle_button, CTK_TYPE_BUTTON,
                          G_ADD_PRIVATE (GtkToggleButton)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_toggle_button_activatable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -188,21 +188,21 @@ ctk_toggle_button_class_init (GtkToggleButtonClass *class)
                             P_("Active"),
                             P_("If the toggle button should be pressed in"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   toggle_button_props[PROP_INCONSISTENT] =
       g_param_spec_boolean ("inconsistent",
                             P_("Inconsistent"),
                             P_("If the toggle button is in an \"in between\" state"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   toggle_button_props[PROP_DRAW_INDICATOR] =
       g_param_spec_boolean ("draw-indicator",
                             P_("Draw Indicator"),
                             P_("If the toggle part of the button is displayed"),
                             FALSE,
-                            GTK_PARAM_READWRITE);
+                            CTK_PARAM_READWRITE);
 
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, toggle_button_props);
 
@@ -222,7 +222,7 @@ ctk_toggle_button_class_init (GtkToggleButtonClass *class)
 		  NULL,
 		  G_TYPE_NONE, 0);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "button");
 }
 
@@ -235,7 +235,7 @@ ctk_toggle_button_init (GtkToggleButton *toggle_button)
   toggle_button->priv->active = FALSE;
   toggle_button->priv->draw_indicator = FALSE;
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (toggle_button));
+  context = ctk_widget_get_style_context (CTK_WIDGET (toggle_button));
   ctk_style_context_add_class (context, "toggle");
 }
 
@@ -256,13 +256,13 @@ ctk_toggle_button_update (GtkActivatable *activatable,
 
   parent_activatable_iface->update (activatable, action, property_name);
 
-  button = GTK_TOGGLE_BUTTON (activatable);
+  button = CTK_TOGGLE_BUTTON (activatable);
 
   if (strcmp (property_name, "active") == 0)
     {
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_action_block_activate (action);
-      ctk_toggle_button_set_active (button, ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+      ctk_toggle_button_set_active (button, ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
       ctk_action_unblock_activate (action);
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
@@ -279,17 +279,17 @@ ctk_toggle_button_sync_action_properties (GtkActivatable *activatable,
   parent_activatable_iface->sync_action_properties (activatable, action);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  is_toggle_action = GTK_IS_TOGGLE_ACTION (action);
+  is_toggle_action = CTK_IS_TOGGLE_ACTION (action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (!is_toggle_action)
     return;
 
-  button = GTK_TOGGLE_BUTTON (activatable);
+  button = CTK_TOGGLE_BUTTON (activatable);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_action_block_activate (action);
-  ctk_toggle_button_set_active (button, ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+  ctk_toggle_button_set_active (button, ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
   ctk_action_unblock_activate (action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
@@ -304,7 +304,7 @@ ctk_toggle_button_sync_action_properties (GtkActivatable *activatable,
 GtkWidget*
 ctk_toggle_button_new (void)
 {
-  return g_object_new (GTK_TYPE_TOGGLE_BUTTON, NULL);
+  return g_object_new (CTK_TYPE_TOGGLE_BUTTON, NULL);
 }
 
 /**
@@ -318,7 +318,7 @@ ctk_toggle_button_new (void)
 GtkWidget*
 ctk_toggle_button_new_with_label (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_TOGGLE_BUTTON, "label", label, NULL);
+  return g_object_new (CTK_TYPE_TOGGLE_BUTTON, "label", label, NULL);
 }
 
 /**
@@ -335,7 +335,7 @@ ctk_toggle_button_new_with_label (const gchar *label)
 GtkWidget*
 ctk_toggle_button_new_with_mnemonic (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_TOGGLE_BUTTON, 
+  return g_object_new (CTK_TYPE_TOGGLE_BUTTON, 
 		       "label", label, 
 		       "use-underline", TRUE, 
 		       NULL);
@@ -349,7 +349,7 @@ ctk_toggle_button_set_property (GObject      *object,
 {
   GtkToggleButton *tb;
 
-  tb = GTK_TOGGLE_BUTTON (object);
+  tb = CTK_TOGGLE_BUTTON (object);
 
   switch (prop_id)
     {
@@ -374,7 +374,7 @@ ctk_toggle_button_get_property (GObject      *object,
 				GValue       *value,
 				GParamSpec   *pspec)
 {
-  GtkToggleButton *tb = GTK_TOGGLE_BUTTON (object);
+  GtkToggleButton *tb = CTK_TOGGLE_BUTTON (object);
   GtkToggleButtonPrivate *priv = tb->priv;
 
   switch (prop_id)
@@ -417,7 +417,7 @@ ctk_toggle_button_set_mode (GtkToggleButton *toggle_button,
 {
   GtkToggleButtonPrivate *priv;
 
-  g_return_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button));
+  g_return_if_fail (CTK_IS_TOGGLE_BUTTON (toggle_button));
 
   priv = toggle_button->priv;
 
@@ -427,8 +427,8 @@ ctk_toggle_button_set_mode (GtkToggleButton *toggle_button,
     {
       priv->draw_indicator = draw_indicator;
 
-      if (ctk_widget_get_visible (GTK_WIDGET (toggle_button)))
-	ctk_widget_queue_resize (GTK_WIDGET (toggle_button));
+      if (ctk_widget_get_visible (CTK_WIDGET (toggle_button)))
+	ctk_widget_queue_resize (CTK_WIDGET (toggle_button));
 
       g_object_notify_by_pspec (G_OBJECT (toggle_button), toggle_button_props[PROP_DRAW_INDICATOR]);
     }
@@ -447,7 +447,7 @@ ctk_toggle_button_set_mode (GtkToggleButton *toggle_button,
 gboolean
 ctk_toggle_button_get_mode (GtkToggleButton *toggle_button)
 {
-  g_return_val_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
+  g_return_val_if_fail (CTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
 
   return toggle_button->priv->draw_indicator;
 }
@@ -468,7 +468,7 @@ ctk_toggle_button_set_active (GtkToggleButton *toggle_button,
 {
   GtkToggleButtonPrivate *priv;
 
-  g_return_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button));
+  g_return_if_fail (CTK_IS_TOGGLE_BUTTON (toggle_button));
 
   priv = toggle_button->priv;
 
@@ -476,7 +476,7 @@ ctk_toggle_button_set_active (GtkToggleButton *toggle_button,
 
   if (priv->active != is_active)
     {
-      ctk_button_clicked (GTK_BUTTON (toggle_button));
+      ctk_button_clicked (CTK_BUTTON (toggle_button));
       g_object_notify_by_pspec (G_OBJECT (toggle_button), toggle_button_props[PROP_ACTIVE]);
     }
 }
@@ -488,9 +488,9 @@ _ctk_toggle_button_set_active (GtkToggleButton *toggle_button,
   toggle_button->priv->active = is_active;
 
   if (is_active)
-    ctk_widget_set_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_CHECKED, FALSE);
+    ctk_widget_set_state_flags (CTK_WIDGET (toggle_button), CTK_STATE_FLAG_CHECKED, FALSE);
   else
-    ctk_widget_unset_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_CHECKED);
+    ctk_widget_unset_state_flags (CTK_WIDGET (toggle_button), CTK_STATE_FLAG_CHECKED);
 
 }
 
@@ -506,7 +506,7 @@ _ctk_toggle_button_set_active (GtkToggleButton *toggle_button,
 gboolean
 ctk_toggle_button_get_active (GtkToggleButton *toggle_button)
 {
-  g_return_val_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
+  g_return_val_if_fail (CTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
 
   return toggle_button->priv->active;
 }
@@ -522,7 +522,7 @@ ctk_toggle_button_get_active (GtkToggleButton *toggle_button)
 void
 ctk_toggle_button_toggled (GtkToggleButton *toggle_button)
 {
-  g_return_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button));
+  g_return_if_fail (CTK_IS_TOGGLE_BUTTON (toggle_button));
 
   g_signal_emit (toggle_button, toggle_button_signals[TOGGLED], 0);
 }
@@ -548,7 +548,7 @@ ctk_toggle_button_set_inconsistent (GtkToggleButton *toggle_button,
 {
   GtkToggleButtonPrivate *priv;
 
-  g_return_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button));
+  g_return_if_fail (CTK_IS_TOGGLE_BUTTON (toggle_button));
 
   priv = toggle_button->priv;
 
@@ -559,9 +559,9 @@ ctk_toggle_button_set_inconsistent (GtkToggleButton *toggle_button,
       priv->inconsistent = setting;
 
       if (setting)
-        ctk_widget_set_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_INCONSISTENT, FALSE);
+        ctk_widget_set_state_flags (CTK_WIDGET (toggle_button), CTK_STATE_FLAG_INCONSISTENT, FALSE);
       else
-        ctk_widget_unset_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_INCONSISTENT);
+        ctk_widget_unset_state_flags (CTK_WIDGET (toggle_button), CTK_STATE_FLAG_INCONSISTENT);
 
       g_object_notify_by_pspec (G_OBJECT (toggle_button), toggle_button_props[PROP_INCONSISTENT]);
     }
@@ -578,7 +578,7 @@ ctk_toggle_button_set_inconsistent (GtkToggleButton *toggle_button,
 gboolean
 ctk_toggle_button_get_inconsistent (GtkToggleButton *toggle_button)
 {
-  g_return_val_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
+  g_return_val_if_fail (CTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
 
   return toggle_button->priv->inconsistent;
 }
@@ -604,7 +604,7 @@ ctk_toggle_button_mnemonic_activate (GtkWidget *widget,
 static void
 ctk_toggle_button_clicked (GtkButton *button)
 {
-  GtkToggleButton *toggle_button = GTK_TOGGLE_BUTTON (button);
+  GtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (button);
   GtkToggleButtonPrivate *priv = toggle_button->priv;
 
   _ctk_toggle_button_set_active (toggle_button, !priv->active);
@@ -613,7 +613,7 @@ ctk_toggle_button_clicked (GtkButton *button)
 
   g_object_notify_by_pspec (G_OBJECT (toggle_button), toggle_button_props[PROP_ACTIVE]);
 
-  if (GTK_BUTTON_CLASS (ctk_toggle_button_parent_class)->clicked)
-    GTK_BUTTON_CLASS (ctk_toggle_button_parent_class)->clicked (button);
+  if (CTK_BUTTON_CLASS (ctk_toggle_button_parent_class)->clicked)
+    CTK_BUTTON_CLASS (ctk_toggle_button_parent_class)->clicked (button);
 }
 

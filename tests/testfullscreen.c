@@ -46,25 +46,25 @@ main (int argc, char *argv[])
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  ctk_widget_set_valign (vbox, GTK_ALIGN_CENTER);
-  ctk_widget_set_halign (vbox, GTK_ALIGN_CENTER);
-  ctk_box_set_homogeneous (GTK_BOX (vbox), TRUE);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
+  ctk_widget_set_valign (vbox, CTK_ALIGN_CENTER);
+  ctk_widget_set_halign (vbox, CTK_ALIGN_CENTER);
+  ctk_box_set_homogeneous (CTK_BOX (vbox), TRUE);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   button = ctk_button_new_with_label ("Fullscreen on current monitor");
   g_signal_connect (button, "clicked", G_CALLBACK (set_fullscreen_monitor_cb), GINT_TO_POINTER (GDK_FULLSCREEN_ON_CURRENT_MONITOR));
-  ctk_container_add (GTK_CONTAINER (vbox), button);
+  ctk_container_add (CTK_CONTAINER (vbox), button);
 
   button = ctk_button_new_with_label ("Fullscreen on all monitors");
   g_signal_connect (button, "clicked", G_CALLBACK (set_fullscreen_monitor_cb), GINT_TO_POINTER (GDK_FULLSCREEN_ON_ALL_MONITORS));
-  ctk_container_add (GTK_CONTAINER (vbox), button);
+  ctk_container_add (CTK_CONTAINER (vbox), button);
 
   button = ctk_button_new_with_label ("Un-fullscreen");
   g_signal_connect (button, "clicked", G_CALLBACK (remove_fullscreen_cb), NULL);
-  ctk_container_add (GTK_CONTAINER (vbox), button);
+  ctk_container_add (CTK_CONTAINER (vbox), button);
 
   ctk_widget_show_all (window);
 

@@ -158,7 +158,7 @@ ctk_tool_button_get_type (void)
         NULL
       };
 
-      g_define_type_id = g_type_register_static_simple (GTK_TYPE_TOOL_ITEM,
+      g_define_type_id = g_type_register_static_simple (CTK_TYPE_TOOL_ITEM,
                                                         I_("GtkToolButton"),
                                                         sizeof (GtkToolButtonClass),
                                                         (GClassInitFunc) ctk_tool_button_class_init,
@@ -168,9 +168,9 @@ ctk_tool_button_get_type (void)
 
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_type_add_interface_static (g_define_type_id,
-                                   GTK_TYPE_ACTIONABLE, &actionable_info);
+                                   CTK_TYPE_ACTIONABLE, &actionable_info);
       g_type_add_interface_static (g_define_type_id,
-                                   GTK_TYPE_ACTIVATABLE, &activatable_info);
+                                   CTK_TYPE_ACTIVATABLE, &activatable_info);
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
   return g_define_type_id;
@@ -199,7 +199,7 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
   tool_item_class->create_menu_proxy = ctk_tool_button_create_menu_proxy;
   tool_item_class->toolbar_reconfigured = ctk_tool_button_toolbar_reconfigured;
   
-  klass->button_type = GTK_TYPE_BUTTON;
+  klass->button_type = CTK_TYPE_BUTTON;
 
   /* Properties are interpreted like this:
    *
@@ -243,21 +243,21 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
 							P_("Label"),
 							P_("Text to show in the item."),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
   g_object_class_install_property (object_class,
 				   PROP_USE_UNDERLINE,
 				   g_param_spec_boolean ("use-underline",
 							 P_("Use underline"),
 							 P_("If set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu"),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   g_object_class_install_property (object_class,
 				   PROP_LABEL_WIDGET,
 				   g_param_spec_object ("label-widget",
 							P_("Label widget"),
 							P_("Widget to use as the item label"),
-							GTK_TYPE_WIDGET,
-							GTK_PARAM_READWRITE));
+							CTK_TYPE_WIDGET,
+							CTK_PARAM_READWRITE));
   /**
    * GtkToolButton:stock-id:
    *
@@ -269,7 +269,7 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
 							P_("Stock Id"),
 							P_("The stock icon displayed on the item"),
 							NULL,
-							GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+							CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   /**
    * GtkToolButton:icon-name:
@@ -287,14 +287,14 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
 							P_("Icon name"),
 							P_("The name of the themed icon displayed on the item"),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
   g_object_class_install_property (object_class,
 				   PROP_ICON_WIDGET,
 				   g_param_spec_object ("icon-widget",
 							P_("Icon widget"),
 							P_("Icon widget to display in the item"),
-							GTK_TYPE_WIDGET,
-							GTK_PARAM_READWRITE));
+							CTK_TYPE_WIDGET,
+							CTK_PARAM_READWRITE));
 
   g_object_class_override_property (object_class, PROP_ACTION_NAME, "action-name");
   g_object_class_override_property (object_class, PROP_ACTION_TARGET, "action-target");
@@ -313,7 +313,7 @@ ctk_tool_button_class_init (GtkToolButtonClass *klass)
 							     0,
 							     G_MAXINT,
 							     3,
-							     GTK_PARAM_READWRITE));
+							     CTK_PARAM_READWRITE));
 
 /**
  * GtkToolButton::clicked:
@@ -340,10 +340,10 @@ static void
 ctk_tool_button_init (GtkToolButton      *button,
 		      GtkToolButtonClass *klass)
 {
-  GtkToolItem *toolitem = GTK_TOOL_ITEM (button);
+  GtkToolItem *toolitem = CTK_TOOL_ITEM (button);
 
   button->priv = G_TYPE_INSTANCE_GET_PRIVATE (button,
-                                              GTK_TYPE_TOOL_BUTTON,
+                                              CTK_TYPE_TOOL_BUTTON,
                                               GtkToolButtonPrivate);
 
   button->priv->contents_invalid = TRUE;
@@ -352,18 +352,18 @@ ctk_tool_button_init (GtkToolButton      *button,
 
   /* create button */
   button->priv->button = g_object_new (klass->button_type, NULL);
-  ctk_widget_set_focus_on_click (GTK_WIDGET (button->priv->button), FALSE);
+  ctk_widget_set_focus_on_click (CTK_WIDGET (button->priv->button), FALSE);
   g_signal_connect_object (button->priv->button, "clicked",
 			   G_CALLBACK (button_clicked), button, 0);
 
-  ctk_container_add (GTK_CONTAINER (button), button->priv->button);
+  ctk_container_add (CTK_CONTAINER (button), button->priv->button);
   ctk_widget_show (button->priv->button);
 }
 
 static void
 ctk_tool_button_construct_contents (GtkToolItem *tool_item)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (tool_item);
+  GtkToolButton *button = CTK_TOOL_BUTTON (tool_item);
   GtkWidget *child;
   GtkWidget *label = NULL;
   GtkWidget *icon = NULL;
@@ -373,13 +373,13 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
   GtkIconSize icon_size;
   GtkWidget *box = NULL;
   guint icon_spacing;
-  GtkOrientation text_orientation = GTK_ORIENTATION_HORIZONTAL;
+  GtkOrientation text_orientation = CTK_ORIENTATION_HORIZONTAL;
   GtkSizeGroup *size_group = NULL;
   GtkWidget *parent;
 
   button->priv->contents_invalid = FALSE;
 
-  ctk_widget_style_get (GTK_WIDGET (tool_item), 
+  ctk_widget_style_get (CTK_WIDGET (tool_item), 
 			"icon-spacing", &icon_spacing,
 			NULL);
 
@@ -388,7 +388,7 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
       parent = ctk_widget_get_parent (button->priv->icon_widget);
       if (parent)
         {
-          ctk_container_remove (GTK_CONTAINER (parent),
+          ctk_container_remove (CTK_CONTAINER (parent),
                                 button->priv->icon_widget);
         }
     }
@@ -398,12 +398,12 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
       parent = ctk_widget_get_parent (button->priv->label_widget);
       if (parent)
         {
-          ctk_container_remove (GTK_CONTAINER (parent),
+          ctk_container_remove (CTK_CONTAINER (parent),
                                 button->priv->label_widget);
         }
     }
 
-  child = ctk_bin_get_child (GTK_BIN (button->priv->button));
+  child = ctk_bin_get_child (CTK_BIN (button->priv->button));
   if (child)
     {
       /* Note: we are not destroying the label_widget or icon_widget
@@ -412,36 +412,36 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
       ctk_widget_destroy (child);
     }
 
-  style = ctk_tool_item_get_toolbar_style (GTK_TOOL_ITEM (button));
+  style = ctk_tool_item_get_toolbar_style (CTK_TOOL_ITEM (button));
   
-  if (style != GTK_TOOLBAR_TEXT)
+  if (style != CTK_TOOLBAR_TEXT)
     need_icon = TRUE;
 
-  if (style != GTK_TOOLBAR_ICONS && style != GTK_TOOLBAR_BOTH_HORIZ)
+  if (style != CTK_TOOLBAR_ICONS && style != CTK_TOOLBAR_BOTH_HORIZ)
     need_label = TRUE;
 
-  if (style == GTK_TOOLBAR_BOTH_HORIZ &&
-      (ctk_tool_item_get_is_important (GTK_TOOL_ITEM (button)) ||
-       ctk_tool_item_get_orientation (GTK_TOOL_ITEM (button)) == GTK_ORIENTATION_VERTICAL ||
-       ctk_tool_item_get_text_orientation (GTK_TOOL_ITEM (button)) == GTK_ORIENTATION_VERTICAL))
+  if (style == CTK_TOOLBAR_BOTH_HORIZ &&
+      (ctk_tool_item_get_is_important (CTK_TOOL_ITEM (button)) ||
+       ctk_tool_item_get_orientation (CTK_TOOL_ITEM (button)) == CTK_ORIENTATION_VERTICAL ||
+       ctk_tool_item_get_text_orientation (CTK_TOOL_ITEM (button)) == CTK_ORIENTATION_VERTICAL))
     {
       need_label = TRUE;
     }
   
-  if (style != GTK_TOOLBAR_TEXT && button->priv->icon_widget == NULL &&
+  if (style != CTK_TOOLBAR_TEXT && button->priv->icon_widget == NULL &&
       button->priv->stock_id == NULL && button->priv->icon_name == NULL)
     {
       need_label = TRUE;
       need_icon = FALSE;
-      style = GTK_TOOLBAR_TEXT;
+      style = CTK_TOOLBAR_TEXT;
     }
 
-  if (style == GTK_TOOLBAR_TEXT && button->priv->label_widget == NULL &&
+  if (style == CTK_TOOLBAR_TEXT && button->priv->label_widget == NULL &&
       button->priv->stock_id == NULL && button->priv->label_text == NULL)
     {
       need_label = FALSE;
       need_icon = TRUE;
-      style = GTK_TOOLBAR_ICONS;
+      style = CTK_TOOLBAR_ICONS;
     }
 
   if (need_label)
@@ -488,45 +488,45 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
 	  ctk_widget_show (label);
 	}
 
-      if (GTK_IS_LABEL (label))
+      if (CTK_IS_LABEL (label))
         {
-          ctk_label_set_ellipsize (GTK_LABEL (label),
-			           ctk_tool_item_get_ellipsize_mode (GTK_TOOL_ITEM (button)));
-          text_orientation = ctk_tool_item_get_text_orientation (GTK_TOOL_ITEM (button));
-          if (text_orientation == GTK_ORIENTATION_HORIZONTAL)
+          ctk_label_set_ellipsize (CTK_LABEL (label),
+			           ctk_tool_item_get_ellipsize_mode (CTK_TOOL_ITEM (button)));
+          text_orientation = ctk_tool_item_get_text_orientation (CTK_TOOL_ITEM (button));
+          if (text_orientation == CTK_ORIENTATION_HORIZONTAL)
 	    {
               gfloat align;
 
-              ctk_label_set_angle (GTK_LABEL (label), 0);
-              align = ctk_tool_item_get_text_alignment (GTK_TOOL_ITEM (button));
+              ctk_label_set_angle (CTK_LABEL (label), 0);
+              align = ctk_tool_item_get_text_alignment (CTK_TOOL_ITEM (button));
               if (align < 0.4)
-                ctk_widget_set_halign (label, GTK_ALIGN_START);
+                ctk_widget_set_halign (label, CTK_ALIGN_START);
               else if (align > 0.6)
-                ctk_widget_set_halign (label, GTK_ALIGN_END);
+                ctk_widget_set_halign (label, CTK_ALIGN_END);
               else
-                ctk_widget_set_halign (label, GTK_ALIGN_CENTER);
+                ctk_widget_set_halign (label, CTK_ALIGN_CENTER);
             }
           else
             {
               gfloat align;
 
-              ctk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_NONE);
-	      if (ctk_widget_get_direction (GTK_WIDGET (tool_item)) == GTK_TEXT_DIR_RTL)
-	        ctk_label_set_angle (GTK_LABEL (label), -90);
+              ctk_label_set_ellipsize (CTK_LABEL (label), PANGO_ELLIPSIZE_NONE);
+	      if (ctk_widget_get_direction (CTK_WIDGET (tool_item)) == CTK_TEXT_DIR_RTL)
+	        ctk_label_set_angle (CTK_LABEL (label), -90);
 	      else
-	        ctk_label_set_angle (GTK_LABEL (label), 90);
-              align = ctk_tool_item_get_text_alignment (GTK_TOOL_ITEM (button));
+	        ctk_label_set_angle (CTK_LABEL (label), 90);
+              align = ctk_tool_item_get_text_alignment (CTK_TOOL_ITEM (button));
               if (align < 0.4)
-                ctk_widget_set_valign (label, GTK_ALIGN_END);
+                ctk_widget_set_valign (label, CTK_ALIGN_END);
               else if (align > 0.6)
-                ctk_widget_set_valign (label, GTK_ALIGN_START);
+                ctk_widget_set_valign (label, CTK_ALIGN_START);
               else
-                ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
+                ctk_widget_set_valign (label, CTK_ALIGN_CENTER);
             }
         }
     }
 
-  icon_size = ctk_tool_item_get_icon_size (GTK_TOOL_ITEM (button));
+  icon_size = ctk_tool_item_get_icon_size (CTK_TOOL_ITEM (button));
   if (need_icon)
     {
       GtkIconSet *icon_set = NULL;
@@ -542,7 +542,7 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
 	{
 	  icon = button->priv->icon_widget;
 	  
-	  if (GTK_IS_IMAGE (icon))
+	  if (CTK_IS_IMAGE (icon))
 	    {
 	      g_object_set (button->priv->icon_widget,
 			    "icon-size", icon_size,
@@ -564,32 +564,32 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
 
       if (icon)
 	{
-          if (text_orientation == GTK_ORIENTATION_HORIZONTAL)
+          if (text_orientation == CTK_ORIENTATION_HORIZONTAL)
             {
               gfloat align;
 
-              align = ctk_tool_item_get_text_alignment (GTK_TOOL_ITEM (button));
+              align = ctk_tool_item_get_text_alignment (CTK_TOOL_ITEM (button));
               if (align > 0.6) 
-                ctk_widget_set_halign (icon, GTK_ALIGN_START);
+                ctk_widget_set_halign (icon, CTK_ALIGN_START);
               else if (align < 0.4)
-                ctk_widget_set_halign (icon, GTK_ALIGN_END);
+                ctk_widget_set_halign (icon, CTK_ALIGN_END);
               else
-                ctk_widget_set_halign (icon, GTK_ALIGN_CENTER);
+                ctk_widget_set_halign (icon, CTK_ALIGN_CENTER);
             }
           else
             {
               gfloat align;
 
-              align = ctk_tool_item_get_text_alignment (GTK_TOOL_ITEM (button));
+              align = ctk_tool_item_get_text_alignment (CTK_TOOL_ITEM (button));
               if (align > 0.6) 
-                ctk_widget_set_valign (icon, GTK_ALIGN_END);
+                ctk_widget_set_valign (icon, CTK_ALIGN_END);
               else if (align < 0.4)
-                ctk_widget_set_valign (icon, GTK_ALIGN_START);
+                ctk_widget_set_valign (icon, CTK_ALIGN_START);
               else
-               ctk_widget_set_valign (icon, GTK_ALIGN_CENTER);
+               ctk_widget_set_valign (icon, CTK_ALIGN_CENTER);
             }
 
-	  size_group = ctk_tool_item_get_text_size_group (GTK_TOOL_ITEM (button));
+	  size_group = ctk_tool_item_get_text_size_group (CTK_TOOL_ITEM (button));
 	  if (size_group != NULL)
 	    ctk_size_group_add_widget (size_group, icon);
 	}
@@ -597,50 +597,50 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
 
   switch (style)
     {
-    case GTK_TOOLBAR_ICONS:
+    case CTK_TOOLBAR_ICONS:
       if (icon)
-        ctk_container_add (GTK_CONTAINER (button->priv->button), icon);
+        ctk_container_add (CTK_CONTAINER (button->priv->button), icon);
       ctk_style_context_add_class (ctk_widget_get_style_context (button->priv->button), "image-button");
       ctk_style_context_remove_class (ctk_widget_get_style_context (button->priv->button), "text-button");
       break;
 
-    case GTK_TOOLBAR_BOTH:
-      if (text_orientation == GTK_ORIENTATION_HORIZONTAL)
-	box = ctk_box_new (GTK_ORIENTATION_VERTICAL, icon_spacing);
+    case CTK_TOOLBAR_BOTH:
+      if (text_orientation == CTK_ORIENTATION_HORIZONTAL)
+	box = ctk_box_new (CTK_ORIENTATION_VERTICAL, icon_spacing);
       else
-	box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, icon_spacing);
+	box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, icon_spacing);
       if (icon)
-	ctk_box_pack_start (GTK_BOX (box), icon, TRUE, TRUE, 0);
-      ctk_box_pack_end (GTK_BOX (box), label, FALSE, TRUE, 0);
-      ctk_container_add (GTK_CONTAINER (button->priv->button), box);
+	ctk_box_pack_start (CTK_BOX (box), icon, TRUE, TRUE, 0);
+      ctk_box_pack_end (CTK_BOX (box), label, FALSE, TRUE, 0);
+      ctk_container_add (CTK_CONTAINER (button->priv->button), box);
       ctk_style_context_add_class (ctk_widget_get_style_context (button->priv->button), "image-button");
       ctk_style_context_add_class (ctk_widget_get_style_context (button->priv->button), "text-button");
       break;
 
-    case GTK_TOOLBAR_BOTH_HORIZ:
-      if (text_orientation == GTK_ORIENTATION_HORIZONTAL)
+    case CTK_TOOLBAR_BOTH_HORIZ:
+      if (text_orientation == CTK_ORIENTATION_HORIZONTAL)
 	{
-	  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, icon_spacing);
+	  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, icon_spacing);
 	  if (icon)
-	    ctk_box_pack_start (GTK_BOX (box), icon, label? FALSE : TRUE, TRUE, 0);
+	    ctk_box_pack_start (CTK_BOX (box), icon, label? FALSE : TRUE, TRUE, 0);
 	  if (label)
-	    ctk_box_pack_end (GTK_BOX (box), label, TRUE, TRUE, 0);
+	    ctk_box_pack_end (CTK_BOX (box), label, TRUE, TRUE, 0);
 	}
       else
 	{
-	  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, icon_spacing);
+	  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, icon_spacing);
 	  if (icon)
-	    ctk_box_pack_end (GTK_BOX (box), icon, label ? FALSE : TRUE, TRUE, 0);
+	    ctk_box_pack_end (CTK_BOX (box), icon, label ? FALSE : TRUE, TRUE, 0);
 	  if (label)
-	    ctk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
+	    ctk_box_pack_start (CTK_BOX (box), label, TRUE, TRUE, 0);
 	}
-      ctk_container_add (GTK_CONTAINER (button->priv->button), box);
+      ctk_container_add (CTK_CONTAINER (button->priv->button), box);
       ctk_style_context_add_class (ctk_widget_get_style_context (button->priv->button), "image-button");
       ctk_style_context_add_class (ctk_widget_get_style_context (button->priv->button), "text-button");
       break;
 
-    case GTK_TOOLBAR_TEXT:
-      ctk_container_add (GTK_CONTAINER (button->priv->button), label);
+    case CTK_TOOLBAR_TEXT:
+      ctk_container_add (CTK_CONTAINER (button->priv->button), label);
       ctk_style_context_add_class (ctk_widget_get_style_context (button->priv->button), "text-button");
       ctk_style_context_remove_class (ctk_widget_get_style_context (button->priv->button), "image-button");
       break;
@@ -649,12 +649,12 @@ ctk_tool_button_construct_contents (GtkToolItem *tool_item)
   if (box)
     ctk_widget_show (box);
 
-  ctk_button_set_relief (GTK_BUTTON (button->priv->button),
-			 ctk_tool_item_get_relief_style (GTK_TOOL_ITEM (button)));
+  ctk_button_set_relief (CTK_BUTTON (button->priv->button),
+			 ctk_tool_item_get_relief_style (CTK_TOOL_ITEM (button)));
 
   ctk_tool_item_rebuild_menu (tool_item);
   
-  ctk_widget_queue_resize (GTK_WIDGET (button));
+  ctk_widget_queue_resize (CTK_WIDGET (button));
 }
 
 static void
@@ -663,7 +663,7 @@ ctk_tool_button_set_property (GObject         *object,
 			      const GValue    *value,
 			      GParamSpec      *pspec)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (object);
+  GtkToolButton *button = CTK_TOOL_BUTTON (object);
   
   switch (prop_id)
     {
@@ -703,11 +703,11 @@ static void
 ctk_tool_button_property_notify (GObject          *object,
 				 GParamSpec       *pspec)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (object);
+  GtkToolButton *button = CTK_TOOL_BUTTON (object);
 
   if (button->priv->contents_invalid ||
       strcmp ("is-important", pspec->name) == 0)
-    ctk_tool_button_construct_contents (GTK_TOOL_ITEM (object));
+    ctk_tool_button_construct_contents (CTK_TOOL_ITEM (object));
 
   if (parent_class->notify)
     parent_class->notify (object, pspec);
@@ -719,7 +719,7 @@ ctk_tool_button_get_property (GObject         *object,
 			      GValue          *value,
 			      GParamSpec      *pspec)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (object);
+  GtkToolButton *button = CTK_TOOL_BUTTON (object);
 
   switch (prop_id)
     {
@@ -756,35 +756,35 @@ ctk_tool_button_get_property (GObject         *object,
 static const gchar *
 ctk_tool_button_get_action_name (GtkActionable *actionable)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (actionable);
+  GtkToolButton *button = CTK_TOOL_BUTTON (actionable);
 
-  return ctk_actionable_get_action_name (GTK_ACTIONABLE (button->priv->button));
+  return ctk_actionable_get_action_name (CTK_ACTIONABLE (button->priv->button));
 }
 
 static void
 ctk_tool_button_set_action_name (GtkActionable *actionable,
                                  const gchar   *action_name)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (actionable);
+  GtkToolButton *button = CTK_TOOL_BUTTON (actionable);
 
-  ctk_actionable_set_action_name (GTK_ACTIONABLE (button->priv->button), action_name);
+  ctk_actionable_set_action_name (CTK_ACTIONABLE (button->priv->button), action_name);
 }
 
 static GVariant *
 ctk_tool_button_get_action_target_value (GtkActionable *actionable)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (actionable);
+  GtkToolButton *button = CTK_TOOL_BUTTON (actionable);
 
-  return ctk_actionable_get_action_target_value (GTK_ACTIONABLE (button->priv->button));
+  return ctk_actionable_get_action_target_value (CTK_ACTIONABLE (button->priv->button));
 }
 
 static void
 ctk_tool_button_set_action_target_value (GtkActionable *actionable,
                                          GVariant      *action_target)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (actionable);
+  GtkToolButton *button = CTK_TOOL_BUTTON (actionable);
 
-  ctk_actionable_set_action_target_value (GTK_ACTIONABLE (button->priv->button), action_target);
+  ctk_actionable_set_action_target_value (CTK_ACTIONABLE (button->priv->button), action_target);
 }
 
 static void
@@ -799,7 +799,7 @@ ctk_tool_button_actionable_iface_init (GtkActionableInterface *iface)
 static void
 ctk_tool_button_finalize (GObject *object)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (object);
+  GtkToolButton *button = CTK_TOOL_BUTTON (object);
 
   g_free (button->priv->stock_id);
   g_free (button->priv->icon_name);
@@ -819,43 +819,43 @@ clone_image_menu_size (GtkImage *image)
 {
   GtkImageType storage_type = ctk_image_get_storage_type (image);
 
-  if (storage_type == GTK_IMAGE_STOCK)
+  if (storage_type == CTK_IMAGE_STOCK)
     {
       gchar *stock_id;
       GtkWidget *widget;
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_image_get_stock (image, &stock_id, NULL);
-      widget = ctk_image_new_from_stock (stock_id, GTK_ICON_SIZE_MENU);
+      widget = ctk_image_new_from_stock (stock_id, CTK_ICON_SIZE_MENU);
       G_GNUC_END_IGNORE_DEPRECATIONS;
       return widget;
     }
-  else if (storage_type == GTK_IMAGE_ICON_NAME)
+  else if (storage_type == CTK_IMAGE_ICON_NAME)
     {
       const gchar *icon_name;
       ctk_image_get_icon_name (image, &icon_name, NULL);
-      return ctk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_MENU);
+      return ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_MENU);
     }
-  else if (storage_type == GTK_IMAGE_ICON_SET)
+  else if (storage_type == CTK_IMAGE_ICON_SET)
     {
       GtkWidget *widget;
       GtkIconSet *icon_set;
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_image_get_icon_set (image, &icon_set, NULL);
-      widget = ctk_image_new_from_icon_set (icon_set, GTK_ICON_SIZE_MENU);
+      widget = ctk_image_new_from_icon_set (icon_set, CTK_ICON_SIZE_MENU);
       G_GNUC_END_IGNORE_DEPRECATIONS;
       return widget;
     }
-  else if (storage_type == GTK_IMAGE_GICON)
+  else if (storage_type == CTK_IMAGE_GICON)
     {
       GIcon *icon;
       ctk_image_get_gicon (image, &icon, NULL);
-      return ctk_image_new_from_gicon (icon, GTK_ICON_SIZE_MENU);
+      return ctk_image_new_from_gicon (icon, CTK_ICON_SIZE_MENU);
     }
-  else if (storage_type == GTK_IMAGE_PIXBUF)
+  else if (storage_type == CTK_IMAGE_PIXBUF)
     {
       gint width, height;
       
-      if (ctk_icon_size_lookup (GTK_ICON_SIZE_MENU, &width, &height))
+      if (ctk_icon_size_lookup (CTK_ICON_SIZE_MENU, &width, &height))
 	{
 	  GdkPixbuf *src_pixbuf, *dest_pixbuf;
 	  GtkWidget *cloned_image;
@@ -877,7 +877,7 @@ clone_image_menu_size (GtkImage *image)
 static gboolean
 ctk_tool_button_create_menu_proxy (GtkToolItem *item)
 {
-  GtkToolButton *button = GTK_TOOL_BUTTON (item);
+  GtkToolButton *button = CTK_TOOL_BUTTON (item);
   GtkWidget *menu_item;
   GtkWidget *menu_image = NULL;
   GtkStockItem stock_item;
@@ -889,10 +889,10 @@ ctk_tool_button_create_menu_proxy (GtkToolItem *item)
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  if (GTK_IS_LABEL (button->priv->label_widget))
+  if (CTK_IS_LABEL (button->priv->label_widget))
     {
-      label = ctk_label_get_label (GTK_LABEL (button->priv->label_widget));
-      use_mnemonic = ctk_label_get_use_underline (GTK_LABEL (button->priv->label_widget));
+      label = ctk_label_get_label (CTK_LABEL (button->priv->label_widget));
+      use_mnemonic = ctk_label_get_use_underline (CTK_LABEL (button->priv->label_widget));
     }
   else if (button->priv->label_text)
     {
@@ -913,27 +913,27 @@ ctk_tool_button_create_menu_proxy (GtkToolItem *item)
   else
     menu_item = ctk_image_menu_item_new_with_label (label);
 
-  if (GTK_IS_IMAGE (button->priv->icon_widget))
+  if (CTK_IS_IMAGE (button->priv->icon_widget))
     {
-      menu_image = clone_image_menu_size (GTK_IMAGE (button->priv->icon_widget));
+      menu_image = clone_image_menu_size (CTK_IMAGE (button->priv->icon_widget));
     }
   else if (button->priv->stock_id)
     {
-      menu_image = ctk_image_new_from_stock (button->priv->stock_id, GTK_ICON_SIZE_MENU);
+      menu_image = ctk_image_new_from_stock (button->priv->stock_id, CTK_ICON_SIZE_MENU);
     }
 
   if (menu_image)
-    ctk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), menu_image);
+    ctk_image_menu_item_set_image (CTK_IMAGE_MENU_ITEM (menu_item), menu_image);
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   g_signal_connect_closure_by_id (menu_item,
 				  g_signal_lookup ("activate", G_OBJECT_TYPE (menu_item)), 0,
 				  g_cclosure_new_object_swap (G_CALLBACK (ctk_button_clicked),
-							      G_OBJECT (GTK_TOOL_BUTTON (button)->priv->button)),
+							      G_OBJECT (CTK_TOOL_BUTTON (button)->priv->button)),
 				  FALSE);
 
-  ctk_tool_item_set_proxy_menu_item (GTK_TOOL_ITEM (button), MENU_ID, menu_item);
+  ctk_tool_item_set_proxy_menu_item (CTK_TOOL_ITEM (button), MENU_ID, menu_item);
   
   return TRUE;
 }
@@ -946,7 +946,7 @@ button_clicked (GtkWidget     *widget,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  action = ctk_activatable_get_related_action (GTK_ACTIVATABLE (button));
+  action = ctk_activatable_get_related_action (CTK_ACTIVATABLE (button));
   
   if (action)
     ctk_action_activate (action);
@@ -968,22 +968,22 @@ ctk_tool_button_update_icon_spacing (GtkToolButton *button)
   GtkWidget *box;
   guint spacing;
 
-  box = ctk_bin_get_child (GTK_BIN (button->priv->button));
-  if (GTK_IS_BOX (box))
+  box = ctk_bin_get_child (CTK_BIN (button->priv->button));
+  if (CTK_IS_BOX (box))
     {
-      ctk_widget_style_get (GTK_WIDGET (button), 
+      ctk_widget_style_get (CTK_WIDGET (button), 
 			    "icon-spacing", &spacing,
 			    NULL);
-      ctk_box_set_spacing (GTK_BOX (box), spacing);      
+      ctk_box_set_spacing (CTK_BOX (box), spacing);      
     }
 }
 
 static void
 ctk_tool_button_style_updated (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (parent_class)->style_updated (widget);
 
-  ctk_tool_button_update_icon_spacing (GTK_TOOL_BUTTON (widget));
+  ctk_tool_button_update_icon_spacing (CTK_TOOL_BUTTON (widget));
 }
 
 static void 
@@ -1012,7 +1012,7 @@ ctk_tool_button_update (GtkActivatable *activatable,
   if (!use_action_appearance)
     return;
 
-  button = GTK_TOOL_BUTTON (activatable);
+  button = CTK_TOOL_BUTTON (activatable);
   
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -1024,7 +1024,7 @@ ctk_tool_button_update (GtkActivatable *activatable,
     {
       const gchar *stock_id = ctk_action_get_stock_id (action);
       GIcon *icon = ctk_action_get_gicon (action);
-      GtkIconSize icon_size = GTK_ICON_SIZE_BUTTON;
+      GtkIconSize icon_size = CTK_ICON_SIZE_BUTTON;
       GtkIconSet *icon_set = NULL;
 
       if (stock_id)
@@ -1040,14 +1040,14 @@ ctk_tool_button_update (GtkActivatable *activatable,
       else 
 	{   
 	  image = ctk_tool_button_get_icon_widget (button);
-	  icon_size = ctk_tool_item_get_icon_size (GTK_TOOL_ITEM (button));
+	  icon_size = ctk_tool_item_get_icon_size (CTK_TOOL_ITEM (button));
 
 	  if (!image)
 	    image = ctk_image_new ();
 	}
 
       ctk_tool_button_set_icon_widget (button, image);
-      ctk_image_set_from_gicon (GTK_IMAGE (image), icon, icon_size);
+      ctk_image_set_from_gicon (CTK_IMAGE (image), icon, icon_size);
 
     }
   else if (strcmp (property_name, "icon-name") == 0)
@@ -1073,7 +1073,7 @@ ctk_tool_button_sync_action_properties (GtkActivatable *activatable,
   if (!ctk_activatable_get_use_action_appearance (activatable))
     return;
 
-  button = GTK_TOOL_BUTTON (activatable);
+  button = CTK_TOOL_BUTTON (activatable);
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   stock_id = ctk_action_get_stock_id (action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
@@ -1096,7 +1096,7 @@ ctk_tool_button_sync_action_properties (GtkActivatable *activatable,
       ctk_tool_button_set_icon_widget (button, NULL);
   else if ((icon = ctk_action_get_gicon (action)) != NULL)
     {
-      GtkIconSize icon_size = ctk_tool_item_get_icon_size (GTK_TOOL_ITEM (button));
+      GtkIconSize icon_size = ctk_tool_item_get_icon_size (CTK_TOOL_ITEM (button));
       GtkWidget  *image = ctk_tool_button_get_icon_widget (button);
       
       if (!image)
@@ -1106,7 +1106,7 @@ ctk_tool_button_sync_action_properties (GtkActivatable *activatable,
 	  ctk_tool_button_set_icon_widget (button, image);
 	}
 
-      ctk_image_set_from_gicon (GTK_IMAGE (image), icon, icon_size);
+      ctk_image_set_from_gicon (CTK_IMAGE (image), icon, icon_size);
     }
   else if (ctk_action_get_icon_name (action))
     ctk_tool_button_set_icon_name (button, ctk_action_get_icon_name (action));
@@ -1119,8 +1119,8 @@ ctk_tool_button_sync_action_properties (GtkActivatable *activatable,
  * @stock_id: the name of the stock item 
  *
  * Creates a new #GtkToolButton containing the image and text from a
- * stock item. Some stock ids have preprocessor macros like #GTK_STOCK_OK
- * and #GTK_STOCK_APPLY.
+ * stock item. Some stock ids have preprocessor macros like #CTK_STOCK_OK
+ * and #CTK_STOCK_APPLY.
  *
  * It is an error if @stock_id is not a name of a stock item.
  * 
@@ -1138,11 +1138,11 @@ ctk_tool_button_new_from_stock (const gchar *stock_id)
 
   g_return_val_if_fail (stock_id != NULL, NULL);
     
-  button = g_object_new (GTK_TYPE_TOOL_BUTTON,
+  button = g_object_new (CTK_TYPE_TOOL_BUTTON,
 			 "stock-id", stock_id,
 			 NULL);
 
-  return GTK_TOOL_ITEM (button);
+  return CTK_TOOL_ITEM (button);
 }
 
 /**
@@ -1163,14 +1163,14 @@ ctk_tool_button_new (GtkWidget	 *icon_widget,
 {
   GtkToolButton *button;
 
-  g_return_val_if_fail (icon_widget == NULL || GTK_IS_WIDGET (icon_widget), NULL);
+  g_return_val_if_fail (icon_widget == NULL || CTK_IS_WIDGET (icon_widget), NULL);
 
-  button = g_object_new (GTK_TYPE_TOOL_BUTTON,
+  button = g_object_new (CTK_TYPE_TOOL_BUTTON,
                          "label", label,
                          "icon-widget", icon_widget,
 			 NULL);
 
-  return GTK_TOOL_ITEM (button);  
+  return CTK_TOOL_ITEM (button);  
 }
 
 /**
@@ -1195,7 +1195,7 @@ ctk_tool_button_set_label (GtkToolButton *button,
   gchar *elided_label;
   AtkObject *accessible;
   
-  g_return_if_fail (GTK_IS_TOOL_BUTTON (button));
+  g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
 
   old_label = button->priv->label_text;
 
@@ -1205,7 +1205,7 @@ ctk_tool_button_set_label (GtkToolButton *button,
   if (label)
     {
       elided_label = _ctk_toolbar_elide_underscores (label);
-      accessible = ctk_widget_get_accessible (GTK_WIDGET (button->priv->button));
+      accessible = ctk_widget_get_accessible (CTK_WIDGET (button->priv->button));
       atk_object_set_name (accessible, elided_label);
       g_free (elided_label);
     }
@@ -1230,7 +1230,7 @@ ctk_tool_button_set_label (GtkToolButton *button,
 const gchar *
 ctk_tool_button_get_label (GtkToolButton *button)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
   return button->priv->label_text;
 }
@@ -1255,7 +1255,7 @@ void
 ctk_tool_button_set_use_underline (GtkToolButton *button,
 				   gboolean       use_underline)
 {
-  g_return_if_fail (GTK_IS_TOOL_BUTTON (button));
+  g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
 
   use_underline = use_underline != FALSE;
 
@@ -1283,7 +1283,7 @@ ctk_tool_button_set_use_underline (GtkToolButton *button,
 gboolean
 ctk_tool_button_get_use_underline (GtkToolButton *button)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_BUTTON (button), FALSE);
+  g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), FALSE);
 
   return button->priv->use_underline;
 }
@@ -1307,7 +1307,7 @@ ctk_tool_button_set_stock_id (GtkToolButton *button,
 {
   gchar *old_stock_id;
   
-  g_return_if_fail (GTK_IS_TOOL_BUTTON (button));
+  g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
 
   old_stock_id = button->priv->stock_id;
 
@@ -1335,7 +1335,7 @@ ctk_tool_button_set_stock_id (GtkToolButton *button,
 const gchar *
 ctk_tool_button_get_stock_id (GtkToolButton *button)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
   return button->priv->stock_id;
 }
@@ -1359,7 +1359,7 @@ ctk_tool_button_set_icon_name (GtkToolButton *button,
 {
   gchar *old_icon_name;
 
-  g_return_if_fail (GTK_IS_TOOL_BUTTON (button));
+  g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
 
   old_icon_name = button->priv->icon_name;
 
@@ -1386,7 +1386,7 @@ ctk_tool_button_set_icon_name (GtkToolButton *button,
 const gchar*
 ctk_tool_button_get_icon_name (GtkToolButton *button)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
   return button->priv->icon_name;
 }
@@ -1406,8 +1406,8 @@ void
 ctk_tool_button_set_icon_widget (GtkToolButton *button,
 				 GtkWidget     *icon_widget)
 {
-  g_return_if_fail (GTK_IS_TOOL_BUTTON (button));
-  g_return_if_fail (icon_widget == NULL || GTK_IS_WIDGET (icon_widget));
+  g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
+  g_return_if_fail (icon_widget == NULL || CTK_IS_WIDGET (icon_widget));
 
   if (icon_widget != button->priv->icon_widget)
     {
@@ -1417,7 +1417,7 @@ ctk_tool_button_set_icon_widget (GtkToolButton *button,
 
           parent = ctk_widget_get_parent (button->priv->icon_widget);
 	  if (parent)
-            ctk_container_remove (GTK_CONTAINER (parent),
+            ctk_container_remove (CTK_CONTAINER (parent),
                                   button->priv->icon_widget);
 
 	  g_object_unref (button->priv->icon_widget);
@@ -1450,8 +1450,8 @@ void
 ctk_tool_button_set_label_widget (GtkToolButton *button,
 				  GtkWidget     *label_widget)
 {
-  g_return_if_fail (GTK_IS_TOOL_BUTTON (button));
-  g_return_if_fail (label_widget == NULL || GTK_IS_WIDGET (label_widget));
+  g_return_if_fail (CTK_IS_TOOL_BUTTON (button));
+  g_return_if_fail (label_widget == NULL || CTK_IS_WIDGET (label_widget));
 
   if (label_widget != button->priv->label_widget)
     {
@@ -1461,7 +1461,7 @@ ctk_tool_button_set_label_widget (GtkToolButton *button,
 
           parent = ctk_widget_get_parent (button->priv->label_widget);
           if (parent)
-            ctk_container_remove (GTK_CONTAINER (parent),
+            ctk_container_remove (CTK_CONTAINER (parent),
                                   button->priv->label_widget);
 
 	  g_object_unref (button->priv->label_widget);
@@ -1492,7 +1492,7 @@ ctk_tool_button_set_label_widget (GtkToolButton *button,
 GtkWidget *
 ctk_tool_button_get_label_widget (GtkToolButton *button)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
   return button->priv->label_widget;
 }
@@ -1512,7 +1512,7 @@ ctk_tool_button_get_label_widget (GtkToolButton *button)
 GtkWidget *
 ctk_tool_button_get_icon_widget (GtkToolButton *button)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
   return button->priv->icon_widget;
 }
@@ -1520,7 +1520,7 @@ ctk_tool_button_get_icon_widget (GtkToolButton *button)
 GtkWidget *
 _ctk_tool_button_get_button (GtkToolButton *button)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_BUTTON (button), NULL);
 
   return button->priv->button;
 }

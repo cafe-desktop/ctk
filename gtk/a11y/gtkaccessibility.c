@@ -92,14 +92,14 @@ get_accessible_for_widget (GtkWidget *widget,
   if (!widget)
     return NULL;
 
-  if (GTK_IS_ENTRY (widget))
+  if (CTK_IS_ENTRY (widget))
     ;
-  else if (GTK_IS_NOTEBOOK (widget)) 
+  else if (CTK_IS_NOTEBOOK (widget)) 
     {
       GtkNotebook *notebook;
       gint page_num = -1;
 
-      notebook = GTK_NOTEBOOK (widget);
+      notebook = CTK_NOTEBOOK (widget);
       page_num = ctk_notebook_get_current_page (notebook);
       if (page_num != -1)
         {
@@ -108,10 +108,10 @@ get_accessible_for_widget (GtkWidget *widget,
           g_object_unref (obj);
         }
     }
-  else if (GTK_IS_TOGGLE_BUTTON (widget))
+  else if (CTK_IS_TOGGLE_BUTTON (widget))
     {
       GtkWidget *other_widget = ctk_widget_get_parent (widget);
-      if (GTK_IS_COMBO_BOX (other_widget))
+      if (CTK_IS_COMBO_BOX (other_widget))
         {
           gail_set_focus_widget (other_widget, widget);
           widget = other_widget;
@@ -151,22 +151,22 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
   GdkEvent *event;
 
   object = g_value_get_object (param_values + 0);
-  g_return_val_if_fail (GTK_IS_WIDGET(object), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET(object), FALSE);
 
   event = g_value_get_boxed (param_values + 1);
-  widget = GTK_WIDGET (object);
+  widget = CTK_WIDGET (object);
 
   if (event->type == GDK_FOCUS_CHANGE) 
     {
       if (event->focus_change.in)
         {
-          if (GTK_IS_WINDOW (widget))
+          if (CTK_IS_WINDOW (widget))
             {
               GtkWidget *focus_widget;
               GtkWindow *window;
               GtkWindowType type;
 
-              window = GTK_WINDOW (widget);
+              window = CTK_WINDOW (widget);
               focus_widget = ctk_window_get_focus (window);
               g_object_get (window, "type", &type, NULL);
 
@@ -179,7 +179,7 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
                    */
                   if (next_focus_widget)
                     {
-                      if (GTK_IS_MENU_ITEM (next_focus_widget) &&
+                      if (CTK_IS_MENU_ITEM (next_focus_widget) &&
                           !focus_before_menu)
                         {
                           void *vp_focus_before_menu = &focus_before_menu;
@@ -191,17 +191,17 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
                     }
                   widget = focus_widget;
                 }
-              else if (type == GTK_WINDOW_POPUP)
+              else if (type == CTK_WINDOW_POPUP)
                 {
-	          if (GTK_IS_BIN (widget))
+	          if (CTK_IS_BIN (widget))
 		    {
-		      GtkWidget *child = ctk_bin_get_child (GTK_BIN (widget));
+		      GtkWidget *child = ctk_bin_get_child (CTK_BIN (widget));
 
-		      if (GTK_IS_WIDGET (child) && ctk_widget_has_grab (child))
+		      if (CTK_IS_WIDGET (child) && ctk_widget_has_grab (child))
 			{
-			  if (GTK_IS_MENU_SHELL (child))
+			  if (CTK_IS_MENU_SHELL (child))
 			    {
-			      if (ctk_menu_shell_get_selected_item (GTK_MENU_SHELL (child)))
+			      if (ctk_menu_shell_get_selected_item (CTK_MENU_SHELL (child)))
 				{
 				  /*
 				   * We have a menu which has a menu item selected
@@ -260,8 +260,8 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
    * then ignore the focus notification as the embedded
    * plug will report a focus notification.
    */
-  if (GTK_IS_SOCKET (widget) &&
-      ctk_socket_get_plug_window (GTK_SOCKET (widget)) != NULL)
+  if (CTK_IS_SOCKET (widget) &&
+      ctk_socket_get_plug_window (CTK_SOCKET (widget)) != NULL)
     return TRUE;
 #endif
 
@@ -282,9 +282,9 @@ gail_select_watcher (GSignalInvocationHint *ihint,
   GtkWidget *widget;
 
   object = g_value_get_object (param_values + 0);
-  g_return_val_if_fail (GTK_IS_WIDGET(object), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET(object), FALSE);
 
-  widget = GTK_WIDGET (object);
+  widget = CTK_WIDGET (object);
 
   if (!ctk_widget_get_mapped (widget))
     {
@@ -301,12 +301,12 @@ gail_select_watcher (GSignalInvocationHint *ihint,
 static void
 gail_finish_select (GtkWidget *widget)
 {
-  if (GTK_IS_MENU_ITEM (widget))
+  if (CTK_IS_MENU_ITEM (widget))
     {
       GtkMenuItem* menu_item;
       GtkWidget *submenu;
 
-      menu_item = GTK_MENU_ITEM (widget);
+      menu_item = CTK_MENU_ITEM (widget);
       submenu = ctk_menu_item_get_submenu (menu_item);
       if (submenu &&
           !ctk_widget_get_mapped (submenu))
@@ -320,7 +320,7 @@ gail_finish_select (GtkWidget *widget)
           handler_id = g_signal_handler_find (submenu,
                                               G_SIGNAL_MATCH_FUNC,
                                               g_signal_lookup ("map",
-                                                               GTK_TYPE_WINDOW),
+                                                               CTK_TYPE_WINDOW),
                                               0,
                                               NULL,
                                               (gpointer) gail_map_submenu_cb,
@@ -339,8 +339,8 @@ gail_finish_select (GtkWidget *widget)
       if (was_deselect &&
           focus_notify_handler &&
           next_focus_widget &&
-          (GTK_IS_MENU_BAR (next_focus_widget) ||
-           GTK_IS_MENU_ITEM (next_focus_widget)))
+          (CTK_IS_MENU_BAR (next_focus_widget) ||
+           CTK_IS_MENU_ITEM (next_focus_widget)))
         {
           void *vp_next_focus_widget = &next_focus_widget;
           g_source_remove (focus_notify_handler);
@@ -355,8 +355,8 @@ gail_finish_select (GtkWidget *widget)
    * keep track of it so we can return to it after menubar is deactivated
    */
   if (_focus_widget && 
-      !GTK_IS_MENU_ITEM (_focus_widget) && 
-      !GTK_IS_MENU (_focus_widget))
+      !CTK_IS_MENU_ITEM (_focus_widget) && 
+      !CTK_IS_MENU (_focus_widget))
     {
       void *vp_focus_before_menu = &focus_before_menu;
       focus_before_menu = _focus_widget;
@@ -377,11 +377,11 @@ gail_map_cb (GtkWidget *widget)
 static void
 gail_map_submenu_cb (GtkWidget *widget)
 {
-  if (GTK_IS_MENU (widget))
+  if (CTK_IS_MENU (widget))
     {
       GtkWidget *parent_menu_item;
 
-      parent_menu_item = ctk_menu_get_attach_widget (GTK_MENU (widget));
+      parent_menu_item = ctk_menu_get_attach_widget (CTK_MENU (widget));
       if (parent_menu_item)
         gail_finish_select (parent_menu_item);
     }
@@ -399,27 +399,27 @@ gail_deselect_watcher (GSignalInvocationHint *ihint,
   GtkWidget *menu_shell;
 
   object = g_value_get_object (param_values + 0);
-  g_return_val_if_fail (GTK_IS_WIDGET(object), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET(object), FALSE);
 
-  widget = GTK_WIDGET (object);
+  widget = CTK_WIDGET (object);
 
-  if (!GTK_IS_MENU_ITEM (widget))
+  if (!CTK_IS_MENU_ITEM (widget))
     return TRUE;
 
   if (subsequent_focus_widget == widget)
     subsequent_focus_widget = NULL;
 
   menu_shell = ctk_widget_get_parent (widget);
-  if (GTK_IS_MENU_SHELL (menu_shell))
+  if (CTK_IS_MENU_SHELL (menu_shell))
     {
       GtkWidget *parent_menu_shell;
 
-      parent_menu_shell = ctk_menu_shell_get_parent_shell (GTK_MENU_SHELL (menu_shell));
+      parent_menu_shell = ctk_menu_shell_get_parent_shell (CTK_MENU_SHELL (menu_shell));
       if (parent_menu_shell)
         {
           GtkWidget *active_menu_item;
 
-          active_menu_item = ctk_menu_shell_get_selected_item (GTK_MENU_SHELL (parent_menu_shell));
+          active_menu_item = ctk_menu_shell_get_selected_item (CTK_MENU_SHELL (parent_menu_shell));
           if (active_menu_item)
             {
               gail_focus_notify_when_idle (active_menu_item);
@@ -427,7 +427,7 @@ gail_deselect_watcher (GSignalInvocationHint *ihint,
         }
       else
         {
-          if (!GTK_IS_MENU_BAR (menu_shell))
+          if (!CTK_IS_MENU_BAR (menu_shell))
             {
               gail_focus_notify_when_idle (menu_shell);
             }
@@ -447,14 +447,14 @@ gail_switch_page_watcher (GSignalInvocationHint *ihint,
   GtkWidget *widget;
 
   object = g_value_get_object (param_values + 0);
-  g_return_val_if_fail (GTK_IS_WIDGET(object), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET(object), FALSE);
 
-  widget = GTK_WIDGET (object);
+  widget = CTK_WIDGET (object);
 
-  if (!GTK_IS_NOTEBOOK (widget))
+  if (!CTK_IS_NOTEBOOK (widget))
     return TRUE;
 
-  if (ctk_notebook_get_current_page (GTK_NOTEBOOK (widget)) == -1)
+  if (ctk_notebook_get_current_page (CTK_NOTEBOOK (widget)) == -1)
     return TRUE;
 
   gail_focus_notify_when_idle (widget);
@@ -552,14 +552,14 @@ gail_focus_notify_when_idle (GtkWidget *widget)
            * Ignore focus request when menu item is going to be focused.
            * See bug #124232.
            */
-          if (GTK_IS_MENU_ITEM (next_focus_widget) && !GTK_IS_MENU_ITEM (widget))
+          if (CTK_IS_MENU_ITEM (next_focus_widget) && !CTK_IS_MENU_ITEM (widget))
             return;
 
           if (next_focus_widget)
             {
-              if (GTK_IS_MENU_ITEM (next_focus_widget) && GTK_IS_MENU_ITEM (widget))
+              if (CTK_IS_MENU_ITEM (next_focus_widget) && CTK_IS_MENU_ITEM (widget))
                 {
-                  if (ctk_menu_item_get_submenu (GTK_MENU_ITEM (next_focus_widget)) == ctk_widget_get_parent (widget))
+                  if (ctk_menu_item_get_submenu (CTK_MENU_ITEM (next_focus_widget)) == ctk_widget_get_parent (widget))
                     {
                       if (subsequent_focus_widget)
                         g_assert_not_reached ();
@@ -619,11 +619,11 @@ gail_deactivate_watcher (GSignalInvocationHint *ihint,
   GtkWidget *focus = NULL;
 
   object = g_value_get_object (param_values + 0);
-  g_return_val_if_fail (GTK_IS_WIDGET(object), FALSE);
-  widget = GTK_WIDGET (object);
+  g_return_val_if_fail (CTK_IS_WIDGET(object), FALSE);
+  widget = CTK_WIDGET (object);
 
-  g_return_val_if_fail (GTK_IS_MENU_SHELL(widget), TRUE);
-  shell = GTK_MENU_SHELL(widget);
+  g_return_val_if_fail (CTK_IS_MENU_SHELL(widget), TRUE);
+  shell = CTK_MENU_SHELL(widget);
   if (! ctk_menu_shell_get_parent_shell (shell))
     focus = focus_before_menu;
       
@@ -634,8 +634,8 @@ gail_deactivate_watcher (GSignalInvocationHint *ihint,
   if (was_deselect &&
       focus_notify_handler &&
       next_focus_widget &&
-      (GTK_IS_MENU_BAR (next_focus_widget) ||
-       GTK_IS_MENU_ITEM (next_focus_widget)))
+      (CTK_IS_MENU_BAR (next_focus_widget) ||
+       CTK_IS_MENU_ITEM (next_focus_widget)))
     {
       void *vp_next_focus_widget = &next_focus_widget;
       g_source_remove (focus_notify_handler);
@@ -659,17 +659,17 @@ gail_focus_tracker_init (void)
       /*
        * We cannot be sure that the classes exist so we make sure that they do.
        */
-      g_type_class_ref (GTK_TYPE_WIDGET);
-      g_type_class_ref (GTK_TYPE_MENU_ITEM);
-      g_type_class_ref (GTK_TYPE_MENU_SHELL);
-      g_type_class_ref (GTK_TYPE_NOTEBOOK);
+      g_type_class_ref (CTK_TYPE_WIDGET);
+      g_type_class_ref (CTK_TYPE_MENU_ITEM);
+      g_type_class_ref (CTK_TYPE_MENU_SHELL);
+      g_type_class_ref (CTK_TYPE_NOTEBOOK);
 
       /*
        * We listen for event_after signal and then check that the
        * event was a focus in event so we get called after the event.
        */
       g_signal_add_emission_hook (
-             g_signal_lookup ("event-after", GTK_TYPE_WIDGET), 0,
+             g_signal_lookup ("event-after", CTK_TYPE_WIDGET), 0,
              gail_focus_watcher, NULL, (GDestroyNotify) NULL);
       /*
        * A "select" signal is emitted when arrow key is used to
@@ -677,7 +677,7 @@ gail_focus_tracker_init (void)
        * a menu item in a menu.
        */
       g_signal_add_emission_hook (
-             g_signal_lookup ("select", GTK_TYPE_MENU_ITEM), 0,
+             g_signal_lookup ("select", CTK_TYPE_MENU_ITEM), 0,
              gail_select_watcher, NULL, (GDestroyNotify) NULL);
 
       /*
@@ -685,7 +685,7 @@ gail_focus_tracker_init (void)
        * move from a menu item in a menu to the parent menu.
        */
       g_signal_add_emission_hook (
-             g_signal_lookup ("deselect", GTK_TYPE_MENU_ITEM), 0,
+             g_signal_lookup ("deselect", CTK_TYPE_MENU_ITEM), 0,
              gail_deselect_watcher, NULL, (GDestroyNotify) NULL);
 
       /*
@@ -693,7 +693,7 @@ gail_focus_tracker_init (void)
        * when the "focus" has left the menus.
        */
       g_signal_add_emission_hook (
-             g_signal_lookup ("deactivate", GTK_TYPE_MENU_SHELL), 0,
+             g_signal_lookup ("deactivate", CTK_TYPE_MENU_SHELL), 0,
              gail_deactivate_watcher, NULL, (GDestroyNotify) NULL);
 
       /*
@@ -701,7 +701,7 @@ gail_focus_tracker_init (void)
        * when page has changed because of clicking on a notebook tab.
        */
       g_signal_add_emission_hook (
-             g_signal_lookup ("switch-page", GTK_TYPE_NOTEBOOK), 0,
+             g_signal_lookup ("switch-page", CTK_TYPE_NOTEBOOK), 0,
              gail_switch_page_watcher, NULL, (GDestroyNotify) NULL);
       emission_hooks_added = TRUE;
     }
@@ -728,7 +728,7 @@ gail_focus_tracker (AtkObject *focus_object)
     {
       AtkObject *old_focus_object;
 
-      if (!GTK_IS_ACCESSIBLE (focus_object))
+      if (!CTK_IS_ACCESSIBLE (focus_object))
         {
           AtkObject *parent;
 
@@ -738,7 +738,7 @@ gail_focus_tracker (AtkObject *focus_object)
               parent = atk_object_get_parent (parent);
               if (parent == NULL)
                 break;
-              if (GTK_IS_ACCESSIBLE (parent))
+              if (CTK_IS_ACCESSIBLE (parent))
                 break;
             }
 
@@ -817,13 +817,13 @@ state_event_watcher (GSignalInvocationHint *hint,
   gchar *signal_name;
 
   object = g_value_get_object (param_values + 0);
-  if (!GTK_IS_WINDOW (object))
+  if (!CTK_IS_WINDOW (object))
     return FALSE;
 
   event = g_value_get_boxed (param_values + 1);
   if (event->type == GDK_WINDOW_STATE)
     return FALSE;
-  widget = GTK_WIDGET (object);
+  widget = CTK_WIDGET (object);
 
   if (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED)
     signal_name = "maximize";
@@ -835,7 +835,7 @@ state_event_watcher (GSignalInvocationHint *hint,
     return TRUE;
 
   atk_obj = ctk_widget_get_accessible (widget);
-  if (GTK_IS_WINDOW_ACCESSIBLE (atk_obj))
+  if (CTK_IS_WINDOW_ACCESSIBLE (atk_obj))
     {
       parent = atk_object_get_parent (atk_obj);
       if (parent == atk_get_root ())
@@ -862,13 +862,13 @@ configure_event_watcher (GSignalInvocationHint *hint,
   gchar *signal_name;
 
   object = g_value_get_object (param_values + 0);
-  if (!GTK_IS_WINDOW (object))
+  if (!CTK_IS_WINDOW (object))
     return FALSE;
 
   event = g_value_get_boxed (param_values + 1);
   if (event->type != GDK_CONFIGURE)
     return FALSE;
-  widget = GTK_WIDGET (object);
+  widget = CTK_WIDGET (object);
   ctk_widget_get_allocation (widget, &allocation);
   if (allocation.x == ((GdkEventConfigure *)event)->x &&
       allocation.y == ((GdkEventConfigure *)event)->y &&
@@ -883,7 +883,7 @@ configure_event_watcher (GSignalInvocationHint *hint,
     signal_name = "move";
 
   atk_obj = ctk_widget_get_accessible (widget);
-  if (GTK_IS_WINDOW_ACCESSIBLE (atk_obj))
+  if (CTK_IS_WINDOW_ACCESSIBLE (atk_obj))
     {
       parent = atk_object_get_parent (atk_obj);
       if (parent == atk_get_root ())
@@ -901,7 +901,7 @@ window_focus (GtkWidget     *widget,
 {
   AtkObject *atk_obj;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   atk_obj = ctk_widget_get_accessible (widget);
   g_signal_emit_by_name (atk_obj, event->in ? "activate" : "deactivate");
@@ -916,10 +916,10 @@ window_added (AtkObject *atk_obj,
 {
   GtkWidget *widget;
 
-  if (!GTK_IS_WINDOW_ACCESSIBLE (child))
+  if (!CTK_IS_WINDOW_ACCESSIBLE (child))
     return;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (child));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (child));
   if (!widget)
     return;
 
@@ -936,14 +936,14 @@ window_removed (AtkObject *atk_obj,
   GtkWidget *widget;
   GtkWindow *window;
 
-  if (!GTK_IS_WINDOW_ACCESSIBLE (child))
+  if (!CTK_IS_WINDOW_ACCESSIBLE (child))
     return;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (child));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (child));
   if (!widget)
     return;
 
-  window = GTK_WINDOW (widget);
+  window = CTK_WINDOW (widget);
   /*
    * Deactivate window if it is still focused and we are removing it. This
    * can happen when a dialog displayed by gok is removed.
@@ -960,10 +960,10 @@ do_window_event_initialization (void)
 {
   AtkObject *root;
 
-  g_type_class_ref (GTK_TYPE_WINDOW_ACCESSIBLE);
-  g_signal_add_emission_hook (g_signal_lookup ("window-state-event", GTK_TYPE_WIDGET),
+  g_type_class_ref (CTK_TYPE_WINDOW_ACCESSIBLE);
+  g_signal_add_emission_hook (g_signal_lookup ("window-state-event", CTK_TYPE_WIDGET),
                               0, state_event_watcher, NULL, (GDestroyNotify) NULL);
-  g_signal_add_emission_hook (g_signal_lookup ("configure-event", GTK_TYPE_WIDGET),
+  g_signal_add_emission_hook (g_signal_lookup ("configure-event", CTK_TYPE_WIDGET),
                               0, configure_event_watcher, NULL, (GDestroyNotify) NULL);
 
   root = atk_get_root ();
@@ -992,5 +992,5 @@ _ctk_accessibility_init (void)
   atk_bridge_adaptor_init (NULL, NULL);
 #endif
 
-  atk_misc_instance = g_object_new (GTK_TYPE_MISC_IMPL, NULL);
+  atk_misc_instance = g_object_new (CTK_TYPE_MISC_IMPL, NULL);
 }

@@ -53,9 +53,9 @@
 */
 
 typedef enum {
-  GTK_KINETIC_SCROLLING_PHASE_DECELERATING,
-  GTK_KINETIC_SCROLLING_PHASE_OVERSHOOTING,
-  GTK_KINETIC_SCROLLING_PHASE_FINISHED,
+  CTK_KINETIC_SCROLLING_PHASE_DECELERATING,
+  CTK_KINETIC_SCROLLING_PHASE_OVERSHOOTING,
+  CTK_KINETIC_SCROLLING_PHASE_FINISHED,
 } GtkKineticScrollingPhase;
 
 struct _GtkKineticScrolling
@@ -113,7 +113,7 @@ ctk_kinetic_scrolling_new (gdouble lower,
     }
   else
     {
-      data->phase = GTK_KINETIC_SCROLLING_PHASE_DECELERATING;
+      data->phase = CTK_KINETIC_SCROLLING_PHASE_DECELERATING;
       data->c1 = initial_velocity / decel_friction + initial_position;
       data->c2 = -initial_velocity / decel_friction;
       data->t = 0;
@@ -136,7 +136,7 @@ ctk_kinetic_scrolling_init_overshoot (GtkKineticScrolling *data,
                                       gdouble              initial_position,
                                       gdouble              initial_velocity)
 {
-  data->phase = GTK_KINETIC_SCROLLING_PHASE_OVERSHOOTING;
+  data->phase = CTK_KINETIC_SCROLLING_PHASE_OVERSHOOTING;
   data->equilibrium_position = equilibrium_position;
   data->c1 = initial_position - equilibrium_position;
   data->c2 = initial_velocity + data->overshoot_friction / 2 * data->c1;
@@ -151,7 +151,7 @@ ctk_kinetic_scrolling_tick (GtkKineticScrolling *data,
 {
   switch(data->phase)
     {
-    case GTK_KINETIC_SCROLLING_PHASE_DECELERATING:
+    case CTK_KINETIC_SCROLLING_PHASE_DECELERATING:
       {
         gdouble last_position = data->position;
         gdouble last_time = data->t;
@@ -174,14 +174,14 @@ ctk_kinetic_scrolling_tick (GtkKineticScrolling *data,
         else if (fabs(data->velocity) < 1 ||
                  (last_time != 0.0 && fabs(data->position - last_position) < 1))
           {
-            data->phase = GTK_KINETIC_SCROLLING_PHASE_FINISHED;
+            data->phase = CTK_KINETIC_SCROLLING_PHASE_FINISHED;
             data->position = round(data->position);
             data->velocity = 0;
           }
         break;
       }
 
-    case GTK_KINETIC_SCROLLING_PHASE_OVERSHOOTING:
+    case CTK_KINETIC_SCROLLING_PHASE_OVERSHOOTING:
       {
         gdouble exp_part, pos;
 
@@ -201,14 +201,14 @@ ctk_kinetic_scrolling_tick (GtkKineticScrolling *data,
 
         if(fabs (pos) < 0.1)
           {
-            data->phase = GTK_KINETIC_SCROLLING_PHASE_FINISHED;
+            data->phase = CTK_KINETIC_SCROLLING_PHASE_FINISHED;
             data->position = data->equilibrium_position;
             data->velocity = 0;
           }
         break;
       }
 
-    case GTK_KINETIC_SCROLLING_PHASE_FINISHED:
+    case CTK_KINETIC_SCROLLING_PHASE_FINISHED:
       break;
     }
 
@@ -217,6 +217,6 @@ ctk_kinetic_scrolling_tick (GtkKineticScrolling *data,
   if (velocity)
     *velocity = data->velocity;
 
-  return data->phase != GTK_KINETIC_SCROLLING_PHASE_FINISHED;
+  return data->phase != CTK_KINETIC_SCROLLING_PHASE_FINISHED;
 }
 

@@ -78,7 +78,7 @@ static void ctk_tearoff_menu_item_activate             (GtkMenuItem    *menu_ite
 static void ctk_tearoff_menu_item_parent_set           (GtkWidget      *widget,
                                                         GtkWidget      *previous);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTearoffMenuItem, ctk_tearoff_menu_item, GTK_TYPE_MENU_ITEM)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkTearoffMenuItem, ctk_tearoff_menu_item, CTK_TYPE_MENU_ITEM)
 
 /**
  * ctk_tearoff_menu_item_new:
@@ -93,7 +93,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkTearoffMenuItem, ctk_tearoff_menu_item, GTK_TYPE_
 GtkWidget*
 ctk_tearoff_menu_item_new (void)
 {
-  return g_object_new (GTK_TYPE_TEAROFF_MENU_ITEM, NULL);
+  return g_object_new (CTK_TYPE_TEAROFF_MENU_ITEM, NULL);
 }
 
 static void
@@ -136,7 +136,7 @@ ctk_tearoff_menu_item_get_preferred_width (GtkWidget      *widget,
   state = ctk_widget_get_state_flags (widget);
 
   ctk_style_context_get_padding (context, state, &padding);
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   *minimum = *natural = (border_width + BORDER_SPACING) * 2 + padding.left + padding.right;
 }
@@ -156,12 +156,12 @@ ctk_tearoff_menu_item_get_preferred_height (GtkWidget      *widget,
   state = ctk_widget_get_state_flags (widget);
 
   ctk_style_context_get_padding (context, state, &padding);
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   *minimum = *natural = (border_width * 2) + padding.top + padding.bottom;
 
   parent = ctk_widget_get_parent (widget);
-  if (GTK_IS_MENU (parent) && ctk_menu_get_tearoff_state (GTK_MENU (parent)))
+  if (CTK_IS_MENU (parent) && ctk_menu_get_tearoff_state (CTK_MENU (parent)))
     {
       *minimum += ARROW_SIZE;
       *natural += ARROW_SIZE;
@@ -188,12 +188,12 @@ ctk_tearoff_menu_item_draw (GtkWidget *widget,
   GtkWidget *parent;
   gdouble angle;
 
-  menu_item = GTK_MENU_ITEM (widget);
+  menu_item = CTK_MENU_ITEM (widget);
   context = ctk_widget_get_style_context (widget);
   direction = ctk_widget_get_direction (widget);
   state = ctk_widget_get_state_flags (widget);
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (menu_item));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (menu_item));
   x = border_width;
   y = border_width;
   width = ctk_widget_get_allocated_width (widget) - border_width * 2;
@@ -204,20 +204,20 @@ ctk_tearoff_menu_item_draw (GtkWidget *widget,
   ctk_style_context_set_state (context, state);
   ctk_style_context_get_padding (context, state, &padding);
 
-  if (state & GTK_STATE_FLAG_PRELIGHT)
+  if (state & CTK_STATE_FLAG_PRELIGHT)
     {
       ctk_render_background (context, cr, x, y, width, height);
       ctk_render_frame (context, cr, x, y, width, height);
     }
 
   parent = ctk_widget_get_parent (widget);
-  if (GTK_IS_MENU (parent) && ctk_menu_get_tearoff_state (GTK_MENU (parent)))
+  if (CTK_IS_MENU (parent) && ctk_menu_get_tearoff_state (CTK_MENU (parent)))
     {
       gint arrow_x;
 
       if (menu_item->priv->toggle_size > ARROW_SIZE)
         {
-          if (direction == GTK_TEXT_DIR_LTR)
+          if (direction == CTK_TEXT_DIR_LTR)
             {
               arrow_x = x + (menu_item->priv->toggle_size - ARROW_SIZE)/2;
               angle = (3 * G_PI) / 2;
@@ -231,7 +231,7 @@ ctk_tearoff_menu_item_draw (GtkWidget *widget,
         }
       else
         {
-          if (direction == GTK_TEXT_DIR_LTR)
+          if (direction == CTK_TEXT_DIR_LTR)
             {
               arrow_x = ARROW_SIZE / 2;
               angle = (3 * G_PI) / 2;
@@ -253,7 +253,7 @@ ctk_tearoff_menu_item_draw (GtkWidget *widget,
     {
       gint x1, x2;
 
-      if (direction == GTK_TEXT_DIR_LTR)
+      if (direction == CTK_TEXT_DIR_LTR)
         {
           x1 = x;
           x2 = MIN (x + TEAR_LENGTH, right_max);
@@ -280,12 +280,12 @@ ctk_tearoff_menu_item_activate (GtkMenuItem *menu_item)
 {
   GtkWidget *parent;
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (menu_item));
-  if (GTK_IS_MENU (parent))
+  parent = ctk_widget_get_parent (CTK_WIDGET (menu_item));
+  if (CTK_IS_MENU (parent))
     {
-      GtkMenu *menu = GTK_MENU (parent);
+      GtkMenu *menu = CTK_MENU (parent);
 
-      ctk_widget_queue_resize (GTK_WIDGET (menu_item));
+      ctk_widget_queue_resize (CTK_WIDGET (menu_item));
       ctk_menu_set_tearoff_state (menu, !ctk_menu_get_tearoff_state (menu));
     }
 }
@@ -295,7 +295,7 @@ tearoff_state_changed (GtkMenu            *menu,
                        GParamSpec         *pspec,
                        gpointer            data)
 {
-  GtkTearoffMenuItem *tearoff_menu_item = GTK_TEAROFF_MENU_ITEM (data);
+  GtkTearoffMenuItem *tearoff_menu_item = CTK_TEAROFF_MENU_ITEM (data);
   GtkTearoffMenuItemPrivate *priv = tearoff_menu_item->priv;
 
   priv->torn_off = ctk_menu_get_tearoff_state (menu);
@@ -305,13 +305,13 @@ static void
 ctk_tearoff_menu_item_parent_set (GtkWidget *widget,
                                   GtkWidget *previous)
 {
-  GtkTearoffMenuItem *tearoff_menu_item = GTK_TEAROFF_MENU_ITEM (widget);
+  GtkTearoffMenuItem *tearoff_menu_item = CTK_TEAROFF_MENU_ITEM (widget);
   GtkTearoffMenuItemPrivate *priv = tearoff_menu_item->priv;
   GtkMenu *menu;
   GtkWidget *parent;
 
   parent = ctk_widget_get_parent (widget);
-  menu = GTK_IS_MENU (parent) ? GTK_MENU (parent) : NULL;
+  menu = CTK_IS_MENU (parent) ? CTK_MENU (parent) : NULL;
 
   if (previous)
     g_signal_handlers_disconnect_by_func (previous,

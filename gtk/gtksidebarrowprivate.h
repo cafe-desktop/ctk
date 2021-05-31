@@ -15,20 +15,20 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef GTK_SIDEBAR_ROW_PRIVATE_H
-#define GTK_SIDEBAR_ROW_PRIVATE_H
+#ifndef CTK_SIDEBAR_ROW_PRIVATE_H
+#define CTK_SIDEBAR_ROW_PRIVATE_H
 
 #include <glib.h>
 #include "gtklistbox.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SIDEBAR_ROW             (ctk_sidebar_row_get_type())
-#define GTK_SIDEBAR_ROW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SIDEBAR_ROW, GtkSidebarRow))
-#define GTK_SIDEBAR_ROW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SIDEBAR_ROW, GtkSidebarRowClass))
-#define GTK_IS_SIDEBAR_ROW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SIDEBAR_ROW))
-#define GTK_IS_SIDEBAR_ROW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SIDEBAR_ROW))
-#define GTK_SIDEBAR_ROW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SIDEBAR_ROW, GtkSidebarRowClass))
+#define CTK_TYPE_SIDEBAR_ROW             (ctk_sidebar_row_get_type())
+#define CTK_SIDEBAR_ROW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SIDEBAR_ROW, GtkSidebarRow))
+#define CTK_SIDEBAR_ROW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SIDEBAR_ROW, GtkSidebarRowClass))
+#define CTK_IS_SIDEBAR_ROW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SIDEBAR_ROW))
+#define CTK_IS_SIDEBAR_ROW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SIDEBAR_ROW))
+#define CTK_SIDEBAR_ROW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SIDEBAR_ROW, GtkSidebarRowClass))
 
 typedef struct _GtkSidebarRow GtkSidebarRow;
 typedef struct _GtkSidebarRowClass GtkSidebarRowClass;
@@ -59,4 +59,4 @@ void           ctk_sidebar_row_set_busy         (GtkSidebarRow *row,
 
 G_END_DECLS
 
-#endif /* GTK_SIDEBAR_ROW_PRIVATE_H */
+#endif /* CTK_SIDEBAR_ROW_PRIVATE_H */

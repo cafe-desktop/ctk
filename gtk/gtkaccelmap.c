@@ -389,7 +389,7 @@ internal_change_entry (const gchar    *accel_path,
   /* 4) walk the acceleratables and figure whether they occupy accel_key&accel_mods */
   if (accel_key)
     for (slist = win_list; slist; slist = slist->next)
-      if (GTK_IS_WINDOW (slist->data))	/* bad kludge in lack of a GtkAcceleratable */
+      if (CTK_IS_WINDOW (slist->data))	/* bad kludge in lack of a GtkAcceleratable */
 	if (_ctk_window_query_nonaccels (slist->data, accel_key, accel_mods))
 	  {
 	    seen_accel = TRUE;
@@ -410,7 +410,7 @@ internal_change_entry (const gchar    *accel_path,
 	for (i = 0; i < n; i++)
 	  if (ag_entry[i].accel_path_quark == entry_quark)
 	    {
-	      can_change = !(ag_entry[i].key.accel_flags & GTK_ACCEL_LOCKED);
+	      can_change = !(ag_entry[i].key.accel_flags & CTK_ACCEL_LOCKED);
 	      if (!can_change)
 		goto break_loop_step5;
 	    }
@@ -420,7 +420,7 @@ internal_change_entry (const gchar    *accel_path,
 	for (i = 0; i < n; i++)
 	  {
 	    seen_accel = TRUE;
-	    removable = !ctk_accel_group_get_is_locked (group) && !(ag_entry[i].key.accel_flags & GTK_ACCEL_LOCKED);
+	    removable = !ctk_accel_group_get_is_locked (group) && !(ag_entry[i].key.accel_flags & CTK_ACCEL_LOCKED);
 	    if (!removable)
 	      goto break_loop_step5;
 	    if (ag_entry[i].accel_path_quark)
@@ -901,7 +901,7 @@ _ctk_accel_map_add_group (const gchar   *accel_path,
   AccelEntry *entry;
 
   g_return_if_fail (_ctk_accel_path_is_valid (accel_path));
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
 
   entry = accel_path_lookup (accel_path);
   if (!entry)
@@ -1042,7 +1042,7 @@ GtkAccelMap *
 ctk_accel_map_get (void)
 {
   if (!accel_map)
-    accel_map = g_object_new (GTK_TYPE_ACCEL_MAP, NULL);
+    accel_map = g_object_new (CTK_TYPE_ACCEL_MAP, NULL);
 
   return accel_map;
 }

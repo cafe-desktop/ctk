@@ -102,7 +102,7 @@ create_items_model (void)
                           -1);
     }
 
-  return GTK_TREE_MODEL (model);
+  return CTK_TREE_MODEL (model);
 }
 
 static GtkTreeModel *
@@ -131,7 +131,7 @@ create_numbers_model (void)
                           -1);
     }
 
-  return GTK_TREE_MODEL (model);
+  return CTK_TREE_MODEL (model);
 
 #undef N_NUMBERS
 }
@@ -160,15 +160,15 @@ add_item (GtkWidget *button, gpointer data)
     {
       ctk_tree_model_get_iter (model, &current, path);
       ctk_tree_path_free (path);
-      ctk_list_store_insert_after (GTK_LIST_STORE (model), &iter, &current);
+      ctk_list_store_insert_after (CTK_LIST_STORE (model), &iter, &current);
     }
   else
     {
-      ctk_list_store_insert (GTK_LIST_STORE (model), &iter, -1);
+      ctk_list_store_insert (CTK_LIST_STORE (model), &iter, -1);
     }
 
   /* Set the data for the new row */
-  ctk_list_store_set (GTK_LIST_STORE (model), &iter,
+  ctk_list_store_set (CTK_LIST_STORE (model), &iter,
                       COLUMN_ITEM_NUMBER, foo.number,
                       COLUMN_ITEM_PRODUCT, foo.product,
                       COLUMN_ITEM_YUMMY, foo.yummy,
@@ -197,7 +197,7 @@ remove_item (GtkWidget *widget, gpointer data)
 
       path = ctk_tree_model_get_path (model, &iter);
       i = ctk_tree_path_get_indices (path)[0];
-      ctk_list_store_remove (GTK_LIST_STORE (model), &iter);
+      ctk_list_store_remove (CTK_LIST_STORE (model), &iter);
 
       g_array_remove_index (articles, i);
 
@@ -227,7 +227,7 @@ editing_started (GtkCellRenderer *cell,
                  const gchar     *path,
                  gpointer         data)
 {
-  ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (editable),
+  ctk_combo_box_set_row_separator_func (CTK_COMBO_BOX (editable),
                                         separator_row, NULL, NULL);
 }
 
@@ -254,7 +254,7 @@ cell_edited (GtkCellRendererText *cell,
         i = ctk_tree_path_get_indices (path)[0];
         g_array_index (articles, Item, i).number = atoi (new_text);
 
-        ctk_list_store_set (GTK_LIST_STORE (model), &iter, column,
+        ctk_list_store_set (CTK_LIST_STORE (model), &iter, column,
                             g_array_index (articles, Item, i).number, -1);
       }
       break;
@@ -271,7 +271,7 @@ cell_edited (GtkCellRendererText *cell,
         g_free (g_array_index (articles, Item, i).product);
         g_array_index (articles, Item, i).product = g_strdup (new_text);
 
-        ctk_list_store_set (GTK_LIST_STORE (model), &iter, column,
+        ctk_list_store_set (CTK_LIST_STORE (model), &iter, column,
                             g_array_index (articles, Item, i).product, -1);
       }
       break;
@@ -301,7 +301,7 @@ add_columns (GtkTreeView  *treeview,
                     G_CALLBACK (editing_started), NULL);
   g_object_set_data (G_OBJECT (renderer), "column", GINT_TO_POINTER (COLUMN_ITEM_NUMBER));
 
-  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                -1, "Number", renderer,
                                                "text", COLUMN_ITEM_NUMBER,
                                                NULL);
@@ -315,7 +315,7 @@ add_columns (GtkTreeView  *treeview,
                     G_CALLBACK (cell_edited), items_model);
   g_object_set_data (G_OBJECT (renderer), "column", GINT_TO_POINTER (COLUMN_ITEM_PRODUCT));
 
-  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                -1, "Product", renderer,
                                                "text", COLUMN_ITEM_PRODUCT,
                                                NULL);
@@ -324,7 +324,7 @@ add_columns (GtkTreeView  *treeview,
   renderer = ctk_cell_renderer_progress_new ();
   g_object_set_data (G_OBJECT (renderer), "column", GINT_TO_POINTER (COLUMN_ITEM_YUMMY));
 
-  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (treeview),
                                                -1, "Yummy", renderer,
                                                "value", COLUMN_ITEM_YUMMY,
                                                NULL);
@@ -345,28 +345,28 @@ do_editable_cells (GtkWidget *do_widget)
       GtkTreeModel *items_model;
       GtkTreeModel *numbers_model;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Editable Cells");
-      ctk_container_set_border_width (GTK_CONTAINER (window), 5);
+      ctk_window_set_title (CTK_WINDOW (window), "Editable Cells");
+      ctk_container_set_border_width (CTK_CONTAINER (window), 5);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
 
-      ctk_box_pack_start (GTK_BOX (vbox),
+      ctk_box_pack_start (CTK_BOX (vbox),
                           ctk_label_new ("Shopping list (you can edit the cells!)"),
                           FALSE, FALSE, 0);
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-                                           GTK_SHADOW_ETCHED_IN);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_box_pack_start (GTK_BOX (vbox), sw, TRUE, TRUE, 0);
+      ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
+                                           CTK_SHADOW_ETCHED_IN);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_box_pack_start (CTK_BOX (vbox), sw, TRUE, TRUE, 0);
 
       /* create models */
       items_model = create_items_model ();
@@ -374,32 +374,32 @@ do_editable_cells (GtkWidget *do_widget)
 
       /* create tree view */
       treeview = ctk_tree_view_new_with_model (items_model);
-      ctk_tree_selection_set_mode (ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview)),
-                                   GTK_SELECTION_SINGLE);
+      ctk_tree_selection_set_mode (ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview)),
+                                   CTK_SELECTION_SINGLE);
 
-      add_columns (GTK_TREE_VIEW (treeview), items_model, numbers_model);
+      add_columns (CTK_TREE_VIEW (treeview), items_model, numbers_model);
 
       g_object_unref (numbers_model);
       g_object_unref (items_model);
 
-      ctk_container_add (GTK_CONTAINER (sw), treeview);
+      ctk_container_add (CTK_CONTAINER (sw), treeview);
 
       /* some buttons */
-      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-      ctk_box_set_homogeneous (GTK_BOX (hbox), TRUE);
-      ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+      hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
+      ctk_box_set_homogeneous (CTK_BOX (hbox), TRUE);
+      ctk_box_pack_start (CTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
       button = ctk_button_new_with_label ("Add item");
       g_signal_connect (button, "clicked",
                         G_CALLBACK (add_item), treeview);
-      ctk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (hbox), button, TRUE, TRUE, 0);
 
       button = ctk_button_new_with_label ("Remove item");
       g_signal_connect (button, "clicked",
                         G_CALLBACK (remove_item), treeview);
-      ctk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (hbox), button, TRUE, TRUE, 0);
 
-      ctk_window_set_default_size (GTK_WINDOW (window), 320, 200);
+      ctk_window_set_default_size (CTK_WINDOW (window), 320, 200);
     }
 
   if (!ctk_widget_get_visible (window))

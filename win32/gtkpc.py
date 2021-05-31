@@ -44,7 +44,7 @@ def main(argv):
         broadway_extra_libs = ' -lzlib1'
         gdk_backends += ' broadway'
 
-    pkg_replace_items = {'@GTK_API_VERSION@': '3.0',
+    pkg_replace_items = {'@CTK_API_VERSION@': '3.0',
                          '@GDK_BACKENDS@': gdk_backends}
 
     pkg_required_packages = 'gdk-pixbuf-2.0 >= ' + gdk_pixbuf_min_ver
@@ -58,14 +58,14 @@ def main(argv):
                             'gdk-3': 'gdk-3.0'}
 
     ctk_pc_replace_items = {'@host@': gdk_args.host,
-                            '@GTK_BINARY_VERSION@': '3.0.0',
-                            '@GTK_PACKAGES@': 'atk >= ' + atk_min_ver + ' ' + \
+                            '@CTK_BINARY_VERSION@': '3.0.0',
+                            '@CTK_PACKAGES@': 'atk >= ' + atk_min_ver + ' ' + \
                                               pkg_required_packages + ' ' + \
                                               gio_package,
-                            '@GTK_PRIVATE_PACKAGES@': 'atk',
-                            '@GTK_EXTRA_CFLAGS@': '',
-                            '@GTK_EXTRA_LIBS@': '',
-                            '@GTK_EXTRA_CFLAGS@': '',
+                            '@CTK_PRIVATE_PACKAGES@': 'atk',
+                            '@CTK_EXTRA_CFLAGS@': '',
+                            '@CTK_EXTRA_LIBS@': '',
+                            '@CTK_EXTRA_CFLAGS@': '',
                             'gtk-3': 'gtk-3.0'}
 
     gail_pc_replace_items = {'gailutil-3': 'gailutil-3.0'}

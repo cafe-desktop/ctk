@@ -34,7 +34,7 @@
  */
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   GtkIconTheme *icontheme;
   guint changed_id;
 };
@@ -109,7 +109,7 @@ ctk_css_value_icon_theme_print (const GtkCssValue *icon_theme,
   g_string_append (string, "initial");
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_ICON_THEME = {
+static const GtkCssValueClass CTK_CSS_VALUE_ICON_THEME = {
   ctk_css_value_icon_theme_free,
   ctk_css_value_icon_theme_compute,
   ctk_css_value_icon_theme_equal,
@@ -117,7 +117,7 @@ static const GtkCssValueClass GTK_CSS_VALUE_ICON_THEME = {
   ctk_css_value_icon_theme_print
 };
 
-static GtkCssValue default_icon_theme_value = { &GTK_CSS_VALUE_ICON_THEME, 1, NULL, 0 };
+static GtkCssValue default_icon_theme_value = { &CTK_CSS_VALUE_ICON_THEME, 1, NULL, 0 };
 
 GtkCssValue *
 ctk_css_icon_theme_value_new (GtkIconTheme *icontheme)
@@ -131,7 +131,7 @@ ctk_css_icon_theme_value_new (GtkIconTheme *icontheme)
   if (result)
     return _ctk_css_value_ref (result);
 
-  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_ICON_THEME);
+  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_ICON_THEME);
   result->icontheme = g_object_ref (icontheme);
 
   g_object_set_data (G_OBJECT (icontheme), "-gtk-css-value", result);
@@ -165,7 +165,7 @@ ctk_css_icon_theme_value_parse (GtkCssParser *parser)
 GtkIconTheme *
 ctk_css_icon_theme_value_get_icon_theme (GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_ICON_THEME, NULL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_ICON_THEME, NULL);
 
   return value->icontheme;
 }

@@ -53,7 +53,7 @@ request (GtkWidget      *widget,
                              primary_monitor);
     }
 
-  ctk_label_set_markup (GTK_LABEL (user_data), str);
+  ctk_label_set_markup (CTK_LABEL (user_data), str);
   g_free (str);
 }
 
@@ -88,11 +88,11 @@ main (int argc, char *argv[])
       GdkRectangle monitor; 
       gchar *str;
       
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       
       gdk_screen_get_monitor_geometry (screen, i, &monitor);
-      ctk_window_set_default_size (GTK_WINDOW (window), 200, 200);
-      ctk_window_move (GTK_WINDOW (window), (monitor.width - 200) / 2 + monitor.x,
+      ctk_window_set_default_size (CTK_WINDOW (window), 200, 200);
+      ctk_window_move (CTK_WINDOW (window), (monitor.width - 200) / 2 + monitor.x,
 		       (monitor.height - 200) / 2 + monitor.y);
       
       label = ctk_label_new (NULL);
@@ -105,18 +105,18 @@ main (int argc, char *argv[])
 			     monitor.width, monitor.height,
                              monitor.x, monitor.y,
                              primary_monitor);
-      ctk_label_set_markup (GTK_LABEL (label), str);
+      ctk_label_set_markup (CTK_LABEL (label), str);
       g_free (str);
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 1);
-      ctk_box_set_homogeneous (GTK_BOX (vbox), TRUE);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
-      ctk_container_add (GTK_CONTAINER (vbox), label);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 1);
+      ctk_box_set_homogeneous (CTK_BOX (vbox), TRUE);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
+      ctk_container_add (CTK_CONTAINER (vbox), label);
       button = ctk_button_new_with_label ("Query current monitor");
       g_signal_connect (button, "clicked", G_CALLBACK (request), label);
-      ctk_container_add (GTK_CONTAINER (vbox), button);
+      ctk_container_add (CTK_CONTAINER (vbox), button);
       button = ctk_button_new_with_label ("Close");
       g_signal_connect (button, "clicked", G_CALLBACK (ctk_main_quit), NULL);
-      ctk_container_add (GTK_CONTAINER (vbox), button);
+      ctk_container_add (CTK_CONTAINER (vbox), button);
       ctk_widget_show_all (window);
 
       g_signal_connect (screen, "monitors-changed",

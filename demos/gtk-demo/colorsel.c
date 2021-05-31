@@ -31,10 +31,10 @@ response_cb (GtkDialog *dialog,
              gint       response_id,
              gpointer   user_data)
 {
-  if (response_id == GTK_RESPONSE_OK)
-    ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog), &color);
+  if (response_id == CTK_RESPONSE_OK)
+    ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (dialog), &color);
 
-  ctk_widget_destroy (GTK_WIDGET (dialog));
+  ctk_widget_destroy (CTK_WIDGET (dialog));
 }
 
 static void
@@ -43,9 +43,9 @@ change_color_callback (GtkWidget *button,
 {
   GtkWidget *dialog;
 
-  dialog = ctk_color_chooser_dialog_new ("Changing color", GTK_WINDOW (window));
-  ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
-  ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (dialog), &color);
+  dialog = ctk_color_chooser_dialog_new ("Changing color", CTK_WINDOW (window));
+  ctk_window_set_modal (CTK_WINDOW (dialog), TRUE);
+  ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (dialog), &color);
 
   g_signal_connect (dialog, "response",
                     G_CALLBACK (response_cb), NULL);
@@ -66,27 +66,27 @@ do_colorsel (GtkWidget *do_widget)
       color.green = 0;
       color.alpha = 1;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Color Chooser");
+      ctk_window_set_title (CTK_WINDOW (window), "Color Chooser");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+      ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
 
       /*
        * Create the color swatch area
        */
 
       frame = ctk_frame_new (NULL);
-      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      ctk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+      ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_IN);
+      ctk_box_pack_start (CTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
       da = ctk_drawing_area_new ();
 
@@ -95,13 +95,13 @@ do_colorsel (GtkWidget *do_widget)
       /* set a minimum size */
       ctk_widget_set_size_request (da, 200, 200);
 
-      ctk_container_add (GTK_CONTAINER (frame), da);
+      ctk_container_add (CTK_CONTAINER (frame), da);
 
       button = ctk_button_new_with_mnemonic ("_Change the above color");
-      ctk_widget_set_halign (button, GTK_ALIGN_END);
-      ctk_widget_set_valign (button, GTK_ALIGN_CENTER);
+      ctk_widget_set_halign (button, CTK_ALIGN_END);
+      ctk_widget_set_valign (button, CTK_ALIGN_CENTER);
 
-      ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
       g_signal_connect (button, "clicked",
                         G_CALLBACK (change_color_callback), NULL);

@@ -84,7 +84,7 @@
 
 #define MIN_SYSTEM_BELL_DELAY_MS 20
 
-#define GTK_SHELL1_VERSION       3
+#define CTK_SHELL1_VERSION       3
 
 static void _gdk_wayland_display_load_cursor_theme (GdkWaylandDisplay *display_wayland);
 
@@ -421,7 +421,7 @@ gdk_registry_handle_global (void               *data,
       display_wayland->ctk_shell =
         wl_registry_bind(display_wayland->wl_registry, id,
                          &ctk_shell1_interface,
-                         MIN (version, GTK_SHELL1_VERSION));
+                         MIN (version, CTK_SHELL1_VERSION));
       _gdk_wayland_screen_set_has_ctk_shell (display_wayland->screen);
       display_wayland->ctk_shell_version = version;
     }

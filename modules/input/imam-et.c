@@ -56,7 +56,7 @@ am_et_register_type (GTypeModule *module)
 
   type_am_et_translit = 
     g_type_module_register_type (module,
-				 GTK_TYPE_IM_CONTEXT_SIMPLE,
+				 CTK_TYPE_IM_CONTEXT_SIMPLE,
 				 "GtkIMContextAmharicEthiopia",
 				 &object_info, 0);
 }
@@ -451,7 +451,7 @@ static const GtkIMContextInfo am_et_info = {
   "am_et",		   /* ID */
   NC_("input method menu", "Amharic (EZ+)"),     /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
-   GTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
   "am"			   /* Languages for which this module is the default */
 };
 

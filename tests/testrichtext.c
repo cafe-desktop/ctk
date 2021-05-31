@@ -149,14 +149,14 @@ main (gint   argc,
   if (1)        
     quick_rand32_accu = g_random_int();
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_size_request (window, 400, 300);
 
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-                                       GTK_SHADOW_IN);
-  ctk_container_set_border_width (GTK_CONTAINER (sw), 12);
-  ctk_container_add (GTK_CONTAINER (window), sw);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
+                                       CTK_SHADOW_IN);
+  ctk_container_set_border_width (CTK_CONTAINER (sw), 12);
+  ctk_container_add (CTK_CONTAINER (window), sw);
 
   g_signal_connect (window, "delete-event",
                     G_CALLBACK (delete_event),
@@ -166,7 +166,7 @@ main (gint   argc,
   view = ctk_text_view_new_with_buffer (buffer);
   g_object_unref (buffer);
 
-  ctk_container_add (GTK_CONTAINER (sw), view);
+  ctk_container_add (CTK_CONTAINER (sw), view);
 
   ctk_widget_show_all (window);
   if (0)

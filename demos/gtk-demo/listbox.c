@@ -12,19 +12,19 @@
 static GdkPixbuf *avatar_pixbuf_other;
 static GtkWidget *window = NULL;
 
-#define GTK_TYPE_MESSAGE		  (ctk_message_get_type ())
-#define GTK_MESSAGE(message)		  (G_TYPE_CHECK_INSTANCE_CAST ((message), GTK_TYPE_MESSAGE, GtkMessage))
-#define GTK_MESSAGE_CLASS(klass)		  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MESSAGE, GtkMessageClass))
-#define GTK_IS_MESSAGE(message)		  (G_TYPE_CHECK_INSTANCE_TYPE ((message), GTK_TYPE_MESSAGE))
-#define GTK_IS_MESSAGE_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_MESSAGE))
-#define GTK_MESSAGE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_MESSAGE, GtkMessageClass))
+#define CTK_TYPE_MESSAGE		  (ctk_message_get_type ())
+#define CTK_MESSAGE(message)		  (G_TYPE_CHECK_INSTANCE_CAST ((message), CTK_TYPE_MESSAGE, GtkMessage))
+#define CTK_MESSAGE_CLASS(klass)		  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MESSAGE, GtkMessageClass))
+#define CTK_IS_MESSAGE(message)		  (G_TYPE_CHECK_INSTANCE_TYPE ((message), CTK_TYPE_MESSAGE))
+#define CTK_IS_MESSAGE_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MESSAGE))
+#define CTK_MESSAGE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MESSAGE, GtkMessageClass))
 
-#define GTK_TYPE_MESSAGE_ROW		  (ctk_message_row_get_type ())
-#define GTK_MESSAGE_ROW(message_row)		  (G_TYPE_CHECK_INSTANCE_CAST ((message_row), GTK_TYPE_MESSAGE_ROW, GtkMessageRow))
-#define GTK_MESSAGE_ROW_CLASS(klass)		  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MESSAGE_ROW, GtkMessageRowClass))
-#define GTK_IS_MESSAGE_ROW(message_row)		  (G_TYPE_CHECK_INSTANCE_TYPE ((message_row), GTK_TYPE_MESSAGE_ROW))
-#define GTK_IS_MESSAGE_ROW_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_MESSAGE_ROW))
-#define GTK_MESSAGE_ROW_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_MESSAGE_ROW, GtkMessageRowClass))
+#define CTK_TYPE_MESSAGE_ROW		  (ctk_message_row_get_type ())
+#define CTK_MESSAGE_ROW(message_row)		  (G_TYPE_CHECK_INSTANCE_CAST ((message_row), CTK_TYPE_MESSAGE_ROW, GtkMessageRow))
+#define CTK_MESSAGE_ROW_CLASS(klass)		  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MESSAGE_ROW, GtkMessageRowClass))
+#define CTK_IS_MESSAGE_ROW(message_row)		  (G_TYPE_CHECK_INSTANCE_TYPE ((message_row), CTK_TYPE_MESSAGE_ROW))
+#define CTK_IS_MESSAGE_ROW_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MESSAGE_ROW))
+#define CTK_MESSAGE_ROW_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MESSAGE_ROW, GtkMessageRowClass))
 
 typedef struct _GtkMessage   GtkMessage;
 typedef struct _GtkMessageClass  GtkMessageClass;
@@ -91,7 +91,7 @@ G_DEFINE_TYPE (GtkMessage, ctk_message, G_TYPE_OBJECT);
 static void
 ctk_message_finalize (GObject *obj)
 {
-  GtkMessage *msg = GTK_MESSAGE (obj);
+  GtkMessage *msg = CTK_MESSAGE (obj);
 
   g_free (msg->sender_name);
   g_free (msg->sender_nick);
@@ -158,7 +158,7 @@ ctk_message_new (const char *str)
   return msg;
 }
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkMessageRow, ctk_message_row, GTK_TYPE_LIST_BOX_ROW);
+G_DEFINE_TYPE_WITH_PRIVATE (GtkMessageRow, ctk_message_row, CTK_TYPE_LIST_BOX_ROW);
 
 
 static void
@@ -180,24 +180,24 @@ ctk_message_row_update (GtkMessageRow *row)
   g_free (s);
   g_date_time_unref (t);
 
-  ctk_widget_set_visible (GTK_WIDGET(priv->n_favorites_label),
+  ctk_widget_set_visible (CTK_WIDGET(priv->n_favorites_label),
                           priv->message->n_favorites != 0);
   s = g_strdup_printf ("<b>%d</b>\nFavorites", priv->message->n_favorites);
   ctk_label_set_markup (priv->n_favorites_label, s);
   g_free (s);
 
-  ctk_widget_set_visible (GTK_WIDGET(priv->n_reshares_label),
+  ctk_widget_set_visible (CTK_WIDGET(priv->n_reshares_label),
                           priv->message->n_reshares != 0);
   s = g_strdup_printf ("<b>%d</b>\nReshares", priv->message->n_reshares);
   ctk_label_set_markup (priv->n_reshares_label, s);
   g_free (s);
 
-  ctk_widget_set_visible (GTK_WIDGET (priv->resent_box), priv->message->resent_by != NULL);
+  ctk_widget_set_visible (CTK_WIDGET (priv->resent_box), priv->message->resent_by != NULL);
   if (priv->message->resent_by)
-    ctk_button_set_label (GTK_BUTTON (priv->resent_by_button), priv->message->resent_by);
+    ctk_button_set_label (CTK_BUTTON (priv->resent_by_button), priv->message->resent_by);
 
   if (strcmp (priv->message->sender_nick, "@GTKtoolkit") == 0)
-    ctk_image_set_from_icon_name (priv->avatar_image, "gtk3-demo", GTK_ICON_SIZE_DND);
+    ctk_image_set_from_icon_name (priv->avatar_image, "gtk3-demo", CTK_ICON_SIZE_DND);
   else
     ctk_image_set_from_pixbuf (priv->avatar_image, avatar_pixbuf_other);
 
@@ -250,21 +250,21 @@ static void
 ctk_message_row_state_flags_changed (GtkWidget    *widget,
                                      GtkStateFlags previous_state_flags)
 {
-  GtkMessageRowPrivate *priv = GTK_MESSAGE_ROW (widget)->priv;
+  GtkMessageRowPrivate *priv = CTK_MESSAGE_ROW (widget)->priv;
   GtkStateFlags flags;
 
   flags = ctk_widget_get_state_flags (widget);
 
   ctk_widget_set_visible (priv->extra_buttons_box,
-                          flags & (GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_SELECTED));
+                          flags & (CTK_STATE_FLAG_PRELIGHT | CTK_STATE_FLAG_SELECTED));
 
-  GTK_WIDGET_CLASS (ctk_message_row_parent_class)->state_flags_changed (widget, previous_state_flags);
+  CTK_WIDGET_CLASS (ctk_message_row_parent_class)->state_flags_changed (widget, previous_state_flags);
 }
 
 static void
 ctk_message_row_finalize (GObject *obj)
 {
-  GtkMessageRowPrivate *priv = GTK_MESSAGE_ROW (obj)->priv;
+  GtkMessageRowPrivate *priv = CTK_MESSAGE_ROW (obj)->priv;
   g_object_unref (priv->message);
   G_OBJECT_CLASS (ctk_message_row_parent_class)->finalize(obj);
 }
@@ -272,7 +272,7 @@ ctk_message_row_finalize (GObject *obj)
 static void
 ctk_message_row_class_init (GtkMessageRowClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_message_row_finalize;
@@ -303,7 +303,7 @@ ctk_message_row_init (GtkMessageRow *row)
 {
   row->priv = ctk_message_row_get_instance_private (row);
 
-  ctk_widget_init_template (GTK_WIDGET (row));
+  ctk_widget_init_template (CTK_WIDGET (row));
 }
 
 static GtkMessageRow *
@@ -327,7 +327,7 @@ ctk_message_row_sort (GtkMessageRow *a, GtkMessageRow *b, gpointer data)
 static void
 row_activated (GtkListBox *listbox, GtkListBoxRow *row)
 {
-  ctk_message_row_expand (GTK_MESSAGE_ROW (row));
+  ctk_message_row_expand (CTK_MESSAGE_ROW (row));
 }
 
 GtkWidget *
@@ -344,11 +344,11 @@ do_listbox (GtkWidget *do_widget)
     {
       avatar_pixbuf_other = gdk_pixbuf_new_from_resource_at_scale ("/listbox/apple-red.png", 32, 32, FALSE, NULL);
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "List Box");
-      ctk_window_set_default_size (GTK_WINDOW (window),
+      ctk_window_set_title (CTK_WINDOW (window), "List Box");
+      ctk_window_set_default_size (CTK_WINDOW (window),
                                    400, 600);
 
       /* NULL window variable when window is closed */
@@ -356,18 +356,18 @@ do_listbox (GtkWidget *do_widget)
                         G_CALLBACK (ctk_widget_destroyed),
                         &window);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
       label = ctk_label_new ("Messages from Gtk+ and friends");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
       scrolled = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-      ctk_box_pack_start (GTK_BOX (vbox), scrolled, TRUE, TRUE, 0);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled), CTK_POLICY_NEVER, CTK_POLICY_AUTOMATIC);
+      ctk_box_pack_start (CTK_BOX (vbox), scrolled, TRUE, TRUE, 0);
       listbox = ctk_list_box_new ();
-      ctk_container_add (GTK_CONTAINER (scrolled), listbox);
+      ctk_container_add (CTK_CONTAINER (scrolled), listbox);
 
-      ctk_list_box_set_sort_func (GTK_LIST_BOX (listbox), (GtkListBoxSortFunc)ctk_message_row_sort, listbox, NULL);
-      ctk_list_box_set_activate_on_single_click (GTK_LIST_BOX (listbox), FALSE);
+      ctk_list_box_set_sort_func (CTK_LIST_BOX (listbox), (GtkListBoxSortFunc)ctk_message_row_sort, listbox, NULL);
+      ctk_list_box_set_activate_on_single_click (CTK_LIST_BOX (listbox), FALSE);
       g_signal_connect (listbox, "row-activated", G_CALLBACK (row_activated), NULL);
 
       ctk_widget_show_all (vbox);
@@ -379,8 +379,8 @@ do_listbox (GtkWidget *do_widget)
         {
           message = ctk_message_new (lines[i]);
           row = ctk_message_row_new (message);
-          ctk_widget_show (GTK_WIDGET (row));
-          ctk_container_add (GTK_CONTAINER (listbox), GTK_WIDGET (row));
+          ctk_widget_show (CTK_WIDGET (row));
+          ctk_container_add (CTK_CONTAINER (listbox), CTK_WIDGET (row));
         }
 
       g_strfreev (lines);

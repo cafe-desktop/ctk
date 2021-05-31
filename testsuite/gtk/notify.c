@@ -386,11 +386,11 @@ test_type (gconstpointer data)
     return;
 
   /* These can't be freely constructed/destroyed */
-  if (g_type_is_a (type, GTK_TYPE_APPLICATION) ||
+  if (g_type_is_a (type, CTK_TYPE_APPLICATION) ||
       g_type_is_a (type, GDK_TYPE_PIXBUF_LOADER) ||
       g_type_is_a (type, GDK_TYPE_DRAWING_CONTEXT) ||
 #ifdef G_OS_UNIX
-      g_type_is_a (type, GTK_TYPE_PRINT_JOB) ||
+      g_type_is_a (type, CTK_TYPE_PRINT_JOB) ||
 #endif
       g_type_is_a (type, gdk_pixbuf_simple_anim_iter_get_type ()) ||
       g_str_equal (g_type_name (type), "GdkX11DeviceManagerXI2") ||
@@ -402,35 +402,35 @@ test_type (gconstpointer data)
     return;
 
   /* This throws a critical when the connection is dropped */
-  if (g_type_is_a (type, GTK_TYPE_APP_CHOOSER_DIALOG))
+  if (g_type_is_a (type, CTK_TYPE_APP_CHOOSER_DIALOG))
     return;
 
   /* These leak their GDBusConnections */
-  if (g_type_is_a (type, GTK_TYPE_FILE_CHOOSER_BUTTON) ||
-      g_type_is_a (type, GTK_TYPE_FILE_CHOOSER_DIALOG) ||
-      g_type_is_a (type, GTK_TYPE_FILE_CHOOSER_WIDGET) ||
-      g_type_is_a (type, GTK_TYPE_FILE_CHOOSER_NATIVE) ||
-      g_type_is_a (type, GTK_TYPE_PLACES_SIDEBAR))
+  if (g_type_is_a (type, CTK_TYPE_FILE_CHOOSER_BUTTON) ||
+      g_type_is_a (type, CTK_TYPE_FILE_CHOOSER_DIALOG) ||
+      g_type_is_a (type, CTK_TYPE_FILE_CHOOSER_WIDGET) ||
+      g_type_is_a (type, CTK_TYPE_FILE_CHOOSER_NATIVE) ||
+      g_type_is_a (type, CTK_TYPE_PLACES_SIDEBAR))
     return;
 
   /* These rely on a d-bus session bus */
-  if (g_type_is_a (type, GTK_TYPE_MOUNT_OPERATION))
+  if (g_type_is_a (type, CTK_TYPE_MOUNT_OPERATION))
     return;
 
   /* Backend-specific */
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (gdk_display_get_default ())) ;
-  else if (g_type_is_a (type, GTK_TYPE_PLUG) ||
-           g_type_is_a (type, GTK_TYPE_SOCKET))
+  else if (g_type_is_a (type, CTK_TYPE_PLUG) ||
+           g_type_is_a (type, CTK_TYPE_SOCKET))
     return;
 #endif
 
-  if (g_type_is_a (type, GTK_TYPE_STATUS_ICON))
+  if (g_type_is_a (type, CTK_TYPE_STATUS_ICON))
     return;
 
   klass = g_type_class_ref (type);
 
-  if (g_type_is_a (type, GTK_TYPE_SETTINGS))
+  if (g_type_is_a (type, CTK_TYPE_SETTINGS))
     instance = G_OBJECT (g_object_ref (ctk_settings_get_default ()));
   else if (g_type_is_a (type, GDK_TYPE_WINDOW))
     {
@@ -476,7 +476,7 @@ test_type (gconstpointer data)
         continue;
 
       /* These are special */
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_WIDGET) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_WIDGET) &&
 	  (g_str_equal (pspec->name, "has-focus") ||
 	   g_str_equal (pspec->name, "has-default") ||
            g_str_equal (pspec->name, "is-focus") ||
@@ -487,39 +487,39 @@ test_type (gconstpointer data)
             ))
 	continue;
 
-      if (pspec->owner_type == GTK_TYPE_ENTRY &&
+      if (pspec->owner_type == CTK_TYPE_ENTRY &&
           g_str_equal (pspec->name, "im-module"))
         continue;
 
-      if (type == GTK_TYPE_SETTINGS)
+      if (type == CTK_TYPE_SETTINGS)
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_ENTRY_COMPLETION) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_ENTRY_COMPLETION) &&
           g_str_equal (pspec->name, "text-column"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_MENU_ITEM) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_MENU_ITEM) &&
 	  g_str_equal (pspec->name, "accel-path"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_MENU) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_MENU) &&
 	  (g_str_equal (pspec->name, "accel-path") ||
 	   g_str_equal (pspec->name, "active")))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_CHECK_MENU_ITEM) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_CHECK_MENU_ITEM) &&
 	  g_str_equal (pspec->name, "active"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_COLOR_CHOOSER) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_COLOR_CHOOSER) &&
 	  g_str_equal (pspec->name, "show-editor"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_NOTEBOOK) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_NOTEBOOK) &&
 	  g_str_equal (pspec->name, "page"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_TOGGLE_BUTTON) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_TOGGLE_BUTTON) &&
 	  g_str_equal (pspec->name, "draw-indicator"))
         continue;
 
@@ -536,11 +536,11 @@ test_type (gconstpointer data)
        * setting label etc on a subclass destroys the content, breaking
        * e.g. GtkColorButton pretty badly
        */
-      if (type == GTK_TYPE_COLOR_BUTTON && pspec->owner_type == GTK_TYPE_BUTTON)
+      if (type == CTK_TYPE_COLOR_BUTTON && pspec->owner_type == CTK_TYPE_BUTTON)
         continue;
 
       /* GdkOffscreenWindow is missing many implementations */
-      if (type == GTK_TYPE_OFFSCREEN_WINDOW)
+      if (type == CTK_TYPE_OFFSCREEN_WINDOW)
         continue;
 
       /* Too many special cases involving -set properties */
@@ -558,15 +558,15 @@ test_type (gconstpointer data)
           g_str_equal (g_type_name (pspec->owner_type), "GtkAction"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_CONTAINER) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_CONTAINER) &&
 	  g_str_equal (pspec->name, "resize-mode"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_COLOR_BUTTON) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_COLOR_BUTTON) &&
 	  g_str_equal (pspec->name, "alpha"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_CELL_RENDERER_PIXBUF) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_CELL_RENDERER_PIXBUF) &&
 	  (g_str_equal (pspec->name, "follow-state") ||
 	   g_str_equal (pspec->name, "stock-id") ||
            g_str_equal (pspec->name, "stock-size") ||
@@ -578,30 +578,30 @@ test_type (gconstpointer data)
           g_str_equal (g_type_name (pspec->owner_type), "GtkMisc"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_MENU) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_MENU) &&
 	  g_str_equal (pspec->name, "tearoff-state"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_WIDGET) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_WIDGET) &&
 	  g_str_equal (pspec->name, "double-buffered"))
         continue;
 
-      if (g_type_is_a (pspec->owner_type, GTK_TYPE_WINDOW) &&
+      if (g_type_is_a (pspec->owner_type, CTK_TYPE_WINDOW) &&
 	  g_str_equal (pspec->name, "has-resize-grip"))
         continue;
 
       /* Can only be set on window widgets */
-      if (pspec->owner_type == GTK_TYPE_WIDGET &&
+      if (pspec->owner_type == CTK_TYPE_WIDGET &&
           g_str_equal (pspec->name, "events"))
         continue;
 
       /* Can only be set on unmapped windows */
-      if (pspec->owner_type == GTK_TYPE_WINDOW &&
+      if (pspec->owner_type == CTK_TYPE_WINDOW &&
           g_str_equal (pspec->name, "type-hint"))
         continue;
 
       /* Special restrictions on allowed values */
-      if (pspec->owner_type == GTK_TYPE_COMBO_BOX &&
+      if (pspec->owner_type == CTK_TYPE_COMBO_BOX &&
           (g_str_equal (pspec->name, "row-span-column") ||
            g_str_equal (pspec->name, "column-span-column") ||
            g_str_equal (pspec->name, "id-column") ||
@@ -609,78 +609,78 @@ test_type (gconstpointer data)
            g_str_equal (pspec->name, "entry-text-column")))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_ENTRY_COMPLETION &&
+      if (pspec->owner_type == CTK_TYPE_ENTRY_COMPLETION &&
           g_str_equal (pspec->name, "text-column"))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_PRINT_OPERATION &&
+      if (pspec->owner_type == CTK_TYPE_PRINT_OPERATION &&
           (g_str_equal (pspec->name, "current-page") ||
            g_str_equal (pspec->name, "n-pages")))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_RANGE &&
+      if (pspec->owner_type == CTK_TYPE_RANGE &&
           g_str_equal (pspec->name, "fill-level"))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_SPIN_BUTTON &&
+      if (pspec->owner_type == CTK_TYPE_SPIN_BUTTON &&
           g_str_equal (pspec->name, "value"))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_STACK &&
+      if (pspec->owner_type == CTK_TYPE_STACK &&
           g_str_equal (pspec->name, "visible-child-name"))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_POPOVER_MENU &&
+      if (pspec->owner_type == CTK_TYPE_POPOVER_MENU &&
           g_str_equal (pspec->name, "visible-submenu"))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_TEXT_VIEW &&
+      if (pspec->owner_type == CTK_TYPE_TEXT_VIEW &&
           g_str_equal (pspec->name, "im-module"))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_TOOLBAR &&
+      if (pspec->owner_type == CTK_TYPE_TOOLBAR &&
           g_str_equal (pspec->name, "icon-size"))
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_TREE_SELECTION &&
+      if (pspec->owner_type == CTK_TYPE_TREE_SELECTION &&
           g_str_equal (pspec->name, "mode")) /* requires a treeview */
         continue;
 
-      if (pspec->owner_type == GTK_TYPE_TREE_VIEW &&
+      if (pspec->owner_type == CTK_TYPE_TREE_VIEW &&
           g_str_equal (pspec->name, "headers-clickable")) /* requires columns */
         continue;
 
       /* This one has a special-purpose default value */
-      if (g_type_is_a (type, GTK_TYPE_DIALOG) &&
+      if (g_type_is_a (type, CTK_TYPE_DIALOG) &&
 	  g_str_equal (pspec->name, "use-header-bar"))
 	continue;
 
-      if (g_type_is_a (type, GTK_TYPE_ASSISTANT) &&
+      if (g_type_is_a (type, CTK_TYPE_ASSISTANT) &&
 	  g_str_equal (pspec->name, "use-header-bar"))
 	continue;
 
-      if (type == GTK_TYPE_MODEL_BUTTON &&
-          pspec->owner_type == GTK_TYPE_BUTTON)
+      if (type == CTK_TYPE_MODEL_BUTTON &&
+          pspec->owner_type == CTK_TYPE_BUTTON)
         continue;
 
-      if (g_type_is_a (type, GTK_TYPE_SHORTCUTS_SHORTCUT) &&
+      if (g_type_is_a (type, CTK_TYPE_SHORTCUTS_SHORTCUT) &&
 	  g_str_equal (pspec->name, "accelerator"))
 	continue;
 
-      if (g_type_is_a (type, GTK_TYPE_SHORTCUT_LABEL) &&
+      if (g_type_is_a (type, CTK_TYPE_SHORTCUT_LABEL) &&
 	  g_str_equal (pspec->name, "accelerator"))
 	continue;
 
-      if (g_type_is_a (type, GTK_TYPE_FONT_CHOOSER) &&
+      if (g_type_is_a (type, CTK_TYPE_FONT_CHOOSER) &&
 	  g_str_equal (pspec->name, "font"))
 	continue;
 
-      if (g_type_is_a (type, GTK_TYPE_FONT_BUTTON) &&
+      if (g_type_is_a (type, CTK_TYPE_FONT_BUTTON) &&
 	  g_str_equal (pspec->name, "font-name"))
 	continue;
 
       /* these depend on the min-content- properties in a way that breaks our test */
-      if (g_type_is_a (type, GTK_TYPE_SCROLLED_WINDOW) &&
+      if (g_type_is_a (type, CTK_TYPE_SCROLLED_WINDOW) &&
 	  (g_str_equal (pspec->name, "max-content-width") ||
 	   g_str_equal (pspec->name, "max-content-height")))
 	continue;
@@ -713,7 +713,7 @@ main (int argc, char **argv)
 
   /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
-  if (g_getenv ("GTK_TEST_MESON") == NULL)
+  if (g_getenv ("CTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
 
   otypes = ctk_test_list_all_types (NULL);

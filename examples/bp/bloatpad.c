@@ -12,7 +12,7 @@ typedef struct
 
 typedef GtkApplicationClass BloatPadClass;
 
-G_DEFINE_TYPE (BloatPad, bloat_pad, GTK_TYPE_APPLICATION)
+G_DEFINE_TYPE (BloatPad, bloat_pad, CTK_TYPE_APPLICATION)
 
 static void
 activate_toggle (GSimpleAction *action,
@@ -81,11 +81,11 @@ change_justify_state (GSimpleAction *action,
   str = g_variant_get_string (state, NULL);
 
   if (g_str_equal (str, "left"))
-    ctk_text_view_set_justification (text, GTK_JUSTIFY_LEFT);
+    ctk_text_view_set_justification (text, CTK_JUSTIFY_LEFT);
   else if (g_str_equal (str, "center"))
-    ctk_text_view_set_justification (text, GTK_JUSTIFY_CENTER);
+    ctk_text_view_set_justification (text, CTK_JUSTIFY_CENTER);
   else if (g_str_equal (str, "right"))
-    ctk_text_view_set_justification (text, GTK_JUSTIFY_RIGHT);
+    ctk_text_view_set_justification (text, CTK_JUSTIFY_RIGHT);
   else
     /* ignore this attempted change */
     return;
@@ -104,7 +104,7 @@ window_copy (GSimpleAction *action,
              GVariant      *parameter,
              gpointer       user_data)
 {
-  GtkWindow *window = GTK_WINDOW (user_data);
+  GtkWindow *window = CTK_WINDOW (user_data);
   GtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
 
   ctk_text_buffer_copy_clipboard (ctk_text_view_get_buffer (text),
@@ -116,7 +116,7 @@ window_paste (GSimpleAction *action,
               GVariant      *parameter,
               gpointer       user_data)
 {
-  GtkWindow *window = GTK_WINDOW (user_data);
+  GtkWindow *window = CTK_WINDOW (user_data);
   GtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
   
   ctk_text_buffer_paste_clipboard (ctk_text_view_get_buffer (text),
@@ -131,7 +131,7 @@ activate_clear (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       user_data)
 {
-  GtkWindow *window = GTK_WINDOW (user_data);
+  GtkWindow *window = CTK_WINDOW (user_data);
   GtkTextView *text = g_object_get_data ((GObject*)window, "bloatpad-text");
 
   ctk_text_buffer_set_text (ctk_text_view_get_buffer (text), "", -1);
@@ -142,7 +142,7 @@ activate_clear_all (GSimpleAction *action,
                     GVariant      *parameter,
                     gpointer       user_data)
 {
-  GtkApplication *app = GTK_APPLICATION (user_data);
+  GtkApplication *app = CTK_APPLICATION (user_data);
   GList *iter;
 
   for (iter = ctk_application_get_windows (app); iter; iter = iter->next)
@@ -163,16 +163,16 @@ text_buffer_changed_cb (GtkTextBuffer *buffer,
   if (n > 0)
     {
       if (!app->quit_inhibit)
-        app->quit_inhibit = ctk_application_inhibit (GTK_APPLICATION (app),
-                                                     ctk_application_get_active_window (GTK_APPLICATION (app)),
-                                                     GTK_APPLICATION_INHIBIT_LOGOUT,
+        app->quit_inhibit = ctk_application_inhibit (CTK_APPLICATION (app),
+                                                     ctk_application_get_active_window (CTK_APPLICATION (app)),
+                                                     CTK_APPLICATION_INHIBIT_LOGOUT,
                                                      "bloatpad can't save, so you can't logout; erase your text");
     }
   else
     {
       if (app->quit_inhibit)
         {
-          ctk_application_uninhibit (GTK_APPLICATION (app), app->quit_inhibit);
+          ctk_application_uninhibit (CTK_APPLICATION (app), app->quit_inhibit);
           app->quit_inhibit = 0;
         }
     }
@@ -222,47 +222,47 @@ new_window (GApplication *app,
   GtkToolItem *button;
   GtkWidget *sw, *box, *label;
 
-  window = ctk_application_window_new (GTK_APPLICATION (app));
+  window = ctk_application_window_new (CTK_APPLICATION (app));
   ctk_window_set_default_size ((GtkWindow*)window, 640, 480);
   g_action_map_add_action_entries (G_ACTION_MAP (window), win_entries, G_N_ELEMENTS (win_entries), window);
-  ctk_window_set_title (GTK_WINDOW (window), "Bloatpad");
+  ctk_window_set_title (CTK_WINDOW (window), "Bloatpad");
 
   grid = ctk_grid_new ();
-  ctk_container_add (GTK_CONTAINER (window), grid);
+  ctk_container_add (CTK_CONTAINER (window), grid);
 
   toolbar = ctk_toolbar_new ();
   button = ctk_toggle_tool_button_new ();
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (button), "format-justify-left");
-  ctk_actionable_set_detailed_action_name (GTK_ACTIONABLE (button), "win.justify::left");
-  ctk_container_add (GTK_CONTAINER (toolbar), GTK_WIDGET (button));
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (button), "format-justify-left");
+  ctk_actionable_set_detailed_action_name (CTK_ACTIONABLE (button), "win.justify::left");
+  ctk_container_add (CTK_CONTAINER (toolbar), CTK_WIDGET (button));
 
   button = ctk_toggle_tool_button_new ();
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (button), "format-justify-center");
-  ctk_actionable_set_detailed_action_name (GTK_ACTIONABLE (button), "win.justify::center");
-  ctk_container_add (GTK_CONTAINER (toolbar), GTK_WIDGET (button));
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (button), "format-justify-center");
+  ctk_actionable_set_detailed_action_name (CTK_ACTIONABLE (button), "win.justify::center");
+  ctk_container_add (CTK_CONTAINER (toolbar), CTK_WIDGET (button));
 
   button = ctk_toggle_tool_button_new ();
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (button), "format-justify-right");
-  ctk_actionable_set_detailed_action_name (GTK_ACTIONABLE (button), "win.justify::right");
-  ctk_container_add (GTK_CONTAINER (toolbar), GTK_WIDGET (button));
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (button), "format-justify-right");
+  ctk_actionable_set_detailed_action_name (CTK_ACTIONABLE (button), "win.justify::right");
+  ctk_container_add (CTK_CONTAINER (toolbar), CTK_WIDGET (button));
 
   button = ctk_separator_tool_item_new ();
-  ctk_separator_tool_item_set_draw (GTK_SEPARATOR_TOOL_ITEM (button), FALSE);
-  ctk_tool_item_set_expand (GTK_TOOL_ITEM (button), TRUE);
-  ctk_container_add (GTK_CONTAINER (toolbar), GTK_WIDGET (button));
+  ctk_separator_tool_item_set_draw (CTK_SEPARATOR_TOOL_ITEM (button), FALSE);
+  ctk_tool_item_set_expand (CTK_TOOL_ITEM (button), TRUE);
+  ctk_container_add (CTK_CONTAINER (toolbar), CTK_WIDGET (button));
 
   button = ctk_tool_item_new ();
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  ctk_container_add (GTK_CONTAINER (button), box);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_container_add (CTK_CONTAINER (button), box);
   label = ctk_label_new ("Fullscreen:");
-  ctk_container_add (GTK_CONTAINER (box), label);
+  ctk_container_add (CTK_CONTAINER (box), label);
   sw = ctk_switch_new ();
-  ctk_widget_set_valign (sw, GTK_ALIGN_CENTER);
-  ctk_actionable_set_action_name (GTK_ACTIONABLE (sw), "win.fullscreen");
-  ctk_container_add (GTK_CONTAINER (box), sw);
-  ctk_container_add (GTK_CONTAINER (toolbar), GTK_WIDGET (button));
+  ctk_widget_set_valign (sw, CTK_ALIGN_CENTER);
+  ctk_actionable_set_action_name (CTK_ACTIONABLE (sw), "win.fullscreen");
+  ctk_container_add (CTK_CONTAINER (box), sw);
+  ctk_container_add (CTK_CONTAINER (toolbar), CTK_WIDGET (button));
 
-  ctk_grid_attach (GTK_GRID (grid), toolbar, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), toolbar, 0, 0, 1, 1);
 
   scrolled = ctk_scrolled_window_new (NULL, NULL);
   ctk_widget_set_hexpand (scrolled, TRUE);
@@ -271,9 +271,9 @@ new_window (GApplication *app,
 
   g_object_set_data ((GObject*)window, "bloatpad-text", view);
 
-  ctk_container_add (GTK_CONTAINER (scrolled), view);
+  ctk_container_add (CTK_CONTAINER (scrolled), view);
 
-  ctk_grid_attach (GTK_GRID (grid), scrolled, 0, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), scrolled, 0, 1, 1, 1);
 
   if (file != NULL)
     {
@@ -284,16 +284,16 @@ new_window (GApplication *app,
         {
           GtkTextBuffer *buffer;
 
-          buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+          buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
           ctk_text_buffer_set_text (buffer, contents, length);
           g_free (contents);
         }
     }
-  g_signal_connect (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)), "changed",
+  g_signal_connect (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)), "changed",
                     G_CALLBACK (text_buffer_changed_cb), window);
-  text_buffer_changed_cb (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)), window);
+  text_buffer_changed_cb (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)), window);
 
-  ctk_widget_show_all (GTK_WIDGET (window));
+  ctk_widget_show_all (CTK_WIDGET (window));
 }
 
 static void
@@ -384,9 +384,9 @@ response (GtkDialog *dialog,
   const gchar *str;
   gchar **accels;
 
-  if (response_id == GTK_RESPONSE_CLOSE)
+  if (response_id == CTK_RESPONSE_CLOSE)
     {
-      ctk_widget_destroy (GTK_WIDGET (dialog));
+      ctk_widget_destroy (CTK_WIDGET (dialog));
       return;
     }
 
@@ -415,17 +415,17 @@ edit_accels (GSimpleAction *action,
   gint i;
 
   dialog = ctk_dialog_new ();
-  ctk_window_set_application (GTK_WINDOW (dialog), app);
+  ctk_window_set_application (CTK_WINDOW (dialog), app);
   actions = ctk_application_list_action_descriptions (app);
   combo = ctk_combo_box_text_new ();
-  ctk_container_add (GTK_CONTAINER (ctk_dialog_get_content_area (GTK_DIALOG (dialog))), combo);
+  ctk_container_add (CTK_CONTAINER (ctk_dialog_get_content_area (CTK_DIALOG (dialog))), combo);
   for (i = 0; actions[i]; i++)
-    ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), actions[i], actions[i]);
+    ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (combo), actions[i], actions[i]);
   g_signal_connect (combo, "changed", G_CALLBACK (combo_changed), dialog);
   entry = ctk_entry_new ();
-  ctk_container_add (GTK_CONTAINER (ctk_dialog_get_content_area (GTK_DIALOG (dialog))), entry);
-  ctk_dialog_add_button (GTK_DIALOG (dialog), "Close", GTK_RESPONSE_CLOSE);
-  ctk_dialog_add_button (GTK_DIALOG (dialog), "Set", GTK_RESPONSE_APPLY);
+  ctk_container_add (CTK_CONTAINER (ctk_dialog_get_content_area (CTK_DIALOG (dialog))), entry);
+  ctk_dialog_add_button (CTK_DIALOG (dialog), "Close", CTK_RESPONSE_CLOSE);
+  ctk_dialog_add_button (CTK_DIALOG (dialog), "Set", CTK_RESPONSE_APPLY);
   g_signal_connect (dialog, "response", G_CALLBACK (response), dialog);
   g_object_set_data (G_OBJECT (dialog), "combo", combo);
   g_object_set_data (G_OBJECT (dialog), "entry", entry);
@@ -516,7 +516,7 @@ static void
 bloat_pad_startup (GApplication *application)
 {
   BloatPad *bloatpad = (BloatPad*) application;
-  GtkApplication *app = GTK_APPLICATION (application);
+  GtkApplication *app = CTK_APPLICATION (application);
   GMenu *menu;
   GMenuItem *item;
   GBytes *bytes;
@@ -547,7 +547,7 @@ bloat_pad_startup (GApplication *application)
   for (i = 0; i < G_N_ELEMENTS (accels); i++)
     ctk_application_set_accels_for_action (app, accels[i].action_and_target, accels[i].accelerators);
 
-  menu = ctk_application_get_menu_by_id (GTK_APPLICATION (application), "icon-menu");
+  menu = ctk_application_get_menu_by_id (CTK_APPLICATION (application), "icon-menu");
 
   file = g_file_new_for_uri ("resource:///org/gtk/libgtk/icons/16x16/actions/gtk-select-color.png");
   icon = g_file_icon_new (file);
@@ -605,11 +605,11 @@ bloat_pad_startup (GApplication *application)
   g_object_unref (item);
   g_object_unref (icon);
 
-  ctk_application_set_accels_for_action (GTK_APPLICATION (application), "app.new", new_accels);
+  ctk_application_set_accels_for_action (CTK_APPLICATION (application), "app.new", new_accels);
 
-  dump_accels (GTK_APPLICATION (application));
-  //ctk_application_set_menubar (GTK_APPLICATION (application), G_MENU_MODEL (ctk_builder_get_object (builder, "app-menu")));
-  bloatpad->time = ctk_application_get_menu_by_id (GTK_APPLICATION (application), "time-menu");
+  dump_accels (CTK_APPLICATION (application));
+  //ctk_application_set_menubar (CTK_APPLICATION (application), G_MENU_MODEL (ctk_builder_get_object (builder, "app-menu")));
+  bloatpad->time = ctk_application_get_menu_by_id (CTK_APPLICATION (application), "time-menu");
 }
 
 static void
@@ -673,7 +673,7 @@ main (int argc, char **argv)
 
   bloat_pad = bloat_pad_new ();
 
-  ctk_application_set_accels_for_action (GTK_APPLICATION (bloat_pad),
+  ctk_application_set_accels_for_action (CTK_APPLICATION (bloat_pad),
                                          "win.fullscreen", accels);
 
   status = g_application_run (G_APPLICATION (bloat_pad), argc, argv);

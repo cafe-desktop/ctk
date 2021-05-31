@@ -17,19 +17,19 @@
  * Authors: Cosimo Cecchi <cosimoc@gnome.org>
  */
 
-#ifndef __GTK_ICON_PRIVATE_H__
-#define __GTK_ICON_PRIVATE_H__
+#ifndef __CTK_ICON_PRIVATE_H__
+#define __CTK_ICON_PRIVATE_H__
 
 #include "gtk/gtkwidget.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ICON           (ctk_icon_get_type ())
-#define GTK_ICON(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_ICON, GtkIcon))
-#define GTK_ICON_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_ICON, GtkIconClass))
-#define GTK_IS_ICON(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_ICON))
-#define GTK_IS_ICON_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_ICON))
-#define GTK_ICON_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ICON, GtkIconClass))
+#define CTK_TYPE_ICON           (ctk_icon_get_type ())
+#define CTK_ICON(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_ICON, GtkIcon))
+#define CTK_ICON_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_ICON, GtkIconClass))
+#define CTK_IS_ICON(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_ICON))
+#define CTK_IS_ICON_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_ICON))
+#define CTK_ICON_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON, GtkIconClass))
 
 typedef struct _GtkIcon           GtkIcon;
 typedef struct _GtkIconClass      GtkIconClass;
@@ -53,4 +53,4 @@ void         ctk_icon_set_css_name           (GtkIcon    *icon,
 
 G_END_DECLS
 
-#endif /* __GTK_ICON_PRIVATE_H__ */
+#endif /* __CTK_ICON_PRIVATE_H__ */

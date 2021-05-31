@@ -45,7 +45,7 @@ notify_font_cb (GtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
 static void
 notify_preview_text_cb (GObject *fontchooser, GParamSpec *pspec, gpointer data)
 {
-  g_debug ("Changed preview text %s", ctk_font_chooser_get_preview_text (GTK_FONT_CHOOSER (fontchooser)));
+  g_debug ("Changed preview text %s", ctk_font_chooser_get_preview_text (CTK_FONT_CHOOSER (fontchooser)));
 }
 
 static void
@@ -65,11 +65,11 @@ main (int argc, char *argv[])
 
   fontchooser = ctk_font_chooser_widget_new ();
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_size_request (window, 600, 600);
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  ctk_container_add (GTK_CONTAINER (window), box);
-  ctk_container_add (GTK_CONTAINER (box), fontchooser);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_container_add (CTK_CONTAINER (window), box);
+  ctk_container_add (CTK_CONTAINER (box), fontchooser);
 
   ctk_widget_show_all (window);
 
@@ -82,9 +82,9 @@ main (int argc, char *argv[])
   g_signal_connect (fontchooser, "font-activated",
                     G_CALLBACK (font_activated_cb), NULL);
 
-  ctk_font_chooser_set_font (GTK_FONT_CHOOSER (fontchooser), "Bitstream Vera Sans 45");
-  ctk_font_chooser_set_preview_text (GTK_FONT_CHOOSER (fontchooser), "[user@host ~]$ &>>");
-  ctk_font_chooser_set_show_preview_entry (GTK_FONT_CHOOSER (fontchooser), FALSE);
+  ctk_font_chooser_set_font (CTK_FONT_CHOOSER (fontchooser), "Bitstream Vera Sans 45");
+  ctk_font_chooser_set_preview_text (CTK_FONT_CHOOSER (fontchooser), "[user@host ~]$ &>>");
+  ctk_font_chooser_set_show_preview_entry (CTK_FONT_CHOOSER (fontchooser), FALSE);
 
   ctk_main ();
 

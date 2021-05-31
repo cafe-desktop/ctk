@@ -18,11 +18,11 @@
  *   Mathias Hasselmann
  */
 
-#ifndef __GTK_TOOL_SHELL_H__
-#define __GTK_TOOL_SHELL_H__
+#ifndef __CTK_TOOL_SHELL_H__
+#define __CTK_TOOL_SHELL_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,10 +33,10 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOL_SHELL            (ctk_tool_shell_get_type ())
-#define GTK_TOOL_SHELL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOOL_SHELL, GtkToolShell))
-#define GTK_IS_TOOL_SHELL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOOL_SHELL))
-#define GTK_TOOL_SHELL_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_TOOL_SHELL, GtkToolShellIface))
+#define CTK_TYPE_TOOL_SHELL            (ctk_tool_shell_get_type ())
+#define CTK_TOOL_SHELL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOOL_SHELL, GtkToolShell))
+#define CTK_IS_TOOL_SHELL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOOL_SHELL))
+#define CTK_TOOL_SHELL_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_TOOL_SHELL, GtkToolShellIface))
 
 typedef struct _GtkToolShell           GtkToolShell; /* dummy typedef */
 typedef struct _GtkToolShellIface      GtkToolShellIface;
@@ -96,4 +96,4 @@ GtkSizeGroup *     ctk_tool_shell_get_text_size_group  (GtkToolShell *shell);
 
 G_END_DECLS
 
-#endif /* __GTK_TOOL_SHELL_H__ */
+#endif /* __CTK_TOOL_SHELL_H__ */

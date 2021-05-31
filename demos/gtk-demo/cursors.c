@@ -24,16 +24,16 @@ add_section (GtkWidget   *box,
   GtkWidget *section;
 
   label = ctk_label_new (heading);
-  ctk_label_set_xalign (GTK_LABEL (label), 0.0);
+  ctk_label_set_xalign (CTK_LABEL (label), 0.0);
   ctk_widget_set_margin_top (label, 10);
   ctk_widget_set_margin_bottom (label, 10);
-  ctk_box_pack_start (GTK_BOX (box), label, FALSE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), label, FALSE, TRUE, 0);
   section = ctk_flow_box_new ();
-  ctk_widget_set_halign (section, GTK_ALIGN_START);
-  ctk_flow_box_set_selection_mode (GTK_FLOW_BOX (section), GTK_SELECTION_NONE);
-  ctk_flow_box_set_min_children_per_line (GTK_FLOW_BOX (section), 2);
-  ctk_flow_box_set_max_children_per_line (GTK_FLOW_BOX (section), 20);
-  ctk_box_pack_start (GTK_BOX (box), section, FALSE, TRUE, 0);
+  ctk_widget_set_halign (section, CTK_ALIGN_START);
+  ctk_flow_box_set_selection_mode (CTK_FLOW_BOX (section), CTK_SELECTION_NONE);
+  ctk_flow_box_set_min_children_per_line (CTK_FLOW_BOX (section), 2);
+  ctk_flow_box_set_max_children_per_line (CTK_FLOW_BOX (section), 20);
+  ctk_box_pack_start (CTK_BOX (box), section, FALSE, TRUE, 0);
 
   return section;
 }
@@ -49,7 +49,7 @@ add_button (GtkWidget   *section,
   display = ctk_widget_get_display (section);
   cursor = gdk_cursor_new_from_name (display, css_name);
   if (cursor == NULL)
-    image = ctk_image_new_from_icon_name ("image-missing", GTK_ICON_SIZE_MENU);
+    image = ctk_image_new_from_icon_name ("image-missing", CTK_ICON_SIZE_MENU);
   else
     {
       gchar *path;
@@ -61,12 +61,12 @@ add_button (GtkWidget   *section,
     }
   ctk_widget_set_size_request (image, 32, 32);
   button = ctk_button_new ();
-  ctk_container_add (GTK_CONTAINER (button), image);
+  ctk_container_add (CTK_CONTAINER (button), image);
   ctk_style_context_add_class (ctk_widget_get_style_context (button), "image-button");
   g_signal_connect (button, "clicked", G_CALLBACK (set_cursor), cursor);
 
   ctk_widget_set_tooltip_text (button, css_name);
-  ctk_container_add (GTK_CONTAINER (section), button);
+  ctk_container_add (CTK_CONTAINER (section), button);
 }
 
 GtkWidget *
@@ -80,28 +80,28 @@ do_cursors (GtkWidget *do_widget)
       GtkWidget *box;
       GtkWidget *section;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Cursors");
-      ctk_window_set_default_size (GTK_WINDOW (window), 500, 500);
+      ctk_window_set_title (CTK_WINDOW (window), "Cursors");
+      ctk_window_set_default_size (CTK_WINDOW (window), 500, 500);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed),
                         &window);
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_NEVER,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_container_add (GTK_CONTAINER (window), sw);
-      box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_NEVER,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_container_add (CTK_CONTAINER (window), sw);
+      box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
       g_object_set (box,
                     "margin-start", 20,
                     "margin-end", 20,
                     "margin-bottom", 10,
                     NULL);
-      ctk_container_add (GTK_CONTAINER (sw), box);
+      ctk_container_add (CTK_CONTAINER (sw), box);
 
       section = add_section (box, "General");
       add_button (section, "default");

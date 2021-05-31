@@ -3668,16 +3668,16 @@ msgid "Location"
 msgstr "位置"
 
 #: ../gtk/inspector/visual.c:243 ../gtk/inspector/visual.c:269
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "布景主題由 GTK_THEME 控制"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "布景主題由 CTK_THEME 控制"
 
 #: ../gtk/inspector/visual.c:387
 msgid "Backend does not support window scaling"
 msgstr "後端不支援視窗縮放"
 
 #: ../gtk/inspector/visual.c:426
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "設定值是由 GTK_TEST_TOUCHSCREEN 所設定"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "設定值是由 CTK_TEST_TOUCHSCREEN 所設定"
 
 #. vim: set et sw=2 ts=2:
 #: ../gtk/inspector/visual.ui.h:1

@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_MNEMONIC_HASH_H__
-#define __GTK_MNEMONIC_HASH_H__
+#ifndef __CTK_MNEMONIC_HASH_H__
+#define __CTK_MNEMONIC_HASH_H__
 
 #include <gdk/gdk.h>
 #include <gtk/gtkwidget.h>
@@ -49,4 +49,4 @@ void             _ctk_mnemonic_hash_foreach  (GtkMnemonicHash        *mnemonic_h
 
 G_END_DECLS
 
-#endif /* __GTK_MNEMONIC_HASH_H__ */
+#endif /* __CTK_MNEMONIC_HASH_H__ */

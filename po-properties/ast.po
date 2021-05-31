@@ -400,10 +400,10 @@ msgstr "Ye importante"
 #: ../gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Indica si l'aición considérase importante. Cuando seya TRUE (braero), los "
-"proxies del elementu toolitem amuesen testu nel mou GTK_TOOLBAR_BOTH_HORIZ."
+"proxies del elementu toolitem amuesen testu nel mou CTK_TOOLBAR_BOTH_HORIZ."
 
 #: ../gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -1038,8 +1038,8 @@ msgid "Default Spacing"
 msgstr "Espaciáu predetermináu"
 
 #: ../gtk/gtkbutton.c:450
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Espaciu estra a amestar pa los botones GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Espaciu estra a amestar pa los botones CTK_CAN_DEFAULT"
 
 #: ../gtk/gtkbutton.c:464
 msgid "Default Outside Spacing"
@@ -1047,10 +1047,10 @@ msgstr "Espaciáu esterior prefetermináu"
 
 #: ../gtk/gtkbutton.c:465
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Espaciu estra a amestar pa los botones GTK_CAN_DEFAULT que tán siempres "
+"Espaciu estra a amestar pa los botones CTK_CAN_DEFAULT que tán siempres "
 "dibuxaos fuera del berbesu"
 
 #: ../gtk/gtkbutton.c:470
@@ -6811,11 +6811,11 @@ msgstr "Espaciáu en píxeles ente l'iconu y la etiqueta"
 #: ../gtk/gtktoolitem.c:209
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Indica si l'elementu de la barra de xeres ye consideráu importante. Cuando "
 "ta a TRUE, los botones de la barra de ferramientes amuesen testu en mou "
-"GTK_TOOLBAR_BOTH_HORIZ"
+"CTK_TOOLBAR_BOTH_HORIZ"
 
 #: ../gtk/gtktoolitemgroup.c:1593
 msgid "The human-readable title of this item group"

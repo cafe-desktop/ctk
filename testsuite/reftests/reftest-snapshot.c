@@ -41,7 +41,7 @@ builder_get_toplevel (GtkBuilder *builder)
   list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
     {
-      if (GTK_IS_WINDOW (walk->data) &&
+      if (CTK_IS_WINDOW (walk->data) &&
           ctk_widget_get_parent (walk->data) == NULL)
         {
           window = walk->data;

@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_RENDER_ICON_PRIVATE_H__
-#define __GTK_RENDER_ICON_PRIVATE_H__
+#ifndef __CTK_RENDER_ICON_PRIVATE_H__
+#define __CTK_RENDER_ICON_PRIVATE_H__
 
 #include <glib-object.h>
 #include <cairo.h>
@@ -51,4 +51,4 @@ void    ctk_css_style_render_icon_get_extents   (GtkCssStyle            *style,
 
 G_END_DECLS
 
-#endif /* __GTK_RENDER_ICON_PRIVATE_H__ */
+#endif /* __CTK_RENDER_ICON_PRIVATE_H__ */

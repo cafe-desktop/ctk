@@ -18,10 +18,10 @@
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
 
-#ifndef __GTK_GESTURE_SINGLE_H__
-#define __GTK_GESTURE_SINGLE_H__
+#ifndef __CTK_GESTURE_SINGLE_H__
+#define __CTK_GESTURE_SINGLE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_SINGLE         (ctk_gesture_single_get_type ())
-#define GTK_GESTURE_SINGLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_SINGLE, GtkGestureSingle))
-#define GTK_GESTURE_SINGLE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_SINGLE, GtkGestureSingleClass))
-#define GTK_IS_GESTURE_SINGLE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_SINGLE))
-#define GTK_IS_GESTURE_SINGLE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_GESTURE_SINGLE))
-#define GTK_GESTURE_SINGLE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_GESTURE_SINGLE, GtkGestureSingleClass))
+#define CTK_TYPE_GESTURE_SINGLE         (ctk_gesture_single_get_type ())
+#define CTK_GESTURE_SINGLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_SINGLE, GtkGestureSingle))
+#define CTK_GESTURE_SINGLE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_SINGLE, GtkGestureSingleClass))
+#define CTK_IS_GESTURE_SINGLE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_SINGLE))
+#define CTK_IS_GESTURE_SINGLE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_SINGLE))
+#define CTK_GESTURE_SINGLE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_SINGLE, GtkGestureSingleClass))
 
 typedef struct _GtkGestureSingle GtkGestureSingle;
 typedef struct _GtkGestureSingleClass GtkGestureSingleClass;
@@ -72,4 +72,4 @@ GdkEventSequence * ctk_gesture_single_get_current_sequence
 
 G_END_DECLS
 
-#endif /* __GTK_GESTURE_SINGLE_H__ */
+#endif /* __CTK_GESTURE_SINGLE_H__ */

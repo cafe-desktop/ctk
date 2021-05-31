@@ -26,7 +26,7 @@ destroy (void)
 static void
 floating_tests (void)
 {
-  GtkWidget *widget = g_object_new (GTK_TYPE_LABEL, NULL);
+  GtkWidget *widget = g_object_new (CTK_TYPE_LABEL, NULL);
   g_object_connect (widget, "signal::destroy", destroy, NULL, NULL);
 
   g_assert (g_object_is_floating (widget));

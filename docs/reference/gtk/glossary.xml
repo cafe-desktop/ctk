@@ -140,7 +140,7 @@
 	actually shows the GdkWindows it created when it was
 	<glossterm linkend="realization">realized</glossterm>.  When a
 	widget is mapped, it must turn on its
-	%GTK_MAPPED <link linkend="GtkWidgetFlags">flag</link>.
+	%CTK_MAPPED <link linkend="GtkWidgetFlags">flag</link>.
       </para>
 
       <para>
@@ -224,7 +224,7 @@
 	also attach a <glossterm linkend="style">style</glossterm> to
 	it.  A widget becomes unrealized by destroying its associated
 	GdkWindow.  When a widget is realized, it must turn on its
-	%GTK_REALIZED <link linkend="GtkWidgetFlags">flag</link>.
+	%CTK_REALIZED <link linkend="GtkWidgetFlags">flag</link>.
       </para>
 
       <para>

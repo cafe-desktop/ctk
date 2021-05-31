@@ -22,7 +22,7 @@
 #include "gtkstatusbaraccessible.h"
 
 
-G_DEFINE_TYPE (GtkStatusbarAccessible, ctk_statusbar_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkStatusbarAccessible, ctk_statusbar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
 text_changed (GtkStatusbar *statusbar,
@@ -62,14 +62,14 @@ find_label_child (GtkContainer *container)
   child = NULL;
   for (tmp_list = children; tmp_list != NULL; tmp_list = tmp_list->next)
     {
-      if (GTK_IS_LABEL (tmp_list->data))
+      if (CTK_IS_LABEL (tmp_list->data))
         {
-          child = GTK_WIDGET (tmp_list->data);
+          child = CTK_WIDGET (tmp_list->data);
           break;
         }
-      else if (GTK_IS_CONTAINER (tmp_list->data))
+      else if (CTK_IS_CONTAINER (tmp_list->data))
         {
-          child = find_label_child (GTK_CONTAINER (tmp_list->data));
+          child = find_label_child (CTK_CONTAINER (tmp_list->data));
           if (child)
             break;
         }
@@ -86,7 +86,7 @@ get_label_from_statusbar (GtkStatusbar *statusbar)
 
   box = ctk_statusbar_get_message_area (statusbar);
 
-  return find_label_child (GTK_CONTAINER (box));
+  return find_label_child (CTK_CONTAINER (box));
 }
 
 static const gchar *
@@ -96,7 +96,7 @@ ctk_statusbar_accessible_get_name (AtkObject *obj)
   GtkWidget *widget;
   GtkWidget *label;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
@@ -104,9 +104,9 @@ ctk_statusbar_accessible_get_name (AtkObject *obj)
   if (name != NULL)
     return name;
 
-  label = get_label_from_statusbar (GTK_STATUSBAR (widget));
-  if (GTK_IS_LABEL (label))
-    return ctk_label_get_label (GTK_LABEL (label));
+  label = get_label_from_statusbar (CTK_STATUSBAR (widget));
+  if (CTK_IS_LABEL (label))
+    return ctk_label_get_label (CTK_LABEL (label));
 
   return NULL;
 }

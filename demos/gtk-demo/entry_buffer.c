@@ -19,34 +19,34 @@ do_entry_buffer (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Entry Buffer");
-      ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
+      ctk_window_set_title (CTK_WINDOW (window), "Entry Buffer");
+      ctk_window_set_resizable (CTK_WINDOW (window), FALSE);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox), 5);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox), 5);
 
       label = ctk_label_new (NULL);
-      ctk_label_set_markup (GTK_LABEL (label),
+      ctk_label_set_markup (CTK_LABEL (label),
                             "Entries share a buffer. Typing in one is reflected in the other.");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
       /* Create a buffer */
       buffer = ctk_entry_buffer_new (NULL, 0);
 
       /* Create our first entry */
       entry = ctk_entry_new_with_buffer (buffer);
-      ctk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), entry, FALSE, FALSE, 0);
 
       /* Create the second entry */
       entry = ctk_entry_new_with_buffer (buffer);
-      ctk_entry_set_visibility (GTK_ENTRY (entry), FALSE);
-      ctk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
+      ctk_entry_set_visibility (CTK_ENTRY (entry), FALSE);
+      ctk_box_pack_start (CTK_BOX (vbox), entry, FALSE, FALSE, 0);
 
       g_object_unref (buffer);
     }

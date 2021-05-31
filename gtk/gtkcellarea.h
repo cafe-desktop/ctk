@@ -19,10 +19,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_AREA_H__
-#define __GTK_CELL_AREA_H__
+#ifndef __CTK_CELL_AREA_H__
+#define __CTK_CELL_AREA_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -32,12 +32,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_AREA                (ctk_cell_area_get_type ())
-#define GTK_CELL_AREA(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_AREA, GtkCellArea))
-#define GTK_CELL_AREA_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_AREA, GtkCellAreaClass))
-#define GTK_IS_CELL_AREA(obj)     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_AREA))
-#define GTK_IS_CELL_AREA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CELL_AREA))
-#define GTK_CELL_AREA_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CELL_AREA, GtkCellAreaClass))
+#define CTK_TYPE_CELL_AREA                (ctk_cell_area_get_type ())
+#define CTK_CELL_AREA(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_AREA, GtkCellArea))
+#define CTK_CELL_AREA_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_AREA, GtkCellAreaClass))
+#define CTK_IS_CELL_AREA(obj)     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_AREA))
+#define CTK_IS_CELL_AREA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_AREA))
+#define CTK_CELL_AREA_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_AREA, GtkCellAreaClass))
 
 typedef struct _GtkCellArea              GtkCellArea;
 typedef struct _GtkCellAreaClass         GtkCellAreaClass;
@@ -45,7 +45,7 @@ typedef struct _GtkCellAreaPrivate       GtkCellAreaPrivate;
 typedef struct _GtkCellAreaContext       GtkCellAreaContext;
 
 /**
- * GTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID:
+ * CTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID:
  * @object: the #GObject on which set_cell_property() or get_cell_property()
  *     was called
  * @property_id: the numeric id of the property
@@ -54,7 +54,7 @@ typedef struct _GtkCellAreaContext       GtkCellAreaContext;
  * This macro should be used to emit a standard warning about unexpected
  * properties in set_cell_property() and get_cell_property() implementations.
  */
-#define GTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID(object, property_id, pspec) \
+#define CTK_CELL_AREA_WARN_INVALID_CELL_PROPERTY_ID(object, property_id, pspec) \
   G_OBJECT_WARN_INVALID_PSPEC ((object), "cell property id", (property_id), (pspec))
 
 /**
@@ -124,8 +124,8 @@ struct _GtkCellArea
  * @copy_context: Creates a new #GtkCellAreaContext in the same state as
  *     the passed @context with any cell alignment data and allocations intact.
  * @get_request_mode: This allows an area to tell its layouting widget whether
- *     it prefers to be allocated in %GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
- *     %GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT mode.
+ *     it prefers to be allocated in %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
+ *     %CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT mode.
  * @get_preferred_width: Calculates the minimum and natural width of the
  *     areas cells with the current attributes applied while considering
  *     the particular layouting details of the said #GtkCellArea. While
@@ -143,11 +143,11 @@ struct _GtkCellArea
  * @get_preferred_height: Calculates the minimum and natural height of the
  *     areas cells with the current attributes applied. Essentially this is
  *     the same as #GtkCellAreaClass.get_preferred_width() only for areas
- *     that are being requested as %GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT.
+ *     that are being requested as %CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT.
  * @get_preferred_width_for_height: Calculates the minimum and natural width
  *     for the area if the passed @context would be allocated the given
  *     height. The same as #GtkCellAreaClass.get_preferred_height_for_width()
- *     only for handling requests in the %GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT
+ *     only for handling requests in the %CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT
  *     mode.
  * @set_cell_property: This should be implemented to handle changes in child
  *     cell properties for a given #GtkCellRenderer that were previously
@@ -531,4 +531,4 @@ void                 _ctk_cell_area_set_cell_data_func_with_proxy  (GtkCellArea 
 
 G_END_DECLS
 
-#endif /* __GTK_CELL_AREA_H__ */
+#endif /* __CTK_CELL_AREA_H__ */

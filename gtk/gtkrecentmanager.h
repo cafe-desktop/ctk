@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_RECENT_MANAGER_H__
-#define __GTK_RECENT_MANAGER_H__
+#ifndef __CTK_RECENT_MANAGER_H__
+#define __CTK_RECENT_MANAGER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,14 +30,14 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RECENT_INFO			(ctk_recent_info_get_type ())
+#define CTK_TYPE_RECENT_INFO			(ctk_recent_info_get_type ())
 
-#define GTK_TYPE_RECENT_MANAGER			(ctk_recent_manager_get_type ())
-#define GTK_RECENT_MANAGER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RECENT_MANAGER, GtkRecentManager))
-#define GTK_IS_RECENT_MANAGER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RECENT_MANAGER))
-#define GTK_RECENT_MANAGER_CLASS(klass) 	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RECENT_MANAGER, GtkRecentManagerClass))
-#define GTK_IS_RECENT_MANAGER_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_RECENT_MANAGER))
-#define GTK_RECENT_MANAGER_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_RECENT_MANAGER, GtkRecentManagerClass))
+#define CTK_TYPE_RECENT_MANAGER			(ctk_recent_manager_get_type ())
+#define CTK_RECENT_MANAGER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_MANAGER, GtkRecentManager))
+#define CTK_IS_RECENT_MANAGER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_MANAGER))
+#define CTK_RECENT_MANAGER_CLASS(klass) 	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_MANAGER, GtkRecentManagerClass))
+#define CTK_IS_RECENT_MANAGER_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RECENT_MANAGER))
+#define CTK_RECENT_MANAGER_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_MANAGER, GtkRecentManagerClass))
 
 typedef struct _GtkRecentInfo		GtkRecentInfo;
 typedef struct _GtkRecentData		GtkRecentData;
@@ -120,18 +120,18 @@ struct _GtkRecentManagerClass
 
 /**
  * GtkRecentManagerError:
- * @GTK_RECENT_MANAGER_ERROR_NOT_FOUND: the URI specified does not exists in
+ * @CTK_RECENT_MANAGER_ERROR_NOT_FOUND: the URI specified does not exists in
  *   the recently used resources list.
- * @GTK_RECENT_MANAGER_ERROR_INVALID_URI: the URI specified is not valid.
- * @GTK_RECENT_MANAGER_ERROR_INVALID_ENCODING: the supplied string is not
+ * @CTK_RECENT_MANAGER_ERROR_INVALID_URI: the URI specified is not valid.
+ * @CTK_RECENT_MANAGER_ERROR_INVALID_ENCODING: the supplied string is not
  *   UTF-8 encoded.
- * @GTK_RECENT_MANAGER_ERROR_NOT_REGISTERED: no application has registered
+ * @CTK_RECENT_MANAGER_ERROR_NOT_REGISTERED: no application has registered
  *   the specified item.
- * @GTK_RECENT_MANAGER_ERROR_READ: failure while reading the recently used
+ * @CTK_RECENT_MANAGER_ERROR_READ: failure while reading the recently used
  *   resources file.
- * @GTK_RECENT_MANAGER_ERROR_WRITE: failure while writing the recently used
+ * @CTK_RECENT_MANAGER_ERROR_WRITE: failure while writing the recently used
  *   resources file.
- * @GTK_RECENT_MANAGER_ERROR_UNKNOWN: unspecified error.
+ * @CTK_RECENT_MANAGER_ERROR_UNKNOWN: unspecified error.
  *
  * Error codes for #GtkRecentManager operations
  *
@@ -139,23 +139,23 @@ struct _GtkRecentManagerClass
  */
 typedef enum
 {
-  GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
-  GTK_RECENT_MANAGER_ERROR_INVALID_URI,
-  GTK_RECENT_MANAGER_ERROR_INVALID_ENCODING,
-  GTK_RECENT_MANAGER_ERROR_NOT_REGISTERED,
-  GTK_RECENT_MANAGER_ERROR_READ,
-  GTK_RECENT_MANAGER_ERROR_WRITE,
-  GTK_RECENT_MANAGER_ERROR_UNKNOWN
+  CTK_RECENT_MANAGER_ERROR_NOT_FOUND,
+  CTK_RECENT_MANAGER_ERROR_INVALID_URI,
+  CTK_RECENT_MANAGER_ERROR_INVALID_ENCODING,
+  CTK_RECENT_MANAGER_ERROR_NOT_REGISTERED,
+  CTK_RECENT_MANAGER_ERROR_READ,
+  CTK_RECENT_MANAGER_ERROR_WRITE,
+  CTK_RECENT_MANAGER_ERROR_UNKNOWN
 } GtkRecentManagerError;
 
 /**
- * GTK_RECENT_MANAGER_ERROR:
+ * CTK_RECENT_MANAGER_ERROR:
  *
  * The #GError domain for #GtkRecentManager errors.
  *
  * Since: 2.10
  */
-#define GTK_RECENT_MANAGER_ERROR	(ctk_recent_manager_error_quark ())
+#define CTK_RECENT_MANAGER_ERROR	(ctk_recent_manager_error_quark ())
 GDK_AVAILABLE_IN_ALL
 GQuark 	ctk_recent_manager_error_quark (void);
 
@@ -270,4 +270,4 @@ void _ctk_recent_manager_sync (void);
 
 G_END_DECLS
 
-#endif /* __GTK_RECENT_MANAGER_H__ */
+#endif /* __CTK_RECENT_MANAGER_H__ */

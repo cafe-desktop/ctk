@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TOOLTIP_H__
-#define __GTK_TOOLTIP_H__
+#ifndef __CTK_TOOLTIP_H__
+#define __CTK_TOOLTIP_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,9 +28,9 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOLTIP                 (ctk_tooltip_get_type ())
-#define GTK_TOOLTIP(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOOLTIP, GtkTooltip))
-#define GTK_IS_TOOLTIP(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOOLTIP))
+#define CTK_TYPE_TOOLTIP                 (ctk_tooltip_get_type ())
+#define CTK_TOOLTIP(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOOLTIP, GtkTooltip))
+#define CTK_IS_TOOLTIP(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOOLTIP))
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_tooltip_get_type (void);
@@ -70,4 +70,4 @@ void ctk_tooltip_trigger_tooltip_query   (GdkDisplay         *display);
 
 G_END_DECLS
 
-#endif /* __GTK_TOOLTIP_H__ */
+#endif /* __CTK_TOOLTIP_H__ */

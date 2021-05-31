@@ -35,7 +35,7 @@
  *
  * The default input method can be set programmatically via the 
  * #GtkSettings:gtk-im-module GtkSettings property. Alternatively, you may set 
- * the GTK_IM_MODULE environment variable as documented in
+ * the CTK_IM_MODULE environment variable as documented in
  * [Running GTK+ Applications][gtk-running].
  *
  * The #GtkEntry #GtkEntry:im-module and #GtkTextView #GtkTextView:im-module 
@@ -336,16 +336,16 @@ ctk_im_context_class_init (GtkIMContextClass *klass)
     g_param_spec_enum ("input-purpose",
                          P_("Purpose"),
                          P_("Purpose of the text field"),
-                         GTK_TYPE_INPUT_PURPOSE,
-                         GTK_INPUT_PURPOSE_FREE_FORM,
+                         CTK_TYPE_INPUT_PURPOSE,
+                         CTK_INPUT_PURPOSE_FREE_FORM,
                          G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS|G_PARAM_EXPLICIT_NOTIFY);
 
   properties[PROP_INPUT_HINTS] =
     g_param_spec_flags ("input-hints",
                          P_("hints"),
                          P_("Hints for the text field behaviour"),
-                         GTK_TYPE_INPUT_HINTS,
-                         GTK_INPUT_HINT_NONE,
+                         CTK_TYPE_INPUT_HINTS,
+                         CTK_INPUT_HINT_NONE,
                          G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS|G_PARAM_EXPLICIT_NOTIFY);
 
   g_object_class_install_properties (object_class, LAST_PROPERTY, properties);
@@ -459,9 +459,9 @@ ctk_im_context_set_client_window (GtkIMContext *context,
 {
   GtkIMContextClass *klass;
   
-  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->set_client_window)
     klass->set_client_window (context, window);
 }
@@ -490,9 +490,9 @@ ctk_im_context_get_preedit_string (GtkIMContext   *context,
 {
   GtkIMContextClass *klass;
   
-  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT (context));
   
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   klass->get_preedit_string (context, str, attrs, cursor_pos);
   g_return_if_fail (str == NULL || g_utf8_validate (*str, -1, NULL));
 }
@@ -515,10 +515,10 @@ ctk_im_context_filter_keypress (GtkIMContext *context,
 {
   GtkIMContextClass *klass;
   
-  g_return_val_if_fail (GTK_IS_IM_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CTK_IS_IM_CONTEXT (context), FALSE);
   g_return_val_if_fail (key != NULL, FALSE);
 
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   return klass->filter_keypress (context, key);
 }
 
@@ -536,9 +536,9 @@ ctk_im_context_focus_in (GtkIMContext   *context)
 {
   GtkIMContextClass *klass;
   
-  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT (context));
   
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->focus_in)
     klass->focus_in (context);
 }
@@ -557,9 +557,9 @@ ctk_im_context_focus_out (GtkIMContext   *context)
 {
   GtkIMContextClass *klass;
   
-  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->focus_out)
     klass->focus_out (context);
 }
@@ -577,9 +577,9 @@ ctk_im_context_reset (GtkIMContext   *context)
 {
   GtkIMContextClass *klass;
   
-  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->reset)
     klass->reset (context);
 }
@@ -600,9 +600,9 @@ ctk_im_context_set_cursor_location (GtkIMContext       *context,
 {
   GtkIMContextClass *klass;
   
-  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->set_cursor_location)
     klass->set_cursor_location (context, (GdkRectangle *) area);
 }
@@ -623,9 +623,9 @@ ctk_im_context_set_use_preedit (GtkIMContext *context,
 {
   GtkIMContextClass *klass;
   
-  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT (context));
 
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->set_use_preedit)
     klass->set_use_preedit (context, use_preedit);
 }
@@ -652,7 +652,7 @@ ctk_im_context_set_surrounding (GtkIMContext  *context,
 {
   GtkIMContextClass *klass;
   
-  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT (context));
   g_return_if_fail (text != NULL || len == 0);
 
   if (text == NULL && len == 0)
@@ -662,7 +662,7 @@ ctk_im_context_set_surrounding (GtkIMContext  *context,
 
   g_return_if_fail (cursor_index >= 0 && cursor_index <= len);
 
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->set_surrounding)
     klass->set_surrounding (context, text, len, cursor_index);
 }
@@ -703,9 +703,9 @@ ctk_im_context_get_surrounding (GtkIMContext *context,
   gint local_index;
   gboolean result = FALSE;
   
-  g_return_val_if_fail (GTK_IS_IM_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CTK_IS_IM_CONTEXT (context), FALSE);
 
-  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->get_surrounding)
     result = klass->get_surrounding (context,
 				     text ? text : &local_text,
@@ -750,7 +750,7 @@ ctk_im_context_delete_surrounding (GtkIMContext *context,
 {
   gboolean result;
   
-  g_return_val_if_fail (GTK_IS_IM_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CTK_IS_IM_CONTEXT (context), FALSE);
 
   g_signal_emit (context,
 		 im_context_signals[DELETE_SURROUNDING], 0,
@@ -765,7 +765,7 @@ ctk_im_context_get_property (GObject    *obj,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkIMContextPrivate *priv = ctk_im_context_get_instance_private (GTK_IM_CONTEXT (obj));
+  GtkIMContextPrivate *priv = ctk_im_context_get_instance_private (CTK_IM_CONTEXT (obj));
 
   switch (property_id)
     {
@@ -787,7 +787,7 @@ ctk_im_context_set_property (GObject      *obj,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkIMContextPrivate *priv = ctk_im_context_get_instance_private (GTK_IM_CONTEXT (obj));
+  GtkIMContextPrivate *priv = ctk_im_context_get_instance_private (CTK_IM_CONTEXT (obj));
 
   switch (property_id)
     {

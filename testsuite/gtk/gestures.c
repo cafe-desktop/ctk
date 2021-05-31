@@ -174,7 +174,7 @@ phase_nick (GtkPropagationPhase phase)
  GTypeClass *class;
  GEnumValue *value;
 
- class = g_type_class_ref (GTK_TYPE_PROPAGATION_PHASE);
+ class = g_type_class_ref (CTK_TYPE_PROPAGATION_PHASE);
  value = g_enum_get_value ((GEnumClass*)class, phase);
  g_type_class_unref (class);  
 
@@ -187,7 +187,7 @@ state_nick (GtkEventSequenceState state)
  GTypeClass *class;
  GEnumValue *value;
 
- class = g_type_class_ref (GTK_TYPE_EVENT_SEQUENCE_STATE);
+ class = g_type_class_ref (CTK_TYPE_EVENT_SEQUENCE_STATE);
  value = g_enum_get_value ((GEnumClass*)class, state);
  g_type_class_unref (class);  
 
@@ -219,7 +219,7 @@ typedef struct {
 static void
 press_cb (GtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
 {
-  GtkEventController *c = GTK_EVENT_CONTROLLER (g);
+  GtkEventController *c = CTK_EVENT_CONTROLLER (g);
   GdkEventSequence *sequence;
   GtkPropagationPhase phase;
   GestureData *gd = data;
@@ -237,7 +237,7 @@ press_cb (GtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
   if (sequence)
     g_string_append_printf (gd->str, " (%x)", GPOINTER_TO_UINT (sequence));
 
-  if (gd->state != GTK_EVENT_SEQUENCE_NONE)
+  if (gd->state != CTK_EVENT_SEQUENCE_NONE)
     ctk_gesture_set_state (g, gd->state);
 }
 
@@ -266,7 +266,7 @@ begin_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
     g_string_append (gd->str, ", ");
   g_string_append_printf (gd->str, "%s began", name);
 
-  if (gd->state != GTK_EVENT_SEQUENCE_NONE)
+  if (gd->state != CTK_EVENT_SEQUENCE_NONE)
     ctk_gesture_set_state (g, gd->state);
 }
 
@@ -324,9 +324,9 @@ add_gesture (GtkWidget *w, const gchar *name, GtkPropagationPhase phase, GString
   data->state = state;
 
   g = ctk_gesture_multi_press_new (w);
-  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (g), FALSE);
-  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (g), 1);
-  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (g), phase);
+  ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (g), FALSE);
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (g), 1);
+  ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (g), phase);
 
   g_object_set_data (G_OBJECT (g), "name", (gpointer)name);
 
@@ -349,7 +349,7 @@ add_mt_gesture (GtkWidget *w, const gchar *name, GtkPropagationPhase phase, GStr
   data->state = state;
 
   g = ctk_gesture_rotate_new (w);
-  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (g), phase);
+  ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (g), phase);
 
   g_object_set_data (G_OBJECT (g), "name", (gpointer)name);
 
@@ -378,31 +378,31 @@ test_phases (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -427,31 +427,31 @@ test_mixed (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   add_legacy (A, str, GDK_EVENT_PROPAGATE);
   add_legacy (B, str, GDK_EVENT_PROPAGATE);
@@ -483,29 +483,29 @@ test_early_exit (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   add_legacy (A, str, GDK_EVENT_PROPAGATE);
   add_legacy (B, str, GDK_EVENT_STOP);
@@ -534,29 +534,29 @@ test_claim_capture (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -578,29 +578,29 @@ test_claim_target (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -623,29 +623,29 @@ test_claim_bubble (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_gesture (C, "c3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -675,29 +675,29 @@ test_early_claim_capture (void)
   GtkGesture *g;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  g = add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  g = add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -710,7 +710,7 @@ test_early_claim_capture (void)
   /* Reset the string */
   g_string_erase (str, 0, str->len);
 
-  ctk_gesture_set_state (g, GTK_EVENT_SEQUENCE_DENIED);
+  ctk_gesture_set_state (g, CTK_EVENT_SEQUENCE_DENIED);
 
   g_assert_cmpstr (str->str, ==,
                    "capture c1, "
@@ -730,29 +730,29 @@ test_late_claim_capture (void)
   GtkGesture *g;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  g = add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  g = add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -767,7 +767,7 @@ test_late_claim_capture (void)
   /* Reset the string */
   g_string_erase (str, 0, str->len);
 
-  ctk_gesture_set_state (g, GTK_EVENT_SEQUENCE_CLAIMED);
+  ctk_gesture_set_state (g, CTK_EVENT_SEQUENCE_CLAIMED);
 
   g_assert_cmpstr (str->str, ==,
                    "c2 cancelled, "
@@ -787,31 +787,31 @@ test_group (void)
   GString *str;
   GtkGesture *g1, *g2;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  g1 = add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
-  g2 = add_gesture (C, "c3", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  g1 = add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_NONE);
+  g2 = add_gesture (C, "c3", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_CLAIMED);
   ctk_gesture_group (g1, g2);
-  add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c4", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c4", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -836,31 +836,31 @@ test_gestures_outside_grab (void)
   GtkWidget *A, *B, *C, *D;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
-  D = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  D = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_show (D);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_gesture (B, "b2", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a2", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (B, "b2", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a2", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -894,28 +894,28 @@ test_gestures_inside_grab (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_gesture (B, "b2", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (A, "a2", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (C, "c2", CTK_PHASE_TARGET, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (B, "b2", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (A, "a2", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -952,24 +952,24 @@ test_multitouch_on_single (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
-  add_gesture (B, "b1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_CLAIMED);
+  add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_NONE);
+  add_gesture (B, "b1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_CLAIMED);
 
   /* First touch down */
   point_update (&touch_state[0], C, 10, 10);
@@ -1000,23 +1000,23 @@ test_multitouch_activation (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  add_mt_gesture (C, "c1", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_CLAIMED);
+  add_mt_gesture (C, "c1", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_CLAIMED);
 
   /* First touch down */
   point_update (&touch_state[0], C, 10, 10);
@@ -1074,24 +1074,24 @@ test_multitouch_interaction (void)
   GtkGesture *g;
   GString *str;
 
-  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  A = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (A, "A");
-  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  B = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_set_name (B, "B");
   C = ctk_event_box_new ();
   ctk_widget_set_hexpand (C, TRUE);
   ctk_widget_set_vexpand (C, TRUE);
   ctk_widget_set_name (C, "C");
 
-  ctk_container_add (GTK_CONTAINER (A), B);
-  ctk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (CTK_CONTAINER (A), B);
+  ctk_container_add (CTK_CONTAINER (B), C);
 
   ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
-  g = add_gesture (A, "a1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  add_mt_gesture (C, "c1", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_CLAIMED);
+  g = add_gesture (A, "a1", CTK_PHASE_CAPTURE, str, CTK_EVENT_SEQUENCE_CLAIMED);
+  add_mt_gesture (C, "c1", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_CLAIMED);
 
   /* First touch down, a1 claims the sequence */
   point_update (&touch_state[0], C, 10, 10);
@@ -1107,7 +1107,7 @@ test_multitouch_interaction (void)
   point_press (&touch_state[1], C, 1);
 
   /* Denying sequences in touch-excess situation is a responsibility of the caller */
-  ctk_gesture_set_state (g, GTK_EVENT_SEQUENCE_DENIED);
+  ctk_gesture_set_state (g, CTK_EVENT_SEQUENCE_DENIED);
 
   g_assert_cmpstr (str->str, ==,
                    "a1 state denied (2), "

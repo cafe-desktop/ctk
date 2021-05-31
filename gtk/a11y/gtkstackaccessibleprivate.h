@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_STACK_ACCESSIBLE_PRIVATE_H__
-#define __GTK_STACK_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_STACK_ACCESSIBLE_PRIVATE_H__
+#define __CTK_STACK_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtkcontaineraccessible.h>
 
@@ -29,4 +29,4 @@ void ctk_stack_accessible_update_visible_child (GtkStack  *stack,
 
 G_END_DECLS
 
-#endif /* __GTK_STACK_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_STACK_ACCESSIBLE_PRIVATE_H__ */

@@ -1609,7 +1609,7 @@ msgstr "אומנות על ידי"
 # *
 # * It is also possible to show a #GtkAboutDialog like any other #GtkDialog,
 # * e.g. using ctk_dialog_run(). In this case, you might need to know that
-# * the 'Close' button returns the #GTK_RESPONSE_CANCEL response id.
+# * the 'Close' button returns the #CTK_RESPONSE_CANCEL response id.
 #
 # Translators: this is the license preamble; the string at the end
 # * contains the name of the license as link text.
@@ -4439,16 +4439,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "ניתן לאפשר סטטיסטיקה עם GOBJECT_DEBUG=instance-count"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "ערכת נושא קשיחה בקוד על ידי GTK_THEME"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "ערכת נושא קשיחה בקוד על ידי CTK_THEME"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "הממשק אינו תומך בקנה מידה לחלון"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "ניתן להגדיר זאת על ידי GTK_TEST_TOUCHSCREEN"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "ניתן להגדיר זאת על ידי CTK_TEST_TOUCHSCREEN"
 
 #: gtk/inspector/visual.c:817
 msgid ""
@@ -8806,14 +8806,14 @@ msgstr "הדפסה למדפסת בדיקה"
 #~ msgid "XDG_DATA_DIRS"
 #~ msgstr "XDG_DATA_DIRS"
 
-#~ msgid "GTK_PATH"
-#~ msgstr "GTK_PATH"
+#~ msgid "CTK_PATH"
+#~ msgstr "CTK_PATH"
 
-#~ msgid "GTK_EXE_PREFIX"
-#~ msgstr "GTK_EXE_PREFIX"
+#~ msgid "CTK_EXE_PREFIX"
+#~ msgstr "CTK_EXE_PREFIX"
 
-#~ msgid "GTK_DATA_PREFIX"
-#~ msgstr "GTK_DATA_PREFIX"
+#~ msgid "CTK_DATA_PREFIX"
+#~ msgstr "CTK_DATA_PREFIX"
 
 #~ msgid "Unmaximize"
 #~ msgstr "ביטול המזעור"

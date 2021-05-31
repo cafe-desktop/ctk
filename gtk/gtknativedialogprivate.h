@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_NATIVE_DIALOG_PRIVATE_H__
-#define __GTK_NATIVE_DIALOG_PRIVATE_H__
+#ifndef __CTK_NATIVE_DIALOG_PRIVATE_H__
+#define __CTK_NATIVE_DIALOG_PRIVATE_H__
 
 #include <gtk/gtknativedialog.h>
 
@@ -28,4 +28,4 @@ void _ctk_native_dialog_emit_response (GtkNativeDialog *self,
 
 G_END_DECLS
 
-#endif /* __GTK_NATIVE_DIALOG_PRIVATE_H__ */
+#endif /* __CTK_NATIVE_DIALOG_PRIVATE_H__ */

@@ -94,7 +94,7 @@
  *
  * GMenuModel *menubar = G_MENU_MODEL (ctk_builder_get_object (builder,
  *                                                             "menubar"));
- * ctk_application_set_menubar (GTK_APPLICATION (app), menubar);
+ * ctk_application_set_menubar (CTK_APPLICATION (app), menubar);
  * g_object_unref (builder);
  *
  * // ...
@@ -215,7 +215,7 @@ ctk_application_window_actions_new (GtkApplicationWindow *window)
   GtkApplicationWindowActions *actions;
 
   actions = g_object_new (ctk_application_window_actions_get_type (), NULL);
-  actions->window = GTK_WINDOW (window);
+  actions->window = CTK_WINDOW (window);
 
   return G_SIMPLE_ACTION_GROUP (actions);
 }
@@ -253,7 +253,7 @@ ctk_application_window_update_menubar (GtkApplicationWindow *window)
       ctk_widget_unparent (window->priv->menubar);
       window->priv->menubar = NULL;
 
-      ctk_widget_queue_resize (GTK_WIDGET (window));
+      ctk_widget_queue_resize (CTK_WIDGET (window));
     }
 
   if (!have_menubar && should_have_menubar)
@@ -265,11 +265,11 @@ ctk_application_window_update_menubar (GtkApplicationWindow *window)
       g_menu_append_section (combined, NULL, G_MENU_MODEL (window->priv->menubar_section));
 
       window->priv->menubar = ctk_menu_bar_new_from_model (G_MENU_MODEL (combined));
-      ctk_widget_set_parent (window->priv->menubar, GTK_WIDGET (window));
+      ctk_widget_set_parent (window->priv->menubar, CTK_WIDGET (window));
       ctk_widget_show_all (window->priv->menubar);
       g_object_unref (combined);
 
-      ctk_widget_queue_resize (GTK_WIDGET (window));
+      ctk_widget_queue_resize (CTK_WIDGET (window));
     }
 }
 
@@ -308,7 +308,7 @@ ctk_application_window_update_shell_shows_app_menu (GtkApplicationWindow *window
 
   g_object_get (settings, "gtk-shell-shows-app-menu", &shown_by_shell, NULL);
 
-  shown_by_titlebar = _ctk_window_titlebar_shows_app_menu (GTK_WINDOW (window));
+  shown_by_titlebar = _ctk_window_titlebar_shows_app_menu (CTK_WINDOW (window));
 
   if (shown_by_shell || shown_by_titlebar)
     {
@@ -323,8 +323,8 @@ ctk_application_window_update_shell_shows_app_menu (GtkApplicationWindow *window
         {
           GMenuModel *app_menu = NULL;
 
-          if (ctk_window_get_application (GTK_WINDOW (window)) != NULL)
-            app_menu = ctk_application_get_app_menu (ctk_window_get_application (GTK_WINDOW (window)));
+          if (ctk_window_get_application (CTK_WINDOW (window)) != NULL)
+            app_menu = ctk_application_get_app_menu (ctk_window_get_application (CTK_WINDOW (window)));
 
           if (app_menu != NULL)
             {
@@ -373,8 +373,8 @@ ctk_application_window_update_shell_shows_menubar (GtkApplicationWindow *window,
         {
           GMenuModel *menubar = NULL;
 
-          if (ctk_window_get_application (GTK_WINDOW (window)) != NULL)
-            menubar = ctk_application_get_menubar (ctk_window_get_application (GTK_WINDOW (window)));
+          if (ctk_window_get_application (CTK_WINDOW (window)) != NULL)
+            menubar = ctk_application_get_menubar (ctk_window_get_application (CTK_WINDOW (window)));
 
           if (menubar != NULL)
             g_menu_append_section (window->priv->menubar_section, NULL, menubar);
@@ -389,7 +389,7 @@ ctk_application_window_shell_shows_app_menu_changed (GObject    *object,
 {
   GtkApplicationWindow *window = user_data;
 
-  ctk_application_window_update_shell_shows_app_menu (window, GTK_SETTINGS (object));
+  ctk_application_window_update_shell_shows_app_menu (window, CTK_SETTINGS (object));
   ctk_application_window_update_menubar (window);
 }
 
@@ -400,14 +400,14 @@ ctk_application_window_shell_shows_menubar_changed (GObject    *object,
 {
   GtkApplicationWindow *window = user_data;
 
-  ctk_application_window_update_shell_shows_menubar (window, GTK_SETTINGS (object));
+  ctk_application_window_update_shell_shows_menubar (window, CTK_SETTINGS (object));
   ctk_application_window_update_menubar (window);
 }
 
 static gchar **
 ctk_application_window_list_actions (GActionGroup *group)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (group);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
 
   /* may be NULL after dispose has run */
   if (!window->priv->actions)
@@ -425,7 +425,7 @@ ctk_application_window_query_action (GActionGroup        *group,
                                      GVariant           **state_hint,
                                      GVariant           **state)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (group);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
 
   if (!window->priv->actions)
     return FALSE;
@@ -439,7 +439,7 @@ ctk_application_window_activate_action (GActionGroup *group,
                                         const gchar  *action_name,
                                         GVariant     *parameter)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (group);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
 
   if (!window->priv->actions)
     return;
@@ -452,7 +452,7 @@ ctk_application_window_change_action_state (GActionGroup *group,
                                             const gchar  *action_name,
                                             GVariant     *state)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (group);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (group);
 
   if (!window->priv->actions)
     return;
@@ -464,7 +464,7 @@ static GAction *
 ctk_application_window_lookup_action (GActionMap  *action_map,
                                       const gchar *action_name)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (action_map);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
 
   if (!window->priv->actions)
     return NULL;
@@ -476,7 +476,7 @@ static void
 ctk_application_window_add_action (GActionMap *action_map,
                                    GAction    *action)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (action_map);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
 
   if (!window->priv->actions)
     return;
@@ -488,7 +488,7 @@ static void
 ctk_application_window_remove_action (GActionMap  *action_map,
                                       const gchar *action_name)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (action_map);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (action_map);
 
   if (!window->priv->actions)
     return;
@@ -513,7 +513,7 @@ ctk_application_window_map_iface_init (GActionMapInterface *iface)
   iface->remove_action = ctk_application_window_remove_action;
 }
 
-G_DEFINE_TYPE_WITH_CODE (GtkApplicationWindow, ctk_application_window, GTK_TYPE_WINDOW,
+G_DEFINE_TYPE_WITH_CODE (GtkApplicationWindow, ctk_application_window, CTK_TYPE_WINDOW,
                          G_ADD_PRIVATE (GtkApplicationWindow)
                          G_IMPLEMENT_INTERFACE (G_TYPE_ACTION_GROUP, ctk_application_window_group_iface_init)
                          G_IMPLEMENT_INTERFACE (G_TYPE_ACTION_MAP, ctk_application_window_map_iface_init))
@@ -530,9 +530,9 @@ ctk_application_window_real_get_preferred_height (GtkWidget *widget,
                                                   gint      *minimum_height,
                                                   gint      *natural_height)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (widget);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
-  GTK_WIDGET_CLASS (ctk_application_window_parent_class)
+  CTK_WIDGET_CLASS (ctk_application_window_parent_class)
     ->get_preferred_height (widget, minimum_height, natural_height);
 
   if (window->priv->menubar != NULL)
@@ -551,9 +551,9 @@ ctk_application_window_real_get_preferred_height_for_width (GtkWidget *widget,
                                                             gint      *minimum_height,
                                                             gint      *natural_height)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (widget);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
-  GTK_WIDGET_CLASS (ctk_application_window_parent_class)
+  CTK_WIDGET_CLASS (ctk_application_window_parent_class)
     ->get_preferred_height_for_width (widget, width, minimum_height, natural_height);
 
   if (window->priv->menubar != NULL)
@@ -571,9 +571,9 @@ ctk_application_window_real_get_preferred_width (GtkWidget *widget,
                                                  gint      *minimum_width,
                                                  gint      *natural_width)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (widget);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
-  GTK_WIDGET_CLASS (ctk_application_window_parent_class)
+  CTK_WIDGET_CLASS (ctk_application_window_parent_class)
     ->get_preferred_width (widget, minimum_width, natural_width);
 
   if (window->priv->menubar != NULL)
@@ -584,8 +584,8 @@ ctk_application_window_real_get_preferred_width (GtkWidget *widget,
 
       ctk_widget_get_preferred_width (window->priv->menubar, &menubar_min_width, &menubar_nat_width);
 
-      border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
-      _ctk_window_get_shadow_width (GTK_WINDOW (widget), &border);
+      border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
+      _ctk_window_get_shadow_width (CTK_WINDOW (widget), &border);
 
       menubar_min_width += 2 * border_width + border.left + border.right;
       menubar_nat_width += 2 * border_width + border.left + border.right;
@@ -601,7 +601,7 @@ ctk_application_window_real_get_preferred_width_for_height (GtkWidget *widget,
                                                             gint      *minimum_width,
                                                             gint      *natural_width)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (widget);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
   gint menubar_height;
 
   if (window->priv->menubar != NULL)
@@ -609,7 +609,7 @@ ctk_application_window_real_get_preferred_width_for_height (GtkWidget *widget,
   else
     menubar_height = 0;
 
-  GTK_WIDGET_CLASS (ctk_application_window_parent_class)
+  CTK_WIDGET_CLASS (ctk_application_window_parent_class)
     ->get_preferred_width_for_height (widget, height - menubar_height, minimum_width, natural_width);
 
   if (window->priv->menubar != NULL)
@@ -620,8 +620,8 @@ ctk_application_window_real_get_preferred_width_for_height (GtkWidget *widget,
 
       ctk_widget_get_preferred_width_for_height (window->priv->menubar, menubar_height, &menubar_min_width, &menubar_nat_width);
 
-      border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
-      _ctk_window_get_shadow_width (GTK_WINDOW (widget), &border);
+      border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
+      _ctk_window_get_shadow_width (CTK_WINDOW (widget), &border);
 
       menubar_min_width += 2 * border_width + border.left + border.right;
       menubar_nat_width += 2 * border_width + border.left + border.right;
@@ -635,7 +635,7 @@ static void
 ctk_application_window_real_size_allocate (GtkWidget     *widget,
                                            GtkAllocation *allocation)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (widget);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   if (window->priv->menubar != NULL)
     {
@@ -644,7 +644,7 @@ ctk_application_window_real_size_allocate (GtkWidget     *widget,
       gint menubar_height;
       GtkWidget *child;
 
-      _ctk_window_set_allocation (GTK_WINDOW (widget), allocation, &child_allocation);
+      _ctk_window_set_allocation (CTK_WINDOW (widget), allocation, &child_allocation);
       menubar_allocation = child_allocation;
 
       ctk_widget_get_preferred_height_for_width (window->priv->menubar,
@@ -656,19 +656,19 @@ ctk_application_window_real_size_allocate (GtkWidget     *widget,
 
       child_allocation.y += menubar_height;
       child_allocation.height -= menubar_height;
-      child = ctk_bin_get_child (GTK_BIN (window));
+      child = ctk_bin_get_child (CTK_BIN (window));
       if (child != NULL && ctk_widget_get_visible (child))
         ctk_widget_size_allocate (child, &child_allocation);
     }
   else
-    GTK_WIDGET_CLASS (ctk_application_window_parent_class)
+    CTK_WIDGET_CLASS (ctk_application_window_parent_class)
       ->size_allocate (widget, allocation);
 }
 
 static void
 ctk_application_window_real_realize (GtkWidget *widget)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (widget);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
   GtkSettings *settings;
 
   settings = ctk_widget_get_settings (widget);
@@ -678,7 +678,7 @@ ctk_application_window_real_realize (GtkWidget *widget)
   g_signal_connect (settings, "notify::gtk-shell-shows-menubar",
                     G_CALLBACK (ctk_application_window_shell_shows_menubar_changed), window);
 
-  GTK_WIDGET_CLASS (ctk_application_window_parent_class)->realize (widget);
+  CTK_WIDGET_CLASS (ctk_application_window_parent_class)->realize (widget);
 
   ctk_application_window_update_shell_shows_app_menu (window, settings);
   ctk_application_window_update_shell_shows_menubar (window, settings);
@@ -695,7 +695,7 @@ ctk_application_window_real_unrealize (GtkWidget *widget)
   g_signal_handlers_disconnect_by_func (settings, ctk_application_window_shell_shows_app_menu_changed, widget);
   g_signal_handlers_disconnect_by_func (settings, ctk_application_window_shell_shows_menubar_changed, widget);
 
-  GTK_WIDGET_CLASS (ctk_application_window_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_application_window_parent_class)->unrealize (widget);
 }
 
 GActionGroup *
@@ -707,25 +707,25 @@ ctk_application_window_get_action_group (GtkApplicationWindow *window)
 static void
 ctk_application_window_real_map (GtkWidget *widget)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (widget);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   /* XXX could eliminate this by tweaking ctk_window_map */
   if (window->priv->menubar)
     ctk_widget_map (window->priv->menubar);
 
-  GTK_WIDGET_CLASS (ctk_application_window_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (ctk_application_window_parent_class)->map (widget);
 }
 
 static void
 ctk_application_window_real_unmap (GtkWidget *widget)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (widget);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (widget);
 
   /* XXX could eliminate this by tweaking ctk_window_unmap */
   if (window->priv->menubar)
     ctk_widget_unmap (window->priv->menubar);
 
-  GTK_WIDGET_CLASS (ctk_application_window_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_application_window_parent_class)->unmap (widget);
 }
 
 static void
@@ -734,12 +734,12 @@ ctk_application_window_real_forall_internal (GtkContainer *container,
                                              GtkCallback   callback,
                                              gpointer      user_data)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (container);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (container);
 
   if (window->priv->menubar)
     callback (window->priv->menubar, user_data);
 
-  GTK_CONTAINER_CLASS (ctk_application_window_parent_class)
+  CTK_CONTAINER_CLASS (ctk_application_window_parent_class)
     ->forall (container, include_internal, callback, user_data);
 }
 
@@ -749,7 +749,7 @@ ctk_application_window_get_property (GObject    *object,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (object);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
 
   switch (prop_id)
     {
@@ -768,7 +768,7 @@ ctk_application_window_set_property (GObject      *object,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (object);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
 
   switch (prop_id)
     {
@@ -784,7 +784,7 @@ ctk_application_window_set_property (GObject      *object,
 static void
 ctk_application_window_dispose (GObject *object)
 {
-  GtkApplicationWindow *window = GTK_APPLICATION_WINDOW (object);
+  GtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
 
   if (window->priv->menubar)
     {
@@ -797,7 +797,7 @@ ctk_application_window_dispose (GObject *object)
 
   if (window->priv->help_overlay)
     {
-      ctk_widget_destroy (GTK_WIDGET (window->priv->help_overlay));
+      ctk_widget_destroy (CTK_WIDGET (window->priv->help_overlay));
       g_clear_object (&window->priv->help_overlay);
     }
 
@@ -822,7 +822,7 @@ ctk_application_window_init (GtkApplicationWindow *window)
   window->priv->app_menu_section = g_menu_new ();
   window->priv->menubar_section = g_menu_new ();
 
-  ctk_widget_insert_action_group (GTK_WIDGET (window), "win", G_ACTION_GROUP (window->priv->actions));
+  ctk_widget_insert_action_group (CTK_WIDGET (window), "win", G_ACTION_GROUP (window->priv->actions));
 
   /* window->priv->actions is the one and only ref on the group, so when
    * we dispose, the action group will die, disconnecting all signals.
@@ -840,8 +840,8 @@ ctk_application_window_init (GtkApplicationWindow *window)
 static void
 ctk_application_window_class_init (GtkApplicationWindowClass *class)
 {
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
   container_class->forall = ctk_application_window_real_forall_internal;
@@ -891,9 +891,9 @@ ctk_application_window_class_init (GtkApplicationWindowClass *class)
 GtkWidget *
 ctk_application_window_new (GtkApplication *application)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION (application), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION (application), NULL);
 
-  return g_object_new (GTK_TYPE_APPLICATION_WINDOW,
+  return g_object_new (CTK_TYPE_APPLICATION_WINDOW,
                        "application", application,
                        NULL);
 }
@@ -929,7 +929,7 @@ void
 ctk_application_window_set_show_menubar (GtkApplicationWindow *window,
                                          gboolean              show_menubar)
 {
-  g_return_if_fail (GTK_IS_APPLICATION_WINDOW (window));
+  g_return_if_fail (CTK_IS_APPLICATION_WINDOW (window));
 
   show_menubar = !!show_menubar;
 
@@ -958,7 +958,7 @@ ctk_application_window_set_show_menubar (GtkApplicationWindow *window,
 guint
 ctk_application_window_get_id (GtkApplicationWindow *window)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION_WINDOW (window), 0);
+  g_return_val_if_fail (CTK_IS_APPLICATION_WINDOW (window), 0);
 
   return window->priv->id;
 }
@@ -967,7 +967,7 @@ void
 ctk_application_window_set_id (GtkApplicationWindow *window,
                                guint                 id)
 {
-  g_return_if_fail (GTK_IS_APPLICATION_WINDOW (window));
+  g_return_if_fail (CTK_IS_APPLICATION_WINDOW (window));
   window->priv->id = id;
 }
 
@@ -979,7 +979,7 @@ show_help_overlay (GSimpleAction *action,
   GtkApplicationWindow *window = user_data;
 
   if (window->priv->help_overlay)
-    ctk_widget_show (GTK_WIDGET (window->priv->help_overlay));
+    ctk_widget_show (CTK_WIDGET (window->priv->help_overlay));
 }
 
 /**
@@ -999,19 +999,19 @@ void
 ctk_application_window_set_help_overlay (GtkApplicationWindow *window,
                                          GtkShortcutsWindow   *help_overlay)
 {
-  g_return_if_fail (GTK_IS_APPLICATION_WINDOW (window));
-  g_return_if_fail (help_overlay == NULL || GTK_IS_SHORTCUTS_WINDOW (help_overlay));
+  g_return_if_fail (CTK_IS_APPLICATION_WINDOW (window));
+  g_return_if_fail (help_overlay == NULL || CTK_IS_SHORTCUTS_WINDOW (help_overlay));
 
   if (window->priv->help_overlay)
-    ctk_widget_destroy (GTK_WIDGET (window->priv->help_overlay));
+    ctk_widget_destroy (CTK_WIDGET (window->priv->help_overlay));
   g_set_object (&window->priv->help_overlay, help_overlay);
 
   if (!window->priv->help_overlay)
     return;
 
-  ctk_window_set_modal (GTK_WINDOW (help_overlay), TRUE);
-  ctk_window_set_transient_for (GTK_WINDOW (help_overlay), GTK_WINDOW (window));
-  ctk_shortcuts_window_set_window (help_overlay, GTK_WINDOW (window));
+  ctk_window_set_modal (CTK_WINDOW (help_overlay), TRUE);
+  ctk_window_set_transient_for (CTK_WINDOW (help_overlay), CTK_WINDOW (window));
+  ctk_shortcuts_window_set_window (help_overlay, CTK_WINDOW (window));
 
   g_signal_connect (help_overlay, "delete-event",
                     G_CALLBACK (ctk_widget_hide_on_delete), NULL);
@@ -1042,7 +1042,7 @@ ctk_application_window_set_help_overlay (GtkApplicationWindow *window,
 GtkShortcutsWindow *
 ctk_application_window_get_help_overlay (GtkApplicationWindow *window)
 {
-  g_return_val_if_fail (GTK_IS_APPLICATION_WINDOW (window), NULL);
+  g_return_val_if_fail (CTK_IS_APPLICATION_WINDOW (window), NULL);
 
   return window->priv->help_overlay;
 }

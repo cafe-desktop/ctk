@@ -3,16 +3,16 @@ subdir('a11y')
 subdir('inspector')
 
 ctk_cargs = [
-  '-DGTK_COMPILATION',
+  '-DCTK_COMPILATION',
   '-DG_LOG_DOMAIN="Gtk"',
-  '-DGTK_PRINT_BACKEND_ENABLE_UNSUPPORTED',
-  '-DGTK_BINARY_VERSION="@0@"'.format(ctk_binary_version),
-  '-DGTK_HOST="@0@"'.format(host_machine.system()),
-  '-DGTK_DATA_PREFIX="@0@"'.format(ctk_prefix),
-  '-DGTK_LIBDIR="@0@"'.format(ctk_libdir),
-  '-DGTK_LOCALEDIR="@0@"'.format(ctk_localedir),
-  '-DGTK_DATADIR="@0@"'.format(ctk_datadir),
-  '-DGTK_SYSCONFDIR="@0@"'.format(ctk_sysconfdir),
+  '-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED',
+  '-DCTK_BINARY_VERSION="@0@"'.format(ctk_binary_version),
+  '-DCTK_HOST="@0@"'.format(host_machine.system()),
+  '-DCTK_DATA_PREFIX="@0@"'.format(ctk_prefix),
+  '-DCTK_LIBDIR="@0@"'.format(ctk_libdir),
+  '-DCTK_LOCALEDIR="@0@"'.format(ctk_localedir),
+  '-DCTK_DATADIR="@0@"'.format(ctk_datadir),
+  '-DCTK_SYSCONFDIR="@0@"'.format(ctk_sysconfdir),
 ]
 
 # List of sources to build the library from
@@ -793,14 +793,14 @@ typefuncs = custom_target('gtktypefuncs.inc',
 
 
 gtkversion_cdata = configuration_data()
-gtkversion_cdata.set('GTK_MAJOR_VERSION', ctk_major_version)
-gtkversion_cdata.set('GTK_MINOR_VERSION', ctk_minor_version)
-gtkversion_cdata.set('GTK_MICRO_VERSION', ctk_micro_version)
-gtkversion_cdata.set('GTK_BINARY_AGE', ctk_binary_age)
-gtkversion_cdata.set('GTK_INTERFACE_AGE', ctk_interface_age)
-gtkversion_cdata.set('GTK_API_VERSION', ctk_api_version)
-gtkversion_cdata.set('GTK_BINARY_VERSION', ctk_binary_version)
-gtkversion_cdata.set('GTK_VERSION', meson.project_version())
+gtkversion_cdata.set('CTK_MAJOR_VERSION', ctk_major_version)
+gtkversion_cdata.set('CTK_MINOR_VERSION', ctk_minor_version)
+gtkversion_cdata.set('CTK_MICRO_VERSION', ctk_micro_version)
+gtkversion_cdata.set('CTK_BINARY_AGE', ctk_binary_age)
+gtkversion_cdata.set('CTK_INTERFACE_AGE', ctk_interface_age)
+gtkversion_cdata.set('CTK_API_VERSION', ctk_api_version)
+gtkversion_cdata.set('CTK_BINARY_VERSION', ctk_binary_version)
+gtkversion_cdata.set('CTK_VERSION', meson.project_version())
 gtkversion_cdata.set('EXE_MANIFEST_ARCHITECTURE', '*')
 gtkversion_cdata.set('LT_CURRENT_MINUS_AGE', ctk_soversion)
 
@@ -999,7 +999,7 @@ if build_gir
   ]
 
   ctk_gir_includes = [gdk_gir[0], 'Atk-1.0']
-  ctk_gir_extra_args = gir_args + ['-DGTK_COMPILATION',
+  ctk_gir_extra_args = gir_args + ['-DCTK_COMPILATION',
                                    '--c-include=gtk/gtk-a11y.h']
   if x11_enabled
     ctk_gir_includes += ['xlib-2.0']

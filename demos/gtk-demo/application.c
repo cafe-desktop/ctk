@@ -6,7 +6,7 @@
 typedef GtkApplication DemoApplication;
 typedef GtkApplicationClass DemoApplicationClass;
 
-G_DEFINE_TYPE (DemoApplication, demo_application, GTK_TYPE_APPLICATION)
+G_DEFINE_TYPE (DemoApplication, demo_application, CTK_TYPE_APPLICATION)
 
 typedef struct {
   GtkApplicationWindow parent_instance;
@@ -25,7 +25,7 @@ typedef struct {
 } DemoApplicationWindow;
 typedef GtkApplicationWindowClass DemoApplicationWindowClass;
 
-G_DEFINE_TYPE (DemoApplicationWindow, demo_application_window, GTK_TYPE_APPLICATION_WINDOW)
+G_DEFINE_TYPE (DemoApplicationWindow, demo_application_window, CTK_TYPE_APPLICATION_WINDOW)
 
 static void create_window (GApplication *app, const char *contents);
 
@@ -38,9 +38,9 @@ show_action_dialog (GSimpleAction *action)
   name = g_action_get_name (G_ACTION (action));
 
   dialog = ctk_message_dialog_new (NULL,
-                                   GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_INFO,
-                                   GTK_BUTTONS_CLOSE,
+                                   CTK_DIALOG_DESTROY_WITH_PARENT,
+                                   CTK_MESSAGE_INFO,
+                                   CTK_BUTTONS_CLOSE,
                                    "You activated action: \"%s\"",
                                     name);
 
@@ -65,7 +65,7 @@ show_action_infobar (GSimpleAction *action,
 
   text = g_strdup_printf ("You activated radio action: \"%s\".\n"
                           "Current value: %s", name, value);
-  ctk_label_set_text (GTK_LABEL (window->message), text);
+  ctk_label_set_text (CTK_LABEL (window->message), text);
   ctk_widget_show (window->infobar);
   g_free (text);
 }
@@ -100,9 +100,9 @@ open_response_cb (GtkNativeDialog *dialog,
   char *contents;
   GError *error = NULL;
 
-  if (response_id == GTK_RESPONSE_ACCEPT)
+  if (response_id == CTK_RESPONSE_ACCEPT)
     {
-      file = ctk_file_chooser_get_file (GTK_FILE_CHOOSER (native));
+      file = ctk_file_chooser_get_file (CTK_FILE_CHOOSER (native));
 
       if (g_file_load_contents (file, NULL, &contents, NULL, NULL, &error))
         {
@@ -112,9 +112,9 @@ open_response_cb (GtkNativeDialog *dialog,
       else
         {
           message_dialog = ctk_message_dialog_new (NULL,
-                                                   GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                   GTK_MESSAGE_ERROR,
-                                                   GTK_BUTTONS_CLOSE,
+                                                   CTK_DIALOG_DESTROY_WITH_PARENT,
+                                                   CTK_MESSAGE_ERROR,
+                                                   CTK_BUTTONS_CLOSE,
                                                    "Error loading file: \"%s\"",
                                                    error->message);
           g_signal_connect (message_dialog, "response",
@@ -124,7 +124,7 @@ open_response_cb (GtkNativeDialog *dialog,
         }
     }
 
-  ctk_native_dialog_destroy (GTK_NATIVE_DIALOG (native));
+  ctk_native_dialog_destroy (CTK_NATIVE_DIALOG (native));
   g_object_unref (native);
 }
 
@@ -139,7 +139,7 @@ activate_open (GSimpleAction *action,
 
   native = ctk_file_chooser_native_new ("Open File",
                                         NULL,
-                                        GTK_FILE_CHOOSER_ACTION_OPEN,
+                                        CTK_FILE_CHOOSER_ACTION_OPEN,
                                         "_Open",
                                         "_Cancel");
 
@@ -149,7 +149,7 @@ activate_open (GSimpleAction *action,
                     G_CALLBACK (open_response_cb),
                     native);
 
-  ctk_native_dialog_show (GTK_NATIVE_DIALOG (native));
+  ctk_native_dialog_show (CTK_NATIVE_DIALOG (native));
 }
 
 static void
@@ -199,7 +199,7 @@ activate_about (GSimpleAction *action,
     NULL
   };
 
-  ctk_show_about_dialog (GTK_WINDOW (window),
+  ctk_show_about_dialog (CTK_WINDOW (window),
                          "program-name", "GTK+ Code Demos",
                          "version", g_strdup_printf ("%s,\nRunning against GTK+ %d.%d.%d",
                                                      PACKAGE_VERSION,
@@ -207,7 +207,7 @@ activate_about (GSimpleAction *action,
                                                      ctk_get_minor_version (),
                                                      ctk_get_micro_version ()),
                          "copyright", "(C) 1997-2013 The GTK+ Team",
-                         "license-type", GTK_LICENSE_LGPL_2_1,
+                         "license-type", CTK_LICENSE_LGPL_2_1,
                          "website", "http://www.gtk.org",
                          "comments", "Program to demonstrate GTK+ functions.",
                          "authors", authors,
@@ -232,7 +232,7 @@ activate_quit (GSimpleAction *action,
       win = list->data;
       next = list->next;
 
-      ctk_widget_destroy (GTK_WIDGET (win));
+      ctk_widget_destroy (CTK_WIDGET (win));
 
       list = next;
     }
@@ -248,7 +248,7 @@ update_statusbar (GtkTextBuffer         *buffer,
   GtkTextIter iter;
 
   /* clear any previous message, underflow is allowed */
-  ctk_statusbar_pop (GTK_STATUSBAR (window->status), 0);
+  ctk_statusbar_pop (CTK_STATUSBAR (window->status), 0);
 
   count = ctk_text_buffer_get_char_count (buffer);
 
@@ -262,7 +262,7 @@ update_statusbar (GtkTextBuffer         *buffer,
   msg = g_strdup_printf ("Cursor at row %d column %d - %d chars in document",
                          row, col, count);
 
-  ctk_statusbar_push (GTK_STATUSBAR (window->status), 0, msg);
+  ctk_statusbar_push (CTK_STATUSBAR (window->status), 0, msg);
 
   g_free (msg);
 }
@@ -298,7 +298,7 @@ change_titlebar_state (GSimpleAction *action,
 {
   GtkWindow *window = user_data;
 
-  ctk_window_set_hide_titlebar_when_maximized (GTK_WINDOW (window),
+  ctk_window_set_hide_titlebar_when_maximized (CTK_WINDOW (window),
                                                g_variant_get_boolean (state));
 
   g_simple_action_set_state (action, state);
@@ -351,8 +351,8 @@ startup (GApplication *app)
   appmenu = (GMenuModel *)ctk_builder_get_object (builder, "appmenu");
   menubar = (GMenuModel *)ctk_builder_get_object (builder, "menubar");
 
-  ctk_application_set_app_menu (GTK_APPLICATION (app), appmenu);
-  ctk_application_set_menubar (GTK_APPLICATION (app), menubar);
+  ctk_application_set_app_menu (CTK_APPLICATION (app), appmenu);
+  ctk_application_set_menubar (CTK_APPLICATION (app), menubar);
 
   g_object_unref (builder);
 }
@@ -369,7 +369,7 @@ create_window (GApplication *app,
   if (content)
     ctk_text_buffer_set_text (window->buffer, content, -1);
 
-  ctk_window_present (GTK_WINDOW (window));
+  ctk_window_present (CTK_WINDOW (window));
 }
 
 static void
@@ -440,10 +440,10 @@ demo_application_window_init (DemoApplicationWindow *window)
   window->maximized = FALSE;
   window->fullscreen = FALSE;
 
-  ctk_widget_init_template (GTK_WIDGET (window));
+  ctk_widget_init_template (CTK_WIDGET (window));
 
   menu = ctk_menu_new_from_model (window->toolmenu);
-  ctk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (window->menutool), menu);
+  ctk_menu_tool_button_set_menu (CTK_MENU_TOOL_BUTTON (window->menutool), menu);
 
   g_action_map_add_action_entries (G_ACTION_MAP (window),
                                    win_entries, G_N_ELEMENTS (win_entries),
@@ -457,13 +457,13 @@ demo_application_window_constructed (GObject *object)
 
   demo_application_window_load_state (window);
 
-  ctk_window_set_default_size (GTK_WINDOW (window), window->width, window->height);
+  ctk_window_set_default_size (CTK_WINDOW (window), window->width, window->height);
 
   if (window->maximized)
-    ctk_window_maximize (GTK_WINDOW (window));
+    ctk_window_maximize (CTK_WINDOW (window));
 
   if (window->fullscreen)
-    ctk_window_fullscreen (GTK_WINDOW (window));
+    ctk_window_fullscreen (CTK_WINDOW (window));
 
   G_OBJECT_CLASS (demo_application_window_parent_class)->constructed (object);
 }
@@ -474,10 +474,10 @@ demo_application_window_size_allocate (GtkWidget     *widget,
 {
   DemoApplicationWindow *window = (DemoApplicationWindow *)widget;
 
-  GTK_WIDGET_CLASS (demo_application_window_parent_class)->size_allocate (widget, allocation);
+  CTK_WIDGET_CLASS (demo_application_window_parent_class)->size_allocate (widget, allocation);
 
   if (!window->maximized && !window->fullscreen)
-    ctk_window_get_size (GTK_WINDOW (window), &window->width, &window->height);
+    ctk_window_get_size (CTK_WINDOW (window), &window->width, &window->height);
 }
 
 static gboolean
@@ -487,8 +487,8 @@ demo_application_window_state_event (GtkWidget           *widget,
   DemoApplicationWindow *window = (DemoApplicationWindow *)widget;
   gboolean res = GDK_EVENT_PROPAGATE;
 
-  if (GTK_WIDGET_CLASS (demo_application_window_parent_class)->window_state_event)
-    res = GTK_WIDGET_CLASS (demo_application_window_parent_class)->window_state_event (widget, event);
+  if (CTK_WIDGET_CLASS (demo_application_window_parent_class)->window_state_event)
+    res = CTK_WIDGET_CLASS (demo_application_window_parent_class)->window_state_event (widget, event);
 
   window->maximized = (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED) != 0;
   window->fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
@@ -503,14 +503,14 @@ demo_application_window_destroy (GtkWidget *widget)
 
   demo_application_window_store_state (window);
 
-  GTK_WIDGET_CLASS (demo_application_window_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (demo_application_window_parent_class)->destroy (widget);
 }
 
 static void
 demo_application_window_class_init (DemoApplicationWindowClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->constructed = demo_application_window_constructed;
 
@@ -535,7 +535,7 @@ main (int argc, char *argv[])
 {
   GtkApplication *app;
 
-  app = GTK_APPLICATION (g_object_new (demo_application_get_type (),
+  app = CTK_APPLICATION (g_object_new (demo_application_get_type (),
                                        "application-id", "org.gtk.Demo2",
                                        "flags", G_APPLICATION_HANDLES_OPEN,
                                        NULL));

@@ -17,10 +17,10 @@
  *
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
-#ifndef __GTK_GESTURE_ROTATE_H__
-#define __GTK_GESTURE_ROTATE_H__
+#ifndef __CTK_GESTURE_ROTATE_H__
+#define __CTK_GESTURE_ROTATE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_ROTATE         (ctk_gesture_rotate_get_type ())
-#define GTK_GESTURE_ROTATE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_ROTATE, GtkGestureRotate))
-#define GTK_GESTURE_ROTATE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_ROTATE, GtkGestureRotateClass))
-#define GTK_IS_GESTURE_ROTATE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_ROTATE))
-#define GTK_IS_GESTURE_ROTATE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_GESTURE_ROTATE))
-#define GTK_GESTURE_ROTATE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_GESTURE_ROTATE, GtkGestureRotateClass))
+#define CTK_TYPE_GESTURE_ROTATE         (ctk_gesture_rotate_get_type ())
+#define CTK_GESTURE_ROTATE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_ROTATE, GtkGestureRotate))
+#define CTK_GESTURE_ROTATE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_ROTATE, GtkGestureRotateClass))
+#define CTK_IS_GESTURE_ROTATE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_ROTATE))
+#define CTK_IS_GESTURE_ROTATE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_ROTATE))
+#define CTK_GESTURE_ROTATE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_ROTATE, GtkGestureRotateClass))
 
 typedef struct _GtkGestureRotate GtkGestureRotate;
 typedef struct _GtkGestureRotateClass GtkGestureRotateClass;
@@ -50,4 +50,4 @@ gdouble      ctk_gesture_rotate_get_angle_delta (GtkGestureRotate *gesture);
 
 G_END_DECLS
 
-#endif /* __GTK_GESTURE_ROTATE_H__ */
+#endif /* __CTK_GESTURE_ROTATE_H__ */

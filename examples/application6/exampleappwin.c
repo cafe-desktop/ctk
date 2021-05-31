@@ -16,7 +16,7 @@ struct ExampleAppWindowPrivate
   GtkWidget *stack;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, GTK_TYPE_APPLICATION_WINDOW);
+G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
 
 static void
 example_app_window_init (ExampleAppWindow *win)
@@ -24,7 +24,7 @@ example_app_window_init (ExampleAppWindow *win)
   ExampleAppWindowPrivate *priv;
 
   priv = example_app_window_get_instance_private (win);
-  ctk_widget_init_template (GTK_WIDGET (win));
+  ctk_widget_init_template (CTK_WIDGET (win));
   priv->settings = g_settings_new ("org.gtk.exampleapp");
 
   g_settings_bind (priv->settings, "transition",
@@ -51,9 +51,9 @@ example_app_window_class_init (ExampleAppWindowClass *class)
 {
   G_OBJECT_CLASS (class)->dispose = example_app_window_dispose;
 
-  ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
                                                "/org/gtk/exampleapp/window.ui");
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
 }
 
 ExampleAppWindow *
@@ -83,13 +83,13 @@ example_app_window_open (ExampleAppWindow *win,
   ctk_widget_set_hexpand (scrolled, TRUE);
   ctk_widget_set_vexpand (scrolled, TRUE);
   view = ctk_text_view_new ();
-  ctk_text_view_set_editable (GTK_TEXT_VIEW (view), FALSE);
-  ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (view), FALSE);
+  ctk_text_view_set_editable (CTK_TEXT_VIEW (view), FALSE);
+  ctk_text_view_set_cursor_visible (CTK_TEXT_VIEW (view), FALSE);
   ctk_widget_show (view);
-  ctk_container_add (GTK_CONTAINER (scrolled), view);
-  ctk_stack_add_titled (GTK_STACK (priv->stack), scrolled, basename, basename);
+  ctk_container_add (CTK_CONTAINER (scrolled), view);
+  ctk_stack_add_titled (CTK_STACK (priv->stack), scrolled, basename, basename);
 
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
   if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
     {

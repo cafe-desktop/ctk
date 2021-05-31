@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PATH_BAR_H__
-#define __GTK_PATH_BAR_H__
+#ifndef __CTK_PATH_BAR_H__
+#define __CTK_PATH_BAR_H__
 
 #include "gtkcontainer.h"
 #include "gtkfilesystem.h"
@@ -28,12 +28,12 @@ typedef struct _GtkPathBarClass   GtkPathBarClass;
 typedef struct _GtkPathBarPrivate GtkPathBarPrivate;
 
 
-#define GTK_TYPE_PATH_BAR                 (ctk_path_bar_get_type ())
-#define GTK_PATH_BAR(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PATH_BAR, GtkPathBar))
-#define GTK_PATH_BAR_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PATH_BAR, GtkPathBarClass))
-#define GTK_IS_PATH_BAR(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PATH_BAR))
-#define GTK_IS_PATH_BAR_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PATH_BAR))
-#define GTK_PATH_BAR_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PATH_BAR, GtkPathBarClass))
+#define CTK_TYPE_PATH_BAR                 (ctk_path_bar_get_type ())
+#define CTK_PATH_BAR(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PATH_BAR, GtkPathBar))
+#define CTK_PATH_BAR_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PATH_BAR, GtkPathBarClass))
+#define CTK_IS_PATH_BAR(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PATH_BAR))
+#define CTK_IS_PATH_BAR_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PATH_BAR))
+#define CTK_PATH_BAR_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PATH_BAR, GtkPathBarClass))
 
 struct _GtkPathBar
 {
@@ -64,4 +64,4 @@ void     _ctk_path_bar_down            (GtkPathBar *path_bar);
 
 G_END_DECLS
 
-#endif /* __GTK_PATH_BAR_H__ */
+#endif /* __CTK_PATH_BAR_H__ */

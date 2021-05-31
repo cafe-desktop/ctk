@@ -29,16 +29,16 @@ static void
 toggle_orientation (GtkWidget *button,
                     GtkWidget *scalebutton)
 {
-  if (ctk_orientable_get_orientation (GTK_ORIENTABLE (scalebutton)) ==
-      GTK_ORIENTATION_HORIZONTAL)
+  if (ctk_orientable_get_orientation (CTK_ORIENTABLE (scalebutton)) ==
+      CTK_ORIENTATION_HORIZONTAL)
     {
-      ctk_orientable_set_orientation (GTK_ORIENTABLE (scalebutton),
-                                        GTK_ORIENTATION_VERTICAL);
+      ctk_orientable_set_orientation (CTK_ORIENTABLE (scalebutton),
+                                        CTK_ORIENTATION_VERTICAL);
     }
   else
     {
-      ctk_orientable_set_orientation (GTK_ORIENTABLE (scalebutton),
-                                        GTK_ORIENTATION_HORIZONTAL);
+      ctk_orientable_set_orientation (CTK_ORIENTABLE (scalebutton),
+                                        CTK_ORIENTATION_HORIZONTAL);
     }
 }
 
@@ -47,7 +47,7 @@ response_cb (GtkDialog *dialog,
              gint       arg1,
              gpointer   user_data)
 {
-  ctk_widget_destroy (GTK_WIDGET (dialog));
+  ctk_widget_destroy (CTK_WIDGET (dialog));
 }
 
 static gboolean
@@ -59,9 +59,9 @@ show_error (gpointer data)
   g_message ("showing error");
 
   dialog = ctk_message_dialog_new (window,
-                                   GTK_DIALOG_MODAL,
-                                   GTK_MESSAGE_INFO,
-                                   GTK_BUTTONS_CLOSE,
+                                   CTK_DIALOG_MODAL,
+                                   CTK_MESSAGE_INFO,
+                                   CTK_BUTTONS_CLOSE,
                                    "This should have unbroken the grab");
   g_signal_connect (G_OBJECT (dialog),
                     "response",
@@ -84,24 +84,24 @@ main (int    argc,
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (window), 400, 300);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (window), 400, 300);
   button = ctk_volume_button_new ();
   button2 = ctk_volume_button_new ();
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
 
   g_signal_connect (G_OBJECT (button), "value-changed",
                     G_CALLBACK (value_changed),
                     NULL);
 
-  ctk_container_add (GTK_CONTAINER (window), vbox);
-  ctk_container_add (GTK_CONTAINER (vbox), box);
-  ctk_container_add (GTK_CONTAINER (box), button);
-  ctk_container_add (GTK_CONTAINER (box), button2);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
+  ctk_container_add (CTK_CONTAINER (vbox), box);
+  ctk_container_add (CTK_CONTAINER (box), button);
+  ctk_container_add (CTK_CONTAINER (box), button2);
 
   button3 = ctk_button_new_with_label ("Toggle orientation");
-  ctk_container_add (GTK_CONTAINER (box), button3);
+  ctk_container_add (CTK_CONTAINER (box), button3);
 
   g_signal_connect (G_OBJECT (button3), "clicked",
                     G_CALLBACK (toggle_orientation),
@@ -111,7 +111,7 @@ main (int    argc,
                     button2);
 
   ctk_widget_show_all (window);
-  ctk_button_clicked (GTK_BUTTON (button));
+  ctk_button_clicked (CTK_BUTTON (button));
   g_timeout_add (4000, (GSourceFunc) show_error, window);
 
   ctk_main ();

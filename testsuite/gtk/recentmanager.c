@@ -121,7 +121,7 @@ check_bulk (GtkRecentManager *manager,
 static void
 recent_manager_add_many (void)
 {
-  GtkRecentManager *manager = g_object_new (GTK_TYPE_RECENT_MANAGER,
+  GtkRecentManager *manager = g_object_new (CTK_TYPE_RECENT_MANAGER,
                                             "filename", "recently-used.xbel",
                                             NULL);
   AddManyClosure *closure = g_new (AddManyClosure, 1);
@@ -192,8 +192,8 @@ recent_manager_move_item (void)
                                       &error);
   g_assert (res == FALSE);
   g_assert (error != NULL);
-  g_assert (error->domain == GTK_RECENT_MANAGER_ERROR);
-  g_assert (error->code == GTK_RECENT_MANAGER_ERROR_NOT_FOUND);
+  g_assert (error->domain == CTK_RECENT_MANAGER_ERROR);
+  g_assert (error->code == CTK_RECENT_MANAGER_ERROR_NOT_FOUND);
   g_error_free (error);
 
   error = NULL;
@@ -223,8 +223,8 @@ recent_manager_lookup_item (void)
                                          &error);
   g_assert (info == NULL);
   g_assert (error != NULL);
-  g_assert (error->domain == GTK_RECENT_MANAGER_ERROR);
-  g_assert (error->code == GTK_RECENT_MANAGER_ERROR_NOT_FOUND);
+  g_assert (error->domain == CTK_RECENT_MANAGER_ERROR);
+  g_assert (error->code == CTK_RECENT_MANAGER_ERROR_NOT_FOUND);
   g_error_free (error);
 
   error = NULL;
@@ -252,8 +252,8 @@ recent_manager_remove_item (void)
                                         &error);
   g_assert (res == FALSE);
   g_assert (error != NULL);
-  g_assert (error->domain == GTK_RECENT_MANAGER_ERROR);
-  g_assert (error->code == GTK_RECENT_MANAGER_ERROR_NOT_FOUND);
+  g_assert (error->domain == CTK_RECENT_MANAGER_ERROR);
+  g_assert (error->code == CTK_RECENT_MANAGER_ERROR_NOT_FOUND);
   g_error_free (error);
 
   /* remove an item that's actually there */

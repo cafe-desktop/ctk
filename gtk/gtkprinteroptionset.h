@@ -16,14 +16,14 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINTER_OPTION_SET_H__
-#define __GTK_PRINTER_OPTION_SET_H__
+#ifndef __CTK_PRINTER_OPTION_SET_H__
+#define __CTK_PRINTER_OPTION_SET_H__
 
 /* This is a "semi-private" header; it is meant only for
  * alternate GtkPrintDialog backend modules; no stability guarantees
  * are made at this point
  */
-#ifndef GTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
+#ifndef CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
 #error "GtkPrintBackend is not supported API for general use"
 #endif
 
@@ -33,9 +33,9 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_OPTION_SET             (ctk_printer_option_set_get_type ())
-#define GTK_PRINTER_OPTION_SET(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_OPTION_SET, GtkPrinterOptionSet))
-#define GTK_IS_PRINTER_OPTION_SET(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_OPTION_SET))
+#define CTK_TYPE_PRINTER_OPTION_SET             (ctk_printer_option_set_get_type ())
+#define CTK_PRINTER_OPTION_SET(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_OPTION_SET, GtkPrinterOptionSet))
+#define CTK_IS_PRINTER_OPTION_SET(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER_OPTION_SET))
 
 typedef struct _GtkPrinterOptionSet       GtkPrinterOptionSet;
 typedef struct _GtkPrinterOptionSetClass  GtkPrinterOptionSetClass;
@@ -97,4 +97,4 @@ void                 ctk_printer_option_set_foreach_in_group (GtkPrinterOptionSe
 
 G_END_DECLS
 
-#endif /* __GTK_PRINTER_OPTION_SET_H__ */
+#endif /* __CTK_PRINTER_OPTION_SET_H__ */

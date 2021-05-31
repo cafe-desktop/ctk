@@ -80,7 +80,7 @@ struct _GtkInspectorVisualPrivate
   GtkAdjustment *focus_adjustment;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorVisual, ctk_inspector_visual, GTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorVisual, ctk_inspector_visual, CTK_TYPE_SCROLLED_WINDOW)
 
 static void
 fix_direction_recurse (GtkWidget *widget,
@@ -91,8 +91,8 @@ fix_direction_recurse (GtkWidget *widget,
   g_object_ref (widget);
 
   ctk_widget_set_direction (widget, dir);
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget), fix_direction_recurse, data);
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget), fix_direction_recurse, data);
 
   g_object_unref (widget);
 }
@@ -111,14 +111,14 @@ direction_changed (GtkComboBox *combo)
   GtkWidget *iw;
   const gchar *direction;
 
-  iw = ctk_widget_get_toplevel (GTK_WIDGET (combo));
+  iw = ctk_widget_get_toplevel (CTK_WIDGET (combo));
   fix_direction (iw);
 
   direction = ctk_combo_box_get_active_id (combo);
   if (g_strcmp0 (direction, "ltr") == 0)
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_LTR);
   else
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 }
 
 static void
@@ -127,11 +127,11 @@ init_direction (GtkInspectorVisual *vis)
   const gchar *direction;
 
   initial_direction = ctk_widget_get_default_direction ();
-  if (initial_direction == GTK_TEXT_DIR_LTR)
+  if (initial_direction == CTK_TEXT_DIR_LTR)
     direction = "ltr";
   else
     direction = "rtl";
-  ctk_combo_box_set_active_id (GTK_COMBO_BOX (vis->priv->direction_combo), direction);
+  ctk_combo_box_set_active_id (CTK_COMBO_BOX (vis->priv->direction_combo), direction);
 }
 
 static void
@@ -191,7 +191,7 @@ update_font_scale (GtkInspectorVisual *vis,
     {
       gchar *str = g_strdup_printf ("%0.2f", factor);
 
-      ctk_entry_set_text (GTK_ENTRY (vis->priv->font_scale_entry), str);
+      ctk_entry_set_text (CTK_ENTRY (vis->priv->font_scale_entry), str);
       g_free (str);
     }
 }
@@ -234,7 +234,7 @@ init_updates (GtkInspectorVisual *vis)
   gboolean updates;
 
   updates = GDK_PRIVATE_CALL (gdk_display_get_debug_updates) (gdk_display_get_default ());
-  ctk_switch_set_active (GTK_SWITCH (vis->priv->updates_switch), updates);
+  ctk_switch_set_active (CTK_SWITCH (vis->priv->updates_switch), updates);
 }
 
 static void
@@ -245,9 +245,9 @@ baselines_activate (GtkSwitch *sw)
   flags = ctk_get_debug_flags ();
 
   if (ctk_switch_get_active (sw))
-    flags |= GTK_DEBUG_BASELINES;
+    flags |= CTK_DEBUG_BASELINES;
   else
-    flags &= ~GTK_DEBUG_BASELINES;
+    flags &= ~CTK_DEBUG_BASELINES;
 
   ctk_set_debug_flags (flags);
   redraw_everything ();
@@ -261,9 +261,9 @@ layout_activate (GtkSwitch *sw)
   flags = ctk_get_debug_flags ();
 
   if (ctk_switch_get_active (sw))
-    flags |= GTK_DEBUG_LAYOUT;
+    flags |= CTK_DEBUG_LAYOUT;
   else
-    flags &= ~GTK_DEBUG_LAYOUT;
+    flags &= ~CTK_DEBUG_LAYOUT;
 
   ctk_set_debug_flags (flags);
   redraw_everything ();
@@ -277,9 +277,9 @@ pixelcache_activate (GtkSwitch *sw)
   flags = ctk_get_debug_flags ();
 
   if (ctk_switch_get_active (sw))
-    flags |= GTK_DEBUG_PIXEL_CACHE;
+    flags |= CTK_DEBUG_PIXEL_CACHE;
   else
-    flags &= ~GTK_DEBUG_PIXEL_CACHE;
+    flags &= ~CTK_DEBUG_PIXEL_CACHE;
 
   ctk_set_debug_flags (flags);
   /* FIXME: this doesn't work, because it is redrawing
@@ -296,9 +296,9 @@ widget_resize_activate (GtkSwitch *sw)
   guint flags = ctk_get_debug_flags ();
 
   if (ctk_switch_get_active (sw))
-    flags |= GTK_DEBUG_RESIZE;
+    flags |= CTK_DEBUG_RESIZE;
   else
-    flags &= ~GTK_DEBUG_RESIZE;
+    flags &= ~CTK_DEBUG_RESIZE;
 
   ctk_set_debug_flags (flags);
 }
@@ -313,10 +313,10 @@ fill_gtk (const gchar *path,
   if (!dir)
     return;
 
-#if (GTK_MINOR_VERSION % 2)
-#define MINOR (GTK_MINOR_VERSION + 1)
+#if (CTK_MINOR_VERSION % 2)
+#define MINOR (CTK_MINOR_VERSION + 1)
 #else
-#define MINOR GTK_MINOR_VERSION
+#define MINOR CTK_MINOR_VERSION
 #endif
 
   /* Keep this in sync with _ctk_css_find_theme_dir() in gtkcssprovider.c */
@@ -359,7 +359,7 @@ get_data_path (const gchar *subdir)
 #if defined (GDK_WINDOWING_WIN32) || defined (GDK_WINDOWING_QUARTZ)
   base_datadir = g_strdup (_ctk_get_datadir ());
 #else
-  base_datadir = g_strdup (GTK_DATADIR);
+  base_datadir = g_strdup (CTK_DATADIR);
 #endif
   full_datadir = g_build_filename (base_datadir, subdir, NULL);
   g_free (base_datadir);
@@ -415,7 +415,7 @@ init_theme (GtkInspectorVisual *vis)
   for (l = list; l; l = l->next)
     {
       theme = l->data;
-      ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (vis->priv->theme_combo), theme, theme);
+      ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (vis->priv->theme_combo), theme, theme);
     }
 
   g_list_free (list);
@@ -425,11 +425,11 @@ init_theme (GtkInspectorVisual *vis)
                           vis->priv->theme_combo, "active-id",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
-  if (g_getenv ("GTK_THEME") != NULL)
+  if (g_getenv ("CTK_THEME") != NULL)
     {
       /* theme is hardcoded, nothing we can do */
       ctk_widget_set_sensitive (vis->priv->theme_combo, FALSE);
-      ctk_widget_set_tooltip_text (vis->priv->theme_combo , _("Theme is hardcoded by GTK_THEME"));
+      ctk_widget_set_tooltip_text (vis->priv->theme_combo , _("Theme is hardcoded by CTK_THEME"));
     }
 }
 
@@ -440,11 +440,11 @@ init_dark (GtkInspectorVisual *vis)
                           vis->priv->dark_switch, "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
-  if (g_getenv ("GTK_THEME") != NULL)
+  if (g_getenv ("CTK_THEME") != NULL)
     {
       /* theme is hardcoded, nothing we can do */
       ctk_widget_set_sensitive (vis->priv->dark_switch, FALSE);
-      ctk_widget_set_tooltip_text (vis->priv->dark_switch, _("Theme is hardcoded by GTK_THEME"));
+      ctk_widget_set_tooltip_text (vis->priv->dark_switch, _("Theme is hardcoded by CTK_THEME"));
     }
 }
 
@@ -500,7 +500,7 @@ init_icons (GtkInspectorVisual *vis)
   for (l = list; l; l = l->next)
     {
       theme = l->data;
-      ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (vis->priv->icon_combo), theme, theme);
+      ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (vis->priv->icon_combo), theme, theme);
     }
 
   g_hash_table_destroy (t);
@@ -562,7 +562,7 @@ init_cursors (GtkInspectorVisual *vis)
   for (l = list; l; l = l->next)
     {
       theme = l->data;
-      ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (vis->priv->cursor_combo), theme, theme);
+      ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (vis->priv->cursor_combo), theme, theme);
     }
 
   g_hash_table_destroy (t);
@@ -682,7 +682,7 @@ update_slowdown (GtkInspectorVisual *vis,
     {
       gchar *str = g_strdup_printf ("%0.*f", 2, slowdown);
 
-      ctk_entry_set_text (GTK_ENTRY (vis->priv->slowdown_entry), str);
+      ctk_entry_set_text (CTK_ENTRY (vis->priv->slowdown_entry), str);
       g_free (str);
     }
 }
@@ -730,9 +730,9 @@ update_touchscreen (GtkSwitch *sw)
   flags = ctk_get_debug_flags ();
 
   if (ctk_switch_get_active (sw))
-    flags |= GTK_DEBUG_TOUCHSCREEN;
+    flags |= CTK_DEBUG_TOUCHSCREEN;
   else
-    flags &= ~GTK_DEBUG_TOUCHSCREEN;
+    flags &= ~CTK_DEBUG_TOUCHSCREEN;
 
   ctk_set_debug_flags (flags);
 }
@@ -740,16 +740,16 @@ update_touchscreen (GtkSwitch *sw)
 static void
 init_touchscreen (GtkInspectorVisual *vis)
 {
-  ctk_switch_set_active (GTK_SWITCH (vis->priv->touchscreen_switch), (ctk_get_debug_flags () & GTK_DEBUG_TOUCHSCREEN) != 0);
+  ctk_switch_set_active (CTK_SWITCH (vis->priv->touchscreen_switch), (ctk_get_debug_flags () & CTK_DEBUG_TOUCHSCREEN) != 0);
   g_signal_connect (vis->priv->touchscreen_switch, "notify::active",
                     G_CALLBACK (update_touchscreen), NULL);
 
-  if (g_getenv ("GTK_TEST_TOUCHSCREEN") != 0)
+  if (g_getenv ("CTK_TEST_TOUCHSCREEN") != 0)
     {
       /* hardcoded, nothing we can do */
-      ctk_switch_set_active (GTK_SWITCH (vis->priv->touchscreen_switch), TRUE);
+      ctk_switch_set_active (CTK_SWITCH (vis->priv->touchscreen_switch), TRUE);
       ctk_widget_set_sensitive (vis->priv->touchscreen_switch, FALSE);
-      ctk_widget_set_tooltip_text (vis->priv->touchscreen_switch, _("Setting is hardcoded by GTK_TEST_TOUCHSCREEN"));
+      ctk_widget_set_tooltip_text (vis->priv->touchscreen_switch, _("Setting is hardcoded by CTK_TEST_TOUCHSCREEN"));
     }
 }
 
@@ -759,16 +759,16 @@ keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorVisual
   GtkWidget *next;
   gdouble value, lower, upper, page;
 
-  if (direction == GTK_DIR_DOWN &&
+  if (direction == CTK_DIR_DOWN &&
       widget == vis->priv->visual_box)
     next = vis->priv->debug_box;
-  else if (direction == GTK_DIR_DOWN &&
+  else if (direction == CTK_DIR_DOWN &&
       widget == vis->priv->debug_box)
     next = vis->priv->gl_box;
-  else if (direction == GTK_DIR_UP &&
+  else if (direction == CTK_DIR_UP &&
            widget == vis->priv->debug_box)
     next = vis->priv->visual_box;
-  else if (direction == GTK_DIR_UP &&
+  else if (direction == CTK_DIR_UP &&
            widget == vis->priv->gl_box)
     next = vis->priv->debug_box;
   else
@@ -785,12 +785,12 @@ keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorVisual
   upper = ctk_adjustment_get_upper (vis->priv->focus_adjustment);
   page  = ctk_adjustment_get_page_size (vis->priv->focus_adjustment);
 
-  if (direction == GTK_DIR_UP && value > lower)
+  if (direction == CTK_DIR_UP && value > lower)
     {
       ctk_adjustment_set_value (vis->priv->focus_adjustment, lower);
       return TRUE;
     }
-  else if (direction == GTK_DIR_DOWN && value < upper - page)
+  else if (direction == CTK_DIR_DOWN && value < upper - page)
     {
       ctk_adjustment_set_value (vis->priv->focus_adjustment, upper - page);
       return TRUE;
@@ -807,20 +807,20 @@ init_gl (GtkInspectorVisual *vis)
   flags = GDK_PRIVATE_CALL (gdk_gl_get_flags) ();
 
   if (flags & GDK_GL_ALWAYS)
-    ctk_combo_box_set_active_id (GTK_COMBO_BOX (vis->priv->gl_combo), "always");
+    ctk_combo_box_set_active_id (CTK_COMBO_BOX (vis->priv->gl_combo), "always");
   else if (flags & GDK_GL_DISABLE)
-    ctk_combo_box_set_active_id (GTK_COMBO_BOX (vis->priv->gl_combo), "disable");
+    ctk_combo_box_set_active_id (CTK_COMBO_BOX (vis->priv->gl_combo), "disable");
   else
-    ctk_combo_box_set_active_id (GTK_COMBO_BOX (vis->priv->gl_combo), "maybe");
+    ctk_combo_box_set_active_id (CTK_COMBO_BOX (vis->priv->gl_combo), "maybe");
   ctk_widget_set_sensitive (vis->priv->gl_combo, FALSE);
   ctk_widget_set_tooltip_text (vis->priv->gl_combo,
                                _("Not settable at runtime.\nUse GDK_GL=always or GDK_GL=disable instead"));
 
-  ctk_switch_set_active (GTK_SWITCH (vis->priv->software_gl_switch),
+  ctk_switch_set_active (CTK_SWITCH (vis->priv->software_gl_switch),
                          flags & GDK_GL_SOFTWARE_DRAW_GL);
-  ctk_switch_set_active (GTK_SWITCH (vis->priv->software_surface_switch),
+  ctk_switch_set_active (CTK_SWITCH (vis->priv->software_surface_switch),
                          flags & GDK_GL_SOFTWARE_DRAW_SURFACE);
-  ctk_switch_set_active (GTK_SWITCH (vis->priv->texture_rectangle_switch),
+  ctk_switch_set_active (CTK_SWITCH (vis->priv->texture_rectangle_switch),
                          flags & GDK_GL_TEXTURE_RECTANGLE);
 
   if (flags & GDK_GL_DISABLE)
@@ -840,7 +840,7 @@ init_rendering_mode (GtkInspectorVisual *vis)
   GdkRenderingMode mode;
 
   mode = GDK_PRIVATE_CALL (gdk_display_get_rendering_mode) (gdk_display_get_default ());
-  ctk_combo_box_set_active (GTK_COMBO_BOX (vis->priv->rendering_mode_combo), mode);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (vis->priv->rendering_mode_combo), mode);
 }
 
 static void
@@ -891,7 +891,7 @@ static void
 ctk_inspector_visual_init (GtkInspectorVisual *vis)
 {
   vis->priv = ctk_inspector_visual_get_instance_private (vis);
-  ctk_widget_init_template (GTK_WIDGET (vis));
+  ctk_widget_init_template (CTK_WIDGET (vis));
   init_direction (vis);
   init_theme (vis);
   init_dark (vis);
@@ -912,12 +912,12 @@ ctk_inspector_visual_init (GtkInspectorVisual *vis)
 static void
 ctk_inspector_visual_constructed (GObject *object)
 {
-  GtkInspectorVisual *vis = GTK_INSPECTOR_VISUAL (object);
+  GtkInspectorVisual *vis = CTK_INSPECTOR_VISUAL (object);
 
   G_OBJECT_CLASS (ctk_inspector_visual_parent_class)->constructed (object);
 
-  vis->priv->focus_adjustment = ctk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (vis));
-  ctk_container_set_focus_vadjustment (GTK_CONTAINER (ctk_bin_get_child (GTK_BIN (vis))),
+  vis->priv->focus_adjustment = ctk_scrolled_window_get_vadjustment (CTK_SCROLLED_WINDOW (vis));
+  ctk_container_set_focus_vadjustment (CTK_CONTAINER (ctk_bin_get_child (CTK_BIN (vis))),
                                        vis->priv->focus_adjustment);
 
    g_signal_connect (vis->priv->visual_box, "keynav-failed", G_CALLBACK (keynav_failed), vis);
@@ -928,7 +928,7 @@ ctk_inspector_visual_constructed (GObject *object)
 static void
 ctk_inspector_visual_class_init (GtkInspectorVisualClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->constructed = ctk_inspector_visual_constructed;

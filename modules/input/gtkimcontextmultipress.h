@@ -14,19 +14,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_IM_CONTEXT_MULTIPRESS_H__
-#define __GTK_IM_CONTEXT_MULTIPRESS_H__
+#ifndef __CTK_IM_CONTEXT_MULTIPRESS_H__
+#define __CTK_IM_CONTEXT_MULTIPRESS_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_IM_CONTEXT_MULTIPRESS            (ctk_im_context_multipress_get_type ())
-#define GTK_IM_CONTEXT_MULTIPRESS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipress))
-#define GTK_IM_CONTEXT_MULTIPRESS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipressClass))
-#define GTK_IS_IM_CONTEXT_MULTIPRESS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IM_CONTEXT_MULTIPRESS))
-#define GTK_IS_IM_CONTEXT_MULTIPRESS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_IM_CONTEXT_MULTIPRESS))
-#define GTK_IM_CONTEXT_MULTIPRESS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipressClass))
+#define CTK_TYPE_IM_CONTEXT_MULTIPRESS            (ctk_im_context_multipress_get_type ())
+#define CTK_IM_CONTEXT_MULTIPRESS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipress))
+#define CTK_IM_CONTEXT_MULTIPRESS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipressClass))
+#define CTK_IS_IM_CONTEXT_MULTIPRESS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT_MULTIPRESS))
+#define CTK_IS_IM_CONTEXT_MULTIPRESS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT_MULTIPRESS))
+#define CTK_IM_CONTEXT_MULTIPRESS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_MULTIPRESS, GtkImContextMultipressClass))
 
 typedef struct _GtkImContextMultipress GtkImContextMultipress;
 
@@ -77,4 +77,4 @@ GtkIMContext *ctk_im_context_multipress_new (void);
 
 G_END_DECLS
 
-#endif /* __GTK_IM_CONTEXT_MULTIPRESS_H__ */
+#endif /* __CTK_IM_CONTEXT_MULTIPRESS_H__ */

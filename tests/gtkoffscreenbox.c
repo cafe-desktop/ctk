@@ -37,7 +37,7 @@ static GType       ctk_offscreen_box_child_type    (GtkContainer    *container);
 #define CHILD1_SIZE_SCALE 1.0
 #define CHILD2_SIZE_SCALE 1.0
 
-G_DEFINE_TYPE (GtkOffscreenBox, ctk_offscreen_box, GTK_TYPE_CONTAINER);
+G_DEFINE_TYPE (GtkOffscreenBox, ctk_offscreen_box, CTK_TYPE_CONTAINER);
 
 static void
 to_child_2 (GtkOffscreenBox *offscreen_box,
@@ -118,8 +118,8 @@ to_parent_2 (GtkOffscreenBox *offscreen_box,
 static void
 ctk_offscreen_box_class_init (GtkOffscreenBoxClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
 
   widget_class->realize = ctk_offscreen_box_realize;
   widget_class->unrealize = ctk_offscreen_box_unrealize;
@@ -128,8 +128,8 @@ ctk_offscreen_box_class_init (GtkOffscreenBoxClass *klass)
   widget_class->size_allocate = ctk_offscreen_box_size_allocate;
   widget_class->draw = ctk_offscreen_box_draw;
 
-  g_signal_override_class_closure (g_signal_lookup ("damage-event", GTK_TYPE_WIDGET),
-                                   GTK_TYPE_OFFSCREEN_BOX,
+  g_signal_override_class_closure (g_signal_lookup ("damage-event", CTK_TYPE_WIDGET),
+                                   CTK_TYPE_OFFSCREEN_BOX,
                                    g_cclosure_new (G_CALLBACK (ctk_offscreen_box_damage),
                                                    NULL, NULL));
 
@@ -142,13 +142,13 @@ ctk_offscreen_box_class_init (GtkOffscreenBoxClass *klass)
 static void
 ctk_offscreen_box_init (GtkOffscreenBox *offscreen_box)
 {
-  ctk_widget_set_has_window (GTK_WIDGET (offscreen_box), TRUE);
+  ctk_widget_set_has_window (CTK_WIDGET (offscreen_box), TRUE);
 }
 
 GtkWidget *
 ctk_offscreen_box_new (void)
 {
-  return g_object_new (GTK_TYPE_OFFSCREEN_BOX, NULL);
+  return g_object_new (CTK_TYPE_OFFSCREEN_BOX, NULL);
 }
 
 static GdkWindow *
@@ -250,7 +250,7 @@ gdk_offscreen_box_create_alpha_image_surface (GdkWindow *offscreen,
 static void
 ctk_offscreen_box_realize (GtkWidget *widget)
 {
-  GtkOffscreenBox *offscreen_box = GTK_OFFSCREEN_BOX (widget);
+  GtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (widget);
   GtkAllocation allocation, child_area;
   GdkWindow *window;
   GdkWindowAttr attributes;
@@ -261,7 +261,7 @@ ctk_offscreen_box_realize (GtkWidget *widget)
 
   ctk_widget_set_realized (widget, TRUE);
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   ctk_widget_get_allocation (widget, &allocation);
 
@@ -351,7 +351,7 @@ ctk_offscreen_box_realize (GtkWidget *widget)
 static void
 ctk_offscreen_box_unrealize (GtkWidget *widget)
 {
-  GtkOffscreenBox *offscreen_box = GTK_OFFSCREEN_BOX (widget);
+  GtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (widget);
 
   gdk_window_set_user_data (offscreen_box->offscreen_window1, NULL);
   gdk_window_destroy (offscreen_box->offscreen_window1);
@@ -361,25 +361,25 @@ ctk_offscreen_box_unrealize (GtkWidget *widget)
   gdk_window_destroy (offscreen_box->offscreen_window2);
   offscreen_box->offscreen_window2 = NULL;
 
-  GTK_WIDGET_CLASS (ctk_offscreen_box_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_offscreen_box_parent_class)->unrealize (widget);
 }
 
 static GType
 ctk_offscreen_box_child_type (GtkContainer *container)
 {
-  GtkOffscreenBox *offscreen_box = GTK_OFFSCREEN_BOX (container);
+  GtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (container);
 
   if (offscreen_box->child1 && offscreen_box->child2)
     return G_TYPE_NONE;
 
-  return GTK_TYPE_WIDGET;
+  return CTK_TYPE_WIDGET;
 }
 
 static void
 ctk_offscreen_box_add (GtkContainer *container,
 		       GtkWidget    *widget)
 {
-  GtkOffscreenBox *offscreen_box = GTK_OFFSCREEN_BOX (container);
+  GtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (container);
 
   if (!offscreen_box->child1)
     ctk_offscreen_box_add1 (offscreen_box, widget);
@@ -393,13 +393,13 @@ void
 ctk_offscreen_box_add1 (GtkOffscreenBox *offscreen_box,
 			GtkWidget       *child)
 {
-  g_return_if_fail (GTK_IS_OFFSCREEN_BOX (offscreen_box));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_OFFSCREEN_BOX (offscreen_box));
+  g_return_if_fail (CTK_IS_WIDGET (child));
 
   if (offscreen_box->child1 == NULL)
     {
       ctk_widget_set_parent_window (child, offscreen_box->offscreen_window1);
-      ctk_widget_set_parent (child, GTK_WIDGET (offscreen_box));
+      ctk_widget_set_parent (child, CTK_WIDGET (offscreen_box));
       offscreen_box->child1 = child;
     }
 }
@@ -408,13 +408,13 @@ void
 ctk_offscreen_box_add2 (GtkOffscreenBox  *offscreen_box,
 			GtkWidget    *child)
 {
-  g_return_if_fail (GTK_IS_OFFSCREEN_BOX (offscreen_box));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_OFFSCREEN_BOX (offscreen_box));
+  g_return_if_fail (CTK_IS_WIDGET (child));
 
   if (offscreen_box->child2 == NULL)
     {
       ctk_widget_set_parent_window (child, offscreen_box->offscreen_window2);
-      ctk_widget_set_parent (child, GTK_WIDGET (offscreen_box));
+      ctk_widget_set_parent (child, CTK_WIDGET (offscreen_box));
       offscreen_box->child2 = child;
     }
 }
@@ -423,7 +423,7 @@ static void
 ctk_offscreen_box_remove (GtkContainer *container,
 			  GtkWidget    *widget)
 {
-  GtkOffscreenBox *offscreen_box = GTK_OFFSCREEN_BOX (container);
+  GtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (container);
   gboolean was_visible;
 
   was_visible = ctk_widget_get_visible (widget);
@@ -434,8 +434,8 @@ ctk_offscreen_box_remove (GtkContainer *container,
 
       offscreen_box->child1 = NULL;
 
-      if (was_visible && ctk_widget_get_visible (GTK_WIDGET (container)))
-	ctk_widget_queue_resize (GTK_WIDGET (container));
+      if (was_visible && ctk_widget_get_visible (CTK_WIDGET (container)))
+	ctk_widget_queue_resize (CTK_WIDGET (container));
     }
   else if (offscreen_box->child2 == widget)
     {
@@ -443,8 +443,8 @@ ctk_offscreen_box_remove (GtkContainer *container,
 
       offscreen_box->child2 = NULL;
 
-      if (was_visible && ctk_widget_get_visible (GTK_WIDGET (container)))
-	ctk_widget_queue_resize (GTK_WIDGET (container));
+      if (was_visible && ctk_widget_get_visible (CTK_WIDGET (container)))
+	ctk_widget_queue_resize (CTK_WIDGET (container));
     }
 }
 
@@ -454,7 +454,7 @@ ctk_offscreen_box_forall (GtkContainer *container,
 			  GtkCallback   callback,
 			  gpointer      callback_data)
 {
-  GtkOffscreenBox *offscreen_box = GTK_OFFSCREEN_BOX (container);
+  GtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (container);
 
   g_return_if_fail (callback != NULL);
 
@@ -468,10 +468,10 @@ void
 ctk_offscreen_box_set_angle (GtkOffscreenBox  *offscreen_box,
 			     gdouble           angle)
 {
-  g_return_if_fail (GTK_IS_OFFSCREEN_BOX (offscreen_box));
+  g_return_if_fail (CTK_IS_OFFSCREEN_BOX (offscreen_box));
 
   offscreen_box->angle = angle;
-  ctk_widget_queue_draw (GTK_WIDGET (offscreen_box));
+  ctk_widget_queue_draw (CTK_WIDGET (offscreen_box));
 
   /* TODO: Really needs to resent pointer events if over the rotated window */
 }
@@ -481,7 +481,7 @@ static void
 ctk_offscreen_box_size_request (GtkWidget      *widget,
 				GtkRequisition *requisition)
 {
-  GtkOffscreenBox *offscreen_box = GTK_OFFSCREEN_BOX (widget);
+  GtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (widget);
   int w, h;
   guint border_width;
 
@@ -510,7 +510,7 @@ ctk_offscreen_box_size_request (GtkWidget      *widget,
       h += CHILD2_SIZE_SCALE * child_requisition.height;
     }
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
   requisition->width = border_width * 2 + w;
   requisition->height = border_width * 2 + h;
 }
@@ -547,11 +547,11 @@ ctk_offscreen_box_size_allocate (GtkWidget     *widget,
   gint start_y;
   guint border_width;
 
-  offscreen_box = GTK_OFFSCREEN_BOX (widget);
+  offscreen_box = CTK_OFFSCREEN_BOX (widget);
 
   ctk_widget_set_allocation (widget, allocation);
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   if (ctk_widget_get_realized (widget))
     gdk_window_move_resize (ctk_widget_get_window (widget),
@@ -627,7 +627,7 @@ static gboolean
 ctk_offscreen_box_draw (GtkWidget *widget,
                         cairo_t   *cr)
 {
-  GtkOffscreenBox *offscreen_box = GTK_OFFSCREEN_BOX (widget);
+  GtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (widget);
   GdkWindow *window;
 
   window = ctk_widget_get_window (widget);
@@ -672,7 +672,7 @@ ctk_offscreen_box_draw (GtkWidget *widget,
                              gdk_window_get_height (offscreen_box->offscreen_window1));
 
       if (offscreen_box->child1)
-        ctk_container_propagate_draw (GTK_CONTAINER (widget),
+        ctk_container_propagate_draw (CTK_CONTAINER (widget),
                                       offscreen_box->child1,
                                       cr);
     }
@@ -684,7 +684,7 @@ ctk_offscreen_box_draw (GtkWidget *widget,
                              gdk_window_get_height (offscreen_box->offscreen_window2));
 
       if (offscreen_box->child2)
-        ctk_container_propagate_draw (GTK_CONTAINER (widget),
+        ctk_container_propagate_draw (CTK_CONTAINER (widget),
                                       offscreen_box->child2,
                                       cr);
     }

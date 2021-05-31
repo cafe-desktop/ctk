@@ -9,9 +9,9 @@ action_activated (GSimpleAction *action,
   GtkWidget *dialog;
 
   dialog = ctk_message_dialog_new (parent,
-                                   GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_INFO,
-                                   GTK_BUTTONS_CLOSE,
+                                   CTK_DIALOG_DESTROY_WITH_PARENT,
+                                   CTK_MESSAGE_INFO,
+                                   CTK_BUTTONS_CLOSE,
                                    "Activated action `%s`",
                                    g_action_get_name (G_ACTION (action)));
 
@@ -77,11 +77,11 @@ activate (GApplication *app,
   GMenu *button_menu;
   GMenuItem *section;
 
-  if (ctk_application_get_windows (GTK_APPLICATION (app)) != NULL)
+  if (ctk_application_get_windows (CTK_APPLICATION (app)) != NULL)
     return;
 
-  win = ctk_application_window_new (GTK_APPLICATION (app));
-  ctk_window_set_default_size (GTK_WINDOW (win), 200, 300);
+  win = ctk_application_window_new (CTK_APPLICATION (app));
+  ctk_window_set_default_size (CTK_WINDOW (win), 200, 300);
 
   doc_actions = g_simple_action_group_new ();
   g_action_map_add_action_entries (G_ACTION_MAP (doc_actions), doc_entries, G_N_ELEMENTS (doc_entries), win);
@@ -108,13 +108,13 @@ activate (GApplication *app,
   g_object_unref (section);
 
   button = ctk_menu_button_new ();
-  ctk_button_set_label (GTK_BUTTON (button), "Menu");
+  ctk_button_set_label (CTK_BUTTON (button), "Menu");
   ctk_widget_insert_action_group (button, "doc", G_ACTION_GROUP (doc_actions));
-  ctk_menu_button_set_menu_model (GTK_MENU_BUTTON (button), G_MENU_MODEL (button_menu));
-  ctk_widget_set_halign (GTK_WIDGET (button), GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (GTK_WIDGET (button), GTK_ALIGN_START);
-  ctk_container_add (GTK_CONTAINER (win), button);
-  ctk_container_set_border_width (GTK_CONTAINER (win), 12);
+  ctk_menu_button_set_menu_model (CTK_MENU_BUTTON (button), G_MENU_MODEL (button_menu));
+  ctk_widget_set_halign (CTK_WIDGET (button), CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (CTK_WIDGET (button), CTK_ALIGN_START);
+  ctk_container_add (CTK_CONTAINER (win), button);
+  ctk_container_set_border_width (CTK_CONTAINER (win), 12);
   ctk_widget_show_all (win);
 
   g_object_unref (button_menu);

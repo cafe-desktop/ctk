@@ -44,7 +44,7 @@ item_activated_cb (GtkRecentChooser *chooser,
                           ctk_recent_info_get_mime_type (info));
 
   label_text = g_string_free (text, FALSE);
-  ctk_label_set_text (GTK_LABEL (label), label_text);
+  ctk_label_set_text (CTK_LABEL (label), label_text);
   
   ctk_recent_info_unref (info);
   g_free (label_text);
@@ -60,43 +60,43 @@ create_recent_chooser_menu (gint limit)
   menu = ctk_recent_chooser_menu_new_for_manager (manager);
 
   if (limit > 0)
-    ctk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (menu), limit);
-  ctk_recent_chooser_set_local_only (GTK_RECENT_CHOOSER (menu), TRUE);
-  ctk_recent_chooser_set_show_icons (GTK_RECENT_CHOOSER (menu), TRUE);
-  ctk_recent_chooser_set_show_tips (GTK_RECENT_CHOOSER (menu), TRUE);
-  ctk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER (menu),
-                                    GTK_RECENT_SORT_MRU);
-  ctk_recent_chooser_menu_set_show_numbers (GTK_RECENT_CHOOSER_MENU (menu),
+    ctk_recent_chooser_set_limit (CTK_RECENT_CHOOSER (menu), limit);
+  ctk_recent_chooser_set_local_only (CTK_RECENT_CHOOSER (menu), TRUE);
+  ctk_recent_chooser_set_show_icons (CTK_RECENT_CHOOSER (menu), TRUE);
+  ctk_recent_chooser_set_show_tips (CTK_RECENT_CHOOSER (menu), TRUE);
+  ctk_recent_chooser_set_sort_type (CTK_RECENT_CHOOSER (menu),
+                                    CTK_RECENT_SORT_MRU);
+  ctk_recent_chooser_menu_set_show_numbers (CTK_RECENT_CHOOSER_MENU (menu),
                                             TRUE);
 
   filter = ctk_recent_filter_new ();
   ctk_recent_filter_set_name (filter, "Gedit files");
   ctk_recent_filter_add_application (filter, "gedit");
-  ctk_recent_chooser_add_filter (GTK_RECENT_CHOOSER (menu), filter);
-  ctk_recent_chooser_set_filter (GTK_RECENT_CHOOSER (menu), filter);
+  ctk_recent_chooser_add_filter (CTK_RECENT_CHOOSER (menu), filter);
+  ctk_recent_chooser_set_filter (CTK_RECENT_CHOOSER (menu), filter);
 
   g_signal_connect (menu, "item-activated",
                     G_CALLBACK (item_activated_cb),
                     NULL);
 
   menuitem = ctk_separator_menu_item_new ();
-  ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   menuitem = ctk_menu_item_new_with_label ("Test prepend");
-  ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   menuitem = ctk_separator_menu_item_new ();
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   menuitem = ctk_menu_item_new_with_label ("Test append");
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   menuitem = ctk_menu_item_new_with_mnemonic ("Clear");
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   ctk_widget_show_all (menu);
@@ -114,25 +114,25 @@ create_file_menu (GtkAccelGroup *accelgroup)
   menu = ctk_menu_new ();
 
   menuitem = ctk_menu_item_new_with_mnemonic ("_New");
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   menuitem = ctk_menu_item_new_with_mnemonic ("_Open");
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   menuitem = ctk_menu_item_new_with_mnemonic ("_Open Recent");
   recentmenu = create_recent_chooser_menu (-1);
-  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), recentmenu);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_item_set_submenu (CTK_MENU_ITEM (menuitem), recentmenu);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   menuitem = ctk_separator_menu_item_new ();
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   menuitem = ctk_menu_item_new_with_mnemonic ("_Quit");
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
 
   ctk_widget_show (menu);
@@ -154,43 +154,43 @@ main (int argc, char *argv[])
 
   manager = ctk_recent_manager_get_default ();
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (window), -1, -1);
-  ctk_window_set_title (GTK_WINDOW (window), "Recent Chooser Menu Test");
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (window), -1, -1);
+  ctk_window_set_title (CTK_WINDOW (window), "Recent Chooser Menu Test");
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
 
   accel_group = ctk_accel_group_new ();
-  ctk_window_add_accel_group (GTK_WINDOW (window), accel_group);
+  ctk_window_add_accel_group (CTK_WINDOW (window), accel_group);
   
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), box);
   ctk_widget_show (box);
 
   menubar = ctk_menu_bar_new ();
-  ctk_box_pack_start (GTK_BOX (box), menubar, FALSE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), menubar, FALSE, TRUE, 0);
   ctk_widget_show (menubar);
 
   menu = create_file_menu (accel_group);
   menuitem = ctk_menu_item_new_with_mnemonic ("_File");
-  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
+  ctk_menu_item_set_submenu (CTK_MENU_ITEM (menuitem), menu);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menubar), menuitem);
   ctk_widget_show (menuitem);
 
   menu = create_recent_chooser_menu (4);
   menuitem = ctk_menu_item_new_with_mnemonic ("_Recently Used");
-  ctk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menubar), menuitem);
+  ctk_menu_item_set_submenu (CTK_MENU_ITEM (menuitem), menu);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menubar), menuitem);
   ctk_widget_show (menuitem);
 
   label = ctk_label_new ("No recent item selected");
-  ctk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), label, TRUE, TRUE, 0);
   ctk_widget_show (label);
 
   button = ctk_button_new_with_label ("Close");
   g_signal_connect_swapped (button, "clicked",
                             G_CALLBACK (ctk_widget_destroy),
                             window);
-  ctk_box_pack_end (GTK_BOX (box), button, TRUE, TRUE, 0);
+  ctk_box_pack_end (CTK_BOX (box), button, TRUE, TRUE, 0);
   ctk_widget_set_can_default (button, TRUE);
   ctk_widget_grab_default (button);
   ctk_widget_show (button);

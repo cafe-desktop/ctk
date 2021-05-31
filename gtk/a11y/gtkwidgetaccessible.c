@@ -39,7 +39,7 @@ static gboolean ctk_widget_accessible_all_parents_visible (GtkWidget *widget);
 
 static void atk_component_interface_init (AtkComponentIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkWidgetAccessible, ctk_widget_accessible, GTK_TYPE_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkWidgetAccessible, ctk_widget_accessible, CTK_TYPE_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkWidgetAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_interface_init))
 
@@ -65,8 +65,8 @@ notify_cb (GObject    *obj,
   GtkWidgetAccessible *widget;
   GtkWidgetAccessibleClass *klass;
 
-  widget = GTK_WIDGET_ACCESSIBLE (ctk_widget_get_accessible (GTK_WIDGET (obj)));
-  klass = GTK_WIDGET_ACCESSIBLE_GET_CLASS (widget);
+  widget = CTK_WIDGET_ACCESSIBLE (ctk_widget_get_accessible (CTK_WIDGET (obj)));
+  klass = CTK_WIDGET_ACCESSIBLE_GET_CLASS (widget);
   if (klass->notify_gtk)
     klass->notify_gtk (obj, pspec);
 }
@@ -130,7 +130,7 @@ ctk_widget_accessible_initialize (AtkObject *obj,
 {
   GtkWidget *widget;
 
-  widget = GTK_WIDGET (data);
+  widget = CTK_WIDGET (data);
 
   g_signal_connect_after (widget, "focus-in-event", G_CALLBACK (focus_cb), NULL);
   g_signal_connect_after (widget, "focus-out-event", G_CALLBACK (focus_cb), NULL);
@@ -139,10 +139,10 @@ ctk_widget_accessible_initialize (AtkObject *obj,
   g_signal_connect (widget, "map", G_CALLBACK (map_cb), NULL);
   g_signal_connect (widget, "unmap", G_CALLBACK (map_cb), NULL);
 
-  GTK_WIDGET_ACCESSIBLE (obj)->priv->layer = ATK_LAYER_WIDGET;
+  CTK_WIDGET_ACCESSIBLE (obj)->priv->layer = ATK_LAYER_WIDGET;
   obj->role = ATK_ROLE_UNKNOWN;
 
-  ctk_widget_accessible_update_tooltip (GTK_WIDGET_ACCESSIBLE (obj), widget);
+  ctk_widget_accessible_update_tooltip (CTK_WIDGET_ACCESSIBLE (obj), widget);
 }
 
 static const gchar *
@@ -150,7 +150,7 @@ ctk_widget_accessible_get_description (AtkObject *accessible)
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
@@ -166,7 +166,7 @@ ctk_widget_accessible_get_parent (AtkObject *accessible)
   AtkObject *parent;
   GtkWidget *widget, *parent_widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
@@ -182,14 +182,14 @@ ctk_widget_accessible_get_parent (AtkObject *accessible)
    * accessible object corresponding the GtkNotebookPage containing
    * the widget as the accessible parent.
    */
-  if (GTK_IS_NOTEBOOK (parent_widget))
+  if (CTK_IS_NOTEBOOK (parent_widget))
     {
       gint page_num;
       GtkWidget *child;
       GtkNotebook *notebook;
 
       page_num = 0;
-      notebook = GTK_NOTEBOOK (parent_widget);
+      notebook = CTK_NOTEBOOK (parent_widget);
       while (TRUE)
         {
           child = ctk_notebook_get_nth_page (notebook, page_num);
@@ -232,7 +232,7 @@ find_label (GtkWidget *widget)
   g_list_free (labels);
 
   /* Ignore a label within a button; bug #136602 */
-  if (label && GTK_IS_BUTTON (widget))
+  if (label && CTK_IS_BUTTON (widget))
     {
       temp_widget = label;
       while (temp_widget)
@@ -257,13 +257,13 @@ ctk_widget_accessible_ref_relation_set (AtkObject *obj)
   AtkObject *array[1];
   AtkRelation* relation;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
   relation_set = ATK_OBJECT_CLASS (ctk_widget_accessible_parent_class)->ref_relation_set (obj);
 
-  if (GTK_IS_BOX (widget))
+  if (CTK_IS_BOX (widget))
     return relation_set;
 
   if (!atk_relation_set_contains (relation_set, ATK_RELATION_LABELLED_BY))
@@ -271,7 +271,7 @@ ctk_widget_accessible_ref_relation_set (AtkObject *obj)
       label = find_label (widget);
       if (label == NULL)
         {
-          if (GTK_IS_BUTTON (widget) && ctk_widget_get_mapped (widget))
+          if (CTK_IS_BUTTON (widget) && ctk_widget_get_mapped (widget))
             /*
              * Handle the case where GnomeIconEntry is the mnemonic widget.
              * The GtkButton which is a grandchild of the GnomeIconEntry
@@ -282,10 +282,10 @@ ctk_widget_accessible_ref_relation_set (AtkObject *obj)
 
               temp_widget = ctk_widget_get_parent (widget);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-              if (GTK_IS_ALIGNMENT (temp_widget))
+              if (CTK_IS_ALIGNMENT (temp_widget))
                 {
                   temp_widget = ctk_widget_get_parent (temp_widget);
-                  if (GTK_IS_BOX (temp_widget))
+                  if (CTK_IS_BOX (temp_widget))
                     {
                       label = find_label (temp_widget);
                       if (!label)
@@ -294,7 +294,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                 }
 G_GNUC_END_IGNORE_DEPRECATIONS
             }
-          else if (GTK_IS_COMBO_BOX (widget))
+          else if (CTK_IS_COMBO_BOX (widget))
             /*
              * Handle the case when GtkFileChooserButton is the mnemonic
              * widget.  The GtkComboBox which is a child of the
@@ -305,7 +305,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
               GtkWidget *temp_widget;
 
               temp_widget = ctk_widget_get_parent (widget);
-              if (GTK_IS_BOX (temp_widget))
+              if (CTK_IS_BOX (temp_widget))
                 {
                   label = find_label (temp_widget);
                 }
@@ -333,7 +333,7 @@ ctk_widget_accessible_ref_state_set (AtkObject *accessible)
 
   state_set = ATK_OBJECT_CLASS (ctk_widget_accessible_parent_class)->ref_state_set (accessible);
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     atk_state_set_add_state (state_set, ATK_STATE_DEFUNCT);
   else
@@ -388,9 +388,9 @@ ctk_widget_accessible_ref_state_set (AtkObject *accessible)
       if (ctk_widget_has_default (widget))
         atk_state_set_add_state (state_set, ATK_STATE_DEFAULT);
 
-      if (GTK_IS_ORIENTABLE (widget))
+      if (CTK_IS_ORIENTABLE (widget))
         {
-          if (ctk_orientable_get_orientation (GTK_ORIENTABLE (widget)) == GTK_ORIENTATION_HORIZONTAL)
+          if (ctk_orientable_get_orientation (CTK_ORIENTABLE (widget)) == CTK_ORIENTATION_HORIZONTAL)
             atk_state_set_add_state (state_set, ATK_STATE_HORIZONTAL);
           else
             atk_state_set_add_state (state_set, ATK_STATE_VERTICAL);
@@ -410,7 +410,7 @@ ctk_widget_accessible_get_index_in_parent (AtkObject *accessible)
   gint index;
   GList *children;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
 
   if (widget == NULL)
     return -1;
@@ -421,7 +421,7 @@ ctk_widget_accessible_get_index_in_parent (AtkObject *accessible)
 
       parent = accessible->accessible_parent;
 
-      if (GTK_IS_NOTEBOOK_PAGE_ACCESSIBLE (parent))
+      if (CTK_IS_NOTEBOOK_PAGE_ACCESSIBLE (parent))
         return 0;
       else
         {
@@ -444,13 +444,13 @@ ctk_widget_accessible_get_index_in_parent (AtkObject *accessible)
         }
     }
 
-  if (!GTK_IS_WIDGET (widget))
+  if (!CTK_IS_WIDGET (widget))
     return -1;
   parent_widget = ctk_widget_get_parent (widget);
-  if (!GTK_IS_CONTAINER (parent_widget))
+  if (!CTK_IS_CONTAINER (parent_widget))
     return -1;
 
-  children = ctk_container_get_children (GTK_CONTAINER (parent_widget));
+  children = ctk_container_get_children (CTK_CONTAINER (parent_widget));
 
   index = g_list_index (children, widget);
   g_list_free (children);
@@ -468,7 +468,7 @@ static void
 ctk_widget_accessible_notify_gtk (GObject    *obj,
                                   GParamSpec *pspec)
 {
-  GtkWidget* widget = GTK_WIDGET (obj);
+  GtkWidget* widget = CTK_WIDGET (obj);
   AtkObject* atk_obj = ctk_widget_get_accessible (widget);
   AtkState state;
   gboolean value;
@@ -481,7 +481,7 @@ ctk_widget_accessible_notify_gtk (GObject    *obj,
     return;
   else if (g_strcmp0 (pspec->name, "tooltip-text") == 0)
     {
-      ctk_widget_accessible_update_tooltip (GTK_WIDGET_ACCESSIBLE (atk_obj),
+      ctk_widget_accessible_update_tooltip (CTK_WIDGET_ACCESSIBLE (atk_obj),
                                             widget);
 
       if (atk_obj->description == NULL)
@@ -499,14 +499,14 @@ ctk_widget_accessible_notify_gtk (GObject    *obj,
       value = ctk_widget_get_sensitive (widget);
     }
   else if (g_strcmp0 (pspec->name, "orientation") == 0 &&
-           GTK_IS_ORIENTABLE (widget))
+           CTK_IS_ORIENTABLE (widget))
     {
       GtkOrientable *orientable;
 
-      orientable = GTK_ORIENTABLE (widget);
+      orientable = CTK_ORIENTABLE (widget);
 
       state = ATK_STATE_HORIZONTAL;
-      value = (ctk_orientable_get_orientation (orientable) == GTK_ORIENTATION_HORIZONTAL);
+      value = (ctk_orientable_get_orientation (orientable) == CTK_ORIENTATION_HORIZONTAL);
     }
   else if (g_strcmp0 (pspec->name, "has-tooltip") == 0)
     {
@@ -576,7 +576,7 @@ ctk_widget_accessible_get_extents (AtkComponent   *component,
   GtkWidget *widget;
   GtkAllocation allocation;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
     return;
 
@@ -619,7 +619,7 @@ ctk_widget_accessible_get_extents (AtkComponent   *component,
 static AtkLayer
 ctk_widget_accessible_get_layer (AtkComponent *component)
 {
-  GtkWidgetAccessible *accessible = GTK_WIDGET_ACCESSIBLE (component);
+  GtkWidgetAccessible *accessible = CTK_WIDGET_ACCESSIBLE (component);
 
   return accessible->priv->layer;
 }
@@ -630,7 +630,7 @@ ctk_widget_accessible_grab_focus (AtkComponent *component)
   GtkWidget *widget;
   GtkWidget *toplevel;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (!widget)
     return FALSE;
 
@@ -643,13 +643,13 @@ ctk_widget_accessible_grab_focus (AtkComponent *component)
     {
 #ifdef GDK_WINDOWING_X11
       if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (toplevel)))
-        ctk_window_present_with_time (GTK_WINDOW (toplevel),
+        ctk_window_present_with_time (CTK_WINDOW (toplevel),
                                       gdk_x11_get_server_time (ctk_widget_get_window (widget)));
       else
 #endif
         {
           G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-          ctk_window_present (GTK_WINDOW (toplevel));
+          ctk_window_present (CTK_WINDOW (toplevel));
           G_GNUC_END_IGNORE_DEPRECATIONS
         }
     }
@@ -667,7 +667,7 @@ ctk_widget_accessible_set_extents (AtkComponent *component,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
     return FALSE;
 
@@ -686,14 +686,14 @@ ctk_widget_accessible_set_extents (AtkComponent *component,
         return FALSE;
       else
         {
-          ctk_window_move (GTK_WINDOW (widget), x_current, y_current);
+          ctk_window_move (CTK_WINDOW (widget), x_current, y_current);
           ctk_widget_set_size_request (widget, width, height);
           return TRUE;
         }
     }
   else if (coord_type == ATK_XY_SCREEN)
     {
-      ctk_window_move (GTK_WINDOW (widget), x, y);
+      ctk_window_move (CTK_WINDOW (widget), x, y);
       ctk_widget_set_size_request (widget, width, height);
       return TRUE;
     }
@@ -708,7 +708,7 @@ ctk_widget_accessible_set_position (AtkComponent *component,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
     return FALSE;
 
@@ -726,13 +726,13 @@ ctk_widget_accessible_set_position (AtkComponent *component,
             return FALSE;
           else
             {
-              ctk_window_move (GTK_WINDOW (widget), x_current, y_current);
+              ctk_window_move (CTK_WINDOW (widget), x_current, y_current);
               return TRUE;
             }
         }
       else if (coord_type == ATK_XY_SCREEN)
         {
-          ctk_window_move (GTK_WINDOW (widget), x, y);
+          ctk_window_move (CTK_WINDOW (widget), x, y);
           return TRUE;
         }
     }
@@ -746,7 +746,7 @@ ctk_widget_accessible_set_size (AtkComponent *component,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
     return FALSE;
 
@@ -786,7 +786,7 @@ ctk_widget_accessible_on_screen (GtkWidget *widget)
   if (!ctk_widget_get_mapped (widget))
     return FALSE;
 
-  viewport = ctk_widget_get_ancestor (widget, GTK_TYPE_VIEWPORT);
+  viewport = ctk_widget_get_ancestor (widget, CTK_TYPE_VIEWPORT);
   if (viewport)
     {
       GtkAllocation viewport_allocation;
@@ -795,9 +795,9 @@ ctk_widget_accessible_on_screen (GtkWidget *widget)
 
       ctk_widget_get_allocation (viewport, &viewport_allocation);
 
-      adjustment = ctk_scrollable_get_vadjustment (GTK_SCROLLABLE (viewport));
+      adjustment = ctk_scrollable_get_vadjustment (CTK_SCROLLABLE (viewport));
       visible_rect.y = ctk_adjustment_get_value (adjustment);
-      adjustment = ctk_scrollable_get_hadjustment (GTK_SCROLLABLE (viewport));
+      adjustment = ctk_scrollable_get_hadjustment (CTK_SCROLLABLE (viewport));
       visible_rect.x = ctk_adjustment_get_value (adjustment);
       visible_rect.width = viewport_allocation.width;
       visible_rect.height = viewport_allocation.height;

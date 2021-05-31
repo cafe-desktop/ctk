@@ -293,11 +293,11 @@ static void ctk_recent_chooser_sync_action_properties (GtkActivatable       *act
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserDefault,
 			 _ctk_recent_chooser_default,
-			 GTK_TYPE_BOX,
+			 CTK_TYPE_BOX,
                          G_ADD_PRIVATE (GtkRecentChooserDefault)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_RECENT_CHOOSER,
 				 		ctk_recent_chooser_iface_init)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 				 		ctk_recent_chooser_activatable_iface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -332,7 +332,7 @@ static void
 _ctk_recent_chooser_default_class_init (GtkRecentChooserDefaultClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->set_property = ctk_recent_chooser_default_set_property;
   gobject_class->get_property = ctk_recent_chooser_default_get_property;
@@ -383,7 +383,7 @@ _ctk_recent_chooser_default_init (GtkRecentChooserDefault *impl)
   priv->local_manager = FALSE;
 
   priv->limit = FALLBACK_ITEM_LIMIT;
-  priv->sort_type = GTK_RECENT_SORT_NONE;
+  priv->sort_type = CTK_RECENT_SORT_NONE;
 
   priv->show_icons = TRUE;
   priv->show_private = FALSE;
@@ -403,7 +403,7 @@ _ctk_recent_chooser_default_init (GtkRecentChooserDefault *impl)
   
   priv->load_state = LOAD_EMPTY;
 
-  ctk_widget_init_template (GTK_WIDGET (impl));
+  ctk_widget_init_template (CTK_WIDGET (impl));
 
   g_object_set_data (G_OBJECT (priv->recent_view),
                      "GtkRecentChooserDefault", impl);
@@ -431,20 +431,20 @@ ctk_recent_chooser_default_set_property (GObject      *object,
 					 const GValue *value,
 					 GParamSpec   *pspec)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (object);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (object);
   
   switch (prop_id)
     {
-    case GTK_RECENT_CHOOSER_PROP_RECENT_MANAGER:
+    case CTK_RECENT_CHOOSER_PROP_RECENT_MANAGER:
       set_recent_manager (impl, g_value_get_object (value));
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
       if (impl->priv->show_private != g_value_get_boolean (value))
         {
           impl->priv->show_private = g_value_get_boolean (value);
           if (impl->priv->recent_popup_menu_show_private_item)
             {
-              GtkCheckMenuItem *item = GTK_CHECK_MENU_ITEM (impl->priv->recent_popup_menu_show_private_item);
+              GtkCheckMenuItem *item = CTK_CHECK_MENU_ITEM (impl->priv->recent_popup_menu_show_private_item);
               g_signal_handlers_block_by_func (item, G_CALLBACK (show_private_toggled_cb), impl);
               ctk_check_menu_item_set_active (item, impl->priv->show_private);
               g_signal_handlers_unblock_by_func (item, G_CALLBACK (show_private_toggled_cb), impl);
@@ -453,7 +453,7 @@ ctk_recent_chooser_default_set_property (GObject      *object,
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
       if (impl->priv->show_not_found != g_value_get_boolean (value))
         {
           impl->priv->show_not_found = g_value_get_boolean (value);
@@ -461,14 +461,14 @@ ctk_recent_chooser_default_set_property (GObject      *object,
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
       if (impl->priv->show_tips != g_value_get_boolean (value))
         {
           impl->priv->show_tips = g_value_get_boolean (value);
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
       if (impl->priv->show_icons != g_value_get_boolean (value))
         {
           impl->priv->show_icons = g_value_get_boolean (value);
@@ -476,18 +476,18 @@ ctk_recent_chooser_default_set_property (GObject      *object,
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
+    case CTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
       if (impl->priv->select_multiple != g_value_get_boolean (value))
         {
           impl->priv->select_multiple = g_value_get_boolean (value);
           if (impl->priv->select_multiple)
-            ctk_tree_selection_set_mode (impl->priv->selection, GTK_SELECTION_MULTIPLE);
+            ctk_tree_selection_set_mode (impl->priv->selection, CTK_SELECTION_MULTIPLE);
           else
-            ctk_tree_selection_set_mode (impl->priv->selection, GTK_SELECTION_SINGLE);
+            ctk_tree_selection_set_mode (impl->priv->selection, CTK_SELECTION_SINGLE);
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
+    case CTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
       if (impl->priv->local_only != g_value_get_boolean (value))
         {
           impl->priv->local_only = g_value_get_boolean (value);
@@ -495,7 +495,7 @@ ctk_recent_chooser_default_set_property (GObject      *object,
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_LIMIT:
+    case CTK_RECENT_CHOOSER_PROP_LIMIT:
       if (impl->priv->limit != g_value_get_int (value))
         {
           impl->priv->limit = g_value_get_int (value);
@@ -504,17 +504,17 @@ ctk_recent_chooser_default_set_property (GObject      *object,
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SORT_TYPE:
+    case CTK_RECENT_CHOOSER_PROP_SORT_TYPE:
       chooser_set_sort_type (impl, g_value_get_enum (value));
       break;
-    case GTK_RECENT_CHOOSER_PROP_FILTER:
+    case CTK_RECENT_CHOOSER_PROP_FILTER:
       set_current_filter (impl, g_value_get_object (value));
       break;
     case PROP_ACTIVATABLE_RELATED_ACTION:
-      _ctk_recent_chooser_set_related_action (GTK_RECENT_CHOOSER (impl), g_value_get_object (value));
+      _ctk_recent_chooser_set_related_action (CTK_RECENT_CHOOSER (impl), g_value_get_object (value));
       break;
     case PROP_ACTIVATABLE_USE_ACTION_APPEARANCE: 
-      _ctk_recent_chooser_set_use_action_appearance (GTK_RECENT_CHOOSER (impl), g_value_get_boolean (value));
+      _ctk_recent_chooser_set_use_action_appearance (CTK_RECENT_CHOOSER (impl), g_value_get_boolean (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -528,42 +528,42 @@ ctk_recent_chooser_default_get_property (GObject    *object,
 					 GValue     *value,
 					 GParamSpec *pspec)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (object);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (object);
   
   switch (prop_id)
     {
-    case GTK_RECENT_CHOOSER_PROP_LIMIT:
+    case CTK_RECENT_CHOOSER_PROP_LIMIT:
       g_value_set_int (value, impl->priv->limit);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SORT_TYPE:
+    case CTK_RECENT_CHOOSER_PROP_SORT_TYPE:
       g_value_set_enum (value, impl->priv->sort_type);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
       g_value_set_boolean (value, impl->priv->show_private);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
       g_value_set_boolean (value, impl->priv->show_icons);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
       g_value_set_boolean (value, impl->priv->show_not_found);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
       g_value_set_boolean (value, impl->priv->show_tips);
       break;
-    case GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
+    case CTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
       g_value_set_boolean (value, impl->priv->local_only);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
+    case CTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
       g_value_set_boolean (value, impl->priv->select_multiple);
       break;
-    case GTK_RECENT_CHOOSER_PROP_FILTER:
+    case CTK_RECENT_CHOOSER_PROP_FILTER:
       g_value_set_object (value, impl->priv->current_filter);
       break;
     case PROP_ACTIVATABLE_RELATED_ACTION:
-      g_value_set_object (value, _ctk_recent_chooser_get_related_action (GTK_RECENT_CHOOSER (impl)));
+      g_value_set_object (value, _ctk_recent_chooser_get_related_action (CTK_RECENT_CHOOSER (impl)));
       break;
     case PROP_ACTIVATABLE_USE_ACTION_APPEARANCE: 
-      g_value_set_boolean (value, _ctk_recent_chooser_get_use_action_appearance (GTK_RECENT_CHOOSER (impl)));
+      g_value_set_boolean (value, _ctk_recent_chooser_get_use_action_appearance (CTK_RECENT_CHOOSER (impl)));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -574,7 +574,7 @@ ctk_recent_chooser_default_get_property (GObject    *object,
 static void
 ctk_recent_chooser_default_dispose (GObject *object)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (object);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (object);
 
   if (impl->priv->load_id)
     {
@@ -610,7 +610,7 @@ ctk_recent_chooser_default_dispose (GObject *object)
 static void
 ctk_recent_chooser_default_finalize (GObject *object)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (object);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (object);
 
   impl->priv->manager = NULL; 
   
@@ -646,19 +646,19 @@ error_message_with_parent (GtkWindow   *parent,
   GtkWidget *dialog;
 
   dialog = ctk_message_dialog_new (parent,
-				   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-				   GTK_MESSAGE_ERROR,
-				   GTK_BUTTONS_OK,
+				   CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
+				   CTK_MESSAGE_ERROR,
+				   CTK_BUTTONS_OK,
 				   "%s",
 				   msg);
-  ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+  ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
 					    "%s", detail);
 
   if (ctk_window_has_group (parent))
     ctk_window_group_add_window (ctk_window_get_group (parent),
-                                 GTK_WINDOW (dialog));
+                                 CTK_WINDOW (dialog));
 
-  ctk_dialog_run (GTK_DIALOG (dialog));
+  ctk_dialog_run (CTK_DIALOG (dialog));
   ctk_widget_destroy (dialog);
 }
 
@@ -672,7 +672,7 @@ get_toplevel (GtkWidget *widget)
   if (!ctk_widget_is_toplevel (toplevel))
     return NULL;
   else
-    return GTK_WINDOW (toplevel);
+    return CTK_WINDOW (toplevel);
 }
 
 /* Shows an error dialog for the file chooser */
@@ -681,7 +681,7 @@ error_message (GtkRecentChooserDefault *impl,
 	       const gchar             *msg,
 	       const gchar             *detail)
 {
-  error_message_with_parent (get_toplevel (GTK_WIDGET (impl)), msg, detail);
+  error_message_with_parent (get_toplevel (CTK_WIDGET (impl)), msg, detail);
 }
 
 static void
@@ -692,18 +692,18 @@ set_busy_cursor (GtkRecentChooserDefault *impl,
   GdkDisplay *display;
   GdkCursor *cursor;
 
-  toplevel = get_toplevel (GTK_WIDGET (impl));
-  if (!toplevel || !ctk_widget_get_realized (GTK_WIDGET (toplevel)))
+  toplevel = get_toplevel (CTK_WIDGET (impl));
+  if (!toplevel || !ctk_widget_get_realized (CTK_WIDGET (toplevel)))
     return;
 
-  display = ctk_widget_get_display (GTK_WIDGET (toplevel));
+  display = ctk_widget_get_display (CTK_WIDGET (toplevel));
 
   if (busy)
     cursor = gdk_cursor_new_from_name (display, "progress");
   else
     cursor = NULL;
 
-  gdk_window_set_cursor (ctk_widget_get_window (GTK_WIDGET (toplevel)), cursor);
+  gdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (toplevel)), cursor);
   gdk_display_flush (display);
 
   if (cursor)
@@ -716,11 +716,11 @@ chooser_set_model (GtkRecentChooserDefault *impl)
   g_assert (impl->priv->recent_store != NULL);
   g_assert (impl->priv->load_state == LOAD_LOADING);
 
-  ctk_tree_view_set_model (GTK_TREE_VIEW (impl->priv->recent_view),
-                           GTK_TREE_MODEL (impl->priv->recent_store));
-  ctk_tree_view_columns_autosize (GTK_TREE_VIEW (impl->priv->recent_view));
-  ctk_tree_view_set_enable_search (GTK_TREE_VIEW (impl->priv->recent_view), TRUE);
-  ctk_tree_view_set_search_column (GTK_TREE_VIEW (impl->priv->recent_view),
+  ctk_tree_view_set_model (CTK_TREE_VIEW (impl->priv->recent_view),
+                           CTK_TREE_MODEL (impl->priv->recent_store));
+  ctk_tree_view_columns_autosize (CTK_TREE_VIEW (impl->priv->recent_view));
+  ctk_tree_view_set_enable_search (CTK_TREE_VIEW (impl->priv->recent_view), TRUE);
+  ctk_tree_view_set_search_column (CTK_TREE_VIEW (impl->priv->recent_view),
   				   RECENT_DISPLAY_NAME_COLUMN);
 
   impl->priv->load_state = LOAD_FINISHED;
@@ -735,7 +735,7 @@ load_recent_items (gpointer user_data)
   const gchar *uri, *name;
   gboolean retval;
   
-  impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
   
   g_assert ((impl->priv->load_state == LOAD_EMPTY) ||
             (impl->priv->load_state == LOAD_PRELOAD));
@@ -743,7 +743,7 @@ load_recent_items (gpointer user_data)
   /* store the items for multiple runs */
   if (!impl->priv->recent_items)
     {
-      impl->priv->recent_items = ctk_recent_chooser_get_items (GTK_RECENT_CHOOSER (impl));
+      impl->priv->recent_items = ctk_recent_chooser_get_items (CTK_RECENT_CHOOSER (impl));
       if (!impl->priv->recent_items)
         {
 	  impl->priv->load_state = LOAD_FINISHED;
@@ -808,7 +808,7 @@ cleanup_after_load (gpointer user_data)
 {
   GtkRecentChooserDefault *impl;
   
-  impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
 
   if (impl->priv->load_id != 0)
     {
@@ -841,16 +841,16 @@ reload_recent_items (GtkRecentChooserDefault *impl)
   if (impl->priv->load_id)
     return;
   
-  widget = GTK_WIDGET (impl);
+  widget = CTK_WIDGET (impl);
 
-  ctk_tree_view_set_model (GTK_TREE_VIEW (impl->priv->recent_view), NULL);
+  ctk_tree_view_set_model (CTK_TREE_VIEW (impl->priv->recent_view), NULL);
   ctk_list_store_clear (impl->priv->recent_store);
   
   if (!impl->priv->icon_theme)
     impl->priv->icon_theme = get_icon_theme_for_widget (widget);
 
   impl->priv->icon_size = get_icon_size_for_widget (widget,
-		  			      GTK_ICON_SIZE_BUTTON);
+		  			      CTK_ICON_SIZE_BUTTON);
 
   if (!impl->priv->limit_set)
     impl->priv->limit = DEFAULT_RECENT_FILES_LIMIT;
@@ -879,7 +879,7 @@ set_default_size (GtkRecentChooserDefault *impl)
   GdkRectangle workarea;
   GtkStyleContext *context;
 
-  widget = GTK_WIDGET (impl);
+  widget = CTK_WIDGET (impl);
   context = ctk_widget_get_style_context (widget);
 
   /* Size based on characters and the icon size */
@@ -902,7 +902,7 @@ set_default_size (GtkRecentChooserDefault *impl)
   height = MIN (height, workarea.height * 3 / 4);
 
   /* Set size */
-  scrollw = GTK_SCROLLED_WINDOW (ctk_widget_get_parent (impl->priv->recent_view));
+  scrollw = CTK_SCROLLED_WINDOW (ctk_widget_get_parent (impl->priv->recent_view));
   ctk_scrolled_window_set_min_content_width (scrollw, width);
   ctk_scrolled_window_set_min_content_height (scrollw, height);
 }
@@ -910,9 +910,9 @@ set_default_size (GtkRecentChooserDefault *impl)
 static void
 ctk_recent_chooser_default_map (GtkWidget *widget)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (widget);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (widget);
 
-  GTK_WIDGET_CLASS (_ctk_recent_chooser_default_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (_ctk_recent_chooser_default_parent_class)->map (widget);
 
   /* reloads everything */
   reload_recent_items (impl);
@@ -971,7 +971,7 @@ recent_meta_data_func (GtkTreeViewColumn *tree_column,
 static gchar *
 ctk_recent_chooser_default_get_current_uri (GtkRecentChooser *chooser)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   
   g_assert (impl->priv->selection != NULL);
   
@@ -1027,7 +1027,7 @@ scan_for_uri_cb (GtkTreeModel *model,
       select_data->found = TRUE;
       
       if (select_data->do_activate)
-        ctk_tree_view_row_activated (GTK_TREE_VIEW (select_data->impl->priv->recent_view),
+        ctk_tree_view_row_activated (CTK_TREE_VIEW (select_data->impl->priv->recent_view),
         			     path,
         			     select_data->impl->priv->meta_column);
       
@@ -1051,7 +1051,7 @@ ctk_recent_chooser_default_set_current_uri (GtkRecentChooser  *chooser,
 					    const gchar       *uri,
 					    GError           **error)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   SelectURIData *data;
   
   data = g_new0 (SelectURIData, 1);
@@ -1061,7 +1061,7 @@ ctk_recent_chooser_default_set_current_uri (GtkRecentChooser  *chooser,
   data->do_activate = TRUE;
   data->do_select = TRUE;
   
-  ctk_tree_model_foreach (GTK_TREE_MODEL (impl->priv->recent_store),
+  ctk_tree_model_foreach (CTK_TREE_MODEL (impl->priv->recent_store),
   			  scan_for_uri_cb,
   			  data);
   
@@ -1070,8 +1070,8 @@ ctk_recent_chooser_default_set_current_uri (GtkRecentChooser  *chooser,
       g_free (data->uri);
       g_free (data);
       
-      g_set_error (error, GTK_RECENT_CHOOSER_ERROR,
-      		   GTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_CHOOSER_ERROR,
+      		   CTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
       		   _("No item for URI '%s' found"),
       		   uri);
       return FALSE;
@@ -1088,7 +1088,7 @@ ctk_recent_chooser_default_select_uri (GtkRecentChooser  *chooser,
 				       const gchar       *uri,
 				       GError           **error)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   SelectURIData *data;
   
   data = g_new0 (SelectURIData, 1);
@@ -1098,7 +1098,7 @@ ctk_recent_chooser_default_select_uri (GtkRecentChooser  *chooser,
   data->do_activate = FALSE;
   data->do_select = TRUE;
   
-  ctk_tree_model_foreach (GTK_TREE_MODEL (impl->priv->recent_store),
+  ctk_tree_model_foreach (CTK_TREE_MODEL (impl->priv->recent_store),
   			  scan_for_uri_cb,
   			  data);
   
@@ -1107,8 +1107,8 @@ ctk_recent_chooser_default_select_uri (GtkRecentChooser  *chooser,
       g_free (data->uri);
       g_free (data);
       
-      g_set_error (error, GTK_RECENT_CHOOSER_ERROR,
-      		   GTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_CHOOSER_ERROR,
+      		   CTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
       		   _("No item for URI '%s' found"),
       		   uri);
       return FALSE;
@@ -1124,7 +1124,7 @@ static void
 ctk_recent_chooser_default_unselect_uri (GtkRecentChooser *chooser,
 					 const gchar      *uri)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   SelectURIData *data;
   
   data = g_new0 (SelectURIData, 1);
@@ -1134,7 +1134,7 @@ ctk_recent_chooser_default_unselect_uri (GtkRecentChooser *chooser,
   data->do_activate = FALSE;
   data->do_select = FALSE;
   
-  ctk_tree_model_foreach (GTK_TREE_MODEL (impl->priv->recent_store),
+  ctk_tree_model_foreach (CTK_TREE_MODEL (impl->priv->recent_store),
   			  scan_for_uri_cb,
   			  data);
   
@@ -1145,7 +1145,7 @@ ctk_recent_chooser_default_unselect_uri (GtkRecentChooser *chooser,
 static void
 ctk_recent_chooser_default_select_all (GtkRecentChooser *chooser)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   
   if (!impl->priv->select_multiple)
     return;
@@ -1156,7 +1156,7 @@ ctk_recent_chooser_default_select_all (GtkRecentChooser *chooser)
 static void
 ctk_recent_chooser_default_unselect_all (GtkRecentChooser *chooser)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   
   ctk_tree_selection_unselect_all (impl->priv->selection);
 }
@@ -1167,7 +1167,7 @@ ctk_recent_chooser_default_set_sort_func (GtkRecentChooser  *chooser,
 					  gpointer           sort_data,
 					  GDestroyNotify     data_destroy)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   
   if (impl->priv->sort_data_destroy)
     {
@@ -1191,7 +1191,7 @@ ctk_recent_chooser_default_get_items (GtkRecentChooser *chooser)
 {
   GtkRecentChooserDefault *impl;
 
-  impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
 
   return _ctk_recent_chooser_get_items (chooser,
                                         impl->priv->current_filter,
@@ -1202,7 +1202,7 @@ ctk_recent_chooser_default_get_items (GtkRecentChooser *chooser)
 static GtkRecentManager *
 ctk_recent_chooser_default_get_recent_manager (GtkRecentChooser *chooser)
 {
-  return GTK_RECENT_CHOOSER_DEFAULT (chooser)->priv->manager;
+  return CTK_RECENT_CHOOSER_DEFAULT (chooser)->priv->manager;
 }
 
 static void
@@ -1222,7 +1222,7 @@ ctk_recent_chooser_default_add_filter (GtkRecentChooser *chooser,
   GtkRecentChooserDefault *impl;
   const gchar *name;
 
-  impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   
   if (g_slist_find (impl->priv->filters, filter))
     {
@@ -1238,7 +1238,7 @@ ctk_recent_chooser_default_add_filter (GtkRecentChooser *chooser,
   if (!name)
     name = _("Untitled filter");
 
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (impl->priv->filter_combo), name);
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (impl->priv->filter_combo), name);
 
   if (!g_slist_find (impl->priv->filters, impl->priv->current_filter))
     set_current_filter (impl, filter);
@@ -1250,7 +1250,7 @@ static void
 ctk_recent_chooser_default_remove_filter (GtkRecentChooser *chooser,
 					  GtkRecentFilter  *filter)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   GtkTreeModel *model;
   GtkTreeIter iter;
   gint filter_idx;
@@ -1273,9 +1273,9 @@ ctk_recent_chooser_default_remove_filter (GtkRecentChooser *chooser,
         set_current_filter (impl, NULL);
     }
   
-  model = ctk_combo_box_get_model (GTK_COMBO_BOX (impl->priv->filter_combo));
+  model = ctk_combo_box_get_model (CTK_COMBO_BOX (impl->priv->filter_combo));
   ctk_tree_model_iter_nth_child (model, &iter, NULL, filter_idx);
-  ctk_list_store_remove (GTK_LIST_STORE (model), &iter);
+  ctk_list_store_remove (CTK_LIST_STORE (model), &iter);
   
   g_object_unref (filter);
   
@@ -1286,7 +1286,7 @@ ctk_recent_chooser_default_remove_filter (GtkRecentChooser *chooser,
 static GSList *
 ctk_recent_chooser_default_list_filters (GtkRecentChooser *chooser)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (chooser);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (chooser);
   
   return g_slist_copy (impl->priv->filters);
 }
@@ -1314,7 +1314,7 @@ set_current_filter (GtkRecentChooserDefault *impl,
         }
       
       if (impl->priv->filters)
-        ctk_combo_box_set_active (GTK_COMBO_BOX (impl->priv->filter_combo),
+        ctk_combo_box_set_active (CTK_COMBO_BOX (impl->priv->filter_combo),
                                   filter_idx);
       
       if (impl->priv->recent_store)
@@ -1342,7 +1342,7 @@ get_icon_theme_for_widget (GtkWidget *widget)
 {
   return ctk_css_icon_theme_value_get_icon_theme
     (_ctk_style_context_peek_property (ctk_widget_get_style_context (widget),
-                                       GTK_CSS_PROPERTY_ICON_THEME));
+                                       CTK_CSS_PROPERTY_ICON_THEME));
 }
 
 static gint
@@ -1361,7 +1361,7 @@ static void
 recent_manager_changed_cb (GtkRecentManager *manager,
 			   gpointer          user_data)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
 
   reload_recent_items (impl);
 }
@@ -1370,7 +1370,7 @@ static void
 selection_changed_cb (GtkTreeSelection *selection,
 		      gpointer          user_data)
 {
-  _ctk_recent_chooser_selection_changed (GTK_RECENT_CHOOSER (user_data));
+  _ctk_recent_chooser_selection_changed (CTK_RECENT_CHOOSER (user_data));
 }
 
 static void
@@ -1379,7 +1379,7 @@ row_activated_cb (GtkTreeView       *tree_view,
 		  GtkTreeViewColumn *tree_column,
 		  gpointer           user_data)
 {
-  _ctk_recent_chooser_item_activated (GTK_RECENT_CHOOSER (user_data));
+  _ctk_recent_chooser_item_activated (CTK_RECENT_CHOOSER (user_data));
 }
 
 static void
@@ -1390,7 +1390,7 @@ filter_combo_changed_cb (GtkComboBox *combo_box,
   gint new_index;
   GtkRecentFilter *filter;
   
-  impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
   
   new_index = ctk_combo_box_get_active (combo_box);
   filter = g_slist_nth_data (impl->priv->filters, new_index);
@@ -1405,13 +1405,13 @@ get_drag_pixbuf (GtkRecentChooserDefault *impl)
   GdkPixbuf *retval;
   gint size;
   
-  g_assert (GTK_IS_RECENT_CHOOSER_DEFAULT (impl));
+  g_assert (CTK_IS_RECENT_CHOOSER_DEFAULT (impl));
 
-  info = ctk_recent_chooser_get_current_item (GTK_RECENT_CHOOSER (impl));
+  info = ctk_recent_chooser_get_current_item (CTK_RECENT_CHOOSER (impl));
   if (!info)
     return NULL;
 
-  size = get_icon_size_for_widget (GTK_WIDGET (impl), GTK_ICON_SIZE_DND);
+  size = get_icon_size_for_widget (CTK_WIDGET (impl), CTK_ICON_SIZE_DND);
 
   retval = ctk_recent_info_get_icon (info, size);
   ctk_recent_info_unref (info);
@@ -1424,7 +1424,7 @@ recent_view_drag_begin_cb (GtkWidget      *widget,
 			   GdkDragContext *context,
 			   gpointer        user_data)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
   GdkPixbuf *pixbuf;
 
   pixbuf = get_drag_pixbuf (impl);
@@ -1471,7 +1471,7 @@ recent_view_drag_data_get_cb (GtkWidget        *widget,
 			      guint32           time_,
 			      gpointer          data)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (data);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (data);
   DragData drag_data;
   gsize n_uris;
   
@@ -1509,7 +1509,7 @@ recent_view_query_tooltip_cb (GtkWidget  *widget,
   if (!impl->priv->show_tips)
     return FALSE;
 
-  tree_view = GTK_TREE_VIEW (impl->priv->recent_view);
+  tree_view = CTK_TREE_VIEW (impl->priv->recent_view);
 
   ctk_tree_view_get_tooltip_context (tree_view,
                                      &x, &y,
@@ -1518,13 +1518,13 @@ recent_view_query_tooltip_cb (GtkWidget  *widget,
   if (!path)
     return FALSE;
 
-  if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (impl->priv->recent_store), &iter, path))
+  if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (impl->priv->recent_store), &iter, path))
     {
       ctk_tree_path_free (path);
       return FALSE;
     }
 
-  ctk_tree_model_get (GTK_TREE_MODEL (impl->priv->recent_store), &iter,
+  ctk_tree_model_get (CTK_TREE_MODEL (impl->priv->recent_store), &iter,
                       RECENT_INFO_COLUMN, &info,
                       -1);
 
@@ -1549,7 +1549,7 @@ remove_selected_from_list (GtkRecentChooserDefault *impl)
   if (impl->priv->select_multiple)
     return;
   
-  uri = ctk_recent_chooser_get_current_uri (GTK_RECENT_CHOOSER (impl));
+  uri = ctk_recent_chooser_get_current_uri (CTK_RECENT_CHOOSER (impl));
   if (!uri)
     return;
   
@@ -1572,17 +1572,17 @@ static void
 copy_activated_cb (GtkMenuItem *menu_item,
 		   gpointer     user_data)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
   GtkRecentInfo *info;
   gchar *utf8_uri;
 
-  info = ctk_recent_chooser_get_current_item (GTK_RECENT_CHOOSER (impl));
+  info = ctk_recent_chooser_get_current_item (CTK_RECENT_CHOOSER (impl));
   if (!info)
     return;
 
   utf8_uri = ctk_recent_info_get_uri_display (info);
   
-  ctk_clipboard_set_text (ctk_widget_get_clipboard (GTK_WIDGET (impl),
+  ctk_clipboard_set_text (ctk_widget_get_clipboard (CTK_WIDGET (impl),
 			  			    GDK_SELECTION_CLIPBOARD),
                           utf8_uri, -1);
 
@@ -1594,7 +1594,7 @@ static void
 remove_all_activated_cb (GtkMenuItem *menu_item,
 			 gpointer     user_data)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
   GError *err = NULL;
   
   ctk_recent_manager_purge_items (impl->priv->manager, &err);
@@ -1615,7 +1615,7 @@ static void
 remove_item_activated_cb (GtkMenuItem *menu_item,
 			  gpointer     user_data)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
   
   remove_selected_from_list (impl);
 }
@@ -1624,7 +1624,7 @@ static void
 show_private_toggled_cb (GtkCheckMenuItem *menu_item,
 			 gpointer          user_data)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
   
   g_object_set (G_OBJECT (impl),
   		"show-private", ctk_check_menu_item_get_active (menu_item),
@@ -1638,7 +1638,7 @@ recent_popup_menu_detach_cb (GtkWidget *attach_widget,
   GtkRecentChooserDefault *impl;
   
   impl = g_object_get_data (G_OBJECT (attach_widget), "GtkRecentChooserDefault");
-  g_assert (GTK_IS_RECENT_CHOOSER_DEFAULT (impl));
+  g_assert (CTK_IS_RECENT_CHOOSER_DEFAULT (impl));
   
   impl->priv->recent_popup_menu = NULL;
   impl->priv->recent_popup_menu_remove_item = NULL;
@@ -1652,7 +1652,7 @@ recent_view_menu_ensure_state (GtkRecentChooserDefault *impl)
 {
   gint count;
   
-  g_assert (GTK_IS_RECENT_CHOOSER_DEFAULT (impl));
+  g_assert (CTK_IS_RECENT_CHOOSER_DEFAULT (impl));
   g_assert (impl->priv->recent_popup_menu != NULL);
 
   if (!impl->priv->manager)
@@ -1682,7 +1682,7 @@ recent_view_menu_build (GtkRecentChooserDefault *impl)
     }
   
   impl->priv->recent_popup_menu = ctk_menu_new ();
-  ctk_menu_attach_to_widget (GTK_MENU (impl->priv->recent_popup_menu),
+  ctk_menu_attach_to_widget (CTK_MENU (impl->priv->recent_popup_menu),
   			     impl->priv->recent_view,
   			     recent_popup_menu_detach_cb);
   
@@ -1691,18 +1691,18 @@ recent_view_menu_build (GtkRecentChooserDefault *impl)
   g_signal_connect (item, "activate",
 		    G_CALLBACK (copy_activated_cb), impl);
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
 
   item = ctk_separator_menu_item_new ();
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
   
   item = ctk_menu_item_new_with_mnemonic (_("_Remove From List"));
   impl->priv->recent_popup_menu_remove_item = item;
   g_signal_connect (item, "activate",
   		    G_CALLBACK (remove_item_activated_cb), impl);
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
 
   item = ctk_menu_item_new_with_mnemonic (_("_Clear List"));
   impl->priv->recent_popup_menu_clear_item = item;
@@ -1710,19 +1710,19 @@ recent_view_menu_build (GtkRecentChooserDefault *impl)
 		    G_CALLBACK (remove_all_activated_cb), impl);
   
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
   
   item = ctk_separator_menu_item_new ();
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
   
   item = ctk_check_menu_item_new_with_mnemonic (_("Show _Private Resources"));
   impl->priv->recent_popup_menu_show_private_item = item;
-  ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), impl->priv->show_private);
+  ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (item), impl->priv->show_private);
   g_signal_connect (item, "toggled",
   		    G_CALLBACK (show_private_toggled_cb), impl);
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (impl->priv->recent_popup_menu), item);
   
   recent_view_menu_ensure_state (impl);
 }
@@ -1734,16 +1734,16 @@ recent_view_menu_popup (GtkRecentChooserDefault *impl,
   recent_view_menu_build (impl);
   
   if (event && gdk_event_triggers_context_menu ((GdkEvent *) event))
-    ctk_menu_popup_at_pointer (GTK_MENU (impl->priv->recent_popup_menu), (GdkEvent *) event);
+    ctk_menu_popup_at_pointer (CTK_MENU (impl->priv->recent_popup_menu), (GdkEvent *) event);
   else
     {
-      ctk_menu_popup_at_widget (GTK_MENU (impl->priv->recent_popup_menu),
+      ctk_menu_popup_at_widget (CTK_MENU (impl->priv->recent_popup_menu),
                                 impl->priv->recent_view,
                                 GDK_GRAVITY_CENTER,
                                 GDK_GRAVITY_CENTER,
                                 (GdkEvent *) event);
 
-      ctk_menu_shell_select_first (GTK_MENU_SHELL (impl->priv->recent_popup_menu), FALSE);
+      ctk_menu_shell_select_first (CTK_MENU_SHELL (impl->priv->recent_popup_menu), FALSE);
     }
 }
 
@@ -1751,7 +1751,7 @@ static gboolean
 recent_view_popup_menu_cb (GtkWidget *widget,
 			   gpointer   user_data)
 {
-  recent_view_menu_popup (GTK_RECENT_CHOOSER_DEFAULT (user_data), NULL);
+  recent_view_menu_popup (CTK_RECENT_CHOOSER_DEFAULT (user_data), NULL);
   return TRUE;
 }
 
@@ -1760,17 +1760,17 @@ recent_view_button_press_cb (GtkWidget      *widget,
 			     GdkEventButton *event,
 			     gpointer        user_data)
 {
-  GtkRecentChooserDefault *impl = GTK_RECENT_CHOOSER_DEFAULT (user_data);
+  GtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
 
   if (gdk_event_triggers_context_menu ((GdkEvent *) event))
     {
       GtkTreePath *path;
       gboolean res;
 
-      if (event->window != ctk_tree_view_get_bin_window (GTK_TREE_VIEW (impl->priv->recent_view)))
+      if (event->window != ctk_tree_view_get_bin_window (CTK_TREE_VIEW (impl->priv->recent_view)))
         return FALSE;
 
-      res = ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (impl->priv->recent_view),
+      res = ctk_tree_view_get_path_at_pos (CTK_TREE_VIEW (impl->priv->recent_view),
 		      			   event->x, event->y,
 					   &path,
 					   NULL, NULL, NULL);
@@ -1826,13 +1826,13 @@ ctk_recent_chooser_update (GtkActivatable *activatable,
   if (strcmp (property_name, "visible") == 0)
     {
       if (ctk_action_is_visible (action))
-	ctk_widget_show (GTK_WIDGET (activatable));
+	ctk_widget_show (CTK_WIDGET (activatable));
       else
-	ctk_widget_hide (GTK_WIDGET (activatable));
+	ctk_widget_hide (CTK_WIDGET (activatable));
     }
 
   if (strcmp (property_name, "sensitive") == 0)
-    ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
+    ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -1848,11 +1848,11 @@ ctk_recent_chooser_sync_action_properties (GtkActivatable *activatable,
   if (action)
     {
       if (ctk_action_is_visible (action))
-	ctk_widget_show (GTK_WIDGET (activatable));
+	ctk_widget_show (CTK_WIDGET (activatable));
       else
-	ctk_widget_hide (GTK_WIDGET (activatable));
+	ctk_widget_hide (CTK_WIDGET (activatable));
       
-      ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
+      ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
     }
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -1863,7 +1863,7 @@ ctk_recent_chooser_sync_action_properties (GtkActivatable *activatable,
 GtkWidget *
 _ctk_recent_chooser_default_new (GtkRecentManager *manager)
 {
-  return g_object_new (GTK_TYPE_RECENT_CHOOSER_DEFAULT,
+  return g_object_new (CTK_TYPE_RECENT_CHOOSER_DEFAULT,
   		       "recent-manager", manager,
   		       NULL);
 }

@@ -182,7 +182,7 @@ ctk_cell_renderer_init (GtkCellRenderer *cell)
   cell->priv = ctk_cell_renderer_get_instance_private (cell);
   priv = cell->priv;
 
-  priv->mode = GTK_CELL_RENDERER_MODE_INERT;
+  priv->mode = CTK_CELL_RENDERER_MODE_INERT;
   priv->visible = TRUE;
   priv->width = -1;
   priv->height = -1;
@@ -259,9 +259,9 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
    *                       const gchar     *path,
    *                       gpointer         data)
    * {
-   *   if (GTK_IS_ENTRY (editable)) 
+   *   if (CTK_IS_ENTRY (editable)) 
    *     {
-   *       GtkEntry *entry = GTK_ENTRY (editable);
+   *       GtkEntry *entry = CTK_ENTRY (editable);
    *       
    *       // ... create a GtkEntryCompletion
    *       
@@ -280,7 +280,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_STRING,
 		  G_TYPE_NONE, 2,
-		  GTK_TYPE_CELL_EDITABLE,
+		  CTK_TYPE_CELL_EDITABLE,
 		  G_TYPE_STRING);
   g_signal_set_va_marshaller (cell_renderer_signals[EDITING_STARTED],
                               G_TYPE_FROM_CLASS (object_class),
@@ -291,9 +291,9 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 				   g_param_spec_enum ("mode",
 						      P_("mode"),
 						      P_("Editable mode of the CellRenderer"),
-						      GTK_TYPE_CELL_RENDERER_MODE,
-						      GTK_CELL_RENDERER_MODE_INERT,
-						      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						      CTK_TYPE_CELL_RENDERER_MODE,
+						      CTK_CELL_RENDERER_MODE_INERT,
+						      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_VISIBLE,
@@ -301,14 +301,14 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 							 P_("visible"),
 							 P_("Display the cell"),
 							 TRUE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   g_object_class_install_property (object_class,
 				   PROP_SENSITIVE,
 				   g_param_spec_boolean ("sensitive",
 							 P_("Sensitive"),
 							 P_("Display the cell sensitive"),
 							 TRUE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_XALIGN,
@@ -318,7 +318,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 						       0.0,
 						       1.0,
 						       0.5,
-						       GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						       CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_YALIGN,
@@ -328,7 +328,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 						       0.0,
 						       1.0,
 						       0.5,
-						       GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						       CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_XPAD,
@@ -338,7 +338,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 						      0,
 						      G_MAXUINT,
 						      0,
-						      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_YPAD,
@@ -348,7 +348,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 						      0,
 						      G_MAXUINT,
 						      0,
-						      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_WIDTH,
@@ -358,7 +358,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 						     -1,
 						     G_MAXINT,
 						     -1,
-						     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_HEIGHT,
@@ -368,7 +368,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 						     -1,
 						     G_MAXINT,
 						     -1,
-						     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_IS_EXPANDER,
@@ -376,7 +376,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 							 P_("Is Expander"),
 							 P_("Row has children"),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
 
   g_object_class_install_property (object_class,
@@ -385,7 +385,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 							 P_("Is Expanded"),
 							 P_("Row is an expander row, and is expanded"),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (object_class,
 				   PROP_CELL_BACKGROUND,
@@ -393,7 +393,7 @@ ctk_cell_renderer_class_init (GtkCellRendererClass *class)
 							P_("Cell background color name"),
 							P_("Cell background color as a string"),
 							NULL,
-							GTK_PARAM_WRITABLE));
+							CTK_PARAM_WRITABLE));
 
   /**
    * GtkCellRenderer:cell-background-gdk:
@@ -409,7 +409,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 						       P_("Cell background color"),
 						       P_("Cell background color as a GdkColor"),
 						       GDK_TYPE_COLOR,
-						       GTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+						       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * GtkCellRenderer:cell-background-rgba:
@@ -424,7 +424,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 						       P_("Cell background RGBA color"),
 						       P_("Cell background color as a GdkRGBA"),
 						       GDK_TYPE_RGBA,
-						       GTK_PARAM_READWRITE));
+						       CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
 				   PROP_EDITING,
@@ -432,10 +432,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 							 P_("Editing"),
 							 P_("Whether the cell renderer is currently in editing mode"),
 							 FALSE,
-							 GTK_PARAM_READABLE));
+							 CTK_PARAM_READABLE));
 
 
-#define ADD_SET_PROP(propname, propval, nick, blurb) g_object_class_install_property (object_class, propval, g_param_spec_boolean (propname, nick, blurb, FALSE, GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY))
+#define ADD_SET_PROP(propname, propval, nick, blurb) g_object_class_install_property (object_class, propval, g_param_spec_boolean (propname, nick, blurb, FALSE, CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY))
 
   ADD_SET_PROP ("cell-background-set", PROP_CELL_BACKGROUND_SET,
                 P_("Cell background set"),
@@ -444,7 +444,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   if (GtkCellRenderer_private_offset != 0)
     g_type_class_adjust_private_offset (class, &GtkCellRenderer_private_offset);
 
-  ctk_cell_renderer_class_set_accessible_type (class, GTK_TYPE_RENDERER_CELL_ACCESSIBLE);
+  ctk_cell_renderer_class_set_accessible_type (class, CTK_TYPE_RENDERER_CELL_ACCESSIBLE);
 }
 
 static void
@@ -452,7 +452,7 @@ ctk_cell_renderer_base_class_init (gpointer g_class)
 {
   GtkCellRendererClass *klass = g_class;
 
-  klass->priv = G_TYPE_CLASS_GET_PRIVATE (g_class, GTK_TYPE_CELL_RENDERER, GtkCellRendererClassPrivate);
+  klass->priv = G_TYPE_CLASS_GET_PRIVATE (g_class, CTK_TYPE_CELL_RENDERER, GtkCellRendererClassPrivate);
 }
 
 GType
@@ -492,7 +492,7 @@ ctk_cell_renderer_get_property (GObject     *object,
 				GValue      *value,
 				GParamSpec  *pspec)
 {
-  GtkCellRenderer *cell = GTK_CELL_RENDERER (object);
+  GtkCellRenderer *cell = CTK_CELL_RENDERER (object);
   GtkCellRendererPrivate *priv = cell->priv;
 
   switch (param_id)
@@ -564,7 +564,7 @@ ctk_cell_renderer_set_property (GObject      *object,
 				const GValue *value,
 				GParamSpec   *pspec)
 {
-  GtkCellRenderer *cell = GTK_CELL_RENDERER (object);
+  GtkCellRenderer *cell = CTK_CELL_RENDERER (object);
   GtkCellRendererPrivate *priv = cell->priv;
 
   switch (param_id)
@@ -758,7 +758,7 @@ ctk_cell_renderer_get_size (GtkCellRenderer    *cell,
 {
   GtkRequisition request;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
   ctk_cell_renderer_get_preferred_size (cell, widget, &request, NULL);
 
@@ -804,11 +804,11 @@ ctk_cell_renderer_render (GtkCellRenderer      *cell,
   GtkStyleContext *context;
   GtkStateFlags state;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
-  g_return_if_fail (GTK_CELL_RENDERER_GET_CLASS (cell)->render != NULL);
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_CELL_RENDERER_GET_CLASS (cell)->render != NULL);
   g_return_if_fail (cr != NULL);
 
-  selected = (flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED;
+  selected = (flags & CTK_CELL_RENDERER_SELECTED) == CTK_CELL_RENDERER_SELECTED;
 
   cairo_save (cr);
 
@@ -825,12 +825,12 @@ ctk_cell_renderer_render (GtkCellRenderer      *cell,
   context = ctk_widget_get_style_context (widget);
 
   ctk_style_context_save (context);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_CELL);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_CELL);
 
   state = ctk_cell_renderer_get_state (cell, widget, flags);
   ctk_style_context_set_state (context, state);
 
-  GTK_CELL_RENDERER_GET_CLASS (cell)->render (cell,
+  CTK_CELL_RENDERER_GET_CLASS (cell)->render (cell,
                                               cr,
 					      widget,
 					      background_area,
@@ -868,17 +868,17 @@ ctk_cell_renderer_activate (GtkCellRenderer      *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_CELL_RENDERER (cell), FALSE);
+  g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
   priv = cell->priv;
 
-  if (priv->mode != GTK_CELL_RENDERER_MODE_ACTIVATABLE)
+  if (priv->mode != CTK_CELL_RENDERER_MODE_ACTIVATABLE)
     return FALSE;
 
-  if (GTK_CELL_RENDERER_GET_CLASS (cell)->activate == NULL)
+  if (CTK_CELL_RENDERER_GET_CLASS (cell)->activate == NULL)
     return FALSE;
 
-  return GTK_CELL_RENDERER_GET_CLASS (cell)->activate (cell,
+  return CTK_CELL_RENDERER_GET_CLASS (cell)->activate (cell,
 						       event,
 						       widget,
 						       path,
@@ -917,17 +917,17 @@ ctk_cell_renderer_start_editing (GtkCellRenderer      *cell,
   GtkCellRendererPrivate *priv;
   GtkCellEditable *editable;
 
-  g_return_val_if_fail (GTK_IS_CELL_RENDERER (cell), NULL);
+  g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), NULL);
 
   priv = cell->priv;
 
-  if (priv->mode != GTK_CELL_RENDERER_MODE_EDITABLE)
+  if (priv->mode != CTK_CELL_RENDERER_MODE_EDITABLE)
     return NULL;
 
-  if (GTK_CELL_RENDERER_GET_CLASS (cell)->start_editing == NULL)
+  if (CTK_CELL_RENDERER_GET_CLASS (cell)->start_editing == NULL)
     return NULL;
 
-  editable = GTK_CELL_RENDERER_GET_CLASS (cell)->start_editing (cell,
+  editable = CTK_CELL_RENDERER_GET_CLASS (cell)->start_editing (cell,
 								event,
 								widget,
 								path,
@@ -937,8 +937,8 @@ ctk_cell_renderer_start_editing (GtkCellRenderer      *cell,
   if (editable == NULL)
     return NULL;
 
-  ctk_style_context_add_class (ctk_widget_get_style_context (GTK_WIDGET (editable)),
-                               GTK_STYLE_CLASS_CELL);
+  ctk_style_context_add_class (ctk_widget_get_style_context (CTK_WIDGET (editable)),
+                               CTK_STYLE_CLASS_CELL);
 
   g_signal_emit (cell, 
 		 cell_renderer_signals[EDITING_STARTED], 0,
@@ -964,7 +964,7 @@ ctk_cell_renderer_set_fixed_size (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (width >= -1 && height >= -1);
 
   priv = cell->priv;
@@ -1004,7 +1004,7 @@ ctk_cell_renderer_get_fixed_size (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
   priv = cell->priv;
 
@@ -1031,7 +1031,7 @@ ctk_cell_renderer_set_alignment (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (xalign >= 0.0 && xalign <= 1.0);
   g_return_if_fail (yalign >= 0.0 && yalign <= 1.0);
 
@@ -1074,7 +1074,7 @@ ctk_cell_renderer_get_alignment (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
   priv = cell->priv;
 
@@ -1101,7 +1101,7 @@ ctk_cell_renderer_set_padding (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (xpad >= 0 && ypad >= 0);
 
   priv = cell->priv;
@@ -1143,7 +1143,7 @@ ctk_cell_renderer_get_padding (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
   priv = cell->priv;
 
@@ -1168,7 +1168,7 @@ ctk_cell_renderer_set_visible (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
   priv = cell->priv;
 
@@ -1192,7 +1192,7 @@ ctk_cell_renderer_set_visible (GtkCellRenderer *cell,
 gboolean
 ctk_cell_renderer_get_visible (GtkCellRenderer *cell)
 {
-  g_return_val_if_fail (GTK_IS_CELL_RENDERER (cell), FALSE);
+  g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
   return cell->priv->visible;
 }
@@ -1212,7 +1212,7 @@ ctk_cell_renderer_set_sensitive (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
   priv = cell->priv;
 
@@ -1236,7 +1236,7 @@ ctk_cell_renderer_set_sensitive (GtkCellRenderer *cell,
 gboolean
 ctk_cell_renderer_get_sensitive (GtkCellRenderer *cell)
 {
-  g_return_val_if_fail (GTK_IS_CELL_RENDERER (cell), FALSE);
+  g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
   return cell->priv->sensitive;
 }
@@ -1257,13 +1257,13 @@ ctk_cell_renderer_is_activatable (GtkCellRenderer *cell)
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_CELL_RENDERER (cell), FALSE);
+  g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
   priv = cell->priv;
 
   return (priv->visible &&
-          (priv->mode == GTK_CELL_RENDERER_MODE_EDITABLE ||
-           priv->mode == GTK_CELL_RENDERER_MODE_ACTIVATABLE));
+          (priv->mode == CTK_CELL_RENDERER_MODE_EDITABLE ||
+           priv->mode == CTK_CELL_RENDERER_MODE_ACTIVATABLE));
 }
 
 
@@ -1288,7 +1288,7 @@ ctk_cell_renderer_stop_editing (GtkCellRenderer *cell,
 {
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
   priv = cell->priv;
 
@@ -1310,8 +1310,8 @@ ctk_cell_renderer_real_get_preferred_size (GtkCellRenderer   *cell,
   GtkRequisition min_req;
 
   /* Fallback on the old API to get the size. */
-  if (GTK_CELL_RENDERER_GET_CLASS (cell)->get_size)
-    GTK_CELL_RENDERER_GET_CLASS (cell)->get_size (GTK_CELL_RENDERER (cell), widget, NULL, NULL, NULL,
+  if (CTK_CELL_RENDERER_GET_CLASS (cell)->get_size)
+    CTK_CELL_RENDERER_GET_CLASS (cell)->get_size (CTK_CELL_RENDERER (cell), widget, NULL, NULL, NULL,
 						  &min_req.width, &min_req.height);
   else
     {
@@ -1319,7 +1319,7 @@ ctk_cell_renderer_real_get_preferred_size (GtkCellRenderer   *cell,
       min_req.height = 0;
     }
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       if (minimum_size)
 	*minimum_size = min_req.width;
@@ -1341,7 +1341,7 @@ static GtkSizeRequestMode
 ctk_cell_renderer_real_get_request_mode (GtkCellRenderer *cell)
 {
   /* By default cell renderers are height-for-width. */
-  return GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
+  return CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
 }
 
 static void
@@ -1350,7 +1350,7 @@ ctk_cell_renderer_real_get_preferred_width (GtkCellRenderer *cell,
                                             gint            *minimum_size,
                                             gint            *natural_size)
 {
-  ctk_cell_renderer_real_get_preferred_size (cell, widget, GTK_ORIENTATION_HORIZONTAL, 
+  ctk_cell_renderer_real_get_preferred_size (cell, widget, CTK_ORIENTATION_HORIZONTAL, 
                                              minimum_size, natural_size);
 }
 
@@ -1360,7 +1360,7 @@ ctk_cell_renderer_real_get_preferred_height (GtkCellRenderer *cell,
                                              gint            *minimum_size,
                                              gint            *natural_size)
 {
-  ctk_cell_renderer_real_get_preferred_size (cell, widget, GTK_ORIENTATION_VERTICAL, 
+  ctk_cell_renderer_real_get_preferred_size (cell, widget, CTK_ORIENTATION_VERTICAL, 
                                              minimum_size, natural_size);
 }
 
@@ -1401,15 +1401,15 @@ ctk_cell_renderer_real_get_aligned_area (GtkCellRenderer         *cell,
   gint opposite_size, x_offset, y_offset;
   gint natural_size;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (cell_area != NULL);
   g_return_if_fail (aligned_area != NULL);
 
   *aligned_area = *cell_area;
 
   /* Trim up the aligned size */
-  if (ctk_cell_renderer_get_request_mode (cell) == GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
+  if (ctk_cell_renderer_get_request_mode (cell) == CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
     {
       ctk_cell_renderer_get_preferred_width (cell, widget, 
 					     NULL, &natural_size);
@@ -1465,7 +1465,7 @@ _ctk_cell_renderer_calc_offset    (GtkCellRenderer      *cell,
 { 
   GtkCellRendererPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
   g_return_if_fail (cell_area != NULL);
   g_return_if_fail (x_offset || y_offset);
 
@@ -1473,7 +1473,7 @@ _ctk_cell_renderer_calc_offset    (GtkCellRenderer      *cell,
 
   if (x_offset)
     {
-      *x_offset = (((direction == GTK_TEXT_DIR_RTL) ?
+      *x_offset = (((direction == CTK_TEXT_DIR_RTL) ?
 		    (1.0 - priv->xalign) : priv->xalign) * 
 		   (cell_area->width - width));
       *x_offset = MAX (*x_offset, 0);
@@ -1500,9 +1500,9 @@ _ctk_cell_renderer_calc_offset    (GtkCellRenderer      *cell,
 GtkSizeRequestMode
 ctk_cell_renderer_get_request_mode (GtkCellRenderer *cell)
 {
-  g_return_val_if_fail (GTK_IS_CELL_RENDERER (cell), FALSE);
+  g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell), FALSE);
 
-  return GTK_CELL_RENDERER_GET_CLASS (cell)->get_request_mode (cell);
+  return CTK_CELL_RENDERER_GET_CLASS (cell)->get_request_mode (cell);
 }
 
 /**
@@ -1525,15 +1525,15 @@ ctk_cell_renderer_get_preferred_width (GtkCellRenderer *cell,
   GtkCellRendererClass *klass;
   gint width;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (NULL != minimum_size || NULL != natural_size);
 
-  ctk_cell_renderer_get_fixed_size (GTK_CELL_RENDERER (cell), &width, NULL);
+  ctk_cell_renderer_get_fixed_size (CTK_CELL_RENDERER (cell), &width, NULL);
 
   if (width < 0)
     {
-      klass = GTK_CELL_RENDERER_GET_CLASS (cell);
+      klass = CTK_CELL_RENDERER_GET_CLASS (cell);
       klass->get_preferred_width (cell, widget, minimum_size, natural_size);
     }
   else
@@ -1573,15 +1573,15 @@ ctk_cell_renderer_get_preferred_height (GtkCellRenderer *cell,
   GtkCellRendererClass *klass;
   gint height;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (NULL != minimum_size || NULL != natural_size);
 
-  ctk_cell_renderer_get_fixed_size (GTK_CELL_RENDERER (cell), NULL, &height);
+  ctk_cell_renderer_get_fixed_size (CTK_CELL_RENDERER (cell), NULL, &height);
 
   if (height < 0)
     {
-      klass = GTK_CELL_RENDERER_GET_CLASS (cell);
+      klass = CTK_CELL_RENDERER_GET_CLASS (cell);
       klass->get_preferred_height (cell, widget, minimum_size, natural_size);
     }
   else
@@ -1624,15 +1624,15 @@ ctk_cell_renderer_get_preferred_width_for_height (GtkCellRenderer *cell,
   GtkCellRendererClass *klass;
   gint width;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (NULL != minimum_width || NULL != natural_width);
 
-  ctk_cell_renderer_get_fixed_size (GTK_CELL_RENDERER (cell), &width, NULL);
+  ctk_cell_renderer_get_fixed_size (CTK_CELL_RENDERER (cell), &width, NULL);
 
   if (width < 0)
     {
-      klass = GTK_CELL_RENDERER_GET_CLASS (cell);
+      klass = CTK_CELL_RENDERER_GET_CLASS (cell);
       klass->get_preferred_width_for_height (cell, widget, height, minimum_width, natural_width);
     }
   else
@@ -1674,15 +1674,15 @@ ctk_cell_renderer_get_preferred_height_for_width (GtkCellRenderer *cell,
   GtkCellRendererClass *klass;
   gint height;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (NULL != minimum_height || NULL != natural_height);
 
-  ctk_cell_renderer_get_fixed_size (GTK_CELL_RENDERER (cell), NULL, &height);
+  ctk_cell_renderer_get_fixed_size (CTK_CELL_RENDERER (cell), NULL, &height);
 
   if (height < 0)
     {
-      klass = GTK_CELL_RENDERER_GET_CLASS (cell);
+      klass = CTK_CELL_RENDERER_GET_CLASS (cell);
       klass->get_preferred_height_for_width (cell, widget, width, minimum_height, natural_height);
     }
   else
@@ -1722,9 +1722,9 @@ ctk_cell_renderer_get_preferred_size (GtkCellRenderer *cell,
   gint min_width, nat_width;
   gint min_height, nat_height;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
 
-  if (ctk_cell_renderer_get_request_mode (cell) == GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
+  if (ctk_cell_renderer_get_request_mode (cell) == CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
     {
       ctk_cell_renderer_get_preferred_width (cell, widget, &min_width, &nat_width);
 
@@ -1742,7 +1742,7 @@ ctk_cell_renderer_get_preferred_size (GtkCellRenderer *cell,
                                                             NULL, &natural_size->height);
 	}
     }
-  else /* GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT */
+  else /* CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT */
     {
       ctk_cell_renderer_get_preferred_height (cell, widget, &min_height, &nat_height);
 
@@ -1785,12 +1785,12 @@ ctk_cell_renderer_get_aligned_area (GtkCellRenderer      *cell,
 {
   GtkCellRendererClass *klass;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER (cell));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CELL_RENDERER (cell));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (cell_area != NULL);
   g_return_if_fail (aligned_area != NULL);
 
-  klass = GTK_CELL_RENDERER_GET_CLASS (cell);
+  klass = CTK_CELL_RENDERER_GET_CLASS (cell);
   klass->get_aligned_area (cell, widget, flags, cell_area, aligned_area);
 
   g_assert (aligned_area->x >= cell_area->x && aligned_area->x <= cell_area->x + cell_area->width);
@@ -1820,32 +1820,32 @@ ctk_cell_renderer_get_state (GtkCellRenderer      *cell,
 {
   GtkStateFlags state = 0;
 
-  g_return_val_if_fail (!cell || GTK_IS_CELL_RENDERER (cell), 0);
-  g_return_val_if_fail (!widget || GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (!cell || CTK_IS_CELL_RENDERER (cell), 0);
+  g_return_val_if_fail (!widget || CTK_IS_WIDGET (widget), 0);
 
   if (widget)
     state |= ctk_widget_get_state_flags (widget);
 
-  state &= ~(GTK_STATE_FLAG_FOCUSED | GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_SELECTED | GTK_STATE_FLAG_DROP_ACTIVE);
+  state &= ~(CTK_STATE_FLAG_FOCUSED | CTK_STATE_FLAG_PRELIGHT | CTK_STATE_FLAG_SELECTED | CTK_STATE_FLAG_DROP_ACTIVE);
 
-  if ((state & GTK_STATE_FLAG_INSENSITIVE) != 0 ||
+  if ((state & CTK_STATE_FLAG_INSENSITIVE) != 0 ||
       (cell && !ctk_cell_renderer_get_sensitive (cell)) ||
-      (cell_state & GTK_CELL_RENDERER_INSENSITIVE) != 0)
+      (cell_state & CTK_CELL_RENDERER_INSENSITIVE) != 0)
     {
-      state |= GTK_STATE_FLAG_INSENSITIVE;
+      state |= CTK_STATE_FLAG_INSENSITIVE;
     }
   else
     {
       if ((widget && ctk_widget_has_focus (widget)) &&
-          (cell_state & GTK_CELL_RENDERER_FOCUSED) != 0)
-        state |= GTK_STATE_FLAG_FOCUSED;
+          (cell_state & CTK_CELL_RENDERER_FOCUSED) != 0)
+        state |= CTK_STATE_FLAG_FOCUSED;
 
-      if ((cell_state & GTK_CELL_RENDERER_PRELIT) != 0)
-        state |= GTK_STATE_FLAG_PRELIGHT;
+      if ((cell_state & CTK_CELL_RENDERER_PRELIT) != 0)
+        state |= CTK_STATE_FLAG_PRELIGHT;
     }
 
-  if ((cell_state & GTK_CELL_RENDERER_SELECTED) != 0)
-    state |= GTK_STATE_FLAG_SELECTED;
+  if ((cell_state & CTK_CELL_RENDERER_SELECTED) != 0)
+    state |= CTK_STATE_FLAG_SELECTED;
 
   return state;
 }
@@ -1869,8 +1869,8 @@ ctk_cell_renderer_class_set_accessible_type (GtkCellRendererClass *renderer_clas
 {
   GtkCellRendererClassPrivate *priv;
 
-  g_return_if_fail (GTK_IS_CELL_RENDERER_CLASS (renderer_class));
-  g_return_if_fail (g_type_is_a (type, GTK_TYPE_RENDERER_CELL_ACCESSIBLE));
+  g_return_if_fail (CTK_IS_CELL_RENDERER_CLASS (renderer_class));
+  g_return_if_fail (g_type_is_a (type, CTK_TYPE_RENDERER_CELL_ACCESSIBLE));
 
   priv = renderer_class->priv;
 
@@ -1880,8 +1880,8 @@ ctk_cell_renderer_class_set_accessible_type (GtkCellRendererClass *renderer_clas
 GType
 _ctk_cell_renderer_get_accessible_type (GtkCellRenderer *renderer)
 {
-  g_return_val_if_fail (GTK_IS_CELL_RENDERER (renderer), GTK_TYPE_RENDERER_CELL_ACCESSIBLE);
+  g_return_val_if_fail (CTK_IS_CELL_RENDERER (renderer), CTK_TYPE_RENDERER_CELL_ACCESSIBLE);
 
-  return GTK_CELL_RENDERER_GET_CLASS (renderer)->priv->accessible_type;
+  return CTK_CELL_RENDERER_GET_CLASS (renderer)->priv->accessible_type;
 }
 

@@ -14,10 +14,10 @@ update_ui (void)
   gboolean can_unexport;
   char *label_text;
 
-  ctk_entry_set_text (GTK_ENTRY (entry), export_handle ? export_handle : "");
+  ctk_entry_set_text (CTK_ENTRY (entry), export_handle ? export_handle : "");
 
   label_text = g_strdup_printf ("Export count: %d", export_count);
-  ctk_label_set_text (GTK_LABEL (label), label_text);
+  ctk_label_set_text (CTK_LABEL (label), label_text);
   g_free (label_text);
 
   can_unexport = !!export_handle;
@@ -76,18 +76,18 @@ main (int   argc,
   ctk_init (&argc, &argv);
 
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   display = ctk_widget_get_display (window);
   if (!GDK_IS_WAYLAND_DISPLAY (display))
     g_error ("This test is only works on Wayland");
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 10);
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 10);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
 
   label = ctk_label_new (NULL);
   entry = ctk_entry_new ();
-  ctk_editable_set_editable (GTK_EDITABLE (entry), FALSE);
+  ctk_editable_set_editable (CTK_EDITABLE (entry), FALSE);
 
   export_button = ctk_button_new_with_label ("Export");
   unexport_button = ctk_button_new_with_label("Unexport");
@@ -96,14 +96,14 @@ main (int   argc,
   g_signal_connect (unexport_button, "clicked",
                     G_CALLBACK (unexport_callback), NULL);
 
-  ctk_container_add (GTK_CONTAINER (hbox), export_button);
-  ctk_container_add (GTK_CONTAINER (hbox), unexport_button);
+  ctk_container_add (CTK_CONTAINER (hbox), export_button);
+  ctk_container_add (CTK_CONTAINER (hbox), unexport_button);
 
-  ctk_container_add (GTK_CONTAINER (vbox), entry);
-  ctk_container_add (GTK_CONTAINER (vbox), label);
-  ctk_container_add (GTK_CONTAINER (vbox), hbox);
+  ctk_container_add (CTK_CONTAINER (vbox), entry);
+  ctk_container_add (CTK_CONTAINER (vbox), label);
+  ctk_container_add (CTK_CONTAINER (vbox), hbox);
 
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   update_ui ();
 

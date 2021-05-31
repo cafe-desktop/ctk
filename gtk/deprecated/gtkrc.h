@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_RC_H__
-#define __GTK_RC_H__
+#ifndef __CTK_RC_H__
+#define __CTK_RC_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -38,28 +38,28 @@ G_BEGIN_DECLS
 typedef struct _GtkRcContext    GtkRcContext;
 typedef struct _GtkRcStyleClass GtkRcStyleClass;
 
-#define GTK_TYPE_RC_STYLE              (ctk_rc_style_get_type ())
-#define GTK_RC_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_RC_STYLE, GtkRcStyle))
-#define GTK_RC_STYLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RC_STYLE, GtkRcStyleClass))
-#define GTK_IS_RC_STYLE(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_RC_STYLE))
-#define GTK_IS_RC_STYLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_RC_STYLE))
-#define GTK_RC_STYLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_RC_STYLE, GtkRcStyleClass))
+#define CTK_TYPE_RC_STYLE              (ctk_rc_style_get_type ())
+#define CTK_RC_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_RC_STYLE, GtkRcStyle))
+#define CTK_RC_STYLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RC_STYLE, GtkRcStyleClass))
+#define CTK_IS_RC_STYLE(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_RC_STYLE))
+#define CTK_IS_RC_STYLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RC_STYLE))
+#define CTK_RC_STYLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RC_STYLE, GtkRcStyleClass))
 
 /**
  * GtkRcFlags:
- * @GTK_RC_FG :Deprecated
- * @GTK_RC_BG: Deprecated
- * @GTK_RC_TEXT: Deprecated
- * @GTK_RC_BASE: Deprecated
+ * @CTK_RC_FG :Deprecated
+ * @CTK_RC_BG: Deprecated
+ * @CTK_RC_TEXT: Deprecated
+ * @CTK_RC_BASE: Deprecated
  *
  * Deprecated
  */
 typedef enum
 {
-  GTK_RC_FG             = 1 << 0,
-  GTK_RC_BG             = 1 << 1,
-  GTK_RC_TEXT           = 1 << 2,
-  GTK_RC_BASE           = 1 << 3
+  CTK_RC_FG             = 1 << 0,
+  CTK_RC_BG             = 1 << 1,
+  CTK_RC_TEXT           = 1 << 2,
+  CTK_RC_BASE           = 1 << 3
 } GtkRcFlags;
 
 /**
@@ -219,46 +219,46 @@ gchar*      ctk_rc_get_im_module_file  (void);
 
 /**
  * GtkRcTokenType:
- * @GTK_RC_TOKEN_INVALID: Deprecated
- * @GTK_RC_TOKEN_INCLUDE: Deprecated
- * @GTK_RC_TOKEN_NORMAL: Deprecated
- * @GTK_RC_TOKEN_ACTIVE: Deprecated
- * @GTK_RC_TOKEN_PRELIGHT: Deprecated
- * @GTK_RC_TOKEN_SELECTED: Deprecated
- * @GTK_RC_TOKEN_INSENSITIVE: Deprecated
- * @GTK_RC_TOKEN_FG: Deprecated
- * @GTK_RC_TOKEN_BG: Deprecated
- * @GTK_RC_TOKEN_TEXT: Deprecated
- * @GTK_RC_TOKEN_BASE: Deprecated
- * @GTK_RC_TOKEN_XTHICKNESS: Deprecated
- * @GTK_RC_TOKEN_YTHICKNESS: Deprecated
- * @GTK_RC_TOKEN_FONT: Deprecated
- * @GTK_RC_TOKEN_FONTSET: Deprecated
- * @GTK_RC_TOKEN_FONT_NAME: Deprecated
- * @GTK_RC_TOKEN_BG_PIXMAP: Deprecated
- * @GTK_RC_TOKEN_PIXMAP_PATH: Deprecated
- * @GTK_RC_TOKEN_STYLE: Deprecated
- * @GTK_RC_TOKEN_BINDING: Deprecated
- * @GTK_RC_TOKEN_BIND: Deprecated
- * @GTK_RC_TOKEN_WIDGET: Deprecated
- * @GTK_RC_TOKEN_WIDGET_CLASS: Deprecated
- * @GTK_RC_TOKEN_CLASS: Deprecated
- * @GTK_RC_TOKEN_LOWEST: Deprecated
- * @GTK_RC_TOKEN_GTK: Deprecated
- * @GTK_RC_TOKEN_APPLICATION: Deprecated
- * @GTK_RC_TOKEN_THEME: Deprecated
- * @GTK_RC_TOKEN_RC: Deprecated
- * @GTK_RC_TOKEN_HIGHEST: Deprecated
- * @GTK_RC_TOKEN_ENGINE: Deprecated
- * @GTK_RC_TOKEN_MODULE_PATH: Deprecated
- * @GTK_RC_TOKEN_IM_MODULE_PATH: Deprecated
- * @GTK_RC_TOKEN_IM_MODULE_FILE: Deprecated
- * @GTK_RC_TOKEN_STOCK: Deprecated
- * @GTK_RC_TOKEN_LTR: Deprecated
- * @GTK_RC_TOKEN_RTL: Deprecated
- * @GTK_RC_TOKEN_COLOR: Deprecated
- * @GTK_RC_TOKEN_UNBIND: Deprecated
- * @GTK_RC_TOKEN_LAST: Deprecated
+ * @CTK_RC_TOKEN_INVALID: Deprecated
+ * @CTK_RC_TOKEN_INCLUDE: Deprecated
+ * @CTK_RC_TOKEN_NORMAL: Deprecated
+ * @CTK_RC_TOKEN_ACTIVE: Deprecated
+ * @CTK_RC_TOKEN_PRELIGHT: Deprecated
+ * @CTK_RC_TOKEN_SELECTED: Deprecated
+ * @CTK_RC_TOKEN_INSENSITIVE: Deprecated
+ * @CTK_RC_TOKEN_FG: Deprecated
+ * @CTK_RC_TOKEN_BG: Deprecated
+ * @CTK_RC_TOKEN_TEXT: Deprecated
+ * @CTK_RC_TOKEN_BASE: Deprecated
+ * @CTK_RC_TOKEN_XTHICKNESS: Deprecated
+ * @CTK_RC_TOKEN_YTHICKNESS: Deprecated
+ * @CTK_RC_TOKEN_FONT: Deprecated
+ * @CTK_RC_TOKEN_FONTSET: Deprecated
+ * @CTK_RC_TOKEN_FONT_NAME: Deprecated
+ * @CTK_RC_TOKEN_BG_PIXMAP: Deprecated
+ * @CTK_RC_TOKEN_PIXMAP_PATH: Deprecated
+ * @CTK_RC_TOKEN_STYLE: Deprecated
+ * @CTK_RC_TOKEN_BINDING: Deprecated
+ * @CTK_RC_TOKEN_BIND: Deprecated
+ * @CTK_RC_TOKEN_WIDGET: Deprecated
+ * @CTK_RC_TOKEN_WIDGET_CLASS: Deprecated
+ * @CTK_RC_TOKEN_CLASS: Deprecated
+ * @CTK_RC_TOKEN_LOWEST: Deprecated
+ * @CTK_RC_TOKEN_GTK: Deprecated
+ * @CTK_RC_TOKEN_APPLICATION: Deprecated
+ * @CTK_RC_TOKEN_THEME: Deprecated
+ * @CTK_RC_TOKEN_RC: Deprecated
+ * @CTK_RC_TOKEN_HIGHEST: Deprecated
+ * @CTK_RC_TOKEN_ENGINE: Deprecated
+ * @CTK_RC_TOKEN_MODULE_PATH: Deprecated
+ * @CTK_RC_TOKEN_IM_MODULE_PATH: Deprecated
+ * @CTK_RC_TOKEN_IM_MODULE_FILE: Deprecated
+ * @CTK_RC_TOKEN_STOCK: Deprecated
+ * @CTK_RC_TOKEN_LTR: Deprecated
+ * @CTK_RC_TOKEN_RTL: Deprecated
+ * @CTK_RC_TOKEN_COLOR: Deprecated
+ * @CTK_RC_TOKEN_UNBIND: Deprecated
+ * @CTK_RC_TOKEN_LAST: Deprecated
  *
  * The #GtkRcTokenType enumeration represents the tokens
  * in the RC file. It is exposed so that theme engines
@@ -268,57 +268,57 @@ gchar*      ctk_rc_get_im_module_file  (void);
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  */
 typedef enum {
-  GTK_RC_TOKEN_INVALID = G_TOKEN_LAST,
-  GTK_RC_TOKEN_INCLUDE,
-  GTK_RC_TOKEN_NORMAL,
-  GTK_RC_TOKEN_ACTIVE,
-  GTK_RC_TOKEN_PRELIGHT,
-  GTK_RC_TOKEN_SELECTED,
-  GTK_RC_TOKEN_INSENSITIVE,
-  GTK_RC_TOKEN_FG,
-  GTK_RC_TOKEN_BG,
-  GTK_RC_TOKEN_TEXT,
-  GTK_RC_TOKEN_BASE,
-  GTK_RC_TOKEN_XTHICKNESS,
-  GTK_RC_TOKEN_YTHICKNESS,
-  GTK_RC_TOKEN_FONT,
-  GTK_RC_TOKEN_FONTSET,
-  GTK_RC_TOKEN_FONT_NAME,
-  GTK_RC_TOKEN_BG_PIXMAP,
-  GTK_RC_TOKEN_PIXMAP_PATH,
-  GTK_RC_TOKEN_STYLE,
-  GTK_RC_TOKEN_BINDING,
-  GTK_RC_TOKEN_BIND,
-  GTK_RC_TOKEN_WIDGET,
-  GTK_RC_TOKEN_WIDGET_CLASS,
-  GTK_RC_TOKEN_CLASS,
-  GTK_RC_TOKEN_LOWEST,
-  GTK_RC_TOKEN_GTK,
-  GTK_RC_TOKEN_APPLICATION,
-  GTK_RC_TOKEN_THEME,
-  GTK_RC_TOKEN_RC,
-  GTK_RC_TOKEN_HIGHEST,
-  GTK_RC_TOKEN_ENGINE,
-  GTK_RC_TOKEN_MODULE_PATH,
-  GTK_RC_TOKEN_IM_MODULE_PATH,
-  GTK_RC_TOKEN_IM_MODULE_FILE,
-  GTK_RC_TOKEN_STOCK,
-  GTK_RC_TOKEN_LTR,
-  GTK_RC_TOKEN_RTL,
-  GTK_RC_TOKEN_COLOR,
-  GTK_RC_TOKEN_UNBIND,
-  GTK_RC_TOKEN_LAST
+  CTK_RC_TOKEN_INVALID = G_TOKEN_LAST,
+  CTK_RC_TOKEN_INCLUDE,
+  CTK_RC_TOKEN_NORMAL,
+  CTK_RC_TOKEN_ACTIVE,
+  CTK_RC_TOKEN_PRELIGHT,
+  CTK_RC_TOKEN_SELECTED,
+  CTK_RC_TOKEN_INSENSITIVE,
+  CTK_RC_TOKEN_FG,
+  CTK_RC_TOKEN_BG,
+  CTK_RC_TOKEN_TEXT,
+  CTK_RC_TOKEN_BASE,
+  CTK_RC_TOKEN_XTHICKNESS,
+  CTK_RC_TOKEN_YTHICKNESS,
+  CTK_RC_TOKEN_FONT,
+  CTK_RC_TOKEN_FONTSET,
+  CTK_RC_TOKEN_FONT_NAME,
+  CTK_RC_TOKEN_BG_PIXMAP,
+  CTK_RC_TOKEN_PIXMAP_PATH,
+  CTK_RC_TOKEN_STYLE,
+  CTK_RC_TOKEN_BINDING,
+  CTK_RC_TOKEN_BIND,
+  CTK_RC_TOKEN_WIDGET,
+  CTK_RC_TOKEN_WIDGET_CLASS,
+  CTK_RC_TOKEN_CLASS,
+  CTK_RC_TOKEN_LOWEST,
+  CTK_RC_TOKEN_GTK,
+  CTK_RC_TOKEN_APPLICATION,
+  CTK_RC_TOKEN_THEME,
+  CTK_RC_TOKEN_RC,
+  CTK_RC_TOKEN_HIGHEST,
+  CTK_RC_TOKEN_ENGINE,
+  CTK_RC_TOKEN_MODULE_PATH,
+  CTK_RC_TOKEN_IM_MODULE_PATH,
+  CTK_RC_TOKEN_IM_MODULE_FILE,
+  CTK_RC_TOKEN_STOCK,
+  CTK_RC_TOKEN_LTR,
+  CTK_RC_TOKEN_RTL,
+  CTK_RC_TOKEN_COLOR,
+  CTK_RC_TOKEN_UNBIND,
+  CTK_RC_TOKEN_LAST
 } GtkRcTokenType;
 
 
 /**
  * GtkPathPriorityType:
- * @GTK_PATH_PRIO_LOWEST: Deprecated
- * @GTK_PATH_PRIO_GTK: Deprecated
- * @GTK_PATH_PRIO_APPLICATION: Deprecated
- * @GTK_PATH_PRIO_THEME: Deprecated
- * @GTK_PATH_PRIO_RC: Deprecated
- * @GTK_PATH_PRIO_HIGHEST: Deprecated
+ * @CTK_PATH_PRIO_LOWEST: Deprecated
+ * @CTK_PATH_PRIO_GTK: Deprecated
+ * @CTK_PATH_PRIO_APPLICATION: Deprecated
+ * @CTK_PATH_PRIO_THEME: Deprecated
+ * @CTK_PATH_PRIO_RC: Deprecated
+ * @CTK_PATH_PRIO_HIGHEST: Deprecated
  *
  * Priorities for path lookups.
  * See also ctk_binding_set_add_path().
@@ -327,20 +327,20 @@ typedef enum {
  */
 typedef enum
 {
-  GTK_PATH_PRIO_LOWEST      = 0,
-  GTK_PATH_PRIO_GTK         = 4,
-  GTK_PATH_PRIO_APPLICATION = 8,
-  GTK_PATH_PRIO_THEME       = 10,
-  GTK_PATH_PRIO_RC          = 12,
-  GTK_PATH_PRIO_HIGHEST     = 15
+  CTK_PATH_PRIO_LOWEST      = 0,
+  CTK_PATH_PRIO_GTK         = 4,
+  CTK_PATH_PRIO_APPLICATION = 8,
+  CTK_PATH_PRIO_THEME       = 10,
+  CTK_PATH_PRIO_RC          = 12,
+  CTK_PATH_PRIO_HIGHEST     = 15
 } GtkPathPriorityType;
-#define GTK_PATH_PRIO_MASK 0x0f
+#define CTK_PATH_PRIO_MASK 0x0f
 
 /**
  * GtkPathType:
- * @GTK_PATH_WIDGET: Deprecated
- * @GTK_PATH_WIDGET_CLASS: Deprecated
- * @GTK_PATH_CLASS: Deprecated
+ * @CTK_PATH_WIDGET: Deprecated
+ * @CTK_PATH_WIDGET_CLASS: Deprecated
+ * @CTK_PATH_CLASS: Deprecated
  *
  * Widget path types.
  * See also ctk_binding_set_add_path().
@@ -349,9 +349,9 @@ typedef enum
  */
 typedef enum
 {
-  GTK_PATH_WIDGET,
-  GTK_PATH_WIDGET_CLASS,
-  GTK_PATH_CLASS
+  CTK_PATH_WIDGET,
+  CTK_PATH_WIDGET_CLASS,
+  CTK_PATH_CLASS
 } GtkPathType;
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
@@ -402,4 +402,4 @@ void      ctk_binding_set_add_path (GtkBindingSet       *binding_set,
 
 G_END_DECLS
 
-#endif /* __GTK_RC_H__ */
+#endif /* __CTK_RC_H__ */

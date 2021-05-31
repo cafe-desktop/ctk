@@ -146,7 +146,7 @@ test_icon_existence (gconstpointer icon_name)
    * icon theme.
    * The icon size is randomly chosen.
    */
-  info = ctk_icon_theme_lookup_icon (ctk_icon_theme_get_default (), icon_name, 16, GTK_ICON_LOOKUP_DIR_LTR);
+  info = ctk_icon_theme_lookup_icon (ctk_icon_theme_get_default (), icon_name, 16, CTK_ICON_LOOKUP_DIR_LTR);
   if (info == NULL)
     {
       g_test_message ("Failed to look up icon for \"%s\"", (char *) icon_name);

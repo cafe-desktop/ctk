@@ -89,8 +89,8 @@ struct _GdkWaylandScreenClass
 #define OUTPUT_VERSION_WITH_DONE 2
 #define NO_XDG_OUTPUT_DONE_SINCE_VERSION 3
 
-#define GTK_SETTINGS_DBUS_PATH "/org/gtk/Settings"
-#define GTK_SETTINGS_DBUS_NAME "org.gtk.Settings"
+#define CTK_SETTINGS_DBUS_PATH "/org/gtk/Settings"
+#define CTK_SETTINGS_DBUS_NAME "org.gtk.Settings"
 
 GType _gdk_wayland_screen_get_type (void);
 
@@ -791,9 +791,9 @@ fallback:
   g_dbus_proxy_new_for_bus (G_BUS_TYPE_SESSION,
                             G_DBUS_PROXY_FLAGS_NONE,
                             NULL,
-                            GTK_SETTINGS_DBUS_NAME,
-                            GTK_SETTINGS_DBUS_PATH,
-                            GTK_SETTINGS_DBUS_NAME,
+                            CTK_SETTINGS_DBUS_NAME,
+                            CTK_SETTINGS_DBUS_PATH,
+                            CTK_SETTINGS_DBUS_NAME,
                             screen_wayland->dbus_cancellable,
                             fontconfig_dbus_proxy_open_cb,
                             screen_wayland);
@@ -1030,15 +1030,15 @@ gdk_wayland_screen_get_setting (GdkScreen   *screen,
 
   if (strcmp (name, "gtk-shell-shows-app-menu") == 0)
     return set_capability_setting (screen, value,
-                                   GTK_SHELL1_CAPABILITY_GLOBAL_APP_MENU);
+                                   CTK_SHELL1_CAPABILITY_GLOBAL_APP_MENU);
 
   if (strcmp (name, "gtk-shell-shows-menubar") == 0)
     return set_capability_setting (screen, value,
-                                   GTK_SHELL1_CAPABILITY_GLOBAL_MENU_BAR);
+                                   CTK_SHELL1_CAPABILITY_GLOBAL_MENU_BAR);
 
   if (strcmp (name, "gtk-shell-shows-desktop") == 0)
     return set_capability_setting (screen, value,
-                                   GTK_SHELL1_CAPABILITY_DESKTOP_ICONS);
+                                   CTK_SHELL1_CAPABILITY_DESKTOP_ICONS);
 
   if (strcmp (name, "gtk-dialogs-use-header") == 0)
     {

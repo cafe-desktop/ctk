@@ -47,10 +47,10 @@
  *
  */
 
-#ifndef __GTK_TEXT_MARK_H__
-#define __GTK_TEXT_MARK_H__
+#ifndef __CTK_TEXT_MARK_H__
+#define __CTK_TEXT_MARK_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -59,12 +59,12 @@ G_BEGIN_DECLS
 typedef struct _GtkTextMark      GtkTextMark;
 typedef struct _GtkTextMarkClass GtkTextMarkClass;
 
-#define GTK_TYPE_TEXT_MARK              (ctk_text_mark_get_type ())
-#define GTK_TEXT_MARK(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_TEXT_MARK, GtkTextMark))
-#define GTK_TEXT_MARK_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEXT_MARK, GtkTextMarkClass))
-#define GTK_IS_TEXT_MARK(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_TEXT_MARK))
-#define GTK_IS_TEXT_MARK_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TEXT_MARK))
-#define GTK_TEXT_MARK_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TEXT_MARK, GtkTextMarkClass))
+#define CTK_TYPE_TEXT_MARK              (ctk_text_mark_get_type ())
+#define CTK_TEXT_MARK(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_TEXT_MARK, GtkTextMark))
+#define CTK_TEXT_MARK_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_MARK, GtkTextMarkClass))
+#define CTK_IS_TEXT_MARK(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_TEXT_MARK))
+#define CTK_IS_TEXT_MARK_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_MARK))
+#define CTK_TEXT_MARK_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_MARK, GtkTextMarkClass))
 
 struct _GtkTextMark
 {
@@ -108,4 +108,4 @@ gboolean              ctk_text_mark_get_left_gravity (GtkTextMark *mark);
 
 G_END_DECLS
 
-#endif  /* __GTK_TEXT_MARK_H__ */
+#endif  /* __CTK_TEXT_MARK_H__ */

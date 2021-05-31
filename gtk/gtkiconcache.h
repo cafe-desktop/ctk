@@ -14,8 +14,8 @@
  * You should have received a copy of the GNU Library General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GTK_ICON_CACHE_H__
-#define __GTK_ICON_CACHE_H__
+#ifndef __CTK_ICON_CACHE_H__
+#define __CTK_ICON_CACHE_H__
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk/gdk.h>
@@ -48,4 +48,4 @@ GtkIconCache *_ctk_icon_cache_ref            (GtkIconCache *cache);
 void          _ctk_icon_cache_unref          (GtkIconCache *cache);
 
 
-#endif /* __GTK_ICON_CACHE_H__ */
+#endif /* __CTK_ICON_CACHE_H__ */

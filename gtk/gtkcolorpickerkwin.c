@@ -39,14 +39,14 @@ static void ctk_color_picker_kwin_iface_init (GtkColorPickerInterface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (GtkColorPickerKwin, ctk_color_picker_kwin, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, ctk_color_picker_kwin_initable_iface_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_COLOR_PICKER, ctk_color_picker_kwin_iface_init))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_PICKER, ctk_color_picker_kwin_iface_init))
 
 static gboolean
 ctk_color_picker_kwin_initable_init (GInitable     *initable,
                                       GCancellable  *cancellable,
                                       GError       **error)
 {
-  GtkColorPickerKwin *picker = GTK_COLOR_PICKER_KWIN (initable);
+  GtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (initable);
   char *owner;
 
   picker->kwin_proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
@@ -91,7 +91,7 @@ ctk_color_picker_kwin_init (GtkColorPickerKwin *picker)
 static void
 ctk_color_picker_kwin_finalize (GObject *object)
 {
-  GtkColorPickerKwin *picker = GTK_COLOR_PICKER_KWIN (object);
+  GtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (object);
 
   g_clear_object (&picker->kwin_proxy);
 
@@ -109,7 +109,7 @@ ctk_color_picker_kwin_class_init (GtkColorPickerKwinClass *class)
 GtkColorPicker *
 ctk_color_picker_kwin_new (void)
 {
-  return GTK_COLOR_PICKER (g_initable_new (GTK_TYPE_COLOR_PICKER_KWIN, NULL, NULL, NULL));
+  return CTK_COLOR_PICKER (g_initable_new (CTK_TYPE_COLOR_PICKER_KWIN, NULL, NULL, NULL));
 }
 
 static void
@@ -117,7 +117,7 @@ color_picked (GObject      *source,
               GAsyncResult *res,
               gpointer      data)
 {
-  GtkColorPickerKwin *picker = GTK_COLOR_PICKER_KWIN (data);
+  GtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (data);
   GError *error = NULL;
   GVariant *ret;
 
@@ -152,7 +152,7 @@ ctk_color_picker_kwin_pick (GtkColorPicker      *cp,
                             GAsyncReadyCallback  callback,
                             gpointer             user_data)
 {
-  GtkColorPickerKwin *picker = GTK_COLOR_PICKER_KWIN (cp);
+  GtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (cp);
 
   if (picker->task)
     return;

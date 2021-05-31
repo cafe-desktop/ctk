@@ -4489,16 +4489,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Gaitu estatistikak honekin: GOBJECT_DEBUG=instance-count"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "Gaia GTK_THEME-k kodean txertatuta dago"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "Gaia CTK_THEME-k kodean txertatuta dago"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "Motorrak ez du leihoa eskalatzea onartzen"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "Ezarpena GTK_TEST_TOUCHSCREEN-ek kodean txertatuta dago"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "Ezarpena CTK_TEST_TOUCHSCREEN-ek kodean txertatuta dago"
 
 #: gtk/inspector/visual.c:817
 msgid ""

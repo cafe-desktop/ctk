@@ -39,13 +39,13 @@ struct _GtkInspectorMenuPrivate
   GtkTreeStore *model;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMenu, ctk_inspector_menu, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMenu, ctk_inspector_menu, CTK_TYPE_BOX)
 
 static void
 ctk_inspector_menu_init (GtkInspectorMenu *sl)
 {
   sl->priv = ctk_inspector_menu_get_instance_private (sl);
-  ctk_widget_init_template (GTK_WIDGET (sl));
+  ctk_widget_init_template (CTK_WIDGET (sl));
 }
 
 static void add_menu (GtkInspectorMenu *sl,
@@ -116,7 +116,7 @@ add_menu (GtkInspectorMenu *sl,
   gint n_items;
   gint i;
 
-  ctk_widget_show (GTK_WIDGET (sl));
+  ctk_widget_show (CTK_WIDGET (sl));
 
   n_items = g_menu_model_get_n_items (menu);
   for (i = 0; i < n_items; i++)
@@ -127,7 +127,7 @@ void
 ctk_inspector_menu_set_object (GtkInspectorMenu *sl,
                                GObject          *object)
 {
-  ctk_widget_hide (GTK_WIDGET (sl));
+  ctk_widget_hide (CTK_WIDGET (sl));
   ctk_tree_store_clear (sl->priv->model);
   
   if (G_IS_MENU_MODEL (object))
@@ -137,7 +137,7 @@ ctk_inspector_menu_set_object (GtkInspectorMenu *sl,
 static void
 ctk_inspector_menu_class_init (GtkInspectorMenuClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/menu.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMenu, model);

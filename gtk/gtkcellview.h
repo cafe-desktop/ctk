@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_VIEW_H__
-#define __GTK_CELL_VIEW_H__
+#ifndef __CTK_CELL_VIEW_H__
+#define __CTK_CELL_VIEW_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,12 +30,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_VIEW                (ctk_cell_view_get_type ())
-#define GTK_CELL_VIEW(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_VIEW, GtkCellView))
-#define GTK_CELL_VIEW_CLASS(vtable)       (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_CELL_VIEW, GtkCellViewClass))
-#define GTK_IS_CELL_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_VIEW))
-#define GTK_IS_CELL_VIEW_CLASS(vtable)    (G_TYPE_CHECK_CLASS_TYPE ((vtable), GTK_TYPE_CELL_VIEW))
-#define GTK_CELL_VIEW_GET_CLASS(inst)     (G_TYPE_INSTANCE_GET_CLASS ((inst), GTK_TYPE_CELL_VIEW, GtkCellViewClass))
+#define CTK_TYPE_CELL_VIEW                (ctk_cell_view_get_type ())
+#define CTK_CELL_VIEW(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_VIEW, GtkCellView))
+#define CTK_CELL_VIEW_CLASS(vtable)       (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_CELL_VIEW, GtkCellViewClass))
+#define CTK_IS_CELL_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_VIEW))
+#define CTK_IS_CELL_VIEW_CLASS(vtable)    (G_TYPE_CHECK_CLASS_TYPE ((vtable), CTK_TYPE_CELL_VIEW))
+#define CTK_CELL_VIEW_GET_CLASS(inst)     (G_TYPE_INSTANCE_GET_CLASS ((inst), CTK_TYPE_CELL_VIEW, GtkCellViewClass))
 
 typedef struct _GtkCellView             GtkCellView;
 typedef struct _GtkCellViewClass        GtkCellViewClass;
@@ -113,4 +113,4 @@ void              ctk_cell_view_set_background_color    (GtkCellView     *cell_v
 
 G_END_DECLS
 
-#endif /* __GTK_CELL_VIEW_H__ */
+#endif /* __CTK_CELL_VIEW_H__ */

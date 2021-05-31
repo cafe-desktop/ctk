@@ -15,20 +15,20 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_COLOR_PLANE_H__
-#define __GTK_COLOR_PLANE_H__
+#ifndef __CTK_COLOR_PLANE_H__
+#define __CTK_COLOR_PLANE_H__
 
 #include <gtk/gtkdrawingarea.h>
 #include <gtk/gtktypes.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_PLANE            (ctk_color_plane_get_type ())
-#define GTK_COLOR_PLANE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_PLANE, GtkColorPlane))
-#define GTK_COLOR_PLANE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_PLANE, GtkColorPlaneClass))
-#define GTK_IS_COLOR_PLANE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_PLANE))
-#define GTK_IS_COLOR_PLANE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_COLOR_PLANE))
-#define GTK_COLOR_PLANE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_COLOR_PLANE, GtkColorPlaneClass))
+#define CTK_TYPE_COLOR_PLANE            (ctk_color_plane_get_type ())
+#define CTK_COLOR_PLANE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_PLANE, GtkColorPlane))
+#define CTK_COLOR_PLANE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_COLOR_PLANE, GtkColorPlaneClass))
+#define CTK_IS_COLOR_PLANE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_PLANE))
+#define CTK_IS_COLOR_PLANE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_COLOR_PLANE))
+#define CTK_COLOR_PLANE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_COLOR_PLANE, GtkColorPlaneClass))
 
 
 typedef struct _GtkColorPlane         GtkColorPlane;
@@ -61,4 +61,4 @@ GtkWidget * ctk_color_plane_new      (GtkAdjustment *h_adj,
 
 G_END_DECLS
 
-#endif /* __GTK_COLOR_PLANE_H__ */
+#endif /* __CTK_COLOR_PLANE_H__ */

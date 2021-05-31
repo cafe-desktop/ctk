@@ -111,7 +111,7 @@ visible_toggle_toggled (GtkToggleButton *toggle)
   GSList *l;
 
   for (l = icons; l; l = l->next)
-    ctk_status_icon_set_visible (GTK_STATUS_ICON (l->data),
+    ctk_status_icon_set_visible (CTK_STATUS_ICON (l->data),
                                  ctk_toggle_button_get_active (toggle));
 }
 
@@ -140,12 +140,12 @@ icon_activated (GtkStatusIcon *icon)
   if (dialog == NULL)
     {
       dialog = ctk_message_dialog_new (NULL, 0,
-				       GTK_MESSAGE_QUESTION,
-				       GTK_BUTTONS_CLOSE,
+				       CTK_MESSAGE_QUESTION,
+				       CTK_BUTTONS_CLOSE,
 				       "You wanna test the status icon ?");
 
-      ctk_window_set_screen (GTK_WINDOW (dialog), ctk_status_icon_get_screen (icon));
-      ctk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
+      ctk_window_set_screen (CTK_WINDOW (dialog), ctk_status_icon_get_screen (icon));
+      ctk_window_set_position (CTK_WINDOW (dialog), CTK_WIN_POS_CENTER);
 
       g_object_set_data_full (G_OBJECT (icon), "test-status-icon-dialog",
 			      dialog, (GDestroyNotify) ctk_widget_destroy);
@@ -155,28 +155,28 @@ icon_activated (GtkStatusIcon *icon)
       g_signal_connect (dialog, "delete_event", 
 			G_CALLBACK (ctk_widget_hide_on_delete), NULL);
 
-      content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
+      content_area = ctk_dialog_get_content_area (CTK_DIALOG (dialog));
 
       toggle = ctk_toggle_button_new_with_mnemonic ("_Show the icon");
-      ctk_box_pack_end (GTK_BOX (content_area), toggle, TRUE, TRUE, 6);
+      ctk_box_pack_end (CTK_BOX (content_area), toggle, TRUE, TRUE, 6);
       ctk_widget_show (toggle);
 
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (toggle),
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (toggle),
 				    ctk_status_icon_get_visible (icon));
       g_signal_connect (toggle, "toggled", 
 			G_CALLBACK (visible_toggle_toggled), NULL);
 
       toggle = ctk_toggle_button_new_with_mnemonic ("_Change images");
-      ctk_box_pack_end (GTK_BOX (content_area), toggle, TRUE, TRUE, 6);
+      ctk_box_pack_end (CTK_BOX (content_area), toggle, TRUE, TRUE, 6);
       ctk_widget_show (toggle);
 
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (toggle),
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (toggle),
 				    timeout != 0);
       g_signal_connect (toggle, "toggled", 
 			G_CALLBACK (timeout_toggle_toggled), NULL);
     }
 
-  ctk_window_present (GTK_WINDOW (dialog));
+  ctk_window_present (CTK_WINDOW (dialog));
 }
 
 static void
@@ -213,24 +213,24 @@ popup_menu (GtkStatusIcon *icon,
 
   menu = ctk_menu_new ();
 
-  ctk_menu_set_screen (GTK_MENU (menu),
+  ctk_menu_set_screen (CTK_MENU (menu),
                        ctk_status_icon_get_screen (icon));
 
   menuitem = ctk_menu_item_new_with_label ("Quit");
   g_signal_connect (menuitem, "activate", G_CALLBACK (do_quit), NULL);
 
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
 
   ctk_widget_show (menuitem);
 
   menuitem = ctk_menu_item_new_with_label ("Exit abruptly");
   g_signal_connect (menuitem, "activate", G_CALLBACK (do_exit), NULL);
 
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
 
   ctk_widget_show (menuitem);
 
-  ctk_menu_popup (GTK_MENU (menu), 
+  ctk_menu_popup (CTK_MENU (menu), 
 		  NULL, NULL,
 		  ctk_status_icon_position_menu, icon,
 		  button, activate_time);

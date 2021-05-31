@@ -37,7 +37,7 @@ add_random (GtkToolbar *toolbar, gint n)
   ctk_tool_item_set_tooltip_text (toolitem, "Bar");
 
   g_free (label);
-  ctk_widget_show_all (GTK_WIDGET (toolitem));
+  ctk_widget_show_all (CTK_WIDGET (toolitem));
 
   n_items = ctk_toolbar_get_n_items (toolbar);
   if (n_items == 0)
@@ -64,8 +64,8 @@ remove_random (GtkToolbar *toolbar)
 
   tool_item = ctk_toolbar_get_nth_item (toolbar, position);
 
-  ctk_container_remove (GTK_CONTAINER (toolbar),
-                        GTK_WIDGET (tool_item));
+  ctk_container_remove (CTK_CONTAINER (toolbar),
+                        CTK_WIDGET (tool_item));
 }
 
 static gboolean
@@ -89,10 +89,10 @@ stress_test_old_api (gpointer data)
 
   if (!info->toolbar)
     {
-      info->toolbar = GTK_TOOLBAR (ctk_toolbar_new ());
-      ctk_container_add (GTK_CONTAINER (info->window),
-			 GTK_WIDGET (info->toolbar));
-      ctk_widget_show (GTK_WIDGET (info->toolbar));
+      info->toolbar = CTK_TOOLBAR (ctk_toolbar_new ());
+      ctk_container_add (CTK_CONTAINER (info->window),
+			 CTK_WIDGET (info->toolbar));
+      ctk_widget_show (CTK_WIDGET (info->toolbar));
     }
 
   n_items = ctk_toolbar_get_n_items (info->toolbar);
@@ -139,17 +139,17 @@ main (gint argc, gchar **argv)
 
   info.toolbar = NULL;
   info.counter = 0;
-  info.window = GTK_WINDOW (ctk_window_new (GTK_WINDOW_TOPLEVEL));
+  info.window = CTK_WINDOW (ctk_window_new (CTK_WINDOW_TOPLEVEL));
 
-  ctk_widget_show (GTK_WIDGET (info.window));
+  ctk_widget_show (CTK_WIDGET (info.window));
   
   gdk_threads_add_idle (stress_test_old_api, &info);
 
-  ctk_widget_show_all (GTK_WIDGET (info.window));
+  ctk_widget_show_all (CTK_WIDGET (info.window));
   
   ctk_main ();
 
-  ctk_widget_destroy (GTK_WIDGET (info.window));
+  ctk_widget_destroy (CTK_WIDGET (info.window));
 
   info.toolbar = NULL;
   info.window = NULL;

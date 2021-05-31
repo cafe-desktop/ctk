@@ -192,7 +192,7 @@ ctk_drag_get_data (GtkWidget      *widget,
 				selection_data->target,
 				&target_info))
 	{
-	  if (!(site->flags & GTK_DEST_DEFAULT_DROP) ||
+	  if (!(site->flags & CTK_DEST_DEFAULT_DROP) ||
 	      selection_data->length >= 0)
 	    g_signal_emit_by_name (widget,
 				   "drag-data-received",
@@ -210,7 +210,7 @@ ctk_drag_get_data (GtkWidget      *widget,
 			     0, time);
     }
   
-  if (site && site->flags & GTK_DEST_DEFAULT_DROP)
+  if (site && site->flags & CTK_DEST_DEFAULT_DROP)
     {
       ctk_drag_finish (context, 
 		       (selection_data->length >= 0),
@@ -335,9 +335,9 @@ ctk_drag_get_source_widget (GdkDragContext *context)
 void 
 ctk_drag_highlight (GtkWidget  *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  ctk_widget_set_state_flags (widget, GTK_STATE_FLAG_DROP_ACTIVE, FALSE);
+  ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_DROP_ACTIVE, FALSE);
 }
 
 /**
@@ -347,9 +347,9 @@ ctk_drag_highlight (GtkWidget  *widget)
 void 
 ctk_drag_unhighlight (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  ctk_widget_unset_state_flags (widget, GTK_STATE_FLAG_DROP_ACTIVE);
+  ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_DROP_ACTIVE);
 }
 
 static NSWindow *
@@ -359,7 +359,7 @@ get_toplevel_nswindow (GtkWidget *widget)
   GdkWindow *window = ctk_widget_get_window (toplevel);
 
   /* Offscreen windows don't support drag and drop */
-  if (GTK_IS_OFFSCREEN_WINDOW (toplevel))
+  if (CTK_IS_OFFSCREEN_WINDOW (toplevel))
     return NULL;
 
   if (ctk_widget_is_toplevel (toplevel) && window)
@@ -440,7 +440,7 @@ ctk_drag_dest_set (GtkWidget            *widget,
 {
   GtkDragDestSite *old_site, *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   old_site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
 
@@ -500,7 +500,7 @@ ctk_drag_dest_unset (GtkWidget *widget)
 {
   GtkDragDestSite *old_site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   old_site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
   if (old_site)
@@ -526,7 +526,7 @@ ctk_drag_dest_get_target_list (GtkWidget *widget)
 {
   GtkDragDestSite *site;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   
   site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
 
@@ -544,7 +544,7 @@ ctk_drag_dest_set_target_list (GtkWidget      *widget,
 {
   GtkDragDestSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   
   site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
   
@@ -722,7 +722,7 @@ ctk_drag_find_widget (GtkWidget       *widget,
       /* First, check if the drag is in a valid drop site in
        * one of our children 
        */
-      if (GTK_IS_CONTAINER (widget))
+      if (CTK_IS_CONTAINER (widget))
 	{
 	  GtkDragFindData new_data = *data;
 	  GSList *children = NULL;
@@ -736,7 +736,7 @@ ctk_drag_find_widget (GtkWidget       *widget,
 	  /* need to reference children temporarily in case the
 	   * ::drag-motion/::drag-drop callbacks change the widget hierarchy.
 	   */
-	  ctk_container_forall (GTK_CONTAINER (widget), prepend_and_ref_widget, &children);
+	  ctk_container_forall (CTK_CONTAINER (widget), prepend_and_ref_widget, &children);
 	  for (tmp_list = children; tmp_list; tmp_list = tmp_list->next)
 	    {
 	      if (!new_data.found && ctk_widget_is_drawable (tmp_list->data))
@@ -783,10 +783,10 @@ ctk_drag_dest_leave (GtkWidget      *widget,
   site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
   g_return_if_fail (site != NULL);
 
-  if ((site->flags & GTK_DEST_DEFAULT_HIGHLIGHT) && site->have_drag)
+  if ((site->flags & CTK_DEST_DEFAULT_HIGHLIGHT) && site->have_drag)
     ctk_drag_unhighlight (widget);
   
-  if (!(site->flags & GTK_DEST_DEFAULT_MOTION) || site->have_drag ||
+  if (!(site->flags & CTK_DEST_DEFAULT_MOTION) || site->have_drag ||
       site->track_motion)
     g_signal_emit_by_name (widget, "drag-leave", context, time);
   
@@ -807,7 +807,7 @@ ctk_drag_dest_motion (GtkWidget	     *widget,
   site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
   g_return_val_if_fail (site != NULL, FALSE);
 
-  if (site->track_motion || site->flags & GTK_DEST_DEFAULT_MOTION)
+  if (site->track_motion || site->flags & CTK_DEST_DEFAULT_MOTION)
     {
       if (gdk_drag_context_get_suggested_action (context) & site->actions)
 	action = gdk_drag_context_get_suggested_action (context);
@@ -817,7 +817,7 @@ ctk_drag_dest_motion (GtkWidget	     *widget,
 	  if (!site->have_drag)
 	    {
 	      site->have_drag = TRUE;
-	      if (site->flags & GTK_DEST_DEFAULT_HIGHLIGHT)
+	      if (site->flags & CTK_DEST_DEFAULT_HIGHLIGHT)
 		ctk_drag_highlight (widget);
 	    }
 	  
@@ -834,7 +834,7 @@ ctk_drag_dest_motion (GtkWidget	     *widget,
   g_signal_emit_by_name (widget, "drag-motion",
 			 context, x, y, time, &retval);
 
-  return (site->flags & GTK_DEST_DEFAULT_MOTION) ? TRUE : retval;
+  return (site->flags & CTK_DEST_DEFAULT_MOTION) ? TRUE : retval;
 }
 
 static gboolean
@@ -857,7 +857,7 @@ ctk_drag_dest_drop (GtkWidget	     *widget,
   info->drop_x = x;
   info->drop_y = y;
 
-  if (site->flags & GTK_DEST_DEFAULT_DROP)
+  if (site->flags & CTK_DEST_DEFAULT_DROP)
     {
       GdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
 
@@ -873,7 +873,7 @@ ctk_drag_dest_drop (GtkWidget	     *widget,
   g_signal_emit_by_name (widget, "drag-drop",
 			 context, x, y, time, &retval);
 
-  return (site->flags & GTK_DEST_DEFAULT_DROP) ? TRUE : retval;
+  return (site->flags & CTK_DEST_DEFAULT_DROP) ? TRUE : retval;
 }
 
 /**
@@ -887,7 +887,7 @@ ctk_drag_dest_set_track_motion (GtkWidget *widget,
 {
   GtkDragDestSite *site;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
   
@@ -905,7 +905,7 @@ ctk_drag_dest_get_track_motion (GtkWidget *widget)
 {
   GtkDragDestSite *site;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
 
@@ -1019,7 +1019,7 @@ ctk_drag_dest_find_target (GtkWidget      *widget,
   GList *tmp_source = NULL;
   GList *source_targets;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), GDK_NONE);
   g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_NONE);
 
   dragging_info = gdk_quartz_drag_context_get_dragging_info_libctk_only (context);
@@ -1043,8 +1043,8 @@ ctk_drag_dest_find_target (GtkWidget      *widget,
 	{
 	  if (tmp_source->data == GUINT_TO_POINTER (pair->target))
 	    {
-	      if ((!(pair->flags & GTK_TARGET_SAME_APP) || source_widget) &&
-		  (!(pair->flags & GTK_TARGET_SAME_WIDGET) || (source_widget == widget)))
+	      if ((!(pair->flags & CTK_TARGET_SAME_APP) || source_widget) &&
+		  (!(pair->flags & CTK_TARGET_SAME_WIDGET) || (source_widget == widget)))
 		{
 		  g_list_free (source_targets);
 		  return pair->target;
@@ -1266,7 +1266,7 @@ ctk_drag_begin_with_coordinates (GtkWidget         *widget,
 				 gint               x,
 				 gint               y)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (ctk_widget_get_realized (widget), NULL);
   g_return_val_if_fail (targets != NULL, NULL);
 
@@ -1291,7 +1291,7 @@ ctk_drag_begin (GtkWidget         *widget,
 		gint               button,
 		GdkEvent          *event)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (ctk_widget_get_realized (widget), NULL);
   g_return_val_if_fail (targets != NULL, NULL);
 
@@ -1314,7 +1314,7 @@ ctk_drag_cancel (GdkDragContext *context)
 
   info = ctk_drag_get_source_info (context, FALSE);
   if (info != NULL)
-    ctk_drag_drop_finished (info, GTK_DRAG_RESULT_ERROR);
+    ctk_drag_drop_finished (info, CTK_DRAG_RESULT_ERROR);
 }
 
 
@@ -1338,7 +1338,7 @@ ctk_drag_set_icon_widget (GdkDragContext    *context,
 			  gint               hot_y)
 {
   g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   g_warning ("ctk_drag_set_icon_widget is not supported on Mac OS X");
 }
@@ -1359,7 +1359,7 @@ set_icon_stock_pixbuf (GdkDragContext    *context,
   if (stock_id)
     {
       pixbuf = ctk_widget_render_icon_pixbuf (info->widget, stock_id,
-				              GTK_ICON_SIZE_DND);
+				              CTK_ICON_SIZE_DND);
 
       if (!pixbuf)
 	{
@@ -1393,23 +1393,23 @@ ctk_drag_set_icon_definition (GdkDragContext     *context,
 {
   switch (ctk_image_definition_get_storage_type (def))
     {
-    case GTK_IMAGE_EMPTY:
+    case CTK_IMAGE_EMPTY:
       ctk_drag_set_icon_default (context);
       break;
 
-    case GTK_IMAGE_PIXBUF:
+    case CTK_IMAGE_PIXBUF:
       ctk_drag_set_icon_pixbuf (context,
                                 ctk_image_definition_get_pixbuf (def),
                                 hot_x, hot_y);
       break;
 
-    case GTK_IMAGE_STOCK:
+    case CTK_IMAGE_STOCK:
       ctk_drag_set_icon_stock (context,
                                ctk_image_definition_get_stock (def),
                                hot_x, hot_y);
       break;
 
-    case GTK_IMAGE_ICON_NAME:
+    case CTK_IMAGE_ICON_NAME:
       ctk_drag_set_icon_name (context,
                               ctk_image_definition_get_icon_name (def),
                               hot_x, hot_y);
@@ -1515,7 +1515,7 @@ ctk_drag_set_icon_surface (GdkDragContext  *context,
  * Sets the icon for a given drag from a named themed icon. See
  * the docs for #GtkIconTheme for more details. Note that the
  * size of the icon depends on the icon theme (the icon is
- * loaded at the symbolic size #GTK_ICON_SIZE_DND), thus 
+ * loaded at the symbolic size #CTK_ICON_SIZE_DND), thus 
  * @hot_x and @hot_y have to be used with care.
  *
  * Since: 2.8
@@ -1537,7 +1537,7 @@ ctk_drag_set_icon_name (GdkDragContext *context,
   screen = gdk_window_get_screen (gdk_drag_context_get_source_window (context));
   g_return_if_fail (screen != NULL);
 
-  ctk_icon_size_lookup (GTK_ICON_SIZE_DND, &width, &height);
+  ctk_icon_size_lookup (CTK_ICON_SIZE_DND, &width, &height);
   icon_size = MAX (width, height);
 
   icon_theme = ctk_icon_theme_get_for_screen (screen);
@@ -1616,7 +1616,7 @@ static void
 ctk_drag_drop_finished (GtkDragSourceInfo *info,
                         GtkDragResult      result)
 {
-  gboolean success = (result == GTK_DRAG_RESULT_SUCCESS);
+  gboolean success = (result == CTK_DRAG_RESULT_SUCCESS);
 
   if (!success)
     g_signal_emit_by_name (info->source_widget, "drag-failed",
@@ -1663,7 +1663,7 @@ _ctk_drag_source_handle_event (GtkWidget *widget,
   switch (event->type)
     {
     case GDK_DROP_FINISHED:
-      result = (gdk_drag_context_get_dest_window (context) != NULL) ? GTK_DRAG_RESULT_SUCCESS : GTK_DRAG_RESULT_NO_TARGET;
+      result = (gdk_drag_context_get_dest_window (context) != NULL) ? CTK_DRAG_RESULT_SUCCESS : CTK_DRAG_RESULT_NO_TARGET;
       ctk_drag_drop_finished (info, result);
       break;
     default:
@@ -1688,7 +1688,7 @@ ctk_drag_check_threshold (GtkWidget *widget,
 {
   gint drag_threshold;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   g_object_get (ctk_widget_get_settings (widget),
 		"gtk-dnd-drag-threshold", &drag_threshold,

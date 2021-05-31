@@ -16,8 +16,8 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_BUTTON_PRIVATE_H__
-#define __GTK_BUTTON_PRIVATE_H__
+#ifndef __CTK_BUTTON_PRIVATE_H__
+#define __CTK_BUTTON_PRIVATE_H__
 
 #include "gtkactionhelper.h"
 #include "gtkgesturesingle.h"
@@ -65,4 +65,4 @@ struct _GtkButtonPrivate
 
 G_END_DECLS
 
-#endif /* __GTK_BUTTON_PRIVATE_H__ */
+#endif /* __CTK_BUTTON_PRIVATE_H__ */

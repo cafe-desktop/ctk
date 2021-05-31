@@ -31,7 +31,7 @@ enum {
   PROP_RENDERER
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRendererCellAccessible, ctk_renderer_cell_accessible, GTK_TYPE_CELL_ACCESSIBLE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkRendererCellAccessible, ctk_renderer_cell_accessible, CTK_TYPE_CELL_ACCESSIBLE)
 
 static void
 ctk_renderer_cell_accessible_set_property (GObject         *object,
@@ -39,7 +39,7 @@ ctk_renderer_cell_accessible_set_property (GObject         *object,
                                            const GValue    *value,
                                            GParamSpec      *pspec)
 {
-  GtkRendererCellAccessible *accessible = GTK_RENDERER_CELL_ACCESSIBLE (object);
+  GtkRendererCellAccessible *accessible = CTK_RENDERER_CELL_ACCESSIBLE (object);
 
   switch (prop_id)
     {
@@ -58,7 +58,7 @@ ctk_renderer_cell_accessible_get_property (GObject         *object,
                                            GValue          *value,
                                            GParamSpec      *pspec)
 {
-  GtkRendererCellAccessible *accessible = GTK_RENDERER_CELL_ACCESSIBLE (object);
+  GtkRendererCellAccessible *accessible = CTK_RENDERER_CELL_ACCESSIBLE (object);
 
   switch (prop_id)
     {
@@ -74,7 +74,7 @@ ctk_renderer_cell_accessible_get_property (GObject         *object,
 static void
 ctk_renderer_cell_accessible_finalize (GObject *object)
 {
-  GtkRendererCellAccessible *renderer_cell = GTK_RENDERER_CELL_ACCESSIBLE (object);
+  GtkRendererCellAccessible *renderer_cell = CTK_RENDERER_CELL_ACCESSIBLE (object);
 
   if (renderer_cell->priv->renderer)
     g_object_unref (renderer_cell->priv->renderer);
@@ -96,7 +96,7 @@ ctk_renderer_cell_accessible_class_init (GtkRendererCellAccessibleClass *klass)
 				   g_param_spec_object ("renderer",
 							P_("Cell renderer"),
 							P_("The cell renderer represented by this accessible"),
-							GTK_TYPE_CELL_RENDERER,
+							CTK_TYPE_CELL_RENDERER,
 							G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
@@ -111,7 +111,7 @@ ctk_renderer_cell_accessible_new (GtkCellRenderer *renderer)
 {
   AtkObject *object;
 
-  g_return_val_if_fail (GTK_IS_CELL_RENDERER (renderer), NULL);
+  g_return_val_if_fail (CTK_IS_CELL_RENDERER (renderer), NULL);
 
   object = g_object_new (_ctk_cell_renderer_get_accessible_type (renderer),
                          "renderer", renderer,

@@ -112,7 +112,7 @@ find_widget (GtkWidget      *widget,
       /* First, check if the drag is in a valid drop site in
        * one of our children 
        */
-      if (GTK_IS_CONTAINER (widget))
+      if (CTK_IS_CONTAINER (widget))
         {
           FindWidgetData new_data = *data;
 
@@ -121,7 +121,7 @@ find_widget (GtkWidget      *widget,
           new_data.found = FALSE;
           new_data.first = FALSE;
 
-          ctk_container_forall (GTK_CONTAINER (widget),
+          ctk_container_forall (CTK_CONTAINER (widget),
                                 (GtkCallback)find_widget,
                                 &new_data);
 
@@ -213,7 +213,7 @@ static void
 select_widget (GtkInspectorWindow *iw,
                GtkWidget          *widget)
 {
-  GtkInspectorObjectTree *wt = GTK_INSPECTOR_OBJECT_TREE (iw->object_tree);
+  GtkInspectorObjectTree *wt = CTK_INSPECTOR_OBJECT_TREE (iw->object_tree);
 
   iw->selected_widget = widget;
 
@@ -231,7 +231,7 @@ on_inspect_widget (GtkWidget          *button,
 {
   GtkWidget *widget;
 
-  gdk_window_raise (ctk_widget_get_window (GTK_WIDGET (iw)));
+  gdk_window_raise (ctk_widget_get_window (CTK_WIDGET (iw)));
 
   clear_flash (iw);
 
@@ -256,7 +256,7 @@ on_highlight_widget (GtkWidget          *button,
       return;
     }
 
-  if (ctk_widget_get_toplevel (widget) == GTK_WIDGET (iw))
+  if (ctk_widget_get_toplevel (widget) == CTK_WIDGET (iw))
     {
       /* Don't hilight things in the inspector window */
       return;
@@ -323,7 +323,7 @@ property_query_event (GtkWidget *widget,
       ctk_grab_remove (widget);
       if (iw->grabbed)
         gdk_seat_ungrab (gdk_event_get_seat (event));
-      reemphasize_window (GTK_WIDGET (iw));
+      reemphasize_window (CTK_WIDGET (iw));
 
       on_inspect_widget (widget, event, data);
     }
@@ -341,7 +341,7 @@ property_query_event (GtkWidget *widget,
           ctk_grab_remove (widget);
           if (iw->grabbed)
             gdk_seat_ungrab (gdk_event_get_seat (event));
-          reemphasize_window (GTK_WIDGET (iw));
+          reemphasize_window (CTK_WIDGET (iw));
 
           clear_flash (iw);
         }
@@ -382,8 +382,8 @@ ctk_inspector_on_inspect (GtkWidget          *button,
 
   g_signal_connect (iw->invisible, "event", G_CALLBACK (property_query_event), iw);
 
-  ctk_grab_add (GTK_WIDGET (iw->invisible));
-  deemphasize_window (GTK_WIDGET (iw));
+  ctk_grab_add (CTK_WIDGET (iw->invisible));
+  deemphasize_window (CTK_WIDGET (iw));
 }
 
 static gboolean
@@ -396,9 +396,9 @@ draw_flash (GtkWidget          *widget,
   if (iw && iw->flash_count % 2 == 0)
     return FALSE;
 
-  if (GTK_IS_WINDOW (widget))
+  if (CTK_IS_WINDOW (widget))
     {
-      GtkWidget *child = ctk_bin_get_child (GTK_BIN (widget));
+      GtkWidget *child = ctk_bin_get_child (CTK_BIN (widget));
       /* We don't want to draw the drag highlight around the
        * CSD window decorations
        */

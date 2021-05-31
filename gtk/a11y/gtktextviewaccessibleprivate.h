@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TEXT_VIEW_ACCESSIBLE_PRIVATE_H__
-#define __GTK_TEXT_VIEW_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_TEXT_VIEW_ACCESSIBLE_PRIVATE_H__
+#define __CTK_TEXT_VIEW_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtktextviewaccessible.h>
 
@@ -27,4 +27,4 @@ void _ctk_text_view_accessible_set_buffer (GtkTextView   *textview,
 
 G_END_DECLS
 
-#endif /* __GTK_TEXT_VIEW_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_TEXT_VIEW_ACCESSIBLE_PRIVATE_H__ */

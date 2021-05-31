@@ -51,7 +51,7 @@ cedilla_register_type (GTypeModule *module)
 
   type_cedilla = 
     g_type_module_register_type (module,
-				 GTK_TYPE_IM_CONTEXT_SIMPLE,
+				 CTK_TYPE_IM_CONTEXT_SIMPLE,
 				 "GtkIMContextCedillaTranslit",
 				 &object_info, 0);
 }
@@ -89,7 +89,7 @@ static const GtkIMContextInfo cedilla_info = {
   "cedilla",		           /* ID */
   NC_("input method menu", "Cedilla"), /* Human readable name */
   GETTEXT_PACKAGE,		   /* Translation domain */
-  GTK_LOCALEDIR,		   /* Dir for bindtextdomain */
+  CTK_LOCALEDIR,		   /* Dir for bindtextdomain */
   "az:ca:co:fr:gv:oc:pt:sq:tr:wa"  /* Languages for which this module is the default */
 };
 

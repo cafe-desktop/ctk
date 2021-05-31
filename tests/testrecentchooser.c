@@ -63,7 +63,7 @@ static void
 response_cb (GtkDialog *dialog,
 	     gint       response_id)
 {
-  if (response_id == GTK_RESPONSE_OK)
+  if (response_id == CTK_RESPONSE_OK)
     {
     }
   else
@@ -86,7 +86,7 @@ notify_multiple_cb (GtkWidget  *dialog,
 {
   gboolean multiple;
 
-  multiple = ctk_recent_chooser_get_select_multiple (GTK_RECENT_CHOOSER (dialog));
+  multiple = ctk_recent_chooser_get_select_multiple (CTK_RECENT_CHOOSER (dialog));
 
   ctk_widget_set_sensitive (button, multiple);
 }
@@ -115,7 +115,7 @@ main (int   argc,
 
   /* to test rtl layout, set RTL=1 in the environment */
   if (g_getenv ("RTL"))
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
   for (i = 1; i < argc; i++)
     {
@@ -123,18 +123,18 @@ main (int   argc,
 	multiple = TRUE;
     }
 
-  dialog = g_object_new (GTK_TYPE_RECENT_CHOOSER_DIALOG,
+  dialog = g_object_new (CTK_TYPE_RECENT_CHOOSER_DIALOG,
 		         "select-multiple", multiple,
                          "show-tips", TRUE,
                          "show-icons", TRUE,
 			 NULL);
-  ctk_window_set_title (GTK_WINDOW (dialog), "Select a file");
-  ctk_dialog_add_buttons (GTK_DIALOG (dialog),
-		  	  "_Cancel", GTK_RESPONSE_CANCEL,
-			  "_Open", GTK_RESPONSE_OK,
+  ctk_window_set_title (CTK_WINDOW (dialog), "Select a file");
+  ctk_dialog_add_buttons (CTK_DIALOG (dialog),
+		  	  "_Cancel", CTK_RESPONSE_CANCEL,
+			  "_Open", CTK_RESPONSE_OK,
 			  NULL);
   
-  ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  ctk_dialog_set_default_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
 
   g_signal_connect (dialog, "item-activated",
 		    G_CALLBACK (print_current_item), NULL);
@@ -147,41 +147,41 @@ main (int   argc,
   filter = ctk_recent_filter_new ();
   ctk_recent_filter_set_name (filter, "All Files");
   ctk_recent_filter_add_pattern (filter, "*");
-  ctk_recent_chooser_add_filter (GTK_RECENT_CHOOSER (dialog), filter);
+  ctk_recent_chooser_add_filter (CTK_RECENT_CHOOSER (dialog), filter);
 
   filter = ctk_recent_filter_new ();
   ctk_recent_filter_set_name (filter, "Only PDF Files");
   ctk_recent_filter_add_mime_type (filter, "application/pdf");
-  ctk_recent_chooser_add_filter (GTK_RECENT_CHOOSER (dialog), filter);
+  ctk_recent_chooser_add_filter (CTK_RECENT_CHOOSER (dialog), filter);
 
   g_signal_connect (dialog, "notify::filter",
 		    G_CALLBACK (filter_changed), NULL);
 
-  ctk_recent_chooser_set_filter (GTK_RECENT_CHOOSER (dialog), filter);
+  ctk_recent_chooser_set_filter (CTK_RECENT_CHOOSER (dialog), filter);
 
   filter = ctk_recent_filter_new ();
   ctk_recent_filter_set_name (filter, "PNG and JPEG");
   ctk_recent_filter_add_mime_type (filter, "image/png");
   ctk_recent_filter_add_mime_type (filter, "image/jpeg");
-  ctk_recent_chooser_add_filter (GTK_RECENT_CHOOSER (dialog), filter);
+  ctk_recent_chooser_add_filter (CTK_RECENT_CHOOSER (dialog), filter);
 
   ctk_widget_show_all (dialog);
 
-  control_window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  control_window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
-  vbbox = ctk_button_box_new (GTK_ORIENTATION_VERTICAL);
-  ctk_container_add (GTK_CONTAINER (control_window), vbbox);
+  vbbox = ctk_button_box_new (CTK_ORIENTATION_VERTICAL);
+  ctk_container_add (CTK_CONTAINER (control_window), vbbox);
 
   button = ctk_button_new_with_mnemonic ("_Select all");
   ctk_widget_set_sensitive (button, multiple);
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect_swapped (button, "clicked",
 		            G_CALLBACK (ctk_recent_chooser_select_all), dialog);
   g_signal_connect (dialog, "notify::select-multiple",
 		    G_CALLBACK (notify_multiple_cb), button);
 
   button = ctk_button_new_with_mnemonic ("_Unselect all");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect_swapped (button, "clicked",
 		            G_CALLBACK (ctk_recent_chooser_unselect_all), dialog);
 

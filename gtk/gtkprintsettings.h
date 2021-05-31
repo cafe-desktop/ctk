@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_SETTINGS_H__
-#define __GTK_PRINT_SETTINGS_H__
+#ifndef __CTK_PRINT_SETTINGS_H__
+#define __CTK_PRINT_SETTINGS_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,9 +29,9 @@ G_BEGIN_DECLS
 
 typedef struct _GtkPrintSettings GtkPrintSettings;
 
-#define GTK_TYPE_PRINT_SETTINGS    (ctk_print_settings_get_type ())
-#define GTK_PRINT_SETTINGS(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_SETTINGS, GtkPrintSettings))
-#define GTK_IS_PRINT_SETTINGS(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_SETTINGS))
+#define CTK_TYPE_PRINT_SETTINGS    (ctk_print_settings_get_type ())
+#define CTK_PRINT_SETTINGS(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_SETTINGS, GtkPrintSettings))
+#define CTK_IS_PRINT_SETTINGS(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_SETTINGS))
 
 typedef void  (*GtkPrintSettingsFunc)  (const gchar *key,
 					const gchar *value,
@@ -139,45 +139,45 @@ void              ctk_print_settings_set_int                 (GtkPrintSettings  
 							      const gchar          *key,
 							      gint                  value);
 
-#define GTK_PRINT_SETTINGS_PRINTER          "printer"
-#define GTK_PRINT_SETTINGS_ORIENTATION      "orientation"
-#define GTK_PRINT_SETTINGS_PAPER_FORMAT     "paper-format"
-#define GTK_PRINT_SETTINGS_PAPER_WIDTH      "paper-width"
-#define GTK_PRINT_SETTINGS_PAPER_HEIGHT     "paper-height"
-#define GTK_PRINT_SETTINGS_N_COPIES         "n-copies"
-#define GTK_PRINT_SETTINGS_DEFAULT_SOURCE   "default-source"
-#define GTK_PRINT_SETTINGS_QUALITY          "quality"
-#define GTK_PRINT_SETTINGS_RESOLUTION       "resolution"
-#define GTK_PRINT_SETTINGS_USE_COLOR        "use-color"
-#define GTK_PRINT_SETTINGS_DUPLEX           "duplex"
-#define GTK_PRINT_SETTINGS_COLLATE          "collate"
-#define GTK_PRINT_SETTINGS_REVERSE          "reverse"
-#define GTK_PRINT_SETTINGS_MEDIA_TYPE       "media-type"
-#define GTK_PRINT_SETTINGS_DITHER           "dither"
-#define GTK_PRINT_SETTINGS_SCALE            "scale"
-#define GTK_PRINT_SETTINGS_PRINT_PAGES      "print-pages"
-#define GTK_PRINT_SETTINGS_PAGE_RANGES      "page-ranges"
-#define GTK_PRINT_SETTINGS_PAGE_SET         "page-set"
-#define GTK_PRINT_SETTINGS_FINISHINGS       "finishings"
-#define GTK_PRINT_SETTINGS_NUMBER_UP        "number-up"
-#define GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT "number-up-layout"
-#define GTK_PRINT_SETTINGS_OUTPUT_BIN       "output-bin"
-#define GTK_PRINT_SETTINGS_RESOLUTION_X     "resolution-x"
-#define GTK_PRINT_SETTINGS_RESOLUTION_Y     "resolution-y"
-#define GTK_PRINT_SETTINGS_PRINTER_LPI      "printer-lpi"
+#define CTK_PRINT_SETTINGS_PRINTER          "printer"
+#define CTK_PRINT_SETTINGS_ORIENTATION      "orientation"
+#define CTK_PRINT_SETTINGS_PAPER_FORMAT     "paper-format"
+#define CTK_PRINT_SETTINGS_PAPER_WIDTH      "paper-width"
+#define CTK_PRINT_SETTINGS_PAPER_HEIGHT     "paper-height"
+#define CTK_PRINT_SETTINGS_N_COPIES         "n-copies"
+#define CTK_PRINT_SETTINGS_DEFAULT_SOURCE   "default-source"
+#define CTK_PRINT_SETTINGS_QUALITY          "quality"
+#define CTK_PRINT_SETTINGS_RESOLUTION       "resolution"
+#define CTK_PRINT_SETTINGS_USE_COLOR        "use-color"
+#define CTK_PRINT_SETTINGS_DUPLEX           "duplex"
+#define CTK_PRINT_SETTINGS_COLLATE          "collate"
+#define CTK_PRINT_SETTINGS_REVERSE          "reverse"
+#define CTK_PRINT_SETTINGS_MEDIA_TYPE       "media-type"
+#define CTK_PRINT_SETTINGS_DITHER           "dither"
+#define CTK_PRINT_SETTINGS_SCALE            "scale"
+#define CTK_PRINT_SETTINGS_PRINT_PAGES      "print-pages"
+#define CTK_PRINT_SETTINGS_PAGE_RANGES      "page-ranges"
+#define CTK_PRINT_SETTINGS_PAGE_SET         "page-set"
+#define CTK_PRINT_SETTINGS_FINISHINGS       "finishings"
+#define CTK_PRINT_SETTINGS_NUMBER_UP        "number-up"
+#define CTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT "number-up-layout"
+#define CTK_PRINT_SETTINGS_OUTPUT_BIN       "output-bin"
+#define CTK_PRINT_SETTINGS_RESOLUTION_X     "resolution-x"
+#define CTK_PRINT_SETTINGS_RESOLUTION_Y     "resolution-y"
+#define CTK_PRINT_SETTINGS_PRINTER_LPI      "printer-lpi"
 
 /**
- * GTK_PRINT_SETTINGS_OUTPUT_DIR:
+ * CTK_PRINT_SETTINGS_OUTPUT_DIR:
  *
  * The key used by the “Print to file” printer to store the
  * directory to which the output should be written.
  *
  * Since: 3.6
  */
-#define GTK_PRINT_SETTINGS_OUTPUT_DIR       "output-dir"
+#define CTK_PRINT_SETTINGS_OUTPUT_DIR       "output-dir"
 
 /**
- * GTK_PRINT_SETTINGS_OUTPUT_BASENAME:
+ * CTK_PRINT_SETTINGS_OUTPUT_BASENAME:
  *
  * The key used by the “Print to file” printer to store the file
  * name of the output without the path to the directory and the
@@ -185,27 +185,27 @@ void              ctk_print_settings_set_int                 (GtkPrintSettings  
  *
  * Since: 3.6
  */
-#define GTK_PRINT_SETTINGS_OUTPUT_BASENAME  "output-basename"
+#define CTK_PRINT_SETTINGS_OUTPUT_BASENAME  "output-basename"
 
 /**
- * GTK_PRINT_SETTINGS_OUTPUT_FILE_FORMAT:
+ * CTK_PRINT_SETTINGS_OUTPUT_FILE_FORMAT:
  *
  * The key used by the “Print to file” printer to store the format
  * of the output. The supported values are “PS” and “PDF”.
  */
-#define GTK_PRINT_SETTINGS_OUTPUT_FILE_FORMAT  "output-file-format"
+#define CTK_PRINT_SETTINGS_OUTPUT_FILE_FORMAT  "output-file-format"
 
 /**
- * GTK_PRINT_SETTINGS_OUTPUT_URI:
+ * CTK_PRINT_SETTINGS_OUTPUT_URI:
  *
  * The key used by the “Print to file” printer to store the URI
  * to which the output should be written. GTK+ itself supports
  * only “file://” URIs.
  */
-#define GTK_PRINT_SETTINGS_OUTPUT_URI          "output-uri"
+#define CTK_PRINT_SETTINGS_OUTPUT_URI          "output-uri"
 
-#define GTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION "win32-driver-version"
-#define GTK_PRINT_SETTINGS_WIN32_DRIVER_EXTRA   "win32-driver-extra"
+#define CTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION "win32-driver-version"
+#define CTK_PRINT_SETTINGS_WIN32_DRIVER_EXTRA   "win32-driver-extra"
 
 /* Helpers: */
 
@@ -352,4 +352,4 @@ GtkPrintSettings     *ctk_print_settings_new_from_gvariant     (GVariant        
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_SETTINGS_H__ */
+#endif /* __CTK_PRINT_SETTINGS_H__ */

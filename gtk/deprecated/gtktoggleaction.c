@@ -65,7 +65,7 @@ enum {
   PROP_ACTIVE
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkToggleAction, ctk_toggle_action, GTK_TYPE_ACTION)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkToggleAction, ctk_toggle_action, CTK_TYPE_ACTION)
 
 static void ctk_toggle_action_activate     (GtkAction       *action);
 static void set_property                   (GObject         *object,
@@ -88,15 +88,15 @@ ctk_toggle_action_class_init (GtkToggleActionClass *klass)
   GtkActionClass *action_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  action_class = GTK_ACTION_CLASS (klass);
+  action_class = CTK_ACTION_CLASS (klass);
 
   gobject_class->set_property = set_property;
   gobject_class->get_property = get_property;
 
   action_class->activate = ctk_toggle_action_activate;
 
-  action_class->menu_item_type = GTK_TYPE_CHECK_MENU_ITEM;
-  action_class->toolbar_item_type = GTK_TYPE_TOGGLE_TOOL_BUTTON;
+  action_class->menu_item_type = CTK_TYPE_CHECK_MENU_ITEM;
+  action_class->toolbar_item_type = CTK_TYPE_TOGGLE_TOOL_BUTTON;
 
   action_class->create_menu_item = create_menu_item;
 
@@ -118,7 +118,7 @@ ctk_toggle_action_class_init (GtkToggleActionClass *klass)
                                                          P_("Create the same proxies as a radio action"),
                                                          P_("Whether the proxies for this action look like radio action proxies"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
 
   /**
    * GtkToggleAction:active:
@@ -135,7 +135,7 @@ ctk_toggle_action_class_init (GtkToggleActionClass *klass)
                                                          P_("Active"),
                                                          P_("Whether the toggle action should be active"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
   /**
    * GtkToggleAction::toggled:
    * @toggleaction: the object which received the signal.
@@ -190,7 +190,7 @@ ctk_toggle_action_new (const gchar *name,
 {
   g_return_val_if_fail (name != NULL, NULL);
 
-  return g_object_new (GTK_TYPE_TOGGLE_ACTION,
+  return g_object_new (CTK_TYPE_TOGGLE_ACTION,
 		       "name", name,
 		       "label", label,
 		       "tooltip", tooltip,
@@ -204,7 +204,7 @@ get_property (GObject     *object,
 	      GValue      *value,
 	      GParamSpec  *pspec)
 {
-  GtkToggleAction *action = GTK_TOGGLE_ACTION (object);
+  GtkToggleAction *action = CTK_TOGGLE_ACTION (object);
   
   switch (prop_id)
     {
@@ -226,7 +226,7 @@ set_property (GObject      *object,
 	      const GValue *value,
 	      GParamSpec   *pspec)
 {
-  GtkToggleAction *action = GTK_TOGGLE_ACTION (object);
+  GtkToggleAction *action = CTK_TOGGLE_ACTION (object);
   
   switch (prop_id)
     {
@@ -247,9 +247,9 @@ ctk_toggle_action_activate (GtkAction *action)
 {
   GtkToggleAction *toggle_action;
 
-  g_return_if_fail (GTK_IS_TOGGLE_ACTION (action));
+  g_return_if_fail (CTK_IS_TOGGLE_ACTION (action));
 
-  toggle_action = GTK_TOGGLE_ACTION (action);
+  toggle_action = CTK_TOGGLE_ACTION (action);
 
   toggle_action->private_data->active = !toggle_action->private_data->active;
 
@@ -271,7 +271,7 @@ ctk_toggle_action_activate (GtkAction *action)
 void
 ctk_toggle_action_toggled (GtkToggleAction *action)
 {
-  g_return_if_fail (GTK_IS_TOGGLE_ACTION (action));
+  g_return_if_fail (CTK_IS_TOGGLE_ACTION (action));
 
   g_signal_emit (action, action_signals[TOGGLED], 0);
 }
@@ -291,12 +291,12 @@ void
 ctk_toggle_action_set_active (GtkToggleAction *action, 
 			      gboolean         is_active)
 {
-  g_return_if_fail (GTK_IS_TOGGLE_ACTION (action));
+  g_return_if_fail (CTK_IS_TOGGLE_ACTION (action));
 
   is_active = is_active != FALSE;
 
   if (action->private_data->active != is_active)
-    _ctk_action_emit_activate (GTK_ACTION (action));
+    _ctk_action_emit_activate (CTK_ACTION (action));
 }
 
 /**
@@ -314,7 +314,7 @@ ctk_toggle_action_set_active (GtkToggleAction *action,
 gboolean
 ctk_toggle_action_get_active (GtkToggleAction *action)
 {
-  g_return_val_if_fail (GTK_IS_TOGGLE_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_TOGGLE_ACTION (action), FALSE);
 
   return action->private_data->active;
 }
@@ -336,7 +336,7 @@ void
 ctk_toggle_action_set_draw_as_radio (GtkToggleAction *action, 
 				     gboolean         draw_as_radio)
 {
-  g_return_if_fail (GTK_IS_TOGGLE_ACTION (action));
+  g_return_if_fail (CTK_IS_TOGGLE_ACTION (action));
 
   draw_as_radio = draw_as_radio != FALSE;
 
@@ -363,7 +363,7 @@ ctk_toggle_action_set_draw_as_radio (GtkToggleAction *action,
 gboolean
 ctk_toggle_action_get_draw_as_radio (GtkToggleAction *action)
 {
-  g_return_val_if_fail (GTK_IS_TOGGLE_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_TOGGLE_ACTION (action), FALSE);
 
   return action->private_data->draw_as_radio;
 }
@@ -371,9 +371,9 @@ ctk_toggle_action_get_draw_as_radio (GtkToggleAction *action)
 static GtkWidget *
 create_menu_item (GtkAction *action)
 {
-  GtkToggleAction *toggle_action = GTK_TOGGLE_ACTION (action);
+  GtkToggleAction *toggle_action = CTK_TOGGLE_ACTION (action);
 
-  return g_object_new (GTK_TYPE_CHECK_MENU_ITEM, 
+  return g_object_new (CTK_TYPE_CHECK_MENU_ITEM, 
 		       "draw-as-radio", toggle_action->private_data->draw_as_radio,
 		       NULL);
 }

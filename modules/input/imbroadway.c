@@ -27,9 +27,9 @@
 
 #include "gdk/broadway/gdkbroadway.h"
 
-#define GTK_IM_CONTEXT_TYPE_BROADWAY (type_broadway)
-#define GTK_IM_CONTEXT_BROADWAY(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_IM_CONTEXT_TYPE_BROADWAY, GtkIMContextBroadway))
-#define GTK_IM_CONTEXT_BROADWAY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_IM_CONTEXT_TYPE_BROADWAY, GtkIMContextBroadwayClass))
+#define CTK_IM_CONTEXT_TYPE_BROADWAY (type_broadway)
+#define CTK_IM_CONTEXT_BROADWAY(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_IM_CONTEXT_TYPE_BROADWAY, GtkIMContextBroadway))
+#define CTK_IM_CONTEXT_BROADWAY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_IM_CONTEXT_TYPE_BROADWAY, GtkIMContextBroadwayClass))
 
 typedef struct _GtkIMContextBroadway
 {
@@ -50,7 +50,7 @@ static const GtkIMContextInfo imbroadway_info =
   "broadway",      /* ID */
   NC_("input method menu", "Broadway"),      /* Human readable name */
   GETTEXT_PACKAGE, /* Translation domain */
-  GTK_LOCALEDIR,   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+  CTK_LOCALEDIR,   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
   "",              /* Languages for which this module is the default */
 };
 
@@ -68,7 +68,7 @@ static const GtkIMContextInfo *info_list[] =
 static void
 broadway_set_client_window (GtkIMContext *context, GdkWindow *window)
 {
-  GtkIMContextBroadway *bw = GTK_IM_CONTEXT_BROADWAY (context);
+  GtkIMContextBroadway *bw = CTK_IM_CONTEXT_BROADWAY (context);
 
   bw->client_window = window;
 }
@@ -76,7 +76,7 @@ broadway_set_client_window (GtkIMContext *context, GdkWindow *window)
 static void
 broadway_focus_in (GtkIMContext *context)
 {
-  GtkIMContextBroadway *bw = GTK_IM_CONTEXT_BROADWAY (context);
+  GtkIMContextBroadway *bw = CTK_IM_CONTEXT_BROADWAY (context);
   GdkDisplay *display;
 
   if (bw->client_window)
@@ -89,7 +89,7 @@ broadway_focus_in (GtkIMContext *context)
 static void
 broadway_focus_out (GtkIMContext *context)
 {
-  GtkIMContextBroadway *bw = GTK_IM_CONTEXT_BROADWAY (context);
+  GtkIMContextBroadway *bw = CTK_IM_CONTEXT_BROADWAY (context);
   GdkDisplay *display;
 
   if (bw->client_window)
@@ -132,7 +132,7 @@ ctk_im_context_broadway_register_type (GTypeModule *module)
 
   type_broadway =
     g_type_module_register_type (module,
-                                 GTK_TYPE_IM_CONTEXT_SIMPLE,
+                                 CTK_TYPE_IM_CONTEXT_SIMPLE,
                                  "GtkIMContextBroadway",
                                  &object_info, 0);
 }

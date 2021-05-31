@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SCALE_BUTTON_ACCESSIBLE_H__
-#define __GTK_SCALE_BUTTON_ACCESSIBLE_H__
+#ifndef __CTK_SCALE_BUTTON_ACCESSIBLE_H__
+#define __CTK_SCALE_BUTTON_ACCESSIBLE_H__
 
-#if !defined (__GTK_A11Y_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_A11Y_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk-a11y.h> can be included directly."
 #endif
 
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SCALE_BUTTON_ACCESSIBLE                     (ctk_scale_button_accessible_get_type ())
-#define GTK_SCALE_BUTTON_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessible))
-#define GTK_SCALE_BUTTON_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessibleClass))
-#define GTK_IS_SCALE_BUTTON_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SCALE_BUTTON_ACCESSIBLE))
-#define GTK_IS_SCALE_BUTTON_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SCALE_BUTTON_ACCESSIBLE))
-#define GTK_SCALE_BUTTON_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessibleClass))
+#define CTK_TYPE_SCALE_BUTTON_ACCESSIBLE                     (ctk_scale_button_accessible_get_type ())
+#define CTK_SCALE_BUTTON_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessible))
+#define CTK_SCALE_BUTTON_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessibleClass))
+#define CTK_IS_SCALE_BUTTON_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE))
+#define CTK_IS_SCALE_BUTTON_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE))
+#define CTK_SCALE_BUTTON_ACCESSIBLE_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCALE_BUTTON_ACCESSIBLE, GtkScaleButtonAccessibleClass))
 
 typedef struct _GtkScaleButtonAccessible        GtkScaleButtonAccessible;
 typedef struct _GtkScaleButtonAccessibleClass   GtkScaleButtonAccessibleClass;
@@ -54,4 +54,4 @@ GType ctk_scale_button_accessible_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GTK_SCALE_BUTTON_ACCESSIBLE_H__ */
+#endif /* __CTK_SCALE_BUTTON_ACCESSIBLE_H__ */

@@ -107,15 +107,15 @@ static void ctk_cell_renderer_progress_render       (GtkCellRenderer         *ce
 				                     GtkCellRendererState    flags);
 
      
-G_DEFINE_TYPE_WITH_CODE (GtkCellRendererProgress, ctk_cell_renderer_progress, GTK_TYPE_CELL_RENDERER,
+G_DEFINE_TYPE_WITH_CODE (GtkCellRendererProgress, ctk_cell_renderer_progress, CTK_TYPE_CELL_RENDERER,
                          G_ADD_PRIVATE (GtkCellRendererProgress)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE, NULL))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL))
 
 static void
 ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkCellRendererClass *cell_class = GTK_CELL_RENDERER_CLASS (klass);
+  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
   
   object_class->finalize = ctk_cell_renderer_progress_finalize;
   object_class->get_property = ctk_cell_renderer_progress_get_property;
@@ -138,7 +138,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
 						     P_("Value"),
 						     P_("Value of the progress bar"),
 						     0, 100, 0,
-						     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkCellRendererProgress:text:
@@ -156,7 +156,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
 							P_("Text"),
 							P_("Text on the progress bar"),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
 
   /**
    * GtkCellRendererProgress:pulse:
@@ -180,7 +180,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
                                                      P_("Pulse"),
                                                      P_("Set this to positive values to indicate that some progress is made, but you don't know how much."),
                                                      -1, G_MAXINT, -1,
-                                                     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkCellRendererProgress:text-xalign:
@@ -197,7 +197,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
                                                        P_("Text x alignment"),
                                                        P_("The horizontal text alignment, from 0 (left) to 1 (right). Reversed for RTL layouts."),
                                                        0.0, 1.0, 0.5,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
   /**
    * GtkCellRendererProgress:text-yalign:
@@ -214,7 +214,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
                                                        P_("Text y alignment"),
                                                        P_("The vertical text alignment, from 0 (top) to 1 (bottom)."),
                                                        0.0, 1.0, 0.5,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
   g_object_class_override_property (object_class,
                                     PROP_ORIENTATION,
@@ -226,7 +226,7 @@ ctk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
                                                          P_("Inverted"),
                                                          P_("Invert the direction in which the progress bar grows"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 }
 
 static void
@@ -248,7 +248,7 @@ ctk_cell_renderer_progress_init (GtkCellRendererProgress *cellprogress)
   priv->text_xalign = 0.5;
   priv->text_yalign = 0.5;
 
-  priv->orientation = GTK_ORIENTATION_HORIZONTAL,
+  priv->orientation = CTK_ORIENTATION_HORIZONTAL,
   priv->inverted = FALSE;
 }
 
@@ -265,13 +265,13 @@ ctk_cell_renderer_progress_init (GtkCellRendererProgress *cellprogress)
 GtkCellRenderer*
 ctk_cell_renderer_progress_new (void)
 {
-  return g_object_new (GTK_TYPE_CELL_RENDERER_PROGRESS, NULL);
+  return g_object_new (CTK_TYPE_CELL_RENDERER_PROGRESS, NULL);
 }
 
 static void
 ctk_cell_renderer_progress_finalize (GObject *object)
 {
-  GtkCellRendererProgress *cellprogress = GTK_CELL_RENDERER_PROGRESS (object);
+  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
   GtkCellRendererProgressPrivate *priv = cellprogress->priv;
   
   g_free (priv->text);
@@ -286,7 +286,7 @@ ctk_cell_renderer_progress_get_property (GObject    *object,
 					 GValue     *value,
 					 GParamSpec *pspec)
 {
-  GtkCellRendererProgress *cellprogress = GTK_CELL_RENDERER_PROGRESS (object);
+  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
   GtkCellRendererProgressPrivate *priv = cellprogress->priv;
   
   switch (param_id)
@@ -323,7 +323,7 @@ ctk_cell_renderer_progress_set_property (GObject      *object,
 					 const GValue *value,
 					 GParamSpec   *pspec)
 {
-  GtkCellRendererProgress *cellprogress = GTK_CELL_RENDERER_PROGRESS (object);
+  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (object);
   GtkCellRendererProgressPrivate *priv = cellprogress->priv;
   
   switch (param_id)
@@ -460,7 +460,7 @@ ctk_cell_renderer_progress_get_size (GtkCellRenderer    *cell,
 				     gint               *width,
 				     gint               *height)
 {
-  GtkCellRendererProgress *cellprogress = GTK_CELL_RENDERER_PROGRESS (cell);
+  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (cell);
   GtkCellRendererProgressPrivate *priv = cellprogress->priv;
   gint w, h;
   gchar *text;
@@ -551,7 +551,7 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
 				   const GdkRectangle   *cell_area,
 				   GtkCellRendererState  flags)
 {
-  GtkCellRendererProgress *cellprogress = GTK_CELL_RENDERER_PROGRESS (cell);
+  GtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (cell);
   GtkCellRendererProgressPrivate *priv= cellprogress->priv;
   GtkStyleContext *context;
   GtkBorder padding;
@@ -563,7 +563,7 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
   gboolean is_rtl;
 
   context = ctk_widget_get_style_context (widget);
-  is_rtl = ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
+  is_rtl = ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL;
 
   ctk_cell_renderer_get_padding (cell, &xpad, &ypad);
   x = cell_area->x + xpad;
@@ -572,7 +572,7 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
   h = cell_area->height - ypad * 2;
 
   ctk_style_context_save (context);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_TROUGH);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_TROUGH);
 
   ctk_render_background (context, cr, x, y, w, h);
   ctk_render_frame (context, cr, x, y, w, h);
@@ -586,7 +586,7 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
 
   ctk_style_context_restore (context);
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       clip.y = y;
       clip.height = h;
@@ -630,7 +630,7 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
   if (bar_size > 0)
     {
       ctk_style_context_save (context);
-      ctk_style_context_add_class (context, GTK_STYLE_CLASS_PROGRESSBAR);
+      ctk_style_context_add_class (context, CTK_STYLE_CLASS_PROGRESSBAR);
 
       ctk_render_background (context, cr, clip.x, clip.y, clip.width, clip.height);
       ctk_render_frame (context, cr, clip.x, clip.y, clip.width, clip.height);
@@ -645,7 +645,7 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
       layout = ctk_widget_create_pango_layout (widget, priv->label);
       pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
-      if (ctk_widget_get_direction (widget) != GTK_TEXT_DIR_LTR)
+      if (ctk_widget_get_direction (widget) != CTK_TEXT_DIR_LTR)
 	text_xalign = 1.0 - priv->text_xalign;
       else
 	text_xalign = priv->text_xalign;
@@ -661,7 +661,7 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
       cairo_clip (cr);
 
       ctk_style_context_save (context);
-      ctk_style_context_add_class (context, GTK_STYLE_CLASS_PROGRESSBAR);
+      ctk_style_context_add_class (context, CTK_STYLE_CLASS_PROGRESSBAR);
 
       ctk_render_layout (context, cr,
                          x_pos, y_pos,
@@ -671,11 +671,11 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
       cairo_restore (cr);
 
       ctk_style_context_save (context);
-      ctk_style_context_add_class (context, GTK_STYLE_CLASS_TROUGH);
+      ctk_style_context_add_class (context, CTK_STYLE_CLASS_TROUGH);
 
       if (bar_position > start)
         {
-	  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+	  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
 	    {
 	      clip.x = x;
 	      clip.width = bar_position - x;
@@ -699,7 +699,7 @@ ctk_cell_renderer_progress_render (GtkCellRenderer      *cell,
 
       if (bar_position + bar_size < start + full_size)
         {
-	  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+	  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
 	    {
 	      clip.x = bar_position + bar_size;
 	      clip.width = x + w - (bar_position + bar_size);

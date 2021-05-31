@@ -3737,16 +3737,16 @@ msgid "Location"
 msgstr "ತಾಣ"
 
 #: ../gtk/inspector/visual.c:243 ../gtk/inspector/visual.c:269
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "ಥೀಮ್ ಅನ್ನು GTK_THEME ಇಂದ ಹಾರ್ಡ್‌ಕೋಡ್ ಮಾಡಲಾಗಿದೆ"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "ಥೀಮ್ ಅನ್ನು CTK_THEME ಇಂದ ಹಾರ್ಡ್‌ಕೋಡ್ ಮಾಡಲಾಗಿದೆ"
 
 #: ../gtk/inspector/visual.c:387
 msgid "Backend does not support window scaling"
 msgstr "ಹಿನ್ನಲೆಯನ್ನು ಬ್ಯಾಕ್‌ಎಂಡ್ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ"
 
 #: ../gtk/inspector/visual.c:426
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "ಸಿದ್ಧತೆಯನ್ನು GTK_TEST_TOUCHSCREEN ಇಂದ ಹಾರ್ಡ್‌ಕೋಡ್ ಮಾಡಲಾಗಿದೆ"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "ಸಿದ್ಧತೆಯನ್ನು CTK_TEST_TOUCHSCREEN ಇಂದ ಹಾರ್ಡ್‌ಕೋಡ್ ಮಾಡಲಾಗಿದೆ"
 
 #. vim: set et sw=2 ts=2:
 #: ../gtk/inspector/visual.ui.h:1

@@ -81,12 +81,12 @@ static void atk_selection_interface_init              (AtkSelectionIface        
 static void atk_component_interface_init              (AtkComponentIface            *iface);
 static void ctk_cell_accessible_parent_interface_init (GtkCellAccessibleParentIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkTreeViewAccessible, ctk_tree_view_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkTreeViewAccessible, ctk_tree_view_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkTreeViewAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_TABLE, atk_table_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_interface_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_CELL_ACCESSIBLE_PARENT, ctk_cell_accessible_parent_interface_init))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_CELL_ACCESSIBLE_PARENT, ctk_cell_accessible_parent_interface_init))
 
 
 static GQuark
@@ -103,7 +103,7 @@ ctk_tree_view_accessible_get_data_quark (void)
 static void
 cell_info_free (GtkTreeViewAccessibleCellInfo *cell_info)
 {
-  ctk_accessible_set_widget (GTK_ACCESSIBLE (cell_info->cell), NULL);
+  ctk_accessible_set_widget (CTK_ACCESSIBLE (cell_info->cell), NULL);
   g_object_unref (cell_info->cell);
 
   g_free (cell_info);
@@ -148,18 +148,18 @@ ctk_tree_view_accessible_initialize (AtkObject *obj,
 
   ATK_OBJECT_CLASS (ctk_tree_view_accessible_parent_class)->initialize (obj, data);
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (obj);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (obj);
 
   accessible->priv->cell_infos = g_hash_table_new_full (cell_info_hash,
       cell_info_equal, NULL, (GDestroyNotify) cell_info_free);
 
-  widget = GTK_WIDGET (data);
-  tree_view = GTK_TREE_VIEW (widget);
+  widget = CTK_WIDGET (data);
+  tree_view = CTK_TREE_VIEW (widget);
   tree_model = ctk_tree_view_get_model (tree_view);
 
   if (tree_model)
     {
-      if (ctk_tree_model_get_flags (tree_model) & GTK_TREE_MODEL_LIST_ONLY)
+      if (ctk_tree_model_get_flags (tree_model) & CTK_TREE_MODEL_LIST_ONLY)
         obj->role = ATK_ROLE_TABLE;
       else
         obj->role = ATK_ROLE_TREE_TABLE;
@@ -169,7 +169,7 @@ ctk_tree_view_accessible_initialize (AtkObject *obj,
 static void
 ctk_tree_view_accessible_finalize (GObject *object)
 {
-  GtkTreeViewAccessible *accessible = GTK_TREE_VIEW_ACCESSIBLE (object);
+  GtkTreeViewAccessible *accessible = CTK_TREE_VIEW_ACCESSIBLE (object);
 
   if (accessible->priv->cell_infos)
     g_hash_table_destroy (accessible->priv->cell_infos);
@@ -185,9 +185,9 @@ ctk_tree_view_accessible_notify_gtk (GObject    *obj,
   GtkTreeView *tree_view;
   GtkTreeViewAccessible *accessible;
 
-  widget = GTK_WIDGET (obj);
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (ctk_widget_get_accessible (widget));
-  tree_view = GTK_TREE_VIEW (widget);
+  widget = CTK_WIDGET (obj);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (ctk_widget_get_accessible (widget));
+  tree_view = CTK_TREE_VIEW (widget);
 
   if (g_strcmp0 (pspec->name, "model") == 0)
     {
@@ -199,7 +199,7 @@ ctk_tree_view_accessible_notify_gtk (GObject    *obj,
 
       if (tree_model)
         {
-          if (ctk_tree_model_get_flags (tree_model) & GTK_TREE_MODEL_LIST_ONLY)
+          if (ctk_tree_model_get_flags (tree_model) & CTK_TREE_MODEL_LIST_ONLY)
             role = ATK_ROLE_TABLE;
           else
             role = ATK_ROLE_TREE_TABLE;
@@ -215,17 +215,17 @@ ctk_tree_view_accessible_notify_gtk (GObject    *obj,
       g_object_thaw_notify (G_OBJECT (accessible));
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_tree_view_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_tree_view_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static void
 ctk_tree_view_accessible_widget_unset (GtkAccessible *gtkaccessible)
 {
-  GtkTreeViewAccessible *accessible = GTK_TREE_VIEW_ACCESSIBLE (gtkaccessible);
+  GtkTreeViewAccessible *accessible = CTK_TREE_VIEW_ACCESSIBLE (gtkaccessible);
 
   g_hash_table_remove_all (accessible->priv->cell_infos);
 
-  GTK_ACCESSIBLE_CLASS (ctk_tree_view_accessible_parent_class)->widget_unset (gtkaccessible);
+  CTK_ACCESSIBLE_CLASS (ctk_tree_view_accessible_parent_class)->widget_unset (gtkaccessible);
 }
 
 static gint
@@ -265,11 +265,11 @@ ctk_tree_view_accessible_get_n_children (AtkObject *obj)
   GtkWidget *widget;
   GtkTreeView *tree_view;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return 0;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
   return (get_n_rows (tree_view) + 1) * get_n_columns (tree_view);
 }
 
@@ -312,7 +312,7 @@ set_cell_data (GtkTreeView           *treeview,
 
   model = ctk_tree_view_get_model (treeview);
 
-  if (GTK_RBNODE_FLAG_SET (cell_info->node, GTK_RBNODE_IS_PARENT) &&
+  if (CTK_RBNODE_FLAG_SET (cell_info->node, CTK_RBNODE_IS_PARENT) &&
       cell_info->cell_col_ref == ctk_tree_view_get_expander_column (treeview))
     {
       is_expander = TRUE;
@@ -366,7 +366,7 @@ create_cell_accessible_for_renderer (GtkCellRenderer *renderer,
 {
   GtkCellAccessible *cell;
 
-  cell = GTK_CELL_ACCESSIBLE (ctk_renderer_cell_accessible_new (renderer));
+  cell = CTK_CELL_ACCESSIBLE (ctk_renderer_cell_accessible_new (renderer));
   
   _ctk_cell_accessible_initialize (cell, widget, parent);
 
@@ -382,29 +382,29 @@ create_cell_accessible (GtkTreeView           *treeview,
   GList *l;
   GtkCellAccessible *cell;
 
-  renderer_list = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (column));
+  renderer_list = ctk_cell_layout_get_cells (CTK_CELL_LAYOUT (column));
 
   /* If there is exactly one renderer in the list (which is a 
    * common case), shortcut and don't make a container
    */
   if (g_list_length (renderer_list) == 1)
     {
-      cell = create_cell_accessible_for_renderer (renderer_list->data, GTK_WIDGET (treeview), ATK_OBJECT (accessible));
+      cell = create_cell_accessible_for_renderer (renderer_list->data, CTK_WIDGET (treeview), ATK_OBJECT (accessible));
     }
   else
     {
       GtkContainerCellAccessible *container;
 
       container = ctk_container_cell_accessible_new ();
-      _ctk_cell_accessible_initialize (GTK_CELL_ACCESSIBLE (container), GTK_WIDGET (treeview), ATK_OBJECT (accessible));
+      _ctk_cell_accessible_initialize (CTK_CELL_ACCESSIBLE (container), CTK_WIDGET (treeview), ATK_OBJECT (accessible));
 
       for (l = renderer_list; l; l = l->next)
         {
-          cell = create_cell_accessible_for_renderer (l->data, GTK_WIDGET (treeview), ATK_OBJECT (container));
+          cell = create_cell_accessible_for_renderer (l->data, CTK_WIDGET (treeview), ATK_OBJECT (container));
           ctk_container_cell_accessible_add_child (container, cell);
         }
 
-      cell = GTK_CELL_ACCESSIBLE (container);
+      cell = CTK_CELL_ACCESSIBLE (container);
     }
 
   g_list_free (renderer_list);
@@ -443,15 +443,15 @@ ctk_tree_view_accessible_ref_child (AtkObject *obj,
   GtkRBNode *node;
   AtkObject *child;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
   if (i >= ctk_tree_view_accessible_get_n_children (obj))
     return NULL;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (obj);
-  tree_view = GTK_TREE_VIEW (widget);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (obj);
+  tree_view = CTK_TREE_VIEW (widget);
   if (i < get_n_columns (tree_view))
     {
       tv_col = get_visible_column (tree_view, i);
@@ -479,7 +479,7 @@ ctk_tree_view_accessible_ref_state_set (AtkObject *obj)
   GtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_tree_view_accessible_parent_class)->ref_state_set (obj);
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 
   if (widget != NULL)
     atk_state_set_add_state (state_set, ATK_STATE_MANAGES_DESCENDANTS);
@@ -539,11 +539,11 @@ ctk_tree_view_accessible_ref_accessible_at_point (AtkComponent *component,
   GtkRBTree *tree;
   GtkRBNode *node;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (component));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)
     return NULL;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
 
   atk_component_get_extents (component, &x_pos, &y_pos, NULL, NULL, coord_type);
   ctk_tree_view_convert_widget_to_bin_window_coords (tree_view, x, y, &bx, &by);
@@ -558,9 +558,9 @@ ctk_tree_view_accessible_ref_accessible_at_point (AtkComponent *component,
       return NULL;
     }
 
-  cell = peek_cell (GTK_TREE_VIEW_ACCESSIBLE (component), tree, node, column);
+  cell = peek_cell (CTK_TREE_VIEW_ACCESSIBLE (component), tree, node, column);
   if (cell == NULL)
-    cell = create_cell (tree_view, GTK_TREE_VIEW_ACCESSIBLE (component), tree, node, column);
+    cell = create_cell (tree_view, CTK_TREE_VIEW_ACCESSIBLE (component), tree, node, column);
 
   return ATK_OBJECT (g_object_ref (cell));
 }
@@ -581,7 +581,7 @@ ctk_tree_view_accessible_get_index_at (AtkTable *table,
   GtkWidget *widget;
   gint n_cols, n_rows;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     return -1;
 
@@ -601,14 +601,14 @@ ctk_tree_view_accessible_get_column_at_index (AtkTable *table,
   GtkWidget *widget;
   gint n_columns;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     return -1;
 
   if (index >= ctk_tree_view_accessible_get_n_children (ATK_OBJECT (table)))
     return -1;
 
-  n_columns = get_n_columns (GTK_TREE_VIEW (widget));
+  n_columns = get_n_columns (CTK_TREE_VIEW (widget));
 
   /* checked by the n_children() check above */
   g_assert (n_columns > 0);
@@ -623,11 +623,11 @@ ctk_tree_view_accessible_get_row_at_index (AtkTable *table,
   GtkWidget *widget;
   GtkTreeView *tree_view;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     return -1;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
 
   index /= get_n_columns (tree_view);
   index--;
@@ -656,11 +656,11 @@ ctk_tree_view_accessible_get_n_rows (AtkTable *table)
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     return 0;
 
-  return get_n_rows (GTK_TREE_VIEW (widget));
+  return get_n_rows (CTK_TREE_VIEW (widget));
 }
 
 static gint
@@ -668,11 +668,11 @@ ctk_tree_view_accessible_get_n_columns (AtkTable *table)
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     return 0;
 
-  return get_n_columns (GTK_TREE_VIEW (widget));
+  return get_n_columns (CTK_TREE_VIEW (widget));
 }
 
 static gboolean
@@ -686,17 +686,17 @@ ctk_tree_view_accessible_is_row_selected (AtkTable *table,
   if (row < 0)
     return FALSE;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     return FALSE;
 
-  if (!_ctk_rbtree_find_index (_ctk_tree_view_get_rbtree (GTK_TREE_VIEW (widget)),
+  if (!_ctk_rbtree_find_index (_ctk_tree_view_get_rbtree (CTK_TREE_VIEW (widget)),
                                row,
                                &tree,
                                &node))
     return FALSE;
 
-  return GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_IS_SELECTED);
+  return CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_IS_SELECTED);
 }
 
 static gboolean
@@ -743,7 +743,7 @@ ctk_tree_view_accessible_get_selected_rows (AtkTable  *table,
   GtkWidget *widget;
   gint n_rows;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     {
       if (rows_selected != NULL)
@@ -751,7 +751,7 @@ ctk_tree_view_accessible_get_selected_rows (AtkTable  *table,
       return 0;
     }
 
-  data.treeview = GTK_TREE_VIEW (widget);
+  data.treeview = CTK_TREE_VIEW (widget);
   data.array = g_array_new (FALSE, FALSE, sizeof (gint));
 
   ctk_tree_selection_selected_foreach (ctk_tree_view_get_selection (data.treeview),
@@ -779,7 +779,7 @@ ctk_tree_view_accessible_add_row_selection (AtkTable *table,
   if (row < 0)
     return FALSE;
 
-  treeview = GTK_TREE_VIEW (ctk_accessible_get_widget (GTK_ACCESSIBLE (table)));
+  treeview = CTK_TREE_VIEW (ctk_accessible_get_widget (CTK_ACCESSIBLE (table)));
   if (treeview == NULL)
     return FALSE;
 
@@ -789,7 +789,7 @@ ctk_tree_view_accessible_add_row_selection (AtkTable *table,
                                &node))
     return FALSE;
 
-  if (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_IS_SELECTED))
+  if (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_IS_SELECTED))
     return FALSE;
 
   path = _ctk_tree_path_new_from_rbtree (tree, node);
@@ -811,7 +811,7 @@ ctk_tree_view_accessible_remove_row_selection (AtkTable *table,
   if (row < 0)
     return FALSE;
 
-  treeview = GTK_TREE_VIEW (ctk_accessible_get_widget (GTK_ACCESSIBLE (table)));
+  treeview = CTK_TREE_VIEW (ctk_accessible_get_widget (CTK_ACCESSIBLE (table)));
   if (treeview == NULL)
     return FALSE;
 
@@ -821,7 +821,7 @@ ctk_tree_view_accessible_remove_row_selection (AtkTable *table,
                                &node))
     return FALSE;
 
-  if (! GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_IS_SELECTED))
+  if (! CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_IS_SELECTED))
     return FALSE;
 
   path = _ctk_tree_path_new_from_rbtree (tree, node);
@@ -839,11 +839,11 @@ ctk_tree_view_accessible_get_column_header (AtkTable *table,
   GtkTreeView *tree_view;
   GtkTreeViewColumn *tv_col;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     return NULL;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
   if (in_col < 0 || in_col >= get_n_columns (tree_view))
     return NULL;
 
@@ -859,11 +859,11 @@ ctk_tree_view_accessible_get_column_description (AtkTable *table,
   GtkTreeView *tree_view;
   GtkTreeViewColumn *tv_col;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (table));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (table));
   if (widget == NULL)
     return NULL;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
   if (in_col < 0 || in_col >= get_n_columns (tree_view))
     return NULL;
 
@@ -917,11 +917,11 @@ ctk_tree_view_accessible_clear_selection (AtkSelection *selection)
   GtkTreeView *tree_view;
   GtkTreeSelection *tree_selection;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
   tree_selection = ctk_tree_view_get_selection (tree_view);
 
   ctk_tree_selection_unselect_all (tree_selection);
@@ -970,7 +970,7 @@ ctk_tree_view_accessible_is_child_selected (AtkSelection *selection,
   GtkWidget *widget;
   gint row;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
@@ -1009,17 +1009,17 @@ ctk_tree_view_accessible_get_cell_area (GtkCellAccessibleParent *parent,
   cell_rect->width = 0;
   cell_rect->height = 0;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (parent));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
   if (widget == NULL)
     return;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
   parent_cell = atk_object_get_parent (ATK_OBJECT (cell));
   if (parent_cell != ATK_OBJECT (parent))
-    top_cell = GTK_CELL_ACCESSIBLE (parent_cell);
+    top_cell = CTK_CELL_ACCESSIBLE (parent_cell);
   else
     top_cell = cell;
-  cell_info = find_cell_info (GTK_TREE_VIEW_ACCESSIBLE (parent), top_cell);
+  cell_info = find_cell_info (CTK_TREE_VIEW_ACCESSIBLE (parent), top_cell);
   if (!cell_info)
     return;
   path = cell_info_get_path (cell_info);
@@ -1055,7 +1055,7 @@ ctk_tree_view_accessible_get_cell_area (GtkCellAccessibleParent *parent,
           GtkCellRenderer *renderer;
 
           cell_index = atk_object_get_index_in_parent (ATK_OBJECT (cell));
-          renderers = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (tv_col));
+          renderers = ctk_cell_layout_get_cells (CTK_CELL_LAYOUT (tv_col));
           renderer = g_list_nth_data (renderers, cell_index);
 
           found = ctk_tree_view_column_cell_get_position (tv_col, renderer, &cell_start, &cell_width);
@@ -1085,11 +1085,11 @@ ctk_tree_view_accessible_get_cell_extents (GtkCellAccessibleParent *parent,
   GdkRectangle cell_rect;
   gint w_x, w_y;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (parent));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
   if (widget == NULL)
     return;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
   ctk_tree_view_accessible_get_cell_area (parent, cell, &cell_rect);
   bin_window = ctk_tree_view_get_bin_window (tree_view);
   gdk_window_get_origin (bin_window, &w_x, &w_y);
@@ -1135,13 +1135,13 @@ ctk_tree_view_accessible_grab_cell_focus (GtkCellAccessibleParent *parent,
   GtkWidget *toplevel;
   gint index;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (parent));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
   if (widget == NULL)
     return FALSE;
 
-  tree_view = GTK_TREE_VIEW (widget);
+  tree_view = CTK_TREE_VIEW (widget);
 
-  cell_info = find_cell_info (GTK_TREE_VIEW_ACCESSIBLE (parent), cell);
+  cell_info = find_cell_info (CTK_TREE_VIEW_ACCESSIBLE (parent), cell);
   if (!cell_info)
     return FALSE;
   cell_object = ATK_OBJECT (cell);
@@ -1155,7 +1155,7 @@ ctk_tree_view_accessible_grab_cell_focus (GtkCellAccessibleParent *parent,
        */
       GList *renderers;
 
-      renderers = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (tv_col));
+      renderers = ctk_cell_layout_get_cells (CTK_CELL_LAYOUT (tv_col));
       index = atk_object_get_index_in_parent (cell_object);
       renderer = g_list_nth_data (renderers, index);
       g_list_free (renderers);
@@ -1175,13 +1175,13 @@ ctk_tree_view_accessible_grab_cell_focus (GtkCellAccessibleParent *parent,
         {
 #ifdef GDK_WINDOWING_X11
           if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (toplevel)))
-            ctk_window_present_with_time (GTK_WINDOW (toplevel),
+            ctk_window_present_with_time (CTK_WINDOW (toplevel),
                                           gdk_x11_get_server_time (ctk_widget_get_window (widget)));
           else
 #endif
             {
               G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-              ctk_window_present (GTK_WINDOW (toplevel));
+              ctk_window_present (CTK_WINDOW (toplevel));
               G_GNUC_END_IGNORE_DEPRECATIONS
             }
         }
@@ -1199,11 +1199,11 @@ ctk_tree_view_accessible_get_child_index (GtkCellAccessibleParent *parent,
   GtkTreeViewAccessibleCellInfo *cell_info;
   GtkTreeView *tree_view;
 
-  cell_info = find_cell_info (GTK_TREE_VIEW_ACCESSIBLE (parent), cell);
+  cell_info = find_cell_info (CTK_TREE_VIEW_ACCESSIBLE (parent), cell);
   if (!cell_info)
     return -1;
 
-  tree_view = GTK_TREE_VIEW (ctk_accessible_get_widget (GTK_ACCESSIBLE (parent)));
+  tree_view = CTK_TREE_VIEW (ctk_accessible_get_widget (CTK_ACCESSIBLE (parent)));
 
   return cell_info_get_index (tree_view, cell_info);
 }
@@ -1216,33 +1216,33 @@ ctk_tree_view_accessible_get_renderer_state (GtkCellAccessibleParent *parent,
   GtkTreeView *treeview;
   GtkCellRendererState flags;
 
-  cell_info = find_cell_info (GTK_TREE_VIEW_ACCESSIBLE (parent), cell);
+  cell_info = find_cell_info (CTK_TREE_VIEW_ACCESSIBLE (parent), cell);
   if (!cell_info)
     return 0;
 
   flags = 0;
 
-  if (GTK_RBNODE_FLAG_SET (cell_info->node, GTK_RBNODE_IS_SELECTED))
-    flags |= GTK_CELL_RENDERER_SELECTED;
+  if (CTK_RBNODE_FLAG_SET (cell_info->node, CTK_RBNODE_IS_SELECTED))
+    flags |= CTK_CELL_RENDERER_SELECTED;
 
-  if (GTK_RBNODE_FLAG_SET (cell_info->node, GTK_RBNODE_IS_PRELIT))
-    flags |= GTK_CELL_RENDERER_PRELIT;
+  if (CTK_RBNODE_FLAG_SET (cell_info->node, CTK_RBNODE_IS_PRELIT))
+    flags |= CTK_CELL_RENDERER_PRELIT;
 
   if (ctk_tree_view_column_get_sort_indicator (cell_info->cell_col_ref))
-    flags |= GTK_CELL_RENDERER_SORTED;
+    flags |= CTK_CELL_RENDERER_SORTED;
 
-  treeview = GTK_TREE_VIEW (ctk_accessible_get_widget (GTK_ACCESSIBLE (parent)));
+  treeview = CTK_TREE_VIEW (ctk_accessible_get_widget (CTK_ACCESSIBLE (parent)));
 
   if (cell_info->cell_col_ref == ctk_tree_view_get_expander_column (treeview))
     {
-      if (GTK_RBNODE_FLAG_SET (cell_info->node, GTK_RBNODE_IS_PARENT))
-        flags |= GTK_CELL_RENDERER_EXPANDABLE;
+      if (CTK_RBNODE_FLAG_SET (cell_info->node, CTK_RBNODE_IS_PARENT))
+        flags |= CTK_CELL_RENDERER_EXPANDABLE;
 
       if (cell_info->node->children)
-        flags |= GTK_CELL_RENDERER_EXPANDED;
+        flags |= CTK_CELL_RENDERER_EXPANDED;
     }
 
-  if (ctk_widget_has_focus (GTK_WIDGET (treeview)))
+  if (ctk_widget_has_focus (CTK_WIDGET (treeview)))
     {
       GtkTreeViewColumn *column;
       GtkTreePath *path;
@@ -1261,7 +1261,7 @@ ctk_tree_view_accessible_get_renderer_state (GtkCellAccessibleParent *parent,
       if (cell_info->cell_col_ref == column
           && cell_info->tree == tree
           && cell_info->node == node)
-        flags |= GTK_CELL_RENDERER_FOCUSED;
+        flags |= CTK_CELL_RENDERER_FOCUSED;
     }
 
   return flags;
@@ -1275,9 +1275,9 @@ ctk_tree_view_accessible_expand_collapse (GtkCellAccessibleParent *parent,
   GtkTreeView *treeview;
   GtkTreePath *path;
 
-  treeview = GTK_TREE_VIEW (ctk_accessible_get_widget (GTK_ACCESSIBLE (parent)));
+  treeview = CTK_TREE_VIEW (ctk_accessible_get_widget (CTK_ACCESSIBLE (parent)));
 
-  cell_info = find_cell_info (GTK_TREE_VIEW_ACCESSIBLE (parent), cell);
+  cell_info = find_cell_info (CTK_TREE_VIEW_ACCESSIBLE (parent), cell);
   if (!cell_info ||
       cell_info->cell_col_ref != ctk_tree_view_get_expander_column (treeview))
     return;
@@ -1300,9 +1300,9 @@ ctk_tree_view_accessible_activate (GtkCellAccessibleParent *parent,
   GtkTreeView *treeview;
   GtkTreePath *path;
 
-  treeview = GTK_TREE_VIEW (ctk_accessible_get_widget (GTK_ACCESSIBLE (parent)));
+  treeview = CTK_TREE_VIEW (ctk_accessible_get_widget (CTK_ACCESSIBLE (parent)));
 
-  cell_info = find_cell_info (GTK_TREE_VIEW_ACCESSIBLE (parent), cell);
+  cell_info = find_cell_info (CTK_TREE_VIEW_ACCESSIBLE (parent), cell);
   if (!cell_info)
     return;
 
@@ -1322,7 +1322,7 @@ ctk_tree_view_accessible_edit (GtkCellAccessibleParent *parent,
   if (!ctk_tree_view_accessible_grab_cell_focus (parent, cell))
     return;
 
-  treeview = GTK_TREE_VIEW (ctk_accessible_get_widget (GTK_ACCESSIBLE (parent)));
+  treeview = CTK_TREE_VIEW (ctk_accessible_get_widget (CTK_ACCESSIBLE (parent)));
 
   g_signal_emit_by_name (treeview,
                          "real-select-cursor-row",
@@ -1348,13 +1348,13 @@ ctk_tree_view_accessible_update_relationset (GtkCellAccessibleParent *parent,
   if (atk_object_get_parent (ATK_OBJECT (cell)) != ATK_OBJECT (parent))
     return;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (parent);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (parent);
   cell_info = find_cell_info (accessible, cell);
   if (!cell_info)
     return;
 
   /* only set parent/child rows on the expander column */
-  treeview = GTK_TREE_VIEW (ctk_accessible_get_widget (GTK_ACCESSIBLE (parent)));
+  treeview = CTK_TREE_VIEW (ctk_accessible_get_widget (CTK_ACCESSIBLE (parent)));
   column = ctk_tree_view_get_expander_column (treeview);
   if (column != cell_info->cell_col_ref)
     return;
@@ -1407,12 +1407,12 @@ ctk_tree_view_accessible_get_cell_position (GtkCellAccessibleParent *parent,
   GtkTreeViewAccessibleCellInfo *cell_info;
   GtkTreeViewAccessible *accessible;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (parent));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
   if (widget == NULL)
     return;
 
-  tree_view = GTK_TREE_VIEW (widget);
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (parent);
+  tree_view = CTK_TREE_VIEW (widget);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (parent);
   cell_info = find_cell_info (accessible, cell);
   if (!cell_info)
     return;
@@ -1432,11 +1432,11 @@ ctk_tree_view_accessible_get_column_header_cells (GtkCellAccessibleParent *paren
   GtkTreeViewAccessible *accessible;
   GPtrArray *array;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (parent));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
   if (widget == NULL)
     return NULL;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (parent);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (parent);
   cell_info = find_cell_info (accessible, cell);
   if (!cell_info)
     return NULL;
@@ -1467,7 +1467,7 @@ _ctk_tree_view_accessible_reorder (GtkTreeView *treeview)
 {
   GtkTreeViewAccessible *accessible;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (GTK_WIDGET (treeview)));
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (CTK_WIDGET (treeview)));
   if (accessible == NULL)
     return;
 
@@ -1628,7 +1628,7 @@ find_cell_info (GtkTreeViewAccessible *accessible,
   parent = atk_object_get_parent (ATK_OBJECT (cell));
   while (parent != ATK_OBJECT (accessible))
     {
-      cell = GTK_CELL_ACCESSIBLE (parent);
+      cell = CTK_CELL_ACCESSIBLE (parent);
       parent = atk_object_get_parent (ATK_OBJECT (cell));
     }
 
@@ -1663,7 +1663,7 @@ _ctk_tree_view_accessible_add (GtkTreeView *treeview,
   GtkTreeViewAccessible *accessible;
   guint row, n_rows, n_cols, i;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (GTK_WIDGET (treeview)));
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (CTK_WIDGET (treeview)));
   if (accessible == NULL)
     return;
 
@@ -1701,7 +1701,7 @@ _ctk_tree_view_accessible_remove (GtkTreeView *treeview,
   GtkTreeViewAccessible *accessible;
   guint row, n_rows, n_cols, i;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (GTK_WIDGET (treeview)));
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (_ctk_widget_peek_accessible (CTK_WIDGET (treeview)));
   if (accessible == NULL)
     return;
 
@@ -1750,7 +1750,7 @@ _ctk_tree_view_accessible_changed (GtkTreeView *treeview,
   GtkTreeViewAccessible *accessible;
   guint i;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (ctk_widget_get_accessible (GTK_WIDGET (treeview)));
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (ctk_widget_get_accessible (CTK_WIDGET (treeview)));
 
   for (i = 0; i < ctk_tree_view_get_n_columns (treeview); i++)
     {
@@ -1823,11 +1823,11 @@ _ctk_tree_view_accessible_add_column (GtkTreeView       *treeview,
   if (!ctk_tree_view_column_get_visible (column))
     return;
 
-  obj = _ctk_widget_peek_accessible (GTK_WIDGET (treeview));
+  obj = _ctk_widget_peek_accessible (CTK_WIDGET (treeview));
   if (obj == NULL)
     return;
 
-  ctk_tree_view_accessible_do_add_column (GTK_TREE_VIEW_ACCESSIBLE (obj),
+  ctk_tree_view_accessible_do_add_column (CTK_TREE_VIEW_ACCESSIBLE (obj),
                                           treeview,
                                           column,
                                           to_visible_column_id (treeview, id));
@@ -1878,11 +1878,11 @@ _ctk_tree_view_accessible_remove_column (GtkTreeView       *treeview,
   if (!ctk_tree_view_column_get_visible (column))
     return;
 
-  obj = _ctk_widget_peek_accessible (GTK_WIDGET (treeview));
+  obj = _ctk_widget_peek_accessible (CTK_WIDGET (treeview));
   if (obj == NULL)
     return;
 
-  ctk_tree_view_accessible_do_remove_column (GTK_TREE_VIEW_ACCESSIBLE (obj),
+  ctk_tree_view_accessible_do_remove_column (CTK_TREE_VIEW_ACCESSIBLE (obj),
                                              treeview,
                                              column,
                                              to_visible_column_id (treeview, id));
@@ -1894,7 +1894,7 @@ _ctk_tree_view_accessible_reorder_column (GtkTreeView       *treeview,
 {
   AtkObject *obj;
 
-  obj = _ctk_widget_peek_accessible (GTK_WIDGET (treeview));
+  obj = _ctk_widget_peek_accessible (CTK_WIDGET (treeview));
   if (obj == NULL)
     return;
 
@@ -1908,7 +1908,7 @@ _ctk_tree_view_accessible_toggle_visibility (GtkTreeView       *treeview,
   AtkObject *obj;
   guint i, id;
 
-  obj = _ctk_widget_peek_accessible (GTK_WIDGET (treeview));
+  obj = _ctk_widget_peek_accessible (CTK_WIDGET (treeview));
   if (obj == NULL)
     return;
 
@@ -1916,7 +1916,7 @@ _ctk_tree_view_accessible_toggle_visibility (GtkTreeView       *treeview,
     {
       id = get_column_number (treeview, column);
 
-      ctk_tree_view_accessible_do_add_column (GTK_TREE_VIEW_ACCESSIBLE (obj),
+      ctk_tree_view_accessible_do_add_column (CTK_TREE_VIEW_ACCESSIBLE (obj),
                                               treeview,
                                               column,
                                               id);
@@ -1936,7 +1936,7 @@ _ctk_tree_view_accessible_toggle_visibility (GtkTreeView       *treeview,
             break;
         }
 
-      ctk_tree_view_accessible_do_remove_column (GTK_TREE_VIEW_ACCESSIBLE (obj),
+      ctk_tree_view_accessible_do_remove_column (CTK_TREE_VIEW_ACCESSIBLE (obj),
                                                  treeview,
                                                  column,
                                                  id);
@@ -1969,11 +1969,11 @@ _ctk_tree_view_accessible_update_focus_column (GtkTreeView       *treeview,
   if (old_focus == new_focus)
     return;
 
-  obj = _ctk_widget_peek_accessible (GTK_WIDGET (treeview));
+  obj = _ctk_widget_peek_accessible (CTK_WIDGET (treeview));
   if (obj == NULL)
     return;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (obj);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (obj);
 
   if (!_ctk_tree_view_get_cursor_node (treeview, &cursor_tree, &cursor_node))
     return;
@@ -1982,14 +1982,14 @@ _ctk_tree_view_accessible_update_focus_column (GtkTreeView       *treeview,
     {
       cell = peek_cell (accessible, cursor_tree, cursor_node, old_focus);
       if (cell != NULL)
-        _ctk_cell_accessible_state_changed (cell, GTK_CELL_RENDERER_FOCUSED, 0);
+        _ctk_cell_accessible_state_changed (cell, CTK_CELL_RENDERER_FOCUSED, 0);
     }
 
   if (new_focus)
     {
       cell = peek_cell (accessible, cursor_tree, cursor_node, new_focus);
       if (cell != NULL)
-        _ctk_cell_accessible_state_changed (cell, 0, GTK_CELL_RENDERER_FOCUSED);
+        _ctk_cell_accessible_state_changed (cell, 0, CTK_CELL_RENDERER_FOCUSED);
       else
         cell = create_cell (treeview, accessible, cursor_tree, cursor_node, new_focus);
 
@@ -2008,18 +2008,18 @@ _ctk_tree_view_accessible_add_state (GtkTreeView          *treeview,
   AtkObject *obj;
   guint i;
 
-  obj = _ctk_widget_peek_accessible (GTK_WIDGET (treeview));
+  obj = _ctk_widget_peek_accessible (CTK_WIDGET (treeview));
   if (obj == NULL)
     return;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (obj);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (obj);
 
-  if (state == GTK_CELL_RENDERER_FOCUSED)
+  if (state == CTK_CELL_RENDERER_FOCUSED)
     {
       single_column = get_effective_focus_column (treeview, _ctk_tree_view_get_focus_column (treeview));
     }
-  else if (state == GTK_CELL_RENDERER_EXPANDED ||
-           state == GTK_CELL_RENDERER_EXPANDABLE)
+  else if (state == CTK_CELL_RENDERER_EXPANDED ||
+           state == CTK_CELL_RENDERER_EXPANDABLE)
     {
       single_column = ctk_tree_view_get_expander_column (treeview);
     }
@@ -2035,7 +2035,7 @@ _ctk_tree_view_accessible_add_state (GtkTreeView          *treeview,
       if (cell != NULL)
         _ctk_cell_accessible_state_changed (cell, state, 0);
 
-      if (state == GTK_CELL_RENDERER_FOCUSED)
+      if (state == CTK_CELL_RENDERER_FOCUSED)
         {
           if (cell == NULL)
             cell = create_cell (treeview, accessible, tree, node, single_column);
@@ -2058,7 +2058,7 @@ _ctk_tree_view_accessible_add_state (GtkTreeView          *treeview,
         }
     }
 
-  if (state == GTK_CELL_RENDERER_SELECTED)
+  if (state == CTK_CELL_RENDERER_SELECTED)
     g_signal_emit_by_name (accessible, "selection-changed");
 }
 
@@ -2073,18 +2073,18 @@ _ctk_tree_view_accessible_remove_state (GtkTreeView          *treeview,
   AtkObject *obj;
   guint i;
 
-  obj = _ctk_widget_peek_accessible (GTK_WIDGET (treeview));
+  obj = _ctk_widget_peek_accessible (CTK_WIDGET (treeview));
   if (obj == NULL)
     return;
 
-  accessible = GTK_TREE_VIEW_ACCESSIBLE (obj);
+  accessible = CTK_TREE_VIEW_ACCESSIBLE (obj);
 
-  if (state == GTK_CELL_RENDERER_FOCUSED)
+  if (state == CTK_CELL_RENDERER_FOCUSED)
     {
       single_column = get_effective_focus_column (treeview, _ctk_tree_view_get_focus_column (treeview));
     }
-  else if (state == GTK_CELL_RENDERER_EXPANDED ||
-           state == GTK_CELL_RENDERER_EXPANDABLE)
+  else if (state == CTK_CELL_RENDERER_EXPANDED ||
+           state == CTK_CELL_RENDERER_EXPANDABLE)
     {
       single_column = ctk_tree_view_get_expander_column (treeview);
     }
@@ -2115,6 +2115,6 @@ _ctk_tree_view_accessible_remove_state (GtkTreeView          *treeview,
         }
     }
 
-  if (state == GTK_CELL_RENDERER_SELECTED)
+  if (state == CTK_CELL_RENDERER_SELECTED)
     g_signal_emit_by_name (accessible, "selection-changed");
 }

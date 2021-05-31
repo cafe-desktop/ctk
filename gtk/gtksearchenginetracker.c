@@ -67,7 +67,7 @@ struct _GtkSearchEngineTrackerClass
   GtkSearchEngineClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkSearchEngineTracker, _ctk_search_engine_tracker, GTK_TYPE_SEARCH_ENGINE)
+G_DEFINE_TYPE (GtkSearchEngineTracker, _ctk_search_engine_tracker, CTK_TYPE_SEARCH_ENGINE)
 
 static void
 finalize (GObject *object)
@@ -76,7 +76,7 @@ finalize (GObject *object)
 
   g_debug ("Finalizing GtkSearchEngineTracker");
 
-  tracker = GTK_SEARCH_ENGINE_TRACKER (object);
+  tracker = CTK_SEARCH_ENGINE_TRACKER (object);
 
   if (tracker->cancellable)
     {
@@ -276,14 +276,14 @@ query_callback (GObject      *object,
   gint i, n;
   GtkSearchHit *hit;
 
-  tracker = GTK_SEARCH_ENGINE_TRACKER (user_data);
+  tracker = CTK_SEARCH_ENGINE_TRACKER (user_data);
 
   tracker->query_pending = FALSE;
 
   reply = g_dbus_connection_call_finish (tracker->connection, res, &error);
   if (error)
     {
-      _ctk_search_engine_error (GTK_SEARCH_ENGINE (tracker), error->message);
+      _ctk_search_engine_error (CTK_SEARCH_ENGINE (tracker), error->message);
       g_error_free (error);
       g_object_unref (tracker);
       return;
@@ -291,7 +291,7 @@ query_callback (GObject      *object,
 
   if (!reply)
     {
-      _ctk_search_engine_finished (GTK_SEARCH_ENGINE (tracker), FALSE);
+      _ctk_search_engine_finished (CTK_SEARCH_ENGINE (tracker), FALSE);
       g_object_unref (tracker);
       return;
     }
@@ -314,8 +314,8 @@ query_callback (GObject      *object,
       hits = g_list_prepend (hits, &hit[i]);
     }
 
-  _ctk_search_engine_hits_added (GTK_SEARCH_ENGINE (tracker), hits);
-  _ctk_search_engine_finished (GTK_SEARCH_ENGINE (tracker), i > 0);
+  _ctk_search_engine_hits_added (CTK_SEARCH_ENGINE (tracker), hits);
+  _ctk_search_engine_finished (CTK_SEARCH_ENGINE (tracker), i > 0);
 
   g_list_free (hits);
   for (i = 0; i < n; i++)
@@ -337,7 +337,7 @@ ctk_search_engine_tracker_start (GtkSearchEngine *engine)
   GString *sparql;
   gboolean recursive;
 
-  tracker = GTK_SEARCH_ENGINE_TRACKER (engine);
+  tracker = CTK_SEARCH_ENGINE_TRACKER (engine);
 
   if (tracker->query_pending)
     {
@@ -413,7 +413,7 @@ ctk_search_engine_tracker_stop (GtkSearchEngine *engine)
 {
   GtkSearchEngineTracker *tracker;
 
-  tracker = GTK_SEARCH_ENGINE_TRACKER (engine);
+  tracker = CTK_SEARCH_ENGINE_TRACKER (engine);
 
   if (tracker->query && tracker->query_pending)
     {
@@ -428,7 +428,7 @@ ctk_search_engine_tracker_set_query (GtkSearchEngine *engine,
 {
   GtkSearchEngineTracker *tracker;
 
-  tracker = GTK_SEARCH_ENGINE_TRACKER (engine);
+  tracker = CTK_SEARCH_ENGINE_TRACKER (engine);
 
   if (query)
     g_object_ref (query);
@@ -448,7 +448,7 @@ _ctk_search_engine_tracker_class_init (GtkSearchEngineTrackerClass *class)
   gobject_class = G_OBJECT_CLASS (class);
   gobject_class->finalize = finalize;
 
-  engine_class = GTK_SEARCH_ENGINE_CLASS (class);
+  engine_class = CTK_SEARCH_ENGINE_CLASS (class);
   engine_class->set_query = ctk_search_engine_tracker_set_query;
   engine_class->start = ctk_search_engine_tracker_start;
   engine_class->stop = ctk_search_engine_tracker_stop;
@@ -480,11 +480,11 @@ _ctk_search_engine_tracker_new (void)
 
   g_debug ("Creating GtkSearchEngineTracker...");
 
-  engine = g_object_new (GTK_TYPE_SEARCH_ENGINE_TRACKER, NULL);
+  engine = g_object_new (CTK_TYPE_SEARCH_ENGINE_TRACKER, NULL);
 
   engine->connection = connection;
 
-  return GTK_SEARCH_ENGINE (engine);
+  return CTK_SEARCH_ENGINE (engine);
 }
 
 #define TRACKER_SCHEMA "org.freedesktop.Tracker.Miner.Files"

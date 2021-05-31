@@ -22,8 +22,8 @@ EXTRA_DIST += \
 	$(NULL)
 
 TESTS_ENVIRONMENT = \
-	GTK_BUILDER_TOOL="$(top_builddir)/gtk/gtk-builder-tool" \
-	GTK_QUERY_SETTINGS="$(top_builddir)/gtk/gtk-query-settings" \
+	CTK_BUILDER_TOOL="$(top_builddir)/gtk/gtk-builder-tool" \
+	CTK_QUERY_SETTINGS="$(top_builddir)/gtk/gtk-query-settings" \
 	$(NULL)
 
 TEST_PROGS += \

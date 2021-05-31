@@ -360,10 +360,10 @@ msgstr "Is belangrijk"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Of de actie belangrijk wordt geacht. Indien WAAR, tonen 'toolitem-proxies' "
-"voor deze actie de tekst in GTK_TOOLBAR_BOTH_HORIZ modus."
+"voor deze actie de tekst in CTK_TOOLBAR_BOTH_HORIZ modus."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -373,7 +373,7 @@ msgstr "Indien leeg verbergen"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 "If de actie belangrijk wordt geacht. Indien WAAR, tonen 'toolitem-proxies' "
-"voor deze actie de tekst in GTK_TOOLBAR_BOTH_HORIZ modus."
+"voor deze actie de tekst in CTK_TOOLBAR_BOTH_HORIZ modus."
 
 #: gtk/deprecated/gtkaction.c:466 gtk/deprecated/gtkactiongroup.c:214
 #: gtk/gtkcellrenderer.c:308 gtk/gtkwidget.c:1155
@@ -1869,8 +1869,8 @@ msgid "Default Spacing"
 msgstr "Standaard spatiëring"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Extra ruimte om GTK_CAN_DEFAULT-knoppen toe te voegen"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Extra ruimte om CTK_CAN_DEFAULT-knoppen toe te voegen"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1879,10 +1879,10 @@ msgstr "Normale randspatiëring"
 # de extra ruimte wordt afgebeeld buiten de rand
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Extra ruimte om GTK_CAN_DEFAULT-knoppen toe te voegen die altijd buiten de "
+"Extra ruimte om CTK_CAN_DEFAULT-knoppen toe te voegen die altijd buiten de "
 "rand getekend worden"
 
 #: gtk/gtkbutton.c:556
@@ -4405,10 +4405,10 @@ msgid "Baseline Row"
 msgstr "Basislijn-rij"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 "De rij die wordt uitgelijnd met de basislijn wanneer valign "
-"GTK_ALIGN_BASELINE is"
+"CTK_ALIGN_BASELINE is"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8739,10 +8739,10 @@ msgstr "Spatiëring in beeldpunten tussen het pictogram en het label"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Of de werkbalkitem belangrijk wordt geacht. Indien WAAR, tonen "
-"werkbalkknoppen de tekst in GTK_TOOLBAR_BOTH_HORIZ modus"
+"werkbalkknoppen de tekst in CTK_TOOLBAR_BOTH_HORIZ modus"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

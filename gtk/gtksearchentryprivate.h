@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_SEARCH_ENTRY_PRIVATE_H__
-#define __GTK_SEARCH_ENTRY_PRIVATE_H__
+#ifndef __CTK_SEARCH_ENTRY_PRIVATE_H__
+#define __CTK_SEARCH_ENTRY_PRIVATE_H__
 
 #include <gtk/gtksearchentry.h>
 
@@ -33,4 +33,4 @@ gboolean ctk_search_entry_is_keynav_event (GdkEvent *event);
 
 G_END_DECLS
 
-#endif /* __GTK_SEARCH_ENTRY_PRIVATE_H__ */
+#endif /* __CTK_SEARCH_ENTRY_PRIVATE_H__ */

@@ -1374,7 +1374,7 @@ msgstr "Пуста"
 #. *
 #. * It is also possible to show a #GtkAboutDialog like any other #GtkDialog,
 #. * e.g. using ctk_dialog_run(). In this case, you might need to know that
-#. * the “Close” button returns the #GTK_RESPONSE_CANCEL response id.
+#. * the “Close” button returns the #CTK_RESPONSE_CANCEL response id.
 #.
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
@@ -2132,14 +2132,14 @@ msgstr "Caps Lock уключаны"
 #. *   GtkWidget *button;
 #. *
 #. *   button = ctk_file_chooser_button_new (_("Select a file"),
-#. *                                         GTK_FILE_CHOOSER_ACTION_OPEN);
-#. *   ctk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (button),
+#. *                                         CTK_FILE_CHOOSER_ACTION_OPEN);
+#. *   ctk_file_chooser_set_current_folder (CTK_FILE_CHOOSER (button),
 #. *                                        "/etc");
 #. * }
 #. * ]|
 #. *
 #. * The #GtkFileChooserButton supports the #GtkFileChooserActions
-#. * %GTK_FILE_CHOOSER_ACTION_OPEN and %GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER.
+#. * %CTK_FILE_CHOOSER_ACTION_OPEN and %CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER.
 #. *
 #. * > The #GtkFileChooserButton will ellipsize the label, and will thus
 #. * > request little horizontal space.  To give the button more space,

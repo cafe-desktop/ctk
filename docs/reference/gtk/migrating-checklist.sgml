@@ -70,8 +70,8 @@ do_popup_menu (GtkWidget *my_widget, GdkEventButton *event)
       event_time = ctk_get_current_event_time (<!-- -->);
     }
 
-  ctk_menu_attach_to_widget (GTK_MENU (menu), my_widget, NULL);
-  ctk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
+  ctk_menu_attach_to_widget (CTK_MENU (menu), my_widget, NULL);
+  ctk_menu_popup (CTK_MENU (menu), NULL, NULL, NULL, NULL,
                   button, event_time);
 }
         </programlisting>

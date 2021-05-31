@@ -87,7 +87,7 @@ enum {
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCustomPaperUnixDialog, ctk_custom_paper_unix_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCustomPaperUnixDialog, ctk_custom_paper_unix_dialog, CTK_TYPE_DIALOG)
 
 
 static void ctk_custom_paper_unix_dialog_constructed (GObject *object);
@@ -121,16 +121,16 @@ _ctk_print_get_default_user_units (void)
 
   imperial = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
   if (imperial && imperial[0] == 2 )
-    return GTK_UNIT_INCH;  /* imperial */
+    return CTK_UNIT_INCH;  /* imperial */
   if (imperial && imperial[0] == 1 )
-    return GTK_UNIT_MM;  /* metric */
+    return CTK_UNIT_MM;  /* metric */
 #endif
 
   if (strcmp (e, "default:inch")==0)
-    return GTK_UNIT_INCH;
+    return CTK_UNIT_INCH;
   else if (strcmp (e, "default:mm"))
     g_warning ("Whoever translated default:mm did so wrongly.");
-  return GTK_UNIT_MM;
+  return CTK_UNIT_MM;
 }
 
 static char *
@@ -228,7 +228,7 @@ _ctk_print_load_custom_papers (GtkListStore *store)
 void
 _ctk_print_save_custom_papers (GtkListStore *store)
 {
-  GtkTreeModel *model = GTK_TREE_MODEL (store);
+  GtkTreeModel *model = CTK_TREE_MODEL (store);
   GtkTreeIter iter;
   GKeyFile *keyfile;
   gchar *filename, *data, *parentdir;
@@ -280,7 +280,7 @@ custom_paper_dialog_response_cb (GtkDialog *dialog,
 				 gint       response,
 				 gpointer   user_data)
 {
-  GtkCustomPaperUnixDialogPrivate *priv = GTK_CUSTOM_PAPER_UNIX_DIALOG (dialog)->priv;
+  GtkCustomPaperUnixDialogPrivate *priv = CTK_CUSTOM_PAPER_UNIX_DIALOG (dialog)->priv;
 
   _ctk_print_save_custom_papers (priv->custom_paper_list);
 }
@@ -294,7 +294,7 @@ ctk_custom_paper_unix_dialog_init (GtkCustomPaperUnixDialog *dialog)
   dialog->priv = ctk_custom_paper_unix_dialog_get_instance_private (dialog);
   priv = dialog->priv;
 
-  ctk_dialog_set_use_header_bar_from_setting (GTK_DIALOG (dialog));
+  ctk_dialog_set_use_header_bar_from_setting (CTK_DIALOG (dialog));
 
   priv->print_backends = NULL;
 
@@ -325,17 +325,17 @@ ctk_custom_paper_unix_dialog_constructed (GObject *object)
   g_object_get (object, "use-header-bar", &use_header, NULL);
   if (!use_header)
     {
-      ctk_dialog_add_buttons (GTK_DIALOG (object),
-                              _("_Close"), GTK_RESPONSE_CLOSE,
+      ctk_dialog_add_buttons (CTK_DIALOG (object),
+                              _("_Close"), CTK_RESPONSE_CLOSE,
                               NULL);
-      ctk_dialog_set_default_response (GTK_DIALOG (object), GTK_RESPONSE_CLOSE);
+      ctk_dialog_set_default_response (CTK_DIALOG (object), CTK_RESPONSE_CLOSE);
     }
 }
 
 static void
 ctk_custom_paper_unix_dialog_finalize (GObject *object)
 {
-  GtkCustomPaperUnixDialog *dialog = GTK_CUSTOM_PAPER_UNIX_DIALOG (object);
+  GtkCustomPaperUnixDialog *dialog = CTK_CUSTOM_PAPER_UNIX_DIALOG (object);
   GtkCustomPaperUnixDialogPrivate *priv = dialog->priv;
   GtkPrintBackend *backend;
   GList *node;
@@ -368,7 +368,7 @@ ctk_custom_paper_unix_dialog_finalize (GObject *object)
 
   for (node = priv->print_backends; node != NULL; node = node->next)
     {
-      backend = GTK_PRINT_BACKEND (node->data);
+      backend = CTK_PRINT_BACKEND (node->data);
 
       g_signal_handlers_disconnect_by_func (backend, printer_added_cb, dialog);
       g_signal_handlers_disconnect_by_func (backend, printer_removed_cb, dialog);
@@ -404,7 +404,7 @@ _ctk_custom_paper_unix_dialog_new (GtkWindow   *parent,
   if (title == NULL)
     title = _("Manage Custom Sizes");
 
-  result = g_object_new (GTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG,
+  result = g_object_new (CTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG,
                          "title", title,
                          "transient-for", parent,
                          "modal", parent != NULL,
@@ -447,7 +447,7 @@ printer_added_cb (GtkPrintBackend          *backend,
       strcmp (priv->waiting_for_printer,
 	      ctk_printer_get_name (printer)) == 0)
     {
-      ctk_combo_box_set_active_iter (GTK_COMBO_BOX (priv->printer_combo),
+      ctk_combo_box_set_active_iter (CTK_COMBO_BOX (priv->printer_combo),
 				     &iter);
       priv->waiting_for_printer = NULL;
     }
@@ -462,7 +462,7 @@ printer_removed_cb (GtkPrintBackend        *backend,
   GtkTreeIter *iter;
 
   iter = g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter");
-  ctk_list_store_remove (GTK_LIST_STORE (priv->printer_list), iter);
+  ctk_list_store_remove (CTK_LIST_STORE (priv->printer_list), iter);
 }
 
 
@@ -530,7 +530,7 @@ load_print_backends (GtkCustomPaperUnixDialog *dialog)
     priv->print_backends = ctk_print_backend_load_modules ();
 
   for (node = priv->print_backends; node != NULL; node = node->next)
-    printer_list_initialize (dialog, GTK_PRINT_BACKEND (node->data));
+    printer_list_initialize (dialog, CTK_PRINT_BACKEND (node->data));
 }
 
 static void unit_widget_changed (GtkCustomPaperUnixDialog *dialog);
@@ -546,16 +546,16 @@ new_unit_widget (GtkCustomPaperUnixDialog *dialog,
   data = g_new0 (UnitWidget, 1);
   data->display_unit = unit;
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
 
   button = ctk_spin_button_new_with_range (0.0, 9999.0, 1);
-  ctk_widget_set_valign (button, GTK_ALIGN_BASELINE);
-  if (unit == GTK_UNIT_INCH)
-    ctk_spin_button_set_digits (GTK_SPIN_BUTTON (button), 2);
+  ctk_widget_set_valign (button, CTK_ALIGN_BASELINE);
+  if (unit == CTK_UNIT_INCH)
+    ctk_spin_button_set_digits (CTK_SPIN_BUTTON (button), 2);
   else
-    ctk_spin_button_set_digits (GTK_SPIN_BUTTON (button), 1);
+    ctk_spin_button_set_digits (CTK_SPIN_BUTTON (button), 1);
 
-  ctk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), button, TRUE, TRUE, 0);
   ctk_widget_show (button);
 
   data->spin_button = button;
@@ -563,15 +563,15 @@ new_unit_widget (GtkCustomPaperUnixDialog *dialog,
   g_signal_connect_swapped (button, "value-changed",
 			    G_CALLBACK (unit_widget_changed), dialog);
 
-  if (unit == GTK_UNIT_INCH)
+  if (unit == CTK_UNIT_INCH)
     label = ctk_label_new (_("inch"));
   else
     label = ctk_label_new (_("mm"));
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
 
-  ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), label, FALSE, FALSE, 0);
   ctk_widget_show (label);
-  ctk_label_set_mnemonic_widget (GTK_LABEL (mnemonic_label), button);
+  ctk_label_set_mnemonic_widget (CTK_LABEL (mnemonic_label), button);
 
   g_object_set_data_full (G_OBJECT (hbox), "unit-data", data, g_free);
 
@@ -582,7 +582,7 @@ static double
 unit_widget_get (GtkWidget *unit_widget)
 {
   UnitWidget *data = g_object_get_data (G_OBJECT (unit_widget), "unit-data");
-  return _ctk_print_convert_to_mm (ctk_spin_button_get_value (GTK_SPIN_BUTTON (data->spin_button)),
+  return _ctk_print_convert_to_mm (ctk_spin_button_get_value (CTK_SPIN_BUTTON (data->spin_button)),
 				   data->display_unit);
 }
 
@@ -593,7 +593,7 @@ unit_widget_set (GtkWidget *unit_widget,
   UnitWidget *data;
 
   data = g_object_get_data (G_OBJECT (unit_widget), "unit-data");
-  ctk_spin_button_set_value (GTK_SPIN_BUTTON (data->spin_button),
+  ctk_spin_button_set_value (CTK_SPIN_BUTTON (data->spin_button),
 			     _ctk_print_convert_from_mm (value, data->display_unit));
 }
 
@@ -628,8 +628,8 @@ update_combo_sensitivity_from_printers (GtkCustomPaperUnixDialog *dialog)
   GtkTreeModel *model;
 
   sensitive = FALSE;
-  model = GTK_TREE_MODEL (priv->printer_list);
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
+  model = CTK_TREE_MODEL (priv->printer_list);
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->treeview));
   if (ctk_tree_model_get_iter_first (model, &iter) &&
       ctk_tree_model_iter_next (model, &iter) &&
       ctk_tree_selection_get_selected (selection, NULL, &iter))
@@ -647,8 +647,8 @@ update_custom_widgets_from_list (GtkCustomPaperUnixDialog *dialog)
   GtkTreeIter iter;
   GtkPageSetup *page_setup;
 
-  model = ctk_tree_view_get_model (GTK_TREE_VIEW (priv->treeview));
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
+  model = ctk_tree_view_get_model (CTK_TREE_VIEW (priv->treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->treeview));
 
   priv->non_user_change = TRUE;
   if (ctk_tree_selection_get_selected (selection, NULL, &iter))
@@ -656,17 +656,17 @@ update_custom_widgets_from_list (GtkCustomPaperUnixDialog *dialog)
       ctk_tree_model_get (model, &iter, 0, &page_setup, -1);
 
       unit_widget_set (priv->width_widget,
-		       ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_MM));
+		       ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_MM));
       unit_widget_set (priv->height_widget,
-		       ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_MM));
+		       ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_MM));
       unit_widget_set (priv->top_widget,
-		       ctk_page_setup_get_top_margin (page_setup, GTK_UNIT_MM));
+		       ctk_page_setup_get_top_margin (page_setup, CTK_UNIT_MM));
       unit_widget_set (priv->bottom_widget,
-		       ctk_page_setup_get_bottom_margin (page_setup, GTK_UNIT_MM));
+		       ctk_page_setup_get_bottom_margin (page_setup, CTK_UNIT_MM));
       unit_widget_set (priv->left_widget,
-		       ctk_page_setup_get_left_margin (page_setup, GTK_UNIT_MM));
+		       ctk_page_setup_get_left_margin (page_setup, CTK_UNIT_MM));
       unit_widget_set (priv->right_widget,
-		       ctk_page_setup_get_right_margin (page_setup, GTK_UNIT_MM));
+		       ctk_page_setup_get_right_margin (page_setup, CTK_UNIT_MM));
 
       ctk_widget_set_sensitive (priv->values_box, TRUE);
     }
@@ -700,27 +700,27 @@ unit_widget_changed (GtkCustomPaperUnixDialog *dialog)
   if (priv->non_user_change)
     return;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->treeview));
 
   if (ctk_tree_selection_get_selected (selection, NULL, &iter))
     {
-      ctk_tree_model_get (GTK_TREE_MODEL (priv->custom_paper_list), &iter, 0, &page_setup, -1);
+      ctk_tree_model_get (CTK_TREE_MODEL (priv->custom_paper_list), &iter, 0, &page_setup, -1);
 
       w = unit_widget_get (priv->width_widget);
       h = unit_widget_get (priv->height_widget);
 
       paper_size = ctk_page_setup_get_paper_size (page_setup);
-      ctk_paper_size_set_size (paper_size, w, h, GTK_UNIT_MM);
+      ctk_paper_size_set_size (paper_size, w, h, CTK_UNIT_MM);
 
       top = unit_widget_get (priv->top_widget);
       bottom = unit_widget_get (priv->bottom_widget);
       left = unit_widget_get (priv->left_widget);
       right = unit_widget_get (priv->right_widget);
 
-      ctk_page_setup_set_top_margin (page_setup, top, GTK_UNIT_MM);
-      ctk_page_setup_set_bottom_margin (page_setup, bottom, GTK_UNIT_MM);
-      ctk_page_setup_set_left_margin (page_setup, left, GTK_UNIT_MM);
-      ctk_page_setup_set_right_margin (page_setup, right, GTK_UNIT_MM);
+      ctk_page_setup_set_top_margin (page_setup, top, CTK_UNIT_MM);
+      ctk_page_setup_set_bottom_margin (page_setup, bottom, CTK_UNIT_MM);
+      ctk_page_setup_set_left_margin (page_setup, left, CTK_UNIT_MM);
+      ctk_page_setup_set_right_margin (page_setup, right, CTK_UNIT_MM);
 
       g_object_unref (page_setup);
     }
@@ -736,7 +736,7 @@ custom_paper_name_used (GtkCustomPaperUnixDialog *dialog,
   GtkPageSetup *page_setup;
   GtkPaperSize *paper_size;
 
-  model = ctk_tree_view_get_model (GTK_TREE_VIEW (priv->treeview));
+  model = ctk_tree_view_get_model (CTK_TREE_VIEW (priv->treeview));
 
   if (ctk_tree_model_get_iter_first (model, &iter))
     {
@@ -770,7 +770,7 @@ add_custom_paper (GtkCustomPaperUnixDialog *dialog)
   gchar *name;
   gint i;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->treeview));
   store = priv->custom_paper_list;
 
   i = 1;
@@ -784,9 +784,9 @@ add_custom_paper (GtkCustomPaperUnixDialog *dialog)
 
   page_setup = ctk_page_setup_new ();
   paper_size = ctk_paper_size_new_custom (name, name,
-					  ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_MM),
-					  ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_MM),
-					  GTK_UNIT_MM);
+					  ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_MM),
+					  ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_MM),
+					  CTK_UNIT_MM);
   ctk_page_setup_set_paper_size (page_setup, paper_size);
   ctk_paper_size_free (paper_size);
 
@@ -795,9 +795,9 @@ add_custom_paper (GtkCustomPaperUnixDialog *dialog)
   g_object_unref (page_setup);
 
   ctk_tree_selection_select_iter (selection, &iter);
-  path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), &iter);
+  path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), &iter);
   ctk_widget_grab_focus (priv->treeview);
-  ctk_tree_view_set_cursor (GTK_TREE_VIEW (priv->treeview), path,
+  ctk_tree_view_set_cursor (CTK_TREE_VIEW (priv->treeview), path,
 			    priv->text_column, TRUE);
   ctk_tree_path_free (path);
   g_free (name);
@@ -811,17 +811,17 @@ remove_custom_paper (GtkCustomPaperUnixDialog *dialog)
   GtkTreeIter iter;
   GtkListStore *store;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->treeview));
   store = priv->custom_paper_list;
 
   if (ctk_tree_selection_get_selected (selection, NULL, &iter))
     {
-      GtkTreePath *path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), &iter);
+      GtkTreePath *path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), &iter);
       ctk_list_store_remove (store, &iter);
 
-      if (ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+      if (ctk_tree_model_get_iter (CTK_TREE_MODEL (store), &iter, path))
 	ctk_tree_selection_select_iter (selection, &iter);
-      else if (ctk_tree_path_prev (path) && ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+      else if (ctk_tree_path_prev (path) && ctk_tree_model_get_iter (CTK_TREE_MODEL (store), &iter, path))
 	ctk_tree_selection_select_iter (selection, &iter);
 
       ctk_tree_path_free (path);
@@ -840,10 +840,10 @@ set_margins_from_printer (GtkCustomPaperUnixDialog *dialog,
     return;
 
   priv->non_user_change = TRUE;
-  unit_widget_set (priv->top_widget, _ctk_print_convert_to_mm (top, GTK_UNIT_POINTS));
-  unit_widget_set (priv->bottom_widget, _ctk_print_convert_to_mm (bottom, GTK_UNIT_POINTS));
-  unit_widget_set (priv->left_widget, _ctk_print_convert_to_mm (left, GTK_UNIT_POINTS));
-  unit_widget_set (priv->right_widget, _ctk_print_convert_to_mm (right, GTK_UNIT_POINTS));
+  unit_widget_set (priv->top_widget, _ctk_print_convert_to_mm (top, CTK_UNIT_POINTS));
+  unit_widget_set (priv->bottom_widget, _ctk_print_convert_to_mm (bottom, CTK_UNIT_POINTS));
+  unit_widget_set (priv->left_widget, _ctk_print_convert_to_mm (left, CTK_UNIT_POINTS));
+  unit_widget_set (priv->right_widget, _ctk_print_convert_to_mm (right, CTK_UNIT_POINTS));
   priv->non_user_change = FALSE;
 
   /* Only send one change */
@@ -866,7 +866,7 @@ get_margins_finished_callback (GtkPrinter               *printer,
   if (success)
     set_margins_from_printer (dialog, printer);
 
-  ctk_combo_box_set_active (GTK_COMBO_BOX (priv->printer_combo), 0);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (priv->printer_combo), 0);
 }
 
 static void
@@ -877,7 +877,7 @@ margins_from_printer_changed (GtkCustomPaperUnixDialog *dialog)
   GtkComboBox *combo;
   GtkPrinter *printer;
 
-  combo = GTK_COMBO_BOX (priv->printer_combo);
+  combo = CTK_COMBO_BOX (priv->printer_combo);
 
   if (priv->request_details_tag)
     {
@@ -929,14 +929,14 @@ custom_size_name_edited (GtkCellRenderer          *cell,
 
   store = priv->custom_paper_list;
   path = ctk_tree_path_new_from_string (path_string);
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path);
-  ctk_tree_model_get (GTK_TREE_MODEL (store), &iter, 0, &page_setup, -1);
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (store), &iter, path);
+  ctk_tree_model_get (CTK_TREE_MODEL (store), &iter, 0, &page_setup, -1);
   ctk_tree_path_free (path);
 
   paper_size = ctk_paper_size_new_custom (new_text, new_text,
-					  ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_MM),
-					  ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_MM),
-					  GTK_UNIT_MM);
+					  ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_MM),
+					  ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_MM),
+					  CTK_UNIT_MM);
   ctk_page_setup_set_paper_size (page_setup, paper_size);
   ctk_paper_size_free (paper_size);
 
@@ -970,22 +970,22 @@ wrap_in_frame (const gchar *label,
   gchar *bold_text;
 
   label_widget = ctk_label_new (NULL);
-  ctk_widget_set_halign (label_widget, GTK_ALIGN_START);
-  ctk_widget_set_valign (label_widget, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (label_widget, CTK_ALIGN_START);
+  ctk_widget_set_valign (label_widget, CTK_ALIGN_CENTER);
   ctk_widget_show (label_widget);
 
   bold_text = g_markup_printf_escaped ("<b>%s</b>", label);
-  ctk_label_set_markup (GTK_LABEL (label_widget), bold_text);
+  ctk_label_set_markup (CTK_LABEL (label_widget), bold_text);
   g_free (bold_text);
 
-  frame = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  ctk_box_pack_start (GTK_BOX (frame), label_widget, FALSE, FALSE, 0);
+  frame = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+  ctk_box_pack_start (CTK_BOX (frame), label_widget, FALSE, FALSE, 0);
 
   ctk_widget_set_margin_start (child, 12);
-  ctk_widget_set_halign (child, GTK_ALIGN_FILL);
-  ctk_widget_set_valign (child, GTK_ALIGN_FILL);
+  ctk_widget_set_halign (child, CTK_ALIGN_FILL);
+  ctk_widget_set_valign (child, CTK_ALIGN_FILL);
 
-  ctk_box_pack_start (GTK_BOX (frame), child, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (frame), child, FALSE, FALSE, 0);
 
   ctk_widget_show (frame);
 
@@ -1003,24 +1003,24 @@ toolbutton_new (GtkCustomPaperUnixDialog *dialog,
   GtkWidget *image;
 
   item = ctk_tool_button_new (NULL, NULL);
-  image = ctk_image_new_from_gicon (icon, GTK_ICON_SIZE_SMALL_TOOLBAR);
+  image = ctk_image_new_from_gicon (icon, CTK_ICON_SIZE_SMALL_TOOLBAR);
   ctk_widget_show (image);
-  ctk_tool_button_set_icon_widget (GTK_TOOL_BUTTON (item), image);
+  ctk_tool_button_set_icon_widget (CTK_TOOL_BUTTON (item), image);
 
-  ctk_widget_set_sensitive (GTK_WIDGET (item), sensitive);
+  ctk_widget_set_sensitive (CTK_WIDGET (item), sensitive);
   g_signal_connect_swapped (item, "clicked", callback, dialog);
 
   if (show)
-    ctk_widget_show (GTK_WIDGET (item));
+    ctk_widget_show (CTK_WIDGET (item));
 
-  return GTK_WIDGET (item);
+  return CTK_WIDGET (item);
 }
 
 static void
 populate_dialog (GtkCustomPaperUnixDialog *dialog)
 {
   GtkCustomPaperUnixDialogPrivate *priv = dialog->priv;
-  GtkDialog *cpu_dialog = GTK_DIALOG (dialog);
+  GtkDialog *cpu_dialog = CTK_DIALOG (dialog);
   GtkWidget *action_area, *content_area;
   GtkWidget *grid, *label, *widget, *frame, *combo;
   GtkWidget *hbox, *vbox, *treeview, *scrolled, *toolbar, *button;
@@ -1036,38 +1036,38 @@ populate_dialog (GtkCustomPaperUnixDialog *dialog)
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS 
   action_area = ctk_dialog_get_action_area (cpu_dialog);
 G_GNUC_END_IGNORE_DEPRECATIONS 
-  ctk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-  ctk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
-  ctk_container_set_border_width (GTK_CONTAINER (action_area), 5);
-  ctk_box_set_spacing (GTK_BOX (action_area), 6);
+  ctk_container_set_border_width (CTK_CONTAINER (dialog), 5);
+  ctk_box_set_spacing (CTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
+  ctk_container_set_border_width (CTK_CONTAINER (action_area), 5);
+  ctk_box_set_spacing (CTK_BOX (action_area), 6);
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 18);
-  ctk_container_set_border_width (GTK_CONTAINER (hbox), 5);
-  ctk_box_pack_start (GTK_BOX (content_area), hbox, TRUE, TRUE, 0);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 18);
+  ctk_container_set_border_width (CTK_CONTAINER (hbox), 5);
+  ctk_box_pack_start (CTK_BOX (content_area), hbox, TRUE, TRUE, 0);
   ctk_widget_show (hbox);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), vbox, TRUE, TRUE, 0);
   ctk_widget_show (vbox);
 
   scrolled = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled),
-                                  GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled),
-                                       GTK_SHADOW_IN);
-  ctk_box_pack_start (GTK_BOX (vbox), scrolled, TRUE, TRUE, 0);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled),
+                                  CTK_POLICY_NEVER, CTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolled),
+                                       CTK_SHADOW_IN);
+  ctk_box_pack_start (CTK_BOX (vbox), scrolled, TRUE, TRUE, 0);
   ctk_widget_show (scrolled);
 
   context = ctk_widget_get_style_context (scrolled);
-  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_BOTTOM);
+  ctk_style_context_set_junction_sides (context, CTK_JUNCTION_BOTTOM);
 
-  treeview = ctk_tree_view_new_with_model (GTK_TREE_MODEL (priv->custom_paper_list));
+  treeview = ctk_tree_view_new_with_model (CTK_TREE_MODEL (priv->custom_paper_list));
   priv->treeview = treeview;
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (treeview), FALSE);
   ctk_widget_set_size_request (treeview, 140, -1);
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
-  ctk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview));
+  ctk_tree_selection_set_mode (selection, CTK_SELECTION_BROWSE);
   g_signal_connect (selection, "changed", G_CALLBACK (selected_custom_paper_changed), dialog);
 
   cell = ctk_cell_renderer_text_new ();
@@ -1078,125 +1078,125 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     ctk_tree_view_column_new_with_attributes ("paper", cell, NULL);
   ctk_tree_view_column_set_cell_data_func  (column, cell, custom_name_func, NULL, NULL);
 
-  ctk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (treeview), column);
 
-  ctk_container_add (GTK_CONTAINER (scrolled), treeview);
+  ctk_container_add (CTK_CONTAINER (scrolled), treeview);
   ctk_widget_show (treeview);
 
   toolbar = ctk_toolbar_new ();
-  ctk_toolbar_set_icon_size (GTK_TOOLBAR (toolbar), GTK_ICON_SIZE_MENU);
+  ctk_toolbar_set_icon_size (CTK_TOOLBAR (toolbar), CTK_ICON_SIZE_MENU);
 
   context = ctk_widget_get_style_context (toolbar);
-  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_TOP);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_INLINE_TOOLBAR);
+  ctk_style_context_set_junction_sides (context, CTK_JUNCTION_TOP);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_INLINE_TOOLBAR);
 
-  ctk_box_pack_start (GTK_BOX (vbox), toolbar, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), toolbar, FALSE, FALSE, 0);
   ctk_widget_show (toolbar);
 
   icon = g_themed_icon_new_with_default_fallbacks ("list-add-symbolic");
   button = toolbutton_new (dialog, icon, TRUE, TRUE, G_CALLBACK (add_custom_paper));
   g_object_unref (icon);
 
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), GTK_TOOL_ITEM (button), 0);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), CTK_TOOL_ITEM (button), 0);
 
   icon = g_themed_icon_new_with_default_fallbacks ("list-remove-symbolic");
   button = toolbutton_new (dialog, icon, TRUE, TRUE, G_CALLBACK (remove_custom_paper));
   g_object_unref (icon);
 
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), GTK_TOOL_ITEM (button), 1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), CTK_TOOL_ITEM (button), 1);
 
   user_units = _ctk_print_get_default_user_units ();
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 18);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 18);
   priv->values_box = vbox;
-  ctk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), vbox, TRUE, TRUE, 0);
   ctk_widget_show (vbox);
 
   grid = ctk_grid_new ();
 
-  ctk_grid_set_row_spacing (GTK_GRID (grid), 6);
-  ctk_grid_set_column_spacing (GTK_GRID (grid), 12);
+  ctk_grid_set_row_spacing (CTK_GRID (grid), 6);
+  ctk_grid_set_column_spacing (CTK_GRID (grid), 12);
 
   label = ctk_label_new_with_mnemonic (_("_Width:"));
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
   ctk_widget_show (label);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 0, 1, 1);
 
   widget = new_unit_widget (dialog, user_units, label);
   priv->width_widget = widget;
-  ctk_grid_attach (GTK_GRID (grid), widget, 1, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), widget, 1, 0, 1, 1);
   ctk_widget_show (widget);
 
   label = ctk_label_new_with_mnemonic (_("_Height:"));
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
   ctk_widget_show (label);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 1, 1, 1);
 
   widget = new_unit_widget (dialog, user_units, label);
   priv->height_widget = widget;
-  ctk_grid_attach (GTK_GRID (grid), widget, 1, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), widget, 1, 1, 1, 1);
   ctk_widget_show (widget);
 
   frame = wrap_in_frame (_("Paper Size"), grid);
   ctk_widget_show (grid);
-  ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
   ctk_widget_show (frame);
 
   grid = ctk_grid_new ();
-  ctk_grid_set_row_spacing (GTK_GRID (grid), 6);
-  ctk_grid_set_column_spacing (GTK_GRID (grid), 12);
+  ctk_grid_set_row_spacing (CTK_GRID (grid), 6);
+  ctk_grid_set_column_spacing (CTK_GRID (grid), 12);
 
   label = ctk_label_new_with_mnemonic (_("_Top:"));
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 0, 1, 1);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 0, 1, 1);
   ctk_widget_show (label);
 
   widget = new_unit_widget (dialog, user_units, label);
   priv->top_widget = widget;
-  ctk_grid_attach (GTK_GRID (grid), widget, 1, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), widget, 1, 0, 1, 1);
   ctk_widget_show (widget);
 
   label = ctk_label_new_with_mnemonic (_("_Bottom:"));
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 1, 1, 1);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 1, 1, 1);
   ctk_widget_show (label);
 
   widget = new_unit_widget (dialog, user_units, label);
   priv->bottom_widget = widget;
-  ctk_grid_attach (GTK_GRID (grid), widget, 1, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), widget, 1, 1, 1, 1);
   ctk_widget_show (widget);
 
   label = ctk_label_new_with_mnemonic (_("_Left:"));
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 2, 1, 1);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 2, 1, 1);
   ctk_widget_show (label);
 
   widget = new_unit_widget (dialog, user_units, label);
   priv->left_widget = widget;
-  ctk_grid_attach (GTK_GRID (grid), widget, 1, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), widget, 1, 2, 1, 1);
   ctk_widget_show (widget);
 
   label = ctk_label_new_with_mnemonic (_("_Right:"));
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 3, 1, 1);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 3, 1, 1);
   ctk_widget_show (label);
 
   widget = new_unit_widget (dialog, user_units, label);
   priv->right_widget = widget;
-  ctk_grid_attach (GTK_GRID (grid), widget, 1, 3, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), widget, 1, 3, 1, 1);
   ctk_widget_show (widget);
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_grid_attach (GTK_GRID (grid), hbox, 0, 4, 2, 1);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_grid_attach (CTK_GRID (grid), hbox, 0, 4, 2, 1);
   ctk_widget_show (hbox);
 
-  combo = ctk_combo_box_new_with_model (GTK_TREE_MODEL (priv->printer_list));
+  combo = ctk_combo_box_new_with_model (CTK_TREE_MODEL (priv->printer_list));
   priv->printer_combo = combo;
 
   priv->printer_inserted_tag =
@@ -1208,13 +1208,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   update_combo_sensitivity_from_printers (dialog);
 
   cell = ctk_cell_renderer_text_new ();
-  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), cell, TRUE);
-  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo), cell,
+  ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo), cell, TRUE);
+  ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (combo), cell,
 				      custom_paper_printer_data_func,
 				      NULL, NULL);
 
-  ctk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
-  ctk_box_pack_start (GTK_BOX (hbox), combo, FALSE, FALSE, 0);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (combo), 0);
+  ctk_box_pack_start (CTK_BOX (hbox), combo, FALSE, FALSE, 0);
   ctk_widget_show (combo);
 
   g_signal_connect_swapped (combo, "changed",
@@ -1222,13 +1222,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   frame = wrap_in_frame (_("Paper Margins"), grid);
   ctk_widget_show (grid);
-  ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
   ctk_widget_show (frame);
 
   update_custom_widgets_from_list (dialog);
 
   /* If no custom sizes, add one */
-  if (!ctk_tree_model_get_iter_first (GTK_TREE_MODEL (priv->custom_paper_list),
+  if (!ctk_tree_model_get_iter_first (CTK_TREE_MODEL (priv->custom_paper_list),
 				      &iter))
     {
       /* Need to realize treeview so we can start the rename */

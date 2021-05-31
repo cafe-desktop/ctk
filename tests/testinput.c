@@ -307,11 +307,11 @@ main (int argc, char *argv[])
   seat = gdk_display_get_default_seat (gdk_display_get_default ());
   current_device = gdk_seat_get_pointer (seat);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (window, "Test Input");
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
   ctk_widget_show (vbox);
 
   g_signal_connect (window, "destroy",
@@ -321,7 +321,7 @@ main (int argc, char *argv[])
 
   drawing_area = ctk_drawing_area_new ();
   ctk_widget_set_size_request (drawing_area, 200, 200);
-  ctk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 
   ctk_widget_show (drawing_area);
 
@@ -373,7 +373,7 @@ main (int argc, char *argv[])
 
   /* .. And create some buttons */
   button = ctk_button_new_with_label ("Quit");
-  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect_swapped (button, "clicked",
 			    G_CALLBACK (ctk_widget_destroy),

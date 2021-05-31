@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_BORDER_VALUE_PRIVATE_H__
-#define __GTK_CSS_BORDER_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_BORDER_VALUE_PRIVATE_H__
+#define __CTK_CSS_BORDER_VALUE_PRIVATE_H__
 
 #include "gtkcssparserprivate.h"
 #include "gtkcssnumbervalueprivate.h"
@@ -43,4 +43,4 @@ GtkCssValue *   _ctk_css_border_value_get_left      (const GtkCssValue      *val
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_BORDER_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_BORDER_VALUE_PRIVATE_H__ */

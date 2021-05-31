@@ -27,11 +27,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TOOLBAR_H__
-#define __GTK_TOOLBAR_H__
+#ifndef __CTK_TOOLBAR_H__
+#define __CTK_TOOLBAR_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -41,17 +41,17 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_TOOLBAR            (ctk_toolbar_get_type ())
-#define GTK_TOOLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOOLBAR, GtkToolbar))
-#define GTK_TOOLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TOOLBAR, GtkToolbarClass))
-#define GTK_IS_TOOLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOOLBAR))
-#define GTK_IS_TOOLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TOOLBAR))
-#define GTK_TOOLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TOOLBAR, GtkToolbarClass))
+#define CTK_TYPE_TOOLBAR            (ctk_toolbar_get_type ())
+#define CTK_TOOLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOOLBAR, GtkToolbar))
+#define CTK_TOOLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOOLBAR, GtkToolbarClass))
+#define CTK_IS_TOOLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOOLBAR))
+#define CTK_IS_TOOLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TOOLBAR))
+#define CTK_TOOLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOOLBAR, GtkToolbarClass))
 
 /**
  * GtkToolbarSpaceStyle:
- * @GTK_TOOLBAR_SPACE_EMPTY: Use blank spacers.
- * @GTK_TOOLBAR_SPACE_LINE: Use vertical lines for spacers.
+ * @CTK_TOOLBAR_SPACE_EMPTY: Use blank spacers.
+ * @CTK_TOOLBAR_SPACE_LINE: Use vertical lines for spacers.
  *
  * Whether spacers are vertical lines or just blank.
  *
@@ -59,8 +59,8 @@ G_BEGIN_DECLS
  */
 typedef enum
 {
-  GTK_TOOLBAR_SPACE_EMPTY,
-  GTK_TOOLBAR_SPACE_LINE
+  CTK_TOOLBAR_SPACE_EMPTY,
+  CTK_TOOLBAR_SPACE_LINE
 } GtkToolbarSpaceStyle;
 
 typedef struct _GtkToolbar              GtkToolbar;
@@ -150,4 +150,4 @@ void            ctk_toolbar_set_drop_highlight_item (GtkToolbar      *toolbar,
 
 G_END_DECLS
 
-#endif /* __GTK_TOOLBAR_H__ */
+#endif /* __CTK_TOOLBAR_H__ */

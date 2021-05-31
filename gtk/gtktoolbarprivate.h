@@ -27,8 +27,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TOOLBAR_PRIVATE_H__
-#define __GTK_TOOLBAR_PRIVATE_H__
+#ifndef __CTK_TOOLBAR_PRIVATE_H__
+#define __CTK_TOOLBAR_PRIVATE_H__
 
 #include <gtk/gtktoolbar.h>
 
@@ -38,4 +38,4 @@ gchar *         _ctk_toolbar_elide_underscores      (const gchar         *origin
 
 G_END_DECLS
 
-#endif /* __GTK_TOOLBAR_PRIVATE_H__ */
+#endif /* __CTK_TOOLBAR_PRIVATE_H__ */

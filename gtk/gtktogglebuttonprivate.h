@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TOGGLE_BUTTON_PRIVATE_H__
-#define __GTK_TOGGLE_BUTTON_PRIVATE_H__
+#ifndef __CTK_TOGGLE_BUTTON_PRIVATE_H__
+#define __CTK_TOGGLE_BUTTON_PRIVATE_H__
 
 
 #include <gtk/gtktogglebutton.h>
@@ -37,4 +37,4 @@ void _ctk_toggle_button_set_active (GtkToggleButton *toggle_button,
 G_END_DECLS
 
 
-#endif /* __GTK_TOGGLE_BUTTON_PRIVATE_H__ */
+#endif /* __CTK_TOGGLE_BUTTON_PRIVATE_H__ */

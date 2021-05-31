@@ -54,7 +54,7 @@
 
 #include <glib.h>
 
-G_DEFINE_INTERFACE (GtkAppChooser, ctk_app_chooser, GTK_TYPE_WIDGET);
+G_DEFINE_INTERFACE (GtkAppChooser, ctk_app_chooser, CTK_TYPE_WIDGET);
 
 static void
 ctk_app_chooser_default_init (GtkAppChooserIface *iface)
@@ -94,7 +94,7 @@ ctk_app_chooser_get_content_type (GtkAppChooser *self)
 {
   gchar *retval = NULL;
 
-  g_return_val_if_fail (GTK_IS_APP_CHOOSER (self), NULL);
+  g_return_val_if_fail (CTK_IS_APP_CHOOSER (self), NULL);
 
   g_object_get (self,
                 "content-type", &retval,
@@ -117,7 +117,7 @@ ctk_app_chooser_get_content_type (GtkAppChooser *self)
 GAppInfo *
 ctk_app_chooser_get_app_info (GtkAppChooser *self)
 {
-  return GTK_APP_CHOOSER_GET_IFACE (self)->get_app_info (self);
+  return CTK_APP_CHOOSER_GET_IFACE (self)->get_app_info (self);
 }
 
 /**
@@ -131,5 +131,5 @@ ctk_app_chooser_get_app_info (GtkAppChooser *self)
 void
 ctk_app_chooser_refresh (GtkAppChooser *self)
 {
-  GTK_APP_CHOOSER_GET_IFACE (self)->refresh (self);
+  CTK_APP_CHOOSER_GET_IFACE (self)->refresh (self);
 }

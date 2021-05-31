@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_DIALOG_H__
-#define __GTK_DIALOG_H__
+#ifndef __CTK_DIALOG_H__
+#define __CTK_DIALOG_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -35,36 +35,36 @@ G_BEGIN_DECLS
 
 /**
  * GtkDialogFlags:
- * @GTK_DIALOG_MODAL: Make the constructed dialog modal,
+ * @CTK_DIALOG_MODAL: Make the constructed dialog modal,
  *     see ctk_window_set_modal()
- * @GTK_DIALOG_DESTROY_WITH_PARENT: Destroy the dialog when its
+ * @CTK_DIALOG_DESTROY_WITH_PARENT: Destroy the dialog when its
  *     parent is destroyed, see ctk_window_set_destroy_with_parent()
- * @GTK_DIALOG_USE_HEADER_BAR: Create dialog with actions in header
+ * @CTK_DIALOG_USE_HEADER_BAR: Create dialog with actions in header
  *     bar instead of action area. Since 3.12.
  *
  * Flags used to influence dialog construction.
  */
 typedef enum
 {
-  GTK_DIALOG_MODAL               = 1 << 0,
-  GTK_DIALOG_DESTROY_WITH_PARENT = 1 << 1,
-  GTK_DIALOG_USE_HEADER_BAR      = 1 << 2
+  CTK_DIALOG_MODAL               = 1 << 0,
+  CTK_DIALOG_DESTROY_WITH_PARENT = 1 << 1,
+  CTK_DIALOG_USE_HEADER_BAR      = 1 << 2
 } GtkDialogFlags;
 
 /**
  * GtkResponseType:
- * @GTK_RESPONSE_NONE: Returned if an action widget has no response id,
+ * @CTK_RESPONSE_NONE: Returned if an action widget has no response id,
  *     or if the dialog gets programmatically hidden or destroyed
- * @GTK_RESPONSE_REJECT: Generic response id, not used by GTK+ dialogs
- * @GTK_RESPONSE_ACCEPT: Generic response id, not used by GTK+ dialogs
- * @GTK_RESPONSE_DELETE_EVENT: Returned if the dialog is deleted
- * @GTK_RESPONSE_OK: Returned by OK buttons in GTK+ dialogs
- * @GTK_RESPONSE_CANCEL: Returned by Cancel buttons in GTK+ dialogs
- * @GTK_RESPONSE_CLOSE: Returned by Close buttons in GTK+ dialogs
- * @GTK_RESPONSE_YES: Returned by Yes buttons in GTK+ dialogs
- * @GTK_RESPONSE_NO: Returned by No buttons in GTK+ dialogs
- * @GTK_RESPONSE_APPLY: Returned by Apply buttons in GTK+ dialogs
- * @GTK_RESPONSE_HELP: Returned by Help buttons in GTK+ dialogs
+ * @CTK_RESPONSE_REJECT: Generic response id, not used by GTK+ dialogs
+ * @CTK_RESPONSE_ACCEPT: Generic response id, not used by GTK+ dialogs
+ * @CTK_RESPONSE_DELETE_EVENT: Returned if the dialog is deleted
+ * @CTK_RESPONSE_OK: Returned by OK buttons in GTK+ dialogs
+ * @CTK_RESPONSE_CANCEL: Returned by Cancel buttons in GTK+ dialogs
+ * @CTK_RESPONSE_CLOSE: Returned by Close buttons in GTK+ dialogs
+ * @CTK_RESPONSE_YES: Returned by Yes buttons in GTK+ dialogs
+ * @CTK_RESPONSE_NO: Returned by No buttons in GTK+ dialogs
+ * @CTK_RESPONSE_APPLY: Returned by Apply buttons in GTK+ dialogs
+ * @CTK_RESPONSE_HELP: Returned by Help buttons in GTK+ dialogs
  *
  * Predefined values for use as response ids in ctk_dialog_add_button().
  * All predefined values are negative; GTK+ leaves values of 0 or greater for
@@ -72,26 +72,26 @@ typedef enum
  */
 typedef enum
 {
-  GTK_RESPONSE_NONE         = -1,
-  GTK_RESPONSE_REJECT       = -2,
-  GTK_RESPONSE_ACCEPT       = -3,
-  GTK_RESPONSE_DELETE_EVENT = -4,
-  GTK_RESPONSE_OK           = -5,
-  GTK_RESPONSE_CANCEL       = -6,
-  GTK_RESPONSE_CLOSE        = -7,
-  GTK_RESPONSE_YES          = -8,
-  GTK_RESPONSE_NO           = -9,
-  GTK_RESPONSE_APPLY        = -10,
-  GTK_RESPONSE_HELP         = -11
+  CTK_RESPONSE_NONE         = -1,
+  CTK_RESPONSE_REJECT       = -2,
+  CTK_RESPONSE_ACCEPT       = -3,
+  CTK_RESPONSE_DELETE_EVENT = -4,
+  CTK_RESPONSE_OK           = -5,
+  CTK_RESPONSE_CANCEL       = -6,
+  CTK_RESPONSE_CLOSE        = -7,
+  CTK_RESPONSE_YES          = -8,
+  CTK_RESPONSE_NO           = -9,
+  CTK_RESPONSE_APPLY        = -10,
+  CTK_RESPONSE_HELP         = -11
 } GtkResponseType;
 
 
-#define GTK_TYPE_DIALOG                  (ctk_dialog_get_type ())
-#define GTK_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_DIALOG, GtkDialog))
-#define GTK_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_DIALOG, GtkDialogClass))
-#define GTK_IS_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_DIALOG))
-#define GTK_IS_DIALOG_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_DIALOG))
-#define GTK_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_DIALOG, GtkDialogClass))
+#define CTK_TYPE_DIALOG                  (ctk_dialog_get_type ())
+#define CTK_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_DIALOG, GtkDialog))
+#define CTK_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_DIALOG, GtkDialogClass))
+#define CTK_IS_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_DIALOG))
+#define CTK_IS_DIALOG_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_DIALOG))
+#define CTK_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_DIALOG, GtkDialogClass))
 
 
 typedef struct _GtkDialog              GtkDialog;
@@ -210,4 +210,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkDialog, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __GTK_DIALOG_H__ */
+#endif /* __CTK_DIALOG_H__ */

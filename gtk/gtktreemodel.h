@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_MODEL_H__
-#define __GTK_TREE_MODEL_H__
+#ifndef __CTK_TREE_MODEL_H__
+#define __CTK_TREE_MODEL_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -27,14 +27,14 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TREE_MODEL            (ctk_tree_model_get_type ())
-#define GTK_TREE_MODEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_MODEL, GtkTreeModel))
-#define GTK_IS_TREE_MODEL(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_MODEL))
-#define GTK_TREE_MODEL_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_TREE_MODEL, GtkTreeModelIface))
+#define CTK_TYPE_TREE_MODEL            (ctk_tree_model_get_type ())
+#define CTK_TREE_MODEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MODEL, GtkTreeModel))
+#define CTK_IS_TREE_MODEL(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_MODEL))
+#define CTK_TREE_MODEL_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_TREE_MODEL, GtkTreeModelIface))
 
-#define GTK_TYPE_TREE_ITER             (ctk_tree_iter_get_type ())
-#define GTK_TYPE_TREE_PATH             (ctk_tree_path_get_type ())
-#define GTK_TYPE_TREE_ROW_REFERENCE    (ctk_tree_row_reference_get_type ())
+#define CTK_TYPE_TREE_ITER             (ctk_tree_iter_get_type ())
+#define CTK_TYPE_TREE_PATH             (ctk_tree_path_get_type ())
+#define CTK_TYPE_TREE_ROW_REFERENCE    (ctk_tree_row_reference_get_type ())
 
 typedef struct _GtkTreeIter         GtkTreeIter;
 typedef struct _GtkTreePath         GtkTreePath;
@@ -59,22 +59,22 @@ typedef gboolean (* GtkTreeModelForeachFunc) (GtkTreeModel *model, GtkTreePath *
 
 /**
  * GtkTreeModelFlags:
- * @GTK_TREE_MODEL_ITERS_PERSIST: iterators survive all signals
+ * @CTK_TREE_MODEL_ITERS_PERSIST: iterators survive all signals
  *     emitted by the tree
- * @GTK_TREE_MODEL_LIST_ONLY: the model is a list only, and never
+ * @CTK_TREE_MODEL_LIST_ONLY: the model is a list only, and never
  *     has children
  *
  * These flags indicate various properties of a #GtkTreeModel.
  *
  * They are returned by ctk_tree_model_get_flags(), and must be
  * static for the lifetime of the object. A more complete description
- * of #GTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
+ * of #CTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
  * this section.
  */
 typedef enum
 {
-  GTK_TREE_MODEL_ITERS_PERSIST = 1 << 0,
-  GTK_TREE_MODEL_LIST_ONLY = 1 << 1
+  CTK_TREE_MODEL_ITERS_PERSIST = 1 << 0,
+  CTK_TREE_MODEL_LIST_ONLY = 1 << 1
 } GtkTreeModelFlags;
 
 /**
@@ -405,4 +405,4 @@ void ctk_tree_model_rows_reordered_with_length (GtkTreeModel *tree_model,
 
 G_END_DECLS
 
-#endif /* __GTK_TREE_MODEL_H__ */
+#endif /* __CTK_TREE_MODEL_H__ */

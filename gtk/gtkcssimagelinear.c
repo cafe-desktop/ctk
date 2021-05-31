@@ -28,7 +28,7 @@
 #include "gtkcssrgbavalueprivate.h"
 #include "gtkcssprovider.h"
 
-G_DEFINE_TYPE (GtkCssImageLinear, _ctk_css_image_linear, GTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (GtkCssImageLinear, _ctk_css_image_linear, CTK_TYPE_CSS_IMAGE)
 
 static void
 ctk_css_image_linear_get_start_end (GtkCssImageLinear *linear,
@@ -133,7 +133,7 @@ ctk_css_image_linear_draw (GtkCssImage        *image,
                            double              width,
                            double              height)
 {
-  GtkCssImageLinear *linear = GTK_CSS_IMAGE_LINEAR (image);
+  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
   cairo_pattern_t *pattern;
   double angle; /* actual angle of the gradiant line in degrees */
   double x, y; /* coordinates of start point */
@@ -147,21 +147,21 @@ ctk_css_image_linear_draw (GtkCssImage        *image,
       /* special casing the regular cases here so we don't get rounding errors */
       switch (linear->side)
       {
-        case 1 << GTK_CSS_RIGHT:
+        case 1 << CTK_CSS_RIGHT:
           angle = 90;
           break;
-        case 1 << GTK_CSS_LEFT:
+        case 1 << CTK_CSS_LEFT:
           angle = 270;
           break;
-        case 1 << GTK_CSS_TOP:
+        case 1 << CTK_CSS_TOP:
           angle = 0;
           break;
-        case 1 << GTK_CSS_BOTTOM:
+        case 1 << CTK_CSS_BOTTOM:
           angle = 180;
           break;
         default:
-          angle = atan2 (linear->side & 1 << GTK_CSS_TOP ? -width : width,
-                         linear->side & 1 << GTK_CSS_LEFT ? -height : height);
+          angle = atan2 (linear->side & 1 << CTK_CSS_TOP ? -width : width,
+                         linear->side & 1 << CTK_CSS_LEFT ? -height : height);
           angle = 180 * angle / G_PI + 90;
           break;
       }
@@ -241,7 +241,7 @@ static gboolean
 ctk_css_image_linear_parse (GtkCssImage  *image,
                             GtkCssParser *parser)
 {
-  GtkCssImageLinear *linear = GTK_CSS_IMAGE_LINEAR (image);
+  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
   guint i;
 
   if (_ctk_css_parser_try (parser, "repeating-linear-gradient(", TRUE))
@@ -260,39 +260,39 @@ ctk_css_image_linear_parse (GtkCssImage  *image,
         {
           if (_ctk_css_parser_try (parser, "left", TRUE))
             {
-              if (linear->side & ((1 << GTK_CSS_LEFT) | (1 << GTK_CSS_RIGHT)))
+              if (linear->side & ((1 << CTK_CSS_LEFT) | (1 << CTK_CSS_RIGHT)))
                 {
                   _ctk_css_parser_error (parser, "Expected 'top', 'bottom' or comma");
                   return FALSE;
                 }
-              linear->side |= (1 << GTK_CSS_LEFT);
+              linear->side |= (1 << CTK_CSS_LEFT);
             }
           else if (_ctk_css_parser_try (parser, "right", TRUE))
             {
-              if (linear->side & ((1 << GTK_CSS_LEFT) | (1 << GTK_CSS_RIGHT)))
+              if (linear->side & ((1 << CTK_CSS_LEFT) | (1 << CTK_CSS_RIGHT)))
                 {
                   _ctk_css_parser_error (parser, "Expected 'top', 'bottom' or comma");
                   return FALSE;
                 }
-              linear->side |= (1 << GTK_CSS_RIGHT);
+              linear->side |= (1 << CTK_CSS_RIGHT);
             }
           else if (_ctk_css_parser_try (parser, "top", TRUE))
             {
-              if (linear->side & ((1 << GTK_CSS_TOP) | (1 << GTK_CSS_BOTTOM)))
+              if (linear->side & ((1 << CTK_CSS_TOP) | (1 << CTK_CSS_BOTTOM)))
                 {
                   _ctk_css_parser_error (parser, "Expected 'left', 'right' or comma");
                   return FALSE;
                 }
-              linear->side |= (1 << GTK_CSS_TOP);
+              linear->side |= (1 << CTK_CSS_TOP);
             }
           else if (_ctk_css_parser_try (parser, "bottom", TRUE))
             {
-              if (linear->side & ((1 << GTK_CSS_TOP) | (1 << GTK_CSS_BOTTOM)))
+              if (linear->side & ((1 << CTK_CSS_TOP) | (1 << CTK_CSS_BOTTOM)))
                 {
                   _ctk_css_parser_error (parser, "Expected 'left', 'right' or comma");
                   return FALSE;
                 }
-              linear->side |= (1 << GTK_CSS_BOTTOM);
+              linear->side |= (1 << CTK_CSS_BOTTOM);
             }
           else
             break;
@@ -312,7 +312,7 @@ ctk_css_image_linear_parse (GtkCssImage  *image,
     }
   else if (ctk_css_number_value_can_parse (parser))
     {
-      linear->angle = _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_ANGLE);
+      linear->angle = _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_ANGLE);
       if (linear->angle == NULL)
         return FALSE;
 
@@ -323,7 +323,7 @@ ctk_css_image_linear_parse (GtkCssImage  *image,
         }
     }
   else
-    linear->side = 1 << GTK_CSS_BOTTOM;
+    linear->side = 1 << CTK_CSS_BOTTOM;
 
   do {
     GtkCssImageLinearColorStop stop;
@@ -335,8 +335,8 @@ ctk_css_image_linear_parse (GtkCssImage  *image,
     if (ctk_css_number_value_can_parse (parser))
       {
         stop.offset = _ctk_css_number_value_parse (parser,
-                                                   GTK_CSS_PARSE_PERCENT
-                                                   | GTK_CSS_PARSE_LENGTH);
+                                                   CTK_CSS_PARSE_PERCENT
+                                                   | CTK_CSS_PARSE_LENGTH);
         if (stop.offset == NULL)
           {
             _ctk_css_value_unref (stop.color);
@@ -355,7 +355,7 @@ ctk_css_image_linear_parse (GtkCssImage  *image,
   if (linear->stops->len < 2)
     {
       _ctk_css_parser_error_full (parser,
-                                  GTK_CSS_PROVIDER_ERROR_DEPRECATED,
+                                  CTK_CSS_PROVIDER_ERROR_DEPRECATED,
                                   "Using one color stop with %s() is deprecated.",
                                   linear->repeating ? "repeating-linear-gradient" : "linear-gradient");
     }
@@ -373,7 +373,7 @@ static void
 ctk_css_image_linear_print (GtkCssImage *image,
                             GString     *string)
 {
-  GtkCssImageLinear *linear = GTK_CSS_IMAGE_LINEAR (image);
+  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
   guint i;
 
   if (linear->repeating)
@@ -383,18 +383,18 @@ ctk_css_image_linear_print (GtkCssImage *image,
 
   if (linear->side)
     {
-      if (linear->side != (1 << GTK_CSS_BOTTOM))
+      if (linear->side != (1 << CTK_CSS_BOTTOM))
         {
           g_string_append (string, "to");
 
-          if (linear->side & (1 << GTK_CSS_TOP))
+          if (linear->side & (1 << CTK_CSS_TOP))
             g_string_append (string, " top");
-          else if (linear->side & (1 << GTK_CSS_BOTTOM))
+          else if (linear->side & (1 << CTK_CSS_BOTTOM))
             g_string_append (string, " bottom");
 
-          if (linear->side & (1 << GTK_CSS_LEFT))
+          if (linear->side & (1 << CTK_CSS_LEFT))
             g_string_append (string, " left");
-          else if (linear->side & (1 << GTK_CSS_RIGHT))
+          else if (linear->side & (1 << CTK_CSS_RIGHT))
             g_string_append (string, " right");
 
           g_string_append (string, ", ");
@@ -434,11 +434,11 @@ ctk_css_image_linear_compute (GtkCssImage             *image,
                               GtkCssStyle             *style,
                               GtkCssStyle             *parent_style)
 {
-  GtkCssImageLinear *linear = GTK_CSS_IMAGE_LINEAR (image);
+  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (image);
   GtkCssImageLinear *copy;
   guint i;
 
-  copy = g_object_new (GTK_TYPE_CSS_IMAGE_LINEAR, NULL);
+  copy = g_object_new (CTK_TYPE_CSS_IMAGE_LINEAR, NULL);
   copy->repeating = linear->repeating;
   copy->side = linear->side;
 
@@ -465,7 +465,7 @@ ctk_css_image_linear_compute (GtkCssImage             *image,
         }
     }
 
-  return GTK_CSS_IMAGE (copy);
+  return CTK_CSS_IMAGE (copy);
 }
 
 static GtkCssImage *
@@ -477,21 +477,21 @@ ctk_css_image_linear_transition (GtkCssImage *start_image,
   GtkCssImageLinear *start, *end, *result;
   guint i;
 
-  start = GTK_CSS_IMAGE_LINEAR (start_image);
+  start = CTK_CSS_IMAGE_LINEAR (start_image);
 
   if (end_image == NULL)
-    return GTK_CSS_IMAGE_CLASS (_ctk_css_image_linear_parent_class)->transition (start_image, end_image, property_id, progress);
+    return CTK_CSS_IMAGE_CLASS (_ctk_css_image_linear_parent_class)->transition (start_image, end_image, property_id, progress);
 
-  if (!GTK_IS_CSS_IMAGE_LINEAR (end_image))
-    return GTK_CSS_IMAGE_CLASS (_ctk_css_image_linear_parent_class)->transition (start_image, end_image, property_id, progress);
+  if (!CTK_IS_CSS_IMAGE_LINEAR (end_image))
+    return CTK_CSS_IMAGE_CLASS (_ctk_css_image_linear_parent_class)->transition (start_image, end_image, property_id, progress);
 
-  end = GTK_CSS_IMAGE_LINEAR (end_image);
+  end = CTK_CSS_IMAGE_LINEAR (end_image);
 
   if ((start->repeating != end->repeating)
       || (start->stops->len != end->stops->len))
-    return GTK_CSS_IMAGE_CLASS (_ctk_css_image_linear_parent_class)->transition (start_image, end_image, property_id, progress);
+    return CTK_CSS_IMAGE_CLASS (_ctk_css_image_linear_parent_class)->transition (start_image, end_image, property_id, progress);
 
-  result = g_object_new (GTK_TYPE_CSS_IMAGE_LINEAR, NULL);
+  result = g_object_new (CTK_TYPE_CSS_IMAGE_LINEAR, NULL);
   result->repeating = start->repeating;
 
   if (start->side != end->side)
@@ -541,19 +541,19 @@ ctk_css_image_linear_transition (GtkCssImage *start_image,
       g_array_append_val (result->stops, stop);
     }
 
-  return GTK_CSS_IMAGE (result);
+  return CTK_CSS_IMAGE (result);
 
 fail:
   g_object_unref (result);
-  return GTK_CSS_IMAGE_CLASS (_ctk_css_image_linear_parent_class)->transition (start_image, end_image, property_id, progress);
+  return CTK_CSS_IMAGE_CLASS (_ctk_css_image_linear_parent_class)->transition (start_image, end_image, property_id, progress);
 }
 
 static gboolean
 ctk_css_image_linear_equal (GtkCssImage *image1,
                             GtkCssImage *image2)
 {
-  GtkCssImageLinear *linear1 = GTK_CSS_IMAGE_LINEAR (image1);
-  GtkCssImageLinear *linear2 = GTK_CSS_IMAGE_LINEAR (image2);
+  GtkCssImageLinear *linear1 = CTK_CSS_IMAGE_LINEAR (image1);
+  GtkCssImageLinear *linear2 = CTK_CSS_IMAGE_LINEAR (image2);
   guint i;
 
   if (linear1->repeating != linear2->repeating ||
@@ -580,7 +580,7 @@ ctk_css_image_linear_equal (GtkCssImage *image1,
 static void
 ctk_css_image_linear_dispose (GObject *object)
 {
-  GtkCssImageLinear *linear = GTK_CSS_IMAGE_LINEAR (object);
+  GtkCssImageLinear *linear = CTK_CSS_IMAGE_LINEAR (object);
 
   if (linear->stops)
     {
@@ -601,7 +601,7 @@ ctk_css_image_linear_dispose (GObject *object)
 static void
 _ctk_css_image_linear_class_init (GtkCssImageLinearClass *klass)
 {
-  GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
+  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   image_class->draw = ctk_css_image_linear_draw;

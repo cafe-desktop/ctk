@@ -23,8 +23,8 @@ split_decorations (GtkSettings *settings,
   else
     p2 = g_strdup ("");
 
-  ctk_header_bar_set_decoration_layout (GTK_HEADER_BAR (sheader), p1);
-  ctk_header_bar_set_decoration_layout (GTK_HEADER_BAR (mheader), p2);
+  ctk_header_bar_set_decoration_layout (CTK_HEADER_BAR (sheader), p1);
+  ctk_header_bar_set_decoration_layout (CTK_HEADER_BAR (mheader), p2);
  
   g_free (p1);
   g_free (p2);
@@ -66,7 +66,7 @@ main (int argc, char *argv[])
   g_object_bind_property (check, "active", 
                           header, "show-close-button",
 			  G_BINDING_DEFAULT);                      
-  ctk_window_present (GTK_WINDOW (win));
+  ctk_window_present (CTK_WINDOW (win));
 
   ctk_main ();
 

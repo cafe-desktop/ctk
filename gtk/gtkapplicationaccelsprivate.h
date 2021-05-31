@@ -19,15 +19,15 @@
  *          Sébastien Wilmet <swilmet@gnome.org>
  */
 
-#ifndef __GTK_APPLICATION_ACCELS_H__
-#define __GTK_APPLICATION_ACCELS_H__
+#ifndef __CTK_APPLICATION_ACCELS_H__
+#define __CTK_APPLICATION_ACCELS_H__
 
 #include <gio/gio.h>
 #include "gtkwindowprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APPLICATION_ACCELS (ctk_application_accels_get_type ())
+#define CTK_TYPE_APPLICATION_ACCELS (ctk_application_accels_get_type ())
 G_DECLARE_FINAL_TYPE (GtkApplicationAccels, ctk_application_accels,
                       GTK, APPLICATION_ACCELS,
                       GObject)
@@ -59,4 +59,4 @@ gboolean        ctk_application_accels_activate                     (GtkApplicat
 
 G_END_DECLS
 
-#endif /* __GTK_APPLICATION_ACCELS_H__ */
+#endif /* __CTK_APPLICATION_ACCELS_H__ */

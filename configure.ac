@@ -1,12 +1,12 @@
 # Process this file with autoconf to produce a configure script.
 
 # Making releases:
-#   GTK_MICRO_VERSION += 1;
-#   GTK_INTERFACE_AGE += 1;
-#   GTK_BINARY_AGE += 1;
-# if any functions have been added, set GTK_INTERFACE_AGE to 0.
+#   CTK_MICRO_VERSION += 1;
+#   CTK_INTERFACE_AGE += 1;
+#   CTK_BINARY_AGE += 1;
+# if any functions have been added, set CTK_INTERFACE_AGE to 0.
 # if backwards compatibility has been broken,
-# set GTK_BINARY_AGE and GTK_INTERFACE_AGE to 0.
+# set CTK_BINARY_AGE and CTK_INTERFACE_AGE to 0.
 
 m4_define([ctk_major_version], [3])
 m4_define([ctk_minor_version], [24])
@@ -37,7 +37,7 @@ AC_CANONICAL_HOST
 # guarantees, this should be unchanged until we break binary compat
 # for GTK+.
 #
-#GTK_BINARY_VERSION=$GTK_MAJOR_VERSION.$GTK_MINOR_VERSION.$LT_CURRENT
+#CTK_BINARY_VERSION=$CTK_MAJOR_VERSION.$CTK_MINOR_VERSION.$LT_CURRENT
 m4_define([ctk_binary_version], [3.0.0])
 
 # required versions of other packages
@@ -101,28 +101,28 @@ AM_SILENT_RULES([yes])
 # foo_DEP_CFLAGS:   All cflags this module requires
 
 
-GTK_MAJOR_VERSION=ctk_major_version
-GTK_MINOR_VERSION=ctk_minor_version
-GTK_MICRO_VERSION=ctk_micro_version
-GTK_INTERFACE_AGE=ctk_interface_age
-GTK_BINARY_AGE=ctk_binary_age
-GTK_VERSION=ctk_version
-GTK_API_VERSION=ctk_api_version
-GTK_BINARY_VERSION=ctk_binary_version
-AC_SUBST(GTK_MAJOR_VERSION)
-AC_SUBST(GTK_MINOR_VERSION)
-AC_SUBST(GTK_MICRO_VERSION)
-AC_SUBST(GTK_INTERFACE_AGE)
-AC_SUBST(GTK_BINARY_AGE)
-AC_SUBST(GTK_API_VERSION)
-AC_SUBST(GTK_VERSION)
-AC_SUBST(GTK_BINARY_VERSION)
+CTK_MAJOR_VERSION=ctk_major_version
+CTK_MINOR_VERSION=ctk_minor_version
+CTK_MICRO_VERSION=ctk_micro_version
+CTK_INTERFACE_AGE=ctk_interface_age
+CTK_BINARY_AGE=ctk_binary_age
+CTK_VERSION=ctk_version
+CTK_API_VERSION=ctk_api_version
+CTK_BINARY_VERSION=ctk_binary_version
+AC_SUBST(CTK_MAJOR_VERSION)
+AC_SUBST(CTK_MINOR_VERSION)
+AC_SUBST(CTK_MICRO_VERSION)
+AC_SUBST(CTK_INTERFACE_AGE)
+AC_SUBST(CTK_BINARY_AGE)
+AC_SUBST(CTK_API_VERSION)
+AC_SUBST(CTK_VERSION)
+AC_SUBST(CTK_BINARY_VERSION)
 
 # libtool versioning
-#LT_RELEASE=$GTK_MAJOR_VERSION.$GTK_MINOR_VERSION
-#LT_CURRENT=`expr $GTK_MICRO_VERSION - $GTK_INTERFACE_AGE`
-#LT_REVISION=$GTK_INTERFACE_AGE
-#LT_AGE=`expr $GTK_BINARY_AGE - $GTK_INTERFACE_AGE`
+#LT_RELEASE=$CTK_MAJOR_VERSION.$CTK_MINOR_VERSION
+#LT_CURRENT=`expr $CTK_MICRO_VERSION - $CTK_INTERFACE_AGE`
+#LT_REVISION=$CTK_INTERFACE_AGE
+#LT_AGE=`expr $CTK_BINARY_AGE - $CTK_INTERFACE_AGE`
 #LT_CURRENT_MINUS_AGE=`expr $LT_CURRENT - $LT_AGE`
 
 m4_define([lt_current], [m4_eval(100 * ctk_minor_version + ctk_micro_version - ctk_interface_age)])
@@ -482,15 +482,15 @@ fi
 
 if test "x$enable_debug" = "xyes"; then
   test "$cflags_set" = set || CFLAGS="$CFLAGS -g"
-  GTK_DEBUG_FLAGS="-DG_ENABLE_DEBUG -DG_ENABLE_CONSISTENCY_CHECKS"
+  CTK_DEBUG_FLAGS="-DG_ENABLE_DEBUG -DG_ENABLE_CONSISTENCY_CHECKS"
 else
   if test "x$enable_debug" = "xno"; then
-    GTK_DEBUG_FLAGS="-DG_DISABLE_ASSERT -DG_DISABLE_CHECKS -DG_DISABLE_CAST_CHECKS"
+    CTK_DEBUG_FLAGS="-DG_DISABLE_ASSERT -DG_DISABLE_CHECKS -DG_DISABLE_CAST_CHECKS"
   else
-    GTK_DEBUG_FLAGS="-DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+    CTK_DEBUG_FLAGS="-DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
   fi
 fi
-GTK_DEBUG_FLAGS="$GTK_DEBUG_FLAGS $GLIB_VERSION_CFLAGS"
+CTK_DEBUG_FLAGS="$CTK_DEBUG_FLAGS $GLIB_VERSION_CFLAGS"
 
 # Build time sanity check...
 AM_SANITY_CHECK
@@ -979,8 +979,8 @@ AM_CONDITIONAL(CROSS_COMPILING, test $cross_compiling = yes)
 ########################################
 
 # GTK+ uses some X calls, so needs to link against X directly
-GTK_DEP_PACKAGES_FOR_X=
-GTK_DEP_LIBS_FOR_X=
+CTK_DEP_PACKAGES_FOR_X=
+CTK_DEP_LIBS_FOR_X=
 X_EXTENSIONS=
 
 if test "x$enable_x11_backend" = xyes; then
@@ -1014,7 +1014,7 @@ if test "x$enable_x11_backend" = xyes; then
       esac
     done
 
-    GTK_PACKAGES_FOR_X="x11"
+    CTK_PACKAGES_FOR_X="x11"
   else
     have_base_x_pc=false
     AC_PATH_XTRA
@@ -1025,7 +1025,7 @@ if test "x$enable_x11_backend" = xyes; then
     x_cflags="$X_CFLAGS"
     x_libs_for_checks="$X_LIBS -lXext -lX11 $X_EXTRA_LIBS"
 
-    GTK_DEP_LIBS_FOR_X="$X_LIBS -lX11 $X_EXTRA_LIBS"
+    CTK_DEP_LIBS_FOR_X="$X_LIBS -lX11 $X_EXTRA_LIBS"
   fi
 
   # Extra libraries found during checks (-lXinerama, etc), not from pkg-config.
@@ -1095,7 +1095,7 @@ if test "x$enable_x11_backend" = xyes; then
        AC_MSG_RESULT(no)
        AC_CHECK_LIB(Xinerama, XineramaQueryExtension,
 	   [AC_CHECK_HEADER(X11/extensions/Xinerama.h,
-	   [GTK_ADD_LIB(x_extra_libs,Xinerama)
+	   [CTK_ADD_LIB(x_extra_libs,Xinerama)
 	   have_xfree_xinerama=true], :,
            [#include <X11/Xlib.h>])])
     fi
@@ -1149,7 +1149,7 @@ if test "x$enable_x11_backend" = xyes; then
   if $PKG_CONFIG --exists "xi" ; then
 
     X_PACKAGES="$X_PACKAGES xi"
-    GTK_PACKAGES_FOR_X="$GTK_PACKAGES_FOR_X xi"
+    CTK_PACKAGES_FOR_X="$CTK_PACKAGES_FOR_X xi"
 
     AC_CHECK_HEADER(X11/extensions/XInput2.h,
                     have_xinput2=yes
@@ -1209,7 +1209,7 @@ if test "x$enable_x11_backend" = xyes; then
 
       X_PACKAGES="$X_PACKAGES xfixes"
       X_EXTENSIONS="$X_EXTENSIONS XFIXES"
-      GTK_PACKAGES_FOR_X="$GTK_PACKAGES_FOR_X xfixes"
+      CTK_PACKAGES_FOR_X="$CTK_PACKAGES_FOR_X xfixes"
     elif test x"$enable_xfixes" = xyes; then
       AC_MSG_ERROR([XFixes support requested but xfixes not found])
     fi
@@ -1223,7 +1223,7 @@ if test "x$enable_x11_backend" = xyes; then
 
       X_PACKAGES="$X_PACKAGES xcomposite"
       X_EXTENSIONS="$X_EXTENSIONS Composite"
-      GTK_PACKAGES_FOR_X="$GTK_PACKAGES_FOR_X xcomposite"
+      CTK_PACKAGES_FOR_X="$CTK_PACKAGES_FOR_X xcomposite"
     elif test x"$enable_xcomposite" = xyes; then
       AC_MSG_ERROR([Xcomposite support requested but xcomposite not found])
     fi
@@ -1237,7 +1237,7 @@ if test "x$enable_x11_backend" = xyes; then
 
       X_PACKAGES="$X_PACKAGES xdamage"
       X_EXTENSIONS="$X_EXTENSIONS DAMAGE"
-      GTK_PACKAGES_FOR_X="$GTK_PACKAGES_FOR_X xdamage"
+      CTK_PACKAGES_FOR_X="$CTK_PACKAGES_FOR_X xdamage"
     elif test x"$enable_xdamage" = xyes; then
       AC_MSG_ERROR([Xdamage support requested but xdamage not found])
     fi
@@ -1372,30 +1372,30 @@ fi
 
 PKG_CHECK_MODULES(ATK, $ATK_PACKAGES)
 
-GTK_PACKAGES="atk >= atk_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version gdk-pixbuf-2.0 >= gdk_pixbuf_required_version gio-2.0 >= glib_required_version"
-GTK_PRIVATE_PACKAGES="$ATK_PACKAGES $WAYLAND_PACKAGES epoxy >= epoxy_required_version fribidi >= fribidi_required_version"
+CTK_PACKAGES="atk >= atk_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version gdk-pixbuf-2.0 >= gdk_pixbuf_required_version gio-2.0 >= glib_required_version"
+CTK_PRIVATE_PACKAGES="$ATK_PACKAGES $WAYLAND_PACKAGES epoxy >= epoxy_required_version fribidi >= fribidi_required_version"
 if test "x$enable_x11_backend" = xyes -o "x$enable_wayland_backend" = xyes; then
-  GTK_PRIVATE_PACKAGES="$GTK_PRIVATE_PACKAGES pangoft2"
+  CTK_PRIVATE_PACKAGES="$CTK_PRIVATE_PACKAGES pangoft2"
 fi
 if test "$have_gio_unix" = "yes"; then
-  GTK_PRIVATE_PACKAGES="$GTK_PRIVATE_PACKAGES gio-unix-2.0 >= glib_required_version"
+  CTK_PRIVATE_PACKAGES="$CTK_PRIVATE_PACKAGES gio-unix-2.0 >= glib_required_version"
 fi
-GTK_EXTRA_LIBS=
+CTK_EXTRA_LIBS=
 
-GTK_EXTRA_CFLAGS=
-PKG_CHECK_MODULES(GTK_DEP, $PANGO_PACKAGES $GTK_PACKAGES_FOR_X $GTK_PACKAGES $GTK_PRIVATE_PACKAGES)
-GTK_DEP_LIBS="$GDK_EXTRA_LIBS $GTK_DEP_LIBS_FOR_X $GTK_DEP_LIBS $GTK_EXTRA_LIBS $MATH_LIB"
-GTK_DEP_CFLAGS="$GTK_DEP_CFLAGS $GDK_EXTRA_CFLAGS $GTK_EXTRA_CFLAGS"
+CTK_EXTRA_CFLAGS=
+PKG_CHECK_MODULES(CTK_DEP, $PANGO_PACKAGES $CTK_PACKAGES_FOR_X $CTK_PACKAGES $CTK_PRIVATE_PACKAGES)
+CTK_DEP_LIBS="$GDK_EXTRA_LIBS $CTK_DEP_LIBS_FOR_X $CTK_DEP_LIBS $CTK_EXTRA_LIBS $MATH_LIB"
+CTK_DEP_CFLAGS="$CTK_DEP_CFLAGS $GDK_EXTRA_CFLAGS $CTK_EXTRA_CFLAGS"
 
 if test x"$os_win32" = xyes; then
-  GTK_EXTRA_CFLAGS="$msnative_struct"
+  CTK_EXTRA_CFLAGS="$msnative_struct"
 fi
 
 ##################################################
 # Check for harfbuzz and pangoft2
 ##################################################
 
-PKG_CHECK_MODULES(GTK_FONT_CHOOSER_WIDGET,
+PKG_CHECK_MODULES(CTK_FONT_CHOOSER_WIDGET,
                   harfbuzz >= 0.9 pangoft2,
                   build_font_demo=yes,
                   build_font_demo=no)
@@ -1403,8 +1403,8 @@ AM_CONDITIONAL(BUILD_FONT_DEMO, [ test "x$build_font_demo" = xyes ])
 if test "x$build_font_demo" = xyes; then
   AC_DEFINE([HAVE_HARFBUZZ], 1, [defines whether we have HarfBuzz])
   AC_DEFINE([HAVE_PANGOFT], 1, [defines whether we have pangoft2])
-  GTK_DEP_CFLAGS="$GTK_DEP_CFLAGS $GTK_FONT_CHOOSER_WIDGET_CFLAGS"
-  GTK_DEP_LIBS="$GTK_DEP_LIBS $GTK_FONT_CHOOSER_WIDGET_LIBS"
+  CTK_DEP_CFLAGS="$CTK_DEP_CFLAGS $CTK_FONT_CHOOSER_WIDGET_CFLAGS"
+  CTK_DEP_LIBS="$CTK_DEP_LIBS $CTK_FONT_CHOOSER_WIDGET_LIBS"
 fi
 
 if $PKG_CONFIG --exists x11; then
@@ -1458,12 +1458,12 @@ PANGO_PREFIX="`$PKG_CONFIG --variable=prefix pango`"
 CAIRO_PREFIX="`$PKG_CONFIG --variable=prefix cairo`"
 ISO_CODES_PREFIX="`$PKG_CONFIG --variable=prefix iso-codes`"
 
-AC_SUBST(GTK_PACKAGES)
-AC_SUBST(GTK_PRIVATE_PACKAGES)
-AC_SUBST(GTK_EXTRA_LIBS)
-AC_SUBST(GTK_EXTRA_CFLAGS)
-AC_SUBST(GTK_DEP_LIBS)
-AC_SUBST(GTK_DEP_CFLAGS)
+AC_SUBST(CTK_PACKAGES)
+AC_SUBST(CTK_PRIVATE_PACKAGES)
+AC_SUBST(CTK_EXTRA_LIBS)
+AC_SUBST(CTK_EXTRA_CFLAGS)
+AC_SUBST(CTK_DEP_LIBS)
+AC_SUBST(CTK_DEP_CFLAGS)
 
 AC_SUBST(X11_PREFIX)
 AC_SUBST(GLIB_PREFIX)
@@ -1472,8 +1472,8 @@ AC_SUBST(PANGO_PREFIX)
 AC_SUBST(CAIRO_PREFIX)
 AC_SUBST(ISO_CODES_PREFIX)
 
-AC_SUBST(GTK_DEBUG_FLAGS)
-AC_SUBST(GTK_XIM_FLAGS)
+AC_SUBST(CTK_DEBUG_FLAGS)
+AC_SUBST(CTK_XIM_FLAGS)
 
 GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
 AC_SUBST(GDK_PIXBUF_LIBS)
@@ -1563,8 +1563,8 @@ AC_ARG_ENABLE(tracker3,
 
 if test "x$enable_tracker3" = "xyes"; then
   PKG_CHECK_MODULES(TRACKER3, [tracker-sparql-3.0], have_tracker3=yes, have_tracker3=no)
-  GTK_DEP_CFLAGS="$GTK_DEP_CFLAGS $TRACKER3_CFLAGS"
-  GTK_DEP_LIBS="$GTK_DEP_LIBS $TRACKER3_LIBS"
+  CTK_DEP_CFLAGS="$CTK_DEP_CFLAGS $TRACKER3_CFLAGS"
+  CTK_DEP_LIBS="$CTK_DEP_LIBS $TRACKER3_LIBS"
   if test "x$have_tracker3" = "xyes"; then
     AC_DEFINE([HAVE_TRACKER3], [], [Define if tracker3 is available])
   else
@@ -1609,7 +1609,7 @@ if test "x$enable_cloudprint" = "xyes" -a "x$have_json_glib" = "xno"; then
 fi
 
 ctk_save_cppflags="$CPPFLAGS"
-CPPFLAGS="$CPPFLAGS $GTK_DEP_CFLAGS $GDK_DEP_CFLAGS"
+CPPFLAGS="$CPPFLAGS $CTK_DEP_CFLAGS $GDK_DEP_CFLAGS"
 
 AC_CHECK_HEADER(cairo-pdf.h,,AC_MSG_ERROR([
 *** Can't find cairo-pdf.h. You must build Cairo with the pdf
@@ -1640,20 +1640,20 @@ if test "$os_win32" = "yes"; then
   AC_CHECK_TYPES([IPrintDialogCallback],[],[],[[#include <windows.h>]])
 fi
 
-GTK_PRINT_BACKENDS="file"
+CTK_PRINT_BACKENDS="file"
 if test "$have_papi" = "yes"; then
-  GTK_PRINT_BACKENDS="$GTK_PRINT_BACKENDS,papi"
+  CTK_PRINT_BACKENDS="$CTK_PRINT_BACKENDS,papi"
 fi
 if test "$have_cups" = "yes"; then
-  GTK_PRINT_BACKENDS="$GTK_PRINT_BACKENDS,cups"
+  CTK_PRINT_BACKENDS="$CTK_PRINT_BACKENDS,cups"
 fi
 if test "$have_papi" != "yes" -a "$have_cups" != "yes"; then
-  GTK_PRINT_BACKENDS="$GTK_PRINT_BACKENDS,lpr"
+  CTK_PRINT_BACKENDS="$CTK_PRINT_BACKENDS,lpr"
 fi
 if test "$have_cloudprint" = "yes"; then
-  GTK_PRINT_BACKENDS="$GTK_PRINT_BACKENDS,cloudprint"
+  CTK_PRINT_BACKENDS="$CTK_PRINT_BACKENDS,cloudprint"
 fi
-AC_SUBST(GTK_PRINT_BACKENDS)
+AC_SUBST(CTK_PRINT_BACKENDS)
 
 ################################################################
 # Strip -export-dynamic from the link lines of various libraries
@@ -1672,7 +1672,7 @@ export SED
 export_dynamic=`(./libtool --config; echo eval echo \\$export_dynamic_flag_spec) | sh`
 if test -n "$export_dynamic"; then
   GDK_DEP_LIBS=`echo $GDK_DEP_LIBS | sed -e "s/$export_dynamic//"`
-  GTK_DEP_LIBS=`echo $GTK_DEP_LIBS | sed -e "s/$export_dynamic//"`
+  CTK_DEP_LIBS=`echo $CTK_DEP_LIBS | sed -e "s/$export_dynamic//"`
 fi
 
 #############
@@ -1733,7 +1733,7 @@ AM_CONDITIONAL(HAVE_COLORD, test "x$have_colord" = "xyes")
 # Checks for gtk-doc and docbook-tools
 ##################################################
 
-GTK_DOC_CHECK([1.20],[--flavour no-tmpl])
+CTK_DOC_CHECK([1.20],[--flavour no-tmpl])
 
 AC_ARG_ENABLE(man,
               [AS_HELP_STRING([--enable-man],
@@ -1899,9 +1899,9 @@ AC_ARG_ENABLE(Bsymbolic,
                LDFLAGS="${SAVED_LDFLAGS}"])
 
 if test "x${enable_Bsymbolic}" = "xyes" ; then
-  GTK_LINK_FLAGS=-Wl,-Bsymbolic-functions
+  CTK_LINK_FLAGS=-Wl,-Bsymbolic-functions
 fi
-AC_SUBST(GTK_LINK_FLAGS)
+AC_SUBST(CTK_LINK_FLAGS)
 
 dnl
 dnl Check whether MSVC toolset is explicitly set
@@ -2008,7 +2008,7 @@ included_immodules=$(echo "${included_immodules}" | $SED 's/,/ /g')
 if test -z "${included_immodules}"; then included_immodules="none"; fi
 
 echo ""
-echo "        GTK+ $GTK_VERSION"
+echo "        GTK+ $CTK_VERSION"
 echo "        ==========="
 echo ""
 echo "        GDK backends:         $GDK_BACKENDS"

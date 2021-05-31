@@ -16,10 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GTK_PLACES_VIEW_ROW_H
-#define GTK_PLACES_VIEW_ROW_H
+#ifndef CTK_PLACES_VIEW_ROW_H
+#define CTK_PLACES_VIEW_ROW_H
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PLACES_VIEW_ROW (ctk_places_view_row_get_type())
+#define CTK_TYPE_PLACES_VIEW_ROW (ctk_places_view_row_get_type())
 
 G_DECLARE_FINAL_TYPE (GtkPlacesViewRow, ctk_places_view_row, GTK, PLACES_VIEW_ROW, GtkListBoxRow)
 
@@ -62,4 +62,4 @@ void               ctk_places_view_row_set_space_size_group      (GtkPlacesViewR
 
 G_END_DECLS
 
-#endif /* GTK_PLACES_VIEW_ROW_H */
+#endif /* CTK_PLACES_VIEW_ROW_H */

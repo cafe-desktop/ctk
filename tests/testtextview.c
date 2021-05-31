@@ -11,7 +11,7 @@ typedef struct {
   GtkTextViewClass parent_class;
 } MyTextViewClass;
 
-G_DEFINE_TYPE (MyTextView, my_text_view, GTK_TYPE_TEXT_VIEW);
+G_DEFINE_TYPE (MyTextView, my_text_view, CTK_TYPE_TEXT_VIEW);
 
 static void draw_background (GtkWidget *widget, cairo_t *cr);
 
@@ -24,14 +24,14 @@ static void my_text_view_draw_layer (GtkTextView       *textview,
 				     GtkTextViewLayer   layer,
 				     cairo_t           *cr)
 {
-  if (layer == GTK_TEXT_VIEW_LAYER_BELOW)
-    draw_background (GTK_WIDGET (textview), cr);
+  if (layer == CTK_TEXT_VIEW_LAYER_BELOW)
+    draw_background (CTK_WIDGET (textview), cr);
 }
 
 static void
 my_text_view_class_init (MyTextViewClass *klass)
 {
-  GTK_TEXT_VIEW_CLASS (klass)->draw_layer = my_text_view_draw_layer;
+  CTK_TEXT_VIEW_CLASS (klass)->draw_layer = my_text_view_draw_layer;
 }
 
 static void
@@ -57,7 +57,7 @@ create_tags (GtkTextBuffer *buffer)
                               "paragraph-background", "rgba(255,165,0,0.5)", NULL);
 
   ctk_text_buffer_create_tag (buffer, "word_wrap",
-                              "wrap_mode", GTK_WRAP_WORD, NULL);
+                              "wrap_mode", CTK_WRAP_WORD, NULL);
 }
 
 
@@ -173,7 +173,7 @@ draw_background (GtkWidget *widget, cairo_t *cr)
 
   cairo_save (cr);
 
-  ctk_text_view_get_visible_rect (GTK_TEXT_VIEW (widget), &visible_rect);
+  ctk_text_view_get_visible_rect (CTK_TEXT_VIEW (widget), &visible_rect);
   cairo_translate (cr, -visible_rect.x, -visible_rect.y);
 
   cairo_set_source_rgb (cr, CHECK_DARK, CHECK_DARK, CHECK_DARK);
@@ -198,18 +198,18 @@ main (int argc, char **argv)
 
   ctk_init (&argc, &argv);
 
-  window   = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window   = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   sw       = ctk_scrolled_window_new (NULL, NULL);
   textview = g_object_new (my_text_view_get_type (), NULL);
-  buffer   = ctk_text_view_get_buffer (GTK_TEXT_VIEW (textview));
+  buffer   = ctk_text_view_get_buffer (CTK_TEXT_VIEW (textview));
   button   = ctk_button_new_with_label ("Fixed Child");
   button2   = ctk_button_new_with_label ("Flowed Child");
 
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                  GTK_POLICY_AUTOMATIC,
-                                  GTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                  CTK_POLICY_AUTOMATIC,
+                                  CTK_POLICY_AUTOMATIC);
 
-  ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+  ctk_window_set_default_size (CTK_WINDOW (window), 400, 400);
 
   create_tags (buffer);
   anchor = insert_text (buffer);
@@ -219,14 +219,14 @@ main (int argc, char **argv)
   ctk_widget_show (textview);
   ctk_widget_show (sw);
 
-  ctk_container_add (GTK_CONTAINER (window), sw);
-  ctk_container_add (GTK_CONTAINER (sw), textview);
-  ctk_text_view_add_child_in_window (GTK_TEXT_VIEW (textview),
+  ctk_container_add (CTK_CONTAINER (window), sw);
+  ctk_container_add (CTK_CONTAINER (sw), textview);
+  ctk_text_view_add_child_in_window (CTK_TEXT_VIEW (textview),
                                      button,
-                                     GTK_TEXT_WINDOW_TEXT,
+                                     CTK_TEXT_WINDOW_TEXT,
                                      50, 150);
 
-  ctk_text_view_add_child_at_anchor (GTK_TEXT_VIEW (textview),
+  ctk_text_view_add_child_at_anchor (CTK_TEXT_VIEW (textview),
                                      button2, anchor);
 
   ctk_widget_show (window);

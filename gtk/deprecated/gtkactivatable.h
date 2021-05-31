@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ACTIVATABLE_H__
-#define __GTK_ACTIVATABLE_H__
+#ifndef __CTK_ACTIVATABLE_H__
+#define __CTK_ACTIVATABLE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -26,11 +26,11 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTIVATABLE            (ctk_activatable_get_type ())
-#define GTK_ACTIVATABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ACTIVATABLE, GtkActivatable))
-#define GTK_ACTIVATABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), GTK_TYPE_ACTIVATABLE, GtkActivatableIface))
-#define GTK_IS_ACTIVATABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ACTIVATABLE))
-#define GTK_ACTIVATABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_ACTIVATABLE, GtkActivatableIface))
+#define CTK_TYPE_ACTIVATABLE            (ctk_activatable_get_type ())
+#define CTK_ACTIVATABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACTIVATABLE, GtkActivatable))
+#define CTK_ACTIVATABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_ACTIVATABLE, GtkActivatableIface))
+#define CTK_IS_ACTIVATABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ACTIVATABLE))
+#define CTK_ACTIVATABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_ACTIVATABLE, GtkActivatableIface))
 
 
 typedef struct _GtkActivatable      GtkActivatable; /* Dummy typedef */
@@ -95,4 +95,4 @@ void       ctk_activatable_do_set_related_action      (GtkActivatable *activatab
 
 G_END_DECLS
 
-#endif /* __GTK_ACTIVATABLE_H__ */
+#endif /* __CTK_ACTIVATABLE_H__ */

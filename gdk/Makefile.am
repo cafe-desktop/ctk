@@ -47,14 +47,14 @@ AM_CPPFLAGS =				\
 	-I$(top_builddir)		\
 	-I$(top_builddir)/gdk		\
 	-I$(top_srcdir)			\
-	$(GTK_DEBUG_FLAGS)		\
+	$(CTK_DEBUG_FLAGS)		\
 	$(GDK_DEP_CFLAGS)
 
 # libtool stuff: set version and export symbols for resolving
 # since automake doesn't support conditionalized libsomething_la_LDFLAGS
 # we use the general approach here
 LDADD = 					\
-	$(GTK_LINK_FLAGS)			\
+	$(CTK_LINK_FLAGS)			\
 	-version-info $(LT_VERSION_INFO)	\
 	-export-dynamic 			\
 	-rpath $(libdir) 			\
@@ -380,9 +380,9 @@ endif # HAVE_INTROSPECTION
 
 if OS_WIN32
 gdk.def: libgdk-3.la
-	echo "LIBRARY libgdk-$(GTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@" >$@
+	echo "LIBRARY libgdk-$(CTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@" >$@
 	echo "EXPORTS" >>$@
-	objdump -p .libs/libgdk-$(GTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@.dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
+	objdump -p .libs/libgdk-$(CTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@.dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
 install-def-file: gdk.def
 	mkdir -p $(DESTDIR)$(libdir)
 	$(INSTALL) gdk.def $(DESTDIR)$(libdir)/gdk-win32-3.0.def
@@ -394,17 +394,17 @@ uninstall-def-file:
 endif
 
 if MS_LIB_AVAILABLE
-noinst_DATA = gdk-win32-$(GTK_API_VERSION).lib
+noinst_DATA = gdk-win32-$(CTK_API_VERSION).lib
 
-gdk-win32-$(GTK_API_VERSION).lib: libgdk-3.la gdk.def
-	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgdk-win32-$(GTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gdk.def -out:$@
+gdk-win32-$(CTK_API_VERSION).lib: libgdk-3.la gdk.def
+	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgdk-win32-$(CTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gdk.def -out:$@
 
 install-ms-lib:
 	mkdir -p $(DESTDIR)$(libdir)
-	$(INSTALL) gdk-win32-$(GTK_API_VERSION).lib $(DESTDIR)$(libdir)
+	$(INSTALL) gdk-win32-$(CTK_API_VERSION).lib $(DESTDIR)$(libdir)
 
 uninstall-ms-lib:
-	-rm $(DESTDIR)$(libdir)/gdk-win32-$(GTK_API_VERSION).lib
+	-rm $(DESTDIR)$(libdir)/gdk-win32-$(CTK_API_VERSION).lib
 else
 install-ms-lib:
 uninstall-ms-lib:

@@ -17,14 +17,14 @@ activate (GtkApplication *app,
 
   /* create a new window, and set its title */
   window = ctk_application_window_new (app);
-  ctk_window_set_title (GTK_WINDOW (window), "Window");
-  ctk_container_set_border_width (GTK_CONTAINER (window), 10);
+  ctk_window_set_title (CTK_WINDOW (window), "Window");
+  ctk_container_set_border_width (CTK_CONTAINER (window), 10);
 
   /* Here we construct the container that is going pack our buttons */
   grid = ctk_grid_new ();
 
   /* Pack the container in the window */
-  ctk_container_add (GTK_CONTAINER (window), grid);
+  ctk_container_add (CTK_CONTAINER (window), grid);
 
   button = ctk_button_new_with_label ("Button 1");
   g_signal_connect (button, "clicked", G_CALLBACK (print_hello), NULL);
@@ -32,7 +32,7 @@ activate (GtkApplication *app,
   /* Place the first button in the grid cell (0, 0), and make it fill
    * just 1 cell horizontally and vertically (ie no spanning)
    */
-  ctk_grid_attach (GTK_GRID (grid), button, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 0, 0, 1, 1);
 
   button = ctk_button_new_with_label ("Button 2");
   g_signal_connect (button, "clicked", G_CALLBACK (print_hello), NULL);
@@ -40,7 +40,7 @@ activate (GtkApplication *app,
   /* Place the second button in the grid cell (1, 0), and make it fill
    * just 1 cell horizontally and vertically (ie no spanning)
    */
-  ctk_grid_attach (GTK_GRID (grid), button, 1, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 1, 0, 1, 1);
 
   button = ctk_button_new_with_label ("Quit");
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (ctk_widget_destroy), window);
@@ -48,7 +48,7 @@ activate (GtkApplication *app,
   /* Place the Quit button in the grid cell (0, 1), and make it
    * span 2 columns.
    */
-  ctk_grid_attach (GTK_GRID (grid), button, 0, 1, 2, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 0, 1, 2, 1);
 
   /* Now that we are done packing our widgets, we show them all
    * in one go, by calling ctk_widget_show_all() on the window.

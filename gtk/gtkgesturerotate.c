@@ -51,7 +51,7 @@ struct _GtkGestureRotatePrivate
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureRotate, ctk_gesture_rotate, GTK_TYPE_GESTURE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureRotate, ctk_gesture_rotate, CTK_TYPE_GESTURE)
 
 static void
 ctk_gesture_rotate_init (GtkGestureRotate *gesture)
@@ -85,7 +85,7 @@ _ctk_gesture_rotate_get_angle (GtkGestureRotate *rotate,
   GList *sequences = NULL;
   gboolean retval = FALSE;
 
-  gesture = GTK_GESTURE (rotate);
+  gesture = CTK_GESTURE (rotate);
   priv = ctk_gesture_rotate_get_instance_private (rotate);
 
   if (!ctk_gesture_is_recognized (gesture))
@@ -153,7 +153,7 @@ static void
 ctk_gesture_rotate_begin (GtkGesture       *gesture,
                           GdkEventSequence *sequence)
 {
-  GtkGestureRotate *rotate = GTK_GESTURE_ROTATE (gesture);
+  GtkGestureRotate *rotate = CTK_GESTURE_ROTATE (gesture);
   GtkGestureRotatePrivate *priv;
 
   priv = ctk_gesture_rotate_get_instance_private (rotate);
@@ -164,7 +164,7 @@ static void
 ctk_gesture_rotate_update (GtkGesture       *gesture,
                            GdkEventSequence *sequence)
 {
-  _ctk_gesture_rotate_check_emit (GTK_GESTURE_ROTATE (gesture));
+  _ctk_gesture_rotate_check_emit (CTK_GESTURE_ROTATE (gesture));
 }
 
 static gboolean
@@ -180,14 +180,14 @@ ctk_gesture_rotate_filter_event (GtkEventController *controller,
         return TRUE;
     }
 
-  return GTK_EVENT_CONTROLLER_CLASS (ctk_gesture_rotate_parent_class)->filter_event (controller, event);
+  return CTK_EVENT_CONTROLLER_CLASS (ctk_gesture_rotate_parent_class)->filter_event (controller, event);
 }
 
 static gboolean
 ctk_gesture_rotate_handle_event (GtkEventController *controller,
                                  const GdkEvent     *event)
 {
-  GtkGestureRotate *rotate = GTK_GESTURE_ROTATE (controller);
+  GtkGestureRotate *rotate = CTK_GESTURE_ROTATE (controller);
   GtkGestureRotatePrivate *priv;
 
   priv = ctk_gesture_rotate_get_instance_private (rotate);
@@ -201,15 +201,15 @@ ctk_gesture_rotate_handle_event (GtkEventController *controller,
         priv->accum_touchpad_angle += event->touchpad_pinch.angle_delta;
     }
 
-  return GTK_EVENT_CONTROLLER_CLASS (ctk_gesture_rotate_parent_class)->handle_event (controller, event);
+  return CTK_EVENT_CONTROLLER_CLASS (ctk_gesture_rotate_parent_class)->handle_event (controller, event);
 }
 
 static void
 ctk_gesture_rotate_class_init (GtkGestureRotateClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkEventControllerClass *event_controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
-  GtkGestureClass *gesture_class = GTK_GESTURE_CLASS (klass);
+  GtkEventControllerClass *event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
+  GtkGestureClass *gesture_class = CTK_GESTURE_CLASS (klass);
 
   object_class->constructor = ctk_gesture_rotate_constructor;
 
@@ -232,7 +232,7 @@ ctk_gesture_rotate_class_init (GtkGestureRotateClass *klass)
    */
   signals[ANGLE_CHANGED] =
     g_signal_new (I_("angle-changed"),
-                  GTK_TYPE_GESTURE_ROTATE,
+                  CTK_TYPE_GESTURE_ROTATE,
                   G_SIGNAL_RUN_FIRST,
                   G_STRUCT_OFFSET (GtkGestureRotateClass, angle_changed),
                   NULL, NULL,
@@ -257,9 +257,9 @@ ctk_gesture_rotate_class_init (GtkGestureRotateClass *klass)
 GtkGesture *
 ctk_gesture_rotate_new (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  return g_object_new (GTK_TYPE_GESTURE_ROTATE,
+  return g_object_new (CTK_TYPE_GESTURE_ROTATE,
                        "widget", widget,
                        NULL);
 }
@@ -282,7 +282,7 @@ ctk_gesture_rotate_get_angle_delta (GtkGestureRotate *gesture)
   GtkGestureRotatePrivate *priv;
   gdouble angle;
 
-  g_return_val_if_fail (GTK_IS_GESTURE_ROTATE (gesture), 0.0);
+  g_return_val_if_fail (CTK_IS_GESTURE_ROTATE (gesture), 0.0);
 
   if (!_ctk_gesture_rotate_get_angle (gesture, &angle))
     return 0.0;

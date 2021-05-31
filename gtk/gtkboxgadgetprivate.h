@@ -17,20 +17,20 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_BOX_GADGET_PRIVATE_H__
-#define __GTK_BOX_GADGET_PRIVATE_H__
+#ifndef __CTK_BOX_GADGET_PRIVATE_H__
+#define __CTK_BOX_GADGET_PRIVATE_H__
 
 #include "gtk/gtkcssgadgetprivate.h"
 #include "gtk/gtkenums.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_BOX_GADGET           (ctk_box_gadget_get_type ())
-#define GTK_BOX_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_BOX_GADGET, GtkBoxGadget))
-#define GTK_BOX_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_BOX_GADGET, GtkBoxGadgetClass))
-#define GTK_IS_BOX_GADGET(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_BOX_GADGET))
-#define GTK_IS_BOX_GADGET_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_BOX_GADGET))
-#define GTK_BOX_GADGET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_BOX_GADGET, GtkBoxGadgetClass))
+#define CTK_TYPE_BOX_GADGET           (ctk_box_gadget_get_type ())
+#define CTK_BOX_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_BOX_GADGET, GtkBoxGadget))
+#define CTK_BOX_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_BOX_GADGET, GtkBoxGadgetClass))
+#define CTK_IS_BOX_GADGET(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_BOX_GADGET))
+#define CTK_IS_BOX_GADGET_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_BOX_GADGET))
+#define CTK_BOX_GADGET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BOX_GADGET, GtkBoxGadgetClass))
 
 typedef struct _GtkBoxGadget           GtkBoxGadget;
 typedef struct _GtkBoxGadgetClass      GtkBoxGadgetClass;
@@ -99,4 +99,4 @@ void                    ctk_box_gadget_set_gadget_align         (GtkBoxGadget   
 
 G_END_DECLS
 
-#endif /* __GTK_BOX_GADGET_PRIVATE_H__ */
+#endif /* __CTK_BOX_GADGET_PRIVATE_H__ */

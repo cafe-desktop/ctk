@@ -37,7 +37,7 @@ ctk_color_picker_pick (GtkColorPicker      *picker,
                        GAsyncReadyCallback  callback,
                        gpointer             user_data)
 {
-  GTK_COLOR_PICKER_GET_INTERFACE (picker)->pick (picker, callback, user_data);
+  CTK_COLOR_PICKER_GET_INTERFACE (picker)->pick (picker, callback, user_data);
 }
 
 GdkRGBA *
@@ -45,7 +45,7 @@ ctk_color_picker_pick_finish (GtkColorPicker  *picker,
                               GAsyncResult    *res,
                               GError         **error)
 {
-  return GTK_COLOR_PICKER_GET_INTERFACE (picker)->pick_finish (picker, res, error);
+  return CTK_COLOR_PICKER_GET_INTERFACE (picker)->pick_finish (picker, res, error);
 }
 
 GtkColorPicker *

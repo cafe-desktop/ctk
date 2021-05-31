@@ -82,16 +82,16 @@ enum {
   PROP_DIGITS
 };
 
-#define GTK_CELL_RENDERER_SPIN_PATH "gtk-cell-renderer-spin-path"
+#define CTK_CELL_RENDERER_SPIN_PATH "gtk-cell-renderer-spin-path"
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpin, ctk_cell_renderer_spin, GTK_TYPE_CELL_RENDERER_TEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpin, ctk_cell_renderer_spin, CTK_TYPE_CELL_RENDERER_TEXT)
 
 
 static void
 ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkCellRendererClass *cell_class = GTK_CELL_RENDERER_CLASS (klass);
+  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
 
   object_class->finalize     = ctk_cell_renderer_spin_finalize;
   object_class->get_property = ctk_cell_renderer_spin_get_property;
@@ -112,8 +112,8 @@ ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 				   g_param_spec_object ("adjustment",
 							P_("Adjustment"),
 							P_("The adjustment that holds the value of the spin button"),
-							GTK_TYPE_ADJUSTMENT,
-							GTK_PARAM_READWRITE));
+							CTK_TYPE_ADJUSTMENT,
+							CTK_PARAM_READWRITE));
 
 
   /**
@@ -129,7 +129,7 @@ ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 							P_("Climb rate"),
 							P_("The acceleration rate when you hold down a button"),
 							0.0, G_MAXDOUBLE, 0.0,
-							GTK_PARAM_READWRITE));  
+							CTK_PARAM_READWRITE));  
   /**
    * GtkCellRendererSpin:digits:
    *
@@ -143,7 +143,7 @@ ctk_cell_renderer_spin_class_init (GtkCellRendererSpinClass *klass)
 						      P_("Digits"),
 						      P_("The number of decimal places to display"),
 						      0, 20, 0,
-						      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY)); 
+						      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY)); 
 }
 
 static void
@@ -164,7 +164,7 @@ ctk_cell_renderer_spin_finalize (GObject *object)
 {
   GtkCellRendererSpinPrivate *priv;
 
-  priv = GTK_CELL_RENDERER_SPIN (object)->priv;
+  priv = CTK_CELL_RENDERER_SPIN (object)->priv;
 
   if (priv && priv->adjustment)
     g_object_unref (priv->adjustment);
@@ -181,7 +181,7 @@ ctk_cell_renderer_spin_get_property (GObject      *object,
   GtkCellRendererSpin *renderer;
   GtkCellRendererSpinPrivate *priv;
 
-  renderer = GTK_CELL_RENDERER_SPIN (object);
+  renderer = CTK_CELL_RENDERER_SPIN (object);
   priv = renderer->priv;
 
   switch (prop_id)
@@ -211,7 +211,7 @@ ctk_cell_renderer_spin_set_property (GObject      *object,
   GtkCellRendererSpinPrivate *priv;
   GObject *obj;
 
-  renderer = GTK_CELL_RENDERER_SPIN (object);
+  renderer = CTK_CELL_RENDERER_SPIN (object);
   priv = renderer->priv;
 
   switch (prop_id)
@@ -226,7 +226,7 @@ ctk_cell_renderer_spin_set_property (GObject      *object,
 	}
 
       if (obj)
-	priv->adjustment = GTK_ADJUSTMENT (g_object_ref_sink (obj));
+	priv->adjustment = CTK_ADJUSTMENT (g_object_ref_sink (obj));
       break;
     case PROP_CLIMB_RATE:
       priv->climb_rate = g_value_get_double (value);
@@ -261,13 +261,13 @@ ctk_cell_renderer_spin_focus_out_event (GtkWidget *widget,
 					ctk_cell_renderer_spin_focus_out_event,
 					data);
 
-  ctk_cell_renderer_stop_editing (GTK_CELL_RENDERER (data), canceled);
+  ctk_cell_renderer_stop_editing (CTK_CELL_RENDERER (data), canceled);
 
   if (!canceled)
     {
-      path = g_object_get_data (G_OBJECT (widget), GTK_CELL_RENDERER_SPIN_PATH);
+      path = g_object_get_data (G_OBJECT (widget), CTK_CELL_RENDERER_SPIN_PATH);
 
-      new_text = ctk_entry_get_text (GTK_ENTRY (widget));
+      new_text = ctk_entry_get_text (CTK_ENTRY (widget));
       g_signal_emit_by_name (data, "edited", path, new_text);
     }
   
@@ -283,12 +283,12 @@ ctk_cell_renderer_spin_key_press_event (GtkWidget   *widget,
     {
       if (event->keyval == GDK_KEY_Up)
 	{
-	  ctk_spin_button_spin (GTK_SPIN_BUTTON (widget), GTK_SPIN_STEP_FORWARD, 1);
+	  ctk_spin_button_spin (CTK_SPIN_BUTTON (widget), CTK_SPIN_STEP_FORWARD, 1);
 	  return TRUE;
 	}
       else if (event->keyval == GDK_KEY_Down)
 	{
-	  ctk_spin_button_spin (GTK_SPIN_BUTTON (widget), GTK_SPIN_STEP_BACKWARD, 1);
+	  ctk_spin_button_spin (CTK_SPIN_BUTTON (widget), CTK_SPIN_STEP_BACKWARD, 1);
 	  return TRUE;
 	}
     }
@@ -326,8 +326,8 @@ ctk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
   gboolean editable;
   gchar *text;
 
-  cell_text = GTK_CELL_RENDERER_TEXT (cell);
-  priv = GTK_CELL_RENDERER_SPIN (cell)->priv;
+  cell_text = CTK_CELL_RENDERER_TEXT (cell);
+  priv = CTK_CELL_RENDERER_SPIN (cell)->priv;
 
   g_object_get (cell_text, "editable", &editable, NULL);
   if (!editable)
@@ -346,12 +346,12 @@ ctk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
   g_object_get (cell_text, "text", &text, NULL);
   if (text)
     {
-      ctk_spin_button_set_value (GTK_SPIN_BUTTON (spin),
+      ctk_spin_button_set_value (CTK_SPIN_BUTTON (spin),
                                  g_strtod (text, NULL));
       g_free (text);
     }
 
-  g_object_set_data_full (G_OBJECT (spin), GTK_CELL_RENDERER_SPIN_PATH,
+  g_object_set_data_full (G_OBJECT (spin), CTK_CELL_RENDERER_SPIN_PATH,
 			  g_strdup (path), g_free);
 
   g_signal_connect (G_OBJECT (spin), "focus-out-event",
@@ -363,7 +363,7 @@ ctk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
 
   ctk_widget_show (spin);
 
-  return GTK_CELL_EDITABLE (spin);
+  return CTK_CELL_EDITABLE (spin);
 }
 
 /**
@@ -378,5 +378,5 @@ ctk_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
 GtkCellRenderer *
 ctk_cell_renderer_spin_new (void)
 {
-  return g_object_new (GTK_TYPE_CELL_RENDERER_SPIN, NULL);
+  return g_object_new (CTK_TYPE_CELL_RENDERER_SPIN, NULL);
 }

@@ -17,20 +17,20 @@
  * Authors: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_ACTION_OBSERVABLE_H__
-#define __GTK_ACTION_OBSERVABLE_H__
+#ifndef __CTK_ACTION_OBSERVABLE_H__
+#define __CTK_ACTION_OBSERVABLE_H__
 
 #include "gtkactionobserver.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION_OBSERVABLE                          (ctk_action_observable_get_type ())
-#define GTK_ACTION_OBSERVABLE(inst)                         (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             GTK_TYPE_ACTION_OBSERVABLE, GtkActionObservable))
-#define GTK_IS_ACTION_OBSERVABLE(inst)                      (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
-                                                             GTK_TYPE_ACTION_OBSERVABLE))
-#define GTK_ACTION_OBSERVABLE_GET_IFACE(inst)               (G_TYPE_INSTANCE_GET_INTERFACE ((inst),                  \
-                                                             GTK_TYPE_ACTION_OBSERVABLE,                             \
+#define CTK_TYPE_ACTION_OBSERVABLE                          (ctk_action_observable_get_type ())
+#define CTK_ACTION_OBSERVABLE(inst)                         (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
+                                                             CTK_TYPE_ACTION_OBSERVABLE, GtkActionObservable))
+#define CTK_IS_ACTION_OBSERVABLE(inst)                      (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
+                                                             CTK_TYPE_ACTION_OBSERVABLE))
+#define CTK_ACTION_OBSERVABLE_GET_IFACE(inst)               (G_TYPE_INSTANCE_GET_INTERFACE ((inst),                  \
+                                                             CTK_TYPE_ACTION_OBSERVABLE,                             \
                                                              GtkActionObservableInterface))
 
 typedef struct _GtkActionObservableInterface                GtkActionObservableInterface;
@@ -57,4 +57,4 @@ void                    ctk_action_observable_unregister_observer       (GtkActi
 
 G_END_DECLS
 
-#endif /* __GTK_ACTION_OBSERVABLE_H__ */
+#endif /* __CTK_ACTION_OBSERVABLE_H__ */

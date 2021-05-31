@@ -28,7 +28,7 @@
 typedef GtkButtonAccessible MyButtonAccessible;
 typedef GtkButtonAccessibleClass MyButtonAccessibleClass;
 
-G_DEFINE_TYPE (MyButtonAccessible, my_button_accessible, GTK_TYPE_BUTTON_ACCESSIBLE)
+G_DEFINE_TYPE (MyButtonAccessible, my_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
 
 static void
 my_button_accessible_init (MyButtonAccessible *a)
@@ -43,7 +43,7 @@ my_button_accessible_class_init (MyButtonAccessibleClass *class)
 typedef GtkButton MyButton;
 typedef GtkButtonClass MyButtonClass;
 
-G_DEFINE_TYPE (MyButton, my_button, GTK_TYPE_BUTTON)
+G_DEFINE_TYPE (MyButton, my_button, CTK_TYPE_BUTTON)
 
 static void
 my_button_init (MyButton *b)
@@ -53,7 +53,7 @@ my_button_init (MyButton *b)
 static void
 my_button_class_init (MyButtonClass *class)
 {
-  ctk_widget_class_set_accessible_type (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_accessible_type (CTK_WIDGET_CLASS (class),
                                         my_button_accessible_get_type ());
 }
 
@@ -64,8 +64,8 @@ int main (int argc, char *argv[])
 
   ctk_init (NULL, NULL);
 
-  widget = GTK_WIDGET (g_object_new (my_button_get_type (), NULL));
-  accessible = GTK_ACCESSIBLE (ctk_widget_get_accessible (widget));
+  widget = CTK_WIDGET (g_object_new (my_button_get_type (), NULL));
+  accessible = CTK_ACCESSIBLE (ctk_widget_get_accessible (widget));
 
   g_assert (G_TYPE_CHECK_INSTANCE_TYPE (accessible, my_button_accessible_get_type ()));
 

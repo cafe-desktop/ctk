@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_RECENT_CHOOSER_H__
-#define __GTK_RECENT_CHOOSER_H__
+#ifndef __CTK_RECENT_CHOOSER_H__
+#define __CTK_RECENT_CHOOSER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,20 +30,20 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RECENT_CHOOSER			(ctk_recent_chooser_get_type ())
-#define GTK_RECENT_CHOOSER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RECENT_CHOOSER, GtkRecentChooser))
-#define GTK_IS_RECENT_CHOOSER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RECENT_CHOOSER))
-#define GTK_RECENT_CHOOSER_GET_IFACE(inst)	(G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_RECENT_CHOOSER, GtkRecentChooserIface))
+#define CTK_TYPE_RECENT_CHOOSER			(ctk_recent_chooser_get_type ())
+#define CTK_RECENT_CHOOSER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_CHOOSER, GtkRecentChooser))
+#define CTK_IS_RECENT_CHOOSER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_CHOOSER))
+#define CTK_RECENT_CHOOSER_GET_IFACE(inst)	(G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_RECENT_CHOOSER, GtkRecentChooserIface))
 
 /**
  * GtkRecentSortType:
- * @GTK_RECENT_SORT_NONE: Do not sort the returned list of recently used
+ * @CTK_RECENT_SORT_NONE: Do not sort the returned list of recently used
  *   resources.
- * @GTK_RECENT_SORT_MRU: Sort the returned list with the most recently used
+ * @CTK_RECENT_SORT_MRU: Sort the returned list with the most recently used
  *   items first.
- * @GTK_RECENT_SORT_LRU: Sort the returned list with the least recently used
+ * @CTK_RECENT_SORT_LRU: Sort the returned list with the least recently used
  *   items first.
- * @GTK_RECENT_SORT_CUSTOM: Sort the returned list using a custom sorting
+ * @CTK_RECENT_SORT_CUSTOM: Sort the returned list using a custom sorting
  *   function passed using ctk_recent_chooser_set_sort_func().
  *
  * Used to specify the sorting method to be applyed to the recently
@@ -53,10 +53,10 @@ G_BEGIN_DECLS
  */
 typedef enum
 {
-  GTK_RECENT_SORT_NONE = 0,
-  GTK_RECENT_SORT_MRU,
-  GTK_RECENT_SORT_LRU,
-  GTK_RECENT_SORT_CUSTOM
+  CTK_RECENT_SORT_NONE = 0,
+  CTK_RECENT_SORT_MRU,
+  CTK_RECENT_SORT_LRU,
+  CTK_RECENT_SORT_CUSTOM
 } GtkRecentSortType;
 
 typedef gint (*GtkRecentSortFunc) (GtkRecentInfo *a,
@@ -68,18 +68,18 @@ typedef struct _GtkRecentChooser      GtkRecentChooser; /* dummy */
 typedef struct _GtkRecentChooserIface GtkRecentChooserIface;
 
 /**
- * GTK_RECENT_CHOOSER_ERROR:
+ * CTK_RECENT_CHOOSER_ERROR:
  *
  * Used to get the #GError quark for #GtkRecentChooser errors.
  *
  * Since: 2.10
  */
-#define GTK_RECENT_CHOOSER_ERROR	(ctk_recent_chooser_error_quark ())
+#define CTK_RECENT_CHOOSER_ERROR	(ctk_recent_chooser_error_quark ())
 
 /**
  * GtkRecentChooserError:
- * @GTK_RECENT_CHOOSER_ERROR_NOT_FOUND: Indicates that a file does not exist
- * @GTK_RECENT_CHOOSER_ERROR_INVALID_URI: Indicates a malformed URI
+ * @CTK_RECENT_CHOOSER_ERROR_NOT_FOUND: Indicates that a file does not exist
+ * @CTK_RECENT_CHOOSER_ERROR_INVALID_URI: Indicates a malformed URI
  *
  * These identify the various errors that can occur while calling
  * #GtkRecentChooser functions.
@@ -88,8 +88,8 @@ typedef struct _GtkRecentChooserIface GtkRecentChooserIface;
  */
 typedef enum
 {
-  GTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
-  GTK_RECENT_CHOOSER_ERROR_INVALID_URI
+  CTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
+  CTK_RECENT_CHOOSER_ERROR_INVALID_URI
 } GtkRecentChooserError;
 
 GDK_AVAILABLE_IN_ALL
@@ -260,4 +260,4 @@ GtkRecentFilter *ctk_recent_chooser_get_filter    (GtkRecentChooser *chooser);
 
 G_END_DECLS
 
-#endif /* __GTK_RECENT_CHOOSER_H__ */
+#endif /* __CTK_RECENT_CHOOSER_H__ */

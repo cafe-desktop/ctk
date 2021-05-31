@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_WIDGET_H__
-#define __GTK_WIDGET_H__
+#ifndef __CTK_WIDGET_H__
+#define __CTK_WIDGET_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -40,28 +40,28 @@ G_BEGIN_DECLS
 /* Kinds of widget-specific help */
 /**
  * GtkWidgetHelpType:
- * @GTK_WIDGET_HELP_TOOLTIP: Tooltip.
- * @GTK_WIDGET_HELP_WHATS_THIS: What’s this.
+ * @CTK_WIDGET_HELP_TOOLTIP: Tooltip.
+ * @CTK_WIDGET_HELP_WHATS_THIS: What’s this.
  *
  * Kinds of widget-specific help. Used by the ::show-help signal.
  */
 typedef enum
 {
-  GTK_WIDGET_HELP_TOOLTIP,
-  GTK_WIDGET_HELP_WHATS_THIS
+  CTK_WIDGET_HELP_TOOLTIP,
+  CTK_WIDGET_HELP_WHATS_THIS
 } GtkWidgetHelpType;
 
 /* Macro for casting a pointer to a GtkWidget or GtkWidgetClass pointer.
- * Macros for testing whether widget or klass are of type GTK_TYPE_WIDGET.
+ * Macros for testing whether widget or klass are of type CTK_TYPE_WIDGET.
  */
-#define GTK_TYPE_WIDGET			  (ctk_widget_get_type ())
-#define GTK_WIDGET(widget)		  (G_TYPE_CHECK_INSTANCE_CAST ((widget), GTK_TYPE_WIDGET, GtkWidget))
-#define GTK_WIDGET_CLASS(klass)		  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_WIDGET, GtkWidgetClass))
-#define GTK_IS_WIDGET(widget)		  (G_TYPE_CHECK_INSTANCE_TYPE ((widget), GTK_TYPE_WIDGET))
-#define GTK_IS_WIDGET_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_WIDGET))
-#define GTK_WIDGET_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_WIDGET, GtkWidgetClass))
+#define CTK_TYPE_WIDGET			  (ctk_widget_get_type ())
+#define CTK_WIDGET(widget)		  (G_TYPE_CHECK_INSTANCE_CAST ((widget), CTK_TYPE_WIDGET, GtkWidget))
+#define CTK_WIDGET_CLASS(klass)		  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_WIDGET, GtkWidgetClass))
+#define CTK_IS_WIDGET(widget)		  (G_TYPE_CHECK_INSTANCE_TYPE ((widget), CTK_TYPE_WIDGET))
+#define CTK_IS_WIDGET_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_WIDGET))
+#define CTK_WIDGET_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_WIDGET, GtkWidgetClass))
 
-#define GTK_TYPE_REQUISITION              (ctk_requisition_get_type ())
+#define CTK_TYPE_REQUISITION              (ctk_requisition_get_type ())
 
 typedef struct _GtkWidgetPrivate       GtkWidgetPrivate;
 typedef struct _GtkWidgetClass	       GtkWidgetClass;
@@ -189,12 +189,12 @@ struct _GtkWidget
  *   changed on an object.
  * @draw: Signal emitted when a widget is supposed to render itself.
  * @get_request_mode: This allows a widget to tell its parent container whether
- *   it prefers to be allocated in %GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
- *   %GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT mode.
- *   %GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH means the widget prefers to have
+ *   it prefers to be allocated in %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH or
+ *   %CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT mode.
+ *   %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH means the widget prefers to have
  *   #GtkWidgetClass.get_preferred_width() called and then
  *   #GtkWidgetClass.get_preferred_height_for_width().
- *   %GTK_SIZE_REQUEST_CONSTANT_SIZE disables any height-for-width or
+ *   %CTK_SIZE_REQUEST_CONSTANT_SIZE disables any height-for-width or
  *   width-for-height geometry management for a said widget and is the
  *   default return.
  *   It’s important to note (as described below) that any widget
@@ -210,7 +210,7 @@ struct _GtkWidget
  * @get_preferred_width_for_height: This is analogous to
  *   #GtkWidgetClass.get_preferred_height_for_width() except that it
  *   operates in the oposite orientation. It’s rare that a widget actually
- *   does %GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT requests but this can happen
+ *   does %CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT requests but this can happen
  *   when, for example, a widget or container gets additional columns to
  *   compensate for a smaller allocated height.
  * @get_preferred_width: This is called by containers to obtain the minimum
@@ -1183,7 +1183,7 @@ GdkPixbuf    *ctk_widget_render_icon_pixbuf   (GtkWidget   *widget,
                                                const gchar *stock_id,
                                                GtkIconSize  size);
 
-/* handle composite names for GTK_COMPOSITE_CHILD widgets,
+/* handle composite names for CTK_COMPOSITE_CHILD widgets,
  * the returned name is newly allocated.
  */
 GDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
@@ -1353,7 +1353,7 @@ void ctk_widget_remove_tick_callback (GtkWidget       *widget,
  * Since: 3.10
  */
 #define ctk_widget_class_bind_template_callback(widget_class, callback) \
-  ctk_widget_class_bind_template_callback_full (GTK_WIDGET_CLASS (widget_class), \
+  ctk_widget_class_bind_template_callback_full (CTK_WIDGET_CLASS (widget_class), \
                                                 #callback, \
                                                 G_CALLBACK (callback))
 
@@ -1495,4 +1495,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkRequisition, ctk_requisition_free)
 
 G_END_DECLS
 
-#endif /* __GTK_WIDGET_H__ */
+#endif /* __CTK_WIDGET_H__ */

@@ -44,7 +44,7 @@
  * toolkits may choose to ignore certain properties, like icon or accel. The
  * role of the item determines its accessibility role, along with its
  * decoration if the GtkMenuTrackerItem::toggled property is true. As an
- * example, if the item has the role %GTK_MENU_TRACKER_ITEM_ROLE_CHECK and
+ * example, if the item has the role %CTK_MENU_TRACKER_ITEM_ROLE_CHECK and
  * GtkMenuTrackerItem::toggled is %FALSE, its accessible role should be that of
  * a check menu item, and no decoration should be drawn. But if
  * GtkMenuTrackerItem::toggled is %TRUE, a checkmark should be drawn.
@@ -124,7 +124,7 @@ static GParamSpec *ctk_menu_tracker_item_pspecs[N_PROPS];
 
 static void ctk_menu_tracker_item_init_observer_iface (GtkActionObserverInterface *iface);
 G_DEFINE_TYPE_WITH_CODE (GtkMenuTrackerItem, ctk_menu_tracker_item, G_TYPE_OBJECT,
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTION_OBSERVER, ctk_menu_tracker_item_init_observer_iface))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTION_OBSERVER, ctk_menu_tracker_item_init_observer_iface))
 
 GType
 ctk_menu_tracker_item_role_get_type (void)
@@ -134,9 +134,9 @@ ctk_menu_tracker_item_role_get_type (void)
   if (g_once_init_enter (&ctk_menu_tracker_item_role_type))
     {
       static const GEnumValue values[] = {
-        { GTK_MENU_TRACKER_ITEM_ROLE_NORMAL, "GTK_MENU_TRACKER_ITEM_ROLE_NORMAL", "normal" },
-        { GTK_MENU_TRACKER_ITEM_ROLE_CHECK, "GTK_MENU_TRACKER_ITEM_ROLE_CHECK", "check" },
-        { GTK_MENU_TRACKER_ITEM_ROLE_RADIO, "GTK_MENU_TRACKER_ITEM_ROLE_RADIO", "radio" },
+        { CTK_MENU_TRACKER_ITEM_ROLE_NORMAL, "CTK_MENU_TRACKER_ITEM_ROLE_NORMAL", "normal" },
+        { CTK_MENU_TRACKER_ITEM_ROLE_CHECK, "CTK_MENU_TRACKER_ITEM_ROLE_CHECK", "check" },
+        { CTK_MENU_TRACKER_ITEM_ROLE_RADIO, "CTK_MENU_TRACKER_ITEM_ROLE_RADIO", "radio" },
         { 0, NULL, NULL }
       };
       GType type;
@@ -155,7 +155,7 @@ ctk_menu_tracker_item_get_property (GObject    *object,
                                     GValue     *value,
                                     GParamSpec *pspec)
 {
-  GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (object);
+  GtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (object);
 
   switch (prop_id)
     {
@@ -198,7 +198,7 @@ ctk_menu_tracker_item_get_property (GObject    *object,
 static void
 ctk_menu_tracker_item_finalize (GObject *object)
 {
-  GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (object);
+  GtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (object);
 
   g_free (self->action_namespace);
   g_free (self->action_and_target);
@@ -234,7 +234,7 @@ ctk_menu_tracker_item_class_init (GtkMenuTrackerItemClass *class)
     g_param_spec_boolean ("sensitive", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
   ctk_menu_tracker_item_pspecs[PROP_ROLE] =
     g_param_spec_enum ("role", "", "",
-                       GTK_TYPE_MENU_TRACKER_ITEM_ROLE, GTK_MENU_TRACKER_ITEM_ROLE_NORMAL,
+                       CTK_TYPE_MENU_TRACKER_ITEM_ROLE, CTK_MENU_TRACKER_ITEM_ROLE_NORMAL,
                        G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
   ctk_menu_tracker_item_pspecs[PROP_TOGGLED] =
     g_param_spec_boolean ("toggled", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
@@ -295,10 +295,10 @@ ctk_menu_tracker_item_action_added (GtkActionObserver   *observer,
                                     gboolean             enabled,
                                     GVariant            *state)
 {
-  GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (observer);
+  GtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (observer);
   GVariant *action_target;
 
-  GTK_NOTE(ACTIONS, g_message ("menutracker: action %s added", action_name));
+  CTK_NOTE(ACTIONS, g_message ("menutracker: action %s added", action_name));
 
   action_target = g_menu_item_get_attribute_value (self->item, G_MENU_ATTRIBUTE_TARGET, NULL);
 
@@ -308,7 +308,7 @@ ctk_menu_tracker_item_action_added (GtkActionObserver   *observer,
 
   if (!self->can_activate)
     {
-      GTK_NOTE(ACTIONS, g_message ("menutracker: action %s can't be activated due to parameter type mismatch "
+      CTK_NOTE(ACTIONS, g_message ("menutracker: action %s can't be activated due to parameter type mismatch "
                                    "(parameter type %s, target type %s)",
                                    action_name,
                                    parameter_type ? g_variant_type_peek_string (parameter_type) : "NULL",
@@ -319,22 +319,22 @@ ctk_menu_tracker_item_action_added (GtkActionObserver   *observer,
       return;
     }
 
-  GTK_NOTE(ACTIONS, g_message ("menutracker: action %s can be activated", action_name));
+  CTK_NOTE(ACTIONS, g_message ("menutracker: action %s can be activated", action_name));
 
   self->sensitive = enabled;
 
-  GTK_NOTE(ACTIONS, g_message ("menutracker: action %s is %s", action_name, enabled ? "enabled" : "disabled"));
+  CTK_NOTE(ACTIONS, g_message ("menutracker: action %s is %s", action_name, enabled ? "enabled" : "disabled"));
 
   if (action_target != NULL && state != NULL)
     {
       self->toggled = g_variant_equal (state, action_target);
-      self->role = GTK_MENU_TRACKER_ITEM_ROLE_RADIO;
+      self->role = CTK_MENU_TRACKER_ITEM_ROLE_RADIO;
     }
 
   else if (state != NULL && g_variant_is_of_type (state, G_VARIANT_TYPE_BOOLEAN))
     {
       self->toggled = g_variant_get_boolean (state);
-      self->role = GTK_MENU_TRACKER_ITEM_ROLE_CHECK;
+      self->role = CTK_MENU_TRACKER_ITEM_ROLE_CHECK;
     }
 
   g_object_freeze_notify (G_OBJECT (self));
@@ -345,7 +345,7 @@ ctk_menu_tracker_item_action_added (GtkActionObserver   *observer,
   if (self->toggled)
     g_object_notify_by_pspec (G_OBJECT (self), ctk_menu_tracker_item_pspecs[PROP_TOGGLED]);
 
-  if (self->role != GTK_MENU_TRACKER_ITEM_ROLE_NORMAL)
+  if (self->role != CTK_MENU_TRACKER_ITEM_ROLE_NORMAL)
     g_object_notify_by_pspec (G_OBJECT (self), ctk_menu_tracker_item_pspecs[PROP_ROLE]);
 
   g_object_thaw_notify (G_OBJECT (self));
@@ -366,9 +366,9 @@ ctk_menu_tracker_item_action_enabled_changed (GtkActionObserver   *observer,
                                               const gchar         *action_name,
                                               gboolean             enabled)
 {
-  GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (observer);
+  GtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (observer);
 
-  GTK_NOTE(ACTIONS, g_message ("menutracker: action %s: enabled changed to %d", action_name, enabled));
+  CTK_NOTE(ACTIONS, g_message ("menutracker: action %s: enabled changed to %d", action_name, enabled));
 
   if (!self->can_activate)
     return;
@@ -389,11 +389,11 @@ ctk_menu_tracker_item_action_state_changed (GtkActionObserver   *observer,
                                             const gchar         *action_name,
                                             GVariant            *state)
 {
-  GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (observer);
+  GtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (observer);
   GVariant *action_target;
   gboolean was_toggled;
 
-  GTK_NOTE(ACTIONS, g_message ("menutracker: action %s: state changed", action_name));
+  CTK_NOTE(ACTIONS, g_message ("menutracker: action %s: state changed", action_name));
 
   if (!self->can_activate)
     return;
@@ -422,11 +422,11 @@ ctk_menu_tracker_item_action_removed (GtkActionObserver   *observer,
                                       GtkActionObservable *observable,
                                       const gchar         *action_name)
 {
-  GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (observer);
+  GtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (observer);
   gboolean was_sensitive, was_toggled;
   GtkMenuTrackerItemRole old_role;
 
-  GTK_NOTE(ACTIONS, g_message ("menutracker: action %s was removed", action_name));
+  CTK_NOTE(ACTIONS, g_message ("menutracker: action %s was removed", action_name));
 
   if (!self->can_activate)
     return;
@@ -438,7 +438,7 @@ ctk_menu_tracker_item_action_removed (GtkActionObserver   *observer,
   self->can_activate = FALSE;
   self->sensitive = FALSE;
   self->toggled = FALSE;
-  self->role = GTK_MENU_TRACKER_ITEM_ROLE_NORMAL;
+  self->role = CTK_MENU_TRACKER_ITEM_ROLE_NORMAL;
 
   /* Backwards from adding: we want to remove ourselves from the menu
    * -before- thrashing the properties.
@@ -453,7 +453,7 @@ ctk_menu_tracker_item_action_removed (GtkActionObserver   *observer,
   if (was_toggled)
     g_object_notify_by_pspec (G_OBJECT (self), ctk_menu_tracker_item_pspecs[PROP_TOGGLED]);
 
-  if (old_role != GTK_MENU_TRACKER_ITEM_ROLE_NORMAL)
+  if (old_role != CTK_MENU_TRACKER_ITEM_ROLE_NORMAL)
     g_object_notify_by_pspec (G_OBJECT (self), ctk_menu_tracker_item_pspecs[PROP_ROLE]);
 
   g_object_thaw_notify (G_OBJECT (self));
@@ -465,7 +465,7 @@ ctk_menu_tracker_item_primary_accel_changed (GtkActionObserver   *observer,
                                              const gchar         *action_name,
                                              const gchar         *action_and_target)
 {
-  GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (observer);
+  GtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (observer);
 
   if (g_str_equal (action_and_target, self->action_and_target))
     g_object_notify_by_pspec (G_OBJECT (self), ctk_menu_tracker_item_pspecs[PROP_ACCEL]);
@@ -493,10 +493,10 @@ _ctk_menu_tracker_item_new (GtkActionObservable *observable,
   const gchar *action_name;
   const gchar *hidden_when;
 
-  g_return_val_if_fail (GTK_IS_ACTION_OBSERVABLE (observable), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION_OBSERVABLE (observable), NULL);
   g_return_val_if_fail (G_IS_MENU_MODEL (model), NULL);
 
-  self = g_object_new (GTK_TYPE_MENU_TRACKER_ITEM, NULL);
+  self = g_object_new (CTK_TYPE_MENU_TRACKER_ITEM, NULL);
   self->item = g_menu_item_new_from_model (model, item_index);
   self->action_namespace = g_strdup (action_namespace);
   self->observable = g_object_ref (observable);
@@ -539,24 +539,24 @@ _ctk_menu_tracker_item_new (GtkActionObservable *observable,
 
       action_name = strrchr (self->action_and_target, '|') + 1;
 
-      GTK_NOTE(ACTIONS,
+      CTK_NOTE(ACTIONS,
                if (!strchr (action_name, '.'))
                  g_message ("menutracker: action name %s doesn't look like 'app.' or 'win.'; "
                             "it is unlikely to work", action_name));
 
       state = NULL;
 
-      ctk_action_observable_register_observer (self->observable, action_name, GTK_ACTION_OBSERVER (self));
+      ctk_action_observable_register_observer (self->observable, action_name, CTK_ACTION_OBSERVER (self));
       found = g_action_group_query_action (group, action_name, &enabled, &parameter_type, NULL, NULL, &state);
 
       if (found)
         {
-          GTK_NOTE(ACTIONS, g_message ("menutracker: action %s existed from the start", action_name));
-          ctk_menu_tracker_item_action_added (GTK_ACTION_OBSERVER (self), observable, NULL, parameter_type, enabled, state);
+          CTK_NOTE(ACTIONS, g_message ("menutracker: action %s existed from the start", action_name));
+          ctk_menu_tracker_item_action_added (CTK_ACTION_OBSERVER (self), observable, NULL, parameter_type, enabled, state);
         }
       else
         {
-          GTK_NOTE(ACTIONS, g_message ("menutracker: action %s missing from the start", action_name));
+          CTK_NOTE(ACTIONS, g_message ("menutracker: action %s missing from the start", action_name));
           ctk_menu_tracker_item_update_visibility (self);
         }
 
@@ -700,10 +700,10 @@ ctk_menu_tracker_item_get_accel (GtkMenuTrackerItem *self)
   if (g_menu_item_get_attribute (self->item, "accel", "&s", &accel))
     return accel;
 
-  if (!GTK_IS_ACTION_MUXER (self->observable))
+  if (!CTK_IS_ACTION_MUXER (self->observable))
     return NULL;
 
-  return ctk_action_muxer_get_primary_accel (GTK_ACTION_MUXER (self->observable), self->action_and_target);
+  return ctk_action_muxer_get_primary_accel (CTK_ACTION_MUXER (self->observable), self->action_and_target);
 }
 
 const gchar *
@@ -788,7 +788,7 @@ ctk_menu_tracker_item_activated (GtkMenuTrackerItem *self)
   const gchar *action_name;
   GVariant *action_target;
 
-  g_return_if_fail (GTK_IS_MENU_TRACKER_ITEM (self));
+  g_return_if_fail (CTK_IS_MENU_TRACKER_ITEM (self));
 
   if (!self->can_activate)
     return;

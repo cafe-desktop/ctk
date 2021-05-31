@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_RANGE_PRIVATE_H__
-#define __GTK_RANGE_PRIVATE_H__
+#ifndef __CTK_RANGE_PRIVATE_H__
+#define __CTK_RANGE_PRIVATE_H__
 
 
 #include <gtk/gtkrange.h>
@@ -57,4 +57,4 @@ GtkCssGadget      *ctk_range_get_gadget                    (GtkRange *range);
 G_END_DECLS
 
 
-#endif /* __GTK_RANGE_PRIVATE_H__ */
+#endif /* __CTK_RANGE_PRIVATE_H__ */

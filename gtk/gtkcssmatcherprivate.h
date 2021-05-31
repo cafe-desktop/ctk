@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_MATCHER_PRIVATE_H__
-#define __GTK_CSS_MATCHER_PRIVATE_H__
+#ifndef __CTK_CSS_MATCHER_PRIVATE_H__
+#define __CTK_CSS_MATCHER_PRIVATE_H__
 
 #include <gtk/gtkenums.h>
 #include <gtk/gtktypes.h>
@@ -145,4 +145,4 @@ _ctk_css_matcher_matches_any (const GtkCssMatcher *matcher)
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_MATCHER_PRIVATE_H__ */
+#endif /* __CTK_CSS_MATCHER_PRIVATE_H__ */

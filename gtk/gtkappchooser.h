@@ -19,10 +19,10 @@
  * Authors: Cosimo Cecchi <ccecchi@redhat.com>
  */
 
-#ifndef __GTK_APP_CHOOSER_H__
-#define __GTK_APP_CHOOSER_H__
+#ifndef __CTK_APP_CHOOSER_H__
+#define __CTK_APP_CHOOSER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -32,9 +32,9 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APP_CHOOSER    (ctk_app_chooser_get_type ())
-#define GTK_APP_CHOOSER(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_APP_CHOOSER, GtkAppChooser))
-#define GTK_IS_APP_CHOOSER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_APP_CHOOSER))
+#define CTK_TYPE_APP_CHOOSER    (ctk_app_chooser_get_type ())
+#define CTK_APP_CHOOSER(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_APP_CHOOSER, GtkAppChooser))
+#define CTK_IS_APP_CHOOSER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_APP_CHOOSER))
 
 typedef struct _GtkAppChooser GtkAppChooser;
 
@@ -50,5 +50,5 @@ void       ctk_app_chooser_refresh          (GtkAppChooser *self);
 
 G_END_DECLS
 
-#endif /* __GTK_APP_CHOOSER_H__ */
+#endif /* __CTK_APP_CHOOSER_H__ */
 

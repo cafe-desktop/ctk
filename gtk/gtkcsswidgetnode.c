@@ -28,12 +28,12 @@
 /* widgets for special casing go here */
 #include "gtkbox.h"
 
-G_DEFINE_TYPE (GtkCssWidgetNode, ctk_css_widget_node, GTK_TYPE_CSS_NODE)
+G_DEFINE_TYPE (GtkCssWidgetNode, ctk_css_widget_node, CTK_TYPE_CSS_NODE)
 
 static void
 ctk_css_widget_node_finalize (GObject *object)
 {
-  GtkCssWidgetNode *node = GTK_CSS_WIDGET_NODE (object);
+  GtkCssWidgetNode *node = CTK_CSS_WIDGET_NODE (object);
 
   g_object_unref (node->last_updated_style);
 
@@ -46,12 +46,12 @@ ctk_css_widget_node_style_changed (GtkCssNode        *cssnode,
 {
   GtkCssWidgetNode *node;
 
-  node = GTK_CSS_WIDGET_NODE (cssnode);
+  node = CTK_CSS_WIDGET_NODE (cssnode);
 
   if (node->widget)
     ctk_widget_clear_path (node->widget);
 
-  GTK_CSS_NODE_CLASS (ctk_css_widget_node_parent_class)->style_changed (cssnode, change);
+  CTK_CSS_NODE_CLASS (ctk_css_widget_node_parent_class)->style_changed (cssnode, change);
 }
 
 static gboolean
@@ -62,7 +62,7 @@ ctk_css_widget_node_queue_callback (GtkWidget     *widget,
   GtkCssNode *node = user_data;
 
   ctk_css_node_invalidate_frame_clock (node, TRUE);
-  _ctk_container_queue_restyle (GTK_CONTAINER (widget));
+  _ctk_container_queue_restyle (CTK_CONTAINER (widget));
 
   return G_SOURCE_CONTINUE;
 }
@@ -73,7 +73,7 @@ ctk_css_widget_node_update_style (GtkCssNode   *cssnode,
                                   gint64        timestamp,
                                   GtkCssStyle  *style)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (cssnode);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (cssnode);
 
   if (widget_node->widget != NULL)
     {
@@ -82,16 +82,16 @@ ctk_css_widget_node_update_style (GtkCssNode   *cssnode,
         ctk_style_context_clear_property_cache (context);
     }
 
-  return GTK_CSS_NODE_CLASS (ctk_css_widget_node_parent_class)->update_style (cssnode, change, timestamp, style);
+  return CTK_CSS_NODE_CLASS (ctk_css_widget_node_parent_class)->update_style (cssnode, change, timestamp, style);
 }
 
 static void
 ctk_css_widget_node_queue_validate (GtkCssNode *node)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (node);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (GTK_IS_RESIZE_CONTAINER (widget_node->widget))
+  if (CTK_IS_RESIZE_CONTAINER (widget_node->widget))
     widget_node->validate_cb_id = ctk_widget_add_tick_callback (widget_node->widget,
                                                                 ctk_css_widget_node_queue_callback,
                                                                 node,
@@ -102,10 +102,10 @@ ctk_css_widget_node_queue_validate (GtkCssNode *node)
 static void
 ctk_css_widget_node_dequeue_validate (GtkCssNode *node)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (node);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (GTK_IS_RESIZE_CONTAINER (widget_node->widget))
+  if (CTK_IS_RESIZE_CONTAINER (widget_node->widget))
     ctk_widget_remove_tick_callback (widget_node->widget,
                                      widget_node->validate_cb_id);
   G_GNUC_END_IGNORE_DEPRECATIONS
@@ -114,7 +114,7 @@ ctk_css_widget_node_dequeue_validate (GtkCssNode *node)
 static void
 ctk_css_widget_node_validate (GtkCssNode *node)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (node);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);
   GtkCssStyleChange change;
   GtkCssStyle *style;
 
@@ -153,11 +153,11 @@ widget_needs_widget_path (GtkWidget *widget)
     {
       i = 0;
 
-      class = (GtkContainerClass*)g_type_class_ref (GTK_TYPE_CONTAINER);
+      class = (GtkContainerClass*)g_type_class_ref (CTK_TYPE_CONTAINER);
       funcs[i++] = class->get_path_for_child;
       g_type_class_unref (class);
 
-      class = (GtkContainerClass*)g_type_class_ref (GTK_TYPE_BOX);
+      class = (GtkContainerClass*)g_type_class_ref (CTK_TYPE_BOX);
       funcs[i++] = class->get_path_for_child;
       g_type_class_unref (class);
 
@@ -168,7 +168,7 @@ widget_needs_widget_path (GtkWidget *widget)
   if (parent == NULL)
     return FALSE;
 
-  parent_func = GTK_CONTAINER_GET_CLASS (GTK_CONTAINER (parent))->get_path_for_child;
+  parent_func = CTK_CONTAINER_GET_CLASS (CTK_CONTAINER (parent))->get_path_for_child;
   for (i = 0; i < G_N_ELEMENTS (funcs); i++)
     {
       if (funcs[i] == parent_func)
@@ -182,13 +182,13 @@ gboolean
 ctk_css_widget_node_init_matcher (GtkCssNode     *node,
                                   GtkCssMatcher  *matcher)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (node);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);
 
   if (widget_node->widget == NULL)
     return FALSE;
 
   if (!widget_needs_widget_path (widget_node->widget))
-    return GTK_CSS_NODE_CLASS (ctk_css_widget_node_parent_class)->init_matcher (node, matcher);
+    return CTK_CSS_NODE_CLASS (ctk_css_widget_node_parent_class)->init_matcher (node, matcher);
 
   return _ctk_css_matcher_init (matcher,
                                 ctk_widget_get_path (widget_node->widget),
@@ -198,7 +198,7 @@ ctk_css_widget_node_init_matcher (GtkCssNode     *node,
 static GtkWidgetPath *
 ctk_css_widget_node_create_widget_path (GtkCssNode *node)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (node);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);
   GtkWidgetPath *path;
   guint length;
 
@@ -221,7 +221,7 @@ ctk_css_widget_node_create_widget_path (GtkCssNode *node)
 static const GtkWidgetPath *
 ctk_css_widget_node_get_widget_path (GtkCssNode *node)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (node);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);
 
   if (widget_node->widget == NULL)
     return NULL;
@@ -232,7 +232,7 @@ ctk_css_widget_node_get_widget_path (GtkCssNode *node)
 static GtkStyleProviderPrivate *
 ctk_css_widget_node_get_style_provider (GtkCssNode *node)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (node);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);
   GtkStyleContext *context;
   GtkStyleCascade *cascade;
   GtkSettings *settings;
@@ -250,13 +250,13 @@ ctk_css_widget_node_get_style_provider (GtkCssNode *node)
 
   cascade = _ctk_settings_get_style_cascade (ctk_widget_get_settings (widget_node->widget),
                                              ctk_widget_get_scale_factor (widget_node->widget));
-  return GTK_STYLE_PROVIDER_PRIVATE (cascade);
+  return CTK_STYLE_PROVIDER_PRIVATE (cascade);
 }
 
 static GdkFrameClock *
 ctk_css_widget_node_get_frame_clock (GtkCssNode *node)
 {
-  GtkCssWidgetNode *widget_node = GTK_CSS_WIDGET_NODE (node);
+  GtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);
 
   if (widget_node->widget == NULL)
     return NULL;
@@ -270,7 +270,7 @@ ctk_css_widget_node_get_frame_clock (GtkCssNode *node)
 static void
 ctk_css_widget_node_class_init (GtkCssWidgetNodeClass *klass)
 {
-  GtkCssNodeClass *node_class = GTK_CSS_NODE_CLASS (klass);
+  GtkCssNodeClass *node_class = CTK_CSS_NODE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_css_widget_node_finalize;
@@ -297,20 +297,20 @@ ctk_css_widget_node_new (GtkWidget *widget)
 {
   GtkCssWidgetNode *result;
 
-  ctk_internal_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  result = g_object_new (GTK_TYPE_CSS_WIDGET_NODE, NULL);
+  result = g_object_new (CTK_TYPE_CSS_WIDGET_NODE, NULL);
   result->widget = widget;
-  ctk_css_node_set_visible (GTK_CSS_NODE (result),
+  ctk_css_node_set_visible (CTK_CSS_NODE (result),
                             _ctk_widget_get_visible (widget));
 
-  return GTK_CSS_NODE (result);
+  return CTK_CSS_NODE (result);
 }
 
 void
 ctk_css_widget_node_widget_destroyed (GtkCssWidgetNode *node)
 {
-  ctk_internal_return_if_fail (GTK_IS_CSS_WIDGET_NODE (node));
+  ctk_internal_return_if_fail (CTK_IS_CSS_WIDGET_NODE (node));
   ctk_internal_return_if_fail (node->widget != NULL);
 
   node->widget = NULL;
@@ -322,7 +322,7 @@ ctk_css_widget_node_widget_destroyed (GtkCssWidgetNode *node)
 GtkWidget *
 ctk_css_widget_node_get_widget (GtkCssWidgetNode *node)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_WIDGET_NODE (node), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_WIDGET_NODE (node), NULL);
 
   return node->widget;
 }

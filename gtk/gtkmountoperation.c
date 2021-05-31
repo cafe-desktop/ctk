@@ -166,8 +166,8 @@ ctk_mount_operation_class_init (GtkMountOperationClass *klass)
                                    g_param_spec_object ("parent",
                                                         P_("Parent"),
                                                         P_("The parent window"),
-                                                        GTK_TYPE_WINDOW,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_TYPE_WINDOW,
+                                                        CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_IS_SHOWING,
@@ -175,7 +175,7 @@ ctk_mount_operation_class_init (GtkMountOperationClass *klass)
                                                          P_("Is Showing"),
                                                          P_("Are we showing a dialog"),
                                                          FALSE,
-                                                         GTK_PARAM_READABLE));
+                                                         CTK_PARAM_READABLE));
 
   g_object_class_install_property (object_class,
                                    PROP_SCREEN,
@@ -183,7 +183,7 @@ ctk_mount_operation_class_init (GtkMountOperationClass *klass)
                                                         P_("Screen"),
                                                         P_("The screen where this window will be displayed."),
                                                         GDK_TYPE_SCREEN,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 }
 
 static void
@@ -211,7 +211,7 @@ ctk_mount_operation_init (GtkMountOperation *operation)
 static void
 ctk_mount_operation_finalize (GObject *object)
 {
-  GtkMountOperation *operation = GTK_MOUNT_OPERATION (object);
+  GtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
   GtkMountOperationPrivate *priv = operation->priv;
 
   if (priv->user_widgets)
@@ -240,7 +240,7 @@ ctk_mount_operation_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkMountOperation *operation = GTK_MOUNT_OPERATION (object);
+  GtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
 
   switch (prop_id)
     {
@@ -265,7 +265,7 @@ ctk_mount_operation_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkMountOperation *operation = GTK_MOUNT_OPERATION (object);
+  GtkMountOperation *operation = CTK_MOUNT_OPERATION (object);
   GtkMountOperationPrivate *priv = operation->priv;
 
   switch (prop_id)
@@ -326,7 +326,7 @@ pw_dialog_got_response (GtkDialog         *dialog,
   GtkMountOperationPrivate *priv = mount_op->priv;
   GMountOperation *op = G_MOUNT_OPERATION (mount_op);
 
-  if (response_id == GTK_RESPONSE_OK)
+  if (response_id == CTK_RESPONSE_OK)
     {
       const char *text;
 
@@ -335,25 +335,25 @@ pw_dialog_got_response (GtkDialog         *dialog,
 
       if (priv->username_entry)
         {
-          text = ctk_entry_get_text (GTK_ENTRY (priv->username_entry));
+          text = ctk_entry_get_text (CTK_ENTRY (priv->username_entry));
           g_mount_operation_set_username (op, text);
         }
 
       if (priv->domain_entry)
         {
-          text = ctk_entry_get_text (GTK_ENTRY (priv->domain_entry));
+          text = ctk_entry_get_text (CTK_ENTRY (priv->domain_entry));
           g_mount_operation_set_domain (op, text);
         }
 
       if (priv->password_entry)
         {
-          text = ctk_entry_get_text (GTK_ENTRY (priv->password_entry));
+          text = ctk_entry_get_text (CTK_ENTRY (priv->password_entry));
           g_mount_operation_set_password (op, text);
         }
 
       if (priv->pim_entry)
         {
-          text = ctk_entry_get_text (GTK_ENTRY (priv->pim_entry));
+          text = ctk_entry_get_text (CTK_ENTRY (priv->pim_entry));
           if (text && strlen (text) > 0)
             {
               guint64 pim;
@@ -366,10 +366,10 @@ pw_dialog_got_response (GtkDialog         *dialog,
             }
         }
 
-      if (priv->tcrypt_hidden_toggle && ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->tcrypt_hidden_toggle)))
+      if (priv->tcrypt_hidden_toggle && ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (priv->tcrypt_hidden_toggle)))
         g_mount_operation_set_is_tcrypt_hidden_volume (op, TRUE);
 
-      if (priv->tcrypt_system_toggle && ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->tcrypt_system_toggle)))
+      if (priv->tcrypt_system_toggle && ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (priv->tcrypt_system_toggle)))
         g_mount_operation_set_is_tcrypt_system_volume (op, TRUE);
 
       if (priv->ask_flags & G_ASK_PASSWORD_SAVING_SUPPORTED)
@@ -382,7 +382,7 @@ pw_dialog_got_response (GtkDialog         *dialog,
 
   priv->dialog = NULL;
   g_object_notify (G_OBJECT (op), "is-showing");
-  ctk_widget_destroy (GTK_WIDGET (dialog));
+  ctk_widget_destroy (CTK_WIDGET (dialog));
   g_object_unref (op);
 }
 
@@ -394,7 +394,7 @@ entry_has_input (GtkWidget *entry_widget)
   if (entry_widget == NULL)
     return TRUE;
 
-  text = ctk_entry_get_text (GTK_ENTRY (entry_widget));
+  text = ctk_entry_get_text (CTK_ENTRY (entry_widget));
 
   return text != NULL && text[0] != '\0';
 }
@@ -409,7 +409,7 @@ pim_entry_is_valid (GtkWidget *entry_widget)
   if (entry_widget == NULL)
     return TRUE;
 
-  text = ctk_entry_get_text (GTK_ENTRY (entry_widget));
+  text = ctk_entry_get_text (CTK_ENTRY (entry_widget));
   /* An empty PIM entry is OK */
   if (text == NULL || text[0] == '\0')
     return TRUE;
@@ -449,8 +449,8 @@ pw_dialog_verify_input (GtkEditable       *editable,
   gboolean is_valid;
 
   is_valid = pw_dialog_input_is_valid (operation);
-  ctk_dialog_set_response_sensitive (GTK_DIALOG (priv->dialog),
-                                     GTK_RESPONSE_OK,
+  ctk_dialog_set_response_sensitive (CTK_DIALOG (priv->dialog),
+                                     CTK_RESPONSE_OK,
                                      is_valid);
 }
 
@@ -471,11 +471,11 @@ pw_dialog_anonymous_toggled (GtkWidget         *widget,
 
   for (l = priv->user_widgets; l != NULL; l = l->next)
     {
-      ctk_widget_set_sensitive (GTK_WIDGET (l->data), !priv->anonymous);
+      ctk_widget_set_sensitive (CTK_WIDGET (l->data), !priv->anonymous);
     }
 
-  ctk_dialog_set_response_sensitive (GTK_DIALOG (priv->dialog),
-                                     GTK_RESPONSE_OK,
+  ctk_dialog_set_response_sensitive (CTK_DIALOG (priv->dialog),
+                                     CTK_RESPONSE_OK,
                                      is_valid);
 }
 
@@ -502,7 +502,7 @@ pw_dialog_cycle_focus (GtkWidget         *widget,
   if (next_widget)
     ctk_widget_grab_focus (next_widget);
   else if (pw_dialog_input_is_valid (operation))
-    ctk_window_activate_default (GTK_WINDOW (priv->dialog));
+    ctk_window_activate_default (CTK_WINDOW (priv->dialog));
 }
 
 static GtkWidget *
@@ -516,8 +516,8 @@ table_add_entry (GtkMountOperation *operation,
   GtkWidget *label;
 
   label = ctk_label_new_with_mnemonic (label_text);
-  ctk_widget_set_halign (label, GTK_ALIGN_END);
-  ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (label, CTK_ALIGN_END);
+  ctk_widget_set_valign (label, CTK_ALIGN_CENTER);
   ctk_widget_set_hexpand (label, FALSE);
   operation->priv->user_widgets = g_list_prepend (operation->priv->user_widgets, label);
 
@@ -525,11 +525,11 @@ table_add_entry (GtkMountOperation *operation,
   ctk_widget_set_hexpand (entry, TRUE);
 
   if (value)
-    ctk_entry_set_text (GTK_ENTRY (entry), value);
+    ctk_entry_set_text (CTK_ENTRY (entry), value);
 
-  ctk_grid_attach (GTK_GRID (operation->priv->grid), label, 0, row, 1, 1);
-  ctk_grid_attach (GTK_GRID (operation->priv->grid), entry, 1, row, 1, 1);
-  ctk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
+  ctk_grid_attach (CTK_GRID (operation->priv->grid), label, 0, row, 1, 1);
+  ctk_grid_attach (CTK_GRID (operation->priv->grid), entry, 1, row, 1, 1);
+  ctk_label_set_mnemonic_widget (CTK_LABEL (label), entry);
   operation->priv->user_widgets = g_list_prepend (operation->priv->user_widgets, entry);
 
   g_signal_connect (entry, "changed",
@@ -567,11 +567,11 @@ ctk_mount_operation_ask_password_do_gtk (GtkMountOperation *operation,
   g_object_get (ctk_settings_get_default (),
                 "gtk-dialogs-use-header", &use_header,
                 NULL);
-  widget = g_object_new (GTK_TYPE_DIALOG,
+  widget = g_object_new (CTK_TYPE_DIALOG,
                          "use-header-bar", use_header,
                          NULL);
-  dialog = GTK_DIALOG (widget);
-  window = GTK_WINDOW (widget);
+  dialog = CTK_DIALOG (widget);
+  window = CTK_WINDOW (widget);
 
   priv->dialog = dialog;
 
@@ -581,42 +581,42 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* Set the dialog up with HIG properties */
-  ctk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-  ctk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
-  ctk_container_set_border_width (GTK_CONTAINER (action_area), 5);
-  ctk_box_set_spacing (GTK_BOX (action_area), 6);
+  ctk_container_set_border_width (CTK_CONTAINER (dialog), 5);
+  ctk_box_set_spacing (CTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
+  ctk_container_set_border_width (CTK_CONTAINER (action_area), 5);
+  ctk_box_set_spacing (CTK_BOX (action_area), 6);
 
   ctk_window_set_resizable (window, FALSE);
   ctk_window_set_title (window, "");
   ctk_window_set_icon_name (window, "dialog-password");
 
   ctk_dialog_add_buttons (dialog,
-                          _("_Cancel"), GTK_RESPONSE_CANCEL,
-                          _("Co_nnect"), GTK_RESPONSE_OK,
+                          _("_Cancel"), CTK_RESPONSE_CANCEL,
+                          _("Co_nnect"), CTK_RESPONSE_OK,
                           NULL);
-  ctk_dialog_set_default_response (dialog, GTK_RESPONSE_OK);
+  ctk_dialog_set_default_response (dialog, CTK_RESPONSE_OK);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_dialog_set_alternative_button_order (dialog,
-                                           GTK_RESPONSE_OK,
-                                           GTK_RESPONSE_CANCEL,
+                                           CTK_RESPONSE_OK,
+                                           CTK_RESPONSE_CANCEL,
                                            -1);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* Build contents */
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  ctk_container_set_border_width (GTK_CONTAINER (hbox), 5);
-  ctk_box_pack_start (GTK_BOX (content_area), hbox, TRUE, TRUE, 0);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_container_set_border_width (CTK_CONTAINER (hbox), 5);
+  ctk_box_pack_start (CTK_BOX (content_area), hbox, TRUE, TRUE, 0);
 
   icon = ctk_image_new_from_icon_name ("dialog-password",
-                                       GTK_ICON_SIZE_DIALOG);
+                                       CTK_ICON_SIZE_DIALOG);
 
-  ctk_widget_set_halign (icon, GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (icon, GTK_ALIGN_START);
-  ctk_box_pack_start (GTK_BOX (hbox), icon, FALSE, FALSE, 0);
+  ctk_widget_set_halign (icon, CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (icon, CTK_ALIGN_START);
+  ctk_box_pack_start (CTK_BOX (hbox), icon, FALSE, FALSE, 0);
 
-  main_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 18);
-  ctk_box_pack_start (GTK_BOX (hbox), main_vbox, TRUE, TRUE, 0);
+  main_vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 18);
+  ctk_box_pack_start (CTK_BOX (hbox), main_vbox, TRUE, TRUE, 0);
 
   primary = strstr (message, "\n");
   if (primary)
@@ -626,33 +626,33 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   label = ctk_label_new (primary != NULL ? primary : message);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
-  ctk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-  ctk_box_pack_start (GTK_BOX (main_vbox), GTK_WIDGET (label),
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_CENTER);
+  ctk_label_set_line_wrap (CTK_LABEL (label), TRUE);
+  ctk_box_pack_start (CTK_BOX (main_vbox), CTK_WIDGET (label),
                       FALSE, TRUE, 0);
   g_free (primary);
   attrs = pango_attr_list_new ();
   pango_attr_list_insert (attrs, pango_attr_weight_new (PANGO_WEIGHT_BOLD));
-  ctk_label_set_attributes (GTK_LABEL (label), attrs);
+  ctk_label_set_attributes (CTK_LABEL (label), attrs);
   pango_attr_list_unref (attrs);
 
   if (secondary != NULL)
     {
       label = ctk_label_new (secondary);
-      ctk_widget_set_halign (label, GTK_ALIGN_START);
-      ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
-      ctk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-      ctk_box_pack_start (GTK_BOX (main_vbox), GTK_WIDGET (label),
+      ctk_widget_set_halign (label, CTK_ALIGN_START);
+      ctk_widget_set_valign (label, CTK_ALIGN_CENTER);
+      ctk_label_set_line_wrap (CTK_LABEL (label), TRUE);
+      ctk_box_pack_start (CTK_BOX (main_vbox), CTK_WIDGET (label),
                           FALSE, FALSE, 0);
     }
 
   grid = ctk_grid_new ();
   operation->priv->grid = grid;
-  ctk_grid_set_row_spacing (GTK_GRID (grid), 12);
-  ctk_grid_set_column_spacing (GTK_GRID (grid), 12);
+  ctk_grid_set_row_spacing (CTK_GRID (grid), 12);
+  ctk_grid_set_column_spacing (CTK_GRID (grid), 12);
   ctk_widget_set_margin_bottom (grid, 12);
-  ctk_box_pack_start (GTK_BOX (main_vbox), grid, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (main_vbox), grid, FALSE, FALSE, 0);
 
   can_anonymous = priv->ask_flags & G_ASK_PASSWORD_ANONYMOUS_SUPPORTED;
 
@@ -666,25 +666,25 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       GSList    *group;
 
       label = ctk_label_new (_("Connect As"));
-      ctk_widget_set_halign (label, GTK_ALIGN_END);
-      ctk_widget_set_valign (label, GTK_ALIGN_START);
+      ctk_widget_set_halign (label, CTK_ALIGN_END);
+      ctk_widget_set_valign (label, CTK_ALIGN_START);
       ctk_widget_set_hexpand (label, FALSE);
-      ctk_grid_attach (GTK_GRID (grid), label, 0, rows, 1, 1);
+      ctk_grid_attach (CTK_GRID (grid), label, 0, rows, 1, 1);
 
-      anon_box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      ctk_grid_attach (GTK_GRID (grid), anon_box, 1, rows++, 1, 1);
+      anon_box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+      ctk_grid_attach (CTK_GRID (grid), anon_box, 1, rows++, 1, 1);
 
       choice = ctk_radio_button_new_with_mnemonic (NULL, _("_Anonymous"));
-      ctk_box_pack_start (GTK_BOX (anon_box),
+      ctk_box_pack_start (CTK_BOX (anon_box),
                           choice,
                           FALSE, FALSE, 0);
       g_signal_connect (choice, "toggled",
                         G_CALLBACK (pw_dialog_anonymous_toggled), operation);
       priv->anonymous_toggle = choice;
 
-      group = ctk_radio_button_get_group (GTK_RADIO_BUTTON (choice));
+      group = ctk_radio_button_get_group (CTK_RADIO_BUTTON (choice));
       choice = ctk_radio_button_new_with_mnemonic (group, _("Registered U_ser"));
-      ctk_box_pack_start (GTK_BOX (anon_box),
+      ctk_box_pack_start (CTK_BOX (anon_box),
                           choice,
                           FALSE, FALSE, 0);
       g_signal_connect (choice, "toggled",
@@ -709,20 +709,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       GtkWidget *volume_type_box;
 
       volume_type_label = ctk_label_new (_("Volume type"));
-      ctk_widget_set_halign (volume_type_label, GTK_ALIGN_END);
+      ctk_widget_set_halign (volume_type_label, CTK_ALIGN_END);
       ctk_widget_set_hexpand (volume_type_label, FALSE);
-      ctk_grid_attach (GTK_GRID (grid), volume_type_label, 0, rows, 1, 1);
+      ctk_grid_attach (CTK_GRID (grid), volume_type_label, 0, rows, 1, 1);
       priv->user_widgets = g_list_prepend (priv->user_widgets, volume_type_label);
 
-      volume_type_box =  ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-      ctk_grid_attach (GTK_GRID (grid), volume_type_box, 1, rows++, 1, 1);
+      volume_type_box =  ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+      ctk_grid_attach (CTK_GRID (grid), volume_type_box, 1, rows++, 1, 1);
       priv->user_widgets = g_list_prepend (priv->user_widgets, volume_type_box);
 
       priv->tcrypt_hidden_toggle = ctk_check_button_new_with_mnemonic (_("_Hidden"));
-      ctk_container_add (GTK_CONTAINER (volume_type_box), priv->tcrypt_hidden_toggle);
+      ctk_container_add (CTK_CONTAINER (volume_type_box), priv->tcrypt_hidden_toggle);
 
       priv->tcrypt_system_toggle = ctk_check_button_new_with_mnemonic (_("_Windows system"));
-      ctk_container_add (GTK_CONTAINER (volume_type_box), priv->tcrypt_system_toggle);
+      ctk_container_add (CTK_CONTAINER (volume_type_box), priv->tcrypt_system_toggle);
 
       priv->pim_entry = table_add_entry (operation, rows++, _("_PIM"), NULL, operation);
     }
@@ -732,7 +732,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     {
       priv->password_entry = table_add_entry (operation, rows++, _("_Password"),
                                               NULL, operation);
-      ctk_entry_set_visibility (GTK_ENTRY (priv->password_entry), FALSE);
+      ctk_entry_set_visibility (CTK_ENTRY (priv->password_entry), FALSE);
     }
 
    if (priv->ask_flags & G_ASK_PASSWORD_SAVING_SUPPORTED)
@@ -742,44 +742,44 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       GSList       *group;
       GPasswordSave password_save;
 
-      remember_box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      ctk_grid_attach (GTK_GRID (grid), remember_box, 0, rows++, 2, 1);
+      remember_box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+      ctk_grid_attach (CTK_GRID (grid), remember_box, 0, rows++, 2, 1);
       priv->user_widgets = g_list_prepend (priv->user_widgets, remember_box);
 
       label = ctk_label_new ("");
-      ctk_container_add (GTK_CONTAINER (remember_box), label);
+      ctk_container_add (CTK_CONTAINER (remember_box), label);
 
       password_save = g_mount_operation_get_password_save (G_MOUNT_OPERATION (operation));
       priv->password_save = password_save;
 
       choice = ctk_radio_button_new_with_mnemonic (NULL, _("Forget password _immediately"));
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (choice),
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (choice),
                                     password_save == G_PASSWORD_SAVE_NEVER);
       g_object_set_data (G_OBJECT (choice), "password-save",
                          GINT_TO_POINTER (G_PASSWORD_SAVE_NEVER));
       g_signal_connect (choice, "toggled",
                         G_CALLBACK (remember_button_toggled), operation);
-      ctk_box_pack_start (GTK_BOX (remember_box), choice, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (remember_box), choice, FALSE, FALSE, 0);
 
-      group = ctk_radio_button_get_group (GTK_RADIO_BUTTON (choice));
+      group = ctk_radio_button_get_group (CTK_RADIO_BUTTON (choice));
       choice = ctk_radio_button_new_with_mnemonic (group, _("Remember password until you _logout"));
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (choice),
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (choice),
                                     password_save == G_PASSWORD_SAVE_FOR_SESSION);
       g_object_set_data (G_OBJECT (choice), "password-save",
                          GINT_TO_POINTER (G_PASSWORD_SAVE_FOR_SESSION));
       g_signal_connect (choice, "toggled",
                         G_CALLBACK (remember_button_toggled), operation);
-      ctk_box_pack_start (GTK_BOX (remember_box), choice, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (remember_box), choice, FALSE, FALSE, 0);
 
-      group = ctk_radio_button_get_group (GTK_RADIO_BUTTON (choice));
+      group = ctk_radio_button_get_group (CTK_RADIO_BUTTON (choice));
       choice = ctk_radio_button_new_with_mnemonic (group, _("Remember _forever"));
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (choice),
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (choice),
                                     password_save == G_PASSWORD_SAVE_PERMANENTLY);
       g_object_set_data (G_OBJECT (choice), "password-save",
                          GINT_TO_POINTER (G_PASSWORD_SAVE_PERMANENTLY));
       g_signal_connect (choice, "toggled",
                         G_CALLBACK (remember_button_toggled), operation);
-      ctk_box_pack_start (GTK_BOX (remember_box), choice, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (remember_box), choice, FALSE, FALSE, 0);
     }
 
   g_signal_connect (G_OBJECT (dialog), "response",
@@ -790,10 +790,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       /* The anonymous option will be active by default,
        * ensure the toggled signal is emitted for it.
        */
-      ctk_toggle_button_toggled (GTK_TOGGLE_BUTTON (priv->anonymous_toggle));
+      ctk_toggle_button_toggled (CTK_TOGGLE_BUTTON (priv->anonymous_toggle));
     }
   else if (! pw_dialog_input_is_valid (operation))
-    ctk_dialog_set_response_sensitive (dialog, GTK_RESPONSE_OK, FALSE);
+    ctk_dialog_set_response_sensitive (dialog, CTK_RESPONSE_OK, FALSE);
 
   g_object_notify (G_OBJECT (operation), "is-showing");
 
@@ -803,9 +803,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       ctk_window_set_modal (window, TRUE);
     }
   else if (priv->screen)
-    ctk_window_set_screen (GTK_WINDOW (dialog), priv->screen);
+    ctk_window_set_screen (CTK_WINDOW (dialog), priv->screen);
 
-  ctk_widget_show_all (GTK_WIDGET (dialog));
+  ctk_widget_show_all (CTK_WIDGET (dialog));
 
   g_object_ref (operation);
 }
@@ -815,7 +815,7 @@ call_password_proxy_cb (GObject      *source,
                         GAsyncResult *res,
                         gpointer      user_data)
 {
-  _GtkMountOperationHandler *proxy = _GTK_MOUNT_OPERATION_HANDLER (source);
+  _GtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
   GMountOperation *op = user_data;
   GMountOperationResult result;
   GVariant *result_details;
@@ -852,7 +852,7 @@ call_password_proxy_cb (GObject      *source,
     }
 
  out:
-  ctk_mount_operation_proxy_finish (GTK_MOUNT_OPERATION (op), result);
+  ctk_mount_operation_proxy_finish (CTK_MOUNT_OPERATION (op), result);
 }
 
 static void
@@ -888,7 +888,7 @@ ctk_mount_operation_ask_password (GMountOperation   *mount_op,
   GtkMountOperationPrivate *priv;
   gboolean use_gtk;
 
-  operation = GTK_MOUNT_OPERATION (mount_op);
+  operation = CTK_MOUNT_OPERATION (mount_op);
   priv = operation->priv;
   priv->ask_flags = flags;
 
@@ -910,7 +910,7 @@ question_dialog_button_clicked (GtkDialog       *dialog,
   GtkMountOperationPrivate *priv;
   GtkMountOperation *operation;
 
-  operation = GTK_MOUNT_OPERATION (op);
+  operation = CTK_MOUNT_OPERATION (op);
   priv = operation->priv;
 
   if (button_number >= 0)
@@ -923,7 +923,7 @@ question_dialog_button_clicked (GtkDialog       *dialog,
 
   priv->dialog = NULL;
   g_object_notify (G_OBJECT (operation), "is-showing");
-  ctk_widget_destroy (GTK_WIDGET (dialog));
+  ctk_widget_destroy (CTK_WIDGET (dialog));
   g_object_unref (op);
 }
 
@@ -938,7 +938,7 @@ ctk_mount_operation_ask_question_do_gtk (GtkMountOperation *op,
   char       *primary;
   int        count, len = 0;
 
-  g_return_if_fail (GTK_IS_MOUNT_OPERATION (op));
+  g_return_if_fail (CTK_IS_MOUNT_OPERATION (op));
   g_return_if_fail (message != NULL);
   g_return_if_fail (choices != NULL);
 
@@ -952,13 +952,13 @@ ctk_mount_operation_ask_question_do_gtk (GtkMountOperation *op,
     }
 
   dialog = ctk_message_dialog_new (priv->parent_window, 0,
-                                   GTK_MESSAGE_QUESTION,
-                                   GTK_BUTTONS_NONE, "%s",
+                                   CTK_MESSAGE_QUESTION,
+                                   CTK_BUTTONS_NONE, "%s",
                                    primary != NULL ? primary : message);
   g_free (primary);
 
   if (secondary)
-    ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+    ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
                                               "%s", secondary);
 
   /* First count the items in the list then
@@ -968,16 +968,16 @@ ctk_mount_operation_ask_question_do_gtk (GtkMountOperation *op,
     len++;
 
   for (count = len - 1; count >= 0; count--)
-    ctk_dialog_add_button (GTK_DIALOG (dialog), choices[count], count);
+    ctk_dialog_add_button (CTK_DIALOG (dialog), choices[count], count);
 
   g_signal_connect (G_OBJECT (dialog), "response",
                     G_CALLBACK (question_dialog_button_clicked), op);
 
-  priv->dialog = GTK_DIALOG (dialog);
+  priv->dialog = CTK_DIALOG (dialog);
   g_object_notify (G_OBJECT (op), "is-showing");
 
   if (priv->parent_window == NULL && priv->screen)
-    ctk_window_set_screen (GTK_WINDOW (dialog), priv->screen);
+    ctk_window_set_screen (CTK_WINDOW (dialog), priv->screen);
 
   ctk_widget_show (dialog);
   g_object_ref (op);
@@ -988,7 +988,7 @@ call_question_proxy_cb (GObject      *source,
                         GAsyncResult *res,
                         gpointer      user_data)
 {
-  _GtkMountOperationHandler *proxy = _GTK_MOUNT_OPERATION_HANDLER (source);
+  _GtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
   GMountOperation *op = user_data;
   GMountOperationResult result;
   GVariant *result_details;
@@ -1017,7 +1017,7 @@ call_question_proxy_cb (GObject      *source,
     }
  
  out:
-  ctk_mount_operation_proxy_finish (GTK_MOUNT_OPERATION (op), result);
+  ctk_mount_operation_proxy_finish (CTK_MOUNT_OPERATION (op), result);
 }
 
 static void
@@ -1048,7 +1048,7 @@ ctk_mount_operation_ask_question (GMountOperation *op,
   GtkMountOperation *operation;
   gboolean use_gtk;
 
-  operation = GTK_MOUNT_OPERATION (op);
+  operation = CTK_MOUNT_OPERATION (op);
   use_gtk = (operation->priv->handler == NULL);
 
   if (use_gtk)
@@ -1065,7 +1065,7 @@ show_processes_button_clicked (GtkDialog       *dialog,
   GtkMountOperationPrivate *priv;
   GtkMountOperation *operation;
 
-  operation = GTK_MOUNT_OPERATION (op);
+  operation = CTK_MOUNT_OPERATION (op);
   priv = operation->priv;
 
   if (button_number >= 0)
@@ -1078,7 +1078,7 @@ show_processes_button_clicked (GtkDialog       *dialog,
 
   priv->dialog = NULL;
   g_object_notify (G_OBJECT (operation), "is-showing");
-  ctk_widget_destroy (GTK_WIDGET (dialog));
+  ctk_widget_destroy (CTK_WIDGET (dialog));
   g_object_unref (op);
 }
 
@@ -1176,8 +1176,8 @@ add_pid_to_process_list_store (GtkMountOperation              *mount_operation,
     {
       GtkIconTheme *theme;
       theme = ctk_css_icon_theme_value_get_icon_theme
-        (_ctk_style_context_peek_property (ctk_widget_get_style_context (GTK_WIDGET (mount_operation->priv->dialog)),
-                                           GTK_CSS_PROPERTY_ICON_THEME));
+        (_ctk_style_context_peek_property (ctk_widget_get_style_context (CTK_WIDGET (mount_operation->priv->dialog)),
+                                           CTK_CSS_PROPERTY_ICON_THEME));
       pixbuf = ctk_icon_theme_load_icon (theme,
                                          "application-x-executable",
                                          24,
@@ -1212,11 +1212,11 @@ remove_pid_from_process_list_store (GtkMountOperation *mount_operation,
   GtkTreeIter iter;
   GPid pid_of_item;
 
-  if (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (list_store), &iter))
+  if (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (list_store), &iter))
     {
       do
         {
-          ctk_tree_model_get (GTK_TREE_MODEL (list_store),
+          ctk_tree_model_get (CTK_TREE_MODEL (list_store),
                               &iter,
                               2, &pid_of_item,
                               -1);
@@ -1227,7 +1227,7 @@ remove_pid_from_process_list_store (GtkMountOperation *mount_operation,
               break;
             }
         }
-      while (ctk_tree_model_iter_next (GTK_TREE_MODEL (list_store), &iter));
+      while (ctk_tree_model_iter_next (CTK_TREE_MODEL (list_store), &iter));
     }
 }
 
@@ -1253,18 +1253,18 @@ update_process_list_store (GtkMountOperation *mount_operation,
   pid_indices_to_add = g_array_new (FALSE, FALSE, sizeof (gint));
   pid_indices_to_remove = g_array_new (FALSE, FALSE, sizeof (gint));
 
-  if (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (list_store), &iter))
+  if (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (list_store), &iter))
     {
       do
         {
-          ctk_tree_model_get (GTK_TREE_MODEL (list_store),
+          ctk_tree_model_get (CTK_TREE_MODEL (list_store),
                               &iter,
                               2, &pid,
                               -1);
 
           g_array_append_val (current_pids, pid);
         }
-      while (ctk_tree_model_iter_next (GTK_TREE_MODEL (list_store), &iter));
+      while (ctk_tree_model_iter_next (CTK_TREE_MODEL (list_store), &iter));
     }
 
   g_array_sort (current_pids, pid_equal);
@@ -1292,10 +1292,10 @@ update_process_list_store (GtkMountOperation *mount_operation,
   /* select the first item, if we went from a zero to a non-zero amount of processes */
   if (current_pids->len == 0 && pid_indices_to_add->len > 0)
     {
-      if (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (list_store), &iter))
+      if (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (list_store), &iter))
         {
           GtkTreeSelection *tree_selection;
-          tree_selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (mount_operation->priv->process_tree_view));
+          tree_selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (mount_operation->priv->process_tree_view));
           ctk_tree_selection_select_iter (tree_selection, &iter);
         }
     }
@@ -1309,20 +1309,20 @@ static void
 on_end_process_activated (GtkMenuItem *item,
                           gpointer user_data)
 {
-  GtkMountOperation *op = GTK_MOUNT_OPERATION (user_data);
+  GtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
   GtkTreeSelection *selection;
   GtkTreeIter iter;
   GPid pid_to_kill;
   GError *error;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (op->priv->process_tree_view));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (op->priv->process_tree_view));
 
   if (!ctk_tree_selection_get_selected (selection,
                                         NULL,
                                         &iter))
     goto out;
 
-  ctk_tree_model_get (GTK_TREE_MODEL (op->priv->process_list_store),
+  ctk_tree_model_get (CTK_TREE_MODEL (op->priv->process_list_store),
                       &iter,
                       2, &pid_to_kill,
                       -1);
@@ -1343,28 +1343,28 @@ on_end_process_activated (GtkMenuItem *item,
       GtkWidget *dialog;
       gint response;
 
-      /* Use GTK_DIALOG_DESTROY_WITH_PARENT here since the parent dialog can be
+      /* Use CTK_DIALOG_DESTROY_WITH_PARENT here since the parent dialog can be
        * indeed be destroyed via the GMountOperation::abort signal... for example,
        * this is triggered if the user yanks the device while we are showing
        * the dialog...
        */
-      dialog = ctk_message_dialog_new (GTK_WINDOW (op->priv->dialog),
-                                       GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                       GTK_MESSAGE_ERROR,
-                                       GTK_BUTTONS_CLOSE,
+      dialog = ctk_message_dialog_new (CTK_WINDOW (op->priv->dialog),
+                                       CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
+                                       CTK_MESSAGE_ERROR,
+                                       CTK_BUTTONS_CLOSE,
                                        _("Unable to end process"));
-      ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+      ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
                                                 "%s",
                                                 error->message);
 
       ctk_widget_show_all (dialog);
-      response = ctk_dialog_run (GTK_DIALOG (dialog));
+      response = ctk_dialog_run (CTK_DIALOG (dialog));
 
-      /* GTK_RESPONSE_NONE means the dialog were programmatically destroy, e.g. that
-       * GTK_DIALOG_DESTROY_WITH_PARENT kicked in - so it would trigger a warning to
+      /* CTK_RESPONSE_NONE means the dialog were programmatically destroy, e.g. that
+       * CTK_DIALOG_DESTROY_WITH_PARENT kicked in - so it would trigger a warning to
        * destroy the dialog in that case
        */
-      if (response != GTK_RESPONSE_NONE)
+      if (response != CTK_RESPONSE_NONE)
         ctk_widget_destroy (dialog);
 
       g_error_free (error);
@@ -1384,13 +1384,13 @@ do_popup_menu_for_process_tree_view (GtkWidget         *widget,
 
   menu = ctk_menu_new ();
   ctk_style_context_add_class (ctk_widget_get_style_context (menu),
-                               GTK_STYLE_CLASS_CONTEXT_MENU);
+                               CTK_STYLE_CLASS_CONTEXT_MENU);
 
   item = ctk_menu_item_new_with_mnemonic (_("_End Process"));
   g_signal_connect (item, "activate",
                     G_CALLBACK (on_end_process_activated),
                     op);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
   ctk_widget_show_all (menu);
 
   if (event && gdk_event_triggers_context_menu (event))
@@ -1398,7 +1398,7 @@ do_popup_menu_for_process_tree_view (GtkWidget         *widget,
       GtkTreePath *path;
       GtkTreeSelection *selection;
 
-      if (ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (op->priv->process_tree_view),
+      if (ctk_tree_view_get_path_at_pos (CTK_TREE_VIEW (op->priv->process_tree_view),
                                          (gint) event->button.x,
                                          (gint) event->button.y,
                                          &path,
@@ -1406,7 +1406,7 @@ do_popup_menu_for_process_tree_view (GtkWidget         *widget,
                                          NULL,
                                          NULL))
         {
-          selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (op->priv->process_tree_view));
+          selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (op->priv->process_tree_view));
           ctk_tree_selection_select_path (selection, path);
           ctk_tree_path_free (path);
         }
@@ -1417,7 +1417,7 @@ do_popup_menu_for_process_tree_view (GtkWidget         *widget,
         }
     }
 
-  ctk_menu_popup_at_pointer (GTK_MENU (menu), event);
+  ctk_menu_popup_at_pointer (CTK_MENU (menu), event);
   return TRUE;
 }
 
@@ -1425,7 +1425,7 @@ static gboolean
 on_popup_menu_for_process_tree_view (GtkWidget *widget,
                                      gpointer   user_data)
 {
-  GtkMountOperation *op = GTK_MOUNT_OPERATION (user_data);
+  GtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
   return do_popup_menu_for_process_tree_view (widget, NULL, op);
 }
 
@@ -1434,7 +1434,7 @@ on_button_press_event_for_process_tree_view (GtkWidget      *widget,
                                              GdkEventButton *event,
                                              gpointer        user_data)
 {
-  GtkMountOperation *op = GTK_MOUNT_OPERATION (user_data);
+  GtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
   gboolean ret;
 
   ret = FALSE;
@@ -1480,18 +1480,18 @@ create_show_processes_dialog (GtkMountOperation *op,
   g_object_get (ctk_settings_get_default (),
                 "gtk-dialogs-use-header", &use_header,
                 NULL);
-  dialog = g_object_new (GTK_TYPE_DIALOG,
+  dialog = g_object_new (CTK_TYPE_DIALOG,
                          "use-header-bar", use_header,
                          NULL);
 
   if (priv->parent_window != NULL)
-    ctk_window_set_transient_for (GTK_WINDOW (dialog), priv->parent_window);
-  ctk_window_set_title (GTK_WINDOW (dialog), "");
+    ctk_window_set_transient_for (CTK_WINDOW (dialog), priv->parent_window);
+  ctk_window_set_title (CTK_WINDOW (dialog), "");
 
-  content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-  ctk_container_set_border_width (GTK_CONTAINER (vbox), 12);
-  ctk_box_pack_start (GTK_BOX (content_area), vbox, TRUE, TRUE, 0);
+  content_area = ctk_dialog_get_content_area (CTK_DIALOG (dialog));
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
+  ctk_container_set_border_width (CTK_CONTAINER (vbox), 12);
+  ctk_box_pack_start (CTK_BOX (content_area), vbox, TRUE, TRUE, 0);
 
   if (secondary != NULL)
     s = g_strdup_printf ("<big><b>%s</b></big>\n\n%s", primary, secondary);
@@ -1500,9 +1500,9 @@ create_show_processes_dialog (GtkMountOperation *op,
 
   g_free (primary);
   label = ctk_label_new (NULL);
-  ctk_label_set_markup (GTK_LABEL (label), s);
+  ctk_label_set_markup (CTK_LABEL (label), s);
   g_free (s);
-  ctk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), label, TRUE, TRUE, 0);
 
   /* First count the items in the list then
    * add the buttons in reverse order */
@@ -1511,16 +1511,16 @@ create_show_processes_dialog (GtkMountOperation *op,
     len++;
 
   for (count = len - 1; count >= 0; count--)
-    ctk_dialog_add_button (GTK_DIALOG (dialog), choices[count], count);
+    ctk_dialog_add_button (CTK_DIALOG (dialog), choices[count], count);
 
   g_signal_connect (G_OBJECT (dialog), "response",
                     G_CALLBACK (show_processes_button_clicked), op);
 
-  priv->dialog = GTK_DIALOG (dialog);
+  priv->dialog = CTK_DIALOG (dialog);
   g_object_notify (G_OBJECT (op), "is-showing");
 
   if (priv->parent_window == NULL && priv->screen)
-    ctk_window_set_screen (GTK_WINDOW (dialog), priv->screen);
+    ctk_window_set_screen (CTK_WINDOW (dialog), priv->screen);
 
   tree_view = ctk_tree_view_new ();
   /* TODO: should use EM's when gtk+ RI patches land */
@@ -1543,18 +1543,18 @@ create_show_processes_dialog (GtkMountOperation *op,
   ctk_tree_view_column_set_attributes (column, renderer,
                                        "markup", 1,
                                        NULL);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), FALSE);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (tree_view), FALSE);
 
 
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-                                  GTK_POLICY_NEVER,
-                                  GTK_POLICY_AUTOMATIC);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window), GTK_SHADOW_IN);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window),
+                                  CTK_POLICY_NEVER,
+                                  CTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolled_window), CTK_SHADOW_IN);
 
-  ctk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
-  ctk_box_pack_start (GTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
+  ctk_container_add (CTK_CONTAINER (scrolled_window), tree_view);
+  ctk_box_pack_start (CTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
 
   g_signal_connect (tree_view, "popup-menu",
                     G_CALLBACK (on_popup_menu_for_process_tree_view),
@@ -1568,7 +1568,7 @@ create_show_processes_dialog (GtkMountOperation *op,
                                    G_TYPE_STRING,
                                    G_TYPE_INT);
 
-  ctk_tree_view_set_model (GTK_TREE_VIEW (tree_view), GTK_TREE_MODEL (list_store));
+  ctk_tree_view_set_model (CTK_TREE_VIEW (tree_view), CTK_TREE_MODEL (list_store));
 
   priv->process_list_store = list_store;
   priv->process_tree_view = tree_view;
@@ -1587,7 +1587,7 @@ call_processes_proxy_cb (GObject     *source,
                         GAsyncResult *res,
                         gpointer      user_data)
 {
-  _GtkMountOperationHandler *proxy = _GTK_MOUNT_OPERATION_HANDLER (source);
+  _GtkMountOperationHandler *proxy = _CTK_MOUNT_OPERATION_HANDLER (source);
   GMountOperation *op = user_data;
   GMountOperationResult result;
   GVariant *result_details;
@@ -1622,7 +1622,7 @@ call_processes_proxy_cb (GObject     *source,
     }
 
  out:
-  ctk_mount_operation_proxy_finish (GTK_MOUNT_OPERATION (op), result);
+  ctk_mount_operation_proxy_finish (CTK_MOUNT_OPERATION (op), result);
 }
 
 static void
@@ -1658,7 +1658,7 @@ ctk_mount_operation_show_processes_do_gtk (GtkMountOperation *op,
   GtkMountOperationPrivate *priv;
   GtkWidget *dialog = NULL;
 
-  g_return_if_fail (GTK_IS_MOUNT_OPERATION (op));
+  g_return_if_fail (CTK_IS_MOUNT_OPERATION (op));
   g_return_if_fail (message != NULL);
   g_return_if_fail (processes != NULL);
   g_return_if_fail (choices != NULL);
@@ -1694,7 +1694,7 @@ ctk_mount_operation_show_processes (GMountOperation *op,
   GtkMountOperation *operation;
   gboolean use_gtk;
 
-  operation = GTK_MOUNT_OPERATION (op);
+  operation = CTK_MOUNT_OPERATION (op);
   use_gtk = (operation->priv->handler == NULL);
 
   if (use_gtk)
@@ -1708,11 +1708,11 @@ ctk_mount_operation_aborted (GMountOperation *op)
 {
   GtkMountOperationPrivate *priv;
 
-  priv = GTK_MOUNT_OPERATION (op)->priv;
+  priv = CTK_MOUNT_OPERATION (op)->priv;
 
   if (priv->dialog != NULL)
     {
-      ctk_widget_destroy (GTK_WIDGET (priv->dialog));
+      ctk_widget_destroy (CTK_WIDGET (priv->dialog));
       priv->dialog = NULL;
       g_object_notify (G_OBJECT (op), "is-showing");
       g_object_unref (op);
@@ -1742,7 +1742,7 @@ ctk_mount_operation_new (GtkWindow *parent)
 {
   GMountOperation *mount_operation;
 
-  mount_operation = g_object_new (GTK_TYPE_MOUNT_OPERATION,
+  mount_operation = g_object_new (CTK_TYPE_MOUNT_OPERATION,
                                   "parent", parent, NULL);
 
   return mount_operation;
@@ -1762,7 +1762,7 @@ ctk_mount_operation_new (GtkWindow *parent)
 gboolean
 ctk_mount_operation_is_showing (GtkMountOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_MOUNT_OPERATION (op), FALSE);
+  g_return_val_if_fail (CTK_IS_MOUNT_OPERATION (op), FALSE);
 
   return op->priv->dialog != NULL;
 }
@@ -1783,8 +1783,8 @@ ctk_mount_operation_set_parent (GtkMountOperation *op,
 {
   GtkMountOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_MOUNT_OPERATION (op));
-  g_return_if_fail (parent == NULL || GTK_IS_WINDOW (parent));
+  g_return_if_fail (CTK_IS_MOUNT_OPERATION (op));
+  g_return_if_fail (parent == NULL || CTK_IS_WINDOW (parent));
 
   priv = op->priv;
 
@@ -1808,7 +1808,7 @@ ctk_mount_operation_set_parent (GtkMountOperation *op,
     }
 
   if (priv->dialog)
-    ctk_window_set_transient_for (GTK_WINDOW (priv->dialog), priv->parent_window);
+    ctk_window_set_transient_for (CTK_WINDOW (priv->dialog), priv->parent_window);
 
   g_object_notify (G_OBJECT (op), "parent");
 }
@@ -1826,7 +1826,7 @@ ctk_mount_operation_set_parent (GtkMountOperation *op,
 GtkWindow *
 ctk_mount_operation_get_parent (GtkMountOperation *op)
 {
-  g_return_val_if_fail (GTK_IS_MOUNT_OPERATION (op), NULL);
+  g_return_val_if_fail (CTK_IS_MOUNT_OPERATION (op), NULL);
 
   return op->priv->parent_window;
 }
@@ -1846,7 +1846,7 @@ ctk_mount_operation_set_screen (GtkMountOperation *op,
 {
   GtkMountOperationPrivate *priv;
 
-  g_return_if_fail (GTK_IS_MOUNT_OPERATION (op));
+  g_return_if_fail (CTK_IS_MOUNT_OPERATION (op));
   g_return_if_fail (GDK_IS_SCREEN (screen));
 
   priv = op->priv;
@@ -1860,7 +1860,7 @@ ctk_mount_operation_set_screen (GtkMountOperation *op,
   priv->screen = g_object_ref (screen);
 
   if (priv->dialog)
-    ctk_window_set_screen (GTK_WINDOW (priv->dialog), screen);
+    ctk_window_set_screen (CTK_WINDOW (priv->dialog), screen);
 
   g_object_notify (G_OBJECT (op), "screen");
 }
@@ -1881,14 +1881,14 @@ ctk_mount_operation_get_screen (GtkMountOperation *op)
 {
   GtkMountOperationPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_MOUNT_OPERATION (op), NULL);
+  g_return_val_if_fail (CTK_IS_MOUNT_OPERATION (op), NULL);
 
   priv = op->priv;
 
   if (priv->dialog)
-    return ctk_window_get_screen (GTK_WINDOW (priv->dialog));
+    return ctk_window_get_screen (CTK_WINDOW (priv->dialog));
   else if (priv->parent_window)
-    return ctk_window_get_screen (GTK_WINDOW (priv->parent_window));
+    return ctk_window_get_screen (CTK_WINDOW (priv->parent_window));
   else if (priv->screen)
     return priv->screen;
   else

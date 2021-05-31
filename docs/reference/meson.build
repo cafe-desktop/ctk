@@ -11,7 +11,7 @@ if get_option('ctk_doc')
     docpath = join_paths(ctk_datadir, 'gtk-doc', 'html')
 
     version_conf = configuration_data()
-    version_conf.set('GTK_VERSION', meson.project_version())
+    version_conf.set('CTK_VERSION', meson.project_version())
 
     src_dir_conf = configuration_data()
     src_dir_conf.set('abs_top_srcdir', meson.source_root())

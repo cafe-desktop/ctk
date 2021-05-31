@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_LOCK_BUTTON_ACCESSIBLE_PRIVATE_H__
-#define __GTK_LOCK_BUTTON_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_LOCK_BUTTON_ACCESSIBLE_PRIVATE_H__
+#define __CTK_LOCK_BUTTON_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtklockbuttonaccessible.h>
 
@@ -26,4 +26,4 @@ void  _ctk_lock_button_accessible_name_changed (GtkLockButton *lockbutton);
 
 G_END_DECLS
 
-#endif /* __GTK_LOCK_BUTTON_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_LOCK_BUTTON_ACCESSIBLE_PRIVATE_H__ */

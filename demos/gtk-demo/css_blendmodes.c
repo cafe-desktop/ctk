@@ -79,7 +79,7 @@ setup_listbox (GtkBuilder       *builder,
 
   normal_row = NULL;
   listbox = ctk_list_box_new ();
-  ctk_container_add (GTK_CONTAINER (WID ("scrolledwindow")), listbox);
+  ctk_container_add (CTK_CONTAINER (WID ("scrolledwindow")), listbox);
 
   g_signal_connect (listbox, "row-activated", G_CALLBACK (row_activated), provider);
 
@@ -90,14 +90,14 @@ setup_listbox (GtkBuilder       *builder,
       GtkWidget *row;
 
       row = ctk_list_box_row_new ();
-      label = g_object_new (GTK_TYPE_LABEL,
+      label = g_object_new (CTK_TYPE_LABEL,
                             "label", blend_modes[i].name,
                             "xalign", 0.0,
                             NULL);
 
-      ctk_container_add (GTK_CONTAINER (row), label);
+      ctk_container_add (CTK_CONTAINER (row), label);
 
-      ctk_container_add (GTK_CONTAINER (listbox), row);
+      ctk_container_add (CTK_CONTAINER (listbox), row);
 
       /* The first selected row is "normal" */
       if (g_strcmp0 (blend_modes[i].id, "normal") == 0)
@@ -105,7 +105,7 @@ setup_listbox (GtkBuilder       *builder,
     }
 
   /* Select the "normal" row */
-  ctk_list_box_select_row (GTK_LIST_BOX (listbox), GTK_LIST_BOX_ROW (normal_row));
+  ctk_list_box_select_row (CTK_LIST_BOX (listbox), CTK_LIST_BOX_ROW (normal_row));
   g_signal_emit_by_name (G_OBJECT (normal_row), "activate");
 
   ctk_widget_grab_focus (normal_row);
@@ -124,15 +124,15 @@ do_css_blendmodes (GtkWidget *do_widget)
       builder = ctk_builder_new_from_resource ("/css_blendmodes/blendmodes.ui");
 
       window = WID ("window");
-      ctk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (do_widget));
+      ctk_window_set_transient_for (CTK_WINDOW (window), CTK_WINDOW (do_widget));
       g_signal_connect (window, "destroy", G_CALLBACK (ctk_widget_destroyed), &window);
 
       /* Setup the CSS provider for window */
-      provider = GTK_STYLE_PROVIDER (ctk_css_provider_new ());
+      provider = CTK_STYLE_PROVIDER (ctk_css_provider_new ());
 
       ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                                  provider,
-                                                 GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                                 CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
       setup_listbox (builder, provider);
     }
