@@ -642,5 +642,5 @@ How to compile CTK+ itself
 </refentry>
 
 <!-- Local Variables: -->
-<!-- sgml-parent-document: ("gtk-docs.sgml" "chapter" "refentry")  -->
+<!-- sgml-parent-document: ("ctk-docs.sgml" "chapter" "refentry")  -->
 <!-- End: -->

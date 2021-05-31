@@ -6,7 +6,7 @@ AUTOMAKE_OPTIONS = 1.6
 DOC_MODULE=ctk3
 
 # The top-level SGML file.
-DOC_MAIN_SGML_FILE=gtk-docs.sgml
+DOC_MAIN_SGML_FILE=ctk-docs.sgml
 
 # Extra options to supply to gtkdoc-scan
 SCAN_OPTIONS=--deprecated-guards="CTK_ENABLE_BROKEN|CTK_DISABLE_DEPRECATED"
