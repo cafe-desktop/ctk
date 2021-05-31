@@ -33,7 +33,7 @@ typedef struct
 } GtkApplicationQuartzInhibitor;
 
 static void
-gtk_application_quartz_inhibitor_free (GtkApplicationQuartzInhibitor *inhibitor)
+ctk_application_quartz_inhibitor_free (GtkApplicationQuartzInhibitor *inhibitor)
 {
   g_free (inhibitor->reason);
   g_clear_object (&inhibitor->window);
@@ -55,7 +55,7 @@ typedef struct
   NSObject *delegate;
 } GtkApplicationImplQuartz;
 
-G_DEFINE_TYPE (GtkApplicationImplQuartz, gtk_application_impl_quartz, GTK_TYPE_APPLICATION_IMPL)
+G_DEFINE_TYPE (GtkApplicationImplQuartz, ctk_application_impl_quartz, GTK_TYPE_APPLICATION_IMPL)
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
 @interface GtkApplicationQuartzDelegate : NSObject <NSApplicationDelegate>
 #else
@@ -121,7 +121,7 @@ G_DEFINE_TYPE (GtkApplicationImplQuartz, gtk_application_impl_quartz, GTK_TYPE_A
 
 /* these exist only for accel handling */
 static void
-gtk_application_impl_quartz_hide (GSimpleAction *action,
+ctk_application_impl_quartz_hide (GSimpleAction *action,
                                   GVariant      *parameter,
                                   gpointer       user_data)
 {
@@ -129,7 +129,7 @@ gtk_application_impl_quartz_hide (GSimpleAction *action,
 }
 
 static void
-gtk_application_impl_quartz_hide_others (GSimpleAction *action,
+ctk_application_impl_quartz_hide_others (GSimpleAction *action,
                                          GVariant      *parameter,
                                          gpointer       user_data)
 {
@@ -137,21 +137,21 @@ gtk_application_impl_quartz_hide_others (GSimpleAction *action,
 }
 
 static void
-gtk_application_impl_quartz_show_all (GSimpleAction *action,
+ctk_application_impl_quartz_show_all (GSimpleAction *action,
                                       GVariant      *parameter,
                                       gpointer       user_data)
 {
   [NSApp unhideAllApplications:NSApp];
 }
 
-static GActionEntry gtk_application_impl_quartz_actions[] = {
-  { "hide",             gtk_application_impl_quartz_hide        },
-  { "hide-others",      gtk_application_impl_quartz_hide_others },
-  { "show-all",         gtk_application_impl_quartz_show_all    }
+static GActionEntry ctk_application_impl_quartz_actions[] = {
+  { "hide",             ctk_application_impl_quartz_hide        },
+  { "hide-others",      ctk_application_impl_quartz_hide_others },
+  { "show-all",         ctk_application_impl_quartz_show_all    }
 };
 
 static void
-gtk_application_impl_quartz_startup (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_startup (GtkApplicationImpl *impl,
                                      gboolean            register_session)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
@@ -168,24 +168,24 @@ gtk_application_impl_quartz_startup (GtkApplicationImpl *impl,
       [NSApp setDelegate: (id)(quartz->delegate)];
     }
 
-  quartz->muxer = gtk_action_muxer_new ();
-  gtk_action_muxer_set_parent (quartz->muxer, gtk_application_get_action_muxer (impl->application));
+  quartz->muxer = ctk_action_muxer_new ();
+  ctk_action_muxer_set_parent (quartz->muxer, ctk_application_get_action_muxer (impl->application));
 
   /* Add the default accels */
-  gtk_application_set_accels_for_action (impl->application, "app.preferences", pref_accel);
-  gtk_application_set_accels_for_action (impl->application, "gtkinternal.hide-others", hide_others_accel);
-  gtk_application_set_accels_for_action (impl->application, "gtkinternal.hide", hide_accel);
-  gtk_application_set_accels_for_action (impl->application, "app.quit", quit_accel);
+  ctk_application_set_accels_for_action (impl->application, "app.preferences", pref_accel);
+  ctk_application_set_accels_for_action (impl->application, "gtkinternal.hide-others", hide_others_accel);
+  ctk_application_set_accels_for_action (impl->application, "gtkinternal.hide", hide_accel);
+  ctk_application_set_accels_for_action (impl->application, "app.quit", quit_accel);
 
   /* and put code behind the 'special' accels */
   gtkinternal = g_simple_action_group_new ();
-  g_action_map_add_action_entries (G_ACTION_MAP (gtkinternal), gtk_application_impl_quartz_actions,
-                                   G_N_ELEMENTS (gtk_application_impl_quartz_actions), quartz);
-  gtk_application_insert_action_group (impl->application, "gtkinternal", G_ACTION_GROUP (gtkinternal));
+  g_action_map_add_action_entries (G_ACTION_MAP (gtkinternal), ctk_application_impl_quartz_actions,
+                                   G_N_ELEMENTS (ctk_application_impl_quartz_actions), quartz);
+  ctk_application_insert_action_group (impl->application, "gtkinternal", G_ACTION_GROUP (gtkinternal));
   g_object_unref (gtkinternal);
 
   /* now setup the menu */
-  app_menu = gtk_application_get_app_menu (impl->application);
+  app_menu = ctk_application_get_app_menu (impl->application);
   if (app_menu == NULL)
     {
       GtkBuilder *builder;
@@ -195,24 +195,24 @@ gtk_application_impl_quartz_startup (GtkApplicationImpl *impl,
        * The fact that we do this here ensures that we will always have the
        * app menu at index 0 in 'combined'.
        */
-      builder = gtk_builder_new_from_resource ("/org/gtk/libgtk/ui/gtkapplication-quartz.ui");
-      gtk_application_set_app_menu (impl->application, G_MENU_MODEL (gtk_builder_get_object (builder, "app-menu")));
+      builder = ctk_builder_new_from_resource ("/org/gtk/libgtk/ui/gtkapplication-quartz.ui");
+      ctk_application_set_app_menu (impl->application, G_MENU_MODEL (ctk_builder_get_object (builder, "app-menu")));
       g_object_unref (builder);
     }
   else
-    gtk_application_impl_set_app_menu (impl, app_menu);
+    ctk_application_impl_set_app_menu (impl, app_menu);
 
   /* This may or may not add an item to 'combined' */
-  gtk_application_impl_set_menubar (impl, gtk_application_get_menubar (impl->application));
+  ctk_application_impl_set_menubar (impl, ctk_application_get_menubar (impl->application));
 
   /* OK.  Now put it in the menu. */
-  gtk_application_impl_quartz_setup_menu (G_MENU_MODEL (quartz->combined), quartz->muxer);
+  ctk_application_impl_quartz_setup_menu (G_MENU_MODEL (quartz->combined), quartz->muxer);
 
   [NSApp finishLaunching];
 }
 
 static void
-gtk_application_impl_quartz_shutdown (GtkApplicationImpl *impl)
+ctk_application_impl_quartz_shutdown (GtkApplicationImpl *impl)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
 
@@ -225,24 +225,24 @@ gtk_application_impl_quartz_shutdown (GtkApplicationImpl *impl)
       quartz->delegate = NULL;
     }
 
-  g_slist_free_full (quartz->inhibitors, (GDestroyNotify) gtk_application_quartz_inhibitor_free);
+  g_slist_free_full (quartz->inhibitors, (GDestroyNotify) ctk_application_quartz_inhibitor_free);
   quartz->inhibitors = NULL;
 }
 
 static void
-gtk_application_impl_quartz_active_window_changed (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_active_window_changed (GtkApplicationImpl *impl,
                                                    GtkWindow          *window)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
 
-  gtk_action_muxer_remove (quartz->muxer, "win");
+  ctk_action_muxer_remove (quartz->muxer, "win");
 
   if (G_IS_ACTION_GROUP (window))
-    gtk_action_muxer_insert (quartz->muxer, "win", G_ACTION_GROUP (window));
+    ctk_action_muxer_insert (quartz->muxer, "win", G_ACTION_GROUP (window));
 }
 
 static void
-gtk_application_impl_quartz_set_app_menu (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_set_app_menu (GtkApplicationImpl *impl,
                                           GMenuModel         *app_menu)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
@@ -265,7 +265,7 @@ gtk_application_impl_quartz_set_app_menu (GtkApplicationImpl *impl,
 }
 
 static void
-gtk_application_impl_quartz_set_menubar (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_set_menubar (GtkApplicationImpl *impl,
                                          GMenuModel         *menubar)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
@@ -279,7 +279,7 @@ gtk_application_impl_quartz_set_menubar (GtkApplicationImpl *impl,
 }
 
 static guint
-gtk_application_impl_quartz_inhibit (GtkApplicationImpl         *impl,
+ctk_application_impl_quartz_inhibit (GtkApplicationImpl         *impl,
                                      GtkWindow                  *window,
                                      GtkApplicationInhibitFlags  flags,
                                      const gchar                *reason)
@@ -302,7 +302,7 @@ gtk_application_impl_quartz_inhibit (GtkApplicationImpl         *impl,
 }
 
 static void
-gtk_application_impl_quartz_uninhibit (GtkApplicationImpl *impl,
+ctk_application_impl_quartz_uninhibit (GtkApplicationImpl *impl,
                                        guint               cookie)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
@@ -316,7 +316,7 @@ gtk_application_impl_quartz_uninhibit (GtkApplicationImpl *impl,
         {
           if (inhibitor->flags & GTK_APPLICATION_INHIBIT_LOGOUT)
             quartz->quit_inhibit--;
-          gtk_application_quartz_inhibitor_free (inhibitor);
+          ctk_application_quartz_inhibitor_free (inhibitor);
           quartz->inhibitors = g_slist_delete_link (quartz->inhibitors, iter);
           return;
         }
@@ -326,7 +326,7 @@ gtk_application_impl_quartz_uninhibit (GtkApplicationImpl *impl,
 }
 
 static gboolean
-gtk_application_impl_quartz_is_inhibited (GtkApplicationImpl         *impl,
+ctk_application_impl_quartz_is_inhibited (GtkApplicationImpl         *impl,
                                           GtkApplicationInhibitFlags  flags)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
@@ -338,7 +338,7 @@ gtk_application_impl_quartz_is_inhibited (GtkApplicationImpl         *impl,
 }
 
 static void
-gtk_application_impl_quartz_init (GtkApplicationImplQuartz *quartz)
+ctk_application_impl_quartz_init (GtkApplicationImplQuartz *quartz)
 {
   /* This is required so that Cocoa is not going to parse the
      command line arguments by itself and generate OpenFile events.
@@ -351,28 +351,28 @@ gtk_application_impl_quartz_init (GtkApplicationImplQuartz *quartz)
 }
 
 static void
-gtk_application_impl_quartz_finalize (GObject *object)
+ctk_application_impl_quartz_finalize (GObject *object)
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) object;
 
   g_clear_object (&quartz->combined);
 
-  G_OBJECT_CLASS (gtk_application_impl_quartz_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_application_impl_quartz_parent_class)->finalize (object);
 }
 
 static void
-gtk_application_impl_quartz_class_init (GtkApplicationImplClass *class)
+ctk_application_impl_quartz_class_init (GtkApplicationImplClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
-  class->startup = gtk_application_impl_quartz_startup;
-  class->shutdown = gtk_application_impl_quartz_shutdown;
-  class->active_window_changed = gtk_application_impl_quartz_active_window_changed;
-  class->set_app_menu = gtk_application_impl_quartz_set_app_menu;
-  class->set_menubar = gtk_application_impl_quartz_set_menubar;
-  class->inhibit = gtk_application_impl_quartz_inhibit;
-  class->uninhibit = gtk_application_impl_quartz_uninhibit;
-  class->is_inhibited = gtk_application_impl_quartz_is_inhibited;
+  class->startup = ctk_application_impl_quartz_startup;
+  class->shutdown = ctk_application_impl_quartz_shutdown;
+  class->active_window_changed = ctk_application_impl_quartz_active_window_changed;
+  class->set_app_menu = ctk_application_impl_quartz_set_app_menu;
+  class->set_menubar = ctk_application_impl_quartz_set_menubar;
+  class->inhibit = ctk_application_impl_quartz_inhibit;
+  class->uninhibit = ctk_application_impl_quartz_uninhibit;
+  class->is_inhibited = ctk_application_impl_quartz_is_inhibited;
 
-  gobject_class->finalize = gtk_application_impl_quartz_finalize;
+  gobject_class->finalize = ctk_application_impl_quartz_finalize;
 }

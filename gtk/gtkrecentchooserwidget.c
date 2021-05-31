@@ -49,46 +49,46 @@ struct _GtkRecentChooserWidgetPrivate
   GtkWidget *chooser;
 };
 
-static void     gtk_recent_chooser_widget_set_property (GObject               *object,
+static void     ctk_recent_chooser_widget_set_property (GObject               *object,
 						        guint                  prop_id,
 						        const GValue          *value,
 						        GParamSpec            *pspec);
-static void     gtk_recent_chooser_widget_get_property (GObject               *object,
+static void     ctk_recent_chooser_widget_get_property (GObject               *object,
 						        guint                  prop_id,
 						        GValue                *value,
 						        GParamSpec            *pspec);
-static void     gtk_recent_chooser_widget_finalize     (GObject               *object);
+static void     ctk_recent_chooser_widget_finalize     (GObject               *object);
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserWidget,
-		         gtk_recent_chooser_widget,
+		         ctk_recent_chooser_widget,
 			 GTK_TYPE_BOX,
                          G_ADD_PRIVATE (GtkRecentChooserWidget)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
-						_gtk_recent_chooser_delegate_iface_init))
+						_ctk_recent_chooser_delegate_iface_init))
 
 static void
-gtk_recent_chooser_widget_constructed (GObject *gobject)
+ctk_recent_chooser_widget_constructed (GObject *gobject)
 {
   GtkRecentChooserWidget *self = GTK_RECENT_CHOOSER_WIDGET (gobject);
 
-  self->priv->chooser = _gtk_recent_chooser_default_new (self->priv->manager);
+  self->priv->chooser = _ctk_recent_chooser_default_new (self->priv->manager);
 
-  gtk_container_add (GTK_CONTAINER (self), self->priv->chooser);
-  gtk_widget_show (self->priv->chooser);
-  _gtk_recent_chooser_set_delegate (GTK_RECENT_CHOOSER (self),
+  ctk_container_add (GTK_CONTAINER (self), self->priv->chooser);
+  ctk_widget_show (self->priv->chooser);
+  _ctk_recent_chooser_set_delegate (GTK_RECENT_CHOOSER (self),
 				    GTK_RECENT_CHOOSER (self->priv->chooser));
 }
 
 static void
-gtk_recent_chooser_widget_set_property (GObject      *object,
+ctk_recent_chooser_widget_set_property (GObject      *object,
 				        guint         prop_id,
 				        const GValue *value,
 				        GParamSpec   *pspec)
 {
   GtkRecentChooserWidgetPrivate *priv;
 
-  priv = gtk_recent_chooser_widget_get_instance_private (GTK_RECENT_CHOOSER_WIDGET (object));
+  priv = ctk_recent_chooser_widget_get_instance_private (GTK_RECENT_CHOOSER_WIDGET (object));
   
   switch (prop_id)
     {
@@ -102,47 +102,47 @@ gtk_recent_chooser_widget_set_property (GObject      *object,
 }
 
 static void
-gtk_recent_chooser_widget_get_property (GObject    *object,
+ctk_recent_chooser_widget_get_property (GObject    *object,
 				        guint       prop_id,
 				        GValue     *value,
 				        GParamSpec *pspec)
 {
   GtkRecentChooserWidgetPrivate *priv;
 
-  priv = gtk_recent_chooser_widget_get_instance_private (GTK_RECENT_CHOOSER_WIDGET (object));
+  priv = ctk_recent_chooser_widget_get_instance_private (GTK_RECENT_CHOOSER_WIDGET (object));
 
   g_object_get_property (G_OBJECT (priv->chooser), pspec->name, value);
 }
 
 static void
-gtk_recent_chooser_widget_finalize (GObject *object)
+ctk_recent_chooser_widget_finalize (GObject *object)
 {
   GtkRecentChooserWidget *self = GTK_RECENT_CHOOSER_WIDGET (object);
 
   self->priv->manager = NULL;
   
-  G_OBJECT_CLASS (gtk_recent_chooser_widget_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_recent_chooser_widget_parent_class)->finalize (object);
 }
 
 static void
-gtk_recent_chooser_widget_class_init (GtkRecentChooserWidgetClass *klass)
+ctk_recent_chooser_widget_class_init (GtkRecentChooserWidgetClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-  gobject_class->constructed = gtk_recent_chooser_widget_constructed;
-  gobject_class->set_property = gtk_recent_chooser_widget_set_property;
-  gobject_class->get_property = gtk_recent_chooser_widget_get_property;
-  gobject_class->finalize = gtk_recent_chooser_widget_finalize;
+  gobject_class->constructed = ctk_recent_chooser_widget_constructed;
+  gobject_class->set_property = ctk_recent_chooser_widget_set_property;
+  gobject_class->get_property = ctk_recent_chooser_widget_get_property;
+  gobject_class->finalize = ctk_recent_chooser_widget_finalize;
 
-  _gtk_recent_chooser_install_properties (gobject_class);
+  _ctk_recent_chooser_install_properties (gobject_class);
 }
 
 static void
-gtk_recent_chooser_widget_init (GtkRecentChooserWidget *widget)
+ctk_recent_chooser_widget_init (GtkRecentChooserWidget *widget)
 {
-  widget->priv = gtk_recent_chooser_widget_get_instance_private (widget);
+  widget->priv = ctk_recent_chooser_widget_get_instance_private (widget);
 
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (widget),
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (widget),
                                   GTK_ORIENTATION_VERTICAL);
 }
 
@@ -151,7 +151,7 @@ gtk_recent_chooser_widget_init (GtkRecentChooserWidget *widget)
  */
 
 /**
- * gtk_recent_chooser_widget_new:
+ * ctk_recent_chooser_widget_new:
  * 
  * Creates a new #GtkRecentChooserWidget object.  This is an embeddable widget
  * used to access the recently used resources list.
@@ -161,13 +161,13 @@ gtk_recent_chooser_widget_init (GtkRecentChooserWidget *widget)
  * Since: 2.10
  */
 GtkWidget *
-gtk_recent_chooser_widget_new (void)
+ctk_recent_chooser_widget_new (void)
 {
   return g_object_new (GTK_TYPE_RECENT_CHOOSER_WIDGET, NULL);
 }
 
 /**
- * gtk_recent_chooser_widget_new_for_manager:
+ * ctk_recent_chooser_widget_new_for_manager:
  * @manager: a #GtkRecentManager
  *
  * Creates a new #GtkRecentChooserWidget with a specified recent manager.
@@ -180,7 +180,7 @@ gtk_recent_chooser_widget_new (void)
  * Since: 2.10
  */
 GtkWidget *
-gtk_recent_chooser_widget_new_for_manager (GtkRecentManager *manager)
+ctk_recent_chooser_widget_new_for_manager (GtkRecentManager *manager)
 {
   g_return_val_if_fail (manager == NULL || GTK_IS_RECENT_MANAGER (manager), NULL);
   

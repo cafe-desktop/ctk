@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_OFFSCREEN_WINDOW         (gtk_offscreen_window_get_type ())
+#define GTK_TYPE_OFFSCREEN_WINDOW         (ctk_offscreen_window_get_type ())
 #define GTK_OFFSCREEN_WINDOW(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindow))
 #define GTK_OFFSCREEN_WINDOW_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindowClass))
 #define GTK_IS_OFFSCREEN_WINDOW(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_OFFSCREEN_WINDOW))
@@ -53,21 +53,21 @@ struct _GtkOffscreenWindowClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType            gtk_offscreen_window_get_type    (void) G_GNUC_CONST;
+GType            ctk_offscreen_window_get_type    (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget       *gtk_offscreen_window_new         (void);
+GtkWidget       *ctk_offscreen_window_new         (void);
 GDK_AVAILABLE_IN_ALL
-cairo_surface_t *gtk_offscreen_window_get_surface (GtkOffscreenWindow *offscreen);
+cairo_surface_t *ctk_offscreen_window_get_surface (GtkOffscreenWindow *offscreen);
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf       *gtk_offscreen_window_get_pixbuf  (GtkOffscreenWindow *offscreen);
+GdkPixbuf       *ctk_offscreen_window_get_pixbuf  (GtkOffscreenWindow *offscreen);
 
 G_END_DECLS
 

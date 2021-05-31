@@ -1,6 +1,6 @@
 a11y_state_record_bin = executable('state-record',
   'state-record.c',
-  dependencies: libgtk_dep,
+  dependencies: libctk_dep,
   install: get_option('installed_tests'),
   install_dir: installed_test_bindir,
 )
@@ -21,7 +21,7 @@ a11y_installed_tests = [
 
 if get_option('installed_tests')
   test_cdata = configuration_data()
-  test_cdata.set('libexecdir', gtk_libexecdir)
+  test_cdata.set('libexecdir', ctk_libexecdir)
 
   foreach t: a11y_installed_tests
     configure_file(input: '@0@.in'.format(t),

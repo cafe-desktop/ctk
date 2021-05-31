@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GL_AREA                (gtk_gl_area_get_type ())
+#define GTK_TYPE_GL_AREA                (ctk_gl_area_get_type ())
 #define GTK_GL_AREA(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_GL_AREA, GtkGLArea))
 #define GTK_IS_GL_AREA(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_GL_AREA))
 #define GTK_GL_AREA_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_GL_AREA, GtkGLAreaClass))
@@ -80,61 +80,61 @@ struct _GtkGLAreaClass
 };
 
 GDK_AVAILABLE_IN_3_16
-GType gtk_gl_area_get_type (void) G_GNUC_CONST;
+GType ctk_gl_area_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_16
-GtkWidget *     gtk_gl_area_new                         (void);
+GtkWidget *     ctk_gl_area_new                         (void);
 
 GDK_AVAILABLE_IN_3_22
-void            gtk_gl_area_set_use_es                  (GtkGLArea    *area,
+void            ctk_gl_area_set_use_es                  (GtkGLArea    *area,
                                                          gboolean      use_es);
 GDK_AVAILABLE_IN_3_22
-gboolean        gtk_gl_area_get_use_es                  (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_use_es                  (GtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_set_required_version        (GtkGLArea    *area,
+void            ctk_gl_area_set_required_version        (GtkGLArea    *area,
                                                          gint          major,
                                                          gint          minor);
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_get_required_version        (GtkGLArea    *area,
+void            ctk_gl_area_get_required_version        (GtkGLArea    *area,
                                                          gint         *major,
                                                          gint         *minor);
 GDK_AVAILABLE_IN_3_16
-gboolean        gtk_gl_area_get_has_alpha               (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_has_alpha               (GtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_set_has_alpha               (GtkGLArea    *area,
+void            ctk_gl_area_set_has_alpha               (GtkGLArea    *area,
                                                          gboolean      has_alpha);
 GDK_AVAILABLE_IN_3_16
-gboolean        gtk_gl_area_get_has_depth_buffer        (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_has_depth_buffer        (GtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_set_has_depth_buffer        (GtkGLArea    *area,
+void            ctk_gl_area_set_has_depth_buffer        (GtkGLArea    *area,
                                                          gboolean      has_depth_buffer);
 GDK_AVAILABLE_IN_3_16
-gboolean        gtk_gl_area_get_has_stencil_buffer      (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_has_stencil_buffer      (GtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_set_has_stencil_buffer      (GtkGLArea    *area,
+void            ctk_gl_area_set_has_stencil_buffer      (GtkGLArea    *area,
                                                          gboolean      has_stencil_buffer);
 GDK_AVAILABLE_IN_3_16
-gboolean        gtk_gl_area_get_auto_render             (GtkGLArea    *area);
+gboolean        ctk_gl_area_get_auto_render             (GtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_set_auto_render             (GtkGLArea    *area,
+void            ctk_gl_area_set_auto_render             (GtkGLArea    *area,
                                                          gboolean      auto_render);
 GDK_AVAILABLE_IN_3_16
-void           gtk_gl_area_queue_render                 (GtkGLArea    *area);
+void           ctk_gl_area_queue_render                 (GtkGLArea    *area);
 
 
 GDK_AVAILABLE_IN_3_16
-GdkGLContext *  gtk_gl_area_get_context                 (GtkGLArea    *area);
+GdkGLContext *  ctk_gl_area_get_context                 (GtkGLArea    *area);
 
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_make_current                (GtkGLArea    *area);
+void            ctk_gl_area_make_current                (GtkGLArea    *area);
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_attach_buffers              (GtkGLArea    *area);
+void            ctk_gl_area_attach_buffers              (GtkGLArea    *area);
 
 GDK_AVAILABLE_IN_3_16
-void            gtk_gl_area_set_error                   (GtkGLArea    *area,
+void            ctk_gl_area_set_error                   (GtkGLArea    *area,
                                                          const GError *error);
 GDK_AVAILABLE_IN_3_16
-GError *        gtk_gl_area_get_error                   (GtkGLArea    *area);
+GError *        ctk_gl_area_get_error                   (GtkGLArea    *area);
 
 G_END_DECLS
 

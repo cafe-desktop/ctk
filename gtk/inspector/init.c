@@ -52,7 +52,7 @@
 #include "gtkmodulesprivate.h"
 
 void
-gtk_inspector_init (void)
+ctk_inspector_init (void)
 {
   static GIOExtensionPoint *extension_point = NULL;
 
@@ -89,7 +89,7 @@ gtk_inspector_init (void)
       extension_point = g_io_extension_point_register ("gtk-inspector-page");
       g_io_extension_point_set_required_type (extension_point, GTK_TYPE_WIDGET);
 
-      paths = _gtk_get_module_path ("inspector");
+      paths = _ctk_get_module_path ("inspector");
       scope = g_io_module_scope_new (G_IO_MODULE_SCOPE_BLOCK_DUPLICATES);
 
       for (i = 0; paths[i] != NULL; i++)

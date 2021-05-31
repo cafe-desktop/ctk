@@ -1388,7 +1388,7 @@ get_native_grab_event_mask (GdkEventMask grab_mask)
 
 /**
  * gdk_device_grab:
- * @device: a #GdkDevice. To get the device you can use gtk_get_current_event_device()
+ * @device: a #GdkDevice. To get the device you can use ctk_get_current_event_device()
  *   or gdk_event_get_device() if the grab is in reaction to an event. Also, you can use
  *   gdk_device_manager_get_client_pointer() but only in code that isn’t triggered by a
  *   #GdkEvent and there aren’t other means to get a meaningful #GdkDevice to operate on.

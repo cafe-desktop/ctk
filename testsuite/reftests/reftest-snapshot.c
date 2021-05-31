@@ -38,11 +38,11 @@ builder_get_toplevel (GtkBuilder *builder)
   GSList *list, *walk;
   GtkWidget *window = NULL;
 
-  list = gtk_builder_get_objects (builder);
+  list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
     {
       if (GTK_IS_WINDOW (walk->data) &&
-          gtk_widget_get_parent (walk->data) == NULL)
+          ctk_widget_get_parent (walk->data) == NULL)
         {
           window = walk->data;
           break;
@@ -87,10 +87,10 @@ check_for_draw (GdkEvent *event, gpointer data)
   if (event->type == GDK_EXPOSE)
     {
       reftest_uninhibit_snapshot ();
-      gdk_event_handler_set ((GdkEventFunc) gtk_main_do_event, NULL, NULL);
+      gdk_event_handler_set ((GdkEventFunc) ctk_main_do_event, NULL, NULL);
     }
 
-  gtk_main_do_event (event);
+  ctk_main_do_event (event);
 }
 
 static cairo_surface_t *
@@ -100,7 +100,7 @@ snapshot_widget (GtkWidget *widget, SnapshotMode mode)
   cairo_pattern_t *bg;
   cairo_t *cr;
 
-  g_assert (gtk_widget_get_realized (widget));
+  g_assert (ctk_widget_get_realized (widget));
 
   loop = g_main_loop_new (NULL, FALSE);
 
@@ -117,10 +117,10 @@ snapshot_widget (GtkWidget *widget, SnapshotMode mode)
   gdk_event_handler_set (check_for_draw, NULL, NULL);
   g_main_loop_run (loop);
 
-  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
-                                               gtk_widget_get_allocated_width (widget),
-                                               gtk_widget_get_allocated_height (widget));
+                                               ctk_widget_get_allocated_width (widget),
+                                               ctk_widget_get_allocated_height (widget));
 
   cr = cairo_create (surface);
 
@@ -128,7 +128,7 @@ snapshot_widget (GtkWidget *widget, SnapshotMode mode)
     {
     case SNAPSHOT_WINDOW:
       {
-        GdkWindow *window = gtk_widget_get_window (widget);
+        GdkWindow *window = ctk_widget_get_window (widget);
         if (gdk_window_get_window_type (window) == GDK_WINDOW_TOPLEVEL ||
             gdk_window_get_window_type (window) == GDK_WINDOW_FOREIGN)
           {
@@ -145,13 +145,13 @@ snapshot_widget (GtkWidget *widget, SnapshotMode mode)
       }
       break;
     case SNAPSHOT_DRAW:
-      bg = gdk_window_get_background_pattern (gtk_widget_get_window (widget));
+      bg = gdk_window_get_background_pattern (ctk_widget_get_window (widget));
       if (bg)
         {
           cairo_set_source (cr, bg);
           cairo_paint (cr);
         }
-      gtk_widget_draw (widget, cr);
+      ctk_widget_draw (widget, cr);
       break;
     default:
       g_assert_not_reached();
@@ -160,7 +160,7 @@ snapshot_widget (GtkWidget *widget, SnapshotMode mode)
 
   cairo_destroy (cr);
   g_main_loop_unref (loop);
-  gtk_widget_destroy (widget);
+  ctk_widget_destroy (widget);
 
   return surface;
 }
@@ -186,7 +186,7 @@ connect_signals (GtkBuilder    *builder,
   switch (g_strv_length (split))
     {
     case 1:
-      func = gtk_builder_lookup_callback_symbol (builder, split[0]);
+      func = ctk_builder_lookup_callback_symbol (builder, split[0]);
 
       if (func)
         {
@@ -262,16 +262,16 @@ reftest_snapshot_ui_file (const char *ui_file)
 
   directory = g_path_get_dirname (ui_file);
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_file (builder, ui_file, &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_file (builder, ui_file, &error);
   g_assert_no_error (error);
-  gtk_builder_connect_signals_full (builder, connect_signals, directory);
+  ctk_builder_connect_signals_full (builder, connect_signals, directory);
   window = builder_get_toplevel (builder);
   g_object_unref (builder);
   g_free (directory);
   g_assert (window);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
   return snapshot_widget (window, SNAPSHOT_WINDOW);
 }

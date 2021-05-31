@@ -47,7 +47,7 @@ struct _GtkShortcutLabelClass
   GtkBoxClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkShortcutLabel, gtk_shortcut_label, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkShortcutLabel, ctk_shortcut_label, GTK_TYPE_BOX)
 
 enum {
   PROP_0,
@@ -256,9 +256,9 @@ dim_label (const gchar *text)
 {
   GtkWidget *label;
 
-  label = gtk_label_new (text);
-  gtk_widget_show (label);
-  gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
+  label = ctk_label_new (text);
+  ctk_widget_show (label);
+  ctk_style_context_add_class (ctk_widget_get_style_context (label), "dim-label");
 
   return label;
 }
@@ -278,17 +278,17 @@ display_shortcut (GtkContainer    *self,
       GtkWidget *disp;
 
       if (i > 0)
-        gtk_container_add (self, dim_label ("+"));
+        ctk_container_add (self, dim_label ("+"));
 
-      disp = gtk_label_new (keys[i]);
+      disp = ctk_label_new (keys[i]);
       if (i < n_mods)
-        gtk_widget_set_size_request (disp, 50, -1);
+        ctk_widget_set_size_request (disp, 50, -1);
 
-      gtk_style_context_add_class (gtk_widget_get_style_context (disp), "keycap");
-      gtk_label_set_use_markup (GTK_LABEL (disp), TRUE);
+      ctk_style_context_add_class (ctk_widget_get_style_context (disp), "keycap");
+      ctk_label_set_use_markup (GTK_LABEL (disp), TRUE);
 
-      gtk_widget_show (disp);
-      gtk_container_add (self, disp);
+      ctk_widget_show (disp);
+      ctk_container_add (self, disp);
     }
   g_strfreev (keys);
 }
@@ -306,14 +306,14 @@ parse_combination (GtkShortcutLabel *self,
   accels = g_strsplit (str, "&", 0);
   for (k = 0; accels[k]; k++)
     {
-      gtk_accelerator_parse (accels[k], &key, &modifier);
+      ctk_accelerator_parse (accels[k], &key, &modifier);
       if (key == 0 && modifier == 0)
         {
           retval = FALSE;
           break;
         }
       if (k > 0)
-        gtk_container_add (GTK_CONTAINER (self), dim_label ("+"));
+        ctk_container_add (GTK_CONTAINER (self), dim_label ("+"));
 
       display_shortcut (GTK_CONTAINER (self), key, modifier);
     }
@@ -359,7 +359,7 @@ parse_range (GtkShortcutLabel *self,
   if (!parse_sequence (self, str))
     return FALSE;
 
-  gtk_container_add (GTK_CONTAINER (self), dim_label ("⋯"));
+  ctk_container_add (GTK_CONTAINER (self), dim_label ("⋯"));
 
   if (!parse_sequence (self, dots + 3))
     return FALSE;
@@ -368,21 +368,21 @@ parse_range (GtkShortcutLabel *self,
 }
 
 static void
-gtk_shortcut_label_rebuild (GtkShortcutLabel *self)
+ctk_shortcut_label_rebuild (GtkShortcutLabel *self)
 {
   gchar **accels;
   gint k;
 
-  gtk_container_foreach (GTK_CONTAINER (self), (GtkCallback)gtk_widget_destroy, NULL);
+  ctk_container_foreach (GTK_CONTAINER (self), (GtkCallback)ctk_widget_destroy, NULL);
 
   if (self->accelerator == NULL || self->accelerator[0] == '\0')
     {
       GtkWidget *label;
 
       label = dim_label (self->disabled_text);
-      gtk_widget_show (label);
+      ctk_widget_show (label);
 
-      gtk_container_add (GTK_CONTAINER (self), label);
+      ctk_container_add (GTK_CONTAINER (self), label);
       return;
     }
 
@@ -390,7 +390,7 @@ gtk_shortcut_label_rebuild (GtkShortcutLabel *self)
   for (k = 0; accels[k]; k++)
     {
       if (k > 0)
-        gtk_container_add (GTK_CONTAINER (self), dim_label ("/"));
+        ctk_container_add (GTK_CONTAINER (self), dim_label ("/"));
 
       if (!parse_range (self, accels[k]))
         {
@@ -402,18 +402,18 @@ gtk_shortcut_label_rebuild (GtkShortcutLabel *self)
 }
 
 static void
-gtk_shortcut_label_finalize (GObject *object)
+ctk_shortcut_label_finalize (GObject *object)
 {
   GtkShortcutLabel *self = (GtkShortcutLabel *)object;
 
   g_free (self->accelerator);
   g_free (self->disabled_text);
 
-  G_OBJECT_CLASS (gtk_shortcut_label_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_shortcut_label_parent_class)->finalize (object);
 }
 
 static void
-gtk_shortcut_label_get_property (GObject    *object,
+ctk_shortcut_label_get_property (GObject    *object,
                                  guint       prop_id,
                                  GValue     *value,
                                  GParamSpec *pspec)
@@ -423,11 +423,11 @@ gtk_shortcut_label_get_property (GObject    *object,
   switch (prop_id)
     {
     case PROP_ACCELERATOR:
-      g_value_set_string (value, gtk_shortcut_label_get_accelerator (self));
+      g_value_set_string (value, ctk_shortcut_label_get_accelerator (self));
       break;
 
     case PROP_DISABLED_TEXT:
-      g_value_set_string (value, gtk_shortcut_label_get_disabled_text (self));
+      g_value_set_string (value, ctk_shortcut_label_get_disabled_text (self));
       break;
 
     default:
@@ -436,7 +436,7 @@ gtk_shortcut_label_get_property (GObject    *object,
 }
 
 static void
-gtk_shortcut_label_set_property (GObject      *object,
+ctk_shortcut_label_set_property (GObject      *object,
                                  guint         prop_id,
                                  const GValue *value,
                                  GParamSpec   *pspec)
@@ -446,11 +446,11 @@ gtk_shortcut_label_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_ACCELERATOR:
-      gtk_shortcut_label_set_accelerator (self, g_value_get_string (value));
+      ctk_shortcut_label_set_accelerator (self, g_value_get_string (value));
       break;
 
     case PROP_DISABLED_TEXT:
-      gtk_shortcut_label_set_disabled_text (self, g_value_get_string (value));
+      ctk_shortcut_label_set_disabled_text (self, g_value_get_string (value));
       break;
 
     default:
@@ -459,13 +459,13 @@ gtk_shortcut_label_set_property (GObject      *object,
 }
 
 static void
-gtk_shortcut_label_class_init (GtkShortcutLabelClass *klass)
+ctk_shortcut_label_class_init (GtkShortcutLabelClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_shortcut_label_finalize;
-  object_class->get_property = gtk_shortcut_label_get_property;
-  object_class->set_property = gtk_shortcut_label_set_property;
+  object_class->finalize = ctk_shortcut_label_finalize;
+  object_class->get_property = ctk_shortcut_label_get_property;
+  object_class->set_property = ctk_shortcut_label_set_property;
 
   /**
    * GtkShortcutLabel:accelerator:
@@ -496,16 +496,16 @@ gtk_shortcut_label_class_init (GtkShortcutLabelClass *klass)
 }
 
 static void
-gtk_shortcut_label_init (GtkShortcutLabel *self)
+ctk_shortcut_label_init (GtkShortcutLabel *self)
 {
-  gtk_box_set_spacing (GTK_BOX (self), 6);
+  ctk_box_set_spacing (GTK_BOX (self), 6);
 
   /* Always use LTR so that modifiers are always left to the keyval */
-  gtk_widget_set_direction (GTK_WIDGET (self), GTK_TEXT_DIR_LTR);
+  ctk_widget_set_direction (GTK_WIDGET (self), GTK_TEXT_DIR_LTR);
 }
 
 /**
- * gtk_shortcut_label_new:
+ * ctk_shortcut_label_new:
  * @accelerator: the initial accelerator
  *
  * Creates a new #GtkShortcutLabel with @accelerator set.
@@ -515,7 +515,7 @@ gtk_shortcut_label_init (GtkShortcutLabel *self)
  * Since: 3.22
  */
 GtkWidget *
-gtk_shortcut_label_new (const gchar *accelerator)
+ctk_shortcut_label_new (const gchar *accelerator)
 {
   return g_object_new (GTK_TYPE_SHORTCUT_LABEL,
                        "accelerator", accelerator,
@@ -523,7 +523,7 @@ gtk_shortcut_label_new (const gchar *accelerator)
 }
 
 /**
- * gtk_shortcut_label_get_accelerator:
+ * ctk_shortcut_label_get_accelerator:
  * @self: a #GtkShortcutLabel
  *
  * Retrieves the current accelerator of @self.
@@ -533,7 +533,7 @@ gtk_shortcut_label_new (const gchar *accelerator)
  * Since: 3.22
  */
 const gchar *
-gtk_shortcut_label_get_accelerator (GtkShortcutLabel *self)
+ctk_shortcut_label_get_accelerator (GtkShortcutLabel *self)
 {
   g_return_val_if_fail (GTK_IS_SHORTCUT_LABEL (self), NULL);
 
@@ -541,7 +541,7 @@ gtk_shortcut_label_get_accelerator (GtkShortcutLabel *self)
 }
 
 /**
- * gtk_shortcut_label_set_accelerator:
+ * ctk_shortcut_label_set_accelerator:
  * @self: a #GtkShortcutLabel
  * @accelerator: the new accelerator
  *
@@ -550,7 +550,7 @@ gtk_shortcut_label_get_accelerator (GtkShortcutLabel *self)
  * Since: 3.22
  */
 void
-gtk_shortcut_label_set_accelerator (GtkShortcutLabel *self,
+ctk_shortcut_label_set_accelerator (GtkShortcutLabel *self,
                                     const gchar      *accelerator)
 {
   g_return_if_fail (GTK_IS_SHORTCUT_LABEL (self));
@@ -559,13 +559,13 @@ gtk_shortcut_label_set_accelerator (GtkShortcutLabel *self,
     {
       g_free (self->accelerator);
       self->accelerator = g_strdup (accelerator);
-      gtk_shortcut_label_rebuild (self);
+      ctk_shortcut_label_rebuild (self);
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ACCELERATOR]);
     }
 }
 
 /**
- * gtk_shortcut_label_get_disabled_text:
+ * ctk_shortcut_label_get_disabled_text:
  * @self: a #GtkShortcutLabel
  *
  * Retrieves the text that is displayed when no accelerator is set.
@@ -576,7 +576,7 @@ gtk_shortcut_label_set_accelerator (GtkShortcutLabel *self,
  * Since: 3.22
  */
 const gchar *
-gtk_shortcut_label_get_disabled_text (GtkShortcutLabel *self)
+ctk_shortcut_label_get_disabled_text (GtkShortcutLabel *self)
 {
   g_return_val_if_fail (GTK_IS_SHORTCUT_LABEL (self), NULL);
 
@@ -584,7 +584,7 @@ gtk_shortcut_label_get_disabled_text (GtkShortcutLabel *self)
 }
 
 /**
- * gtk_shortcut_label_set_disabled_text:
+ * ctk_shortcut_label_set_disabled_text:
  * @self: a #GtkShortcutLabel
  * @disabled_text: the text to be displayed when no accelerator is set
  *
@@ -593,7 +593,7 @@ gtk_shortcut_label_get_disabled_text (GtkShortcutLabel *self)
  * Since: 3.22
  */
 void
-gtk_shortcut_label_set_disabled_text (GtkShortcutLabel *self,
+ctk_shortcut_label_set_disabled_text (GtkShortcutLabel *self,
                                       const gchar      *disabled_text)
 {
   g_return_if_fail (GTK_IS_SHORTCUT_LABEL (self));
@@ -602,7 +602,7 @@ gtk_shortcut_label_set_disabled_text (GtkShortcutLabel *self,
     {
       g_free (self->disabled_text);
       self->disabled_text = g_strdup (disabled_text);
-      gtk_shortcut_label_rebuild (self);
+      ctk_shortcut_label_rebuild (self);
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_DISABLED_TEXT]);
     }
 }

@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_ITEM            (gtk_menu_item_get_type ())
+#define GTK_TYPE_MENU_ITEM            (ctk_menu_item_get_type ())
 #define GTK_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU_ITEM, GtkMenuItem))
 #define GTK_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU_ITEM, GtkMenuItemClass))
 #define GTK_IS_MENU_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU_ITEM))
@@ -100,67 +100,67 @@ struct _GtkMenuItemClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_menu_item_get_type             (void) G_GNUC_CONST;
+GType      ctk_menu_item_get_type             (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_menu_item_new                  (void);
+GtkWidget* ctk_menu_item_new                  (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_menu_item_new_with_label       (const gchar         *label);
+GtkWidget* ctk_menu_item_new_with_label       (const gchar         *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_menu_item_new_with_mnemonic    (const gchar         *label);
+GtkWidget* ctk_menu_item_new_with_mnemonic    (const gchar         *label);
 GDK_AVAILABLE_IN_ALL
-void       gtk_menu_item_set_submenu          (GtkMenuItem         *menu_item,
+void       ctk_menu_item_set_submenu          (GtkMenuItem         *menu_item,
                                                GtkWidget           *submenu);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_menu_item_get_submenu          (GtkMenuItem         *menu_item);
+GtkWidget* ctk_menu_item_get_submenu          (GtkMenuItem         *menu_item);
 GDK_AVAILABLE_IN_ALL
-void       gtk_menu_item_select               (GtkMenuItem         *menu_item);
+void       ctk_menu_item_select               (GtkMenuItem         *menu_item);
 GDK_AVAILABLE_IN_ALL
-void       gtk_menu_item_deselect             (GtkMenuItem         *menu_item);
+void       ctk_menu_item_deselect             (GtkMenuItem         *menu_item);
 GDK_AVAILABLE_IN_ALL
-void       gtk_menu_item_activate             (GtkMenuItem         *menu_item);
+void       ctk_menu_item_activate             (GtkMenuItem         *menu_item);
 GDK_AVAILABLE_IN_ALL
-void       gtk_menu_item_toggle_size_request  (GtkMenuItem         *menu_item,
+void       ctk_menu_item_toggle_size_request  (GtkMenuItem         *menu_item,
                                                gint                *requisition);
 GDK_AVAILABLE_IN_ALL
-void       gtk_menu_item_toggle_size_allocate (GtkMenuItem         *menu_item,
+void       ctk_menu_item_toggle_size_allocate (GtkMenuItem         *menu_item,
                                                gint                 allocation);
 GDK_DEPRECATED_IN_3_2
-void       gtk_menu_item_set_right_justified  (GtkMenuItem         *menu_item,
+void       ctk_menu_item_set_right_justified  (GtkMenuItem         *menu_item,
                                                gboolean             right_justified);
 GDK_DEPRECATED_IN_3_2
-gboolean   gtk_menu_item_get_right_justified  (GtkMenuItem         *menu_item);
+gboolean   ctk_menu_item_get_right_justified  (GtkMenuItem         *menu_item);
 GDK_AVAILABLE_IN_ALL
-void          gtk_menu_item_set_accel_path    (GtkMenuItem         *menu_item,
+void          ctk_menu_item_set_accel_path    (GtkMenuItem         *menu_item,
                                                const gchar         *accel_path);
 GDK_AVAILABLE_IN_ALL
-const gchar * gtk_menu_item_get_accel_path    (GtkMenuItem    *menu_item);
+const gchar * ctk_menu_item_get_accel_path    (GtkMenuItem    *menu_item);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_menu_item_set_label         (GtkMenuItem         *menu_item,
+void          ctk_menu_item_set_label         (GtkMenuItem         *menu_item,
                                                const gchar         *label);
 GDK_AVAILABLE_IN_ALL
-const gchar * gtk_menu_item_get_label         (GtkMenuItem         *menu_item);
+const gchar * ctk_menu_item_get_label         (GtkMenuItem         *menu_item);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_menu_item_set_use_underline    (GtkMenuItem         *menu_item,
+void       ctk_menu_item_set_use_underline    (GtkMenuItem         *menu_item,
                                                gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_menu_item_get_use_underline    (GtkMenuItem         *menu_item);
+gboolean   ctk_menu_item_get_use_underline    (GtkMenuItem         *menu_item);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_menu_item_set_reserve_indicator (GtkMenuItem        *menu_item,
+void       ctk_menu_item_set_reserve_indicator (GtkMenuItem        *menu_item,
                                                 gboolean            reserve);
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_menu_item_get_reserve_indicator (GtkMenuItem        *menu_item);
+gboolean   ctk_menu_item_get_reserve_indicator (GtkMenuItem        *menu_item);
 
 G_END_DECLS
 

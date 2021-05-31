@@ -432,7 +432,7 @@ serialize_text (GtkTextBuffer        *buffer,
       GList *tmp;
       gchar *tmp_text, *escaped_text;
 
-      new_tag_list = gtk_text_iter_get_tags (&iter);
+      new_tag_list = ctk_text_iter_get_tags (&iter);
       find_list_delta (tag_list, new_tag_list, &added, &removed);
 
       /* Handle removed tags */
@@ -507,21 +507,21 @@ serialize_text (GtkTextBuffer        *buffer,
       /* Now try to go to either the next tag toggle, or if a pixbuf appears */
       while (TRUE)
 	{
-	  gunichar ch = gtk_text_iter_get_char (&iter);
+	  gunichar ch = ctk_text_iter_get_char (&iter);
 
 	  if (ch == 0xFFFC)
 	    {
-	      GdkPixbuf *pixbuf = gtk_text_iter_get_pixbuf (&iter);
+	      GdkPixbuf *pixbuf = ctk_text_iter_get_pixbuf (&iter);
 
 	      if (pixbuf)
 		{
 		  /* Append the text before the pixbuf */
-		  tmp_text = gtk_text_iter_get_slice (&old_iter, &iter);
+		  tmp_text = ctk_text_iter_get_slice (&old_iter, &iter);
 		  escaped_text = g_markup_escape_text (tmp_text, -1);
 		  g_free (tmp_text);
 
 		  /* Forward so we don't get the 0xfffc char */
-		  gtk_text_iter_forward_char (&iter);
+		  ctk_text_iter_forward_char (&iter);
 		  old_iter = iter;
 
 		  g_string_append (context->text_str, escaped_text);
@@ -538,25 +538,25 @@ serialize_text (GtkTextBuffer        *buffer,
                 break;
             }
 	  else
-	    gtk_text_iter_forward_char (&iter);
+	    ctk_text_iter_forward_char (&iter);
 
-	  if (gtk_text_iter_toggles_tag (&iter, NULL))
+	  if (ctk_text_iter_toggles_tag (&iter, NULL))
 	    break;
 	}
 
       /* We might have moved too far */
-      if (gtk_text_iter_compare (&iter, &context->end) > 0)
+      if (ctk_text_iter_compare (&iter, &context->end) > 0)
 	iter = context->end;
 
       /* Append the text */
-      tmp_text = gtk_text_iter_get_slice (&old_iter, &iter);
+      tmp_text = ctk_text_iter_get_slice (&old_iter, &iter);
       escaped_text = g_markup_escape_text (tmp_text, -1);
       g_free (tmp_text);
 
       g_string_append (context->text_str, escaped_text);
       g_free (escaped_text);
     }
-  while (!gtk_text_iter_equal (&iter, &context->end));
+  while (!ctk_text_iter_equal (&iter, &context->end));
 
   g_slist_free (tag_list);
 
@@ -593,7 +593,7 @@ serialize_pixbufs (SerializationContext *context,
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 guint8 *
-_gtk_text_buffer_serialize_rich_text (GtkTextBuffer     *register_buffer,
+_ctk_text_buffer_serialize_rich_text (GtkTextBuffer     *register_buffer,
                                       GtkTextBuffer     *content_buffer,
                                       const GtkTextIter *start,
                                       const GtkTextIter *end,
@@ -1000,7 +1000,7 @@ tag_exists (GMarkupParseContext *context,
   GtkTextTagTable *tag_table;
   const gchar *real_name;
 
-  tag_table = gtk_text_buffer_get_tag_table (info->buffer);
+  tag_table = ctk_text_buffer_get_tag_table (info->buffer);
 
   if (info->create_tags)
     {
@@ -1013,11 +1013,11 @@ tag_exists (GMarkupParseContext *context,
       real_name = g_hash_table_lookup (info->substitutions, name);
 
       if (real_name)
-	return gtk_text_tag_table_lookup (tag_table, real_name);
+	return ctk_text_tag_table_lookup (tag_table, real_name);
 
       /* Next, try the list of defined tags */
       if (g_hash_table_lookup (info->defined_tags, name) != NULL)
-	return gtk_text_tag_table_lookup (tag_table, name);
+	return ctk_text_tag_table_lookup (tag_table, name);
 
       set_error (error, context,
 		 G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
@@ -1037,7 +1037,7 @@ tag_exists (GMarkupParseContext *context,
 	  return NULL;
 	}
 
-      tag = gtk_text_tag_table_lookup (tag_table, name);
+      tag = ctk_text_tag_table_lookup (tag_table, name);
 
       if (tag)
 	return tag;
@@ -1240,9 +1240,9 @@ get_tag_name (ParseInfo   *info,
     return name;
 
   i = 0;
-  tag_table = gtk_text_buffer_get_tag_table (info->buffer);
+  tag_table = ctk_text_buffer_get_tag_table (info->buffer);
 
-  while (gtk_text_tag_table_lookup (tag_table, name) != NULL)
+  while (ctk_text_tag_table_lookup (tag_table, name) != NULL)
     {
       g_free (name);
       name = g_strdup_printf ("%s-%d", tag_name, ++i);
@@ -1308,12 +1308,12 @@ parse_tag_element (GMarkupParseContext  *context,
       if (name)
 	{
 	  tag_name = get_tag_name (info, name);
-	  info->current_tag = gtk_text_tag_new (tag_name);
+	  info->current_tag = ctk_text_tag_new (tag_name);
 	  g_free (tag_name);
 	}
       else
 	{
-	  info->current_tag = gtk_text_tag_new (NULL);
+	  info->current_tag = ctk_text_tag_new (NULL);
 	  info->current_tag_id = id;
 	}
 
@@ -1463,7 +1463,7 @@ end_element_handler (GMarkupParseContext  *context,
 	  TextTagPrio *prio = list->data;
 
 	  if (info->create_tags)
-	    gtk_text_tag_table_add (gtk_text_buffer_get_tag_table (info->buffer),
+	    ctk_text_tag_table_add (ctk_text_buffer_get_tag_table (info->buffer),
 	                            prio->tag);
 
 	  g_object_unref (prio->tag);
@@ -1680,7 +1680,7 @@ insert_text (ParseInfo   *info,
 
   start_iter = *iter;
 
-  mark = gtk_text_buffer_create_mark (info->buffer, "deserialize_insert_point",
+  mark = ctk_text_buffer_create_mark (info->buffer, "deserialize_insert_point",
   				      &start_iter, TRUE);
 
   tmp = info->spans;
@@ -1689,13 +1689,13 @@ insert_text (ParseInfo   *info,
       TextSpan *span = tmp->data;
 
       if (span->text)
-	gtk_text_buffer_insert (info->buffer, iter, span->text, -1);
+	ctk_text_buffer_insert (info->buffer, iter, span->text, -1);
       else
 	{
-	  gtk_text_buffer_insert_pixbuf (info->buffer, iter, span->pixbuf);
+	  ctk_text_buffer_insert_pixbuf (info->buffer, iter, span->pixbuf);
 	  g_object_unref (span->pixbuf);
 	}
-      gtk_text_buffer_get_iter_at_mark (info->buffer, &start_iter, mark);
+      ctk_text_buffer_get_iter_at_mark (info->buffer, &start_iter, mark);
 
       /* Apply tags */
       tags = span->tags;
@@ -1703,18 +1703,18 @@ insert_text (ParseInfo   *info,
 	{
 	  GtkTextTag *tag = tags->data;
 
-	  gtk_text_buffer_apply_tag (info->buffer, tag,
+	  ctk_text_buffer_apply_tag (info->buffer, tag,
 				     &start_iter, iter);
 
 	  tags = tags->next;
 	}
 
-      gtk_text_buffer_move_mark (info->buffer, mark, iter);
+      ctk_text_buffer_move_mark (info->buffer, mark, iter);
 
       tmp = tmp->next;
     }
 
-  gtk_text_buffer_delete_mark (info->buffer, mark);
+  ctk_text_buffer_delete_mark (info->buffer, mark);
 }
 
 
@@ -1845,7 +1845,7 @@ deserialize_text (GtkTextBuffer *buffer,
 }
 
 gboolean
-_gtk_text_buffer_deserialize_rich_text (GtkTextBuffer *register_buffer,
+_ctk_text_buffer_deserialize_rich_text (GtkTextBuffer *register_buffer,
                                         GtkTextBuffer *content_buffer,
                                         GtkTextIter   *iter,
                                         const guint8  *text,

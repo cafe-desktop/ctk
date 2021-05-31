@@ -30,7 +30,7 @@ static void
 action_test_setup (ActionTest    *fixture,
                    gconstpointer  test_data)
 {
-  fixture->action = gtk_action_new ("name", "label", NULL, NULL);
+  fixture->action = ctk_action_new ("name", "label", NULL, NULL);
 }
 
 static void
@@ -53,19 +53,19 @@ static void
 menu_item_label_notify_count (ActionTest    *fixture,
                               gconstpointer  test_data)
 {
-  GtkWidget *item = gtk_menu_item_new ();
+  GtkWidget *item = ctk_menu_item_new ();
   unsigned int emmisions = 0;
 
   g_object_ref_sink (item);
   g_signal_connect (item, "notify::label",
 		    G_CALLBACK (notify_count_emmisions), &emmisions);
 
-  gtk_activatable_do_set_related_action (GTK_ACTIVATABLE (item),
+  ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (item),
 					 fixture->action);
 
   g_assert_cmpuint (emmisions, ==, 1);
 
-  gtk_action_set_label (fixture->action, "new label");
+  ctk_action_set_label (fixture->action, "new label");
 
   g_assert_cmpuint (emmisions, ==, 2);
 
@@ -109,104 +109,104 @@ g_test_action_muxer (void)
   GActionGroup *group2;
   GActionGroup *grp;
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  button = gtk_button_new_with_label ("test");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  button = ctk_button_new_with_label ("test");
 
-  gtk_container_add (GTK_CONTAINER (window), box);
-  gtk_container_add (GTK_CONTAINER (box), button);
+  ctk_container_add (GTK_CONTAINER (window), box);
+  ctk_container_add (GTK_CONTAINER (box), button);
 
   win = G_ACTION_GROUP (g_simple_action_group_new ());
-  gtk_widget_insert_action_group (window, "win", win);
+  ctk_widget_insert_action_group (window, "win", win);
 
-  prefixes = gtk_widget_list_action_prefixes (window);
+  prefixes = ctk_widget_list_action_prefixes (window);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected));
   g_free (prefixes);
 
-  prefixes = gtk_widget_list_action_prefixes (box);
+  prefixes = ctk_widget_list_action_prefixes (box);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected));
   g_free (prefixes);
 
-  prefixes = gtk_widget_list_action_prefixes (button);
+  prefixes = ctk_widget_list_action_prefixes (button);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected));
   g_free (prefixes);
 
-  grp = gtk_widget_get_action_group (window, "win");
+  grp = ctk_widget_get_action_group (window, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (window, "bla");
+  grp = ctk_widget_get_action_group (window, "bla");
   g_assert (grp == NULL);
 
-  grp = gtk_widget_get_action_group (box, "win");
+  grp = ctk_widget_get_action_group (box, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (box, "bla");
+  grp = ctk_widget_get_action_group (box, "bla");
   g_assert (grp == NULL);
 
-  grp = gtk_widget_get_action_group (button, "win");
+  grp = ctk_widget_get_action_group (button, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (button, "bla");
+  grp = ctk_widget_get_action_group (button, "bla");
   g_assert (grp == NULL);
 
   group1 = G_ACTION_GROUP (g_simple_action_group_new ());
-  gtk_widget_insert_action_group (button, "group1", group1);
+  ctk_widget_insert_action_group (button, "group1", group1);
 
-  prefixes = gtk_widget_list_action_prefixes (window);
+  prefixes = ctk_widget_list_action_prefixes (window);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected));
   g_free (prefixes);
 
-  prefixes = gtk_widget_list_action_prefixes (box);
+  prefixes = ctk_widget_list_action_prefixes (box);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected));
   g_free (prefixes);
 
-  prefixes = gtk_widget_list_action_prefixes (button);
+  prefixes = ctk_widget_list_action_prefixes (button);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected1));
   g_free (prefixes);
 
-  grp = gtk_widget_get_action_group (window, "win");
+  grp = ctk_widget_get_action_group (window, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (window, "group1");
+  grp = ctk_widget_get_action_group (window, "group1");
   g_assert (grp == NULL);
 
-  grp = gtk_widget_get_action_group (box, "win");
+  grp = ctk_widget_get_action_group (box, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (box, "group1");
+  grp = ctk_widget_get_action_group (box, "group1");
   g_assert (grp == NULL);
 
-  grp = gtk_widget_get_action_group (button, "win");
+  grp = ctk_widget_get_action_group (button, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (button, "group1");
+  grp = ctk_widget_get_action_group (button, "group1");
   g_assert (grp == group1);
 
   group2 = G_ACTION_GROUP (g_simple_action_group_new ());
-  gtk_widget_insert_action_group (box, "group2", group2);
+  ctk_widget_insert_action_group (box, "group2", group2);
 
-  prefixes = gtk_widget_list_action_prefixes (window);
+  prefixes = ctk_widget_list_action_prefixes (window);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected));
   g_free (prefixes);
 
-  prefixes = gtk_widget_list_action_prefixes (box);
+  prefixes = ctk_widget_list_action_prefixes (box);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected2));
   g_free (prefixes);
 
-  prefixes = gtk_widget_list_action_prefixes (button);
+  prefixes = ctk_widget_list_action_prefixes (button);
   g_assert (g_strv_equal ((const char * const *)prefixes, expected3));
   g_free (prefixes);
 
-  grp = gtk_widget_get_action_group (window, "win");
+  grp = ctk_widget_get_action_group (window, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (window, "group2");
+  grp = ctk_widget_get_action_group (window, "group2");
   g_assert (grp == NULL);
 
-  grp = gtk_widget_get_action_group (box, "win");
+  grp = ctk_widget_get_action_group (box, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (box, "group2");
+  grp = ctk_widget_get_action_group (box, "group2");
   g_assert (grp == group2);
 
-  grp = gtk_widget_get_action_group (button, "win");
+  grp = ctk_widget_get_action_group (button, "win");
   g_assert (grp == win);
-  grp = gtk_widget_get_action_group (button, "group2");
+  grp = ctk_widget_get_action_group (button, "group2");
   g_assert (grp == group2);
 
-  gtk_widget_destroy (window);
+  ctk_widget_destroy (window);
   g_object_unref (win);
   g_object_unref (group1);
   g_object_unref (group2);
@@ -220,25 +220,25 @@ test_reinsert (void)
   GtkWidget *widget;
   GActionGroup *group;
 
-  widget = gtk_label_new ("");
+  widget = ctk_label_new ("");
   group = G_ACTION_GROUP (g_simple_action_group_new ());
 
-  gtk_widget_insert_action_group (widget, "test", group);
-  g_assert (gtk_widget_get_action_group (widget, "test") == group);
+  ctk_widget_insert_action_group (widget, "test", group);
+  g_assert (ctk_widget_get_action_group (widget, "test") == group);
 
   g_clear_object (&group);
 
-  group = gtk_widget_get_action_group (widget, "test");
-  gtk_widget_insert_action_group (widget, "test", group);
+  group = ctk_widget_get_action_group (widget, "test");
+  ctk_widget_insert_action_group (widget, "test", group);
 
-  gtk_widget_destroy (widget);
+  ctk_widget_destroy (widget);
 }
 
 int
 main (int    argc,
       char **argv)
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_add ("/Action/MenuItem/label-notify-count",
               ActionTest, NULL,

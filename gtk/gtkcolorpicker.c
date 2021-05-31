@@ -24,16 +24,16 @@
 #include <gio/gio.h>
 
 
-G_DEFINE_INTERFACE_WITH_CODE (GtkColorPicker, gtk_color_picker, G_TYPE_OBJECT,
+G_DEFINE_INTERFACE_WITH_CODE (GtkColorPicker, ctk_color_picker, G_TYPE_OBJECT,
                               g_type_interface_add_prerequisite (g_define_type_id, G_TYPE_INITABLE);)
 
 static void
-gtk_color_picker_default_init (GtkColorPickerInterface *iface)
+ctk_color_picker_default_init (GtkColorPickerInterface *iface)
 {
 }
 
 void
-gtk_color_picker_pick (GtkColorPicker      *picker,
+ctk_color_picker_pick (GtkColorPicker      *picker,
                        GAsyncReadyCallback  callback,
                        gpointer             user_data)
 {
@@ -41,7 +41,7 @@ gtk_color_picker_pick (GtkColorPicker      *picker,
 }
 
 GdkRGBA *
-gtk_color_picker_pick_finish (GtkColorPicker  *picker,
+ctk_color_picker_pick_finish (GtkColorPicker  *picker,
                               GAsyncResult    *res,
                               GError         **error)
 {
@@ -49,15 +49,15 @@ gtk_color_picker_pick_finish (GtkColorPicker  *picker,
 }
 
 GtkColorPicker *
-gtk_color_picker_new (void)
+ctk_color_picker_new (void)
 {
   GtkColorPicker *picker;
 
-  picker = gtk_color_picker_portal_new ();
+  picker = ctk_color_picker_portal_new ();
   if (!picker)
-    picker = gtk_color_picker_shell_new ();
+    picker = ctk_color_picker_shell_new ();
   if (!picker)
-    picker = gtk_color_picker_kwin_new ();
+    picker = ctk_color_picker_kwin_new ();
 
   if (!picker)
     g_debug ("No suitable GtkColorPicker implementation");

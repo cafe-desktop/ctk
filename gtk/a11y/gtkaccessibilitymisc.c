@@ -22,31 +22,31 @@
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
-G_DEFINE_TYPE (GtkMiscImpl, _gtk_misc_impl, ATK_TYPE_MISC)
+G_DEFINE_TYPE (GtkMiscImpl, _ctk_misc_impl, ATK_TYPE_MISC)
 
 static void
-gtk_misc_impl_threads_enter (AtkMisc *misc)
+ctk_misc_impl_threads_enter (AtkMisc *misc)
 {
   gdk_threads_enter ();
 }
 
 static void
-gtk_misc_impl_threads_leave (AtkMisc *misc)
+ctk_misc_impl_threads_leave (AtkMisc *misc)
 {
   gdk_threads_leave ();
 }
 
 static void
-_gtk_misc_impl_class_init (GtkMiscImplClass *klass)
+_ctk_misc_impl_class_init (GtkMiscImplClass *klass)
 {
   AtkMiscClass *misc_class = ATK_MISC_CLASS (klass);
 
-  misc_class->threads_enter = gtk_misc_impl_threads_enter;
-  misc_class->threads_leave = gtk_misc_impl_threads_leave;
+  misc_class->threads_enter = ctk_misc_impl_threads_enter;
+  misc_class->threads_leave = ctk_misc_impl_threads_leave;
 }
 
 static void
-_gtk_misc_impl_init (GtkMiscImpl *misc)
+_ctk_misc_impl_init (GtkMiscImpl *misc)
 {
 }
 

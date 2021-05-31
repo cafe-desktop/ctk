@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_SWIPE         (gtk_gesture_swipe_get_type ())
+#define GTK_TYPE_GESTURE_SWIPE         (ctk_gesture_swipe_get_type ())
 #define GTK_GESTURE_SWIPE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_SWIPE, GtkGestureSwipe))
 #define GTK_GESTURE_SWIPE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_SWIPE, GtkGestureSwipeClass))
 #define GTK_IS_GESTURE_SWIPE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_SWIPE))
@@ -40,13 +40,13 @@ typedef struct _GtkGestureSwipe GtkGestureSwipe;
 typedef struct _GtkGestureSwipeClass GtkGestureSwipeClass;
 
 GDK_AVAILABLE_IN_3_14
-GType        gtk_gesture_swipe_get_type  (void) G_GNUC_CONST;
+GType        ctk_gesture_swipe_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * gtk_gesture_swipe_new       (GtkWidget *widget);
+GtkGesture * ctk_gesture_swipe_new       (GtkWidget *widget);
 
 GDK_AVAILABLE_IN_3_14
-gboolean     gtk_gesture_swipe_get_velocity (GtkGestureSwipe *gesture,
+gboolean     ctk_gesture_swipe_get_velocity (GtkGestureSwipe *gesture,
                                              gdouble         *velocity_x,
                                              gdouble         *velocity_y);
 

@@ -1888,7 +1888,7 @@ msgstr "Disabilitât"
 
 #. This label is displayed in a treeview cell displaying
 #. * an accelerator key combination that is not valid according
-#. * to gtk_accelerator_valid().
+#. * to ctk_accelerator_valid().
 #.
 #: gtk/gtkcellrendereraccel.c:283
 msgctxt "Accelerator"

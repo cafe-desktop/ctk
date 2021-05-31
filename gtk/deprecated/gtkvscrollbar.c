@@ -50,33 +50,33 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * GtkVScrollbar has been deprecated, use #GtkScrollbar instead.
  */
 
-G_DEFINE_TYPE (GtkVScrollbar, gtk_vscrollbar, GTK_TYPE_SCROLLBAR)
+G_DEFINE_TYPE (GtkVScrollbar, ctk_vscrollbar, GTK_TYPE_SCROLLBAR)
 
 static void
-gtk_vscrollbar_class_init (GtkVScrollbarClass *class)
+ctk_vscrollbar_class_init (GtkVScrollbarClass *class)
 {
   GTK_RANGE_CLASS (class)->stepper_detail = "vscrollbar";
 }
 
 static void
-gtk_vscrollbar_init (GtkVScrollbar *vscrollbar)
+ctk_vscrollbar_init (GtkVScrollbar *vscrollbar)
 {
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (vscrollbar),
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (vscrollbar),
                                   GTK_ORIENTATION_VERTICAL);
 }
 
 /**
- * gtk_vscrollbar_new:
+ * ctk_vscrollbar_new:
  * @adjustment: (allow-none): the #GtkAdjustment to use, or %NULL to create a new adjustment
  *
  * Creates a new vertical scrollbar.
  *
  * Returns: the new #GtkVScrollbar
  *
- * Deprecated: 3.2: Use gtk_scrollbar_new() with %GTK_ORIENTATION_VERTICAL instead
+ * Deprecated: 3.2: Use ctk_scrollbar_new() with %GTK_ORIENTATION_VERTICAL instead
  */
 GtkWidget *
-gtk_vscrollbar_new (GtkAdjustment *adjustment)
+ctk_vscrollbar_new (GtkAdjustment *adjustment)
 {
   g_return_val_if_fail (adjustment == NULL || GTK_IS_ADJUSTMENT (adjustment),
                         NULL);

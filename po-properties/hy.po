@@ -252,10 +252,10 @@ msgstr "Պատկերանիշ"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Պատկերանշան «Ծրագրի մասին» պատուհանի համար։ Եթե այն սահմանված չէ, ապա այն "
-"լռելյայն ընդունվում է  gtk_window_get_default_icon_list()"
+"լռելյայն ընդունվում է  ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2343,9 +2343,9 @@ msgstr "Իմպուլսացման քայլ"
 #: gtk/gtkentry.c:888
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"Ամբողջ աշխատանքի մաս, որի կատարման ժամանակ ամեն մի gtk_entry_progress_pulse"
+"Ամբողջ աշխատանքի մաս, որի կատարման ժամանակ ամեն մի ctk_entry_progress_pulse"
 "() կանչի համար տեղի է ունենում կատարման ինդիկատորի աճ"
 
 #: gtk/gtkentry.c:904
@@ -4394,10 +4394,10 @@ msgstr "Արժեքը"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"gtk_radio_action_get_current_value() վերադարձրած արժեքը, երբ այս "
+"ctk_radio_action_get_current_value() վերադարձրած արժեքը, երբ այս "
 "գործողությունը իր խմբի ընթացիկ գործողությունն է"
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -6830,8 +6830,8 @@ msgid "No show all"
 msgstr "Ամբողջը ցույց չտալ"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all()-ը չպետք է արդյոք ազդի այս վիջեթի վրա"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all()-ը չպետք է արդյոք ազդի այս վիջեթի վրա"
 
 #: gtk/gtkwidget.c:864
 msgid "Whether this widget has a tooltip"

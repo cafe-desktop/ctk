@@ -22,30 +22,30 @@ test_basic (void)
 {
   GtkAdjustment *a;
 
-  a = gtk_adjustment_new (2.0, 0.0, 100.0, 1.0, 5.0, 10.0);
+  a = ctk_adjustment_new (2.0, 0.0, 100.0, 1.0, 5.0, 10.0);
   
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 2.0);
-  g_assert_cmpfloat (gtk_adjustment_get_lower (a), ==, 0.0);
-  g_assert_cmpfloat (gtk_adjustment_get_upper (a), ==, 100.0);
-  g_assert_cmpfloat (gtk_adjustment_get_step_increment (a), ==, 1.0);
-  g_assert_cmpfloat (gtk_adjustment_get_page_increment (a), ==, 5.0);
-  g_assert_cmpfloat (gtk_adjustment_get_page_size (a), ==, 10.0);
-  g_assert_cmpfloat (gtk_adjustment_get_minimum_increment (a), ==, 1.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 2.0);
+  g_assert_cmpfloat (ctk_adjustment_get_lower (a), ==, 0.0);
+  g_assert_cmpfloat (ctk_adjustment_get_upper (a), ==, 100.0);
+  g_assert_cmpfloat (ctk_adjustment_get_step_increment (a), ==, 1.0);
+  g_assert_cmpfloat (ctk_adjustment_get_page_increment (a), ==, 5.0);
+  g_assert_cmpfloat (ctk_adjustment_get_page_size (a), ==, 10.0);
+  g_assert_cmpfloat (ctk_adjustment_get_minimum_increment (a), ==, 1.0);
 
-  gtk_adjustment_set_value (a, 50.0);
-  gtk_adjustment_set_lower (a, 20.0);
-  gtk_adjustment_set_upper (a, 75.5);
-  gtk_adjustment_set_step_increment (a, 2.2);
-  gtk_adjustment_set_page_increment (a, 1.5);
-  gtk_adjustment_set_page_size (a, 10.0);
+  ctk_adjustment_set_value (a, 50.0);
+  ctk_adjustment_set_lower (a, 20.0);
+  ctk_adjustment_set_upper (a, 75.5);
+  ctk_adjustment_set_step_increment (a, 2.2);
+  ctk_adjustment_set_page_increment (a, 1.5);
+  ctk_adjustment_set_page_size (a, 10.0);
 
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 50.0);
-  g_assert_cmpfloat (gtk_adjustment_get_lower (a), ==, 20.0);
-  g_assert_cmpfloat (gtk_adjustment_get_upper (a), ==, 75.5);
-  g_assert_cmpfloat (gtk_adjustment_get_step_increment (a), ==, 2.2);
-  g_assert_cmpfloat (gtk_adjustment_get_page_increment (a), ==, 1.5);
-  g_assert_cmpfloat (gtk_adjustment_get_page_size (a), ==, 10.0);
-  g_assert_cmpfloat (gtk_adjustment_get_minimum_increment (a), ==, 1.5);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 50.0);
+  g_assert_cmpfloat (ctk_adjustment_get_lower (a), ==, 20.0);
+  g_assert_cmpfloat (ctk_adjustment_get_upper (a), ==, 75.5);
+  g_assert_cmpfloat (ctk_adjustment_get_step_increment (a), ==, 2.2);
+  g_assert_cmpfloat (ctk_adjustment_get_page_increment (a), ==, 1.5);
+  g_assert_cmpfloat (ctk_adjustment_get_page_size (a), ==, 10.0);
+  g_assert_cmpfloat (ctk_adjustment_get_minimum_increment (a), ==, 1.5);
 
   g_object_unref (a);
 }
@@ -70,35 +70,35 @@ test_signals (void)
 {
   GtkAdjustment *a;
 
-  a = gtk_adjustment_new (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+  a = ctk_adjustment_new (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
   g_signal_connect (a, "changed", G_CALLBACK (changed_cb), NULL);
   g_signal_connect (a, "value-changed", G_CALLBACK (value_changed_cb), NULL);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   changed_count = value_changed_count = 0;
-  gtk_adjustment_changed (a);
+  ctk_adjustment_changed (a);
   g_assert_cmpint (changed_count, ==, 1);  
   g_assert_cmpint (value_changed_count, ==, 0);  
 
   changed_count = value_changed_count = 0;
-  gtk_adjustment_value_changed (a);
+  ctk_adjustment_value_changed (a);
   g_assert_cmpint (changed_count, ==, 0);  
   g_assert_cmpint (value_changed_count, ==, 1);  
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   changed_count = value_changed_count = 0;
-  gtk_adjustment_configure (a, 0.0, 0.0, 100.0, 1.0, 5.0, 0.0);
+  ctk_adjustment_configure (a, 0.0, 0.0, 100.0, 1.0, 5.0, 0.0);
   g_assert_cmpint (changed_count, ==, 1);  
   g_assert_cmpint (value_changed_count, ==, 0);  
 
   changed_count = value_changed_count = 0;
-  gtk_adjustment_set_value (a, 50.0);
-  gtk_adjustment_set_lower (a, 20.0);
-  gtk_adjustment_set_upper (a, 75.5);
-  gtk_adjustment_set_step_increment (a, 2.2);
-  gtk_adjustment_set_page_increment (a, 1.5);
-  gtk_adjustment_set_page_size (a, 10.0);
+  ctk_adjustment_set_value (a, 50.0);
+  ctk_adjustment_set_lower (a, 20.0);
+  ctk_adjustment_set_upper (a, 75.5);
+  ctk_adjustment_set_step_increment (a, 2.2);
+  ctk_adjustment_set_page_increment (a, 1.5);
+  ctk_adjustment_set_page_size (a, 10.0);
   g_assert_cmpint (changed_count, ==, 5);  
   g_assert_cmpint (value_changed_count, ==, 1);  
 
@@ -110,21 +110,21 @@ test_clamp (void)
 {
   GtkAdjustment *a;
 
-  a = gtk_adjustment_new (2.0, 0.0, 100.0, 1.0, 5.0, 10.0);
+  a = ctk_adjustment_new (2.0, 0.0, 100.0, 1.0, 5.0, 10.0);
 
-  gtk_adjustment_set_value (a, -10.0);
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 0.0);
+  ctk_adjustment_set_value (a, -10.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 0.0);
 
-  gtk_adjustment_set_value (a, 200.0);
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 90.0);
+  ctk_adjustment_set_value (a, 200.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 90.0);
 
-  gtk_adjustment_set_value (a, 99.0);
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 90.0);
+  ctk_adjustment_set_value (a, 99.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 90.0);
 
-  gtk_adjustment_configure (a, 0.0, 0.0, 10.0, 1.0, 5.0, 20.0);
+  ctk_adjustment_configure (a, 0.0, 0.0, 10.0, 1.0, 5.0, 20.0);
   
-  gtk_adjustment_set_value (a, 5.0);
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 0.0);
+  ctk_adjustment_set_value (a, 5.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 0.0);
 
   g_object_unref (a);
 }
@@ -134,19 +134,19 @@ test_clamp_page (void)
 {
   GtkAdjustment *a;
 
-  a = gtk_adjustment_new (20.0, 0.0, 100.0, 1.0, 5.0, 10.0);
+  a = ctk_adjustment_new (20.0, 0.0, 100.0, 1.0, 5.0, 10.0);
 
-  gtk_adjustment_clamp_page (a, 50.0, 55.0);
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 45.0);
+  ctk_adjustment_clamp_page (a, 50.0, 55.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 45.0);
 
-  gtk_adjustment_clamp_page (a, 52.0, 58.0);
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 48.0);
+  ctk_adjustment_clamp_page (a, 52.0, 58.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 48.0);
 
-  gtk_adjustment_clamp_page (a, 48.0, 50.0);
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 48.0);
+  ctk_adjustment_clamp_page (a, 48.0, 50.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 48.0);
 
-  gtk_adjustment_clamp_page (a, 30.0, 50.0);
-  g_assert_cmpfloat (gtk_adjustment_get_value (a), ==, 30.0);
+  ctk_adjustment_clamp_page (a, 30.0, 50.0);
+  g_assert_cmpfloat (ctk_adjustment_get_value (a), ==, 30.0);
 
   g_object_unref (a);
 }
@@ -155,7 +155,7 @@ int
 main (int   argc,
       char *argv[])
 {
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
   g_test_add_func ("/adjustment/basic", test_basic);
   g_test_add_func ("/adjustment/signals", test_signals);

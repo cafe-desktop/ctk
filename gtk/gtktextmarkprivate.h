@@ -30,8 +30,8 @@
 
 G_BEGIN_DECLS
 
-#define GTK_IS_TEXT_MARK_SEGMENT(mark) (((GtkTextLineSegment*)mark)->type == &gtk_text_left_mark_type || \
-                                ((GtkTextLineSegment*)mark)->type == &gtk_text_right_mark_type)
+#define GTK_IS_TEXT_MARK_SEGMENT(mark) (((GtkTextLineSegment*)mark)->type == &ctk_text_left_mark_type || \
+                                ((GtkTextLineSegment*)mark)->type == &ctk_text_right_mark_type)
 
 /*
  * The data structure below defines line segments that represent
@@ -47,7 +47,7 @@ struct _GtkTextMarkBody {
   guint not_deleteable : 1;
 };
 
-void _gtk_mark_segment_set_tree (GtkTextLineSegment *mark,
+void _ctk_mark_segment_set_tree (GtkTextLineSegment *mark,
 				 GtkTextBTree       *tree);
 
 G_END_DECLS

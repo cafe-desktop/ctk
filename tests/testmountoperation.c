@@ -87,7 +87,7 @@ got_reply (GMountOperation       *op,
   else if (G_MOUNT_OPERATION_UNHANDLED)
     g_assert_not_reached ();
 
-  gtk_main_quit ();
+  ctk_main_quit ();
 }
 
 int
@@ -107,7 +107,7 @@ main (int argc, char *argv[])
     { NULL }
   };
 
-  if (!gtk_init_with_args (&argc, &argv, "", options, NULL, &error))
+  if (!ctk_init_with_args (&argc, &argv, "", options, NULL, &error))
     {
       g_print ("Failed to parse args: %s\n", error->message);
       g_error_free (error);
@@ -115,9 +115,9 @@ main (int argc, char *argv[])
     }
 
   if (force_rtl)
-    gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
-  op = gtk_mount_operation_new (NULL);
+  op = ctk_mount_operation_new (NULL);
 
   g_signal_connect (op, "reply", G_CALLBACK (got_reply), NULL);
 
@@ -157,6 +157,6 @@ main (int argc, char *argv[])
                              flags);
     }
 
-  gtk_main ();
+  ctk_main ();
   return 0;
 }

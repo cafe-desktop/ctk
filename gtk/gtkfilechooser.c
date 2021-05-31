@@ -68,7 +68,7 @@
  * variable.
  *
  * This means that while you can pass the result of
- * gtk_file_chooser_get_filename() to g_open() or g_fopen(),
+ * ctk_file_chooser_get_filename() to g_open() or g_fopen(),
  * you may not be able to directly set it as the text of a
  * #GtkLabel widget unless you convert it first to UTF-8,
  * which all GTK+ widgets expect. You should use g_filename_to_utf8()
@@ -80,15 +80,15 @@
  * You can add a custom preview widget to a file chooser and then
  * get notification about when the preview needs to be updated.
  * To install a preview widget, use
- * gtk_file_chooser_set_preview_widget().  Then, connect to the
+ * ctk_file_chooser_set_preview_widget().  Then, connect to the
  * #GtkFileChooser::update-preview signal to get notified when
  * you need to update the contents of the preview.
  *
  * Your callback should use
- * gtk_file_chooser_get_preview_filename() to see what needs
+ * ctk_file_chooser_get_preview_filename() to see what needs
  * previewing.  Once you have generated the preview for the
  * corresponding file, you must call
- * gtk_file_chooser_set_preview_widget_active() with a boolean
+ * ctk_file_chooser_set_preview_widget_active() with a boolean
  * flag that indicates whether your callback could successfully
  * generate a preview.
  *
@@ -99,9 +99,9 @@
  *
  *   ...
  *
- *   preview = gtk_image_new ();
+ *   preview = ctk_image_new ();
  *
- *   gtk_file_chooser_set_preview_widget (my_file_chooser, preview);
+ *   ctk_file_chooser_set_preview_widget (my_file_chooser, preview);
  *   g_signal_connect (my_file_chooser, "update-preview",
  * 		    G_CALLBACK (update_preview_cb), preview);
  * }
@@ -115,17 +115,17 @@
  *   gboolean have_preview;
  *
  *   preview = GTK_WIDGET (data);
- *   filename = gtk_file_chooser_get_preview_filename (file_chooser);
+ *   filename = ctk_file_chooser_get_preview_filename (file_chooser);
  *
  *   pixbuf = gdk_pixbuf_new_from_file_at_size (filename, 128, 128, NULL);
  *   have_preview = (pixbuf != NULL);
  *   g_free (filename);
  *
- *   gtk_image_set_from_pixbuf (GTK_IMAGE (preview), pixbuf);
+ *   ctk_image_set_from_pixbuf (GTK_IMAGE (preview), pixbuf);
  *   if (pixbuf)
  *     g_object_unref (pixbuf);
  *
- *   gtk_file_chooser_set_preview_widget_active (file_chooser, have_preview);
+ *   ctk_file_chooser_set_preview_widget_active (file_chooser, have_preview);
  * }
  * ]|
  *
@@ -135,7 +135,7 @@
  * that are not present in the default design.  For example, you
  * can add a toggle button to give the user the option to open a
  * file in read-only mode.  You can use
- * gtk_file_chooser_set_extra_widget() to insert additional
+ * ctk_file_chooser_set_extra_widget() to insert additional
  * widgets in a file chooser.
  *
  * An example for adding extra widgets:
@@ -145,9 +145,9 @@
  *
  *   ...
  *
- *   toggle = gtk_check_button_new_with_label ("Open file read-only");
- *   gtk_widget_show (toggle);
- *   gtk_file_chooser_set_extra_widget (my_file_chooser, toggle);
+ *   toggle = ctk_check_button_new_with_label ("Open file read-only");
+ *   ctk_widget_show (toggle);
+ *   ctk_file_chooser_set_extra_widget (my_file_chooser, toggle);
  * }
  * ]|
  *
@@ -159,7 +159,7 @@
 
 
 typedef GtkFileChooserIface GtkFileChooserInterface;
-G_DEFINE_INTERFACE (GtkFileChooser, gtk_file_chooser, G_TYPE_OBJECT);
+G_DEFINE_INTERFACE (GtkFileChooser, ctk_file_chooser, G_TYPE_OBJECT);
 
 static gboolean
 confirm_overwrite_accumulator (GSignalInvocationHint *ihint,
@@ -178,7 +178,7 @@ confirm_overwrite_accumulator (GSignalInvocationHint *ihint,
 }
 
 static void
-gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
+ctk_file_chooser_default_init (GtkFileChooserInterface *iface)
 {
   GType iface_type = G_TYPE_FROM_INTERFACE (iface);
 
@@ -195,10 +195,10 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
    * Normally you do not need to connect to this signal, unless you need to keep
    * track of which folder a file chooser is showing.
    *
-   * See also:  gtk_file_chooser_set_current_folder(),
-   * gtk_file_chooser_get_current_folder(),
-   * gtk_file_chooser_set_current_folder_uri(),
-   * gtk_file_chooser_get_current_folder_uri().
+   * See also:  ctk_file_chooser_set_current_folder(),
+   * ctk_file_chooser_get_current_folder(),
+   * ctk_file_chooser_set_current_folder_uri(),
+   * ctk_file_chooser_get_current_folder_uri().
    */
   g_signal_new (I_("current-folder-changed"),
 		iface_type,
@@ -221,11 +221,11 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
    * for the file chooser to finish running, and then to get the list of
    * selected files using the functions mentioned below.
    *
-   * See also: gtk_file_chooser_select_filename(),
-   * gtk_file_chooser_unselect_filename(), gtk_file_chooser_get_filename(),
-   * gtk_file_chooser_get_filenames(), gtk_file_chooser_select_uri(),
-   * gtk_file_chooser_unselect_uri(), gtk_file_chooser_get_uri(),
-   * gtk_file_chooser_get_uris().
+   * See also: ctk_file_chooser_select_filename(),
+   * ctk_file_chooser_unselect_filename(), ctk_file_chooser_get_filename(),
+   * ctk_file_chooser_get_filenames(), ctk_file_chooser_select_uri(),
+   * ctk_file_chooser_unselect_uri(), ctk_file_chooser_get_uri(),
+   * ctk_file_chooser_get_uris().
    */
   g_signal_new (I_("selection-changed"),
 		iface_type,
@@ -245,22 +245,22 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
    * a preview widget.
    *
    * Once you have installed a preview widget with
-   * gtk_file_chooser_set_preview_widget(), you should update it when this
+   * ctk_file_chooser_set_preview_widget(), you should update it when this
    * signal is emitted.  You can use the functions
-   * gtk_file_chooser_get_preview_filename() or
-   * gtk_file_chooser_get_preview_uri() to get the name of the file to preview.
+   * ctk_file_chooser_get_preview_filename() or
+   * ctk_file_chooser_get_preview_uri() to get the name of the file to preview.
    * Your widget may not be able to preview all kinds of files; your callback
-   * must call gtk_file_chooser_set_preview_widget_active() to inform the file
+   * must call ctk_file_chooser_set_preview_widget_active() to inform the file
    * chooser about whether the preview was generated successfully or not.
    *
    * Please see the example code in
    * [Using a Preview Widget][gtkfilechooser-preview].
    *
-   * See also: gtk_file_chooser_set_preview_widget(),
-   * gtk_file_chooser_set_preview_widget_active(),
-   * gtk_file_chooser_set_use_preview_label(),
-   * gtk_file_chooser_get_preview_filename(),
-   * gtk_file_chooser_get_preview_uri().
+   * See also: ctk_file_chooser_set_preview_widget(),
+   * ctk_file_chooser_set_preview_widget_active(),
+   * ctk_file_chooser_set_use_preview_label(),
+   * ctk_file_chooser_get_preview_filename(),
+   * ctk_file_chooser_get_preview_uri().
    */
   g_signal_new (I_("update-preview"),
 		iface_type,
@@ -282,9 +282,9 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
    * by #GtkFileChooserDialog to know when to activate the default button in the
    * dialog.
    *
-   * See also: gtk_file_chooser_get_filename(),
-   * gtk_file_chooser_get_filenames(), gtk_file_chooser_get_uri(),
-   * gtk_file_chooser_get_uris().
+   * See also: ctk_file_chooser_get_filename(),
+   * ctk_file_chooser_get_filenames(), ctk_file_chooser_get_uri(),
+   * ctk_file_chooser_get_uris().
    */
   g_signal_new (I_("file-activated"),
 		iface_type,
@@ -305,7 +305,7 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
    *
    * Most applications just need to turn on the
    * #GtkFileChooser:do-overwrite-confirmation property (or call the
-   * gtk_file_chooser_set_do_overwrite_confirmation() function), and
+   * ctk_file_chooser_set_do_overwrite_confirmation() function), and
    * they will automatically get a stock confirmation dialog.
    * Applications which need to customize this behavior should do
    * that, and also connect to the #GtkFileChooser::confirm-overwrite
@@ -331,7 +331,7 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
    * {
    *   char *uri;
    *
-   *   uri = gtk_file_chooser_get_uri (chooser);
+   *   uri = ctk_file_chooser_get_uri (chooser);
    *
    *   if (is_uri_read_only (uri))
    *     {
@@ -345,16 +345,16 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
    *
    * ...
    *
-   * chooser = gtk_file_chooser_dialog_new (...);
+   * chooser = ctk_file_chooser_dialog_new (...);
    *
-   * gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
+   * ctk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
    * g_signal_connect (chooser, "confirm-overwrite",
    *                   G_CALLBACK (confirm_overwrite_callback), NULL);
    *
-   * if (gtk_dialog_run (chooser) == GTK_RESPONSE_ACCEPT)
-   *         save_to_file (gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
+   * if (ctk_dialog_run (chooser) == GTK_RESPONSE_ACCEPT)
+   *         save_to_file (ctk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
    *
-   * gtk_widget_destroy (chooser);
+   * ctk_widget_destroy (chooser);
    * ]|
    *
    * Returns: a #GtkFileChooserConfirmation value that indicates which
@@ -367,7 +367,7 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
 		G_SIGNAL_RUN_LAST,
 		G_STRUCT_OFFSET (GtkFileChooserIface, confirm_overwrite),
 		confirm_overwrite_accumulator, NULL,
-		_gtk_marshal_ENUM__VOID,
+		_ctk_marshal_ENUM__VOID,
 		GTK_TYPE_FILE_CHOOSER_CONFIRMATION, 0);
   
   g_object_interface_install_property (iface,
@@ -463,7 +463,7 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
 }
 
 /**
- * gtk_file_chooser_error_quark:
+ * ctk_file_chooser_error_quark:
  *
  * Registers an error quark for #GtkFileChooser if necessary.
  * 
@@ -472,13 +472,13 @@ gtk_file_chooser_default_init (GtkFileChooserInterface *iface)
  * Since: 2.4
  **/
 GQuark
-gtk_file_chooser_error_quark (void)
+ctk_file_chooser_error_quark (void)
 {
   return g_quark_from_static_string ("gtk-file-chooser-error-quark");
 }
 
 /**
- * gtk_file_chooser_set_action:
+ * ctk_file_chooser_set_action:
  * @chooser: a #GtkFileChooser
  * @action: the action that the file selector is performing
  * 
@@ -491,7 +491,7 @@ gtk_file_chooser_error_quark (void)
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_action (GtkFileChooser       *chooser,
+ctk_file_chooser_set_action (GtkFileChooser       *chooser,
 			     GtkFileChooserAction  action)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -500,18 +500,18 @@ gtk_file_chooser_set_action (GtkFileChooser       *chooser,
 }
 
 /**
- * gtk_file_chooser_get_action:
+ * ctk_file_chooser_get_action:
  * @chooser: a #GtkFileChooser
  * 
  * Gets the type of operation that the file chooser is performing; see
- * gtk_file_chooser_set_action().
+ * ctk_file_chooser_set_action().
  * 
  * Returns: the action that the file selector is performing
  *
  * Since: 2.4
  **/
 GtkFileChooserAction
-gtk_file_chooser_get_action (GtkFileChooser *chooser)
+ctk_file_chooser_get_action (GtkFileChooser *chooser)
 {
   GtkFileChooserAction action;
   
@@ -523,7 +523,7 @@ gtk_file_chooser_get_action (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_local_only:
+ * ctk_file_chooser_set_local_only:
  * @chooser: a #GtkFileChooser
  * @local_only: %TRUE if only local files can be selected
  * 
@@ -533,9 +533,9 @@ gtk_file_chooser_get_action (GtkFileChooser *chooser)
  * accessible through the operating systems native file
  * system and therefore the application only
  * needs to worry about the filename functions in
- * #GtkFileChooser, like gtk_file_chooser_get_filename(),
+ * #GtkFileChooser, like ctk_file_chooser_get_filename(),
  * rather than the URI functions like
- * gtk_file_chooser_get_uri(),
+ * ctk_file_chooser_get_uri(),
  *
  * On some systems non-native files may still be
  * available using the native filesystem via a userspace
@@ -544,7 +544,7 @@ gtk_file_chooser_get_action (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_local_only (GtkFileChooser *chooser,
+ctk_file_chooser_set_local_only (GtkFileChooser *chooser,
 				 gboolean        local_only)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -553,18 +553,18 @@ gtk_file_chooser_set_local_only (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_local_only:
+ * ctk_file_chooser_get_local_only:
  * @chooser: a #GtkFileChooser
  * 
  * Gets whether only local files can be selected in the
- * file selector. See gtk_file_chooser_set_local_only()
+ * file selector. See ctk_file_chooser_set_local_only()
  * 
  * Returns: %TRUE if only local files can be selected.
  *
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_get_local_only (GtkFileChooser *chooser)
+ctk_file_chooser_get_local_only (GtkFileChooser *chooser)
 {
   gboolean local_only;
   
@@ -576,7 +576,7 @@ gtk_file_chooser_get_local_only (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_select_multiple:
+ * ctk_file_chooser_set_select_multiple:
  * @chooser: a #GtkFileChooser
  * @select_multiple: %TRUE if multiple files can be selected.
  * 
@@ -587,7 +587,7 @@ gtk_file_chooser_get_local_only (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_select_multiple (GtkFileChooser *chooser,
+ctk_file_chooser_set_select_multiple (GtkFileChooser *chooser,
 				      gboolean        select_multiple)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -596,18 +596,18 @@ gtk_file_chooser_set_select_multiple (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_select_multiple:
+ * ctk_file_chooser_get_select_multiple:
  * @chooser: a #GtkFileChooser
  * 
  * Gets whether multiple files can be selected in the file
- * selector. See gtk_file_chooser_set_select_multiple().
+ * selector. See ctk_file_chooser_set_select_multiple().
  * 
  * Returns: %TRUE if multiple files can be selected.
  *
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_get_select_multiple (GtkFileChooser *chooser)
+ctk_file_chooser_get_select_multiple (GtkFileChooser *chooser)
 {
   gboolean select_multiple;
   
@@ -619,7 +619,7 @@ gtk_file_chooser_get_select_multiple (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_create_folders:
+ * ctk_file_chooser_set_create_folders:
  * @chooser: a #GtkFileChooser
  * @create_folders: %TRUE if the Create Folder button should be displayed
  * 
@@ -630,7 +630,7 @@ gtk_file_chooser_get_select_multiple (GtkFileChooser *chooser)
  * Since: 2.18
  **/
 void
-gtk_file_chooser_set_create_folders (GtkFileChooser *chooser,
+ctk_file_chooser_set_create_folders (GtkFileChooser *chooser,
 				     gboolean        create_folders)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -639,18 +639,18 @@ gtk_file_chooser_set_create_folders (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_create_folders:
+ * ctk_file_chooser_get_create_folders:
  * @chooser: a #GtkFileChooser
  * 
  * Gets whether file choser will offer to create new folders.
- * See gtk_file_chooser_set_create_folders().
+ * See ctk_file_chooser_set_create_folders().
  * 
  * Returns: %TRUE if the Create Folder button should be displayed.
  *
  * Since: 2.18
  **/
 gboolean
-gtk_file_chooser_get_create_folders (GtkFileChooser *chooser)
+ctk_file_chooser_get_create_folders (GtkFileChooser *chooser)
 {
   gboolean create_folders;
   
@@ -662,7 +662,7 @@ gtk_file_chooser_get_create_folders (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_get_filename:
+ * ctk_file_chooser_get_filename:
  * @chooser: a #GtkFileChooser
  * 
  * Gets the filename for the currently selected file in
@@ -680,14 +680,14 @@ gtk_file_chooser_get_create_folders (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 gchar *
-gtk_file_chooser_get_filename (GtkFileChooser *chooser)
+ctk_file_chooser_get_filename (GtkFileChooser *chooser)
 {
   GFile *file;
   gchar *result = NULL;
 
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  file = gtk_file_chooser_get_file (chooser);
+  file = ctk_file_chooser_get_file (chooser);
 
   if (file)
     {
@@ -699,7 +699,7 @@ gtk_file_chooser_get_filename (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_filename:
+ * ctk_file_chooser_set_filename:
  * @chooser: a #GtkFileChooser
  * @filename: (type filename): the filename to set as current
  * 
@@ -723,12 +723,12 @@ gtk_file_chooser_get_filename (GtkFileChooser *chooser)
  * if (document_is_new)
  *   {
  *     // the user just created a new document
- *     gtk_file_chooser_set_current_name (chooser, "Untitled document");
+ *     ctk_file_chooser_set_current_name (chooser, "Untitled document");
  *   }
  * else
  *   {
  *     // the user edited an existing document
- *     gtk_file_chooser_set_filename (chooser, existing_filename);
+ *     ctk_file_chooser_set_filename (chooser, existing_filename);
  *   }
  * ]|
  *
@@ -741,17 +741,17 @@ gtk_file_chooser_get_filename (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_set_filename (GtkFileChooser *chooser,
+ctk_file_chooser_set_filename (GtkFileChooser *chooser,
 			       const gchar    *filename)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), FALSE);
 
-  gtk_file_chooser_unselect_all (chooser);
-  return gtk_file_chooser_select_filename (chooser, filename);
+  ctk_file_chooser_unselect_all (chooser);
+  return ctk_file_chooser_select_filename (chooser, filename);
 }
 
 /**
- * gtk_file_chooser_select_filename:
+ * ctk_file_chooser_select_filename:
  * @chooser: a #GtkFileChooser
  * @filename: (type filename): the filename to select
  * 
@@ -761,12 +761,12 @@ gtk_file_chooser_set_filename (GtkFileChooser *chooser,
  *
  * Returns: Not useful.
  *
- * See also: gtk_file_chooser_set_filename()
+ * See also: ctk_file_chooser_set_filename()
  *
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_select_filename (GtkFileChooser *chooser,
+ctk_file_chooser_select_filename (GtkFileChooser *chooser,
 				  const gchar    *filename)
 {
   GFile *file;
@@ -776,14 +776,14 @@ gtk_file_chooser_select_filename (GtkFileChooser *chooser,
   g_return_val_if_fail (filename != NULL, FALSE);
 
   file = g_file_new_for_path (filename);
-  result = gtk_file_chooser_select_file (chooser, file, NULL);
+  result = ctk_file_chooser_select_file (chooser, file, NULL);
   g_object_unref (file);
 
   return result;
 }
 
 /**
- * gtk_file_chooser_unselect_filename:
+ * ctk_file_chooser_unselect_filename:
  * @chooser: a #GtkFileChooser
  * @filename: (type filename): the filename to unselect
  * 
@@ -794,7 +794,7 @@ gtk_file_chooser_select_filename (GtkFileChooser *chooser,
  * Since: 2.4
  **/
 void
-gtk_file_chooser_unselect_filename (GtkFileChooser *chooser,
+ctk_file_chooser_unselect_filename (GtkFileChooser *chooser,
 				    const char     *filename)
 {
   GFile *file;
@@ -803,7 +803,7 @@ gtk_file_chooser_unselect_filename (GtkFileChooser *chooser,
   g_return_if_fail (filename != NULL);
 
   file = g_file_new_for_path (filename);
-  gtk_file_chooser_unselect_file (chooser, file);
+  ctk_file_chooser_unselect_file (chooser, file);
   g_object_unref (file);
 }
 
@@ -848,13 +848,13 @@ file_to_uri_with_native_path (GFile *file)
 }
 
 /**
- * gtk_file_chooser_get_filenames:
+ * ctk_file_chooser_get_filenames:
  * @chooser: a #GtkFileChooser
  * 
  * Lists all the selected files and subfolders in the current folder of
  * @chooser. The returned names are full absolute paths. If files in the current
  * folder cannot be represented as local filenames they will be ignored. (See
- * gtk_file_chooser_get_uris())
+ * ctk_file_chooser_get_uris())
  *
  * Returns: (element-type filename) (transfer full): a #GSList
  *    containing the filenames of all selected files and subfolders in
@@ -864,13 +864,13 @@ file_to_uri_with_native_path (GFile *file)
  * Since: 2.4
  **/
 GSList *
-gtk_file_chooser_get_filenames (GtkFileChooser *chooser)
+ctk_file_chooser_get_filenames (GtkFileChooser *chooser)
 {
   GSList *files, *result;
   
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  files = gtk_file_chooser_get_files (chooser);
+  files = ctk_file_chooser_get_files (chooser);
 
   result = files_to_strings (files, g_file_get_path);
   g_slist_free_full (files, g_object_unref);
@@ -879,7 +879,7 @@ gtk_file_chooser_get_filenames (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_current_folder:
+ * ctk_file_chooser_set_current_folder:
  * @chooser: a #GtkFileChooser
  * @filename: (type filename): the full path of the new current folder
  * 
@@ -896,7 +896,7 @@ gtk_file_chooser_get_filenames (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_set_current_folder (GtkFileChooser *chooser,
+ctk_file_chooser_set_current_folder (GtkFileChooser *chooser,
 				     const gchar    *filename)
 {
   GFile *file;
@@ -906,25 +906,25 @@ gtk_file_chooser_set_current_folder (GtkFileChooser *chooser,
   g_return_val_if_fail (filename != NULL, FALSE);
 
   file = g_file_new_for_path (filename);
-  result = gtk_file_chooser_set_current_folder_file (chooser, file, NULL);
+  result = ctk_file_chooser_set_current_folder_file (chooser, file, NULL);
   g_object_unref (file);
 
   return result;
 }
 
 /**
- * gtk_file_chooser_get_current_folder:
+ * ctk_file_chooser_get_current_folder:
  * @chooser: a #GtkFileChooser
  * 
  * Gets the current folder of @chooser as a local filename.
- * See gtk_file_chooser_set_current_folder().
+ * See ctk_file_chooser_set_current_folder().
  *
  * Note that this is the folder that the file chooser is currently displaying
  * (e.g. "/home/username/Documents"), which is not the same
  * as the currently-selected folder if the chooser is in
  * %GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER mode
  * (e.g. "/home/username/Documents/selected-folder/".  To get the
- * currently-selected folder in that mode, use gtk_file_chooser_get_uri() as the
+ * currently-selected folder in that mode, use ctk_file_chooser_get_uri() as the
  * usual way to get the selection.
  * 
  * Returns: (nullable) (type filename): the full path of the current
@@ -932,19 +932,19 @@ gtk_file_chooser_set_current_folder (GtkFileChooser *chooser,
  * filename.  Free with g_free().  This function will also return
  * %NULL if the file chooser was unable to load the last folder that
  * was requested from it; for example, as would be for calling
- * gtk_file_chooser_set_current_folder() on a nonexistent folder.
+ * ctk_file_chooser_set_current_folder() on a nonexistent folder.
  *
  * Since: 2.4
  **/
 gchar *
-gtk_file_chooser_get_current_folder (GtkFileChooser *chooser)
+ctk_file_chooser_get_current_folder (GtkFileChooser *chooser)
 {
   GFile *file;
   gchar *filename;
   
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  file = gtk_file_chooser_get_current_folder_file (chooser);
+  file = ctk_file_chooser_get_current_folder_file (chooser);
   if (!file)
     return NULL;
 
@@ -955,7 +955,7 @@ gtk_file_chooser_get_current_folder (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_current_name:
+ * ctk_file_chooser_set_current_name:
  * @chooser: a #GtkFileChooser
  * @name: (type utf8): the filename to use, as a UTF-8 string
  * 
@@ -966,14 +966,14 @@ gtk_file_chooser_get_current_folder (GtkFileChooser *chooser)
  * pass “Untitled.doc” or a similarly suitable suggestion for the @name.
  *
  * If you want to preselect a particular existing file, you should use
- * gtk_file_chooser_set_filename() or gtk_file_chooser_set_uri() instead.
+ * ctk_file_chooser_set_filename() or ctk_file_chooser_set_uri() instead.
  * Please see the documentation for those functions for an example of using
- * gtk_file_chooser_set_current_name() as well.
+ * ctk_file_chooser_set_current_name() as well.
  *
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_current_name  (GtkFileChooser *chooser,
+ctk_file_chooser_set_current_name  (GtkFileChooser *chooser,
 				    const gchar    *name)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -983,7 +983,7 @@ gtk_file_chooser_set_current_name  (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_current_name:
+ * ctk_file_chooser_get_current_name:
  * @chooser: a #GtkFileChooser
  *
  * Gets the current name in the file selector, as entered by the user in the
@@ -1003,7 +1003,7 @@ gtk_file_chooser_set_current_name  (GtkFileChooser *chooser,
  * Since: 3.10
  **/
 gchar *
-gtk_file_chooser_get_current_name (GtkFileChooser *chooser)
+ctk_file_chooser_get_current_name (GtkFileChooser *chooser)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
@@ -1011,7 +1011,7 @@ gtk_file_chooser_get_current_name (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_get_uri:
+ * ctk_file_chooser_get_uri:
  * @chooser: a #GtkFileChooser
  * 
  * Gets the URI for the currently selected file in
@@ -1022,24 +1022,24 @@ gtk_file_chooser_get_current_name (GtkFileChooser *chooser)
  * folder.
  * 
  * Returns: (nullable) (transfer full): The currently selected URI, or %NULL
- *    if no file is selected. If gtk_file_chooser_set_local_only() is set to
+ *    if no file is selected. If ctk_file_chooser_set_local_only() is set to
  *    %TRUE (the default) a local URI will be returned for any FUSE locations.
  *    Free with g_free()
  *
  * Since: 2.4
  **/
 gchar *
-gtk_file_chooser_get_uri (GtkFileChooser *chooser)
+ctk_file_chooser_get_uri (GtkFileChooser *chooser)
 {
   GFile *file;
   gchar *result = NULL;
   
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  file = gtk_file_chooser_get_file (chooser);
+  file = ctk_file_chooser_get_file (chooser);
   if (file)
     {
-      if (gtk_file_chooser_get_local_only (chooser))
+      if (ctk_file_chooser_get_local_only (chooser))
 	  result = file_to_uri_with_native_path (file);
       else 
           result = g_file_get_uri (file);
@@ -1051,7 +1051,7 @@ gtk_file_chooser_get_uri (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_uri:
+ * ctk_file_chooser_set_uri:
  * @chooser: a #GtkFileChooser
  * @uri: the URI to set as current
  * 
@@ -1074,12 +1074,12 @@ gtk_file_chooser_get_uri (GtkFileChooser *chooser)
  * if (document_is_new)
  *   {
  *     // the user just created a new document
- *     gtk_file_chooser_set_current_name (chooser, "Untitled document");
+ *     ctk_file_chooser_set_current_name (chooser, "Untitled document");
  *   }
  * else
  *   {
  *     // the user edited an existing document
- *     gtk_file_chooser_set_uri (chooser, existing_uri);
+ *     ctk_file_chooser_set_uri (chooser, existing_uri);
  *   }
  * ]|
  *
@@ -1093,17 +1093,17 @@ gtk_file_chooser_get_uri (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_set_uri (GtkFileChooser *chooser,
+ctk_file_chooser_set_uri (GtkFileChooser *chooser,
 			  const char     *uri)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), FALSE);
 
-  gtk_file_chooser_unselect_all (chooser);
-  return gtk_file_chooser_select_uri (chooser, uri);
+  ctk_file_chooser_unselect_all (chooser);
+  return ctk_file_chooser_select_uri (chooser, uri);
 }
 
 /**
- * gtk_file_chooser_select_uri:
+ * ctk_file_chooser_select_uri:
  * @chooser: a #GtkFileChooser
  * @uri: the URI to select
  * 
@@ -1116,7 +1116,7 @@ gtk_file_chooser_set_uri (GtkFileChooser *chooser,
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_select_uri (GtkFileChooser *chooser,
+ctk_file_chooser_select_uri (GtkFileChooser *chooser,
 			     const char     *uri)
 {
   GFile *file;
@@ -1126,14 +1126,14 @@ gtk_file_chooser_select_uri (GtkFileChooser *chooser,
   g_return_val_if_fail (uri != NULL, FALSE);
 
   file = g_file_new_for_uri (uri);
-  result = gtk_file_chooser_select_file (chooser, file, NULL);
+  result = ctk_file_chooser_select_file (chooser, file, NULL);
   g_object_unref (file);
 
   return result;
 }
 
 /**
- * gtk_file_chooser_unselect_uri:
+ * ctk_file_chooser_unselect_uri:
  * @chooser: a #GtkFileChooser
  * @uri: the URI to unselect
  * 
@@ -1144,7 +1144,7 @@ gtk_file_chooser_select_uri (GtkFileChooser *chooser,
  * Since: 2.4
  **/
 void
-gtk_file_chooser_unselect_uri (GtkFileChooser *chooser,
+ctk_file_chooser_unselect_uri (GtkFileChooser *chooser,
 			       const char     *uri)
 {
   GFile *file;
@@ -1153,12 +1153,12 @@ gtk_file_chooser_unselect_uri (GtkFileChooser *chooser,
   g_return_if_fail (uri != NULL);
 
   file = g_file_new_for_uri (uri);
-  gtk_file_chooser_unselect_file (chooser, file);
+  ctk_file_chooser_unselect_file (chooser, file);
   g_object_unref (file);
 }
 
 /**
- * gtk_file_chooser_select_all:
+ * ctk_file_chooser_select_all:
  * @chooser: a #GtkFileChooser
  * 
  * Selects all the files in the current folder of a file chooser.
@@ -1166,7 +1166,7 @@ gtk_file_chooser_unselect_uri (GtkFileChooser *chooser,
  * Since: 2.4
  **/
 void
-gtk_file_chooser_select_all (GtkFileChooser *chooser)
+ctk_file_chooser_select_all (GtkFileChooser *chooser)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
   
@@ -1174,7 +1174,7 @@ gtk_file_chooser_select_all (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_unselect_all:
+ * ctk_file_chooser_unselect_all:
  * @chooser: a #GtkFileChooser
  * 
  * Unselects all the files in the current folder of a file chooser.
@@ -1182,7 +1182,7 @@ gtk_file_chooser_select_all (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 void
-gtk_file_chooser_unselect_all (GtkFileChooser *chooser)
+ctk_file_chooser_unselect_all (GtkFileChooser *chooser)
 {
 
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1191,7 +1191,7 @@ gtk_file_chooser_unselect_all (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_get_uris:
+ * ctk_file_chooser_get_uris:
  * @chooser: a #GtkFileChooser
  * 
  * Lists all the selected files and subfolders in the current folder of
@@ -1204,15 +1204,15 @@ gtk_file_chooser_unselect_all (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 GSList *
-gtk_file_chooser_get_uris (GtkFileChooser *chooser)
+ctk_file_chooser_get_uris (GtkFileChooser *chooser)
 {
   GSList *files, *result;
   
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  files = gtk_file_chooser_get_files (chooser);
+  files = ctk_file_chooser_get_files (chooser);
 
-  if (gtk_file_chooser_get_local_only (chooser))
+  if (ctk_file_chooser_get_local_only (chooser))
     result = files_to_strings (files, file_to_uri_with_native_path);
   else
     result = files_to_strings (files, g_file_get_uri);
@@ -1223,7 +1223,7 @@ gtk_file_chooser_get_uris (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_current_folder_uri:
+ * ctk_file_chooser_set_current_folder_uri:
  * @chooser: a #GtkFileChooser
  * @uri: the URI for the new current folder
  * 
@@ -1241,7 +1241,7 @@ gtk_file_chooser_get_uris (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_set_current_folder_uri (GtkFileChooser *chooser,
+ctk_file_chooser_set_current_folder_uri (GtkFileChooser *chooser,
 					 const gchar    *uri)
 {
   GFile *file;
@@ -1251,44 +1251,44 @@ gtk_file_chooser_set_current_folder_uri (GtkFileChooser *chooser,
   g_return_val_if_fail (uri != NULL, FALSE);
 
   file = g_file_new_for_uri (uri);
-  result = gtk_file_chooser_set_current_folder_file (chooser, file, NULL);
+  result = ctk_file_chooser_set_current_folder_file (chooser, file, NULL);
   g_object_unref (file);
 
   return result;
 }
 
 /**
- * gtk_file_chooser_get_current_folder_uri:
+ * ctk_file_chooser_get_current_folder_uri:
  * @chooser: a #GtkFileChooser
  *
  * Gets the current folder of @chooser as an URI.
- * See gtk_file_chooser_set_current_folder_uri().
+ * See ctk_file_chooser_set_current_folder_uri().
  *
  * Note that this is the folder that the file chooser is currently displaying
  * (e.g. "file:///home/username/Documents"), which is not the same
  * as the currently-selected folder if the chooser is in
  * %GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER mode
  * (e.g. "file:///home/username/Documents/selected-folder/".  To get the
- * currently-selected folder in that mode, use gtk_file_chooser_get_uri() as the
+ * currently-selected folder in that mode, use ctk_file_chooser_get_uri() as the
  * usual way to get the selection.
  * 
  * Returns: (nullable) (transfer full): the URI for the current folder.
  * Free with g_free().  This function will also return %NULL if the file chooser
  * was unable to load the last folder that was requested from it; for example,
- * as would be for calling gtk_file_chooser_set_current_folder_uri() on a
+ * as would be for calling ctk_file_chooser_set_current_folder_uri() on a
  * nonexistent folder.
  *
  * Since: 2.4
  */
 gchar *
-gtk_file_chooser_get_current_folder_uri (GtkFileChooser *chooser)
+ctk_file_chooser_get_current_folder_uri (GtkFileChooser *chooser)
 {
   GFile *file;
   gchar *uri;
   
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  file = gtk_file_chooser_get_current_folder_file (chooser);
+  file = ctk_file_chooser_get_current_folder_file (chooser);
   if (!file)
     return NULL;
 
@@ -1299,13 +1299,13 @@ gtk_file_chooser_get_current_folder_uri (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_current_folder_file:
+ * ctk_file_chooser_set_current_folder_file:
  * @chooser: a #GtkFileChooser
  * @file: the #GFile for the new folder
  * @error: (allow-none): location to store error, or %NULL.
  *
  * Sets the current folder for @chooser from a #GFile.
- * Internal function, see gtk_file_chooser_set_current_folder_uri().
+ * Internal function, see ctk_file_chooser_set_current_folder_uri().
  *
  * Returns: %TRUE if the folder could be changed successfully, %FALSE
  * otherwise.
@@ -1313,7 +1313,7 @@ gtk_file_chooser_get_current_folder_uri (GtkFileChooser *chooser)
  * Since: 2.14
  **/
 gboolean
-gtk_file_chooser_set_current_folder_file (GtkFileChooser  *chooser,
+ctk_file_chooser_set_current_folder_file (GtkFileChooser  *chooser,
                                           GFile           *file,
                                           GError         **error)
 {
@@ -1325,18 +1325,18 @@ gtk_file_chooser_set_current_folder_file (GtkFileChooser  *chooser,
 }
 
 /**
- * gtk_file_chooser_get_current_folder_file:
+ * ctk_file_chooser_get_current_folder_file:
  * @chooser: a #GtkFileChooser
  *
  * Gets the current folder of @chooser as #GFile.
- * See gtk_file_chooser_get_current_folder_uri().
+ * See ctk_file_chooser_get_current_folder_uri().
  *
  * Returns: (transfer full): the #GFile for the current folder.
  *
  * Since: 2.14
  */
 GFile *
-gtk_file_chooser_get_current_folder_file (GtkFileChooser *chooser)
+ctk_file_chooser_get_current_folder_file (GtkFileChooser *chooser)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
@@ -1344,20 +1344,20 @@ gtk_file_chooser_get_current_folder_file (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_select_file:
+ * ctk_file_chooser_select_file:
  * @chooser: a #GtkFileChooser
  * @file: the file to select
  * @error: (allow-none): location to store error, or %NULL
  * 
  * Selects the file referred to by @file. An internal function. See
- * _gtk_file_chooser_select_uri().
+ * _ctk_file_chooser_select_uri().
  *
  * Returns: Not useful.
  *
  * Since: 2.14
  **/
 gboolean
-gtk_file_chooser_select_file (GtkFileChooser  *chooser,
+ctk_file_chooser_select_file (GtkFileChooser  *chooser,
                               GFile           *file,
                               GError         **error)
 {
@@ -1369,7 +1369,7 @@ gtk_file_chooser_select_file (GtkFileChooser  *chooser,
 }
 
 /**
- * gtk_file_chooser_unselect_file:
+ * ctk_file_chooser_unselect_file:
  * @chooser: a #GtkFileChooser
  * @file: a #GFile
  * 
@@ -1379,7 +1379,7 @@ gtk_file_chooser_select_file (GtkFileChooser  *chooser,
  * Since: 2.14
  **/
 void
-gtk_file_chooser_unselect_file (GtkFileChooser *chooser,
+ctk_file_chooser_unselect_file (GtkFileChooser *chooser,
                                 GFile          *file)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1389,11 +1389,11 @@ gtk_file_chooser_unselect_file (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_files:
+ * ctk_file_chooser_get_files:
  * @chooser: a #GtkFileChooser
  * 
  * Lists all the selected files and subfolders in the current folder of @chooser
- * as #GFile. An internal function, see gtk_file_chooser_get_uris().
+ * as #GFile. An internal function, see ctk_file_chooser_get_uris().
  *
  * Returns: (element-type GFile) (transfer full): a #GSList
  *   containing a #GFile for each selected file and subfolder in the
@@ -1403,7 +1403,7 @@ gtk_file_chooser_unselect_file (GtkFileChooser *chooser,
  * Since: 2.14
  **/
 GSList *
-gtk_file_chooser_get_files (GtkFileChooser *chooser)
+ctk_file_chooser_get_files (GtkFileChooser *chooser)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
@@ -1411,7 +1411,7 @@ gtk_file_chooser_get_files (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_file:
+ * ctk_file_chooser_set_file:
  * @chooser: a #GtkFileChooser
  * @file: the #GFile to set as current
  * @error: (allow-none): location to store the error, or %NULL to ignore errors.
@@ -1423,8 +1423,8 @@ gtk_file_chooser_get_files (GtkFileChooser *chooser)
  *
  * If the file name isn’t in the current folder of @chooser, then the current
  * folder of @chooser will be changed to the folder containing @filename. This
- * is equivalent to a sequence of gtk_file_chooser_unselect_all() followed by
- * gtk_file_chooser_select_filename().
+ * is equivalent to a sequence of ctk_file_chooser_unselect_all() followed by
+ * ctk_file_chooser_select_filename().
  *
  * Note that the file must exist, or nothing will be done except
  * for the directory change.
@@ -1440,13 +1440,13 @@ gtk_file_chooser_get_files (GtkFileChooser *chooser)
  * if (document_is_new)
  *   {
  *     // the user just created a new document
- *     gtk_file_chooser_set_current_folder_file (chooser, default_file_for_saving);
- *     gtk_file_chooser_set_current_name (chooser, "Untitled document");
+ *     ctk_file_chooser_set_current_folder_file (chooser, default_file_for_saving);
+ *     ctk_file_chooser_set_current_name (chooser, "Untitled document");
  *   }
  * else
  *   {
  *     // the user edited an existing document
- *     gtk_file_chooser_set_file (chooser, existing_file);
+ *     ctk_file_chooser_set_file (chooser, existing_file);
  *   }
  * ]|
  *
@@ -1455,7 +1455,7 @@ gtk_file_chooser_get_files (GtkFileChooser *chooser)
  * Since: 2.14
  **/
 gboolean
-gtk_file_chooser_set_file (GtkFileChooser  *chooser,
+ctk_file_chooser_set_file (GtkFileChooser  *chooser,
                            GFile           *file,
                            GError         **error)
 {
@@ -1463,12 +1463,12 @@ gtk_file_chooser_set_file (GtkFileChooser  *chooser,
   g_return_val_if_fail (G_IS_FILE (file), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  gtk_file_chooser_unselect_all (chooser);
-  return gtk_file_chooser_select_file (chooser, file, error);
+  ctk_file_chooser_unselect_all (chooser);
+  return ctk_file_chooser_select_file (chooser, file, error);
 }
 
 /**
- * gtk_file_chooser_get_file:
+ * ctk_file_chooser_get_file:
  * @chooser: a #GtkFileChooser
  *
  * Gets the #GFile for the currently selected file in
@@ -1484,14 +1484,14 @@ gtk_file_chooser_set_file (GtkFileChooser  *chooser,
  * Since: 2.14
  **/
 GFile *
-gtk_file_chooser_get_file (GtkFileChooser *chooser)
+ctk_file_chooser_get_file (GtkFileChooser *chooser)
 {
   GSList *list;
   GFile *result = NULL;
   
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  list = gtk_file_chooser_get_files (chooser);
+  list = ctk_file_chooser_get_files (chooser);
   if (list)
     {
       result = list->data;
@@ -1504,7 +1504,7 @@ gtk_file_chooser_get_file (GtkFileChooser *chooser)
 }
 
 /**
- * _gtk_file_chooser_get_file_system:
+ * _ctk_file_chooser_get_file_system:
  * @chooser: a #GtkFileChooser
  * 
  * Gets the #GtkFileSystem of @chooser; this is an internal
@@ -1516,7 +1516,7 @@ gtk_file_chooser_get_file (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 GtkFileSystem *
-_gtk_file_chooser_get_file_system (GtkFileChooser *chooser)
+_ctk_file_chooser_get_file_system (GtkFileChooser *chooser)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
@@ -1526,17 +1526,17 @@ _gtk_file_chooser_get_file_system (GtkFileChooser *chooser)
 /* Preview widget
  */
 /**
- * gtk_file_chooser_set_preview_widget:
+ * ctk_file_chooser_set_preview_widget:
  * @chooser: a #GtkFileChooser
  * @preview_widget: widget for displaying preview.
  *
  * Sets an application-supplied widget to use to display a custom preview
  * of the currently selected file. To implement a preview, after setting the
  * preview widget, you connect to the #GtkFileChooser::update-preview
- * signal, and call gtk_file_chooser_get_preview_filename() or
- * gtk_file_chooser_get_preview_uri() on each change. If you can
+ * signal, and call ctk_file_chooser_get_preview_filename() or
+ * ctk_file_chooser_get_preview_uri() on each change. If you can
  * display a preview of the new file, update your widget and
- * set the preview active using gtk_file_chooser_set_preview_widget_active().
+ * set the preview active using ctk_file_chooser_set_preview_widget_active().
  * Otherwise, set the preview inactive.
  *
  * When there is no application-supplied preview widget, or the
@@ -1546,7 +1546,7 @@ _gtk_file_chooser_get_file_system (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_preview_widget (GtkFileChooser *chooser,
+ctk_file_chooser_set_preview_widget (GtkFileChooser *chooser,
 				     GtkWidget      *preview_widget)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1555,18 +1555,18 @@ gtk_file_chooser_set_preview_widget (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_preview_widget:
+ * ctk_file_chooser_get_preview_widget:
  * @chooser: a #GtkFileChooser
  *
  * Gets the current preview widget; see
- * gtk_file_chooser_set_preview_widget().
+ * ctk_file_chooser_set_preview_widget().
  *
  * Returns: (nullable) (transfer none): the current preview widget, or %NULL
  *
  * Since: 2.4
  **/
 GtkWidget *
-gtk_file_chooser_get_preview_widget (GtkFileChooser *chooser)
+ctk_file_chooser_get_preview_widget (GtkFileChooser *chooser)
 {
   GtkWidget *preview_widget;
   
@@ -1585,21 +1585,21 @@ gtk_file_chooser_get_preview_widget (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_preview_widget_active:
+ * ctk_file_chooser_set_preview_widget_active:
  * @chooser: a #GtkFileChooser
  * @active: whether to display the user-specified preview widget
  * 
  * Sets whether the preview widget set by
- * gtk_file_chooser_set_preview_widget() should be shown for the
+ * ctk_file_chooser_set_preview_widget() should be shown for the
  * current filename. When @active is set to false, the file chooser
  * may display an internally generated preview of the current file
  * or it may display no preview at all. See
- * gtk_file_chooser_set_preview_widget() for more details.
+ * ctk_file_chooser_set_preview_widget() for more details.
  *
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_preview_widget_active (GtkFileChooser *chooser,
+ctk_file_chooser_set_preview_widget_active (GtkFileChooser *chooser,
 					    gboolean        active)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1608,19 +1608,19 @@ gtk_file_chooser_set_preview_widget_active (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_preview_widget_active:
+ * ctk_file_chooser_get_preview_widget_active:
  * @chooser: a #GtkFileChooser
  * 
- * Gets whether the preview widget set by gtk_file_chooser_set_preview_widget()
+ * Gets whether the preview widget set by ctk_file_chooser_set_preview_widget()
  * should be shown for the current filename. See
- * gtk_file_chooser_set_preview_widget_active().
+ * ctk_file_chooser_set_preview_widget_active().
  * 
  * Returns: %TRUE if the preview widget is active for the current filename.
  *
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_get_preview_widget_active (GtkFileChooser *chooser)
+ctk_file_chooser_get_preview_widget_active (GtkFileChooser *chooser)
 {
   gboolean active;
   
@@ -1632,7 +1632,7 @@ gtk_file_chooser_get_preview_widget_active (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_use_preview_label:
+ * ctk_file_chooser_set_use_preview_label:
  * @chooser: a #GtkFileChooser
  * @use_label: whether to display a stock label with the name of the previewed file
  * 
@@ -1641,12 +1641,12 @@ gtk_file_chooser_get_preview_widget_active (GtkFileChooser *chooser)
  * want to draw the whole preview area themselves should set this to %FALSE and
  * display the name themselves in their preview widget.
  *
- * See also: gtk_file_chooser_set_preview_widget()
+ * See also: ctk_file_chooser_set_preview_widget()
  *
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_use_preview_label (GtkFileChooser *chooser,
+ctk_file_chooser_set_use_preview_label (GtkFileChooser *chooser,
 					gboolean        use_label)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1655,17 +1655,17 @@ gtk_file_chooser_set_use_preview_label (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_use_preview_label:
+ * ctk_file_chooser_get_use_preview_label:
  * @chooser: a #GtkFileChooser
  * 
  * Gets whether a stock label should be drawn with the name of the previewed
- * file.  See gtk_file_chooser_set_use_preview_label().
+ * file.  See ctk_file_chooser_set_use_preview_label().
  * 
  * Returns: %TRUE if the file chooser is set to display a label with the
  * name of the previewed file, %FALSE otherwise.
  **/
 gboolean
-gtk_file_chooser_get_use_preview_label (GtkFileChooser *chooser)
+ctk_file_chooser_get_use_preview_label (GtkFileChooser *chooser)
 {
   gboolean use_label;
   
@@ -1677,11 +1677,11 @@ gtk_file_chooser_get_use_preview_label (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_get_preview_file:
+ * ctk_file_chooser_get_preview_file:
  * @chooser: a #GtkFileChooser
  *
  * Gets the #GFile that should be previewed in a custom preview
- * Internal function, see gtk_file_chooser_get_preview_uri().
+ * Internal function, see ctk_file_chooser_get_preview_uri().
  *
  * Returns: (nullable) (transfer full): the #GFile for the file to preview,
  *     or %NULL if no file is selected. Free with g_object_unref().
@@ -1689,7 +1689,7 @@ gtk_file_chooser_get_use_preview_label (GtkFileChooser *chooser)
  * Since: 2.14
  **/
 GFile *
-gtk_file_chooser_get_preview_file (GtkFileChooser *chooser)
+ctk_file_chooser_get_preview_file (GtkFileChooser *chooser)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
@@ -1697,13 +1697,13 @@ gtk_file_chooser_get_preview_file (GtkFileChooser *chooser)
 }
 
 /**
- * _gtk_file_chooser_add_shortcut_folder:
+ * _ctk_file_chooser_add_shortcut_folder:
  * @chooser: a #GtkFileChooser
  * @file: file for the folder to add
  * @error: (allow-none): location to store error, or %NULL
  * 
  * Adds a folder to be displayed with the shortcut folders in a file chooser.
- * Internal function, see gtk_file_chooser_add_shortcut_folder().
+ * Internal function, see ctk_file_chooser_add_shortcut_folder().
  * 
  * Returns: %TRUE if the folder could be added successfully, %FALSE
  * otherwise.
@@ -1711,7 +1711,7 @@ gtk_file_chooser_get_preview_file (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 gboolean
-_gtk_file_chooser_add_shortcut_folder (GtkFileChooser  *chooser,
+_ctk_file_chooser_add_shortcut_folder (GtkFileChooser  *chooser,
 				       GFile           *file,
 				       GError         **error)
 {
@@ -1722,13 +1722,13 @@ _gtk_file_chooser_add_shortcut_folder (GtkFileChooser  *chooser,
 }
 
 /**
- * _gtk_file_chooser_remove_shortcut_folder:
+ * _ctk_file_chooser_remove_shortcut_folder:
  * @chooser: a #GtkFileChooser
  * @file: file for the folder to remove
  * @error: (allow-none): location to store error, or %NULL
  * 
  * Removes a folder from the shortcut folders in a file chooser.  Internal
- * function, see gtk_file_chooser_remove_shortcut_folder().
+ * function, see ctk_file_chooser_remove_shortcut_folder().
  * 
  * Returns: %TRUE if the folder could be removed successfully, %FALSE
  * otherwise.
@@ -1736,7 +1736,7 @@ _gtk_file_chooser_add_shortcut_folder (GtkFileChooser  *chooser,
  * Since: 2.4
  **/
 gboolean
-_gtk_file_chooser_remove_shortcut_folder (GtkFileChooser  *chooser,
+_ctk_file_chooser_remove_shortcut_folder (GtkFileChooser  *chooser,
 					  GFile           *file,
 					  GError         **error)
 {
@@ -1747,11 +1747,11 @@ _gtk_file_chooser_remove_shortcut_folder (GtkFileChooser  *chooser,
 }
 
 /**
- * gtk_file_chooser_get_preview_filename:
+ * ctk_file_chooser_get_preview_filename:
  * @chooser: a #GtkFileChooser
  * 
  * Gets the filename that should be previewed in a custom preview
- * widget. See gtk_file_chooser_set_preview_widget().
+ * widget. See ctk_file_chooser_set_preview_widget().
  * 
  * Returns: (nullable) (type filename): the filename to preview, or %NULL if
  *  no file is selected, or if the selected file cannot be represented
@@ -1760,14 +1760,14 @@ _gtk_file_chooser_remove_shortcut_folder (GtkFileChooser  *chooser,
  * Since: 2.4
  **/
 char *
-gtk_file_chooser_get_preview_filename (GtkFileChooser *chooser)
+ctk_file_chooser_get_preview_filename (GtkFileChooser *chooser)
 {
   GFile *file;
   gchar *result = NULL;
   
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  file = gtk_file_chooser_get_preview_file (chooser);
+  file = ctk_file_chooser_get_preview_file (chooser);
   if (file)
     {
       result = g_file_get_path (file);
@@ -1778,11 +1778,11 @@ gtk_file_chooser_get_preview_filename (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_get_preview_uri:
+ * ctk_file_chooser_get_preview_uri:
  * @chooser: a #GtkFileChooser
  * 
  * Gets the URI that should be previewed in a custom preview
- * widget. See gtk_file_chooser_set_preview_widget().
+ * widget. See ctk_file_chooser_set_preview_widget().
  * 
  * Returns: (nullable) (transfer full): the URI for the file to preview,
  *     or %NULL if no file is selected. Free with g_free().
@@ -1790,14 +1790,14 @@ gtk_file_chooser_get_preview_filename (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 char *
-gtk_file_chooser_get_preview_uri (GtkFileChooser *chooser)
+ctk_file_chooser_get_preview_uri (GtkFileChooser *chooser)
 {
   GFile *file;
   gchar *result = NULL;
   
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  file = gtk_file_chooser_get_preview_file (chooser);
+  file = ctk_file_chooser_get_preview_file (chooser);
   if (file)
     {
       result = g_file_get_uri (file);
@@ -1808,7 +1808,7 @@ gtk_file_chooser_get_preview_uri (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_extra_widget:
+ * ctk_file_chooser_set_extra_widget:
  * @chooser: a #GtkFileChooser
  * @extra_widget: widget for extra options
  * 
@@ -1817,7 +1817,7 @@ gtk_file_chooser_get_preview_uri (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_extra_widget (GtkFileChooser *chooser,
+ctk_file_chooser_set_extra_widget (GtkFileChooser *chooser,
 				   GtkWidget      *extra_widget)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1826,18 +1826,18 @@ gtk_file_chooser_set_extra_widget (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_extra_widget:
+ * ctk_file_chooser_get_extra_widget:
  * @chooser: a #GtkFileChooser
  *
  * Gets the current extra widget; see
- * gtk_file_chooser_set_extra_widget().
+ * ctk_file_chooser_set_extra_widget().
  *
  * Returns: (nullable) (transfer none): the current extra widget, or %NULL
  *
  * Since: 2.4
  **/
 GtkWidget *
-gtk_file_chooser_get_extra_widget (GtkFileChooser *chooser)
+ctk_file_chooser_get_extra_widget (GtkFileChooser *chooser)
 {
   GtkWidget *extra_widget;
   
@@ -1856,7 +1856,7 @@ gtk_file_chooser_get_extra_widget (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_add_filter:
+ * ctk_file_chooser_add_filter:
  * @chooser: a #GtkFileChooser
  * @filter: (transfer full): a #GtkFileFilter
  * 
@@ -1870,7 +1870,7 @@ gtk_file_chooser_get_extra_widget (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 void
-gtk_file_chooser_add_filter (GtkFileChooser *chooser,
+ctk_file_chooser_add_filter (GtkFileChooser *chooser,
 			     GtkFileFilter  *filter)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1879,7 +1879,7 @@ gtk_file_chooser_add_filter (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_remove_filter:
+ * ctk_file_chooser_remove_filter:
  * @chooser: a #GtkFileChooser
  * @filter: a #GtkFileFilter
  * 
@@ -1888,7 +1888,7 @@ gtk_file_chooser_add_filter (GtkFileChooser *chooser,
  * Since: 2.4
  **/
 void
-gtk_file_chooser_remove_filter (GtkFileChooser *chooser,
+ctk_file_chooser_remove_filter (GtkFileChooser *chooser,
 				GtkFileFilter  *filter)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1897,11 +1897,11 @@ gtk_file_chooser_remove_filter (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_list_filters:
+ * ctk_file_chooser_list_filters:
  * @chooser: a #GtkFileChooser
  * 
  * Lists the current set of user-selectable filters; see
- * gtk_file_chooser_add_filter(), gtk_file_chooser_remove_filter().
+ * ctk_file_chooser_add_filter(), ctk_file_chooser_remove_filter().
  *
  * Returns: (element-type GtkFileFilter) (transfer container): a
  *  #GSList containing the current set of user selectable filters. The
@@ -1911,7 +1911,7 @@ gtk_file_chooser_remove_filter (GtkFileChooser *chooser,
  * Since: 2.4
  **/
 GSList *
-gtk_file_chooser_list_filters  (GtkFileChooser *chooser)
+ctk_file_chooser_list_filters  (GtkFileChooser *chooser)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
@@ -1919,7 +1919,7 @@ gtk_file_chooser_list_filters  (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_filter:
+ * ctk_file_chooser_set_filter:
  * @chooser: a #GtkFileChooser
  * @filter: a #GtkFileFilter
  * 
@@ -1933,7 +1933,7 @@ gtk_file_chooser_list_filters  (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 void
-gtk_file_chooser_set_filter (GtkFileChooser *chooser,
+ctk_file_chooser_set_filter (GtkFileChooser *chooser,
 			     GtkFileFilter  *filter)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -1943,17 +1943,17 @@ gtk_file_chooser_set_filter (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_filter:
+ * ctk_file_chooser_get_filter:
  * @chooser: a #GtkFileChooser
  *
- * Gets the current filter; see gtk_file_chooser_set_filter().
+ * Gets the current filter; see ctk_file_chooser_set_filter().
  *
  * Returns: (nullable) (transfer none): the current filter, or %NULL
  *
  * Since: 2.4
  **/
 GtkFileFilter *
-gtk_file_chooser_get_filter (GtkFileChooser *chooser)
+ctk_file_chooser_get_filter (GtkFileChooser *chooser)
 {
   GtkFileFilter *filter;
   
@@ -1971,7 +1971,7 @@ gtk_file_chooser_get_filter (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_add_shortcut_folder:
+ * ctk_file_chooser_add_shortcut_folder:
  * @chooser: a #GtkFileChooser
  * @folder: (type filename): filename of the folder to add
  * @error: (allow-none): location to store error, or %NULL
@@ -1987,7 +1987,7 @@ gtk_file_chooser_get_filter (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_add_shortcut_folder (GtkFileChooser    *chooser,
+ctk_file_chooser_add_shortcut_folder (GtkFileChooser    *chooser,
 				      const char        *folder,
 				      GError           **error)
 {
@@ -2005,7 +2005,7 @@ gtk_file_chooser_add_shortcut_folder (GtkFileChooser    *chooser,
 }
 
 /**
- * gtk_file_chooser_remove_shortcut_folder:
+ * ctk_file_chooser_remove_shortcut_folder:
  * @chooser: a #GtkFileChooser
  * @folder: (type filename): filename of the folder to remove
  * @error: (allow-none): location to store error, or %NULL
@@ -2015,12 +2015,12 @@ gtk_file_chooser_add_shortcut_folder (GtkFileChooser    *chooser,
  * Returns: %TRUE if the operation succeeds, %FALSE otherwise.  
  * In the latter case, the @error will be set as appropriate.
  *
- * See also: gtk_file_chooser_add_shortcut_folder()
+ * See also: ctk_file_chooser_add_shortcut_folder()
  *
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_remove_shortcut_folder (GtkFileChooser    *chooser,
+ctk_file_chooser_remove_shortcut_folder (GtkFileChooser    *chooser,
 					 const char        *folder,
 					 GError           **error)
 {
@@ -2038,11 +2038,11 @@ gtk_file_chooser_remove_shortcut_folder (GtkFileChooser    *chooser,
 }
 
 /**
- * gtk_file_chooser_list_shortcut_folders:
+ * ctk_file_chooser_list_shortcut_folders:
  * @chooser: a #GtkFileChooser
  * 
  * Queries the list of shortcut folders in the file chooser, as set by
- * gtk_file_chooser_add_shortcut_folder().
+ * ctk_file_chooser_add_shortcut_folder().
  *
  * Returns: (nullable) (element-type filename) (transfer full): A list
  * of folder filenames, or %NULL if there are no shortcut folders.
@@ -2052,14 +2052,14 @@ gtk_file_chooser_remove_shortcut_folder (GtkFileChooser    *chooser,
  * Since: 2.4
  **/
 GSList *
-gtk_file_chooser_list_shortcut_folders (GtkFileChooser *chooser)
+ctk_file_chooser_list_shortcut_folders (GtkFileChooser *chooser)
 {
   GSList *folders;
   GSList *result;
 
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  folders = _gtk_file_chooser_list_shortcut_folder_files (chooser);
+  folders = _ctk_file_chooser_list_shortcut_folder_files (chooser);
 
   result = files_to_strings (folders, g_file_get_path);
   g_slist_free_full (folders, g_object_unref);
@@ -2068,7 +2068,7 @@ gtk_file_chooser_list_shortcut_folders (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_add_shortcut_folder_uri:
+ * ctk_file_chooser_add_shortcut_folder_uri:
  * @chooser: a #GtkFileChooser
  * @uri: URI of the folder to add
  * @error: (allow-none): location to store error, or %NULL
@@ -2084,7 +2084,7 @@ gtk_file_chooser_list_shortcut_folders (GtkFileChooser *chooser)
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_add_shortcut_folder_uri (GtkFileChooser    *chooser,
+ctk_file_chooser_add_shortcut_folder_uri (GtkFileChooser    *chooser,
 					  const char        *uri,
 					  GError           **error)
 {
@@ -2102,7 +2102,7 @@ gtk_file_chooser_add_shortcut_folder_uri (GtkFileChooser    *chooser,
 }
 
 /**
- * gtk_file_chooser_remove_shortcut_folder_uri:
+ * ctk_file_chooser_remove_shortcut_folder_uri:
  * @chooser: a #GtkFileChooser
  * @uri: URI of the folder to remove
  * @error: (allow-none): location to store error, or %NULL
@@ -2112,12 +2112,12 @@ gtk_file_chooser_add_shortcut_folder_uri (GtkFileChooser    *chooser,
  * Returns: %TRUE if the operation succeeds, %FALSE otherwise.  
  * In the latter case, the @error will be set as appropriate.
  *
- * See also: gtk_file_chooser_add_shortcut_folder_uri()
+ * See also: ctk_file_chooser_add_shortcut_folder_uri()
  *
  * Since: 2.4
  **/
 gboolean
-gtk_file_chooser_remove_shortcut_folder_uri (GtkFileChooser    *chooser,
+ctk_file_chooser_remove_shortcut_folder_uri (GtkFileChooser    *chooser,
 					     const char        *uri,
 					     GError           **error)
 {
@@ -2135,11 +2135,11 @@ gtk_file_chooser_remove_shortcut_folder_uri (GtkFileChooser    *chooser,
 }
 
 /**
- * gtk_file_chooser_list_shortcut_folder_uris:
+ * ctk_file_chooser_list_shortcut_folder_uris:
  * @chooser: a #GtkFileChooser
  * 
  * Queries the list of shortcut folders in the file chooser, as set by
- * gtk_file_chooser_add_shortcut_folder_uri().
+ * ctk_file_chooser_add_shortcut_folder_uri().
  *
  * Returns: (nullable) (element-type utf8) (transfer full): A list of
  * folder URIs, or %NULL if there are no shortcut folders.  Free the
@@ -2148,14 +2148,14 @@ gtk_file_chooser_remove_shortcut_folder_uri (GtkFileChooser    *chooser,
  * Since: 2.4
  **/
 GSList *
-gtk_file_chooser_list_shortcut_folder_uris (GtkFileChooser *chooser)
+ctk_file_chooser_list_shortcut_folder_uris (GtkFileChooser *chooser)
 {
   GSList *folders;
   GSList *result;
 
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
-  folders = _gtk_file_chooser_list_shortcut_folder_files (chooser);
+  folders = _ctk_file_chooser_list_shortcut_folder_files (chooser);
 
   result = files_to_strings (folders, g_file_get_uri);
   g_slist_free_full (folders, g_object_unref);
@@ -2164,7 +2164,7 @@ gtk_file_chooser_list_shortcut_folder_uris (GtkFileChooser *chooser)
 }
 
 GSList *
-_gtk_file_chooser_list_shortcut_folder_files (GtkFileChooser *chooser)
+_ctk_file_chooser_list_shortcut_folder_files (GtkFileChooser *chooser)
 {
   g_return_val_if_fail (GTK_IS_FILE_CHOOSER (chooser), NULL);
 
@@ -2172,7 +2172,7 @@ _gtk_file_chooser_list_shortcut_folder_files (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_show_hidden:
+ * ctk_file_chooser_set_show_hidden:
  * @chooser: a #GtkFileChooser
  * @show_hidden: %TRUE if hidden files and folders should be displayed.
  * 
@@ -2181,7 +2181,7 @@ _gtk_file_chooser_list_shortcut_folder_files (GtkFileChooser *chooser)
  * Since: 2.6
  **/
 void
-gtk_file_chooser_set_show_hidden (GtkFileChooser *chooser,
+ctk_file_chooser_set_show_hidden (GtkFileChooser *chooser,
 				  gboolean        show_hidden)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -2190,18 +2190,18 @@ gtk_file_chooser_set_show_hidden (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_show_hidden:
+ * ctk_file_chooser_get_show_hidden:
  * @chooser: a #GtkFileChooser
  * 
  * Gets whether hidden files and folders are displayed in the file selector.   
- * See gtk_file_chooser_set_show_hidden().
+ * See ctk_file_chooser_set_show_hidden().
  * 
  * Returns: %TRUE if hidden files and folders are displayed.
  *
  * Since: 2.6
  **/
 gboolean
-gtk_file_chooser_get_show_hidden (GtkFileChooser *chooser)
+ctk_file_chooser_get_show_hidden (GtkFileChooser *chooser)
 {
   gboolean show_hidden;
   
@@ -2213,7 +2213,7 @@ gtk_file_chooser_get_show_hidden (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_set_do_overwrite_confirmation:
+ * ctk_file_chooser_set_do_overwrite_confirmation:
  * @chooser: a #GtkFileChooser
  * @do_overwrite_confirmation: whether to confirm overwriting in save mode
  * 
@@ -2232,7 +2232,7 @@ gtk_file_chooser_get_show_hidden (GtkFileChooser *chooser)
  * Since: 2.8
  **/
 void
-gtk_file_chooser_set_do_overwrite_confirmation (GtkFileChooser *chooser,
+ctk_file_chooser_set_do_overwrite_confirmation (GtkFileChooser *chooser,
 						gboolean        do_overwrite_confirmation)
 {
   g_return_if_fail (GTK_IS_FILE_CHOOSER (chooser));
@@ -2241,7 +2241,7 @@ gtk_file_chooser_set_do_overwrite_confirmation (GtkFileChooser *chooser,
 }
 
 /**
- * gtk_file_chooser_get_do_overwrite_confirmation:
+ * ctk_file_chooser_get_do_overwrite_confirmation:
  * @chooser: a #GtkFileChooser
  * 
  * Queries whether a file chooser is set to confirm for overwriting when the user
@@ -2253,7 +2253,7 @@ gtk_file_chooser_set_do_overwrite_confirmation (GtkFileChooser *chooser,
  * Since: 2.8
  **/
 gboolean
-gtk_file_chooser_get_do_overwrite_confirmation (GtkFileChooser *chooser)
+ctk_file_chooser_get_do_overwrite_confirmation (GtkFileChooser *chooser)
 {
   gboolean do_overwrite_confirmation;
 
@@ -2265,7 +2265,7 @@ gtk_file_chooser_get_do_overwrite_confirmation (GtkFileChooser *chooser)
 }
 
 /**
- * gtk_file_chooser_add_choice:
+ * ctk_file_chooser_add_choice:
  * @chooser: a #GtkFileChooser
  * @id: id for the added choice
  * @label: user-visible label for the added choice
@@ -2274,16 +2274,16 @@ gtk_file_chooser_get_do_overwrite_confirmation (GtkFileChooser *chooser)
  *
  * Adds a 'choice' to the file chooser. This is typically implemented
  * as a combobox or, for boolean choices, as a checkbutton. You can select
- * a value using gtk_file_chooser_set_choice() before the dialog is shown,
+ * a value using ctk_file_chooser_set_choice() before the dialog is shown,
  * and you can obtain the user-selected value in the ::response signal handler
- * using gtk_file_chooser_get_choice().
+ * using ctk_file_chooser_get_choice().
  *
- * Compare gtk_file_chooser_set_extra_widget().
+ * Compare ctk_file_chooser_set_extra_widget().
  *
  * Since: 3.22
  */
 void
-gtk_file_chooser_add_choice (GtkFileChooser  *chooser,
+ctk_file_chooser_add_choice (GtkFileChooser  *chooser,
                              const char      *id,
                              const char      *label,
                              const char     **options,
@@ -2296,16 +2296,16 @@ gtk_file_chooser_add_choice (GtkFileChooser  *chooser,
 }
 
 /**
- * gtk_file_chooser_remove_choice:
+ * ctk_file_chooser_remove_choice:
  * @chooser: a #GtkFileChooser
  * @id: the ID of the choice to remove
  *
- * Removes a 'choice' that has been added with gtk_file_chooser_add_choice().
+ * Removes a 'choice' that has been added with ctk_file_chooser_add_choice().
  *
  * Since: 3.22
  */
 void
-gtk_file_chooser_remove_choice (GtkFileChooser  *chooser,
+ctk_file_chooser_remove_choice (GtkFileChooser  *chooser,
                                 const char      *id)
 {
   GtkFileChooserIface *iface = GTK_FILE_CHOOSER_GET_IFACE (chooser);
@@ -2315,19 +2315,19 @@ gtk_file_chooser_remove_choice (GtkFileChooser  *chooser,
 }
 
 /**
- * gtk_file_chooser_set_choice:
+ * ctk_file_chooser_set_choice:
  * @chooser: a #GtkFileChooser
  * @id: the ID of the choice to set
  * @option: the ID of the option to select
  *
  * Selects an option in a 'choice' that has been added with
- * gtk_file_chooser_add_choice(). For a boolean choice, the
+ * ctk_file_chooser_add_choice(). For a boolean choice, the
  * possible options are "true" and "false".
  *
  * Since: 3.22
  */
 void
-gtk_file_chooser_set_choice (GtkFileChooser  *chooser,
+ctk_file_chooser_set_choice (GtkFileChooser  *chooser,
                              const char      *id,
                              const char      *option)
 {
@@ -2338,7 +2338,7 @@ gtk_file_chooser_set_choice (GtkFileChooser  *chooser,
 }
 
 /**
- * gtk_file_chooser_get_choice:
+ * ctk_file_chooser_get_choice:
  * @chooser: a #GtkFileChooser
  * @id: the ID of the choice to get
  *
@@ -2348,7 +2348,7 @@ gtk_file_chooser_set_choice (GtkFileChooser  *chooser,
  * Since: 3.22
  */
 const char *
-gtk_file_chooser_get_choice (GtkFileChooser  *chooser,
+ctk_file_chooser_get_choice (GtkFileChooser  *chooser,
                              const char      *id)
 {
   GtkFileChooserIface *iface = GTK_FILE_CHOOSER_GET_IFACE (chooser);

@@ -43,19 +43,19 @@ static const struct {
   { ATK_STATE_EXPANDED,  GTK_CELL_RENDERER_EXPANDED,    FALSE },
 };
 
-static GtkCellRendererState gtk_cell_accessible_get_state (GtkCellAccessible *cell);
+static GtkCellRendererState ctk_cell_accessible_get_state (GtkCellAccessible *cell);
 static void atk_action_interface_init    (AtkActionIface    *iface);
 static void atk_component_interface_init (AtkComponentIface *iface);
 static void atk_table_cell_interface_init    (AtkTableCellIface    *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkCellAccessible, gtk_cell_accessible, GTK_TYPE_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkCellAccessible, ctk_cell_accessible, GTK_TYPE_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkCellAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, atk_component_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_TABLE_CELL, atk_table_cell_interface_init))
 
 static gint
-gtk_cell_accessible_get_index_in_parent (AtkObject *obj)
+ctk_cell_accessible_get_index_in_parent (AtkObject *obj)
 {
   GtkCellAccessible *cell;
   AtkObject *parent;
@@ -63,30 +63,30 @@ gtk_cell_accessible_get_index_in_parent (AtkObject *obj)
   cell = GTK_CELL_ACCESSIBLE (obj);
 
   if (GTK_IS_CONTAINER_CELL_ACCESSIBLE (cell->priv->parent))
-    return g_list_index (gtk_container_cell_accessible_get_children (GTK_CONTAINER_CELL_ACCESSIBLE (cell->priv->parent)), obj);
+    return g_list_index (ctk_container_cell_accessible_get_children (GTK_CONTAINER_CELL_ACCESSIBLE (cell->priv->parent)), obj);
 
-  parent = gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
+  parent = ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
   if (parent == NULL)
     return -1;
 
-  return gtk_cell_accessible_parent_get_child_index (GTK_CELL_ACCESSIBLE_PARENT (cell->priv->parent), cell);
+  return ctk_cell_accessible_parent_get_child_index (GTK_CELL_ACCESSIBLE_PARENT (cell->priv->parent), cell);
 }
 
 static AtkRelationSet *
-gtk_cell_accessible_ref_relation_set (AtkObject *object)
+ctk_cell_accessible_ref_relation_set (AtkObject *object)
 {
   GtkCellAccessible *cell;
   AtkRelationSet *relationset;
   AtkObject *parent;
 
-  relationset = ATK_OBJECT_CLASS (gtk_cell_accessible_parent_class)->ref_relation_set (object);
+  relationset = ATK_OBJECT_CLASS (ctk_cell_accessible_parent_class)->ref_relation_set (object);
   if (relationset == NULL)
     relationset = atk_relation_set_new ();
 
   cell = GTK_CELL_ACCESSIBLE (object);
-  parent = gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
+  parent = ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
 
-  gtk_cell_accessible_parent_update_relationset (GTK_CELL_ACCESSIBLE_PARENT (parent),
+  ctk_cell_accessible_parent_update_relationset (GTK_CELL_ACCESSIBLE_PARENT (parent),
                                                  cell,
                                                  relationset);
 
@@ -94,7 +94,7 @@ gtk_cell_accessible_ref_relation_set (AtkObject *object)
 }
 
 static AtkStateSet *
-gtk_cell_accessible_ref_state_set (AtkObject *accessible)
+ctk_cell_accessible_ref_state_set (AtkObject *accessible)
 {
   GtkCellAccessible *cell_accessible;
   AtkStateSet *state_set;
@@ -105,13 +105,13 @@ gtk_cell_accessible_ref_state_set (AtkObject *accessible)
 
   state_set = atk_state_set_new ();
 
-  if (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell_accessible)) == NULL)
+  if (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell_accessible)) == NULL)
     {
       atk_state_set_add_state (state_set, ATK_STATE_DEFUNCT);
       return state_set;
     }
 
-  flags = gtk_cell_accessible_get_state (cell_accessible);
+  flags = ctk_cell_accessible_get_state (cell_accessible);
 
   atk_state_set_add_state (state_set, ATK_STATE_FOCUSABLE);
   atk_state_set_add_state (state_set, ATK_STATE_SELECTABLE);
@@ -132,14 +132,14 @@ gtk_cell_accessible_ref_state_set (AtkObject *accessible)
         }
     }
 
-  if (gtk_widget_get_mapped (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell_accessible))))
+  if (ctk_widget_get_mapped (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell_accessible))))
     atk_state_set_add_state (state_set, ATK_STATE_SHOWING);
 
   return state_set;
 }
 
 static AtkObject *
-gtk_cell_accessible_get_parent (AtkObject *object)
+ctk_cell_accessible_get_parent (AtkObject *object)
 {
   GtkCellAccessible *cell = GTK_CELL_ACCESSIBLE (object);
 
@@ -147,33 +147,33 @@ gtk_cell_accessible_get_parent (AtkObject *object)
 }
 
 static void
-gtk_cell_accessible_class_init (GtkCellAccessibleClass *klass)
+ctk_cell_accessible_class_init (GtkCellAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
-  class->get_index_in_parent = gtk_cell_accessible_get_index_in_parent;
-  class->ref_state_set = gtk_cell_accessible_ref_state_set;
-  class->ref_relation_set = gtk_cell_accessible_ref_relation_set;
-  class->get_parent = gtk_cell_accessible_get_parent;
+  class->get_index_in_parent = ctk_cell_accessible_get_index_in_parent;
+  class->ref_state_set = ctk_cell_accessible_ref_state_set;
+  class->ref_relation_set = ctk_cell_accessible_ref_relation_set;
+  class->get_parent = ctk_cell_accessible_get_parent;
 }
 
 static void
-gtk_cell_accessible_init (GtkCellAccessible *cell)
+ctk_cell_accessible_init (GtkCellAccessible *cell)
 {
-  cell->priv = gtk_cell_accessible_get_instance_private (cell);
+  cell->priv = ctk_cell_accessible_get_instance_private (cell);
 }
 
 void
-_gtk_cell_accessible_initialize (GtkCellAccessible *cell,
+_ctk_cell_accessible_initialize (GtkCellAccessible *cell,
                                  GtkWidget         *widget,
                                  AtkObject         *parent)
 {
-  gtk_accessible_set_widget (GTK_ACCESSIBLE (cell), widget);
+  ctk_accessible_set_widget (GTK_ACCESSIBLE (cell), widget);
   cell->priv->parent = parent;
 }
 
 gboolean
-_gtk_cell_accessible_add_state (GtkCellAccessible *cell,
+_ctk_cell_accessible_add_state (GtkCellAccessible *cell,
                                 AtkStateType       state_type,
                                 gboolean           emit_signal)
 {
@@ -193,13 +193,13 @@ _gtk_cell_accessible_add_state (GtkCellAccessible *cell,
    * change to it also
    */
   if (GTK_IS_CONTAINER_CELL_ACCESSIBLE (cell->priv->parent))
-    _gtk_cell_accessible_add_state (GTK_CELL_ACCESSIBLE (cell->priv->parent), state_type, emit_signal);
+    _ctk_cell_accessible_add_state (GTK_CELL_ACCESSIBLE (cell->priv->parent), state_type, emit_signal);
 
   return TRUE;
 }
 
 gboolean
-_gtk_cell_accessible_remove_state (GtkCellAccessible *cell,
+_ctk_cell_accessible_remove_state (GtkCellAccessible *cell,
                                    AtkStateType       state_type,
                                    gboolean           emit_signal)
 {
@@ -219,19 +219,19 @@ _gtk_cell_accessible_remove_state (GtkCellAccessible *cell,
    * change to it also
    */
   if (GTK_IS_CONTAINER_CELL_ACCESSIBLE (cell->priv->parent))
-    _gtk_cell_accessible_remove_state (GTK_CELL_ACCESSIBLE (cell->priv->parent), state_type, emit_signal);
+    _ctk_cell_accessible_remove_state (GTK_CELL_ACCESSIBLE (cell->priv->parent), state_type, emit_signal);
 
   return TRUE;
 }
 
 static gint
-gtk_cell_accessible_action_get_n_actions (AtkAction *action)
+ctk_cell_accessible_action_get_n_actions (AtkAction *action)
 {
   return 3;
 }
 
 static const gchar *
-gtk_cell_accessible_action_get_name (AtkAction *action,
+ctk_cell_accessible_action_get_name (AtkAction *action,
                                      gint       index)
 {
   switch (index)
@@ -248,7 +248,7 @@ gtk_cell_accessible_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-gtk_cell_accessible_action_get_localized_name (AtkAction *action,
+ctk_cell_accessible_action_get_localized_name (AtkAction *action,
                                                gint       index)
 {
   switch (index)
@@ -265,7 +265,7 @@ gtk_cell_accessible_action_get_localized_name (AtkAction *action,
 }
 
 static const gchar *
-gtk_cell_accessible_action_get_description (AtkAction *action,
+ctk_cell_accessible_action_get_description (AtkAction *action,
                                             gint       index)
 {
   switch (index)
@@ -282,35 +282,35 @@ gtk_cell_accessible_action_get_description (AtkAction *action,
 }
 
 static const gchar *
-gtk_cell_accessible_action_get_keybinding (AtkAction *action,
+ctk_cell_accessible_action_get_keybinding (AtkAction *action,
                                            gint       index)
 {
   return NULL;
 }
 
 static gboolean
-gtk_cell_accessible_action_do_action (AtkAction *action,
+ctk_cell_accessible_action_do_action (AtkAction *action,
                                       gint       index)
 {
   GtkCellAccessible *cell = GTK_CELL_ACCESSIBLE (action);
   GtkCellAccessibleParent *parent;
 
   cell = GTK_CELL_ACCESSIBLE (action);
-  if (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)) == NULL)
+  if (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)) == NULL)
     return FALSE;
 
-  parent = GTK_CELL_ACCESSIBLE_PARENT (gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell))));
+  parent = GTK_CELL_ACCESSIBLE_PARENT (ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell))));
 
   switch (index)
     {
     case 0:
-      gtk_cell_accessible_parent_expand_collapse (parent, cell);
+      ctk_cell_accessible_parent_expand_collapse (parent, cell);
       break;
     case 1:
-      gtk_cell_accessible_parent_edit (parent, cell);
+      ctk_cell_accessible_parent_edit (parent, cell);
       break;
     case 2:
-      gtk_cell_accessible_parent_activate (parent, cell);
+      ctk_cell_accessible_parent_activate (parent, cell);
       break;
     default:
       return FALSE;
@@ -322,16 +322,16 @@ gtk_cell_accessible_action_do_action (AtkAction *action,
 static void
 atk_action_interface_init (AtkActionIface *iface)
 {
-  iface->get_n_actions = gtk_cell_accessible_action_get_n_actions;
-  iface->do_action = gtk_cell_accessible_action_do_action;
-  iface->get_name = gtk_cell_accessible_action_get_name;
-  iface->get_localized_name = gtk_cell_accessible_action_get_localized_name;
-  iface->get_description = gtk_cell_accessible_action_get_description;
-  iface->get_keybinding = gtk_cell_accessible_action_get_keybinding;
+  iface->get_n_actions = ctk_cell_accessible_action_get_n_actions;
+  iface->do_action = ctk_cell_accessible_action_do_action;
+  iface->get_name = ctk_cell_accessible_action_get_name;
+  iface->get_localized_name = ctk_cell_accessible_action_get_localized_name;
+  iface->get_description = ctk_cell_accessible_action_get_description;
+  iface->get_keybinding = ctk_cell_accessible_action_get_keybinding;
 }
 
 static void
-gtk_cell_accessible_get_extents (AtkComponent *component,
+ctk_cell_accessible_get_extents (AtkComponent *component,
                                  gint         *x,
                                  gint         *y,
                                  gint         *width,
@@ -342,53 +342,53 @@ gtk_cell_accessible_get_extents (AtkComponent *component,
   AtkObject *parent;
 
   cell = GTK_CELL_ACCESSIBLE (component);
-  parent = gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
+  parent = ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
 
-  gtk_cell_accessible_parent_get_cell_extents (GTK_CELL_ACCESSIBLE_PARENT (parent),
+  ctk_cell_accessible_parent_get_cell_extents (GTK_CELL_ACCESSIBLE_PARENT (parent),
                                                 cell,
                                                 x, y, width, height, coord_type);
 }
 
 static gboolean
-gtk_cell_accessible_grab_focus (AtkComponent *component)
+ctk_cell_accessible_grab_focus (AtkComponent *component)
 {
   GtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = GTK_CELL_ACCESSIBLE (component);
-  parent = gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
+  parent = ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
 
-  return gtk_cell_accessible_parent_grab_focus (GTK_CELL_ACCESSIBLE_PARENT (parent), cell);
+  return ctk_cell_accessible_parent_grab_focus (GTK_CELL_ACCESSIBLE_PARENT (parent), cell);
 }
 
 static void
 atk_component_interface_init (AtkComponentIface *iface)
 {
-  iface->get_extents = gtk_cell_accessible_get_extents;
-  iface->grab_focus = gtk_cell_accessible_grab_focus;
+  iface->get_extents = ctk_cell_accessible_get_extents;
+  iface->grab_focus = ctk_cell_accessible_grab_focus;
 }
 
 static int
-gtk_cell_accessible_get_column_span (AtkTableCell *table_cell)
+ctk_cell_accessible_get_column_span (AtkTableCell *table_cell)
 {
   return 1;
 }
 
 static GPtrArray *
-gtk_cell_accessible_get_column_header_cells (AtkTableCell *table_cell)
+ctk_cell_accessible_get_column_header_cells (AtkTableCell *table_cell)
 {
   GtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = GTK_CELL_ACCESSIBLE (table_cell);
-  parent = gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
+  parent = ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
 
-  return gtk_cell_accessible_parent_get_column_header_cells (GTK_CELL_ACCESSIBLE_PARENT (parent),
+  return ctk_cell_accessible_parent_get_column_header_cells (GTK_CELL_ACCESSIBLE_PARENT (parent),
                                                              cell);
 }
 
 static gboolean
-gtk_cell_accessible_get_position (AtkTableCell *table_cell,
+ctk_cell_accessible_get_position (AtkTableCell *table_cell,
                                   gint         *row,
                                   gint         *column)
 {
@@ -396,35 +396,35 @@ gtk_cell_accessible_get_position (AtkTableCell *table_cell,
   AtkObject *parent;
 
   cell = GTK_CELL_ACCESSIBLE (table_cell);
-  parent = gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
+  parent = ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
 
-  gtk_cell_accessible_parent_get_cell_position (GTK_CELL_ACCESSIBLE_PARENT (parent),
+  ctk_cell_accessible_parent_get_cell_position (GTK_CELL_ACCESSIBLE_PARENT (parent),
                                                 cell,
                                                 row, column);
   return ((row && *row > 0) || (column && *column > 0));
 }
 
 static int
-gtk_cell_accessible_get_row_span (AtkTableCell *table_cell)
+ctk_cell_accessible_get_row_span (AtkTableCell *table_cell)
 {
   return 1;
 }
 
 static GPtrArray *
-gtk_cell_accessible_get_row_header_cells (AtkTableCell *table_cell)
+ctk_cell_accessible_get_row_header_cells (AtkTableCell *table_cell)
 {
   GtkCellAccessible *cell;
   AtkObject *parent;
 
   cell = GTK_CELL_ACCESSIBLE (table_cell);
-  parent = gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
+  parent = ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
 
-  return gtk_cell_accessible_parent_get_row_header_cells (GTK_CELL_ACCESSIBLE_PARENT (parent),
+  return ctk_cell_accessible_parent_get_row_header_cells (GTK_CELL_ACCESSIBLE_PARENT (parent),
                                                           cell);
 }
 
 static AtkObject *
-gtk_cell_accessible_get_table (AtkTableCell *table_cell)
+ctk_cell_accessible_get_table (AtkTableCell *table_cell)
 {
   AtkObject *obj;
 
@@ -444,30 +444,30 @@ gtk_cell_accessible_get_table (AtkTableCell *table_cell)
 static void
 atk_table_cell_interface_init (AtkTableCellIface *iface)
 {
-  iface->get_column_span = gtk_cell_accessible_get_column_span;
-  iface->get_column_header_cells = gtk_cell_accessible_get_column_header_cells;
-  iface->get_position = gtk_cell_accessible_get_position;
-  iface->get_row_span = gtk_cell_accessible_get_row_span;
-  iface->get_row_header_cells = gtk_cell_accessible_get_row_header_cells;
-  iface->get_table = gtk_cell_accessible_get_table;
+  iface->get_column_span = ctk_cell_accessible_get_column_span;
+  iface->get_column_header_cells = ctk_cell_accessible_get_column_header_cells;
+  iface->get_position = ctk_cell_accessible_get_position;
+  iface->get_row_span = ctk_cell_accessible_get_row_span;
+  iface->get_row_header_cells = ctk_cell_accessible_get_row_header_cells;
+  iface->get_table = ctk_cell_accessible_get_table;
 }
 
 static GtkCellRendererState
-gtk_cell_accessible_get_state (GtkCellAccessible *cell)
+ctk_cell_accessible_get_state (GtkCellAccessible *cell)
 {
   AtkObject *parent;
 
   g_return_val_if_fail (GTK_IS_CELL_ACCESSIBLE (cell), 0);
 
-  parent = gtk_widget_get_accessible (gtk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
+  parent = ctk_widget_get_accessible (ctk_accessible_get_widget (GTK_ACCESSIBLE (cell)));
   if (parent == NULL)
     return 0;
 
-  return gtk_cell_accessible_parent_get_renderer_state (GTK_CELL_ACCESSIBLE_PARENT (parent), cell);
+  return ctk_cell_accessible_parent_get_renderer_state (GTK_CELL_ACCESSIBLE_PARENT (parent), cell);
 }
 
 /*
- * gtk_cell_accessible_state_changed:
+ * ctk_cell_accessible_state_changed:
  * @cell: a #GtkCellAccessible
  * @added: the flags that were added from @cell
  * @removed: the flags that were removed from @cell
@@ -477,7 +477,7 @@ gtk_cell_accessible_get_state (GtkCellAccessible *cell)
  * @removed at the same time.
  **/
 void
-_gtk_cell_accessible_state_changed (GtkCellAccessible    *cell,
+_ctk_cell_accessible_state_changed (GtkCellAccessible    *cell,
                                     GtkCellRendererState  added,
                                     GtkCellRendererState  removed)
 {
@@ -503,7 +503,7 @@ _gtk_cell_accessible_state_changed (GtkCellAccessible    *cell,
 }
 
 /*
- * gtk_cell_accessible_update_cache:
+ * ctk_cell_accessible_update_cache:
  * @cell: the cell that is changed
  * @emit_signal: whether or not to notify the ATK bridge
  *
@@ -520,7 +520,7 @@ _gtk_cell_accessible_state_changed (GtkCellAccessible    *cell,
  * function.
  **/
 void
-_gtk_cell_accessible_update_cache (GtkCellAccessible *cell,
+_ctk_cell_accessible_update_cache (GtkCellAccessible *cell,
                                    gboolean           emit_signal)
 {
   GtkCellAccessibleClass *klass;

@@ -57,7 +57,7 @@
  * property to %TRUE and increment the #GtkCellRendererSpinner:pulse property
  * at regular intervals. The usual way to set the cell renderer properties
  * for each cell is to bind them to columns in your tree model using e.g.
- * gtk_tree_view_column_add_attribute().
+ * ctk_tree_view_column_add_attribute().
  */
 
 
@@ -77,41 +77,41 @@ struct _GtkCellRendererSpinnerPrivate
 };
 
 
-static void gtk_cell_renderer_spinner_get_property (GObject         *object,
+static void ctk_cell_renderer_spinner_get_property (GObject         *object,
                                                     guint            param_id,
                                                     GValue          *value,
                                                     GParamSpec      *pspec);
-static void gtk_cell_renderer_spinner_set_property (GObject         *object,
+static void ctk_cell_renderer_spinner_set_property (GObject         *object,
                                                     guint            param_id,
                                                     const GValue    *value,
                                                     GParamSpec      *pspec);
-static void gtk_cell_renderer_spinner_get_size     (GtkCellRenderer *cell,
+static void ctk_cell_renderer_spinner_get_size     (GtkCellRenderer *cell,
                                                     GtkWidget          *widget,
                                                     const GdkRectangle *cell_area,
                                                     gint               *x_offset,
                                                     gint               *y_offset,
                                                     gint               *width,
                                                     gint               *height);
-static void gtk_cell_renderer_spinner_render       (GtkCellRenderer      *cell,
+static void ctk_cell_renderer_spinner_render       (GtkCellRenderer      *cell,
                                                     cairo_t              *cr,
                                                     GtkWidget            *widget,
                                                     const GdkRectangle   *background_area,
                                                     const GdkRectangle   *cell_area,
                                                     GtkCellRendererState  flags);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpinner, gtk_cell_renderer_spinner, GTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpinner, ctk_cell_renderer_spinner, GTK_TYPE_CELL_RENDERER)
 
 static void
-gtk_cell_renderer_spinner_class_init (GtkCellRendererSpinnerClass *klass)
+ctk_cell_renderer_spinner_class_init (GtkCellRendererSpinnerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkCellRendererClass *cell_class = GTK_CELL_RENDERER_CLASS (klass);
 
-  object_class->get_property = gtk_cell_renderer_spinner_get_property;
-  object_class->set_property = gtk_cell_renderer_spinner_set_property;
+  object_class->get_property = ctk_cell_renderer_spinner_get_property;
+  object_class->set_property = ctk_cell_renderer_spinner_set_property;
 
-  cell_class->get_size = gtk_cell_renderer_spinner_get_size;
-  cell_class->render = gtk_cell_renderer_spinner_render;
+  cell_class->get_size = ctk_cell_renderer_spinner_get_size;
+  cell_class->render = ctk_cell_renderer_spinner_render;
 
   /* GtkCellRendererSpinner:active:
    *
@@ -164,16 +164,16 @@ gtk_cell_renderer_spinner_class_init (GtkCellRendererSpinnerClass *klass)
 }
 
 static void
-gtk_cell_renderer_spinner_init (GtkCellRendererSpinner *cell)
+ctk_cell_renderer_spinner_init (GtkCellRendererSpinner *cell)
 {
-  cell->priv = gtk_cell_renderer_spinner_get_instance_private (cell);
+  cell->priv = ctk_cell_renderer_spinner_get_instance_private (cell);
   cell->priv->pulse = 0;
   cell->priv->old_icon_size = GTK_ICON_SIZE_INVALID;
   cell->priv->icon_size = GTK_ICON_SIZE_MENU;
 }
 
 /**
- * gtk_cell_renderer_spinner_new:
+ * ctk_cell_renderer_spinner_new:
  *
  * Returns a new cell renderer which will show a spinner to indicate
  * activity.
@@ -183,13 +183,13 @@ gtk_cell_renderer_spinner_init (GtkCellRendererSpinner *cell)
  * Since: 2.20
  */
 GtkCellRenderer *
-gtk_cell_renderer_spinner_new (void)
+ctk_cell_renderer_spinner_new (void)
 {
   return g_object_new (GTK_TYPE_CELL_RENDERER_SPINNER, NULL);
 }
 
 static void
-gtk_cell_renderer_spinner_update_size (GtkCellRendererSpinner *cell,
+ctk_cell_renderer_spinner_update_size (GtkCellRendererSpinner *cell,
                                        GtkWidget              *widget)
 {
   GtkCellRendererSpinnerPrivate *priv = cell->priv;
@@ -197,7 +197,7 @@ gtk_cell_renderer_spinner_update_size (GtkCellRendererSpinner *cell,
   if (priv->old_icon_size == priv->icon_size)
     return;
 
-  if (!gtk_icon_size_lookup (priv->icon_size, &priv->size, NULL))
+  if (!ctk_icon_size_lookup (priv->icon_size, &priv->size, NULL))
     {
       g_warning ("Invalid icon size %u", priv->icon_size);
       priv->size = 24;
@@ -205,7 +205,7 @@ gtk_cell_renderer_spinner_update_size (GtkCellRendererSpinner *cell,
 }
 
 static void
-gtk_cell_renderer_spinner_get_property (GObject    *object,
+ctk_cell_renderer_spinner_get_property (GObject    *object,
                                         guint       param_id,
                                         GValue     *value,
                                         GParamSpec *pspec)
@@ -230,7 +230,7 @@ gtk_cell_renderer_spinner_get_property (GObject    *object,
 }
 
 static void
-gtk_cell_renderer_spinner_set_property (GObject      *object,
+ctk_cell_renderer_spinner_set_property (GObject      *object,
                                         guint         param_id,
                                         const GValue *value,
                                         GParamSpec   *pspec)
@@ -268,7 +268,7 @@ gtk_cell_renderer_spinner_set_property (GObject      *object,
 }
 
 static void
-gtk_cell_renderer_spinner_get_size (GtkCellRenderer    *cellr,
+ctk_cell_renderer_spinner_get_size (GtkCellRenderer    *cellr,
                                     GtkWidget          *widget,
                                     const GdkRectangle *cell_area,
                                     gint               *x_offset,
@@ -284,9 +284,9 @@ gtk_cell_renderer_spinner_get_size (GtkCellRenderer    *cellr,
   gfloat xalign, yalign;
   gboolean rtl;
 
-  rtl = gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
+  rtl = ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
 
-  gtk_cell_renderer_spinner_update_size (cell, widget);
+  ctk_cell_renderer_spinner_update_size (cell, widget);
 
   g_object_get (cellr,
                 "xpad", &xpad,
@@ -326,7 +326,7 @@ gtk_cell_renderer_spinner_get_size (GtkCellRenderer    *cellr,
 }
 
 static void
-gtk_cell_renderer_spinner_render (GtkCellRenderer      *cellr,
+ctk_cell_renderer_spinner_render (GtkCellRenderer      *cellr,
                                   cairo_t              *cr,
                                   GtkWidget            *widget,
                                   const GdkRectangle   *background_area,
@@ -343,7 +343,7 @@ gtk_cell_renderer_spinner_render (GtkCellRenderer      *cellr,
   if (!priv->active)
     return;
 
-  gtk_cell_renderer_spinner_get_size (cellr, widget, (GdkRectangle *) cell_area,
+  ctk_cell_renderer_spinner_get_size (cellr, widget, (GdkRectangle *) cell_area,
                                       &pix_rect.x, &pix_rect.y,
                                       &pix_rect.width, &pix_rect.height);
 
@@ -360,8 +360,8 @@ gtk_cell_renderer_spinner_render (GtkCellRenderer      *cellr,
     return;
 
   state = GTK_STATE_NORMAL;
-  if ((gtk_widget_get_state_flags (widget) & GTK_STATE_FLAG_INSENSITIVE) ||
-      !gtk_cell_renderer_get_sensitive (cellr))
+  if ((ctk_widget_get_state_flags (widget) & GTK_STATE_FLAG_INSENSITIVE) ||
+      !ctk_cell_renderer_get_sensitive (cellr))
     {
       state = GTK_STATE_INSENSITIVE;
     }
@@ -369,7 +369,7 @@ gtk_cell_renderer_spinner_render (GtkCellRenderer      *cellr,
     {
       if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
         {
-          if (gtk_widget_has_focus (widget))
+          if (ctk_widget_has_focus (widget))
             state = GTK_STATE_SELECTED;
           else
             state = GTK_STATE_ACTIVE;
@@ -383,7 +383,7 @@ gtk_cell_renderer_spinner_render (GtkCellRenderer      *cellr,
   gdk_cairo_rectangle (cr, cell_area);
   cairo_clip (cr);
 
-  gtk_paint_spinner (gtk_widget_get_style (widget),
+  ctk_paint_spinner (ctk_widget_get_style (widget),
                            cr,
                            state,
                            widget,

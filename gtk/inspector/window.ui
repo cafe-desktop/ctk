@@ -31,7 +31,7 @@
                     <property name="tooltip-text" translatable="yes">Select an Object</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <signal name="clicked" handler="gtk_inspector_on_inspect"/>
+                    <signal name="clicked" handler="ctk_inspector_on_inspect"/>
                     <style>
                       <class name="image-button"/>
                     </style>

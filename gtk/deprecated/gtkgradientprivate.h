@@ -23,12 +23,12 @@
 
 G_BEGIN_DECLS
 
-cairo_pattern_t *       _gtk_gradient_resolve_full            (GtkGradient             *gradient,
+cairo_pattern_t *       _ctk_gradient_resolve_full            (GtkGradient             *gradient,
                                                                GtkStyleProviderPrivate *provider,
                                                                GtkCssStyle             *style,
                                                                GtkCssStyle             *parent_style);
 
-GtkGradient *           _gtk_gradient_transition              (GtkGradient             *start,
+GtkGradient *           _ctk_gradient_transition              (GtkGradient             *start,
                                                                GtkGradient             *end,
                                                                guint                    property_id,
                                                                double                   progress);

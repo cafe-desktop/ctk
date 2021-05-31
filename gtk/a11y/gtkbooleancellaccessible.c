@@ -30,13 +30,13 @@ struct _GtkBooleanCellAccessiblePrivate
 static AtkActionIface *parent_action_iface;
 
 static gint
-gtk_boolean_cell_accessible_get_n_actions (AtkAction *action)
+ctk_boolean_cell_accessible_get_n_actions (AtkAction *action)
 {
   return parent_action_iface->get_n_actions (action) + 1;
 }
 
 static const gchar *
-gtk_boolean_cell_accessible_get_description (AtkAction *action,
+ctk_boolean_cell_accessible_get_description (AtkAction *action,
                                              gint       i)
 {
   if (i == 0)
@@ -46,7 +46,7 @@ gtk_boolean_cell_accessible_get_description (AtkAction *action,
 }
 
 static const gchar *
-gtk_boolean_cell_accessible_action_get_name (AtkAction *action,
+ctk_boolean_cell_accessible_action_get_name (AtkAction *action,
                                              gint       i)
 {
   if (i == 0)
@@ -56,7 +56,7 @@ gtk_boolean_cell_accessible_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-gtk_boolean_cell_accessible_action_get_localized_name (AtkAction *action,
+ctk_boolean_cell_accessible_action_get_localized_name (AtkAction *action,
                                                        gint       i)
 {
   if (i == 0)
@@ -66,7 +66,7 @@ gtk_boolean_cell_accessible_action_get_localized_name (AtkAction *action,
 }
 
 static gboolean
-gtk_boolean_cell_accessible_do_action (AtkAction *action,
+ctk_boolean_cell_accessible_do_action (AtkAction *action,
                                        gint       i)
 {
   if (i == 0)
@@ -76,30 +76,30 @@ gtk_boolean_cell_accessible_do_action (AtkAction *action,
 }
 
 static void
-gtk_boolean_cell_accessible_action_interface_init (AtkActionIface *iface)
+ctk_boolean_cell_accessible_action_interface_init (AtkActionIface *iface)
 {
   parent_action_iface = g_type_interface_peek_parent (iface);
 
-  iface->do_action = gtk_boolean_cell_accessible_do_action;
-  iface->get_n_actions = gtk_boolean_cell_accessible_get_n_actions;
-  iface->get_description = gtk_boolean_cell_accessible_get_description;
-  iface->get_name = gtk_boolean_cell_accessible_action_get_name;
-  iface->get_localized_name = gtk_boolean_cell_accessible_action_get_localized_name;
+  iface->do_action = ctk_boolean_cell_accessible_do_action;
+  iface->get_n_actions = ctk_boolean_cell_accessible_get_n_actions;
+  iface->get_description = ctk_boolean_cell_accessible_get_description;
+  iface->get_name = ctk_boolean_cell_accessible_action_get_name;
+  iface->get_localized_name = ctk_boolean_cell_accessible_action_get_localized_name;
 }
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkBooleanCellAccessible, gtk_boolean_cell_accessible, GTK_TYPE_RENDERER_CELL_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkBooleanCellAccessible, ctk_boolean_cell_accessible, GTK_TYPE_RENDERER_CELL_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkBooleanCellAccessible)
-                         G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, gtk_boolean_cell_accessible_action_interface_init))
+                         G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, ctk_boolean_cell_accessible_action_interface_init))
 
 
 static AtkStateSet *
-gtk_boolean_cell_accessible_ref_state_set (AtkObject *accessible)
+ctk_boolean_cell_accessible_ref_state_set (AtkObject *accessible)
 {
   GtkBooleanCellAccessible *cell = GTK_BOOLEAN_CELL_ACCESSIBLE (accessible);
   AtkStateSet *state_set;
 
-  state_set = ATK_OBJECT_CLASS (gtk_boolean_cell_accessible_parent_class)->ref_state_set (accessible);
+  state_set = ATK_OBJECT_CLASS (ctk_boolean_cell_accessible_parent_class)->ref_state_set (accessible);
 
   if (cell->priv->cell_value)
     atk_state_set_add_state (state_set, ATK_STATE_CHECKED);
@@ -113,7 +113,7 @@ gtk_boolean_cell_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-gtk_boolean_cell_accessible_update_cache (GtkCellAccessible *cell,
+ctk_boolean_cell_accessible_update_cache (GtkCellAccessible *cell,
                                           gboolean            emit_signal)
 {
   GtkBooleanCellAccessible *boolean_cell = GTK_BOOLEAN_CELL_ACCESSIBLE (cell);
@@ -146,19 +146,19 @@ gtk_boolean_cell_accessible_update_cache (GtkCellAccessible *cell,
 }
 
 static void
-gtk_boolean_cell_accessible_class_init (GtkBooleanCellAccessibleClass *klass)
+ctk_boolean_cell_accessible_class_init (GtkBooleanCellAccessibleClass *klass)
 {
   GtkCellAccessibleClass *cell_class = GTK_CELL_ACCESSIBLE_CLASS (klass);
   AtkObjectClass *atkobject_class = ATK_OBJECT_CLASS (klass);
 
-  atkobject_class->ref_state_set = gtk_boolean_cell_accessible_ref_state_set;
+  atkobject_class->ref_state_set = ctk_boolean_cell_accessible_ref_state_set;
 
-  cell_class->update_cache = gtk_boolean_cell_accessible_update_cache;
+  cell_class->update_cache = ctk_boolean_cell_accessible_update_cache;
 }
 
 static void
-gtk_boolean_cell_accessible_init (GtkBooleanCellAccessible *cell)
+ctk_boolean_cell_accessible_init (GtkBooleanCellAccessible *cell)
 {
-  cell->priv = gtk_boolean_cell_accessible_get_instance_private (cell);
+  cell->priv = ctk_boolean_cell_accessible_get_instance_private (cell);
 }
 

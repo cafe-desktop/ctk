@@ -27,14 +27,14 @@ test_list_no_reference (void)
   GtkTreeModel *model;
   GtkTreeModelRefCount *ref_model;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
 
   assert_root_level_unreferenced (ref_model);
 
@@ -49,19 +49,19 @@ test_list_reference_during_creation (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
 
   assert_root_level_referenced (ref_model, 1);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_root_level_unreferenced (ref_model);
 
@@ -76,27 +76,27 @@ test_list_reference_after_creation (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
   assert_root_level_unreferenced (ref_model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
 
-  tree_view = gtk_tree_view_new_with_model (model);
-
-  assert_root_level_referenced (ref_model, 1);
-
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  tree_view = ctk_tree_view_new_with_model (model);
 
   assert_root_level_referenced (ref_model, 1);
 
-  gtk_widget_destroy (tree_view);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+
+  assert_root_level_referenced (ref_model, 1);
+
+  ctk_widget_destroy (tree_view);
 
   assert_root_level_unreferenced (ref_model);
 
@@ -111,32 +111,32 @@ test_list_reference_reordered (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
   assert_root_level_unreferenced (ref_model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter3, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter4, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter5, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter3, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter4, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter5, NULL);
 
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
   assert_root_level_referenced (ref_model, 1);
 
-  gtk_tree_store_move_after (GTK_TREE_STORE (model),
+  ctk_tree_store_move_after (GTK_TREE_STORE (model),
                              &iter1, &iter5);
 
   assert_root_level_referenced (ref_model, 1);
 
-  gtk_tree_store_move_after (GTK_TREE_STORE (model),
+  ctk_tree_store_move_after (GTK_TREE_STORE (model),
                              &iter3, &iter4);
 
   assert_root_level_referenced (ref_model, 1);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_root_level_unreferenced (ref_model);
 
@@ -151,20 +151,20 @@ test_tree_no_reference (void)
   GtkTreeModel *model;
   GtkTreeModelRefCount *ref_model;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
 
   assert_entire_model_unreferenced (ref_model);
 
@@ -179,27 +179,27 @@ test_tree_reference_during_creation (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
 
   assert_root_level_referenced (ref_model, 1);
   assert_not_entire_model_referenced (ref_model, 1);
   assert_level_unreferenced (ref_model, &child);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_entire_model_unreferenced (ref_model);
 
@@ -214,30 +214,30 @@ test_tree_reference_after_creation (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
 
   assert_entire_model_unreferenced (ref_model);
 
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
   assert_root_level_referenced (ref_model, 1);
   assert_not_entire_model_referenced (ref_model, 1);
   assert_level_unreferenced (ref_model, &child);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_entire_model_unreferenced (ref_model);
 
@@ -253,34 +253,34 @@ test_tree_reference_reordered (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
   assert_root_level_unreferenced (ref_model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &parent, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter1, &parent);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter2, &parent);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter3, &parent);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter4, &parent);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter5, &parent);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &parent, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter1, &parent);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter2, &parent);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter3, &parent);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter4, &parent);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter5, &parent);
 
-  tree_view = gtk_tree_view_new_with_model (model);
-  gtk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
+  tree_view = ctk_tree_view_new_with_model (model);
+  ctk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
 
   assert_entire_model_referenced (ref_model, 1);
 
-  gtk_tree_store_move_after (GTK_TREE_STORE (model),
+  ctk_tree_store_move_after (GTK_TREE_STORE (model),
                              &iter1, &iter5);
 
   assert_entire_model_referenced (ref_model, 1);
 
-  gtk_tree_store_move_after (GTK_TREE_STORE (model),
+  ctk_tree_store_move_after (GTK_TREE_STORE (model),
                              &iter3, &iter4);
 
   assert_entire_model_referenced (ref_model, 1);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_entire_model_unreferenced (ref_model);
 
@@ -295,42 +295,42 @@ test_tree_reference_expand_all (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
 
   assert_entire_model_unreferenced (ref_model);
 
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
   assert_root_level_referenced (ref_model, 1);
   assert_not_entire_model_referenced (ref_model, 1);
   assert_level_unreferenced (ref_model, &child);
 
-  gtk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
+  ctk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
 
   assert_entire_model_referenced (ref_model, 1);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
 
   assert_root_level_referenced (ref_model, 1);
   assert_not_entire_model_referenced (ref_model, 1);
   assert_level_unreferenced (ref_model, &child);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_entire_model_unreferenced (ref_model);
 
@@ -345,35 +345,35 @@ test_tree_reference_collapse_all (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &iter);
 
   assert_entire_model_unreferenced (ref_model);
 
-  tree_view = gtk_tree_view_new_with_model (model);
-  gtk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
+  tree_view = ctk_tree_view_new_with_model (model);
+  ctk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
 
   assert_entire_model_referenced (ref_model, 1);
 
-  gtk_tree_view_collapse_all (GTK_TREE_VIEW (tree_view));
+  ctk_tree_view_collapse_all (GTK_TREE_VIEW (tree_view));
 
   assert_root_level_referenced (ref_model, 1);
   assert_not_entire_model_referenced (ref_model, 1);
   assert_level_unreferenced (ref_model, &child);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_entire_model_unreferenced (ref_model);
 
@@ -389,58 +389,58 @@ test_tree_reference_expand_collapse (void)
   GtkTreeModelRefCount *ref_model;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &parent1, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &parent1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &parent1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &parent2, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &parent2, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &parent2);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child, &parent2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &parent1, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &parent1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &parent1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &parent2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &parent2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &parent2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child, &parent2);
 
-  path1 = gtk_tree_model_get_path (model, &parent1);
-  path2 = gtk_tree_model_get_path (model, &parent2);
+  path1 = ctk_tree_model_get_path (model, &parent1);
+  path2 = ctk_tree_model_get_path (model, &parent2);
 
   assert_level_unreferenced (ref_model, &parent1);
   assert_level_unreferenced (ref_model, &parent2);
 
-  gtk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path1, FALSE);
+  ctk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path1, FALSE);
 
   assert_level_referenced (ref_model, 1, &parent1);
   assert_level_unreferenced (ref_model, &parent2);
 
-  gtk_tree_view_collapse_row (GTK_TREE_VIEW (tree_view), path1);
+  ctk_tree_view_collapse_row (GTK_TREE_VIEW (tree_view), path1);
 
   assert_level_unreferenced (ref_model, &parent1);
   assert_level_unreferenced (ref_model, &parent2);
 
-  gtk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path2, FALSE);
+  ctk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path2, FALSE);
 
   assert_level_unreferenced (ref_model, &parent1);
   assert_level_referenced (ref_model, 1, &parent2);
 
-  gtk_tree_view_collapse_row (GTK_TREE_VIEW (tree_view), path2);
+  ctk_tree_view_collapse_row (GTK_TREE_VIEW (tree_view), path2);
 
   assert_level_unreferenced (ref_model, &parent1);
   assert_level_unreferenced (ref_model, &parent2);
 
-  gtk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path2, FALSE);
+  ctk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path2, FALSE);
 
   assert_level_unreferenced (ref_model, &parent1);
   assert_level_referenced (ref_model, 1, &parent2);
 
-  gtk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path1, FALSE);
+  ctk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path1, FALSE);
 
   assert_level_referenced (ref_model, 1, &parent1);
   assert_level_referenced (ref_model, 1, &parent2);
 
-  gtk_tree_path_free (path1);
-  gtk_tree_path_free (path2);
+  ctk_tree_path_free (path1);
+  ctk_tree_path_free (path2);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
   g_object_unref (ref_model);
 }
 
@@ -454,49 +454,49 @@ test_row_reference_list (void)
   GtkTreeRowReference *row_ref;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
 
   assert_root_level_unreferenced (ref_model);
 
   /* create and remove a row ref and check reference counts */
-  path = gtk_tree_path_new_from_indices (1, -1);
-  row_ref = gtk_tree_row_reference_new (model, path);
+  path = ctk_tree_path_new_from_indices (1, -1);
+  row_ref = ctk_tree_row_reference_new (model, path);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &iter1, 1);
   assert_node_ref_count (ref_model, &iter2, 0);
 
-  gtk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref);
 
   assert_root_level_unreferenced (ref_model);
 
   /* the same, but then also with a tree view monitoring the model */
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
   assert_root_level_referenced (ref_model, 1);
 
-  row_ref = gtk_tree_row_reference_new (model, path);
+  row_ref = ctk_tree_row_reference_new (model, path);
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &iter1, 2);
   assert_node_ref_count (ref_model, &iter2, 1);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &iter1, 1);
   assert_node_ref_count (ref_model, &iter2, 0);
 
-  gtk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref);
 
   assert_root_level_unreferenced (ref_model);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
   g_object_unref (ref_model);
 }
@@ -510,50 +510,50 @@ test_row_reference_list_remove (void)
   GtkTreeModelRefCount *ref_model;
   GtkTreeRowReference *row_ref;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
 
   assert_root_level_unreferenced (ref_model);
 
   /* test creating the row reference and then removing the node */
-  path = gtk_tree_path_new_from_indices (1, -1);
-  row_ref = gtk_tree_row_reference_new (model, path);
+  path = ctk_tree_path_new_from_indices (1, -1);
+  row_ref = ctk_tree_row_reference_new (model, path);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &iter1, 1);
   assert_node_ref_count (ref_model, &iter2, 0);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &iter1);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &iter1);
 
   assert_root_level_unreferenced (ref_model);
 
-  gtk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref);
 
   assert_root_level_unreferenced (ref_model);
 
   /* test creating a row ref, removing another node and then removing
    * the row ref node.
    */
-  row_ref = gtk_tree_row_reference_new (model, path);
+  row_ref = ctk_tree_row_reference_new (model, path);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &iter2, 1);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &iter0);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &iter0);
 
   assert_root_level_referenced (ref_model, 1);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &iter2);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &iter2);
 
-  g_assert (!gtk_tree_model_get_iter_first (model, &iter0));
+  g_assert (!ctk_tree_model_get_iter_first (model, &iter0));
 
-  gtk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
   g_object_unref (ref_model);
 }
@@ -570,25 +570,25 @@ test_row_reference_tree (void)
   GtkTreeRowReference *row_ref, *row_ref1;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child0, &iter0);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild0, &child0);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child1, &iter1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild1, &child1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child2, &iter2);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild2, &child2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child0, &iter0);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild0, &child0);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child1, &iter1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild1, &child1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child2, &iter2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild2, &child2);
 
   assert_entire_model_unreferenced (ref_model);
 
   /* create and remove a row ref and check reference counts */
-  path = gtk_tree_path_new_from_indices (1, 0, 0, -1);
-  row_ref = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (1, 0, 0, -1);
+  row_ref = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -600,14 +600,14 @@ test_row_reference_tree (void)
   assert_node_ref_count (ref_model, &child2, 0);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref);
 
   assert_entire_model_unreferenced (ref_model);
 
   /* again, with path 1:1 */
-  path = gtk_tree_path_new_from_indices (1, 0, -1);
-  row_ref = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (1, 0, -1);
+  row_ref = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -619,20 +619,20 @@ test_row_reference_tree (void)
   assert_node_ref_count (ref_model, &child2, 0);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref);
 
   assert_entire_model_unreferenced (ref_model);
 
   /* both row refs existent at once and also with a tree view monitoring
    * the model
    */
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
   assert_root_level_referenced (ref_model, 1);
 
-  path = gtk_tree_path_new_from_indices (1, 0, 0, -1);
-  row_ref = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (1, 0, 0, -1);
+  row_ref = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -644,9 +644,9 @@ test_row_reference_tree (void)
   assert_node_ref_count (ref_model, &child2, 0);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  path = gtk_tree_path_new_from_indices (1, 0, -1);
-  row_ref1 = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (1, 0, -1);
+  row_ref1 = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -658,7 +658,7 @@ test_row_reference_tree (void)
   assert_node_ref_count (ref_model, &child2, 0);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref);
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -670,7 +670,7 @@ test_row_reference_tree (void)
   assert_node_ref_count (ref_model, &child2, 0);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -682,7 +682,7 @@ test_row_reference_tree (void)
   assert_node_ref_count (ref_model, &child2, 0);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_tree_row_reference_free (row_ref1);
+  ctk_tree_row_reference_free (row_ref1);
 
   assert_root_level_unreferenced (ref_model);
 
@@ -700,32 +700,32 @@ test_row_reference_tree_remove (void)
   GtkTreeModelRefCount *ref_model;
   GtkTreeRowReference *row_ref, *row_ref1, *row_ref2;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child0, &iter0);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild0, &child0);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child1, &iter1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild1, &child1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child2, &iter2);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild2, &child2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child0, &iter0);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild0, &child0);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child1, &iter1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild1, &child1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child2, &iter2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild2, &child2);
 
   assert_entire_model_unreferenced (ref_model);
 
-  path = gtk_tree_path_new_from_indices (1, 0, 0, -1);
-  row_ref = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (1, 0, 0, -1);
+  row_ref = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
-  path = gtk_tree_path_new_from_indices (2, 0, -1);
-  row_ref1 = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (2, 0, -1);
+  row_ref1 = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
-  path = gtk_tree_path_new_from_indices (2, -1);
-  row_ref2 = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (2, -1);
+  row_ref2 = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -737,7 +737,7 @@ test_row_reference_tree_remove (void)
   assert_node_ref_count (ref_model, &child2, 1);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &grandchild1);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &grandchild1);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -748,7 +748,7 @@ test_row_reference_tree_remove (void)
   assert_node_ref_count (ref_model, &child2, 1);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &child2);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &child2);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -757,13 +757,13 @@ test_row_reference_tree_remove (void)
   assert_node_ref_count (ref_model, &child1, 0);
   assert_node_ref_count (ref_model, &iter2, 1);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &iter2);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &iter2);
 
   assert_entire_model_unreferenced (ref_model);
 
-  gtk_tree_row_reference_free (row_ref);
-  gtk_tree_row_reference_free (row_ref1);
-  gtk_tree_row_reference_free (row_ref2);
+  ctk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref1);
+  ctk_tree_row_reference_free (row_ref2);
 
   g_object_unref (ref_model);
 }
@@ -779,28 +779,28 @@ test_row_reference_tree_remove_ancestor (void)
   GtkTreeModelRefCount *ref_model;
   GtkTreeRowReference *row_ref, *row_ref1;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child0, &iter0);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild0, &child0);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child1, &iter1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild1, &child1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child2, &iter2);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild2, &child2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child0, &iter0);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild0, &child0);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child1, &iter1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild1, &child1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child2, &iter2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild2, &child2);
 
   assert_entire_model_unreferenced (ref_model);
 
-  path = gtk_tree_path_new_from_indices (1, 0, 0, -1);
-  row_ref = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (1, 0, 0, -1);
+  row_ref = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
-  path = gtk_tree_path_new_from_indices (2, 0, -1);
-  row_ref1 = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (2, 0, -1);
+  row_ref1 = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -812,7 +812,7 @@ test_row_reference_tree_remove_ancestor (void)
   assert_node_ref_count (ref_model, &child2, 1);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &child1);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &child1);
 
   assert_node_ref_count (ref_model, &iter0, 0);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -822,12 +822,12 @@ test_row_reference_tree_remove_ancestor (void)
   assert_node_ref_count (ref_model, &child2, 1);
   assert_node_ref_count (ref_model, &grandchild2, 0);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &iter2);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &iter2);
 
   assert_entire_model_unreferenced (ref_model);
 
-  gtk_tree_row_reference_free (row_ref);
-  gtk_tree_row_reference_free (row_ref1);
+  ctk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref1);
 
   g_object_unref (ref_model);
 }
@@ -844,37 +844,37 @@ test_row_reference_tree_expand (void)
   GtkTreeRowReference *row_ref, *row_ref1, *row_ref2;
   GtkWidget *tree_view;
 
-  model = gtk_tree_model_ref_count_new ();
+  model = ctk_tree_model_ref_count_new ();
   ref_model = GTK_TREE_MODEL_REF_COUNT (model);
-  tree_view = gtk_tree_view_new_with_model (model);
+  tree_view = ctk_tree_view_new_with_model (model);
 
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child0, &iter0);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild0, &child0);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child1, &iter1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild1, &child1);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &child2, &iter2);
-  gtk_tree_store_append (GTK_TREE_STORE (model), &grandchild2, &child2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter0, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child0, &iter0);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild0, &child0);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter1, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child1, &iter1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild1, &child1);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &iter2, NULL);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &child2, &iter2);
+  ctk_tree_store_append (GTK_TREE_STORE (model), &grandchild2, &child2);
 
   assert_root_level_referenced (ref_model, 1);
 
-  gtk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
+  ctk_tree_view_expand_all (GTK_TREE_VIEW (tree_view));
 
   assert_entire_model_referenced (ref_model, 1);
 
-  path = gtk_tree_path_new_from_indices (1, 0, 0, -1);
-  row_ref = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (1, 0, 0, -1);
+  row_ref = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
-  path = gtk_tree_path_new_from_indices (2, 0, -1);
-  row_ref1 = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (2, 0, -1);
+  row_ref1 = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
-  path = gtk_tree_path_new_from_indices (2, -1);
-  row_ref2 = gtk_tree_row_reference_new (model, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (2, -1);
+  row_ref2 = ctk_tree_row_reference_new (model, path);
+  ctk_tree_path_free (path);
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &child0, 1);
@@ -886,7 +886,7 @@ test_row_reference_tree_expand (void)
   assert_node_ref_count (ref_model, &child2, 2);
   assert_node_ref_count (ref_model, &grandchild2, 1);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &grandchild1);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &grandchild1);
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &child0, 1);
@@ -897,7 +897,7 @@ test_row_reference_tree_expand (void)
   assert_node_ref_count (ref_model, &child2, 2);
   assert_node_ref_count (ref_model, &grandchild2, 1);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &child2);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &child2);
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &child0, 1);
@@ -906,7 +906,7 @@ test_row_reference_tree_expand (void)
   assert_node_ref_count (ref_model, &child1, 1);
   assert_node_ref_count (ref_model, &iter2, 2);
 
-  gtk_tree_view_collapse_all (GTK_TREE_VIEW (tree_view));
+  ctk_tree_view_collapse_all (GTK_TREE_VIEW (tree_view));
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -915,7 +915,7 @@ test_row_reference_tree_expand (void)
   assert_node_ref_count (ref_model, &child1, 0);
   assert_node_ref_count (ref_model, &iter2, 2);
 
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &iter2);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &iter2);
 
   assert_node_ref_count (ref_model, &iter0, 1);
   assert_node_ref_count (ref_model, &child0, 0);
@@ -923,11 +923,11 @@ test_row_reference_tree_expand (void)
   assert_node_ref_count (ref_model, &iter1, 1);
   assert_node_ref_count (ref_model, &child1, 0);
 
-  gtk_tree_row_reference_free (row_ref);
-  gtk_tree_row_reference_free (row_ref1);
-  gtk_tree_row_reference_free (row_ref2);
+  ctk_tree_row_reference_free (row_ref);
+  ctk_tree_row_reference_free (row_ref1);
+  ctk_tree_row_reference_free (row_ref2);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
   g_object_unref (ref_model);
 }
 

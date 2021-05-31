@@ -19,9 +19,9 @@ change_fullscreen_state (GSimpleAction *action,
                          gpointer       user_data)
 {
   if (g_variant_get_boolean (state))
-    gtk_window_fullscreen (user_data);
+    ctk_window_fullscreen (user_data);
   else
-    gtk_window_unfullscreen (user_data);
+    ctk_window_unfullscreen (user_data);
 
   g_simple_action_set_state (action, state);
 }
@@ -29,7 +29,7 @@ change_fullscreen_state (GSimpleAction *action,
 static GtkClipboard *
 get_clipboard (GtkWidget *widget)
 {
-  return gtk_widget_get_clipboard (widget, gdk_atom_intern_static_string ("CLIPBOARD"));
+  return ctk_widget_get_clipboard (widget, gdk_atom_intern_static_string ("CLIPBOARD"));
 }
 
 static void
@@ -40,7 +40,7 @@ window_copy (GSimpleAction *action,
   GtkWindow *window = GTK_WINDOW (user_data);
   GtkTextView *text = g_object_get_data ((GObject*)window, "plugman-text");
 
-  gtk_text_buffer_copy_clipboard (gtk_text_view_get_buffer (text),
+  ctk_text_buffer_copy_clipboard (ctk_text_view_get_buffer (text),
                                   get_clipboard ((GtkWidget*) text));
 }
 
@@ -52,7 +52,7 @@ window_paste (GSimpleAction *action,
   GtkWindow *window = GTK_WINDOW (user_data);
   GtkTextView *text = g_object_get_data ((GObject*)window, "plugman-text");
   
-  gtk_text_buffer_paste_clipboard (gtk_text_view_get_buffer (text),
+  ctk_text_buffer_paste_clipboard (ctk_text_view_get_buffer (text),
                                    get_clipboard ((GtkWidget*) text),
                                    NULL,
                                    TRUE);
@@ -71,24 +71,24 @@ new_window (GApplication *app,
 {
   GtkWidget *window, *grid, *scrolled, *view;
 
-  window = gtk_application_window_new (GTK_APPLICATION (app));
-  gtk_window_set_default_size ((GtkWindow*)window, 640, 480);
+  window = ctk_application_window_new (GTK_APPLICATION (app));
+  ctk_window_set_default_size ((GtkWindow*)window, 640, 480);
   g_action_map_add_action_entries (G_ACTION_MAP (window), win_entries, G_N_ELEMENTS (win_entries), window);
-  gtk_window_set_title (GTK_WINDOW (window), "Plugman");
+  ctk_window_set_title (GTK_WINDOW (window), "Plugman");
 
-  grid = gtk_grid_new ();
-  gtk_container_add (GTK_CONTAINER (window), grid);
+  grid = ctk_grid_new ();
+  ctk_container_add (GTK_CONTAINER (window), grid);
 
-  scrolled = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_set_hexpand (scrolled, TRUE);
-  gtk_widget_set_vexpand (scrolled, TRUE);
-  view = gtk_text_view_new ();
+  scrolled = ctk_scrolled_window_new (NULL, NULL);
+  ctk_widget_set_hexpand (scrolled, TRUE);
+  ctk_widget_set_vexpand (scrolled, TRUE);
+  view = ctk_text_view_new ();
 
   g_object_set_data ((GObject*)window, "plugman-text", view);
 
-  gtk_container_add (GTK_CONTAINER (scrolled), view);
+  ctk_container_add (GTK_CONTAINER (scrolled), view);
 
-  gtk_grid_attach (GTK_GRID (grid), scrolled, 0, 0, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), scrolled, 0, 0, 1, 1);
 
   if (file != NULL)
     {
@@ -99,13 +99,13 @@ new_window (GApplication *app,
         {
           GtkTextBuffer *buffer;
 
-          buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-          gtk_text_buffer_set_text (buffer, contents, length);
+          buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+          ctk_text_buffer_set_text (buffer, contents, length);
           g_free (contents);
         }
     }
 
-  gtk_widget_show_all (GTK_WIDGET (window));
+  ctk_widget_show_all (GTK_WIDGET (window));
 }
 
 static void
@@ -142,7 +142,7 @@ show_about (GSimpleAction *action,
             GVariant      *parameter,
             gpointer       user_data)
 {
-  gtk_show_about_dialog (NULL,
+  ctk_show_about_dialog (NULL,
                          "program-name", "Plugman",
                          "title", "About Plugman",
                          "comments", "A cheap Bloatpad clone.",
@@ -160,13 +160,13 @@ quit_app (GSimpleAction *action,
 
   g_print ("Going down...\n");
 
-  list = gtk_application_get_windows (GTK_APPLICATION (g_application_get_default ()));
+  list = ctk_application_get_windows (GTK_APPLICATION (g_application_get_default ()));
   while (list)
     {
       win = list->data;
       next = list->next;
 
-      gtk_widget_destroy (GTK_WIDGET (win));
+      ctk_widget_destroy (GTK_WIDGET (win));
 
       list = next;
     }
@@ -202,14 +202,14 @@ plugin_action (GAction  *action,
   GdkRGBA color;
 
   app = g_application_get_default ();
-  list = gtk_application_get_windows (GTK_APPLICATION (app));
+  list = ctk_application_get_windows (GTK_APPLICATION (app));
   window = GTK_WINDOW (list->data);
   text = g_object_get_data ((GObject*)window, "plugman-text");
 
   gdk_rgba_parse (&color, g_action_get_name (action));
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_widget_override_color (text, 0, &color);
+  ctk_widget_override_color (text, 0, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
@@ -316,8 +316,8 @@ configure_plugins (GSimpleAction *action,
   GtkWidget *check;
   GError *error = NULL;
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder,
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder,
                                "<interface>"
                                "  <object class='GtkDialog' id='plugin-dialog'>"
                                "    <property name='border-width'>12</property>"
@@ -362,17 +362,17 @@ configure_plugins (GSimpleAction *action,
       goto out;
     }
 
-  dialog = (GtkWidget *)gtk_builder_get_object (builder, "plugin-dialog");
-  check = (GtkWidget *)gtk_builder_get_object (builder, "red-plugin");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), plugin_enabled ("red"));
+  dialog = (GtkWidget *)ctk_builder_get_object (builder, "plugin-dialog");
+  check = (GtkWidget *)ctk_builder_get_object (builder, "red-plugin");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), plugin_enabled ("red"));
   g_signal_connect (check, "toggled", G_CALLBACK (enable_or_disable_plugin), "red");
-  check = (GtkWidget *)gtk_builder_get_object (builder, "black-plugin");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), plugin_enabled ("black"));
+  check = (GtkWidget *)ctk_builder_get_object (builder, "black-plugin");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), plugin_enabled ("black"));
   g_signal_connect (check, "toggled", G_CALLBACK (enable_or_disable_plugin), "black");
 
-  g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+  g_signal_connect (dialog, "response", G_CALLBACK (ctk_widget_destroy), NULL);
 
-  gtk_window_present (GTK_WINDOW (dialog));
+  ctk_window_present (GTK_WINDOW (dialog));
 
 out:
   g_object_unref (builder);
@@ -394,8 +394,8 @@ plug_man_startup (GApplication *application)
 
   g_action_map_add_action_entries (G_ACTION_MAP (application), app_entries, G_N_ELEMENTS (app_entries), application);
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_string (builder,
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_string (builder,
                                "<interface>"
                                "  <menu id='app-menu'>"
                                "    <section>"
@@ -445,9 +445,9 @@ plug_man_startup (GApplication *application)
                                "    </submenu>"
                                "  </menu>"
                                "</interface>", -1, NULL);
-  gtk_application_set_app_menu (GTK_APPLICATION (application), G_MENU_MODEL (gtk_builder_get_object (builder, "app-menu")));
-  gtk_application_set_menubar (GTK_APPLICATION (application), G_MENU_MODEL (gtk_builder_get_object (builder, "menubar")));
-  g_object_set_data_full (G_OBJECT (application), "plugin-menu", gtk_builder_get_object (builder, "plugins"), g_object_unref);
+  ctk_application_set_app_menu (GTK_APPLICATION (application), G_MENU_MODEL (ctk_builder_get_object (builder, "app-menu")));
+  ctk_application_set_menubar (GTK_APPLICATION (application), G_MENU_MODEL (ctk_builder_get_object (builder, "menubar")));
+  g_object_set_data_full (G_OBJECT (application), "plugin-menu", ctk_builder_get_object (builder, "plugins"), g_object_unref);
   g_object_unref (builder);
 }
 
@@ -487,7 +487,7 @@ main (int argc, char **argv)
   const gchar *accels[] = { "F11", NULL };
 
   plug_man = plug_man_new ();
-  gtk_application_set_accels_for_action (GTK_APPLICATION (plug_man),
+  ctk_application_set_accels_for_action (GTK_APPLICATION (plug_man),
                                          "win.fullscreen", accels);
   status = g_application_run (G_APPLICATION (plug_man), argc, argv);
   g_object_unref (plug_man);

@@ -88,13 +88,13 @@ struct _GtkTextTagPrivate
  * the defaults with settings in the given tags, which should be sorted in
  * ascending order of priority
 */
-void _gtk_text_attributes_fill_from_tags   (GtkTextAttributes   *values,
+void _ctk_text_attributes_fill_from_tags   (GtkTextAttributes   *values,
                                             GtkTextTag         **tags,
                                             guint                n_tags);
-void _gtk_text_tag_array_sort              (GtkTextTag         **tag_array_p,
+void _ctk_text_tag_array_sort              (GtkTextTag         **tag_array_p,
                                             guint                len);
 
-gboolean _gtk_text_tag_affects_size               (GtkTextTag *tag);
-gboolean _gtk_text_tag_affects_nonsize_appearance (GtkTextTag *tag);
+gboolean _ctk_text_tag_affects_size               (GtkTextTag *tag);
+gboolean _ctk_text_tag_affects_nonsize_appearance (GtkTextTag *tag);
 
 #endif

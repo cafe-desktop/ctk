@@ -23,7 +23,7 @@
 #include <gtk/gtkapplication.h>
 #include <gtk/gtkactionable.h>
 
-#define GTK_TYPE_ACTION_HELPER                              (gtk_action_helper_get_type ())
+#define GTK_TYPE_ACTION_HELPER                              (ctk_action_helper_get_type ())
 #define GTK_ACTION_HELPER(inst)                             (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
                                                              GTK_TYPE_ACTION_HELPER, GtkActionHelper))
 #define GTK_IS_ACTION_HELPER(inst)                          (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
@@ -32,28 +32,28 @@
 typedef struct _GtkActionHelper                             GtkActionHelper;
 
 G_GNUC_INTERNAL
-GType                   gtk_action_helper_get_type                      (void);
+GType                   ctk_action_helper_get_type                      (void);
 
 G_GNUC_INTERNAL
-GtkActionHelper *       gtk_action_helper_new                           (GtkActionable   *widget);
+GtkActionHelper *       ctk_action_helper_new                           (GtkActionable   *widget);
 
 G_GNUC_INTERNAL
-void                    gtk_action_helper_set_action_name               (GtkActionHelper *helper,
+void                    ctk_action_helper_set_action_name               (GtkActionHelper *helper,
                                                                          const gchar     *action_name);
 G_GNUC_INTERNAL
-void                    gtk_action_helper_set_action_target_value       (GtkActionHelper *helper,
+void                    ctk_action_helper_set_action_target_value       (GtkActionHelper *helper,
                                                                          GVariant        *action_target);
 G_GNUC_INTERNAL
-const gchar *           gtk_action_helper_get_action_name               (GtkActionHelper *helper);
+const gchar *           ctk_action_helper_get_action_name               (GtkActionHelper *helper);
 G_GNUC_INTERNAL
-GVariant *              gtk_action_helper_get_action_target_value       (GtkActionHelper *helper);
+GVariant *              ctk_action_helper_get_action_target_value       (GtkActionHelper *helper);
 
 G_GNUC_INTERNAL
-gboolean                gtk_action_helper_get_enabled                   (GtkActionHelper *helper);
+gboolean                ctk_action_helper_get_enabled                   (GtkActionHelper *helper);
 G_GNUC_INTERNAL
-gboolean                gtk_action_helper_get_active                    (GtkActionHelper *helper);
+gboolean                ctk_action_helper_get_active                    (GtkActionHelper *helper);
 
 G_GNUC_INTERNAL
-void                    gtk_action_helper_activate                      (GtkActionHelper *helper);
+void                    ctk_action_helper_activate                      (GtkActionHelper *helper);
 
 #endif /* __GTK_ACTION_HELPER_H__ */

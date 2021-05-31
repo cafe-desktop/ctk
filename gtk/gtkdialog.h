@@ -36,9 +36,9 @@ G_BEGIN_DECLS
 /**
  * GtkDialogFlags:
  * @GTK_DIALOG_MODAL: Make the constructed dialog modal,
- *     see gtk_window_set_modal()
+ *     see ctk_window_set_modal()
  * @GTK_DIALOG_DESTROY_WITH_PARENT: Destroy the dialog when its
- *     parent is destroyed, see gtk_window_set_destroy_with_parent()
+ *     parent is destroyed, see ctk_window_set_destroy_with_parent()
  * @GTK_DIALOG_USE_HEADER_BAR: Create dialog with actions in header
  *     bar instead of action area. Since 3.12.
  *
@@ -66,7 +66,7 @@ typedef enum
  * @GTK_RESPONSE_APPLY: Returned by Apply buttons in GTK+ dialogs
  * @GTK_RESPONSE_HELP: Returned by Help buttons in GTK+ dialogs
  *
- * Predefined values for use as response ids in gtk_dialog_add_button().
+ * Predefined values for use as response ids in ctk_dialog_add_button().
  * All predefined values are negative; GTK+ leaves values of 0 or greater for
  * application-defined response ids.
  */
@@ -86,7 +86,7 @@ typedef enum
 } GtkResponseType;
 
 
-#define GTK_TYPE_DIALOG                  (gtk_dialog_get_type ())
+#define GTK_TYPE_DIALOG                  (ctk_dialog_get_type ())
 #define GTK_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_DIALOG, GtkDialog))
 #define GTK_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_DIALOG, GtkDialogClass))
 #define GTK_IS_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_DIALOG))
@@ -133,78 +133,78 @@ struct _GtkDialogClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_dialog_get_type (void) G_GNUC_CONST;
+GType      ctk_dialog_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_dialog_new      (void);
+GtkWidget* ctk_dialog_new      (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_dialog_new_with_buttons (const gchar     *title,
+GtkWidget* ctk_dialog_new_with_buttons (const gchar     *title,
                                         GtkWindow       *parent,
                                         GtkDialogFlags   flags,
                                         const gchar     *first_button_text,
                                         ...) G_GNUC_NULL_TERMINATED;
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_dialog_add_action_widget (GtkDialog   *dialog,
+void       ctk_dialog_add_action_widget (GtkDialog   *dialog,
                                          GtkWidget   *child,
                                          gint         response_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_dialog_add_button        (GtkDialog   *dialog,
+GtkWidget* ctk_dialog_add_button        (GtkDialog   *dialog,
                                          const gchar *button_text,
                                          gint         response_id);
 GDK_AVAILABLE_IN_ALL
-void       gtk_dialog_add_buttons       (GtkDialog   *dialog,
+void       ctk_dialog_add_buttons       (GtkDialog   *dialog,
                                          const gchar *first_button_text,
                                          ...) G_GNUC_NULL_TERMINATED;
 
 GDK_AVAILABLE_IN_ALL
-void gtk_dialog_set_response_sensitive (GtkDialog *dialog,
+void ctk_dialog_set_response_sensitive (GtkDialog *dialog,
                                         gint       response_id,
                                         gboolean   setting);
 GDK_AVAILABLE_IN_ALL
-void gtk_dialog_set_default_response   (GtkDialog *dialog,
+void ctk_dialog_set_default_response   (GtkDialog *dialog,
                                         gint       response_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_dialog_get_widget_for_response (GtkDialog *dialog,
+GtkWidget* ctk_dialog_get_widget_for_response (GtkDialog *dialog,
                                                gint       response_id);
 GDK_AVAILABLE_IN_ALL
-gint gtk_dialog_get_response_for_widget (GtkDialog *dialog,
+gint ctk_dialog_get_response_for_widget (GtkDialog *dialog,
                                          GtkWidget *widget);
 
 GDK_DEPRECATED_IN_3_10
-gboolean gtk_alternative_dialog_button_order (GdkScreen *screen);
+gboolean ctk_alternative_dialog_button_order (GdkScreen *screen);
 GDK_DEPRECATED_IN_3_10
-void     gtk_dialog_set_alternative_button_order (GtkDialog *dialog,
+void     ctk_dialog_set_alternative_button_order (GtkDialog *dialog,
                                                   gint       first_response_id,
                                                   ...);
 GDK_DEPRECATED_IN_3_10
-void     gtk_dialog_set_alternative_button_order_from_array (GtkDialog *dialog,
+void     ctk_dialog_set_alternative_button_order_from_array (GtkDialog *dialog,
                                                              gint       n_params,
                                                              gint      *new_order);
 
 /* Emit response signal */
 GDK_AVAILABLE_IN_ALL
-void gtk_dialog_response           (GtkDialog *dialog,
+void ctk_dialog_response           (GtkDialog *dialog,
                                     gint       response_id);
 
 /* Returns response_id */
 GDK_AVAILABLE_IN_ALL
-gint gtk_dialog_run                (GtkDialog *dialog);
+gint ctk_dialog_run                (GtkDialog *dialog);
 
 GDK_DEPRECATED_IN_3_10
-GtkWidget * gtk_dialog_get_action_area  (GtkDialog *dialog);
+GtkWidget * ctk_dialog_get_action_area  (GtkDialog *dialog);
 GDK_AVAILABLE_IN_ALL
-GtkWidget * gtk_dialog_get_content_area (GtkDialog *dialog);
+GtkWidget * ctk_dialog_get_content_area (GtkDialog *dialog);
 GDK_AVAILABLE_IN_3_12
-GtkWidget * gtk_dialog_get_header_bar   (GtkDialog *dialog);
+GtkWidget * ctk_dialog_get_header_bar   (GtkDialog *dialog);
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkDialog, g_object_unref)
 

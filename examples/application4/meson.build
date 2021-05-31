@@ -13,5 +13,5 @@ app4 = executable(
   'exampleappwin.c',
   'exampleappwin.h',
   app4_resources,
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )

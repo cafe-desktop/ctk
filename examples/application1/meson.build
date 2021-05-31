@@ -7,5 +7,5 @@ app1 = executable(
   'exampleapp.h',
   'exampleappwin.c',
   'exampleappwin.h',
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )

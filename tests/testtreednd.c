@@ -19,7 +19,7 @@ my_model_init (MyModel *object)
 {
   GType types[1] = { G_TYPE_STRING };
 
-  gtk_list_store_set_column_types (GTK_LIST_STORE (object), G_N_ELEMENTS (types), types);
+  ctk_list_store_set_column_types (GTK_LIST_STORE (object), G_N_ELEMENTS (types), types);
 }
 
 static gboolean
@@ -30,9 +30,9 @@ my_model_drag_data_get (GtkTreeDragSource *source,
   GtkTreeIter iter;
   gchar *text;
 
-  gtk_tree_model_get_iter (GTK_TREE_MODEL (source), &iter, path);
-  gtk_tree_model_get (GTK_TREE_MODEL (source), &iter, 0, &text, -1);
-  gtk_selection_data_set_text (data, text, -1);
+  ctk_tree_model_get_iter (GTK_TREE_MODEL (source), &iter, path);
+  ctk_tree_model_get (GTK_TREE_MODEL (source), &iter, 0, &text, -1);
+  ctk_selection_data_set_text (data, text, -1);
   g_free (text);
 
   return TRUE;
@@ -56,9 +56,9 @@ get_model (void)
   MyModel *model;
 
   model = g_object_new (my_model_get_type (), NULL);
-  gtk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, -1, 0, "Item 1", -1);
-  gtk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, -1, 0, "Item 2", -1);
-  gtk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, -1, 0, "Item 3", -1);
+  ctk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, -1, 0, "Item 1", -1);
+  ctk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, -1, 0, "Item 2", -1);
+  ctk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, -1, 0, "Item 3", -1);
 
   return GTK_TREE_MODEL (model);
 }
@@ -74,13 +74,13 @@ get_dragsource (void)
   GtkCellRenderer *renderer;
   GtkTreeViewColumn *column;
 
-  tv = (GtkTreeView*) gtk_tree_view_new ();
-  renderer = gtk_cell_renderer_text_new ();
-  column = gtk_tree_view_column_new_with_attributes ("Text", renderer, "text", 0, NULL);
-  gtk_tree_view_append_column (tv, column);
+  tv = (GtkTreeView*) ctk_tree_view_new ();
+  renderer = ctk_cell_renderer_text_new ();
+  column = ctk_tree_view_column_new_with_attributes ("Text", renderer, "text", 0, NULL);
+  ctk_tree_view_append_column (tv, column);
 
-  gtk_tree_view_set_model (tv, get_model ());
-  gtk_tree_view_enable_model_drag_source (tv, GDK_BUTTON1_MASK, entries, G_N_ELEMENTS (entries), GDK_ACTION_COPY);
+  ctk_tree_view_set_model (tv, get_model ());
+  ctk_tree_view_enable_model_drag_source (tv, GDK_BUTTON1_MASK, entries, G_N_ELEMENTS (entries), GDK_ACTION_COPY);
 
   return GTK_WIDGET (tv);
 }
@@ -95,8 +95,8 @@ data_received (GtkWidget *widget,
 {
   gchar *text;
 
-  text = (gchar*) gtk_selection_data_get_text (selda);
-  gtk_label_set_label (GTK_LABEL (widget), text);
+  text = (gchar*) ctk_selection_data_get_text (selda);
+  ctk_label_set_label (GTK_LABEL (widget), text);
   g_free (text);
 }
 
@@ -105,8 +105,8 @@ get_droptarget (void)
 {
   GtkWidget *label;
 
-  label = gtk_label_new ("Drop here");
-  gtk_drag_dest_set (label, GTK_DEST_DEFAULT_ALL, entries, G_N_ELEMENTS (entries), GDK_ACTION_COPY);
+  label = ctk_label_new ("Drop here");
+  ctk_drag_dest_set (label, GTK_DEST_DEFAULT_ALL, entries, G_N_ELEMENTS (entries), GDK_ACTION_COPY);
   g_signal_connect (label, "drag-data-received", G_CALLBACK (data_received), NULL);
 
   return label;
@@ -118,18 +118,18 @@ main (int argc, char *argv[])
   GtkWidget *window;
   GtkWidget *box;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
 
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_container_add (GTK_CONTAINER (window), box);
-  gtk_container_add (GTK_CONTAINER (box), get_dragsource ());
-  gtk_container_add (GTK_CONTAINER (box), get_droptarget ());
+  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_container_add (GTK_CONTAINER (window), box);
+  ctk_container_add (GTK_CONTAINER (box), get_dragsource ());
+  ctk_container_add (GTK_CONTAINER (box), get_droptarget ());
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

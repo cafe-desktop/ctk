@@ -32,60 +32,60 @@ enum {
   PROP_PROFILE_TITLE
 };
 
-static void gtk_printer_cups_init       (GtkPrinterCups      *printer);
-static void gtk_printer_cups_class_init (GtkPrinterCupsClass *class);
-static void gtk_printer_cups_finalize   (GObject             *object);
+static void ctk_printer_cups_init       (GtkPrinterCups      *printer);
+static void ctk_printer_cups_class_init (GtkPrinterCupsClass *class);
+static void ctk_printer_cups_finalize   (GObject             *object);
 
-static GtkPrinterClass *gtk_printer_cups_parent_class;
-static GType gtk_printer_cups_type = 0;
+static GtkPrinterClass *ctk_printer_cups_parent_class;
+static GType ctk_printer_cups_type = 0;
 
-static void gtk_printer_cups_set_property (GObject      *object,
+static void ctk_printer_cups_set_property (GObject      *object,
                                            guint         prop_id,
                                            const GValue *value,
                                            GParamSpec   *pspec);
-static void gtk_printer_cups_get_property (GObject      *object,
+static void ctk_printer_cups_get_property (GObject      *object,
                                            guint         prop_id,
                                            GValue       *value,
                                            GParamSpec   *pspec);
 
 void 
-gtk_printer_cups_register_type (GTypeModule *module)
+ctk_printer_cups_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
     sizeof (GtkPrinterCupsClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) gtk_printer_cups_class_init,
+    (GClassInitFunc) ctk_printer_cups_class_init,
     NULL,           /* class_finalize */
     NULL,           /* class_data */
     sizeof (GtkPrinterCups),
     0,              /* n_preallocs */
-    (GInstanceInitFunc) gtk_printer_cups_init,
+    (GInstanceInitFunc) ctk_printer_cups_init,
   };
 
- gtk_printer_cups_type = g_type_module_register_type (module,
+ ctk_printer_cups_type = g_type_module_register_type (module,
                                                       GTK_TYPE_PRINTER,
                                                       "GtkPrinterCups",
                                                       &object_info, 0);
 }
 
 GType
-gtk_printer_cups_get_type (void)
+ctk_printer_cups_get_type (void)
 {
-  return gtk_printer_cups_type;
+  return ctk_printer_cups_type;
 }
 
 static void
-gtk_printer_cups_class_init (GtkPrinterCupsClass *class)
+ctk_printer_cups_class_init (GtkPrinterCupsClass *class)
 {
   GObjectClass *object_class = (GObjectClass *) class;
 
-  object_class->finalize = gtk_printer_cups_finalize;
-  object_class->set_property = gtk_printer_cups_set_property;
-  object_class->get_property = gtk_printer_cups_get_property;
+  object_class->finalize = ctk_printer_cups_finalize;
+  object_class->set_property = ctk_printer_cups_set_property;
+  object_class->get_property = ctk_printer_cups_get_property;
 
-  gtk_printer_cups_parent_class = g_type_class_peek_parent (class);
+  ctk_printer_cups_parent_class = g_type_class_peek_parent (class);
 
   g_object_class_install_property (G_OBJECT_CLASS (class),
                                    PROP_PROFILE_TITLE,
@@ -97,7 +97,7 @@ gtk_printer_cups_class_init (GtkPrinterCupsClass *class)
 }
 
 static void
-gtk_printer_cups_init (GtkPrinterCups *printer)
+ctk_printer_cups_init (GtkPrinterCups *printer)
 {
   printer->device_uri = NULL;
   printer->original_device_uri = NULL;
@@ -145,7 +145,7 @@ gtk_printer_cups_init (GtkPrinterCups *printer)
 }
 
 static void
-gtk_printer_cups_finalize (GObject *object)
+ctk_printer_cups_finalize (GObject *object)
 {
   GtkPrinterCups *printer;
 
@@ -207,13 +207,13 @@ gtk_printer_cups_finalize (GObject *object)
     g_source_remove (printer->get_remote_ppd_poll);
   printer->get_remote_ppd_attempts = 0;
 
-  gtk_cups_connection_test_free (printer->remote_cups_connection_test);
+  ctk_cups_connection_test_free (printer->remote_cups_connection_test);
 
-  G_OBJECT_CLASS (gtk_printer_cups_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_printer_cups_parent_class)->finalize (object);
 }
 
 static void
-gtk_printer_cups_set_property (GObject         *object,
+ctk_printer_cups_set_property (GObject         *object,
                                guint            prop_id,
                                const GValue    *value,
                                GParamSpec      *pspec)
@@ -227,7 +227,7 @@ gtk_printer_cups_set_property (GObject         *object,
 }
 
 static void
-gtk_printer_cups_get_property (GObject    *object,
+ctk_printer_cups_get_property (GObject    *object,
                                guint       prop_id,
                                GValue     *value,
                                GParamSpec *pspec)
@@ -369,7 +369,7 @@ out:
 }
 
 void
-gtk_printer_cups_update_settings (GtkPrinterCups *printer,
+ctk_printer_cups_update_settings (GtkPrinterCups *printer,
                                   GtkPrintSettings *settings,
                                   GtkPrinterOptionSet *set)
 {
@@ -385,23 +385,23 @@ gtk_printer_cups_update_settings (GtkPrinterCups *printer,
     goto out;
 
   /* cupsICCQualifier1 */
-  option = gtk_printer_option_set_lookup (set, "cups-ColorSpace");
+  option = ctk_printer_option_set_lookup (set, "cups-ColorSpace");
   if (option == NULL)
-    option = gtk_printer_option_set_lookup (set, "cups-ColorModel");
+    option = ctk_printer_option_set_lookup (set, "cups-ColorModel");
   if (option != NULL)
     format[0] = option->value;
   else
     format[0] = "*";
 
   /* cupsICCQualifier2 */
-  option = gtk_printer_option_set_lookup (set, "cups-OutputMode");
+  option = ctk_printer_option_set_lookup (set, "cups-OutputMode");
   if (option != NULL)
     format[1] = option->value;
   else
     format[1] = "*";
 
   /* cupsICCQualifier3 */
-  option = gtk_printer_option_set_lookup (set, "cups-Resolution");
+  option = ctk_printer_option_set_lookup (set, "cups-Resolution");
   if (option != NULL)
     format[2] = option->value;
   else
@@ -522,7 +522,7 @@ colord_update_device (GtkPrinterCups *printer)
     }
 
   /* generate a known ID */
-  colord_device_id = g_strdup_printf ("cups-%s", gtk_printer_get_name (GTK_PRINTER (printer)));
+  colord_device_id = g_strdup_printf ("cups-%s", ctk_printer_get_name (GTK_PRINTER (printer)));
 
   g_cancellable_reset (printer->colord_cancellable);
   cd_client_find_device (printer->colord_client,
@@ -577,7 +577,7 @@ colord_printer_details_aquired_cb (GtkPrinterCups *printer,
 #endif
 
 /**
- * gtk_printer_cups_new:
+ * ctk_printer_cups_new:
  *
  * Creates a new #GtkPrinterCups.
  *
@@ -586,7 +586,7 @@ colord_printer_details_aquired_cb (GtkPrinterCups *printer,
  * Since: 2.10
  **/
 GtkPrinterCups *
-gtk_printer_cups_new (const char      *name,
+ctk_printer_cups_new (const char      *name,
                       GtkPrintBackend *backend,
                       gpointer         colord_client)
 {
@@ -637,20 +637,20 @@ gtk_printer_cups_new (const char      *name,
 }
 
 ppd_file_t *
-gtk_printer_cups_get_ppd (GtkPrinterCups *printer)
+ctk_printer_cups_get_ppd (GtkPrinterCups *printer)
 {
   return printer->ppd_file;
 }
 
 const gchar *
-gtk_printer_cups_get_ppd_name (GtkPrinterCups  *printer)
+ctk_printer_cups_get_ppd_name (GtkPrinterCups  *printer)
 {
   const gchar *result;
 
   result = printer->ppd_name;
 
   if (result == NULL)
-    result = gtk_printer_get_name (GTK_PRINTER (printer));
+    result = ctk_printer_get_name (GTK_PRINTER (printer));
 
   return result;
 }

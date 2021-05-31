@@ -28,7 +28,7 @@ struct _GtkCssValue {
 };
 
 static void
-gtk_css_value_engine_free (GtkCssValue *value)
+ctk_css_value_engine_free (GtkCssValue *value)
 {
   g_object_unref (value->engine);
 
@@ -36,24 +36,24 @@ gtk_css_value_engine_free (GtkCssValue *value)
 }
 
 static GtkCssValue *
-gtk_css_value_engine_compute (GtkCssValue             *value,
+ctk_css_value_engine_compute (GtkCssValue             *value,
                               guint                    property_id,
                               GtkStyleProviderPrivate *provider,
                               GtkCssStyle             *style,
                               GtkCssStyle             *parent_style)
 {
-  return _gtk_css_value_ref (value);
+  return _ctk_css_value_ref (value);
 }
 
 static gboolean
-gtk_css_value_engine_equal (const GtkCssValue *value1,
+ctk_css_value_engine_equal (const GtkCssValue *value1,
                             const GtkCssValue *value2)
 {
   return value1->engine == value2->engine;
 }
 
 static GtkCssValue *
-gtk_css_value_engine_transition (GtkCssValue *start,
+ctk_css_value_engine_transition (GtkCssValue *start,
                                  GtkCssValue *end,
                                  guint        property_id,
                                  double       progress)
@@ -62,7 +62,7 @@ gtk_css_value_engine_transition (GtkCssValue *start,
 }
 
 static void
-gtk_css_value_engine_print (const GtkCssValue *value,
+ctk_css_value_engine_print (const GtkCssValue *value,
                             GString           *string)
 {
   char *name;
@@ -78,60 +78,60 @@ gtk_css_value_engine_print (const GtkCssValue *value,
 }
 
 static const GtkCssValueClass GTK_CSS_VALUE_ENGINE = {
-  gtk_css_value_engine_free,
-  gtk_css_value_engine_compute,
-  gtk_css_value_engine_equal,
-  gtk_css_value_engine_transition,
-  gtk_css_value_engine_print
+  ctk_css_value_engine_free,
+  ctk_css_value_engine_compute,
+  ctk_css_value_engine_equal,
+  ctk_css_value_engine_transition,
+  ctk_css_value_engine_print
 };
 
 GtkCssValue *
-_gtk_css_engine_value_new (GtkThemingEngine *engine)
+_ctk_css_engine_value_new (GtkThemingEngine *engine)
 {
   GtkCssValue *result;
 
   g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), NULL);
 
-  result = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_ENGINE);
+  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_ENGINE);
   result->engine = g_object_ref (engine);
 
   return result;
 }
 
 GtkCssValue *
-_gtk_css_engine_value_parse (GtkCssParser *parser)
+_ctk_css_engine_value_parse (GtkCssParser *parser)
 {
   GtkThemingEngine *engine;
   char *str;
 
   g_return_val_if_fail (parser != NULL, NULL);
 
-  if (_gtk_css_parser_try (parser, "none", TRUE))
-    return _gtk_css_engine_value_new (gtk_theming_engine_load (NULL));
+  if (_ctk_css_parser_try (parser, "none", TRUE))
+    return _ctk_css_engine_value_new (ctk_theming_engine_load (NULL));
 
-  str = _gtk_css_parser_try_ident (parser, TRUE);
+  str = _ctk_css_parser_try_ident (parser, TRUE);
   if (str == NULL)
     {
-      _gtk_css_parser_error (parser, "Expected a valid theme name");
+      _ctk_css_parser_error (parser, "Expected a valid theme name");
       return NULL;
     }
 
-  engine = gtk_theming_engine_load (str);
+  engine = ctk_theming_engine_load (str);
 
   if (engine == NULL)
     {
-      _gtk_css_parser_error (parser, "Theming engine '%s' not found", str);
+      _ctk_css_parser_error (parser, "Theming engine '%s' not found", str);
       g_free (str);
       return NULL;
     }
 
   g_free (str);
 
-  return _gtk_css_engine_value_new (engine);
+  return _ctk_css_engine_value_new (engine);
 }
 
 GtkThemingEngine *
-_gtk_css_engine_value_get_engine (const GtkCssValue *value)
+_ctk_css_engine_value_get_engine (const GtkCssValue *value)
 {
   g_return_val_if_fail (value->class == &GTK_CSS_VALUE_ENGINE, NULL);
 

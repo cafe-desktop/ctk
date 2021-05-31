@@ -46,7 +46,7 @@ print_current_folder (GtkFileChooser *chooser)
 {
   gchar *uri;
 
-  uri = gtk_file_chooser_get_current_folder_uri (chooser);
+  uri = ctk_file_chooser_get_current_folder_uri (chooser);
   g_print ("Current folder changed :\n  %s\n", uri ? uri : "(null)");
   g_free (uri);
 }
@@ -54,7 +54,7 @@ print_current_folder (GtkFileChooser *chooser)
 static void
 print_selected (GtkFileChooser *chooser)
 {
-  GSList *uris = gtk_file_chooser_get_uris (chooser);
+  GSList *uris = ctk_file_chooser_get_uris (chooser);
   GSList *tmp_list;
 
   g_print ("Selection changed :\n");
@@ -76,7 +76,7 @@ response_cb (GtkDialog *dialog,
     {
       GSList *list;
 
-      list = gtk_file_chooser_get_uris (GTK_FILE_CHOOSER (dialog));
+      list = ctk_file_chooser_get_uris (GTK_FILE_CHOOSER (dialog));
 
       if (list)
 	{
@@ -98,7 +98,7 @@ response_cb (GtkDialog *dialog,
   else
     g_print ("Dialog was closed\n");
 
-  gtk_main_quit ();
+  ctk_main_quit ();
 }
 
 static gboolean
@@ -278,7 +278,7 @@ format_size (gint64 size)
 static void
 update_preview_cb (GtkFileChooser *chooser)
 {
-  gchar *filename = gtk_file_chooser_get_preview_filename (chooser);
+  gchar *filename = ctk_file_chooser_get_preview_filename (chooser);
   gboolean have_preview = FALSE;
 
   if (filename)
@@ -289,10 +289,10 @@ update_preview_cb (GtkFileChooser *chooser)
       pixbuf = my_new_from_file_at_size (filename, 128, 128, &error);
       if (pixbuf)
 	{
-	  gtk_image_set_from_pixbuf (GTK_IMAGE (preview_image), pixbuf);
+	  ctk_image_set_from_pixbuf (GTK_IMAGE (preview_image), pixbuf);
 	  g_object_unref (pixbuf);
-	  gtk_widget_show (preview_image);
-	  gtk_widget_hide (preview_label);
+	  ctk_widget_show (preview_image);
+	  ctk_widget_hide (preview_label);
 	  have_preview = TRUE;
 	}
       else
@@ -311,13 +311,13 @@ update_preview_cb (GtkFileChooser *chooser)
 					      "<i>Size:</i>\t%s\n",
 					      modified_time,
 					      size_str);
-	      gtk_label_set_markup (GTK_LABEL (preview_label), preview_text);
+	      ctk_label_set_markup (GTK_LABEL (preview_label), preview_text);
 	      g_free (modified_time);
 	      g_free (size_str);
 	      g_free (preview_text);
 
-	      gtk_widget_hide (preview_image);
-	      gtk_widget_show (preview_label);
+	      ctk_widget_hide (preview_image);
+	      ctk_widget_show (preview_label);
 	      have_preview = TRUE;
 	    }
 	}
@@ -328,7 +328,7 @@ update_preview_cb (GtkFileChooser *chooser)
 	g_error_free (error);
     }
 
-  gtk_file_chooser_set_preview_widget_active (chooser, have_preview);
+  ctk_file_chooser_set_preview_widget_active (chooser, have_preview);
 }
 #endif
 
@@ -336,18 +336,18 @@ static void
 set_current_folder (GtkFileChooser *chooser,
 		    const char     *name)
 {
-  if (!gtk_file_chooser_set_current_folder (chooser, name))
+  if (!ctk_file_chooser_set_current_folder (chooser, name))
     {
       GtkWidget *dialog;
 
-      dialog = gtk_message_dialog_new (GTK_WINDOW (chooser),
+      dialog = ctk_message_dialog_new (GTK_WINDOW (chooser),
 				       GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 				       GTK_MESSAGE_ERROR,
 				       GTK_BUTTONS_CLOSE,
 				       "Could not set the folder to %s",
 				       name);
-      gtk_dialog_run (GTK_DIALOG (dialog));
-      gtk_widget_destroy (dialog);
+      ctk_dialog_run (GTK_DIALOG (dialog));
+      ctk_widget_destroy (dialog);
     }
 }
 
@@ -369,18 +369,18 @@ static void
 set_filename (GtkFileChooser *chooser,
 	      const char     *name)
 {
-  if (!gtk_file_chooser_set_filename (chooser, name))
+  if (!ctk_file_chooser_set_filename (chooser, name))
     {
       GtkWidget *dialog;
 
-      dialog = gtk_message_dialog_new (GTK_WINDOW (chooser),
+      dialog = ctk_message_dialog_new (GTK_WINDOW (chooser),
 				       GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 				       GTK_MESSAGE_ERROR,
 				       GTK_BUTTONS_CLOSE,
 				       "Could not select %s",
 				       name);
-      gtk_dialog_run (GTK_DIALOG (dialog));
-      gtk_widget_destroy (dialog);
+      ctk_dialog_run (GTK_DIALOG (dialog));
+      ctk_widget_destroy (dialog);
     }
 }
 
@@ -404,7 +404,7 @@ get_selection_cb (GtkButton      *button,
 {
   GSList *selection;
 
-  selection = gtk_file_chooser_get_uris (chooser);
+  selection = ctk_file_chooser_get_uris (chooser);
 
   g_print ("Selection: ");
 
@@ -434,7 +434,7 @@ get_current_name_cb (GtkButton      *button,
 {
   char *name;
 
-  name = gtk_file_chooser_get_current_name (chooser);
+  name = ctk_file_chooser_get_current_name (chooser);
   g_print ("Current name: %s\n", name ? name : "NULL");
   g_free (name);
 }
@@ -443,14 +443,14 @@ static void
 unmap_and_remap_cb (GtkButton *button,
 		    GtkFileChooser *chooser)
 {
-  gtk_widget_hide (GTK_WIDGET (chooser));
-  gtk_widget_show (GTK_WIDGET (chooser));
+  ctk_widget_hide (GTK_WIDGET (chooser));
+  ctk_widget_show (GTK_WIDGET (chooser));
 }
 
 static void
 kill_dependent (GtkWindow *win, GtkWidget *dep)
 {
-  gtk_widget_destroy (dep);
+  ctk_widget_destroy (dep);
   g_object_unref (dep);
 }
 
@@ -461,9 +461,9 @@ notify_multiple_cb (GtkWidget  *dialog,
 {
   gboolean multiple;
 
-  multiple = gtk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (dialog));
+  multiple = ctk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (dialog));
 
-  gtk_widget_set_sensitive (button, multiple);
+  ctk_widget_set_sensitive (button, multiple);
 }
 
 static GtkFileChooserConfirmation
@@ -475,25 +475,25 @@ confirm_overwrite_cb (GtkFileChooser *chooser,
   int response;
   GtkFileChooserConfirmation conf;
 
-  dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (chooser))),
+  dialog = ctk_message_dialog_new (GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (chooser))),
 				   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 				   GTK_MESSAGE_QUESTION,
 				   GTK_BUTTONS_NONE,
 				   "What do you want to do?");
 
-  button = gtk_button_new_with_label ("Use the stock confirmation dialog");
-  gtk_widget_show (button);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 1);
+  button = ctk_button_new_with_label ("Use the stock confirmation dialog");
+  ctk_widget_show (button);
+  ctk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 1);
 
-  button = gtk_button_new_with_label ("Type a new file name");
-  gtk_widget_show (button);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 2);
+  button = ctk_button_new_with_label ("Type a new file name");
+  ctk_widget_show (button);
+  ctk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 2);
 
-  button = gtk_button_new_with_label ("Accept the file name");
-  gtk_widget_show (button);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 3);
+  button = ctk_button_new_with_label ("Accept the file name");
+  ctk_widget_show (button);
+  ctk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 3);
 
-  response = gtk_dialog_run (GTK_DIALOG (dialog));
+  response = ctk_dialog_run (GTK_DIALOG (dialog));
 
   switch (response)
     {
@@ -510,7 +510,7 @@ confirm_overwrite_cb (GtkFileChooser *chooser,
       break;
     }
 
-  gtk_widget_destroy (dialog);
+  ctk_widget_destroy (dialog);
 
   return conf;
 }
@@ -541,7 +541,7 @@ main (int argc, char **argv)
     { NULL }
   };
 
-  if (!gtk_init_with_args (&argc, &argv, "", options, NULL, &error))
+  if (!ctk_init_with_args (&argc, &argv, "", options, NULL, &error))
     {
       g_print ("Failed to parse args: %s\n", error->message);
       g_error_free (error);
@@ -555,7 +555,7 @@ main (int argc, char **argv)
     }
 
   if (force_rtl)
-    gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
   action = GTK_FILE_CHOOSER_ACTION_OPEN;
 
@@ -588,22 +588,22 @@ main (int argc, char **argv)
     {
     case GTK_FILE_CHOOSER_ACTION_OPEN:
     case GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER:
-      gtk_window_set_title (GTK_WINDOW (dialog), "Select a file");
-      gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+      ctk_window_set_title (GTK_WINDOW (dialog), "Select a file");
+      ctk_dialog_add_buttons (GTK_DIALOG (dialog),
 			      _("_Cancel"), GTK_RESPONSE_CANCEL,
 			      _("_Open"), GTK_RESPONSE_OK,
 			      NULL);
       break;
     case GTK_FILE_CHOOSER_ACTION_SAVE:
     case GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
-      gtk_window_set_title (GTK_WINDOW (dialog), "Save a file");
-      gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+      ctk_window_set_title (GTK_WINDOW (dialog), "Save a file");
+      ctk_dialog_add_buttons (GTK_DIALOG (dialog),
 			      _("_Cancel"), GTK_RESPONSE_CANCEL,
 			      _("_Save"), GTK_RESPONSE_OK,
 			      NULL);
       break;
     }
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
   g_signal_connect (dialog, "selection-changed",
 		    G_CALLBACK (print_selected), NULL);
@@ -615,53 +615,53 @@ main (int argc, char **argv)
 		    G_CALLBACK (confirm_overwrite_cb), NULL);
 
   /* Filters */
-  filter = gtk_file_filter_new ();
-  gtk_file_filter_set_name (filter, "All Files");
-  gtk_file_filter_add_pattern (filter, "*");
-  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  filter = ctk_file_filter_new ();
+  ctk_file_filter_set_name (filter, "All Files");
+  ctk_file_filter_add_pattern (filter, "*");
+  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
 
   /* Make this filter the default */
-  gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
+  ctk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
 
-  filter = gtk_file_filter_new ();
-  gtk_file_filter_set_name (filter, "No backup files");
-  gtk_file_filter_add_custom (filter, GTK_FILE_FILTER_DISPLAY_NAME,
+  filter = ctk_file_filter_new ();
+  ctk_file_filter_set_name (filter, "No backup files");
+  ctk_file_filter_add_custom (filter, GTK_FILE_FILTER_DISPLAY_NAME,
 			      no_backup_files_filter, NULL, NULL);
-  gtk_file_filter_add_mime_type (filter, "image/png");
-  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  ctk_file_filter_add_mime_type (filter, "image/png");
+  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
 
-  filter = gtk_file_filter_new ();
-  gtk_file_filter_set_name (filter, "Starts with D");
-  gtk_file_filter_add_pattern (filter, "D*");
-  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  filter = ctk_file_filter_new ();
+  ctk_file_filter_set_name (filter, "Starts with D");
+  ctk_file_filter_add_pattern (filter, "D*");
+  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
 
   g_signal_connect (dialog, "notify::filter",
 		    G_CALLBACK (filter_changed), NULL);
 
-  filter = gtk_file_filter_new ();
-  gtk_file_filter_set_name (filter, "PNG and JPEG");
-  gtk_file_filter_add_mime_type (filter, "image/jpeg");
-  gtk_file_filter_add_mime_type (filter, "image/png");
-  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  filter = ctk_file_filter_new ();
+  ctk_file_filter_set_name (filter, "PNG and JPEG");
+  ctk_file_filter_add_mime_type (filter, "image/jpeg");
+  ctk_file_filter_add_mime_type (filter, "image/png");
+  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
 
-  filter = gtk_file_filter_new ();
-  gtk_file_filter_set_name (filter, "Images");
-  gtk_file_filter_add_pixbuf_formats (filter);
-  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  filter = ctk_file_filter_new ();
+  ctk_file_filter_set_name (filter, "Images");
+  ctk_file_filter_add_pixbuf_formats (filter);
+  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
 
 #if 0
   /* Preview widget */
   /* THIS IS A TERRIBLE PREVIEW WIDGET, AND SHOULD NOT BE COPIED AT ALL.
    */
-  preview_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER (dialog), preview_vbox);
+  preview_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER (dialog), preview_vbox);
 
-  preview_label = gtk_label_new (NULL);
-  gtk_box_pack_start (GTK_BOX (preview_vbox), preview_label, TRUE, TRUE, 0);
+  preview_label = ctk_label_new (NULL);
+  ctk_box_pack_start (GTK_BOX (preview_vbox), preview_label, TRUE, TRUE, 0);
   g_object_set (preview_label, "margin", 6, NULL);
 
-  preview_image = gtk_image_new ();
-  gtk_box_pack_start (GTK_BOX (preview_vbox), preview_image, TRUE, TRUE, 0);
+  preview_image = ctk_image_new ();
+  ctk_box_pack_start (GTK_BOX (preview_vbox), preview_image, TRUE, TRUE, 0);
   g_object_set (preview_image, "margin", 6, NULL);
 
   update_preview_cb (GTK_FILE_CHOOSER (dialog));
@@ -671,16 +671,16 @@ main (int argc, char **argv)
 
   /* Extra widget */
 
-  extra = gtk_check_button_new_with_mnemonic ("Lar_t whoever asks about this button");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (extra), TRUE);
-  gtk_file_chooser_set_extra_widget (GTK_FILE_CHOOSER (dialog), extra);
+  extra = ctk_check_button_new_with_mnemonic ("Lar_t whoever asks about this button");
+  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (extra), TRUE);
+  ctk_file_chooser_set_extra_widget (GTK_FILE_CHOOSER (dialog), extra);
 
   /* Shortcuts */
 
-  gtk_file_chooser_add_shortcut_folder_uri (GTK_FILE_CHOOSER (dialog),
+  ctk_file_chooser_add_shortcut_folder_uri (GTK_FILE_CHOOSER (dialog),
 					    "file:///usr/share/pixmaps",
 					    NULL);
-  gtk_file_chooser_add_shortcut_folder (GTK_FILE_CHOOSER (dialog),
+  ctk_file_chooser_add_shortcut_folder (GTK_FILE_CHOOSER (dialog),
 					g_get_user_special_dir (G_USER_DIRECTORY_MUSIC),
 					NULL);
 
@@ -693,65 +693,65 @@ main (int argc, char **argv)
     set_current_folder (GTK_FILE_CHOOSER (dialog), initial_folder);
 
   /* show_all() to reveal bugs in composite widget handling */
-  gtk_widget_show_all (dialog);
+  ctk_widget_show_all (dialog);
 
   /* Extra controls for manipulating the test environment
    */
 
-  control_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  control_window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
 
-  vbbox = gtk_button_box_new (GTK_ORIENTATION_VERTICAL);
-  gtk_container_add (GTK_CONTAINER (control_window), vbbox);
+  vbbox = ctk_button_box_new (GTK_ORIENTATION_VERTICAL);
+  ctk_container_add (GTK_CONTAINER (control_window), vbbox);
 
-  button = gtk_button_new_with_mnemonic ("_Select all");
-  gtk_widget_set_sensitive (button, multiple);
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_mnemonic ("_Select all");
+  ctk_widget_set_sensitive (button, multiple);
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect_swapped (button, "clicked",
-			    G_CALLBACK (gtk_file_chooser_select_all), dialog);
+			    G_CALLBACK (ctk_file_chooser_select_all), dialog);
   g_signal_connect (dialog, "notify::select-multiple",
 		    G_CALLBACK (notify_multiple_cb), button);
 
-  button = gtk_button_new_with_mnemonic ("_Unselect all");
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_mnemonic ("_Unselect all");
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect_swapped (button, "clicked",
-			    G_CALLBACK (gtk_file_chooser_unselect_all), dialog);
+			    G_CALLBACK (ctk_file_chooser_unselect_all), dialog);
 
-  button = gtk_button_new_with_label ("set_current_folder (\"/nonexistent\")");
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_label ("set_current_folder (\"/nonexistent\")");
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (set_folder_nonexistent_cb), dialog);
 
-  button = gtk_button_new_with_label ("set_current_folder (\"/usr/nonexistent\")");
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_label ("set_current_folder (\"/usr/nonexistent\")");
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (set_folder_existing_nonexistent_cb), dialog);
 
-  button = gtk_button_new_with_label ("set_filename (\"/nonexistent\")");
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_label ("set_filename (\"/nonexistent\")");
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (set_filename_nonexistent_cb), dialog);
 
-  button = gtk_button_new_with_label ("set_filename (\"/usr/nonexistent\")");
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_label ("set_filename (\"/usr/nonexistent\")");
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (set_filename_existing_nonexistent_cb), dialog);
 
-  button = gtk_button_new_with_label ("Get selection");
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_label ("Get selection");
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (get_selection_cb), dialog);
 
-  button = gtk_button_new_with_label ("Get current name");
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_label ("Get current name");
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (get_current_name_cb), dialog);
 
-  button = gtk_button_new_with_label ("Unmap and remap");
-  gtk_container_add (GTK_CONTAINER (vbbox), button);
+  button = ctk_button_new_with_label ("Unmap and remap");
+  ctk_container_add (GTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (unmap_and_remap_cb), dialog);
 
-  gtk_widget_show_all (control_window);
+  ctk_widget_show_all (control_window);
 
   g_object_ref (control_window);
   g_signal_connect (dialog, "destroy",
@@ -761,8 +761,8 @@ main (int argc, char **argv)
    * someone else destroys them.  We explicitly destroy windows to catch leaks.
    */
   g_object_ref (dialog);
-  gtk_main ();
-  gtk_widget_destroy (dialog);
+  ctk_main ();
+  ctk_widget_destroy (dialog);
   g_object_unref (dialog);
 
   return 0;

@@ -22,15 +22,15 @@
 
 G_BEGIN_DECLS
 
-void            _gtk_container_accessible_add_child     (GtkContainerAccessible *accessible,
+void            _ctk_container_accessible_add_child     (GtkContainerAccessible *accessible,
                                                          AtkObject              *child,
                                                          gint                    index);
-void            _gtk_container_accessible_remove_child  (GtkContainerAccessible *accessible,
+void            _ctk_container_accessible_remove_child  (GtkContainerAccessible *accessible,
                                                          AtkObject              *child,
                                                          gint                    index);
-void            _gtk_container_accessible_add           (GtkWidget              *parent,
+void            _ctk_container_accessible_add           (GtkWidget              *parent,
                                                          GtkWidget              *child);
-void            _gtk_container_accessible_remove        (GtkWidget              *parent,
+void            _ctk_container_accessible_remove        (GtkWidget              *parent,
                                                          GtkWidget              *child);
 
 G_END_DECLS

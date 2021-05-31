@@ -27,15 +27,15 @@ main (int argc, char *argv[])
   GtkWidget *dialog;
   GtkWidget *ok G_GNUC_UNUSED;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  dialog = gtk_font_selection_dialog_new (NULL);
+  dialog = ctk_font_selection_dialog_new (NULL);
 
-  ok = gtk_font_selection_dialog_get_ok_button (GTK_FONT_SELECTION_DIALOG (dialog));
+  ok = ctk_font_selection_dialog_get_ok_button (GTK_FONT_SELECTION_DIALOG (dialog));
 
-  gtk_dialog_run (GTK_DIALOG (dialog));
+  ctk_dialog_run (GTK_DIALOG (dialog));
 
-  gtk_widget_destroy (dialog);
+  ctk_widget_destroy (dialog);
 
   return 0;
 }

@@ -52,23 +52,23 @@ struct _GtkMenuItemPrivate
   guint reserve_indicator      : 1;
 };
 
-GtkCssGadget * _gtk_menu_item_get_gadget     (GtkMenuItem   *menu_item);
-void     _gtk_menu_item_refresh_accel_path   (GtkMenuItem   *menu_item,
+GtkCssGadget * _ctk_menu_item_get_gadget     (GtkMenuItem   *menu_item);
+void     _ctk_menu_item_refresh_accel_path   (GtkMenuItem   *menu_item,
                                               const gchar   *prefix,
                                               GtkAccelGroup *accel_group,
                                               gboolean       group_changed);
-gboolean _gtk_menu_item_is_selectable        (GtkWidget     *menu_item);
-void     _gtk_menu_item_popup_submenu        (GtkWidget     *menu_item,
+gboolean _ctk_menu_item_is_selectable        (GtkWidget     *menu_item);
+void     _ctk_menu_item_popup_submenu        (GtkWidget     *menu_item,
                                               gboolean       with_delay);
-void     _gtk_menu_item_popdown_submenu      (GtkWidget     *menu_item);
-void	  _gtk_menu_item_refresh_accel_path  (GtkMenuItem   *menu_item,
+void     _ctk_menu_item_popdown_submenu      (GtkWidget     *menu_item);
+void	  _ctk_menu_item_refresh_accel_path  (GtkMenuItem   *menu_item,
 					      const gchar   *prefix,
 					      GtkAccelGroup *accel_group,
 					      gboolean	     group_changed);
-gboolean  _gtk_menu_item_is_selectable       (GtkWidget     *menu_item);
-void      _gtk_menu_item_popup_submenu       (GtkWidget     *menu_item,
+gboolean  _ctk_menu_item_is_selectable       (GtkWidget     *menu_item);
+void      _ctk_menu_item_popup_submenu       (GtkWidget     *menu_item,
 					      gboolean       with_delay);
-void      _gtk_menu_item_popdown_submenu     (GtkWidget     *menu_item);
+void      _ctk_menu_item_popdown_submenu     (GtkWidget     *menu_item);
 
 G_END_DECLS
 

@@ -36,7 +36,7 @@ typedef struct _GtkRequestedSize         GtkRequestedSize;
  *
  * Represents a request of a screen object in a given orientation. These
  * are primarily used in container implementations when allocating a natural
- * size for children calling. See gtk_distribute_natural_allocation().
+ * size for children calling. See ctk_distribute_natural_allocation().
  */
 struct _GtkRequestedSize
 {
@@ -48,7 +48,7 @@ struct _GtkRequestedSize
 
 /* General convenience function to aid in allocating natural sizes */
 GDK_AVAILABLE_IN_ALL
-gint                gtk_distribute_natural_allocation               (gint              extra_space,
+gint                ctk_distribute_natural_allocation               (gint              extra_space,
                                                                      guint             n_requested_sizes,
                                                                      GtkRequestedSize *sizes);
 

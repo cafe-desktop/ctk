@@ -105,10 +105,10 @@ portal_start_page (GtkPrintOperation *op,
   cairo_surface_type_t type;
   gdouble w, h;
 
-  paper_size = gtk_page_setup_get_paper_size (page_setup);
+  paper_size = ctk_page_setup_get_paper_size (page_setup);
 
-  w = gtk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
-  h = gtk_paper_size_get_height (paper_size, GTK_UNIT_POINTS);
+  w = ctk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
+  h = ctk_paper_size_get_height (paper_size, GTK_UNIT_POINTS);
 
   type = cairo_surface_get_type (op_portal->surface);
 
@@ -119,7 +119,7 @@ portal_start_page (GtkPrintOperation *op,
         {
           cairo_ps_surface_set_size (op_portal->surface, w, h);
           cairo_ps_surface_dsc_begin_page_setup (op_portal->surface);
-          switch (gtk_page_setup_get_orientation (page_setup))
+          switch (ctk_page_setup_get_orientation (page_setup))
             {
               case GTK_PAGE_ORIENTATION_PORTRAIT:
               case GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT:
@@ -136,8 +136,8 @@ portal_start_page (GtkPrintOperation *op,
         {
           if (!op->priv->manual_orientation)
             {
-              w = gtk_page_setup_get_paper_width (page_setup, GTK_UNIT_POINTS);
-              h = gtk_page_setup_get_paper_height (page_setup, GTK_UNIT_POINTS);
+              w = ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_POINTS);
+              h = ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_POINTS);
             }
           cairo_pdf_surface_set_size (op_portal->surface, w, h);
         }
@@ -150,7 +150,7 @@ portal_end_page (GtkPrintOperation *op,
 {
   cairo_t *cr;
 
-  cr = gtk_print_context_get_cairo_context (print_context);
+  cr = ctk_print_context_get_cairo_context (print_context);
 
   if ((op->priv->manual_number_up < 2) ||
       ((op->priv->page_position + 1) % op->priv->manual_number_up == 0) ||
@@ -210,8 +210,8 @@ portal_job_complete (GtkPrintJob  *job,
 
   op_portal->file_written = TRUE;
 
-  settings = gtk_print_job_get_settings (job);
-  uri = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_URI);
+  settings = ctk_print_job_get_settings (job);
+  uri = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_URI);
   filename = g_filename_from_uri (uri, NULL, NULL);
 
   fd = open (filename, O_RDONLY|O_CLOEXEC);
@@ -259,7 +259,7 @@ portal_end_run (GtkPrintOperation *op,
   if (op_portal->job != NULL)
     {
       g_object_ref (op);
-      gtk_print_job_send (op_portal->job, portal_job_complete, op, NULL);
+      ctk_print_job_send (op_portal->job, portal_job_complete, op, NULL);
     }
 
   if (wait)
@@ -289,13 +289,13 @@ finish_print (PortalData        *portal,
 
   if (portal->do_print)
     {
-      gtk_print_operation_set_print_settings (op, settings);
-      priv->print_context = _gtk_print_context_new (op);
+      ctk_print_operation_set_print_settings (op, settings);
+      priv->print_context = _ctk_print_context_new (op);
 
-      _gtk_print_context_set_hard_margins (priv->print_context, 0, 0, 0, 0);
+      _ctk_print_context_set_hard_margins (priv->print_context, 0, 0, 0, 0);
 
-      gtk_print_operation_set_default_page_setup (op, page_setup);
-      _gtk_print_context_set_page_setup (priv->print_context, page_setup);
+      ctk_print_operation_set_default_page_setup (op, page_setup);
+      _ctk_print_context_set_page_setup (priv->print_context, page_setup);
 
       op_portal = g_new0 (GtkPrintOperationPortal, 1);
       priv->platform_data = op_portal;
@@ -305,13 +305,13 @@ finish_print (PortalData        *portal,
       priv->end_page = portal_end_page;
       priv->end_run = portal_end_run;
 
-      job = gtk_print_job_new (priv->job_name, printer, settings, page_setup);
+      job = ctk_print_job_new (priv->job_name, printer, settings, page_setup);
       op_portal->job = job;
 
       op_portal->proxy = g_object_ref (portal->proxy);
       op_portal->token = portal->token;
 
-      op_portal->surface = gtk_print_job_get_surface (job, &priv->error);
+      op_portal->surface = ctk_print_job_get_surface (job, &priv->error);
       if (op_portal->surface == NULL)
         {
           portal->result = GTK_PRINT_OPERATION_RESULT_ERROR;
@@ -320,19 +320,19 @@ finish_print (PortalData        *portal,
         }
 
       cr = cairo_create (op_portal->surface);
-      gtk_print_context_set_cairo_context (priv->print_context, cr, 72, 72);
+      ctk_print_context_set_cairo_context (priv->print_context, cr, 72, 72);
       cairo_destroy (cr);
 
-      priv->print_pages = gtk_print_job_get_pages (job);
-      priv->page_ranges = gtk_print_job_get_page_ranges (job, &priv->num_page_ranges);
-      priv->manual_num_copies = gtk_print_job_get_num_copies (job);
-      priv->manual_collation = gtk_print_job_get_collate (job);
-      priv->manual_reverse = gtk_print_job_get_reverse (job);
-      priv->manual_page_set = gtk_print_job_get_page_set (job);
-      priv->manual_scale = gtk_print_job_get_scale (job);
-      priv->manual_orientation = gtk_print_job_get_rotate (job);
-      priv->manual_number_up = gtk_print_job_get_n_up (job);
-      priv->manual_number_up_layout = gtk_print_job_get_n_up_layout (job);
+      priv->print_pages = ctk_print_job_get_pages (job);
+      priv->page_ranges = ctk_print_job_get_page_ranges (job, &priv->num_page_ranges);
+      priv->manual_num_copies = ctk_print_job_get_num_copies (job);
+      priv->manual_collation = ctk_print_job_get_collate (job);
+      priv->manual_reverse = ctk_print_job_get_reverse (job);
+      priv->manual_page_set = ctk_print_job_get_page_set (job);
+      priv->manual_scale = ctk_print_job_get_scale (job);
+      priv->manual_orientation = ctk_print_job_get_rotate (job);
+      priv->manual_number_up = ctk_print_job_get_n_up (job);
+      priv->manual_number_up_layout = ctk_print_job_get_n_up_layout (job);
     }
 
 out:
@@ -351,13 +351,13 @@ find_file_printer (void)
 
   printer = NULL;
 
-  backends = gtk_print_backend_load_modules ();
+  backends = ctk_print_backend_load_modules ();
   for (l = backends; l; l = l->next)
     {
       GtkPrintBackend *backend = l->data;
       if (strcmp (G_OBJECT_TYPE_NAME (backend), "GtkPrintBackendFile") == 0)
         {
-          printers = gtk_print_backend_get_printer_list (backend);
+          printers = ctk_print_backend_get_printer_list (backend);
           printer = printers->data;
           g_list_free (printers);
           break;
@@ -405,11 +405,11 @@ prepare_print_response (GDBusConnection *connection,
       portal->result = GTK_PRINT_OPERATION_RESULT_APPLY;
 
       v = g_variant_lookup_value (options, "settings", G_VARIANT_TYPE_VARDICT);
-      settings = gtk_print_settings_new_from_gvariant (v);
+      settings = ctk_print_settings_new_from_gvariant (v);
       g_variant_unref (v);
 
       v = g_variant_lookup_value (options, "page-setup", G_VARIANT_TYPE_VARDICT);
-      page_setup = gtk_page_setup_new_from_gvariant (v);
+      page_setup = ctk_page_setup_new_from_gvariant (v);
       g_variant_unref (v);
 
       g_variant_lookup (options, "token", "u", &portal->token);
@@ -418,7 +418,7 @@ prepare_print_response (GDBusConnection *connection,
 
       fd = g_file_open_tmp ("gtkprintXXXXXX", &filename, NULL);
       uri = g_filename_to_uri (filename, NULL, NULL);
-      gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_URI, uri);
+      ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_URI, uri);
       g_free (uri);
       close (fd);
 
@@ -566,7 +566,7 @@ call_prepare_print (GtkPrintOperation *op,
   char *token;
 
   portal->prepare_print_handle =
-      gtk_get_portal_request_path (g_dbus_proxy_get_connection (portal->proxy), &token);
+      ctk_get_portal_request_path (g_dbus_proxy_get_connection (portal->proxy), &token);
 
   portal->response_signal_id =
     g_dbus_connection_signal_subscribe (g_dbus_proxy_get_connection (G_DBUS_PROXY (portal->proxy)),
@@ -585,7 +585,7 @@ call_prepare_print (GtkPrintOperation *op,
   portal->options = g_variant_builder_end (&opt_builder);
 
   if (priv->print_settings)
-    portal->settings = gtk_print_settings_to_gvariant (priv->print_settings);
+    portal->settings = ctk_print_settings_to_gvariant (priv->print_settings);
   else
     {
       GVariantBuilder builder;
@@ -594,11 +594,11 @@ call_prepare_print (GtkPrintOperation *op,
     }
 
   if (priv->default_page_setup)
-    portal->setup = gtk_page_setup_to_gvariant (priv->default_page_setup);
+    portal->setup = ctk_page_setup_to_gvariant (priv->default_page_setup);
   else
     {
-      GtkPageSetup *page_setup = gtk_page_setup_new ();
-      portal->setup = gtk_page_setup_to_gvariant (page_setup);
+      GtkPageSetup *page_setup = ctk_page_setup_new ();
+      portal->setup = ctk_page_setup_to_gvariant (page_setup);
       g_object_unref (page_setup);
     }
 
@@ -607,8 +607,8 @@ call_prepare_print (GtkPrintOperation *op,
   g_variant_ref_sink (portal->setup);
 
   if (portal->parent != NULL &&
-      gtk_widget_is_visible (GTK_WIDGET (portal->parent)) &&
-      gtk_window_export_handle (portal->parent, window_handle_exported, portal))
+      ctk_widget_is_visible (GTK_WIDGET (portal->parent)) &&
+      ctk_window_export_handle (portal->parent, window_handle_exported, portal))
     return;
 
   g_dbus_proxy_call (portal->proxy,
@@ -627,7 +627,7 @@ call_prepare_print (GtkPrintOperation *op,
 }
 
 GtkPrintOperationResult
-gtk_print_operation_portal_run_dialog (GtkPrintOperation *op,
+ctk_print_operation_portal_run_dialog (GtkPrintOperation *op,
                                        gboolean           show_dialog,
                                        GtkWindow         *parent,
                                        gboolean          *do_print)
@@ -654,7 +654,7 @@ gtk_print_operation_portal_run_dialog (GtkPrintOperation *op,
 }
 
 void
-gtk_print_operation_portal_run_dialog_async (GtkPrintOperation          *op,
+ctk_print_operation_portal_run_dialog_async (GtkPrintOperation          *op,
                                              gboolean                    show_dialog,
                                              GtkWindow                  *parent,
                                              GtkPrintOperationPrintFunc  print_cb)
@@ -669,7 +669,7 @@ gtk_print_operation_portal_run_dialog_async (GtkPrintOperation          *op,
 }
 
 void
-gtk_print_operation_portal_launch_preview (GtkPrintOperation *op,
+ctk_print_operation_portal_launch_preview (GtkPrintOperation *op,
                                            cairo_surface_t   *surface,
                                            GtkWindow         *parent,
                                            const char        *filename)
@@ -677,6 +677,6 @@ gtk_print_operation_portal_launch_preview (GtkPrintOperation *op,
   char *uri;
 
   uri = g_filename_to_uri (filename, NULL, NULL);
-  gtk_show_uri_on_window (parent, uri, GDK_CURRENT_TIME, NULL);
+  ctk_show_uri_on_window (parent, uri, GDK_CURRENT_TIME, NULL);
   g_free (uri);
 }

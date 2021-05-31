@@ -30,7 +30,7 @@ typedef struct _GtkPrinterCloudprintClass GtkPrinterCloudprintClass;
 #define GTK_IS_PRINTER_CLOUDPRINT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINTER_CLOUDPRINT))
 #define GTK_PRINTER_CLOUDPRINT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINTER_CLOUDPRINT, GtkPrinterCloudprintClass))
 
-static GtkPrinterClass *gtk_printer_cloudprint_parent_class;
+static GtkPrinterClass *ctk_printer_cloudprint_parent_class;
 static GType printer_cloudprint_type = 0;
 
 struct _GtkPrinterCloudprintClass
@@ -52,32 +52,32 @@ enum {
   PROP_PRINTER_ID
 };
 
-static void gtk_printer_cloudprint_class_init	(GtkPrinterCloudprintClass *class);
-static void gtk_printer_cloudprint_init		(GtkPrinterCloudprint *impl);
-static void gtk_printer_cloudprint_finalize	(GObject *object);
-static void gtk_printer_cloudprint_set_property	(GObject *object,
+static void ctk_printer_cloudprint_class_init	(GtkPrinterCloudprintClass *class);
+static void ctk_printer_cloudprint_init		(GtkPrinterCloudprint *impl);
+static void ctk_printer_cloudprint_finalize	(GObject *object);
+static void ctk_printer_cloudprint_set_property	(GObject *object,
 						 guint prop_id,
 						 const GValue *value,
 						 GParamSpec *pspec);
-static void gtk_printer_cloudprint_get_property	(GObject *object,
+static void ctk_printer_cloudprint_get_property	(GObject *object,
 						 guint prop_id,
 						 GValue *value,
 						 GParamSpec *pspec);
 
 void
-gtk_printer_cloudprint_register_type (GTypeModule *module)
+ctk_printer_cloudprint_register_type (GTypeModule *module)
 {
   const GTypeInfo printer_cloudprint_info =
   {
     sizeof (GtkPrinterCloudprintClass),
     NULL,		/* base_init */
     NULL,		/* base_finalize */
-    (GClassInitFunc) gtk_printer_cloudprint_class_init,
+    (GClassInitFunc) ctk_printer_cloudprint_class_init,
     NULL,		/* class_finalize */
     NULL,		/* class_data */
     sizeof (GtkPrinterCloudprint),
     0,		/* n_preallocs */
-    (GInstanceInitFunc) gtk_printer_cloudprint_init,
+    (GInstanceInitFunc) ctk_printer_cloudprint_init,
   };
 
   printer_cloudprint_type = g_type_module_register_type (module,
@@ -90,13 +90,13 @@ gtk_printer_cloudprint_register_type (GTypeModule *module)
  * GtkPrinterCloudprint
  */
 GType
-gtk_printer_cloudprint_get_type (void)
+ctk_printer_cloudprint_get_type (void)
 {
   return printer_cloudprint_type;
 }
 
 /**
- * gtk_printer_cloudprint_new:
+ * ctk_printer_cloudprint_new:
  *
  * Creates a new #GtkPrinterCloudprint object. #GtkPrinterCloudprint
  * implements the #GtkPrinter interface and stores a reference to the
@@ -105,7 +105,7 @@ gtk_printer_cloudprint_get_type (void)
  * Returns: the new #GtkPrinterCloudprint object
  **/
 GtkPrinterCloudprint *
-gtk_printer_cloudprint_new (const char *name,
+ctk_printer_cloudprint_new (const char *name,
 			    gboolean is_virtual,
 			    GtkPrintBackend *backend,
 			    GtkCloudprintAccount *account,
@@ -122,14 +122,14 @@ gtk_printer_cloudprint_new (const char *name,
 }
 
 static void
-gtk_printer_cloudprint_class_init (GtkPrinterCloudprintClass *klass)
+ctk_printer_cloudprint_class_init (GtkPrinterCloudprintClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-  gtk_printer_cloudprint_parent_class = g_type_class_peek_parent (klass);
-  gobject_class->finalize = gtk_printer_cloudprint_finalize;
-  gobject_class->set_property = gtk_printer_cloudprint_set_property;
-  gobject_class->get_property = gtk_printer_cloudprint_get_property;
+  ctk_printer_cloudprint_parent_class = g_type_class_peek_parent (klass);
+  gobject_class->finalize = ctk_printer_cloudprint_finalize;
+  gobject_class->set_property = ctk_printer_cloudprint_set_property;
+  gobject_class->get_property = ctk_printer_cloudprint_get_property;
 
   g_object_class_install_property (G_OBJECT_CLASS (klass),
 				   PROP_CLOUDPRINT_ACCOUNT,
@@ -153,7 +153,7 @@ gtk_printer_cloudprint_class_init (GtkPrinterCloudprintClass *klass)
 }
 
 static void
-gtk_printer_cloudprint_init (GtkPrinterCloudprint *printer)
+ctk_printer_cloudprint_init (GtkPrinterCloudprint *printer)
 {
   printer->account = NULL;
   printer->id = NULL;
@@ -164,7 +164,7 @@ gtk_printer_cloudprint_init (GtkPrinterCloudprint *printer)
 }
 
 static void
-gtk_printer_cloudprint_finalize (GObject *object)
+ctk_printer_cloudprint_finalize (GObject *object)
 {
   GtkPrinterCloudprint *printer;
 
@@ -179,11 +179,11 @@ gtk_printer_cloudprint_finalize (GObject *object)
 
   g_free (printer->id);
 
-  G_OBJECT_CLASS (gtk_printer_cloudprint_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_printer_cloudprint_parent_class)->finalize (object);
 }
 
 static void
-gtk_printer_cloudprint_set_property (GObject *object,
+ctk_printer_cloudprint_set_property (GObject *object,
 				     guint prop_id,
 				     const GValue *value,
 				     GParamSpec *pspec)
@@ -207,7 +207,7 @@ gtk_printer_cloudprint_set_property (GObject *object,
 }
 
 static void
-gtk_printer_cloudprint_get_property (GObject *object,
+ctk_printer_cloudprint_get_property (GObject *object,
 				     guint prop_id,
 				     GValue *value,
 				     GParamSpec *pspec)

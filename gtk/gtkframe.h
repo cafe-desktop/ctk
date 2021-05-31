@@ -36,7 +36,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_FRAME                  (gtk_frame_get_type ())
+#define GTK_TYPE_FRAME                  (ctk_frame_get_type ())
 #define GTK_FRAME(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FRAME, GtkFrame))
 #define GTK_FRAME_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FRAME, GtkFrameClass))
 #define GTK_IS_FRAME(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FRAME))
@@ -72,42 +72,42 @@ struct _GtkFrameClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_frame_get_type         (void) G_GNUC_CONST;
+GType      ctk_frame_get_type         (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_frame_new              (const gchar   *label);
+GtkWidget* ctk_frame_new              (const gchar   *label);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_frame_set_label (GtkFrame    *frame,
+void          ctk_frame_set_label (GtkFrame    *frame,
                                    const gchar *label);
 GDK_AVAILABLE_IN_ALL
-const gchar * gtk_frame_get_label (GtkFrame    *frame);
+const gchar * ctk_frame_get_label (GtkFrame    *frame);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_frame_set_label_widget (GtkFrame      *frame,
+void       ctk_frame_set_label_widget (GtkFrame      *frame,
 				       GtkWidget     *label_widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_frame_get_label_widget (GtkFrame      *frame);
+GtkWidget *ctk_frame_get_label_widget (GtkFrame      *frame);
 GDK_AVAILABLE_IN_ALL
-void       gtk_frame_set_label_align  (GtkFrame      *frame,
+void       ctk_frame_set_label_align  (GtkFrame      *frame,
 				       gfloat         xalign,
 				       gfloat         yalign);
 GDK_AVAILABLE_IN_ALL
-void       gtk_frame_get_label_align  (GtkFrame      *frame,
+void       ctk_frame_get_label_align  (GtkFrame      *frame,
 				       gfloat        *xalign,
 				       gfloat        *yalign);
 GDK_AVAILABLE_IN_ALL
-void       gtk_frame_set_shadow_type  (GtkFrame      *frame,
+void       ctk_frame_set_shadow_type  (GtkFrame      *frame,
 				       GtkShadowType  type);
 GDK_AVAILABLE_IN_ALL
-GtkShadowType gtk_frame_get_shadow_type (GtkFrame    *frame);
+GtkShadowType ctk_frame_get_shadow_type (GtkFrame    *frame);
 
 
 G_END_DECLS

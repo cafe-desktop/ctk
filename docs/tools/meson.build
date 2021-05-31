@@ -8,5 +8,5 @@ if x11_enabled
 
   doc_shooter = executable('doc-shooter', doc_shooter_sources,
                            include_directories: [ confinc, gdkinc, gtkinc, testinc, ],
-                           dependencies: libgtk_dep)
+                           dependencies: libctk_dep)
 endif

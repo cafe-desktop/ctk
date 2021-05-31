@@ -38,7 +38,7 @@ G_BEGIN_DECLS
 typedef struct _GtkRcContext    GtkRcContext;
 typedef struct _GtkRcStyleClass GtkRcStyleClass;
 
-#define GTK_TYPE_RC_STYLE              (gtk_rc_style_get_type ())
+#define GTK_TYPE_RC_STYLE              (ctk_rc_style_get_type ())
 #define GTK_RC_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_RC_STYLE, GtkRcStyle))
 #define GTK_RC_STYLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RC_STYLE, GtkRcStyleClass))
 #define GTK_IS_RC_STYLE(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_RC_STYLE))
@@ -152,68 +152,68 @@ struct _GtkRcStyleClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
-GSList*   _gtk_rc_parse_widget_class_path (const gchar *pattern);
-void      _gtk_rc_free_widget_class_path (GSList       *list);
-gboolean  _gtk_rc_match_widget_class     (GSList       *list,
+GSList*   _ctk_rc_parse_widget_class_path (const gchar *pattern);
+void      _ctk_rc_free_widget_class_path (GSList       *list);
+gboolean  _ctk_rc_match_widget_class     (GSList       *list,
                                           gint          length,
                                           gchar        *path,
                                           gchar        *path_reversed);
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void      gtk_rc_add_default_file       (const gchar *filename);
+void      ctk_rc_add_default_file       (const gchar *filename);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void      gtk_rc_set_default_files      (gchar **filenames);
+void      ctk_rc_set_default_files      (gchar **filenames);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gchar**   gtk_rc_get_default_files      (void);
+gchar**   ctk_rc_get_default_files      (void);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkStyle* gtk_rc_get_style              (GtkWidget   *widget);
+GtkStyle* ctk_rc_get_style              (GtkWidget   *widget);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkStyle* gtk_rc_get_style_by_paths     (GtkSettings *settings,
+GtkStyle* ctk_rc_get_style_by_paths     (GtkSettings *settings,
                                          const char  *widget_path,
                                          const char  *class_path,
                                          GType        type);
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gboolean gtk_rc_reparse_all_for_settings (GtkSettings *settings,
+gboolean ctk_rc_reparse_all_for_settings (GtkSettings *settings,
                                           gboolean     force_load);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void     gtk_rc_reset_styles             (GtkSettings *settings);
+void     ctk_rc_reset_styles             (GtkSettings *settings);
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gchar*   gtk_rc_find_pixmap_in_path (GtkSettings  *settings,
+gchar*   ctk_rc_find_pixmap_in_path (GtkSettings  *settings,
                                      GScanner     *scanner,
                                      const gchar  *pixmap_file);
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void     gtk_rc_parse                   (const gchar *filename);
+void     ctk_rc_parse                   (const gchar *filename);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-void      gtk_rc_parse_string           (const gchar *rc_string);
+void      ctk_rc_parse_string           (const gchar *rc_string);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gboolean  gtk_rc_reparse_all            (void);
+gboolean  ctk_rc_reparse_all            (void);
 
 GDK_DEPRECATED_IN_3_0
-GType       gtk_rc_style_get_type   (void) G_GNUC_CONST;
+GType       ctk_rc_style_get_type   (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkRcStyle* gtk_rc_style_new        (void);
+GtkRcStyle* ctk_rc_style_new        (void);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GtkRcStyle* gtk_rc_style_copy       (GtkRcStyle *orig);
+GtkRcStyle* ctk_rc_style_copy       (GtkRcStyle *orig);
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gchar*      gtk_rc_find_module_in_path (const gchar *module_file);
+gchar*      ctk_rc_find_module_in_path (const gchar *module_file);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gchar*      gtk_rc_get_theme_dir       (void);
+gchar*      ctk_rc_get_theme_dir       (void);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gchar*      gtk_rc_get_module_dir      (void);
+gchar*      ctk_rc_get_module_dir      (void);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gchar*      gtk_rc_get_im_module_path  (void);
+gchar*      ctk_rc_get_im_module_path  (void);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-gchar*      gtk_rc_get_im_module_file  (void);
+gchar*      ctk_rc_get_im_module_file  (void);
 
 /* private functions/definitions */
 
@@ -321,7 +321,7 @@ typedef enum {
  * @GTK_PATH_PRIO_HIGHEST: Deprecated
  *
  * Priorities for path lookups.
- * See also gtk_binding_set_add_path().
+ * See also ctk_binding_set_add_path().
  *
  * Deprecated: 3.0
  */
@@ -343,7 +343,7 @@ typedef enum
  * @GTK_PATH_CLASS: Deprecated
  *
  * Widget path types.
- * See also gtk_binding_set_add_path().
+ * See also ctk_binding_set_add_path().
  *
  * Deprecated: 3.0
  */
@@ -355,19 +355,19 @@ typedef enum
 } GtkPathType;
 
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-GScanner* gtk_rc_scanner_new    (void);
+GScanner* ctk_rc_scanner_new    (void);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-guint     gtk_rc_parse_color    (GScanner            *scanner,
+guint     ctk_rc_parse_color    (GScanner            *scanner,
                                  GdkColor            *color);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-guint     gtk_rc_parse_color_full (GScanner          *scanner,
+guint     ctk_rc_parse_color_full (GScanner          *scanner,
                                    GtkRcStyle        *style,
                                    GdkColor          *color);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-guint     gtk_rc_parse_state    (GScanner            *scanner,
+guint     ctk_rc_parse_state    (GScanner            *scanner,
                                  GtkStateType        *state);
 GDK_DEPRECATED_IN_3_0_FOR(GtkStyleContext)
-guint     gtk_rc_parse_priority (GScanner            *scanner,
+guint     ctk_rc_parse_priority (GScanner            *scanner,
                                  GtkPathPriorityType *priority);
 
 /* rc properties
@@ -395,7 +395,7 @@ struct _GtkRcProperty
 };
 
 GDK_DEPRECATED_IN_3_0
-void      gtk_binding_set_add_path (GtkBindingSet       *binding_set,
+void      ctk_binding_set_add_path (GtkBindingSet       *binding_set,
                                     GtkPathType          path_type,
                                     const gchar         *path_pattern,
                                     GtkPathPriorityType  priority);

@@ -23,28 +23,28 @@
 G_BEGIN_DECLS
 
 
-void            _gtk_text_buffer_spew                  (GtkTextBuffer      *buffer);
+void            _ctk_text_buffer_spew                  (GtkTextBuffer      *buffer);
 
-GtkTextBTree*   _gtk_text_buffer_get_btree             (GtkTextBuffer      *buffer);
+GtkTextBTree*   _ctk_text_buffer_get_btree             (GtkTextBuffer      *buffer);
 
-const PangoLogAttr* _gtk_text_buffer_get_line_log_attrs (GtkTextBuffer     *buffer,
+const PangoLogAttr* _ctk_text_buffer_get_line_log_attrs (GtkTextBuffer     *buffer,
                                                          const GtkTextIter *anywhere_in_line,
                                                          gint              *char_len);
 
-void _gtk_text_buffer_notify_will_remove_tag (GtkTextBuffer *buffer,
+void _ctk_text_buffer_notify_will_remove_tag (GtkTextBuffer *buffer,
                                               GtkTextTag    *tag);
 
-void _gtk_text_buffer_get_text_before (GtkTextBuffer   *buffer,
+void _ctk_text_buffer_get_text_before (GtkTextBuffer   *buffer,
                                        AtkTextBoundary  boundary_type,
                                        GtkTextIter     *position,
                                        GtkTextIter     *start,
                                        GtkTextIter     *end);
-void _gtk_text_buffer_get_text_at     (GtkTextBuffer   *buffer,
+void _ctk_text_buffer_get_text_at     (GtkTextBuffer   *buffer,
                                        AtkTextBoundary  boundary_type,
                                        GtkTextIter     *position,
                                        GtkTextIter     *start,
                                        GtkTextIter     *end);
-void _gtk_text_buffer_get_text_after  (GtkTextBuffer   *buffer,
+void _ctk_text_buffer_get_text_after  (GtkTextBuffer   *buffer,
                                        AtkTextBoundary  boundary_type,
                                        GtkTextIter     *position,
                                        GtkTextIter     *start,

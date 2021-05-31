@@ -41,17 +41,17 @@ typedef struct _GtkTextMarkBody GtkTextMarkBody;
  */
 
 /* In gtktextbtree.c */
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass gtk_text_char_type;
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass gtk_text_toggle_on_type;
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass gtk_text_toggle_off_type;
+extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_char_type;
+extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_toggle_on_type;
+extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_toggle_off_type;
 
 /* In gtktextmark.c */
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass gtk_text_left_mark_type;
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass gtk_text_right_mark_type;
+extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_left_mark_type;
+extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_right_mark_type;
 
 /* In gtktextchild.c */
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass gtk_text_pixbuf_type;
-extern G_GNUC_INTERNAL const GtkTextLineSegmentClass gtk_text_child_type;
+extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_pixbuf_type;
+extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_child_type;
 
 /*
  * UTF 8 Stubs
@@ -60,11 +60,11 @@ extern G_GNUC_INTERNAL const GtkTextLineSegmentClass gtk_text_child_type;
 #define GTK_TEXT_UNKNOWN_CHAR 0xFFFC
 #define GTK_TEXT_UNKNOWN_CHAR_UTF8_LEN 3
 GDK_AVAILABLE_IN_ALL
-const gchar *gtk_text_unknown_char_utf8_gtk_tests_only (void);
-extern const gchar _gtk_text_unknown_char_utf8[GTK_TEXT_UNKNOWN_CHAR_UTF8_LEN+1];
+const gchar *ctk_text_unknown_char_utf8_ctk_tests_only (void);
+extern const gchar _ctk_text_unknown_char_utf8[GTK_TEXT_UNKNOWN_CHAR_UTF8_LEN+1];
 
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_text_byte_begins_utf8_char (const gchar *byte);
+gboolean ctk_text_byte_begins_utf8_char (const gchar *byte);
 
 G_END_DECLS
 

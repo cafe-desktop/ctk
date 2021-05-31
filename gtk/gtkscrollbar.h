@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SCROLLBAR            (gtk_scrollbar_get_type ())
+#define GTK_TYPE_SCROLLBAR            (ctk_scrollbar_get_type ())
 #define GTK_SCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SCROLLBAR, GtkScrollbar))
 #define GTK_SCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SCROLLBAR, GtkScrollbarClass))
 #define GTK_IS_SCROLLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SCROLLBAR))
@@ -56,17 +56,17 @@ struct _GtkScrollbarClass
   GtkRangeClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType       gtk_scrollbar_get_type (void) G_GNUC_CONST;
+GType       ctk_scrollbar_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget * gtk_scrollbar_new      (GtkOrientation  orientation,
+GtkWidget * ctk_scrollbar_new      (GtkOrientation  orientation,
                                     GtkAdjustment  *adjustment);
 
 G_END_DECLS

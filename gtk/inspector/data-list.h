@@ -20,7 +20,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_DATA_LIST            (gtk_inspector_data_list_get_type())
+#define GTK_TYPE_INSPECTOR_DATA_LIST            (ctk_inspector_data_list_get_type())
 #define GTK_INSPECTOR_DATA_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_DATA_LIST, GtkInspectorDataList))
 #define GTK_INSPECTOR_DATA_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_DATA_LIST, GtkInspectorDataListClass))
 #define GTK_INSPECTOR_IS_DATA_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_DATA_LIST))
@@ -43,8 +43,8 @@ typedef struct _GtkInspectorDataListClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_data_list_get_type   (void);
-void       gtk_inspector_data_list_set_object (GtkInspectorDataList *sl,
+GType      ctk_inspector_data_list_get_type   (void);
+void       ctk_inspector_data_list_set_object (GtkInspectorDataList *sl,
                                                GObject              *object);
 
 G_END_DECLS

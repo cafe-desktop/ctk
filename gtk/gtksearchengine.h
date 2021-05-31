@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_ENGINE		(_gtk_search_engine_get_type ())
+#define GTK_TYPE_SEARCH_ENGINE		(_ctk_search_engine_get_type ())
 #define GTK_SEARCH_ENGINE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEARCH_ENGINE, GtkSearchEngine))
 #define GTK_SEARCH_ENGINE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEARCH_ENGINE, GtkSearchEngineClass))
 #define GTK_IS_SEARCH_ENGINE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEARCH_ENGINE))
@@ -73,29 +73,29 @@ struct _GtkSearchEngineClass
 			       const gchar     *error_message);
 };
 
-GType            _gtk_search_engine_get_type        (void);
+GType            _ctk_search_engine_get_type        (void);
 
-GtkSearchEngine* _gtk_search_engine_new             (void);
+GtkSearchEngine* _ctk_search_engine_new             (void);
 
-void             _gtk_search_engine_set_query       (GtkSearchEngine *engine, 
+void             _ctk_search_engine_set_query       (GtkSearchEngine *engine, 
                                                      GtkQuery        *query);
-void	         _gtk_search_engine_start           (GtkSearchEngine *engine);
-void	         _gtk_search_engine_stop            (GtkSearchEngine *engine);
+void	         _ctk_search_engine_start           (GtkSearchEngine *engine);
+void	         _ctk_search_engine_stop            (GtkSearchEngine *engine);
 
-void	         _gtk_search_engine_hits_added      (GtkSearchEngine *engine, 
+void	         _ctk_search_engine_hits_added      (GtkSearchEngine *engine, 
 						     GList           *hits);
-void             _gtk_search_engine_finished        (GtkSearchEngine *engine,
+void             _ctk_search_engine_finished        (GtkSearchEngine *engine,
                                                      gboolean         got_results);
-void	         _gtk_search_engine_error           (GtkSearchEngine *engine, 
+void	         _ctk_search_engine_error           (GtkSearchEngine *engine, 
 						     const gchar     *error_message);
-void             _gtk_search_engine_set_recursive   (GtkSearchEngine *engine,
+void             _ctk_search_engine_set_recursive   (GtkSearchEngine *engine,
                                                      gboolean         recursive);
-gboolean         _gtk_search_engine_get_recursive   (GtkSearchEngine *engine);
+gboolean         _ctk_search_engine_get_recursive   (GtkSearchEngine *engine);
 
-void             _gtk_search_hit_free (GtkSearchHit *hit);
-GtkSearchHit    *_gtk_search_hit_dup (GtkSearchHit *hit);
+void             _ctk_search_hit_free (GtkSearchHit *hit);
+GtkSearchHit    *_ctk_search_hit_dup (GtkSearchHit *hit);
 
-void             _gtk_search_engine_set_model       (GtkSearchEngine    *engine,
+void             _ctk_search_engine_set_model       (GtkSearchEngine    *engine,
                                                      GtkFileSystemModel *model);
 
 G_END_DECLS

@@ -54,7 +54,7 @@
       simple:
     </para>
       <informalexample><programlisting><![CDATA[
-GtkListStore *store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
+GtkListStore *store = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
 ]]></programlisting></informalexample>
     <para>
       This creates a list store with two columns: a string column and a boolean
@@ -73,28 +73,28 @@ enum
    N_COLUMNS
 };
 
-GtkTreeStore *store = gtk_tree_store_new (N_COLUMNS,       /* Total number of columns */
+GtkTreeStore *store = ctk_tree_store_new (N_COLUMNS,       /* Total number of columns */
                                           G_TYPE_STRING,   /* Book title              */
                                           G_TYPE_STRING,   /* Author                  */
                                           G_TYPE_BOOLEAN); /* Is checked out?         */
 ]]></programlisting></informalexample>
     <para>
-      Adding data to the model is done using gtk_tree_store_set() or 
-      gtk_list_store_set(), depending upon which sort of model was
+      Adding data to the model is done using ctk_tree_store_set() or 
+      ctk_list_store_set(), depending upon which sort of model was
       created.  To do this, a #GtkTreeIter must be acquired.  The iterator 
       points to the location where data will be added.
     </para>
     <para>
-      Once an iterator has been acquired, gtk_tree_store_set() is used to
+      Once an iterator has been acquired, ctk_tree_store_set() is used to
       apply data to the part of the model that the iterator points to.  
       Consider the following example:
     </para>
     <informalexample><programlisting><![CDATA[
 GtkTreeIter   iter;
 
-gtk_tree_store_append (store, &iter, NULL);  /* Acquire an iterator */
+ctk_tree_store_append (store, &iter, NULL);  /* Acquire an iterator */
 
-gtk_tree_store_set (store, &iter,
+ctk_tree_store_set (store, &iter,
                     TITLE_COLUMN, "The Principle of Reason",
                     AUTHOR_COLUMN, "Martin Heidegger",
                     CHECKED_COLUMN, FALSE,
@@ -108,7 +108,7 @@ gtk_tree_store_set (store, &iter,
     columns in a given row.
   </para>
   <para>
-    The third argument to gtk_tree_store_append() is the parent iterator.  It
+    The third argument to ctk_tree_store_append() is the parent iterator.  It
     is used to add a row to a GtkTreeStore as a child of an existing row.  This
     means that the new row will only be visible when its parent is visible and
     in its expanded state.  Consider the following example:
@@ -117,25 +117,25 @@ gtk_tree_store_set (store, &iter,
 GtkTreeIter iter1;  /* Parent iter */
 GtkTreeIter iter2;  /* Child iter  */
 
-gtk_tree_store_append (store, &iter1, NULL);  /* Acquire a top-level iterator */
-gtk_tree_store_set (store, &iter1,
+ctk_tree_store_append (store, &iter1, NULL);  /* Acquire a top-level iterator */
+ctk_tree_store_set (store, &iter1,
                     TITLE_COLUMN, "The Art of Computer Programming",
                     AUTHOR_COLUMN, "Donald E. Knuth",
                     CHECKED_COLUMN, FALSE,
                     -1);
 
-gtk_tree_store_append (store, &iter2, &iter1);  /* Acquire a child iterator */
-gtk_tree_store_set (store, &iter2,
+ctk_tree_store_append (store, &iter2, &iter1);  /* Acquire a child iterator */
+ctk_tree_store_set (store, &iter2,
                     TITLE_COLUMN, "Volume 1: Fundamental Algorithms",
                     -1);
 
-gtk_tree_store_append (store, &iter2, &iter1);
-gtk_tree_store_set (store, &iter2,
+ctk_tree_store_append (store, &iter2, &iter1);
+ctk_tree_store_set (store, &iter2,
                     TITLE_COLUMN, "Volume 2: Seminumerical Algorithms",
                     -1);
 
-gtk_tree_store_append (store, &iter2, &iter1);
-gtk_tree_store_set (store, &iter2,
+ctk_tree_store_append (store, &iter2, &iter1);
+ctk_tree_store_set (store, &iter2,
                     TITLE_COLUMN, "Volume 3: Sorting and Searching",
                     -1);
 ]]></programlisting></informalexample>
@@ -153,7 +153,7 @@ gtk_tree_store_set (store, &iter2,
     <informalexample><programlisting><![CDATA[
 GtkWidget *tree;
 
-tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+tree = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
 ]]></programlisting></informalexample>
 
     <refsect2>
@@ -179,12 +179,12 @@ tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
 GtkCellRenderer *renderer;
 GtkTreeViewColumn *column;
 
-renderer = gtk_cell_renderer_text_new (<!-- -->);
-column = gtk_tree_view_column_new_with_attributes ("Author",
+renderer = ctk_cell_renderer_text_new (<!-- -->);
+column = ctk_tree_view_column_new_with_attributes ("Author",
                                                    renderer,
                                                    "text", AUTHOR_COLUMN,
                                                    NULL);
-gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+ctk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
 </programlisting></informalexample>
       <para>
        At this point, all the steps in creating a displayable tree have been
@@ -208,8 +208,8 @@ static void tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 /* Setup the selection handler */
 GtkTreeSelection *select;
 
-select = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
-gtk_tree_selection_set_mode (select, GTK_SELECTION_SINGLE);
+select = ctk_tree_view_get_selection (GTK_TREE_VIEW (tree));
+ctk_tree_selection_set_mode (select, GTK_SELECTION_SINGLE);
 g_signal_connect (G_OBJECT (select), "changed",
                   G_CALLBACK (tree_selection_changed_cb),
                   NULL);
@@ -225,9 +225,9 @@ tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data)
         GtkTreeModel *model;
         gchar *author;
 
-        if (gtk_tree_selection_get_selected (selection, &model, &iter))
+        if (ctk_tree_selection_get_selected (selection, &model, &iter))
         {
-                gtk_tree_model_get (model, &iter, AUTHOR_COLUMN, &author, -1);
+                ctk_tree_model_get (model, &iter, AUTHOR_COLUMN, &author, -1);
 
                 g_print ("You selected a book by %s\n", author);
 
@@ -265,7 +265,7 @@ setup_tree (void)
 
    /* Create a model.  We are using the store model for now, though we
     * could use any other GtkTreeModel */
-   store = gtk_tree_store_new (N_COLUMNS,
+   store = ctk_tree_store_new (N_COLUMNS,
                                G_TYPE_STRING,
                                G_TYPE_STRING,
                                G_TYPE_BOOLEAN);
@@ -274,7 +274,7 @@ setup_tree (void)
    populate_tree_model (store);
 
    /* Create a view */
-   tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+   tree = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
 
    /* The view now holds a reference.  We can get rid of our own
     * reference */
@@ -282,35 +282,35 @@ setup_tree (void)
 
    /* Create a cell render and arbitrarily make it red for demonstration
     * purposes */
-   renderer = gtk_cell_renderer_text_new (<!-- -->);
+   renderer = ctk_cell_renderer_text_new (<!-- -->);
    g_object_set (G_OBJECT (renderer),
                  "foreground", "red",
                  NULL);
 
    /* Create a column, associating the "text" attribute of the
     * cell_renderer to the first column of the model */
-   column = gtk_tree_view_column_new_with_attributes ("Author", renderer,
+   column = ctk_tree_view_column_new_with_attributes ("Author", renderer,
                                                       "text", AUTHOR_COLUMN,
                                                       NULL);
 
    /* Add the column to the view. */
-   gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+   ctk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
 
    /* Second column.. title of the book. */
-   renderer = gtk_cell_renderer_text_new (<!-- -->);
-   column = gtk_tree_view_column_new_with_attributes ("Title",
+   renderer = ctk_cell_renderer_text_new (<!-- -->);
+   column = ctk_tree_view_column_new_with_attributes ("Title",
                                                       renderer,
                                                       "text", TITLE_COLUMN,
                                                       NULL);
-   gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+   ctk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
 
    /* Last column.. whether a book is checked out. */
-   renderer = gtk_cell_renderer_toggle_new (<!-- -->);
-   column = gtk_tree_view_column_new_with_attributes ("Checked out",
+   renderer = ctk_cell_renderer_toggle_new (<!-- -->);
+   column = ctk_tree_view_column_new_with_attributes ("Checked out",
                                                       renderer,
                                                       "active", CHECKED_COLUMN,
                                                       NULL);
-   gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+   ctk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
 
    /* Now we can manipulate the view just like any other GTK widget */
    ...

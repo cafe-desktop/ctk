@@ -58,7 +58,7 @@ tree_view->priv->width  = the width the widget wants to be, including headers.
 tree_view->priv->height = the height the widget requests.  It's the sum
 			  of the width of all visible columns.
 
-Both of these are calculated in _gtk_tree_view_update_size
+Both of these are calculated in _ctk_tree_view_update_size
 
 --
 
@@ -89,14 +89,14 @@ draw the tree.  There are also two other related members:
 tree_view->priv->top_row
 tree_view->priv->top_row_dy
 
-In general _gtk_rbtree_node_find_offset (tree_view->priv->top_row) +
+In general _ctk_rbtree_node_find_offset (tree_view->priv->top_row) +
 tree_view->priv->top_row_dy is the same as tree_view->priv->dy.
 We have the alternate method so we can update dy when the tree changes.
 There are two functions:
 
-gtk_tree_view_dy_to_top_row
+ctk_tree_view_dy_to_top_row
    and
-gtk_tree_view_top_row_to_dy
+ctk_tree_view_top_row_to_dy
 
 They are called when the tree's confirmation changes, in order to sync
 the value appropriately.  Note that these two functions sometimes call

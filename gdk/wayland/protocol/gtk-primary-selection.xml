@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<protocol name="gtk_primary_selection">
+<protocol name="ctk_primary_selection">
   <copyright>
     Copyright © 2015, 2016 Red Hat
 
@@ -67,7 +67,7 @@
     writes, merely cancelling the ongoing transfer if any happened.
   </description>
 
-  <interface name="gtk_primary_selection_device_manager" version="1">
+  <interface name="ctk_primary_selection_device_manager" version="1">
     <description summary="X primary selection emulation">
       The primary selection device manager is a singleton global object that
       provides access to the primary selection. It allows to create
@@ -79,14 +79,14 @@
       <description summary="create a new primary selection source">
 	Create a new primary selection source.
       </description>
-      <arg name="id" type="new_id" interface="gtk_primary_selection_source"/>
+      <arg name="id" type="new_id" interface="ctk_primary_selection_source"/>
     </request>
 
     <request name="get_device">
       <description summary="create a new primary selection device">
         Create a new data device for a given seat.
       </description>
-      <arg name="id" type="new_id" interface="gtk_primary_selection_device"/>
+      <arg name="id" type="new_id" interface="ctk_primary_selection_device"/>
       <arg name="seat" type="object" interface="wl_seat"/>
     </request>
 
@@ -97,7 +97,7 @@
     </request>
   </interface>
 
-  <interface name="gtk_primary_selection_device" version="1">
+  <interface name="ctk_primary_selection_device" version="1">
     <request name="set_selection">
       <description summary="set the primary selection">
 	Replaces the current selection. The previous owner of the primary selection
@@ -105,7 +105,7 @@
 
 	To unset the selection, set the source to NULL.
       </description>
-      <arg name="source" type="object" interface="gtk_primary_selection_source" allow-null="true"/>
+      <arg name="source" type="object" interface="ctk_primary_selection_source" allow-null="true"/>
       <arg name="serial" type="uint" summary="serial of the event that triggered this request"/>
     </request>
 
@@ -117,7 +117,7 @@
 	wp_primary_selection_offer.offer events to describe the offered mime
 	types.
       </description>
-      <arg name="offer" type="new_id" interface="gtk_primary_selection_offer"/>
+      <arg name="offer" type="new_id" interface="ctk_primary_selection_offer"/>
     </event>
 
     <event name="selection">
@@ -132,7 +132,7 @@
 	or until the client loses keyboard focus. The client must destroy the
 	previous selection data_offer, if any, upon receiving this event.
       </description>
-      <arg name="id" type="object" interface="gtk_primary_selection_offer" allow-null="true"/>
+      <arg name="id" type="object" interface="ctk_primary_selection_offer" allow-null="true"/>
     </event>
 
     <request name="destroy" type="destructor">
@@ -142,7 +142,7 @@
     </request>
   </interface>
 
-  <interface name="gtk_primary_selection_offer" version="1">
+  <interface name="ctk_primary_selection_offer" version="1">
     <description summary="offer to transfer primary selection contents">
       A wp_primary_selection_offer represents an offer to transfer the contents
       of the primary selection clipboard to the client. Similar to
@@ -184,7 +184,7 @@
     </event>
   </interface>
 
-  <interface name="gtk_primary_selection_source" version="1">
+  <interface name="ctk_primary_selection_source" version="1">
     <description summary="offer to replace the contents of the primary selection">
       The source side of a wp_primary_selection_offer, it provides a way to
       describe the offered data and respond to requests to transfer the

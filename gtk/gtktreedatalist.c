@@ -25,7 +25,7 @@
 /* node allocation
  */
 GtkTreeDataList *
-_gtk_tree_data_list_alloc (void)
+_ctk_tree_data_list_alloc (void)
 {
   GtkTreeDataList *list;
 
@@ -35,7 +35,7 @@ _gtk_tree_data_list_alloc (void)
 }
 
 void
-_gtk_tree_data_list_free (GtkTreeDataList *list,
+_ctk_tree_data_list_free (GtkTreeDataList *list,
 			  GType           *column_headers)
 {
   GtkTreeDataList *tmp, *next;
@@ -62,7 +62,7 @@ _gtk_tree_data_list_free (GtkTreeDataList *list,
 }
 
 gboolean
-_gtk_tree_data_list_check_type (GType type)
+_ctk_tree_data_list_check_type (GType type)
 {
   gint i = 0;
   static const GType type_list[] =
@@ -117,7 +117,7 @@ get_fundamental_type (GType type)
   return result;
 }
 void
-_gtk_tree_data_list_node_to_value (GtkTreeDataList *list,
+_ctk_tree_data_list_node_to_value (GtkTreeDataList *list,
 				   GType            type,
 				   GValue          *value)
 {
@@ -186,7 +186,7 @@ _gtk_tree_data_list_node_to_value (GtkTreeDataList *list,
 }
 
 void
-_gtk_tree_data_list_value_to_node (GtkTreeDataList *list,
+_ctk_tree_data_list_value_to_node (GtkTreeDataList *list,
 				   GValue          *value)
 {
   switch (get_fundamental_type (G_VALUE_TYPE (value)))
@@ -259,14 +259,14 @@ _gtk_tree_data_list_value_to_node (GtkTreeDataList *list,
 }
 
 GtkTreeDataList *
-_gtk_tree_data_list_node_copy (GtkTreeDataList *list,
+_ctk_tree_data_list_node_copy (GtkTreeDataList *list,
                                GType            type)
 {
   GtkTreeDataList *new_list;
 
   g_return_val_if_fail (list != NULL, NULL);
   
-  new_list = _gtk_tree_data_list_alloc ();
+  new_list = _ctk_tree_data_list_alloc ();
   new_list->next = NULL;
 
   switch (get_fundamental_type (type))
@@ -317,20 +317,20 @@ _gtk_tree_data_list_node_copy (GtkTreeDataList *list,
 }
 
 gint
-_gtk_tree_data_list_compare_func (GtkTreeModel *model,
+_ctk_tree_data_list_compare_func (GtkTreeModel *model,
 				  GtkTreeIter  *a,
 				  GtkTreeIter  *b,
 				  gpointer      user_data)
 {
   gint column = GPOINTER_TO_INT (user_data);
-  GType type = gtk_tree_model_get_column_type (model, column);
+  GType type = ctk_tree_model_get_column_type (model, column);
   GValue a_value = G_VALUE_INIT;
   GValue b_value = G_VALUE_INIT;
   gint retval;
   const gchar *stra, *strb;
 
-  gtk_tree_model_get_value (model, a, column, &a_value);
-  gtk_tree_model_get_value (model, b, column, &b_value);
+  ctk_tree_model_get_value (model, a, column, &a_value);
+  ctk_tree_model_get_value (model, b, column, &b_value);
 
   switch (get_fundamental_type (type))
     {
@@ -465,7 +465,7 @@ _gtk_tree_data_list_compare_func (GtkTreeModel *model,
 
 
 GList *
-_gtk_tree_data_list_header_new (gint   n_columns,
+_ctk_tree_data_list_header_new (gint   n_columns,
 				GType *types)
 {
   GList *retval = NULL;
@@ -480,7 +480,7 @@ _gtk_tree_data_list_header_new (gint   n_columns,
 
       retval = g_list_prepend (retval, header);
       header->sort_column_id = i;
-      header->func = _gtk_tree_data_list_compare_func;
+      header->func = _ctk_tree_data_list_compare_func;
       header->destroy = NULL;
       header->data = GINT_TO_POINTER (i);
     }
@@ -488,7 +488,7 @@ _gtk_tree_data_list_header_new (gint   n_columns,
 }
 
 void
-_gtk_tree_data_list_header_free (GList *list)
+_ctk_tree_data_list_header_free (GList *list)
 {
   GList *tmp;
 
@@ -510,7 +510,7 @@ _gtk_tree_data_list_header_free (GList *list)
 }
 
 GtkTreeDataSortHeader *
-_gtk_tree_data_list_get_header (GList   *header_list,
+_ctk_tree_data_list_get_header (GList   *header_list,
 				gint     sort_column_id)
 {
   GtkTreeDataSortHeader *header = NULL;
@@ -526,7 +526,7 @@ _gtk_tree_data_list_get_header (GList   *header_list,
 
 
 GList *
-_gtk_tree_data_list_set_header (GList                  *header_list,
+_ctk_tree_data_list_set_header (GList                  *header_list,
 				gint                    sort_column_id,
 				GtkTreeIterCompareFunc  func,
 				gpointer                data,

@@ -58,16 +58,16 @@ struct _GtkFileChooserNative
   gpointer mode_data;
 };
 
-gboolean gtk_file_chooser_native_win32_show (GtkFileChooserNative *self);
-void gtk_file_chooser_native_win32_hide (GtkFileChooserNative *self);
+gboolean ctk_file_chooser_native_win32_show (GtkFileChooserNative *self);
+void ctk_file_chooser_native_win32_hide (GtkFileChooserNative *self);
 
 #if defined GDK_WINDOWING_QUARTZ && MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
-gboolean gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self);
-void gtk_file_chooser_native_quartz_hide (GtkFileChooserNative *self);
+gboolean ctk_file_chooser_native_quartz_show (GtkFileChooserNative *self);
+void ctk_file_chooser_native_quartz_hide (GtkFileChooserNative *self);
 #endif
 
-gboolean gtk_file_chooser_native_portal_show (GtkFileChooserNative *self);
-void gtk_file_chooser_native_portal_hide (GtkFileChooserNative *self);
+gboolean ctk_file_chooser_native_portal_show (GtkFileChooserNative *self);
+void ctk_file_chooser_native_portal_hide (GtkFileChooserNative *self);
 
 G_END_DECLS
 

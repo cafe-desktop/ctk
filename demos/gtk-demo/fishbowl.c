@@ -27,7 +27,7 @@ init_icon_names (GtkIconTheme *theme)
   if (icon_names)
     return;
 
-  icon_list = gtk_icon_theme_list_icons (theme, NULL);
+  icon_list = ctk_icon_theme_list_icons (theme, NULL);
   icons = g_ptr_array_new ();
 
   for (l = icon_list; l; l = l->next)
@@ -59,7 +59,7 @@ create_icon (void)
 {
   GtkWidget *image;
 
-  image = gtk_image_new_from_icon_name (get_random_icon_name (gtk_icon_theme_get_default ()), GTK_ICON_SIZE_DND);
+  image = ctk_image_new_from_icon_name (get_random_icon_name (ctk_icon_theme_get_default ()), GTK_ICON_SIZE_DND);
 
   return image;
 }
@@ -67,15 +67,15 @@ create_icon (void)
 static GtkWidget *
 create_button (void)
 {
-  return gtk_button_new_with_label ("Button");
+  return ctk_button_new_with_label ("Button");
 }
 
 static GtkWidget *
 create_blurred_button (void)
 {
-  GtkWidget *w = gtk_button_new ();
+  GtkWidget *w = ctk_button_new ();
 
-  gtk_style_context_add_class (gtk_widget_get_style_context (w), "blurred-button");
+  ctk_style_context_add_class (ctk_widget_get_style_context (w), "blurred-button");
 
   return w;
 }
@@ -83,18 +83,18 @@ create_blurred_button (void)
 static GtkWidget *
 create_font_button (void)
 {
-  return gtk_font_button_new ();
+  return ctk_font_button_new ();
 }
 
 static GtkWidget *
 create_level_bar (void)
 {
-  GtkWidget *w = gtk_level_bar_new_for_interval (0, 100);
+  GtkWidget *w = ctk_level_bar_new_for_interval (0, 100);
 
-  gtk_level_bar_set_value (GTK_LEVEL_BAR (w), 50);
+  ctk_level_bar_set_value (GTK_LEVEL_BAR (w), 50);
 
   /* Force them to be a bit larger */
-  gtk_widget_set_size_request (w, 200, -1);
+  ctk_widget_set_size_request (w, 200, -1);
 
   return w;
 }
@@ -102,9 +102,9 @@ create_level_bar (void)
 static GtkWidget *
 create_spinner (void)
 {
-  GtkWidget *w = gtk_spinner_new ();
+  GtkWidget *w = ctk_spinner_new ();
 
-  gtk_spinner_start (GTK_SPINNER (w));
+  ctk_spinner_start (GTK_SPINNER (w));
 
   return w;
 }
@@ -112,7 +112,7 @@ create_spinner (void)
 static GtkWidget *
 create_spinbutton (void)
 {
-  GtkWidget *w = gtk_spin_button_new_with_range (0, 10, 1);
+  GtkWidget *w = ctk_spin_button_new_with_range (0, 10, 1);
 
   return w;
 }
@@ -120,10 +120,10 @@ create_spinbutton (void)
 static GtkWidget *
 create_label (void)
 {
-  GtkWidget *w = gtk_label_new ("pLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.");
+  GtkWidget *w = ctk_label_new ("pLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.");
 
-  gtk_label_set_line_wrap (GTK_LABEL (w), TRUE);
-  gtk_label_set_max_width_chars (GTK_LABEL (w), 100);
+  ctk_label_set_line_wrap (GTK_LABEL (w), TRUE);
+  ctk_label_set_max_width_chars (GTK_LABEL (w), 100);
 
   return w;
 }
@@ -132,9 +132,9 @@ create_label (void)
 static GtkWidget *
 create_gears (void)
 {
-  GtkWidget *w = gtk_gears_new ();
+  GtkWidget *w = ctk_gears_new ();
 
-  gtk_widget_set_size_request (w, 100, 100);
+  ctk_widget_set_size_request (w, 100, 100);
 
   return w;
 }
@@ -143,9 +143,9 @@ create_gears (void)
 static GtkWidget *
 create_switch (void)
 {
-  GtkWidget *w = gtk_switch_new ();
+  GtkWidget *w = ctk_switch_new ();
 
-  gtk_switch_set_state (GTK_SWITCH (w), TRUE);
+  ctk_switch_set_state (GTK_SWITCH (w), TRUE);
 
   return w;
 }
@@ -180,12 +180,12 @@ set_widget_type (GtkFishbowl *fishbowl,
 
   selected_widget_type = widget_type_index;
 
-  gtk_fishbowl_set_creation_func (fishbowl,
+  ctk_fishbowl_set_creation_func (fishbowl,
                                   widget_types[selected_widget_type].create_func);
 
-  window = gtk_widget_get_toplevel (GTK_WIDGET (fishbowl));
-  headerbar = gtk_window_get_titlebar (GTK_WINDOW (window));
-  gtk_header_bar_set_title (GTK_HEADER_BAR (headerbar),
+  window = ctk_widget_get_toplevel (GTK_WIDGET (fishbowl));
+  headerbar = ctk_window_get_titlebar (GTK_WINDOW (window));
+  ctk_header_bar_set_title (GTK_HEADER_BAR (headerbar),
                             widget_types[selected_widget_type].name);
 }
 
@@ -228,9 +228,9 @@ do_fishbowl (GtkWidget *do_widget)
 
   if (provider == NULL)
     {
-      provider = gtk_css_provider_new ();
-      gtk_css_provider_load_from_data (provider, css, -1, NULL);
-      gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+      provider = ctk_css_provider_new ();
+      ctk_css_provider_load_from_data (provider, css, -1, NULL);
+      ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                                  GTK_STYLE_PROVIDER (provider),
                                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
@@ -242,27 +242,27 @@ do_fishbowl (GtkWidget *do_widget)
 
       g_type_ensure (GTK_TYPE_FISHBOWL);
 
-      builder = gtk_builder_new_from_resource ("/fishbowl/fishbowl.ui");
-      gtk_builder_add_callback_symbols (builder,
+      builder = ctk_builder_new_from_resource ("/fishbowl/fishbowl.ui");
+      ctk_builder_add_callback_symbols (builder,
                                         "next_button_clicked_cb", G_CALLBACK (next_button_clicked_cb),
                                         "prev_button_clicked_cb", G_CALLBACK (prev_button_clicked_cb),
                                         NULL);
-      gtk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (gtk_builder_get_object (builder, "window"));
-      bowl = GTK_WIDGET (gtk_builder_get_object (builder, "bowl"));
+      ctk_builder_connect_signals (builder, NULL);
+      window = GTK_WIDGET (ctk_builder_get_object (builder, "window"));
+      bowl = GTK_WIDGET (ctk_builder_get_object (builder, "bowl"));
       set_widget_type (GTK_FISHBOWL (bowl), 0);
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      gtk_widget_realize (window);
+      ctk_widget_realize (window);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
 
   return window;

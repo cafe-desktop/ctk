@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_FONT_CHOOSER_DELEGATE_QUARK	(_gtk_font_chooser_delegate_get_quark ())
+#define GTK_FONT_CHOOSER_DELEGATE_QUARK	(_ctk_font_chooser_delegate_get_quark ())
 
 typedef enum {
   GTK_FONT_CHOOSER_PROP_FIRST           = 0x4000,
@@ -43,12 +43,12 @@ typedef enum {
   GTK_FONT_CHOOSER_PROP_LAST
 } GtkFontChooserProp;
 
-void   _gtk_font_chooser_install_properties  (GObjectClass          *klass);
-void   _gtk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface);
-void   _gtk_font_chooser_set_delegate        (GtkFontChooser      *receiver,
+void   _ctk_font_chooser_install_properties  (GObjectClass          *klass);
+void   _ctk_font_chooser_delegate_iface_init (GtkFontChooserIface *iface);
+void   _ctk_font_chooser_set_delegate        (GtkFontChooser      *receiver,
                                               GtkFontChooser      *delegate);
 
-GQuark _gtk_font_chooser_delegate_get_quark  (void) G_GNUC_CONST;
+GQuark _ctk_font_chooser_delegate_get_quark  (void) G_GNUC_CONST;
 
 G_END_DECLS
 

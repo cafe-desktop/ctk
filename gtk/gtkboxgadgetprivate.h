@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_BOX_GADGET           (gtk_box_gadget_get_type ())
+#define GTK_TYPE_BOX_GADGET           (ctk_box_gadget_get_type ())
 #define GTK_BOX_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_BOX_GADGET, GtkBoxGadget))
 #define GTK_BOX_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_BOX_GADGET, GtkBoxGadgetClass))
 #define GTK_IS_BOX_GADGET(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_BOX_GADGET))
@@ -45,55 +45,55 @@ struct _GtkBoxGadgetClass
   GtkCssGadgetClass  parent_class;
 };
 
-GType                   gtk_box_gadget_get_type                 (void) G_GNUC_CONST;
+GType                   ctk_box_gadget_get_type                 (void) G_GNUC_CONST;
 
-GtkCssGadget *          gtk_box_gadget_new                      (const char             *name,
+GtkCssGadget *          ctk_box_gadget_new                      (const char             *name,
                                                                  GtkWidget              *owner,
                                                                  GtkCssGadget           *parent,
                                                                  GtkCssGadget           *next_sibling);
-GtkCssGadget *          gtk_box_gadget_new_for_node             (GtkCssNode             *node,
+GtkCssGadget *          ctk_box_gadget_new_for_node             (GtkCssNode             *node,
                                                                  GtkWidget              *owner);
 
-void                    gtk_box_gadget_set_orientation          (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_set_orientation          (GtkBoxGadget           *gadget,
                                                                  GtkOrientation          orientation);
-void                    gtk_box_gadget_set_draw_focus           (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_set_draw_focus           (GtkBoxGadget           *gadget,
                                                                  gboolean                draw_focus);
-void                    gtk_box_gadget_set_draw_reverse         (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_set_draw_reverse         (GtkBoxGadget           *gadget,
                                                                  gboolean                draw_reverse);
-void                    gtk_box_gadget_set_allocate_reverse     (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_set_allocate_reverse     (GtkBoxGadget           *gadget,
                                                                  gboolean                allocate_reverse);
 
-void                    gtk_box_gadget_set_align_reverse        (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_set_align_reverse        (GtkBoxGadget           *gadget,
                                                                  gboolean                align_reverse);
-void                    gtk_box_gadget_insert_widget            (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_insert_widget            (GtkBoxGadget           *gadget,
                                                                  int                     pos,
                                                                  GtkWidget              *widget);
-void                    gtk_box_gadget_remove_widget            (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_remove_widget            (GtkBoxGadget           *gadget,
                                                                  GtkWidget              *widget);
-void                    gtk_box_gadget_insert_gadget            (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_insert_gadget            (GtkBoxGadget           *gadget,
                                                                  int                     pos,
                                                                  GtkCssGadget           *cssgadget,
                                                                  gboolean                expand,
                                                                  GtkAlign                align);
-void                    gtk_box_gadget_insert_gadget_before     (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_insert_gadget_before     (GtkBoxGadget           *gadget,
                                                                  GtkCssGadget           *sibling,
                                                                  GtkCssGadget           *cssgadget,
                                                                  gboolean                expand,
                                                                  GtkAlign                align);
-void                    gtk_box_gadget_insert_gadget_after      (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_insert_gadget_after      (GtkBoxGadget           *gadget,
                                                                  GtkCssGadget           *sibling,
                                                                  GtkCssGadget           *cssgadget,
                                                                  gboolean                expand,
                                                                  GtkAlign                align);
 
-void                    gtk_box_gadget_remove_gadget            (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_remove_gadget            (GtkBoxGadget           *gadget,
                                                                  GtkCssGadget           *cssgadget);
-void                    gtk_box_gadget_reverse_children         (GtkBoxGadget           *gadget);
+void                    ctk_box_gadget_reverse_children         (GtkBoxGadget           *gadget);
 
-void                    gtk_box_gadget_set_gadget_expand        (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_set_gadget_expand        (GtkBoxGadget           *gadget,
                                                                  GObject                *object,
                                                                  gboolean                expand);
-void                    gtk_box_gadget_set_gadget_align         (GtkBoxGadget           *gadget,
+void                    ctk_box_gadget_set_gadget_align         (GtkBoxGadget           *gadget,
                                                                  GObject                *object,
                                                                  GtkAlign                align);
 

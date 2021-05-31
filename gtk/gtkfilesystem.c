@@ -94,7 +94,7 @@ struct AsyncFuncData
   gpointer data;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkFileSystem, _gtk_file_system, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkFileSystem, _ctk_file_system, G_TYPE_OBJECT)
 
 
 /* GtkFileSystem methods */
@@ -113,7 +113,7 @@ volumes_changed (GVolumeMonitor *volume_monitor,
 }
 
 static void
-gtk_file_system_dispose (GObject *object)
+ctk_file_system_dispose (GObject *object)
 {
   GtkFileSystem *file_system = GTK_FILE_SYSTEM (object);
   GtkFileSystemPrivate *priv = file_system->priv;
@@ -133,15 +133,15 @@ gtk_file_system_dispose (GObject *object)
       priv->volume_monitor = NULL;
     }
 
-  G_OBJECT_CLASS (_gtk_file_system_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_file_system_parent_class)->dispose (object);
 }
 
 static void
-_gtk_file_system_class_init (GtkFileSystemClass *class)
+_ctk_file_system_class_init (GtkFileSystemClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  object_class->dispose = gtk_file_system_dispose;
+  object_class->dispose = ctk_file_system_dispose;
 
   fs_signals[VOLUMES_CHANGED] =
     g_signal_new (I_("volumes-changed"),
@@ -327,13 +327,13 @@ get_volumes_list (GtkFileSystem *file_system)
 }
 
 static void
-_gtk_file_system_init (GtkFileSystem *file_system)
+_ctk_file_system_init (GtkFileSystem *file_system)
 {
   GtkFileSystemPrivate *priv;
 
   DEBUG ("init");
 
-  file_system->priv = priv = _gtk_file_system_get_instance_private (file_system);
+  file_system->priv = priv = _ctk_file_system_get_instance_private (file_system);
 
   /* Volumes */
   priv->volume_monitor = g_volume_monitor_get ();
@@ -360,13 +360,13 @@ _gtk_file_system_init (GtkFileSystem *file_system)
 
 /* GtkFileSystem public methods */
 GtkFileSystem *
-_gtk_file_system_new (void)
+_ctk_file_system_new (void)
 {
   return g_object_new (GTK_TYPE_FILE_SYSTEM, NULL);
 }
 
 GSList *
-_gtk_file_system_list_volumes (GtkFileSystem *file_system)
+_ctk_file_system_list_volumes (GtkFileSystem *file_system)
 {
   GtkFileSystemPrivate *priv = file_system->priv;
   GSList *list;
@@ -429,7 +429,7 @@ query_info_callback (GObject      *source_object,
 }
 
 GCancellable *
-_gtk_file_system_get_info (GtkFileSystem                *file_system,
+_ctk_file_system_get_info (GtkFileSystem                *file_system,
 			   GFile                        *file,
 			   const gchar                  *attributes,
 			   GtkFileSystemGetInfoCallback  callback,
@@ -505,7 +505,7 @@ volume_mount_cb (GObject      *source_object,
 }
 
 GCancellable *
-_gtk_file_system_mount_volume (GtkFileSystem                    *file_system,
+_ctk_file_system_mount_volume (GtkFileSystem                    *file_system,
 			       GtkFileSystemVolume              *volume,
 			       GMountOperation                  *mount_operation,
 			       GtkFileSystemVolumeMountCallback  callback,
@@ -558,7 +558,7 @@ enclosing_volume_mount_cb (GObject      *source_object,
 
   async_data = (AsyncFuncData *) user_data;
   g_file_mount_enclosing_volume_finish (G_FILE (source_object), result, &error);
-  volume = _gtk_file_system_get_volume_for_file (async_data->file_system, G_FILE (source_object));
+  volume = _ctk_file_system_get_volume_for_file (async_data->file_system, G_FILE (source_object));
 
   /* Silently drop G_IO_ERROR_ALREADY_MOUNTED error for gvfs backends without visible mounts. */
   /* Better than doing query_info with additional I/O every time. */
@@ -573,11 +573,11 @@ enclosing_volume_mount_cb (GObject      *source_object,
   if (error)
     g_error_free (error);
 
-  _gtk_file_system_volume_unref (volume);
+  _ctk_file_system_volume_unref (volume);
 }
 
 GCancellable *
-_gtk_file_system_mount_enclosing_volume (GtkFileSystem                     *file_system,
+_ctk_file_system_mount_enclosing_volume (GtkFileSystem                     *file_system,
 					 GFile                             *file,
 					 GMountOperation                   *mount_operation,
 					 GtkFileSystemVolumeMountCallback   callback,
@@ -611,7 +611,7 @@ _gtk_file_system_mount_enclosing_volume (GtkFileSystem                     *file
 }
 
 GtkFileSystemVolume *
-_gtk_file_system_get_volume_for_file (GtkFileSystem *file_system,
+_ctk_file_system_get_volume_for_file (GtkFileSystem *file_system,
 				      GFile         *file)
 {
   GMount *mount;
@@ -628,7 +628,7 @@ _gtk_file_system_get_volume_for_file (GtkFileSystem *file_system,
 
 /* GtkFileSystemVolume public methods */
 gchar *
-_gtk_file_system_volume_get_display_name (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_get_display_name (GtkFileSystemVolume *volume)
 {
   DEBUG ("volume_get_display_name");
 
@@ -645,7 +645,7 @@ _gtk_file_system_volume_get_display_name (GtkFileSystemVolume *volume)
 }
 
 gboolean
-_gtk_file_system_volume_is_mounted (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_is_mounted (GtkFileSystemVolume *volume)
 {
   gboolean mounted;
 
@@ -675,7 +675,7 @@ _gtk_file_system_volume_is_mounted (GtkFileSystemVolume *volume)
 }
 
 GFile *
-_gtk_file_system_volume_get_root (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_get_root (GtkFileSystemVolume *volume)
 {
   GFile *file = NULL;
 
@@ -714,20 +714,20 @@ get_surface_from_gicon (GIcon      *icon,
   GdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
-  context = gtk_widget_get_style_context (widget);
-  icon_theme = gtk_css_icon_theme_value_get_icon_theme
-    (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_ICON_THEME));
+  context = ctk_widget_get_style_context (widget);
+  icon_theme = ctk_css_icon_theme_value_get_icon_theme
+    (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_ICON_THEME));
 
-  icon_info = gtk_icon_theme_lookup_by_gicon_for_scale (icon_theme,
+  icon_info = ctk_icon_theme_lookup_by_gicon_for_scale (icon_theme,
                                                         icon,
                                                         icon_size,
-                                                        gtk_widget_get_scale_factor (widget),
+                                                        ctk_widget_get_scale_factor (widget),
                                                         GTK_ICON_LOOKUP_USE_BUILTIN);
 
   if (!icon_info)
     return NULL;
 
-  pixbuf = gtk_icon_info_load_symbolic_for_context (icon_info,
+  pixbuf = ctk_icon_info_load_symbolic_for_context (icon_info,
                                                     context,
                                                     NULL,
                                                     error);
@@ -738,15 +738,15 @@ get_surface_from_gicon (GIcon      *icon,
     return NULL;
 
   surface = gdk_cairo_surface_create_from_pixbuf (pixbuf,
-                                                  gtk_widget_get_scale_factor (widget),
-					          gtk_widget_get_window (widget));
+                                                  ctk_widget_get_scale_factor (widget),
+					          ctk_widget_get_window (widget));
   g_object_unref (pixbuf);
 
   return surface;
 }
 
 cairo_surface_t *
-_gtk_file_system_volume_render_icon (GtkFileSystemVolume  *volume,
+_ctk_file_system_volume_render_icon (GtkFileSystemVolume  *volume,
 				     GtkWidget            *widget,
 				     gint                  icon_size,
 				     GError              **error)
@@ -774,7 +774,7 @@ _gtk_file_system_volume_render_icon (GtkFileSystemVolume  *volume,
 }
 
 GIcon *
-_gtk_file_system_volume_get_symbolic_icon (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_get_symbolic_icon (GtkFileSystemVolume *volume)
 {
   if (IS_ROOT_VOLUME (volume))
     return g_themed_icon_new ("drive-harddisk-symbolic");
@@ -789,7 +789,7 @@ _gtk_file_system_volume_get_symbolic_icon (GtkFileSystemVolume *volume)
 }
 
 GtkFileSystemVolume *
-_gtk_file_system_volume_ref (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_ref (GtkFileSystemVolume *volume)
 {
   if (IS_ROOT_VOLUME (volume))
     return volume;
@@ -803,7 +803,7 @@ _gtk_file_system_volume_ref (GtkFileSystemVolume *volume)
 }
 
 void
-_gtk_file_system_volume_unref (GtkFileSystemVolume *volume)
+_ctk_file_system_volume_unref (GtkFileSystemVolume *volume)
 {
   /* Root volume doesn't need to be freed */
   if (IS_ROOT_VOLUME (volume))
@@ -817,7 +817,7 @@ _gtk_file_system_volume_unref (GtkFileSystemVolume *volume)
 
 /* GFileInfo helper functions */
 static cairo_surface_t *
-_gtk_file_info_render_icon_internal (GFileInfo *info,
+_ctk_file_info_render_icon_internal (GFileInfo *info,
 			             GtkWidget *widget,
 			             gint       icon_size,
                                      gboolean   symbolic)
@@ -832,7 +832,7 @@ _gtk_file_info_render_icon_internal (GFileInfo *info,
 
   if (thumbnail_path)
     {
-      scale = gtk_widget_get_scale_factor (widget);
+      scale = ctk_widget_get_scale_factor (widget);
       pixbuf = gdk_pixbuf_new_from_file_at_size (thumbnail_path,
 						 icon_size*scale, icon_size*scale,
 						 NULL);
@@ -840,7 +840,7 @@ _gtk_file_info_render_icon_internal (GFileInfo *info,
       if (pixbuf != NULL)
         {
           surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale,
-                                                          gtk_widget_get_window (widget));
+                                                          ctk_widget_get_window (widget));
           g_object_unref (pixbuf);
         }
     }
@@ -871,15 +871,15 @@ _gtk_file_info_render_icon_internal (GFileInfo *info,
 }
 
 cairo_surface_t *
-_gtk_file_info_render_icon (GFileInfo *info,
+_ctk_file_info_render_icon (GFileInfo *info,
 			    GtkWidget *widget,
 			    gint       icon_size)
 {
-  return _gtk_file_info_render_icon_internal (info, widget, icon_size, FALSE);
+  return _ctk_file_info_render_icon_internal (info, widget, icon_size, FALSE);
 }
 
 gboolean
-_gtk_file_info_consider_as_directory (GFileInfo *info)
+_ctk_file_info_consider_as_directory (GFileInfo *info)
 {
   GFileType type = g_file_info_get_file_type (info);
   
@@ -889,7 +889,7 @@ _gtk_file_info_consider_as_directory (GFileInfo *info)
 }
 
 gboolean
-_gtk_file_has_native_path (GFile *file)
+_ctk_file_has_native_path (GFile *file)
 {
   char *local_file_path;
   gboolean has_native_path;
@@ -903,7 +903,7 @@ _gtk_file_has_native_path (GFile *file)
 }
 
 gboolean
-_gtk_file_consider_as_remote (GFile *file)
+_ctk_file_consider_as_remote (GFile *file)
 {
   GFileInfo *info;
   gboolean is_remote;

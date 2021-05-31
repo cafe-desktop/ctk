@@ -539,10 +539,10 @@ msgstr "लोगो"
 #: ../gtk/gtkaboutdialog.c:504
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "बॉक्स के लिये लोगो. अगर यह सेट नहीं होता है, यह "
-"gtk_window_get_default_icon_list() "
+"ctk_window_get_default_icon_list() "
 "में मूलभूत है"
 
 #: ../gtk/gtkaboutdialog.c:519
@@ -3010,10 +3010,10 @@ msgstr "प्रगति नब्ज चरण"
 #: ../gtk/gtkentry.c:990
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "प्रगति बाउंसिंग खंड को खिसकाने के लिए कुल प्रविष्टि चौड़ाई का अंश "
-"gtk_entry_progress_pulse() में हर आह्वान के लिए."
+"ctk_entry_progress_pulse() में हर आह्वान के लिए."
 
 #: ../gtk/gtkentry.c:1008
 msgid "Show text in the entry when it's empty and unfocused"
@@ -5193,10 +5193,10 @@ msgstr "मान"
 
 #: ../gtk/gtkradioaction.c:117
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"gtk_radio_action_get_current_value() के द्वारा दिया मान जब यह क्रिया इस समूह "
+"ctk_radio_action_get_current_value() के द्वारा दिया मान जब यह क्रिया इस समूह "
 "का "
 "वर्तमान स्ट्रिंग है."
 
@@ -7743,8 +7743,8 @@ msgid "No show all"
 msgstr "कोई प्रदर्शन नहीं"
 
 #: ../gtk/gtkwidget.c:1104
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "क्या gtk_widget_show_all() को इस विजेट को प्रभावित नहीं करना चाहिये"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "क्या ctk_widget_show_all() को इस विजेट को प्रभावित नहीं करना चाहिये"
 
 #: ../gtk/gtkwidget.c:1127
 msgid "Whether this widget has a tooltip"

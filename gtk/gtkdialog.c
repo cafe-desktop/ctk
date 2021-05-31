@@ -65,24 +65,24 @@
  * packing buttons into the dialog which may perform functions such as
  * cancel, ok, or apply.
  *
- * #GtkDialog boxes are created with a call to gtk_dialog_new() or
- * gtk_dialog_new_with_buttons(). gtk_dialog_new_with_buttons() is
+ * #GtkDialog boxes are created with a call to ctk_dialog_new() or
+ * ctk_dialog_new_with_buttons(). ctk_dialog_new_with_buttons() is
  * recommended; it allows you to set the dialog title, some convenient
  * flags, and add simple buttons.
  *
  * If “dialog” is a newly created dialog, the two primary areas of the
- * window can be accessed through gtk_dialog_get_content_area() and
- * gtk_dialog_get_action_area(), as can be seen from the example below.
+ * window can be accessed through ctk_dialog_get_content_area() and
+ * ctk_dialog_get_action_area(), as can be seen from the example below.
  *
  * A “modal” dialog (that is, one which freezes the rest of the application
- * from user input), can be created by calling gtk_window_set_modal() on the
+ * from user input), can be created by calling ctk_window_set_modal() on the
  * dialog. Use the GTK_WINDOW() macro to cast the widget returned from
- * gtk_dialog_new() into a #GtkWindow. When using gtk_dialog_new_with_buttons()
+ * ctk_dialog_new() into a #GtkWindow. When using ctk_dialog_new_with_buttons()
  * you can also pass the #GTK_DIALOG_MODAL flag to make a dialog modal.
  *
- * If you add buttons to #GtkDialog using gtk_dialog_new_with_buttons(),
- * gtk_dialog_add_button(), gtk_dialog_add_buttons(), or
- * gtk_dialog_add_action_widget(), clicking the button will emit a signal
+ * If you add buttons to #GtkDialog using ctk_dialog_new_with_buttons(),
+ * ctk_dialog_add_button(), ctk_dialog_add_buttons(), or
+ * ctk_dialog_add_action_widget(), clicking the button will emit a signal
  * called #GtkDialog::response with a response ID that you specified. GTK+
  * will never assign a meaning to positive response IDs; these are entirely
  * user-defined. But for convenience, you can use the response IDs in the
@@ -91,7 +91,7 @@
  * be emitted with a response ID of #GTK_RESPONSE_DELETE_EVENT.
  *
  * If you want to block waiting for a dialog to return before returning
- * control flow to your code, you can call gtk_dialog_run(). This function
+ * control flow to your code, you can call ctk_dialog_run(). This function
  * enters a recursive main loop and waits for the user to respond to the
  * dialog, returning the response ID corresponding to the button the user
  * clicked.
@@ -112,26 +112,26 @@
  *
  *  // Create the widgets
  *  flags = GTK_DIALOG_DESTROY_WITH_PARENT;
- *  dialog = gtk_dialog_new_with_buttons ("Message",
+ *  dialog = ctk_dialog_new_with_buttons ("Message",
  *                                        parent,
  *                                        flags,
  *                                        _("_OK"),
  *                                        GTK_RESPONSE_NONE,
  *                                        NULL);
- *  content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
- *  label = gtk_label_new (message);
+ *  content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
+ *  label = ctk_label_new (message);
  *
  *  // Ensure that the dialog box is destroyed when the user responds
  *
  *  g_signal_connect_swapped (dialog,
  *                            "response",
- *                            G_CALLBACK (gtk_widget_destroy),
+ *                            G_CALLBACK (ctk_widget_destroy),
  *                            dialog);
  *
  *  // Add the label, and show everything we’ve added
  *
- *  gtk_container_add (GTK_CONTAINER (content_area), label);
- *  gtk_widget_show_all (dialog);
+ *  ctk_container_add (GTK_CONTAINER (content_area), label);
+ *  ctk_widget_show_all (dialog);
  * }
  * ]|
  *
@@ -192,34 +192,34 @@ struct _ResponseData
   gint response_id;
 };
 
-static void      gtk_dialog_add_buttons_valist   (GtkDialog    *dialog,
+static void      ctk_dialog_add_buttons_valist   (GtkDialog    *dialog,
                                                   const gchar  *first_button_text,
                                                   va_list       args);
 
-static gboolean  gtk_dialog_delete_event_handler (GtkWidget    *widget,
+static gboolean  ctk_dialog_delete_event_handler (GtkWidget    *widget,
                                                   GdkEventAny  *event,
                                                   gpointer      user_data);
-static void      gtk_dialog_style_updated        (GtkWidget    *widget);
-static void      gtk_dialog_map                  (GtkWidget    *widget);
+static void      ctk_dialog_style_updated        (GtkWidget    *widget);
+static void      ctk_dialog_map                  (GtkWidget    *widget);
 
-static void      gtk_dialog_close                (GtkDialog    *dialog);
+static void      ctk_dialog_close                (GtkDialog    *dialog);
 
 static ResponseData * get_response_data          (GtkWidget    *widget,
                                                   gboolean      create);
 
-static void      gtk_dialog_buildable_interface_init     (GtkBuildableIface *iface);
-static gboolean  gtk_dialog_buildable_custom_tag_start   (GtkBuildable  *buildable,
+static void      ctk_dialog_buildable_interface_init     (GtkBuildableIface *iface);
+static gboolean  ctk_dialog_buildable_custom_tag_start   (GtkBuildable  *buildable,
                                                           GtkBuilder    *builder,
                                                           GObject       *child,
                                                           const gchar   *tagname,
                                                           GMarkupParser *parser,
                                                           gpointer      *data);
-static void      gtk_dialog_buildable_custom_finished    (GtkBuildable  *buildable,
+static void      ctk_dialog_buildable_custom_finished    (GtkBuildable  *buildable,
                                                           GtkBuilder    *builder,
                                                           GObject       *child,
                                                           const gchar   *tagname,
                                                           gpointer       user_data);
-static void      gtk_dialog_buildable_add_child          (GtkBuildable  *buildable,
+static void      ctk_dialog_buildable_add_child          (GtkBuildable  *buildable,
                                                           GtkBuilder    *builder,
                                                           GObject       *child,
                                                           const gchar   *type);
@@ -238,10 +238,10 @@ enum {
 
 static guint dialog_signals[LAST_SIGNAL];
 
-G_DEFINE_TYPE_WITH_CODE (GtkDialog, gtk_dialog, GTK_TYPE_WINDOW,
+G_DEFINE_TYPE_WITH_CODE (GtkDialog, ctk_dialog, GTK_TYPE_WINDOW,
                          G_ADD_PRIVATE (GtkDialog)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
-						gtk_dialog_buildable_interface_init))
+						ctk_dialog_buildable_interface_init))
 
 static void
 set_use_header_bar (GtkDialog *dialog,
@@ -257,19 +257,19 @@ set_use_header_bar (GtkDialog *dialog,
 
 /* A convenience helper for built-in dialogs */
 void
-gtk_dialog_set_use_header_bar_from_setting (GtkDialog *dialog)
+ctk_dialog_set_use_header_bar_from_setting (GtkDialog *dialog)
 {
   GtkDialogPrivate *priv = dialog->priv;
 
   g_assert (!priv->constructed);
 
-  g_object_get (gtk_widget_get_settings (GTK_WIDGET (dialog)),
+  g_object_get (ctk_widget_get_settings (GTK_WIDGET (dialog)),
                 "gtk-dialogs-use-header", &priv->use_header_bar,
                 NULL);
 }
 
 static void
-gtk_dialog_set_property (GObject      *object,
+ctk_dialog_set_property (GObject      *object,
                          guint         prop_id,
                          const GValue *value,
                          GParamSpec   *pspec)
@@ -289,7 +289,7 @@ gtk_dialog_set_property (GObject      *object,
 }
 
 static void
-gtk_dialog_get_property (GObject      *object,
+ctk_dialog_get_property (GObject      *object,
                          guint         prop_id,
                          GValue       *value,
                          GParamSpec   *pspec)
@@ -314,9 +314,9 @@ action_widget_activated (GtkWidget *widget, GtkDialog *dialog)
 {
   gint response_id;
 
-  response_id = gtk_dialog_get_response_for_widget (dialog, widget);
+  response_id = ctk_dialog_get_response_for_widget (dialog, widget);
 
-  gtk_dialog_response (dialog, response_id);
+  ctk_dialog_response (dialog, response_id);
 }
 
 typedef struct {
@@ -360,19 +360,19 @@ apply_response_for_header_bar (GtkDialog *dialog,
   GtkDialogPrivate *priv = dialog->priv;
   GtkPackType pack;
 
-  g_assert (gtk_widget_get_parent (child) == priv->headerbar);
+  g_assert (ctk_widget_get_parent (child) == priv->headerbar);
 
   if (response_id == GTK_RESPONSE_CANCEL || response_id == GTK_RESPONSE_HELP)
     pack = GTK_PACK_START;
   else
     pack = GTK_PACK_END;
 
-  gtk_container_child_set (GTK_CONTAINER (priv->headerbar), child,
+  ctk_container_child_set (GTK_CONTAINER (priv->headerbar), child,
                            "pack-type", pack,
                            NULL);
 
   if (response_id == GTK_RESPONSE_CANCEL || response_id == GTK_RESPONSE_CLOSE)
-    gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (priv->headerbar), FALSE);
+    ctk_header_bar_set_show_close_button (GTK_HEADER_BAR (priv->headerbar), FALSE);
 }
 
 static void
@@ -382,9 +382,9 @@ add_to_header_bar (GtkDialog *dialog,
 {
   GtkDialogPrivate *priv = dialog->priv;
 
-  gtk_widget_set_valign (child, GTK_ALIGN_CENTER);
-  gtk_container_add (GTK_CONTAINER (priv->headerbar), child);
-  gtk_size_group_add_widget (priv->size_group, child);
+  ctk_widget_set_valign (child, GTK_ALIGN_CENTER);
+  ctk_container_add (GTK_CONTAINER (priv->headerbar), child);
+  ctk_size_group_add_widget (priv->size_group, child);
   apply_response_for_header_bar (dialog, child, response_id);
 
 }
@@ -396,10 +396,10 @@ apply_response_for_action_area (GtkDialog *dialog,
 {
   GtkDialogPrivate *priv = dialog->priv;
 
-  g_assert (gtk_widget_get_parent (child) == priv->action_area);
+  g_assert (ctk_widget_get_parent (child) == priv->action_area);
 
   if (response_id == GTK_RESPONSE_HELP)
-    gtk_button_box_set_child_secondary (GTK_BUTTON_BOX (priv->action_area), child, TRUE);
+    ctk_button_box_set_child_secondary (GTK_BUTTON_BOX (priv->action_area), child, TRUE);
 }
 
 static void
@@ -409,8 +409,8 @@ add_to_action_area (GtkDialog *dialog,
 {
   GtkDialogPrivate *priv = dialog->priv;
 
-  gtk_widget_set_valign (child, GTK_ALIGN_BASELINE);
-  gtk_container_add (GTK_CONTAINER (priv->action_area), child);
+  ctk_widget_set_valign (child, GTK_ALIGN_BASELINE);
+  ctk_container_add (GTK_CONTAINER (priv->action_area), child);
   apply_response_for_action_area (dialog, child, response_id);
 }
 
@@ -423,16 +423,16 @@ update_suggested_action (GtkDialog *dialog)
     {
       GList *children, *l;
 
-      children = gtk_container_get_children (GTK_CONTAINER (priv->headerbar));
+      children = ctk_container_get_children (GTK_CONTAINER (priv->headerbar));
       for (l = children; l != NULL; l = l->next)
         {
           GtkWidget *child = l->data;
-	  GtkStyleContext *context = gtk_widget_get_style_context (child);
+	  GtkStyleContext *context = ctk_widget_get_style_context (child);
 
-          if (gtk_style_context_has_class (context, GTK_STYLE_CLASS_DEFAULT))
-            gtk_style_context_add_class (context, GTK_STYLE_CLASS_SUGGESTED_ACTION);
+          if (ctk_style_context_has_class (context, GTK_STYLE_CLASS_DEFAULT))
+            ctk_style_context_add_class (context, GTK_STYLE_CLASS_SUGGESTED_ACTION);
           else
-            gtk_style_context_remove_class (context, GTK_STYLE_CLASS_SUGGESTED_ACTION);
+            ctk_style_context_remove_class (context, GTK_STYLE_CLASS_SUGGESTED_ACTION);
         }
       g_list_free (children);
     }
@@ -448,17 +448,17 @@ add_cb (GtkContainer *container,
   if (priv->use_header_bar)
     g_warning ("Content added to the action area of a dialog using header bars");
 
-  gtk_widget_set_visible (priv->action_box, TRUE);
-  gtk_widget_set_no_show_all (priv->action_box, FALSE);
+  ctk_widget_set_visible (priv->action_box, TRUE);
+  ctk_widget_set_no_show_all (priv->action_box, FALSE);
 }
 
 static void
-gtk_dialog_constructed (GObject *object)
+ctk_dialog_constructed (GObject *object)
 {
   GtkDialog *dialog = GTK_DIALOG (object);
   GtkDialogPrivate *priv = dialog->priv;
 
-  G_OBJECT_CLASS (gtk_dialog_parent_class)->constructed (object);
+  G_OBJECT_CLASS (ctk_dialog_parent_class)->constructed (object);
 
   priv->constructed = TRUE;
   if (priv->use_header_bar == -1)
@@ -468,7 +468,7 @@ gtk_dialog_constructed (GObject *object)
     {
       GList *children, *l;
 
-      children = gtk_container_get_children (GTK_CONTAINER (priv->action_area));
+      children = ctk_container_get_children (GTK_CONTAINER (priv->action_area));
       for (l = children; l != NULL; l = l->next)
         {
           GtkWidget *child = l->data;
@@ -476,17 +476,17 @@ gtk_dialog_constructed (GObject *object)
           ResponseData *rd;
           gint response_id;
 
-          has_default = gtk_widget_has_default (child);
+          has_default = ctk_widget_has_default (child);
           rd = get_response_data (child, FALSE);
           response_id = rd ? rd->response_id : GTK_RESPONSE_NONE;
 
           g_object_ref (child);
-          gtk_container_remove (GTK_CONTAINER (priv->action_area), child);
+          ctk_container_remove (GTK_CONTAINER (priv->action_area), child);
           add_to_header_bar (dialog, child, response_id);
           g_object_unref (child);
 
           if (has_default)
-            gtk_widget_grab_default (child);
+            ctk_widget_grab_default (child);
         }
       g_list_free (children);
 
@@ -496,26 +496,26 @@ gtk_dialog_constructed (GObject *object)
     }
   else
     {
-      gtk_window_set_titlebar (GTK_WINDOW (dialog), NULL);
+      ctk_window_set_titlebar (GTK_WINDOW (dialog), NULL);
       priv->headerbar = NULL;
     }
 
-  gtk_widget_set_visible (priv->action_box, !priv->use_header_bar);
-  gtk_widget_set_no_show_all (priv->action_box, priv->use_header_bar);
+  ctk_widget_set_visible (priv->action_box, !priv->use_header_bar);
+  ctk_widget_set_no_show_all (priv->action_box, priv->use_header_bar);
 }
 
 static void
-gtk_dialog_finalize (GObject *obj)
+ctk_dialog_finalize (GObject *obj)
 {
   GtkDialog *dialog = GTK_DIALOG (obj);
 
   g_object_unref (dialog->priv->size_group);
 
-  G_OBJECT_CLASS (gtk_dialog_parent_class)->finalize (obj);
+  G_OBJECT_CLASS (ctk_dialog_parent_class)->finalize (obj);
 }
 
 static void
-gtk_dialog_class_init (GtkDialogClass *class)
+ctk_dialog_class_init (GtkDialogClass *class)
 {
   GObjectClass *gobject_class;
   GtkWidgetClass *widget_class;
@@ -524,17 +524,17 @@ gtk_dialog_class_init (GtkDialogClass *class)
   gobject_class = G_OBJECT_CLASS (class);
   widget_class = GTK_WIDGET_CLASS (class);
 
-  gobject_class->constructed  = gtk_dialog_constructed;
-  gobject_class->set_property = gtk_dialog_set_property;
-  gobject_class->get_property = gtk_dialog_get_property;
-  gobject_class->finalize = gtk_dialog_finalize;
+  gobject_class->constructed  = ctk_dialog_constructed;
+  gobject_class->set_property = ctk_dialog_set_property;
+  gobject_class->get_property = ctk_dialog_get_property;
+  gobject_class->finalize = ctk_dialog_finalize;
 
-  widget_class->map = gtk_dialog_map;
-  widget_class->style_updated = gtk_dialog_style_updated;
+  widget_class->map = ctk_dialog_map;
+  widget_class->style_updated = ctk_dialog_style_updated;
 
-  gtk_widget_class_set_accessible_role (widget_class, ATK_ROLE_DIALOG);
+  ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_DIALOG);
 
-  class->close = gtk_dialog_close;
+  class->close = ctk_dialog_close;
 
   /**
    * GtkDialog::response:
@@ -542,7 +542,7 @@ gtk_dialog_class_init (GtkDialogClass *class)
    * @response_id: the response ID
    *
    * Emitted when an action widget is clicked, the dialog receives a
-   * delete event, or the application programmer calls gtk_dialog_response().
+   * delete event, or the application programmer calls ctk_dialog_response().
    * On a delete event, the response ID is #GTK_RESPONSE_DELETE_EVENT.
    * Otherwise, it depends on which action widget was clicked.
    */
@@ -580,10 +580,10 @@ gtk_dialog_class_init (GtkDialogClass *class)
    *
    * The default border width used around the
    * content area of the dialog, as returned by
-   * gtk_dialog_get_content_area(), unless gtk_container_set_border_width()
+   * ctk_dialog_get_content_area(), unless ctk_container_set_border_width()
    * was called on that widget directly.
    */
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
 					   g_param_spec_int ("content-area-border",
                                                              P_("Content area border"),
                                                              P_("Width of border around the main dialog area"),
@@ -596,12 +596,12 @@ gtk_dialog_class_init (GtkDialogClass *class)
    *
    * The default spacing used between elements of the
    * content area of the dialog, as returned by
-   * gtk_dialog_get_content_area(), unless gtk_box_set_spacing()
+   * ctk_dialog_get_content_area(), unless ctk_box_set_spacing()
    * was called on that widget directly.
    *
    * Since: 2.16
    */
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("content-area-spacing",
                                                              P_("Content area spacing"),
                                                              P_("Spacing between elements of the main dialog area"),
@@ -609,7 +609,7 @@ gtk_dialog_class_init (GtkDialogClass *class)
                                                              G_MAXINT,
                                                              0,
                                                              GTK_PARAM_READABLE));
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("button-spacing",
                                                              P_("Button spacing"),
                                                              P_("Spacing between buttons"),
@@ -623,10 +623,10 @@ gtk_dialog_class_init (GtkDialogClass *class)
    *
    * The default border width used around the
    * action area of the dialog, as returned by
-   * gtk_dialog_get_action_area(), unless gtk_container_set_border_width()
+   * ctk_dialog_get_action_area(), unless ctk_container_set_border_width()
    * was called on that widget directly.
    */
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("action-area-border",
                                                              P_("Action area border"),
                                                              P_("Width of border around the button area at the bottom of the dialog"),
@@ -654,19 +654,19 @@ gtk_dialog_class_init (GtkDialogClass *class)
                                                      -1, 1, -1,
                                                      GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY));
 
-  binding_set = gtk_binding_set_by_class (class);
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
+  binding_set = ctk_binding_set_by_class (class);
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
 
   /* Bind class to template
    */
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkdialog.ui");
-  gtk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, vbox);
-  gtk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, headerbar);
-  gtk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, action_area);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkDialog, action_box);
-  gtk_widget_class_bind_template_callback (widget_class, gtk_dialog_delete_event_handler);
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkdialog.ui");
+  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, vbox);
+  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, headerbar);
+  ctk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, action_area);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkDialog, action_box);
+  ctk_widget_class_bind_template_callback (widget_class, ctk_dialog_delete_event_handler);
 
-  gtk_widget_class_set_css_name (widget_class, "dialog");
+  ctk_widget_class_set_css_name (widget_class, "dialog");
 }
 
 static void
@@ -678,47 +678,47 @@ update_spacings (GtkDialog *dialog)
   gint button_spacing;
   gint action_area_border;
 
-  gtk_widget_style_get (GTK_WIDGET (dialog),
+  ctk_widget_style_get (GTK_WIDGET (dialog),
                         "content-area-border", &content_area_border,
                         "content-area-spacing", &content_area_spacing,
                         "button-spacing", &button_spacing,
                         "action-area-border", &action_area_border,
                         NULL);
 
-  if (!_gtk_container_get_border_width_set (GTK_CONTAINER (priv->vbox)))
+  if (!_ctk_container_get_border_width_set (GTK_CONTAINER (priv->vbox)))
     {
-      gtk_container_set_border_width (GTK_CONTAINER (priv->vbox),
+      ctk_container_set_border_width (GTK_CONTAINER (priv->vbox),
                                       content_area_border);
-      _gtk_container_set_border_width_set (GTK_CONTAINER (priv->vbox), FALSE);
+      _ctk_container_set_border_width_set (GTK_CONTAINER (priv->vbox), FALSE);
     }
 
-  if (!_gtk_box_get_spacing_set (GTK_BOX (priv->vbox)))
+  if (!_ctk_box_get_spacing_set (GTK_BOX (priv->vbox)))
     {
-      gtk_box_set_spacing (GTK_BOX (priv->vbox), content_area_spacing);
-      _gtk_box_set_spacing_set (GTK_BOX (priv->vbox), FALSE);
+      ctk_box_set_spacing (GTK_BOX (priv->vbox), content_area_spacing);
+      _ctk_box_set_spacing_set (GTK_BOX (priv->vbox), FALSE);
     }
 
   /* don't set spacing when buttons are linked */
-  if (gtk_button_box_get_layout (GTK_BUTTON_BOX (priv->action_area)) != GTK_BUTTONBOX_EXPAND)
-    gtk_box_set_spacing (GTK_BOX (priv->action_area), button_spacing);
+  if (ctk_button_box_get_layout (GTK_BUTTON_BOX (priv->action_area)) != GTK_BUTTONBOX_EXPAND)
+    ctk_box_set_spacing (GTK_BOX (priv->action_area), button_spacing);
 
-  if (!_gtk_container_get_border_width_set (GTK_CONTAINER (priv->action_area)))
+  if (!_ctk_container_get_border_width_set (GTK_CONTAINER (priv->action_area)))
     {
-      gtk_container_set_border_width (GTK_CONTAINER (priv->action_area),
+      ctk_container_set_border_width (GTK_CONTAINER (priv->action_area),
                                       action_area_border);
-      _gtk_container_set_border_width_set (GTK_CONTAINER (priv->action_area), FALSE);
+      _ctk_container_set_border_width_set (GTK_CONTAINER (priv->action_area), FALSE);
     }
 }
 
 static void
-gtk_dialog_init (GtkDialog *dialog)
+ctk_dialog_init (GtkDialog *dialog)
 {
-  dialog->priv = gtk_dialog_get_instance_private (dialog);
+  dialog->priv = ctk_dialog_get_instance_private (dialog);
 
   dialog->priv->use_header_bar = -1;
-  dialog->priv->size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+  dialog->priv->size_group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
-  gtk_widget_init_template (GTK_WIDGET (dialog));
+  ctk_widget_init_template (GTK_WIDGET (dialog));
 
   update_spacings (dialog);
 }
@@ -726,21 +726,21 @@ gtk_dialog_init (GtkDialog *dialog)
 static GtkBuildableIface *parent_buildable_iface;
 
 static void
-gtk_dialog_buildable_interface_init (GtkBuildableIface *iface)
+ctk_dialog_buildable_interface_init (GtkBuildableIface *iface)
 {
   parent_buildable_iface = g_type_interface_peek_parent (iface);
-  iface->custom_tag_start = gtk_dialog_buildable_custom_tag_start;
-  iface->custom_finished = gtk_dialog_buildable_custom_finished;
-  iface->add_child = gtk_dialog_buildable_add_child;
+  iface->custom_tag_start = ctk_dialog_buildable_custom_tag_start;
+  iface->custom_finished = ctk_dialog_buildable_custom_finished;
+  iface->add_child = ctk_dialog_buildable_add_child;
 }
 
 static gboolean
-gtk_dialog_delete_event_handler (GtkWidget   *widget,
+ctk_dialog_delete_event_handler (GtkWidget   *widget,
                                  GdkEventAny *event,
                                  gpointer     user_data)
 {
   /* emit response signal */
-  gtk_dialog_response (GTK_DIALOG (widget), GTK_RESPONSE_DELETE_EVENT);
+  ctk_dialog_response (GTK_DIALOG (widget), GTK_RESPONSE_DELETE_EVENT);
 
   /* Do the destroy by default */
   return FALSE;
@@ -753,9 +753,9 @@ get_action_children (GtkDialog *dialog)
   GList *children;
 
   if (priv->constructed && priv->use_header_bar)
-    children = gtk_container_get_children (GTK_CONTAINER (priv->headerbar));
+    children = ctk_container_get_children (GTK_CONTAINER (priv->headerbar));
   else
-    children = gtk_container_get_children (GTK_CONTAINER (priv->action_area));
+    children = ctk_container_get_children (GTK_CONTAINER (priv->action_area));
 
   return children;
 }
@@ -770,15 +770,15 @@ get_action_children (GtkDialog *dialog)
  * right initial focus widget.
  */
 static void
-gtk_dialog_map (GtkWidget *widget)
+ctk_dialog_map (GtkWidget *widget)
 {
   GtkWidget *default_widget, *focus;
   GtkWindow *window = GTK_WINDOW (widget);
   GtkDialog *dialog = GTK_DIALOG (widget);
 
-  GTK_WIDGET_CLASS (gtk_dialog_parent_class)->map (widget);
+  GTK_WIDGET_CLASS (ctk_dialog_parent_class)->map (widget);
 
-  focus = gtk_window_get_focus (window);
+  focus = ctk_window_get_focus (window);
   if (!focus)
     {
       GList *children, *tmp_list;
@@ -788,10 +788,10 @@ gtk_dialog_map (GtkWidget *widget)
         {
           g_signal_emit_by_name (window, "move_focus", GTK_DIR_TAB_FORWARD);
 
-          focus = gtk_window_get_focus (window);
+          focus = ctk_window_get_focus (window);
           if (GTK_IS_LABEL (focus) &&
-              !gtk_label_get_current_uri (GTK_LABEL (focus)))
-            gtk_label_select_region (GTK_LABEL (focus), 0, 0);
+              !ctk_label_get_current_uri (GTK_LABEL (focus)))
+            ctk_label_select_region (GTK_LABEL (focus), 0, 0);
 
           if (first_focus == NULL)
             first_focus = focus;
@@ -809,12 +809,12 @@ gtk_dialog_map (GtkWidget *widget)
 	{
 	  GtkWidget *child = tmp_list->data;
 
-          default_widget = gtk_window_get_default_widget (window);
+          default_widget = ctk_window_get_default_widget (window);
 	  if ((focus == NULL || child == focus) &&
 	      child != default_widget &&
 	      default_widget)
 	    {
-	      gtk_widget_grab_focus (default_widget);
+	      ctk_widget_grab_focus (default_widget);
 	      break;
 	    }
 
@@ -826,9 +826,9 @@ gtk_dialog_map (GtkWidget *widget)
 }
 
 static void
-gtk_dialog_style_updated (GtkWidget *widget)
+ctk_dialog_style_updated (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (gtk_dialog_parent_class)->style_updated (widget);
+  GTK_WIDGET_CLASS (ctk_dialog_parent_class)->style_updated (widget);
 
   update_spacings (GTK_DIALOG (widget));
 }
@@ -859,13 +859,13 @@ dialog_find_button (GtkDialog *dialog,
 }
 
 static void
-gtk_dialog_close (GtkDialog *dialog)
+ctk_dialog_close (GtkDialog *dialog)
 {
-  gtk_window_close (GTK_WINDOW (dialog));
+  ctk_window_close (GTK_WINDOW (dialog));
 }
 
 /**
- * gtk_dialog_new:
+ * ctk_dialog_new:
  *
  * Creates a new dialog box.
  *
@@ -875,13 +875,13 @@ gtk_dialog_close (GtkDialog *dialog)
  * Returns: the new dialog as a #GtkWidget
  */
 GtkWidget*
-gtk_dialog_new (void)
+ctk_dialog_new (void)
 {
   return g_object_new (GTK_TYPE_DIALOG, NULL);
 }
 
 static GtkWidget*
-gtk_dialog_new_empty (const gchar     *title,
+ctk_dialog_new_empty (const gchar     *title,
                       GtkWindow       *parent,
                       GtkDialogFlags   flags)
 {
@@ -892,22 +892,22 @@ gtk_dialog_new_empty (const gchar     *title,
                          NULL);
 
   if (title)
-    gtk_window_set_title (GTK_WINDOW (dialog), title);
+    ctk_window_set_title (GTK_WINDOW (dialog), title);
 
   if (parent)
-    gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
+    ctk_window_set_transient_for (GTK_WINDOW (dialog), parent);
 
   if (flags & GTK_DIALOG_MODAL)
-    gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+    ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
   if (flags & GTK_DIALOG_DESTROY_WITH_PARENT)
-    gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
+    ctk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
 
   return GTK_WIDGET (dialog);
 }
 
 /**
- * gtk_dialog_new_with_buttons:
+ * ctk_dialog_new_with_buttons:
  * @title: (allow-none): Title of the dialog, or %NULL
  * @parent: (allow-none): Transient parent of the dialog, or %NULL
  * @flags: from #GtkDialogFlags
@@ -915,8 +915,8 @@ gtk_dialog_new_empty (const gchar     *title,
  * @...: response ID for first button, then additional buttons, ending with %NULL
  *
  * Creates a new #GtkDialog with title @title (or %NULL for the default
- * title; see gtk_window_set_title()) and transient parent @parent (or
- * %NULL for none; see gtk_window_set_transient_for()). The @flags
+ * title; see ctk_window_set_title()) and transient parent @parent (or
+ * %NULL for none; see ctk_window_set_transient_for()). The @flags
  * argument can be used to make the dialog modal (#GTK_DIALOG_MODAL)
  * and/or to have it destroyed along with its transient parent
  * (#GTK_DIALOG_DESTROY_WITH_PARENT). After @flags, button
@@ -937,7 +937,7 @@ gtk_dialog_new_empty (const gchar     *title,
  *  GtkWidget *main_app_window; // Window the dialog should show up on
  *  GtkWidget *dialog;
  *  GtkDialogFlags flags = GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT;
- *  dialog = gtk_dialog_new_with_buttons ("My dialog",
+ *  dialog = ctk_dialog_new_with_buttons ("My dialog",
  *                                        main_app_window,
  *                                        flags,
  *                                        _("_OK"),
@@ -950,7 +950,7 @@ gtk_dialog_new_empty (const gchar     *title,
  * Returns: a new #GtkDialog
  */
 GtkWidget*
-gtk_dialog_new_with_buttons (const gchar    *title,
+ctk_dialog_new_with_buttons (const gchar    *title,
                              GtkWindow      *parent,
                              GtkDialogFlags  flags,
                              const gchar    *first_button_text,
@@ -959,11 +959,11 @@ gtk_dialog_new_with_buttons (const gchar    *title,
   GtkDialog *dialog;
   va_list args;
 
-  dialog = GTK_DIALOG (gtk_dialog_new_empty (title, parent, flags));
+  dialog = GTK_DIALOG (ctk_dialog_new_empty (title, parent, flags));
 
   va_start (args, first_button_text);
 
-  gtk_dialog_add_buttons_valist (dialog,
+  ctk_dialog_add_buttons_valist (dialog,
                                  first_button_text,
                                  args);
 
@@ -999,7 +999,7 @@ get_response_data (GtkWidget *widget,
 }
 
 /**
- * gtk_dialog_add_action_widget:
+ * ctk_dialog_add_action_widget:
  * @dialog: a #GtkDialog
  * @child: an activatable widget
  * @response_id: response ID for @child
@@ -1012,7 +1012,7 @@ get_response_data (GtkWidget *widget,
  * of the #GtkDialog struct.
  **/
 void
-gtk_dialog_add_action_widget (GtkDialog *dialog,
+ctk_dialog_add_action_widget (GtkDialog *dialog,
                               GtkWidget *child,
                               gint       response_id)
 {
@@ -1027,9 +1027,9 @@ gtk_dialog_add_action_widget (GtkDialog *dialog,
     {
       add_to_header_bar (dialog, child, response_id);
 
-      if (gtk_widget_has_default (child))
+      if (ctk_widget_has_default (child))
         {
-          gtk_widget_grab_default (child);
+          ctk_widget_grab_default (child);
           update_suggested_action (dialog);
         }
     }
@@ -1038,7 +1038,7 @@ gtk_dialog_add_action_widget (GtkDialog *dialog,
 }
 
 /**
- * gtk_dialog_add_button:
+ * ctk_dialog_add_button:
  * @dialog: a #GtkDialog
  * @button_text: text of button
  * @response_id: response ID for the button
@@ -1052,7 +1052,7 @@ gtk_dialog_add_action_widget (GtkDialog *dialog,
  * Returns: (transfer none): the #GtkButton widget that was added
  **/
 GtkWidget*
-gtk_dialog_add_button (GtkDialog   *dialog,
+ctk_dialog_add_button (GtkDialog   *dialog,
                        const gchar *button_text,
                        gint         response_id)
 {
@@ -1061,32 +1061,32 @@ gtk_dialog_add_button (GtkDialog   *dialog,
   g_return_val_if_fail (GTK_IS_DIALOG (dialog), NULL);
   g_return_val_if_fail (button_text != NULL, NULL);
 
-  button = gtk_button_new_with_label (button_text);
-  gtk_button_set_use_underline (GTK_BUTTON (button), TRUE);
+  button = ctk_button_new_with_label (button_text);
+  ctk_button_set_use_underline (GTK_BUTTON (button), TRUE);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
   if (button_text)
     {
       GtkStockItem item;
-      if (gtk_stock_lookup (button_text, &item))
+      if (ctk_stock_lookup (button_text, &item))
         g_object_set (button, "use-stock", TRUE, NULL);
     }
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  gtk_style_context_add_class (gtk_widget_get_style_context (button), "text-button");
-  gtk_widget_set_can_default (button, TRUE);
+  ctk_style_context_add_class (ctk_widget_get_style_context (button), "text-button");
+  ctk_widget_set_can_default (button, TRUE);
 
-  gtk_widget_show (button);
+  ctk_widget_show (button);
 
-  gtk_dialog_add_action_widget (dialog, button, response_id);
+  ctk_dialog_add_action_widget (dialog, button, response_id);
 
   return button;
 }
 
 static void
-gtk_dialog_add_buttons_valist (GtkDialog      *dialog,
+ctk_dialog_add_buttons_valist (GtkDialog      *dialog,
                                const gchar    *first_button_text,
                                va_list         args)
 {
@@ -1103,7 +1103,7 @@ gtk_dialog_add_buttons_valist (GtkDialog      *dialog,
 
   while (text != NULL)
     {
-      gtk_dialog_add_button (dialog, text, response_id);
+      ctk_dialog_add_button (dialog, text, response_id);
 
       text = va_arg (args, gchar*);
       if (text == NULL)
@@ -1113,18 +1113,18 @@ gtk_dialog_add_buttons_valist (GtkDialog      *dialog,
 }
 
 /**
- * gtk_dialog_add_buttons:
+ * ctk_dialog_add_buttons:
  * @dialog: a #GtkDialog
  * @first_button_text: button text
  * @...: response ID for first button, then more text-response_id pairs
  *
- * Adds more buttons, same as calling gtk_dialog_add_button()
+ * Adds more buttons, same as calling ctk_dialog_add_button()
  * repeatedly.  The variable argument list should be %NULL-terminated
- * as with gtk_dialog_new_with_buttons(). Each button must have both
+ * as with ctk_dialog_new_with_buttons(). Each button must have both
  * text and response ID.
  */
 void
-gtk_dialog_add_buttons (GtkDialog   *dialog,
+ctk_dialog_add_buttons (GtkDialog   *dialog,
                         const gchar *first_button_text,
                         ...)
 {
@@ -1132,7 +1132,7 @@ gtk_dialog_add_buttons (GtkDialog   *dialog,
 
   va_start (args, first_button_text);
 
-  gtk_dialog_add_buttons_valist (dialog,
+  ctk_dialog_add_buttons_valist (dialog,
                                  first_button_text,
                                  args);
 
@@ -1140,17 +1140,17 @@ gtk_dialog_add_buttons (GtkDialog   *dialog,
 }
 
 /**
- * gtk_dialog_set_response_sensitive:
+ * ctk_dialog_set_response_sensitive:
  * @dialog: a #GtkDialog
  * @response_id: a response ID
  * @setting: %TRUE for sensitive
  *
- * Calls `gtk_widget_set_sensitive (widget, @setting)`
+ * Calls `ctk_widget_set_sensitive (widget, @setting)`
  * for each widget in the dialog’s action area with the given @response_id.
  * A convenient way to sensitize/desensitize dialog buttons.
  **/
 void
-gtk_dialog_set_response_sensitive (GtkDialog *dialog,
+ctk_dialog_set_response_sensitive (GtkDialog *dialog,
                                    gint       response_id,
                                    gboolean   setting)
 {
@@ -1168,7 +1168,7 @@ gtk_dialog_set_response_sensitive (GtkDialog *dialog,
       ResponseData *rd = get_response_data (widget, FALSE);
 
       if (rd && rd->response_id == response_id)
-        gtk_widget_set_sensitive (widget, setting);
+        ctk_widget_set_sensitive (widget, setting);
 
       tmp_list = tmp_list->next;
     }
@@ -1177,7 +1177,7 @@ gtk_dialog_set_response_sensitive (GtkDialog *dialog,
 }
 
 /**
- * gtk_dialog_set_default_response:
+ * ctk_dialog_set_default_response:
  * @dialog: a #GtkDialog
  * @response_id: a response ID
  *
@@ -1186,7 +1186,7 @@ gtk_dialog_set_response_sensitive (GtkDialog *dialog,
  * the default widget.
  **/
 void
-gtk_dialog_set_default_response (GtkDialog *dialog,
+ctk_dialog_set_default_response (GtkDialog *dialog,
                                  gint       response_id)
 {
   GList *children;
@@ -1203,7 +1203,7 @@ gtk_dialog_set_default_response (GtkDialog *dialog,
       ResponseData *rd = get_response_data (widget, FALSE);
 
       if (rd && rd->response_id == response_id)
-	gtk_widget_grab_default (widget);
+	ctk_widget_grab_default (widget);
 
       tmp_list = tmp_list->next;
     }
@@ -1215,17 +1215,17 @@ gtk_dialog_set_default_response (GtkDialog *dialog,
 }
 
 /**
- * gtk_dialog_response:
+ * ctk_dialog_response:
  * @dialog: a #GtkDialog
  * @response_id: response ID
  *
  * Emits the #GtkDialog::response signal with the given response ID.
  * Used to indicate that the user has responded to the dialog in some way;
- * typically either you or gtk_dialog_run() will be monitoring the
+ * typically either you or ctk_dialog_run() will be monitoring the
  * ::response signal and take appropriate action.
  **/
 void
-gtk_dialog_response (GtkDialog *dialog,
+ctk_dialog_response (GtkDialog *dialog,
                      gint       response_id)
 {
   g_return_if_fail (GTK_IS_DIALOG (dialog));
@@ -1296,37 +1296,37 @@ run_destroy_handler (GtkDialog *dialog, gpointer data)
 }
 
 /**
- * gtk_dialog_run:
+ * ctk_dialog_run:
  * @dialog: a #GtkDialog
  *
  * Blocks in a recursive main loop until the @dialog either emits the
  * #GtkDialog::response signal, or is destroyed. If the dialog is
- * destroyed during the call to gtk_dialog_run(), gtk_dialog_run() returns
+ * destroyed during the call to ctk_dialog_run(), ctk_dialog_run() returns
  * #GTK_RESPONSE_NONE. Otherwise, it returns the response ID from the
  * ::response signal emission.
  *
- * Before entering the recursive main loop, gtk_dialog_run() calls
- * gtk_widget_show() on the dialog for you. Note that you still
+ * Before entering the recursive main loop, ctk_dialog_run() calls
+ * ctk_widget_show() on the dialog for you. Note that you still
  * need to show any children of the dialog yourself.
  *
- * During gtk_dialog_run(), the default behavior of #GtkWidget::delete-event
+ * During ctk_dialog_run(), the default behavior of #GtkWidget::delete-event
  * is disabled; if the dialog receives ::delete_event, it will not be
- * destroyed as windows usually are, and gtk_dialog_run() will return
- * #GTK_RESPONSE_DELETE_EVENT. Also, during gtk_dialog_run() the dialog
- * will be modal. You can force gtk_dialog_run() to return at any time by
- * calling gtk_dialog_response() to emit the ::response signal. Destroying
- * the dialog during gtk_dialog_run() is a very bad idea, because your
+ * destroyed as windows usually are, and ctk_dialog_run() will return
+ * #GTK_RESPONSE_DELETE_EVENT. Also, during ctk_dialog_run() the dialog
+ * will be modal. You can force ctk_dialog_run() to return at any time by
+ * calling ctk_dialog_response() to emit the ::response signal. Destroying
+ * the dialog during ctk_dialog_run() is a very bad idea, because your
  * post-run code won’t know whether the dialog was destroyed or not.
  *
- * After gtk_dialog_run() returns, you are responsible for hiding or
+ * After ctk_dialog_run() returns, you are responsible for hiding or
  * destroying the dialog if you wish to do so.
  *
  * Typical usage of this function might be:
  * |[<!-- language="C" -->
- *   GtkWidget *dialog = gtk_dialog_new ();
+ *   GtkWidget *dialog = ctk_dialog_new ();
  *   // Set up dialog...
  *
- *   int result = gtk_dialog_run (GTK_DIALOG (dialog));
+ *   int result = ctk_dialog_run (GTK_DIALOG (dialog));
  *   switch (result)
  *     {
  *       case GTK_RESPONSE_ACCEPT:
@@ -1336,19 +1336,19 @@ run_destroy_handler (GtkDialog *dialog, gpointer data)
  *          // do_nothing_since_dialog_was_cancelled ();
  *          break;
  *     }
- *   gtk_widget_destroy (dialog);
+ *   ctk_widget_destroy (dialog);
  * ]|
  *
  * Note that even though the recursive main loop gives the effect of a
  * modal dialog (it prevents the user from interacting with other
  * windows in the same window group while the dialog is run), callbacks
  * such as timeouts, IO channel watches, DND drops, etc, will
- * be triggered during a gtk_dialog_run() call.
+ * be triggered during a ctk_dialog_run() call.
  *
  * Returns: response ID
  **/
 gint
-gtk_dialog_run (GtkDialog *dialog)
+ctk_dialog_run (GtkDialog *dialog)
 {
   RunInfo ri = { NULL, GTK_RESPONSE_NONE, NULL, FALSE };
   gboolean was_modal;
@@ -1361,12 +1361,12 @@ gtk_dialog_run (GtkDialog *dialog)
 
   g_object_ref (dialog);
 
-  was_modal = gtk_window_get_modal (GTK_WINDOW (dialog));
+  was_modal = ctk_window_get_modal (GTK_WINDOW (dialog));
   if (!was_modal)
-    gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+    ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
-  if (!gtk_widget_get_visible (GTK_WIDGET (dialog)))
-    gtk_widget_show (GTK_WIDGET (dialog));
+  if (!ctk_widget_get_visible (GTK_WIDGET (dialog)))
+    ctk_widget_show (GTK_WIDGET (dialog));
 
   response_handler =
     g_signal_connect (dialog,
@@ -1405,7 +1405,7 @@ gtk_dialog_run (GtkDialog *dialog)
   if (!ri.destroyed)
     {
       if (!was_modal)
-        gtk_window_set_modal (GTK_WINDOW(dialog), FALSE);
+        ctk_window_set_modal (GTK_WINDOW(dialog), FALSE);
 
       g_signal_handler_disconnect (dialog, response_handler);
       g_signal_handler_disconnect (dialog, unmap_handler);
@@ -1419,7 +1419,7 @@ gtk_dialog_run (GtkDialog *dialog)
 }
 
 /**
- * gtk_dialog_get_widget_for_response:
+ * ctk_dialog_get_widget_for_response:
  * @dialog: a #GtkDialog
  * @response_id: the response ID used by the @dialog widget
  *
@@ -1432,7 +1432,7 @@ gtk_dialog_run (GtkDialog *dialog)
  * Since: 2.20
  */
 GtkWidget*
-gtk_dialog_get_widget_for_response (GtkDialog *dialog,
+ctk_dialog_get_widget_for_response (GtkDialog *dialog,
 				    gint       response_id)
 {
   GList *children;
@@ -1463,7 +1463,7 @@ gtk_dialog_get_widget_for_response (GtkDialog *dialog,
 }
 
 /**
- * gtk_dialog_get_response_for_widget:
+ * ctk_dialog_get_response_for_widget:
  * @dialog: a #GtkDialog
  * @widget: a widget in the action area of @dialog
  *
@@ -1476,7 +1476,7 @@ gtk_dialog_get_widget_for_response (GtkDialog *dialog,
  * Since: 2.8
  */
 gint
-gtk_dialog_get_response_for_widget (GtkDialog *dialog,
+ctk_dialog_get_response_for_widget (GtkDialog *dialog,
 				    GtkWidget *widget)
 {
   ResponseData *rd;
@@ -1489,21 +1489,21 @@ gtk_dialog_get_response_for_widget (GtkDialog *dialog,
 }
 
 static gboolean
-gtk_alt_dialog_button_order (void)
+ctk_alt_dialog_button_order (void)
 {
   gboolean result;
-  g_object_get (gtk_settings_get_default (),
+  g_object_get (ctk_settings_get_default (),
 		"gtk-alternative-button-order", &result, NULL);
   return result;
 }
 
 /**
- * gtk_alternative_dialog_button_order:
+ * ctk_alternative_dialog_button_order:
  * @screen: (allow-none): a #GdkScreen, or %NULL to use the default screen
  *
  * Returns %TRUE if dialogs are expected to use an alternative
  * button order on the screen @screen. See
- * gtk_dialog_set_alternative_button_order() for more details
+ * ctk_dialog_set_alternative_button_order() for more details
  * about alternative button order.
  *
  * If you need to use this function, you should probably connect
@@ -1517,13 +1517,13 @@ gtk_alt_dialog_button_order (void)
  * Deprecated: 3.10: Deprecated
  */
 gboolean
-gtk_alternative_dialog_button_order (GdkScreen *screen)
+ctk_alternative_dialog_button_order (GdkScreen *screen)
 {
-  return gtk_alt_dialog_button_order ();
+  return ctk_alt_dialog_button_order ();
 }
 
 static void
-gtk_dialog_set_alternative_button_order_valist (GtkDialog *dialog,
+ctk_dialog_set_alternative_button_order_valist (GtkDialog *dialog,
                                                 gint       first_response_id,
                                                 va_list    args)
 {
@@ -1539,7 +1539,7 @@ gtk_dialog_set_alternative_button_order_valist (GtkDialog *dialog,
       /* reorder child with response_id to position */
       child = dialog_find_button (dialog, response_id);
       if (child != NULL)
-        gtk_box_reorder_child (GTK_BOX (priv->action_area), child, position);
+        ctk_box_reorder_child (GTK_BOX (priv->action_area), child, position);
       else
         g_warning ("%s : no child button with response id %d.", G_STRFUNC,
                    response_id);
@@ -1550,7 +1550,7 @@ gtk_dialog_set_alternative_button_order_valist (GtkDialog *dialog,
 }
 
 /**
- * gtk_dialog_set_alternative_button_order:
+ * ctk_dialog_set_alternative_button_order:
  * @dialog: a #GtkDialog
  * @first_response_id: a response id used by one @dialog’s buttons
  * @...: a list of more response ids of @dialog’s buttons, terminated by -1
@@ -1571,21 +1571,21 @@ gtk_dialog_set_alternative_button_order_valist (GtkDialog *dialog,
  * following example shows:
  *
  * |[<!-- language="C" -->
- * cancel_button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+ * cancel_button = ctk_dialog_add_button (GTK_DIALOG (dialog),
  *                                        _("_Cancel"),
  *                                        GTK_RESPONSE_CANCEL);
  *
- * ok_button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+ * ok_button = ctk_dialog_add_button (GTK_DIALOG (dialog),
  *                                    _("_OK"),
  *                                    GTK_RESPONSE_OK);
  *
- * gtk_widget_grab_default (ok_button);
+ * ctk_widget_grab_default (ok_button);
  *
- * help_button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+ * help_button = ctk_dialog_add_button (GTK_DIALOG (dialog),
  *                                      _("_Help"),
  *                                      GTK_RESPONSE_HELP);
  *
- * gtk_dialog_set_alternative_button_order (GTK_DIALOG (dialog),
+ * ctk_dialog_set_alternative_button_order (GTK_DIALOG (dialog),
  *                                          GTK_RESPONSE_OK,
  *                                          GTK_RESPONSE_CANCEL,
  *                                          GTK_RESPONSE_HELP,
@@ -1596,7 +1596,7 @@ gtk_dialog_set_alternative_button_order_valist (GtkDialog *dialog,
  * Deprecated: 3.10: Deprecated
  */
 void
-gtk_dialog_set_alternative_button_order (GtkDialog *dialog,
+ctk_dialog_set_alternative_button_order (GtkDialog *dialog,
 					 gint       first_response_id,
 					 ...)
 {
@@ -1608,18 +1608,18 @@ gtk_dialog_set_alternative_button_order (GtkDialog *dialog,
   if (priv->constructed && priv->use_header_bar)
     return;
 
-  if (!gtk_alt_dialog_button_order ())
+  if (!ctk_alt_dialog_button_order ())
     return;
 
   va_start (args, first_response_id);
 
-  gtk_dialog_set_alternative_button_order_valist (dialog,
+  ctk_dialog_set_alternative_button_order_valist (dialog,
                                                  first_response_id,
                                                  args);
   va_end (args);
 }
 /**
- * gtk_dialog_set_alternative_button_order_from_array:
+ * ctk_dialog_set_alternative_button_order_from_array:
  * @dialog: a #GtkDialog
  * @n_params: the number of response ids in @new_order
  * @new_order: (array length=n_params): an array of response ids of
@@ -1630,7 +1630,7 @@ gtk_dialog_set_alternative_button_order (GtkDialog *dialog,
  * the dialog buttons are reordered according to the order of the
  * response ids in @new_order.
  *
- * See gtk_dialog_set_alternative_button_order() for more information.
+ * See ctk_dialog_set_alternative_button_order() for more information.
  *
  * This function is for use by language bindings.
  *
@@ -1638,7 +1638,7 @@ gtk_dialog_set_alternative_button_order (GtkDialog *dialog,
  * Deprecated: 3.10: Deprecated
  */
 void
-gtk_dialog_set_alternative_button_order_from_array (GtkDialog *dialog,
+ctk_dialog_set_alternative_button_order_from_array (GtkDialog *dialog,
                                                     gint       n_params,
                                                     gint      *new_order)
 {
@@ -1652,7 +1652,7 @@ gtk_dialog_set_alternative_button_order_from_array (GtkDialog *dialog,
   if (dialog->priv->use_header_bar)
     return;
 
-  if (!gtk_alt_dialog_button_order ())
+  if (!ctk_alt_dialog_button_order ())
     return;
 
   for (position = 0; position < n_params; position++)
@@ -1660,7 +1660,7 @@ gtk_dialog_set_alternative_button_order_from_array (GtkDialog *dialog,
       /* reorder child with response_id to position */
       child = dialog_find_button (dialog, new_order[position]);
       if (child != NULL)
-        gtk_box_reorder_child (GTK_BOX (priv->action_area), child, position);
+        ctk_box_reorder_child (GTK_BOX (priv->action_area), child, position);
       else
         g_warning ("%s : no child button with response id %d.", G_STRFUNC,
                    new_order[position]);
@@ -1713,7 +1713,7 @@ parser_start_element (GMarkupParseContext *context,
       gboolean is_default = FALSE;
       GValue gvalue = G_VALUE_INIT;
 
-      if (!_gtk_builder_check_parent (data->builder, context, "action-widgets", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "action-widgets", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
@@ -1721,13 +1721,13 @@ parser_start_element (GMarkupParseContext *context,
                                         G_MARKUP_COLLECT_BOOLEAN|G_MARKUP_COLLECT_OPTIONAL, "default", &is_default,
                                         G_MARKUP_COLLECT_INVALID))
         {
-          _gtk_builder_prefix_error (data->builder, context, error);
+          _ctk_builder_prefix_error (data->builder, context, error);
           return;
         }
 
-      if (!gtk_builder_value_from_string_type (data->builder, GTK_TYPE_RESPONSE_TYPE, response, &gvalue, error))
+      if (!ctk_builder_value_from_string_type (data->builder, GTK_TYPE_RESPONSE_TYPE, response, &gvalue, error))
         {
-          _gtk_builder_prefix_error (data->builder, context, error);
+          _ctk_builder_prefix_error (data->builder, context, error);
           return;
         }
 
@@ -1739,19 +1739,19 @@ parser_start_element (GMarkupParseContext *context,
     }
   else if (strcmp (element_name, "action-widgets") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "object", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "object", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
                                         G_MARKUP_COLLECT_INVALID, NULL, NULL,
                                         G_MARKUP_COLLECT_INVALID))
-        _gtk_builder_prefix_error (data->builder, context, error);
+        _ctk_builder_prefix_error (data->builder, context, error);
 
       data->in_action_widgets = TRUE;
     }
   else
     {
-      _gtk_builder_error_unhandled_tag (data->builder, context,
+      _ctk_builder_error_unhandled_tag (data->builder, context,
                                         "GtkDialog", element_name,
                                         error);
     }
@@ -1803,7 +1803,7 @@ static const GMarkupParser sub_parser =
   };
 
 static gboolean
-gtk_dialog_buildable_custom_tag_start (GtkBuildable  *buildable,
+ctk_dialog_buildable_custom_tag_start (GtkBuildable  *buildable,
                                        GtkBuilder    *builder,
                                        GObject       *child,
                                        const gchar   *tagname,
@@ -1834,7 +1834,7 @@ gtk_dialog_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-gtk_dialog_buildable_custom_finished (GtkBuildable *buildable,
+ctk_dialog_buildable_custom_finished (GtkBuildable *buildable,
 				      GtkBuilder   *builder,
 				      GObject      *child,
 				      const gchar  *tagname,
@@ -1863,12 +1863,12 @@ gtk_dialog_buildable_custom_finished (GtkBuildable *buildable,
       ActionWidgetInfo *item = l->data;
       gboolean is_action;
 
-      object = _gtk_builder_lookup_object (builder, item->widget_name, item->line, item->col);
+      object = _ctk_builder_lookup_object (builder, item->widget_name, item->line, item->col);
       if (!object)
         continue;
 
       /* If the widget already has reponse data at this point, it
-       * was either added by gtk_dialog_add_action_widget(), or via
+       * was either added by ctk_dialog_add_action_widget(), or via
        * <child type="action"> or by moving an action area child
        * to the header bar. In these cases, apply placement heuristics
        * based on the response id.
@@ -1892,18 +1892,18 @@ gtk_dialog_buildable_custom_finished (GtkBuildable *buildable,
 	  g_signal_connect_closure_by_id (object, signal_id, 0, closure, FALSE);
 	}
 
-      if (gtk_widget_get_parent (GTK_WIDGET (object)) == priv->action_area)
+      if (ctk_widget_get_parent (GTK_WIDGET (object)) == priv->action_area)
         {
           apply_response_for_action_area (dialog, GTK_WIDGET (object), ad->response_id);
         }
-      else if (gtk_widget_get_parent (GTK_WIDGET (object)) == priv->headerbar)
+      else if (ctk_widget_get_parent (GTK_WIDGET (object)) == priv->headerbar)
         {
           if (is_action)
             apply_response_for_header_bar (dialog, GTK_WIDGET (object), ad->response_id);
         }
 
       if (item->is_default)
-        gtk_widget_grab_default (GTK_WIDGET (object));
+        ctk_widget_grab_default (GTK_WIDGET (object));
     }
 
   g_slist_free_full (data->items, free_action_widget_info);
@@ -1914,7 +1914,7 @@ gtk_dialog_buildable_custom_finished (GtkBuildable *buildable,
 }
 
 static void
-gtk_dialog_buildable_add_child (GtkBuildable  *buildable,
+ctk_dialog_buildable_add_child (GtkBuildable  *buildable,
                                 GtkBuilder    *builder,
                                 GObject       *child,
                                 const gchar   *type)
@@ -1923,20 +1923,20 @@ gtk_dialog_buildable_add_child (GtkBuildable  *buildable,
   GtkDialogPrivate *priv = dialog->priv;
 
   if (type == NULL)
-    gtk_container_add (GTK_CONTAINER (buildable), GTK_WIDGET (child));
+    ctk_container_add (GTK_CONTAINER (buildable), GTK_WIDGET (child));
   else if (g_str_equal (type, "titlebar"))
     {
       priv->headerbar = GTK_WIDGET (child);
-      gtk_window_set_titlebar (GTK_WINDOW (buildable), priv->headerbar);
+      ctk_window_set_titlebar (GTK_WINDOW (buildable), priv->headerbar);
     }
   else if (g_str_equal (type, "action"))
-    gtk_dialog_add_action_widget (GTK_DIALOG (buildable), GTK_WIDGET (child), GTK_RESPONSE_NONE);
+    ctk_dialog_add_action_widget (GTK_DIALOG (buildable), GTK_WIDGET (child), GTK_RESPONSE_NONE);
   else
     GTK_BUILDER_WARN_INVALID_CHILD_TYPE (buildable, type);
 }
 
 /**
- * gtk_dialog_get_action_area:
+ * ctk_dialog_get_action_area:
  * @dialog: a #GtkDialog
  *
  * Returns the action area of @dialog.
@@ -1946,10 +1946,10 @@ gtk_dialog_buildable_add_child (GtkBuildable  *buildable,
  * Since: 2.14
  *
  * Deprecated:3.12: Direct access to the action area
- *   is discouraged; use gtk_dialog_add_button(), etc.
+ *   is discouraged; use ctk_dialog_add_button(), etc.
  */
 GtkWidget *
-gtk_dialog_get_action_area (GtkDialog *dialog)
+ctk_dialog_get_action_area (GtkDialog *dialog)
 {
   g_return_val_if_fail (GTK_IS_DIALOG (dialog), NULL);
 
@@ -1957,7 +1957,7 @@ gtk_dialog_get_action_area (GtkDialog *dialog)
 }
 
 /**
- * gtk_dialog_get_header_bar:
+ * ctk_dialog_get_header_bar:
  * @dialog: a #GtkDialog
  *
  * Returns the header bar of @dialog. Note that the
@@ -1969,7 +1969,7 @@ gtk_dialog_get_action_area (GtkDialog *dialog)
  * Since: 3.12
  */
 GtkWidget *
-gtk_dialog_get_header_bar (GtkDialog *dialog)
+ctk_dialog_get_header_bar (GtkDialog *dialog)
 {
   g_return_val_if_fail (GTK_IS_DIALOG (dialog), NULL);
 
@@ -1977,7 +1977,7 @@ gtk_dialog_get_header_bar (GtkDialog *dialog)
 }
 
 /**
- * gtk_dialog_get_content_area:
+ * ctk_dialog_get_content_area:
  * @dialog: a #GtkDialog
  *
  * Returns the content area of @dialog.
@@ -1987,7 +1987,7 @@ gtk_dialog_get_header_bar (GtkDialog *dialog)
  * Since: 2.14
  **/
 GtkWidget *
-gtk_dialog_get_content_area (GtkDialog *dialog)
+ctk_dialog_get_content_area (GtkDialog *dialog)
 {
   g_return_val_if_fail (GTK_IS_DIALOG (dialog), NULL);
 

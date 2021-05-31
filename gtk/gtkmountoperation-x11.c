@@ -517,7 +517,7 @@ struct _GtkMountOperationLookupContext
 };
 
 GtkMountOperationLookupContext *
-_gtk_mount_operation_lookup_context_get (GdkDisplay *display)
+_ctk_mount_operation_lookup_context_get (GdkDisplay *display)
 {
   GtkMountOperationLookupContext *context;
   Window *mapping;
@@ -558,7 +558,7 @@ _gtk_mount_operation_lookup_context_get (GdkDisplay *display)
 }
 
 void
-_gtk_mount_operation_lookup_context_free (GtkMountOperationLookupContext *context)
+_ctk_mount_operation_lookup_context_free (GtkMountOperationLookupContext *context)
 {
   g_hash_table_unref (context->pid_to_window);
   g_free (context);
@@ -960,7 +960,7 @@ static const gchar *well_known_commands[] =
 };
 
 gboolean
-_gtk_mount_operation_lookup_info (GtkMountOperationLookupContext *context,
+_ctk_mount_operation_lookup_info (GtkMountOperationLookupContext *context,
                                   GPid                            pid,
                                   gint                            size_pixels,
                                   gchar                         **out_name,
@@ -1032,7 +1032,7 @@ _gtk_mount_operation_lookup_info (GtkMountOperationLookupContext *context,
 }
 
 gboolean
-_gtk_mount_operation_kill_process (GPid      pid,
+_ctk_mount_operation_kill_process (GPid      pid,
                                    GError  **error)
 {
   gboolean ret;

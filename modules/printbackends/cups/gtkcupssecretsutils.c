@@ -865,7 +865,7 @@ get_connection_cb (GObject      *source_object,
 }
 
 /**
- * gtk_cups_secrets_service_watch:
+ * ctk_cups_secrets_service_watch:
  * @appeared: The callback to call when the service interface appears
  * @vanished: The callback to call when the service interface vanishes
  * @user_data: A reference to the watching printbackend
@@ -875,7 +875,7 @@ get_connection_cb (GObject      *source_object,
  * Returns: The watcher id
  */
 guint
-gtk_cups_secrets_service_watch (GBusNameAppearedCallback appeared,
+ctk_cups_secrets_service_watch (GBusNameAppearedCallback appeared,
                                 GBusNameVanishedCallback vanished,
                                 gpointer                 user_data)
 {
@@ -938,7 +938,7 @@ cleanup_task_data (gpointer data)
 }
 
 /**
- * gtk_cups_secrets_service_query_task:
+ * ctk_cups_secrets_service_query_task:
  * @source_object: Source object for this task
  * @cancellable: Cancellable to cancel this task
  * @callback: Callback to call once the query is finished
@@ -958,7 +958,7 @@ cleanup_task_data (gpointer data)
  * of the used API.
  */
 void
-gtk_cups_secrets_service_query_task (gpointer              source_object,
+ctk_cups_secrets_service_query_task (gpointer              source_object,
                                      GCancellable         *cancellable,
                                      GAsyncReadyCallback   callback,
                                      gpointer              user_data,
@@ -1000,11 +1000,11 @@ store_done_cb (GObject      *source_object,
 
   g_object_unref (task);
   GTK_NOTE (PRINTING,
-            g_print ("gtk_cups_secrets_service_store finished.\n"));
+            g_print ("ctk_cups_secrets_service_store finished.\n"));
 }
 
 /**
- * gtk_cups_secrets_service_store:
+ * ctk_cups_secrets_service_store:
  * @auth_info: Auth info that should be stored
  * @auth_info_labels: The keys to use for the auth info
  * @printer_uri: URI of the printer
@@ -1012,7 +1012,7 @@ store_done_cb (GObject      *source_object,
  * Tries to store the auth_info in a secrets service.
  */
 void
-gtk_cups_secrets_service_store (gchar       **auth_info,
+ctk_cups_secrets_service_store (gchar       **auth_info,
                                 gchar       **auth_info_labels,
                                 const gchar  *printer_uri)
 {
@@ -1022,7 +1022,7 @@ gtk_cups_secrets_service_store (gchar       **auth_info,
   if (auth_info == NULL || auth_info_labels == NULL || printer_uri == NULL)
     {
       GTK_NOTE (PRINTING,
-                g_print ("Invalid call to gtk_cups_secrets_service_store.\n"));
+                g_print ("Invalid call to ctk_cups_secrets_service_store.\n"));
       return;
     }
 

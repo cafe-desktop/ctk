@@ -20,7 +20,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_STATISTICS            (gtk_inspector_statistics_get_type())
+#define GTK_TYPE_INSPECTOR_STATISTICS            (ctk_inspector_statistics_get_type())
 #define GTK_INSPECTOR_STATISTICS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatistics))
 #define GTK_INSPECTOR_STATISTICS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatisticsClass))
 #define GTK_INSPECTOR_IS_STATISTICS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_STATISTICS))
@@ -43,7 +43,7 @@ typedef struct _GtkInspectorStatisticsClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_statistics_get_type   (void);
+GType      ctk_inspector_statistics_get_type   (void);
 
 G_END_DECLS
 

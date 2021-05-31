@@ -41,38 +41,38 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  *
  * > The #GtkHSeparator widget is not used as a separator within menus.
  * > To create a separator in a menu create an empty #GtkSeparatorMenuItem
- * > widget using gtk_separator_menu_item_new() and add it to the menu with
- * > gtk_menu_shell_append().
+ * > widget using ctk_separator_menu_item_new() and add it to the menu with
+ * > ctk_menu_shell_append().
  *
  * GtkHSeparator has been deprecated, use #GtkSeparator instead.
  */
 
 
-G_DEFINE_TYPE (GtkHSeparator, gtk_hseparator, GTK_TYPE_SEPARATOR)
+G_DEFINE_TYPE (GtkHSeparator, ctk_hseparator, GTK_TYPE_SEPARATOR)
 
 static void
-gtk_hseparator_class_init (GtkHSeparatorClass *class)
+ctk_hseparator_class_init (GtkHSeparatorClass *class)
 {
 }
 
 static void
-gtk_hseparator_init (GtkHSeparator *hseparator)
+ctk_hseparator_init (GtkHSeparator *hseparator)
 {
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (hseparator),
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (hseparator),
                                   GTK_ORIENTATION_HORIZONTAL);
 }
 
 /**
- * gtk_hseparator_new:
+ * ctk_hseparator_new:
  *
  * Creates a new #GtkHSeparator.
  *
  * Returns: a new #GtkHSeparator.
  *
- * Deprecated: 3.2: Use gtk_separator_new() with %GTK_ORIENTATION_HORIZONTAL instead
+ * Deprecated: 3.2: Use ctk_separator_new() with %GTK_ORIENTATION_HORIZONTAL instead
  */
 GtkWidget *
-gtk_hseparator_new (void)
+ctk_hseparator_new (void)
 {
   return g_object_new (GTK_TYPE_HSEPARATOR, NULL);
 }

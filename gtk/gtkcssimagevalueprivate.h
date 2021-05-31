@@ -25,9 +25,9 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _gtk_css_image_value_new           (GtkCssImage         *image);
+GtkCssValue *   _ctk_css_image_value_new           (GtkCssImage         *image);
 
-GtkCssImage *   _gtk_css_image_value_get_image     (const GtkCssValue   *image);
+GtkCssImage *   _ctk_css_image_value_get_image     (const GtkCssValue   *image);
 
 
 G_END_DECLS

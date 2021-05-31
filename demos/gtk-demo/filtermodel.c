@@ -25,7 +25,7 @@ format_number (GtkTreeViewColumn *col,
   gint num;
   gchar *text;
 
-  gtk_tree_model_get (model, iter, GPOINTER_TO_INT (data), &num, -1);
+  ctk_tree_model_get (model, iter, GPOINTER_TO_INT (data), &num, -1);
   text = g_strdup_printf ("%d", num);
   g_object_set (cell, "text", text, NULL);
   g_free (text);
@@ -43,10 +43,10 @@ filter_modify_func (GtkTreeModel *model,
   GtkTreeModel *child_model;
   GtkTreeIter child_iter;
 
-  child_model = gtk_tree_model_filter_get_model (filter_model);
-  gtk_tree_model_filter_convert_iter_to_child_iter (filter_model, &child_iter, iter);
+  child_model = ctk_tree_model_filter_get_model (filter_model);
+  ctk_tree_model_filter_convert_iter_to_child_iter (filter_model, &child_iter, iter);
 
-  gtk_tree_model_get (child_model, &child_iter,
+  ctk_tree_model_get (child_model, &child_iter,
                       WIDTH_COLUMN, &width,
                       HEIGHT_COLUMN, &height,
                       -1);
@@ -77,7 +77,7 @@ visible_func (GtkTreeModel *model,
 {
   gint width;
 
-  gtk_tree_model_get (model, iter,
+  ctk_tree_model_get (model, iter,
                       WIDTH_COLUMN, &width,
                       -1);
 
@@ -95,15 +95,15 @@ cell_edited (GtkCellRendererSpin *cell,
   GtkTreeIter iter;
   int column;
 
-  path = gtk_tree_path_new_from_string (path_string);
-  gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_string (path_string);
+  ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path);
+  ctk_tree_path_free (path);
 
   column = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (cell), "column"));
 
   val = atoi (new_text);
 
-  gtk_list_store_set (store, &iter, column, val, -1);
+  ctk_list_store_set (store, &iter, column, val, -1);
 }
 
 GtkWidget *
@@ -121,86 +121,86 @@ do_filtermodel (GtkWidget *do_widget)
     {
       GtkBuilder *builder;
 
-      builder = gtk_builder_new_from_resource ("/filtermodel/filtermodel.ui");
-      gtk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (gtk_builder_get_object (builder, "window1"));
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
+      builder = ctk_builder_new_from_resource ("/filtermodel/filtermodel.ui");
+      ctk_builder_connect_signals (builder, NULL);
+      window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      store = (GtkListStore*)gtk_builder_get_object (builder, "liststore1");
+      store = (GtkListStore*)ctk_builder_get_object (builder, "liststore1");
 
-      column = (GtkTreeViewColumn*)gtk_builder_get_object (builder, "treeviewcolumn1");
-      cell = (GtkCellRenderer*)gtk_builder_get_object (builder, "cellrenderertext1");
-      gtk_tree_view_column_set_cell_data_func (column, cell,
+      column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn1");
+      cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrenderertext1");
+      ctk_tree_view_column_set_cell_data_func (column, cell,
                                                format_number, GINT_TO_POINTER (WIDTH_COLUMN), NULL);
       g_object_set_data (G_OBJECT (cell), "column", GINT_TO_POINTER (WIDTH_COLUMN));
       g_signal_connect (cell, "edited", G_CALLBACK (cell_edited), store);
 
-      column = (GtkTreeViewColumn*)gtk_builder_get_object (builder, "treeviewcolumn2");
-      cell = (GtkCellRenderer*)gtk_builder_get_object (builder, "cellrenderertext2");
-      gtk_tree_view_column_set_cell_data_func (column, cell,
+      column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn2");
+      cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrenderertext2");
+      ctk_tree_view_column_set_cell_data_func (column, cell,
                                                format_number, GINT_TO_POINTER (HEIGHT_COLUMN), NULL);
       g_object_set_data (G_OBJECT (cell), "column", GINT_TO_POINTER (HEIGHT_COLUMN));
       g_signal_connect (cell, "edited", G_CALLBACK (cell_edited), store);
 
-      column = (GtkTreeViewColumn*)gtk_builder_get_object (builder, "treeviewcolumn3");
-      cell = (GtkCellRenderer*)gtk_builder_get_object (builder, "cellrenderertext3");
-      gtk_tree_view_column_set_cell_data_func (column, cell,
+      column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn3");
+      cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrenderertext3");
+      ctk_tree_view_column_set_cell_data_func (column, cell,
                                                format_number, GINT_TO_POINTER (WIDTH_COLUMN), NULL);
 
-      column = (GtkTreeViewColumn*)gtk_builder_get_object (builder, "treeviewcolumn4");
-      cell = (GtkCellRenderer*)gtk_builder_get_object (builder, "cellrenderertext4");
-      gtk_tree_view_column_set_cell_data_func (column, cell,
+      column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn4");
+      cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrenderertext4");
+      ctk_tree_view_column_set_cell_data_func (column, cell,
                                                format_number, GINT_TO_POINTER (HEIGHT_COLUMN), NULL);
 
-      column = (GtkTreeViewColumn*)gtk_builder_get_object (builder, "treeviewcolumn5");
-      cell = (GtkCellRenderer*)gtk_builder_get_object (builder, "cellrenderertext5");
-      gtk_tree_view_column_set_cell_data_func (column, cell,
+      column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn5");
+      cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrenderertext5");
+      ctk_tree_view_column_set_cell_data_func (column, cell,
                                                format_number, GINT_TO_POINTER (AREA_COLUMN), NULL);
 
-      column = (GtkTreeViewColumn*)gtk_builder_get_object (builder, "treeviewcolumn6");
-      cell = (GtkCellRenderer*)gtk_builder_get_object (builder, "cellrendererpixbuf1");
-      gtk_tree_view_column_add_attribute (column, cell, "visible", SQUARE_COLUMN);
+      column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn6");
+      cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrendererpixbuf1");
+      ctk_tree_view_column_add_attribute (column, cell, "visible", SQUARE_COLUMN);
 
-      tree = (GtkWidget*)gtk_builder_get_object (builder, "treeview2");
+      tree = (GtkWidget*)ctk_builder_get_object (builder, "treeview2");
 
       types[WIDTH_COLUMN] = G_TYPE_INT;
       types[HEIGHT_COLUMN] = G_TYPE_INT;
       types[AREA_COLUMN] = G_TYPE_INT;
       types[SQUARE_COLUMN] = G_TYPE_BOOLEAN;
-      model = gtk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
-      gtk_tree_model_filter_set_modify_func (GTK_TREE_MODEL_FILTER (model),
+      model = ctk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
+      ctk_tree_model_filter_set_modify_func (GTK_TREE_MODEL_FILTER (model),
                                              G_N_ELEMENTS (types), types,
                                              filter_modify_func, NULL, NULL);
 
-      gtk_tree_view_set_model (GTK_TREE_VIEW (tree), model);
+      ctk_tree_view_set_model (GTK_TREE_VIEW (tree), model);
 
-      column = (GtkTreeViewColumn*)gtk_builder_get_object (builder, "treeviewcolumn7");
-      cell = (GtkCellRenderer*)gtk_builder_get_object (builder, "cellrenderertext6");
-      gtk_tree_view_column_set_cell_data_func (column, cell,
+      column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn7");
+      cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrenderertext6");
+      ctk_tree_view_column_set_cell_data_func (column, cell,
                                                format_number, GINT_TO_POINTER (WIDTH_COLUMN), NULL);
 
-      column = (GtkTreeViewColumn*)gtk_builder_get_object (builder, "treeviewcolumn8");
-      cell = (GtkCellRenderer*)gtk_builder_get_object (builder, "cellrenderertext7");
-      gtk_tree_view_column_set_cell_data_func (column, cell,
+      column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn8");
+      cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrenderertext7");
+      ctk_tree_view_column_set_cell_data_func (column, cell,
                                                format_number, GINT_TO_POINTER (HEIGHT_COLUMN), NULL);
 
-      tree = (GtkWidget*)gtk_builder_get_object (builder, "treeview3");
+      tree = (GtkWidget*)ctk_builder_get_object (builder, "treeview3");
 
-      model = gtk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
-      gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (model),
+      model = ctk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
+      ctk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (model),
                                               visible_func, NULL, NULL);
-      gtk_tree_view_set_model (GTK_TREE_VIEW (tree), model);
+      ctk_tree_view_set_model (GTK_TREE_VIEW (tree), model);
 
       g_object_unref (builder);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

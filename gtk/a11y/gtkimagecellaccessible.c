@@ -27,35 +27,35 @@ struct _GtkImageCellAccessiblePrivate
 
 static void atk_image_interface_init (AtkImageIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkImageCellAccessible, gtk_image_cell_accessible, GTK_TYPE_RENDERER_CELL_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkImageCellAccessible, ctk_image_cell_accessible, GTK_TYPE_RENDERER_CELL_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkImageCellAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_IMAGE, atk_image_interface_init))
 
 static void
-gtk_image_cell_accessible_finalize (GObject *object)
+ctk_image_cell_accessible_finalize (GObject *object)
 {
   GtkImageCellAccessible *image_cell = GTK_IMAGE_CELL_ACCESSIBLE (object);
 
   g_free (image_cell->priv->image_description);
-  G_OBJECT_CLASS (gtk_image_cell_accessible_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_image_cell_accessible_parent_class)->finalize (object);
 }
 
 static void
-gtk_image_cell_accessible_class_init (GtkImageCellAccessibleClass *klass)
+ctk_image_cell_accessible_class_init (GtkImageCellAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-  gobject_class->finalize = gtk_image_cell_accessible_finalize;
+  gobject_class->finalize = ctk_image_cell_accessible_finalize;
 }
 
 static void
-gtk_image_cell_accessible_init (GtkImageCellAccessible *image_cell)
+ctk_image_cell_accessible_init (GtkImageCellAccessible *image_cell)
 {
-  image_cell->priv = gtk_image_cell_accessible_get_instance_private (image_cell);
+  image_cell->priv = ctk_image_cell_accessible_get_instance_private (image_cell);
 }
 
 static const gchar *
-gtk_image_cell_accessible_get_image_description (AtkImage *image)
+ctk_image_cell_accessible_get_image_description (AtkImage *image)
 {
   GtkImageCellAccessible *image_cell = GTK_IMAGE_CELL_ACCESSIBLE (image);
 
@@ -63,7 +63,7 @@ gtk_image_cell_accessible_get_image_description (AtkImage *image)
 }
 
 static gboolean
-gtk_image_cell_accessible_set_image_description (AtkImage    *image,
+ctk_image_cell_accessible_set_image_description (AtkImage    *image,
                                                  const gchar *description)
 {
   GtkImageCellAccessible *image_cell = GTK_IMAGE_CELL_ACCESSIBLE (image);
@@ -78,7 +78,7 @@ gtk_image_cell_accessible_set_image_description (AtkImage    *image,
 }
 
 static void
-gtk_image_cell_accessible_get_image_position (AtkImage     *image,
+ctk_image_cell_accessible_get_image_position (AtkImage     *image,
                                               gint         *x,
                                               gint         *y,
                                               AtkCoordType  coord_type)
@@ -88,7 +88,7 @@ gtk_image_cell_accessible_get_image_position (AtkImage     *image,
 }
 
 static void
-gtk_image_cell_accessible_get_image_size (AtkImage *image,
+ctk_image_cell_accessible_get_image_size (AtkImage *image,
                                           gint     *width,
                                           gint     *height)
 {
@@ -116,8 +116,8 @@ gtk_image_cell_accessible_get_image_size (AtkImage *image,
 static void
 atk_image_interface_init (AtkImageIface  *iface)
 {
-  iface->get_image_description = gtk_image_cell_accessible_get_image_description;
-  iface->set_image_description = gtk_image_cell_accessible_set_image_description;
-  iface->get_image_position = gtk_image_cell_accessible_get_image_position;
-  iface->get_image_size = gtk_image_cell_accessible_get_image_size;
+  iface->get_image_description = ctk_image_cell_accessible_get_image_description;
+  iface->set_image_description = ctk_image_cell_accessible_set_image_description;
+  iface->get_image_position = ctk_image_cell_accessible_get_image_position;
+  iface->get_image_size = ctk_image_cell_accessible_get_image_size;
 }

@@ -2,7 +2,7 @@
 	       version="3.10"
 	       depends="gtk+"
 	       library="gtk-3">
-  <init-function>gtk_glade_catalog_init</init-function>
+  <init-function>ctk_glade_catalog_init</init-function>
 
   <glade-widget-classes>
     <!-- base GTK+ private widgets -->

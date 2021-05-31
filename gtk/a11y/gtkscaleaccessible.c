@@ -20,34 +20,34 @@
 #include <gtk/gtk.h>
 #include "gtkscaleaccessible.h"
 
-G_DEFINE_TYPE (GtkScaleAccessible, gtk_scale_accessible, GTK_TYPE_RANGE_ACCESSIBLE)
+G_DEFINE_TYPE (GtkScaleAccessible, ctk_scale_accessible, GTK_TYPE_RANGE_ACCESSIBLE)
 
 static const gchar *
-gtk_scale_accessible_get_description (AtkObject *object)
+ctk_scale_accessible_get_description (AtkObject *object)
 {
   GtkWidget *widget;
   PangoLayout *layout;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (object));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (object));
   if (widget == NULL)
     return NULL;
 
-  layout = gtk_scale_get_layout (GTK_SCALE (widget));
+  layout = ctk_scale_get_layout (GTK_SCALE (widget));
   if (layout)
     return pango_layout_get_text (layout);
 
-  return ATK_OBJECT_CLASS (gtk_scale_accessible_parent_class)->get_description (object);
+  return ATK_OBJECT_CLASS (ctk_scale_accessible_parent_class)->get_description (object);
 }
 
 static void
-gtk_scale_accessible_class_init (GtkScaleAccessibleClass *klass)
+ctk_scale_accessible_class_init (GtkScaleAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
 
-  class->get_description = gtk_scale_accessible_get_description;
+  class->get_description = ctk_scale_accessible_get_description;
 }
 
 static void
-gtk_scale_accessible_init (GtkScaleAccessible *scale)
+ctk_scale_accessible_init (GtkScaleAccessible *scale)
 {
 }

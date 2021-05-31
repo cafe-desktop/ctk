@@ -26,17 +26,17 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _gtk_css_ident_value_new            (const char             *ident);
-GtkCssValue *   _gtk_css_ident_value_new_take       (char                   *ident);
-GtkCssValue *   _gtk_css_ident_value_try_parse      (GtkCssParser           *parser);
+GtkCssValue *   _ctk_css_ident_value_new            (const char             *ident);
+GtkCssValue *   _ctk_css_ident_value_new_take       (char                   *ident);
+GtkCssValue *   _ctk_css_ident_value_try_parse      (GtkCssParser           *parser);
 
-const char *    _gtk_css_ident_value_get            (const GtkCssValue      *ident);
+const char *    _ctk_css_ident_value_get            (const GtkCssValue      *ident);
 
-GtkCssValue *   _gtk_css_string_value_new           (const char             *string);
-GtkCssValue *   _gtk_css_string_value_new_take      (char                   *string);
-GtkCssValue *   _gtk_css_string_value_parse         (GtkCssParser           *parser);
+GtkCssValue *   _ctk_css_string_value_new           (const char             *string);
+GtkCssValue *   _ctk_css_string_value_new_take      (char                   *string);
+GtkCssValue *   _ctk_css_string_value_parse         (GtkCssParser           *parser);
 
-const char *    _gtk_css_string_value_get           (const GtkCssValue      *string);
+const char *    _ctk_css_string_value_get           (const GtkCssValue      *string);
 
 
 G_END_DECLS

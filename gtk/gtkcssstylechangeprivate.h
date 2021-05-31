@@ -34,22 +34,22 @@ struct _GtkCssStyleChange {
   GtkBitmask    *changes;
 };
 
-void            gtk_css_style_change_init               (GtkCssStyleChange      *change,
+void            ctk_css_style_change_init               (GtkCssStyleChange      *change,
                                                          GtkCssStyle            *old_style,
                                                          GtkCssStyle            *new_style);
-void            gtk_css_style_change_finish             (GtkCssStyleChange      *change);
+void            ctk_css_style_change_finish             (GtkCssStyleChange      *change);
 
-GtkCssStyle *   gtk_css_style_change_get_old_style      (GtkCssStyleChange      *change);
-GtkCssStyle *   gtk_css_style_change_get_new_style      (GtkCssStyleChange      *change);
+GtkCssStyle *   ctk_css_style_change_get_old_style      (GtkCssStyleChange      *change);
+GtkCssStyle *   ctk_css_style_change_get_new_style      (GtkCssStyleChange      *change);
 
-gboolean        gtk_css_style_change_has_change         (GtkCssStyleChange      *change);
-gboolean        gtk_css_style_change_affects            (GtkCssStyleChange      *change,
+gboolean        ctk_css_style_change_has_change         (GtkCssStyleChange      *change);
+gboolean        ctk_css_style_change_affects            (GtkCssStyleChange      *change,
                                                          GtkCssAffects           affects);
-gboolean        gtk_css_style_change_changes_property   (GtkCssStyleChange      *change,
+gboolean        ctk_css_style_change_changes_property   (GtkCssStyleChange      *change,
                                                          guint                   id);
-void            gtk_css_style_change_print              (GtkCssStyleChange      *change, GString *string);
+void            ctk_css_style_change_print              (GtkCssStyleChange      *change, GString *string);
 
-char *          gtk_css_style_change_to_string          (GtkCssStyleChange      *change);
+char *          ctk_css_style_change_to_string          (GtkCssStyleChange      *change);
 G_END_DECLS
 
 #endif /* __GTK_CSS_STYLE_CHANGE_PRIVATE_H__ */

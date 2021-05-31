@@ -53,9 +53,9 @@ struct _GtkSocketPrivate
 };
 
 /* from gtkplug.c */
-void _gtk_plug_add_to_socket      (GtkPlug   *plug,
+void _ctk_plug_add_to_socket      (GtkPlug   *plug,
 				   GtkSocket *socket_);
-void _gtk_plug_remove_from_socket (GtkPlug   *plug,
+void _ctk_plug_remove_from_socket (GtkPlug   *plug,
 				   GtkSocket *socket_);
 
 #endif /* __GTK_SOCKET_PRIVATE_H__ */

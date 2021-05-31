@@ -1892,7 +1892,7 @@ msgstr "Искључена"
 
 #. This label is displayed in a treeview cell displaying
 #. * an accelerator key combination that is not valid according
-#. * to gtk_accelerator_valid().
+#. * to ctk_accelerator_valid().
 #.
 #: gtk/gtkcellrendereraccel.c:283
 msgctxt "Accelerator"
@@ -8806,10 +8806,10 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr "Вредност"
 
 #~ msgid ""
-#~ "The value returned by gtk_radio_action_get_current_value() when this "
+#~ "The value returned by ctk_radio_action_get_current_value() when this "
 #~ "action is the current action of its group."
 #~ msgstr ""
-#~ "Вредност коју враћа „gtk_radio_action_get_current_value()“ када је ова "
+#~ "Вредност коју враћа „ctk_radio_action_get_current_value()“ када је ова "
 #~ "радња текућа радња његове групе."
 
 #~ msgid "The radio action whose group this action belongs to."
@@ -9026,10 +9026,10 @@ msgstr "Штампај на пробном штампачу"
 
 #~ msgid ""
 #~ "A logo for the about box. If this is not set, it defaults to "
-#~ "gtk_window_get_default_icon_list()"
+#~ "ctk_window_get_default_icon_list()"
 #~ msgstr ""
 #~ "Логотип за прозорче о програму. Уколико није постављено, подразумева се "
-#~ "„gtk_window_get_default_icon_list()“"
+#~ "„ctk_window_get_default_icon_list()“"
 
 #~ msgid "Logo Icon Name"
 #~ msgstr "Назив иконице логотипа"
@@ -10322,10 +10322,10 @@ msgstr "Штампај на пробном штампачу"
 
 #~ msgid ""
 #~ "The fraction of total entry width to move the progress bouncing block for "
-#~ "each call to gtk_entry_progress_pulse()"
+#~ "each call to ctk_entry_progress_pulse()"
 #~ msgstr ""
 #~ "Колико од укупног напретка унапредити померајући блок при импулсном "
-#~ "прираштају за сваки позив gtk_entry_progress_pulse() функције"
+#~ "прираштају за сваки позив ctk_entry_progress_pulse() функције"
 
 #~ msgid "Show text in the entry when it's empty and unfocused"
 #~ msgstr "Приказује текст у уносу када је празан и није у првом плану"
@@ -13691,8 +13691,8 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr ""
 #~ "Маска за догађаје која одређује које врсте GdkEvents-а овај елемент прима"
 
-#~ msgid "Whether gtk_widget_show_all() should not affect this widget"
-#~ msgstr "Да ли „gtk_widget_show_all()“ не треба да утиче на овај елемент"
+#~ msgid "Whether ctk_widget_show_all() should not affect this widget"
+#~ msgstr "Да ли „ctk_widget_show_all()“ не треба да утиче на овај елемент"
 
 #~ msgid "Whether this widget has a tooltip"
 #~ msgstr "Да ли овај елемент има облачић"

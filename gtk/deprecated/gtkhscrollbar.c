@@ -51,33 +51,33 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  */
 
 
-G_DEFINE_TYPE (GtkHScrollbar, gtk_hscrollbar, GTK_TYPE_SCROLLBAR)
+G_DEFINE_TYPE (GtkHScrollbar, ctk_hscrollbar, GTK_TYPE_SCROLLBAR)
 
 static void
-gtk_hscrollbar_class_init (GtkHScrollbarClass *class)
+ctk_hscrollbar_class_init (GtkHScrollbarClass *class)
 {
   GTK_RANGE_CLASS (class)->stepper_detail = "hscrollbar";
 }
 
 static void
-gtk_hscrollbar_init (GtkHScrollbar *hscrollbar)
+ctk_hscrollbar_init (GtkHScrollbar *hscrollbar)
 {
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (hscrollbar),
+  ctk_orientable_set_orientation (GTK_ORIENTABLE (hscrollbar),
                                   GTK_ORIENTATION_HORIZONTAL);
 }
 
 /**
- * gtk_hscrollbar_new:
+ * ctk_hscrollbar_new:
  * @adjustment: (allow-none): the #GtkAdjustment to use, or %NULL to create a new adjustment
  *
  * Creates a new horizontal scrollbar.
  *
  * Returns: the new #GtkHScrollbar
  *
- * Deprecated: 3.2: Use gtk_scrollbar_new() with %GTK_ORIENTATION_HORIZONTAL instead
+ * Deprecated: 3.2: Use ctk_scrollbar_new() with %GTK_ORIENTATION_HORIZONTAL instead
  */
 GtkWidget *
-gtk_hscrollbar_new (GtkAdjustment *adjustment)
+ctk_hscrollbar_new (GtkAdjustment *adjustment)
 {
   g_return_val_if_fail (adjustment == NULL || GTK_IS_ADJUSTMENT (adjustment),
                         NULL);

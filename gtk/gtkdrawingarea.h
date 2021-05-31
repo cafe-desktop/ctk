@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_DRAWING_AREA            (gtk_drawing_area_get_type ())
+#define GTK_TYPE_DRAWING_AREA            (ctk_drawing_area_get_type ())
 #define GTK_DRAWING_AREA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_DRAWING_AREA, GtkDrawingArea))
 #define GTK_DRAWING_AREA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_DRAWING_AREA, GtkDrawingAreaClass))
 #define GTK_IS_DRAWING_AREA(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_DRAWING_AREA))
@@ -59,17 +59,17 @@ struct _GtkDrawingAreaClass
   GtkWidgetClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_drawing_area_get_type (void) G_GNUC_CONST;
+GType      ctk_drawing_area_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_drawing_area_new      (void);
+GtkWidget* ctk_drawing_area_new      (void);
 
 G_END_DECLS
 

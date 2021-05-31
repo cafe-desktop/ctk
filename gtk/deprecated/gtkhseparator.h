@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HSEPARATOR                  (gtk_hseparator_get_type ())
+#define GTK_TYPE_HSEPARATOR                  (ctk_hseparator_get_type ())
 #define GTK_HSEPARATOR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HSEPARATOR, GtkHSeparator))
 #define GTK_HSEPARATOR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HSEPARATOR, GtkHSeparatorClass))
 #define GTK_IS_HSEPARATOR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HSEPARATOR))
@@ -56,9 +56,9 @@ struct _GtkHSeparatorClass
 
 
 GDK_DEPRECATED_IN_3_2
-GType      gtk_hseparator_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(gtk_separator_new)
-GtkWidget* gtk_hseparator_new      (void);
+GType      ctk_hseparator_get_type (void) G_GNUC_CONST;
+GDK_DEPRECATED_IN_3_2_FOR(ctk_separator_new)
+GtkWidget* ctk_hseparator_new      (void);
 
 G_END_DECLS
 

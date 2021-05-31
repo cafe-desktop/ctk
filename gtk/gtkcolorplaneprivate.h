@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_PLANE            (gtk_color_plane_get_type ())
+#define GTK_TYPE_COLOR_PLANE            (ctk_color_plane_get_type ())
 #define GTK_COLOR_PLANE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_PLANE, GtkColorPlane))
 #define GTK_COLOR_PLANE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_PLANE, GtkColorPlaneClass))
 #define GTK_IS_COLOR_PLANE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_PLANE))
@@ -47,15 +47,15 @@ struct _GtkColorPlaneClass
   GtkDrawingAreaClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
-GType       gtk_color_plane_get_type (void) G_GNUC_CONST;
-GtkWidget * gtk_color_plane_new      (GtkAdjustment *h_adj,
+GType       ctk_color_plane_get_type (void) G_GNUC_CONST;
+GtkWidget * ctk_color_plane_new      (GtkAdjustment *h_adj,
                                       GtkAdjustment *s_adj,
                                       GtkAdjustment *v_adj);
 

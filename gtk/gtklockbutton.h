@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LOCK_BUTTON         (gtk_lock_button_get_type ())
+#define GTK_TYPE_LOCK_BUTTON         (ctk_lock_button_get_type ())
 #define GTK_LOCK_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_LOCK_BUTTON, GtkLockButton))
 #define GTK_LOCK_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_LOCK_BUTTON,  GtkLockButtonClass))
 #define GTK_IS_LOCK_BUTTON(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_LOCK_BUTTON))
@@ -63,13 +63,13 @@ struct _GtkLockButtonClass
 };
 
 GDK_AVAILABLE_IN_3_2
-GType        gtk_lock_button_get_type       (void) G_GNUC_CONST;
+GType        ctk_lock_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_2
-GtkWidget   *gtk_lock_button_new            (GPermission   *permission);
+GtkWidget   *ctk_lock_button_new            (GPermission   *permission);
 GDK_AVAILABLE_IN_3_2
-GPermission *gtk_lock_button_get_permission (GtkLockButton *button);
+GPermission *ctk_lock_button_get_permission (GtkLockButton *button);
 GDK_AVAILABLE_IN_3_2
-void         gtk_lock_button_set_permission (GtkLockButton *button,
+void         ctk_lock_button_set_permission (GtkLockButton *button,
                                              GPermission   *permission);
 
 

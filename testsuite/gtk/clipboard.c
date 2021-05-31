@@ -25,16 +25,16 @@
 static void
 test_text (void)
 {
-  GtkClipboard *clipboard = gtk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
+  GtkClipboard *clipboard = ctk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
   char *text;
 
-  gtk_clipboard_set_text (clipboard, SOME_TEXT, -1);
-  text = gtk_clipboard_wait_for_text (clipboard);
+  ctk_clipboard_set_text (clipboard, SOME_TEXT, -1);
+  text = ctk_clipboard_wait_for_text (clipboard);
   g_assert_cmpstr (text, ==, SOME_TEXT);
   g_free (text);
 
-  gtk_clipboard_set_text (clipboard, SOME_TEXT SOME_TEXT, strlen (SOME_TEXT));
-  text = gtk_clipboard_wait_for_text (clipboard);
+  ctk_clipboard_set_text (clipboard, SOME_TEXT SOME_TEXT, strlen (SOME_TEXT));
+  text = ctk_clipboard_wait_for_text (clipboard);
   g_assert_cmpstr (text, ==, SOME_TEXT);
   g_free (text);
 }
@@ -49,7 +49,7 @@ test_with_data_get (GtkClipboard *clipboard,
 
     g_assert_cmpuint (info, ==, 42);
 
-    success = gtk_selection_data_set_text (selection_data, SOME_TEXT, -1);
+    success = ctk_selection_data_set_text (selection_data, SOME_TEXT, -1);
     g_assert (success);
 }
 
@@ -60,7 +60,7 @@ test_with_data_got (GtkClipboard *clipboard,
 {
     guchar *text;
 
-    text = gtk_selection_data_get_text (selection_data);
+    text = ctk_selection_data_get_text (selection_data);
     g_assert_cmpstr ((char*)text, ==, SOME_TEXT);
     g_free (text);
 }
@@ -68,18 +68,18 @@ test_with_data_got (GtkClipboard *clipboard,
 static void
 test_with_data (void)
 {
-    GtkClipboard *clipboard = gtk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
+    GtkClipboard *clipboard = ctk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
     GtkTargetEntry entries[] = { { .target = TARGET_TEXT, .info = 42 } };
 
-    gtk_clipboard_set_with_data (clipboard, entries, G_N_ELEMENTS(entries), test_with_data_get, NULL, NULL);
-    gtk_clipboard_request_contents (clipboard, gdk_atom_intern (TARGET_TEXT, FALSE), test_with_data_got, NULL);
+    ctk_clipboard_set_with_data (clipboard, entries, G_N_ELEMENTS(entries), test_with_data_get, NULL, NULL);
+    ctk_clipboard_request_contents (clipboard, gdk_atom_intern (TARGET_TEXT, FALSE), test_with_data_got, NULL);
 }
 
 int
 main (int   argc,
       char *argv[])
 {
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
   g_test_add_func ("/clipboard/test_text", test_text);
   g_test_add_func ("/clipboard/test_with_data", test_with_data);

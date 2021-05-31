@@ -109,7 +109,7 @@ main (int argc, char **argv)
 	gint retval = 1;
 	GError *error = NULL;
 
-	gtk_init (&argc, &argv);
+	ctk_init (&argc, &argv);
 
 	root = gdk_get_default_root_window ();
 	pixbuf = gdk_pixbuf_get_from_window (root,

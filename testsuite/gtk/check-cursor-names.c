@@ -48,9 +48,9 @@ main (int argc, char *argv[])
   char *test_name;
   char *theme;
 
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
-  g_object_get (gtk_settings_get_default (), "gtk-cursor-theme-name", &theme, NULL);
+  g_object_get (ctk_settings_get_default (), "gtk-cursor-theme-name", &theme, NULL);
   g_test_message ("Testing cursor theme: %s", theme);
   g_free (theme);
 

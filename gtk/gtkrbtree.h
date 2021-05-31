@@ -98,72 +98,72 @@ struct _GtkRBNode
 #define GTK_RBNODE_FLAG_SET(node, flag) 	(node?(((node->flags&flag)==flag)?TRUE:FALSE):FALSE)
 
 
-GtkRBTree *_gtk_rbtree_new              (void);
-void       _gtk_rbtree_free             (GtkRBTree              *tree);
-void       _gtk_rbtree_remove           (GtkRBTree              *tree);
-void       _gtk_rbtree_destroy          (GtkRBTree              *tree);
-GtkRBNode *_gtk_rbtree_insert_before    (GtkRBTree              *tree,
+GtkRBTree *_ctk_rbtree_new              (void);
+void       _ctk_rbtree_free             (GtkRBTree              *tree);
+void       _ctk_rbtree_remove           (GtkRBTree              *tree);
+void       _ctk_rbtree_destroy          (GtkRBTree              *tree);
+GtkRBNode *_ctk_rbtree_insert_before    (GtkRBTree              *tree,
 					 GtkRBNode              *node,
 					 gint                    height,
 					 gboolean                valid);
-GtkRBNode *_gtk_rbtree_insert_after     (GtkRBTree              *tree,
+GtkRBNode *_ctk_rbtree_insert_after     (GtkRBTree              *tree,
 					 GtkRBNode              *node,
 					 gint                    height,
 					 gboolean                valid);
-void       _gtk_rbtree_remove_node      (GtkRBTree              *tree,
+void       _ctk_rbtree_remove_node      (GtkRBTree              *tree,
 					 GtkRBNode              *node);
-gboolean   _gtk_rbtree_is_nil           (GtkRBNode              *node);
-void       _gtk_rbtree_reorder          (GtkRBTree              *tree,
+gboolean   _ctk_rbtree_is_nil           (GtkRBNode              *node);
+void       _ctk_rbtree_reorder          (GtkRBTree              *tree,
 					 gint                   *new_order,
 					 gint                    length);
-gboolean   _gtk_rbtree_contains         (GtkRBTree              *tree,
+gboolean   _ctk_rbtree_contains         (GtkRBTree              *tree,
                                          GtkRBTree              *potential_child);
-GtkRBNode *_gtk_rbtree_find_count       (GtkRBTree              *tree,
+GtkRBNode *_ctk_rbtree_find_count       (GtkRBTree              *tree,
 					 gint                    count);
-void       _gtk_rbtree_node_set_height  (GtkRBTree              *tree,
+void       _ctk_rbtree_node_set_height  (GtkRBTree              *tree,
 					 GtkRBNode              *node,
 					 gint                    height);
-void       _gtk_rbtree_node_mark_invalid(GtkRBTree              *tree,
+void       _ctk_rbtree_node_mark_invalid(GtkRBTree              *tree,
 					 GtkRBNode              *node);
-void       _gtk_rbtree_node_mark_valid  (GtkRBTree              *tree,
+void       _ctk_rbtree_node_mark_valid  (GtkRBTree              *tree,
 					 GtkRBNode              *node);
-void       _gtk_rbtree_column_invalid   (GtkRBTree              *tree);
-void       _gtk_rbtree_mark_invalid     (GtkRBTree              *tree);
-void       _gtk_rbtree_set_fixed_height (GtkRBTree              *tree,
+void       _ctk_rbtree_column_invalid   (GtkRBTree              *tree);
+void       _ctk_rbtree_mark_invalid     (GtkRBTree              *tree);
+void       _ctk_rbtree_set_fixed_height (GtkRBTree              *tree,
 					 gint                    height,
 					 gboolean                mark_valid);
-gint       _gtk_rbtree_node_find_offset (GtkRBTree              *tree,
+gint       _ctk_rbtree_node_find_offset (GtkRBTree              *tree,
 					 GtkRBNode              *node);
-guint      _gtk_rbtree_node_get_index   (GtkRBTree              *tree,
+guint      _ctk_rbtree_node_get_index   (GtkRBTree              *tree,
 					 GtkRBNode              *node);
-gboolean   _gtk_rbtree_find_index       (GtkRBTree              *tree,
+gboolean   _ctk_rbtree_find_index       (GtkRBTree              *tree,
 					 guint                   index,
 					 GtkRBTree             **new_tree,
 					 GtkRBNode             **new_node);
-gint       _gtk_rbtree_find_offset      (GtkRBTree              *tree,
+gint       _ctk_rbtree_find_offset      (GtkRBTree              *tree,
 					 gint                    offset,
 					 GtkRBTree             **new_tree,
 					 GtkRBNode             **new_node);
-void       _gtk_rbtree_traverse         (GtkRBTree              *tree,
+void       _ctk_rbtree_traverse         (GtkRBTree              *tree,
 					 GtkRBNode              *node,
 					 GTraverseType           order,
 					 GtkRBTreeTraverseFunc   func,
 					 gpointer                data);
-GtkRBNode *_gtk_rbtree_first            (GtkRBTree              *tree);
-GtkRBNode *_gtk_rbtree_next             (GtkRBTree              *tree,
+GtkRBNode *_ctk_rbtree_first            (GtkRBTree              *tree);
+GtkRBNode *_ctk_rbtree_next             (GtkRBTree              *tree,
 					 GtkRBNode              *node);
-GtkRBNode *_gtk_rbtree_prev             (GtkRBTree              *tree,
+GtkRBNode *_ctk_rbtree_prev             (GtkRBTree              *tree,
 					 GtkRBNode              *node);
-void       _gtk_rbtree_next_full        (GtkRBTree              *tree,
+void       _ctk_rbtree_next_full        (GtkRBTree              *tree,
 					 GtkRBNode              *node,
 					 GtkRBTree             **new_tree,
 					 GtkRBNode             **new_node);
-void       _gtk_rbtree_prev_full        (GtkRBTree              *tree,
+void       _ctk_rbtree_prev_full        (GtkRBTree              *tree,
 					 GtkRBNode              *node,
 					 GtkRBTree             **new_tree,
 					 GtkRBNode             **new_node);
 
-gint       _gtk_rbtree_get_depth        (GtkRBTree              *tree);
+gint       _ctk_rbtree_get_depth        (GtkRBTree              *tree);
 
 
 G_END_DECLS

@@ -31,9 +31,9 @@ count_children (GtkTreeModel *model,
   guint count = 0;
   gboolean valid;
 
-  for (valid = gtk_tree_model_iter_children (model, &iter, parent);
+  for (valid = ctk_tree_model_iter_children (model, &iter, parent);
        valid;
-       valid = gtk_tree_model_iter_next (model, &iter))
+       valid = ctk_tree_model_iter_next (model, &iter))
     {
       count += count_children (model, &iter) + 1;
     }
@@ -44,7 +44,7 @@ count_children (GtkTreeModel *model,
 static void
 set_rows (GtkTreeView *treeview, guint i)
 {
-  g_assert (i == count_children (gtk_tree_view_get_model (treeview), NULL));
+  g_assert (i == count_children (ctk_tree_view_get_model (treeview), NULL));
   g_object_set_data (G_OBJECT (treeview), "rows", GUINT_TO_POINTER (i));
 }
 
@@ -60,7 +60,7 @@ log_operation_for_path (GtkTreePath *path,
 {
   char *path_string;
 
-  path_string = path ? gtk_tree_path_to_string (path) : g_strdup ("");
+  path_string = path ? ctk_tree_path_to_string (path) : g_strdup ("");
 
   g_printerr ("%10s %s\n", operation_name, path_string);
 
@@ -74,11 +74,11 @@ log_operation (GtkTreeModel *model,
 {
   GtkTreePath *path;
 
-  path = gtk_tree_model_get_path (model, iter);
+  path = ctk_tree_model_get_path (model, iter);
 
   log_operation_for_path (path, operation_name);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 }
 
 /* moves iter to the next iter in the model in the display order
@@ -90,7 +90,7 @@ tree_model_iter_step (GtkTreeModel *model,
 {
   GtkTreeIter tmp;
   
-  if (gtk_tree_model_iter_children (model, &tmp, iter))
+  if (ctk_tree_model_iter_children (model, &tmp, iter))
     {
       *iter = tmp;
       return TRUE;
@@ -99,10 +99,10 @@ tree_model_iter_step (GtkTreeModel *model,
   do {
     tmp = *iter;
 
-    if (gtk_tree_model_iter_next (model, iter))
+    if (ctk_tree_model_iter_next (model, iter))
       return TRUE;
     }
-  while (gtk_tree_model_iter_parent (model, iter, &tmp));
+  while (ctk_tree_model_iter_parent (model, iter, &tmp));
 
   return FALSE;
 }
@@ -116,9 +116,9 @@ tree_view_random_iter (GtkTreeView *treeview,
   guint i = g_random_int_range (0, n_rows);
   GtkTreeModel *model;
 
-  model = gtk_tree_view_get_model (treeview);
+  model = ctk_tree_view_get_model (treeview);
   
-  if (!gtk_tree_model_get_iter_first (model, iter))
+  if (!ctk_tree_model_get_iter_first (model, iter))
     return;
 
   while (i-- > 0)
@@ -140,13 +140,13 @@ delete (GtkTreeView *treeview)
   GtkTreeModel *model;
   GtkTreeIter iter;
 
-  model = gtk_tree_view_get_model (treeview);
+  model = ctk_tree_view_get_model (treeview);
   
   tree_view_random_iter (treeview, &iter);
 
   n_rows -= count_children (model, &iter) + 1;
   log_operation (model, &iter, "remove");
-  gtk_tree_store_remove (GTK_TREE_STORE (model), &iter);
+  ctk_tree_store_remove (GTK_TREE_STORE (model), &iter);
   set_rows (treeview, n_rows);
 }
 
@@ -154,19 +154,19 @@ static void
 add_one (GtkTreeModel *model,
          GtkTreeIter *iter)
 {
-  guint n = gtk_tree_model_iter_n_children (model, iter);
+  guint n = ctk_tree_model_iter_n_children (model, iter);
   GtkTreeIter new_iter;
   static guint counter = 0;
   
   if (n > 0 && g_random_boolean ())
     {
       GtkTreeIter child;
-      gtk_tree_model_iter_nth_child (model, &child, iter, g_random_int_range (0, n));
+      ctk_tree_model_iter_nth_child (model, &child, iter, g_random_int_range (0, n));
       add_one (model, &child);
       return;
     }
 
-  gtk_tree_store_insert_with_values (GTK_TREE_STORE (model),
+  ctk_tree_store_insert_with_values (GTK_TREE_STORE (model),
                                      &new_iter,
                                      iter,
                                      g_random_int_range (-1, n),
@@ -180,7 +180,7 @@ add (GtkTreeView *treeview)
 {
   GtkTreeModel *model;
 
-  model = gtk_tree_view_get_model (treeview);
+  model = ctk_tree_view_get_model (treeview);
   add_one (model, NULL);
 
   set_rows (treeview, get_rows (treeview) + 1);
@@ -206,23 +206,23 @@ expand (GtkTreeView *treeview)
   GtkTreePath *path;
   gboolean valid;
 
-  model = gtk_tree_view_get_model (treeview);
+  model = ctk_tree_view_get_model (treeview);
   
-  for (valid = gtk_tree_model_get_iter_first (model, &iter);
+  for (valid = ctk_tree_model_get_iter_first (model, &iter);
        valid;
        valid = tree_model_iter_step (model, &iter))
     {
-      if (gtk_tree_model_iter_has_child (model, &iter))
+      if (ctk_tree_model_iter_has_child (model, &iter))
         {
-          path = gtk_tree_model_get_path (model, &iter);
-          if (!gtk_tree_view_row_expanded (treeview, path))
+          path = ctk_tree_model_get_path (model, &iter);
+          if (!ctk_tree_view_row_expanded (treeview, path))
             {
               log_operation (model, &iter, "expand");
-              gtk_tree_view_expand_row (treeview, path, FALSE);
-              gtk_tree_path_free (path);
+              ctk_tree_view_expand_row (treeview, path, FALSE);
+              ctk_tree_path_free (path);
               return;
             }
-          gtk_tree_path_free (path);
+          ctk_tree_path_free (path);
         }
     }
 }
@@ -235,29 +235,29 @@ collapse (GtkTreeView *treeview)
   GtkTreePath *last, *path;
   gboolean valid;
 
-  model = gtk_tree_view_get_model (treeview);
+  model = ctk_tree_view_get_model (treeview);
   last = NULL;
   
-  for (valid = gtk_tree_model_get_iter_first (model, &iter);
+  for (valid = ctk_tree_model_get_iter_first (model, &iter);
        valid;
        valid = tree_model_iter_step (model, &iter))
     {
-      path = gtk_tree_model_get_path (model, &iter);
-      if (gtk_tree_view_row_expanded (treeview, path))
+      path = ctk_tree_model_get_path (model, &iter);
+      if (ctk_tree_view_row_expanded (treeview, path))
         {
           if (last)
-            gtk_tree_path_free (last);
+            ctk_tree_path_free (last);
           last = path;
         }
       else
-        gtk_tree_path_free (path);
+        ctk_tree_path_free (path);
     }
 
   if (last)
     {
       log_operation_for_path (last, "collapse");
-      gtk_tree_view_collapse_row (treeview, last);
-      gtk_tree_path_free (last);
+      ctk_tree_view_collapse_row (treeview, last);
+      ctk_tree_path_free (last);
     }
 }
 
@@ -268,8 +268,8 @@ select_ (GtkTreeView *treeview)
 
   tree_view_random_iter (treeview, &iter);
 
-  log_operation (gtk_tree_view_get_model (treeview), &iter, "select");
-  gtk_tree_selection_select_iter (gtk_tree_view_get_selection (treeview),
+  log_operation (ctk_tree_view_get_model (treeview), &iter, "select");
+  ctk_tree_selection_select_iter (ctk_tree_view_get_selection (treeview),
                                   &iter);
 }
 
@@ -280,8 +280,8 @@ unselect (GtkTreeView *treeview)
 
   tree_view_random_iter (treeview, &iter);
 
-  log_operation (gtk_tree_view_get_model (treeview), &iter, "unselect");
-  gtk_tree_selection_unselect_iter (gtk_tree_view_get_selection (treeview),
+  log_operation (ctk_tree_view_get_model (treeview), &iter, "unselect");
+  ctk_tree_selection_unselect_iter (ctk_tree_view_get_selection (treeview),
                                     &iter);
 }
 
@@ -293,27 +293,27 @@ reset_model (GtkTreeView *treeview)
   GList *list, *selected;
   GtkTreePath *cursor;
   
-  selection = gtk_tree_view_get_selection (treeview);
-  model = g_object_ref (gtk_tree_view_get_model (treeview));
+  selection = ctk_tree_view_get_selection (treeview);
+  model = g_object_ref (ctk_tree_view_get_model (treeview));
 
   log_operation_for_path (NULL, "reset");
 
-  selected = gtk_tree_selection_get_selected_rows (selection, NULL);
-  gtk_tree_view_get_cursor (treeview, &cursor, NULL);
+  selected = ctk_tree_selection_get_selected_rows (selection, NULL);
+  ctk_tree_view_get_cursor (treeview, &cursor, NULL);
 
-  gtk_tree_view_set_model (treeview, NULL);
-  gtk_tree_view_set_model (treeview, model);
+  ctk_tree_view_set_model (treeview, NULL);
+  ctk_tree_view_set_model (treeview, model);
 
   if (cursor)
     {
-      gtk_tree_view_set_cursor (treeview, cursor, NULL, FALSE);
-      gtk_tree_path_free (cursor);
+      ctk_tree_view_set_cursor (treeview, cursor, NULL, FALSE);
+      ctk_tree_path_free (cursor);
     }
   for (list = selected; list; list = list->next)
     {
-      gtk_tree_selection_select_path (selection, list->data);
+      ctk_tree_selection_select_path (selection, list->data);
     }
-  g_list_free_full (selected, (GDestroyNotify) gtk_tree_path_free);
+  g_list_free_full (selected, (GDestroyNotify) ctk_tree_path_free);
 
   g_object_unref (model);
 }
@@ -333,12 +333,12 @@ assert_row_reference_is_path (GtkTreeRowReference *ref,
     }
 
   g_assert (path != NULL);
-  g_assert (gtk_tree_row_reference_valid (ref));
+  g_assert (ctk_tree_row_reference_valid (ref));
 
-  expected = gtk_tree_row_reference_get_path (ref);
+  expected = ctk_tree_row_reference_get_path (ref);
   g_assert (expected != NULL);
-  g_assert (gtk_tree_path_compare (expected, path) == 0);
-  gtk_tree_path_free (expected);
+  g_assert (ctk_tree_path_compare (expected, path) == 0);
+  ctk_tree_path_free (expected);
 }
 
 static void
@@ -347,11 +347,11 @@ check_cursor (GtkTreeView *treeview)
   GtkTreeRowReference *ref = g_object_get_data (G_OBJECT (treeview), "cursor");
   GtkTreePath *cursor;
 
-  gtk_tree_view_get_cursor (treeview, &cursor, NULL);
+  ctk_tree_view_get_cursor (treeview, &cursor, NULL);
   assert_row_reference_is_path (ref, cursor);
 
   if (cursor)
-    gtk_tree_path_free (cursor);
+    ctk_tree_path_free (cursor);
 }
 
 static void
@@ -372,7 +372,7 @@ check_selection (GtkTreeView *treeview)
 {
   GList *selection = g_object_get_data (G_OBJECT (treeview), "selection");
 
-  gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (treeview),
+  ctk_tree_selection_selected_foreach (ctk_tree_view_get_selection (treeview),
                                        check_selection_item,
                                        &selection);
 }
@@ -414,22 +414,22 @@ cursor_changed_cb (GtkTreeView *treeview,
   GtkTreePath *path;
   GtkTreeRowReference *ref;
 
-  gtk_tree_view_get_cursor (treeview, &path, NULL);
+  ctk_tree_view_get_cursor (treeview, &path, NULL);
   if (path)
     {
-      ref = gtk_tree_row_reference_new (gtk_tree_view_get_model (treeview),
+      ref = ctk_tree_row_reference_new (ctk_tree_view_get_model (treeview),
                                         path);
-      gtk_tree_path_free (path);
+      ctk_tree_path_free (path);
     }
   else
     ref = NULL;
-  g_object_set_data_full (G_OBJECT (treeview), "cursor", ref, (GDestroyNotify) gtk_tree_row_reference_free);
+  g_object_set_data_full (G_OBJECT (treeview), "cursor", ref, (GDestroyNotify) ctk_tree_row_reference_free);
 }
 
 static void
 selection_list_free (gpointer list)
 {
-  g_list_free_full (list, (GDestroyNotify) gtk_tree_row_reference_free);
+  g_list_free_full (list, (GDestroyNotify) ctk_tree_row_reference_free);
 }
 
 static void
@@ -439,17 +439,17 @@ selection_changed_cb (GtkTreeSelection *tree_selection,
   GList *selected, *list;
   GtkTreeModel *model;
 
-  selected = gtk_tree_selection_get_selected_rows (tree_selection, &model);
+  selected = ctk_tree_selection_get_selected_rows (tree_selection, &model);
 
   for (list = selected; list; list = list->next)
     {
       GtkTreePath *path = list->data;
 
-      list->data = gtk_tree_row_reference_new (model, path);
-      gtk_tree_path_free (path);
+      list->data = ctk_tree_row_reference_new (model, path);
+      ctk_tree_path_free (path);
     }
 
-  g_object_set_data_full (G_OBJECT (gtk_tree_selection_get_tree_view (tree_selection)),
+  g_object_set_data_full (G_OBJECT (ctk_tree_selection_get_tree_view (tree_selection)),
                           "selection",
                           selected,
                           selection_list_free);
@@ -460,8 +460,8 @@ setup_sanity_checks (GtkTreeView *treeview)
 {
   g_signal_connect (treeview, "cursor-changed", G_CALLBACK (cursor_changed_cb), NULL);
   cursor_changed_cb (treeview, NULL);
-  g_signal_connect (gtk_tree_view_get_selection (treeview), "changed", G_CALLBACK (selection_changed_cb), NULL);
-  selection_changed_cb (gtk_tree_view_get_selection (treeview), NULL);
+  g_signal_connect (ctk_tree_view_get_selection (treeview), "changed", G_CALLBACK (selection_changed_cb), NULL);
+  selection_changed_cb (ctk_tree_view_get_selection (treeview), NULL);
 }
 
 int
@@ -474,42 +474,42 @@ main (int    argc,
   GtkTreeModel *model;
   guint i;
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (g_getenv ("RTL"))
-    gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
-  gtk_window_set_default_size (GTK_WINDOW (window), 430, 400);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
+  ctk_window_set_default_size (GTK_WINDOW (window), 430, 400);
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_set_hexpand (sw, TRUE);
-  gtk_widget_set_vexpand (sw, TRUE);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_widget_set_hexpand (sw, TRUE);
+  ctk_widget_set_vexpand (sw, TRUE);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_AUTOMATIC,
                                   GTK_POLICY_AUTOMATIC);
-  gtk_container_add (GTK_CONTAINER (window), sw);
+  ctk_container_add (GTK_CONTAINER (window), sw);
 
-  model = GTK_TREE_MODEL (gtk_tree_store_new (1, G_TYPE_UINT));
-  treeview = gtk_tree_view_new_with_model (model);
+  model = GTK_TREE_MODEL (ctk_tree_store_new (1, G_TYPE_UINT));
+  treeview = ctk_tree_view_new_with_model (model);
   g_object_unref (model);
   setup_sanity_checks (GTK_TREE_VIEW (treeview));
-  gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
+  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview),
                                                0,
                                                "Counter",
-                                               gtk_cell_renderer_text_new (),
+                                               ctk_cell_renderer_text_new (),
                                                "text", 0,
                                                NULL);
   for (i = 0; i < (MIN_ROWS + MAX_ROWS) / 2; i++)
     add (GTK_TREE_VIEW (treeview));
-  gtk_container_add (GTK_CONTAINER (sw), treeview);
+  ctk_container_add (GTK_CONTAINER (sw), treeview);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
   g_idle_add (dance, treeview);
   
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

@@ -393,20 +393,20 @@ typedef enum /*< skip >*/ {
   GTK_CSS_MS,
 } GtkCssUnit;
 
-cairo_operator_t        _gtk_css_blend_mode_get_operator         (GtkCssBlendMode    mode);
+cairo_operator_t        _ctk_css_blend_mode_get_operator         (GtkCssBlendMode    mode);
 
-GtkCssChange            _gtk_css_change_for_sibling              (GtkCssChange       match);
-GtkCssChange            _gtk_css_change_for_child                (GtkCssChange       match);
+GtkCssChange            _ctk_css_change_for_sibling              (GtkCssChange       match);
+GtkCssChange            _ctk_css_change_for_child                (GtkCssChange       match);
 
-GtkCssDimension         gtk_css_unit_get_dimension               (GtkCssUnit         unit);
+GtkCssDimension         ctk_css_unit_get_dimension               (GtkCssUnit         unit);
 
-char *                  gtk_css_change_to_string                 (GtkCssChange       change);
-void                    gtk_css_change_print                     (GtkCssChange       change,
+char *                  ctk_css_change_to_string                 (GtkCssChange       change);
+void                    ctk_css_change_print                     (GtkCssChange       change,
                                                                   GString           *string);
 
 /* for lack of better place to put it */
 /* mirror what cairo does */
-#define gtk_rgba_is_clear(rgba) ((rgba)->alpha < ((double)0x00ff / (double)0xffff))
+#define ctk_rgba_is_clear(rgba) ((rgba)->alpha < ((double)0x00ff / (double)0xffff))
 
 G_END_DECLS
 

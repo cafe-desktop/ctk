@@ -33,7 +33,7 @@ delete_event (GtkWidget   *widget,
               GdkEventAny *event,
               gpointer     user_data)
 {
-  gtk_main_quit ();
+  ctk_main_quit ();
 
   return TRUE;
 }
@@ -63,7 +63,7 @@ setup_buffer (GtkTextBuffer *buffer)
   const guint tlen = strlen (example_text);
   const guint tcount = 17;
   GtkTextTag **tags;
-  GtkTextTagTable *ttable = gtk_text_buffer_get_tag_table (buffer);
+  GtkTextTagTable *ttable = ctk_text_buffer_get_tag_table (buffer);
   GSList *node, *slist = NULL;
   GdkAtom atom;
   guint i;
@@ -71,17 +71,17 @@ setup_buffer (GtkTextBuffer *buffer)
   tags = g_malloc (sizeof (GtkTextTag *) * tcount);
 
   /* cleanup */
-  gtk_text_buffer_set_text (buffer, "", 0);
-  gtk_text_tag_table_foreach (ttable, text_tag_enqueue, &slist);
+  ctk_text_buffer_set_text (buffer, "", 0);
+  ctk_text_tag_table_foreach (ttable, text_tag_enqueue, &slist);
   for (node = slist; node; node = node->next)
-    gtk_text_tag_table_remove (ttable, node->data);
+    ctk_text_tag_table_remove (ttable, node->data);
   g_slist_free (slist);
 
   /* create new tags */
   for (i = 0; i < tcount; i++)
     {
       char *s = g_strdup_printf ("tag%u", i);
-      tags[i] = gtk_text_buffer_create_tag (buffer, s,
+      tags[i] = ctk_text_buffer_create_tag (buffer, s,
                                             "weight", quick_rand32() >> 31 ? PANGO_WEIGHT_BOLD : PANGO_WEIGHT_NORMAL,
                                             "style", quick_rand32() >> 31 ? PANGO_STYLE_OBLIQUE : PANGO_STYLE_NORMAL,
                                             "underline", quick_rand32() >> 31,
@@ -90,19 +90,19 @@ setup_buffer (GtkTextBuffer *buffer)
     }
 
   /* assign text and tags */
-  gtk_text_buffer_set_text (buffer, example_text, -1);
+  ctk_text_buffer_set_text (buffer, example_text, -1);
   for (i = 0; i < tcount * 5; i++)
     {
       gint a = quick_rand32() % tlen, b = quick_rand32() % tlen;
       GtkTextIter start, end;
-      gtk_text_buffer_get_iter_at_offset (buffer, &start, MIN (a, b));
-      gtk_text_buffer_get_iter_at_offset (buffer, &end,   MAX (a, b));
-      gtk_text_buffer_apply_tag (buffer, tags[i % tcount], &start, &end);
+      ctk_text_buffer_get_iter_at_offset (buffer, &start, MIN (a, b));
+      ctk_text_buffer_get_iter_at_offset (buffer, &end,   MAX (a, b));
+      ctk_text_buffer_apply_tag (buffer, tags[i % tcount], &start, &end);
     }
 
   /* return serialization format */
-  atom = gtk_text_buffer_register_deserialize_tagset (buffer, NULL);
-  gtk_text_buffer_deserialize_set_can_create_tags (buffer, atom, TRUE);
+  atom = ctk_text_buffer_register_deserialize_tagset (buffer, NULL);
+  ctk_text_buffer_deserialize_set_can_create_tags (buffer, atom, TRUE);
 
   g_free (tags);
 
@@ -119,12 +119,12 @@ test_serialize_deserialize (GtkTextBuffer *buffer,
   gsize        spew_length;
   gboolean     success;
 
-  gtk_text_buffer_get_bounds (buffer, &start, &end);
+  ctk_text_buffer_get_bounds (buffer, &start, &end);
 
-  spew = gtk_text_buffer_serialize (buffer, buffer, atom,
+  spew = ctk_text_buffer_serialize (buffer, buffer, atom,
                                     &start, &end, &spew_length);
 
-  success = gtk_text_buffer_deserialize (buffer, buffer, atom, &end,
+  success = ctk_text_buffer_deserialize (buffer, buffer, atom, &end,
                                          spew, spew_length, error);
 
   g_free (spew);
@@ -143,34 +143,34 @@ main (gint   argc,
   GdkAtom        atom;
   guint          i, broken = 0;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   /* initialize random numbers, disable this for deterministic testing */
   if (1)        
     quick_rand32_accu = g_random_int();
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_size_request (window, 400, 300);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_size_request (window, 400, 300);
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
                                        GTK_SHADOW_IN);
-  gtk_container_set_border_width (GTK_CONTAINER (sw), 12);
-  gtk_container_add (GTK_CONTAINER (window), sw);
+  ctk_container_set_border_width (GTK_CONTAINER (sw), 12);
+  ctk_container_add (GTK_CONTAINER (window), sw);
 
   g_signal_connect (window, "delete-event",
                     G_CALLBACK (delete_event),
                     NULL);
 
-  buffer = gtk_text_buffer_new (NULL);
-  view = gtk_text_view_new_with_buffer (buffer);
+  buffer = ctk_text_buffer_new (NULL);
+  view = ctk_text_view_new_with_buffer (buffer);
   g_object_unref (buffer);
 
-  gtk_container_add (GTK_CONTAINER (sw), view);
+  ctk_container_add (GTK_CONTAINER (sw), view);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
   if (0)
-    gtk_main ();
+    ctk_main ();
 
   for (i = 0; i < 250; i++)
     {

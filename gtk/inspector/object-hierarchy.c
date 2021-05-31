@@ -42,27 +42,27 @@ struct _GtkInspectorObjectHierarchyPrivate
   GtkTreeView *tree;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorObjectHierarchy, gtk_inspector_object_hierarchy, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorObjectHierarchy, ctk_inspector_object_hierarchy, GTK_TYPE_BOX)
 
 static void
-gtk_inspector_object_hierarchy_init (GtkInspectorObjectHierarchy *oh)
+ctk_inspector_object_hierarchy_init (GtkInspectorObjectHierarchy *oh)
 {
-  oh->priv = gtk_inspector_object_hierarchy_get_instance_private (oh);
-  gtk_widget_init_template (GTK_WIDGET (oh));
+  oh->priv = ctk_inspector_object_hierarchy_get_instance_private (oh);
+  ctk_widget_init_template (GTK_WIDGET (oh));
 }
 
 static void
-gtk_inspector_object_hierarchy_class_init (GtkInspectorObjectHierarchyClass *klass)
+ctk_inspector_object_hierarchy_class_init (GtkInspectorObjectHierarchyClass *klass)
 {
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/object-hierarchy.ui");
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, model);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, tree);
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/object-hierarchy.ui");
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, model);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, tree);
 }
 
 void
-gtk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
+ctk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
                                            GObject                     *object)
 {
   GType type;
@@ -74,7 +74,7 @@ gtk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
   GType *ifaces;
   gint i;
 
-  gtk_tree_store_clear (oh->priv->model);
+  ctk_tree_store_clear (oh->priv->model);
 
   if (object == NULL)
     return;
@@ -95,8 +95,8 @@ gtk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
 
   if (g_hash_table_size (interfaces) > 0)
     {
-      gtk_tree_store_append (oh->priv->model, &iter, NULL);
-      gtk_tree_store_set (oh->priv->model, &iter,
+      ctk_tree_store_append (oh->priv->model, &iter, NULL);
+      ctk_tree_store_set (oh->priv->model, &iter,
                           COLUMN_OBJECT_NAME, "GInterface",
                           -1);
       parent = iter;
@@ -104,8 +104,8 @@ gtk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
   g_hash_table_iter_init (&hit, interfaces);
   while (g_hash_table_iter_next (&hit, (gpointer *)&class_name, NULL))
     {
-      gtk_tree_store_append (oh->priv->model, &iter, &parent);
-      gtk_tree_store_set (oh->priv->model, &iter,
+      ctk_tree_store_append (oh->priv->model, &iter, &parent);
+      ctk_tree_store_set (oh->priv->model, &iter,
                           COLUMN_OBJECT_NAME, class_name,
                           -1);
     }
@@ -114,8 +114,8 @@ gtk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
   list = g_list_reverse (list);
   for (l = list; l; l = l->next)
     {
-      gtk_tree_store_append (oh->priv->model, &iter, l == list ? NULL : &parent);
-      gtk_tree_store_set (oh->priv->model, &iter,
+      ctk_tree_store_append (oh->priv->model, &iter, l == list ? NULL : &parent);
+      ctk_tree_store_set (oh->priv->model, &iter,
                           COLUMN_OBJECT_NAME, l->data,
                           -1);
       parent = iter;
@@ -123,8 +123,8 @@ gtk_inspector_object_hierarchy_set_object (GtkInspectorObjectHierarchy *oh,
 
   g_list_free (list);
 
-  gtk_tree_view_expand_all (oh->priv->tree);
-  gtk_tree_selection_select_iter (gtk_tree_view_get_selection (oh->priv->tree), &iter);
+  ctk_tree_view_expand_all (oh->priv->tree);
+  ctk_tree_selection_select_iter (ctk_tree_view_get_selection (oh->priv->tree), &iter);
 }
 
 // vim: set et sw=2 ts=2:

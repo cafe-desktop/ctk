@@ -122,33 +122,33 @@ typedef struct {
   GtkLabel *fps_label;
 } GtkGearsPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGears, gtk_gears, GTK_TYPE_GL_AREA)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGears, ctk_gears, GTK_TYPE_GL_AREA)
 
-static gboolean gtk_gears_render        (GtkGLArea     *area,
+static gboolean ctk_gears_render        (GtkGLArea     *area,
                                          GdkGLContext  *context);
-static void     gtk_gears_reshape       (GtkGLArea     *area,
+static void     ctk_gears_reshape       (GtkGLArea     *area,
                                          int            width,
                                          int            height);
-static void     gtk_gears_realize       (GtkWidget     *widget);
-static void     gtk_gears_unrealize     (GtkWidget     *widget);
-static gboolean gtk_gears_tick          (GtkWidget     *widget,
+static void     ctk_gears_realize       (GtkWidget     *widget);
+static void     ctk_gears_unrealize     (GtkWidget     *widget);
+static gboolean ctk_gears_tick          (GtkWidget     *widget,
                                          GdkFrameClock *frame_clock,
                                          gpointer       user_data);
 
 static void destroy_gear (struct gear *g);
 
 GtkWidget *
-gtk_gears_new (void)
+ctk_gears_new (void)
 {
-  return g_object_new (gtk_gears_get_type (),
+  return g_object_new (ctk_gears_get_type (),
                        "has-depth-buffer", TRUE,
                        NULL);
 }
 
 static void
-gtk_gears_init (GtkGears *gears)
+ctk_gears_init (GtkGears *gears)
 {
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (gears);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
 
   priv->view_rot[GTK_GEARS_X_AXIS] = 20.0;
   priv->view_rot[GTK_GEARS_Y_AXIS] = 30.0;
@@ -159,16 +159,16 @@ gtk_gears_init (GtkGears *gears)
   priv->LightSourcePosition[2] = 10.0;
   priv->LightSourcePosition[3] = 1.0;
 
-  priv->tick = gtk_widget_add_tick_callback (GTK_WIDGET (gears), gtk_gears_tick, gears, NULL);
+  priv->tick = ctk_widget_add_tick_callback (GTK_WIDGET (gears), ctk_gears_tick, gears, NULL);
 }
 
 static void
-gtk_gears_finalize (GObject *obj)
+ctk_gears_finalize (GObject *obj)
 {
   GtkGears *gears = GTK_GEARS (obj);
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (gears);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
 
-  gtk_widget_remove_tick_callback (GTK_WIDGET (gears), priv->tick);
+  ctk_widget_remove_tick_callback (GTK_WIDGET (gears), priv->tick);
 
   g_clear_object (&priv->fps_label);
 
@@ -176,19 +176,19 @@ gtk_gears_finalize (GObject *obj)
   g_clear_pointer (&priv->gear2, destroy_gear);
   g_clear_pointer (&priv->gear3, destroy_gear);
 
-  G_OBJECT_CLASS (gtk_gears_parent_class)->finalize (obj);
+  G_OBJECT_CLASS (ctk_gears_parent_class)->finalize (obj);
 }
 
 static void
-gtk_gears_class_init (GtkGearsClass *klass)
+ctk_gears_class_init (GtkGearsClass *klass)
 {
-  GTK_GL_AREA_CLASS (klass)->render = gtk_gears_render;
-  GTK_GL_AREA_CLASS (klass)->resize = gtk_gears_reshape;
+  GTK_GL_AREA_CLASS (klass)->render = ctk_gears_render;
+  GTK_GL_AREA_CLASS (klass)->resize = ctk_gears_reshape;
 
-  GTK_WIDGET_CLASS (klass)->realize = gtk_gears_realize;
-  GTK_WIDGET_CLASS (klass)->unrealize = gtk_gears_unrealize;
+  GTK_WIDGET_CLASS (klass)->realize = ctk_gears_realize;
+  GTK_WIDGET_CLASS (klass)->unrealize = ctk_gears_unrealize;
 
-  G_OBJECT_CLASS (klass)->finalize = gtk_gears_finalize;
+  G_OBJECT_CLASS (klass)->finalize = ctk_gears_finalize;
 }
 
 /*
@@ -556,7 +556,7 @@ draw_gear(GtkGears *self,
           GLfloat angle,
           const GLfloat color[4])
 {
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (self);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (self);
   GLfloat model_view[16];
   GLfloat normal_matrix[16];
   GLfloat model_view_projection[16];
@@ -609,9 +609,9 @@ draw_gear(GtkGears *self,
 
 /* new window size or exposure */
 static void
-gtk_gears_reshape (GtkGLArea *area, int width, int height)
+ctk_gears_reshape (GtkGLArea *area, int width, int height)
 {
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private ((GtkGears *) area);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private ((GtkGears *) area);
 
   /* Update the projection matrix */
   perspective (priv->ProjectionMatrix, 60.0, width / (float)height, 1.0, 1024.0);
@@ -621,7 +621,7 @@ gtk_gears_reshape (GtkGLArea *area, int width, int height)
 }
 
 static gboolean
-gtk_gears_render (GtkGLArea    *area,
+ctk_gears_render (GtkGLArea    *area,
                   GdkGLContext *context)
 {
   static const GLfloat red[4]   = { 0.8, 0.1, 0.0, 1.0 };
@@ -629,7 +629,7 @@ gtk_gears_render (GtkGLArea    *area,
   static const GLfloat blue[4]  = { 0.2, 0.2, 1.0, 1.0 };
 
   GtkGears *self = GTK_GEARS (area);
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (self);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (self);
   GLfloat transform[16];
 
   identity (transform);
@@ -731,23 +731,23 @@ static const char fragment_shader_gles[] =
 "}";
 
 static void
-gtk_gears_realize (GtkWidget *widget)
+ctk_gears_realize (GtkWidget *widget)
 {
   GtkGLArea *glarea = GTK_GL_AREA (widget);
   GtkGears *gears = GTK_GEARS (widget);
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (gears);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
   GdkGLContext *context;
   GLuint vao, v, f, program;
   const char *p;
   char msg[512];
 
-  GTK_WIDGET_CLASS (gtk_gears_parent_class)->realize (widget);
+  GTK_WIDGET_CLASS (ctk_gears_parent_class)->realize (widget);
 
-  gtk_gl_area_make_current (glarea);
-  if (gtk_gl_area_get_error (glarea) != NULL)
+  ctk_gl_area_make_current (glarea);
+  if (ctk_gl_area_get_error (glarea) != NULL)
     return;
 
-  context = gtk_gl_area_get_context (glarea);
+  context = ctk_gl_area_get_context (glarea);
 
   glEnable (GL_CULL_FACE);
   glEnable (GL_DEPTH_TEST);
@@ -834,13 +834,13 @@ gtk_gears_realize (GtkWidget *widget)
 }
 
 static void
-gtk_gears_unrealize (GtkWidget *widget)
+ctk_gears_unrealize (GtkWidget *widget)
 {
   GtkGLArea *glarea = GTK_GL_AREA (widget);
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private ((GtkGears *) widget);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private ((GtkGears *) widget);
 
-  gtk_gl_area_make_current (glarea);
-  if (gtk_gl_area_get_error (glarea) != NULL)
+  ctk_gl_area_make_current (glarea);
+  if (ctk_gl_area_get_error (glarea) != NULL)
     return;
 
   /* Release the resources associated with OpenGL */
@@ -864,16 +864,16 @@ gtk_gears_unrealize (GtkWidget *widget)
   priv->LightSourcePosition_location = 0;
   priv->MaterialColor_location = 0;
 
-  GTK_WIDGET_CLASS (gtk_gears_parent_class)->unrealize (widget);
+  GTK_WIDGET_CLASS (ctk_gears_parent_class)->unrealize (widget);
 }
 
 static gboolean
-gtk_gears_tick (GtkWidget     *widget,
+ctk_gears_tick (GtkWidget     *widget,
                 GdkFrameClock *frame_clock,
                 gpointer       user_data)
 {
   GtkGears *gears = GTK_GEARS (widget);
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (gears);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
   GdkFrameTimings *timings, *previous_timings;
   gint64 previous_frame_time = 0;
   gint64 frame_time;
@@ -889,7 +889,7 @@ gtk_gears_tick (GtkWidget     *widget,
       /* No need for changes on first frame */
       priv->first_frame_time = frame_time;
       if (priv->fps_label)
-        gtk_label_set_label (priv->fps_label, "FPS: ---");
+        ctk_label_set_label (priv->fps_label, "FPS: ---");
       return G_SOURCE_CONTINUE;
     }
 
@@ -897,7 +897,7 @@ gtk_gears_tick (GtkWidget     *widget,
 
   priv->angle = fmod ((frame_time - priv->first_frame_time) / (double)G_USEC_PER_SEC * 70.0, 360.0);
 
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 
   history_start = gdk_frame_clock_get_history_start (frame_clock);
 
@@ -910,7 +910,7 @@ gtk_gears_tick (GtkWidget     *widget,
           previous_frame_time = gdk_frame_timings_get_frame_time (previous_timings);
 
           s = g_strdup_printf ("FPS: %-4.1f", (G_USEC_PER_SEC * history_len) / (double)(frame_time - previous_frame_time));
-          gtk_label_set_label (priv->fps_label, s);
+          ctk_label_set_label (priv->fps_label, s);
           g_free (s);
         }
     }
@@ -925,22 +925,22 @@ gtk_gears_tick (GtkWidget     *widget,
 }
 
 void
-gtk_gears_set_axis (GtkGears *gears, int axis, double value)
+ctk_gears_set_axis (GtkGears *gears, int axis, double value)
 {
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (gears);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
 
   if (axis < 0 || axis >= GTK_GEARS_N_AXIS)
     return;
 
   priv->view_rot[axis] = value;
 
-  gtk_widget_queue_draw (GTK_WIDGET (gears));
+  ctk_widget_queue_draw (GTK_WIDGET (gears));
 }
 
 double
-gtk_gears_get_axis (GtkGears *gears, int axis)
+ctk_gears_get_axis (GtkGears *gears, int axis)
 {
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (gears);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
 
   if (axis < 0 || axis >= GTK_GEARS_N_AXIS)
     return 0.0;
@@ -949,9 +949,9 @@ gtk_gears_get_axis (GtkGears *gears, int axis)
 }
 
 void
-gtk_gears_set_fps_label (GtkGears *gears, GtkLabel *label)
+ctk_gears_set_fps_label (GtkGears *gears, GtkLabel *label)
 {
-  GtkGearsPrivate *priv = gtk_gears_get_instance_private (gears);
+  GtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
 
   if (label)
     g_object_ref (label);

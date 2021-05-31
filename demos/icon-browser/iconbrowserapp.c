@@ -43,7 +43,7 @@ icon_browser_app_startup (GApplication *app)
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),
                                    app);
-  gtk_application_set_accels_for_action (GTK_APPLICATION (app),
+  ctk_application_set_accels_for_action (GTK_APPLICATION (app),
                                          "app.quit",
                                          quit_accels);
 }
@@ -54,7 +54,7 @@ icon_browser_app_activate (GApplication *app)
   IconBrowserWindow *win;
 
   win = icon_browser_window_new (ICON_BROWSER_APP (app));
-  gtk_window_present (GTK_WINDOW (win));
+  ctk_window_present (GTK_WINDOW (win));
 }
 
 static void

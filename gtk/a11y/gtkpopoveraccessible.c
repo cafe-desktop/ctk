@@ -30,7 +30,7 @@ struct _GtkPopoverAccessiblePrivate
   GtkWidget *widget;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkPopoverAccessible, gtk_popover_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkPopoverAccessible, ctk_popover_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkPopoverAccessible))
 
 static void
@@ -41,8 +41,8 @@ popover_update_relative_to (AtkObject  *obj,
   AtkObject *widget_accessible;
   GtkWidget *widget;
 
-  priv = gtk_popover_accessible_get_instance_private (GTK_POPOVER_ACCESSIBLE (obj));
-  widget = gtk_popover_get_relative_to (popover);
+  priv = ctk_popover_accessible_get_instance_private (GTK_POPOVER_ACCESSIBLE (obj));
+  widget = ctk_popover_get_relative_to (popover);
 
   if (priv->widget == widget)
     return;
@@ -51,7 +51,7 @@ popover_update_relative_to (AtkObject  *obj,
     {
       g_object_remove_weak_pointer (G_OBJECT (priv->widget),
                                     (gpointer*) &priv->widget);
-      widget_accessible = gtk_widget_get_accessible (priv->widget);
+      widget_accessible = ctk_widget_get_accessible (priv->widget);
       atk_object_remove_relationship (obj,
                                       ATK_RELATION_POPUP_FOR,
                                       widget_accessible);
@@ -63,14 +63,14 @@ popover_update_relative_to (AtkObject  *obj,
     {
       AtkObject *parent;
 
-      parent = gtk_widget_get_accessible (widget);
+      parent = ctk_widget_get_accessible (widget);
 
       if (parent)
         atk_object_set_parent (obj, parent);
 
       g_object_add_weak_pointer (G_OBJECT (priv->widget),
                                  (gpointer*) &priv->widget);
-      widget_accessible = gtk_widget_get_accessible (widget);
+      widget_accessible = ctk_widget_get_accessible (widget);
       atk_object_add_relationship (obj,
                                    ATK_RELATION_POPUP_FOR,
                                    widget_accessible);
@@ -82,7 +82,7 @@ popover_update_modality (AtkObject  *object,
                          GtkPopover *popover)
 {
   atk_object_notify_state_change (object, ATK_STATE_MODAL,
-                                  gtk_popover_get_modal (popover));
+                                  ctk_popover_get_modal (popover));
 }
 
 static void
@@ -92,7 +92,7 @@ popover_notify_cb (GtkPopover *popover,
 {
   AtkObject *popover_accessible;
 
-  popover_accessible = gtk_widget_get_accessible (GTK_WIDGET (popover));
+  popover_accessible = ctk_widget_get_accessible (GTK_WIDGET (popover));
 
   if (strcmp (g_param_spec_get_name (pspec), "relative-to") == 0)
     popover_update_relative_to (popover_accessible, popover);
@@ -101,12 +101,12 @@ popover_notify_cb (GtkPopover *popover,
 }
 
 static void
-gtk_popover_accessible_initialize (AtkObject *obj,
+ctk_popover_accessible_initialize (AtkObject *obj,
                                    gpointer   data)
 {
   GtkPopover *popover = GTK_POPOVER (data);
 
-  ATK_OBJECT_CLASS (gtk_popover_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_popover_accessible_parent_class)->initialize (obj, data);
 
   g_signal_connect (popover, "notify",
                     G_CALLBACK (popover_notify_cb), obj);
@@ -117,45 +117,45 @@ gtk_popover_accessible_initialize (AtkObject *obj,
 }
 
 static AtkStateSet *
-gtk_popover_accessible_ref_state_set (AtkObject *obj)
+ctk_popover_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
   GtkWidget *widget;
 
-  state_set = ATK_OBJECT_CLASS (gtk_popover_accessible_parent_class)->ref_state_set (obj);
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  state_set = ATK_OBJECT_CLASS (ctk_popover_accessible_parent_class)->ref_state_set (obj);
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
 
-  if (gtk_popover_get_modal (GTK_POPOVER (widget)))
+  if (ctk_popover_get_modal (GTK_POPOVER (widget)))
     atk_state_set_add_state (state_set, ATK_STATE_MODAL);
 
   return state_set;
 }
 
 static void
-gtk_popover_accessible_finalize (GObject *object)
+ctk_popover_accessible_finalize (GObject *object)
 {
   GtkPopoverAccessiblePrivate *priv;
 
-  priv = gtk_popover_accessible_get_instance_private (GTK_POPOVER_ACCESSIBLE (object));
+  priv = ctk_popover_accessible_get_instance_private (GTK_POPOVER_ACCESSIBLE (object));
 
   if (priv->widget)
     g_object_remove_weak_pointer (G_OBJECT (priv->widget),
                                   (gpointer*) &priv->widget);
-  G_OBJECT_CLASS (gtk_popover_accessible_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_popover_accessible_parent_class)->finalize (object);
 }
 
 static void
-gtk_popover_accessible_class_init (GtkPopoverAccessibleClass *klass)
+ctk_popover_accessible_class_init (GtkPopoverAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_popover_accessible_finalize;
-  class->initialize = gtk_popover_accessible_initialize;
-  class->ref_state_set = gtk_popover_accessible_ref_state_set;
+  object_class->finalize = ctk_popover_accessible_finalize;
+  class->initialize = ctk_popover_accessible_initialize;
+  class->ref_state_set = ctk_popover_accessible_ref_state_set;
 }
 
 static void
-gtk_popover_accessible_init (GtkPopoverAccessible *popover)
+ctk_popover_accessible_init (GtkPopoverAccessible *popover)
 {
 }

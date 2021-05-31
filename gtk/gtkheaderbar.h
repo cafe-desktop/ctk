@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HEADER_BAR            (gtk_header_bar_get_type ())
+#define GTK_TYPE_HEADER_BAR            (ctk_header_bar_get_type ())
 #define GTK_HEADER_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HEADER_BAR, GtkHeaderBar))
 #define GTK_HEADER_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HEADER_BAR, GtkHeaderBarClass))
 #define GTK_IS_HEADER_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HEADER_BAR))
@@ -49,58 +49,58 @@ struct _GtkHeaderBarClass
   GtkContainerClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_3_10
-GType        gtk_header_bar_get_type          (void) G_GNUC_CONST;
+GType        ctk_header_bar_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_10
-GtkWidget   *gtk_header_bar_new               (void);
+GtkWidget   *ctk_header_bar_new               (void);
 GDK_AVAILABLE_IN_3_10
-void         gtk_header_bar_set_title         (GtkHeaderBar *bar,
+void         ctk_header_bar_set_title         (GtkHeaderBar *bar,
                                                const gchar  *title);
 GDK_AVAILABLE_IN_3_10
-const gchar *gtk_header_bar_get_title         (GtkHeaderBar *bar);
+const gchar *ctk_header_bar_get_title         (GtkHeaderBar *bar);
 GDK_AVAILABLE_IN_3_10
-void         gtk_header_bar_set_subtitle      (GtkHeaderBar *bar,
+void         ctk_header_bar_set_subtitle      (GtkHeaderBar *bar,
                                                const gchar  *subtitle);
 GDK_AVAILABLE_IN_3_10
-const gchar *gtk_header_bar_get_subtitle      (GtkHeaderBar *bar);
+const gchar *ctk_header_bar_get_subtitle      (GtkHeaderBar *bar);
 
 
 GDK_AVAILABLE_IN_3_10
-void         gtk_header_bar_set_custom_title  (GtkHeaderBar *bar,
+void         ctk_header_bar_set_custom_title  (GtkHeaderBar *bar,
                                                GtkWidget    *title_widget);
 GDK_AVAILABLE_IN_3_10
-GtkWidget   *gtk_header_bar_get_custom_title  (GtkHeaderBar *bar);
+GtkWidget   *ctk_header_bar_get_custom_title  (GtkHeaderBar *bar);
 GDK_AVAILABLE_IN_3_10
-void         gtk_header_bar_pack_start        (GtkHeaderBar *bar,
+void         ctk_header_bar_pack_start        (GtkHeaderBar *bar,
                                                GtkWidget    *child);
 GDK_AVAILABLE_IN_3_10
-void         gtk_header_bar_pack_end          (GtkHeaderBar *bar,
+void         ctk_header_bar_pack_end          (GtkHeaderBar *bar,
                                                GtkWidget    *child);
 
 GDK_AVAILABLE_IN_3_10
-gboolean     gtk_header_bar_get_show_close_button (GtkHeaderBar *bar);
+gboolean     ctk_header_bar_get_show_close_button (GtkHeaderBar *bar);
 
 GDK_AVAILABLE_IN_3_10
-void         gtk_header_bar_set_show_close_button (GtkHeaderBar *bar,
+void         ctk_header_bar_set_show_close_button (GtkHeaderBar *bar,
                                                    gboolean      setting);
 
 GDK_AVAILABLE_IN_3_12
-void         gtk_header_bar_set_has_subtitle (GtkHeaderBar *bar,
+void         ctk_header_bar_set_has_subtitle (GtkHeaderBar *bar,
                                               gboolean      setting);
 GDK_AVAILABLE_IN_3_12
-gboolean     gtk_header_bar_get_has_subtitle (GtkHeaderBar *bar);
+gboolean     ctk_header_bar_get_has_subtitle (GtkHeaderBar *bar);
 
 GDK_AVAILABLE_IN_3_12
-void         gtk_header_bar_set_decoration_layout (GtkHeaderBar *bar,
+void         ctk_header_bar_set_decoration_layout (GtkHeaderBar *bar,
                                                    const gchar  *layout);
 GDK_AVAILABLE_IN_3_12
-const gchar *gtk_header_bar_get_decoration_layout (GtkHeaderBar *bar);
+const gchar *ctk_header_bar_get_decoration_layout (GtkHeaderBar *bar);
 
 G_END_DECLS
 

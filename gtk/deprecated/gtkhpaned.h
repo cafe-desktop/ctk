@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HPANED		   (gtk_hpaned_get_type ())
+#define GTK_TYPE_HPANED		   (ctk_hpaned_get_type ())
 #define GTK_HPANED(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HPANED, GtkHPaned))
 #define GTK_HPANED_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HPANED, GtkHPanedClass))
 #define GTK_IS_HPANED(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HPANED))
@@ -56,9 +56,9 @@ struct _GtkHPanedClass
 
 
 GDK_DEPRECATED_IN_3_2
-GType       gtk_hpaned_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(gtk_paned_new)
-GtkWidget * gtk_hpaned_new      (void);
+GType       ctk_hpaned_get_type (void) G_GNUC_CONST;
+GDK_DEPRECATED_IN_3_2_FOR(ctk_paned_new)
+GtkWidget * ctk_hpaned_new      (void);
 
 G_END_DECLS
 

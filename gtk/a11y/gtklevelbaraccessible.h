@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LEVEL_BAR_ACCESSIBLE                      (gtk_level_bar_accessible_get_type ())
+#define GTK_TYPE_LEVEL_BAR_ACCESSIBLE                      (ctk_level_bar_accessible_get_type ())
 #define GTK_LEVEL_BAR_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LEVEL_BAR_ACCESSIBLE, GtkLevelBarAccessible))
 #define GTK_LEVEL_BAR_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LEVEL_BAR_ACCESSIBLE, GtkLevelBarAccessibleClass))
 #define GTK_IS_LEVEL_BAR_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LEVEL_BAR_ACCESSIBLE))
@@ -51,7 +51,7 @@ struct _GtkLevelBarAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_level_bar_accessible_get_type (void);
+GType ctk_level_bar_accessible_get_type (void);
 
 G_END_DECLS
 

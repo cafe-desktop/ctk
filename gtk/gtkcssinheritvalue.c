@@ -27,14 +27,14 @@ struct _GtkCssValue {
 };
 
 static void
-gtk_css_value_inherit_free (GtkCssValue *value)
+ctk_css_value_inherit_free (GtkCssValue *value)
 {
   /* Can only happen if the unique value gets unreffed too often */
   g_assert_not_reached ();
 }
 
 static GtkCssValue *
-gtk_css_value_inherit_compute (GtkCssValue             *value,
+ctk_css_value_inherit_compute (GtkCssValue             *value,
                                guint                    property_id,
                                GtkStyleProviderPrivate *provider,
                                GtkCssStyle             *style,
@@ -42,11 +42,11 @@ gtk_css_value_inherit_compute (GtkCssValue             *value,
 {
   if (parent_style)
     {
-      return _gtk_css_value_ref (gtk_css_style_get_value (parent_style, property_id));
+      return _ctk_css_value_ref (ctk_css_style_get_value (parent_style, property_id));
     }
   else
     {
-      return _gtk_css_value_compute (_gtk_css_initial_value_get (),
+      return _ctk_css_value_compute (_ctk_css_initial_value_get (),
                                      property_id,
                                      provider,
                                      style,
@@ -55,14 +55,14 @@ gtk_css_value_inherit_compute (GtkCssValue             *value,
 }
 
 static gboolean
-gtk_css_value_inherit_equal (const GtkCssValue *value1,
+ctk_css_value_inherit_equal (const GtkCssValue *value1,
                              const GtkCssValue *value2)
 {
   return TRUE;
 }
 
 static GtkCssValue *
-gtk_css_value_inherit_transition (GtkCssValue *start,
+ctk_css_value_inherit_transition (GtkCssValue *start,
                                   GtkCssValue *end,
                                   guint        property_id,
                                   double       progress)
@@ -71,30 +71,30 @@ gtk_css_value_inherit_transition (GtkCssValue *start,
 }
 
 static void
-gtk_css_value_inherit_print (const GtkCssValue *value,
+ctk_css_value_inherit_print (const GtkCssValue *value,
                              GString           *string)
 {
   g_string_append (string, "inherit");
 }
 
 static const GtkCssValueClass GTK_CSS_VALUE_INHERIT = {
-  gtk_css_value_inherit_free,
-  gtk_css_value_inherit_compute,
-  gtk_css_value_inherit_equal,
-  gtk_css_value_inherit_transition,
-  gtk_css_value_inherit_print
+  ctk_css_value_inherit_free,
+  ctk_css_value_inherit_compute,
+  ctk_css_value_inherit_equal,
+  ctk_css_value_inherit_transition,
+  ctk_css_value_inherit_print
 };
 
 static GtkCssValue inherit = { &GTK_CSS_VALUE_INHERIT, 1 };
 
 GtkCssValue *
-_gtk_css_inherit_value_new (void)
+_ctk_css_inherit_value_new (void)
 {
-  return _gtk_css_value_ref (&inherit);
+  return _ctk_css_value_ref (&inherit);
 }
 
 GtkCssValue *
-_gtk_css_inherit_value_get (void)
+_ctk_css_inherit_value_get (void)
 {
   return &inherit;
 }

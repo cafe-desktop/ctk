@@ -6,21 +6,21 @@ draw_cb_checks (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_add_class (context, "check");
-  gtk_style_context_set_state (context, 0);
-  gtk_render_check (context, cr, 12, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
-  gtk_render_check (context, cr, 36, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_INCONSISTENT);
-  gtk_render_check (context, cr, 60, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_INSENSITIVE);
-  gtk_render_check (context, cr, 84, 12, 12, 12);
+  ctk_style_context_add_class (context, "check");
+  ctk_style_context_set_state (context, 0);
+  ctk_render_check (context, cr, 12, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
+  ctk_render_check (context, cr, 36, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_INCONSISTENT);
+  ctk_render_check (context, cr, 60, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_INSENSITIVE);
+  ctk_render_check (context, cr, 84, 12, 12, 12);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -31,21 +31,21 @@ draw_cb_options (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_add_class (context, "radio");
-  gtk_style_context_set_state (context, 0);
-  gtk_render_option (context, cr, 12, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
-  gtk_render_option (context, cr, 36, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_INCONSISTENT);
-  gtk_render_option (context, cr, 60, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_INSENSITIVE);
-  gtk_render_option (context, cr, 84, 12, 12, 12);
+  ctk_style_context_add_class (context, "radio");
+  ctk_style_context_set_state (context, 0);
+  ctk_render_option (context, cr, 12, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
+  ctk_render_option (context, cr, 36, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_INCONSISTENT);
+  ctk_render_option (context, cr, 60, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_INSENSITIVE);
+  ctk_render_option (context, cr, 84, 12, 12, 12);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -55,17 +55,17 @@ draw_cb_arrows (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_set_state (context, 0);
-  gtk_render_arrow (context, cr, 0,        12, 12, 12);
-  gtk_render_arrow (context, cr, G_PI/2,   36, 12, 12);
-  gtk_render_arrow (context, cr, G_PI,     60, 12, 12);
-  gtk_render_arrow (context, cr, G_PI*3/2, 84, 12, 12);
+  ctk_style_context_set_state (context, 0);
+  ctk_render_arrow (context, cr, 0,        12, 12, 12);
+  ctk_render_arrow (context, cr, G_PI/2,   36, 12, 12);
+  ctk_render_arrow (context, cr, G_PI,     60, 12, 12);
+  ctk_render_arrow (context, cr, G_PI*3/2, 84, 12, 12);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -75,21 +75,21 @@ draw_cb_expanders (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_add_class (context, "expander");
-  gtk_style_context_set_state (context, 0);
-  gtk_render_expander (context, cr, 12, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_PRELIGHT);
-  gtk_render_expander (context, cr, 36, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
-  gtk_render_expander (context, cr, 60, 12, 12, 12);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_ACTIVE);
-  gtk_render_expander (context, cr, 84, 12, 12, 12);
+  ctk_style_context_add_class (context, "expander");
+  ctk_style_context_set_state (context, 0);
+  ctk_render_expander (context, cr, 12, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_PRELIGHT);
+  ctk_render_expander (context, cr, 36, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
+  ctk_render_expander (context, cr, 60, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_ACTIVE);
+  ctk_render_expander (context, cr, 84, 12, 12, 12);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -99,16 +99,16 @@ draw_cb_background (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_add_class (context, "background");
-  gtk_style_context_set_junction_sides (context, 0);
-  gtk_render_background (context, cr, 12, 12, 100, 100);
-  gtk_style_context_remove_class (context, "background");
+  ctk_style_context_add_class (context, "background");
+  ctk_style_context_set_junction_sides (context, 0);
+  ctk_render_background (context, cr, 12, 12, 100, 100);
+  ctk_style_context_remove_class (context, "background");
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -118,27 +118,27 @@ draw_cb_frame (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_add_class (context, "frame1");
-  gtk_style_context_set_junction_sides (context, 0);
-  gtk_render_frame (context, cr, 12, 12, 50, 50);
-  gtk_style_context_remove_class (context, "frame1");
+  ctk_style_context_add_class (context, "frame1");
+  ctk_style_context_set_junction_sides (context, 0);
+  ctk_render_frame (context, cr, 12, 12, 50, 50);
+  ctk_style_context_remove_class (context, "frame1");
 
-  gtk_style_context_add_class (context, "frame2");
-  gtk_render_frame (context, cr, 74, 12, 50, 50);
-  gtk_style_context_remove_class (context, "frame2");
+  ctk_style_context_add_class (context, "frame2");
+  ctk_render_frame (context, cr, 74, 12, 50, 50);
+  ctk_style_context_remove_class (context, "frame2");
 
-  gtk_style_context_add_class (context, "frame3");
-  gtk_style_context_set_junction_sides (context, GTK_JUNCTION_RIGHT);
-  gtk_render_frame (context, cr, 12, 74, 56, 50);
-  gtk_style_context_set_junction_sides (context, GTK_JUNCTION_LEFT);
-  gtk_render_frame (context, cr, 68, 74, 56, 50);
-  gtk_style_context_remove_class (context, "frame3");
+  ctk_style_context_add_class (context, "frame3");
+  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_RIGHT);
+  ctk_render_frame (context, cr, 12, 74, 56, 50);
+  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_LEFT);
+  ctk_render_frame (context, cr, 68, 74, 56, 50);
+  ctk_style_context_remove_class (context, "frame3");
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -150,19 +150,19 @@ draw_cb_activity (GtkWidget *widget, cairo_t *cr)
   GtkStyleContext *context;
   GtkWidgetPath *path;
 
-  context = gtk_widget_get_style_context (widget);
-  gtk_style_context_save (context);
+  context = ctk_widget_get_style_context (widget);
+  ctk_style_context_save (context);
 
-  path = gtk_widget_path_new ();
-  gtk_widget_path_append_type (path, GTK_TYPE_SPINNER);
-  gtk_widget_path_iter_add_class (path, 0, "spinner");
-  gtk_style_context_set_path (context, path);
-  gtk_widget_path_free (path);
+  path = ctk_widget_path_new ();
+  ctk_widget_path_append_type (path, GTK_TYPE_SPINNER);
+  ctk_widget_path_iter_add_class (path, 0, "spinner");
+  ctk_style_context_set_path (context, path);
+  ctk_widget_path_free (path);
 
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
-  gtk_render_activity (context, cr, 12, 12, 12, 12);
+  ctk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
+  ctk_render_activity (context, cr, 12, 12, 12, 12);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -173,20 +173,20 @@ draw_cb_slider (GtkWidget *widget, cairo_t *cr)
   GtkStyleContext *context;
   GtkWidgetPath *path;
 
-  context = gtk_widget_get_style_context (widget);
-  gtk_style_context_save (context);
+  context = ctk_widget_get_style_context (widget);
+  ctk_style_context_save (context);
 
-  path = gtk_widget_path_new ();
-  gtk_widget_path_append_type (path, GTK_TYPE_SCALE);
-  gtk_widget_path_iter_add_class (path, 0, "slider");
-  gtk_widget_path_iter_add_class (path, 0, "scale");
-  gtk_style_context_set_path (context, path);
-  gtk_widget_path_free (path);
+  path = ctk_widget_path_new ();
+  ctk_widget_path_append_type (path, GTK_TYPE_SCALE);
+  ctk_widget_path_iter_add_class (path, 0, "slider");
+  ctk_widget_path_iter_add_class (path, 0, "scale");
+  ctk_style_context_set_path (context, path);
+  ctk_widget_path_free (path);
 
-  gtk_render_slider (context, cr, 12, 22, 30, 10, GTK_ORIENTATION_HORIZONTAL);
-  gtk_render_slider (context, cr, 54, 12, 10, 30, GTK_ORIENTATION_VERTICAL);
+  ctk_render_slider (context, cr, 12, 22, 30, 10, GTK_ORIENTATION_HORIZONTAL);
+  ctk_render_slider (context, cr, 54, 12, 10, 30, GTK_ORIENTATION_VERTICAL);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -196,13 +196,13 @@ draw_cb_focus (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_render_focus (context, cr, 12, 12, 50, 50);
+  ctk_render_focus (context, cr, 12, 12, 50, 50);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -212,22 +212,22 @@ draw_cb_extension (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_add_class (context, "notebook");
+  ctk_style_context_add_class (context, "notebook");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_style_context_add_region (context, GTK_STYLE_REGION_TAB, 0);
+  ctk_style_context_add_region (context, GTK_STYLE_REGION_TAB, 0);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  gtk_style_context_set_state (context, 0);
-  gtk_render_extension (context, cr, 26, 12, 24, 12, GTK_POS_BOTTOM);
-  gtk_render_extension (context, cr, 12, 26, 12, 24, GTK_POS_RIGHT);
-  gtk_render_extension (context, cr, 26, 52, 24, 12, GTK_POS_TOP);
-  gtk_render_extension (context, cr, 52, 26, 12, 24, GTK_POS_LEFT);
+  ctk_style_context_set_state (context, 0);
+  ctk_render_extension (context, cr, 26, 12, 24, 12, GTK_POS_BOTTOM);
+  ctk_render_extension (context, cr, 12, 26, 12, 24, GTK_POS_RIGHT);
+  ctk_render_extension (context, cr, 26, 52, 24, 12, GTK_POS_TOP);
+  ctk_render_extension (context, cr, 52, 26, 12, 24, GTK_POS_LEFT);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -237,16 +237,16 @@ draw_cb_frame_gap (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_add_class (context, "frame");
-  gtk_style_context_set_junction_sides (context, 0);
-  gtk_render_frame_gap (context, cr, 12, 12, 50, 50, GTK_POS_TOP, 15, 35);
-  gtk_style_context_remove_class (context, "frame");
+  ctk_style_context_add_class (context, "frame");
+  ctk_style_context_set_junction_sides (context, 0);
+  ctk_render_frame_gap (context, cr, 12, 12, 50, 50, GTK_POS_TOP, 15, 35);
+  ctk_style_context_remove_class (context, "frame");
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -256,22 +256,22 @@ draw_cb_handles (GtkWidget *widget, cairo_t *cr)
 {
   GtkStyleContext *context;
 
-  context = gtk_widget_get_style_context (widget);
-  gtk_style_context_save (context);
+  context = ctk_widget_get_style_context (widget);
+  ctk_style_context_save (context);
 
-  gtk_style_context_add_class (context, "paned");
-  gtk_render_handle (context, cr, 12, 22, 20, 10);
-  gtk_render_handle (context, cr, 44, 12, 10, 20);
-  gtk_style_context_remove_class (context, "paned");
+  ctk_style_context_add_class (context, "paned");
+  ctk_render_handle (context, cr, 12, 22, 20, 10);
+  ctk_render_handle (context, cr, 44, 12, 10, 20);
+  ctk_style_context_remove_class (context, "paned");
 
-  gtk_style_context_add_class (context, "grip");
-  gtk_style_context_set_junction_sides (context, GTK_JUNCTION_CORNER_BOTTOMLEFT);
-  gtk_render_handle (context, cr, 12, 48, 12, 12);
+  ctk_style_context_add_class (context, "grip");
+  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_CORNER_BOTTOMLEFT);
+  ctk_render_handle (context, cr, 12, 48, 12, 12);
 
-  gtk_style_context_set_junction_sides (context, GTK_JUNCTION_CORNER_BOTTOMRIGHT);
-  gtk_render_handle (context, cr, 40, 48, 12, 12);
+  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_CORNER_BOTTOMRIGHT);
+  ctk_render_handle (context, cr, 40, 48, 12, 12);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   return TRUE;
 }
@@ -316,22 +316,22 @@ int main (int argc, char *argv[])
   GtkStyleContext *context;
   GtkStyleProvider *provider;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (argc > 1)
     what = argv[1];
   else
     what = "check";
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  ebox = gtk_event_box_new ();
-  gtk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), TRUE);
-  gtk_container_add (GTK_CONTAINER (window), ebox);
-  gtk_widget_set_name (ebox, "ebox");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ebox = ctk_event_box_new ();
+  ctk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), TRUE);
+  ctk_container_add (GTK_CONTAINER (window), ebox);
+  ctk_widget_set_name (ebox, "ebox");
 
-  context = gtk_widget_get_style_context (ebox);
-  provider = (GtkStyleProvider *)gtk_css_provider_new ();
-  gtk_css_provider_load_from_data (GTK_CSS_PROVIDER (provider),
+  context = ctk_widget_get_style_context (ebox);
+  provider = (GtkStyleProvider *)ctk_css_provider_new ();
+  ctk_css_provider_load_from_data (GTK_CSS_PROVIDER (provider),
                                    ".frame1 {\n"
                                    "   border-image: url('gradient1.png') 10 10 10 10 stretch;\n"
                                    "}\n"
@@ -357,15 +357,15 @@ int main (int argc, char *argv[])
                                    "   border-width: 1;\n"
                                    "   border-radius: 0;\n"
                                    "}\n", -1, NULL);
-  gtk_style_context_add_provider (context, provider, GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  ctk_style_context_add_provider (context, provider, GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
   g_signal_connect_after (ebox, "draw", G_CALLBACK (draw_cb), NULL);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
-  gtk_style_context_remove_provider (context, provider);
+  ctk_style_context_remove_provider (context, provider);
 
   return 0;
 }

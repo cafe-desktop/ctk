@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_PATH_NODE           (gtk_css_path_node_get_type ())
+#define GTK_TYPE_CSS_PATH_NODE           (ctk_css_path_node_get_type ())
 #define GTK_CSS_PATH_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_PATH_NODE, GtkCssPathNode))
 #define GTK_CSS_PATH_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_PATH_NODE, GtkCssPathNodeClass))
 #define GTK_IS_CSS_PATH_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_PATH_NODE))
@@ -46,15 +46,15 @@ struct _GtkCssPathNodeClass
   GtkCssNodeClass node_class;
 };
 
-GType                   gtk_css_path_node_get_type         (void) G_GNUC_CONST;
+GType                   ctk_css_path_node_get_type         (void) G_GNUC_CONST;
 
-GtkCssNode *            gtk_css_path_node_new              (GtkStyleContext *context);
+GtkCssNode *            ctk_css_path_node_new              (GtkStyleContext *context);
 
-void                    gtk_css_path_node_unset_context    (GtkCssPathNode *node);
+void                    ctk_css_path_node_unset_context    (GtkCssPathNode *node);
 
-void                    gtk_css_path_node_set_widget_path  (GtkCssPathNode *node,
+void                    ctk_css_path_node_set_widget_path  (GtkCssPathNode *node,
                                                             GtkWidgetPath  *path);
-GtkWidgetPath *         gtk_css_path_node_get_widget_path  (GtkCssPathNode *node);
+GtkWidgetPath *         ctk_css_path_node_get_widget_path  (GtkCssPathNode *node);
 
 G_END_DECLS
 

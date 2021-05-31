@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOL_SHELL            (gtk_tool_shell_get_type ())
+#define GTK_TYPE_TOOL_SHELL            (ctk_tool_shell_get_type ())
 #define GTK_TOOL_SHELL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOOL_SHELL, GtkToolShell))
 #define GTK_IS_TOOL_SHELL(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOOL_SHELL))
 #define GTK_TOOL_SHELL_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_TOOL_SHELL, GtkToolShellIface))
@@ -43,15 +43,15 @@ typedef struct _GtkToolShellIface      GtkToolShellIface;
 
 /**
  * GtkToolShellIface:
- * @get_icon_size:        mandatory implementation of gtk_tool_shell_get_icon_size().
- * @get_orientation:      mandatory implementation of gtk_tool_shell_get_orientation().
- * @get_style:            mandatory implementation of gtk_tool_shell_get_style().
- * @get_relief_style:     optional implementation of gtk_tool_shell_get_relief_style().
- * @rebuild_menu:         optional implementation of gtk_tool_shell_rebuild_menu().
- * @get_text_orientation: optional implementation of gtk_tool_shell_get_text_orientation().
- * @get_text_alignment:   optional implementation of gtk_tool_shell_get_text_alignment().
- * @get_ellipsize_mode:   optional implementation of gtk_tool_shell_get_ellipsize_mode().
- * @get_text_size_group:  optional implementation of gtk_tool_shell_get_text_size_group().
+ * @get_icon_size:        mandatory implementation of ctk_tool_shell_get_icon_size().
+ * @get_orientation:      mandatory implementation of ctk_tool_shell_get_orientation().
+ * @get_style:            mandatory implementation of ctk_tool_shell_get_style().
+ * @get_relief_style:     optional implementation of ctk_tool_shell_get_relief_style().
+ * @rebuild_menu:         optional implementation of ctk_tool_shell_rebuild_menu().
+ * @get_text_orientation: optional implementation of ctk_tool_shell_get_text_orientation().
+ * @get_text_alignment:   optional implementation of ctk_tool_shell_get_text_alignment().
+ * @get_ellipsize_mode:   optional implementation of ctk_tool_shell_get_ellipsize_mode().
+ * @get_text_size_group:  optional implementation of ctk_tool_shell_get_text_size_group().
  *
  * Virtual function table for the #GtkToolShell interface.
  */
@@ -73,26 +73,26 @@ struct _GtkToolShellIface
 };
 
 GDK_AVAILABLE_IN_ALL
-GType              gtk_tool_shell_get_type             (void) G_GNUC_CONST;
+GType              ctk_tool_shell_get_type             (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkIconSize        gtk_tool_shell_get_icon_size        (GtkToolShell *shell);
+GtkIconSize        ctk_tool_shell_get_icon_size        (GtkToolShell *shell);
 GDK_AVAILABLE_IN_ALL
-GtkOrientation     gtk_tool_shell_get_orientation      (GtkToolShell *shell);
+GtkOrientation     ctk_tool_shell_get_orientation      (GtkToolShell *shell);
 GDK_AVAILABLE_IN_ALL
-GtkToolbarStyle    gtk_tool_shell_get_style            (GtkToolShell *shell);
+GtkToolbarStyle    ctk_tool_shell_get_style            (GtkToolShell *shell);
 GDK_AVAILABLE_IN_ALL
-GtkReliefStyle     gtk_tool_shell_get_relief_style     (GtkToolShell *shell);
+GtkReliefStyle     ctk_tool_shell_get_relief_style     (GtkToolShell *shell);
 GDK_AVAILABLE_IN_ALL
-void               gtk_tool_shell_rebuild_menu         (GtkToolShell *shell);
+void               ctk_tool_shell_rebuild_menu         (GtkToolShell *shell);
 GDK_AVAILABLE_IN_ALL
-GtkOrientation     gtk_tool_shell_get_text_orientation (GtkToolShell *shell);
+GtkOrientation     ctk_tool_shell_get_text_orientation (GtkToolShell *shell);
 GDK_AVAILABLE_IN_ALL
-gfloat             gtk_tool_shell_get_text_alignment   (GtkToolShell *shell);
+gfloat             ctk_tool_shell_get_text_alignment   (GtkToolShell *shell);
 GDK_AVAILABLE_IN_ALL
-PangoEllipsizeMode gtk_tool_shell_get_ellipsize_mode   (GtkToolShell *shell);
+PangoEllipsizeMode ctk_tool_shell_get_ellipsize_mode   (GtkToolShell *shell);
 GDK_AVAILABLE_IN_ALL
-GtkSizeGroup *     gtk_tool_shell_get_text_size_group  (GtkToolShell *shell);
+GtkSizeGroup *     ctk_tool_shell_get_text_size_group  (GtkToolShell *shell);
 
 G_END_DECLS
 

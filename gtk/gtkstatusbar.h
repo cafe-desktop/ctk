@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STATUSBAR            (gtk_statusbar_get_type ())
+#define GTK_TYPE_STATUSBAR            (ctk_statusbar_get_type ())
 #define GTK_STATUSBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_STATUSBAR, GtkStatusbar))
 #define GTK_STATUSBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_STATUSBAR, GtkStatusbarClass))
 #define GTK_IS_STATUSBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_STATUSBAR))
@@ -68,41 +68,41 @@ struct _GtkStatusbarClass
 			 const gchar	*text);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_statusbar_get_type     	(void) G_GNUC_CONST;
+GType      ctk_statusbar_get_type     	(void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_statusbar_new          	(void);
+GtkWidget* ctk_statusbar_new          	(void);
 /* If you don't want to use contexts, 0 is a predefined global
  * context_id you can pass to push/pop/remove
  */
 GDK_AVAILABLE_IN_ALL
-guint	   gtk_statusbar_get_context_id	(GtkStatusbar *statusbar,
+guint	   ctk_statusbar_get_context_id	(GtkStatusbar *statusbar,
 					 const gchar  *context_description);
-/* Returns message_id used for gtk_statusbar_remove */
+/* Returns message_id used for ctk_statusbar_remove */
 GDK_AVAILABLE_IN_ALL
-guint      gtk_statusbar_push          	(GtkStatusbar *statusbar,
+guint      ctk_statusbar_push          	(GtkStatusbar *statusbar,
 					 guint	       context_id,
 					 const gchar  *text);
 GDK_AVAILABLE_IN_ALL
-void       gtk_statusbar_pop          	(GtkStatusbar *statusbar,
+void       ctk_statusbar_pop          	(GtkStatusbar *statusbar,
 					 guint	       context_id);
 GDK_AVAILABLE_IN_ALL
-void       gtk_statusbar_remove        	(GtkStatusbar *statusbar,
+void       ctk_statusbar_remove        	(GtkStatusbar *statusbar,
 					 guint	       context_id,
 					 guint         message_id);
 GDK_AVAILABLE_IN_ALL
-void       gtk_statusbar_remove_all    	(GtkStatusbar *statusbar,
+void       ctk_statusbar_remove_all    	(GtkStatusbar *statusbar,
 					 guint	       context_id);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_statusbar_get_message_area  (GtkStatusbar *statusbar);
+GtkWidget* ctk_statusbar_get_message_area  (GtkStatusbar *statusbar);
 
 G_END_DECLS
 

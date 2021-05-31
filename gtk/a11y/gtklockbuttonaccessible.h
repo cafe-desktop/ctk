@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LOCK_BUTTON_ACCESSIBLE                     (gtk_lock_button_accessible_get_type ())
+#define GTK_TYPE_LOCK_BUTTON_ACCESSIBLE                     (ctk_lock_button_accessible_get_type ())
 #define GTK_LOCK_BUTTON_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LOCK_BUTTON_ACCESSIBLE, GtkLockButtonAccessible))
 #define GTK_LOCK_BUTTON_ACCESSIBLE_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LOCK_BUTTON_ACCESSIBLE, GtkLockButtonAccessibleClass))
 #define GTK_IS_LOCK_BUTTON_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LOCK_BUTTON_ACCESSIBLE))
@@ -51,7 +51,7 @@ struct _GtkLockButtonAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_lock_button_accessible_get_type (void);
+GType ctk_lock_button_accessible_get_type (void);
 
 G_END_DECLS
 

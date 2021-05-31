@@ -36,7 +36,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACCEL_LABEL		(gtk_accel_label_get_type ())
+#define GTK_TYPE_ACCEL_LABEL		(ctk_accel_label_get_type ())
 #define GTK_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ACCEL_LABEL, GtkAccelLabel))
 #define GTK_ACCEL_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ACCEL_LABEL, GtkAccelLabelClass))
 #define GTK_IS_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ACCEL_LABEL))
@@ -72,40 +72,40 @@ struct _GtkAccelLabelClass
   gchar		*mod_separator;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType	   gtk_accel_label_get_type	     (void) G_GNUC_CONST;
+GType	   ctk_accel_label_get_type	     (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_accel_label_new		     (const gchar   *string);
+GtkWidget* ctk_accel_label_new		     (const gchar   *string);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_accel_label_get_accel_widget  (GtkAccelLabel *accel_label);
+GtkWidget* ctk_accel_label_get_accel_widget  (GtkAccelLabel *accel_label);
 GDK_AVAILABLE_IN_ALL
-guint	   gtk_accel_label_get_accel_width   (GtkAccelLabel *accel_label);
+guint	   ctk_accel_label_get_accel_width   (GtkAccelLabel *accel_label);
 GDK_AVAILABLE_IN_ALL
-void	   gtk_accel_label_set_accel_widget  (GtkAccelLabel *accel_label,
+void	   ctk_accel_label_set_accel_widget  (GtkAccelLabel *accel_label,
 					      GtkWidget	    *accel_widget);
 GDK_AVAILABLE_IN_ALL
-void	   gtk_accel_label_set_accel_closure (GtkAccelLabel *accel_label,
+void	   ctk_accel_label_set_accel_closure (GtkAccelLabel *accel_label,
 					      GClosure	    *accel_closure);
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_accel_label_refetch           (GtkAccelLabel *accel_label);
+gboolean   ctk_accel_label_refetch           (GtkAccelLabel *accel_label);
 GDK_AVAILABLE_IN_3_6
-void       gtk_accel_label_set_accel         (GtkAccelLabel   *accel_label,
+void       ctk_accel_label_set_accel         (GtkAccelLabel   *accel_label,
                                               guint            accelerator_key,
                                               GdkModifierType  accelerator_mods);
 GDK_AVAILABLE_IN_3_12
-void       gtk_accel_label_get_accel         (GtkAccelLabel   *accel_label,
+void       ctk_accel_label_get_accel         (GtkAccelLabel   *accel_label,
                                               guint           *accelerator_key,
                                               GdkModifierType *accelerator_mods);
 
 /* private */
-gchar *    _gtk_accel_label_class_get_accelerator_label (GtkAccelLabelClass *klass,
+gchar *    _ctk_accel_label_class_get_accelerator_label (GtkAccelLabelClass *klass,
 							 guint               accelerator_key,
 							 GdkModifierType     accelerator_mods);
 

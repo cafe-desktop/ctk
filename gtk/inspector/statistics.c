@@ -75,7 +75,7 @@ enum
   COLUMN_CUMULATIVE_DATA
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorStatistics, gtk_inspector_statistics, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorStatistics, ctk_inspector_statistics, GTK_TYPE_BOX)
 
 static gint
 add_type_count (GtkInspectorStatistics *sl, GType type)
@@ -98,10 +98,10 @@ add_type_count (GtkInspectorStatistics *sl, GType type)
     {
       data = g_new0 (TypeData, 1);
       data->type = type;
-      data->self = gtk_graph_data_new (60);
-      data->cumulative = gtk_graph_data_new (60);
-      gtk_list_store_append (GTK_LIST_STORE (sl->priv->model), &data->treeiter);
-      gtk_list_store_set (GTK_LIST_STORE (sl->priv->model), &data->treeiter,
+      data->self = ctk_graph_data_new (60);
+      data->cumulative = ctk_graph_data_new (60);
+      ctk_list_store_append (GTK_LIST_STORE (sl->priv->model), &data->treeiter);
+      ctk_list_store_set (GTK_LIST_STORE (sl->priv->model), &data->treeiter,
                           COLUMN_TYPE, data->type,
                           COLUMN_TYPE_NAME, g_type_name (data->type),
                           COLUMN_SELF_DATA, data->self,
@@ -113,14 +113,14 @@ add_type_count (GtkInspectorStatistics *sl, GType type)
   self = g_type_get_instance_count (type);
   cumulative += self;
 
-  gtk_graph_data_prepend_value (data->self, self);
-  gtk_graph_data_prepend_value (data->cumulative, cumulative);
+  ctk_graph_data_prepend_value (data->self, self);
+  ctk_graph_data_prepend_value (data->cumulative, cumulative);
 
-  gtk_list_store_set (GTK_LIST_STORE (sl->priv->model), &data->treeiter,
-                      COLUMN_SELF1, (int) gtk_graph_data_get_value (data->self, 1),
-                      COLUMN_CUMULATIVE1, (int) gtk_graph_data_get_value (data->cumulative, 1),
-                      COLUMN_SELF2, (int) gtk_graph_data_get_value (data->self, 0),
-                      COLUMN_CUMULATIVE2, (int) gtk_graph_data_get_value (data->cumulative, 0),
+  ctk_list_store_set (GTK_LIST_STORE (sl->priv->model), &data->treeiter,
+                      COLUMN_SELF1, (int) ctk_graph_data_get_value (data->self, 1),
+                      COLUMN_CUMULATIVE1, (int) ctk_graph_data_get_value (data->cumulative, 1),
+                      COLUMN_SELF2, (int) ctk_graph_data_get_value (data->self, 0),
+                      COLUMN_CUMULATIVE2, (int) ctk_graph_data_get_value (data->cumulative, 0),
                       -1);
   return cumulative;
 }
@@ -151,10 +151,10 @@ static void
 toggle_record (GtkToggleButton        *button,
                GtkInspectorStatistics *sl)
 {
-  if (gtk_toggle_button_get_active (button) == (sl->priv->update_source_id != 0))
+  if (ctk_toggle_button_get_active (button) == (sl->priv->update_source_id != 0))
     return;
 
-  if (gtk_toggle_button_get_active (button))
+  if (ctk_toggle_button_get_active (button))
     {
       sl->priv->update_source_id = gdk_threads_add_timeout_seconds (1,
                                                                     update_type_counts,
@@ -208,7 +208,7 @@ cell_data_data (GtkCellLayout   *layout,
 
   column = GPOINTER_TO_INT (data);
 
-  gtk_tree_model_get (model, iter, column, &count, -1);
+  ctk_tree_model_get (model, iter, column, &count, -1);
 
   text = g_strdup_printf ("%d", count);
   g_object_set (cell, "text", text, NULL);
@@ -229,7 +229,7 @@ cell_data_delta (GtkCellLayout   *layout,
 
   column = GPOINTER_TO_INT (data);
 
-  gtk_tree_model_get (model, iter, column - 2, &count1, column, &count2, -1);
+  ctk_tree_model_get (model, iter, column - 2, &count1, column, &count2, -1);
 
   if (count2 > count1)
     text = g_strdup_printf ("%d (↗ %d)", count2, count2 - count1);
@@ -257,7 +257,7 @@ key_press_event (GtkWidget              *window,
                  GdkEvent               *event,
                  GtkInspectorStatistics *sl)
 {
-  if (gtk_widget_get_mapped (GTK_WIDGET (sl)))
+  if (ctk_widget_get_mapped (GTK_WIDGET (sl)))
     {
       if (event->key.keyval == GDK_KEY_Return ||
           event->key.keyval == GDK_KEY_ISO_Enter ||
@@ -268,12 +268,12 @@ key_press_event (GtkWidget              *window,
           GtkTreeIter iter;
           GtkTreePath *path;
 
-          selection = gtk_tree_view_get_selection (sl->priv->view);
-          if (gtk_tree_selection_get_selected (selection, &model, &iter))
+          selection = ctk_tree_view_get_selection (sl->priv->view);
+          if (ctk_tree_selection_get_selected (selection, &model, &iter))
             {
-              path = gtk_tree_model_get_path (model, &iter);
-              gtk_tree_view_row_activated (sl->priv->view, path, NULL);
-              gtk_tree_path_free (path);
+              path = ctk_tree_model_get_path (model, &iter);
+              ctk_tree_view_row_activated (sl->priv->view, path, NULL);
+              ctk_tree_path_free (path);
 
               return GDK_EVENT_STOP;
             }
@@ -281,7 +281,7 @@ key_press_event (GtkWidget              *window,
             return GDK_EVENT_PROPAGATE;
         }
 
-      return gtk_search_bar_handle_event (GTK_SEARCH_BAR (sl->priv->search_bar), event);
+      return ctk_search_bar_handle_event (GTK_SEARCH_BAR (sl->priv->search_bar), event);
     }
   else
     return GDK_EVENT_PROPAGATE;
@@ -314,7 +314,7 @@ match_row (GtkTreeModel *model,
   gchar *type;
   gboolean match;
 
-  gtk_tree_model_get (model, iter, column, &type, -1);
+  ctk_tree_model_get (model, iter, column, &type, -1);
 
   match = match_string (type, key);
 
@@ -329,35 +329,35 @@ hierarchy_changed (GtkWidget *widget,
 {
   if (previous_toplevel)
     g_signal_handlers_disconnect_by_func (previous_toplevel, key_press_event, widget);
-  g_signal_connect (gtk_widget_get_toplevel (widget), "key-press-event",
+  g_signal_connect (ctk_widget_get_toplevel (widget), "key-press-event",
                     G_CALLBACK (key_press_event), widget);
 }
 
 static void
-gtk_inspector_statistics_init (GtkInspectorStatistics *sl)
+ctk_inspector_statistics_init (GtkInspectorStatistics *sl)
 {
-  sl->priv = gtk_inspector_statistics_get_instance_private (sl);
-  gtk_widget_init_template (GTK_WIDGET (sl));
-  gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_self1),
+  sl->priv = ctk_inspector_statistics_get_instance_private (sl);
+  ctk_widget_init_template (GTK_WIDGET (sl));
+  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_self1),
                                       sl->priv->renderer_self1,
                                       cell_data_data,
                                       GINT_TO_POINTER (COLUMN_SELF1), NULL);
-  gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_cumulative1),
+  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_cumulative1),
                                       sl->priv->renderer_cumulative1,
                                       cell_data_data,
                                       GINT_TO_POINTER (COLUMN_CUMULATIVE1), NULL);
-  gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_self2),
+  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_self2),
                                       sl->priv->renderer_self2,
                                       cell_data_delta,
                                       GINT_TO_POINTER (COLUMN_SELF2), NULL);
-  gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_cumulative2),
+  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (sl->priv->column_cumulative2),
                                       sl->priv->renderer_cumulative2,
                                       cell_data_delta,
                                       GINT_TO_POINTER (COLUMN_CUMULATIVE2), NULL);
   sl->priv->counts = g_hash_table_new_full (NULL, NULL, NULL, type_data_free);
 
-  gtk_tree_view_set_search_entry (sl->priv->view, GTK_ENTRY (sl->priv->search_entry));
-  gtk_tree_view_set_search_equal_func (sl->priv->view, match_row, sl, NULL);
+  ctk_tree_view_set_search_entry (sl->priv->view, GTK_ENTRY (sl->priv->search_entry));
+  ctk_tree_view_set_search_equal_func (sl->priv->view, match_row, sl, NULL);
   g_signal_connect (sl, "hierarchy-changed", G_CALLBACK (hierarchy_changed), NULL);
 }
 
@@ -374,9 +374,9 @@ constructed (GObject *object)
   else
     {
       if (instance_counts_enabled ())
-        gtk_label_set_text (GTK_LABEL (sl->priv->excuse), _("GLib must be configured with --enable-debug"));
-      gtk_stack_set_visible_child_name (GTK_STACK (sl->priv->stack), "excuse");
-      gtk_widget_set_sensitive (sl->priv->button, FALSE);
+        ctk_label_set_text (GTK_LABEL (sl->priv->excuse), _("GLib must be configured with --enable-debug"));
+      ctk_stack_set_visible_child_name (GTK_STACK (sl->priv->stack), "excuse");
+      ctk_widget_set_sensitive (sl->priv->button, FALSE);
     }
 }
 
@@ -390,7 +390,7 @@ finalize (GObject *object)
 
   g_hash_table_unref (sl->priv->counts);
 
-  G_OBJECT_CLASS (gtk_inspector_statistics_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_inspector_statistics_parent_class)->finalize (object);
 }
 
 static void
@@ -434,7 +434,7 @@ set_property (GObject      *object,
 }
 
 static void
-gtk_inspector_statistics_class_init (GtkInspectorStatisticsClass *klass)
+ctk_inspector_statistics_class_init (GtkInspectorStatisticsClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -448,21 +448,21 @@ gtk_inspector_statistics_class_init (GtkInspectorStatisticsClass *klass)
       g_param_spec_object ("button", NULL, NULL,
                            GTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/statistics.ui");
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, view);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, stack);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, model);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, column_self1);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, renderer_self1);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, column_cumulative1);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, renderer_cumulative1);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, column_self2);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, renderer_self2);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, column_cumulative2);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, renderer_cumulative2);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, search_entry);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, search_bar);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, excuse);
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/statistics.ui");
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, view);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, stack);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, model);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, column_self1);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, renderer_self1);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, column_cumulative1);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, renderer_cumulative1);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, column_self2);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, renderer_self2);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, column_cumulative2);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, renderer_cumulative2);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, search_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, search_bar);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, excuse);
 
 }
 

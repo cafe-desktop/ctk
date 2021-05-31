@@ -34,19 +34,19 @@ G_BEGIN_DECLS
 typedef void (* GtkTextUtilCharChosenFunc) (const char *text,
                                             gpointer    data);
 
-void _gtk_text_util_append_special_char_menuitems (GtkMenuShell              *menushell,
+void _ctk_text_util_append_special_char_menuitems (GtkMenuShell              *menushell,
                                                    GtkTextUtilCharChosenFunc  func,
                                                    gpointer                   data);
 
-cairo_surface_t * _gtk_text_util_create_drag_icon (GtkWidget     *widget,
+cairo_surface_t * _ctk_text_util_create_drag_icon (GtkWidget     *widget,
                                                    gchar         *text,
                                                    gsize          len);
-cairo_surface_t * _gtk_text_util_create_rich_drag_icon (GtkWidget     *widget,
+cairo_surface_t * _ctk_text_util_create_rich_drag_icon (GtkWidget     *widget,
                                                    GtkTextBuffer *buffer,
                                                    GtkTextIter   *start,
                                                    GtkTextIter   *end);
 
-gboolean _gtk_text_util_get_block_cursor_location (PangoLayout    *layout,
+gboolean _ctk_text_util_get_block_cursor_location (PangoLayout    *layout,
 						   gint            index_,
 						   PangoRectangle *rectangle,
 						   gboolean       *at_line_end);

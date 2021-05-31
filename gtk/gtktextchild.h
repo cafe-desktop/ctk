@@ -45,7 +45,7 @@ G_BEGIN_DECLS
 typedef struct _GtkTextChildAnchor      GtkTextChildAnchor;
 typedef struct _GtkTextChildAnchorClass GtkTextChildAnchorClass;
 
-#define GTK_TYPE_TEXT_CHILD_ANCHOR              (gtk_text_child_anchor_get_type ())
+#define GTK_TYPE_TEXT_CHILD_ANCHOR              (ctk_text_child_anchor_get_type ())
 #define GTK_TEXT_CHILD_ANCHOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_TEXT_CHILD_ANCHOR, GtkTextChildAnchor))
 #define GTK_TEXT_CHILD_ANCHOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEXT_CHILD_ANCHOR, GtkTextChildAnchorClass))
 #define GTK_IS_TEXT_CHILD_ANCHOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_TEXT_CHILD_ANCHOR))
@@ -65,22 +65,22 @@ struct _GtkTextChildAnchorClass
   GObjectClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType               gtk_text_child_anchor_get_type    (void) G_GNUC_CONST;
+GType               ctk_text_child_anchor_get_type    (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkTextChildAnchor* gtk_text_child_anchor_new         (void);
+GtkTextChildAnchor* ctk_text_child_anchor_new         (void);
 
 GDK_AVAILABLE_IN_ALL
-GList*              gtk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor);
+GList*              ctk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor);
 GDK_AVAILABLE_IN_ALL
-gboolean            gtk_text_child_anchor_get_deleted (GtkTextChildAnchor *anchor);
+gboolean            ctk_text_child_anchor_get_deleted (GtkTextChildAnchor *anchor);
 
 G_END_DECLS
 

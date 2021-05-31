@@ -541,10 +541,10 @@ msgstr "Лого"
 #: ../gtk/gtkaboutdialog.c:504
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Лого за диалоговия прозорец „Относно“. Ако не е зададено, стандартно се "
-"използва gtk_window_get_default_icon_list()"
+"използва ctk_window_get_default_icon_list()"
 
 #: ../gtk/gtkaboutdialog.c:519
 msgid "Logo Icon Name"
@@ -3051,10 +3051,10 @@ msgstr "Стъпка на прогрес"
 #: ../gtk/gtkentry.c:990
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Частта от общия прогрес, с която да се предвижи индикаторът при всяко "
-"изпълнение на gtk_entry_progress_pulse()"
+"изпълнение на ctk_entry_progress_pulse()"
 
 #: ../gtk/gtkentry.c:1008
 msgid "Show text in the entry when it's empty and unfocused"
@@ -5246,10 +5246,10 @@ msgstr "Стойността"
 
 #: ../gtk/gtkradioaction.c:117
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Стойността, която се връща от gtk_radio_action_get_current_value(), когато "
+"Стойността, която се връща от ctk_radio_action_get_current_value(), когато "
 "това действие е текущото на своята група."
 
 #: ../gtk/gtkradioaction.c:133 ../gtk/gtkradiobutton.c:163
@@ -7842,8 +7842,8 @@ msgid "No show all"
 msgstr "Да не се показват всички"
 
 #: ../gtk/gtkwidget.c:1097
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Дали gtk_widget_show_all() да не влияе на този обект"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Дали ctk_widget_show_all() да не влияе на този обект"
 
 #: ../gtk/gtkwidget.c:1120
 msgid "Whether this widget has a tooltip"

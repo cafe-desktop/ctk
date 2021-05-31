@@ -827,10 +827,10 @@ msgstr "Værdien"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Værdien som returneres af gtk_radio_action_get_current_value() når denne "
+"Værdien som returneres af ctk_radio_action_get_current_value() når denne "
 "handling er den aktuelle handling for dens gruppe."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1295,10 +1295,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Et logo til om-vinduet. Hvis dette ikke er angivet benyttes "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3529,10 +3529,10 @@ msgstr "Pulsskridtlængde for statuslinje"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Brøkdelen af den totale bredde, statuslinjens blok skal bevæge sig ved hvert "
-"kald til gtk_entry_progress_pulse()"
+"kald til ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9233,8 +9233,8 @@ msgid "No show all"
 msgstr "Ingen vis alle"
 
 #: gtk/gtkwidget.c:1261
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Om gtk_widget_show_all() ikke skal påvirke denne kontrol"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Om ctk_widget_show_all() ikke skal påvirke denne kontrol"
 
 #: gtk/gtkwidget.c:1283
 msgid "Whether this widget has a tooltip"
@@ -10190,10 +10190,10 @@ msgstr "Titlen på den farveprofil der skal bruges"
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 #~ msgstr ""
 #~ "Det maksimale antal af objekter der skal returneres af "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 
 #~ msgid "Blinking"
 #~ msgstr "Blinkende"

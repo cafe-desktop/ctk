@@ -1124,7 +1124,7 @@ msgstr "Desactivau"
 
 #. This label is displayed in a treeview cell displaying
 #. * an accelerator key combination that is not valid according
-#. * to gtk_accelerator_valid().
+#. * to ctk_accelerator_valid().
 #.
 #: ../gtk/gtkcellrendereraccel.c:292
 msgctxt "Accelerator"
@@ -1509,9 +1509,9 @@ msgstr "O bloqueyo de mayusclas ye activau"
 #. * {
 #. *   GtkWidget *button;
 #. *
-#. *   button = gtk_file_chooser_button_new (_("Select a file"),
+#. *   button = ctk_file_chooser_button_new (_("Select a file"),
 #. *                                         GTK_FILE_CHOOSER_ACTION_OPEN);
-#. *   gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (button),
+#. *   ctk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (button),
 #. *                                        "/etc");
 #. * }
 #. * </programlisting>
@@ -1523,8 +1523,8 @@ msgstr "O bloqueyo de mayusclas ye activau"
 #. * <important>
 #. * The #GtkFileChooserButton will ellipsize the label,
 #. * and thus will thus request little horizontal space.  To give the button
-#. * more space, you should call gtk_widget_get_preferred_size(),
-#. * gtk_file_chooser_button_set_width_chars(), or pack the button in
+#. * more space, you should call ctk_widget_get_preferred_size(),
+#. * ctk_file_chooser_button_set_width_chars(), or pack the button in
 #. * such a way that other interface elements give space to the widget.
 #. * </important>
 #.

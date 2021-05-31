@@ -31,10 +31,10 @@ enum {
   PROP_RENDERER
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRendererCellAccessible, gtk_renderer_cell_accessible, GTK_TYPE_CELL_ACCESSIBLE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkRendererCellAccessible, ctk_renderer_cell_accessible, GTK_TYPE_CELL_ACCESSIBLE)
 
 static void
-gtk_renderer_cell_accessible_set_property (GObject         *object,
+ctk_renderer_cell_accessible_set_property (GObject         *object,
                                            guint            prop_id,
                                            const GValue    *value,
                                            GParamSpec      *pspec)
@@ -53,7 +53,7 @@ gtk_renderer_cell_accessible_set_property (GObject         *object,
 }
 
 static void
-gtk_renderer_cell_accessible_get_property (GObject         *object,
+ctk_renderer_cell_accessible_get_property (GObject         *object,
                                            guint            prop_id,
                                            GValue          *value,
                                            GParamSpec      *pspec)
@@ -72,24 +72,24 @@ gtk_renderer_cell_accessible_get_property (GObject         *object,
 }
 
 static void
-gtk_renderer_cell_accessible_finalize (GObject *object)
+ctk_renderer_cell_accessible_finalize (GObject *object)
 {
   GtkRendererCellAccessible *renderer_cell = GTK_RENDERER_CELL_ACCESSIBLE (object);
 
   if (renderer_cell->priv->renderer)
     g_object_unref (renderer_cell->priv->renderer);
 
-  G_OBJECT_CLASS (gtk_renderer_cell_accessible_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_renderer_cell_accessible_parent_class)->finalize (object);
 }
 
 static void
-gtk_renderer_cell_accessible_class_init (GtkRendererCellAccessibleClass *klass)
+ctk_renderer_cell_accessible_class_init (GtkRendererCellAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-  gobject_class->get_property = gtk_renderer_cell_accessible_get_property;
-  gobject_class->set_property = gtk_renderer_cell_accessible_set_property;
-  gobject_class->finalize = gtk_renderer_cell_accessible_finalize;
+  gobject_class->get_property = ctk_renderer_cell_accessible_get_property;
+  gobject_class->set_property = ctk_renderer_cell_accessible_set_property;
+  gobject_class->finalize = ctk_renderer_cell_accessible_finalize;
 
   g_object_class_install_property (gobject_class,
 				   PROP_RENDERER,
@@ -101,19 +101,19 @@ gtk_renderer_cell_accessible_class_init (GtkRendererCellAccessibleClass *klass)
 }
 
 static void
-gtk_renderer_cell_accessible_init (GtkRendererCellAccessible *renderer_cell)
+ctk_renderer_cell_accessible_init (GtkRendererCellAccessible *renderer_cell)
 {
-  renderer_cell->priv = gtk_renderer_cell_accessible_get_instance_private (renderer_cell);
+  renderer_cell->priv = ctk_renderer_cell_accessible_get_instance_private (renderer_cell);
 }
 
 AtkObject *
-gtk_renderer_cell_accessible_new (GtkCellRenderer *renderer)
+ctk_renderer_cell_accessible_new (GtkCellRenderer *renderer)
 {
   AtkObject *object;
 
   g_return_val_if_fail (GTK_IS_CELL_RENDERER (renderer), NULL);
 
-  object = g_object_new (_gtk_cell_renderer_get_accessible_type (renderer),
+  object = g_object_new (_ctk_cell_renderer_get_accessible_type (renderer),
                          "renderer", renderer,
                          NULL);
 

@@ -36,7 +36,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_VOLUME_BUTTON                 (gtk_volume_button_get_type ())
+#define GTK_TYPE_VOLUME_BUTTON                 (ctk_volume_button_get_type ())
 #define GTK_VOLUME_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_VOLUME_BUTTON, GtkVolumeButton))
 #define GTK_VOLUME_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_VOLUME_BUTTON, GtkVolumeButtonClass))
 #define GTK_IS_VOLUME_BUTTON(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_VOLUME_BUTTON))
@@ -56,16 +56,16 @@ struct _GtkVolumeButtonClass
   GtkScaleButtonClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType		gtk_volume_button_get_type	(void) G_GNUC_CONST;
+GType		ctk_volume_button_get_type	(void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget*	gtk_volume_button_new		(void);
+GtkWidget*	ctk_volume_button_new		(void);
 
 G_END_DECLS
 

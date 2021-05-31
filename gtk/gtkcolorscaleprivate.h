@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_SCALE            (gtk_color_scale_get_type ())
+#define GTK_TYPE_COLOR_SCALE            (ctk_color_scale_get_type ())
 #define GTK_COLOR_SCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_SCALE, GtkColorScale))
 #define GTK_COLOR_SCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_SCALE, GtkColorScaleClass))
 #define GTK_IS_COLOR_SCALE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_SCALE))
@@ -46,10 +46,10 @@ struct _GtkColorScaleClass
   GtkScaleClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 typedef enum
@@ -58,13 +58,13 @@ typedef enum
   GTK_COLOR_SCALE_ALPHA
 } GtkColorScaleType;
 
-GType       gtk_color_scale_get_type (void) G_GNUC_CONST;
-GtkWidget * gtk_color_scale_new      (GtkAdjustment     *adjustment,
+GType       ctk_color_scale_get_type (void) G_GNUC_CONST;
+GtkWidget * ctk_color_scale_new      (GtkAdjustment     *adjustment,
                                       GtkColorScaleType  type);
-void        gtk_color_scale_set_rgba (GtkColorScale     *scale,
+void        ctk_color_scale_set_rgba (GtkColorScale     *scale,
                                       const GdkRGBA     *color);
 
-void        gtk_color_scale_draw_trough (GtkColorScale  *scale,
+void        ctk_color_scale_draw_trough (GtkColorScale  *scale,
                                          cairo_t        *cr,
                                          int             x,
                                          int             y,

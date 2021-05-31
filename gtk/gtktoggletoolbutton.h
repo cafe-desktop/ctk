@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOGGLE_TOOL_BUTTON             (gtk_toggle_tool_button_get_type ())
+#define GTK_TYPE_TOGGLE_TOOL_BUTTON             (ctk_toggle_tool_button_get_type ())
 #define GTK_TOGGLE_TOOL_BUTTON(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOGGLE_TOOL_BUTTON, GtkToggleToolButton))
 #define GTK_TOGGLE_TOOL_BUTTON_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TOGGLE_TOOL_BUTTON, GtkToggleToolButtonClass))
 #define GTK_IS_TOGGLE_TOOL_BUTTON(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOGGLE_TOOL_BUTTON))
@@ -65,24 +65,24 @@ struct _GtkToggleToolButtonClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (* _gtk_reserved1) (void);
-  void (* _gtk_reserved2) (void);
-  void (* _gtk_reserved3) (void);
-  void (* _gtk_reserved4) (void);
+  void (* _ctk_reserved1) (void);
+  void (* _ctk_reserved2) (void);
+  void (* _ctk_reserved3) (void);
+  void (* _ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType        gtk_toggle_tool_button_get_type       (void) G_GNUC_CONST;
+GType        ctk_toggle_tool_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkToolItem *gtk_toggle_tool_button_new            (void);
-GDK_DEPRECATED_IN_3_10_FOR(gtk_toggle_tool_button_new)
-GtkToolItem *gtk_toggle_tool_button_new_from_stock (const gchar *stock_id);
+GtkToolItem *ctk_toggle_tool_button_new            (void);
+GDK_DEPRECATED_IN_3_10_FOR(ctk_toggle_tool_button_new)
+GtkToolItem *ctk_toggle_tool_button_new_from_stock (const gchar *stock_id);
 
 GDK_AVAILABLE_IN_ALL
-void         gtk_toggle_tool_button_set_active     (GtkToggleToolButton *button,
+void         ctk_toggle_tool_button_set_active     (GtkToggleToolButton *button,
 						    gboolean             is_active);
 GDK_AVAILABLE_IN_ALL
-gboolean     gtk_toggle_tool_button_get_active     (GtkToggleToolButton *button);
+gboolean     ctk_toggle_tool_button_get_active     (GtkToggleToolButton *button);
 
 G_END_DECLS
 

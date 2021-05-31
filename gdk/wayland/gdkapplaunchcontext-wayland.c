@@ -40,10 +40,10 @@ gdk_wayland_app_launch_context_get_startup_notify_id (GAppLaunchContext *context
 
   g_object_get (context, "display", &display, NULL);
 
-  if (display->gtk_shell_version >= 3)
+  if (display->ctk_shell_version >= 3)
     {
       id = g_uuid_string_random ();
-      gtk_shell1_notify_launch (display->gtk_shell, id);
+      ctk_shell1_notify_launch (display->ctk_shell, id);
     }
 
   g_object_unref (display);

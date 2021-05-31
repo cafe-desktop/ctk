@@ -201,7 +201,7 @@ on_window_draw (GtkWidget *widget,
   cairo_paint (cr);
 
   cairo_set_source_rgb (cr, 0., 0., 0.);
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   cx = allocation.width / 2.;
   cy = allocation.height / 2.;
@@ -220,7 +220,7 @@ on_window_draw (GtkWidget *widget,
 
       if (displayed_frame->frame_counter == 0)
         {
-          GdkFrameClock *frame_clock = gtk_widget_get_frame_clock (window);
+          GdkFrameClock *frame_clock = ctk_widget_get_frame_clock (window);
           displayed_frame->frame_counter = gdk_frame_clock_get_frame_counter (frame_clock);
         }
     }
@@ -231,7 +231,7 @@ on_window_draw (GtkWidget *widget,
 static void
 collect_old_frames (void)
 {
-  GdkFrameClock *frame_clock = gtk_widget_get_frame_clock (window);
+  GdkFrameClock *frame_clock = ctk_widget_get_frame_clock (window);
   GList *l, *l_next;
 
   for (l = past_frames; l; l = l_next)
@@ -351,7 +351,7 @@ on_update (GdkFrameClock *frame_clock,
       collect_old_frames ();
       print_statistics ();
 
-      gtk_widget_queue_draw (window);
+      ctk_widget_queue_draw (window);
     }
 }
 
@@ -367,23 +367,23 @@ main(int argc, char **argv)
   GError *error = NULL;
   GdkFrameClock *frame_clock;
 
-  if (!gtk_init_with_args (&argc, &argv, "",
+  if (!ctk_init_with_args (&argc, &argv, "",
                            options, NULL, &error))
     {
       g_printerr ("Option parsing failed: %s\n", error->message);
       return 1;
     }
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_app_paintable (window, TRUE);
-  gtk_window_set_default_size (GTK_WINDOW (window), 300, 300);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_app_paintable (window, TRUE);
+  ctk_window_set_default_size (GTK_WINDOW (window), 300, 300);
 
   g_signal_connect (window, "draw",
                     G_CALLBACK (on_window_draw), NULL);
   g_signal_connect (window, "destroy",
-                    G_CALLBACK (gtk_main_quit), NULL);
+                    G_CALLBACK (ctk_main_quit), NULL);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
   frame_queue = g_queue_new ();
   g_mutex_init (&frame_mutex);
@@ -391,12 +391,12 @@ main(int argc, char **argv)
 
   g_thread_new ("Create Frames", create_frames_thread, NULL);
 
-  frame_clock = gtk_widget_get_frame_clock (window);
+  frame_clock = ctk_widget_get_frame_clock (window);
   g_signal_connect (frame_clock, "update",
                     G_CALLBACK (on_update), NULL);
   gdk_frame_clock_begin_updating (frame_clock);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

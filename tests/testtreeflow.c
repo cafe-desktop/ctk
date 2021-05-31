@@ -49,12 +49,12 @@ initialize_model (void)
   gint i;
   GtkTreeIter iter;
 
-  model = (GtkTreeModel *) gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING);
+  model = (GtkTreeModel *) ctk_list_store_new (NUM_COLUMNS, G_TYPE_STRING);
   grand = g_rand_new ();
   for (i = 0; i < NUM_ROWS; i++)
     {
-      gtk_list_store_append (GTK_LIST_STORE (model), &iter);
-      gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+      ctk_list_store_append (GTK_LIST_STORE (model), &iter);
+      ctk_list_store_set (GTK_LIST_STORE (model), &iter,
 			  TEXT_COLUMN, words[g_rand_int_range (grand, 0, NUM_WORDS)],
 			  -1);
     }
@@ -69,36 +69,36 @@ futz_row (void)
   GtkTreeIter iter2;
 
   i = g_rand_int_range (grand, 0,
-			gtk_tree_model_iter_n_children (model, NULL));
-  path = gtk_tree_path_new ();
-  gtk_tree_path_append_index (path, i);
-  gtk_tree_model_get_iter (model, &iter, path);
-  gtk_tree_path_free (path);
+			ctk_tree_model_iter_n_children (model, NULL));
+  path = ctk_tree_path_new ();
+  ctk_tree_path_append_index (path, i);
+  ctk_tree_model_get_iter (model, &iter, path);
+  ctk_tree_path_free (path);
 
-  if (gtk_tree_selection_iter_is_selected (selection, &iter))
+  if (ctk_tree_selection_iter_is_selected (selection, &iter))
     return;
   switch (g_rand_int_range (grand, 0, 3))
     {
     case 0:
       /* insert */
-            gtk_list_store_insert_after (GTK_LIST_STORE (model),
+            ctk_list_store_insert_after (GTK_LIST_STORE (model),
             				   &iter2, &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model), &iter2,
+            ctk_list_store_set (GTK_LIST_STORE (model), &iter2,
             			  TEXT_COLUMN, words[g_rand_int_range (grand, 0, NUM_WORDS)],
             			  -1);
       break;
     case 1:
       /* delete */
-      if (gtk_tree_model_iter_n_children (model, NULL) == 0)
+      if (ctk_tree_model_iter_n_children (model, NULL) == 0)
 	return;
-      gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
+      ctk_list_store_remove (GTK_LIST_STORE (model), &iter);
       break;
     case 2:
       /* modify */
       return;
-      if (gtk_tree_model_iter_n_children (model, NULL) == 0)
+      if (ctk_tree_model_iter_n_children (model, NULL) == 0)
 	return;
-      gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+      ctk_list_store_set (GTK_LIST_STORE (model), &iter,
       			  TEXT_COLUMN, words[g_rand_int_range (grand, 0, NUM_WORDS)],
       			  -1);
       break;
@@ -112,7 +112,7 @@ futz (void)
 
   for (i = 0; i < 15; i++)
     futz_row ();
-  g_print ("Number of rows: %d\n", gtk_tree_model_iter_n_children (model, NULL));
+  g_print ("Number of rows: %d\n", ctk_tree_model_iter_n_children (model, NULL));
   return TRUE;
 }
 
@@ -127,45 +127,45 @@ main (int argc, char *argv[])
   GtkWidget *button;
   GtkTreePath *path;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  path = gtk_tree_path_new_from_string ("80");
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "Reflow test");
-  g_signal_connect (window, "destroy", gtk_main_quit, NULL);
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-  gtk_box_pack_start (GTK_BOX (vbox), gtk_label_new ("Incremental Reflow Test"), FALSE, FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
-  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+  path = ctk_tree_path_new_from_string ("80");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (GTK_WINDOW (window), "Reflow test");
+  g_signal_connect (window, "destroy", ctk_main_quit, NULL);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+  ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
+  ctk_box_pack_start (GTK_BOX (vbox), ctk_label_new ("Incremental Reflow Test"), FALSE, FALSE, 0);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
+  scrolled_window = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
 				  GTK_POLICY_AUTOMATIC,
 				  GTK_POLICY_AUTOMATIC);
-  gtk_box_pack_start (GTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
   
   initialize_model ();
-  tree_view = gtk_tree_view_new_with_model (model);
-  gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view), path, NULL, TRUE, 0.5, 0.0);
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
-  gtk_tree_selection_select_path (selection, path);
-  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), FALSE);
-  gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  tree_view = ctk_tree_view_new_with_model (model);
+  ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view), path, NULL, TRUE, 0.5, 0.0);
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
+  ctk_tree_selection_select_path (selection, path);
+  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), FALSE);
+  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
 					       -1,
 					       NULL,
-					       gtk_cell_renderer_text_new (),
+					       ctk_cell_renderer_text_new (),
 					       "text", TEXT_COLUMN,
 					       NULL);
-  gtk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-  button = gtk_button_new_with_mnemonic ("<b>_Futz!!</b>");
-  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
-  gtk_label_set_use_markup (GTK_LABEL (gtk_bin_get_child (GTK_BIN (button))), TRUE);
+  ctk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+  button = ctk_button_new_with_mnemonic ("<b>_Futz!!</b>");
+  ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  ctk_label_set_use_markup (GTK_LABEL (ctk_bin_get_child (GTK_BIN (button))), TRUE);
   g_signal_connect (button, "clicked", G_CALLBACK (futz), NULL);
-  g_signal_connect (button, "realize", G_CALLBACK (gtk_widget_grab_focus), NULL);
-  gtk_window_set_default_size (GTK_WINDOW (window), 300, 400);
-  gtk_widget_show_all (window);
+  g_signal_connect (button, "realize", G_CALLBACK (ctk_widget_grab_focus), NULL);
+  ctk_window_set_default_size (GTK_WINDOW (window), 300, 400);
+  ctk_widget_show_all (window);
   gdk_threads_add_timeout (1000, (GSourceFunc) futz, NULL);
-  gtk_main ();
+  ctk_main ();
   return 0;
 }

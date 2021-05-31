@@ -35,8 +35,8 @@ notify (GtkEditable *editable, GParamSpec *pspec, EntryData *data)
 {
   data->serial = serial++;
   data->count++;
-  data->text = gtk_editable_get_chars (editable, 0, -1);
-  gtk_editable_get_selection_bounds (editable, &data->start, &data->end);
+  data->text = ctk_editable_get_chars (editable, 0, -1);
+  ctk_editable_get_selection_bounds (editable, &data->start, &data->end);
 
 #if 0
   g_print ("notify::%s\n", pspec->name);
@@ -55,8 +55,8 @@ insert_text (GtkEditable *editable,
 {
   data->serial = serial++;
   data->count++;
-  data->text = gtk_editable_get_chars (editable, 0, -1);
-  gtk_editable_get_selection_bounds (editable, &data->start, &data->end);
+  data->text = ctk_editable_get_chars (editable, 0, -1);
+  ctk_editable_get_selection_bounds (editable, &data->start, &data->end);
   data->new_text = g_strdup (new_text);
   data->position = *position;
   data->length = new_text_length;
@@ -77,8 +77,8 @@ delete_text (GtkEditable *editable,
 {
   data->serial = serial++;
   data->count++;
-  data->text = gtk_editable_get_chars (editable, 0, -1);
-  gtk_editable_get_selection_bounds (editable, &data->start, &data->end);
+  data->text = ctk_editable_get_chars (editable, 0, -1);
+  ctk_editable_get_selection_bounds (editable, &data->start, &data->end);
   data->position = start_pos;
   data->length = end_pos - start_pos;
 
@@ -96,8 +96,8 @@ changed (GtkEditable *editable,
 {
   data->serial = serial++;
   data->count++;
-  data->text = gtk_editable_get_chars (editable, 0, -1);
-  gtk_editable_get_selection_bounds (editable, &data->start, &data->end);
+  data->text = ctk_editable_get_chars (editable, 0, -1);
+  ctk_editable_get_selection_bounds (editable, &data->start, &data->end);
 
 #if 0
   g_print ("changed\n");
@@ -119,12 +119,12 @@ test_insert (void)
   EntryData data5;
   EntryData data6;
 
-  entry = gtk_entry_new ();
+  entry = ctk_entry_new ();
   g_object_ref_sink (entry);
 
-  gtk_entry_set_text (GTK_ENTRY (entry), "bar");
-  gtk_editable_set_position (GTK_EDITABLE (entry), -1);
-  pos = gtk_editable_get_position (GTK_EDITABLE (entry));
+  ctk_entry_set_text (GTK_ENTRY (entry), "bar");
+  ctk_editable_set_position (GTK_EDITABLE (entry), -1);
+  pos = ctk_editable_get_position (GTK_EDITABLE (entry));
   g_assert_cmpint (pos, ==, 3);
 
   data1.count = 0;
@@ -147,10 +147,10 @@ test_insert (void)
                     G_CALLBACK (changed), &data6);
 
   pos = 0;
-  gtk_editable_insert_text (GTK_EDITABLE (entry), "foo", -1, &pos);
+  ctk_editable_insert_text (GTK_EDITABLE (entry), "foo", -1, &pos);
   g_assert_cmpint (pos, ==, 3);
 
-  pos = gtk_editable_get_position (GTK_EDITABLE (entry));
+  pos = ctk_editable_get_position (GTK_EDITABLE (entry));
   g_assert_cmpint (pos, ==, 6);
 
   /* Check that notification for ::text, ::cursor-position and
@@ -221,12 +221,12 @@ test_delete (void)
   EntryData data5;
   EntryData data6;
 
-  entry = gtk_entry_new ();
+  entry = ctk_entry_new ();
   g_object_ref_sink (entry);
 
-  gtk_entry_set_text (GTK_ENTRY (entry), "foobar");
-  gtk_editable_set_position (GTK_EDITABLE (entry), -1);
-  pos = gtk_editable_get_position (GTK_EDITABLE (entry));
+  ctk_entry_set_text (GTK_ENTRY (entry), "foobar");
+  ctk_editable_set_position (GTK_EDITABLE (entry), -1);
+  pos = ctk_editable_get_position (GTK_EDITABLE (entry));
   g_assert_cmpint (pos, ==, 6);
 
   data1.count = 0;
@@ -248,9 +248,9 @@ test_delete (void)
   g_signal_connect (entry, "changed",
                     G_CALLBACK (changed), &data6);
 
-  gtk_editable_delete_text (GTK_EDITABLE (entry), 0, 3);
+  ctk_editable_delete_text (GTK_EDITABLE (entry), 0, 3);
 
-  pos = gtk_editable_get_position (GTK_EDITABLE (entry));
+  pos = ctk_editable_get_position (GTK_EDITABLE (entry));
   g_assert_cmpint (pos, ==, 3);
 
   /* Check that notification for ::text, ::cursor-position and
@@ -310,7 +310,7 @@ int
 main (int   argc,
       char *argv[])
 {
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
   g_test_add_func ("/entry/delete", test_delete);
   g_test_add_func ("/entry/insert", test_insert);

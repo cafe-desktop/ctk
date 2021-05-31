@@ -27,10 +27,10 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_NATIVE_DIALOG             (gtk_native_dialog_get_type ())
+#define GTK_TYPE_NATIVE_DIALOG             (ctk_native_dialog_get_type ())
 
 GDK_AVAILABLE_IN_3_20
-G_DECLARE_DERIVABLE_TYPE (GtkNativeDialog, gtk_native_dialog, GTK, NATIVE_DIALOG, GObject)
+G_DECLARE_DERIVABLE_TYPE (GtkNativeDialog, ctk_native_dialog, GTK, NATIVE_DIALOG, GObject)
 
 struct _GtkNativeDialogClass
 {
@@ -43,38 +43,38 @@ struct _GtkNativeDialogClass
   void (* hide) (GtkNativeDialog *self);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_3_20
-void                  gtk_native_dialog_show (GtkNativeDialog *self);
+void                  ctk_native_dialog_show (GtkNativeDialog *self);
 GDK_AVAILABLE_IN_3_20
-void                  gtk_native_dialog_hide (GtkNativeDialog *self);
+void                  ctk_native_dialog_hide (GtkNativeDialog *self);
 GDK_AVAILABLE_IN_3_20
-void                  gtk_native_dialog_destroy (GtkNativeDialog *self);
+void                  ctk_native_dialog_destroy (GtkNativeDialog *self);
 GDK_AVAILABLE_IN_3_20
-gboolean              gtk_native_dialog_get_visible (GtkNativeDialog *self);
+gboolean              ctk_native_dialog_get_visible (GtkNativeDialog *self);
 GDK_AVAILABLE_IN_3_20
-void                  gtk_native_dialog_set_modal (GtkNativeDialog *self,
+void                  ctk_native_dialog_set_modal (GtkNativeDialog *self,
                                                    gboolean modal);
 GDK_AVAILABLE_IN_3_20
-gboolean              gtk_native_dialog_get_modal (GtkNativeDialog *self);
+gboolean              ctk_native_dialog_get_modal (GtkNativeDialog *self);
 GDK_AVAILABLE_IN_3_20
-void                  gtk_native_dialog_set_title (GtkNativeDialog *self,
+void                  ctk_native_dialog_set_title (GtkNativeDialog *self,
                                                    const char *title);
 GDK_AVAILABLE_IN_3_20
-const char *          gtk_native_dialog_get_title (GtkNativeDialog *self);
+const char *          ctk_native_dialog_get_title (GtkNativeDialog *self);
 GDK_AVAILABLE_IN_3_20
-void                  gtk_native_dialog_set_transient_for (GtkNativeDialog *self,
+void                  ctk_native_dialog_set_transient_for (GtkNativeDialog *self,
                                                            GtkWindow *parent);
 GDK_AVAILABLE_IN_3_20
-GtkWindow *           gtk_native_dialog_get_transient_for (GtkNativeDialog *self);
+GtkWindow *           ctk_native_dialog_get_transient_for (GtkNativeDialog *self);
 
 GDK_AVAILABLE_IN_3_20
-gint                  gtk_native_dialog_run (GtkNativeDialog *self);
+gint                  ctk_native_dialog_run (GtkNativeDialog *self);
 
 G_END_DECLS
 

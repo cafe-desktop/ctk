@@ -30,7 +30,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_COLOR_PICKER             (gtk_color_picker_get_type ())
+#define GTK_TYPE_COLOR_PICKER             (ctk_color_picker_get_type ())
 #define GTK_COLOR_PICKER(o)               (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_COLOR_PICKER, GtkColorPicker))
 #define GTK_IS_COLOR_PICKER(o)            (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_COLOR_PICKER))
 #define GTK_COLOR_PICKER_GET_INTERFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE ((o), GTK_TYPE_COLOR_PICKER, GtkColorPickerInterface))
@@ -52,15 +52,15 @@ struct _GtkColorPickerInterface {
 };
 
 GDK_AVAILABLE_IN_ALL
-GType            gtk_color_picker_get_type    (void) G_GNUC_CONST;
+GType            ctk_color_picker_get_type    (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkColorPicker * gtk_color_picker_new         (void);
+GtkColorPicker * ctk_color_picker_new         (void);
 GDK_AVAILABLE_IN_ALL
-void             gtk_color_picker_pick        (GtkColorPicker       *picker,
+void             ctk_color_picker_pick        (GtkColorPicker       *picker,
                                                GAsyncReadyCallback   callback,
                                                gpointer              user_data);
 GDK_AVAILABLE_IN_ALL
-GdkRGBA *        gtk_color_picker_pick_finish (GtkColorPicker       *picker,
+GdkRGBA *        ctk_color_picker_pick_finish (GtkColorPicker       *picker,
                                                GAsyncResult         *res,
                                                GError              **error);
 

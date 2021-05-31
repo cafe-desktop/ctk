@@ -42,7 +42,7 @@
  * system.
  *
  * In GTK+ applications the events are handled automatically in
- * gtk_main_do_event() and passed on to the appropriate widgets, so these
+ * ctk_main_do_event() and passed on to the appropriate widgets, so these
  * functions are rarely needed. Though some of the fields in the
  * [Event Structures][gdk3-Event-Structures] are useful.
  */
@@ -334,7 +334,7 @@ _gdk_event_queue_flush (GdkDisplay *display)
  *
  * Note that GTK+ uses this to install its own event handler, so it is
  * usually not useful for GTK+ applications. (Although an application
- * can call this function then call gtk_main_do_event() to pass
+ * can call this function then call ctk_main_do_event() to pass
  * events to GTK+.)
  **/
 void 

@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE               (gtk_flow_box_child_accessible_get_type ())
+#define GTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE               (ctk_flow_box_child_accessible_get_type ())
 #define GTK_FLOW_BOX_CHILD_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE, GtkFlowBoxChildAccessible))
 #define GTK_FLOW_BOX_CHILD_ACCESSIBLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE, GtkFlowBoxChildAccessibleClass))
 #define GTK_IS_FLOW_BOX_CHILD_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FLOW_BOX_CHILD_ACCESSIBLE))
@@ -48,7 +48,7 @@ struct _GtkFlowBoxChildAccessibleClass
 };
 
 GDK_AVAILABLE_IN_3_12
-GType gtk_flow_box_child_accessible_get_type (void);
+GType ctk_flow_box_child_accessible_get_type (void);
 
 G_END_DECLS
 

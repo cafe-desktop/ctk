@@ -25,162 +25,162 @@
 
 static void atk_value_interface_init (AtkValueIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLevelBarAccessible, gtk_level_bar_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkLevelBarAccessible, ctk_level_bar_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
-gtk_level_bar_accessible_initialize (AtkObject *obj,
+ctk_level_bar_accessible_initialize (AtkObject *obj,
                                        gpointer  data)
 {
-  ATK_OBJECT_CLASS (gtk_level_bar_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_level_bar_accessible_parent_class)->initialize (obj, data);
 
   obj->role = ATK_ROLE_LEVEL_BAR;
 }
 
 static void
-gtk_level_bar_accessible_notify_gtk (GObject    *obj,
+ctk_level_bar_accessible_notify_gtk (GObject    *obj,
                                        GParamSpec *pspec)
 {
   GtkWidget *widget = GTK_WIDGET (obj);
-  GtkLevelBarAccessible *level_bar = GTK_LEVEL_BAR_ACCESSIBLE (gtk_widget_get_accessible (widget));
+  GtkLevelBarAccessible *level_bar = GTK_LEVEL_BAR_ACCESSIBLE (ctk_widget_get_accessible (widget));
 
   if (strcmp (pspec->name, "value") == 0)
     {
       g_object_notify (G_OBJECT (level_bar), "accessible-value");
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (gtk_level_bar_accessible_parent_class)->notify_gtk (obj, pspec);
+    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_level_bar_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 
 
 static void
-gtk_level_bar_accessible_class_init (GtkLevelBarAccessibleClass *klass)
+ctk_level_bar_accessible_class_init (GtkLevelBarAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
 
-  widget_class->notify_gtk = gtk_level_bar_accessible_notify_gtk;
+  widget_class->notify_gtk = ctk_level_bar_accessible_notify_gtk;
 
-  class->initialize = gtk_level_bar_accessible_initialize;
+  class->initialize = ctk_level_bar_accessible_initialize;
 }
 
 static void
-gtk_level_bar_accessible_init (GtkLevelBarAccessible *button)
+ctk_level_bar_accessible_init (GtkLevelBarAccessible *button)
 {
 }
 
 static void
-gtk_level_bar_accessible_get_current_value (AtkValue *obj,
+ctk_level_bar_accessible_get_current_value (AtkValue *obj,
                                             GValue   *value)
 {
   GtkWidget *widget;
   GtkLevelBar *level_bar;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   level_bar = GTK_LEVEL_BAR (widget);
 
   memset (value,  0, sizeof (GValue));
   g_value_init (value, G_TYPE_DOUBLE);
-  g_value_set_double (value, gtk_level_bar_get_value (level_bar));
+  g_value_set_double (value, ctk_level_bar_get_value (level_bar));
 }
 
 static void
-gtk_level_bar_accessible_get_maximum_value (AtkValue *obj,
+ctk_level_bar_accessible_get_maximum_value (AtkValue *obj,
                                             GValue   *value)
 {
   GtkWidget *widget;
   GtkLevelBar *level_bar;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   level_bar = GTK_LEVEL_BAR (widget);
 
   memset (value,  0, sizeof (GValue));
   g_value_init (value, G_TYPE_DOUBLE);
-  g_value_set_double (value, gtk_level_bar_get_max_value (level_bar));
+  g_value_set_double (value, ctk_level_bar_get_max_value (level_bar));
 }
 
 static void
-gtk_level_bar_accessible_get_minimum_value (AtkValue *obj,
+ctk_level_bar_accessible_get_minimum_value (AtkValue *obj,
                                             GValue   *value)
 {
   GtkWidget *widget;
   GtkLevelBar *level_bar;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   level_bar = GTK_LEVEL_BAR (widget);
 
   memset (value,  0, sizeof (GValue));
   g_value_init (value, G_TYPE_DOUBLE);
-  g_value_set_double (value, gtk_level_bar_get_min_value (level_bar));
+  g_value_set_double (value, ctk_level_bar_get_min_value (level_bar));
 }
 
 static gboolean
-gtk_level_bar_accessible_set_current_value (AtkValue     *obj,
+ctk_level_bar_accessible_set_current_value (AtkValue     *obj,
                                             const GValue *value)
 {
   GtkWidget *widget;
   GtkLevelBar *level_bar;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   level_bar = GTK_LEVEL_BAR (widget);
 
-  gtk_level_bar_set_value (level_bar, g_value_get_double (value));
+  ctk_level_bar_set_value (level_bar, g_value_get_double (value));
 
   return TRUE;
 }
 
 static void
-gtk_level_bar_accessible_get_value_and_text (AtkValue  *obj,
+ctk_level_bar_accessible_get_value_and_text (AtkValue  *obj,
                                              gdouble   *value,
                                              gchar    **text)
 {
   GtkWidget *widget;
   GtkLevelBar *level_bar;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   level_bar = GTK_LEVEL_BAR (widget);
 
-  *value = gtk_level_bar_get_value (level_bar);
+  *value = ctk_level_bar_get_value (level_bar);
   *text = NULL;
 }
 
 static AtkRange *
-gtk_level_bar_accessible_get_range (AtkValue *obj)
+ctk_level_bar_accessible_get_range (AtkValue *obj)
 {
   GtkWidget *widget;
   GtkLevelBar *level_bar;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   level_bar = GTK_LEVEL_BAR (widget);
 
-  return atk_range_new (gtk_level_bar_get_min_value (level_bar),
-                        gtk_level_bar_get_max_value (level_bar),
+  return atk_range_new (ctk_level_bar_get_min_value (level_bar),
+                        ctk_level_bar_get_max_value (level_bar),
                         NULL);
 }
 
 static void
-gtk_level_bar_accessible_set_value (AtkValue      *obj,
+ctk_level_bar_accessible_set_value (AtkValue      *obj,
                                     const gdouble  value)
 {
   GtkWidget *widget;
   GtkLevelBar *level_bar;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   level_bar = GTK_LEVEL_BAR (widget);
 
-  gtk_level_bar_set_value (level_bar, value);
+  ctk_level_bar_set_value (level_bar, value);
 }
 
 static void
 atk_value_interface_init (AtkValueIface *iface)
 {
-  iface->get_current_value = gtk_level_bar_accessible_get_current_value;
-  iface->get_maximum_value = gtk_level_bar_accessible_get_maximum_value;
-  iface->get_minimum_value = gtk_level_bar_accessible_get_minimum_value;
-  iface->set_current_value = gtk_level_bar_accessible_set_current_value;
+  iface->get_current_value = ctk_level_bar_accessible_get_current_value;
+  iface->get_maximum_value = ctk_level_bar_accessible_get_maximum_value;
+  iface->get_minimum_value = ctk_level_bar_accessible_get_minimum_value;
+  iface->set_current_value = ctk_level_bar_accessible_set_current_value;
 
-  iface->get_value_and_text = gtk_level_bar_accessible_get_value_and_text;
-  iface->get_range = gtk_level_bar_accessible_get_range;
-  iface->set_value = gtk_level_bar_accessible_set_value;
+  iface->get_value_and_text = ctk_level_bar_accessible_get_value_and_text;
+  iface->get_range = ctk_level_bar_accessible_get_range;
+  iface->set_value = ctk_level_bar_accessible_set_value;
 }

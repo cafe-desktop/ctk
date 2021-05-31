@@ -8,19 +8,19 @@
 # if backwards compatibility has been broken,
 # set GTK_BINARY_AGE and GTK_INTERFACE_AGE to 0.
 
-m4_define([gtk_major_version], [3])
-m4_define([gtk_minor_version], [24])
-m4_define([gtk_micro_version], [24])
-m4_define([gtk_interface_age], [20])
-m4_define([gtk_binary_age],
-          [m4_eval(100 * gtk_minor_version + gtk_micro_version)])
-m4_define([gtk_version],
-          [gtk_major_version.gtk_minor_version.gtk_micro_version])
+m4_define([ctk_major_version], [3])
+m4_define([ctk_minor_version], [24])
+m4_define([ctk_micro_version], [24])
+m4_define([ctk_interface_age], [20])
+m4_define([ctk_binary_age],
+          [m4_eval(100 * ctk_minor_version + ctk_micro_version)])
+m4_define([ctk_version],
+          [ctk_major_version.ctk_minor_version.ctk_micro_version])
 # This is the X.Y used in -lgtk-FOO-X.Y
-m4_define([gtk_api_version], [3.0])
+m4_define([ctk_api_version], [3.0])
 
 AC_PREREQ([2.62])
-AC_INIT([gtk+], [gtk_version],
+AC_INIT([gtk+], [ctk_version],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=gtk%2B],
         [gtk+])
 
@@ -38,7 +38,7 @@ AC_CANONICAL_HOST
 # for GTK+.
 #
 #GTK_BINARY_VERSION=$GTK_MAJOR_VERSION.$GTK_MINOR_VERSION.$LT_CURRENT
-m4_define([gtk_binary_version], [3.0.0])
+m4_define([ctk_binary_version], [3.0.0])
 
 # required versions of other packages
 m4_define([glib_required_major], [2])
@@ -101,14 +101,14 @@ AM_SILENT_RULES([yes])
 # foo_DEP_CFLAGS:   All cflags this module requires
 
 
-GTK_MAJOR_VERSION=gtk_major_version
-GTK_MINOR_VERSION=gtk_minor_version
-GTK_MICRO_VERSION=gtk_micro_version
-GTK_INTERFACE_AGE=gtk_interface_age
-GTK_BINARY_AGE=gtk_binary_age
-GTK_VERSION=gtk_version
-GTK_API_VERSION=gtk_api_version
-GTK_BINARY_VERSION=gtk_binary_version
+GTK_MAJOR_VERSION=ctk_major_version
+GTK_MINOR_VERSION=ctk_minor_version
+GTK_MICRO_VERSION=ctk_micro_version
+GTK_INTERFACE_AGE=ctk_interface_age
+GTK_BINARY_AGE=ctk_binary_age
+GTK_VERSION=ctk_version
+GTK_API_VERSION=ctk_api_version
+GTK_BINARY_VERSION=ctk_binary_version
 AC_SUBST(GTK_MAJOR_VERSION)
 AC_SUBST(GTK_MINOR_VERSION)
 AC_SUBST(GTK_MICRO_VERSION)
@@ -125,9 +125,9 @@ AC_SUBST(GTK_BINARY_VERSION)
 #LT_AGE=`expr $GTK_BINARY_AGE - $GTK_INTERFACE_AGE`
 #LT_CURRENT_MINUS_AGE=`expr $LT_CURRENT - $LT_AGE`
 
-m4_define([lt_current], [m4_eval(100 * gtk_minor_version + gtk_micro_version - gtk_interface_age)])
-m4_define([lt_revision], [gtk_interface_age])
-m4_define([lt_age], [m4_eval(gtk_binary_age - gtk_interface_age)])
+m4_define([lt_current], [m4_eval(100 * ctk_minor_version + ctk_micro_version - ctk_interface_age)])
+m4_define([lt_revision], [ctk_interface_age])
+m4_define([lt_age], [m4_eval(ctk_binary_age - ctk_interface_age)])
 LT_VERSION_INFO="lt_current:lt_revision:lt_age"
 LT_CURRENT_MINUS_AGE=m4_eval(lt_current - lt_age)
 AC_SUBST(LT_VERSION_INFO)
@@ -224,13 +224,13 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],
                   [],[CXX=])
 AM_CONDITIONAL(HAVE_CXX, test "$CXX" != "")
 
-gtk_save_cxxflags="$CXXFLAGS"
+ctk_save_cxxflags="$CXXFLAGS"
 CXXFLAGS="$CXXFLAGS -x objective-c++"
 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@interface Foo @end]],
                                    [[]])],
                   [OBJC=yes],[OBJC=no])
 AM_CONDITIONAL(HAVE_OBJC, test "$OBJC" = "yes")
-CXXFLAGS="$gtk_save_cxxflags"
+CXXFLAGS="$ctk_save_cxxflags"
 AC_LANG_POP([C++])
 
 if test "$os_win32" = "yes"; then
@@ -283,7 +283,7 @@ fi
 AM_CONDITIONAL(MS_LIB_AVAILABLE, test x$ms_librarian = xyes)
 
 m4_define([debug_default],
-          m4_if(m4_eval(gtk_minor_version % 2), [1], [yes], [minimum]))
+          m4_if(m4_eval(ctk_minor_version % 2), [1], [yes], [minimum]))
 
 dnl declare --enable-* args and collect ac_help strings
 AC_ARG_ENABLE(debug,
@@ -573,14 +573,14 @@ AS_CASE([$host_os],
   [mingw*],
   [
     PKG_CHECK_MODULES(CAIRO, [cairo >= cairo_required_version])
-    gtk_save_LIBS="$LIBS"
+    ctk_save_LIBS="$LIBS"
     LIBS="$CAIRO_LIBS $LIBS"
     AC_CHECK_LIB([cairo], [cairo_win32_surface_create_with_format],
       [AC_MSG_RESULT([found])],
       [AC_MSG_ERROR(
 [cairo_win32_surface_create_with_format is not found in cairo library
 You need a cairo snapshot 1.15.x or 1.16.x release or newer])])
-    LIBS="$gtk_save_LIBS"
+    LIBS="$ctk_save_LIBS"
   ],
   []
 )
@@ -630,9 +630,9 @@ AC_MSG_CHECKING([for _NL_TIME_FIRST_WEEKDAY])
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <langinfo.h>]],
                                 [[char c;
                                   c = *((unsigned char *)  nl_langinfo(_NL_TIME_FIRST_WEEKDAY));]])],
-               [gtk_ok=yes], [gtk_ok=no])
-AC_MSG_RESULT($gtk_ok)
-if test "$gtk_ok" = "yes"; then
+               [ctk_ok=yes], [ctk_ok=no])
+AC_MSG_RESULT($ctk_ok)
+if test "$ctk_ok" = "yes"; then
   AC_DEFINE([HAVE__NL_TIME_FIRST_WEEKDAY], [1],
 	    [Define if _NL_TIME_FIRST_WEEKDAY is available])
 fi
@@ -642,9 +642,9 @@ AC_MSG_CHECKING([for _NL_MEASUREMENT_MEASUREMENT])
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <langinfo.h>]],
                                 [[char c;
                                   c = *((unsigned char *)  nl_langinfo(_NL_MEASUREMENT_MEASUREMENT));]])],
-               [gtk_ok=yes], [gtk_ok=no])
-AC_MSG_RESULT($gtk_ok)
-if test "$gtk_ok" = "yes"; then
+               [ctk_ok=yes], [ctk_ok=no])
+AC_MSG_RESULT($ctk_ok)
+if test "$ctk_ok" = "yes"; then
   AC_DEFINE([HAVE__NL_MEASUREMENT_MEASUREMENT], [1],
 	    [Define if _NL_MEASUREMENT_MEASUREMENT is available])
 fi
@@ -654,9 +654,9 @@ AC_MSG_CHECKING([for _NL_PAPER_HEIGHT])
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <langinfo.h>]],
                                 [[char c;
                                   c = *((unsigned char *)  nl_langinfo(_NL_PAPER_HEIGHT));]])],
-               [gtk_ok=yes], [gtk_ok=no])
-AC_MSG_RESULT($gtk_ok)
-if test "$gtk_ok" = "yes"; then
+               [ctk_ok=yes], [ctk_ok=no])
+AC_MSG_RESULT($ctk_ok)
+if test "$ctk_ok" = "yes"; then
   AC_DEFINE([HAVE__NL_PAPER_HEIGHT], [1],
 	    [Define if _NL_PAPER_HEIGHT is available])
 fi
@@ -666,9 +666,9 @@ AC_MSG_CHECKING([for _NL_PAPER_WIDTH])
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <langinfo.h>]],
                                 [[char c;
                                   c = *((unsigned char *)  nl_langinfo(_NL_PAPER_WIDTH));]])],
-               [gtk_ok=yes], [gtk_ok=no])
-AC_MSG_RESULT($gtk_ok)
-if test "$gtk_ok" = "yes"; then
+               [ctk_ok=yes], [ctk_ok=no])
+AC_MSG_RESULT($ctk_ok)
+if test "$ctk_ok" = "yes"; then
   AC_DEFINE([HAVE__NL_PAPER_WIDTH], [1],
 	    [Define if _NL_PAPER_WIDTH is available])
 fi
@@ -679,23 +679,23 @@ dnl The DU4 header files don't provide library prototypes unless
 dnl -std1 is given to the native cc.
 AC_MSG_CHECKING([for extra flags to get ANSI library prototypes])
 
-gtk_save_LIBS=$LIBS
+ctk_save_LIBS=$LIBS
 LIBS="$LIBS -lm"
 AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <math.h>
                                 int main (void) { return (log(1) != log(1.)); }]])],
               [AC_MSG_RESULT(none needed)],
-              [gtk_save_CFLAGS="$CFLAGS"
+              [ctk_save_CFLAGS="$CFLAGS"
                CFLAGS="$CFLAGS -std1"
                AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <math.h>
                                                int main (void) { return (log(1) != log(1.)); }]])],
                              [AC_MSG_RESULT(-std1)],
                              [AC_MSG_RESULT()
-                              CFLAGS="$gtk_save_CFLAGS"
+                              CFLAGS="$ctk_save_CFLAGS"
                               AC_MSG_WARN([No ANSI prototypes found in library. (-std1 did not work.)])],
                              [true])],
               [AC_MSG_RESULT(none needed)])
 
-LIBS=$gtk_save_LIBS
+LIBS=$ctk_save_LIBS
 
 AC_MSG_CHECKING(for the BeOS)
 case $host in
@@ -727,7 +727,7 @@ AS_CASE([$host_os],
       [AC_MSG_RESULT([DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY is not OK])]
     )
     AC_MSG_CHECKING([for SetupDiGetDevicePropertyW])
-    gtk_save_LIBS="$LIBS"
+    ctk_save_LIBS="$LIBS"
     LIBS="-lsetupapi $LIBS"
     AC_TRY_LINK(
       [
@@ -751,7 +751,7 @@ AS_CASE([$host_os],
       ]
     )
     AC_MSG_RESULT([$have_SetupDiGetDevicePropertyW])
-    LIBS="$gtk_save_LIBS"
+    LIBS="$ctk_save_LIBS"
   ],
   []
 )
@@ -789,10 +789,10 @@ AC_SUBST(GLIB_LIBS_FOR_BUILD)
 
 dnl Check for bind_textdomain_codeset, including -lintl if GLib brings it in.
 dnl
-gtk_save_LIBS=$LIBS
+ctk_save_LIBS=$LIBS
 LIBS="$LIBS $GLIB_LIBS"
 AC_CHECK_FUNCS(bind_textdomain_codeset)
-LIBS=$gtk_save_LIBS
+LIBS=$ctk_save_LIBS
 
 AC_CHECK_HEADERS(linux/memfd.h,
                  AC_DEFINE(HAVE_LINUX_MEMFD_H, 1,
@@ -823,7 +823,7 @@ AC_CHECK_HEADERS(ftw.h,
 # We don't ever want to turn off deprecation warnings for master however, because
 # that's where we get rid of deprecated API we use.
 #
-if test m4_eval(gtk_minor_version % 2) = 0 ; then
+if test m4_eval(ctk_minor_version % 2) = 0 ; then
   AC_DEFINE_UNQUOTED(GLIB_DISABLE_DEPRECATION_WARNINGS, 1,
                      [Disable deprecation warnings from glib])
 fi
@@ -927,7 +927,7 @@ AM_CONDITIONAL(HAVE_INCLUDED_IMMMODULES, test "x$included_immodules" != x)
 INCLUDED_IMMODULE_OBJ=
 INCLUDED_IMMODULE_DEFINE=
 
-IFS="${IFS= 	}"; gtk_save_ifs="$IFS"; IFS=","
+IFS="${IFS= 	}"; ctk_save_ifs="$IFS"; IFS=","
 for immodule in $included_immodules; do
  immodule_underscores=`echo $immodule | sed -e 's/-/_/g'`
  if echo "$all_immodules" | egrep "(^|,)$immodule(\$|,)" > /dev/null; then
@@ -940,7 +940,7 @@ for immodule in $included_immodules; do
  INCLUDED_IMMODULE_DEFINE="$INCLUDED_IMMODULE_DEFINE -DINCLUDE_IM_$immodule_underscores"
  eval INCLUDE_$immodule_underscores=yes
 done
-IFS="$gtk_save_ifs"
+IFS="$ctk_save_ifs"
 AC_SUBST(INCLUDED_IMMODULE_OBJ)
 AC_SUBST(INCLUDED_IMMODULE_DEFINE)
 
@@ -1031,10 +1031,10 @@ if test "x$enable_x11_backend" = xyes; then
   # Extra libraries found during checks (-lXinerama, etc), not from pkg-config.
   x_extra_libs=
 
-  gtk_save_cppflags="$CPPFLAGS"
+  ctk_save_cppflags="$CPPFLAGS"
   CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 
-  gtk_save_LIBS=$LIBS
+  ctk_save_LIBS=$LIBS
   LIBS="$x_libs_for_checks $LIBS"
 
   # Sanity check for the X11 and Xext libraries. While everything we need from
@@ -1066,7 +1066,7 @@ if test "x$enable_x11_backend" = xyes; then
      [AC_MSG_ERROR([Shape extension not found, check your development headers])])
 
   # X SYNC check
-  gtk_save_CFLAGS="$CFLAGS"
+  ctk_save_CFLAGS="$CFLAGS"
   CFLAGS="$CFLAGS $x_cflags"
 
   AC_CHECK_FUNC(XSyncQueryExtension,
@@ -1074,14 +1074,14 @@ if test "x$enable_x11_backend" = xyes; then
 	  AC_DEFINE(HAVE_XSYNC, 1, [Have the SYNC extension library]),
 	  :, [#include <X11/Xlib.h>])])
 
-  CFLAGS="$gtk_save_CFLAGS"
+  CFLAGS="$ctk_save_CFLAGS"
 
   if test "x$enable_xinerama" != "xno"; then
     # Check for Xinerama extension (Solaris impl or Xfree impl)
     have_xfree_xinerama=false
     have_solaris_xinerama=false
 
-    gtk_save_cppflags="$CPPFLAGS"
+    ctk_save_cppflags="$CPPFLAGS"
     CPPFLAGS="$CPPFLAGS $x_cflags"
 
     # Check for XFree
@@ -1155,7 +1155,7 @@ if test "x$enable_x11_backend" = xyes; then
                     have_xinput2=yes
                     AC_DEFINE(XINPUT_2, 1, [Define to 1 if XInput 2.0 is available]))
 
-    gtk_save_LIBS="$LIBS"
+    ctk_save_LIBS="$LIBS"
     LIBS="$LIBS -lXi"
 
     # Note that we also check that the XIScrollClassInfo struct is defined,
@@ -1166,7 +1166,7 @@ if test "x$enable_x11_backend" = xyes; then
                        AC_DEFINE(XINPUT_2_2, 1, [Define to 1 if XInput 2.2 is available]),
                        have_xinput2_2=no,
                        [[#include <X11/extensions/XInput2.h>]])])
-    LIBS="$gtk_save_LIBS"
+    LIBS="$ctk_save_LIBS"
 
     if test "x$have_xinput2_2" = "xyes"; then
       X_EXTENSIONS="$X_EXTENSIONS XI2.2"
@@ -1249,8 +1249,8 @@ if test "x$enable_x11_backend" = xyes; then
     GDK_EXTRA_LIBS="$X_LIBS $x_extra_libs -lXext -lX11 $GDK_EXTRA_LIBS"
   fi
 
-  CPPFLAGS="$gtk_save_cppflags"
-  LIBS="$gtk_save_libs"
+  CPPFLAGS="$ctk_save_cppflags"
+  LIBS="$ctk_save_libs"
 
   AM_CONDITIONAL(USE_X11, true)
 
@@ -1297,12 +1297,12 @@ CFLAGS="$CFLAGS $PANGO_CFLAGS"
 if $PKG_CONFIG --uninstalled $PANGO_PACKAGES; then
         :
 else
-	gtk_save_LIBS="$LIBS"
+	ctk_save_LIBS="$LIBS"
         LIBS="$PANGO_LIBS $LIBS"
         AC_TRY_LINK_FUNC(pango_context_new, :, AC_MSG_ERROR([
 *** Can't link to Pango. Pango is required to build
 *** GTK+. For more information see http://www.pango.org]))
-        LIBS="$gtk_save_LIBS"
+        LIBS="$ctk_save_LIBS"
 fi
 
 # Check for libcloudproviders
@@ -1608,7 +1608,7 @@ if test "x$enable_cloudprint" = "xyes" -a "x$have_json_glib" = "xno"; then
 ])
 fi
 
-gtk_save_cppflags="$CPPFLAGS"
+ctk_save_cppflags="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $GTK_DEP_CFLAGS $GDK_DEP_CFLAGS"
 
 AC_CHECK_HEADER(cairo-pdf.h,,AC_MSG_ERROR([
@@ -1625,7 +1625,7 @@ if test "$os_win32" != "yes"; then
 *** svg backend enabled.]))
 fi
 
-CPPFLAGS="$gtk_save_cppflags"
+CPPFLAGS="$ctk_save_cppflags"
 
 AC_ARG_ENABLE(test-print-backend,
               [AS_HELP_STRING([--enable-test-print-backend],
@@ -2021,5 +2021,5 @@ echo "        Included immodules:   $included_immodules"
 echo "        colord support:       $have_colord"
 echo "        Introspection:        $found_introspection"
 echo "        Debugging:            $enable_debug"
-echo "        Documentation:        $enable_gtk_doc"
+echo "        Documentation:        $enable_ctk_doc"
 echo "        Profiler:             $enable_profiler"

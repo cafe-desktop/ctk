@@ -39,13 +39,13 @@ struct _GtkInspectorMenuPrivate
   GtkTreeStore *model;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMenu, gtk_inspector_menu, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorMenu, ctk_inspector_menu, GTK_TYPE_BOX)
 
 static void
-gtk_inspector_menu_init (GtkInspectorMenu *sl)
+ctk_inspector_menu_init (GtkInspectorMenu *sl)
 {
-  sl->priv = gtk_inspector_menu_get_instance_private (sl);
-  gtk_widget_init_template (GTK_WIDGET (sl));
+  sl->priv = ctk_inspector_menu_get_instance_private (sl);
+  ctk_widget_init_template (GTK_WIDGET (sl));
 }
 
 static void add_menu (GtkInspectorMenu *sl,
@@ -75,8 +75,8 @@ add_item (GtkInspectorMenu *sl,
       g_variant_unref (value);
     }
 
-  gtk_tree_store_append (sl->priv->model, &iter, parent);
-  gtk_tree_store_set (sl->priv->model, &iter,
+  ctk_tree_store_append (sl->priv->model, &iter, parent);
+  ctk_tree_store_set (sl->priv->model, &iter,
                       COLUMN_TYPE, "item",
                       COLUMN_LABEL, label,
                       COLUMN_ACTION, action,
@@ -88,7 +88,7 @@ add_item (GtkInspectorMenu *sl,
   if (model)
     {
       if (label == NULL)
-        gtk_tree_store_set (sl->priv->model, &iter,
+        ctk_tree_store_set (sl->priv->model, &iter,
                             COLUMN_LABEL, _("Unnamed section"),
                             -1);
       add_menu (sl, model, &iter);
@@ -116,7 +116,7 @@ add_menu (GtkInspectorMenu *sl,
   gint n_items;
   gint i;
 
-  gtk_widget_show (GTK_WIDGET (sl));
+  ctk_widget_show (GTK_WIDGET (sl));
 
   n_items = g_menu_model_get_n_items (menu);
   for (i = 0; i < n_items; i++)
@@ -124,23 +124,23 @@ add_menu (GtkInspectorMenu *sl,
 }
 
 void
-gtk_inspector_menu_set_object (GtkInspectorMenu *sl,
+ctk_inspector_menu_set_object (GtkInspectorMenu *sl,
                                GObject          *object)
 {
-  gtk_widget_hide (GTK_WIDGET (sl));
-  gtk_tree_store_clear (sl->priv->model);
+  ctk_widget_hide (GTK_WIDGET (sl));
+  ctk_tree_store_clear (sl->priv->model);
   
   if (G_IS_MENU_MODEL (object))
     add_menu (sl, G_MENU_MODEL (object), NULL);
 }
 
 static void
-gtk_inspector_menu_class_init (GtkInspectorMenuClass *klass)
+ctk_inspector_menu_class_init (GtkInspectorMenuClass *klass)
 {
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/menu.ui");
-  gtk_widget_class_bind_template_child_private (widget_class, GtkInspectorMenu, model);
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/menu.ui");
+  ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMenu, model);
 }
 
 // vim: set et sw=2 ts=2:

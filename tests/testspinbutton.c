@@ -27,7 +27,7 @@ on_delete_event (GtkWidget *w,
 {
   num_windows--;
   if (num_windows == 0)
-    gtk_main_quit ();
+    ctk_main_quit ();
 
   return FALSE;
 }
@@ -38,48 +38,48 @@ prepare_window_for_orientation (GtkOrientation orientation)
   GtkWidget *window, *mainbox, *wrap_button;
   int max;
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "delete_event", G_CALLBACK (on_delete_event), NULL);
 
-  mainbox = gtk_box_new (GTK_ORIENTATION_VERTICAL ^ orientation, 2);
-  gtk_container_add (GTK_CONTAINER (window), mainbox);
+  mainbox = ctk_box_new (GTK_ORIENTATION_VERTICAL ^ orientation, 2);
+  ctk_container_add (GTK_CONTAINER (window), mainbox);
 
-  wrap_button = gtk_toggle_button_new_with_label ("Wrap");
-  gtk_container_add (GTK_CONTAINER (mainbox), wrap_button);
+  wrap_button = ctk_toggle_button_new_with_label ("Wrap");
+  ctk_container_add (GTK_CONTAINER (mainbox), wrap_button);
 
   for (max = 9; max <= 999999999; max = max * 10 + 9)
     {
-      GtkAdjustment *adj = gtk_adjustment_new (max,
+      GtkAdjustment *adj = ctk_adjustment_new (max,
                                                1, max,
                                                1,
                                                (max + 1) / 10,
                                                0.0);
 
-      GtkWidget *spin = gtk_spin_button_new (adj, 1.0, 0);
+      GtkWidget *spin = ctk_spin_button_new (adj, 1.0, 0);
       GtkWidget *hbox;
-      gtk_orientable_set_orientation (GTK_ORIENTABLE (spin), orientation);
-      gtk_widget_set_halign (GTK_WIDGET (spin), GTK_ALIGN_CENTER);
+      ctk_orientable_set_orientation (GTK_ORIENTABLE (spin), orientation);
+      ctk_widget_set_halign (GTK_WIDGET (spin), GTK_ALIGN_CENTER);
 
       g_object_bind_property (wrap_button, "active", spin, "wrap", G_BINDING_SYNC_CREATE);
 
-      hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-      gtk_box_pack_start (GTK_BOX (hbox), spin, FALSE, FALSE, 2);
-      gtk_container_add (GTK_CONTAINER (mainbox), hbox);
+      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
+      ctk_box_pack_start (GTK_BOX (hbox), spin, FALSE, FALSE, 2);
+      ctk_container_add (GTK_CONTAINER (mainbox), hbox);
     }
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
   num_windows++;
 }
 
 int
 main (int argc, char **argv)
 {
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   prepare_window_for_orientation (GTK_ORIENTATION_HORIZONTAL);
   prepare_window_for_orientation (GTK_ORIENTATION_VERTICAL);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

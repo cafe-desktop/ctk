@@ -121,8 +121,8 @@ on_draw (GtkWidget *widget,
   cairo_t *overlay_cr, *punch_cr, *circles_cr;
 
   /* Fill the background */
-  int width = gtk_widget_get_allocated_width (widget);
-  int height = gtk_widget_get_allocated_height (widget);
+  int width = ctk_widget_get_allocated_width (widget);
+  int height = ctk_widget_get_allocated_height (widget);
   double radius = 0.5 * (width < height ? width : height) - 10;
   double xc = width / 2.;
   double yc = height / 2.;
@@ -190,24 +190,24 @@ main (int argc, char **argv)
 {
   GtkWidget *window, *darea;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
   
-  gtk_window_set_default_size (GTK_WINDOW (window), 400, 400);
-  gtk_window_set_title (GTK_WINDOW (window), "cairo: Knockout Groups");
+  ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+  ctk_window_set_title (GTK_WINDOW (window), "cairo: Knockout Groups");
 
-  darea = gtk_drawing_area_new ();
-  gtk_container_add (GTK_CONTAINER (window), darea);
+  darea = ctk_drawing_area_new ();
+  ctk_container_add (GTK_CONTAINER (window), darea);
 
   g_signal_connect (darea, "draw",
 		    G_CALLBACK (on_draw), NULL);
   g_signal_connect (window, "destroy-event",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
   
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

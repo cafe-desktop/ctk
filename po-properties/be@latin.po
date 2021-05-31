@@ -253,10 +253,10 @@ msgstr "Lahatyp"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Lahatyp dla vakna z infarmacyjaj ab prahramie. Kali nie akreśleny, zmoŭčana "
-"pryjmaje vartaść gtk_window_get_default_icon_list()"
+"pryjmaje vartaść ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2396,7 +2396,7 @@ msgstr "Krok impulsu"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Častka prahresu, na jakuju pavinien być pierasunuty blok pry kožnym impulsie."
 
@@ -4542,7 +4542,7 @@ msgstr "Vartaść"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 "Vartaść, jakuju viartaje funkcyja gtp_radio_action_get_current_value(), kali "
@@ -7052,9 +7052,9 @@ msgid "No show all"
 msgstr "Nie pakazvaj usich"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
-"Akreślivaje, ci funkcyja gtk_widget_show_all() pavinna mieć upłyŭ na hety "
+"Akreślivaje, ci funkcyja ctk_widget_show_all() pavinna mieć upłyŭ na hety "
 "widget"
 
 #: gtk/gtkwidget.c:864
@@ -7632,11 +7632,11 @@ msgstr "Sposab rysavańnia paneli stanu metadu ŭvodu"
 #~ "Kali PRAŬDA, častki jamak dvuch bakoŭ rysika rysavanyja z roznymi detalami"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
 #~ msgstr ""
 #~ "Maksymalnaja kolkaść elementaŭ, jakija viartaje "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 
 #~ msgid "Blinking"
 #~ msgstr "Mirhańnie"

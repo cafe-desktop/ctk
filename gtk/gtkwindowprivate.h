@@ -25,43 +25,43 @@
 
 G_BEGIN_DECLS
 
-void            _gtk_window_internal_set_focus (GtkWindow *window,
+void            _ctk_window_internal_set_focus (GtkWindow *window,
                                                 GtkWidget *focus);
-void            _gtk_window_reposition         (GtkWindow *window,
+void            _ctk_window_reposition         (GtkWindow *window,
                                                 gint       x,
                                                 gint       y);
-void            _gtk_window_group_add_grab    (GtkWindowGroup *window_group,
+void            _ctk_window_group_add_grab    (GtkWindowGroup *window_group,
                                                GtkWidget      *widget);
-void            _gtk_window_group_remove_grab (GtkWindowGroup *window_group,
+void            _ctk_window_group_remove_grab (GtkWindowGroup *window_group,
                                                GtkWidget      *widget);
-void            _gtk_window_group_add_device_grab    (GtkWindowGroup   *window_group,
+void            _ctk_window_group_add_device_grab    (GtkWindowGroup   *window_group,
                                                       GtkWidget        *widget,
                                                       GdkDevice        *device,
                                                       gboolean          block_others);
-void            _gtk_window_group_remove_device_grab (GtkWindowGroup   *window_group,
+void            _ctk_window_group_remove_device_grab (GtkWindowGroup   *window_group,
                                                       GtkWidget        *widget,
                                                       GdkDevice        *device);
 
-gboolean        _gtk_window_group_widget_is_blocked_for_device (GtkWindowGroup *window_group,
+gboolean        _ctk_window_group_widget_is_blocked_for_device (GtkWindowGroup *window_group,
                                                                 GtkWidget      *widget,
                                                                 GdkDevice      *device);
 
-void            _gtk_window_set_has_toplevel_focus (GtkWindow *window,
+void            _ctk_window_set_has_toplevel_focus (GtkWindow *window,
                                                     gboolean   has_toplevel_focus);
-void            _gtk_window_unset_focus_and_default (GtkWindow *window,
+void            _ctk_window_unset_focus_and_default (GtkWindow *window,
                                                      GtkWidget *widget);
 
-void            _gtk_window_set_is_active          (GtkWindow *window,
+void            _ctk_window_set_is_active          (GtkWindow *window,
                                                     gboolean   is_active);
 
-void            _gtk_window_set_is_toplevel        (GtkWindow *window,
+void            _ctk_window_set_is_toplevel        (GtkWindow *window,
                                                     gboolean   is_toplevel);
 
-void            _gtk_window_get_wmclass            (GtkWindow  *window,
+void            _ctk_window_get_wmclass            (GtkWindow  *window,
                                                     gchar     **wmclass_name,
                                                     gchar     **wmclass_class);
 
-void            _gtk_window_set_allocation         (GtkWindow           *window,
+void            _ctk_window_set_allocation         (GtkWindow           *window,
                                                     const GtkAllocation *allocation,
                                                     GtkAllocation       *allocation_out);
 
@@ -71,76 +71,76 @@ typedef void (*GtkWindowKeysForeachFunc) (GtkWindow      *window,
                                           gboolean        is_mnemonic,
                                           gpointer        data);
 
-void _gtk_window_keys_foreach (GtkWindow               *window,
+void _ctk_window_keys_foreach (GtkWindow               *window,
                                GtkWindowKeysForeachFunc func,
                                gpointer                 func_data);
 
-gboolean _gtk_window_check_handle_wm_event (GdkEvent  *event);
+gboolean _ctk_window_check_handle_wm_event (GdkEvent  *event);
 
 /* --- internal (GtkAcceleratable) --- */
-gboolean        _gtk_window_query_nonaccels     (GtkWindow      *window,
+gboolean        _ctk_window_query_nonaccels     (GtkWindow      *window,
                                                  guint           accel_key,
                                                  GdkModifierType accel_mods);
 
-void            _gtk_window_schedule_mnemonics_visible (GtkWindow *window);
+void            _ctk_window_schedule_mnemonics_visible (GtkWindow *window);
 
-void            _gtk_window_notify_keys_changed (GtkWindow *window);
+void            _ctk_window_notify_keys_changed (GtkWindow *window);
 
-gboolean        _gtk_window_titlebar_shows_app_menu (GtkWindow *window);
+gboolean        _ctk_window_titlebar_shows_app_menu (GtkWindow *window);
 
-void            _gtk_window_get_shadow_width (GtkWindow *window,
+void            _ctk_window_get_shadow_width (GtkWindow *window,
                                               GtkBorder *border);
 
-void            _gtk_window_toggle_maximized (GtkWindow *window);
+void            _ctk_window_toggle_maximized (GtkWindow *window);
 
-void            _gtk_window_request_csd (GtkWindow *window);
+void            _ctk_window_request_csd (GtkWindow *window);
 
 /* Window groups */
 
-GtkWindowGroup *_gtk_window_get_window_group (GtkWindow *window);
+GtkWindowGroup *_ctk_window_get_window_group (GtkWindow *window);
 
-void            _gtk_window_set_window_group (GtkWindow      *window,
+void            _ctk_window_set_window_group (GtkWindow      *window,
                                               GtkWindowGroup *group);
 
 /* Popovers */
-void    _gtk_window_add_popover          (GtkWindow                   *window,
+void    _ctk_window_add_popover          (GtkWindow                   *window,
                                           GtkWidget                   *popover,
                                           GtkWidget                   *popover_parent,
                                           gboolean                     clamp_allocation);
-void    _gtk_window_remove_popover       (GtkWindow                   *window,
+void    _ctk_window_remove_popover       (GtkWindow                   *window,
                                           GtkWidget                   *popover);
-void    _gtk_window_set_popover_position (GtkWindow                   *window,
+void    _ctk_window_set_popover_position (GtkWindow                   *window,
                                           GtkWidget                   *popover,
                                           GtkPositionType              pos,
                                           const cairo_rectangle_int_t *rect);
-void    _gtk_window_get_popover_position (GtkWindow                   *window,
+void    _ctk_window_get_popover_position (GtkWindow                   *window,
                                           GtkWidget                   *popover,
                                           GtkPositionType             *pos,
                                           cairo_rectangle_int_t       *rect);
-void    _gtk_window_raise_popover        (GtkWindow                   *window,
+void    _ctk_window_raise_popover        (GtkWindow                   *window,
                                           GtkWidget                   *popover);
 
-GtkWidget * _gtk_window_get_popover_parent (GtkWindow *window,
+GtkWidget * _ctk_window_get_popover_parent (GtkWindow *window,
                                             GtkWidget *popover);
-gboolean    _gtk_window_is_popover_widget  (GtkWindow *window,
+gboolean    _ctk_window_is_popover_widget  (GtkWindow *window,
                                             GtkWidget *popover);
 
-GdkPixbuf *gtk_window_get_icon_for_size (GtkWindow *window,
+GdkPixbuf *ctk_window_get_icon_for_size (GtkWindow *window,
                                          gint       size);
 
-void       gtk_window_set_use_subsurface (GtkWindow *window,
+void       ctk_window_set_use_subsurface (GtkWindow *window,
                                           gboolean   use_subsurface);
-void       gtk_window_set_hardcoded_window (GtkWindow *window,
+void       ctk_window_set_hardcoded_window (GtkWindow *window,
                                             GdkWindow *gdk_window);
 
-GdkScreen *_gtk_window_get_screen (GtkWindow *window);
+GdkScreen *_ctk_window_get_screen (GtkWindow *window);
 
-void       gtk_window_set_unlimited_guessed_size (GtkWindow *window,
+void       ctk_window_set_unlimited_guessed_size (GtkWindow *window,
                                                   gboolean   x,
                                                   gboolean   y);
-void       gtk_window_force_resize (GtkWindow *window);
-void       gtk_window_fixate_size (GtkWindow *window);
-void       gtk_window_move_resize (GtkWindow *window);
+void       ctk_window_force_resize (GtkWindow *window);
+void       ctk_window_fixate_size (GtkWindow *window);
+void       ctk_window_move_resize (GtkWindow *window);
 
 /* Exported handles */
 
@@ -148,10 +148,10 @@ typedef void (*GtkWindowHandleExported)  (GtkWindow               *window,
                                           const char              *handle,
                                           gpointer                 user_data);
 
-gboolean      gtk_window_export_handle   (GtkWindow               *window,
+gboolean      ctk_window_export_handle   (GtkWindow               *window,
                                           GtkWindowHandleExported  callback,
                                           gpointer                 user_data);
-void          gtk_window_unexport_handle (GtkWindow               *window);
+void          ctk_window_unexport_handle (GtkWindow               *window);
 
 G_END_DECLS
 

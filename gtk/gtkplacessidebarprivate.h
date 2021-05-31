@@ -53,7 +53,7 @@ typedef enum {
   N_PLACES
 } GtkPlacesSidebarPlaceType;
 
-gchar *gtk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar);
+gchar *ctk_places_sidebar_get_location_title (GtkPlacesSidebar *sidebar);
 
 G_END_DECLS
 

@@ -30,26 +30,26 @@ main (int argc, char *argv[])
 {
   GtkWidget *window;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = g_object_connect (g_object_new (gtk_window_get_type (),
+  window = g_object_connect (g_object_new (ctk_window_get_type (),
                                            "type", GTK_WINDOW_TOPLEVEL,
                                            "title", "hello world",
                                            "resizable", FALSE,
                                            "border_width", 10,
                                            NULL),
-                             "signal::destroy", gtk_main_quit, NULL,
+                             "signal::destroy", ctk_main_quit, NULL,
                              NULL);
-  g_object_connect (g_object_new (gtk_button_get_type (),
+  g_object_connect (g_object_new (ctk_button_get_type (),
                                   "GtkButton::label", "hello world",
                                   "GtkWidget::parent", window,
                                   "GtkWidget::visible", TRUE,
                                   NULL),
                     "signal::clicked", hello, NULL,
                     NULL);
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

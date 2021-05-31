@@ -109,17 +109,17 @@ static gboolean    on_row_popup_menu                             (GtkPlacesViewR
 
 static void        populate_servers                              (GtkPlacesView *view);
 
-static gboolean    gtk_places_view_get_fetching_networks         (GtkPlacesView *view);
+static gboolean    ctk_places_view_get_fetching_networks         (GtkPlacesView *view);
 
-static void        gtk_places_view_set_fetching_networks         (GtkPlacesView *view,
+static void        ctk_places_view_set_fetching_networks         (GtkPlacesView *view,
                                                                   gboolean       fetching_networks);
 
-static void        gtk_places_view_set_loading                   (GtkPlacesView *view,
+static void        ctk_places_view_set_loading                   (GtkPlacesView *view,
                                                                   gboolean       loading);
 
 static void        update_loading                                (GtkPlacesView *view);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkPlacesView, gtk_places_view, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkPlacesView, ctk_places_view, GTK_TYPE_BOX)
 
 /* GtkPlacesView properties & signals */
 enum {
@@ -155,7 +155,7 @@ emit_open_location (GtkPlacesView      *view,
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if ((open_flags & priv->open_flags) == 0)
     open_flags = GTK_PLACES_OPEN_NORMAL;
@@ -187,7 +187,7 @@ server_list_load (GtkPlacesView *view)
   gchar *datadir;
   gchar *filename;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   bookmarks = g_bookmark_file_new ();
   datadir = g_build_filename (g_get_user_config_dir (), "gtk-3.0", NULL);
   filename = g_build_filename (datadir, "servers", NULL);
@@ -312,8 +312,8 @@ get_toplevel (GtkWidget *widget)
 {
   GtkWidget *toplevel;
 
-  toplevel = gtk_widget_get_toplevel (widget);
-  if (!gtk_widget_is_toplevel (toplevel))
+  toplevel = ctk_widget_get_toplevel (widget);
+  if (!ctk_widget_is_toplevel (toplevel))
     return NULL;
   else
     return GTK_WINDOW (toplevel);
@@ -330,17 +330,17 @@ set_busy_cursor (GtkPlacesView *view,
 
   toplevel = get_toplevel (GTK_WIDGET (view));
   widget = GTK_WIDGET (toplevel);
-  if (!toplevel || !gtk_widget_get_realized (widget))
+  if (!toplevel || !ctk_widget_get_realized (widget))
     return;
 
-  display = gtk_widget_get_display (widget);
+  display = ctk_widget_get_display (widget);
 
   if (busy)
     cursor = gdk_cursor_new_from_name (display, "progress");
   else
     cursor = NULL;
 
-  gdk_window_set_cursor (gtk_widget_get_window (widget), cursor);
+  gdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
   gdk_display_flush (display);
 
   if (cursor)
@@ -358,10 +358,10 @@ activate_row (GtkPlacesView      *view,
   GMount *mount;
   GFile *file;
 
-  priv = gtk_places_view_get_instance_private (view);
-  mount = gtk_places_view_row_get_mount (row);
-  volume = gtk_places_view_row_get_volume (row);
-  file = gtk_places_view_row_get_file (row);
+  priv = ctk_places_view_get_instance_private (view);
+  mount = ctk_places_view_row_get_mount (row);
+  volume = ctk_places_view_row_get_volume (row);
+  file = ctk_places_view_row_get_file (row);
 
   if (file)
     {
@@ -383,7 +383,7 @@ activate_row (GtkPlacesView      *view,
        */
       priv->should_open_location = TRUE;
 
-      gtk_places_view_row_set_busy (row, TRUE);
+      ctk_places_view_row_set_busy (row, TRUE);
       mount_volume (view, volume);
     }
 }
@@ -391,10 +391,10 @@ activate_row (GtkPlacesView      *view,
 static void update_places (GtkPlacesView *view);
 
 static void
-gtk_places_view_destroy (GtkWidget *widget)
+ctk_places_view_destroy (GtkWidget *widget)
 {
   GtkPlacesView *self = GTK_PLACES_VIEW (widget);
-  GtkPlacesViewPrivate *priv = gtk_places_view_get_instance_private (self);
+  GtkPlacesViewPrivate *priv = ctk_places_view_get_instance_private (self);
 
   priv->destroyed = 1;
 
@@ -409,14 +409,14 @@ gtk_places_view_destroy (GtkWidget *widget)
   g_cancellable_cancel (priv->cancellable);
   g_cancellable_cancel (priv->networks_fetching_cancellable);
 
-  GTK_WIDGET_CLASS (gtk_places_view_parent_class)->destroy (widget);
+  GTK_WIDGET_CLASS (ctk_places_view_parent_class)->destroy (widget);
 }
 
 static void
-gtk_places_view_finalize (GObject *object)
+ctk_places_view_finalize (GObject *object)
 {
   GtkPlacesView *self = (GtkPlacesView *)object;
-  GtkPlacesViewPrivate *priv = gtk_places_view_get_instance_private (self);
+  GtkPlacesViewPrivate *priv = ctk_places_view_get_instance_private (self);
 
   if (priv->entry_pulse_timeout_id > 0)
     g_source_remove (priv->entry_pulse_timeout_id);
@@ -431,11 +431,11 @@ gtk_places_view_finalize (GObject *object)
   g_clear_object (&priv->path_size_group);
   g_clear_object (&priv->space_size_group);
 
-  G_OBJECT_CLASS (gtk_places_view_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_places_view_parent_class)->finalize (object);
 }
 
 static void
-gtk_places_view_get_property (GObject    *object,
+ctk_places_view_get_property (GObject    *object,
                               guint       prop_id,
                               GValue     *value,
                               GParamSpec *pspec)
@@ -445,15 +445,15 @@ gtk_places_view_get_property (GObject    *object,
   switch (prop_id)
     {
     case PROP_LOCAL_ONLY:
-      g_value_set_boolean (value, gtk_places_view_get_local_only (self));
+      g_value_set_boolean (value, ctk_places_view_get_local_only (self));
       break;
 
     case PROP_LOADING:
-      g_value_set_boolean (value, gtk_places_view_get_loading (self));
+      g_value_set_boolean (value, ctk_places_view_get_loading (self));
       break;
 
     case PROP_FETCHING_NETWORKS:
-      g_value_set_boolean (value, gtk_places_view_get_fetching_networks (self));
+      g_value_set_boolean (value, ctk_places_view_get_fetching_networks (self));
       break;
 
     default:
@@ -462,7 +462,7 @@ gtk_places_view_get_property (GObject    *object,
 }
 
 static void
-gtk_places_view_set_property (GObject      *object,
+ctk_places_view_set_property (GObject      *object,
                               guint         prop_id,
                               const GValue *value,
                               GParamSpec   *pspec)
@@ -472,7 +472,7 @@ gtk_places_view_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_LOCAL_ONLY:
-      gtk_places_view_set_local_only (self, g_value_get_boolean (value));
+      ctk_places_view_set_local_only (self, g_value_get_boolean (value));
       break;
 
     default:
@@ -528,7 +528,7 @@ populate_servers (GtkPlacesView *view)
   gsize num_uris;
   gint i;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   server_list = server_list_load (view);
 
   if (!server_list)
@@ -536,7 +536,7 @@ populate_servers (GtkPlacesView *view)
 
   uris = g_bookmark_file_get_uris (server_list, &num_uris);
 
-  gtk_stack_set_visible_child_name (GTK_STACK (priv->recent_servers_stack),
+  ctk_stack_set_visible_child_name (GTK_STACK (priv->recent_servers_stack),
                                     num_uris > 0 ? "list" : "empty");
 
   if (!uris)
@@ -546,10 +546,10 @@ populate_servers (GtkPlacesView *view)
     }
 
   /* clear previous items */
-  children = gtk_container_get_children (GTK_CONTAINER (priv->recent_servers_listbox));
-  g_list_free_full (children, (GDestroyNotify) gtk_widget_destroy);
+  children = ctk_container_get_children (GTK_CONTAINER (priv->recent_servers_listbox));
+  g_list_free_full (children, (GDestroyNotify) ctk_widget_destroy);
 
-  gtk_list_store_clear (priv->completion_store);
+  ctk_list_store_clear (priv->completion_store);
 
   for (i = 0; i < num_uris; i++)
     {
@@ -566,15 +566,15 @@ populate_servers (GtkPlacesView *view)
       dup_uri = g_strdup (uris[i]);
 
       /* add to the completion list */
-      gtk_list_store_append (priv->completion_store, &iter);
-      gtk_list_store_set (priv->completion_store,
+      ctk_list_store_append (priv->completion_store, &iter);
+      ctk_list_store_set (priv->completion_store,
                           &iter,
                           0, name,
                           1, uris[i],
                           -1);
 
       /* add to the recent servers listbox */
-      row = gtk_list_box_row_new ();
+      row = ctk_list_box_row_new ();
 
       grid = g_object_new (GTK_TYPE_GRID,
                            "orientation", GTK_ORIENTATION_VERTICAL,
@@ -582,30 +582,30 @@ populate_servers (GtkPlacesView *view)
                            NULL);
 
       /* name of the connected uri, if any */
-      label = gtk_label_new (name);
-      gtk_widget_set_hexpand (label, TRUE);
-      gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-      gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
-      gtk_container_add (GTK_CONTAINER (grid), label);
+      label = ctk_label_new (name);
+      ctk_widget_set_hexpand (label, TRUE);
+      ctk_label_set_xalign (GTK_LABEL (label), 0.0);
+      ctk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+      ctk_container_add (GTK_CONTAINER (grid), label);
 
       /* the uri itself */
-      label = gtk_label_new (uris[i]);
-      gtk_widget_set_hexpand (label, TRUE);
-      gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-      gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
-      gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
-      gtk_container_add (GTK_CONTAINER (grid), label);
+      label = ctk_label_new (uris[i]);
+      ctk_widget_set_hexpand (label, TRUE);
+      ctk_label_set_xalign (GTK_LABEL (label), 0.0);
+      ctk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+      ctk_style_context_add_class (ctk_widget_get_style_context (label), "dim-label");
+      ctk_container_add (GTK_CONTAINER (grid), label);
 
       /* remove button */
-      button = gtk_button_new_from_icon_name ("window-close-symbolic", GTK_ICON_SIZE_BUTTON);
-      gtk_widget_set_halign (button, GTK_ALIGN_END);
-      gtk_widget_set_valign (button, GTK_ALIGN_CENTER);
-      gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-      gtk_style_context_add_class (gtk_widget_get_style_context (button), "sidebar-button");
-      gtk_grid_attach (GTK_GRID (grid), button, 1, 0, 1, 2);
+      button = ctk_button_new_from_icon_name ("window-close-symbolic", GTK_ICON_SIZE_BUTTON);
+      ctk_widget_set_halign (button, GTK_ALIGN_END);
+      ctk_widget_set_valign (button, GTK_ALIGN_CENTER);
+      ctk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+      ctk_style_context_add_class (ctk_widget_get_style_context (button), "sidebar-button");
+      ctk_grid_attach (GTK_GRID (grid), button, 1, 0, 1, 2);
 
-      gtk_container_add (GTK_CONTAINER (row), grid);
-      gtk_container_add (GTK_CONTAINER (priv->recent_servers_listbox), row);
+      ctk_container_add (GTK_CONTAINER (row), grid);
+      ctk_container_add (GTK_CONTAINER (priv->recent_servers_listbox), row);
 
       /* custom data */
       data = g_new0 (RemoveServerData, 1);
@@ -620,7 +620,7 @@ populate_servers (GtkPlacesView *view)
                                 G_CALLBACK (on_remove_server_button_clicked),
                                 data);
 
-      gtk_widget_show_all (row);
+      ctk_widget_show_all (row);
 
       g_free (name);
     }
@@ -637,16 +637,16 @@ update_view_mode (GtkPlacesView *view)
   GList *l;
   gboolean show_listbox;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   show_listbox = FALSE;
 
   /* drives */
-  children = gtk_container_get_children (GTK_CONTAINER (priv->listbox));
+  children = ctk_container_get_children (GTK_CONTAINER (priv->listbox));
 
   for (l = children; l; l = l->next)
     {
       /* GtkListBox filter rows by changing their GtkWidget::child-visible property */
-      if (gtk_widget_get_child_visible (l->data))
+      if (ctk_widget_get_child_visible (l->data))
         {
           show_listbox = TRUE;
           break;
@@ -659,11 +659,11 @@ update_view_mode (GtkPlacesView *view)
       priv->search_query &&
       priv->search_query[0] != '\0')
     {
-        gtk_stack_set_visible_child_name (GTK_STACK (priv->stack), "empty-search");
+        ctk_stack_set_visible_child_name (GTK_STACK (priv->stack), "empty-search");
     }
   else
     {
-      gtk_stack_set_visible_child_name (GTK_STACK (priv->stack), "browse");
+      ctk_stack_set_visible_child_name (GTK_STACK (priv->stack), "browse");
     }
 }
 
@@ -674,11 +674,11 @@ insert_row (GtkPlacesView *view,
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   g_object_set_data (G_OBJECT (row), "is-network", GINT_TO_POINTER (is_network));
 
-  g_signal_connect_swapped (gtk_places_view_row_get_event_box (GTK_PLACES_VIEW_ROW (row)),
+  g_signal_connect_swapped (ctk_places_view_row_get_event_box (GTK_PLACES_VIEW_ROW (row)),
                             "button-press-event",
                             G_CALLBACK (on_button_press_event),
                             row);
@@ -688,15 +688,15 @@ insert_row (GtkPlacesView *view,
                     G_CALLBACK (on_row_popup_menu),
                     row);
 
-  g_signal_connect (gtk_places_view_row_get_eject_button (GTK_PLACES_VIEW_ROW (row)),
+  g_signal_connect (ctk_places_view_row_get_eject_button (GTK_PLACES_VIEW_ROW (row)),
                     "clicked",
                     G_CALLBACK (on_eject_button_clicked),
                     row);
 
-  gtk_places_view_row_set_path_size_group (GTK_PLACES_VIEW_ROW (row), priv->path_size_group);
-  gtk_places_view_row_set_space_size_group (GTK_PLACES_VIEW_ROW (row), priv->space_size_group);
+  ctk_places_view_row_set_path_size_group (GTK_PLACES_VIEW_ROW (row), priv->path_size_group);
+  ctk_places_view_row_set_space_size_group (GTK_PLACES_VIEW_ROW (row), priv->space_size_group);
 
-  gtk_container_add (GTK_CONTAINER (priv->listbox), row);
+  ctk_container_add (GTK_CONTAINER (priv->listbox), row);
 }
 
 static void
@@ -841,9 +841,9 @@ has_networks (GtkPlacesView *view)
   GList *children;
   gboolean has_network = FALSE;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
-  children = gtk_container_get_children (GTK_CONTAINER (priv->listbox));
+  children = ctk_container_get_children (GTK_CONTAINER (priv->listbox));
   for (l = children; l != NULL; l = l->next)
     {
       if (GPOINTER_TO_INT (g_object_get_data (l->data, "is-network")) == TRUE &&
@@ -864,49 +864,49 @@ update_network_state (GtkPlacesView *view)
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (priv->network_placeholder == NULL)
     {
-      priv->network_placeholder = gtk_list_box_row_new ();
-      priv->network_placeholder_label = gtk_label_new ("");
-      gtk_label_set_xalign (GTK_LABEL (priv->network_placeholder_label), 0.0);
-      gtk_widget_set_margin_start (priv->network_placeholder_label, 12);
-      gtk_widget_set_margin_end (priv->network_placeholder_label, 12);
-      gtk_widget_set_margin_top (priv->network_placeholder_label, 6);
-      gtk_widget_set_margin_bottom (priv->network_placeholder_label, 6);
-      gtk_widget_set_hexpand (priv->network_placeholder_label, TRUE);
-      gtk_widget_set_sensitive (priv->network_placeholder, FALSE);
-      gtk_container_add (GTK_CONTAINER (priv->network_placeholder),
+      priv->network_placeholder = ctk_list_box_row_new ();
+      priv->network_placeholder_label = ctk_label_new ("");
+      ctk_label_set_xalign (GTK_LABEL (priv->network_placeholder_label), 0.0);
+      ctk_widget_set_margin_start (priv->network_placeholder_label, 12);
+      ctk_widget_set_margin_end (priv->network_placeholder_label, 12);
+      ctk_widget_set_margin_top (priv->network_placeholder_label, 6);
+      ctk_widget_set_margin_bottom (priv->network_placeholder_label, 6);
+      ctk_widget_set_hexpand (priv->network_placeholder_label, TRUE);
+      ctk_widget_set_sensitive (priv->network_placeholder, FALSE);
+      ctk_container_add (GTK_CONTAINER (priv->network_placeholder),
                          priv->network_placeholder_label);
       g_object_set_data (G_OBJECT (priv->network_placeholder),
                          "is-network", GINT_TO_POINTER (TRUE));
       /* mark the row as placeholder, so it always goes first */
       g_object_set_data (G_OBJECT (priv->network_placeholder),
                          "is-placeholder", GINT_TO_POINTER (TRUE));
-      gtk_container_add (GTK_CONTAINER (priv->listbox), priv->network_placeholder);
+      ctk_container_add (GTK_CONTAINER (priv->listbox), priv->network_placeholder);
     }
 
-  if (gtk_places_view_get_fetching_networks (view))
+  if (ctk_places_view_get_fetching_networks (view))
     {
       /* only show a placeholder with a message if the list is empty.
        * otherwise just show the spinner in the header */
       if (!has_networks (view))
         {
-          gtk_widget_show_all (priv->network_placeholder);
-          gtk_label_set_text (GTK_LABEL (priv->network_placeholder_label),
+          ctk_widget_show_all (priv->network_placeholder);
+          ctk_label_set_text (GTK_LABEL (priv->network_placeholder_label),
                               _("Searching for network locations"));
         }
     }
   else if (!has_networks (view))
     {
-      gtk_widget_show_all (priv->network_placeholder);
-      gtk_label_set_text (GTK_LABEL (priv->network_placeholder_label),
+      ctk_widget_show_all (priv->network_placeholder);
+      ctk_label_set_text (GTK_LABEL (priv->network_placeholder_label),
                           _("No network locations found"));
     }
   else
     {
-      gtk_widget_hide (priv->network_placeholder);
+      ctk_widget_hide (priv->network_placeholder);
     }
 }
 
@@ -917,7 +917,7 @@ monitor_network (GtkPlacesView *self)
   GFile *network_file;
   GError *error;
 
-  priv = gtk_places_view_get_instance_private (self);
+  priv = ctk_places_view_get_instance_private (self);
 
   if (priv->network_monitor)
     return;
@@ -989,7 +989,7 @@ network_enumeration_next_files_finished (GObject      *source_object,
   GError *error;
 
   view = GTK_PLACES_VIEW (user_data);
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   error = NULL;
 
   detected_networks = g_file_enumerator_next_files_finish (G_FILE_ENUMERATOR (source_object),
@@ -1004,7 +1004,7 @@ network_enumeration_next_files_finished (GObject      *source_object,
     }
   else
     {
-      gtk_places_view_set_fetching_networks (view, FALSE);
+      ctk_places_view_set_fetching_networks (view, FALSE);
       populate_networks (view, G_FILE_ENUMERATOR (source_object), detected_networks);
 
       g_list_free_full (detected_networks, g_object_unref);
@@ -1045,7 +1045,7 @@ network_enumeration_finished (GObject      *source_object,
     }
   else
     {
-      priv = gtk_places_view_get_instance_private (GTK_PLACES_VIEW (user_data));
+      priv = ctk_places_view_get_instance_private (GTK_PLACES_VIEW (user_data));
       g_file_enumerator_next_files_async (enumerator,
                                           G_MAXINT32,
                                           G_PRIORITY_DEFAULT,
@@ -1064,7 +1064,7 @@ fetch_networks (GtkPlacesView *view)
   const gchar * const *supported_uris;
   gboolean found;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   supported_uris = g_vfs_get_supported_uri_schemes (g_vfs_get_default ());
 
   for (found = FALSE; !found && supported_uris && supported_uris[0]; supported_uris++)
@@ -1079,7 +1079,7 @@ fetch_networks (GtkPlacesView *view)
   g_cancellable_cancel (priv->networks_fetching_cancellable);
   g_clear_object (&priv->networks_fetching_cancellable);
   priv->networks_fetching_cancellable = g_cancellable_new ();
-  gtk_places_view_set_fetching_networks (view, TRUE);
+  ctk_places_view_set_fetching_networks (view, TRUE);
   update_network_state (view);
 
   g_object_ref (view);
@@ -1106,14 +1106,14 @@ update_places (GtkPlacesView *view)
   GIcon *icon;
   GFile *file;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   /* Clear all previously added items */
-  children = gtk_container_get_children (GTK_CONTAINER (priv->listbox));
-  g_list_free_full (children, (GDestroyNotify) gtk_widget_destroy);
+  children = ctk_container_get_children (GTK_CONTAINER (priv->listbox));
+  g_list_free_full (children, (GDestroyNotify) ctk_widget_destroy);
   priv->network_placeholder = NULL;
   /* Inform clients that we started loading */
-  gtk_places_view_set_loading (view, TRUE);
+  ctk_places_view_set_loading (view, TRUE);
 
   /* Add "Computer" row */
   file = g_file_new_for_path ("/");
@@ -1237,7 +1237,7 @@ server_mount_ready_cb (GObject      *source_file,
       g_clear_error (&error);
     }
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (priv->destroyed) {
     g_object_unref (view);
@@ -1247,8 +1247,8 @@ server_mount_ready_cb (GObject      *source_file,
   priv->should_pulse_entry = FALSE;
 
   /* Restore from Cancel to Connect */
-  gtk_button_set_label (GTK_BUTTON (priv->connect_button), _("Con_nect"));
-  gtk_widget_set_sensitive (priv->address_entry, TRUE);
+  ctk_button_set_label (GTK_BUTTON (priv->connect_button), _("Con_nect"));
+  ctk_widget_set_sensitive (priv->address_entry, TRUE);
   priv->connecting_to_server = FALSE;
 
   if (should_show)
@@ -1260,7 +1260,7 @@ server_mount_ready_cb (GObject      *source_file,
        * Otherwise, the user would lost the typed address even if it fails
        * to connect.
        */
-      gtk_entry_set_text (GTK_ENTRY (priv->address_entry), "");
+      ctk_entry_set_text (GTK_ENTRY (priv->address_entry), "");
 
       if (priv->should_open_location)
         {
@@ -1328,7 +1328,7 @@ volume_mount_ready_cb (GObject      *source_volume,
     }
 
   view = GTK_PLACES_VIEW (user_data);
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (priv->destroyed)
     {
@@ -1387,7 +1387,7 @@ unmount_ready_cb (GObject      *source_mount,
       g_clear_error (&error);
     }
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (priv->destroyed) {
     g_object_unref (view);
@@ -1405,7 +1405,7 @@ pulse_entry_cb (gpointer user_data)
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (GTK_PLACES_VIEW (user_data));
+  priv = ctk_places_view_get_instance_private (GTK_PLACES_VIEW (user_data));
 
   if (priv->destroyed)
     {
@@ -1415,14 +1415,14 @@ pulse_entry_cb (gpointer user_data)
     }
   else if (priv->should_pulse_entry)
     {
-      gtk_entry_progress_pulse (GTK_ENTRY (priv->address_entry));
+      ctk_entry_progress_pulse (GTK_ENTRY (priv->address_entry));
 
       return G_SOURCE_CONTINUE;
     }
   else
     {
-      gtk_entry_set_progress_pulse_step (GTK_ENTRY (priv->address_entry), 0.0);
-      gtk_entry_set_progress_fraction (GTK_ENTRY (priv->address_entry), 0.0);
+      ctk_entry_set_progress_pulse_step (GTK_ENTRY (priv->address_entry), 0.0);
+      ctk_entry_set_progress_fraction (GTK_ENTRY (priv->address_entry), 0.0);
       priv->entry_pulse_timeout_id = 0;
 
       return G_SOURCE_REMOVE;
@@ -1437,8 +1437,8 @@ unmount_mount (GtkPlacesView *view,
   GMountOperation *operation;
   GtkWidget *toplevel;
 
-  priv = gtk_places_view_get_instance_private (view);
-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (view));
+  priv = ctk_places_view_get_instance_private (view);
+  toplevel = ctk_widget_get_toplevel (GTK_WIDGET (view));
 
   g_cancellable_cancel (priv->cancellable);
   g_clear_object (&priv->cancellable);
@@ -1449,7 +1449,7 @@ unmount_mount (GtkPlacesView *view,
 
   g_object_ref (view);
 
-  operation = gtk_mount_operation_new (GTK_WINDOW (toplevel));
+  operation = ctk_mount_operation_new (GTK_WINDOW (toplevel));
   g_mount_unmount_with_operation (mount,
                                   0,
                                   operation,
@@ -1467,7 +1467,7 @@ mount_server (GtkPlacesView *view,
   GMountOperation *operation;
   GtkWidget *toplevel;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   g_cancellable_cancel (priv->cancellable);
   g_clear_object (&priv->cancellable);
@@ -1476,14 +1476,14 @@ mount_server (GtkPlacesView *view,
     return;
 
   priv->cancellable = g_cancellable_new ();
-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (view));
-  operation = gtk_mount_operation_new (GTK_WINDOW (toplevel));
+  toplevel = ctk_widget_get_toplevel (GTK_WIDGET (view));
+  operation = ctk_mount_operation_new (GTK_WINDOW (toplevel));
 
   priv->should_pulse_entry = TRUE;
-  gtk_entry_set_progress_pulse_step (GTK_ENTRY (priv->address_entry), 0.1);
+  ctk_entry_set_progress_pulse_step (GTK_ENTRY (priv->address_entry), 0.1);
   /* Allow to cancel the operation */
-  gtk_button_set_label (GTK_BUTTON (priv->connect_button), _("Cance_l"));
-  gtk_widget_set_sensitive (priv->address_entry, FALSE);
+  ctk_button_set_label (GTK_BUTTON (priv->connect_button), _("Cance_l"));
+  ctk_widget_set_sensitive (priv->address_entry, FALSE);
   priv->connecting_to_server = TRUE;
   update_loading (view);
 
@@ -1514,9 +1514,9 @@ mount_volume (GtkPlacesView *view,
   GMountOperation *operation;
   GtkWidget *toplevel;
 
-  priv = gtk_places_view_get_instance_private (view);
-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (view));
-  operation = gtk_mount_operation_new (GTK_WINDOW (toplevel));
+  priv = ctk_places_view_get_instance_private (view);
+  toplevel = ctk_widget_get_toplevel (GTK_WIDGET (view));
+  operation = ctk_mount_operation_new (GTK_WINDOW (toplevel));
 
   g_cancellable_cancel (priv->cancellable);
   g_clear_object (&priv->cancellable);
@@ -1548,7 +1548,7 @@ popup_menu_detach_cb (GtkWidget *attach_widget,
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (GTK_PLACES_VIEW (attach_widget));
+  priv = ctk_places_view_get_instance_private (GTK_PLACES_VIEW (attach_widget));
   priv->popup_menu = NULL;
 }
 
@@ -1558,7 +1558,7 @@ open_cb (GtkMenuItem      *item,
 {
   GtkPlacesView *self;
 
-  self = GTK_PLACES_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW));
+  self = GTK_PLACES_VIEW (ctk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW));
   activate_row (self, row, GTK_PLACES_OPEN_NORMAL);
 }
 
@@ -1568,7 +1568,7 @@ open_in_new_tab_cb (GtkMenuItem      *item,
 {
   GtkPlacesView *self;
 
-  self = GTK_PLACES_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW));
+  self = GTK_PLACES_VIEW (ctk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW));
   activate_row (self, row, GTK_PLACES_OPEN_NEW_TAB);
 }
 
@@ -1578,7 +1578,7 @@ open_in_new_window_cb (GtkMenuItem      *item,
 {
   GtkPlacesView *self;
 
-  self = GTK_PLACES_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW));
+  self = GTK_PLACES_VIEW (ctk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW));
   activate_row (self, row, GTK_PLACES_OPEN_NEW_WINDOW);
 }
 
@@ -1590,9 +1590,9 @@ mount_cb (GtkMenuItem      *item,
   GtkWidget *view;
   GVolume *volume;
 
-  view = gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW);
-  priv = gtk_places_view_get_instance_private (GTK_PLACES_VIEW (view));
-  volume = gtk_places_view_row_get_volume (row);
+  view = ctk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW);
+  priv = ctk_places_view_get_instance_private (GTK_PLACES_VIEW (view));
+  volume = ctk_places_view_row_get_volume (row);
 
   /*
    * When the mount item is activated, it's expected that
@@ -1601,7 +1601,7 @@ mount_cb (GtkMenuItem      *item,
    */
   priv->should_open_location = FALSE;
 
-  gtk_places_view_row_set_busy (row, TRUE);
+  ctk_places_view_row_set_busy (row, TRUE);
   mount_volume (GTK_PLACES_VIEW (view), volume);
 }
 
@@ -1612,10 +1612,10 @@ unmount_cb (GtkMenuItem      *item,
   GtkWidget *view;
   GMount *mount;
 
-  view = gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW);
-  mount = gtk_places_view_row_get_mount (row);
+  view = ctk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW);
+  mount = ctk_places_view_row_get_mount (row);
 
-  gtk_places_view_row_set_busy (row, TRUE);
+  ctk_places_view_row_set_busy (row, TRUE);
 
   unmount_mount (GTK_PLACES_VIEW (view), mount);
 }
@@ -1628,13 +1628,13 @@ attach_protocol_row_to_grid (GtkGrid     *grid,
   GtkWidget *name_label;
   GtkWidget *prefix_label;
 
-  name_label = gtk_label_new (protocol_name);
-  gtk_widget_set_halign (name_label, GTK_ALIGN_START);
-  gtk_grid_attach_next_to (grid, name_label, NULL, GTK_POS_BOTTOM, 1, 1);
+  name_label = ctk_label_new (protocol_name);
+  ctk_widget_set_halign (name_label, GTK_ALIGN_START);
+  ctk_grid_attach_next_to (grid, name_label, NULL, GTK_POS_BOTTOM, 1, 1);
 
-  prefix_label = gtk_label_new (protocol_prefix);
-  gtk_widget_set_halign (prefix_label, GTK_ALIGN_START);
-  gtk_grid_attach_next_to (grid, prefix_label, name_label, GTK_POS_RIGHT, 1, 1);
+  prefix_label = ctk_label_new (protocol_prefix);
+  ctk_widget_set_halign (prefix_label, GTK_ALIGN_START);
+  ctk_grid_attach_next_to (grid, prefix_label, name_label, GTK_POS_RIGHT, 1, 1);
 }
 
 static void
@@ -1665,7 +1665,7 @@ populate_available_protocols_grid (GtkGrid *grid)
     /* Translators: do not translate dav:// and davs:// */
     attach_protocol_row_to_grid (grid, _("WebDAV"), _("dav:// or davs://"));
 
-  gtk_widget_show_all (GTK_WIDGET (grid));
+  ctk_widget_show_all (GTK_WIDGET (grid));
 }
 
 /* Constructs the popup menu if needed */
@@ -1679,48 +1679,48 @@ build_popup_menu (GtkPlacesView    *view,
   GFile *file;
   gboolean is_network;
 
-  priv = gtk_places_view_get_instance_private (view);
-  mount = gtk_places_view_row_get_mount (row);
-  file = gtk_places_view_row_get_file (row);
-  is_network = gtk_places_view_row_get_is_network (row);
+  priv = ctk_places_view_get_instance_private (view);
+  mount = ctk_places_view_row_get_mount (row);
+  file = ctk_places_view_row_get_file (row);
+  is_network = ctk_places_view_row_get_is_network (row);
 
-  priv->popup_menu = gtk_menu_new ();
-  gtk_style_context_add_class (gtk_widget_get_style_context (priv->popup_menu),
+  priv->popup_menu = ctk_menu_new ();
+  ctk_style_context_add_class (ctk_widget_get_style_context (priv->popup_menu),
                                GTK_STYLE_CLASS_CONTEXT_MENU);
 
-  gtk_menu_attach_to_widget (GTK_MENU (priv->popup_menu),
+  ctk_menu_attach_to_widget (GTK_MENU (priv->popup_menu),
                              GTK_WIDGET (view),
                              popup_menu_detach_cb);
 
   /* Open item is always present */
-  item = gtk_menu_item_new_with_mnemonic (_("_Open"));
+  item = ctk_menu_item_new_with_mnemonic (_("_Open"));
   g_signal_connect (item,
                     "activate",
                     G_CALLBACK (open_cb),
                     row);
-  gtk_widget_show (item);
-  gtk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
+  ctk_widget_show (item);
+  ctk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
 
   if (priv->open_flags & GTK_PLACES_OPEN_NEW_TAB)
     {
-      item = gtk_menu_item_new_with_mnemonic (_("Open in New _Tab"));
+      item = ctk_menu_item_new_with_mnemonic (_("Open in New _Tab"));
       g_signal_connect (item,
                         "activate",
                         G_CALLBACK (open_in_new_tab_cb),
                         row);
-      gtk_widget_show (item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
+      ctk_widget_show (item);
+      ctk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
     }
 
   if (priv->open_flags & GTK_PLACES_OPEN_NEW_WINDOW)
     {
-      item = gtk_menu_item_new_with_mnemonic (_("Open in New _Window"));
+      item = ctk_menu_item_new_with_mnemonic (_("Open in New _Window"));
       g_signal_connect (item,
                         "activate",
                         G_CALLBACK (open_in_new_window_cb),
                         row);
-      gtk_widget_show (item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
+      ctk_widget_show (item);
+      ctk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
     }
 
   /*
@@ -1731,30 +1731,30 @@ build_popup_menu (GtkPlacesView    *view,
     return;
 
   /* Separator */
-  item = gtk_separator_menu_item_new ();
-  gtk_widget_show (item);
-  gtk_menu_shell_insert (GTK_MENU_SHELL (priv->popup_menu), item, -1);
+  item = ctk_separator_menu_item_new ();
+  ctk_widget_show (item);
+  ctk_menu_shell_insert (GTK_MENU_SHELL (priv->popup_menu), item, -1);
 
   /* Mount/Unmount items */
   if (mount)
     {
-      item = gtk_menu_item_new_with_mnemonic (is_network ? _("_Disconnect") : _("_Unmount"));
+      item = ctk_menu_item_new_with_mnemonic (is_network ? _("_Disconnect") : _("_Unmount"));
       g_signal_connect (item,
                         "activate",
                         G_CALLBACK (unmount_cb),
                         row);
-      gtk_widget_show (item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
+      ctk_widget_show (item);
+      ctk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
     }
   else
     {
-      item = gtk_menu_item_new_with_mnemonic (is_network ? _("_Connect") : _("_Mount"));
+      item = ctk_menu_item_new_with_mnemonic (is_network ? _("_Connect") : _("_Mount"));
       g_signal_connect (item,
                         "activate",
                         G_CALLBACK (mount_cb),
                         row);
-      gtk_widget_show (item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
+      ctk_widget_show (item);
+      ctk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), item);
     }
 }
 
@@ -1765,14 +1765,14 @@ popup_menu (GtkPlacesViewRow *row,
   GtkPlacesViewPrivate *priv;
   GtkWidget *view;
 
-  view = gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW);
-  priv = gtk_places_view_get_instance_private (GTK_PLACES_VIEW (view));
+  view = ctk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW);
+  priv = ctk_places_view_get_instance_private (GTK_PLACES_VIEW (view));
 
-  g_clear_pointer (&priv->popup_menu, gtk_widget_destroy);
+  g_clear_pointer (&priv->popup_menu, ctk_widget_destroy);
 
   build_popup_menu (GTK_PLACES_VIEW (view), row);
 
-  gtk_menu_popup_at_pointer (GTK_MENU (priv->popup_menu), (GdkEvent *) event);
+  ctk_menu_popup_at_pointer (GTK_MENU (priv->popup_menu), (GdkEvent *) event);
 }
 
 static gboolean
@@ -1805,13 +1805,13 @@ on_key_press_event (GtkWidget     *widget,
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (event)
     {
       guint modifiers;
 
-      modifiers = gtk_accelerator_get_default_mod_mask ();
+      modifiers = ctk_accelerator_get_default_mod_mask ();
 
       if (event->keyval == GDK_KEY_Return ||
           event->keyval == GDK_KEY_KP_Enter ||
@@ -1827,7 +1827,7 @@ on_key_press_event (GtkWidget     *widget,
           if (!toplevel)
             return FALSE;
 
-          focus_widget = gtk_window_get_focus (toplevel);
+          focus_widget = ctk_window_get_focus (toplevel);
 
           if (!GTK_IS_PLACES_VIEW_ROW (focus_widget))
             return FALSE;
@@ -1852,9 +1852,9 @@ on_eject_button_clicked (GtkWidget        *widget,
 {
   if (row)
     {
-      GtkWidget *view = gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW);
+      GtkWidget *view = ctk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_PLACES_VIEW);
 
-      unmount_mount (GTK_PLACES_VIEW (view), gtk_places_view_row_get_mount (row));
+      unmount_mount (GTK_PLACES_VIEW (view), ctk_places_view_row_get_mount (row));
     }
 }
 
@@ -1865,7 +1865,7 @@ on_connect_button_clicked (GtkPlacesView *view)
   const gchar *uri;
   GFile *file;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   file = NULL;
 
   /*
@@ -1873,10 +1873,10 @@ on_connect_button_clicked (GtkPlacesView *view)
    * address changes, it is sufficient to check if it's sensitive
    * or not, in order to determine if the given address is valid.
    */
-  if (!gtk_widget_get_sensitive (priv->connect_button))
+  if (!ctk_widget_get_sensitive (priv->connect_button))
     return;
 
-  uri = gtk_entry_get_text (GTK_ENTRY (priv->address_entry));
+  uri = ctk_entry_get_text (GTK_ENTRY (priv->address_entry));
 
   if (uri != NULL && uri[0] != '\0')
     file = g_file_new_for_commandline_arg (uri);
@@ -1901,10 +1901,10 @@ on_address_entry_text_changed (GtkPlacesView *view)
   gchar *address, *scheme;
   gboolean supported;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   supported = FALSE;
   supported_protocols = g_vfs_get_supported_uri_schemes (g_vfs_get_default ());
-  address = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->address_entry)));
+  address = g_strdup (ctk_entry_get_text (GTK_ENTRY (priv->address_entry)));
   scheme = g_uri_parse_scheme (address);
 
   if (!supported_protocols)
@@ -1917,12 +1917,12 @@ on_address_entry_text_changed (GtkPlacesView *view)
               !g_strv_contains (unsupported_protocols, scheme);
 
 out:
-  gtk_widget_set_sensitive (priv->connect_button, supported);
+  ctk_widget_set_sensitive (priv->connect_button, supported);
   if (scheme && !supported)
-    gtk_style_context_add_class (gtk_widget_get_style_context (priv->address_entry),
+    ctk_style_context_add_class (ctk_widget_get_style_context (priv->address_entry),
                                  GTK_STYLE_CLASS_ERROR);
   else
-    gtk_style_context_remove_class (gtk_widget_get_style_context (priv->address_entry),
+    ctk_style_context_remove_class (ctk_widget_get_style_context (priv->address_entry),
                                     GTK_STYLE_CLASS_ERROR);
 
   g_free (address);
@@ -1938,15 +1938,15 @@ on_address_entry_show_help_pressed (GtkPlacesView        *view,
   GtkPlacesViewPrivate *priv;
   GdkRectangle rect;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   /* Setup the auxiliary popover's rectangle */
-  gtk_entry_get_icon_area (GTK_ENTRY (priv->address_entry),
+  ctk_entry_get_icon_area (GTK_ENTRY (priv->address_entry),
                            GTK_ENTRY_ICON_SECONDARY,
                            &rect);
 
-  gtk_popover_set_pointing_to (GTK_POPOVER (priv->server_adresses_popover), &rect);
-  gtk_widget_set_visible (priv->server_adresses_popover, TRUE);
+  ctk_popover_set_pointing_to (GTK_POPOVER (priv->server_adresses_popover), &rect);
+  ctk_widget_set_visible (priv->server_adresses_popover, TRUE);
 }
 
 static void
@@ -1957,12 +1957,12 @@ on_recent_servers_listbox_row_activated (GtkPlacesView    *view,
   GtkPlacesViewPrivate *priv;
   gchar *uri;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   uri = g_object_get_data (G_OBJECT (row), "uri");
 
-  gtk_entry_set_text (GTK_ENTRY (priv->address_entry), uri);
+  ctk_entry_set_text (GTK_ENTRY (priv->address_entry), uri);
 
-  gtk_widget_hide (priv->recent_servers_popover);
+  ctk_widget_hide (priv->recent_servers_popover);
 }
 
 static void
@@ -1975,9 +1975,9 @@ on_listbox_row_activated (GtkPlacesView    *view,
   guint button;
   GtkPlacesOpenFlags open_flags;
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
-  event = gtk_get_current_event ();
+  event = ctk_get_current_event ();
   gdk_event_get_button (event, &button);
 
   if (gdk_event_get_event_type (event) == GDK_BUTTON_RELEASE && button == GDK_BUTTON_MIDDLE)
@@ -2025,7 +2025,7 @@ listbox_filter_func (GtkListBoxRow *row,
   gchar *name;
   gchar *path;
 
-  priv = gtk_places_view_get_instance_private (GTK_PLACES_VIEW (user_data));
+  priv = ctk_places_view_get_instance_private (GTK_PLACES_VIEW (user_data));
   retval = FALSE;
   searching = priv->search_query && priv->search_query[0] != '\0';
 
@@ -2102,10 +2102,10 @@ listbox_header_func (GtkListBoxRow *row,
       GtkWidget *label;
       GtkWidget *separator;
 
-      header = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-      gtk_widget_set_margin_top (header, 6);
+      header = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+      ctk_widget_set_margin_top (header, 6);
 
-      separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+      separator = ctk_separator_new (GTK_ORIENTATION_HORIZONTAL);
 
       label = g_object_new (GTK_TYPE_LABEL,
                             "use_markup", TRUE,
@@ -2122,8 +2122,8 @@ listbox_header_func (GtkListBoxRow *row,
                         "margin-end", 6,
                         NULL);
 
-          header_name = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-          network_header_spinner = gtk_spinner_new ();
+          header_name = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+          network_header_spinner = ctk_spinner_new ();
           g_object_set (network_header_spinner,
                         "margin-end", 12,
                         NULL);
@@ -2133,9 +2133,9 @@ listbox_header_func (GtkListBoxRow *row,
                                   "active",
                                   G_BINDING_SYNC_CREATE);
 
-          gtk_container_add (GTK_CONTAINER (header_name), label);
-          gtk_container_add (GTK_CONTAINER (header_name), network_header_spinner);
-          gtk_container_add (GTK_CONTAINER (header), header_name);
+          ctk_container_add (GTK_CONTAINER (header_name), label);
+          ctk_container_add (GTK_CONTAINER (header_name), network_header_spinner);
+          ctk_container_add (GTK_CONTAINER (header), header_name);
         }
       else
         {
@@ -2143,19 +2143,19 @@ listbox_header_func (GtkListBoxRow *row,
                         "hexpand", TRUE,
                         "margin-end", 12,
                         NULL);
-          gtk_container_add (GTK_CONTAINER (header), label);
+          ctk_container_add (GTK_CONTAINER (header), label);
         }
 
-      gtk_container_add (GTK_CONTAINER (header), separator);
-      gtk_widget_show_all (header);
+      ctk_container_add (GTK_CONTAINER (header), separator);
+      ctk_widget_show_all (header);
 
-      gtk_list_box_row_set_header (row, header);
+      ctk_list_box_row_set_header (row, header);
 
       g_free (text);
     }
   else
     {
-      gtk_list_box_row_set_header (row, NULL);
+      ctk_list_box_row_set_header (row, NULL);
     }
 }
 
@@ -2203,23 +2203,23 @@ listbox_sort_func (GtkListBoxRow *row1,
 }
 
 static void
-gtk_places_view_constructed (GObject *object)
+ctk_places_view_constructed (GObject *object)
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (GTK_PLACES_VIEW (object));
+  priv = ctk_places_view_get_instance_private (GTK_PLACES_VIEW (object));
 
-  G_OBJECT_CLASS (gtk_places_view_parent_class)->constructed (object);
+  G_OBJECT_CLASS (ctk_places_view_parent_class)->constructed (object);
 
-  gtk_list_box_set_sort_func (GTK_LIST_BOX (priv->listbox),
+  ctk_list_box_set_sort_func (GTK_LIST_BOX (priv->listbox),
                               listbox_sort_func,
                               object,
                               NULL);
-  gtk_list_box_set_filter_func (GTK_LIST_BOX (priv->listbox),
+  ctk_list_box_set_filter_func (GTK_LIST_BOX (priv->listbox),
                                 listbox_filter_func,
                                 object,
                                 NULL);
-  gtk_list_box_set_header_func (GTK_LIST_BOX (priv->listbox),
+  ctk_list_box_set_header_func (GTK_LIST_BOX (priv->listbox),
                                 listbox_header_func,
                                 object,
                                 NULL);
@@ -2254,30 +2254,30 @@ gtk_places_view_constructed (GObject *object)
 }
 
 static void
-gtk_places_view_map (GtkWidget *widget)
+ctk_places_view_map (GtkWidget *widget)
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (GTK_PLACES_VIEW (widget));
+  priv = ctk_places_view_get_instance_private (GTK_PLACES_VIEW (widget));
 
-  gtk_entry_set_text (GTK_ENTRY (priv->address_entry), "");
+  ctk_entry_set_text (GTK_ENTRY (priv->address_entry), "");
 
-  GTK_WIDGET_CLASS (gtk_places_view_parent_class)->map (widget);
+  GTK_WIDGET_CLASS (ctk_places_view_parent_class)->map (widget);
 }
 
 static void
-gtk_places_view_class_init (GtkPlacesViewClass *klass)
+ctk_places_view_class_init (GtkPlacesViewClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-  object_class->finalize = gtk_places_view_finalize;
-  object_class->constructed = gtk_places_view_constructed;
-  object_class->get_property = gtk_places_view_get_property;
-  object_class->set_property = gtk_places_view_set_property;
+  object_class->finalize = ctk_places_view_finalize;
+  object_class->constructed = ctk_places_view_constructed;
+  object_class->get_property = ctk_places_view_get_property;
+  object_class->set_property = ctk_places_view_set_property;
 
-  widget_class->destroy = gtk_places_view_destroy;
-  widget_class->map = gtk_places_view_map;
+  widget_class->destroy = ctk_places_view_destroy;
+  widget_class->map = ctk_places_view_map;
 
   /**
    * GtkPlacesView::open-location:
@@ -2299,13 +2299,13 @@ gtk_places_view_class_init (GtkPlacesViewClass *klass)
                         G_SIGNAL_RUN_FIRST,
                         G_STRUCT_OFFSET (GtkPlacesViewClass, open_location),
                         NULL, NULL,
-                        _gtk_marshal_VOID__OBJECT_FLAGS,
+                        _ctk_marshal_VOID__OBJECT_FLAGS,
                         G_TYPE_NONE, 2,
                         G_TYPE_OBJECT,
                         GTK_TYPE_PLACES_OPEN_FLAGS);
   g_signal_set_va_marshaller (places_view_signals [OPEN_LOCATION],
                               G_TYPE_FROM_CLASS (object_class),
-                              _gtk_marshal_VOID__OBJECT_FLAGSv);
+                              _ctk_marshal_VOID__OBJECT_FLAGSv);
 
   /**
    * GtkPlacesView::show-error-message:
@@ -2326,7 +2326,7 @@ gtk_places_view_class_init (GtkPlacesViewClass *klass)
                         G_SIGNAL_RUN_FIRST,
                         G_STRUCT_OFFSET (GtkPlacesViewClass, show_error_message),
                         NULL, NULL,
-                        _gtk_marshal_VOID__STRING_STRING,
+                        _ctk_marshal_VOID__STRING_STRING,
                         G_TYPE_NONE, 2,
                         G_TYPE_STRING,
                         G_TYPE_STRING);
@@ -2363,50 +2363,50 @@ gtk_places_view_class_init (GtkPlacesViewClass *klass)
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 
   /* Bind class to template */
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkplacesview.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkplacesview.ui");
 
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, actionbar);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, address_entry);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, address_entry_completion);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, completion_store);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, connect_button);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, listbox);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, recent_servers_listbox);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, recent_servers_popover);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, recent_servers_stack);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, stack);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, server_adresses_popover);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, available_protocols_grid);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, actionbar);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, address_entry);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, address_entry_completion);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, completion_store);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, connect_button);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, listbox);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, recent_servers_listbox);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, recent_servers_popover);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, recent_servers_stack);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, stack);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, server_adresses_popover);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, available_protocols_grid);
 
-  gtk_widget_class_bind_template_callback (widget_class, on_address_entry_text_changed);
-  gtk_widget_class_bind_template_callback (widget_class, on_address_entry_show_help_pressed);
-  gtk_widget_class_bind_template_callback (widget_class, on_connect_button_clicked);
-  gtk_widget_class_bind_template_callback (widget_class, on_key_press_event);
-  gtk_widget_class_bind_template_callback (widget_class, on_listbox_row_activated);
-  gtk_widget_class_bind_template_callback (widget_class, on_recent_servers_listbox_row_activated);
+  ctk_widget_class_bind_template_callback (widget_class, on_address_entry_text_changed);
+  ctk_widget_class_bind_template_callback (widget_class, on_address_entry_show_help_pressed);
+  ctk_widget_class_bind_template_callback (widget_class, on_connect_button_clicked);
+  ctk_widget_class_bind_template_callback (widget_class, on_key_press_event);
+  ctk_widget_class_bind_template_callback (widget_class, on_listbox_row_activated);
+  ctk_widget_class_bind_template_callback (widget_class, on_recent_servers_listbox_row_activated);
 
-  gtk_widget_class_set_css_name (widget_class, "placesview");
+  ctk_widget_class_set_css_name (widget_class, "placesview");
 }
 
 static void
-gtk_places_view_init (GtkPlacesView *self)
+ctk_places_view_init (GtkPlacesView *self)
 {
   GtkPlacesViewPrivate *priv;
 
-  priv = gtk_places_view_get_instance_private (self);
+  priv = ctk_places_view_get_instance_private (self);
 
   priv->volume_monitor = g_volume_monitor_get ();
   priv->open_flags = GTK_PLACES_OPEN_NORMAL;
-  priv->path_size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-  priv->space_size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+  priv->path_size_group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+  priv->space_size_group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
-  gtk_widget_init_template (GTK_WIDGET (self));
+  ctk_widget_init_template (GTK_WIDGET (self));
 
   populate_available_protocols_grid (GTK_GRID (priv->available_protocols_grid));
 }
 
 /**
- * gtk_places_view_new:
+ * ctk_places_view_new:
  *
  * Creates a new #GtkPlacesView widget.
  *
@@ -2419,13 +2419,13 @@ gtk_places_view_init (GtkPlacesView *self)
  * Since: 3.18
  */
 GtkWidget *
-gtk_places_view_new (void)
+ctk_places_view_new (void)
 {
   return g_object_new (GTK_TYPE_PLACES_VIEW, NULL);
 }
 
 /**
- * gtk_places_view_set_open_flags:
+ * ctk_places_view_set_open_flags:
  * @view: a #GtkPlacesView
  * @flags: Bitmask of modes in which the calling application can open locations
  *
@@ -2440,7 +2440,7 @@ gtk_places_view_new (void)
  *
  * When the #GtkPlacesView::open-location signal is emitted, its flags
  * argument will be set to one of the @flags that was passed in
- * gtk_places_view_set_open_flags().
+ * ctk_places_view_set_open_flags().
  *
  * Passing 0 for @flags will cause #GTK_PLACES_OPEN_NORMAL to always be sent
  * to callbacks for the “open-location” signal.
@@ -2448,14 +2448,14 @@ gtk_places_view_new (void)
  * Since: 3.18
  */
 void
-gtk_places_view_set_open_flags (GtkPlacesView      *view,
+ctk_places_view_set_open_flags (GtkPlacesView      *view,
                                 GtkPlacesOpenFlags  flags)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_if_fail (GTK_IS_PLACES_VIEW (view));
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (priv->open_flags != flags)
     {
@@ -2465,7 +2465,7 @@ gtk_places_view_set_open_flags (GtkPlacesView      *view,
 }
 
 /**
- * gtk_places_view_get_open_flags:
+ * ctk_places_view_get_open_flags:
  * @view: a #GtkPlacesSidebar
  *
  * Gets the open flags.
@@ -2475,19 +2475,19 @@ gtk_places_view_set_open_flags (GtkPlacesView      *view,
  * Since: 3.18
  */
 GtkPlacesOpenFlags
-gtk_places_view_get_open_flags (GtkPlacesView *view)
+ctk_places_view_get_open_flags (GtkPlacesView *view)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_val_if_fail (GTK_IS_PLACES_VIEW (view), 0);
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   return priv->open_flags;
 }
 
 /**
- * gtk_places_view_get_search_query:
+ * ctk_places_view_get_search_query:
  * @view: a #GtkPlacesView
  *
  * Retrieves the current search query from @view.
@@ -2495,19 +2495,19 @@ gtk_places_view_get_open_flags (GtkPlacesView *view)
  * Returns: (transfer none): the current search query.
  */
 const gchar*
-gtk_places_view_get_search_query (GtkPlacesView *view)
+ctk_places_view_get_search_query (GtkPlacesView *view)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_val_if_fail (GTK_IS_PLACES_VIEW (view), NULL);
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   return priv->search_query;
 }
 
 /**
- * gtk_places_view_set_search_query:
+ * ctk_places_view_set_search_query:
  * @view: a #GtkPlacesView
  * @query_text: the query, or NULL.
  *
@@ -2515,29 +2515,29 @@ gtk_places_view_get_search_query (GtkPlacesView *view)
  * once the query is set.
  */
 void
-gtk_places_view_set_search_query (GtkPlacesView *view,
+ctk_places_view_set_search_query (GtkPlacesView *view,
                                   const gchar   *query_text)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_if_fail (GTK_IS_PLACES_VIEW (view));
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (g_strcmp0 (priv->search_query, query_text) != 0)
     {
       g_clear_pointer (&priv->search_query, g_free);
       priv->search_query = g_strdup (query_text);
 
-      gtk_list_box_invalidate_filter (GTK_LIST_BOX (priv->listbox));
-      gtk_list_box_invalidate_headers (GTK_LIST_BOX (priv->listbox));
+      ctk_list_box_invalidate_filter (GTK_LIST_BOX (priv->listbox));
+      ctk_list_box_invalidate_headers (GTK_LIST_BOX (priv->listbox));
 
       update_view_mode (view);
     }
 }
 
 /**
- * gtk_places_view_get_loading:
+ * ctk_places_view_get_loading:
  * @view: a #GtkPlacesView
  *
  * Returns %TRUE if the view is loading locations.
@@ -2545,13 +2545,13 @@ gtk_places_view_set_search_query (GtkPlacesView *view,
  * Since: 3.18
  */
 gboolean
-gtk_places_view_get_loading (GtkPlacesView *view)
+ctk_places_view_get_loading (GtkPlacesView *view)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_val_if_fail (GTK_IS_PLACES_VIEW (view), FALSE);
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   return priv->loading;
 }
@@ -2564,23 +2564,23 @@ update_loading (GtkPlacesView *view)
 
   g_return_if_fail (GTK_IS_PLACES_VIEW (view));
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
   loading = priv->fetching_networks || priv->connecting_to_server ||
             priv->mounting_volume || priv->unmounting_mount;
 
   set_busy_cursor (view, loading);
-  gtk_places_view_set_loading (view, loading);
+  ctk_places_view_set_loading (view, loading);
 }
 
 static void
-gtk_places_view_set_loading (GtkPlacesView *view,
+ctk_places_view_set_loading (GtkPlacesView *view,
                              gboolean       loading)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_if_fail (GTK_IS_PLACES_VIEW (view));
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (priv->loading != loading)
     {
@@ -2590,26 +2590,26 @@ gtk_places_view_set_loading (GtkPlacesView *view,
 }
 
 static gboolean
-gtk_places_view_get_fetching_networks (GtkPlacesView *view)
+ctk_places_view_get_fetching_networks (GtkPlacesView *view)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_val_if_fail (GTK_IS_PLACES_VIEW (view), FALSE);
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   return priv->fetching_networks;
 }
 
 static void
-gtk_places_view_set_fetching_networks (GtkPlacesView *view,
+ctk_places_view_set_fetching_networks (GtkPlacesView *view,
                                        gboolean       fetching_networks)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_if_fail (GTK_IS_PLACES_VIEW (view));
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (priv->fetching_networks != fetching_networks)
     {
@@ -2619,7 +2619,7 @@ gtk_places_view_set_fetching_networks (GtkPlacesView *view,
 }
 
 /**
- * gtk_places_view_get_local_only:
+ * ctk_places_view_get_local_only:
  * @view: a #GtkPlacesView
  *
  * Returns %TRUE if only local volumes are shown, i.e. no networks
@@ -2630,19 +2630,19 @@ gtk_places_view_set_fetching_networks (GtkPlacesView *view,
  * Since: 3.18
  */
 gboolean
-gtk_places_view_get_local_only (GtkPlacesView *view)
+ctk_places_view_get_local_only (GtkPlacesView *view)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_val_if_fail (GTK_IS_PLACES_VIEW (view), FALSE);
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   return priv->local_only;
 }
 
 /**
- * gtk_places_view_set_local_only:
+ * ctk_places_view_set_local_only:
  * @view: a #GtkPlacesView
  * @local_only: %TRUE to hide remote locations, %FALSE to show.
  *
@@ -2651,20 +2651,20 @@ gtk_places_view_get_local_only (GtkPlacesView *view)
  * Since: 3.18
  */
 void
-gtk_places_view_set_local_only (GtkPlacesView *view,
+ctk_places_view_set_local_only (GtkPlacesView *view,
                                 gboolean       local_only)
 {
   GtkPlacesViewPrivate *priv;
 
   g_return_if_fail (GTK_IS_PLACES_VIEW (view));
 
-  priv = gtk_places_view_get_instance_private (view);
+  priv = ctk_places_view_get_instance_private (view);
 
   if (priv->local_only != local_only)
     {
       priv->local_only = local_only;
 
-      gtk_widget_set_visible (priv->actionbar, !local_only);
+      ctk_widget_set_visible (priv->actionbar, !local_only);
       update_places (view);
 
       update_view_mode (view);

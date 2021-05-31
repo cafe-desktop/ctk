@@ -254,10 +254,10 @@ msgstr "লোগো"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "পরিচিতি প্রদর্শক বাক্সের লোগো। এটি নির্দিষ্ট করে দেওয়া না হলে ডিফল্ট হিসেবে "
-"gtk_window_get_default_icon_list() ব্যবহৃত হয়"
+"ctk_window_get_default_icon_list() ব্যবহৃত হয়"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2352,9 +2352,9 @@ msgstr "প্রগতির পালসের ধাপ"
 #: gtk/gtkentry.c:888
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"gtk_entry_progress_pulse()-র প্রতিটি কলের জন্য প্রগতিসূচক বাউন্সিং ব্লকের সর্বমোট "
+"ctk_entry_progress_pulse()-র প্রতিটি কলের জন্য প্রগতিসূচক বাউন্সিং ব্লকের সর্বমোট "
 "প্রস্থের পরিমাণের কত পরিমাণ অংশ এগিয়ে নেওয়া হবে"
 
 #: gtk/gtkentry.c:904
@@ -4433,11 +4433,11 @@ msgstr "মান"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 "এই অ্যাকশনটি এই অ্যাকশন গ্রুপের বর্তমান অ্যাকশন হলে "
-"gtk_radio_action_get_current_value() কর্তৃক উত্‍পন্ন মান।"
+"ctk_radio_action_get_current_value() কর্তৃক উত্‍পন্ন মান।"
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
 #: gtk/gtkradiomenuitem.c:373 gtk/gtkradiotoolbutton.c:65
@@ -6853,8 +6853,8 @@ msgid "No show all"
 msgstr "সবকিছু দেখাও অকেজো"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() এই উইজেটকে প্রভাবিত করবে না কিনা"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() এই উইজেটকে প্রভাবিত করবে না কিনা"
 
 #: gtk/gtkwidget.c:864
 msgid "Whether this widget has a tooltip"
@@ -7427,9 +7427,9 @@ msgstr "যে ভাবে ইনপুট পদ্ধতির স্ট্�
 #~ "প্রয়োগ করা হবে"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
-#~ msgstr "gtk_recent_manager_get_items() থেকে প্রাপ্ত বস্তুর সর্বাধিক সংখ্যা"
+#~ msgstr "ctk_recent_manager_get_items() থেকে প্রাপ্ত বস্তুর সর্বাধিক সংখ্যা"
 
 #~ msgid "Blinking"
 #~ msgstr "ঝলকানি"

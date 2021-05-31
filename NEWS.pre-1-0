@@ -75,7 +75,7 @@ Overview of Changes in GTK+ 0.99.4:
   index into context help.
 * Split up of the widget/object flags into a private and a public portion,
   consult docs/widget_system.txt on this.
-* Support for hot keys on gtk programs via gtk_key_snooper_install().
+* Support for hot keys on gtk programs via ctk_key_snooper_install().
 * Reimplementation of the *_interp functions as *_full functions to provide
   simple callback functions as well.
 * Idle functions are now prioritized.
@@ -91,8 +91,8 @@ Overview of Changes in GTK+ 0.99.4:
 * Function replacements:
   g_string_hash() -> g_str_hash()
   g_string_equal() -> g_str_equal()
-  gtk_tooltips_set_tips() -> gtk_tooltips_set_tip()
-* Support for quit handlers in gtk_main().
+  ctk_tooltips_set_tips() -> ctk_tooltips_set_tip()
+* Support for quit handlers in ctk_main().
 * Motif window mangaer hints support.
 * Widget arguments are now flagged for readability/writability.
 * Additions to documentation.
@@ -110,7 +110,7 @@ Overview of Changes in GTK+ 0.99.3:
 * g_string_hash renamed g_str_hash
 * new gtkbox functions to allow modification of the child 
   linkage after the widget tree is setup
-* gtk_*_get_arg() and gtk_*_set_arg() fixes and implementations
+* ctk_*_get_arg() and ctk_*_set_arg() fixes and implementations
 * DND changes/fixes
 * Entry widget now has set_max_length function
 * Handlebox widget changes/fixes 

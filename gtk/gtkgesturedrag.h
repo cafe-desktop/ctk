@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_DRAG         (gtk_gesture_drag_get_type ())
+#define GTK_TYPE_GESTURE_DRAG         (ctk_gesture_drag_get_type ())
 #define GTK_GESTURE_DRAG(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_DRAG, GtkGestureDrag))
 #define GTK_GESTURE_DRAG_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_DRAG, GtkGestureDragClass))
 #define GTK_IS_GESTURE_DRAG(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_DRAG))
@@ -39,17 +39,17 @@ typedef struct _GtkGestureDrag GtkGestureDrag;
 typedef struct _GtkGestureDragClass GtkGestureDragClass;
 
 GDK_AVAILABLE_IN_3_14
-GType        gtk_gesture_drag_get_type          (void) G_GNUC_CONST;
+GType        ctk_gesture_drag_get_type          (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * gtk_gesture_drag_new               (GtkWidget      *widget);
+GtkGesture * ctk_gesture_drag_new               (GtkWidget      *widget);
 
 GDK_AVAILABLE_IN_3_14
-gboolean     gtk_gesture_drag_get_start_point   (GtkGestureDrag *gesture,
+gboolean     ctk_gesture_drag_get_start_point   (GtkGestureDrag *gesture,
                                                  gdouble        *x,
                                                  gdouble        *y);
 GDK_AVAILABLE_IN_3_14
-gboolean     gtk_gesture_drag_get_offset        (GtkGestureDrag *gesture,
+gboolean     ctk_gesture_drag_get_offset        (GtkGestureDrag *gesture,
                                                  gdouble        *x,
                                                  gdouble        *y);
 

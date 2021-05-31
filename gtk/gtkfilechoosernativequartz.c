@@ -102,7 +102,7 @@ typedef struct {
   else
     [data->panel setAllowedFileTypes:filter];
 
-  GSList *filters = gtk_file_chooser_list_filters (GTK_FILE_CHOOSER (data->self));
+  GSList *filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (data->self));
   data->self->current_filter = g_slist_nth_data (filters, selected_index);
   g_slist_free (filters);
   g_object_notify (G_OBJECT (data->self), "filter");
@@ -315,7 +315,7 @@ filechooser_quartz_launch (FileChooserQuartzData *data)
 
       if (data->self->current_filter)
         {
-          GSList *filters = gtk_file_chooser_list_filters (GTK_FILE_CHOOSER (data->self));
+          GSList *filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (data->self));
 	  gint current_filter_index = g_slist_index (filters, data->self->current_filter);
 	  g_slist_free (filters);
 
@@ -367,7 +367,7 @@ filechooser_quartz_launch (FileChooserQuartzData *data)
         self->custom_files = data->files;
         data->files = NULL;
 
-        _gtk_native_dialog_emit_response (GTK_NATIVE_DIALOG (data->self),
+        _ctk_native_dialog_emit_response (GTK_NATIVE_DIALOG (data->self),
                                           data->response);
       }
     // free data!
@@ -416,11 +416,11 @@ file_filter_to_quartz (GtkFileFilter *file_filter,
   const char *name;
   NSArray *pattern_nsstrings;
 
-  pattern_nsstrings = _gtk_file_filter_get_as_pattern_nsstrings (file_filter);
+  pattern_nsstrings = _ctk_file_filter_get_as_pattern_nsstrings (file_filter);
   if (pattern_nsstrings == NULL)
     return FALSE;
 
-  name = gtk_file_filter_get_name (file_filter);
+  name = ctk_file_filter_get_name (file_filter);
   NSString *name_nsstring;
   if (name == NULL)
     {
@@ -439,7 +439,7 @@ file_filter_to_quartz (GtkFileFilter *file_filter,
 }
 
 gboolean
-gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
+ctk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
 {
   FileChooserQuartzData *data;
   GtkWindow *transient_for;
@@ -455,14 +455,14 @@ gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
   if (gdk_quartz_osx_version () < GDK_OSX_SNOW_LEOPARD)
     return FALSE;
 
-  extra_widget = gtk_file_chooser_get_extra_widget (GTK_FILE_CHOOSER (self));
+  extra_widget = ctk_file_chooser_get_extra_widget (GTK_FILE_CHOOSER (self));
   // if the extra_widget is a GtkLabel, then use its text to set the dialog message
   if (extra_widget != NULL)
     {
       if (!GTK_IS_LABEL (extra_widget))
         return FALSE;
       else
-        message = g_strdup (gtk_label_get_text (GTK_LABEL (extra_widget)));
+        message = g_strdup (ctk_label_get_text (GTK_LABEL (extra_widget)));
     }
 
   update_preview_signal = g_signal_lookup ("update-preview", GTK_TYPE_FILE_CHOOSER);
@@ -472,7 +472,7 @@ gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
   data = g_new0 (FileChooserQuartzData, 1);
 
   // examine filters!
-  filters = gtk_file_chooser_list_filters (GTK_FILE_CHOOSER (self));
+  filters = ctk_file_chooser_list_filters (GTK_FILE_CHOOSER (self));
   n_filters = g_slist_length (filters);
   if (n_filters > 0)
     {
@@ -489,7 +489,7 @@ gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
               return FALSE;
             }
         }
-      self->current_filter = gtk_file_chooser_get_filter (GTK_FILE_CHOOSER (self));
+      self->current_filter = ctk_file_chooser_get_filter (GTK_FILE_CHOOSER (self));
     }
   else
     {
@@ -498,7 +498,7 @@ gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
   self->mode_data = data;
   data->self = g_object_ref (self);
 
-  data->create_folders = gtk_file_chooser_get_create_folders (GTK_FILE_CHOOSER (self));
+  data->create_folders = ctk_file_chooser_get_create_folders (GTK_FILE_CHOOSER (self));
 
   // shortcut_folder_uris support seems difficult if not impossible 
 
@@ -507,7 +507,7 @@ gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
   // cancel button is not present in macOS filechooser dialogs!
   // data->cancel_label = strip_mnemonic (self->cancel_label);
 
-  action = gtk_file_chooser_get_action (GTK_FILE_CHOOSER (self->dialog));
+  action = ctk_file_chooser_get_action (GTK_FILE_CHOOSER (self->dialog));
 
   if (action == GTK_FILE_CHOOSER_ACTION_SAVE ||
       action == GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER)
@@ -519,28 +519,28 @@ gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
 
   if ((action == GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ||
        action == GTK_FILE_CHOOSER_ACTION_OPEN) &&
-      gtk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (self->dialog)))
+      ctk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (self->dialog)))
     data->select_multiple = TRUE;
 
   // overwrite confirmation appears to be always on
-  if (gtk_file_chooser_get_do_overwrite_confirmation (GTK_FILE_CHOOSER (self->dialog)))
+  if (ctk_file_chooser_get_do_overwrite_confirmation (GTK_FILE_CHOOSER (self->dialog)))
     data->overwrite_confirmation = TRUE;
 
-  if (gtk_file_chooser_get_show_hidden (GTK_FILE_CHOOSER (self->dialog)))
+  if (ctk_file_chooser_get_show_hidden (GTK_FILE_CHOOSER (self->dialog)))
     data->show_hidden = TRUE;
 
-  transient_for = gtk_native_dialog_get_transient_for (GTK_NATIVE_DIALOG (self));
+  transient_for = ctk_native_dialog_get_transient_for (GTK_NATIVE_DIALOG (self));
   if (transient_for)
     {
-      gtk_widget_realize (GTK_WIDGET (transient_for));
-      data->parent = gdk_quartz_window_get_nswindow (gtk_widget_get_window (GTK_WIDGET (transient_for)));
+      ctk_widget_realize (GTK_WIDGET (transient_for));
+      data->parent = gdk_quartz_window_get_nswindow (ctk_widget_get_window (GTK_WIDGET (transient_for)));
 
-      if (gtk_native_dialog_get_modal (GTK_NATIVE_DIALOG (self)))
+      if (ctk_native_dialog_get_modal (GTK_NATIVE_DIALOG (self)))
         data->modal = TRUE;
     }
 
   data->title =
-    g_strdup (gtk_native_dialog_get_title (GTK_NATIVE_DIALOG (self)));
+    g_strdup (ctk_native_dialog_get_title (GTK_NATIVE_DIALOG (self)));
 
   data->message = message;
 
@@ -562,7 +562,7 @@ gtk_file_chooser_native_quartz_show (GtkFileChooserNative *self)
 }
 
 void
-gtk_file_chooser_native_quartz_hide (GtkFileChooserNative *self)
+ctk_file_chooser_native_quartz_hide (GtkFileChooserNative *self)
 {
   FileChooserQuartzData *data = self->mode_data;
 

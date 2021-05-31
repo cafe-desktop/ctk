@@ -45,7 +45,7 @@ enum {
   PROP_V_ADJUSTMENT
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkColorPlane, gtk_color_plane, GTK_TYPE_DRAWING_AREA)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkColorPlane, ctk_color_plane, GTK_TYPE_DRAWING_AREA)
 
 static void
 sv_to_xy (GtkColorPlane *plane,
@@ -55,11 +55,11 @@ sv_to_xy (GtkColorPlane *plane,
   gdouble s, v;
   gint width, height;
 
-  width = gtk_widget_get_allocated_width (GTK_WIDGET (plane));
-  height = gtk_widget_get_allocated_height (GTK_WIDGET (plane));
+  width = ctk_widget_get_allocated_width (GTK_WIDGET (plane));
+  height = ctk_widget_get_allocated_height (GTK_WIDGET (plane));
 
-  s = gtk_adjustment_get_value (plane->priv->s_adj);
-  v = gtk_adjustment_get_value (plane->priv->v_adj);
+  s = ctk_adjustment_get_value (plane->priv->s_adj);
+  v = ctk_adjustment_get_value (plane->priv->v_adj);
 
   *x = CLAMP (width * v, 0, width - 1);
   *y = CLAMP (height * (1 - s), 0, height - 1);
@@ -77,8 +77,8 @@ plane_draw (GtkWidget *widget,
   cairo_paint (cr);
 
   sv_to_xy (plane, &x, &y);
-  width = gtk_widget_get_allocated_width (widget);
-  height = gtk_widget_get_allocated_height (widget);
+  width = ctk_widget_get_allocated_width (widget);
+  height = ctk_widget_get_allocated_height (widget);
 
   cairo_move_to (cr, 0,     y + 0.5);
   cairo_line_to (cr, width, y + 0.5);
@@ -86,7 +86,7 @@ plane_draw (GtkWidget *widget,
   cairo_move_to (cr, x + 0.5, 0);
   cairo_line_to (cr, x + 0.5, height);
 
-  if (gtk_widget_has_visible_focus (widget))
+  if (ctk_widget_has_visible_focus (widget))
     {
       cairo_set_line_width (cr, 3.0);
       cairo_set_source_rgba (cr, 1.0, 1.0, 1.0, 0.6);
@@ -121,13 +121,13 @@ create_surface (GtkColorPlane *plane)
   gdouble sf, vf;
   gint x, y;
 
-  if (!gtk_widget_get_realized (widget))
+  if (!ctk_widget_get_realized (widget))
     return;
 
-  width = gtk_widget_get_allocated_width (widget);
-  height = gtk_widget_get_allocated_height (widget);
+  width = ctk_widget_get_allocated_width (widget);
+  height = ctk_widget_get_allocated_height (widget);
 
-  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
                                                width, height);
 
@@ -142,7 +142,7 @@ create_surface (GtkColorPlane *plane)
 
   data = g_malloc (height * stride);
 
-  h = gtk_adjustment_get_value (plane->priv->h_adj);
+  h = ctk_adjustment_get_value (plane->priv->h_adj);
   sf = 1.0 / (height - 1);
   vf = 1.0 / (width - 1);
   for (y = 0; y < height; y++)
@@ -152,7 +152,7 @@ create_surface (GtkColorPlane *plane)
       for (x = 0; x < width; x++)
         {
           v = x * vf;
-          gtk_hsv_to_rgb (h, s, v, &r, &g, &b);
+          ctk_hsv_to_rgb (h, s, v, &r, &g, &b);
           red = CLAMP (r * 255, 0, 255);
           green = CLAMP (g * 255, 0, 255);
           blue = CLAMP (b * 255, 0, 255);
@@ -176,7 +176,7 @@ static void
 plane_size_allocate (GtkWidget     *widget,
                      GtkAllocation *allocation)
 {
-  GTK_WIDGET_CLASS (gtk_color_plane_parent_class)->size_allocate (widget, allocation);
+  GTK_WIDGET_CLASS (ctk_color_plane_parent_class)->size_allocate (widget, allocation);
 
   create_surface (GTK_COLOR_PLANE (widget));
 }
@@ -184,7 +184,7 @@ plane_size_allocate (GtkWidget     *widget,
 static void
 plane_realize (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (gtk_color_plane_parent_class)->realize (widget);
+  GTK_WIDGET_CLASS (ctk_color_plane_parent_class)->realize (widget);
 
   create_surface (GTK_COLOR_PLANE (widget));
 }
@@ -197,14 +197,14 @@ set_cross_cursor (GtkWidget *widget,
   GdkWindow *window;
   GdkDevice *device;
 
-  window = gtk_widget_get_window (widget);
-  device = gtk_gesture_get_device (GTK_COLOR_PLANE (widget)->priv->drag_gesture);
+  window = ctk_widget_get_window (widget);
+  device = ctk_gesture_get_device (GTK_COLOR_PLANE (widget)->priv->drag_gesture);
 
   if (!window || !device)
     return;
 
   if (enabled)
-    cursor = gdk_cursor_new_from_name (gtk_widget_get_display (GTK_WIDGET (widget)), "crosshair");
+    cursor = gdk_cursor_new_from_name (ctk_widget_get_display (GTK_WIDGET (widget)), "crosshair");
 
   gdk_window_set_device_cursor (window, device, cursor);
 
@@ -216,13 +216,13 @@ static void
 h_changed (GtkColorPlane *plane)
 {
   create_surface (plane);
-  gtk_widget_queue_draw (GTK_WIDGET (plane));
+  ctk_widget_queue_draw (GTK_WIDGET (plane));
 }
 
 static void
 sv_changed (GtkColorPlane *plane)
 {
-  gtk_widget_queue_draw (GTK_WIDGET (plane));
+  ctk_widget_queue_draw (GTK_WIDGET (plane));
 }
 
 static void
@@ -233,12 +233,12 @@ update_color (GtkColorPlane *plane,
   GtkWidget *widget = GTK_WIDGET (plane);
   gdouble s, v;
 
-  s = CLAMP (1 - y * (1.0 / gtk_widget_get_allocated_height (widget)), 0, 1);
-  v = CLAMP (x * (1.0 / gtk_widget_get_allocated_width (widget)), 0, 1);
-  gtk_adjustment_set_value (plane->priv->s_adj, s);
-  gtk_adjustment_set_value (plane->priv->v_adj, v);
+  s = CLAMP (1 - y * (1.0 / ctk_widget_get_allocated_height (widget)), 0, 1);
+  v = CLAMP (x * (1.0 / ctk_widget_get_allocated_width (widget)), 0, 1);
+  ctk_adjustment_set_value (plane->priv->s_adj, s);
+  ctk_adjustment_set_value (plane->priv->v_adj, v);
 
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 static void
@@ -259,8 +259,8 @@ sv_move (GtkColorPlane *plane,
 {
   gdouble s, v;
 
-  s = gtk_adjustment_get_value (plane->priv->s_adj);
-  v = gtk_adjustment_get_value (plane->priv->v_adj);
+  s = ctk_adjustment_get_value (plane->priv->s_adj);
+  v = ctk_adjustment_get_value (plane->priv->v_adj);
 
   if (s + ds > 1)
     {
@@ -300,12 +300,12 @@ sv_move (GtkColorPlane *plane,
       v += dv;
     }
 
-  gtk_adjustment_set_value (plane->priv->s_adj, s);
-  gtk_adjustment_set_value (plane->priv->v_adj, v);
+  ctk_adjustment_set_value (plane->priv->s_adj, s);
+  ctk_adjustment_set_value (plane->priv->v_adj, v);
   return;
 
 error:
-  gtk_widget_error_bell (GTK_WIDGET (plane));
+  ctk_widget_error_bell (GTK_WIDGET (plane));
 }
 
 static gboolean
@@ -333,7 +333,7 @@ plane_key_press (GtkWidget   *widget,
            event->keyval == GDK_KEY_KP_Right)
     sv_move (plane, 0, step);
   else
-    return GTK_WIDGET_CLASS (gtk_color_plane_parent_class)->key_press_event (widget, event);
+    return GTK_WIDGET_CLASS (ctk_color_plane_parent_class)->key_press_event (widget, event);
 
   return TRUE;
 }
@@ -346,7 +346,7 @@ plane_drag_gesture_begin (GtkGestureDrag *gesture,
 {
   guint button;
 
-  button = gtk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (gesture));
+  button = ctk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (gesture));
 
   if (button == GDK_BUTTON_SECONDARY)
     {
@@ -357,14 +357,14 @@ plane_drag_gesture_begin (GtkGestureDrag *gesture,
 
   if (button != GDK_BUTTON_PRIMARY)
     {
-      gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
+      ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
       return;
     }
 
   set_cross_cursor (GTK_WIDGET (plane), TRUE);
   update_color (plane, start_x, start_y);
-  gtk_widget_grab_focus (GTK_WIDGET (plane));
-  gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
+  ctk_widget_grab_focus (GTK_WIDGET (plane));
+  ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
 }
 
 static void
@@ -375,7 +375,7 @@ plane_drag_gesture_update (GtkGestureDrag *gesture,
 {
   gdouble start_x, start_y;
 
-  gtk_gesture_drag_get_start_point (GTK_GESTURE_DRAG (gesture),
+  ctk_gesture_drag_get_start_point (GTK_GESTURE_DRAG (gesture),
                                     &start_x, &start_y);
   update_color (plane, start_x + offset_x, start_y + offset_y);
 }
@@ -390,39 +390,39 @@ plane_drag_gesture_end (GtkGestureDrag *gesture,
 }
 
 static void
-gtk_color_plane_init (GtkColorPlane *plane)
+ctk_color_plane_init (GtkColorPlane *plane)
 {
   AtkObject *atk_obj;
 
-  plane->priv = gtk_color_plane_get_instance_private (plane);
+  plane->priv = ctk_color_plane_get_instance_private (plane);
 
-  gtk_widget_set_can_focus (GTK_WIDGET (plane), TRUE);
-  gtk_widget_set_events (GTK_WIDGET (plane), GDK_KEY_PRESS_MASK
+  ctk_widget_set_can_focus (GTK_WIDGET (plane), TRUE);
+  ctk_widget_set_events (GTK_WIDGET (plane), GDK_KEY_PRESS_MASK
                                              | GDK_TOUCH_MASK
                                              | GDK_BUTTON_PRESS_MASK
                                              | GDK_BUTTON_RELEASE_MASK
                                              | GDK_POINTER_MOTION_MASK);
 
-  atk_obj = gtk_widget_get_accessible (GTK_WIDGET (plane));
+  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (plane));
   if (GTK_IS_ACCESSIBLE (atk_obj))
     {
       atk_object_set_name (atk_obj, _("Color Plane"));
       atk_object_set_role (atk_obj, ATK_ROLE_COLOR_CHOOSER);
     }
 
-  plane->priv->drag_gesture = gtk_gesture_drag_new (GTK_WIDGET (plane));
+  plane->priv->drag_gesture = ctk_gesture_drag_new (GTK_WIDGET (plane));
   g_signal_connect (plane->priv->drag_gesture, "drag-begin",
 		    G_CALLBACK (plane_drag_gesture_begin), plane);
   g_signal_connect (plane->priv->drag_gesture, "drag-update",
 		    G_CALLBACK (plane_drag_gesture_update), plane);
   g_signal_connect (plane->priv->drag_gesture, "drag-end",
 		    G_CALLBACK (plane_drag_gesture_end), plane);
-  gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (plane->priv->drag_gesture), 0);
+  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (plane->priv->drag_gesture), 0);
 
-  plane->priv->long_press_gesture = gtk_gesture_long_press_new (GTK_WIDGET (plane));
+  plane->priv->long_press_gesture = ctk_gesture_long_press_new (GTK_WIDGET (plane));
   g_signal_connect (plane->priv->long_press_gesture, "pressed",
                     G_CALLBACK (hold_action), plane);
-  gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (plane->priv->long_press_gesture),
+  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (plane->priv->long_press_gesture),
                                      TRUE);
 }
 
@@ -441,7 +441,7 @@ plane_finalize (GObject *object)
   g_clear_object (&plane->priv->drag_gesture);
   g_clear_object (&plane->priv->long_press_gesture);
 
-  G_OBJECT_CLASS (gtk_color_plane_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_color_plane_parent_class)->finalize (object);
 }
 
 static void
@@ -489,7 +489,7 @@ plane_set_property (GObject      *object,
 }
 
 static void
-gtk_color_plane_class_init (GtkColorPlaneClass *class)
+ctk_color_plane_class_init (GtkColorPlaneClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
@@ -531,7 +531,7 @@ gtk_color_plane_class_init (GtkColorPlaneClass *class)
 }
 
 GtkWidget *
-gtk_color_plane_new (GtkAdjustment *h_adj,
+ctk_color_plane_new (GtkAdjustment *h_adj,
                      GtkAdjustment *s_adj,
                      GtkAdjustment *v_adj)
 {

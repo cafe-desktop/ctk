@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_RENDERER_PROGRESS (gtk_cell_renderer_progress_get_type ())
+#define GTK_TYPE_CELL_RENDERER_PROGRESS (ctk_cell_renderer_progress_get_type ())
 #define GTK_CELL_RENDERER_PROGRESS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_RENDERER_PROGRESS, GtkCellRendererProgress))
 #define GTK_CELL_RENDERER_PROGRESS_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_RENDERER_PROGRESS, GtkCellRendererProgressClass))
 #define GTK_IS_CELL_RENDERER_PROGRESS(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_RENDERER_PROGRESS))
@@ -58,16 +58,16 @@ struct _GtkCellRendererProgressClass
   GtkCellRendererClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType		 gtk_cell_renderer_progress_get_type (void) G_GNUC_CONST;
+GType		 ctk_cell_renderer_progress_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkCellRenderer* gtk_cell_renderer_progress_new      (void);
+GtkCellRenderer* ctk_cell_renderer_progress_new      (void);
 
 G_END_DECLS
 

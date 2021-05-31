@@ -108,7 +108,7 @@ test_type (gconstpointer data)
   klass = g_type_class_ref (type);
 
   if (g_type_is_a (type, GTK_TYPE_SETTINGS))
-    instance = G_OBJECT (g_object_ref (gtk_settings_get_default ()));
+    instance = G_OBJECT (g_object_ref (ctk_settings_get_default ()));
   else if (g_type_is_a (type, GDK_TYPE_WINDOW))
     {
       GdkWindowAttr attributes;
@@ -382,8 +382,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (g_type_is_a (type, GTK_TYPE_WIDGET))
     {
-      g_object_set (gtk_settings_get_default (), "gtk-theme-name", "Adwaita", NULL);
-      pspecs = gtk_widget_class_list_style_properties (GTK_WIDGET_CLASS (klass), &n_pspecs);
+      g_object_set (ctk_settings_get_default (), "gtk-theme-name", "Adwaita", NULL);
+      pspecs = ctk_widget_class_list_style_properties (GTK_WIDGET_CLASS (klass), &n_pspecs);
 
       for (i = 0; i < n_pspecs; ++i)
 	{
@@ -436,7 +436,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
             continue;
 
 	  g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
-	  gtk_widget_style_get_property (GTK_WIDGET (instance), pspec->name, &value);
+	  ctk_widget_style_get_property (GTK_WIDGET (instance), pspec->name, &value);
 	  check_property ("Style property", pspec, &value);
 	  g_value_unset (&value);
 	}
@@ -462,15 +462,15 @@ main (int argc, char **argv)
   GMainLoop *loop;
   gint result;
 
-  /* These must be set before before gtk_test_init */
+  /* These must be set before before ctk_test_init */
   g_setenv ("GIO_USE_VFS", "local", TRUE);
   g_setenv ("GSETTINGS_BACKEND", "memory", TRUE);
   g_setenv ("G_ENABLE_DIAGNOSTIC", "0", TRUE);
 
-  gtk_test_init (&argc, &argv);
-  gtk_test_register_all_types();
+  ctk_test_init (&argc, &argv);
+  ctk_test_register_all_types();
 
-  /* g_test_build_filename must be called after gtk_test_init */
+  /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
   if (g_getenv ("GTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
@@ -481,7 +481,7 @@ main (int argc, char **argv)
   bus = g_test_dbus_new (G_TEST_DBUS_NONE);
   g_test_dbus_up (bus);
 
-  otypes = gtk_test_list_all_types (NULL);
+  otypes = ctk_test_list_all_types (NULL);
   for (i = 0; otypes[i]; i++)
     {
       gchar *testname;

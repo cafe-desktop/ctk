@@ -30,7 +30,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_RECENT_CHOOSER_DELEGATE_QUARK	(_gtk_recent_chooser_delegate_get_quark ())
+#define GTK_RECENT_CHOOSER_DELEGATE_QUARK	(_ctk_recent_chooser_delegate_get_quark ())
 
 typedef enum {
   GTK_RECENT_CHOOSER_PROP_FIRST           = 0x3000,
@@ -47,13 +47,13 @@ typedef enum {
   GTK_RECENT_CHOOSER_PROP_LAST
 } GtkRecentChooserProp;
 
-void   _gtk_recent_chooser_install_properties  (GObjectClass          *klass);
+void   _ctk_recent_chooser_install_properties  (GObjectClass          *klass);
 
-void   _gtk_recent_chooser_delegate_iface_init (GtkRecentChooserIface *iface);
-void   _gtk_recent_chooser_set_delegate        (GtkRecentChooser      *receiver,
+void   _ctk_recent_chooser_delegate_iface_init (GtkRecentChooserIface *iface);
+void   _ctk_recent_chooser_set_delegate        (GtkRecentChooser      *receiver,
 						GtkRecentChooser      *delegate);
 
-GQuark _gtk_recent_chooser_delegate_get_quark  (void) G_GNUC_CONST;
+GQuark _ctk_recent_chooser_delegate_get_quark  (void) G_GNUC_CONST;
 
 G_END_DECLS
 

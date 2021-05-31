@@ -31,19 +31,19 @@ typedef void (*GtkMnemonicHashForeach) (guint      keyval,
 					GSList    *targets,
 					gpointer   data);
 
-GtkMnemonicHash *_gtk_mnemonic_hash_new      (void);
-void             _gtk_mnemonic_hash_free     (GtkMnemonicHash        *mnemonic_hash);
-void             _gtk_mnemonic_hash_add      (GtkMnemonicHash        *mnemonic_hash,
+GtkMnemonicHash *_ctk_mnemonic_hash_new      (void);
+void             _ctk_mnemonic_hash_free     (GtkMnemonicHash        *mnemonic_hash);
+void             _ctk_mnemonic_hash_add      (GtkMnemonicHash        *mnemonic_hash,
 					      guint                   keyval,
 					      GtkWidget              *target);
-void             _gtk_mnemonic_hash_remove   (GtkMnemonicHash        *mnemonic_hash,
+void             _ctk_mnemonic_hash_remove   (GtkMnemonicHash        *mnemonic_hash,
 					      guint                   keyval,
 					      GtkWidget              *target);
-gboolean         _gtk_mnemonic_hash_activate (GtkMnemonicHash        *mnemonic_hash,
+gboolean         _ctk_mnemonic_hash_activate (GtkMnemonicHash        *mnemonic_hash,
 					      guint                   keyval);
-GSList *         _gtk_mnemonic_hash_lookup   (GtkMnemonicHash        *mnemonic_hash,
+GSList *         _ctk_mnemonic_hash_lookup   (GtkMnemonicHash        *mnemonic_hash,
 					      guint                   keyval);
-void             _gtk_mnemonic_hash_foreach  (GtkMnemonicHash        *mnemonic_hash,
+void             _ctk_mnemonic_hash_foreach  (GtkMnemonicHash        *mnemonic_hash,
 					      GtkMnemonicHashForeach  func,
 					      gpointer                func_data);
 

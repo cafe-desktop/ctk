@@ -828,8 +828,8 @@ fallback:
 }
 
 static void
-gtk_shell_handle_capabilities (void              *data,
-                               struct gtk_shell1 *shell,
+ctk_shell_handle_capabilities (void              *data,
+                               struct ctk_shell1 *shell,
                                uint32_t           capabilities)
 {
   GdkScreen *screen = data;
@@ -842,18 +842,18 @@ gtk_shell_handle_capabilities (void              *data,
   notify_setting (screen, "gtk-shell-shows-desktop");
 }
 
-struct gtk_shell1_listener gdk_screen_gtk_shell_listener = {
-  gtk_shell_handle_capabilities
+struct ctk_shell1_listener gdk_screen_ctk_shell_listener = {
+  ctk_shell_handle_capabilities
 };
 
 void
-_gdk_wayland_screen_set_has_gtk_shell (GdkScreen *screen)
+_gdk_wayland_screen_set_has_ctk_shell (GdkScreen *screen)
 {
   GdkWaylandDisplay *display_wayland =
     GDK_WAYLAND_DISPLAY (GDK_WAYLAND_SCREEN (screen)->display);
 
-  gtk_shell1_add_listener (display_wayland->gtk_shell,
-                           &gdk_screen_gtk_shell_listener,
+  ctk_shell1_add_listener (display_wayland->ctk_shell,
+                           &gdk_screen_ctk_shell_listener,
                            screen);
 }
 
@@ -995,7 +995,7 @@ set_decoration_layout_from_entry (GdkScreen        *screen,
 static gboolean
 set_capability_setting (GdkScreen                 *screen,
                         GValue                    *value,
-                        enum gtk_shell1_capability test)
+                        enum ctk_shell1_capability test)
 {
   GdkWaylandScreen *wayland_screen = GDK_WAYLAND_SCREEN (screen);
 

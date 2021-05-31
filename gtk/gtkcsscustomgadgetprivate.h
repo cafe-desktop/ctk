@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_CUSTOM_GADGET           (gtk_css_custom_gadget_get_type ())
+#define GTK_TYPE_CSS_CUSTOM_GADGET           (ctk_css_custom_gadget_get_type ())
 #define GTK_CSS_CUSTOM_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadget))
 #define GTK_CSS_CUSTOM_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_CUSTOM_GADGET, GtkCssCustomGadgetClass))
 #define GTK_IS_CSS_CUSTOM_GADGET(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_CUSTOM_GADGET))
@@ -64,9 +64,9 @@ struct _GtkCssCustomGadgetClass
   GtkCssGadgetClass  parent_class;
 };
 
-GType           gtk_css_custom_gadget_get_type                 (void) G_GNUC_CONST;
+GType           ctk_css_custom_gadget_get_type                 (void) G_GNUC_CONST;
 
-GtkCssGadget *  gtk_css_custom_gadget_new                      (const char                      *name,
+GtkCssGadget *  ctk_css_custom_gadget_new                      (const char                      *name,
                                                                 GtkWidget                       *owner,
                                                                 GtkCssGadget                    *parent,
                                                                 GtkCssGadget                    *next_sibling,
@@ -75,7 +75,7 @@ GtkCssGadget *  gtk_css_custom_gadget_new                      (const char      
                                                                 GtkCssDrawFunc                   draw_func,
                                                                 gpointer                         data,
                                                                 GDestroyNotify                   destroy_func);
-GtkCssGadget *  gtk_css_custom_gadget_new_for_node             (GtkCssNode                      *node,
+GtkCssGadget *  ctk_css_custom_gadget_new_for_node             (GtkCssNode                      *node,
                                                                 GtkWidget                       *owner,
                                                                 GtkCssPreferredSizeFunc          preferred_size_func,
                                                                 GtkCssAllocateFunc               allocate_func,

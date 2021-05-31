@@ -42,7 +42,7 @@
 /**
  * GTK_MAJOR_VERSION:
  *
- * Like gtk_get_major_version(), but from the headers used at
+ * Like ctk_get_major_version(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
@@ -51,7 +51,7 @@
 /**
  * GTK_MINOR_VERSION:
  *
- * Like gtk_get_minor_version(), but from the headers used at
+ * Like ctk_get_minor_version(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
@@ -60,7 +60,7 @@
 /**
  * GTK_MICRO_VERSION:
  *
- * Like gtk_get_micro_version(), but from the headers used at
+ * Like ctk_get_micro_version(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
@@ -69,7 +69,7 @@
 /**
  * GTK_BINARY_AGE:
  *
- * Like gtk_get_binary_age(), but from the headers used at
+ * Like ctk_get_binary_age(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */
@@ -78,7 +78,7 @@
 /**
  * GTK_INTERFACE_AGE:
  *
- * Like gtk_get_interface_age(), but from the headers used at
+ * Like ctk_get_interface_age(), but from the headers used at
  * application compile time, rather than from the library linked
  * against at application run time.
  */

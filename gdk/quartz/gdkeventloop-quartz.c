@@ -15,7 +15,7 @@
  * the native system of the Core Foundation run loop and Cocoa event
  * handling. There are basically two different cases that we need to
  * handle: either the GLib main loop is in control (the application
- * has called gtk_main(), or is otherwise iterating the main loop), or
+ * has called ctk_main(), or is otherwise iterating the main loop), or
  * CFRunLoop is in control (we are in a modal operation such as window
  * resizing or drag-and-drop.)
  *

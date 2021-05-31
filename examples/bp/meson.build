@@ -9,5 +9,5 @@ bloatpad = executable(
   'bloatpad',
   'bloatpad.c',
   bp_resources,
-  dependencies: libgtk_dep
+  dependencies: libctk_dep
 )

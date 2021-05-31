@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CONTAINER_CELL_ACCESSIBLE            (gtk_container_cell_accessible_get_type ())
+#define GTK_TYPE_CONTAINER_CELL_ACCESSIBLE            (ctk_container_cell_accessible_get_type ())
 #define GTK_CONTAINER_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CONTAINER_CELL_ACCESSIBLE, GtkContainerCellAccessible))
 #define GTK_CONTAINER_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CONTAINER_CELL_ACCESSIBLE, GtkContainerCellAccessibleClass))
 #define GTK_IS_CONTAINER_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CONTAINER_CELL_ACCESSIBLE))
@@ -51,18 +51,18 @@ struct _GtkContainerCellAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType                       gtk_container_cell_accessible_get_type     (void);
+GType                       ctk_container_cell_accessible_get_type     (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkContainerCellAccessible *gtk_container_cell_accessible_new          (void);
+GtkContainerCellAccessible *ctk_container_cell_accessible_new          (void);
 GDK_AVAILABLE_IN_ALL
-void                        gtk_container_cell_accessible_add_child    (GtkContainerCellAccessible *container,
+void                        ctk_container_cell_accessible_add_child    (GtkContainerCellAccessible *container,
                                                                         GtkCellAccessible          *child);
 GDK_AVAILABLE_IN_ALL
-void                        gtk_container_cell_accessible_remove_child (GtkContainerCellAccessible *container,
+void                        ctk_container_cell_accessible_remove_child (GtkContainerCellAccessible *container,
                                                                         GtkCellAccessible          *child);
 GDK_AVAILABLE_IN_ALL
-GList                      *gtk_container_cell_accessible_get_children  (GtkContainerCellAccessible *container);
+GList                      *ctk_container_cell_accessible_get_children  (GtkContainerCellAccessible *container);
 
 G_END_DECLS
 

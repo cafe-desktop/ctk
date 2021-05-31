@@ -20,7 +20,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_ACTIONS            (gtk_inspector_actions_get_type())
+#define GTK_TYPE_INSPECTOR_ACTIONS            (ctk_inspector_actions_get_type())
 #define GTK_INSPECTOR_ACTIONS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActions))
 #define GTK_INSPECTOR_ACTIONS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActionsClass))
 #define GTK_INSPECTOR_IS_ACTIONS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_ACTIONS))
@@ -43,8 +43,8 @@ typedef struct _GtkInspectorActionsClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_actions_get_type   (void);
-void       gtk_inspector_actions_set_object (GtkInspectorActions *sl,
+GType      ctk_inspector_actions_get_type   (void);
+void       ctk_inspector_actions_set_object (GtkInspectorActions *sl,
                                              GObject              *object);
 
 G_END_DECLS

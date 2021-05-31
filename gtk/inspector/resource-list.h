@@ -20,7 +20,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_RESOURCE_LIST            (gtk_inspector_resource_list_get_type())
+#define GTK_TYPE_INSPECTOR_RESOURCE_LIST            (ctk_inspector_resource_list_get_type())
 #define GTK_INSPECTOR_RESOURCE_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_RESOURCE_LIST, GtkInspectorResourceList))
 #define GTK_INSPECTOR_RESOURCE_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_RESOURCE_LIST, GtkInspectorResourceListClass))
 #define GTK_INSPECTOR_IS_RESOURCE_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_RESOURCE_LIST))
@@ -43,7 +43,7 @@ typedef struct _GtkInspectorResourceListClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_resource_list_get_type   (void);
+GType      ctk_inspector_resource_list_get_type   (void);
 
 G_END_DECLS
 

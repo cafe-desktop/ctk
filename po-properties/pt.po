@@ -782,10 +782,10 @@ msgstr "O valor"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"O valor devolvido por gtk_radio_action_get_current_value() quando esta ação "
+"O valor devolvido por ctk_radio_action_get_current_value() quando esta ação "
 "é a ação atual no seu grupo."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1248,10 +1248,10 @@ msgstr "Logótipo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Um logótipo para a caixa \"sobre\". Se não estiver definido, a predefinição "
-"será o resultado de gtk_window_get_default_icon_list()"
+"será o resultado de ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3452,10 +3452,10 @@ msgstr "Intervalo de incremento do progresso"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "A fração do total da largura da entrada a mover o bloco de incremento para "
-"cada invocação de gtk_entry_progress_pulse()"
+"cada invocação de ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9157,8 +9157,8 @@ msgid "No show all"
 msgstr "Não mostrar todos"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Se gtk_widget_show_all() não deverá afetar este widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Se ctk_widget_show_all() não deverá afetar este widget"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

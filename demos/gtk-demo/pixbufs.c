@@ -162,7 +162,7 @@ on_tick (GtkWidget     *widget,
                                : MAX (127, fabs (255 * cos (f * 2.0 * G_PI)))));
     }
 
-  gtk_widget_queue_draw (da);
+  ctk_widget_queue_draw (da);
 
   return G_SOURCE_CONTINUE;
 }
@@ -174,21 +174,21 @@ do_pixbufs (GtkWidget *do_widget)
     {
       GError *error;
 
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
-      gtk_window_set_title (GTK_WINDOW (window), "Pixbufs");
-      gtk_window_set_resizable (GTK_WINDOW (window), FALSE);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
+      ctk_window_set_title (GTK_WINDOW (window), "Pixbufs");
+      ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
 
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
       error = NULL;
       if (!load_pixbufs (&error))
         {
           GtkWidget *dialog;
 
-          dialog = gtk_message_dialog_new (GTK_WINDOW (window),
+          dialog = ctk_message_dialog_new (GTK_WINDOW (window),
                                            GTK_DIALOG_DESTROY_WITH_PARENT,
                                            GTK_MESSAGE_ERROR,
                                            GTK_BUTTONS_CLOSE,
@@ -198,32 +198,32 @@ do_pixbufs (GtkWidget *do_widget)
           g_error_free (error);
 
           g_signal_connect (dialog, "response",
-                            G_CALLBACK (gtk_widget_destroy), NULL);
+                            G_CALLBACK (ctk_widget_destroy), NULL);
 
-          gtk_widget_show (dialog);
+          ctk_widget_show (dialog);
         }
       else
         {
-          gtk_widget_set_size_request (window, back_width, back_height);
+          ctk_widget_set_size_request (window, back_width, back_height);
 
           frame = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, back_width, back_height);
 
-          da = gtk_drawing_area_new ();
+          da = ctk_drawing_area_new ();
 
           g_signal_connect (da, "draw",
                             G_CALLBACK (draw_cb), NULL);
 
-          gtk_container_add (GTK_CONTAINER (window), da);
+          ctk_container_add (GTK_CONTAINER (window), da);
 
-          gtk_widget_add_tick_callback (da, on_tick, NULL, NULL);
+          ctk_widget_add_tick_callback (da, on_tick, NULL, NULL);
         }
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
     {
-      gtk_widget_destroy (window);
+      ctk_widget_destroy (window);
       g_object_unref (frame);
     }
 

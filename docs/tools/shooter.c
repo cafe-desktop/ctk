@@ -225,10 +225,10 @@ shoot_one (WidgetInfo *info)
   if (g_list_find (toplevels, info) == NULL)
     {
       g_warning ("Widget not found in queue");
-      gtk_main_quit ();
+      ctk_main_quit ();
     }
 
-  window = gtk_widget_get_window (info->window);
+  window = ctk_widget_get_window (info->window);
   id = gdk_x11_window_get_xid (window);
   if (window_is_csd (window))
     decor = (info->include_decorations) ? DECOR_NONE : DECOR_WINDOW_FRAME;
@@ -245,14 +245,14 @@ shoot_one (WidgetInfo *info)
     {
       g_warning ("unable to save shot of %s", info->name);
     }
-  gtk_widget_destroy (info->window);
+  ctk_widget_destroy (info->window);
 
   shot_id = 0;
 
   /* remove from the queue and try to load up another */
   toplevels = g_list_remove (toplevels, info);
   if (toplevels == NULL)
-    gtk_main_quit ();
+    ctk_main_quit ();
   else
     queue_show ();
 
@@ -280,7 +280,7 @@ show_one (void)
                             G_CALLBACK (on_show),
                             info);
 
-  gtk_widget_show (info->window);
+  ctk_widget_show (info->window);
 
   return G_SOURCE_REMOVE;
 }
@@ -295,13 +295,13 @@ int main (int argc, char **argv)
 {
   /* If there's no DISPLAY, we silently error out.  We don't want to break
    * headless builds. */
-  if (! gtk_init_check (&argc, &argv))
+  if (! ctk_init_check (&argc, &argv))
     return 0;
 
   toplevels = get_all_widgets ();
 
   queue_show ();
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

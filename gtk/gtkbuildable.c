@@ -41,15 +41,15 @@
 
 
 typedef GtkBuildableIface GtkBuildableInterface;
-G_DEFINE_INTERFACE (GtkBuildable, gtk_buildable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (GtkBuildable, ctk_buildable, G_TYPE_OBJECT)
 
 static void
-gtk_buildable_default_init (GtkBuildableInterface *iface)
+ctk_buildable_default_init (GtkBuildableInterface *iface)
 {
 }
 
 /**
- * gtk_buildable_set_name:
+ * ctk_buildable_set_name:
  * @buildable: a #GtkBuildable
  * @name: name to set
  *
@@ -58,7 +58,7 @@ gtk_buildable_default_init (GtkBuildableInterface *iface)
  * Since: 2.12
  **/
 void
-gtk_buildable_set_name (GtkBuildable *buildable,
+ctk_buildable_set_name (GtkBuildable *buildable,
                         const gchar  *name)
 {
   GtkBuildableIface *iface;
@@ -78,7 +78,7 @@ gtk_buildable_set_name (GtkBuildable *buildable,
 }
 
 /**
- * gtk_buildable_get_name:
+ * ctk_buildable_get_name:
  * @buildable: a #GtkBuildable
  *
  * Gets the name of the @buildable object. 
@@ -87,12 +87,12 @@ gtk_buildable_set_name (GtkBuildable *buildable,
  * [GtkBuilder UI definition][BUILDER-UI] 
  * used to construct the @buildable.
  *
- * Returns: the name set with gtk_buildable_set_name()
+ * Returns: the name set with ctk_buildable_set_name()
  *
  * Since: 2.12
  **/
 const gchar *
-gtk_buildable_get_name (GtkBuildable *buildable)
+ctk_buildable_get_name (GtkBuildable *buildable)
 {
   GtkBuildableIface *iface;
 
@@ -108,7 +108,7 @@ gtk_buildable_get_name (GtkBuildable *buildable)
 }
 
 /**
- * gtk_buildable_add_child:
+ * ctk_buildable_add_child:
  * @buildable: a #GtkBuildable
  * @builder: a #GtkBuilder
  * @child: child to add
@@ -120,7 +120,7 @@ gtk_buildable_get_name (GtkBuildable *buildable)
  * Since: 2.12
  **/
 void
-gtk_buildable_add_child (GtkBuildable *buildable,
+ctk_buildable_add_child (GtkBuildable *buildable,
 			 GtkBuilder   *builder,
 			 GObject      *child,
 			 const gchar  *type)
@@ -137,7 +137,7 @@ gtk_buildable_add_child (GtkBuildable *buildable,
 }
 
 /**
- * gtk_buildable_set_buildable_property:
+ * ctk_buildable_set_buildable_property:
  * @buildable: a #GtkBuildable
  * @builder: a #GtkBuilder
  * @name: name of property
@@ -148,7 +148,7 @@ gtk_buildable_add_child (GtkBuildable *buildable,
  * Since: 2.12
  **/
 void
-gtk_buildable_set_buildable_property (GtkBuildable *buildable,
+ctk_buildable_set_buildable_property (GtkBuildable *buildable,
 				      GtkBuilder   *builder,
 				      const gchar  *name,
 				      const GValue *value)
@@ -168,20 +168,20 @@ gtk_buildable_set_buildable_property (GtkBuildable *buildable,
 }
 
 /**
- * gtk_buildable_parser_finished:
+ * ctk_buildable_parser_finished:
  * @buildable: a #GtkBuildable
  * @builder: a #GtkBuilder
  *
  * Called when the builder finishes the parsing of a 
  * [GtkBuilder UI definition][BUILDER-UI]. 
  * Note that this will be called once for each time 
- * gtk_builder_add_from_file() or gtk_builder_add_from_string() 
+ * ctk_builder_add_from_file() or ctk_builder_add_from_string() 
  * is called on a builder.
  *
  * Since: 2.12
  **/
 void
-gtk_buildable_parser_finished (GtkBuildable *buildable,
+ctk_buildable_parser_finished (GtkBuildable *buildable,
 			       GtkBuilder   *builder)
 {
   GtkBuildableIface *iface;
@@ -195,7 +195,7 @@ gtk_buildable_parser_finished (GtkBuildable *buildable,
 }
 
 /**
- * gtk_buildable_construct_child:
+ * ctk_buildable_construct_child:
  * @buildable: A #GtkBuildable
  * @builder: #GtkBuilder used to construct this object
  * @name: name of child to construct
@@ -210,7 +210,7 @@ gtk_buildable_parser_finished (GtkBuildable *buildable,
  * Since: 2.12
  **/
 GObject *
-gtk_buildable_construct_child (GtkBuildable *buildable,
+ctk_buildable_construct_child (GtkBuildable *buildable,
                                GtkBuilder   *builder,
                                const gchar  *name)
 {
@@ -227,7 +227,7 @@ gtk_buildable_construct_child (GtkBuildable *buildable,
 }
 
 /**
- * gtk_buildable_custom_tag_start:
+ * ctk_buildable_custom_tag_start:
  * @buildable: a #GtkBuildable
  * @builder: a #GtkBuilder used to construct this object
  * @child: (allow-none): child object or %NULL for non-child tags
@@ -244,7 +244,7 @@ gtk_buildable_construct_child (GtkBuildable *buildable,
  * Since: 2.12
  **/
 gboolean
-gtk_buildable_custom_tag_start (GtkBuildable  *buildable,
+ctk_buildable_custom_tag_start (GtkBuildable  *buildable,
                                 GtkBuilder    *builder,
                                 GObject       *child,
                                 const gchar   *tagname,
@@ -265,7 +265,7 @@ gtk_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 /**
- * gtk_buildable_custom_tag_end:
+ * ctk_buildable_custom_tag_end:
  * @buildable: A #GtkBuildable
  * @builder: #GtkBuilder used to construct this object
  * @child: (allow-none): child object or %NULL for non-child tags
@@ -278,7 +278,7 @@ gtk_buildable_custom_tag_start (GtkBuildable  *buildable,
  * Since: 2.12
  **/
 void
-gtk_buildable_custom_tag_end (GtkBuildable  *buildable,
+ctk_buildable_custom_tag_end (GtkBuildable  *buildable,
                               GtkBuilder    *builder,
                               GObject       *child,
                               const gchar   *tagname,
@@ -296,20 +296,20 @@ gtk_buildable_custom_tag_end (GtkBuildable  *buildable,
 }
 
 /**
- * gtk_buildable_custom_finished:
+ * ctk_buildable_custom_finished:
  * @buildable: a #GtkBuildable
  * @builder: a #GtkBuilder
  * @child: (allow-none): child object or %NULL for non-child tags
  * @tagname: the name of the tag
  * @data: user data created in custom_tag_start
  *
- * This is similar to gtk_buildable_parser_finished() but is
+ * This is similar to ctk_buildable_parser_finished() but is
  * called once for each custom tag handled by the @buildable.
  * 
  * Since: 2.12
  **/
 void
-gtk_buildable_custom_finished (GtkBuildable  *buildable,
+ctk_buildable_custom_finished (GtkBuildable  *buildable,
 			       GtkBuilder    *builder,
 			       GObject       *child,
 			       const gchar   *tagname,
@@ -326,7 +326,7 @@ gtk_buildable_custom_finished (GtkBuildable  *buildable,
 }
 
 /**
- * gtk_buildable_get_internal_child:
+ * ctk_buildable_get_internal_child:
  * @buildable: a #GtkBuildable
  * @builder: a #GtkBuilder
  * @childname: name of child
@@ -338,7 +338,7 @@ gtk_buildable_custom_finished (GtkBuildable  *buildable,
  * Since: 2.12
  **/
 GObject *
-gtk_buildable_get_internal_child (GtkBuildable *buildable,
+ctk_buildable_get_internal_child (GtkBuildable *buildable,
                                   GtkBuilder   *builder,
                                   const gchar  *childname)
 {

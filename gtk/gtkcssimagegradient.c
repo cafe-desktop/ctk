@@ -28,10 +28,10 @@
 #include "deprecated/gtkgradientprivate.h"
 #include "deprecated/gtksymboliccolorprivate.h"
 
-G_DEFINE_TYPE (GtkCssImageGradient, _gtk_css_image_gradient, GTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (GtkCssImageGradient, _ctk_css_image_gradient, GTK_TYPE_CSS_IMAGE)
 
 static GtkCssImage *
-gtk_css_image_gradient_compute (GtkCssImage             *image,
+ctk_css_image_gradient_compute (GtkCssImage             *image,
                                 guint                    property_id,
                                 GtkStyleProviderPrivate *provider,
                                 GtkCssStyle             *style,
@@ -44,8 +44,8 @@ gtk_css_image_gradient_compute (GtkCssImage             *image,
     return GTK_CSS_IMAGE (g_object_ref (gradient));
 
   copy = g_object_new (GTK_TYPE_CSS_IMAGE_GRADIENT, NULL);
-  copy->gradient = gtk_gradient_ref (gradient->gradient);
-  copy->pattern = _gtk_gradient_resolve_full (copy->gradient, provider, style, parent_style);
+  copy->gradient = ctk_gradient_ref (gradient->gradient);
+  copy->pattern = _ctk_gradient_resolve_full (copy->gradient, provider, style, parent_style);
 
   return GTK_CSS_IMAGE (copy);
 }
@@ -144,7 +144,7 @@ transition_pattern (cairo_pattern_t *start,
 }
 
 static GtkCssImage *
-gtk_css_image_gradient_transition (GtkCssImage *start_image,
+ctk_css_image_gradient_transition (GtkCssImage *start_image,
                                    GtkCssImage *end_image,
                                    guint        property_id,
                                    double       progress)
@@ -163,15 +163,15 @@ gtk_css_image_gradient_transition (GtkCssImage *start_image,
   else
     {
       if (!GTK_IS_CSS_IMAGE_GRADIENT (end_image))
-        return GTK_CSS_IMAGE_CLASS (_gtk_css_image_gradient_parent_class)->transition (start_image, end_image, property_id, progress);
+        return GTK_CSS_IMAGE_CLASS (_ctk_css_image_gradient_parent_class)->transition (start_image, end_image, property_id, progress);
 
       end_gradient = GTK_CSS_IMAGE_GRADIENT (end_image)->gradient;
       end_pattern = GTK_CSS_IMAGE_GRADIENT (end_image)->pattern;
     }
 
-  gradient = _gtk_gradient_transition (start_gradient, end_gradient, property_id, progress);
+  gradient = _ctk_gradient_transition (start_gradient, end_gradient, property_id, progress);
   if (gradient == NULL)
-    return GTK_CSS_IMAGE_CLASS (_gtk_css_image_gradient_parent_class)->transition (start_image, end_image, property_id, progress);
+    return GTK_CSS_IMAGE_CLASS (_ctk_css_image_gradient_parent_class)->transition (start_image, end_image, property_id, progress);
 
   result = g_object_new (GTK_TYPE_CSS_IMAGE_GRADIENT, NULL);
   result->gradient = gradient;
@@ -181,7 +181,7 @@ gtk_css_image_gradient_transition (GtkCssImage *start_image,
 }
 
 static gboolean
-gtk_css_image_gradient_draw_circle (GtkCssImageGradient *image,
+ctk_css_image_gradient_draw_circle (GtkCssImageGradient *image,
                                     cairo_t              *cr,
                                     double               width,
                                     double               height)
@@ -229,7 +229,7 @@ gtk_css_image_gradient_draw_circle (GtkCssImageGradient *image,
 }
 
 static void
-gtk_css_image_gradient_draw (GtkCssImage        *image,
+ctk_css_image_gradient_draw (GtkCssImage        *image,
                              cairo_t            *cr,
                              double              width,
                              double              height)
@@ -242,7 +242,7 @@ gtk_css_image_gradient_draw (GtkCssImage        *image,
       return;
     }
 
-  if (gtk_css_image_gradient_draw_circle (gradient, cr, width, height))
+  if (ctk_css_image_gradient_draw_circle (gradient, cr, width, height))
     return;
 
   cairo_scale (cr, width, height);
@@ -253,36 +253,36 @@ gtk_css_image_gradient_draw (GtkCssImage        *image,
 }
 
 static gboolean
-gtk_css_image_gradient_parse (GtkCssImage  *image,
+ctk_css_image_gradient_parse (GtkCssImage  *image,
                               GtkCssParser *parser)
 {
   GtkCssImageGradient *gradient = GTK_CSS_IMAGE_GRADIENT (image);
 
-  gradient->gradient = _gtk_gradient_parse (parser);
+  gradient->gradient = _ctk_gradient_parse (parser);
 
   return gradient->gradient != NULL;
 }
 
 static void
-gtk_css_image_gradient_print (GtkCssImage *image,
+ctk_css_image_gradient_print (GtkCssImage *image,
                               GString     *string)
 {
   GtkCssImageGradient *gradient = GTK_CSS_IMAGE_GRADIENT (image);
   char *s;
 
-  s = gtk_gradient_to_string (gradient->gradient);
+  s = ctk_gradient_to_string (gradient->gradient);
   g_string_append (string, s);
   g_free (s);
 }
 
 static void
-gtk_css_image_gradient_dispose (GObject *object)
+ctk_css_image_gradient_dispose (GObject *object)
 {
   GtkCssImageGradient *gradient = GTK_CSS_IMAGE_GRADIENT (object);
 
   if (gradient->gradient)
     {
-      gtk_gradient_unref (gradient->gradient);
+      ctk_gradient_unref (gradient->gradient);
       gradient->gradient = NULL;
     }
   if (gradient->pattern)
@@ -291,31 +291,31 @@ gtk_css_image_gradient_dispose (GObject *object)
       gradient->pattern = NULL;
     }
 
-  G_OBJECT_CLASS (_gtk_css_image_gradient_parent_class)->dispose (object);
+  G_OBJECT_CLASS (_ctk_css_image_gradient_parent_class)->dispose (object);
 }
 
 static void
-_gtk_css_image_gradient_class_init (GtkCssImageGradientClass *klass)
+_ctk_css_image_gradient_class_init (GtkCssImageGradientClass *klass)
 {
   GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  image_class->compute = gtk_css_image_gradient_compute;
-  image_class->transition = gtk_css_image_gradient_transition;
-  image_class->draw = gtk_css_image_gradient_draw;
-  image_class->parse = gtk_css_image_gradient_parse;
-  image_class->print = gtk_css_image_gradient_print;
+  image_class->compute = ctk_css_image_gradient_compute;
+  image_class->transition = ctk_css_image_gradient_transition;
+  image_class->draw = ctk_css_image_gradient_draw;
+  image_class->parse = ctk_css_image_gradient_parse;
+  image_class->print = ctk_css_image_gradient_print;
 
-  object_class->dispose = gtk_css_image_gradient_dispose;
+  object_class->dispose = ctk_css_image_gradient_dispose;
 }
 
 static void
-_gtk_css_image_gradient_init (GtkCssImageGradient *image_gradient)
+_ctk_css_image_gradient_init (GtkCssImageGradient *image_gradient)
 {
 }
 
 GtkGradient *
-_gtk_gradient_parse (GtkCssParser *parser)
+_ctk_gradient_parse (GtkCssParser *parser)
 {
   GtkGradient *gradient;
   cairo_pattern_type_t type;
@@ -324,28 +324,28 @@ _gtk_gradient_parse (GtkCssParser *parser)
 
   g_return_val_if_fail (parser != NULL, NULL);
 
-  if (!_gtk_css_parser_try (parser, "-gtk-gradient", TRUE))
+  if (!_ctk_css_parser_try (parser, "-gtk-gradient", TRUE))
     {
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Expected '-gtk-gradient'");
       return NULL;
     }
 
-  if (!_gtk_css_parser_try (parser, "(", TRUE))
+  if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Expected '(' after '-gtk-gradient'");
       return NULL;
     }
 
   /* Parse gradient type */
-  if (_gtk_css_parser_try (parser, "linear", TRUE))
+  if (_ctk_css_parser_try (parser, "linear", TRUE))
     type = CAIRO_PATTERN_TYPE_LINEAR;
-  else if (_gtk_css_parser_try (parser, "radial", TRUE))
+  else if (_ctk_css_parser_try (parser, "radial", TRUE))
     type = CAIRO_PATTERN_TYPE_RADIAL;
   else
     {
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Gradient type must be 'radial' or 'linear'");
       return NULL;
     }
@@ -353,35 +353,35 @@ _gtk_gradient_parse (GtkCssParser *parser)
   /* Parse start/stop position parameters */
   for (i = 0; i < 2; i++)
     {
-      if (! _gtk_css_parser_try (parser, ",", TRUE))
+      if (! _ctk_css_parser_try (parser, ",", TRUE))
         {
-          _gtk_css_parser_error (parser,
+          _ctk_css_parser_error (parser,
                                  "Expected ','");
           return NULL;
         }
 
-      if (_gtk_css_parser_try (parser, "left", TRUE))
+      if (_ctk_css_parser_try (parser, "left", TRUE))
         coords[i * 3] = 0;
-      else if (_gtk_css_parser_try (parser, "right", TRUE))
+      else if (_ctk_css_parser_try (parser, "right", TRUE))
         coords[i * 3] = 1;
-      else if (_gtk_css_parser_try (parser, "center", TRUE))
+      else if (_ctk_css_parser_try (parser, "center", TRUE))
         coords[i * 3] = 0.5;
-      else if (!_gtk_css_parser_try_double (parser, &coords[i * 3]))
+      else if (!_ctk_css_parser_try_double (parser, &coords[i * 3]))
         {
-          _gtk_css_parser_error (parser,
+          _ctk_css_parser_error (parser,
                                  "Expected a valid X coordinate");
           return NULL;
         }
 
-      if (_gtk_css_parser_try (parser, "top", TRUE))
+      if (_ctk_css_parser_try (parser, "top", TRUE))
         coords[i * 3 + 1] = 0;
-      else if (_gtk_css_parser_try (parser, "bottom", TRUE))
+      else if (_ctk_css_parser_try (parser, "bottom", TRUE))
         coords[i * 3 + 1] = 1;
-      else if (_gtk_css_parser_try (parser, "center", TRUE))
+      else if (_ctk_css_parser_try (parser, "center", TRUE))
         coords[i * 3 + 1] = 0.5;
-      else if (!_gtk_css_parser_try_double (parser, &coords[i * 3 + 1]))
+      else if (!_ctk_css_parser_try_double (parser, &coords[i * 3 + 1]))
         {
-          _gtk_css_parser_error (parser,
+          _ctk_css_parser_error (parser,
                                  "Expected a valid Y coordinate");
           return NULL;
         }
@@ -389,16 +389,16 @@ _gtk_gradient_parse (GtkCssParser *parser)
       if (type == CAIRO_PATTERN_TYPE_RADIAL)
         {
           /* Parse radius */
-          if (! _gtk_css_parser_try (parser, ",", TRUE))
+          if (! _ctk_css_parser_try (parser, ",", TRUE))
             {
-              _gtk_css_parser_error (parser,
+              _ctk_css_parser_error (parser,
                                      "Expected ','");
               return NULL;
             }
 
-          if (! _gtk_css_parser_try_double (parser, &coords[(i * 3) + 2]))
+          if (! _ctk_css_parser_try_double (parser, &coords[(i * 3) + 2]))
             {
-              _gtk_css_parser_error (parser,
+              _ctk_css_parser_error (parser,
                                      "Expected a number for the radius");
               return NULL;
             }
@@ -406,99 +406,99 @@ _gtk_gradient_parse (GtkCssParser *parser)
     }
 
   if (type == CAIRO_PATTERN_TYPE_LINEAR)
-    gradient = gtk_gradient_new_linear (coords[0], coords[1], coords[3], coords[4]);
+    gradient = ctk_gradient_new_linear (coords[0], coords[1], coords[3], coords[4]);
   else
-    gradient = gtk_gradient_new_radial (coords[0], coords[1], coords[2],
+    gradient = ctk_gradient_new_radial (coords[0], coords[1], coords[2],
                                         coords[3], coords[4], coords[5]);
 
-  while (_gtk_css_parser_try (parser, ",", TRUE))
+  while (_ctk_css_parser_try (parser, ",", TRUE))
     {
       GtkSymbolicColor *color;
       gdouble position;
 
-      if (_gtk_css_parser_try (parser, "from", TRUE))
+      if (_ctk_css_parser_try (parser, "from", TRUE))
         {
           position = 0;
 
-          if (!_gtk_css_parser_try (parser, "(", TRUE))
+          if (!_ctk_css_parser_try (parser, "(", TRUE))
             {
-              gtk_gradient_unref (gradient);
-              _gtk_css_parser_error (parser,
+              ctk_gradient_unref (gradient);
+              _ctk_css_parser_error (parser,
                                      "Expected '('");
               return NULL;
             }
 
         }
-      else if (_gtk_css_parser_try (parser, "to", TRUE))
+      else if (_ctk_css_parser_try (parser, "to", TRUE))
         {
           position = 1;
 
-          if (!_gtk_css_parser_try (parser, "(", TRUE))
+          if (!_ctk_css_parser_try (parser, "(", TRUE))
             {
-              gtk_gradient_unref (gradient);
-              _gtk_css_parser_error (parser,
+              ctk_gradient_unref (gradient);
+              _ctk_css_parser_error (parser,
                                      "Expected '('");
               return NULL;
             }
 
         }
-      else if (_gtk_css_parser_try (parser, "color-stop", TRUE))
+      else if (_ctk_css_parser_try (parser, "color-stop", TRUE))
         {
-          if (!_gtk_css_parser_try (parser, "(", TRUE))
+          if (!_ctk_css_parser_try (parser, "(", TRUE))
             {
-              gtk_gradient_unref (gradient);
-              _gtk_css_parser_error (parser,
+              ctk_gradient_unref (gradient);
+              _ctk_css_parser_error (parser,
                                      "Expected '('");
               return NULL;
             }
 
-          if (!_gtk_css_parser_try_double (parser, &position))
+          if (!_ctk_css_parser_try_double (parser, &position))
             {
-              gtk_gradient_unref (gradient);
-              _gtk_css_parser_error (parser,
+              ctk_gradient_unref (gradient);
+              _ctk_css_parser_error (parser,
                                      "Expected a valid number");
               return NULL;
             }
 
-          if (!_gtk_css_parser_try (parser, ",", TRUE))
+          if (!_ctk_css_parser_try (parser, ",", TRUE))
             {
-              gtk_gradient_unref (gradient);
-              _gtk_css_parser_error (parser,
+              ctk_gradient_unref (gradient);
+              _ctk_css_parser_error (parser,
                                      "Expected a comma");
               return NULL;
             }
         }
       else
         {
-          gtk_gradient_unref (gradient);
-          _gtk_css_parser_error (parser,
+          ctk_gradient_unref (gradient);
+          _ctk_css_parser_error (parser,
                                  "Not a valid color-stop definition");
           return NULL;
         }
 
-      color = _gtk_css_symbolic_value_new (parser);
+      color = _ctk_css_symbolic_value_new (parser);
       if (color == NULL)
         {
-          gtk_gradient_unref (gradient);
+          ctk_gradient_unref (gradient);
           return NULL;
         }
 
-      gtk_gradient_add_color_stop (gradient, position, color);
-      gtk_symbolic_color_unref (color);
+      ctk_gradient_add_color_stop (gradient, position, color);
+      ctk_symbolic_color_unref (color);
 
-      if (!_gtk_css_parser_try (parser, ")", TRUE))
+      if (!_ctk_css_parser_try (parser, ")", TRUE))
         {
-          gtk_gradient_unref (gradient);
-          _gtk_css_parser_error (parser,
+          ctk_gradient_unref (gradient);
+          _ctk_css_parser_error (parser,
                                  "Expected ')'");
           return NULL;
         }
     }
 
-  if (!_gtk_css_parser_try (parser, ")", TRUE))
+  if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
-      gtk_gradient_unref (gradient);
-      _gtk_css_parser_error (parser,
+      ctk_gradient_unref (gradient);
+      _ctk_css_parser_error (parser,
                              "Expected ')'");
       return NULL;
     }

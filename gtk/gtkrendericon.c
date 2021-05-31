@@ -30,7 +30,7 @@
 #include <math.h>
 
 void
-gtk_css_style_render_icon (GtkCssStyle            *style,
+ctk_css_style_render_icon (GtkCssStyle            *style,
                            cairo_t                *cr,
                            double                  x,
                            double                  y,
@@ -45,35 +45,35 @@ gtk_css_style_render_icon (GtkCssStyle            *style,
   g_return_if_fail (GTK_IS_CSS_STYLE (style));
   g_return_if_fail (cr != NULL);
 
-  image = _gtk_css_image_value_get_image (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SOURCE));
+  image = _ctk_css_image_value_get_image (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SOURCE));
   if (image == NULL)
     return;
 
   cairo_get_matrix (cr, &saved_matrix);
 
-  shadows = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW);
+  shadows = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW);
 
   cairo_translate (cr, x, y);
 
-  if (_gtk_css_transform_value_get_matrix (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
+  if (_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
     {
       /* XXX: Implement -gtk-icon-transform-origin instead of hardcoding "50% 50%" here */
       cairo_matrix_init_translate (&matrix, width / 2, height / 2);
       cairo_matrix_multiply (&matrix, &transform_matrix, &matrix);
       cairo_matrix_translate (&matrix, - width / 2, - height / 2);
 
-      if (_gtk_css_shadows_value_is_none (shadows))
+      if (_ctk_css_shadows_value_is_none (shadows))
         {
           cairo_transform (cr, &matrix);
-          gtk_css_image_builtin_draw (image, cr, width, height, builtin_type);
+          ctk_css_image_builtin_draw (image, cr, width, height, builtin_type);
         }
       else
         {
           cairo_push_group (cr);
           cairo_transform (cr, &matrix);
-          gtk_css_image_builtin_draw (image, cr, width, height, builtin_type);
+          ctk_css_image_builtin_draw (image, cr, width, height, builtin_type);
           cairo_pop_group_to_source (cr);
-          _gtk_css_shadows_value_paint_icon (shadows, cr);
+          _ctk_css_shadows_value_paint_icon (shadows, cr);
           cairo_paint (cr);
         }
     }
@@ -96,7 +96,7 @@ get_surface_extents (cairo_surface_t *surface,
 }
 
 void
-gtk_css_style_render_icon_surface (GtkCssStyle            *style,
+ctk_css_style_render_icon_surface (GtkCssStyle            *style,
                                    cairo_t                *cr,
                                    cairo_surface_t        *surface,
                                    double                  x,
@@ -110,13 +110,13 @@ gtk_css_style_render_icon_surface (GtkCssStyle            *style,
   g_return_if_fail (cr != NULL);
   g_return_if_fail (surface != NULL);
 
-  shadows = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW);
+  shadows = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW);
 
   if (!get_surface_extents (surface, &extents))
     {
       /* weird infinite surface, no special magic for you */
       cairo_set_source_surface (cr, surface, x, y);
-      _gtk_css_shadows_value_paint_icon (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW), cr);
+      _ctk_css_shadows_value_paint_icon (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW), cr);
       cairo_paint (cr);
       return;
     }
@@ -124,7 +124,7 @@ gtk_css_style_render_icon_surface (GtkCssStyle            *style,
   cairo_get_matrix (cr, &saved_matrix);
   cairo_translate (cr, x + extents.x, y + extents.y);
 
-  if (_gtk_css_transform_value_get_matrix (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
+  if (_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
     {
       cairo_pattern_t *pattern;
 
@@ -143,7 +143,7 @@ gtk_css_style_render_icon_surface (GtkCssStyle            *style,
       cairo_set_source (cr, pattern);
       cairo_pattern_destroy (pattern);
 
-      _gtk_css_shadows_value_paint_icon (shadows, cr);
+      _ctk_css_shadows_value_paint_icon (shadows, cr);
       cairo_paint (cr);
     }
 
@@ -151,7 +151,7 @@ gtk_css_style_render_icon_surface (GtkCssStyle            *style,
 }
 
 static void
-gtk_cairo_rectangle_transform (cairo_rectangle_int_t       *dest,
+ctk_cairo_rectangle_transform (cairo_rectangle_int_t       *dest,
                                const cairo_rectangle_int_t *src,
                                const cairo_matrix_t        *matrix)
 {
@@ -183,7 +183,7 @@ gtk_cairo_rectangle_transform (cairo_rectangle_int_t       *dest,
 }
 
 void
-gtk_css_style_render_icon_get_extents (GtkCssStyle  *style,
+ctk_css_style_render_icon_get_extents (GtkCssStyle  *style,
                                        GdkRectangle *extents,
                                        gint          x,
                                        gint          y,
@@ -202,7 +202,7 @@ gtk_css_style_render_icon_get_extents (GtkCssStyle  *style,
   extents->width = width;
   extents->height = height;
 
-  if (!_gtk_css_transform_value_get_matrix (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
+  if (!_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
     return;
   
   cairo_matrix_init_translate (&matrix, x + width / 2.0, y + height / 2.0);
@@ -212,9 +212,9 @@ gtk_css_style_render_icon_get_extents (GtkCssStyle  *style,
   rect.y = - (height + 1) / 2;
   rect.width = (width + 1) & ~1;
   rect.height = (height + 1) & ~1;
-  gtk_cairo_rectangle_transform (extents, &rect, &matrix);
+  ctk_cairo_rectangle_transform (extents, &rect, &matrix);
 
-  _gtk_css_shadows_value_get_extents (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW), &border);
+  _ctk_css_shadows_value_get_extents (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_SHADOW), &border);
 
   extents->x -= border.left;
   extents->y -= border.top;

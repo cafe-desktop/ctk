@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_OPTION_SET             (gtk_printer_option_set_get_type ())
+#define GTK_TYPE_PRINTER_OPTION_SET             (ctk_printer_option_set_get_type ())
 #define GTK_PRINTER_OPTION_SET(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_OPTION_SET, GtkPrinterOptionSet))
 #define GTK_IS_PRINTER_OPTION_SET(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_OPTION_SET))
 
@@ -57,10 +57,10 @@ struct _GtkPrinterOptionSetClass
 
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 typedef void (*GtkPrinterOptionSetFunc) (GtkPrinterOption  *option,
@@ -68,29 +68,29 @@ typedef void (*GtkPrinterOptionSetFunc) (GtkPrinterOption  *option,
 
 
 GDK_AVAILABLE_IN_ALL
-GType   gtk_printer_option_set_get_type       (void) G_GNUC_CONST;
+GType   ctk_printer_option_set_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkPrinterOptionSet *gtk_printer_option_set_new              (void);
+GtkPrinterOptionSet *ctk_printer_option_set_new              (void);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_printer_option_set_add              (GtkPrinterOptionSet     *set,
+void                 ctk_printer_option_set_add              (GtkPrinterOptionSet     *set,
 							      GtkPrinterOption        *option);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_printer_option_set_remove           (GtkPrinterOptionSet     *set,
+void                 ctk_printer_option_set_remove           (GtkPrinterOptionSet     *set,
 							      GtkPrinterOption        *option);
 GDK_AVAILABLE_IN_ALL
-GtkPrinterOption *   gtk_printer_option_set_lookup           (GtkPrinterOptionSet     *set,
+GtkPrinterOption *   ctk_printer_option_set_lookup           (GtkPrinterOptionSet     *set,
 							      const char              *name);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_printer_option_set_foreach          (GtkPrinterOptionSet     *set,
+void                 ctk_printer_option_set_foreach          (GtkPrinterOptionSet     *set,
 							      GtkPrinterOptionSetFunc  func,
 							      gpointer                 user_data);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_printer_option_set_clear_conflicts  (GtkPrinterOptionSet     *set);
+void                 ctk_printer_option_set_clear_conflicts  (GtkPrinterOptionSet     *set);
 GDK_AVAILABLE_IN_ALL
-GList *              gtk_printer_option_set_get_groups       (GtkPrinterOptionSet     *set);
+GList *              ctk_printer_option_set_get_groups       (GtkPrinterOptionSet     *set);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_printer_option_set_foreach_in_group (GtkPrinterOptionSet     *set,
+void                 ctk_printer_option_set_foreach_in_group (GtkPrinterOptionSet     *set,
 							      const char              *group,
 							      GtkPrinterOptionSetFunc  func,
 							      gpointer                 user_data);

@@ -34,7 +34,7 @@
  *
  * > In GTK+ 3.10, GtkAction has been deprecated. Use #GAction
  * > instead, and associate actions with #GtkActionable widgets. Use
- * > #GMenuModel for creating menus with gtk_menu_new_from_model().
+ * > #GMenuModel for creating menus with ctk_menu_new_from_model().
  *
  * Actions represent operations that the user can be perform, along with
  * some information how it should be presented in the interface. Each action
@@ -168,26 +168,26 @@ enum
 };
 
 /* GtkBuildable */
-static void gtk_action_buildable_init             (GtkBuildableIface *iface);
-static void gtk_action_buildable_set_name         (GtkBuildable *buildable,
+static void ctk_action_buildable_init             (GtkBuildableIface *iface);
+static void ctk_action_buildable_set_name         (GtkBuildable *buildable,
 						   const gchar  *name);
-static const gchar* gtk_action_buildable_get_name (GtkBuildable *buildable);
+static const gchar* ctk_action_buildable_get_name (GtkBuildable *buildable);
 
-G_DEFINE_TYPE_WITH_CODE (GtkAction, gtk_action, G_TYPE_OBJECT,
+G_DEFINE_TYPE_WITH_CODE (GtkAction, ctk_action, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkAction)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
-						gtk_action_buildable_init))
+						ctk_action_buildable_init))
 
-static void gtk_action_finalize     (GObject *object);
-static void gtk_action_set_property (GObject         *object,
+static void ctk_action_finalize     (GObject *object);
+static void ctk_action_set_property (GObject         *object,
 				     guint            prop_id,
 				     const GValue    *value,
 				     GParamSpec      *pspec);
-static void gtk_action_get_property (GObject         *object,
+static void ctk_action_get_property (GObject         *object,
 				     guint            prop_id,
 				     GValue          *value,
 				     GParamSpec      *pspec);
-static void gtk_action_set_action_group (GtkAction	*action,
+static void ctk_action_set_action_group (GtkAction	*action,
 					 GtkActionGroup *action_group);
 
 static GtkWidget *create_menu_item    (GtkAction *action);
@@ -208,15 +208,15 @@ static guint         action_signals[LAST_SIGNAL] = { 0 };
 
 
 static void
-gtk_action_class_init (GtkActionClass *klass)
+ctk_action_class_init (GtkActionClass *klass)
 {
   GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
 
-  gobject_class->finalize     = gtk_action_finalize;
-  gobject_class->set_property = gtk_action_set_property;
-  gobject_class->get_property = gtk_action_get_property;
+  gobject_class->finalize     = ctk_action_finalize;
+  gobject_class->set_property = ctk_action_set_property;
+  gobject_class->get_property = ctk_action_get_property;
 
   klass->activate = NULL;
 
@@ -292,7 +292,7 @@ gtk_action_class_init (GtkActionClass *klass)
    *
    * A tooltip for this action.
    *
-   * Deprecated: 3.10: Use gtk_widget_set_tooltip_text() instead
+   * Deprecated: 3.10: Use ctk_widget_set_tooltip_text() instead
    */
   g_object_class_install_property (gobject_class,
 				   PROP_TOOLTIP,
@@ -542,9 +542,9 @@ gtk_action_class_init (GtkActionClass *klass)
 
 
 static void
-gtk_action_init (GtkAction *action)
+ctk_action_init (GtkAction *action)
 {
-  action->private_data = gtk_action_get_instance_private (action);
+  action->private_data = ctk_action_get_instance_private (action);
 
   action->private_data->name = NULL;
   action->private_data->label = NULL;
@@ -583,14 +583,14 @@ gtk_action_init (GtkAction *action)
 }
 
 static void
-gtk_action_buildable_init (GtkBuildableIface *iface)
+ctk_action_buildable_init (GtkBuildableIface *iface)
 {
-  iface->set_name = gtk_action_buildable_set_name;
-  iface->get_name = gtk_action_buildable_get_name;
+  iface->set_name = ctk_action_buildable_set_name;
+  iface->get_name = ctk_action_buildable_get_name;
 }
 
 static void
-gtk_action_buildable_set_name (GtkBuildable *buildable,
+ctk_action_buildable_set_name (GtkBuildable *buildable,
 			       const gchar  *name)
 {
   GtkAction *action = GTK_ACTION (buildable);
@@ -599,7 +599,7 @@ gtk_action_buildable_set_name (GtkBuildable *buildable,
 }
 
 static const gchar *
-gtk_action_buildable_get_name (GtkBuildable *buildable)
+ctk_action_buildable_get_name (GtkBuildable *buildable)
 {
   GtkAction *action = GTK_ACTION (buildable);
 
@@ -607,7 +607,7 @@ gtk_action_buildable_get_name (GtkBuildable *buildable)
 }
 
 /**
- * gtk_action_new:
+ * ctk_action_new:
  * @name: A unique name for the action
  * @label: (allow-none): the label displayed in menu items and on buttons,
  *         or %NULL
@@ -617,7 +617,7 @@ gtk_action_buildable_get_name (GtkBuildable *buildable)
  *
  * Creates a new #GtkAction object. To add the action to a
  * #GtkActionGroup and set the accelerator for the action,
- * call gtk_action_group_add_action_with_accel().
+ * call ctk_action_group_add_action_with_accel().
  * See the [UI Definition section][XML-UI] for information on allowed action
  * names.
  *
@@ -626,10 +626,10 @@ gtk_action_buildable_get_name (GtkBuildable *buildable)
  * Since: 2.4
  *
  * Deprecated: 3.10: Use #GAction instead, associating it to a widget with
- * #GtkActionable or creating a #GtkMenu with gtk_menu_new_from_model()
+ * #GtkActionable or creating a #GtkMenu with ctk_menu_new_from_model()
  */
 GtkAction *
-gtk_action_new (const gchar *name,
+ctk_action_new (const gchar *name,
 		const gchar *label,
 		const gchar *tooltip,
 		const gchar *stock_id)
@@ -645,7 +645,7 @@ gtk_action_new (const gchar *name,
 }
 
 static void
-gtk_action_finalize (GObject *object)
+ctk_action_finalize (GObject *object)
 {
   GtkAction *action;
   action = GTK_ACTION (object);
@@ -663,11 +663,11 @@ gtk_action_finalize (GObject *object)
   if (action->private_data->accel_group)
     g_object_unref (action->private_data->accel_group);
 
-  G_OBJECT_CLASS (gtk_action_parent_class)->finalize (object);  
+  G_OBJECT_CLASS (ctk_action_parent_class)->finalize (object);  
 }
 
 static void
-gtk_action_set_property (GObject         *object,
+ctk_action_set_property (GObject         *object,
 			 guint            prop_id,
 			 const GValue    *value,
 			 GParamSpec      *pspec)
@@ -682,49 +682,49 @@ gtk_action_set_property (GObject         *object,
       action->private_data->name = g_intern_string (g_value_get_string (value));
       break;
     case PROP_LABEL:
-      gtk_action_set_label (action, g_value_get_string (value));
+      ctk_action_set_label (action, g_value_get_string (value));
       break;
     case PROP_SHORT_LABEL:
-      gtk_action_set_short_label (action, g_value_get_string (value));
+      ctk_action_set_short_label (action, g_value_get_string (value));
       break;
     case PROP_TOOLTIP:
-      gtk_action_set_tooltip (action, g_value_get_string (value));
+      ctk_action_set_tooltip (action, g_value_get_string (value));
       break;
     case PROP_STOCK_ID:
-      gtk_action_set_stock_id (action, g_value_get_string (value));
+      ctk_action_set_stock_id (action, g_value_get_string (value));
       break;
     case PROP_GICON:
-      gtk_action_set_gicon (action, g_value_get_object (value));
+      ctk_action_set_gicon (action, g_value_get_object (value));
       break;
     case PROP_ICON_NAME:
-      gtk_action_set_icon_name (action, g_value_get_string (value));
+      ctk_action_set_icon_name (action, g_value_get_string (value));
       break;
     case PROP_VISIBLE_HORIZONTAL:
-      gtk_action_set_visible_horizontal (action, g_value_get_boolean (value));
+      ctk_action_set_visible_horizontal (action, g_value_get_boolean (value));
       break;
     case PROP_VISIBLE_VERTICAL:
-      gtk_action_set_visible_vertical (action, g_value_get_boolean (value));
+      ctk_action_set_visible_vertical (action, g_value_get_boolean (value));
       break;
     case PROP_VISIBLE_OVERFLOWN:
       action->private_data->visible_overflown = g_value_get_boolean (value);
       break;
     case PROP_IS_IMPORTANT:
-      gtk_action_set_is_important (action, g_value_get_boolean (value));
+      ctk_action_set_is_important (action, g_value_get_boolean (value));
       break;
     case PROP_HIDE_IF_EMPTY:
       action->private_data->hide_if_empty = g_value_get_boolean (value);
       break;
     case PROP_SENSITIVE:
-      gtk_action_set_sensitive (action, g_value_get_boolean (value));
+      ctk_action_set_sensitive (action, g_value_get_boolean (value));
       break;
     case PROP_VISIBLE:
-      gtk_action_set_visible (action, g_value_get_boolean (value));
+      ctk_action_set_visible (action, g_value_get_boolean (value));
       break;
     case PROP_ACTION_GROUP:
-      gtk_action_set_action_group (action, g_value_get_object (value));
+      ctk_action_set_action_group (action, g_value_get_object (value));
       break;
     case PROP_ALWAYS_SHOW_IMAGE:
-      gtk_action_set_always_show_image (action, g_value_get_boolean (value));
+      ctk_action_set_always_show_image (action, g_value_get_boolean (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -733,7 +733,7 @@ gtk_action_set_property (GObject         *object,
 }
 
 static void
-gtk_action_get_property (GObject    *object,
+ctk_action_get_property (GObject    *object,
 			 guint       prop_id,
 			 GValue     *value,
 			 GParamSpec *pspec)
@@ -835,7 +835,7 @@ connect_proxy (GtkAction *action,
   g_object_ref_sink (proxy);
 
   if (action->private_data->action_group)
-    _gtk_action_group_emit_connect_proxy (action->private_data->action_group, action, proxy);
+    _ctk_action_group_emit_connect_proxy (action->private_data->action_group, action, proxy);
 
 }
 
@@ -846,11 +846,11 @@ disconnect_proxy (GtkAction *action,
   remove_proxy (action, proxy);
 
   if (action->private_data->action_group)
-    _gtk_action_group_emit_disconnect_proxy (action->private_data->action_group, action, proxy);
+    _ctk_action_group_emit_disconnect_proxy (action->private_data->action_group, action, proxy);
 }
 
 /**
- * _gtk_action_sync_menu_visible:
+ * _ctk_action_sync_menu_visible:
  * @action: (allow-none): a #GtkAction, or %NULL to determine the action from @proxy
  * @proxy: a proxy menu item
  * @empty: whether the submenu attached to @proxy is empty
@@ -868,7 +868,7 @@ disconnect_proxy (GtkAction *action,
  * Deprecated: 3.10
  **/
 void
-_gtk_action_sync_menu_visible (GtkAction *action,
+_ctk_action_sync_menu_visible (GtkAction *action,
 			       GtkWidget *proxy,
 			       gboolean   empty)
 {
@@ -879,23 +879,23 @@ _gtk_action_sync_menu_visible (GtkAction *action,
   g_return_if_fail (action == NULL || GTK_IS_ACTION (action));
 
   if (action == NULL)
-    action = gtk_activatable_get_related_action (GTK_ACTIVATABLE (proxy));
+    action = ctk_activatable_get_related_action (GTK_ACTIVATABLE (proxy));
 
   if (action)
     {
       /* a GtkMenu for a <popup/> doesn't have to have an action */
-      visible = gtk_action_is_visible (action);
+      visible = ctk_action_is_visible (action);
       hide_if_empty = action->private_data->hide_if_empty;
     }
 
   if (visible && !(empty && hide_if_empty))
-    gtk_widget_show (proxy);
+    ctk_widget_show (proxy);
   else
-    gtk_widget_hide (proxy);
+    ctk_widget_hide (proxy);
 }
 
 void
-_gtk_action_emit_activate (GtkAction *action)
+_ctk_action_emit_activate (GtkAction *action)
 {
   GtkActionGroup *group = action->private_data->action_group;
 
@@ -903,21 +903,21 @@ _gtk_action_emit_activate (GtkAction *action)
     {
       g_object_ref (action);
       g_object_ref (group);
-      _gtk_action_group_emit_pre_activate (group, action);
+      _ctk_action_group_emit_pre_activate (group, action);
     }
 
   g_signal_emit (action, action_signals[ACTIVATE], 0);
 
   if (group != NULL)
     {
-      _gtk_action_group_emit_post_activate (group, action);
+      _ctk_action_group_emit_post_activate (group, action);
       g_object_unref (group);
       g_object_unref (action);
     }
 }
 
 /**
- * gtk_action_activate:
+ * ctk_action_activate:
  * @action: the action object
  *
  * Emits the “activate” signal on the specified action, if it isn't
@@ -931,25 +931,25 @@ _gtk_action_emit_activate (GtkAction *action)
  * Deprecated: 3.10: Use g_action_group_activate_action() on a #GAction instead
  */
 void
-gtk_action_activate (GtkAction *action)
+ctk_action_activate (GtkAction *action)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
   
   if (action->private_data->activate_blocked)
     return;
 
-  if (gtk_action_is_sensitive (action))
-    _gtk_action_emit_activate (action);
+  if (ctk_action_is_sensitive (action))
+    _ctk_action_emit_activate (action);
 }
 
 /**
- * gtk_action_block_activate:
+ * ctk_action_block_activate:
  * @action: a #GtkAction
  *
  * Disable activation signals from the action 
  *
  * This is needed when updating the state of your proxy
- * #GtkActivatable widget could result in calling gtk_action_activate(),
+ * #GtkActivatable widget could result in calling ctk_action_activate(),
  * this is a convenience function to avoid recursing in those
  * cases (updating toggle state for instance).
  *
@@ -959,7 +959,7 @@ gtk_action_activate (GtkAction *action)
  * #GSimpleAction instead
  */
 void
-gtk_action_block_activate (GtkAction *action)
+ctk_action_block_activate (GtkAction *action)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
 
@@ -967,7 +967,7 @@ gtk_action_block_activate (GtkAction *action)
 }
 
 /**
- * gtk_action_unblock_activate:
+ * ctk_action_unblock_activate:
  * @action: a #GtkAction
  *
  * Reenable activation signals from the action 
@@ -978,7 +978,7 @@ gtk_action_block_activate (GtkAction *action)
  * #GSimpleAction instead
  */
 void
-gtk_action_unblock_activate (GtkAction *action)
+ctk_action_unblock_activate (GtkAction *action)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
 
@@ -986,7 +986,7 @@ gtk_action_unblock_activate (GtkAction *action)
 }
 
 /**
- * gtk_action_create_icon:
+ * ctk_action_create_icon:
  * @action: the action object
  * @icon_size: (type int): the size of the icon (#GtkIconSize) that should
  *      be created.
@@ -999,10 +999,10 @@ gtk_action_unblock_activate (GtkAction *action)
  * Since: 2.4
  *
  * Deprecated: 3.10: Use g_menu_item_set_icon() to set an icon on a #GMenuItem,
- * or gtk_container_add() to add a #GtkImage to a #GtkButton
+ * or ctk_container_add() to add a #GtkImage to a #GtkButton
  */
 GtkWidget *
-gtk_action_create_icon (GtkAction *action, GtkIconSize icon_size)
+ctk_action_create_icon (GtkAction *action, GtkIconSize icon_size)
 {
   GtkWidget *widget = NULL;
 
@@ -1011,12 +1011,12 @@ gtk_action_create_icon (GtkAction *action, GtkIconSize icon_size)
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
   if (action->private_data->stock_id &&
-      gtk_icon_factory_lookup_default (action->private_data->stock_id))
-    widget = gtk_image_new_from_stock (action->private_data->stock_id, icon_size);
+      ctk_icon_factory_lookup_default (action->private_data->stock_id))
+    widget = ctk_image_new_from_stock (action->private_data->stock_id, icon_size);
   else if (action->private_data->gicon)
-    widget = gtk_image_new_from_gicon (action->private_data->gicon, icon_size);
+    widget = ctk_image_new_from_gicon (action->private_data->gicon, icon_size);
   else if (action->private_data->icon_name)
-    widget = gtk_image_new_from_icon_name (action->private_data->icon_name, icon_size);
+    widget = ctk_image_new_from_icon_name (action->private_data->icon_name, icon_size);
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -1024,7 +1024,7 @@ gtk_action_create_icon (GtkAction *action, GtkIconSize icon_size)
 }
 
 /**
- * gtk_action_create_menu_item:
+ * ctk_action_create_menu_item:
  * @action: the action object
  *
  * Creates a menu item widget that proxies for the given action.
@@ -1037,7 +1037,7 @@ gtk_action_create_icon (GtkAction *action, GtkIconSize icon_size)
  * instead.
  */
 GtkWidget *
-gtk_action_create_menu_item (GtkAction *action)
+ctk_action_create_menu_item (GtkAction *action)
 {
   GtkWidget *menu_item;
 
@@ -1045,14 +1045,14 @@ gtk_action_create_menu_item (GtkAction *action)
 
   menu_item = GTK_ACTION_GET_CLASS (action)->create_menu_item (action);
 
-  gtk_activatable_set_use_action_appearance (GTK_ACTIVATABLE (menu_item), TRUE);
-  gtk_activatable_set_related_action (GTK_ACTIVATABLE (menu_item), action);
+  ctk_activatable_set_use_action_appearance (GTK_ACTIVATABLE (menu_item), TRUE);
+  ctk_activatable_set_related_action (GTK_ACTIVATABLE (menu_item), action);
 
   return menu_item;
 }
 
 /**
- * gtk_action_create_tool_item:
+ * ctk_action_create_tool_item:
  * @action: the action object
  *
  * Creates a toolbar item widget that proxies for the given action.
@@ -1062,10 +1062,10 @@ gtk_action_create_menu_item (GtkAction *action)
  * Since: 2.4
  *
  * Deprecated: 3.10: Use a #GtkToolItem and associate it with a #GAction using
- * gtk_actionable_set_action_name() instead
+ * ctk_actionable_set_action_name() instead
  */
 GtkWidget *
-gtk_action_create_tool_item (GtkAction *action)
+ctk_action_create_tool_item (GtkAction *action)
 {
   GtkWidget *button;
 
@@ -1073,14 +1073,14 @@ gtk_action_create_tool_item (GtkAction *action)
 
   button = GTK_ACTION_GET_CLASS (action)->create_tool_item (action);
 
-  gtk_activatable_set_use_action_appearance (GTK_ACTIVATABLE (button), TRUE);
-  gtk_activatable_set_related_action (GTK_ACTIVATABLE (button), action);
+  ctk_activatable_set_use_action_appearance (GTK_ACTIVATABLE (button), TRUE);
+  ctk_activatable_set_related_action (GTK_ACTIVATABLE (button), action);
 
   return button;
 }
 
 void
-_gtk_action_add_to_proxy_list (GtkAction     *action,
+_ctk_action_add_to_proxy_list (GtkAction     *action,
 			       GtkWidget     *proxy)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1090,7 +1090,7 @@ _gtk_action_add_to_proxy_list (GtkAction     *action,
 }
 
 void
-_gtk_action_remove_from_proxy_list (GtkAction     *action,
+_ctk_action_remove_from_proxy_list (GtkAction     *action,
 				    GtkWidget     *proxy)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1100,11 +1100,11 @@ _gtk_action_remove_from_proxy_list (GtkAction     *action,
 }
 
 /**
- * gtk_action_get_proxies:
+ * ctk_action_get_proxies:
  * @action: the action object
  * 
  * Returns the proxy widgets for an action.
- * See also gtk_activatable_get_related_action().
+ * See also ctk_activatable_get_related_action().
  *
  * Returns: (element-type GtkWidget) (transfer none): a #GSList of proxy widgets. The list is owned by GTK+
  * and must not be modified.
@@ -1114,7 +1114,7 @@ _gtk_action_remove_from_proxy_list (GtkAction     *action,
  * Deprecated: 3.10
  **/
 GSList*
-gtk_action_get_proxies (GtkAction *action)
+ctk_action_get_proxies (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1122,7 +1122,7 @@ gtk_action_get_proxies (GtkAction *action)
 }
 
 /**
- * gtk_action_get_name:
+ * ctk_action_get_name:
  * @action: the action object
  * 
  * Returns the name of the action.
@@ -1135,7 +1135,7 @@ gtk_action_get_proxies (GtkAction *action)
  * Deprecated: 3.10: Use g_action_get_name() on a #GAction instead
  **/
 const gchar *
-gtk_action_get_name (GtkAction *action)
+ctk_action_get_name (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1143,7 +1143,7 @@ gtk_action_get_name (GtkAction *action)
 }
 
 /**
- * gtk_action_is_sensitive:
+ * ctk_action_is_sensitive:
  * @action: the action object
  * 
  * Returns whether the action is effectively sensitive.
@@ -1157,7 +1157,7 @@ gtk_action_get_name (GtkAction *action)
  * instead
  **/
 gboolean
-gtk_action_is_sensitive (GtkAction *action)
+ctk_action_is_sensitive (GtkAction *action)
 {
   GtkActionPrivate *priv;
   g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
@@ -1165,15 +1165,15 @@ gtk_action_is_sensitive (GtkAction *action)
   priv = action->private_data;
   return priv->sensitive &&
     (priv->action_group == NULL ||
-     gtk_action_group_get_sensitive (priv->action_group));
+     ctk_action_group_get_sensitive (priv->action_group));
 }
 
 /**
- * gtk_action_get_sensitive:
+ * ctk_action_get_sensitive:
  * @action: the action object
  * 
  * Returns whether the action itself is sensitive. Note that this doesn’t 
- * necessarily mean effective sensitivity. See gtk_action_is_sensitive() 
+ * necessarily mean effective sensitivity. See ctk_action_is_sensitive() 
  * for that.
  *
  * Returns: %TRUE if the action itself is sensitive.
@@ -1184,7 +1184,7 @@ gtk_action_is_sensitive (GtkAction *action)
  * instead
  **/
 gboolean
-gtk_action_get_sensitive (GtkAction *action)
+ctk_action_get_sensitive (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
 
@@ -1192,13 +1192,13 @@ gtk_action_get_sensitive (GtkAction *action)
 }
 
 /**
- * gtk_action_set_sensitive:
+ * ctk_action_set_sensitive:
  * @action: the action object
  * @sensitive: %TRUE to make the action sensitive
  * 
  * Sets the :sensitive property of the action to @sensitive. Note that 
  * this doesn’t necessarily mean effective sensitivity. See 
- * gtk_action_is_sensitive() 
+ * ctk_action_is_sensitive() 
  * for that.
  *
  * Since: 2.6
@@ -1207,7 +1207,7 @@ gtk_action_get_sensitive (GtkAction *action)
  * instead
  **/
 void
-gtk_action_set_sensitive (GtkAction *action,
+ctk_action_set_sensitive (GtkAction *action,
 			  gboolean   sensitive)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1223,7 +1223,7 @@ gtk_action_set_sensitive (GtkAction *action,
 }
 
 /**
- * gtk_action_is_visible:
+ * ctk_action_is_visible:
  * @action: the action object
  * 
  * Returns whether the action is effectively visible.
@@ -1237,7 +1237,7 @@ gtk_action_set_sensitive (GtkAction *action,
  * #GtkActionable widgets directly
  **/
 gboolean
-gtk_action_is_visible (GtkAction *action)
+ctk_action_is_visible (GtkAction *action)
 {
   GtkActionPrivate *priv;
   g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
@@ -1245,15 +1245,15 @@ gtk_action_is_visible (GtkAction *action)
   priv = action->private_data;
   return priv->visible &&
     (priv->action_group == NULL ||
-     gtk_action_group_get_visible (priv->action_group));
+     ctk_action_group_get_visible (priv->action_group));
 }
 
 /**
- * gtk_action_get_visible:
+ * ctk_action_get_visible:
  * @action: the action object
  * 
  * Returns whether the action itself is visible. Note that this doesn’t 
- * necessarily mean effective visibility. See gtk_action_is_sensitive() 
+ * necessarily mean effective visibility. See ctk_action_is_sensitive() 
  * for that.
  *
  * Returns: %TRUE if the action itself is visible.
@@ -1264,7 +1264,7 @@ gtk_action_is_visible (GtkAction *action)
  * #GtkActionable widgets directly
  **/
 gboolean
-gtk_action_get_visible (GtkAction *action)
+ctk_action_get_visible (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
 
@@ -1272,13 +1272,13 @@ gtk_action_get_visible (GtkAction *action)
 }
 
 /**
- * gtk_action_set_visible:
+ * ctk_action_set_visible:
  * @action: the action object
  * @visible: %TRUE to make the action visible
  * 
  * Sets the :visible property of the action to @visible. Note that 
  * this doesn’t necessarily mean effective visibility. See 
- * gtk_action_is_visible() 
+ * ctk_action_is_visible() 
  * for that.
  *
  * Since: 2.6
@@ -1287,7 +1287,7 @@ gtk_action_get_visible (GtkAction *action)
  * #GtkActionable widgets directly
  **/
 void
-gtk_action_set_visible (GtkAction *action,
+ctk_action_set_visible (GtkAction *action,
 			gboolean   visible)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1302,7 +1302,7 @@ gtk_action_set_visible (GtkAction *action,
     }
 }
 /**
- * gtk_action_set_is_important:
+ * ctk_action_set_is_important:
  * @action: the action object
  * @is_important: %TRUE to make the action important
  *
@@ -1316,7 +1316,7 @@ gtk_action_set_visible (GtkAction *action,
  * labels are shown directly
  */
 void 
-gtk_action_set_is_important (GtkAction *action,
+ctk_action_set_is_important (GtkAction *action,
 			     gboolean   is_important)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1332,7 +1332,7 @@ gtk_action_set_is_important (GtkAction *action,
 }
 
 /**
- * gtk_action_get_is_important:
+ * ctk_action_get_is_important:
  * @action: a #GtkAction
  *
  * Checks whether @action is important or not
@@ -1345,7 +1345,7 @@ gtk_action_set_is_important (GtkAction *action,
  * labels are shown directly
  */
 gboolean 
-gtk_action_get_is_important (GtkAction *action)
+ctk_action_get_is_important (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
 
@@ -1353,7 +1353,7 @@ gtk_action_get_is_important (GtkAction *action)
 }
 
 /**
- * gtk_action_set_always_show_image:
+ * ctk_action_set_always_show_image:
  * @action: a #GtkAction
  * @always_show: %TRUE if menuitem proxies should always show their image
  *
@@ -1369,7 +1369,7 @@ gtk_action_get_is_important (GtkAction *action)
  * item should have an image
  */
 void
-gtk_action_set_always_show_image (GtkAction *action,
+ctk_action_set_always_show_image (GtkAction *action,
                                   gboolean   always_show)
 {
   GtkActionPrivate *priv;
@@ -1389,7 +1389,7 @@ gtk_action_set_always_show_image (GtkAction *action,
 }
 
 /**
- * gtk_action_get_always_show_image:
+ * ctk_action_get_always_show_image:
  * @action: a #GtkAction
  *
  * Returns whether @action's menu item proxies will always
@@ -1403,7 +1403,7 @@ gtk_action_set_always_show_image (GtkAction *action,
  * instead
  */
 gboolean
-gtk_action_get_always_show_image  (GtkAction *action)
+ctk_action_get_always_show_image  (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
 
@@ -1411,7 +1411,7 @@ gtk_action_get_always_show_image  (GtkAction *action)
 }
 
 /**
- * gtk_action_set_label:
+ * ctk_action_set_label:
  * @action: a #GtkAction
  * @label: the label text to set
  *
@@ -1424,7 +1424,7 @@ gtk_action_get_always_show_image  (GtkAction *action)
  * API to set a label
  */
 void 
-gtk_action_set_label (GtkAction	  *action,
+ctk_action_set_label (GtkAction	  *action,
 		      const gchar *label)
 {
   gchar *tmp;
@@ -1442,7 +1442,7 @@ gtk_action_set_label (GtkAction	  *action,
 
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-      if (gtk_stock_lookup (action->private_data->stock_id, &stock_item))
+      if (ctk_stock_lookup (action->private_data->stock_id, &stock_item))
 	action->private_data->label = g_strdup (stock_item.label);
 
       G_GNUC_END_IGNORE_DEPRECATIONS;
@@ -1453,13 +1453,13 @@ gtk_action_set_label (GtkAction	  *action,
   /* if short_label is unset, set short_label=label */
   if (!action->private_data->short_label_set)
     {
-      gtk_action_set_short_label (action, action->private_data->label);
+      ctk_action_set_short_label (action, action->private_data->label);
       action->private_data->short_label_set = FALSE;
     }
 }
 
 /**
- * gtk_action_get_label:
+ * ctk_action_get_label:
  * @action: a #GtkAction
  *
  * Gets the label text of @action.
@@ -1473,7 +1473,7 @@ gtk_action_set_label (GtkAction	  *action,
  * widget-specific API to get a label
  */
 const gchar *
-gtk_action_get_label (GtkAction *action)
+ctk_action_get_label (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1481,7 +1481,7 @@ gtk_action_get_label (GtkAction *action)
 }
 
 /**
- * gtk_action_set_short_label:
+ * ctk_action_set_short_label:
  * @action: a #GtkAction
  * @short_label: the label text to set
  *
@@ -1493,7 +1493,7 @@ gtk_action_get_label (GtkAction *action)
  * labels
  */
 void 
-gtk_action_set_short_label (GtkAction   *action,
+ctk_action_set_short_label (GtkAction   *action,
 			    const gchar *short_label)
 {
   gchar *tmp;
@@ -1512,7 +1512,7 @@ gtk_action_set_short_label (GtkAction   *action,
 }
 
 /**
- * gtk_action_get_short_label:
+ * ctk_action_get_short_label:
  * @action: a #GtkAction
  *
  * Gets the short label text of @action.
@@ -1525,7 +1525,7 @@ gtk_action_set_short_label (GtkAction   *action,
  * labels
  */
 const gchar *
-gtk_action_get_short_label (GtkAction *action)
+ctk_action_get_short_label (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1533,7 +1533,7 @@ gtk_action_get_short_label (GtkAction *action)
 }
 
 /**
- * gtk_action_set_visible_horizontal:
+ * ctk_action_set_visible_horizontal:
  * @action: a #GtkAction
  * @visible_horizontal: whether the action is visible horizontally
  *
@@ -1545,7 +1545,7 @@ gtk_action_get_short_label (GtkAction *action)
  * visibility of associated widgets and menu items directly
  */
 void 
-gtk_action_set_visible_horizontal (GtkAction *action,
+ctk_action_set_visible_horizontal (GtkAction *action,
 				   gboolean   visible_horizontal)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1563,7 +1563,7 @@ gtk_action_set_visible_horizontal (GtkAction *action,
 }
 
 /**
- * gtk_action_get_visible_horizontal:
+ * ctk_action_get_visible_horizontal:
  * @action: a #GtkAction
  *
  * Checks whether @action is visible when horizontal
@@ -1576,7 +1576,7 @@ gtk_action_set_visible_horizontal (GtkAction *action,
  * visibility of associated widgets and menu items directly
  */
 gboolean 
-gtk_action_get_visible_horizontal (GtkAction *action)
+ctk_action_get_visible_horizontal (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
 
@@ -1584,7 +1584,7 @@ gtk_action_get_visible_horizontal (GtkAction *action)
 }
 
 /**
- * gtk_action_set_visible_vertical:
+ * ctk_action_set_visible_vertical:
  * @action: a #GtkAction
  * @visible_vertical: whether the action is visible vertically
  *
@@ -1596,7 +1596,7 @@ gtk_action_get_visible_horizontal (GtkAction *action)
  * visibility of associated widgets and menu items directly
  */
 void 
-gtk_action_set_visible_vertical (GtkAction *action,
+ctk_action_set_visible_vertical (GtkAction *action,
 				 gboolean   visible_vertical)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1614,7 +1614,7 @@ gtk_action_set_visible_vertical (GtkAction *action,
 }
 
 /**
- * gtk_action_get_visible_vertical:
+ * ctk_action_get_visible_vertical:
  * @action: a #GtkAction
  *
  * Checks whether @action is visible when horizontal
@@ -1627,7 +1627,7 @@ gtk_action_set_visible_vertical (GtkAction *action,
  * visibility of associated widgets and menu items directly
  */
 gboolean 
-gtk_action_get_visible_vertical (GtkAction *action)
+ctk_action_get_visible_vertical (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
 
@@ -1635,7 +1635,7 @@ gtk_action_get_visible_vertical (GtkAction *action)
 }
 
 /**
- * gtk_action_set_tooltip:
+ * ctk_action_set_tooltip:
  * @action: a #GtkAction
  * @tooltip: the tooltip text
  *
@@ -1644,10 +1644,10 @@ gtk_action_get_visible_vertical (GtkAction *action)
  * Since: 2.16
  *
  * Deprecated: 3.10: Use #GAction instead, and set tooltips on associated
- * #GtkActionable widgets with gtk_widget_set_tooltip_text()
+ * #GtkActionable widgets with ctk_widget_set_tooltip_text()
  */
 void 
-gtk_action_set_tooltip (GtkAction   *action,
+ctk_action_set_tooltip (GtkAction   *action,
 			const gchar *tooltip)
 {
   gchar *tmp;
@@ -1662,7 +1662,7 @@ gtk_action_set_tooltip (GtkAction   *action,
 }
 
 /**
- * gtk_action_get_tooltip:
+ * ctk_action_get_tooltip:
  * @action: a #GtkAction
  *
  * Gets the tooltip text of @action.
@@ -1672,10 +1672,10 @@ gtk_action_set_tooltip (GtkAction   *action,
  * Since: 2.16
  *
  * Deprecated: 3.10: Use #GAction instead, and get tooltips from associated
- * #GtkActionable widgets with gtk_widget_get_tooltip_text()
+ * #GtkActionable widgets with ctk_widget_get_tooltip_text()
  */
 const gchar *
-gtk_action_get_tooltip (GtkAction *action)
+ctk_action_get_tooltip (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1683,7 +1683,7 @@ gtk_action_get_tooltip (GtkAction *action)
 }
 
 /**
- * gtk_action_set_stock_id:
+ * ctk_action_set_stock_id:
  * @action: a #GtkAction
  * @stock_id: the stock id
  *
@@ -1695,7 +1695,7 @@ gtk_action_get_tooltip (GtkAction *action)
  * items
  */
 void 
-gtk_action_set_stock_id (GtkAction   *action,
+ctk_action_set_stock_id (GtkAction   *action,
 			 const gchar *stock_id)
 {
   gchar *tmp;
@@ -1718,10 +1718,10 @@ gtk_action_set_stock_id (GtkAction   *action,
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
       if (action->private_data->stock_id &&
-	  gtk_stock_lookup (action->private_data->stock_id, &stock_item))
-	gtk_action_set_label (action, stock_item.label);
+	  ctk_stock_lookup (action->private_data->stock_id, &stock_item))
+	ctk_action_set_label (action, stock_item.label);
       else
-	gtk_action_set_label (action, NULL);
+	ctk_action_set_label (action, NULL);
 
       G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -1730,7 +1730,7 @@ gtk_action_set_stock_id (GtkAction   *action,
 }
 
 /**
- * gtk_action_get_stock_id:
+ * ctk_action_get_stock_id:
  * @action: a #GtkAction
  *
  * Gets the stock id of @action.
@@ -1743,7 +1743,7 @@ gtk_action_set_stock_id (GtkAction   *action,
  * items
  */
 const gchar *
-gtk_action_get_stock_id (GtkAction *action)
+ctk_action_get_stock_id (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1751,7 +1751,7 @@ gtk_action_get_stock_id (GtkAction *action)
 }
 
 /**
- * gtk_action_set_icon_name:
+ * ctk_action_set_icon_name:
  * @action: a #GtkAction
  * @icon_name: the icon name to set
  *
@@ -1760,11 +1760,11 @@ gtk_action_get_stock_id (GtkAction *action)
  * Since: 2.16
  *
  * Deprecated: 3.10: Use #GAction instead, and g_menu_item_set_icon() to set an
- * icon on a #GMenuItem associated with a #GAction, or gtk_container_add() to
+ * icon on a #GMenuItem associated with a #GAction, or ctk_container_add() to
  * add a #GtkImage to a #GtkButton
  */
 void 
-gtk_action_set_icon_name (GtkAction   *action,
+ctk_action_set_icon_name (GtkAction   *action,
 			  const gchar *icon_name)
 {
   gchar *tmp;
@@ -1779,7 +1779,7 @@ gtk_action_set_icon_name (GtkAction   *action,
 }
 
 /**
- * gtk_action_get_icon_name:
+ * ctk_action_get_icon_name:
  * @action: a #GtkAction
  *
  * Gets the icon name of @action.
@@ -1793,7 +1793,7 @@ gtk_action_set_icon_name (GtkAction   *action,
  * associated with a #GAction
  */
 const gchar *
-gtk_action_get_icon_name (GtkAction *action)
+ctk_action_get_icon_name (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1801,7 +1801,7 @@ gtk_action_get_icon_name (GtkAction *action)
 }
 
 /**
- * gtk_action_set_gicon:
+ * ctk_action_set_gicon:
  * @action: a #GtkAction
  * @icon: the #GIcon to set
  *
@@ -1810,11 +1810,11 @@ gtk_action_get_icon_name (GtkAction *action)
  * Since: 2.16
  *
  * Deprecated: 3.10: Use #GAction instead, and g_menu_item_set_icon() to set an
- * icon on a #GMenuItem associated with a #GAction, or gtk_container_add() to
+ * icon on a #GMenuItem associated with a #GAction, or ctk_container_add() to
  * add a #GtkImage to a #GtkButton
  */
 void
-gtk_action_set_gicon (GtkAction *action,
+ctk_action_set_gicon (GtkAction *action,
                       GIcon     *icon)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1831,7 +1831,7 @@ gtk_action_set_gicon (GtkAction *action,
 }
 
 /**
- * gtk_action_get_gicon:
+ * ctk_action_get_gicon:
  * @action: a #GtkAction
  *
  * Gets the gicon of @action.
@@ -1845,7 +1845,7 @@ gtk_action_set_gicon (GtkAction *action,
  * associated with a #GAction
  */
 GIcon *
-gtk_action_get_gicon (GtkAction *action)
+ctk_action_get_gicon (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1860,9 +1860,9 @@ closure_accel_activate (GClosure     *closure,
                         gpointer      invocation_hint,
                         gpointer      marshal_data)
 {
-  if (gtk_action_is_sensitive (GTK_ACTION (closure->data)))
+  if (ctk_action_is_sensitive (GTK_ACTION (closure->data)))
     {
-      _gtk_action_emit_activate (GTK_ACTION (closure->data));
+      _ctk_action_emit_activate (GTK_ACTION (closure->data));
       
       /* we handled the accelerator */
       g_value_set_boolean (return_value, TRUE);
@@ -1870,7 +1870,7 @@ closure_accel_activate (GClosure     *closure,
 }
 
 static void
-gtk_action_set_action_group (GtkAction	    *action,
+ctk_action_set_action_group (GtkAction	    *action,
 			     GtkActionGroup *action_group)
 {
   if (action->private_data->action_group == NULL)
@@ -1882,7 +1882,7 @@ gtk_action_set_action_group (GtkAction	    *action,
 }
 
 /**
- * gtk_action_set_accel_path:
+ * ctk_action_set_accel_path:
  * @action: the action object
  * @accel_path: the accelerator path
  *
@@ -1900,7 +1900,7 @@ gtk_action_set_action_group (GtkAction	    *action,
  * #GtkMenu instead
  */
 void
-gtk_action_set_accel_path (GtkAction   *action, 
+ctk_action_set_accel_path (GtkAction   *action, 
 			   const gchar *accel_path)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1909,7 +1909,7 @@ gtk_action_set_accel_path (GtkAction   *action,
 }
 
 /**
- * gtk_action_get_accel_path:
+ * ctk_action_get_accel_path:
  * @action: the action object
  *
  * Returns the accel path for this action.  
@@ -1924,7 +1924,7 @@ gtk_action_set_accel_path (GtkAction   *action,
  * #GtkMenu instead
  */
 const gchar *
-gtk_action_get_accel_path (GtkAction *action)
+ctk_action_get_accel_path (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1935,7 +1935,7 @@ gtk_action_get_accel_path (GtkAction *action)
 }
 
 /**
- * gtk_action_get_accel_closure:
+ * ctk_action_get_accel_closure:
  * @action: the action object
  *
  * Returns the accel closure for this action.
@@ -1950,7 +1950,7 @@ gtk_action_get_accel_path (GtkAction *action)
  * equivalent for getting the accel closure
  */
 GClosure *
-gtk_action_get_accel_closure (GtkAction *action)
+ctk_action_get_accel_closure (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 
@@ -1959,7 +1959,7 @@ gtk_action_get_accel_closure (GtkAction *action)
 
 
 /**
- * gtk_action_set_accel_group:
+ * ctk_action_set_accel_group:
  * @action: the action object
  * @accel_group: (allow-none): a #GtkAccelGroup or %NULL
  *
@@ -1972,7 +1972,7 @@ gtk_action_get_accel_closure (GtkAction *action)
  * #GtkMenu instead
  **/
 void
-gtk_action_set_accel_group (GtkAction     *action,
+ctk_action_set_accel_group (GtkAction     *action,
 			    GtkAccelGroup *accel_group)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
@@ -1987,17 +1987,17 @@ gtk_action_set_accel_group (GtkAction     *action,
 }
 
 /**
- * gtk_action_connect_accelerator:
+ * ctk_action_connect_accelerator:
  * @action: a #GtkAction
  * 
  * Installs the accelerator for @action if @action has an
- * accel path and group. See gtk_action_set_accel_path() and 
- * gtk_action_set_accel_group()
+ * accel path and group. See ctk_action_set_accel_path() and 
+ * ctk_action_set_accel_group()
  *
  * Since multiple proxies may independently trigger the installation
  * of the accelerator, the @action counts the number of times this
  * function has been called and doesn’t remove the accelerator until
- * gtk_action_disconnect_accelerator() has been called as many times.
+ * ctk_action_disconnect_accelerator() has been called as many times.
  *
  * Since: 2.4
  *
@@ -2005,7 +2005,7 @@ gtk_action_set_accel_group (GtkAction     *action,
  * #GtkMenu instead
  **/
 void 
-gtk_action_connect_accelerator (GtkAction *action)
+ctk_action_connect_accelerator (GtkAction *action)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
 
@@ -2018,7 +2018,7 @@ gtk_action_connect_accelerator (GtkAction *action)
       const gchar *accel_path = 
 	g_quark_to_string (action->private_data->accel_quark);
       
-      gtk_accel_group_connect_by_path (action->private_data->accel_group,
+      ctk_accel_group_connect_by_path (action->private_data->accel_group,
 				       accel_path,
 				       action->private_data->accel_closure);
     }
@@ -2027,10 +2027,10 @@ gtk_action_connect_accelerator (GtkAction *action)
 }
 
 /**
- * gtk_action_disconnect_accelerator:
+ * ctk_action_disconnect_accelerator:
  * @action: a #GtkAction
  * 
- * Undoes the effect of one call to gtk_action_connect_accelerator().
+ * Undoes the effect of one call to ctk_action_connect_accelerator().
  *
  * Since: 2.4
  *
@@ -2038,7 +2038,7 @@ gtk_action_connect_accelerator (GtkAction *action)
  * #GtkMenu instead
  **/
 void 
-gtk_action_disconnect_accelerator (GtkAction *action)
+ctk_action_disconnect_accelerator (GtkAction *action)
 {
   g_return_if_fail (GTK_IS_ACTION (action));
 
@@ -2049,12 +2049,12 @@ gtk_action_disconnect_accelerator (GtkAction *action)
   action->private_data->accel_count--;
 
   if (action->private_data->accel_count == 0)
-    gtk_accel_group_disconnect (action->private_data->accel_group,
+    ctk_accel_group_disconnect (action->private_data->accel_group,
 				action->private_data->accel_closure);
 }
 
 /**
- * gtk_action_create_menu:
+ * ctk_action_create_menu:
  * @action: a #GtkAction
  *
  * If @action provides a #GtkMenu widget as a submenu for the menu
@@ -2067,10 +2067,10 @@ gtk_action_disconnect_accelerator (GtkAction *action)
  * Since: 2.12
  *
  * Deprecated: 3.10: Use #GAction and #GMenuModel instead, and create a
- * #GtkMenu with gtk_menu_new_from_model()
+ * #GtkMenu with ctk_menu_new_from_model()
  */
 GtkWidget *
-gtk_action_create_menu (GtkAction *action)
+ctk_action_create_menu (GtkAction *action)
 {
   g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
 

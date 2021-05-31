@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_SWATCH                  (gtk_color_swatch_get_type ())
+#define GTK_TYPE_COLOR_SWATCH                  (ctk_color_swatch_get_type ())
 #define GTK_COLOR_SWATCH(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_SWATCH, GtkColorSwatch))
 #define GTK_COLOR_SWATCH_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_SWATCH, GtkColorSwatchClass))
 #define GTK_IS_COLOR_SWATCH(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_SWATCH))
@@ -50,33 +50,33 @@ struct _GtkColorSwatchClass
   void ( * customize) (GtkColorSwatch *swatch);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
-GType       gtk_color_swatch_get_type         (void) G_GNUC_CONST;
-GtkWidget * gtk_color_swatch_new              (void);
-void        gtk_color_swatch_set_rgba         (GtkColorSwatch *swatch,
+GType       ctk_color_swatch_get_type         (void) G_GNUC_CONST;
+GtkWidget * ctk_color_swatch_new              (void);
+void        ctk_color_swatch_set_rgba         (GtkColorSwatch *swatch,
                                                const GdkRGBA  *color);
-gboolean    gtk_color_swatch_get_rgba         (GtkColorSwatch *swatch,
+gboolean    ctk_color_swatch_get_rgba         (GtkColorSwatch *swatch,
                                                GdkRGBA        *color);
-void        gtk_color_swatch_set_hsva         (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_hsva         (GtkColorSwatch *swatch,
                                                gdouble         h,
                                                gdouble         s,
                                                gdouble         v,
                                                gdouble         a);
-void        gtk_color_swatch_set_can_drop     (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_can_drop     (GtkColorSwatch *swatch,
                                                gboolean        can_drop);
-void        gtk_color_swatch_set_icon         (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_icon         (GtkColorSwatch *swatch,
                                                const gchar    *icon);
-void        gtk_color_swatch_set_use_alpha    (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_use_alpha    (GtkColorSwatch *swatch,
                                                gboolean        use_alpha);
-void        gtk_color_swatch_set_selectable   (GtkColorSwatch *swatch,
+void        ctk_color_swatch_set_selectable   (GtkColorSwatch *swatch,
                                                gboolean        selectable);
-gboolean    gtk_color_swatch_get_selectable   (GtkColorSwatch *swatch);
+gboolean    ctk_color_swatch_get_selectable   (GtkColorSwatch *swatch);
 
 G_END_DECLS
 

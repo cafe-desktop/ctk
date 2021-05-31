@@ -23,9 +23,9 @@
 
 G_BEGIN_DECLS
 
-void       _gtk_check_menu_item_set_active       (GtkCheckMenuItem *check_menu_item,
+void       _ctk_check_menu_item_set_active       (GtkCheckMenuItem *check_menu_item,
                                                   gboolean          is_active);
-GtkCssGadget * _gtk_check_menu_item_get_indicator_gadget (GtkCheckMenuItem *check_menu_item);
+GtkCssGadget * _ctk_check_menu_item_get_indicator_gadget (GtkCheckMenuItem *check_menu_item);
 
 G_END_DECLS
 

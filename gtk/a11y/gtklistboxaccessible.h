@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LIST_BOX_ACCESSIBLE                   (gtk_list_box_accessible_get_type ())
+#define GTK_TYPE_LIST_BOX_ACCESSIBLE                   (ctk_list_box_accessible_get_type ())
 #define GTK_LIST_BOX_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LIST_BOX_ACCESSIBLE, GtkListBoxAccessible))
 #define GTK_LIST_BOX_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LIST_BOX_ACCESSIBLE, GtkListBoxAccessibleClass))
 #define GTK_IS_LIST_BOX_ACCESSIBLE(obj)                (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LIST_BOX_ACCESSIBLE))
@@ -51,7 +51,7 @@ struct _GtkListBoxAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_list_box_accessible_get_type (void);
+GType ctk_list_box_accessible_get_type (void);
 
 G_END_DECLS
 

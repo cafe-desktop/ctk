@@ -749,10 +749,10 @@ msgstr "Giá trị"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Giá trị được trả gởi bởi “gtk_radio_action_get_current_value()” (gtk hành "
+"Giá trị được trả gởi bởi “ctk_radio_action_get_current_value()” (gtk hành "
 "động chọn một lấy giá trị hiện thời) khi hành động này là hành động hiện "
 "thời trong nhóm nó."
 
@@ -1213,10 +1213,10 @@ msgstr "Biểu hình"
 #: gtk/gtkaboutdialog.c:548
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Một biểu hình cho hộp giới thiệu chương trình. Nếu chưa đặt thì giá trị mặc "
-"định là “gtk_window_get_default_icon_list()” (gtk cửa sổ lấy danh sách biểu "
+"định là “ctk_window_get_default_icon_list()” (gtk cửa sổ lấy danh sách biểu "
 "tượng mặc định)"
 
 #: gtk/gtkaboutdialog.c:562
@@ -3373,10 +3373,10 @@ msgstr "Bước đập tiến hành"
 #: gtk/gtkentry.c:1028
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Phân số trên chiều rộng mục nhập hoàn toàn cần di chuyển khối nảy lên tiến "
-"hành cho mỗi lần gọi gtk_entry_progress_pulse()"
+"hành cho mỗi lần gọi ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1044
 msgid "Show text in the entry when it's empty and unfocused"
@@ -8694,9 +8694,9 @@ msgid "No show all"
 msgstr "Không hiện hết"
 
 #: gtk/gtkwidget.c:1249
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
-"“gtk_widget_show_all()” (Gtk ô điều khiển hiển thị tất cả) nên không có tác "
+"“ctk_widget_show_all()” (Gtk ô điều khiển hiển thị tất cả) nên không có tác "
 "động tới ô điều khiển này hay có"
 
 #: gtk/gtkwidget.c:1271
@@ -9513,10 +9513,10 @@ msgstr "Tiêu đề của hộp thoại hồ sơ màu được dùng"
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 #~ msgstr ""
 #~ "Số mục tối đa sẽ được trả gởi bởi tiến trình bộ quản lý gần đây lấy mục "
-#~ "“gtk_recent_manager_get_items ()”"
+#~ "“ctk_recent_manager_get_items ()”"
 
 #~ msgid "Blinking"
 #~ msgstr "Nháy"

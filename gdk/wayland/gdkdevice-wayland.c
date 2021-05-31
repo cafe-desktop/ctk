@@ -237,7 +237,7 @@ struct _GdkWaylandSeat
   uint32_t keyboard_time;
   uint32_t keyboard_key_serial;
 
-  struct gtk_primary_selection_device *gtk_primary_data_device;
+  struct ctk_primary_selection_device *ctk_primary_data_device;
   struct zwp_primary_selection_device_v1 *zwp_primary_data_device_v1;
   struct wl_data_device *data_device;
   GdkDragContext *drop_context;
@@ -1323,9 +1323,9 @@ primary_selection_data_offer (void     *data,
 }
 
 static void
-gtk_primary_selection_data_offer (void                                *data,
-                                  struct gtk_primary_selection_device *primary_selection_device,
-                                  struct gtk_primary_selection_offer  *primary_offer)
+ctk_primary_selection_data_offer (void                                *data,
+                                  struct ctk_primary_selection_device *primary_selection_device,
+                                  struct ctk_primary_selection_offer  *primary_offer)
 {
   primary_selection_data_offer (data,
                                 (gpointer) primary_selection_device,
@@ -1363,9 +1363,9 @@ primary_selection_selection (void     *data,
 }
 
 static void
-gtk_primary_selection_selection (void                                *data,
-                                 struct gtk_primary_selection_device *primary_selection_device,
-                                 struct gtk_primary_selection_offer  *primary_offer)
+ctk_primary_selection_selection (void                                *data,
+                                 struct ctk_primary_selection_device *primary_selection_device,
+                                 struct ctk_primary_selection_offer  *primary_offer)
 {
   primary_selection_selection (data,
                                (gpointer) primary_selection_device,
@@ -1382,9 +1382,9 @@ zwp_primary_selection_v1_selection (void                                   *data
                                (gpointer) primary_offer);
 }
 
-static const struct gtk_primary_selection_device_listener gtk_primary_device_listener = {
-  gtk_primary_selection_data_offer,
-  gtk_primary_selection_selection,
+static const struct ctk_primary_selection_device_listener ctk_primary_device_listener = {
+  ctk_primary_selection_data_offer,
+  ctk_primary_selection_selection,
 };
 
 static const struct zwp_primary_selection_device_v1_listener zwp_primary_device_v1_listener = {
@@ -5133,13 +5133,13 @@ _gdk_wayland_device_manager_add_seat (GdkDeviceManager *device_manager,
                                                     &zwp_primary_device_v1_listener,
                                                     seat);
     }
-  else if (display_wayland->gtk_primary_selection_manager)
+  else if (display_wayland->ctk_primary_selection_manager)
     {
-      seat->gtk_primary_data_device =
-        gtk_primary_selection_device_manager_get_device (display_wayland->gtk_primary_selection_manager,
+      seat->ctk_primary_data_device =
+        ctk_primary_selection_device_manager_get_device (display_wayland->ctk_primary_selection_manager,
                                                          seat->wl_seat);
-      gtk_primary_selection_device_add_listener (seat->gtk_primary_data_device,
-                                                 &gtk_primary_device_listener,
+      ctk_primary_selection_device_add_listener (seat->ctk_primary_data_device,
+                                                 &ctk_primary_device_listener,
                                                  seat);
     }
 
@@ -5427,9 +5427,9 @@ gdk_wayland_seat_set_primary (GdkSeat  *seat,
           zwp_primary_selection_device_v1_set_selection (wayland_seat->zwp_primary_data_device_v1,
                                                          source, serial);
         }
-      else if (wayland_seat->gtk_primary_data_device)
+      else if (wayland_seat->ctk_primary_data_device)
         {
-          gtk_primary_selection_device_set_selection (wayland_seat->gtk_primary_data_device,
+          ctk_primary_selection_device_set_selection (wayland_seat->ctk_primary_data_device,
                                                       source, serial);
         }
     }

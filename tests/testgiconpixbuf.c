@@ -28,45 +28,45 @@ main (int argc,
   GEmblem *emblem;
   gchar *str;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   pixbuf = gdk_pixbuf_new_from_file ("apple-red.png", NULL);
-  toplevel = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  gtk_container_add (GTK_CONTAINER (toplevel), hbox);
+  toplevel = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_container_add (GTK_CONTAINER (toplevel), hbox);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-  gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
+  ctk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
 
-  image = gtk_image_new_from_gicon (G_ICON (pixbuf), GTK_ICON_SIZE_DIALOG);
-  gtk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
+  image = ctk_image_new_from_gicon (G_ICON (pixbuf), GTK_ICON_SIZE_DIALOG);
+  ctk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
 
-  label = gtk_label_new (NULL);
+  label = ctk_label_new (NULL);
   str = g_strdup_printf ("Normal icon, hash %u", g_icon_hash (G_ICON (pixbuf)));
-  gtk_label_set_label (GTK_LABEL (label), str);
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_label (GTK_LABEL (label), str);
+  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   otherpix = gdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
   emblem = g_emblem_new (G_ICON (otherpix));
   emblemed = g_emblemed_icon_new (G_ICON (pixbuf), emblem);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-  gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
+  ctk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
   
-  image2 = gtk_image_new_from_gicon (emblemed, GTK_ICON_SIZE_DIALOG);
-  gtk_box_pack_start (GTK_BOX (vbox), image2, FALSE, FALSE, 0);
+  image2 = ctk_image_new_from_gicon (emblemed, GTK_ICON_SIZE_DIALOG);
+  ctk_box_pack_start (GTK_BOX (vbox), image2, FALSE, FALSE, 0);
 
-  label = gtk_label_new (NULL);
+  label = ctk_label_new (NULL);
   str = g_strdup_printf ("Emblemed icon, hash %u", g_icon_hash (emblemed));
-  gtk_label_set_label (GTK_LABEL (label), str);
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_label (GTK_LABEL (label), str);
+  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-  gtk_widget_show_all (toplevel);
+  ctk_widget_show_all (toplevel);
 
   g_signal_connect (toplevel, "delete-event",
-		    G_CALLBACK (gtk_main_quit), NULL);
+		    G_CALLBACK (ctk_main_quit), NULL);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

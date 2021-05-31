@@ -31,7 +31,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_BUTTON            (gtk_menu_button_get_type ())
+#define GTK_TYPE_MENU_BUTTON            (ctk_menu_button_get_type ())
 #define GTK_MENU_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU_BUTTON, GtkMenuButton))
 #define GTK_MENU_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU_BUTTON, GtkMenuButtonClass))
 #define GTK_IS_MENU_BUTTON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU_BUTTON))
@@ -55,53 +55,53 @@ struct _GtkMenuButtonClass
   GtkToggleButtonClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_3_6
-GType        gtk_menu_button_get_type       (void) G_GNUC_CONST;
+GType        ctk_menu_button_get_type       (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_6
-GtkWidget   *gtk_menu_button_new            (void);
+GtkWidget   *ctk_menu_button_new            (void);
 
 GDK_AVAILABLE_IN_3_6
-void         gtk_menu_button_set_popup      (GtkMenuButton *menu_button,
+void         ctk_menu_button_set_popup      (GtkMenuButton *menu_button,
                                              GtkWidget     *menu);
 GDK_AVAILABLE_IN_3_6
-GtkMenu     *gtk_menu_button_get_popup      (GtkMenuButton *menu_button);
+GtkMenu     *ctk_menu_button_get_popup      (GtkMenuButton *menu_button);
 
 GDK_AVAILABLE_IN_3_12
-void         gtk_menu_button_set_popover    (GtkMenuButton *menu_button,
+void         ctk_menu_button_set_popover    (GtkMenuButton *menu_button,
                                              GtkWidget     *popover);
 GDK_AVAILABLE_IN_3_12
-GtkPopover  *gtk_menu_button_get_popover    (GtkMenuButton *menu_button);
+GtkPopover  *ctk_menu_button_get_popover    (GtkMenuButton *menu_button);
 
 GDK_AVAILABLE_IN_3_6
-void         gtk_menu_button_set_direction  (GtkMenuButton *menu_button,
+void         ctk_menu_button_set_direction  (GtkMenuButton *menu_button,
                                              GtkArrowType   direction);
 GDK_AVAILABLE_IN_3_6
-GtkArrowType gtk_menu_button_get_direction  (GtkMenuButton *menu_button);
+GtkArrowType ctk_menu_button_get_direction  (GtkMenuButton *menu_button);
 
 GDK_AVAILABLE_IN_3_6
-void         gtk_menu_button_set_menu_model (GtkMenuButton *menu_button,
+void         ctk_menu_button_set_menu_model (GtkMenuButton *menu_button,
                                              GMenuModel    *menu_model);
 GDK_AVAILABLE_IN_3_6
-GMenuModel  *gtk_menu_button_get_menu_model (GtkMenuButton *menu_button);
+GMenuModel  *ctk_menu_button_get_menu_model (GtkMenuButton *menu_button);
 
 GDK_AVAILABLE_IN_3_6
-void         gtk_menu_button_set_align_widget (GtkMenuButton *menu_button,
+void         ctk_menu_button_set_align_widget (GtkMenuButton *menu_button,
                                                GtkWidget     *align_widget);
 GDK_AVAILABLE_IN_3_6
-GtkWidget   *gtk_menu_button_get_align_widget (GtkMenuButton *menu_button);
+GtkWidget   *ctk_menu_button_get_align_widget (GtkMenuButton *menu_button);
 
 GDK_AVAILABLE_IN_3_12
-void         gtk_menu_button_set_use_popover (GtkMenuButton *menu_button,
+void         ctk_menu_button_set_use_popover (GtkMenuButton *menu_button,
                                               gboolean       use_popover);
 
 GDK_AVAILABLE_IN_3_12
-gboolean     gtk_menu_button_get_use_popover (GtkMenuButton *menu_button);
+gboolean     ctk_menu_button_get_use_popover (GtkMenuButton *menu_button);
 
 
 G_END_DECLS

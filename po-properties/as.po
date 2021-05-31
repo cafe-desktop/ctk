@@ -737,11 +737,11 @@ msgstr "মান"
 
 #: ../gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 "এই অ্যাকশনটি এই অ্যাকশন গ্ৰুপেৰ বৰ্তমান অ্যাকশন হলে "
-"gtk_radio_action_get_current_value() কৰ্তৃক উত্‍পন্ন মান।"
+"ctk_radio_action_get_current_value() কৰ্তৃক উত্‍পন্ন মান।"
 
 #: ../gtk/deprecated/gtkradioaction.c:139 ../gtk/gtkradiobutton.c:162
 #: ../gtk/gtkradiomenuitem.c:410 ../gtk/gtkradiotoolbutton.c:80
@@ -1194,10 +1194,10 @@ msgstr "প্ৰতীকচিহ্ন"
 #: ../gtk/gtkaboutdialog.c:545
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "বিষয়ক প্ৰদৰ্শক বাকচৰ লোগো। ইয়াক নিৰ্দিষ্ট নকৰিলে অবিকল্পিত হিচাপে "
-"gtk_window_get_default_icon_list() ব্যৱহৃত হয়।"
+"ctk_window_get_default_icon_list() ব্যৱহৃত হয়।"
 
 #: ../gtk/gtkaboutdialog.c:559
 msgid "Logo Icon Name"
@@ -3380,7 +3380,7 @@ msgstr "স্পন্দন ধাপ"
 #: ../gtk/gtkentry.c:1042
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "মোট কামৰ যি ভগাংশ পৰিমাণ সম্পন্ন হলে স্পন্দনেৰ ফলে লাফাতে থাকা ব্লকটিকে সৰানো "
 "যাব "
@@ -8369,8 +8369,8 @@ msgid "No show all"
 msgstr "সবকিছু দেখাও অকেজো"
 
 #: ../gtk/gtkwidget.c:1362
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() এই উইজেটকে প্ৰভাবিত কৰিব না নে"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() এই উইজেটকে প্ৰভাবিত কৰিব না নে"
 
 #: ../gtk/gtkwidget.c:1385
 msgid "Whether this widget has a tooltip"

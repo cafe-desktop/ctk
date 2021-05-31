@@ -5,7 +5,7 @@ color_changed (GObject *o, GParamSpec *pspect, gpointer data)
 {
   GdkRGBA color;
 
-  gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (o), &color);
+  ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (o), &color);
   g_print ("color changed: %g %g %g %g\n",
            color.red, color.green, color.blue, color.alpha);
 }
@@ -18,7 +18,7 @@ dialog_response (GtkDialog *dialog, gint response)
   switch (response)
     {
     case GTK_RESPONSE_OK:
-      gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog), &color);
+      ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog), &color);
       g_print ("color accepted: %g %g %g %g\n",
            color.red, color.green, color.blue, color.alpha);
       break;
@@ -27,7 +27,7 @@ dialog_response (GtkDialog *dialog, gint response)
       break;
     }
 
-  gtk_main_quit ();
+  ctk_main_quit ();
 }
 
 int
@@ -36,16 +36,16 @@ main (int argc, char *argv[])
   GtkWidget *dialog;
   gint i;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  dialog = gtk_color_chooser_dialog_new ("Select a color", NULL);
+  dialog = ctk_color_chooser_dialog_new ("Select a color", NULL);
 
   for (i = 1; i < argc; i++)
     {
       if (g_strcmp0 (argv[i], "--no-alpha") == 0)
         {
           g_print ("turning alpha off\n");
-          gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (dialog), FALSE);
+          ctk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (dialog), FALSE);
         }
       else if (g_strcmp0 (argv[i], "--edit") == 0)
         {
@@ -79,14 +79,14 @@ main (int argc, char *argv[])
                   colors[i*9 + j].alpha = 1;
                 }
             }
-          gtk_color_chooser_add_palette (GTK_COLOR_CHOOSER (dialog),
+          ctk_color_chooser_add_palette (GTK_COLOR_CHOOSER (dialog),
                                          GTK_ORIENTATION_VERTICAL,
                                          9, 9*9,
                                          colors);
         }
       else if (g_strcmp0 (argv[i], "--no-palette") == 0)
         {
-          gtk_color_chooser_add_palette (GTK_COLOR_CHOOSER (dialog), 
+          ctk_color_chooser_add_palette (GTK_COLOR_CHOOSER (dialog), 
                                          GTK_ORIENTATION_VERTICAL, 0, 0, NULL);
         }
     }
@@ -94,9 +94,9 @@ main (int argc, char *argv[])
   g_signal_connect (dialog, "notify::color", G_CALLBACK (color_changed), NULL);
   g_signal_connect (dialog, "response", G_CALLBACK (dialog_response), NULL);
 
-  gtk_widget_show_all (dialog);
+  ctk_widget_show_all (dialog);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

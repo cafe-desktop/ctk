@@ -254,10 +254,10 @@ msgstr "Ilogo"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Ilogo yebhokisi yokumalunga. Ukuba ngaba ayimiselwanga, iya kwimo "
-"emiliselweyo gtk_window_get_default_icon_list()"
+"emiliselweyo ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2474,7 +2474,7 @@ msgstr "Inyathelo Lokubetha"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr "Iqhezu lenkqubela yonke yokuhambisa ibloko exhumayo xa ibetha"
 
 #: gtk/gtkentry.c:904
@@ -4695,10 +4695,10 @@ msgstr "Ixabiso"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Ixabiso elibuyiswe yi-gtk_radio_action_get_current_value() xa esi senzo "
+"Ixabiso elibuyiswe yi-ctk_radio_action_get_current_value() xa esi senzo "
 "sisisenzo sangoku seli qela."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -7313,9 +7313,9 @@ msgid "No show all"
 msgstr "Ayibonakalisi konke"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
-"Nokuba ngaba i-gtk_widget_show_all() imele ingasiphazamisi na esi sixhobo"
+"Nokuba ngaba i-ctk_widget_show_all() imele ingasiphazamisi na esi sixhobo"
 
 #: gtk/gtkwidget.c:864
 #, fuzzy

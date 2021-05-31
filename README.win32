@@ -251,16 +251,16 @@ If you are building with Visual Studio 2008, note the following items as well:
   when configuring via Meson.  If -Dbuiltin_immodules=no is specified, you need to
   run the following after   embedding the manifests as outlined in the next point:
 
-    <gtk_install_prefix>\bin\gtk-query-immodules-3.0.exe > <gtk_install_prefix>\lib\gtk-3.0\3.0.0\immodules.cache
+    <ctk_install_prefix>\bin\gtk-query-immodules-3.0.exe > <ctk_install_prefix>\lib\gtk-3.0\3.0.0\immodules.cache
 
 - You will need to run the following upon completing install, from the build
   directory in the Visual Studio 2008/SDK 6.0 command prompt (third line is not
   needed unless -Dbuiltin_immodules=no is specified) so that the built binaries
   can run:
 
-    for /r %f in (*.dll.manifest) do if exist <gtk_install_prefix>\bin\%~nf mt /manifest %f /outputresource:<gtk_install_prefix>\bin\%~nf;2
-    for /r %f in (*.exe.manifest) do if exist <gtk_install_prefix>\bin\%~nf mt /manifest %f /outputresource:<gtk_install_prefix>\bin\%~nf;1
-    for /r %f in (*.dll.manifest) do if exist <gtk_install_prefix>\lib\gtk-3.0\3.0.0\immodules\%~nf mt /manifest %f /outputresource:<gtk_install_prefix>\lib\gtk-3.0\3.0.0\immodules\%~nf;2
+    for /r %f in (*.dll.manifest) do if exist <ctk_install_prefix>\bin\%~nf mt /manifest %f /outputresource:<ctk_install_prefix>\bin\%~nf;2
+    for /r %f in (*.exe.manifest) do if exist <ctk_install_prefix>\bin\%~nf mt /manifest %f /outputresource:<ctk_install_prefix>\bin\%~nf;1
+    for /r %f in (*.dll.manifest) do if exist <ctk_install_prefix>\lib\gtk-3.0\3.0.0\immodules\%~nf mt /manifest %f /outputresource:<ctk_install_prefix>\lib\gtk-3.0\3.0.0\immodules\%~nf;2
 
 - The more modern visual style for the print dialog is not applied for Visual
   Studio 2008 builds.  Any solutions to this is really appreciated.

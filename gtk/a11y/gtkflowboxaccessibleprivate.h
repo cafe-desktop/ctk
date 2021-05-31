@@ -22,8 +22,8 @@
 
 G_BEGIN_DECLS
 
-void _gtk_flow_box_accessible_selection_changed (GtkWidget *box);
-void _gtk_flow_box_accessible_update_cursor     (GtkWidget *box,
+void _ctk_flow_box_accessible_selection_changed (GtkWidget *box);
+void _ctk_flow_box_accessible_update_cursor     (GtkWidget *box,
                                                  GtkWidget *child);
 G_END_DECLS
 

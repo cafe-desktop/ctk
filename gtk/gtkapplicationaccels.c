@@ -38,7 +38,7 @@ struct _GtkApplicationAccels
   GHashTable *accel_to_actions;
 };
 
-G_DEFINE_TYPE (GtkApplicationAccels, gtk_application_accels, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GtkApplicationAccels, ctk_application_accels, G_TYPE_OBJECT)
 
 static AccelKey *
 accel_key_copy (const AccelKey *source)
@@ -143,26 +143,26 @@ remove_entry (GtkApplicationAccels *accels,
 }
 
 static void
-gtk_application_accels_finalize (GObject *object)
+ctk_application_accels_finalize (GObject *object)
 {
   GtkApplicationAccels *accels = GTK_APPLICATION_ACCELS (object);
 
   g_hash_table_unref (accels->accel_to_actions);
   g_hash_table_unref (accels->action_to_accels);
 
-  G_OBJECT_CLASS (gtk_application_accels_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_application_accels_parent_class)->finalize (object);
 }
 
 static void
-gtk_application_accels_class_init (GtkApplicationAccelsClass *klass)
+ctk_application_accels_class_init (GtkApplicationAccelsClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_application_accels_finalize;
+  object_class->finalize = ctk_application_accels_finalize;
 }
 
 static void
-gtk_application_accels_init (GtkApplicationAccels *accels)
+ctk_application_accels_init (GtkApplicationAccels *accels)
 {
   accels->accel_to_actions = g_hash_table_new_full (accel_key_hash, accel_key_equal,
                                                     accel_key_free, g_free);
@@ -170,13 +170,13 @@ gtk_application_accels_init (GtkApplicationAccels *accels)
 }
 
 GtkApplicationAccels *
-gtk_application_accels_new (void)
+ctk_application_accels_new (void)
 {
   return g_object_new (GTK_TYPE_APPLICATION_ACCELS, NULL);
 }
 
 void
-gtk_application_accels_set_accels_for_action (GtkApplicationAccels *accels,
+ctk_application_accels_set_accels_for_action (GtkApplicationAccels *accels,
                                               const gchar          *detailed_action_name,
                                               const gchar * const  *accelerators)
 {
@@ -184,7 +184,7 @@ gtk_application_accels_set_accels_for_action (GtkApplicationAccels *accels,
   AccelKey *keys, *old_keys;
   gint i, n;
 
-  action_and_target = gtk_normalise_detailed_action_name (detailed_action_name);
+  action_and_target = ctk_normalise_detailed_action_name (detailed_action_name);
 
   n = accelerators ? g_strv_length ((gchar **) accelerators) : 0;
 
@@ -194,7 +194,7 @@ gtk_application_accels_set_accels_for_action (GtkApplicationAccels *accels,
 
       for (i = 0; i < n; i++)
         {
-          gtk_accelerator_parse (accelerators[i], &keys[i].key, &keys[i].modifier);
+          ctk_accelerator_parse (accelerators[i], &keys[i].key, &keys[i].modifier);
 
           if (keys[i].key == 0)
             {
@@ -232,7 +232,7 @@ gtk_application_accels_set_accels_for_action (GtkApplicationAccels *accels,
 }
 
 gchar **
-gtk_application_accels_get_accels_for_action (GtkApplicationAccels *accels,
+ctk_application_accels_get_accels_for_action (GtkApplicationAccels *accels,
                                               const gchar          *detailed_action_name)
 {
   gchar *action_and_target;
@@ -240,7 +240,7 @@ gtk_application_accels_get_accels_for_action (GtkApplicationAccels *accels,
   gchar **result;
   gint n, i = 0;
 
-  action_and_target = gtk_normalise_detailed_action_name (detailed_action_name);
+  action_and_target = ctk_normalise_detailed_action_name (detailed_action_name);
 
   keys = g_hash_table_lookup (accels->action_to_accels, action_and_target);
   if (!keys)
@@ -255,14 +255,14 @@ gtk_application_accels_get_accels_for_action (GtkApplicationAccels *accels,
   result = g_new0 (gchar *, n + 1);
 
   for (i = 0; i < n; i++)
-    result[i] = gtk_accelerator_name (keys[i].key, keys[i].modifier);
+    result[i] = ctk_accelerator_name (keys[i].key, keys[i].modifier);
 
   g_free (action_and_target);
   return result;
 }
 
 gchar **
-gtk_application_accels_get_actions_for_accel (GtkApplicationAccels *accels,
+ctk_application_accels_get_actions_for_accel (GtkApplicationAccels *accels,
                                               const gchar          *accel)
 {
   const gchar * const *actions_and_targets;
@@ -270,7 +270,7 @@ gtk_application_accels_get_actions_for_accel (GtkApplicationAccels *accels,
   AccelKey accel_key;
   guint i, n;
 
-  gtk_accelerator_parse (accel, &accel_key.key, &accel_key.modifier);
+  ctk_accelerator_parse (accel, &accel_key.key, &accel_key.modifier);
 
   if (accel_key.key == 0)
     {
@@ -302,7 +302,7 @@ gtk_application_accels_get_actions_for_accel (GtkApplicationAccels *accels,
 }
 
 gchar **
-gtk_application_accels_list_action_descriptions (GtkApplicationAccels *accels)
+ctk_application_accels_list_action_descriptions (GtkApplicationAccels *accels)
 {
   GHashTableIter iter;
   gchar **result;
@@ -332,7 +332,7 @@ gtk_application_accels_list_action_descriptions (GtkApplicationAccels *accels)
 }
 
 void
-gtk_application_accels_foreach_key (GtkApplicationAccels     *accels,
+ctk_application_accels_foreach_key (GtkApplicationAccels     *accels,
                                     GtkWindow                *window,
                                     GtkWindowKeysForeachFunc  callback,
                                     gpointer                  user_data)
@@ -350,7 +350,7 @@ gtk_application_accels_foreach_key (GtkApplicationAccels     *accels,
 }
 
 gboolean
-gtk_application_accels_activate (GtkApplicationAccels *accels,
+ctk_application_accels_activate (GtkApplicationAccels *accels,
                                  GActionGroup         *action_group,
                                  guint                 key,
                                  GdkModifierType       modifier)
@@ -404,7 +404,7 @@ gtk_application_accels_activate (GtkApplicationAccels *accels,
 
           if (parameter_type == NULL)
             {
-              gchar *accel_str = gtk_accelerator_name (key, modifier);
+              gchar *accel_str = ctk_accelerator_name (key, modifier);
               g_warning ("Accelerator '%s' tries to invoke action '%s' with target, but action has no parameter",
                          accel_str, action_name);
               g_free (accel_str);
@@ -417,7 +417,7 @@ gtk_application_accels_activate (GtkApplicationAccels *accels,
 
           if (!g_variant_is_of_type (target, parameter_type))
             {
-              gchar *accel_str = gtk_accelerator_name (key, modifier);
+              gchar *accel_str = ctk_accelerator_name (key, modifier);
               gchar *typestr = g_variant_type_dup_string (parameter_type);
               gchar *targetstr = g_variant_print (target, TRUE);
               g_warning ("Accelerator '%s' tries to invoke action '%s' with target '%s',"
@@ -433,7 +433,7 @@ gtk_application_accels_activate (GtkApplicationAccels *accels,
         {
           if (parameter_type != NULL)
             {
-              gchar *accel_str = gtk_accelerator_name (key, modifier);
+              gchar *accel_str = ctk_accelerator_name (key, modifier);
               gchar *typestr = g_variant_type_dup_string (parameter_type);
               g_warning ("Accelerator '%s' tries to invoke action '%s' without target,"
                          " but action expects parameter with type '%s'", accel_str, action_name, typestr);

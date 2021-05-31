@@ -27,19 +27,19 @@ accel_edited_callback (GtkCellRendererText *cell,
                        gpointer             data)
 {
   GtkTreeModel *model = (GtkTreeModel *)data;
-  GtkTreePath *path = gtk_tree_path_new_from_string (path_string);
+  GtkTreePath *path = ctk_tree_path_new_from_string (path_string);
   GtkTreeIter iter;
 
-  gtk_tree_model_get_iter (model, &iter, path);
+  ctk_tree_model_get_iter (model, &iter, path);
 
   g_print ("%u %d %u\n", keyval, mask, hardware_keycode);
   
-  gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+  ctk_list_store_set (GTK_LIST_STORE (model), &iter,
 		      0, (gint)mask,
 		      1, keyval,
 		      2, hardware_keycode,
 		      -1);
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 }
 
 static void
@@ -51,10 +51,10 @@ accel_cleared_callback (GtkCellRendererText *cell,
   GtkTreePath *path;
   GtkTreeIter iter;
 
-  path = gtk_tree_path_new_from_string (path_string);
-  gtk_tree_model_get_iter (model, &iter, path);
-  gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, 0, 1, 0, 2, 0, -1);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_string (path_string);
+  ctk_tree_model_get_iter (model, &iter, path);
+  ctk_list_store_set (GTK_LIST_STORE (model), &iter, 0, 0, 1, 0, 2, 0, -1);
+  ctk_tree_path_free (path);
 }
 static GtkWidget *
 key_test (void)
@@ -67,20 +67,20 @@ key_test (void)
         GtkWidget *box, *entry;
 
 	/* create window */
-	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-        gtk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+	window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+        ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
 
-	sw = gtk_scrolled_window_new (NULL, NULL);
-        box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
-        gtk_widget_show (box);
-	gtk_container_add (GTK_CONTAINER (window), box);
-        gtk_box_pack_start (GTK_BOX (box), sw, TRUE, TRUE, 0);
+	sw = ctk_scrolled_window_new (NULL, NULL);
+        box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 10);
+        ctk_widget_show (box);
+	ctk_container_add (GTK_CONTAINER (window), box);
+        ctk_box_pack_start (GTK_BOX (box), sw, TRUE, TRUE, 0);
 
-	store = gtk_list_store_new (3, G_TYPE_INT, G_TYPE_UINT, G_TYPE_UINT);
-	tv = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
-	gtk_container_add (GTK_CONTAINER (sw), tv);
-	column = gtk_tree_view_column_new ();
-	rend = gtk_cell_renderer_accel_new ();
+	store = ctk_list_store_new (3, G_TYPE_INT, G_TYPE_UINT, G_TYPE_UINT);
+	tv = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+	ctk_container_add (GTK_CONTAINER (sw), tv);
+	column = ctk_tree_view_column_new ();
+	rend = ctk_cell_renderer_accel_new ();
 	g_object_set (G_OBJECT (rend), 
 		      "accel-mode", GTK_CELL_RENDERER_ACCEL_MODE_GTK, 
                       "editable", TRUE, 
@@ -94,24 +94,24 @@ key_test (void)
 			  G_CALLBACK (accel_cleared_callback),
 			  store);
 
-	gtk_tree_view_column_pack_start (column, rend,
+	ctk_tree_view_column_pack_start (column, rend,
 					 TRUE);
-	gtk_tree_view_column_set_attributes (column, rend,
+	ctk_tree_view_column_set_attributes (column, rend,
 					     "accel-mods", 0,
 					     "accel-key", 1,
 					     "keycode", 2,
 					     NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (tv), column);
+	ctk_tree_view_append_column (GTK_TREE_VIEW (tv), column);
 
 	for (i = 0; i < 10; i++) {
 		GtkTreeIter iter;
 
-		gtk_list_store_append (store, &iter);
+		ctk_list_store_append (store, &iter);
 	}
 
-        entry = gtk_entry_new ();
-        gtk_widget_show (entry);
-        gtk_container_add (GTK_CONTAINER (box), entry);
+        entry = ctk_entry_new ();
+        ctk_widget_show (entry);
+        ctk_container_add (GTK_CONTAINER (box), entry);
  
 	return window;
 }
@@ -121,13 +121,13 @@ main (gint argc, gchar **argv)
 {
   GtkWidget *dialog;
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   dialog = key_test ();
 
-  gtk_widget_show_all (dialog);
+  ctk_widget_show_all (dialog);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

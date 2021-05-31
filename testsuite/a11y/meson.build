@@ -39,13 +39,13 @@ a11y_state_tests = [
 ]
 
 skipped_tests = [
-  # gtk_color_picker_new() in CI returns NULL which changes the UI
+  # ctk_color_picker_new() in CI returns NULL which changes the UI
   'colorchooser',
 ]
 
 a11y_dump_bin = executable('accessibility-dump',
   'accessibility-dump.c',
-  dependencies: libgtk_dep,
+  dependencies: libctk_dep,
   install: get_option('installed_tests'),
   install_dir: installed_test_bindir,
 )
@@ -63,7 +63,7 @@ foreach t: a11y_state_tests
         'G_ENABLE_DIAGNOSTIC=0',
         'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
         'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
-        'GSETTINGS_SCHEMA_DIR=@0@'.format(gtk_schema_build_dir),
+        'GSETTINGS_SCHEMA_DIR=@0@'.format(ctk_schema_build_dir),
         'GTK_TEST_MESON=1',
       ],
       suite: 'a11y',
@@ -89,7 +89,7 @@ foreach t: a11y_tests
         executable (t, '@0@.c'.format(t),
                     install: get_option('installed_tests'),
                     install_dir: installed_test_bindir,
-                    dependencies: libgtk_dep),
+                    dependencies: libctk_dep),
         args: [ '--tap', '-k', ],
         timeout: 120,
         env: [ 'GIO_USE_VOLUME_MONITOR=unix',
@@ -98,7 +98,7 @@ foreach t: a11y_tests
                'G_ENABLE_DIAGNOSTIC=0',
                'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
                'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
-               'GSETTINGS_SCHEMA_DIR=@0@'.format(gtk_schema_build_dir),
+               'GSETTINGS_SCHEMA_DIR=@0@'.format(ctk_schema_build_dir),
              ],
         suite: 'a11y')
 endforeach
@@ -193,7 +193,7 @@ a11y_installed_tests = [
 
 if get_option('installed_tests')
   test_cdata = configuration_data()
-  test_cdata.set('libexecdir', gtk_libexecdir)
+  test_cdata.set('libexecdir', ctk_libexecdir)
 
   foreach t: a11y_installed_tests
     configure_file(input: '@0@.in'.format(t),

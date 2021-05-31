@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_SINGLE         (gtk_gesture_single_get_type ())
+#define GTK_TYPE_GESTURE_SINGLE         (ctk_gesture_single_get_type ())
 #define GTK_GESTURE_SINGLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_SINGLE, GtkGestureSingle))
 #define GTK_GESTURE_SINGLE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_SINGLE, GtkGestureSingleClass))
 #define GTK_IS_GESTURE_SINGLE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_SINGLE))
@@ -40,34 +40,34 @@ typedef struct _GtkGestureSingle GtkGestureSingle;
 typedef struct _GtkGestureSingleClass GtkGestureSingleClass;
 
 GDK_AVAILABLE_IN_3_14
-GType       gtk_gesture_single_get_type       (void) G_GNUC_CONST;
+GType       ctk_gesture_single_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-gboolean    gtk_gesture_single_get_touch_only (GtkGestureSingle *gesture);
+gboolean    ctk_gesture_single_get_touch_only (GtkGestureSingle *gesture);
 
 GDK_AVAILABLE_IN_3_14
-void        gtk_gesture_single_set_touch_only (GtkGestureSingle *gesture,
+void        ctk_gesture_single_set_touch_only (GtkGestureSingle *gesture,
                                                gboolean          touch_only);
 GDK_AVAILABLE_IN_3_14
-gboolean    gtk_gesture_single_get_exclusive  (GtkGestureSingle *gesture);
+gboolean    ctk_gesture_single_get_exclusive  (GtkGestureSingle *gesture);
 
 GDK_AVAILABLE_IN_3_14
-void        gtk_gesture_single_set_exclusive  (GtkGestureSingle *gesture,
+void        ctk_gesture_single_set_exclusive  (GtkGestureSingle *gesture,
                                                gboolean          exclusive);
 
 GDK_AVAILABLE_IN_3_14
-guint       gtk_gesture_single_get_button     (GtkGestureSingle *gesture);
+guint       ctk_gesture_single_get_button     (GtkGestureSingle *gesture);
 
 GDK_AVAILABLE_IN_3_14
-void        gtk_gesture_single_set_button     (GtkGestureSingle *gesture,
+void        ctk_gesture_single_set_button     (GtkGestureSingle *gesture,
                                                guint             button);
 
 GDK_AVAILABLE_IN_3_14
-guint       gtk_gesture_single_get_current_button
+guint       ctk_gesture_single_get_current_button
                                               (GtkGestureSingle *gesture);
 
 GDK_AVAILABLE_IN_3_14
-GdkEventSequence * gtk_gesture_single_get_current_sequence
+GdkEventSequence * ctk_gesture_single_get_current_sequence
                                               (GtkGestureSingle *gesture);
 
 G_END_DECLS

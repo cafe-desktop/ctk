@@ -20,7 +20,7 @@
 #include "gtkprintutils.h"
 
 gdouble
-_gtk_print_convert_to_mm (gdouble len, 
+_ctk_print_convert_to_mm (gdouble len, 
 			  GtkUnit unit)
 {
   switch (unit)
@@ -39,7 +39,7 @@ _gtk_print_convert_to_mm (gdouble len,
 }
 
 gdouble
-_gtk_print_convert_from_mm (gdouble len, 
+_ctk_print_convert_from_mm (gdouble len, 
 			    GtkUnit unit)
 {
   switch (unit)

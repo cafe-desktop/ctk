@@ -54,15 +54,15 @@ struct _GtkTargetList
   guint ref_count;
 };
 
-gboolean _gtk_selection_clear           (GtkWidget         *widget,
+gboolean _ctk_selection_clear           (GtkWidget         *widget,
                                          GdkEventSelection *event);
-gboolean _gtk_selection_request         (GtkWidget         *widget,
+gboolean _ctk_selection_request         (GtkWidget         *widget,
                                          GdkEventSelection *event);
-gboolean _gtk_selection_incr_event      (GdkWindow         *window,
+gboolean _ctk_selection_incr_event      (GdkWindow         *window,
                                          GdkEventProperty  *event);
-gboolean _gtk_selection_notify          (GtkWidget         *widget,
+gboolean _ctk_selection_notify          (GtkWidget         *widget,
                                          GdkEventSelection *event);
-gboolean _gtk_selection_property_notify (GtkWidget         *widget,
+gboolean _ctk_selection_property_notify (GtkWidget         *widget,
                                          GdkEventProperty  *event);
 
 G_END_DECLS

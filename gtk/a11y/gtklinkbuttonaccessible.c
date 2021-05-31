@@ -42,50 +42,50 @@ struct _GtkLinkButtonAccessibleLinkClass
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
-GType _gtk_link_button_accessible_link_get_type (void);
+GType _ctk_link_button_accessible_link_get_type (void);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLinkButtonAccessibleLink, _gtk_link_button_accessible_link, ATK_TYPE_HYPERLINK,
+G_DEFINE_TYPE_WITH_CODE (GtkLinkButtonAccessibleLink, _ctk_link_button_accessible_link, ATK_TYPE_HYPERLINK,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static AtkHyperlink *
-gtk_link_button_accessible_link_new (GtkLinkButtonAccessible *button)
+ctk_link_button_accessible_link_new (GtkLinkButtonAccessible *button)
 {
   GtkLinkButtonAccessibleLink *l;
 
-  l = g_object_new (_gtk_link_button_accessible_link_get_type (), NULL);
+  l = g_object_new (_ctk_link_button_accessible_link_get_type (), NULL);
   l->button = button;
 
   return ATK_HYPERLINK (l);
 }
 
 static gchar *
-gtk_link_button_accessible_link_get_uri (AtkHyperlink *atk_link,
+ctk_link_button_accessible_link_get_uri (AtkHyperlink *atk_link,
                                          gint          i)
 {
   GtkLinkButtonAccessibleLink *l = (GtkLinkButtonAccessibleLink *)atk_link;
   GtkWidget *widget;
   const gchar *uri;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (l->button));
-  uri = gtk_link_button_get_uri (GTK_LINK_BUTTON (widget));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (l->button));
+  uri = ctk_link_button_get_uri (GTK_LINK_BUTTON (widget));
 
   return g_strdup (uri);
 }
 
 static gint
-gtk_link_button_accessible_link_get_n_anchors (AtkHyperlink *atk_link)
+ctk_link_button_accessible_link_get_n_anchors (AtkHyperlink *atk_link)
 {
   return 1;
 }
 
 static gboolean
-gtk_link_button_accessible_link_is_valid (AtkHyperlink *atk_link)
+ctk_link_button_accessible_link_is_valid (AtkHyperlink *atk_link)
 {
   return TRUE;
 }
 
 static AtkObject *
-gtk_link_button_accessible_link_get_object (AtkHyperlink *atk_link,
+ctk_link_button_accessible_link_get_object (AtkHyperlink *atk_link,
                                             gint          i)
 {
   GtkLinkButtonAccessibleLink *l = (GtkLinkButtonAccessibleLink *)atk_link;
@@ -94,23 +94,23 @@ gtk_link_button_accessible_link_get_object (AtkHyperlink *atk_link,
 }
 
 static void
-_gtk_link_button_accessible_link_init (GtkLinkButtonAccessibleLink *l)
+_ctk_link_button_accessible_link_init (GtkLinkButtonAccessibleLink *l)
 {
 }
 
 static void
-_gtk_link_button_accessible_link_class_init (GtkLinkButtonAccessibleLinkClass *class)
+_ctk_link_button_accessible_link_class_init (GtkLinkButtonAccessibleLinkClass *class)
 {
   AtkHyperlinkClass *atk_link_class = ATK_HYPERLINK_CLASS (class);
 
-  atk_link_class->get_uri = gtk_link_button_accessible_link_get_uri;
-  atk_link_class->get_n_anchors = gtk_link_button_accessible_link_get_n_anchors;
-  atk_link_class->is_valid = gtk_link_button_accessible_link_is_valid;
-  atk_link_class->get_object = gtk_link_button_accessible_link_get_object;
+  atk_link_class->get_uri = ctk_link_button_accessible_link_get_uri;
+  atk_link_class->get_n_anchors = ctk_link_button_accessible_link_get_n_anchors;
+  atk_link_class->is_valid = ctk_link_button_accessible_link_is_valid;
+  atk_link_class->get_object = ctk_link_button_accessible_link_get_object;
 }
 
 static gboolean
-gtk_link_button_accessible_link_do_action (AtkAction *action,
+ctk_link_button_accessible_link_do_action (AtkAction *action,
                                            gint       i)
 {
   GtkLinkButtonAccessibleLink *l = (GtkLinkButtonAccessibleLink *)action;
@@ -123,22 +123,22 @@ gtk_link_button_accessible_link_do_action (AtkAction *action,
   if (i != 0)
     return FALSE;
 
-  if (!gtk_widget_is_sensitive (widget) || !gtk_widget_get_visible (widget))
+  if (!ctk_widget_is_sensitive (widget) || !ctk_widget_get_visible (widget))
     return FALSE;
 
-  gtk_button_clicked (GTK_BUTTON (widget));
+  ctk_button_clicked (GTK_BUTTON (widget));
 
   return TRUE;
 }
 
 static gint
-gtk_link_button_accessible_link_get_n_actions (AtkAction *action)
+ctk_link_button_accessible_link_get_n_actions (AtkAction *action)
 {
   return 1;
 }
 
 static const gchar *
-gtk_link_button_accessible_link_get_name (AtkAction *action,
+ctk_link_button_accessible_link_get_name (AtkAction *action,
                                           gint       i)
 {
   if (i != 0)
@@ -150,9 +150,9 @@ gtk_link_button_accessible_link_get_name (AtkAction *action,
 static void
 atk_action_interface_init (AtkActionIface *iface)
 {
-  iface->do_action = gtk_link_button_accessible_link_do_action;
-  iface->get_n_actions = gtk_link_button_accessible_link_get_n_actions;
-  iface->get_name = gtk_link_button_accessible_link_get_name;
+  iface->do_action = ctk_link_button_accessible_link_do_action;
+  iface->get_n_actions = ctk_link_button_accessible_link_get_n_actions;
+  iface->get_name = ctk_link_button_accessible_link_get_name;
 }
 
 static gboolean
@@ -165,14 +165,14 @@ activate_link (GtkLinkButton *button,
 }
 
 static AtkHyperlink *
-gtk_link_button_accessible_get_hyperlink (AtkHyperlinkImpl *impl)
+ctk_link_button_accessible_get_hyperlink (AtkHyperlinkImpl *impl)
 {
   GtkLinkButtonAccessible *button = GTK_LINK_BUTTON_ACCESSIBLE (impl);
 
   if (!button->priv->link)
     {
-      button->priv->link = gtk_link_button_accessible_link_new (button);
-      g_signal_connect (gtk_accessible_get_widget (GTK_ACCESSIBLE (button)),
+      button->priv->link = ctk_link_button_accessible_link_new (button);
+      g_signal_connect (ctk_accessible_get_widget (GTK_ACCESSIBLE (button)),
                         "activate-link", G_CALLBACK (activate_link), button->priv->link);
     }
 
@@ -181,39 +181,39 @@ gtk_link_button_accessible_get_hyperlink (AtkHyperlinkImpl *impl)
 
 static void atk_hypertext_impl_interface_init (AtkHyperlinkImplIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLinkButtonAccessible, gtk_link_button_accessible, GTK_TYPE_BUTTON_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkLinkButtonAccessible, ctk_link_button_accessible, GTK_TYPE_BUTTON_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkLinkButtonAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_HYPERLINK_IMPL, atk_hypertext_impl_interface_init))
 
 static void
-gtk_link_button_accessible_init (GtkLinkButtonAccessible *button)
+ctk_link_button_accessible_init (GtkLinkButtonAccessible *button)
 {
-  button->priv = gtk_link_button_accessible_get_instance_private (button);
+  button->priv = ctk_link_button_accessible_get_instance_private (button);
 }
 
 static void
-gtk_link_button_accessible_finalize (GObject *object)
+ctk_link_button_accessible_finalize (GObject *object)
 {
   GtkLinkButtonAccessible *button = GTK_LINK_BUTTON_ACCESSIBLE (object);
 
   if (button->priv->link)
     g_object_unref (button->priv->link);
 
-  G_OBJECT_CLASS (gtk_link_button_accessible_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_link_button_accessible_parent_class)->finalize (object);
 }
 
 static AtkStateSet *
-gtk_link_button_ref_state_set (AtkObject *accessible)
+ctk_link_button_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
   GtkWidget *widget;
 
-  state_set = ATK_OBJECT_CLASS (gtk_link_button_accessible_parent_class)->ref_state_set (accessible);
+  state_set = ATK_OBJECT_CLASS (ctk_link_button_accessible_parent_class)->ref_state_set (accessible);
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget != NULL)
     {
-      if (gtk_link_button_get_visited (GTK_LINK_BUTTON (widget)))
+      if (ctk_link_button_get_visited (GTK_LINK_BUTTON (widget)))
         atk_state_set_add_state (state_set, ATK_STATE_VISITED);
     }
 
@@ -221,14 +221,14 @@ gtk_link_button_ref_state_set (AtkObject *accessible)
 }
 
 static void
-gtk_link_button_accessible_class_init (GtkLinkButtonAccessibleClass *klass)
+ctk_link_button_accessible_class_init (GtkLinkButtonAccessibleClass *klass)
 {
-  G_OBJECT_CLASS (klass)->finalize = gtk_link_button_accessible_finalize;
-  ATK_OBJECT_CLASS (klass)->ref_state_set = gtk_link_button_ref_state_set;
+  G_OBJECT_CLASS (klass)->finalize = ctk_link_button_accessible_finalize;
+  ATK_OBJECT_CLASS (klass)->ref_state_set = ctk_link_button_ref_state_set;
 }
 
 static void
 atk_hypertext_impl_interface_init (AtkHyperlinkImplIface *iface)
 {
-  iface->get_hyperlink = gtk_link_button_accessible_get_hyperlink;
+  iface->get_hyperlink = ctk_link_button_accessible_get_hyperlink;
 }

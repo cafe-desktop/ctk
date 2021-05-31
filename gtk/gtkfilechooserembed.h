@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_CHOOSER_EMBED             (_gtk_file_chooser_embed_get_type ())
+#define GTK_TYPE_FILE_CHOOSER_EMBED             (_ctk_file_chooser_embed_get_type ())
 #define GTK_FILE_CHOOSER_EMBED(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_CHOOSER_EMBED, GtkFileChooserEmbed))
 #define GTK_IS_FILE_CHOOSER_EMBED(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_CHOOSER_EMBED))
 #define GTK_FILE_CHOOSER_EMBED_GET_IFACE(obj)   (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_FILE_CHOOSER_EMBED, GtkFileChooserEmbedIface))
@@ -51,17 +51,17 @@ struct _GtkFileChooserEmbedIface
   void (*response_requested)      (GtkFileChooserEmbed *chooser_embed);
 };
 
-GType _gtk_file_chooser_embed_get_type (void) G_GNUC_CONST;
+GType _ctk_file_chooser_embed_get_type (void) G_GNUC_CONST;
 
-void  _gtk_file_chooser_embed_get_default_size    (GtkFileChooserEmbed *chooser_embed,
+void  _ctk_file_chooser_embed_get_default_size    (GtkFileChooserEmbed *chooser_embed,
 						   gint                *default_width,
 						   gint                *default_height);
-gboolean _gtk_file_chooser_embed_should_respond (GtkFileChooserEmbed *chooser_embed);
+gboolean _ctk_file_chooser_embed_should_respond (GtkFileChooserEmbed *chooser_embed);
 
-void _gtk_file_chooser_embed_initial_focus (GtkFileChooserEmbed *chooser_embed);
+void _ctk_file_chooser_embed_initial_focus (GtkFileChooserEmbed *chooser_embed);
 
-void _gtk_file_chooser_embed_delegate_iface_init  (GtkFileChooserEmbedIface *iface);
-void _gtk_file_chooser_embed_set_delegate         (GtkFileChooserEmbed *receiver,
+void _ctk_file_chooser_embed_delegate_iface_init  (GtkFileChooserEmbedIface *iface);
+void _ctk_file_chooser_embed_set_delegate         (GtkFileChooserEmbed *receiver,
 						   GtkFileChooserEmbed *delegate);
 
 G_END_DECLS

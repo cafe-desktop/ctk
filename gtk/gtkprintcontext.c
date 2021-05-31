@@ -47,11 +47,11 @@
  *   PangoLayout *layout;
  *   PangoFontDescription *desc;
  *
- *   cr = gtk_print_context_get_cairo_context (context);
+ *   cr = ctk_print_context_get_cairo_context (context);
  *
  *   // Draw a red rectangle, as wide as the paper (inside the margins)
  *   cairo_set_source_rgb (cr, 1.0, 0, 0);
- *   cairo_rectangle (cr, 0, 0, gtk_print_context_get_width (context), 50);
+ *   cairo_rectangle (cr, 0, 0, ctk_print_context_get_width (context), 50);
  *
  *   cairo_fill (cr);
  *
@@ -69,7 +69,7 @@
  *   cairo_stroke (cr);
  *
  *   // Draw some text
- *   layout = gtk_print_context_create_pango_layout (context);
+ *   layout = ctk_print_context_create_pango_layout (context);
  *   pango_layout_set_text (layout, "Hello World! Printing is easy", -1);
  *   desc = pango_font_description_from_string ("sans 28");
  *   pango_layout_set_font_description (layout, desc);
@@ -131,10 +131,10 @@ struct _GtkPrintContextClass
   GObjectClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkPrintContext, gtk_print_context, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GtkPrintContext, ctk_print_context, G_TYPE_OBJECT)
 
 static void
-gtk_print_context_finalize (GObject *object)
+ctk_print_context_finalize (GObject *object)
 {
   GtkPrintContext *context = GTK_PRINT_CONTEXT (object);
 
@@ -144,25 +144,25 @@ gtk_print_context_finalize (GObject *object)
   if (context->cr)
     cairo_destroy (context->cr);
   
-  G_OBJECT_CLASS (gtk_print_context_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_print_context_parent_class)->finalize (object);
 }
 
 static void
-gtk_print_context_init (GtkPrintContext *context)
+ctk_print_context_init (GtkPrintContext *context)
 {
 }
 
 static void
-gtk_print_context_class_init (GtkPrintContextClass *class)
+ctk_print_context_class_init (GtkPrintContextClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
-  gobject_class->finalize = gtk_print_context_finalize;
+  gobject_class->finalize = ctk_print_context_finalize;
 }
 
 
 GtkPrintContext *
-_gtk_print_context_new (GtkPrintOperation *op)
+_ctk_print_context_new (GtkPrintOperation *op)
 {
   GtkPrintContext *context;
 
@@ -176,13 +176,13 @@ _gtk_print_context_new (GtkPrintOperation *op)
 }
 
 static PangoFontMap *
-_gtk_print_context_get_fontmap (GtkPrintContext *context)
+_ctk_print_context_get_fontmap (GtkPrintContext *context)
 {
   return pango_cairo_font_map_get_default ();
 }
 
 /**
- * gtk_print_context_set_cairo_context:
+ * ctk_print_context_set_cairo_context:
  * @context: a #GtkPrintContext
  * @cr: the cairo context
  * @dpi_x: the horizontal resolution to use with @cr
@@ -198,7 +198,7 @@ _gtk_print_context_get_fontmap (GtkPrintContext *context)
  * Since: 2.10 
  */
 void
-gtk_print_context_set_cairo_context (GtkPrintContext *context,
+ctk_print_context_set_cairo_context (GtkPrintContext *context,
 				     cairo_t         *cr,
 				     double           dpi_x,
 				     double           dpi_y)
@@ -238,21 +238,21 @@ gtk_print_context_set_cairo_context (GtkPrintContext *context,
 
 
 void
-_gtk_print_context_rotate_according_to_orientation (GtkPrintContext *context)
+_ctk_print_context_rotate_according_to_orientation (GtkPrintContext *context)
 {
   cairo_t *cr = context->cr;
   cairo_matrix_t matrix;
   GtkPaperSize *paper_size;
   gdouble width, height;
 
-  paper_size = gtk_page_setup_get_paper_size (context->page_setup);
+  paper_size = ctk_page_setup_get_paper_size (context->page_setup);
 
-  width = gtk_paper_size_get_width (paper_size, GTK_UNIT_INCH);
+  width = ctk_paper_size_get_width (paper_size, GTK_UNIT_INCH);
   width = width * context->surface_dpi_x / context->pixels_per_unit_x;
-  height = gtk_paper_size_get_height (paper_size, GTK_UNIT_INCH);
+  height = ctk_paper_size_get_height (paper_size, GTK_UNIT_INCH);
   height = height * context->surface_dpi_y / context->pixels_per_unit_y;
   
-  switch (gtk_page_setup_get_orientation (context->page_setup))
+  switch (ctk_page_setup_get_orientation (context->page_setup))
     {
     default:
     case GTK_PAGE_ORIENTATION_PORTRAIT:
@@ -285,18 +285,18 @@ _gtk_print_context_rotate_according_to_orientation (GtkPrintContext *context)
 }
 
 void
-_gtk_print_context_reverse_according_to_orientation (GtkPrintContext *context)
+_ctk_print_context_reverse_according_to_orientation (GtkPrintContext *context)
 {
   cairo_t *cr = context->cr;
   cairo_matrix_t matrix;
   gdouble width, height;
 
-  width = gtk_page_setup_get_paper_width (context->page_setup, GTK_UNIT_INCH);
+  width = ctk_page_setup_get_paper_width (context->page_setup, GTK_UNIT_INCH);
   width = width * context->surface_dpi_x / context->pixels_per_unit_x;
-  height = gtk_page_setup_get_paper_height (context->page_setup, GTK_UNIT_INCH);
+  height = ctk_page_setup_get_paper_height (context->page_setup, GTK_UNIT_INCH);
   height = height * context->surface_dpi_y / context->pixels_per_unit_y;
 
-  switch (gtk_page_setup_get_orientation (context->page_setup))
+  switch (ctk_page_setup_get_orientation (context->page_setup))
     {
     default:
     case GTK_PAGE_ORIENTATION_PORTRAIT:
@@ -315,31 +315,31 @@ _gtk_print_context_reverse_according_to_orientation (GtkPrintContext *context)
 }
 
 void
-_gtk_print_context_translate_into_margin (GtkPrintContext *context)
+_ctk_print_context_translate_into_margin (GtkPrintContext *context)
 {
   gdouble dx, dy;
 
   g_return_if_fail (GTK_IS_PRINT_CONTEXT (context));
 
   /* We do it this way to also handle GTK_UNIT_NONE */
-  switch (gtk_page_setup_get_orientation (context->page_setup))
+  switch (ctk_page_setup_get_orientation (context->page_setup))
     {
       default:
       case GTK_PAGE_ORIENTATION_PORTRAIT:
-        dx = gtk_page_setup_get_left_margin (context->page_setup, GTK_UNIT_INCH);
-        dy = gtk_page_setup_get_top_margin (context->page_setup, GTK_UNIT_INCH);
+        dx = ctk_page_setup_get_left_margin (context->page_setup, GTK_UNIT_INCH);
+        dy = ctk_page_setup_get_top_margin (context->page_setup, GTK_UNIT_INCH);
         break;
       case GTK_PAGE_ORIENTATION_LANDSCAPE:
-        dx = gtk_page_setup_get_bottom_margin (context->page_setup, GTK_UNIT_INCH);
-        dy = gtk_page_setup_get_left_margin (context->page_setup, GTK_UNIT_INCH);
+        dx = ctk_page_setup_get_bottom_margin (context->page_setup, GTK_UNIT_INCH);
+        dy = ctk_page_setup_get_left_margin (context->page_setup, GTK_UNIT_INCH);
         break;
       case GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT:
-        dx = gtk_page_setup_get_right_margin (context->page_setup, GTK_UNIT_INCH);
-        dy = gtk_page_setup_get_bottom_margin (context->page_setup, GTK_UNIT_INCH);
+        dx = ctk_page_setup_get_right_margin (context->page_setup, GTK_UNIT_INCH);
+        dy = ctk_page_setup_get_bottom_margin (context->page_setup, GTK_UNIT_INCH);
         break;
       case GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE:
-        dx = gtk_page_setup_get_top_margin (context->page_setup, GTK_UNIT_INCH);
-        dy = gtk_page_setup_get_right_margin (context->page_setup, GTK_UNIT_INCH);
+        dx = ctk_page_setup_get_top_margin (context->page_setup, GTK_UNIT_INCH);
+        dy = ctk_page_setup_get_right_margin (context->page_setup, GTK_UNIT_INCH);
         break;
     }
 
@@ -349,7 +349,7 @@ _gtk_print_context_translate_into_margin (GtkPrintContext *context)
 }
 
 void
-_gtk_print_context_set_page_setup (GtkPrintContext *context,
+_ctk_print_context_set_page_setup (GtkPrintContext *context,
 				   GtkPageSetup    *page_setup)
 {
   g_return_if_fail (GTK_IS_PRINT_CONTEXT (context));
@@ -366,7 +366,7 @@ _gtk_print_context_set_page_setup (GtkPrintContext *context,
 }
 
 /**
- * gtk_print_context_get_cairo_context:
+ * ctk_print_context_get_cairo_context:
  * @context: a #GtkPrintContext
  *
  * Obtains the cairo context that is associated with the
@@ -377,7 +377,7 @@ _gtk_print_context_set_page_setup (GtkPrintContext *context,
  * Since: 2.10
  */
 cairo_t *
-gtk_print_context_get_cairo_context (GtkPrintContext *context)
+ctk_print_context_get_cairo_context (GtkPrintContext *context)
 {
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), NULL);
 
@@ -385,7 +385,7 @@ gtk_print_context_get_cairo_context (GtkPrintContext *context)
 }
 
 /**
- * gtk_print_context_get_page_setup:
+ * ctk_print_context_get_page_setup:
  * @context: a #GtkPrintContext
  *
  * Obtains the #GtkPageSetup that determines the page
@@ -396,7 +396,7 @@ gtk_print_context_get_cairo_context (GtkPrintContext *context)
  * Since: 2.10
  */
 GtkPageSetup *
-gtk_print_context_get_page_setup (GtkPrintContext *context)
+ctk_print_context_get_page_setup (GtkPrintContext *context)
 {
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), NULL);
 
@@ -404,7 +404,7 @@ gtk_print_context_get_page_setup (GtkPrintContext *context)
 }
 
 /**
- * gtk_print_context_get_width:
+ * ctk_print_context_get_width:
  * @context: a #GtkPrintContext
  *
  * Obtains the width of the #GtkPrintContext, in pixels.
@@ -414,7 +414,7 @@ gtk_print_context_get_page_setup (GtkPrintContext *context)
  * Since: 2.10 
  */
 gdouble
-gtk_print_context_get_width (GtkPrintContext *context)
+ctk_print_context_get_width (GtkPrintContext *context)
 {
   GtkPrintOperationPrivate *priv;
   gdouble width;
@@ -424,16 +424,16 @@ gtk_print_context_get_width (GtkPrintContext *context)
   priv = context->op->priv;
 
   if (priv->use_full_page)
-    width = gtk_page_setup_get_paper_width (context->page_setup, GTK_UNIT_INCH);
+    width = ctk_page_setup_get_paper_width (context->page_setup, GTK_UNIT_INCH);
   else
-    width = gtk_page_setup_get_page_width (context->page_setup, GTK_UNIT_INCH);
+    width = ctk_page_setup_get_page_width (context->page_setup, GTK_UNIT_INCH);
 
   /* Really dpi_x? What about landscape? what does dpi_x mean in that case? */
   return width * context->surface_dpi_x / context->pixels_per_unit_x;
 }
 
 /**
- * gtk_print_context_get_height:
+ * ctk_print_context_get_height:
  * @context: a #GtkPrintContext
  * 
  * Obtains the height of the #GtkPrintContext, in pixels.
@@ -443,7 +443,7 @@ gtk_print_context_get_width (GtkPrintContext *context)
  * Since: 2.10
  */
 gdouble
-gtk_print_context_get_height (GtkPrintContext *context)
+ctk_print_context_get_height (GtkPrintContext *context)
 {
   GtkPrintOperationPrivate *priv;
   gdouble height;
@@ -453,16 +453,16 @@ gtk_print_context_get_height (GtkPrintContext *context)
   priv = context->op->priv;
 
   if (priv->use_full_page)
-    height = gtk_page_setup_get_paper_height (context->page_setup, GTK_UNIT_INCH);
+    height = ctk_page_setup_get_paper_height (context->page_setup, GTK_UNIT_INCH);
   else
-    height = gtk_page_setup_get_page_height (context->page_setup, GTK_UNIT_INCH);
+    height = ctk_page_setup_get_page_height (context->page_setup, GTK_UNIT_INCH);
 
   /* Really dpi_y? What about landscape? what does dpi_y mean in that case? */
   return height * context->surface_dpi_y / context->pixels_per_unit_y;
 }
 
 /**
- * gtk_print_context_get_dpi_x:
+ * ctk_print_context_get_dpi_x:
  * @context: a #GtkPrintContext
  * 
  * Obtains the horizontal resolution of the #GtkPrintContext,
@@ -473,7 +473,7 @@ gtk_print_context_get_height (GtkPrintContext *context)
  * Since: 2.10
  */
 gdouble
-gtk_print_context_get_dpi_x (GtkPrintContext *context)
+ctk_print_context_get_dpi_x (GtkPrintContext *context)
 {
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), 0);
 
@@ -481,7 +481,7 @@ gtk_print_context_get_dpi_x (GtkPrintContext *context)
 }
 
 /**
- * gtk_print_context_get_dpi_y:
+ * ctk_print_context_get_dpi_y:
  * @context: a #GtkPrintContext
  * 
  * Obtains the vertical resolution of the #GtkPrintContext,
@@ -492,7 +492,7 @@ gtk_print_context_get_dpi_x (GtkPrintContext *context)
  * Since: 2.10
  */
 gdouble
-gtk_print_context_get_dpi_y (GtkPrintContext *context)
+ctk_print_context_get_dpi_y (GtkPrintContext *context)
 {
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), 0);
 
@@ -500,7 +500,7 @@ gtk_print_context_get_dpi_y (GtkPrintContext *context)
 }
 
 /**
- * gtk_print_context_get_hard_margins:
+ * ctk_print_context_get_hard_margins:
  * @context: a #GtkPrintContext
  * @top: (out): top hardware printer margin
  * @bottom: (out): bottom hardware printer margin
@@ -514,7 +514,7 @@ gtk_print_context_get_dpi_y (GtkPrintContext *context)
  * Since: 2.20
  */
 gboolean
-gtk_print_context_get_hard_margins (GtkPrintContext *context,
+ctk_print_context_get_hard_margins (GtkPrintContext *context,
 				    gdouble         *top,
 				    gdouble         *bottom,
 				    gdouble         *left,
@@ -532,7 +532,7 @@ gtk_print_context_get_hard_margins (GtkPrintContext *context,
 }
 
 /**
- * gtk_print_context_set_hard_margins:
+ * ctk_print_context_set_hard_margins:
  * @context: a #GtkPrintContext
  * @top: top hardware printer margin
  * @bottom: bottom hardware printer margin
@@ -542,7 +542,7 @@ gtk_print_context_get_hard_margins (GtkPrintContext *context,
  * set the hard margins in pixel coordinates
  */
 void
-_gtk_print_context_set_hard_margins (GtkPrintContext *context,
+_ctk_print_context_set_hard_margins (GtkPrintContext *context,
 				     gdouble          top,
 				     gdouble          bottom,
 				     gdouble          left,
@@ -556,7 +556,7 @@ _gtk_print_context_set_hard_margins (GtkPrintContext *context,
 }
 
 /**
- * gtk_print_context_get_pango_fontmap:
+ * ctk_print_context_get_pango_fontmap:
  * @context: a #GtkPrintContext
  *
  * Returns a #PangoFontMap that is suitable for use
@@ -567,15 +567,15 @@ _gtk_print_context_set_hard_margins (GtkPrintContext *context,
  * Since: 2.10
  */
 PangoFontMap *
-gtk_print_context_get_pango_fontmap (GtkPrintContext *context)
+ctk_print_context_get_pango_fontmap (GtkPrintContext *context)
 {
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), NULL);
 
-  return _gtk_print_context_get_fontmap (context);
+  return _ctk_print_context_get_fontmap (context);
 }
 
 /**
- * gtk_print_context_create_pango_context:
+ * ctk_print_context_create_pango_context:
  * @context: a #GtkPrintContext
  *
  * Creates a new #PangoContext that can be used with the
@@ -586,14 +586,14 @@ gtk_print_context_get_pango_fontmap (GtkPrintContext *context)
  * Since: 2.10
  */
 PangoContext *
-gtk_print_context_create_pango_context (GtkPrintContext *context)
+ctk_print_context_create_pango_context (GtkPrintContext *context)
 {
   PangoContext *pango_context;
   cairo_font_options_t *options;
 
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), NULL);
   
-  pango_context = pango_font_map_create_context (_gtk_print_context_get_fontmap (context));
+  pango_context = pango_font_map_create_context (_ctk_print_context_get_fontmap (context));
 
   options = cairo_font_options_create ();
   cairo_font_options_set_hint_metrics (options, CAIRO_HINT_METRICS_OFF);
@@ -609,7 +609,7 @@ gtk_print_context_create_pango_context (GtkPrintContext *context)
 }
 
 /**
- * gtk_print_context_create_pango_layout:
+ * ctk_print_context_create_pango_layout:
  * @context: a #GtkPrintContext
  *
  * Creates a new #PangoLayout that is suitable for use
@@ -620,14 +620,14 @@ gtk_print_context_create_pango_context (GtkPrintContext *context)
  * Since: 2.10
  */
 PangoLayout *
-gtk_print_context_create_pango_layout (GtkPrintContext *context)
+ctk_print_context_create_pango_layout (GtkPrintContext *context)
 {
   PangoContext *pango_context;
   PangoLayout *layout;
 
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), NULL);
 
-  pango_context = gtk_print_context_create_pango_context (context);
+  pango_context = ctk_print_context_create_pango_context (context);
   layout = pango_layout_new (pango_context);
 
   pango_cairo_update_context (context->cr, pango_context);

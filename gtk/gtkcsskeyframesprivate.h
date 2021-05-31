@@ -28,23 +28,23 @@ G_BEGIN_DECLS
 
 typedef struct _GtkCssKeyframes GtkCssKeyframes;
 
-GtkCssKeyframes *   _gtk_css_keyframes_parse                  (GtkCssParser           *parser);
+GtkCssKeyframes *   _ctk_css_keyframes_parse                  (GtkCssParser           *parser);
 
-GtkCssKeyframes *   _gtk_css_keyframes_ref                    (GtkCssKeyframes        *keyframes);
-void                _gtk_css_keyframes_unref                  (GtkCssKeyframes        *keyframes);
+GtkCssKeyframes *   _ctk_css_keyframes_ref                    (GtkCssKeyframes        *keyframes);
+void                _ctk_css_keyframes_unref                  (GtkCssKeyframes        *keyframes);
 
-void                _gtk_css_keyframes_print                  (GtkCssKeyframes        *keyframes,
+void                _ctk_css_keyframes_print                  (GtkCssKeyframes        *keyframes,
                                                                GString                *string);
 
-GtkCssKeyframes *   _gtk_css_keyframes_compute                (GtkCssKeyframes         *keyframes,
+GtkCssKeyframes *   _ctk_css_keyframes_compute                (GtkCssKeyframes         *keyframes,
                                                                GtkStyleProviderPrivate *provider,
                                                                GtkCssStyle             *style,
                                                                GtkCssStyle             *parent_style);
 
-guint               _gtk_css_keyframes_get_n_properties       (GtkCssKeyframes        *keyframes);
-guint               _gtk_css_keyframes_get_property_id        (GtkCssKeyframes        *keyframes,
+guint               _ctk_css_keyframes_get_n_properties       (GtkCssKeyframes        *keyframes);
+guint               _ctk_css_keyframes_get_property_id        (GtkCssKeyframes        *keyframes,
                                                                guint                   id);
-GtkCssValue *       _gtk_css_keyframes_get_value              (GtkCssKeyframes        *keyframes,
+GtkCssValue *       _ctk_css_keyframes_get_value              (GtkCssKeyframes        *keyframes,
                                                                guint                   id,
                                                                double                  progress,
                                                                GtkCssValue            *default_value);

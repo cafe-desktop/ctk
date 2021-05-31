@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_SHELL_ACCESSIBLE                    (gtk_menu_shell_accessible_get_type ())
+#define GTK_TYPE_MENU_SHELL_ACCESSIBLE                    (ctk_menu_shell_accessible_get_type ())
 #define GTK_MENU_SHELL_ACCESSIBLE(obj)                    (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU_SHELL_ACCESSIBLE, GtkMenuShellAccessible))
 #define GTK_MENU_SHELL_ACCESSIBLE_CLASS(klass)            (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU_SHELL_ACCESSIBLE, GtkMenuShellAccessibleClass))
 #define GTK_IS_MENU_SHELL_ACCESSIBLE(obj)                 (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU_SHELL_ACCESSIBLE))
@@ -50,7 +50,7 @@ struct _GtkMenuShellAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_menu_shell_accessible_get_type (void);
+GType ctk_menu_shell_accessible_get_type (void);
 
 G_END_DECLS
 

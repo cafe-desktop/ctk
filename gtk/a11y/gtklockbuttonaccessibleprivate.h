@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-void  _gtk_lock_button_accessible_name_changed (GtkLockButton *lockbutton);
+void  _ctk_lock_button_accessible_name_changed (GtkLockButton *lockbutton);
 
 G_END_DECLS
 

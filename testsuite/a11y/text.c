@@ -26,11 +26,11 @@ set_text (GtkWidget   *widget,
           const gchar *text)
 {
   if (GTK_IS_LABEL (widget))
-    gtk_label_set_text (GTK_LABEL (widget), text);
+    ctk_label_set_text (GTK_LABEL (widget), text);
   else if (GTK_IS_ENTRY (widget))
-    gtk_entry_set_text (GTK_ENTRY (widget), text);
+    ctk_entry_set_text (GTK_ENTRY (widget), text);
   else if (GTK_IS_TEXT_VIEW (widget))
-    gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (widget)), text, -1);
+    ctk_text_buffer_set_text (ctk_text_view_get_buffer (GTK_TEXT_VIEW (widget)), text, -1);
   else
     g_assert_not_reached ();
 }
@@ -43,16 +43,16 @@ append_text (GtkWidget   *widget,
     {
       gchar *tmp;
 
-      tmp = g_strconcat (gtk_label_get_text (GTK_LABEL (widget)), text, NULL);
-      gtk_label_set_text (GTK_LABEL (widget), tmp);
+      tmp = g_strconcat (ctk_label_get_text (GTK_LABEL (widget)), text, NULL);
+      ctk_label_set_text (GTK_LABEL (widget), tmp);
       g_free (tmp);
     }
   else if (GTK_IS_ENTRY (widget))
     {
       gchar *tmp;
 
-      tmp = g_strconcat (gtk_entry_get_text (GTK_ENTRY (widget)), text, NULL);
-      gtk_entry_set_text (GTK_ENTRY (widget), tmp);
+      tmp = g_strconcat (ctk_entry_get_text (GTK_ENTRY (widget)), text, NULL);
+      ctk_entry_set_text (GTK_ENTRY (widget), tmp);
       g_free (tmp);
     }
   else if (GTK_IS_TEXT_VIEW (widget))
@@ -60,9 +60,9 @@ append_text (GtkWidget   *widget,
       GtkTextBuffer *buffer;
       GtkTextIter end;
 
-      buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (widget));
-      gtk_text_buffer_get_end_iter (buffer, &end);
-      gtk_text_buffer_insert (buffer, &end, text, -1);
+      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (widget));
+      ctk_text_buffer_get_end_iter (buffer, &end);
+      ctk_text_buffer_insert (buffer, &end, text, -1);
     }
   else
     g_assert_not_reached ();
@@ -77,7 +77,7 @@ test_basic (GtkWidget *widget)
   gint count;
   gunichar c;
 
-  atk_text = ATK_TEXT (gtk_widget_get_accessible (widget));
+  atk_text = ATK_TEXT (ctk_widget_get_accessible (widget));
 
   set_text (widget, text);
   ret = atk_text_get_text (atk_text, 5, 9);
@@ -137,7 +137,7 @@ test_text_changed (GtkWidget *widget)
   if (GTK_IS_LABEL (widget) || GTK_IS_ENTRY (widget))
     cant_append = TRUE;
 
-  atk_text = ATK_TEXT (gtk_widget_get_accessible (widget));
+  atk_text = ATK_TEXT (ctk_widget_get_accessible (widget));
 
   delete_data.count = 0;
   insert_data.count = 0;
@@ -834,14 +834,14 @@ test_words (GtkWidget *widget)
   gchar *word;
   gint i;
 
-  atk_text = ATK_TEXT (gtk_widget_get_accessible (widget));
+  atk_text = ATK_TEXT (ctk_widget_get_accessible (widget));
 
   set_text (widget, text);
 #ifdef SHOW_TEXT_ATTRIBUTES
   if (GTK_IS_LABEL (widget))
-    show_text_attributes (gtk_label_get_layout (GTK_LABEL (widget)));
+    show_text_attributes (ctk_label_get_layout (GTK_LABEL (widget)));
   else if (GTK_IS_ENTRY (widget))
-    show_text_attributes (gtk_entry_get_layout (GTK_ENTRY (widget)));
+    show_text_attributes (ctk_entry_get_layout (GTK_ENTRY (widget)));
 #endif
 
 #ifdef DUMP_RESULTS
@@ -922,18 +922,18 @@ select_region (GtkWidget *widget,
                gint       end)
 {
   if (GTK_IS_EDITABLE (widget))
-    gtk_editable_select_region (GTK_EDITABLE (widget), start, end);
+    ctk_editable_select_region (GTK_EDITABLE (widget), start, end);
   else if (GTK_IS_LABEL (widget))
-    gtk_label_select_region (GTK_LABEL (widget), start, end);
+    ctk_label_select_region (GTK_LABEL (widget), start, end);
   else if (GTK_IS_TEXT_VIEW (widget))
     {
-      GtkTextBuffer *buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (widget));
+      GtkTextBuffer *buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (widget));
       GtkTextIter start_iter, end_iter;
 
-      gtk_text_buffer_get_iter_at_offset (buffer, &start_iter, end);
-      gtk_text_buffer_get_iter_at_offset (buffer, &end_iter, start);
+      ctk_text_buffer_get_iter_at_offset (buffer, &start_iter, end);
+      ctk_text_buffer_get_iter_at_offset (buffer, &end_iter, start);
 
-      gtk_text_buffer_select_range (buffer, &start_iter, &end_iter);
+      ctk_text_buffer_select_range (buffer, &start_iter, &end_iter);
     }
   else
     g_assert_not_reached ();
@@ -972,9 +972,9 @@ test_selection (GtkWidget *widget)
   SelectionData data2;
 
   if (GTK_IS_LABEL (widget))
-    gtk_label_set_selectable (GTK_LABEL (widget), TRUE);
+    ctk_label_set_selectable (GTK_LABEL (widget), TRUE);
 
-  atk_text = ATK_TEXT (gtk_widget_get_accessible (widget));
+  atk_text = ATK_TEXT (ctk_widget_get_accessible (widget));
 
   data1.count = 0;
   data2.count = 0;
@@ -1066,16 +1066,16 @@ test_bold_label (void)
 
   g_test_bug ("126797");
 
-  label = gtk_label_new ("<b>Bold?</b>");
+  label = ctk_label_new ("<b>Bold?</b>");
   g_object_ref_sink (label);
 
-  atk_obj = gtk_widget_get_accessible (label);
+  atk_obj = ctk_widget_get_accessible (label);
 
   text = atk_text_get_text (ATK_TEXT (atk_obj), 0, -1);
   g_assert_cmpstr (text, ==, "<b>Bold?</b>");
   g_free (text);
 
-  gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+  ctk_label_set_use_markup (GTK_LABEL (label), TRUE);
 
   text = atk_text_get_text (ATK_TEXT (atk_obj), 0, -1);
   g_assert_cmpstr (text, ==, "Bold?");
@@ -1087,15 +1087,15 @@ test_bold_label (void)
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_bug_base ("http://bugzilla.gnome.org/");
 
   g_test_add_func ("/text/bold/GtkLabel", test_bold_label);
 
-  add_text_tests (gtk_label_new (""));
-  add_text_tests (gtk_entry_new ());
-  add_text_tests (gtk_text_view_new ());
+  add_text_tests (ctk_label_new (""));
+  add_text_tests (ctk_entry_new ());
+  add_text_tests (ctk_text_view_new ());
 
   return g_test_run ();
 }

@@ -28,7 +28,7 @@ struct _GtkCssValue {
 };
 
 GtkCssDimension
-gtk_css_number_value_get_dimension (const GtkCssValue *value)
+ctk_css_number_value_get_dimension (const GtkCssValue *value)
 {
   GtkCssNumberValueClass *number_value_class = (GtkCssNumberValueClass *) value->class;
 
@@ -36,7 +36,7 @@ gtk_css_number_value_get_dimension (const GtkCssValue *value)
 }
 
 gboolean
-gtk_css_number_value_has_percent (const GtkCssValue *value)
+ctk_css_number_value_has_percent (const GtkCssValue *value)
 {
   GtkCssNumberValueClass *number_value_class = (GtkCssNumberValueClass *) value->class;
 
@@ -44,7 +44,7 @@ gtk_css_number_value_has_percent (const GtkCssValue *value)
 }
 
 GtkCssValue *
-gtk_css_number_value_multiply (const GtkCssValue *value,
+ctk_css_number_value_multiply (const GtkCssValue *value,
                                double             factor)
 {
   GtkCssNumberValueClass *number_value_class = (GtkCssNumberValueClass *) value->class;
@@ -53,20 +53,20 @@ gtk_css_number_value_multiply (const GtkCssValue *value,
 }
 
 GtkCssValue *
-gtk_css_number_value_add (GtkCssValue *value1,
+ctk_css_number_value_add (GtkCssValue *value1,
                           GtkCssValue *value2)
 {
   GtkCssValue *sum;
 
-  sum = gtk_css_number_value_try_add (value1, value2);
+  sum = ctk_css_number_value_try_add (value1, value2);
   if (sum == NULL)
-    sum = gtk_css_calc_value_new_sum (value1, value2);
+    sum = ctk_css_calc_value_new_sum (value1, value2);
 
   return sum;
 }
 
 GtkCssValue *
-gtk_css_number_value_try_add (const GtkCssValue *value1,
+ctk_css_number_value_try_add (const GtkCssValue *value1,
                               const GtkCssValue *value2)
 {
   GtkCssNumberValueClass *number_value_class;
@@ -80,7 +80,7 @@ gtk_css_number_value_try_add (const GtkCssValue *value1,
 }
 
 /*
- * gtk_css_number_value_get_calc_term_order:
+ * ctk_css_number_value_get_calc_term_order:
  * @value: Value to compute order for
  *
  * Determines the position of @value when printed as part of a calc()
@@ -93,7 +93,7 @@ gtk_css_number_value_try_add (const GtkCssValue *value1,
  *     expression.
  */
 gint
-gtk_css_number_value_get_calc_term_order (const GtkCssValue *value)
+ctk_css_number_value_get_calc_term_order (const GtkCssValue *value)
 {
   GtkCssNumberValueClass *number_value_class = (GtkCssNumberValueClass *) value->class;
 
@@ -101,65 +101,65 @@ gtk_css_number_value_get_calc_term_order (const GtkCssValue *value)
 }
 
 GtkCssValue *
-_gtk_css_number_value_new (double     value,
+_ctk_css_number_value_new (double     value,
                            GtkCssUnit unit)
 {
-  return gtk_css_dimension_value_new (value, unit);
+  return ctk_css_dimension_value_new (value, unit);
 }
 
 GtkCssValue *
-gtk_css_number_value_transition (GtkCssValue *start,
+ctk_css_number_value_transition (GtkCssValue *start,
                                  GtkCssValue *end,
                                  guint        property_id,
                                  double       progress)
 {
   GtkCssValue *result, *mul_start, *mul_end;
 
-  mul_start = gtk_css_number_value_multiply (start, 1 - progress);
-  mul_end = gtk_css_number_value_multiply (end, progress);
+  mul_start = ctk_css_number_value_multiply (start, 1 - progress);
+  mul_end = ctk_css_number_value_multiply (end, progress);
 
-  result = gtk_css_number_value_add (mul_start, mul_end);
+  result = ctk_css_number_value_add (mul_start, mul_end);
 
-  _gtk_css_value_unref (mul_start);
-  _gtk_css_value_unref (mul_end);
+  _ctk_css_value_unref (mul_start);
+  _ctk_css_value_unref (mul_end);
 
   return result;
 }
 
 gboolean
-gtk_css_number_value_can_parse (GtkCssParser *parser)
+ctk_css_number_value_can_parse (GtkCssParser *parser)
 {
-  return _gtk_css_parser_has_number (parser)
-      || _gtk_css_parser_has_prefix (parser, "calc")
-      || _gtk_css_parser_has_prefix (parser, "-gtk-win32-size")
-      || _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-width")
-      || _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-height")
-      || _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-border-top")
-      || _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-border-left")
-      || _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-border-bottom")
-      || _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-border-right");
+  return _ctk_css_parser_has_number (parser)
+      || _ctk_css_parser_has_prefix (parser, "calc")
+      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-size")
+      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-width")
+      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-height")
+      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-top")
+      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-left")
+      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-bottom")
+      || _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-right");
 }
 
 GtkCssValue *
-_gtk_css_number_value_parse (GtkCssParser           *parser,
+_ctk_css_number_value_parse (GtkCssParser           *parser,
                              GtkCssNumberParseFlags  flags)
 {
-  if (_gtk_css_parser_has_prefix (parser, "calc"))
-    return gtk_css_calc_value_parse (parser, flags);
-  if (_gtk_css_parser_has_prefix (parser, "-gtk-win32-size") ||
-      _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-width") ||
-      _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-height") ||
-      _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-border-top") ||
-      _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-border-left") ||
-      _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-border-bottom") ||
-      _gtk_css_parser_has_prefix (parser, "-gtk-win32-part-border-right"))
-    return gtk_css_win32_size_value_parse (parser, flags);
+  if (_ctk_css_parser_has_prefix (parser, "calc"))
+    return ctk_css_calc_value_parse (parser, flags);
+  if (_ctk_css_parser_has_prefix (parser, "-gtk-win32-size") ||
+      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-width") ||
+      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-height") ||
+      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-top") ||
+      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-left") ||
+      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-bottom") ||
+      _ctk_css_parser_has_prefix (parser, "-gtk-win32-part-border-right"))
+    return ctk_css_win32_size_value_parse (parser, flags);
 
-  return gtk_css_dimension_value_parse (parser, flags);
+  return ctk_css_dimension_value_parse (parser, flags);
 }
 
 double
-_gtk_css_number_value_get (const GtkCssValue *number,
+_ctk_css_number_value_get (const GtkCssValue *number,
                            double             one_hundred_percent)
 {
   GtkCssNumberValueClass *number_value_class;

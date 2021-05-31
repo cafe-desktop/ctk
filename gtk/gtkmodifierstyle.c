@@ -30,43 +30,43 @@ struct _GtkModifierStylePrivate
   GHashTable *color_properties;
 };
 
-static void gtk_modifier_style_provider_init         (GtkStyleProviderIface            *iface);
-static void gtk_modifier_style_provider_private_init (GtkStyleProviderPrivateInterface *iface);
-static void gtk_modifier_style_finalize              (GObject                          *object);
+static void ctk_modifier_style_provider_init         (GtkStyleProviderIface            *iface);
+static void ctk_modifier_style_provider_private_init (GtkStyleProviderPrivateInterface *iface);
+static void ctk_modifier_style_finalize              (GObject                          *object);
 
-G_DEFINE_TYPE_EXTENDED (GtkModifierStyle, _gtk_modifier_style, G_TYPE_OBJECT, 0,
+G_DEFINE_TYPE_EXTENDED (GtkModifierStyle, _ctk_modifier_style, G_TYPE_OBJECT, 0,
                         G_ADD_PRIVATE (GtkModifierStyle)
                         G_IMPLEMENT_INTERFACE (GTK_TYPE_STYLE_PROVIDER,
-                                               gtk_modifier_style_provider_init)
+                                               ctk_modifier_style_provider_init)
                         G_IMPLEMENT_INTERFACE (GTK_TYPE_STYLE_PROVIDER_PRIVATE,
-                                               gtk_modifier_style_provider_private_init));
+                                               ctk_modifier_style_provider_private_init));
 
 static void
-_gtk_modifier_style_class_init (GtkModifierStyleClass *klass)
+_ctk_modifier_style_class_init (GtkModifierStyleClass *klass)
 {
   GObjectClass *object_class;
 
   object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_modifier_style_finalize;
+  object_class->finalize = ctk_modifier_style_finalize;
 }
 
 static void
-_gtk_modifier_style_init (GtkModifierStyle *modifier_style)
+_ctk_modifier_style_init (GtkModifierStyle *modifier_style)
 {
   GtkModifierStylePrivate *priv;
 
-  priv = modifier_style->priv = _gtk_modifier_style_get_instance_private (modifier_style);
+  priv = modifier_style->priv = _ctk_modifier_style_get_instance_private (modifier_style);
 
   priv->color_properties = g_hash_table_new_full (g_str_hash,
                                                   g_str_equal,
                                                   (GDestroyNotify) g_free,
                                                   (GDestroyNotify) gdk_rgba_free);
-  priv->style = gtk_style_properties_new ();
+  priv->style = ctk_style_properties_new ();
 }
 
 static gboolean
-gtk_modifier_style_get_style_property (GtkStyleProvider *provider,
+ctk_modifier_style_get_style_property (GtkStyleProvider *provider,
                                        GtkWidgetPath    *path,
                                        GtkStateFlags     state,
                                        GParamSpec       *pspec,
@@ -101,43 +101,43 @@ gtk_modifier_style_get_style_property (GtkStyleProvider *provider,
 }
 
 static void
-gtk_modifier_style_provider_init (GtkStyleProviderIface *iface)
+ctk_modifier_style_provider_init (GtkStyleProviderIface *iface)
 {
-  iface->get_style_property = gtk_modifier_style_get_style_property;
+  iface->get_style_property = ctk_modifier_style_get_style_property;
 }
 
 static GtkCssValue *
-gtk_modifier_style_provider_get_color (GtkStyleProviderPrivate *provider,
+ctk_modifier_style_provider_get_color (GtkStyleProviderPrivate *provider,
                                        const char              *name)
 {
   GtkModifierStyle *style = GTK_MODIFIER_STYLE (provider);
 
-  return _gtk_style_provider_private_get_color (GTK_STYLE_PROVIDER_PRIVATE (style->priv->style), name);
+  return _ctk_style_provider_private_get_color (GTK_STYLE_PROVIDER_PRIVATE (style->priv->style), name);
 }
 
 static void
-gtk_modifier_style_provider_lookup (GtkStyleProviderPrivate *provider,
+ctk_modifier_style_provider_lookup (GtkStyleProviderPrivate *provider,
                                     const GtkCssMatcher     *matcher,
                                     GtkCssLookup            *lookup,
                                     GtkCssChange            *change)
 {
   GtkModifierStyle *style = GTK_MODIFIER_STYLE (provider);
 
-  _gtk_style_provider_private_lookup (GTK_STYLE_PROVIDER_PRIVATE (style->priv->style),
+  _ctk_style_provider_private_lookup (GTK_STYLE_PROVIDER_PRIVATE (style->priv->style),
                                       matcher,
                                       lookup,
                                       change);
 }
 
 static void
-gtk_modifier_style_provider_private_init (GtkStyleProviderPrivateInterface *iface)
+ctk_modifier_style_provider_private_init (GtkStyleProviderPrivateInterface *iface)
 {
-  iface->get_color = gtk_modifier_style_provider_get_color;
-  iface->lookup = gtk_modifier_style_provider_lookup;
+  iface->get_color = ctk_modifier_style_provider_get_color;
+  iface->lookup = ctk_modifier_style_provider_lookup;
 }
 
 static void
-gtk_modifier_style_finalize (GObject *object)
+ctk_modifier_style_finalize (GObject *object)
 {
   GtkModifierStylePrivate *priv;
 
@@ -145,11 +145,11 @@ gtk_modifier_style_finalize (GObject *object)
   g_hash_table_destroy (priv->color_properties);
   g_object_unref (priv->style);
 
-  G_OBJECT_CLASS (_gtk_modifier_style_parent_class)->finalize (object);
+  G_OBJECT_CLASS (_ctk_modifier_style_parent_class)->finalize (object);
 }
 
 GtkModifierStyle *
-_gtk_modifier_style_new (void)
+_ctk_modifier_style_new (void)
 {
   return g_object_new (GTK_TYPE_MODIFIER_STYLE, NULL);
 }
@@ -167,17 +167,17 @@ modifier_style_set_color (GtkModifierStyle *style,
   priv = style->priv;
 
   if (color)
-    gtk_style_properties_set (priv->style, state,
+    ctk_style_properties_set (priv->style, state,
                               prop, color,
                               NULL);
   else
-    gtk_style_properties_unset_property (priv->style, prop, state);
+    ctk_style_properties_unset_property (priv->style, prop, state);
 
-  _gtk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
+  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
 }
 
 void
-_gtk_modifier_style_set_background_color (GtkModifierStyle *style,
+_ctk_modifier_style_set_background_color (GtkModifierStyle *style,
                                           GtkStateFlags     state,
                                           const GdkRGBA    *color)
 {
@@ -187,7 +187,7 @@ _gtk_modifier_style_set_background_color (GtkModifierStyle *style,
 }
 
 void
-_gtk_modifier_style_set_color (GtkModifierStyle *style,
+_ctk_modifier_style_set_color (GtkModifierStyle *style,
                                GtkStateFlags     state,
                                const GdkRGBA    *color)
 {
@@ -197,7 +197,7 @@ _gtk_modifier_style_set_color (GtkModifierStyle *style,
 }
 
 void
-_gtk_modifier_style_set_font (GtkModifierStyle           *style,
+_ctk_modifier_style_set_font (GtkModifierStyle           *style,
                               const PangoFontDescription *font_desc)
 {
   GtkModifierStylePrivate *priv;
@@ -207,17 +207,17 @@ _gtk_modifier_style_set_font (GtkModifierStyle           *style,
   priv = style->priv;
 
   if (font_desc)
-    gtk_style_properties_set (priv->style, 0,
+    ctk_style_properties_set (priv->style, 0,
                               "font", font_desc,
                               NULL);
   else
-    gtk_style_properties_unset_property (priv->style, "font", 0);
+    ctk_style_properties_unset_property (priv->style, "font", 0);
 
-  _gtk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
+  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
 }
 
 void
-_gtk_modifier_style_map_color (GtkModifierStyle *style,
+_ctk_modifier_style_map_color (GtkModifierStyle *style,
                                const gchar      *name,
                                const GdkRGBA    *color)
 {
@@ -230,16 +230,16 @@ _gtk_modifier_style_map_color (GtkModifierStyle *style,
   priv = style->priv;
 
   if (color)
-    symbolic_color = gtk_symbolic_color_new_literal (color);
+    symbolic_color = ctk_symbolic_color_new_literal (color);
 
-  gtk_style_properties_map_color (priv->style,
+  ctk_style_properties_map_color (priv->style,
                                   name, symbolic_color);
 
-  _gtk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
+  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
 }
 
 void
-_gtk_modifier_style_set_color_property (GtkModifierStyle *style,
+_ctk_modifier_style_set_color_property (GtkModifierStyle *style,
                                         GType             widget_type,
                                         const gchar      *prop_name,
                                         const GdkRGBA    *color)
@@ -275,7 +275,7 @@ _gtk_modifier_style_set_color_property (GtkModifierStyle *style,
       g_free (str);
     }
 
-  _gtk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
+  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS

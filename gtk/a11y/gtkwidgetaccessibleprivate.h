@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-void _gtk_widget_accessible_set_layer (GtkWidgetAccessible *accessible,
+void _ctk_widget_accessible_set_layer (GtkWidgetAccessible *accessible,
                                        AtkLayer             layer);
 
 G_END_DECLS

@@ -43,8 +43,8 @@ load_types (void)
 {
   volatile GType type;
 
-  type = gtk_radio_button_get_type ();
-  type = gtk_label_get_type ();
+  type = ctk_radio_button_get_type ();
+  type = ctk_label_get_type ();
 }
 
 int
@@ -52,7 +52,7 @@ main (int argc, char *argv[])
 {
   gint i;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
   load_types ();
 
   for (i = 0; tests[i].test; i++)
@@ -61,10 +61,10 @@ main (int argc, char *argv[])
       gchar *path, *rpath;
       gboolean result;
       
-      list = _gtk_rc_parse_widget_class_path (tests[i].pattern);
+      list = _ctk_rc_parse_widget_class_path (tests[i].pattern);
       path = g_strdup (tests[i].test);
       rpath = g_utf8_strreverse (path, -1);
-      result = _gtk_rc_match_widget_class (list, strlen (path), path, rpath);
+      result = _ctk_rc_match_widget_class (list, strlen (path), path, rpath);
       g_print ("%d. \"%s\" \"%s\", expected %d, got %d\n",
 	       i, tests[i].pattern, tests[i].test, tests[i].match, result);
       g_assert (result == tests[i].match);

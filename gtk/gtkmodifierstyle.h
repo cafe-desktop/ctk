@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MODIFIER_STYLE         (_gtk_modifier_style_get_type ())
+#define GTK_TYPE_MODIFIER_STYLE         (_ctk_modifier_style_get_type ())
 #define GTK_MODIFIER_STYLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_MODIFIER_STYLE, GtkModifierStyle))
 #define GTK_MODIFIER_STYLE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), GTK_TYPE_MODIFIER_STYLE, GtkModifierStyleClass))
 #define GTK_IS_MODIFIER_STYLE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_MODIFIER_STYLE))
@@ -46,30 +46,30 @@ struct _GtkModifierStyleClass
   GObjectClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
-GType _gtk_modifier_style_get_type (void) G_GNUC_CONST;
+GType _ctk_modifier_style_get_type (void) G_GNUC_CONST;
 
-GtkModifierStyle * _gtk_modifier_style_new (void);
+GtkModifierStyle * _ctk_modifier_style_new (void);
 
-void _gtk_modifier_style_set_background_color (GtkModifierStyle *style,
+void _ctk_modifier_style_set_background_color (GtkModifierStyle *style,
                                                GtkStateFlags     state,
                                                const GdkRGBA    *color);
-void _gtk_modifier_style_set_color            (GtkModifierStyle *style,
+void _ctk_modifier_style_set_color            (GtkModifierStyle *style,
                                                GtkStateFlags     state,
                                                const GdkRGBA    *color);
-void _gtk_modifier_style_set_font             (GtkModifierStyle           *style,
+void _ctk_modifier_style_set_font             (GtkModifierStyle           *style,
                                                const PangoFontDescription *font_desc);
 
-void _gtk_modifier_style_map_color            (GtkModifierStyle *style,
+void _ctk_modifier_style_map_color            (GtkModifierStyle *style,
                                                const gchar      *name,
                                                const GdkRGBA    *color);
 
-void _gtk_modifier_style_set_color_property   (GtkModifierStyle *style,
+void _ctk_modifier_style_set_color_property   (GtkModifierStyle *style,
                                                GType             widget_type,
                                                const gchar      *prop_name,
                                                const GdkRGBA    *color);

@@ -19,7 +19,7 @@ activate_first_row (GSimpleAction *simple,
   const gchar *text = "First row activated (no parameter action)";
 
   g_print ("%s\n", text);
-  gtk_label_set_label (GTK_LABEL (user_data), text);
+  ctk_label_set_label (GTK_LABEL (user_data), text);
 }
 
 static void
@@ -30,7 +30,7 @@ activate_print_string (GSimpleAction *simple,
   const gchar *text = g_variant_get_string (parameter, NULL);
 
   g_print ("%s\n", text);
-  gtk_label_set_label (GTK_LABEL (user_data), text);
+  ctk_label_set_label (GTK_LABEL (user_data), text);
 }
 
 static void
@@ -44,7 +44,7 @@ activate_print_int (GSimpleAction *simple,
   text = g_strdup_printf ("Row %d activated (int action)", value);
 
   g_print ("%s\n", text);
-  gtk_label_set_label (GTK_LABEL (user_data), text);
+  ctk_label_set_label (GTK_LABEL (user_data), text);
 }
 
 static void
@@ -52,13 +52,13 @@ row_without_gaction_activated_cb (GtkListBox    *list,
                                   GtkListBoxRow *row,
                                   gpointer       user_data)
 {
-  int index = gtk_list_box_row_get_index (row);
+  int index = ctk_list_box_row_get_index (row);
   gchar *text;
 
   text = g_strdup_printf ("Row %d activated (signal based)", index);
 
   g_print ("%s\n", text);
-  gtk_label_set_label (GTK_LABEL (user_data), text);
+  ctk_label_set_label (GTK_LABEL (user_data), text);
 }
 
 static void
@@ -67,7 +67,7 @@ add_separator (GtkListBoxRow *row, GtkListBoxRow *before, gpointer data)
   if (!before)
     return;
 
-  gtk_list_box_row_set_header (row, gtk_separator_new (GTK_ORIENTATION_HORIZONTAL));
+  ctk_list_box_row_set_header (row, ctk_separator_new (GTK_ORIENTATION_HORIZONTAL));
 }
 
 static GtkWidget *
@@ -75,10 +75,10 @@ create_row (const gchar *text)
 {
   GtkWidget *row_content, *label;
 
-  row_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+  row_content = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
 
-  label = gtk_label_new (text);
-  gtk_container_add (GTK_CONTAINER (row_content), label);
+  label = ctk_label_new (text);
+  ctk_container_add (GTK_CONTAINER (row_content), label);
 
   return row_content;
 }
@@ -95,34 +95,34 @@ new_window (GApplication *app)
   gint i;
   gchar *text, *text2;
 
-  window = gtk_application_window_new (GTK_APPLICATION (app));
-  gtk_window_set_default_size (GTK_WINDOW (window), 300, 300);
+  window = ctk_application_window_new (GTK_APPLICATION (app));
+  ctk_window_set_default_size (GTK_WINDOW (window), 300, 300);
 
   /* widget creation */
-  grid = gtk_grid_new ();
-  gtk_container_add (GTK_CONTAINER (window), grid);
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_set_hexpand (GTK_WIDGET (sw), 1);
-  gtk_widget_set_vexpand (GTK_WIDGET (sw), 1);
-  gtk_grid_attach (GTK_GRID (grid), sw, 0, 0, 1, 1);
+  grid = ctk_grid_new ();
+  ctk_container_add (GTK_CONTAINER (window), grid);
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_widget_set_hexpand (GTK_WIDGET (sw), 1);
+  ctk_widget_set_vexpand (GTK_WIDGET (sw), 1);
+  ctk_grid_attach (GTK_GRID (grid), sw, 0, 0, 1, 1);
 
-  list = gtk_list_box_new ();
-  gtk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
-  gtk_list_box_set_header_func (GTK_LIST_BOX (list), add_separator, NULL, NULL);
-  gtk_container_add (GTK_CONTAINER (sw), list);
+  list = ctk_list_box_new ();
+  ctk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
+  ctk_list_box_set_header_func (GTK_LIST_BOX (list), add_separator, NULL, NULL);
+  ctk_container_add (GTK_CONTAINER (sw), list);
 
-  label = gtk_label_new ("No row activated");
-  gtk_grid_attach (GTK_GRID (grid), label, 0, 1, 1, 1);
+  label = ctk_label_new ("No row activated");
+  ctk_grid_attach (GTK_GRID (grid), label, 0, 1, 1, 1);
 
   /* no parameter action row */
   action = g_simple_action_new ("first-row-action", NULL);
   g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
 
   row_content = create_row ("First row (no parameter action)");
-  gtk_list_box_insert (GTK_LIST_BOX (list), row_content, -1);
+  ctk_list_box_insert (GTK_LIST_BOX (list), row_content, -1);
 
-  row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (list), 0);
-  gtk_actionable_set_action_name (GTK_ACTIONABLE (row), "win.first-row-action");
+  row = ctk_list_box_get_row_at_index (GTK_LIST_BOX (list), 0);
+  ctk_actionable_set_action_name (GTK_ACTIONABLE (row), "win.first-row-action");
 
   g_signal_connect (action, "activate", (GCallback) activate_first_row, label);
 
@@ -134,12 +134,12 @@ new_window (GApplication *app)
     {
       text = g_strdup_printf ("Row %d (string action)", i);
       row_content = create_row (text);
-      gtk_list_box_insert (GTK_LIST_BOX (list), row_content, -1);
+      ctk_list_box_insert (GTK_LIST_BOX (list), row_content, -1);
 
-      row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (list), i);
+      row = ctk_list_box_get_row_at_index (GTK_LIST_BOX (list), i);
       text2 = g_strdup_printf ("Row %d activated (string action)", i);
-      gtk_actionable_set_action_target (GTK_ACTIONABLE (row), "s", text2);
-      gtk_actionable_set_action_name (GTK_ACTIONABLE (row), "win.print-string");
+      ctk_actionable_set_action_target (GTK_ACTIONABLE (row), "s", text2);
+      ctk_actionable_set_action_name (GTK_ACTIONABLE (row), "win.print-string");
     }
 
   g_signal_connect (action, "activate", (GCallback) activate_print_string, label);
@@ -152,11 +152,11 @@ new_window (GApplication *app)
     {
       text = g_strdup_printf ("Row %d (int action)", i);
       row_content = create_row (text);
-      gtk_list_box_insert (GTK_LIST_BOX (list), row_content, -1);
+      ctk_list_box_insert (GTK_LIST_BOX (list), row_content, -1);
 
-      row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (list), i);
-      gtk_actionable_set_action_target (GTK_ACTIONABLE (row), "i", i);
-      gtk_actionable_set_action_name (GTK_ACTIONABLE (row), "win.print-int");
+      row = ctk_list_box_get_row_at_index (GTK_LIST_BOX (list), i);
+      ctk_actionable_set_action_target (GTK_ACTIONABLE (row), "i", i);
+      ctk_actionable_set_action_name (GTK_ACTIONABLE (row), "win.print-int");
     }
 
   g_signal_connect (action, "activate", (GCallback) activate_print_int, label);
@@ -166,14 +166,14 @@ new_window (GApplication *app)
     {
       text = g_strdup_printf ("Row %d (signal based)", i);
       row_content = create_row (text);
-      gtk_list_box_insert (GTK_LIST_BOX (list), row_content, -1);
+      ctk_list_box_insert (GTK_LIST_BOX (list), row_content, -1);
     }
 
   g_signal_connect (list, "row-activated",
                     G_CALLBACK (row_without_gaction_activated_cb), label);
 
   /* let the show begin */
-  gtk_widget_show_all (GTK_WIDGET (window));
+  ctk_widget_show_all (GTK_WIDGET (window));
 }
 
 static void

@@ -783,10 +783,10 @@ msgstr "Vrednost"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Vrnjena vrednost gtk_radio_action_get_current_value() kadar je dejanje del "
+"Vrnjena vrednost ctk_radio_action_get_current_value() kadar je dejanje del "
 "trenutnega dejanja izbrane skupine."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1248,10 +1248,10 @@ msgstr "Logotip"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Logotip za okno o programu. V kolikor ta možnost ni nastavljena, bo privzeto "
-"nastavljena na gtk_window_get_default_icon_list()"
+"nastavljena na ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3449,10 +3449,10 @@ msgstr "Korak prikaza napredka"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Velikost premika celotne širine prikaza napredka za vsak klic "
-"gtk_entry_progress_pulse()"
+"ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9070,8 +9070,8 @@ msgid "No show all"
 msgstr "Brez prikazovanja vseh"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Ali možnost gtk_widget_show_all() ne vpliva na gradnik"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Ali možnost ctk_widget_show_all() ne vpliva na gradnik"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

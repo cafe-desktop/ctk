@@ -44,7 +44,7 @@ struct _GtkAppChooserIface {
 };
 
 void
-_gtk_app_chooser_widget_set_search_entry (GtkAppChooserWidget *self,
+_ctk_app_chooser_widget_set_search_entry (GtkAppChooserWidget *self,
                                           GtkEntry            *entry);
 
 

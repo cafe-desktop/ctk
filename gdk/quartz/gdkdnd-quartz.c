@@ -29,7 +29,7 @@ G_DEFINE_TYPE (GdkQuartzDragContext, gdk_quartz_drag_context, GDK_TYPE_DRAG_CONT
 GdkDragContext *_gdk_quartz_drag_source_context = NULL;
 
 GdkDragContext *
-gdk_quartz_drag_source_context_libgtk_only ()
+gdk_quartz_drag_source_context_libctk_only ()
 {
   return _gdk_quartz_drag_source_context;
 }
@@ -144,7 +144,7 @@ gdk_quartz_drag_context_drop_status (GdkDragContext *context)
 }
 
 id
-gdk_quartz_drag_context_get_dragging_info_libgtk_only (GdkDragContext *context)
+gdk_quartz_drag_context_get_dragging_info_libctk_only (GdkDragContext *context)
 {
   return GDK_QUARTZ_DRAG_CONTEXT (context)->dragging_info;
 }

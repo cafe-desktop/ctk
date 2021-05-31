@@ -27,14 +27,14 @@ struct _GtkCssValue {
 };
 
 static void
-gtk_css_value_image_free (GtkCssValue *value)
+ctk_css_value_image_free (GtkCssValue *value)
 {
   g_object_unref (value->image);
   g_slice_free (GtkCssValue, value);
 }
 
 static GtkCssValue *
-gtk_css_value_image_compute (GtkCssValue             *value,
+ctk_css_value_image_compute (GtkCssValue             *value,
                              guint                    property_id,
                              GtkStyleProviderPrivate *provider,
                              GtkCssStyle             *style,
@@ -42,80 +42,80 @@ gtk_css_value_image_compute (GtkCssValue             *value,
 {
   GtkCssImage *image, *computed;
   
-  image = _gtk_css_image_value_get_image (value);
+  image = _ctk_css_image_value_get_image (value);
 
   if (image == NULL)
-    return _gtk_css_value_ref (value);
+    return _ctk_css_value_ref (value);
 
-  computed = _gtk_css_image_compute (image, property_id, provider, style, parent_style);
+  computed = _ctk_css_image_compute (image, property_id, provider, style, parent_style);
 
   if (computed == image)
     {
       g_object_unref (computed);
-      return _gtk_css_value_ref (value);
+      return _ctk_css_value_ref (value);
     }
 
-  return _gtk_css_image_value_new (computed);
+  return _ctk_css_image_value_new (computed);
 }
 
 static gboolean
-gtk_css_value_image_equal (const GtkCssValue *value1,
+ctk_css_value_image_equal (const GtkCssValue *value1,
                            const GtkCssValue *value2)
 {
-  return _gtk_css_image_equal (value1->image, value2->image);
+  return _ctk_css_image_equal (value1->image, value2->image);
 }
 
 static GtkCssValue *
-gtk_css_value_image_transition (GtkCssValue *start,
+ctk_css_value_image_transition (GtkCssValue *start,
                                 GtkCssValue *end,
                                 guint        property_id,
                                 double       progress)
 {
   GtkCssImage *transition;
 
-  transition = _gtk_css_image_transition (_gtk_css_image_value_get_image (start),
-                                          _gtk_css_image_value_get_image (end),
+  transition = _ctk_css_image_transition (_ctk_css_image_value_get_image (start),
+                                          _ctk_css_image_value_get_image (end),
                                           property_id,
                                           progress);
       
-  return _gtk_css_image_value_new (transition);
+  return _ctk_css_image_value_new (transition);
 }
 
 static void
-gtk_css_value_image_print (const GtkCssValue *value,
+ctk_css_value_image_print (const GtkCssValue *value,
                            GString           *string)
 {
   if (value->image)
-    _gtk_css_image_print (value->image, string);
+    _ctk_css_image_print (value->image, string);
   else
     g_string_append (string, "none");
 }
 
 static const GtkCssValueClass GTK_CSS_VALUE_IMAGE = {
-  gtk_css_value_image_free,
-  gtk_css_value_image_compute,
-  gtk_css_value_image_equal,
-  gtk_css_value_image_transition,
-  gtk_css_value_image_print
+  ctk_css_value_image_free,
+  ctk_css_value_image_compute,
+  ctk_css_value_image_equal,
+  ctk_css_value_image_transition,
+  ctk_css_value_image_print
 };
 
 GtkCssValue *
-_gtk_css_image_value_new (GtkCssImage *image)
+_ctk_css_image_value_new (GtkCssImage *image)
 {
   static GtkCssValue none_singleton = { &GTK_CSS_VALUE_IMAGE, 1, NULL };
   GtkCssValue *value;
 
   if (image == NULL)
-    return _gtk_css_value_ref (&none_singleton);
+    return _ctk_css_value_ref (&none_singleton);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_IMAGE);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_IMAGE);
   value->image = image;
 
   return value;
 }
 
 GtkCssImage *
-_gtk_css_image_value_get_image (const GtkCssValue *value)
+_ctk_css_image_value_get_image (const GtkCssValue *value)
 {
   g_return_val_if_fail (value->class == &GTK_CSS_VALUE_IMAGE, NULL);
 

@@ -31,11 +31,11 @@ redraw_event_box (GtkWidget *widget)
     {
       if (GTK_IS_EVENT_BOX (widget))
         {
-          gtk_widget_queue_draw (widget);
+          ctk_widget_queue_draw (widget);
           break;
         }
 
-      widget = gtk_widget_get_parent (widget);
+      widget = ctk_widget_get_parent (widget);
     }
 }
 
@@ -46,8 +46,8 @@ combo_changed_cb (GtkWidget *combo,
   GtkWidget *label = GTK_WIDGET (data);
   gint active;
 
-  active = gtk_combo_box_get_active (GTK_COMBO_BOX (combo));
-  gtk_label_set_ellipsize (GTK_LABEL (label), (PangoEllipsizeMode)active);
+  active = ctk_combo_box_get_active (GTK_COMBO_BOX (combo));
+  ctk_label_set_ellipsize (GTK_LABEL (label), (PangoEllipsizeMode)active);
   redraw_event_box (label);
 }
 
@@ -55,10 +55,10 @@ static void
 scale_changed_cb (GtkRange *range,
 		  gpointer   data)
 {
-  double angle = gtk_range_get_value (range);
+  double angle = ctk_range_get_value (range);
   GtkWidget *label = GTK_WIDGET (data);
   
-  gtk_label_set_angle (GTK_LABEL (label), angle);
+  ctk_label_set_angle (GTK_LABEL (label), angle);
   redraw_event_box (label);
 }
 
@@ -80,10 +80,10 @@ ebox_draw_cb (GtkWidget *widget,
   cairo_set_source_rgb (cr, 1, 1, 1);
   cairo_paint (cr);
 
-  gtk_widget_translate_coordinates (label, widget, 0, 0, &x, &y);
-  layout = gtk_widget_create_pango_layout (widget, "");
+  ctk_widget_translate_coordinates (label, widget, 0, 0, &x, &y);
+  layout = ctk_widget_create_pango_layout (widget, "");
 
-  gtk_widget_get_preferred_size (label, &minimum_size, &natural_size); 
+  ctk_widget_get_preferred_size (label, &minimum_size, &natural_size); 
 
   pango_layout_set_markup (layout,
     "<span color='#c33'>\342\227\217 requisition</span>\n"
@@ -93,7 +93,7 @@ ebox_draw_cb (GtkWidget *widget,
   pango_cairo_show_layout (cr, layout);
   g_object_unref (layout);
 
-  gtk_widget_get_allocation (label, &label_allocation);
+  ctk_widget_get_allocation (label, &label_allocation);
 
   cairo_rectangle (cr,
                    x + 0.5 * (label_allocation.width - minimum_size.width),
@@ -125,37 +125,37 @@ main (int argc, char *argv[])
   GtkWidget *window, *vbox, *label;
   GtkWidget *combo, *scale, *ebox;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_container_set_border_width (GTK_CONTAINER (window), 12);
-  gtk_window_set_default_size (GTK_WINDOW (window), 400, 300);
-  g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 12);
+  ctk_window_set_default_size (GTK_WINDOW (window), 400, 300);
+  g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
-  combo = gtk_combo_box_text_new ();
-  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL,
+  combo = ctk_combo_box_text_new ();
+  scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL,
                                     0, 360, 1);
-  label = gtk_label_new ("This label may be ellipsized\nto make it fit.");
+  label = ctk_label_new ("This label may be ellipsized\nto make it fit.");
 
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "NONE");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "START");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "MIDDLE");
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "END");
-  gtk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "NONE");
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "START");
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "MIDDLE");
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "END");
+  ctk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
 
-  gtk_widget_set_halign (label, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (label, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
 
-  ebox = gtk_event_box_new ();
-  gtk_widget_set_app_paintable (ebox, TRUE);
-  gtk_container_add (GTK_CONTAINER (ebox), label);
+  ebox = ctk_event_box_new ();
+  ctk_widget_set_app_paintable (ebox, TRUE);
+  ctk_container_add (GTK_CONTAINER (ebox), label);
 
-  gtk_box_pack_start (GTK_BOX (vbox), combo, FALSE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (vbox), scale, FALSE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (vbox), ebox, TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), combo, FALSE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), scale, FALSE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), ebox, TRUE, TRUE, 0);
 
   g_object_set_data (G_OBJECT (label), "combo", combo);
 
@@ -163,9 +163,9 @@ main (int argc, char *argv[])
   g_signal_connect (scale, "value-changed", G_CALLBACK (scale_changed_cb), label);
   g_signal_connect (ebox, "draw", G_CALLBACK (ebox_draw_cb), label);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

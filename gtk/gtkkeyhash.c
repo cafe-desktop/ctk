@@ -112,17 +112,17 @@ key_hash_keys_changed (GdkKeymap  *keymap,
 }
 
 /**
- * _gtk_key_hash_new:
+ * _ctk_key_hash_new:
  * @keymap: a #GdkKeymap
  * @item_destroy_notify: function to be called when items are removed
  *   from the hash or %NULL.
  * 
  * Create a new key hash object for doing binding resolution. 
  * 
- * Returns: the newly created object. Free with _gtk_key_hash_free().
+ * Returns: the newly created object. Free with _ctk_key_hash_free().
  **/
 GtkKeyHash *
-_gtk_key_hash_new (GdkKeymap      *keymap,
+_ctk_key_hash_new (GdkKeymap      *keymap,
 		   GDestroyNotify  item_destroy_notify)
 {
   GtkKeyHash *key_hash = g_new (GtkKeyHash, 1);
@@ -161,13 +161,13 @@ key_hash_free_entry_foreach (gpointer value,
 }
 
 /**
- * gtk_key_hash_free:
+ * ctk_key_hash_free:
  * @key_hash: a #GtkKeyHash
  * 
- * Destroys a key hash created with gtk_key_hash_new()
+ * Destroys a key hash created with ctk_key_hash_new()
  **/
 void
-_gtk_key_hash_free (GtkKeyHash *key_hash)
+_ctk_key_hash_free (GtkKeyHash *key_hash)
 {
   g_signal_handlers_disconnect_by_func (key_hash->keymap,
 					key_hash_keys_changed,
@@ -188,7 +188,7 @@ _gtk_key_hash_free (GtkKeyHash *key_hash)
 }
 
 /**
- * _gtk_key_hash_add_entry:
+ * _ctk_key_hash_add_entry:
  * @key_hash: a #GtkKeyHash
  * @keyval: key symbol for this binding
  * @modifiers: modifiers for this binding
@@ -197,7 +197,7 @@ _gtk_key_hash_free (GtkKeyHash *key_hash)
  * Inserts a pair of key symbol and modifier mask into the key hash. 
  **/
 void
-_gtk_key_hash_add_entry (GtkKeyHash      *key_hash,
+_ctk_key_hash_add_entry (GtkKeyHash      *key_hash,
 			 guint            keyval,
 			 GdkModifierType  modifiers,
 			 gpointer         value)
@@ -217,15 +217,15 @@ _gtk_key_hash_add_entry (GtkKeyHash      *key_hash,
 }
 
 /**
- * _gtk_key_hash_remove_entry:
+ * _ctk_key_hash_remove_entry:
  * @key_hash: a #GtkKeyHash
- * @value: value previously added with _gtk_key_hash_add_entry()
+ * @value: value previously added with _ctk_key_hash_add_entry()
  * 
  * Removes a value previously added to the key hash with
- * _gtk_key_hash_add_entry().
+ * _ctk_key_hash_add_entry().
  **/
 void
-_gtk_key_hash_remove_entry (GtkKeyHash *key_hash,
+_ctk_key_hash_remove_entry (GtkKeyHash *key_hash,
 			    gpointer    value)
 {
   GList *entry_node = g_hash_table_lookup (key_hash->reverse_hash, value);
@@ -353,7 +353,7 @@ keyval_in_group (GdkKeymap  *keymap,
 }
 
 /**
- * _gtk_key_hash_lookup:
+ * _ctk_key_hash_lookup:
  * @key_hash: a #GtkKeyHash
  * @hardware_keycode: hardware keycode field from a #GdkEventKey
  * @state: state field from a #GdkEventKey
@@ -377,7 +377,7 @@ keyval_in_group (GdkKeymap  *keymap,
  *     Free with g_slist_free() when no longer needed.
  */
 GSList *
-_gtk_key_hash_lookup (GtkKeyHash      *key_hash,
+_ctk_key_hash_lookup (GtkKeyHash      *key_hash,
 		      guint16          hardware_keycode,
 		      GdkModifierType  state,
 		      GdkModifierType  mask,
@@ -402,7 +402,7 @@ _gtk_key_hash_lookup (GtkKeyHash      *key_hash,
    */
   state &= ~GDK_LOCK_MASK;
 
-  _gtk_translate_keyboard_accel_state (key_hash->keymap,
+  _ctk_translate_keyboard_accel_state (key_hash->keymap,
                                        hardware_keycode, state, mask, group,
                                        &keyval,
                                        &effective_group, &level, &consumed_modifiers);
@@ -524,20 +524,20 @@ _gtk_key_hash_lookup (GtkKeyHash      *key_hash,
 }
 
 /**
- * _gtk_key_hash_lookup_keyval:
+ * _ctk_key_hash_lookup_keyval:
  * @key_hash: a #GtkKeyHash
  * @event: a #GtkEvent
  * 
  * Looks up the best matching entry or entries in the hash table for a
  * given keyval/modifiers pair. It’s better to use
- * _gtk_key_hash_lookup() if you have the original #GdkEventKey
+ * _ctk_key_hash_lookup() if you have the original #GdkEventKey
  * available.  The results are sorted so that entries with less
  * modifiers come before entries with more modifiers.
  * 
  * Returns: A #GSList of all matching entries.
  **/
 GSList *
-_gtk_key_hash_lookup_keyval (GtkKeyHash     *key_hash,
+_ctk_key_hash_lookup_keyval (GtkKeyHash     *key_hash,
 			     guint           keyval,
 			     GdkModifierType modifiers)
 {

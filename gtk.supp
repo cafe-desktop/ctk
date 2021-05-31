@@ -7,7 +7,7 @@
   fun:g_slice_alloc
   fun:g_ptr_array_sized_new
   fun:g_ptr_array_new
-  fun:gtk_widget_class_add_action
+  fun:ctk_widget_class_add_action
 }
 
 {
@@ -24,7 +24,7 @@
    fun:g_object_new
    fun:g_io_module_new
    fun:g_io_modules_scan_all_in_directory_with_scope
-   fun:gtk_media_file_extension_init
+   fun:ctk_media_file_extension_init
 }
 
 {
@@ -34,9 +34,9 @@
    fun:malloc
    fun:g_malloc
    ...
-   fun:gtk_css_node_declaration_make_writable
+   fun:ctk_css_node_declaration_make_writable
    ...
-   fun:gtk_style_constructed
+   fun:ctk_style_constructed
 }
 
 {
@@ -46,9 +46,9 @@
    fun:malloc
    fun:g_malloc
    ...
-   fun:gtk_css_node_declaration_make_writable_resize
+   fun:ctk_css_node_declaration_make_writable_resize
    ...
-   fun:gtk_style_constructed
+   fun:ctk_style_constructed
 }
 
 # AMD driver

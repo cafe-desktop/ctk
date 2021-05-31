@@ -40,7 +40,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_UI_MANAGER            (gtk_ui_manager_get_type ())
+#define GTK_TYPE_UI_MANAGER            (ctk_ui_manager_get_type ())
 #define GTK_UI_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_UI_MANAGER, GtkUIManager))
 #define GTK_UI_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_UI_MANAGER, GtkUIManagerClass))
 #define GTK_IS_UI_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_UI_MANAGER))
@@ -84,10 +84,10 @@ struct _GtkUIManagerClass {
                               const gchar  *path);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 /**
@@ -105,7 +105,7 @@ struct _GtkUIManagerClass {
  * @GTK_UI_MANAGER_POPUP_WITH_ACCELS: Same as %GTK_UI_MANAGER_POPUP, but the
  *   actions’ accelerators are shown.
  *
- * These enumeration values are used by gtk_ui_manager_add_ui() to determine
+ * These enumeration values are used by ctk_ui_manager_add_ui() to determine
  * what UI element to create.
  *
  * Deprecated: 3.10
@@ -125,50 +125,50 @@ typedef enum {
 } GtkUIManagerItemType;
 
 GDK_DEPRECATED_IN_3_10
-GType          gtk_ui_manager_get_type            (void) G_GNUC_CONST;
+GType          ctk_ui_manager_get_type            (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
-GtkUIManager  *gtk_ui_manager_new                 (void);
+GtkUIManager  *ctk_ui_manager_new                 (void);
 GDK_DEPRECATED_IN_3_4
-void           gtk_ui_manager_set_add_tearoffs    (GtkUIManager          *manager,
+void           ctk_ui_manager_set_add_tearoffs    (GtkUIManager          *manager,
                                                    gboolean               add_tearoffs);
 GDK_DEPRECATED_IN_3_4
-gboolean       gtk_ui_manager_get_add_tearoffs    (GtkUIManager          *manager);
+gboolean       ctk_ui_manager_get_add_tearoffs    (GtkUIManager          *manager);
 
 GDK_DEPRECATED_IN_3_10
-void           gtk_ui_manager_insert_action_group (GtkUIManager          *manager,
+void           ctk_ui_manager_insert_action_group (GtkUIManager          *manager,
 						   GtkActionGroup        *action_group,
 						   gint                   pos);
 GDK_DEPRECATED_IN_3_10
-void           gtk_ui_manager_remove_action_group (GtkUIManager          *manager,
+void           ctk_ui_manager_remove_action_group (GtkUIManager          *manager,
 						   GtkActionGroup        *action_group);
 GDK_DEPRECATED_IN_3_10
-GList         *gtk_ui_manager_get_action_groups   (GtkUIManager          *manager);
+GList         *ctk_ui_manager_get_action_groups   (GtkUIManager          *manager);
 GDK_DEPRECATED_IN_3_10
-GtkAccelGroup *gtk_ui_manager_get_accel_group     (GtkUIManager          *manager);
+GtkAccelGroup *ctk_ui_manager_get_accel_group     (GtkUIManager          *manager);
 GDK_DEPRECATED_IN_3_10
-GtkWidget     *gtk_ui_manager_get_widget          (GtkUIManager          *manager,
+GtkWidget     *ctk_ui_manager_get_widget          (GtkUIManager          *manager,
 						   const gchar           *path);
 GDK_DEPRECATED_IN_3_10
-GSList        *gtk_ui_manager_get_toplevels       (GtkUIManager          *manager,
+GSList        *ctk_ui_manager_get_toplevels       (GtkUIManager          *manager,
 						   GtkUIManagerItemType   types);
 GDK_DEPRECATED_IN_3_10
-GtkAction     *gtk_ui_manager_get_action          (GtkUIManager          *manager,
+GtkAction     *ctk_ui_manager_get_action          (GtkUIManager          *manager,
 						   const gchar           *path);
 GDK_DEPRECATED_IN_3_10
-guint          gtk_ui_manager_add_ui_from_string  (GtkUIManager          *manager,
+guint          ctk_ui_manager_add_ui_from_string  (GtkUIManager          *manager,
 						   const gchar           *buffer,
 						   gssize                 length,
 						   GError               **error);
 GDK_DEPRECATED_IN_3_10
-guint          gtk_ui_manager_add_ui_from_file    (GtkUIManager          *manager,
+guint          ctk_ui_manager_add_ui_from_file    (GtkUIManager          *manager,
 						   const gchar           *filename,
 						   GError               **error);
 GDK_DEPRECATED_IN_3_10
-guint          gtk_ui_manager_add_ui_from_resource(GtkUIManager          *manager,
+guint          ctk_ui_manager_add_ui_from_resource(GtkUIManager          *manager,
 						   const gchar           *resource_path,
 						   GError               **error);
 GDK_DEPRECATED_IN_3_10
-void           gtk_ui_manager_add_ui              (GtkUIManager          *manager,
+void           ctk_ui_manager_add_ui              (GtkUIManager          *manager,
 						   guint                  merge_id,
 						   const gchar           *path,
 						   const gchar           *name,
@@ -176,14 +176,14 @@ void           gtk_ui_manager_add_ui              (GtkUIManager          *manage
 						   GtkUIManagerItemType   type,
 						   gboolean               top);
 GDK_DEPRECATED_IN_3_10
-void           gtk_ui_manager_remove_ui           (GtkUIManager          *manager,
+void           ctk_ui_manager_remove_ui           (GtkUIManager          *manager,
 						   guint                  merge_id);
 GDK_DEPRECATED_IN_3_10
-gchar         *gtk_ui_manager_get_ui              (GtkUIManager          *manager);
+gchar         *ctk_ui_manager_get_ui              (GtkUIManager          *manager);
 GDK_DEPRECATED_IN_3_10
-void           gtk_ui_manager_ensure_update       (GtkUIManager          *manager);
+void           ctk_ui_manager_ensure_update       (GtkUIManager          *manager);
 GDK_DEPRECATED_IN_3_10
-guint          gtk_ui_manager_new_merge_id        (GtkUIManager          *manager);
+guint          ctk_ui_manager_new_merge_id        (GtkUIManager          *manager);
 
 G_END_DECLS
 

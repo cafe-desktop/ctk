@@ -15,9 +15,9 @@ dnl Get the cflags and libraries from pkg-config
 dnl
 AC_ARG_ENABLE(gtktest, [  --disable-gtktest       do not try to compile and run a test GTK+ program],
 		    , enable_gtktest=yes)
-  min_gtk_version=ifelse([$1], [], [3.0.0], [$1])
+  min_ctk_version=ifelse([$1], [], [3.0.0], [$1])
 
-  pkg_config_args="gtk+-3.0 >= $min_gtk_version"
+  pkg_config_args="gtk+-3.0 >= $min_ctk_version"
   for module in . $4
   do
       case "$module" in
@@ -35,7 +35,7 @@ AC_ARG_ENABLE(gtktest, [  --disable-gtktest       do not try to compile and run 
     no_gtk=yes
   fi
 
-  AC_MSG_CHECKING(for GTK+ - version >= $min_gtk_version)
+  AC_MSG_CHECKING(for GTK+ - version >= $min_ctk_version)
 
   if test -n "$PKG_CONFIG"; then
     ## don't try to run the test against uninstalled libtool libs
@@ -54,11 +54,11 @@ AC_ARG_ENABLE(gtktest, [  --disable-gtktest       do not try to compile and run 
   if test x"$no_gtk" = x ; then
     GTK_CFLAGS=`$PKG_CONFIG $pkg_config_args --cflags`
     GTK_LIBS=`$PKG_CONFIG $pkg_config_args --libs`
-    gtk_config_major_version=`$PKG_CONFIG --modversion gtk+-3.0 | \
+    ctk_config_major_version=`$PKG_CONFIG --modversion gtk+-3.0 | \
            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
-    gtk_config_minor_version=`$PKG_CONFIG --modversion gtk+-3.0 | \
+    ctk_config_minor_version=`$PKG_CONFIG --modversion gtk+-3.0 | \
            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
-    gtk_config_micro_version=`$PKG_CONFIG --modversion gtk+-3.0 | \
+    ctk_config_micro_version=`$PKG_CONFIG --modversion gtk+-3.0 | \
            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
     if test "x$enable_gtktest" = "xyes" ; then
       ac_save_CFLAGS="$CFLAGS"
@@ -82,18 +82,18 @@ main ()
 
   fclose (fopen ("conf.gtktest", "w"));
 
-  if (sscanf("$min_gtk_version", "%u.%u.%u", &major, &minor, &micro) != 3) {
-     printf("%s, bad version string\n", "$min_gtk_version");
+  if (sscanf("$min_ctk_version", "%u.%u.%u", &major, &minor, &micro) != 3) {
+     printf("%s, bad version string\n", "$min_ctk_version");
      exit(1);
    }
 
-  if ((gtk_major_version != $gtk_config_major_version) ||
-      (gtk_minor_version != $gtk_config_minor_version) ||
-      (gtk_micro_version != $gtk_config_micro_version))
+  if ((ctk_major_version != $ctk_config_major_version) ||
+      (ctk_minor_version != $ctk_config_minor_version) ||
+      (ctk_micro_version != $ctk_config_micro_version))
     {
       printf("\n*** 'pkg-config --modversion gtk+-3.0' returned %d.%d.%d, but GTK+ (%d.%d.%d)\n", 
-             $gtk_config_major_version, $gtk_config_minor_version, $gtk_config_micro_version,
-             gtk_major_version, gtk_minor_version, gtk_micro_version);
+             $ctk_config_major_version, $ctk_config_minor_version, $ctk_config_micro_version,
+             ctk_major_version, ctk_minor_version, ctk_micro_version);
       printf ("*** was found! If pkg-config was correct, then it is best\n");
       printf ("*** to remove the old version of GTK+. You may also be able to fix the error\n");
       printf("*** by modifying your LD_LIBRARY_PATH enviroment variable, or by editing\n");
@@ -102,27 +102,27 @@ main ()
       printf("*** If pkg-config was wrong, set the environment variable PKG_CONFIG_PATH\n");
       printf("*** to point to the correct configuration files\n");
     } 
-  else if ((gtk_major_version != GTK_MAJOR_VERSION) ||
-	   (gtk_minor_version != GTK_MINOR_VERSION) ||
-           (gtk_micro_version != GTK_MICRO_VERSION))
+  else if ((ctk_major_version != GTK_MAJOR_VERSION) ||
+	   (ctk_minor_version != GTK_MINOR_VERSION) ||
+           (ctk_micro_version != GTK_MICRO_VERSION))
     {
       printf("*** GTK+ header files (version %d.%d.%d) do not match\n",
 	     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
       printf("*** library (version %d.%d.%d)\n",
-	     gtk_major_version, gtk_minor_version, gtk_micro_version);
+	     ctk_major_version, ctk_minor_version, ctk_micro_version);
     }
   else
     {
-      if ((gtk_major_version > major) ||
-        ((gtk_major_version == major) && (gtk_minor_version > minor)) ||
-        ((gtk_major_version == major) && (gtk_minor_version == minor) && (gtk_micro_version >= micro)))
+      if ((ctk_major_version > major) ||
+        ((ctk_major_version == major) && (ctk_minor_version > minor)) ||
+        ((ctk_major_version == major) && (ctk_minor_version == minor) && (ctk_micro_version >= micro)))
       {
         return 0;
        }
      else
       {
         printf("\n*** An old version of GTK+ (%u.%u.%u) was found.\n",
-               gtk_major_version, gtk_minor_version, gtk_micro_version);
+               ctk_major_version, ctk_minor_version, ctk_micro_version);
         printf("*** You need a version of GTK+ newer than %u.%u.%u. The latest version of\n",
 	       major, minor, micro);
         printf("*** GTK+ is always available from ftp://ftp.gtk.org.\n");
@@ -144,7 +144,7 @@ main ()
      fi
   fi
   if test "x$no_gtk" = x ; then
-     AC_MSG_RESULT(yes (version $gtk_config_major_version.$gtk_config_minor_version.$gtk_config_micro_version))
+     AC_MSG_RESULT(yes (version $ctk_config_major_version.$ctk_config_minor_version.$ctk_config_micro_version))
      ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
@@ -163,7 +163,7 @@ main ()
           AC_TRY_LINK([
 #include <gtk/gtk.h>
 #include <stdio.h>
-],      [ return ((gtk_major_version) || (gtk_minor_version) || (gtk_micro_version)); ],
+],      [ return ((ctk_major_version) || (ctk_minor_version) || (ctk_micro_version)); ],
         [ echo "*** The test program compiled, but did not run. This usually means"
           echo "*** that the run-time linker is not finding GTK+ or finding the wrong"
           echo "*** version of GTK+. If it is not finding GTK+, you'll need to set your"
@@ -194,8 +194,8 @@ dnl
 AC_DEFUN([GTK_CHECK_BACKEND],
 [m4_warn([obsolete], [GTK_CHECK_BACKEND is deprecated, use PKG_CHECK_MODULES([GTK_X11], [gtk+-x11-3.0]) or similar instead])
   pkg_config_args=ifelse([$1],,gtk+-3.0, gtk+-$1-3.0)
-  min_gtk_version=ifelse([$2],,3.0.0,$2)
-  pkg_config_args="$pkg_config_args >= $min_gtk_version"
+  min_ctk_version=ifelse([$2],,3.0.0,$2)
+  pkg_config_args="$pkg_config_args >= $min_ctk_version"
 
   PKG_PROG_PKG_CONFIG([0.16])
   AS_IF([test -z "$PKG_CONFIG"], [AC_MSG_ERROR([No pkg-config found])])

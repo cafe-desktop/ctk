@@ -11,33 +11,33 @@ keep_size (int      direction,
   gboolean animations_before;
   int min_height, min_width;
   int min_child_width, min_child_height;
-  GtkRevealer *revealer = GTK_REVEALER (gtk_revealer_new ());
-  GtkWidget   *child    = gtk_button_new_with_label ("Some Text!");
-  GtkSettings *settings = gtk_settings_get_default ();
+  GtkRevealer *revealer = GTK_REVEALER (ctk_revealer_new ());
+  GtkWidget   *child    = ctk_button_new_with_label ("Some Text!");
+  GtkSettings *settings = ctk_settings_get_default ();
 
   g_object_get (settings, "gtk-enable-animations", &animations_before, NULL);
   g_object_set (settings, "gtk-enable-animations", animations, NULL);
 
-  gtk_container_add (GTK_CONTAINER (revealer), child);
-  gtk_widget_show_all (GTK_WIDGET (revealer));
+  ctk_container_add (GTK_CONTAINER (revealer), child);
+  ctk_widget_show_all (GTK_WIDGET (revealer));
 
-  gtk_revealer_set_transition_type (revealer, transition_type);
+  ctk_revealer_set_transition_type (revealer, transition_type);
 
-  gtk_revealer_set_reveal_child (revealer, TRUE);
+  ctk_revealer_set_reveal_child (revealer, TRUE);
 
-  gtk_widget_get_preferred_width (GTK_WIDGET (child), &min_child_width, NULL);
-  gtk_widget_get_preferred_height (GTK_WIDGET (child), &min_child_height, NULL);
+  ctk_widget_get_preferred_width (GTK_WIDGET (child), &min_child_width, NULL);
+  ctk_widget_get_preferred_height (GTK_WIDGET (child), &min_child_height, NULL);
 
-  gtk_widget_get_preferred_width (GTK_WIDGET (revealer), &min_width, NULL);
-  gtk_widget_get_preferred_height (GTK_WIDGET (revealer), &min_height, NULL);
+  ctk_widget_get_preferred_width (GTK_WIDGET (revealer), &min_width, NULL);
+  ctk_widget_get_preferred_height (GTK_WIDGET (revealer), &min_height, NULL);
 
   g_assert_cmpint (min_width, ==, min_child_width);
   g_assert_cmpint (min_height, ==, min_child_height);
 
 
-  gtk_revealer_set_reveal_child (revealer, FALSE);
-  gtk_widget_get_preferred_width (GTK_WIDGET (revealer), &min_width, NULL);
-  gtk_widget_get_preferred_height (GTK_WIDGET (revealer), &min_height, NULL);
+  ctk_revealer_set_reveal_child (revealer, FALSE);
+  ctk_widget_get_preferred_width (GTK_WIDGET (revealer), &min_width, NULL);
+  ctk_widget_get_preferred_height (GTK_WIDGET (revealer), &min_height, NULL);
 
   if (direction & KEEP_WIDTH)
     g_assert_cmpint (min_width, ==, min_child_width);
@@ -128,7 +128,7 @@ slide_up_no_animations ()
 int
 main (int argc, char **argv)
 {
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
   g_test_init (&argc, &argv, NULL);
 
   g_test_add_func ("/sizing/revealer/slide_right_animations", slide_right_animations);

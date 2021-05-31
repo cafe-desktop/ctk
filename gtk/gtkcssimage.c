@@ -35,27 +35,27 @@
 #include "gtk/gtkcssimagefallbackprivate.h"
 #include "gtk/gtkcssimagewin32private.h"
 
-G_DEFINE_ABSTRACT_TYPE (GtkCssImage, _gtk_css_image, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (GtkCssImage, _ctk_css_image, G_TYPE_OBJECT)
 
 static int
-gtk_css_image_real_get_width (GtkCssImage *image)
+ctk_css_image_real_get_width (GtkCssImage *image)
 {
   return 0;
 }
 
 static int
-gtk_css_image_real_get_height (GtkCssImage *image)
+ctk_css_image_real_get_height (GtkCssImage *image)
 {
   return 0;
 }
 
 static double
-gtk_css_image_real_get_aspect_ratio (GtkCssImage *image)
+ctk_css_image_real_get_aspect_ratio (GtkCssImage *image)
 {
   int width, height;
 
-  width = _gtk_css_image_get_width (image);
-  height = _gtk_css_image_get_height (image);
+  width = _ctk_css_image_get_width (image);
+  height = _ctk_css_image_get_height (image);
 
   if (width && height)
     return (double) width / height;
@@ -64,7 +64,7 @@ gtk_css_image_real_get_aspect_ratio (GtkCssImage *image)
 }
 
 static GtkCssImage *
-gtk_css_image_real_compute (GtkCssImage             *image,
+ctk_css_image_real_compute (GtkCssImage             *image,
                             guint                    property_id,
                             GtkStyleProviderPrivate *provider,
                             GtkCssStyle             *style,
@@ -74,14 +74,14 @@ gtk_css_image_real_compute (GtkCssImage             *image,
 }
 
 static gboolean
-gtk_css_image_real_equal (GtkCssImage *image1,
+ctk_css_image_real_equal (GtkCssImage *image1,
                           GtkCssImage *image2)
 {
   return FALSE;
 }
 
 static GtkCssImage *
-gtk_css_image_real_transition (GtkCssImage *start,
+ctk_css_image_real_transition (GtkCssImage *start,
                                GtkCssImage *end,
                                guint        property_id,
                                double       progress)
@@ -90,30 +90,30 @@ gtk_css_image_real_transition (GtkCssImage *start,
     return g_object_ref (start);
   else if (progress >= 1.0)
     return end ? g_object_ref (end) : NULL;
-  else if (_gtk_css_image_equal (start, end))
+  else if (_ctk_css_image_equal (start, end))
     return g_object_ref (start);
   else
-    return _gtk_css_image_cross_fade_new (start, end, progress);
+    return _ctk_css_image_cross_fade_new (start, end, progress);
 }
 
 static void
-_gtk_css_image_class_init (GtkCssImageClass *klass)
+_ctk_css_image_class_init (GtkCssImageClass *klass)
 {
-  klass->get_width = gtk_css_image_real_get_width;
-  klass->get_height = gtk_css_image_real_get_height;
-  klass->get_aspect_ratio = gtk_css_image_real_get_aspect_ratio;
-  klass->compute = gtk_css_image_real_compute;
-  klass->equal = gtk_css_image_real_equal;
-  klass->transition = gtk_css_image_real_transition;
+  klass->get_width = ctk_css_image_real_get_width;
+  klass->get_height = ctk_css_image_real_get_height;
+  klass->get_aspect_ratio = ctk_css_image_real_get_aspect_ratio;
+  klass->compute = ctk_css_image_real_compute;
+  klass->equal = ctk_css_image_real_equal;
+  klass->transition = ctk_css_image_real_transition;
 }
 
 static void
-_gtk_css_image_init (GtkCssImage *image)
+_ctk_css_image_init (GtkCssImage *image)
 {
 }
 
 int
-_gtk_css_image_get_width (GtkCssImage *image)
+_ctk_css_image_get_width (GtkCssImage *image)
 {
   GtkCssImageClass *klass;
 
@@ -125,7 +125,7 @@ _gtk_css_image_get_width (GtkCssImage *image)
 }
 
 int
-_gtk_css_image_get_height (GtkCssImage *image)
+_ctk_css_image_get_height (GtkCssImage *image)
 {
   GtkCssImageClass *klass;
 
@@ -137,7 +137,7 @@ _gtk_css_image_get_height (GtkCssImage *image)
 }
 
 double
-_gtk_css_image_get_aspect_ratio (GtkCssImage *image)
+_ctk_css_image_get_aspect_ratio (GtkCssImage *image)
 {
   GtkCssImageClass *klass;
 
@@ -149,7 +149,7 @@ _gtk_css_image_get_aspect_ratio (GtkCssImage *image)
 }
 
 GtkCssImage *
-_gtk_css_image_compute (GtkCssImage             *image,
+_ctk_css_image_compute (GtkCssImage             *image,
                         guint                    property_id,
                         GtkStyleProviderPrivate *provider,
                         GtkCssStyle             *style,
@@ -167,7 +167,7 @@ _gtk_css_image_compute (GtkCssImage             *image,
 }
 
 GtkCssImage *
-_gtk_css_image_transition (GtkCssImage *start,
+_ctk_css_image_transition (GtkCssImage *start,
                            GtkCssImage *end,
                            guint        property_id,
                            double       progress)
@@ -197,7 +197,7 @@ _gtk_css_image_transition (GtkCssImage *start,
 }
 
 gboolean
-_gtk_css_image_equal (GtkCssImage *image1,
+_ctk_css_image_equal (GtkCssImage *image1,
                       GtkCssImage *image2)
 {
   GtkCssImageClass *klass;
@@ -220,7 +220,7 @@ _gtk_css_image_equal (GtkCssImage *image1,
 }
 
 void
-_gtk_css_image_draw (GtkCssImage        *image,
+_ctk_css_image_draw (GtkCssImage        *image,
                      cairo_t            *cr,
                      double              width,
                      double              height)
@@ -242,7 +242,7 @@ _gtk_css_image_draw (GtkCssImage        *image,
 }
 
 void
-_gtk_css_image_print (GtkCssImage *image,
+_ctk_css_image_print (GtkCssImage *image,
                       GString     *string)
 {
   GtkCssImageClass *klass;
@@ -259,7 +259,7 @@ _gtk_css_image_print (GtkCssImage *image,
  * http://dev.w3.org/csswg/css3-images/#default-sizing
  */
 void
-_gtk_css_image_get_concrete_size (GtkCssImage *image,
+_ctk_css_image_get_concrete_size (GtkCssImage *image,
                                   double       specified_width,
                                   double       specified_height,
                                   double       default_width,
@@ -287,9 +287,9 @@ _gtk_css_image_get_concrete_size (GtkCssImage *image,
       return;
     }
 
-  image_width  = _gtk_css_image_get_width (image);
-  image_height = _gtk_css_image_get_height (image);
-  image_aspect = _gtk_css_image_get_aspect_ratio (image);
+  image_width  = _ctk_css_image_get_width (image);
+  image_height = _ctk_css_image_get_height (image);
+  image_aspect = _ctk_css_image_get_aspect_ratio (image);
 
   /* If the specified size has neither a definite width nor height,
    * and has no additional contraints, the dimensions of the concrete
@@ -381,7 +381,7 @@ _gtk_css_image_get_concrete_size (GtkCssImage *image,
 }
 
 cairo_surface_t *
-_gtk_css_image_get_surface (GtkCssImage     *image,
+_ctk_css_image_get_surface (GtkCssImage     *image,
                             cairo_surface_t *target,
                             int              surface_width,
                             int              surface_height)
@@ -404,37 +404,37 @@ _gtk_css_image_get_surface (GtkCssImage     *image,
                                          surface_height);
 
   cr = cairo_create (result);
-  _gtk_css_image_draw (image, cr, surface_width, surface_height);
+  _ctk_css_image_draw (image, cr, surface_width, surface_height);
   cairo_destroy (cr);
 
   return result;
 }
 
 static GType
-gtk_css_image_get_parser_type (GtkCssParser *parser)
+ctk_css_image_get_parser_type (GtkCssParser *parser)
 {
   static const struct {
     const char *prefix;
     GType (* type_func) (void);
   } image_types[] = {
-    { "url", _gtk_css_image_url_get_type },
-    { "-gtk-gradient", _gtk_css_image_gradient_get_type },
-    { "-gtk-icontheme", _gtk_css_image_icon_theme_get_type },
-    { "-gtk-scaled", _gtk_css_image_scaled_get_type },
-    { "-gtk-recolor", _gtk_css_image_recolor_get_type },
-    { "-gtk-win32-theme-part", _gtk_css_image_win32_get_type },
-    { "linear-gradient", _gtk_css_image_linear_get_type },
-    { "repeating-linear-gradient", _gtk_css_image_linear_get_type },
-    { "radial-gradient", _gtk_css_image_radial_get_type },
-    { "repeating-radial-gradient", _gtk_css_image_radial_get_type },
-    { "cross-fade", _gtk_css_image_cross_fade_get_type },
-    { "image", _gtk_css_image_fallback_get_type }
+    { "url", _ctk_css_image_url_get_type },
+    { "-gtk-gradient", _ctk_css_image_gradient_get_type },
+    { "-gtk-icontheme", _ctk_css_image_icon_theme_get_type },
+    { "-gtk-scaled", _ctk_css_image_scaled_get_type },
+    { "-gtk-recolor", _ctk_css_image_recolor_get_type },
+    { "-gtk-win32-theme-part", _ctk_css_image_win32_get_type },
+    { "linear-gradient", _ctk_css_image_linear_get_type },
+    { "repeating-linear-gradient", _ctk_css_image_linear_get_type },
+    { "radial-gradient", _ctk_css_image_radial_get_type },
+    { "repeating-radial-gradient", _ctk_css_image_radial_get_type },
+    { "cross-fade", _ctk_css_image_cross_fade_get_type },
+    { "image", _ctk_css_image_fallback_get_type }
   };
   guint i;
 
   for (i = 0; i < G_N_ELEMENTS (image_types); i++)
     {
-      if (_gtk_css_parser_has_prefix (parser, image_types[i].prefix))
+      if (_ctk_css_parser_has_prefix (parser, image_types[i].prefix))
         return image_types[i].type_func ();
     }
 
@@ -442,7 +442,7 @@ gtk_css_image_get_parser_type (GtkCssParser *parser)
 }
 
 /**
- * _gtk_css_image_can_parse:
+ * _ctk_css_image_can_parse:
  * @parser: a css parser
  *
  * Checks if the parser can potentially parse the given stream as an
@@ -453,13 +453,13 @@ gtk_css_image_get_parser_type (GtkCssParser *parser)
  * Returns: %TURE if it looks like an image.
  **/
 gboolean
-_gtk_css_image_can_parse (GtkCssParser *parser)
+_ctk_css_image_can_parse (GtkCssParser *parser)
 {
-  return gtk_css_image_get_parser_type (parser) != G_TYPE_INVALID;
+  return ctk_css_image_get_parser_type (parser) != G_TYPE_INVALID;
 }
 
 GtkCssImage *
-_gtk_css_image_new_parse (GtkCssParser *parser)
+_ctk_css_image_new_parse (GtkCssParser *parser)
 {
   GtkCssImageClass *klass;
   GtkCssImage *image;
@@ -467,10 +467,10 @@ _gtk_css_image_new_parse (GtkCssParser *parser)
 
   g_return_val_if_fail (parser != NULL, NULL);
 
-  image_type = gtk_css_image_get_parser_type (parser);
+  image_type = ctk_css_image_get_parser_type (parser);
   if (image_type == G_TYPE_INVALID)
     {
-      _gtk_css_parser_error (parser, "Not a valid image");
+      _ctk_css_parser_error (parser, "Not a valid image");
       return NULL;
     }
 

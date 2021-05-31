@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ICON_VIEW_ACCESSIBLE                  (gtk_icon_view_accessible_get_type ())
+#define GTK_TYPE_ICON_VIEW_ACCESSIBLE                  (ctk_icon_view_accessible_get_type ())
 #define GTK_ICON_VIEW_ACCESSIBLE(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ICON_VIEW_ACCESSIBLE, GtkIconViewAccessible))
 #define GTK_ICON_VIEW_ACCESSIBLE_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ICON_VIEW_ACCESSIBLE, GtkIconViewAccessibleClass))
 #define GTK_IS_ICON_VIEW_ACCESSIBLE(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ICON_VIEW_ACCESSIBLE))
@@ -51,7 +51,7 @@ struct _GtkIconViewAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType           gtk_icon_view_accessible_get_type            (void);
+GType           ctk_icon_view_accessible_get_type            (void);
 
 G_END_DECLS
 

@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SHORTCUTS_SHORTCUT (gtk_shortcuts_shortcut_get_type())
+#define GTK_TYPE_SHORTCUTS_SHORTCUT (ctk_shortcuts_shortcut_get_type())
 #define GTK_SHORTCUTS_SHORTCUT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SHORTCUTS_SHORTCUT, GtkShortcutsShortcut))
 #define GTK_SHORTCUTS_SHORTCUT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SHORTCUTS_SHORTCUT, GtkShortcutsShortcutClass))
 #define GTK_IS_SHORTCUTS_SHORTCUT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SHORTCUTS_SHORTCUT))
@@ -72,7 +72,7 @@ typedef enum {
 } GtkShortcutType;
 
 GDK_AVAILABLE_IN_3_20
-GType        gtk_shortcuts_shortcut_get_type (void) G_GNUC_CONST;
+GType        ctk_shortcuts_shortcut_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 

@@ -34,15 +34,15 @@ struct _GtkColorPickerShellClass
 };
 
 static GInitableIface *initable_parent_iface;
-static void gtk_color_picker_shell_initable_iface_init (GInitableIface *iface);
-static void gtk_color_picker_shell_iface_init (GtkColorPickerInterface *iface);
+static void ctk_color_picker_shell_initable_iface_init (GInitableIface *iface);
+static void ctk_color_picker_shell_iface_init (GtkColorPickerInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorPickerShell, gtk_color_picker_shell, G_TYPE_OBJECT,
-                         G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, gtk_color_picker_shell_initable_iface_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_COLOR_PICKER, gtk_color_picker_shell_iface_init))
+G_DEFINE_TYPE_WITH_CODE (GtkColorPickerShell, ctk_color_picker_shell, G_TYPE_OBJECT,
+                         G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, ctk_color_picker_shell_initable_iface_init)
+                         G_IMPLEMENT_INTERFACE (GTK_TYPE_COLOR_PICKER, ctk_color_picker_shell_iface_init))
 
 static gboolean
-gtk_color_picker_shell_initable_init (GInitable     *initable,
+ctk_color_picker_shell_initable_init (GInitable     *initable,
                                       GCancellable  *cancellable,
                                       GError       **error)
 {
@@ -77,37 +77,37 @@ gtk_color_picker_shell_initable_init (GInitable     *initable,
 }
 
 static void
-gtk_color_picker_shell_initable_iface_init (GInitableIface *iface)
+ctk_color_picker_shell_initable_iface_init (GInitableIface *iface)
 {
   initable_parent_iface = g_type_interface_peek_parent (iface);
-  iface->init = gtk_color_picker_shell_initable_init;
+  iface->init = ctk_color_picker_shell_initable_init;
 }
 
 static void
-gtk_color_picker_shell_init (GtkColorPickerShell *picker)
+ctk_color_picker_shell_init (GtkColorPickerShell *picker)
 {
 }
 
 static void
-gtk_color_picker_shell_finalize (GObject *object)
+ctk_color_picker_shell_finalize (GObject *object)
 {
   GtkColorPickerShell *picker = GTK_COLOR_PICKER_SHELL (object);
 
   g_clear_object (&picker->shell_proxy);
 
-  G_OBJECT_CLASS (gtk_color_picker_shell_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_color_picker_shell_parent_class)->finalize (object);
 }
 
 static void
-gtk_color_picker_shell_class_init (GtkColorPickerShellClass *class)
+ctk_color_picker_shell_class_init (GtkColorPickerShellClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  object_class->finalize = gtk_color_picker_shell_finalize;
+  object_class->finalize = ctk_color_picker_shell_finalize;
 }
 
 GtkColorPicker *
-gtk_color_picker_shell_new (void)
+ctk_color_picker_shell_new (void)
 {
   return GTK_COLOR_PICKER (g_initable_new (GTK_TYPE_COLOR_PICKER_SHELL, NULL, NULL, NULL));
 }
@@ -147,7 +147,7 @@ color_picked (GObject      *source,
 }
 
 static void
-gtk_color_picker_shell_pick (GtkColorPicker      *cp,
+ctk_color_picker_shell_pick (GtkColorPicker      *cp,
                              GAsyncReadyCallback  callback,
                              gpointer             user_data)
 {
@@ -169,7 +169,7 @@ gtk_color_picker_shell_pick (GtkColorPicker      *cp,
 }
 
 static GdkRGBA *
-gtk_color_picker_shell_pick_finish (GtkColorPicker  *cp,
+ctk_color_picker_shell_pick_finish (GtkColorPicker  *cp,
                                      GAsyncResult    *res,
                                      GError         **error)
 {
@@ -179,8 +179,8 @@ gtk_color_picker_shell_pick_finish (GtkColorPicker  *cp,
 }
 
 static void
-gtk_color_picker_shell_iface_init (GtkColorPickerInterface *iface)
+ctk_color_picker_shell_iface_init (GtkColorPickerInterface *iface)
 {
-  iface->pick = gtk_color_picker_shell_pick;
-  iface->pick_finish = gtk_color_picker_shell_pick_finish;
+  iface->pick = ctk_color_picker_shell_pick;
+  iface->pick_finish = ctk_color_picker_shell_pick_finish;
 }

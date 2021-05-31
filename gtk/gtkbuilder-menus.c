@@ -48,7 +48,7 @@ typedef struct
 } GtkBuilderMenuState;
 
 static void
-gtk_builder_menu_push_frame (GtkBuilderMenuState *state,
+ctk_builder_menu_push_frame (GtkBuilderMenuState *state,
                              GMenu               *menu,
                              GMenuItem           *item)
 {
@@ -63,7 +63,7 @@ gtk_builder_menu_push_frame (GtkBuilderMenuState *state,
 }
 
 static void
-gtk_builder_menu_pop_frame (GtkBuilderMenuState *state)
+ctk_builder_menu_pop_frame (GtkBuilderMenuState *state)
 {
   struct frame *prev = state->frame.prev;
 
@@ -80,7 +80,7 @@ gtk_builder_menu_pop_frame (GtkBuilderMenuState *state)
 }
 
 static void
-gtk_builder_menu_start_element (GMarkupParseContext  *context,
+ctk_builder_menu_start_element (GMarkupParseContext  *context,
                                 const gchar          *element_name,
                                 const gchar         **attribute_names,
                                 const gchar         **attribute_values,
@@ -107,7 +107,7 @@ gtk_builder_menu_start_element (GMarkupParseContext  *context,
           if (COLLECT (G_MARKUP_COLLECT_INVALID, NULL))
             {
               item = g_menu_item_new (NULL, NULL);
-              gtk_builder_menu_push_frame (state, NULL, item);
+              ctk_builder_menu_push_frame (state, NULL, item);
             }
 
           return;
@@ -124,10 +124,10 @@ gtk_builder_menu_start_element (GMarkupParseContext  *context,
 
               menu = g_menu_new ();
               item = g_menu_item_new_submenu (NULL, G_MENU_MODEL (menu));
-              gtk_builder_menu_push_frame (state, menu, item);
+              ctk_builder_menu_push_frame (state, menu, item);
 
               if (id != NULL)
-                _gtk_builder_add_object (state->parser_data->builder, id, G_OBJECT (menu));
+                _ctk_builder_add_object (state->parser_data->builder, id, G_OBJECT (menu));
               g_object_unref (menu);
             }
 
@@ -145,10 +145,10 @@ gtk_builder_menu_start_element (GMarkupParseContext  *context,
 
               menu = g_menu_new ();
               item = g_menu_item_new_section (NULL, G_MENU_MODEL (menu));
-              gtk_builder_menu_push_frame (state, menu, item);
+              ctk_builder_menu_push_frame (state, menu, item);
 
               if (id != NULL)
-                _gtk_builder_add_object (state->parser_data->builder, id, G_OBJECT (menu));
+                _ctk_builder_add_object (state->parser_data->builder, id, G_OBJECT (menu));
               g_object_unref (menu);
             }
 
@@ -184,7 +184,7 @@ gtk_builder_menu_start_element (GMarkupParseContext  *context,
               state->attribute = g_strdup (name);
               state->context = g_strdup (ctxt);
 
-              gtk_builder_menu_push_frame (state, NULL, NULL);
+              ctk_builder_menu_push_frame (state, NULL, NULL);
             }
 
           return;
@@ -202,10 +202,10 @@ gtk_builder_menu_start_element (GMarkupParseContext  *context,
 
               menu = g_menu_new ();
               g_menu_item_set_link (state->frame.item, name, G_MENU_MODEL (menu));
-              gtk_builder_menu_push_frame (state, menu, NULL);
+              ctk_builder_menu_push_frame (state, menu, NULL);
 
               if (id != NULL)
-                _gtk_builder_add_object (state->parser_data->builder, id, G_OBJECT (menu));
+                _ctk_builder_add_object (state->parser_data->builder, id, G_OBJECT (menu));
               g_object_unref (menu);
             }
 
@@ -230,14 +230,14 @@ gtk_builder_menu_start_element (GMarkupParseContext  *context,
 }
 
 static void
-gtk_builder_menu_end_element (GMarkupParseContext  *context,
+ctk_builder_menu_end_element (GMarkupParseContext  *context,
                               const gchar          *element_name,
                               gpointer              user_data,
                               GError              **error)
 {
   GtkBuilderMenuState *state = user_data;
 
-  gtk_builder_menu_pop_frame (state);
+  ctk_builder_menu_pop_frame (state);
 
   if (state->string)
     {
@@ -297,7 +297,7 @@ gtk_builder_menu_end_element (GMarkupParseContext  *context,
 }
 
 static void
-gtk_builder_menu_text (GMarkupParseContext  *context,
+ctk_builder_menu_text (GMarkupParseContext  *context,
                        const gchar          *text,
                        gsize                 text_len,
                        gpointer              user_data,
@@ -321,7 +321,7 @@ gtk_builder_menu_text (GMarkupParseContext  *context,
 }
 
 static void
-gtk_builder_menu_error (GMarkupParseContext *context,
+ctk_builder_menu_error (GMarkupParseContext *context,
                         GError              *error,
                         gpointer             user_data)
 {
@@ -348,17 +348,17 @@ gtk_builder_menu_error (GMarkupParseContext *context,
   g_slice_free (GtkBuilderMenuState, state);
 }
 
-static GMarkupParser gtk_builder_menu_subparser =
+static GMarkupParser ctk_builder_menu_subparser =
 {
-  gtk_builder_menu_start_element,
-  gtk_builder_menu_end_element,
-  gtk_builder_menu_text,
+  ctk_builder_menu_start_element,
+  ctk_builder_menu_end_element,
+  ctk_builder_menu_text,
   NULL,                            /* passthrough */
-  gtk_builder_menu_error
+  ctk_builder_menu_error
 };
 
 void
-_gtk_builder_menu_start (ParserData   *parser_data,
+_ctk_builder_menu_start (ParserData   *parser_data,
                          const gchar  *element_name,
                          const gchar **attribute_names,
                          const gchar **attribute_values,
@@ -369,26 +369,26 @@ _gtk_builder_menu_start (ParserData   *parser_data,
 
   state = g_slice_new0 (GtkBuilderMenuState);
   state->parser_data = parser_data;
-  g_markup_parse_context_push (parser_data->ctx, &gtk_builder_menu_subparser, state);
+  g_markup_parse_context_push (parser_data->ctx, &ctk_builder_menu_subparser, state);
 
   if (COLLECT (STRING, "id", &id))
     {
       GMenu *menu;
 
       menu = g_menu_new ();
-      _gtk_builder_add_object (state->parser_data->builder, id, G_OBJECT (menu));
-      gtk_builder_menu_push_frame (state, menu, NULL);
+      _ctk_builder_add_object (state->parser_data->builder, id, G_OBJECT (menu));
+      ctk_builder_menu_push_frame (state, menu, NULL);
       g_object_unref (menu);
     }
 }
 
 void
-_gtk_builder_menu_end (ParserData *parser_data)
+_ctk_builder_menu_end (ParserData *parser_data)
 {
   GtkBuilderMenuState *state;
 
   state = g_markup_parse_context_pop (parser_data->ctx);
-  gtk_builder_menu_pop_frame (state);
+  ctk_builder_menu_pop_frame (state);
 
   g_assert (state->frame.prev == NULL);
   g_assert (state->frame.item == NULL);

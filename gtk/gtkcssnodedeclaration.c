@@ -71,7 +71,7 @@ sizeof_this_node (GtkCssNodeDeclaration *decl)
 }
 
 static void
-gtk_css_node_declaration_make_writable (GtkCssNodeDeclaration **decl)
+ctk_css_node_declaration_make_writable (GtkCssNodeDeclaration **decl)
 {
   if ((*decl)->refcount == 1)
     return;
@@ -83,7 +83,7 @@ gtk_css_node_declaration_make_writable (GtkCssNodeDeclaration **decl)
 }
 
 static void
-gtk_css_node_declaration_make_writable_resize (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_make_writable_resize (GtkCssNodeDeclaration **decl,
                                                gsize                   offset,
                                                gsize                   bytes_added,
                                                gsize                   bytes_removed)
@@ -114,7 +114,7 @@ gtk_css_node_declaration_make_writable_resize (GtkCssNodeDeclaration **decl,
 }
 
 GtkCssNodeDeclaration *
-gtk_css_node_declaration_new (void)
+ctk_css_node_declaration_new (void)
 {
   static GtkCssNodeDeclaration empty = {
     1, /* need to own a ref ourselves so the copy-on-write path kicks in when people change things */
@@ -127,11 +127,11 @@ gtk_css_node_declaration_new (void)
     0
   };
 
-  return gtk_css_node_declaration_ref (&empty);
+  return ctk_css_node_declaration_ref (&empty);
 }
 
 GtkCssNodeDeclaration *
-gtk_css_node_declaration_ref (GtkCssNodeDeclaration *decl)
+ctk_css_node_declaration_ref (GtkCssNodeDeclaration *decl)
 {
   decl->refcount++;
 
@@ -139,7 +139,7 @@ gtk_css_node_declaration_ref (GtkCssNodeDeclaration *decl)
 }
 
 void
-gtk_css_node_declaration_unref (GtkCssNodeDeclaration *decl)
+ctk_css_node_declaration_unref (GtkCssNodeDeclaration *decl)
 {
   decl->refcount--;
   if (decl->refcount > 0)
@@ -149,64 +149,64 @@ gtk_css_node_declaration_unref (GtkCssNodeDeclaration *decl)
 }
 
 gboolean
-gtk_css_node_declaration_set_junction_sides (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_set_junction_sides (GtkCssNodeDeclaration **decl,
                                              GtkJunctionSides        junction_sides)
 {
   if ((*decl)->junction_sides == junction_sides)
     return FALSE;
   
-  gtk_css_node_declaration_make_writable (decl);
+  ctk_css_node_declaration_make_writable (decl);
   (*decl)->junction_sides = junction_sides;
 
   return TRUE;
 }
 
 GtkJunctionSides
-gtk_css_node_declaration_get_junction_sides (const GtkCssNodeDeclaration *decl)
+ctk_css_node_declaration_get_junction_sides (const GtkCssNodeDeclaration *decl)
 {
   return decl->junction_sides;
 }
 
 gboolean
-gtk_css_node_declaration_set_type (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_set_type (GtkCssNodeDeclaration **decl,
                                    GType                   type)
 {
   if ((*decl)->type == type)
     return FALSE;
 
-  gtk_css_node_declaration_make_writable (decl);
+  ctk_css_node_declaration_make_writable (decl);
   (*decl)->type = type;
 
   return TRUE;
 }
 
 GType
-gtk_css_node_declaration_get_type (const GtkCssNodeDeclaration *decl)
+ctk_css_node_declaration_get_type (const GtkCssNodeDeclaration *decl)
 {
   return decl->type;
 }
 
 gboolean
-gtk_css_node_declaration_set_name (GtkCssNodeDeclaration   **decl,
+ctk_css_node_declaration_set_name (GtkCssNodeDeclaration   **decl,
                                    /*interned*/ const char  *name)
 {
   if ((*decl)->name == name)
     return FALSE;
 
-  gtk_css_node_declaration_make_writable (decl);
+  ctk_css_node_declaration_make_writable (decl);
   (*decl)->name = name;
 
   return TRUE;
 }
 
 /*interned*/ const char *
-gtk_css_node_declaration_get_name (const GtkCssNodeDeclaration *decl)
+ctk_css_node_declaration_get_name (const GtkCssNodeDeclaration *decl)
 {
   return decl->name;
 }
 
 gboolean
-gtk_css_node_declaration_set_id (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_set_id (GtkCssNodeDeclaration **decl,
                                  const char             *id)
 {
   id = g_intern_string (id);
@@ -214,33 +214,33 @@ gtk_css_node_declaration_set_id (GtkCssNodeDeclaration **decl,
   if ((*decl)->id == id)
     return FALSE;
 
-  gtk_css_node_declaration_make_writable (decl);
+  ctk_css_node_declaration_make_writable (decl);
   (*decl)->id = id;
 
   return TRUE;
 }
 
 const char *
-gtk_css_node_declaration_get_id (const GtkCssNodeDeclaration *decl)
+ctk_css_node_declaration_get_id (const GtkCssNodeDeclaration *decl)
 {
   return decl->id;
 }
 
 gboolean
-gtk_css_node_declaration_set_state (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_set_state (GtkCssNodeDeclaration **decl,
                                     GtkStateFlags           state)
 {
   if ((*decl)->state == state)
     return FALSE;
   
-  gtk_css_node_declaration_make_writable (decl);
+  ctk_css_node_declaration_make_writable (decl);
   (*decl)->state = state;
 
   return TRUE;
 }
 
 GtkStateFlags
-gtk_css_node_declaration_get_state (const GtkCssNodeDeclaration *decl)
+ctk_css_node_declaration_get_state (const GtkCssNodeDeclaration *decl)
 {
   return decl->state;
 }
@@ -293,7 +293,7 @@ find_class (const GtkCssNodeDeclaration *decl,
 }
 
 gboolean
-gtk_css_node_declaration_add_class (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_add_class (GtkCssNodeDeclaration **decl,
                                     GQuark                  class_quark)
 {
   guint pos;
@@ -301,7 +301,7 @@ gtk_css_node_declaration_add_class (GtkCssNodeDeclaration **decl,
   if (find_class (*decl, class_quark, &pos))
     return FALSE;
 
-  gtk_css_node_declaration_make_writable_resize (decl,
+  ctk_css_node_declaration_make_writable_resize (decl,
                                                  (char *) &get_classes (*decl)[pos] - (char *) *decl,
                                                  sizeof (GQuark),
                                                  0);
@@ -312,7 +312,7 @@ gtk_css_node_declaration_add_class (GtkCssNodeDeclaration **decl,
 }
 
 gboolean
-gtk_css_node_declaration_remove_class (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_remove_class (GtkCssNodeDeclaration **decl,
                                        GQuark                  class_quark)
 {
   guint pos;
@@ -320,7 +320,7 @@ gtk_css_node_declaration_remove_class (GtkCssNodeDeclaration **decl,
   if (!find_class (*decl, class_quark, &pos))
     return FALSE;
 
-  gtk_css_node_declaration_make_writable_resize (decl,
+  ctk_css_node_declaration_make_writable_resize (decl,
                                                  (char *) &get_classes (*decl)[pos] - (char *) *decl,
                                                  0,
                                                  sizeof (GQuark));
@@ -330,12 +330,12 @@ gtk_css_node_declaration_remove_class (GtkCssNodeDeclaration **decl,
 }
 
 gboolean
-gtk_css_node_declaration_clear_classes (GtkCssNodeDeclaration **decl)
+ctk_css_node_declaration_clear_classes (GtkCssNodeDeclaration **decl)
 {
   if ((*decl)->n_classes == 0)
     return FALSE;
 
-  gtk_css_node_declaration_make_writable_resize (decl,
+  ctk_css_node_declaration_make_writable_resize (decl,
                                                  (char *) get_classes (*decl) - (char *) *decl,
                                                  0,
                                                  sizeof (GQuark) * (*decl)->n_classes);
@@ -345,7 +345,7 @@ gtk_css_node_declaration_clear_classes (GtkCssNodeDeclaration **decl)
 }
 
 gboolean
-gtk_css_node_declaration_has_class (const GtkCssNodeDeclaration *decl,
+ctk_css_node_declaration_has_class (const GtkCssNodeDeclaration *decl,
                                     GQuark                       class_quark)
 {
   guint pos;
@@ -374,7 +374,7 @@ gtk_css_node_declaration_has_class (const GtkCssNodeDeclaration *decl,
 }
 
 const GQuark *
-gtk_css_node_declaration_get_classes (const GtkCssNodeDeclaration *decl,
+ctk_css_node_declaration_get_classes (const GtkCssNodeDeclaration *decl,
                                       guint                       *n_classes)
 {
   *n_classes = decl->n_classes;
@@ -432,7 +432,7 @@ find_region (const GtkCssNodeDeclaration *decl,
 }
 
 gboolean
-gtk_css_node_declaration_add_region (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_add_region (GtkCssNodeDeclaration **decl,
                                      GQuark                  region_quark,
                                      GtkRegionFlags          flags)
 {
@@ -442,7 +442,7 @@ gtk_css_node_declaration_add_region (GtkCssNodeDeclaration **decl,
   if (find_region (*decl, region_quark, &pos))
     return FALSE;
 
-  gtk_css_node_declaration_make_writable_resize (decl,
+  ctk_css_node_declaration_make_writable_resize (decl,
                                                  (char *) &get_regions (*decl)[pos] - (char *) *decl,
                                                  sizeof (GtkRegion),
                                                  0);
@@ -455,7 +455,7 @@ gtk_css_node_declaration_add_region (GtkCssNodeDeclaration **decl,
 }
 
 gboolean
-gtk_css_node_declaration_remove_region (GtkCssNodeDeclaration **decl,
+ctk_css_node_declaration_remove_region (GtkCssNodeDeclaration **decl,
                                         GQuark                  region_quark)
 {
   guint pos;
@@ -463,7 +463,7 @@ gtk_css_node_declaration_remove_region (GtkCssNodeDeclaration **decl,
   if (!find_region (*decl, region_quark, &pos))
     return FALSE;
 
-  gtk_css_node_declaration_make_writable_resize (decl,
+  ctk_css_node_declaration_make_writable_resize (decl,
                                                  (char *) &get_regions (*decl)[pos] - (char *) *decl,
                                                  0,
                                                  sizeof (GtkRegion));
@@ -473,12 +473,12 @@ gtk_css_node_declaration_remove_region (GtkCssNodeDeclaration **decl,
 }
 
 gboolean
-gtk_css_node_declaration_clear_regions (GtkCssNodeDeclaration **decl)
+ctk_css_node_declaration_clear_regions (GtkCssNodeDeclaration **decl)
 {
   if ((*decl)->n_regions == 0)
     return FALSE;
 
-  gtk_css_node_declaration_make_writable_resize (decl,
+  ctk_css_node_declaration_make_writable_resize (decl,
                                                  (char *) get_regions (*decl) - (char *) *decl,
                                                  0,
                                                  sizeof (GtkRegion) * (*decl)->n_regions);
@@ -488,7 +488,7 @@ gtk_css_node_declaration_clear_regions (GtkCssNodeDeclaration **decl)
 }
 
 gboolean
-gtk_css_node_declaration_has_region (const GtkCssNodeDeclaration  *decl,
+ctk_css_node_declaration_has_region (const GtkCssNodeDeclaration  *decl,
                                      GQuark                        region_quark,
                                      GtkRegionFlags               *flags_return)
 {
@@ -508,7 +508,7 @@ gtk_css_node_declaration_has_region (const GtkCssNodeDeclaration  *decl,
 }
 
 GList *
-gtk_css_node_declaration_list_regions (const GtkCssNodeDeclaration *decl)
+ctk_css_node_declaration_list_regions (const GtkCssNodeDeclaration *decl)
 {
   GtkRegion *regions;
   GList *result;
@@ -526,7 +526,7 @@ gtk_css_node_declaration_list_regions (const GtkCssNodeDeclaration *decl)
 }
 
 guint
-gtk_css_node_declaration_hash (gconstpointer elem)
+ctk_css_node_declaration_hash (gconstpointer elem)
 {
   const GtkCssNodeDeclaration *decl = elem;
   GQuark *classes;
@@ -560,7 +560,7 @@ gtk_css_node_declaration_hash (gconstpointer elem)
 }
 
 gboolean
-gtk_css_node_declaration_equal (gconstpointer elem1,
+ctk_css_node_declaration_equal (gconstpointer elem1,
                                 gconstpointer elem2)
 {
   const GtkCssNodeDeclaration *decl1 = elem1;
@@ -614,7 +614,7 @@ gtk_css_node_declaration_equal (gconstpointer elem1,
 }
 
 void
-gtk_css_node_declaration_add_to_widget_path (const GtkCssNodeDeclaration *decl,
+ctk_css_node_declaration_add_to_widget_path (const GtkCssNodeDeclaration *decl,
                                              GtkWidgetPath               *path,
                                              guint                        pos)
 {
@@ -623,16 +623,16 @@ gtk_css_node_declaration_add_to_widget_path (const GtkCssNodeDeclaration *decl,
   guint i;
 
   /* Set name and id */
-  gtk_widget_path_iter_set_object_name (path, pos, decl->name);
+  ctk_widget_path_iter_set_object_name (path, pos, decl->name);
   if (decl->id)
-    gtk_widget_path_iter_set_name (path, pos, decl->id);
+    ctk_widget_path_iter_set_name (path, pos, decl->id);
 
   /* Set widget regions */
   regions = get_regions (decl);
   for (i = 0; i < decl->n_regions; i++)
     {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      gtk_widget_path_iter_add_region (path, pos,
+      ctk_widget_path_iter_add_region (path, pos,
                                        g_quark_to_string (regions[i].class_quark),
                                        regions[i].flags);
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -642,16 +642,16 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   classes = get_classes (decl);
   for (i = 0; i < decl->n_classes; i++)
     {
-      gtk_widget_path_iter_add_qclass (path, pos, classes[i]);
+      ctk_widget_path_iter_add_qclass (path, pos, classes[i]);
     }
 
   /* Set widget state */
-  gtk_widget_path_iter_set_state (path, pos, decl->state);
+  ctk_widget_path_iter_set_state (path, pos, decl->state);
 }
 
 /* Append the declaration to the string, in selector format */
 void
-gtk_css_node_declaration_print (const GtkCssNodeDeclaration *decl,
+ctk_css_node_declaration_print (const GtkCssNodeDeclaration *decl,
                                 GString                     *string)
 {
   static const char *state_names[] = {

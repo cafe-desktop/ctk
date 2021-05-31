@@ -26,11 +26,11 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _gtk_css_bg_size_value_new          (GtkCssValue            *x,
+GtkCssValue *   _ctk_css_bg_size_value_new          (GtkCssValue            *x,
                                                      GtkCssValue            *y);
-GtkCssValue *   _gtk_css_bg_size_value_parse        (GtkCssParser           *parser);
+GtkCssValue *   _ctk_css_bg_size_value_parse        (GtkCssParser           *parser);
 
-void            _gtk_css_bg_size_value_compute_size (const GtkCssValue      *bg_size,
+void            _ctk_css_bg_size_value_compute_size (const GtkCssValue      *bg_size,
                                                      GtkCssImage            *image,
                                                      double                  area_width,
                                                      double                  area_height,

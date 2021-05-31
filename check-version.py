@@ -19,7 +19,7 @@ CONFIGURE_MAJOR_VERSION_RE = re.compile(
     \s*
     m4_define\(
     \s*
-    \[gtk_major_version\]
+    \[ctk_major_version\]
     \s*
     ,
     \s*
@@ -39,7 +39,7 @@ CONFIGURE_MINOR_VERSION_RE = re.compile(
     \s*
     m4_define\(
     \s*
-    \[gtk_minor_version\]
+    \[ctk_minor_version\]
     \s*
     ,
     \s*
@@ -59,7 +59,7 @@ CONFIGURE_MICRO_VERSION_RE = re.compile(
     \s*
     m4_define\(
     \s*
-    \[gtk_micro_version\]
+    \[ctk_micro_version\]
     \s*
     ,
     \s*
@@ -79,7 +79,7 @@ CONFIGURE_INTERFACE_AGE_RE = re.compile(
     \s*
     m4_define\(
     \s*
-    \[gtk_interface_age\]
+    \[ctk_interface_age\]
     \s*
     ,
     \s*
@@ -117,7 +117,7 @@ MESON_VERSION_RE = re.compile(
 
 MESON_INTERFACE_AGE_RE = re.compile(
     r'''
-    ^\s*gtk_interface_age\s*={1}\s*(?P<age>[0-9]+)\s*$
+    ^\s*ctk_interface_age\s*={1}\s*(?P<age>[0-9]+)\s*$
     ''',
     re.UNICODE | re.VERBOSE
 )

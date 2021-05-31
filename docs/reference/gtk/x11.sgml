@@ -167,11 +167,11 @@ url="http://www.freedesktop.org/standards/">convention</ulink>.
 <para>
 GTK+ has functions for asking the window manager to do various things;
 see for example <link
-linkend="gtk-window-iconify">gtk_window_iconify()</link> or <link
-linkend="gtk-window-maximize">gtk_window_maximize()</link> or <link
-linkend="gtk-window-set-decorated">gtk_window_set_decorated()</link>.
+linkend="gtk-window-iconify">ctk_window_iconify()</link> or <link
+linkend="gtk-window-maximize">ctk_window_maximize()</link> or <link
+linkend="gtk-window-set-decorated">ctk_window_set_decorated()</link>.
 Keep in mind that <link
-linkend="gtk-window-move">gtk_window_move()</link> and window sizing
+linkend="gtk-window-move">ctk_window_move()</link> and window sizing
 are ultimately controlled by the window manager as well and most
 window managers <emphasis>will</emphasis> ignore certain requests from
 time to time, in the interests of good user interface.

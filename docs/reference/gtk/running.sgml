@@ -24,7 +24,7 @@ How to run and debug your GTK+ application
 
 <para>
 All GTK+ applications support a number of standard commandline
-options. These are removed from <literal>argv</literal> by gtk_init().
+options. These are removed from <literal>argv</literal> by ctk_init().
 Modules may parse and remove further options. The
 <link linkend="x11-cmdline">X11</link> and
 <link linkend="win32-cmdline">Windows</link> GDK backends parse
@@ -275,10 +275,10 @@ additional environment variables.
     <filename><replaceable>directory</replaceable>/<replaceable>version</replaceable>/<replaceable>host</replaceable>/<replaceable>type</replaceable></filename>
     Where <replaceable>version</replaceable> is derived from the
     version of GTK+ (use <literal>pkg-config
-    --variable=gtk_binary_version gtk+-3.0</literal> to determine this from a
+    --variable=ctk_binary_version gtk+-3.0</literal> to determine this from a
     script), <replaceable>host</replaceable> is the architecture on
     which GTK+ was built. (use <literal>pkg-config
-    --variable=gtk_host gtk+-3.0</literal> to determine this from a
+    --variable=ctk_host gtk+-3.0</literal> to determine this from a
     script), and <replaceable>type</replaceable> is a directory
     specific to the type of modules; currently it can be
     <literal>modules</literal>, <literal>engines</literal>,
@@ -565,7 +565,7 @@ nevertheless.
     Following the specification, GTK+ unsets this variable after reading
     it (to keep it from leaking to child processes). So, if you need its
     value for your own purposes, you have to read it before calling
-    gtk_init().
+    ctk_init().
   </para>
 </formalpara>
 

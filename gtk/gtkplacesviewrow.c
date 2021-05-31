@@ -62,7 +62,7 @@ struct _GtkPlacesViewRow
   gint           is_network : 1;
 };
 
-G_DEFINE_TYPE (GtkPlacesViewRow, gtk_places_view_row, GTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (GtkPlacesViewRow, ctk_places_view_row, GTK_TYPE_LIST_BOX_ROW)
 
 enum {
   PROP_0,
@@ -134,7 +134,7 @@ measure_available_space_finished (GObject      *object,
   label = g_strdup_printf (dngettext (GETTEXT_PACKAGE, "%s / %s available", "%s / %s available", plural_form),
                            formatted_free_size, formatted_total_size);
 
-  gtk_label_set_label (row->available_space_label, label);
+  ctk_label_set_label (row->available_space_label, label);
 
   g_object_unref (info);
   g_free (formatted_total_size);
@@ -151,8 +151,8 @@ measure_available_space (GtkPlacesViewRow *row)
 
   should_measure = (!row->is_network && (row->volume || row->mount || row->file));
 
-  gtk_label_set_label (row->available_space_label, "");
-  gtk_widget_set_visible (GTK_WIDGET (row->available_space_label), should_measure);
+  ctk_label_set_label (row->available_space_label, "");
+  ctk_widget_set_visible (GTK_WIDGET (row->available_space_label), should_measure);
 
   if (should_measure)
     {
@@ -195,7 +195,7 @@ measure_available_space (GtkPlacesViewRow *row)
 }
 
 static void
-gtk_places_view_row_finalize (GObject *object)
+ctk_places_view_row_finalize (GObject *object)
 {
   GtkPlacesViewRow *self = GTK_PLACES_VIEW_ROW (object);
 
@@ -206,11 +206,11 @@ gtk_places_view_row_finalize (GObject *object)
   g_clear_object (&self->file);
   g_clear_object (&self->cancellable);
 
-  G_OBJECT_CLASS (gtk_places_view_row_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_places_view_row_parent_class)->finalize (object);
 }
 
 static void
-gtk_places_view_row_get_property (GObject    *object,
+ctk_places_view_row_get_property (GObject    *object,
                                   guint       prop_id,
                                   GValue     *value,
                                   GParamSpec *pspec)
@@ -224,16 +224,16 @@ gtk_places_view_row_get_property (GObject    *object,
   switch (prop_id)
     {
     case PROP_ICON:
-      gtk_image_get_gicon (self->icon_image, &icon, NULL);
+      ctk_image_get_gicon (self->icon_image, &icon, NULL);
       g_value_set_object (value, icon);
       break;
 
     case PROP_NAME:
-      g_value_set_string (value, gtk_label_get_label (self->name_label));
+      g_value_set_string (value, ctk_label_get_label (self->name_label));
       break;
 
     case PROP_PATH:
-      g_value_set_string (value, gtk_label_get_label (self->path_label));
+      g_value_set_string (value, ctk_label_get_label (self->path_label));
       break;
 
     case PROP_VOLUME:
@@ -258,7 +258,7 @@ gtk_places_view_row_get_property (GObject    *object,
 }
 
 static void
-gtk_places_view_row_set_property (GObject      *object,
+ctk_places_view_row_set_property (GObject      *object,
                                   guint         prop_id,
                                   const GValue *value,
                                   GParamSpec   *pspec)
@@ -268,17 +268,17 @@ gtk_places_view_row_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_ICON:
-      gtk_image_set_from_gicon (self->icon_image,
+      ctk_image_set_from_gicon (self->icon_image,
                                 g_value_get_object (value),
                                 GTK_ICON_SIZE_LARGE_TOOLBAR);
       break;
 
     case PROP_NAME:
-      gtk_label_set_label (self->name_label, g_value_get_string (value));
+      ctk_label_set_label (self->name_label, g_value_get_string (value));
       break;
 
     case PROP_PATH:
-      gtk_label_set_label (self->path_label, g_value_get_string (value));
+      ctk_label_set_label (self->path_label, g_value_get_string (value));
       break;
 
     case PROP_VOLUME:
@@ -289,12 +289,12 @@ gtk_places_view_row_set_property (GObject      *object,
       g_set_object (&self->mount, g_value_get_object (value));
       if (self->mount != NULL)
         {
-          gtk_stack_set_visible_child (self->mount_stack, GTK_WIDGET (self->eject_button));
-          gtk_widget_set_child_visible (GTK_WIDGET (self->mount_stack), TRUE);
+          ctk_stack_set_visible_child (self->mount_stack, GTK_WIDGET (self->eject_button));
+          ctk_widget_set_child_visible (GTK_WIDGET (self->mount_stack), TRUE);
         }
       else
         {
-          gtk_widget_set_child_visible (GTK_WIDGET (self->mount_stack), FALSE);
+          ctk_widget_set_child_visible (GTK_WIDGET (self->mount_stack), FALSE);
         }
       measure_available_space (self);
       break;
@@ -305,7 +305,7 @@ gtk_places_view_row_set_property (GObject      *object,
       break;
 
     case PROP_IS_NETWORK:
-      gtk_places_view_row_set_is_network (self, g_value_get_boolean (value));
+      ctk_places_view_row_set_is_network (self, g_value_get_boolean (value));
       measure_available_space (self);
       break;
 
@@ -315,14 +315,14 @@ gtk_places_view_row_set_property (GObject      *object,
 }
 
 static void
-gtk_places_view_row_class_init (GtkPlacesViewRowClass *klass)
+ctk_places_view_row_class_init (GtkPlacesViewRowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-  object_class->finalize = gtk_places_view_row_finalize;
-  object_class->get_property = gtk_places_view_row_get_property;
-  object_class->set_property = gtk_places_view_row_set_property;
+  object_class->finalize = ctk_places_view_row_finalize;
+  object_class->get_property = ctk_places_view_row_get_property;
+  object_class->set_property = ctk_places_view_row_set_property;
 
   properties[PROP_ICON] =
           g_param_spec_object ("icon",
@@ -375,27 +375,27 @@ gtk_places_view_row_class_init (GtkPlacesViewRowClass *klass)
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkplacesviewrow.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkplacesviewrow.ui");
 
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, available_space_label);
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, mount_stack);
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, busy_spinner);
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, eject_button);
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, eject_icon);
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, event_box);
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, icon_image);
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, name_label);
-  gtk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, path_label);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, available_space_label);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, mount_stack);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, busy_spinner);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, eject_button);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, eject_icon);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, event_box);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, icon_image);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, name_label);
+  ctk_widget_class_bind_template_child (widget_class, GtkPlacesViewRow, path_label);
 }
 
 static void
-gtk_places_view_row_init (GtkPlacesViewRow *self)
+ctk_places_view_row_init (GtkPlacesViewRow *self)
 {
-  gtk_widget_init_template (GTK_WIDGET (self));
+  ctk_widget_init_template (GTK_WIDGET (self));
 }
 
 GtkWidget*
-gtk_places_view_row_new (GVolume *volume,
+ctk_places_view_row_new (GVolume *volume,
                          GMount  *mount)
 {
   return g_object_new (GTK_TYPE_PLACES_VIEW_ROW,
@@ -405,7 +405,7 @@ gtk_places_view_row_new (GVolume *volume,
 }
 
 GMount*
-gtk_places_view_row_get_mount (GtkPlacesViewRow *row)
+ctk_places_view_row_get_mount (GtkPlacesViewRow *row)
 {
   g_return_val_if_fail (GTK_IS_PLACES_VIEW_ROW (row), NULL);
 
@@ -413,7 +413,7 @@ gtk_places_view_row_get_mount (GtkPlacesViewRow *row)
 }
 
 GVolume*
-gtk_places_view_row_get_volume (GtkPlacesViewRow *row)
+ctk_places_view_row_get_volume (GtkPlacesViewRow *row)
 {
   g_return_val_if_fail (GTK_IS_PLACES_VIEW_ROW (row), NULL);
 
@@ -421,7 +421,7 @@ gtk_places_view_row_get_volume (GtkPlacesViewRow *row)
 }
 
 GFile*
-gtk_places_view_row_get_file (GtkPlacesViewRow *row)
+ctk_places_view_row_get_file (GtkPlacesViewRow *row)
 {
   g_return_val_if_fail (GTK_IS_PLACES_VIEW_ROW (row), NULL);
 
@@ -429,7 +429,7 @@ gtk_places_view_row_get_file (GtkPlacesViewRow *row)
 }
 
 GtkWidget*
-gtk_places_view_row_get_eject_button (GtkPlacesViewRow *row)
+ctk_places_view_row_get_eject_button (GtkPlacesViewRow *row)
 {
   g_return_val_if_fail (GTK_IS_PLACES_VIEW_ROW (row), NULL);
 
@@ -437,7 +437,7 @@ gtk_places_view_row_get_eject_button (GtkPlacesViewRow *row)
 }
 
 GtkWidget*
-gtk_places_view_row_get_event_box (GtkPlacesViewRow *row)
+ctk_places_view_row_get_event_box (GtkPlacesViewRow *row)
 {
   g_return_val_if_fail (GTK_IS_PLACES_VIEW_ROW (row), NULL);
 
@@ -445,24 +445,24 @@ gtk_places_view_row_get_event_box (GtkPlacesViewRow *row)
 }
 
 void
-gtk_places_view_row_set_busy (GtkPlacesViewRow *row,
+ctk_places_view_row_set_busy (GtkPlacesViewRow *row,
                               gboolean          is_busy)
 {
   g_return_if_fail (GTK_IS_PLACES_VIEW_ROW (row));
 
   if (is_busy)
     {
-      gtk_stack_set_visible_child (row->mount_stack, GTK_WIDGET (row->busy_spinner));
-      gtk_widget_set_child_visible (GTK_WIDGET (row->mount_stack), TRUE);
+      ctk_stack_set_visible_child (row->mount_stack, GTK_WIDGET (row->busy_spinner));
+      ctk_widget_set_child_visible (GTK_WIDGET (row->mount_stack), TRUE);
     }
   else
     {
-      gtk_widget_set_child_visible (GTK_WIDGET (row->mount_stack), FALSE);
+      ctk_widget_set_child_visible (GTK_WIDGET (row->mount_stack), FALSE);
     }
 }
 
 gboolean
-gtk_places_view_row_get_is_network (GtkPlacesViewRow *row)
+ctk_places_view_row_get_is_network (GtkPlacesViewRow *row)
 {
   g_return_val_if_fail (GTK_IS_PLACES_VIEW_ROW (row), FALSE);
 
@@ -470,30 +470,30 @@ gtk_places_view_row_get_is_network (GtkPlacesViewRow *row)
 }
 
 void
-gtk_places_view_row_set_is_network (GtkPlacesViewRow *row,
+ctk_places_view_row_set_is_network (GtkPlacesViewRow *row,
                                     gboolean          is_network)
 {
   if (row->is_network != is_network)
     {
       row->is_network = is_network;
 
-      gtk_image_set_from_icon_name (row->eject_icon, "media-eject-symbolic", GTK_ICON_SIZE_BUTTON);
-      gtk_widget_set_tooltip_text (GTK_WIDGET (row->eject_button), is_network ? _("Disconnect") : _("Unmount"));
+      ctk_image_set_from_icon_name (row->eject_icon, "media-eject-symbolic", GTK_ICON_SIZE_BUTTON);
+      ctk_widget_set_tooltip_text (GTK_WIDGET (row->eject_button), is_network ? _("Disconnect") : _("Unmount"));
     }
 }
 
 void
-gtk_places_view_row_set_path_size_group (GtkPlacesViewRow *row,
+ctk_places_view_row_set_path_size_group (GtkPlacesViewRow *row,
                                          GtkSizeGroup     *group)
 {
   if (group)
-    gtk_size_group_add_widget (group, GTK_WIDGET (row->path_label));
+    ctk_size_group_add_widget (group, GTK_WIDGET (row->path_label));
 }
 
 void
-gtk_places_view_row_set_space_size_group (GtkPlacesViewRow *row,
+ctk_places_view_row_set_space_size_group (GtkPlacesViewRow *row,
                                           GtkSizeGroup     *group)
 {
   if (group)
-    gtk_size_group_add_widget (group, GTK_WIDGET (row->available_space_label));
+    ctk_size_group_add_widget (group, GTK_WIDGET (row->available_space_label));
 }

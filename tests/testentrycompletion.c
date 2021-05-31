@@ -60,61 +60,61 @@ create_simple_completion_model (void)
   GtkListStore *store;
   GtkTreeIter iter;
   
-  store = gtk_list_store_new (1, G_TYPE_STRING);
+  store = ctk_list_store_new (1, G_TYPE_STRING);
 
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "GNOME", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "gnominious", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "Gnomonic projection", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "GNOME", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "gnominious", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "Gnomonic projection", -1);
 
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "total", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totally", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "toto", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "tottery", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totterer", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "Totten trust", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totipotent", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totipotency", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totemism", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totem pole", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "Totara", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totalizer", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totalizator", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "totalitarianism", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "total parenteral nutrition", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "total hysterectomy", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "total eclipse", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "Totipresence", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "Totipalmi", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "zombie", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "a\303\246x", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "a\303\246y", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, "a\303\246z", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "total", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totally", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "toto", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "tottery", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totterer", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "Totten trust", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totipotent", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totipotency", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totemism", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totem pole", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "Totara", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totalizer", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totalizator", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "totalitarianism", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "total parenteral nutrition", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "total hysterectomy", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "total eclipse", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "Totipresence", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "Totipalmi", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "zombie", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "a\303\246x", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "a\303\246y", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, "a\303\246z", -1);
  
   return GTK_TREE_MODEL (store);
 }
@@ -129,28 +129,28 @@ create_completion_model (void)
 
   pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
 
-  store = gtk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
+  store = ctk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
 
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "ambient", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "ambidextrously", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "ambidexter", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "ambiguity", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "American Party", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "American mountain ash", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "amelioration", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "Amelia Earhart", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "Totten trust", -1);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, pixbuf, 1, "Laminated arch", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "ambient", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "ambidextrously", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "ambidexter", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "ambiguity", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "American Party", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "American mountain ash", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "amelioration", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "Amelia Earhart", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "Totten trust", -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, pixbuf, 1, "Laminated arch", -1);
  
   return GTK_TREE_MODEL (store);
 }
@@ -166,9 +166,9 @@ match_func (GtkEntryCompletion *completion,
 
   gboolean ret = FALSE;
 
-  model = gtk_entry_completion_get_model (completion);
+  model = ctk_entry_completion_get_model (completion);
 
-  gtk_tree_model_get (model, iter, 1, &item, -1);
+  ctk_tree_model_get (model, iter, 1, &item, -1);
 
   if (item != NULL)
     {
@@ -225,7 +225,7 @@ animation_timer (GtkEntryCompletion *completion)
   gint n_completions = G_N_ELEMENTS (dynamic_completions);
   gint n;
   static GtkListStore *old_store = NULL;
-  GtkListStore *store = GTK_LIST_STORE (gtk_entry_completion_get_model (completion));
+  GtkListStore *store = GTK_LIST_STORE (ctk_entry_completion_get_model (completion));
 
   if (timer_count % 10 == 0)
     {
@@ -234,13 +234,13 @@ animation_timer (GtkEntryCompletion *completion)
 	  g_print ("removing model!\n");
 
 	  old_store = GTK_LIST_STORE (g_object_ref (store));
-	  gtk_entry_completion_set_model (completion, NULL);
+	  ctk_entry_completion_set_model (completion, NULL);
 	}
       else
 	{
 	  g_print ("readding model!\n");
 	  
-	  gtk_entry_completion_set_model (completion, GTK_TREE_MODEL (old_store));
+	  ctk_entry_completion_set_model (completion, GTK_TREE_MODEL (old_store));
 	  g_object_unref (old_store);
 	  old_store = NULL;
 	}
@@ -254,14 +254,14 @@ animation_timer (GtkEntryCompletion *completion)
       if ((timer_count / n_completions) % 2 == 0)
 	{
 	  n = timer_count % n_completions;
-	  gtk_list_store_append (store, &iter);
-	  gtk_list_store_set (store, &iter, 0, dynamic_completions[n], -1);
+	  ctk_list_store_append (store, &iter);
+	  ctk_list_store_set (store, &iter, 0, dynamic_completions[n], -1);
 	  
 	}
       else
 	{
-	  if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter))
-	    gtk_list_store_remove (store, &iter);
+	  if (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter))
+	    ctk_list_store_remove (store, &iter);
 	}
     }
   
@@ -277,10 +277,10 @@ match_selected_cb (GtkEntryCompletion *completion,
   gchar *str;
   GtkWidget *entry;
 
-  entry = gtk_entry_completion_get_entry (completion);
-  gtk_tree_model_get (GTK_TREE_MODEL (model), iter, 1, &str, -1);
-  gtk_entry_set_text (GTK_ENTRY (entry), str);
-  gtk_editable_set_position (GTK_EDITABLE (entry), -1);
+  entry = ctk_entry_completion_get_entry (completion);
+  ctk_tree_model_get (GTK_TREE_MODEL (model), iter, 1, &str, -1);
+  ctk_entry_set_text (GTK_ENTRY (entry), str);
+  ctk_editable_set_position (GTK_EDITABLE (entry), -1);
   g_free (str);
 
   return TRUE;
@@ -296,121 +296,121 @@ main (int argc, char *argv[])
   GtkTreeModel *completion_model;
   GtkCellRenderer *cell;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_container_set_border_width (GTK_CONTAINER (window), 5);
-  g_signal_connect (window, "delete_event", gtk_main_quit, NULL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 5);
+  g_signal_connect (window, "delete_event", ctk_main_quit, NULL);
   
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
     
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
+  ctk_container_set_border_width (GTK_CONTAINER (vbox), 5);
   
-  label = gtk_label_new (NULL);
+  label = ctk_label_new (NULL);
 
-  gtk_label_set_markup (GTK_LABEL (label), "Completion demo, try writing <b>total</b> or <b>gnome</b> for example.");
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_markup (GTK_LABEL (label), "Completion demo, try writing <b>total</b> or <b>gnome</b> for example.");
+  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   /* Create our first entry */
-  entry = gtk_entry_new ();
+  entry = ctk_entry_new ();
   
   /* Create the completion object */
-  completion = gtk_entry_completion_new ();
-  gtk_entry_completion_set_inline_completion (completion, TRUE);
+  completion = ctk_entry_completion_new ();
+  ctk_entry_completion_set_inline_completion (completion, TRUE);
   
   /* Assign the completion to the entry */
-  gtk_entry_set_completion (GTK_ENTRY (entry), completion);
+  ctk_entry_set_completion (GTK_ENTRY (entry), completion);
   g_object_unref (completion);
   
-  gtk_container_add (GTK_CONTAINER (vbox), entry);
+  ctk_container_add (GTK_CONTAINER (vbox), entry);
 
   /* Create a tree model and use it as the completion model */
   completion_model = create_simple_completion_model ();
-  gtk_entry_completion_set_model (completion, completion_model);
+  ctk_entry_completion_set_model (completion, completion_model);
   g_object_unref (completion_model);
   
   /* Use model column 0 as the text column */
-  gtk_entry_completion_set_text_column (completion, 0);
+  ctk_entry_completion_set_text_column (completion, 0);
 
   /* Create our second entry */
-  entry = gtk_entry_new ();
+  entry = ctk_entry_new ();
 
   /* Create the completion object */
-  completion = gtk_entry_completion_new ();
+  completion = ctk_entry_completion_new ();
   
   /* Assign the completion to the entry */
-  gtk_entry_set_completion (GTK_ENTRY (entry), completion);
+  ctk_entry_set_completion (GTK_ENTRY (entry), completion);
   g_object_unref (completion);
   
-  gtk_container_add (GTK_CONTAINER (vbox), entry);
+  ctk_container_add (GTK_CONTAINER (vbox), entry);
 
   /* Create a tree model and use it as the completion model */
   completion_model = create_completion_model ();
-  gtk_entry_completion_set_model (completion, completion_model);
-  gtk_entry_completion_set_minimum_key_length (completion, 2);
+  ctk_entry_completion_set_model (completion, completion_model);
+  ctk_entry_completion_set_minimum_key_length (completion, 2);
   g_object_unref (completion_model);
   
   /* Use model column 1 as the text column */
-  cell = gtk_cell_renderer_pixbuf_new ();
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, FALSE);
-  gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (completion), cell, 
+  cell = ctk_cell_renderer_pixbuf_new ();
+  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, FALSE);
+  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (completion), cell, 
 				  "pixbuf", 0, NULL); 
 
-  cell = gtk_cell_renderer_text_new ();
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, FALSE);
-  gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (completion), cell, 
+  cell = ctk_cell_renderer_text_new ();
+  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, FALSE);
+  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (completion), cell, 
 				  "text", 1, NULL); 
   
-  gtk_entry_completion_set_match_func (completion, match_func, NULL, NULL);
+  ctk_entry_completion_set_match_func (completion, match_func, NULL, NULL);
   g_signal_connect (completion, "match-selected", 
 		    G_CALLBACK (match_selected_cb), NULL);
 
-  gtk_entry_completion_insert_action_text (completion, 100, "action!");
-  gtk_entry_completion_insert_action_text (completion, 101, "'nother action!");
+  ctk_entry_completion_insert_action_text (completion, 100, "action!");
+  ctk_entry_completion_insert_action_text (completion, 101, "'nother action!");
   g_signal_connect (completion, "action_activated", G_CALLBACK (activated_cb), NULL);
 
   /* Create our third entry */
-  entry = gtk_entry_new ();
+  entry = ctk_entry_new ();
 
   /* Create the completion object */
-  completion = gtk_entry_completion_new ();
+  completion = ctk_entry_completion_new ();
   
   /* Assign the completion to the entry */
-  gtk_entry_set_completion (GTK_ENTRY (entry), completion);
+  ctk_entry_set_completion (GTK_ENTRY (entry), completion);
   g_object_unref (completion);
   
-  gtk_container_add (GTK_CONTAINER (vbox), entry);
+  ctk_container_add (GTK_CONTAINER (vbox), entry);
 
   /* Create a tree model and use it as the completion model */
-  completion_model = GTK_TREE_MODEL (gtk_list_store_new (1, G_TYPE_STRING));
+  completion_model = GTK_TREE_MODEL (ctk_list_store_new (1, G_TYPE_STRING));
 
-  gtk_entry_completion_set_model (completion, completion_model);
+  ctk_entry_completion_set_model (completion, completion_model);
   g_object_unref (completion_model);
 
   /* Use model column 0 as the text column */
-  gtk_entry_completion_set_text_column (completion, 0);
+  ctk_entry_completion_set_text_column (completion, 0);
 
   /* Fill the completion dynamically */
   gdk_threads_add_timeout (1000, (GSourceFunc) animation_timer, completion);
 
   /* Fourth entry */
-  gtk_box_pack_start (GTK_BOX (vbox), gtk_label_new ("Model-less entry completion"), FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), ctk_label_new ("Model-less entry completion"), FALSE, FALSE, 0);
 
-  entry = gtk_entry_new ();
+  entry = ctk_entry_new ();
 
   /* Create the completion object */
-  completion = gtk_entry_completion_new ();
+  completion = ctk_entry_completion_new ();
   
   /* Assign the completion to the entry */
-  gtk_entry_set_completion (GTK_ENTRY (entry), completion);
+  ctk_entry_set_completion (GTK_ENTRY (entry), completion);
   g_object_unref (completion);
   
-  gtk_container_add (GTK_CONTAINER (vbox), entry);
+  ctk_container_add (GTK_CONTAINER (vbox), entry);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
   
   return 0;
 }

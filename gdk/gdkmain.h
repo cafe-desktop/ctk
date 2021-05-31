@@ -50,9 +50,9 @@ GDK_AVAILABLE_IN_ALL
 gboolean              gdk_init_check                      (gint           *argc,
                                                            gchar        ***argv);
 GDK_DEPRECATED_IN_3_16
-void                  gdk_add_option_entries_libgtk_only  (GOptionGroup   *group);
+void                  gdk_add_option_entries_libctk_only  (GOptionGroup   *group);
 GDK_DEPRECATED_IN_3_16
-void                  gdk_pre_parse_libgtk_only           (void);
+void                  gdk_pre_parse_libctk_only           (void);
 
 GDK_AVAILABLE_IN_ALL
 const gchar *         gdk_get_program_class               (void);

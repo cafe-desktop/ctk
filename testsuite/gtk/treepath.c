@@ -26,18 +26,18 @@ test_append (void)
   gint i;
   gint *indices;
 
-  p = gtk_tree_path_new ();
+  p = ctk_tree_path_new ();
   for (i = 0; i < 100; i++)
     {
-      g_assert_cmpint (gtk_tree_path_get_depth (p), ==, i);
-      gtk_tree_path_append_index (p, i);
+      g_assert_cmpint (ctk_tree_path_get_depth (p), ==, i);
+      ctk_tree_path_append_index (p, i);
     }
 
-  indices = gtk_tree_path_get_indices (p);
+  indices = ctk_tree_path_get_indices (p);
   for (i = 0; i < 100; i++)
     g_assert_cmpint (indices[i], ==, i);
 
-  gtk_tree_path_free (p);
+  ctk_tree_path_free (p);
 }
 
 static void
@@ -47,18 +47,18 @@ test_prepend (void)
   gint i;
   gint *indices;
 
-  p = gtk_tree_path_new ();
+  p = ctk_tree_path_new ();
   for (i = 0; i < 100; i++)
     {
-      g_assert_cmpint (gtk_tree_path_get_depth (p), ==, i);
-      gtk_tree_path_prepend_index (p, i);
+      g_assert_cmpint (ctk_tree_path_get_depth (p), ==, i);
+      ctk_tree_path_prepend_index (p, i);
     }
 
-  indices = gtk_tree_path_get_indices (p);
+  indices = ctk_tree_path_get_indices (p);
   for (i = 0; i < 100; i++)
     g_assert_cmpint (indices[i], ==, 99 - i);
 
-  gtk_tree_path_free (p);
+  ctk_tree_path_free (p);
 }
 
 static void
@@ -70,14 +70,14 @@ test_to_string (void)
   gchar *s;
   gint i;
 
-  p = gtk_tree_path_new_from_string (str);
-  indices = gtk_tree_path_get_indices (p);
+  p = ctk_tree_path_new_from_string (str);
+  indices = ctk_tree_path_get_indices (p);
   for (i = 0; i < 10; i++)
     g_assert_cmpint (indices[i], ==, i);
-  s = gtk_tree_path_to_string (p);
+  s = ctk_tree_path_to_string (p);
   g_assert_cmpstr (s, ==, str);
 
-  gtk_tree_path_free (p);
+  ctk_tree_path_free (p);
   g_free (s);
 }
 
@@ -88,22 +88,22 @@ test_from_indices (void)
   gint *indices;
   gint i;
 
-  p = gtk_tree_path_new_from_indices (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1);
-  g_assert_cmpint (gtk_tree_path_get_depth (p), ==, 10);
-  indices = gtk_tree_path_get_indices (p);
+  p = ctk_tree_path_new_from_indices (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1);
+  g_assert_cmpint (ctk_tree_path_get_depth (p), ==, 10);
+  indices = ctk_tree_path_get_indices (p);
   for (i = 0; i < 10; i++)
     g_assert_cmpint (indices[i], ==, i);
-  gtk_tree_path_free (p);
+  ctk_tree_path_free (p);
 }
 
 static void
 test_first (void)
 {
   GtkTreePath *p;
-  p = gtk_tree_path_new_first ();
-  g_assert_cmpint (gtk_tree_path_get_depth (p), ==, 1);
-  g_assert_cmpint (gtk_tree_path_get_indices (p)[0], ==, 0);
-  gtk_tree_path_free (p);
+  p = ctk_tree_path_new_first ();
+  g_assert_cmpint (ctk_tree_path_get_depth (p), ==, 1);
+  g_assert_cmpint (ctk_tree_path_get_indices (p)[0], ==, 0);
+  ctk_tree_path_free (p);
 }
 
 static void
@@ -116,59 +116,59 @@ test_navigation (void)
   gint i;
   gboolean res;
 
-  p = gtk_tree_path_new_from_indices (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1);
-  q = gtk_tree_path_copy (p);
-  g_assert (gtk_tree_path_compare (p, q) == 0);
-  gtk_tree_path_next (q);
-  pi = gtk_tree_path_get_indices (p);
-  qi = gtk_tree_path_get_indices (q);
+  p = ctk_tree_path_new_from_indices (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1);
+  q = ctk_tree_path_copy (p);
+  g_assert (ctk_tree_path_compare (p, q) == 0);
+  ctk_tree_path_next (q);
+  pi = ctk_tree_path_get_indices (p);
+  qi = ctk_tree_path_get_indices (q);
   for (i = 0; i < 9; i++)
     g_assert_cmpint (pi[i], ==, qi[i]);
   g_assert_cmpint (qi[9], ==, pi[9] + 1);
 
-  g_assert (!gtk_tree_path_is_ancestor (p, q));
-  g_assert (!gtk_tree_path_is_ancestor (q, p));
-  g_assert (!gtk_tree_path_is_descendant (p, q));
-  g_assert (!gtk_tree_path_is_descendant (q, p));
+  g_assert (!ctk_tree_path_is_ancestor (p, q));
+  g_assert (!ctk_tree_path_is_ancestor (q, p));
+  g_assert (!ctk_tree_path_is_descendant (p, q));
+  g_assert (!ctk_tree_path_is_descendant (q, p));
 
-  res = gtk_tree_path_prev (q);
+  res = ctk_tree_path_prev (q);
   g_assert (res);
-  g_assert (gtk_tree_path_compare (p, q) == 0);
+  g_assert (ctk_tree_path_compare (p, q) == 0);
 
-  g_assert (!gtk_tree_path_is_ancestor (p, q));
-  g_assert (!gtk_tree_path_is_ancestor (q, p));
-  g_assert (!gtk_tree_path_is_descendant (p, q));
-  g_assert (!gtk_tree_path_is_descendant (q, p));
+  g_assert (!ctk_tree_path_is_ancestor (p, q));
+  g_assert (!ctk_tree_path_is_ancestor (q, p));
+  g_assert (!ctk_tree_path_is_descendant (p, q));
+  g_assert (!ctk_tree_path_is_descendant (q, p));
 
-  gtk_tree_path_down (q);
+  ctk_tree_path_down (q);
 
-  g_assert (gtk_tree_path_compare (p, q) < 0);
+  g_assert (ctk_tree_path_compare (p, q) < 0);
 
-  g_assert (gtk_tree_path_is_ancestor (p, q));
-  g_assert (!gtk_tree_path_is_ancestor (q, p));
-  g_assert (!gtk_tree_path_is_descendant (p, q));
-  g_assert (gtk_tree_path_is_descendant (q, p));
+  g_assert (ctk_tree_path_is_ancestor (p, q));
+  g_assert (!ctk_tree_path_is_ancestor (q, p));
+  g_assert (!ctk_tree_path_is_descendant (p, q));
+  g_assert (ctk_tree_path_is_descendant (q, p));
 
-  res = gtk_tree_path_prev (q);
+  res = ctk_tree_path_prev (q);
   g_assert (!res);
 
-  res = gtk_tree_path_up (q);
+  res = ctk_tree_path_up (q);
   g_assert (res);
-  g_assert (gtk_tree_path_compare (p, q) == 0);
+  g_assert (ctk_tree_path_compare (p, q) == 0);
 
-  g_assert_cmpint (gtk_tree_path_get_depth (q), ==, 10);
-  res = gtk_tree_path_up (q);
+  g_assert_cmpint (ctk_tree_path_get_depth (q), ==, 10);
+  res = ctk_tree_path_up (q);
   g_assert (res);
-  g_assert_cmpint (gtk_tree_path_get_depth (q), ==, 9);
+  g_assert_cmpint (ctk_tree_path_get_depth (q), ==, 9);
 
-  gtk_tree_path_free (p);
-  gtk_tree_path_free (q);
+  ctk_tree_path_free (p);
+  ctk_tree_path_free (q);
 }
 
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_add_func ("/tree-path/append", test_append);
   g_test_add_func ("/tree-path/prepend", test_prepend);

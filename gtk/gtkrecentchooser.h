@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RECENT_CHOOSER			(gtk_recent_chooser_get_type ())
+#define GTK_TYPE_RECENT_CHOOSER			(ctk_recent_chooser_get_type ())
 #define GTK_RECENT_CHOOSER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RECENT_CHOOSER, GtkRecentChooser))
 #define GTK_IS_RECENT_CHOOSER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RECENT_CHOOSER))
 #define GTK_RECENT_CHOOSER_GET_IFACE(inst)	(G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_RECENT_CHOOSER, GtkRecentChooserIface))
@@ -44,7 +44,7 @@ G_BEGIN_DECLS
  * @GTK_RECENT_SORT_LRU: Sort the returned list with the least recently used
  *   items first.
  * @GTK_RECENT_SORT_CUSTOM: Sort the returned list using a custom sorting
- *   function passed using gtk_recent_chooser_set_sort_func().
+ *   function passed using ctk_recent_chooser_set_sort_func().
  *
  * Used to specify the sorting method to be applyed to the recently
  * used resource list.
@@ -74,7 +74,7 @@ typedef struct _GtkRecentChooserIface GtkRecentChooserIface;
  *
  * Since: 2.10
  */
-#define GTK_RECENT_CHOOSER_ERROR	(gtk_recent_chooser_error_quark ())
+#define GTK_RECENT_CHOOSER_ERROR	(ctk_recent_chooser_error_quark ())
 
 /**
  * GtkRecentChooserError:
@@ -93,7 +93,7 @@ typedef enum
 } GtkRecentChooserError;
 
 GDK_AVAILABLE_IN_ALL
-GQuark  gtk_recent_chooser_error_quark (void);
+GQuark  ctk_recent_chooser_error_quark (void);
 
 
 /**
@@ -161,53 +161,53 @@ struct _GtkRecentChooserIface
 };
 
 GDK_AVAILABLE_IN_ALL
-GType   gtk_recent_chooser_get_type    (void) G_GNUC_CONST;
+GType   ctk_recent_chooser_get_type    (void) G_GNUC_CONST;
 
 /*
  * Configuration
  */
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_show_private    (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_show_private    (GtkRecentChooser  *chooser,
 							  gboolean           show_private);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_recent_chooser_get_show_private    (GtkRecentChooser  *chooser);
+gboolean          ctk_recent_chooser_get_show_private    (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_show_not_found  (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_show_not_found  (GtkRecentChooser  *chooser,
 							  gboolean           show_not_found);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_recent_chooser_get_show_not_found  (GtkRecentChooser  *chooser);
+gboolean          ctk_recent_chooser_get_show_not_found  (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_select_multiple (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_select_multiple (GtkRecentChooser  *chooser,
 							  gboolean           select_multiple);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_recent_chooser_get_select_multiple (GtkRecentChooser  *chooser);
+gboolean          ctk_recent_chooser_get_select_multiple (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_limit           (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_limit           (GtkRecentChooser  *chooser,
 							  gint               limit);
 GDK_AVAILABLE_IN_ALL
-gint              gtk_recent_chooser_get_limit           (GtkRecentChooser  *chooser);
+gint              ctk_recent_chooser_get_limit           (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_local_only      (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_local_only      (GtkRecentChooser  *chooser,
 							  gboolean           local_only);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_recent_chooser_get_local_only      (GtkRecentChooser  *chooser);
+gboolean          ctk_recent_chooser_get_local_only      (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_show_tips       (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_show_tips       (GtkRecentChooser  *chooser,
 							  gboolean           show_tips);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_recent_chooser_get_show_tips       (GtkRecentChooser  *chooser);
+gboolean          ctk_recent_chooser_get_show_tips       (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_show_icons      (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_show_icons      (GtkRecentChooser  *chooser,
 							  gboolean           show_icons);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_recent_chooser_get_show_icons      (GtkRecentChooser  *chooser);
+gboolean          ctk_recent_chooser_get_show_icons      (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_sort_type       (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_sort_type       (GtkRecentChooser  *chooser,
 							  GtkRecentSortType  sort_type);
 GDK_AVAILABLE_IN_ALL
-GtkRecentSortType gtk_recent_chooser_get_sort_type       (GtkRecentChooser  *chooser);
+GtkRecentSortType ctk_recent_chooser_get_sort_type       (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void              gtk_recent_chooser_set_sort_func       (GtkRecentChooser  *chooser,
+void              ctk_recent_chooser_set_sort_func       (GtkRecentChooser  *chooser,
 							  GtkRecentSortFunc  sort_func,
 							  gpointer           sort_data,
 							  GDestroyNotify     data_destroy);
@@ -216,46 +216,46 @@ void              gtk_recent_chooser_set_sort_func       (GtkRecentChooser  *cho
  * Items handling
  */
 GDK_AVAILABLE_IN_ALL
-gboolean       gtk_recent_chooser_set_current_uri  (GtkRecentChooser  *chooser,
+gboolean       ctk_recent_chooser_set_current_uri  (GtkRecentChooser  *chooser,
 						    const gchar       *uri,
 						    GError           **error);
 GDK_AVAILABLE_IN_ALL
-gchar *        gtk_recent_chooser_get_current_uri  (GtkRecentChooser  *chooser);
+gchar *        ctk_recent_chooser_get_current_uri  (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-GtkRecentInfo *gtk_recent_chooser_get_current_item (GtkRecentChooser  *chooser);
+GtkRecentInfo *ctk_recent_chooser_get_current_item (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-gboolean       gtk_recent_chooser_select_uri       (GtkRecentChooser  *chooser,
+gboolean       ctk_recent_chooser_select_uri       (GtkRecentChooser  *chooser,
 						    const gchar       *uri,
 						    GError           **error);
 GDK_AVAILABLE_IN_ALL
-void           gtk_recent_chooser_unselect_uri     (GtkRecentChooser  *chooser,
+void           ctk_recent_chooser_unselect_uri     (GtkRecentChooser  *chooser,
 					            const gchar       *uri);
 GDK_AVAILABLE_IN_ALL
-void           gtk_recent_chooser_select_all       (GtkRecentChooser  *chooser);
+void           ctk_recent_chooser_select_all       (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-void           gtk_recent_chooser_unselect_all     (GtkRecentChooser  *chooser);
+void           ctk_recent_chooser_unselect_all     (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-GList *        gtk_recent_chooser_get_items        (GtkRecentChooser  *chooser);
+GList *        ctk_recent_chooser_get_items        (GtkRecentChooser  *chooser);
 GDK_AVAILABLE_IN_ALL
-gchar **       gtk_recent_chooser_get_uris         (GtkRecentChooser  *chooser,
+gchar **       ctk_recent_chooser_get_uris         (GtkRecentChooser  *chooser,
 						    gsize             *length);
 
 /*
  * Filters
  */
 GDK_AVAILABLE_IN_ALL
-void 		 gtk_recent_chooser_add_filter    (GtkRecentChooser *chooser,
+void 		 ctk_recent_chooser_add_filter    (GtkRecentChooser *chooser,
 			 			   GtkRecentFilter  *filter);
 GDK_AVAILABLE_IN_ALL
-void 		 gtk_recent_chooser_remove_filter (GtkRecentChooser *chooser,
+void 		 ctk_recent_chooser_remove_filter (GtkRecentChooser *chooser,
 						   GtkRecentFilter  *filter);
 GDK_AVAILABLE_IN_ALL
-GSList * 	 gtk_recent_chooser_list_filters  (GtkRecentChooser *chooser);
+GSList * 	 ctk_recent_chooser_list_filters  (GtkRecentChooser *chooser);
 GDK_AVAILABLE_IN_ALL
-void 		 gtk_recent_chooser_set_filter    (GtkRecentChooser *chooser,
+void 		 ctk_recent_chooser_set_filter    (GtkRecentChooser *chooser,
 						   GtkRecentFilter  *filter);
 GDK_AVAILABLE_IN_ALL
-GtkRecentFilter *gtk_recent_chooser_get_filter    (GtkRecentChooser *chooser);
+GtkRecentFilter *ctk_recent_chooser_get_filter    (GtkRecentChooser *chooser);
 
 
 G_END_DECLS

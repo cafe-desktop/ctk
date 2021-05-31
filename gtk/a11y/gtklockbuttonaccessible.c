@@ -22,39 +22,39 @@
 #include "gtk/gtklockbuttonprivate.h"
 #include "gtk/gtkwidgetprivate.h"
 
-G_DEFINE_TYPE (GtkLockButtonAccessible, gtk_lock_button_accessible, GTK_TYPE_BUTTON_ACCESSIBLE)
+G_DEFINE_TYPE (GtkLockButtonAccessible, ctk_lock_button_accessible, GTK_TYPE_BUTTON_ACCESSIBLE)
 
 static const gchar *
-gtk_lock_button_accessible_get_name (AtkObject *obj)
+ctk_lock_button_accessible_get_name (AtkObject *obj)
 {
   GtkLockButton *lockbutton;
 
-  lockbutton = GTK_LOCK_BUTTON (gtk_accessible_get_widget (GTK_ACCESSIBLE (obj)));
+  lockbutton = GTK_LOCK_BUTTON (ctk_accessible_get_widget (GTK_ACCESSIBLE (obj)));
   if (lockbutton == NULL)
     return NULL;
 
-  return _gtk_lock_button_get_current_text (lockbutton);
+  return _ctk_lock_button_get_current_text (lockbutton);
 }
 
 static void
-gtk_lock_button_accessible_class_init (GtkLockButtonAccessibleClass *klass)
+ctk_lock_button_accessible_class_init (GtkLockButtonAccessibleClass *klass)
 {
   AtkObjectClass *atk_object_class = ATK_OBJECT_CLASS (klass);
 
-  atk_object_class->get_name = gtk_lock_button_accessible_get_name;
+  atk_object_class->get_name = ctk_lock_button_accessible_get_name;
 }
 
 static void
-gtk_lock_button_accessible_init (GtkLockButtonAccessible *lockbutton)
+ctk_lock_button_accessible_init (GtkLockButtonAccessible *lockbutton)
 {
 }
 
 void
-_gtk_lock_button_accessible_name_changed (GtkLockButton *lockbutton)
+_ctk_lock_button_accessible_name_changed (GtkLockButton *lockbutton)
 {
   AtkObject *obj;
 
-  obj = _gtk_widget_peek_accessible (GTK_WIDGET (lockbutton));
+  obj = _ctk_widget_peek_accessible (GTK_WIDGET (lockbutton));
   if (obj == NULL)
     return;
 

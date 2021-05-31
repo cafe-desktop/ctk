@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_MULTI_PRESS         (gtk_gesture_multi_press_get_type ())
+#define GTK_TYPE_GESTURE_MULTI_PRESS         (ctk_gesture_multi_press_get_type ())
 #define GTK_GESTURE_MULTI_PRESS(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_MULTI_PRESS, GtkGestureMultiPress))
 #define GTK_GESTURE_MULTI_PRESS_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_MULTI_PRESS, GtkGestureMultiPressClass))
 #define GTK_IS_GESTURE_MULTI_PRESS(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_MULTI_PRESS))
@@ -39,16 +39,16 @@ typedef struct _GtkGestureMultiPress GtkGestureMultiPress;
 typedef struct _GtkGestureMultiPressClass GtkGestureMultiPressClass;
 
 GDK_AVAILABLE_IN_3_14
-GType        gtk_gesture_multi_press_get_type (void) G_GNUC_CONST;
+GType        ctk_gesture_multi_press_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * gtk_gesture_multi_press_new      (GtkWidget            *widget);
+GtkGesture * ctk_gesture_multi_press_new      (GtkWidget            *widget);
 
 GDK_AVAILABLE_IN_3_14
-void         gtk_gesture_multi_press_set_area (GtkGestureMultiPress *gesture,
+void         ctk_gesture_multi_press_set_area (GtkGestureMultiPress *gesture,
 					       const GdkRectangle   *rect);
 GDK_AVAILABLE_IN_3_14
-gboolean     gtk_gesture_multi_press_get_area (GtkGestureMultiPress *gesture,
+gboolean     ctk_gesture_multi_press_get_area (GtkGestureMultiPress *gesture,
                                                GdkRectangle         *rect);
 
 G_END_DECLS

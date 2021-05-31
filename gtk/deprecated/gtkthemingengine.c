@@ -59,77 +59,77 @@ struct GtkThemingEnginePrivate
   gchar *name;
 };
 
-static void gtk_theming_engine_finalize          (GObject      *object);
-static void gtk_theming_engine_impl_set_property (GObject      *object,
+static void ctk_theming_engine_finalize          (GObject      *object);
+static void ctk_theming_engine_impl_set_property (GObject      *object,
                                                   guint         prop_id,
                                                   const GValue *value,
                                                   GParamSpec   *pspec);
-static void gtk_theming_engine_impl_get_property (GObject      *object,
+static void ctk_theming_engine_impl_get_property (GObject      *object,
                                                   guint         prop_id,
                                                   GValue       *value,
                                                   GParamSpec   *pspec);
 
-static void gtk_theming_engine_render_check (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_check (GtkThemingEngine *engine,
                                              cairo_t          *cr,
                                              gdouble           x,
                                              gdouble           y,
                                              gdouble           width,
                                              gdouble           height);
-static void gtk_theming_engine_render_option (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_option (GtkThemingEngine *engine,
                                               cairo_t          *cr,
                                               gdouble           x,
                                               gdouble           y,
                                               gdouble           width,
                                               gdouble           height);
-static void gtk_theming_engine_render_arrow  (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_arrow  (GtkThemingEngine *engine,
                                               cairo_t          *cr,
                                               gdouble           angle,
                                               gdouble           x,
                                               gdouble           y,
                                               gdouble           size);
-static void gtk_theming_engine_render_background (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_background (GtkThemingEngine *engine,
                                                   cairo_t          *cr,
                                                   gdouble           x,
                                                   gdouble           y,
                                                   gdouble           width,
                                                   gdouble           height);
-static void gtk_theming_engine_render_frame  (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_frame  (GtkThemingEngine *engine,
                                               cairo_t          *cr,
                                               gdouble           x,
                                               gdouble           y,
                                               gdouble           width,
                                               gdouble           height);
-static void gtk_theming_engine_render_expander (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_expander (GtkThemingEngine *engine,
                                                 cairo_t          *cr,
                                                 gdouble           x,
                                                 gdouble           y,
                                                 gdouble           width,
                                                 gdouble           height);
-static void gtk_theming_engine_render_focus    (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_focus    (GtkThemingEngine *engine,
                                                 cairo_t          *cr,
                                                 gdouble           x,
                                                 gdouble           y,
                                                 gdouble           width,
                                                 gdouble           height);
-static void gtk_theming_engine_render_layout   (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_layout   (GtkThemingEngine *engine,
                                                 cairo_t          *cr,
                                                 gdouble           x,
                                                 gdouble           y,
                                                 PangoLayout      *layout);
-static void gtk_theming_engine_render_line     (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_line     (GtkThemingEngine *engine,
                                                 cairo_t          *cr,
                                                 gdouble           x0,
                                                 gdouble           y0,
                                                 gdouble           x1,
                                                 gdouble           y1);
-static void gtk_theming_engine_render_slider   (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_slider   (GtkThemingEngine *engine,
                                                 cairo_t          *cr,
                                                 gdouble           x,
                                                 gdouble           y,
                                                 gdouble           width,
                                                 gdouble           height,
                                                 GtkOrientation    orientation);
-static void gtk_theming_engine_render_frame_gap (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_frame_gap (GtkThemingEngine *engine,
                                                  cairo_t          *cr,
                                                  gdouble           x,
                                                  gdouble           y,
@@ -138,40 +138,40 @@ static void gtk_theming_engine_render_frame_gap (GtkThemingEngine *engine,
                                                  GtkPositionType   gap_side,
                                                  gdouble           xy0_gap,
                                                  gdouble           xy1_gap);
-static void gtk_theming_engine_render_extension (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_extension (GtkThemingEngine *engine,
                                                  cairo_t          *cr,
                                                  gdouble           x,
                                                  gdouble           y,
                                                  gdouble           width,
                                                  gdouble           height,
                                                  GtkPositionType   gap_side);
-static void gtk_theming_engine_render_handle    (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_handle    (GtkThemingEngine *engine,
                                                  cairo_t          *cr,
                                                  gdouble           x,
                                                  gdouble           y,
                                                  gdouble           width,
                                                  gdouble           height);
-static void gtk_theming_engine_render_activity  (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_activity  (GtkThemingEngine *engine,
                                                  cairo_t          *cr,
                                                  gdouble           x,
                                                  gdouble           y,
                                                  gdouble           width,
                                                  gdouble           height);
-static GdkPixbuf * gtk_theming_engine_render_icon_pixbuf (GtkThemingEngine    *engine,
+static GdkPixbuf * ctk_theming_engine_render_icon_pixbuf (GtkThemingEngine    *engine,
                                                           const GtkIconSource *source,
                                                           GtkIconSize          size);
-static void gtk_theming_engine_render_icon (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_icon (GtkThemingEngine *engine,
                                             cairo_t *cr,
 					    GdkPixbuf *pixbuf,
                                             gdouble x,
                                             gdouble y);
-static void gtk_theming_engine_render_icon_surface (GtkThemingEngine *engine,
+static void ctk_theming_engine_render_icon_surface (GtkThemingEngine *engine,
 						    cairo_t *cr,
 						    cairo_surface_t *surface,
 						    gdouble x,
 						    gdouble y);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkThemingEngine, gtk_theming_engine, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkThemingEngine, ctk_theming_engine, G_TYPE_OBJECT)
 
 typedef struct GtkThemingModule GtkThemingModule;
 typedef struct GtkThemingModuleClass GtkThemingModuleClass;
@@ -192,41 +192,41 @@ struct GtkThemingModuleClass
   GTypeModuleClass parent_class;
 };
 
-#define GTK_TYPE_THEMING_MODULE  (gtk_theming_module_get_type ())
+#define GTK_TYPE_THEMING_MODULE  (ctk_theming_module_get_type ())
 #define GTK_THEMING_MODULE(o)    (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_THEMING_MODULE, GtkThemingModule))
 #define GTK_IS_THEMING_MODULE(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_THEMING_MODULE))
 
 _GDK_EXTERN
-GType gtk_theming_module_get_type (void);
+GType ctk_theming_module_get_type (void);
 
-G_DEFINE_TYPE (GtkThemingModule, gtk_theming_module, G_TYPE_TYPE_MODULE);
+G_DEFINE_TYPE (GtkThemingModule, ctk_theming_module, G_TYPE_TYPE_MODULE);
 
 static void
-gtk_theming_engine_class_init (GtkThemingEngineClass *klass)
+ctk_theming_engine_class_init (GtkThemingEngineClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_theming_engine_finalize;
-  object_class->set_property = gtk_theming_engine_impl_set_property;
-  object_class->get_property = gtk_theming_engine_impl_get_property;
+  object_class->finalize = ctk_theming_engine_finalize;
+  object_class->set_property = ctk_theming_engine_impl_set_property;
+  object_class->get_property = ctk_theming_engine_impl_get_property;
 
-  klass->render_icon = gtk_theming_engine_render_icon;
-  klass->render_check = gtk_theming_engine_render_check;
-  klass->render_option = gtk_theming_engine_render_option;
-  klass->render_arrow = gtk_theming_engine_render_arrow;
-  klass->render_background = gtk_theming_engine_render_background;
-  klass->render_frame = gtk_theming_engine_render_frame;
-  klass->render_expander = gtk_theming_engine_render_expander;
-  klass->render_focus = gtk_theming_engine_render_focus;
-  klass->render_layout = gtk_theming_engine_render_layout;
-  klass->render_line = gtk_theming_engine_render_line;
-  klass->render_slider = gtk_theming_engine_render_slider;
-  klass->render_frame_gap = gtk_theming_engine_render_frame_gap;
-  klass->render_extension = gtk_theming_engine_render_extension;
-  klass->render_handle = gtk_theming_engine_render_handle;
-  klass->render_activity = gtk_theming_engine_render_activity;
-  klass->render_icon_pixbuf = gtk_theming_engine_render_icon_pixbuf;
-  klass->render_icon_surface = gtk_theming_engine_render_icon_surface;
+  klass->render_icon = ctk_theming_engine_render_icon;
+  klass->render_check = ctk_theming_engine_render_check;
+  klass->render_option = ctk_theming_engine_render_option;
+  klass->render_arrow = ctk_theming_engine_render_arrow;
+  klass->render_background = ctk_theming_engine_render_background;
+  klass->render_frame = ctk_theming_engine_render_frame;
+  klass->render_expander = ctk_theming_engine_render_expander;
+  klass->render_focus = ctk_theming_engine_render_focus;
+  klass->render_layout = ctk_theming_engine_render_layout;
+  klass->render_line = ctk_theming_engine_render_line;
+  klass->render_slider = ctk_theming_engine_render_slider;
+  klass->render_frame_gap = ctk_theming_engine_render_frame_gap;
+  klass->render_extension = ctk_theming_engine_render_extension;
+  klass->render_handle = ctk_theming_engine_render_handle;
+  klass->render_activity = ctk_theming_engine_render_activity;
+  klass->render_icon_pixbuf = ctk_theming_engine_render_icon_pixbuf;
+  klass->render_icon_surface = ctk_theming_engine_render_icon_surface;
 
   /**
    * GtkThemingEngine:name:
@@ -251,24 +251,24 @@ gtk_theming_engine_class_init (GtkThemingEngineClass *klass)
 }
 
 static void
-gtk_theming_engine_init (GtkThemingEngine *engine)
+ctk_theming_engine_init (GtkThemingEngine *engine)
 {
-  engine->priv = gtk_theming_engine_get_instance_private (engine);
+  engine->priv = ctk_theming_engine_get_instance_private (engine);
 }
 
 static void
-gtk_theming_engine_finalize (GObject *object)
+ctk_theming_engine_finalize (GObject *object)
 {
   GtkThemingEnginePrivate *priv;
 
   priv = GTK_THEMING_ENGINE (object)->priv;
   g_free (priv->name);
 
-  G_OBJECT_CLASS (gtk_theming_engine_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_theming_engine_parent_class)->finalize (object);
 }
 
 static void
-gtk_theming_engine_impl_set_property (GObject      *object,
+ctk_theming_engine_impl_set_property (GObject      *object,
                                       guint         prop_id,
                                       const GValue *value,
                                       GParamSpec   *pspec)
@@ -291,7 +291,7 @@ gtk_theming_engine_impl_set_property (GObject      *object,
 }
 
 static void
-gtk_theming_engine_impl_get_property (GObject    *object,
+ctk_theming_engine_impl_get_property (GObject    *object,
                                       guint       prop_id,
                                       GValue     *value,
                                       GParamSpec *pspec)
@@ -312,7 +312,7 @@ gtk_theming_engine_impl_get_property (GObject    *object,
 }
 
 /**
- * gtk_theming_engine_get_property:
+ * ctk_theming_engine_get_property:
  * @engine: a #GtkThemingEngine
  * @property: the property name
  * @state: state to retrieve the value for
@@ -328,7 +328,7 @@ gtk_theming_engine_impl_get_property (GObject    *object,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_property (GtkThemingEngine *engine,
+ctk_theming_engine_get_property (GtkThemingEngine *engine,
                                  const gchar      *property,
                                  GtkStateFlags     state,
                                  GValue           *value)
@@ -340,11 +340,11 @@ gtk_theming_engine_get_property (GtkThemingEngine *engine,
   g_return_if_fail (value != NULL);
 
   priv = engine->priv;
-  gtk_style_context_get_property (priv->context, property, state, value);
+  ctk_style_context_get_property (priv->context, property, state, value);
 }
 
 /**
- * gtk_theming_engine_get_valist:
+ * ctk_theming_engine_get_valist:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve values for
  * @args: va_list of property name/return location pairs, followed by %NULL
@@ -357,7 +357,7 @@ gtk_theming_engine_get_property (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_valist (GtkThemingEngine *engine,
+ctk_theming_engine_get_valist (GtkThemingEngine *engine,
                                GtkStateFlags     state,
                                va_list           args)
 {
@@ -366,11 +366,11 @@ gtk_theming_engine_get_valist (GtkThemingEngine *engine,
   g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
-  gtk_style_context_get_valist (priv->context, state, args);
+  ctk_style_context_get_valist (priv->context, state, args);
 }
 
 /**
- * gtk_theming_engine_get:
+ * ctk_theming_engine_get:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve values for
  * @...: property name /return value pairs, followed by %NULL
@@ -383,7 +383,7 @@ gtk_theming_engine_get_valist (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get (GtkThemingEngine *engine,
+ctk_theming_engine_get (GtkThemingEngine *engine,
                         GtkStateFlags     state,
                         ...)
 {
@@ -395,12 +395,12 @@ gtk_theming_engine_get (GtkThemingEngine *engine,
   priv = engine->priv;
 
   va_start (args, state);
-  gtk_style_context_get_valist (priv->context, state, args);
+  ctk_style_context_get_valist (priv->context, state, args);
   va_end (args);
 }
 
 /**
- * gtk_theming_engine_get_style_property:
+ * ctk_theming_engine_get_style_property:
  * @engine: a #GtkThemingEngine
  * @property_name: the name of the widget style property
  * @value: (out): Return location for the property value, free with
@@ -413,7 +413,7 @@ gtk_theming_engine_get (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_style_property (GtkThemingEngine *engine,
+ctk_theming_engine_get_style_property (GtkThemingEngine *engine,
                                        const gchar      *property_name,
                                        GValue           *value)
 {
@@ -423,11 +423,11 @@ gtk_theming_engine_get_style_property (GtkThemingEngine *engine,
   g_return_if_fail (property_name != NULL);
 
   priv = engine->priv;
-  gtk_style_context_get_style_property (priv->context, property_name, value);
+  ctk_style_context_get_style_property (priv->context, property_name, value);
 }
 
 /**
- * gtk_theming_engine_get_style_valist:
+ * ctk_theming_engine_get_style_valist:
  * @engine: a #GtkThemingEngine
  * @args: va_list of property name/return location pairs, followed by %NULL
  *
@@ -439,7 +439,7 @@ gtk_theming_engine_get_style_property (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_style_valist (GtkThemingEngine *engine,
+ctk_theming_engine_get_style_valist (GtkThemingEngine *engine,
                                      va_list           args)
 {
   GtkThemingEnginePrivate *priv;
@@ -447,11 +447,11 @@ gtk_theming_engine_get_style_valist (GtkThemingEngine *engine,
   g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
-  gtk_style_context_get_style_valist (priv->context, args);
+  ctk_style_context_get_style_valist (priv->context, args);
 }
 
 /**
- * gtk_theming_engine_get_style:
+ * ctk_theming_engine_get_style:
  * @engine: a #GtkThemingEngine
  * @...: property name /return value pairs, followed by %NULL
  *
@@ -463,7 +463,7 @@ gtk_theming_engine_get_style_valist (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_style (GtkThemingEngine *engine,
+ctk_theming_engine_get_style (GtkThemingEngine *engine,
                               ...)
 {
   GtkThemingEnginePrivate *priv;
@@ -474,12 +474,12 @@ gtk_theming_engine_get_style (GtkThemingEngine *engine,
   priv = engine->priv;
 
   va_start (args, engine);
-  gtk_style_context_get_style_valist (priv->context, args);
+  ctk_style_context_get_style_valist (priv->context, args);
   va_end (args);
 }
 
 /**
- * gtk_theming_engine_lookup_color:
+ * ctk_theming_engine_lookup_color:
  * @engine: a #GtkThemingEngine
  * @color_name: color name to lookup
  * @color: (out): Return location for the looked up color
@@ -493,7 +493,7 @@ gtk_theming_engine_get_style (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 gboolean
-gtk_theming_engine_lookup_color (GtkThemingEngine *engine,
+ctk_theming_engine_lookup_color (GtkThemingEngine *engine,
                                  const gchar      *color_name,
                                  GdkRGBA          *color)
 {
@@ -503,11 +503,11 @@ gtk_theming_engine_lookup_color (GtkThemingEngine *engine,
   g_return_val_if_fail (color_name != NULL, FALSE);
 
   priv = engine->priv;
-  return gtk_style_context_lookup_color (priv->context, color_name, color);
+  return ctk_style_context_lookup_color (priv->context, color_name, color);
 }
 
 /**
- * gtk_theming_engine_get_state:
+ * ctk_theming_engine_get_state:
  * @engine: a #GtkThemingEngine
  *
  * returns the state used when rendering.
@@ -519,24 +519,24 @@ gtk_theming_engine_lookup_color (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 GtkStateFlags
-gtk_theming_engine_get_state (GtkThemingEngine *engine)
+ctk_theming_engine_get_state (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), 0);
 
   priv = engine->priv;
-  return gtk_style_context_get_state (priv->context);
+  return ctk_style_context_get_state (priv->context);
 }
 
 /**
- * gtk_theming_engine_state_is_running:
+ * ctk_theming_engine_state_is_running:
  * @engine: a #GtkThemingEngine
  * @state: a widget state
  * @progress: (out): return location for the transition progress
  *
  * Returns %TRUE if there is a transition animation running for the
- * current region (see gtk_style_context_push_animatable_region()).
+ * current region (see ctk_style_context_push_animatable_region()).
  *
  * If @progress is not %NULL, the animation progress will be returned
  * there, 0.0 means the state is closest to being %FALSE, while 1.0 means
@@ -551,7 +551,7 @@ gtk_theming_engine_get_state (GtkThemingEngine *engine)
  * Deprecated: 3.6: Always returns %FALSE
  **/
 gboolean
-gtk_theming_engine_state_is_running (GtkThemingEngine *engine,
+ctk_theming_engine_state_is_running (GtkThemingEngine *engine,
                                      GtkStateType      state,
                                      gdouble          *progress)
 {
@@ -561,7 +561,7 @@ gtk_theming_engine_state_is_running (GtkThemingEngine *engine,
 }
 
 /**
- * gtk_theming_engine_get_path:
+ * ctk_theming_engine_get_path:
  * @engine: a #GtkThemingEngine
  *
  * Returns the widget path used for style matching.
@@ -573,18 +573,18 @@ gtk_theming_engine_state_is_running (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 const GtkWidgetPath *
-gtk_theming_engine_get_path (GtkThemingEngine *engine)
+ctk_theming_engine_get_path (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), NULL);
 
   priv = engine->priv;
-  return gtk_style_context_get_path (priv->context);
+  return ctk_style_context_get_path (priv->context);
 }
 
 /**
- * gtk_theming_engine_has_class:
+ * ctk_theming_engine_has_class:
  * @engine: a #GtkThemingEngine
  * @style_class: class name to look up
  *
@@ -598,7 +598,7 @@ gtk_theming_engine_get_path (GtkThemingEngine *engine)
  * Deprecated: 3.14
  **/
 gboolean
-gtk_theming_engine_has_class (GtkThemingEngine *engine,
+ctk_theming_engine_has_class (GtkThemingEngine *engine,
                               const gchar      *style_class)
 {
   GtkThemingEnginePrivate *priv;
@@ -606,11 +606,11 @@ gtk_theming_engine_has_class (GtkThemingEngine *engine,
   g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), FALSE);
 
   priv = engine->priv;
-  return gtk_style_context_has_class (priv->context, style_class);
+  return ctk_style_context_has_class (priv->context, style_class);
 }
 
 /**
- * gtk_theming_engine_has_region:
+ * ctk_theming_engine_has_region:
  * @engine: a #GtkThemingEngine
  * @style_region: a region name
  * @flags: (out) (allow-none): return location for region flags
@@ -626,7 +626,7 @@ gtk_theming_engine_has_class (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 gboolean
-gtk_theming_engine_has_region (GtkThemingEngine *engine,
+ctk_theming_engine_has_region (GtkThemingEngine *engine,
                                const gchar      *style_region,
                                GtkRegionFlags   *flags)
 {
@@ -639,12 +639,12 @@ gtk_theming_engine_has_region (GtkThemingEngine *engine,
 
   priv = engine->priv;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  return gtk_style_context_has_region (priv->context, style_region, flags);
+  return ctk_style_context_has_region (priv->context, style_region, flags);
 G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
- * gtk_theming_engine_get_direction:
+ * ctk_theming_engine_get_direction:
  * @engine: a #GtkThemingEngine
  *
  * Returns the widget direction used for rendering.
@@ -653,12 +653,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: Use gtk_theming_engine_get_state() and
+ * Deprecated: 3.8: Use ctk_theming_engine_get_state() and
  *   check for #GTK_STATE_FLAG_DIR_LTR and
  *   #GTK_STATE_FLAG_DIR_RTL instead.
  **/
 GtkTextDirection
-gtk_theming_engine_get_direction (GtkThemingEngine *engine)
+ctk_theming_engine_get_direction (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
@@ -666,12 +666,12 @@ gtk_theming_engine_get_direction (GtkThemingEngine *engine)
 
   priv = engine->priv;
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  return gtk_style_context_get_direction (priv->context);
+  return ctk_style_context_get_direction (priv->context);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /**
- * gtk_theming_engine_get_junction_sides:
+ * ctk_theming_engine_get_junction_sides:
  * @engine: a #GtkThemingEngine
  *
  * Returns the widget direction used for rendering.
@@ -683,18 +683,18 @@ gtk_theming_engine_get_direction (GtkThemingEngine *engine)
  * Deprecated: 3.14
  **/
 GtkJunctionSides
-gtk_theming_engine_get_junction_sides (GtkThemingEngine *engine)
+ctk_theming_engine_get_junction_sides (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), 0);
 
   priv = engine->priv;
-  return gtk_style_context_get_junction_sides (priv->context);
+  return ctk_style_context_get_junction_sides (priv->context);
 }
 
 /**
- * gtk_theming_engine_get_color:
+ * ctk_theming_engine_get_color:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve the color for
  * @color: (out): return value for the foreground color
@@ -706,7 +706,7 @@ gtk_theming_engine_get_junction_sides (GtkThemingEngine *engine)
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_color (GtkThemingEngine *engine,
+ctk_theming_engine_get_color (GtkThemingEngine *engine,
                               GtkStateFlags     state,
                               GdkRGBA          *color)
 {
@@ -715,11 +715,11 @@ gtk_theming_engine_get_color (GtkThemingEngine *engine,
   g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
-  gtk_style_context_get_color (priv->context, state, color);
+  ctk_style_context_get_color (priv->context, state, color);
 }
 
 /**
- * gtk_theming_engine_get_background_color:
+ * ctk_theming_engine_get_background_color:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve the color for
  * @color: (out): return value for the background color
@@ -731,7 +731,7 @@ gtk_theming_engine_get_color (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_background_color (GtkThemingEngine *engine,
+ctk_theming_engine_get_background_color (GtkThemingEngine *engine,
                                          GtkStateFlags     state,
                                          GdkRGBA          *color)
 {
@@ -740,11 +740,11 @@ gtk_theming_engine_get_background_color (GtkThemingEngine *engine,
   g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
-  gtk_style_context_get_background_color (priv->context, state, color);
+  ctk_style_context_get_background_color (priv->context, state, color);
 }
 
 /**
- * gtk_theming_engine_get_border_color:
+ * ctk_theming_engine_get_border_color:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve the color for
  * @color: (out): return value for the border color
@@ -756,7 +756,7 @@ gtk_theming_engine_get_background_color (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_border_color (GtkThemingEngine *engine,
+ctk_theming_engine_get_border_color (GtkThemingEngine *engine,
                                      GtkStateFlags     state,
                                      GdkRGBA          *color)
 {
@@ -765,11 +765,11 @@ gtk_theming_engine_get_border_color (GtkThemingEngine *engine,
   g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
-  gtk_style_context_get_border_color (priv->context, state, color);
+  ctk_style_context_get_border_color (priv->context, state, color);
 }
 
 /**
- * gtk_theming_engine_get_border:
+ * ctk_theming_engine_get_border:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve the border for
  * @border: (out): return value for the border settings
@@ -781,7 +781,7 @@ gtk_theming_engine_get_border_color (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_border (GtkThemingEngine *engine,
+ctk_theming_engine_get_border (GtkThemingEngine *engine,
                                GtkStateFlags     state,
                                GtkBorder        *border)
 {
@@ -790,11 +790,11 @@ gtk_theming_engine_get_border (GtkThemingEngine *engine,
   g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
-  gtk_style_context_get_border (priv->context, state, border);
+  ctk_style_context_get_border (priv->context, state, border);
 }
 
 /**
- * gtk_theming_engine_get_padding:
+ * ctk_theming_engine_get_padding:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve the padding for
  * @padding: (out): return value for the padding settings
@@ -806,7 +806,7 @@ gtk_theming_engine_get_border (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_padding (GtkThemingEngine *engine,
+ctk_theming_engine_get_padding (GtkThemingEngine *engine,
                                 GtkStateFlags     state,
                                 GtkBorder        *padding)
 {
@@ -815,11 +815,11 @@ gtk_theming_engine_get_padding (GtkThemingEngine *engine,
   g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
-  gtk_style_context_get_padding (priv->context, state, padding);
+  ctk_style_context_get_padding (priv->context, state, padding);
 }
 
 /**
- * gtk_theming_engine_get_margin:
+ * ctk_theming_engine_get_margin:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve the border for
  * @margin: (out): return value for the margin settings
@@ -831,7 +831,7 @@ gtk_theming_engine_get_padding (GtkThemingEngine *engine,
  * Deprecated: 3.14
  **/
 void
-gtk_theming_engine_get_margin (GtkThemingEngine *engine,
+ctk_theming_engine_get_margin (GtkThemingEngine *engine,
                                GtkStateFlags     state,
                                GtkBorder        *margin)
 {
@@ -840,11 +840,11 @@ gtk_theming_engine_get_margin (GtkThemingEngine *engine,
   g_return_if_fail (GTK_IS_THEMING_ENGINE (engine));
 
   priv = engine->priv;
-  gtk_style_context_get_margin (priv->context, state, margin);
+  ctk_style_context_get_margin (priv->context, state, margin);
 }
 
 /**
- * gtk_theming_engine_get_font:
+ * ctk_theming_engine_get_font:
  * @engine: a #GtkThemingEngine
  * @state: state to retrieve the font for
  *
@@ -856,10 +856,10 @@ gtk_theming_engine_get_margin (GtkThemingEngine *engine,
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: Use gtk_theming_engine_get()
+ * Deprecated: 3.8: Use ctk_theming_engine_get()
  **/
 const PangoFontDescription *
-gtk_theming_engine_get_font (GtkThemingEngine *engine,
+ctk_theming_engine_get_font (GtkThemingEngine *engine,
                              GtkStateFlags     state)
 {
   GtkThemingEnginePrivate *priv;
@@ -868,14 +868,14 @@ gtk_theming_engine_get_font (GtkThemingEngine *engine,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   priv = engine->priv;
-  return gtk_style_context_get_font (priv->context, state);
+  return ctk_style_context_get_font (priv->context, state);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /* GtkThemingModule */
 
 static gboolean
-gtk_theming_module_load (GTypeModule *type_module)
+ctk_theming_module_load (GTypeModule *type_module)
 {
   GtkThemingModule *theming_module;
   GModule *module;
@@ -883,7 +883,7 @@ gtk_theming_module_load (GTypeModule *type_module)
 
   theming_module = GTK_THEMING_MODULE (type_module);
   name = theming_module->name;
-  module_path = _gtk_find_module (name, "theming-engines");
+  module_path = _ctk_find_module (name, "theming-engines");
 
   if (!module_path)
     return FALSE;
@@ -914,7 +914,7 @@ gtk_theming_module_load (GTypeModule *type_module)
 }
 
 static void
-gtk_theming_module_unload (GTypeModule *type_module)
+ctk_theming_module_unload (GTypeModule *type_module)
 {
   GtkThemingModule *theming_module;
 
@@ -931,21 +931,21 @@ gtk_theming_module_unload (GTypeModule *type_module)
 }
 
 static void
-gtk_theming_module_class_init (GtkThemingModuleClass *klass)
+ctk_theming_module_class_init (GtkThemingModuleClass *klass)
 {
   GTypeModuleClass *module_class = G_TYPE_MODULE_CLASS (klass);
 
-  module_class->load = gtk_theming_module_load;
-  module_class->unload = gtk_theming_module_unload;
+  module_class->load = ctk_theming_module_load;
+  module_class->unload = ctk_theming_module_unload;
 }
 
 static void
-gtk_theming_module_init (GtkThemingModule *module)
+ctk_theming_module_init (GtkThemingModule *module)
 {
 }
 
 /**
- * gtk_theming_engine_load:
+ * ctk_theming_engine_load:
  * @name: Theme engine name to load
  *
  * Loads and initializes a theming engine module from the
@@ -957,7 +957,7 @@ gtk_theming_module_init (GtkThemingModule *module)
  * Deprecated: 3.14
  **/
 GtkThemingEngine *
-gtk_theming_engine_load (const gchar *name)
+ctk_theming_engine_load (const gchar *name)
 {
   static GHashTable *engines = NULL;
   static GtkThemingEngine *default_engine;
@@ -999,7 +999,7 @@ gtk_theming_engine_load (const gchar *name)
 }
 
 /**
- * gtk_theming_engine_get_screen:
+ * ctk_theming_engine_get_screen:
  * @engine: a #GtkThemingEngine
  *
  * Returns the #GdkScreen to which @engine currently rendering to.
@@ -1009,117 +1009,117 @@ gtk_theming_engine_load (const gchar *name)
  * Deprecated: 3.14
  **/
 GdkScreen *
-gtk_theming_engine_get_screen (GtkThemingEngine *engine)
+ctk_theming_engine_get_screen (GtkThemingEngine *engine)
 {
   GtkThemingEnginePrivate *priv;
 
   g_return_val_if_fail (GTK_IS_THEMING_ENGINE (engine), NULL);
 
   priv = engine->priv;
-  return gtk_style_context_get_screen (priv->context);
+  return ctk_style_context_get_screen (priv->context);
 }
 
 /* Paint method implementations */
 static void
-gtk_theming_engine_render_check (GtkThemingEngine *engine,
+ctk_theming_engine_render_check (GtkThemingEngine *engine,
                                  cairo_t          *cr,
                                  gdouble           x,
                                  gdouble           y,
                                  gdouble           width,
                                  gdouble           height)
 {
-  gtk_render_check (engine->priv->context, cr, x, y, width, height);
+  ctk_render_check (engine->priv->context, cr, x, y, width, height);
 }
 
 static void
-gtk_theming_engine_render_option (GtkThemingEngine *engine,
+ctk_theming_engine_render_option (GtkThemingEngine *engine,
                                   cairo_t          *cr,
                                   gdouble           x,
                                   gdouble           y,
                                   gdouble           width,
                                   gdouble           height)
 {
-  gtk_render_option (engine->priv->context, cr, x, y, width, height);
+  ctk_render_option (engine->priv->context, cr, x, y, width, height);
 }
 
 static void
-gtk_theming_engine_render_arrow (GtkThemingEngine *engine,
+ctk_theming_engine_render_arrow (GtkThemingEngine *engine,
                                  cairo_t          *cr,
                                  gdouble           angle,
                                  gdouble           x,
                                  gdouble           y,
                                  gdouble           size)
 {
-  gtk_render_arrow (engine->priv->context, cr, angle, x, y, size);
+  ctk_render_arrow (engine->priv->context, cr, angle, x, y, size);
 }
 
 static void
-gtk_theming_engine_render_background (GtkThemingEngine *engine,
+ctk_theming_engine_render_background (GtkThemingEngine *engine,
                                       cairo_t          *cr,
                                       gdouble           x,
                                       gdouble           y,
                                       gdouble           width,
                                       gdouble           height)
 {
-  gtk_render_background (engine->priv->context, cr, x, y, width, height);
+  ctk_render_background (engine->priv->context, cr, x, y, width, height);
 }
 
 static void
-gtk_theming_engine_render_frame (GtkThemingEngine *engine,
+ctk_theming_engine_render_frame (GtkThemingEngine *engine,
                                  cairo_t          *cr,
                                  gdouble           x,
                                  gdouble           y,
                                  gdouble           width,
                                  gdouble           height)
 {
-  gtk_render_frame (engine->priv->context, cr, x, y, width, height);
+  ctk_render_frame (engine->priv->context, cr, x, y, width, height);
 }
 
 static void
-gtk_theming_engine_render_expander (GtkThemingEngine *engine,
+ctk_theming_engine_render_expander (GtkThemingEngine *engine,
                                     cairo_t          *cr,
                                     gdouble           x,
                                     gdouble           y,
                                     gdouble           width,
                                     gdouble           height)
 {
-  gtk_render_expander (engine->priv->context, cr, x, y, width, height);
+  ctk_render_expander (engine->priv->context, cr, x, y, width, height);
 }
 
 static void
-gtk_theming_engine_render_focus (GtkThemingEngine *engine,
+ctk_theming_engine_render_focus (GtkThemingEngine *engine,
                                  cairo_t          *cr,
                                  gdouble           x,
                                  gdouble           y,
                                  gdouble           width,
                                  gdouble           height)
 {
-  gtk_render_focus (engine->priv->context, cr, x, y, width, height);
+  ctk_render_focus (engine->priv->context, cr, x, y, width, height);
 }
 
 static void
-gtk_theming_engine_render_line (GtkThemingEngine *engine,
+ctk_theming_engine_render_line (GtkThemingEngine *engine,
                                 cairo_t          *cr,
                                 gdouble           x0,
                                 gdouble           y0,
                                 gdouble           x1,
                                 gdouble           y1)
 {
-  gtk_render_line (engine->priv->context, cr, x0, y0, x1, y1);
+  ctk_render_line (engine->priv->context, cr, x0, y0, x1, y1);
 }
 
 static void
-gtk_theming_engine_render_layout (GtkThemingEngine *engine,
+ctk_theming_engine_render_layout (GtkThemingEngine *engine,
                                   cairo_t          *cr,
                                   gdouble           x,
                                   gdouble           y,
                                   PangoLayout      *layout)
 {
-  gtk_render_layout (engine->priv->context, cr, x, y, layout);
+  ctk_render_layout (engine->priv->context, cr, x, y, layout);
 }
 
 static void
-gtk_theming_engine_render_slider (GtkThemingEngine *engine,
+ctk_theming_engine_render_slider (GtkThemingEngine *engine,
                                   cairo_t          *cr,
                                   gdouble           x,
                                   gdouble           y,
@@ -1127,11 +1127,11 @@ gtk_theming_engine_render_slider (GtkThemingEngine *engine,
                                   gdouble           height,
                                   GtkOrientation    orientation)
 {
-  gtk_render_slider (engine->priv->context, cr, x, y, width, height, orientation);
+  ctk_render_slider (engine->priv->context, cr, x, y, width, height, orientation);
 }
 
 static void
-gtk_theming_engine_render_frame_gap (GtkThemingEngine *engine,
+ctk_theming_engine_render_frame_gap (GtkThemingEngine *engine,
                                      cairo_t          *cr,
                                      gdouble           x,
                                      gdouble           y,
@@ -1141,11 +1141,11 @@ gtk_theming_engine_render_frame_gap (GtkThemingEngine *engine,
                                      gdouble           xy0_gap,
                                      gdouble           xy1_gap)
 {
-  gtk_render_frame_gap (engine->priv->context, cr, x, y, width, height, gap_side, xy0_gap, xy1_gap);
+  ctk_render_frame_gap (engine->priv->context, cr, x, y, width, height, gap_side, xy0_gap, xy1_gap);
 }
 
 static void
-gtk_theming_engine_render_extension (GtkThemingEngine *engine,
+ctk_theming_engine_render_extension (GtkThemingEngine *engine,
                                      cairo_t          *cr,
                                      gdouble           x,
                                      gdouble           y,
@@ -1153,57 +1153,57 @@ gtk_theming_engine_render_extension (GtkThemingEngine *engine,
                                      gdouble           height,
                                      GtkPositionType   gap_side)
 {
-  gtk_render_extension (engine->priv->context, cr, x, y, width, height, gap_side);
+  ctk_render_extension (engine->priv->context, cr, x, y, width, height, gap_side);
 }
 
 static void
-gtk_theming_engine_render_handle (GtkThemingEngine *engine,
+ctk_theming_engine_render_handle (GtkThemingEngine *engine,
                                   cairo_t          *cr,
                                   gdouble           x,
                                   gdouble           y,
                                   gdouble           width,
                                   gdouble           height)
 {
-  gtk_render_handle (engine->priv->context, cr, x, y, width, height);
+  ctk_render_handle (engine->priv->context, cr, x, y, width, height);
 }
 
 static void
-gtk_theming_engine_render_activity (GtkThemingEngine *engine,
+ctk_theming_engine_render_activity (GtkThemingEngine *engine,
                                     cairo_t          *cr,
                                     gdouble           x,
                                     gdouble           y,
                                     gdouble           width,
                                     gdouble           height)
 {
-  gtk_render_activity (engine->priv->context, cr, x, y, width, height);
+  ctk_render_activity (engine->priv->context, cr, x, y, width, height);
 }
 
 static GdkPixbuf *
-gtk_theming_engine_render_icon_pixbuf (GtkThemingEngine    *engine,
+ctk_theming_engine_render_icon_pixbuf (GtkThemingEngine    *engine,
                                        const GtkIconSource *source,
                                        GtkIconSize          size)
 {
-  return gtk_render_icon_pixbuf (engine->priv->context, source, size);
+  return ctk_render_icon_pixbuf (engine->priv->context, source, size);
 }
 
 static void
-gtk_theming_engine_render_icon (GtkThemingEngine *engine,
+ctk_theming_engine_render_icon (GtkThemingEngine *engine,
                                 cairo_t *cr,
 				GdkPixbuf *pixbuf,
                                 gdouble x,
                                 gdouble y)
 {
-  gtk_render_icon (engine->priv->context, cr, pixbuf, x, y);
+  ctk_render_icon (engine->priv->context, cr, pixbuf, x, y);
 }
 
 static void
-gtk_theming_engine_render_icon_surface (GtkThemingEngine *engine,
+ctk_theming_engine_render_icon_surface (GtkThemingEngine *engine,
 					cairo_t *cr,
 					cairo_surface_t *surface,
 					gdouble x,
 					gdouble y)
 {
-  gtk_render_icon_surface (engine->priv->context, cr, surface, x, y);
+  ctk_render_icon_surface (engine->priv->context, cr, surface, x, y);
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS

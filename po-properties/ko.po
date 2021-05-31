@@ -764,10 +764,10 @@ msgstr "값"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"그룹에서 이 동작이 현재 동작일 때, gtk_radio_action_get_current_value()가 리"
+"그룹에서 이 동작이 현재 동작일 때, ctk_radio_action_get_current_value()가 리"
 "턴할 값."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1218,10 +1218,10 @@ msgstr "로고"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "정보 상자의 로고. 설정하지 않으면, 기본값은 "
-"gtk_window_get_default_icon_list()입니다"
+"ctk_window_get_default_icon_list()입니다"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3385,9 +3385,9 @@ msgstr "진행 박자 단계"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"매번 gtk_entry_progress_pulse() 함수를 호출할 때마다 진행률 블럭을 튈 크기의 "
+"매번 ctk_entry_progress_pulse() 함수를 호출할 때마다 진행률 블럭을 튈 크기의 "
 "입력 창 너비에 대한 비율."
 
 #: gtk/gtkentry.c:1110
@@ -8933,8 +8933,8 @@ msgid "No show all"
 msgstr "show all 안 하기"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all()이 이 위젯에 영향을 미치지 않는지 여부"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all()이 이 위젯에 영향을 미치지 않는지 여부"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

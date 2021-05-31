@@ -88,7 +88,7 @@ static void
 string_append_string (GString    *str,
                       const char *string)
 {
-  _gtk_css_print_string (str, string);
+  _ctk_css_print_string (str, string);
 }
 
 /*** IMPLEMENTATIONS ***/
@@ -100,17 +100,17 @@ enum_parse (GtkCssParser *parser,
 {
   char *str;
 
-  if (_gtk_css_parser_try_enum (parser, type, res))
+  if (_ctk_css_parser_try_enum (parser, type, res))
     return TRUE;
 
-  str = _gtk_css_parser_try_ident (parser, TRUE);
+  str = _ctk_css_parser_try_ident (parser, TRUE);
   if (str == NULL)
     {
-      _gtk_css_parser_error (parser, "Expected an identifier");
+      _ctk_css_parser_error (parser, "Expected an identifier");
       return FALSE;
     }
 
-  _gtk_css_parser_error (parser,
+  _ctk_css_parser_error (parser,
 			 "Unknown value '%s' for enum type '%s'",
 			 str, g_type_name (type));
   g_free (str);
@@ -143,14 +143,14 @@ rgba_value_parse (GtkCssParser *parser,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  symbolic = _gtk_css_symbolic_value_new (parser);
+  symbolic = _ctk_css_symbolic_value_new (parser);
   if (symbolic == NULL)
     return FALSE;
 
-  if (gtk_symbolic_color_resolve (symbolic, NULL, &rgba))
+  if (ctk_symbolic_color_resolve (symbolic, NULL, &rgba))
     {
       g_value_set_boxed (value, &rgba);
-      gtk_symbolic_color_unref (symbolic);
+      ctk_symbolic_color_unref (symbolic);
     }
   else
     {
@@ -189,7 +189,7 @@ rgba_value_compute (GtkStyleProviderPrivate *provider,
   GdkRGBA white = { 1, 1, 1, 1 };
   const GValue *value;
 
-  value = _gtk_css_typed_value_get (specified);
+  value = _ctk_css_typed_value_get (specified);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -200,24 +200,24 @@ rgba_value_compute (GtkStyleProviderPrivate *provider,
       GValue new_value = G_VALUE_INIT;
       GdkRGBA rgba;
 
-      val = _gtk_css_color_value_resolve (_gtk_symbolic_color_get_css_value (symbolic),
+      val = _ctk_css_color_value_resolve (_ctk_symbolic_color_get_css_value (symbolic),
                                           provider,
-                                          gtk_css_style_get_value (values, GTK_CSS_PROPERTY_COLOR),
+                                          ctk_css_style_get_value (values, GTK_CSS_PROPERTY_COLOR),
                                           NULL);
       if (val != NULL)
         {
-          rgba = *_gtk_css_rgba_value_get_rgba (val);
-          _gtk_css_value_unref (val);
+          rgba = *_ctk_css_rgba_value_get_rgba (val);
+          _ctk_css_value_unref (val);
         }
       else
         rgba = white;
 
       g_value_init (&new_value, GDK_TYPE_RGBA);
       g_value_set_boxed (&new_value, &rgba);
-      return _gtk_css_typed_value_new_take (&new_value);
+      return _ctk_css_typed_value_new_take (&new_value);
     }
   else
-    return _gtk_css_value_ref (specified);
+    return _ctk_css_value_ref (specified);
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
@@ -231,11 +231,11 @@ color_value_parse (GtkCssParser *parser,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  symbolic = _gtk_css_symbolic_value_new (parser);
+  symbolic = _ctk_css_symbolic_value_new (parser);
   if (symbolic == NULL)
     return FALSE;
 
-  if (gtk_symbolic_color_resolve (symbolic, NULL, &rgba))
+  if (ctk_symbolic_color_resolve (symbolic, NULL, &rgba))
     {
       GdkColor color;
 
@@ -244,7 +244,7 @@ color_value_parse (GtkCssParser *parser,
       color.blue = rgba.blue * 65535. + 0.5;
 
       g_value_set_boxed (value, &color);
-      gtk_symbolic_color_unref (symbolic);
+      ctk_symbolic_color_unref (symbolic);
     }
   else
     {
@@ -285,7 +285,7 @@ color_value_compute (GtkStyleProviderPrivate *provider,
   GdkColor color = { 0, 65535, 65535, 65535 };
   const GValue *value;
 
-  value = _gtk_css_typed_value_get (specified);
+  value = _ctk_css_typed_value_get (specified);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -294,25 +294,25 @@ color_value_compute (GtkStyleProviderPrivate *provider,
       GValue new_value = G_VALUE_INIT;
       GtkCssValue *val;
 
-      val = _gtk_css_color_value_resolve (_gtk_symbolic_color_get_css_value (g_value_get_boxed (value)),
+      val = _ctk_css_color_value_resolve (_ctk_symbolic_color_get_css_value (g_value_get_boxed (value)),
                                           provider,
-                                          gtk_css_style_get_value (values, GTK_CSS_PROPERTY_COLOR),
+                                          ctk_css_style_get_value (values, GTK_CSS_PROPERTY_COLOR),
                                           NULL);
       if (val != NULL)
         {
-          const GdkRGBA *rgba = _gtk_css_rgba_value_get_rgba (val);
+          const GdkRGBA *rgba = _ctk_css_rgba_value_get_rgba (val);
           color.red = rgba->red * 65535. + 0.5;
           color.green = rgba->green * 65535. + 0.5;
           color.blue = rgba->blue * 65535. + 0.5;
-          _gtk_css_value_unref (val);
+          _ctk_css_value_unref (val);
         }
 
       g_value_init (&new_value, GDK_TYPE_COLOR);
       g_value_set_boxed (&new_value, &color);
-      return _gtk_css_typed_value_new_take (&new_value);
+      return _ctk_css_typed_value_new_take (&new_value);
     }
   else
-    return _gtk_css_value_ref (specified);
+    return _ctk_css_value_ref (specified);
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
@@ -323,7 +323,7 @@ symbolic_color_value_parse (GtkCssParser *parser,
 {
   GtkSymbolicColor *symbolic;
 
-  symbolic = _gtk_css_symbolic_value_new (parser);
+  symbolic = _ctk_css_symbolic_value_new (parser);
   if (symbolic == NULL)
     return FALSE;
 
@@ -343,7 +343,7 @@ symbolic_color_value_print (const GValue *value,
     g_string_append (string, "none");
   else
     {
-      char *s = gtk_symbolic_color_to_string (symbolic);
+      char *s = ctk_symbolic_color_to_string (symbolic);
       g_string_append (string, s);
       g_free (s);
     }
@@ -359,7 +359,7 @@ font_description_value_parse (GtkCssParser *parser,
   guint mask;
   char *str;
 
-  str = _gtk_css_parser_read_value (parser);
+  str = _ctk_css_parser_read_value (parser);
   if (str == NULL)
     return FALSE;
 
@@ -396,21 +396,21 @@ static gboolean
 boolean_value_parse (GtkCssParser *parser,
                      GValue       *value)
 {
-  if (_gtk_css_parser_try (parser, "true", TRUE) ||
-      _gtk_css_parser_try (parser, "1", TRUE))
+  if (_ctk_css_parser_try (parser, "true", TRUE) ||
+      _ctk_css_parser_try (parser, "1", TRUE))
     {
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
-  else if (_gtk_css_parser_try (parser, "false", TRUE) ||
-           _gtk_css_parser_try (parser, "0", TRUE))
+  else if (_ctk_css_parser_try (parser, "false", TRUE) ||
+           _ctk_css_parser_try (parser, "0", TRUE))
     {
       g_value_set_boolean (value, FALSE);
       return TRUE;
     }
   else
     {
-      _gtk_css_parser_error (parser, "Expected a boolean value");
+      _ctk_css_parser_error (parser, "Expected a boolean value");
       return FALSE;
     }
 }
@@ -431,23 +431,23 @@ int_value_parse (GtkCssParser *parser,
 {
   gint i;
 
-  if (_gtk_css_parser_has_prefix (parser, "-gtk"))
+  if (_ctk_css_parser_has_prefix (parser, "-gtk"))
     {
-      GtkCssValue *cssvalue = gtk_css_win32_size_value_parse (parser, GTK_CSS_PARSE_NUMBER | GTK_CSS_NUMBER_AS_PIXELS);
+      GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, GTK_CSS_PARSE_NUMBER | GTK_CSS_NUMBER_AS_PIXELS);
 
       if (cssvalue)
         {
-          g_value_set_int (value, _gtk_css_number_value_get (cssvalue, 100));
-          _gtk_css_value_unref (cssvalue);
+          g_value_set_int (value, _ctk_css_number_value_get (cssvalue, 100));
+          _ctk_css_value_unref (cssvalue);
           return TRUE;
         }
 
       return FALSE;
     }
 
-  if (!_gtk_css_parser_try_int (parser, &i))
+  if (!_ctk_css_parser_try_int (parser, &i))
     {
-      _gtk_css_parser_error (parser, "Expected a valid integer value");
+      _ctk_css_parser_error (parser, "Expected a valid integer value");
       return FALSE;
     }
 
@@ -468,9 +468,9 @@ uint_value_parse (GtkCssParser *parser,
 {
   guint u;
 
-  if (!_gtk_css_parser_try_uint (parser, &u))
+  if (!_ctk_css_parser_try_uint (parser, &u))
     {
-      _gtk_css_parser_error (parser, "Expected a valid unsigned value");
+      _ctk_css_parser_error (parser, "Expected a valid unsigned value");
       return FALSE;
     }
 
@@ -491,9 +491,9 @@ double_value_parse (GtkCssParser *parser,
 {
   gdouble d;
 
-  if (!_gtk_css_parser_try_double (parser, &d))
+  if (!_ctk_css_parser_try_double (parser, &d))
     {
-      _gtk_css_parser_error (parser, "Expected a number");
+      _ctk_css_parser_error (parser, "Expected a number");
       return FALSE;
     }
 
@@ -514,9 +514,9 @@ float_value_parse (GtkCssParser *parser,
 {
   gdouble d;
 
-  if (!_gtk_css_parser_try_double (parser, &d))
+  if (!_ctk_css_parser_try_double (parser, &d))
     {
-      _gtk_css_parser_error (parser, "Expected a number");
+      _ctk_css_parser_error (parser, "Expected a number");
       return FALSE;
     }
 
@@ -535,7 +535,7 @@ static gboolean
 string_value_parse (GtkCssParser *parser,
                     GValue       *value)
 {
-  char *str = _gtk_css_parser_read_string (parser);
+  char *str = _ctk_css_parser_read_string (parser);
 
   if (str == NULL)
     return FALSE;
@@ -560,24 +560,24 @@ theming_engine_value_parse (GtkCssParser *parser,
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
-  if (_gtk_css_parser_try (parser, "none", TRUE))
+  if (_ctk_css_parser_try (parser, "none", TRUE))
     {
-      g_value_set_object (value, gtk_theming_engine_load (NULL));
+      g_value_set_object (value, ctk_theming_engine_load (NULL));
       return TRUE;
     }
 
-  str = _gtk_css_parser_try_ident (parser, TRUE);
+  str = _ctk_css_parser_try_ident (parser, TRUE);
   if (str == NULL)
     {
-      _gtk_css_parser_error (parser, "Expected a valid theme name");
+      _ctk_css_parser_error (parser, "Expected a valid theme name");
       return FALSE;
     }
 
-  engine = gtk_theming_engine_load (str);
+  engine = ctk_theming_engine_load (str);
 
   if (engine == NULL)
     {
-      _gtk_css_parser_error (parser, "Theming engine '%s' not found", str);
+      _ctk_css_parser_error (parser, "Theming engine '%s' not found", str);
       g_free (str);
       return FALSE;
     }
@@ -601,7 +601,7 @@ theming_engine_value_print (const GValue *value,
     g_string_append (string, "none");
   else
     {
-      /* XXX: gtk_theming_engine_get_name()? */
+      /* XXX: ctk_theming_engine_get_name()? */
       g_object_get (engine, "name", &name, NULL);
       g_string_append (string, name ? name : "none");
       g_free (name);
@@ -618,14 +618,14 @@ border_value_parse (GtkCssParser *parser,
 
   for (i = 0; i < G_N_ELEMENTS (numbers); i++)
     {
-      if (_gtk_css_parser_has_prefix (parser, "-gtk"))
+      if (_ctk_css_parser_has_prefix (parser, "-gtk"))
         {
-          GtkCssValue *cssvalue = gtk_css_win32_size_value_parse (parser, GTK_CSS_PARSE_NUMBER | GTK_CSS_NUMBER_AS_PIXELS);
+          GtkCssValue *cssvalue = ctk_css_win32_size_value_parse (parser, GTK_CSS_PARSE_NUMBER | GTK_CSS_NUMBER_AS_PIXELS);
 
           if (cssvalue)
             {
-              numbers[i] = _gtk_css_number_value_get (cssvalue, 100);
-              _gtk_css_value_unref (cssvalue);
+              numbers[i] = _ctk_css_number_value_get (cssvalue, 100);
+              _ctk_css_value_unref (cssvalue);
               return TRUE;
             }
 
@@ -633,14 +633,14 @@ border_value_parse (GtkCssParser *parser,
         }
       else
         {
-          if (!_gtk_css_parser_try_length (parser, &numbers[i]))
+          if (!_ctk_css_parser_try_length (parser, &numbers[i]))
             break;
         }
     }
 
   if (i == 0)
     {
-      _gtk_css_parser_error (parser, "Expected valid border");
+      _ctk_css_parser_error (parser, "Expected valid border");
       return FALSE;
     }
 
@@ -685,7 +685,7 @@ gradient_value_parse (GtkCssParser *parser,
 {
   GtkGradient *gradient;
 
-  gradient = _gtk_gradient_parse (parser);
+  gradient = _ctk_gradient_parse (parser);
   if (gradient == NULL)
     return FALSE;
 
@@ -705,7 +705,7 @@ gradient_value_print (const GValue *value,
     g_string_append (string, "none");
   else
     {
-      char *s = gtk_gradient_to_string (gradient);
+      char *s = ctk_gradient_to_string (gradient);
       g_string_append (string, s);
       g_free (s);
     }
@@ -717,11 +717,11 @@ static gboolean
 pattern_value_parse (GtkCssParser *parser,
                      GValue       *value)
 {
-  if (_gtk_css_parser_try (parser, "none", TRUE))
+  if (_ctk_css_parser_try (parser, "none", TRUE))
     {
       /* nothing to do here */
     }
-  else if (_gtk_css_parser_begins_with (parser, '-'))
+  else if (_ctk_css_parser_begins_with (parser, '-'))
     {
       g_value_unset (value);
 
@@ -742,7 +742,7 @@ pattern_value_parse (GtkCssParser *parser,
       cairo_pattern_t *pattern;
       cairo_matrix_t matrix;
 
-      file = _gtk_css_parser_read_url (parser);
+      file = _ctk_css_parser_read_url (parser);
       if (file == NULL)
         return FALSE;
 
@@ -753,7 +753,7 @@ pattern_value_parse (GtkCssParser *parser,
       g_free (path);
       if (pixbuf == NULL)
         {
-          _gtk_css_parser_take_error (parser, error);
+          _ctk_css_parser_take_error (parser, error);
           return FALSE;
         }
 
@@ -848,7 +848,7 @@ pattern_value_compute (GtkStyleProviderPrivate *provider,
                        GtkCssStyle             *parent_values,
                        GtkCssValue             *specified)
 {
-  const GValue *value = _gtk_css_typed_value_get (specified);
+  const GValue *value = _ctk_css_typed_value_get (specified);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -857,14 +857,14 @@ pattern_value_compute (GtkStyleProviderPrivate *provider,
       GValue new_value = G_VALUE_INIT;
       cairo_pattern_t *gradient;
 
-      gradient = _gtk_gradient_resolve_full (g_value_get_boxed (value), provider, values, parent_values);
+      gradient = _ctk_gradient_resolve_full (g_value_get_boxed (value), provider, values, parent_values);
 
       g_value_init (&new_value, CAIRO_GOBJECT_TYPE_PATTERN);
       g_value_take_boxed (&new_value, gradient);
-      return _gtk_css_typed_value_new_take (&new_value);
+      return _ctk_css_typed_value_new_take (&new_value);
     }
   else
-    return _gtk_css_value_ref (specified);
+    return _ctk_css_value_ref (specified);
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
@@ -903,10 +903,10 @@ flags_value_parse (GtkCssParser *parser,
   flags_class = g_type_class_ref (G_VALUE_TYPE (value));
 
   do {
-    str = _gtk_css_parser_try_ident (parser, TRUE);
+    str = _ctk_css_parser_try_ident (parser, TRUE);
     if (str == NULL)
       {
-        _gtk_css_parser_error (parser, "Expected an identifier");
+        _ctk_css_parser_error (parser, "Expected an identifier");
         g_type_class_unref (flags_class);
         return FALSE;
       }
@@ -914,7 +914,7 @@ flags_value_parse (GtkCssParser *parser,
       flag_value = g_flags_get_value_by_nick (flags_class, str);
       if (!flag_value)
         {
-          _gtk_css_parser_error (parser,
+          _ctk_css_parser_error (parser,
                                  "Unknown flag value '%s' for type '%s'",
                                  str, g_type_name (G_VALUE_TYPE (value)));
           /* XXX Do we want to return FALSE here? We can get
@@ -927,7 +927,7 @@ flags_value_parse (GtkCssParser *parser,
 
       g_free (str);
     }
-  while (_gtk_css_parser_try (parser, ",", FALSE));
+  while (_ctk_css_parser_try (parser, ",", FALSE));
 
   g_type_class_unref (flags_class);
 
@@ -965,7 +965,7 @@ flags_value_print (const GValue *value,
 /*** API ***/
 
 static void
-gtk_css_style_funcs_init (void)
+ctk_css_style_funcs_init (void)
 {
   if (G_LIKELY (parse_funcs != NULL))
     return;
@@ -1060,7 +1060,7 @@ gtk_css_style_funcs_init (void)
 }
 
 /**
- * _gtk_css_style_parse_value:
+ * _ctk_css_style_parse_value:
  * @value: the value to parse into. Must be a valid initialized #GValue
  * @parser: the parser to parse from
  *
@@ -1071,7 +1071,7 @@ gtk_css_style_funcs_init (void)
  * Returns: %TRUE if parsing succeeded.
  **/
 gboolean
-_gtk_css_style_funcs_parse_value (GValue       *value,
+_ctk_css_style_funcs_parse_value (GValue       *value,
                                   GtkCssParser *parser)
 {
   GtkStyleParseFunc func;
@@ -1079,7 +1079,7 @@ _gtk_css_style_funcs_parse_value (GValue       *value,
   g_return_val_if_fail (value != NULL, FALSE);
   g_return_val_if_fail (parser != NULL, FALSE);
 
-  gtk_css_style_funcs_init ();
+  ctk_css_style_funcs_init ();
 
   func = g_hash_table_lookup (parse_funcs,
                               GSIZE_TO_POINTER (G_VALUE_TYPE (value)));
@@ -1089,7 +1089,7 @@ _gtk_css_style_funcs_parse_value (GValue       *value,
 
   if (func == NULL)
     {
-      _gtk_css_parser_error (parser,
+      _ctk_css_parser_error (parser,
                              "Cannot convert to type '%s'",
                              g_type_name (G_VALUE_TYPE (value)));
       return FALSE;
@@ -1099,20 +1099,20 @@ _gtk_css_style_funcs_parse_value (GValue       *value,
 }
 
 /**
- * _gtk_css_style_print_value:
- * @value: an initialized GValue returned from _gtk_css_style_parse()
+ * _ctk_css_style_print_value:
+ * @value: an initialized GValue returned from _ctk_css_style_parse()
  * @string: the string to print into
  *
  * Prints @value into @string as a CSS value. If @value is not a
  * valid value, a random string will be printed instead.
  **/
 void
-_gtk_css_style_funcs_print_value (const GValue *value,
+_ctk_css_style_funcs_print_value (const GValue *value,
                                   GString      *string)
 {
   GtkStylePrintFunc func;
 
-  gtk_css_style_funcs_init ();
+  ctk_css_style_funcs_init ();
 
   func = g_hash_table_lookup (print_funcs,
                               GSIZE_TO_POINTER (G_VALUE_TYPE (value)));
@@ -1132,7 +1132,7 @@ _gtk_css_style_funcs_print_value (const GValue *value,
 }
 
 /**
- * _gtk_css_style_compute_value:
+ * _ctk_css_style_compute_value:
  * @provider: Style provider to look up information from
  * @values: The values to compute for
  * @parent_values: Values to look up inherited values from
@@ -1142,12 +1142,12 @@ _gtk_css_style_funcs_print_value (const GValue *value,
  * Converts the @specified value into the @computed value using the
  * information in @context. The values must have matching types, ie
  * @specified must be a result of a call to
- * _gtk_css_style_parse_value() with the same type as @computed.
+ * _ctk_css_style_parse_value() with the same type as @computed.
  *
  * Returns: the resulting value
  **/
 GtkCssValue *
-_gtk_css_style_funcs_compute_value (GtkStyleProviderPrivate *provider,
+_ctk_css_style_funcs_compute_value (GtkStyleProviderPrivate *provider,
                                     GtkCssStyle             *style,
                                     GtkCssStyle             *parent_style,
                                     GType                    target_type,
@@ -1159,7 +1159,7 @@ _gtk_css_style_funcs_compute_value (GtkStyleProviderPrivate *provider,
   g_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
   g_return_val_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style), NULL);
 
-  gtk_css_style_funcs_init ();
+  ctk_css_style_funcs_init ();
 
   func = g_hash_table_lookup (compute_funcs,
                               GSIZE_TO_POINTER (target_type));
@@ -1170,6 +1170,6 @@ _gtk_css_style_funcs_compute_value (GtkStyleProviderPrivate *provider,
   if (func)
     return func (provider, style, parent_style, specified);
   else
-    return _gtk_css_value_ref (specified);
+    return _ctk_css_value_ref (specified);
 }
 

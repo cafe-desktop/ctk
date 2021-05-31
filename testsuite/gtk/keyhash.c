@@ -36,18 +36,18 @@ test_basic (void)
   GSList *keys;
 
   count = 0;
-  hash = _gtk_key_hash_new (gdk_keymap_get_default (), counting_destroy);
+  hash = _ctk_key_hash_new (gdk_keymap_get_default (), counting_destroy);
 
-  keys = _gtk_key_hash_lookup (hash, 0, 0, 0, 0);
+  keys = _ctk_key_hash_lookup (hash, 0, 0, 0, 0);
   g_assert (keys == NULL);
 
-  _gtk_key_hash_add_entry (hash, 1, 0, NULL);
-  _gtk_key_hash_add_entry (hash, 1, 1, NULL);
-  _gtk_key_hash_add_entry (hash, 2, 0, NULL);
-  _gtk_key_hash_add_entry (hash, 3, 0, NULL);
-  _gtk_key_hash_add_entry (hash, 4, 0, NULL);
+  _ctk_key_hash_add_entry (hash, 1, 0, NULL);
+  _ctk_key_hash_add_entry (hash, 1, 1, NULL);
+  _ctk_key_hash_add_entry (hash, 2, 0, NULL);
+  _ctk_key_hash_add_entry (hash, 3, 0, NULL);
+  _ctk_key_hash_add_entry (hash, 4, 0, NULL);
 
-  _gtk_key_hash_free (hash);
+  _ctk_key_hash_free (hash);
 
   g_assert_cmpint (count, ==, 5);
 }
@@ -79,7 +79,7 @@ test_lookup (GtkKeyHash      *hash,
   if (n_keys == 0)
     return;
 
-  res = _gtk_key_hash_lookup (hash, keys[0].keycode, modifiers, mask, keys[0].group);
+  res = _ctk_key_hash_lookup (hash, keys[0].keycode, modifiers, mask, keys[0].group);
   g_free (keys);
 
   g_assert_cmpint (g_slist_length (res), ==, n_results);
@@ -102,7 +102,7 @@ add_entries (GtkKeyHash *hash,
   gint i;
 
   for (i = 0; entries[i].keyval; i++)
-    _gtk_key_hash_add_entry (hash, entries[i].keyval, entries[i].modifiers, GINT_TO_POINTER (i+1));
+    _ctk_key_hash_add_entry (hash, entries[i].keyval, entries[i].modifiers, GINT_TO_POINTER (i+1));
 }
 
 #define DEFAULT_MASK (GDK_CONTROL_MASK \
@@ -124,7 +124,7 @@ test_match (void)
     {  0, 0 }
   };
 
-  hash = _gtk_key_hash_new (gdk_keymap_get_default (), NULL);
+  hash = _ctk_key_hash_new (gdk_keymap_get_default (), NULL);
   add_entries (hash, entries);
 
   test_lookup (hash, GDK_KEY_a, GDK_CONTROL_MASK, DEFAULT_MASK, 4, 1, 1, 2, 2);
@@ -133,7 +133,7 @@ test_match (void)
   test_lookup (hash, GDK_KEY_F10, 0, DEFAULT_MASK, 4, 4, 4, 4, 4);
   test_lookup (hash, GDK_KEY_F10, GDK_SHIFT_MASK, DEFAULT_MASK, 4, 4, 4, 4, 4);
 
-  _gtk_key_hash_free (hash);
+  _ctk_key_hash_free (hash);
 }
 
 static gboolean
@@ -163,7 +163,7 @@ test_virtual (void)
     {  0, 0 }
   };
 
-  hash = _gtk_key_hash_new (gdk_keymap_get_default (), NULL);
+  hash = _ctk_key_hash_new (gdk_keymap_get_default (), NULL);
   add_entries (hash, entries);
 
   test_lookup (hash, GDK_KEY_a, GDK_SUPER_MASK, DEFAULT_MASK, 2, 1, 1);
@@ -183,7 +183,7 @@ test_virtual (void)
       test_lookup (hash, GDK_KEY_d, mods, DEFAULT_MASK, 0);
     }
 
-  _gtk_key_hash_free (hash);
+  _ctk_key_hash_free (hash);
 }
 #endif
 
@@ -191,7 +191,7 @@ int
 main (int argc, char **argv)
 {
   /* initialize test program */
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
   g_test_add_func ("/keyhash/basic", test_basic);
 #if 0

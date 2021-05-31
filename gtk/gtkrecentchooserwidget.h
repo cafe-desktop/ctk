@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RECENT_CHOOSER_WIDGET		  (gtk_recent_chooser_widget_get_type ())
+#define GTK_TYPE_RECENT_CHOOSER_WIDGET		  (ctk_recent_chooser_widget_get_type ())
 #define GTK_RECENT_CHOOSER_WIDGET(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RECENT_CHOOSER_WIDGET, GtkRecentChooserWidget))
 #define GTK_IS_RECENT_CHOOSER_WIDGET(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RECENT_CHOOSER_WIDGET))
 #define GTK_RECENT_CHOOSER_WIDGET_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RECENT_CHOOSER_WIDGET, GtkRecentChooserWidgetClass))
@@ -53,18 +53,18 @@ struct _GtkRecentChooserWidgetClass
   GtkBoxClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_recent_chooser_widget_get_type        (void) G_GNUC_CONST;
+GType      ctk_recent_chooser_widget_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_recent_chooser_widget_new             (void);
+GtkWidget *ctk_recent_chooser_widget_new             (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_recent_chooser_widget_new_for_manager (GtkRecentManager *manager);
+GtkWidget *ctk_recent_chooser_widget_new_for_manager (GtkRecentManager *manager);
 
 G_END_DECLS
 

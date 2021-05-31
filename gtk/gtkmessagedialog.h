@@ -35,7 +35,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_MESSAGE_DIALOG                  (gtk_message_dialog_get_type ())
+#define GTK_TYPE_MESSAGE_DIALOG                  (ctk_message_dialog_get_type ())
 #define GTK_MESSAGE_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MESSAGE_DIALOG, GtkMessageDialog))
 #define GTK_MESSAGE_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MESSAGE_DIALOG, GtkMessageDialogClass))
 #define GTK_IS_MESSAGE_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MESSAGE_DIALOG))
@@ -59,10 +59,10 @@ struct _GtkMessageDialogClass
   GtkDialogClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 /**
@@ -76,7 +76,7 @@ struct _GtkMessageDialogClass
  *
  * Prebuilt sets of buttons for the dialog. If
  * none of these choices are appropriate, simply use %GTK_BUTTONS_NONE
- * then call gtk_dialog_add_buttons().
+ * then call ctk_dialog_add_buttons().
  *
  * > Please note that %GTK_BUTTONS_OK, %GTK_BUTTONS_YES_NO
  * > and %GTK_BUTTONS_OK_CANCEL are discouraged by the
@@ -93,10 +93,10 @@ typedef enum
 } GtkButtonsType;
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_message_dialog_get_type (void) G_GNUC_CONST;
+GType      ctk_message_dialog_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_message_dialog_new      (GtkWindow      *parent,
+GtkWidget* ctk_message_dialog_new      (GtkWindow      *parent,
                                         GtkDialogFlags  flags,
                                         GtkMessageType  type,
                                         GtkButtonsType  buttons,
@@ -104,7 +104,7 @@ GtkWidget* gtk_message_dialog_new      (GtkWindow      *parent,
                                         ...) G_GNUC_PRINTF (5, 6);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_message_dialog_new_with_markup   (GtkWindow      *parent,
+GtkWidget* ctk_message_dialog_new_with_markup   (GtkWindow      *parent,
                                                  GtkDialogFlags  flags,
                                                  GtkMessageType  type,
                                                  GtkButtonsType  buttons,
@@ -112,28 +112,28 @@ GtkWidget* gtk_message_dialog_new_with_markup   (GtkWindow      *parent,
                                                  ...) G_GNUC_PRINTF (5, 6);
 
 GDK_DEPRECATED_IN_3_12
-void       gtk_message_dialog_set_image    (GtkMessageDialog *dialog,
+void       ctk_message_dialog_set_image    (GtkMessageDialog *dialog,
 					    GtkWidget        *image);
 
 GDK_DEPRECATED_IN_3_12
-GtkWidget * gtk_message_dialog_get_image   (GtkMessageDialog *dialog);
+GtkWidget * ctk_message_dialog_get_image   (GtkMessageDialog *dialog);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_message_dialog_set_markup  (GtkMessageDialog *message_dialog,
+void       ctk_message_dialog_set_markup  (GtkMessageDialog *message_dialog,
                                            const gchar      *str);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_message_dialog_format_secondary_text (GtkMessageDialog *message_dialog,
+void       ctk_message_dialog_format_secondary_text (GtkMessageDialog *message_dialog,
                                                      const gchar      *message_format,
                                                      ...) G_GNUC_PRINTF (2, 3);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_message_dialog_format_secondary_markup (GtkMessageDialog *message_dialog,
+void       ctk_message_dialog_format_secondary_markup (GtkMessageDialog *message_dialog,
                                                        const gchar      *message_format,
                                                        ...) G_GNUC_PRINTF (2, 3);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_message_dialog_get_message_area (GtkMessageDialog *message_dialog);
+GtkWidget *ctk_message_dialog_get_message_area (GtkMessageDialog *message_dialog);
 
 G_END_DECLS
 

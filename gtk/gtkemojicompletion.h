@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EMOJI_COMPLETION                 (gtk_emoji_completion_get_type ())
+#define GTK_TYPE_EMOJI_COMPLETION                 (ctk_emoji_completion_get_type ())
 #define GTK_EMOJI_COMPLETION(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletion))
 #define GTK_EMOJI_COMPLETION_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_EMOJI_COMPLETION, GtkEmojiCompletionClass))
 #define GTK_IS_EMOJI_COMPLETION(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_EMOJI_COMPLETION))
@@ -35,7 +35,7 @@ G_BEGIN_DECLS
 typedef struct _GtkEmojiCompletion      GtkEmojiCompletion;
 typedef struct _GtkEmojiCompletionClass GtkEmojiCompletionClass;
 
-GType      gtk_emoji_completion_get_type (void) G_GNUC_CONST;
-GtkWidget *gtk_emoji_completion_new      (GtkEntry *entry);
+GType      ctk_emoji_completion_get_type (void) G_GNUC_CONST;
+GtkWidget *ctk_emoji_completion_new      (GtkEntry *entry);
 
 G_END_DECLS

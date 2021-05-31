@@ -996,7 +996,7 @@ spinner {
 </literallayout>
 
     <para>
-      where 〈accelerator〉 is a string that can be parsed by gtk_accelerator_parse(),
+      where 〈accelerator〉 is a string that can be parsed by ctk_accelerator_parse(),
       〈signal name〉 is the name of a keybinding signal of the widget in question,
       and the 〈argument〉 list must be according to the signals declaration.
     </para>

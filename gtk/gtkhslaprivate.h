@@ -31,18 +31,18 @@ struct _GtkHSLA {
   double alpha;
 };
 
-void            _gtk_hsla_init              (GtkHSLA          *hsla,
+void            _ctk_hsla_init              (GtkHSLA          *hsla,
                                              double            hue,
                                              double            saturation,
                                              double            lightness,
                                              double            alpha);
-void            _gtk_hsla_init_from_rgba    (GtkHSLA          *hsla,
+void            _ctk_hsla_init_from_rgba    (GtkHSLA          *hsla,
                                              const GdkRGBA    *rgba);
 /* Yes, I can name that function like this! */
 void            _gdk_rgba_init_from_hsla    (GdkRGBA          *rgba,
                                              const GtkHSLA    *hsla);
 
-void            _gtk_hsla_shade             (GtkHSLA          *dest,
+void            _ctk_hsla_shade             (GtkHSLA          *dest,
                                              const GtkHSLA    *src,
                                              double            factor);
 

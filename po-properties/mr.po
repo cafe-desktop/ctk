@@ -717,10 +717,10 @@ msgstr "मुल्य"
 
 #: ../gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"ही कृती गटाची सद्याची कृती असल्यावर gtk_radio_action_get_current_value() "
+"ही कृती गटाची सद्याची कृती असल्यावर ctk_radio_action_get_current_value() "
 "द्वारे "
 "पुन्ह पाठविलेले मुल्य."
 
@@ -1182,10 +1182,10 @@ msgstr "चिन्ह"
 #: ../gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "याविषयी चौकोन करीता चिन्ह. हे निश्चित केल्यास, ते "
-"gtk_window_get_default_icon_list() करीता मुलभूत निश्चित केले जाते"
+"ctk_window_get_default_icon_list() करीता मुलभूत निश्चित केले जाते"
 
 #: ../gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3355,9 +3355,9 @@ msgstr "प्रगती पल्स स्टेप"
 #: ../gtk/gtkentry.c:1047
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"gtk_entry_progress_pulse() करीता प्रत्येक कॉलसाठी प्रगती बाऊन्सींग ब्लॉक "
+"ctk_entry_progress_pulse() करीता प्रत्येक कॉलसाठी प्रगती बाऊन्सींग ब्लॉक "
 "हलविण्याकरीता आवश्यक नोंदणी रूंदीचे भाग"
 
 #: ../gtk/gtkentry.c:1065
@@ -8318,8 +8318,8 @@ msgid "No show all"
 msgstr "सर्व दाखवू नका"
 
 #: ../gtk/gtkwidget.c:1362
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() मुळे या नियंत्रण घटकावर प्रभाव पडायला पाहिजे का"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() मुळे या नियंत्रण घटकावर प्रभाव पडायला पाहिजे का"
 
 #: ../gtk/gtkwidget.c:1385
 msgid "Whether this widget has a tooltip"
@@ -9175,8 +9175,8 @@ msgstr "वापरण्याजोगी रंग प्रोफाइल�
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
-#~ msgstr "gtk_recent_manager_get_items() द्वारे पुन्ह पाठविलेले कमाल घटकांची संख्या"
+#~ "ctk_recent_manager_get_items()"
+#~ msgstr "ctk_recent_manager_get_items() द्वारे पुन्ह पाठविलेले कमाल घटकांची संख्या"
 
 #~ msgid "Blinking"
 #~ msgstr "लुकलुक करीत आहे"

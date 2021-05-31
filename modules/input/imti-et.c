@@ -440,7 +440,7 @@ ti_et_class_init (GtkIMContextSimpleClass *class)
 static void
 ti_et_init (GtkIMContextSimple *im_context)
 {
-  gtk_im_context_simple_add_table (im_context,
+  ctk_im_context_simple_add_table (im_context,
 				   ti_et_compose_seqs,
 				   5,
 				   G_N_ELEMENTS (ti_et_compose_seqs) / (5 + 2));
@@ -461,7 +461,7 @@ static const GtkIMContextInfo *info_list[] = {
 #ifndef INCLUDE_IM_ti_et
 #define MODULE_ENTRY(type, function) G_MODULE_EXPORT type im_module_ ## function
 #else
-#define MODULE_ENTRY(type, function) type _gtk_immodule_ti_et_ ## function
+#define MODULE_ENTRY(type, function) type _ctk_immodule_ti_et_ ## function
 #endif
 
 MODULE_ENTRY (void, init) (GTypeModule *module)

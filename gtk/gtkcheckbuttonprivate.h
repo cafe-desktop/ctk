@@ -32,7 +32,7 @@
 
 G_BEGIN_DECLS
 
-GtkCssNode *gtk_check_button_get_indicator_node (GtkCheckButton *check_button);
+GtkCssNode *ctk_check_button_get_indicator_node (GtkCheckButton *check_button);
 
 G_END_DECLS
 

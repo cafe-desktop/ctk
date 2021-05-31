@@ -20,7 +20,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_MAGNIFIER            (gtk_inspector_magnifier_get_type())
+#define GTK_TYPE_INSPECTOR_MAGNIFIER            (ctk_inspector_magnifier_get_type())
 #define GTK_INSPECTOR_MAGNIFIER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_MAGNIFIER, GtkInspectorMagnifier))
 #define GTK_INSPECTOR_MAGNIFIER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_MAGNIFIER, GtkInspectorMagnifierClass))
 #define GTK_INSPECTOR_IS_MAGNIFIER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_MAGNIFIER))
@@ -43,8 +43,8 @@ typedef struct _GtkInspectorMagnifierClass
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_magnifier_get_type   (void);
-void       gtk_inspector_magnifier_set_object (GtkInspectorMagnifier *sl,
+GType      ctk_inspector_magnifier_get_type   (void);
+void       ctk_inspector_magnifier_set_object (GtkInspectorMagnifier *sl,
                                                GObject               *object);
 
 G_END_DECLS

@@ -57,7 +57,7 @@ def main(argv):
                             '@GDK_EXTRA_CFLAGS@': '',
                             'gdk-3': 'gdk-3.0'}
 
-    gtk_pc_replace_items = {'@host@': gdk_args.host,
+    ctk_pc_replace_items = {'@host@': gdk_args.host,
                             '@GTK_BINARY_VERSION@': '3.0.0',
                             '@GTK_PACKAGES@': 'atk >= ' + atk_min_ver + ' ' + \
                                               pkg_required_packages + ' ' + \
@@ -72,7 +72,7 @@ def main(argv):
 
     pkg_replace_items.update(base_pc.base_replace_items)
     gdk_pc_replace_items.update(pkg_replace_items)
-    gtk_pc_replace_items.update(pkg_replace_items)
+    ctk_pc_replace_items.update(pkg_replace_items)
     gail_pc_replace_items.update(base_pc.base_replace_items)
 
     # Generate gdk-3.0.pc
@@ -83,7 +83,7 @@ def main(argv):
     # Generate gtk+-3.0.pc
     replace_multi(base_pc.top_srcdir + '/gtk+-3.0.pc.in',
                   base_pc.srcdir + '/gtk+-3.0.pc',
-                  gtk_pc_replace_items)
+                  ctk_pc_replace_items)
 
     # Generate gail-3.0.pc
     replace_multi(base_pc.top_srcdir + '/gail-3.0.pc.in',

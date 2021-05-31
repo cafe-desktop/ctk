@@ -69,7 +69,7 @@ _data_provider_release_cairo_surface (void* info, const void* data, size_t size)
  * The device scale factor will be transfered to the NSImage (hidpi)
  */
 NSImage *
-_gtk_quartz_create_image_from_surface (cairo_surface_t *surface)
+_ctk_quartz_create_image_from_surface (cairo_surface_t *surface)
 {
   CGColorSpaceRef colorspace;
   CGDataProviderRef data_provider;
@@ -123,7 +123,7 @@ _gtk_quartz_create_image_from_surface (cairo_surface_t *surface)
 }
 
 NSSet *
-_gtk_quartz_target_list_to_pasteboard_types (GtkTargetList *target_list)
+_ctk_quartz_target_list_to_pasteboard_types (GtkTargetList *target_list)
 {
   NSMutableSet *set = [[NSMutableSet alloc] init];
   GList *list;
@@ -132,14 +132,14 @@ _gtk_quartz_target_list_to_pasteboard_types (GtkTargetList *target_list)
     {
       GtkTargetPair *pair = list->data;
       g_return_val_if_fail (pair->flags < 16, NULL);
-      [set addObject:gdk_quartz_atom_to_pasteboard_type_libgtk_only (pair->target)];
+      [set addObject:gdk_quartz_atom_to_pasteboard_type_libctk_only (pair->target)];
     }
 
   return set;
 }
 
 NSSet *
-_gtk_quartz_target_entries_to_pasteboard_types (const GtkTargetEntry *targets,
+_ctk_quartz_target_entries_to_pasteboard_types (const GtkTargetEntry *targets,
 						guint                 n_targets)
 {
   NSMutableSet *set = [[NSMutableSet alloc] init];
@@ -147,14 +147,14 @@ _gtk_quartz_target_entries_to_pasteboard_types (const GtkTargetEntry *targets,
 
   for (i = 0; i < n_targets; i++)
     {
-      [set addObject:gdk_quartz_target_to_pasteboard_type_libgtk_only (targets[i].target)];
+      [set addObject:gdk_quartz_target_to_pasteboard_type_libctk_only (targets[i].target)];
     }
 
   return set;
 }
 
 GList *
-_gtk_quartz_pasteboard_types_to_atom_list (NSArray *array)
+_ctk_quartz_pasteboard_types_to_atom_list (NSArray *array)
 {
   GList *result = NULL;
   int i;
@@ -164,7 +164,7 @@ _gtk_quartz_pasteboard_types_to_atom_list (NSArray *array)
 
   for (i = 0; i < count; i++) 
     {
-      GdkAtom atom = gdk_quartz_pasteboard_type_to_atom_libgtk_only ([array objectAtIndex:i]);
+      GdkAtom atom = gdk_quartz_pasteboard_type_to_atom_libctk_only ([array objectAtIndex:i]);
 
       result = g_list_prepend (result, GDK_ATOM_TO_POINTER (atom));
     }
@@ -173,7 +173,7 @@ _gtk_quartz_pasteboard_types_to_atom_list (NSArray *array)
 }
 
 GtkSelectionData *
-_gtk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
+_ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
 						GdkAtom       target,
 						GdkAtom       selection)
 {
@@ -192,7 +192,7 @@ _gtk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
 	{
           const char *utf8_string = [s UTF8String];
 
-          gtk_selection_data_set (selection_data,
+          ctk_selection_data_set (selection_data,
                                   target, 8,
                                   (guchar *)utf8_string, strlen (utf8_string));
 	}
@@ -211,7 +211,7 @@ _gtk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
       color[2] = 0xffff * [nscolor blueComponent];
       color[3] = 0xffff * [nscolor alphaComponent];
 
-      gtk_selection_data_set (selection_data, target, 16, (guchar *)color, 8);
+      ctk_selection_data_set (selection_data, target, 16, (guchar *)color, 8);
     }
   else if (target == gdk_atom_intern_static_string ("text/uri-list"))
     {
@@ -234,7 +234,7 @@ _gtk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
              }
            uris[i] = NULL;
 
-           gtk_selection_data_set_uris (selection_data, uris);
+           ctk_selection_data_set_uris (selection_data, uris);
            g_free (uris);
          }
       else if ([[pasteboard types] containsObject:NSURLPboardType])
@@ -247,7 +247,7 @@ _gtk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
           uris[0] = (gchar *) [[url description] UTF8String];
 
           uris[1] = NULL;
-          gtk_selection_data_set_uris (selection_data, uris);
+          ctk_selection_data_set_uris (selection_data, uris);
         }
     }
   else
@@ -266,7 +266,7 @@ _gtk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
 
       if (data)
 	{
-	  gtk_selection_data_set (selection_data,
+	  ctk_selection_data_set (selection_data,
                                   target, 8,
                                   [data bytes], [data length]);
 	}
@@ -276,7 +276,7 @@ _gtk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
 }
 
 void
-_gtk_quartz_set_selection_data_for_pasteboard (NSPasteboard     *pasteboard,
+_ctk_quartz_set_selection_data_for_pasteboard (NSPasteboard     *pasteboard,
 					       GtkSelectionData *selection_data)
 {
   NSString *type;
@@ -285,12 +285,12 @@ _gtk_quartz_set_selection_data_for_pasteboard (NSPasteboard     *pasteboard,
   const guchar *data;
   NSUInteger length;
 
-  display = gtk_selection_data_get_display (selection_data);
-  format = gtk_selection_data_get_format (selection_data);
-  data = gtk_selection_data_get_data (selection_data);
-  length = gtk_selection_data_get_length (selection_data);
+  display = ctk_selection_data_get_display (selection_data);
+  format = ctk_selection_data_get_format (selection_data);
+  data = ctk_selection_data_get_data (selection_data);
+  length = ctk_selection_data_get_length (selection_data);
 
-  type = gdk_quartz_atom_to_pasteboard_type_libgtk_only (gtk_selection_data_get_target (selection_data));
+  type = gdk_quartz_atom_to_pasteboard_type_libctk_only (ctk_selection_data_get_target (selection_data));
 
   if ([type isEqualTo:NSStringPboardType]) 
     [pasteboard setString:[NSString stringWithUTF8String:(const char *)data]
@@ -313,7 +313,7 @@ _gtk_quartz_set_selection_data_for_pasteboard (NSPasteboard     *pasteboard,
     {
       gchar **uris;
 
-      uris = gtk_selection_data_get_uris (selection_data);
+      uris = ctk_selection_data_get_uris (selection_data);
       if (uris != NULL)
         {
           NSURL *url;
@@ -364,7 +364,7 @@ get_bundle_path (void)
 }
 
 const gchar *
-_gtk_get_datadir (void)
+_ctk_get_datadir (void)
 {
   static gchar *path = NULL;
 
@@ -375,7 +375,7 @@ _gtk_get_datadir (void)
 }
 
 const gchar *
-_gtk_get_libdir (void)
+_ctk_get_libdir (void)
 {
   static gchar *path = NULL;
 
@@ -386,7 +386,7 @@ _gtk_get_libdir (void)
 }
 
 const gchar *
-_gtk_get_localedir (void)
+_ctk_get_localedir (void)
 {
   static gchar *path = NULL;
 
@@ -397,7 +397,7 @@ _gtk_get_localedir (void)
 }
 
 const gchar *
-_gtk_get_sysconfdir (void)
+_ctk_get_sysconfdir (void)
 {
   static gchar *path = NULL;
 
@@ -408,7 +408,7 @@ _gtk_get_sysconfdir (void)
 }
 
 const gchar *
-_gtk_get_data_prefix (void)
+_ctk_get_data_prefix (void)
 {
   return get_bundle_path ();
 }

@@ -26,15 +26,15 @@ apply_tags_blue (GtkTextView *text_view)
   GtkTextIter start, end;
   GtkTextIter four, eight;
 
-  buffer = gtk_text_view_get_buffer (text_view);
-  gtk_text_buffer_get_bounds (buffer, &start, &end);
-  gtk_text_buffer_apply_tag_by_name (buffer, "blue", &start, &end);
+  buffer = ctk_text_view_get_buffer (text_view);
+  ctk_text_buffer_get_bounds (buffer, &start, &end);
+  ctk_text_buffer_apply_tag_by_name (buffer, "blue", &start, &end);
   four = start;
   eight = start;
-  gtk_text_iter_forward_chars (&four, 4);
-  gtk_text_iter_forward_chars (&eight, 8);
-  gtk_text_buffer_apply_tag_by_name (buffer, "black", &four, &end);
-  gtk_text_buffer_apply_tag_by_name (buffer, "white", &eight, &end);
+  ctk_text_iter_forward_chars (&four, 4);
+  ctk_text_iter_forward_chars (&eight, 8);
+  ctk_text_buffer_apply_tag_by_name (buffer, "black", &four, &end);
+  ctk_text_buffer_apply_tag_by_name (buffer, "white", &eight, &end);
 }
 
 G_MODULE_EXPORT void
@@ -44,14 +44,14 @@ apply_tags_red_blue (GtkTextView *text_view)
   GtkTextIter start, end;
   GtkTextIter four, eight;
 
-  buffer = gtk_text_view_get_buffer (text_view);
-  gtk_text_buffer_get_bounds (buffer, &start, &end);
-  gtk_text_buffer_apply_tag_by_name (buffer, "red", &start, &end);
-  gtk_text_buffer_apply_tag_by_name (buffer, "blue", &start, &end);
+  buffer = ctk_text_view_get_buffer (text_view);
+  ctk_text_buffer_get_bounds (buffer, &start, &end);
+  ctk_text_buffer_apply_tag_by_name (buffer, "red", &start, &end);
+  ctk_text_buffer_apply_tag_by_name (buffer, "blue", &start, &end);
   four = start;
   eight = start;
-  gtk_text_iter_forward_chars (&four, 4);
-  gtk_text_iter_forward_chars (&eight, 8);
-  gtk_text_buffer_apply_tag_by_name (buffer, "black", &four, &eight);
-  gtk_text_buffer_apply_tag_by_name (buffer, "white", &eight, &end);
+  ctk_text_iter_forward_chars (&four, 4);
+  ctk_text_iter_forward_chars (&eight, 8);
+  ctk_text_buffer_apply_tag_by_name (buffer, "black", &four, &eight);
+  ctk_text_buffer_apply_tag_by_name (buffer, "white", &eight, &end);
 }

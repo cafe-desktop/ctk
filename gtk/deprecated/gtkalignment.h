@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ALIGNMENT                  (gtk_alignment_get_type ())
+#define GTK_TYPE_ALIGNMENT                  (ctk_alignment_get_type ())
 #define GTK_ALIGNMENT(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ALIGNMENT, GtkAlignment))
 #define GTK_ALIGNMENT_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ALIGNMENT, GtkAlignmentClass))
 #define GTK_IS_ALIGNMENT(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ALIGNMENT))
@@ -66,36 +66,36 @@ struct _GtkAlignmentClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_DEPRECATED_IN_3_14
-GType      gtk_alignment_get_type   (void) G_GNUC_CONST;
+GType      ctk_alignment_get_type   (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_14
-GtkWidget* gtk_alignment_new        (gfloat             xalign,
+GtkWidget* ctk_alignment_new        (gfloat             xalign,
 				     gfloat             yalign,
 				     gfloat             xscale,
 				     gfloat             yscale);
 GDK_DEPRECATED_IN_3_14
-void       gtk_alignment_set        (GtkAlignment      *alignment,
+void       ctk_alignment_set        (GtkAlignment      *alignment,
 				     gfloat             xalign,
 				     gfloat             yalign,
 				     gfloat             xscale,
 				     gfloat             yscale);
 
 GDK_DEPRECATED_IN_3_14
-void       gtk_alignment_set_padding (GtkAlignment      *alignment,
+void       ctk_alignment_set_padding (GtkAlignment      *alignment,
 				      guint              padding_top,
 				      guint              padding_bottom,
 				      guint              padding_left,
 				      guint              padding_right);
 
 GDK_DEPRECATED_IN_3_14
-void       gtk_alignment_get_padding (GtkAlignment      *alignment,
+void       ctk_alignment_get_padding (GtkAlignment      *alignment,
 				      guint             *padding_top,
 				      guint             *padding_bottom,
 				      guint             *padding_left,

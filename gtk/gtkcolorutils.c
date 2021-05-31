@@ -183,7 +183,7 @@ rgb_to_hsv (gdouble *r,
 }
 
 /**
- * gtk_hsv_to_rgb:
+ * ctk_hsv_to_rgb:
  * @h: Hue
  * @s: Saturation
  * @v: Value
@@ -199,7 +199,7 @@ rgb_to_hsv (gdouble *r,
  * Since: 2.14
  */
 void
-gtk_hsv_to_rgb (gdouble  h, gdouble  s, gdouble  v,
+ctk_hsv_to_rgb (gdouble  h, gdouble  s, gdouble  v,
                 gdouble *r, gdouble *g, gdouble *b)
 {
   g_return_if_fail (h >= 0.0 && h <= 1.0);
@@ -219,7 +219,7 @@ gtk_hsv_to_rgb (gdouble  h, gdouble  s, gdouble  v,
 }
 
 /**
- * gtk_rgb_to_hsv:
+ * ctk_rgb_to_hsv:
  * @r: Red
  * @g: Green
  * @b: Blue
@@ -235,7 +235,7 @@ gtk_hsv_to_rgb (gdouble  h, gdouble  s, gdouble  v,
  * Since: 2.14
  */
 void
-gtk_rgb_to_hsv (gdouble  r, gdouble  g, gdouble  b,
+ctk_rgb_to_hsv (gdouble  r, gdouble  g, gdouble  b,
                 gdouble *h, gdouble *s, gdouble *v)
 {
   g_return_if_fail (r >= 0.0 && r <= 1.0);

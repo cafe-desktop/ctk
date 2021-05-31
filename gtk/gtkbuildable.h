@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_BUILDABLE            (gtk_buildable_get_type ())
+#define GTK_TYPE_BUILDABLE            (ctk_buildable_get_type ())
 #define GTK_BUILDABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_BUILDABLE, GtkBuildable))
 #define GTK_BUILDABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), GTK_TYPE_BUILDABLE, GtkBuildableIface))
 #define GTK_IS_BUILDABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_BUILDABLE))
@@ -131,51 +131,51 @@ struct _GtkBuildableIface
 
 
 GDK_AVAILABLE_IN_ALL
-GType     gtk_buildable_get_type               (void) G_GNUC_CONST;
+GType     ctk_buildable_get_type               (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void      gtk_buildable_set_name               (GtkBuildable        *buildable,
+void      ctk_buildable_set_name               (GtkBuildable        *buildable,
 						const gchar         *name);
 GDK_AVAILABLE_IN_ALL
-const gchar * gtk_buildable_get_name           (GtkBuildable        *buildable);
+const gchar * ctk_buildable_get_name           (GtkBuildable        *buildable);
 GDK_AVAILABLE_IN_ALL
-void      gtk_buildable_add_child              (GtkBuildable        *buildable,
+void      ctk_buildable_add_child              (GtkBuildable        *buildable,
 						GtkBuilder          *builder,
 						GObject             *child,
 						const gchar         *type);
 GDK_AVAILABLE_IN_ALL
-void      gtk_buildable_set_buildable_property (GtkBuildable        *buildable,
+void      ctk_buildable_set_buildable_property (GtkBuildable        *buildable,
 						GtkBuilder          *builder,
 						const gchar         *name,
 						const GValue        *value);
 GDK_AVAILABLE_IN_ALL
-GObject * gtk_buildable_construct_child        (GtkBuildable        *buildable,
+GObject * ctk_buildable_construct_child        (GtkBuildable        *buildable,
 						GtkBuilder          *builder,
 						const gchar         *name);
 GDK_AVAILABLE_IN_ALL
-gboolean  gtk_buildable_custom_tag_start       (GtkBuildable        *buildable,
+gboolean  ctk_buildable_custom_tag_start       (GtkBuildable        *buildable,
 						GtkBuilder          *builder,
 						GObject             *child,
 						const gchar         *tagname,
 						GMarkupParser       *parser,
 						gpointer            *data);
 GDK_AVAILABLE_IN_ALL
-void      gtk_buildable_custom_tag_end         (GtkBuildable        *buildable,
+void      ctk_buildable_custom_tag_end         (GtkBuildable        *buildable,
 						GtkBuilder          *builder,
 						GObject             *child,
 						const gchar         *tagname,
 						gpointer            *data);
 GDK_AVAILABLE_IN_ALL
-void      gtk_buildable_custom_finished        (GtkBuildable        *buildable,
+void      ctk_buildable_custom_finished        (GtkBuildable        *buildable,
 						GtkBuilder          *builder,
 						GObject             *child,
 						const gchar         *tagname,
 						gpointer             data);
 GDK_AVAILABLE_IN_ALL
-void      gtk_buildable_parser_finished        (GtkBuildable        *buildable,
+void      ctk_buildable_parser_finished        (GtkBuildable        *buildable,
 						GtkBuilder          *builder);
 GDK_AVAILABLE_IN_ALL
-GObject * gtk_buildable_get_internal_child     (GtkBuildable        *buildable,
+GObject * ctk_buildable_get_internal_child     (GtkBuildable        *buildable,
 						GtkBuilder          *builder,
 						const gchar         *childname);
 

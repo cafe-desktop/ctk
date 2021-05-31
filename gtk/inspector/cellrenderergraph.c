@@ -35,21 +35,21 @@ struct _GtkCellRendererGraphPrivate
   double maximum;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererGraph, gtk_cell_renderer_graph, GTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererGraph, ctk_cell_renderer_graph, GTK_TYPE_CELL_RENDERER)
 
 static void 
-gtk_cell_renderer_graph_dispose (GObject *object)
+ctk_cell_renderer_graph_dispose (GObject *object)
 {
   GtkCellRendererGraph *graph = GTK_CELL_RENDERER_GRAPH (object);
   GtkCellRendererGraphPrivate *priv = graph->priv;
 
   g_clear_object (&priv->data);
 
-  G_OBJECT_CLASS (gtk_cell_renderer_graph_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_cell_renderer_graph_parent_class)->dispose (object);
 }
 
 static void
-gtk_cell_renderer_graph_get_property (GObject    *object,
+ctk_cell_renderer_graph_get_property (GObject    *object,
                                       guint       param_id,
                                       GValue     *value,
                                       GParamSpec *pspec)
@@ -74,7 +74,7 @@ gtk_cell_renderer_graph_get_property (GObject    *object,
 }
 
 static void
-gtk_cell_renderer_graph_set_property (GObject      *object,
+ctk_cell_renderer_graph_set_property (GObject      *object,
                                       guint         param_id,
                                       const GValue *value,
                                       GParamSpec   *pspec)
@@ -113,7 +113,7 @@ gtk_cell_renderer_graph_set_property (GObject      *object,
 }
 
 static void
-gtk_cell_renderer_graph_get_size (GtkCellRenderer    *cell,
+ctk_cell_renderer_graph_get_size (GtkCellRenderer    *cell,
                                   GtkWidget          *widget,
                                   const GdkRectangle *cell_area,
                                   gint               *x_offset,
@@ -153,7 +153,7 @@ gtk_cell_renderer_graph_get_size (GtkCellRenderer    *cell,
 }
 
 static void
-gtk_cell_renderer_graph_render (GtkCellRenderer      *cell,
+ctk_cell_renderer_graph_render (GtkCellRenderer      *cell,
                                 cairo_t              *cr,
                                 GtkWidget            *widget,
                                 const GdkRectangle   *background_area,
@@ -180,19 +180,19 @@ gtk_cell_renderer_graph_render (GtkCellRenderer      *cell,
                 NULL);
 
   if (priv->minimum == -G_MAXDOUBLE)
-    minimum = gtk_graph_data_get_minimum (priv->data);
+    minimum = ctk_graph_data_get_minimum (priv->data);
   else
     minimum = priv->minimum;
 
   if (priv->maximum == G_MAXDOUBLE)
-    maximum = gtk_graph_data_get_maximum (priv->data);
+    maximum = ctk_graph_data_get_maximum (priv->data);
   else
     maximum = priv->maximum;
 
   diff = maximum - minimum;
 
-  context = gtk_widget_get_style_context (widget);
-  gtk_style_context_get_color (context, gtk_style_context_get_state (context), &color);
+  context = ctk_widget_get_style_context (widget);
+  ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
 
   cairo_set_line_width (cr, 1.0);
 
@@ -205,10 +205,10 @@ gtk_cell_renderer_graph_render (GtkCellRenderer      *cell,
 
   if (diff > 0)
     {
-      n = gtk_graph_data_get_n_values (priv->data);
+      n = ctk_graph_data_get_n_values (priv->data);
       for (i = 0; i < n; i++)
         {
-          double val = gtk_graph_data_get_value (priv->data, i);
+          double val = ctk_graph_data_get_value (priv->data, i);
 
           val = (val - minimum) / diff;
           val = y + height - val * height;
@@ -229,17 +229,17 @@ gtk_cell_renderer_graph_render (GtkCellRenderer      *cell,
 }
 
 static void
-gtk_cell_renderer_graph_class_init (GtkCellRendererGraphClass *klass)
+ctk_cell_renderer_graph_class_init (GtkCellRendererGraphClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkCellRendererClass *cell_class = GTK_CELL_RENDERER_CLASS (klass);
 
-  object_class->dispose = gtk_cell_renderer_graph_dispose;
-  object_class->get_property = gtk_cell_renderer_graph_get_property;
-  object_class->set_property = gtk_cell_renderer_graph_set_property;
+  object_class->dispose = ctk_cell_renderer_graph_dispose;
+  object_class->get_property = ctk_cell_renderer_graph_get_property;
+  object_class->set_property = ctk_cell_renderer_graph_set_property;
 
-  cell_class->get_size = gtk_cell_renderer_graph_get_size;
-  cell_class->render = gtk_cell_renderer_graph_render;
+  cell_class->get_size = ctk_cell_renderer_graph_get_size;
+  cell_class->render = ctk_cell_renderer_graph_render;
 
   g_object_class_install_property (object_class,
                                    PROP_DATA,
@@ -267,16 +267,16 @@ gtk_cell_renderer_graph_class_init (GtkCellRendererGraphClass *klass)
 }
 
 static void
-gtk_cell_renderer_graph_init (GtkCellRendererGraph *cell)
+ctk_cell_renderer_graph_init (GtkCellRendererGraph *cell)
 {
-  cell->priv = gtk_cell_renderer_graph_get_instance_private (cell);
+  cell->priv = ctk_cell_renderer_graph_get_instance_private (cell);
 
   cell->priv->minimum = -G_MAXDOUBLE;
   cell->priv->maximum = G_MAXDOUBLE;
 }
 
 GtkCellRenderer *
-gtk_cell_renderer_graph_new (void)
+ctk_cell_renderer_graph_new (void)
 {
   return g_object_new (GTK_TYPE_CELL_RENDERER_GRAPH, NULL);
 }

@@ -44,23 +44,23 @@ struct _GtkCssValue {
 };
 
 static void
-gtk_css_value_ease_free (GtkCssValue *value)
+ctk_css_value_ease_free (GtkCssValue *value)
 {
   g_slice_free (GtkCssValue, value);
 }
 
 static GtkCssValue *
-gtk_css_value_ease_compute (GtkCssValue             *value,
+ctk_css_value_ease_compute (GtkCssValue             *value,
                             guint                    property_id,
                             GtkStyleProviderPrivate *provider,
                             GtkCssStyle             *style,
                             GtkCssStyle             *parent_style)
 {
-  return _gtk_css_value_ref (value);
+  return _ctk_css_value_ref (value);
 }
 
 static gboolean
-gtk_css_value_ease_equal (const GtkCssValue *ease1,
+ctk_css_value_ease_equal (const GtkCssValue *ease1,
                           const GtkCssValue *ease2)
 {
   if (ease1->type != ease2->type)
@@ -83,7 +83,7 @@ gtk_css_value_ease_equal (const GtkCssValue *ease1,
 }
 
 static GtkCssValue *
-gtk_css_value_ease_transition (GtkCssValue *start,
+ctk_css_value_ease_transition (GtkCssValue *start,
                                GtkCssValue *end,
                                guint        property_id,
                                double       progress)
@@ -92,7 +92,7 @@ gtk_css_value_ease_transition (GtkCssValue *start,
 }
 
 static void
-gtk_css_value_ease_print (const GtkCssValue *ease,
+ctk_css_value_ease_print (const GtkCssValue *ease,
                           GString           *string)
 {
   switch (ease->type)
@@ -135,15 +135,15 @@ gtk_css_value_ease_print (const GtkCssValue *ease,
 }
 
 static const GtkCssValueClass GTK_CSS_VALUE_EASE = {
-  gtk_css_value_ease_free,
-  gtk_css_value_ease_compute,
-  gtk_css_value_ease_equal,
-  gtk_css_value_ease_transition,
-  gtk_css_value_ease_print
+  ctk_css_value_ease_free,
+  ctk_css_value_ease_compute,
+  ctk_css_value_ease_equal,
+  ctk_css_value_ease_transition,
+  ctk_css_value_ease_print
 };
 
 GtkCssValue *
-_gtk_css_ease_value_new_cubic_bezier (double x1,
+_ctk_css_ease_value_new_cubic_bezier (double x1,
                                       double y1,
                                       double x2,
                                       double y2)
@@ -155,7 +155,7 @@ _gtk_css_ease_value_new_cubic_bezier (double x1,
   g_return_val_if_fail (x2 >= 0.0, NULL);
   g_return_val_if_fail (x2 <= 1.0, NULL);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_EASE);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_EASE);
   
   value->type = GTK_CSS_EASE_CUBIC_BEZIER;
   value->u.cubic.x1 = x1;
@@ -167,14 +167,14 @@ _gtk_css_ease_value_new_cubic_bezier (double x1,
 }
 
 static GtkCssValue *
-_gtk_css_ease_value_new_steps (guint n_steps,
+_ctk_css_ease_value_new_steps (guint n_steps,
                                gboolean start)
 {
   GtkCssValue *value;
 
   g_return_val_if_fail (n_steps > 0, NULL);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_EASE);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_EASE);
   
   value->type = GTK_CSS_EASE_STEPS;
   value->u.steps.steps = n_steps;
@@ -201,13 +201,13 @@ static const struct {
 };
 
 gboolean
-_gtk_css_ease_value_can_parse (GtkCssParser *parser)
+_ctk_css_ease_value_can_parse (GtkCssParser *parser)
 {
   guint i;
 
   for (i = 0; i < G_N_ELEMENTS (parser_values); i++)
     {
-      if (_gtk_css_parser_has_prefix (parser, parser_values[i].name))
+      if (_ctk_css_parser_has_prefix (parser, parser_values[i].name))
         return TRUE;
     }
 
@@ -215,84 +215,84 @@ _gtk_css_ease_value_can_parse (GtkCssParser *parser)
 }
 
 static GtkCssValue *
-gtk_css_ease_value_parse_cubic_bezier (GtkCssParser *parser)
+ctk_css_ease_value_parse_cubic_bezier (GtkCssParser *parser)
 {
   double values[4];
   guint i;
 
   for (i = 0; i < 4; i++)
     {
-      if (!_gtk_css_parser_try (parser, i ? "," : "(", TRUE))
+      if (!_ctk_css_parser_try (parser, i ? "," : "(", TRUE))
         {
-          _gtk_css_parser_error (parser, "Expected '%s'", i ? "," : "(");
+          _ctk_css_parser_error (parser, "Expected '%s'", i ? "," : "(");
           return NULL;
         }
-      if (!_gtk_css_parser_try_double (parser, &values[i]))
+      if (!_ctk_css_parser_try_double (parser, &values[i]))
         {
-          _gtk_css_parser_error (parser, "Expected a number");
+          _ctk_css_parser_error (parser, "Expected a number");
           return NULL;
         }
       if ((i == 0 || i == 2) &&
           (values[i] < 0 || values[i] > 1.0))
         {
-          _gtk_css_parser_error (parser, "value %g out of range. Must be from 0.0 to 1.0", values[i]);
+          _ctk_css_parser_error (parser, "value %g out of range. Must be from 0.0 to 1.0", values[i]);
           return NULL;
         }
     }
 
-  if (!_gtk_css_parser_try (parser, ")", TRUE))
+  if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
-      _gtk_css_parser_error (parser, "Missing closing ')' for cubic-bezier");
+      _ctk_css_parser_error (parser, "Missing closing ')' for cubic-bezier");
       return NULL;
     }
 
-  return _gtk_css_ease_value_new_cubic_bezier (values[0], values[1], values[2], values[3]);
+  return _ctk_css_ease_value_new_cubic_bezier (values[0], values[1], values[2], values[3]);
 }
 
 static GtkCssValue *
-gtk_css_ease_value_parse_steps (GtkCssParser *parser)
+ctk_css_ease_value_parse_steps (GtkCssParser *parser)
 {
   guint n_steps;
   gboolean start;
 
-  if (!_gtk_css_parser_try (parser, "(", TRUE))
+  if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
-      _gtk_css_parser_error (parser, "Expected '('");
+      _ctk_css_parser_error (parser, "Expected '('");
       return NULL;
     }
 
-  if (!_gtk_css_parser_try_uint (parser, &n_steps))
+  if (!_ctk_css_parser_try_uint (parser, &n_steps))
     {
-      _gtk_css_parser_error (parser, "Expected number of steps");
+      _ctk_css_parser_error (parser, "Expected number of steps");
       return NULL;
     }
 
-  if (_gtk_css_parser_try (parser, ",", TRUE))
+  if (_ctk_css_parser_try (parser, ",", TRUE))
     {
-      if (_gtk_css_parser_try (parser, "start", TRUE))
+      if (_ctk_css_parser_try (parser, "start", TRUE))
         start = TRUE;
-      else if (_gtk_css_parser_try (parser, "end", TRUE))
+      else if (_ctk_css_parser_try (parser, "end", TRUE))
         start = FALSE;
       else
         {
-          _gtk_css_parser_error (parser, "Only allowed values are 'start' and 'end'");
+          _ctk_css_parser_error (parser, "Only allowed values are 'start' and 'end'");
           return NULL;
         }
     }
   else
     start = FALSE;
 
-  if (!_gtk_css_parser_try (parser, ")", TRUE))
+  if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
-      _gtk_css_parser_error (parser, "Missing closing ')' for steps");
+      _ctk_css_parser_error (parser, "Missing closing ')' for steps");
       return NULL;
     }
 
-  return _gtk_css_ease_value_new_steps (n_steps, start);
+  return _ctk_css_ease_value_new_steps (n_steps, start);
 }
 
 GtkCssValue *
-_gtk_css_ease_value_parse (GtkCssParser *parser)
+_ctk_css_ease_value_parse (GtkCssParser *parser)
 {
   guint i;
 
@@ -300,35 +300,35 @@ _gtk_css_ease_value_parse (GtkCssParser *parser)
 
   for (i = 0; i < G_N_ELEMENTS (parser_values); i++)
     {
-      if (_gtk_css_parser_try (parser, parser_values[i].name, FALSE))
+      if (_ctk_css_parser_try (parser, parser_values[i].name, FALSE))
         {
           if (parser_values[i].needs_custom)
             {
               if (parser_values[i].is_bezier)
-                return gtk_css_ease_value_parse_cubic_bezier (parser);
+                return ctk_css_ease_value_parse_cubic_bezier (parser);
               else
-                return gtk_css_ease_value_parse_steps (parser);
+                return ctk_css_ease_value_parse_steps (parser);
             }
 
-          _gtk_css_parser_skip_whitespace (parser);
+          _ctk_css_parser_skip_whitespace (parser);
 
           if (parser_values[i].is_bezier)
-            return _gtk_css_ease_value_new_cubic_bezier (parser_values[i].values[0],
+            return _ctk_css_ease_value_new_cubic_bezier (parser_values[i].values[0],
                                                          parser_values[i].values[1],
                                                          parser_values[i].values[2],
                                                          parser_values[i].values[3]);
           else
-            return _gtk_css_ease_value_new_steps (parser_values[i].values[0],
+            return _ctk_css_ease_value_new_steps (parser_values[i].values[0],
                                                   parser_values[i].values[1] != 0.0);
         }
     }
 
-  _gtk_css_parser_error (parser, "Unknown value");
+  _ctk_css_parser_error (parser, "Unknown value");
   return NULL;
 }
 
 double
-_gtk_css_ease_value_transform (const GtkCssValue *ease,
+_ctk_css_ease_value_transform (const GtkCssValue *ease,
                                double             progress)
 {
   g_return_val_if_fail (ease->class == &GTK_CSS_VALUE_EASE, 1.0);

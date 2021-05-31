@@ -19,7 +19,7 @@ hex_spin_input (GtkSpinButton *spin_button,
   gchar *err;
   gdouble res;
 
-  buf = gtk_entry_get_text (GTK_ENTRY (spin_button));
+  buf = ctk_entry_get_text (GTK_ENTRY (spin_button));
   res = strtol (buf, &err, 16);
   *new_val = res;
   if (*err)
@@ -35,14 +35,14 @@ hex_spin_output (GtkSpinButton *spin_button)
   gchar *buf;
   gint val;
 
-  adjustment = gtk_spin_button_get_adjustment (spin_button);
-  val = (gint) gtk_adjustment_get_value (adjustment);
+  adjustment = ctk_spin_button_get_adjustment (spin_button);
+  val = (gint) ctk_adjustment_get_value (adjustment);
   if (fabs (val) < 1e-5)
     buf = g_strdup ("0x00");
   else
     buf = g_strdup_printf ("0x%.2X", val);
-  if (strcmp (buf, gtk_entry_get_text (GTK_ENTRY (spin_button))))
-    gtk_entry_set_text (GTK_ENTRY (spin_button), buf);
+  if (strcmp (buf, ctk_entry_get_text (GTK_ENTRY (spin_button))))
+    ctk_entry_set_text (GTK_ENTRY (spin_button), buf);
   g_free (buf);
 
   return TRUE;
@@ -60,7 +60,7 @@ time_spin_input (GtkSpinButton *spin_button,
   gchar *endh;
   gchar *endm;
 
-  text = gtk_entry_get_text (GTK_ENTRY (spin_button));
+  text = ctk_entry_get_text (GTK_ENTRY (spin_button));
   str = g_strsplit (text, ":", 2);
 
   if (g_strv_length (str) == 2)
@@ -95,12 +95,12 @@ time_spin_output (GtkSpinButton *spin_button)
   gdouble hours;
   gdouble minutes;
 
-  adjustment = gtk_spin_button_get_adjustment (spin_button);
-  hours = gtk_adjustment_get_value (adjustment) / 60.0;
+  adjustment = ctk_spin_button_get_adjustment (spin_button);
+  hours = ctk_adjustment_get_value (adjustment) / 60.0;
   minutes = (hours - floor (hours)) * 60.0;
   buf = g_strdup_printf ("%02.0f:%02.0f", floor (hours), floor (minutes + 0.5));
-  if (strcmp (buf, gtk_entry_get_text (GTK_ENTRY (spin_button))))
-    gtk_entry_set_text (GTK_ENTRY (spin_button), buf);
+  if (strcmp (buf, ctk_entry_get_text (GTK_ENTRY (spin_button))))
+    ctk_entry_set_text (GTK_ENTRY (spin_button), buf);
   g_free (buf);
 
   return TRUE;
@@ -132,7 +132,7 @@ month_spin_input (GtkSpinButton *spin_button,
   for (i = 1; i <= 12; i++)
     {
       tmp1 = g_ascii_strup (month[i - 1], -1);
-      tmp2 = g_ascii_strup (gtk_entry_get_text (GTK_ENTRY (spin_button)), -1);
+      tmp2 = g_ascii_strup (ctk_entry_get_text (GTK_ENTRY (spin_button)), -1);
       if (strstr (tmp1, tmp2) == tmp1)
         found = TRUE;
       g_free (tmp1);
@@ -157,13 +157,13 @@ month_spin_output (GtkSpinButton *spin_button)
   gdouble value;
   gint i;
 
-  adjustment = gtk_spin_button_get_adjustment (spin_button);
-  value = gtk_adjustment_get_value (adjustment);
+  adjustment = ctk_spin_button_get_adjustment (spin_button);
+  value = ctk_adjustment_get_value (adjustment);
   for (i = 1; i <= 12; i++)
     if (fabs (value - (double)i) < 1e-5)
       {
-        if (strcmp (month[i-1], gtk_entry_get_text (GTK_ENTRY (spin_button))))
-          gtk_entry_set_text (GTK_ENTRY (spin_button), month[i-1]);
+        if (strcmp (month[i-1], ctk_entry_get_text (GTK_ENTRY (spin_button))))
+          ctk_entry_set_text (GTK_ENTRY (spin_button), month[i-1]);
       }
 
   return TRUE;
@@ -190,8 +190,8 @@ do_spinbutton (GtkWidget *do_widget)
     GtkAdjustment *adj;
     GtkWidget *label;
 
-    builder = gtk_builder_new_from_resource ("/spinbutton/spinbutton.ui");
-    gtk_builder_add_callback_symbols (builder,
+    builder = ctk_builder_new_from_resource ("/spinbutton/spinbutton.ui");
+    ctk_builder_add_callback_symbols (builder,
                                       "hex_spin_input", G_CALLBACK (hex_spin_input),
                                       "hex_spin_output", G_CALLBACK (hex_spin_output),
                                       "time_spin_input", G_CALLBACK (time_spin_input),
@@ -199,41 +199,41 @@ do_spinbutton (GtkWidget *do_widget)
                                       "month_spin_input", G_CALLBACK (month_spin_input),
                                       "month_spin_output", G_CALLBACK (month_spin_output),
                                       NULL);
-    gtk_builder_connect_signals (builder, NULL);
-    window = GTK_WIDGET (gtk_builder_get_object (builder, "window"));
-    gtk_window_set_screen (GTK_WINDOW (window),
-                           gtk_widget_get_screen (do_widget));
-    gtk_window_set_title (GTK_WINDOW (window), "Spin Buttons");
-    gtk_window_set_resizable (GTK_WINDOW (window), FALSE);
+    ctk_builder_connect_signals (builder, NULL);
+    window = GTK_WIDGET (ctk_builder_get_object (builder, "window"));
+    ctk_window_set_screen (GTK_WINDOW (window),
+                           ctk_widget_get_screen (do_widget));
+    ctk_window_set_title (GTK_WINDOW (window), "Spin Buttons");
+    ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
     g_signal_connect (window, "destroy",
-                      G_CALLBACK (gtk_widget_destroyed), &window);
+                      G_CALLBACK (ctk_widget_destroyed), &window);
 
-    adj = GTK_ADJUSTMENT (gtk_builder_get_object (builder, "basic_adjustment"));
-    label = GTK_WIDGET (gtk_builder_get_object (builder, "basic_label"));
+    adj = GTK_ADJUSTMENT (ctk_builder_get_object (builder, "basic_adjustment"));
+    label = GTK_WIDGET (ctk_builder_get_object (builder, "basic_label"));
     g_object_bind_property_full (adj, "value",
                                  label, "label",
                                  G_BINDING_SYNC_CREATE,
                                  value_to_label,
                                  NULL,
                                  NULL, NULL);
-    adj = GTK_ADJUSTMENT (gtk_builder_get_object (builder, "hex_adjustment"));
-    label = GTK_WIDGET (gtk_builder_get_object (builder, "hex_label"));
+    adj = GTK_ADJUSTMENT (ctk_builder_get_object (builder, "hex_adjustment"));
+    label = GTK_WIDGET (ctk_builder_get_object (builder, "hex_label"));
     g_object_bind_property_full (adj, "value",
                                  label, "label",
                                  G_BINDING_SYNC_CREATE,
                                  value_to_label,
                                  NULL,
                                  NULL, NULL);
-    adj = GTK_ADJUSTMENT (gtk_builder_get_object (builder, "time_adjustment"));
-    label = GTK_WIDGET (gtk_builder_get_object (builder, "time_label"));
+    adj = GTK_ADJUSTMENT (ctk_builder_get_object (builder, "time_adjustment"));
+    label = GTK_WIDGET (ctk_builder_get_object (builder, "time_label"));
     g_object_bind_property_full (adj, "value",
                                  label, "label",
                                  G_BINDING_SYNC_CREATE,
                                  value_to_label,
                                  NULL,
                                  NULL, NULL);
-    adj = GTK_ADJUSTMENT (gtk_builder_get_object (builder, "month_adjustment"));
-    label = GTK_WIDGET (gtk_builder_get_object (builder, "month_label"));
+    adj = GTK_ADJUSTMENT (ctk_builder_get_object (builder, "month_adjustment"));
+    label = GTK_WIDGET (ctk_builder_get_object (builder, "month_label"));
     g_object_bind_property_full (adj, "value",
                                  label, "label",
                                  G_BINDING_SYNC_CREATE,
@@ -244,10 +244,10 @@ do_spinbutton (GtkWidget *do_widget)
     g_object_unref (builder);
   }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

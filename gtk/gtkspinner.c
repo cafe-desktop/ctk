@@ -51,8 +51,8 @@
  * It is often used as an alternative to a #GtkProgressBar for
  * displaying indefinite activity, instead of actual progress.
  *
- * To start the animation, use gtk_spinner_start(), to stop it
- * use gtk_spinner_stop().
+ * To start the animation, use ctk_spinner_start(), to stop it
+ * use ctk_spinner_stop().
  *
  * # CSS nodes
  *
@@ -72,24 +72,24 @@ struct _GtkSpinnerPrivate
   gboolean active;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkSpinner, gtk_spinner, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkSpinner, ctk_spinner, GTK_TYPE_WIDGET)
 
 static void
-gtk_spinner_finalize (GObject *object)
+ctk_spinner_finalize (GObject *object)
 {
   GtkSpinner *spinner = GTK_SPINNER (object);
 
   g_clear_object (&spinner->priv->gadget);
 
-  G_OBJECT_CLASS (gtk_spinner_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_spinner_parent_class)->finalize (object);
 }
 
 static void
-gtk_spinner_get_preferred_width (GtkWidget *widget,
+ctk_spinner_get_preferred_width (GtkWidget *widget,
                                  gint      *minimum,
                                  gint      *natural)
 {
-  gtk_css_gadget_get_preferred_size (GTK_SPINNER (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_SPINNER (widget)->priv->gadget,
                                      GTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
@@ -97,11 +97,11 @@ gtk_spinner_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-gtk_spinner_get_preferred_height (GtkWidget *widget,
+ctk_spinner_get_preferred_height (GtkWidget *widget,
                                   gint      *minimum,
                                   gint      *natural)
 {
-  gtk_css_gadget_get_preferred_size (GTK_SPINNER (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_SPINNER (widget)->priv->gadget,
                                      GTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
@@ -109,32 +109,32 @@ gtk_spinner_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-gtk_spinner_size_allocate (GtkWidget     *widget,
+ctk_spinner_size_allocate (GtkWidget     *widget,
                            GtkAllocation *allocation)
 {
   GtkAllocation clip;
 
-  gtk_widget_set_allocation (widget, allocation);
+  ctk_widget_set_allocation (widget, allocation);
 
-  gtk_css_gadget_allocate (GTK_SPINNER (widget)->priv->gadget,
+  ctk_css_gadget_allocate (GTK_SPINNER (widget)->priv->gadget,
                            allocation,
-                           gtk_widget_get_allocated_baseline (widget),
+                           ctk_widget_get_allocated_baseline (widget),
                            &clip);
 
-  gtk_widget_set_clip (widget, &clip);
+  ctk_widget_set_clip (widget, &clip);
 }
 
 static gboolean
-gtk_spinner_draw (GtkWidget *widget,
+ctk_spinner_draw (GtkWidget *widget,
                   cairo_t   *cr)
 {
-  gtk_css_gadget_draw (GTK_SPINNER (widget)->priv->gadget, cr);
+  ctk_css_gadget_draw (GTK_SPINNER (widget)->priv->gadget, cr);
 
   return FALSE;
 }
 
 static void
-gtk_spinner_set_active (GtkSpinner *spinner,
+ctk_spinner_set_active (GtkSpinner *spinner,
                         gboolean    active)
 {
   GtkSpinnerPrivate *priv = spinner->priv;
@@ -148,16 +148,16 @@ gtk_spinner_set_active (GtkSpinner *spinner,
       g_object_notify (G_OBJECT (spinner), "active");
 
       if (active)
-        gtk_widget_set_state_flags (GTK_WIDGET (spinner),
+        ctk_widget_set_state_flags (GTK_WIDGET (spinner),
                                     GTK_STATE_FLAG_CHECKED, FALSE);
       else
-        gtk_widget_unset_state_flags (GTK_WIDGET (spinner),
+        ctk_widget_unset_state_flags (GTK_WIDGET (spinner),
                                       GTK_STATE_FLAG_CHECKED);
     }
 }
 
 static void
-gtk_spinner_get_property (GObject    *object,
+ctk_spinner_get_property (GObject    *object,
                           guint       param_id,
                           GValue     *value,
                           GParamSpec *pspec)
@@ -177,7 +177,7 @@ gtk_spinner_get_property (GObject    *object,
 }
 
 static void
-gtk_spinner_set_property (GObject      *object,
+ctk_spinner_set_property (GObject      *object,
                           guint         param_id,
                           const GValue *value,
                           GParamSpec   *pspec)
@@ -185,7 +185,7 @@ gtk_spinner_set_property (GObject      *object,
   switch (param_id)
     {
       case PROP_ACTIVE:
-        gtk_spinner_set_active (GTK_SPINNER (object), g_value_get_boolean (value));
+        ctk_spinner_set_active (GTK_SPINNER (object), g_value_get_boolean (value));
         break;
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, param_id, pspec);
@@ -193,21 +193,21 @@ gtk_spinner_set_property (GObject      *object,
 }
 
 static void
-gtk_spinner_class_init (GtkSpinnerClass *klass)
+ctk_spinner_class_init (GtkSpinnerClass *klass)
 {
   GObjectClass *gobject_class;
   GtkWidgetClass *widget_class;
 
   gobject_class = G_OBJECT_CLASS(klass);
-  gobject_class->finalize = gtk_spinner_finalize;
-  gobject_class->get_property = gtk_spinner_get_property;
-  gobject_class->set_property = gtk_spinner_set_property;
+  gobject_class->finalize = ctk_spinner_finalize;
+  gobject_class->get_property = ctk_spinner_get_property;
+  gobject_class->set_property = ctk_spinner_set_property;
 
   widget_class = GTK_WIDGET_CLASS(klass);
-  widget_class->size_allocate = gtk_spinner_size_allocate;
-  widget_class->draw = gtk_spinner_draw;
-  widget_class->get_preferred_width = gtk_spinner_get_preferred_width;
-  widget_class->get_preferred_height = gtk_spinner_get_preferred_height;
+  widget_class->size_allocate = ctk_spinner_size_allocate;
+  widget_class->draw = ctk_spinner_draw;
+  widget_class->get_preferred_width = ctk_spinner_get_preferred_width;
+  widget_class->get_preferred_height = ctk_spinner_get_preferred_height;
 
   /* GtkSpinner:active:
    *
@@ -223,27 +223,27 @@ gtk_spinner_class_init (GtkSpinnerClass *klass)
                                                          FALSE,
                                                          GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
-  gtk_widget_class_set_accessible_type (widget_class, GTK_TYPE_SPINNER_ACCESSIBLE);
-  gtk_widget_class_set_css_name (widget_class, "spinner");
+  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_SPINNER_ACCESSIBLE);
+  ctk_widget_class_set_css_name (widget_class, "spinner");
 }
 
 static void
-gtk_spinner_init (GtkSpinner *spinner)
+ctk_spinner_init (GtkSpinner *spinner)
 {
   GtkCssNode *widget_node;
 
-  spinner->priv = gtk_spinner_get_instance_private (spinner);
+  spinner->priv = ctk_spinner_get_instance_private (spinner);
 
-  gtk_widget_set_has_window (GTK_WIDGET (spinner), FALSE);
+  ctk_widget_set_has_window (GTK_WIDGET (spinner), FALSE);
 
-  widget_node = gtk_widget_get_css_node (GTK_WIDGET (spinner));
-  spinner->priv->gadget = gtk_builtin_icon_new_for_node (widget_node, GTK_WIDGET (spinner));
-  gtk_builtin_icon_set_image (GTK_BUILTIN_ICON (spinner->priv->gadget), GTK_CSS_IMAGE_BUILTIN_SPINNER);
-  gtk_builtin_icon_set_default_size (GTK_BUILTIN_ICON (spinner->priv->gadget), 16);
+  widget_node = ctk_widget_get_css_node (GTK_WIDGET (spinner));
+  spinner->priv->gadget = ctk_builtin_icon_new_for_node (widget_node, GTK_WIDGET (spinner));
+  ctk_builtin_icon_set_image (GTK_BUILTIN_ICON (spinner->priv->gadget), GTK_CSS_IMAGE_BUILTIN_SPINNER);
+  ctk_builtin_icon_set_default_size (GTK_BUILTIN_ICON (spinner->priv->gadget), 16);
 }
 
 /**
- * gtk_spinner_new:
+ * ctk_spinner_new:
  *
  * Returns a new spinner widget. Not yet started.
  *
@@ -252,13 +252,13 @@ gtk_spinner_init (GtkSpinner *spinner)
  * Since: 2.20
  */
 GtkWidget *
-gtk_spinner_new (void)
+ctk_spinner_new (void)
 {
   return g_object_new (GTK_TYPE_SPINNER, NULL);
 }
 
 /**
- * gtk_spinner_start:
+ * ctk_spinner_start:
  * @spinner: a #GtkSpinner
  *
  * Starts the animation of the spinner.
@@ -266,15 +266,15 @@ gtk_spinner_new (void)
  * Since: 2.20
  */
 void
-gtk_spinner_start (GtkSpinner *spinner)
+ctk_spinner_start (GtkSpinner *spinner)
 {
   g_return_if_fail (GTK_IS_SPINNER (spinner));
 
-  gtk_spinner_set_active (spinner, TRUE);
+  ctk_spinner_set_active (spinner, TRUE);
 }
 
 /**
- * gtk_spinner_stop:
+ * ctk_spinner_stop:
  * @spinner: a #GtkSpinner
  *
  * Stops the animation of the spinner.
@@ -282,9 +282,9 @@ gtk_spinner_start (GtkSpinner *spinner)
  * Since: 2.20
  */
 void
-gtk_spinner_stop (GtkSpinner *spinner)
+ctk_spinner_stop (GtkSpinner *spinner)
 {
   g_return_if_fail (GTK_IS_SPINNER (spinner));
 
-  gtk_spinner_set_active (spinner, FALSE);
+  ctk_spinner_set_active (spinner, FALSE);
 }

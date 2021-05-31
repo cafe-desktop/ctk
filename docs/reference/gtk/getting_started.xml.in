@@ -70,15 +70,15 @@
     <para>In a GTK+ application, the purpose of the main() function is to
     create a #GtkApplication object and run it. In this example a
     #GtkApplication pointer named <varname>app</varname> is called and then
-    initialized using gtk_application_new().</para>
+    initialized using ctk_application_new().</para>
 
     <para>When creating a #GtkApplication
     you need to pick an application identifier (a name)
-    and input to gtk_application_new() as parameter.
+    and input to ctk_application_new() as parameter.
     For this example <varname>org.gtk.example</varname> is used
     but for choosing an identifier for your application see
     <ulink url="https://wiki.gnome.org/HowDoI/ChooseApplicationID">this guide</ulink>.
-    Lastly gtk_application_new() takes a GApplicationFlags as input for your 
+    Lastly ctk_application_new() takes a GApplicationFlags as input for your 
     application, if your application would have special needs.
     </para>
 
@@ -88,7 +88,7 @@
     The <varname>activate</varname> signal will be sent
     when your application is launched with
     g_application_run() on the line below.
-    The gtk_application_run() also takes as arguments the pointers to the command line arguments
+    The ctk_application_run() also takes as arguments the pointers to the command line arguments
     counter and string array; this allows GTK+ to parse specific command line
     arguments that control the behavior of GTK+ itself. The parsed arguments
     will be removed from the array, leaving the unrecognized ones for your
@@ -99,12 +99,12 @@
     we then proceed into the <function>activate</function>() function of the
     application. Inside the activate() function we want to construct
     our GTK window, so that a window is shown when the application
-    is launched. The call to gtk_application_window_new() will
+    is launched. The call to ctk_application_window_new() will
     create a new #GtkWindow and store it inside the
     <varname>window</varname> pointer. The window will have a frame,
     a title bar, and window controls depending on the platform.</para>
 
-    <para>A window title is set using gtk_window_set_title(). This function
+    <para>A window title is set using ctk_window_set_title(). This function
     takes a GtkWindow* pointer and a string as input. As our
     <varname>window</varname> pointer is a GtkWidget pointer, we need to cast it
     to GtkWindow*.
@@ -119,8 +119,8 @@
     <ulink url="https://developer.gnome.org/gobject/stable/gtype-conventions.html">
     here</ulink>.</para>
 
-    <para>Finally the window size is set using gtk_window_set_default_size and
-    the window is then shown by GTK via gtk_widget_show_all().</para>
+    <para>Finally the window size is set using ctk_window_set_default_size and
+    the window is then shown by GTK via ctk_widget_show_all().</para>
 
     <para>When you exit the window, by for example pressing the X,
     the g_application_run() in the main loop returns with a number
@@ -170,15 +170,15 @@
   are declared to accomplish this, <varname>button</varname> and
   <varname>button_box</varname>. The button_box variable is created to store a
   #GtkButtonBox which is GTK+'s way of controlling the size and layout of buttons.
-  The #GtkButtonBox is created and assigned to gtk_button_box_new() which takes a
+  The #GtkButtonBox is created and assigned to ctk_button_box_new() which takes a
   #GtkOrientation enum as parameter. The buttons which this box will contain can
   either be stored horizontally or vertically but this does not matter in this
   particular case as we are dealing with only one button. After initializing
   button_box with horizontal orientation, the code adds the button_box widget to the
-  window widget using gtk_container_add().</para>
+  window widget using ctk_container_add().</para>
 
   <para>Next the <varname>button</varname> variable is initialized in similar manner.
-  gtk_button_new_with_label() is called which returns a GtkButton to be stored inside
+  ctk_button_new_with_label() is called which returns a GtkButton to be stored inside
   <varname>button</varname>. Afterwards <varname>button</varname> is added to
   our <varname>button_box</varname>.
   Using g_signal_connect the button is connected to a function in our app called
@@ -193,10 +193,10 @@
   a g_signal_connect() with the difference lying in how the callback function is
   treated. g_signal_connect_swapped() allow you to specify what the callback
   function should take as parameter by letting you pass it as data. In this case
-  the function being called back is gtk_widget_destroy() and the <varname>window</varname>
+  the function being called back is ctk_widget_destroy() and the <varname>window</varname>
   pointer is passed to it. This has the effect that when the button is clicked,
   the whole GTK window is destroyed. In contrast if a normal g_signal_connect() were used
-  to connect the "clicked" signal with gtk_widget_destroy(), then the <varname>button</varname>
+  to connect the "clicked" signal with ctk_widget_destroy(), then the <varname>button</varname>
   itself would have been destroyed, not the window.
   More information about creating buttons can be found
   <ulink url="https://wiki.gnome.org/HowDoI/Buttons">here</ulink>.
@@ -271,18 +271,18 @@
     <para>Note that GtkBuilder can also be used to construct objects
     that are not widgets, such as tree models, adjustments, etc.
     That is the reason the method we use here is called
-    gtk_builder_get_object() and returns a GObject* instead of a
+    ctk_builder_get_object() and returns a GObject* instead of a
     GtkWidget*.</para>
 
     <para>Normally, you would pass a full path to
-    gtk_builder_add_from_file() to make the execution of your program
+    ctk_builder_add_from_file() to make the execution of your program
     independent of the current directory. A common location to install
     UI descriptions and similar data is
     <filename>/usr/share/<replaceable>appname</replaceable></filename>.
     </para>
 
     <para>It is also possible to embed the UI description in the source
-    code as a string and use gtk_builder_add_from_string() to load it.
+    code as a string and use ctk_builder_add_from_string() to load it.
     But keeping the UI description in a separate file has several
     advantages: It is then possible to make minor adjustments to the UI
     without recompiling your program, and, more importantly, graphical
@@ -425,9 +425,9 @@
 
       <para>To make use of this file in our application, we revisit
       our #GtkApplicationWindow subclass, and call
-      gtk_widget_class_set_template_from_resource() from the class init
+      ctk_widget_class_set_template_from_resource() from the class init
       function to set the ui file as template for this class. We also
-      add a call to gtk_widget_init_template() in the instance init
+      add a call to ctk_widget_init_template() in the instance init
       function to instantiate the template for each instance of our
       class.</para>
 
@@ -438,13 +438,13 @@
 static void
 example_app_window_init (ExampleAppWindow *win)
 {
-  gtk_widget_init_template (GTK_WIDGET (win));
+  ctk_widget_init_template (GTK_WIDGET (win));
 }
 
 static void
 example_app_window_class_init (ExampleAppWindowClass *class)
 {
-  gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
                                                "/org/gtk/exampleapp/window.ui");
 }
 
@@ -490,7 +490,7 @@ example_app_window_class_init (ExampleAppWindowClass *class)
 
       <para>To this end, we add a private struct to our application
       window subclass and keep a reference to the #GtkStack there.
-      The gtk_widget_class_bind_template_child_private() function
+      The ctk_widget_class_bind_template_child_private() function
       arranges things so that after instantiating the template, the
       @stack member of the private struct will point to the widget of
       the same name from the template.</para>
@@ -511,9 +511,9 @@ G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, GTK_TYPE_APPLIC
 static void
 example_app_window_class_init (ExampleAppWindowClass *class)
 {
-  gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
                                                "/org/gtk/exampleapp/window.ui");
-  gtk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
+  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
 }
 
 ...
@@ -542,23 +542,23 @@ example_app_window_open (ExampleAppWindow *win,
   priv = example_app_window_get_instance_private (win);
   basename = g_file_get_basename (file);
 
-  scrolled = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolled);
-  gtk_widget_set_hexpand (scrolled, TRUE);
-  gtk_widget_set_vexpand (scrolled, TRUE);
-  view = gtk_text_view_new ();
-  gtk_text_view_set_editable (GTK_TEXT_VIEW (view), FALSE);
-  gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (view), FALSE);
-  gtk_widget_show (view);
-  gtk_container_add (GTK_CONTAINER (scrolled), view);
-  gtk_stack_add_titled (GTK_STACK (priv->stack), scrolled, basename, basename);
+  scrolled = ctk_scrolled_window_new (NULL, NULL);
+  ctk_widget_show (scrolled);
+  ctk_widget_set_hexpand (scrolled, TRUE);
+  ctk_widget_set_vexpand (scrolled, TRUE);
+  view = ctk_text_view_new ();
+  ctk_text_view_set_editable (GTK_TEXT_VIEW (view), FALSE);
+  ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (view), FALSE);
+  ctk_widget_show (view);
+  ctk_container_add (GTK_CONTAINER (scrolled), view);
+  ctk_stack_add_titled (GTK_STACK (priv->stack), scrolled, basename, basename);
 
   if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
     {
       GtkTextBuffer *buffer;
 
-      buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-      gtk_text_buffer_set_text (buffer, contents, length);
+      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+      ctk_text_buffer_set_text (buffer, contents, length);
       g_free (contents);
     }
 
@@ -573,7 +573,7 @@ example_app_window_open (ExampleAppWindow *win,
       <para>Note that we did not have to touch the stack switcher
       at all. It gets all its information from the stack that it
       belongs to. Here, we are passing the label to show for each
-      file as the last argument to the gtk_stack_add_titled()
+      file as the last argument to the ctk_stack_add_titled()
       function.</para>
 
       <para>Our application is beginning to take shape:</para>
@@ -602,7 +602,7 @@ example_app_window_open (ExampleAppWindow *win,
       </informalexample>
 
       <para>To associate the app menu with the application, we have to call
-      gtk_application_set_app_menu(). Since app menus work by activating
+      ctk_application_set_app_menu(). Since app menus work by activating
       #GActions, we also have to add a suitable set of actions to our
       application.</para>
 
@@ -646,13 +646,13 @@ example_app_startup (GApplication *app)
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),
                                    app);
-  gtk_application_set_accels_for_action (GTK_APPLICATION (app),
+  ctk_application_set_accels_for_action (GTK_APPLICATION (app),
                                          "app.quit",
                                          quit_accels);
 
-  builder = gtk_builder_new_from_resource ("/org/gtk/exampleapp/app-menu.ui");
-  app_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
-  gtk_application_set_app_menu (GTK_APPLICATION (app), app_menu);
+  builder = ctk_builder_new_from_resource ("/org/gtk/exampleapp/app-menu.ui");
+  app_menu = G_MENU_MODEL (ctk_builder_get_object (builder, "appmenu"));
+  ctk_application_set_app_menu (GTK_APPLICATION (app), app_menu);
   g_object_unref (builder);
 }
 
@@ -671,7 +671,7 @@ example_app_class_init (ExampleAppClass *class)
       <para>Our preferences menu item does not do anything yet,
       but the Quit menu item is fully functional. Note that it
       can also be activated by the usual Ctrl-Q shortcut. The
-      shortcut was added with gtk_application_set_accels_for_action().
+      shortcut was added with ctk_application_set_accels_for_action().
       </para>
 
       <para>The application menu looks like this:</para>
@@ -721,7 +721,7 @@ example_app_window_init (ExampleAppWindow *win)
   ExampleAppWindowPrivate *priv;
 
   priv = example_app_window_get_instance_private (win);
-  gtk_widget_init_template (GTK_WIDGET (win));
+  ctk_widget_init_template (GTK_WIDGET (win));
   priv->settings = g_settings_new ("org.gtk.exampleapp");
 
   g_settings_bind (priv->settings, "transition",
@@ -773,9 +773,9 @@ preferences_activated (GSimpleAction *action,
   ExampleAppPrefs *prefs;
   GtkWindow *win;
 
-  win = gtk_application_get_active_window (GTK_APPLICATION (app));
+  win = ctk_application_get_active_window (GTK_APPLICATION (app));
   prefs = example_app_prefs_new (EXAMPLE_APP_WINDOW (win));
-  gtk_window_present (GTK_WINDOW (prefs));
+  ctk_window_present (GTK_WINDOW (prefs));
 }
 
 ...
@@ -830,24 +830,24 @@ search_text_changed (GtkEntry         *entry,
   GtkTextBuffer *buffer;
   GtkTextIter start, match_start, match_end;
 
-  text = gtk_entry_get_text (entry);
+  text = ctk_entry_get_text (entry);
 
   if (text[0] == '\0')
     return;
 
   priv = example_app_window_get_instance_private (win);
 
-  tab = gtk_stack_get_visible_child (GTK_STACK (priv->stack));
-  view = gtk_bin_get_child (GTK_BIN (tab));
-  buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  tab = ctk_stack_get_visible_child (GTK_STACK (priv->stack));
+  view = ctk_bin_get_child (GTK_BIN (tab));
+  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
   /* Very simple-minded search implementation */
-  gtk_text_buffer_get_start_iter (buffer, &start);
-  if (gtk_text_iter_forward_search (&start, text, GTK_TEXT_SEARCH_CASE_INSENSITIVE,
+  ctk_text_buffer_get_start_iter (buffer, &start);
+  if (ctk_text_iter_forward_search (&start, text, GTK_TEXT_SEARCH_CASE_INSENSITIVE,
                                     &match_start, &match_end, NULL))
     {
-      gtk_text_buffer_select_range (buffer, &match_start, &match_end);
-      gtk_text_view_scroll_to_iter (GTK_TEXT_VIEW (view), &match_start,
+      ctk_text_buffer_select_range (buffer, &match_start, &match_end);
+      ctk_text_view_scroll_to_iter (GTK_TEXT_VIEW (view), &match_start,
                                     0.0, FALSE, 0.0, 0.0);
     }
 }
@@ -858,7 +858,7 @@ example_app_window_init (ExampleAppWindow *win)
 
 ...
 
-  gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), search_text_changed);
+  ctk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), search_text_changed);
 
 ...
 
@@ -914,9 +914,9 @@ example_app_window_init (ExampleAppWindow *win)
 
 ...
 
-  builder = gtk_builder_new_from_resource ("/org/gtk/exampleapp/gears-menu.ui");
-  menu = G_MENU_MODEL (gtk_builder_get_object (builder, "menu"));
-  gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (priv->gears), menu);
+  builder = ctk_builder_new_from_resource ("/org/gtk/exampleapp/gears-menu.ui");
+  menu = G_MENU_MODEL (ctk_builder_get_object (builder, "menu"));
+  ctk_menu_button_set_menu_model (GTK_MENU_BUTTON (priv->gears), menu);
   g_object_unref (builder);
 
   action = g_settings_create_action (priv->settings, "show-words");
@@ -1053,7 +1053,7 @@ example_app_window_init (ExampleAppWindow *win)
     e.g. when another window is moved and uncovers part of the widget, or
     when the window containing it is resized. It is also possible to explicitly
     cause part or all of the widget to be redrawn, by calling
-    gtk_widget_queue_draw() or its variants. GTK+ takes care of most of the
+    ctk_widget_queue_draw() or its variants. GTK+ takes care of most of the
     details by providing a ready-to-use cairo context to the ::draw signal
     handler.</para>
 

@@ -154,7 +154,7 @@ if wayland_enabled
   src_dir += [ gdkwayland_inc ]
 endif
 
-if get_option('gtk_doc')
+if get_option('ctk_doc')
 
     configure_file(input: 'version.xml.in', output: 'version.xml', configuration: version_conf)
 

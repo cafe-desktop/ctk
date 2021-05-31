@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SCROLLABLE            (gtk_scrollable_get_type ())
+#define GTK_TYPE_SCROLLABLE            (ctk_scrollable_get_type ())
 #define GTK_SCROLLABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),     GTK_TYPE_SCROLLABLE, GtkScrollable))
 #define GTK_IS_SCROLLABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),     GTK_TYPE_SCROLLABLE))
 #define GTK_SCROLLABLE_GET_IFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_SCROLLABLE, GtkScrollableInterface))
@@ -47,30 +47,30 @@ struct _GtkScrollableInterface
 
 /* Public API */
 GDK_AVAILABLE_IN_ALL
-GType                gtk_scrollable_get_type               (void) G_GNUC_CONST;
+GType                ctk_scrollable_get_type               (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment       *gtk_scrollable_get_hadjustment        (GtkScrollable       *scrollable);
+GtkAdjustment       *ctk_scrollable_get_hadjustment        (GtkScrollable       *scrollable);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_scrollable_set_hadjustment        (GtkScrollable       *scrollable,
+void                 ctk_scrollable_set_hadjustment        (GtkScrollable       *scrollable,
 							    GtkAdjustment       *hadjustment);
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment       *gtk_scrollable_get_vadjustment        (GtkScrollable       *scrollable);
+GtkAdjustment       *ctk_scrollable_get_vadjustment        (GtkScrollable       *scrollable);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_scrollable_set_vadjustment        (GtkScrollable       *scrollable,
+void                 ctk_scrollable_set_vadjustment        (GtkScrollable       *scrollable,
 							    GtkAdjustment       *vadjustment);
 GDK_AVAILABLE_IN_ALL
-GtkScrollablePolicy  gtk_scrollable_get_hscroll_policy     (GtkScrollable       *scrollable);
+GtkScrollablePolicy  ctk_scrollable_get_hscroll_policy     (GtkScrollable       *scrollable);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_scrollable_set_hscroll_policy     (GtkScrollable       *scrollable,
+void                 ctk_scrollable_set_hscroll_policy     (GtkScrollable       *scrollable,
 							    GtkScrollablePolicy  policy);
 GDK_AVAILABLE_IN_ALL
-GtkScrollablePolicy  gtk_scrollable_get_vscroll_policy     (GtkScrollable       *scrollable);
+GtkScrollablePolicy  ctk_scrollable_get_vscroll_policy     (GtkScrollable       *scrollable);
 GDK_AVAILABLE_IN_ALL
-void                 gtk_scrollable_set_vscroll_policy     (GtkScrollable       *scrollable,
+void                 ctk_scrollable_set_vscroll_policy     (GtkScrollable       *scrollable,
 							    GtkScrollablePolicy  policy);
 
 GDK_AVAILABLE_IN_3_16
-gboolean             gtk_scrollable_get_border             (GtkScrollable       *scrollable,
+gboolean             ctk_scrollable_get_border             (GtkScrollable       *scrollable,
                                                             GtkBorder           *border);
 
 G_END_DECLS

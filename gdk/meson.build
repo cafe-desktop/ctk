@@ -148,7 +148,7 @@ gdk_enums = gnome.mkenums('gdkenumtypes',
   sources: gdk_public_headers,
   c_template : 'gdkenumtypes.c.template',
   h_template : 'gdkenumtypes.h.template',
-  install_dir: join_paths(gtk_includedir, 'gtk-3.0/gdk'),
+  install_dir: join_paths(ctk_includedir, 'gtk-3.0/gdk'),
   install_header : true)
 
 gdkenum_h = gdk_enums[1]
@@ -171,23 +171,23 @@ gdkconfig = configure_file(
   input  : 'gdkconfig.h.meson',
   output : 'gdkconfig.h',
   configuration : gdkconfig_cdata,
-  install_dir: join_paths(gtk_includedir, 'gtk-3.0/gdk'))
+  install_dir: join_paths(ctk_includedir, 'gtk-3.0/gdk'))
 
 
 gdkversion_cdata = configuration_data()
-gdkversion_cdata.set('GTK_MAJOR_VERSION', gtk_major_version)
-gdkversion_cdata.set('GTK_MINOR_VERSION', gtk_minor_version)
-gdkversion_cdata.set('GTK_MICRO_VERSION', gtk_micro_version)
-gdkversion_cdata.set('GTK_API_VERSION', gtk_api_version)
-gdkversion_cdata.set('GTK_BINARY_VERSION', gtk_binary_version)
+gdkversion_cdata.set('GTK_MAJOR_VERSION', ctk_major_version)
+gdkversion_cdata.set('GTK_MINOR_VERSION', ctk_minor_version)
+gdkversion_cdata.set('GTK_MICRO_VERSION', ctk_micro_version)
+gdkversion_cdata.set('GTK_API_VERSION', ctk_api_version)
+gdkversion_cdata.set('GTK_BINARY_VERSION', ctk_binary_version)
 gdkversion_cdata.set('GTK_VERSION', meson.project_version())
-gdkversion_cdata.set('LT_CURRENT_MINUS_AGE', gtk_soversion)
+gdkversion_cdata.set('LT_CURRENT_MINUS_AGE', ctk_soversion)
 
 gdkversionmacros = configure_file(
   input  : 'gdkversionmacros.h.in',
   output : 'gdkversionmacros.h',
   configuration: gdkversion_cdata,
-  install_dir: join_paths(gtk_includedir, 'gtk-3.0/gdk'))
+  install_dir: join_paths(ctk_includedir, 'gtk-3.0/gdk'))
 
 gdkinc = include_directories('.')
 gdkx11_inc = include_directories('x11')
@@ -287,8 +287,8 @@ if cc.get_id() == 'msvc'
 endif
 
 libgdk = library('gdk-3',
-                 soversion: gtk_soversion,
-                 version: gtk_library_version,
+                 soversion: ctk_soversion,
+                 version: ctk_library_version,
                  sources: [gdk_sources, gdk_backends_gen_headers, gdkconfig],
                  dependencies: gdk_deps,
                  include_directories: [confinc, gdkx11_inc, wlinc],
@@ -298,7 +298,7 @@ libgdk = library('gdk-3',
                  ] + common_cflags,
                  link_whole: gdk_backends,
                  link_args: gdk_link_args,
-                 darwin_versions : gtk_osxversions,
+                 darwin_versions : ctk_osxversions,
                  install: true)
 
 gdk_dep_sources = [gdkconfig, gdkenum_h]
@@ -328,7 +328,7 @@ if build_gir
   gdk_gir = gnome.generate_gir(libgdk,
                                sources: gdk_gir_sources,
                                namespace: 'Gdk',
-                               nsversion: gtk_api_version,
+                               nsversion: ctk_api_version,
                                identifier_prefix: 'Gdk',
                                symbol_prefix: 'gdk',
                                export_packages: 'gdk-3.0',
@@ -345,7 +345,7 @@ if build_gir
     gdk_x11_gir = gnome.generate_gir(libgdk,
                                      sources: gdk_x11_public_headers + gdk_x11_sources,
                                      namespace: 'GdkX11',
-                                     nsversion: gtk_api_version,
+                                     nsversion: ctk_api_version,
                                      identifier_prefix: 'Gdk',
                                      symbol_prefix: 'gdk',
                                      export_packages: 'gdk-x11-3.0',
@@ -363,7 +363,7 @@ if build_gir
     gdk_win32_gir = gnome.generate_gir(libgdk,
                                      sources: gdk_win32_public_headers + gdk_win32_sources,
                                      namespace: 'GdkWin32',
-                                     nsversion: gtk_api_version,
+                                     nsversion: ctk_api_version,
                                      identifier_prefix: 'Gdk',
                                      symbol_prefix: 'gdk',
                                      export_packages: 'gdk-win32-3.0',

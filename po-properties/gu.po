@@ -736,10 +736,10 @@ msgstr "કિંમત"
 
 #: ../gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"gtk_radio_action_get_current_value() દ્વારા મળેલી કિંમત જ્યારે આ ક્રિયા એ તેના જૂથની "
+"ctk_radio_action_get_current_value() દ્વારા મળેલી કિંમત જ્યારે આ ક્રિયા એ તેના જૂથની "
 "વર્તમાન ક્રિયા હોય છે."
 
 #: ../gtk/deprecated/gtkradioaction.c:139 ../gtk/gtkradiobutton.c:162
@@ -1184,10 +1184,10 @@ msgstr "લોગો"
 #: ../gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "વિશે બોક્સ માટે લોગો. જો આ સુયોજિત નહિં હોય, તો તેમાં "
-"gtk_window_get_default_icon_list() મૂળભુત થશે"
+"ctk_window_get_default_icon_list() મૂળભુત થશે"
 
 #: ../gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3314,9 +3314,9 @@ msgstr "પ્રગતિ ધબકાર સુયોજન"
 #: ../gtk/gtkentry.c:1047
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"gtk_entry_progress_pulse() ના દરેક કોલ માટે પછડાતા બ્લોકની પ્રગતિ ખસેડવા માટે કુલ "
+"ctk_entry_progress_pulse() ના દરેક કોલ માટે પછડાતા બ્લોકની પ્રગતિ ખસેડવા માટે કુલ "
 "પ્રવેશ પહોળાઈનો અંશ"
 
 #: ../gtk/gtkentry.c:1065
@@ -8226,8 +8226,8 @@ msgid "No show all"
 msgstr "બધું બતાવો નહિં"
 
 #: ../gtk/gtkwidget.c:1362
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "શું gtk_widget_show_all() એ આ વિજેટને અસર કરવું જોઈએ નહિં"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "શું ctk_widget_show_all() એ આ વિજેટને અસર કરવું જોઈએ નહિં"
 
 #: ../gtk/gtkwidget.c:1385
 msgid "Whether this widget has a tooltip"
@@ -9077,8 +9077,8 @@ msgstr "વાપરવા માટે રંગ રૂપરેખાનું
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
-#~ msgstr "gtk_recent_manager_get_items() દ્વારા મળેલ વસ્તુઓની મહત્તમ સંખ્યા"
+#~ "ctk_recent_manager_get_items()"
+#~ msgstr "ctk_recent_manager_get_items() દ્વારા મળેલ વસ્તુઓની મહત્તમ સંખ્યા"
 
 #~ msgid "Blinking"
 #~ msgstr "ઝબૂકી રહ્યું છે"

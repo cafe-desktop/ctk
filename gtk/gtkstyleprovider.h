@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STYLE_PROVIDER          (gtk_style_provider_get_type ())
+#define GTK_TYPE_STYLE_PROVIDER          (ctk_style_provider_get_type ())
 #define GTK_STYLE_PROVIDER(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_STYLE_PROVIDER, GtkStyleProvider))
 #define GTK_IS_STYLE_PROVIDER(o)         (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_STYLE_PROVIDER))
 #define GTK_STYLE_PROVIDER_GET_IFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), GTK_TYPE_STYLE_PROVIDER, GtkStyleProviderIface))
@@ -116,21 +116,21 @@ struct _GtkStyleProviderIface
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_style_provider_get_type (void) G_GNUC_CONST;
+GType ctk_style_provider_get_type (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_8
-GtkStyleProperties *gtk_style_provider_get_style (GtkStyleProvider *provider,
+GtkStyleProperties *ctk_style_provider_get_style (GtkStyleProvider *provider,
                                                   GtkWidgetPath    *path);
 
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_style_provider_get_style_property (GtkStyleProvider *provider,
+gboolean ctk_style_provider_get_style_property (GtkStyleProvider *provider,
                                                 GtkWidgetPath    *path,
                                                 GtkStateFlags     state,
                                                 GParamSpec       *pspec,
                                                 GValue           *value);
 
 GDK_DEPRECATED_IN_3_8_FOR(NULL)
-GtkIconFactory * gtk_style_provider_get_icon_factory (GtkStyleProvider *provider,
+GtkIconFactory * ctk_style_provider_get_icon_factory (GtkStyleProvider *provider,
 						      GtkWidgetPath    *path);
 
 G_END_DECLS

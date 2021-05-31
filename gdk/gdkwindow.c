@@ -3175,7 +3175,7 @@ gdk_window_begin_paint_rect (GdkWindow          *window,
  * Therefore in most cases, application code need not call
  * gdk_window_begin_paint_region(). (You can disable the automatic
  * calls around expose events on a widget-by-widget basis by calling
- * gtk_widget_set_double_buffered().)
+ * ctk_widget_set_double_buffered().)
  *
  * If you call this function multiple times before calling the
  * matching gdk_window_end_paint(), the backing stores are pushed onto
@@ -3685,7 +3685,7 @@ gdk_window_add_update_window (GdkWindow *window)
   gboolean has_ancestor_in_list = FALSE;
 
   /*  Check whether "window" is already in "update_windows" list.
-   *  It could be added during execution of gtk_widget_destroy() when
+   *  It could be added during execution of ctk_widget_destroy() when
    *  setting focus widget to NULL and redrawing old focus widget.
    *  See bug 711552.
    */
@@ -4749,15 +4749,15 @@ gdk_window_thaw_updates (GdkWindow *window)
 }
 
 /**
- * gdk_window_freeze_toplevel_updates_libgtk_only:
+ * gdk_window_freeze_toplevel_updates_libctk_only:
  * @window: a #GdkWindow
  *
  * Temporarily freezes a window and all its descendants such that it won't
  * receive expose events.  The window will begin receiving expose events
- * again when gdk_window_thaw_toplevel_updates_libgtk_only() is called. If
- * gdk_window_freeze_toplevel_updates_libgtk_only()
+ * again when gdk_window_thaw_toplevel_updates_libctk_only() is called. If
+ * gdk_window_freeze_toplevel_updates_libctk_only()
  * has been called more than once,
- * gdk_window_thaw_toplevel_updates_libgtk_only() must be called
+ * gdk_window_thaw_toplevel_updates_libctk_only() must be called
  * an equal number of times to begin processing exposes.
  *
  * This function is not part of the GDK public API and is only
@@ -4766,7 +4766,7 @@ gdk_window_thaw_updates (GdkWindow *window)
  * Deprecated: 3.16: This symbol was never meant to be used outside of GTK+
  */
 void
-gdk_window_freeze_toplevel_updates_libgtk_only (GdkWindow *window)
+gdk_window_freeze_toplevel_updates_libctk_only (GdkWindow *window)
 {
   gdk_window_freeze_toplevel_updates (window);
 }
@@ -4782,11 +4782,11 @@ gdk_window_freeze_toplevel_updates (GdkWindow *window)
 }
 
 /**
- * gdk_window_thaw_toplevel_updates_libgtk_only:
+ * gdk_window_thaw_toplevel_updates_libctk_only:
  * @window: a #GdkWindow
  *
  * Thaws a window frozen with
- * gdk_window_freeze_toplevel_updates_libgtk_only().
+ * gdk_window_freeze_toplevel_updates_libctk_only().
  *
  * This function is not part of the GDK public API and is only
  * for use by GTK+.
@@ -4794,7 +4794,7 @@ gdk_window_freeze_toplevel_updates (GdkWindow *window)
  * Deprecated: 3.16: This symbol was never meant to be used outside of GTK+
  */
 void
-gdk_window_thaw_toplevel_updates_libgtk_only (GdkWindow *window)
+gdk_window_thaw_toplevel_updates_libctk_only (GdkWindow *window)
 {
   gdk_window_thaw_toplevel_updates (window);
 }
@@ -5666,7 +5666,7 @@ gdk_window_show (GdkWindow *window)
  * For toplevel windows, withdraws them, so they will no longer be
  * known to the window manager; for all windows, unmaps them, so
  * they won’t be displayed. Normally done automatically as
- * part of gtk_widget_hide().
+ * part of ctk_widget_hide().
  */
 void
 gdk_window_hide (GdkWindow *window)
@@ -6166,7 +6166,7 @@ gdk_window_move_resize_internal (GdkWindow *window,
  *
  * Repositions a window relative to its parent window.
  * For toplevel windows, window managers may ignore or modify the move;
- * you should probably use gtk_window_move() on a #GtkWindow widget
+ * you should probably use ctk_window_move() on a #GtkWindow widget
  * anyway, instead of using GDK functions. For child windows,
  * the move will reliably succeed.
  *
@@ -6189,7 +6189,7 @@ gdk_window_move (GdkWindow *window,
  *
  * Resizes @window; for toplevel windows, asks the window manager to resize
  * the window. The window manager may not allow the resize. When using GTK+,
- * use gtk_window_resize() instead of this low-level GDK function.
+ * use ctk_window_resize() instead of this low-level GDK function.
  *
  * Windows may not be resized below 1x1.
  *
@@ -6387,7 +6387,7 @@ gdk_window_move_region (GdkWindow            *window,
  *
  * However, when using GTK+, influence the background of a widget
  * using a style class or CSS — if you’re an application — or with
- * gtk_style_context_set_background() — if you're implementing a
+ * ctk_style_context_set_background() — if you're implementing a
  * custom widget.
  *
  * Deprecated: 3.4: Don't use this function
@@ -10294,7 +10294,7 @@ gdk_window_create_similar_image_surface (GdkWindow *     window,
  * @window: a #GdkWindow
  * @timestamp: timestamp of the event triggering the window focus
  *
- * Sets keyboard focus to @window. In most cases, gtk_window_present_with_time()
+ * Sets keyboard focus to @window. In most cases, ctk_window_present_with_time()
  * should be used on a #GtkWindow, rather than calling this function.
  *
  **/
@@ -10483,7 +10483,7 @@ gdk_window_set_title (GdkWindow   *window,
  * @window: a toplevel #GdkWindow
  * @role: a string indicating its role
  *
- * When using GTK+, typically you should use gtk_window_set_role() instead
+ * When using GTK+, typically you should use ctk_window_set_role() instead
  * of this low-level function.
  *
  * The window manager and session manager use a window’s role to
@@ -10509,7 +10509,7 @@ gdk_window_set_role (GdkWindow   *window,
  * @window: a toplevel #GdkWindow
  * @startup_id: a string with startup-notification identifier
  *
- * When using GTK+, typically you should use gtk_window_set_startup_id()
+ * When using GTK+, typically you should use ctk_window_set_startup_id()
  * instead of this low-level function.
  *
  * Since: 2.12
@@ -10535,7 +10535,7 @@ gdk_window_set_startup_id (GdkWindow   *window,
  * window manager to do things like center @window on @parent and
  * keep @window above @parent.
  *
- * See gtk_window_set_transient_for() if you’re using #GtkWindow or
+ * See ctk_window_set_transient_for() if you’re using #GtkWindow or
  * #GtkDialog.
  **/
 void
@@ -10753,7 +10753,7 @@ gdk_window_set_icon_name (GdkWindow   *window,
  *
  * Asks to iconify (minimize) @window. The window manager may choose
  * to ignore the request, but normally will honor it. Using
- * gtk_window_iconify() is preferred, if you have a #GtkWindow widget.
+ * ctk_window_iconify() is preferred, if you have a #GtkWindow widget.
  *
  * This function only makes sense when @window is a toplevel window.
  *
@@ -10770,8 +10770,8 @@ gdk_window_iconify (GdkWindow *window)
  *
  * Attempt to deiconify (unminimize) @window. On X11 the window manager may
  * choose to ignore the request to deiconify. When using GTK+,
- * use gtk_window_deiconify() instead of the #GdkWindow variant. Or better yet,
- * you probably want to use gtk_window_present_with_time(), which raises the window, focuses it,
+ * use ctk_window_deiconify() instead of the #GdkWindow variant. Or better yet,
+ * you probably want to use ctk_window_present_with_time(), which raises the window, focuses it,
  * unminimizes it, and puts it on the current desktop.
  *
  **/
@@ -10787,7 +10787,7 @@ gdk_window_deiconify (GdkWindow *window)
  *
  * “Pins” a window such that it’s on all workspaces and does not scroll
  * with viewports, for window managers that have scrollable viewports.
- * (When using #GtkWindow, gtk_window_stick() may be more useful.)
+ * (When using #GtkWindow, ctk_window_stick() may be more useful.)
  *
  * On the X11 platform, this function depends on window manager
  * support, so may have no effect with many window managers. However,
@@ -10807,7 +10807,7 @@ gdk_window_stick (GdkWindow *window)
  * @window: a toplevel #GdkWindow
  *
  * Reverse operation for gdk_window_stick(); see gdk_window_stick(),
- * and gtk_window_unstick().
+ * and ctk_window_unstick().
  *
  **/
 void
@@ -11092,7 +11092,7 @@ gdk_window_set_group (GdkWindow *window,
  * “Decorations” are the features the window manager adds to a toplevel #GdkWindow.
  * This function sets the traditional Motif window manager hints that tell the
  * window manager which decorations you would like your window to have.
- * Usually you should use gtk_window_set_decorated() on a #GtkWindow instead of
+ * Usually you should use ctk_window_set_decorated() on a #GtkWindow instead of
  * using the GDK function directly.
  *
  * The @decorations argument is the logical OR of the fields in
@@ -11320,7 +11320,7 @@ gdk_window_configure_finished (GdkWindow *window)
  * per-window opacity value that the compositor would apply. Instead, use
  * `gdk_window_set_opaque_region (window, NULL)` to tell the compositor
  * that the entire window is (potentially) non-opaque, and draw your content
- * with alpha, or use gtk_widget_set_opacity() to set an overall opacity
+ * with alpha, or use ctk_widget_set_opacity() to set an overall opacity
  * for your widgets.
  *
  * For child windows this function only works for non-native windows.
@@ -11517,7 +11517,7 @@ gdk_test_render_sync (GdkWindow *window)
  * location for the event.
  *
  * Also, gdk_test_simulate_key() is a fairly low level function,
- * for most testing purposes, gtk_test_widget_send_key() is the
+ * for most testing purposes, ctk_test_widget_send_key() is the
  * right function to call which will generate a key press event
  * followed by its accompanying key release event.
  *
@@ -11556,7 +11556,7 @@ gdk_test_simulate_key (GdkWindow      *window,
  * recommended.
  *
 * Also, gdk_test_simulate_button() is a fairly low level function,
- * for most testing purposes, gtk_test_widget_click() is the right
+ * for most testing purposes, ctk_test_widget_click() is the right
  * function to call which will generate a button press event followed
  * by its accompanying button release event.
  *

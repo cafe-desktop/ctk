@@ -55,24 +55,24 @@ struct _GtkEventControllerPrivate
   GtkPropagationPhase phase;
 };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkEventController, gtk_event_controller, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkEventController, ctk_event_controller, G_TYPE_OBJECT)
 
 static gboolean
-gtk_event_controller_handle_event_default (GtkEventController *controller,
+ctk_event_controller_handle_event_default (GtkEventController *controller,
                                            const GdkEvent     *event)
 {
   return FALSE;
 }
 
 static void
-gtk_event_controller_set_property (GObject      *object,
+ctk_event_controller_set_property (GObject      *object,
                                    guint         prop_id,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
   GtkEventControllerPrivate *priv;
 
-  priv = gtk_event_controller_get_instance_private (GTK_EVENT_CONTROLLER (object));
+  priv = ctk_event_controller_get_instance_private (GTK_EVENT_CONTROLLER (object));
 
   switch (prop_id)
     {
@@ -82,7 +82,7 @@ gtk_event_controller_set_property (GObject      *object,
         g_object_add_weak_pointer (G_OBJECT (priv->widget), (gpointer *) &priv->widget);
       break;
     case PROP_PROPAGATION_PHASE:
-      gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (object),
+      ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (object),
                                                   g_value_get_enum (value));
       break;
     default:
@@ -91,14 +91,14 @@ gtk_event_controller_set_property (GObject      *object,
 }
 
 static void
-gtk_event_controller_get_property (GObject    *object,
+ctk_event_controller_get_property (GObject    *object,
                                    guint       prop_id,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
   GtkEventControllerPrivate *priv;
 
-  priv = gtk_event_controller_get_instance_private (GTK_EVENT_CONTROLLER (object));
+  priv = ctk_event_controller_get_instance_private (GTK_EVENT_CONTROLLER (object));
 
   switch (prop_id)
     {
@@ -114,47 +114,47 @@ gtk_event_controller_get_property (GObject    *object,
 }
 
 static void
-gtk_event_controller_constructed (GObject *object)
+ctk_event_controller_constructed (GObject *object)
 {
   GtkEventController *controller = GTK_EVENT_CONTROLLER (object);
   GtkEventControllerPrivate *priv;
 
-  G_OBJECT_CLASS (gtk_event_controller_parent_class)->constructed (object);
+  G_OBJECT_CLASS (ctk_event_controller_parent_class)->constructed (object);
 
-  priv = gtk_event_controller_get_instance_private (controller);
+  priv = ctk_event_controller_get_instance_private (controller);
   if (priv->widget)
-    _gtk_widget_add_controller (priv->widget, controller);
+    _ctk_widget_add_controller (priv->widget, controller);
 }
 
 static void
-gtk_event_controller_dispose (GObject *object)
+ctk_event_controller_dispose (GObject *object)
 {
   GtkEventController *controller = GTK_EVENT_CONTROLLER (object);
   GtkEventControllerPrivate *priv;
 
-  priv = gtk_event_controller_get_instance_private (controller);
+  priv = ctk_event_controller_get_instance_private (controller);
   if (priv->widget)
     {
-      _gtk_widget_remove_controller (priv->widget, controller);
+      _ctk_widget_remove_controller (priv->widget, controller);
       g_object_remove_weak_pointer (G_OBJECT (priv->widget), (gpointer *) &priv->widget);
       priv->widget = NULL;
     }
 
-  G_OBJECT_CLASS (gtk_event_controller_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_event_controller_parent_class)->dispose (object);
 }
 
 static void
-gtk_event_controller_class_init (GtkEventControllerClass *klass)
+ctk_event_controller_class_init (GtkEventControllerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  klass->filter_event = gtk_event_controller_handle_event_default;
-  klass->handle_event = gtk_event_controller_handle_event_default;
+  klass->filter_event = ctk_event_controller_handle_event_default;
+  klass->handle_event = ctk_event_controller_handle_event_default;
 
-  object_class->set_property = gtk_event_controller_set_property;
-  object_class->get_property = gtk_event_controller_get_property;
-  object_class->constructed = gtk_event_controller_constructed;
-  object_class->dispose = gtk_event_controller_dispose;
+  object_class->set_property = ctk_event_controller_set_property;
+  object_class->get_property = ctk_event_controller_get_property;
+  object_class->constructed = ctk_event_controller_constructed;
+  object_class->dispose = ctk_event_controller_dispose;
 
   /**
    * GtkEventController:widget:
@@ -188,16 +188,16 @@ gtk_event_controller_class_init (GtkEventControllerClass *klass)
 }
 
 static void
-gtk_event_controller_init (GtkEventController *controller)
+ctk_event_controller_init (GtkEventController *controller)
 {
   GtkEventControllerPrivate *priv;
 
-  priv = gtk_event_controller_get_instance_private (controller);
+  priv = ctk_event_controller_get_instance_private (controller);
   priv->phase = GTK_PHASE_BUBBLE;
 }
 
 /**
- * gtk_event_controller_handle_event:
+ * ctk_event_controller_handle_event:
  * @controller: a #GtkEventController
  * @event: a #GdkEvent
  *
@@ -210,7 +210,7 @@ gtk_event_controller_init (GtkEventController *controller)
  * Since: 3.14
  **/
 gboolean
-gtk_event_controller_handle_event (GtkEventController *controller,
+ctk_event_controller_handle_event (GtkEventController *controller,
                                    const GdkEvent     *event)
 {
   GtkEventControllerClass *controller_class;
@@ -235,14 +235,14 @@ gtk_event_controller_handle_event (GtkEventController *controller,
 }
 
 void
-gtk_event_controller_set_event_mask (GtkEventController *controller,
+ctk_event_controller_set_event_mask (GtkEventController *controller,
                                      GdkEventMask        event_mask)
 {
   GtkEventControllerPrivate *priv;
 
   g_return_if_fail (GTK_IS_EVENT_CONTROLLER (controller));
 
-  priv = gtk_event_controller_get_instance_private (controller);
+  priv = ctk_event_controller_get_instance_private (controller);
 
   if (priv->evmask == event_mask)
     return;
@@ -251,19 +251,19 @@ gtk_event_controller_set_event_mask (GtkEventController *controller,
 }
 
 GdkEventMask
-gtk_event_controller_get_event_mask (GtkEventController *controller)
+ctk_event_controller_get_event_mask (GtkEventController *controller)
 {
   GtkEventControllerPrivate *priv;
 
   g_return_val_if_fail (GTK_IS_EVENT_CONTROLLER (controller), 0);
 
-  priv = gtk_event_controller_get_instance_private (controller);
+  priv = ctk_event_controller_get_instance_private (controller);
 
   return priv->evmask;
 }
 
 /**
- * gtk_event_controller_get_widget:
+ * ctk_event_controller_get_widget:
  * @controller: a #GtkEventController
  *
  * Returns the #GtkWidget this controller relates to.
@@ -273,19 +273,19 @@ gtk_event_controller_get_event_mask (GtkEventController *controller)
  * Since: 3.14
  **/
 GtkWidget *
-gtk_event_controller_get_widget (GtkEventController *controller)
+ctk_event_controller_get_widget (GtkEventController *controller)
 {
   GtkEventControllerPrivate *priv;
 
   g_return_val_if_fail (GTK_IS_EVENT_CONTROLLER (controller), 0);
 
-  priv = gtk_event_controller_get_instance_private (controller);
+  priv = ctk_event_controller_get_instance_private (controller);
 
   return priv->widget;
 }
 
 /**
- * gtk_event_controller_reset:
+ * ctk_event_controller_reset:
  * @controller: a #GtkEventController
  *
  * Resets the @controller to a clean state. Every interaction
@@ -295,7 +295,7 @@ gtk_event_controller_get_widget (GtkEventController *controller)
  * Since: 3.14
  **/
 void
-gtk_event_controller_reset (GtkEventController *controller)
+ctk_event_controller_reset (GtkEventController *controller)
 {
   GtkEventControllerClass *controller_class;
 
@@ -308,7 +308,7 @@ gtk_event_controller_reset (GtkEventController *controller)
 }
 
 /**
- * gtk_event_controller_get_propagation_phase:
+ * ctk_event_controller_get_propagation_phase:
  * @controller: a #GtkEventController
  *
  * Gets the propagation phase at which @controller handles events.
@@ -318,19 +318,19 @@ gtk_event_controller_reset (GtkEventController *controller)
  * Since: 3.14
  **/
 GtkPropagationPhase
-gtk_event_controller_get_propagation_phase (GtkEventController *controller)
+ctk_event_controller_get_propagation_phase (GtkEventController *controller)
 {
   GtkEventControllerPrivate *priv;
 
   g_return_val_if_fail (GTK_IS_EVENT_CONTROLLER (controller), GTK_PHASE_NONE);
 
-  priv = gtk_event_controller_get_instance_private (controller);
+  priv = ctk_event_controller_get_instance_private (controller);
 
   return priv->phase;
 }
 
 /**
- * gtk_event_controller_set_propagation_phase:
+ * ctk_event_controller_set_propagation_phase:
  * @controller: a #GtkEventController
  * @phase: a propagation phase
  *
@@ -338,12 +338,12 @@ gtk_event_controller_get_propagation_phase (GtkEventController *controller)
  *
  * If @phase is %GTK_PHASE_NONE, no automatic event handling will be
  * performed, but other additional gesture maintenance will. In that phase,
- * the events can be managed by calling gtk_event_controller_handle_event().
+ * the events can be managed by calling ctk_event_controller_handle_event().
  *
  * Since: 3.14
  **/
 void
-gtk_event_controller_set_propagation_phase (GtkEventController  *controller,
+ctk_event_controller_set_propagation_phase (GtkEventController  *controller,
                                             GtkPropagationPhase  phase)
 {
   GtkEventControllerPrivate *priv;
@@ -351,7 +351,7 @@ gtk_event_controller_set_propagation_phase (GtkEventController  *controller,
   g_return_if_fail (GTK_IS_EVENT_CONTROLLER (controller));
   g_return_if_fail (phase >= GTK_PHASE_NONE && phase <= GTK_PHASE_TARGET);
 
-  priv = gtk_event_controller_get_instance_private (controller);
+  priv = ctk_event_controller_get_instance_private (controller);
 
   if (priv->phase == phase)
     return;
@@ -359,7 +359,7 @@ gtk_event_controller_set_propagation_phase (GtkEventController  *controller,
   priv->phase = phase;
 
   if (phase == GTK_PHASE_NONE)
-    gtk_event_controller_reset (controller);
+    ctk_event_controller_reset (controller);
 
   g_object_notify_by_pspec (G_OBJECT (controller), properties[PROP_PROPAGATION_PHASE]);
 }

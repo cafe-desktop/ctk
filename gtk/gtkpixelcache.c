@@ -58,7 +58,7 @@ struct _GtkPixelCache {
 };
 
 GtkPixelCache *
-_gtk_pixel_cache_new (void)
+_ctk_pixel_cache_new (void)
 {
   GtkPixelCache *cache;
 
@@ -70,7 +70,7 @@ _gtk_pixel_cache_new (void)
 }
 
 void
-_gtk_pixel_cache_free (GtkPixelCache *cache)
+_ctk_pixel_cache_free (GtkPixelCache *cache)
 {
   if (cache == NULL)
     return;
@@ -91,7 +91,7 @@ _gtk_pixel_cache_free (GtkPixelCache *cache)
 }
 
 void
-_gtk_pixel_cache_set_extra_size (GtkPixelCache *cache,
+_ctk_pixel_cache_set_extra_size (GtkPixelCache *cache,
                                  guint          extra_width,
                                  guint          extra_height)
 {
@@ -100,7 +100,7 @@ _gtk_pixel_cache_set_extra_size (GtkPixelCache *cache,
 }
 
 void
-_gtk_pixel_cache_get_extra_size (GtkPixelCache *cache,
+_ctk_pixel_cache_get_extra_size (GtkPixelCache *cache,
                                  guint         *extra_width,
                                  guint         *extra_height)
 {
@@ -112,16 +112,16 @@ _gtk_pixel_cache_get_extra_size (GtkPixelCache *cache,
 }
 
 void
-_gtk_pixel_cache_set_content (GtkPixelCache   *cache,
+_ctk_pixel_cache_set_content (GtkPixelCache   *cache,
                               cairo_content_t  content)
 {
   cache->content = content;
-  _gtk_pixel_cache_invalidate (cache, NULL);
+  _ctk_pixel_cache_invalidate (cache, NULL);
 }
 
 /* Region is in canvas coordinates */
 void
-_gtk_pixel_cache_invalidate (GtkPixelCache  *cache,
+_ctk_pixel_cache_invalidate (GtkPixelCache  *cache,
                              cairo_region_t *region)
 {
   cairo_rectangle_int_t r;
@@ -172,7 +172,7 @@ _gtk_pixel_cache_invalidate (GtkPixelCache  *cache,
 }
 
 static void
-_gtk_pixel_cache_create_surface_if_needed (GtkPixelCache         *cache,
+_ctk_pixel_cache_create_surface_if_needed (GtkPixelCache         *cache,
                                            GdkWindow             *window,
                                            cairo_rectangle_int_t *view_rect,
                                            cairo_rectangle_int_t *canvas_rect)
@@ -247,7 +247,7 @@ _gtk_pixel_cache_create_surface_if_needed (GtkPixelCache         *cache,
 }
 
 static void
-_gtk_pixel_cache_set_position (GtkPixelCache         *cache,
+_ctk_pixel_cache_set_position (GtkPixelCache         *cache,
                                cairo_rectangle_int_t *view_rect,
                                cairo_rectangle_int_t *canvas_rect)
 {
@@ -325,7 +325,7 @@ _gtk_pixel_cache_set_position (GtkPixelCache         *cache,
 }
 
 static void
-_gtk_pixel_cache_repaint (GtkPixelCache         *cache,
+_ctk_pixel_cache_repaint (GtkPixelCache         *cache,
                           GdkWindow             *window,
                           GtkPixelCacheDrawFunc  draw,
                           cairo_rectangle_int_t *view_rect,
@@ -384,7 +384,7 @@ _gtk_pixel_cache_repaint (GtkPixelCache         *cache,
 }
 
 static void
-gtk_pixel_cache_blow_cache (GtkPixelCache *cache)
+ctk_pixel_cache_blow_cache (GtkPixelCache *cache)
 {
   g_clear_pointer (&cache->timeout_source, g_source_destroy);
   g_clear_pointer (&cache->surface, cairo_surface_destroy);
@@ -398,7 +398,7 @@ blow_cache_cb  (gpointer user_data)
 
   cache->timeout_source = NULL;
 
-  gtk_pixel_cache_blow_cache (cache);
+  ctk_pixel_cache_blow_cache (cache);
 
   return G_SOURCE_REMOVE;
 }
@@ -418,7 +418,7 @@ context_is_unscaled (cairo_t *cr)
 
 
 void
-_gtk_pixel_cache_draw (GtkPixelCache         *cache,
+_ctk_pixel_cache_draw (GtkPixelCache         *cache,
                        cairo_t               *cr,
                        GdkWindow             *window,
                        cairo_rectangle_int_t *view_rect,   /* View position in widget coords */
@@ -442,10 +442,10 @@ _gtk_pixel_cache_draw (GtkPixelCache         *cache,
       g_source_set_name (cache->timeout_source, "[gtk+] blow_cache_cb");
     }
 
-  _gtk_pixel_cache_create_surface_if_needed (cache, window,
+  _ctk_pixel_cache_create_surface_if_needed (cache, window,
                                              view_rect, canvas_rect);
-  _gtk_pixel_cache_set_position (cache, view_rect, canvas_rect);
-  _gtk_pixel_cache_repaint (cache, window, draw, view_rect, canvas_rect, user_data);
+  _ctk_pixel_cache_set_position (cache, view_rect, canvas_rect);
+  _ctk_pixel_cache_repaint (cache, window, draw, view_rect, canvas_rect, user_data);
 
   if (cache->surface && context_is_unscaled (cr) &&
       /* Don't use backing surface if rendering elsewhere */
@@ -471,37 +471,37 @@ _gtk_pixel_cache_draw (GtkPixelCache         *cache,
 }
 
 void
-_gtk_pixel_cache_map (GtkPixelCache *cache)
+_ctk_pixel_cache_map (GtkPixelCache *cache)
 {
-  _gtk_pixel_cache_invalidate (cache, NULL);
+  _ctk_pixel_cache_invalidate (cache, NULL);
 }
 
 void
-_gtk_pixel_cache_unmap (GtkPixelCache *cache)
+_ctk_pixel_cache_unmap (GtkPixelCache *cache)
 {
-  gtk_pixel_cache_blow_cache (cache);
+  ctk_pixel_cache_blow_cache (cache);
 }
 
 gboolean
-_gtk_pixel_cache_get_always_cache (GtkPixelCache *cache)
+_ctk_pixel_cache_get_always_cache (GtkPixelCache *cache)
 {
   return cache->always_cache;
 }
 
 void
-_gtk_pixel_cache_set_always_cache (GtkPixelCache *cache,
+_ctk_pixel_cache_set_always_cache (GtkPixelCache *cache,
                                    gboolean       always_cache)
 {
   cache->always_cache = !!always_cache;
 }
 
 void
-gtk_pixel_cache_set_is_opaque (GtkPixelCache *cache,
+ctk_pixel_cache_set_is_opaque (GtkPixelCache *cache,
                                gboolean       is_opaque)
 {
   if (cache->is_opaque == is_opaque)
     return;
 
   cache->is_opaque = is_opaque;
-  _gtk_pixel_cache_invalidate (cache, NULL);
+  _ctk_pixel_cache_invalidate (cache, NULL);
 }

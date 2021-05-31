@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-void gtk_dialog_set_use_header_bar_from_setting (GtkDialog *dialog);
+void ctk_dialog_set_use_header_bar_from_setting (GtkDialog *dialog);
 
 G_END_DECLS
 

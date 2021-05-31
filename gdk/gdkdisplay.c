@@ -1460,7 +1460,7 @@ gdk_device_grab_info (GdkDisplay  *display,
 }
 
 /**
- * gdk_device_grab_info_libgtk_only:
+ * gdk_device_grab_info_libctk_only:
  * @display: the display for which to get the grab information
  * @device: device to get the grab information from
  * @grab_window: (out) (transfer none): location to store current grab window
@@ -1478,7 +1478,7 @@ gdk_device_grab_info (GdkDisplay  *display,
  *   of GTK+
  */
 gboolean
-gdk_device_grab_info_libgtk_only (GdkDisplay  *display,
+gdk_device_grab_info_libctk_only (GdkDisplay  *display,
                                   GdkDevice   *device,
                                   GdkWindow  **grab_window,
                                   gboolean    *owner_events)
@@ -2139,7 +2139,7 @@ _gdk_display_get_next_serial (GdkDisplay *display)
  * windows.
  *
  * GTK+ will call this function automatically after opening the first
- * #GtkWindow unless gtk_window_set_auto_startup_notification() is called
+ * #GtkWindow unless ctk_window_set_auto_startup_notification() is called
  * to disable that feature.
  *
  * Since: 2.2
@@ -2160,7 +2160,7 @@ gdk_notify_startup_complete (void)
  *
  * GTK+ will call this function automatically for #GtkWindow
  * with custom startup-notification identifier unless
- * gtk_window_set_auto_startup_notification() is called to
+ * ctk_window_set_auto_startup_notification() is called to
  * disable that feature.
  *
  * Since: 2.12
@@ -2186,7 +2186,7 @@ gdk_notify_startup_complete_with_id (const gchar* startup_id)
  *
  * GTK+ will call this function automatically for #GtkWindow
  * with custom startup-notification identifier unless
- * gtk_window_set_auto_startup_notification() is called to
+ * ctk_window_set_auto_startup_notification() is called to
  * disable that feature.
  *
  * Since: 3.0

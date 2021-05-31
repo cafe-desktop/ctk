@@ -98,7 +98,7 @@ struct _GtkWin32Theme {
 };
 
 GtkWin32Theme *
-gtk_win32_theme_ref (GtkWin32Theme *theme)
+ctk_win32_theme_ref (GtkWin32Theme *theme)
 {
   theme->ref_count++;
 
@@ -106,7 +106,7 @@ gtk_win32_theme_ref (GtkWin32Theme *theme)
 }
 
 static gboolean
-gtk_win32_theme_close (GtkWin32Theme *theme)
+ctk_win32_theme_close (GtkWin32Theme *theme)
 {
 #ifdef G_OS_WIN32
   if (theme->htheme)
@@ -120,7 +120,7 @@ gtk_win32_theme_close (GtkWin32Theme *theme)
 }
 
 void
-gtk_win32_theme_unref (GtkWin32Theme *theme)
+ctk_win32_theme_unref (GtkWin32Theme *theme)
 {
   theme->ref_count--;
 
@@ -129,14 +129,14 @@ gtk_win32_theme_unref (GtkWin32Theme *theme)
 
   g_hash_table_remove (themes_by_class, theme->class_name);
 
-  gtk_win32_theme_close (theme);
+  ctk_win32_theme_close (theme);
   g_free (theme->class_name);
 
   g_slice_free (GtkWin32Theme, theme);
 }
 
 gboolean
-gtk_win32_theme_equal (GtkWin32Theme *theme1,
+ctk_win32_theme_equal (GtkWin32Theme *theme1,
                        GtkWin32Theme *theme2)
 {
   /* Themes are cached so they're guaranteed unique. */
@@ -165,16 +165,16 @@ invalidate_win32_themes (GdkXEvent *xevent,
   g_hash_table_iter_init (&iter, themes_by_class);
   while (g_hash_table_iter_next (&iter, NULL, &theme))
     {
-      theme_was_open |= gtk_win32_theme_close (theme);
+      theme_was_open |= ctk_win32_theme_close (theme);
     }
   if (theme_was_open)
-    gtk_style_context_reset_widgets (gdk_display_get_default_screen (gdk_window_get_display (event->any.window)));
+    ctk_style_context_reset_widgets (gdk_display_get_default_screen (gdk_window_get_display (event->any.window)));
 
   return GDK_FILTER_CONTINUE;
 }
 
 static void
-gtk_win32_theme_init (void)
+ctk_win32_theme_init (void)
 {
   char *buf;
   char dummy;
@@ -235,11 +235,11 @@ gtk_win32_theme_init (void)
 }
 
 static HTHEME
-gtk_win32_theme_get_htheme (GtkWin32Theme *theme)
+ctk_win32_theme_get_htheme (GtkWin32Theme *theme)
 {
   guint16 *wclass;
   
-  gtk_win32_theme_init ();
+  ctk_win32_theme_init ();
 
   if (theme->htheme)
     return theme->htheme;
@@ -262,7 +262,7 @@ canonicalize_class_name (const char *classname)
 }
 
 GtkWin32Theme *
-gtk_win32_theme_lookup (const char *classname)
+ctk_win32_theme_lookup (const char *classname)
 {
   GtkWin32Theme *theme;
   char *canonical_classname;
@@ -276,7 +276,7 @@ gtk_win32_theme_lookup (const char *classname)
   if (theme != NULL)
     {
       g_free (canonical_classname);
-      return gtk_win32_theme_ref (theme);
+      return ctk_win32_theme_ref (theme);
     }
 
   theme = g_slice_new0 (GtkWin32Theme);
@@ -289,26 +289,26 @@ gtk_win32_theme_lookup (const char *classname)
 }
 
 GtkWin32Theme *
-gtk_win32_theme_parse (GtkCssParser *parser)
+ctk_win32_theme_parse (GtkCssParser *parser)
 {
   GtkWin32Theme *theme;
   char *class_name;
 
-  class_name = _gtk_css_parser_try_name (parser, TRUE);
+  class_name = _ctk_css_parser_try_name (parser, TRUE);
   if (class_name == NULL)
     {
-      _gtk_css_parser_error (parser, "Expected valid win32 theme name");
+      _ctk_css_parser_error (parser, "Expected valid win32 theme name");
       return NULL;
     }
 
-  theme = gtk_win32_theme_lookup (class_name);
+  theme = ctk_win32_theme_lookup (class_name);
   g_free (class_name);
 
   return theme;
 }
 
 cairo_surface_t *
-gtk_win32_theme_create_surface (GtkWin32Theme *theme,
+ctk_win32_theme_create_surface (GtkWin32Theme *theme,
                                 int            xp_part,
 				int            state,
 				int            margins[4],
@@ -337,7 +337,7 @@ gtk_win32_theme_create_surface (GtkWin32Theme *theme,
   height -= margins[0] + margins[2];
 
 #ifdef G_OS_WIN32
-  htheme = gtk_win32_theme_get_htheme (theme);
+  htheme = ctk_win32_theme_get_htheme (theme);
   if (htheme)
     {
       rect.left = 0;
@@ -385,7 +385,7 @@ gtk_win32_theme_create_surface (GtkWin32Theme *theme,
 
   cr = cairo_create (surface);
   
-  gtk_win32_draw_theme_background (cr, theme->class_name, xp_part, state, width, height);
+  ctk_win32_draw_theme_background (cr, theme->class_name, xp_part, state, width, height);
 
   cairo_destroy (cr);
   
@@ -396,13 +396,13 @@ gtk_win32_theme_create_surface (GtkWin32Theme *theme,
 }
 
 void
-gtk_win32_theme_get_part_border (GtkWin32Theme  *theme,
+ctk_win32_theme_get_part_border (GtkWin32Theme  *theme,
                                  int             part,
                                  int             state,
                                  GtkBorder      *out_border)
 {
 #ifdef G_OS_WIN32
-  HTHEME htheme = gtk_win32_theme_get_htheme (theme);
+  HTHEME htheme = ctk_win32_theme_get_htheme (theme);
   RECT content, extent;
   HDC hdc;
   HRESULT res;
@@ -429,18 +429,18 @@ gtk_win32_theme_get_part_border (GtkWin32Theme  *theme,
     }
 #endif
 
-  gtk_win32_get_theme_margins (theme->class_name, part, state, out_border);
+  ctk_win32_get_theme_margins (theme->class_name, part, state, out_border);
 }
 
 void
-gtk_win32_theme_get_part_size (GtkWin32Theme  *theme,
+ctk_win32_theme_get_part_size (GtkWin32Theme  *theme,
                                int             part,
                                int             state,
                                int            *width,
                                int            *height)
 {
 #ifdef G_OS_WIN32
-  HTHEME htheme = gtk_win32_theme_get_htheme (theme);
+  HTHEME htheme = ctk_win32_theme_get_htheme (theme);
   SIZE size;
   HRESULT res;
 
@@ -458,17 +458,17 @@ gtk_win32_theme_get_part_size (GtkWin32Theme  *theme,
         }
     }
 #endif
-  gtk_win32_get_theme_part_size (theme->class_name, part, state, width, height);
+  ctk_win32_get_theme_part_size (theme->class_name, part, state, width, height);
 }
 
 int
-gtk_win32_theme_get_size (GtkWin32Theme *theme,
+ctk_win32_theme_get_size (GtkWin32Theme *theme,
 			  int            id)
 {
 #ifdef G_OS_WIN32
   if (use_xp_theme && GetThemeSysSize != NULL)
     {
-      HTHEME htheme = gtk_win32_theme_get_htheme (theme);
+      HTHEME htheme = ctk_win32_theme_get_htheme (theme);
       int size;
 
       /* If htheme is NULL it will just return the GetSystemMetrics value */
@@ -480,12 +480,12 @@ gtk_win32_theme_get_size (GtkWin32Theme *theme,
 
   return GetSystemMetrics (id);
 #else
-  return gtk_win32_get_sys_metric (id);
+  return ctk_win32_get_sys_metric (id);
 #endif
 }
 
 void
-gtk_win32_theme_get_color (GtkWin32Theme *theme,
+ctk_win32_theme_get_color (GtkWin32Theme *theme,
                            gint           id,
                            GdkRGBA       *color)
 {
@@ -495,7 +495,7 @@ gtk_win32_theme_get_color (GtkWin32Theme *theme,
 
   if (use_xp_theme && GetThemeSysColor != NULL)
     {
-      htheme = gtk_win32_theme_get_htheme (theme);
+      htheme = ctk_win32_theme_get_htheme (theme);
 
       /* if htheme is NULL, it will just return the GetSysColor() value */
       dcolor = GetThemeSysColor (htheme, id);
@@ -508,12 +508,12 @@ gtk_win32_theme_get_color (GtkWin32Theme *theme,
   color->green = GetGValue (dcolor) / 255.0;
   color->blue = GetBValue (dcolor) / 255.0;
 #else
-  gtk_win32_get_sys_color (id, color);
+  ctk_win32_get_sys_color (id, color);
 #endif
 }
 
 void
-gtk_win32_theme_print (GtkWin32Theme *theme,
+ctk_win32_theme_print (GtkWin32Theme *theme,
                        GString       *string)
 {
   g_string_append (string, theme->class_name);

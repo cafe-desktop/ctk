@@ -58,18 +58,18 @@
 
     <orderedlist>
       <listitem>
-        All variations of gtk_paint_box(), gtk_paint_flat_box(),
-        gtk_paint_shadow(), gtk_paint_box_gap() and gtk_paint_shadow_gap()
-        are replaced by gtk_render_background(), gtk_render_frame() and
-        gtk_render_frame_gap(). The first function renders frameless
+        All variations of ctk_paint_box(), ctk_paint_flat_box(),
+        ctk_paint_shadow(), ctk_paint_box_gap() and ctk_paint_shadow_gap()
+        are replaced by ctk_render_background(), ctk_render_frame() and
+        ctk_render_frame_gap(). The first function renders frameless
         backgrounds and the last two render frames in various forms.
       </listitem>
       <listitem>
-        gtk_paint_resize_grip() has been subsumed by gtk_render_handle()
+        ctk_paint_resize_grip() has been subsumed by ctk_render_handle()
         with a #GTK_STYLE_CLASS_GRIP class set in the style context.
       </listitem>
       <listitem>
-        gtk_paint_spinner() disappears in favor of gtk_render_activity()
+        ctk_paint_spinner() disappears in favor of ctk_render_activity()
         with a #GTK_STYLE_CLASS_SPINNER class set in the style context.
       </listitem>
     </orderedlist>
@@ -80,56 +80,56 @@
 
     <simplelist>
       <member>
-        gtk_render_background(): Renders a widget/area background.
+        ctk_render_background(): Renders a widget/area background.
       </member>
       <member>
-        gtk_render_frame(): Renders a frame border around the given rectangle.
+        ctk_render_frame(): Renders a frame border around the given rectangle.
         Usually the detail of the border depends on the theme information,
         plus the current widget state.
       </member>
       <member>
-        gtk_render_frame_gap(): Renders a frame border with a gap on one side.
+        ctk_render_frame_gap(): Renders a frame border with a gap on one side.
       </member>
       <member>
-        gtk_render_layout(): Renders a #PangoLayout.
+        ctk_render_layout(): Renders a #PangoLayout.
       </member>
       <member>
-        gtk_render_handle(): Renders all kind of handles and resize grips,
+        ctk_render_handle(): Renders all kind of handles and resize grips,
         depending on the style class.
       </member>
       <member>
-        gtk_render_check(): Render checkboxes.
+        ctk_render_check(): Render checkboxes.
       </member>
       <member>
-        gtk_render_option(): Render radiobuttons.
+        ctk_render_option(): Render radiobuttons.
       </member>
       <member>
-        gtk_render_arrow(): Renders an arrow pointing to a direction.
+        ctk_render_arrow(): Renders an arrow pointing to a direction.
       </member>
       <member>
-        gtk_render_expander(): Renders an expander indicator, such as in
+        ctk_render_expander(): Renders an expander indicator, such as in
         #GtkExpander.
       </member>
       <member>
-        gtk_render_focus(): Renders the indication that a widget has the
+        ctk_render_focus(): Renders the indication that a widget has the
         keyboard focus.
       </member>
       <member>
-        gtk_render_line(): Renders a line from one coordinate to another.
+        ctk_render_line(): Renders a line from one coordinate to another.
       </member>
       <member>
-        gtk_render_slider(): Renders a slider, such as in #GtkScale.
+        ctk_render_slider(): Renders a slider, such as in #GtkScale.
       </member>
       <member>
-        gtk_render_extension(): Renders an extension that protrudes from
+        ctk_render_extension(): Renders an extension that protrudes from
         a UI element, such as a notebook tab.
       </member>
       <member>
-        gtk_render_activity(): Renders an area displaying activity, be it
+        ctk_render_activity(): Renders an area displaying activity, be it
         a progressbar or a spinner.
       </member>
       <member>
-        gtk_render_icon_pixbuf(): Renders an icon into a #GdkPixbuf.
+        ctk_render_icon_pixbuf(): Renders an icon into a #GdkPixbuf.
       </member>
     </simplelist>
 
@@ -137,7 +137,7 @@
       One of the main differences to #GtkStyle<!-- -->-based engines is that the
       rendered widget is totally isolated from the theme engine, all style
       information is meant to be retrieved from the #GtkThemingEngine API,
-      or from the #GtkWidgetPath obtained from gtk_theming_engine_get_path(),
+      or from the #GtkWidgetPath obtained from ctk_theming_engine_get_path(),
       which fully represents the rendered widget's hierarchy from a styling
       point of view.
     </para>
@@ -164,7 +164,7 @@
     <para>
       In #GtkStyle<!-- -->-based engines, GtkRCStyle provided ways to extend the
       gtkrc parser with engine-specific extensions. This has been replaced
-      by gtk_theming_engine_register_property(), which lets a theme engine
+      by ctk_theming_engine_register_property(), which lets a theme engine
       register new properties with an arbitrary type. While there is built-in
       support for most basic types, it is possible to use a custom parser
       for the property.
@@ -390,7 +390,7 @@
       GdkColor color2;
 
       color1 = &amp;style->bg[GTK_STATE_PRELIGHT];
-      gtk_style_lookup_color (style, "focus_color", &amp;color2);
+      ctk_style_lookup_color (style, "focus_color", &amp;color2);
       </programlisting></informalexample>
       With #GtkStyleContext, you generally use #GdkRGBA instead of #GdkColor
       and the code looks like this:
@@ -398,18 +398,18 @@
       GdkRGBA *color1;
       GdkRGBA  color2;
 
-      gtk_style_context_get (context, GTK_STATE_FLAG_PRELIGHT,
+      ctk_style_context_get (context, GTK_STATE_FLAG_PRELIGHT,
                              "background-color", &amp;color1,
                              NULL);
-      gtk_style_context_lookup_color (context, "focus_color", &amp;color2);
+      ctk_style_context_lookup_color (context, "focus_color", &amp;color2);
 
       ...
 
       gdk_rgba_free (color1);
       </programlisting></informalexample>
-      Note that the memory handling here is different: gtk_style_context_get()
+      Note that the memory handling here is different: ctk_style_context_get()
       expects the address of a GdkRGBA* and returns a newly allocated struct,
-      gtk_style_context_lookup_color() expects the address of an existing
+      ctk_style_context_lookup_color() expects the address of an existing
       struct, and fills it.
     </para>
 
@@ -449,16 +449,16 @@
           <title>Setting a permanent CSS class</title>
           <programlisting>
             static void
-            gtk_button_init (GtkButton *button)
+            ctk_button_init (GtkButton *button)
             {
               GtkStyleContext *context;
 
               ...
 
-              context = gtk_widget_get_style_context (GTK_WIDGET (button));
+              context = ctk_widget_get_style_context (GTK_WIDGET (button));
 
               /* Set the "button" class */
-              gtk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
+              ctk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
             }
           </programlisting>
         </example>
@@ -471,30 +471,30 @@
           <title>Using dynamic CSS classes for different elements</title>
           <programlisting>
             static gboolean
-            gtk_spin_button_draw (GtkSpinButton *spin,
+            ctk_spin_button_draw (GtkSpinButton *spin,
                                   cairo_t       *cr)
             {
               GtkStyleContext *context;
 
               ...
 
-              context = gtk_widget_get_style_context (GTK_WIDGET (spin));
+              context = ctk_widget_get_style_context (GTK_WIDGET (spin));
 
-              gtk_style_context_save (context);
-              gtk_style_context_add_class (context, GTK_STYLE_CLASS_ENTRY);
+              ctk_style_context_save (context);
+              ctk_style_context_add_class (context, GTK_STYLE_CLASS_ENTRY);
 
               /* Call to entry draw impl with "entry" class */
               parent_class->draw (spin, cr);
 
-              gtk_style_context_restore (context);
-              gtk_style_context_save (context);
+              ctk_style_context_restore (context);
+              ctk_style_context_save (context);
 
               /* Render up/down buttons with the "button" class */
-              gtk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
+              ctk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
               draw_up_button (spin, cr);
               draw_down_button (spin, cr);
 
-              gtk_style_context_restore (context);
+              ctk_style_context_restore (context);
 
               ...
             }
@@ -511,8 +511,8 @@
 
       <listitem>
         <para>
-          Replace all <literal>gtk_paint_*()</literal> calls with corresponding
-          <literal>gtk_render_*()</literal> calls.
+          Replace all <literal>ctk_paint_*()</literal> calls with corresponding
+          <literal>ctk_render_*()</literal> calls.
         </para>
         <para>
           The most distinctive changes are the use of #GtkStateFlags to
@@ -524,14 +524,14 @@
         <example>
           <title>Rendering with a specific state</title>
           <programlisting>
-            gtk_style_context_save (context);
-            gtk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
-            gtk_render_check (context, cr, x, y, width, height);
-            gtk_style_context_restore (context);
+            ctk_style_context_save (context);
+            ctk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
+            ctk_render_check (context, cr, x, y, width, height);
+            ctk_style_context_restore (context);
           </programlisting>
         </example>
         <para>
-          For gtk_render_check() and gtk_render_option(), the @shadow_type
+          For ctk_render_check() and ctk_render_option(), the @shadow_type
           parameter is replaced by the #GTK_STATE_FLAG_ACTIVE and
           #GTK_STATE_FLAG_INCONSISTENT state flags. For things such as
           pressed/unpressed button states, #GTK_STATE_FLAG_ACTIVE is used,
@@ -541,14 +541,14 @@
       </listitem>
 
       <listitem>
-        The various <literal>gtk_widget_modify_*()</literal> functions to
+        The various <literal>ctk_widget_modify_*()</literal> functions to
         override colors or fonts for individual widgets have been replaced
-        by similar <literal>gtk_widget_override_*()</literal> functions.
+        by similar <literal>ctk_widget_override_*()</literal> functions.
       </listitem>
 
       <listitem>
-        It is no longer necessary to call gtk_widget_style_attach(),
-        gtk_style_attach(), gtk_style_detach() or gtk_widget_ensure_style().
+        It is no longer necessary to call ctk_widget_style_attach(),
+        ctk_style_attach(), ctk_style_detach() or ctk_widget_ensure_style().
       </listitem>
 
       <listitem>
@@ -563,11 +563,11 @@
   <section id="gtk-migrating-GtkStyleContext-parsing">
     <title>Parsing of custom resources</title>
     <para>
-      As a consequence of the RC format going away, calling gtk_rc_parse() or
-      gtk_rc_parse_string() won't have any effect on a widgets appearance.
+      As a consequence of the RC format going away, calling ctk_rc_parse() or
+      ctk_rc_parse_string() won't have any effect on a widgets appearance.
       The way to replace these calls is using a custom #GtkStyleProvider,
-      either for an individual widget through gtk_style_context_add_provider()
-      or for all widgets on a screen through gtk_style_context_add_provider_for_screen().
+      either for an individual widget through ctk_style_context_add_provider()
+      or for all widgets on a screen through ctk_style_context_add_provider_for_screen().
       Typically, the provider will be a #GtkCssProvider, which parse CSS
       information from a file or from a string.
     </para>
@@ -577,13 +577,13 @@
         GtkStyleContext *context;
         GtkCssProvider *provider;
 
-        context = gtk_widget_get_style_context (widget);
-        provider = gtk_css_provider_new ();
-        gtk_css_provider_load_from_data (GTK_CSS_PROVIDER (provider),
+        context = ctk_widget_get_style_context (widget);
+        provider = ctk_css_provider_new ();
+        ctk_css_provider_load_from_data (GTK_CSS_PROVIDER (provider),
                                          ".frame1 {\n"
                                          "   border-image: url('gradient1.png') 10 10 10 10 stretch;\n"
                                          "}\n", -1, NULL);
-        gtk_style_context_add_provider (context,
+        ctk_style_context_add_provider (context,
                                         GTK_STYLE_PROVIDER (provider),
                                         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
         g_object_unref (provider);
@@ -612,7 +612,7 @@
       <listitem>
         If your widget renders a series of similar elements, such as tabs
         in a #GtkNotebook or rows/column in a #GtkTreeView, consider adding
-        regions through gtk_style_context_add_region(). These regions can be
+        regions through ctk_style_context_add_region(). These regions can be
         referenced in CSS and the :nth-child pseudo-class may be used to match
         the elements depending on the flags passed.
 
@@ -659,7 +659,7 @@
       <listitem>
         If you intend several visual elements to look interconnected,
         make sure you specify rendered elements' connection areas with
-        gtk_style_context_set_junction_sides(). It is of course up to the
+        ctk_style_context_set_junction_sides(). It is of course up to the
         theme to make use of this information or not.
       </listitem>
 
@@ -667,8 +667,8 @@
         <para>
           #GtkStyleContext supports implicit animations on state changes for
           the most simple case out-of-the-box: widgets with a single animatable
-          area, whose state is changed with gtk_widget_set_state_flags() or
-          gtk_widget_unset_state_flags(). These functions trigger animated
+          area, whose state is changed with ctk_widget_set_state_flags() or
+          ctk_widget_unset_state_flags(). These functions trigger animated
           transitions for the affected state flags. Examples of widgets for
           which this kind of animation may be sufficient are #GtkButton or
           #GtkEntry.
@@ -676,12 +676,12 @@
         <para>
           If your widget consists of more than a simple area, and these areas
           may be rendered with different states, make sure to mark the rendered
-          areas with gtk_style_context_push_animatable_region() and
-          gtk_style_context_pop_animatable_region().
+          areas with ctk_style_context_push_animatable_region() and
+          ctk_style_context_pop_animatable_region().
         </para>
 
         <para>
-          gtk_style_context_notify_state_change() may be used to trigger a
+          ctk_style_context_notify_state_change() may be used to trigger a
           transition for a given state. The region ID will determine the
           animatable region that is affected by this transition.
         </para>

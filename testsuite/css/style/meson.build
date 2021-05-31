@@ -11,7 +11,7 @@ test_style = executable(
   'test-css-style',
   'test-css-style.c',
   cssresources,
-  dependencies: libgtk_dep,
+  dependencies: libctk_dep,
   install: get_option('installed_tests'),
   install_dir: testexecdir,
 )
@@ -46,7 +46,7 @@ test_data = [
 
 if get_option('installed_tests')
   conf = configuration_data()
-  conf.set('libexecdir', gtk_libexecdir)
+  conf.set('libexecdir', ctk_libexecdir)
   configure_file(input: 'test-css-style.test.in',
                  output: 'test-css-style.test',
                  configuration: conf,

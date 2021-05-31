@@ -25,9 +25,9 @@ drag_begin (GtkWidget      *widget,
 {
   GtkWidget *image = GTK_WIDGET (data);
 
-  GdkPixbuf *pixbuf = gtk_image_get_pixbuf (GTK_IMAGE (image));
+  GdkPixbuf *pixbuf = ctk_image_get_pixbuf (GTK_IMAGE (image));
 
-  gtk_drag_set_icon_pixbuf (context, pixbuf, -2, -2);
+  ctk_drag_set_icon_pixbuf (context, pixbuf, -2, -2);
 }
 
 void  
@@ -40,9 +40,9 @@ drag_data_get  (GtkWidget        *widget,
 {
   GtkWidget *image = GTK_WIDGET (data);
 
-  GdkPixbuf *pixbuf = gtk_image_get_pixbuf (GTK_IMAGE (image));
+  GdkPixbuf *pixbuf = ctk_image_get_pixbuf (GTK_IMAGE (image));
 
-  gtk_selection_data_set_pixbuf (selection_data, pixbuf);
+  ctk_selection_data_set_pixbuf (selection_data, pixbuf);
 }
 
 static void
@@ -59,12 +59,12 @@ drag_data_received (GtkWidget        *widget,
 
   GdkPixbuf *pixbuf;
 
-  if (gtk_selection_data_get_length (selection_data) < 0)
+  if (ctk_selection_data_get_length (selection_data) < 0)
     return;
 
-  pixbuf = gtk_selection_data_get_pixbuf (selection_data);
+  pixbuf = ctk_selection_data_get_pixbuf (selection_data);
 
-  gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+  ctk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
 }
 
 static gboolean
@@ -106,7 +106,7 @@ main (int argc, char **argv)
   GFile *file;
   GdkGeometry geo;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   if (argc > 1)
     icon_name = argv[1];
@@ -114,96 +114,96 @@ main (int argc, char **argv)
   if (argc > 2)
     anim_filename = argv[2];
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
 
   geo.min_width = 400;
   geo.min_height = 300;
   geo.max_width = 800;
   geo.max_height = 600;
 
-  gtk_window_set_geometry_hints (GTK_WINDOW (window), NULL, &geo, GDK_HINT_MIN_SIZE | GDK_HINT_MAX_SIZE);
+  ctk_window_set_geometry_hints (GTK_WINDOW (window), NULL, &geo, GDK_HINT_MIN_SIZE | GDK_HINT_MAX_SIZE);
 
-  grid = gtk_grid_new ();
-  gtk_container_add (GTK_CONTAINER (window), grid);
+  grid = ctk_grid_new ();
+  ctk_container_add (GTK_CONTAINER (window), grid);
 
-  label = gtk_label_new ("symbolic size");
-  gtk_grid_attach (GTK_GRID (grid), label, 1, 0, 1, 1);
-  label = gtk_label_new ("fixed size");
-  gtk_grid_attach (GTK_GRID (grid), label, 2, 0, 1, 1);
+  label = ctk_label_new ("symbolic size");
+  ctk_grid_attach (GTK_GRID (grid), label, 1, 0, 1, 1);
+  label = ctk_label_new ("fixed size");
+  ctk_grid_attach (GTK_GRID (grid), label, 2, 0, 1, 1);
 
-  label = gtk_label_new ("GTK_IMAGE_PIXBUF");
-  gtk_grid_attach (GTK_GRID (grid), label, 0, 1, 1, 1);
+  label = ctk_label_new ("GTK_IMAGE_PIXBUF");
+  ctk_grid_attach (GTK_GRID (grid), label, 0, 1, 1, 1);
 
-  theme = gtk_icon_theme_get_default ();
-  pixbuf = gtk_icon_theme_load_icon (theme, icon_name, 48, 0, NULL);
-  image = gtk_image_new_from_pixbuf (pixbuf);
-  box = gtk_event_box_new ();
-  gtk_container_add (GTK_CONTAINER (box), image);
-  gtk_grid_attach (GTK_GRID (grid), box, 2, 1, 1, 1);
+  theme = ctk_icon_theme_get_default ();
+  pixbuf = ctk_icon_theme_load_icon (theme, icon_name, 48, 0, NULL);
+  image = ctk_image_new_from_pixbuf (pixbuf);
+  box = ctk_event_box_new ();
+  ctk_container_add (GTK_CONTAINER (box), image);
+  ctk_grid_attach (GTK_GRID (grid), box, 2, 1, 1, 1);
 
-  gtk_drag_source_set (box, GDK_BUTTON1_MASK, 
+  ctk_drag_source_set (box, GDK_BUTTON1_MASK, 
 		       NULL, 0,
 		       GDK_ACTION_COPY);
-  gtk_drag_source_add_image_targets (box);
+  ctk_drag_source_add_image_targets (box);
   g_signal_connect (box, "drag_begin", G_CALLBACK (drag_begin), image);
   g_signal_connect (box, "drag_data_get", G_CALLBACK (drag_data_get), image);
 
-  gtk_drag_dest_set (box,
+  ctk_drag_dest_set (box,
                      GTK_DEST_DEFAULT_MOTION |
                      GTK_DEST_DEFAULT_HIGHLIGHT |
                      GTK_DEST_DEFAULT_DROP,
                      NULL, 0, GDK_ACTION_COPY);
-  gtk_drag_dest_add_image_targets (box);
+  ctk_drag_dest_add_image_targets (box);
   g_signal_connect (box, "drag_data_received", 
 		    G_CALLBACK (drag_data_received), image);
 
-  label = gtk_label_new ("GTK_IMAGE_STOCK");
-  gtk_grid_attach (GTK_GRID (grid), label, 0, 2, 1, 1);
+  label = ctk_label_new ("GTK_IMAGE_STOCK");
+  ctk_grid_attach (GTK_GRID (grid), label, 0, 2, 1, 1);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  image = gtk_image_new_from_stock (GTK_STOCK_REDO, GTK_ICON_SIZE_DIALOG);
-  gtk_grid_attach (GTK_GRID (grid), image, 1, 2, 1, 1);
+  image = ctk_image_new_from_stock (GTK_STOCK_REDO, GTK_ICON_SIZE_DIALOG);
+  ctk_grid_attach (GTK_GRID (grid), image, 1, 2, 1, 1);
 
-  label = gtk_label_new ("GTK_IMAGE_ICON_SET");
-  gtk_grid_attach (GTK_GRID (grid), label, 0, 3, 1, 1);
+  label = ctk_label_new ("GTK_IMAGE_ICON_SET");
+  ctk_grid_attach (GTK_GRID (grid), label, 0, 3, 1, 1);
 
-  iconsource = gtk_icon_source_new ();
-  gtk_icon_source_set_icon_name (iconsource, icon_name);
-  iconset = gtk_icon_set_new ();
-  gtk_icon_set_add_source (iconset, iconsource);
-  image = gtk_image_new_from_icon_set (iconset, GTK_ICON_SIZE_DIALOG);
-  gtk_grid_attach (GTK_GRID (grid), image, 1, 3, 1, 1);
+  iconsource = ctk_icon_source_new ();
+  ctk_icon_source_set_icon_name (iconsource, icon_name);
+  iconset = ctk_icon_set_new ();
+  ctk_icon_set_add_source (iconset, iconsource);
+  image = ctk_image_new_from_icon_set (iconset, GTK_ICON_SIZE_DIALOG);
+  ctk_grid_attach (GTK_GRID (grid), image, 1, 3, 1, 1);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  label = gtk_label_new ("GTK_IMAGE_ICON_NAME");
-  gtk_grid_attach (GTK_GRID (grid), label, 0, 4, 1, 1);
-  image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
-  gtk_grid_attach (GTK_GRID (grid), image, 1, 4, 1, 1);
-  image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
-  gtk_image_set_pixel_size (GTK_IMAGE (image), 30);
-  gtk_grid_attach (GTK_GRID (grid), image, 2, 4, 1, 1);
+  label = ctk_label_new ("GTK_IMAGE_ICON_NAME");
+  ctk_grid_attach (GTK_GRID (grid), label, 0, 4, 1, 1);
+  image = ctk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
+  ctk_grid_attach (GTK_GRID (grid), image, 1, 4, 1, 1);
+  image = ctk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
+  ctk_image_set_pixel_size (GTK_IMAGE (image), 30);
+  ctk_grid_attach (GTK_GRID (grid), image, 2, 4, 1, 1);
 
-  label = gtk_label_new ("GTK_IMAGE_GICON");
-  gtk_grid_attach (GTK_GRID (grid), label, 0, 5, 1, 1);
+  label = ctk_label_new ("GTK_IMAGE_GICON");
+  ctk_grid_attach (GTK_GRID (grid), label, 0, 5, 1, 1);
   icon = g_themed_icon_new_with_default_fallbacks ("folder-remote");
-  image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_DIALOG);
+  image = ctk_image_new_from_gicon (icon, GTK_ICON_SIZE_DIALOG);
   g_object_unref (icon);
-  gtk_grid_attach (GTK_GRID (grid), image, 1, 5, 1, 1);
+  ctk_grid_attach (GTK_GRID (grid), image, 1, 5, 1, 1);
   file = g_file_new_for_path ("apple-red.png");
   icon = g_file_icon_new (file);
-  image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_DIALOG);
+  image = ctk_image_new_from_gicon (icon, GTK_ICON_SIZE_DIALOG);
   g_object_unref (icon);
-  gtk_image_set_pixel_size (GTK_IMAGE (image), 30);
-  gtk_grid_attach (GTK_GRID (grid), image, 2, 5, 1, 1);
+  ctk_image_set_pixel_size (GTK_IMAGE (image), 30);
+  ctk_grid_attach (GTK_GRID (grid), image, 2, 5, 1, 1);
 
   
   if (anim_filename)
     {
-      label = gtk_label_new ("GTK_IMAGE_ANIMATION (from file)");
-      gtk_grid_attach (GTK_GRID (grid), label, 0, 6, 1, 1);
-      image = gtk_image_new_from_file (anim_filename);
-      gtk_image_set_pixel_size (GTK_IMAGE (image), 30);
-      gtk_grid_attach (GTK_GRID (grid), image, 2, 6, 1, 1);
+      label = ctk_label_new ("GTK_IMAGE_ANIMATION (from file)");
+      ctk_grid_attach (GTK_GRID (grid), label, 0, 6, 1, 1);
+      image = ctk_image_new_from_file (anim_filename);
+      ctk_image_set_pixel_size (GTK_IMAGE (image), 30);
+      ctk_grid_attach (GTK_GRID (grid), image, 2, 6, 1, 1);
 
       /* produce high load */
       g_signal_connect_after (image, "draw",
@@ -211,9 +211,9 @@ main (int argc, char **argv)
                               NULL);
     }
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

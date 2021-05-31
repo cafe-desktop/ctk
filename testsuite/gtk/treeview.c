@@ -29,46 +29,46 @@ test_bug_546005 (void)
   g_test_bug ("546005");
 
   /* Tests provided by Bjorn Lindqvist, Paul Pogonyshev */
-  view = gtk_tree_view_new ();
+  view = ctk_tree_view_new ();
 
   /* Invalid path on tree view without model */
-  path = gtk_tree_path_new_from_indices (1, -1);
-  gtk_tree_view_set_cursor (GTK_TREE_VIEW (view), path,
+  path = ctk_tree_path_new_from_indices (1, -1);
+  ctk_tree_view_set_cursor (GTK_TREE_VIEW (view), path,
                             NULL, FALSE);
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
-  list_store = gtk_list_store_new (1, G_TYPE_STRING);
-  gtk_tree_view_set_model (GTK_TREE_VIEW (view),
+  list_store = ctk_list_store_new (1, G_TYPE_STRING);
+  ctk_tree_view_set_model (GTK_TREE_VIEW (view),
                            GTK_TREE_MODEL (list_store));
 
   /* Invalid path on tree view with empty model */
-  path = gtk_tree_path_new_from_indices (1, -1);
-  gtk_tree_view_set_cursor (GTK_TREE_VIEW (view), path,
+  path = ctk_tree_path_new_from_indices (1, -1);
+  ctk_tree_view_set_cursor (GTK_TREE_VIEW (view), path,
                             NULL, FALSE);
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
   /* Valid path */
-  gtk_list_store_insert_with_values (list_store, &iter, 0,
+  ctk_list_store_insert_with_values (list_store, &iter, 0,
                                      0, "hi",
                                      -1);
 
-  path = gtk_tree_path_new_from_indices (0, -1);
-  gtk_tree_view_set_cursor (GTK_TREE_VIEW (view), path,
+  path = ctk_tree_path_new_from_indices (0, -1);
+  ctk_tree_view_set_cursor (GTK_TREE_VIEW (view), path,
                             NULL, FALSE);
 
-  gtk_tree_view_get_cursor (GTK_TREE_VIEW (view), &cursor_path, NULL);
-  //gtk_assert_cmptreepath (cursor_path, ==, path);
+  ctk_tree_view_get_cursor (GTK_TREE_VIEW (view), &cursor_path, NULL);
+  //ctk_assert_cmptreepath (cursor_path, ==, path);
 
-  gtk_tree_path_free (path);
-  gtk_tree_path_free (cursor_path);
+  ctk_tree_path_free (path);
+  ctk_tree_path_free (cursor_path);
 
   /* Invalid path on tree view with model */
-  path = gtk_tree_path_new_from_indices (1, -1);
-  gtk_tree_view_set_cursor (GTK_TREE_VIEW (view), path,
+  path = ctk_tree_path_new_from_indices (1, -1);
+  ctk_tree_view_set_cursor (GTK_TREE_VIEW (view), path,
                             NULL, FALSE);
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
-  gtk_widget_destroy (view);
+  ctk_widget_destroy (view);
 }
 
 static void
@@ -83,23 +83,23 @@ test_bug_539377 (void)
   /* Test provided by Bjorn Lindqvist */
 
   /* Non-realized view, no model */
-  view = gtk_tree_view_new ();
-  g_assert (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (view), 10, 10, &path,
+  view = ctk_tree_view_new ();
+  g_assert (ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (view), 10, 10, &path,
                                            NULL, NULL, NULL) == FALSE);
-  g_assert (gtk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (view), 10, 10,
+  g_assert (ctk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (view), 10, 10,
                                                &path, NULL) == FALSE);
 
   /* Non-realized view, with model */
-  list_store = gtk_list_store_new (1, G_TYPE_STRING);
-  gtk_tree_view_set_model (GTK_TREE_VIEW (view),
+  list_store = ctk_list_store_new (1, G_TYPE_STRING);
+  ctk_tree_view_set_model (GTK_TREE_VIEW (view),
                            GTK_TREE_MODEL (list_store));
 
-  g_assert (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (view), 10, 10, &path,
+  g_assert (ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (view), 10, 10, &path,
                                            NULL, NULL, NULL) == FALSE);
-  g_assert (gtk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (view), 10, 10,
+  g_assert (ctk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (view), 10, 10,
                                                &path, NULL) == FALSE);
 
-  gtk_widget_destroy (view);
+  ctk_widget_destroy (view);
 }
 
 static void
@@ -112,50 +112,50 @@ test_select_collapsed_row (void)
   GtkWidget *view;
 
   /* Reported by Michael Natterer */
-  tree_store = gtk_tree_store_new (1, G_TYPE_STRING);
-  view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (tree_store));
+  tree_store = ctk_tree_store_new (1, G_TYPE_STRING);
+  view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (tree_store));
 
-  gtk_tree_store_insert_with_values (tree_store, &parent, NULL, 0,
+  ctk_tree_store_insert_with_values (tree_store, &parent, NULL, 0,
                                      0, "Parent",
                                      -1);
 
-  gtk_tree_store_insert_with_values (tree_store, &child, &parent, 0,
+  ctk_tree_store_insert_with_values (tree_store, &child, &parent, 0,
                                      0, "Child",
                                      -1);
-  gtk_tree_store_insert_with_values (tree_store, &child, &parent, 0,
+  ctk_tree_store_insert_with_values (tree_store, &child, &parent, 0,
                                      0, "Child",
                                      -1);
 
 
   /* Try to select a child path. */
-  path = gtk_tree_path_new_from_indices (0, 1, -1);
-  gtk_tree_view_set_cursor (GTK_TREE_VIEW (view), path, NULL, FALSE);
+  path = ctk_tree_path_new_from_indices (0, 1, -1);
+  ctk_tree_view_set_cursor (GTK_TREE_VIEW (view), path, NULL, FALSE);
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
 
   /* Check that the parent is not selected. */
-  gtk_tree_path_up (path);
-  g_return_if_fail (gtk_tree_selection_path_is_selected (selection, path) == FALSE);
+  ctk_tree_path_up (path);
+  g_return_if_fail (ctk_tree_selection_path_is_selected (selection, path) == FALSE);
 
   /* Nothing should be selected at this point. */
-  g_return_if_fail (gtk_tree_selection_count_selected_rows (selection) == 0);
+  g_return_if_fail (ctk_tree_selection_count_selected_rows (selection) == 0);
 
   /* Check that selection really still works. */
-  gtk_tree_view_set_cursor (GTK_TREE_VIEW (view), path, NULL, FALSE);
-  g_return_if_fail (gtk_tree_selection_path_is_selected (selection, path) == TRUE);
-  g_return_if_fail (gtk_tree_selection_count_selected_rows (selection) == 1);
+  ctk_tree_view_set_cursor (GTK_TREE_VIEW (view), path, NULL, FALSE);
+  g_return_if_fail (ctk_tree_selection_path_is_selected (selection, path) == TRUE);
+  g_return_if_fail (ctk_tree_selection_count_selected_rows (selection) == 1);
 
   /* Expand and select child node now. */
-  gtk_tree_path_append_index (path, 1);
-  gtk_tree_view_expand_all (GTK_TREE_VIEW (view));
+  ctk_tree_path_append_index (path, 1);
+  ctk_tree_view_expand_all (GTK_TREE_VIEW (view));
 
-  gtk_tree_view_set_cursor (GTK_TREE_VIEW (view), path, NULL, FALSE);
-  g_return_if_fail (gtk_tree_selection_path_is_selected (selection, path) == TRUE);
-  g_return_if_fail (gtk_tree_selection_count_selected_rows (selection) == 1);
+  ctk_tree_view_set_cursor (GTK_TREE_VIEW (view), path, NULL, FALSE);
+  g_return_if_fail (ctk_tree_selection_path_is_selected (selection, path) == TRUE);
+  g_return_if_fail (ctk_tree_selection_count_selected_rows (selection) == 1);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
-  gtk_widget_destroy (view);
+  ctk_widget_destroy (view);
 }
 
 static gboolean
@@ -166,10 +166,10 @@ test_row_separator_height_func (GtkTreeModel *model,
   gboolean ret = FALSE;
   GtkTreePath *path;
 
-  path = gtk_tree_model_get_path (model, iter);
-  if (gtk_tree_path_get_indices (path)[0] == 2)
+  path = ctk_tree_model_get_path (model, iter);
+  if (ctk_tree_path_get_indices (path)[0] == 2)
     ret = TRUE;
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
   return ret;
 }
@@ -186,41 +186,41 @@ test_row_separator_height (void)
   GtkWidget *tree_view;
   GdkRectangle rect = { 0, }, cell_rect = { 0, };
 
-  store = gtk_list_store_new (1, G_TYPE_STRING);
-  gtk_list_store_insert_with_values (store, &iter, 0, 0, "Row content", -1);
-  gtk_list_store_insert_with_values (store, &iter, 1, 0, "Row content", -1);
-  gtk_list_store_insert_with_values (store, &iter, 2, 0, "Row content", -1);
-  gtk_list_store_insert_with_values (store, &iter, 3, 0, "Row content", -1);
-  gtk_list_store_insert_with_values (store, &iter, 4, 0, "Row content", -1);
+  store = ctk_list_store_new (1, G_TYPE_STRING);
+  ctk_list_store_insert_with_values (store, &iter, 0, 0, "Row content", -1);
+  ctk_list_store_insert_with_values (store, &iter, 1, 0, "Row content", -1);
+  ctk_list_store_insert_with_values (store, &iter, 2, 0, "Row content", -1);
+  ctk_list_store_insert_with_values (store, &iter, 3, 0, "Row content", -1);
+  ctk_list_store_insert_with_values (store, &iter, 4, 0, "Row content", -1);
 
-  window = gtk_offscreen_window_new ();
+  window = ctk_offscreen_window_new ();
 
-  tree_view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
-  gtk_tree_view_set_row_separator_func (GTK_TREE_VIEW (tree_view),
+  tree_view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  ctk_tree_view_set_row_separator_func (GTK_TREE_VIEW (tree_view),
                                         test_row_separator_height_func,
                                         NULL,
                                         NULL);
 
-  gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
                                                0,
                                                "Test",
-                                               gtk_cell_renderer_text_new (),
+                                               ctk_cell_renderer_text_new (),
                                                "text", 0,
                                                NULL);
 
-  gtk_container_add (GTK_CONTAINER (window), tree_view);
-  gtk_widget_show_all (window);
+  ctk_container_add (GTK_CONTAINER (window), tree_view);
+  ctk_widget_show_all (window);
 
-  gtk_test_widget_wait_for_draw (window);
+  ctk_test_widget_wait_for_draw (window);
 
-  path = gtk_tree_path_new_from_indices (2, -1);
-  gtk_tree_view_get_background_area (GTK_TREE_VIEW (tree_view),
+  path = ctk_tree_path_new_from_indices (2, -1);
+  ctk_tree_view_get_background_area (GTK_TREE_VIEW (tree_view),
                                      path, NULL, &rect);
-  gtk_tree_view_get_cell_area (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_get_cell_area (GTK_TREE_VIEW (tree_view),
                                path, NULL, &cell_rect);
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
-  gtk_widget_style_get (tree_view,
+  ctk_widget_style_get (tree_view,
                         "focus-padding", &focus_pad,
                         "wide-separators", &wide_separators,
                         "separator-height", &separator_height,
@@ -234,7 +234,7 @@ test_row_separator_height (void)
   g_assert_cmpint (rect.height, ==, height);
   g_assert_cmpint (cell_rect.height, ==, height);
 
-  gtk_widget_destroy (tree_view);
+  ctk_widget_destroy (tree_view);
 }
 
 static void
@@ -247,47 +247,47 @@ test_selection_count (void)
 
   g_test_bug ("702957");
 
-  list_store = gtk_list_store_new (1, G_TYPE_STRING);
-  view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (list_store));
+  list_store = ctk_list_store_new (1, G_TYPE_STRING);
+  view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (list_store));
 
-  gtk_list_store_insert_with_values (list_store, NULL, 0, 0, "One", -1);
-  gtk_list_store_insert_with_values (list_store, NULL, 1, 0, "Two", -1);
-  gtk_list_store_insert_with_values (list_store, NULL, 2, 0, "Tree", -1);
+  ctk_list_store_insert_with_values (list_store, NULL, 0, 0, "One", -1);
+  ctk_list_store_insert_with_values (list_store, NULL, 1, 0, "Two", -1);
+  ctk_list_store_insert_with_values (list_store, NULL, 2, 0, "Tree", -1);
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
-  gtk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  ctk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);
 
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 0);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 0);
 
-  path = gtk_tree_path_new_from_indices (0, -1);
-  gtk_tree_selection_select_path (selection, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (0, -1);
+  ctk_tree_selection_select_path (selection, path);
+  ctk_tree_path_free (path);
 
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 1);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 1);
 
-  path = gtk_tree_path_new_from_indices (2, -1);
-  gtk_tree_selection_select_path (selection, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (2, -1);
+  ctk_tree_selection_select_path (selection, path);
+  ctk_tree_path_free (path);
 
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 2);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 2);
 
-  path = gtk_tree_path_new_from_indices (2, -1);
-  gtk_tree_selection_select_path (selection, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (2, -1);
+  ctk_tree_selection_select_path (selection, path);
+  ctk_tree_path_free (path);
 
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 2);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 2);
 
-  path = gtk_tree_path_new_from_indices (1, -1);
-  gtk_tree_selection_select_path (selection, path);
-  gtk_tree_path_free (path);
+  path = ctk_tree_path_new_from_indices (1, -1);
+  ctk_tree_selection_select_path (selection, path);
+  ctk_tree_path_free (path);
 
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 3);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 3);
 
-  gtk_tree_selection_unselect_all (selection);
+  ctk_tree_selection_unselect_all (selection);
 
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 0);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 0);
 
-  gtk_widget_destroy (view);
+  ctk_widget_destroy (view);
 }
 
 static void
@@ -310,45 +310,45 @@ test_selection_empty (void)
 
   g_test_bug ("712760");
 
-  list_store = gtk_list_store_new (1, G_TYPE_STRING);
-  view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (list_store));
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  list_store = ctk_list_store_new (1, G_TYPE_STRING);
+  view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (list_store));
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
 
-  g_assert_false (gtk_tree_selection_get_selected (selection, NULL, &iter));
-  gtk_tree_selection_selected_foreach (selection, abort_cb, NULL);
-  g_assert_null (gtk_tree_selection_get_selected_rows (selection, NULL));
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 0);
+  g_assert_false (ctk_tree_selection_get_selected (selection, NULL, &iter));
+  ctk_tree_selection_selected_foreach (selection, abort_cb, NULL);
+  g_assert_null (ctk_tree_selection_get_selected_rows (selection, NULL));
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 0);
 
-  path = gtk_tree_path_new_from_indices (0, -1);
+  path = ctk_tree_path_new_from_indices (0, -1);
 
-  gtk_tree_selection_select_path (selection, path);
-  gtk_tree_selection_unselect_path (selection, path);
-  g_assert_false (gtk_tree_selection_path_is_selected (selection, path));
+  ctk_tree_selection_select_path (selection, path);
+  ctk_tree_selection_unselect_path (selection, path);
+  g_assert_false (ctk_tree_selection_path_is_selected (selection, path));
 
-  gtk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);
+  ctk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);
 
-  gtk_tree_selection_select_all (selection);
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 0);
+  ctk_tree_selection_select_all (selection);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 0);
 
-  gtk_tree_selection_unselect_all (selection);
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 0);
+  ctk_tree_selection_unselect_all (selection);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 0);
 
-  gtk_tree_selection_select_range (selection, path, path);
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 0);
+  ctk_tree_selection_select_range (selection, path, path);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 0);
 
-  gtk_tree_selection_unselect_range (selection, path, path);
-  g_assert_cmpint (gtk_tree_selection_count_selected_rows (selection), ==, 0);
+  ctk_tree_selection_unselect_range (selection, path, path);
+  g_assert_cmpint (ctk_tree_selection_count_selected_rows (selection), ==, 0);
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 
-  gtk_widget_destroy (view);
+  ctk_widget_destroy (view);
 }
 
 int
 main (int    argc,
       char **argv)
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
   g_test_bug_base ("http://bugzilla.gnome.org/");
 
   g_test_add_func ("/TreeView/cursor/bug-546005", test_bug_546005);

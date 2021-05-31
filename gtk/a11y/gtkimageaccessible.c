@@ -31,15 +31,15 @@ struct _GtkImageAccessiblePrivate
 
 static void atk_image_interface_init (AtkImageIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkImageAccessible, gtk_image_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkImageAccessible, ctk_image_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkImageAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_IMAGE, atk_image_interface_init))
 
 static void
-gtk_image_accessible_initialize (AtkObject *accessible,
+ctk_image_accessible_initialize (AtkObject *accessible,
                                  gpointer   data)
 {
-  ATK_OBJECT_CLASS (gtk_image_accessible_parent_class)->initialize (accessible, data);
+  ATK_OBJECT_CLASS (ctk_image_accessible_parent_class)->initialize (accessible, data);
 
   accessible->role = ATK_ROLE_ICON;
 }
@@ -146,7 +146,7 @@ name_from_icon_name (const gchar *icon_name)
           label = g_dpgettext2 (GETTEXT_PACKAGE, "Stock label", name_map[i].label);
           g_free (name);
 
-          return _gtk_toolbar_elide_underscores (label);
+          return _ctk_toolbar_elide_underscores (label);
         }
     }
 
@@ -155,18 +155,18 @@ name_from_icon_name (const gchar *icon_name)
 }
 
 static void
-gtk_image_accessible_finalize (GObject *object)
+ctk_image_accessible_finalize (GObject *object)
 {
   GtkImageAccessible *aimage = GTK_IMAGE_ACCESSIBLE (object);
 
   g_free (aimage->priv->image_description);
   g_free (aimage->priv->stock_name);
 
-  G_OBJECT_CLASS (gtk_image_accessible_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_image_accessible_parent_class)->finalize (object);
 }
 
 static const gchar *
-gtk_image_accessible_get_name (AtkObject *accessible)
+ctk_image_accessible_get_name (AtkObject *accessible)
 {
   GtkWidget* widget;
   GtkImage *image;
@@ -176,11 +176,11 @@ gtk_image_accessible_get_name (AtkObject *accessible)
   const gchar *name;
   GtkImageType storage_type;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
-  name = ATK_OBJECT_CLASS (gtk_image_accessible_parent_class)->get_name (accessible);
+  name = ATK_OBJECT_CLASS (ctk_image_accessible_parent_class)->get_name (accessible);
   if (name)
     return name;
 
@@ -192,25 +192,25 @@ gtk_image_accessible_get_name (AtkObject *accessible)
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  storage_type = gtk_image_get_storage_type (image);
+  storage_type = ctk_image_get_storage_type (image);
   if (storage_type == GTK_IMAGE_STOCK)
     {
-      gtk_image_get_stock (image, &stock_id, NULL);
+      ctk_image_get_stock (image, &stock_id, NULL);
       if (stock_id == NULL)
         return NULL;
 
-      if (!gtk_stock_lookup (stock_id, &stock_item))
+      if (!ctk_stock_lookup (stock_id, &stock_item))
         return NULL;
 
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
-      image_accessible->priv->stock_name = _gtk_toolbar_elide_underscores (stock_item.label);
+      image_accessible->priv->stock_name = _ctk_toolbar_elide_underscores (stock_item.label);
     }
   else if (storage_type == GTK_IMAGE_ICON_NAME)
     {
       const gchar *icon_name;
 
-      gtk_image_get_icon_name (image, &icon_name, NULL);
+      ctk_image_get_icon_name (image, &icon_name, NULL);
       image_accessible->priv->stock_name = name_from_icon_name (icon_name);
     }
   else if (storage_type == GTK_IMAGE_GICON)
@@ -218,7 +218,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
       GIcon *icon;
       const gchar * const *icon_names;
 
-      gtk_image_get_gicon (image, &icon, NULL);
+      ctk_image_get_gicon (image, &icon, NULL);
       if (G_IS_THEMED_ICON (icon))
         {
 	  icon_names = g_themed_icon_get_names (G_THEMED_ICON (icon));
@@ -230,24 +230,24 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
-gtk_image_accessible_class_init (GtkImageAccessibleClass *klass)
+ctk_image_accessible_class_init (GtkImageAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass  *class = ATK_OBJECT_CLASS (klass);
 
-  gobject_class->finalize = gtk_image_accessible_finalize;
-  class->initialize = gtk_image_accessible_initialize;
-  class->get_name = gtk_image_accessible_get_name;
+  gobject_class->finalize = ctk_image_accessible_finalize;
+  class->initialize = ctk_image_accessible_initialize;
+  class->get_name = ctk_image_accessible_get_name;
 }
 
 static void
-gtk_image_accessible_init (GtkImageAccessible *image)
+ctk_image_accessible_init (GtkImageAccessible *image)
 {
-  image->priv = gtk_image_accessible_get_instance_private (image);
+  image->priv = ctk_image_accessible_get_instance_private (image);
 }
 
 static const gchar *
-gtk_image_accessible_get_image_description (AtkImage *image)
+ctk_image_accessible_get_image_description (AtkImage *image)
 {
   GtkImageAccessible *accessible = GTK_IMAGE_ACCESSIBLE (image);
 
@@ -255,7 +255,7 @@ gtk_image_accessible_get_image_description (AtkImage *image)
 }
 
 static void
-gtk_image_accessible_get_image_position (AtkImage     *image,
+ctk_image_accessible_get_image_position (AtkImage     *image,
                                          gint         *x,
                                          gint         *y,
                                          AtkCoordType  coord_type)
@@ -265,15 +265,15 @@ gtk_image_accessible_get_image_position (AtkImage     *image,
 }
 
 static void
-gtk_image_accessible_get_image_size (AtkImage *image,
+ctk_image_accessible_get_image_size (AtkImage *image,
                                      gint     *width,
                                      gint     *height)
 {
   GtkWidget* widget;
-  GtkImage *gtk_image;
+  GtkImage *ctk_image;
   GtkImageType image_type;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (image));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (image));
   if (widget == NULL)
     {
       *height = -1;
@@ -281,16 +281,16 @@ gtk_image_accessible_get_image_size (AtkImage *image,
       return;
     }
 
-  gtk_image = GTK_IMAGE (widget);
+  ctk_image = GTK_IMAGE (widget);
 
-  image_type = gtk_image_get_storage_type (gtk_image);
+  image_type = ctk_image_get_storage_type (ctk_image);
   switch (image_type)
     {
     case GTK_IMAGE_PIXBUF:
       {
         GdkPixbuf *pixbuf;
 
-        pixbuf = gtk_image_get_pixbuf (gtk_image);
+        pixbuf = ctk_image_get_pixbuf (ctk_image);
         *height = gdk_pixbuf_get_height (pixbuf);
         *width = gdk_pixbuf_get_width (pixbuf);
         break;
@@ -302,15 +302,15 @@ gtk_image_accessible_get_image_size (AtkImage *image,
       {
         GtkIconSize size;
 
-        g_object_get (gtk_image, "icon-size", &size, NULL);
-        gtk_icon_size_lookup (size, width, height);
+        g_object_get (ctk_image, "icon-size", &size, NULL);
+        ctk_icon_size_lookup (size, width, height);
         break;
       }
     case GTK_IMAGE_ANIMATION:
       {
         GdkPixbufAnimation *animation;
 
-        animation = gtk_image_get_animation (gtk_image);
+        animation = ctk_image_get_animation (ctk_image);
         *height = gdk_pixbuf_animation_get_height (animation);
         *width = gdk_pixbuf_animation_get_width (animation);
         break;
@@ -325,7 +325,7 @@ gtk_image_accessible_get_image_size (AtkImage *image,
 }
 
 static gboolean
-gtk_image_accessible_set_image_description (AtkImage    *image,
+ctk_image_accessible_set_image_description (AtkImage    *image,
                                             const gchar *description)
 {
   GtkImageAccessible* accessible = GTK_IMAGE_ACCESSIBLE (image);
@@ -339,8 +339,8 @@ gtk_image_accessible_set_image_description (AtkImage    *image,
 static void
 atk_image_interface_init (AtkImageIface *iface)
 {
-  iface->get_image_description = gtk_image_accessible_get_image_description;
-  iface->get_image_position = gtk_image_accessible_get_image_position;
-  iface->get_image_size = gtk_image_accessible_get_image_size;
-  iface->set_image_description = gtk_image_accessible_set_image_description;
+  iface->get_image_description = ctk_image_accessible_get_image_description;
+  iface->get_image_position = ctk_image_accessible_get_image_position;
+  iface->get_image_size = ctk_image_accessible_get_image_size;
+  iface->set_image_description = ctk_image_accessible_set_image_description;
 }

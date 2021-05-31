@@ -40,14 +40,14 @@ struct _GtkModuleInfo
   GSList                  *names;
 };
 
-static GSList *gtk_modules = NULL;
+static GSList *ctk_modules = NULL;
 
 static gboolean default_display_opened = FALSE;
 
 /* Saved argc, argv for delayed module initialization
  */
-static gint    gtk_argc = 0;
-static gchar **gtk_argv = NULL;
+static gint    ctk_argc = 0;
+static gchar **ctk_argv = NULL;
 
 static gchar **
 get_module_path (void)
@@ -67,7 +67,7 @@ get_module_path (void)
   if (exe_prefix)
     default_dir = g_build_filename (exe_prefix, "lib", "gtk-3.0", NULL);
   else
-    default_dir = g_build_filename (_gtk_get_libdir (), "gtk-3.0", NULL);
+    default_dir = g_build_filename (_ctk_get_libdir (), "gtk-3.0", NULL);
 
   if (module_path_env)
     module_path = g_build_path (G_SEARCHPATH_SEPARATOR_S,
@@ -78,14 +78,14 @@ get_module_path (void)
 
   g_free (default_dir);
 
-  result = gtk_split_file_list (module_path);
+  result = ctk_split_file_list (module_path);
   g_free (module_path);
 
   return result;
 }
 
 /**
- * _gtk_get_module_path:
+ * _ctk_get_module_path:
  * @type: the type of the module, for instance 'modules', 'engines', immodules'
  * 
  * Determines the search path for a particular type of module.
@@ -93,7 +93,7 @@ get_module_path (void)
  * Returns: the search path for the module type. Free with g_strfreev().
  **/
 gchar **
-_gtk_get_module_path (const gchar *type)
+_ctk_get_module_path (const gchar *type)
 {
   gchar **paths = get_module_path();
   gchar **path;
@@ -159,7 +159,7 @@ module_build_la_path (const gchar *directory,
 }
 
 /**
- * _gtk_find_module:
+ * _ctk_find_module:
  * @name: the name of the module
  * @type: the type of the module, for instance 'modules', 'engines', immodules'
  * 
@@ -170,7 +170,7 @@ module_build_la_path (const gchar *directory,
  *  Free with g_free().
  **/
 gchar *
-_gtk_find_module (const gchar *name,
+_ctk_find_module (const gchar *name,
 		  const gchar *type)
 {
   gchar **paths;
@@ -180,7 +180,7 @@ _gtk_find_module (const gchar *name,
   if (g_path_is_absolute (name))
     return g_strdup (name);
 
-  paths = _gtk_get_module_path (type);
+  paths = _ctk_get_module_path (type);
   for (path = paths; *path; path++)
     {
       gchar *tmp_name;
@@ -213,7 +213,7 @@ find_module (const gchar *name)
   GModule *module;
   gchar *module_name;
 
-  module_name = _gtk_find_module (name, "modules");
+  module_name = _ctk_find_module (name, "modules");
   if (!module_name)
     {
       /* As last resort, try loading without an absolute path (using system
@@ -224,7 +224,7 @@ find_module (const gchar *name)
 
   module = g_module_open (module_name, G_MODULE_BIND_LOCAL | G_MODULE_BIND_LAZY);
 
-  if (_gtk_module_has_mixed_deps (module))
+  if (_ctk_module_has_mixed_deps (module))
     {
       g_warning ("GTK+ module %s cannot be loaded.\n"
                  "GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported.", module_name);
@@ -273,7 +273,7 @@ load_module (GSList      *module_list,
   
   if (g_module_supported ())
     {
-      for (l = gtk_modules; l; l = l->next)
+      for (l = ctk_modules; l; l = l->next)
 	{
 	  info = l->data;
 	  if (g_slist_find_custom (info->names, name,
@@ -300,7 +300,7 @@ load_module (GSList      *module_list,
                   modinit_func = NULL;
                   success = TRUE;
                 }
-              else if (g_module_symbol (module, "gtk_module_init", &modinit_func_ptr))
+              else if (g_module_symbol (module, "ctk_module_init", &modinit_func_ptr))
 		modinit_func = modinit_func_ptr;
 	      else
 		modinit_func = NULL;
@@ -314,7 +314,7 @@ load_module (GSList      *module_list,
 		  success = TRUE;
 		  info = NULL;
 
-		  temp = g_slist_find_custom (gtk_modules, module,
+		  temp = g_slist_find_custom (ctk_modules, module,
 			(GCompareFunc)cmp_module);
 		  if (temp != NULL)
 			info = temp->data;
@@ -327,10 +327,10 @@ load_module (GSList      *module_list,
 		      info->module = module;
 		      info->ref_count = 1;
 		      info->init_func = modinit_func;
-		      g_module_symbol (module, "gtk_module_display_init",
+		      g_module_symbol (module, "ctk_module_display_init",
 				       (gpointer *) &info->display_init_func);
 		      
-		      gtk_modules = g_slist_append (gtk_modules, info);
+		      ctk_modules = g_slist_append (ctk_modules, info);
 		      
 		      /* display_init == NULL indicates a non-multihead aware module.
 		       * For these, we delay the call to init_func until first display is
@@ -339,7 +339,7 @@ load_module (GSList      *module_list,
 		       * and also call display_init_func on all opened displays.
 		       */
 		      if (default_display_opened || info->display_init_func)
-			(* info->init_func) (&gtk_argc, &gtk_argv);
+			(* info->init_func) (&ctk_argc, &ctk_argv);
 		      
 		      if (info->display_init_func) 
 			{
@@ -389,7 +389,7 @@ load_module (GSList      *module_list,
 
 
 static void
-gtk_module_info_unref (GtkModuleInfo *info)
+ctk_module_info_unref (GtkModuleInfo *info)
 {
   GSList *l;
 
@@ -400,7 +400,7 @@ gtk_module_info_unref (GtkModuleInfo *info)
       GTK_NOTE (MODULES,
 		g_message ("Unloading module: %s", g_module_name (info->module)));
 
-      gtk_modules = g_slist_remove (gtk_modules, info);
+      ctk_modules = g_slist_remove (ctk_modules, info);
       g_module_close (info->module);
       for (l = info->names; l; l = l->next)
 	g_free (l->data);
@@ -418,7 +418,7 @@ load_modules (const char *module_str)
 
   GTK_NOTE (MODULES, g_message ("Loading module list: %s", module_str));
 
-  module_names = gtk_split_file_list (module_str);
+  module_names = ctk_split_file_list (module_str);
   for (i = 0; module_names[i]; i++)
     module_list = load_module (module_list, module_names[i]);
 
@@ -442,14 +442,14 @@ default_display_notify_cb (GdkDisplayManager *display_manager)
 
   default_display_opened = TRUE;
 
-  for (slist = gtk_modules; slist; slist = slist->next)
+  for (slist = ctk_modules; slist; slist = slist->next)
     {
       if (slist->data)
 	{
 	  GtkModuleInfo *info = slist->data;
 
 	  if (!info->display_init_func)
-	    (* info->init_func) (&gtk_argc, &gtk_argv);
+	    (* info->init_func) (&ctk_argc, &ctk_argv);
 	}
     }
 }
@@ -462,7 +462,7 @@ display_closed_cb (GdkDisplay *display,
   GtkSettings *settings;
 
   screen = gdk_display_get_default_screen (display);
-  settings = gtk_settings_get_for_screen (screen);
+  settings = ctk_settings_get_for_screen (screen);
   if (settings)
     g_object_set_data_full (G_OBJECT (settings),
 			    I_("gtk-modules"),
@@ -479,7 +479,7 @@ display_opened_cb (GdkDisplayManager *display_manager,
   GdkScreen *screen;
   GtkSettings *settings;
 
-  for (slist = gtk_modules; slist; slist = slist->next)
+  for (slist = ctk_modules; slist; slist = slist->next)
     {
       if (slist->data)
 	{
@@ -495,8 +495,8 @@ display_opened_cb (GdkDisplayManager *display_manager,
 
   if (gdk_screen_get_setting (screen, "gtk-modules", &value))
     {
-      settings = gtk_settings_get_for_screen (screen);
-      _gtk_modules_settings_changed (settings, g_value_get_string (&value));
+      settings = ctk_settings_get_for_screen (screen);
+      _ctk_modules_settings_changed (settings, g_value_get_string (&value));
       g_value_unset (&value);
     }
 
@@ -507,23 +507,23 @@ display_opened_cb (GdkDisplayManager *display_manager,
 }
 
 void
-_gtk_modules_init (gint        *argc,
+_ctk_modules_init (gint        *argc,
 		   gchar     ***argv,
-		   const gchar *gtk_modules_args)
+		   const gchar *ctk_modules_args)
 {
   GdkDisplayManager *display_manager;
   gint i;
 
-  g_assert (gtk_argv == NULL);
+  g_assert (ctk_argv == NULL);
 
   if (argc && argv)
     {
       /* store argc and argv for later use in mod initialization */
-      gtk_argc = *argc;
-      gtk_argv = g_new (gchar *, *argc + 1);
-      for (i = 0; i < gtk_argc; i++)
-	gtk_argv [i] = g_strdup ((*argv) [i]);
-      gtk_argv [*argc] = NULL;
+      ctk_argc = *argc;
+      ctk_argv = g_new (gchar *, *argc + 1);
+      for (i = 0; i < ctk_argc; i++)
+	ctk_argv [i] = g_strdup ((*argv) [i]);
+      ctk_argv [*argc] = NULL;
     }
 
   display_manager = gdk_display_manager_get ();
@@ -535,13 +535,13 @@ _gtk_modules_init (gint        *argc,
                     G_CALLBACK (display_opened_cb),
                     NULL);
 
-  if (gtk_modules_args)
+  if (ctk_modules_args)
     {
       /* Modules specified in the GTK_MODULES environment variable
        * or on the command line are always loaded, so we'll just leak
        * the refcounts.
        */
-      g_slist_free (load_modules (gtk_modules_args));
+      g_slist_free (load_modules (ctk_modules_args));
     }
 }
 
@@ -553,13 +553,13 @@ settings_destroy_notify (gpointer data)
   for (iter = modules; iter; iter = iter->next) 
     {
       GtkModuleInfo *info = iter->data;
-      gtk_module_info_unref (info);
+      ctk_module_info_unref (info);
     }
   g_slist_free (modules);
 }
 
 void
-_gtk_modules_settings_changed (GtkSettings *settings, 
+_ctk_modules_settings_changed (GtkSettings *settings, 
 			       const gchar *modules)
 {
   GSList *new_modules = NULL;
@@ -580,7 +580,7 @@ _gtk_modules_settings_changed (GtkSettings *settings,
  * If module_to_check is NULL, check the main module.
  */
 gboolean
-_gtk_module_has_mixed_deps (GModule *module_to_check)
+_ctk_module_has_mixed_deps (GModule *module_to_check)
 {
   GModule *module;
   gpointer func;
@@ -591,7 +591,7 @@ _gtk_module_has_mixed_deps (GModule *module_to_check)
   else
     module = module_to_check;
 
-  if (g_module_symbol (module, "gtk_progress_get_type", &func))
+  if (g_module_symbol (module, "ctk_progress_get_type", &func))
     result = TRUE;
   else
     result = FALSE;

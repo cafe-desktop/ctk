@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SCALE            (gtk_scale_get_type ())
+#define GTK_TYPE_SCALE            (ctk_scale_get_type ())
 #define GTK_SCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SCALE, GtkScale))
 #define GTK_SCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SCALE, GtkScaleClass))
 #define GTK_IS_SCALE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SCALE))
@@ -69,57 +69,57 @@ struct _GtkScaleClass
                                gint     *y);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType             gtk_scale_get_type           (void) G_GNUC_CONST;
+GType             ctk_scale_get_type           (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget       * gtk_scale_new                (GtkOrientation   orientation,
+GtkWidget       * ctk_scale_new                (GtkOrientation   orientation,
                                                 GtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-GtkWidget       * gtk_scale_new_with_range     (GtkOrientation   orientation,
+GtkWidget       * ctk_scale_new_with_range     (GtkOrientation   orientation,
                                                 gdouble          min,
                                                 gdouble          max,
                                                 gdouble          step);
 GDK_AVAILABLE_IN_ALL
-void              gtk_scale_set_digits         (GtkScale        *scale,
+void              ctk_scale_set_digits         (GtkScale        *scale,
                                                 gint             digits);
 GDK_AVAILABLE_IN_ALL
-gint              gtk_scale_get_digits         (GtkScale        *scale);
+gint              ctk_scale_get_digits         (GtkScale        *scale);
 GDK_AVAILABLE_IN_ALL
-void              gtk_scale_set_draw_value     (GtkScale        *scale,
+void              ctk_scale_set_draw_value     (GtkScale        *scale,
                                                 gboolean         draw_value);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_scale_get_draw_value     (GtkScale        *scale);
+gboolean          ctk_scale_get_draw_value     (GtkScale        *scale);
 GDK_AVAILABLE_IN_3_4
-void              gtk_scale_set_has_origin     (GtkScale        *scale,
+void              ctk_scale_set_has_origin     (GtkScale        *scale,
                                                 gboolean         has_origin);
 GDK_AVAILABLE_IN_3_4
-gboolean          gtk_scale_get_has_origin     (GtkScale        *scale);
+gboolean          ctk_scale_get_has_origin     (GtkScale        *scale);
 GDK_AVAILABLE_IN_ALL
-void              gtk_scale_set_value_pos      (GtkScale        *scale,
+void              ctk_scale_set_value_pos      (GtkScale        *scale,
                                                 GtkPositionType  pos);
 GDK_AVAILABLE_IN_ALL
-GtkPositionType   gtk_scale_get_value_pos      (GtkScale        *scale);
+GtkPositionType   ctk_scale_get_value_pos      (GtkScale        *scale);
 
 GDK_AVAILABLE_IN_ALL
-PangoLayout     * gtk_scale_get_layout         (GtkScale        *scale);
+PangoLayout     * ctk_scale_get_layout         (GtkScale        *scale);
 GDK_AVAILABLE_IN_ALL
-void              gtk_scale_get_layout_offsets (GtkScale        *scale,
+void              ctk_scale_get_layout_offsets (GtkScale        *scale,
                                                 gint            *x,
                                                 gint            *y);
 
 GDK_AVAILABLE_IN_ALL
-void              gtk_scale_add_mark           (GtkScale        *scale,
+void              ctk_scale_add_mark           (GtkScale        *scale,
                                                 gdouble          value,
                                                 GtkPositionType  position,
                                                 const gchar     *markup);
 GDK_AVAILABLE_IN_ALL
-void              gtk_scale_clear_marks        (GtkScale        *scale);
+void              ctk_scale_clear_marks        (GtkScale        *scale);
 
 
 G_END_DECLS

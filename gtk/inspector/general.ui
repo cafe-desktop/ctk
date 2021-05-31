@@ -29,7 +29,7 @@
                         <property name="margin">10</property>
                         <property name="spacing">40</property>
                         <child>
-                          <object class="GtkLabel" id="gtk_version_label">
+                          <object class="GtkLabel" id="ctk_version_label">
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">GTK+ Version</property>
                             <property name="halign">start</property>
@@ -38,7 +38,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="gtk_version">
+                          <object class="GtkLabel" id="ctk_version">
                             <property name="visible">True</property>
                             <property name="selectable">True</property>
                             <property name="halign">end</property>
@@ -215,7 +215,7 @@
                         <property name="margin">10</property>
                         <property name="spacing">40</property>
                         <child>
-                          <object class="GtkLabel" id="gtk_path_label">
+                          <object class="GtkLabel" id="ctk_path_label">
                             <property name="visible">True</property>
                             <property name="label">GTK_PATH</property>
                             <property name="halign">start</property>
@@ -224,7 +224,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="gtk_path">
+                          <object class="GtkLabel" id="ctk_path">
                             <property name="visible">True</property>
                             <property name="selectable">True</property>
                             <property name="halign">end</property>
@@ -250,7 +250,7 @@
                         <property name="margin">10</property>
                         <property name="spacing">40</property>
                         <child>
-                          <object class="GtkLabel" id="gtk_exe_prefix_label">
+                          <object class="GtkLabel" id="ctk_exe_prefix_label">
                             <property name="visible">True</property>
                             <property name="label">GTK_EXE_PREFIX</property>
                             <property name="halign">start</property>
@@ -259,7 +259,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="gtk_exe_prefix">
+                          <object class="GtkLabel" id="ctk_exe_prefix">
                             <property name="visible">True</property>
                             <property name="selectable">True</property>
                             <property name="halign">end</property>
@@ -285,7 +285,7 @@
                         <property name="margin">10</property>
                         <property name="spacing">40</property>
                         <child>
-                          <object class="GtkLabel" id="gtk_data_prefix_label">
+                          <object class="GtkLabel" id="ctk_data_prefix_label">
                             <property name="visible">True</property>
                             <property name="label">GTK_DATA_PREFIX</property>
                             <property name="halign">start</property>
@@ -294,7 +294,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="gtk_data_prefix">
+                          <object class="GtkLabel" id="ctk_data_prefix">
                             <property name="visible">True</property>
                             <property name="selectable">True</property>
                             <property name="halign">end</property>
@@ -567,16 +567,16 @@
   <object class="GtkSizeGroup" id="labels">
     <property name="mode">horizontal</property>
     <widgets>
-      <widget name="gtk_version_label"/>
+      <widget name="ctk_version_label"/>
       <widget name="gdk_backend_label"/>
       <widget name="gl_version_label"/>
       <widget name="gl_vendor_label"/>
       <widget name="prefix_label"/>
       <widget name="xdg_data_home_label"/>
       <widget name="xdg_data_dirs_label"/>
-      <widget name="gtk_path_label"/>
-      <widget name="gtk_exe_prefix_label"/>
-      <widget name="gtk_data_prefix_label"/>
+      <widget name="ctk_path_label"/>
+      <widget name="ctk_exe_prefix_label"/>
+      <widget name="ctk_data_prefix_label"/>
       <widget name="gsettings_schema_dir_label"/>
       <widget name="display_label"/>
       <widget name="display_rgba_label"/>

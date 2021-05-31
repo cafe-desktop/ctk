@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SCALE_ACCESSIBLE                         (gtk_scale_accessible_get_type ())
+#define GTK_TYPE_SCALE_ACCESSIBLE                         (ctk_scale_accessible_get_type ())
 #define GTK_SCALE_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SCALE_ACCESSIBLE, GtkScaleAccessible))
 #define GTK_SCALE_ACCESSIBLE_CLASS(klass)                       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SCALE_ACCESSIBLE, GtkScaleAccessibleClass))
 #define GTK_IS_SCALE_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SCALE_ACCESSIBLE))
@@ -50,7 +50,7 @@ struct _GtkScaleAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_scale_accessible_get_type (void);
+GType ctk_scale_accessible_get_type (void);
 
 G_END_DECLS
 

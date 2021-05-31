@@ -71,18 +71,18 @@
  * In order to construct the final style information, #GtkStyleContext
  * queries information from all attached #GtkStyleProviders. Style providers
  * can be either attached explicitly to the context through
- * gtk_style_context_add_provider(), or to the screen through
- * gtk_style_context_add_provider_for_screen(). The resulting style is a
+ * ctk_style_context_add_provider(), or to the screen through
+ * ctk_style_context_add_provider_for_screen(). The resulting style is a
  * combination of all providers’ information in priority order.
  *
  * For GTK+ widgets, any #GtkStyleContext returned by
- * gtk_widget_get_style_context() will already have a #GtkWidgetPath, a
+ * ctk_widget_get_style_context() will already have a #GtkWidgetPath, a
  * #GdkScreen and RTL/LTR information set. The style context will also be
  * updated automatically if any of these settings change on the widget.
  *
  * If you are using the theming layer standalone, you will need to set a
  * widget path and a screen yourself to the created style context through
- * gtk_style_context_set_path() and possibly gtk_style_context_set_screen(). See
+ * ctk_style_context_set_path() and possibly ctk_style_context_set_screen(). See
  * the “Foreign drawing“ example in gtk3-demo.
  *
  * # Style Classes # {#gtkstylecontext-classes}
@@ -163,44 +163,44 @@ static GParamSpec *properties[LAST_PROP] = { NULL, };
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static void gtk_style_context_finalize (GObject *object);
+static void ctk_style_context_finalize (GObject *object);
 
-static void gtk_style_context_impl_set_property (GObject      *object,
+static void ctk_style_context_impl_set_property (GObject      *object,
                                                  guint         prop_id,
                                                  const GValue *value,
                                                  GParamSpec   *pspec);
-static void gtk_style_context_impl_get_property (GObject      *object,
+static void ctk_style_context_impl_get_property (GObject      *object,
                                                  guint         prop_id,
                                                  GValue       *value,
                                                  GParamSpec   *pspec);
 
-static GtkCssNode * gtk_style_context_get_root (GtkStyleContext *context);
+static GtkCssNode * ctk_style_context_get_root (GtkStyleContext *context);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkStyleContext, gtk_style_context, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkStyleContext, ctk_style_context, G_TYPE_OBJECT)
 
 static void
-gtk_style_context_real_changed (GtkStyleContext *context)
+ctk_style_context_real_changed (GtkStyleContext *context)
 {
   GtkStyleContextPrivate *priv = context->priv;
 
   if (GTK_IS_CSS_WIDGET_NODE (priv->cssnode))
     {
-      GtkWidget *widget = gtk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (priv->cssnode));
+      GtkWidget *widget = ctk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (priv->cssnode));
       if (widget != NULL)
-        _gtk_widget_style_context_invalidated (widget);
+        _ctk_widget_style_context_invalidated (widget);
     }
 }
 
 static void
-gtk_style_context_class_init (GtkStyleContextClass *klass)
+ctk_style_context_class_init (GtkStyleContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_style_context_finalize;
-  object_class->set_property = gtk_style_context_impl_set_property;
-  object_class->get_property = gtk_style_context_impl_get_property;
+  object_class->finalize = ctk_style_context_finalize;
+  object_class->set_property = ctk_style_context_impl_set_property;
+  object_class->get_property = ctk_style_context_impl_get_property;
 
-  klass->changed = gtk_style_context_real_changed;
+  klass->changed = ctk_style_context_real_changed;
 
   /**
    * GtkStyleContext::changed:
@@ -208,7 +208,7 @@ gtk_style_context_class_init (GtkStyleContextClass *klass)
    * The ::changed signal is emitted when there is a change in the
    * #GtkStyleContext.
    *
-   * For a #GtkStyleContext returned by gtk_widget_get_style_context(), the
+   * For a #GtkStyleContext returned by ctk_widget_get_style_context(), the
    * #GtkWidget::style-updated signal/vfunc might be more convenient to use.
    *
    * This signal is useful when using the theming layer standalone.
@@ -249,7 +249,7 @@ gtk_style_context_class_init (GtkStyleContextClass *klass)
   /**
    * GtkStyleContext:parent:
    *
-   * Sets or gets the style context’s parent. See gtk_style_context_set_parent()
+   * Sets or gets the style context’s parent. See ctk_style_context_set_parent()
    * for details.
    *
    * Since: 3.4
@@ -265,7 +265,7 @@ gtk_style_context_class_init (GtkStyleContextClass *klass)
 }
 
 void
-gtk_style_context_clear_property_cache (GtkStyleContext *context)
+ctk_style_context_clear_property_cache (GtkStyleContext *context)
 {
   GtkStyleContextPrivate *priv = context->priv;
   guint i;
@@ -282,28 +282,28 @@ gtk_style_context_clear_property_cache (GtkStyleContext *context)
 }
 
 static void
-gtk_style_context_pop_style_node (GtkStyleContext *context)
+ctk_style_context_pop_style_node (GtkStyleContext *context)
 {
   GtkStyleContextPrivate *priv = context->priv;
 
   g_return_if_fail (priv->saved_nodes != NULL);
 
   if (GTK_IS_CSS_TRANSIENT_NODE (priv->cssnode))
-    gtk_css_node_set_parent (priv->cssnode, NULL);
+    ctk_css_node_set_parent (priv->cssnode, NULL);
   g_object_unref (priv->cssnode);
   priv->cssnode = priv->saved_nodes->data;
   priv->saved_nodes = g_slist_remove (priv->saved_nodes, priv->cssnode);
 }
 
 static void
-gtk_style_context_cascade_changed (GtkStyleCascade *cascade,
+ctk_style_context_cascade_changed (GtkStyleCascade *cascade,
                                    GtkStyleContext *context)
 {
-  gtk_css_node_invalidate_style_provider (gtk_style_context_get_root (context));
+  ctk_css_node_invalidate_style_provider (ctk_style_context_get_root (context));
 }
 
 static void
-gtk_style_context_set_cascade (GtkStyleContext *context,
+ctk_style_context_set_cascade (GtkStyleContext *context,
                                GtkStyleCascade *cascade)
 {
   GtkStyleContextPrivate *priv;
@@ -325,22 +325,22 @@ gtk_style_context_set_cascade (GtkStyleContext *context,
       g_object_ref (cascade);
       priv->cascade_changed_id = g_signal_connect (cascade,
                                                    "-gtk-private-changed",
-                                                   G_CALLBACK (gtk_style_context_cascade_changed),
+                                                   G_CALLBACK (ctk_style_context_cascade_changed),
                                                    context);
     }
 
   priv->cascade = cascade;
 
   if (cascade && priv->cssnode != NULL)
-    gtk_style_context_cascade_changed (cascade, context);
+    ctk_style_context_cascade_changed (cascade, context);
 }
 
 static void
-gtk_style_context_init (GtkStyleContext *context)
+ctk_style_context_init (GtkStyleContext *context)
 {
   GtkStyleContextPrivate *priv;
 
-  priv = context->priv = gtk_style_context_get_instance_private (context);
+  priv = context->priv = ctk_style_context_get_instance_private (context);
 
   priv->screen = gdk_screen_get_default ();
 
@@ -349,16 +349,16 @@ gtk_style_context_init (GtkStyleContext *context)
 
   priv->property_cache = g_array_new (FALSE, FALSE, sizeof (PropertyValue));
 
-  gtk_style_context_set_cascade (context,
-                                 _gtk_settings_get_style_cascade (gtk_settings_get_for_screen (priv->screen), 1));
+  ctk_style_context_set_cascade (context,
+                                 _ctk_settings_get_style_cascade (ctk_settings_get_for_screen (priv->screen), 1));
 
   /* Create default info store */
-  priv->cssnode = gtk_css_path_node_new (context);
-  gtk_css_node_set_state (priv->cssnode, GTK_STATE_FLAG_DIR_LTR);
+  priv->cssnode = ctk_css_path_node_new (context);
+  ctk_css_node_set_state (priv->cssnode, GTK_STATE_FLAG_DIR_LTR);
 }
 
 static void
-gtk_style_context_clear_parent (GtkStyleContext *context)
+ctk_style_context_clear_parent (GtkStyleContext *context)
 {
   GtkStyleContextPrivate *priv = context->priv;
 
@@ -367,30 +367,30 @@ gtk_style_context_clear_parent (GtkStyleContext *context)
 }
 
 static void
-gtk_style_context_finalize (GObject *object)
+ctk_style_context_finalize (GObject *object)
 {
   GtkStyleContext *context = GTK_STYLE_CONTEXT (object);
   GtkStyleContextPrivate *priv = context->priv;
 
   while (priv->saved_nodes)
-    gtk_style_context_pop_style_node (context);
+    ctk_style_context_pop_style_node (context);
 
   if (GTK_IS_CSS_PATH_NODE (priv->cssnode))
-    gtk_css_path_node_unset_context (GTK_CSS_PATH_NODE (priv->cssnode));
+    ctk_css_path_node_unset_context (GTK_CSS_PATH_NODE (priv->cssnode));
 
-  gtk_style_context_clear_parent (context);
-  gtk_style_context_set_cascade (context, NULL);
+  ctk_style_context_clear_parent (context);
+  ctk_style_context_set_cascade (context, NULL);
 
   g_object_unref (priv->cssnode);
 
-  gtk_style_context_clear_property_cache (context);
+  ctk_style_context_clear_property_cache (context);
   g_array_free (priv->property_cache, TRUE);
 
-  G_OBJECT_CLASS (gtk_style_context_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_style_context_parent_class)->finalize (object);
 }
 
 static void
-gtk_style_context_impl_set_property (GObject      *object,
+ctk_style_context_impl_set_property (GObject      *object,
                                      guint         prop_id,
                                      const GValue *value,
                                      GParamSpec   *pspec)
@@ -400,18 +400,18 @@ gtk_style_context_impl_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_SCREEN:
-      gtk_style_context_set_screen (context, g_value_get_object (value));
+      ctk_style_context_set_screen (context, g_value_get_object (value));
       break;
     case PROP_DIRECTION:
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gtk_style_context_set_direction (context, g_value_get_enum (value));
+      ctk_style_context_set_direction (context, g_value_get_enum (value));
       G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_FRAME_CLOCK:
-      gtk_style_context_set_frame_clock (context, g_value_get_object (value));
+      ctk_style_context_set_frame_clock (context, g_value_get_object (value));
       break;
     case PROP_PARENT:
-      gtk_style_context_set_parent (context, g_value_get_object (value));
+      ctk_style_context_set_parent (context, g_value_get_object (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -420,7 +420,7 @@ gtk_style_context_impl_set_property (GObject      *object,
 }
 
 static void
-gtk_style_context_impl_get_property (GObject    *object,
+ctk_style_context_impl_get_property (GObject    *object,
                                      guint       prop_id,
                                      GValue     *value,
                                      GParamSpec *pspec)
@@ -435,7 +435,7 @@ gtk_style_context_impl_get_property (GObject    *object,
       break;
     case PROP_DIRECTION:
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      g_value_set_enum (value, gtk_style_context_get_direction (context));
+      g_value_set_enum (value, ctk_style_context_get_direction (context));
       G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_FRAME_CLOCK:
@@ -450,19 +450,19 @@ gtk_style_context_impl_get_property (GObject    *object,
     }
 }
 
-/* returns TRUE if someone called gtk_style_context_save() but hasn’t
- * called gtk_style_context_restore() yet.
+/* returns TRUE if someone called ctk_style_context_save() but hasn’t
+ * called ctk_style_context_restore() yet.
  * In those situations we don’t invalidate the context when somebody
  * changes state/regions/classes.
  */
 static gboolean
-gtk_style_context_is_saved (GtkStyleContext *context)
+ctk_style_context_is_saved (GtkStyleContext *context)
 {
   return context->priv->saved_nodes != NULL;
 }
 
 static GtkCssNode *
-gtk_style_context_get_root (GtkStyleContext *context)
+ctk_style_context_get_root (GtkStyleContext *context)
 {
   GtkStyleContextPrivate *priv = context->priv;
 
@@ -473,47 +473,47 @@ gtk_style_context_get_root (GtkStyleContext *context)
 }
 
 GtkStyleProviderPrivate *
-gtk_style_context_get_style_provider (GtkStyleContext *context)
+ctk_style_context_get_style_provider (GtkStyleContext *context)
 {
   return GTK_STYLE_PROVIDER_PRIVATE (context->priv->cascade);
 }
 
 static gboolean
-gtk_style_context_has_custom_cascade (GtkStyleContext *context)
+ctk_style_context_has_custom_cascade (GtkStyleContext *context)
 {
   GtkStyleContextPrivate *priv = context->priv;
-  GtkSettings *settings = gtk_settings_get_for_screen (priv->screen);
+  GtkSettings *settings = ctk_settings_get_for_screen (priv->screen);
 
-  return priv->cascade != _gtk_settings_get_style_cascade (settings, _gtk_style_cascade_get_scale (priv->cascade));
+  return priv->cascade != _ctk_settings_get_style_cascade (settings, _ctk_style_cascade_get_scale (priv->cascade));
 }
 
 GtkCssStyle *
-gtk_style_context_lookup_style (GtkStyleContext *context)
+ctk_style_context_lookup_style (GtkStyleContext *context)
 {
   /* Code will recreate style if it was changed */
-  return gtk_css_node_get_style (context->priv->cssnode);
+  return ctk_css_node_get_style (context->priv->cssnode);
 }
 
 GtkCssNode*
-gtk_style_context_get_node (GtkStyleContext *context)
+ctk_style_context_get_node (GtkStyleContext *context)
 {
   return context->priv->cssnode;
 }
 
 static GtkStateFlags
-gtk_style_context_push_state (GtkStyleContext *context,
+ctk_style_context_push_state (GtkStyleContext *context,
                               GtkStateFlags    state)
 {
   GtkStyleContextPrivate *priv = context->priv;
   GtkStateFlags current_state;
   GtkCssNode *root;
 
-  current_state = gtk_css_node_get_state (priv->cssnode);
+  current_state = ctk_css_node_get_state (priv->cssnode);
 
   if (current_state == state)
     return state;
 
-  root = gtk_style_context_get_root (context);
+  root = ctk_style_context_get_root (context);
 
   if (GTK_IS_CSS_TRANSIENT_NODE (priv->cssnode))
     {
@@ -521,64 +521,64 @@ gtk_style_context_push_state (GtkStyleContext *context,
     }
   else if (GTK_IS_CSS_WIDGET_NODE (root))
     {
-      GtkWidget *widget = gtk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (root));
-      g_debug ("State %u for %s %p doesn't match state %u set via gtk_style_context_set_state ()",
-               state, (widget == NULL) ? "(null)" : gtk_widget_get_name (widget),
-               widget, gtk_css_node_get_state (priv->cssnode));
+      GtkWidget *widget = ctk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (root));
+      g_debug ("State %u for %s %p doesn't match state %u set via ctk_style_context_set_state ()",
+               state, (widget == NULL) ? "(null)" : ctk_widget_get_name (widget),
+               widget, ctk_css_node_get_state (priv->cssnode));
     }
   else
     {
-      g_debug ("State %u for context %p doesn't match state %u set via gtk_style_context_set_state ()",
-               state, context, gtk_css_node_get_state (priv->cssnode));
+      g_debug ("State %u for context %p doesn't match state %u set via ctk_style_context_set_state ()",
+               state, context, ctk_css_node_get_state (priv->cssnode));
     }
 
-  gtk_css_node_set_state (priv->cssnode, state);
+  ctk_css_node_set_state (priv->cssnode, state);
 
   return current_state;
 }
 
 static void
-gtk_style_context_pop_state (GtkStyleContext *context,
+ctk_style_context_pop_state (GtkStyleContext *context,
                              GtkStateFlags    saved_state)
 {
-  gtk_css_node_set_state (context->priv->cssnode, saved_state);
+  ctk_css_node_set_state (context->priv->cssnode, saved_state);
 }
 
 /**
- * gtk_style_context_new:
+ * ctk_style_context_new:
  *
  * Creates a standalone #GtkStyleContext, this style context
  * won’t be attached to any widget, so you may want
- * to call gtk_style_context_set_path() yourself.
+ * to call ctk_style_context_set_path() yourself.
  *
  * This function is only useful when using the theming layer
  * separated from GTK+, if you are using #GtkStyleContext to
- * theme #GtkWidgets, use gtk_widget_get_style_context()
+ * theme #GtkWidgets, use ctk_widget_get_style_context()
  * in order to get a style context ready to theme the widget.
  *
  * Returns: A newly created #GtkStyleContext.
  **/
 GtkStyleContext *
-gtk_style_context_new (void)
+ctk_style_context_new (void)
 {
   return g_object_new (GTK_TYPE_STYLE_CONTEXT, NULL);
 }
 
 GtkStyleContext *
-gtk_style_context_new_for_node (GtkCssNode *node)
+ctk_style_context_new_for_node (GtkCssNode *node)
 {
   GtkStyleContext *context;
 
   g_return_val_if_fail (GTK_IS_CSS_NODE (node), NULL);
 
-  context = gtk_style_context_new ();
+  context = ctk_style_context_new ();
   g_set_object (&context->priv->cssnode, node);
 
   return context;
 }
 
 /**
- * gtk_style_context_add_provider:
+ * ctk_style_context_add_provider:
  * @context: a #GtkStyleContext
  * @provider: a #GtkStyleProvider
  * @priority: the priority of the style provider. The lower
@@ -591,16 +591,16 @@ gtk_style_context_new_for_node (GtkCssNode *node)
  * Note that a style provider added by this function only affects
  * the style of the widget to which @context belongs. If you want
  * to affect the style of all widgets, use
- * gtk_style_context_add_provider_for_screen().
+ * ctk_style_context_add_provider_for_screen().
  *
  * Note: If both priorities are the same, a #GtkStyleProvider
  * added through this function takes precedence over another added
- * through gtk_style_context_add_provider_for_screen().
+ * through ctk_style_context_add_provider_for_screen().
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_add_provider (GtkStyleContext  *context,
+ctk_style_context_add_provider (GtkStyleContext  *context,
                                 GtkStyleProvider *provider,
                                 guint             priority)
 {
@@ -611,26 +611,26 @@ gtk_style_context_add_provider (GtkStyleContext  *context,
 
   priv = context->priv;
 
-  if (!gtk_style_context_has_custom_cascade (context))
+  if (!ctk_style_context_has_custom_cascade (context))
     {
       GtkStyleCascade *new_cascade;
 
-      new_cascade = _gtk_style_cascade_new ();
-      _gtk_style_cascade_set_scale (new_cascade, _gtk_style_cascade_get_scale (priv->cascade));
-      _gtk_style_cascade_set_parent (new_cascade,
-                                     _gtk_settings_get_style_cascade (gtk_settings_get_for_screen (priv->screen), 1));
-      _gtk_style_cascade_add_provider (new_cascade, provider, priority);
-      gtk_style_context_set_cascade (context, new_cascade);
+      new_cascade = _ctk_style_cascade_new ();
+      _ctk_style_cascade_set_scale (new_cascade, _ctk_style_cascade_get_scale (priv->cascade));
+      _ctk_style_cascade_set_parent (new_cascade,
+                                     _ctk_settings_get_style_cascade (ctk_settings_get_for_screen (priv->screen), 1));
+      _ctk_style_cascade_add_provider (new_cascade, provider, priority);
+      ctk_style_context_set_cascade (context, new_cascade);
       g_object_unref (new_cascade);
     }
   else
     {
-      _gtk_style_cascade_add_provider (priv->cascade, provider, priority);
+      _ctk_style_cascade_add_provider (priv->cascade, provider, priority);
     }
 }
 
 /**
- * gtk_style_context_remove_provider:
+ * ctk_style_context_remove_provider:
  * @context: a #GtkStyleContext
  * @provider: a #GtkStyleProvider
  *
@@ -639,20 +639,20 @@ gtk_style_context_add_provider (GtkStyleContext  *context,
  * Since: 3.0
  **/
 void
-gtk_style_context_remove_provider (GtkStyleContext  *context,
+ctk_style_context_remove_provider (GtkStyleContext  *context,
                                    GtkStyleProvider *provider)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (GTK_IS_STYLE_PROVIDER (provider));
 
-  if (!gtk_style_context_has_custom_cascade (context))
+  if (!ctk_style_context_has_custom_cascade (context))
     return;
 
-  _gtk_style_cascade_remove_provider (context->priv->cascade, provider);
+  _ctk_style_cascade_remove_provider (context->priv->cascade, provider);
 }
 
 /**
- * gtk_style_context_reset_widgets:
+ * ctk_style_context_reset_widgets:
  * @screen: a #GdkScreen
  *
  * This function recomputes the styles for all widgets under a particular
@@ -665,17 +665,17 @@ gtk_style_context_remove_provider (GtkStyleContext  *context,
  * Since: 3.0
  **/
 void
-gtk_style_context_reset_widgets (GdkScreen *screen)
+ctk_style_context_reset_widgets (GdkScreen *screen)
 {
   GList *list, *toplevels;
 
-  toplevels = gtk_window_list_toplevels ();
+  toplevels = ctk_window_list_toplevels ();
   g_list_foreach (toplevels, (GFunc) g_object_ref, NULL);
 
   for (list = toplevels; list; list = list->next)
     {
-      if (gtk_widget_get_screen (list->data) == screen)
-        gtk_widget_reset_style (list->data);
+      if (ctk_widget_get_screen (list->data) == screen)
+        ctk_widget_reset_style (list->data);
 
       g_object_unref (list->data);
     }
@@ -684,7 +684,7 @@ gtk_style_context_reset_widgets (GdkScreen *screen)
 }
 
 /**
- * gtk_style_context_add_provider_for_screen:
+ * ctk_style_context_add_provider_for_screen:
  * @screen: a #GdkScreen
  * @provider: a #GtkStyleProvider
  * @priority: the priority of the style provider. The lower
@@ -700,13 +700,13 @@ gtk_style_context_reset_widgets (GdkScreen *screen)
  * available.
  *
  * Note: If both priorities are the same, A #GtkStyleProvider
- * added through gtk_style_context_add_provider() takes precedence
+ * added through ctk_style_context_add_provider() takes precedence
  * over another added through this function.
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_add_provider_for_screen (GdkScreen        *screen,
+ctk_style_context_add_provider_for_screen (GdkScreen        *screen,
                                            GtkStyleProvider *provider,
                                            guint             priority)
 {
@@ -714,14 +714,14 @@ gtk_style_context_add_provider_for_screen (GdkScreen        *screen,
 
   g_return_if_fail (GDK_IS_SCREEN (screen));
   g_return_if_fail (GTK_IS_STYLE_PROVIDER (provider));
-  g_return_if_fail (!GTK_IS_SETTINGS (provider) || _gtk_settings_get_screen (GTK_SETTINGS (provider)) == screen);
+  g_return_if_fail (!GTK_IS_SETTINGS (provider) || _ctk_settings_get_screen (GTK_SETTINGS (provider)) == screen);
 
-  cascade = _gtk_settings_get_style_cascade (gtk_settings_get_for_screen (screen), 1);
-  _gtk_style_cascade_add_provider (cascade, provider, priority);
+  cascade = _ctk_settings_get_style_cascade (ctk_settings_get_for_screen (screen), 1);
+  _ctk_style_cascade_add_provider (cascade, provider, priority);
 }
 
 /**
- * gtk_style_context_remove_provider_for_screen:
+ * ctk_style_context_remove_provider_for_screen:
  * @screen: a #GdkScreen
  * @provider: a #GtkStyleProvider
  *
@@ -730,7 +730,7 @@ gtk_style_context_add_provider_for_screen (GdkScreen        *screen,
  * Since: 3.0
  **/
 void
-gtk_style_context_remove_provider_for_screen (GdkScreen        *screen,
+ctk_style_context_remove_provider_for_screen (GdkScreen        *screen,
                                               GtkStyleProvider *provider)
 {
   GtkStyleCascade *cascade;
@@ -739,18 +739,18 @@ gtk_style_context_remove_provider_for_screen (GdkScreen        *screen,
   g_return_if_fail (GTK_IS_STYLE_PROVIDER (provider));
   g_return_if_fail (!GTK_IS_SETTINGS (provider));
 
-  cascade = _gtk_settings_get_style_cascade (gtk_settings_get_for_screen (screen), 1);
-  _gtk_style_cascade_remove_provider (cascade, provider);
+  cascade = _ctk_settings_get_style_cascade (ctk_settings_get_for_screen (screen), 1);
+  _ctk_style_cascade_remove_provider (cascade, provider);
 }
 
 /**
- * gtk_style_context_get_section:
+ * ctk_style_context_get_section:
  * @context: a #GtkStyleContext
  * @property: style property name
  *
  * Queries the location in the CSS where @property was defined for the
  * current @context. Note that the state to be queried is taken from
- * gtk_style_context_get_state().
+ * ctk_style_context_get_state().
  *
  * If the location is not available, %NULL will be returned. The
  * location might not be available for various reasons, such as the
@@ -765,7 +765,7 @@ gtk_style_context_remove_provider_for_screen (GdkScreen        *screen,
  * for @property was defined
  **/
 GtkCssSection *
-gtk_style_context_get_section (GtkStyleContext *context,
+ctk_style_context_get_section (GtkStyleContext *context,
                                const gchar     *property)
 {
   GtkCssStyle *values;
@@ -774,23 +774,23 @@ gtk_style_context_get_section (GtkStyleContext *context,
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
   g_return_val_if_fail (property != NULL, NULL);
 
-  prop = _gtk_style_property_lookup (property);
+  prop = _ctk_style_property_lookup (property);
   if (!GTK_IS_CSS_STYLE_PROPERTY (prop))
     return NULL;
 
-  values = gtk_style_context_lookup_style (context);
-  return gtk_css_style_get_section (values, _gtk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (prop)));
+  values = ctk_style_context_lookup_style (context);
+  return ctk_css_style_get_section (values, _ctk_css_style_property_get_id (GTK_CSS_STYLE_PROPERTY (prop)));
 }
 
 static GtkCssValue *
-gtk_style_context_query_func (guint    id,
+ctk_style_context_query_func (guint    id,
                               gpointer values)
 {
-  return gtk_css_style_get_value (values, id);
+  return ctk_css_style_get_value (values, id);
 }
 
 /**
- * gtk_style_context_get_property:
+ * ctk_style_context_get_property:
  * @context: a #GtkStyleContext
  * @property: style property name
  * @state: state to retrieve the property value for
@@ -805,7 +805,7 @@ gtk_style_context_query_func (guint    id,
  *
  * Note that passing a state other than the current state of @context
  * is not recommended unless the style context has been saved with
- * gtk_style_context_save().
+ * ctk_style_context_save().
  *
  * When @value is no longer needed, g_value_unset() must be called
  * to free any allocated memory.
@@ -813,7 +813,7 @@ gtk_style_context_query_func (guint    id,
  * Since: 3.0
  **/
 void
-gtk_style_context_get_property (GtkStyleContext *context,
+ctk_style_context_get_property (GtkStyleContext *context,
                                 const gchar     *property,
                                 GtkStateFlags    state,
                                 GValue          *value)
@@ -825,40 +825,40 @@ gtk_style_context_get_property (GtkStyleContext *context,
   g_return_if_fail (property != NULL);
   g_return_if_fail (value != NULL);
 
-  prop = _gtk_style_property_lookup (property);
+  prop = _ctk_style_property_lookup (property);
   if (prop == NULL)
     {
       g_warning ("Style property \"%s\" is not registered", property);
       return;
     }
-  if (_gtk_style_property_get_value_type (prop) == G_TYPE_NONE)
+  if (_ctk_style_property_get_value_type (prop) == G_TYPE_NONE)
     {
       g_warning ("Style property \"%s\" is not gettable", property);
       return;
     }
 
-  saved_state = gtk_style_context_push_state (context, state);
-  _gtk_style_property_query (prop,
+  saved_state = ctk_style_context_push_state (context, state);
+  _ctk_style_property_query (prop,
                              value,
-                             gtk_style_context_query_func,
-                             gtk_css_node_get_style (context->priv->cssnode));
-  gtk_style_context_pop_state (context, saved_state);
+                             ctk_style_context_query_func,
+                             ctk_css_node_get_style (context->priv->cssnode));
+  ctk_style_context_pop_state (context, saved_state);
 }
 
 /**
- * gtk_style_context_get_valist:
+ * ctk_style_context_get_valist:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the property values for
  * @args: va_list of property name/return location pairs, followed by %NULL
  *
  * Retrieves several style property values from @context for a given state.
  *
- * See gtk_style_context_get_property() for details.
+ * See ctk_style_context_get_property() for details.
  *
  * Since: 3.0
  */
 void
-gtk_style_context_get_valist (GtkStyleContext *context,
+ctk_style_context_get_valist (GtkStyleContext *context,
                               GtkStateFlags    state,
                               va_list          args)
 {
@@ -873,7 +873,7 @@ gtk_style_context_get_valist (GtkStyleContext *context,
       gchar *error = NULL;
       GValue value = G_VALUE_INIT;
 
-      gtk_style_context_get_property (context,
+      ctk_style_context_get_property (context,
                                       property_name,
                                       state,
                                       &value);
@@ -893,7 +893,7 @@ gtk_style_context_get_valist (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get:
+ * ctk_style_context_get:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the property values for
  * @...: property name /return value pairs, followed by %NULL
@@ -901,12 +901,12 @@ gtk_style_context_get_valist (GtkStyleContext *context,
  * Retrieves several style property values from @context for a
  * given state.
  *
- * See gtk_style_context_get_property() for details.
+ * See ctk_style_context_get_property() for details.
  *
  * Since: 3.0
  */
 void
-gtk_style_context_get (GtkStyleContext *context,
+ctk_style_context_get (GtkStyleContext *context,
                        GtkStateFlags    state,
                        ...)
 {
@@ -915,28 +915,28 @@ gtk_style_context_get (GtkStyleContext *context,
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
   va_start (args, state);
-  gtk_style_context_get_valist (context, state, args);
+  ctk_style_context_get_valist (context, state, args);
   va_end (args);
 }
 
 /*
- * gtk_style_context_set_id:
+ * ctk_style_context_set_id:
  * @context: a #GtkStyleContext
  * @id: (allow-none): the id to use or %NULL for none.
  *
  * Sets the CSS ID to be used when obtaining style information.
  **/
 void
-gtk_style_context_set_id (GtkStyleContext *context,
+ctk_style_context_set_id (GtkStyleContext *context,
                           const char      *id)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  gtk_css_node_set_id (context->priv->cssnode, id);
+  ctk_css_node_set_id (context->priv->cssnode, id);
 }
 
 /*
- * gtk_style_context_get_id:
+ * ctk_style_context_get_id:
  * @context: a #GtkStyleContext
  *
  * Returns the CSS ID used when obtaining style information.
@@ -944,15 +944,15 @@ gtk_style_context_set_id (GtkStyleContext *context,
  * Returns: (nullable): the ID or %NULL if no ID is set.
  **/
 const char *
-gtk_style_context_get_id (GtkStyleContext *context)
+ctk_style_context_get_id (GtkStyleContext *context)
 {
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
 
-  return gtk_css_node_get_id (context->priv->cssnode);
+  return ctk_css_node_get_id (context->priv->cssnode);
 }
 
 /**
- * gtk_style_context_set_state:
+ * ctk_style_context_set_state:
  * @context: a #GtkStyleContext
  * @flags: state to represent
  *
@@ -961,47 +961,47 @@ gtk_style_context_get_id (GtkStyleContext *context)
  * Since: 3.0
  **/
 void
-gtk_style_context_set_state (GtkStyleContext *context,
+ctk_style_context_set_state (GtkStyleContext *context,
                              GtkStateFlags    flags)
 {
   GtkStateFlags old_flags;
 
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  old_flags = gtk_css_node_get_state (context->priv->cssnode);
+  old_flags = ctk_css_node_get_state (context->priv->cssnode);
 
-  gtk_css_node_set_state (context->priv->cssnode, flags);
+  ctk_css_node_set_state (context->priv->cssnode, flags);
 
   if (((old_flags ^ flags) & (GTK_STATE_FLAG_DIR_LTR | GTK_STATE_FLAG_DIR_RTL)) &&
-      !gtk_style_context_is_saved (context))
+      !ctk_style_context_is_saved (context))
     g_object_notify_by_pspec (G_OBJECT (context), properties[PROP_DIRECTION]);
 }
 
 /**
- * gtk_style_context_get_state:
+ * ctk_style_context_get_state:
  * @context: a #GtkStyleContext
  *
  * Returns the state used for style matching.
  *
  * This method should only be used to retrieve the #GtkStateFlags
- * to pass to #GtkStyleContext methods, like gtk_style_context_get_padding().
+ * to pass to #GtkStyleContext methods, like ctk_style_context_get_padding().
  * If you need to retrieve the current state of a #GtkWidget, use
- * gtk_widget_get_state_flags().
+ * ctk_widget_get_state_flags().
  *
  * Returns: the state flags
  *
  * Since: 3.0
  **/
 GtkStateFlags
-gtk_style_context_get_state (GtkStyleContext *context)
+ctk_style_context_get_state (GtkStyleContext *context)
 {
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), 0);
 
-  return gtk_css_node_get_state (context->priv->cssnode);
+  return ctk_css_node_get_state (context->priv->cssnode);
 }
 
 /**
- * gtk_style_context_set_scale:
+ * ctk_style_context_set_scale:
  * @context: a #GtkStyleContext
  * @scale: scale
  *
@@ -1010,7 +1010,7 @@ gtk_style_context_get_state (GtkStyleContext *context)
  * Since: 3.10
  **/
 void
-gtk_style_context_set_scale (GtkStyleContext *context,
+ctk_style_context_set_scale (GtkStyleContext *context,
                              gint             scale)
 {
   GtkStyleContextPrivate *priv;
@@ -1019,25 +1019,25 @@ gtk_style_context_set_scale (GtkStyleContext *context,
 
   priv = context->priv;
 
-  if (scale == _gtk_style_cascade_get_scale (priv->cascade))
+  if (scale == _ctk_style_cascade_get_scale (priv->cascade))
     return;
 
-  if (gtk_style_context_has_custom_cascade (context))
+  if (ctk_style_context_has_custom_cascade (context))
     {
-      _gtk_style_cascade_set_scale (priv->cascade, scale);
+      _ctk_style_cascade_set_scale (priv->cascade, scale);
     }
   else
     {
       GtkStyleCascade *new_cascade;
 
-      new_cascade = _gtk_settings_get_style_cascade (gtk_settings_get_for_screen (priv->screen),
+      new_cascade = _ctk_settings_get_style_cascade (ctk_settings_get_for_screen (priv->screen),
                                                      scale);
-      gtk_style_context_set_cascade (context, new_cascade);
+      ctk_style_context_set_cascade (context, new_cascade);
     }
 }
 
 /**
- * gtk_style_context_get_scale:
+ * ctk_style_context_get_scale:
  * @context: a #GtkStyleContext
  *
  * Returns the scale used for assets.
@@ -1047,21 +1047,21 @@ gtk_style_context_set_scale (GtkStyleContext *context,
  * Since: 3.10
  **/
 gint
-gtk_style_context_get_scale (GtkStyleContext *context)
+ctk_style_context_get_scale (GtkStyleContext *context)
 {
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), 0);
 
-  return _gtk_style_cascade_get_scale (context->priv->cascade);
+  return _ctk_style_cascade_get_scale (context->priv->cascade);
 }
 
 /**
- * gtk_style_context_state_is_running:
+ * ctk_style_context_state_is_running:
  * @context: a #GtkStyleContext
  * @state: a widget state
  * @progress: (out): return location for the transition progress
  *
  * Returns %TRUE if there is a transition animation running for the
- * current region (see gtk_style_context_push_animatable_region()).
+ * current region (see ctk_style_context_push_animatable_region()).
  *
  * If @progress is not %NULL, the animation progress will be returned
  * there, 0.0 means the state is closest to being unset, while 1.0 means
@@ -1076,7 +1076,7 @@ gtk_style_context_get_scale (GtkStyleContext *context)
  * Deprecated: 3.6: This function always returns %FALSE
  **/
 gboolean
-gtk_style_context_state_is_running (GtkStyleContext *context,
+ctk_style_context_state_is_running (GtkStyleContext *context,
                                     GtkStateType     state,
                                     gdouble         *progress)
 {
@@ -1086,7 +1086,7 @@ gtk_style_context_state_is_running (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_set_path:
+ * ctk_style_context_set_path:
  * @context: a #GtkStyleContext
  * @path: a #GtkWidgetPath
  *
@@ -1095,13 +1095,13 @@ gtk_style_context_state_is_running (GtkStyleContext *context,
  * the new given path.
  *
  * If you are using a #GtkStyleContext returned from
- * gtk_widget_get_style_context(), you do not need to call
+ * ctk_widget_get_style_context(), you do not need to call
  * this yourself.
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_set_path (GtkStyleContext *context,
+ctk_style_context_set_path (GtkStyleContext *context,
                             GtkWidgetPath   *path)
 {
   GtkCssNode *root;
@@ -1109,28 +1109,28 @@ gtk_style_context_set_path (GtkStyleContext *context,
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (path != NULL);
 
-  root = gtk_style_context_get_root (context);
+  root = ctk_style_context_get_root (context);
   g_return_if_fail (GTK_IS_CSS_PATH_NODE (root));
 
-  if (path && gtk_widget_path_length (path) > 0)
+  if (path && ctk_widget_path_length (path) > 0)
     {
-      GtkWidgetPath *copy = gtk_widget_path_copy (path);
-      gtk_css_path_node_set_widget_path (GTK_CSS_PATH_NODE (root), copy);
-      gtk_css_node_set_widget_type (root,
-                                    gtk_widget_path_iter_get_object_type (copy, -1));
-      gtk_css_node_set_name (root, gtk_widget_path_iter_get_object_name (copy, -1));
-      gtk_widget_path_unref (copy);
+      GtkWidgetPath *copy = ctk_widget_path_copy (path);
+      ctk_css_path_node_set_widget_path (GTK_CSS_PATH_NODE (root), copy);
+      ctk_css_node_set_widget_type (root,
+                                    ctk_widget_path_iter_get_object_type (copy, -1));
+      ctk_css_node_set_name (root, ctk_widget_path_iter_get_object_name (copy, -1));
+      ctk_widget_path_unref (copy);
     }
   else
     {
-      gtk_css_path_node_set_widget_path (GTK_CSS_PATH_NODE (root), NULL);
-      gtk_css_node_set_widget_type (root, G_TYPE_NONE);
-      gtk_css_node_set_name (root, NULL);
+      ctk_css_path_node_set_widget_path (GTK_CSS_PATH_NODE (root), NULL);
+      ctk_css_node_set_widget_type (root, G_TYPE_NONE);
+      ctk_css_node_set_name (root, NULL);
     }
 }
 
 /**
- * gtk_style_context_get_path:
+ * ctk_style_context_get_path:
  * @context: a #GtkStyleContext
  *
  * Returns the widget path used for style matching.
@@ -1140,13 +1140,13 @@ gtk_style_context_set_path (GtkStyleContext *context,
  * Since: 3.0
  **/
 const GtkWidgetPath *
-gtk_style_context_get_path (GtkStyleContext *context)
+ctk_style_context_get_path (GtkStyleContext *context)
 {
-  return gtk_css_node_get_widget_path (gtk_style_context_get_root (context));
+  return ctk_css_node_get_widget_path (ctk_style_context_get_root (context));
 }
 
 /**
- * gtk_style_context_set_parent:
+ * ctk_style_context_set_parent:
  * @context: a #GtkStyleContext
  * @parent: (allow-none): the new parent or %NULL
  *
@@ -1156,12 +1156,12 @@ gtk_style_context_get_path (GtkStyleContext *context)
  * of properties.
  *
  * If you are using a #GtkStyleContext returned from
- * gtk_widget_get_style_context(), the parent will be set for you.
+ * ctk_widget_get_style_context(), the parent will be set for you.
  *
  * Since: 3.4
  **/
 void
-gtk_style_context_set_parent (GtkStyleContext *context,
+ctk_style_context_set_parent (GtkStyleContext *context,
                               GtkStyleContext *parent)
 {
   GtkStyleContextPrivate *priv;
@@ -1176,30 +1176,30 @@ gtk_style_context_set_parent (GtkStyleContext *context,
 
   if (parent)
     {
-      GtkCssNode *root = gtk_style_context_get_root (context);
+      GtkCssNode *root = ctk_style_context_get_root (context);
       g_object_ref (parent);
 
-      if (gtk_css_node_get_parent (root) == NULL)
-        gtk_css_node_set_parent (root, gtk_style_context_get_root (parent));
+      if (ctk_css_node_get_parent (root) == NULL)
+        ctk_css_node_set_parent (root, ctk_style_context_get_root (parent));
     }
   else
     {
-      gtk_css_node_set_parent (gtk_style_context_get_root (context), NULL);
+      ctk_css_node_set_parent (ctk_style_context_get_root (context), NULL);
     }
 
-  gtk_style_context_clear_parent (context);
+  ctk_style_context_clear_parent (context);
 
   priv->parent = parent;
 
   g_object_notify_by_pspec (G_OBJECT (context), properties[PROP_PARENT]);
-  gtk_css_node_invalidate (gtk_style_context_get_root (context), GTK_CSS_CHANGE_ANY_PARENT | GTK_CSS_CHANGE_ANY_SIBLING);
+  ctk_css_node_invalidate (ctk_style_context_get_root (context), GTK_CSS_CHANGE_ANY_PARENT | GTK_CSS_CHANGE_ANY_SIBLING);
 }
 
 /**
- * gtk_style_context_get_parent:
+ * ctk_style_context_get_parent:
  * @context: a #GtkStyleContext
  *
- * Gets the parent context set via gtk_style_context_set_parent().
+ * Gets the parent context set via ctk_style_context_set_parent().
  * See that function for details.
  *
  * Returns: (nullable) (transfer none): the parent context or %NULL
@@ -1207,7 +1207,7 @@ gtk_style_context_set_parent (GtkStyleContext *context,
  * Since: 3.4
  **/
 GtkStyleContext *
-gtk_style_context_get_parent (GtkStyleContext *context)
+ctk_style_context_get_parent (GtkStyleContext *context)
 {
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
 
@@ -1215,23 +1215,23 @@ gtk_style_context_get_parent (GtkStyleContext *context)
 }
 
 /*
- * gtk_style_context_save_to_node:
+ * ctk_style_context_save_to_node:
  * @context: a #GtkStyleContext
  * @node: the node to save to
  *
  * Saves the @context state, so temporary modifications done through
- * gtk_style_context_add_class(), gtk_style_context_remove_class(),
- * gtk_style_context_set_state(), etc. and rendering using
- * gtk_render_background() or similar functions are done using the
+ * ctk_style_context_add_class(), ctk_style_context_remove_class(),
+ * ctk_style_context_set_state(), etc. and rendering using
+ * ctk_render_background() or similar functions are done using the
  * given @node.
  *
- * To undo, call gtk_style_context_restore().
+ * To undo, call ctk_style_context_restore().
  *
- * The matching call to gtk_style_context_restore() must be done
+ * The matching call to ctk_style_context_restore() must be done
  * before GTK returns to the main loop.
  **/
 void
-gtk_style_context_save_to_node (GtkStyleContext *context,
+ctk_style_context_save_to_node (GtkStyleContext *context,
                                 GtkCssNode      *node)
 {
   GtkStyleContextPrivate *priv;
@@ -1246,7 +1246,7 @@ gtk_style_context_save_to_node (GtkStyleContext *context,
 }
 
 void
-gtk_style_context_save_named (GtkStyleContext *context,
+ctk_style_context_save_named (GtkStyleContext *context,
                               const char      *name)
 {
   GtkStyleContextPrivate *priv;
@@ -1257,71 +1257,71 @@ gtk_style_context_save_named (GtkStyleContext *context,
   /* Make sure we have the style existing. It is the
    * parent of the new saved node after all.
    */
-  if (!gtk_style_context_is_saved (context))
-    gtk_style_context_lookup_style (context);
+  if (!ctk_style_context_is_saved (context))
+    ctk_style_context_lookup_style (context);
 
-  cssnode = gtk_css_transient_node_new (priv->cssnode);
-  gtk_css_node_set_parent (cssnode, gtk_style_context_get_root (context));
+  cssnode = ctk_css_transient_node_new (priv->cssnode);
+  ctk_css_node_set_parent (cssnode, ctk_style_context_get_root (context));
   if (name)
-    gtk_css_node_set_name (cssnode, g_intern_string (name));
+    ctk_css_node_set_name (cssnode, g_intern_string (name));
 
-  gtk_style_context_save_to_node (context, cssnode);
+  ctk_style_context_save_to_node (context, cssnode);
 
   g_object_unref (cssnode);
 }
 
 /**
- * gtk_style_context_save:
+ * ctk_style_context_save:
  * @context: a #GtkStyleContext
  *
  * Saves the @context state, so temporary modifications done through
- * gtk_style_context_add_class(), gtk_style_context_remove_class(),
- * gtk_style_context_set_state(), etc. can quickly be reverted
- * in one go through gtk_style_context_restore().
+ * ctk_style_context_add_class(), ctk_style_context_remove_class(),
+ * ctk_style_context_set_state(), etc. can quickly be reverted
+ * in one go through ctk_style_context_restore().
  *
- * The matching call to gtk_style_context_restore() must be done
+ * The matching call to ctk_style_context_restore() must be done
  * before GTK returns to the main loop.
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_save (GtkStyleContext *context)
+ctk_style_context_save (GtkStyleContext *context)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  gtk_style_context_save_named (context, NULL);
+  ctk_style_context_save_named (context, NULL);
 }
 
 /**
- * gtk_style_context_restore:
+ * ctk_style_context_restore:
  * @context: a #GtkStyleContext
  *
  * Restores @context state to a previous stage.
- * See gtk_style_context_save().
+ * See ctk_style_context_save().
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_restore (GtkStyleContext *context)
+ctk_style_context_restore (GtkStyleContext *context)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
   if (context->priv->saved_nodes == NULL)
     {
-      g_warning ("Unpaired gtk_style_context_restore() call");
+      g_warning ("Unpaired ctk_style_context_restore() call");
       return;
     }
 
-  gtk_style_context_pop_style_node (context);
+  ctk_style_context_pop_style_node (context);
 }
 
 /**
- * gtk_style_context_add_class:
+ * ctk_style_context_add_class:
  * @context: a #GtkStyleContext
  * @class_name: class name to use in styling
  *
  * Adds a style class to @context, so posterior calls to
- * gtk_style_context_get() or any of the gtk_render_*()
+ * ctk_style_context_get() or any of the ctk_render_*()
  * functions will make use of this new class for styling.
  *
  * In the CSS file format, a #GtkEntry defining a “search”
@@ -1340,7 +1340,7 @@ gtk_style_context_restore (GtkStyleContext *context)
  * Since: 3.0
  **/
 void
-gtk_style_context_add_class (GtkStyleContext *context,
+ctk_style_context_add_class (GtkStyleContext *context,
                              const gchar     *class_name)
 {
   GQuark class_quark;
@@ -1350,11 +1350,11 @@ gtk_style_context_add_class (GtkStyleContext *context,
 
   class_quark = g_quark_from_string (class_name);
 
-  gtk_css_node_add_class (context->priv->cssnode, class_quark);
+  ctk_css_node_add_class (context->priv->cssnode, class_quark);
 }
 
 /**
- * gtk_style_context_remove_class:
+ * ctk_style_context_remove_class:
  * @context: a #GtkStyleContext
  * @class_name: class name to remove
  *
@@ -1363,7 +1363,7 @@ gtk_style_context_add_class (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_style_context_remove_class (GtkStyleContext *context,
+ctk_style_context_remove_class (GtkStyleContext *context,
                                 const gchar     *class_name)
 {
   GQuark class_quark;
@@ -1375,11 +1375,11 @@ gtk_style_context_remove_class (GtkStyleContext *context,
   if (!class_quark)
     return;
 
-  gtk_css_node_remove_class (context->priv->cssnode, class_quark);
+  ctk_css_node_remove_class (context->priv->cssnode, class_quark);
 }
 
 /**
- * gtk_style_context_has_class:
+ * ctk_style_context_has_class:
  * @context: a #GtkStyleContext
  * @class_name: a class name
  *
@@ -1391,7 +1391,7 @@ gtk_style_context_remove_class (GtkStyleContext *context,
  * Since: 3.0
  **/
 gboolean
-gtk_style_context_has_class (GtkStyleContext *context,
+ctk_style_context_has_class (GtkStyleContext *context,
                              const gchar     *class_name)
 {
   GQuark class_quark;
@@ -1403,11 +1403,11 @@ gtk_style_context_has_class (GtkStyleContext *context,
   if (!class_quark)
     return FALSE;
 
-  return gtk_css_node_has_class (context->priv->cssnode, class_quark);
+  return ctk_css_node_has_class (context->priv->cssnode, class_quark);
 }
 
 /**
- * gtk_style_context_list_classes:
+ * ctk_style_context_list_classes:
  * @context: a #GtkStyleContext
  *
  * Returns the list of classes currently defined in @context.
@@ -1420,7 +1420,7 @@ gtk_style_context_has_class (GtkStyleContext *context,
  * Since: 3.0
  **/
 GList *
-gtk_style_context_list_classes (GtkStyleContext *context)
+ctk_style_context_list_classes (GtkStyleContext *context)
 {
   GList *classes_list = NULL;
   const GQuark *classes;
@@ -1428,7 +1428,7 @@ gtk_style_context_list_classes (GtkStyleContext *context)
 
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
 
-  classes = gtk_css_node_list_classes (context->priv->cssnode, &n_classes);
+  classes = ctk_css_node_list_classes (context->priv->cssnode, &n_classes);
   for (i = n_classes; i > 0; i--)
     classes_list = g_list_prepend (classes_list, (gchar *)g_quark_to_string (classes[i - 1]));
 
@@ -1436,7 +1436,7 @@ gtk_style_context_list_classes (GtkStyleContext *context)
 }
 
 /**
- * gtk_style_context_list_regions:
+ * ctk_style_context_list_regions:
  * @context: a #GtkStyleContext
  *
  * Returns the list of regions currently defined in @context.
@@ -1451,13 +1451,13 @@ gtk_style_context_list_classes (GtkStyleContext *context)
  * Deprecated: 3.14
  **/
 GList *
-gtk_style_context_list_regions (GtkStyleContext *context)
+ctk_style_context_list_regions (GtkStyleContext *context)
 {
   GList *regions, *l;
 
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
 
-  regions = gtk_css_node_list_regions (context->priv->cssnode);
+  regions = ctk_css_node_list_regions (context->priv->cssnode);
   for (l = regions; l; l = l->next)
     l->data = (char *) g_quark_to_string (GPOINTER_TO_UINT (l->data));
 
@@ -1465,7 +1465,7 @@ gtk_style_context_list_regions (GtkStyleContext *context)
 }
 
 gboolean
-_gtk_style_context_check_region_name (const gchar *str)
+_ctk_style_context_check_region_name (const gchar *str)
 {
   g_return_val_if_fail (str != NULL, FALSE);
 
@@ -1485,13 +1485,13 @@ _gtk_style_context_check_region_name (const gchar *str)
 }
 
 /**
- * gtk_style_context_add_region:
+ * ctk_style_context_add_region:
  * @context: a #GtkStyleContext
  * @region_name: region name to use in styling
  * @flags: flags that apply to the region
  *
  * Adds a region to @context, so posterior calls to
- * gtk_style_context_get() or any of the gtk_render_*()
+ * ctk_style_context_get() or any of the ctk_render_*()
  * functions will make use of this new region for styling.
  *
  * In the CSS file format, a #GtkTreeView defining a “row”
@@ -1518,7 +1518,7 @@ _gtk_style_context_check_region_name (const gchar *str)
  * Deprecated: 3.14
  **/
 void
-gtk_style_context_add_region (GtkStyleContext *context,
+ctk_style_context_add_region (GtkStyleContext *context,
                               const gchar     *region_name,
                               GtkRegionFlags   flags)
 {
@@ -1526,15 +1526,15 @@ gtk_style_context_add_region (GtkStyleContext *context,
 
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (region_name != NULL);
-  g_return_if_fail (_gtk_style_context_check_region_name (region_name));
+  g_return_if_fail (_ctk_style_context_check_region_name (region_name));
 
   region_quark = g_quark_from_string (region_name);
 
-  gtk_css_node_add_region (context->priv->cssnode, region_quark, flags);
+  ctk_css_node_add_region (context->priv->cssnode, region_quark, flags);
 }
 
 /**
- * gtk_style_context_remove_region:
+ * ctk_style_context_remove_region:
  * @context: a #GtkStyleContext
  * @region_name: region name to unset
  *
@@ -1545,7 +1545,7 @@ gtk_style_context_add_region (GtkStyleContext *context,
  * Deprecated: 3.14
  **/
 void
-gtk_style_context_remove_region (GtkStyleContext *context,
+ctk_style_context_remove_region (GtkStyleContext *context,
                                  const gchar     *region_name)
 {
   GQuark region_quark;
@@ -1557,11 +1557,11 @@ gtk_style_context_remove_region (GtkStyleContext *context,
   if (!region_quark)
     return;
 
-  gtk_css_node_remove_region (context->priv->cssnode, region_quark);
+  ctk_css_node_remove_region (context->priv->cssnode, region_quark);
 }
 
 /**
- * gtk_style_context_has_region:
+ * ctk_style_context_has_region:
  * @context: a #GtkStyleContext
  * @region_name: a region name
  * @flags_return: (out) (allow-none): return location for region flags
@@ -1577,7 +1577,7 @@ gtk_style_context_remove_region (GtkStyleContext *context,
  * Deprecated: 3.14
  **/
 gboolean
-gtk_style_context_has_region (GtkStyleContext *context,
+ctk_style_context_has_region (GtkStyleContext *context,
                               const gchar     *region_name,
                               GtkRegionFlags  *flags_return)
 {
@@ -1593,7 +1593,7 @@ gtk_style_context_has_region (GtkStyleContext *context,
   if (!region_quark)
     return FALSE;
 
-  return gtk_css_node_has_region (context->priv->cssnode, region_quark, flags_return);
+  return ctk_css_node_has_region (context->priv->cssnode, region_quark, flags_return);
 }
 
 static gint
@@ -1613,16 +1613,16 @@ style_property_values_cmp (gconstpointer bsearch_node1,
 }
 
 GtkCssValue *
-_gtk_style_context_peek_property (GtkStyleContext *context,
+_ctk_style_context_peek_property (GtkStyleContext *context,
                                   guint            property_id)
 {
-  GtkCssStyle *values = gtk_style_context_lookup_style (context);
+  GtkCssStyle *values = ctk_style_context_lookup_style (context);
 
-  return gtk_css_style_get_value (values, property_id);
+  return ctk_css_style_get_value (values, property_id);
 }
 
 const GValue *
-_gtk_style_context_peek_style_property (GtkStyleContext *context,
+_ctk_style_context_peek_style_property (GtkStyleContext *context,
                                         GType            widget_type,
                                         GParamSpec      *pspec)
 {
@@ -1634,7 +1634,7 @@ _gtk_style_context_peek_style_property (GtkStyleContext *context,
   priv = context->priv;
 
   /* ensure the style cache is valid by forcing a validation */
-  gtk_style_context_lookup_style (context);
+  ctk_style_context_lookup_style (context);
 
   key.widget_type = widget_type;
   key.pspec = pspec;
@@ -1658,12 +1658,12 @@ _gtk_style_context_peek_style_property (GtkStyleContext *context,
   g_param_spec_ref (pcache->pspec);
   g_value_init (&pcache->value, G_PARAM_SPEC_VALUE_TYPE (pspec));
 
-  path = gtk_css_node_create_widget_path (gtk_style_context_get_root (context));
-  if (path && gtk_widget_path_length (path) > 0)
+  path = ctk_css_node_create_widget_path (ctk_style_context_get_root (context));
+  if (path && ctk_widget_path_length (path) > 0)
     {
-      if (gtk_style_provider_get_style_property (GTK_STYLE_PROVIDER (priv->cascade),
+      if (ctk_style_provider_get_style_property (GTK_STYLE_PROVIDER (priv->cascade),
                                                  path,
-                                                 gtk_widget_path_iter_get_state (path, -1),
+                                                 ctk_widget_path_iter_get_state (path, -1),
                                                  pspec, &pcache->value))
         {
           G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -1683,7 +1683,7 @@ _gtk_style_context_peek_style_property (GtkStyleContext *context,
               else
                 g_value_init (&pcache->value, GDK_TYPE_COLOR);
 
-              if (_gtk_style_context_resolve_color (context, _gtk_symbolic_color_get_css_value (color), &rgba))
+              if (_ctk_style_context_resolve_color (context, _ctk_symbolic_color_get_css_value (color), &rgba))
                 {
                   if (G_PARAM_SPEC_VALUE_TYPE (pspec) == GDK_TYPE_RGBA)
                     g_value_set_boxed (&pcache->value, &rgba);
@@ -1701,18 +1701,18 @@ _gtk_style_context_peek_style_property (GtkStyleContext *context,
               else
                 g_param_value_set_default (pspec, &pcache->value);
 
-              gtk_symbolic_color_unref (color);
+              ctk_symbolic_color_unref (color);
             }
 
           G_GNUC_END_IGNORE_DEPRECATIONS;
 
-          gtk_widget_path_unref (path);
+          ctk_widget_path_unref (path);
 
           return &pcache->value;
         }
     }
 
-  gtk_widget_path_unref (path);
+  ctk_widget_path_unref (path);
 
   /* not supplied by any provider, revert to default */
   g_param_value_set_default (pspec, &pcache->value);
@@ -1721,7 +1721,7 @@ _gtk_style_context_peek_style_property (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get_style_property:
+ * ctk_style_context_get_style_property:
  * @context: a #GtkStyleContext
  * @property_name: the name of the widget style property
  * @value: Return location for the property value
@@ -1732,7 +1732,7 @@ _gtk_style_context_peek_style_property (GtkStyleContext *context,
  * to free any allocated memory.
  **/
 void
-gtk_style_context_get_style_property (GtkStyleContext *context,
+ctk_style_context_get_style_property (GtkStyleContext *context,
                                       const gchar     *property_name,
                                       GValue          *value)
 {
@@ -1746,13 +1746,13 @@ gtk_style_context_get_style_property (GtkStyleContext *context,
   g_return_if_fail (property_name != NULL);
   g_return_if_fail (value != NULL);
 
-  root = gtk_style_context_get_root (context);
+  root = ctk_style_context_get_root (context);
 
   if (GTK_IS_CSS_WIDGET_NODE (root))
     {
       GtkWidget *widget;
 
-      widget = gtk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (root));
+      widget = ctk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (root));
       if (widget == NULL)
         return;
 
@@ -1762,11 +1762,11 @@ gtk_style_context_get_style_property (GtkStyleContext *context,
     {
       GtkWidgetPath *path;
 
-      path = gtk_css_path_node_get_widget_path (GTK_CSS_PATH_NODE (root));
+      path = ctk_css_path_node_get_widget_path (GTK_CSS_PATH_NODE (root));
       if (path == NULL)
         return;
 
-      widget_type = gtk_widget_path_get_object_type (path);
+      widget_type = ctk_widget_path_get_object_type (path);
 
       if (!g_type_is_a (widget_type, GTK_TYPE_WIDGET))
         {
@@ -1782,7 +1782,7 @@ gtk_style_context_get_style_property (GtkStyleContext *context,
     }
 
   widget_class = g_type_class_ref (widget_type);
-  pspec = gtk_widget_class_find_style_property (widget_class, property_name);
+  pspec = ctk_widget_class_find_style_property (widget_class, property_name);
   g_type_class_unref (widget_class);
 
   if (!pspec)
@@ -1794,7 +1794,7 @@ gtk_style_context_get_style_property (GtkStyleContext *context,
       return;
     }
 
-  peek_value = _gtk_style_context_peek_style_property (context, widget_type, pspec);
+  peek_value = _ctk_style_context_peek_style_property (context, widget_type, pspec);
 
   if (G_VALUE_TYPE (value) == G_VALUE_TYPE (peek_value))
     g_value_copy (peek_value, value);
@@ -1808,7 +1808,7 @@ gtk_style_context_get_style_property (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get_style_valist:
+ * ctk_style_context_get_style_valist:
  * @context: a #GtkStyleContext
  * @args: va_list of property name/return location pairs, followed by %NULL
  *
@@ -1818,7 +1818,7 @@ gtk_style_context_get_style_property (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_style_context_get_style_valist (GtkStyleContext *context,
+ctk_style_context_get_style_valist (GtkStyleContext *context,
                                     va_list          args)
 {
   GtkCssNode *root;
@@ -1828,13 +1828,13 @@ gtk_style_context_get_style_valist (GtkStyleContext *context,
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
   prop_name = va_arg (args, const gchar *);
-  root = gtk_style_context_get_root (context);
+  root = ctk_style_context_get_root (context);
 
   if (GTK_IS_CSS_WIDGET_NODE (root))
     {
       GtkWidget *widget;
 
-      widget = gtk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (root));
+      widget = ctk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (root));
       if (widget == NULL)
         return;
 
@@ -1844,11 +1844,11 @@ gtk_style_context_get_style_valist (GtkStyleContext *context,
     {
       GtkWidgetPath *path;
 
-      path = gtk_css_path_node_get_widget_path (GTK_CSS_PATH_NODE (root));
+      path = ctk_css_path_node_get_widget_path (GTK_CSS_PATH_NODE (root));
       if (path == NULL)
         return;
 
-      widget_type = gtk_widget_path_get_object_type (path);
+      widget_type = ctk_widget_path_get_object_type (path);
 
       if (!g_type_is_a (widget_type, GTK_TYPE_WIDGET))
         {
@@ -1871,7 +1871,7 @@ gtk_style_context_get_style_valist (GtkStyleContext *context,
       gchar *error;
 
       widget_class = g_type_class_ref (widget_type);
-      pspec = gtk_widget_class_find_style_property (widget_class, prop_name);
+      pspec = ctk_widget_class_find_style_property (widget_class, prop_name);
       g_type_class_unref (widget_class);
 
       if (!pspec)
@@ -1883,7 +1883,7 @@ gtk_style_context_get_style_valist (GtkStyleContext *context,
           break;
         }
 
-      peek_value = _gtk_style_context_peek_style_property (context, widget_type, pspec);
+      peek_value = _ctk_style_context_peek_style_property (context, widget_type, pspec);
 
       G_VALUE_LCOPY (peek_value, args, 0, &error);
 
@@ -1902,7 +1902,7 @@ gtk_style_context_get_style_valist (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get_style:
+ * ctk_style_context_get_style:
  * @context: a #GtkStyleContext
  * @...: property name /return value pairs, followed by %NULL
  *
@@ -1912,19 +1912,19 @@ gtk_style_context_get_style_valist (GtkStyleContext *context,
  * Since: 3.0
  **/
 void
-gtk_style_context_get_style (GtkStyleContext *context,
+ctk_style_context_get_style (GtkStyleContext *context,
                              ...)
 {
   va_list args;
 
   va_start (args, context);
-  gtk_style_context_get_style_valist (context, args);
+  ctk_style_context_get_style_valist (context, args);
   va_end (args);
 }
 
 
 /**
- * gtk_style_context_lookup_icon_set:
+ * ctk_style_context_lookup_icon_set:
  * @context: a #GtkStyleContext
  * @stock_id: an icon name
  *
@@ -1934,10 +1934,10 @@ gtk_style_context_get_style (GtkStyleContext *context,
  *
  * Returns: (nullable) (transfer none): The looked up %GtkIconSet, or %NULL
  *
- * Deprecated: 3.10: Use gtk_icon_theme_lookup_icon() instead.
+ * Deprecated: 3.10: Use ctk_icon_theme_lookup_icon() instead.
  **/
 GtkIconSet *
-gtk_style_context_lookup_icon_set (GtkStyleContext *context,
+ctk_style_context_lookup_icon_set (GtkStyleContext *context,
                                    const gchar     *stock_id)
 {
   GtkIconSet *icon_set;
@@ -1947,7 +1947,7 @@ gtk_style_context_lookup_icon_set (GtkStyleContext *context,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  icon_set = gtk_icon_factory_lookup_default (stock_id);
+  icon_set = ctk_icon_factory_lookup_default (stock_id);
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -1955,7 +1955,7 @@ gtk_style_context_lookup_icon_set (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_set_screen:
+ * ctk_style_context_set_screen:
  * @context: a #GtkStyleContext
  * @screen: a #GdkScreen
  *
@@ -1965,13 +1965,13 @@ gtk_style_context_lookup_icon_set (GtkStyleContext *context,
  * providers, such as the screen’s #GtkSettings instance.
  *
  * If you are using a #GtkStyleContext returned from
- * gtk_widget_get_style_context(), you do not need to
+ * ctk_widget_get_style_context(), you do not need to
  * call this yourself.
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_set_screen (GtkStyleContext *context,
+ctk_style_context_set_screen (GtkStyleContext *context,
                               GdkScreen       *screen)
 {
   GtkStyleContextPrivate *priv;
@@ -1984,16 +1984,16 @@ gtk_style_context_set_screen (GtkStyleContext *context,
   if (priv->screen == screen)
     return;
 
-  if (gtk_style_context_has_custom_cascade (context))
+  if (ctk_style_context_has_custom_cascade (context))
     {
-      screen_cascade = _gtk_settings_get_style_cascade (gtk_settings_get_for_screen (screen), 1);
-      _gtk_style_cascade_set_parent (priv->cascade, screen_cascade);
+      screen_cascade = _ctk_settings_get_style_cascade (ctk_settings_get_for_screen (screen), 1);
+      _ctk_style_cascade_set_parent (priv->cascade, screen_cascade);
     }
   else
     {
-      screen_cascade = _gtk_settings_get_style_cascade (gtk_settings_get_for_screen (screen),
-                                                        _gtk_style_cascade_get_scale (priv->cascade));
-      gtk_style_context_set_cascade (context, screen_cascade);
+      screen_cascade = _ctk_settings_get_style_cascade (ctk_settings_get_for_screen (screen),
+                                                        _ctk_style_cascade_get_scale (priv->cascade));
+      ctk_style_context_set_cascade (context, screen_cascade);
     }
 
   priv->screen = screen;
@@ -2002,7 +2002,7 @@ gtk_style_context_set_screen (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get_screen:
+ * ctk_style_context_get_screen:
  * @context: a #GtkStyleContext
  *
  * Returns the #GdkScreen to which @context is attached.
@@ -2010,7 +2010,7 @@ gtk_style_context_set_screen (GtkStyleContext *context,
  * Returns: (transfer none): a #GdkScreen.
  **/
 GdkScreen *
-gtk_style_context_get_screen (GtkStyleContext *context)
+ctk_style_context_get_screen (GtkStyleContext *context)
 {
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
 
@@ -2018,7 +2018,7 @@ gtk_style_context_get_screen (GtkStyleContext *context)
 }
 
 /**
- * gtk_style_context_set_frame_clock:
+ * ctk_style_context_set_frame_clock:
  * @context: a #GdkFrameClock
  * @frame_clock: a #GdkFrameClock
  *
@@ -2027,13 +2027,13 @@ gtk_style_context_get_screen (GtkStyleContext *context)
  * The frame clock is used for the timing of animations.
  *
  * If you are using a #GtkStyleContext returned from
- * gtk_widget_get_style_context(), you do not need to
+ * ctk_widget_get_style_context(), you do not need to
  * call this yourself.
  *
  * Since: 3.8
  **/
 void
-gtk_style_context_set_frame_clock (GtkStyleContext *context,
+ctk_style_context_set_frame_clock (GtkStyleContext *context,
                                    GdkFrameClock   *frame_clock)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
@@ -2044,7 +2044,7 @@ gtk_style_context_set_frame_clock (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get_frame_clock:
+ * ctk_style_context_get_frame_clock:
  * @context: a #GtkStyleContext
  *
  * Returns the #GdkFrameClock to which @context is attached.
@@ -2055,7 +2055,7 @@ gtk_style_context_set_frame_clock (GtkStyleContext *context,
  * Since: 3.8
  **/
 GdkFrameClock *
-gtk_style_context_get_frame_clock (GtkStyleContext *context)
+ctk_style_context_get_frame_clock (GtkStyleContext *context)
 {
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
 
@@ -2063,31 +2063,31 @@ gtk_style_context_get_frame_clock (GtkStyleContext *context)
 }
 
 /**
- * gtk_style_context_set_direction:
+ * ctk_style_context_set_direction:
  * @context: a #GtkStyleContext
  * @direction: the new direction.
  *
  * Sets the reading direction for rendering purposes.
  *
  * If you are using a #GtkStyleContext returned from
- * gtk_widget_get_style_context(), you do not need to
+ * ctk_widget_get_style_context(), you do not need to
  * call this yourself.
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: Use gtk_style_context_set_state() with
+ * Deprecated: 3.8: Use ctk_style_context_set_state() with
  *   #GTK_STATE_FLAG_DIR_LTR and #GTK_STATE_FLAG_DIR_RTL
  *   instead.
  **/
 void
-gtk_style_context_set_direction (GtkStyleContext  *context,
+ctk_style_context_set_direction (GtkStyleContext  *context,
                                  GtkTextDirection  direction)
 {
   GtkStateFlags state;
 
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  state = gtk_style_context_get_state (context);
+  state = ctk_style_context_get_state (context);
   state &= ~(GTK_STATE_FLAG_DIR_LTR | GTK_STATE_FLAG_DIR_RTL);
 
   switch (direction)
@@ -2105,11 +2105,11 @@ gtk_style_context_set_direction (GtkStyleContext  *context,
       break;
     }
 
-  gtk_style_context_set_state (context, state);
+  ctk_style_context_set_state (context, state);
 }
 
 /**
- * gtk_style_context_get_direction:
+ * ctk_style_context_get_direction:
  * @context: a #GtkStyleContext
  *
  * Returns the widget direction used for rendering.
@@ -2118,18 +2118,18 @@ gtk_style_context_set_direction (GtkStyleContext  *context,
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: Use gtk_style_context_get_state() and
+ * Deprecated: 3.8: Use ctk_style_context_get_state() and
  *   check for #GTK_STATE_FLAG_DIR_LTR and
  *   #GTK_STATE_FLAG_DIR_RTL instead.
  **/
 GtkTextDirection
-gtk_style_context_get_direction (GtkStyleContext *context)
+ctk_style_context_get_direction (GtkStyleContext *context)
 {
   GtkStateFlags state;
 
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), GTK_TEXT_DIR_LTR);
 
-  state = gtk_style_context_get_state (context);
+  state = ctk_style_context_get_state (context);
 
   if (state & GTK_STATE_FLAG_DIR_LTR)
     return GTK_TEXT_DIR_LTR;
@@ -2140,13 +2140,13 @@ gtk_style_context_get_direction (GtkStyleContext *context)
 }
 
 /**
- * gtk_style_context_set_junction_sides:
+ * ctk_style_context_set_junction_sides:
  * @context: a #GtkStyleContext
  * @sides: sides where rendered elements are visually connected to
  *     other elements
  *
  * Sets the sides where rendered elements (mostly through
- * gtk_render_frame()) will visually connect with other visual elements.
+ * ctk_render_frame()) will visually connect with other visual elements.
  *
  * This is merely a hint that may or may not be honored
  * by themes.
@@ -2158,16 +2158,16 @@ gtk_style_context_get_direction (GtkStyleContext *context)
  * Since: 3.0
  **/
 void
-gtk_style_context_set_junction_sides (GtkStyleContext  *context,
+ctk_style_context_set_junction_sides (GtkStyleContext  *context,
                                       GtkJunctionSides  sides)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  gtk_css_node_set_junction_sides (context->priv->cssnode, sides);
+  ctk_css_node_set_junction_sides (context->priv->cssnode, sides);
 }
 
 /**
- * gtk_style_context_get_junction_sides:
+ * ctk_style_context_get_junction_sides:
  * @context: a #GtkStyleContext
  *
  * Returns the sides where rendered elements connect visually with others.
@@ -2177,15 +2177,15 @@ gtk_style_context_set_junction_sides (GtkStyleContext  *context,
  * Since: 3.0
  **/
 GtkJunctionSides
-gtk_style_context_get_junction_sides (GtkStyleContext *context)
+ctk_style_context_get_junction_sides (GtkStyleContext *context)
 {
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), 0);
 
-  return gtk_css_node_get_junction_sides (context->priv->cssnode);
+  return ctk_css_node_get_junction_sides (context->priv->cssnode);
 }
 
 gboolean
-_gtk_style_context_resolve_color (GtkStyleContext    *context,
+_ctk_style_context_resolve_color (GtkStyleContext    *context,
                                   GtkCssValue        *color,
                                   GdkRGBA            *result)
 {
@@ -2195,20 +2195,20 @@ _gtk_style_context_resolve_color (GtkStyleContext    *context,
   g_return_val_if_fail (color != NULL, FALSE);
   g_return_val_if_fail (result != NULL, FALSE);
 
-  val = _gtk_css_color_value_resolve (color,
+  val = _ctk_css_color_value_resolve (color,
                                       GTK_STYLE_PROVIDER_PRIVATE (context->priv->cascade),
-                                      _gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_COLOR),
+                                      _ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_COLOR),
                                       NULL);
   if (val == NULL)
     return FALSE;
 
-  *result = *_gtk_css_rgba_value_get_rgba (val);
-  _gtk_css_value_unref (val);
+  *result = *_ctk_css_rgba_value_get_rgba (val);
+  _ctk_css_value_unref (val);
   return TRUE;
 }
 
 /**
- * gtk_style_context_lookup_color:
+ * ctk_style_context_lookup_color:
  * @context: a #GtkStyleContext
  * @color_name: color name to lookup
  * @color: (out): Return location for the looked up color
@@ -2218,7 +2218,7 @@ _gtk_style_context_resolve_color (GtkStyleContext    *context,
  * Returns: %TRUE if @color_name was found and resolved, %FALSE otherwise
  **/
 gboolean
-gtk_style_context_lookup_color (GtkStyleContext *context,
+ctk_style_context_lookup_color (GtkStyleContext *context,
                                 const gchar     *color_name,
                                 GdkRGBA         *color)
 {
@@ -2228,19 +2228,19 @@ gtk_style_context_lookup_color (GtkStyleContext *context,
   g_return_val_if_fail (color_name != NULL, FALSE);
   g_return_val_if_fail (color != NULL, FALSE);
 
-  value = _gtk_style_provider_private_get_color (GTK_STYLE_PROVIDER_PRIVATE (context->priv->cascade), color_name);
+  value = _ctk_style_provider_private_get_color (GTK_STYLE_PROVIDER_PRIVATE (context->priv->cascade), color_name);
   if (value == NULL)
     return FALSE;
 
-  return _gtk_style_context_resolve_color (context, value, color);
+  return _ctk_style_context_resolve_color (context, value, color);
 }
 
 /**
- * gtk_style_context_notify_state_change:
+ * ctk_style_context_notify_state_change:
  * @context: a #GtkStyleContext
  * @window: a #GdkWindow
  * @region_id: (allow-none): animatable region to notify on, or %NULL.
- *     See gtk_style_context_push_animatable_region()
+ *     See ctk_style_context_push_animatable_region()
  * @state: state to trigger transition for
  * @state_value: %TRUE if @state is the state we are changing to,
  *     %FALSE if we are changing away from it
@@ -2252,7 +2252,7 @@ gtk_style_context_lookup_color (GtkStyleContext *context,
  *
  * The @window parameter is used in order to invalidate the rendered area
  * as the animation runs, so make sure it is the same window that is being
- * rendered on by the gtk_render_*() functions.
+ * rendered on by the ctk_render_*() functions.
  *
  * If @region_id is %NULL, all rendered elements using @context will be
  * affected by this state transition.
@@ -2260,8 +2260,8 @@ gtk_style_context_lookup_color (GtkStyleContext *context,
  * As a practical example, a #GtkButton notifying a state transition on
  * the prelight state:
  * |[ <!-- language="C" -->
- * gtk_style_context_notify_state_change (context,
- *                                        gtk_widget_get_window (widget),
+ * ctk_style_context_notify_state_change (context,
+ *                                        ctk_widget_get_window (widget),
  *                                        NULL,
  *                                        GTK_STATE_PRELIGHT,
  *                                        button->in_button);
@@ -2291,7 +2291,7 @@ gtk_style_context_lookup_color (GtkStyleContext *context,
  * Deprecated: 3.6: This function does nothing.
  **/
 void
-gtk_style_context_notify_state_change (GtkStyleContext *context,
+ctk_style_context_notify_state_change (GtkStyleContext *context,
                                        GdkWindow       *window,
                                        gpointer         region_id,
                                        GtkStateType     state,
@@ -2303,17 +2303,17 @@ gtk_style_context_notify_state_change (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_cancel_animations:
+ * ctk_style_context_cancel_animations:
  * @context: a #GtkStyleContext
  * @region_id: (allow-none): animatable region to stop, or %NULL.
- *     See gtk_style_context_push_animatable_region()
+ *     See ctk_style_context_push_animatable_region()
  *
  * Stops all running animations for @region_id and all animatable
  * regions underneath.
  *
  * A %NULL @region_id will stop all ongoing animations in @context,
  * when dealing with a #GtkStyleContext obtained through
- * gtk_widget_get_style_context(), this is normally done for you
+ * ctk_widget_get_style_context(), this is normally done for you
  * in all circumstances you would expect all widget to be stopped,
  * so this should be only used in complex widgets with different
  * animatable regions.
@@ -2323,17 +2323,17 @@ gtk_style_context_notify_state_change (GtkStyleContext *context,
  * Deprecated: 3.6: This function does nothing.
  **/
 void
-gtk_style_context_cancel_animations (GtkStyleContext *context,
+ctk_style_context_cancel_animations (GtkStyleContext *context,
                                      gpointer         region_id)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 }
 
 /**
- * gtk_style_context_scroll_animations:
+ * ctk_style_context_scroll_animations:
  * @context: a #GtkStyleContext
  * @window: a #GdkWindow used previously in
- *          gtk_style_context_notify_state_change()
+ *          ctk_style_context_notify_state_change()
  * @dx: Amount to scroll in the X axis
  * @dy: Amount to scroll in the Y axis
  *
@@ -2347,7 +2347,7 @@ gtk_style_context_cancel_animations (GtkStyleContext *context,
  * Deprecated: 3.6: This function does nothing.
  **/
 void
-gtk_style_context_scroll_animations (GtkStyleContext *context,
+ctk_style_context_scroll_animations (GtkStyleContext *context,
                                      GdkWindow       *window,
                                      gint             dx,
                                      gint             dy)
@@ -2357,14 +2357,14 @@ gtk_style_context_scroll_animations (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_push_animatable_region:
+ * ctk_style_context_push_animatable_region:
  * @context: a #GtkStyleContext
  * @region_id: unique identifier for the animatable region
  *
- * Pushes an animatable region, so all further gtk_render_*() calls between
- * this call and the following gtk_style_context_pop_animatable_region()
+ * Pushes an animatable region, so all further ctk_render_*() calls between
+ * this call and the following ctk_style_context_pop_animatable_region()
  * will potentially show transition animations for this region if
- * gtk_style_context_notify_state_change() is called for a given state,
+ * ctk_style_context_notify_state_change() is called for a given state,
  * and the current theme/style defines transition animations for state
  * changes.
  *
@@ -2376,7 +2376,7 @@ gtk_style_context_scroll_animations (GtkStyleContext *context,
  * Deprecated: 3.6: This function does nothing.
  **/
 void
-gtk_style_context_push_animatable_region (GtkStyleContext *context,
+ctk_style_context_push_animatable_region (GtkStyleContext *context,
                                           gpointer         region_id)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
@@ -2384,18 +2384,18 @@ gtk_style_context_push_animatable_region (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_pop_animatable_region:
+ * ctk_style_context_pop_animatable_region:
  * @context: a #GtkStyleContext
  *
  * Pops an animatable region from @context.
- * See gtk_style_context_push_animatable_region().
+ * See ctk_style_context_push_animatable_region().
  *
  * Since: 3.0
  *
  * Deprecated: 3.6: This function does nothing.
  **/
 void
-gtk_style_context_pop_animatable_region (GtkStyleContext *context)
+ctk_style_context_pop_animatable_region (GtkStyleContext *context)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 }
@@ -2403,7 +2403,7 @@ gtk_style_context_pop_animatable_region (GtkStyleContext *context)
 static GtkCssStyleChange magic_number;
 
 void
-gtk_style_context_validate (GtkStyleContext  *context,
+ctk_style_context_validate (GtkStyleContext  *context,
                             GtkCssStyleChange *change)
 {
   GtkStyleContextPrivate *priv;
@@ -2429,7 +2429,7 @@ gtk_style_context_validate (GtkStyleContext  *context,
 }
 
 /**
- * gtk_style_context_invalidate:
+ * ctk_style_context_invalidate:
  * @context: a #GtkStyleContext.
  *
  * Invalidates @context style information, so it will be reconstructed
@@ -2441,17 +2441,17 @@ gtk_style_context_validate (GtkStyleContext  *context,
  * Deprecated: 3.12: Style contexts are invalidated automatically.
  **/
 void
-gtk_style_context_invalidate (GtkStyleContext *context)
+ctk_style_context_invalidate (GtkStyleContext *context)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  gtk_style_context_clear_property_cache (context);
+  ctk_style_context_clear_property_cache (context);
 
-  gtk_style_context_validate (context, NULL);
+  ctk_style_context_validate (context, NULL);
 }
 
 /**
- * gtk_style_context_set_background:
+ * ctk_style_context_set_background:
  * @context: a #GtkStyleContext
  * @window: a #GdkWindow
  *
@@ -2460,12 +2460,12 @@ gtk_style_context_invalidate (GtkStyleContext *context)
  *
  * Since: 3.0
  *
- * Deprecated: 3.18: Use gtk_render_background() instead.
+ * Deprecated: 3.18: Use ctk_render_background() instead.
  *   Note that clients still using this function are now responsible
  *   for calling this function again whenever @context is invalidated.
  **/
 void
-gtk_style_context_set_background (GtkStyleContext *context,
+ctk_style_context_set_background (GtkStyleContext *context,
                                   GdkWindow       *window)
 {
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
@@ -2480,11 +2480,11 @@ gtk_style_context_set_background (GtkStyleContext *context,
    * We could indeed just set black instead of the color we have.
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (gtk_css_style_render_background_is_opaque (gtk_style_context_lookup_style (context)))
+  if (ctk_css_style_render_background_is_opaque (ctk_style_context_lookup_style (context)))
     {
       const GdkRGBA *color;
 
-      color = _gtk_css_rgba_value_get_rgba (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_BACKGROUND_COLOR));
+      color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_BACKGROUND_COLOR));
 
       gdk_window_set_background_rgba (window, color);
     }
@@ -2497,20 +2497,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
- * gtk_style_context_get_color:
+ * ctk_style_context_get_color:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the color for
  * @color: (out): return value for the foreground color
  *
  * Gets the foreground color for a given state.
  *
- * See gtk_style_context_get_property() and
+ * See ctk_style_context_get_property() and
  * #GTK_STYLE_PROPERTY_COLOR for details.
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_get_color (GtkStyleContext *context,
+ctk_style_context_get_color (GtkStyleContext *context,
                              GtkStateFlags    state,
                              GdkRGBA         *color)
 {
@@ -2519,7 +2519,7 @@ gtk_style_context_get_color (GtkStyleContext *context,
   g_return_if_fail (color != NULL);
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  gtk_style_context_get (context,
+  ctk_style_context_get (context,
                          state,
                          "color", &c,
                          NULL);
@@ -2529,7 +2529,7 @@ gtk_style_context_get_color (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get_background_color:
+ * ctk_style_context_get_background_color:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the color for
  * @color: (out): return value for the background color
@@ -2540,17 +2540,17 @@ gtk_style_context_get_color (GtkStyleContext *context,
  * newly written code. CSS has no concept of "background color", as a background
  * can be an image, or a gradient, or any other pattern including solid colors.
  *
- * The only reason why you would call gtk_style_context_get_background_color() is
+ * The only reason why you would call ctk_style_context_get_background_color() is
  * to use the returned value to draw the background with it; the correct way to
- * achieve this result is to use gtk_render_background() instead, along with CSS
+ * achieve this result is to use ctk_render_background() instead, along with CSS
  * style classes to modify the color to be rendered.
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: Use gtk_render_background() instead.
+ * Deprecated: 3.16: Use ctk_render_background() instead.
  **/
 void
-gtk_style_context_get_background_color (GtkStyleContext *context,
+ctk_style_context_get_background_color (GtkStyleContext *context,
                                         GtkStateFlags    state,
                                         GdkRGBA         *color)
 {
@@ -2559,7 +2559,7 @@ gtk_style_context_get_background_color (GtkStyleContext *context,
   g_return_if_fail (color != NULL);
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  gtk_style_context_get (context,
+  ctk_style_context_get (context,
                          state,
                          "background-color", &c,
                          NULL);
@@ -2569,7 +2569,7 @@ gtk_style_context_get_background_color (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get_border_color:
+ * ctk_style_context_get_border_color:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the color for
  * @color: (out): return value for the border color
@@ -2578,10 +2578,10 @@ gtk_style_context_get_background_color (GtkStyleContext *context,
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: Use gtk_render_frame() instead.
+ * Deprecated: 3.16: Use ctk_render_frame() instead.
  **/
 void
-gtk_style_context_get_border_color (GtkStyleContext *context,
+ctk_style_context_get_border_color (GtkStyleContext *context,
                                     GtkStateFlags    state,
                                     GdkRGBA         *color)
 {
@@ -2590,7 +2590,7 @@ gtk_style_context_get_border_color (GtkStyleContext *context,
   g_return_if_fail (color != NULL);
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  gtk_style_context_get (context,
+  ctk_style_context_get (context,
                          state,
                          "border-color", &c,
                          NULL);
@@ -2600,20 +2600,20 @@ gtk_style_context_get_border_color (GtkStyleContext *context,
 }
 
 /**
- * gtk_style_context_get_border:
+ * ctk_style_context_get_border:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the border for
  * @border: (out): return value for the border settings
  *
  * Gets the border for a given state as a #GtkBorder.
  *
- * See gtk_style_context_get_property() and
+ * See ctk_style_context_get_property() and
  * #GTK_STYLE_PROPERTY_BORDER_WIDTH for details.
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_get_border (GtkStyleContext *context,
+ctk_style_context_get_border (GtkStyleContext *context,
                               GtkStateFlags    state,
                               GtkBorder       *border)
 {
@@ -2624,36 +2624,36 @@ gtk_style_context_get_border (GtkStyleContext *context,
   g_return_if_fail (border != NULL);
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  saved_state = gtk_style_context_push_state (context, state);
-  style = gtk_style_context_lookup_style (context);
+  saved_state = ctk_style_context_push_state (context, state);
+  style = ctk_style_context_lookup_style (context);
 
-  top = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100));
-  right = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100));
-  bottom = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100));
-  left = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100));
+  top = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100));
+  right = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100));
+  bottom = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100));
+  left = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100));
 
   border->top = top;
   border->left = left;
   border->bottom = bottom;
   border->right = right;
 
-  gtk_style_context_pop_state (context, saved_state);
+  ctk_style_context_pop_state (context, saved_state);
 }
 
 /**
- * gtk_style_context_get_padding:
+ * ctk_style_context_get_padding:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the padding for
  * @padding: (out): return value for the padding settings
  *
  * Gets the padding for a given state as a #GtkBorder.
- * See gtk_style_context_get() and #GTK_STYLE_PROPERTY_PADDING
+ * See ctk_style_context_get() and #GTK_STYLE_PROPERTY_PADDING
  * for details.
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_get_padding (GtkStyleContext *context,
+ctk_style_context_get_padding (GtkStyleContext *context,
                                GtkStateFlags    state,
                                GtkBorder       *padding)
 {
@@ -2664,36 +2664,36 @@ gtk_style_context_get_padding (GtkStyleContext *context,
   g_return_if_fail (padding != NULL);
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  saved_state = gtk_style_context_push_state (context, state);
-  style = gtk_style_context_lookup_style (context);
+  saved_state = ctk_style_context_push_state (context, state);
+  style = ctk_style_context_lookup_style (context);
 
-  top = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_PADDING_TOP), 100));
-  right = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_PADDING_RIGHT), 100));
-  bottom = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_PADDING_BOTTOM), 100));
-  left = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_PADDING_LEFT), 100));
+  top = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_PADDING_TOP), 100));
+  right = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_PADDING_RIGHT), 100));
+  bottom = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_PADDING_BOTTOM), 100));
+  left = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_PADDING_LEFT), 100));
 
   padding->top = top;
   padding->left = left;
   padding->bottom = bottom;
   padding->right = right;
 
-  gtk_style_context_pop_state (context, saved_state);
+  ctk_style_context_pop_state (context, saved_state);
 }
 
 /**
- * gtk_style_context_get_margin:
+ * ctk_style_context_get_margin:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the border for
  * @margin: (out): return value for the margin settings
  *
  * Gets the margin for a given state as a #GtkBorder.
- * See gtk_style_property_get() and #GTK_STYLE_PROPERTY_MARGIN
+ * See ctk_style_property_get() and #GTK_STYLE_PROPERTY_MARGIN
  * for details.
  *
  * Since: 3.0
  **/
 void
-gtk_style_context_get_margin (GtkStyleContext *context,
+ctk_style_context_get_margin (GtkStyleContext *context,
                               GtkStateFlags    state,
                               GtkBorder       *margin)
 {
@@ -2704,24 +2704,24 @@ gtk_style_context_get_margin (GtkStyleContext *context,
   g_return_if_fail (margin != NULL);
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
 
-  saved_state = gtk_style_context_push_state (context, state);
-  style = gtk_style_context_lookup_style (context);
+  saved_state = ctk_style_context_push_state (context, state);
+  style = ctk_style_context_lookup_style (context);
 
-  top = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_MARGIN_TOP), 100));
-  right = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_MARGIN_RIGHT), 100));
-  bottom = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_MARGIN_BOTTOM), 100));
-  left = round (_gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_MARGIN_LEFT), 100));
+  top = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_MARGIN_TOP), 100));
+  right = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_MARGIN_RIGHT), 100));
+  bottom = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_MARGIN_BOTTOM), 100));
+  left = round (_ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_MARGIN_LEFT), 100));
 
   margin->top = top;
   margin->left = left;
   margin->bottom = bottom;
   margin->right = right;
 
-  gtk_style_context_pop_state (context, saved_state);
+  ctk_style_context_pop_state (context, saved_state);
 }
 
 /**
- * gtk_style_context_get_font:
+ * ctk_style_context_get_font:
  * @context: a #GtkStyleContext
  * @state: state to retrieve the font for
  *
@@ -2735,11 +2735,11 @@ gtk_style_context_get_margin (GtkStyleContext *context,
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: Use gtk_style_context_get() for "font" or
+ * Deprecated: 3.8: Use ctk_style_context_get() for "font" or
  *     subproperties instead.
  **/
 const PangoFontDescription *
-gtk_style_context_get_font (GtkStyleContext *context,
+ctk_style_context_get_font (GtkStyleContext *context,
                             GtkStateFlags    state)
 {
   GHashTable *hash;
@@ -2749,7 +2749,7 @@ gtk_style_context_get_font (GtkStyleContext *context,
 
   /* Yuck, fonts are created on-demand but we don't return a ref.
    * Do bad things to achieve this requirement */
-  gtk_style_context_get (context, state, "font", &description, NULL);
+  ctk_style_context_get (context, state, "font", &description, NULL);
   
   hash = g_object_get_data (G_OBJECT (context), "font-cache-for-get_font");
 
@@ -2780,14 +2780,14 @@ gtk_style_context_get_font (GtkStyleContext *context,
 }
 
 void
-_gtk_style_context_get_cursor_color (GtkStyleContext *context,
+_ctk_style_context_get_cursor_color (GtkStyleContext *context,
                                      GdkRGBA         *primary_color,
                                      GdkRGBA         *secondary_color)
 {
   GdkRGBA *pc, *sc;
 
-  gtk_style_context_get (context,
-                         gtk_style_context_get_state (context),
+  ctk_style_context_get (context,
+                         ctk_style_context_get_state (context),
                          "caret-color", &pc,
                          "-gtk-secondary-caret-color", &sc,
                          NULL);
@@ -2821,7 +2821,7 @@ draw_insertion_cursor (GtkStyleContext *context,
   cairo_save (cr);
   cairo_new_path (cr);
 
-  _gtk_style_context_get_cursor_color (context, &primary_color, &secondary_color);
+  _ctk_style_context_get_cursor_color (context, &primary_color, &secondary_color);
   gdk_cairo_set_source_rgba (cr, is_primary ? &primary_color : &secondary_color);
 
   /* When changing the shape or size of the cursor here,
@@ -2874,7 +2874,7 @@ draw_insertion_cursor (GtkStyleContext *context,
 }
 
 /**
- * gtk_render_insertion_cursor:
+ * ctk_render_insertion_cursor:
  * @context: a #GtkStyleContext
  * @cr: a #cairo_t
  * @x: X origin
@@ -2888,7 +2888,7 @@ draw_insertion_cursor (GtkStyleContext *context,
  * Since: 3.4
  **/
 void
-gtk_render_insertion_cursor (GtkStyleContext *context,
+ctk_render_insertion_cursor (GtkStyleContext *context,
                              cairo_t         *cr,
                              gdouble          x,
                              gdouble          y,
@@ -2911,7 +2911,7 @@ gtk_render_insertion_cursor (GtkStyleContext *context,
 
   priv = context->priv;
 
-  g_object_get (gtk_settings_get_for_screen (priv->screen),
+  g_object_get (ctk_settings_get_for_screen (priv->screen),
                 "gtk-split-cursor", &split_cursor,
                 "gtk-cursor-aspect-ratio", &aspect_ratio,
                 NULL);
@@ -2965,7 +2965,7 @@ gtk_render_insertion_cursor (GtkStyleContext *context,
 }
 
 /**
- * gtk_draw_insertion_cursor:
+ * ctk_draw_insertion_cursor:
  * @widget:  a #GtkWidget
  * @cr: cairo context to draw to
  * @location: location where to draw the cursor (@location->width is ignored)
@@ -2979,10 +2979,10 @@ gtk_render_insertion_cursor (GtkStyleContext *context,
  * but merely a convenience function for drawing the standard cursor shape.
  *
  * Since: 3.0
- * Deprecated: 3.4: Use gtk_render_insertion_cursor() instead.
+ * Deprecated: 3.4: Use ctk_render_insertion_cursor() instead.
  */
 void
-gtk_draw_insertion_cursor (GtkWidget          *widget,
+ctk_draw_insertion_cursor (GtkWidget          *widget,
                            cairo_t            *cr,
                            const GdkRectangle *location,
                            gboolean            is_primary,
@@ -2997,9 +2997,9 @@ gtk_draw_insertion_cursor (GtkWidget          *widget,
   g_return_if_fail (location != NULL);
   g_return_if_fail (direction != GTK_TEXT_DIR_NONE);
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
-  g_object_get (gtk_settings_get_for_screen (context->priv->screen),
+  g_object_get (ctk_settings_get_for_screen (context->priv->screen),
                 "gtk-cursor-aspect-ratio", &aspect_ratio,
                 NULL);
 
@@ -3012,7 +3012,7 @@ gtk_draw_insertion_cursor (GtkWidget          *widget,
 }
 
 /**
- * gtk_style_context_get_change:
+ * ctk_style_context_get_change:
  * @context: the context to query
  *
  * Queries the context for the changes for the currently executing
@@ -3025,7 +3025,7 @@ gtk_draw_insertion_cursor (GtkWidget          *widget,
  * Returns: %NULL or the currently invalidating changes
  **/
 GtkCssStyleChange *
-gtk_style_context_get_change (GtkStyleContext *context)
+ctk_style_context_get_change (GtkStyleContext *context)
 {
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
 
@@ -3036,7 +3036,7 @@ gtk_style_context_get_change (GtkStyleContext *context)
 }
 
 void
-_gtk_style_context_get_icon_extents (GtkStyleContext *context,
+_ctk_style_context_get_icon_extents (GtkStyleContext *context,
                                      GdkRectangle    *extents,
                                      gint             x,
                                      gint             y,
@@ -3046,21 +3046,21 @@ _gtk_style_context_get_icon_extents (GtkStyleContext *context,
   g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (extents != NULL);
 
-  if (_gtk_css_image_value_get_image (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_ICON_SOURCE)) == NULL)
+  if (_ctk_css_image_value_get_image (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_ICON_SOURCE)) == NULL)
     {
       extents->x = extents->y = extents->width = extents->height = 0;
       return;
     }
 
-  gtk_css_style_render_icon_get_extents (gtk_style_context_lookup_style (context),
+  ctk_css_style_render_icon_get_extents (ctk_style_context_lookup_style (context),
                                          extents,
                                          x, y, width, height);
 }
 
 PangoAttrList *
-_gtk_style_context_get_pango_attributes (GtkStyleContext *context)
+_ctk_style_context_get_pango_attributes (GtkStyleContext *context)
 {
-  return gtk_css_style_get_pango_attributes (gtk_style_context_lookup_style (context));
+  return ctk_css_style_get_pango_attributes (ctk_style_context_lookup_style (context));
 }
 
 static AtkAttributeSet *
@@ -3078,7 +3078,7 @@ add_attribute (AtkAttributeSet  *attributes,
 }
 
 /*
- * _gtk_style_context_get_attributes:
+ * _ctk_style_context_get_attributes:
  * @attributes: a #AtkAttributeSet to add attributes to
  * @context: the #GtkStyleContext to get attributes from
  * @flags: the state to use with @context
@@ -3092,7 +3092,7 @@ add_attribute (AtkAttributeSet  *attributes,
  * Returns: the modified #AtkAttributeSet
  */
 AtkAttributeSet *
-_gtk_style_context_get_attributes (AtkAttributeSet *attributes,
+_ctk_style_context_get_attributes (AtkAttributeSet *attributes,
                                    GtkStyleContext *context,
                                    GtkStateFlags    flags)
 {
@@ -3100,7 +3100,7 @@ _gtk_style_context_get_attributes (AtkAttributeSet *attributes,
   gchar *value;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_style_context_get_background_color (context, flags, &color);
+  ctk_style_context_get_background_color (context, flags, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
   value = g_strdup_printf ("%u,%u,%u",
                            (guint) ceil (color.red * 65536 - color.red),
@@ -3109,7 +3109,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   attributes = add_attribute (attributes, ATK_TEXT_ATTR_BG_COLOR, value);
   g_free (value);
 
-  gtk_style_context_get_color (context, flags, &color);
+  ctk_style_context_get_color (context, flags, &color);
   value = g_strdup_printf ("%u,%u,%u",
                            (guint) ceil (color.red * 65536 - color.red),
                            (guint) ceil (color.green * 65536 - color.green),
@@ -3121,7 +3121,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 cairo_pattern_t *
-gtk_gradient_resolve_for_context (GtkGradient     *gradient,
+ctk_gradient_resolve_for_context (GtkGradient     *gradient,
                                   GtkStyleContext *context)
 {
   GtkStyleContextPrivate *priv = context->priv;
@@ -3129,10 +3129,10 @@ gtk_gradient_resolve_for_context (GtkGradient     *gradient,
   g_return_val_if_fail (gradient != NULL, NULL);
   g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
 
-  return _gtk_gradient_resolve_full (gradient,
+  return _ctk_gradient_resolve_full (gradient,
                                      GTK_STYLE_PROVIDER_PRIVATE (priv->cascade),
-                                     gtk_style_context_lookup_style (context),
-                                     priv->parent ? gtk_style_context_lookup_style (priv->parent) : NULL);
+                                     ctk_style_context_lookup_style (context),
+                                     priv->parent ? ctk_style_context_lookup_style (priv->parent) : NULL);
 }
 
 /**
@@ -3142,12 +3142,12 @@ gtk_gradient_resolve_for_context (GtkGradient     *gradient,
  * @GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE: Show the values of the
  *     CSS properties for each node
  *
- * Flags that modify the behavior of gtk_style_context_to_string().
+ * Flags that modify the behavior of ctk_style_context_to_string().
  * New values may be added to this enumeration.
  */
 
 /**
- * gtk_style_context_to_string:
+ * ctk_style_context_to_string:
  * @context: a #GtkStyleContext
  * @flags: Flags that determine what to print
  *
@@ -3167,7 +3167,7 @@ gtk_gradient_resolve_for_context (GtkGradient     *gradient,
  * Since: 3.20
  */
 char *
-gtk_style_context_to_string (GtkStyleContext           *context,
+ctk_style_context_to_string (GtkStyleContext           *context,
                              GtkStyleContextPrintFlags  flags)
 {
   GString *string;
@@ -3176,7 +3176,7 @@ gtk_style_context_to_string (GtkStyleContext           *context,
 
   string = g_string_new ("");
 
-  gtk_css_node_print (context->priv->cssnode, flags, string, 0);
+  ctk_css_node_print (context->priv->cssnode, flags, string, 0);
 
   return g_string_free (string, FALSE);
 }

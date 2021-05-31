@@ -25,49 +25,49 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CLOUDPRINT_ACCOUNT	(gtk_cloudprint_account_get_type ())
+#define GTK_TYPE_CLOUDPRINT_ACCOUNT	(ctk_cloudprint_account_get_type ())
 #define GTK_CLOUDPRINT_ACCOUNT(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CLOUDPRINT_ACCOUNT, GtkCloudprintAccount))
 #define GTK_IS_CLOUDPRINT_ACCOUNT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CLOUDPRINT_ACCOUNT))
 
 typedef struct _GtkPrinterCloudprint	GtkPrinterCloudprint;
 typedef struct _GtkCloudprintAccount	GtkCloudprintAccount;
 
-void	gtk_cloudprint_account_register_type		(GTypeModule *module);
-GtkCloudprintAccount *gtk_cloudprint_account_new	(const gchar *id,
+void	ctk_cloudprint_account_register_type		(GTypeModule *module);
+GtkCloudprintAccount *ctk_cloudprint_account_new	(const gchar *id,
 							 const gchar *path,
 							 const gchar *presentation_identity);
-GType	gtk_cloudprint_account_get_type			(void) G_GNUC_CONST;
+GType	ctk_cloudprint_account_get_type			(void) G_GNUC_CONST;
 
-void	gtk_cloudprint_account_search		(GtkCloudprintAccount *account,
+void	ctk_cloudprint_account_search		(GtkCloudprintAccount *account,
 						 GDBusConnection *connection,
 						 GCancellable *cancellable,
 						 GAsyncReadyCallback callback,
 						 gpointer user_data);
-JsonNode *gtk_cloudprint_account_search_finish	(GtkCloudprintAccount *account,
+JsonNode *ctk_cloudprint_account_search_finish	(GtkCloudprintAccount *account,
 						 GAsyncResult *result,
 						 GError **error);
 
-void	gtk_cloudprint_account_printer		(GtkCloudprintAccount *account,
+void	ctk_cloudprint_account_printer		(GtkCloudprintAccount *account,
 						 const gchar *printerid,
 						 GCancellable *cancellable,
 						 GAsyncReadyCallback callback,
 						 gpointer user_data);
-JsonObject *gtk_cloudprint_account_printer_finish (GtkCloudprintAccount *account,
+JsonObject *ctk_cloudprint_account_printer_finish (GtkCloudprintAccount *account,
 						   GAsyncResult *result,
 						   GError **error);
 
-void	gtk_cloudprint_account_submit		(GtkCloudprintAccount *account,
+void	ctk_cloudprint_account_submit		(GtkCloudprintAccount *account,
 						 GtkPrinterCloudprint *printer,
 						 GMappedFile *file,
 						 const gchar *title,
 						 GCancellable *cancellable,
 						 GAsyncReadyCallback callback,
 						 gpointer user_data);
-JsonObject *gtk_cloudprint_account_submit_finish (GtkCloudprintAccount *account,
+JsonObject *ctk_cloudprint_account_submit_finish (GtkCloudprintAccount *account,
 						  GAsyncResult *result,
 						  GError **error);
 
-const gchar *gtk_cloudprint_account_get_presentation_identity (GtkCloudprintAccount *account);
+const gchar *ctk_cloudprint_account_get_presentation_identity (GtkCloudprintAccount *account);
 
 G_END_DECLS
 

@@ -27,23 +27,23 @@
 #include "gtkborder.h"
 
 /**
- * gtk_border_new:
+ * ctk_border_new:
  *
  * Allocates a new #GtkBorder-struct and initializes its elements to zero.
  *
  * Returns: (transfer full): a newly allocated #GtkBorder-struct.
- *  Free with gtk_border_free()
+ *  Free with ctk_border_free()
  *
  * Since: 2.14
  */
 GtkBorder *
-gtk_border_new (void)
+ctk_border_new (void)
 {
   return g_slice_new0 (GtkBorder);
 }
 
 /**
- * gtk_border_copy:
+ * ctk_border_copy:
  * @border_: a #GtkBorder-struct
  *
  * Copies a #GtkBorder-struct.
@@ -51,7 +51,7 @@ gtk_border_new (void)
  * Returns: (transfer full): a copy of @border_.
  */
 GtkBorder *
-gtk_border_copy (const GtkBorder *border_)
+ctk_border_copy (const GtkBorder *border_)
 {
   g_return_val_if_fail (border_ != NULL, NULL);
 
@@ -59,17 +59,17 @@ gtk_border_copy (const GtkBorder *border_)
 }
 
 /**
- * gtk_border_free:
+ * ctk_border_free:
  * @border_: a #GtkBorder-struct
  *
  * Frees a #GtkBorder-struct.
  */
 void
-gtk_border_free (GtkBorder *border_)
+ctk_border_free (GtkBorder *border_)
 {
   g_slice_free (GtkBorder, border_);
 }
 
-G_DEFINE_BOXED_TYPE (GtkBorder, gtk_border,
-                     gtk_border_copy,
-                     gtk_border_free)
+G_DEFINE_BOXED_TYPE (GtkBorder, ctk_border,
+                     ctk_border_copy,
+                     ctk_border_free)

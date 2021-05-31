@@ -24,17 +24,17 @@
 
 G_BEGIN_DECLS
 
-GtkCssSection *    _gtk_css_section_new                (GtkCssSection        *parent,
+GtkCssSection *    _ctk_css_section_new                (GtkCssSection        *parent,
                                                         GtkCssSectionType     type,
                                                         GtkCssParser         *parser);
-GtkCssSection *    _gtk_css_section_new_for_file       (GtkCssSectionType     type,
+GtkCssSection *    _ctk_css_section_new_for_file       (GtkCssSectionType     type,
                                                         GFile                *file);
 
-void               _gtk_css_section_end                (GtkCssSection        *section);
+void               _ctk_css_section_end                (GtkCssSection        *section);
 
-void               _gtk_css_section_print              (const GtkCssSection  *section,
+void               _ctk_css_section_print              (const GtkCssSection  *section,
                                                         GString              *string);
-char *             _gtk_css_section_to_string          (const GtkCssSection  *section);
+char *             _ctk_css_section_to_string          (const GtkCssSection  *section);
 
 G_END_DECLS
 

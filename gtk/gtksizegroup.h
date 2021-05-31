@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SIZE_GROUP            (gtk_size_group_get_type ())
+#define GTK_TYPE_SIZE_GROUP            (ctk_size_group_get_type ())
 #define GTK_SIZE_GROUP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SIZE_GROUP, GtkSizeGroup))
 #define GTK_SIZE_GROUP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SIZE_GROUP, GtkSizeGroupClass))
 #define GTK_IS_SIZE_GROUP(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SIZE_GROUP))
@@ -52,35 +52,35 @@ struct _GtkSizeGroupClass
   GObjectClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType            gtk_size_group_get_type      (void) G_GNUC_CONST;
+GType            ctk_size_group_get_type      (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkSizeGroup *   gtk_size_group_new           (GtkSizeGroupMode  mode);
+GtkSizeGroup *   ctk_size_group_new           (GtkSizeGroupMode  mode);
 GDK_AVAILABLE_IN_ALL
-void             gtk_size_group_set_mode      (GtkSizeGroup     *size_group,
+void             ctk_size_group_set_mode      (GtkSizeGroup     *size_group,
 					       GtkSizeGroupMode  mode);
 GDK_AVAILABLE_IN_ALL
-GtkSizeGroupMode gtk_size_group_get_mode      (GtkSizeGroup     *size_group);
+GtkSizeGroupMode ctk_size_group_get_mode      (GtkSizeGroup     *size_group);
 GDK_DEPRECATED_IN_3_22
-void             gtk_size_group_set_ignore_hidden (GtkSizeGroup *size_group,
+void             ctk_size_group_set_ignore_hidden (GtkSizeGroup *size_group,
 						   gboolean      ignore_hidden);
 GDK_DEPRECATED_IN_3_22
-gboolean         gtk_size_group_get_ignore_hidden (GtkSizeGroup *size_group);
+gboolean         ctk_size_group_get_ignore_hidden (GtkSizeGroup *size_group);
 GDK_AVAILABLE_IN_ALL
-void             gtk_size_group_add_widget    (GtkSizeGroup     *size_group,
+void             ctk_size_group_add_widget    (GtkSizeGroup     *size_group,
 					       GtkWidget        *widget);
 GDK_AVAILABLE_IN_ALL
-void             gtk_size_group_remove_widget (GtkSizeGroup     *size_group,
+void             ctk_size_group_remove_widget (GtkSizeGroup     *size_group,
 					       GtkWidget        *widget);
 GDK_AVAILABLE_IN_ALL
-GSList *         gtk_size_group_get_widgets   (GtkSizeGroup     *size_group);
+GSList *         ctk_size_group_get_widgets   (GtkSizeGroup     *size_group);
 
 G_END_DECLS
 

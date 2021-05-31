@@ -34,24 +34,24 @@ struct _GtkCssValue {
   GtkCssValue  *values[1];
 };
 
-static GtkCssValue *    gtk_css_shadows_value_new       (GtkCssValue **values,
+static GtkCssValue *    ctk_css_shadows_value_new       (GtkCssValue **values,
                                                          guint         len);
 
 static void
-gtk_css_value_shadows_free (GtkCssValue *value)
+ctk_css_value_shadows_free (GtkCssValue *value)
 {
   guint i;
 
   for (i = 0; i < value->len; i++)
     {
-      _gtk_css_value_unref (value->values[i]);
+      _ctk_css_value_unref (value->values[i]);
     }
 
   g_slice_free1 (sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (value->len - 1), value);
 }
 
 static GtkCssValue *
-gtk_css_value_shadows_compute (GtkCssValue             *value,
+ctk_css_value_shadows_compute (GtkCssValue             *value,
                                guint                    property_id,
                                GtkStyleProviderPrivate *provider,
                                GtkCssStyle             *style,
@@ -61,12 +61,12 @@ gtk_css_value_shadows_compute (GtkCssValue             *value,
   guint i, j;
 
   if (value->len == 0)
-    return _gtk_css_value_ref (value);
+    return _ctk_css_value_ref (value);
 
   result = NULL;
   for (i = 0; i < value->len; i++)
     {
-      tmp = _gtk_css_value_compute (value->values[i], property_id, provider, style, parent_style);
+      tmp = _ctk_css_value_compute (value->values[i], property_id, provider, style, parent_style);
 
       if (result)
         {
@@ -74,27 +74,27 @@ gtk_css_value_shadows_compute (GtkCssValue             *value,
         }
       else if (tmp != value->values[i])
         {
-          result = gtk_css_shadows_value_new (value->values, value->len);
+          result = ctk_css_shadows_value_new (value->values, value->len);
           for (j = 0; j < i; j++)
             {
-              _gtk_css_value_ref (result->values[j]);
+              _ctk_css_value_ref (result->values[j]);
             }
           result->values[i] = tmp;
         }
       else
         {
-          _gtk_css_value_unref (tmp);
+          _ctk_css_value_unref (tmp);
         }
     }
 
   if (result != NULL)
     return result;
   else
-    return _gtk_css_value_ref (value);
+    return _ctk_css_value_ref (value);
 }
 
 static gboolean
-gtk_css_value_shadows_equal (const GtkCssValue *value1,
+ctk_css_value_shadows_equal (const GtkCssValue *value1,
                              const GtkCssValue *value2)
 {
   guint i;
@@ -105,7 +105,7 @@ gtk_css_value_shadows_equal (const GtkCssValue *value1,
 
   for (i = 0; i < value1->len; i++)
     {
-      if (!_gtk_css_value_equal (value1->values[i],
+      if (!_ctk_css_value_equal (value1->values[i],
                                  value2->values[i]))
         return FALSE;
     }
@@ -114,7 +114,7 @@ gtk_css_value_shadows_equal (const GtkCssValue *value1,
 }
 
 static GtkCssValue *
-gtk_css_value_shadows_transition (GtkCssValue *start,
+ctk_css_value_shadows_transition (GtkCssValue *start,
                                   GtkCssValue *end,
                                   guint        property_id,
                                   double       progress)
@@ -124,7 +124,7 @@ gtk_css_value_shadows_transition (GtkCssValue *start,
 
   /* catches the important case of 2 none values */
   if (start == end)
-    return _gtk_css_value_ref (start);
+    return _ctk_css_value_ref (start);
 
   if (start->len > end->len)
     len = start->len;
@@ -135,11 +135,11 @@ gtk_css_value_shadows_transition (GtkCssValue *start,
 
   for (i = 0; i < MIN (start->len, end->len); i++)
     {
-      values[i] = _gtk_css_value_transition (start->values[i], end->values[i], property_id, progress);
+      values[i] = _ctk_css_value_transition (start->values[i], end->values[i], property_id, progress);
       if (values[i] == NULL)
         {
           while (i--)
-            _gtk_css_value_unref (values[i]);
+            _ctk_css_value_unref (values[i]);
           return NULL;
         }
     }
@@ -147,14 +147,14 @@ gtk_css_value_shadows_transition (GtkCssValue *start,
     {
       for (; i < len; i++)
         {
-          GtkCssValue *fill = _gtk_css_shadow_value_new_for_transition (start->values[i]);
-          values[i] = _gtk_css_value_transition (start->values[i], fill, property_id, progress);
-          _gtk_css_value_unref (fill);
+          GtkCssValue *fill = _ctk_css_shadow_value_new_for_transition (start->values[i]);
+          values[i] = _ctk_css_value_transition (start->values[i], fill, property_id, progress);
+          _ctk_css_value_unref (fill);
 
           if (values[i] == NULL)
             {
               while (i--)
-                _gtk_css_value_unref (values[i]);
+                _ctk_css_value_unref (values[i]);
               return NULL;
             }
         }
@@ -163,24 +163,24 @@ gtk_css_value_shadows_transition (GtkCssValue *start,
     {
       for (; i < len; i++)
         {
-          GtkCssValue *fill = _gtk_css_shadow_value_new_for_transition (end->values[i]);
-          values[i] = _gtk_css_value_transition (fill, end->values[i], property_id, progress);
-          _gtk_css_value_unref (fill);
+          GtkCssValue *fill = _ctk_css_shadow_value_new_for_transition (end->values[i]);
+          values[i] = _ctk_css_value_transition (fill, end->values[i], property_id, progress);
+          _ctk_css_value_unref (fill);
 
           if (values[i] == NULL)
             {
               while (i--)
-                _gtk_css_value_unref (values[i]);
+                _ctk_css_value_unref (values[i]);
               return NULL;
             }
         }
     }
 
-  return gtk_css_shadows_value_new (values, len);
+  return ctk_css_shadows_value_new (values, len);
 }
 
 static void
-gtk_css_value_shadows_print (const GtkCssValue *value,
+ctk_css_value_shadows_print (const GtkCssValue *value,
                              GString           *string)
 {
   guint i;
@@ -195,28 +195,28 @@ gtk_css_value_shadows_print (const GtkCssValue *value,
     {
       if (i > 0)
         g_string_append (string, ", ");
-      _gtk_css_value_print (value->values[i], string);
+      _ctk_css_value_print (value->values[i], string);
     }
 }
 
 static const GtkCssValueClass GTK_CSS_VALUE_SHADOWS = {
-  gtk_css_value_shadows_free,
-  gtk_css_value_shadows_compute,
-  gtk_css_value_shadows_equal,
-  gtk_css_value_shadows_transition,
-  gtk_css_value_shadows_print
+  ctk_css_value_shadows_free,
+  ctk_css_value_shadows_compute,
+  ctk_css_value_shadows_equal,
+  ctk_css_value_shadows_transition,
+  ctk_css_value_shadows_print
 };
 
 static GtkCssValue none_singleton = { &GTK_CSS_VALUE_SHADOWS, 1, 0, { NULL } };
 
 GtkCssValue *
-_gtk_css_shadows_value_new_none (void)
+_ctk_css_shadows_value_new_none (void)
 {
-  return _gtk_css_value_ref (&none_singleton);
+  return _ctk_css_value_ref (&none_singleton);
 }
 
 static GtkCssValue *
-gtk_css_shadows_value_new (GtkCssValue **values,
+ctk_css_shadows_value_new (GtkCssValue **values,
                            guint         len)
 {
   GtkCssValue *result;
@@ -224,7 +224,7 @@ gtk_css_shadows_value_new (GtkCssValue **values,
   g_return_val_if_fail (values != NULL, NULL);
   g_return_val_if_fail (len > 0, NULL);
          
-  result = _gtk_css_value_alloc (&GTK_CSS_VALUE_SHADOWS, sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (len - 1));
+  result = _ctk_css_value_alloc (&GTK_CSS_VALUE_SHADOWS, sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (len - 1));
   result->len = len;
   memcpy (&result->values[0], values, sizeof (GtkCssValue *) * len);
             
@@ -232,37 +232,37 @@ gtk_css_shadows_value_new (GtkCssValue **values,
 }
 
 GtkCssValue *
-_gtk_css_shadows_value_parse (GtkCssParser *parser,
+_ctk_css_shadows_value_parse (GtkCssParser *parser,
                               gboolean      box_shadow_mode)
 {
   GtkCssValue *value, *result;
   GPtrArray *values;
 
-  if (_gtk_css_parser_try (parser, "none", TRUE))
-    return _gtk_css_shadows_value_new_none ();
+  if (_ctk_css_parser_try (parser, "none", TRUE))
+    return _ctk_css_shadows_value_new_none ();
 
   values = g_ptr_array_new ();
 
   do {
-    value = _gtk_css_shadow_value_parse (parser, box_shadow_mode);
+    value = _ctk_css_shadow_value_parse (parser, box_shadow_mode);
 
     if (value == NULL)
       {
-        g_ptr_array_set_free_func (values, (GDestroyNotify) _gtk_css_value_unref);
+        g_ptr_array_set_free_func (values, (GDestroyNotify) _ctk_css_value_unref);
         g_ptr_array_free (values, TRUE);
         return NULL;
       }
 
     g_ptr_array_add (values, value);
-  } while (_gtk_css_parser_try (parser, ",", TRUE));
+  } while (_ctk_css_parser_try (parser, ",", TRUE));
 
-  result = gtk_css_shadows_value_new ((GtkCssValue **) values->pdata, values->len);
+  result = ctk_css_shadows_value_new ((GtkCssValue **) values->pdata, values->len);
   g_ptr_array_free (values, TRUE);
   return result;
 }
 
 gboolean
-_gtk_css_shadows_value_is_none (const GtkCssValue *shadows)
+_ctk_css_shadows_value_is_none (const GtkCssValue *shadows)
 {
   g_return_val_if_fail (shadows->class == &GTK_CSS_VALUE_SHADOWS, TRUE);
 
@@ -270,7 +270,7 @@ _gtk_css_shadows_value_is_none (const GtkCssValue *shadows)
 }
 
 void
-_gtk_css_shadows_value_paint_layout (const GtkCssValue *shadows,
+_ctk_css_shadows_value_paint_layout (const GtkCssValue *shadows,
                                      cairo_t           *cr,
                                      PangoLayout       *layout)
 {
@@ -280,12 +280,12 @@ _gtk_css_shadows_value_paint_layout (const GtkCssValue *shadows,
 
   for (i = 0; i < shadows->len; i++)
     {
-      _gtk_css_shadow_value_paint_layout (shadows->values[i], cr, layout);
+      _ctk_css_shadow_value_paint_layout (shadows->values[i], cr, layout);
     }
 }
 
 void
-_gtk_css_shadows_value_paint_icon (const GtkCssValue *shadows,
+_ctk_css_shadows_value_paint_icon (const GtkCssValue *shadows,
                                    cairo_t           *cr)
 {
   guint i;
@@ -294,12 +294,12 @@ _gtk_css_shadows_value_paint_icon (const GtkCssValue *shadows,
 
   for (i = 0; i < shadows->len; i++)
     {
-      _gtk_css_shadow_value_paint_icon (shadows->values[i], cr);
+      _ctk_css_shadow_value_paint_icon (shadows->values[i], cr);
     }
 }
 
 void
-_gtk_css_shadows_value_paint_box (const GtkCssValue   *shadows,
+_ctk_css_shadows_value_paint_box (const GtkCssValue   *shadows,
                                   cairo_t             *cr,
                                   const GtkRoundedBox *padding_box,
                                   gboolean             inset)
@@ -310,13 +310,13 @@ _gtk_css_shadows_value_paint_box (const GtkCssValue   *shadows,
 
   for (i = 0; i < shadows->len; i++)
     {
-      if (inset == _gtk_css_shadow_value_get_inset (shadows->values[i]))
-        _gtk_css_shadow_value_paint_box (shadows->values[i], cr, padding_box);
+      if (inset == _ctk_css_shadow_value_get_inset (shadows->values[i]))
+        _ctk_css_shadow_value_paint_box (shadows->values[i], cr, padding_box);
     }
 }
 
 void
-_gtk_css_shadows_value_get_extents (const GtkCssValue *shadows,
+_ctk_css_shadows_value_get_extents (const GtkCssValue *shadows,
                                     GtkBorder         *border)
 {
   guint i;
@@ -332,13 +332,13 @@ _gtk_css_shadows_value_get_extents (const GtkCssValue *shadows,
     {
       shadow = shadows->values[i];
 
-      if (_gtk_css_shadow_value_get_inset (shadow))
+      if (_ctk_css_shadow_value_get_inset (shadow))
         continue;
 
-      _gtk_css_shadow_value_get_geometry (shadow,
+      _ctk_css_shadow_value_get_geometry (shadow,
                                           &hoffset, &voffset,
                                           &radius, &spread);
-      clip_radius = _gtk_cairo_blur_compute_pixels (radius);
+      clip_radius = _ctk_cairo_blur_compute_pixels (radius);
 
       b.top = MAX (0, ceil (clip_radius + spread - voffset));
       b.right = MAX (0, ceil (clip_radius + spread + hoffset));

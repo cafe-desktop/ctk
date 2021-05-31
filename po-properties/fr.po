@@ -803,10 +803,10 @@ msgstr "La valeur"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"La valeur renvoyée par gtk_radio_action_get_current_value() quand cette "
+"La valeur renvoyée par ctk_radio_action_get_current_value() quand cette "
 "action est l’action actuelle de ce groupe."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1283,10 +1283,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Un logo pour la boîte de dialogue « À propos ». S’il n’est pas défini, la "
-"valeur utilisée est celle renvoyée par gtk_window_get_default_icon_list()"
+"valeur utilisée est celle renvoyée par ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3546,10 +3546,10 @@ msgstr "Degré de pulsation de la barre de progression"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Le pourcentage de la largeur totale de la zone dont doit se déplacer le bloc "
-"de progression pour chaque appel à gtk_entry_progress_pulse()"
+"de progression pour chaque appel à ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9382,9 +9382,9 @@ msgid "No show all"
 msgstr "Ne pas tout afficher"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
-"Indique si la fonction gtk_widget_show_all() doit ou ne doit pas concerner "
+"Indique si la fonction ctk_widget_show_all() doit ou ne doit pas concerner "
 "cet élément graphique"
 
 #: gtk/gtkwidget.c:1286

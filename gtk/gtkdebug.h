@@ -61,7 +61,7 @@ typedef enum {
 
 #ifdef G_ENABLE_DEBUG
 
-#define GTK_DEBUG_CHECK(type) G_UNLIKELY (gtk_get_debug_flags () & GTK_DEBUG_##type)
+#define GTK_DEBUG_CHECK(type) G_UNLIKELY (ctk_get_debug_flags () & GTK_DEBUG_##type)
 
 #define GTK_NOTE(type,action)                G_STMT_START {     \
     if (GTK_DEBUG_CHECK (type))		                        \
@@ -75,9 +75,9 @@ typedef enum {
 #endif /* G_ENABLE_DEBUG */
 
 GDK_AVAILABLE_IN_ALL
-guint gtk_get_debug_flags (void);
+guint ctk_get_debug_flags (void);
 GDK_AVAILABLE_IN_ALL
-void  gtk_set_debug_flags  (guint flags);
+void  ctk_set_debug_flags  (guint flags);
 
 G_END_DECLS
 

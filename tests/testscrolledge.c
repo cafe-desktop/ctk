@@ -29,22 +29,22 @@ populate_list (GtkListBox *list)
   gint n;
   GList *l;
 
-  l = gtk_container_get_children (GTK_CONTAINER (list));
+  l = ctk_container_get_children (GTK_CONTAINER (list));
   n = g_list_length (l);
   g_list_free (l);
 
   for (i = 1; i <= 50; i++)
     {
-      row = gtk_list_box_row_new ();
+      row = ctk_list_box_row_new ();
       text = g_strdup_printf ("List row %d", i + n);
-      label = gtk_label_new (text);
+      label = ctk_label_new (text);
       g_free (text);
 
       g_object_set (label, "margin", 10, NULL);
-      gtk_widget_set_halign (label, GTK_ALIGN_START);
-      gtk_container_add (GTK_CONTAINER (row), label);
-      gtk_widget_show_all (row);
-      gtk_container_add (GTK_CONTAINER (list), row);
+      ctk_widget_set_halign (label, GTK_ALIGN_START);
+      ctk_container_add (GTK_CONTAINER (row), label);
+      ctk_widget_show_all (row);
+      ctk_container_add (GTK_CONTAINER (list), row);
     }
 }
 
@@ -56,8 +56,8 @@ add_rows (gpointer data)
 {
   GtkListBox *list = data;
 
-  gtk_widget_hide (popup);
-  gtk_spinner_stop (GTK_SPINNER (spinner));
+  ctk_widget_hide (popup);
+  ctk_spinner_stop (GTK_SPINNER (spinner));
 
   populate_list (list);
   add_rows_id = 0;
@@ -72,8 +72,8 @@ edge_overshot (GtkScrolledWindow *sw,
 {
   if (pos == GTK_POS_BOTTOM)
     {
-      gtk_spinner_start (GTK_SPINNER (spinner));
-      gtk_widget_show (popup);
+      ctk_spinner_start (GTK_SPINNER (spinner));
+      ctk_widget_show (popup);
 
       if (add_rows_id == 0)
         add_rows_id = g_timeout_add (2000, add_rows, list);
@@ -97,42 +97,42 @@ main (int argc, char *argv[])
   GtkWidget *overlay;
   GtkWidget *label;
 
-  gtk_init (NULL, NULL);
+  ctk_init (NULL, NULL);
 
-  win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_default_size (GTK_WINDOW (win), 600, 400);
+  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (GTK_WINDOW (win), 600, 400);
 
-  overlay = gtk_overlay_new ();
-  popup = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  gtk_widget_set_halign (popup, GTK_ALIGN_CENTER);
-  gtk_widget_set_valign (popup, GTK_ALIGN_END);
+  overlay = ctk_overlay_new ();
+  popup = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_widget_set_halign (popup, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (popup, GTK_ALIGN_END);
   g_object_set (popup, "margin", 40, NULL);
-  label = gtk_label_new ("Getting more rows...");
-  spinner = gtk_spinner_new ();
-  gtk_widget_show (spinner);
-  gtk_widget_show (label);
-  gtk_container_add (GTK_CONTAINER (popup), label);
-  gtk_container_add (GTK_CONTAINER (popup), spinner);
+  label = ctk_label_new ("Getting more rows...");
+  spinner = ctk_spinner_new ();
+  ctk_widget_show (spinner);
+  ctk_widget_show (label);
+  ctk_container_add (GTK_CONTAINER (popup), label);
+  ctk_container_add (GTK_CONTAINER (popup), spinner);
 
-  gtk_overlay_add_overlay (GTK_OVERLAY (overlay), popup);
-  gtk_widget_set_no_show_all (popup, TRUE);
+  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), popup);
+  ctk_widget_set_no_show_all (popup, TRUE);
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-  list = gtk_list_box_new ();
-  gtk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+  list = ctk_list_box_new ();
+  ctk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
 
-  gtk_container_add (GTK_CONTAINER (win), overlay);
-  gtk_container_add (GTK_CONTAINER (overlay), sw);
-  gtk_container_add (GTK_CONTAINER (sw), list);
+  ctk_container_add (GTK_CONTAINER (win), overlay);
+  ctk_container_add (GTK_CONTAINER (overlay), sw);
+  ctk_container_add (GTK_CONTAINER (sw), list);
   populate_list (GTK_LIST_BOX (list));
 
   g_signal_connect (sw, "edge-overshot", G_CALLBACK (edge_overshot), list);
   g_signal_connect (sw, "edge-reached", G_CALLBACK (edge_reached), list);
 
-  gtk_widget_show_all (win);
+  ctk_widget_show_all (win);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

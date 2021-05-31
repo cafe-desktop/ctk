@@ -81,7 +81,7 @@ main (int argc, char *argv[])
               "optionally passing one or more URIs as arguments.");
   g_option_context_set_summary (context, summary);
   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
-  g_option_context_add_group (context, gtk_get_option_group (FALSE));
+  g_option_context_add_group (context, ctk_get_option_group (FALSE));
 
   g_option_context_parse (context, &argc, &argv, &error);
 
@@ -100,9 +100,9 @@ main (int argc, char *argv[])
   if (show_version)
     {
       g_print ("%d.%d.%d\n",
-               gtk_get_major_version (),
-               gtk_get_minor_version (),
-               gtk_get_micro_version ());
+               ctk_get_major_version (),
+               ctk_get_minor_version (),
+               ctk_get_micro_version ());
       return 0;
     }
 
@@ -118,7 +118,7 @@ main (int argc, char *argv[])
     }
 
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   app_name = *args;
 #if defined(HAVE_GIO_UNIX) && !defined(__APPLE__)

@@ -48,7 +48,7 @@
  * event pair for all devices on a window. To enable per-device
  * enter/leave events and other multi-pointer interaction features,
  * gdk_window_set_support_multidevice() must be called on
- * #GdkWindows (or gtk_widget_set_support_multidevice() on widgets).
+ * #GdkWindows (or ctk_widget_set_support_multidevice() on widgets).
  * window. See the gdk_window_set_support_multidevice() documentation
  * for more information.
  *

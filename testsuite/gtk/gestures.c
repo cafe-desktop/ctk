@@ -25,14 +25,14 @@ point_press (PointState *point,
   GdkSeat *seat;
   GdkEvent *ev;
 
-  display = gtk_widget_get_display (widget);
+  display = ctk_widget_get_display (widget);
   seat = gdk_display_get_default_seat (display);
   device = gdk_seat_get_pointer (seat);
 
   if (point == &mouse_state)
     {
       ev = gdk_event_new (GDK_BUTTON_PRESS);
-      ev->any.window = g_object_ref (gtk_widget_get_window (widget));
+      ev->any.window = g_object_ref (ctk_widget_get_window (widget));
       ev->button.time = GDK_CURRENT_TIME;
       ev->button.x = point->x;
       ev->button.y = point->y;
@@ -44,7 +44,7 @@ point_press (PointState *point,
   else
     {
       ev = gdk_event_new (GDK_TOUCH_BEGIN);
-      ev->any.window = g_object_ref (gtk_widget_get_window (widget));
+      ev->any.window = g_object_ref (ctk_widget_get_window (widget));
       ev->touch.time = GDK_CURRENT_TIME;
       ev->touch.x = point->x;
       ev->touch.y = point->y;
@@ -56,7 +56,7 @@ point_press (PointState *point,
 
   gdk_event_set_device (ev, device);
 
-  gtk_main_do_event (ev);
+  ctk_main_do_event (ev);
 
   gdk_event_free (ev);
 
@@ -74,7 +74,7 @@ point_update (PointState *point,
   GdkSeat *seat;
   GdkEvent *ev;
 
-  display = gtk_widget_get_display (widget);
+  display = ctk_widget_get_display (widget);
   seat = gdk_display_get_default_seat (display);
   device = gdk_seat_get_pointer (seat);
 
@@ -84,7 +84,7 @@ point_update (PointState *point,
   if (point == &mouse_state)
     {
       ev = gdk_event_new (GDK_MOTION_NOTIFY);
-      ev->any.window = g_object_ref (gtk_widget_get_window (widget));
+      ev->any.window = g_object_ref (ctk_widget_get_window (widget));
       ev->button.time = GDK_CURRENT_TIME;
       ev->motion.x = x;
       ev->motion.y = y;
@@ -96,7 +96,7 @@ point_update (PointState *point,
         return;
 
       ev = gdk_event_new (GDK_TOUCH_UPDATE);
-      ev->any.window = g_object_ref (gtk_widget_get_window (widget));
+      ev->any.window = g_object_ref (ctk_widget_get_window (widget));
       ev->touch.time = GDK_CURRENT_TIME;
       ev->touch.x = x;
       ev->touch.y = y;
@@ -109,7 +109,7 @@ point_update (PointState *point,
 
   gdk_event_set_device (ev, device);
 
-  gtk_main_do_event (ev);
+  ctk_main_do_event (ev);
 
   gdk_event_free (ev);
 }
@@ -126,7 +126,7 @@ point_release (PointState *point,
   if (point->widget == NULL)
     return;
 
-  display = gtk_widget_get_display (point->widget);
+  display = ctk_widget_get_display (point->widget);
   seat = gdk_display_get_default_seat (display);
   device = gdk_seat_get_pointer (seat);
 
@@ -139,7 +139,7 @@ point_release (PointState *point,
         return;
 
       ev = gdk_event_new (GDK_BUTTON_RELEASE);
-      ev->any.window = g_object_ref (gtk_widget_get_window (point->widget));
+      ev->any.window = g_object_ref (ctk_widget_get_window (point->widget));
       ev->button.time = GDK_CURRENT_TIME;
       ev->button.x = point->x;
       ev->button.y = point->y;
@@ -150,7 +150,7 @@ point_release (PointState *point,
   else
     {
       ev = gdk_event_new (GDK_TOUCH_END);
-      ev->any.window = g_object_ref (gtk_widget_get_window (point->widget));
+      ev->any.window = g_object_ref (ctk_widget_get_window (point->widget));
       ev->touch.time = GDK_CURRENT_TIME;
       ev->touch.x = point->x;
       ev->touch.y = point->y;
@@ -163,7 +163,7 @@ point_release (PointState *point,
 
   gdk_event_set_device (ev, device);
 
-  gtk_main_do_event (ev);
+  ctk_main_do_event (ev);
 
   gdk_event_free (ev);
 }
@@ -206,7 +206,7 @@ legacy_cb (GtkWidget *w, GdkEventButton *button, gpointer data)
 
   if (ld->str->len > 0)
     g_string_append (ld->str, ", ");
-  g_string_append_printf (ld->str, "legacy %s", gtk_widget_get_name (w));
+  g_string_append_printf (ld->str, "legacy %s", ctk_widget_get_name (w));
 
   return ld->exit;
 }
@@ -226,19 +226,19 @@ press_cb (GtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
   const gchar *name;
   
   name = g_object_get_data (G_OBJECT (g), "name");
-  phase = gtk_event_controller_get_propagation_phase (c);
+  phase = ctk_event_controller_get_propagation_phase (c);
 
   if (gd->str->len > 0)
     g_string_append (gd->str, ", ");
   g_string_append_printf (gd->str, "%s %s", phase_nick (phase), name);
 
-  sequence = gtk_gesture_get_last_updated_sequence (g);
+  sequence = ctk_gesture_get_last_updated_sequence (g);
 
   if (sequence)
     g_string_append_printf (gd->str, " (%x)", GPOINTER_TO_UINT (sequence));
 
   if (gd->state != GTK_EVENT_SEQUENCE_NONE)
-    gtk_gesture_set_state (g, gd->state);
+    ctk_gesture_set_state (g, gd->state);
 }
 
 static void
@@ -267,7 +267,7 @@ begin_cb (GtkGesture *g, GdkEventSequence *sequence, gpointer data)
   g_string_append_printf (gd->str, "%s began", name);
 
   if (gd->state != GTK_EVENT_SEQUENCE_NONE)
-    gtk_gesture_set_state (g, gd->state);
+    ctk_gesture_set_state (g, gd->state);
 }
 
 static void
@@ -323,10 +323,10 @@ add_gesture (GtkWidget *w, const gchar *name, GtkPropagationPhase phase, GString
   data->str = str;
   data->state = state;
 
-  g = gtk_gesture_multi_press_new (w);
-  gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (g), FALSE);
-  gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (g), 1);
-  gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (g), phase);
+  g = ctk_gesture_multi_press_new (w);
+  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (g), FALSE);
+  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (g), 1);
+  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (g), phase);
 
   g_object_set_data (G_OBJECT (g), "name", (gpointer)name);
 
@@ -348,8 +348,8 @@ add_mt_gesture (GtkWidget *w, const gchar *name, GtkPropagationPhase phase, GStr
   data->str = str;
   data->state = state;
 
-  g = gtk_gesture_rotate_new (w);
-  gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (g), phase);
+  g = ctk_gesture_rotate_new (w);
+  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (g), phase);
 
   g_object_set_data (G_OBJECT (g), "name", (gpointer)name);
 
@@ -378,19 +378,19 @@ test_phases (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -418,7 +418,7 @@ test_phases (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -427,19 +427,19 @@ test_mixed (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -474,7 +474,7 @@ test_mixed (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -483,19 +483,19 @@ test_early_exit (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -525,7 +525,7 @@ test_early_exit (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -534,19 +534,19 @@ test_claim_capture (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -569,7 +569,7 @@ test_claim_capture (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -578,19 +578,19 @@ test_claim_target (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -614,7 +614,7 @@ test_claim_target (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -623,19 +623,19 @@ test_claim_bubble (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -665,7 +665,7 @@ test_claim_bubble (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -675,19 +675,19 @@ test_early_claim_capture (void)
   GtkGesture *g;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -710,7 +710,7 @@ test_early_claim_capture (void)
   /* Reset the string */
   g_string_erase (str, 0, str->len);
 
-  gtk_gesture_set_state (g, GTK_EVENT_SEQUENCE_DENIED);
+  ctk_gesture_set_state (g, GTK_EVENT_SEQUENCE_DENIED);
 
   g_assert_cmpstr (str->str, ==,
                    "capture c1, "
@@ -720,7 +720,7 @@ test_early_claim_capture (void)
   point_release (&mouse_state, 1);
 
   g_string_free (str, TRUE);
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -730,19 +730,19 @@ test_late_claim_capture (void)
   GtkGesture *g;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -767,7 +767,7 @@ test_late_claim_capture (void)
   /* Reset the string */
   g_string_erase (str, 0, str->len);
 
-  gtk_gesture_set_state (g, GTK_EVENT_SEQUENCE_CLAIMED);
+  ctk_gesture_set_state (g, GTK_EVENT_SEQUENCE_CLAIMED);
 
   g_assert_cmpstr (str->str, ==,
                    "c2 cancelled, "
@@ -777,7 +777,7 @@ test_late_claim_capture (void)
   point_release (&mouse_state, 1);
 
   g_string_free (str, TRUE);
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -787,19 +787,19 @@ test_group (void)
   GString *str;
   GtkGesture *g1, *g2;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -808,7 +808,7 @@ test_group (void)
   add_gesture (C, "c1", GTK_PHASE_CAPTURE, str, GTK_EVENT_SEQUENCE_NONE);
   g1 = add_gesture (C, "c2", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_NONE);
   g2 = add_gesture (C, "c3", GTK_PHASE_TARGET, str, GTK_EVENT_SEQUENCE_CLAIMED);
-  gtk_gesture_group (g1, g2);
+  ctk_gesture_group (g1, g2);
   add_gesture (A, "a3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
   add_gesture (B, "b3", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
   add_gesture (C, "c4", GTK_PHASE_BUBBLE, str, GTK_EVENT_SEQUENCE_NONE);
@@ -827,7 +827,7 @@ test_group (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -836,22 +836,22 @@ test_gestures_outside_grab (void)
   GtkWidget *A, *B, *C, *D;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
-  D = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_show (D);
+  D = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_show (D);
 
   str = g_string_new ("");
 
@@ -874,7 +874,7 @@ test_gestures_outside_grab (void)
 
   /* Set a grab on another window */
   g_string_erase (str, 0, str->len);
-  gtk_grab_add (D);
+  ctk_grab_add (D);
 
   g_assert_cmpstr (str->str, ==,
                    "c1 cancelled, "
@@ -884,8 +884,8 @@ test_gestures_outside_grab (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
-  gtk_widget_destroy (D);
+  ctk_widget_destroy (A);
+  ctk_widget_destroy (D);
 }
 
 static void
@@ -894,19 +894,19 @@ test_gestures_inside_grab (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -929,7 +929,7 @@ test_gestures_inside_grab (void)
 
   /* Set a grab on B */
   g_string_erase (str, 0, str->len);
-  gtk_grab_add (B);
+  ctk_grab_add (B);
   g_assert_cmpstr (str->str, ==,
                    "a1 cancelled");
 
@@ -943,7 +943,7 @@ test_gestures_inside_grab (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -952,19 +952,19 @@ test_multitouch_on_single (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -991,7 +991,7 @@ test_multitouch_on_single (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -1000,19 +1000,19 @@ test_multitouch_activation (void)
   GtkWidget *A, *B, *C;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -1064,7 +1064,7 @@ test_multitouch_activation (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 static void
@@ -1074,19 +1074,19 @@ test_multitouch_interaction (void)
   GtkGesture *g;
   GString *str;
 
-  A = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (A, "A");
-  B = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_widget_set_name (B, "B");
-  C = gtk_event_box_new ();
-  gtk_widget_set_hexpand (C, TRUE);
-  gtk_widget_set_vexpand (C, TRUE);
-  gtk_widget_set_name (C, "C");
+  A = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (A, "A");
+  B = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_widget_set_name (B, "B");
+  C = ctk_event_box_new ();
+  ctk_widget_set_hexpand (C, TRUE);
+  ctk_widget_set_vexpand (C, TRUE);
+  ctk_widget_set_name (C, "C");
 
-  gtk_container_add (GTK_CONTAINER (A), B);
-  gtk_container_add (GTK_CONTAINER (B), C);
+  ctk_container_add (GTK_CONTAINER (A), B);
+  ctk_container_add (GTK_CONTAINER (B), C);
 
-  gtk_widget_show_all (A);
+  ctk_widget_show_all (A);
 
   str = g_string_new ("");
 
@@ -1107,7 +1107,7 @@ test_multitouch_interaction (void)
   point_press (&touch_state[1], C, 1);
 
   /* Denying sequences in touch-excess situation is a responsibility of the caller */
-  gtk_gesture_set_state (g, GTK_EVENT_SEQUENCE_DENIED);
+  ctk_gesture_set_state (g, GTK_EVENT_SEQUENCE_DENIED);
 
   g_assert_cmpstr (str->str, ==,
                    "a1 state denied (2), "
@@ -1155,13 +1155,13 @@ test_multitouch_interaction (void)
 
   g_string_free (str, TRUE);
 
-  gtk_widget_destroy (A);
+  ctk_widget_destroy (A);
 }
 
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv);
+  ctk_test_init (&argc, &argv);
 
   g_test_add_func ("/gestures/propagation/phases", test_phases);
   g_test_add_func ("/gestures/propagation/mixed", test_mixed);

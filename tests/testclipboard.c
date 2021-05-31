@@ -42,7 +42,7 @@ image_request_cb (GtkClipboard *clipboard,
       factor = MAX ((SIZE / height), (SIZE / width));
 
       copy = gdk_pixbuf_scale_simple (pixbuf, width * factor, height * factor, GDK_INTERP_BILINEAR);
-      gtk_image_set_from_pixbuf (GTK_IMAGE (image), copy);
+      ctk_image_set_from_pixbuf (GTK_IMAGE (image), copy);
       g_object_unref (copy);
       str = g_strdup_printf ("<b>Image</b> %d \342\234\225 %d", width, height);
     }
@@ -50,14 +50,14 @@ image_request_cb (GtkClipboard *clipboard,
     {
       str = g_strdup ("<b>No image data</b>");
     }
-  gtk_label_set_markup (GTK_LABEL (label), str);
+  ctk_label_set_markup (GTK_LABEL (label), str);
   g_free (str);
 }
 
 static void
 update_display (void)
 {
-  gtk_clipboard_request_image (clipboard, image_request_cb, NULL);
+  ctk_clipboard_request_image (clipboard, image_request_cb, NULL);
 }
 
 static void
@@ -80,10 +80,10 @@ on_response (GtkDialog *dialog,
       {
         GtkIconTheme *theme;
         GdkPixbuf *pixbuf;
-        theme = gtk_icon_theme_get_default ();
-        pixbuf = gtk_icon_theme_load_icon (theme, "utilities-terminal", 1600, 0, NULL);
+        theme = ctk_icon_theme_get_default ();
+        pixbuf = ctk_icon_theme_load_icon (theme, "utilities-terminal", 1600, 0, NULL);
         g_assert_nonnull (pixbuf);
-        gtk_clipboard_set_image (clipboard, pixbuf);
+        ctk_clipboard_set_image (clipboard, pixbuf);
       }
       break;
     case 1:
@@ -91,15 +91,15 @@ on_response (GtkDialog *dialog,
       {
         GtkIconTheme *theme;
         GdkPixbuf *pixbuf;
-        theme = gtk_icon_theme_get_default ();
-        pixbuf = gtk_icon_theme_load_icon (theme, "utilities-terminal", 48, 0, NULL);
+        theme = ctk_icon_theme_get_default ();
+        pixbuf = ctk_icon_theme_load_icon (theme, "utilities-terminal", 48, 0, NULL);
         g_assert_nonnull (pixbuf);
-        gtk_clipboard_set_image (clipboard, pixbuf);
+        ctk_clipboard_set_image (clipboard, pixbuf);
       }
       break;
     case GTK_RESPONSE_CLOSE:
     default:
-      gtk_main_quit ();
+      ctk_main_quit ();
       break;
     }
 }
@@ -109,9 +109,9 @@ main (int argc, char **argv)
 {
   GtkWidget *window;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = gtk_dialog_new_with_buttons ("Clipboard",
+  window = ctk_dialog_new_with_buttons ("Clipboard",
                                         NULL,
                                         0,
                                         "Copy Large", 0,
@@ -119,22 +119,22 @@ main (int argc, char **argv)
                                         "_Close", GTK_RESPONSE_CLOSE,
                                         NULL);
 
-  image = gtk_image_new ();
-  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (window))), image, FALSE, FALSE, 0);
-  label = gtk_label_new ("No data found");
-  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (window))), label, FALSE, FALSE, 0);
+  image = ctk_image_new ();
+  ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (window))), image, FALSE, FALSE, 0);
+  label = ctk_label_new ("No data found");
+  ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (window))), label, FALSE, FALSE, 0);
 
   g_signal_connect (window, "response", G_CALLBACK (on_response), NULL);
 
-  clipboard = gtk_clipboard_get_for_display (gtk_widget_get_display (window),
+  clipboard = ctk_clipboard_get_for_display (ctk_widget_get_display (window),
                                              GDK_SELECTION_CLIPBOARD);
   g_signal_connect (clipboard, "owner-change", G_CALLBACK (on_owner_change), NULL);
 
   update_display ();
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

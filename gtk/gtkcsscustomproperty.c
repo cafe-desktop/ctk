@@ -31,20 +31,20 @@
 
 #include "deprecated/gtksymboliccolor.h"
 
-G_DEFINE_TYPE (GtkCssCustomProperty, _gtk_css_custom_property, GTK_TYPE_CSS_STYLE_PROPERTY)
+G_DEFINE_TYPE (GtkCssCustomProperty, _ctk_css_custom_property, GTK_TYPE_CSS_STYLE_PROPERTY)
 
 static GtkCssValue *
-gtk_css_custom_property_parse_value (GtkStyleProperty *property,
+ctk_css_custom_property_parse_value (GtkStyleProperty *property,
                                      GtkCssParser     *parser)
 {
-  _gtk_css_parser_error_full (parser,
+  _ctk_css_parser_error_full (parser,
                               GTK_CSS_PROVIDER_ERROR_NAME,
                               "Custom CSS properties are no longer supported.");
   return NULL;
 }
 
 static void
-gtk_css_custom_property_query (GtkStyleProperty   *property,
+ctk_css_custom_property_query (GtkStyleProperty   *property,
                                GValue             *value,
                                GtkStyleQueryFunc   query_func,
                                gpointer            query_data)
@@ -53,45 +53,45 @@ gtk_css_custom_property_query (GtkStyleProperty   *property,
   GtkCssCustomProperty *custom = GTK_CSS_CUSTOM_PROPERTY (property);
   GtkCssValue *css_value;
   
-  css_value = (* query_func) (_gtk_css_style_property_get_id (style), query_data);
+  css_value = (* query_func) (_ctk_css_style_property_get_id (style), query_data);
   if (css_value == NULL)
-    css_value = _gtk_css_style_property_get_initial_value (style);
+    css_value = _ctk_css_style_property_get_initial_value (style);
 
   g_value_init (value, custom->pspec->value_type);
-  g_value_copy (_gtk_css_typed_value_get (css_value), value);
+  g_value_copy (_ctk_css_typed_value_get (css_value), value);
 }
 
 static void
-gtk_css_custom_property_assign (GtkStyleProperty   *property,
+ctk_css_custom_property_assign (GtkStyleProperty   *property,
                                 GtkStyleProperties *props,
                                 GtkStateFlags       state,
                                 const GValue       *value)
 {
-  GtkCssValue *css_value = _gtk_css_typed_value_new (value);
-  _gtk_style_properties_set_property_by_property (props,
+  GtkCssValue *css_value = _ctk_css_typed_value_new (value);
+  _ctk_style_properties_set_property_by_property (props,
                                                   GTK_CSS_STYLE_PROPERTY (property),
                                                   state,
                                                   css_value);
-  _gtk_css_value_unref (css_value);
+  _ctk_css_value_unref (css_value);
 }
 
 static void
-_gtk_css_custom_property_class_init (GtkCssCustomPropertyClass *klass)
+_ctk_css_custom_property_class_init (GtkCssCustomPropertyClass *klass)
 {
   GtkStylePropertyClass *property_class = GTK_STYLE_PROPERTY_CLASS (klass);
 
-  property_class->parse_value = gtk_css_custom_property_parse_value;
-  property_class->query = gtk_css_custom_property_query;
-  property_class->assign = gtk_css_custom_property_assign;
+  property_class->parse_value = ctk_css_custom_property_parse_value;
+  property_class->query = ctk_css_custom_property_query;
+  property_class->assign = ctk_css_custom_property_assign;
 }
 
 static void
-_gtk_css_custom_property_init (GtkCssCustomProperty *custom)
+_ctk_css_custom_property_init (GtkCssCustomProperty *custom)
 {
 }
 
 static GtkCssValue *
-gtk_css_custom_property_create_initial_value (GParamSpec *pspec)
+ctk_css_custom_property_create_initial_value (GParamSpec *pspec)
 {
   GValue value = G_VALUE_INIT;
   GtkCssValue *result;
@@ -101,7 +101,7 @@ gtk_css_custom_property_create_initial_value (GParamSpec *pspec)
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (pspec->value_type == GTK_TYPE_THEMING_ENGINE)
-    g_value_set_object (&value, gtk_theming_engine_load (NULL));
+    g_value_set_object (&value, ctk_theming_engine_load (NULL));
   else if (pspec->value_type == PANGO_TYPE_FONT_DESCRIPTION)
     g_value_take_boxed (&value, pango_font_description_from_string ("Sans 10"));
   else if (pspec->value_type == GDK_TYPE_RGBA)
@@ -118,13 +118,13 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     }
   else if (pspec->value_type == GTK_TYPE_BORDER)
     {
-      g_value_take_boxed (&value, gtk_border_new ());
+      g_value_take_boxed (&value, ctk_border_new ());
     }
   else
     g_param_value_set_default (pspec, &value);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  result = _gtk_css_typed_value_new (&value);
+  result = _ctk_css_typed_value_new (&value);
   g_value_unset (&value);
 
   return result;
@@ -133,7 +133,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 /* Property registration functions */
 
 /**
- * gtk_theming_engine_register_property: (skip)
+ * ctk_theming_engine_register_property: (skip)
  * @name_space: namespace for the property name
  * @parse_func: (nullable): parsing function to use, or %NULL
  * @pspec: the #GParamSpec for the new property
@@ -171,7 +171,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * Deprecated: 3.8: Code should use the default properties provided by CSS.
  **/
 void
-gtk_theming_engine_register_property (const gchar            *name_space,
+ctk_theming_engine_register_property (const gchar            *name_space,
                                       GtkStylePropertyParser  parse_func,
                                       GParamSpec             *pspec)
 {
@@ -186,14 +186,14 @@ gtk_theming_engine_register_property (const gchar            *name_space,
   name = g_strdup_printf ("-%s-%s", name_space, pspec->name);
 
   /* This also initializes the default properties */
-  if (_gtk_style_property_lookup (pspec->name))
+  if (_ctk_style_property_lookup (pspec->name))
     {
       g_warning ("a property with name '%s' already exists", name);
       g_free (name);
       return;
     }
   
-  initial = gtk_css_custom_property_create_initial_value (pspec);
+  initial = ctk_css_custom_property_create_initial_value (pspec);
 
   node = g_object_new (GTK_TYPE_CSS_CUSTOM_PROPERTY,
                        "initial-value", initial,
@@ -203,18 +203,18 @@ gtk_theming_engine_register_property (const gchar            *name_space,
   node->pspec = pspec;
   node->property_parse_func = parse_func;
 
-  _gtk_css_value_unref (initial);
+  _ctk_css_value_unref (initial);
   g_free (name);
 }
 
 /**
- * gtk_style_properties_register_property: (skip)
+ * ctk_style_properties_register_property: (skip)
  * @parse_func: (nullable): parsing function to use, or %NULL
  * @pspec: the #GParamSpec for the new property
  *
  * Registers a property so it can be used in the CSS file format.
  * This function is the low-level equivalent of
- * gtk_theming_engine_register_property(), if you are implementing
+ * ctk_theming_engine_register_property(), if you are implementing
  * a theming engine, you want to use that function instead.
  *
  * Since: 3.0
@@ -222,7 +222,7 @@ gtk_theming_engine_register_property (const gchar            *name_space,
  * Deprecated: 3.8: Code should use the default properties provided by CSS.
  **/
 void
-gtk_style_properties_register_property (GtkStylePropertyParser  parse_func,
+ctk_style_properties_register_property (GtkStylePropertyParser  parse_func,
                                         GParamSpec             *pspec)
 {
   GtkCssCustomProperty *node;
@@ -231,13 +231,13 @@ gtk_style_properties_register_property (GtkStylePropertyParser  parse_func,
   g_return_if_fail (G_IS_PARAM_SPEC (pspec));
 
   /* This also initializes the default properties */
-  if (_gtk_style_property_lookup (pspec->name))
+  if (_ctk_style_property_lookup (pspec->name))
     {
       g_warning ("a property with name '%s' already exists", pspec->name);
       return;
     }
   
-  initial = gtk_css_custom_property_create_initial_value (pspec);
+  initial = ctk_css_custom_property_create_initial_value (pspec);
 
   node = g_object_new (GTK_TYPE_CSS_CUSTOM_PROPERTY,
                        "initial-value", initial,
@@ -247,11 +247,11 @@ gtk_style_properties_register_property (GtkStylePropertyParser  parse_func,
   node->pspec = pspec;
   node->property_parse_func = parse_func;
 
-  _gtk_css_value_unref (initial);
+  _ctk_css_value_unref (initial);
 }
 
 /**
- * gtk_style_properties_lookup_property: (skip)
+ * ctk_style_properties_lookup_property: (skip)
  * @property_name: property name to look up
  * @parse_func: (out): return location for the parse function
  * @pspec: (out) (transfer none): return location for the #GParamSpec
@@ -268,7 +268,7 @@ gtk_style_properties_register_property (GtkStylePropertyParser  parse_func,
  *     those are deprecated.
  **/
 gboolean
-gtk_style_properties_lookup_property (const gchar             *property_name,
+ctk_style_properties_lookup_property (const gchar             *property_name,
                                       GtkStylePropertyParser  *parse_func,
                                       GParamSpec             **pspec)
 {
@@ -277,7 +277,7 @@ gtk_style_properties_lookup_property (const gchar             *property_name,
 
   g_return_val_if_fail (property_name != NULL, FALSE);
 
-  node = _gtk_style_property_lookup (property_name);
+  node = _ctk_style_property_lookup (property_name);
 
   if (GTK_IS_CSS_CUSTOM_PROPERTY (node))
     {

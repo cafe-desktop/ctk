@@ -26,7 +26,7 @@
     <para>
       GtkBox works by arranging child widgets in a single line, either
       horizontally or vertically. It allows packing children from the
-      beginning or end, using gtk_box_pack_start() and gtk_box_pack_end().
+      beginning or end, using ctk_box_pack_start() and ctk_box_pack_end().
     </para>
 
     <inlinegraphic fileref="box-packing.png" format="PNG"></inlinegraphic>
@@ -34,35 +34,35 @@
   <example>
     <title>A simple box</title>
     <programlisting>
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
-  gtk_box_pack_start (GTK_BOX (box), gtk_label_new ("One"), FALSE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (box), gtk_label_new ("Two"), FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (box), ctk_label_new ("One"), FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (box), ctk_label_new ("Two"), FALSE, FALSE, 0);
     </programlisting>
     <para>This can be done with #GtkGrid as follows:</para>
     <programlisting>
-  grid = gtk_grid_new ();
+  grid = ctk_grid_new ();
 
-  child1 = gtk_label_new ("One");
-  gtk_grid_attach (GTK_GRID (grid), child1, 0, 0, 1, 1);
-  child2 = gtk_label_new ("Two");
-  gtk_grid_attach_next_to (GTK_GRID (grid), child2, child1, GTK_POS_RIGHT, 1, 1);
+  child1 = ctk_label_new ("One");
+  ctk_grid_attach (GTK_GRID (grid), child1, 0, 0, 1, 1);
+  child2 = ctk_label_new ("Two");
+  ctk_grid_attach_next_to (GTK_GRID (grid), child2, child1, GTK_POS_RIGHT, 1, 1);
     </programlisting>
     <para>
-      And similarly for gtk_box_pack_end(). In that case, you
+      And similarly for ctk_box_pack_end(). In that case, you
       would use #GTK_POS_LEFT to place the grid children from
       left to right.
     </para>
     <para>
       If you only need to pack children from the start, using
-      gtk_container_add() is an even simpler alternative. GtkGrid
-      places children added with gtk_container_add() in a single
+      ctk_container_add() is an even simpler alternative. GtkGrid
+      places children added with ctk_container_add() in a single
       row or column according to its #GtkOrientable:orientation.
     </para>
   </example>
 
     <para>
-      One difference to keep in mind is that the gtk_box_pack_start/pack_end
+      One difference to keep in mind is that the ctk_box_pack_start/pack_end
       functions allow you to place an arbitrary number of children from
       either end without ever 'colliding in the middle'. With GtkGrid, you
       have to leave enough space between the two ends, if you want to combine
@@ -124,23 +124,23 @@
     <example>
       <title>Expansion and alignment</title>
       <programlisting>
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
-  gtk_box_pack_start (GTK_BOX (box), gtk_label_new ("One"), TRUE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (box), gtk_label_new ("Two"), TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (box), ctk_label_new ("One"), TRUE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (box), ctk_label_new ("Two"), TRUE, TRUE, 0);
       </programlisting>
     <para>This can be done with #GtkGrid as follows:</para>
     <programlisting>
-  grid = gtk_grid_new ();
+  grid = ctk_grid_new ();
 
-  child1 = gtk_label_new ("One");
-  gtk_widget_set_hexpand (child1, TRUE);
-  gtk_widget_set_halign (child1, GTK_ALIGN_CENTER);
-  gtk_grid_attach (GTK_GRID (grid), child1, 0, 0, 1, 1);
-  child2 = gtk_label_new ("Two");
-  gtk_widget_set_hexpand (child2, TRUE);
-  gtk_widget_set_halign (child1, GTK_ALIGN_FILL);
-  gtk_grid_attach_next_to (GTK_GRID (grid), child2, child1, GTK_POS_RIGHT, 1, 1);
+  child1 = ctk_label_new ("One");
+  ctk_widget_set_hexpand (child1, TRUE);
+  ctk_widget_set_halign (child1, GTK_ALIGN_CENTER);
+  ctk_grid_attach (GTK_GRID (grid), child1, 0, 0, 1, 1);
+  child2 = ctk_label_new ("Two");
+  ctk_widget_set_hexpand (child2, TRUE);
+  ctk_widget_set_halign (child1, GTK_ALIGN_FILL);
+  ctk_grid_attach_next_to (GTK_GRID (grid), child2, child1, GTK_POS_RIGHT, 1, 1);
       </programlisting>
     </example>
     <para>
@@ -208,15 +208,15 @@
       <title>Spacing in boxes</title>
 
       <programlisting>
-         box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-         gtk_box_pack_start (GTK_BOX (box), child, FALSE, FALSE, 12);
+         box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+         ctk_box_pack_start (GTK_BOX (box), child, FALSE, FALSE, 12);
       </programlisting>
       <para>This can be done with #GtkGrid as follows:</para>
       <programlisting>
-         grid = gtk_grid_new ();
-         gtk_grid_set_row_spacing (GTK_GRID (grid), 6);
+         grid = ctk_grid_new ();
+         ctk_grid_set_row_spacing (GTK_GRID (grid), 6);
          g_object_set (child, "margin", 12, NULL);
-         gtk_grid_attach (GTK_GRID (box), child, 0, 0, 1, 1);
+         ctk_grid_attach (GTK_GRID (box), child, 0, 0, 1, 1);
       </programlisting>
     </example>
   </section>

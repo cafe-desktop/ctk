@@ -36,7 +36,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_ARROW                  (gtk_arrow_get_type ())
+#define GTK_TYPE_ARROW                  (ctk_arrow_get_type ())
 #define GTK_ARROW(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ARROW, GtkArrow))
 #define GTK_ARROW_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ARROW, GtkArrowClass))
 #define GTK_IS_ARROW(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ARROW))
@@ -60,20 +60,20 @@ struct _GtkArrowClass
   GtkMiscClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_DEPRECATED_IN_3_14
-GType      gtk_arrow_get_type   (void) G_GNUC_CONST;
+GType      ctk_arrow_get_type   (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_14
-GtkWidget* gtk_arrow_new        (GtkArrowType   arrow_type,
+GtkWidget* ctk_arrow_new        (GtkArrowType   arrow_type,
 				 GtkShadowType  shadow_type);
 GDK_DEPRECATED_IN_3_14
-void       gtk_arrow_set        (GtkArrow      *arrow,
+void       ctk_arrow_set        (GtkArrow      *arrow,
 				 GtkArrowType   arrow_type,
 				 GtkShadowType  shadow_type);
 

@@ -41,7 +41,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define GTK_TYPE_INFO_BAR              (gtk_info_bar_get_type())
+#define GTK_TYPE_INFO_BAR              (ctk_info_bar_get_type())
 #define GTK_INFO_BAR(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INFO_BAR, GtkInfoBar))
 #define GTK_INFO_BAR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INFO_BAR, GtkInfoBarClass))
 #define GTK_IS_INFO_BAR(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INFO_BAR))
@@ -74,67 +74,67 @@ struct _GtkInfoBarClass
   void (* close)    (GtkInfoBar *info_bar);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType          gtk_info_bar_get_type               (void) G_GNUC_CONST;
+GType          ctk_info_bar_get_type               (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *gtk_info_bar_new                    (void);
+GtkWidget     *ctk_info_bar_new                    (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *gtk_info_bar_new_with_buttons       (const gchar    *first_button_text,
+GtkWidget     *ctk_info_bar_new_with_buttons       (const gchar    *first_button_text,
                                                     ...);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *gtk_info_bar_get_action_area        (GtkInfoBar     *info_bar);
+GtkWidget     *ctk_info_bar_get_action_area        (GtkInfoBar     *info_bar);
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *gtk_info_bar_get_content_area       (GtkInfoBar     *info_bar);
+GtkWidget     *ctk_info_bar_get_content_area       (GtkInfoBar     *info_bar);
 GDK_AVAILABLE_IN_ALL
-void           gtk_info_bar_add_action_widget      (GtkInfoBar     *info_bar,
+void           ctk_info_bar_add_action_widget      (GtkInfoBar     *info_bar,
                                                     GtkWidget      *child,
                                                     gint            response_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget     *gtk_info_bar_add_button             (GtkInfoBar     *info_bar,
+GtkWidget     *ctk_info_bar_add_button             (GtkInfoBar     *info_bar,
                                                     const gchar    *button_text,
                                                     gint            response_id);
 GDK_AVAILABLE_IN_ALL
-void           gtk_info_bar_add_buttons            (GtkInfoBar     *info_bar,
+void           ctk_info_bar_add_buttons            (GtkInfoBar     *info_bar,
                                                     const gchar    *first_button_text,
                                                     ...);
 GDK_AVAILABLE_IN_ALL
-void           gtk_info_bar_set_response_sensitive (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_response_sensitive (GtkInfoBar     *info_bar,
                                                     gint            response_id,
                                                     gboolean        setting);
 GDK_AVAILABLE_IN_ALL
-void           gtk_info_bar_set_default_response   (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_default_response   (GtkInfoBar     *info_bar,
                                                     gint            response_id);
 
 /* Emit response signal */
 GDK_AVAILABLE_IN_ALL
-void           gtk_info_bar_response               (GtkInfoBar     *info_bar,
+void           ctk_info_bar_response               (GtkInfoBar     *info_bar,
                                                     gint            response_id);
 
 GDK_AVAILABLE_IN_ALL
-void           gtk_info_bar_set_message_type       (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_message_type       (GtkInfoBar     *info_bar,
                                                     GtkMessageType  message_type);
 GDK_AVAILABLE_IN_ALL
-GtkMessageType gtk_info_bar_get_message_type       (GtkInfoBar     *info_bar);
+GtkMessageType ctk_info_bar_get_message_type       (GtkInfoBar     *info_bar);
 
 GDK_AVAILABLE_IN_3_10
-void           gtk_info_bar_set_show_close_button  (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_show_close_button  (GtkInfoBar     *info_bar,
                                                     gboolean        setting);
 GDK_AVAILABLE_IN_3_10
-gboolean       gtk_info_bar_get_show_close_button  (GtkInfoBar     *info_bar);
+gboolean       ctk_info_bar_get_show_close_button  (GtkInfoBar     *info_bar);
 
 GDK_AVAILABLE_IN_3_22
-void           gtk_info_bar_set_revealed           (GtkInfoBar     *info_bar,
+void           ctk_info_bar_set_revealed           (GtkInfoBar     *info_bar,
                                                     gboolean        revealed);
 GDK_AVAILABLE_IN_3_22
-gboolean       gtk_info_bar_get_revealed           (GtkInfoBar     *info_bar);
+gboolean       ctk_info_bar_get_revealed           (GtkInfoBar     *info_bar);
 
 G_END_DECLS
 

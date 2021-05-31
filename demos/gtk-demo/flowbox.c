@@ -31,12 +31,12 @@ color_swatch_new (const gchar *color)
 {
   GtkWidget *button, *area;
 
-  button = gtk_button_new ();
-  area = gtk_drawing_area_new ();
+  button = ctk_button_new ();
+  area = ctk_drawing_area_new ();
   g_signal_connect (area, "draw", G_CALLBACK (draw_color), (gpointer) color);
-  gtk_widget_set_size_request (area, 24, 24);
-  gtk_container_add (GTK_CONTAINER (button), area);
-  gtk_widget_show_all (button);
+  ctk_widget_set_size_request (area, 24, 24);
+  ctk_container_add (GTK_CONTAINER (button), area);
+  ctk_widget_show_all (button);
 
   return button;
 }
@@ -718,35 +718,35 @@ do_flowbox (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
-      gtk_window_set_title (GTK_WINDOW (window), "Flow Box");
-      gtk_window_set_default_size (GTK_WINDOW (window), 400, 600);
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
+      ctk_window_set_title (GTK_WINDOW (window), "Flow Box");
+      ctk_window_set_default_size (GTK_WINDOW (window), 400, 600);
 
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      scrolled = gtk_scrolled_window_new (NULL, NULL);
-      gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-      flowbox = gtk_flow_box_new ();
-      gtk_widget_set_valign (flowbox, GTK_ALIGN_START);
-      gtk_flow_box_set_max_children_per_line (GTK_FLOW_BOX (flowbox), 30);
-      gtk_flow_box_set_selection_mode (GTK_FLOW_BOX (flowbox), GTK_SELECTION_NONE);
+      scrolled = ctk_scrolled_window_new (NULL, NULL);
+      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+      flowbox = ctk_flow_box_new ();
+      ctk_widget_set_valign (flowbox, GTK_ALIGN_START);
+      ctk_flow_box_set_max_children_per_line (GTK_FLOW_BOX (flowbox), 30);
+      ctk_flow_box_set_selection_mode (GTK_FLOW_BOX (flowbox), GTK_SELECTION_NONE);
 
-      gtk_container_add (GTK_CONTAINER (scrolled), flowbox);
-      gtk_container_add (GTK_CONTAINER (window), scrolled);
+      ctk_container_add (GTK_CONTAINER (scrolled), flowbox);
+      ctk_container_add (GTK_CONTAINER (window), scrolled);
 
       for (i = 0; colors[i]; i++)
-        gtk_container_add (GTK_CONTAINER (flowbox), color_swatch_new (colors[i]));
+        ctk_container_add (GTK_CONTAINER (flowbox), color_swatch_new (colors[i]));
 
-      gtk_widget_show_all (scrolled);
+      ctk_widget_show_all (scrolled);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

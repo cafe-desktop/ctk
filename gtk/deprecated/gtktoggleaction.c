@@ -65,9 +65,9 @@ enum {
   PROP_ACTIVE
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkToggleAction, gtk_toggle_action, GTK_TYPE_ACTION)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkToggleAction, ctk_toggle_action, GTK_TYPE_ACTION)
 
-static void gtk_toggle_action_activate     (GtkAction       *action);
+static void ctk_toggle_action_activate     (GtkAction       *action);
 static void set_property                   (GObject         *object,
 					    guint            prop_id,
 					    const GValue    *value,
@@ -82,7 +82,7 @@ static GtkWidget *create_menu_item         (GtkAction       *action);
 static guint         action_signals[LAST_SIGNAL] = { 0 };
 
 static void
-gtk_toggle_action_class_init (GtkToggleActionClass *klass)
+ctk_toggle_action_class_init (GtkToggleActionClass *klass)
 {
   GObjectClass *gobject_class;
   GtkActionClass *action_class;
@@ -93,7 +93,7 @@ gtk_toggle_action_class_init (GtkToggleActionClass *klass)
   gobject_class->set_property = set_property;
   gobject_class->get_property = get_property;
 
-  action_class->activate = gtk_toggle_action_activate;
+  action_class->activate = ctk_toggle_action_activate;
 
   action_class->menu_item_type = GTK_TYPE_CHECK_MENU_ITEM;
   action_class->toolbar_item_type = GTK_TYPE_TOGGLE_TOOL_BUTTON;
@@ -156,15 +156,15 @@ gtk_toggle_action_class_init (GtkToggleActionClass *klass)
 }
 
 static void
-gtk_toggle_action_init (GtkToggleAction *action)
+ctk_toggle_action_init (GtkToggleAction *action)
 {
-  action->private_data = gtk_toggle_action_get_instance_private (action);
+  action->private_data = ctk_toggle_action_get_instance_private (action);
   action->private_data->active = FALSE;
   action->private_data->draw_as_radio = FALSE;
 }
 
 /**
- * gtk_toggle_action_new:
+ * ctk_toggle_action_new:
  * @name: A unique name for the action
  * @label: (allow-none): The label displayed in menu items and on buttons,
  *         or %NULL
@@ -174,7 +174,7 @@ gtk_toggle_action_init (GtkToggleAction *action)
  *
  * Creates a new #GtkToggleAction object. To add the action to
  * a #GtkActionGroup and set the accelerator for the action,
- * call gtk_action_group_add_action_with_accel().
+ * call ctk_action_group_add_action_with_accel().
  *
  * Returns: a new #GtkToggleAction
  *
@@ -183,7 +183,7 @@ gtk_toggle_action_init (GtkToggleAction *action)
  * Deprecated: 3.10
  */
 GtkToggleAction *
-gtk_toggle_action_new (const gchar *name,
+ctk_toggle_action_new (const gchar *name,
 		       const gchar *label,
 		       const gchar *tooltip,
 		       const gchar *stock_id)
@@ -209,10 +209,10 @@ get_property (GObject     *object,
   switch (prop_id)
     {
     case PROP_DRAW_AS_RADIO:
-      g_value_set_boolean (value, gtk_toggle_action_get_draw_as_radio (action));
+      g_value_set_boolean (value, ctk_toggle_action_get_draw_as_radio (action));
       break;
     case PROP_ACTIVE:
-      g_value_set_boolean (value, gtk_toggle_action_get_active (action));
+      g_value_set_boolean (value, ctk_toggle_action_get_active (action));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -231,10 +231,10 @@ set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_DRAW_AS_RADIO:
-      gtk_toggle_action_set_draw_as_radio (action, g_value_get_boolean (value));
+      ctk_toggle_action_set_draw_as_radio (action, g_value_get_boolean (value));
       break;
     case PROP_ACTIVE:
-      gtk_toggle_action_set_active (action, g_value_get_boolean (value));
+      ctk_toggle_action_set_active (action, g_value_get_boolean (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -243,7 +243,7 @@ set_property (GObject      *object,
 }
 
 static void
-gtk_toggle_action_activate (GtkAction *action)
+ctk_toggle_action_activate (GtkAction *action)
 {
   GtkToggleAction *toggle_action;
 
@@ -255,11 +255,11 @@ gtk_toggle_action_activate (GtkAction *action)
 
   g_object_notify (G_OBJECT (action), "active");
 
-  gtk_toggle_action_toggled (toggle_action);
+  ctk_toggle_action_toggled (toggle_action);
 }
 
 /**
- * gtk_toggle_action_toggled:
+ * ctk_toggle_action_toggled:
  * @action: the action object
  *
  * Emits the “toggled” signal on the toggle action.
@@ -269,7 +269,7 @@ gtk_toggle_action_activate (GtkAction *action)
  * Deprecated: 3.10
  */
 void
-gtk_toggle_action_toggled (GtkToggleAction *action)
+ctk_toggle_action_toggled (GtkToggleAction *action)
 {
   g_return_if_fail (GTK_IS_TOGGLE_ACTION (action));
 
@@ -277,7 +277,7 @@ gtk_toggle_action_toggled (GtkToggleAction *action)
 }
 
 /**
- * gtk_toggle_action_set_active:
+ * ctk_toggle_action_set_active:
  * @action: the action object
  * @is_active: whether the action should be checked or not
  *
@@ -288,7 +288,7 @@ gtk_toggle_action_toggled (GtkToggleAction *action)
  * Deprecated: 3.10
  */
 void
-gtk_toggle_action_set_active (GtkToggleAction *action, 
+ctk_toggle_action_set_active (GtkToggleAction *action, 
 			      gboolean         is_active)
 {
   g_return_if_fail (GTK_IS_TOGGLE_ACTION (action));
@@ -296,11 +296,11 @@ gtk_toggle_action_set_active (GtkToggleAction *action,
   is_active = is_active != FALSE;
 
   if (action->private_data->active != is_active)
-    _gtk_action_emit_activate (GTK_ACTION (action));
+    _ctk_action_emit_activate (GTK_ACTION (action));
 }
 
 /**
- * gtk_toggle_action_get_active:
+ * ctk_toggle_action_get_active:
  * @action: the action object
  *
  * Returns the checked state of the toggle action.
@@ -312,7 +312,7 @@ gtk_toggle_action_set_active (GtkToggleAction *action,
  * Deprecated: 3.10
  */
 gboolean
-gtk_toggle_action_get_active (GtkToggleAction *action)
+ctk_toggle_action_get_active (GtkToggleAction *action)
 {
   g_return_val_if_fail (GTK_IS_TOGGLE_ACTION (action), FALSE);
 
@@ -321,7 +321,7 @@ gtk_toggle_action_get_active (GtkToggleAction *action)
 
 
 /**
- * gtk_toggle_action_set_draw_as_radio:
+ * ctk_toggle_action_set_draw_as_radio:
  * @action: the action object
  * @draw_as_radio: whether the action should have proxies like a radio 
  *    action
@@ -333,7 +333,7 @@ gtk_toggle_action_get_active (GtkToggleAction *action)
  * Deprecated: 3.10
  */
 void
-gtk_toggle_action_set_draw_as_radio (GtkToggleAction *action, 
+ctk_toggle_action_set_draw_as_radio (GtkToggleAction *action, 
 				     gboolean         draw_as_radio)
 {
   g_return_if_fail (GTK_IS_TOGGLE_ACTION (action));
@@ -349,7 +349,7 @@ gtk_toggle_action_set_draw_as_radio (GtkToggleAction *action,
 }
 
 /**
- * gtk_toggle_action_get_draw_as_radio:
+ * ctk_toggle_action_get_draw_as_radio:
  * @action: the action object
  *
  * Returns whether the action should have proxies like a radio action.
@@ -361,7 +361,7 @@ gtk_toggle_action_set_draw_as_radio (GtkToggleAction *action,
  * Deprecated: 3.10
  */
 gboolean
-gtk_toggle_action_get_draw_as_radio (GtkToggleAction *action)
+ctk_toggle_action_get_draw_as_radio (GtkToggleAction *action)
 {
   g_return_val_if_fail (GTK_IS_TOGGLE_ACTION (action), FALSE);
 
@@ -382,7 +382,7 @@ create_menu_item (GtkAction *action)
 /* Private */
 
 /*
- * _gtk_toggle_action_set_active:
+ * _ctk_toggle_action_set_active:
  * @toggle_action: a #GtkToggleAction
  * @is_active: whether the action is active or not
  *
@@ -392,7 +392,7 @@ create_menu_item (GtkAction *action)
  * Deprecated: 3.10
  */
 void
-_gtk_toggle_action_set_active (GtkToggleAction *toggle_action,
+_ctk_toggle_action_set_active (GtkToggleAction *toggle_action,
                                gboolean         is_active)
 {
   GtkToggleActionPrivate *priv = toggle_action->private_data;

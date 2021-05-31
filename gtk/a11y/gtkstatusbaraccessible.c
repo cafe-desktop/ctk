@@ -22,7 +22,7 @@
 #include "gtkstatusbaraccessible.h"
 
 
-G_DEFINE_TYPE (GtkStatusbarAccessible, gtk_statusbar_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkStatusbarAccessible, ctk_statusbar_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
 text_changed (GtkStatusbar *statusbar,
@@ -36,12 +36,12 @@ text_changed (GtkStatusbar *statusbar,
 }
 
 static void
-gtk_statusbar_accessible_initialize (AtkObject *obj,
+ctk_statusbar_accessible_initialize (AtkObject *obj,
                                      gpointer   data)
 {
   GtkWidget *statusbar = data;
 
-  ATK_OBJECT_CLASS (gtk_statusbar_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_statusbar_accessible_parent_class)->initialize (obj, data);
 
   g_signal_connect_after (statusbar, "text-pushed",
                           G_CALLBACK (text_changed), obj);
@@ -57,7 +57,7 @@ find_label_child (GtkContainer *container)
   GList *children, *tmp_list;
   GtkWidget *child;
 
-  children = gtk_container_get_children (container);
+  children = ctk_container_get_children (container);
 
   child = NULL;
   for (tmp_list = children; tmp_list != NULL; tmp_list = tmp_list->next)
@@ -84,56 +84,56 @@ get_label_from_statusbar (GtkStatusbar *statusbar)
 {
   GtkWidget *box;
 
-  box = gtk_statusbar_get_message_area (statusbar);
+  box = ctk_statusbar_get_message_area (statusbar);
 
   return find_label_child (GTK_CONTAINER (box));
 }
 
 static const gchar *
-gtk_statusbar_accessible_get_name (AtkObject *obj)
+ctk_statusbar_accessible_get_name (AtkObject *obj)
 {
   const gchar *name;
   GtkWidget *widget;
   GtkWidget *label;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  name = ATK_OBJECT_CLASS (gtk_statusbar_accessible_parent_class)->get_name (obj);
+  name = ATK_OBJECT_CLASS (ctk_statusbar_accessible_parent_class)->get_name (obj);
   if (name != NULL)
     return name;
 
   label = get_label_from_statusbar (GTK_STATUSBAR (widget));
   if (GTK_IS_LABEL (label))
-    return gtk_label_get_label (GTK_LABEL (label));
+    return ctk_label_get_label (GTK_LABEL (label));
 
   return NULL;
 }
 
 static gint
-gtk_statusbar_accessible_get_n_children (AtkObject *obj)
+ctk_statusbar_accessible_get_n_children (AtkObject *obj)
 {
   return 0;
 }
 
 static AtkObject*
-gtk_statusbar_accessible_ref_child (AtkObject *obj,
+ctk_statusbar_accessible_ref_child (AtkObject *obj,
                                     gint       i)
 {
   return NULL;
 }
 
 static void
-gtk_statusbar_accessible_class_init (GtkStatusbarAccessibleClass *klass)
+ctk_statusbar_accessible_class_init (GtkStatusbarAccessibleClass *klass)
 {
   AtkObjectClass  *class = ATK_OBJECT_CLASS (klass);
   GtkContainerAccessibleClass *container_class = (GtkContainerAccessibleClass*)klass;
 
-  class->get_name = gtk_statusbar_accessible_get_name;
-  class->get_n_children = gtk_statusbar_accessible_get_n_children;
-  class->ref_child = gtk_statusbar_accessible_ref_child;
-  class->initialize = gtk_statusbar_accessible_initialize;
+  class->get_name = ctk_statusbar_accessible_get_name;
+  class->get_n_children = ctk_statusbar_accessible_get_n_children;
+  class->ref_child = ctk_statusbar_accessible_ref_child;
+  class->initialize = ctk_statusbar_accessible_initialize;
   /*
    * As we report the statusbar as having no children
    * we are not interested in add and remove signals
@@ -143,6 +143,6 @@ gtk_statusbar_accessible_class_init (GtkStatusbarAccessibleClass *klass)
 }
 
 static void
-gtk_statusbar_accessible_init (GtkStatusbarAccessible *bar)
+ctk_statusbar_accessible_init (GtkStatusbarAccessible *bar)
 {
 }

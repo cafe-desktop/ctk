@@ -70,10 +70,10 @@ struct _GtkCssValue
 };
 
 static void
-gtk_css_value_color_free (GtkCssValue *color)
+ctk_css_value_color_free (GtkCssValue *color)
 {
   if (color->last_value)
-    _gtk_css_value_unref (color->last_value);
+    _ctk_css_value_unref (color->last_value);
 
   switch (color->type)
     {
@@ -81,17 +81,17 @@ gtk_css_value_color_free (GtkCssValue *color)
       g_free (color->sym_col.name);
       break;
     case COLOR_TYPE_SHADE:
-      _gtk_css_value_unref (color->sym_col.shade.color);
+      _ctk_css_value_unref (color->sym_col.shade.color);
       break;
     case COLOR_TYPE_ALPHA:
-      _gtk_css_value_unref (color->sym_col.alpha.color);
+      _ctk_css_value_unref (color->sym_col.alpha.color);
       break;
     case COLOR_TYPE_MIX:
-      _gtk_css_value_unref (color->sym_col.mix.color1);
-      _gtk_css_value_unref (color->sym_col.mix.color2);
+      _ctk_css_value_unref (color->sym_col.mix.color1);
+      _ctk_css_value_unref (color->sym_col.mix.color2);
       break;
     case COLOR_TYPE_WIN32:
-      gtk_win32_theme_unref (color->sym_col.win32.theme);
+      ctk_win32_theme_unref (color->sym_col.win32.theme);
       break;
     default:
       break;
@@ -101,7 +101,7 @@ gtk_css_value_color_free (GtkCssValue *color)
 }
 
 static GtkCssValue *
-gtk_css_value_color_get_fallback (guint                    property_id,
+ctk_css_value_color_get_fallback (guint                    property_id,
                                   GtkStyleProviderPrivate *provider,
                                   GtkCssStyle             *style,
                                   GtkCssStyle             *parent_style)
@@ -115,7 +115,7 @@ gtk_css_value_color_get_fallback (guint                    property_id,
       case GTK_CSS_PROPERTY_TEXT_SHADOW:
       case GTK_CSS_PROPERTY_ICON_SHADOW:
       case GTK_CSS_PROPERTY_BOX_SHADOW:
-        return _gtk_css_rgba_value_new_from_rgba (&transparent);
+        return _ctk_css_rgba_value_new_from_rgba (&transparent);
       case GTK_CSS_PROPERTY_COLOR:
       case GTK_CSS_PROPERTY_BACKGROUND_COLOR:
       case GTK_CSS_PROPERTY_BORDER_TOP_COLOR:
@@ -125,36 +125,36 @@ gtk_css_value_color_get_fallback (guint                    property_id,
       case GTK_CSS_PROPERTY_OUTLINE_COLOR:
       case GTK_CSS_PROPERTY_CARET_COLOR:
       case GTK_CSS_PROPERTY_SECONDARY_CARET_COLOR:
-        return _gtk_css_value_compute (_gtk_css_style_property_get_initial_value (_gtk_css_style_property_lookup_by_id (property_id)),
+        return _ctk_css_value_compute (_ctk_css_style_property_get_initial_value (_ctk_css_style_property_lookup_by_id (property_id)),
                                        property_id,
                                        provider,
                                        style,
                                        parent_style);
       case GTK_CSS_PROPERTY_ICON_PALETTE:
-        return _gtk_css_value_ref (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR));
+        return _ctk_css_value_ref (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR));
       default:
         if (property_id < GTK_CSS_PROPERTY_N_PROPERTIES)
           g_warning ("No fallback color defined for property '%s'", 
-                     _gtk_style_property_get_name (GTK_STYLE_PROPERTY (_gtk_css_style_property_lookup_by_id (property_id))));
-        return _gtk_css_rgba_value_new_from_rgba (&transparent);
+                     _ctk_style_property_get_name (GTK_STYLE_PROPERTY (_ctk_css_style_property_lookup_by_id (property_id))));
+        return _ctk_css_rgba_value_new_from_rgba (&transparent);
     }
 }
 
 GtkCssValue *
-_gtk_css_color_value_resolve (GtkCssValue             *color,
+_ctk_css_color_value_resolve (GtkCssValue             *color,
                               GtkStyleProviderPrivate *provider,
                               GtkCssValue             *current,
                               GSList                  *cycle_list)
 {
   GtkCssValue *value;
 
-  gtk_internal_return_val_if_fail (color != NULL, NULL);
-  gtk_internal_return_val_if_fail (provider == NULL || GTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
+  ctk_internal_return_val_if_fail (color != NULL, NULL);
+  ctk_internal_return_val_if_fail (provider == NULL || GTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
 
   switch (color->type)
     {
     case COLOR_TYPE_LITERAL:
-      return _gtk_css_value_ref (color->last_value);
+      return _ctk_css_value_ref (color->last_value);
     case COLOR_TYPE_NAME:
       {
 	GtkCssValue *named;
@@ -165,11 +165,11 @@ _gtk_css_color_value_resolve (GtkCssValue             *color,
         if (g_slist_find (cycle_list, color))
           return NULL;
 
-        named = _gtk_style_provider_private_get_color (provider, color->sym_col.name);
+        named = _ctk_style_provider_private_get_color (provider, color->sym_col.name);
 	if (named == NULL)
 	  return NULL;
 
-        value = _gtk_css_color_value_resolve (named, provider, current, &cycle);
+        value = _ctk_css_color_value_resolve (named, provider, current, &cycle);
 	if (value == NULL)
 	  return NULL;
       }
@@ -181,18 +181,18 @@ _gtk_css_color_value_resolve (GtkCssValue             *color,
         GtkHSLA hsla;
 	GdkRGBA shade;
 
-	val = _gtk_css_color_value_resolve (color->sym_col.shade.color, provider, current, cycle_list);
+	val = _ctk_css_color_value_resolve (color->sym_col.shade.color, provider, current, cycle_list);
 	if (val == NULL)
 	  return NULL;
 
-        _gtk_hsla_init_from_rgba (&hsla, _gtk_css_rgba_value_get_rgba (val));
-        _gtk_hsla_shade (&hsla, &hsla, color->sym_col.shade.factor);
+        _ctk_hsla_init_from_rgba (&hsla, _ctk_css_rgba_value_get_rgba (val));
+        _ctk_hsla_shade (&hsla, &hsla, color->sym_col.shade.factor);
 
         _gdk_rgba_init_from_hsla (&shade, &hsla);
 
-	_gtk_css_value_unref (val);
+	_ctk_css_value_unref (val);
 
-	value = _gtk_css_rgba_value_new_from_rgba (&shade);
+	value = _ctk_css_rgba_value_new_from_rgba (&shade);
       }
 
       break;
@@ -201,16 +201,16 @@ _gtk_css_color_value_resolve (GtkCssValue             *color,
 	GtkCssValue *val;
 	GdkRGBA alpha;
 
-	val = _gtk_css_color_value_resolve (color->sym_col.alpha.color, provider, current, cycle_list);
+	val = _ctk_css_color_value_resolve (color->sym_col.alpha.color, provider, current, cycle_list);
 	if (val == NULL)
 	  return NULL;
 
-	alpha = *_gtk_css_rgba_value_get_rgba (val);
+	alpha = *_ctk_css_rgba_value_get_rgba (val);
 	alpha.alpha = CLAMP (alpha.alpha * color->sym_col.alpha.factor, 0, 1);
 
-	_gtk_css_value_unref (val);
+	_ctk_css_value_unref (val);
 
-	value = _gtk_css_rgba_value_new_from_rgba (&alpha);
+	value = _ctk_css_rgba_value_new_from_rgba (&alpha);
       }
       break;
 
@@ -219,24 +219,24 @@ _gtk_css_color_value_resolve (GtkCssValue             *color,
 	GtkCssValue *val;
 	GdkRGBA color1, color2, res;
 
-	val = _gtk_css_color_value_resolve (color->sym_col.mix.color1, provider, current, cycle_list);
+	val = _ctk_css_color_value_resolve (color->sym_col.mix.color1, provider, current, cycle_list);
 	if (val == NULL)
 	  return NULL;
-	color1 = *_gtk_css_rgba_value_get_rgba (val);
-	_gtk_css_value_unref (val);
+	color1 = *_ctk_css_rgba_value_get_rgba (val);
+	_ctk_css_value_unref (val);
 
-	val = _gtk_css_color_value_resolve (color->sym_col.mix.color2, provider, current, cycle_list);
+	val = _ctk_css_color_value_resolve (color->sym_col.mix.color2, provider, current, cycle_list);
 	if (val == NULL)
 	  return NULL;
-	color2 = *_gtk_css_rgba_value_get_rgba (val);
-	_gtk_css_value_unref (val);
+	color2 = *_ctk_css_rgba_value_get_rgba (val);
+	_ctk_css_value_unref (val);
 
 	res.red = CLAMP (color1.red + ((color2.red - color1.red) * color->sym_col.mix.factor), 0, 1);
 	res.green = CLAMP (color1.green + ((color2.green - color1.green) * color->sym_col.mix.factor), 0, 1);
 	res.blue = CLAMP (color1.blue + ((color2.blue - color1.blue) * color->sym_col.mix.factor), 0, 1);
 	res.alpha = CLAMP (color1.alpha + ((color2.alpha - color1.alpha) * color->sym_col.mix.factor), 0, 1);
 
-	value =_gtk_css_rgba_value_new_from_rgba (&res);
+	value =_ctk_css_rgba_value_new_from_rgba (&res);
       }
 
       break;
@@ -244,22 +244,22 @@ _gtk_css_color_value_resolve (GtkCssValue             *color,
       {
 	GdkRGBA res;
 
-        gtk_win32_theme_get_color (color->sym_col.win32.theme,
+        ctk_win32_theme_get_color (color->sym_col.win32.theme,
 			           color->sym_col.win32.id,
 				   &res);
 
-	value = _gtk_css_rgba_value_new_from_rgba (&res);
+	value = _ctk_css_rgba_value_new_from_rgba (&res);
       }
 
       break;
     case COLOR_TYPE_CURRENT_COLOR:
       if (current)
         {
-          return _gtk_css_value_ref (current);
+          return _ctk_css_value_ref (current);
         }
       else
         {
-          return _gtk_css_color_value_resolve (_gtk_css_style_property_get_initial_value (_gtk_css_style_property_lookup_by_id (GTK_CSS_PROPERTY_COLOR)),
+          return _ctk_css_color_value_resolve (_ctk_css_style_property_get_initial_value (_ctk_css_style_property_lookup_by_id (GTK_CSS_PROPERTY_COLOR)),
                                                provider,
                                                NULL,
                                                cycle_list);
@@ -271,23 +271,23 @@ _gtk_css_color_value_resolve (GtkCssValue             *color,
     }
 
   if (color->last_value != NULL &&
-      _gtk_css_value_equal (color->last_value, value))
+      _ctk_css_value_equal (color->last_value, value))
     {
-      _gtk_css_value_unref (value);
-      value = _gtk_css_value_ref (color->last_value);
+      _ctk_css_value_unref (value);
+      value = _ctk_css_value_ref (color->last_value);
     }
   else
     {
       if (color->last_value != NULL)
-        _gtk_css_value_unref (color->last_value);
-      color->last_value = _gtk_css_value_ref (value);
+        _ctk_css_value_unref (color->last_value);
+      color->last_value = _ctk_css_value_ref (value);
     }
 
   return value;
 }
 
 static GtkCssValue *
-gtk_css_value_color_compute (GtkCssValue             *value,
+ctk_css_value_color_compute (GtkCssValue             *value,
                              guint                    property_id,
                              GtkStyleProviderPrivate *provider,
                              GtkCssStyle             *style,
@@ -302,28 +302,28 @@ gtk_css_value_color_compute (GtkCssValue             *value,
   if (property_id == GTK_CSS_PROPERTY_COLOR)
     {
       if (parent_style)
-        current = gtk_css_style_get_value (parent_style, GTK_CSS_PROPERTY_COLOR);
+        current = ctk_css_style_get_value (parent_style, GTK_CSS_PROPERTY_COLOR);
       else
         current = NULL;
     }
   else
     {
-      current = gtk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR);
+      current = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR);
     }
   
-  resolved = _gtk_css_color_value_resolve (value,
+  resolved = _ctk_css_color_value_resolve (value,
                                            provider,
                                            current,
                                            NULL);
 
   if (resolved == NULL)
-    return gtk_css_value_color_get_fallback (property_id, provider, style, parent_style);
+    return ctk_css_value_color_get_fallback (property_id, provider, style, parent_style);
 
   return resolved;
 }
 
 static gboolean
-gtk_css_value_color_equal (const GtkCssValue *value1,
+ctk_css_value_color_equal (const GtkCssValue *value1,
                            const GtkCssValue *value2)
 {
   if (value1->type != value2->type)
@@ -332,25 +332,25 @@ gtk_css_value_color_equal (const GtkCssValue *value1,
   switch (value1->type)
     {
     case COLOR_TYPE_LITERAL:
-      return _gtk_css_value_equal (value1->last_value, value2->last_value);
+      return _ctk_css_value_equal (value1->last_value, value2->last_value);
     case COLOR_TYPE_NAME:
       return g_str_equal (value1->sym_col.name, value2->sym_col.name);
     case COLOR_TYPE_SHADE:
       return value1->sym_col.shade.factor == value2->sym_col.shade.factor &&
-             _gtk_css_value_equal (value1->sym_col.shade.color,
+             _ctk_css_value_equal (value1->sym_col.shade.color,
                                    value2->sym_col.shade.color);
     case COLOR_TYPE_ALPHA:
       return value1->sym_col.alpha.factor == value2->sym_col.alpha.factor &&
-             _gtk_css_value_equal (value1->sym_col.alpha.color,
+             _ctk_css_value_equal (value1->sym_col.alpha.color,
                                    value2->sym_col.alpha.color);
     case COLOR_TYPE_MIX:
       return value1->sym_col.mix.factor == value2->sym_col.mix.factor &&
-             _gtk_css_value_equal (value1->sym_col.mix.color1,
+             _ctk_css_value_equal (value1->sym_col.mix.color1,
                                    value2->sym_col.mix.color1) &&
-             _gtk_css_value_equal (value1->sym_col.mix.color2,
+             _ctk_css_value_equal (value1->sym_col.mix.color2,
                                    value2->sym_col.mix.color2);
     case COLOR_TYPE_WIN32:
-      return gtk_win32_theme_equal (value1->sym_col.win32.theme, value2->sym_col.win32.theme) &&
+      return ctk_win32_theme_equal (value1->sym_col.win32.theme, value2->sym_col.win32.theme) &&
              value1->sym_col.win32.id == value2->sym_col.win32.id;
     case COLOR_TYPE_CURRENT_COLOR:
       return TRUE;
@@ -361,22 +361,22 @@ gtk_css_value_color_equal (const GtkCssValue *value1,
 }
 
 static GtkCssValue *
-gtk_css_value_color_transition (GtkCssValue *start,
+ctk_css_value_color_transition (GtkCssValue *start,
                                 GtkCssValue *end,
                                 guint        property_id,
                                 double       progress)
 {
-  return _gtk_css_color_value_new_mix (start, end, progress);
+  return _ctk_css_color_value_new_mix (start, end, progress);
 }
 
 static void
-gtk_css_value_color_print (const GtkCssValue *value,
+ctk_css_value_color_print (const GtkCssValue *value,
                            GString           *string)
 {
   switch (value->type)
     {
     case COLOR_TYPE_LITERAL:
-      _gtk_css_value_print (value->last_value, string);
+      _ctk_css_value_print (value->last_value, string);
       break;
     case COLOR_TYPE_NAME:
       g_string_append (string, "@");
@@ -387,7 +387,7 @@ gtk_css_value_color_print (const GtkCssValue *value,
         char factor[G_ASCII_DTOSTR_BUF_SIZE];
 
         g_string_append (string, "shade(");
-        _gtk_css_value_print (value->sym_col.shade.color, string);
+        _ctk_css_value_print (value->sym_col.shade.color, string);
         g_string_append (string, ", ");
         g_ascii_dtostr (factor, sizeof (factor), value->sym_col.shade.factor);
         g_string_append (string, factor);
@@ -399,7 +399,7 @@ gtk_css_value_color_print (const GtkCssValue *value,
         char factor[G_ASCII_DTOSTR_BUF_SIZE];
 
         g_string_append (string, "alpha(");
-        _gtk_css_value_print (value->sym_col.alpha.color, string);
+        _ctk_css_value_print (value->sym_col.alpha.color, string);
         g_string_append (string, ", ");
         g_ascii_dtostr (factor, sizeof (factor), value->sym_col.alpha.factor);
         g_string_append (string, factor);
@@ -411,9 +411,9 @@ gtk_css_value_color_print (const GtkCssValue *value,
         char factor[G_ASCII_DTOSTR_BUF_SIZE];
 
         g_string_append (string, "mix(");
-        _gtk_css_value_print (value->sym_col.mix.color1, string);
+        _ctk_css_value_print (value->sym_col.mix.color1, string);
         g_string_append (string, ", ");
-        _gtk_css_value_print (value->sym_col.mix.color2, string);
+        _ctk_css_value_print (value->sym_col.mix.color2, string);
         g_string_append (string, ", ");
         g_ascii_dtostr (factor, sizeof (factor), value->sym_col.mix.factor);
         g_string_append (string, factor);
@@ -424,9 +424,9 @@ gtk_css_value_color_print (const GtkCssValue *value,
       {
         const char *name;
         g_string_append (string, GTK_WIN32_THEME_SYMBOLIC_COLOR_NAME"(");
-        gtk_win32_theme_print (value->sym_col.win32.theme, string);
+        ctk_win32_theme_print (value->sym_col.win32.theme, string);
         g_string_append (string, ", ");
-        name = gtk_win32_get_sys_color_name_for_id (value->sym_col.win32.id);
+        name = ctk_win32_get_sys_color_name_for_id (value->sym_col.win32.id);
         if (name)
           g_string_append (string, name);
         else
@@ -443,46 +443,46 @@ gtk_css_value_color_print (const GtkCssValue *value,
 }
 
 static const GtkCssValueClass GTK_CSS_VALUE_COLOR = {
-  gtk_css_value_color_free,
-  gtk_css_value_color_compute,
-  gtk_css_value_color_equal,
-  gtk_css_value_color_transition,
-  gtk_css_value_color_print
+  ctk_css_value_color_free,
+  ctk_css_value_color_compute,
+  ctk_css_value_color_equal,
+  ctk_css_value_color_transition,
+  ctk_css_value_color_print
 };
 
 GtkCssValue *
-_gtk_css_color_value_new_literal (const GdkRGBA *color)
+_ctk_css_color_value_new_literal (const GdkRGBA *color)
 {
   GtkCssValue *value;
 
   g_return_val_if_fail (color != NULL, NULL);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_LITERAL;
-  value->last_value = _gtk_css_rgba_value_new_from_rgba (color);
+  value->last_value = _ctk_css_rgba_value_new_from_rgba (color);
 
   return value;
 }
 
 GtkCssValue *
-_gtk_css_color_value_new_rgba (double red,
+_ctk_css_color_value_new_rgba (double red,
                                double green,
                                double blue,
                                double alpha)
 {
   GdkRGBA rgba = { red, green, blue, alpha };
 
-  return _gtk_css_color_value_new_literal (&rgba);
+  return _ctk_css_color_value_new_literal (&rgba);
 }
 
 GtkCssValue *
-_gtk_css_color_value_new_name (const gchar *name)
+_ctk_css_color_value_new_name (const gchar *name)
 {
   GtkCssValue *value;
 
-  gtk_internal_return_val_if_fail (name != NULL, NULL);
+  ctk_internal_return_val_if_fail (name != NULL, NULL);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_NAME;
   value->sym_col.name = g_strdup (name);
 
@@ -490,94 +490,94 @@ _gtk_css_color_value_new_name (const gchar *name)
 }
 
 GtkCssValue *
-_gtk_css_color_value_new_shade (GtkCssValue *color,
+_ctk_css_color_value_new_shade (GtkCssValue *color,
                                 gdouble      factor)
 {
   GtkCssValue *value;
 
-  gtk_internal_return_val_if_fail (color->class == &GTK_CSS_VALUE_COLOR, NULL);
+  ctk_internal_return_val_if_fail (color->class == &GTK_CSS_VALUE_COLOR, NULL);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_SHADE;
-  value->sym_col.shade.color = _gtk_css_value_ref (color);
+  value->sym_col.shade.color = _ctk_css_value_ref (color);
   value->sym_col.shade.factor = factor;
 
   return value;
 }
 
 GtkCssValue *
-_gtk_css_color_value_new_alpha (GtkCssValue *color,
+_ctk_css_color_value_new_alpha (GtkCssValue *color,
                                 gdouble      factor)
 {
   GtkCssValue *value;
 
-  gtk_internal_return_val_if_fail (color->class == &GTK_CSS_VALUE_COLOR, NULL);
+  ctk_internal_return_val_if_fail (color->class == &GTK_CSS_VALUE_COLOR, NULL);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_ALPHA;
-  value->sym_col.alpha.color = _gtk_css_value_ref (color);
+  value->sym_col.alpha.color = _ctk_css_value_ref (color);
   value->sym_col.alpha.factor = factor;
 
   return value;
 }
 
 GtkCssValue *
-_gtk_css_color_value_new_mix (GtkCssValue *color1,
+_ctk_css_color_value_new_mix (GtkCssValue *color1,
                               GtkCssValue *color2,
                               gdouble      factor)
 {
   GtkCssValue *value;
 
-  gtk_internal_return_val_if_fail (color1->class == &GTK_CSS_VALUE_COLOR, NULL);
-  gtk_internal_return_val_if_fail (color2->class == &GTK_CSS_VALUE_COLOR, NULL);
+  ctk_internal_return_val_if_fail (color1->class == &GTK_CSS_VALUE_COLOR, NULL);
+  ctk_internal_return_val_if_fail (color2->class == &GTK_CSS_VALUE_COLOR, NULL);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_MIX;
-  value->sym_col.mix.color1 = _gtk_css_value_ref (color1);
-  value->sym_col.mix.color2 = _gtk_css_value_ref (color2);
+  value->sym_col.mix.color1 = _ctk_css_value_ref (color1);
+  value->sym_col.mix.color2 = _ctk_css_value_ref (color2);
   value->sym_col.mix.factor = factor;
 
   return value;
 }
 
 static GtkCssValue *
-gtk_css_color_value_new_win32_for_theme (GtkWin32Theme *theme,
+ctk_css_color_value_new_win32_for_theme (GtkWin32Theme *theme,
                                          gint           id)
 {
   GtkCssValue *value;
 
-  gtk_internal_return_val_if_fail (theme != NULL, NULL);
+  ctk_internal_return_val_if_fail (theme != NULL, NULL);
 
-  value = _gtk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
+  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_COLOR);
   value->type = COLOR_TYPE_WIN32;
-  value->sym_col.win32.theme = gtk_win32_theme_ref (theme);
+  value->sym_col.win32.theme = ctk_win32_theme_ref (theme);
   value->sym_col.win32.id = id;
 
   return value;
 }
 
 GtkCssValue *
-_gtk_css_color_value_new_win32 (const gchar *theme_class,
+_ctk_css_color_value_new_win32 (const gchar *theme_class,
                                 gint         id)
 {
   GtkWin32Theme *theme;
   GtkCssValue *value;
 
-  gtk_internal_return_val_if_fail (theme_class != NULL, NULL);
+  ctk_internal_return_val_if_fail (theme_class != NULL, NULL);
 
-  theme = gtk_win32_theme_lookup (theme_class);
-  value = gtk_css_color_value_new_win32_for_theme (theme, id);
-  gtk_win32_theme_unref (theme);
+  theme = ctk_win32_theme_lookup (theme_class);
+  value = ctk_css_color_value_new_win32_for_theme (theme, id);
+  ctk_win32_theme_unref (theme);
 
   return value;
 }
 
 GtkCssValue *
-_gtk_css_color_value_new_current_color (void)
+_ctk_css_color_value_new_current_color (void)
 {
   static GtkCssValue current_color = { &GTK_CSS_VALUE_COLOR, 1, COLOR_TYPE_CURRENT_COLOR, NULL, };
 
-  return _gtk_css_value_ref (&current_color);
+  return _ctk_css_value_ref (&current_color);
 }
 
 typedef enum {
@@ -592,60 +592,60 @@ typedef enum {
 } ColorParseType;
 
 static GtkCssValue *
-gtk_css_color_parse_win32 (GtkCssParser *parser)
+ctk_css_color_parse_win32 (GtkCssParser *parser)
 {
   GtkCssValue *color;
   GtkWin32Theme *theme;
   char *name;
   int id;
 
-  theme = gtk_win32_theme_parse (parser);
+  theme = ctk_win32_theme_parse (parser);
   if (theme == NULL)
     return NULL;
 
-  if (! _gtk_css_parser_try (parser, ",", TRUE))
+  if (! _ctk_css_parser_try (parser, ",", TRUE))
     {
-      gtk_win32_theme_unref (theme);
-      _gtk_css_parser_error (parser,
+      ctk_win32_theme_unref (theme);
+      _ctk_css_parser_error (parser,
 			     "Expected ','");
       return NULL;
     }
 
-  name = _gtk_css_parser_try_ident (parser, TRUE);
+  name = _ctk_css_parser_try_ident (parser, TRUE);
   if (name)
     {
-      id = gtk_win32_get_sys_color_id_for_name (name);
+      id = ctk_win32_get_sys_color_id_for_name (name);
       if (id == -1)
         {
-          _gtk_css_parser_error (parser, "'%s' is not a win32 color name.", name);
+          _ctk_css_parser_error (parser, "'%s' is not a win32 color name.", name);
           g_free (name);
           return NULL;
         }
       g_free (name);
     }
-  else if (!_gtk_css_parser_try_int (parser, &id))
+  else if (!_ctk_css_parser_try_int (parser, &id))
     {
-      gtk_win32_theme_unref (theme);
-      _gtk_css_parser_error (parser, "Expected a valid integer value");
+      ctk_win32_theme_unref (theme);
+      _ctk_css_parser_error (parser, "Expected a valid integer value");
       return NULL;
     }
 
-  color = gtk_css_color_value_new_win32_for_theme (theme, id);
-  gtk_win32_theme_unref (theme);
+  color = ctk_css_color_value_new_win32_for_theme (theme, id);
+  ctk_win32_theme_unref (theme);
   return color;
 }
 
 static GtkCssValue *
-_gtk_css_color_value_parse_function (GtkCssParser   *parser,
+_ctk_css_color_value_parse_function (GtkCssParser   *parser,
                                      ColorParseType  color)
 {
   GtkCssValue *value;
   GtkCssValue *child1, *child2;
   double d;
 
-  if (!_gtk_css_parser_try (parser, "(", TRUE))
+  if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
-      _gtk_css_parser_error (parser, "Missing opening bracket in color definition");
+      _ctk_css_parser_error (parser, "Missing opening bracket in color definition");
       return NULL;
     }
 
@@ -657,18 +657,18 @@ _gtk_css_color_value_parse_function (GtkCssParser   *parser,
 
       for (i = 0; i < 3; i++)
         {
-          if (i > 0 && !_gtk_css_parser_try (parser, ",", TRUE))
+          if (i > 0 && !_ctk_css_parser_try (parser, ",", TRUE))
             {
-              _gtk_css_parser_error (parser, "Expected ',' in color definition");
+              _ctk_css_parser_error (parser, "Expected ',' in color definition");
               return NULL;
             }
 
-          if (!_gtk_css_parser_try_double (parser, &tmp))
+          if (!_ctk_css_parser_try_double (parser, &tmp))
             {
-              _gtk_css_parser_error (parser, "Invalid number for color value");
+              _ctk_css_parser_error (parser, "Invalid number for color value");
               return NULL;
             }
-          if (_gtk_css_parser_try (parser, "%", TRUE))
+          if (_ctk_css_parser_try (parser, "%", TRUE))
             tmp /= 100.0;
           else
             tmp /= 255.0;
@@ -684,48 +684,48 @@ _gtk_css_color_value_parse_function (GtkCssParser   *parser,
 
       if (color == COLOR_RGBA)
         {
-          if (i > 0 && !_gtk_css_parser_try (parser, ",", TRUE))
+          if (i > 0 && !_ctk_css_parser_try (parser, ",", TRUE))
             {
-              _gtk_css_parser_error (parser, "Expected ',' in color definition");
+              _ctk_css_parser_error (parser, "Expected ',' in color definition");
               return NULL;
             }
 
-          if (!_gtk_css_parser_try_double (parser, &rgba.alpha))
+          if (!_ctk_css_parser_try_double (parser, &rgba.alpha))
             {
-              _gtk_css_parser_error (parser, "Invalid number for alpha value");
+              _ctk_css_parser_error (parser, "Invalid number for alpha value");
               return NULL;
             }
         }
       else
         rgba.alpha = 1.0;
       
-      value = _gtk_css_color_value_new_literal (&rgba);
+      value = _ctk_css_color_value_new_literal (&rgba);
     }
   else if (color == COLOR_WIN32)
     {
-      value = gtk_css_color_parse_win32 (parser);
+      value = ctk_css_color_parse_win32 (parser);
       if (value == NULL)
 	return NULL;
     }
   else
     {
-      child1 = _gtk_css_color_value_parse (parser);
+      child1 = _ctk_css_color_value_parse (parser);
       if (child1 == NULL)
         return NULL;
 
       if (color == COLOR_MIX)
         {
-          if (!_gtk_css_parser_try (parser, ",", TRUE))
+          if (!_ctk_css_parser_try (parser, ",", TRUE))
             {
-              _gtk_css_parser_error (parser, "Expected ',' in color definition");
-              _gtk_css_value_unref (child1);
+              _ctk_css_parser_error (parser, "Expected ',' in color definition");
+              _ctk_css_value_unref (child1);
               return NULL;
             }
 
-          child2 = _gtk_css_color_value_parse (parser);
+          child2 = _ctk_css_color_value_parse (parser);
           if (child2 == NULL)
             {
-              _gtk_css_value_unref (child1);
+              _ctk_css_value_unref (child1);
               return NULL;
             }
         }
@@ -738,21 +738,21 @@ _gtk_css_color_value_parse_function (GtkCssParser   *parser,
         d = 0.7;
       else
         {
-          if (!_gtk_css_parser_try (parser, ",", TRUE))
+          if (!_ctk_css_parser_try (parser, ",", TRUE))
             {
-              _gtk_css_parser_error (parser, "Expected ',' in color definition");
-              _gtk_css_value_unref (child1);
+              _ctk_css_parser_error (parser, "Expected ',' in color definition");
+              _ctk_css_value_unref (child1);
               if (child2)
-                _gtk_css_value_unref (child2);
+                _ctk_css_value_unref (child2);
               return NULL;
             }
 
-          if (!_gtk_css_parser_try_double (parser, &d))
+          if (!_ctk_css_parser_try_double (parser, &d))
             {
-              _gtk_css_parser_error (parser, "Expected number in color definition");
-              _gtk_css_value_unref (child1);
+              _ctk_css_parser_error (parser, "Expected number in color definition");
+              _ctk_css_value_unref (child1);
               if (child2)
-                _gtk_css_value_unref (child2);
+                _ctk_css_value_unref (child2);
               return NULL;
             }
         }
@@ -762,28 +762,28 @@ _gtk_css_color_value_parse_function (GtkCssParser   *parser,
         case COLOR_LIGHTER:
         case COLOR_DARKER:
         case COLOR_SHADE:
-          value = _gtk_css_color_value_new_shade (child1, d);
+          value = _ctk_css_color_value_new_shade (child1, d);
           break;
         case COLOR_ALPHA:
-          value = _gtk_css_color_value_new_alpha (child1, d);
+          value = _ctk_css_color_value_new_alpha (child1, d);
           break;
         case COLOR_MIX:
-          value = _gtk_css_color_value_new_mix (child1, child2, d);
+          value = _ctk_css_color_value_new_mix (child1, child2, d);
           break;
         default:
           g_assert_not_reached ();
           value = NULL;
         }
 
-      _gtk_css_value_unref (child1);
+      _ctk_css_value_unref (child1);
       if (child2)
-        _gtk_css_value_unref (child2);
+        _ctk_css_value_unref (child2);
     }
 
-  if (!_gtk_css_parser_try (parser, ")", TRUE))
+  if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
-      _gtk_css_parser_error (parser, "Expected ')' in color definition");
-      _gtk_css_value_unref (value);
+      _ctk_css_parser_error (parser, "Expected ')' in color definition");
+      _ctk_css_value_unref (value);
       return NULL;
     }
 
@@ -791,7 +791,7 @@ _gtk_css_color_value_parse_function (GtkCssParser   *parser,
 }
 
 GtkCssValue *
-_gtk_css_color_value_parse (GtkCssParser *parser)
+_ctk_css_color_value_parse (GtkCssParser *parser)
 {
   GtkCssValue *value;
   GdkRGBA rgba;
@@ -800,27 +800,27 @@ _gtk_css_color_value_parse (GtkCssParser *parser)
 			 GTK_WIN32_THEME_SYMBOLIC_COLOR_NAME};
   char *name;
 
-  if (_gtk_css_parser_try (parser, "currentColor", TRUE))
-    return _gtk_css_color_value_new_current_color ();
+  if (_ctk_css_parser_try (parser, "currentColor", TRUE))
+    return _ctk_css_color_value_new_current_color ();
 
-  if (_gtk_css_parser_try (parser, "transparent", TRUE))
+  if (_ctk_css_parser_try (parser, "transparent", TRUE))
     {
       GdkRGBA transparent = { 0, 0, 0, 0 };
       
-      return _gtk_css_color_value_new_literal (&transparent);
+      return _ctk_css_color_value_new_literal (&transparent);
     }
 
-  if (_gtk_css_parser_try (parser, "@", FALSE))
+  if (_ctk_css_parser_try (parser, "@", FALSE))
     {
-      name = _gtk_css_parser_try_name (parser, TRUE);
+      name = _ctk_css_parser_try_name (parser, TRUE);
 
       if (name)
         {
-          value = _gtk_css_color_value_new_name (name);
+          value = _ctk_css_color_value_new_name (name);
         }
       else
         {
-          _gtk_css_parser_error (parser, "'%s' is not a valid color color name", name);
+          _ctk_css_parser_error (parser, "'%s' is not a valid color color name", name);
           value = NULL;
         }
 
@@ -830,33 +830,33 @@ _gtk_css_color_value_parse (GtkCssParser *parser)
 
   for (color = 0; color < G_N_ELEMENTS (names); color++)
     {
-      if (_gtk_css_parser_try (parser, names[color], TRUE))
+      if (_ctk_css_parser_try (parser, names[color], TRUE))
         break;
     }
 
   if (color < G_N_ELEMENTS (names))
-    return _gtk_css_color_value_parse_function (parser, color);
+    return _ctk_css_color_value_parse_function (parser, color);
 
-  if (_gtk_css_parser_try_hash_color (parser, &rgba))
-    return _gtk_css_color_value_new_literal (&rgba);
+  if (_ctk_css_parser_try_hash_color (parser, &rgba))
+    return _ctk_css_color_value_new_literal (&rgba);
 
-  name = _gtk_css_parser_try_name (parser, TRUE);
+  name = _ctk_css_parser_try_name (parser, TRUE);
   if (name)
     {
       if (gdk_rgba_parse (&rgba, name))
         {
-          value = _gtk_css_color_value_new_literal (&rgba);
+          value = _ctk_css_color_value_new_literal (&rgba);
         }
       else
         {
-          _gtk_css_parser_error (parser, "'%s' is not a valid color name", name);
+          _ctk_css_parser_error (parser, "'%s' is not a valid color name", name);
           value = NULL;
         }
       g_free (name);
       return value;
     }
 
-  _gtk_css_parser_error (parser, "Not a color definition");
+  _ctk_css_parser_error (parser, "Not a color definition");
   return NULL;
 }
 

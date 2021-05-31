@@ -30,11 +30,11 @@ draw_page (GtkPrintOperation *operation,
   PangoLayout *layout;
   PangoFontDescription *desc;
   
-  cr = gtk_print_context_get_cairo_context (context);
+  cr = ctk_print_context_get_cairo_context (context);
 
   /* Draw a red rectangle, as wide as the paper (inside the margins) */
   cairo_set_source_rgb (cr, 1.0, 0, 0);
-  cairo_rectangle (cr, 0, 0, gtk_print_context_get_width (context), 50);
+  cairo_rectangle (cr, 0, 0, ctk_print_context_get_width (context), 50);
   
   cairo_fill (cr);
 
@@ -53,7 +53,7 @@ draw_page (GtkPrintOperation *operation,
 
   /* Draw some text */
   
-  layout = gtk_print_context_create_pango_layout (context);
+  layout = ctk_print_context_create_pango_layout (context);
   pango_layout_set_text (layout, "Hello World! Printing is easy", -1);
   desc = pango_font_description_from_string ("sans 28");
   pango_layout_set_font_description (layout, desc);
@@ -81,15 +81,15 @@ main (int argc, char **argv)
   GtkPrintOperation *print;
   GtkPrintSettings *settings;
 
-  settings = gtk_print_settings_new ();
-  /* gtk_print_settings_set_printer (settings, "printer"); */
+  settings = ctk_print_settings_new ();
+  /* ctk_print_settings_set_printer (settings, "printer"); */
 
-  print = gtk_print_operation_new ();
-  gtk_print_operation_set_print_settings (print, settings);
-  gtk_print_operation_set_n_pages (print, 1);
-  gtk_print_operation_set_unit (print, GTK_UNIT_MM);
+  print = ctk_print_operation_new ();
+  ctk_print_operation_set_print_settings (print, settings);
+  ctk_print_operation_set_n_pages (print, 1);
+  ctk_print_operation_set_unit (print, GTK_UNIT_MM);
   g_signal_connect (print, "draw_page", G_CALLBACK (draw_page), NULL);
-  gtk_print_operation_run (print, GTK_PRINT_OPERATION_ACTION_PRINT, NULL, NULL);
+  ctk_print_operation_run (print, GTK_PRINT_OPERATION_ACTION_PRINT, NULL, NULL);
 
   return 0;
 }

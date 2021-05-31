@@ -33,7 +33,7 @@ struct _GtkCssNodeStyleCache {
 #define PACK(decl, first_child, last_child) GSIZE_TO_POINTER (GPOINTER_TO_SIZE (decl) | ((first_child) ? 0x2 : 0) | ((last_child) ? 0x1 : 0))
 
 GtkCssNodeStyleCache *
-gtk_css_node_style_cache_new (GtkCssStyle *style)
+ctk_css_node_style_cache_new (GtkCssStyle *style)
 {
   GtkCssNodeStyleCache *result;
 
@@ -46,7 +46,7 @@ gtk_css_node_style_cache_new (GtkCssStyle *style)
 }
 
 GtkCssNodeStyleCache *
-gtk_css_node_style_cache_ref (GtkCssNodeStyleCache *cache)
+ctk_css_node_style_cache_ref (GtkCssNodeStyleCache *cache)
 {
   cache->ref_count++; 
 
@@ -54,7 +54,7 @@ gtk_css_node_style_cache_ref (GtkCssNodeStyleCache *cache)
 }
 
 void
-gtk_css_node_style_cache_unref (GtkCssNodeStyleCache *cache)
+ctk_css_node_style_cache_unref (GtkCssNodeStyleCache *cache)
 {
   cache->ref_count--; 
 
@@ -69,7 +69,7 @@ gtk_css_node_style_cache_unref (GtkCssNodeStyleCache *cache)
 }
 
 GtkCssStyle *
-gtk_css_node_style_cache_get_style (GtkCssNodeStyleCache *cache)
+ctk_css_node_style_cache_get_style (GtkCssNodeStyleCache *cache)
 {
   return cache->style;
 }
@@ -94,7 +94,7 @@ may_be_stored_in_cache (GtkCssStyle *style)
   if (!GTK_IS_CSS_STATIC_STYLE (style))
     return FALSE;
 
-  change = gtk_css_static_style_get_change (GTK_CSS_STATIC_STYLE (style));
+  change = ctk_css_static_style_get_change (GTK_CSS_STATIC_STYLE (style));
 
   /* The cache is shared between all children of the parent, so if a
    * style depends on a sibling it is not independant of the child.
@@ -112,31 +112,31 @@ may_be_stored_in_cache (GtkCssStyle *style)
 }
 
 static guint
-gtk_css_node_style_cache_decl_hash (gconstpointer item)
+ctk_css_node_style_cache_decl_hash (gconstpointer item)
 {
-  return gtk_css_node_declaration_hash (UNPACK_DECLARATION (item)) << 2
+  return ctk_css_node_declaration_hash (UNPACK_DECLARATION (item)) << 2
     | UNPACK_FLAGS (item);
 }
 
 static gboolean
-gtk_css_node_style_cache_decl_equal (gconstpointer item1,
+ctk_css_node_style_cache_decl_equal (gconstpointer item1,
                                      gconstpointer item2)
 {
   if (UNPACK_FLAGS (item1) != UNPACK_FLAGS (item2))
     return FALSE;
 
-  return gtk_css_node_declaration_equal (UNPACK_DECLARATION (item1),
+  return ctk_css_node_declaration_equal (UNPACK_DECLARATION (item1),
                                          UNPACK_DECLARATION (item2));
 }
 
 static void
-gtk_css_node_style_cache_decl_free (gpointer item)
+ctk_css_node_style_cache_decl_free (gpointer item)
 {
-  gtk_css_node_declaration_unref (UNPACK_DECLARATION (item));
+  ctk_css_node_declaration_unref (UNPACK_DECLARATION (item));
 }
 
 GtkCssNodeStyleCache *
-gtk_css_node_style_cache_insert (GtkCssNodeStyleCache   *parent,
+ctk_css_node_style_cache_insert (GtkCssNodeStyleCache   *parent,
                                  GtkCssNodeDeclaration  *decl,
                                  gboolean                is_first,
                                  gboolean                is_last,
@@ -148,22 +148,22 @@ gtk_css_node_style_cache_insert (GtkCssNodeStyleCache   *parent,
     return NULL;
 
   if (parent->children == NULL)
-    parent->children = g_hash_table_new_full (gtk_css_node_style_cache_decl_hash,
-                                              gtk_css_node_style_cache_decl_equal,
-                                              gtk_css_node_style_cache_decl_free,
-                                              (GDestroyNotify) gtk_css_node_style_cache_unref);
+    parent->children = g_hash_table_new_full (ctk_css_node_style_cache_decl_hash,
+                                              ctk_css_node_style_cache_decl_equal,
+                                              ctk_css_node_style_cache_decl_free,
+                                              (GDestroyNotify) ctk_css_node_style_cache_unref);
 
-  result = gtk_css_node_style_cache_new (style);
+  result = ctk_css_node_style_cache_new (style);
 
   g_hash_table_insert (parent->children,
-                       PACK (gtk_css_node_declaration_ref (decl), is_first, is_last),
-                       gtk_css_node_style_cache_ref (result));
+                       PACK (ctk_css_node_declaration_ref (decl), is_first, is_last),
+                       ctk_css_node_style_cache_ref (result));
 
   return result;
 }
 
 GtkCssNodeStyleCache *
-gtk_css_node_style_cache_lookup (GtkCssNodeStyleCache        *parent,
+ctk_css_node_style_cache_lookup (GtkCssNodeStyleCache        *parent,
                                  const GtkCssNodeDeclaration *decl,
                                  gboolean                     is_first,
                                  gboolean                     is_last)
@@ -177,6 +177,6 @@ gtk_css_node_style_cache_lookup (GtkCssNodeStyleCache        *parent,
   if (result == NULL)
     return NULL;
 
-  return gtk_css_node_style_cache_ref (result);
+  return ctk_css_node_style_cache_ref (result);
 }
 

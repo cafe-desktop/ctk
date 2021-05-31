@@ -232,10 +232,10 @@ msgstr "𐑤𐑴𐑜𐑴"
 #: ../gtk/gtkaboutdialog.c:482
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "𐑩 𐑤𐑴𐑜𐑴 𐑓𐑹 𐑞 𐑩𐑚𐑬𐑑 𐑚𐑪𐑒𐑕. 𐑦𐑓 𐑞𐑦𐑕 𐑦𐑟 𐑯𐑪𐑑 𐑕𐑧𐑑, 𐑦𐑑 𐑛𐑦𐑓𐑷𐑤𐑑𐑕 𐑑 "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: ../gtk/gtkaboutdialog.c:497
 msgid "Logo Icon Name"
@@ -2332,10 +2332,10 @@ msgstr "𐑐𐑮𐑩𐑜𐑮𐑧𐑕 𐑐𐑩𐑤𐑕 𐑕𐑑𐑧𐑐"
 #: ../gtk/gtkentry.c:887
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "𐑞 𐑓𐑮𐑨𐑒𐑖𐑩𐑯 𐑝 𐑑𐑴𐑑𐑩𐑤 𐑧𐑯𐑑𐑮𐑦 𐑢𐑦𐑛𐑔 𐑑 𐑥𐑵𐑝 𐑞 𐑐𐑮𐑴𐑜𐑮𐑧𐑕 𐑚𐑶𐑯𐑕𐑦𐑙 𐑚𐑤𐑪𐑒 𐑓𐑹 𐑰𐑗 𐑒𐑷𐑤 𐑑 "
-"gtk_entry_progress_pulse()"
+"ctk_entry_progress_pulse()"
 
 #, fuzzy
 #: ../gtk/gtkentry.c:903
@@ -4465,10 +4465,10 @@ msgstr "𐑞 𐑝𐑨𐑤𐑿"
 
 #: ../gtk/gtkradioaction.c:124
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"𐑞 𐑝𐑨𐑤𐑿 𐑮𐑦𐑑𐑻𐑯𐑛 𐑚𐑲 gtk_radio_action_get_current_value() 𐑢𐑧𐑯 𐑞𐑦𐑕 𐑨𐑒𐑖𐑩𐑯 𐑦𐑟 𐑞 "
+"𐑞 𐑝𐑨𐑤𐑿 𐑮𐑦𐑑𐑻𐑯𐑛 𐑚𐑲 ctk_radio_action_get_current_value() 𐑢𐑧𐑯 𐑞𐑦𐑕 𐑨𐑒𐑖𐑩𐑯 𐑦𐑟 𐑞 "
 "𐑒𐑳𐑮𐑩𐑯𐑑 𐑨𐑒𐑖𐑩𐑯 𐑝 𐑦𐑑𐑕 𐑜𐑮𐑵𐑐."
 
 #: ../gtk/gtkradioaction.c:141
@@ -4747,9 +4747,9 @@ msgstr "𐑞 𐑓𐑫𐑤 𐑐𐑭𐑔 𐑑 𐑞 𐑓𐑲𐑤 𐑑 𐑚𐑰 𐑿
 
 #: ../gtk/gtkrecentmanager.c:230
 msgid ""
-"The maximum number of items to be returned by gtk_recent_manager_get_items()"
+"The maximum number of items to be returned by ctk_recent_manager_get_items()"
 msgstr ""
-"𐑞 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑲𐑑𐑩𐑥𐑟 𐑑 𐑚𐑰 𐑮𐑦𐑑𐑻𐑯𐑛 𐑚𐑲 gtk_recent_manager_get_items()"
+"𐑞 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑲𐑑𐑩𐑥𐑟 𐑑 𐑚𐑰 𐑮𐑦𐑑𐑻𐑯𐑛 𐑚𐑲 ctk_recent_manager_get_items()"
 
 #: ../gtk/gtkrecentmanager.c:246
 msgid "The size of the recently used resources list"
@@ -7020,8 +7020,8 @@ msgid "No show all"
 msgstr "𐑯𐑴 𐑖𐑴 𐑷𐑤"
 
 #: ../gtk/gtkwidget.c:698
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "𐑢𐑧𐑞𐑼 gtk_widget_show_all() 𐑖𐑫𐑛 𐑯𐑪𐑑 𐑩𐑓𐑧𐑒𐑑 𐑞𐑦𐑕 𐑢𐑦𐑡𐑩𐑑"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "𐑢𐑧𐑞𐑼 ctk_widget_show_all() 𐑖𐑫𐑛 𐑯𐑪𐑑 𐑩𐑓𐑧𐑒𐑑 𐑞𐑦𐑕 𐑢𐑦𐑡𐑩𐑑"
 
 #, fuzzy
 #: ../gtk/gtkwidget.c:721

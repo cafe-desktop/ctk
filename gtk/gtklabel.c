@@ -125,20 +125,20 @@
  * underlined characters in the label, used for keyboard navigation.
  * Mnemonics are created by providing a string with an underscore before
  * the mnemonic character, such as `"_File"`, to the
- * functions gtk_label_new_with_mnemonic() or
- * gtk_label_set_text_with_mnemonic().
+ * functions ctk_label_new_with_mnemonic() or
+ * ctk_label_set_text_with_mnemonic().
  *
  * Mnemonics automatically activate any activatable widget the label is
  * inside, such as a #GtkButton; if the label is not inside the
  * mnemonic’s target widget, you have to tell the label about the target
- * using gtk_label_set_mnemonic_widget(). Here’s a simple example where
+ * using ctk_label_set_mnemonic_widget(). Here’s a simple example where
  * the label is inside a button:
  *
  * |[<!-- language="C" -->
  *   // Pressing Alt+H will activate this button
- *   GtkWidget *button = gtk_button_new ();
- *   GtkWidget *label = gtk_label_new_with_mnemonic ("_Hello");
- *   gtk_container_add (GTK_CONTAINER (button), label);
+ *   GtkWidget *button = ctk_button_new ();
+ *   GtkWidget *label = ctk_label_new_with_mnemonic ("_Hello");
+ *   ctk_container_add (GTK_CONTAINER (button), label);
  * ]|
  *
  * There’s a convenience function to create buttons with a mnemonic label
@@ -146,18 +146,18 @@
  *
  * |[<!-- language="C" -->
  *   // Pressing Alt+H will activate this button
- *   GtkWidget *button = gtk_button_new_with_mnemonic ("_Hello");
+ *   GtkWidget *button = ctk_button_new_with_mnemonic ("_Hello");
  * ]|
  *
  * To create a mnemonic for a widget alongside the label, such as a
  * #GtkEntry, you have to point the label at the entry with
- * gtk_label_set_mnemonic_widget():
+ * ctk_label_set_mnemonic_widget():
  *
  * |[<!-- language="C" -->
  *   // Pressing Alt+H will focus the entry
- *   GtkWidget *entry = gtk_entry_new ();
- *   GtkWidget *label = gtk_label_new_with_mnemonic ("_Hello");
- *   gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
+ *   GtkWidget *entry = ctk_entry_new ();
+ *   GtkWidget *label = ctk_label_new_with_mnemonic ("_Hello");
+ *   ctk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
  * ]|
  *
  * # Markup (styled text)
@@ -168,21 +168,21 @@
  *
  * Here’s how to create a label with a small font:
  * |[<!-- language="C" -->
- *   GtkWidget *label = gtk_label_new (NULL);
- *   gtk_label_set_markup (GTK_LABEL (label), "<small>Small text</small>");
+ *   GtkWidget *label = ctk_label_new (NULL);
+ *   ctk_label_set_markup (GTK_LABEL (label), "<small>Small text</small>");
  * ]|
  *
  * (See [complete documentation][PangoMarkupFormat] of available
  * tags in the Pango manual.)
  *
- * The markup passed to gtk_label_set_markup() must be valid; for example,
+ * The markup passed to ctk_label_set_markup() must be valid; for example,
  * literal <, > and & characters must be escaped as &lt;, &gt;, and &amp;.
  * If you pass text obtained from the user, file, or a network to
- * gtk_label_set_markup(), you’ll want to escape it with
+ * ctk_label_set_markup(), you’ll want to escape it with
  * g_markup_escape_text() or g_markup_printf_escaped().
  *
  * Markup strings are just a convenient way to set the #PangoAttrList on
- * a label; gtk_label_set_attributes() may be a simpler way to set
+ * a label; ctk_label_set_attributes() may be a simpler way to set
  * attributes in some cases. Be careful though; #PangoAttrList tends to
  * cause internationalization problems, unless you’re applying attributes
  * to the entire string (i.e. unless you set the range of each attribute
@@ -192,7 +192,7 @@
  *
  * # Selectable labels
  *
- * Labels can be made selectable with gtk_label_set_selectable().
+ * Labels can be made selectable with ctk_label_set_selectable().
  * Selectable labels allow the user to copy the label contents to
  * the clipboard. Only labels that contain useful-to-copy information
  * — such as error messages — should be made selectable.
@@ -205,9 +205,9 @@
  * understood by Pango.
  *
  * Labels can automatically wrap text if you call
- * gtk_label_set_line_wrap().
+ * ctk_label_set_line_wrap().
  *
- * gtk_label_set_justify() sets how the lines in a label align
+ * ctk_label_set_justify() sets how the lines in a label align
  * with one another. If you want to set how the label as a whole
  * aligns in its available space, see the #GtkWidget:halign and
  * #GtkWidget:valign properties.
@@ -240,12 +240,12 @@
  * "Go to the"
  * "<a href=\"http://www.gtk.org title=\"&lt;i&gt;Our&lt;/i&gt; website\">"
  * "GTK+ website</a> for more...";
- * GtkWidget *label = gtk_label_new (NULL);
- * gtk_label_set_markup (GTK_LABEL (label), text);
+ * GtkWidget *label = ctk_label_new (NULL);
+ * ctk_label_set_markup (GTK_LABEL (label), text);
  * ]|
  *
  * It is possible to implement custom handling for links and their tooltips with
- * the #GtkLabel::activate-link signal and the gtk_label_get_current_uri() function.
+ * the #GtkLabel::activate-link signal and the ctk_label_get_current_uri() function.
  */
 
 struct _GtkLabelPrivate
@@ -397,104 +397,104 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static GQuark quark_shortcuts_connected;
 static GQuark quark_mnemonic_menu;
 static GQuark quark_mnemonics_visible_connected;
-static GQuark quark_gtk_signal;
+static GQuark quark_ctk_signal;
 static GQuark quark_link;
 
-static void gtk_label_set_property      (GObject          *object,
+static void ctk_label_set_property      (GObject          *object,
 					 guint             prop_id,
 					 const GValue     *value,
 					 GParamSpec       *pspec);
-static void gtk_label_get_property      (GObject          *object,
+static void ctk_label_get_property      (GObject          *object,
 					 guint             prop_id,
 					 GValue           *value,
 					 GParamSpec       *pspec);
-static void gtk_label_finalize          (GObject          *object);
-static void gtk_label_destroy           (GtkWidget        *widget);
-static void gtk_label_size_allocate     (GtkWidget        *widget,
+static void ctk_label_finalize          (GObject          *object);
+static void ctk_label_destroy           (GtkWidget        *widget);
+static void ctk_label_size_allocate     (GtkWidget        *widget,
                                          GtkAllocation    *allocation);
-static void gtk_label_state_flags_changed   (GtkWidget        *widget,
+static void ctk_label_state_flags_changed   (GtkWidget        *widget,
                                              GtkStateFlags     prev_state);
-static void gtk_label_style_updated     (GtkWidget        *widget);
-static gboolean gtk_label_draw          (GtkWidget        *widget,
+static void ctk_label_style_updated     (GtkWidget        *widget);
+static gboolean ctk_label_draw          (GtkWidget        *widget,
                                          cairo_t          *cr);
-static gboolean gtk_label_focus         (GtkWidget         *widget,
+static gboolean ctk_label_focus         (GtkWidget         *widget,
                                          GtkDirectionType   direction);
 
-static void gtk_label_realize           (GtkWidget        *widget);
-static void gtk_label_unrealize         (GtkWidget        *widget);
-static void gtk_label_map               (GtkWidget        *widget);
-static void gtk_label_unmap             (GtkWidget        *widget);
+static void ctk_label_realize           (GtkWidget        *widget);
+static void ctk_label_unrealize         (GtkWidget        *widget);
+static void ctk_label_map               (GtkWidget        *widget);
+static void ctk_label_unmap             (GtkWidget        *widget);
 
-static gboolean gtk_label_motion            (GtkWidget        *widget,
+static gboolean ctk_label_motion            (GtkWidget        *widget,
 					     GdkEventMotion   *event);
-static gboolean gtk_label_leave_notify      (GtkWidget        *widget,
+static gboolean ctk_label_leave_notify      (GtkWidget        *widget,
                                              GdkEventCrossing *event);
 
-static void     gtk_label_grab_focus        (GtkWidget        *widget);
+static void     ctk_label_grab_focus        (GtkWidget        *widget);
 
-static gboolean gtk_label_query_tooltip     (GtkWidget        *widget,
+static gboolean ctk_label_query_tooltip     (GtkWidget        *widget,
                                              gint              x,
                                              gint              y,
                                              gboolean          keyboard_tip,
                                              GtkTooltip       *tooltip);
 
-static void gtk_label_set_text_internal          (GtkLabel      *label,
+static void ctk_label_set_text_internal          (GtkLabel      *label,
 						  gchar         *str);
-static void gtk_label_set_label_internal         (GtkLabel      *label,
+static void ctk_label_set_label_internal         (GtkLabel      *label,
 						  gchar         *str);
-static gboolean gtk_label_set_use_markup_internal    (GtkLabel  *label,
+static gboolean ctk_label_set_use_markup_internal    (GtkLabel  *label,
                                                       gboolean   val);
-static gboolean gtk_label_set_use_underline_internal (GtkLabel  *label,
+static gboolean ctk_label_set_use_underline_internal (GtkLabel  *label,
                                                       gboolean   val);
-static void gtk_label_set_uline_text_internal    (GtkLabel      *label,
+static void ctk_label_set_uline_text_internal    (GtkLabel      *label,
 						  const gchar   *str);
-static void gtk_label_set_pattern_internal       (GtkLabel      *label,
+static void ctk_label_set_pattern_internal       (GtkLabel      *label,
 				                  const gchar   *pattern,
                                                   gboolean       is_mnemonic);
-static void gtk_label_set_markup_internal        (GtkLabel      *label,
+static void ctk_label_set_markup_internal        (GtkLabel      *label,
 						  const gchar   *str,
 						  gboolean       with_uline);
-static void gtk_label_recalculate                (GtkLabel      *label);
-static void gtk_label_hierarchy_changed          (GtkWidget     *widget,
+static void ctk_label_recalculate                (GtkLabel      *label);
+static void ctk_label_hierarchy_changed          (GtkWidget     *widget,
 						  GtkWidget     *old_toplevel);
-static void gtk_label_screen_changed             (GtkWidget     *widget,
+static void ctk_label_screen_changed             (GtkWidget     *widget,
 						  GdkScreen     *old_screen);
-static gboolean gtk_label_popup_menu             (GtkWidget     *widget);
+static gboolean ctk_label_popup_menu             (GtkWidget     *widget);
 
-static void gtk_label_create_window       (GtkLabel *label);
-static void gtk_label_destroy_window      (GtkLabel *label);
-static void gtk_label_ensure_select_info  (GtkLabel *label);
-static void gtk_label_clear_select_info   (GtkLabel *label);
-static void gtk_label_update_cursor       (GtkLabel *label);
-static void gtk_label_clear_layout        (GtkLabel *label);
-static void gtk_label_ensure_layout       (GtkLabel *label);
-static void gtk_label_select_region_index (GtkLabel *label,
+static void ctk_label_create_window       (GtkLabel *label);
+static void ctk_label_destroy_window      (GtkLabel *label);
+static void ctk_label_ensure_select_info  (GtkLabel *label);
+static void ctk_label_clear_select_info   (GtkLabel *label);
+static void ctk_label_update_cursor       (GtkLabel *label);
+static void ctk_label_clear_layout        (GtkLabel *label);
+static void ctk_label_ensure_layout       (GtkLabel *label);
+static void ctk_label_select_region_index (GtkLabel *label,
                                            gint      anchor_index,
                                            gint      end_index);
 
-static void gtk_label_update_active_link  (GtkWidget *widget,
+static void ctk_label_update_active_link  (GtkWidget *widget,
                                            gdouble    x,
                                            gdouble    y);
 
-static gboolean gtk_label_mnemonic_activate (GtkWidget         *widget,
+static gboolean ctk_label_mnemonic_activate (GtkWidget         *widget,
 					     gboolean           group_cycling);
-static void     gtk_label_setup_mnemonic    (GtkLabel          *label,
+static void     ctk_label_setup_mnemonic    (GtkLabel          *label,
 					     guint              last_key);
-static void     gtk_label_drag_data_get     (GtkWidget         *widget,
+static void     ctk_label_drag_data_get     (GtkWidget         *widget,
 					     GdkDragContext    *context,
 					     GtkSelectionData  *selection_data,
 					     guint              info,
 					     guint              time);
 
-static void     gtk_label_buildable_interface_init     (GtkBuildableIface *iface);
-static gboolean gtk_label_buildable_custom_tag_start   (GtkBuildable     *buildable,
+static void     ctk_label_buildable_interface_init     (GtkBuildableIface *iface);
+static gboolean ctk_label_buildable_custom_tag_start   (GtkBuildable     *buildable,
 							GtkBuilder       *builder,
 							GObject          *child,
 							const gchar      *tagname,
 							GMarkupParser    *parser,
 							gpointer         *data);
 
-static void     gtk_label_buildable_custom_finished    (GtkBuildable     *buildable,
+static void     ctk_label_buildable_custom_finished    (GtkBuildable     *buildable,
 							GtkBuilder       *builder,
 							GObject          *child,
 							const gchar      *tagname,
@@ -509,71 +509,71 @@ static gboolean      separate_uline_pattern     (const gchar  *str,
 
 
 /* For selectable labels: */
-static void gtk_label_move_cursor        (GtkLabel        *label,
+static void ctk_label_move_cursor        (GtkLabel        *label,
 					  GtkMovementStep  step,
 					  gint             count,
 					  gboolean         extend_selection);
-static void gtk_label_copy_clipboard     (GtkLabel        *label);
-static void gtk_label_select_all         (GtkLabel        *label);
-static void gtk_label_do_popup           (GtkLabel        *label,
+static void ctk_label_copy_clipboard     (GtkLabel        *label);
+static void ctk_label_select_all         (GtkLabel        *label);
+static void ctk_label_do_popup           (GtkLabel        *label,
 					  const GdkEvent  *event);
-static gint gtk_label_move_forward_word  (GtkLabel        *label,
+static gint ctk_label_move_forward_word  (GtkLabel        *label,
 					  gint             start);
-static gint gtk_label_move_backward_word (GtkLabel        *label,
+static gint ctk_label_move_backward_word (GtkLabel        *label,
 					  gint             start);
 
 /* For links: */
-static void          gtk_label_clear_links      (GtkLabel  *label);
-static gboolean      gtk_label_activate_link    (GtkLabel    *label,
+static void          ctk_label_clear_links      (GtkLabel  *label);
+static gboolean      ctk_label_activate_link    (GtkLabel    *label,
                                                  const gchar *uri);
-static void          gtk_label_activate_current_link (GtkLabel *label);
-static GtkLabelLink *gtk_label_get_current_link (GtkLabel  *label);
+static void          ctk_label_activate_current_link (GtkLabel *label);
+static GtkLabelLink *ctk_label_get_current_link (GtkLabel  *label);
 static void          emit_activate_link         (GtkLabel     *label,
                                                  GtkLabelLink *link);
 
 /* Event controller callbacks */
-static void   gtk_label_multipress_gesture_pressed  (GtkGestureMultiPress *gesture,
+static void   ctk_label_multipress_gesture_pressed  (GtkGestureMultiPress *gesture,
                                                      gint                  n_press,
                                                      gdouble               x,
                                                      gdouble               y,
                                                      GtkLabel             *label);
-static void   gtk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
+static void   ctk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
                                                      gint                  n_press,
                                                      gdouble               x,
                                                      gdouble               y,
                                                      GtkLabel             *label);
-static void   gtk_label_drag_gesture_begin          (GtkGestureDrag *gesture,
+static void   ctk_label_drag_gesture_begin          (GtkGestureDrag *gesture,
                                                      gdouble         start_x,
                                                      gdouble         start_y,
                                                      GtkLabel       *label);
-static void   gtk_label_drag_gesture_update         (GtkGestureDrag *gesture,
+static void   ctk_label_drag_gesture_update         (GtkGestureDrag *gesture,
                                                      gdouble         offset_x,
                                                      gdouble         offset_y,
                                                      GtkLabel       *label);
 
-static GtkSizeRequestMode gtk_label_get_request_mode                (GtkWidget           *widget);
-static void               gtk_label_get_preferred_width             (GtkWidget           *widget,
+static GtkSizeRequestMode ctk_label_get_request_mode                (GtkWidget           *widget);
+static void               ctk_label_get_preferred_width             (GtkWidget           *widget,
                                                                      gint                *minimum_size,
                                                                      gint                *natural_size);
-static void               gtk_label_get_preferred_height            (GtkWidget           *widget,
+static void               ctk_label_get_preferred_height            (GtkWidget           *widget,
                                                                      gint                *minimum_size,
                                                                      gint                *natural_size);
-static void               gtk_label_get_preferred_width_for_height  (GtkWidget           *widget,
+static void               ctk_label_get_preferred_width_for_height  (GtkWidget           *widget,
                                                                      gint                 height,
                                                                      gint                *minimum_width,
                                                                      gint                *natural_width);
-static void               gtk_label_get_preferred_height_for_width  (GtkWidget           *widget,
+static void               ctk_label_get_preferred_height_for_width  (GtkWidget           *widget,
                                                                      gint                 width,
                                                                      gint                *minimum_height,
                                                                      gint                *natural_height);
-static void    gtk_label_get_preferred_height_and_baseline_for_width (GtkWidget          *widget,
+static void    ctk_label_get_preferred_height_and_baseline_for_width (GtkWidget          *widget,
 								      gint                width,
 								      gint               *minimum_height,
 								      gint               *natural_height,
 								      gint               *minimum_baseline,
 								      gint               *natural_baseline);
 
-static void     gtk_label_measure (GtkCssGadget   *gadget,
+static void     ctk_label_measure (GtkCssGadget   *gadget,
                                    GtkOrientation  orientation,
                                    int             for_size,
                                    int            *minimum,
@@ -581,7 +581,7 @@ static void     gtk_label_measure (GtkCssGadget   *gadget,
                                    int            *minimum_baseline,
                                    int            *natural_baseline,
                                    gpointer        unused);
-static gboolean gtk_label_render  (GtkCssGadget   *gadget,
+static gboolean ctk_label_render  (GtkCssGadget   *gadget,
                                    cairo_t        *cr,
                                    int             x,
                                    int             y,
@@ -592,10 +592,10 @@ static gboolean gtk_label_render  (GtkCssGadget   *gadget,
 static GtkBuildableIface *buildable_parent_iface = NULL;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-G_DEFINE_TYPE_WITH_CODE (GtkLabel, gtk_label, GTK_TYPE_MISC,
+G_DEFINE_TYPE_WITH_CODE (GtkLabel, ctk_label, GTK_TYPE_MISC,
                          G_ADD_PRIVATE (GtkLabel)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
-                                                gtk_label_buildable_interface_init))
+                                                ctk_label_buildable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
@@ -607,14 +607,14 @@ add_move_binding (GtkBindingSet  *binding_set,
 {
   g_return_if_fail ((modmask & GDK_SHIFT_MASK) == 0);
   
-  gtk_binding_entry_add_signal (binding_set, keyval, modmask,
+  ctk_binding_entry_add_signal (binding_set, keyval, modmask,
 				"move-cursor", 3,
 				G_TYPE_ENUM, step,
 				G_TYPE_INT, count,
 				G_TYPE_BOOLEAN, FALSE);
 
   /* Selection-extending version */
-  gtk_binding_entry_add_signal (binding_set, keyval, modmask | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, keyval, modmask | GDK_SHIFT_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, step,
 				G_TYPE_INT, count,
@@ -622,45 +622,45 @@ add_move_binding (GtkBindingSet  *binding_set,
 }
 
 static void
-gtk_label_class_init (GtkLabelClass *class)
+ctk_label_class_init (GtkLabelClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
   GtkBindingSet *binding_set;
 
-  gobject_class->set_property = gtk_label_set_property;
-  gobject_class->get_property = gtk_label_get_property;
-  gobject_class->finalize = gtk_label_finalize;
+  gobject_class->set_property = ctk_label_set_property;
+  gobject_class->get_property = ctk_label_get_property;
+  gobject_class->finalize = ctk_label_finalize;
 
-  widget_class->destroy = gtk_label_destroy;
-  widget_class->size_allocate = gtk_label_size_allocate;
-  widget_class->state_flags_changed = gtk_label_state_flags_changed;
-  widget_class->style_updated = gtk_label_style_updated;
-  widget_class->query_tooltip = gtk_label_query_tooltip;
-  widget_class->draw = gtk_label_draw;
-  widget_class->realize = gtk_label_realize;
-  widget_class->unrealize = gtk_label_unrealize;
-  widget_class->map = gtk_label_map;
-  widget_class->unmap = gtk_label_unmap;
-  widget_class->motion_notify_event = gtk_label_motion;
-  widget_class->leave_notify_event = gtk_label_leave_notify;
-  widget_class->hierarchy_changed = gtk_label_hierarchy_changed;
-  widget_class->screen_changed = gtk_label_screen_changed;
-  widget_class->mnemonic_activate = gtk_label_mnemonic_activate;
-  widget_class->drag_data_get = gtk_label_drag_data_get;
-  widget_class->grab_focus = gtk_label_grab_focus;
-  widget_class->popup_menu = gtk_label_popup_menu;
-  widget_class->focus = gtk_label_focus;
-  widget_class->get_request_mode = gtk_label_get_request_mode;
-  widget_class->get_preferred_width = gtk_label_get_preferred_width;
-  widget_class->get_preferred_height = gtk_label_get_preferred_height;
-  widget_class->get_preferred_width_for_height = gtk_label_get_preferred_width_for_height;
-  widget_class->get_preferred_height_for_width = gtk_label_get_preferred_height_for_width;
-  widget_class->get_preferred_height_and_baseline_for_width = gtk_label_get_preferred_height_and_baseline_for_width;
+  widget_class->destroy = ctk_label_destroy;
+  widget_class->size_allocate = ctk_label_size_allocate;
+  widget_class->state_flags_changed = ctk_label_state_flags_changed;
+  widget_class->style_updated = ctk_label_style_updated;
+  widget_class->query_tooltip = ctk_label_query_tooltip;
+  widget_class->draw = ctk_label_draw;
+  widget_class->realize = ctk_label_realize;
+  widget_class->unrealize = ctk_label_unrealize;
+  widget_class->map = ctk_label_map;
+  widget_class->unmap = ctk_label_unmap;
+  widget_class->motion_notify_event = ctk_label_motion;
+  widget_class->leave_notify_event = ctk_label_leave_notify;
+  widget_class->hierarchy_changed = ctk_label_hierarchy_changed;
+  widget_class->screen_changed = ctk_label_screen_changed;
+  widget_class->mnemonic_activate = ctk_label_mnemonic_activate;
+  widget_class->drag_data_get = ctk_label_drag_data_get;
+  widget_class->grab_focus = ctk_label_grab_focus;
+  widget_class->popup_menu = ctk_label_popup_menu;
+  widget_class->focus = ctk_label_focus;
+  widget_class->get_request_mode = ctk_label_get_request_mode;
+  widget_class->get_preferred_width = ctk_label_get_preferred_width;
+  widget_class->get_preferred_height = ctk_label_get_preferred_height;
+  widget_class->get_preferred_width_for_height = ctk_label_get_preferred_width_for_height;
+  widget_class->get_preferred_height_for_width = ctk_label_get_preferred_height_for_width;
+  widget_class->get_preferred_height_and_baseline_for_width = ctk_label_get_preferred_height_and_baseline_for_width;
 
-  class->move_cursor = gtk_label_move_cursor;
-  class->copy_clipboard = gtk_label_copy_clipboard;
-  class->activate_link = gtk_label_activate_link;
+  class->move_cursor = ctk_label_move_cursor;
+  class->copy_clipboard = ctk_label_copy_clipboard;
+  class->activate_link = ctk_label_activate_link;
 
   /**
    * GtkLabel::move-cursor:
@@ -693,7 +693,7 @@ gtk_label_class_init (GtkLabelClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkLabelClass, move_cursor),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__ENUM_INT_BOOLEAN,
+		  _ctk_marshal_VOID__ENUM_INT_BOOLEAN,
 		  G_TYPE_NONE, 3,
 		  GTK_TYPE_MOVEMENT_STEP,
 		  G_TYPE_INT,
@@ -758,7 +758,7 @@ gtk_label_class_init (GtkLabelClass *class)
       g_signal_new_class_handler (I_("activate-current-link"),
                                   G_TYPE_FROM_CLASS (gobject_class),
                                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                  G_CALLBACK (gtk_label_activate_current_link),
+                                  G_CALLBACK (ctk_label_activate_current_link),
                                   NULL, NULL,
                                   NULL,
                                   G_TYPE_NONE, 0);
@@ -770,7 +770,7 @@ gtk_label_class_init (GtkLabelClass *class)
      *
      * The signal which gets emitted to activate a URI.
      * Applications may connect to it to override the default behaviour,
-     * which is to call gtk_show_uri_on_window().
+     * which is to call ctk_show_uri_on_window().
      *
      * Returns: %TRUE if the link has been activated
      *
@@ -781,8 +781,8 @@ gtk_label_class_init (GtkLabelClass *class)
                     G_TYPE_FROM_CLASS (gobject_class),
                     G_SIGNAL_RUN_LAST,
                     G_STRUCT_OFFSET (GtkLabelClass, activate_link),
-                    _gtk_boolean_handled_accumulator, NULL,
-                    _gtk_marshal_BOOLEAN__STRING,
+                    _ctk_boolean_handled_accumulator, NULL,
+                    _ctk_marshal_BOOLEAN__STRING,
                     G_TYPE_BOOLEAN, 1, G_TYPE_STRING);
 
   /**
@@ -792,7 +792,7 @@ gtk_label_class_init (GtkLabelClass *class)
    *
    * If the string contains [Pango XML markup][PangoMarkupFormat], you will
    * have to set the #GtkLabel:use-markup property to %TRUE in order for the
-   * label to display the markup attributes. See also gtk_label_set_markup()
+   * label to display the markup attributes. See also ctk_label_set_markup()
    * for a convenience function that sets both this property and the
    * #GtkLabel:use-markup property at the same time.
    *
@@ -953,8 +953,8 @@ gtk_label_class_init (GtkLabelClass *class)
    * only enough space to display the ellipsis "...". In particular, this
    * means that ellipsizing labels do not work well in notebook tabs, unless
    * the #GtkNotebook tab-expand child property is set to %TRUE. Other ways
-   * to set a label's width are gtk_widget_set_size_request() and
-   * gtk_label_set_width_chars().
+   * to set a label's width are ctk_widget_set_size_request() and
+   * ctk_label_set_width_chars().
    *
    * Since: 2.6
    */
@@ -1081,7 +1081,7 @@ gtk_label_class_init (GtkLabelClass *class)
   /*
    * Key bindings
    */
-  binding_set = gtk_binding_set_by_class (class);
+  binding_set = ctk_binding_set_by_class (class);
 
   /* Moving the insertion point */
   add_move_binding (binding_set, GDK_KEY_Right, 0,
@@ -1115,38 +1115,38 @@ gtk_label_class_init (GtkLabelClass *class)
 		    GTK_MOVEMENT_WORDS, -1);
 
   /* select all */
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, GTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, -1,
 				G_TYPE_BOOLEAN, FALSE);
 
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, GTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, 1,
 				G_TYPE_BOOLEAN, TRUE);
 
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, GTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, -1,
 				G_TYPE_BOOLEAN, FALSE);
 
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, GTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, 1,
 				G_TYPE_BOOLEAN, TRUE);
 
   /* unselect all */
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_SHIFT_MASK | GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_SHIFT_MASK | GDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, GTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, 0,
 				G_TYPE_BOOLEAN, FALSE);
 
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_backslash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_backslash, GDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, GTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, 0,
@@ -1183,29 +1183,29 @@ gtk_label_class_init (GtkLabelClass *class)
 		    GTK_MOVEMENT_BUFFER_ENDS, 1);
 
   /* copy */
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_c, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_c, GDK_CONTROL_MASK,
 				"copy-clipboard", 0);
 
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0,
 				"activate-current-link", 0);
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0,
 				"activate-current-link", 0);
-  gtk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0,
 				"activate-current-link", 0);
 
-  gtk_widget_class_set_accessible_type (widget_class, GTK_TYPE_LABEL_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_LABEL_ACCESSIBLE);
 
-  gtk_widget_class_set_css_name (widget_class, "label");
+  ctk_widget_class_set_css_name (widget_class, "label");
 
   quark_shortcuts_connected = g_quark_from_static_string ("gtk-label-shortcuts-connected");
   quark_mnemonic_menu = g_quark_from_static_string ("gtk-mnemonic-menu");
   quark_mnemonics_visible_connected = g_quark_from_static_string ("gtk-label-mnemonics-visible-connected");
-  quark_gtk_signal = g_quark_from_static_string ("gtk-signal");
+  quark_ctk_signal = g_quark_from_static_string ("gtk-signal");
   quark_link = g_quark_from_static_string ("link");
 }
 
 static void 
-gtk_label_set_property (GObject      *object,
+ctk_label_set_property (GObject      *object,
 			guint         prop_id,
 			const GValue *value,
 			GParamSpec   *pspec)
@@ -1215,61 +1215,61 @@ gtk_label_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_LABEL:
-      gtk_label_set_label (label, g_value_get_string (value));
+      ctk_label_set_label (label, g_value_get_string (value));
       break;
     case PROP_ATTRIBUTES:
-      gtk_label_set_attributes (label, g_value_get_boxed (value));
+      ctk_label_set_attributes (label, g_value_get_boxed (value));
       break;
     case PROP_USE_MARKUP:
-      gtk_label_set_use_markup (label, g_value_get_boolean (value));
+      ctk_label_set_use_markup (label, g_value_get_boolean (value));
       break;
     case PROP_USE_UNDERLINE:
-      gtk_label_set_use_underline (label, g_value_get_boolean (value));
+      ctk_label_set_use_underline (label, g_value_get_boolean (value));
       break;
     case PROP_JUSTIFY:
-      gtk_label_set_justify (label, g_value_get_enum (value));
+      ctk_label_set_justify (label, g_value_get_enum (value));
       break;
     case PROP_PATTERN:
-      gtk_label_set_pattern (label, g_value_get_string (value));
+      ctk_label_set_pattern (label, g_value_get_string (value));
       break;
     case PROP_WRAP:
-      gtk_label_set_line_wrap (label, g_value_get_boolean (value));
+      ctk_label_set_line_wrap (label, g_value_get_boolean (value));
       break;	  
     case PROP_WRAP_MODE:
-      gtk_label_set_line_wrap_mode (label, g_value_get_enum (value));
+      ctk_label_set_line_wrap_mode (label, g_value_get_enum (value));
       break;	  
     case PROP_SELECTABLE:
-      gtk_label_set_selectable (label, g_value_get_boolean (value));
+      ctk_label_set_selectable (label, g_value_get_boolean (value));
       break;	  
     case PROP_MNEMONIC_WIDGET:
-      gtk_label_set_mnemonic_widget (label, (GtkWidget*) g_value_get_object (value));
+      ctk_label_set_mnemonic_widget (label, (GtkWidget*) g_value_get_object (value));
       break;
     case PROP_ELLIPSIZE:
-      gtk_label_set_ellipsize (label, g_value_get_enum (value));
+      ctk_label_set_ellipsize (label, g_value_get_enum (value));
       break;
     case PROP_WIDTH_CHARS:
-      gtk_label_set_width_chars (label, g_value_get_int (value));
+      ctk_label_set_width_chars (label, g_value_get_int (value));
       break;
     case PROP_SINGLE_LINE_MODE:
-      gtk_label_set_single_line_mode (label, g_value_get_boolean (value));
+      ctk_label_set_single_line_mode (label, g_value_get_boolean (value));
       break;	  
     case PROP_ANGLE:
-      gtk_label_set_angle (label, g_value_get_double (value));
+      ctk_label_set_angle (label, g_value_get_double (value));
       break;
     case PROP_MAX_WIDTH_CHARS:
-      gtk_label_set_max_width_chars (label, g_value_get_int (value));
+      ctk_label_set_max_width_chars (label, g_value_get_int (value));
       break;
     case PROP_TRACK_VISITED_LINKS:
-      gtk_label_set_track_visited_links (label, g_value_get_boolean (value));
+      ctk_label_set_track_visited_links (label, g_value_get_boolean (value));
       break;
     case PROP_LINES:
-      gtk_label_set_lines (label, g_value_get_int (value));
+      ctk_label_set_lines (label, g_value_get_int (value));
       break;
     case PROP_XALIGN:
-      gtk_label_set_xalign (label, g_value_get_float (value));
+      ctk_label_set_xalign (label, g_value_get_float (value));
       break;
     case PROP_YALIGN:
-      gtk_label_set_yalign (label, g_value_get_float (value));
+      ctk_label_set_yalign (label, g_value_get_float (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1278,7 +1278,7 @@ gtk_label_set_property (GObject      *object,
 }
 
 static void 
-gtk_label_get_property (GObject     *object,
+ctk_label_get_property (GObject     *object,
 			guint        prop_id,
 			GValue      *value,
 			GParamSpec  *pspec)
@@ -1310,7 +1310,7 @@ gtk_label_get_property (GObject     *object,
       g_value_set_enum (value, priv->wrap_mode);
       break;
     case PROP_SELECTABLE:
-      g_value_set_boolean (value, gtk_label_get_selectable (label));
+      g_value_set_boolean (value, ctk_label_get_selectable (label));
       break;
     case PROP_MNEMONIC_KEYVAL:
       g_value_set_uint (value, priv->mnemonic_keyval);
@@ -1319,37 +1319,37 @@ gtk_label_get_property (GObject     *object,
       g_value_set_object (value, (GObject*) priv->mnemonic_widget);
       break;
     case PROP_CURSOR_POSITION:
-      g_value_set_int (value, _gtk_label_get_cursor_position (label));
+      g_value_set_int (value, _ctk_label_get_cursor_position (label));
       break;
     case PROP_SELECTION_BOUND:
-      g_value_set_int (value, _gtk_label_get_selection_bound (label));
+      g_value_set_int (value, _ctk_label_get_selection_bound (label));
       break;
     case PROP_ELLIPSIZE:
       g_value_set_enum (value, priv->ellipsize);
       break;
     case PROP_WIDTH_CHARS:
-      g_value_set_int (value, gtk_label_get_width_chars (label));
+      g_value_set_int (value, ctk_label_get_width_chars (label));
       break;
     case PROP_SINGLE_LINE_MODE:
-      g_value_set_boolean (value, gtk_label_get_single_line_mode (label));
+      g_value_set_boolean (value, ctk_label_get_single_line_mode (label));
       break;
     case PROP_ANGLE:
-      g_value_set_double (value, gtk_label_get_angle (label));
+      g_value_set_double (value, ctk_label_get_angle (label));
       break;
     case PROP_MAX_WIDTH_CHARS:
-      g_value_set_int (value, gtk_label_get_max_width_chars (label));
+      g_value_set_int (value, ctk_label_get_max_width_chars (label));
       break;
     case PROP_TRACK_VISITED_LINKS:
-      g_value_set_boolean (value, gtk_label_get_track_visited_links (label));
+      g_value_set_boolean (value, ctk_label_get_track_visited_links (label));
       break;
     case PROP_LINES:
-      g_value_set_int (value, gtk_label_get_lines (label));
+      g_value_set_int (value, ctk_label_get_lines (label));
       break;
     case PROP_XALIGN:
-      g_value_set_float (value, gtk_label_get_xalign (label));
+      g_value_set_float (value, ctk_label_get_xalign (label));
       break;
     case PROP_YALIGN:
-      g_value_set_float (value, gtk_label_get_yalign (label));
+      g_value_set_float (value, ctk_label_get_yalign (label));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1358,14 +1358,14 @@ gtk_label_get_property (GObject     *object,
 }
 
 static void
-gtk_label_init (GtkLabel *label)
+ctk_label_init (GtkLabel *label)
 {
   GtkLabelPrivate *priv;
 
-  label->priv = gtk_label_get_instance_private (label);
+  label->priv = ctk_label_get_instance_private (label);
   priv = label->priv;
 
-  gtk_widget_set_has_window (GTK_WIDGET (label), FALSE);
+  ctk_widget_set_has_window (GTK_WIDGET (label), FALSE);
 
   priv->width_chars = -1;
   priv->max_width_chars = -1;
@@ -1395,23 +1395,23 @@ gtk_label_init (GtkLabel *label)
 
   priv->mnemonics_visible = TRUE;
 
-  priv->gadget = gtk_css_custom_gadget_new_for_node (gtk_widget_get_css_node (GTK_WIDGET (label)),
+  priv->gadget = ctk_css_custom_gadget_new_for_node (ctk_widget_get_css_node (GTK_WIDGET (label)),
                                                      GTK_WIDGET (label),
-                                                     gtk_label_measure,
+                                                     ctk_label_measure,
                                                      NULL,
-                                                     gtk_label_render,
+                                                     ctk_label_render,
                                                      NULL,
                                                      NULL);
 }
 
 
 static void
-gtk_label_buildable_interface_init (GtkBuildableIface *iface)
+ctk_label_buildable_interface_init (GtkBuildableIface *iface)
 {
   buildable_parent_iface = g_type_interface_peek_parent (iface);
 
-  iface->custom_tag_start = gtk_label_buildable_custom_tag_start;
-  iface->custom_finished = gtk_label_buildable_custom_finished;
+  iface->custom_tag_start = ctk_label_buildable_custom_tag_start;
+  iface->custom_finished = ctk_label_buildable_custom_finished;
 }
 
 typedef struct {
@@ -1433,7 +1433,7 @@ attribute_from_text (GtkBuilder   *builder,
   GdkColor       *color;
   GValue          val = G_VALUE_INIT;
 
-  if (!gtk_builder_value_from_string_type (builder, PANGO_TYPE_ATTR_TYPE, name, &val, error))
+  if (!ctk_builder_value_from_string_type (builder, PANGO_TYPE_ATTR_TYPE, name, &val, error))
     return NULL;
 
   type = g_value_get_enum (&val);
@@ -1451,43 +1451,43 @@ attribute_from_text (GtkBuilder   *builder,
       break;
       /* PangoAttrInt */
     case PANGO_ATTR_STYLE:
-      if (gtk_builder_value_from_string_type (builder, PANGO_TYPE_STYLE, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, PANGO_TYPE_STYLE, value, &val, error))
 	attribute = pango_attr_style_new (g_value_get_enum (&val));
       break;
     case PANGO_ATTR_WEIGHT:
-      if (gtk_builder_value_from_string_type (builder, PANGO_TYPE_WEIGHT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, PANGO_TYPE_WEIGHT, value, &val, error))
 	attribute = pango_attr_weight_new (g_value_get_enum (&val));
       break;
     case PANGO_ATTR_VARIANT:
-      if (gtk_builder_value_from_string_type (builder, PANGO_TYPE_VARIANT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, PANGO_TYPE_VARIANT, value, &val, error))
 	attribute = pango_attr_variant_new (g_value_get_enum (&val));
       break;
     case PANGO_ATTR_STRETCH:
-      if (gtk_builder_value_from_string_type (builder, PANGO_TYPE_STRETCH, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, PANGO_TYPE_STRETCH, value, &val, error))
 	attribute = pango_attr_stretch_new (g_value_get_enum (&val));
       break;
     case PANGO_ATTR_UNDERLINE:
-      if (gtk_builder_value_from_string_type (builder, PANGO_TYPE_UNDERLINE, value, &val, NULL))
+      if (ctk_builder_value_from_string_type (builder, PANGO_TYPE_UNDERLINE, value, &val, NULL))
 	attribute = pango_attr_underline_new (g_value_get_enum (&val));
       else
         {
           /* XXX: allow boolean for backwards compat, so ignore error */
           /* Deprecate this somehow */
           g_value_unset (&val);
-          if (gtk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, value, &val, error))
+          if (ctk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, value, &val, error))
             attribute = pango_attr_underline_new (g_value_get_boolean (&val));
         }
       break;
     case PANGO_ATTR_STRIKETHROUGH:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, value, &val, error))
 	attribute = pango_attr_strikethrough_new (g_value_get_boolean (&val));
       break;
     case PANGO_ATTR_GRAVITY:
-      if (gtk_builder_value_from_string_type (builder, PANGO_TYPE_GRAVITY, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, PANGO_TYPE_GRAVITY, value, &val, error))
 	attribute = pango_attr_gravity_new (g_value_get_enum (&val));
       break;
     case PANGO_ATTR_GRAVITY_HINT:
-      if (gtk_builder_value_from_string_type (builder, PANGO_TYPE_GRAVITY_HINT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, PANGO_TYPE_GRAVITY_HINT, value, &val, error))
 	attribute = pango_attr_gravity_hint_new (g_value_get_enum (&val));
       break;
       /* PangoAttrString */
@@ -1498,11 +1498,11 @@ attribute_from_text (GtkBuilder   *builder,
 
       /* PangoAttrSize */
     case PANGO_ATTR_SIZE:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
 	attribute = pango_attr_size_new (g_value_get_int (&val));
       break;
     case PANGO_ATTR_ABSOLUTE_SIZE:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
 	attribute = pango_attr_size_new_absolute (g_value_get_int (&val));
       break;
 
@@ -1520,28 +1520,28 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
       /* PangoAttrColor */
     case PANGO_ATTR_FOREGROUND:
-      if (gtk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
 	{
 	  color = g_value_get_boxed (&val);
 	  attribute = pango_attr_foreground_new (color->red, color->green, color->blue);
 	}
       break;
     case PANGO_ATTR_BACKGROUND:
-      if (gtk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
 	{
 	  color = g_value_get_boxed (&val);
 	  attribute = pango_attr_background_new (color->red, color->green, color->blue);
 	}
       break;
     case PANGO_ATTR_UNDERLINE_COLOR:
-      if (gtk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
 	{
 	  color = g_value_get_boxed (&val);
 	  attribute = pango_attr_underline_color_new (color->red, color->green, color->blue);
 	}
       break;
     case PANGO_ATTR_STRIKETHROUGH_COLOR:
-      if (gtk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
 	{
 	  color = g_value_get_boxed (&val);
 	  attribute = pango_attr_strikethrough_color_new (color->red, color->green, color->blue);
@@ -1556,30 +1556,30 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       break;
       /* PangoAttrFloat */
     case PANGO_ATTR_SCALE:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_DOUBLE, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_DOUBLE, value, &val, error))
 	attribute = pango_attr_scale_new (g_value_get_double (&val));
       break;
     case PANGO_ATTR_LETTER_SPACING:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
         attribute = pango_attr_letter_spacing_new (g_value_get_int (&val));
       break;
     case PANGO_ATTR_RISE:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
         attribute = pango_attr_rise_new (g_value_get_int (&val));
       break;
     case PANGO_ATTR_FALLBACK:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, value, &val, error))
         attribute = pango_attr_fallback_new (g_value_get_boolean (&val));
       break;
     case PANGO_ATTR_FONT_FEATURES:
       attribute = pango_attr_font_features_new (value);
       break;
     case PANGO_ATTR_FOREGROUND_ALPHA:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
         attribute = pango_attr_foreground_alpha_new ((guint16)g_value_get_int (&val));
       break;
     case PANGO_ATTR_BACKGROUND_ALPHA:
-      if (gtk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, G_TYPE_INT, value, &val, error))
         attribute = pango_attr_background_alpha_new ((guint16)g_value_get_int (&val));
       break;
     case PANGO_ATTR_INVALID:
@@ -1614,7 +1614,7 @@ pango_start_element (GMarkupParseContext *context,
       guint end_val = G_MAXUINT;
       GValue val = G_VALUE_INIT;
 
-      if (!_gtk_builder_check_parent (data->builder, context, "attributes", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "attributes", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
@@ -1624,15 +1624,15 @@ pango_start_element (GMarkupParseContext *context,
                                         G_MARKUP_COLLECT_STRING|G_MARKUP_COLLECT_OPTIONAL, "end", &end,
                                         G_MARKUP_COLLECT_INVALID))
         {
-          _gtk_builder_prefix_error (data->builder, context, error);
+          _ctk_builder_prefix_error (data->builder, context, error);
           return;
         }
 
       if (start)
         {
-          if (!gtk_builder_value_from_string_type (data->builder, G_TYPE_UINT, start, &val, error))
+          if (!ctk_builder_value_from_string_type (data->builder, G_TYPE_UINT, start, &val, error))
             {
-              _gtk_builder_prefix_error (data->builder, context, error);
+              _ctk_builder_prefix_error (data->builder, context, error);
               return;
             }
           start_val = g_value_get_uint (&val);
@@ -1641,9 +1641,9 @@ pango_start_element (GMarkupParseContext *context,
 
       if (end)
         {
-          if (!gtk_builder_value_from_string_type (data->builder, G_TYPE_UINT, end, &val, error))
+          if (!ctk_builder_value_from_string_type (data->builder, G_TYPE_UINT, end, &val, error))
             {
-              _gtk_builder_prefix_error (data->builder, context, error);
+              _ctk_builder_prefix_error (data->builder, context, error);
               return;
             }
           end_val = g_value_get_uint (&val);
@@ -1653,7 +1653,7 @@ pango_start_element (GMarkupParseContext *context,
       attr = attribute_from_text (data->builder, name, value, error);
       if (!attr)
         {
-          _gtk_builder_prefix_error (data->builder, context, error);
+          _ctk_builder_prefix_error (data->builder, context, error);
           return;
         }
 
@@ -1667,17 +1667,17 @@ pango_start_element (GMarkupParseContext *context,
     }
   else if (strcmp (element_name, "attributes") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "object", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "object", error))
         return;
 
       if (!g_markup_collect_attributes (element_name, names, values, error,
                                         G_MARKUP_COLLECT_INVALID, NULL, NULL,
                                         G_MARKUP_COLLECT_INVALID))
-        _gtk_builder_prefix_error (data->builder, context, error);
+        _ctk_builder_prefix_error (data->builder, context, error);
     }
   else
     {
-      _gtk_builder_error_unhandled_tag (data->builder, context,
+      _ctk_builder_error_unhandled_tag (data->builder, context,
                                         "GtkContainer", element_name,
                                         error);
     }
@@ -1689,7 +1689,7 @@ static const GMarkupParser pango_parser =
   };
 
 static gboolean
-gtk_label_buildable_custom_tag_start (GtkBuildable     *buildable,
+ctk_label_buildable_custom_tag_start (GtkBuildable     *buildable,
 				      GtkBuilder       *builder,
 				      GObject          *child,
 				      const gchar      *tagname,
@@ -1715,7 +1715,7 @@ gtk_label_buildable_custom_tag_start (GtkBuildable     *buildable,
 }
 
 static void
-gtk_label_buildable_custom_finished (GtkBuildable *buildable,
+ctk_label_buildable_custom_finished (GtkBuildable *buildable,
 				     GtkBuilder   *builder,
 				     GObject      *child,
 				     const gchar  *tagname,
@@ -1732,7 +1732,7 @@ gtk_label_buildable_custom_finished (GtkBuildable *buildable,
 
       if (data->attrs)
 	{
-	  gtk_label_set_attributes (GTK_LABEL (buildable), data->attrs);
+	  ctk_label_set_attributes (GTK_LABEL (buildable), data->attrs);
 	  pango_attr_list_unref (data->attrs);
 	}
 
@@ -1744,7 +1744,7 @@ gtk_label_buildable_custom_finished (GtkBuildable *buildable,
 
 
 /**
- * gtk_label_new:
+ * ctk_label_new:
  * @str: (nullable): The text of the label
  *
  * Creates a new label with the given text inside it. You can
@@ -1753,20 +1753,20 @@ gtk_label_buildable_custom_finished (GtkBuildable *buildable,
  * Returns: the new #GtkLabel
  **/
 GtkWidget*
-gtk_label_new (const gchar *str)
+ctk_label_new (const gchar *str)
 {
   GtkLabel *label;
   
   label = g_object_new (GTK_TYPE_LABEL, NULL);
 
   if (str && *str)
-    gtk_label_set_text (label, str);
+    ctk_label_set_text (label, str);
   
   return GTK_WIDGET (label);
 }
 
 /**
- * gtk_label_new_with_mnemonic:
+ * ctk_label_new_with_mnemonic:
  * @str: (nullable): The text of the label, with an underscore in front of the
  *       mnemonic character
  *
@@ -1777,9 +1777,9 @@ gtk_label_new (const gchar *str)
  * '__' (two underscores). The first underlined character represents a 
  * keyboard accelerator called a mnemonic. The mnemonic key can be used 
  * to activate another widget, chosen automatically, or explicitly using
- * gtk_label_set_mnemonic_widget().
+ * ctk_label_set_mnemonic_widget().
  * 
- * If gtk_label_set_mnemonic_widget() is not called, then the first 
+ * If ctk_label_set_mnemonic_widget() is not called, then the first 
  * activatable ancestor of the #GtkLabel will be chosen as the mnemonic 
  * widget. For instance, if the label is inside a button or menu item, 
  * the button or menu item will automatically become the mnemonic widget 
@@ -1788,20 +1788,20 @@ gtk_label_new (const gchar *str)
  * Returns: the new #GtkLabel
  **/
 GtkWidget*
-gtk_label_new_with_mnemonic (const gchar *str)
+ctk_label_new_with_mnemonic (const gchar *str)
 {
   GtkLabel *label;
   
   label = g_object_new (GTK_TYPE_LABEL, NULL);
 
   if (str && *str)
-    gtk_label_set_text_with_mnemonic (label, str);
+    ctk_label_set_text_with_mnemonic (label, str);
   
   return GTK_WIDGET (label);
 }
 
 static gboolean
-gtk_label_mnemonic_activate (GtkWidget *widget,
+ctk_label_mnemonic_activate (GtkWidget *widget,
 			     gboolean   group_cycling)
 {
   GtkLabel *label = GTK_LABEL (widget);
@@ -1809,35 +1809,35 @@ gtk_label_mnemonic_activate (GtkWidget *widget,
   GtkWidget *parent;
 
   if (priv->mnemonic_widget)
-    return gtk_widget_mnemonic_activate (priv->mnemonic_widget, group_cycling);
+    return ctk_widget_mnemonic_activate (priv->mnemonic_widget, group_cycling);
 
   /* Try to find the widget to activate by traversing the
    * widget's ancestry.
    */
-  parent = gtk_widget_get_parent (widget);
+  parent = ctk_widget_get_parent (widget);
 
   if (GTK_IS_NOTEBOOK (parent))
     return FALSE;
   
   while (parent)
     {
-      if (gtk_widget_get_can_focus (parent) ||
+      if (ctk_widget_get_can_focus (parent) ||
 	  (!group_cycling && GTK_WIDGET_GET_CLASS (parent)->activate_signal) ||
-          GTK_IS_NOTEBOOK (gtk_widget_get_parent (parent)) ||
+          GTK_IS_NOTEBOOK (ctk_widget_get_parent (parent)) ||
 	  GTK_IS_MENU_ITEM (parent))
-	return gtk_widget_mnemonic_activate (parent, group_cycling);
-      parent = gtk_widget_get_parent (parent);
+	return ctk_widget_mnemonic_activate (parent, group_cycling);
+      parent = ctk_widget_get_parent (parent);
     }
 
   /* barf if there was nothing to activate */
   g_warning ("Couldn't find a target for a mnemonic activation.");
-  gtk_widget_error_bell (widget);
+  ctk_widget_error_bell (widget);
 
   return FALSE;
 }
 
 static void
-gtk_label_setup_mnemonic (GtkLabel *label,
+ctk_label_setup_mnemonic (GtkLabel *label,
 			  guint     last_key)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -1851,14 +1851,14 @@ gtk_label_setup_mnemonic (GtkLabel *label,
     {
       if (priv->mnemonic_window)
 	{
-	  gtk_window_remove_mnemonic  (priv->mnemonic_window,
+	  ctk_window_remove_mnemonic  (priv->mnemonic_window,
 				       last_key,
 				       widget);
 	  priv->mnemonic_window = NULL;
 	}
       if (mnemonic_menu)
 	{
-	  _gtk_menu_shell_remove_mnemonic (GTK_MENU_SHELL (mnemonic_menu),
+	  _ctk_menu_shell_remove_mnemonic (GTK_MENU_SHELL (mnemonic_menu),
 					   last_key,
 					   widget);
 	  mnemonic_menu = NULL;
@@ -1870,17 +1870,17 @@ gtk_label_setup_mnemonic (GtkLabel *label,
 
   connect_mnemonics_visible_notify (GTK_LABEL (widget));
 
-  toplevel = gtk_widget_get_toplevel (widget);
-  if (gtk_widget_is_toplevel (toplevel))
+  toplevel = ctk_widget_get_toplevel (widget);
+  if (ctk_widget_is_toplevel (toplevel))
     {
       GtkWidget *menu_shell;
       
-      menu_shell = gtk_widget_get_ancestor (widget,
+      menu_shell = ctk_widget_get_ancestor (widget,
 					    GTK_TYPE_MENU_SHELL);
 
       if (menu_shell)
 	{
-	  _gtk_menu_shell_add_mnemonic (GTK_MENU_SHELL (menu_shell),
+	  _ctk_menu_shell_add_mnemonic (GTK_MENU_SHELL (menu_shell),
 					priv->mnemonic_keyval,
 					widget);
 	  mnemonic_menu = menu_shell;
@@ -1888,7 +1888,7 @@ gtk_label_setup_mnemonic (GtkLabel *label,
       
       if (!GTK_IS_MENU (menu_shell))
 	{
-	  gtk_window_add_mnemonic (GTK_WINDOW (toplevel),
+	  ctk_window_add_mnemonic (GTK_WINDOW (toplevel),
 				   priv->mnemonic_keyval,
 				   widget);
 	  priv->mnemonic_window = GTK_WINDOW (toplevel);
@@ -1900,21 +1900,21 @@ gtk_label_setup_mnemonic (GtkLabel *label,
 }
 
 static void
-gtk_label_hierarchy_changed (GtkWidget *widget,
+ctk_label_hierarchy_changed (GtkWidget *widget,
 			     GtkWidget *old_toplevel)
 {
   GtkLabel *label = GTK_LABEL (widget);
   GtkLabelPrivate *priv = label->priv;
 
-  gtk_label_setup_mnemonic (label, priv->mnemonic_keyval);
+  ctk_label_setup_mnemonic (label, priv->mnemonic_keyval);
 }
 
 static void
 label_shortcut_setting_apply (GtkLabel *label)
 {
-  gtk_label_recalculate (label);
+  ctk_label_recalculate (label);
   if (GTK_IS_ACCEL_LABEL (label))
-    gtk_accel_label_refetch (GTK_ACCEL_LABEL (label));
+    ctk_accel_label_refetch (GTK_ACCEL_LABEL (label));
 }
 
 static void
@@ -1924,7 +1924,7 @@ label_shortcut_setting_traverse_container (GtkWidget *widget,
   if (GTK_IS_LABEL (widget))
     label_shortcut_setting_apply (GTK_LABEL (widget));
   else if (GTK_IS_CONTAINER (widget))
-    gtk_container_forall (GTK_CONTAINER (widget),
+    ctk_container_forall (GTK_CONTAINER (widget),
                           label_shortcut_setting_traverse_container, data);
 }
 
@@ -1933,14 +1933,14 @@ label_shortcut_setting_changed (GtkSettings *settings)
 {
   GList *list, *l;
 
-  list = gtk_window_list_toplevels ();
+  list = ctk_window_list_toplevels ();
 
   for (l = list; l ; l = l->next)
     {
       GtkWidget *widget = l->data;
 
-      if (gtk_widget_get_settings (widget) == settings)
-        gtk_container_forall (GTK_CONTAINER (widget),
+      if (ctk_widget_get_settings (widget) == settings)
+        ctk_container_forall (GTK_CONTAINER (widget),
                               label_shortcut_setting_traverse_container, NULL);
     }
 
@@ -1960,7 +1960,7 @@ mnemonics_visible_apply (GtkWidget *widget,
     {
       priv->mnemonics_visible = mnemonics_visible;
 
-      gtk_label_recalculate (label);
+      ctk_label_recalculate (label);
     }
 }
 
@@ -1970,17 +1970,17 @@ label_mnemonics_visible_traverse_container (GtkWidget *widget,
 {
   gboolean mnemonics_visible = GPOINTER_TO_INT (data);
 
-  _gtk_label_mnemonics_visible_apply_recursively (widget, mnemonics_visible);
+  _ctk_label_mnemonics_visible_apply_recursively (widget, mnemonics_visible);
 }
 
 void
-_gtk_label_mnemonics_visible_apply_recursively (GtkWidget *widget,
+_ctk_label_mnemonics_visible_apply_recursively (GtkWidget *widget,
                                                 gboolean   mnemonics_visible)
 {
   if (GTK_IS_LABEL (widget))
     mnemonics_visible_apply (widget, mnemonics_visible);
   else if (GTK_IS_CONTAINER (widget))
-    gtk_container_forall (GTK_CONTAINER (widget),
+    ctk_container_forall (GTK_CONTAINER (widget),
                           label_mnemonics_visible_traverse_container,
                           GINT_TO_POINTER (mnemonics_visible));
 }
@@ -1994,25 +1994,25 @@ label_mnemonics_visible_changed (GtkWindow  *window,
 
   g_object_get (window, "mnemonics-visible", &mnemonics_visible, NULL);
 
-  gtk_container_forall (GTK_CONTAINER (window),
+  ctk_container_forall (GTK_CONTAINER (window),
                         label_mnemonics_visible_traverse_container,
                         GINT_TO_POINTER (mnemonics_visible));
 }
 
 static void
-gtk_label_screen_changed (GtkWidget *widget,
+ctk_label_screen_changed (GtkWidget *widget,
 			  GdkScreen *old_screen)
 {
   GtkSettings *settings;
   gboolean shortcuts_connected;
 
   /* The PangoContext is replaced when the screen changes, so clear the layouts */
-  gtk_label_clear_layout (GTK_LABEL (widget));
+  ctk_label_clear_layout (GTK_LABEL (widget));
 
-  if (!gtk_widget_has_screen (widget))
+  if (!ctk_widget_has_screen (widget))
     return;
 
-  settings = gtk_widget_get_settings (widget);
+  settings = ctk_widget_get_settings (widget);
 
   shortcuts_connected =
     GPOINTER_TO_INT (g_object_get_qdata (G_OBJECT (settings), quark_shortcuts_connected));
@@ -2046,13 +2046,13 @@ label_mnemonic_widget_weak_notify (gpointer      data,
 }
 
 /**
- * gtk_label_set_mnemonic_widget:
+ * ctk_label_set_mnemonic_widget:
  * @label: a #GtkLabel
  * @widget: (nullable): the target #GtkWidget, or %NULL to unset
  *
  * If the label has been set so that it has an mnemonic key (using
- * i.e. gtk_label_set_markup_with_mnemonic(),
- * gtk_label_set_text_with_mnemonic(), gtk_label_new_with_mnemonic()
+ * i.e. ctk_label_set_markup_with_mnemonic(),
+ * ctk_label_set_text_with_mnemonic(), ctk_label_new_with_mnemonic()
  * or the “use_underline” property) the label can be associated with a
  * widget that is the target of the mnemonic. When the label is inside
  * a widget (like a #GtkButton or a #GtkNotebook tab) it is
@@ -2066,7 +2066,7 @@ label_mnemonic_widget_weak_notify (gpointer      data,
  * and toggle focus between the colliding widgets otherwise.
  **/
 void
-gtk_label_set_mnemonic_widget (GtkLabel  *label,
+ctk_label_set_mnemonic_widget (GtkLabel  *label,
 			       GtkWidget *widget)
 {
   GtkLabelPrivate *priv;
@@ -2080,7 +2080,7 @@ gtk_label_set_mnemonic_widget (GtkLabel  *label,
 
   if (priv->mnemonic_widget)
     {
-      gtk_widget_remove_mnemonic_label (priv->mnemonic_widget, GTK_WIDGET (label));
+      ctk_widget_remove_mnemonic_label (priv->mnemonic_widget, GTK_WIDGET (label));
       g_object_weak_unref (G_OBJECT (priv->mnemonic_widget),
 			   label_mnemonic_widget_weak_notify,
 			   label);
@@ -2091,24 +2091,24 @@ gtk_label_set_mnemonic_widget (GtkLabel  *label,
       g_object_weak_ref (G_OBJECT (priv->mnemonic_widget),
 		         label_mnemonic_widget_weak_notify,
 		         label);
-      gtk_widget_add_mnemonic_label (priv->mnemonic_widget, GTK_WIDGET (label));
+      ctk_widget_add_mnemonic_label (priv->mnemonic_widget, GTK_WIDGET (label));
     }
   
   g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_MNEMONIC_WIDGET]);
 }
 
 /**
- * gtk_label_get_mnemonic_widget:
+ * ctk_label_get_mnemonic_widget:
  * @label: a #GtkLabel
  *
  * Retrieves the target of the mnemonic (keyboard shortcut) of this
- * label. See gtk_label_set_mnemonic_widget().
+ * label. See ctk_label_set_mnemonic_widget().
  *
  * Returns: (nullable) (transfer none): the target of the label’s mnemonic,
  *     or %NULL if none has been set and the default algorithm will be used.
  **/
 GtkWidget *
-gtk_label_get_mnemonic_widget (GtkLabel *label)
+ctk_label_get_mnemonic_widget (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), NULL);
 
@@ -2116,7 +2116,7 @@ gtk_label_get_mnemonic_widget (GtkLabel *label)
 }
 
 /**
- * gtk_label_get_mnemonic_keyval:
+ * ctk_label_get_mnemonic_keyval:
  * @label: a #GtkLabel
  *
  * If the label has been set so that it has an mnemonic key this function
@@ -2126,7 +2126,7 @@ gtk_label_get_mnemonic_widget (GtkLabel *label)
  * Returns: GDK keyval usable for accelerators, or #GDK_KEY_VoidSymbol
  **/
 guint
-gtk_label_get_mnemonic_keyval (GtkLabel *label)
+ctk_label_get_mnemonic_keyval (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), GDK_KEY_VoidSymbol);
 
@@ -2134,7 +2134,7 @@ gtk_label_get_mnemonic_keyval (GtkLabel *label)
 }
 
 static void
-gtk_label_set_text_internal (GtkLabel *label,
+ctk_label_set_text_internal (GtkLabel *label,
                              gchar    *str)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -2145,17 +2145,17 @@ gtk_label_set_text_internal (GtkLabel *label,
       return;
     }
 
-  _gtk_label_accessible_text_deleted (label);
+  _ctk_label_accessible_text_deleted (label);
   g_free (priv->text);
   priv->text = str;
 
-  _gtk_label_accessible_text_inserted (label);
+  _ctk_label_accessible_text_inserted (label);
 
-  gtk_label_select_region_index (label, 0, 0);
+  ctk_label_select_region_index (label, 0, 0);
 }
 
 static void
-gtk_label_set_label_internal (GtkLabel *label,
+ctk_label_set_label_internal (GtkLabel *label,
 			      gchar    *str)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -2168,7 +2168,7 @@ gtk_label_set_label_internal (GtkLabel *label,
 }
 
 static gboolean
-gtk_label_set_use_markup_internal (GtkLabel *label,
+ctk_label_set_use_markup_internal (GtkLabel *label,
                                    gboolean  val)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -2187,7 +2187,7 @@ gtk_label_set_use_markup_internal (GtkLabel *label,
 }
 
 static gboolean
-gtk_label_set_use_underline_internal (GtkLabel *label,
+ctk_label_set_use_underline_internal (GtkLabel *label,
                                       gboolean  val)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -2209,17 +2209,17 @@ gtk_label_set_use_underline_internal (GtkLabel *label,
  * label, use_underline and use_markup
  */
 static void
-gtk_label_recalculate (GtkLabel *label)
+ctk_label_recalculate (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   guint keyval = priv->mnemonic_keyval;
 
-  gtk_label_clear_links (label);
+  ctk_label_clear_links (label);
 
   if (priv->use_markup)
-    gtk_label_set_markup_internal (label, priv->label, priv->use_underline);
+    ctk_label_set_markup_internal (label, priv->label, priv->use_underline);
   else if (priv->use_underline)
-    gtk_label_set_uline_text_internal (label, priv->label);
+    ctk_label_set_uline_text_internal (label, priv->label);
   else
     {
       if (!priv->pattern_set)
@@ -2228,7 +2228,7 @@ gtk_label_recalculate (GtkLabel *label)
             pango_attr_list_unref (priv->markup_attrs);
           priv->markup_attrs = NULL;
         }
-      gtk_label_set_text_internal (label, g_strdup (priv->label));
+      ctk_label_set_text_internal (label, g_strdup (priv->label));
     }
 
   if (!priv->use_underline)
@@ -2236,17 +2236,17 @@ gtk_label_recalculate (GtkLabel *label)
 
   if (keyval != priv->mnemonic_keyval)
     {
-      gtk_label_setup_mnemonic (label, keyval);
+      ctk_label_setup_mnemonic (label, keyval);
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_MNEMONIC_KEYVAL]);
     }
 
-  gtk_label_clear_layout (label);
-  gtk_label_clear_select_info (label);
-  gtk_widget_queue_resize (GTK_WIDGET (label));
+  ctk_label_clear_layout (label);
+  ctk_label_clear_select_info (label);
+  ctk_widget_queue_resize (GTK_WIDGET (label));
 }
 
 /**
- * gtk_label_set_text:
+ * ctk_label_set_text:
  * @label: a #GtkLabel
  * @str: The text you want to set
  *
@@ -2259,27 +2259,27 @@ gtk_label_recalculate (GtkLabel *label)
  * This function will set the #GtkLabel:use-markup property to %FALSE
  * as a side effect.
  *
- * See also: gtk_label_set_markup()
+ * See also: ctk_label_set_markup()
  **/
 void
-gtk_label_set_text (GtkLabel    *label,
+ctk_label_set_text (GtkLabel    *label,
 		    const gchar *str)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
   
   g_object_freeze_notify (G_OBJECT (label));
 
-  gtk_label_set_label_internal (label, g_strdup (str ? str : ""));
-  gtk_label_set_use_markup_internal (label, FALSE);
-  gtk_label_set_use_underline_internal (label, FALSE);
+  ctk_label_set_label_internal (label, g_strdup (str ? str : ""));
+  ctk_label_set_use_markup_internal (label, FALSE);
+  ctk_label_set_use_underline_internal (label, FALSE);
   
-  gtk_label_recalculate (label);
+  ctk_label_recalculate (label);
 
   g_object_thaw_notify (G_OBJECT (label));
 }
 
 /**
- * gtk_label_set_attributes:
+ * ctk_label_set_attributes:
  * @label: a #GtkLabel
  * @attrs: (nullable): a #PangoAttrList, or %NULL
  *
@@ -2294,7 +2294,7 @@ gtk_label_set_text (GtkLabel    *label,
  * to the label after the markup string is parsed.
  **/
 void
-gtk_label_set_attributes (GtkLabel         *label,
+ctk_label_set_attributes (GtkLabel         *label,
                           PangoAttrList    *attrs)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -2310,26 +2310,26 @@ gtk_label_set_attributes (GtkLabel         *label,
 
   g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_ATTRIBUTES]);
 
-  gtk_label_clear_layout (label);
-  gtk_widget_queue_resize (GTK_WIDGET (label));
+  ctk_label_clear_layout (label);
+  ctk_widget_queue_resize (GTK_WIDGET (label));
 }
 
 /**
- * gtk_label_get_attributes:
+ * ctk_label_get_attributes:
  * @label: a #GtkLabel
  *
  * Gets the attribute list that was set on the label using
- * gtk_label_set_attributes(), if any. This function does
+ * ctk_label_set_attributes(), if any. This function does
  * not reflect attributes that come from the labels markup
- * (see gtk_label_set_markup()). If you want to get the
+ * (see ctk_label_set_markup()). If you want to get the
  * effective attributes for the label, use
- * pango_layout_get_attribute (gtk_label_get_layout (label)).
+ * pango_layout_get_attribute (ctk_label_get_layout (label)).
  *
  * Returns: (nullable) (transfer none): the attribute list, or %NULL
  *     if none was set.
  **/
 PangoAttrList *
-gtk_label_get_attributes (GtkLabel *label)
+ctk_label_get_attributes (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), NULL);
 
@@ -2337,7 +2337,7 @@ gtk_label_get_attributes (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_label:
+ * ctk_label_set_label:
  * @label: a #GtkLabel
  * @str: the new text to set for the label
  *
@@ -2347,32 +2347,32 @@ gtk_label_get_attributes (GtkLabel *label)
  * #GtkLabel:use-markup properties.
  **/
 void
-gtk_label_set_label (GtkLabel    *label,
+ctk_label_set_label (GtkLabel    *label,
 		     const gchar *str)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
 
   g_object_freeze_notify (G_OBJECT (label));
 
-  gtk_label_set_label_internal (label, g_strdup (str ? str : ""));
-  gtk_label_recalculate (label);
+  ctk_label_set_label_internal (label, g_strdup (str ? str : ""));
+  ctk_label_recalculate (label);
 
   g_object_thaw_notify (G_OBJECT (label));
 }
 
 /**
- * gtk_label_get_label:
+ * ctk_label_get_label:
  * @label: a #GtkLabel
  *
  * Fetches the text from a label widget including any embedded
  * underlines indicating mnemonics and Pango markup. (See
- * gtk_label_get_text()).
+ * ctk_label_get_text()).
  *
  * Returns: the text of the label widget. This string is
  *   owned by the widget and must not be modified or freed.
  **/
 const gchar *
-gtk_label_get_label (GtkLabel *label)
+ctk_label_get_label (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), NULL);
 
@@ -2463,16 +2463,16 @@ start_element_handler (GMarkupParseContext  *context,
       link->uri = g_strdup (uri);
       link->title = g_strdup (title);
 
-      widget_node = gtk_widget_get_css_node (GTK_WIDGET (pdata->label));
-      link->cssnode = gtk_css_node_new ();
-      gtk_css_node_set_name (link->cssnode, I_("link"));
-      gtk_css_node_set_parent (link->cssnode, widget_node);
-      state = gtk_css_node_get_state (widget_node);
+      widget_node = ctk_widget_get_css_node (GTK_WIDGET (pdata->label));
+      link->cssnode = ctk_css_node_new ();
+      ctk_css_node_set_name (link->cssnode, I_("link"));
+      ctk_css_node_set_parent (link->cssnode, widget_node);
+      state = ctk_css_node_get_state (widget_node);
       if (visited)
         state |= GTK_STATE_FLAG_VISITED;
       else
         state |= GTK_STATE_FLAG_LINK;
-      gtk_css_node_set_state (link->cssnode, state);
+      ctk_css_node_set_state (link->cssnode, state);
       g_object_unref (link->cssnode);
 
       link->visited = visited;
@@ -2561,7 +2561,7 @@ xml_isspace (gchar c)
 static void
 link_free (GtkLabelLink *link)
 {
-  gtk_css_node_set_parent (link->cssnode, NULL);
+  ctk_css_node_set_parent (link->cssnode, NULL);
   g_free (link->uri);
   g_free (link->title);
   g_free (link);
@@ -2632,7 +2632,7 @@ failed:
 }
 
 static void
-gtk_label_ensure_has_tooltip (GtkLabel *label)
+ctk_label_ensure_has_tooltip (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   GList *l;
@@ -2648,11 +2648,11 @@ gtk_label_ensure_has_tooltip (GtkLabel *label)
         }
     }
 
-  gtk_widget_set_has_tooltip (GTK_WIDGET (label), has_tooltip);
+  ctk_widget_set_has_tooltip (GTK_WIDGET (label), has_tooltip);
 }
 
 static void
-gtk_label_set_markup_internal (GtkLabel    *label,
+ctk_label_set_markup_internal (GtkLabel    *label,
                                const gchar *str,
                                gboolean     with_uline)
 {
@@ -2677,10 +2677,10 @@ gtk_label_set_markup_internal (GtkLabel    *label,
 
   if (links)
     {
-      gtk_label_ensure_select_info (label);
+      ctk_label_ensure_select_info (label);
       priv->select_info->links = g_list_reverse (links);
-      _gtk_label_accessible_update_links (label);
-      gtk_label_ensure_has_tooltip (label);
+      _ctk_label_accessible_update_links (label);
+      ctk_label_ensure_has_tooltip (label);
     }
 
   if (with_uline)
@@ -2688,15 +2688,15 @@ gtk_label_set_markup_internal (GtkLabel    *label,
       gboolean enable_mnemonics = TRUE;
       gboolean auto_mnemonics = TRUE;
 
-      g_object_get (gtk_widget_get_settings (GTK_WIDGET (label)),
+      g_object_get (ctk_widget_get_settings (GTK_WIDGET (label)),
                     "gtk-enable-mnemonics", &enable_mnemonics,
                     NULL);
 
       if (!(enable_mnemonics && priv->mnemonics_visible &&
             (!auto_mnemonics ||
-             (gtk_widget_is_sensitive (GTK_WIDGET (label)) &&
+             (ctk_widget_is_sensitive (GTK_WIDGET (label)) &&
               (!priv->mnemonic_widget ||
-               gtk_widget_is_sensitive (priv->mnemonic_widget))))))
+               ctk_widget_is_sensitive (priv->mnemonic_widget))))))
         {
           gchar *tmp;
           gchar *pattern;
@@ -2749,7 +2749,7 @@ gtk_label_set_markup_internal (GtkLabel    *label,
   g_free (str_for_accel);
 
   if (text)
-    gtk_label_set_text_internal (label, text);
+    ctk_label_set_text_internal (label, text);
 
   if (attrs)
     {
@@ -2765,7 +2765,7 @@ gtk_label_set_markup_internal (GtkLabel    *label,
 }
 
 /**
- * gtk_label_set_markup:
+ * ctk_label_set_markup:
  * @label: a #GtkLabel
  * @str: a markup string (see [Pango markup format][PangoMarkupFormat])
  *
@@ -2777,13 +2777,13 @@ gtk_label_set_markup_internal (GtkLabel    *label,
  * g_markup_escape_text() or g_markup_printf_escaped():
  *
  * |[<!-- language="C" -->
- * GtkWidget *label = gtk_label_new (NULL);
+ * GtkWidget *label = ctk_label_new (NULL);
  * const char *str = "some text";
  * const char *format = "<span style=\"italic\">\%s</span>";
  * char *markup;
  *
  * markup = g_markup_printf_escaped (format, str);
- * gtk_label_set_markup (GTK_LABEL (label), markup);
+ * ctk_label_set_markup (GTK_LABEL (label), markup);
  * g_free (markup);
  * ]|
  *
@@ -2794,27 +2794,27 @@ gtk_label_set_markup_internal (GtkLabel    *label,
  * should also ensure that you set the #GtkLabel:use-markup property
  * accordingly.
  *
- * See also: gtk_label_set_text()
+ * See also: ctk_label_set_text()
  **/
 void
-gtk_label_set_markup (GtkLabel    *label,
+ctk_label_set_markup (GtkLabel    *label,
                       const gchar *str)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
 
   g_object_freeze_notify (G_OBJECT (label));
 
-  gtk_label_set_label_internal (label, g_strdup (str ? str : ""));
-  gtk_label_set_use_markup_internal (label, TRUE);
-  gtk_label_set_use_underline_internal (label, FALSE);
+  ctk_label_set_label_internal (label, g_strdup (str ? str : ""));
+  ctk_label_set_use_markup_internal (label, TRUE);
+  ctk_label_set_use_underline_internal (label, FALSE);
 
-  gtk_label_recalculate (label);
+  ctk_label_recalculate (label);
 
   g_object_thaw_notify (G_OBJECT (label));
 }
 
 /**
- * gtk_label_set_markup_with_mnemonic:
+ * ctk_label_set_markup_with_mnemonic:
  * @label: a #GtkLabel
  * @str: a markup string (see
  *     [Pango markup format][PangoMarkupFormat])
@@ -2826,38 +2826,38 @@ gtk_label_set_markup (GtkLabel    *label,
  * indicating that they represent a keyboard accelerator called a mnemonic.
  *
  * The mnemonic key can be used to activate another widget, chosen
- * automatically, or explicitly using gtk_label_set_mnemonic_widget().
+ * automatically, or explicitly using ctk_label_set_mnemonic_widget().
  */
 void
-gtk_label_set_markup_with_mnemonic (GtkLabel    *label,
+ctk_label_set_markup_with_mnemonic (GtkLabel    *label,
                                     const gchar *str)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
 
   g_object_freeze_notify (G_OBJECT (label));
 
-  gtk_label_set_label_internal (label, g_strdup (str ? str : ""));
-  gtk_label_set_use_markup_internal (label, TRUE);
-  gtk_label_set_use_underline_internal (label, TRUE);
+  ctk_label_set_label_internal (label, g_strdup (str ? str : ""));
+  ctk_label_set_use_markup_internal (label, TRUE);
+  ctk_label_set_use_underline_internal (label, TRUE);
 
-  gtk_label_recalculate (label);
+  ctk_label_recalculate (label);
 
   g_object_thaw_notify (G_OBJECT (label));
 }
 
 /**
- * gtk_label_get_text:
+ * ctk_label_get_text:
  * @label: a #GtkLabel
  * 
  * Fetches the text from a label widget, as displayed on the
  * screen. This does not include any embedded underlines
- * indicating mnemonics or Pango markup. (See gtk_label_get_label())
+ * indicating mnemonics or Pango markup. (See ctk_label_get_label())
  * 
  * Returns: the text in the label widget. This is the internal
  *   string used by the label, and must not be modified.
  **/
 const gchar *
-gtk_label_get_text (GtkLabel *label)
+ctk_label_get_text (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), NULL);
 
@@ -2865,7 +2865,7 @@ gtk_label_get_text (GtkLabel *label)
 }
 
 static PangoAttrList *
-gtk_label_pattern_to_attrs (GtkLabel      *label,
+ctk_label_pattern_to_attrs (GtkLabel      *label,
 			    const gchar   *pattern)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -2906,7 +2906,7 @@ gtk_label_pattern_to_attrs (GtkLabel      *label,
 }
 
 static void
-gtk_label_set_pattern_internal (GtkLabel    *label,
+ctk_label_set_pattern_internal (GtkLabel    *label,
 				const gchar *pattern,
                                 gboolean     is_mnemonic)
 {
@@ -2920,21 +2920,21 @@ gtk_label_set_pattern_internal (GtkLabel    *label,
 
   if (is_mnemonic)
     {
-      g_object_get (gtk_widget_get_settings (GTK_WIDGET (label)),
+      g_object_get (ctk_widget_get_settings (GTK_WIDGET (label)),
                     "gtk-enable-mnemonics", &enable_mnemonics,
                     NULL);
 
       if (enable_mnemonics && priv->mnemonics_visible && pattern &&
           (!auto_mnemonics ||
-           (gtk_widget_is_sensitive (GTK_WIDGET (label)) &&
+           (ctk_widget_is_sensitive (GTK_WIDGET (label)) &&
             (!priv->mnemonic_widget ||
-             gtk_widget_is_sensitive (priv->mnemonic_widget)))))
-        attrs = gtk_label_pattern_to_attrs (label, pattern);
+             ctk_widget_is_sensitive (priv->mnemonic_widget)))))
+        attrs = ctk_label_pattern_to_attrs (label, pattern);
       else
         attrs = NULL;
     }
   else
-    attrs = gtk_label_pattern_to_attrs (label, pattern);
+    attrs = ctk_label_pattern_to_attrs (label, pattern);
 
   if (priv->markup_attrs)
     pango_attr_list_unref (priv->markup_attrs);
@@ -2942,7 +2942,7 @@ gtk_label_set_pattern_internal (GtkLabel    *label,
 }
 
 /**
- * gtk_label_set_pattern:
+ * ctk_label_set_pattern:
  * @label: The #GtkLabel you want to set the pattern to.
  * @pattern: The pattern as described above.
  *
@@ -2952,7 +2952,7 @@ gtk_label_set_pattern_internal (GtkLabel    *label,
  * “Foo” and “Baz” but not “Bar”.
  */
 void
-gtk_label_set_pattern (GtkLabel	   *label,
+ctk_label_set_pattern (GtkLabel	   *label,
 		       const gchar *pattern)
 {
   GtkLabelPrivate *priv;
@@ -2965,31 +2965,31 @@ gtk_label_set_pattern (GtkLabel	   *label,
 
   if (pattern)
     {
-      gtk_label_set_pattern_internal (label, pattern, FALSE);
+      ctk_label_set_pattern_internal (label, pattern, FALSE);
       priv->pattern_set = TRUE;
     }
   else
-    gtk_label_recalculate (label);
+    ctk_label_recalculate (label);
 
-  gtk_label_clear_layout (label);
-  gtk_widget_queue_resize (GTK_WIDGET (label));
+  ctk_label_clear_layout (label);
+  ctk_widget_queue_resize (GTK_WIDGET (label));
 }
 
 
 /**
- * gtk_label_set_justify:
+ * ctk_label_set_justify:
  * @label: a #GtkLabel
  * @jtype: a #GtkJustification
  *
  * Sets the alignment of the lines in the text of the label relative to
  * each other. %GTK_JUSTIFY_LEFT is the default value when the widget is
- * first created with gtk_label_new(). If you instead want to set the
- * alignment of the label as a whole, use gtk_widget_set_halign() instead.
- * gtk_label_set_justify() has no effect on labels containing only a
+ * first created with ctk_label_new(). If you instead want to set the
+ * alignment of the label as a whole, use ctk_widget_set_halign() instead.
+ * ctk_label_set_justify() has no effect on labels containing only a
  * single line.
  */
 void
-gtk_label_set_justify (GtkLabel        *label,
+ctk_label_set_justify (GtkLabel        *label,
 		       GtkJustification jtype)
 {
   GtkLabelPrivate *priv;
@@ -3004,23 +3004,23 @@ gtk_label_set_justify (GtkLabel        *label,
       priv->jtype = jtype;
 
       /* No real need to be this drastic, but easier than duplicating the code */
-      gtk_label_clear_layout (label);
+      ctk_label_clear_layout (label);
       
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_JUSTIFY]);
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_widget_queue_resize (GTK_WIDGET (label));
     }
 }
 
 /**
- * gtk_label_get_justify:
+ * ctk_label_get_justify:
  * @label: a #GtkLabel
  *
- * Returns the justification of the label. See gtk_label_set_justify().
+ * Returns the justification of the label. See ctk_label_set_justify().
  *
  * Returns: #GtkJustification
  **/
 GtkJustification
-gtk_label_get_justify (GtkLabel *label)
+ctk_label_get_justify (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), 0);
 
@@ -3028,7 +3028,7 @@ gtk_label_get_justify (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_ellipsize:
+ * ctk_label_set_ellipsize:
  * @label: a #GtkLabel
  * @mode: a #PangoEllipsizeMode
  *
@@ -3038,7 +3038,7 @@ gtk_label_get_justify (GtkLabel *label)
  * Since: 2.6
  **/
 void
-gtk_label_set_ellipsize (GtkLabel          *label,
+ctk_label_set_ellipsize (GtkLabel          *label,
 			 PangoEllipsizeMode mode)
 {
   GtkLabelPrivate *priv;
@@ -3053,25 +3053,25 @@ gtk_label_set_ellipsize (GtkLabel          *label,
       priv->ellipsize = mode;
 
       /* No real need to be this drastic, but easier than duplicating the code */
-      gtk_label_clear_layout (label);
+      ctk_label_clear_layout (label);
 
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_ELLIPSIZE]);
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_widget_queue_resize (GTK_WIDGET (label));
     }
 }
 
 /**
- * gtk_label_get_ellipsize:
+ * ctk_label_get_ellipsize:
  * @label: a #GtkLabel
  *
- * Returns the ellipsizing position of the label. See gtk_label_set_ellipsize().
+ * Returns the ellipsizing position of the label. See ctk_label_set_ellipsize().
  *
  * Returns: #PangoEllipsizeMode
  *
  * Since: 2.6
  **/
 PangoEllipsizeMode
-gtk_label_get_ellipsize (GtkLabel *label)
+ctk_label_get_ellipsize (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), PANGO_ELLIPSIZE_NONE);
 
@@ -3079,7 +3079,7 @@ gtk_label_get_ellipsize (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_width_chars:
+ * ctk_label_set_width_chars:
  * @label: a #GtkLabel
  * @n_chars: the new desired width, in characters.
  * 
@@ -3088,7 +3088,7 @@ gtk_label_get_ellipsize (GtkLabel *label)
  * Since: 2.6
  **/
 void
-gtk_label_set_width_chars (GtkLabel *label,
+ctk_label_set_width_chars (GtkLabel *label,
 			   gint      n_chars)
 {
   GtkLabelPrivate *priv;
@@ -3101,23 +3101,23 @@ gtk_label_set_width_chars (GtkLabel *label,
     {
       priv->width_chars = n_chars;
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_WIDTH_CHARS]);
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_widget_queue_resize (GTK_WIDGET (label));
     }
 }
 
 /**
- * gtk_label_get_width_chars:
+ * ctk_label_get_width_chars:
  * @label: a #GtkLabel
  * 
  * Retrieves the desired width of @label, in characters. See
- * gtk_label_set_width_chars().
+ * ctk_label_set_width_chars().
  * 
  * Returns: the width of the label in characters.
  * 
  * Since: 2.6
  **/
 gint
-gtk_label_get_width_chars (GtkLabel *label)
+ctk_label_get_width_chars (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), -1);
 
@@ -3125,7 +3125,7 @@ gtk_label_get_width_chars (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_max_width_chars:
+ * ctk_label_set_max_width_chars:
  * @label: a #GtkLabel
  * @n_chars: the new desired maximum width, in characters.
  * 
@@ -3134,7 +3134,7 @@ gtk_label_get_width_chars (GtkLabel *label)
  * Since: 2.6
  **/
 void
-gtk_label_set_max_width_chars (GtkLabel *label,
+ctk_label_set_max_width_chars (GtkLabel *label,
 			       gint      n_chars)
 {
   GtkLabelPrivate *priv;
@@ -3148,23 +3148,23 @@ gtk_label_set_max_width_chars (GtkLabel *label,
       priv->max_width_chars = n_chars;
 
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_MAX_WIDTH_CHARS]);
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_widget_queue_resize (GTK_WIDGET (label));
     }
 }
 
 /**
- * gtk_label_get_max_width_chars:
+ * ctk_label_get_max_width_chars:
  * @label: a #GtkLabel
  * 
  * Retrieves the desired maximum width of @label, in characters. See
- * gtk_label_set_width_chars().
+ * ctk_label_set_width_chars().
  * 
  * Returns: the maximum width of the label in characters.
  * 
  * Since: 2.6
  **/
 gint
-gtk_label_get_max_width_chars (GtkLabel *label)
+ctk_label_get_max_width_chars (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), -1);
 
@@ -3172,7 +3172,7 @@ gtk_label_get_max_width_chars (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_line_wrap:
+ * ctk_label_set_line_wrap:
  * @label: a #GtkLabel
  * @wrap: the setting
  *
@@ -3184,10 +3184,10 @@ gtk_label_get_max_width_chars (GtkLabel *label)
  * wrap at its parent container’s width, because GTK+ widgets
  * conceptually can’t make their requisition depend on the parent
  * container’s size. For a label that wraps at a specific position,
- * set the label’s width using gtk_widget_set_size_request().
+ * set the label’s width using ctk_widget_set_size_request().
  **/
 void
-gtk_label_set_line_wrap (GtkLabel *label,
+ctk_label_set_line_wrap (GtkLabel *label,
 			 gboolean  wrap)
 {
   GtkLabelPrivate *priv;
@@ -3202,23 +3202,23 @@ gtk_label_set_line_wrap (GtkLabel *label,
     {
       priv->wrap = wrap;
 
-      gtk_label_clear_layout (label);
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_label_clear_layout (label);
+      ctk_widget_queue_resize (GTK_WIDGET (label));
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_WRAP]);
     }
 }
 
 /**
- * gtk_label_get_line_wrap:
+ * ctk_label_get_line_wrap:
  * @label: a #GtkLabel
  *
  * Returns whether lines in the label are automatically wrapped. 
- * See gtk_label_set_line_wrap().
+ * See ctk_label_set_line_wrap().
  *
  * Returns: %TRUE if the lines of the label are automatically wrapped.
  */
 gboolean
-gtk_label_get_line_wrap (GtkLabel *label)
+ctk_label_get_line_wrap (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), FALSE);
 
@@ -3226,18 +3226,18 @@ gtk_label_get_line_wrap (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_line_wrap_mode:
+ * ctk_label_set_line_wrap_mode:
  * @label: a #GtkLabel
  * @wrap_mode: the line wrapping mode
  *
- * If line wrapping is on (see gtk_label_set_line_wrap()) this controls how
+ * If line wrapping is on (see ctk_label_set_line_wrap()) this controls how
  * the line wrapping is done. The default is %PANGO_WRAP_WORD which means
  * wrap on word boundaries.
  *
  * Since: 2.10
  **/
 void
-gtk_label_set_line_wrap_mode (GtkLabel *label,
+ctk_label_set_line_wrap_mode (GtkLabel *label,
 			      PangoWrapMode wrap_mode)
 {
   GtkLabelPrivate *priv;
@@ -3251,22 +3251,22 @@ gtk_label_set_line_wrap_mode (GtkLabel *label,
       priv->wrap_mode = wrap_mode;
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_WRAP_MODE]);
 
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_widget_queue_resize (GTK_WIDGET (label));
     }
 }
 
 /**
- * gtk_label_get_line_wrap_mode:
+ * ctk_label_get_line_wrap_mode:
  * @label: a #GtkLabel
  *
- * Returns line wrap mode used by the label. See gtk_label_set_line_wrap_mode().
+ * Returns line wrap mode used by the label. See ctk_label_set_line_wrap_mode().
  *
  * Returns: %TRUE if the lines of the label are automatically wrapped.
  *
  * Since: 2.10
  */
 PangoWrapMode
-gtk_label_get_line_wrap_mode (GtkLabel *label)
+ctk_label_get_line_wrap_mode (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), FALSE);
 
@@ -3274,17 +3274,17 @@ gtk_label_get_line_wrap_mode (GtkLabel *label)
 }
 
 static void
-gtk_label_destroy (GtkWidget *widget)
+ctk_label_destroy (GtkWidget *widget)
 {
   GtkLabel *label = GTK_LABEL (widget);
 
-  gtk_label_set_mnemonic_widget (label, NULL);
+  ctk_label_set_mnemonic_widget (label, NULL);
 
-  GTK_WIDGET_CLASS (gtk_label_parent_class)->destroy (widget);
+  GTK_WIDGET_CLASS (ctk_label_parent_class)->destroy (widget);
 }
 
 static void
-gtk_label_finalize (GObject *object)
+ctk_label_finalize (GObject *object)
 {
   GtkLabel *label = GTK_LABEL (object);
   GtkLabelPrivate *priv = label->priv;
@@ -3302,22 +3302,22 @@ gtk_label_finalize (GObject *object)
       g_object_unref (priv->select_info->multipress_gesture);
     }
 
-  gtk_label_clear_links (label);
+  ctk_label_clear_links (label);
   g_free (priv->select_info);
 
   g_clear_object (&priv->gadget);
 
-  G_OBJECT_CLASS (gtk_label_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_label_parent_class)->finalize (object);
 }
 
 static void
-gtk_label_clear_layout (GtkLabel *label)
+ctk_label_clear_layout (GtkLabel *label)
 {
   g_clear_object (&label->priv->layout);
 }
 
 /**
- * gtk_label_get_measuring_layout:
+ * ctk_label_get_measuring_layout:
  * @label: the label
  * @existing_layout: %NULL or an existing layout already in use.
  * @width: the width to measure with in pango units, or -1 for infinite
@@ -3330,7 +3330,7 @@ gtk_label_clear_layout (GtkLabel *label)
  * Returns: a new reference to a pango layout
  **/
 static PangoLayout *
-gtk_label_get_measuring_layout (GtkLabel *   label,
+ctk_label_get_measuring_layout (GtkLabel *   label,
                                 PangoLayout *existing_layout,
                                 int          width)
 {
@@ -3349,7 +3349,7 @@ gtk_label_get_measuring_layout (GtkLabel *   label,
       g_object_unref (existing_layout);
     }
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
 
   if (pango_layout_get_width (priv->layout) == width)
     {
@@ -3361,7 +3361,7 @@ gtk_label_get_measuring_layout (GtkLabel *   label,
    * because we don't need it to be properly setup at that point.
    * This way we can make use of caching upon the label's creation.
    */
-  if (gtk_widget_get_allocated_width (GTK_WIDGET (label)) <= 1)
+  if (ctk_widget_get_allocated_width (GTK_WIDGET (label)) <= 1)
     {
       g_object_ref (priv->layout);
       pango_layout_set_width (priv->layout, width);
@@ -3388,7 +3388,7 @@ gtk_label_get_measuring_layout (GtkLabel *   label,
 }
 
 static void
-gtk_label_update_layout_width (GtkLabel *label)
+ctk_label_update_layout_width (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   GtkWidget *widget = GTK_WIDGET (label);
@@ -3402,9 +3402,9 @@ gtk_label_update_layout_width (GtkLabel *label)
       PangoRectangle logical;
       gint width, height;
 
-      gtk_css_gadget_get_content_allocation (priv->gadget, &allocation, NULL);
+      ctk_css_gadget_get_content_allocation (priv->gadget, &allocation, NULL);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      gtk_misc_get_padding (GTK_MISC (label), &xpad, &ypad);
+      ctk_misc_get_padding (GTK_MISC (label), &xpad, &ypad);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       width = allocation.width - 2 * xpad;
@@ -3412,7 +3412,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (priv->have_transform)
         {
-          PangoContext *context = gtk_widget_get_pango_context (widget);
+          PangoContext *context = ctk_widget_get_pango_context (widget);
           const PangoMatrix *matrix = pango_context_get_matrix (context);
           const gdouble dx = matrix->xx; /* cos (M_PI * angle / 180) */
           const gdouble dy = matrix->xy; /* sin (M_PI * angle / 180) */
@@ -3480,7 +3480,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-gtk_label_update_layout_attributes (GtkLabel *label)
+ctk_label_update_layout_attributes (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   GtkWidget *widget = GTK_WIDGET (label);
@@ -3491,7 +3491,7 @@ gtk_label_update_layout_attributes (GtkLabel *label)
   if (priv->layout == NULL)
     return;
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
   if (priv->select_info && priv->select_info->links)
     {
@@ -3510,9 +3510,9 @@ gtk_label_update_layout_attributes (GtkLabel *label)
           attribute->end_index = link->end;
           pango_attr_list_insert (attrs, attribute);
 
-          gtk_style_context_save_to_node (context, link->cssnode);
-          gtk_style_context_get_color (context, gtk_style_context_get_state (context), &link_color);
-          gtk_style_context_restore (context);
+          ctk_style_context_save_to_node (context, link->cssnode);
+          ctk_style_context_get_color (context, ctk_style_context_get_state (context), &link_color);
+          ctk_style_context_restore (context);
 
           attribute = pango_attr_foreground_new (link_color.red * 65535,
                                                  link_color.green * 65535,
@@ -3527,11 +3527,11 @@ gtk_label_update_layout_attributes (GtkLabel *label)
   else
     attrs = NULL;
 
-  style_attrs = _gtk_style_context_get_pango_attributes (context);
+  style_attrs = _ctk_style_context_get_pango_attributes (context);
 
-  attrs = _gtk_pango_attr_list_merge (attrs, style_attrs);
-  attrs = _gtk_pango_attr_list_merge (attrs, priv->markup_attrs);
-  attrs = _gtk_pango_attr_list_merge (attrs, priv->attrs);
+  attrs = _ctk_pango_attr_list_merge (attrs, style_attrs);
+  attrs = _ctk_pango_attr_list_merge (attrs, priv->markup_attrs);
+  attrs = _ctk_pango_attr_list_merge (attrs, priv->attrs);
 
   pango_layout_set_attributes (priv->layout, attrs);
 
@@ -3542,7 +3542,7 @@ gtk_label_update_layout_attributes (GtkLabel *label)
 }
 
 static void
-gtk_label_ensure_layout (GtkLabel *label)
+ctk_label_ensure_layout (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   GtkWidget *widget;
@@ -3550,12 +3550,12 @@ gtk_label_ensure_layout (GtkLabel *label)
 
   widget = GTK_WIDGET (label);
 
-  rtl = gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
+  rtl = ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
 
   if (!priv->layout)
     {
       PangoAlignment align = PANGO_ALIGN_LEFT; /* Quiet gcc */
-      gdouble angle = gtk_label_get_angle (label);
+      gdouble angle = ctk_label_get_angle (label);
 
       if (angle != 0.0 && !priv->select_info)
 	{
@@ -3567,21 +3567,21 @@ gtk_label_ensure_layout (GtkLabel *label)
 	   */
 	  pango_matrix_rotate (&matrix, angle);
 
-	  pango_context_set_matrix (gtk_widget_get_pango_context (widget), &matrix);
+	  pango_context_set_matrix (ctk_widget_get_pango_context (widget), &matrix);
 
 	  priv->have_transform = TRUE;
 	}
       else
 	{
 	  if (priv->have_transform)
-	    pango_context_set_matrix (gtk_widget_get_pango_context (widget), NULL);
+	    pango_context_set_matrix (ctk_widget_get_pango_context (widget), NULL);
 
 	  priv->have_transform = FALSE;
 	}
 
-      priv->layout = gtk_widget_create_pango_layout (widget, priv->text);
+      priv->layout = ctk_widget_create_pango_layout (widget, priv->text);
 
-      gtk_label_update_layout_attributes (label);
+      ctk_label_update_layout_attributes (label);
 
       switch (priv->jtype)
 	{
@@ -3609,17 +3609,17 @@ gtk_label_ensure_layout (GtkLabel *label)
       if (priv->lines > 0)
         pango_layout_set_height (priv->layout, - priv->lines);
 
-      gtk_label_update_layout_width (label);
+      ctk_label_update_layout_width (label);
     }
 }
 
 static GtkSizeRequestMode
-gtk_label_get_request_mode (GtkWidget *widget)
+ctk_label_get_request_mode (GtkWidget *widget)
 {
   GtkLabel *label = GTK_LABEL (widget);
   gdouble angle;
 
-  angle = gtk_label_get_angle (label);
+  angle = ctk_label_get_angle (label);
 
   if (label->priv->wrap)
     return (angle == 90 || angle == 270)
@@ -3641,7 +3641,7 @@ get_size_for_allocation (GtkLabel *label,
   PangoLayout *layout;
   gint text_height, baseline;
 
-  layout = gtk_label_get_measuring_layout (label, NULL, allocation * PANGO_SCALE);
+  layout = ctk_label_get_measuring_layout (label, NULL, allocation * PANGO_SCALE);
 
   pango_layout_get_pixel_size (layout, NULL, &text_height);
 
@@ -3678,7 +3678,7 @@ get_char_pixels (GtkWidget   *label,
 }
 
 static void
-gtk_label_get_preferred_layout_size (GtkLabel *label,
+ctk_label_get_preferred_layout_size (GtkLabel *label,
                                      PangoRectangle *smallest,
                                      PangoRectangle *widest)
 {
@@ -3699,11 +3699,11 @@ gtk_label_get_preferred_layout_size (GtkLabel *label,
    *
    *    For wrapping labels; A reasonable minimum size is useful to naturally layout
    *    interfaces automatically. In this case if no "width-chars" is specified, the minimum
-   *    width will default to the wrap guess that gtk_label_ensure_layout() does.
+   *    width will default to the wrap guess that ctk_label_ensure_layout() does.
    */
 
   /* Start off with the pixel extents of an as-wide-as-possible layout */
-  layout = gtk_label_get_measuring_layout (label, NULL, -1);
+  layout = ctk_label_get_measuring_layout (label, NULL, -1);
 
   if (priv->width_chars > -1 || priv->max_width_chars > -1)
     char_pixels = get_char_pixels (GTK_WIDGET (label), layout);
@@ -3717,7 +3717,7 @@ gtk_label_get_preferred_layout_size (GtkLabel *label,
   if (priv->ellipsize || priv->wrap)
     {
       /* a layout with width 0 will be as small as humanly possible */
-      layout = gtk_label_get_measuring_layout (label,
+      layout = ctk_label_get_measuring_layout (label,
                                                layout,
                                                priv->width_chars > -1 ? char_pixels * priv->width_chars
                                                                       : 0);
@@ -3728,7 +3728,7 @@ gtk_label_get_preferred_layout_size (GtkLabel *label,
 
       if (priv->max_width_chars > -1 && widest->width > char_pixels * priv->max_width_chars)
         {
-          layout = gtk_label_get_measuring_layout (label,
+          layout = ctk_label_get_measuring_layout (label,
                                                    layout,
                                                    MAX (smallest->width, char_pixels * priv->max_width_chars));
           pango_layout_get_extents (layout, NULL, widest);
@@ -3748,7 +3748,7 @@ gtk_label_get_preferred_layout_size (GtkLabel *label,
 }
 
 static void
-gtk_label_get_preferred_size (GtkWidget      *widget,
+ctk_label_get_preferred_size (GtkWidget      *widget,
                               GtkOrientation  orientation,
                               gint           *minimum_size,
                               gint           *natural_size,
@@ -3762,10 +3762,10 @@ gtk_label_get_preferred_size (GtkWidget      *widget,
   PangoRectangle smallest_rect;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_misc_get_padding (GTK_MISC (label), &xpad, &ypad);
+  ctk_misc_get_padding (GTK_MISC (label), &xpad, &ypad);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  gtk_label_get_preferred_layout_size (label, &smallest_rect, &widest_rect);
+  ctk_label_get_preferred_layout_size (label, &smallest_rect, &widest_rect);
 
   /* Now that we have minimum and natural sizes in pango extents, apply a possible transform */
   if (priv->have_transform)
@@ -3875,7 +3875,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-gtk_label_measure (GtkCssGadget   *gadget,
+ctk_label_measure (GtkCssGadget   *gadget,
                    GtkOrientation  orientation,
                    int             for_size,
                    int            *minimum,
@@ -3889,12 +3889,12 @@ gtk_label_measure (GtkCssGadget   *gadget,
   GtkLabelPrivate *priv;
   gint xpad, ypad;
 
-  widget = gtk_css_gadget_get_owner (gadget);
+  widget = ctk_css_gadget_get_owner (gadget);
   label = GTK_LABEL (widget);
   priv = label->priv;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_misc_get_padding (GTK_MISC (label), &xpad, &ypad);
+  ctk_misc_get_padding (GTK_MISC (label), &xpad, &ypad);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   if ((orientation == GTK_ORIENTATION_VERTICAL && for_size != -1 && priv->wrap && (priv->angle == 0 || priv->angle == 180 || priv->angle == 360)) ||
@@ -3903,7 +3903,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       gint size;
 
       if (priv->wrap)
-        gtk_label_clear_layout (label);
+        ctk_label_clear_layout (label);
 
       if (orientation == GTK_ORIENTATION_HORIZONTAL)
         size = MAX (1, for_size) - 2 * ypad;
@@ -3924,15 +3924,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         }
     }
   else
-    gtk_label_get_preferred_size (widget, orientation, minimum, natural, minimum_baseline, natural_baseline);
+    ctk_label_get_preferred_size (widget, orientation, minimum, natural, minimum_baseline, natural_baseline);
 }
 
 static void
-gtk_label_get_preferred_width (GtkWidget *widget,
+ctk_label_get_preferred_width (GtkWidget *widget,
                                gint      *minimum_size,
                                gint      *natural_size)
 {
-  gtk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
                                      GTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum_size, natural_size,
@@ -3940,11 +3940,11 @@ gtk_label_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-gtk_label_get_preferred_height (GtkWidget *widget,
+ctk_label_get_preferred_height (GtkWidget *widget,
                                 gint      *minimum_size,
                                 gint      *natural_size)
 {
-  gtk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
                                      GTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum_size, natural_size,
@@ -3952,12 +3952,12 @@ gtk_label_get_preferred_height (GtkWidget *widget,
 }
 
 static void
-gtk_label_get_preferred_width_for_height (GtkWidget *widget,
+ctk_label_get_preferred_width_for_height (GtkWidget *widget,
                                           gint       height,
                                           gint      *minimum_width,
                                           gint      *natural_width)
 {
-  gtk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
                                      GTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum_width, natural_width,
@@ -3965,12 +3965,12 @@ gtk_label_get_preferred_width_for_height (GtkWidget *widget,
 }
 
 static void
-gtk_label_get_preferred_height_for_width (GtkWidget *widget,
+ctk_label_get_preferred_height_for_width (GtkWidget *widget,
                                           gint       width,
                                           gint      *minimum_height,
                                           gint      *natural_height)
 {
-  gtk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
                                      GTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum_height, natural_height,
@@ -3978,14 +3978,14 @@ gtk_label_get_preferred_height_for_width (GtkWidget *widget,
 }
 
 static void
-gtk_label_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
+ctk_label_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 						       gint       width,
 						       gint      *minimum_height,
 						       gint      *natural_height,
 						       gint      *minimum_baseline,
 						       gint      *natural_baseline)
 {
-  gtk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
+  ctk_css_gadget_get_preferred_size (GTK_LABEL (widget)->priv->gadget,
                                      GTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum_height, natural_height,
@@ -4014,17 +4014,17 @@ get_layout_location (GtkLabel  *label,
   yalign = priv->yalign;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_misc_get_padding (GTK_MISC (label), &xpad, &ypad);
+  ctk_misc_get_padding (GTK_MISC (label), &xpad, &ypad);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  if (gtk_widget_get_direction (widget) != GTK_TEXT_DIR_LTR)
+  if (ctk_widget_get_direction (widget) != GTK_TEXT_DIR_LTR)
     xalign = 1.0 - xalign;
 
   pango_layout_get_extents (priv->layout, NULL, &logical);
 
   if (priv->have_transform)
     {
-      PangoContext *context = gtk_widget_get_pango_context (widget);
+      PangoContext *context = ctk_widget_get_pango_context (widget);
       const PangoMatrix *matrix = pango_context_get_matrix (context);
       pango_matrix_transform_rectangle (matrix, &logical);
     }
@@ -4037,7 +4037,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   req_width  += 2 * xpad;
   req_height += 2 * ypad;
 
-  gtk_css_gadget_get_content_allocation (priv->gadget,
+  ctk_css_gadget_get_content_allocation (priv->gadget,
                                          &allocation,
                                          &baseline);
 
@@ -4077,7 +4077,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-gtk_label_get_ink_rect (GtkLabel     *label,
+ctk_label_get_ink_rect (GtkLabel     *label,
                         GdkRectangle *rect)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -4086,11 +4086,11 @@ gtk_label_get_ink_rect (GtkLabel     *label,
   GtkBorder extents;
   int x, y;
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
   get_layout_location (label, &x, &y);
   pango_layout_get_pixel_extents (priv->layout, &ink_rect, NULL);
-  context = gtk_widget_get_style_context (GTK_WIDGET (label));
-  _gtk_css_shadows_value_get_extents (_gtk_style_context_peek_property (context, GTK_CSS_PROPERTY_TEXT_SHADOW), &extents);
+  context = ctk_widget_get_style_context (GTK_WIDGET (label));
+  _ctk_css_shadows_value_get_extents (_ctk_style_context_peek_property (context, GTK_CSS_PROPERTY_TEXT_SHADOW), &extents);
 
   rect->x = x + ink_rect.x - extents.left;
   rect->width = ink_rect.width + extents.left + extents.right;
@@ -4099,22 +4099,22 @@ gtk_label_get_ink_rect (GtkLabel     *label,
 }
 
 static void
-gtk_label_size_allocate (GtkWidget     *widget,
+ctk_label_size_allocate (GtkWidget     *widget,
                          GtkAllocation *allocation)
 {
   GtkLabel *label = GTK_LABEL (widget);
   GtkLabelPrivate *priv = label->priv;
   GdkRectangle clip_rect, clip;
 
-  GTK_WIDGET_CLASS (gtk_label_parent_class)->size_allocate (widget, allocation);
+  GTK_WIDGET_CLASS (ctk_label_parent_class)->size_allocate (widget, allocation);
 
-  gtk_css_gadget_allocate (priv->gadget,
+  ctk_css_gadget_allocate (priv->gadget,
                            allocation,
-                           gtk_widget_get_allocated_baseline (widget),
+                           ctk_widget_get_allocated_baseline (widget),
                            &clip);
 
   if (priv->layout)
-    gtk_label_update_layout_width (label);
+    ctk_label_update_layout_width (label);
 
   if (priv->select_info && priv->select_info->window)
     gdk_window_move_resize (priv->select_info->window,
@@ -4123,13 +4123,13 @@ gtk_label_size_allocate (GtkWidget     *widget,
                             allocation->width,
                             allocation->height);
 
-  gtk_label_get_ink_rect (label, &clip_rect);
+  ctk_label_get_ink_rect (label, &clip_rect);
   gdk_rectangle_union (&clip_rect, &clip, &clip_rect);
-  _gtk_widget_set_simple_clip (widget, &clip_rect);
+  _ctk_widget_set_simple_clip (widget, &clip_rect);
 }
 
 static void
-gtk_label_update_cursor (GtkLabel *label)
+ctk_label_update_cursor (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   GtkWidget *widget;
@@ -4139,14 +4139,14 @@ gtk_label_update_cursor (GtkLabel *label)
 
   widget = GTK_WIDGET (label);
 
-  if (gtk_widget_get_realized (widget))
+  if (ctk_widget_get_realized (widget))
     {
       GdkDisplay *display;
       GdkCursor *cursor;
 
-      if (gtk_widget_is_sensitive (widget))
+      if (ctk_widget_is_sensitive (widget))
         {
-          display = gtk_widget_get_display (widget);
+          display = ctk_widget_get_display (widget);
 
           if (priv->select_info->active_link)
             cursor = gdk_cursor_new_from_name (display, "pointer");
@@ -4179,7 +4179,7 @@ update_link_state (GtkLabel *label)
     {
       GtkLabelLink *link = l->data;
 
-      state = gtk_widget_get_state_flags (GTK_WIDGET (label));
+      state = ctk_widget_get_state_flags (GTK_WIDGET (label));
       if (link->visited)
         state |= GTK_STATE_FLAG_VISITED;
       else
@@ -4191,12 +4191,12 @@ update_link_state (GtkLabel *label)
           else
             state |= GTK_STATE_FLAG_PRELIGHT;
         }
-      gtk_css_node_set_state (link->cssnode, state);
+      ctk_css_node_set_state (link->cssnode, state);
     }
 }
 
 static void
-gtk_label_state_flags_changed (GtkWidget     *widget,
+ctk_label_state_flags_changed (GtkWidget     *widget,
                                GtkStateFlags  prev_state)
 {
   GtkLabel *label = GTK_LABEL (widget);
@@ -4204,33 +4204,33 @@ gtk_label_state_flags_changed (GtkWidget     *widget,
 
   if (priv->select_info)
     {
-      if (!gtk_widget_is_sensitive (widget))
-        gtk_label_select_region (label, 0, 0);
+      if (!ctk_widget_is_sensitive (widget))
+        ctk_label_select_region (label, 0, 0);
 
-      gtk_label_update_cursor (label);
+      ctk_label_update_cursor (label);
       update_link_state (label);
     }
 
-  if (GTK_WIDGET_CLASS (gtk_label_parent_class)->state_flags_changed)
-    GTK_WIDGET_CLASS (gtk_label_parent_class)->state_flags_changed (widget, prev_state);
+  if (GTK_WIDGET_CLASS (ctk_label_parent_class)->state_flags_changed)
+    GTK_WIDGET_CLASS (ctk_label_parent_class)->state_flags_changed (widget, prev_state);
 }
 
 static void 
-gtk_label_style_updated (GtkWidget *widget)
+ctk_label_style_updated (GtkWidget *widget)
 {
   GtkLabel *label = GTK_LABEL (widget);
   GtkLabelPrivate *priv = label->priv;
   GtkStyleContext *context;
   GtkCssStyleChange *change;
 
-  GTK_WIDGET_CLASS (gtk_label_parent_class)->style_updated (widget);
+  GTK_WIDGET_CLASS (ctk_label_parent_class)->style_updated (widget);
 
-  context = gtk_widget_get_style_context (widget);
-  change = gtk_style_context_get_change (context);
+  context = ctk_widget_get_style_context (widget);
+  change = ctk_style_context_get_change (context);
 
-  if (change == NULL || gtk_css_style_change_affects (change, GTK_CSS_AFFECTS_TEXT_ATTRS) ||
+  if (change == NULL || ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_TEXT_ATTRS) ||
       (priv->select_info && priv->select_info->links))
-    gtk_label_update_layout_attributes (label);
+    ctk_label_update_layout_attributes (label);
 }
 
 static PangoDirection
@@ -4241,7 +4241,7 @@ get_cursor_direction (GtkLabel *label)
 
   g_assert (priv->select_info);
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
 
   for (l = pango_layout_get_lines_readonly (priv->layout); l; l = l->next)
     {
@@ -4262,7 +4262,7 @@ get_cursor_direction (GtkLabel *label)
 }
 
 static GtkLabelLink *
-gtk_label_get_focus_link (GtkLabel *label)
+ctk_label_get_focus_link (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   GtkLabelSelectionInfo *info = priv->select_info;
@@ -4286,10 +4286,10 @@ gtk_label_get_focus_link (GtkLabel *label)
 }
 
 static gboolean
-gtk_label_draw (GtkWidget *widget,
+ctk_label_draw (GtkWidget *widget,
                 cairo_t   *cr)
 {
-  gtk_css_gadget_draw (GTK_LABEL (widget)->priv->gadget, cr);
+  ctk_css_gadget_draw (GTK_LABEL (widget)->priv->gadget, cr);
 
   return FALSE;
 }
@@ -4299,7 +4299,7 @@ static void layout_to_window_coords (GtkLabel *label,
                                      gint     *y);
 
 static gboolean
-gtk_label_render (GtkCssGadget *gadget,
+ctk_label_render (GtkCssGadget *gadget,
                   cairo_t      *cr,
                   int           x,
                   int           y,
@@ -4314,20 +4314,20 @@ gtk_label_render (GtkCssGadget *gadget,
   GtkStyleContext *context;
   gint lx, ly;
 
-  widget = gtk_css_gadget_get_owner (gadget);
+  widget = ctk_css_gadget_get_owner (gadget);
   label = GTK_LABEL (widget);
   priv = label->priv;
   info = priv->select_info;
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
 
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
   if (GTK_IS_ACCEL_LABEL (widget))
     {
-      guint ac_width = gtk_accel_label_get_accel_width (GTK_ACCEL_LABEL (widget));
+      guint ac_width = ctk_accel_label_get_accel_width (GTK_ACCEL_LABEL (widget));
       width -= ac_width;
-      if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+      if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
         x += ac_width;
     }
 
@@ -4336,7 +4336,7 @@ gtk_label_render (GtkCssGadget *gadget,
       lx = ly = 0;
       layout_to_window_coords (label, &lx, &ly);
 
-      gtk_render_layout (context, cr, lx, ly, priv->layout);
+      ctk_render_layout (context, cr, lx, ly, priv->layout);
 
       if (info && (info->selection_anchor != info->selection_end))
         {
@@ -4356,15 +4356,15 @@ gtk_label_render (GtkCssGadget *gadget,
           clip = gdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
 
           cairo_save (cr);
-          gtk_style_context_save_to_node (context, info->selection_node);
+          ctk_style_context_save_to_node (context, info->selection_node);
 
           gdk_cairo_region (cr, clip);
           cairo_clip (cr);
 
-          gtk_render_background (context, cr, x, y, width, height);
-          gtk_render_layout (context, cr, lx, ly, priv->layout);
+          ctk_render_background (context, cr, x, y, width, height);
+          ctk_render_layout (context, cr, lx, ly, priv->layout);
 
-          gtk_style_context_restore (context);
+          ctk_style_context_restore (context);
           cairo_restore (cr);
           cairo_region_destroy (clip);
         }
@@ -4377,19 +4377,19 @@ gtk_label_render (GtkCssGadget *gadget,
           GdkRectangle rect;
 
           if (info->selectable &&
-              gtk_widget_has_focus (widget) &&
-              gtk_widget_is_drawable (widget))
+              ctk_widget_has_focus (widget) &&
+              ctk_widget_is_drawable (widget))
             {
               PangoDirection cursor_direction;
 
               cursor_direction = get_cursor_direction (label);
-              gtk_render_insertion_cursor (context, cr,
+              ctk_render_insertion_cursor (context, cr,
                                            lx, ly,
                                            priv->layout, priv->select_info->selection_end,
                                            cursor_direction);
             }
 
-          focus_link = gtk_label_get_focus_link (label);
+          focus_link = ctk_label_get_focus_link (label);
           active_link = info->active_link;
 
           if (active_link)
@@ -4398,7 +4398,7 @@ gtk_label_render (GtkCssGadget *gadget,
               range[1] = active_link->end;
 
               cairo_save (cr);
-              gtk_style_context_save_to_node (context, active_link->cssnode);
+              ctk_style_context_save_to_node (context, active_link->cssnode);
 
               clip = gdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
 
@@ -4406,14 +4406,14 @@ gtk_label_render (GtkCssGadget *gadget,
               cairo_clip (cr);
               cairo_region_destroy (clip);
 
-              gtk_render_background (context, cr, x, y, width, height);
-              gtk_render_layout (context, cr, lx, ly, priv->layout);
+              ctk_render_background (context, cr, x, y, width, height);
+              ctk_render_layout (context, cr, lx, ly, priv->layout);
 
-              gtk_style_context_restore (context);
+              ctk_style_context_restore (context);
               cairo_restore (cr);
             }
 
-          if (focus_link && gtk_widget_has_visible_focus (widget))
+          if (focus_link && ctk_widget_has_visible_focus (widget))
             {
               range[0] = focus_link->start;
               range[1] = focus_link->end;
@@ -4421,7 +4421,7 @@ gtk_label_render (GtkCssGadget *gadget,
               clip = gdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
               cairo_region_get_extents (clip, &rect);
 
-              gtk_render_focus (context, cr, rect.x, rect.y, rect.width, rect.height);
+              ctk_render_focus (context, cr, rect.x, rect.y, rect.width, rect.height);
 
               cairo_region_destroy (clip);
             }
@@ -4508,7 +4508,7 @@ separate_uline_pattern (const gchar  *str,
 }
 
 static void
-gtk_label_set_uline_text_internal (GtkLabel    *label,
+ctk_label_set_uline_text_internal (GtkLabel    *label,
 				   const gchar *str)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -4525,15 +4525,15 @@ gtk_label_set_uline_text_internal (GtkLabel    *label,
   if (!separate_uline_pattern (str, &accel_key, &new_str, &pattern))
     return;
 
-  gtk_label_set_text_internal (label, new_str);
-  gtk_label_set_pattern_internal (label, pattern, TRUE);
+  ctk_label_set_text_internal (label, new_str);
+  ctk_label_set_pattern_internal (label, pattern, TRUE);
   priv->mnemonic_keyval = accel_key;
 
   g_free (pattern);
 }
 
 /**
- * gtk_label_set_text_with_mnemonic:
+ * ctk_label_set_text_with_mnemonic:
  * @label: a #GtkLabel
  * @str: a string
  * 
@@ -4541,10 +4541,10 @@ gtk_label_set_uline_text_internal (GtkLabel    *label,
  * If characters in @str are preceded by an underscore, they are underlined
  * indicating that they represent a keyboard accelerator called a mnemonic.
  * The mnemonic key can be used to activate another widget, chosen 
- * automatically, or explicitly using gtk_label_set_mnemonic_widget().
+ * automatically, or explicitly using ctk_label_set_mnemonic_widget().
  **/
 void
-gtk_label_set_text_with_mnemonic (GtkLabel    *label,
+ctk_label_set_text_with_mnemonic (GtkLabel    *label,
 				  const gchar *str)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
@@ -4552,53 +4552,53 @@ gtk_label_set_text_with_mnemonic (GtkLabel    *label,
 
   g_object_freeze_notify (G_OBJECT (label));
 
-  gtk_label_set_label_internal (label, g_strdup (str));
-  gtk_label_set_use_markup_internal (label, FALSE);
-  gtk_label_set_use_underline_internal (label, TRUE);
+  ctk_label_set_label_internal (label, g_strdup (str));
+  ctk_label_set_use_markup_internal (label, FALSE);
+  ctk_label_set_use_underline_internal (label, TRUE);
   
-  gtk_label_recalculate (label);
+  ctk_label_recalculate (label);
 
   g_object_thaw_notify (G_OBJECT (label));
 }
 
 static void
-gtk_label_realize (GtkWidget *widget)
+ctk_label_realize (GtkWidget *widget)
 {
   GtkLabel *label = GTK_LABEL (widget);
   GtkLabelPrivate *priv = label->priv;
 
-  GTK_WIDGET_CLASS (gtk_label_parent_class)->realize (widget);
+  GTK_WIDGET_CLASS (ctk_label_parent_class)->realize (widget);
 
   if (priv->select_info)
-    gtk_label_create_window (label);
+    ctk_label_create_window (label);
 }
 
 static void
-gtk_label_unrealize (GtkWidget *widget)
+ctk_label_unrealize (GtkWidget *widget)
 {
   GtkLabel *label = GTK_LABEL (widget);
   GtkLabelPrivate *priv = label->priv;
 
   if (priv->select_info)
-    gtk_label_destroy_window (label);
+    ctk_label_destroy_window (label);
 
-  GTK_WIDGET_CLASS (gtk_label_parent_class)->unrealize (widget);
+  GTK_WIDGET_CLASS (ctk_label_parent_class)->unrealize (widget);
 }
 
 static void
-gtk_label_map (GtkWidget *widget)
+ctk_label_map (GtkWidget *widget)
 {
   GtkLabel *label = GTK_LABEL (widget);
   GtkLabelPrivate *priv = label->priv;
 
-  GTK_WIDGET_CLASS (gtk_label_parent_class)->map (widget);
+  GTK_WIDGET_CLASS (ctk_label_parent_class)->map (widget);
 
   if (priv->select_info)
     gdk_window_show (priv->select_info->window);
 }
 
 static void
-gtk_label_unmap (GtkWidget *widget)
+ctk_label_unmap (GtkWidget *widget)
 {
   GtkLabel *label = GTK_LABEL (widget);
   GtkLabelPrivate *priv = label->priv;
@@ -4609,12 +4609,12 @@ gtk_label_unmap (GtkWidget *widget)
 
       if (priv->select_info->popup_menu)
         {
-          gtk_widget_destroy (priv->select_info->popup_menu);
+          ctk_widget_destroy (priv->select_info->popup_menu);
           priv->select_info->popup_menu = NULL;
         }
     }
 
-  GTK_WIDGET_CLASS (gtk_label_parent_class)->unmap (widget);
+  GTK_WIDGET_CLASS (ctk_label_parent_class)->unmap (widget);
 }
 
 static void
@@ -4627,7 +4627,7 @@ window_to_layout_coords (GtkLabel *label,
 
   /* get layout location in widget->window coords */
   get_layout_location (label, &lx, &ly);
-  gtk_widget_get_allocation (GTK_WIDGET (label), &allocation);
+  ctk_widget_get_allocation (GTK_WIDGET (label), &allocation);
 
   *x += allocation.x; /* go to widget->window */
   *x -= lx;                   /* go to layout */
@@ -4646,7 +4646,7 @@ layout_to_window_coords (GtkLabel *label,
 
   /* get layout location in widget->window coords */
   get_layout_location (label, &lx, &ly);
-  gtk_widget_get_allocation (GTK_WIDGET (label), &allocation);
+  ctk_widget_get_allocation (GTK_WIDGET (label), &allocation);
 
   *x += lx;           /* go to widget->window */
   *x -= allocation.x; /* go to selection window */
@@ -4669,7 +4669,7 @@ get_layout_index (GtkLabel *label,
 
   *index = 0;
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
 
   window_to_layout_coords (label, &x, &y);
 
@@ -4707,7 +4707,7 @@ range_is_in_ellipsis_full (GtkLabel *label,
   if (!priv->ellipsize)
     return FALSE;
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
 
   if (!pango_layout_is_ellipsized (priv->layout))
     return FALSE;
@@ -4757,13 +4757,13 @@ range_is_in_ellipsis (GtkLabel *label,
 }
 
 static void
-gtk_label_select_word (GtkLabel *label)
+ctk_label_select_word (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   gint min, max;
 
-  gint start_index = gtk_label_move_backward_word (label, priv->select_info->selection_end);
-  gint end_index = gtk_label_move_forward_word (label, priv->select_info->selection_end);
+  gint start_index = ctk_label_move_backward_word (label, priv->select_info->selection_end);
+  gint end_index = ctk_label_move_forward_word (label, priv->select_info->selection_end);
 
   min = MIN (priv->select_info->selection_anchor,
 	     priv->select_info->selection_end);
@@ -4773,11 +4773,11 @@ gtk_label_select_word (GtkLabel *label)
   min = MIN (min, start_index);
   max = MAX (max, end_index);
 
-  gtk_label_select_region_index (label, min, max);
+  ctk_label_select_region_index (label, min, max);
 }
 
 static void
-gtk_label_grab_focus (GtkWidget *widget)
+ctk_label_grab_focus (GtkWidget *widget)
 {
   GtkLabel *label = GTK_LABEL (widget);
   GtkLabelPrivate *priv = label->priv;
@@ -4788,17 +4788,17 @@ gtk_label_grab_focus (GtkWidget *widget)
   if (priv->select_info == NULL)
     return;
 
-  GTK_WIDGET_CLASS (gtk_label_parent_class)->grab_focus (widget);
+  GTK_WIDGET_CLASS (ctk_label_parent_class)->grab_focus (widget);
 
   if (priv->select_info->selectable)
     {
-      g_object_get (gtk_widget_get_settings (widget),
+      g_object_get (ctk_widget_get_settings (widget),
                     "gtk-label-select-on-focus",
                     &select_on_focus,
                     NULL);
 
       if (select_on_focus && !priv->in_click)
-        gtk_label_select_region (label, 0, -1);
+        ctk_label_select_region (label, 0, -1);
     }
   else
     {
@@ -4811,7 +4811,7 @@ gtk_label_grab_focus (GtkWidget *widget)
                 {
                   priv->select_info->selection_anchor = link->start;
                   priv->select_info->selection_end = link->start;
-                  _gtk_label_accessible_focus_link_changed (label);
+                  _ctk_label_accessible_focus_link_changed (label);
                   break;
                 }
             }
@@ -4820,7 +4820,7 @@ gtk_label_grab_focus (GtkWidget *widget)
 }
 
 static gboolean
-gtk_label_focus (GtkWidget        *widget,
+ctk_label_focus (GtkWidget        *widget,
                  GtkDirectionType  direction)
 {
   GtkLabel *label = GTK_LABEL (widget);
@@ -4829,12 +4829,12 @@ gtk_label_focus (GtkWidget        *widget,
   GtkLabelLink *focus_link;
   GList *l;
 
-  if (!gtk_widget_is_focus (widget))
+  if (!ctk_widget_is_focus (widget))
     {
-      gtk_widget_grab_focus (widget);
+      ctk_widget_grab_focus (widget);
       if (info)
         {
-          focus_link = gtk_label_get_focus_link (label);
+          focus_link = ctk_label_get_focus_link (label);
           if (focus_link && direction == GTK_DIR_TAB_BACKWARD)
             {
               for (l = g_list_last (info->links); l; l = l->prev)
@@ -4844,7 +4844,7 @@ gtk_label_focus (GtkWidget        *widget,
                     {
                       info->selection_anchor = focus_link->start;
                       info->selection_end = focus_link->start;
-                      _gtk_label_accessible_focus_link_changed (label);
+                      _ctk_label_accessible_focus_link_changed (label);
                     }
                 }
             }
@@ -4874,8 +4874,8 @@ gtk_label_focus (GtkWidget        *widget,
               {
                 if (!range_is_in_ellipsis (label, link->start, link->end))
                   {
-                    gtk_label_select_region_index (label, link->start, link->start);
-                    _gtk_label_accessible_focus_link_changed (label);
+                    ctk_label_select_region_index (label, link->start, link->start);
+                    _ctk_label_accessible_focus_link_changed (label);
                     return TRUE;
                   }
               }
@@ -4889,8 +4889,8 @@ gtk_label_focus (GtkWidget        *widget,
               {
                 if (!range_is_in_ellipsis (label, link->start, link->end))
                   {
-                    gtk_label_select_region_index (label, link->start, link->start);
-                    _gtk_label_accessible_focus_link_changed (label);
+                    ctk_label_select_region_index (label, link->start, link->start);
+                    _ctk_label_accessible_focus_link_changed (label);
                     return TRUE;
                   }
               }
@@ -4900,7 +4900,7 @@ gtk_label_focus (GtkWidget        *widget,
     }
   else
     {
-      focus_link = gtk_label_get_focus_link (label);
+      focus_link = ctk_label_get_focus_link (label);
       switch (direction)
         {
         case GTK_DIR_TAB_FORWARD:
@@ -4944,8 +4944,8 @@ gtk_label_focus (GtkWidget        *widget,
           focus_link = l->data;
           info->selection_anchor = focus_link->start;
           info->selection_end = focus_link->start;
-          _gtk_label_accessible_focus_link_changed (label);
-          gtk_widget_queue_draw (widget);
+          _ctk_label_accessible_focus_link_changed (label);
+          ctk_widget_queue_draw (widget);
 
           return TRUE;
         }
@@ -4957,7 +4957,7 @@ out:
 }
 
 static void
-gtk_label_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
+ctk_label_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
                                       gint                  n_press,
                                       gdouble               widget_x,
                                       gdouble               widget_y,
@@ -4972,16 +4972,16 @@ gtk_label_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
 
   if (info == NULL)
     {
-      gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
+      ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
       return;
     }
 
-  button = gtk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (gesture));
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
-  event = gtk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
-  gtk_label_update_active_link (widget, widget_x, widget_y);
+  button = ctk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  event = ctk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
+  ctk_label_update_active_link (widget, widget_x, widget_y);
 
-  gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
+  ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
 
   if (info->active_link)
     {
@@ -4989,14 +4989,14 @@ gtk_label_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
         {
           info->link_clicked = 1;
           update_link_state (label);
-          gtk_label_do_popup (label, event);
+          ctk_label_do_popup (label, event);
           return;
         }
       else if (button == GDK_BUTTON_PRIMARY)
         {
           info->link_clicked = 1;
           update_link_state (label);
-          gtk_widget_queue_draw (widget);
+          ctk_widget_queue_draw (widget);
           if (!info->selectable)
             return;
         }
@@ -5004,7 +5004,7 @@ gtk_label_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
 
   if (!info->selectable)
     {
-      gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
+      ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
       return;
     }
 
@@ -5012,36 +5012,36 @@ gtk_label_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
   info->select_words = FALSE;
 
   if (gdk_event_triggers_context_menu (event))
-    gtk_label_do_popup (label, event);
+    ctk_label_do_popup (label, event);
   else if (button == GDK_BUTTON_PRIMARY)
     {
-      if (!gtk_widget_has_focus (widget))
+      if (!ctk_widget_has_focus (widget))
         {
           priv->in_click = TRUE;
-          gtk_widget_grab_focus (widget);
+          ctk_widget_grab_focus (widget);
           priv->in_click = FALSE;
         }
 
       if (n_press == 3)
-        gtk_label_select_region_index (label, 0, strlen (priv->text));
+        ctk_label_select_region_index (label, 0, strlen (priv->text));
       else if (n_press == 2)
         {
           info->select_words = TRUE;
-          gtk_label_select_word (label);
+          ctk_label_select_word (label);
         }
     }
   else
     {
-      gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
+      ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
       return;
     }
 
   if (n_press >= 3)
-    gtk_event_controller_reset (GTK_EVENT_CONTROLLER (gesture));
+    ctk_event_controller_reset (GTK_EVENT_CONTROLLER (gesture));
 }
 
 static void
-gtk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
+ctk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
                                        gint                  n_press,
                                        gdouble               x,
                                        gdouble               y,
@@ -5055,9 +5055,9 @@ gtk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
   if (info == NULL)
     return;
 
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
 
-  if (!gtk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
+  if (!ctk_gesture_handles_sequence (GTK_GESTURE (gesture), sequence))
     return;
 
   if (n_press != 1)
@@ -5067,7 +5067,7 @@ gtk_label_multipress_gesture_released (GtkGestureMultiPress *gesture,
     {
       info->in_drag = 0;
       get_layout_index (label, x, y, &index);
-      gtk_label_select_region_index (label, index, index);
+      ctk_label_select_region_index (label, index, index);
     }
   else if (info->active_link &&
            info->selection_anchor == info->selection_end &&
@@ -5085,14 +5085,14 @@ connect_mnemonics_visible_notify (GtkLabel *label)
   GtkWidget *toplevel;
   gboolean connected;
 
-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (label));
+  toplevel = ctk_widget_get_toplevel (GTK_WIDGET (label));
 
   if (!GTK_IS_WINDOW (toplevel))
     return;
 
   /* always set up this widgets initial value */
   priv->mnemonics_visible =
-    gtk_window_get_mnemonics_visible (GTK_WINDOW (toplevel));
+    ctk_window_get_mnemonics_visible (GTK_WINDOW (toplevel));
 
   connected =
     GPOINTER_TO_INT (g_object_get_qdata (G_OBJECT (toplevel), quark_mnemonics_visible_connected));
@@ -5140,24 +5140,24 @@ drag_begin_cb (GtkWidget      *widget,
       if (start > len)
         start = len;
 
-      surface = _gtk_text_util_create_drag_icon (widget,
+      surface = _ctk_text_util_create_drag_icon (widget,
                                                  priv->text + start,
                                                  end - start);
     }
 
   if (surface)
     {
-      gtk_drag_set_icon_surface (context, surface);
+      ctk_drag_set_icon_surface (context, surface);
       cairo_surface_destroy (surface);
     }
   else
     {
-      gtk_drag_set_icon_default (context);
+      ctk_drag_set_icon_default (context);
     }
 }
 
 static void
-gtk_label_drag_gesture_begin (GtkGestureDrag *gesture,
+ctk_label_drag_gesture_begin (GtkGestureDrag *gesture,
                               gdouble         start_x,
                               gdouble         start_y,
                               GtkLabel       *label)
@@ -5171,7 +5171,7 @@ gtk_label_drag_gesture_begin (GtkGestureDrag *gesture,
 
   if (!info || !info->selectable)
     {
-      gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
+      ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
       return;
     }
 
@@ -5179,8 +5179,8 @@ gtk_label_drag_gesture_begin (GtkGestureDrag *gesture,
   min = MIN (info->selection_anchor, info->selection_end);
   max = MAX (info->selection_anchor, info->selection_end);
 
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
-  event = gtk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  event = ctk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
   gdk_event_get_state (event, &state_mask);
 
   if ((info->selection_anchor != info->selection_end) &&
@@ -5209,7 +5209,7 @@ gtk_label_drag_gesture_begin (GtkGestureDrag *gesture,
           max = tmp;
         }
 
-      gtk_label_select_region_index (label, min, max);
+      ctk_label_select_region_index (label, min, max);
     }
   else
     {
@@ -5221,12 +5221,12 @@ gtk_label_drag_gesture_begin (GtkGestureDrag *gesture,
         }
       else
         /* start a replacement */
-        gtk_label_select_region_index (label, index, index);
+        ctk_label_select_region_index (label, index, index);
     }
 }
 
 static void
-gtk_label_drag_gesture_update (GtkGestureDrag *gesture,
+ctk_label_drag_gesture_update (GtkGestureDrag *gesture,
                                gdouble         offset_x,
                                gdouble         offset_y,
                                GtkLabel       *label)
@@ -5241,25 +5241,25 @@ gtk_label_drag_gesture_update (GtkGestureDrag *gesture,
   if (info == NULL || !info->selectable)
     return;
 
-  sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
-  gtk_gesture_get_point (GTK_GESTURE (gesture), sequence, &x, &y);
+  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  ctk_gesture_get_point (GTK_GESTURE (gesture), sequence, &x, &y);
 
   if (info->in_drag)
     {
-      if (gtk_drag_check_threshold (widget,
+      if (ctk_drag_check_threshold (widget,
 				    info->drag_start_x,
 				    info->drag_start_y,
 				    x, y))
 	{
-	  GtkTargetList *target_list = gtk_target_list_new (NULL, 0);
+	  GtkTargetList *target_list = ctk_target_list_new (NULL, 0);
           const GdkEvent *event;
 
-          event = gtk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
-	  gtk_target_list_add_text_targets (target_list, 0);
+          event = ctk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
+	  ctk_target_list_add_text_targets (target_list, 0);
 
           g_signal_connect (widget, "drag-begin",
                             G_CALLBACK (drag_begin_cb), NULL);
-	  gtk_drag_begin_with_coordinates (widget, target_list,
+	  ctk_drag_begin_with_coordinates (widget, target_list,
                                            GDK_ACTION_COPY,
                                            1, (GdkEvent*) event,
                                            info->drag_start_x,
@@ -5267,7 +5267,7 @@ gtk_label_drag_gesture_update (GtkGestureDrag *gesture,
 
 	  info->in_drag = FALSE;
 
-	  gtk_target_list_unref (target_list);
+	  ctk_target_list_unref (target_list);
 	}
     }
   else
@@ -5275,7 +5275,7 @@ gtk_label_drag_gesture_update (GtkGestureDrag *gesture,
       get_layout_index (label, x, y, &index);
 
       if (index != info->selection_anchor)
-        gtk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
+        ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_CLAIMED);
 
       if (info->select_words)
         {
@@ -5283,8 +5283,8 @@ gtk_label_drag_gesture_update (GtkGestureDrag *gesture,
           gint old_min, old_max;
           gint anchor, end;
 
-          min = gtk_label_move_backward_word (label, index);
-          max = gtk_label_move_forward_word (label, index);
+          min = ctk_label_move_backward_word (label, index);
+          max = ctk_label_move_forward_word (label, index);
 
           anchor = info->selection_anchor;
           end = info->selection_end;
@@ -5313,15 +5313,15 @@ gtk_label_drag_gesture_update (GtkGestureDrag *gesture,
                 anchor = min;
             }
 
-          gtk_label_select_region_index (label, anchor, end);
+          ctk_label_select_region_index (label, anchor, end);
         }
       else
-        gtk_label_select_region_index (label, info->selection_anchor, index);
+        ctk_label_select_region_index (label, info->selection_anchor, index);
     }
 }
 
 static void
-gtk_label_update_active_link (GtkWidget *widget,
+ctk_label_update_active_link (GtkWidget *widget,
                               gdouble    x,
                               gdouble    y)
 {
@@ -5363,8 +5363,8 @@ gtk_label_update_active_link (GtkWidget *widget,
               info->link_clicked = 0;
               info->active_link = link;
               update_link_state (label);
-              gtk_label_update_cursor (label);
-              gtk_widget_queue_draw (widget);
+              ctk_label_update_cursor (label);
+              ctk_widget_queue_draw (widget);
             }
         }
       else
@@ -5374,27 +5374,27 @@ gtk_label_update_active_link (GtkWidget *widget,
               info->link_clicked = 0;
               info->active_link = NULL;
               update_link_state (label);
-              gtk_label_update_cursor (label);
-              gtk_widget_queue_draw (widget);
+              ctk_label_update_cursor (label);
+              ctk_widget_queue_draw (widget);
             }
         }
     }
 }
 
 static gboolean
-gtk_label_motion (GtkWidget      *widget,
+ctk_label_motion (GtkWidget      *widget,
                   GdkEventMotion *event)
 {
   gdouble x, y;
 
   gdk_event_get_coords ((GdkEvent *) event, &x, &y);
-  gtk_label_update_active_link (widget, x, y);
+  ctk_label_update_active_link (widget, x, y);
 
-  return GTK_WIDGET_CLASS (gtk_label_parent_class)->motion_notify_event (widget, event);
+  return GTK_WIDGET_CLASS (ctk_label_parent_class)->motion_notify_event (widget, event);
 }
 
 static gboolean
-gtk_label_leave_notify (GtkWidget        *widget,
+ctk_label_leave_notify (GtkWidget        *widget,
                         GdkEventCrossing *event)
 {
   GtkLabel *label = GTK_LABEL (widget);
@@ -5403,18 +5403,18 @@ gtk_label_leave_notify (GtkWidget        *widget,
   if (priv->select_info)
     {
       priv->select_info->active_link = NULL;
-      gtk_label_update_cursor (label);
-      gtk_widget_queue_draw (widget);
+      ctk_label_update_cursor (label);
+      ctk_widget_queue_draw (widget);
     }
 
-  if (GTK_WIDGET_CLASS (gtk_label_parent_class)->leave_notify_event)
-    return GTK_WIDGET_CLASS (gtk_label_parent_class)->leave_notify_event (widget, event);
+  if (GTK_WIDGET_CLASS (ctk_label_parent_class)->leave_notify_event)
+    return GTK_WIDGET_CLASS (ctk_label_parent_class)->leave_notify_event (widget, event);
 
  return FALSE;
 }
 
 static void
-gtk_label_create_window (GtkLabel *label)
+ctk_label_create_window (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   GtkAllocation allocation;
@@ -5424,12 +5424,12 @@ gtk_label_create_window (GtkLabel *label)
 
   g_assert (priv->select_info);
   widget = GTK_WIDGET (label);
-  g_assert (gtk_widget_get_realized (widget));
+  g_assert (ctk_widget_get_realized (widget));
 
   if (priv->select_info->window)
     return;
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   attributes.x = allocation.x;
   attributes.y = allocation.y;
@@ -5438,31 +5438,31 @@ gtk_label_create_window (GtkLabel *label)
   attributes.window_type = GDK_WINDOW_CHILD;
   attributes.wclass = GDK_INPUT_ONLY;
   attributes.override_redirect = TRUE;
-  attributes.event_mask = gtk_widget_get_events (widget) |
+  attributes.event_mask = ctk_widget_get_events (widget) |
     GDK_BUTTON_PRESS_MASK        |
     GDK_BUTTON_RELEASE_MASK      |
     GDK_LEAVE_NOTIFY_MASK        |
     GDK_BUTTON_MOTION_MASK       |
     GDK_POINTER_MOTION_MASK;
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_NOREDIR;
-  if (gtk_widget_is_sensitive (widget) && priv->select_info->selectable)
+  if (ctk_widget_is_sensitive (widget) && priv->select_info->selectable)
     {
-      attributes.cursor = gdk_cursor_new_for_display (gtk_widget_get_display (widget),
+      attributes.cursor = gdk_cursor_new_for_display (ctk_widget_get_display (widget),
 						      GDK_XTERM);
       attributes_mask |= GDK_WA_CURSOR;
     }
 
 
-  priv->select_info->window = gdk_window_new (gtk_widget_get_window (widget),
+  priv->select_info->window = gdk_window_new (ctk_widget_get_window (widget),
                                                &attributes, attributes_mask);
-  gtk_widget_register_window (widget, priv->select_info->window);
+  ctk_widget_register_window (widget, priv->select_info->window);
 
   if (attributes_mask & GDK_WA_CURSOR)
     g_object_unref (attributes.cursor);
 }
 
 static void
-gtk_label_destroy_window (GtkLabel *label)
+ctk_label_destroy_window (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
@@ -5471,13 +5471,13 @@ gtk_label_destroy_window (GtkLabel *label)
   if (priv->select_info->window == NULL)
     return;
 
-  gtk_widget_unregister_window (GTK_WIDGET (label), priv->select_info->window);
+  ctk_widget_unregister_window (GTK_WIDGET (label), priv->select_info->window);
   gdk_window_destroy (priv->select_info->window);
   priv->select_info->window = NULL;
 }
 
 static void
-gtk_label_ensure_select_info (GtkLabel *label)
+ctk_label_ensure_select_info (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
@@ -5485,33 +5485,33 @@ gtk_label_ensure_select_info (GtkLabel *label)
     {
       priv->select_info = g_new0 (GtkLabelSelectionInfo, 1);
 
-      gtk_widget_set_can_focus (GTK_WIDGET (label), TRUE);
+      ctk_widget_set_can_focus (GTK_WIDGET (label), TRUE);
 
-      if (gtk_widget_get_realized (GTK_WIDGET (label)))
-	gtk_label_create_window (label);
+      if (ctk_widget_get_realized (GTK_WIDGET (label)))
+	ctk_label_create_window (label);
 
-      if (gtk_widget_get_mapped (GTK_WIDGET (label)))
+      if (ctk_widget_get_mapped (GTK_WIDGET (label)))
         gdk_window_show (priv->select_info->window);
 
-      priv->select_info->drag_gesture = gtk_gesture_drag_new (GTK_WIDGET (label));
+      priv->select_info->drag_gesture = ctk_gesture_drag_new (GTK_WIDGET (label));
       g_signal_connect (priv->select_info->drag_gesture, "drag-begin",
-                        G_CALLBACK (gtk_label_drag_gesture_begin), label);
+                        G_CALLBACK (ctk_label_drag_gesture_begin), label);
       g_signal_connect (priv->select_info->drag_gesture, "drag-update",
-                        G_CALLBACK (gtk_label_drag_gesture_update), label);
-      gtk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (priv->select_info->drag_gesture), TRUE);
+                        G_CALLBACK (ctk_label_drag_gesture_update), label);
+      ctk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (priv->select_info->drag_gesture), TRUE);
 
-      priv->select_info->multipress_gesture = gtk_gesture_multi_press_new (GTK_WIDGET (label));
+      priv->select_info->multipress_gesture = ctk_gesture_multi_press_new (GTK_WIDGET (label));
       g_signal_connect (priv->select_info->multipress_gesture, "pressed",
-                        G_CALLBACK (gtk_label_multipress_gesture_pressed), label);
+                        G_CALLBACK (ctk_label_multipress_gesture_pressed), label);
       g_signal_connect (priv->select_info->multipress_gesture, "released",
-                        G_CALLBACK (gtk_label_multipress_gesture_released), label);
-      gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (priv->select_info->multipress_gesture), 0);
-      gtk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (priv->select_info->multipress_gesture), TRUE);
+                        G_CALLBACK (ctk_label_multipress_gesture_released), label);
+      ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (priv->select_info->multipress_gesture), 0);
+      ctk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (priv->select_info->multipress_gesture), TRUE);
     }
 }
 
 static void
-gtk_label_clear_select_info (GtkLabel *label)
+ctk_label_clear_select_info (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
@@ -5520,7 +5520,7 @@ gtk_label_clear_select_info (GtkLabel *label)
 
   if (!priv->select_info->selectable && !priv->select_info->links)
     {
-      gtk_label_destroy_window (label);
+      ctk_label_destroy_window (label);
 
       g_object_unref (priv->select_info->drag_gesture);
       g_object_unref (priv->select_info->multipress_gesture);
@@ -5528,12 +5528,12 @@ gtk_label_clear_select_info (GtkLabel *label)
       g_free (priv->select_info);
       priv->select_info = NULL;
 
-      gtk_widget_set_can_focus (GTK_WIDGET (label), FALSE);
+      ctk_widget_set_can_focus (GTK_WIDGET (label), FALSE);
     }
 }
 
 /**
- * gtk_label_set_selectable:
+ * ctk_label_set_selectable:
  * @label: a #GtkLabel
  * @setting: %TRUE to allow selecting text in the label
  *
@@ -5541,7 +5541,7 @@ gtk_label_clear_select_info (GtkLabel *label)
  * copy-and-paste.
  **/
 void
-gtk_label_set_selectable (GtkLabel *label,
+ctk_label_set_selectable (GtkLabel *label,
                           gboolean  setting)
 {
   GtkLabelPrivate *priv;
@@ -5556,20 +5556,20 @@ gtk_label_set_selectable (GtkLabel *label,
 
   if (setting)
     {
-      gtk_label_ensure_select_info (label);
+      ctk_label_ensure_select_info (label);
       priv->select_info->selectable = TRUE;
-      gtk_label_update_cursor (label);
+      ctk_label_update_cursor (label);
     }
   else
     {
       if (old_setting)
         {
           /* unselect, to give up the selection */
-          gtk_label_select_region (label, 0, 0);
+          ctk_label_select_region (label, 0, 0);
 
           priv->select_info->selectable = FALSE;
-          gtk_label_clear_select_info (label);
-          gtk_label_update_cursor (label);
+          ctk_label_clear_select_info (label);
+          ctk_label_update_cursor (label);
         }
     }
   if (setting != old_setting)
@@ -5579,20 +5579,20 @@ gtk_label_set_selectable (GtkLabel *label,
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_CURSOR_POSITION]);
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_SELECTION_BOUND]);
       g_object_thaw_notify (G_OBJECT (label));
-      gtk_widget_queue_draw (GTK_WIDGET (label));
+      ctk_widget_queue_draw (GTK_WIDGET (label));
     }
 }
 
 /**
- * gtk_label_get_selectable:
+ * ctk_label_get_selectable:
  * @label: a #GtkLabel
  * 
- * Gets the value set by gtk_label_set_selectable().
+ * Gets the value set by ctk_label_set_selectable().
  * 
  * Returns: %TRUE if the user can copy text from the label
  **/
 gboolean
-gtk_label_get_selectable (GtkLabel *label)
+ctk_label_get_selectable (GtkLabel *label)
 {
   GtkLabelPrivate *priv;
 
@@ -5604,7 +5604,7 @@ gtk_label_get_selectable (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_angle:
+ * ctk_label_set_angle:
  * @label: a #GtkLabel
  * @angle: the angle that the baseline of the label makes with
  *   the horizontal, in degrees, measured counterclockwise
@@ -5617,7 +5617,7 @@ gtk_label_get_selectable (GtkLabel *label)
  * Since: 2.6
  **/
 void
-gtk_label_set_angle (GtkLabel *label,
+ctk_label_set_angle (GtkLabel *label,
 		     gdouble   angle)
 {
   GtkLabelPrivate *priv;
@@ -5637,26 +5637,26 @@ gtk_label_set_angle (GtkLabel *label,
     {
       priv->angle = angle;
       
-      gtk_label_clear_layout (label);
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_label_clear_layout (label);
+      ctk_widget_queue_resize (GTK_WIDGET (label));
 
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_ANGLE]);
     }
 }
 
 /**
- * gtk_label_get_angle:
+ * ctk_label_get_angle:
  * @label: a #GtkLabel
  * 
  * Gets the angle of rotation for the label. See
- * gtk_label_set_angle().
+ * ctk_label_set_angle().
  * 
  * Returns: the angle of rotation for the label
  *
  * Since: 2.6
  **/
 gdouble
-gtk_label_get_angle  (GtkLabel *label)
+ctk_label_get_angle  (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), 0.0);
   
@@ -5664,7 +5664,7 @@ gtk_label_get_angle  (GtkLabel *label)
 }
 
 static void
-gtk_label_set_selection_text (GtkLabel         *label,
+ctk_label_set_selection_text (GtkLabel         *label,
 			      GtkSelectionData *selection_data)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -5690,20 +5690,20 @@ gtk_label_set_selection_text (GtkLabel         *label,
       if (start > len)
         start = len;
 
-      gtk_selection_data_set_text (selection_data,
+      ctk_selection_data_set_text (selection_data,
 				   priv->text + start,
 				   end - start);
     }
 }
 
 static void
-gtk_label_drag_data_get (GtkWidget        *widget,
+ctk_label_drag_data_get (GtkWidget        *widget,
 			 GdkDragContext   *context,
 			 GtkSelectionData *selection_data,
 			 guint             info,
 			 guint             time)
 {
-  gtk_label_set_selection_text (GTK_LABEL (widget), selection_data);
+  ctk_label_set_selection_text (GTK_LABEL (widget), selection_data);
 }
 
 static void
@@ -5712,7 +5712,7 @@ get_text_callback (GtkClipboard     *clipboard,
                    guint             info,
                    gpointer          user_data_or_owner)
 {
-  gtk_label_set_selection_text (GTK_LABEL (user_data_or_owner), selection_data);
+  ctk_label_set_selection_text (GTK_LABEL (user_data_or_owner), selection_data);
 }
 
 static void
@@ -5729,12 +5729,12 @@ clear_text_callback (GtkClipboard     *clipboard,
     {
       priv->select_info->selection_anchor = priv->select_info->selection_end;
 
-      gtk_widget_queue_draw (GTK_WIDGET (label));
+      ctk_widget_queue_draw (GTK_WIDGET (label));
     }
 }
 
 static void
-gtk_label_select_region_index (GtkLabel *label,
+ctk_label_select_region_index (GtkLabel *label,
                                gint      anchor_index,
                                gint      end_index)
 {
@@ -5816,8 +5816,8 @@ gtk_label_select_region_index (GtkLabel *label,
       priv->select_info->selection_anchor = anchor_index;
       priv->select_info->selection_end = end_index;
 
-      if (gtk_widget_has_screen (GTK_WIDGET (label)))
-        clipboard = gtk_widget_get_clipboard (GTK_WIDGET (label),
+      if (ctk_widget_has_screen (GTK_WIDGET (label)))
+        clipboard = ctk_widget_get_clipboard (GTK_WIDGET (label),
                                               GDK_SELECTION_PRIMARY);
       else
         clipboard = NULL;
@@ -5828,64 +5828,64 @@ gtk_label_select_region_index (GtkLabel *label,
           GtkTargetEntry *targets;
           gint n_targets;
 
-          list = gtk_target_list_new (NULL, 0);
-          gtk_target_list_add_text_targets (list, 0);
-          targets = gtk_target_table_new_from_list (list, &n_targets);
+          list = ctk_target_list_new (NULL, 0);
+          ctk_target_list_add_text_targets (list, 0);
+          targets = ctk_target_table_new_from_list (list, &n_targets);
 
           if (clipboard)
-            gtk_clipboard_set_with_owner (clipboard,
+            ctk_clipboard_set_with_owner (clipboard,
                                           targets, n_targets,
                                           get_text_callback,
                                           clear_text_callback,
                                           G_OBJECT (label));
 
-          gtk_target_table_free (targets, n_targets);
-          gtk_target_list_unref (list);
+          ctk_target_table_free (targets, n_targets);
+          ctk_target_list_unref (list);
 
           if (!priv->select_info->selection_node)
             {
               GtkCssNode *widget_node;
 
-              widget_node = gtk_widget_get_css_node (GTK_WIDGET (label));
-              priv->select_info->selection_node = gtk_css_node_new ();
-              gtk_css_node_set_name (priv->select_info->selection_node, I_("selection"));
-              gtk_css_node_set_parent (priv->select_info->selection_node, widget_node);
-              gtk_css_node_set_state (priv->select_info->selection_node, gtk_css_node_get_state (widget_node));
+              widget_node = ctk_widget_get_css_node (GTK_WIDGET (label));
+              priv->select_info->selection_node = ctk_css_node_new ();
+              ctk_css_node_set_name (priv->select_info->selection_node, I_("selection"));
+              ctk_css_node_set_parent (priv->select_info->selection_node, widget_node);
+              ctk_css_node_set_state (priv->select_info->selection_node, ctk_css_node_get_state (widget_node));
               g_object_unref (priv->select_info->selection_node);
             }
         }
       else
         {
           if (clipboard &&
-              gtk_clipboard_get_owner (clipboard) == G_OBJECT (label))
-            gtk_clipboard_clear (clipboard);
+              ctk_clipboard_get_owner (clipboard) == G_OBJECT (label))
+            ctk_clipboard_clear (clipboard);
 
           if (priv->select_info->selection_node)
             {
-              gtk_css_node_set_parent (priv->select_info->selection_node, NULL);
+              ctk_css_node_set_parent (priv->select_info->selection_node, NULL);
               priv->select_info->selection_node = NULL;
             }
         }
 
-      gtk_widget_queue_draw (GTK_WIDGET (label));
+      ctk_widget_queue_draw (GTK_WIDGET (label));
 
       g_object_thaw_notify (G_OBJECT (label));
     }
 }
 
 /**
- * gtk_label_select_region:
+ * ctk_label_select_region:
  * @label: a #GtkLabel
  * @start_offset: start offset (in characters not bytes)
  * @end_offset: end offset (in characters not bytes)
  *
  * Selects a range of characters in the label, if the label is selectable.
- * See gtk_label_set_selectable(). If the label is not selectable,
+ * See ctk_label_set_selectable(). If the label is not selectable,
  * this function has no effect. If @start_offset or
  * @end_offset are -1, then the end of the label will be substituted.
  **/
 void
-gtk_label_select_region  (GtkLabel *label,
+ctk_label_select_region  (GtkLabel *label,
                           gint      start_offset,
                           gint      end_offset)
 {
@@ -5903,14 +5903,14 @@ gtk_label_select_region  (GtkLabel *label,
       if (end_offset < 0)
         end_offset = g_utf8_strlen (priv->text, -1);
       
-      gtk_label_select_region_index (label,
+      ctk_label_select_region_index (label,
                                      g_utf8_offset_to_pointer (priv->text, start_offset) - priv->text,
                                      g_utf8_offset_to_pointer (priv->text, end_offset) - priv->text);
     }
 }
 
 /**
- * gtk_label_get_selection_bounds:
+ * ctk_label_get_selection_bounds:
  * @label: a #GtkLabel
  * @start: (out): return location for start of selection, as a character offset
  * @end: (out): return location for end of selection, as a character offset
@@ -5921,7 +5921,7 @@ gtk_label_select_region  (GtkLabel *label,
  * Returns: %TRUE if selection is non-empty
  **/
 gboolean
-gtk_label_get_selection_bounds (GtkLabel  *label,
+ctk_label_get_selection_bounds (GtkLabel  *label,
                                 gint      *start,
                                 gint      *end)
 {
@@ -5982,12 +5982,12 @@ gtk_label_get_selection_bounds (GtkLabel  *label,
 
 
 /**
- * gtk_label_get_layout:
+ * ctk_label_get_layout:
  * @label: a #GtkLabel
  * 
  * Gets the #PangoLayout used to display the label.
  * The layout is useful to e.g. convert text positions to
- * pixel positions, in combination with gtk_label_get_layout_offsets().
+ * pixel positions, in combination with ctk_label_get_layout_offsets().
  * The returned layout is owned by the @label so need not be
  * freed by the caller. The @label is free to recreate its layout at
  * any time, so it should be considered read-only.
@@ -5995,7 +5995,7 @@ gtk_label_get_selection_bounds (GtkLabel  *label,
  * Returns: (transfer none): the #PangoLayout for this label
  **/
 PangoLayout*
-gtk_label_get_layout (GtkLabel *label)
+ctk_label_get_layout (GtkLabel *label)
 {
   GtkLabelPrivate *priv;
 
@@ -6003,13 +6003,13 @@ gtk_label_get_layout (GtkLabel *label)
 
   priv = label->priv;
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
 
   return priv->layout;
 }
 
 /**
- * gtk_label_get_layout_offsets:
+ * ctk_label_get_layout_offsets:
  * @label: a #GtkLabel
  * @x: (out) (optional): location to store X offset of layout, or %NULL
  * @y: (out) (optional): location to store Y offset of layout, or %NULL
@@ -6020,57 +6020,57 @@ gtk_label_get_layout (GtkLabel *label)
  * if some part of the label is clicked. Of course you will need to
  * create a #GtkEventBox to receive the events, and pack the label
  * inside it, since labels are windowless (they return %FALSE from
- * gtk_widget_get_has_window()). Remember
+ * ctk_widget_get_has_window()). Remember
  * when using the #PangoLayout functions you need to convert to
  * and from pixels using PANGO_PIXELS() or #PANGO_SCALE.
  **/
 void
-gtk_label_get_layout_offsets (GtkLabel *label,
+ctk_label_get_layout_offsets (GtkLabel *label,
                               gint     *x,
                               gint     *y)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
 
   get_layout_location (label, x, y);
 }
 
 /**
- * gtk_label_set_use_markup:
+ * ctk_label_set_use_markup:
  * @label: a #GtkLabel
  * @setting: %TRUE if the label’s text should be parsed for markup.
  *
  * Sets whether the text of the label contains markup in
  * [Pango’s text markup language][PangoMarkupFormat].
- * See gtk_label_set_markup().
+ * See ctk_label_set_markup().
  **/
 void
-gtk_label_set_use_markup (GtkLabel *label,
+ctk_label_set_use_markup (GtkLabel *label,
 			  gboolean  setting)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
 
   g_object_freeze_notify (G_OBJECT (label));
 
-  if (gtk_label_set_use_markup_internal (label, setting))
-    gtk_label_recalculate (label);
+  if (ctk_label_set_use_markup_internal (label, setting))
+    ctk_label_recalculate (label);
 
   g_object_thaw_notify (G_OBJECT (label));
 }
 
 /**
- * gtk_label_get_use_markup:
+ * ctk_label_get_use_markup:
  * @label: a #GtkLabel
  *
  * Returns whether the label’s text is interpreted as marked up with
  * the [Pango text markup language][PangoMarkupFormat].
- * See gtk_label_set_use_markup ().
+ * See ctk_label_set_use_markup ().
  *
  * Returns: %TRUE if the label’s text will be parsed for markup.
  **/
 gboolean
-gtk_label_get_use_markup (GtkLabel *label)
+ctk_label_get_use_markup (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), FALSE);
 
@@ -6078,7 +6078,7 @@ gtk_label_get_use_markup (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_use_underline:
+ * ctk_label_set_use_underline:
  * @label: a #GtkLabel
  * @setting: %TRUE if underlines in the text indicate mnemonics
  *
@@ -6086,31 +6086,31 @@ gtk_label_get_use_markup (GtkLabel *label)
  * used for the mnemonic accelerator key.
  */
 void
-gtk_label_set_use_underline (GtkLabel *label,
+ctk_label_set_use_underline (GtkLabel *label,
 			     gboolean  setting)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
 
   g_object_freeze_notify (G_OBJECT (label));
 
-  if (gtk_label_set_use_underline_internal (label, setting))
-    gtk_label_recalculate (label);
+  if (ctk_label_set_use_underline_internal (label, setting))
+    ctk_label_recalculate (label);
 
   g_object_thaw_notify (G_OBJECT (label));
 }
 
 /**
- * gtk_label_get_use_underline:
+ * ctk_label_get_use_underline:
  * @label: a #GtkLabel
  *
  * Returns whether an embedded underline in the label indicates a
- * mnemonic. See gtk_label_set_use_underline().
+ * mnemonic. See ctk_label_set_use_underline().
  *
  * Returns: %TRUE whether an embedded underline in the label indicates
  *               the mnemonic accelerator keys.
  **/
 gboolean
-gtk_label_get_use_underline (GtkLabel *label)
+ctk_label_get_use_underline (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), FALSE);
 
@@ -6118,7 +6118,7 @@ gtk_label_get_use_underline (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_single_line_mode:
+ * ctk_label_set_single_line_mode:
  * @label: a #GtkLabel
  * @single_line_mode: %TRUE if the label should be in single line mode
  *
@@ -6127,7 +6127,7 @@ gtk_label_get_use_underline (GtkLabel *label)
  * Since: 2.6
  */
 void
-gtk_label_set_single_line_mode (GtkLabel *label,
+ctk_label_set_single_line_mode (GtkLabel *label,
                                 gboolean single_line_mode)
 {
   GtkLabelPrivate *priv;
@@ -6142,15 +6142,15 @@ gtk_label_set_single_line_mode (GtkLabel *label,
     {
       priv->single_line_mode = single_line_mode;
 
-      gtk_label_clear_layout (label);
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_label_clear_layout (label);
+      ctk_widget_queue_resize (GTK_WIDGET (label));
 
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_SINGLE_LINE_MODE]);
     }
 }
 
 /**
- * gtk_label_get_single_line_mode:
+ * ctk_label_get_single_line_mode:
  * @label: a #GtkLabel
  *
  * Returns whether the label is in single line mode.
@@ -6160,7 +6160,7 @@ gtk_label_set_single_line_mode (GtkLabel *label,
  * Since: 2.6
  **/
 gboolean
-gtk_label_get_single_line_mode  (GtkLabel *label)
+ctk_label_get_single_line_mode  (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), FALSE);
 
@@ -6179,17 +6179,17 @@ get_better_cursor (GtkLabel *label,
 		   gint      *y)
 {
   GtkLabelPrivate *priv = label->priv;
-  GdkKeymap *keymap = gdk_keymap_get_for_display (gtk_widget_get_display (GTK_WIDGET (label)));
+  GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (GTK_WIDGET (label)));
   PangoDirection keymap_direction = gdk_keymap_get_direction (keymap);
   PangoDirection cursor_direction = get_cursor_direction (label);
   gboolean split_cursor;
   PangoRectangle strong_pos, weak_pos;
   
-  g_object_get (gtk_widget_get_settings (GTK_WIDGET (label)),
+  g_object_get (ctk_widget_get_settings (GTK_WIDGET (label)),
 		"gtk-split-cursor", &split_cursor,
 		NULL);
 
-  gtk_label_ensure_layout (label);
+  ctk_label_ensure_layout (label);
   
   pango_layout_get_cursor_pos (priv->layout, index,
 			       &strong_pos, &weak_pos);
@@ -6216,7 +6216,7 @@ get_better_cursor (GtkLabel *label,
 
 
 static gint
-gtk_label_move_logically (GtkLabel *label,
+ctk_label_move_logically (GtkLabel *label,
 			  gint      start,
 			  gint      count)
 {
@@ -6230,7 +6230,7 @@ gtk_label_move_logically (GtkLabel *label,
       gint n_attrs;
       gint length;
 
-      gtk_label_ensure_layout (label);
+      ctk_label_ensure_layout (label);
       
       length = g_utf8_strlen (priv->text, -1);
 
@@ -6260,7 +6260,7 @@ gtk_label_move_logically (GtkLabel *label,
 }
 
 static gint
-gtk_label_move_visually (GtkLabel *label,
+ctk_label_move_visually (GtkLabel *label,
 			 gint      start,
 			 gint      count)
 {
@@ -6275,9 +6275,9 @@ gtk_label_move_visually (GtkLabel *label,
       gboolean split_cursor;
       gboolean strong;
 
-      gtk_label_ensure_layout (label);
+      ctk_label_ensure_layout (label);
 
-      g_object_get (gtk_widget_get_settings (GTK_WIDGET (label)),
+      g_object_get (ctk_widget_get_settings (GTK_WIDGET (label)),
 		    "gtk-split-cursor", &split_cursor,
 		    NULL);
 
@@ -6285,7 +6285,7 @@ gtk_label_move_visually (GtkLabel *label,
 	strong = TRUE;
       else
 	{
-	  GdkKeymap *keymap = gdk_keymap_get_for_display (gtk_widget_get_display (GTK_WIDGET (label)));
+	  GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (GTK_WIDGET (label)));
 	  PangoDirection keymap_direction = gdk_keymap_get_direction (keymap);
 
 	  strong = keymap_direction == get_cursor_direction (label);
@@ -6315,7 +6315,7 @@ gtk_label_move_visually (GtkLabel *label,
 }
 
 static gint
-gtk_label_move_forward_word (GtkLabel *label,
+ctk_label_move_forward_word (GtkLabel *label,
 			     gint      start)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -6329,7 +6329,7 @@ gtk_label_move_forward_word (GtkLabel *label,
       PangoLogAttr *log_attrs;
       gint n_attrs;
 
-      gtk_label_ensure_layout (label);
+      ctk_label_ensure_layout (label);
 
       pango_layout_get_log_attrs (priv->layout, &log_attrs, &n_attrs);
 
@@ -6346,7 +6346,7 @@ gtk_label_move_forward_word (GtkLabel *label,
 
 
 static gint
-gtk_label_move_backward_word (GtkLabel *label,
+ctk_label_move_backward_word (GtkLabel *label,
 			      gint      start)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -6358,7 +6358,7 @@ gtk_label_move_backward_word (GtkLabel *label,
       PangoLogAttr *log_attrs;
       gint n_attrs;
 
-      gtk_label_ensure_layout (label);
+      ctk_label_ensure_layout (label);
 
       pango_layout_get_log_attrs (priv->layout, &log_attrs, &n_attrs);
 
@@ -6375,7 +6375,7 @@ gtk_label_move_backward_word (GtkLabel *label,
 }
 
 static void
-gtk_label_move_cursor (GtkLabel       *label,
+ctk_label_move_cursor (GtkLabel       *label,
                        GtkMovementStep step,
                        gint            count,
                        gboolean        extend_selection)
@@ -6439,45 +6439,45 @@ gtk_label_move_cursor (GtkLabel       *label,
       switch (step)
         {
         case GTK_MOVEMENT_LOGICAL_POSITIONS:
-          new_pos = gtk_label_move_logically (label, new_pos, count);
+          new_pos = ctk_label_move_logically (label, new_pos, count);
           break;
         case GTK_MOVEMENT_VISUAL_POSITIONS:
-          new_pos = gtk_label_move_visually (label, new_pos, count);
+          new_pos = ctk_label_move_visually (label, new_pos, count);
           if (new_pos == old_pos)
             {
               if (!extend_selection)
                 {
-                  if (!gtk_widget_keynav_failed (GTK_WIDGET (label),
+                  if (!ctk_widget_keynav_failed (GTK_WIDGET (label),
                                                  count > 0 ?
                                                  GTK_DIR_RIGHT : GTK_DIR_LEFT))
                     {
-                      GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (label));
+                      GtkWidget *toplevel = ctk_widget_get_toplevel (GTK_WIDGET (label));
 
                       if (toplevel)
-                        gtk_widget_child_focus (toplevel,
+                        ctk_widget_child_focus (toplevel,
                                                 count > 0 ?
                                                 GTK_DIR_RIGHT : GTK_DIR_LEFT);
                     }
                 }
               else
                 {
-                  gtk_widget_error_bell (GTK_WIDGET (label));
+                  ctk_widget_error_bell (GTK_WIDGET (label));
                 }
             }
           break;
         case GTK_MOVEMENT_WORDS:
           while (count > 0)
             {
-              new_pos = gtk_label_move_forward_word (label, new_pos);
+              new_pos = ctk_label_move_forward_word (label, new_pos);
               count--;
             }
           while (count < 0)
             {
-              new_pos = gtk_label_move_backward_word (label, new_pos);
+              new_pos = ctk_label_move_backward_word (label, new_pos);
               count++;
             }
           if (new_pos == old_pos)
-            gtk_widget_error_bell (GTK_WIDGET (label));
+            ctk_widget_error_bell (GTK_WIDGET (label));
           break;
         case GTK_MOVEMENT_DISPLAY_LINE_ENDS:
         case GTK_MOVEMENT_PARAGRAPH_ENDS:
@@ -6485,7 +6485,7 @@ gtk_label_move_cursor (GtkLabel       *label,
           /* FIXME: Can do better here */
           new_pos = count < 0 ? 0 : strlen (priv->text);
           if (new_pos == old_pos)
-            gtk_widget_error_bell (GTK_WIDGET (label));
+            ctk_widget_error_bell (GTK_WIDGET (label));
           break;
         case GTK_MOVEMENT_DISPLAY_LINES:
         case GTK_MOVEMENT_PARAGRAPHS:
@@ -6496,15 +6496,15 @@ gtk_label_move_cursor (GtkLabel       *label,
     }
 
   if (extend_selection)
-    gtk_label_select_region_index (label,
+    ctk_label_select_region_index (label,
                                    priv->select_info->selection_anchor,
                                    new_pos);
   else
-    gtk_label_select_region_index (label, new_pos, new_pos);
+    ctk_label_select_region_index (label, new_pos, new_pos);
 }
 
 static void
-gtk_label_copy_clipboard (GtkLabel *label)
+ctk_label_copy_clipboard (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
@@ -6527,27 +6527,27 @@ gtk_label_copy_clipboard (GtkLabel *label)
       if (start > len)
         start = len;
 
-      clipboard = gtk_widget_get_clipboard (GTK_WIDGET (label), GDK_SELECTION_CLIPBOARD);
+      clipboard = ctk_widget_get_clipboard (GTK_WIDGET (label), GDK_SELECTION_CLIPBOARD);
 
       if (start != end)
-	gtk_clipboard_set_text (clipboard, priv->text + start, end - start);
+	ctk_clipboard_set_text (clipboard, priv->text + start, end - start);
       else
         {
           GtkLabelLink *link;
 
-          link = gtk_label_get_focus_link (label);
+          link = ctk_label_get_focus_link (label);
           if (link)
-            gtk_clipboard_set_text (clipboard, link->uri, -1);
+            ctk_clipboard_set_text (clipboard, link->uri, -1);
         }
     }
 }
 
 static void
-gtk_label_select_all (GtkLabel *label)
+ctk_label_select_all (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
-  gtk_label_select_region_index (label, 0, strlen (priv->text));
+  ctk_label_select_region_index (label, 0, strlen (priv->text));
 }
 
 /* Quick hack of a popup menu
@@ -6556,7 +6556,7 @@ static void
 activate_cb (GtkWidget *menuitem,
 	     GtkLabel  *label)
 {
-  const gchar *signal = g_object_get_qdata (G_OBJECT (menuitem), quark_gtk_signal);
+  const gchar *signal = g_object_get_qdata (G_OBJECT (menuitem), quark_ctk_signal);
   g_signal_emit_by_name (label, signal);
 }
 
@@ -6567,16 +6567,16 @@ append_action_signal (GtkLabel     *label,
 		      const gchar  *signal,
                       gboolean      sensitive)
 {
-  GtkWidget *menuitem = gtk_menu_item_new_with_mnemonic (text);
+  GtkWidget *menuitem = ctk_menu_item_new_with_mnemonic (text);
 
-  g_object_set_qdata (G_OBJECT (menuitem), quark_gtk_signal, (char *)signal);
+  g_object_set_qdata (G_OBJECT (menuitem), quark_ctk_signal, (char *)signal);
   g_signal_connect (menuitem, "activate",
 		    G_CALLBACK (activate_cb), label);
 
-  gtk_widget_set_sensitive (menuitem, sensitive);
+  ctk_widget_set_sensitive (menuitem, sensitive);
   
-  gtk_widget_show (menuitem);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+  ctk_widget_show (menuitem);
+  ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 }
 
 static void
@@ -6608,20 +6608,20 @@ copy_link_activate_cb (GtkMenuItem *menuitem,
   GtkClipboard *clipboard;
 
   link = g_object_get_qdata (G_OBJECT (menuitem), quark_link);
-  clipboard = gtk_widget_get_clipboard (GTK_WIDGET (label), GDK_SELECTION_CLIPBOARD);
-  gtk_clipboard_set_text (clipboard, link->uri, -1);
+  clipboard = ctk_widget_get_clipboard (GTK_WIDGET (label), GDK_SELECTION_CLIPBOARD);
+  ctk_clipboard_set_text (clipboard, link->uri, -1);
 }
 
 static gboolean
-gtk_label_popup_menu (GtkWidget *widget)
+ctk_label_popup_menu (GtkWidget *widget)
 {
-  gtk_label_do_popup (GTK_LABEL (widget), NULL);
+  ctk_label_do_popup (GTK_LABEL (widget), NULL);
 
   return TRUE;
 }
 
 static void
-gtk_label_do_popup (GtkLabel       *label,
+ctk_label_do_popup (GtkLabel       *label,
                     const GdkEvent *event)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -6634,13 +6634,13 @@ gtk_label_do_popup (GtkLabel       *label,
     return;
 
   if (priv->select_info->popup_menu)
-    gtk_widget_destroy (priv->select_info->popup_menu);
+    ctk_widget_destroy (priv->select_info->popup_menu);
 
-  priv->select_info->popup_menu = menu = gtk_menu_new ();
-  gtk_style_context_add_class (gtk_widget_get_style_context (menu),
+  priv->select_info->popup_menu = menu = ctk_menu_new ();
+  ctk_style_context_add_class (ctk_widget_get_style_context (menu),
                                GTK_STYLE_CLASS_CONTEXT_MENU);
 
-  gtk_menu_attach_to_widget (GTK_MENU (menu), GTK_WIDGET (label), popup_menu_detach);
+  ctk_menu_attach_to_widget (GTK_MENU (menu), GTK_WIDGET (label), popup_menu_detach);
 
   have_selection =
     priv->select_info->selection_anchor != priv->select_info->selection_end;
@@ -6653,24 +6653,24 @@ gtk_label_do_popup (GtkLabel       *label,
         link = NULL;
     }
   else
-    link = gtk_label_get_focus_link (label);
+    link = ctk_label_get_focus_link (label);
 
   if (!have_selection && link)
     {
       /* Open Link */
-      menuitem = gtk_menu_item_new_with_mnemonic (_("_Open Link"));
+      menuitem = ctk_menu_item_new_with_mnemonic (_("_Open Link"));
       g_object_set_qdata (G_OBJECT (menuitem), quark_link, link);
-      gtk_widget_show (menuitem);
-      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+      ctk_widget_show (menuitem);
+      ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 
       g_signal_connect (G_OBJECT (menuitem), "activate",
                         G_CALLBACK (open_link_activate_cb), label);
 
       /* Copy Link Address */
-      menuitem = gtk_menu_item_new_with_mnemonic (_("Copy _Link Address"));
+      menuitem = ctk_menu_item_new_with_mnemonic (_("Copy _Link Address"));
       g_object_set_qdata (G_OBJECT (menuitem), quark_link, link);
-      gtk_widget_show (menuitem);
-      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+      ctk_widget_show (menuitem);
+      ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 
       g_signal_connect (G_OBJECT (menuitem), "activate",
                         G_CALLBACK (copy_link_activate_cb), label);
@@ -6681,40 +6681,40 @@ gtk_label_do_popup (GtkLabel       *label,
       append_action_signal (label, menu, _("_Copy"), "copy-clipboard", have_selection);
       append_action_signal (label, menu, _("_Paste"), "paste-clipboard", FALSE);
   
-      menuitem = gtk_menu_item_new_with_mnemonic (_("_Delete"));
-      gtk_widget_set_sensitive (menuitem, FALSE);
-      gtk_widget_show (menuitem);
-      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+      menuitem = ctk_menu_item_new_with_mnemonic (_("_Delete"));
+      ctk_widget_set_sensitive (menuitem, FALSE);
+      ctk_widget_show (menuitem);
+      ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 
-      menuitem = gtk_separator_menu_item_new ();
-      gtk_widget_show (menuitem);
-      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+      menuitem = ctk_separator_menu_item_new ();
+      ctk_widget_show (menuitem);
+      ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 
-      menuitem = gtk_menu_item_new_with_mnemonic (_("Select _All"));
+      menuitem = ctk_menu_item_new_with_mnemonic (_("Select _All"));
       g_signal_connect_swapped (menuitem, "activate",
-			        G_CALLBACK (gtk_label_select_all), label);
-      gtk_widget_show (menuitem);
-      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+			        G_CALLBACK (ctk_label_select_all), label);
+      ctk_widget_show (menuitem);
+      ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
     }
 
   g_signal_emit (label, signals[POPULATE_POPUP], 0, menu);
 
   if (event && gdk_event_triggers_context_menu (event))
-    gtk_menu_popup_at_pointer (GTK_MENU (menu), event);
+    ctk_menu_popup_at_pointer (GTK_MENU (menu), event);
   else
     {
-      gtk_menu_popup_at_widget (GTK_MENU (menu),
+      ctk_menu_popup_at_widget (GTK_MENU (menu),
                                 GTK_WIDGET (label),
                                 GDK_GRAVITY_SOUTH,
                                 GDK_GRAVITY_NORTH_WEST,
                                 event);
 
-      gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
+      ctk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
     }
 }
 
 static void
-gtk_label_clear_links (GtkLabel *label)
+ctk_label_clear_links (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
@@ -6725,19 +6725,19 @@ gtk_label_clear_links (GtkLabel *label)
   priv->select_info->links = NULL;
   priv->select_info->active_link = NULL;
 
-  _gtk_label_accessible_update_links (label);
+  _ctk_label_accessible_update_links (label);
 }
 
 static gboolean
-gtk_label_activate_link (GtkLabel    *label,
+ctk_label_activate_link (GtkLabel    *label,
                          const gchar *uri)
 {
   GtkWidget *widget = GTK_WIDGET (label);
-  GtkWidget *top_level = gtk_widget_get_toplevel (widget);
-  guint32 timestamp = gtk_get_current_event_time ();
+  GtkWidget *top_level = ctk_widget_get_toplevel (widget);
+  guint32 timestamp = ctk_get_current_event_time ();
   GError *error = NULL;
 
-  if (!gtk_show_uri_on_window (GTK_WINDOW (top_level), uri, timestamp, &error))
+  if (!ctk_show_uri_on_window (GTK_WINDOW (top_level), uri, timestamp, &error))
     {
       g_warning ("Unable to show '%s': %s", uri, error->message);
       g_error_free (error);
@@ -6759,20 +6759,20 @@ emit_activate_link (GtkLabel     *label,
       priv->select_info && priv->select_info->links)
     {
       link->visited = TRUE;
-      state = gtk_css_node_get_state (link->cssnode);
-      gtk_css_node_set_state (link->cssnode, (state & ~GTK_STATE_FLAG_LINK) | GTK_STATE_FLAG_VISITED);
+      state = ctk_css_node_get_state (link->cssnode);
+      ctk_css_node_set_state (link->cssnode, (state & ~GTK_STATE_FLAG_LINK) | GTK_STATE_FLAG_VISITED);
       /* FIXME: shouldn't have to redo everything here */
-      gtk_label_clear_layout (label);
+      ctk_label_clear_layout (label);
     }
 }
 
 static void
-gtk_label_activate_current_link (GtkLabel *label)
+ctk_label_activate_current_link (GtkLabel *label)
 {
   GtkLabelLink *link;
   GtkWidget *widget = GTK_WIDGET (label);
 
-  link = gtk_label_get_focus_link (label);
+  link = ctk_label_get_focus_link (label);
 
   if (link)
     {
@@ -6784,26 +6784,26 @@ gtk_label_activate_current_link (GtkLabel *label)
       GtkWindow *window;
       GtkWidget *default_widget, *focus_widget;
 
-      toplevel = gtk_widget_get_toplevel (widget);
+      toplevel = ctk_widget_get_toplevel (widget);
       if (GTK_IS_WINDOW (toplevel))
         {
           window = GTK_WINDOW (toplevel);
 
           if (window)
             {
-              default_widget = gtk_window_get_default_widget (window);
-              focus_widget = gtk_window_get_focus (window);
+              default_widget = ctk_window_get_default_widget (window);
+              focus_widget = ctk_window_get_focus (window);
 
               if (default_widget != widget &&
-                  !(widget == focus_widget && (!default_widget || !gtk_widget_is_sensitive (default_widget))))
-                gtk_window_activate_default (window);
+                  !(widget == focus_widget && (!default_widget || !ctk_widget_is_sensitive (default_widget))))
+                ctk_window_activate_default (window);
             }
         }
     }
 }
 
 static GtkLabelLink *
-gtk_label_get_current_link (GtkLabel *label)
+ctk_label_get_current_link (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
   GtkLabelLink *link;
@@ -6814,13 +6814,13 @@ gtk_label_get_current_link (GtkLabel *label)
   if (priv->select_info->link_clicked)
     link = priv->select_info->active_link;
   else
-    link = gtk_label_get_focus_link (label);
+    link = ctk_label_get_focus_link (label);
 
   return link;
 }
 
 /**
- * gtk_label_get_current_uri:
+ * ctk_label_get_current_uri:
  * @label: a #GtkLabel
  *
  * Returns the URI for the currently active link in the label.
@@ -6837,13 +6837,13 @@ gtk_label_get_current_link (GtkLabel *label)
  * Since: 2.18
  */
 const gchar *
-gtk_label_get_current_uri (GtkLabel *label)
+ctk_label_get_current_uri (GtkLabel *label)
 {
   GtkLabelLink *link;
 
   g_return_val_if_fail (GTK_IS_LABEL (label), NULL);
 
-  link = gtk_label_get_current_link (label);
+  link = ctk_label_get_current_link (label);
 
   if (link)
     return link->uri;
@@ -6852,7 +6852,7 @@ gtk_label_get_current_uri (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_track_visited_links:
+ * ctk_label_set_track_visited_links:
  * @label: a #GtkLabel
  * @track_links: %TRUE to track visited links
  *
@@ -6862,7 +6862,7 @@ gtk_label_get_current_uri (GtkLabel *label)
  * Since: 2.18
  */
 void
-gtk_label_set_track_visited_links (GtkLabel *label,
+ctk_label_set_track_visited_links (GtkLabel *label,
                                    gboolean  track_links)
 {
   GtkLabelPrivate *priv;
@@ -6878,14 +6878,14 @@ gtk_label_set_track_visited_links (GtkLabel *label,
       priv->track_links = track_links;
 
       /* FIXME: shouldn't have to redo everything here */
-      gtk_label_recalculate (label);
+      ctk_label_recalculate (label);
 
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_TRACK_VISITED_LINKS]);
     }
 }
 
 /**
- * gtk_label_get_track_visited_links:
+ * ctk_label_get_track_visited_links:
  * @label: a #GtkLabel
  *
  * Returns whether the label is currently keeping track
@@ -6896,7 +6896,7 @@ gtk_label_set_track_visited_links (GtkLabel *label,
  * Since: 2.18
  */
 gboolean
-gtk_label_get_track_visited_links (GtkLabel *label)
+ctk_label_get_track_visited_links (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), FALSE);
 
@@ -6904,7 +6904,7 @@ gtk_label_get_track_visited_links (GtkLabel *label)
 }
 
 static gboolean
-gtk_label_query_tooltip (GtkWidget  *widget,
+ctk_label_query_tooltip (GtkWidget  *widget,
                          gint        x,
                          gint        y,
                          gboolean    keyboard_tip,
@@ -6938,7 +6938,7 @@ gtk_label_query_tooltip (GtkWidget  *widget,
                 {
                   if (link->title)
                     {
-                      gtk_tooltip_set_markup (tooltip, link->title);
+                      ctk_tooltip_set_markup (tooltip, link->title);
                       return TRUE;
                     }
                   break;
@@ -6947,14 +6947,14 @@ gtk_label_query_tooltip (GtkWidget  *widget,
         }
     }
 
-  return GTK_WIDGET_CLASS (gtk_label_parent_class)->query_tooltip (widget,
+  return GTK_WIDGET_CLASS (ctk_label_parent_class)->query_tooltip (widget,
                                                                    x, y,
                                                                    keyboard_tip,
                                                                    tooltip);
 }
 
 gint
-_gtk_label_get_cursor_position (GtkLabel *label)
+_ctk_label_get_cursor_position (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
@@ -6966,7 +6966,7 @@ _gtk_label_get_cursor_position (GtkLabel *label)
 }
 
 gint
-_gtk_label_get_selection_bound (GtkLabel *label)
+_ctk_label_get_selection_bound (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
@@ -6978,7 +6978,7 @@ _gtk_label_get_selection_bound (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_lines:
+ * ctk_label_set_lines:
  * @label: a #GtkLabel
  * @lines: the desired number of lines, or -1
  *
@@ -6990,7 +6990,7 @@ _gtk_label_get_selection_bound (GtkLabel *label)
  * Since: 3.10
  */
 void
-gtk_label_set_lines (GtkLabel *label,
+ctk_label_set_lines (GtkLabel *label,
                      gint      lines)
 {
   GtkLabelPrivate *priv;
@@ -7002,25 +7002,25 @@ gtk_label_set_lines (GtkLabel *label,
   if (priv->lines != lines)
     {
       priv->lines = lines;
-      gtk_label_clear_layout (label);
+      ctk_label_clear_layout (label);
       g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_LINES]);
-      gtk_widget_queue_resize (GTK_WIDGET (label));
+      ctk_widget_queue_resize (GTK_WIDGET (label));
     }
 }
 
 /**
- * gtk_label_get_lines:
+ * ctk_label_get_lines:
  * @label: a #GtkLabel
  *
  * Gets the number of lines to which an ellipsized, wrapping
- * label should be limited. See gtk_label_set_lines().
+ * label should be limited. See ctk_label_set_lines().
  *
  * Returns: The number of lines
  *
  * Since: 3.10
  */
 gint
-gtk_label_get_lines (GtkLabel *label)
+ctk_label_get_lines (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), -1);
 
@@ -7028,7 +7028,7 @@ gtk_label_get_lines (GtkLabel *label)
 }
 
 gint
-_gtk_label_get_n_links (GtkLabel *label)
+_ctk_label_get_n_links (GtkLabel *label)
 {
   GtkLabelPrivate *priv = label->priv;
 
@@ -7039,7 +7039,7 @@ _gtk_label_get_n_links (GtkLabel *label)
 }
 
 const gchar *
-_gtk_label_get_link_uri (GtkLabel *label,
+_ctk_label_get_link_uri (GtkLabel *label,
                          gint      idx)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -7055,7 +7055,7 @@ _gtk_label_get_link_uri (GtkLabel *label,
 }
 
 void
-_gtk_label_get_link_extent (GtkLabel *label,
+_ctk_label_get_link_extent (GtkLabel *label,
                             gint      idx,
                             gint     *start,
                             gint     *end)
@@ -7082,7 +7082,7 @@ _gtk_label_get_link_extent (GtkLabel *label,
 }
 
 gint
-_gtk_label_get_link_at (GtkLabel *label, 
+_ctk_label_get_link_at (GtkLabel *label, 
                         gint      pos)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -7102,7 +7102,7 @@ _gtk_label_get_link_at (GtkLabel *label,
 }
 
 void
-_gtk_label_activate_link (GtkLabel *label,
+_ctk_label_activate_link (GtkLabel *label,
                           gint      idx)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -7117,7 +7117,7 @@ _gtk_label_activate_link (GtkLabel *label,
 }
 
 gboolean
-_gtk_label_get_link_visited (GtkLabel *label,
+_ctk_label_get_link_visited (GtkLabel *label,
                              gint      idx)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -7132,7 +7132,7 @@ _gtk_label_get_link_visited (GtkLabel *label,
 }
 
 gboolean
-_gtk_label_get_link_focused (GtkLabel *label,
+_ctk_label_get_link_focused (GtkLabel *label,
                              gint      idx)
 {
   GtkLabelPrivate *priv = label->priv;
@@ -7162,7 +7162,7 @@ _gtk_label_get_link_focused (GtkLabel *label,
 }
 
 /**
- * gtk_label_set_xalign:
+ * ctk_label_set_xalign:
  * @label: a #GtkLabel
  * @xalign: the new xalign value, between 0 and 1
  *
@@ -7171,7 +7171,7 @@ _gtk_label_get_link_focused (GtkLabel *label,
  * Since: 3.16
  */
 void
-gtk_label_set_xalign (GtkLabel *label,
+ctk_label_set_xalign (GtkLabel *label,
                       gfloat    xalign)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
@@ -7183,12 +7183,12 @@ gtk_label_set_xalign (GtkLabel *label,
 
   label->priv->xalign = xalign;
 
-  gtk_widget_queue_draw (GTK_WIDGET (label));
+  ctk_widget_queue_draw (GTK_WIDGET (label));
   g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_XALIGN]);
 }
 
 /**
- * gtk_label_get_xalign:
+ * ctk_label_get_xalign:
  * @label: a #GtkLabel
  *
  * Gets the #GtkLabel:xalign property for @label.
@@ -7198,7 +7198,7 @@ gtk_label_set_xalign (GtkLabel *label,
  * Since: 3.16
  */
 gfloat
-gtk_label_get_xalign (GtkLabel *label)
+ctk_label_get_xalign (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), 0.5);
 
@@ -7206,7 +7206,7 @@ gtk_label_get_xalign (GtkLabel *label)
 }
 
 /**
- * gtk_label_set_yalign:
+ * ctk_label_set_yalign:
  * @label: a #GtkLabel
  * @yalign: the new yalign value, between 0 and 1
  *
@@ -7215,7 +7215,7 @@ gtk_label_get_xalign (GtkLabel *label)
  * Since: 3.16
  */
 void
-gtk_label_set_yalign (GtkLabel *label,
+ctk_label_set_yalign (GtkLabel *label,
                       gfloat    yalign)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
@@ -7227,12 +7227,12 @@ gtk_label_set_yalign (GtkLabel *label,
 
   label->priv->yalign = yalign;
 
-  gtk_widget_queue_draw (GTK_WIDGET (label));
+  ctk_widget_queue_draw (GTK_WIDGET (label));
   g_object_notify_by_pspec (G_OBJECT (label), label_props[PROP_YALIGN]);
 }
 
 /**
- * gtk_label_get_yalign:
+ * ctk_label_get_yalign:
  * @label: a #GtkLabel
  *
  * Gets the #GtkLabel:yalign property for @label.
@@ -7242,7 +7242,7 @@ gtk_label_set_yalign (GtkLabel *label,
  * Since: 3.16
  */
 gfloat
-gtk_label_get_yalign (GtkLabel *label)
+ctk_label_get_yalign (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), 0.5);
 

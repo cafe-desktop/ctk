@@ -41,7 +41,7 @@
  * recommended or fallback applications.
  *
  * To obtain the application that has been selected in a #GtkAppChooser,
- * use gtk_app_chooser_get_app_info().
+ * use ctk_app_chooser_get_app_info().
  */
 
 #include "config.h"
@@ -54,10 +54,10 @@
 
 #include <glib.h>
 
-G_DEFINE_INTERFACE (GtkAppChooser, gtk_app_chooser, GTK_TYPE_WIDGET);
+G_DEFINE_INTERFACE (GtkAppChooser, ctk_app_chooser, GTK_TYPE_WIDGET);
 
 static void
-gtk_app_chooser_default_init (GtkAppChooserIface *iface)
+ctk_app_chooser_default_init (GtkAppChooserIface *iface)
 {
   GParamSpec *pspec;
 
@@ -80,7 +80,7 @@ gtk_app_chooser_default_init (GtkAppChooserIface *iface)
 
 
 /**
- * gtk_app_chooser_get_content_type:
+ * ctk_app_chooser_get_content_type:
  * @self: a #GtkAppChooser
  *
  * Returns the current value of the #GtkAppChooser:content-type property.
@@ -90,7 +90,7 @@ gtk_app_chooser_default_init (GtkAppChooserIface *iface)
  * Since: 3.0
  */
 gchar *
-gtk_app_chooser_get_content_type (GtkAppChooser *self)
+ctk_app_chooser_get_content_type (GtkAppChooser *self)
 {
   gchar *retval = NULL;
 
@@ -104,7 +104,7 @@ gtk_app_chooser_get_content_type (GtkAppChooser *self)
 }
 
 /**
- * gtk_app_chooser_get_app_info:
+ * ctk_app_chooser_get_app_info:
  * @self: a #GtkAppChooser
  *
  * Returns the currently selected application.
@@ -115,13 +115,13 @@ gtk_app_chooser_get_content_type (GtkAppChooser *self)
  * Since: 3.0
  */
 GAppInfo *
-gtk_app_chooser_get_app_info (GtkAppChooser *self)
+ctk_app_chooser_get_app_info (GtkAppChooser *self)
 {
   return GTK_APP_CHOOSER_GET_IFACE (self)->get_app_info (self);
 }
 
 /**
- * gtk_app_chooser_refresh:
+ * ctk_app_chooser_refresh:
  * @self: a #GtkAppChooser
  *
  * Reloads the list of applications.
@@ -129,7 +129,7 @@ gtk_app_chooser_get_app_info (GtkAppChooser *self)
  * Since: 3.0
  */
 void
-gtk_app_chooser_refresh (GtkAppChooser *self)
+ctk_app_chooser_refresh (GtkAppChooser *self)
 {
   GTK_APP_CHOOSER_GET_IFACE (self)->refresh (self);
 }

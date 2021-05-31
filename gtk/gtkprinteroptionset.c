@@ -36,12 +36,12 @@ enum {
 static guint signals[LAST_SIGNAL] = { 0 };
 
 /* ugly side-effect of aliasing */
-#undef gtk_printer_option_set
+#undef ctk_printer_option_set
 
-G_DEFINE_TYPE (GtkPrinterOptionSet, gtk_printer_option_set, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GtkPrinterOptionSet, ctk_printer_option_set, G_TYPE_OBJECT)
 
 static void
-gtk_printer_option_set_finalize (GObject *object)
+ctk_printer_option_set_finalize (GObject *object)
 {
   GtkPrinterOptionSet *set = GTK_PRINTER_OPTION_SET (object);
 
@@ -49,22 +49,22 @@ gtk_printer_option_set_finalize (GObject *object)
   g_ptr_array_foreach (set->array, (GFunc)g_object_unref, NULL);
   g_ptr_array_free (set->array, TRUE);
   
-  G_OBJECT_CLASS (gtk_printer_option_set_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_printer_option_set_parent_class)->finalize (object);
 }
 
 static void
-gtk_printer_option_set_init (GtkPrinterOptionSet *set)
+ctk_printer_option_set_init (GtkPrinterOptionSet *set)
 {
   set->array = g_ptr_array_new ();
   set->hash = g_hash_table_new (g_str_hash, g_str_equal);
 }
 
 static void
-gtk_printer_option_set_class_init (GtkPrinterOptionSetClass *class)
+ctk_printer_option_set_class_init (GtkPrinterOptionSetClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
-  gobject_class->finalize = gtk_printer_option_set_finalize;
+  gobject_class->finalize = ctk_printer_option_set_finalize;
 
   signals[CHANGED] =
     g_signal_new (I_("changed"),
@@ -84,13 +84,13 @@ emit_changed (GtkPrinterOptionSet *set)
 }
 
 GtkPrinterOptionSet *
-gtk_printer_option_set_new (void)
+ctk_printer_option_set_new (void)
 {
   return g_object_new (GTK_TYPE_PRINTER_OPTION_SET, NULL);
 }
 
 void
-gtk_printer_option_set_remove (GtkPrinterOptionSet *set,
+ctk_printer_option_set_remove (GtkPrinterOptionSet *set,
 			       GtkPrinterOption    *option)
 {
   int i;
@@ -110,13 +110,13 @@ gtk_printer_option_set_remove (GtkPrinterOptionSet *set,
 }
 
 void
-gtk_printer_option_set_add (GtkPrinterOptionSet *set,
+ctk_printer_option_set_add (GtkPrinterOptionSet *set,
 			    GtkPrinterOption    *option)
 {
   g_object_ref (option);
   
-  if (gtk_printer_option_set_lookup (set, option->name))
-    gtk_printer_option_set_remove (set, option);
+  if (ctk_printer_option_set_lookup (set, option->name))
+    ctk_printer_option_set_remove (set, option);
     
   g_ptr_array_add (set->array, option);
   g_hash_table_insert (set->hash, option->name, option);
@@ -124,7 +124,7 @@ gtk_printer_option_set_add (GtkPrinterOptionSet *set,
 }
 
 GtkPrinterOption *
-gtk_printer_option_set_lookup (GtkPrinterOptionSet *set,
+ctk_printer_option_set_lookup (GtkPrinterOptionSet *set,
 			       const char          *name)
 {
   gpointer ptr;
@@ -135,15 +135,15 @@ gtk_printer_option_set_lookup (GtkPrinterOptionSet *set,
 }
 
 void
-gtk_printer_option_set_clear_conflicts (GtkPrinterOptionSet *set)
+ctk_printer_option_set_clear_conflicts (GtkPrinterOptionSet *set)
 {
-  gtk_printer_option_set_foreach (set,
-				  (GtkPrinterOptionSetFunc)gtk_printer_option_clear_has_conflict,
+  ctk_printer_option_set_foreach (set,
+				  (GtkPrinterOptionSetFunc)ctk_printer_option_clear_has_conflict,
 				  NULL);
 }
 
 /**
- * gtk_printer_option_set_get_groups:
+ * ctk_printer_option_set_get_groups:
  * @set: a #GtkPrinterOptionSet
  *
  * Gets the groups in this set.
@@ -151,7 +151,7 @@ gtk_printer_option_set_clear_conflicts (GtkPrinterOptionSet *set)
  * Returns: (element-type utf8) (transfer full): a list of group names.
  */
 GList *
-gtk_printer_option_set_get_groups (GtkPrinterOptionSet *set)
+ctk_printer_option_set_get_groups (GtkPrinterOptionSet *set)
 {
   GtkPrinterOption *option;
   GList *list = NULL;
@@ -169,7 +169,7 @@ gtk_printer_option_set_get_groups (GtkPrinterOptionSet *set)
 }
 
 void
-gtk_printer_option_set_foreach_in_group (GtkPrinterOptionSet     *set,
+ctk_printer_option_set_foreach_in_group (GtkPrinterOptionSet     *set,
 					 const char              *group,
 					 GtkPrinterOptionSetFunc  func,
 					 gpointer                 user_data)
@@ -187,9 +187,9 @@ gtk_printer_option_set_foreach_in_group (GtkPrinterOptionSet     *set,
 }
 
 void
-gtk_printer_option_set_foreach (GtkPrinterOptionSet *set,
+ctk_printer_option_set_foreach (GtkPrinterOptionSet *set,
 				GtkPrinterOptionSetFunc func,
 				gpointer user_data)
 {
-  gtk_printer_option_set_foreach_in_group (set, NULL, func, user_data);
+  ctk_printer_option_set_foreach_in_group (set, NULL, func, user_data);
 }

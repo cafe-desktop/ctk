@@ -13,7 +13,7 @@ enum {
   GTK_GEARS_N_AXIS
 };
 
-#define GTK_TYPE_GEARS      (gtk_gears_get_type ())
+#define GTK_TYPE_GEARS      (ctk_gears_get_type ())
 #define GTK_GEARS(inst)     (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
                              GTK_TYPE_GEARS,             \
                              GtkGears))
@@ -31,15 +31,15 @@ struct _GtkGearsClass {
   GtkGLAreaClass parent_class;
 };
 
-GType      gtk_gears_get_type      (void) G_GNUC_CONST;
+GType      ctk_gears_get_type      (void) G_GNUC_CONST;
 
-GtkWidget *gtk_gears_new           (void);
-void       gtk_gears_set_axis      (GtkGears *gears,
+GtkWidget *ctk_gears_new           (void);
+void       ctk_gears_set_axis      (GtkGears *gears,
                                     int       axis,
                                     double    value);
-double     gtk_gears_get_axis      (GtkGears *gears,
+double     ctk_gears_get_axis      (GtkGears *gears,
                                     int       axis);
-void       gtk_gears_set_fps_label (GtkGears *gears,
+void       ctk_gears_set_fps_label (GtkGears *gears,
                                     GtkLabel *label);
 
 

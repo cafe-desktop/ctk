@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_SHELL             (gtk_menu_shell_get_type ())
+#define GTK_TYPE_MENU_SHELL             (ctk_menu_shell_get_type ())
 #define GTK_MENU_SHELL(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU_SHELL, GtkMenuShell))
 #define GTK_MENU_SHELL_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU_SHELL, GtkMenuShellClass))
 #define GTK_IS_MENU_SHELL(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU_SHELL))
@@ -77,55 +77,55 @@ struct _GtkMenuShellClass
                                 gint          distance);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType    gtk_menu_shell_get_type       (void) G_GNUC_CONST;
+GType    ctk_menu_shell_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_append         (GtkMenuShell *menu_shell,
+void     ctk_menu_shell_append         (GtkMenuShell *menu_shell,
                                         GtkWidget    *child);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_prepend        (GtkMenuShell *menu_shell,
+void     ctk_menu_shell_prepend        (GtkMenuShell *menu_shell,
                                         GtkWidget    *child);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_insert         (GtkMenuShell *menu_shell,
+void     ctk_menu_shell_insert         (GtkMenuShell *menu_shell,
                                         GtkWidget    *child,
                                         gint          position);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_deactivate     (GtkMenuShell *menu_shell);
+void     ctk_menu_shell_deactivate     (GtkMenuShell *menu_shell);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_select_item    (GtkMenuShell *menu_shell,
+void     ctk_menu_shell_select_item    (GtkMenuShell *menu_shell,
                                         GtkWidget    *menu_item);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_deselect       (GtkMenuShell *menu_shell);
+void     ctk_menu_shell_deselect       (GtkMenuShell *menu_shell);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_activate_item  (GtkMenuShell *menu_shell,
+void     ctk_menu_shell_activate_item  (GtkMenuShell *menu_shell,
                                         GtkWidget    *menu_item,
                                         gboolean      force_deactivate);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_select_first   (GtkMenuShell *menu_shell,
+void     ctk_menu_shell_select_first   (GtkMenuShell *menu_shell,
                                         gboolean      search_sensitive);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_cancel         (GtkMenuShell *menu_shell);
+void     ctk_menu_shell_cancel         (GtkMenuShell *menu_shell);
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_menu_shell_get_take_focus (GtkMenuShell *menu_shell);
+gboolean ctk_menu_shell_get_take_focus (GtkMenuShell *menu_shell);
 GDK_AVAILABLE_IN_ALL
-void     gtk_menu_shell_set_take_focus (GtkMenuShell *menu_shell,
+void     ctk_menu_shell_set_take_focus (GtkMenuShell *menu_shell,
                                         gboolean      take_focus);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_menu_shell_get_selected_item (GtkMenuShell *menu_shell);
+GtkWidget *ctk_menu_shell_get_selected_item (GtkMenuShell *menu_shell);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_menu_shell_get_parent_shell  (GtkMenuShell *menu_shell);
+GtkWidget *ctk_menu_shell_get_parent_shell  (GtkMenuShell *menu_shell);
 
 GDK_AVAILABLE_IN_3_6
-void       gtk_menu_shell_bind_model   (GtkMenuShell *menu_shell,
+void       ctk_menu_shell_bind_model   (GtkMenuShell *menu_shell,
                                         GMenuModel   *model,
                                         const gchar  *action_namespace,
                                         gboolean      with_separators);

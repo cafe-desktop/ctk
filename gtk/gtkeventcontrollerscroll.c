@@ -36,7 +36,7 @@
  *
  * The behavior of the event controller can be modified by the
  * flags given at creation time, or modified at a later point through
- * gtk_event_controller_scroll_set_flags() (e.g. because the scrolling
+ * ctk_event_controller_scroll_set_flags() (e.g. because the scrolling
  * conditions of the widget changed).
  *
  * The controller can be set up to emit motion for either/both vertical
@@ -114,7 +114,7 @@ enum {
 static GParamSpec *pspecs[N_PROPS] = { NULL };
 static guint signals[N_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE (GtkEventControllerScroll, gtk_event_controller_scroll,
+G_DEFINE_TYPE (GtkEventControllerScroll, ctk_event_controller_scroll,
                GTK_TYPE_EVENT_CONTROLLER)
 
 static void
@@ -193,17 +193,17 @@ scroll_history_finish (GtkEventControllerScroll *scroll,
 }
 
 static void
-gtk_event_controller_scroll_finalize (GObject *object)
+ctk_event_controller_scroll_finalize (GObject *object)
 {
   GtkEventControllerScroll *scroll = GTK_EVENT_CONTROLLER_SCROLL (object);
 
   g_array_unref (scroll->scroll_history);
 
-  G_OBJECT_CLASS (gtk_event_controller_scroll_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_event_controller_scroll_parent_class)->finalize (object);
 }
 
 static void
-gtk_event_controller_scroll_set_property (GObject      *object,
+ctk_event_controller_scroll_set_property (GObject      *object,
                                           guint         prop_id,
                                           const GValue *value,
                                           GParamSpec   *pspec)
@@ -213,7 +213,7 @@ gtk_event_controller_scroll_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_FLAGS:
-      gtk_event_controller_scroll_set_flags (scroll, g_value_get_flags (value));
+      ctk_event_controller_scroll_set_flags (scroll, g_value_get_flags (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -222,7 +222,7 @@ gtk_event_controller_scroll_set_property (GObject      *object,
 }
 
 static void
-gtk_event_controller_scroll_get_property (GObject    *object,
+ctk_event_controller_scroll_get_property (GObject    *object,
                                           guint       prop_id,
                                           GValue     *value,
                                           GParamSpec *pspec)
@@ -241,7 +241,7 @@ gtk_event_controller_scroll_get_property (GObject    *object,
 }
 
 static gboolean
-gtk_event_controller_scroll_handle_event (GtkEventController *controller,
+ctk_event_controller_scroll_handle_event (GtkEventController *controller,
                                           const GdkEvent     *event)
 {
   GtkEventControllerScroll *scroll = GTK_EVENT_CONTROLLER_SCROLL (controller);
@@ -350,16 +350,16 @@ gtk_event_controller_scroll_handle_event (GtkEventController *controller,
 }
 
 static void
-gtk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
+ctk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
 {
   GtkEventControllerClass *controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_event_controller_scroll_finalize;
-  object_class->set_property = gtk_event_controller_scroll_set_property;
-  object_class->get_property = gtk_event_controller_scroll_get_property;
+  object_class->finalize = ctk_event_controller_scroll_finalize;
+  object_class->set_property = ctk_event_controller_scroll_set_property;
+  object_class->get_property = ctk_event_controller_scroll_get_property;
 
-  controller_class->handle_event = gtk_event_controller_scroll_handle_event;
+  controller_class->handle_event = ctk_event_controller_scroll_handle_event;
 
   /**
    * GtkEventControllerScroll:flags:
@@ -404,11 +404,11 @@ gtk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
                   GTK_TYPE_EVENT_CONTROLLER_SCROLL,
                   G_SIGNAL_RUN_FIRST,
                   0, NULL, NULL,
-                  _gtk_marshal_VOID__DOUBLE_DOUBLE,
+                  _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
   g_signal_set_va_marshaller (signals[SCROLL],
                               G_TYPE_FROM_CLASS (klass),
-                              _gtk_marshal_VOID__DOUBLE_DOUBLEv);
+                              _ctk_marshal_VOID__DOUBLE_DOUBLEv);
   /**
    * GtkEventControllerScroll::scroll-end:
    * @controller: The object that received the signal
@@ -440,27 +440,27 @@ gtk_event_controller_scroll_class_init (GtkEventControllerScrollClass *klass)
                   GTK_TYPE_EVENT_CONTROLLER_SCROLL,
                   G_SIGNAL_RUN_FIRST,
                   0, NULL, NULL,
-                  _gtk_marshal_VOID__DOUBLE_DOUBLE,
+                  _ctk_marshal_VOID__DOUBLE_DOUBLE,
                   G_TYPE_NONE, 2, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
   g_signal_set_va_marshaller (signals[DECELERATE],
                               G_TYPE_FROM_CLASS (klass),
-                              _gtk_marshal_VOID__DOUBLE_DOUBLEv);
+                              _ctk_marshal_VOID__DOUBLE_DOUBLEv);
 
   g_object_class_install_properties (object_class, N_PROPS, pspecs);
 }
 
 static void
-gtk_event_controller_scroll_init (GtkEventControllerScroll *scroll)
+ctk_event_controller_scroll_init (GtkEventControllerScroll *scroll)
 {
   scroll->scroll_history = g_array_new (FALSE, FALSE,
                                         sizeof (ScrollHistoryElem));
-  gtk_event_controller_set_event_mask (GTK_EVENT_CONTROLLER (scroll),
+  ctk_event_controller_set_event_mask (GTK_EVENT_CONTROLLER (scroll),
                                        GDK_SCROLL_MASK |
                                        GDK_SMOOTH_SCROLL_MASK);
 }
 
 /**
- * gtk_event_controller_scroll_new:
+ * ctk_event_controller_scroll_new:
  * @widget: a #GtkWidget
  * @flags: behavior flags
  *
@@ -472,7 +472,7 @@ gtk_event_controller_scroll_init (GtkEventControllerScroll *scroll)
  * Since: 3.24
  **/
 GtkEventController *
-gtk_event_controller_scroll_new (GtkWidget                     *widget,
+ctk_event_controller_scroll_new (GtkWidget                     *widget,
                                  GtkEventControllerScrollFlags  flags)
 {
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
@@ -484,7 +484,7 @@ gtk_event_controller_scroll_new (GtkWidget                     *widget,
 }
 
 /**
- * gtk_event_controller_scroll_set_flags:
+ * ctk_event_controller_scroll_set_flags:
  * @scroll: a #GtkEventControllerScroll
  * @flags: behavior flags
  *
@@ -493,7 +493,7 @@ gtk_event_controller_scroll_new (GtkWidget                     *widget,
  * Since: 3.24
  **/
 void
-gtk_event_controller_scroll_set_flags (GtkEventControllerScroll      *scroll,
+ctk_event_controller_scroll_set_flags (GtkEventControllerScroll      *scroll,
                                        GtkEventControllerScrollFlags  flags)
 {
   g_return_if_fail (GTK_IS_EVENT_CONTROLLER_SCROLL (scroll));
@@ -506,7 +506,7 @@ gtk_event_controller_scroll_set_flags (GtkEventControllerScroll      *scroll,
 }
 
 /**
- * gtk_event_controller_scroll_get_flags:
+ * ctk_event_controller_scroll_get_flags:
  * @scroll: a #GtkEventControllerScroll
  *
  * Gets the flags conditioning the scroll controller behavior.
@@ -516,7 +516,7 @@ gtk_event_controller_scroll_set_flags (GtkEventControllerScroll      *scroll,
  * Since: 3.24
  **/
 GtkEventControllerScrollFlags
-gtk_event_controller_scroll_get_flags (GtkEventControllerScroll *scroll)
+ctk_event_controller_scroll_get_flags (GtkEventControllerScroll *scroll)
 {
   g_return_val_if_fail (GTK_IS_EVENT_CONTROLLER_SCROLL (scroll),
                         GTK_EVENT_CONTROLLER_SCROLL_NONE);

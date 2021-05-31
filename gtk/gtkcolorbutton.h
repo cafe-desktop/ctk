@@ -40,7 +40,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_COLOR_BUTTON             (gtk_color_button_get_type ())
+#define GTK_TYPE_COLOR_BUTTON             (ctk_color_button_get_type ())
 #define GTK_COLOR_BUTTON(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_BUTTON, GtkColorButton))
 #define GTK_COLOR_BUTTON_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COLOR_BUTTON, GtkColorButtonClass))
 #define GTK_IS_COLOR_BUTTON(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_BUTTON))
@@ -64,48 +64,48 @@ struct _GtkColorButtonClass {
   void (* color_set) (GtkColorButton *cp);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType        gtk_color_button_get_type      (void) G_GNUC_CONST;
+GType        ctk_color_button_get_type      (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *  gtk_color_button_new           (void);
+GtkWidget *  ctk_color_button_new           (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *  gtk_color_button_new_with_rgba (const GdkRGBA  *rgba);
+GtkWidget *  ctk_color_button_new_with_rgba (const GdkRGBA  *rgba);
 GDK_AVAILABLE_IN_ALL
-void         gtk_color_button_set_title     (GtkColorButton *button,
+void         ctk_color_button_set_title     (GtkColorButton *button,
                                              const gchar    *title);
 GDK_AVAILABLE_IN_ALL
-const gchar *gtk_color_button_get_title     (GtkColorButton *button);
+const gchar *ctk_color_button_get_title     (GtkColorButton *button);
 
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_button_new_with_rgba)
-GtkWidget *gtk_color_button_new_with_color (const GdkColor *color);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_set_rgba)
-void       gtk_color_button_set_color      (GtkColorButton *button,
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_button_new_with_rgba)
+GtkWidget *ctk_color_button_new_with_color (const GdkColor *color);
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+void       ctk_color_button_set_color      (GtkColorButton *button,
                                             const GdkColor *color);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_get_rgba)
-void       gtk_color_button_get_color      (GtkColorButton *button,
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+void       ctk_color_button_get_color      (GtkColorButton *button,
                                             GdkColor       *color);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_set_rgba)
-void       gtk_color_button_set_alpha      (GtkColorButton *button,
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+void       ctk_color_button_set_alpha      (GtkColorButton *button,
                                             guint16         alpha);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_get_rgba)
-guint16    gtk_color_button_get_alpha      (GtkColorButton *button);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_set_use_alpha)
-void         gtk_color_button_set_use_alpha (GtkColorButton *button,
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+guint16    ctk_color_button_get_alpha      (GtkColorButton *button);
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_use_alpha)
+void         ctk_color_button_set_use_alpha (GtkColorButton *button,
                                              gboolean        use_alpha);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_get_use_alpha)
-gboolean     gtk_color_button_get_use_alpha (GtkColorButton *button);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_set_rgba)
-void         gtk_color_button_set_rgba      (GtkColorButton *button,
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_use_alpha)
+gboolean     ctk_color_button_get_use_alpha (GtkColorButton *button);
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+void         ctk_color_button_set_rgba      (GtkColorButton *button,
                                              const GdkRGBA  *rgba);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_color_chooser_get_rgba)
-void         gtk_color_button_get_rgba      (GtkColorButton *button,
+GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+void         ctk_color_button_get_rgba      (GtkColorButton *button,
                                              GdkRGBA        *rgba);
 
 G_END_DECLS

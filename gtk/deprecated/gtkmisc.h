@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MISC		       (gtk_misc_get_type ())
+#define GTK_TYPE_MISC		       (ctk_misc_get_type ())
 #define GTK_MISC(obj)		       (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MISC, GtkMisc))
 #define GTK_MISC_CLASS(klass)	       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MISC, GtkMiscClass))
 #define GTK_IS_MISC(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MISC))
@@ -60,32 +60,32 @@ struct _GtkMiscClass
   GtkWidgetClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_DEPRECATED_IN_3_14
-GType   gtk_misc_get_type      (void) G_GNUC_CONST;
+GType   ctk_misc_get_type      (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_14
-void	gtk_misc_set_alignment (GtkMisc *misc,
+void	ctk_misc_set_alignment (GtkMisc *misc,
 				gfloat	 xalign,
 				gfloat	 yalign);
 GDK_DEPRECATED_IN_3_14
-void    gtk_misc_get_alignment (GtkMisc *misc,
+void    ctk_misc_get_alignment (GtkMisc *misc,
 				gfloat  *xalign,
 				gfloat  *yalign);
 GDK_DEPRECATED_IN_3_14
-void	gtk_misc_set_padding   (GtkMisc *misc,
+void	ctk_misc_set_padding   (GtkMisc *misc,
 				gint	 xpad,
 				gint	 ypad);
 GDK_DEPRECATED_IN_3_14
-void    gtk_misc_get_padding   (GtkMisc *misc,
+void    ctk_misc_get_padding   (GtkMisc *misc,
 				gint    *xpad,
 				gint    *ypad);
 
-void   _gtk_misc_get_padding_and_border	(GtkMisc   *misc,
+void   _ctk_misc_get_padding_and_border	(GtkMisc   *misc,
 					 GtkBorder *border);
 
 G_END_DECLS

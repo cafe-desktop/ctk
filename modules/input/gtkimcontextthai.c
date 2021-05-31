@@ -23,9 +23,9 @@
 #include "gtkimcontextthai.h"
 #include "thai-charprop.h"
 
-static void     gtk_im_context_thai_class_init          (GtkIMContextThaiClass *class);
-static void     gtk_im_context_thai_init                (GtkIMContextThai      *im_context_thai);
-static gboolean gtk_im_context_thai_filter_keypress     (GtkIMContext          *context,
+static void     ctk_im_context_thai_class_init          (GtkIMContextThaiClass *class);
+static void     ctk_im_context_thai_init                (GtkIMContextThai      *im_context_thai);
+static gboolean ctk_im_context_thai_filter_keypress     (GtkIMContext          *context,
 						         GdkEventKey           *key);
 
 #ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
@@ -36,25 +36,25 @@ static void     remember_previous_char (GtkIMContextThai *context_thai,
 
 static GObjectClass *parent_class;
 
-GType gtk_type_im_context_thai = 0;
+GType ctk_type_im_context_thai = 0;
 
 void
-gtk_im_context_thai_register_type (GTypeModule *type_module)
+ctk_im_context_thai_register_type (GTypeModule *type_module)
 {
   const GTypeInfo im_context_thai_info =
   {
     sizeof (GtkIMContextThaiClass),
     (GBaseInitFunc) NULL,
     (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) gtk_im_context_thai_class_init,
+    (GClassInitFunc) ctk_im_context_thai_class_init,
     NULL,           /* class_finalize */    
     NULL,           /* class_data */
     sizeof (GtkIMContextThai),
     0,
-    (GInstanceInitFunc) gtk_im_context_thai_init,
+    (GInstanceInitFunc) ctk_im_context_thai_init,
   };
 
-  gtk_type_im_context_thai = 
+  ctk_type_im_context_thai = 
     g_type_module_register_type (type_module,
                                  GTK_TYPE_IM_CONTEXT,
                                  "GtkIMContextThai",
@@ -62,17 +62,17 @@ gtk_im_context_thai_register_type (GTypeModule *type_module)
 }
 
 static void
-gtk_im_context_thai_class_init (GtkIMContextThaiClass *class)
+ctk_im_context_thai_class_init (GtkIMContextThaiClass *class)
 {
   GtkIMContextClass *im_context_class = GTK_IM_CONTEXT_CLASS (class);
 
   parent_class = g_type_class_peek_parent (class);
 
-  im_context_class->filter_keypress = gtk_im_context_thai_filter_keypress;
+  im_context_class->filter_keypress = ctk_im_context_thai_filter_keypress;
 }
 
 static void
-gtk_im_context_thai_init (GtkIMContextThai *context_thai)
+ctk_im_context_thai_init (GtkIMContextThai *context_thai)
 {
 #ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
   forget_previous_chars (context_thai);
@@ -81,7 +81,7 @@ gtk_im_context_thai_init (GtkIMContextThai *context_thai)
 }
 
 GtkIMContext *
-gtk_im_context_thai_new (void)
+ctk_im_context_thai_new (void)
 {
   GtkIMContextThai *result;
 
@@ -91,13 +91,13 @@ gtk_im_context_thai_new (void)
 }
 
 GtkIMContextThaiISCMode
-gtk_im_context_thai_get_isc_mode (GtkIMContextThai *context_thai)
+ctk_im_context_thai_get_isc_mode (GtkIMContextThai *context_thai)
 {
   return context_thai->isc_mode;
 }
 
 GtkIMContextThaiISCMode
-gtk_im_context_thai_set_isc_mode (GtkIMContextThai *context_thai,
+ctk_im_context_thai_set_isc_mode (GtkIMContextThai *context_thai,
                                   GtkIMContextThaiISCMode mode)
 {
   GtkIMContextThaiISCMode prev_mode = context_thai->isc_mode;
@@ -182,7 +182,7 @@ get_previous_char (GtkIMContextThai *context_thai, gint offset)
   gchar *surrounding;
   gint  cursor_index;
 
-  if (gtk_im_context_get_surrounding ((GtkIMContext *)context_thai,
+  if (ctk_im_context_get_surrounding ((GtkIMContext *)context_thai,
                                       &surrounding, &cursor_index))
     {
       gunichar prev_char;
@@ -214,7 +214,7 @@ get_previous_char (GtkIMContextThai *context_thai, gint offset)
 }
 
 static gboolean
-gtk_im_context_thai_commit_chars (GtkIMContextThai *context_thai,
+ctk_im_context_thai_commit_chars (GtkIMContextThai *context_thai,
                                   gunichar *s, gsize len)
 {
   gchar *utf8;
@@ -236,7 +236,7 @@ accept_input (GtkIMContextThai *context_thai, gunichar new_char)
   remember_previous_char (context_thai, new_char);
 #endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
 
-  return gtk_im_context_thai_commit_chars (context_thai, &new_char, 1);
+  return ctk_im_context_thai_commit_chars (context_thai, &new_char, 1);
 }
 
 static gboolean
@@ -245,7 +245,7 @@ reorder_input (GtkIMContextThai *context_thai,
 {
   gunichar buf[2];
 
-  if (!gtk_im_context_delete_surrounding (GTK_IM_CONTEXT (context_thai), -1, 1))
+  if (!ctk_im_context_delete_surrounding (GTK_IM_CONTEXT (context_thai), -1, 1))
     return FALSE;
 
 #ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
@@ -256,13 +256,13 @@ reorder_input (GtkIMContextThai *context_thai,
 
   buf[0] = new_char;
   buf[1] = prev_char;
-  return gtk_im_context_thai_commit_chars (context_thai, buf, 2);
+  return ctk_im_context_thai_commit_chars (context_thai, buf, 2);
 }
 
 static gboolean
 replace_input (GtkIMContextThai *context_thai, gunichar new_char)
 {
-  if (!gtk_im_context_delete_surrounding (GTK_IM_CONTEXT (context_thai), -1, 1))
+  if (!ctk_im_context_delete_surrounding (GTK_IM_CONTEXT (context_thai), -1, 1))
     return FALSE;
 
 #ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
@@ -270,11 +270,11 @@ replace_input (GtkIMContextThai *context_thai, gunichar new_char)
   remember_previous_char (context_thai, new_char);
 #endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
 
-  return gtk_im_context_thai_commit_chars (context_thai, &new_char, 1);
+  return ctk_im_context_thai_commit_chars (context_thai, &new_char, 1);
 }
 
 static gboolean
-gtk_im_context_thai_filter_keypress (GtkIMContext *context,
+ctk_im_context_thai_filter_keypress (GtkIMContext *context,
                                      GdkEventKey  *event)
 {
   GtkIMContextThai *context_thai = GTK_IM_CONTEXT_THAI (context);
@@ -304,7 +304,7 @@ gtk_im_context_thai_filter_keypress (GtkIMContext *context,
     prev_char = ' ';
   new_char = gdk_keyval_to_unicode (event->keyval);
   is_reject = TRUE;
-  isc_mode = gtk_im_context_thai_get_isc_mode (context_thai);
+  isc_mode = ctk_im_context_thai_get_isc_mode (context_thai);
   if (thai_is_accept (new_char, prev_char, isc_mode))
     {
       accept_input (context_thai, new_char);

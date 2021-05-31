@@ -31,8 +31,8 @@ scribble_configure_event (GtkWidget         *widget,
   if (surface)
     cairo_surface_destroy (surface);
 
-  gtk_widget_get_allocation (widget, &allocation);
-  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+  ctk_widget_get_allocation (widget, &allocation);
+  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
                                                allocation.width,
                                                allocation.height);
@@ -84,7 +84,7 @@ draw_brush (GtkWidget *widget,
   cairo_destroy (cr);
 
   /* Now invalidate the affected region of the drawing area. */
-  gdk_window_invalidate_rect (gtk_widget_get_window (widget),
+  gdk_window_invalidate_rect (ctk_widget_get_window (widget),
                               &update_rect,
                               FALSE);
 }
@@ -118,7 +118,7 @@ scribble_motion_notify_event (GtkWidget      *widget,
   /* This call is very important; it requests the next motion event.
    * If you don't call gdk_window_get_pointer() you'll only get
    * a single motion event. The reason is that we specified
-   * GDK_POINTER_MOTION_HINT_MASK to gtk_widget_set_events().
+   * GDK_POINTER_MOTION_HINT_MASK to ctk_widget_set_events().
    * If we hadn't specified that, we could just use event->x, event->y
    * as the pointer location. But we'd also get deluged in events.
    * By requesting the next event as we handle the current one,
@@ -154,8 +154,8 @@ checkerboard_draw (GtkWidget *da,
    */
 
   xcount = 0;
-  width = gtk_widget_get_allocated_width (da);
-  height = gtk_widget_get_allocated_height (da);
+  width = ctk_widget_get_allocated_width (da);
+  height = ctk_widget_get_allocated_height (da);
   i = SPACING;
   while (i < width)
     {
@@ -207,38 +207,38 @@ do_drawingarea (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_screen (GTK_WINDOW (window),
-                             gtk_widget_get_screen (do_widget));
-      gtk_window_set_title (GTK_WINDOW (window), "Drawing Area");
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (GTK_WINDOW (window),
+                             ctk_widget_get_screen (do_widget));
+      ctk_window_set_title (GTK_WINDOW (window), "Drawing Area");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (close_window), NULL);
 
-      gtk_container_set_border_width (GTK_CONTAINER (window), 8);
+      ctk_container_set_border_width (GTK_CONTAINER (window), 8);
 
-      vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-      gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-      gtk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+      ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
+      ctk_container_add (GTK_CONTAINER (window), vbox);
 
       /*
        * Create the checkerboard area
        */
 
-      label = gtk_label_new (NULL);
-      gtk_label_set_markup (GTK_LABEL (label),
+      label = ctk_label_new (NULL);
+      ctk_label_set_markup (GTK_LABEL (label),
                             "<u>Checkerboard pattern</u>");
-      gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-      frame = gtk_frame_new (NULL);
-      gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+      frame = ctk_frame_new (NULL);
+      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
+      ctk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
-      da = gtk_drawing_area_new ();
+      da = ctk_drawing_area_new ();
       /* set a minimum size */
-      gtk_widget_set_size_request (da, 100, 100);
+      ctk_widget_set_size_request (da, 100, 100);
 
-      gtk_container_add (GTK_CONTAINER (frame), da);
+      ctk_container_add (GTK_CONTAINER (frame), da);
 
       g_signal_connect (da, "draw",
                         G_CALLBACK (checkerboard_draw), NULL);
@@ -247,20 +247,20 @@ do_drawingarea (GtkWidget *do_widget)
        * Create the scribble area
        */
 
-      label = gtk_label_new (NULL);
-      gtk_label_set_markup (GTK_LABEL (label),
+      label = ctk_label_new (NULL);
+      ctk_label_set_markup (GTK_LABEL (label),
                             "<u>Scribble area</u>");
-      gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-      frame = gtk_frame_new (NULL);
-      gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-      gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+      frame = ctk_frame_new (NULL);
+      ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
+      ctk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
-      da = gtk_drawing_area_new ();
+      da = ctk_drawing_area_new ();
       /* set a minimum size */
-      gtk_widget_set_size_request (da, 100, 100);
+      ctk_widget_set_size_request (da, 100, 100);
 
-      gtk_container_add (GTK_CONTAINER (frame), da);
+      ctk_container_add (GTK_CONTAINER (frame), da);
 
       /* Signals used to handle backing surface */
 
@@ -280,7 +280,7 @@ do_drawingarea (GtkWidget *do_widget)
       /* Ask to receive events the drawing area doesn't normally
        * subscribe to
        */
-      gtk_widget_set_events (da, gtk_widget_get_events (da)
+      ctk_widget_set_events (da, ctk_widget_get_events (da)
                              | GDK_LEAVE_NOTIFY_MASK
                              | GDK_BUTTON_PRESS_MASK
                              | GDK_POINTER_MOTION_MASK
@@ -288,10 +288,10 @@ do_drawingarea (GtkWidget *do_widget)
 
     }
 
-  if (!gtk_widget_get_visible (window))
-      gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+      ctk_widget_show_all (window);
   else
-      gtk_widget_destroy (window);
+      ctk_widget_destroy (window);
 
   return window;
 }

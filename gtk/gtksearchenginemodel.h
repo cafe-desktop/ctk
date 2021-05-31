@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_ENGINE_MODEL		(_gtk_search_engine_model_get_type ())
+#define GTK_TYPE_SEARCH_ENGINE_MODEL		(_ctk_search_engine_model_get_type ())
 #define GTK_SEARCH_ENGINE_MODEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEARCH_ENGINE_MODEL, GtkSearchEngineModel))
 #define GTK_SEARCH_ENGINE_MODEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEARCH_ENGINE_MODEL, GtkSearchEngineModelClass))
 #define GTK_IS_SEARCH_ENGINE_MODEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEARCH_ENGINE_MODEL))
@@ -35,9 +35,9 @@ G_BEGIN_DECLS
 typedef struct _GtkSearchEngineModel GtkSearchEngineModel;
 typedef struct _GtkSearchEngineModelClass GtkSearchEngineModelClass;
 
-GType            _gtk_search_engine_model_get_type (void);
+GType            _ctk_search_engine_model_get_type (void);
 
-GtkSearchEngine *_gtk_search_engine_model_new      (GtkFileSystemModel *model);
+GtkSearchEngine *_ctk_search_engine_model_new      (GtkFileSystemModel *model);
 
 G_END_DECLS
 

@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_OPERATION_PREVIEW                  (gtk_print_operation_preview_get_type ())
+#define GTK_TYPE_PRINT_OPERATION_PREVIEW                  (ctk_print_operation_preview_get_type ())
 #define GTK_PRINT_OPERATION_PREVIEW(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_OPERATION_PREVIEW, GtkPrintOperationPreview))
 #define GTK_IS_PRINT_OPERATION_PREVIEW(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_OPERATION_PREVIEW))
 #define GTK_PRINT_OPERATION_PREVIEW_GET_IFACE(obj)        (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_PRINT_OPERATION_PREVIEW, GtkPrintOperationPreviewIface))
@@ -56,26 +56,26 @@ struct _GtkPrintOperationPreviewIface
   void              (*end_preview)    (GtkPrintOperationPreview *preview);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
-  void (*_gtk_reserved5) (void);
-  void (*_gtk_reserved6) (void);
-  void (*_gtk_reserved7) (void);
-  void (*_gtk_reserved8) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
+  void (*_ctk_reserved5) (void);
+  void (*_ctk_reserved6) (void);
+  void (*_ctk_reserved7) (void);
+  void (*_ctk_reserved8) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType   gtk_print_operation_preview_get_type       (void) G_GNUC_CONST;
+GType   ctk_print_operation_preview_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void     gtk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
+void     ctk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
 						  gint                      page_nr);
 GDK_AVAILABLE_IN_ALL
-void     gtk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview);
+void     ctk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview);
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_print_operation_preview_is_selected (GtkPrintOperationPreview *preview,
+gboolean ctk_print_operation_preview_is_selected (GtkPrintOperationPreview *preview,
 						  gint                      page_nr);
 
 G_END_DECLS

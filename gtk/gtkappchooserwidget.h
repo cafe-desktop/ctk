@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APP_CHOOSER_WIDGET            (gtk_app_chooser_widget_get_type ())
+#define GTK_TYPE_APP_CHOOSER_WIDGET            (ctk_app_chooser_widget_get_type ())
 #define GTK_APP_CHOOSER_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_APP_CHOOSER_WIDGET, GtkAppChooserWidget))
 #define GTK_APP_CHOOSER_WIDGET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_APP_CHOOSER_WIDGET, GtkAppChooserWidgetClass))
 #define GTK_IS_APP_CHOOSER_WIDGET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_APP_CHOOSER_WIDGET))
@@ -85,46 +85,46 @@ struct _GtkAppChooserWidgetClass {
 };
 
 GDK_AVAILABLE_IN_ALL
-GType         gtk_app_chooser_widget_get_type             (void) G_GNUC_CONST;
+GType         ctk_app_chooser_widget_get_type             (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *   gtk_app_chooser_widget_new                  (const gchar         *content_type);
+GtkWidget *   ctk_app_chooser_widget_new                  (const gchar         *content_type);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_app_chooser_widget_set_show_default     (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_default     (GtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      gtk_app_chooser_widget_get_show_default     (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_default     (GtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_app_chooser_widget_set_show_recommended (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_recommended (GtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      gtk_app_chooser_widget_get_show_recommended (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_recommended (GtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_app_chooser_widget_set_show_fallback    (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_fallback    (GtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      gtk_app_chooser_widget_get_show_fallback    (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_fallback    (GtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_app_chooser_widget_set_show_other       (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_other       (GtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      gtk_app_chooser_widget_get_show_other       (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_other       (GtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_app_chooser_widget_set_show_all         (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_show_all         (GtkAppChooserWidget *self,
                                                            gboolean             setting);
 GDK_AVAILABLE_IN_ALL
-gboolean      gtk_app_chooser_widget_get_show_all         (GtkAppChooserWidget *self);
+gboolean      ctk_app_chooser_widget_get_show_all         (GtkAppChooserWidget *self);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_app_chooser_widget_set_default_text     (GtkAppChooserWidget *self,
+void          ctk_app_chooser_widget_set_default_text     (GtkAppChooserWidget *self,
                                                            const gchar         *text);
 GDK_AVAILABLE_IN_ALL
-const gchar * gtk_app_chooser_widget_get_default_text     (GtkAppChooserWidget *self);
+const gchar * ctk_app_chooser_widget_get_default_text     (GtkAppChooserWidget *self);
 
 G_END_DECLS
 

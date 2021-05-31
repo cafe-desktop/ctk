@@ -39,7 +39,7 @@
 #define EMPIRIC_MANIFEST_RESOURCE_INDEX 2
 
 
-static HMODULE gtk_dll;
+static HMODULE ctk_dll;
 
 BOOL WINAPI
 DllMain (HINSTANCE hinstDLL,
@@ -49,7 +49,7 @@ DllMain (HINSTANCE hinstDLL,
   switch (fdwReason)
     {
     case DLL_PROCESS_ATTACH:
-      gtk_dll = (HMODULE) hinstDLL;
+      ctk_dll = (HMODULE) hinstDLL;
       break;
     }
 
@@ -92,7 +92,7 @@ find_first_manifest (HMODULE  module_handle,
  * g_once_init_enter (leaking once is OK, Windows will clean up after us).
  */
 void
-_gtk_load_dll_with_libgtk3_manifest (const gchar *dll_name)
+_ctk_load_dll_with_libgtk3_manifest (const gchar *dll_name)
 {
   HANDLE activation_ctx_handle;
   ACTCTXA activation_ctx_descriptor;
@@ -102,7 +102,7 @@ _gtk_load_dll_with_libgtk3_manifest (const gchar *dll_name)
   DWORD error_code;
 
   resource_name = NULL;
-  EnumResourceNames (gtk_dll, RT_MANIFEST, find_first_manifest,
+  EnumResourceNames (ctk_dll, RT_MANIFEST, find_first_manifest,
                      (LONG_PTR) &resource_name);
 
   if (resource_name == NULL)
@@ -113,7 +113,7 @@ _gtk_load_dll_with_libgtk3_manifest (const gchar *dll_name)
   activation_ctx_descriptor.dwFlags = ACTCTX_FLAG_RESOURCE_NAME_VALID |
                                       ACTCTX_FLAG_HMODULE_VALID |
                                       ACTCTX_FLAG_SET_PROCESS_DEFAULT;
-  activation_ctx_descriptor.hModule = gtk_dll;
+  activation_ctx_descriptor.hModule = ctk_dll;
   activation_ctx_descriptor.lpResourceName = resource_name;
   activation_ctx_handle = CreateActCtx (&activation_ctx_descriptor);
   error_code = GetLastError ();
@@ -121,7 +121,7 @@ _gtk_load_dll_with_libgtk3_manifest (const gchar *dll_name)
   if (activation_ctx_handle == INVALID_HANDLE_VALUE &&
       error_code != ERROR_SXS_PROCESS_DEFAULT_ALREADY_SET)
     g_warning ("Failed to CreateActCtx for module %p, resource %p: %lu",
-               gtk_dll, resource_name, GetLastError ());
+               ctk_dll, resource_name, GetLastError ());
   else if (error_code != ERROR_SXS_PROCESS_DEFAULT_ALREADY_SET)
     {
       activation_cookie = 0;
@@ -143,29 +143,29 @@ _gtk_load_dll_with_libgtk3_manifest (const gchar *dll_name)
 }
 
 const gchar *
-_gtk_get_libdir (void)
+_ctk_get_libdir (void)
 {
-  static char *gtk_libdir = NULL;
-  if (gtk_libdir == NULL)
+  static char *ctk_libdir = NULL;
+  if (ctk_libdir == NULL)
     {
-      gchar *root = g_win32_get_package_installation_directory_of_module (gtk_dll);
+      gchar *root = g_win32_get_package_installation_directory_of_module (ctk_dll);
       gchar *slash = strrchr (root, '\\');
       if (slash != NULL &&
           g_ascii_strcasecmp (slash + 1, ".libs") == 0)
-        gtk_libdir = GTK_LIBDIR;
+        ctk_libdir = GTK_LIBDIR;
       else
-        gtk_libdir = g_build_filename (root, "lib", NULL);
+        ctk_libdir = g_build_filename (root, "lib", NULL);
       g_free (root);
     }
 
-  return gtk_libdir;
+  return ctk_libdir;
 }
 
 const gchar *
-_gtk_get_localedir (void)
+_ctk_get_localedir (void)
 {
-  static char *gtk_localedir = NULL;
-  if (gtk_localedir == NULL)
+  static char *ctk_localedir = NULL;
+  if (ctk_localedir == NULL)
     {
       const gchar *p;
       gchar *root, *temp;
@@ -179,53 +179,53 @@ _gtk_get_localedir (void)
       while (*--p != '/')
         ;
 
-      root = g_win32_get_package_installation_directory_of_module (gtk_dll);
+      root = g_win32_get_package_installation_directory_of_module (ctk_dll);
       temp = g_build_filename (root, p, NULL);
       g_free (root);
 
-      /* gtk_localedir is passed to bindtextdomain() which isn't
+      /* ctk_localedir is passed to bindtextdomain() which isn't
        * UTF-8-aware.
        */
-      gtk_localedir = g_win32_locale_filename_from_utf8 (temp);
+      ctk_localedir = g_win32_locale_filename_from_utf8 (temp);
       g_free (temp);
     }
-  return gtk_localedir;
+  return ctk_localedir;
 }
 
 const gchar *
-_gtk_get_datadir (void)
+_ctk_get_datadir (void)
 {
-  static char *gtk_datadir = NULL;
-  if (gtk_datadir == NULL)
+  static char *ctk_datadir = NULL;
+  if (ctk_datadir == NULL)
     {
-      gchar *root = g_win32_get_package_installation_directory_of_module (gtk_dll);
-      gtk_datadir = g_build_filename (root, "share", NULL);
+      gchar *root = g_win32_get_package_installation_directory_of_module (ctk_dll);
+      ctk_datadir = g_build_filename (root, "share", NULL);
       g_free (root);
     }
 
-  return gtk_datadir;
+  return ctk_datadir;
 }
 
 const gchar *
-_gtk_get_sysconfdir (void)
+_ctk_get_sysconfdir (void)
 {
-  static char *gtk_sysconfdir = NULL;
-  if (gtk_sysconfdir == NULL)
+  static char *ctk_sysconfdir = NULL;
+  if (ctk_sysconfdir == NULL)
     {
-      gchar *root = g_win32_get_package_installation_directory_of_module (gtk_dll);
-      gtk_sysconfdir = g_build_filename (root, "etc", NULL);
+      gchar *root = g_win32_get_package_installation_directory_of_module (ctk_dll);
+      ctk_sysconfdir = g_build_filename (root, "etc", NULL);
       g_free (root);
     }
 
-  return gtk_sysconfdir;
+  return ctk_sysconfdir;
 }
 
 const gchar *
-_gtk_get_data_prefix (void)
+_ctk_get_data_prefix (void)
 {
-  static char *gtk_data_prefix = NULL;
-  if (gtk_data_prefix == NULL)
-    gtk_data_prefix = g_win32_get_package_installation_directory_of_module (gtk_dll);
+  static char *ctk_data_prefix = NULL;
+  if (ctk_data_prefix == NULL)
+    ctk_data_prefix = g_win32_get_package_installation_directory_of_module (ctk_dll);
 
-  return gtk_data_prefix;
+  return ctk_data_prefix;
 }

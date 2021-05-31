@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-void _gtk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
+void _ctk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
                                                    gint icon_size);
 
 G_END_DECLS

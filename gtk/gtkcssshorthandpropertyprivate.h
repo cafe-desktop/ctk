@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_SHORTHAND_PROPERTY           (_gtk_css_shorthand_property_get_type ())
+#define GTK_TYPE_CSS_SHORTHAND_PROPERTY           (_ctk_css_shorthand_property_get_type ())
 #define GTK_CSS_SHORTHAND_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandProperty))
 #define GTK_CSS_SHORTHAND_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandPropertyClass))
 #define GTK_IS_CSS_SHORTHAND_PROPERTY(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_SHORTHAND_PROPERTY))
@@ -66,13 +66,13 @@ struct _GtkCssShorthandPropertyClass
   GtkStylePropertyClass parent_class;
 };
 
-void                    _gtk_css_shorthand_property_init_properties     (void);
+void                    _ctk_css_shorthand_property_init_properties     (void);
 
-GType                   _gtk_css_shorthand_property_get_type            (void) G_GNUC_CONST;
+GType                   _ctk_css_shorthand_property_get_type            (void) G_GNUC_CONST;
 
-GtkCssStyleProperty *   _gtk_css_shorthand_property_get_subproperty     (GtkCssShorthandProperty *shorthand,
+GtkCssStyleProperty *   _ctk_css_shorthand_property_get_subproperty     (GtkCssShorthandProperty *shorthand,
                                                                          guint                    property);
-guint                   _gtk_css_shorthand_property_get_n_subproperties (GtkCssShorthandProperty *shorthand);
+guint                   _ctk_css_shorthand_property_get_n_subproperties (GtkCssShorthandProperty *shorthand);
 
 
 G_END_DECLS

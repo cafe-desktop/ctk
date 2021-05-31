@@ -225,7 +225,7 @@ guint32 _gdk_wayland_screen_get_output_scale (GdkScreen        *screen,
 struct wl_output *_gdk_wayland_screen_get_wl_output (GdkScreen *screen,
                                                      gint monitor_num);
 
-void _gdk_wayland_screen_set_has_gtk_shell (GdkScreen       *screen);
+void _gdk_wayland_screen_set_has_ctk_shell (GdkScreen       *screen);
 
 void _gdk_wayland_screen_init_xdg_output (GdkScreen *screen);
 
@@ -276,7 +276,7 @@ EGLSurface gdk_wayland_window_get_egl_surface (GdkWindow *window,
 EGLSurface gdk_wayland_window_get_dummy_egl_surface (GdkWindow *window,
 						     EGLConfig config);
 
-struct gtk_surface1 * gdk_wayland_window_get_gtk_surface (GdkWindow *window);
+struct ctk_surface1 * gdk_wayland_window_get_ctk_surface (GdkWindow *window);
 
 void gdk_wayland_seat_set_global_cursor (GdkSeat   *seat,
                                          GdkCursor *cursor);

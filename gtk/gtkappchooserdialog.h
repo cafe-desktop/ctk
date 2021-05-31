@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APP_CHOOSER_DIALOG            (gtk_app_chooser_dialog_get_type ())
+#define GTK_TYPE_APP_CHOOSER_DIALOG            (ctk_app_chooser_dialog_get_type ())
 #define GTK_APP_CHOOSER_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_APP_CHOOSER_DIALOG, GtkAppChooserDialog))
 #define GTK_APP_CHOOSER_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_APP_CHOOSER_DIALOG, GtkAppChooserDialogClass))
 #define GTK_IS_APP_CHOOSER_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_APP_CHOOSER_DIALOG))
@@ -66,24 +66,24 @@ struct _GtkAppChooserDialogClass {
 };
 
 GDK_AVAILABLE_IN_ALL
-GType         gtk_app_chooser_dialog_get_type             (void) G_GNUC_CONST;
+GType         ctk_app_chooser_dialog_get_type             (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *   gtk_app_chooser_dialog_new                  (GtkWindow           *parent,
+GtkWidget *   ctk_app_chooser_dialog_new                  (GtkWindow           *parent,
                                                            GtkDialogFlags       flags,
                                                            GFile               *file);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *   gtk_app_chooser_dialog_new_for_content_type (GtkWindow           *parent,
+GtkWidget *   ctk_app_chooser_dialog_new_for_content_type (GtkWindow           *parent,
                                                            GtkDialogFlags       flags,
                                                            const gchar         *content_type);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *   gtk_app_chooser_dialog_get_widget           (GtkAppChooserDialog *self);
+GtkWidget *   ctk_app_chooser_dialog_get_widget           (GtkAppChooserDialog *self);
 GDK_AVAILABLE_IN_ALL
-void          gtk_app_chooser_dialog_set_heading          (GtkAppChooserDialog *self,
+void          ctk_app_chooser_dialog_set_heading          (GtkAppChooserDialog *self,
                                                            const gchar         *heading);
 GDK_AVAILABLE_IN_ALL
-const gchar * gtk_app_chooser_dialog_get_heading          (GtkAppChooserDialog *self);
+const gchar * ctk_app_chooser_dialog_get_heading          (GtkAppChooserDialog *self);
 
 G_END_DECLS
 

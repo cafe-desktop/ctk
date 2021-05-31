@@ -20,7 +20,7 @@
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_SIZE_GROUPS            (gtk_inspector_size_groups_get_type())
+#define GTK_TYPE_INSPECTOR_SIZE_GROUPS            (ctk_inspector_size_groups_get_type())
 #define GTK_INSPECTOR_SIZE_GROUPS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroups))
 #define GTK_INSPECTOR_SIZE_GROUPS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_SIZE_GROUPS, GtkInspectorSizeGroupsClass))
 #define GTK_INSPECTOR_IS_SIZE_GROUPS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_SIZE_GROUPS))
@@ -40,8 +40,8 @@ typedef struct _GtkInspectorSizeGroupsClass
 
 G_BEGIN_DECLS
 
-GType gtk_inspector_size_groups_get_type   (void);
-void  gtk_inspector_size_groups_set_object (GtkInspectorSizeGroups *sl,
+GType ctk_inspector_size_groups_get_type   (void);
+void  ctk_inspector_size_groups_set_object (GtkInspectorSizeGroups *sl,
                                             GObject                *object);
 
 G_END_DECLS

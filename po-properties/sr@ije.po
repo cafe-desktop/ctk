@@ -257,7 +257,7 @@ msgstr ""
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 
 #: gtk/gtkaboutdialog.c:502
@@ -2431,7 +2431,7 @@ msgstr "Корак увећања"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Колико од укупног напретка унаприједити помјерајући блок при скоковитом "
 "прираштају"
@@ -4619,10 +4619,10 @@ msgstr "Вриједност"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Вриједност коју враћа gtk_radio_action_get_current_value() када је ова "
+"Вриједност коју враћа ctk_radio_action_get_current_value() када је ова "
 "акција текућа акција своје групе."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -7159,8 +7159,8 @@ msgid "No show all"
 msgstr "Без приказивања свега"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Да ли gtk_widget_show_all() не треба да утиче на овај елемент"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Да ли ctk_widget_show_all() не треба да утиче на овај елемент"
 
 #: gtk/gtkwidget.c:864
 #, fuzzy

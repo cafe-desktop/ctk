@@ -46,13 +46,13 @@ activate_about (GSimpleAction *action,
     NULL
   };
 
-  gtk_show_about_dialog (GTK_WINDOW (gtk_application_get_active_window (app)),
+  ctk_show_about_dialog (GTK_WINDOW (ctk_application_get_active_window (app)),
                          "program-name", "GTK+ Demo",
                          "version", g_strdup_printf ("%s,\nRunning against GTK+ %d.%d.%d",
                                                      PACKAGE_VERSION,
-                                                     gtk_get_major_version (),
-                                                     gtk_get_minor_version (),
-                                                     gtk_get_micro_version ()),
+                                                     ctk_get_major_version (),
+                                                     ctk_get_minor_version (),
+                                                     ctk_get_micro_version ()),
                          "copyright", "(C) 1997-2013 The GTK+ Team",
                          "license-type", GTK_LICENSE_LGPL_2_1,
                          "website", "http://www.gtk.org",
@@ -72,13 +72,13 @@ activate_quit (GSimpleAction *action,
   GtkWidget *win;
   GList *list, *next;
 
-  list = gtk_application_get_windows (app);
+  list = ctk_application_get_windows (app);
   while (list)
     {
       win = list->data;
       next = list->next;
 
-      gtk_widget_destroy (GTK_WIDGET (win));
+      ctk_widget_destroy (GTK_WIDGET (win));
 
       list = next;
     }
@@ -91,16 +91,16 @@ window_closed_cb (GtkWidget *window, gpointer data)
   GtkTreeIter iter;
   PangoStyle style;
 
-  gtk_tree_model_get_iter (cbdata->model, &iter, cbdata->path);
-  gtk_tree_model_get (GTK_TREE_MODEL (cbdata->model), &iter,
+  ctk_tree_model_get_iter (cbdata->model, &iter, cbdata->path);
+  ctk_tree_model_get (GTK_TREE_MODEL (cbdata->model), &iter,
                       STYLE_COLUMN, &style,
                       -1);
   if (style == PANGO_STYLE_ITALIC)
-    gtk_tree_store_set (GTK_TREE_STORE (cbdata->model), &iter,
+    ctk_tree_store_set (GTK_TREE_STORE (cbdata->model), &iter,
                         STYLE_COLUMN, PANGO_STYLE_NORMAL,
                         -1);
 
-  gtk_tree_path_free (cbdata->path);
+  ctk_tree_path_free (cbdata->path);
   g_free (cbdata);
 }
 
@@ -113,7 +113,7 @@ run_example_for_row (GtkWidget    *window,
   GDoDemoFunc func;
   GtkWidget *demo;
 
-  gtk_tree_model_get (GTK_TREE_MODEL (model),
+  ctk_tree_model_get (GTK_TREE_MODEL (model),
                       iter,
                       FUNC_COLUMN, &func,
                       STYLE_COLUMN, &style,
@@ -121,7 +121,7 @@ run_example_for_row (GtkWidget    *window,
 
   if (func)
     {
-      gtk_tree_store_set (GTK_TREE_STORE (model),
+      ctk_tree_store_set (GTK_TREE_STORE (model),
                           iter,
                           STYLE_COLUMN, (style == PANGO_STYLE_ITALIC ? PANGO_STYLE_NORMAL : PANGO_STYLE_ITALIC),
                           -1);
@@ -133,12 +133,12 @@ run_example_for_row (GtkWidget    *window,
 
           cbdata = g_new (CallbackData, 1);
           cbdata->model = model;
-          cbdata->path = gtk_tree_model_get_path (model, iter);
+          cbdata->path = ctk_tree_model_get_path (model, iter);
 
-          if (gtk_widget_is_toplevel (demo))
+          if (ctk_widget_is_toplevel (demo))
             {
-              gtk_window_set_transient_for (GTK_WINDOW (demo), GTK_WINDOW (window));
-              gtk_window_set_modal (GTK_WINDOW (demo), TRUE);
+              ctk_window_set_transient_for (GTK_WINDOW (demo), GTK_WINDOW (window));
+              ctk_window_set_modal (GTK_WINDOW (demo), TRUE);
             }
 
           g_signal_connect (demo, "destroy",
@@ -157,8 +157,8 @@ activate_run (GSimpleAction *action,
   GtkTreeModel *model;
   GtkTreeIter iter;
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
-  if (gtk_tree_selection_get_selected (selection, &model, &iter))
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+  if (ctk_tree_selection_get_selected (selection, &model, &iter))
     run_example_for_row (window, model, &iter);
 }
 
@@ -470,43 +470,43 @@ fontify (GtkTextBuffer *source_buffer)
   gchar *start_ptr, *end_ptr;
   gchar *tag;
 
-  gtk_text_buffer_create_tag (source_buffer, "source",
+  ctk_text_buffer_create_tag (source_buffer, "source",
                               "font", "monospace",
                               NULL);
-  gtk_text_buffer_create_tag (source_buffer, "comment",
+  ctk_text_buffer_create_tag (source_buffer, "comment",
                               "foreground", "DodgerBlue",
                               NULL);
-  gtk_text_buffer_create_tag (source_buffer, "type",
+  ctk_text_buffer_create_tag (source_buffer, "type",
                               "foreground", "ForestGreen",
                               NULL);
-  gtk_text_buffer_create_tag (source_buffer, "string",
+  ctk_text_buffer_create_tag (source_buffer, "string",
                               "foreground", "RosyBrown",
                               "weight", PANGO_WEIGHT_BOLD,
                               NULL);
-  gtk_text_buffer_create_tag (source_buffer, "control",
+  ctk_text_buffer_create_tag (source_buffer, "control",
                               "foreground", "purple",
                               NULL);
-  gtk_text_buffer_create_tag (source_buffer, "preprocessor",
+  ctk_text_buffer_create_tag (source_buffer, "preprocessor",
                               "style", PANGO_STYLE_OBLIQUE,
                               "foreground", "burlywood4",
                               NULL);
-  gtk_text_buffer_create_tag (source_buffer, "function",
+  ctk_text_buffer_create_tag (source_buffer, "function",
                               "weight", PANGO_WEIGHT_BOLD,
                               "foreground", "DarkGoldenrod4",
                               NULL);
 
-  gtk_text_buffer_get_bounds (source_buffer, &start_iter, &tmp_iter);
-  gtk_text_buffer_apply_tag_by_name (source_buffer, "source", &start_iter, &tmp_iter);
+  ctk_text_buffer_get_bounds (source_buffer, &start_iter, &tmp_iter);
+  ctk_text_buffer_apply_tag_by_name (source_buffer, "source", &start_iter, &tmp_iter);
 
   state = STATE_NORMAL;
 
-  gtk_text_buffer_get_iter_at_offset (source_buffer, &start_iter, 0);
+  ctk_text_buffer_get_iter_at_offset (source_buffer, &start_iter, 0);
 
   next_iter = start_iter;
-  while (gtk_text_iter_forward_line (&next_iter))
+  while (ctk_text_iter_forward_line (&next_iter))
     {
       gboolean start = TRUE;
-      start_ptr = text = gtk_text_iter_get_text (&start_iter, &next_iter);
+      start_ptr = text = ctk_text_iter_get_text (&start_iter, &next_iter);
 
       do
         {
@@ -516,14 +516,14 @@ fontify (GtkTextBuffer *source_buffer)
           if (end_ptr)
             {
               tmp_iter = start_iter;
-              gtk_text_iter_forward_chars (&tmp_iter, end_ptr - start_ptr);
+              ctk_text_iter_forward_chars (&tmp_iter, end_ptr - start_ptr);
             }
           else
             {
               tmp_iter = next_iter;
             }
           if (tag)
-            gtk_text_buffer_apply_tag_by_name (source_buffer, tag, &start_iter, &tmp_iter);
+            ctk_text_buffer_apply_tag_by_name (source_buffer, tag, &start_iter, &tmp_iter);
 
           start_iter = tmp_iter;
           start_ptr = end_ptr;
@@ -557,9 +557,9 @@ add_data_tab (const gchar *demoname)
     {
       resource_name = g_strconcat (resource_dir, "/", resources[i], NULL);
 
-      widget = gtk_image_new_from_resource (resource_name);
-      if (gtk_image_get_pixbuf (GTK_IMAGE (widget)) == NULL &&
-          gtk_image_get_animation (GTK_IMAGE (widget)) == NULL)
+      widget = ctk_image_new_from_resource (resource_name);
+      if (ctk_image_get_pixbuf (GTK_IMAGE (widget)) == NULL &&
+          ctk_image_get_animation (GTK_IMAGE (widget)) == NULL)
         {
           GBytes *bytes;
 
@@ -579,11 +579,11 @@ add_data_tab (const gchar *demoname)
               GtkWidget *textview;
 
               widget = create_text (&textview, FALSE);
-              buffer = gtk_text_buffer_new (NULL);
-              gtk_text_buffer_set_text (buffer, g_bytes_get_data (bytes, NULL), g_bytes_get_size (bytes));
+              buffer = ctk_text_buffer_new (NULL);
+              ctk_text_buffer_set_text (buffer, g_bytes_get_data (bytes, NULL), g_bytes_get_size (bytes));
               if (g_str_has_suffix (resource_name, ".c"))
                 fontify (buffer);
-              gtk_text_view_set_buffer (GTK_TEXT_VIEW (textview), buffer);
+              ctk_text_view_set_buffer (GTK_TEXT_VIEW (textview), buffer);
             }
           else
             {
@@ -594,11 +594,11 @@ add_data_tab (const gchar *demoname)
           g_bytes_unref (bytes);
         }
 
-      gtk_widget_show_all (widget);
-      label = gtk_label_new (resources[i]);
-      gtk_widget_show (label);
-      gtk_notebook_append_page (GTK_NOTEBOOK (notebook), widget, label);
-      gtk_container_child_set (GTK_CONTAINER (notebook),
+      ctk_widget_show_all (widget);
+      label = ctk_label_new (resources[i]);
+      ctk_widget_show (label);
+      ctk_notebook_append_page (GTK_NOTEBOOK (notebook), widget, label);
+      ctk_container_child_set (GTK_CONTAINER (notebook),
                                GTK_WIDGET (widget),
                                "tab-expand", TRUE,
                                NULL);
@@ -615,8 +615,8 @@ remove_data_tabs (void)
 {
   gint i;
 
-  for (i = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) - 1; i > 1; i--)
-    gtk_notebook_remove_page (GTK_NOTEBOOK (notebook), i);
+  for (i = ctk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) - 1; i > 1; i--)
+    ctk_notebook_remove_page (GTK_NOTEBOOK (notebook), i);
 }
 
 void
@@ -643,13 +643,13 @@ load_file (const gchar *demoname,
   g_free (current_file);
   current_file = g_strdup (filename);
 
-  info_buffer = gtk_text_buffer_new (NULL);
-  gtk_text_buffer_create_tag (info_buffer, "title",
+  info_buffer = ctk_text_buffer_new (NULL);
+  ctk_text_buffer_create_tag (info_buffer, "title",
                               "font", "Sans 18",
                               "pixels-below-lines", 10,
                               NULL);
 
-  source_buffer = gtk_text_buffer_new (NULL);
+  source_buffer = ctk_text_buffer_new (NULL);
 
   resource_filename = g_strconcat ("/sources/", filename, NULL);
   bytes = g_resources_lookup_data (resource_filename, 0, &err);
@@ -665,7 +665,7 @@ load_file (const gchar *demoname,
   lines = g_strsplit (g_bytes_get_data (bytes, NULL), "\n", -1);
   g_bytes_unref (bytes);
 
-  gtk_text_buffer_get_iter_at_offset (info_buffer, &start, 0);
+  ctk_text_buffer_get_iter_at_offset (info_buffer, &start, 0);
   for (i = 0; lines[i] != NULL; i++)
     {
       gchar *p;
@@ -707,11 +707,11 @@ load_file (const gchar *demoname,
               end = start;
 
               g_assert (strlen (p) >= q - p);
-              gtk_text_buffer_insert (info_buffer, &end, p, q - p);
+              ctk_text_buffer_insert (info_buffer, &end, p, q - p);
               start = end;
 
-              gtk_text_iter_backward_chars (&start, len_chars);
-              gtk_text_buffer_apply_tag_by_name (info_buffer, "title", &start, &end);
+              ctk_text_iter_backward_chars (&start, len_chars);
+              ctk_text_buffer_apply_tag_by_name (info_buffer, "title", &start, &end);
 
               start = end;
 
@@ -727,7 +727,7 @@ load_file (const gchar *demoname,
             p++;
           if (*p == '*' && *(p + 1) == '/')
             {
-              gtk_text_buffer_get_iter_at_offset (source_buffer, &start, 0);
+              ctk_text_buffer_get_iter_at_offset (source_buffer, &start, 0);
               state++;
             }
           else
@@ -744,15 +744,15 @@ load_file (const gchar *demoname,
               if (len > 0)
                 {
                   if (in_para)
-                    gtk_text_buffer_insert (info_buffer, &start, " ", 1);
+                    ctk_text_buffer_insert (info_buffer, &start, " ", 1);
 
                   g_assert (strlen (p) >= len);
-                  gtk_text_buffer_insert (info_buffer, &start, p, len);
+                  ctk_text_buffer_insert (info_buffer, &start, p, len);
                   in_para = 1;
                 }
               else
                 {
-                  gtk_text_buffer_insert (info_buffer, &start, "\n", 1);
+                  ctk_text_buffer_insert (info_buffer, &start, "\n", 1);
                   in_para = 0;
                 }
             }
@@ -772,9 +772,9 @@ load_file (const gchar *demoname,
 
         case 3:
           /* Reading program body */
-          gtk_text_buffer_insert (source_buffer, &start, p, -1);
+          ctk_text_buffer_insert (source_buffer, &start, p, -1);
           if (lines[i+1] != NULL)
-            gtk_text_buffer_insert (source_buffer, &start, "\n", 1);
+            ctk_text_buffer_insert (source_buffer, &start, "\n", 1);
           break;
         }
     }
@@ -783,10 +783,10 @@ load_file (const gchar *demoname,
 
   fontify (source_buffer);
 
-  gtk_text_view_set_buffer (GTK_TEXT_VIEW (source_view), source_buffer);
+  ctk_text_view_set_buffer (GTK_TEXT_VIEW (source_view), source_buffer);
   g_object_unref (source_buffer);
 
-  gtk_text_view_set_buffer (GTK_TEXT_VIEW (info_view), info_buffer);
+  ctk_text_view_set_buffer (GTK_TEXT_VIEW (info_view), info_buffer);
   g_object_unref (info_buffer);
 }
 
@@ -799,10 +799,10 @@ selection_cb (GtkTreeSelection *selection,
   char *filename;
   char *title;
 
-  if (! gtk_tree_selection_get_selected (selection, NULL, &iter))
+  if (! ctk_tree_selection_get_selected (selection, NULL, &iter))
     return;
 
-  gtk_tree_model_get (model, &iter,
+  ctk_tree_model_get (model, &iter,
                       NAME_COLUMN, &name,
                       TITLE_COLUMN, &title,
                       FILENAME_COLUMN, &filename,
@@ -811,7 +811,7 @@ selection_cb (GtkTreeSelection *selection,
   if (filename)
     load_file (name, filename);
 
-  gtk_header_bar_set_title (GTK_HEADER_BAR (headerbar), title);
+  ctk_header_bar_set_title (GTK_HEADER_BAR (headerbar), title);
 
   g_free (name);
   g_free (title);
@@ -825,14 +825,14 @@ create_text (GtkWidget **view,
   GtkWidget *scrolled_window;
   GtkWidget *text_view;
 
-  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+  scrolled_window = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
                                   GTK_POLICY_AUTOMATIC,
                                   GTK_POLICY_AUTOMATIC);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window),
+  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window),
                                        GTK_SHADOW_NONE);
 
-  *view = text_view = gtk_text_view_new ();
+  *view = text_view = ctk_text_view_new ();
   g_object_set (text_view,
                 "left-margin", 20,
                 "right-margin", 20,
@@ -840,22 +840,22 @@ create_text (GtkWidget **view,
                 "bottom-margin", 20,
                 NULL);
 
-  gtk_text_view_set_editable (GTK_TEXT_VIEW (text_view), FALSE);
-  gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (text_view), FALSE);
+  ctk_text_view_set_editable (GTK_TEXT_VIEW (text_view), FALSE);
+  ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (text_view), FALSE);
 
-  gtk_container_add (GTK_CONTAINER (scrolled_window), text_view);
+  ctk_container_add (GTK_CONTAINER (scrolled_window), text_view);
 
   if (is_source)
     {
-      gtk_text_view_set_monospace (GTK_TEXT_VIEW (text_view), TRUE);
-      gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (text_view), GTK_WRAP_NONE);
+      ctk_text_view_set_monospace (GTK_TEXT_VIEW (text_view), TRUE);
+      ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (text_view), GTK_WRAP_NONE);
     }
   else
     {
       /* Make it a bit nicer for text. */
-      gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (text_view), GTK_WRAP_WORD);
-      gtk_text_view_set_pixels_above_lines (GTK_TEXT_VIEW (text_view), 2);
-      gtk_text_view_set_pixels_below_lines (GTK_TEXT_VIEW (text_view), 2);
+      ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (text_view), GTK_WRAP_WORD);
+      ctk_text_view_set_pixels_above_lines (GTK_TEXT_VIEW (text_view), 2);
+      ctk_text_view_set_pixels_below_lines (GTK_TEXT_VIEW (text_view), 2);
     }
 
   return scrolled_window;
@@ -864,7 +864,7 @@ create_text (GtkWidget **view,
 static void
 populate_model (GtkTreeModel *model)
 {
-  Demo *d = gtk_demos;
+  Demo *d = ctk_demos;
 
   /* this code only supports 1 level of children. If we
    * want more we probably have to use a recursing function.
@@ -874,9 +874,9 @@ populate_model (GtkTreeModel *model)
       Demo *children = d->children;
       GtkTreeIter iter;
 
-      gtk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
+      ctk_tree_store_append (GTK_TREE_STORE (model), &iter, NULL);
 
-      gtk_tree_store_set (GTK_TREE_STORE (model),
+      ctk_tree_store_set (GTK_TREE_STORE (model),
                           &iter,
                           NAME_COLUMN, d->name,
                           TITLE_COLUMN, d->title,
@@ -894,9 +894,9 @@ populate_model (GtkTreeModel *model)
         {
           GtkTreeIter child_iter;
 
-          gtk_tree_store_append (GTK_TREE_STORE (model), &child_iter, &iter);
+          ctk_tree_store_append (GTK_TREE_STORE (model), &child_iter, &iter);
 
-          gtk_tree_store_set (GTK_TREE_STORE (model),
+          ctk_tree_store_set (GTK_TREE_STORE (model),
                               &child_iter,
                               NAME_COLUMN, children->name,
                               TITLE_COLUMN, children->title,
@@ -918,12 +918,12 @@ startup (GApplication *app)
   GMenuModel *appmenu;
   gchar *ids[] = { "appmenu", NULL };
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_objects_from_resource (builder, "/ui/appmenu.ui", ids, NULL);
+  builder = ctk_builder_new ();
+  ctk_builder_add_objects_from_resource (builder, "/ui/appmenu.ui", ids, NULL);
 
-  appmenu = (GMenuModel *)gtk_builder_get_object (builder, "appmenu");
+  appmenu = (GMenuModel *)ctk_builder_get_object (builder, "appmenu");
 
-  gtk_application_set_app_menu (GTK_APPLICATION (app), appmenu);
+  ctk_application_set_app_menu (GTK_APPLICATION (app), appmenu);
 
   g_object_unref (builder);
 }
@@ -937,9 +937,9 @@ row_activated_cb (GtkWidget         *tree_view,
   GtkWidget *window;
   GtkTreeModel *model;
 
-  window = gtk_widget_get_toplevel (tree_view);
-  model = gtk_tree_view_get_model (GTK_TREE_VIEW (tree_view));
-  gtk_tree_model_get_iter (model, &iter, path);
+  window = ctk_widget_get_toplevel (tree_view);
+  model = ctk_tree_view_get_model (GTK_TREE_VIEW (tree_view));
+  ctk_tree_model_get_iter (model, &iter, path);
 
   run_example_for_row (window, model, &iter);
 }
@@ -949,8 +949,8 @@ start_cb (GtkMenuItem *item, GtkWidget *scrollbar)
 {
   GtkAdjustment *adj;
 
-  adj = gtk_range_get_adjustment (GTK_RANGE (scrollbar));
-  gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
+  adj = ctk_range_get_adjustment (GTK_RANGE (scrollbar));
+  ctk_adjustment_set_value (adj, ctk_adjustment_get_lower (adj));
 }
 
 static void
@@ -958,14 +958,14 @@ end_cb (GtkMenuItem *item, GtkWidget *scrollbar)
 {
   GtkAdjustment *adj;
 
-  adj = gtk_range_get_adjustment (GTK_RANGE (scrollbar));
-  gtk_adjustment_set_value (adj, gtk_adjustment_get_upper (adj) - gtk_adjustment_get_page_size (adj));
+  adj = ctk_range_get_adjustment (GTK_RANGE (scrollbar));
+  ctk_adjustment_set_value (adj, ctk_adjustment_get_upper (adj) - ctk_adjustment_get_page_size (adj));
 }
 
 static gboolean
 scrollbar_popup (GtkWidget *scrollbar, GtkWidget *menu)
 {
-  gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+  ctk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 
   return TRUE;
 }
@@ -988,60 +988,60 @@ activate (GApplication *app)
     { "run", activate_run, NULL, NULL, NULL }
   };
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_resource (builder, "/ui/main.ui", &error);
+  builder = ctk_builder_new ();
+  ctk_builder_add_from_resource (builder, "/ui/main.ui", &error);
   if (error != NULL)
     {
       g_critical ("%s", error->message);
       exit (1);
     }
 
-  window = (GtkWindow *)gtk_builder_get_object (builder, "window");
-  gtk_application_add_window (GTK_APPLICATION (app), window);
+  window = (GtkWindow *)ctk_builder_get_object (builder, "window");
+  ctk_application_add_window (GTK_APPLICATION (app), window);
   g_action_map_add_action_entries (G_ACTION_MAP (window),
                                    win_entries, G_N_ELEMENTS (win_entries),
                                    window);
 
-  notebook = (GtkWidget *)gtk_builder_get_object (builder, "notebook");
+  notebook = (GtkWidget *)ctk_builder_get_object (builder, "notebook");
 
-  info_view = (GtkWidget *)gtk_builder_get_object (builder, "info-textview");
-  source_view = (GtkWidget *)gtk_builder_get_object (builder, "source-textview");
-  headerbar = (GtkWidget *)gtk_builder_get_object (builder, "headerbar");
-  treeview = (GtkWidget *)gtk_builder_get_object (builder, "treeview");
-  model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+  info_view = (GtkWidget *)ctk_builder_get_object (builder, "info-textview");
+  source_view = (GtkWidget *)ctk_builder_get_object (builder, "source-textview");
+  headerbar = (GtkWidget *)ctk_builder_get_object (builder, "headerbar");
+  treeview = (GtkWidget *)ctk_builder_get_object (builder, "treeview");
+  model = ctk_tree_view_get_model (GTK_TREE_VIEW (treeview));
 
-  sw = (GtkWidget *)gtk_builder_get_object (builder, "source-scrolledwindow");
-  scrollbar = gtk_scrolled_window_get_vscrollbar (GTK_SCROLLED_WINDOW (sw));
+  sw = (GtkWidget *)ctk_builder_get_object (builder, "source-scrolledwindow");
+  scrollbar = ctk_scrolled_window_get_vscrollbar (GTK_SCROLLED_WINDOW (sw));
 
-  menu = gtk_menu_new ();
+  menu = ctk_menu_new ();
 
-  item = gtk_menu_item_new_with_label ("Start");
+  item = ctk_menu_item_new_with_label ("Start");
   g_signal_connect (item, "activate", G_CALLBACK (start_cb), scrollbar);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-  item = gtk_menu_item_new_with_label ("End");
+  item = ctk_menu_item_new_with_label ("End");
   g_signal_connect (item, "activate", G_CALLBACK (end_cb), scrollbar);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-  gtk_widget_show_all (menu);
+  ctk_widget_show_all (menu);
 
   g_signal_connect (scrollbar, "popup-menu", G_CALLBACK (scrollbar_popup), menu);
 
-  load_file (gtk_demos[0].name, gtk_demos[0].filename);
+  load_file (ctk_demos[0].name, ctk_demos[0].filename);
 
   populate_model (model);
 
   g_signal_connect (treeview, "row-activated", G_CALLBACK (row_activated_cb), model);
 
-  widget = (GtkWidget *)gtk_builder_get_object (builder, "treeview-selection");
+  widget = (GtkWidget *)ctk_builder_get_object (builder, "treeview-selection");
   g_signal_connect (widget, "changed", G_CALLBACK (selection_cb), model);
 
-  gtk_tree_model_get_iter_first (gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)), &iter);
-  gtk_tree_selection_select_iter (GTK_TREE_SELECTION (widget), &iter);
+  ctk_tree_model_get_iter_first (ctk_tree_view_get_model (GTK_TREE_VIEW (treeview)), &iter);
+  ctk_tree_selection_select_iter (GTK_TREE_SELECTION (widget), &iter);
 
-  gtk_tree_view_collapse_all (GTK_TREE_VIEW (treeview));
+  ctk_tree_view_collapse_all (GTK_TREE_VIEW (treeview));
 
-  gtk_widget_show_all (GTK_WIDGET (window));
+  ctk_widget_show_all (GTK_WIDGET (window));
 
   g_object_unref (builder);
 }
@@ -1058,7 +1058,7 @@ list_demos (void)
 {
   Demo *d, *c;
 
-  d = gtk_demos;
+  d = ctk_demos;
 
   while (d->title)
     {
@@ -1104,9 +1104,9 @@ command_line (GApplication            *app,
   if (name == NULL)
     goto out;
 
-  window = gtk_application_get_windows (GTK_APPLICATION (app))->data;
+  window = ctk_application_get_windows (GTK_APPLICATION (app))->data;
 
-  d = gtk_demos;
+  d = ctk_demos;
 
   while (d->title)
     {
@@ -1133,8 +1133,8 @@ out:
     {
       demo = (func) (window);
 
-      gtk_window_set_transient_for (GTK_WINDOW (demo), GTK_WINDOW (window));
-      gtk_window_set_modal (GTK_WINDOW (demo), TRUE);
+      ctk_window_set_transient_for (GTK_WINDOW (demo), GTK_WINDOW (window));
+      ctk_window_set_modal (GTK_WINDOW (demo), TRUE);
     }
 
   if (autoquit)
@@ -1147,9 +1147,9 @@ static void
 print_version (void)
 {
   g_print ("gtk3-demo %d.%d.%d\n",
-           gtk_get_major_version (),
-           gtk_get_minor_version (),
-           gtk_get_micro_version ());
+           ctk_get_major_version (),
+           ctk_get_minor_version (),
+           ctk_get_micro_version ());
 }
 
 static int
@@ -1189,7 +1189,7 @@ main (int argc, char **argv)
     }
   /* -- End of hack -- */
 
-  app = gtk_application_new ("org.gtk.Demo", G_APPLICATION_NON_UNIQUE|G_APPLICATION_HANDLES_COMMAND_LINE);
+  app = ctk_application_new ("org.gtk.Demo", G_APPLICATION_NON_UNIQUE|G_APPLICATION_HANDLES_COMMAND_LINE);
 
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),

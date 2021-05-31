@@ -48,16 +48,16 @@
  * clicked. Clicking again will cause the toggle button to return to its
  * normal state.
  *
- * A toggle button is created by calling either gtk_toggle_button_new() or
- * gtk_toggle_button_new_with_label(). If using the former, it is advisable to
+ * A toggle button is created by calling either ctk_toggle_button_new() or
+ * ctk_toggle_button_new_with_label(). If using the former, it is advisable to
  * pack a widget, (such as a #GtkLabel and/or a #GtkImage), into the toggle
  * button’s container. (See #GtkButton for more information).
  *
  * The state of a #GtkToggleButton can be set specifically using
- * gtk_toggle_button_set_active(), and retrieved using
- * gtk_toggle_button_get_active().
+ * ctk_toggle_button_set_active(), and retrieved using
+ * ctk_toggle_button_get_active().
  *
- * To simply switch the state of a toggle button, use gtk_toggle_button_toggled().
+ * To simply switch the state of a toggle button, use ctk_toggle_button_toggled().
  *
  * # CSS nodes
  *
@@ -68,7 +68,7 @@
  *
  * |[<!-- language="C" -->
  * static void output_state (GtkToggleButton *source, gpointer user_data) {
- *   printf ("Active: %d\n", gtk_toggle_button_get_active (source));
+ *   printf ("Active: %d\n", ctk_toggle_button_get_active (source));
  * }
  *
  * void make_toggles (void) {
@@ -76,32 +76,32 @@
  *   GtkWidget *box;
  *   const char *text;
  *
- *   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
- *   box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
+ *   window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+ *   box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
  *
  *   text = "Hi, I’m a toggle button.";
- *   toggle1 = gtk_toggle_button_new_with_label (text);
+ *   toggle1 = ctk_toggle_button_new_with_label (text);
  *
  *   // Makes this toggle button invisible
- *   gtk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (toggle1),
+ *   ctk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (toggle1),
  *                               TRUE);
  *
  *   g_signal_connect (toggle1, "toggled",
  *                     G_CALLBACK (output_state),
  *                     NULL);
- *   gtk_container_add (GTK_CONTAINER (box), toggle1);
+ *   ctk_container_add (GTK_CONTAINER (box), toggle1);
  *
  *   text = "Hi, I’m a toggle button.";
- *   toggle2 = gtk_toggle_button_new_with_label (text);
- *   gtk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (toggle2),
+ *   toggle2 = ctk_toggle_button_new_with_label (text);
+ *   ctk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (toggle2),
  *                               FALSE);
  *   g_signal_connect (toggle2, "toggled",
  *                     G_CALLBACK (output_state),
  *                     NULL);
- *   gtk_container_add (GTK_CONTAINER (box), toggle2);
+ *   ctk_container_add (GTK_CONTAINER (box), toggle2);
  *
- *   gtk_container_add (GTK_CONTAINER (window), box);
- *   gtk_widget_show_all (window);
+ *   ctk_container_add (GTK_CONTAINER (window), box);
+ *   ctk_widget_show_all (window);
  * }
  * ]|
  */
@@ -133,38 +133,38 @@ enum {
 
 static GParamSpec *toggle_button_props[NUM_PROPERTIES] = { NULL, };
 
-static gboolean gtk_toggle_button_mnemonic_activate  (GtkWidget            *widget,
+static gboolean ctk_toggle_button_mnemonic_activate  (GtkWidget            *widget,
                                                       gboolean              group_cycling);
-static void gtk_toggle_button_clicked       (GtkButton            *button);
-static void gtk_toggle_button_set_property  (GObject              *object,
+static void ctk_toggle_button_clicked       (GtkButton            *button);
+static void ctk_toggle_button_set_property  (GObject              *object,
 					     guint                 prop_id,
 					     const GValue         *value,
 					     GParamSpec           *pspec);
-static void gtk_toggle_button_get_property  (GObject              *object,
+static void ctk_toggle_button_get_property  (GObject              *object,
 					     guint                 prop_id,
 					     GValue               *value,
 					     GParamSpec           *pspec);
 
 
-static void gtk_toggle_button_activatable_interface_init (GtkActivatableIface  *iface);
-static void gtk_toggle_button_update         	     (GtkActivatable       *activatable,
+static void ctk_toggle_button_activatable_interface_init (GtkActivatableIface  *iface);
+static void ctk_toggle_button_update         	     (GtkActivatable       *activatable,
 					 	      GtkAction            *action,
 						      const gchar          *property_name);
-static void gtk_toggle_button_sync_action_properties (GtkActivatable       *activatable,
+static void ctk_toggle_button_sync_action_properties (GtkActivatable       *activatable,
 						      GtkAction            *action);
 
 static GtkActivatableIface *parent_activatable_iface;
 static guint                toggle_button_signals[LAST_SIGNAL] = { 0 };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-G_DEFINE_TYPE_WITH_CODE (GtkToggleButton, gtk_toggle_button, GTK_TYPE_BUTTON,
+G_DEFINE_TYPE_WITH_CODE (GtkToggleButton, ctk_toggle_button, GTK_TYPE_BUTTON,
                          G_ADD_PRIVATE (GtkToggleButton)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
-						gtk_toggle_button_activatable_interface_init))
+						ctk_toggle_button_activatable_interface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
-gtk_toggle_button_class_init (GtkToggleButtonClass *class)
+ctk_toggle_button_class_init (GtkToggleButtonClass *class)
 {
   GObjectClass *gobject_class;
   GtkWidgetClass *widget_class;
@@ -174,12 +174,12 @@ gtk_toggle_button_class_init (GtkToggleButtonClass *class)
   widget_class = (GtkWidgetClass*) class;
   button_class = (GtkButtonClass*) class;
 
-  gobject_class->set_property = gtk_toggle_button_set_property;
-  gobject_class->get_property = gtk_toggle_button_get_property;
+  gobject_class->set_property = ctk_toggle_button_set_property;
+  gobject_class->get_property = ctk_toggle_button_get_property;
 
-  widget_class->mnemonic_activate = gtk_toggle_button_mnemonic_activate;
+  widget_class->mnemonic_activate = ctk_toggle_button_mnemonic_activate;
 
-  button_class->clicked = gtk_toggle_button_clicked;
+  button_class->clicked = ctk_toggle_button_clicked;
 
   class->toggled = NULL;
 
@@ -222,33 +222,33 @@ gtk_toggle_button_class_init (GtkToggleButtonClass *class)
 		  NULL,
 		  G_TYPE_NONE, 0);
 
-  gtk_widget_class_set_accessible_type (widget_class, GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE);
-  gtk_widget_class_set_css_name (widget_class, "button");
+  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE);
+  ctk_widget_class_set_css_name (widget_class, "button");
 }
 
 static void
-gtk_toggle_button_init (GtkToggleButton *toggle_button)
+ctk_toggle_button_init (GtkToggleButton *toggle_button)
 {
   GtkStyleContext *context;
 
-  toggle_button->priv = gtk_toggle_button_get_instance_private (toggle_button);
+  toggle_button->priv = ctk_toggle_button_get_instance_private (toggle_button);
   toggle_button->priv->active = FALSE;
   toggle_button->priv->draw_indicator = FALSE;
 
-  context = gtk_widget_get_style_context (GTK_WIDGET (toggle_button));
-  gtk_style_context_add_class (context, "toggle");
+  context = ctk_widget_get_style_context (GTK_WIDGET (toggle_button));
+  ctk_style_context_add_class (context, "toggle");
 }
 
 static void
-gtk_toggle_button_activatable_interface_init (GtkActivatableIface *iface)
+ctk_toggle_button_activatable_interface_init (GtkActivatableIface *iface)
 {
   parent_activatable_iface = g_type_interface_peek_parent (iface);
-  iface->update = gtk_toggle_button_update;
-  iface->sync_action_properties = gtk_toggle_button_sync_action_properties;
+  iface->update = ctk_toggle_button_update;
+  iface->sync_action_properties = ctk_toggle_button_sync_action_properties;
 }
 
 static void
-gtk_toggle_button_update (GtkActivatable *activatable,
+ctk_toggle_button_update (GtkActivatable *activatable,
 			  GtkAction      *action,
 			  const gchar    *property_name)
 {
@@ -261,16 +261,16 @@ gtk_toggle_button_update (GtkActivatable *activatable,
   if (strcmp (property_name, "active") == 0)
     {
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gtk_action_block_activate (action);
-      gtk_toggle_button_set_active (button, gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
-      gtk_action_unblock_activate (action);
+      ctk_action_block_activate (action);
+      ctk_toggle_button_set_active (button, ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+      ctk_action_unblock_activate (action);
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
 }
 
 static void
-gtk_toggle_button_sync_action_properties (GtkActivatable *activatable,
+ctk_toggle_button_sync_action_properties (GtkActivatable *activatable,
 				          GtkAction      *action)
 {
   GtkToggleButton *button;
@@ -288,27 +288,27 @@ gtk_toggle_button_sync_action_properties (GtkActivatable *activatable,
   button = GTK_TOGGLE_BUTTON (activatable);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  gtk_action_block_activate (action);
-  gtk_toggle_button_set_active (button, gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
-  gtk_action_unblock_activate (action);
+  ctk_action_block_activate (action);
+  ctk_toggle_button_set_active (button, ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+  ctk_action_unblock_activate (action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /**
- * gtk_toggle_button_new:
+ * ctk_toggle_button_new:
  *
- * Creates a new toggle button. A widget should be packed into the button, as in gtk_button_new().
+ * Creates a new toggle button. A widget should be packed into the button, as in ctk_button_new().
  *
  * Returns: a new toggle button.
  */
 GtkWidget*
-gtk_toggle_button_new (void)
+ctk_toggle_button_new (void)
 {
   return g_object_new (GTK_TYPE_TOGGLE_BUTTON, NULL);
 }
 
 /**
- * gtk_toggle_button_new_with_label:
+ * ctk_toggle_button_new_with_label:
  * @label: a string containing the message to be placed in the toggle button.
  *
  * Creates a new toggle button with a text label.
@@ -316,24 +316,24 @@ gtk_toggle_button_new (void)
  * Returns: a new toggle button.
  */
 GtkWidget*
-gtk_toggle_button_new_with_label (const gchar *label)
+ctk_toggle_button_new_with_label (const gchar *label)
 {
   return g_object_new (GTK_TYPE_TOGGLE_BUTTON, "label", label, NULL);
 }
 
 /**
- * gtk_toggle_button_new_with_mnemonic:
+ * ctk_toggle_button_new_with_mnemonic:
  * @label: the text of the button, with an underscore in front of the
  *         mnemonic character
  *
  * Creates a new #GtkToggleButton containing a label. The label
- * will be created using gtk_label_new_with_mnemonic(), so underscores
+ * will be created using ctk_label_new_with_mnemonic(), so underscores
  * in @label indicate the mnemonic for the button.
  *
  * Returns: a new #GtkToggleButton
  */
 GtkWidget*
-gtk_toggle_button_new_with_mnemonic (const gchar *label)
+ctk_toggle_button_new_with_mnemonic (const gchar *label)
 {
   return g_object_new (GTK_TYPE_TOGGLE_BUTTON, 
 		       "label", label, 
@@ -342,7 +342,7 @@ gtk_toggle_button_new_with_mnemonic (const gchar *label)
 }
 
 static void
-gtk_toggle_button_set_property (GObject      *object,
+ctk_toggle_button_set_property (GObject      *object,
 				guint         prop_id,
 				const GValue *value,
 				GParamSpec   *pspec)
@@ -354,13 +354,13 @@ gtk_toggle_button_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_ACTIVE:
-      gtk_toggle_button_set_active (tb, g_value_get_boolean (value));
+      ctk_toggle_button_set_active (tb, g_value_get_boolean (value));
       break;
     case PROP_INCONSISTENT:
-      gtk_toggle_button_set_inconsistent (tb, g_value_get_boolean (value));
+      ctk_toggle_button_set_inconsistent (tb, g_value_get_boolean (value));
       break;
     case PROP_DRAW_INDICATOR:
-      gtk_toggle_button_set_mode (tb, g_value_get_boolean (value));
+      ctk_toggle_button_set_mode (tb, g_value_get_boolean (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -369,7 +369,7 @@ gtk_toggle_button_set_property (GObject      *object,
 }
 
 static void
-gtk_toggle_button_get_property (GObject      *object,
+ctk_toggle_button_get_property (GObject      *object,
 				guint         prop_id,
 				GValue       *value,
 				GParamSpec   *pspec)
@@ -395,7 +395,7 @@ gtk_toggle_button_get_property (GObject      *object,
 }
 
 /**
- * gtk_toggle_button_set_mode:
+ * ctk_toggle_button_set_mode:
  * @toggle_button: a #GtkToggleButton
  * @draw_indicator: if %TRUE, draw the button as a separate indicator
  * and label; if %FALSE, draw the button like a normal button
@@ -412,7 +412,7 @@ gtk_toggle_button_get_property (GObject      *object,
  * not instances of #GtkToggleButton itself.
  */
 void
-gtk_toggle_button_set_mode (GtkToggleButton *toggle_button,
+ctk_toggle_button_set_mode (GtkToggleButton *toggle_button,
 			    gboolean         draw_indicator)
 {
   GtkToggleButtonPrivate *priv;
@@ -427,25 +427,25 @@ gtk_toggle_button_set_mode (GtkToggleButton *toggle_button,
     {
       priv->draw_indicator = draw_indicator;
 
-      if (gtk_widget_get_visible (GTK_WIDGET (toggle_button)))
-	gtk_widget_queue_resize (GTK_WIDGET (toggle_button));
+      if (ctk_widget_get_visible (GTK_WIDGET (toggle_button)))
+	ctk_widget_queue_resize (GTK_WIDGET (toggle_button));
 
       g_object_notify_by_pspec (G_OBJECT (toggle_button), toggle_button_props[PROP_DRAW_INDICATOR]);
     }
 }
 
 /**
- * gtk_toggle_button_get_mode:
+ * ctk_toggle_button_get_mode:
  * @toggle_button: a #GtkToggleButton
  *
  * Retrieves whether the button is displayed as a separate indicator
- * and label. See gtk_toggle_button_set_mode().
+ * and label. See ctk_toggle_button_set_mode().
  *
  * Returns: %TRUE if the togglebutton is drawn as a separate indicator
  *   and label.
  **/
 gboolean
-gtk_toggle_button_get_mode (GtkToggleButton *toggle_button)
+ctk_toggle_button_get_mode (GtkToggleButton *toggle_button)
 {
   g_return_val_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
 
@@ -453,7 +453,7 @@ gtk_toggle_button_get_mode (GtkToggleButton *toggle_button)
 }
 
 /**
- * gtk_toggle_button_set_active:
+ * ctk_toggle_button_set_active:
  * @toggle_button: a #GtkToggleButton.
  * @is_active: %TRUE or %FALSE.
  *
@@ -463,7 +463,7 @@ gtk_toggle_button_get_mode (GtkToggleButton *toggle_button)
  * #GtkButton::clicked signal to be emitted.
  */
 void
-gtk_toggle_button_set_active (GtkToggleButton *toggle_button,
+ctk_toggle_button_set_active (GtkToggleButton *toggle_button,
 			      gboolean         is_active)
 {
   GtkToggleButtonPrivate *priv;
@@ -476,26 +476,26 @@ gtk_toggle_button_set_active (GtkToggleButton *toggle_button,
 
   if (priv->active != is_active)
     {
-      gtk_button_clicked (GTK_BUTTON (toggle_button));
+      ctk_button_clicked (GTK_BUTTON (toggle_button));
       g_object_notify_by_pspec (G_OBJECT (toggle_button), toggle_button_props[PROP_ACTIVE]);
     }
 }
 
 void
-_gtk_toggle_button_set_active (GtkToggleButton *toggle_button,
+_ctk_toggle_button_set_active (GtkToggleButton *toggle_button,
                                gboolean         is_active)
 {
   toggle_button->priv->active = is_active;
 
   if (is_active)
-    gtk_widget_set_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_CHECKED, FALSE);
+    ctk_widget_set_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_CHECKED, FALSE);
   else
-    gtk_widget_unset_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_CHECKED);
+    ctk_widget_unset_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_CHECKED);
 
 }
 
 /**
- * gtk_toggle_button_get_active:
+ * ctk_toggle_button_get_active:
  * @toggle_button: a #GtkToggleButton.
  *
  * Queries a #GtkToggleButton and returns its current state. Returns %TRUE if
@@ -504,7 +504,7 @@ _gtk_toggle_button_set_active (GtkToggleButton *toggle_button,
  * Returns: a #gboolean value.
  */
 gboolean
-gtk_toggle_button_get_active (GtkToggleButton *toggle_button)
+ctk_toggle_button_get_active (GtkToggleButton *toggle_button)
 {
   g_return_val_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
 
@@ -512,7 +512,7 @@ gtk_toggle_button_get_active (GtkToggleButton *toggle_button)
 }
 
 /**
- * gtk_toggle_button_toggled:
+ * ctk_toggle_button_toggled:
  * @toggle_button: a #GtkToggleButton.
  *
  * Emits the #GtkToggleButton::toggled signal on the
@@ -520,7 +520,7 @@ gtk_toggle_button_get_active (GtkToggleButton *toggle_button)
  * application ever to call this function.
  */
 void
-gtk_toggle_button_toggled (GtkToggleButton *toggle_button)
+ctk_toggle_button_toggled (GtkToggleButton *toggle_button)
 {
   g_return_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button));
 
@@ -528,7 +528,7 @@ gtk_toggle_button_toggled (GtkToggleButton *toggle_button)
 }
 
 /**
- * gtk_toggle_button_set_inconsistent:
+ * ctk_toggle_button_set_inconsistent:
  * @toggle_button: a #GtkToggleButton
  * @setting: %TRUE if state is inconsistent
  *
@@ -538,12 +538,12 @@ gtk_toggle_button_toggled (GtkToggleButton *toggle_button)
  * display the toggle in an “in between” state. This function turns on
  * “in between” display.  Normally you would turn off the inconsistent
  * state again if the user toggles the toggle button. This has to be
- * done manually, gtk_toggle_button_set_inconsistent() only affects
+ * done manually, ctk_toggle_button_set_inconsistent() only affects
  * visual appearance, it doesn’t affect the semantics of the button.
  * 
  **/
 void
-gtk_toggle_button_set_inconsistent (GtkToggleButton *toggle_button,
+ctk_toggle_button_set_inconsistent (GtkToggleButton *toggle_button,
                                     gboolean         setting)
 {
   GtkToggleButtonPrivate *priv;
@@ -559,24 +559,24 @@ gtk_toggle_button_set_inconsistent (GtkToggleButton *toggle_button,
       priv->inconsistent = setting;
 
       if (setting)
-        gtk_widget_set_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_INCONSISTENT, FALSE);
+        ctk_widget_set_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_INCONSISTENT, FALSE);
       else
-        gtk_widget_unset_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_INCONSISTENT);
+        ctk_widget_unset_state_flags (GTK_WIDGET (toggle_button), GTK_STATE_FLAG_INCONSISTENT);
 
       g_object_notify_by_pspec (G_OBJECT (toggle_button), toggle_button_props[PROP_INCONSISTENT]);
     }
 }
 
 /**
- * gtk_toggle_button_get_inconsistent:
+ * ctk_toggle_button_get_inconsistent:
  * @toggle_button: a #GtkToggleButton
  * 
- * Gets the value set by gtk_toggle_button_set_inconsistent().
+ * Gets the value set by ctk_toggle_button_set_inconsistent().
  * 
  * Returns: %TRUE if the button is displayed as inconsistent, %FALSE otherwise
  **/
 gboolean
-gtk_toggle_button_get_inconsistent (GtkToggleButton *toggle_button)
+ctk_toggle_button_get_inconsistent (GtkToggleButton *toggle_button)
 {
   g_return_val_if_fail (GTK_IS_TOGGLE_BUTTON (toggle_button), FALSE);
 
@@ -584,36 +584,36 @@ gtk_toggle_button_get_inconsistent (GtkToggleButton *toggle_button)
 }
 
 static gboolean
-gtk_toggle_button_mnemonic_activate (GtkWidget *widget,
+ctk_toggle_button_mnemonic_activate (GtkWidget *widget,
                                      gboolean   group_cycling)
 {
   /*
    * We override the standard implementation in 
-   * gtk_widget_real_mnemonic_activate() in order to focus the widget even
+   * ctk_widget_real_mnemonic_activate() in order to focus the widget even
    * if there is no mnemonic conflict.
    */
-  if (gtk_widget_get_can_focus (widget))
-    gtk_widget_grab_focus (widget);
+  if (ctk_widget_get_can_focus (widget))
+    ctk_widget_grab_focus (widget);
 
   if (!group_cycling)
-    gtk_widget_activate (widget);
+    ctk_widget_activate (widget);
 
   return TRUE;
 }
 
 static void
-gtk_toggle_button_clicked (GtkButton *button)
+ctk_toggle_button_clicked (GtkButton *button)
 {
   GtkToggleButton *toggle_button = GTK_TOGGLE_BUTTON (button);
   GtkToggleButtonPrivate *priv = toggle_button->priv;
 
-  _gtk_toggle_button_set_active (toggle_button, !priv->active);
+  _ctk_toggle_button_set_active (toggle_button, !priv->active);
 
-  gtk_toggle_button_toggled (toggle_button);
+  ctk_toggle_button_toggled (toggle_button);
 
   g_object_notify_by_pspec (G_OBJECT (toggle_button), toggle_button_props[PROP_ACTIVE]);
 
-  if (GTK_BUTTON_CLASS (gtk_toggle_button_parent_class)->clicked)
-    GTK_BUTTON_CLASS (gtk_toggle_button_parent_class)->clicked (button);
+  if (GTK_BUTTON_CLASS (ctk_toggle_button_parent_class)->clicked)
+    GTK_BUTTON_CLASS (ctk_toggle_button_parent_class)->clicked (button);
 }
 

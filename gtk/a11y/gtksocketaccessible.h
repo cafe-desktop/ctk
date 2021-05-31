@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SOCKET_ACCESSIBLE                         (gtk_socket_accessible_get_type ())
+#define GTK_TYPE_SOCKET_ACCESSIBLE                         (ctk_socket_accessible_get_type ())
 #define GTK_SOCKET_ACCESSIBLE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SOCKET_ACCESSIBLE, GtkSocketAccessible))
 #define GTK_SOCKET_ACCESSIBLE_CLASS(klass)                 (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SOCKET_ACCESSIBLE, GtkSocketAccessibleClass))
 #define GTK_IS_SOCKET_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SOCKET_ACCESSIBLE))
@@ -50,10 +50,10 @@ struct _GtkSocketAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_socket_accessible_get_type (void);
+GType ctk_socket_accessible_get_type (void);
 
 GDK_AVAILABLE_IN_ALL
-void gtk_socket_accessible_embed (GtkSocketAccessible *socket, gchar *path);
+void ctk_socket_accessible_embed (GtkSocketAccessible *socket, gchar *path);
 
 G_END_DECLS
 

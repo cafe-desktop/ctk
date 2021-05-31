@@ -30,60 +30,60 @@ G_BEGIN_DECLS
 
 /* --- Gtk+ Test Utility API --- */
 GDK_AVAILABLE_IN_ALL
-void            gtk_test_init                   (int            *argcp,
+void            ctk_test_init                   (int            *argcp,
                                                  char         ***argvp,
                                                  ...);
 GDK_AVAILABLE_IN_ALL
-void            gtk_test_register_all_types     (void);
+void            ctk_test_register_all_types     (void);
 GDK_AVAILABLE_IN_ALL
-const GType*    gtk_test_list_all_types         (guint          *n_types);
+const GType*    ctk_test_list_all_types         (guint          *n_types);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*      gtk_test_find_widget            (GtkWidget      *widget,
+GtkWidget*      ctk_test_find_widget            (GtkWidget      *widget,
                                                  const gchar    *label_pattern,
                                                  GType           widget_type);
 GDK_DEPRECATED_IN_3_20
-GtkWidget*      gtk_test_create_widget          (GType           widget_type,
+GtkWidget*      ctk_test_create_widget          (GType           widget_type,
                                                  const gchar    *first_property_name,
                                                  ...);
 GDK_DEPRECATED_IN_3_20
-GtkWidget*      gtk_test_create_simple_window   (const gchar    *window_title,
+GtkWidget*      ctk_test_create_simple_window   (const gchar    *window_title,
                                                  const gchar    *dialog_text);
 GDK_DEPRECATED_IN_3_20
-GtkWidget*      gtk_test_display_button_window  (const gchar    *window_title,
+GtkWidget*      ctk_test_display_button_window  (const gchar    *window_title,
                                                  const gchar    *dialog_text,
                                                  ...); /* NULL terminated list of (label, &int) pairs */
 GDK_DEPRECATED_IN_3_20
-void            gtk_test_slider_set_perc        (GtkWidget      *widget, /* GtkRange-alike */
+void            ctk_test_slider_set_perc        (GtkWidget      *widget, /* GtkRange-alike */
                                                  double          percentage);
 GDK_DEPRECATED_IN_3_20
-double          gtk_test_slider_get_value       (GtkWidget      *widget);
+double          ctk_test_slider_get_value       (GtkWidget      *widget);
 GDK_DEPRECATED_IN_3_20
-gboolean        gtk_test_spin_button_click      (GtkSpinButton  *spinner,
+gboolean        ctk_test_spin_button_click      (GtkSpinButton  *spinner,
                                                  guint           button,
                                                  gboolean        upwards);
 GDK_AVAILABLE_IN_3_10
-void            gtk_test_widget_wait_for_draw   (GtkWidget      *widget);
+void            ctk_test_widget_wait_for_draw   (GtkWidget      *widget);
 GDK_DEPRECATED_IN_3_20
-gboolean        gtk_test_widget_click           (GtkWidget      *widget,
+gboolean        ctk_test_widget_click           (GtkWidget      *widget,
                                                  guint           button,
                                                  GdkModifierType modifiers);
 GDK_AVAILABLE_IN_ALL
-gboolean        gtk_test_widget_send_key        (GtkWidget      *widget,
+gboolean        ctk_test_widget_send_key        (GtkWidget      *widget,
                                                  guint           keyval,
                                                  GdkModifierType modifiers);
 /* operate on GtkEntry, GtkText, GtkTextView or GtkLabel */
 GDK_DEPRECATED_IN_3_20
-void            gtk_test_text_set               (GtkWidget      *widget,
+void            ctk_test_text_set               (GtkWidget      *widget,
                                                  const gchar    *string);
 GDK_DEPRECATED_IN_3_20
-gchar*          gtk_test_text_get               (GtkWidget      *widget);
+gchar*          ctk_test_text_get               (GtkWidget      *widget);
 
 /* --- Gtk+ Test low-level API --- */
 GDK_AVAILABLE_IN_ALL
-GtkWidget*      gtk_test_find_sibling           (GtkWidget      *base_widget,
+GtkWidget*      ctk_test_find_sibling           (GtkWidget      *base_widget,
                                                  GType           widget_type);
 GDK_AVAILABLE_IN_ALL
-GtkWidget*      gtk_test_find_label             (GtkWidget      *widget,
+GtkWidget*      ctk_test_find_label             (GtkWidget      *widget,
                                                  const gchar    *label_pattern);
 G_END_DECLS
 

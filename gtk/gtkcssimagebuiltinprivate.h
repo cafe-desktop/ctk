@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_BUILTIN           (gtk_css_image_builtin_get_type ())
+#define GTK_TYPE_CSS_IMAGE_BUILTIN           (ctk_css_image_builtin_get_type ())
 #define GTK_CSS_IMAGE_BUILTIN(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltin))
 #define GTK_CSS_IMAGE_BUILTIN_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_BUILTIN, GtkCssImageBuiltinClass))
 #define GTK_IS_CSS_IMAGE_BUILTIN(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_BUILTIN))
@@ -48,11 +48,11 @@ struct _GtkCssImageBuiltinClass
   GtkCssImageClass parent_class;
 };
 
-GType          gtk_css_image_builtin_get_type              (void) G_GNUC_CONST;
+GType          ctk_css_image_builtin_get_type              (void) G_GNUC_CONST;
 
-GtkCssImage *  gtk_css_image_builtin_new                   (void);
+GtkCssImage *  ctk_css_image_builtin_new                   (void);
 
-void           gtk_css_image_builtin_draw                  (GtkCssImage                 *image,
+void           ctk_css_image_builtin_draw                  (GtkCssImage                 *image,
                                                             cairo_t                     *cr,
                                                             double                       width,
                                                             double                       height,

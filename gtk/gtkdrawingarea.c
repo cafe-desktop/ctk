@@ -39,7 +39,7 @@
  * creating a drawing area, the application may want to connect to:
  *
  * - Mouse and button press signals to respond to input from
- *   the user. (Use gtk_widget_add_events() to enable events
+ *   the user. (Use ctk_widget_add_events() to enable events
  *   you wish to receive.)
  *
  * - The #GtkWidget::realize signal to take any necessary actions
@@ -59,7 +59,7 @@
  * Note that GDK automatically clears the exposed area before sending
  * the expose event, and that drawing is implicitly clipped to the exposed
  * area. If you want to have a theme-provided background, you need
- * to call gtk_render_background() in your ::draw method.
+ * to call ctk_render_background() in your ::draw method.
  *
  * ## Simple GtkDrawingArea usage
  *
@@ -71,20 +71,20 @@
  *   GdkRGBA color;
  *   GtkStyleContext *context;
  *
- *   context = gtk_widget_get_style_context (widget);
+ *   context = ctk_widget_get_style_context (widget);
  *
- *   width = gtk_widget_get_allocated_width (widget);
- *   height = gtk_widget_get_allocated_height (widget);
+ *   width = ctk_widget_get_allocated_width (widget);
+ *   height = ctk_widget_get_allocated_height (widget);
  *
- *   gtk_render_background (context, cr, 0, 0, width, height);
+ *   ctk_render_background (context, cr, 0, 0, width, height);
  *
  *   cairo_arc (cr,
  *              width / 2.0, height / 2.0,
  *              MIN (width, height) / 2.0,
  *              0, 2 * G_PI);
  *
- *   gtk_style_context_get_color (context,
- *                                gtk_style_context_get_state (context),
+ *   ctk_style_context_get_color (context,
+ *                                ctk_style_context_get_state (context),
  *                                &color);
  *   gdk_cairo_set_source_rgba (cr, &color);
  *
@@ -93,8 +93,8 @@
  *  return FALSE;
  * }
  * [...]
- *   GtkWidget *drawing_area = gtk_drawing_area_new ();
- *   gtk_widget_set_size_request (drawing_area, 100, 100);
+ *   GtkWidget *drawing_area = ctk_drawing_area_new ();
+ *   ctk_widget_set_size_request (drawing_area, 100, 100);
  *   g_signal_connect (G_OBJECT (drawing_area), "draw",
  *                     G_CALLBACK (draw_callback), NULL);
  * ]|
@@ -102,7 +102,7 @@
  * Draw signals are normally delivered when a drawing area first comes
  * onscreen, or when it’s covered by another window and then uncovered.
  * You can also force an expose event by adding to the “damage region”
- * of the drawing area’s window; gtk_widget_queue_draw_area() and
+ * of the drawing area’s window; ctk_widget_queue_draw_area() and
  * gdk_window_invalidate_rect() are equally good ways to do this.
  * You’ll then get a draw signal for the invalid region.
  *
@@ -111,48 +111,48 @@
  * and the cairo documentation.
  *
  * To receive mouse events on a drawing area, you will need to enable
- * them with gtk_widget_add_events(). To receive keyboard events, you
+ * them with ctk_widget_add_events(). To receive keyboard events, you
  * will need to set the “can-focus” property on the drawing area, and you
  * should probably draw some user-visible indication that the drawing
- * area is focused. Use gtk_widget_has_focus() in your expose event
+ * area is focused. Use ctk_widget_has_focus() in your expose event
  * handler to decide whether to draw the focus indicator. See
- * gtk_render_focus() for one way to draw focus.
+ * ctk_render_focus() for one way to draw focus.
  */
 
-static void gtk_drawing_area_realize       (GtkWidget           *widget);
-static void gtk_drawing_area_style_updated (GtkWidget           *widget);
-static void gtk_drawing_area_size_allocate (GtkWidget           *widget,
+static void ctk_drawing_area_realize       (GtkWidget           *widget);
+static void ctk_drawing_area_style_updated (GtkWidget           *widget);
+static void ctk_drawing_area_size_allocate (GtkWidget           *widget,
                                             GtkAllocation       *allocation);
-static void gtk_drawing_area_send_configure (GtkDrawingArea     *darea);
+static void ctk_drawing_area_send_configure (GtkDrawingArea     *darea);
 
-G_DEFINE_TYPE (GtkDrawingArea, gtk_drawing_area, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE (GtkDrawingArea, ctk_drawing_area, GTK_TYPE_WIDGET)
 
 static void
-gtk_drawing_area_class_init (GtkDrawingAreaClass *class)
+ctk_drawing_area_class_init (GtkDrawingAreaClass *class)
 {
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
 
-  widget_class->realize = gtk_drawing_area_realize;
-  widget_class->size_allocate = gtk_drawing_area_size_allocate;
-  widget_class->style_updated = gtk_drawing_area_style_updated;
+  widget_class->realize = ctk_drawing_area_realize;
+  widget_class->size_allocate = ctk_drawing_area_size_allocate;
+  widget_class->style_updated = ctk_drawing_area_style_updated;
 
-  gtk_widget_class_set_accessible_role (widget_class, ATK_ROLE_DRAWING_AREA);
+  ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_DRAWING_AREA);
 }
 
 static void
-gtk_drawing_area_init (GtkDrawingArea *darea)
+ctk_drawing_area_init (GtkDrawingArea *darea)
 {
 }
 
 /**
- * gtk_drawing_area_new:
+ * ctk_drawing_area_new:
  *
  * Creates a new drawing area.
  *
  * Returns: a new #GtkDrawingArea
  */
 GtkWidget*
-gtk_drawing_area_new (void)
+ctk_drawing_area_new (void)
 {
   return g_object_new (GTK_TYPE_DRAWING_AREA, NULL);
 }
@@ -160,47 +160,47 @@ gtk_drawing_area_new (void)
 static void
 set_background (GtkWidget *widget)
 {
-  if (gtk_widget_get_realized (widget) &&
-      gtk_widget_get_has_window (widget))
+  if (ctk_widget_get_realized (widget) &&
+      ctk_widget_get_has_window (widget))
     {
-      /* We still need to call gtk_style_context_set_background() here for
+      /* We still need to call ctk_style_context_set_background() here for
        * GtkDrawingArea, since clients expect backgrounds set on it (e.g. through
-       * gtk_widget_override_background_color) to be available even when they
+       * ctk_widget_override_background_color) to be available even when they
        * don't chain up from draw().
        * This should be revisited next time we have a major API break.
        */
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gtk_style_context_set_background (gtk_widget_get_style_context (widget),
-                                        gtk_widget_get_window (widget));
+      ctk_style_context_set_background (ctk_widget_get_style_context (widget),
+                                        ctk_widget_get_window (widget));
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 
 static void
-gtk_drawing_area_style_updated (GtkWidget *widget)
+ctk_drawing_area_style_updated (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (gtk_drawing_area_parent_class)->style_updated (widget);
+  GTK_WIDGET_CLASS (ctk_drawing_area_parent_class)->style_updated (widget);
 
   set_background (widget);
 }
 
 static void
-gtk_drawing_area_realize (GtkWidget *widget)
+ctk_drawing_area_realize (GtkWidget *widget)
 {
   GtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
   gint attributes_mask;
 
-  if (!gtk_widget_get_has_window (widget))
+  if (!ctk_widget_get_has_window (widget))
     {
-      GTK_WIDGET_CLASS (gtk_drawing_area_parent_class)->realize (widget);
+      GTK_WIDGET_CLASS (ctk_drawing_area_parent_class)->realize (widget);
     }
   else
     {
-      gtk_widget_set_realized (widget, TRUE);
+      ctk_widget_set_realized (widget, TRUE);
 
-      gtk_widget_get_allocation (widget, &allocation);
+      ctk_widget_get_allocation (widget, &allocation);
 
       attributes.window_type = GDK_WINDOW_CHILD;
       attributes.x = allocation.x;
@@ -208,59 +208,59 @@ gtk_drawing_area_realize (GtkWidget *widget)
       attributes.width = allocation.width;
       attributes.height = allocation.height;
       attributes.wclass = GDK_INPUT_OUTPUT;
-      attributes.visual = gtk_widget_get_visual (widget);
-      attributes.event_mask = gtk_widget_get_events (widget) | GDK_EXPOSURE_MASK;
+      attributes.visual = ctk_widget_get_visual (widget);
+      attributes.event_mask = ctk_widget_get_events (widget) | GDK_EXPOSURE_MASK;
 
       attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-      window = gdk_window_new (gtk_widget_get_parent_window (widget),
+      window = gdk_window_new (ctk_widget_get_parent_window (widget),
                                &attributes, attributes_mask);
-      gtk_widget_register_window (widget, window);
-      gtk_widget_set_window (widget, window);
+      ctk_widget_register_window (widget, window);
+      ctk_widget_set_window (widget, window);
 
       set_background (widget);
     }
 
-  gtk_drawing_area_send_configure (GTK_DRAWING_AREA (widget));
+  ctk_drawing_area_send_configure (GTK_DRAWING_AREA (widget));
 }
 
 static void
-gtk_drawing_area_size_allocate (GtkWidget     *widget,
+ctk_drawing_area_size_allocate (GtkWidget     *widget,
                                 GtkAllocation *allocation)
 {
   g_return_if_fail (GTK_IS_DRAWING_AREA (widget));
   g_return_if_fail (allocation != NULL);
 
-  gtk_widget_set_allocation (widget, allocation);
+  ctk_widget_set_allocation (widget, allocation);
 
-  if (gtk_widget_get_realized (widget))
+  if (ctk_widget_get_realized (widget))
     {
-      if (gtk_widget_get_has_window (widget))
-        gdk_window_move_resize (gtk_widget_get_window (widget),
+      if (ctk_widget_get_has_window (widget))
+        gdk_window_move_resize (ctk_widget_get_window (widget),
                                 allocation->x, allocation->y,
                                 allocation->width, allocation->height);
 
-      gtk_drawing_area_send_configure (GTK_DRAWING_AREA (widget));
+      ctk_drawing_area_send_configure (GTK_DRAWING_AREA (widget));
     }
 }
 
 static void
-gtk_drawing_area_send_configure (GtkDrawingArea *darea)
+ctk_drawing_area_send_configure (GtkDrawingArea *darea)
 {
   GtkAllocation allocation;
   GtkWidget *widget;
   GdkEvent *event = gdk_event_new (GDK_CONFIGURE);
 
   widget = GTK_WIDGET (darea);
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
-  event->configure.window = g_object_ref (gtk_widget_get_window (widget));
+  event->configure.window = g_object_ref (ctk_widget_get_window (widget));
   event->configure.send_event = TRUE;
   event->configure.x = allocation.x;
   event->configure.y = allocation.y;
   event->configure.width = allocation.width;
   event->configure.height = allocation.height;
 
-  gtk_widget_event (widget, event);
+  ctk_widget_event (widget, event);
   gdk_event_free (event);
 }

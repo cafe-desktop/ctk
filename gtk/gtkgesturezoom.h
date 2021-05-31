@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_ZOOM         (gtk_gesture_zoom_get_type ())
+#define GTK_TYPE_GESTURE_ZOOM         (ctk_gesture_zoom_get_type ())
 #define GTK_GESTURE_ZOOM(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_ZOOM, GtkGestureZoom))
 #define GTK_GESTURE_ZOOM_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_ZOOM, GtkGestureZoomClass))
 #define GTK_IS_GESTURE_ZOOM(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_ZOOM))
@@ -40,13 +40,13 @@ typedef struct _GtkGestureZoom GtkGestureZoom;
 typedef struct _GtkGestureZoomClass GtkGestureZoomClass;
 
 GDK_AVAILABLE_IN_3_14
-GType        gtk_gesture_zoom_get_type        (void) G_GNUC_CONST;
+GType        ctk_gesture_zoom_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * gtk_gesture_zoom_new             (GtkWidget      *widget);
+GtkGesture * ctk_gesture_zoom_new             (GtkWidget      *widget);
 
 GDK_AVAILABLE_IN_3_14
-gdouble      gtk_gesture_zoom_get_scale_delta (GtkGestureZoom *gesture);
+gdouble      ctk_gesture_zoom_get_scale_delta (GtkGestureZoom *gesture);
 
 G_END_DECLS
 

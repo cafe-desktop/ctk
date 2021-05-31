@@ -798,10 +798,10 @@ msgstr "Arvo"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"gtk_radio_action_get_current_value() palauttama arvo kun toiminto on "
+"ctk_radio_action_get_current_value() palauttama arvo kun toiminto on "
 "tämänhetkinen toiminto ryhmässään."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1265,10 +1265,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Logo tietoja-laatikkoon. Jos ei asetettu, oletuksena on "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3543,10 +3543,10 @@ msgstr "Edistymisen pulssiaskel"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Osuus koko edistymisen leveydestä, jonka verran kimpoilevaa laatikkoa "
-"siirretään kullakin gtk_entry_progress_pulse()-kutsulla"
+"siirretään kullakin ctk_entry_progress_pulse()-kutsulla"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9560,8 +9560,8 @@ msgid "No show all"
 msgstr "Ei näytä-kaikki"
 
 #: gtk/gtkwidget.c:1261
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Onko gtk_widget_show_all() vaikuttamatta tähän säätimeen"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Onko ctk_widget_show_all() vaikuttamatta tähän säätimeen"
 
 #: gtk/gtkwidget.c:1283
 msgid "Whether this widget has a tooltip"

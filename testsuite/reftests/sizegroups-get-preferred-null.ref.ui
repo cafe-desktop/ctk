@@ -11,7 +11,7 @@
           <child>
             <object class="GtkLabel" id="label1">
               <property name="visible">True</property>
-              <property name="label" translatable="yes">Check that a container that calls gtk_widget_get_preferred_width/height() with natural or minimum being NULL doesn't cause a crash with size groups.</property>
+              <property name="label" translatable="yes">Check that a container that calls ctk_widget_get_preferred_width/height() with natural or minimum being NULL doesn't cause a crash with size groups.</property>
               <property name="wrap">True</property>
             </object>
           </child>

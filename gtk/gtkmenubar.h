@@ -36,7 +36,7 @@
 G_BEGIN_DECLS
 
 
-#define	GTK_TYPE_MENU_BAR               (gtk_menu_bar_get_type ())
+#define	GTK_TYPE_MENU_BAR               (ctk_menu_bar_get_type ())
 #define GTK_MENU_BAR(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU_BAR, GtkMenuBar))
 #define GTK_MENU_BAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU_BAR, GtkMenuBarClass))
 #define GTK_IS_MENU_BAR(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU_BAR))
@@ -60,35 +60,35 @@ struct _GtkMenuBarClass
   GtkMenuShellClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_menu_bar_get_type        (void) G_GNUC_CONST;
+GType      ctk_menu_bar_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_menu_bar_new             (void);
+GtkWidget* ctk_menu_bar_new             (void);
 GDK_AVAILABLE_IN_3_4
-GtkWidget* gtk_menu_bar_new_from_model  (GMenuModel *model);
+GtkWidget* ctk_menu_bar_new_from_model  (GMenuModel *model);
 
 GDK_AVAILABLE_IN_ALL
-GtkPackDirection gtk_menu_bar_get_pack_direction (GtkMenuBar       *menubar);
+GtkPackDirection ctk_menu_bar_get_pack_direction (GtkMenuBar       *menubar);
 GDK_AVAILABLE_IN_ALL
-void             gtk_menu_bar_set_pack_direction (GtkMenuBar       *menubar,
+void             ctk_menu_bar_set_pack_direction (GtkMenuBar       *menubar,
 						  GtkPackDirection  pack_dir);
 GDK_AVAILABLE_IN_ALL
-GtkPackDirection gtk_menu_bar_get_child_pack_direction (GtkMenuBar       *menubar);
+GtkPackDirection ctk_menu_bar_get_child_pack_direction (GtkMenuBar       *menubar);
 GDK_AVAILABLE_IN_ALL
-void             gtk_menu_bar_set_child_pack_direction (GtkMenuBar       *menubar,
+void             ctk_menu_bar_set_child_pack_direction (GtkMenuBar       *menubar,
 							GtkPackDirection  child_pack_dir);
 
 /* Private functions */
-void _gtk_menu_bar_cycle_focus (GtkMenuBar       *menubar,
+void _ctk_menu_bar_cycle_focus (GtkMenuBar       *menubar,
 				GtkDirectionType  dir);
-GList* _gtk_menu_bar_get_viewable_menu_bars (GtkWindow *window);
+GList* _ctk_menu_bar_get_viewable_menu_bars (GtkWindow *window);
 
 
 

@@ -812,10 +812,10 @@ msgstr "Η τιμή"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Η τιμή που επιστρέφεται από το gtk_radio_action_get_current_value() όταν "
+"Η τιμή που επιστρέφεται από το ctk_radio_action_get_current_value() όταν "
 "αυτή η ενέργεια είναι η τρέχουσα ενέργεια της ομάδας του."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1284,10 +1284,10 @@ msgstr "Λογότυπο"
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Το λογότυπο για το διάλογο Περί. Αν δεν έχει τεθεί, η προεπιλογή είναι το "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3509,10 +3509,10 @@ msgstr "Παλμικό βήμα προόδου"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Το κλάσμα του πλάτους της εγγραφής κατά το οποίο θα μετακινείται η γραμμή "
-"προόδου με κάθε κλήση στο gtk_entry_progress_pulse()"
+"προόδου με κάθε κλήση στο ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9297,8 +9297,8 @@ msgid "No show all"
 msgstr "Να μην εμφανίζονται όλα"
 
 #: gtk/gtkwidget.c:1261
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Αν η gtk_widget_show_all() θα επηρεάζει το γραφικό στοιχείο"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Αν η ctk_widget_show_all() θα επηρεάζει το γραφικό στοιχείο"
 
 #: gtk/gtkwidget.c:1283
 msgid "Whether this widget has a tooltip"
@@ -10320,10 +10320,10 @@ msgstr "Ο τίτλος προς χρήση για το χρωματικό πρ�
 
 #~ msgid ""
 #~ "The maximum number of items to be returned by "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 #~ msgstr ""
 #~ "Ο μέγιστος αριθμός αντικειμένων που επιστρέφει το "
-#~ "gtk_recent_manager_get_items()"
+#~ "ctk_recent_manager_get_items()"
 
 #~ msgid "Whether the statusbar has a grip for resizing the toplevel"
 #~ msgstr ""

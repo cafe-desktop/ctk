@@ -30,11 +30,11 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_COLOR_PICKER_PORTAL gtk_color_picker_portal_get_type ()
-G_DECLARE_FINAL_TYPE (GtkColorPickerPortal, gtk_color_picker_portal, GTK, COLOR_PICKER_PORTAL, GObject)
+#define GTK_TYPE_COLOR_PICKER_PORTAL ctk_color_picker_portal_get_type ()
+G_DECLARE_FINAL_TYPE (GtkColorPickerPortal, ctk_color_picker_portal, GTK, COLOR_PICKER_PORTAL, GObject)
 
 GDK_AVAILABLE_IN_ALL
-GtkColorPicker * gtk_color_picker_portal_new (void);
+GtkColorPicker * ctk_color_picker_portal_new (void);
 
 G_END_DECLS
 

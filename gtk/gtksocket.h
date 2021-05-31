@@ -37,7 +37,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SOCKET            (gtk_socket_get_type ())
+#define GTK_TYPE_SOCKET            (ctk_socket_get_type ())
 #define GTK_SOCKET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SOCKET, GtkSocket))
 #define GTK_SOCKET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SOCKET, GtkSocketClass))
 #define GTK_IS_SOCKET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SOCKET))
@@ -64,23 +64,23 @@ struct _GtkSocketClass
   gboolean (*plug_removed) (GtkSocket *socket_);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_socket_get_type        (void) G_GNUC_CONST;
+GType      ctk_socket_get_type        (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_socket_new             (void);
+GtkWidget *ctk_socket_new             (void);
 GDK_AVAILABLE_IN_ALL
-void       gtk_socket_add_id          (GtkSocket *socket_,
+void       ctk_socket_add_id          (GtkSocket *socket_,
                                        Window     window);
 GDK_AVAILABLE_IN_ALL
-Window     gtk_socket_get_id          (GtkSocket *socket_);
+Window     ctk_socket_get_id          (GtkSocket *socket_);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *gtk_socket_get_plug_window (GtkSocket *socket_);
+GdkWindow *ctk_socket_get_plug_window (GtkSocket *socket_);
 
 G_END_DECLS
 

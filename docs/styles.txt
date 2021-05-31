@@ -3,55 +3,55 @@ HANDLING WIDGET STYLES
 
 
 A widget gets created with a default style.
-The global default style can be affected by gtk_widget_set_default_style()
-and can be queried by gtk_widget_get_default_style().
+The global default style can be affected by ctk_widget_set_default_style()
+and can be queried by ctk_widget_get_default_style().
 The initial style that is assigned to a widget as default style upon
 creation can be affected by wrapping the widget's creation as follows:
-gtk_widget_push_style (my_style);
-widget = gtk_type_new (gtk_button_get_type ());
-gtk_widget_pop_style ();
+ctk_widget_push_style (my_style);
+widget = ctk_type_new (ctk_button_get_type ());
+ctk_widget_pop_style ();
 
 There are certain functions to affect widget styles after a widget's
 creation:
 
-gtk_widget_set_style ()
+ctk_widget_set_style ()
   Save the default style and set a user style.
   This will override a previously set user style or
   previously set rc styles.
 
-gtk_widget_reset_rc_styles ()
+ctk_widget_reset_rc_styles ()
   Descends through a widget hierarchy and sets the rc style
   on all widgets that don't have a user style set.
 
-gtk_widget_ensure_style ()
+ctk_widget_ensure_style ()
   Ensure that the widget either has a user style set, or an rc lookup
   has been performed.
 
-gtk_rc_get_style ()
+ctk_rc_get_style ()
   Return an rc style for a widget if there is one.
 
-gtk_widget_set_name ()
+ctk_widget_set_name ()
   Change widget name, and perform a new rc lookup if no user style
   is set.
 
-gtk_widget_realize ()
+ctk_widget_realize ()
   Besides realizing the widget this function will:
   - perform an rc lookup if necessary,
   - attach a widget's style.
 
-gtk_widget_get_style ()
+ctk_widget_get_style ()
   Return a widgets style, this function will perform an rc lookup
   if necessary.
 
-gtk_widget_set_parent ()
+ctk_widget_set_parent ()
   This function will perform rc lookups recursively for all widgets
   that do not have a user style set.
 
-gtk_style_copy ()
+ctk_style_copy ()
   This function can be used to copy a widget's style.
   The style can subsequently be changed (e.g., by modifications to the
   red/green/blue values of a certain color) and then be applied to the
-  widget via gtk_widget_set_style().
+  widget via ctk_widget_set_style().
 
 
 GtkWidget::style_set

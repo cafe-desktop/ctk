@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_CUSTOM_PROPERTY           (_gtk_css_custom_property_get_type ())
+#define GTK_TYPE_CSS_CUSTOM_PROPERTY           (_ctk_css_custom_property_get_type ())
 #define GTK_CSS_CUSTOM_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_CUSTOM_PROPERTY, GtkCssCustomProperty))
 #define GTK_CSS_CUSTOM_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_CUSTOM_PROPERTY, GtkCssCustomPropertyClass))
 #define GTK_IS_CSS_CUSTOM_PROPERTY(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_CUSTOM_PROPERTY))
@@ -47,7 +47,7 @@ struct _GtkCssCustomPropertyClass
   GtkCssStylePropertyClass parent_class;
 };
 
-GType                   _gtk_css_custom_property_get_type        (void) G_GNUC_CONST;
+GType                   _ctk_css_custom_property_get_type        (void) G_GNUC_CONST;
 
 
 G_END_DECLS

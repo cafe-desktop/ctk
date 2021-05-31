@@ -22,9 +22,9 @@
 
 G_BEGIN_DECLS
 
-void _gtk_list_box_accessible_update_cursor     (GtkListBox    *box,
+void _ctk_list_box_accessible_update_cursor     (GtkListBox    *box,
                                                  GtkListBoxRow *row);
-void _gtk_list_box_accessible_selection_changed (GtkListBox    *box);
+void _ctk_list_box_accessible_selection_changed (GtkListBox    *box);
 
 G_END_DECLS
 

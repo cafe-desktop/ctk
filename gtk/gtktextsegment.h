@@ -151,20 +151,20 @@ struct _GtkTextLineSegment {
 
 
 GDK_AVAILABLE_IN_ALL
-GtkTextLineSegment  *gtk_text_line_segment_split (const GtkTextIter *iter);
+GtkTextLineSegment  *ctk_text_line_segment_split (const GtkTextIter *iter);
 
-GtkTextLineSegment *_gtk_char_segment_new                  (const gchar    *text,
+GtkTextLineSegment *_ctk_char_segment_new                  (const gchar    *text,
                                                             guint           len);
-GtkTextLineSegment *_gtk_char_segment_new_from_two_strings (const gchar    *text1,
+GtkTextLineSegment *_ctk_char_segment_new_from_two_strings (const gchar    *text1,
                                                             guint           len1,
 							    guint           chars1,
                                                             const gchar    *text2,
                                                             guint           len2,
 							    guint           chars2);
-GtkTextLineSegment *_gtk_toggle_segment_new                (GtkTextTagInfo *info,
+GtkTextLineSegment *_ctk_toggle_segment_new                (GtkTextTagInfo *info,
                                                             gboolean        on);
 
-void                _gtk_toggle_segment_free               (GtkTextLineSegment *seg);
+void                _ctk_toggle_segment_free               (GtkTextLineSegment *seg);
 
 G_END_DECLS
 

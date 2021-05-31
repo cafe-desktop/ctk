@@ -256,10 +256,10 @@ msgstr "ലോഗോ"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "വിശദീകരണങ്ങള്‍ എഴുതുന്ന പെട്ടിയ്ക്കുളള ലോഗോ. ഇത് സെറ്റ് ചെയ്തിട്ടില്ലായെങ്കില്‍, ഡീഫോള്‍ട്ടായി "
-"gtk_window_get_default_icon_list() എന്നത് ആകും."
+"ctk_window_get_default_icon_list() എന്നത് ആകും."
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2315,9 +2315,9 @@ msgstr "പള്‍സ് സ്റ്റെപ്പ് പുരോഗമി�
 #: gtk/gtkentry.c:888
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"ഓരോ കോളിന്റേയും ബൌണ്‍സിങ് ബ്ലോക്ക് പുരോഗതി gtk_entry_progress_pulse()-ലേക്കു് "
+"ഓരോ കോളിന്റേയും ബൌണ്‍സിങ് ബ്ലോക്ക് പുരോഗതി ctk_entry_progress_pulse()-ലേക്കു് "
 "നീക്കുന്നതിനായുള്ള എന്‍ട്രിയുടെ മൊത്തത്തിലുള്ള വീതിയുടെ ഫ്രാക്ഷന്‍"
 
 #: gtk/gtkentry.c:904
@@ -4342,10 +4342,10 @@ msgstr "മൂല്ല്യം"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"ഗ്രൂപ്പിന്റെ നിലവിലുള്ള പ്രവര്‍ത്തി ഇതാകുമ്പോള്‍ gtk_radio_action_get_current_value() "
+"ഗ്രൂപ്പിന്റെ നിലവിലുള്ള പ്രവര്‍ത്തി ഇതാകുമ്പോള്‍ ctk_radio_action_get_current_value() "
 "തിരികെ ലഭ്യമാക്കുന്ന മൂല്ല്യം."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -6734,8 +6734,8 @@ msgid "No show all"
 msgstr "എല്ലാം കാണിക്കേണ്ട"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() ഈ വിഡ്ജറ്റിന് ബാധകമാകണമോ"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() ഈ വിഡ്ജറ്റിന് ബാധകമാകണമോ"
 
 #: gtk/gtkwidget.c:864
 msgid "Whether this widget has a tooltip"
@@ -7297,10 +7297,10 @@ msgstr "സ്റ്റേറ്റസ് ബാറിനുളള ഇന്‍�
 #~ "ലഭ്യമാക്കപ്പെടുന്നു"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
 #~ msgstr ""
-#~ "gtk_recent_manager_get_items() വഴി തിരികെ ലഭിക്കേണ്ട ഏറ്റവും കൂടുതല്‍ വസ്തുക്കളുടെ "
+#~ "ctk_recent_manager_get_items() വഴി തിരികെ ലഭിക്കേണ്ട ഏറ്റവും കൂടുതല്‍ വസ്തുക്കളുടെ "
 #~ "എണ്ണം"
 
 #~ msgid "Blinking"

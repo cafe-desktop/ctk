@@ -64,7 +64,7 @@
  * that depend on the locale or selected input method.
  */
 
-static const guint16 gtk_compose_seqs_compact[] = {
+static const guint16 ctk_compose_seqs_compact[] = {
 GDK_KEY_Greek_accentdieresis, 180, 184, 184, 184, 184, 
 GDK_KEY_dead_grave, 184, 246, 333, 545, 545, 
 GDK_KEY_dead_acute, 545, 609, 705, 981, 981, 

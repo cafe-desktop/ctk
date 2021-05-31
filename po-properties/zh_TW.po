@@ -748,9 +748,9 @@ msgstr "給定值"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
-msgstr "當此指令是該群組的目前指令時，gtk_radio_action_get_current_value() 所傳回值。"
+msgstr "當此指令是該群組的目前指令時，ctk_radio_action_get_current_value() 所傳回值。"
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
 #: gtk/gtkradiomenuitem.c:424 gtk/gtkradiotoolbutton.c:83
@@ -1199,10 +1199,10 @@ msgstr "標誌"
 #: gtk/gtkaboutdialog.c:546
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "「關於」對話盒中的標誌，如果沒有設定則預設使用 "
-"gtk_window_get_default_icon_list() 的回傳值。"
+"ctk_window_get_default_icon_list() 的回傳值。"
 
 #: gtk/gtkaboutdialog.c:560
 msgid "Logo Icon Name"
@@ -3346,9 +3346,9 @@ msgstr "進度列指示步進"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
-"當每次呼叫 gtk_entry_progress_pulse() 後，進度區塊應移動的比例（以進度列全長"
+"當每次呼叫 ctk_entry_progress_pulse() 後，進度區塊應移動的比例（以進度列全長"
 "為基準）"
 
 #: gtk/gtkentry.c:1110
@@ -8817,8 +8817,8 @@ msgid "No show all"
 msgstr "不全部顯示"
 
 #: gtk/gtkwidget.c:1261
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "是否 gtk_widget_show_all() 呼叫影響本元件"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "是否 ctk_widget_show_all() 呼叫影響本元件"
 
 #: gtk/gtkwidget.c:1283
 msgid "Whether this widget has a tooltip"

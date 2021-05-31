@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PAD_CONTROLLER         (gtk_pad_controller_get_type ())
+#define GTK_TYPE_PAD_CONTROLLER         (ctk_pad_controller_get_type ())
 #define GTK_PAD_CONTROLLER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_PAD_CONTROLLER, GtkPadController))
 #define GTK_PAD_CONTROLLER_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_PAD_CONTROLLER, GtkPadControllerClass))
 #define GTK_IS_PAD_CONTROLLER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_PAD_CONTROLLER))
@@ -75,19 +75,19 @@ struct _GtkPadActionEntry {
 };
 
 GDK_AVAILABLE_IN_3_22
-GType gtk_pad_controller_get_type           (void) G_GNUC_CONST;
+GType ctk_pad_controller_get_type           (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-GtkPadController *gtk_pad_controller_new    (GtkWindow        *window,
+GtkPadController *ctk_pad_controller_new    (GtkWindow        *window,
                                              GActionGroup     *group,
                                              GdkDevice        *pad);
 
 GDK_AVAILABLE_IN_3_22
-void  gtk_pad_controller_set_action_entries (GtkPadController        *controller,
+void  ctk_pad_controller_set_action_entries (GtkPadController        *controller,
                                              const GtkPadActionEntry *entries,
                                              gint                     n_entries);
 GDK_AVAILABLE_IN_3_22
-void  gtk_pad_controller_set_action         (GtkPadController *controller,
+void  ctk_pad_controller_set_action         (GtkPadController *controller,
                                              GtkPadActionType  type,
                                              gint              index,
                                              gint              mode,

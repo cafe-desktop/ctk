@@ -4,8 +4,8 @@ libdir=@libdir@
 includedir=@includedir@
 targets=@GDK_BACKENDS@
 
-gtk_binary_version=@GTK_BINARY_VERSION@
-gtk_host=@host@
+ctk_binary_version=@GTK_BINARY_VERSION@
+ctk_host=@host@
 
 Name: GTK+
 Description: GTK+ Unix print support

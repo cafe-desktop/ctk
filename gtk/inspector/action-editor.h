@@ -22,7 +22,7 @@
 #include <gtk/gtkbox.h>
 
 
-#define GTK_TYPE_INSPECTOR_ACTION_EDITOR            (gtk_inspector_action_editor_get_type())
+#define GTK_TYPE_INSPECTOR_ACTION_EDITOR            (ctk_inspector_action_editor_get_type())
 #define GTK_INSPECTOR_ACTION_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_ACTION_EDITOR, GtkInspectorActionEditor))
 #define GTK_INSPECTOR_ACTION_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_ACTION_EDITOR, GtkInspectorActionEditorClass))
 #define GTK_INSPECTOR_IS_ACTION_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_ACTION_EDITOR))
@@ -46,8 +46,8 @@ typedef struct
 G_BEGIN_DECLS
 
 
-GType      gtk_inspector_action_editor_get_type (void);
-GtkWidget *gtk_inspector_action_editor_new      (GActionGroup *group,
+GType      ctk_inspector_action_editor_get_type (void);
+GtkWidget *ctk_inspector_action_editor_new      (GActionGroup *group,
                                                  const gchar  *prefix,
                                                  const gchar  *name);
 

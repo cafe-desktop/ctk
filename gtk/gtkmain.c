@@ -31,8 +31,8 @@
  *
  * Before using GTK+, you need to initialize it; initialization connects to the
  * window system display, and parses some standard command line arguments. The
- * gtk_init() macro initializes GTK+. gtk_init() exits the application if errors
- * occur; to avoid this, use gtk_init_check(). gtk_init_check() allows you to
+ * ctk_init() macro initializes GTK+. ctk_init() exits the application if errors
+ * occur; to avoid this, use ctk_init_check(). ctk_init_check() allows you to
  * recover from a failed GTK+ initialization - you might start up your
  * application in text mode instead.
  *
@@ -65,27 +65,27 @@
  *   // ...
  *
  *   // Initialize the widget set
- *   gtk_init (&argc, &argv);
+ *   ctk_init (&argc, &argv);
  *
  *   // Create the main window
- *   mainwin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+ *   mainwin = ctk_window_new (GTK_WINDOW_TOPLEVEL);
  *
  *   // Set up our GUI elements
  *
  *   // ...
  *
  *   // Show the application window
- *   gtk_widget_show_all (mainwin);
+ *   ctk_widget_show_all (mainwin);
  *
  *   // Enter the main event loop, and wait for user interaction
- *   gtk_main ();
+ *   ctk_main ();
  *
  *   // The user lost interest
  *   return 0;
  * }
  * ]|
  *
- * It’s OK to use the GLib main loop directly instead of gtk_main(), though it
+ * It’s OK to use the GLib main loop directly instead of ctk_main(), though it
  * involves slightly more typing. See #GMainLoop in the GLib documentation.
  */
 
@@ -144,14 +144,14 @@ struct _GtkKeySnooperData
   guint id;
 };
 
-static gint  gtk_invoke_key_snoopers     (GtkWidget          *grab_widget,
+static gint  ctk_invoke_key_snoopers     (GtkWidget          *grab_widget,
                                           GdkEvent           *event);
 
-static GtkWindowGroup *gtk_main_get_window_group (GtkWidget   *widget);
+static GtkWindowGroup *ctk_main_get_window_group (GtkWidget   *widget);
 
-static guint gtk_main_loop_level = 0;
+static guint ctk_main_loop_level = 0;
 static gint pre_initialized = FALSE;
-static gint gtk_initialized = FALSE;
+static gint ctk_initialized = FALSE;
 static GList *current_events = NULL;
 
 static GSList *main_loops = NULL;      /* stack of currently executing main loops */
@@ -168,7 +168,7 @@ typedef struct {
 DisplayDebugFlags debug_flags[N_DEBUG_DISPLAYS];
 
 #ifdef G_ENABLE_DEBUG
-static const GDebugKey gtk_debug_keys[] = {
+static const GDebugKey ctk_debug_keys[] = {
   { "misc", GTK_DEBUG_MISC },
   { "plugsocket", GTK_DEBUG_PLUGSOCKET },
   { "text", GTK_DEBUG_TEXT },
@@ -195,7 +195,7 @@ static const GDebugKey gtk_debug_keys[] = {
 #endif /* G_ENABLE_DEBUG */
 
 /**
- * gtk_get_major_version:
+ * ctk_get_major_version:
  *
  * Returns the major version number of the GTK+ library.
  * (e.g. in GTK+ version 3.1.5 this is 3.)
@@ -210,13 +210,13 @@ static const GDebugKey gtk_debug_keys[] = {
  * Since: 3.0
  */
 guint
-gtk_get_major_version (void)
+ctk_get_major_version (void)
 {
   return GTK_MAJOR_VERSION;
 }
 
 /**
- * gtk_get_minor_version:
+ * ctk_get_minor_version:
  *
  * Returns the minor version number of the GTK+ library.
  * (e.g. in GTK+ version 3.1.5 this is 1.)
@@ -231,13 +231,13 @@ gtk_get_major_version (void)
  * Since: 3.0
  */
 guint
-gtk_get_minor_version (void)
+ctk_get_minor_version (void)
 {
   return GTK_MINOR_VERSION;
 }
 
 /**
- * gtk_get_micro_version:
+ * ctk_get_micro_version:
  *
  * Returns the micro version number of the GTK+ library.
  * (e.g. in GTK+ version 3.1.5 this is 5.)
@@ -252,13 +252,13 @@ gtk_get_minor_version (void)
  * Since: 3.0
  */
 guint
-gtk_get_micro_version (void)
+ctk_get_micro_version (void)
 {
   return GTK_MICRO_VERSION;
 }
 
 /**
- * gtk_get_binary_age:
+ * ctk_get_binary_age:
  *
  * Returns the binary age as passed to `libtool`
  * when building the GTK+ library the process is running against.
@@ -270,13 +270,13 @@ gtk_get_micro_version (void)
  * Since: 3.0
  */
 guint
-gtk_get_binary_age (void)
+ctk_get_binary_age (void)
 {
   return GTK_BINARY_AGE;
 }
 
 /**
- * gtk_get_interface_age:
+ * ctk_get_interface_age:
  *
  * Returns the interface age as passed to `libtool`
  * when building the GTK+ library the process is running against.
@@ -288,13 +288,13 @@ gtk_get_binary_age (void)
  * Since: 3.0
  */
 guint
-gtk_get_interface_age (void)
+ctk_get_interface_age (void)
 {
   return GTK_INTERFACE_AGE;
 }
 
 /**
- * gtk_check_version:
+ * ctk_check_version:
  * @required_major: the required major version
  * @required_minor: the required minor version
  * @required_micro: the required micro version
@@ -319,7 +319,7 @@ gtk_get_interface_age (void)
  * into an incompatible version of GTK+. However, such a
  * check isn’t completely reliable, since the module may be
  * linked against an old version of GTK+ and calling the
- * old version of gtk_check_version(), but still get loaded
+ * old version of ctk_check_version(), but still get loaded
  * into an application using a newer version of GTK+.
  *
  * Returns: (nullable): %NULL if the GTK+ library is compatible with the
@@ -328,20 +328,20 @@ gtk_get_interface_age (void)
  *   or freed.
  */
 const gchar*
-gtk_check_version (guint required_major,
+ctk_check_version (guint required_major,
                    guint required_minor,
                    guint required_micro)
 {
-  gint gtk_effective_micro = 100 * GTK_MINOR_VERSION + GTK_MICRO_VERSION;
+  gint ctk_effective_micro = 100 * GTK_MINOR_VERSION + GTK_MICRO_VERSION;
   gint required_effective_micro = 100 * required_minor + required_micro;
 
   if (required_major > GTK_MAJOR_VERSION)
     return "GTK+ version too old (major mismatch)";
   if (required_major < GTK_MAJOR_VERSION)
     return "GTK+ version too new (major mismatch)";
-  if (required_effective_micro < gtk_effective_micro - GTK_BINARY_AGE)
+  if (required_effective_micro < ctk_effective_micro - GTK_BINARY_AGE)
     return "GTK+ version too new (micro mismatch)";
-  if (required_effective_micro > gtk_effective_micro)
+  if (required_effective_micro > ctk_effective_micro)
     return "GTK+ version too old (micro mismatch)";
   return NULL;
 }
@@ -394,10 +394,10 @@ check_setugid (void)
 static gboolean do_setlocale = TRUE;
 
 /**
- * gtk_disable_setlocale:
+ * ctk_disable_setlocale:
  * 
- * Prevents gtk_init(), gtk_init_check(), gtk_init_with_args() and
- * gtk_parse_args() from automatically
+ * Prevents ctk_init(), ctk_init_check(), ctk_init_with_args() and
+ * ctk_parse_args() from automatically
  * calling `setlocale (LC_ALL, "")`. You would
  * want to use this function if you wanted to set the locale for
  * your program to something other than the user’s locale, or if
@@ -406,70 +406,70 @@ static gboolean do_setlocale = TRUE;
  * Most programs should not need to call this function.
  **/
 void
-gtk_disable_setlocale (void)
+ctk_disable_setlocale (void)
 {
   if (pre_initialized)
-    g_warning ("gtk_disable_setlocale() must be called before gtk_init()");
+    g_warning ("ctk_disable_setlocale() must be called before ctk_init()");
     
   do_setlocale = FALSE;
 }
 
 #ifdef G_PLATFORM_WIN32
-#undef gtk_init_check
+#undef ctk_init_check
 #endif
 
-static GString *gtk_modules_string = NULL;
+static GString *ctk_modules_string = NULL;
 static gboolean g_fatal_warnings = FALSE;
 
 #ifdef G_ENABLE_DEBUG
 static gboolean
-gtk_arg_debug_cb (const char *key, const char *value, gpointer user_data)
+ctk_arg_debug_cb (const char *key, const char *value, gpointer user_data)
 {
   debug_flags[0].flags |= g_parse_debug_string (value,
-                                                gtk_debug_keys,
-                                                G_N_ELEMENTS (gtk_debug_keys));
+                                                ctk_debug_keys,
+                                                G_N_ELEMENTS (ctk_debug_keys));
 
   return TRUE;
 }
 
 static gboolean
-gtk_arg_no_debug_cb (const char *key, const char *value, gpointer user_data)
+ctk_arg_no_debug_cb (const char *key, const char *value, gpointer user_data)
 {
   debug_flags[0].flags &= ~g_parse_debug_string (value,
-                                                 gtk_debug_keys,
-                                                 G_N_ELEMENTS (gtk_debug_keys));
+                                                 ctk_debug_keys,
+                                                 G_N_ELEMENTS (ctk_debug_keys));
 
   return TRUE;
 }
 #endif /* G_ENABLE_DEBUG */
 
 static gboolean
-gtk_arg_module_cb (const char *key, const char *value, gpointer user_data)
+ctk_arg_module_cb (const char *key, const char *value, gpointer user_data)
 {
   if (value && *value)
     {
-      if (gtk_modules_string)
-        g_string_append_c (gtk_modules_string, G_SEARCHPATH_SEPARATOR);
+      if (ctk_modules_string)
+        g_string_append_c (ctk_modules_string, G_SEARCHPATH_SEPARATOR);
       else
-        gtk_modules_string = g_string_new (NULL);
+        ctk_modules_string = g_string_new (NULL);
       
-      g_string_append (gtk_modules_string, value);
+      g_string_append (ctk_modules_string, value);
     }
 
   return TRUE;
 }
 
-static const GOptionEntry gtk_args[] = {
-  { "gtk-module",       0, 0, G_OPTION_ARG_CALLBACK, gtk_arg_module_cb,   
+static const GOptionEntry ctk_args[] = {
+  { "gtk-module",       0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_module_cb,   
     /* Description of --gtk-module=MODULES in --help output */ N_("Load additional GTK+ modules"), 
     /* Placeholder in --gtk-module=MODULES in --help output */ N_("MODULES") },
   { "g-fatal-warnings", 0, 0, G_OPTION_ARG_NONE, &g_fatal_warnings, 
     /* Description of --g-fatal-warnings in --help output */   N_("Make all warnings fatal"), NULL },
 #ifdef G_ENABLE_DEBUG
-  { "gtk-debug",        0, 0, G_OPTION_ARG_CALLBACK, gtk_arg_debug_cb,    
+  { "gtk-debug",        0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_debug_cb,    
     /* Description of --gtk-debug=FLAGS in --help output */    N_("GTK+ debugging flags to set"), 
     /* Placeholder in --gtk-debug=FLAGS in --help output */    N_("FLAGS") },
-  { "gtk-no-debug",     0, 0, G_OPTION_ARG_CALLBACK, gtk_arg_no_debug_cb, 
+  { "gtk-no-debug",     0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_no_debug_cb, 
     /* Description of --gtk-no-debug=FLAGS in --help output */ N_("GTK+ debugging flags to unset"), 
     /* Placeholder in --gtk-no-debug=FLAGS in --help output */ N_("FLAGS") },
 #endif 
@@ -651,19 +651,19 @@ do_pre_parse_initialization (int    *argc,
 
   pre_initialized = TRUE;
 
-  if (_gtk_module_has_mixed_deps (NULL))
+  if (_ctk_module_has_mixed_deps (NULL))
     g_error ("GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported");
 
   GDK_PRIVATE_CALL (gdk_pre_parse) ();
-  gdk_event_handler_set ((GdkEventFunc)gtk_main_do_event, NULL, NULL);
+  gdk_event_handler_set ((GdkEventFunc)ctk_main_do_event, NULL, NULL);
 
   env_string = g_getenv ("GTK_DEBUG");
   if (env_string != NULL)
     {
 #ifdef G_ENABLE_DEBUG
       debug_flags[0].flags = g_parse_debug_string (env_string,
-                                                   gtk_debug_keys,
-                                                   G_N_ELEMENTS (gtk_debug_keys));
+                                                   ctk_debug_keys,
+                                                   G_N_ELEMENTS (ctk_debug_keys));
 #else
       g_warning ("GTK_DEBUG set but ignored because gtk isn't built with G_ENABLE_DEBUG");
 #endif  /* G_ENABLE_DEBUG */
@@ -672,24 +672,24 @@ do_pre_parse_initialization (int    *argc,
 
   env_string = g_getenv ("GTK3_MODULES");
   if (env_string)
-    gtk_modules_string = g_string_new (env_string);
+    ctk_modules_string = g_string_new (env_string);
 
   env_string = g_getenv ("GTK_MODULES");
   if (env_string)
     {
-      if (gtk_modules_string)
-        g_string_append_c (gtk_modules_string, G_SEARCHPATH_SEPARATOR);
+      if (ctk_modules_string)
+        g_string_append_c (ctk_modules_string, G_SEARCHPATH_SEPARATOR);
       else
-        gtk_modules_string = g_string_new (NULL);
+        ctk_modules_string = g_string_new (NULL);
 
-      g_string_append (gtk_modules_string, env_string);
+      g_string_append (ctk_modules_string, env_string);
     }
 
   env_string = g_getenv ("GTK_SLOWDOWN");
   if (env_string)
     {
       slowdown = g_ascii_strtod (env_string, NULL);
-      _gtk_set_slowdown (slowdown);
+      _ctk_set_slowdown (slowdown);
     }
 }
 
@@ -699,8 +699,8 @@ gettext_initialization (void)
   setlocale_initialization ();
 
 #ifdef ENABLE_NLS
-  bindtextdomain (GETTEXT_PACKAGE, _gtk_get_localedir ());
-  bindtextdomain (GETTEXT_PACKAGE "-properties", _gtk_get_localedir ());
+  bindtextdomain (GETTEXT_PACKAGE, _ctk_get_localedir ());
+  bindtextdomain (GETTEXT_PACKAGE "-properties", _ctk_get_localedir ());
 #    ifdef HAVE_BIND_TEXTDOMAIN_CODESET
   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
   bind_textdomain_codeset (GETTEXT_PACKAGE "-properties", "UTF-8");
@@ -711,7 +711,7 @@ gettext_initialization (void)
 static void
 default_display_notify_cb (GdkDisplayManager *dm)
 {
-  _gtk_accessibility_init ();
+  _ctk_accessibility_init ();
   debug_flags[0].display = gdk_display_get_default ();
 }
 
@@ -721,7 +721,7 @@ do_post_parse_initialization (int    *argc,
 {
   GdkDisplayManager *display_manager;
 
-  if (gtk_initialized)
+  if (ctk_initialized)
     return;
 
   gettext_initialization ();
@@ -744,22 +744,22 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_window_set_debug_updates (TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  gtk_widget_set_default_direction (gtk_get_locale_direction ());
+  ctk_widget_set_default_direction (ctk_get_locale_direction ());
 
-  _gtk_ensure_resources ();
+  _ctk_ensure_resources ();
 
-  _gtk_accel_map_init ();
+  _ctk_accel_map_init ();
 
-  gtk_initialized = TRUE;
+  ctk_initialized = TRUE;
 
-  if (gtk_modules_string)
+  if (ctk_modules_string)
     {
-      _gtk_modules_init (argc, argv, gtk_modules_string->str);
-      g_string_free (gtk_modules_string, TRUE);
+      _ctk_modules_init (argc, argv, ctk_modules_string->str);
+      g_string_free (ctk_modules_string, TRUE);
     }
   else
     {
-      _gtk_modules_init (argc, argv, NULL);
+      _ctk_modules_init (argc, argv, NULL);
     }
 
   display_manager = gdk_display_manager_get ();
@@ -813,15 +813,15 @@ post_parse_hook (GOptionContext *context,
           return FALSE;
         }
 
-      if (gtk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
-        gtk_window_set_interactive_debugging (TRUE);
+      if (ctk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
+        ctk_window_set_interactive_debugging (TRUE);
     }
 
   return TRUE;
 }
 
 guint
-gtk_get_display_debug_flags (GdkDisplay *display)
+ctk_get_display_debug_flags (GdkDisplay *display)
 {
   gint i;
 
@@ -835,7 +835,7 @@ gtk_get_display_debug_flags (GdkDisplay *display)
 }
 
 void
-gtk_set_display_debug_flags (GdkDisplay *display,
+ctk_set_display_debug_flags (GdkDisplay *display,
                              guint       flags)
 {
   gint i;
@@ -854,7 +854,7 @@ gtk_set_display_debug_flags (GdkDisplay *display,
 }
 
 /**
- * gtk_get_debug_flags:
+ * ctk_get_debug_flags:
  *
  * Returns the GTK+ debug flags.
  *
@@ -864,35 +864,35 @@ gtk_set_display_debug_flags (GdkDisplay *display,
  * Returns: the GTK+ debug flags.
  */
 guint
-gtk_get_debug_flags (void)
+ctk_get_debug_flags (void)
 {
-  return gtk_get_display_debug_flags (gdk_display_get_default ());
+  return ctk_get_display_debug_flags (gdk_display_get_default ());
 }
 
 /**
- * gtk_set_debug_flags:
+ * ctk_set_debug_flags:
  *
  * Sets the GTK+ debug flags.
  */
 void
-gtk_set_debug_flags (guint flags)
+ctk_set_debug_flags (guint flags)
 {
-  gtk_set_display_debug_flags (gdk_display_get_default (), flags);
+  ctk_set_display_debug_flags (gdk_display_get_default (), flags);
 }
 
 gboolean
-gtk_simulate_touchscreen (void)
+ctk_simulate_touchscreen (void)
 {
   static gint test_touchscreen;
 
   if (test_touchscreen == 0)
     test_touchscreen = g_getenv ("GTK_TEST_TOUCHSCREEN") != NULL ? 1 : -1;
 
-  return test_touchscreen > 0 || (gtk_get_debug_flags () & GTK_DEBUG_TOUCHSCREEN) != 0;
+  return test_touchscreen > 0 || (ctk_get_debug_flags () & GTK_DEBUG_TOUCHSCREEN) != 0;
  }
 
 /**
- * gtk_get_option_group:
+ * ctk_get_option_group:
  * @open_default_display: whether to open the default display
  *     when parsing the commandline arguments
  *
@@ -909,7 +909,7 @@ gtk_simulate_touchscreen (void)
  * Since: 2.6
  */
 GOptionGroup *
-gtk_get_option_group (gboolean open_default_display)
+ctk_get_option_group (gboolean open_default_display)
 {
   GOptionGroup *group;
   OptionGroupInfo *info;
@@ -923,14 +923,14 @@ gtk_get_option_group (gboolean open_default_display)
   g_option_group_set_parse_hooks (group, pre_parse_hook, post_parse_hook);
 
   GDK_PRIVATE_CALL (gdk_add_option_entries) (group);
-  g_option_group_add_entries (group, gtk_args);
+  g_option_group_add_entries (group, ctk_args);
   g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
   
   return group;
 }
 
 /**
- * gtk_init_with_args:
+ * ctk_init_with_args:
  * @argc: (inout): Address of the `argc` parameter of
  *     your main() function (or 0 if @argv is %NULL). This will be changed if 
  *     any arguments were handled.
@@ -947,7 +947,7 @@ gtk_get_option_group (gboolean open_default_display)
  *    and the @parameter_string with gettext(), or %NULL
  * @error: a return location for errors
  *
- * This function does the same work as gtk_init_check().
+ * This function does the same work as ctk_init_check().
  * Additionally, it allows you to add your own commandline options,
  * and it automatically generates nicely formatted
  * `--help` output. Note that your program will
@@ -960,7 +960,7 @@ gtk_get_option_group (gboolean open_default_display)
  * Since: 2.6
  */
 gboolean
-gtk_init_with_args (gint                 *argc,
+ctk_init_with_args (gint                 *argc,
                     gchar              ***argv,
                     const gchar          *parameter_string,
                     const GOptionEntry   *entries,
@@ -968,10 +968,10 @@ gtk_init_with_args (gint                 *argc,
                     GError              **error)
 {
   GOptionContext *context;
-  GOptionGroup *gtk_group;
+  GOptionGroup *ctk_group;
   gboolean retval;
 
-  if (gtk_initialized)
+  if (ctk_initialized)
     goto done;
 
   gettext_initialization ();
@@ -979,10 +979,10 @@ gtk_init_with_args (gint                 *argc,
   if (!check_setugid ())
     return FALSE;
 
-  gtk_group = gtk_get_option_group (FALSE);
+  ctk_group = ctk_get_option_group (FALSE);
 
   context = g_option_context_new (parameter_string);
-  g_option_context_add_group (context, gtk_group);
+  g_option_context_add_group (context, ctk_group);
   g_option_context_set_translation_domain (context, translation_domain);
 
   if (entries)
@@ -1007,15 +1007,15 @@ done:
       return FALSE;
     }
 
-  if (gtk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
-    gtk_window_set_interactive_debugging (TRUE);
+  if (ctk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
+    ctk_window_set_interactive_debugging (TRUE);
 
   return TRUE;
 }
 
 
 /**
- * gtk_parse_args:
+ * ctk_parse_args:
  * @argc: (inout): a pointer to the number of command line arguments
  * @argv: (array length=argc) (inout): a pointer to the array of
  *     command line arguments
@@ -1028,7 +1028,7 @@ done:
  * @argc and @argv are updated accordingly.
  *
  * There is no need to call this function explicitly if you are using
- * gtk_init(), or gtk_init_check().
+ * ctk_init(), or ctk_init_check().
  *
  * Note that many aspects of GTK+ require a display connection to
  * function, so this way of initializing GTK+ is really only useful
@@ -1037,14 +1037,14 @@ done:
  * Returns: %TRUE if initialization succeeded, otherwise %FALSE
  */
 gboolean
-gtk_parse_args (int    *argc,
+ctk_parse_args (int    *argc,
                 char ***argv)
 {
   GOptionContext *option_context;
-  GOptionGroup *gtk_group;
+  GOptionGroup *ctk_group;
   GError *error = NULL;
   
-  if (gtk_initialized)
+  if (ctk_initialized)
     return TRUE;
 
   gettext_initialization ();
@@ -1055,8 +1055,8 @@ gtk_parse_args (int    *argc,
   option_context = g_option_context_new (NULL);
   g_option_context_set_ignore_unknown_options (option_context, TRUE);
   g_option_context_set_help_enabled (option_context, FALSE);
-  gtk_group = gtk_get_option_group (FALSE);
-  g_option_context_set_main_group (option_context, gtk_group);
+  ctk_group = ctk_get_option_group (FALSE);
+  g_option_context_set_main_group (option_context, ctk_group);
   if (!g_option_context_parse (option_context, argc, argv, &error))
     {
       g_warning ("%s", error->message);
@@ -1069,11 +1069,11 @@ gtk_parse_args (int    *argc,
 }
 
 #ifdef G_PLATFORM_WIN32
-#undef gtk_init_check
+#undef ctk_init_check
 #endif
 
 /**
- * gtk_init_check:
+ * ctk_init_check:
  * @argc: (inout): Address of the `argc` parameter of
  *     your main() function (or 0 if @argv is %NULL). This will be changed if 
  *     any arguments were handled.
@@ -1081,7 +1081,7 @@ gtk_parse_args (int    *argc,
  *     `argv` parameter of main(), or %NULL. Any options
  *     understood by GTK+ are stripped before return.
  *
- * This function does the same work as gtk_init() with only a single
+ * This function does the same work as ctk_init() with only a single
  * change: It does not terminate the program if the commandline
  * arguments couldn’t be parsed or the windowing system can’t be
  * initialized. Instead it returns %FALSE on failure.
@@ -1098,28 +1098,28 @@ gtk_parse_args (int    *argc,
  *     otherwise
  */
 gboolean
-gtk_init_check (int    *argc,
+ctk_init_check (int    *argc,
                 char ***argv)
 {
   gboolean ret;
 
-  if (!gtk_parse_args (argc, argv))
+  if (!ctk_parse_args (argc, argv))
     return FALSE;
 
   ret = GDK_PRIVATE_CALL (gdk_display_open_default) () != NULL;
 
-  if (gtk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
-    gtk_window_set_interactive_debugging (TRUE);
+  if (ctk_get_debug_flags () & GTK_DEBUG_INTERACTIVE)
+    ctk_window_set_interactive_debugging (TRUE);
 
   return ret;
 }
 
 #ifdef G_PLATFORM_WIN32
-#undef gtk_init
+#undef ctk_init
 #endif
 
 /**
- * gtk_init:
+ * ctk_init:
  * @argc: (inout): Address of the `argc` parameter of
  *     your main() function (or 0 if @argv is %NULL). This will be changed if 
  *     any arguments were handled.
@@ -1139,10 +1139,10 @@ gtk_init_check (int    *argc,
  * never see those standard arguments.
  *
  * Note that there are some alternative ways to initialize GTK+:
- * if you are calling gtk_parse_args(), gtk_init_check(),
- * gtk_init_with_args() or g_option_context_parse() with
- * the option group returned by gtk_get_option_group(),
- * you don’t have to call gtk_init().
+ * if you are calling ctk_parse_args(), ctk_init_check(),
+ * ctk_init_with_args() or g_option_context_parse() with
+ * the option group returned by ctk_get_option_group(),
+ * you don’t have to call ctk_init().
  *
  * And if you are using #GtkApplication, you don't have to call any of the
  * initialization functions either; the #GtkApplication::startup handler
@@ -1151,19 +1151,19 @@ gtk_init_check (int    *argc,
  * This function will terminate your program if it was unable to
  * initialize the windowing system for some reason. If you want
  * your program to fall back to a textual interface you want to
- * call gtk_init_check() instead.
+ * call ctk_init_check() instead.
  *
  * Since 2.18, GTK+ calls `signal (SIGPIPE, SIG_IGN)`
  * during initialization, to ignore SIGPIPE signals, since these are
  * almost never wanted in graphical applications. If you do need to
- * handle SIGPIPE for some reason, reset the handler after gtk_init(),
+ * handle SIGPIPE for some reason, reset the handler after ctk_init(),
  * but notice that other libraries (e.g. libdbus or gvfs) might do
  * similar things.
  */
 void
-gtk_init (int *argc, char ***argv)
+ctk_init (int *argc, char ***argv)
 {
-  if (!gtk_init_check (argc, argv))
+  if (!ctk_init_check (argc, argv))
     {
       const char *display_name_arg = gdk_get_display_arg_name ();
       if (display_name_arg == NULL)
@@ -1216,27 +1216,27 @@ check_sizeof_GtkBox (size_t sizeof_GtkBox)
  * in the number of extra args.
  */
 void
-gtk_init_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_GtkWindow, size_t sizeof_GtkBox)
+ctk_init_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_GtkWindow, size_t sizeof_GtkBox)
 {
   check_sizeof_GtkWindow (sizeof_GtkWindow);
   if (num_checks >= 2)
     check_sizeof_GtkBox (sizeof_GtkBox);
-  gtk_init (argc, argv);
+  ctk_init (argc, argv);
 }
 
 gboolean
-gtk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_GtkWindow, size_t sizeof_GtkBox)
+ctk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_GtkWindow, size_t sizeof_GtkBox)
 {
   check_sizeof_GtkWindow (sizeof_GtkWindow);
   if (num_checks >= 2)
     check_sizeof_GtkBox (sizeof_GtkBox);
-  return gtk_init_check (argc, argv);
+  return ctk_init_check (argc, argv);
 }
 
 #endif
 
 /**
- * gtk_get_locale_direction:
+ * ctk_get_locale_direction:
  *
  * Get the direction of the current locale. This is the expected
  * reading direction for text and UI.
@@ -1246,8 +1246,8 @@ gtk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof
  * direction otherwise. %GTK_TEXT_DIR_NONE will never be returned.
  *
  * GTK+ sets the default text direction according to the locale
- * during gtk_init(), and you should normally use
- * gtk_widget_get_direction() or gtk_widget_get_default_direction()
+ * during ctk_init(), and you should normally use
+ * ctk_widget_get_direction() or ctk_widget_get_default_direction()
  * to obtain the current direcion.
  *
  * This function is only needed rare cases when the locale is
@@ -1256,8 +1256,8 @@ gtk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof
  *
  * |[<!-- language="C" -->
  * setlocale (LC_ALL, new_locale);
- * direction = gtk_get_locale_direction ();
- * gtk_widget_set_default_direction (direction);
+ * direction = ctk_get_locale_direction ();
+ * ctk_widget_set_default_direction (direction);
  * ]|
  *
  * Returns: the #GtkTextDirection of the current locale
@@ -1265,7 +1265,7 @@ gtk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof
  * Since: 3.12
  */
 GtkTextDirection
-gtk_get_locale_direction (void)
+ctk_get_locale_direction (void)
 {
   /* Translate to default:RTL if you want your widgets
    * to be RTL, otherwise translate to default:LTR.
@@ -1284,7 +1284,7 @@ gtk_get_locale_direction (void)
 }
 
 /**
- * gtk_get_default_language:
+ * ctk_get_default_language:
  *
  * Returns the #PangoLanguage for the default language currently in
  * effect. (Note that this can change over the life of an
@@ -1299,25 +1299,25 @@ gtk_get_locale_direction (void)
  *     must not be freed
  */
 PangoLanguage *
-gtk_get_default_language (void)
+ctk_get_default_language (void)
 {
   return pango_language_get_default ();
 }
 
 /**
- * gtk_main:
+ * ctk_main:
  *
- * Runs the main loop until gtk_main_quit() is called.
+ * Runs the main loop until ctk_main_quit() is called.
  *
- * You can nest calls to gtk_main(). In that case gtk_main_quit()
+ * You can nest calls to ctk_main(). In that case ctk_main_quit()
  * will make the innermost invocation of the main loop return.
  */
 void
-gtk_main (void)
+ctk_main (void)
 {
   GMainLoop *loop;
 
-  gtk_main_loop_level++;
+  ctk_main_loop_level++;
 
   loop = g_main_loop_new (NULL, TRUE);
   main_loops = g_slist_prepend (main_loops, loop);
@@ -1337,22 +1337,22 @@ gtk_main (void)
 
   g_main_loop_unref (loop);
 
-  gtk_main_loop_level--;
+  ctk_main_loop_level--;
 
-  if (gtk_main_loop_level == 0)
+  if (ctk_main_loop_level == 0)
     {
-      /* Keep this section in sync with gtk_application_shutdown() */
+      /* Keep this section in sync with ctk_application_shutdown() */
 
       /* Try storing all clipboard data we have */
-      _gtk_clipboard_store_all ();
+      _ctk_clipboard_store_all ();
 
       /* Synchronize the recent manager singleton */
-      _gtk_recent_manager_sync ();
+      _ctk_recent_manager_sync ();
     }
 }
 
 /**
- * gtk_main_level:
+ * ctk_main_level:
  *
  * Asks for the current nesting level of the main loop.
  *
@@ -1360,19 +1360,19 @@ gtk_main (void)
  *     of the main loop
  */
 guint
-gtk_main_level (void)
+ctk_main_level (void)
 {
-  return gtk_main_loop_level;
+  return ctk_main_loop_level;
 }
 
 /**
- * gtk_main_quit:
+ * ctk_main_quit:
  *
  * Makes the innermost invocation of the main loop return
  * when it regains control.
  */
 void
-gtk_main_quit (void)
+ctk_main_quit (void)
 {
   g_return_if_fail (main_loops != NULL);
 
@@ -1380,7 +1380,7 @@ gtk_main_quit (void)
 }
 
 /**
- * gtk_events_pending:
+ * ctk_events_pending:
  *
  * Checks if any events are pending.
  *
@@ -1392,8 +1392,8 @@ gtk_main_quit (void)
  * |[<!-- language="C" -->
  *  // computation going on...
  *
- *  while (gtk_events_pending ())
- *    gtk_main_iteration ();
+ *  while (ctk_events_pending ())
+ *    ctk_main_iteration ();
  *
  *  // ...computation continued
  * ]|
@@ -1401,7 +1401,7 @@ gtk_main_quit (void)
  * Returns: %TRUE if any events are pending, %FALSE otherwise
  */
 gboolean
-gtk_events_pending (void)
+ctk_events_pending (void)
 {
   gboolean result;
 
@@ -1413,20 +1413,20 @@ gtk_events_pending (void)
 }
 
 /**
- * gtk_main_iteration:
+ * ctk_main_iteration:
  *
  * Runs a single iteration of the mainloop.
  *
  * If no events are waiting to be processed GTK+ will block
  * until the next event is noticed. If you don’t want to block
- * look at gtk_main_iteration_do() or check if any events are
- * pending with gtk_events_pending() first.
+ * look at ctk_main_iteration_do() or check if any events are
+ * pending with ctk_events_pending() first.
  *
- * Returns: %TRUE if gtk_main_quit() has been called for the
+ * Returns: %TRUE if ctk_main_quit() has been called for the
  *     innermost mainloop
  */
 gboolean
-gtk_main_iteration (void)
+ctk_main_iteration (void)
 {
   gdk_threads_leave ();
   g_main_context_iteration (NULL, TRUE);
@@ -1439,18 +1439,18 @@ gtk_main_iteration (void)
 }
 
 /**
- * gtk_main_iteration_do:
+ * ctk_main_iteration_do:
  * @blocking: %TRUE if you want GTK+ to block if no events are pending
  *
  * Runs a single iteration of the mainloop.
  * If no events are available either return or block depending on
  * the value of @blocking.
  *
- * Returns: %TRUE if gtk_main_quit() has been called for the
+ * Returns: %TRUE if ctk_main_quit() has been called for the
  *     innermost mainloop
  */
 gboolean
-gtk_main_iteration_do (gboolean blocking)
+ctk_main_iteration_do (gboolean blocking)
 {
   gdk_threads_leave ();
   g_main_context_iteration (NULL, blocking);
@@ -1586,12 +1586,12 @@ rewrite_event_for_grabs (GdkEvent *event)
       return NULL;
     }
 
-  event_widget = gtk_get_event_widget (event);
+  event_widget = ctk_get_event_widget (event);
   gdk_window_get_user_data (grab_window, &grab_widget_ptr);
   grab_widget = grab_widget_ptr;
 
   if (grab_widget &&
-      gtk_main_get_window_group (grab_widget) != gtk_main_get_window_group (event_widget))
+      ctk_main_get_window_group (grab_widget) != ctk_main_get_window_group (event_widget))
     return rewrite_event_for_window (event, grab_window);
   else
     return NULL;
@@ -1601,18 +1601,18 @@ static GtkWidget *
 widget_get_popover_ancestor (GtkWidget *widget,
                              GtkWindow *window)
 {
-  GtkWidget *parent = gtk_widget_get_parent (widget);
+  GtkWidget *parent = ctk_widget_get_parent (widget);
 
   while (parent && parent != GTK_WIDGET (window))
     {
       widget = parent;
-      parent = gtk_widget_get_parent (widget);
+      parent = ctk_widget_get_parent (widget);
     }
 
   if (!parent || parent != GTK_WIDGET (window))
     return NULL;
 
-  if (_gtk_window_is_popover_widget (GTK_WINDOW (window), widget))
+  if (_ctk_window_is_popover_widget (GTK_WINDOW (window), widget))
     return widget;
 
   return NULL;
@@ -1627,7 +1627,7 @@ check_event_in_child_popover (GtkWidget *event_widget,
   if (grab_widget == event_widget)
     return FALSE;
 
-  window = gtk_widget_get_ancestor (event_widget, GTK_TYPE_WINDOW);
+  window = ctk_widget_get_ancestor (event_widget, GTK_TYPE_WINDOW);
 
   if (!window)
     return FALSE;
@@ -1637,16 +1637,16 @@ check_event_in_child_popover (GtkWidget *event_widget,
   if (!popover)
     return FALSE;
 
-  popover_parent = _gtk_window_get_popover_parent (GTK_WINDOW (window), popover);
+  popover_parent = _ctk_window_get_popover_parent (GTK_WINDOW (window), popover);
 
   if (!popover_parent)
     return FALSE;
 
-  return (popover_parent == grab_widget || gtk_widget_is_ancestor (popover_parent, grab_widget));
+  return (popover_parent == grab_widget || ctk_widget_is_ancestor (popover_parent, grab_widget));
 }
 
 /**
- * gtk_main_do_event:
+ * ctk_main_do_event:
  * @event: An event to process (normally passed by GDK)
  *
  * Processes a single GDK event.
@@ -1667,7 +1667,7 @@ check_event_in_child_popover (GtkWidget *event_widget,
  *    the event is thrown away unless it belongs to a INCR transaction.
  *
  * 3. Then the event is pushed onto a stack so you can query the currently
- *    handled event with gtk_get_current_event().
+ *    handled event with ctk_get_current_event().
  * 
  * 4. The event is sent to a widget. If a grab is active all events for widgets
  *    that are not in the contained in the grab widget are sent to the latter
@@ -1682,12 +1682,12 @@ check_event_in_child_popover (GtkWidget *event_widget,
  *      of that would be.
  *    Another point of interest might be that all key events are first passed
  *    through the key snooper functions if there are any. Read the description
- *    of gtk_key_snooper_install() if you need this feature.
+ *    of ctk_key_snooper_install() if you need this feature.
  * 
  * 5. After finishing the delivery the event is popped from the event stack.
  */
 void
-gtk_main_do_event (GdkEvent *event)
+ctk_main_do_event (GdkEvent *event)
 {
   GtkWidget *event_widget;
   GtkWidget *grab_widget = NULL;
@@ -1699,13 +1699,13 @@ gtk_main_do_event (GdkEvent *event)
 
   if (event->type == GDK_SETTING)
     {
-      _gtk_settings_handle_event (&event->setting);
+      _ctk_settings_handle_event (&event->setting);
       return;
     }
 
   if (event->type == GDK_OWNER_CHANGE)
     {
-      _gtk_clipboard_handle_event (&event->owner_change);
+      _ctk_clipboard_handle_event (&event->owner_change);
       return;
     }
 
@@ -1715,7 +1715,7 @@ gtk_main_do_event (GdkEvent *event)
    * events which are handled specially. Though this happens rarely,
    * bogus events can occur for e.g. destroyed GdkWindows.
    */
-  event_widget = gtk_get_event_widget (event);
+  event_widget = ctk_get_event_widget (event);
   if (!event_widget)
     {
       /* To handle selection INCR transactions, we select
@@ -1725,7 +1725,7 @@ gtk_main_do_event (GdkEvent *event)
        * them specially
        */
       if (event->type == GDK_PROPERTY_NOTIFY)
-        _gtk_selection_incr_event (event->any.window,
+        _ctk_selection_incr_event (event->any.window,
                                    &event->property);
 
       return;
@@ -1738,33 +1738,33 @@ gtk_main_do_event (GdkEvent *event)
   if (rewritten_event)
     {
       event = rewritten_event;
-      event_widget = gtk_get_event_widget (event);
+      event_widget = ctk_get_event_widget (event);
     }
 
   /* Push the event onto a stack of current events for
-   * gtk_current_event_get().
+   * ctk_current_event_get().
    */
   current_events = g_list_prepend (current_events, event);
 
-  window_group = gtk_main_get_window_group (event_widget);
+  window_group = ctk_main_get_window_group (event_widget);
   device = gdk_event_get_device (event);
 
   /* check whether there is a (device) grab in effect... */
   if (device)
-    grab_widget = gtk_window_group_get_current_device_grab (window_group, device);
+    grab_widget = ctk_window_group_get_current_device_grab (window_group, device);
 
   if (!grab_widget)
-    grab_widget = gtk_window_group_get_current_grab (window_group);
+    grab_widget = ctk_window_group_get_current_grab (window_group);
 
   if (GTK_IS_WINDOW (event_widget) ||
       (grab_widget && grab_widget != event_widget &&
-       !gtk_widget_is_ancestor (event_widget, grab_widget)))
+       !ctk_widget_is_ancestor (event_widget, grab_widget)))
     {
       /* Ignore event if we got a grab on another toplevel */
       if (!grab_widget ||
-          gtk_widget_get_toplevel (event_widget) == gtk_widget_get_toplevel (grab_widget))
+          ctk_widget_get_toplevel (event_widget) == ctk_widget_get_toplevel (grab_widget))
         {
-          if (_gtk_window_check_handle_wm_event (event))
+          if (_ctk_window_check_handle_wm_event (event))
             goto cleanup;
         }
     }
@@ -1782,8 +1782,8 @@ gtk_main_do_event (GdkEvent *event)
    * This is the key to implementing modality.
    */
   if (!grab_widget ||
-      ((gtk_widget_is_sensitive (event_widget) || event->type == GDK_SCROLL) &&
-       gtk_widget_is_ancestor (event_widget, grab_widget)))
+      ((ctk_widget_is_sensitive (event_widget) || event->type == GDK_SCROLL) &&
+       ctk_widget_is_ancestor (event_widget, grab_widget)))
     grab_widget = event_widget;
 
   /* popovers are not really a "child" of their "parent" in the widget/window
@@ -1798,7 +1798,7 @@ gtk_main_do_event (GdkEvent *event)
    * device GTK+ grab
    */
   if (device &&
-      _gtk_window_group_widget_is_blocked_for_device (window_group, grab_widget, device))
+      _ctk_window_group_widget_is_blocked_for_device (window_group, grab_widget, device))
     goto cleanup;
 
   /* Not all events get sent to the grabbing widget.
@@ -1818,9 +1818,9 @@ gtk_main_do_event (GdkEvent *event)
 
     case GDK_DELETE:
       g_object_ref (event_widget);
-      if ((!gtk_window_group_get_current_grab (window_group) || gtk_widget_get_toplevel (gtk_window_group_get_current_grab (window_group)) == event_widget) &&
-          !gtk_widget_event (event_widget, event))
-        gtk_widget_destroy (event_widget);
+      if ((!ctk_window_group_get_current_grab (window_group) || ctk_widget_get_toplevel (ctk_window_group_get_current_grab (window_group)) == event_widget) &&
+          !ctk_widget_event (event_widget, event))
+        ctk_widget_destroy (event_widget);
       g_object_unref (event_widget);
       break;
 
@@ -1828,19 +1828,19 @@ gtk_main_do_event (GdkEvent *event)
       /* Unexpected GDK_DESTROY from the outside, ignore for
        * child windows, handle like a GDK_DELETE for toplevels
        */
-      if (!gtk_widget_get_parent (event_widget))
+      if (!ctk_widget_get_parent (event_widget))
         {
           g_object_ref (event_widget);
-          if (!gtk_widget_event (event_widget, event) &&
-              gtk_widget_get_realized (event_widget))
-            gtk_widget_destroy (event_widget);
+          if (!ctk_widget_event (event_widget, event) &&
+              ctk_widget_get_realized (event_widget))
+            ctk_widget_destroy (event_widget);
           g_object_unref (event_widget);
         }
       break;
 
     case GDK_EXPOSE:
       if (event->any.window)
-        gtk_widget_render (event_widget, event->any.window, event->expose.region);
+        ctk_widget_render (event_widget, event->any.window, event->expose.region);
       break;
 
     case GDK_PROPERTY_NOTIFY:
@@ -1856,22 +1856,22 @@ gtk_main_do_event (GdkEvent *event)
     case GDK_WINDOW_STATE:
     case GDK_GRAB_BROKEN:
     case GDK_DAMAGE:
-      if (!_gtk_widget_captured_event (event_widget, event))
-        gtk_widget_event (event_widget, event);
+      if (!_ctk_widget_captured_event (event_widget, event))
+        ctk_widget_event (event_widget, event);
       break;
 
     case GDK_KEY_PRESS:
     case GDK_KEY_RELEASE:
-      if (gtk_invoke_key_snoopers (grab_widget, event))
+      if (ctk_invoke_key_snoopers (grab_widget, event))
         break;
 
       /* make focus visible in a window that receives a key event */
       {
         GtkWidget *window;
 
-        window = gtk_widget_get_toplevel (grab_widget);
+        window = ctk_widget_get_toplevel (grab_widget);
         if (GTK_IS_WINDOW (window))
-          gtk_window_set_focus_visible (GTK_WINDOW (window), TRUE);
+          ctk_window_set_focus_visible (GTK_WINDOW (window), TRUE);
       }
 
       /* Catch alt press to enable auto-mnemonics;
@@ -1879,7 +1879,7 @@ gtk_main_do_event (GdkEvent *event)
        * FIXME: this does not work with mnemonic modifiers other than Alt
        */
       if ((event->key.keyval == GDK_KEY_Alt_L || event->key.keyval == GDK_KEY_Alt_R) &&
-          ((event->key.state & (gtk_accelerator_get_default_mod_mask ()) & ~(GDK_RELEASE_MASK|GDK_MOD1_MASK)) == 0) &&
+          ((event->key.state & (ctk_accelerator_get_default_mod_mask ()) & ~(GDK_RELEASE_MASK|GDK_MOD1_MASK)) == 0) &&
           !GTK_IS_MENU_SHELL (grab_widget))
         {
           gboolean mnemonics_visible;
@@ -1887,13 +1887,13 @@ gtk_main_do_event (GdkEvent *event)
 
           mnemonics_visible = (event->type == GDK_KEY_PRESS);
 
-          window = gtk_widget_get_toplevel (grab_widget);
+          window = ctk_widget_get_toplevel (grab_widget);
           if (GTK_IS_WINDOW (window))
             {
               if (mnemonics_visible)
-                _gtk_window_schedule_mnemonics_visible (GTK_WINDOW (window));
+                _ctk_window_schedule_mnemonics_visible (GTK_WINDOW (window));
               else
-                gtk_window_set_mnemonics_visible (GTK_WINDOW (window), FALSE);
+                ctk_window_set_mnemonics_visible (GTK_WINDOW (window), FALSE);
             }
         }
       /* else fall through */
@@ -1916,26 +1916,26 @@ gtk_main_do_event (GdkEvent *event)
     case GDK_PAD_RING:
     case GDK_PAD_STRIP:
     case GDK_PAD_GROUP_MODE:
-      if (!_gtk_propagate_captured_event (grab_widget, event, topmost_widget))
-        gtk_propagate_event (grab_widget, event);
+      if (!_ctk_propagate_captured_event (grab_widget, event, topmost_widget))
+        ctk_propagate_event (grab_widget, event);
       break;
 
     case GDK_ENTER_NOTIFY:
     case GDK_LEAVE_NOTIFY:
-      if (gtk_widget_is_sensitive (grab_widget) &&
-          !_gtk_propagate_captured_event (grab_widget, event, topmost_widget))
-        gtk_widget_event (grab_widget, event);
+      if (ctk_widget_is_sensitive (grab_widget) &&
+          !_ctk_propagate_captured_event (grab_widget, event, topmost_widget))
+        ctk_widget_event (grab_widget, event);
       break;
 
     case GDK_DRAG_STATUS:
     case GDK_DROP_FINISHED:
-      _gtk_drag_source_handle_event (event_widget, event);
+      _ctk_drag_source_handle_event (event_widget, event);
       break;
     case GDK_DRAG_ENTER:
     case GDK_DRAG_LEAVE:
     case GDK_DRAG_MOTION:
     case GDK_DROP_START:
-      _gtk_drag_dest_handle_event (event_widget, event);
+      _ctk_drag_dest_handle_event (event_widget, event);
       break;
     default:
       g_assert_not_reached ();
@@ -1954,7 +1954,7 @@ gtk_main_do_event (GdkEvent *event)
       || event->type == GDK_TOUCH_UPDATE
       || event->type == GDK_SCROLL)
     {
-      _gtk_tooltip_handle_event (event);
+      _ctk_tooltip_handle_event (event);
     }
 
  cleanup:
@@ -1967,7 +1967,7 @@ gtk_main_do_event (GdkEvent *event)
 }
 
 /**
- * gtk_true:
+ * ctk_true:
  *
  * All this function does it to return %TRUE.
  *
@@ -1986,26 +1986,26 @@ gtk_main_do_event (GdkEvent *event)
  *   GtkWidget *win, *but;
  *   const char *text = "Close yourself. I mean it!";
  *
- *   gtk_init (&argc, &argv);
+ *   ctk_init (&argc, &argv);
  *
- *   win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+ *   win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
  *   g_signal_connect (win,
  *                     "delete-event",
- *                     G_CALLBACK (gtk_true),
+ *                     G_CALLBACK (ctk_true),
  *                     NULL);
  *   g_signal_connect (win, "destroy",
- *                     G_CALLBACK (gtk_main_quit),
+ *                     G_CALLBACK (ctk_main_quit),
  *                     NULL);
  *
- *   but = gtk_button_new_with_label (text);
+ *   but = ctk_button_new_with_label (text);
  *   g_signal_connect_swapped (but, "clicked",
- *                             G_CALLBACK (gtk_object_destroy),
+ *                             G_CALLBACK (ctk_object_destroy),
  *                             win);
- *   gtk_container_add (GTK_CONTAINER (win), but);
+ *   ctk_container_add (GTK_CONTAINER (win), but);
  *
- *   gtk_widget_show_all (win);
+ *   ctk_widget_show_all (win);
  *
- *   gtk_main ();
+ *   ctk_main ();
  *
  *   return 0;
  * }
@@ -2014,37 +2014,37 @@ gtk_main_do_event (GdkEvent *event)
  * Returns: %TRUE
  */
 gboolean
-gtk_true (void)
+ctk_true (void)
 {
   return TRUE;
 }
 
 /**
- * gtk_false:
+ * ctk_false:
  *
- * Analogical to gtk_true(), this function does nothing
+ * Analogical to ctk_true(), this function does nothing
  * but always returns %FALSE.
  *
  * Returns: %FALSE
  */
 gboolean
-gtk_false (void)
+ctk_false (void)
 {
   return FALSE;
 }
 
 static GtkWindowGroup *
-gtk_main_get_window_group (GtkWidget *widget)
+ctk_main_get_window_group (GtkWidget *widget)
 {
   GtkWidget *toplevel = NULL;
 
   if (widget)
-    toplevel = gtk_widget_get_toplevel (widget);
+    toplevel = ctk_widget_get_toplevel (widget);
 
   if (GTK_IS_WINDOW (toplevel))
-    return gtk_window_get_group (GTK_WINDOW (toplevel));
+    return ctk_window_get_group (GTK_WINDOW (toplevel));
   else
-    return gtk_window_get_group (NULL);
+    return ctk_window_get_group (NULL);
 }
 
 typedef struct
@@ -2077,7 +2077,7 @@ synth_crossing_for_grab_notify (GtkWidget       *from,
         from_window = NULL;
       else
         {
-          from_window = _gtk_widget_get_device_window (from, device);
+          from_window = _ctk_widget_get_device_window (from, device);
 
           if (from_window &&
               !gdk_window_get_support_multidevice (from_window) &&
@@ -2089,7 +2089,7 @@ synth_crossing_for_grab_notify (GtkWidget       *from,
         to_window = NULL;
       else
         {
-          to_window = _gtk_widget_get_device_window (to, device);
+          to_window = _ctk_widget_get_device_window (to, device);
 
           if (to_window &&
               !gdk_window_get_support_multidevice (to_window) &&
@@ -2099,7 +2099,7 @@ synth_crossing_for_grab_notify (GtkWidget       *from,
 
       if (from_window || to_window)
         {
-          _gtk_widget_synthesize_crossing ((from_window) ? from : NULL,
+          _ctk_widget_synthesize_crossing ((from_window) ? from : NULL,
                                            (to_window) ? to : NULL,
                                            device, mode);
 
@@ -2115,7 +2115,7 @@ synth_crossing_for_grab_notify (GtkWidget       *from,
 }
 
 static void
-gtk_grab_notify_foreach (GtkWidget *child,
+ctk_grab_notify_foreach (GtkWidget *child,
                          gpointer   data)
 {
   GrabNotifyInfo *info = data;
@@ -2134,31 +2134,31 @@ gtk_grab_notify_foreach (GtkWidget *child,
   g_object_ref (child);
 
   if ((was_shadowed || is_shadowed) && GTK_IS_CONTAINER (child))
-    gtk_container_forall (GTK_CONTAINER (child), gtk_grab_notify_foreach, info);
+    ctk_container_forall (GTK_CONTAINER (child), ctk_grab_notify_foreach, info);
 
   if (info->device &&
-      _gtk_widget_get_device_window (child, info->device))
+      _ctk_widget_get_device_window (child, info->device))
     {
       /* Device specified and is on widget */
       devices = g_list_prepend (NULL, info->device);
     }
   else
-    devices = _gtk_widget_list_devices (child);
+    devices = _ctk_widget_list_devices (child);
 
   if (is_shadowed)
     {
-      _gtk_widget_set_shadowed (child, TRUE);
+      _ctk_widget_set_shadowed (child, TRUE);
       if (!was_shadowed && devices &&
-          gtk_widget_is_sensitive (child))
+          ctk_widget_is_sensitive (child))
         synth_crossing_for_grab_notify (child, info->new_grab_widget,
                                         info, devices,
                                         GDK_CROSSING_GTK_GRAB);
     }
   else
     {
-      _gtk_widget_set_shadowed (child, FALSE);
+      _ctk_widget_set_shadowed (child, FALSE);
       if (was_shadowed && devices &&
-          gtk_widget_is_sensitive (child))
+          ctk_widget_is_sensitive (child))
         synth_crossing_for_grab_notify (info->old_grab_widget, child,
                                         info, devices,
                                         info->from_grab ? GDK_CROSSING_GTK_GRAB :
@@ -2166,7 +2166,7 @@ gtk_grab_notify_foreach (GtkWidget *child,
     }
 
   if (was_shadowed != is_shadowed)
-    _gtk_widget_grab_notify (child, was_shadowed);
+    _ctk_widget_grab_notify (child, was_shadowed);
 
   g_object_unref (child);
   g_list_free (devices);
@@ -2176,7 +2176,7 @@ gtk_grab_notify_foreach (GtkWidget *child,
 }
 
 static void
-gtk_grab_notify (GtkWindowGroup *group,
+ctk_grab_notify (GtkWindowGroup *group,
                  GdkDevice      *device,
                  GtkWidget      *old_grab_widget,
                  GtkWidget      *new_grab_widget,
@@ -2195,7 +2195,7 @@ gtk_grab_notify (GtkWindowGroup *group,
 
   g_object_ref (group);
 
-  toplevels = gtk_window_list_toplevels ();
+  toplevels = ctk_window_list_toplevels ();
   g_list_foreach (toplevels, (GFunc)g_object_ref, NULL);
 
   while (toplevels)
@@ -2206,8 +2206,8 @@ gtk_grab_notify (GtkWindowGroup *group,
       info.was_grabbed = FALSE;
       info.is_grabbed = FALSE;
 
-      if (group == gtk_window_get_group (toplevel))
-        gtk_grab_notify_foreach (GTK_WIDGET (toplevel), &info);
+      if (group == ctk_window_get_group (toplevel))
+        ctk_grab_notify_foreach (GTK_WIDGET (toplevel), &info);
       g_object_unref (toplevel);
     }
 
@@ -2216,7 +2216,7 @@ gtk_grab_notify (GtkWindowGroup *group,
 }
 
 /**
- * gtk_grab_add: (method)
+ * ctk_grab_add: (method)
  * @widget: The widget that grabs keyboard and pointer events
  *
  * Makes @widget the current grabbed widget.
@@ -2229,30 +2229,30 @@ gtk_grab_notify (GtkWindowGroup *group,
  * grabbed widget and this function does nothing.
  */
 void
-gtk_grab_add (GtkWidget *widget)
+ctk_grab_add (GtkWidget *widget)
 {
   GtkWindowGroup *group;
   GtkWidget *old_grab_widget;
 
   g_return_if_fail (widget != NULL);
 
-  if (!gtk_widget_has_grab (widget) && gtk_widget_is_sensitive (widget))
+  if (!ctk_widget_has_grab (widget) && ctk_widget_is_sensitive (widget))
     {
-      _gtk_widget_set_has_grab (widget, TRUE);
+      _ctk_widget_set_has_grab (widget, TRUE);
 
-      group = gtk_main_get_window_group (widget);
+      group = ctk_main_get_window_group (widget);
 
-      old_grab_widget = gtk_window_group_get_current_grab (group);
+      old_grab_widget = ctk_window_group_get_current_grab (group);
 
       g_object_ref (widget);
-      _gtk_window_group_add_grab (group, widget);
+      _ctk_window_group_add_grab (group, widget);
 
-      gtk_grab_notify (group, NULL, old_grab_widget, widget, TRUE);
+      ctk_grab_notify (group, NULL, old_grab_widget, widget, TRUE);
     }
 }
 
 /**
- * gtk_grab_get_current:
+ * ctk_grab_get_current:
  *
  * Queries the current grab of the default window group.
  *
@@ -2260,49 +2260,49 @@ gtk_grab_add (GtkWidget *widget)
  *     has the grab or %NULL if no grab is active
  */
 GtkWidget*
-gtk_grab_get_current (void)
+ctk_grab_get_current (void)
 {
   GtkWindowGroup *group;
 
-  group = gtk_main_get_window_group (NULL);
+  group = ctk_main_get_window_group (NULL);
 
-  return gtk_window_group_get_current_grab (group);
+  return ctk_window_group_get_current_grab (group);
 }
 
 /**
- * gtk_grab_remove: (method)
+ * ctk_grab_remove: (method)
  * @widget: The widget which gives up the grab
  *
  * Removes the grab from the given widget.
  *
- * You have to pair calls to gtk_grab_add() and gtk_grab_remove().
+ * You have to pair calls to ctk_grab_add() and ctk_grab_remove().
  *
  * If @widget does not have the grab, this function does nothing.
  */
 void
-gtk_grab_remove (GtkWidget *widget)
+ctk_grab_remove (GtkWidget *widget)
 {
   GtkWindowGroup *group;
   GtkWidget *new_grab_widget;
 
   g_return_if_fail (widget != NULL);
 
-  if (gtk_widget_has_grab (widget))
+  if (ctk_widget_has_grab (widget))
     {
-      _gtk_widget_set_has_grab (widget, FALSE);
+      _ctk_widget_set_has_grab (widget, FALSE);
 
-      group = gtk_main_get_window_group (widget);
-      _gtk_window_group_remove_grab (group, widget);
-      new_grab_widget = gtk_window_group_get_current_grab (group);
+      group = ctk_main_get_window_group (widget);
+      _ctk_window_group_remove_grab (group, widget);
+      new_grab_widget = ctk_window_group_get_current_grab (group);
 
-      gtk_grab_notify (group, NULL, widget, new_grab_widget, FALSE);
+      ctk_grab_notify (group, NULL, widget, new_grab_widget, FALSE);
 
       g_object_unref (widget);
     }
 }
 
 /**
- * gtk_device_grab_add:
+ * ctk_device_grab_add:
  * @widget: a #GtkWidget
  * @device: a #GdkDevice to grab on.
  * @block_others: %TRUE to prevent other devices to interact with @widget.
@@ -2315,7 +2315,7 @@ gtk_grab_remove (GtkWidget *widget)
  * Since: 3.0
  */
 void
-gtk_device_grab_add (GtkWidget *widget,
+ctk_device_grab_add (GtkWidget *widget,
                      GdkDevice *device,
                      gboolean   block_others)
 {
@@ -2325,29 +2325,29 @@ gtk_device_grab_add (GtkWidget *widget,
   g_return_if_fail (GTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
 
-  group = gtk_main_get_window_group (widget);
-  old_grab_widget = gtk_window_group_get_current_device_grab (group, device);
+  group = ctk_main_get_window_group (widget);
+  old_grab_widget = ctk_window_group_get_current_device_grab (group, device);
 
   if (old_grab_widget != widget)
-    _gtk_window_group_add_device_grab (group, widget, device, block_others);
+    _ctk_window_group_add_device_grab (group, widget, device, block_others);
 
-  gtk_grab_notify (group, device, old_grab_widget, widget, TRUE);
+  ctk_grab_notify (group, device, old_grab_widget, widget, TRUE);
 }
 
 /**
- * gtk_device_grab_remove:
+ * ctk_device_grab_remove:
  * @widget: a #GtkWidget
  * @device: a #GdkDevice
  *
  * Removes a device grab from the given widget.
  *
- * You have to pair calls to gtk_device_grab_add() and
- * gtk_device_grab_remove().
+ * You have to pair calls to ctk_device_grab_add() and
+ * ctk_device_grab_remove().
  *
  * Since: 3.0
  */
 void
-gtk_device_grab_remove (GtkWidget *widget,
+ctk_device_grab_remove (GtkWidget *widget,
                         GdkDevice *device)
 {
   GtkWindowGroup *group;
@@ -2356,15 +2356,15 @@ gtk_device_grab_remove (GtkWidget *widget,
   g_return_if_fail (GTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
 
-  group = gtk_main_get_window_group (widget);
-  _gtk_window_group_remove_device_grab (group, widget, device);
-  new_grab_widget = gtk_window_group_get_current_device_grab (group, device);
+  group = ctk_main_get_window_group (widget);
+  _ctk_window_group_remove_device_grab (group, widget, device);
+  new_grab_widget = ctk_window_group_get_current_device_grab (group, device);
 
-  gtk_grab_notify (group, device, widget, new_grab_widget, FALSE);
+  ctk_grab_notify (group, device, widget, new_grab_widget, FALSE);
 }
 
 /**
- * gtk_key_snooper_install: (skip)
+ * ctk_key_snooper_install: (skip)
  * @snooper: a #GtkKeySnoopFunc
  * @func_data: (closure): data to pass to @snooper
  *
@@ -2372,13 +2372,13 @@ gtk_device_grab_remove (GtkWidget *widget,
  * key events before delivering them normally.
  *
  * Returns: a unique id for this key snooper for use with
- *    gtk_key_snooper_remove().
+ *    ctk_key_snooper_remove().
  *
  * Deprecated: 3.4: Key snooping should not be done. Events should
  *     be handled by widgets.
  */
 guint
-gtk_key_snooper_install (GtkKeySnoopFunc snooper,
+ctk_key_snooper_install (GtkKeySnoopFunc snooper,
                          gpointer        func_data)
 {
   GtkKeySnooperData *data;
@@ -2396,7 +2396,7 @@ gtk_key_snooper_install (GtkKeySnoopFunc snooper,
 }
 
 /**
- * gtk_key_snooper_remove:
+ * ctk_key_snooper_remove:
  * @snooper_handler_id: Identifies the key snooper to remove
  *
  * Removes the key snooper function with the given id.
@@ -2405,7 +2405,7 @@ gtk_key_snooper_install (GtkKeySnoopFunc snooper,
  *     be handled by widgets.
  */
 void
-gtk_key_snooper_remove (guint snooper_id)
+ctk_key_snooper_remove (guint snooper_id)
 {
   GtkKeySnooperData *data = NULL;
   GSList *slist;
@@ -2428,13 +2428,13 @@ gtk_key_snooper_remove (guint snooper_id)
 }
 
 static gint
-gtk_invoke_key_snoopers (GtkWidget *grab_widget,
+ctk_invoke_key_snoopers (GtkWidget *grab_widget,
                          GdkEvent  *event)
 {
   GSList *slist;
   gint return_val = FALSE;
 
-  return_val = _gtk_accessibility_key_snooper (grab_widget, (GdkEventKey *) event);
+  return_val = _ctk_accessibility_key_snooper (grab_widget, (GdkEventKey *) event);
 
   slist = key_snoopers;
   while (slist && !return_val)
@@ -2450,7 +2450,7 @@ gtk_invoke_key_snoopers (GtkWidget *grab_widget,
 }
 
 /**
- * gtk_get_current_event:
+ * ctk_get_current_event:
  *
  * Obtains a copy of the event currently being processed by GTK+.
  *
@@ -2463,7 +2463,7 @@ gtk_invoke_key_snoopers (GtkWidget *grab_widget,
  *     freed with gdk_event_free().
  */
 GdkEvent*
-gtk_get_current_event (void)
+ctk_get_current_event (void)
 {
   if (current_events)
     return gdk_event_copy (current_events->data);
@@ -2472,7 +2472,7 @@ gtk_get_current_event (void)
 }
 
 /**
- * gtk_get_current_event_time:
+ * ctk_get_current_event_time:
  *
  * If there is a current event and it has a timestamp,
  * return that timestamp, otherwise return %GDK_CURRENT_TIME.
@@ -2481,7 +2481,7 @@ gtk_get_current_event (void)
  *     or %GDK_CURRENT_TIME.
  */
 guint32
-gtk_get_current_event_time (void)
+ctk_get_current_event_time (void)
 {
   if (current_events)
     return gdk_event_get_time (current_events->data);
@@ -2490,7 +2490,7 @@ gtk_get_current_event_time (void)
 }
 
 /**
- * gtk_get_current_event_state:
+ * ctk_get_current_event_state:
  * @state: (out): a location to store the state of the current event
  *
  * If there is a current event and it has a state field, place
@@ -2501,7 +2501,7 @@ gtk_get_current_event_time (void)
  *     had a state field
  */
 gboolean
-gtk_get_current_event_state (GdkModifierType *state)
+ctk_get_current_event_state (GdkModifierType *state)
 {
   g_return_val_if_fail (state != NULL, FALSE);
 
@@ -2515,7 +2515,7 @@ gtk_get_current_event_state (GdkModifierType *state)
 }
 
 /**
- * gtk_get_current_event_device:
+ * ctk_get_current_event_device:
  *
  * If there is a current event and it has a device, return that
  * device, otherwise return %NULL.
@@ -2523,7 +2523,7 @@ gtk_get_current_event_state (GdkModifierType *state)
  * Returns: (transfer none) (nullable): a #GdkDevice, or %NULL
  */
 GdkDevice *
-gtk_get_current_event_device (void)
+ctk_get_current_event_device (void)
 {
   if (current_events)
     return gdk_event_get_device (current_events->data);
@@ -2532,7 +2532,7 @@ gtk_get_current_event_device (void)
 }
 
 /**
- * gtk_get_event_widget:
+ * ctk_get_event_widget:
  * @event: a #GdkEvent
  *
  * If @event is %NULL or the event was not associated with any widget,
@@ -2543,7 +2543,7 @@ gtk_get_current_event_device (void)
  *     received @event, or %NULL
  */
 GtkWidget*
-gtk_get_event_widget (GdkEvent *event)
+ctk_get_event_widget (GdkEvent *event)
 {
   GtkWidget *widget;
   gpointer widget_ptr;
@@ -2581,12 +2581,12 @@ propagate_event_up (GtkWidget *widget,
        * to have children of the viewport eat the scroll
        * event
        */
-      if (!gtk_widget_is_sensitive (widget))
+      if (!ctk_widget_is_sensitive (widget))
         handled_event = event->type != GDK_SCROLL;
       else
-        handled_event = gtk_widget_event (widget, event);
+        handled_event = ctk_widget_event (widget, event);
 
-      tmp = gtk_widget_get_parent (widget);
+      tmp = ctk_widget_get_parent (widget);
       g_object_unref (widget);
 
       if (widget == topmost)
@@ -2613,7 +2613,7 @@ propagate_event_down (GtkWidget *widget,
   widgets = g_list_prepend (widgets, g_object_ref (widget));
   while (widget && widget != topmost)
     {
-      widget = gtk_widget_get_parent (widget);
+      widget = ctk_widget_get_parent (widget);
       if (!widget)
         break;
 
@@ -2627,7 +2627,7 @@ propagate_event_down (GtkWidget *widget,
     {
       widget = (GtkWidget *)l->data;
 
-      if (!gtk_widget_is_sensitive (widget))
+      if (!ctk_widget_is_sensitive (widget))
         {
           /* stop propagating on SCROLL, but don't handle the event, so it
            * can propagate up again and reach its handling widget
@@ -2638,7 +2638,7 @@ propagate_event_down (GtkWidget *widget,
             handled_event = TRUE;
         }
       else
-        handled_event = _gtk_widget_captured_event (widget, event);
+        handled_event = _ctk_widget_captured_event (widget, event);
     }
   g_list_free_full (widgets, (GDestroyNotify)g_object_unref);
 
@@ -2654,7 +2654,7 @@ propagate_event (GtkWidget *widget,
   gboolean handled_event = FALSE;
   gboolean (* propagate_func) (GtkWidget *widget, GdkEvent  *event);
 
-  propagate_func = captured ? _gtk_widget_captured_event : gtk_widget_event;
+  propagate_func = captured ? _ctk_widget_captured_event : ctk_widget_event;
 
   if (event->type == GDK_KEY_PRESS || event->type == GDK_KEY_RELEASE)
     {
@@ -2665,18 +2665,18 @@ propagate_event (GtkWidget *widget,
        */
       GtkWidget *window;
 
-      window = gtk_widget_get_toplevel (widget);
+      window = ctk_widget_get_toplevel (widget);
       if (GTK_IS_WINDOW (window))
         {
           g_object_ref (widget);
           /* If there is a grab within the window, give the grab widget
            * a first crack at the key event
            */
-          if (widget != window && gtk_widget_has_grab (widget))
+          if (widget != window && ctk_widget_has_grab (widget))
             handled_event = propagate_func (widget, event);
 
           if (!handled_event &&
-              gtk_widget_is_sensitive (window))
+              ctk_widget_is_sensitive (window))
             handled_event = propagate_func (window, event);
 
           g_object_unref (widget);
@@ -2691,31 +2691,31 @@ propagate_event (GtkWidget *widget,
 }
 
 /**
- * gtk_propagate_event:
+ * ctk_propagate_event:
  * @widget: a #GtkWidget
  * @event: an event
  *
  * Sends an event to a widget, propagating the event to parent widgets
  * if the event remains unhandled.
  *
- * Events received by GTK+ from GDK normally begin in gtk_main_do_event().
+ * Events received by GTK+ from GDK normally begin in ctk_main_do_event().
  * Depending on the type of event, existence of modal dialogs, grabs, etc.,
  * the event may be propagated; if so, this function is used.
  *
- * gtk_propagate_event() calls gtk_widget_event() on each widget it
- * decides to send the event to. So gtk_widget_event() is the lowest-level
+ * ctk_propagate_event() calls ctk_widget_event() on each widget it
+ * decides to send the event to. So ctk_widget_event() is the lowest-level
  * function; it simply emits the #GtkWidget::event and possibly an
- * event-specific signal on a widget. gtk_propagate_event() is a bit
- * higher-level, and gtk_main_do_event() is the highest level.
+ * event-specific signal on a widget. ctk_propagate_event() is a bit
+ * higher-level, and ctk_main_do_event() is the highest level.
  *
  * All that said, you most likely don’t want to use any of these
  * functions; synthesizing events is rarely needed. There are almost
  * certainly better ways to achieve your goals. For example, use
- * gdk_window_invalidate_rect() or gtk_widget_queue_draw() instead
+ * gdk_window_invalidate_rect() or ctk_widget_queue_draw() instead
  * of making up expose events.
  */
 void
-gtk_propagate_event (GtkWidget *widget,
+ctk_propagate_event (GtkWidget *widget,
                      GdkEvent  *event)
 {
   g_return_if_fail (GTK_IS_WIDGET (widget));
@@ -2725,7 +2725,7 @@ gtk_propagate_event (GtkWidget *widget,
 }
 
 gboolean
-_gtk_propagate_captured_event (GtkWidget *widget,
+_ctk_propagate_captured_event (GtkWidget *widget,
                                GdkEvent  *event,
                                GtkWidget *topmost)
 {

@@ -134,12 +134,12 @@ enum {
 
 static guint signals[N_SIGNALS] = { 0, };
 
-static void gtk_app_chooser_widget_iface_init (GtkAppChooserIface *iface);
+static void ctk_app_chooser_widget_iface_init (GtkAppChooserIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkAppChooserWidget, gtk_app_chooser_widget, GTK_TYPE_BOX,
+G_DEFINE_TYPE_WITH_CODE (GtkAppChooserWidget, ctk_app_chooser_widget, GTK_TYPE_BOX,
                          G_ADD_PRIVATE (GtkAppChooserWidget)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_APP_CHOOSER,
-                                                gtk_app_chooser_widget_iface_init));
+                                                ctk_app_chooser_widget_iface_init));
 
 static void
 refresh_and_emit_app_selected (GtkAppChooserWidget *self,
@@ -150,8 +150,8 @@ refresh_and_emit_app_selected (GtkAppChooserWidget *self,
   GAppInfo *info = NULL;
   gboolean should_emit = FALSE;
 
-  if (gtk_tree_selection_get_selected (selection, &model, &iter))
-    gtk_tree_model_get (model, &iter, COLUMN_APP_INFO, &info, -1);
+  if (ctk_tree_selection_get_selected (selection, &model, &iter))
+    ctk_tree_model_get (model, &iter, COLUMN_APP_INFO, &info, -1);
 
   if (info == NULL)
     return;
@@ -187,22 +187,22 @@ get_app_info_for_event (GtkAppChooserWidget *self,
   GAppInfo *info;
   gboolean recommended;
 
-  if (!gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (self->priv->program_list),
+  if (!ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (self->priv->program_list),
                                       event->x, event->y,
                                       &path,
                                       NULL, NULL, NULL))
     return NULL;
 
-  model = gtk_tree_view_get_model (GTK_TREE_VIEW (self->priv->program_list));
+  model = ctk_tree_view_get_model (GTK_TREE_VIEW (self->priv->program_list));
 
-  if (!gtk_tree_model_get_iter (model, &iter, path))
+  if (!ctk_tree_model_get_iter (model, &iter, path))
     {
-      gtk_tree_path_free (path);
+      ctk_tree_path_free (path);
       return NULL;
     }
 
   /* we only allow interaction with recommended applications */
-  gtk_tree_model_get (model, &iter,
+  ctk_tree_model_get (model, &iter,
                       COLUMN_APP_INFO, &info,
                       COLUMN_RECOMMENDED, &recommended,
                       -1);
@@ -242,22 +242,22 @@ widget_button_press_event_cb (GtkWidget      *widget,
         return FALSE;
 
       if (self->priv->popup_menu)
-        gtk_widget_destroy (self->priv->popup_menu);
+        ctk_widget_destroy (self->priv->popup_menu);
 
-      self->priv->popup_menu = menu = gtk_menu_new ();
-      gtk_menu_attach_to_widget (GTK_MENU (menu), GTK_WIDGET (self), popup_menu_detach);
+      self->priv->popup_menu = menu = ctk_menu_new ();
+      ctk_menu_attach_to_widget (GTK_MENU (menu), GTK_WIDGET (self), popup_menu_detach);
 
       g_signal_emit (self, signals[SIGNAL_POPULATE_POPUP], 0, menu, info);
 
       g_object_unref (info);
 
       /* see if clients added menu items to this container */
-      children = gtk_container_get_children (GTK_CONTAINER (menu));
+      children = ctk_container_get_children (GTK_CONTAINER (menu));
       n_children = g_list_length (children);
 
       if (n_children > 0)
         /* actually popup the menu */
-        gtk_menu_popup_at_pointer (GTK_MENU (menu), (GdkEvent *) event);
+        ctk_menu_popup_at_pointer (GTK_MENU (menu), (GdkEvent *) event);
 
       g_list_free (children);
     }
@@ -273,9 +273,9 @@ path_is_heading (GtkTreeView *view,
   GtkTreeModel *model;
   gboolean res;
 
-  model = gtk_tree_view_get_model (view);
-  gtk_tree_model_get_iter (model, &iter, path);
-  gtk_tree_model_get (model, &iter,
+  model = ctk_tree_view_get_model (view);
+  ctk_tree_model_get_iter (model, &iter, path);
+  ctk_tree_model_get (model, &iter,
                       COLUMN_HEADING, &res,
                       -1);
 
@@ -294,7 +294,7 @@ program_list_selection_activated (GtkTreeView       *view,
   if (path_is_heading (view, path))
     return;
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (self->priv->program_list));
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (self->priv->program_list));
 
   refresh_and_emit_app_selected (self, selection);
 
@@ -303,7 +303,7 @@ program_list_selection_activated (GtkTreeView       *view,
 }
 
 static gboolean
-gtk_app_chooser_search_equal_func (GtkTreeModel *model,
+ctk_app_chooser_search_equal_func (GtkTreeModel *model,
                                    gint          column,
                                    const gchar  *key,
                                    GtkTreeIter  *iter,
@@ -317,7 +317,7 @@ gtk_app_chooser_search_equal_func (GtkTreeModel *model,
     {
       ret = TRUE;
 
-      gtk_tree_model_get (model, iter,
+      ctk_tree_model_get (model, iter,
                           COLUMN_NAME, &name,
                           COLUMN_EXEC, &exec_name,
                           -1);
@@ -338,7 +338,7 @@ gtk_app_chooser_search_equal_func (GtkTreeModel *model,
 }
 
 static gint
-gtk_app_chooser_sort_func (GtkTreeModel *model,
+ctk_app_chooser_sort_func (GtkTreeModel *model,
                            GtkTreeIter  *a,
                            GtkTreeIter  *b,
                            gpointer      user_data)
@@ -356,7 +356,7 @@ gtk_app_chooser_sort_func (GtkTreeModel *model,
    * - >0 if a should show after b
    */
 
-  gtk_tree_model_get (model, a,
+  ctk_tree_model_get (model, a,
                       COLUMN_NAME, &a_name,
                       COLUMN_RECOMMENDED, &a_recommended,
                       COLUMN_FALLBACK, &a_fallback,
@@ -364,7 +364,7 @@ gtk_app_chooser_sort_func (GtkTreeModel *model,
                       COLUMN_DEFAULT, &a_default,
                       -1);
 
-  gtk_tree_model_get (model, b,
+  ctk_tree_model_get (model, b,
                       COLUMN_NAME, &b_name,
                       COLUMN_RECOMMENDED, &b_recommended,
                       COLUMN_FALLBACK, &b_fallback,
@@ -454,7 +454,7 @@ padding_cell_renderer_func (GtkTreeViewColumn *column,
 {
   gboolean heading;
 
-  gtk_tree_model_get (model, iter,
+  ctk_tree_model_get (model, iter,
                       COLUMN_HEADING, &heading,
                       -1);
   if (heading)
@@ -472,7 +472,7 @@ padding_cell_renderer_func (GtkTreeViewColumn *column,
 }
 
 static gboolean
-gtk_app_chooser_selection_func (GtkTreeSelection *selection,
+ctk_app_chooser_selection_func (GtkTreeSelection *selection,
                                 GtkTreeModel     *model,
                                 GtkTreePath      *path,
                                 gboolean          path_currently_selected,
@@ -481,8 +481,8 @@ gtk_app_chooser_selection_func (GtkTreeSelection *selection,
   GtkTreeIter iter;
   gboolean heading;
 
-  gtk_tree_model_get_iter (model, &iter, path);
-  gtk_tree_model_get (model, &iter,
+  ctk_tree_model_get_iter (model, &iter, path);
+  ctk_tree_model_get (model, &iter,
                       COLUMN_HEADING, &heading,
                       -1);
 
@@ -497,7 +497,7 @@ compare_apps_func (gconstpointer a,
 }
 
 static gboolean
-gtk_app_chooser_widget_add_section (GtkAppChooserWidget *self,
+ctk_app_chooser_widget_add_section (GtkAppChooserWidget *self,
                                     const gchar         *heading_title,
                                     gboolean             show_headings,
                                     gboolean             recommended,
@@ -532,8 +532,8 @@ gtk_app_chooser_widget_add_section (GtkAppChooserWidget *self,
 
       if (!heading_added && show_headings)
         {
-          gtk_list_store_append (self->priv->program_list_store, &iter);
-          gtk_list_store_set (self->priv->program_list_store, &iter,
+          ctk_list_store_append (self->priv->program_list_store, &iter);
+          ctk_list_store_set (self->priv->program_list_store, &iter,
                               COLUMN_HEADING_TEXT, bold_string,
                               COLUMN_HEADING, TRUE,
                               COLUMN_RECOMMENDED, recommended,
@@ -555,8 +555,8 @@ gtk_app_chooser_widget_add_section (GtkAppChooserWidget *self,
           unref_icon = TRUE;
         }
 
-      gtk_list_store_append (self->priv->program_list_store, &iter);
-      gtk_list_store_set (self->priv->program_list_store, &iter,
+      ctk_list_store_append (self->priv->program_list_store, &iter);
+      ctk_list_store_set (self->priv->program_list_store, &iter,
                           COLUMN_APP_INFO, app,
                           COLUMN_GICON, icon,
                           COLUMN_NAME, g_app_info_get_name (app),
@@ -581,7 +581,7 @@ gtk_app_chooser_widget_add_section (GtkAppChooserWidget *self,
 
 
 static void
-gtk_app_chooser_add_default (GtkAppChooserWidget *self,
+ctk_app_chooser_add_default (GtkAppChooserWidget *self,
                              GAppInfo            *app)
 {
   GtkTreeIter iter;
@@ -592,8 +592,8 @@ gtk_app_chooser_add_default (GtkAppChooserWidget *self,
   unref_icon = FALSE;
   string = g_strdup_printf ("<b>%s</b>", _("Default Application"));
 
-  gtk_list_store_append (self->priv->program_list_store, &iter);
-  gtk_list_store_set (self->priv->program_list_store, &iter,
+  ctk_list_store_append (self->priv->program_list_store, &iter);
+  ctk_list_store_set (self->priv->program_list_store, &iter,
                       COLUMN_HEADING_TEXT, string,
                       COLUMN_HEADING, TRUE,
                       COLUMN_DEFAULT, TRUE,
@@ -612,8 +612,8 @@ gtk_app_chooser_add_default (GtkAppChooserWidget *self,
       unref_icon = TRUE;
     }
 
-  gtk_list_store_append (self->priv->program_list_store, &iter);
-  gtk_list_store_set (self->priv->program_list_store, &iter,
+  ctk_list_store_append (self->priv->program_list_store, &iter);
+  ctk_list_store_set (self->priv->program_list_store, &iter,
                       COLUMN_APP_INFO, app,
                       COLUMN_GICON, icon,
                       COLUMN_NAME, g_app_info_get_name (app),
@@ -648,32 +648,32 @@ update_no_applications_label (GtkAppChooserWidget *self)
       string = self->priv->default_text;
     }
 
-  gtk_label_set_text (GTK_LABEL (self->priv->no_apps_label), string);
+  ctk_label_set_text (GTK_LABEL (self->priv->no_apps_label), string);
 
   g_free (text);
 }
 
 static void
-gtk_app_chooser_widget_select_first (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_select_first (GtkAppChooserWidget *self)
 {
   GtkTreeIter iter;
   GAppInfo *info = NULL;
   GtkTreeModel *model;
 
-  model = gtk_tree_view_get_model (GTK_TREE_VIEW (self->priv->program_list));
-  if (!gtk_tree_model_get_iter_first (model, &iter))
+  model = ctk_tree_view_get_model (GTK_TREE_VIEW (self->priv->program_list));
+  if (!ctk_tree_model_get_iter_first (model, &iter))
     return;
 
   while (info == NULL)
     {
-      gtk_tree_model_get (model, &iter,
+      ctk_tree_model_get (model, &iter,
                           COLUMN_APP_INFO, &info,
                           -1);
 
       if (info != NULL)
         break;
 
-      if (!gtk_tree_model_iter_next (model, &iter))
+      if (!ctk_tree_model_iter_next (model, &iter))
         break;
     }
 
@@ -681,15 +681,15 @@ gtk_app_chooser_widget_select_first (GtkAppChooserWidget *self)
     {
       GtkTreeSelection *selection;
 
-      selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (self->priv->program_list));
-      gtk_tree_selection_select_iter (selection, &iter);
+      selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (self->priv->program_list));
+      ctk_tree_selection_select_iter (selection, &iter);
 
       g_object_unref (info);
     }
 }
 
 static void
-gtk_app_chooser_widget_real_add_items (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_real_add_items (GtkAppChooserWidget *self)
 {
   GList *all_applications = NULL;
   GList *recommended_apps = NULL;
@@ -711,7 +711,7 @@ gtk_app_chooser_widget_real_add_items (GtkAppChooserWidget *self)
 
       if (default_app != NULL)
         {
-          gtk_app_chooser_add_default (self, default_app);
+          ctk_app_chooser_add_default (self, default_app);
           apps_added = TRUE;
           exclude_apps = g_list_prepend (exclude_apps, default_app);
         }
@@ -723,7 +723,7 @@ gtk_app_chooser_widget_real_add_items (GtkAppChooserWidget *self)
       if (self->priv->content_type)
 	recommended_apps = g_app_info_get_recommended_for_type (self->priv->content_type);
 
-      apps_added |= gtk_app_chooser_widget_add_section (self, _("Recommended Applications"),
+      apps_added |= ctk_app_chooser_widget_add_section (self, _("Recommended Applications"),
                                                         show_headings,
                                                         !self->priv->show_all, /* mark as recommended */
                                                         FALSE, /* mark as fallback */
@@ -738,7 +738,7 @@ gtk_app_chooser_widget_real_add_items (GtkAppChooserWidget *self)
       if (self->priv->content_type)
 	fallback_apps = g_app_info_get_fallback_for_type (self->priv->content_type);
 
-      apps_added |= gtk_app_chooser_widget_add_section (self, _("Related Applications"),
+      apps_added |= ctk_app_chooser_widget_add_section (self, _("Related Applications"),
                                                         show_headings,
                                                         FALSE, /* mark as recommended */
                                                         !self->priv->show_all, /* mark as fallback */
@@ -752,7 +752,7 @@ gtk_app_chooser_widget_real_add_items (GtkAppChooserWidget *self)
     {
       all_applications = g_app_info_get_all ();
 
-      apps_added |= gtk_app_chooser_widget_add_section (self, _("Other Applications"),
+      apps_added |= ctk_app_chooser_widget_add_section (self, _("Other Applications"),
                                                         show_headings,
                                                         FALSE,
                                                         FALSE,
@@ -762,9 +762,9 @@ gtk_app_chooser_widget_real_add_items (GtkAppChooserWidget *self)
   if (!apps_added)
     update_no_applications_label (self);
 
-  gtk_widget_set_visible (self->priv->no_apps, !apps_added);
+  ctk_widget_set_visible (self->priv->no_apps, !apps_added);
 
-  gtk_app_chooser_widget_select_first (self);
+  ctk_app_chooser_widget_select_first (self);
 
   if (default_app != NULL)
     g_object_unref (default_app);
@@ -776,7 +776,7 @@ gtk_app_chooser_widget_real_add_items (GtkAppChooserWidget *self)
 }
 
 static void
-gtk_app_chooser_widget_initialize_items (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_initialize_items (GtkAppChooserWidget *self)
 {
   /* initial padding */
   g_object_set (self->priv->padding_renderer,
@@ -784,18 +784,18 @@ gtk_app_chooser_widget_initialize_items (GtkAppChooserWidget *self)
                 NULL);
 
   /* populate the widget */
-  gtk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+  ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
 }
 
 static void
 app_info_changed (GAppInfoMonitor     *monitor,
                   GtkAppChooserWidget *self)
 {
-  gtk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+  ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
 }
 
 static void
-gtk_app_chooser_widget_set_property (GObject      *object,
+ctk_app_chooser_widget_set_property (GObject      *object,
                                      guint         property_id,
                                      const GValue *value,
                                      GParamSpec   *pspec)
@@ -808,22 +808,22 @@ gtk_app_chooser_widget_set_property (GObject      *object,
       self->priv->content_type = g_value_dup_string (value);
       break;
     case PROP_SHOW_DEFAULT:
-      gtk_app_chooser_widget_set_show_default (self, g_value_get_boolean (value));
+      ctk_app_chooser_widget_set_show_default (self, g_value_get_boolean (value));
       break;
     case PROP_SHOW_RECOMMENDED:
-      gtk_app_chooser_widget_set_show_recommended (self, g_value_get_boolean (value));
+      ctk_app_chooser_widget_set_show_recommended (self, g_value_get_boolean (value));
       break;
     case PROP_SHOW_FALLBACK:
-      gtk_app_chooser_widget_set_show_fallback (self, g_value_get_boolean (value));
+      ctk_app_chooser_widget_set_show_fallback (self, g_value_get_boolean (value));
       break;
     case PROP_SHOW_OTHER:
-      gtk_app_chooser_widget_set_show_other (self, g_value_get_boolean (value));
+      ctk_app_chooser_widget_set_show_other (self, g_value_get_boolean (value));
       break;
     case PROP_SHOW_ALL:
-      gtk_app_chooser_widget_set_show_all (self, g_value_get_boolean (value));
+      ctk_app_chooser_widget_set_show_all (self, g_value_get_boolean (value));
       break;
     case PROP_DEFAULT_TEXT:
-      gtk_app_chooser_widget_set_default_text (self, g_value_get_string (value));
+      ctk_app_chooser_widget_set_default_text (self, g_value_get_string (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -832,7 +832,7 @@ gtk_app_chooser_widget_set_property (GObject      *object,
 }
 
 static void
-gtk_app_chooser_widget_get_property (GObject    *object,
+ctk_app_chooser_widget_get_property (GObject    *object,
                                      guint       property_id,
                                      GValue     *value,
                                      GParamSpec *pspec)
@@ -869,18 +869,18 @@ gtk_app_chooser_widget_get_property (GObject    *object,
 }
 
 static void
-gtk_app_chooser_widget_constructed (GObject *object)
+ctk_app_chooser_widget_constructed (GObject *object)
 {
   GtkAppChooserWidget *self = GTK_APP_CHOOSER_WIDGET (object);
 
-  if (G_OBJECT_CLASS (gtk_app_chooser_widget_parent_class)->constructed != NULL)
-    G_OBJECT_CLASS (gtk_app_chooser_widget_parent_class)->constructed (object);
+  if (G_OBJECT_CLASS (ctk_app_chooser_widget_parent_class)->constructed != NULL)
+    G_OBJECT_CLASS (ctk_app_chooser_widget_parent_class)->constructed (object);
 
-  gtk_app_chooser_widget_initialize_items (self);
+  ctk_app_chooser_widget_initialize_items (self);
 }
 
 static void
-gtk_app_chooser_widget_finalize (GObject *object)
+ctk_app_chooser_widget_finalize (GObject *object)
 {
   GtkAppChooserWidget *self = GTK_APP_CHOOSER_WIDGET (object);
 
@@ -889,32 +889,32 @@ gtk_app_chooser_widget_finalize (GObject *object)
   g_signal_handlers_disconnect_by_func (self->priv->monitor, app_info_changed, self);
   g_object_unref (self->priv->monitor);
 
-  G_OBJECT_CLASS (gtk_app_chooser_widget_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_app_chooser_widget_parent_class)->finalize (object);
 }
 
 static void
-gtk_app_chooser_widget_dispose (GObject *object)
+ctk_app_chooser_widget_dispose (GObject *object)
 {
   GtkAppChooserWidget *self = GTK_APP_CHOOSER_WIDGET (object);
 
   g_clear_object (&self->priv->selected_app_info);
 
-  G_OBJECT_CLASS (gtk_app_chooser_widget_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_app_chooser_widget_parent_class)->dispose (object);
 }
 
 static void
-gtk_app_chooser_widget_class_init (GtkAppChooserWidgetClass *klass)
+ctk_app_chooser_widget_class_init (GtkAppChooserWidgetClass *klass)
 {
   GtkWidgetClass *widget_class;
   GObjectClass *gobject_class;
   GParamSpec *pspec;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->dispose = gtk_app_chooser_widget_dispose;
-  gobject_class->finalize = gtk_app_chooser_widget_finalize;
-  gobject_class->set_property = gtk_app_chooser_widget_set_property;
-  gobject_class->get_property = gtk_app_chooser_widget_get_property;
-  gobject_class->constructed = gtk_app_chooser_widget_constructed;
+  gobject_class->dispose = ctk_app_chooser_widget_dispose;
+  gobject_class->finalize = ctk_app_chooser_widget_finalize;
+  gobject_class->set_property = ctk_app_chooser_widget_set_property;
+  gobject_class->get_property = ctk_app_chooser_widget_get_property;
+  gobject_class->constructed = ctk_app_chooser_widget_constructed;
 
   g_object_class_override_property (gobject_class, PROP_CONTENT_TYPE, "content-type");
 
@@ -996,7 +996,7 @@ gtk_app_chooser_widget_class_init (GtkAppChooserWidgetClass *klass)
    * The #GtkAppChooserWidget:default-text property determines the text
    * that appears in the widget when there are no applications for the
    * given content type.
-   * See also gtk_app_chooser_widget_set_default_text().
+   * See also ctk_app_chooser_widget_set_default_text().
    */
   pspec = g_param_spec_string ("default-text",
                                P_("Widget's default text"),
@@ -1060,61 +1060,61 @@ gtk_app_chooser_widget_class_init (GtkAppChooserWidgetClass *klass)
                   G_SIGNAL_RUN_FIRST,
                   G_STRUCT_OFFSET (GtkAppChooserWidgetClass, populate_popup),
                   NULL, NULL,
-                  _gtk_marshal_VOID__OBJECT_OBJECT,
+                  _ctk_marshal_VOID__OBJECT_OBJECT,
                   G_TYPE_NONE,
                   2, GTK_TYPE_MENU, G_TYPE_APP_INFO);
 
   /* Bind class to template
    */
   widget_class = GTK_WIDGET_CLASS (klass);
-  gtk_widget_class_set_template_from_resource (widget_class,
+  ctk_widget_class_set_template_from_resource (widget_class,
 					       "/org/gtk/libgtk/ui/gtkappchooserwidget.ui");
-  gtk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, program_list);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, program_list_store);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, column);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, padding_renderer);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, secondary_padding);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, no_apps_label);
-  gtk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, no_apps);
-  gtk_widget_class_bind_template_callback (widget_class, refresh_and_emit_app_selected);
-  gtk_widget_class_bind_template_callback (widget_class, program_list_selection_activated);
-  gtk_widget_class_bind_template_callback (widget_class, widget_button_press_event_cb);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, program_list);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, program_list_store);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, column);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, padding_renderer);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, secondary_padding);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, no_apps_label);
+  ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, no_apps);
+  ctk_widget_class_bind_template_callback (widget_class, refresh_and_emit_app_selected);
+  ctk_widget_class_bind_template_callback (widget_class, program_list_selection_activated);
+  ctk_widget_class_bind_template_callback (widget_class, widget_button_press_event_cb);
 
-  gtk_widget_class_set_css_name (widget_class, "appchooser");
+  ctk_widget_class_set_css_name (widget_class, "appchooser");
 }
 
 static void
-gtk_app_chooser_widget_init (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_init (GtkAppChooserWidget *self)
 {
   GtkTreeSelection *selection;
   GtkTreeModel *sort;
 
-  self->priv = gtk_app_chooser_widget_get_instance_private (self);
+  self->priv = ctk_app_chooser_widget_get_instance_private (self);
 
-  gtk_widget_init_template (GTK_WIDGET (self));
+  ctk_widget_init_template (GTK_WIDGET (self));
 
   /* Various parts of the GtkTreeView code need custom code to setup, mostly
    * because we lack signals to connect to, or properties to set.
    */
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (self->priv->program_list));
-  gtk_tree_selection_set_select_function (selection, gtk_app_chooser_selection_func,
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (self->priv->program_list));
+  ctk_tree_selection_set_select_function (selection, ctk_app_chooser_selection_func,
                                           self, NULL);
 
-  sort = gtk_tree_view_get_model (GTK_TREE_VIEW (self->priv->program_list));
-  gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort),
+  sort = ctk_tree_view_get_model (GTK_TREE_VIEW (self->priv->program_list));
+  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort),
                                         COLUMN_NAME,
                                         GTK_SORT_ASCENDING);
-  gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (sort),
+  ctk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (sort),
                                    COLUMN_NAME,
-                                   gtk_app_chooser_sort_func,
+                                   ctk_app_chooser_sort_func,
                                    self, NULL);
 
-  gtk_tree_view_set_search_column (GTK_TREE_VIEW (self->priv->program_list), COLUMN_NAME);
-  gtk_tree_view_set_search_equal_func (GTK_TREE_VIEW (self->priv->program_list),
-                                       gtk_app_chooser_search_equal_func,
+  ctk_tree_view_set_search_column (GTK_TREE_VIEW (self->priv->program_list), COLUMN_NAME);
+  ctk_tree_view_set_search_equal_func (GTK_TREE_VIEW (self->priv->program_list),
+                                       ctk_app_chooser_search_equal_func,
                                        NULL, NULL);
 
-  gtk_tree_view_column_set_cell_data_func (self->priv->column,
+  ctk_tree_view_column_set_cell_data_func (self->priv->column,
 					   self->priv->secondary_padding,
                                            padding_cell_renderer_func,
                                            NULL, NULL);
@@ -1125,7 +1125,7 @@ gtk_app_chooser_widget_init (GtkAppChooserWidget *self)
 }
 
 static GAppInfo *
-gtk_app_chooser_widget_get_app_info (GtkAppChooser *object)
+ctk_app_chooser_widget_get_app_info (GtkAppChooser *object)
 {
   GtkAppChooserWidget *self = GTK_APP_CHOOSER_WIDGET (object);
 
@@ -1136,32 +1136,32 @@ gtk_app_chooser_widget_get_app_info (GtkAppChooser *object)
 }
 
 static void
-gtk_app_chooser_widget_refresh (GtkAppChooser *object)
+ctk_app_chooser_widget_refresh (GtkAppChooser *object)
 {
   GtkAppChooserWidget *self = GTK_APP_CHOOSER_WIDGET (object);
 
   if (self->priv->program_list_store != NULL)
     {
-      gtk_list_store_clear (self->priv->program_list_store);
+      ctk_list_store_clear (self->priv->program_list_store);
 
       /* don't add additional xpad if we don't have headings */
       g_object_set (self->priv->padding_renderer,
                     "visible", !self->priv->show_all,
                     NULL);
 
-      gtk_app_chooser_widget_real_add_items (self);
+      ctk_app_chooser_widget_real_add_items (self);
     }
 }
 
 static void
-gtk_app_chooser_widget_iface_init (GtkAppChooserIface *iface)
+ctk_app_chooser_widget_iface_init (GtkAppChooserIface *iface)
 {
-  iface->get_app_info = gtk_app_chooser_widget_get_app_info;
-  iface->refresh = gtk_app_chooser_widget_refresh;
+  iface->get_app_info = ctk_app_chooser_widget_get_app_info;
+  iface->refresh = ctk_app_chooser_widget_refresh;
 }
 
 /**
- * gtk_app_chooser_widget_new:
+ * ctk_app_chooser_widget_new:
  * @content_type: the content type to show applications for
  *
  * Creates a new #GtkAppChooserWidget for applications
@@ -1172,7 +1172,7 @@ gtk_app_chooser_widget_iface_init (GtkAppChooserIface *iface)
  * Since: 3.0
  */
 GtkWidget *
-gtk_app_chooser_widget_new (const gchar *content_type)
+ctk_app_chooser_widget_new (const gchar *content_type)
 {
   return g_object_new (GTK_TYPE_APP_CHOOSER_WIDGET,
                        "content-type", content_type,
@@ -1180,7 +1180,7 @@ gtk_app_chooser_widget_new (const gchar *content_type)
 }
 
 /**
- * gtk_app_chooser_widget_set_show_default:
+ * ctk_app_chooser_widget_set_show_default:
  * @self: a #GtkAppChooserWidget
  * @setting: the new value for #GtkAppChooserWidget:show-default
  *
@@ -1190,7 +1190,7 @@ gtk_app_chooser_widget_new (const gchar *content_type)
  * Since: 3.0
  */
 void
-gtk_app_chooser_widget_set_show_default (GtkAppChooserWidget *self,
+ctk_app_chooser_widget_set_show_default (GtkAppChooserWidget *self,
                                          gboolean             setting)
 {
   g_return_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self));
@@ -1201,12 +1201,12 @@ gtk_app_chooser_widget_set_show_default (GtkAppChooserWidget *self,
 
       g_object_notify (G_OBJECT (self), "show-default");
 
-      gtk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+      ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
     }
 }
 
 /**
- * gtk_app_chooser_widget_get_show_default:
+ * ctk_app_chooser_widget_get_show_default:
  * @self: a #GtkAppChooserWidget
  *
  * Returns the current value of the #GtkAppChooserWidget:show-default
@@ -1217,7 +1217,7 @@ gtk_app_chooser_widget_set_show_default (GtkAppChooserWidget *self,
  * Since: 3.0
  */
 gboolean
-gtk_app_chooser_widget_get_show_default (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_get_show_default (GtkAppChooserWidget *self)
 {
   g_return_val_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self), FALSE);
 
@@ -1225,7 +1225,7 @@ gtk_app_chooser_widget_get_show_default (GtkAppChooserWidget *self)
 }
 
 /**
- * gtk_app_chooser_widget_set_show_recommended:
+ * ctk_app_chooser_widget_set_show_recommended:
  * @self: a #GtkAppChooserWidget
  * @setting: the new value for #GtkAppChooserWidget:show-recommended
  *
@@ -1235,7 +1235,7 @@ gtk_app_chooser_widget_get_show_default (GtkAppChooserWidget *self)
  * Since: 3.0
  */
 void
-gtk_app_chooser_widget_set_show_recommended (GtkAppChooserWidget *self,
+ctk_app_chooser_widget_set_show_recommended (GtkAppChooserWidget *self,
                                              gboolean             setting)
 {
   g_return_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self));
@@ -1246,12 +1246,12 @@ gtk_app_chooser_widget_set_show_recommended (GtkAppChooserWidget *self,
 
       g_object_notify (G_OBJECT (self), "show-recommended");
 
-      gtk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+      ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
     }
 }
 
 /**
- * gtk_app_chooser_widget_get_show_recommended:
+ * ctk_app_chooser_widget_get_show_recommended:
  * @self: a #GtkAppChooserWidget
  *
  * Returns the current value of the #GtkAppChooserWidget:show-recommended
@@ -1262,7 +1262,7 @@ gtk_app_chooser_widget_set_show_recommended (GtkAppChooserWidget *self,
  * Since: 3.0
  */
 gboolean
-gtk_app_chooser_widget_get_show_recommended (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_get_show_recommended (GtkAppChooserWidget *self)
 {
   g_return_val_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self), FALSE);
 
@@ -1270,7 +1270,7 @@ gtk_app_chooser_widget_get_show_recommended (GtkAppChooserWidget *self)
 }
 
 /**
- * gtk_app_chooser_widget_set_show_fallback:
+ * ctk_app_chooser_widget_set_show_fallback:
  * @self: a #GtkAppChooserWidget
  * @setting: the new value for #GtkAppChooserWidget:show-fallback
  *
@@ -1280,7 +1280,7 @@ gtk_app_chooser_widget_get_show_recommended (GtkAppChooserWidget *self)
  * Since: 3.0
  */
 void
-gtk_app_chooser_widget_set_show_fallback (GtkAppChooserWidget *self,
+ctk_app_chooser_widget_set_show_fallback (GtkAppChooserWidget *self,
                                           gboolean             setting)
 {
   g_return_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self));
@@ -1291,12 +1291,12 @@ gtk_app_chooser_widget_set_show_fallback (GtkAppChooserWidget *self,
 
       g_object_notify (G_OBJECT (self), "show-fallback");
 
-      gtk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+      ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
     }
 }
 
 /**
- * gtk_app_chooser_widget_get_show_fallback:
+ * ctk_app_chooser_widget_get_show_fallback:
  * @self: a #GtkAppChooserWidget
  *
  * Returns the current value of the #GtkAppChooserWidget:show-fallback
@@ -1307,7 +1307,7 @@ gtk_app_chooser_widget_set_show_fallback (GtkAppChooserWidget *self,
  * Since: 3.0
  */
 gboolean
-gtk_app_chooser_widget_get_show_fallback (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_get_show_fallback (GtkAppChooserWidget *self)
 {
   g_return_val_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self), FALSE);
 
@@ -1315,7 +1315,7 @@ gtk_app_chooser_widget_get_show_fallback (GtkAppChooserWidget *self)
 }
 
 /**
- * gtk_app_chooser_widget_set_show_other:
+ * ctk_app_chooser_widget_set_show_other:
  * @self: a #GtkAppChooserWidget
  * @setting: the new value for #GtkAppChooserWidget:show-other
  *
@@ -1325,7 +1325,7 @@ gtk_app_chooser_widget_get_show_fallback (GtkAppChooserWidget *self)
  * Since: 3.0
  */
 void
-gtk_app_chooser_widget_set_show_other (GtkAppChooserWidget *self,
+ctk_app_chooser_widget_set_show_other (GtkAppChooserWidget *self,
                                        gboolean             setting)
 {
   g_return_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self));
@@ -1336,12 +1336,12 @@ gtk_app_chooser_widget_set_show_other (GtkAppChooserWidget *self,
 
       g_object_notify (G_OBJECT (self), "show-other");
 
-      gtk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+      ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
     }
 }
 
 /**
- * gtk_app_chooser_widget_get_show_other:
+ * ctk_app_chooser_widget_get_show_other:
  * @self: a #GtkAppChooserWidget
  *
  * Returns the current value of the #GtkAppChooserWidget:show-other
@@ -1352,7 +1352,7 @@ gtk_app_chooser_widget_set_show_other (GtkAppChooserWidget *self,
  * Since: 3.0
  */
 gboolean
-gtk_app_chooser_widget_get_show_other (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_get_show_other (GtkAppChooserWidget *self)
 {
   g_return_val_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self), FALSE);
 
@@ -1360,7 +1360,7 @@ gtk_app_chooser_widget_get_show_other (GtkAppChooserWidget *self)
 }
 
 /**
- * gtk_app_chooser_widget_set_show_all:
+ * ctk_app_chooser_widget_set_show_all:
  * @self: a #GtkAppChooserWidget
  * @setting: the new value for #GtkAppChooserWidget:show-all
  *
@@ -1370,7 +1370,7 @@ gtk_app_chooser_widget_get_show_other (GtkAppChooserWidget *self)
  * Since: 3.0
  */
 void
-gtk_app_chooser_widget_set_show_all (GtkAppChooserWidget *self,
+ctk_app_chooser_widget_set_show_all (GtkAppChooserWidget *self,
                                      gboolean             setting)
 {
   g_return_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self));
@@ -1381,12 +1381,12 @@ gtk_app_chooser_widget_set_show_all (GtkAppChooserWidget *self,
 
       g_object_notify (G_OBJECT (self), "show-all");
 
-      gtk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+      ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
     }
 }
 
 /**
- * gtk_app_chooser_widget_get_show_all:
+ * ctk_app_chooser_widget_get_show_all:
  * @self: a #GtkAppChooserWidget
  *
  * Returns the current value of the #GtkAppChooserWidget:show-all
@@ -1397,7 +1397,7 @@ gtk_app_chooser_widget_set_show_all (GtkAppChooserWidget *self,
  * Since: 3.0
  */
 gboolean
-gtk_app_chooser_widget_get_show_all (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_get_show_all (GtkAppChooserWidget *self)
 {
   g_return_val_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self), FALSE);
 
@@ -1405,7 +1405,7 @@ gtk_app_chooser_widget_get_show_all (GtkAppChooserWidget *self)
 }
 
 /**
- * gtk_app_chooser_widget_set_default_text:
+ * ctk_app_chooser_widget_set_default_text:
  * @self: a #GtkAppChooserWidget
  * @text: the new value for #GtkAppChooserWidget:default-text
  *
@@ -1413,7 +1413,7 @@ gtk_app_chooser_widget_get_show_all (GtkAppChooserWidget *self)
  * that can handle the content type.
  */
 void
-gtk_app_chooser_widget_set_default_text (GtkAppChooserWidget *self,
+ctk_app_chooser_widget_set_default_text (GtkAppChooserWidget *self,
                                          const gchar         *text)
 {
   g_return_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self));
@@ -1425,12 +1425,12 @@ gtk_app_chooser_widget_set_default_text (GtkAppChooserWidget *self,
 
       g_object_notify (G_OBJECT (self), "default-text");
 
-      gtk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+      ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
     }
 }
 
 /**
- * gtk_app_chooser_widget_get_default_text:
+ * ctk_app_chooser_widget_get_default_text:
  * @self: a #GtkAppChooserWidget
  *
  * Returns the text that is shown if there are not applications
@@ -1441,7 +1441,7 @@ gtk_app_chooser_widget_set_default_text (GtkAppChooserWidget *self,
  * Since: 3.0
  */
 const gchar *
-gtk_app_chooser_widget_get_default_text (GtkAppChooserWidget *self)
+ctk_app_chooser_widget_get_default_text (GtkAppChooserWidget *self)
 {
   g_return_val_if_fail (GTK_IS_APP_CHOOSER_WIDGET (self), NULL);
 
@@ -1449,10 +1449,10 @@ gtk_app_chooser_widget_get_default_text (GtkAppChooserWidget *self)
 }
 
 void
-_gtk_app_chooser_widget_set_search_entry (GtkAppChooserWidget *self,
+_ctk_app_chooser_widget_set_search_entry (GtkAppChooserWidget *self,
                                           GtkEntry            *entry)
 {
-  gtk_tree_view_set_search_entry (GTK_TREE_VIEW (self->priv->program_list), entry);
+  ctk_tree_view_set_search_entry (GTK_TREE_VIEW (self->priv->program_list), entry);
 
   g_object_bind_property (self->priv->no_apps, "visible",
                           entry, "sensitive",

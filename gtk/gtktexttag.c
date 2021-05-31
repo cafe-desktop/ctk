@@ -60,7 +60,7 @@
  * Tags should be in the #GtkTextTagTable for a given #GtkTextBuffer
  * before using them with that buffer.
  *
- * gtk_text_buffer_create_tag() is the best way to create tags.
+ * ctk_text_buffer_create_tag() is the best way to create tags.
  * See “gtk3-demo” for numerous examples.
  *
  * For each property of #GtkTextTag, there is a “set” property, e.g.
@@ -175,29 +175,29 @@ enum {
 
   LAST_ARG
 };
-static void gtk_text_tag_finalize     (GObject         *object);
-static void gtk_text_tag_set_property (GObject         *object,
+static void ctk_text_tag_finalize     (GObject         *object);
+static void ctk_text_tag_set_property (GObject         *object,
                                        guint            prop_id,
                                        const GValue    *value,
                                        GParamSpec      *pspec);
-static void gtk_text_tag_get_property (GObject         *object,
+static void ctk_text_tag_get_property (GObject         *object,
                                        guint            prop_id,
                                        GValue          *value,
                                        GParamSpec      *pspec);
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkTextTag, gtk_text_tag, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkTextTag, ctk_text_tag, G_TYPE_OBJECT)
 
 static void
-gtk_text_tag_class_init (GtkTextTagClass *klass)
+ctk_text_tag_class_init (GtkTextTagClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->set_property = gtk_text_tag_set_property;
-  object_class->get_property = gtk_text_tag_get_property;
+  object_class->set_property = ctk_text_tag_set_property;
+  object_class->get_property = ctk_text_tag_get_property;
   
-  object_class->finalize = gtk_text_tag_finalize;
+  object_class->finalize = ctk_text_tag_finalize;
 
   /* Construct */
   g_object_class_install_property (object_class,
@@ -428,7 +428,7 @@ gtk_text_tag_class_init (GtkTextTagClass *klass)
    * used.
    *
    * Note that the initial value of this property depends on the current
-   * locale, see also gtk_get_default_language().
+   * locale, see also ctk_get_default_language().
    */
   g_object_class_install_property (object_class,
                                    PROP_LANGUAGE,
@@ -874,8 +874,8 @@ gtk_text_tag_class_init (GtkTextTagClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextTagClass, event),
-                  _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__OBJECT_BOXED_BOXED,
+                  _ctk_boolean_handled_accumulator, NULL,
+                  _ctk_marshal_BOOLEAN__OBJECT_BOXED_BOXED,
                   G_TYPE_BOOLEAN,
                   3,
                   G_TYPE_OBJECT,
@@ -883,18 +883,18 @@ gtk_text_tag_class_init (GtkTextTagClass *klass)
                   GTK_TYPE_TEXT_ITER);
   g_signal_set_va_marshaller (signals[EVENT],
                               G_OBJECT_CLASS_TYPE (object_class),
-                              _gtk_marshal_BOOLEAN__OBJECT_BOXED_BOXEDv);
+                              _ctk_marshal_BOOLEAN__OBJECT_BOXED_BOXEDv);
 }
 
 static void
-gtk_text_tag_init (GtkTextTag *text_tag)
+ctk_text_tag_init (GtkTextTag *text_tag)
 {
-  text_tag->priv = gtk_text_tag_get_instance_private (text_tag);
-  text_tag->priv->values = gtk_text_attributes_new ();
+  text_tag->priv = ctk_text_tag_get_instance_private (text_tag);
+  text_tag->priv->values = ctk_text_attributes_new ();
 }
 
 /**
- * gtk_text_tag_new:
+ * ctk_text_tag_new:
  * @name: (allow-none): tag name, or %NULL
  * 
  * Creates a #GtkTextTag. Configure the tag using object arguments,
@@ -903,7 +903,7 @@ gtk_text_tag_init (GtkTextTag *text_tag)
  * Returns: a new #GtkTextTag
  **/
 GtkTextTag*
-gtk_text_tag_new (const gchar *name)
+ctk_text_tag_new (const gchar *name)
 {
   GtkTextTag *tag;
 
@@ -913,23 +913,23 @@ gtk_text_tag_new (const gchar *name)
 }
 
 static void
-gtk_text_tag_finalize (GObject *object)
+ctk_text_tag_finalize (GObject *object)
 {
   GtkTextTag *text_tag = GTK_TEXT_TAG (object);
   GtkTextTagPrivate *priv = text_tag->priv;
 
   if (priv->table)
-    gtk_text_tag_table_remove (priv->table, text_tag);
+    ctk_text_tag_table_remove (priv->table, text_tag);
 
   g_assert (priv->table == NULL);
 
-  gtk_text_attributes_unref (priv->values);
+  ctk_text_attributes_unref (priv->values);
   priv->values = NULL;
 
   g_free (priv->name);
   priv->name = NULL;
 
-  G_OBJECT_CLASS (gtk_text_tag_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_text_tag_parent_class)->finalize (object);
 }
 
 static void
@@ -1314,7 +1314,7 @@ set_font_description (GtkTextTag           *text_tag,
 }
 
 static void
-gtk_text_tag_ensure_font (GtkTextTag *text_tag)
+ctk_text_tag_ensure_font (GtkTextTag *text_tag)
 {
   GtkTextTagPrivate *priv = text_tag->priv;
 
@@ -1323,7 +1323,7 @@ gtk_text_tag_ensure_font (GtkTextTag *text_tag)
 }
 
 static void
-gtk_text_tag_set_property (GObject      *object,
+ctk_text_tag_set_property (GObject      *object,
                            guint         prop_id,
                            const GValue *value,
                            GParamSpec   *pspec)
@@ -1441,7 +1441,7 @@ gtk_text_tag_set_property (GObject      *object,
       {
 	PangoFontMask old_set_mask;
 
-	gtk_text_tag_ensure_font (text_tag);
+	ctk_text_tag_ensure_font (text_tag);
 	old_set_mask = pango_font_description_get_set_fields (priv->values->font);
  
 	switch (prop_id)
@@ -1707,7 +1707,7 @@ gtk_text_tag_set_property (GObject      *object,
 	{
 	  PangoFontMask changed_mask;
 	  
-	  gtk_text_tag_ensure_font (text_tag);
+	  ctk_text_tag_ensure_font (text_tag);
 	  changed_mask = set_font_desc_fields (priv->values->font,
 					       get_property_font_set_mask (prop_id));
 	  notify_fields_changed (G_OBJECT (text_tag), changed_mask);
@@ -1831,11 +1831,11 @@ gtk_text_tag_set_property (GObject      *object,
    * time with e.g. g_object_set(). The signal could be emitted when the notify
    * signal is thawed.
    */
-  gtk_text_tag_changed (text_tag, size_changed);
+  ctk_text_tag_changed (text_tag, size_changed);
 }
 
 static void
-gtk_text_tag_get_property (GObject      *object,
+ctk_text_tag_get_property (GObject      *object,
                            guint         prop_id,
                            GValue       *value,
                            GParamSpec   *pspec)
@@ -1869,7 +1869,7 @@ gtk_text_tag_get_property (GObject      *object,
         {
           gchar *str;
 
-	  gtk_text_tag_ensure_font (tag);
+	  ctk_text_tag_ensure_font (tag);
 
 	  str = pango_font_description_to_string (priv->values->font);
           g_value_take_string (value, str);
@@ -1877,7 +1877,7 @@ gtk_text_tag_get_property (GObject      *object,
       break;
 
     case PROP_FONT_DESC:
-      gtk_text_tag_ensure_font (tag);
+      ctk_text_tag_ensure_font (tag);
       g_value_set_boxed (value, priv->values->font);
       break;
 
@@ -1888,7 +1888,7 @@ gtk_text_tag_get_property (GObject      *object,
     case PROP_STRETCH:
     case PROP_SIZE:
     case PROP_SIZE_POINTS:
-      gtk_text_tag_ensure_font (tag);
+      ctk_text_tag_ensure_font (tag);
       switch (prop_id)
 	{
 	case PROP_FAMILY:
@@ -2186,7 +2186,7 @@ delta_priority_foreach (GtkTextTag *tag, gpointer user_data)
 }
 
 /**
- * gtk_text_tag_get_priority:
+ * ctk_text_tag_get_priority:
  * @tag: a #GtkTextTag
  * 
  * Get the tag priority.
@@ -2194,7 +2194,7 @@ delta_priority_foreach (GtkTextTag *tag, gpointer user_data)
  * Returns: The tag’s priority.
  **/
 gint
-gtk_text_tag_get_priority (GtkTextTag *tag)
+ctk_text_tag_get_priority (GtkTextTag *tag)
 {
   g_return_val_if_fail (GTK_IS_TEXT_TAG (tag), 0);
 
@@ -2202,12 +2202,12 @@ gtk_text_tag_get_priority (GtkTextTag *tag)
 }
 
 /**
- * gtk_text_tag_set_priority:
+ * ctk_text_tag_set_priority:
  * @tag: a #GtkTextTag
  * @priority: the new priority
  *
  * Sets the priority of a #GtkTextTag. Valid priorities
- * start at 0 and go to one less than gtk_text_tag_table_get_size().
+ * start at 0 and go to one less than ctk_text_tag_table_get_size().
  * Each tag in a table has a unique priority; setting the priority
  * of one tag shifts the priorities of all the other tags in the
  * table to maintain a unique priority for each tag. Higher priority
@@ -2215,11 +2215,11 @@ gtk_text_tag_get_priority (GtkTextTag *tag)
  * a tag to a tag table, it will be assigned the highest priority in
  * the table by default; so normally the precedence of a set of tags
  * is the order in which they were added to the table, or created with
- * gtk_text_buffer_create_tag(), which adds the tag to the buffer’s table
+ * ctk_text_buffer_create_tag(), which adds the tag to the buffer’s table
  * automatically.
  **/
 void
-gtk_text_tag_set_priority (GtkTextTag *tag,
+ctk_text_tag_set_priority (GtkTextTag *tag,
                            gint        priority)
 {
   GtkTextTagPrivate *priv;
@@ -2231,7 +2231,7 @@ gtk_text_tag_set_priority (GtkTextTag *tag,
 
   g_return_if_fail (priv->table != NULL);
   g_return_if_fail (priority >= 0);
-  g_return_if_fail (priority < gtk_text_tag_table_get_size (priv->table));
+  g_return_if_fail (priority < ctk_text_tag_table_get_size (priv->table));
 
   if (priority == priv->priority)
     return;
@@ -2249,7 +2249,7 @@ gtk_text_tag_set_priority (GtkTextTag *tag,
       dd.delta = -1;
     }
 
-  gtk_text_tag_table_foreach (priv->table,
+  ctk_text_tag_table_foreach (priv->table,
                               delta_priority_foreach,
                               &dd);
 
@@ -2257,7 +2257,7 @@ gtk_text_tag_set_priority (GtkTextTag *tag,
 }
 
 /**
- * gtk_text_tag_event:
+ * ctk_text_tag_event:
  * @tag: a #GtkTextTag
  * @event_object: object that received the event, such as a widget
  * @event: the event
@@ -2268,7 +2268,7 @@ gtk_text_tag_set_priority (GtkTextTag *tag,
  * Returns: result of signal emission (whether the event was handled)
  **/
 gboolean
-gtk_text_tag_event (GtkTextTag        *tag,
+ctk_text_tag_event (GtkTextTag        *tag,
                     GObject           *event_object,
                     GdkEvent          *event,
                     const GtkTextIter *iter)
@@ -2291,7 +2291,7 @@ gtk_text_tag_event (GtkTextTag        *tag,
 }
 
 /**
- * gtk_text_tag_changed:
+ * ctk_text_tag_changed:
  * @tag: a #GtkTextTag.
  * @size_changed: whether the change affects the #GtkTextView layout.
  *
@@ -2304,7 +2304,7 @@ gtk_text_tag_event (GtkTextTag        *tag,
  * Since: 3.20
  */
 void
-gtk_text_tag_changed (GtkTextTag *tag,
+ctk_text_tag_changed (GtkTextTag *tag,
                       gboolean    size_changed)
 {
   GtkTextTagPrivate *priv;
@@ -2318,7 +2318,7 @@ gtk_text_tag_changed (GtkTextTag *tag,
    * added, this would increase significantly the number of signal connections.
    */
   if (priv->table != NULL)
-    _gtk_text_tag_table_tag_changed (priv->table, tag, size_changed);
+    _ctk_text_tag_table_tag_changed (priv->table, tag, size_changed);
 }
 
 static int
@@ -2332,7 +2332,7 @@ tag_sort_func (gconstpointer first, gconstpointer second)
 }
 
 void
-_gtk_text_tag_array_sort (GtkTextTag** tag_array_p,
+_ctk_text_tag_array_sort (GtkTextTag** tag_array_p,
                           guint len)
 {
   int i, j, prio;

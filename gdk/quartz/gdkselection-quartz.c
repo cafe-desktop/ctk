@@ -187,7 +187,7 @@ _gdk_quartz_display_text_property_to_utf8_list (GdkDisplay    *display,
 #endif
 
 GdkAtom
-gdk_quartz_pasteboard_type_to_atom_libgtk_only (NSString *type)
+gdk_quartz_pasteboard_type_to_atom_libctk_only (NSString *type)
 {
   if ([type isEqualToString:GDK_QUARTZ_STRING_PBOARD_TYPE])
     return gdk_atom_intern_static_string ("UTF8_STRING");
@@ -202,7 +202,7 @@ gdk_quartz_pasteboard_type_to_atom_libgtk_only (NSString *type)
 }
 
 NSString *
-gdk_quartz_target_to_pasteboard_type_libgtk_only (const char *target)
+gdk_quartz_target_to_pasteboard_type_libctk_only (const char *target)
 {
   if (strcmp (target, "UTF8_STRING") == 0)
     return GDK_QUARTZ_STRING_PBOARD_TYPE;
@@ -217,10 +217,10 @@ gdk_quartz_target_to_pasteboard_type_libgtk_only (const char *target)
 }
 
 NSString *
-gdk_quartz_atom_to_pasteboard_type_libgtk_only (GdkAtom atom)
+gdk_quartz_atom_to_pasteboard_type_libctk_only (GdkAtom atom)
 {
   gchar *target = gdk_atom_name (atom);
-  NSString *ret = gdk_quartz_target_to_pasteboard_type_libgtk_only (target);
+  NSString *ret = gdk_quartz_target_to_pasteboard_type_libctk_only (target);
   g_free (target);
 
   return ret;

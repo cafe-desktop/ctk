@@ -50,21 +50,21 @@ struct _GtkGestureZoomPrivate
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureZoom, gtk_gesture_zoom, GTK_TYPE_GESTURE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkGestureZoom, ctk_gesture_zoom, GTK_TYPE_GESTURE)
 
 static void
-gtk_gesture_zoom_init (GtkGestureZoom *gesture)
+ctk_gesture_zoom_init (GtkGestureZoom *gesture)
 {
 }
 
 static GObject *
-gtk_gesture_zoom_constructor (GType                  type,
+ctk_gesture_zoom_constructor (GType                  type,
                               guint                  n_construct_properties,
                               GObjectConstructParam *construct_properties)
 {
   GObject *object;
 
-  object = G_OBJECT_CLASS (gtk_gesture_zoom_parent_class)->constructor (type,
+  object = G_OBJECT_CLASS (ctk_gesture_zoom_parent_class)->constructor (type,
                                                                         n_construct_properties,
                                                                         construct_properties);
   g_object_set (object, "n-points", 2, NULL);
@@ -73,7 +73,7 @@ gtk_gesture_zoom_constructor (GType                  type,
 }
 
 static gboolean
-_gtk_gesture_zoom_get_distance (GtkGestureZoom *zoom,
+_ctk_gesture_zoom_get_distance (GtkGestureZoom *zoom,
                                 gdouble        *distance)
 {
   const GdkEvent *last_event;
@@ -85,14 +85,14 @@ _gtk_gesture_zoom_get_distance (GtkGestureZoom *zoom,
 
   gesture = GTK_GESTURE (zoom);
 
-  if (!gtk_gesture_is_recognized (gesture))
+  if (!ctk_gesture_is_recognized (gesture))
     goto out;
 
-  sequences = gtk_gesture_get_sequences (gesture);
+  sequences = ctk_gesture_get_sequences (gesture);
   if (!sequences)
     goto out;
 
-  last_event = gtk_gesture_get_last_event (gesture, sequences->data);
+  last_event = ctk_gesture_get_last_event (gesture, sequences->data);
 
   if (last_event->type == GDK_TOUCHPAD_PINCH &&
       (last_event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN ||
@@ -107,8 +107,8 @@ _gtk_gesture_zoom_get_distance (GtkGestureZoom *zoom,
       if (!sequences->next)
         goto out;
 
-      gtk_gesture_get_point (gesture, sequences->data, &x1, &y1);
-      gtk_gesture_get_point (gesture, sequences->next->data, &x2, &y2);
+      ctk_gesture_get_point (gesture, sequences->data, &x1, &y1);
+      ctk_gesture_get_point (gesture, sequences->next->data, &x2, &y2);
 
       dx = x1 - x2;
       dy = y1 - y2;;
@@ -123,15 +123,15 @@ _gtk_gesture_zoom_get_distance (GtkGestureZoom *zoom,
 }
 
 static gboolean
-_gtk_gesture_zoom_check_emit (GtkGestureZoom *gesture)
+_ctk_gesture_zoom_check_emit (GtkGestureZoom *gesture)
 {
   GtkGestureZoomPrivate *priv;
   gdouble distance, zoom;
 
-  if (!_gtk_gesture_zoom_get_distance (gesture, &distance))
+  if (!_ctk_gesture_zoom_get_distance (gesture, &distance))
     return FALSE;
 
-  priv = gtk_gesture_zoom_get_instance_private (gesture);
+  priv = ctk_gesture_zoom_get_instance_private (gesture);
 
   if (distance == 0 || priv->initial_distance == 0)
     return FALSE;
@@ -143,7 +143,7 @@ _gtk_gesture_zoom_check_emit (GtkGestureZoom *gesture)
 }
 
 static gboolean
-gtk_gesture_zoom_filter_event (GtkEventController *controller,
+ctk_gesture_zoom_filter_event (GtkEventController *controller,
                                const GdkEvent     *event)
 {
   /* Let 2-finger touchpad pinch events go through */
@@ -155,40 +155,40 @@ gtk_gesture_zoom_filter_event (GtkEventController *controller,
         return TRUE;
     }
 
-  return GTK_EVENT_CONTROLLER_CLASS (gtk_gesture_zoom_parent_class)->filter_event (controller, event);
+  return GTK_EVENT_CONTROLLER_CLASS (ctk_gesture_zoom_parent_class)->filter_event (controller, event);
 }
 
 static void
-gtk_gesture_zoom_begin (GtkGesture       *gesture,
+ctk_gesture_zoom_begin (GtkGesture       *gesture,
                         GdkEventSequence *sequence)
 {
   GtkGestureZoom *zoom = GTK_GESTURE_ZOOM (gesture);
   GtkGestureZoomPrivate *priv;
 
-  priv = gtk_gesture_zoom_get_instance_private (zoom);
-  _gtk_gesture_zoom_get_distance (zoom, &priv->initial_distance);
+  priv = ctk_gesture_zoom_get_instance_private (zoom);
+  _ctk_gesture_zoom_get_distance (zoom, &priv->initial_distance);
 }
 
 static void
-gtk_gesture_zoom_update (GtkGesture       *gesture,
+ctk_gesture_zoom_update (GtkGesture       *gesture,
                          GdkEventSequence *sequence)
 {
-  _gtk_gesture_zoom_check_emit (GTK_GESTURE_ZOOM (gesture));
+  _ctk_gesture_zoom_check_emit (GTK_GESTURE_ZOOM (gesture));
 }
 
 static void
-gtk_gesture_zoom_class_init (GtkGestureZoomClass *klass)
+ctk_gesture_zoom_class_init (GtkGestureZoomClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkEventControllerClass *event_controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
   GtkGestureClass *gesture_class = GTK_GESTURE_CLASS (klass);
 
-  object_class->constructor = gtk_gesture_zoom_constructor;
+  object_class->constructor = ctk_gesture_zoom_constructor;
 
-  event_controller_class->filter_event = gtk_gesture_zoom_filter_event;
+  event_controller_class->filter_event = ctk_gesture_zoom_filter_event;
 
-  gesture_class->begin = gtk_gesture_zoom_begin;
-  gesture_class->update = gtk_gesture_zoom_update;
+  gesture_class->begin = ctk_gesture_zoom_begin;
+  gesture_class->update = ctk_gesture_zoom_update;
 
   /**
    * GtkGestureZoom::scale-changed:
@@ -210,7 +210,7 @@ gtk_gesture_zoom_class_init (GtkGestureZoomClass *klass)
 }
 
 /**
- * gtk_gesture_zoom_new:
+ * ctk_gesture_zoom_new:
  * @widget: a #GtkWidget
  *
  * Returns a newly created #GtkGesture that recognizes zoom
@@ -221,7 +221,7 @@ gtk_gesture_zoom_class_init (GtkGestureZoomClass *klass)
  * Since: 3.14
  **/
 GtkGesture *
-gtk_gesture_zoom_new (GtkWidget *widget)
+ctk_gesture_zoom_new (GtkWidget *widget)
 {
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
 
@@ -231,7 +231,7 @@ gtk_gesture_zoom_new (GtkWidget *widget)
 }
 
 /**
- * gtk_gesture_zoom_get_scale_delta:
+ * ctk_gesture_zoom_get_scale_delta:
  * @gesture: a #GtkGestureZoom
  *
  * If @gesture is active, this function returns the zooming difference
@@ -243,17 +243,17 @@ gtk_gesture_zoom_new (GtkWidget *widget)
  * Since: 3.14
  **/
 gdouble
-gtk_gesture_zoom_get_scale_delta (GtkGestureZoom *gesture)
+ctk_gesture_zoom_get_scale_delta (GtkGestureZoom *gesture)
 {
   GtkGestureZoomPrivate *priv;
   gdouble distance;
 
   g_return_val_if_fail (GTK_IS_GESTURE_ZOOM (gesture), 1.0);
 
-  if (!_gtk_gesture_zoom_get_distance (gesture, &distance))
+  if (!_ctk_gesture_zoom_get_distance (gesture, &distance))
     return 1.0;
 
-  priv = gtk_gesture_zoom_get_instance_private (gesture);
+  priv = ctk_gesture_zoom_get_instance_private (gesture);
 
   return distance / priv->initial_distance;
 }

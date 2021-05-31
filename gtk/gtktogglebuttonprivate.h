@@ -31,7 +31,7 @@
 
 G_BEGIN_DECLS
 
-void _gtk_toggle_button_set_active (GtkToggleButton *toggle_button,
+void _ctk_toggle_button_set_active (GtkToggleButton *toggle_button,
                                     gboolean         is_active);
 
 G_END_DECLS

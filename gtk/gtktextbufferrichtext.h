@@ -62,7 +62,7 @@ typedef guint8 * (* GtkTextBufferSerializeFunc)   (GtkTextBuffer     *register_b
  * @error: return location for a #GError
  *
  * A function that is called to deserialize rich text that has been
- * serialized with gtk_text_buffer_serialize(), and insert it at @iter.
+ * serialized with ctk_text_buffer_serialize(), and insert it at @iter.
  *
  * Returns: %TRUE on success, %FALSE otherwise
  */
@@ -76,56 +76,56 @@ typedef gboolean (* GtkTextBufferDeserializeFunc) (GtkTextBuffer     *register_b
                                                    GError           **error);
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom   gtk_text_buffer_register_serialize_format   (GtkTextBuffer                *buffer,
+GdkAtom   ctk_text_buffer_register_serialize_format   (GtkTextBuffer                *buffer,
                                                        const gchar                  *mime_type,
                                                        GtkTextBufferSerializeFunc    function,
                                                        gpointer                      user_data,
                                                        GDestroyNotify                user_data_destroy);
 GDK_AVAILABLE_IN_ALL
-GdkAtom   gtk_text_buffer_register_serialize_tagset   (GtkTextBuffer                *buffer,
+GdkAtom   ctk_text_buffer_register_serialize_tagset   (GtkTextBuffer                *buffer,
                                                        const gchar                  *tagset_name);
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom   gtk_text_buffer_register_deserialize_format (GtkTextBuffer                *buffer,
+GdkAtom   ctk_text_buffer_register_deserialize_format (GtkTextBuffer                *buffer,
                                                        const gchar                  *mime_type,
                                                        GtkTextBufferDeserializeFunc  function,
                                                        gpointer                      user_data,
                                                        GDestroyNotify                user_data_destroy);
 GDK_AVAILABLE_IN_ALL
-GdkAtom   gtk_text_buffer_register_deserialize_tagset (GtkTextBuffer                *buffer,
+GdkAtom   ctk_text_buffer_register_deserialize_tagset (GtkTextBuffer                *buffer,
                                                        const gchar                  *tagset_name);
 
 GDK_AVAILABLE_IN_ALL
-void    gtk_text_buffer_unregister_serialize_format   (GtkTextBuffer                *buffer,
+void    ctk_text_buffer_unregister_serialize_format   (GtkTextBuffer                *buffer,
                                                        GdkAtom                       format);
 GDK_AVAILABLE_IN_ALL
-void    gtk_text_buffer_unregister_deserialize_format (GtkTextBuffer                *buffer,
+void    ctk_text_buffer_unregister_deserialize_format (GtkTextBuffer                *buffer,
                                                        GdkAtom                       format);
 
 GDK_AVAILABLE_IN_ALL
-void     gtk_text_buffer_deserialize_set_can_create_tags (GtkTextBuffer             *buffer,
+void     ctk_text_buffer_deserialize_set_can_create_tags (GtkTextBuffer             *buffer,
                                                           GdkAtom                    format,
                                                           gboolean                   can_create_tags);
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_text_buffer_deserialize_get_can_create_tags (GtkTextBuffer             *buffer,
+gboolean ctk_text_buffer_deserialize_get_can_create_tags (GtkTextBuffer             *buffer,
                                                           GdkAtom                    format);
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom * gtk_text_buffer_get_serialize_formats       (GtkTextBuffer                *buffer,
+GdkAtom * ctk_text_buffer_get_serialize_formats       (GtkTextBuffer                *buffer,
                                                        gint                         *n_formats);
 GDK_AVAILABLE_IN_ALL
-GdkAtom * gtk_text_buffer_get_deserialize_formats     (GtkTextBuffer                *buffer,
+GdkAtom * ctk_text_buffer_get_deserialize_formats     (GtkTextBuffer                *buffer,
                                                        gint                         *n_formats);
 
 GDK_AVAILABLE_IN_ALL
-guint8  * gtk_text_buffer_serialize                   (GtkTextBuffer                *register_buffer,
+guint8  * ctk_text_buffer_serialize                   (GtkTextBuffer                *register_buffer,
                                                        GtkTextBuffer                *content_buffer,
                                                        GdkAtom                       format,
                                                        const GtkTextIter            *start,
                                                        const GtkTextIter            *end,
                                                        gsize                        *length);
 GDK_AVAILABLE_IN_ALL
-gboolean  gtk_text_buffer_deserialize                 (GtkTextBuffer                *register_buffer,
+gboolean  ctk_text_buffer_deserialize                 (GtkTextBuffer                *register_buffer,
                                                        GtkTextBuffer                *content_buffer,
                                                        GdkAtom                       format,
                                                        GtkTextIter                  *iter,

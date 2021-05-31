@@ -8,19 +8,19 @@ main (int argc, char *argv[])
   GtkWidget *win;
   GtkWidget *view;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_default_size (GTK_WINDOW (win), 400, 600);
+  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (GTK_WINDOW (win), 400, 600);
 
-  view = gtk_places_view_new ();
+  view = ctk_places_view_new ();
 
-  gtk_container_add (GTK_CONTAINER (win), view);
-  gtk_widget_show_all (win);
+  ctk_container_add (GTK_CONTAINER (win), view);
+  ctk_widget_show_all (win);
 
-  g_signal_connect (win, "delete-event", G_CALLBACK (gtk_main_quit), win);
+  g_signal_connect (win, "delete-event", G_CALLBACK (ctk_main_quit), win);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

@@ -28,7 +28,7 @@ typedef struct _GtkPathBarClass   GtkPathBarClass;
 typedef struct _GtkPathBarPrivate GtkPathBarPrivate;
 
 
-#define GTK_TYPE_PATH_BAR                 (gtk_path_bar_get_type ())
+#define GTK_TYPE_PATH_BAR                 (ctk_path_bar_get_type ())
 #define GTK_PATH_BAR(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PATH_BAR, GtkPathBar))
 #define GTK_PATH_BAR_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PATH_BAR, GtkPathBarClass))
 #define GTK_IS_PATH_BAR(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PATH_BAR))
@@ -53,14 +53,14 @@ struct _GtkPathBarClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType    gtk_path_bar_get_type (void) G_GNUC_CONST;
-void     _gtk_path_bar_set_file_system (GtkPathBar         *path_bar,
+GType    ctk_path_bar_get_type (void) G_GNUC_CONST;
+void     _ctk_path_bar_set_file_system (GtkPathBar         *path_bar,
 					GtkFileSystem      *file_system);
-void     _gtk_path_bar_set_file        (GtkPathBar         *path_bar,
+void     _ctk_path_bar_set_file        (GtkPathBar         *path_bar,
 					GFile              *file,
 					gboolean            keep_trail);
-void     _gtk_path_bar_up              (GtkPathBar *path_bar);
-void     _gtk_path_bar_down            (GtkPathBar *path_bar);
+void     _ctk_path_bar_up              (GtkPathBar *path_bar);
+void     _ctk_path_bar_down            (GtkPathBar *path_bar);
 
 G_END_DECLS
 

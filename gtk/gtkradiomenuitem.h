@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RADIO_MENU_ITEM	      (gtk_radio_menu_item_get_type ())
+#define GTK_TYPE_RADIO_MENU_ITEM	      (ctk_radio_menu_item_get_type ())
 #define GTK_RADIO_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RADIO_MENU_ITEM, GtkRadioMenuItem))
 #define GTK_RADIO_MENU_ITEM_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RADIO_MENU_ITEM, GtkRadioMenuItemClass))
 #define GTK_IS_RADIO_MENU_ITEM(obj)	      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RADIO_MENU_ITEM))
@@ -63,40 +63,40 @@ struct _GtkRadioMenuItemClass
   void (*group_changed) (GtkRadioMenuItem *radio_menu_item);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_radio_menu_item_get_type	         (void) G_GNUC_CONST;
+GType      ctk_radio_menu_item_get_type	         (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_menu_item_new                           (GSList           *group);
+GtkWidget* ctk_radio_menu_item_new                           (GSList           *group);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_menu_item_new_with_label                (GSList           *group,
+GtkWidget* ctk_radio_menu_item_new_with_label                (GSList           *group,
 							      const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_menu_item_new_with_mnemonic             (GSList           *group,
+GtkWidget* ctk_radio_menu_item_new_with_mnemonic             (GSList           *group,
 							      const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_radio_menu_item_new_from_widget               (GtkRadioMenuItem *group);
+GtkWidget* ctk_radio_menu_item_new_from_widget               (GtkRadioMenuItem *group);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_radio_menu_item_new_with_mnemonic_from_widget (GtkRadioMenuItem *group,
+GtkWidget *ctk_radio_menu_item_new_with_mnemonic_from_widget (GtkRadioMenuItem *group,
 							      const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_radio_menu_item_new_with_label_from_widget    (GtkRadioMenuItem *group,
+GtkWidget *ctk_radio_menu_item_new_with_label_from_widget    (GtkRadioMenuItem *group,
 							      const gchar      *label);
 GDK_AVAILABLE_IN_ALL
-GSList*    gtk_radio_menu_item_get_group                     (GtkRadioMenuItem *radio_menu_item);
+GSList*    ctk_radio_menu_item_get_group                     (GtkRadioMenuItem *radio_menu_item);
 GDK_AVAILABLE_IN_ALL
-void       gtk_radio_menu_item_set_group                     (GtkRadioMenuItem *radio_menu_item,
+void       ctk_radio_menu_item_set_group                     (GtkRadioMenuItem *radio_menu_item,
 							      GSList           *group);
 
 GDK_AVAILABLE_IN_3_18
-void       gtk_radio_menu_item_join_group                    (GtkRadioMenuItem *radio_menu_item,
+void       ctk_radio_menu_item_join_group                    (GtkRadioMenuItem *radio_menu_item,
                                                               GtkRadioMenuItem *group_source);
 
 G_END_DECLS

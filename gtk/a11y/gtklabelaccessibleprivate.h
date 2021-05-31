@@ -22,10 +22,10 @@
 
 G_BEGIN_DECLS
 
-void _gtk_label_accessible_text_deleted  (GtkLabel *label);
-void _gtk_label_accessible_text_inserted (GtkLabel *label);
-void _gtk_label_accessible_update_links  (GtkLabel *label);
-void _gtk_label_accessible_focus_link_changed (GtkLabel *label);
+void _ctk_label_accessible_text_deleted  (GtkLabel *label);
+void _ctk_label_accessible_text_inserted (GtkLabel *label);
+void _ctk_label_accessible_update_links  (GtkLabel *label);
+void _ctk_label_accessible_focus_link_changed (GtkLabel *label);
 
 G_END_DECLS
 

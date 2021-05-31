@@ -253,7 +253,7 @@ msgstr ""
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 
 #: gtk/gtkaboutdialog.c:502
@@ -2479,7 +2479,7 @@ msgstr "Mogato wa Mošito"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr "Seabelo sa palomoka ya tšwelopele ya go šuthiša lepheko ge le bethwa"
 
 #: gtk/gtkentry.c:904
@@ -4743,10 +4743,10 @@ msgstr "Boleng"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Boleng bjo bo bušitšwego ke gtk_radio_action_get_current_value() ge mogato "
+"Boleng bjo bo bušitšwego ke ctk_radio_action_get_current_value() ge mogato "
 "wo e le mogato wa gona bjale wa sehlopha sa wona."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -7428,8 +7428,8 @@ msgid "No show all"
 msgstr "Ga go na bontšha ka moka"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Ge eba gtk_widget_show_all() ga e a swanela go kgoma sedirišwa se"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Ge eba ctk_widget_show_all() ga e a swanela go kgoma sedirišwa se"
 
 #: gtk/gtkwidget.c:864
 #, fuzzy

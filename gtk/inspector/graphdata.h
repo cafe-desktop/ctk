@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GRAPH_DATA            (gtk_graph_data_get_type ())
+#define GTK_TYPE_GRAPH_DATA            (ctk_graph_data_get_type ())
 #define GTK_GRAPH_DATA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_GRAPH_DATA, GtkGraphData))
 #define GTK_GRAPH_DATA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_GRAPH_DATA, GtkGraphDataClass))
 #define GTK_IS_GRAPH_DATA(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_GRAPH_DATA))
@@ -46,24 +46,24 @@ struct _GtkGraphDataClass
   GObjectClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
-GType            gtk_graph_data_get_type        (void) G_GNUC_CONST;
+GType            ctk_graph_data_get_type        (void) G_GNUC_CONST;
 
-GtkGraphData    *gtk_graph_data_new             (guint           n_values);
+GtkGraphData    *ctk_graph_data_new             (guint           n_values);
 
-guint            gtk_graph_data_get_n_values    (GtkGraphData   *data);
-double           gtk_graph_data_get_value       (GtkGraphData   *data,
+guint            ctk_graph_data_get_n_values    (GtkGraphData   *data);
+double           ctk_graph_data_get_value       (GtkGraphData   *data,
                                                  guint           i);
-double           gtk_graph_data_get_minimum     (GtkGraphData   *data);
-double           gtk_graph_data_get_maximum     (GtkGraphData   *data);
+double           ctk_graph_data_get_minimum     (GtkGraphData   *data);
+double           ctk_graph_data_get_maximum     (GtkGraphData   *data);
 
-void             gtk_graph_data_prepend_value   (GtkGraphData   *data,
+void             ctk_graph_data_prepend_value   (GtkGraphData   *data,
                                                  double          value);
 
 G_END_DECLS

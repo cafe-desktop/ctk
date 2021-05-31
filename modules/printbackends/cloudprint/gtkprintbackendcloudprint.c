@@ -73,9 +73,9 @@ struct
 } typedef TGOAAccount;
 
 static GObjectClass *backend_parent_class;
-static void                 gtk_print_backend_cloudprint_class_init      (GtkPrintBackendCloudprintClass *class);
-static void                 gtk_print_backend_cloudprint_init            (GtkPrintBackendCloudprint      *impl);
-static void                 gtk_print_backend_cloudprint_finalize	 (GObject *object);
+static void                 ctk_print_backend_cloudprint_class_init      (GtkPrintBackendCloudprintClass *class);
+static void                 ctk_print_backend_cloudprint_init            (GtkPrintBackendCloudprint      *impl);
+static void                 ctk_print_backend_cloudprint_finalize	 (GObject *object);
 static void                 cloudprint_printer_get_settings_from_options (GtkPrinter           *printer,
 									  GtkPrinterOptionSet  *options,
 									  GtkPrintSettings     *settings);
@@ -88,7 +88,7 @@ static void                 cloudprint_printer_prepare_for_print         (GtkPri
 									  GtkPrintSettings *settings,
 									  GtkPageSetup     *page_setup);
 static void		    cloudprint_request_printer_list		 (GtkPrintBackend *print_backend);
-static void                 gtk_print_backend_cloudprint_print_stream    (GtkPrintBackend         *print_backend,
+static void                 ctk_print_backend_cloudprint_print_stream    (GtkPrintBackend         *print_backend,
 									  GtkPrintJob             *job,
 									  GIOChannel              *data_io,
 									  GtkPrintJobCompleteFunc callback,
@@ -106,19 +106,19 @@ void                 t_goa_account_free                 (gpointer data);
 
 
 static void
-gtk_print_backend_cloudprint_register_type (GTypeModule *module)
+ctk_print_backend_cloudprint_register_type (GTypeModule *module)
 {
   const GTypeInfo print_backend_cloudprint_info =
   {
     sizeof (GtkPrintBackendCloudprintClass),
     NULL,		/* base_init */
     NULL,		/* base_finalize */
-    (GClassInitFunc) gtk_print_backend_cloudprint_class_init,
+    (GClassInitFunc) ctk_print_backend_cloudprint_class_init,
     NULL,		/* class_finalize */
     NULL,		/* class_data */
     sizeof (GtkPrintBackendCloudprint),
     0,		/* n_preallocs */
-    (GInstanceInitFunc) gtk_print_backend_cloudprint_init,
+    (GInstanceInitFunc) ctk_print_backend_cloudprint_init,
   };
 
   print_backend_cloudprint_type = g_type_module_register_type (module,
@@ -130,9 +130,9 @@ gtk_print_backend_cloudprint_register_type (GTypeModule *module)
 G_MODULE_EXPORT void
 pb_module_init (GTypeModule *module)
 {
-  gtk_print_backend_cloudprint_register_type (module);
-  gtk_cloudprint_account_register_type (module);
-  gtk_printer_cloudprint_register_type (module);
+  ctk_print_backend_cloudprint_register_type (module);
+  ctk_cloudprint_account_register_type (module);
+  ctk_printer_cloudprint_register_type (module);
 }
 
 G_MODULE_EXPORT void
@@ -144,20 +144,20 @@ pb_module_exit (void)
 G_MODULE_EXPORT GtkPrintBackend *
 pb_module_create (void)
 {
-  return gtk_print_backend_cloudprint_new ();
+  return ctk_print_backend_cloudprint_new ();
 }
 
 /*
  * GtkPrintBackendCloudprint
  */
 GType
-gtk_print_backend_cloudprint_get_type (void)
+ctk_print_backend_cloudprint_get_type (void)
 {
   return print_backend_cloudprint_type;
 }
 
 /**
- * gtk_print_backend_cloudprint_new:
+ * ctk_print_backend_cloudprint_new:
  *
  * Creates a new #GtkPrintBackendCloudprint
  * object. #GtkPrintBackendCloudprint implements the #GtkPrintBackend
@@ -166,23 +166,23 @@ gtk_print_backend_cloudprint_get_type (void)
  * Returns: the new #GtkPrintBackendCloudprint object
  **/
 GtkPrintBackend *
-gtk_print_backend_cloudprint_new (void)
+ctk_print_backend_cloudprint_new (void)
 {
   return g_object_new (GTK_TYPE_PRINT_BACKEND_CLOUDPRINT, NULL);
 }
 
 static void
-gtk_print_backend_cloudprint_class_init (GtkPrintBackendCloudprintClass *klass)
+ctk_print_backend_cloudprint_class_init (GtkPrintBackendCloudprintClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   GtkPrintBackendClass *backend_class = GTK_PRINT_BACKEND_CLASS (klass);
 
   backend_parent_class = g_type_class_peek_parent (klass);
 
-  gobject_class->finalize = gtk_print_backend_cloudprint_finalize;
+  gobject_class->finalize = ctk_print_backend_cloudprint_finalize;
 
   backend_class->request_printer_list = cloudprint_request_printer_list;
-  backend_class->print_stream = gtk_print_backend_cloudprint_print_stream;
+  backend_class->print_stream = ctk_print_backend_cloudprint_print_stream;
   backend_class->printer_create_cairo_surface = cloudprint_printer_create_cairo_surface;
   backend_class->printer_get_options = cloudprint_printer_get_options;
   backend_class->printer_get_settings_from_options = cloudprint_printer_get_settings_from_options;
@@ -191,7 +191,7 @@ gtk_print_backend_cloudprint_class_init (GtkPrintBackendCloudprintClass *klass)
 }
 
 static void
-gtk_print_backend_cloudprint_init (GtkPrintBackendCloudprint *backend)
+ctk_print_backend_cloudprint_init (GtkPrintBackendCloudprint *backend)
 {
   backend->cancellable = g_cancellable_new ();
 
@@ -201,7 +201,7 @@ gtk_print_backend_cloudprint_init (GtkPrintBackendCloudprint *backend)
 }
 
 static void
-gtk_print_backend_cloudprint_finalize (GObject *object)
+ctk_print_backend_cloudprint_finalize (GObject *object)
 {
   GtkPrintBackendCloudprint *backend;
 
@@ -261,8 +261,8 @@ cloudprint_printer_create_cairo_surface (GtkPrinter       *printer,
   surface = cairo_pdf_surface_create_for_stream (_cairo_write, cache_io, width, height);
 
   cairo_surface_set_fallback_resolution (surface,
-					 2.0 * gtk_print_settings_get_printer_lpi (settings),
-					 2.0 * gtk_print_settings_get_printer_lpi (settings));
+					 2.0 * ctk_print_settings_get_printer_lpi (settings),
+					 2.0 * ctk_print_settings_get_printer_lpi (settings));
 
   return surface;
 }
@@ -292,7 +292,7 @@ cloudprint_submit_cb (GObject *source,
   GError *error = NULL;
   gboolean success = FALSE;
 
-  result = gtk_cloudprint_account_submit_finish (account, res, &error);
+  result = ctk_cloudprint_account_submit_finish (account, res, &error);
   g_object_unref (account);
   if (result == NULL)
     {
@@ -312,7 +312,7 @@ cloudprint_submit_cb (GObject *source,
   if (ps->dnotify != NULL)
     ps->dnotify (ps->user_data);
 
-  gtk_print_job_set_status (ps->job,
+  ctk_print_job_set_status (ps->job,
 			    (success ?
 			     GTK_PRINT_STATUS_FINISHED :
 			     GTK_PRINT_STATUS_FINISHED_ABORTED));
@@ -353,7 +353,7 @@ cloudprint_print_cb (GtkPrintBackendCloudprint *print_backend,
   if (cb_error == NULL)
     {
       GMappedFile *map = g_mapped_file_new (ps->path, FALSE, &error);
-      GtkPrinter *printer = gtk_print_job_get_printer (ps->job);
+      GtkPrinter *printer = ctk_print_job_get_printer (ps->job);
       GtkCloudprintAccount *account = NULL;
 
       if (map == NULL)
@@ -373,10 +373,10 @@ cloudprint_print_cb (GtkPrintBackendCloudprint *print_backend,
 
       GTK_NOTE (PRINTING,
 		g_print ("Cloud Print Backend: submitting job\n"));
-      gtk_cloudprint_account_submit (account,
+      ctk_cloudprint_account_submit (account,
 				     GTK_PRINTER_CLOUDPRINT (printer),
 				     map,
-				     gtk_print_job_get_title (ps->job),
+				     ctk_print_job_get_title (ps->job),
 				     print_backend->cancellable,
 				     cloudprint_submit_cb,
 				     ps);
@@ -394,7 +394,7 @@ cloudprint_print_cb (GtkPrintBackendCloudprint *print_backend,
       if (ps->dnotify != NULL)
 	ps->dnotify (ps->user_data);
 
-      gtk_print_job_set_status (ps->job,
+      ctk_print_job_set_status (ps->job,
 				GTK_PRINT_STATUS_FINISHED_ABORTED);
 
       g_clear_object (&(ps->job));
@@ -464,7 +464,7 @@ cloudprint_write (GIOChannel   *source,
 }
 
 static void
-gtk_print_backend_cloudprint_print_stream (GtkPrintBackend        *print_backend,
+ctk_print_backend_cloudprint_print_stream (GtkPrintBackend        *print_backend,
 					   GtkPrintJob            *job,
 					   GIOChannel             *data_io,
 					   GtkPrintJobCompleteFunc callback,
@@ -496,7 +496,7 @@ gtk_print_backend_cloudprint_print_stream (GtkPrintBackend        *print_backend
   if (tmpfd == -1)
     {
       int err = errno;
-      internal_error = g_error_new (gtk_print_error_quark (),
+      internal_error = g_error_new (ctk_print_error_quark (),
 				    GTK_PRINT_ERROR_INTERNAL_ERROR,
 				    "Error creating temporary file: %s",
 				    g_strerror (err));
@@ -665,7 +665,7 @@ cloudprint_search_cb (GObject *source,
   guint i;
   GError *error = NULL;
 
-  node = gtk_cloudprint_account_search_finish (account, res, &error);
+  node = ctk_cloudprint_account_search_finish (account, res, &error);
   g_object_unref (account);
   if (node == NULL)
     {
@@ -723,43 +723,43 @@ cloudprint_search_cb (GObject *source,
       GTK_NOTE (PRINTING,
 		g_print ("Cloud Print Backend: Adding printer %s\n", name));
 
-      printer = gtk_printer_cloudprint_new (name,
+      printer = ctk_printer_cloudprint_new (name,
 					    is_virtual,
 					    GTK_PRINT_BACKEND (backend),
 					    account,
 					    id);
-      gtk_printer_set_has_details (GTK_PRINTER (printer), FALSE);
-      gtk_printer_set_icon_name (GTK_PRINTER (printer), "printer");
-      gtk_printer_set_location (GTK_PRINTER (printer),
-				gtk_cloudprint_account_get_presentation_identity (account));
+      ctk_printer_set_has_details (GTK_PRINTER (printer), FALSE);
+      ctk_printer_set_icon_name (GTK_PRINTER (printer), "printer");
+      ctk_printer_set_location (GTK_PRINTER (printer),
+				ctk_cloudprint_account_get_presentation_identity (account));
 
       if (desc != NULL)
-	gtk_printer_set_description (GTK_PRINTER (printer), desc);
+	ctk_printer_set_description (GTK_PRINTER (printer), desc);
 
       if (status != NULL)
 	{
 	  if (!strcmp (status, "ONLINE"))
 	    /* Translators: The printer status is online, i.e. it is
 	     * ready to print. */
-	    gtk_printer_set_state_message (GTK_PRINTER (printer), _("Online"));
+	    ctk_printer_set_state_message (GTK_PRINTER (printer), _("Online"));
 	  else if (!strcmp (status, "UNKNOWN"))
 	    /* Translators: We don't know whether this printer is
 	     * available to print to. */
-	    gtk_printer_set_state_message (GTK_PRINTER (printer), _("Unknown"));
+	    ctk_printer_set_state_message (GTK_PRINTER (printer), _("Unknown"));
 	  else if (!strcmp (status, "OFFLINE"))
 	    /* Translators: The printer is offline. */
-	    gtk_printer_set_state_message (GTK_PRINTER (printer), _("Offline"));
+	    ctk_printer_set_state_message (GTK_PRINTER (printer), _("Offline"));
 	  else if (!strcmp (status, "DORMANT"))
 	    /* We shouldn't get here because the query omits dormant
 	     * printers by default. */
 
 	    /* Translators: Printer has been offline for a long time. */
-	    gtk_printer_set_state_message (GTK_PRINTER (printer), _("Dormant"));
+	    ctk_printer_set_state_message (GTK_PRINTER (printer), _("Dormant"));
 	}
 
-      gtk_printer_set_is_active (GTK_PRINTER (printer), TRUE);
+      ctk_printer_set_is_active (GTK_PRINTER (printer), TRUE);
 
-      gtk_print_backend_add_printer (GTK_PRINT_BACKEND (backend),
+      ctk_print_backend_add_printer (GTK_PRINT_BACKEND (backend),
 				     GTK_PRINTER (printer));
       g_signal_emit_by_name (GTK_PRINT_BACKEND (backend),
 			     "printer-added", GTK_PRINTER (printer));
@@ -779,7 +779,7 @@ cloudprint_search_cb (GObject *source,
 		g_print ("Cloud Print Backend: 'search' finished for "
 			 "all accounts\n"));
 
-      gtk_print_backend_set_list_done (GTK_PRINT_BACKEND (backend));
+      ctk_print_backend_set_list_done (GTK_PRINT_BACKEND (backend));
     }
 }
 
@@ -814,7 +814,7 @@ cloudprint_get_managed_objects_cb (GObject      *source,
         {
 	  GtkCloudprintAccount *account;
           goa_account = (TGOAAccount *) iter->data;
-	  account = gtk_cloudprint_account_new (goa_account->id,
+	  account = ctk_cloudprint_account_new (goa_account->id,
 						goa_account->path,
 						goa_account->presentation_identity);
 	  if (account == NULL)
@@ -831,7 +831,7 @@ cloudprint_get_managed_objects_cb (GObject      *source,
 		    g_print ("Cloud Print Backend: issuing 'search' for %p\n",
 			     account));
 
-	  gtk_cloudprint_account_search (account,
+	  ctk_cloudprint_account_search (account,
 					 G_DBUS_CONNECTION (source),
 					 backend->cancellable,
 					 cloudprint_search_cb,
@@ -839,7 +839,7 @@ cloudprint_get_managed_objects_cb (GObject      *source,
         }
 
       if (searching == 0)
-        gtk_print_backend_set_list_done (GTK_PRINT_BACKEND (backend));
+        ctk_print_backend_set_list_done (GTK_PRINT_BACKEND (backend));
 
       g_list_free_full (accounts, t_goa_account_free);
     }
@@ -858,7 +858,7 @@ cloudprint_get_managed_objects_cb (GObject      *source,
               g_warning ("%s", error->message);
             }
 
-          gtk_print_backend_set_list_done (GTK_PRINT_BACKEND (user_data));
+          ctk_print_backend_set_list_done (GTK_PRINT_BACKEND (user_data));
         }
 
       g_error_free (error);
@@ -908,7 +908,7 @@ cloudprint_bus_get_cb (GObject      *source,
                              error->message));
           g_warning ("%s", error->message);
 
-          gtk_print_backend_set_list_done (GTK_PRINT_BACKEND (user_data));
+          ctk_print_backend_set_list_done (GTK_PRINT_BACKEND (user_data));
         }
       g_error_free (error);
     }
@@ -933,14 +933,14 @@ cloudprint_printer_get_options (GtkPrinter           *printer,
   GtkPrinterOption *option;
   const gchar *n_up[] = { "1" };
 
-  set = gtk_printer_option_set_new ();
+  set = ctk_printer_option_set_new ();
 
   /* How many document pages to go onto one side of paper. */
-  option = gtk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), GTK_PRINTER_OPTION_TYPE_PICKONE);
-  gtk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
+  option = ctk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), GTK_PRINTER_OPTION_TYPE_PICKONE);
+  ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 (char **) n_up, (char **) n_up /* FIXME i18n (localised digits)! */);
-  gtk_printer_option_set (option, "1");
-  gtk_printer_option_set_add (set, option);
+  ctk_printer_option_set (option, "1");
+  ctk_printer_option_set_add (set, option);
   g_object_unref (option);
 
   return set;
@@ -961,27 +961,27 @@ cloudprint_printer_prepare_for_print (GtkPrinter       *printer,
 {
   gdouble scale;
 
-  gtk_print_job_set_pages (print_job, gtk_print_settings_get_print_pages (settings));
-  gtk_print_job_set_page_ranges (print_job, NULL, 0);
+  ctk_print_job_set_pages (print_job, ctk_print_settings_get_print_pages (settings));
+  ctk_print_job_set_page_ranges (print_job, NULL, 0);
 
-  if (gtk_print_job_get_pages (print_job) == GTK_PRINT_PAGES_RANGES)
+  if (ctk_print_job_get_pages (print_job) == GTK_PRINT_PAGES_RANGES)
     {
       GtkPageRange *page_ranges;
       gint num_page_ranges;
-      page_ranges = gtk_print_settings_get_page_ranges (settings, &num_page_ranges);
-      gtk_print_job_set_page_ranges (print_job, page_ranges, num_page_ranges);
+      page_ranges = ctk_print_settings_get_page_ranges (settings, &num_page_ranges);
+      ctk_print_job_set_page_ranges (print_job, page_ranges, num_page_ranges);
     }
 
-  gtk_print_job_set_collate (print_job, gtk_print_settings_get_collate (settings));
-  gtk_print_job_set_reverse (print_job, gtk_print_settings_get_reverse (settings));
-  gtk_print_job_set_num_copies (print_job, gtk_print_settings_get_n_copies (settings));
+  ctk_print_job_set_collate (print_job, ctk_print_settings_get_collate (settings));
+  ctk_print_job_set_reverse (print_job, ctk_print_settings_get_reverse (settings));
+  ctk_print_job_set_num_copies (print_job, ctk_print_settings_get_n_copies (settings));
 
-  scale = gtk_print_settings_get_scale (settings);
+  scale = ctk_print_settings_get_scale (settings);
   if (scale != 100.0)
-    gtk_print_job_set_scale (print_job, scale/100.0);
+    ctk_print_job_set_scale (print_job, scale/100.0);
 
-  gtk_print_job_set_page_set (print_job, gtk_print_settings_get_page_set (settings));
-  gtk_print_job_set_rotate (print_job, TRUE);
+  ctk_print_job_set_page_set (print_job, ctk_print_settings_get_page_set (settings));
+  ctk_print_job_set_rotate (print_job, TRUE);
 }
 
 static void
@@ -995,7 +995,7 @@ cloudprint_printer_cb (GObject *source,
   GError *error = NULL;
   gboolean success = FALSE;
 
-  result = gtk_cloudprint_account_printer_finish (account, res, &error);
+  result = ctk_cloudprint_account_printer_finish (account, res, &error);
   if (result != NULL)
     {
       /* Ignore capabilities for now. */
@@ -1018,7 +1018,7 @@ cloudprint_printer_cb (GObject *source,
       g_error_free (error);
     }
 
-  gtk_printer_set_has_details (printer, success);
+  ctk_printer_set_has_details (printer, success);
   g_signal_emit_by_name (printer, "details-acquired", success);
 }
 
@@ -1037,13 +1037,13 @@ cloudprint_printer_request_details (GtkPrinter *printer)
   g_warn_if_fail (account != NULL);
   g_warn_if_fail (printerid != NULL);
 
-  backend = GTK_PRINT_BACKEND_CLOUDPRINT (gtk_printer_get_backend (printer));
+  backend = GTK_PRINT_BACKEND_CLOUDPRINT (ctk_printer_get_backend (printer));
 
   GTK_NOTE (PRINTING,
 	    g_print ("Cloud Print Backend: Getting details for printer id %s\n",
 		     printerid));
 
-  gtk_cloudprint_account_printer (account,
+  ctk_cloudprint_account_printer (account,
 				  printerid,
 				  backend->cancellable,
 				  cloudprint_printer_cb,

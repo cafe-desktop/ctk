@@ -41,7 +41,7 @@
  * SECTION:gtkaccelmap
  * @Short_description: Loadable keyboard accelerator specifications
  * @Title: Accelerator Maps
- * @See_also: #GtkAccelGroup, #GtkAccelKey, #GtkUIManager, gtk_widget_set_accel_path(), gtk_menu_item_set_accel_path()
+ * @See_also: #GtkAccelGroup, #GtkAccelKey, #GtkUIManager, ctk_widget_set_accel_path(), ctk_menu_item_set_accel_path()
  *
  * Accelerator maps are used to define runtime configurable accelerators.
  * Functions for manipulating them are are usually used by higher level
@@ -66,28 +66,28 @@
  * path may look like: “<Gimp-Toolbox>/File/Dialogs/Tool Options...”.
  *
  * All accelerators are stored inside one global #GtkAccelMap that can
- * be obtained using gtk_accel_map_get(). See
+ * be obtained using ctk_accel_map_get(). See
  * [Monitoring changes][monitoring-changes] for additional
  * details.
  *
  * # Manipulating accelerators
  *
- * New accelerators can be added using gtk_accel_map_add_entry().
- * To search for specific accelerator, use gtk_accel_map_lookup_entry().
+ * New accelerators can be added using ctk_accel_map_add_entry().
+ * To search for specific accelerator, use ctk_accel_map_lookup_entry().
  * Modifications of existing accelerators should be done using
- * gtk_accel_map_change_entry().
+ * ctk_accel_map_change_entry().
  *
  * In order to avoid having some accelerators changed, they can be
- * locked using gtk_accel_map_lock_path(). Unlocking is done using
- * gtk_accel_map_unlock_path().
+ * locked using ctk_accel_map_lock_path(). Unlocking is done using
+ * ctk_accel_map_unlock_path().
  *
  * # Saving and loading accelerator maps
  *
  * Accelerator maps can be saved to and loaded from some external
  * resource. For simple saving and loading from file,
- * gtk_accel_map_save() and gtk_accel_map_load() are provided.
+ * ctk_accel_map_save() and ctk_accel_map_load() are provided.
  * Saving and loading can also be done by providing file descriptor
- * to gtk_accel_map_save_fd() and gtk_accel_map_load_fd().
+ * to ctk_accel_map_save_fd() and ctk_accel_map_load_fd().
  *
  * # Monitoring changes
  *
@@ -167,14 +167,14 @@ accel_path_lookup (const gchar *accel_path)
 }
 
 void
-_gtk_accel_map_init (void)
+_ctk_accel_map_init (void)
 {
   if (accel_entry_ht == NULL)
     accel_entry_ht = g_hash_table_new (accel_entry_hash, accel_entry_equal);
 }
 
 gboolean
-_gtk_accel_path_is_valid (const gchar *accel_path)
+_ctk_accel_path_is_valid (const gchar *accel_path)
 {
   gchar *p;
 
@@ -188,7 +188,7 @@ _gtk_accel_path_is_valid (const gchar *accel_path)
 }
 
 /**
- * gtk_accel_map_add_entry:
+ * ctk_accel_map_add_entry:
  * @accel_path: valid accelerator path
  * @accel_key:  the accelerator key
  * @accel_mods: the accelerator modifiers
@@ -197,7 +197,7 @@ _gtk_accel_path_is_valid (const gchar *accel_path)
  * This function should only be called once per @accel_path
  * with the canonical @accel_key and @accel_mods for this path.
  * To change the accelerator during runtime programatically, use
- * gtk_accel_map_change_entry().
+ * ctk_accel_map_change_entry().
  * 
  * Set @accel_key and @accel_mods to 0 to request a removal of
  * the accelerator.
@@ -207,18 +207,18 @@ _gtk_accel_path_is_valid (const gchar *accel_path)
  * g_intern_static_string().
  */
 void
-gtk_accel_map_add_entry (const gchar    *accel_path,
+ctk_accel_map_add_entry (const gchar    *accel_path,
 			 guint           accel_key,
 			 GdkModifierType accel_mods)
 {
   AccelEntry *entry;
 
-  g_return_if_fail (_gtk_accel_path_is_valid (accel_path));
+  g_return_if_fail (_ctk_accel_path_is_valid (accel_path));
 
   if (!accel_key)
     accel_mods = 0;
   else
-    accel_mods &= gtk_accelerator_get_default_mod_mask ();
+    accel_mods &= ctk_accelerator_get_default_mod_mask ();
 
   entry = accel_path_lookup (accel_path);
   if (entry)
@@ -229,7 +229,7 @@ gtk_accel_map_add_entry (const gchar    *accel_path,
 	  entry->std_accel_key = accel_key;
 	  entry->std_accel_mods = accel_mods;
 	  if (!entry->changed)
-	    gtk_accel_map_change_entry (entry->accel_path, accel_key, accel_mods, TRUE);
+	    ctk_accel_map_change_entry (entry->accel_path, accel_key, accel_mods, TRUE);
 	}
     }
   else
@@ -249,7 +249,7 @@ gtk_accel_map_add_entry (const gchar    *accel_path,
 }
 
 /**
- * gtk_accel_map_lookup_entry:
+ * ctk_accel_map_lookup_entry:
  * @accel_path: a valid accelerator path
  * @key: (allow-none) (out): the accelerator key to be filled in (optional)
  *
@@ -258,12 +258,12 @@ gtk_accel_map_add_entry (const gchar    *accel_path,
  * Returns: %TRUE if @accel_path is known, %FALSE otherwise
  */
 gboolean
-gtk_accel_map_lookup_entry (const gchar *accel_path,
+ctk_accel_map_lookup_entry (const gchar *accel_path,
 			    GtkAccelKey *key)
 {
   AccelEntry *entry;
 
-  g_return_val_if_fail (_gtk_accel_path_is_valid (accel_path), FALSE);
+  g_return_val_if_fail (_ctk_accel_path_is_valid (accel_path), FALSE);
 
   entry = accel_path_lookup (accel_path);
   if (entry && key)
@@ -320,7 +320,7 @@ internal_change_entry (const gchar    *accel_path,
     {
       if (!simulate)
 	{
-	  gtk_accel_map_add_entry (accel_path, 0, 0);
+	  ctk_accel_map_add_entry (accel_path, 0, 0);
 	  entry = accel_path_lookup (accel_path);
 	  entry->accel_key = accel_key;
 	  entry->accel_mods = accel_mods;
@@ -372,7 +372,7 @@ internal_change_entry (const gchar    *accel_path,
     {
       GtkAccelGroup *group = slist->data;
 
-      for (node = _gtk_accel_group_get_accelerables (group); node; node = node->next)
+      for (node = _ctk_accel_group_get_accelerables (group); node; node = node->next)
 	g_hash_table_insert (window_hm, node->data, node->data);
     }
   g_slist_free (group_list);
@@ -381,7 +381,7 @@ internal_change_entry (const gchar    *accel_path,
   win_list = g_hash_table_slist_values (window_hm);
   g_hash_table_destroy (window_hm);
   for (slist = win_list; slist; slist = slist->next)
-    for (node = gtk_accel_groups_from_object (slist->data); node; node = node->next)
+    for (node = ctk_accel_groups_from_object (slist->data); node; node = node->next)
       g_hash_table_insert (group_hm, node->data, node->data);
   group_list = g_hash_table_slist_values (group_hm);
   g_hash_table_destroy (group_hm);
@@ -390,7 +390,7 @@ internal_change_entry (const gchar    *accel_path,
   if (accel_key)
     for (slist = win_list; slist; slist = slist->next)
       if (GTK_IS_WINDOW (slist->data))	/* bad kludge in lack of a GtkAcceleratable */
-	if (_gtk_window_query_nonaccels (slist->data, accel_key, accel_mods))
+	if (_ctk_window_query_nonaccels (slist->data, accel_key, accel_mods))
 	  {
 	    seen_accel = TRUE;
 	    break;
@@ -406,7 +406,7 @@ internal_change_entry (const gchar    *accel_path,
 	guint i, n;
 	
 	n = 0;
-	ag_entry = entry->accel_key ? gtk_accel_group_query (group, entry->accel_key, entry->accel_mods, &n) : NULL;
+	ag_entry = entry->accel_key ? ctk_accel_group_query (group, entry->accel_key, entry->accel_mods, &n) : NULL;
 	for (i = 0; i < n; i++)
 	  if (ag_entry[i].accel_path_quark == entry_quark)
 	    {
@@ -416,11 +416,11 @@ internal_change_entry (const gchar    *accel_path,
 	    }
 	
 	n = 0;
-	ag_entry = accel_key ? gtk_accel_group_query (group, accel_key, accel_mods, &n) : NULL;
+	ag_entry = accel_key ? ctk_accel_group_query (group, accel_key, accel_mods, &n) : NULL;
 	for (i = 0; i < n; i++)
 	  {
 	    seen_accel = TRUE;
-	    removable = !gtk_accel_group_get_is_locked (group) && !(ag_entry[i].key.accel_flags & GTK_ACCEL_LOCKED);
+	    removable = !ctk_accel_group_get_is_locked (group) && !(ag_entry[i].key.accel_flags & GTK_ACCEL_LOCKED);
 	    if (!removable)
 	      goto break_loop_step5;
 	    if (ag_entry[i].accel_path_quark)
@@ -457,7 +457,7 @@ internal_change_entry (const gchar    *accel_path,
       entry->changed = TRUE;
 
       for (slist = group_list; slist; slist = slist->next)
-	_gtk_accel_group_reconnect (slist->data, g_quark_from_string (entry->accel_path));
+	_ctk_accel_group_reconnect (slist->data, g_quark_from_string (entry->accel_path));
 
       /* unref accel groups */
       for (slist = group_list; slist; slist = slist->next)
@@ -473,7 +473,7 @@ internal_change_entry (const gchar    *accel_path,
 }
 
 /**
- * gtk_accel_map_change_entry:
+ * ctk_accel_map_change_entry:
  * @accel_path:  a valid accelerator path
  * @accel_key:   the new accelerator key
  * @accel_mods:  the new accelerator modifiers
@@ -493,12 +493,12 @@ internal_change_entry (const gchar    *accel_path,
  * Returns: %TRUE if the accelerator could be changed, %FALSE otherwise
  */
 gboolean
-gtk_accel_map_change_entry (const gchar    *accel_path,
+ctk_accel_map_change_entry (const gchar    *accel_path,
 			    guint           accel_key,
 			    GdkModifierType accel_mods,
 			    gboolean        replace)
 {
-  g_return_val_if_fail (_gtk_accel_path_is_valid (accel_path), FALSE);
+  g_return_val_if_fail (_ctk_accel_path_is_valid (accel_path), FALSE);
 
   return internal_change_entry (accel_path, accel_key, accel_key ? accel_mods : 0, replace, FALSE);
 }
@@ -530,11 +530,11 @@ accel_map_parse_accel_path (GScanner *scanner)
   accel = g_strdup (scanner->value.v_string);
 
   /* ensure the entry is present */
-  gtk_accel_map_add_entry (path, 0, 0);
+  ctk_accel_map_add_entry (path, 0, 0);
 
   /* and propagate it */
-  gtk_accelerator_parse (accel, &accel_key, &accel_mods);
-  gtk_accel_map_change_entry (path, accel_key, accel_mods, TRUE);
+  ctk_accelerator_parse (accel, &accel_key, &accel_mods);
+  ctk_accel_map_change_entry (path, accel_key, accel_mods, TRUE);
 
   g_free (accel);
   g_free (path);
@@ -590,13 +590,13 @@ accel_map_parse_statement (GScanner *scanner)
 }
 
 /**
- * gtk_accel_map_load_scanner:
+ * ctk_accel_map_load_scanner:
  * @scanner: a #GScanner which has already been provided with an input file
  *
- * #GScanner variant of gtk_accel_map_load().
+ * #GScanner variant of ctk_accel_map_load().
  */
 void
-gtk_accel_map_load_scanner (GScanner *scanner)
+ctk_accel_map_load_scanner (GScanner *scanner)
 {
   gboolean skip_comment_single;
   gboolean symbol_2_token;
@@ -612,8 +612,8 @@ gtk_accel_map_load_scanner (GScanner *scanner)
   scanner->config->cpair_comment_single = ";\n";
   symbol_2_token = scanner->config->symbol_2_token;
   scanner->config->symbol_2_token = FALSE;
-  saved_symbol = g_scanner_lookup_symbol (scanner, "gtk_accel_path");
-  g_scanner_scope_add_symbol (scanner, 0, "gtk_accel_path", 
+  saved_symbol = g_scanner_lookup_symbol (scanner, "ctk_accel_path");
+  g_scanner_scope_add_symbol (scanner, 0, "ctk_accel_path", 
 			      accel_map_parse_accel_path);
 
   /* outer parsing loop
@@ -632,21 +632,21 @@ gtk_accel_map_load_scanner (GScanner *scanner)
   scanner->config->skip_comment_single = skip_comment_single;
   scanner->config->cpair_comment_single = cpair_comment_single;
   scanner->config->symbol_2_token = symbol_2_token;
-  g_scanner_scope_remove_symbol (scanner, 0, "gtk_accel_path");
+  g_scanner_scope_remove_symbol (scanner, 0, "ctk_accel_path");
   if (saved_symbol)
-    g_scanner_scope_add_symbol (scanner, 0, "gtk_accel_path", saved_symbol);
+    g_scanner_scope_add_symbol (scanner, 0, "ctk_accel_path", saved_symbol);
 }
 
 /**
- * gtk_accel_map_load_fd:
+ * ctk_accel_map_load_fd:
  * @fd: a valid readable file descriptor
  *
- * Filedescriptor variant of gtk_accel_map_load().
+ * Filedescriptor variant of ctk_accel_map_load().
  *
  * Note that the file descriptor will not be closed by this function.
  */
 void
-gtk_accel_map_load_fd (gint fd)
+ctk_accel_map_load_fd (gint fd)
 {
   GScanner *scanner;
 
@@ -656,21 +656,21 @@ gtk_accel_map_load_fd (gint fd)
   scanner = g_scanner_new (NULL);
   g_scanner_input_file (scanner, fd);
 
-  gtk_accel_map_load_scanner (scanner);
+  ctk_accel_map_load_scanner (scanner);
 
   g_scanner_destroy (scanner);
 }
 
 /**
- * gtk_accel_map_load:
+ * ctk_accel_map_load:
  * @file_name: (type filename): a file containing accelerator specifications,
  *   in the GLib file name encoding
  *
- * Parses a file previously saved with gtk_accel_map_save() for
+ * Parses a file previously saved with ctk_accel_map_save() for
  * accelerator specifications, and propagates them accordingly.
  */
 void
-gtk_accel_map_load (const gchar *file_name)
+ctk_accel_map_load (const gchar *file_name)
 {
   gint fd;
 
@@ -680,7 +680,7 @@ gtk_accel_map_load (const gchar *file_name)
   if (fd < 0)
     return;
 
-  gtk_accel_map_load_fd (fd);
+  ctk_accel_map_load_fd (fd);
 
   close (fd);
 }
@@ -719,7 +719,7 @@ accel_map_print (gpointer        data,
   gint fd = GPOINTER_TO_INT (data);
   gchar *tmp, *name;
 
-  g_string_append (gstring, "(gtk_accel_path \"");
+  g_string_append (gstring, "(ctk_accel_path \"");
 
   tmp = g_strescape (accel_path, NULL);
   g_string_append (gstring, tmp);
@@ -727,7 +727,7 @@ accel_map_print (gpointer        data,
 
   g_string_append (gstring, "\" \"");
 
-  name = gtk_accelerator_name (accel_key, accel_mods);
+  name = ctk_accelerator_name (accel_key, accel_mods);
   tmp = g_strescape (name, NULL);
   g_free (name);
   g_string_append (gstring, tmp);
@@ -741,15 +741,15 @@ accel_map_print (gpointer        data,
 }
 
 /**
- * gtk_accel_map_save_fd:
+ * ctk_accel_map_save_fd:
  * @fd: a valid writable file descriptor
  *
- * Filedescriptor variant of gtk_accel_map_save().
+ * Filedescriptor variant of ctk_accel_map_save().
  *
  * Note that the file descriptor will not be closed by this function.
  */
 void
-gtk_accel_map_save_fd (gint fd)
+ctk_accel_map_save_fd (gint fd)
 {
   GString *gstring;
 
@@ -766,21 +766,21 @@ gtk_accel_map_save_fd (gint fd)
   
   g_string_free (gstring, TRUE);
 
-  gtk_accel_map_foreach (GINT_TO_POINTER (fd), accel_map_print);
+  ctk_accel_map_foreach (GINT_TO_POINTER (fd), accel_map_print);
 }
 
 /**
- * gtk_accel_map_save:
+ * ctk_accel_map_save:
  * @file_name: (type filename): the name of the file to contain
  *   accelerator specifications, in the GLib file name encoding
  *
  * Saves current accelerator specifications (accelerator path, key
  * and modifiers) to @file_name.
  * The file is written in a format suitable to be read back in by
- * gtk_accel_map_load().
+ * ctk_accel_map_load().
  */
 void
-gtk_accel_map_save (const gchar *file_name)
+ctk_accel_map_save (const gchar *file_name)
 {
   gint fd;
 
@@ -790,26 +790,26 @@ gtk_accel_map_save (const gchar *file_name)
   if (fd < 0)
     return;
 
-  gtk_accel_map_save_fd (fd);
+  ctk_accel_map_save_fd (fd);
 
   close (fd);
 }
 
 /**
- * gtk_accel_map_foreach:
+ * ctk_accel_map_foreach:
  * @data: (allow-none): data to be passed into @foreach_func
  * @foreach_func: (scope call): function to be executed for each accel
  *                map entry which is not filtered out
  *
  * Loops over the entries in the accelerator map whose accel path 
- * doesn’t match any of the filters added with gtk_accel_map_add_filter(), 
+ * doesn’t match any of the filters added with ctk_accel_map_add_filter(), 
  * and execute @foreach_func on each. The signature of @foreach_func is 
  * that of #GtkAccelMapForeach, the @changed parameter indicates whether
  * this accelerator was changed during runtime (thus, would need
  * saving during an accelerator map dump).
  */
 void
-gtk_accel_map_foreach (gpointer           data,
+ctk_accel_map_foreach (gpointer           data,
 		       GtkAccelMapForeach foreach_func)
 {
   GSList *entries, *slist, *node;
@@ -833,7 +833,7 @@ gtk_accel_map_foreach (gpointer           data,
 }
 
 /**
- * gtk_accel_map_foreach_unfiltered:
+ * ctk_accel_map_foreach_unfiltered:
  * @data:         data to be passed into @foreach_func
  * @foreach_func: (scope call): function to be executed for each accel
  *                map entry
@@ -845,7 +845,7 @@ gtk_accel_map_foreach (gpointer           data,
  * saving during an accelerator map dump).
  */
 void
-gtk_accel_map_foreach_unfiltered (gpointer           data,
+ctk_accel_map_foreach_unfiltered (gpointer           data,
 				  GtkAccelMapForeach foreach_func)
 {
   GSList *entries, *slist;
@@ -864,20 +864,20 @@ gtk_accel_map_foreach_unfiltered (gpointer           data,
 }
 
 /**
- * gtk_accel_map_add_filter:
+ * ctk_accel_map_add_filter:
  * @filter_pattern: a pattern (see #GPatternSpec)
  *
  * Adds a filter to the global list of accel path filters.
  *
  * Accel map entries whose accel path matches one of the filters
- * are skipped by gtk_accel_map_foreach().
+ * are skipped by ctk_accel_map_foreach().
  *
  * This function is intended for GTK+ modules that create their own
  * menus, but don’t want them to be saved into the applications accelerator
  * map dump.
  */
 void
-gtk_accel_map_add_filter (const gchar *filter_pattern)
+ctk_accel_map_add_filter (const gchar *filter_pattern)
 {
   GPatternSpec *pspec;
   GSList *slist;
@@ -895,25 +895,25 @@ gtk_accel_map_add_filter (const gchar *filter_pattern)
 }
 
 void
-_gtk_accel_map_add_group (const gchar   *accel_path,
+_ctk_accel_map_add_group (const gchar   *accel_path,
 			  GtkAccelGroup *accel_group)
 {
   AccelEntry *entry;
 
-  g_return_if_fail (_gtk_accel_path_is_valid (accel_path));
+  g_return_if_fail (_ctk_accel_path_is_valid (accel_path));
   g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
 
   entry = accel_path_lookup (accel_path);
   if (!entry)
     {
-      gtk_accel_map_add_entry (accel_path, 0, 0);
+      ctk_accel_map_add_entry (accel_path, 0, 0);
       entry = accel_path_lookup (accel_path);
     }
   entry->groups = g_slist_prepend (entry->groups, accel_group);
 }
 
 void
-_gtk_accel_map_remove_group (const gchar   *accel_path,
+_ctk_accel_map_remove_group (const gchar   *accel_path,
 			     GtkAccelGroup *accel_group)
 {
   AccelEntry *entry;
@@ -927,7 +927,7 @@ _gtk_accel_map_remove_group (const gchar   *accel_path,
 
 
 /**
- * gtk_accel_map_lock_path:
+ * ctk_accel_map_lock_path:
  * @accel_path: a valid accelerator path
  * 
  * Locks the given accelerator path. If the accelerator map doesn’t yet contain
@@ -935,11 +935,11 @@ _gtk_accel_map_remove_group (const gchar   *accel_path,
  *
  * Locking an accelerator path prevents its accelerator from being changed 
  * during runtime. A locked accelerator path can be unlocked by 
- * gtk_accel_map_unlock_path(). Refer to gtk_accel_map_change_entry() 
+ * ctk_accel_map_unlock_path(). Refer to ctk_accel_map_change_entry() 
  * for information about runtime accelerator changes.
  *
  * If called more than once, @accel_path remains locked until
- * gtk_accel_map_unlock_path() has been called an equivalent number
+ * ctk_accel_map_unlock_path() has been called an equivalent number
  * of times.
  *
  * Note that locking of individual accelerator paths is independent from 
@@ -950,17 +950,17 @@ _gtk_accel_map_remove_group (const gchar   *accel_path,
  * Since: 2.4
  **/
 void 
-gtk_accel_map_lock_path (const gchar *accel_path)
+ctk_accel_map_lock_path (const gchar *accel_path)
 {
   AccelEntry *entry;
 
-  g_return_if_fail (_gtk_accel_path_is_valid (accel_path));
+  g_return_if_fail (_ctk_accel_path_is_valid (accel_path));
 
   entry = accel_path_lookup (accel_path);
   
   if (!entry)
     {
-      gtk_accel_map_add_entry (accel_path, 0, 0);
+      ctk_accel_map_add_entry (accel_path, 0, 0);
       entry = accel_path_lookup (accel_path);
     }
 
@@ -968,20 +968,20 @@ gtk_accel_map_lock_path (const gchar *accel_path)
 }
 
 /**
- * gtk_accel_map_unlock_path:
+ * ctk_accel_map_unlock_path:
  * @accel_path: a valid accelerator path
  * 
- * Undoes the last call to gtk_accel_map_lock_path() on this @accel_path.
- * Refer to gtk_accel_map_lock_path() for information about accelerator path locking.
+ * Undoes the last call to ctk_accel_map_lock_path() on this @accel_path.
+ * Refer to ctk_accel_map_lock_path() for information about accelerator path locking.
  *
  * Since: 2.4
  **/
 void 
-gtk_accel_map_unlock_path (const gchar *accel_path)
+ctk_accel_map_unlock_path (const gchar *accel_path)
 {
   AccelEntry *entry;
 
-  g_return_if_fail (_gtk_accel_path_is_valid (accel_path));
+  g_return_if_fail (_ctk_accel_path_is_valid (accel_path));
 
   entry = accel_path_lookup (accel_path);
 
@@ -990,10 +990,10 @@ gtk_accel_map_unlock_path (const gchar *accel_path)
   entry->lock_count -= 1;  
 }
 
-G_DEFINE_TYPE (GtkAccelMap, gtk_accel_map, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GtkAccelMap, ctk_accel_map, G_TYPE_OBJECT)
 
 static void
-gtk_accel_map_class_init (GtkAccelMapClass *accel_map_class)
+ctk_accel_map_class_init (GtkAccelMapClass *accel_map_class)
 {
   /**
    * GtkAccelMap::changed:
@@ -1014,20 +1014,20 @@ gtk_accel_map_class_init (GtkAccelMapClass *accel_map_class)
 					     G_SIGNAL_DETAILED|G_SIGNAL_RUN_LAST,
 					     0,
 					     NULL, NULL,
-					     _gtk_marshal_VOID__STRING_UINT_FLAGS,
+					     _ctk_marshal_VOID__STRING_UINT_FLAGS,
 					     G_TYPE_NONE, 3,
 					     G_TYPE_STRING, G_TYPE_UINT, GDK_TYPE_MODIFIER_TYPE);
 }
 
 static void
-gtk_accel_map_init (GtkAccelMap *map)
+ctk_accel_map_init (GtkAccelMap *map)
 {
 }
 
 static GtkAccelMap *accel_map;
 
 /**
- * gtk_accel_map_get:
+ * ctk_accel_map_get:
  * 
  * Gets the singleton global #GtkAccelMap object. This object
  * is useful only for notification of changes to the accelerator
@@ -1039,7 +1039,7 @@ static GtkAccelMap *accel_map;
  * Since: 2.4
  **/
 GtkAccelMap *
-gtk_accel_map_get (void)
+ctk_accel_map_get (void)
 {
   if (!accel_map)
     accel_map = g_object_new (GTK_TYPE_ACCEL_MAP, NULL);
@@ -1060,7 +1060,7 @@ do_accel_map_changed (AccelEntry *entry)
 }
 
 gchar *
-_gtk_accel_path_for_action (const gchar *action_name,
+_ctk_accel_path_for_action (const gchar *action_name,
                             GVariant    *parameter)
 {
   GString *s;

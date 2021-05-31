@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SIDEBAR_ROW             (gtk_sidebar_row_get_type())
+#define GTK_TYPE_SIDEBAR_ROW             (ctk_sidebar_row_get_type())
 #define GTK_SIDEBAR_ROW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SIDEBAR_ROW, GtkSidebarRow))
 #define GTK_SIDEBAR_ROW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SIDEBAR_ROW, GtkSidebarRowClass))
 #define GTK_IS_SIDEBAR_ROW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SIDEBAR_ROW))
@@ -38,23 +38,23 @@ struct _GtkSidebarRowClass
   GtkListBoxRowClass parent;
 };
 
-GType      gtk_sidebar_row_get_type   (void) G_GNUC_CONST;
+GType      ctk_sidebar_row_get_type   (void) G_GNUC_CONST;
 
-GtkSidebarRow *gtk_sidebar_row_new    (void);
-GtkSidebarRow *gtk_sidebar_row_clone  (GtkSidebarRow *self);
+GtkSidebarRow *ctk_sidebar_row_new    (void);
+GtkSidebarRow *ctk_sidebar_row_clone  (GtkSidebarRow *self);
 
-/* Use these methods instead of gtk_widget_hide/show to use an animation */
-void           gtk_sidebar_row_hide   (GtkSidebarRow *self,
+/* Use these methods instead of ctk_widget_hide/show to use an animation */
+void           ctk_sidebar_row_hide   (GtkSidebarRow *self,
                                        gboolean       inmediate);
-void           gtk_sidebar_row_reveal (GtkSidebarRow *self);
+void           ctk_sidebar_row_reveal (GtkSidebarRow *self);
 
-GtkWidget     *gtk_sidebar_row_get_eject_button (GtkSidebarRow *self);
-GtkWidget     *gtk_sidebar_row_get_event_box    (GtkSidebarRow *self);
-void           gtk_sidebar_row_set_start_icon   (GtkSidebarRow *self,
+GtkWidget     *ctk_sidebar_row_get_eject_button (GtkSidebarRow *self);
+GtkWidget     *ctk_sidebar_row_get_event_box    (GtkSidebarRow *self);
+void           ctk_sidebar_row_set_start_icon   (GtkSidebarRow *self,
                                                  GIcon         *icon);
-void           gtk_sidebar_row_set_end_icon     (GtkSidebarRow *self,
+void           ctk_sidebar_row_set_end_icon     (GtkSidebarRow *self,
                                                  GIcon         *icon);
-void           gtk_sidebar_row_set_busy         (GtkSidebarRow *row,
+void           ctk_sidebar_row_set_busy         (GtkSidebarRow *row,
                                                  gboolean       is_busy);
 
 G_END_DECLS

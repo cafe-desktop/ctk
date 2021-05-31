@@ -27,7 +27,7 @@ main (int argc, char *argv[])
   UniqueApp *app;
   GtkWidget *window;
 
-  gtk_init (&amp;argc, &amp;argv);
+  ctk_init (&amp;argc, &amp;argv);
 
   app = unique_app_new ("org.gtk.TestApplication", NULL);
 
@@ -45,9 +45,9 @@ main (int argc, char *argv[])
 
   unique_app_watch_window (app, GTK_WINDOW (window));
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
-  gtk_main ();
+  ctk_main ();
 
   g_object_unref (app);
 
@@ -62,17 +62,17 @@ activate (GtkApplication *app)
   GList *list;
   GtkWidget *window;
 
-  list = gtk_application_get_windows (app);
+  list = ctk_application_get_windows (app);
 
   if (list)
     {
-      gtk_window_present (GTK_WINDOW (list->data));
+      ctk_window_present (GTK_WINDOW (list->data));
     }
   else
     {
       window = create_my_window ();
-      gtk_window_set_application (GTK_WINDOW (window), app);
-      gtk_widget_show (window);
+      ctk_window_set_application (GTK_WINDOW (window), app);
+      ctk_widget_show (window);
     }
 }
 
@@ -82,7 +82,7 @@ main (int argc, char *argv[])
   GtkApplication *app;
   gint status;
 
-  app = gtk_application_new ("org.gtk.TestApplication", 0);
+  app = ctk_application_new ("org.gtk.TestApplication", 0);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
 
   status = g_application_run (G_APPLICATION (app), argc, argv);
@@ -98,7 +98,7 @@ main (int argc, char *argv[])
     <para>
       Instead of creating a UniqueApp with unique_app_new(<!-- -->), create
       a #GApplication with g_application_new() or a #GtkApplication
-      with gtk_application_new(). The @name that was used with
+      with ctk_application_new(). The @name that was used with
       unique_app_new() is very likely usable as the @application_id for
       g_application_new() without any changes, and GtkApplication passes
       the <envar>DESKTOP_STARTUP_ID</envar> environment variable

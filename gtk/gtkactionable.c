@@ -41,7 +41,7 @@
  * the widgets ancestors. Most commonly, these will be the actions with
  * the “win.” or “app.” prefix that are associated with the #GtkApplicationWindow
  * or #GtkApplication, but other action groups that are added with
- * gtk_widget_insert_action_group() will be consulted as well.
+ * ctk_widget_insert_action_group() will be consulted as well.
  *
  * Since: 3.4
  **/
@@ -54,18 +54,18 @@
 
 /**
  * GtkActionableInterface:
- * @get_action_name: virtual function for gtk_actionable_get_action_name()
- * @set_action_name: virtual function for gtk_actionable_set_action_name()
- * @get_action_target_value: virtual function for gtk_actionable_get_action_target_value()
- * @set_action_target_value: virtual function for gtk_actionable_set_action_target_value()
+ * @get_action_name: virtual function for ctk_actionable_get_action_name()
+ * @set_action_name: virtual function for ctk_actionable_set_action_name()
+ * @get_action_target_value: virtual function for ctk_actionable_get_action_target_value()
+ * @set_action_target_value: virtual function for ctk_actionable_set_action_target_value()
  *
  * The interface vtable for #GtkActionable.
  **/
 
-G_DEFINE_INTERFACE (GtkActionable, gtk_actionable, GTK_TYPE_WIDGET)
+G_DEFINE_INTERFACE (GtkActionable, ctk_actionable, GTK_TYPE_WIDGET)
 
 static void
-gtk_actionable_default_init (GtkActionableInterface *iface)
+ctk_actionable_default_init (GtkActionableInterface *iface)
 {
   g_object_interface_install_property (iface,
     g_param_spec_string ("action-name", P_("Action name"),
@@ -79,19 +79,19 @@ gtk_actionable_default_init (GtkActionableInterface *iface)
 }
 
 /**
- * gtk_actionable_get_action_name:
+ * ctk_actionable_get_action_name:
  * @actionable: a #GtkActionable widget
  *
  * Gets the action name for @actionable.
  *
- * See gtk_actionable_set_action_name() for more information.
+ * See ctk_actionable_set_action_name() for more information.
  *
  * Returns: (nullable): the action name, or %NULL if none is set
  *
  * Since: 3.4
  **/
 const gchar *
-gtk_actionable_get_action_name (GtkActionable *actionable)
+ctk_actionable_get_action_name (GtkActionable *actionable)
 {
   g_return_val_if_fail (GTK_IS_ACTIONABLE (actionable), NULL);
 
@@ -100,7 +100,7 @@ gtk_actionable_get_action_name (GtkActionable *actionable)
 }
 
 /**
- * gtk_actionable_set_action_name:
+ * ctk_actionable_set_action_name:
  * @actionable: a #GtkActionable widget
  * @action_name: (nullable): an action name, or %NULL
  *
@@ -119,7 +119,7 @@ gtk_actionable_get_action_name (GtkActionable *actionable)
  * Since: 3.4
  **/
 void
-gtk_actionable_set_action_name (GtkActionable *actionable,
+ctk_actionable_set_action_name (GtkActionable *actionable,
                                 const gchar   *action_name)
 {
   g_return_if_fail (GTK_IS_ACTIONABLE (actionable));
@@ -129,19 +129,19 @@ gtk_actionable_set_action_name (GtkActionable *actionable,
 }
 
 /**
- * gtk_actionable_get_action_target_value:
+ * ctk_actionable_get_action_target_value:
  * @actionable: a #GtkActionable widget
  *
  * Gets the current target value of @actionable.
  *
- * See gtk_actionable_set_action_target_value() for more information.
+ * See ctk_actionable_set_action_target_value() for more information.
  *
  * Returns: (transfer none): the current target value
  *
  * Since: 3.4
  **/
 GVariant *
-gtk_actionable_get_action_target_value (GtkActionable *actionable)
+ctk_actionable_get_action_target_value (GtkActionable *actionable)
 {
   g_return_val_if_fail (GTK_IS_ACTIONABLE (actionable), NULL);
 
@@ -150,7 +150,7 @@ gtk_actionable_get_action_target_value (GtkActionable *actionable)
 }
 
 /**
- * gtk_actionable_set_action_target_value:
+ * ctk_actionable_set_action_target_value:
  * @actionable: a #GtkActionable widget
  * @target_value: (nullable): a #GVariant to set as the target value, or %NULL
  *
@@ -177,7 +177,7 @@ gtk_actionable_get_action_target_value (GtkActionable *actionable)
  * Since: 3.4
  **/
 void
-gtk_actionable_set_action_target_value (GtkActionable *actionable,
+ctk_actionable_set_action_target_value (GtkActionable *actionable,
                                         GVariant      *target_value)
 {
   g_return_if_fail (GTK_IS_ACTIONABLE (actionable));
@@ -187,7 +187,7 @@ gtk_actionable_set_action_target_value (GtkActionable *actionable,
 }
 
 /**
- * gtk_actionable_set_action_target:
+ * ctk_actionable_set_action_target:
  * @actionable: a #GtkActionable widget
  * @format_string: a GVariant format string
  * @...: arguments appropriate for @format_string
@@ -196,28 +196,28 @@ gtk_actionable_set_action_target_value (GtkActionable *actionable,
  *
  * This is a convenience function that calls g_variant_new() for
  * @format_string and uses the result to call
- * gtk_actionable_set_action_target_value().
+ * ctk_actionable_set_action_target_value().
  *
  * If you are setting a string-valued target and want to set the action
  * name at the same time, you can use
- * gtk_actionable_set_detailed_action_name ().
+ * ctk_actionable_set_detailed_action_name ().
  *
  * Since: 3.4
  **/
 void
-gtk_actionable_set_action_target (GtkActionable *actionable,
+ctk_actionable_set_action_target (GtkActionable *actionable,
                                   const gchar   *format_string,
                                   ...)
 {
   va_list ap;
 
   va_start (ap, format_string);
-  gtk_actionable_set_action_target_value (actionable, g_variant_new_va (format_string, NULL, &ap));
+  ctk_actionable_set_action_target_value (actionable, g_variant_new_va (format_string, NULL, &ap));
   va_end (ap);
 }
 
 /**
- * gtk_actionable_set_detailed_action_name:
+ * ctk_actionable_set_detailed_action_name:
  * @actionable: a #GtkActionable widget
  * @detailed_action_name: the detailed action name
  *
@@ -236,7 +236,7 @@ gtk_actionable_set_action_target (GtkActionable *actionable,
  * Since: 3.4
  **/
 void
-gtk_actionable_set_detailed_action_name (GtkActionable *actionable,
+ctk_actionable_set_detailed_action_name (GtkActionable *actionable,
                                          const gchar   *detailed_action_name)
 {
   GError *error = NULL;
@@ -245,16 +245,16 @@ gtk_actionable_set_detailed_action_name (GtkActionable *actionable,
 
   if (detailed_action_name == NULL)
     {
-      gtk_actionable_set_action_name (actionable, NULL);
-      gtk_actionable_set_action_target_value (actionable, NULL);
+      ctk_actionable_set_action_name (actionable, NULL);
+      ctk_actionable_set_action_target_value (actionable, NULL);
       return;
     }
 
   if (!g_action_parse_detailed_name (detailed_action_name, &name, &target, &error))
-    g_error ("gtk_actionable_set_detailed_action_name: %s", error->message);
+    g_error ("ctk_actionable_set_detailed_action_name: %s", error->message);
 
-  gtk_actionable_set_action_name (actionable, name);
-  gtk_actionable_set_action_target_value (actionable, target);
+  ctk_actionable_set_action_name (actionable, name);
+  ctk_actionable_set_action_target_value (actionable, target);
 
   if (target)
     g_variant_unref (target);

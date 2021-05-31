@@ -29,34 +29,34 @@ typedef void (* GtkCssParserErrorFunc) (GtkCssParser *parser,
                                         const GError *error,
                                         gpointer      user_data);
 
-GtkCssParser *  _gtk_css_parser_new               (const char            *data,
+GtkCssParser *  _ctk_css_parser_new               (const char            *data,
                                                    GFile                 *file,
                                                    GtkCssParserErrorFunc  error_func,
                                                    gpointer               user_data);
-void            _gtk_css_parser_free              (GtkCssParser          *parser);
+void            _ctk_css_parser_free              (GtkCssParser          *parser);
 
-void            _gtk_css_parser_take_error        (GtkCssParser          *parser,
+void            _ctk_css_parser_take_error        (GtkCssParser          *parser,
                                                    GError                *error);
-void            _gtk_css_parser_error             (GtkCssParser          *parser,
+void            _ctk_css_parser_error             (GtkCssParser          *parser,
                                                    const char            *format,
                                                     ...) G_GNUC_PRINTF (2, 3);
-void            _gtk_css_parser_error_full        (GtkCssParser          *parser,
+void            _ctk_css_parser_error_full        (GtkCssParser          *parser,
                                                    GtkCssProviderError    code,
                                                    const char            *format,
                                                     ...) G_GNUC_PRINTF (3, 4);
 
-guint           _gtk_css_parser_get_line          (GtkCssParser          *parser);
-guint           _gtk_css_parser_get_position      (GtkCssParser          *parser);
-GFile *         _gtk_css_parser_get_file          (GtkCssParser          *parser);
-GFile *         _gtk_css_parser_get_file_for_path (GtkCssParser          *parser,
+guint           _ctk_css_parser_get_line          (GtkCssParser          *parser);
+guint           _ctk_css_parser_get_position      (GtkCssParser          *parser);
+GFile *         _ctk_css_parser_get_file          (GtkCssParser          *parser);
+GFile *         _ctk_css_parser_get_file_for_path (GtkCssParser          *parser,
                                                    const char            *path);
 
-gboolean        _gtk_css_parser_is_eof            (GtkCssParser          *parser);
-gboolean        _gtk_css_parser_begins_with       (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_is_eof            (GtkCssParser          *parser);
+gboolean        _ctk_css_parser_begins_with       (GtkCssParser          *parser,
                                                    char                   c);
-gboolean        _gtk_css_parser_has_prefix        (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_has_prefix        (GtkCssParser          *parser,
                                                    const char            *prefix);
-gboolean        _gtk_css_parser_is_string         (GtkCssParser          *parser);
+gboolean        _ctk_css_parser_is_string         (GtkCssParser          *parser);
 
 /* IMPORTANT:
  * _try_foo() functions do not modify the data pointer if they fail, nor do they
@@ -66,39 +66,39 @@ gboolean        _gtk_css_parser_is_string         (GtkCssParser          *parser
  * however is fine to call if you don’t know yet if the token is a foo or a bar,
  * you can _try_bar() if try_foo() failed.
  */
-gboolean        _gtk_css_parser_try               (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_try               (GtkCssParser          *parser,
                                                    const char            *string,
                                                    gboolean               skip_whitespace);
-char *          _gtk_css_parser_try_ident         (GtkCssParser          *parser,
+char *          _ctk_css_parser_try_ident         (GtkCssParser          *parser,
                                                    gboolean               skip_whitespace);
-char *          _gtk_css_parser_try_name          (GtkCssParser          *parser,
+char *          _ctk_css_parser_try_name          (GtkCssParser          *parser,
                                                    gboolean               skip_whitespace);
-gboolean        _gtk_css_parser_try_int           (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_try_int           (GtkCssParser          *parser,
                                                    int                   *value);
-gboolean        _gtk_css_parser_try_uint          (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_try_uint          (GtkCssParser          *parser,
                                                    guint                 *value);
-gboolean        _gtk_css_parser_try_double        (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_try_double        (GtkCssParser          *parser,
                                                    gdouble               *value);
-gboolean        _gtk_css_parser_try_length        (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_try_length        (GtkCssParser          *parser,
                                                    int                   *value);
-gboolean        _gtk_css_parser_try_enum          (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_try_enum          (GtkCssParser          *parser,
                                                    GType                  enum_type,
                                                    int                   *value);
-gboolean        _gtk_css_parser_try_hash_color    (GtkCssParser          *parser,
+gboolean        _ctk_css_parser_try_hash_color    (GtkCssParser          *parser,
                                                    GdkRGBA               *rgba);
 
-gboolean        _gtk_css_parser_has_number        (GtkCssParser          *parser);
-char *          _gtk_css_parser_read_string       (GtkCssParser          *parser);
-char *          _gtk_css_parser_read_value        (GtkCssParser          *parser);
-GFile *         _gtk_css_parser_read_url          (GtkCssParser          *parser);
+gboolean        _ctk_css_parser_has_number        (GtkCssParser          *parser);
+char *          _ctk_css_parser_read_string       (GtkCssParser          *parser);
+char *          _ctk_css_parser_read_value        (GtkCssParser          *parser);
+GFile *         _ctk_css_parser_read_url          (GtkCssParser          *parser);
 
-void            _gtk_css_parser_skip_whitespace   (GtkCssParser          *parser);
-void            _gtk_css_parser_resync            (GtkCssParser          *parser,
+void            _ctk_css_parser_skip_whitespace   (GtkCssParser          *parser);
+void            _ctk_css_parser_resync            (GtkCssParser          *parser,
                                                    gboolean               sync_at_semicolon,
                                                    char                   terminator);
 
 /* XXX: Find better place to put it? */
-void            _gtk_css_print_string             (GString               *str,
+void            _ctk_css_print_string             (GString               *str,
                                                    const char            *string);
 
 

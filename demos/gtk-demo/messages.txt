@@ -227,7 +227,7 @@
 227|GTK+ and friends|GTKtoolkit|#GTK+ #Python developers are recommended to use the\nGObject-Introspection features available in PyGObject. http://live.gnome.org/PyGObject|1281362391|0||0|0
 228|GTK+ and friends|GTKtoolkit|PyGTK 2.21.0 (unstable) released: http://ur1.ca/11gse . 2.22 will be the last release in the PyGTK series.|1281362089|0||0|0
 229|GTK+ and friends|GTKtoolkit|#GTK+ Hackfest, October 18-22, A Coruña, Spain. http://ur1.ca/11f6u . Add yourself if you are interested in attending http://ur1.ca/11f6v|1281350218|0||0|4
-230|GTK+ and friends|GTKtoolkit|Benjamin Otte's proposal for GTK+ drawing API: gtk_widget_draw(): http://ur1.ca/11f5m #gtk|1281350013|0||2|0
+230|GTK+ and friends|GTKtoolkit|Benjamin Otte's proposal for GTK+ drawing API: ctk_widget_draw(): http://ur1.ca/11f5m #gtk|1281350013|0||2|0
 231|GTK+ and friends|GTKtoolkit|Some drawing APIs have been deprecated in GTK+ 2.22. Start porting your drawing to Cairo! http://ur1.ca/11f4t|1281349855|0||0|0
 232|GTK+ and friends|GTKtoolkit|GLib 2.24.2 (stable) released: http://mail.gnome.org/archives/gtk-devel-list/2010-August/msg00057.html #gtk|1281349547|0||0|0
 233|GTK+ and friends|GTKtoolkit|glib (unstable) 2.25.13 released: http://mail.gnome.org/archives/gtk-devel-list/2010-August/msg00052.html #gtk|1281201884|0||0|0

@@ -142,7 +142,7 @@ struct _GtkMenuPrivate
 };
 
 G_GNUC_INTERNAL
-void gtk_menu_update_scroll_offset (GtkMenu            *menu,
+void ctk_menu_update_scroll_offset (GtkMenu            *menu,
                                     const GdkRectangle *flipped_rect,
                                     const GdkRectangle *final_rect,
                                     gboolean            flipped_x,

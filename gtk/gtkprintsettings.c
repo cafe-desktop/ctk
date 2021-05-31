@@ -68,35 +68,35 @@ struct _GtkPrintSettingsClass
 
 #define KEYFILE_GROUP_NAME "Print Settings"
 
-G_DEFINE_TYPE (GtkPrintSettings, gtk_print_settings, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GtkPrintSettings, ctk_print_settings, G_TYPE_OBJECT)
 
 static void
-gtk_print_settings_finalize (GObject *object)
+ctk_print_settings_finalize (GObject *object)
 {
   GtkPrintSettings *settings = GTK_PRINT_SETTINGS (object);
 
   g_hash_table_destroy (settings->hash);
 
-  G_OBJECT_CLASS (gtk_print_settings_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_print_settings_parent_class)->finalize (object);
 }
 
 static void
-gtk_print_settings_init (GtkPrintSettings *settings)
+ctk_print_settings_init (GtkPrintSettings *settings)
 {
   settings->hash = g_hash_table_new_full (g_str_hash, g_str_equal,
 					  g_free, g_free);
 }
 
 static void
-gtk_print_settings_class_init (GtkPrintSettingsClass *class)
+ctk_print_settings_class_init (GtkPrintSettingsClass *class)
 {
   GObjectClass *gobject_class = (GObjectClass *)class;
 
-  gobject_class->finalize = gtk_print_settings_finalize;
+  gobject_class->finalize = ctk_print_settings_finalize;
 }
 
 /**
- * gtk_print_settings_new:
+ * ctk_print_settings_new:
  * 
  * Creates a new #GtkPrintSettings object.
  *  
@@ -105,7 +105,7 @@ gtk_print_settings_class_init (GtkPrintSettingsClass *class)
  * Since: 2.10
  */
 GtkPrintSettings *
-gtk_print_settings_new (void)
+ctk_print_settings_new (void)
 {
   return g_object_new (GTK_TYPE_PRINT_SETTINGS, NULL);
 }
@@ -125,7 +125,7 @@ copy_hash_entry  (gpointer  key,
 
 
 /**
- * gtk_print_settings_copy:
+ * ctk_print_settings_copy:
  * @other: a #GtkPrintSettings
  *
  * Copies a #GtkPrintSettings object.
@@ -135,7 +135,7 @@ copy_hash_entry  (gpointer  key,
  * Since: 2.10
  */
 GtkPrintSettings *
-gtk_print_settings_copy (GtkPrintSettings *other)
+ctk_print_settings_copy (GtkPrintSettings *other)
 {
   GtkPrintSettings *settings;
 
@@ -144,7 +144,7 @@ gtk_print_settings_copy (GtkPrintSettings *other)
   
   g_return_val_if_fail (GTK_IS_PRINT_SETTINGS (other), NULL);
 
-  settings = gtk_print_settings_new ();
+  settings = ctk_print_settings_new ();
 
   g_hash_table_foreach (other->hash,
 			copy_hash_entry,
@@ -154,7 +154,7 @@ gtk_print_settings_copy (GtkPrintSettings *other)
 }
 
 /**
- * gtk_print_settings_get:
+ * ctk_print_settings_get:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * 
@@ -165,14 +165,14 @@ gtk_print_settings_copy (GtkPrintSettings *other)
  * Since: 2.10
  */
 const gchar *
-gtk_print_settings_get (GtkPrintSettings *settings,
+ctk_print_settings_get (GtkPrintSettings *settings,
 			const gchar      *key)
 {
   return g_hash_table_lookup (settings->hash, key);
 }
 
 /**
- * gtk_print_settings_set:
+ * ctk_print_settings_set:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * @value: (allow-none): a string value, or %NULL
@@ -182,12 +182,12 @@ gtk_print_settings_get (GtkPrintSettings *settings,
  * Since: 2.10
  */
 void
-gtk_print_settings_set (GtkPrintSettings *settings,
+ctk_print_settings_set (GtkPrintSettings *settings,
 			const gchar      *key,
 			const gchar      *value)
 {
   if (value == NULL)
-    gtk_print_settings_unset (settings, key);
+    ctk_print_settings_unset (settings, key);
   else
     g_hash_table_insert (settings->hash, 
 			 g_strdup (key), 
@@ -195,7 +195,7 @@ gtk_print_settings_set (GtkPrintSettings *settings,
 }
 
 /**
- * gtk_print_settings_unset:
+ * ctk_print_settings_unset:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * 
@@ -205,14 +205,14 @@ gtk_print_settings_set (GtkPrintSettings *settings,
  * Since: 2.10 
  */
 void
-gtk_print_settings_unset (GtkPrintSettings *settings,
+ctk_print_settings_unset (GtkPrintSettings *settings,
 			  const gchar      *key)
 {
   g_hash_table_remove (settings->hash, key);
 }
 
 /**
- * gtk_print_settings_has_key:
+ * ctk_print_settings_has_key:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * 
@@ -223,15 +223,15 @@ gtk_print_settings_unset (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gboolean        
-gtk_print_settings_has_key (GtkPrintSettings *settings,
+ctk_print_settings_has_key (GtkPrintSettings *settings,
 			    const gchar      *key)
 {
-  return gtk_print_settings_get (settings, key) != NULL;
+  return ctk_print_settings_get (settings, key) != NULL;
 }
 
 
 /**
- * gtk_print_settings_get_bool:
+ * ctk_print_settings_get_bool:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * 
@@ -246,12 +246,12 @@ gtk_print_settings_has_key (GtkPrintSettings *settings,
  * Since: 2.10
  **/
 gboolean
-gtk_print_settings_get_bool (GtkPrintSettings *settings,
+ctk_print_settings_get_bool (GtkPrintSettings *settings,
 			     const gchar      *key)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, key);
+  val = ctk_print_settings_get (settings, key);
   if (g_strcmp0 (val, "true") == 0)
     return TRUE;
   
@@ -259,7 +259,7 @@ gtk_print_settings_get_bool (GtkPrintSettings *settings,
 }
 
 /**
- * gtk_print_settings_get_bool_with_default:
+ * ctk_print_settings_get_bool_with_default:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * @default_val: the default value
@@ -276,13 +276,13 @@ gtk_print_settings_get_bool (GtkPrintSettings *settings,
  * Since: 2.10
  */
 static gboolean
-gtk_print_settings_get_bool_with_default (GtkPrintSettings *settings,
+ctk_print_settings_get_bool_with_default (GtkPrintSettings *settings,
 					  const gchar      *key,
 					  gboolean          default_val)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, key);
+  val = ctk_print_settings_get (settings, key);
   if (g_strcmp0 (val, "true") == 0)
     return TRUE;
 
@@ -293,7 +293,7 @@ gtk_print_settings_get_bool_with_default (GtkPrintSettings *settings,
 }
 
 /**
- * gtk_print_settings_set_bool:
+ * ctk_print_settings_set_bool:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * @value: a boolean
@@ -303,18 +303,18 @@ gtk_print_settings_get_bool_with_default (GtkPrintSettings *settings,
  * Since: 2.10
  */
 void
-gtk_print_settings_set_bool (GtkPrintSettings *settings,
+ctk_print_settings_set_bool (GtkPrintSettings *settings,
 			     const gchar      *key,
 			     gboolean          value)
 {
   if (value)
-    gtk_print_settings_set (settings, key, "true");
+    ctk_print_settings_set (settings, key, "true");
   else
-    gtk_print_settings_set (settings, key, "false");
+    ctk_print_settings_set (settings, key, "false");
 }
 
 /**
- * gtk_print_settings_get_double_with_default:
+ * ctk_print_settings_get_double_with_default:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * @def: the default value
@@ -330,13 +330,13 @@ gtk_print_settings_set_bool (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gdouble
-gtk_print_settings_get_double_with_default (GtkPrintSettings *settings,
+ctk_print_settings_get_double_with_default (GtkPrintSettings *settings,
 					    const gchar      *key,
 					    gdouble           def)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, key);
+  val = ctk_print_settings_get (settings, key);
   if (val == NULL)
     return def;
 
@@ -344,7 +344,7 @@ gtk_print_settings_get_double_with_default (GtkPrintSettings *settings,
 }
 
 /**
- * gtk_print_settings_get_double:
+ * ctk_print_settings_get_double:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * 
@@ -355,14 +355,14 @@ gtk_print_settings_get_double_with_default (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gdouble
-gtk_print_settings_get_double (GtkPrintSettings *settings,
+ctk_print_settings_get_double (GtkPrintSettings *settings,
 			       const gchar      *key)
 {
-  return gtk_print_settings_get_double_with_default (settings, key, 0.0);
+  return ctk_print_settings_get_double_with_default (settings, key, 0.0);
 }
 
 /**
- * gtk_print_settings_set_double:
+ * ctk_print_settings_set_double:
  * @settings: a #GtkPrintSettings
  * @key: a key 
  * @value: a double value
@@ -372,18 +372,18 @@ gtk_print_settings_get_double (GtkPrintSettings *settings,
  * Since: 2.10
  */
 void
-gtk_print_settings_set_double (GtkPrintSettings *settings,
+ctk_print_settings_set_double (GtkPrintSettings *settings,
 			       const gchar      *key,
 			       gdouble           value)
 {
   gchar buf[G_ASCII_DTOSTR_BUF_SIZE];
   
   g_ascii_dtostr (buf, G_ASCII_DTOSTR_BUF_SIZE, value);
-  gtk_print_settings_set (settings, key, buf);
+  ctk_print_settings_set (settings, key, buf);
 }
 
 /**
- * gtk_print_settings_get_length:
+ * ctk_print_settings_get_length:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * @unit: the unit of the return value
@@ -396,16 +396,16 @@ gtk_print_settings_set_double (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gdouble
-gtk_print_settings_get_length (GtkPrintSettings *settings,
+ctk_print_settings_get_length (GtkPrintSettings *settings,
 			       const gchar      *key,
 			       GtkUnit           unit)
 {
-  gdouble length = gtk_print_settings_get_double (settings, key);
-  return _gtk_print_convert_from_mm (length, unit);
+  gdouble length = ctk_print_settings_get_double (settings, key);
+  return _ctk_print_convert_from_mm (length, unit);
 }
 
 /**
- * gtk_print_settings_set_length:
+ * ctk_print_settings_set_length:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * @value: a length
@@ -416,17 +416,17 @@ gtk_print_settings_get_length (GtkPrintSettings *settings,
  * Since: 2.10
  */
 void
-gtk_print_settings_set_length (GtkPrintSettings *settings,
+ctk_print_settings_set_length (GtkPrintSettings *settings,
 			       const gchar      *key,
 			       gdouble           value, 
 			       GtkUnit           unit)
 {
-  gtk_print_settings_set_double (settings, key,
-				 _gtk_print_convert_to_mm (value, unit));
+  ctk_print_settings_set_double (settings, key,
+				 _ctk_print_convert_to_mm (value, unit));
 }
 
 /**
- * gtk_print_settings_get_int_with_default:
+ * ctk_print_settings_get_int_with_default:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * @def: the default value
@@ -439,13 +439,13 @@ gtk_print_settings_set_length (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gint
-gtk_print_settings_get_int_with_default (GtkPrintSettings *settings,
+ctk_print_settings_get_int_with_default (GtkPrintSettings *settings,
 					 const gchar      *key,
 					 gint              def)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, key);
+  val = ctk_print_settings_get (settings, key);
   if (val == NULL)
     return def;
 
@@ -453,7 +453,7 @@ gtk_print_settings_get_int_with_default (GtkPrintSettings *settings,
 }
 
 /**
- * gtk_print_settings_get_int:
+ * ctk_print_settings_get_int:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * 
@@ -464,14 +464,14 @@ gtk_print_settings_get_int_with_default (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gint
-gtk_print_settings_get_int (GtkPrintSettings *settings,
+ctk_print_settings_get_int (GtkPrintSettings *settings,
 			    const gchar      *key)
 {
-  return gtk_print_settings_get_int_with_default (settings, key, 0);
+  return ctk_print_settings_get_int_with_default (settings, key, 0);
 }
 
 /**
- * gtk_print_settings_set_int:
+ * ctk_print_settings_set_int:
  * @settings: a #GtkPrintSettings
  * @key: a key
  * @value: an integer 
@@ -481,17 +481,17 @@ gtk_print_settings_get_int (GtkPrintSettings *settings,
  * Since: 2.10 
  */
 void
-gtk_print_settings_set_int (GtkPrintSettings *settings,
+ctk_print_settings_set_int (GtkPrintSettings *settings,
 			    const gchar      *key,
 			    gint              value)
 {
   gchar buf[128];
   g_sprintf (buf, "%d", value);
-  gtk_print_settings_set (settings, key, buf);
+  ctk_print_settings_set (settings, key, buf);
 }
 
 /**
- * gtk_print_settings_foreach:
+ * ctk_print_settings_foreach:
  * @settings: a #GtkPrintSettings
  * @func: (scope call): the function to call
  * @user_data: user data for @func
@@ -501,7 +501,7 @@ gtk_print_settings_set_int (GtkPrintSettings *settings,
  * Since: 2.10
  */
 void
-gtk_print_settings_foreach (GtkPrintSettings    *settings,
+ctk_print_settings_foreach (GtkPrintSettings    *settings,
 			    GtkPrintSettingsFunc func,
 			    gpointer             user_data)
 {
@@ -509,7 +509,7 @@ gtk_print_settings_foreach (GtkPrintSettings    *settings,
 }
 
 /**
- * gtk_print_settings_get_printer:
+ * ctk_print_settings_get_printer:
  * @settings: a #GtkPrintSettings
  * 
  * Convenience function to obtain the value of 
@@ -520,14 +520,14 @@ gtk_print_settings_foreach (GtkPrintSettings    *settings,
  * Since: 2.10
  */
 const gchar *
-gtk_print_settings_get_printer (GtkPrintSettings *settings)
+ctk_print_settings_get_printer (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_PRINTER);
+  return ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_PRINTER);
 }
 
 
 /**
- * gtk_print_settings_set_printer:
+ * ctk_print_settings_set_printer:
  * @settings: a #GtkPrintSettings
  * @printer: the printer name
  * 
@@ -537,14 +537,14 @@ gtk_print_settings_get_printer (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_printer (GtkPrintSettings *settings,
+ctk_print_settings_set_printer (GtkPrintSettings *settings,
 				const gchar      *printer)
 {
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PRINTER, printer);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PRINTER, printer);
 }
 
 /**
- * gtk_print_settings_get_orientation:
+ * ctk_print_settings_get_orientation:
  * @settings: a #GtkPrintSettings
  * 
  * Get the value of %GTK_PRINT_SETTINGS_ORIENTATION, 
@@ -555,11 +555,11 @@ gtk_print_settings_set_printer (GtkPrintSettings *settings,
  * Since: 2.10
  */
 GtkPageOrientation
-gtk_print_settings_get_orientation (GtkPrintSettings *settings)
+ctk_print_settings_get_orientation (GtkPrintSettings *settings)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_ORIENTATION);
+  val = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_ORIENTATION);
 
   if (val == NULL || strcmp (val, "portrait") == 0)
     return GTK_PAGE_ORIENTATION_PORTRAIT;
@@ -577,7 +577,7 @@ gtk_print_settings_get_orientation (GtkPrintSettings *settings)
 }
 
 /**
- * gtk_print_settings_set_orientation:
+ * ctk_print_settings_set_orientation:
  * @settings: a #GtkPrintSettings
  * @orientation: a page orientation
  * 
@@ -586,7 +586,7 @@ gtk_print_settings_get_orientation (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_orientation (GtkPrintSettings   *settings,
+ctk_print_settings_set_orientation (GtkPrintSettings   *settings,
 				    GtkPageOrientation  orientation)
 {
   const gchar *val;
@@ -607,11 +607,11 @@ gtk_print_settings_set_orientation (GtkPrintSettings   *settings,
       val = "reverse_portrait";
       break;
     }
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_ORIENTATION, val);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_ORIENTATION, val);
 }
 
 /**
- * gtk_print_settings_get_paper_size:
+ * ctk_print_settings_get_paper_size:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_PAPER_FORMAT, 
@@ -622,29 +622,29 @@ gtk_print_settings_set_orientation (GtkPrintSettings   *settings,
  * Since: 2.10
  */
 GtkPaperSize *     
-gtk_print_settings_get_paper_size (GtkPrintSettings *settings)
+ctk_print_settings_get_paper_size (GtkPrintSettings *settings)
 {
   const gchar *val;
   const gchar *name;
   gdouble w, h;
 
-  val = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_PAPER_FORMAT);
+  val = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_PAPER_FORMAT);
   if (val == NULL)
     return NULL;
 
   if (g_str_has_prefix (val, "custom-")) 
     {
       name = val + strlen ("custom-");
-      w = gtk_print_settings_get_paper_width (settings, GTK_UNIT_MM);
-      h = gtk_print_settings_get_paper_height (settings, GTK_UNIT_MM);
-      return gtk_paper_size_new_custom (name, name, w, h, GTK_UNIT_MM);
+      w = ctk_print_settings_get_paper_width (settings, GTK_UNIT_MM);
+      h = ctk_print_settings_get_paper_height (settings, GTK_UNIT_MM);
+      return ctk_paper_size_new_custom (name, name, w, h, GTK_UNIT_MM);
     }
 
-  return gtk_paper_size_new (val);
+  return ctk_paper_size_new (val);
 }
 
 /**
- * gtk_print_settings_set_paper_size:
+ * ctk_print_settings_set_paper_size:
  * @settings: a #GtkPrintSettings
  * @paper_size: a paper size
  * 
@@ -655,39 +655,39 @@ gtk_print_settings_get_paper_size (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_paper_size (GtkPrintSettings *settings,
+ctk_print_settings_set_paper_size (GtkPrintSettings *settings,
 				   GtkPaperSize     *paper_size)
 {
   gchar *custom_name;
 
   if (paper_size == NULL) 
     {
-      gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_FORMAT, NULL);
-      gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_WIDTH, NULL);
-      gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_HEIGHT, NULL);
+      ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_FORMAT, NULL);
+      ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_WIDTH, NULL);
+      ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_HEIGHT, NULL);
     }
-  else if (gtk_paper_size_is_custom (paper_size)) 
+  else if (ctk_paper_size_is_custom (paper_size)) 
     {
       custom_name = g_strdup_printf ("custom-%s", 
-				     gtk_paper_size_get_name (paper_size));
-      gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_FORMAT, custom_name);
+				     ctk_paper_size_get_name (paper_size));
+      ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_FORMAT, custom_name);
       g_free (custom_name);
-      gtk_print_settings_set_paper_width (settings, 
-					  gtk_paper_size_get_width (paper_size, 
+      ctk_print_settings_set_paper_width (settings, 
+					  ctk_paper_size_get_width (paper_size, 
 								    GTK_UNIT_MM),
 					  GTK_UNIT_MM);
-      gtk_print_settings_set_paper_height (settings, 
-					   gtk_paper_size_get_height (paper_size, 
+      ctk_print_settings_set_paper_height (settings, 
+					   ctk_paper_size_get_height (paper_size, 
 								      GTK_UNIT_MM),
 					   GTK_UNIT_MM);
     } 
   else
-    gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_FORMAT, 
-			    gtk_paper_size_get_name (paper_size));
+    ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAPER_FORMAT, 
+			    ctk_paper_size_get_name (paper_size));
 }
 
 /**
- * gtk_print_settings_get_paper_width:
+ * ctk_print_settings_get_paper_width:
  * @settings: a #GtkPrintSettings
  * @unit: the unit for the return value
  * 
@@ -699,14 +699,14 @@ gtk_print_settings_set_paper_size (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gdouble
-gtk_print_settings_get_paper_width (GtkPrintSettings *settings,
+ctk_print_settings_get_paper_width (GtkPrintSettings *settings,
 				    GtkUnit           unit)
 {
-  return gtk_print_settings_get_length (settings, GTK_PRINT_SETTINGS_PAPER_WIDTH, unit);
+  return ctk_print_settings_get_length (settings, GTK_PRINT_SETTINGS_PAPER_WIDTH, unit);
 }
 
 /**
- * gtk_print_settings_set_paper_width:
+ * ctk_print_settings_set_paper_width:
  * @settings: a #GtkPrintSettings
  * @width: the paper width
  * @unit: the units of @width
@@ -716,15 +716,15 @@ gtk_print_settings_get_paper_width (GtkPrintSettings *settings,
  * Since: 2.10
  */
 void
-gtk_print_settings_set_paper_width (GtkPrintSettings *settings,
+ctk_print_settings_set_paper_width (GtkPrintSettings *settings,
 				    gdouble           width, 
 				    GtkUnit           unit)
 {
-  gtk_print_settings_set_length (settings, GTK_PRINT_SETTINGS_PAPER_WIDTH, width, unit);
+  ctk_print_settings_set_length (settings, GTK_PRINT_SETTINGS_PAPER_WIDTH, width, unit);
 }
 
 /**
- * gtk_print_settings_get_paper_height:
+ * ctk_print_settings_get_paper_height:
  * @settings: a #GtkPrintSettings
  * @unit: the unit for the return value
  * 
@@ -736,16 +736,16 @@ gtk_print_settings_set_paper_width (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gdouble
-gtk_print_settings_get_paper_height (GtkPrintSettings *settings,
+ctk_print_settings_get_paper_height (GtkPrintSettings *settings,
 				     GtkUnit           unit)
 {
-  return gtk_print_settings_get_length (settings, 
+  return ctk_print_settings_get_length (settings, 
 					GTK_PRINT_SETTINGS_PAPER_HEIGHT,
 					unit);
 }
 
 /**
- * gtk_print_settings_set_paper_height:
+ * ctk_print_settings_set_paper_height:
  * @settings: a #GtkPrintSettings
  * @height: the paper height
  * @unit: the units of @height
@@ -755,17 +755,17 @@ gtk_print_settings_get_paper_height (GtkPrintSettings *settings,
  * Since: 2.10
  */
 void
-gtk_print_settings_set_paper_height (GtkPrintSettings *settings,
+ctk_print_settings_set_paper_height (GtkPrintSettings *settings,
 				     gdouble           height, 
 				     GtkUnit           unit)
 {
-  gtk_print_settings_set_length (settings, 
+  ctk_print_settings_set_length (settings, 
 				 GTK_PRINT_SETTINGS_PAPER_HEIGHT, 
 				 height, unit);
 }
 
 /**
- * gtk_print_settings_get_use_color:
+ * ctk_print_settings_get_use_color:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_USE_COLOR.
@@ -775,15 +775,15 @@ gtk_print_settings_set_paper_height (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gboolean
-gtk_print_settings_get_use_color (GtkPrintSettings *settings)
+ctk_print_settings_get_use_color (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_bool_with_default (settings, 
+  return ctk_print_settings_get_bool_with_default (settings, 
 						   GTK_PRINT_SETTINGS_USE_COLOR,
 						   TRUE);
 }
 
 /**
- * gtk_print_settings_set_use_color:
+ * ctk_print_settings_set_use_color:
  * @settings: a #GtkPrintSettings
  * @use_color: whether to use color
  * 
@@ -792,16 +792,16 @@ gtk_print_settings_get_use_color (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_use_color (GtkPrintSettings *settings,
+ctk_print_settings_set_use_color (GtkPrintSettings *settings,
 				  gboolean          use_color)
 {
-  gtk_print_settings_set_bool (settings,
+  ctk_print_settings_set_bool (settings,
 			       GTK_PRINT_SETTINGS_USE_COLOR, 
 			       use_color);
 }
 
 /**
- * gtk_print_settings_get_collate:
+ * ctk_print_settings_get_collate:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_COLLATE.
@@ -811,15 +811,15 @@ gtk_print_settings_set_use_color (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gboolean
-gtk_print_settings_get_collate (GtkPrintSettings *settings)
+ctk_print_settings_get_collate (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_bool_with_default (settings,
+  return ctk_print_settings_get_bool_with_default (settings,
                                                    GTK_PRINT_SETTINGS_COLLATE,
                                                    TRUE);
 }
 
 /**
- * gtk_print_settings_set_collate:
+ * ctk_print_settings_set_collate:
  * @settings: a #GtkPrintSettings
  * @collate: whether to collate the output
  * 
@@ -828,16 +828,16 @@ gtk_print_settings_get_collate (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_collate (GtkPrintSettings *settings,
+ctk_print_settings_set_collate (GtkPrintSettings *settings,
 				gboolean          collate)
 {
-  gtk_print_settings_set_bool (settings,
+  ctk_print_settings_set_bool (settings,
 			       GTK_PRINT_SETTINGS_COLLATE, 
 			       collate);
 }
 
 /**
- * gtk_print_settings_get_reverse:
+ * ctk_print_settings_get_reverse:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_REVERSE.
@@ -847,14 +847,14 @@ gtk_print_settings_set_collate (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gboolean
-gtk_print_settings_get_reverse (GtkPrintSettings *settings)
+ctk_print_settings_get_reverse (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_bool (settings, 
+  return ctk_print_settings_get_bool (settings, 
 				      GTK_PRINT_SETTINGS_REVERSE);
 }
 
 /**
- * gtk_print_settings_set_reverse:
+ * ctk_print_settings_set_reverse:
  * @settings: a #GtkPrintSettings
  * @reverse: whether to reverse the output
  * 
@@ -863,16 +863,16 @@ gtk_print_settings_get_reverse (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_reverse (GtkPrintSettings *settings,
+ctk_print_settings_set_reverse (GtkPrintSettings *settings,
 				  gboolean        reverse)
 {
-  gtk_print_settings_set_bool (settings,
+  ctk_print_settings_set_bool (settings,
 			       GTK_PRINT_SETTINGS_REVERSE, 
 			       reverse);
 }
 
 /**
- * gtk_print_settings_get_duplex:
+ * ctk_print_settings_get_duplex:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_DUPLEX.
@@ -882,11 +882,11 @@ gtk_print_settings_set_reverse (GtkPrintSettings *settings,
  * Since: 2.10
  */
 GtkPrintDuplex
-gtk_print_settings_get_duplex (GtkPrintSettings *settings)
+ctk_print_settings_get_duplex (GtkPrintSettings *settings)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_DUPLEX);
+  val = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_DUPLEX);
 
   if (val == NULL || (strcmp (val, "simplex") == 0))
     return GTK_PRINT_DUPLEX_SIMPLEX;
@@ -901,7 +901,7 @@ gtk_print_settings_get_duplex (GtkPrintSettings *settings)
 }
 
 /**
- * gtk_print_settings_set_duplex:
+ * ctk_print_settings_set_duplex:
  * @settings: a #GtkPrintSettings
  * @duplex: a #GtkPrintDuplex value
  * 
@@ -910,7 +910,7 @@ gtk_print_settings_get_duplex (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_duplex (GtkPrintSettings *settings,
+ctk_print_settings_set_duplex (GtkPrintSettings *settings,
 			       GtkPrintDuplex    duplex)
 {
   const gchar *str;
@@ -929,11 +929,11 @@ gtk_print_settings_set_duplex (GtkPrintSettings *settings,
       break;
     }
   
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_DUPLEX, str);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_DUPLEX, str);
 }
 
 /**
- * gtk_print_settings_get_quality:
+ * ctk_print_settings_get_quality:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_QUALITY.
@@ -943,11 +943,11 @@ gtk_print_settings_set_duplex (GtkPrintSettings *settings,
  * Since: 2.10
  */
 GtkPrintQuality
-gtk_print_settings_get_quality (GtkPrintSettings *settings)
+ctk_print_settings_get_quality (GtkPrintSettings *settings)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_QUALITY);
+  val = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_QUALITY);
 
   if (val == NULL || (strcmp (val, "normal") == 0))
     return GTK_PRINT_QUALITY_NORMAL;
@@ -965,7 +965,7 @@ gtk_print_settings_get_quality (GtkPrintSettings *settings)
 }
 
 /**
- * gtk_print_settings_set_quality:
+ * ctk_print_settings_set_quality:
  * @settings: a #GtkPrintSettings
  * @quality: a #GtkPrintQuality value
  * 
@@ -974,7 +974,7 @@ gtk_print_settings_get_quality (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_quality (GtkPrintSettings *settings,
+ctk_print_settings_set_quality (GtkPrintSettings *settings,
 				GtkPrintQuality   quality)
 {
   const gchar *str;
@@ -996,11 +996,11 @@ gtk_print_settings_set_quality (GtkPrintSettings *settings,
       break;
     }
   
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_QUALITY, str);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_QUALITY, str);
 }
 
 /**
- * gtk_print_settings_get_page_set:
+ * ctk_print_settings_get_page_set:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_PAGE_SET.
@@ -1010,11 +1010,11 @@ gtk_print_settings_set_quality (GtkPrintSettings *settings,
  * Since: 2.10
  */
 GtkPageSet
-gtk_print_settings_get_page_set (GtkPrintSettings *settings)
+ctk_print_settings_get_page_set (GtkPrintSettings *settings)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_PAGE_SET);
+  val = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_PAGE_SET);
 
   if (val == NULL || (strcmp (val, "all") == 0))
     return GTK_PAGE_SET_ALL;
@@ -1029,7 +1029,7 @@ gtk_print_settings_get_page_set (GtkPrintSettings *settings)
 }
 
 /**
- * gtk_print_settings_set_page_set:
+ * ctk_print_settings_set_page_set:
  * @settings: a #GtkPrintSettings
  * @page_set: a #GtkPageSet value
  * 
@@ -1038,7 +1038,7 @@ gtk_print_settings_get_page_set (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_page_set (GtkPrintSettings *settings,
+ctk_print_settings_set_page_set (GtkPrintSettings *settings,
 				 GtkPageSet        page_set)
 {
   const gchar *str;
@@ -1057,11 +1057,11 @@ gtk_print_settings_set_page_set (GtkPrintSettings *settings,
       break;
     }
   
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAGE_SET, str);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAGE_SET, str);
 }
 
 /**
- * gtk_print_settings_get_number_up_layout:
+ * ctk_print_settings_get_number_up_layout:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT.
@@ -1071,7 +1071,7 @@ gtk_print_settings_set_page_set (GtkPrintSettings *settings,
  * Since: 2.14
  */
 GtkNumberUpLayout
-gtk_print_settings_get_number_up_layout (GtkPrintSettings *settings)
+ctk_print_settings_get_number_up_layout (GtkPrintSettings *settings)
 {
   GtkNumberUpLayout layout;
   GtkTextDirection  text_direction;
@@ -1081,8 +1081,8 @@ gtk_print_settings_get_number_up_layout (GtkPrintSettings *settings)
 
   g_return_val_if_fail (GTK_IS_PRINT_SETTINGS (settings), GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM);
 
-  val = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT);
-  text_direction = gtk_widget_get_default_direction ();
+  val = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT);
+  text_direction = ctk_widget_get_default_direction ();
 
   if (text_direction == GTK_TEXT_DIR_LTR)
     layout = GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
@@ -1102,7 +1102,7 @@ gtk_print_settings_get_number_up_layout (GtkPrintSettings *settings)
 }
 
 /**
- * gtk_print_settings_set_number_up_layout:
+ * ctk_print_settings_set_number_up_layout:
  * @settings: a #GtkPrintSettings
  * @number_up_layout: a #GtkNumberUpLayout value
  * 
@@ -1111,7 +1111,7 @@ gtk_print_settings_get_number_up_layout (GtkPrintSettings *settings)
  * Since: 2.14
  */
 void
-gtk_print_settings_set_number_up_layout (GtkPrintSettings  *settings,
+ctk_print_settings_set_number_up_layout (GtkPrintSettings  *settings,
 					 GtkNumberUpLayout  number_up_layout)
 {
   GEnumClass *enum_class;
@@ -1123,12 +1123,12 @@ gtk_print_settings_set_number_up_layout (GtkPrintSettings  *settings,
   enum_value = g_enum_get_value (enum_class, number_up_layout);
   g_return_if_fail (enum_value != NULL);
 
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT, enum_value->value_nick);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT, enum_value->value_nick);
   g_type_class_unref (enum_class);
 }
 
 /**
- * gtk_print_settings_get_n_copies:
+ * ctk_print_settings_get_n_copies:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_N_COPIES.
@@ -1138,13 +1138,13 @@ gtk_print_settings_set_number_up_layout (GtkPrintSettings  *settings,
  * Since: 2.10
  */
 gint
-gtk_print_settings_get_n_copies (GtkPrintSettings *settings)
+ctk_print_settings_get_n_copies (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_N_COPIES, 1);
+  return ctk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_N_COPIES, 1);
 }
 
 /**
- * gtk_print_settings_set_n_copies:
+ * ctk_print_settings_set_n_copies:
  * @settings: a #GtkPrintSettings
  * @num_copies: the number of copies 
  * 
@@ -1153,15 +1153,15 @@ gtk_print_settings_get_n_copies (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_n_copies (GtkPrintSettings *settings,
+ctk_print_settings_set_n_copies (GtkPrintSettings *settings,
 				 gint              num_copies)
 {
-  gtk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_N_COPIES,
+  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_N_COPIES,
 			      num_copies);
 }
 
 /**
- * gtk_print_settings_get_number_up:
+ * ctk_print_settings_get_number_up:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_NUMBER_UP.
@@ -1171,13 +1171,13 @@ gtk_print_settings_set_n_copies (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gint
-gtk_print_settings_get_number_up (GtkPrintSettings *settings)
+ctk_print_settings_get_number_up (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_NUMBER_UP, 1);
+  return ctk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_NUMBER_UP, 1);
 }
 
 /**
- * gtk_print_settings_set_number_up:
+ * ctk_print_settings_set_number_up:
  * @settings: a #GtkPrintSettings
  * @number_up: the number of pages per sheet 
  * 
@@ -1186,15 +1186,15 @@ gtk_print_settings_get_number_up (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_number_up (GtkPrintSettings *settings,
+ctk_print_settings_set_number_up (GtkPrintSettings *settings,
 				  gint              number_up)
 {
-  gtk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_NUMBER_UP,
+  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_NUMBER_UP,
 				number_up);
 }
 
 /**
- * gtk_print_settings_get_resolution:
+ * ctk_print_settings_get_resolution:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_RESOLUTION.
@@ -1204,13 +1204,13 @@ gtk_print_settings_set_number_up (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gint
-gtk_print_settings_get_resolution (GtkPrintSettings *settings)
+ctk_print_settings_get_resolution (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_RESOLUTION, 300);
+  return ctk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_RESOLUTION, 300);
 }
 
 /**
- * gtk_print_settings_set_resolution:
+ * ctk_print_settings_set_resolution:
  * @settings: a #GtkPrintSettings
  * @resolution: the resolution in dpi
  * 
@@ -1221,19 +1221,19 @@ gtk_print_settings_get_resolution (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_resolution (GtkPrintSettings *settings,
+ctk_print_settings_set_resolution (GtkPrintSettings *settings,
 				   gint              resolution)
 {
-  gtk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION,
+  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION,
 			      resolution);
-  gtk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION_X,
+  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION_X,
 			      resolution);
-  gtk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION_Y,
+  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION_Y,
 			      resolution);
 }
 
 /**
- * gtk_print_settings_get_resolution_x:
+ * ctk_print_settings_get_resolution_x:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_RESOLUTION_X.
@@ -1243,13 +1243,13 @@ gtk_print_settings_set_resolution (GtkPrintSettings *settings,
  * Since: 2.16
  */
 gint
-gtk_print_settings_get_resolution_x (GtkPrintSettings *settings)
+ctk_print_settings_get_resolution_x (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_RESOLUTION_X, 300);
+  return ctk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_RESOLUTION_X, 300);
 }
 
 /**
- * gtk_print_settings_get_resolution_y:
+ * ctk_print_settings_get_resolution_y:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_RESOLUTION_Y.
@@ -1259,13 +1259,13 @@ gtk_print_settings_get_resolution_x (GtkPrintSettings *settings)
  * Since: 2.16
  */
 gint
-gtk_print_settings_get_resolution_y (GtkPrintSettings *settings)
+ctk_print_settings_get_resolution_y (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_RESOLUTION_Y, 300);
+  return ctk_print_settings_get_int_with_default (settings, GTK_PRINT_SETTINGS_RESOLUTION_Y, 300);
 }
 
 /**
- * gtk_print_settings_set_resolution_xy:
+ * ctk_print_settings_set_resolution_xy:
  * @settings: a #GtkPrintSettings
  * @resolution_x: the horizontal resolution in dpi
  * @resolution_y: the vertical resolution in dpi
@@ -1277,20 +1277,20 @@ gtk_print_settings_get_resolution_y (GtkPrintSettings *settings)
  * Since: 2.16
  */
 void
-gtk_print_settings_set_resolution_xy (GtkPrintSettings *settings,
+ctk_print_settings_set_resolution_xy (GtkPrintSettings *settings,
 				      gint              resolution_x,
 				      gint              resolution_y)
 {
-  gtk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION_X,
+  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION_X,
 			      resolution_x);
-  gtk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION_Y,
+  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION_Y,
 			      resolution_y);
-  gtk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION,
+  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_RESOLUTION,
 			      resolution_x);
 }
 
 /**
- * gtk_print_settings_get_printer_lpi:
+ * ctk_print_settings_get_printer_lpi:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_PRINTER_LPI.
@@ -1300,13 +1300,13 @@ gtk_print_settings_set_resolution_xy (GtkPrintSettings *settings,
  * Since: 2.16
  */
 gdouble
-gtk_print_settings_get_printer_lpi (GtkPrintSettings *settings)
+ctk_print_settings_get_printer_lpi (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_double_with_default (settings, GTK_PRINT_SETTINGS_PRINTER_LPI, 150.0);
+  return ctk_print_settings_get_double_with_default (settings, GTK_PRINT_SETTINGS_PRINTER_LPI, 150.0);
 }
 
 /**
- * gtk_print_settings_set_printer_lpi:
+ * ctk_print_settings_set_printer_lpi:
  * @settings: a #GtkPrintSettings
  * @lpi: the resolution in lpi (lines per inch)
  * 
@@ -1315,15 +1315,15 @@ gtk_print_settings_get_printer_lpi (GtkPrintSettings *settings)
  * Since: 2.16
  */
 void
-gtk_print_settings_set_printer_lpi (GtkPrintSettings *settings,
+ctk_print_settings_set_printer_lpi (GtkPrintSettings *settings,
 				    gdouble           lpi)
 {
-  gtk_print_settings_set_double (settings, GTK_PRINT_SETTINGS_PRINTER_LPI,
+  ctk_print_settings_set_double (settings, GTK_PRINT_SETTINGS_PRINTER_LPI,
 			         lpi);
 }
 
 /**
- * gtk_print_settings_get_scale:
+ * ctk_print_settings_get_scale:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_SCALE.
@@ -1333,15 +1333,15 @@ gtk_print_settings_set_printer_lpi (GtkPrintSettings *settings,
  * Since: 2.10
  */
 gdouble
-gtk_print_settings_get_scale (GtkPrintSettings *settings)
+ctk_print_settings_get_scale (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get_double_with_default (settings,
+  return ctk_print_settings_get_double_with_default (settings,
 						     GTK_PRINT_SETTINGS_SCALE,
 						     100.0);
 }
 
 /**
- * gtk_print_settings_set_scale:
+ * ctk_print_settings_set_scale:
  * @settings: a #GtkPrintSettings
  * @scale: the scale in percent
  * 
@@ -1350,15 +1350,15 @@ gtk_print_settings_get_scale (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_scale (GtkPrintSettings *settings,
+ctk_print_settings_set_scale (GtkPrintSettings *settings,
 			      gdouble           scale)
 {
-  gtk_print_settings_set_double (settings, GTK_PRINT_SETTINGS_SCALE,
+  ctk_print_settings_set_double (settings, GTK_PRINT_SETTINGS_SCALE,
 				 scale);
 }
 
 /**
- * gtk_print_settings_get_print_pages:
+ * ctk_print_settings_get_print_pages:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_PRINT_PAGES.
@@ -1368,11 +1368,11 @@ gtk_print_settings_set_scale (GtkPrintSettings *settings,
  * Since: 2.10
  */
 GtkPrintPages
-gtk_print_settings_get_print_pages (GtkPrintSettings *settings)
+ctk_print_settings_get_print_pages (GtkPrintSettings *settings)
 {
   const gchar *val;
 
-  val = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_PRINT_PAGES);
+  val = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_PRINT_PAGES);
 
   if (val == NULL || (strcmp (val, "all") == 0))
     return GTK_PRINT_PAGES_ALL;
@@ -1390,7 +1390,7 @@ gtk_print_settings_get_print_pages (GtkPrintSettings *settings)
 }
 
 /**
- * gtk_print_settings_set_print_pages:
+ * ctk_print_settings_set_print_pages:
  * @settings: a #GtkPrintSettings
  * @pages: a #GtkPrintPages value
  * 
@@ -1399,7 +1399,7 @@ gtk_print_settings_get_print_pages (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_print_pages (GtkPrintSettings *settings,
+ctk_print_settings_set_print_pages (GtkPrintSettings *settings,
 				    GtkPrintPages     pages)
 {
   const gchar *str;
@@ -1421,11 +1421,11 @@ gtk_print_settings_set_print_pages (GtkPrintSettings *settings,
       break;
     }
   
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PRINT_PAGES, str);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PRINT_PAGES, str);
 }
 
 /**
- * gtk_print_settings_get_page_ranges:
+ * ctk_print_settings_get_page_ranges:
  * @settings: a #GtkPrintSettings
  * @num_ranges: (out): return location for the length of the returned array
  *
@@ -1438,7 +1438,7 @@ gtk_print_settings_set_print_pages (GtkPrintSettings *settings,
  * Since: 2.10
  */
 GtkPageRange *
-gtk_print_settings_get_page_ranges (GtkPrintSettings *settings,
+ctk_print_settings_get_page_ranges (GtkPrintSettings *settings,
 				    gint             *num_ranges)
 {
   const gchar *val;
@@ -1446,7 +1446,7 @@ gtk_print_settings_get_page_ranges (GtkPrintSettings *settings,
   GtkPageRange *ranges;
   gint i, n;
   
-  val = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_PAGE_RANGES);
+  val = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_PAGE_RANGES);
 
   if (val == NULL)
     {
@@ -1488,7 +1488,7 @@ gtk_print_settings_get_page_ranges (GtkPrintSettings *settings,
 }
 
 /**
- * gtk_print_settings_set_page_ranges:
+ * ctk_print_settings_set_page_ranges:
  * @settings: a #GtkPrintSettings
  * @page_ranges: (array length=num_ranges): an array of #GtkPageRanges
  * @num_ranges: the length of @page_ranges
@@ -1498,7 +1498,7 @@ gtk_print_settings_get_page_ranges (GtkPrintSettings *settings,
  * Since: 2.10
  */
 void
-gtk_print_settings_set_page_ranges  (GtkPrintSettings *settings,
+ctk_print_settings_set_page_ranges  (GtkPrintSettings *settings,
 				     GtkPageRange     *page_ranges,
 				     gint              num_ranges)
 {
@@ -1520,14 +1520,14 @@ gtk_print_settings_set_page_ranges  (GtkPrintSettings *settings,
     }
 
   
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAGE_RANGES, 
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_PAGE_RANGES, 
 			  s->str);
 
   g_string_free (s, TRUE);
 }
 
 /**
- * gtk_print_settings_get_default_source:
+ * ctk_print_settings_get_default_source:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_DEFAULT_SOURCE.
@@ -1537,13 +1537,13 @@ gtk_print_settings_set_page_ranges  (GtkPrintSettings *settings,
  * Since: 2.10
  */
 const gchar *
-gtk_print_settings_get_default_source (GtkPrintSettings *settings)
+ctk_print_settings_get_default_source (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_DEFAULT_SOURCE);
+  return ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_DEFAULT_SOURCE);
 }
 
 /**
- * gtk_print_settings_set_default_source:
+ * ctk_print_settings_set_default_source:
  * @settings: a #GtkPrintSettings
  * @default_source: the default source
  * 
@@ -1552,14 +1552,14 @@ gtk_print_settings_get_default_source (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_default_source (GtkPrintSettings *settings,
+ctk_print_settings_set_default_source (GtkPrintSettings *settings,
 				       const gchar      *default_source)
 {
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_DEFAULT_SOURCE, default_source);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_DEFAULT_SOURCE, default_source);
 }
      
 /**
- * gtk_print_settings_get_media_type:
+ * ctk_print_settings_get_media_type:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_MEDIA_TYPE.
@@ -1571,13 +1571,13 @@ gtk_print_settings_set_default_source (GtkPrintSettings *settings,
  * Since: 2.10
  */
 const gchar *
-gtk_print_settings_get_media_type (GtkPrintSettings *settings)
+ctk_print_settings_get_media_type (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_MEDIA_TYPE);
+  return ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_MEDIA_TYPE);
 }
 
 /**
- * gtk_print_settings_set_media_type:
+ * ctk_print_settings_set_media_type:
  * @settings: a #GtkPrintSettings
  * @media_type: the media type
  * 
@@ -1588,14 +1588,14 @@ gtk_print_settings_get_media_type (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_media_type (GtkPrintSettings *settings,
+ctk_print_settings_set_media_type (GtkPrintSettings *settings,
 				   const gchar      *media_type)
 {
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_MEDIA_TYPE, media_type);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_MEDIA_TYPE, media_type);
 }
 
 /**
- * gtk_print_settings_get_dither:
+ * ctk_print_settings_get_dither:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_DITHER.
@@ -1605,13 +1605,13 @@ gtk_print_settings_set_media_type (GtkPrintSettings *settings,
  * Since: 2.10
  */
 const gchar *
-gtk_print_settings_get_dither (GtkPrintSettings *settings)
+ctk_print_settings_get_dither (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_DITHER);
+  return ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_DITHER);
 }
 
 /**
- * gtk_print_settings_set_dither:
+ * ctk_print_settings_set_dither:
  * @settings: a #GtkPrintSettings
  * @dither: the dithering that is used
  * 
@@ -1620,14 +1620,14 @@ gtk_print_settings_get_dither (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_dither (GtkPrintSettings *settings,
+ctk_print_settings_set_dither (GtkPrintSettings *settings,
 			       const gchar      *dither)
 {
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_DITHER, dither);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_DITHER, dither);
 }
      
 /**
- * gtk_print_settings_get_finishings:
+ * ctk_print_settings_get_finishings:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_FINISHINGS.
@@ -1637,13 +1637,13 @@ gtk_print_settings_set_dither (GtkPrintSettings *settings,
  * Since: 2.10
  */
 const gchar *
-gtk_print_settings_get_finishings (GtkPrintSettings *settings)
+ctk_print_settings_get_finishings (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_FINISHINGS);
+  return ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_FINISHINGS);
 }
 
 /**
- * gtk_print_settings_set_finishings:
+ * ctk_print_settings_set_finishings:
  * @settings: a #GtkPrintSettings
  * @finishings: the finishings
  * 
@@ -1652,14 +1652,14 @@ gtk_print_settings_get_finishings (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_finishings (GtkPrintSettings *settings,
+ctk_print_settings_set_finishings (GtkPrintSettings *settings,
 				   const gchar      *finishings)
 {
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_FINISHINGS, finishings);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_FINISHINGS, finishings);
 }
      
 /**
- * gtk_print_settings_get_output_bin:
+ * ctk_print_settings_get_output_bin:
  * @settings: a #GtkPrintSettings
  * 
  * Gets the value of %GTK_PRINT_SETTINGS_OUTPUT_BIN.
@@ -1669,13 +1669,13 @@ gtk_print_settings_set_finishings (GtkPrintSettings *settings,
  * Since: 2.10
  */
 const gchar *
-gtk_print_settings_get_output_bin (GtkPrintSettings *settings)
+ctk_print_settings_get_output_bin (GtkPrintSettings *settings)
 {
-  return gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_BIN);
+  return ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_BIN);
 }
 
 /**
- * gtk_print_settings_set_output_bin:
+ * ctk_print_settings_set_output_bin:
  * @settings: a #GtkPrintSettings
  * @output_bin: the output bin
  * 
@@ -1684,28 +1684,28 @@ gtk_print_settings_get_output_bin (GtkPrintSettings *settings)
  * Since: 2.10
  */
 void
-gtk_print_settings_set_output_bin (GtkPrintSettings *settings,
+ctk_print_settings_set_output_bin (GtkPrintSettings *settings,
 				   const gchar      *output_bin)
 {
-  gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_BIN, output_bin);
+  ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_BIN, output_bin);
 }
 
 /**
- * gtk_print_settings_load_file:
+ * ctk_print_settings_load_file:
  * @settings: a #GtkPrintSettings
  * @file_name: (type filename): the filename to read the settings from
  * @error: (allow-none): return location for errors, or %NULL
  *
  * Reads the print settings from @file_name. If the file could not be loaded
  * then error is set to either a #GFileError or #GKeyFileError.
- * See gtk_print_settings_to_file().
+ * See ctk_print_settings_to_file().
  *
  * Returns: %TRUE on success
  *
  * Since: 2.14
  */
 gboolean
-gtk_print_settings_load_file (GtkPrintSettings *settings,
+ctk_print_settings_load_file (GtkPrintSettings *settings,
                               const gchar      *file_name,
                               GError          **error)
 {
@@ -1718,7 +1718,7 @@ gtk_print_settings_load_file (GtkPrintSettings *settings,
   key_file = g_key_file_new ();
 
   if (g_key_file_load_from_file (key_file, file_name, 0, error) &&
-      gtk_print_settings_load_key_file (settings, key_file, NULL, error))
+      ctk_print_settings_load_key_file (settings, key_file, NULL, error))
     retval = TRUE;
 
   g_key_file_free (key_file);
@@ -1727,26 +1727,26 @@ gtk_print_settings_load_file (GtkPrintSettings *settings,
 }
 
 /**
- * gtk_print_settings_new_from_file:
+ * ctk_print_settings_new_from_file:
  * @file_name: (type filename): the filename to read the settings from
  * @error: (allow-none): return location for errors, or %NULL
  * 
  * Reads the print settings from @file_name. Returns a new #GtkPrintSettings
  * object with the restored settings, or %NULL if an error occurred. If the
  * file could not be loaded then error is set to either a #GFileError or
- * #GKeyFileError.  See gtk_print_settings_to_file().
+ * #GKeyFileError.  See ctk_print_settings_to_file().
  *
  * Returns: the restored #GtkPrintSettings
  * 
  * Since: 2.12
  */
 GtkPrintSettings *
-gtk_print_settings_new_from_file (const gchar  *file_name,
+ctk_print_settings_new_from_file (const gchar  *file_name,
 			          GError      **error)
 {
-  GtkPrintSettings *settings = gtk_print_settings_new ();
+  GtkPrintSettings *settings = ctk_print_settings_new ();
 
-  if (!gtk_print_settings_load_file (settings, file_name, error))
+  if (!ctk_print_settings_load_file (settings, file_name, error))
     {
       g_object_unref (settings);
       settings = NULL;
@@ -1756,7 +1756,7 @@ gtk_print_settings_new_from_file (const gchar  *file_name,
 }
 
 /**
- * gtk_print_settings_load_key_file:
+ * ctk_print_settings_load_key_file:
  * @settings: a #GtkPrintSettings
  * @key_file: the #GKeyFile to retrieve the settings from
  * @group_name: (allow-none): the name of the group to use, or %NULL to use the default
@@ -1772,7 +1772,7 @@ gtk_print_settings_new_from_file (const gchar  *file_name,
  * Since: 2.14
  */
 gboolean
-gtk_print_settings_load_key_file (GtkPrintSettings *settings,
+ctk_print_settings_load_key_file (GtkPrintSettings *settings,
 				  GKeyFile         *key_file,
 				  const gchar      *group_name,
 				  GError          **error)
@@ -1808,7 +1808,7 @@ gtk_print_settings_load_key_file (GtkPrintSettings *settings,
       if (!value)
         continue;
 
-      gtk_print_settings_set (settings, keys[i], value);
+      ctk_print_settings_set (settings, keys[i], value);
       g_free (value);
     }
 
@@ -1818,7 +1818,7 @@ gtk_print_settings_load_key_file (GtkPrintSettings *settings,
 }
 
 /**
- * gtk_print_settings_new_from_key_file:
+ * ctk_print_settings_new_from_key_file:
  * @key_file: the #GKeyFile to retrieve the settings from
  * @group_name: (allow-none): the name of the group to use, or %NULL to use
  *     the default “Print Settings”
@@ -1834,13 +1834,13 @@ gtk_print_settings_load_key_file (GtkPrintSettings *settings,
  * Since: 2.12
  */
 GtkPrintSettings *
-gtk_print_settings_new_from_key_file (GKeyFile     *key_file,
+ctk_print_settings_new_from_key_file (GKeyFile     *key_file,
 				      const gchar  *group_name,
 				      GError      **error)
 {
-  GtkPrintSettings *settings = gtk_print_settings_new ();
+  GtkPrintSettings *settings = ctk_print_settings_new ();
 
-  if (!gtk_print_settings_load_key_file (settings, key_file,
+  if (!ctk_print_settings_load_key_file (settings, key_file,
                                          group_name, error))
     {
       g_object_unref (settings);
@@ -1851,7 +1851,7 @@ gtk_print_settings_new_from_key_file (GKeyFile     *key_file,
 }
 
 /**
- * gtk_print_settings_to_file:
+ * ctk_print_settings_to_file:
  * @settings: a #GtkPrintSettings
  * @file_name: (type filename): the file to save to
  * @error: (allow-none): return location for errors, or %NULL
@@ -1865,7 +1865,7 @@ gtk_print_settings_new_from_key_file (GKeyFile     *key_file,
  * Since: 2.12
  */
 gboolean
-gtk_print_settings_to_file (GtkPrintSettings  *settings,
+ctk_print_settings_to_file (GtkPrintSettings  *settings,
 			    const gchar       *file_name,
 			    GError           **error)
 {
@@ -1879,7 +1879,7 @@ gtk_print_settings_to_file (GtkPrintSettings  *settings,
   g_return_val_if_fail (file_name != NULL, FALSE);
 
   key_file = g_key_file_new ();
-  gtk_print_settings_to_key_file (settings, key_file, NULL);
+  ctk_print_settings_to_key_file (settings, key_file, NULL);
 
   data = g_key_file_to_data (key_file, &len, &err);
   if (!data)
@@ -1911,7 +1911,7 @@ add_value_to_key_file (const gchar  *key,
 }
 
 /**
- * gtk_print_settings_to_key_file:
+ * ctk_print_settings_to_key_file:
  * @settings: a #GtkPrintSettings
  * @key_file: the #GKeyFile to save the print settings to
  * @group_name: (nullable): the group to add the settings to in @key_file, or
@@ -1922,7 +1922,7 @@ add_value_to_key_file (const gchar  *key,
  * Since: 2.12
  */
 void
-gtk_print_settings_to_key_file (GtkPrintSettings  *settings,
+ctk_print_settings_to_key_file (GtkPrintSettings  *settings,
 			        GKeyFile          *key_file,
 				const gchar       *group_name)
 {
@@ -1937,7 +1937,7 @@ gtk_print_settings_to_key_file (GtkPrintSettings  *settings,
   data.key_file = key_file;
   data.group_name = group_name;
 
-  gtk_print_settings_foreach (settings,
+  ctk_print_settings_foreach (settings,
 			      (GtkPrintSettingsFunc) add_value_to_key_file,
 			      &data);
 }
@@ -1952,7 +1952,7 @@ add_to_variant (const gchar *key,
 }
 
 /**
- * gtk_print_settings_to_gvariant:
+ * ctk_print_settings_to_gvariant:
  * @settings: a #GtkPrintSettings
  *
  * Serialize print settings to an a{sv} variant.
@@ -1962,36 +1962,36 @@ add_to_variant (const gchar *key,
  * Since: 3.22
  */
 GVariant *
-gtk_print_settings_to_gvariant (GtkPrintSettings *settings)
+ctk_print_settings_to_gvariant (GtkPrintSettings *settings)
 {
   GVariantBuilder builder;
 
   g_variant_builder_init (&builder, G_VARIANT_TYPE_VARDICT);
-  gtk_print_settings_foreach (settings, add_to_variant, &builder);
+  ctk_print_settings_foreach (settings, add_to_variant, &builder);
 
   return g_variant_builder_end (&builder);
 }
 
 /**
- * gtk_print_settings_new_from_gvariant:
+ * ctk_print_settings_new_from_gvariant:
  * @variant: an a{sv} #GVariant
  *
  * Deserialize print settings from an a{sv} variant in
- * the format produced by gtk_print_settings_to_gvariant().
+ * the format produced by ctk_print_settings_to_gvariant().
  *
  * Returns: (transfer full): a new #GtkPrintSettings object
  *
  * Since: 3.22
  */
 GtkPrintSettings *
-gtk_print_settings_new_from_gvariant (GVariant *variant)
+ctk_print_settings_new_from_gvariant (GVariant *variant)
 {
   GtkPrintSettings *settings;
   int i;
 
   g_return_val_if_fail (g_variant_is_of_type (variant, G_VARIANT_TYPE_VARDICT), NULL);
 
-  settings = gtk_print_settings_new ();
+  settings = ctk_print_settings_new ();
 
   for (i = 0; i < g_variant_n_children (variant); i++)
     {
@@ -2000,7 +2000,7 @@ gtk_print_settings_new_from_gvariant (GVariant *variant)
 
       g_variant_get_child (variant, i, "{&sv}", &key, &v);
       if (g_variant_is_of_type (v, G_VARIANT_TYPE_STRING))
-        gtk_print_settings_set (settings, key, g_variant_get_string (v, NULL));
+        ctk_print_settings_set (settings, key, g_variant_get_string (v, NULL));
       g_variant_unref (v);
     }
 

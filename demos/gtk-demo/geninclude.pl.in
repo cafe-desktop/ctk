@@ -117,7 +117,7 @@ if (@child_arrays) {
 }
 
 # toplevel
-print "\nDemo gtk_demos[] = {\n";
+print "\nDemo ctk_demos[] = {\n";
 
 $first = 1;
 foreach $href (@demos) {

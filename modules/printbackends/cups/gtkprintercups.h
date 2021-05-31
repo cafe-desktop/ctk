@@ -32,7 +32,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_CUPS                  (gtk_printer_cups_get_type ())
+#define GTK_TYPE_PRINTER_CUPS                  (ctk_printer_cups_get_type ())
 #define GTK_PRINTER_CUPS(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_CUPS, GtkPrinterCups))
 #define GTK_PRINTER_CUPS_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINTER_CUPS, GtkPrinterCupsClass))
 #define GTK_IS_PRINTER_CUPS(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_CUPS))
@@ -115,17 +115,17 @@ struct _GtkPrinterCupsClass
 
 };
 
-GType                    gtk_printer_cups_get_type      (void) G_GNUC_CONST;
-void                     gtk_printer_cups_register_type (GTypeModule     *module);
+GType                    ctk_printer_cups_get_type      (void) G_GNUC_CONST;
+void                     ctk_printer_cups_register_type (GTypeModule     *module);
 
-GtkPrinterCups          *gtk_printer_cups_new           (const char      *name,
+GtkPrinterCups          *ctk_printer_cups_new           (const char      *name,
                                                          GtkPrintBackend *backend,
                                                          gpointer         colord_client);
-ppd_file_t 		*gtk_printer_cups_get_ppd       (GtkPrinterCups  *printer);
-const gchar		*gtk_printer_cups_get_ppd_name  (GtkPrinterCups  *printer);
+ppd_file_t 		*ctk_printer_cups_get_ppd       (GtkPrinterCups  *printer);
+const gchar		*ctk_printer_cups_get_ppd_name  (GtkPrinterCups  *printer);
 
 #ifdef HAVE_COLORD
-void                     gtk_printer_cups_update_settings (GtkPrinterCups *printer,
+void                     ctk_printer_cups_update_settings (GtkPrinterCups *printer,
                                                          GtkPrintSettings *settings,
                                                          GtkPrinterOptionSet *set);
 #endif

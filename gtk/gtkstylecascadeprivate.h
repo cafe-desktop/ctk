@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STYLE_CASCADE           (_gtk_style_cascade_get_type ())
+#define GTK_TYPE_STYLE_CASCADE           (_ctk_style_cascade_get_type ())
 #define GTK_STYLE_CASCADE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_STYLE_CASCADE, GtkStyleCascade))
 #define GTK_STYLE_CASCADE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_STYLE_CASCADE, GtkStyleCascadeClass))
 #define GTK_IS_STYLE_CASCADE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_STYLE_CASCADE))
@@ -47,20 +47,20 @@ struct _GtkStyleCascadeClass
   GObjectClass  parent_class;
 };
 
-GType                 _gtk_style_cascade_get_type               (void) G_GNUC_CONST;
+GType                 _ctk_style_cascade_get_type               (void) G_GNUC_CONST;
 
-GtkStyleCascade *     _gtk_style_cascade_new                    (void);
+GtkStyleCascade *     _ctk_style_cascade_new                    (void);
 
-void                  _gtk_style_cascade_set_parent             (GtkStyleCascade     *cascade,
+void                  _ctk_style_cascade_set_parent             (GtkStyleCascade     *cascade,
                                                                  GtkStyleCascade     *parent);
-void                  _gtk_style_cascade_set_scale              (GtkStyleCascade     *cascade,
+void                  _ctk_style_cascade_set_scale              (GtkStyleCascade     *cascade,
                                                                  int                  scale);
-int                   _gtk_style_cascade_get_scale              (GtkStyleCascade     *cascade);
+int                   _ctk_style_cascade_get_scale              (GtkStyleCascade     *cascade);
 
-void                  _gtk_style_cascade_add_provider           (GtkStyleCascade     *cascade,
+void                  _ctk_style_cascade_add_provider           (GtkStyleCascade     *cascade,
                                                                  GtkStyleProvider    *provider,
                                                                  guint                priority);
-void                  _gtk_style_cascade_remove_provider        (GtkStyleCascade     *cascade,
+void                  _ctk_style_cascade_remove_provider        (GtkStyleCascade     *cascade,
                                                                  GtkStyleProvider    *provider);
 
 

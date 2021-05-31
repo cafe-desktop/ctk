@@ -117,7 +117,7 @@ icon_loaded (GObject      *object,
         scale = roundf ([[NSScreen mainScreen] backingScaleFactor]);
 #endif
 
-  pixbuf = gtk_icon_info_load_symbolic_finish (info, result, NULL, &error);
+  pixbuf = ctk_icon_info_load_symbolic_finish (info, result, NULL, &error);
 
   if (pixbuf != NULL)
     {
@@ -137,7 +137,7 @@ icon_loaded (GObject      *object,
       g_object_unref (pixbuf);
 
       cairo_surface_set_device_scale (surface, scale, scale);
-      image = _gtk_quartz_create_image_from_surface (surface);
+      image = _ctk_quartz_create_image_from_surface (surface);
       cairo_surface_destroy (surface);
 
       if (image != NULL)
@@ -159,7 +159,7 @@ icon_loaded (GObject      *object,
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
-  return gtk_menu_tracker_item_get_sensitive (trackerItem) ? YES : NO;
+  return ctk_menu_tracker_item_get_sensitive (trackerItem) ? YES : NO;
 }
 
 - (id)initWithTrackerItem:(GtkMenuTrackerItem *)aTrackerItem
@@ -170,7 +170,7 @@ icon_loaded (GObject      *object,
 
   if (self != nil)
     {
-      const gchar *special = gtk_menu_tracker_item_get_special (aTrackerItem);
+      const gchar *special = ctk_menu_tracker_item_get_special (aTrackerItem);
 
       if (special && g_str_equal (special, "hide-this"))
         {
@@ -206,7 +206,7 @@ icon_loaded (GObject      *object,
       [self didChangeToggled];
       [self didChangeAccel];
 
-      if (gtk_menu_tracker_item_get_has_link (trackerItem, G_MENU_LINK_SUBMENU))
+      if (ctk_menu_tracker_item_get_has_link (trackerItem, G_MENU_LINK_SUBMENU))
         [self setSubmenu:[[[GNSMenu alloc] initWithTitle:[self title] trackerItem:trackerItem] autorelease]];
     }
 
@@ -229,7 +229,7 @@ icon_loaded (GObject      *object,
 
 - (void)didChangeLabel
 {
-  gchar *label = _gtk_toolbar_elide_underscores (gtk_menu_tracker_item_get_label (trackerItem));
+  gchar *label = _ctk_toolbar_elide_underscores (ctk_menu_tracker_item_get_label (trackerItem));
 
   NSString *title = [NSString stringWithUTF8String:label ? : ""];
 
@@ -260,7 +260,7 @@ icon_loaded (GObject      *object,
 
 - (void)didChangeIcon
 {
-  GIcon *icon = gtk_menu_tracker_item_get_icon (trackerItem);
+  GIcon *icon = ctk_menu_tracker_item_get_icon (trackerItem);
 
   if (cancellable != NULL)
     {
@@ -291,7 +291,7 @@ icon_loaded (GObject      *object,
           parsed = TRUE;
         }
 
-      theme = gtk_icon_theme_get_default ();
+      theme = ctk_icon_theme_get_default ();
 
 #ifdef AVAILABLE_MAC_OS_X_VERSION_10_7_AND_LATER
        /* we need a run-time check for the backingScaleFactor selector because we
@@ -300,12 +300,12 @@ icon_loaded (GObject      *object,
       if ([[NSScreen mainScreen] respondsToSelector:@selector(backingScaleFactor)])
         scale = roundf ([[NSScreen mainScreen] backingScaleFactor]);
 #endif
-      info = gtk_icon_theme_lookup_by_gicon_for_scale (theme, icon, ICON_SIZE, scale, GTK_ICON_LOOKUP_USE_BUILTIN);
+      info = ctk_icon_theme_lookup_by_gicon_for_scale (theme, icon, ICON_SIZE, scale, GTK_ICON_LOOKUP_USE_BUILTIN);
 
       if (info != NULL)
         {
           cancellable = g_cancellable_new ();
-          gtk_icon_info_load_symbolic_async (info, &foreground, &success, &warning, &error,
+          ctk_icon_info_load_symbolic_async (info, &foreground, &success, &warning, &error,
                                              cancellable, icon_loaded, self);
           g_object_unref (info);
           return;
@@ -317,17 +317,17 @@ icon_loaded (GObject      *object,
 
 - (void)didChangeVisible
 {
-  [self setHidden:gtk_menu_tracker_item_get_is_visible (trackerItem) ? NO : YES];
+  [self setHidden:ctk_menu_tracker_item_get_is_visible (trackerItem) ? NO : YES];
 }
 
 - (void)didChangeToggled
 {
-  [self setState:gtk_menu_tracker_item_get_toggled (trackerItem) ? NSOnState : NSOffState];
+  [self setState:ctk_menu_tracker_item_get_toggled (trackerItem) ? NSOnState : NSOffState];
 }
 
 - (void)didChangeAccel
 {
-  const gchar *accel = gtk_menu_tracker_item_get_accel (trackerItem);
+  const gchar *accel = ctk_menu_tracker_item_get_accel (trackerItem);
 
   if (accel != NULL)
     {
@@ -336,7 +336,7 @@ icon_loaded (GObject      *object,
       unichar character;
       NSUInteger modifiers;
 
-      gtk_accelerator_parse (accel, &key, &mask);
+      ctk_accelerator_parse (accel, &key, &mask);
 
       character = gdk_quartz_get_key_equivalent (key);
       [self setKeyEquivalent:[NSString stringWithCharacters:&character length:1]];
@@ -361,7 +361,7 @@ icon_loaded (GObject      *object,
 
 - (void)didSelectItem:(id)sender
 {
-  gtk_menu_tracker_item_activated (trackerItem);
+  ctk_menu_tracker_item_activated (trackerItem);
 }
 
 @end
@@ -370,7 +370,7 @@ icon_loaded (GObject      *object,
 
 + (id)menuItemForTrackerItem:(GtkMenuTrackerItem *)trackerItem
 {
-  if (gtk_menu_tracker_item_get_is_separator (trackerItem))
+  if (ctk_menu_tracker_item_get_is_separator (trackerItem))
     return [NSMenuItem separatorItem];
 
   return [[[GNSMenuItem alloc] initWithTrackerItem:trackerItem] autorelease];
@@ -412,7 +412,7 @@ menu_item_removed (gint     position,
 
   if (self != nil)
     {
-      tracker = gtk_menu_tracker_new (observable,
+      tracker = ctk_menu_tracker_new (observable,
                                       model,
                                       NO,
                                       YES,
@@ -432,7 +432,7 @@ menu_item_removed (gint     position,
 
   if (self != nil)
     {
-      tracker = gtk_menu_tracker_new_for_item_link (trackerItem,
+      tracker = ctk_menu_tracker_new_for_item_link (trackerItem,
                                                        G_MENU_LINK_SUBMENU,
                                                        YES,
                                                        YES,
@@ -446,7 +446,7 @@ menu_item_removed (gint     position,
 
 - (void)dealloc
 {
-  gtk_menu_tracker_free (tracker);
+  ctk_menu_tracker_free (tracker);
 
   [super dealloc];
 }
@@ -454,7 +454,7 @@ menu_item_removed (gint     position,
 @end
 
 void
-gtk_application_impl_quartz_setup_menu (GMenuModel     *model,
+ctk_application_impl_quartz_setup_menu (GMenuModel     *model,
                                         GtkActionMuxer *muxer)
 {
   NSMenu *menu;

@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_SECTION_BOX                           (gtk_menu_section_box_get_type ())
+#define GTK_TYPE_MENU_SECTION_BOX                           (ctk_menu_section_box_get_type ())
 #define GTK_MENU_SECTION_BOX(inst)                          (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
                                                              GTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBox))
 #define GTK_MENU_SECTION_BOX_CLASS(class)                   (G_TYPE_CHECK_CLASS_CAST ((class),                       \
@@ -41,8 +41,8 @@ G_BEGIN_DECLS
 
 typedef struct _GtkMenuSectionBox                           GtkMenuSectionBox;
 
-GType                   gtk_menu_section_box_get_type                   (void) G_GNUC_CONST;
-void                    gtk_menu_section_box_new_toplevel               (GtkStack    *stack,
+GType                   ctk_menu_section_box_get_type                   (void) G_GNUC_CONST;
+void                    ctk_menu_section_box_new_toplevel               (GtkStack    *stack,
                                                                          GMenuModel  *model,
                                                                          const gchar *action_namespace,
                                                                          GtkPopover  *popover);

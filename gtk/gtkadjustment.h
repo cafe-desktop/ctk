@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ADJUSTMENT                  (gtk_adjustment_get_type ())
+#define GTK_TYPE_ADJUSTMENT                  (ctk_adjustment_get_type ())
 #define GTK_ADJUSTMENT(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ADJUSTMENT, GtkAdjustment))
 #define GTK_ADJUSTMENT_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ADJUSTMENT, GtkAdjustmentClass))
 #define GTK_IS_ADJUSTMENT(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ADJUSTMENT))
@@ -66,17 +66,17 @@ struct _GtkAdjustmentClass
   void (* value_changed) (GtkAdjustment *adjustment);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_adjustment_get_type              (void) G_GNUC_CONST;
+GType      ctk_adjustment_get_type              (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkAdjustment*   gtk_adjustment_new             (gdouble          value,
+GtkAdjustment*   ctk_adjustment_new             (gdouble          value,
                                                  gdouble          lower,
                                                  gdouble          upper,
                                                  gdouble          step_increment,
@@ -84,47 +84,47 @@ GtkAdjustment*   gtk_adjustment_new             (gdouble          value,
                                                  gdouble          page_size);
 
 GDK_DEPRECATED_IN_3_18
-void       gtk_adjustment_changed               (GtkAdjustment   *adjustment);
+void       ctk_adjustment_changed               (GtkAdjustment   *adjustment);
 GDK_DEPRECATED_IN_3_18
-void       gtk_adjustment_value_changed         (GtkAdjustment   *adjustment);
+void       ctk_adjustment_value_changed         (GtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       gtk_adjustment_clamp_page            (GtkAdjustment   *adjustment,
+void       ctk_adjustment_clamp_page            (GtkAdjustment   *adjustment,
                                                  gdouble          lower,
                                                  gdouble          upper);
 
 GDK_AVAILABLE_IN_ALL
-gdouble    gtk_adjustment_get_value             (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_value             (GtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       gtk_adjustment_set_value             (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_value             (GtkAdjustment   *adjustment,
                                                  gdouble          value);
 GDK_AVAILABLE_IN_ALL
-gdouble    gtk_adjustment_get_lower             (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_lower             (GtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       gtk_adjustment_set_lower             (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_lower             (GtkAdjustment   *adjustment,
                                                  gdouble          lower);
 GDK_AVAILABLE_IN_ALL
-gdouble    gtk_adjustment_get_upper             (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_upper             (GtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       gtk_adjustment_set_upper             (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_upper             (GtkAdjustment   *adjustment,
                                                  gdouble          upper);
 GDK_AVAILABLE_IN_ALL
-gdouble    gtk_adjustment_get_step_increment    (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_step_increment    (GtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       gtk_adjustment_set_step_increment    (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_step_increment    (GtkAdjustment   *adjustment,
                                                  gdouble          step_increment);
 GDK_AVAILABLE_IN_ALL
-gdouble    gtk_adjustment_get_page_increment    (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_page_increment    (GtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       gtk_adjustment_set_page_increment    (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_page_increment    (GtkAdjustment   *adjustment,
                                                  gdouble          page_increment);
 GDK_AVAILABLE_IN_ALL
-gdouble    gtk_adjustment_get_page_size         (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_page_size         (GtkAdjustment   *adjustment);
 GDK_AVAILABLE_IN_ALL
-void       gtk_adjustment_set_page_size         (GtkAdjustment   *adjustment,
+void       ctk_adjustment_set_page_size         (GtkAdjustment   *adjustment,
                                                  gdouble          page_size);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_adjustment_configure             (GtkAdjustment   *adjustment,
+void       ctk_adjustment_configure             (GtkAdjustment   *adjustment,
                                                  gdouble          value,
                                                  gdouble          lower,
                                                  gdouble          upper,
@@ -132,7 +132,7 @@ void       gtk_adjustment_configure             (GtkAdjustment   *adjustment,
                                                  gdouble          page_increment,
                                                  gdouble          page_size);
 GDK_AVAILABLE_IN_3_2
-gdouble    gtk_adjustment_get_minimum_increment (GtkAdjustment   *adjustment);
+gdouble    ctk_adjustment_get_minimum_increment (GtkAdjustment   *adjustment);
 
 G_END_DECLS
 

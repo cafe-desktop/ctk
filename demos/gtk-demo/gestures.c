@@ -20,7 +20,7 @@ touchpad_swipe_gesture_begin (GtkGesture       *gesture,
 {
   /* Disallow touchscreen events here */
   if (sequence != NULL)
-    gtk_gesture_set_state (gesture, GTK_EVENT_SEQUENCE_DENIED);
+    ctk_gesture_set_state (gesture, GTK_EVENT_SEQUENCE_DENIED);
   return sequence == NULL;
 }
 
@@ -32,7 +32,7 @@ swipe_gesture_swept (GtkGestureSwipe *gesture,
 {
   swipe_x = velocity_x / 10;
   swipe_y = velocity_y / 10;
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 static void
@@ -42,7 +42,7 @@ long_press_gesture_pressed (GtkGestureLongPress *gesture,
                             GtkWidget           *widget)
 {
   long_pressed = TRUE;
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 static void
@@ -51,7 +51,7 @@ long_press_gesture_end (GtkGesture       *gesture,
                         GtkWidget        *widget)
 {
   long_pressed = FALSE;
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 static void
@@ -60,7 +60,7 @@ rotation_angle_changed (GtkGestureRotate *gesture,
                         gdouble           delta,
                         GtkWidget        *widget)
 {
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 static void
@@ -68,7 +68,7 @@ zoom_scale_changed (GtkGestureZoom *gesture,
                     gdouble         scale,
                     GtkWidget      *widget)
 {
-  gtk_widget_queue_draw (widget);
+  ctk_widget_queue_draw (widget);
 }
 
 static gboolean
@@ -77,7 +77,7 @@ drawing_area_draw (GtkWidget *widget,
 {
   GtkAllocation allocation;
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   if (swipe_x != 0 || swipe_y != 0)
     {
@@ -91,24 +91,24 @@ drawing_area_draw (GtkWidget *widget,
       cairo_restore (cr);
     }
 
-  if (gtk_gesture_is_recognized (rotate) || gtk_gesture_is_recognized (zoom))
+  if (ctk_gesture_is_recognized (rotate) || ctk_gesture_is_recognized (zoom))
     {
       cairo_pattern_t *pat;
       cairo_matrix_t matrix;
       gdouble angle, scale;
       gdouble x_center, y_center;
 
-      gtk_gesture_get_bounding_box_center (GTK_GESTURE (zoom), &x_center, &y_center);
+      ctk_gesture_get_bounding_box_center (GTK_GESTURE (zoom), &x_center, &y_center);
 
       cairo_get_matrix (cr, &matrix);
       cairo_matrix_translate (&matrix, x_center, y_center);
 
       cairo_save (cr);
 
-      angle = gtk_gesture_rotate_get_angle_delta (GTK_GESTURE_ROTATE (rotate));
+      angle = ctk_gesture_rotate_get_angle_delta (GTK_GESTURE_ROTATE (rotate));
       cairo_matrix_rotate (&matrix, angle);
 
-      scale = gtk_gesture_zoom_get_scale_delta (GTK_GESTURE_ZOOM (zoom));
+      scale = ctk_gesture_zoom_get_scale_delta (GTK_GESTURE_ZOOM (zoom));
       cairo_matrix_scale (&matrix, scale, scale);
 
       cairo_set_matrix (cr, &matrix);
@@ -150,15 +150,15 @@ do_gestures (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_default_size (GTK_WINDOW (window), 400, 400);
-      gtk_window_set_title (GTK_WINDOW (window), "Gestures");
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+      ctk_window_set_title (GTK_WINDOW (window), "Gestures");
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      drawing_area = gtk_drawing_area_new ();
-      gtk_container_add (GTK_CONTAINER (window), drawing_area);
-      gtk_widget_add_events (drawing_area,
+      drawing_area = ctk_drawing_area_new ();
+      ctk_container_add (GTK_CONTAINER (window), drawing_area);
+      ctk_widget_add_events (drawing_area,
                              GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
                              GDK_POINTER_MOTION_MASK | GDK_TOUCH_MASK);
 
@@ -166,10 +166,10 @@ do_gestures (GtkWidget *do_widget)
                         G_CALLBACK (drawing_area_draw), NULL);
 
       /* Swipe */
-      gesture = gtk_gesture_swipe_new (drawing_area);
+      gesture = ctk_gesture_swipe_new (drawing_area);
       g_signal_connect (gesture, "swipe",
                         G_CALLBACK (swipe_gesture_swept), drawing_area);
-      gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+      ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                                   GTK_PHASE_BUBBLE);
       g_object_weak_ref (G_OBJECT (drawing_area), (GWeakNotify) g_object_unref, gesture);
 
@@ -182,41 +182,41 @@ do_gestures (GtkWidget *do_widget)
                         G_CALLBACK (touchpad_swipe_gesture_begin), drawing_area);
       g_signal_connect (gesture, "swipe",
                         G_CALLBACK (swipe_gesture_swept), drawing_area);
-      gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+      ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                                   GTK_PHASE_BUBBLE);
       g_object_weak_ref (G_OBJECT (drawing_area), (GWeakNotify) g_object_unref, gesture);
 
       /* Long press */
-      gesture = gtk_gesture_long_press_new (drawing_area);
+      gesture = ctk_gesture_long_press_new (drawing_area);
       g_signal_connect (gesture, "pressed",
                         G_CALLBACK (long_press_gesture_pressed), drawing_area);
       g_signal_connect (gesture, "end",
                         G_CALLBACK (long_press_gesture_end), drawing_area);
-      gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+      ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                                   GTK_PHASE_BUBBLE);
       g_object_weak_ref (G_OBJECT (drawing_area), (GWeakNotify) g_object_unref, gesture);
 
       /* Rotate */
-      rotate = gesture = gtk_gesture_rotate_new (drawing_area);
+      rotate = gesture = ctk_gesture_rotate_new (drawing_area);
       g_signal_connect (gesture, "angle-changed",
                         G_CALLBACK (rotation_angle_changed), drawing_area);
-      gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+      ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                                   GTK_PHASE_BUBBLE);
       g_object_weak_ref (G_OBJECT (drawing_area), (GWeakNotify) g_object_unref, gesture);
 
       /* Zoom */
-      zoom = gesture = gtk_gesture_zoom_new (drawing_area);
+      zoom = gesture = ctk_gesture_zoom_new (drawing_area);
       g_signal_connect (gesture, "scale-changed",
                         G_CALLBACK (zoom_scale_changed), drawing_area);
-      gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
+      ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
                                                   GTK_PHASE_BUBBLE);
       g_object_weak_ref (G_OBJECT (drawing_area), (GWeakNotify) g_object_unref, gesture);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

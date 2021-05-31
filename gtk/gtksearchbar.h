@@ -36,7 +36,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_BAR                 (gtk_search_bar_get_type ())
+#define GTK_TYPE_SEARCH_BAR                 (ctk_search_bar_get_type ())
 #define GTK_SEARCH_BAR(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEARCH_BAR, GtkSearchBar))
 #define GTK_SEARCH_BAR_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEARCH_BAR, GtkSearchBarClass))
 #define GTK_IS_SEARCH_BAR(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEARCH_BAR))
@@ -63,36 +63,36 @@ struct _GtkSearchBarClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_3_10
-GType       gtk_search_bar_get_type        (void) G_GNUC_CONST;
+GType       ctk_search_bar_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_10
-GtkWidget*  gtk_search_bar_new             (void);
+GtkWidget*  ctk_search_bar_new             (void);
 
 GDK_AVAILABLE_IN_3_10
-void        gtk_search_bar_connect_entry   (GtkSearchBar *bar,
+void        ctk_search_bar_connect_entry   (GtkSearchBar *bar,
                                             GtkEntry     *entry);
 
 GDK_AVAILABLE_IN_3_10
-gboolean    gtk_search_bar_get_search_mode (GtkSearchBar *bar);
+gboolean    ctk_search_bar_get_search_mode (GtkSearchBar *bar);
 GDK_AVAILABLE_IN_3_10
-void        gtk_search_bar_set_search_mode (GtkSearchBar *bar,
+void        ctk_search_bar_set_search_mode (GtkSearchBar *bar,
                                             gboolean      search_mode);
 
 GDK_AVAILABLE_IN_3_10
-gboolean    gtk_search_bar_get_show_close_button (GtkSearchBar *bar);
+gboolean    ctk_search_bar_get_show_close_button (GtkSearchBar *bar);
 GDK_AVAILABLE_IN_3_10
-void        gtk_search_bar_set_show_close_button (GtkSearchBar *bar,
+void        ctk_search_bar_set_show_close_button (GtkSearchBar *bar,
                                                   gboolean      visible);
 
 GDK_AVAILABLE_IN_3_10
-gboolean    gtk_search_bar_handle_event    (GtkSearchBar *bar,
+gboolean    ctk_search_bar_handle_event    (GtkSearchBar *bar,
                                             GdkEvent     *event);
 
 G_END_DECLS

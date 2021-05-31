@@ -28,19 +28,19 @@ typedef struct _GtkWin32Theme GtkWin32Theme;
 
 #define GTK_WIN32_THEME_SYMBOLIC_COLOR_NAME "-gtk-win32-color"
 
-GtkWin32Theme *         gtk_win32_theme_lookup          (const char     *class_name);
-GtkWin32Theme *         gtk_win32_theme_parse           (GtkCssParser   *parser);
+GtkWin32Theme *         ctk_win32_theme_lookup          (const char     *class_name);
+GtkWin32Theme *         ctk_win32_theme_parse           (GtkCssParser   *parser);
 
-GtkWin32Theme *         gtk_win32_theme_ref             (GtkWin32Theme  *theme);
-void                    gtk_win32_theme_unref           (GtkWin32Theme  *theme);
+GtkWin32Theme *         ctk_win32_theme_ref             (GtkWin32Theme  *theme);
+void                    ctk_win32_theme_unref           (GtkWin32Theme  *theme);
 
-gboolean                gtk_win32_theme_equal           (GtkWin32Theme  *theme1,
+gboolean                ctk_win32_theme_equal           (GtkWin32Theme  *theme1,
                                                          GtkWin32Theme  *theme2);
 
-void                    gtk_win32_theme_print           (GtkWin32Theme  *theme,
+void                    ctk_win32_theme_print           (GtkWin32Theme  *theme,
                                                          GString        *string);
 
-cairo_surface_t *       gtk_win32_theme_create_surface  (GtkWin32Theme *theme,
+cairo_surface_t *       ctk_win32_theme_create_surface  (GtkWin32Theme *theme,
                                                          int            xp_part,
                                                          int            state,
                                                          int            margins[4],
@@ -49,18 +49,18 @@ cairo_surface_t *       gtk_win32_theme_create_surface  (GtkWin32Theme *theme,
 							 int           *x_offs_out,
 							 int           *y_offs_out);
 
-void                    gtk_win32_theme_get_part_border (GtkWin32Theme  *theme,
+void                    ctk_win32_theme_get_part_border (GtkWin32Theme  *theme,
                                                          int             part,
                                                          int             state,
                                                          GtkBorder      *out_border);
-void                    gtk_win32_theme_get_part_size   (GtkWin32Theme  *theme,
+void                    ctk_win32_theme_get_part_size   (GtkWin32Theme  *theme,
                                                          int             part,
                                                          int             state,
                                                          int            *width,
                                                          int            *height);
-int                     gtk_win32_theme_get_size        (GtkWin32Theme  *theme,
+int                     ctk_win32_theme_get_size        (GtkWin32Theme  *theme,
 			                                 int             id);
-void                    gtk_win32_theme_get_color       (GtkWin32Theme  *theme,
+void                    ctk_win32_theme_get_color       (GtkWin32Theme  *theme,
                                                          gint            id,
                                                          GdkRGBA        *color);
 

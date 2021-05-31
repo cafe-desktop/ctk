@@ -53,7 +53,7 @@ update_cursor (GtkWidget *widget,  gdouble x, gdouble y)
   if (surface != NULL)
     {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      cairo_t *cr = gdk_cairo_create (gtk_widget_get_window (widget));
+      cairo_t *cr = gdk_cairo_create (ctk_widget_get_window (widget));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (cursor_present && (cursor_present != state ||
@@ -91,9 +91,9 @@ configure_event (GtkWidget *widget, GdkEventConfigure *event)
   if (surface)
     cairo_surface_destroy (surface);
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
-  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
                                                allocation.width,
                                                allocation.height);
@@ -157,10 +157,10 @@ draw_brush (GtkWidget *widget, GdkInputSource source,
   cairo_fill (cr);
   cairo_destroy (cr);
 
-  gtk_widget_queue_draw_area (widget,
+  ctk_widget_queue_draw_area (widget,
 			      update_rect.x, update_rect.y,
 			      update_rect.width, update_rect.height);
-  gdk_window_process_updates (gtk_widget_get_window (widget), TRUE);
+  gdk_window_process_updates (ctk_widget_get_window (widget), TRUE);
 }
 
 static guint32 motion_time;
@@ -287,7 +287,7 @@ leave_notify_event (GtkWidget *widget, GdkEventCrossing *event)
 void
 quit (void)
 {
-  gtk_main_quit ();
+  ctk_main_quit ();
 }
 
 int
@@ -302,28 +302,28 @@ main (int argc, char *argv[])
   GdkWindow *gdk_win;
   GdkSeat *seat;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   seat = gdk_display_get_default_seat (gdk_display_get_default ());
   current_device = gdk_seat_get_pointer (seat);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (window, "Test Input");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_widget_set_name (window, "Test Input");
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
-  gtk_widget_show (vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
+  ctk_widget_show (vbox);
 
   g_signal_connect (window, "destroy",
 		    G_CALLBACK (quit), NULL);
 
   /* Create the drawing area */
 
-  drawing_area = gtk_drawing_area_new ();
-  gtk_widget_set_size_request (drawing_area, 200, 200);
-  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
+  drawing_area = ctk_drawing_area_new ();
+  ctk_widget_set_size_request (drawing_area, 200, 200);
+  ctk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 
-  gtk_widget_show (drawing_area);
+  ctk_widget_show (drawing_area);
 
   /* Signals used to handle backing surface */
 
@@ -353,7 +353,7 @@ main (int argc, char *argv[])
     GDK_POINTER_MOTION_MASK |
     GDK_PROXIMITY_OUT_MASK;
 
-  gtk_widget_set_events (drawing_area, event_mask);
+  ctk_widget_set_events (drawing_area, event_mask);
 
   devices = gdk_seat_get_slaves (seat, GDK_SEAT_CAPABILITY_ALL_POINTING);
 
@@ -362,31 +362,31 @@ main (int argc, char *argv[])
       GdkDevice *device;
 
       device = d->data;
-      gtk_widget_set_device_events (drawing_area, device, event_mask);
+      ctk_widget_set_device_events (drawing_area, device, event_mask);
       gdk_device_set_mode (device, GDK_MODE_SCREEN);
     }
 
   g_list_free (devices);
 
-  gtk_widget_set_can_focus (drawing_area, TRUE);
-  gtk_widget_grab_focus (drawing_area);
+  ctk_widget_set_can_focus (drawing_area, TRUE);
+  ctk_widget_grab_focus (drawing_area);
 
   /* .. And create some buttons */
-  button = gtk_button_new_with_label ("Quit");
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  button = ctk_button_new_with_label ("Quit");
+  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect_swapped (button, "clicked",
-			    G_CALLBACK (gtk_widget_destroy),
+			    G_CALLBACK (ctk_widget_destroy),
 			    window);
-  gtk_widget_show (button);
+  ctk_widget_show (button);
 
-  gtk_widget_show (window);
+  ctk_widget_show (window);
 
   /* request all motion events */
-  gdk_win = gtk_widget_get_window (drawing_area);
+  gdk_win = ctk_widget_get_window (drawing_area);
   gdk_window_set_event_compression (gdk_win, FALSE);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

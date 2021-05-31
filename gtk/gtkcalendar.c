@@ -31,21 +31,21 @@
  * @Title: GtkCalendar
  *
  * #GtkCalendar is a widget that displays a Gregorian calendar, one month
- * at a time. It can be created with gtk_calendar_new().
+ * at a time. It can be created with ctk_calendar_new().
  *
  * The month and year currently displayed can be altered with
- * gtk_calendar_select_month(). The exact day can be selected from the
- * displayed month using gtk_calendar_select_day().
+ * ctk_calendar_select_month(). The exact day can be selected from the
+ * displayed month using ctk_calendar_select_day().
  *
- * To place a visual marker on a particular day, use gtk_calendar_mark_day()
- * and to remove the marker, gtk_calendar_unmark_day(). Alternative, all
- * marks can be cleared with gtk_calendar_clear_marks().
+ * To place a visual marker on a particular day, use ctk_calendar_mark_day()
+ * and to remove the marker, ctk_calendar_unmark_day(). Alternative, all
+ * marks can be cleared with ctk_calendar_clear_marks().
  *
  * The way in which the calendar itself is displayed can be altered using
- * gtk_calendar_set_display_options().
+ * ctk_calendar_set_display_options().
  *
  * The selected date can be retrieved from a #GtkCalendar using
- * gtk_calendar_get_date().
+ * ctk_calendar_get_date().
  *
  * Users should be aware that, although the Gregorian calendar is the
  * legal calendar in most countries, it was adopted progressively
@@ -175,7 +175,7 @@ enum
   PROP_DETAIL_HEIGHT_ROWS
 };
 
-static guint gtk_calendar_signals[LAST_SIGNAL] = { 0 };
+static guint ctk_calendar_signals[LAST_SIGNAL] = { 0 };
 
 struct _GtkCalendarPrivate
 {
@@ -246,78 +246,78 @@ struct _GtkCalendarPrivate
   gint detail_overflow[6];
 };
 
-static void gtk_calendar_finalize     (GObject      *calendar);
-static void gtk_calendar_destroy      (GtkWidget    *widget);
-static void gtk_calendar_set_property (GObject      *object,
+static void ctk_calendar_finalize     (GObject      *calendar);
+static void ctk_calendar_destroy      (GtkWidget    *widget);
+static void ctk_calendar_set_property (GObject      *object,
                                        guint         prop_id,
                                        const GValue *value,
                                        GParamSpec   *pspec);
-static void gtk_calendar_get_property (GObject      *object,
+static void ctk_calendar_get_property (GObject      *object,
                                        guint         prop_id,
                                        GValue       *value,
                                        GParamSpec   *pspec);
 
-static void     gtk_calendar_realize        (GtkWidget        *widget);
-static void     gtk_calendar_unrealize      (GtkWidget        *widget);
-static void     gtk_calendar_map            (GtkWidget        *widget);
-static void     gtk_calendar_unmap          (GtkWidget        *widget);
-static void     gtk_calendar_get_preferred_width  (GtkWidget   *widget,
+static void     ctk_calendar_realize        (GtkWidget        *widget);
+static void     ctk_calendar_unrealize      (GtkWidget        *widget);
+static void     ctk_calendar_map            (GtkWidget        *widget);
+static void     ctk_calendar_unmap          (GtkWidget        *widget);
+static void     ctk_calendar_get_preferred_width  (GtkWidget   *widget,
                                                    gint        *minimum,
                                                    gint        *natural);
-static void     gtk_calendar_get_preferred_height (GtkWidget   *widget,
+static void     ctk_calendar_get_preferred_height (GtkWidget   *widget,
                                                    gint        *minimum,
                                                    gint        *natural);
-static void     gtk_calendar_size_allocate  (GtkWidget        *widget,
+static void     ctk_calendar_size_allocate  (GtkWidget        *widget,
                                              GtkAllocation    *allocation);
-static gboolean gtk_calendar_draw           (GtkWidget        *widget,
+static gboolean ctk_calendar_draw           (GtkWidget        *widget,
                                              cairo_t          *cr);
-static gboolean gtk_calendar_button_press   (GtkWidget        *widget,
+static gboolean ctk_calendar_button_press   (GtkWidget        *widget,
                                              GdkEventButton   *event);
-static gboolean gtk_calendar_button_release (GtkWidget        *widget,
+static gboolean ctk_calendar_button_release (GtkWidget        *widget,
                                              GdkEventButton   *event);
-static gboolean gtk_calendar_motion_notify  (GtkWidget        *widget,
+static gboolean ctk_calendar_motion_notify  (GtkWidget        *widget,
                                              GdkEventMotion   *event);
-static gboolean gtk_calendar_enter_notify   (GtkWidget        *widget,
+static gboolean ctk_calendar_enter_notify   (GtkWidget        *widget,
                                              GdkEventCrossing *event);
-static gboolean gtk_calendar_leave_notify   (GtkWidget        *widget,
+static gboolean ctk_calendar_leave_notify   (GtkWidget        *widget,
                                              GdkEventCrossing *event);
-static gboolean gtk_calendar_scroll         (GtkWidget        *widget,
+static gboolean ctk_calendar_scroll         (GtkWidget        *widget,
                                              GdkEventScroll   *event);
-static gboolean gtk_calendar_key_press      (GtkWidget        *widget,
+static gboolean ctk_calendar_key_press      (GtkWidget        *widget,
                                              GdkEventKey      *event);
-static gboolean gtk_calendar_focus_out      (GtkWidget        *widget,
+static gboolean ctk_calendar_focus_out      (GtkWidget        *widget,
                                              GdkEventFocus    *event);
-static void     gtk_calendar_grab_notify    (GtkWidget        *widget,
+static void     ctk_calendar_grab_notify    (GtkWidget        *widget,
                                              gboolean          was_grabbed);
-static void     gtk_calendar_state_flags_changed  (GtkWidget     *widget,
+static void     ctk_calendar_state_flags_changed  (GtkWidget     *widget,
                                                    GtkStateFlags  previous_state);
-static gboolean gtk_calendar_query_tooltip  (GtkWidget        *widget,
+static gboolean ctk_calendar_query_tooltip  (GtkWidget        *widget,
                                              gint              x,
                                              gint              y,
                                              gboolean          keyboard_mode,
                                              GtkTooltip       *tooltip);
 
-static void     gtk_calendar_drag_data_get      (GtkWidget        *widget,
+static void     ctk_calendar_drag_data_get      (GtkWidget        *widget,
                                                  GdkDragContext   *context,
                                                  GtkSelectionData *selection_data,
                                                  guint             info,
                                                  guint             time);
-static void     gtk_calendar_drag_data_received (GtkWidget        *widget,
+static void     ctk_calendar_drag_data_received (GtkWidget        *widget,
                                                  GdkDragContext   *context,
                                                  gint              x,
                                                  gint              y,
                                                  GtkSelectionData *selection_data,
                                                  guint             info,
                                                  guint             time);
-static gboolean gtk_calendar_drag_motion        (GtkWidget        *widget,
+static gboolean ctk_calendar_drag_motion        (GtkWidget        *widget,
                                                  GdkDragContext   *context,
                                                  gint              x,
                                                  gint              y,
                                                  guint             time);
-static void     gtk_calendar_drag_leave         (GtkWidget        *widget,
+static void     ctk_calendar_drag_leave         (GtkWidget        *widget,
                                                  GdkDragContext   *context,
                                                  guint             time);
-static gboolean gtk_calendar_drag_drop          (GtkWidget        *widget,
+static gboolean ctk_calendar_drag_drop          (GtkWidget        *widget,
                                                  GdkDragContext   *context,
                                                  gint              x,
                                                  gint              y,
@@ -344,10 +344,10 @@ static gint calendar_get_inner_border  (GtkCalendar *calendar);
 static char    *default_abbreviated_dayname[7];
 static char    *default_monthname[12];
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCalendar, gtk_calendar, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCalendar, ctk_calendar, GTK_TYPE_WIDGET)
 
 static void
-gtk_calendar_class_init (GtkCalendarClass *class)
+ctk_calendar_class_init (GtkCalendarClass *class)
 {
   GObjectClass   *gobject_class;
   GtkWidgetClass *widget_class;
@@ -355,36 +355,36 @@ gtk_calendar_class_init (GtkCalendarClass *class)
   gobject_class = (GObjectClass*)  class;
   widget_class = (GtkWidgetClass*) class;
 
-  gobject_class->set_property = gtk_calendar_set_property;
-  gobject_class->get_property = gtk_calendar_get_property;
-  gobject_class->finalize = gtk_calendar_finalize;
+  gobject_class->set_property = ctk_calendar_set_property;
+  gobject_class->get_property = ctk_calendar_get_property;
+  gobject_class->finalize = ctk_calendar_finalize;
 
-  widget_class->destroy = gtk_calendar_destroy;
-  widget_class->realize = gtk_calendar_realize;
-  widget_class->unrealize = gtk_calendar_unrealize;
-  widget_class->map = gtk_calendar_map;
-  widget_class->unmap = gtk_calendar_unmap;
-  widget_class->draw = gtk_calendar_draw;
-  widget_class->get_preferred_width = gtk_calendar_get_preferred_width;
-  widget_class->get_preferred_height = gtk_calendar_get_preferred_height;
-  widget_class->size_allocate = gtk_calendar_size_allocate;
-  widget_class->button_press_event = gtk_calendar_button_press;
-  widget_class->button_release_event = gtk_calendar_button_release;
-  widget_class->motion_notify_event = gtk_calendar_motion_notify;
-  widget_class->enter_notify_event = gtk_calendar_enter_notify;
-  widget_class->leave_notify_event = gtk_calendar_leave_notify;
-  widget_class->key_press_event = gtk_calendar_key_press;
-  widget_class->scroll_event = gtk_calendar_scroll;
-  widget_class->state_flags_changed = gtk_calendar_state_flags_changed;
-  widget_class->grab_notify = gtk_calendar_grab_notify;
-  widget_class->focus_out_event = gtk_calendar_focus_out;
-  widget_class->query_tooltip = gtk_calendar_query_tooltip;
+  widget_class->destroy = ctk_calendar_destroy;
+  widget_class->realize = ctk_calendar_realize;
+  widget_class->unrealize = ctk_calendar_unrealize;
+  widget_class->map = ctk_calendar_map;
+  widget_class->unmap = ctk_calendar_unmap;
+  widget_class->draw = ctk_calendar_draw;
+  widget_class->get_preferred_width = ctk_calendar_get_preferred_width;
+  widget_class->get_preferred_height = ctk_calendar_get_preferred_height;
+  widget_class->size_allocate = ctk_calendar_size_allocate;
+  widget_class->button_press_event = ctk_calendar_button_press;
+  widget_class->button_release_event = ctk_calendar_button_release;
+  widget_class->motion_notify_event = ctk_calendar_motion_notify;
+  widget_class->enter_notify_event = ctk_calendar_enter_notify;
+  widget_class->leave_notify_event = ctk_calendar_leave_notify;
+  widget_class->key_press_event = ctk_calendar_key_press;
+  widget_class->scroll_event = ctk_calendar_scroll;
+  widget_class->state_flags_changed = ctk_calendar_state_flags_changed;
+  widget_class->grab_notify = ctk_calendar_grab_notify;
+  widget_class->focus_out_event = ctk_calendar_focus_out;
+  widget_class->query_tooltip = ctk_calendar_query_tooltip;
 
-  widget_class->drag_data_get = gtk_calendar_drag_data_get;
-  widget_class->drag_motion = gtk_calendar_drag_motion;
-  widget_class->drag_leave = gtk_calendar_drag_leave;
-  widget_class->drag_drop = gtk_calendar_drag_drop;
-  widget_class->drag_data_received = gtk_calendar_drag_data_received;
+  widget_class->drag_data_get = ctk_calendar_drag_data_get;
+  widget_class->drag_motion = ctk_calendar_drag_motion;
+  widget_class->drag_leave = ctk_calendar_drag_leave;
+  widget_class->drag_drop = ctk_calendar_drag_drop;
+  widget_class->drag_data_received = ctk_calendar_drag_data_received;
 
   /**
    * GtkCalendar:year:
@@ -492,7 +492,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
  * GtkCalendar:detail-width-chars:
  *
  * Width of a detail cell, in characters.
- * A value of 0 allows any width. See gtk_calendar_set_detail_func().
+ * A value of 0 allows any width. See ctk_calendar_set_detail_func().
  *
  * Since: 2.14
  */
@@ -508,7 +508,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
  * GtkCalendar:detail-height-rows:
  *
  * Height of a detail cell, in rows.
- * A value of 0 allows any width. See gtk_calendar_set_detail_func().
+ * A value of 0 allows any width. See ctk_calendar_set_detail_func().
  *
  * Since: 2.14
  */
@@ -543,7 +543,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * The spacing around the day/week headers and main area.
    */
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("inner-border",
                                                              P_("Inner border"),
                                                              P_("Inner border space"),
@@ -555,7 +555,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * Separation between day headers and main area.
    */
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("vertical-separation",
                                                              P_("Vertical separation"),
                                                              P_("Space between day headers and main area"),
@@ -567,7 +567,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * Separation between week headers and main area.
    */
-  gtk_widget_class_install_style_property (widget_class,
+  ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("horizontal-separation",
                                                              P_("Horizontal separation"),
                                                              P_("Space between week headers and main area"),
@@ -581,7 +581,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    * Emitted when the user clicks a button to change the selected month on a
    * calendar.
    */
-  gtk_calendar_signals[MONTH_CHANGED_SIGNAL] =
+  ctk_calendar_signals[MONTH_CHANGED_SIGNAL] =
     g_signal_new (I_("month-changed"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
@@ -596,7 +596,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * Emitted when the user selects a day.
    */
-  gtk_calendar_signals[DAY_SELECTED_SIGNAL] =
+  ctk_calendar_signals[DAY_SELECTED_SIGNAL] =
     g_signal_new (I_("day-selected"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
@@ -611,7 +611,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * Emitted when the user double-clicks a day.
    */
-  gtk_calendar_signals[DAY_SELECTED_DOUBLE_CLICK_SIGNAL] =
+  ctk_calendar_signals[DAY_SELECTED_DOUBLE_CLICK_SIGNAL] =
     g_signal_new (I_("day-selected-double-click"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
@@ -626,7 +626,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * Emitted when the user switched to the previous month.
    */
-  gtk_calendar_signals[PREV_MONTH_SIGNAL] =
+  ctk_calendar_signals[PREV_MONTH_SIGNAL] =
     g_signal_new (I_("prev-month"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
@@ -641,7 +641,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * Emitted when the user switched to the next month.
    */
-  gtk_calendar_signals[NEXT_MONTH_SIGNAL] =
+  ctk_calendar_signals[NEXT_MONTH_SIGNAL] =
     g_signal_new (I_("next-month"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
@@ -656,7 +656,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * Emitted when user switched to the previous year.
    */
-  gtk_calendar_signals[PREV_YEAR_SIGNAL] =
+  ctk_calendar_signals[PREV_YEAR_SIGNAL] =
     g_signal_new (I_("prev-year"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
@@ -671,7 +671,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
    *
    * Emitted when user switched to the next year.
    */
-  gtk_calendar_signals[NEXT_YEAR_SIGNAL] =
+  ctk_calendar_signals[NEXT_YEAR_SIGNAL] =
     g_signal_new (I_("next-year"),
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_FIRST,
@@ -680,12 +680,12 @@ gtk_calendar_class_init (GtkCalendarClass *class)
                   NULL,
                   G_TYPE_NONE, 0);
 
-  gtk_widget_class_set_accessible_role (widget_class, ATK_ROLE_CALENDAR);
-  gtk_widget_class_set_css_name (widget_class, "calendar");
+  ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_CALENDAR);
+  ctk_widget_class_set_css_name (widget_class, "calendar");
 }
 
 static void
-gtk_calendar_init (GtkCalendar *calendar)
+ctk_calendar_init (GtkCalendar *calendar)
 {
   GtkWidget *widget = GTK_WIDGET (calendar);
   time_t secs;
@@ -709,10 +709,10 @@ gtk_calendar_init (GtkCalendar *calendar)
   gchar *week_start;
 #endif
 
-  priv = calendar->priv = gtk_calendar_get_instance_private (calendar);
+  priv = calendar->priv = ctk_calendar_get_instance_private (calendar);
 
-  gtk_widget_set_can_focus (widget, TRUE);
-  gtk_widget_set_has_window (widget, FALSE);
+  ctk_widget_set_can_focus (widget, TRUE);
+  ctk_widget_set_has_window (widget, FALSE);
 
   if (!default_abbreviated_dayname[0])
     for (i=0; i<7; i++)
@@ -797,8 +797,8 @@ gtk_calendar_init (GtkCalendar *calendar)
   priv->in_drag = 0;
   priv->drag_highlight = 0;
 
-  gtk_drag_dest_set (widget, 0, NULL, 0, GDK_ACTION_COPY);
-  gtk_drag_dest_add_text_targets (widget);
+  ctk_drag_dest_set (widget, 0, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_dest_add_text_targets (widget);
 
   priv->year_before = 0;
 
@@ -881,9 +881,9 @@ calendar_queue_refresh (GtkCalendar *calendar)
   if (!(priv->detail_func) ||
       !(priv->display_flags & GTK_CALENDAR_SHOW_DETAILS) ||
        (priv->detail_width_chars && priv->detail_height_rows))
-    gtk_widget_queue_draw (GTK_WIDGET (calendar));
+    ctk_widget_queue_draw (GTK_WIDGET (calendar));
   else
-    gtk_widget_queue_resize (GTK_WIDGET (calendar));
+    ctk_widget_queue_resize (GTK_WIDGET (calendar));
 }
 
 static void
@@ -905,10 +905,10 @@ calendar_set_month_next (GtkCalendar *calendar)
 
   calendar_compute_days (calendar);
   g_signal_emit (calendar,
-                 gtk_calendar_signals[NEXT_MONTH_SIGNAL],
+                 ctk_calendar_signals[NEXT_MONTH_SIGNAL],
                  0);
   g_signal_emit (calendar,
-                 gtk_calendar_signals[MONTH_CHANGED_SIGNAL],
+                 ctk_calendar_signals[MONTH_CHANGED_SIGNAL],
                  0);
 
   month_len = month_length[leap (priv->year)][priv->month + 1];
@@ -916,10 +916,10 @@ calendar_set_month_next (GtkCalendar *calendar)
   if (month_len < priv->selected_day)
     {
       priv->selected_day = 0;
-      gtk_calendar_select_day (calendar, month_len);
+      ctk_calendar_select_day (calendar, month_len);
     }
   else
-    gtk_calendar_select_day (calendar, priv->selected_day);
+    ctk_calendar_select_day (calendar, priv->selected_day);
 
   calendar_queue_refresh (calendar);
 }
@@ -933,10 +933,10 @@ calendar_set_year_prev (GtkCalendar *calendar)
   priv->year--;
   calendar_compute_days (calendar);
   g_signal_emit (calendar,
-                 gtk_calendar_signals[PREV_YEAR_SIGNAL],
+                 ctk_calendar_signals[PREV_YEAR_SIGNAL],
                  0);
   g_signal_emit (calendar,
-                 gtk_calendar_signals[MONTH_CHANGED_SIGNAL],
+                 ctk_calendar_signals[MONTH_CHANGED_SIGNAL],
                  0);
 
   month_len = month_length[leap (priv->year)][priv->month + 1];
@@ -944,10 +944,10 @@ calendar_set_year_prev (GtkCalendar *calendar)
   if (month_len < priv->selected_day)
     {
       priv->selected_day = 0;
-      gtk_calendar_select_day (calendar, month_len);
+      ctk_calendar_select_day (calendar, month_len);
     }
   else
-    gtk_calendar_select_day (calendar, priv->selected_day);
+    ctk_calendar_select_day (calendar, priv->selected_day);
 
   calendar_queue_refresh (calendar);
 }
@@ -961,10 +961,10 @@ calendar_set_year_next (GtkCalendar *calendar)
   priv->year++;
   calendar_compute_days (calendar);
   g_signal_emit (calendar,
-                 gtk_calendar_signals[NEXT_YEAR_SIGNAL],
+                 ctk_calendar_signals[NEXT_YEAR_SIGNAL],
                  0);
   g_signal_emit (calendar,
-                 gtk_calendar_signals[MONTH_CHANGED_SIGNAL],
+                 ctk_calendar_signals[MONTH_CHANGED_SIGNAL],
                  0);
 
   month_len = month_length[leap (priv->year)][priv->month + 1];
@@ -972,10 +972,10 @@ calendar_set_year_next (GtkCalendar *calendar)
   if (month_len < priv->selected_day)
     {
       priv->selected_day = 0;
-      gtk_calendar_select_day (calendar, month_len);
+      ctk_calendar_select_day (calendar, month_len);
     }
   else
-    gtk_calendar_select_day (calendar, priv->selected_day);
+    ctk_calendar_select_day (calendar, priv->selected_day);
 
   calendar_queue_refresh (calendar);
 }
@@ -1071,7 +1071,7 @@ calendar_select_and_focus_day (GtkCalendar *calendar,
   if (old_focus_row != -1 && old_focus_col != -1)
     calendar_invalidate_day (calendar, old_focus_row, old_focus_col);
 
-  gtk_calendar_select_day (calendar, day);
+  ctk_calendar_select_day (calendar, day);
 }
 
 
@@ -1101,34 +1101,34 @@ get_component_paddings (GtkCalendar *calendar,
   GtkWidget *widget;
 
   widget = GTK_WIDGET (calendar);
-  context = gtk_widget_get_style_context (widget);
-  state = gtk_style_context_get_state (context);
+  context = ctk_widget_get_style_context (widget);
+  state = ctk_style_context_get_state (context);
 
   if (padding)
-    gtk_style_context_get_padding (context, state, padding);
+    ctk_style_context_get_padding (context, state, padding);
 
   if (day_padding)
     {
-      gtk_style_context_save (context);
-      gtk_style_context_add_class (context, "day-number");
-      gtk_style_context_get_padding (context, state, day_padding);
-      gtk_style_context_restore (context);
+      ctk_style_context_save (context);
+      ctk_style_context_add_class (context, "day-number");
+      ctk_style_context_get_padding (context, state, day_padding);
+      ctk_style_context_restore (context);
     }
 
   if (day_name_padding)
     {
-      gtk_style_context_save (context);
-      gtk_style_context_add_class (context, "day-name");
-      gtk_style_context_get_padding (context, state, day_name_padding);
-      gtk_style_context_restore (context);
+      ctk_style_context_save (context);
+      ctk_style_context_add_class (context, "day-name");
+      ctk_style_context_get_padding (context, state, day_name_padding);
+      ctk_style_context_restore (context);
     }
 
   if (week_padding)
     {
-      gtk_style_context_save (context);
-      gtk_style_context_add_class (context, "week-number");
-      gtk_style_context_get_padding (context, state, week_padding);
-      gtk_style_context_restore (context);
+      ctk_style_context_save (context);
+      ctk_style_context_add_class (context, "week-number");
+      ctk_style_context_get_padding (context, state, week_padding);
+      ctk_style_context_restore (context);
     }
 }
 
@@ -1150,7 +1150,7 @@ calendar_left_x_for_column (GtkCalendar *calendar,
 
   week_width = priv->week_width + padding.left + inner_border;
 
-  if (gtk_widget_get_direction (GTK_WIDGET (calendar)) == GTK_TEXT_DIR_RTL)
+  if (ctk_widget_get_direction (GTK_WIDGET (calendar)) == GTK_TEXT_DIR_RTL)
     {
       column = 6 - column;
       week_width = 0;
@@ -1247,9 +1247,9 @@ calendar_arrow_rectangle (GtkCalendar  *calendar,
   gboolean year_left;
 
   get_component_paddings (calendar, &padding, NULL, NULL, NULL);
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
-  if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
+  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
     year_left = priv->year_before;
   else
     year_left = !priv->year_before;
@@ -1333,22 +1333,22 @@ calendar_set_month_prev (GtkCalendar *calendar)
   calendar_compute_days (calendar);
 
   g_signal_emit (calendar,
-                 gtk_calendar_signals[PREV_MONTH_SIGNAL],
+                 ctk_calendar_signals[PREV_MONTH_SIGNAL],
                  0);
   g_signal_emit (calendar,
-                 gtk_calendar_signals[MONTH_CHANGED_SIGNAL],
+                 ctk_calendar_signals[MONTH_CHANGED_SIGNAL],
                  0);
 
   if (month_len < priv->selected_day)
     {
       priv->selected_day = 0;
-      gtk_calendar_select_day (calendar, month_len);
+      ctk_calendar_select_day (calendar, month_len);
     }
   else
     {
       if (priv->selected_day < 0)
         priv->selected_day = priv->selected_day + 1 + month_length[leap (priv->year)][priv->month + 1];
-      gtk_calendar_select_day (calendar, priv->selected_day);
+      ctk_calendar_select_day (calendar, priv->selected_day);
     }
 
   calendar_queue_refresh (calendar);
@@ -1360,13 +1360,13 @@ calendar_set_month_prev (GtkCalendar *calendar)
  ****************************************/
 
 static void
-gtk_calendar_finalize (GObject *object)
+ctk_calendar_finalize (GObject *object)
 {
-  G_OBJECT_CLASS (gtk_calendar_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_calendar_parent_class)->finalize (object);
 }
 
 static void
-gtk_calendar_destroy (GtkWidget *widget)
+ctk_calendar_destroy (GtkWidget *widget)
 {
   GtkCalendarPrivate *priv = GTK_CALENDAR (widget)->priv;
 
@@ -1380,7 +1380,7 @@ gtk_calendar_destroy (GtkWidget *widget)
       priv->detail_func_destroy = NULL;
     }
 
-  GTK_WIDGET_CLASS (gtk_calendar_parent_class)->destroy (widget);
+  GTK_WIDGET_CLASS (ctk_calendar_parent_class)->destroy (widget);
 }
 
 static gboolean
@@ -1401,7 +1401,7 @@ calendar_set_display_option (GtkCalendar              *calendar,
   else
     flags = priv->display_flags & ~flag;
 
-  gtk_calendar_set_display_options (calendar, flags);
+  ctk_calendar_set_display_options (calendar, flags);
 
   return TRUE;
 }
@@ -1416,7 +1416,7 @@ calendar_get_display_option (GtkCalendar              *calendar,
 }
 
 static void
-gtk_calendar_set_property (GObject      *object,
+ctk_calendar_set_property (GObject      *object,
                            guint         prop_id,
                            const GValue *value,
                            GParamSpec   *pspec)
@@ -1427,17 +1427,17 @@ gtk_calendar_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_YEAR:
-      gtk_calendar_select_month (calendar,
+      ctk_calendar_select_month (calendar,
                                  priv->month,
                                  g_value_get_int (value));
       break;
     case PROP_MONTH:
-      gtk_calendar_select_month (calendar,
+      ctk_calendar_select_month (calendar,
                                  g_value_get_int (value),
                                  priv->year);
       break;
     case PROP_DAY:
-      gtk_calendar_select_day (calendar,
+      ctk_calendar_select_day (calendar,
                                g_value_get_int (value));
       break;
     case PROP_SHOW_HEADING:
@@ -1471,11 +1471,11 @@ gtk_calendar_set_property (GObject      *object,
         g_object_notify (object, "show-details");
       break;
     case PROP_DETAIL_WIDTH_CHARS:
-      gtk_calendar_set_detail_width_chars (calendar,
+      ctk_calendar_set_detail_width_chars (calendar,
                                            g_value_get_int (value));
       break;
     case PROP_DETAIL_HEIGHT_ROWS:
-      gtk_calendar_set_detail_height_rows (calendar,
+      ctk_calendar_set_detail_height_rows (calendar,
                                            g_value_get_int (value));
       break;
     default:
@@ -1485,7 +1485,7 @@ gtk_calendar_set_property (GObject      *object,
 }
 
 static void
-gtk_calendar_get_property (GObject      *object,
+ctk_calendar_get_property (GObject      *object,
                            guint         prop_id,
                            GValue       *value,
                            GParamSpec   *pspec)
@@ -1554,11 +1554,11 @@ calendar_realize_arrows (GtkCalendar *calendar)
   if (! (priv->display_flags & GTK_CALENDAR_NO_MONTH_CHANGE)
       && (priv->display_flags & GTK_CALENDAR_SHOW_HEADING))
     {
-      gtk_widget_get_allocation (widget, &allocation);
+      ctk_widget_get_allocation (widget, &allocation);
 
       attributes.wclass = GDK_INPUT_ONLY;
       attributes.window_type = GDK_WINDOW_CHILD;
-      attributes.event_mask = (gtk_widget_get_events (widget)
+      attributes.event_mask = (ctk_widget_get_events (widget)
                                | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
                                | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK);
       attributes_mask = GDK_WA_X | GDK_WA_Y;
@@ -1571,11 +1571,11 @@ calendar_realize_arrows (GtkCalendar *calendar)
           attributes.y = allocation.y + rect.y;
           attributes.width = rect.width;
           attributes.height = rect.height;
-          priv->arrow_win[i] = gdk_window_new (gtk_widget_get_window (widget),
+          priv->arrow_win[i] = gdk_window_new (ctk_widget_get_window (widget),
                                                &attributes,
                                                attributes_mask);
 
-          gtk_widget_register_window (widget, priv->arrow_win[i]);
+          ctk_widget_register_window (widget, priv->arrow_win[i]);
         }
       priv->arrow_prelight = 0x0;
     }
@@ -1596,7 +1596,7 @@ calendar_unrealize_arrows (GtkCalendar *calendar)
     {
       if (priv->arrow_win[i])
         {
-          gtk_widget_unregister_window (GTK_WIDGET (calendar), priv->arrow_win[i]);
+          ctk_widget_unregister_window (GTK_WIDGET (calendar), priv->arrow_win[i]);
           gdk_window_destroy (priv->arrow_win[i]);
           priv->arrow_win[i] = NULL;
         }
@@ -1609,7 +1609,7 @@ calendar_get_inner_border (GtkCalendar *calendar)
 {
   gint inner_border;
 
-  gtk_widget_style_get (GTK_WIDGET (calendar),
+  ctk_widget_style_get (GTK_WIDGET (calendar),
                         "inner-border", &inner_border,
                         NULL);
 
@@ -1621,7 +1621,7 @@ calendar_get_xsep (GtkCalendar *calendar)
 {
   gint xsep;
 
-  gtk_widget_style_get (GTK_WIDGET (calendar),
+  ctk_widget_style_get (GTK_WIDGET (calendar),
                         "horizontal-separation", &xsep,
                         NULL);
 
@@ -1633,7 +1633,7 @@ calendar_get_ysep (GtkCalendar *calendar)
 {
   gint ysep;
 
-  gtk_widget_style_get (GTK_WIDGET (calendar),
+  ctk_widget_style_get (GTK_WIDGET (calendar),
                         "vertical-separation", &ysep,
                         NULL);
 
@@ -1641,7 +1641,7 @@ calendar_get_ysep (GtkCalendar *calendar)
 }
 
 static void
-gtk_calendar_realize (GtkWidget *widget)
+ctk_calendar_realize (GtkWidget *widget)
 {
   GtkCalendarPrivate *priv = GTK_CALENDAR (widget)->priv;
   GdkWindowAttr attributes;
@@ -1651,20 +1651,20 @@ gtk_calendar_realize (GtkWidget *widget)
   GtkBorder padding;
 
   get_component_paddings (GTK_CALENDAR (widget), &padding, NULL, NULL, NULL);
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
-  GTK_WIDGET_CLASS (gtk_calendar_parent_class)->realize (widget);
+  GTK_WIDGET_CLASS (ctk_calendar_parent_class)->realize (widget);
 
   attributes.wclass = GDK_INPUT_ONLY;
   attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.event_mask = (gtk_widget_get_events (widget)
+  attributes.event_mask = (ctk_widget_get_events (widget)
                            | GDK_SCROLL_MASK
                            | GDK_BUTTON_PRESS_MASK
                            | GDK_BUTTON_RELEASE_MASK
                            | GDK_POINTER_MOTION_MASK
                            | GDK_LEAVE_NOTIFY_MASK);
 
-  if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
+  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
     attributes.x = priv->week_width + padding.left + inner_border;
   else
     attributes.x = padding.left + inner_border;
@@ -1672,7 +1672,7 @@ gtk_calendar_realize (GtkWidget *widget)
   attributes.y = priv->header_h + priv->day_name_h + padding.top + inner_border;
   attributes.width = allocation.width - attributes.x - (padding.right + inner_border);
 
-  if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
     attributes.width -= priv->week_width;
 
   attributes.height = priv->main_h;
@@ -1681,15 +1681,15 @@ gtk_calendar_realize (GtkWidget *widget)
   attributes.x += allocation.x;
   attributes.y += allocation.y;
 
-  priv->main_win = gdk_window_new (gtk_widget_get_window (widget),
+  priv->main_win = gdk_window_new (ctk_widget_get_window (widget),
                                    &attributes, attributes_mask);
-  gtk_widget_register_window (widget, priv->main_win);
+  ctk_widget_register_window (widget, priv->main_win);
 
   calendar_realize_arrows (GTK_CALENDAR (widget));
 }
 
 static void
-gtk_calendar_unrealize (GtkWidget *widget)
+ctk_calendar_unrealize (GtkWidget *widget)
 {
   GtkCalendarPrivate *priv = GTK_CALENDAR (widget)->priv;
 
@@ -1697,12 +1697,12 @@ gtk_calendar_unrealize (GtkWidget *widget)
 
   if (priv->main_win)
     {
-      gtk_widget_unregister_window (widget, priv->main_win);
+      ctk_widget_unregister_window (widget, priv->main_win);
       gdk_window_destroy (priv->main_win);
       priv->main_win = NULL;
     }
 
-  GTK_WIDGET_CLASS (gtk_calendar_parent_class)->unrealize (widget);
+  GTK_WIDGET_CLASS (ctk_calendar_parent_class)->unrealize (widget);
 }
 
 static void
@@ -1732,11 +1732,11 @@ calendar_unmap_arrows (GtkCalendar *calendar)
 }
 
 static void
-gtk_calendar_map (GtkWidget *widget)
+ctk_calendar_map (GtkWidget *widget)
 {
   GtkCalendarPrivate *priv = GTK_CALENDAR (widget)->priv;
 
-  GTK_WIDGET_CLASS (gtk_calendar_parent_class)->map (widget);
+  GTK_WIDGET_CLASS (ctk_calendar_parent_class)->map (widget);
 
   gdk_window_show (priv->main_win);
 
@@ -1744,7 +1744,7 @@ gtk_calendar_map (GtkWidget *widget)
 }
 
 static void
-gtk_calendar_unmap (GtkWidget *widget)
+ctk_calendar_unmap (GtkWidget *widget)
 {
   GtkCalendarPrivate *priv = GTK_CALENDAR (widget)->priv;
 
@@ -1752,11 +1752,11 @@ gtk_calendar_unmap (GtkWidget *widget)
 
   gdk_window_hide (priv->main_win);
 
-  GTK_WIDGET_CLASS (gtk_calendar_parent_class)->unmap (widget);
+  GTK_WIDGET_CLASS (ctk_calendar_parent_class)->unmap (widget);
 }
 
 static gchar*
-gtk_calendar_get_detail (GtkCalendar *calendar,
+ctk_calendar_get_detail (GtkCalendar *calendar,
                          gint         row,
                          gint         column)
 {
@@ -1787,7 +1787,7 @@ gtk_calendar_get_detail (GtkCalendar *calendar,
 }
 
 static gboolean
-gtk_calendar_query_tooltip (GtkWidget  *widget,
+ctk_calendar_query_tooltip (GtkWidget  *widget,
                             gint        x,
                             gint        y,
                             gboolean    keyboard_mode,
@@ -1806,22 +1806,22 @@ gtk_calendar_query_tooltip (GtkWidget  *widget,
       (0 != (priv->detail_overflow[row] & (1 << col)) ||
       0 == (priv->display_flags & GTK_CALENDAR_SHOW_DETAILS)))
     {
-      detail = gtk_calendar_get_detail (calendar, row, col);
+      detail = ctk_calendar_get_detail (calendar, row, col);
       calendar_day_rectangle (calendar, row, col, &day_rect);
     }
 
   if (detail)
     {
-      gtk_tooltip_set_tip_area (tooltip, &day_rect);
-      gtk_tooltip_set_markup (tooltip, detail);
+      ctk_tooltip_set_tip_area (tooltip, &day_rect);
+      ctk_tooltip_set_markup (tooltip, detail);
 
       g_free (detail);
 
       return TRUE;
     }
 
-  if (GTK_WIDGET_CLASS (gtk_calendar_parent_class)->query_tooltip)
-    return GTK_WIDGET_CLASS (gtk_calendar_parent_class)->query_tooltip (widget, x, y, keyboard_mode, tooltip);
+  if (GTK_WIDGET_CLASS (ctk_calendar_parent_class)->query_tooltip)
+    return GTK_WIDGET_CLASS (ctk_calendar_parent_class)->query_tooltip (widget, x, y, keyboard_mode, tooltip);
 
   return FALSE;
 }
@@ -1831,7 +1831,7 @@ gtk_calendar_query_tooltip (GtkWidget  *widget,
  ****************************************/
 
 static void
-gtk_calendar_size_request (GtkWidget      *widget,
+ctk_calendar_size_request (GtkWidget      *widget,
                            GtkRequisition *requisition)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
@@ -1852,7 +1852,7 @@ gtk_calendar_size_request (GtkWidget      *widget,
 
   gboolean show_week_numbers = (priv->display_flags & GTK_CALENDAR_SHOW_WEEK_NUMBERS);
 
-  layout = gtk_widget_create_pango_layout (widget, NULL);
+  layout = ctk_widget_create_pango_layout (widget, NULL);
 
   /*
    * Calculate the requisition  width for the widget.
@@ -1990,7 +1990,7 @@ gtk_calendar_size_request (GtkWidget      *widget,
         for (r = 0; r < 6; r++)
           for (c = 0; c < 7; c++)
             {
-              gchar *detail = gtk_calendar_get_detail (calendar, r, c);
+              gchar *detail = ctk_calendar_get_detail (calendar, r, c);
 
               if (detail)
                 {
@@ -2073,31 +2073,31 @@ gtk_calendar_size_request (GtkWidget      *widget,
 }
 
 static void
-gtk_calendar_get_preferred_width (GtkWidget *widget,
+ctk_calendar_get_preferred_width (GtkWidget *widget,
                                   gint      *minimum,
                                   gint      *natural)
 {
   GtkRequisition requisition;
 
-  gtk_calendar_size_request (widget, &requisition);
+  ctk_calendar_size_request (widget, &requisition);
 
   *minimum = *natural = requisition.width;
 }
 
 static void
-gtk_calendar_get_preferred_height (GtkWidget *widget,
+ctk_calendar_get_preferred_height (GtkWidget *widget,
                                    gint      *minimum,
                                    gint      *natural)
 {
   GtkRequisition requisition;
 
-  gtk_calendar_size_request (widget, &requisition);
+  ctk_calendar_size_request (widget, &requisition);
 
   *minimum = *natural = requisition.height;
 }
 
 static void
-gtk_calendar_size_allocate (GtkWidget     *widget,
+ctk_calendar_size_allocate (GtkWidget     *widget,
                             GtkAllocation *allocation)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
@@ -2108,7 +2108,7 @@ gtk_calendar_size_allocate (GtkWidget     *widget,
   gint calendar_xsep = calendar_get_xsep (calendar);
 
   get_component_paddings (calendar, &padding, NULL, NULL, NULL);
-  gtk_widget_set_allocation (widget, allocation);
+  ctk_widget_set_allocation (widget, allocation);
 
   if (priv->display_flags & GTK_CALENDAR_SHOW_WEEK_NUMBERS)
     {
@@ -2130,9 +2130,9 @@ gtk_calendar_size_allocate (GtkWidget     *widget,
       priv->week_width = 0;
     }
 
-  if (gtk_widget_get_realized (widget))
+  if (ctk_widget_get_realized (widget))
     {
-      if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
+      if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
         gdk_window_move_resize (priv->main_win,
                                 allocation->x
                                  + priv->week_width + padding.left + inner_border,
@@ -2196,33 +2196,33 @@ calendar_paint_header (GtkCalendar *calendar, cairo_t *cr)
   gchar *str;
 
   get_component_paddings (calendar, &padding, NULL, NULL, NULL);
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
   cairo_save (cr);
   cairo_translate (cr, padding.left, padding.top);
 
-  if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
+  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
     year_left = priv->year_before;
   else
     year_left = !priv->year_before;
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   header_width = allocation.width - padding.left - padding.right;
 
   max_month_width = priv->max_month_width;
   max_year_width = priv->max_year_width;
 
-  state = gtk_style_context_get_state (context);
+  state = ctk_style_context_get_state (context);
   state &= ~GTK_STATE_FLAG_DROP_ACTIVE;
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_set_state (context, state);
-  gtk_style_context_add_class (context, GTK_STYLE_CLASS_HEADER);
+  ctk_style_context_set_state (context, state);
+  ctk_style_context_add_class (context, GTK_STYLE_CLASS_HEADER);
 
-  gtk_render_background (context, cr, 0, 0, header_width, priv->header_h);
-  gtk_render_frame (context, cr, 0, 0, header_width, priv->header_h);
+  ctk_render_background (context, cr, 0, 0, header_width, priv->header_h);
+  ctk_render_frame (context, cr, 0, 0, header_width, priv->header_h);
 
   tmp_time = 1;  /* Jan 1 1970, 00:00:01 UTC */
   tm = gmtime (&tmp_time);
@@ -2240,7 +2240,7 @@ calendar_paint_header (GtkCalendar *calendar, cairo_t *cr)
    */
   strftime (buffer, sizeof (buffer), C_("calendar year format", "%Y"), tm);
   str = g_locale_to_utf8 (buffer, -1, NULL, NULL, NULL);
-  layout = gtk_widget_create_pango_layout (widget, str);
+  layout = ctk_widget_create_pango_layout (widget, str);
   g_free (str);
 
   pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
@@ -2263,7 +2263,7 @@ calendar_paint_header (GtkCalendar *calendar, cairo_t *cr)
       x = header_width - (3 + priv->arrow_width + max_year_width
                           - (max_year_width - logical_rect.width)/2);
 
-  gtk_render_layout (context, cr, x, y, layout);
+  ctk_render_layout (context, cr, x, y, layout);
 
   /* Draw month */
   g_snprintf (buffer, sizeof (buffer), "%s", default_monthname[priv->month]);
@@ -2283,10 +2283,10 @@ calendar_paint_header (GtkCalendar *calendar, cairo_t *cr)
     else
       x = 3 + priv->arrow_width + (max_month_width - logical_rect.width)/2;
 
-  gtk_render_layout (context, cr, x, y, layout);
+  ctk_render_layout (context, cr, x, y, layout);
   g_object_unref (layout);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
   cairo_restore (cr);
 }
 
@@ -2311,7 +2311,7 @@ calendar_paint_day_names (GtkCalendar *calendar,
   gint inner_border = calendar_get_inner_border (calendar);
 
   get_component_paddings (calendar, &padding, NULL, &day_name_padding, NULL);
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
   cairo_save (cr);
 
@@ -2319,7 +2319,7 @@ calendar_paint_day_names (GtkCalendar *calendar,
                    padding.left + inner_border,
                    priv->header_h + padding.top + inner_border);
 
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   day_width = priv->day_width;
   cal_width = allocation.width - (inner_border * 2) - padding.left - padding.right;
@@ -2329,21 +2329,21 @@ calendar_paint_day_names (GtkCalendar *calendar,
    * Draw rectangles as inverted background for the labels.
    */
 
-  state = gtk_style_context_get_state (context);
+  state = ctk_style_context_get_state (context);
   state &= ~GTK_STATE_FLAG_DROP_ACTIVE;
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_set_state (context, state);
-  gtk_style_context_add_class (context, GTK_STYLE_CLASS_HIGHLIGHT);
+  ctk_style_context_set_state (context, state);
+  ctk_style_context_add_class (context, GTK_STYLE_CLASS_HIGHLIGHT);
 
-  gtk_render_background (context, cr,
+  ctk_render_background (context, cr,
                          CALENDAR_MARGIN, CALENDAR_MARGIN,
                          cal_width - CALENDAR_MARGIN * 2,
                          priv->day_name_h - CALENDAR_MARGIN);
 
   if (priv->display_flags & GTK_CALENDAR_SHOW_WEEK_NUMBERS)
-    gtk_render_background (context, cr,
+    ctk_render_background (context, cr,
                            CALENDAR_MARGIN,
                            priv->day_name_h - calendar_ysep,
                            priv->week_width - calendar_ysep - CALENDAR_MARGIN,
@@ -2352,11 +2352,11 @@ calendar_paint_day_names (GtkCalendar *calendar,
   /*
    * Write the labels
    */
-  layout = gtk_widget_create_pango_layout (widget, NULL);
+  layout = ctk_widget_create_pango_layout (widget, NULL);
 
   for (i = 0; i < 7; i++)
     {
-      if (gtk_widget_get_direction (GTK_WIDGET (calendar)) == GTK_TEXT_DIR_RTL)
+      if (ctk_widget_get_direction (GTK_WIDGET (calendar)) == GTK_TEXT_DIR_RTL)
         day = 6 - i;
       else
         day = i;
@@ -2366,9 +2366,9 @@ calendar_paint_day_names (GtkCalendar *calendar,
       pango_layout_set_text (layout, buffer, -1);
       pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
-      gtk_render_layout (context, cr,
+      ctk_render_layout (context, cr,
                          (CALENDAR_MARGIN +
-                          + (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR ?
+                          + (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR ?
                              (priv->week_width + (priv->week_width ? calendar_xsep : 0))
                              : 0)
                           + day_wid_sep * i
@@ -2379,7 +2379,7 @@ calendar_paint_day_names (GtkCalendar *calendar,
 
   g_object_unref (layout);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
   cairo_restore (cr);
 }
 
@@ -2402,31 +2402,31 @@ calendar_paint_week_numbers (GtkCalendar *calendar,
   gint x, y;
 
   get_component_paddings (calendar, &padding, NULL, NULL, &week_padding);
-  context = gtk_widget_get_style_context (widget);
+  context = ctk_widget_get_style_context (widget);
 
   cairo_save (cr);
 
   y = priv->header_h + priv->day_name_h + (padding.top + inner_border);
-  if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
+  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
     x = padding.left + inner_border;
   else
-    x = gtk_widget_get_allocated_width (widget) - priv->week_width - (padding.right + inner_border);
+    x = ctk_widget_get_allocated_width (widget) - priv->week_width - (padding.right + inner_border);
 
-  state = gtk_style_context_get_state (context);
+  state = ctk_style_context_get_state (context);
   state &= ~GTK_STATE_FLAG_DROP_ACTIVE;
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
-  gtk_style_context_set_state (context, state);
-  gtk_style_context_add_class (context, GTK_STYLE_CLASS_HIGHLIGHT);
+  ctk_style_context_set_state (context, state);
+  ctk_style_context_add_class (context, GTK_STYLE_CLASS_HIGHLIGHT);
 
   if (priv->display_flags & GTK_CALENDAR_SHOW_DAY_NAMES)
-    gtk_render_background (context, cr,
+    ctk_render_background (context, cr,
                            x + CALENDAR_MARGIN, y,
                            priv->week_width - CALENDAR_MARGIN,
                            priv->main_h - CALENDAR_MARGIN);
   else
-    gtk_render_background (context, cr,
+    ctk_render_background (context, cr,
                            x + CALENDAR_MARGIN,
                            y + CALENDAR_MARGIN,
                            priv->week_width - CALENDAR_MARGIN,
@@ -2436,7 +2436,7 @@ calendar_paint_week_numbers (GtkCalendar *calendar,
    * Write the labels
    */
 
-  layout = gtk_widget_create_pango_layout (widget, NULL);
+  layout = ctk_widget_create_pango_layout (widget, NULL);
   day_height = calendar_row_height (calendar);
 
   for (row = 0; row < 6; row++)
@@ -2481,12 +2481,12 @@ calendar_paint_week_numbers (GtkCalendar *calendar,
                    - logical_rect.width
                    - calendar_xsep - week_padding.right);
 
-      gtk_render_layout (context, cr, x_loc, y_loc, layout);
+      ctk_render_layout (context, cr, x_loc, y_loc, layout);
     }
 
   g_object_unref (layout);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
   cairo_restore (cr);
 }
 
@@ -2522,9 +2522,9 @@ calendar_invalidate_day (GtkCalendar *calendar,
   GdkRectangle day_rect;
   GtkAllocation allocation;
 
-  gtk_widget_get_allocation (GTK_WIDGET (calendar), &allocation);
+  ctk_widget_get_allocation (GTK_WIDGET (calendar), &allocation);
   calendar_day_rectangle (calendar, row, col, &day_rect);
-  gtk_widget_queue_draw_area (GTK_WIDGET (calendar),
+  ctk_widget_queue_draw_area (GTK_WIDGET (calendar),
                               allocation.x + day_rect.x,
                               allocation.y + day_rect.y,
                               day_rect.width, day_rect.height);
@@ -2562,15 +2562,15 @@ calendar_paint_day (GtkCalendar *calendar,
   g_return_if_fail (row < 6);
   g_return_if_fail (col < 7);
 
-  context = gtk_widget_get_style_context (widget);
-  state = gtk_widget_get_state_flags (widget);
+  context = ctk_widget_get_style_context (widget);
+  state = ctk_widget_get_state_flags (widget);
 
   day = priv->day[row][col];
   show_details = (priv->display_flags & GTK_CALENDAR_SHOW_DETAILS);
 
   calendar_day_rectangle (calendar, row, col, &day_rect);
 
-  gtk_style_context_save (context);
+  ctk_style_context_save (context);
 
   state &= ~(GTK_STATE_FLAG_INCONSISTENT | GTK_STATE_FLAG_ACTIVE | GTK_STATE_FLAG_SELECTED | GTK_STATE_FLAG_DROP_ACTIVE);
 
@@ -2586,14 +2586,14 @@ calendar_paint_day (GtkCalendar *calendar,
         {
           state |= GTK_STATE_FLAG_SELECTED;
 
-          gtk_style_context_set_state (context, state);
-          gtk_render_background (context, cr,
+          ctk_style_context_set_state (context, state);
+          ctk_render_background (context, cr,
                                  day_rect.x, day_rect.y,
                                  day_rect.width, day_rect.height);
         }
     }
 
-  gtk_style_context_set_state (context, state);
+  ctk_style_context_set_state (context, state);
 
   /* Translators: this defines whether the day numbers should use
    * localized digits or the ones used in English (0123...).
@@ -2609,20 +2609,20 @@ calendar_paint_day (GtkCalendar *calendar,
 
   /* Get extra information to show, if any: */
 
-  detail = gtk_calendar_get_detail (calendar, row, col);
+  detail = ctk_calendar_get_detail (calendar, row, col);
 
-  layout = gtk_widget_create_pango_layout (widget, buffer);
+  layout = ctk_widget_create_pango_layout (widget, buffer);
   pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
   pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
   x_loc = day_rect.x + (day_rect.width - logical_rect.width) / 2;
   y_loc = day_rect.y;
 
-  gtk_render_layout (context, cr, x_loc, y_loc, layout);
+  ctk_render_layout (context, cr, x_loc, y_loc, layout);
 
   if (priv->day_month[row][col] == MONTH_CURRENT &&
      (priv->marked_date[day-1] || (detail && !show_details)))
-    gtk_render_layout (context, cr, x_loc - 1, y_loc, layout);
+    ctk_render_layout (context, cr, x_loc - 1, y_loc, layout);
 
   y_loc += priv->max_day_char_descent;
 
@@ -2632,7 +2632,7 @@ calendar_paint_day (GtkCalendar *calendar,
 
       cairo_save (cr);
 
-      gtk_style_context_get_color (context, state, &color);
+      ctk_style_context_get_color (context, state, &color);
       gdk_cairo_set_source_rgba (cr, &color);
 
       cairo_set_line_width (cr, 1);
@@ -2678,9 +2678,9 @@ calendar_paint_day (GtkCalendar *calendar,
       pango_cairo_show_layout (cr, layout);
     }
 
-  if (gtk_widget_has_visible_focus (widget) &&
+  if (ctk_widget_has_visible_focus (widget) &&
       priv->focus_row == row && priv->focus_col == col)
-    gtk_render_focus (context, cr,
+    ctk_render_focus (context, cr,
                       day_rect.x, day_rect.y,
                       day_rect.width, day_rect.height);
 
@@ -2689,7 +2689,7 @@ calendar_paint_day (GtkCalendar *calendar,
   else
     priv->detail_overflow[row] &= ~(1 << col);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
   g_object_unref (layout);
   g_free (detail);
 }
@@ -2722,8 +2722,8 @@ calendar_invalidate_arrow (GtkCalendar *calendar,
       GtkAllocation allocation;
 
       calendar_arrow_rectangle (calendar, arrow, &rect);
-      gtk_widget_get_allocation (GTK_WIDGET (calendar), &allocation);
-      gtk_widget_queue_draw_area (GTK_WIDGET (calendar),
+      ctk_widget_get_allocation (GTK_WIDGET (calendar), &allocation);
+      ctk_widget_queue_draw_area (GTK_WIDGET (calendar),
                                   allocation.x + rect.x,
                                   allocation.y + rect.y,
                                   rect.width, rect.height);
@@ -2749,19 +2749,19 @@ calendar_paint_arrow (GtkCalendar *calendar,
 
   cairo_save (cr);
 
-  context = gtk_widget_get_style_context (widget);
-  state = gtk_widget_get_state_flags (widget);
+  context = ctk_widget_get_style_context (widget);
+  state = ctk_widget_get_state_flags (widget);
 
   if (priv->arrow_prelight & (1 << arrow))
     state |= GTK_STATE_FLAG_PRELIGHT;
   else
     state &= ~(GTK_STATE_FLAG_PRELIGHT);
 
-  gtk_style_context_save (context);
-  gtk_style_context_set_state (context, state);
-  gtk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
+  ctk_style_context_save (context);
+  ctk_style_context_set_state (context, state);
+  ctk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
 
-  gtk_render_background (context, cr,
+  ctk_render_background (context, cr,
                          rect.x, rect.y,
                          rect.width, rect.height);
 
@@ -2770,40 +2770,40 @@ calendar_paint_arrow (GtkCalendar *calendar,
   else
     angle = G_PI / 2;
 
-  gtk_render_arrow (context, cr, angle,
+  ctk_render_arrow (context, cr, angle,
                     rect.x + (rect.width - 8) / 2,
                     rect.y + (rect.height - 8) / 2,
                     8);
 
-  gtk_style_context_restore (context);
+  ctk_style_context_restore (context);
   cairo_restore (cr);
 }
 
 static gboolean
-gtk_calendar_draw (GtkWidget *widget,
+ctk_calendar_draw (GtkWidget *widget,
                    cairo_t   *cr)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
   GtkCalendarPrivate *priv = calendar->priv;
   int i;
 
-  if (gtk_cairo_should_draw_window (cr, gtk_widget_get_window (widget)))
+  if (ctk_cairo_should_draw_window (cr, ctk_widget_get_window (widget)))
     {
       GtkStyleContext *context;
 
-      context = gtk_widget_get_style_context (widget);
+      context = ctk_widget_get_style_context (widget);
 
-      gtk_style_context_save (context);
-      gtk_style_context_add_class (context, GTK_STYLE_CLASS_VIEW);
+      ctk_style_context_save (context);
+      ctk_style_context_add_class (context, GTK_STYLE_CLASS_VIEW);
 
-      gtk_render_background (context, cr, 0, 0,
-                             gtk_widget_get_allocated_width (widget),
-                             gtk_widget_get_allocated_height (widget));
-      gtk_render_frame (context, cr, 0, 0,
-                        gtk_widget_get_allocated_width (widget),
-                        gtk_widget_get_allocated_height (widget));
+      ctk_render_background (context, cr, 0, 0,
+                             ctk_widget_get_allocated_width (widget),
+                             ctk_widget_get_allocated_height (widget));
+      ctk_render_frame (context, cr, 0, 0,
+                        ctk_widget_get_allocated_width (widget),
+                        ctk_widget_get_allocated_height (widget));
 
-      gtk_style_context_restore (context);
+      ctk_style_context_restore (context);
     }
 
   calendar_paint_main (calendar, cr);
@@ -2928,7 +2928,7 @@ calendar_main_button_press (GtkCalendar    *calendar,
   y = (gint) (event->y);
 
   gdk_window_get_position (priv->main_win, &win_x, &win_y);
-  gtk_widget_get_allocation (widget, &allocation);
+  ctk_widget_get_allocation (widget, &allocation);
 
   row = calendar_row_from_y (calendar, y + win_y - allocation.y);
   col = calendar_column_from_x (calendar, x + win_x - allocation.x);
@@ -2948,8 +2948,8 @@ calendar_main_button_press (GtkCalendar    *calendar,
       else if (day_month == MONTH_NEXT)
         calendar_set_month_next (calendar);
 
-      if (!gtk_widget_has_focus (widget))
-        gtk_widget_grab_focus (widget);
+      if (!ctk_widget_has_focus (widget))
+        ctk_widget_grab_focus (widget);
 
       if (event->button == GDK_BUTTON_PRIMARY)
         {
@@ -2965,21 +2965,21 @@ calendar_main_button_press (GtkCalendar    *calendar,
       priv->in_drag = 0;
       if (day_month == MONTH_CURRENT)
         g_signal_emit (calendar,
-                       gtk_calendar_signals[DAY_SELECTED_DOUBLE_CLICK_SIGNAL],
+                       ctk_calendar_signals[DAY_SELECTED_DOUBLE_CLICK_SIGNAL],
                        0);
     }
 }
 
 static gboolean
-gtk_calendar_button_press (GtkWidget      *widget,
+ctk_calendar_button_press (GtkWidget      *widget,
                            GdkEventButton *event)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
   GtkCalendarPrivate *priv = calendar->priv;
   gint arrow = -1;
 
-  if (!gtk_widget_has_focus (widget))
-    gtk_widget_grab_focus (widget);
+  if (!ctk_widget_has_focus (widget))
+    ctk_widget_grab_focus (widget);
 
   if (event->window == priv->main_win)
     calendar_main_button_press (calendar, event);
@@ -3006,7 +3006,7 @@ gtk_calendar_button_press (GtkWidget      *widget,
 }
 
 static gboolean
-gtk_calendar_button_release (GtkWidget    *widget,
+ctk_calendar_button_release (GtkWidget    *widget,
                              GdkEventButton *event)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
@@ -3024,27 +3024,27 @@ gtk_calendar_button_release (GtkWidget    *widget,
 }
 
 static gboolean
-gtk_calendar_motion_notify (GtkWidget      *widget,
+ctk_calendar_motion_notify (GtkWidget      *widget,
                             GdkEventMotion *event)
 {
   GtkCalendarPrivate *priv = GTK_CALENDAR (widget)->priv;
 
   if (priv->in_drag)
     {
-      if (gtk_drag_check_threshold (widget,
+      if (ctk_drag_check_threshold (widget,
                                     priv->drag_start_x, priv->drag_start_y,
                                     event->x, event->y))
         {
           GdkDragContext *context;
-          GtkTargetList *target_list = gtk_target_list_new (NULL, 0);
-          gtk_target_list_add_text_targets (target_list, 0);
-          context = gtk_drag_begin_with_coordinates (widget, target_list, GDK_ACTION_COPY,
+          GtkTargetList *target_list = ctk_target_list_new (NULL, 0);
+          ctk_target_list_add_text_targets (target_list, 0);
+          context = ctk_drag_begin_with_coordinates (widget, target_list, GDK_ACTION_COPY,
                                                      1, (GdkEvent *)event,
                                                      priv->drag_start_x, priv->drag_start_y);
 
           priv->in_drag = 0;
-          gtk_target_list_unref (target_list);
-          gtk_drag_set_icon_default (context);
+          ctk_target_list_unref (target_list);
+          ctk_drag_set_icon_default (context);
         }
     }
 
@@ -3052,7 +3052,7 @@ gtk_calendar_motion_notify (GtkWidget      *widget,
 }
 
 static gboolean
-gtk_calendar_enter_notify (GtkWidget        *widget,
+ctk_calendar_enter_notify (GtkWidget        *widget,
                            GdkEventCrossing *event)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
@@ -3086,7 +3086,7 @@ gtk_calendar_enter_notify (GtkWidget        *widget,
 }
 
 static gboolean
-gtk_calendar_leave_notify (GtkWidget        *widget,
+ctk_calendar_leave_notify (GtkWidget        *widget,
                            GdkEventCrossing *event)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
@@ -3120,21 +3120,21 @@ gtk_calendar_leave_notify (GtkWidget        *widget,
 }
 
 static gboolean
-gtk_calendar_scroll (GtkWidget      *widget,
+ctk_calendar_scroll (GtkWidget      *widget,
                      GdkEventScroll *event)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
 
   if (event->direction == GDK_SCROLL_UP)
     {
-      if (!gtk_widget_has_focus (widget))
-        gtk_widget_grab_focus (widget);
+      if (!ctk_widget_has_focus (widget))
+        ctk_widget_grab_focus (widget);
       calendar_set_month_prev (calendar);
     }
   else if (event->direction == GDK_SCROLL_DOWN)
     {
-      if (!gtk_widget_has_focus (widget))
-        gtk_widget_grab_focus (widget);
+      if (!ctk_widget_has_focus (widget))
+        ctk_widget_grab_focus (widget);
       calendar_set_month_next (calendar);
     }
   else
@@ -3153,7 +3153,7 @@ move_focus (GtkCalendar *calendar,
             gint         direction)
 {
   GtkCalendarPrivate *priv = calendar->priv;
-  GtkTextDirection text_dir = gtk_widget_get_direction (GTK_WIDGET (calendar));
+  GtkTextDirection text_dir = ctk_widget_get_direction (GTK_WIDGET (calendar));
 
   if ((text_dir == GTK_TEXT_DIR_LTR && direction == -1) ||
       (text_dir == GTK_TEXT_DIR_RTL && direction == 1))
@@ -3189,7 +3189,7 @@ move_focus (GtkCalendar *calendar,
 }
 
 static gboolean
-gtk_calendar_key_press (GtkWidget   *widget,
+ctk_calendar_key_press (GtkWidget   *widget,
                         GdkEventKey *event)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
@@ -3294,13 +3294,13 @@ gtk_calendar_key_press (GtkWidget   *widget,
  ****************************************/
 
 static void
-gtk_calendar_state_flags_changed (GtkWidget     *widget,
+ctk_calendar_state_flags_changed (GtkWidget     *widget,
                                   GtkStateFlags  previous_state)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
   GtkCalendarPrivate *priv = calendar->priv;
 
-  if (!gtk_widget_is_sensitive (widget))
+  if (!ctk_widget_is_sensitive (widget))
     {
       priv->in_drag = 0;
       calendar_stop_spinning (calendar);
@@ -3308,7 +3308,7 @@ gtk_calendar_state_flags_changed (GtkWidget     *widget,
 }
 
 static void
-gtk_calendar_grab_notify (GtkWidget *widget,
+ctk_calendar_grab_notify (GtkWidget *widget,
                           gboolean   was_grabbed)
 {
   if (!was_grabbed)
@@ -3316,7 +3316,7 @@ gtk_calendar_grab_notify (GtkWidget *widget,
 }
 
 static gboolean
-gtk_calendar_focus_out (GtkWidget     *widget,
+ctk_calendar_focus_out (GtkWidget     *widget,
                         GdkEventFocus *event)
 {
   GtkCalendar *calendar = GTK_CALENDAR (widget);
@@ -3335,7 +3335,7 @@ gtk_calendar_focus_out (GtkWidget     *widget,
  ****************************************/
 
 static void
-gtk_calendar_drag_data_get (GtkWidget        *widget,
+ctk_calendar_drag_data_get (GtkWidget        *widget,
                             GdkDragContext   *context,
                             GtkSelectionData *selection_data,
                             guint             info,
@@ -3349,7 +3349,7 @@ gtk_calendar_drag_data_get (GtkWidget        *widget,
 
   date = g_date_new_dmy (priv->selected_day, priv->month + 1, priv->year);
   len = g_date_strftime (str, 127, "%x", date);
-  gtk_selection_data_set_text (selection_data, str, len);
+  ctk_selection_data_set_text (selection_data, str, len);
 
   g_free (date);
 }
@@ -3375,19 +3375,19 @@ get_status_pending (GdkDragContext *context)
 }
 
 static void
-gtk_calendar_drag_leave (GtkWidget      *widget,
+ctk_calendar_drag_leave (GtkWidget      *widget,
                          GdkDragContext *context,
                          guint           time)
 {
   GtkCalendarPrivate *priv = GTK_CALENDAR (widget)->priv;
 
   priv->drag_highlight = 0;
-  gtk_drag_unhighlight (widget);
+  ctk_drag_unhighlight (widget);
 
 }
 
 static gboolean
-gtk_calendar_drag_motion (GtkWidget      *widget,
+ctk_calendar_drag_motion (GtkWidget      *widget,
                           GdkDragContext *context,
                           gint            x,
                           gint            y,
@@ -3399,23 +3399,23 @@ gtk_calendar_drag_motion (GtkWidget      *widget,
   if (!priv->drag_highlight)
     {
       priv->drag_highlight = 1;
-      gtk_drag_highlight (widget);
+      ctk_drag_highlight (widget);
     }
 
-  target = gtk_drag_dest_find_target (widget, context, NULL);
+  target = ctk_drag_dest_find_target (widget, context, NULL);
   if (target == GDK_NONE || gdk_drag_context_get_suggested_action (context) == 0)
     gdk_drag_status (context, 0, time);
   else
     {
       set_status_pending (context, gdk_drag_context_get_suggested_action (context));
-      gtk_drag_get_data (widget, context, target, time);
+      ctk_drag_get_data (widget, context, target, time);
     }
 
   return TRUE;
 }
 
 static gboolean
-gtk_calendar_drag_drop (GtkWidget      *widget,
+ctk_calendar_drag_drop (GtkWidget      *widget,
                         GdkDragContext *context,
                         gint            x,
                         gint            y,
@@ -3423,10 +3423,10 @@ gtk_calendar_drag_drop (GtkWidget      *widget,
 {
   GdkAtom target;
 
-  target = gtk_drag_dest_find_target (widget, context, NULL);
+  target = ctk_drag_dest_find_target (widget, context, NULL);
   if (target != GDK_NONE)
     {
-      gtk_drag_get_data (widget, context,
+      ctk_drag_get_data (widget, context,
                          target,
                          time);
       return TRUE;
@@ -3436,7 +3436,7 @@ gtk_calendar_drag_drop (GtkWidget      *widget,
 }
 
 static void
-gtk_calendar_drag_data_received (GtkWidget        *widget,
+ctk_calendar_drag_data_received (GtkWidget        *widget,
                                  GdkDragContext   *context,
                                  gint              x,
                                  gint              y,
@@ -3462,7 +3462,7 @@ gtk_calendar_drag_data_received (GtkWidget        *widget,
        * supposed to call drag_status, not actually paste in the
        * data.
        */
-      str = (gchar*) gtk_selection_data_get_text (selection_data);
+      str = (gchar*) ctk_selection_data_get_text (selection_data);
 
       if (str)
         {
@@ -3482,7 +3482,7 @@ gtk_calendar_drag_data_received (GtkWidget        *widget,
     }
 
   date = g_date_new ();
-  str = (gchar*) gtk_selection_data_get_text (selection_data);
+  str = (gchar*) ctk_selection_data_get_text (selection_data);
   if (str)
     {
       g_date_set_parse (date, str);
@@ -3493,7 +3493,7 @@ gtk_calendar_drag_data_received (GtkWidget        *widget,
     {
       g_warning ("Received invalid date data");
       g_date_free (date);
-      gtk_drag_finish (context, FALSE, FALSE, time);
+      ctk_drag_finish (context, FALSE, FALSE, time);
       return;
     }
 
@@ -3502,14 +3502,14 @@ gtk_calendar_drag_data_received (GtkWidget        *widget,
   year = g_date_get_year (date);
   g_date_free (date);
 
-  gtk_drag_finish (context, TRUE, FALSE, time);
+  ctk_drag_finish (context, TRUE, FALSE, time);
 
 
   g_object_freeze_notify (G_OBJECT (calendar));
   if (!(priv->display_flags & GTK_CALENDAR_NO_MONTH_CHANGE)
       && (priv->display_flags & GTK_CALENDAR_SHOW_HEADING))
-    gtk_calendar_select_month (calendar, month - 1, year);
-  gtk_calendar_select_day (calendar, day);
+    ctk_calendar_select_month (calendar, month - 1, year);
+  ctk_calendar_select_day (calendar, day);
   g_object_thaw_notify (G_OBJECT (calendar));
 }
 
@@ -3519,20 +3519,20 @@ gtk_calendar_drag_data_received (GtkWidget        *widget,
  ****************************************/
 
 /**
- * gtk_calendar_new:
+ * ctk_calendar_new:
  *
  * Creates a new calendar, with the current date being selected.
  *
  * Returns: a newly #GtkCalendar widget
  **/
 GtkWidget*
-gtk_calendar_new (void)
+ctk_calendar_new (void)
 {
   return g_object_new (GTK_TYPE_CALENDAR, NULL);
 }
 
 /**
- * gtk_calendar_get_display_options:
+ * ctk_calendar_get_display_options:
  * @calendar: a #GtkCalendar
  *
  * Returns the current display options of @calendar.
@@ -3542,7 +3542,7 @@ gtk_calendar_new (void)
  * Since: 2.4
  **/
 GtkCalendarDisplayOptions
-gtk_calendar_get_display_options (GtkCalendar         *calendar)
+ctk_calendar_get_display_options (GtkCalendar         *calendar)
 {
   g_return_val_if_fail (GTK_IS_CALENDAR (calendar), 0);
 
@@ -3550,7 +3550,7 @@ gtk_calendar_get_display_options (GtkCalendar         *calendar)
 }
 
 /**
- * gtk_calendar_set_display_options:
+ * ctk_calendar_set_display_options:
  * @calendar: a #GtkCalendar
  * @flags: the display options to set
  *
@@ -3560,7 +3560,7 @@ gtk_calendar_get_display_options (GtkCalendar         *calendar)
  * Since: 2.4
  **/
 void
-gtk_calendar_set_display_options (GtkCalendar          *calendar,
+ctk_calendar_set_display_options (GtkCalendar          *calendar,
                                   GtkCalendarDisplayOptions flags)
 {
   GtkWidget *widget = GTK_WIDGET (calendar);
@@ -3572,7 +3572,7 @@ gtk_calendar_set_display_options (GtkCalendar          *calendar,
 
   old_flags = priv->display_flags;
 
-  if (gtk_widget_get_realized (widget))
+  if (ctk_widget_get_realized (widget))
     {
       if ((flags ^ priv->display_flags) & GTK_CALENDAR_NO_MONTH_CHANGE)
         {
@@ -3582,7 +3582,7 @@ gtk_calendar_set_display_options (GtkCalendar          *calendar,
             {
               priv->display_flags &= ~GTK_CALENDAR_NO_MONTH_CHANGE;
               calendar_realize_arrows (calendar);
-              if (gtk_widget_get_mapped (widget))
+              if (ctk_widget_get_mapped (widget))
                 calendar_map_arrows (calendar);
             }
           else
@@ -3599,7 +3599,7 @@ gtk_calendar_set_display_options (GtkCalendar          *calendar,
             {
               priv->display_flags |= GTK_CALENDAR_SHOW_HEADING;
               calendar_realize_arrows (calendar);
-              if (gtk_widget_get_mapped (widget))
+              if (ctk_widget_get_mapped (widget))
                 calendar_map_arrows (calendar);
             }
           else
@@ -3629,7 +3629,7 @@ gtk_calendar_set_display_options (GtkCalendar          *calendar,
 
       priv->display_flags = flags;
       if (resize)
-        gtk_widget_queue_resize (GTK_WIDGET (calendar));
+        ctk_widget_queue_resize (GTK_WIDGET (calendar));
     }
   else
     priv->display_flags = flags;
@@ -3647,7 +3647,7 @@ gtk_calendar_set_display_options (GtkCalendar          *calendar,
 }
 
 /**
- * gtk_calendar_select_month:
+ * ctk_calendar_select_month:
  * @calendar: a #GtkCalendar
  * @month: a month number between 0 and 11.
  * @year: the year the month is in.
@@ -3655,7 +3655,7 @@ gtk_calendar_set_display_options (GtkCalendar          *calendar,
  * Shifts the calendar to a different month.
  **/
 void
-gtk_calendar_select_month (GtkCalendar *calendar,
+ctk_calendar_select_month (GtkCalendar *calendar,
                            guint        month,
                            guint        year)
 {
@@ -3684,11 +3684,11 @@ gtk_calendar_select_month (GtkCalendar *calendar,
 
   g_object_thaw_notify (G_OBJECT (calendar));
 
-  g_signal_emit (calendar, gtk_calendar_signals[MONTH_CHANGED_SIGNAL], 0);
+  g_signal_emit (calendar, ctk_calendar_signals[MONTH_CHANGED_SIGNAL], 0);
 }
 
 /**
- * gtk_calendar_select_day:
+ * ctk_calendar_select_day:
  * @calendar: a #GtkCalendar.
  * @day: the day number between 1 and 31, or 0 to unselect
  *   the currently selected day.
@@ -3696,7 +3696,7 @@ gtk_calendar_select_month (GtkCalendar *calendar,
  * Selects a day from the current month.
  **/
 void
-gtk_calendar_select_day (GtkCalendar *calendar,
+ctk_calendar_select_day (GtkCalendar *calendar,
                          guint        day)
 {
   GtkCalendarPrivate *priv;
@@ -3711,7 +3711,7 @@ gtk_calendar_select_day (GtkCalendar *calendar,
       /* Deselect the old day */
       if (priv->selected_day > 0)
         {
-          if (gtk_widget_is_drawable (GTK_WIDGET (calendar)))
+          if (ctk_widget_is_drawable (GTK_WIDGET (calendar)))
             calendar_invalidate_day_num (calendar, priv->selected_day);
           priv->selected_day = 0;
         }
@@ -3721,24 +3721,24 @@ gtk_calendar_select_day (GtkCalendar *calendar,
       /* Select the new day */
       if (priv->selected_day > 0)
         {
-          if (gtk_widget_is_drawable (GTK_WIDGET (calendar)))
+          if (ctk_widget_is_drawable (GTK_WIDGET (calendar)))
             calendar_invalidate_day_num (calendar, priv->selected_day);
         }
 
       g_object_notify (G_OBJECT (calendar), "day");
     }
 
-  g_signal_emit (calendar, gtk_calendar_signals[DAY_SELECTED_SIGNAL], 0);
+  g_signal_emit (calendar, ctk_calendar_signals[DAY_SELECTED_SIGNAL], 0);
 }
 
 /**
- * gtk_calendar_clear_marks:
+ * ctk_calendar_clear_marks:
  * @calendar: a #GtkCalendar
  *
  * Remove all visual markers.
  **/
 void
-gtk_calendar_clear_marks (GtkCalendar *calendar)
+ctk_calendar_clear_marks (GtkCalendar *calendar)
 {
   GtkCalendarPrivate *priv;
   guint day;
@@ -3757,14 +3757,14 @@ gtk_calendar_clear_marks (GtkCalendar *calendar)
 }
 
 /**
- * gtk_calendar_mark_day:
+ * ctk_calendar_mark_day:
  * @calendar: a #GtkCalendar
  * @day: the day number to mark between 1 and 31.
  *
  * Places a visual marker on a particular day.
  */
 void
-gtk_calendar_mark_day (GtkCalendar *calendar,
+ctk_calendar_mark_day (GtkCalendar *calendar,
                        guint        day)
 {
   GtkCalendarPrivate *priv;
@@ -3782,7 +3782,7 @@ gtk_calendar_mark_day (GtkCalendar *calendar,
 }
 
 /**
- * gtk_calendar_get_day_is_marked:
+ * ctk_calendar_get_day_is_marked:
  * @calendar: a #GtkCalendar
  * @day: the day number between 1 and 31.
  *
@@ -3793,7 +3793,7 @@ gtk_calendar_mark_day (GtkCalendar *calendar,
  * Since: 3.0
  */
 gboolean
-gtk_calendar_get_day_is_marked (GtkCalendar *calendar,
+ctk_calendar_get_day_is_marked (GtkCalendar *calendar,
                                 guint        day)
 {
   GtkCalendarPrivate *priv;
@@ -3809,14 +3809,14 @@ gtk_calendar_get_day_is_marked (GtkCalendar *calendar,
 }
 
 /**
- * gtk_calendar_unmark_day:
+ * ctk_calendar_unmark_day:
  * @calendar: a #GtkCalendar.
  * @day: the day number to unmark between 1 and 31.
  *
  * Removes the visual marker from a particular day.
  */
 void
-gtk_calendar_unmark_day (GtkCalendar *calendar,
+ctk_calendar_unmark_day (GtkCalendar *calendar,
                          guint        day)
 {
   GtkCalendarPrivate *priv;
@@ -3834,7 +3834,7 @@ gtk_calendar_unmark_day (GtkCalendar *calendar,
 }
 
 /**
- * gtk_calendar_get_date:
+ * ctk_calendar_get_date:
  * @calendar: a #GtkCalendar
  * @year: (out) (allow-none): location to store the year as a decimal
  *     number (e.g. 2011), or %NULL
@@ -3846,7 +3846,7 @@ gtk_calendar_unmark_day (GtkCalendar *calendar,
  * Obtains the selected date from a #GtkCalendar.
  */
 void
-gtk_calendar_get_date (GtkCalendar *calendar,
+ctk_calendar_get_date (GtkCalendar *calendar,
                        guint       *year,
                        guint       *month,
                        guint       *day)
@@ -3868,7 +3868,7 @@ gtk_calendar_get_date (GtkCalendar *calendar,
 }
 
 /**
- * gtk_calendar_set_detail_func:
+ * ctk_calendar_set_detail_func:
  * @calendar: a #GtkCalendar.
  * @func: a function providing details for each day.
  * @data: data to pass to @func invokations.
@@ -3888,7 +3888,7 @@ gtk_calendar_get_date (GtkCalendar *calendar,
  * Since: 2.14
  */
 void
-gtk_calendar_set_detail_func (GtkCalendar           *calendar,
+ctk_calendar_set_detail_func (GtkCalendar           *calendar,
                               GtkCalendarDetailFunc  func,
                               gpointer               data,
                               GDestroyNotify         destroy)
@@ -3906,13 +3906,13 @@ gtk_calendar_set_detail_func (GtkCalendar           *calendar,
   priv->detail_func_user_data = data;
   priv->detail_func_destroy = destroy;
 
-  gtk_widget_set_has_tooltip (GTK_WIDGET (calendar),
+  ctk_widget_set_has_tooltip (GTK_WIDGET (calendar),
                               NULL != priv->detail_func);
-  gtk_widget_queue_resize (GTK_WIDGET (calendar));
+  ctk_widget_queue_resize (GTK_WIDGET (calendar));
 }
 
 /**
- * gtk_calendar_set_detail_width_chars:
+ * ctk_calendar_set_detail_width_chars:
  * @calendar: a #GtkCalendar.
  * @chars: detail width in characters.
  *
@@ -3922,7 +3922,7 @@ gtk_calendar_set_detail_func (GtkCalendar           *calendar,
  * Since: 2.14
  */
 void
-gtk_calendar_set_detail_width_chars (GtkCalendar *calendar,
+ctk_calendar_set_detail_width_chars (GtkCalendar *calendar,
                                      gint         chars)
 {
   GtkCalendarPrivate *priv;
@@ -3935,12 +3935,12 @@ gtk_calendar_set_detail_width_chars (GtkCalendar *calendar,
     {
       priv->detail_width_chars = chars;
       g_object_notify (G_OBJECT (calendar), "detail-width-chars");
-      gtk_widget_queue_resize_no_redraw (GTK_WIDGET (calendar));
+      ctk_widget_queue_resize_no_redraw (GTK_WIDGET (calendar));
     }
 }
 
 /**
- * gtk_calendar_set_detail_height_rows:
+ * ctk_calendar_set_detail_height_rows:
  * @calendar: a #GtkCalendar.
  * @rows: detail height in rows.
  *
@@ -3950,7 +3950,7 @@ gtk_calendar_set_detail_width_chars (GtkCalendar *calendar,
  * Since: 2.14
  */
 void
-gtk_calendar_set_detail_height_rows (GtkCalendar *calendar,
+ctk_calendar_set_detail_height_rows (GtkCalendar *calendar,
                                      gint         rows)
 {
   GtkCalendarPrivate *priv;
@@ -3963,12 +3963,12 @@ gtk_calendar_set_detail_height_rows (GtkCalendar *calendar,
     {
       priv->detail_height_rows = rows;
       g_object_notify (G_OBJECT (calendar), "detail-height-rows");
-      gtk_widget_queue_resize_no_redraw (GTK_WIDGET (calendar));
+      ctk_widget_queue_resize_no_redraw (GTK_WIDGET (calendar));
     }
 }
 
 /**
- * gtk_calendar_get_detail_width_chars:
+ * ctk_calendar_get_detail_width_chars:
  * @calendar: a #GtkCalendar.
  *
  * Queries the width of detail cells, in characters.
@@ -3979,7 +3979,7 @@ gtk_calendar_set_detail_height_rows (GtkCalendar *calendar,
  * Returns: The width of detail cells, in characters.
  */
 gint
-gtk_calendar_get_detail_width_chars (GtkCalendar *calendar)
+ctk_calendar_get_detail_width_chars (GtkCalendar *calendar)
 {
   g_return_val_if_fail (GTK_IS_CALENDAR (calendar), 0);
 
@@ -3987,7 +3987,7 @@ gtk_calendar_get_detail_width_chars (GtkCalendar *calendar)
 }
 
 /**
- * gtk_calendar_get_detail_height_rows:
+ * ctk_calendar_get_detail_height_rows:
  * @calendar: a #GtkCalendar.
  *
  * Queries the height of detail cells, in rows.
@@ -3998,7 +3998,7 @@ gtk_calendar_get_detail_width_chars (GtkCalendar *calendar)
  * Returns: The height of detail cells, in rows.
  */
 gint
-gtk_calendar_get_detail_height_rows (GtkCalendar *calendar)
+ctk_calendar_get_detail_height_rows (GtkCalendar *calendar)
 {
   g_return_val_if_fail (GTK_IS_CALENDAR (calendar), 0);
 

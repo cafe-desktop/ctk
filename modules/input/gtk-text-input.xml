@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<protocol name="gtk_text_input">
+<protocol name="ctk_text_input">
   <copyright>
     Copyright © 2012, 2013 Intel Corporation
     Copyright © 2015, 2016 Jan Arne Petersen
@@ -27,9 +27,9 @@
     THIS SOFTWARE.
   </copyright>
 
-  <interface name="gtk_text_input" version="1">
+  <interface name="ctk_text_input" version="1">
     <description summary="text input">
-      The gtk_text_input interface represents text input and input methods
+      The ctk_text_input interface represents text input and input methods
       associated with a seat. It provides enter/leave events to follow the
       text input focus for a seat.
 
@@ -46,9 +46,9 @@
       point.
 
       Focus moving throughout surfaces will result in the emission of
-      gtk_text_input.enter and gtk_text_input.leave events. The focused
-      surface must perform gtk_text_input.enable and
-      gtk_text_input.disable requests as the keyboard focus moves across
+      ctk_text_input.enter and ctk_text_input.leave events. The focused
+      surface must perform ctk_text_input.enable and
+      ctk_text_input.disable requests as the keyboard focus moves across
       editable and non-editable elements of the UI. Those two requests are not
       expected to be paired with each other, the compositor must be able to
       handle consecutive series of the same request.
@@ -59,7 +59,7 @@
       invalidated and needs to be resent by the client.
 
       This protocol defines requests and events necessary for regular clients
-      to communicate with an input method. The gtk_input_method protocol
+      to communicate with an input method. The ctk_input_method protocol
       defines the interfaces necessary to implement standalone input methods.
       If a compositor implements both interfaces, it will be the arbiter of the
       communication between both.
@@ -94,7 +94,7 @@
     <request name="enable">
       <description summary="Request text input to be enabled">
 	Requests text input on a surface. The serial provided must be the one
-        received on gtk_text_input.enter.
+        received on ctk_text_input.enter.
       </description>
       <arg name="serial" type="uint" summary="serial of enter event"/>
       <arg name="show_input_panel" type="uint" summary="details of the enable request"/>
@@ -258,7 +258,7 @@
        result of some composing (pre-edit).
 
        The text argument could be also null if some text is removed (see
-       gtk_text_input.delete_surrounding_text).
+       ctk_text_input.delete_surrounding_text).
 
        Any previously set composing text should be removed.
       </description>
@@ -280,7 +280,7 @@
     </event>
   </interface>
 
-  <interface name="gtk_text_input_manager" version="1">
+  <interface name="ctk_text_input_manager" version="1">
     <description summary="text input manager">
       A factory for text-input objects. This object is a global singleton.
     </description>
@@ -295,7 +295,7 @@
       <description summary="create a new text input object">
        Creates a new text-input object for a given seat.
       </description>
-      <arg name="id" type="new_id" interface="gtk_text_input"/>
+      <arg name="id" type="new_id" interface="ctk_text_input"/>
       <arg name="seat" type="object" interface="wl_seat"/>
     </request>
   </interface>

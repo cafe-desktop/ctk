@@ -54,7 +54,7 @@ G_BEGIN_DECLS
  * GtkKeySnoopFunc:
  * @grab_widget: the widget to which the event will be delivered
  * @event: the key event
- * @func_data: (closure): data supplied to gtk_key_snooper_install()
+ * @func_data: (closure): data supplied to ctk_key_snooper_install()
  *
  * Key snooper functions are called before normal event delivery.
  * They can be used to implement custom key event handling.
@@ -68,24 +68,24 @@ typedef gint (*GtkKeySnoopFunc) (GtkWidget   *grab_widget,
 /* GTK+ version
  */
 GDK_AVAILABLE_IN_ALL
-guint gtk_get_major_version (void) G_GNUC_CONST;
+guint ctk_get_major_version (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-guint gtk_get_minor_version (void) G_GNUC_CONST;
+guint ctk_get_minor_version (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-guint gtk_get_micro_version (void) G_GNUC_CONST;
+guint ctk_get_micro_version (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-guint gtk_get_binary_age    (void) G_GNUC_CONST;
+guint ctk_get_binary_age    (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-guint gtk_get_interface_age (void) G_GNUC_CONST;
+guint ctk_get_interface_age (void) G_GNUC_CONST;
 
-#define gtk_major_version gtk_get_major_version ()
-#define gtk_minor_version gtk_get_minor_version ()
-#define gtk_micro_version gtk_get_micro_version ()
-#define gtk_binary_age gtk_get_binary_age ()
-#define gtk_interface_age gtk_get_interface_age ()
+#define ctk_major_version ctk_get_major_version ()
+#define ctk_minor_version ctk_get_minor_version ()
+#define ctk_micro_version ctk_get_micro_version ()
+#define ctk_binary_age ctk_get_binary_age ()
+#define ctk_interface_age ctk_get_interface_age ()
 
 GDK_AVAILABLE_IN_ALL
-const gchar* gtk_check_version (guint   required_major,
+const gchar* ctk_check_version (guint   required_major,
                                 guint   required_minor,
                                 guint   required_micro);
 
@@ -94,19 +94,19 @@ const gchar* gtk_check_version (guint   required_major,
  */
 
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_parse_args           (int    *argc,
+gboolean ctk_parse_args           (int    *argc,
                                    char ***argv);
 
 GDK_AVAILABLE_IN_ALL
-void     gtk_init                 (int    *argc,
+void     ctk_init                 (int    *argc,
                                    char ***argv);
 
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_init_check           (int    *argc,
+gboolean ctk_init_check           (int    *argc,
                                    char ***argv);
 
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_init_with_args       (gint                 *argc,
+gboolean ctk_init_with_args       (gint                 *argc,
                                    gchar              ***argv,
                                    const gchar          *parameter_string,
                                    const GOptionEntry   *entries,
@@ -114,7 +114,7 @@ gboolean gtk_init_with_args       (gint                 *argc,
                                    GError              **error);
 
 GDK_AVAILABLE_IN_ALL
-GOptionGroup *gtk_get_option_group (gboolean open_default_display);
+GOptionGroup *ctk_get_option_group (gboolean open_default_display);
 
 #ifdef G_OS_WIN32
 
@@ -122,85 +122,85 @@ GOptionGroup *gtk_get_option_group (gboolean open_default_display);
  * when building GTK+-using code.
  */
 GDK_AVAILABLE_IN_ALL
-void     gtk_init_abi_check       (int    *argc,
+void     ctk_init_abi_check       (int    *argc,
                                    char ***argv,
                                    int     num_checks,
                                    size_t  sizeof_GtkWindow,
                                    size_t  sizeof_GtkBox);
 GDK_AVAILABLE_IN_ALL
-gboolean gtk_init_check_abi_check (int    *argc,
+gboolean ctk_init_check_abi_check (int    *argc,
                                    char ***argv,
                                    int     num_checks,
                                    size_t  sizeof_GtkWindow,
                                    size_t  sizeof_GtkBox);
 
-#define gtk_init(argc, argv) gtk_init_abi_check (argc, argv, 2, sizeof (GtkWindow), sizeof (GtkBox))
-#define gtk_init_check(argc, argv) gtk_init_check_abi_check (argc, argv, 2, sizeof (GtkWindow), sizeof (GtkBox))
+#define ctk_init(argc, argv) ctk_init_abi_check (argc, argv, 2, sizeof (GtkWindow), sizeof (GtkBox))
+#define ctk_init_check(argc, argv) ctk_init_check_abi_check (argc, argv, 2, sizeof (GtkWindow), sizeof (GtkBox))
 
 #endif
 
 GDK_AVAILABLE_IN_ALL
-void           gtk_disable_setlocale    (void);
+void           ctk_disable_setlocale    (void);
 GDK_AVAILABLE_IN_ALL
-PangoLanguage *gtk_get_default_language (void);
+PangoLanguage *ctk_get_default_language (void);
 GDK_AVAILABLE_IN_3_12
-GtkTextDirection gtk_get_locale_direction (void);
+GtkTextDirection ctk_get_locale_direction (void);
 GDK_AVAILABLE_IN_ALL
-gboolean       gtk_events_pending       (void);
+gboolean       ctk_events_pending       (void);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_main_do_event       (GdkEvent           *event);
+void       ctk_main_do_event       (GdkEvent           *event);
 GDK_AVAILABLE_IN_ALL
-void       gtk_main                (void);
+void       ctk_main                (void);
 GDK_AVAILABLE_IN_ALL
-guint      gtk_main_level          (void);
+guint      ctk_main_level          (void);
 GDK_AVAILABLE_IN_ALL
-void       gtk_main_quit           (void);
+void       ctk_main_quit           (void);
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_main_iteration      (void);
+gboolean   ctk_main_iteration      (void);
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_main_iteration_do   (gboolean            blocking);
+gboolean   ctk_main_iteration_do   (gboolean            blocking);
 
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_true                (void) G_GNUC_CONST;
+gboolean   ctk_true                (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_false               (void) G_GNUC_CONST;
+gboolean   ctk_false               (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_grab_add            (GtkWidget          *widget);
+void       ctk_grab_add            (GtkWidget          *widget);
 GDK_AVAILABLE_IN_ALL
-GtkWidget* gtk_grab_get_current    (void);
+GtkWidget* ctk_grab_get_current    (void);
 GDK_AVAILABLE_IN_ALL
-void       gtk_grab_remove         (GtkWidget          *widget);
+void       ctk_grab_remove         (GtkWidget          *widget);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_device_grab_add     (GtkWidget          *widget,
+void       ctk_device_grab_add     (GtkWidget          *widget,
                                     GdkDevice          *device,
                                     gboolean            block_others);
 GDK_AVAILABLE_IN_ALL
-void       gtk_device_grab_remove  (GtkWidget          *widget,
+void       ctk_device_grab_remove  (GtkWidget          *widget,
                                     GdkDevice          *device);
 
 GDK_DEPRECATED_IN_3_4
-guint      gtk_key_snooper_install (GtkKeySnoopFunc snooper,
+guint      ctk_key_snooper_install (GtkKeySnoopFunc snooper,
                                     gpointer        func_data);
 GDK_DEPRECATED_IN_3_4
-void       gtk_key_snooper_remove  (guint           snooper_handler_id);
+void       ctk_key_snooper_remove  (guint           snooper_handler_id);
 
 GDK_AVAILABLE_IN_ALL
-GdkEvent * gtk_get_current_event        (void);
+GdkEvent * ctk_get_current_event        (void);
 GDK_AVAILABLE_IN_ALL
-guint32    gtk_get_current_event_time   (void);
+guint32    ctk_get_current_event_time   (void);
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_get_current_event_state  (GdkModifierType *state);
+gboolean   ctk_get_current_event_state  (GdkModifierType *state);
 GDK_AVAILABLE_IN_ALL
-GdkDevice *gtk_get_current_event_device (void);
+GdkDevice *ctk_get_current_event_device (void);
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_get_event_widget         (GdkEvent        *event);
+GtkWidget *ctk_get_event_widget         (GdkEvent        *event);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_propagate_event          (GtkWidget       *widget,
+void       ctk_propagate_event          (GtkWidget       *widget,
                                          GdkEvent        *event);
 
 

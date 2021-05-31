@@ -23,10 +23,10 @@
  *
  * A #GtkRecentFilter can be used to restrict the files being shown
  * in a #GtkRecentChooser.  Files can be filtered based on their name
- * (with gtk_recent_filter_add_pattern()), on their mime type (with
- * gtk_file_filter_add_mime_type()), on the application that has
- * registered them (with gtk_recent_filter_add_application()), or by
- * a custom filter function (with gtk_recent_filter_add_custom()).
+ * (with ctk_recent_filter_add_pattern()), on their mime type (with
+ * ctk_file_filter_add_mime_type()), on the application that has
+ * registered them (with ctk_recent_filter_add_application()), or by
+ * a custom filter function (with ctk_recent_filter_add_custom()).
  *
  * Filtering by mime type handles aliasing and subclassing of mime
  * types; e.g. a filter for text/plain also matches a file with mime
@@ -35,8 +35,8 @@
  * mime type, so you can e.g. filter for image/\*.
  *
  * Normally, filters are used by adding them to a #GtkRecentChooser,
- * see gtk_recent_chooser_add_filter(), but it is also possible to
- * manually use a filter on a file with gtk_recent_filter_filter().
+ * see ctk_recent_chooser_add_filter(), but it is also possible to
+ * manually use a filter on a file with ctk_recent_filter_filter().
  *
  * Recently used files are supported since GTK+ 2.10.
  *
@@ -46,8 +46,8 @@
  * supports adding rules using the <mime-types>, <patterns> and
  * <applications> elements and listing the rules within. Specifying
  * a <mime-type>, <pattern> or <application> has the same effect as
- * calling gtk_recent_filter_add_mime_type(),
- * gtk_recent_filter_add_pattern() or gtk_recent_filter_add_application().
+ * calling ctk_recent_filter_add_mime_type(),
+ * ctk_recent_filter_add_pattern() or ctk_recent_filter_add_application().
  *
  * An example of a UI definition fragment specifying GtkRecentFilter rules:
  * |[
@@ -80,14 +80,14 @@
 #include "gtkintl.h"
 #include "gtkprivate.h"
 
-static void     gtk_recent_filter_buildable_init                 (GtkBuildableIface *iface);
-static gboolean gtk_recent_filter_buildable_custom_tag_start     (GtkBuildable  *buildable,
+static void     ctk_recent_filter_buildable_init                 (GtkBuildableIface *iface);
+static gboolean ctk_recent_filter_buildable_custom_tag_start     (GtkBuildable  *buildable,
 								  GtkBuilder    *builder,
 								  GObject       *child,
 								  const gchar   *tagname,
 								  GMarkupParser *parser,
 								  gpointer      *data);
-static void     gtk_recent_filter_buildable_custom_tag_end       (GtkBuildable  *buildable,
+static void     ctk_recent_filter_buildable_custom_tag_end       (GtkBuildable  *buildable,
 								  GtkBuilder    *builder,
 								  GObject       *child,
 								  const gchar   *tagname,
@@ -143,9 +143,9 @@ struct _FilterRule
   } u;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkRecentFilter, gtk_recent_filter, G_TYPE_INITIALLY_UNOWNED,
+G_DEFINE_TYPE_WITH_CODE (GtkRecentFilter, ctk_recent_filter, G_TYPE_INITIALLY_UNOWNED,
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
-                                                gtk_recent_filter_buildable_init))
+                                                ctk_recent_filter_buildable_init))
 
 
 static void
@@ -186,26 +186,26 @@ filter_rule_free (FilterRule *rule)
 }
 
 static void
-gtk_recent_filter_finalize (GObject *object)
+ctk_recent_filter_finalize (GObject *object)
 {
   GtkRecentFilter *filter = GTK_RECENT_FILTER (object);
   
   g_free (filter->name);
   g_slist_free_full (filter->rules, (GDestroyNotify) filter_rule_free);
 
-  G_OBJECT_CLASS (gtk_recent_filter_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_recent_filter_parent_class)->finalize (object);
 }
 
 static void
-gtk_recent_filter_class_init (GtkRecentFilterClass *klass)
+ctk_recent_filter_class_init (GtkRecentFilterClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   
-  gobject_class->finalize = gtk_recent_filter_finalize;
+  gobject_class->finalize = ctk_recent_filter_finalize;
 }
 
 static void
-gtk_recent_filter_init (GtkRecentFilter *filter)
+ctk_recent_filter_init (GtkRecentFilter *filter)
 {
 
 }
@@ -215,10 +215,10 @@ gtk_recent_filter_init (GtkRecentFilter *filter)
  * GtkBuildable implementation
  */
 static void
-gtk_recent_filter_buildable_init (GtkBuildableIface *iface)
+ctk_recent_filter_buildable_init (GtkBuildableIface *iface)
 {
-  iface->custom_tag_start = gtk_recent_filter_buildable_custom_tag_start;
-  iface->custom_tag_end = gtk_recent_filter_buildable_custom_tag_end;
+  iface->custom_tag_start = ctk_recent_filter_buildable_custom_tag_start;
+  iface->custom_tag_end = ctk_recent_filter_buildable_custom_tag_end;
 }
 
 
@@ -250,7 +250,7 @@ parser_start_element (GMarkupParseContext *context,
                                     G_MARKUP_COLLECT_INVALID, NULL, NULL,
                                     G_MARKUP_COLLECT_INVALID))
     {
-      _gtk_builder_prefix_error (data->builder, context, error);
+      _ctk_builder_prefix_error (data->builder, context, error);
       return;
     }
 
@@ -258,33 +258,33 @@ parser_start_element (GMarkupParseContext *context,
       strcmp (element_name, "patterns") == 0 ||
       strcmp (element_name, "applications") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "object", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "object", error))
         return;
     }
   else if (strcmp (element_name, "mime-type") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "mime-types", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "mime-types", error))
         return;
 
       data->parsing = TRUE;
     }
   else if (strcmp (element_name, "pattern") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "patterns", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "patterns", error))
         return;
 
       data->parsing = TRUE;
     }
   else if (strcmp (element_name, "application") == 0)
     {
-      if (!_gtk_builder_check_parent (data->builder, context, "applications", error))
+      if (!_ctk_builder_check_parent (data->builder, context, "applications", error))
         return;
 
       data->parsing = TRUE;
     }
   else
     {
-      _gtk_builder_error_unhandled_tag (data->builder, context,
+      _ctk_builder_error_unhandled_tag (data->builder, context,
                                         "GtkRecentFilter", element_name,
                                         error);
     }
@@ -316,13 +316,13 @@ parser_end_element (GMarkupParseContext *context,
       switch (data->type)
 	{
 	case PARSE_MIME_TYPES:
-	  gtk_recent_filter_add_mime_type (data->filter, data->string->str);
+	  ctk_recent_filter_add_mime_type (data->filter, data->string->str);
 	  break;
 	case PARSE_PATTERNS:
-	  gtk_recent_filter_add_pattern (data->filter, data->string->str);
+	  ctk_recent_filter_add_pattern (data->filter, data->string->str);
 	  break;
 	case PARSE_APPLICATIONS:
-	  gtk_recent_filter_add_application (data->filter, data->string->str);
+	  ctk_recent_filter_add_application (data->filter, data->string->str);
 	  break;
 	default:
 	  break;
@@ -341,7 +341,7 @@ static const GMarkupParser sub_parser =
   };
 
 static gboolean
-gtk_recent_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
+ctk_recent_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
                                               GtkBuilder    *builder,
                                               GObject       *child,
                                               const gchar   *tagname,
@@ -388,7 +388,7 @@ gtk_recent_filter_buildable_custom_tag_start (GtkBuildable  *buildable,
 }
 
 static void
-gtk_recent_filter_buildable_custom_tag_end (GtkBuildable *buildable,
+ctk_recent_filter_buildable_custom_tag_end (GtkBuildable *buildable,
 					    GtkBuilder   *builder,
 					    GObject      *child,
 					    const gchar  *tagname,
@@ -410,17 +410,17 @@ gtk_recent_filter_buildable_custom_tag_end (GtkBuildable *buildable,
  */
  
 /**
- * gtk_recent_filter_new:
+ * ctk_recent_filter_new:
  *
  * Creates a new #GtkRecentFilter with no rules added to it.
  * Such filter does not accept any recently used resources, so is not
  * particularly useful until you add rules with
- * gtk_recent_filter_add_pattern(), gtk_recent_filter_add_mime_type(),
- * gtk_recent_filter_add_application(), gtk_recent_filter_add_age().
+ * ctk_recent_filter_add_pattern(), ctk_recent_filter_add_mime_type(),
+ * ctk_recent_filter_add_application(), ctk_recent_filter_add_age().
  * To create a filter that accepts any recently used resource, use:
  * |[<!-- language="C" -->
- * GtkRecentFilter *filter = gtk_recent_filter_new ();
- * gtk_recent_filter_add_pattern (filter, "*");
+ * GtkRecentFilter *filter = ctk_recent_filter_new ();
+ * ctk_recent_filter_add_pattern (filter, "*");
  * ]|
  *
  * Returns: a new #GtkRecentFilter
@@ -428,13 +428,13 @@ gtk_recent_filter_buildable_custom_tag_end (GtkBuildable *buildable,
  * Since: 2.10
  */
 GtkRecentFilter *
-gtk_recent_filter_new (void)
+ctk_recent_filter_new (void)
 {
   return g_object_new (GTK_TYPE_RECENT_FILTER, NULL);
 }
 
 /**
- * gtk_recent_filter_set_name:
+ * ctk_recent_filter_set_name:
  * @filter: a #GtkRecentFilter
  * @name: then human readable name of @filter
  *
@@ -445,7 +445,7 @@ gtk_recent_filter_new (void)
  * Since: 2.10
  */
 void
-gtk_recent_filter_set_name (GtkRecentFilter *filter,
+ctk_recent_filter_set_name (GtkRecentFilter *filter,
 			    const gchar     *name)
 {
   g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
@@ -457,11 +457,11 @@ gtk_recent_filter_set_name (GtkRecentFilter *filter,
 }
 
 /**
- * gtk_recent_filter_get_name:
+ * ctk_recent_filter_get_name:
  * @filter: a #GtkRecentFilter
  *
  * Gets the human-readable name for the filter.
- * See gtk_recent_filter_set_name().
+ * See ctk_recent_filter_set_name().
  *
  * Returns: (nullable): the name of the filter, or %NULL.  The returned string
  *   is owned by the filter object and should not be freed.
@@ -469,7 +469,7 @@ gtk_recent_filter_set_name (GtkRecentFilter *filter,
  * Since: 2.10
  */
 const gchar *
-gtk_recent_filter_get_name (GtkRecentFilter *filter)
+ctk_recent_filter_get_name (GtkRecentFilter *filter)
 {
   g_return_val_if_fail (GTK_IS_RECENT_FILTER (filter), NULL);
   
@@ -477,23 +477,23 @@ gtk_recent_filter_get_name (GtkRecentFilter *filter)
 }
 
 /**
- * gtk_recent_filter_get_needed:
+ * ctk_recent_filter_get_needed:
  * @filter: a #GtkRecentFilter
  *
  * Gets the fields that need to be filled in for the #GtkRecentFilterInfo
- * passed to gtk_recent_filter_filter()
+ * passed to ctk_recent_filter_filter()
  * 
  * This function will not typically be used by applications; it
  * is intended principally for use in the implementation of
  * #GtkRecentChooser.
  * 
  * Returns: bitfield of flags indicating needed fields when
- *   calling gtk_recent_filter_filter()
+ *   calling ctk_recent_filter_filter()
  *
  * Since: 2.10
  */
 GtkRecentFilterFlags
-gtk_recent_filter_get_needed (GtkRecentFilter *filter)
+ctk_recent_filter_get_needed (GtkRecentFilter *filter)
 {
   return filter->needed;
 }
@@ -507,7 +507,7 @@ recent_filter_add_rule (GtkRecentFilter *filter,
 }
 
 /**
- * gtk_recent_filter_add_mime_type:
+ * ctk_recent_filter_add_mime_type:
  * @filter: a #GtkRecentFilter
  * @mime_type: a MIME type
  *
@@ -516,7 +516,7 @@ recent_filter_add_rule (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-gtk_recent_filter_add_mime_type (GtkRecentFilter *filter,
+ctk_recent_filter_add_mime_type (GtkRecentFilter *filter,
 				 const gchar     *mime_type)
 {
   FilterRule *rule;
@@ -533,7 +533,7 @@ gtk_recent_filter_add_mime_type (GtkRecentFilter *filter,
 }
 
 /**
- * gtk_recent_filter_add_pattern:
+ * ctk_recent_filter_add_pattern:
  * @filter: a #GtkRecentFilter
  * @pattern: a file pattern
  *
@@ -543,7 +543,7 @@ gtk_recent_filter_add_mime_type (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-gtk_recent_filter_add_pattern (GtkRecentFilter *filter,
+ctk_recent_filter_add_pattern (GtkRecentFilter *filter,
 			       const gchar     *pattern)
 {
   FilterRule *rule;
@@ -560,7 +560,7 @@ gtk_recent_filter_add_pattern (GtkRecentFilter *filter,
 }
 
 /**
- * gtk_recent_filter_add_pixbuf_formats:
+ * ctk_recent_filter_add_pixbuf_formats:
  * @filter: a #GtkRecentFilter
  *
  * Adds a rule allowing image files in the formats supported
@@ -569,7 +569,7 @@ gtk_recent_filter_add_pattern (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-gtk_recent_filter_add_pixbuf_formats (GtkRecentFilter *filter)
+ctk_recent_filter_add_pixbuf_formats (GtkRecentFilter *filter)
 {
   FilterRule *rule;
 
@@ -584,7 +584,7 @@ gtk_recent_filter_add_pixbuf_formats (GtkRecentFilter *filter)
 }
 
 /**
- * gtk_recent_filter_add_application:
+ * ctk_recent_filter_add_application:
  * @filter: a #GtkRecentFilter
  * @application: an application name
  *
@@ -594,7 +594,7 @@ gtk_recent_filter_add_pixbuf_formats (GtkRecentFilter *filter)
  * Since: 2.10
  */
 void
-gtk_recent_filter_add_application (GtkRecentFilter *filter,
+ctk_recent_filter_add_application (GtkRecentFilter *filter,
 				   const gchar     *application)
 {
   FilterRule *rule;
@@ -611,7 +611,7 @@ gtk_recent_filter_add_application (GtkRecentFilter *filter,
 }
 
 /**
- * gtk_recent_filter_add_group:
+ * ctk_recent_filter_add_group:
  * @filter: a #GtkRecentFilter
  * @group: a group name
  *
@@ -621,7 +621,7 @@ gtk_recent_filter_add_application (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-gtk_recent_filter_add_group (GtkRecentFilter *filter,
+ctk_recent_filter_add_group (GtkRecentFilter *filter,
 			     const gchar     *group)
 {
   FilterRule *rule;
@@ -638,7 +638,7 @@ gtk_recent_filter_add_group (GtkRecentFilter *filter,
 }
 
 /**
- * gtk_recent_filter_add_age:
+ * ctk_recent_filter_add_age:
  * @filter: a #GtkRecentFilter
  * @days: number of days
  *
@@ -648,7 +648,7 @@ gtk_recent_filter_add_group (GtkRecentFilter *filter,
  * Since: 2.10
  */
 void
-gtk_recent_filter_add_age (GtkRecentFilter *filter,
+ctk_recent_filter_add_age (GtkRecentFilter *filter,
 			   gint             days)
 {
   FilterRule *rule;
@@ -664,7 +664,7 @@ gtk_recent_filter_add_age (GtkRecentFilter *filter,
 }
 
 /**
- * gtk_recent_filter_add_custom:
+ * ctk_recent_filter_add_custom:
  * @filter: a #GtkRecentFilter
  * @needed: bitfield of flags indicating the information that the custom
  *          filter function needs.
@@ -682,7 +682,7 @@ gtk_recent_filter_add_age (GtkRecentFilter *filter,
  * Since: 2.10
  **/
 void
-gtk_recent_filter_add_custom (GtkRecentFilter      *filter,
+ctk_recent_filter_add_custom (GtkRecentFilter      *filter,
 			      GtkRecentFilterFlags  needed,
 			      GtkRecentFilterFunc   func,
 			      gpointer              data,
@@ -705,14 +705,14 @@ gtk_recent_filter_add_custom (GtkRecentFilter      *filter,
 
 
 /**
- * gtk_recent_filter_filter:
+ * ctk_recent_filter_filter:
  * @filter: a #GtkRecentFilter
  * @filter_info: a #GtkRecentFilterInfo containing information
  *   about a recently used resource
  *
  * Tests whether a file should be displayed according to @filter.
  * The #GtkRecentFilterInfo @filter_info should include
- * the fields returned from gtk_recent_filter_get_needed(), and
+ * the fields returned from ctk_recent_filter_get_needed(), and
  * must set the #GtkRecentFilterInfo.contains field of @filter_info
  * to indicate which fields have been set.
  *
@@ -725,7 +725,7 @@ gtk_recent_filter_add_custom (GtkRecentFilter      *filter,
  * Since: 2.10
  */
 gboolean
-gtk_recent_filter_filter (GtkRecentFilter           *filter,
+ctk_recent_filter_filter (GtkRecentFilter           *filter,
 			  const GtkRecentFilterInfo *filter_info)
 {
   GSList *l;
@@ -811,12 +811,12 @@ gtk_recent_filter_filter (GtkRecentFilter           *filter,
 	  }
         case FILTER_RULE_URI:
           if ((filter_info->uri != NULL) &&
-              _gtk_fnmatch (rule->u.uri, filter_info->uri, FALSE))
+              _ctk_fnmatch (rule->u.uri, filter_info->uri, FALSE))
             return TRUE;
           break;
         case FILTER_RULE_DISPLAY_NAME:
           if ((filter_info->display_name != NULL) &&
-              _gtk_fnmatch (rule->u.pattern, filter_info->display_name, FALSE))
+              _ctk_fnmatch (rule->u.pattern, filter_info->display_name, FALSE))
             return TRUE;
           break;
         case FILTER_RULE_AGE:

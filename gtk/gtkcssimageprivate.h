@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE           (_gtk_css_image_get_type ())
+#define GTK_TYPE_CSS_IMAGE           (_ctk_css_image_get_type ())
 #define GTK_CSS_IMAGE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE, GtkCssImage))
 #define GTK_CSS_IMAGE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE, GtkCssImageClass))
 #define GTK_IS_CSS_IMAGE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE))
@@ -82,35 +82,35 @@ struct _GtkCssImageClass
                                                     GString                    *string);
 };
 
-GType          _gtk_css_image_get_type             (void) G_GNUC_CONST;
+GType          _ctk_css_image_get_type             (void) G_GNUC_CONST;
 
-gboolean       _gtk_css_image_can_parse            (GtkCssParser               *parser);
-GtkCssImage *  _gtk_css_image_new_parse            (GtkCssParser               *parser);
+gboolean       _ctk_css_image_can_parse            (GtkCssParser               *parser);
+GtkCssImage *  _ctk_css_image_new_parse            (GtkCssParser               *parser);
 
-int            _gtk_css_image_get_width            (GtkCssImage                *image);
-int            _gtk_css_image_get_height           (GtkCssImage                *image);
-double         _gtk_css_image_get_aspect_ratio     (GtkCssImage                *image);
+int            _ctk_css_image_get_width            (GtkCssImage                *image);
+int            _ctk_css_image_get_height           (GtkCssImage                *image);
+double         _ctk_css_image_get_aspect_ratio     (GtkCssImage                *image);
 
-GtkCssImage *  _gtk_css_image_compute              (GtkCssImage                *image,
+GtkCssImage *  _ctk_css_image_compute              (GtkCssImage                *image,
                                                     guint                       property_id,
                                                     GtkStyleProviderPrivate    *provider,
                                                     GtkCssStyle                *style,
                                                     GtkCssStyle                *parent_style);
-gboolean       _gtk_css_image_equal                (GtkCssImage                *image1,
+gboolean       _ctk_css_image_equal                (GtkCssImage                *image1,
                                                     GtkCssImage                *image2);
-GtkCssImage *  _gtk_css_image_transition           (GtkCssImage                *start,
+GtkCssImage *  _ctk_css_image_transition           (GtkCssImage                *start,
                                                     GtkCssImage                *end,
                                                     guint                       property_id,
                                                     double                      progress);
 
-void           _gtk_css_image_draw                 (GtkCssImage                *image,
+void           _ctk_css_image_draw                 (GtkCssImage                *image,
                                                     cairo_t                    *cr,
                                                     double                      width,
                                                     double                      height);
-void           _gtk_css_image_print                (GtkCssImage                *image,
+void           _ctk_css_image_print                (GtkCssImage                *image,
                                                     GString                    *string);
 
-void           _gtk_css_image_get_concrete_size    (GtkCssImage                *image,
+void           _ctk_css_image_get_concrete_size    (GtkCssImage                *image,
                                                     double                      specified_width,
                                                     double                      specified_height,
                                                     double                      default_width,
@@ -118,7 +118,7 @@ void           _gtk_css_image_get_concrete_size    (GtkCssImage                *
                                                     double                     *concrete_width,
                                                     double                     *concrete_height);
 cairo_surface_t *
-               _gtk_css_image_get_surface          (GtkCssImage                *image,
+               _ctk_css_image_get_surface          (GtkCssImage                *image,
                                                     cairo_surface_t            *target,
                                                     int                         surface_width,
                                                     int                         surface_height);

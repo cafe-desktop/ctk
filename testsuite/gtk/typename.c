@@ -51,11 +51,11 @@ check (const gchar *TN, const gchar *gtf)
   g_free (symbol);
 }
 
-static void test_GtkWindow (void)    { check ("GtkWindow", "gtk_window_get_type"); }
-static void test_GtkHBox (void)      { check ("GtkHBox", "gtk_hbox_get_type"); }
-static void test_GtkUIManager (void) { check ("GtkUIManager", "gtk_ui_manager_get_type"); }
-static void test_GtkCList (void)     { check ("GtkCList", "gtk_clist_get_type"); }
-static void test_GtkIMContext (void) { check ("GtkIMContext", "gtk_im_context_get_type"); }
+static void test_GtkWindow (void)    { check ("GtkWindow", "ctk_window_get_type"); }
+static void test_GtkHBox (void)      { check ("GtkHBox", "ctk_hbox_get_type"); }
+static void test_GtkUIManager (void) { check ("GtkUIManager", "ctk_ui_manager_get_type"); }
+static void test_GtkCList (void)     { check ("GtkCList", "ctk_clist_get_type"); }
+static void test_GtkIMContext (void) { check ("GtkIMContext", "ctk_im_context_get_type"); }
 static void test_Me2Shell (void)     { check ("Me2Shell", "me_2shell_get_type"); }
 static void test_GWeather (void)     { check ("GWeatherLocation", "gweather_location_get_type"); }
  

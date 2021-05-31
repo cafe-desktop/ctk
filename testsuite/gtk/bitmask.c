@@ -35,20 +35,20 @@
 /* UTILITIES */
 
 static GtkBitmask *
-gtk_bitmask_new_parse (const char *string)
+ctk_bitmask_new_parse (const char *string)
 {
   guint i, length;
   GtkBitmask *mask;
 
   length = strlen (string);
-  mask = _gtk_bitmask_new ();
+  mask = _ctk_bitmask_new ();
 
   for (i = 0; i < length; i++)
     {
       if (string[i] == '0')
-        mask = _gtk_bitmask_set (mask, length - i - 1, FALSE);
+        mask = _ctk_bitmask_set (mask, length - i - 1, FALSE);
       else if (string[i] == '1')
-        mask = _gtk_bitmask_set (mask, length - i - 1, TRUE);
+        mask = _ctk_bitmask_set (mask, length - i - 1, TRUE);
       else
         g_assert_not_reached ();
     }
@@ -57,10 +57,10 @@ gtk_bitmask_new_parse (const char *string)
 }
 
 #define assert_cmpmasks(mask,other) G_STMT_START { \
-  if (G_UNLIKELY (!_gtk_bitmask_equals (mask, other))) \
+  if (G_UNLIKELY (!_ctk_bitmask_equals (mask, other))) \
     { \
-      char *mask_string = _gtk_bitmask_to_string (mask); \
-      char *other_string = _gtk_bitmask_to_string (other); \
+      char *mask_string = _ctk_bitmask_to_string (mask); \
+      char *other_string = _ctk_bitmask_to_string (other); \
       char *msg = g_strdup_printf ("%s (%s) != %s (%s)", \
                                    G_STRINGIFY (mask), mask_string, \
                                    G_STRINGIFY (other), other_string); \
@@ -96,7 +96,7 @@ test_to_string (void)
 
   for (i = 0; i < G_N_ELEMENTS (tests); i++)
     {
-      to_string = _gtk_bitmask_to_string (masks[i]);
+      to_string = _ctk_bitmask_to_string (masks[i]);
       g_assert_cmpstr (to_string, ==, tests[i]);
       g_free (to_string);
     }
@@ -109,7 +109,7 @@ test_is_empty (void)
 
   for (i = 0; i < G_N_ELEMENTS (tests); i++)
     {
-      g_assert_cmpint (_gtk_bitmask_is_empty (masks[i]), ==, i == 0);
+      g_assert_cmpint (_ctk_bitmask_is_empty (masks[i]), ==, i == 0);
     }
 }
 
@@ -122,7 +122,7 @@ test_equals (void)
     {
       for (j = 0; j < G_N_ELEMENTS (tests); j++)
         {
-          g_assert_cmpint (_gtk_bitmask_equals (masks[i], masks[j]), ==, i == j);
+          g_assert_cmpint (_ctk_bitmask_equals (masks[i], masks[j]), ==, i == j);
         }
     }
 }
@@ -138,21 +138,21 @@ test_set (void)
   for (i = 0; i < N_RUNS; i++)
     {
       mask = masks[g_test_rand_int_range (0, G_N_ELEMENTS (tests))];
-      copy = _gtk_bitmask_copy (mask);
+      copy = _ctk_bitmask_copy (mask);
 
       for (j = 0; j < N_TRIES; j++)
         {
           indexes[j] = g_test_rand_int_range (0, MAX_INDEX);
-          copy = _gtk_bitmask_set (copy, indexes[j], g_test_rand_bit ());
+          copy = _ctk_bitmask_set (copy, indexes[j], g_test_rand_bit ());
         }
 
       for (j = 0; j < N_TRIES; j++)
         {
-          copy = _gtk_bitmask_set (copy, indexes[j], _gtk_bitmask_get (mask, indexes[j]));
+          copy = _ctk_bitmask_set (copy, indexes[j], _ctk_bitmask_get (mask, indexes[j]));
         }
 
       assert_cmpmasks (copy, mask);
-      _gtk_bitmask_free (copy);
+      _ctk_bitmask_free (copy);
     }
 }
 
@@ -164,9 +164,9 @@ test_union (void)
 
   for (run = 0; run < N_RUNS; run++)
     {
-      left = _gtk_bitmask_new ();
-      right = _gtk_bitmask_new ();
-      expected = _gtk_bitmask_new ();
+      left = _ctk_bitmask_new ();
+      right = _ctk_bitmask_new ();
+      expected = _ctk_bitmask_new ();
 
       n_tries = g_test_perf () ? N_TRIES : g_test_rand_int_range (0, N_TRIES);
       for (try = 0; try < n_tries; try++)
@@ -174,21 +174,21 @@ test_union (void)
           guint id = g_test_rand_int_range (0, MAX_INDEX);
 
           if (g_test_rand_bit ())
-            left = _gtk_bitmask_set (left, id, TRUE);
+            left = _ctk_bitmask_set (left, id, TRUE);
           else
-            right = _gtk_bitmask_set (right, id, TRUE);
+            right = _ctk_bitmask_set (right, id, TRUE);
 
-          expected = _gtk_bitmask_set (expected, id, TRUE);
+          expected = _ctk_bitmask_set (expected, id, TRUE);
         }
 
-      left = _gtk_bitmask_union (left, right);
-      right = _gtk_bitmask_union (right, left);
+      left = _ctk_bitmask_union (left, right);
+      right = _ctk_bitmask_union (right, left);
 
       assert_cmpmasks (left, expected);
       assert_cmpmasks (right, expected);
-      _gtk_bitmask_free (left);
-      _gtk_bitmask_free (right);
-      _gtk_bitmask_free (expected);
+      _ctk_bitmask_free (left);
+      _ctk_bitmask_free (right);
+      _ctk_bitmask_free (expected);
     }
 }
 
@@ -201,9 +201,9 @@ test_intersect (void)
 
   for (run = 0; run < N_RUNS; run++)
     {
-      left = _gtk_bitmask_new ();
-      right = _gtk_bitmask_new ();
-      expected = _gtk_bitmask_new ();
+      left = _ctk_bitmask_new ();
+      right = _ctk_bitmask_new ();
+      expected = _ctk_bitmask_new ();
 
       for (try = 0; try < N_TRIES; try++)
         {
@@ -212,28 +212,28 @@ test_intersect (void)
 
           if (g_test_rand_bit ())
             {
-              left = _gtk_bitmask_set (left, id, set);
-              expected = _gtk_bitmask_set (expected, id, set ? _gtk_bitmask_get (right, id) : 0);
+              left = _ctk_bitmask_set (left, id, set);
+              expected = _ctk_bitmask_set (expected, id, set ? _ctk_bitmask_get (right, id) : 0);
             }
           else
             {
-              right = _gtk_bitmask_set (right, id, set);
-              expected = _gtk_bitmask_set (expected, id, set ? _gtk_bitmask_get (left, id) : 0);
+              right = _ctk_bitmask_set (right, id, set);
+              expected = _ctk_bitmask_set (expected, id, set ? _ctk_bitmask_get (left, id) : 0);
             }
         }
 
-      intersects = _gtk_bitmask_intersects (left, right);
-      g_assert_cmpint (intersects, ==, _gtk_bitmask_intersects (right, left));
-      g_assert_cmpint (intersects, !=, _gtk_bitmask_is_empty (expected));
+      intersects = _ctk_bitmask_intersects (left, right);
+      g_assert_cmpint (intersects, ==, _ctk_bitmask_intersects (right, left));
+      g_assert_cmpint (intersects, !=, _ctk_bitmask_is_empty (expected));
 
-      left = _gtk_bitmask_intersect (left, right);
-      right = _gtk_bitmask_intersect (right, left);
+      left = _ctk_bitmask_intersect (left, right);
+      right = _ctk_bitmask_intersect (right, left);
 
       assert_cmpmasks (left, expected);
       assert_cmpmasks (right, expected);
-      _gtk_bitmask_free (left);
-      _gtk_bitmask_free (right);
-      _gtk_bitmask_free (expected);
+      _ctk_bitmask_free (left);
+      _ctk_bitmask_free (right);
+      _ctk_bitmask_free (expected);
     }
 }
 
@@ -256,7 +256,7 @@ test_intersect_hardcoded (void)
           left_len = strlen (tests[l]);
           right_len = strlen (tests[r]);
 
-          expected = _gtk_bitmask_new ();
+          expected = _ctk_bitmask_new ();
           if (left_len > right_len)
             left_str += left_len - right_len;
           if (right_len > left_len)
@@ -264,18 +264,18 @@ test_intersect_hardcoded (void)
           i = MIN (right_len, left_len);
           while (i--)
             {
-              expected = _gtk_bitmask_set (expected, i, left_str[0] == '1' && right_str[0] == '1');
+              expected = _ctk_bitmask_set (expected, i, left_str[0] == '1' && right_str[0] == '1');
               right_str++;
               left_str++;
             }
 
-          intersection = _gtk_bitmask_intersect (_gtk_bitmask_copy (left), right);
+          intersection = _ctk_bitmask_intersect (_ctk_bitmask_copy (left), right);
 
           assert_cmpmasks (intersection, expected);
-          g_assert_cmpint (_gtk_bitmask_is_empty (expected), ==, !_gtk_bitmask_intersects (left, right));
+          g_assert_cmpint (_ctk_bitmask_is_empty (expected), ==, !_ctk_bitmask_intersects (left, right));
 
-          _gtk_bitmask_free (intersection);
-          _gtk_bitmask_free (expected);
+          _ctk_bitmask_free (intersection);
+          _ctk_bitmask_free (expected);
         }
     }
 }
@@ -299,10 +299,10 @@ test_subtract_hardcoded (void)
           left_len = strlen (tests[l]);
           right_len = strlen (tests[r]);
 
-          expected = _gtk_bitmask_new ();
+          expected = _ctk_bitmask_new ();
           for (i = MIN (right_len, left_len); i < left_len; i++)
             {
-              expected = _gtk_bitmask_set (expected, i, left_str[left_len - i - 1] == '1');
+              expected = _ctk_bitmask_set (expected, i, left_str[left_len - i - 1] == '1');
             }
           if (left_len > right_len)
             left_str += left_len - right_len;
@@ -311,18 +311,18 @@ test_subtract_hardcoded (void)
           i = MIN (right_len, left_len);
           while (i--)
             {
-              expected = _gtk_bitmask_set (expected, i, left_str[0] == '1' && right_str[0] == '0');
+              expected = _ctk_bitmask_set (expected, i, left_str[0] == '1' && right_str[0] == '0');
               right_str++;
               left_str++;
             }
 
-          g_test_message ("%s - %s\n", _gtk_bitmask_to_string (left), _gtk_bitmask_to_string (right));
-          subtracted = _gtk_bitmask_subtract (_gtk_bitmask_copy (left), right);
+          g_test_message ("%s - %s\n", _ctk_bitmask_to_string (left), _ctk_bitmask_to_string (right));
+          subtracted = _ctk_bitmask_subtract (_ctk_bitmask_copy (left), right);
 
           assert_cmpmasks (subtracted, expected);
 
-          _gtk_bitmask_free (subtracted);
-          _gtk_bitmask_free (expected);
+          _ctk_bitmask_free (subtracted);
+          _ctk_bitmask_free (expected);
         }
     }
 }
@@ -361,16 +361,16 @@ test_invert_range_hardcoded (void)
                 {
                   ref_str[ref_len-i-1] = ref_str[ref_len-i-1] == '0' ? '1' : '0';
                 }
-              ref = gtk_bitmask_new_parse (ref_str);
+              ref = ctk_bitmask_new_parse (ref_str);
               g_free (ref_str);
 
-              bitmask = gtk_bitmask_new_parse (tests[t]);
-              bitmask = _gtk_bitmask_invert_range (bitmask, l_len - 1, r_len);
+              bitmask = ctk_bitmask_new_parse (tests[t]);
+              bitmask = _ctk_bitmask_invert_range (bitmask, l_len - 1, r_len);
 
               assert_cmpmasks (bitmask, ref);
 
-              _gtk_bitmask_free (bitmask);
-              _gtk_bitmask_free (ref);
+              _ctk_bitmask_free (bitmask);
+              _ctk_bitmask_free (ref);
             }
         }
     }
@@ -385,9 +385,9 @@ test_invert_range (void)
 
   for (run = 0; run < N_RUNS; run++)
     {
-      left = _gtk_bitmask_new ();
-      right = _gtk_bitmask_new ();
-      expected = _gtk_bitmask_new ();
+      left = _ctk_bitmask_new ();
+      right = _ctk_bitmask_new ();
+      expected = _ctk_bitmask_new ();
 
       left_start = g_test_rand_int_range (0, MAX_INDEX);
       left_end = g_test_rand_int_range (0, MAX_INDEX);
@@ -401,26 +401,26 @@ test_invert_range (void)
       end = MIN (left_end, right_end);
 
       if (left_start != left_end)
-        left = _gtk_bitmask_invert_range (left, left_start, left_end);
+        left = _ctk_bitmask_invert_range (left, left_start, left_end);
       if (right_start != right_end)
-        right = _gtk_bitmask_invert_range (right, right_start, right_end);
+        right = _ctk_bitmask_invert_range (right, right_start, right_end);
       if (start < end)
-        expected = _gtk_bitmask_invert_range (expected, start, end);
+        expected = _ctk_bitmask_invert_range (expected, start, end);
 
-      intersection = _gtk_bitmask_copy (left);
-      intersection = _gtk_bitmask_intersect (intersection, right);
+      intersection = _ctk_bitmask_copy (left);
+      intersection = _ctk_bitmask_intersect (intersection, right);
 
       assert_cmpmasks (intersection, expected);
 
       if (start < end)
-        expected = _gtk_bitmask_invert_range (expected, start, end);
+        expected = _ctk_bitmask_invert_range (expected, start, end);
 
-      g_assert_cmpint (_gtk_bitmask_is_empty (expected), ==, TRUE);
+      g_assert_cmpint (_ctk_bitmask_is_empty (expected), ==, TRUE);
 
-      _gtk_bitmask_free (left);
-      _gtk_bitmask_free (right);
-      _gtk_bitmask_free (intersection);
-      _gtk_bitmask_free (expected);
+      _ctk_bitmask_free (left);
+      _ctk_bitmask_free (right);
+      _ctk_bitmask_free (intersection);
+      _ctk_bitmask_free (expected);
     }
 }
 
@@ -432,7 +432,7 @@ create_masks (void)
   guint i;
 
   for (i = 0; i < G_N_ELEMENTS (tests); i++)
-    masks[i] = gtk_bitmask_new_parse (tests[i]);
+    masks[i] = ctk_bitmask_new_parse (tests[i]);
 }
 
 static void
@@ -442,7 +442,7 @@ free_masks (void)
 
   for (i = 0; i < G_N_ELEMENTS (tests); i++)
     {
-      _gtk_bitmask_free (masks[i]);
+      _ctk_bitmask_free (masks[i]);
       masks[i] = NULL;
     }
 }

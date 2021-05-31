@@ -70,40 +70,40 @@ GTK_NO_WINDOW:
 	on the parent's GdkWindow.
 
 GTK_REALIZED:
-	Set by gtk_widget_realize, unset by gtk_widget_unrealize.
+	Set by ctk_widget_realize, unset by ctk_widget_unrealize.
 	Relies on ((widget->parent && widget->parent->window)
 	           || GTK_WIDGET_TOPLEVEL (widget));
 	Means: widget has an associated GdkWindow (XWindow).
 
 GTK_MAPPED:
-	Set by gtk_widget_map, unset by gtk_widget_unmap.
+	Set by ctk_widget_map, unset by ctk_widget_unmap.
 	May only be set if GTK_WIDGET_REALIZED (widget).
 	Means: gdk_window_show() has been called on the widgets window(s).
 
 GTK_VISIBLE:
-	Set by gtk_widget_show.
+	Set by ctk_widget_show.
 	Implies that a widget will be flagged GTK_MAPPED as soon as its
 	parent is mapped.
 !GTK_VISIBLE:
-	Set by gtk_widget_hide.
+	Set by ctk_widget_hide.
 	Implies that a widget is not onscreen, therefore !GTK_MAPPED.
 
 GTK_CHILD_VISIBLE
-        Set by gtk_widget_set_child_visible, and if FALSE indicates that 
+        Set by ctk_widget_set_child_visible, and if FALSE indicates that 
         the widget should not be mapped even if the parent is mapped
         and visible. Containers like GtkNotebook use this flag.
         A private flag, not a public flag, so if you need to check
-        this flag, you should call gtk_widget_get_child_visible().
+        this flag, you should call ctk_widget_get_child_visible().
         (Should be very rarely necessary.)
 
 GTK_SENSITIVE:
-	Set and unset by gtk_widget_set_sensitive.
+	Set and unset by ctk_widget_set_sensitive.
 	The sensitivity of a widget determines whether it will receive
 	certain events (e.g. button or key presses). One premise for
 	the widgets sensitivity is to have GTK_SENSITIVE set.
 
 GTK_PARENT_SENSITIVE:
-	Set and unset by gtk_widget_set_sensitive operations on the
+	Set and unset by ctk_widget_set_sensitive operations on the
 	parents of the widget.
 	This is the second premise for the widgets sensitivity. Once
 	it has GTK_SENSITIVE and GTK_PARENT_SENSITIVE set, its state is
@@ -113,11 +113,11 @@ GTK_PARENT_SENSITIVE:
 GTK_CAN_FOCUS:
 	There are no directly corresponding functions for setting/unsetting
 	this flag, but it can be affected by the GtkWidget::has_focus argument
-	via gtk_widget_set_arg.
+	via ctk_widget_set_arg.
 	This flag determines whether a widget is able to handle focus grabs.
 
 GTK_HAS_FOCUS:
-	This flag will be set by gtk_widget_grab_focus for widgets that also
+	This flag will be set by ctk_widget_grab_focus for widgets that also
 	have GTK_CAN_FOCUS set. The flag will be unset once another widget
 	grabs the focus.
 	
@@ -127,7 +127,7 @@ GTK_HAS_DEFAULT:
 	counterparts, but for the default widget.
 
 GTK_HAS_GRAB:
-	Set by gtk_grab_add, unset by gtk_grab_remove.
+	Set by ctk_grab_add, unset by ctk_grab_remove.
 	Means: widget is in the grab_widgets stack, and will be the preferred
 	one for receiving events other than ones of cosmetic value.
 
@@ -153,7 +153,7 @@ GTK_RC_STYLE:
 GtkWidget, private flags:
 
 GTK_USER_STYLE:
-	A widget is flagged to have a user style, once gtk_widget_set_style
+	A widget is flagged to have a user style, once ctk_widget_set_style
 	has been invoked for it. The use of this flag is to tell widgets
 	which share a global user style from the ones which got a certain
 	style assign from outside the toolkit.
@@ -164,15 +164,15 @@ GTK_RESIZE_PENDING:
 	Relies on GTK_WIDGET_REALIZED(widget)
 	[this is not really enforced throughout the code, but should
 	 be. it only requires a few checks for GTK_WIDGET_REALIZED and
-	 minor changes to gtk_widget_unrealize, we can then remove the check
-	 in gtk_widget_real_destroy]
+	 minor changes to ctk_widget_unrealize, we can then remove the check
+	 in ctk_widget_real_destroy]
 	Means: there is an idle handler waiting for the container to
 	resize it.
 
 GTK_RESIZE_NEEDED:
 	Relies on GTK_WIDGET_REALIZED(widget)
 	[this is not really enforced throughout the code, but should
-	 be. once this is done special checking in gtk_widget_real_destroy
+	 be. once this is done special checking in ctk_widget_real_destroy
 	 can be avoided]
 	Means: a widget has been added to the resize_widgets list of
 	its _toplevel_ container (keep this in mind for GtkViewport).
@@ -186,7 +186,7 @@ GTK_LEAVE_PENDING:
 	[this should be made relying on GTK_REALIZED]
 
 GTK_HAS_SHAPE_MASK:
-	Set by gtk_widget_shape_combine_mask if a widget got a shape mask
+	Set by ctk_widget_shape_combine_mask if a widget got a shape mask
 	assigned (making use of the X11 shaped window extension).
 
 GTK_IN_REPARENT:
@@ -198,7 +198,7 @@ GTK_IN_REPARENT:
 GTK_NEED_REQUEST:
 	This flag is set if the widget doesn't have an up to date 
 	requisition. If this flag is set, we must actually emit ::size-request
-        when gtk_widget_size_request() is called. Otherwise, we can
+        when ctk_widget_size_request() is called. Otherwise, we can
         simply widget->requisition. We keep track of this all the time
         however, widgets with this flag set are only added to the resize 
 	queue if they are viewable.
@@ -206,7 +206,7 @@ GTK_NEED_REQUEST:
 GTK_NEED_ALLOCATION:
 	This flag is set if the widget doesn't have an up to date 
 	allocation. If this flag is set, we must actually emit ::size-allocate
-        when gtk_widget_size_allocate() is called, even if the new allocation
+        when ctk_widget_size_allocate() is called, even if the new allocation
         is the same as the current allocation.
  
 Related Macros:
@@ -279,36 +279,36 @@ How can the user control the state of a widget:
 (In the following, set flag means set the flag, do appropriate
 actions, and enforce above invariants) 
 
-gtk_widget_show: 
+ctk_widget_show: 
  if !GTK_DESTROYED sets GTK_VISIBLE
 
-gtk_widget_hide:
+ctk_widget_hide:
  if !GTK_VISIBLE for widget
 
-gtk_widget_destroy:
+ctk_widget_destroy:
  sets GTK_DESTROYED
  For a top-level widget
 
-gtk_widget_realize:
+ctk_widget_realize:
  if !GTK_DESTROYED sets GTK_REALIZED
-- Calling gtk_widget_realize when the widget is not a descendant
+- Calling ctk_widget_realize when the widget is not a descendant
   of a toplevel is an ERROR.
 
-gtk_container_add (container, widget) [ and container-specific variants ]
+ctk_container_add (container, widget) [ and container-specific variants ]
  Sets widget->parent 
 
-gtk_container_remove (container, widget)
+ctk_container_remove (container, widget)
  unsets widget->parent
 
-gtk_widget_reparent (widget, new_parent)
+ctk_widget_reparent (widget, new_parent)
  Equivalent to removing widget from old parent and adding it to
  the new parent, except that the widget will not be temporarily 
  unrealized if both the old parent and the new parent are realized.
 
 
-gtk_widget_unrealize
-gtk_widget_map
-gtk_widget_unmap
+ctk_widget_unrealize
+ctk_widget_map
+ctk_widget_unmap
 
 These functions are not meant to be used by applications - they
 are used only by GTK and widgets to enforce invariants on the
@@ -317,7 +317,7 @@ state.
 When The X window corresponding to a GTK window is destroyed:
 -------------------------------------------------------------
 
-gtk_widget_destroy is called (as above).
+ctk_widget_destroy is called (as above).
 
 
 
@@ -329,21 +329,21 @@ Adding to a container
 
 When a widget is added to a container, the container:
 
-  1) calls gtk_widget_set_parent_window (widget, window) if 
+  1) calls ctk_widget_set_parent_window (widget, window) if 
      the widget is being added to something other than container->window
-  2) calls gtk_widget_set_parent (widget, container)
+  2) calls ctk_widget_set_parent (widget, container)
 
 Removing from a container
 -------------------------
 
 When a widget is removed to a container, the container:
 
-  1) Calls gtk_widget_unparent (widget)
+  1) Calls ctk_widget_unparent (widget)
   2) Queues a resize.
 
 Notes:
 
- gtk_widget_unparent unrealizes the widget except in the 
+ ctk_widget_unparent unrealizes the widget except in the 
    special case GTK_IN_REPARENT is set.
 
 
@@ -364,17 +364,17 @@ When a widget receives the "realize" signal it should:
 
   1) set the realized flag
   2) set widget->window
-      widget->window = gtk_widget_get_parent_window (widget);
+      widget->window = ctk_widget_get_parent_window (widget);
       g_object_ref (widget->window);
   3) attach the widget's style
 
-  widget->style = gtk_style_attach (widget->style, widget->window);
+  widget->style = ctk_style_attach (widget->style, widget->window);
 
  widget with window(s)
 
   1) set the REALIZED flag
   2) create windows with the parent obtained from
-      gtk_widget_get_parent_window (widget);
+      ctk_widget_get_parent_window (widget);
   3) attach the widget's style
   4) set the background color for the new window based on the style
 
@@ -383,7 +383,7 @@ The Map signal
 
   1) Set the MAPPED flag
   2) If the widget has any windows, gdk_window_show those windows
-  3) call gtk_widget_map for all child widgets that are 
+  3) call ctk_widget_map for all child widgets that are 
      VISIBLE, CHILD_VISIBLE and !MAPPED. (A widget will only
      be !CHILD_VISIBLE if the container set it that way, so
      most containers will not have to check this.)
@@ -427,13 +427,13 @@ Commentary:
 
   The destroy signal probably shouldn't exist at all. A widget
   should merely be unrealized and removed from its parent
-  when the user calls gtk_widget_destroy or a GDK_DESTROY event
+  when the user calls ctk_widget_destroy or a GDK_DESTROY event
   is received. However, a large body of code depends on
   getting a definitive signal when a widget goes away.
 
   That could be put in the finalization step, but, especially
   with language bindings, the cleanup step may need to refer
-  back to the widget. (To use gtk_widget_get_data, for instance)
+  back to the widget. (To use ctk_widget_get_data, for instance)
   If it does so via a pointer in a closure (natural for
   Scheme, or Perl), then the finalization procedure will never
   be called. 
@@ -447,7 +447,7 @@ When a widget receives the destroy signal, it must:
 
   1) If the widget "owns" any widgets other than its child
      widgets, (for instance popup windows) it should
-     call gtk_widget_destroy () for them.
+     call ctk_widget_destroy () for them.
 
   2) Call the parent class's destroy handler.
 
@@ -493,8 +493,8 @@ basis. So say: we have
 And that Foo, Widget, and Object all have destructors, but
 not Bar.
 
-Then gtk_foo_destroy will call gtk_widget_destroy (because
+Then ctk_foo_destroy will call ctk_widget_destroy (because
 it was not overridden in the Bar class structure) and
-gtk_widget_destroy will call gtk_object_destroy because
-the parent_class variable referenced by gtk_foo_destroy is the 
+ctk_widget_destroy will call ctk_object_destroy because
+the parent_class variable referenced by ctk_foo_destroy is the 
 static variable in gtkwidget.c: GtkObjectClass.

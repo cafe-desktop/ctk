@@ -77,8 +77,8 @@
  * # Default Files #
  *
  * An application can cause GTK+ to parse a specific RC
- * file by calling gtk_rc_parse(). In addition to this,
- * certain files will be read at the end of gtk_init().
+ * file by calling ctk_rc_parse(). In addition to this,
+ * certain files will be read at the end of ctk_init().
  * Unless modified, the files looked for will be
  * `SYSCONFDIR/gtk-2.0/gtkrc`
  * and `.gtkrc-3.0` in the users home directory.
@@ -88,9 +88,9 @@
  * configuring GTK+.)
  *
  * The set of these “default” files
- * can be retrieved with gtk_rc_get_default_files()
- * and modified with gtk_rc_add_default_file() and
- * gtk_rc_set_default_files().
+ * can be retrieved with ctk_rc_get_default_files()
+ * and modified with ctk_rc_add_default_file() and
+ * ctk_rc_set_default_files().
  * Additionally, the `GTK2_RC_FILES` environment variable
  * can be set to a #G_SEARCHPATH_SEPARATOR_S-separated list of files
  * in order to overwrite the set of default files at runtime.
@@ -130,7 +130,7 @@
  * widget path and the class path consist of a `"."`
  * separated list of all the parents of the widget and the widget itself
  * from outermost to innermost. The difference is that in the widget path,
- * the name assigned by gtk_widget_set_name() is used if present, otherwise
+ * the name assigned by ctk_widget_set_name() is used if present, otherwise
  * the class name of the widget, while for the class path, the class name is
  * always used.
  *
@@ -184,7 +184,7 @@
  * # Theme gtkrc Files #
  *
  * Theme RC files are loaded first from under the `~/.themes/`,
- * then from the directory from gtk_rc_get_theme_dir(). The files looked at will
+ * then from the directory from ctk_rc_get_theme_dir(). The files looked at will
  * be `gtk-3.0/gtkrc`.
  *
  * When the application prefers dark themes
@@ -445,7 +445,7 @@
  * * `INSENSITIVE`
  *
  *         A color used for the background of widgets that have
- *         been set insensitive with gtk_widget_set_sensitive().
+ *         been set insensitive with ctk_widget_set_sensitive().
  *
  * ## Color Format ## {#color-format}
  *
@@ -648,14 +648,14 @@ typedef struct {
   GSList *color_hashes;
 } GtkRcStylePrivate;
 
-#define GTK_RC_STYLE_GET_PRIVATE(obj) ((GtkRcStylePrivate *) gtk_rc_style_get_instance_private ((GtkRcStyle *) (obj)))
+#define GTK_RC_STYLE_GET_PRIVATE(obj) ((GtkRcStylePrivate *) ctk_rc_style_get_instance_private ((GtkRcStyle *) (obj)))
 
-static void        gtk_rc_style_finalize             (GObject         *object);
-static void        gtk_rc_style_real_merge           (GtkRcStyle      *dest,
+static void        ctk_rc_style_finalize             (GObject         *object);
+static void        ctk_rc_style_real_merge           (GtkRcStyle      *dest,
                                                       GtkRcStyle      *src);
-static GtkRcStyle* gtk_rc_style_real_create_rc_style (GtkRcStyle      *rc_style);
-static GtkStyle*   gtk_rc_style_real_create_style    (GtkRcStyle      *rc_style);
-static gint	   gtk_rc_properties_cmp	     (gconstpointer    bsearch_node1,
+static GtkRcStyle* ctk_rc_style_real_create_rc_style (GtkRcStyle      *rc_style);
+static GtkStyle*   ctk_rc_style_real_create_style    (GtkRcStyle      *rc_style);
+static gint	   ctk_rc_properties_cmp	     (gconstpointer    bsearch_node1,
 						      gconstpointer    bsearch_node2);
 
 static void	   insert_rc_property		     (GtkRcStyle      *style,
@@ -663,7 +663,7 @@ static void	   insert_rc_property		     (GtkRcStyle      *style,
 						      gboolean         replace);
 
 
-static const GScannerConfig gtk_rc_scanner_config =
+static const GScannerConfig ctk_rc_scanner_config =
 {
   (
    " \t\r\n"
@@ -709,12 +709,12 @@ static GHashTable *realized_style_ht = NULL;
 
 static gchar *im_module_file = NULL;
 
-static gchar **gtk_rc_default_files = NULL;
+static gchar **ctk_rc_default_files = NULL;
 
 /* RC file handling */
 
 static gchar *
-gtk_rc_make_default_dir (const gchar *type)
+ctk_rc_make_default_dir (const gchar *type)
 {
   const gchar *var;
   gchar *path;
@@ -724,13 +724,13 @@ gtk_rc_make_default_dir (const gchar *type)
   if (var)
     path = g_build_filename (var, "lib", "gtk-3.0", GTK_BINARY_VERSION, type, NULL);
   else
-    path = g_build_filename (_gtk_get_libdir (), "gtk-3.0", GTK_BINARY_VERSION, type, NULL);
+    path = g_build_filename (_ctk_get_libdir (), "gtk-3.0", GTK_BINARY_VERSION, type, NULL);
 
   return path;
 }
 
 /**
- * gtk_rc_get_im_module_path:
+ * ctk_rc_get_im_module_path:
  *
  * Obtains the path in which to look for IM modules. See the documentation
  * of the `GTK_PATH`
@@ -744,9 +744,9 @@ gtk_rc_make_default_dir (const gchar *type)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  */
 gchar *
-gtk_rc_get_im_module_path (void)
+ctk_rc_get_im_module_path (void)
 {
-  gchar **paths = _gtk_get_module_path ("immodules");
+  gchar **paths = _ctk_get_module_path ("immodules");
   gchar *result = g_strjoinv (G_SEARCHPATH_SEPARATOR_S, paths);
   g_strfreev (paths);
 
@@ -754,7 +754,7 @@ gtk_rc_get_im_module_path (void)
 }
 
 /**
- * gtk_rc_get_im_module_file:
+ * ctk_rc_get_im_module_file:
  *
  * Obtains the path to the IM modules file. See the documentation
  * of the `GTK_IM_MODULE_FILE`
@@ -766,7 +766,7 @@ gtk_rc_get_im_module_path (void)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  */
 gchar *
-gtk_rc_get_im_module_file (void)
+ctk_rc_get_im_module_file (void)
 {
   const gchar *var = g_getenv ("GTK_IM_MODULE_FILE");
   gchar *result = NULL;
@@ -779,14 +779,14 @@ gtk_rc_get_im_module_file (void)
       if (im_module_file)
         result = g_strdup (im_module_file);
       else
-        result = gtk_rc_make_default_dir ("immodules.cache");
+        result = ctk_rc_make_default_dir ("immodules.cache");
     }
 
   return result;
 }
 
 /**
- * gtk_rc_get_theme_dir:
+ * ctk_rc_get_theme_dir:
  *
  * Returns the standard directory in which themes should
  * be installed. (GTK+ does not actually use this directory
@@ -797,7 +797,7 @@ gtk_rc_get_im_module_file (void)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  */
 gchar *
-gtk_rc_get_theme_dir (void)
+ctk_rc_get_theme_dir (void)
 {
   const gchar *var;
   gchar *path;
@@ -807,13 +807,13 @@ gtk_rc_get_theme_dir (void)
   if (var)
     path = g_build_filename (var, "share", "themes", NULL);
   else
-    path = g_build_filename (_gtk_get_data_prefix (), "share", "themes", NULL);
+    path = g_build_filename (_ctk_get_data_prefix (), "share", "themes", NULL);
 
   return path;
 }
 
 /**
- * gtk_rc_get_module_dir:
+ * ctk_rc_get_module_dir:
  *
  * Returns a directory in which GTK+ looks for theme engines.
  * For full information about the search for theme engines,
@@ -824,46 +824,46 @@ gtk_rc_get_theme_dir (void)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  **/
 gchar *
-gtk_rc_get_module_dir (void)
+ctk_rc_get_module_dir (void)
 {
-  return gtk_rc_make_default_dir ("engines");
+  return ctk_rc_make_default_dir ("engines");
 }
 
 /**
- * gtk_rc_add_default_file:
+ * ctk_rc_add_default_file:
  * @filename: (type filename): the pathname to the file. If @filename
  *    is not absolute, it is searched in the current directory.
  *
  * Adds a file to the list of files to be parsed at the
- * end of gtk_init().
+ * end of ctk_init().
  *
  * Deprecated:3.0: Use #GtkStyleContext with a custom #GtkStyleProvider instead
  **/
 void
-gtk_rc_add_default_file (const gchar *filename)
+ctk_rc_add_default_file (const gchar *filename)
 {
 }
 
 /**
- * gtk_rc_set_default_files:
+ * ctk_rc_set_default_files:
  * @filenames: (array zero-terminated=1) (element-type filename): A
  *     %NULL-terminated list of filenames.
  *
  * Sets the list of files that GTK+ will read at the
- * end of gtk_init().
+ * end of ctk_init().
  *
  * Deprecated:3.0: Use #GtkStyleContext with a custom #GtkStyleProvider instead
  **/
 void
-gtk_rc_set_default_files (gchar **filenames)
+ctk_rc_set_default_files (gchar **filenames)
 {
 }
 
 /**
- * gtk_rc_get_default_files:
+ * ctk_rc_get_default_files:
  *
  * Retrieves the current list of RC files that will be parsed
- * at the end of gtk_init().
+ * at the end of ctk_init().
  *
  * Returns: (transfer none) (array zero-terminated=1) (element-type filename):
  *      A %NULL-terminated array of filenames.  This memory is owned
@@ -873,13 +873,13 @@ gtk_rc_set_default_files (gchar **filenames)
  * Deprecated:3.0: Use #GtkStyleContext instead
  **/
 gchar **
-gtk_rc_get_default_files (void)
+ctk_rc_get_default_files (void)
 {
-  return gtk_rc_default_files;
+  return ctk_rc_default_files;
 }
 
 /**
- * gtk_rc_parse_string:
+ * ctk_rc_parse_string:
  * @rc_string: a string to parse.
  *
  * Parses resource information directly from a string.
@@ -887,13 +887,13 @@ gtk_rc_get_default_files (void)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  */
 void
-gtk_rc_parse_string (const gchar *rc_string)
+ctk_rc_parse_string (const gchar *rc_string)
 {
   g_return_if_fail (rc_string != NULL);
 }
 
 /**
- * gtk_rc_parse:
+ * ctk_rc_parse:
  * @filename: the filename of a file to parse. If @filename is not absolute, it
  *  is searched in the current directory.
  *
@@ -902,17 +902,17 @@ gtk_rc_parse_string (const gchar *rc_string)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  */
 void
-gtk_rc_parse (const gchar *filename)
+ctk_rc_parse (const gchar *filename)
 {
   g_return_if_fail (filename != NULL);
 }
 
 /* Handling of RC styles */
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRcStyle, gtk_rc_style, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkRcStyle, ctk_rc_style, G_TYPE_OBJECT)
 
 static void
-gtk_rc_style_init (GtkRcStyle *style)
+ctk_rc_style_init (GtkRcStyle *style)
 {
   GtkRcStylePrivate *priv = GTK_RC_STYLE_GET_PRIVATE (style);
   guint i;
@@ -942,20 +942,20 @@ gtk_rc_style_init (GtkRcStyle *style)
 }
 
 static void
-gtk_rc_style_class_init (GtkRcStyleClass *klass)
+ctk_rc_style_class_init (GtkRcStyleClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_rc_style_finalize;
+  object_class->finalize = ctk_rc_style_finalize;
 
   klass->parse = NULL;
-  klass->create_rc_style = gtk_rc_style_real_create_rc_style;
-  klass->merge = gtk_rc_style_real_merge;
-  klass->create_style = gtk_rc_style_real_create_style;
+  klass->create_rc_style = ctk_rc_style_real_create_rc_style;
+  klass->merge = ctk_rc_style_real_merge;
+  klass->create_style = ctk_rc_style_real_create_style;
 }
 
 static void
-gtk_rc_style_finalize (GObject *object)
+ctk_rc_style_finalize (GObject *object)
 {
   GSList *tmp_list1, *tmp_list2;
   GtkRcStyle *rc_style;
@@ -1021,11 +1021,11 @@ gtk_rc_style_finalize (GObject *object)
   g_slist_free_full (rc_style->icon_factories, g_object_unref);
   g_slist_free_full (rc_priv->color_hashes, (GDestroyNotify)g_hash_table_unref);
 
-  G_OBJECT_CLASS (gtk_rc_style_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_rc_style_parent_class)->finalize (object);
 }
 
 /**
- * gtk_rc_style_new:
+ * ctk_rc_style_new:
  *
  * Creates a new #GtkRcStyle with no fields set and
  * a reference count of 1.
@@ -1035,7 +1035,7 @@ gtk_rc_style_finalize (GObject *object)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  */
 GtkRcStyle *
-gtk_rc_style_new (void)
+ctk_rc_style_new (void)
 {
   GtkRcStyle *style;
 
@@ -1045,7 +1045,7 @@ gtk_rc_style_new (void)
 }
 
 /**
- * gtk_rc_style_copy:
+ * ctk_rc_style_copy:
  * @orig: the style to copy
  *
  * Makes a copy of the specified #GtkRcStyle. This function
@@ -1057,7 +1057,7 @@ gtk_rc_style_new (void)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  **/
 GtkRcStyle *
-gtk_rc_style_copy (GtkRcStyle *orig)
+ctk_rc_style_copy (GtkRcStyle *orig)
 {
   GtkRcStyle *style;
 
@@ -1070,13 +1070,13 @@ gtk_rc_style_copy (GtkRcStyle *orig)
 }
 
 static GtkRcStyle *
-gtk_rc_style_real_create_rc_style (GtkRcStyle *style)
+ctk_rc_style_real_create_rc_style (GtkRcStyle *style)
 {
   return g_object_new (G_OBJECT_TYPE (style), NULL);
 }
 
 static gint
-gtk_rc_properties_cmp (gconstpointer bsearch_node1,
+ctk_rc_properties_cmp (gconstpointer bsearch_node1,
 		       gconstpointer bsearch_node2)
 {
   const GtkRcProperty *prop1 = bsearch_node1;
@@ -1106,7 +1106,7 @@ insert_rc_property (GtkRcStyle    *style,
   i = 0;
   while (i < style->rc_properties->len)
     {
-      gint cmp = gtk_rc_properties_cmp (&key, &g_array_index (style->rc_properties, GtkRcProperty, i));
+      gint cmp = ctk_rc_properties_cmp (&key, &g_array_index (style->rc_properties, GtkRcProperty, i));
 
       if (cmp == 0)
 	{
@@ -1141,7 +1141,7 @@ insert_rc_property (GtkRcStyle    *style,
 }
 
 static void
-gtk_rc_style_real_merge (GtkRcStyle *dest,
+ctk_rc_style_real_merge (GtkRcStyle *dest,
 			 GtkRcStyle *src)
 {
   gint i;
@@ -1200,38 +1200,38 @@ gtk_rc_style_real_merge (GtkRcStyle *dest,
 }
 
 static GtkStyle *
-gtk_rc_style_real_create_style (GtkRcStyle *rc_style)
+ctk_rc_style_real_create_style (GtkRcStyle *rc_style)
 {
-  return gtk_style_new ();
+  return ctk_style_new ();
 }
 
 /**
- * gtk_rc_reset_styles:
+ * ctk_rc_reset_styles:
  * @settings: a #GtkSettings
  *
  * This function recomputes the styles for all widgets that use a
  * particular #GtkSettings object. (There is one #GtkSettings object
- * per #GdkScreen, see gtk_settings_get_for_screen()); It is useful
+ * per #GdkScreen, see ctk_settings_get_for_screen()); It is useful
  * when some global parameter has changed that affects the appearance
  * of all widgets, because when a widget gets a new style, it will
  * both redraw and recompute any cached information about its
  * appearance. As an example, it is used when the default font size
  * set by the operating system changes. Note that this function
  * doesn’t affect widgets that have a style set explicitly on them
- * with gtk_widget_set_style().
+ * with ctk_widget_set_style().
  *
  * Since: 2.4
  *
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  **/
 void
-gtk_rc_reset_styles (GtkSettings *settings)
+ctk_rc_reset_styles (GtkSettings *settings)
 {
-  gtk_style_context_reset_widgets (_gtk_settings_get_screen (settings));
+  ctk_style_context_reset_widgets (_ctk_settings_get_screen (settings));
 }
 
 /**
- * gtk_rc_reparse_all_for_settings:
+ * ctk_rc_reparse_all_for_settings:
  * @settings: a #GtkSettings
  * @force_load: load whether or not anything changed
  *
@@ -1244,14 +1244,14 @@ gtk_rc_reset_styles (GtkSettings *settings)
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  **/
 gboolean
-gtk_rc_reparse_all_for_settings (GtkSettings *settings,
+ctk_rc_reparse_all_for_settings (GtkSettings *settings,
 				 gboolean     force_load)
 {
   return FALSE;
 }
 
 /**
- * gtk_rc_reparse_all:
+ * ctk_rc_reparse_all:
  *
  * If the modification time on any previously read file for the
  * default #GtkSettings has changed, discard all style information
@@ -1262,13 +1262,13 @@ gtk_rc_reparse_all_for_settings (GtkSettings *settings,
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  **/
 gboolean
-gtk_rc_reparse_all (void)
+ctk_rc_reparse_all (void)
 {
   return FALSE;
 }
 
 /**
- * gtk_rc_get_style:
+ * ctk_rc_get_style:
  * @widget: a #GtkWidget
  *
  * Finds all matching RC styles for a given widget,
@@ -1285,17 +1285,17 @@ gtk_rc_reparse_all (void)
  * Deprecated:3.0: Use #GtkStyleContext instead
  **/
 GtkStyle *
-gtk_rc_get_style (GtkWidget *widget)
+ctk_rc_get_style (GtkWidget *widget)
 {
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
 
-  gtk_widget_ensure_style (widget);
+  ctk_widget_ensure_style (widget);
 
-  return gtk_widget_get_style (widget);
+  return ctk_widget_get_style (widget);
 }
 
 /**
- * gtk_rc_get_style_by_paths:
+ * ctk_rc_get_style_by_paths:
  * @settings: a #GtkSettings object
  * @widget_path: (allow-none): the widget path to use when looking up the
  *     style, or %NULL if no matching against the widget path should be done
@@ -1310,11 +1310,11 @@ gtk_rc_get_style (GtkWidget *widget)
  * don’t actually have corresponding GTK+ widgets. An example of this
  * would be items inside a GNOME canvas widget.
  *
- * The action of gtk_rc_get_style() is similar to:
+ * The action of ctk_rc_get_style() is similar to:
  * |[<!-- language="C" -->
- *  gtk_widget_path (widget, NULL, &path, NULL);
- *  gtk_widget_class_path (widget, NULL, &class_path, NULL);
- *  gtk_rc_get_style_by_paths (gtk_widget_get_settings (widget),
+ *  ctk_widget_path (widget, NULL, &path, NULL);
+ *  ctk_widget_class_path (widget, NULL, &class_path, NULL);
+ *  ctk_rc_get_style_by_paths (ctk_widget_get_settings (widget),
  *                             path, class_path,
  *                             G_OBJECT_TYPE (widget));
  * ]|
@@ -1329,7 +1329,7 @@ gtk_rc_get_style (GtkWidget *widget)
  * Deprecated:3.0: Use #GtkStyleContext instead
  **/
 GtkStyle *
-gtk_rc_get_style_by_paths (GtkSettings *settings,
+ctk_rc_get_style_by_paths (GtkSettings *settings,
 			   const char  *widget_path,
 			   const char  *class_path,
 			   GType        type)
@@ -1337,7 +1337,7 @@ gtk_rc_get_style_by_paths (GtkSettings *settings,
   GtkWidgetPath *path;
   GtkStyle *style;
 
-  path = gtk_widget_path_new ();
+  path = ctk_widget_path_new ();
 
   /* For compatibility, we return a GtkStyle based on a GtkStyleContext
    * with a GtkWidgetPath appropriate for the supplied information.
@@ -1350,7 +1350,7 @@ gtk_rc_get_style_by_paths (GtkSettings *settings,
    */
   if (class_path == NULL)
     {
-      gtk_widget_path_append_type (path, type == G_TYPE_NONE ? GTK_TYPE_WIDGET : type);
+      ctk_widget_path_append_type (path, type == G_TYPE_NONE ? GTK_TYPE_WIDGET : type);
     }
   else
     {
@@ -1396,32 +1396,32 @@ gtk_rc_get_style_by_paths (GtkSettings *settings,
 	  if (component_type == G_TYPE_INVALID)
 	    component_type = GTK_TYPE_WIDGET;
 
-	  pos = gtk_widget_path_append_type (path, component_type);
+	  pos = ctk_widget_path_append_type (path, component_type);
 	  if (component_name != NULL && strcmp (component_name, component_name) != 0)
-	    gtk_widget_path_iter_set_name (path, pos, component_name);
+	    ctk_widget_path_iter_set_name (path, pos, component_name);
 
 	  g_free (component_class);
 	  g_free (component_name);
 	}
     }
 
-  style = _gtk_style_new_for_path (_gtk_settings_get_screen (settings),
+  style = _ctk_style_new_for_path (_ctk_settings_get_screen (settings),
 				   path);
 
-  gtk_widget_path_free (path);
+  ctk_widget_path_free (path);
 
   return style;
 }
 
 /**
- * gtk_rc_scanner_new: (skip)
+ * ctk_rc_scanner_new: (skip)
  *
  * Deprecated:3.0: Use #GtkCssProvider instead
  */
 GScanner*
-gtk_rc_scanner_new (void)
+ctk_rc_scanner_new (void)
 {
-  return g_scanner_new (&gtk_rc_scanner_config);
+  return g_scanner_new (&ctk_rc_scanner_config);
 }
 
 /*********************
@@ -1454,7 +1454,7 @@ lookup_color (GtkRcStyle *style,
 }
 
 /**
- * gtk_rc_find_pixmap_in_path:
+ * ctk_rc_find_pixmap_in_path:
  * @settings: a #GtkSettings
  * @scanner: Scanner used to get line number information for the
  *   warning message, or %NULL
@@ -1469,7 +1469,7 @@ lookup_color (GtkRcStyle *style,
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  **/
 gchar*
-gtk_rc_find_pixmap_in_path (GtkSettings  *settings,
+ctk_rc_find_pixmap_in_path (GtkSettings  *settings,
 			    GScanner     *scanner,
 			    const gchar  *pixmap_file)
 {
@@ -1479,7 +1479,7 @@ gtk_rc_find_pixmap_in_path (GtkSettings  *settings,
 }
 
 /**
- * gtk_rc_find_module_in_path:
+ * ctk_rc_find_module_in_path:
  * @module_file: name of a theme engine
  *
  * Searches for a theme engine in the GTK+ search path. This function
@@ -1491,13 +1491,13 @@ gtk_rc_find_pixmap_in_path (GtkSettings  *settings,
  * Deprecated: 3.0: Use #GtkCssProvider instead.
  **/
 gchar*
-gtk_rc_find_module_in_path (const gchar *module_file)
+ctk_rc_find_module_in_path (const gchar *module_file)
 {
-  return _gtk_find_module (module_file, "engines");
+  return _ctk_find_module (module_file, "engines");
 }
 
 /**
- * gtk_rc_parse_state:
+ * ctk_rc_parse_state:
  * @scanner: a #GScanner (must be initialized for parsing an RC file)
  * @state: (out): A pointer to a #GtkStateType variable in which to
  *  store the result.
@@ -1511,7 +1511,7 @@ gtk_rc_find_module_in_path (const gchar *module_file)
  * Deprecated: 3.0: Use #GtkCssProvider instead
  */
 guint
-gtk_rc_parse_state (GScanner	 *scanner,
+ctk_rc_parse_state (GScanner	 *scanner,
 		    GtkStateType *state)
 {
   guint old_scope;
@@ -1562,7 +1562,7 @@ gtk_rc_parse_state (GScanner	 *scanner,
 }
 
 /**
- * gtk_rc_parse_priority:
+ * ctk_rc_parse_priority:
  * @scanner: a #GScanner (must be initialized for parsing an RC file)
  * @priority: A pointer to #GtkPathPriorityType variable in which
  *  to store the result.
@@ -1576,7 +1576,7 @@ gtk_rc_parse_state (GScanner	 *scanner,
  * Deprecated:3.0: Use #GtkCssProvider instead
  */
 guint
-gtk_rc_parse_priority (GScanner	           *scanner,
+ctk_rc_parse_priority (GScanner	           *scanner,
 		       GtkPathPriorityType *priority)
 {
   guint old_scope;
@@ -1626,7 +1626,7 @@ gtk_rc_parse_priority (GScanner	           *scanner,
 }
 
 /**
- * gtk_rc_parse_color:
+ * ctk_rc_parse_color:
  * @scanner: a #GScanner
  * @color: (out): a pointer to a #GdkColor in which to store
  *     the result
@@ -1634,7 +1634,7 @@ gtk_rc_parse_priority (GScanner	           *scanner,
  * Parses a color in the format expected
  * in a RC file.
  *
- * Note that theme engines should use gtk_rc_parse_color_full() in
+ * Note that theme engines should use ctk_rc_parse_color_full() in
  * order to support symbolic colors.
  *
  * Returns: %G_TOKEN_NONE if parsing succeeded, otherwise the token
@@ -1643,14 +1643,14 @@ gtk_rc_parse_priority (GScanner	           *scanner,
  * Deprecated:3.0: Use #GtkCssProvider instead
  */
 guint
-gtk_rc_parse_color (GScanner *scanner,
+ctk_rc_parse_color (GScanner *scanner,
 		    GdkColor *color)
 {
-  return gtk_rc_parse_color_full (scanner, NULL, color);
+  return ctk_rc_parse_color_full (scanner, NULL, color);
 }
 
 /**
- * gtk_rc_parse_color_full:
+ * ctk_rc_parse_color_full:
  * @scanner: a #GScanner
  * @style: (allow-none): a #GtkRcStyle, or %NULL
  * @color: (out): a pointer to a #GdkColor in which to store
@@ -1668,7 +1668,7 @@ gtk_rc_parse_color (GScanner *scanner,
  * Deprecated:3.0: Use #GtkCssProvider instead
  */
 guint
-gtk_rc_parse_color_full (GScanner   *scanner,
+ctk_rc_parse_color_full (GScanner   *scanner,
                          GtkRcStyle *style,
                          GdkColor   *color)
 {
@@ -1776,7 +1776,7 @@ gtk_rc_parse_color_full (GScanner   *scanner,
           if (token != G_TOKEN_COMMA)
             return G_TOKEN_COMMA;
 
-          token = gtk_rc_parse_color_full (scanner, style, &c1);
+          token = ctk_rc_parse_color_full (scanner, style, &c1);
           if (token != G_TOKEN_NONE)
             return token;
 
@@ -1784,7 +1784,7 @@ gtk_rc_parse_color_full (GScanner   *scanner,
 	  if (token != G_TOKEN_COMMA)
             return G_TOKEN_COMMA;
 
-	  token = gtk_rc_parse_color_full (scanner, style, &c2);
+	  token = ctk_rc_parse_color_full (scanner, style, &c2);
 	  if (token != G_TOKEN_NONE)
             return token;
 
@@ -1821,7 +1821,7 @@ gtk_rc_parse_color_full (GScanner   *scanner,
           if (token != G_TOKEN_COMMA)
             return G_TOKEN_COMMA;
 
-          token = gtk_rc_parse_color_full (scanner, style, &c1);
+          token = ctk_rc_parse_color_full (scanner, style, &c1);
           if (token != G_TOKEN_NONE)
             return token;
 
@@ -1829,7 +1829,7 @@ gtk_rc_parse_color_full (GScanner   *scanner,
           if (token != G_TOKEN_RIGHT_PAREN)
             return G_TOKEN_RIGHT_PAREN;
 
-          _gtk_style_shade (&c1, color, l);
+          _ctk_style_shade (&c1, color, l);
 
           return G_TOKEN_NONE;
         }
@@ -1845,7 +1845,7 @@ gtk_rc_parse_color_full (GScanner   *scanner,
           if (token != G_TOKEN_LEFT_PAREN)
             return G_TOKEN_LEFT_PAREN;
 
-          token = gtk_rc_parse_color_full (scanner, style, &c1);
+          token = ctk_rc_parse_color_full (scanner, style, &c1);
           if (token != G_TOKEN_NONE)
             return token;
 
@@ -1853,7 +1853,7 @@ gtk_rc_parse_color_full (GScanner   *scanner,
           if (token != G_TOKEN_RIGHT_PAREN)
             return G_TOKEN_RIGHT_PAREN;
 
-          _gtk_style_shade (&c1, color, l);
+          _ctk_style_shade (&c1, color, l);
 
           return G_TOKEN_NONE;
         }
@@ -1881,7 +1881,7 @@ pattern_spec_free (PatternSpec *pspec)
 }
 
 /**
- * gtk_binding_set_add_path:
+ * ctk_binding_set_add_path:
  * @binding_set: a #GtkBindingSet to add a path to
  * @path_type: path type the pattern applies to
  * @path_pattern: the actual match pattern
@@ -1895,7 +1895,7 @@ pattern_spec_free (PatternSpec *pspec)
  * Deprecated: 3.0
  */
 void
-gtk_binding_set_add_path (GtkBindingSet       *binding_set,
+ctk_binding_set_add_path (GtkBindingSet       *binding_set,
                           GtkPathType          path_type,
                           const gchar         *path_pattern,
                           GtkPathPriorityType  priority)

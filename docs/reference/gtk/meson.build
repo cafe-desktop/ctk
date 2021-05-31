@@ -444,7 +444,7 @@ else
   types_conf.set('ENABLE_ON_X11', '%')
 endif
 
-if get_option('gtk_doc')
+if get_option('ctk_doc')
 
     configure_file(input: 'version.xml.in', output: 'version.xml', configuration: version_conf)
     configure_file(input: 'getting_started.xml.in', output: 'getting_started.xml', configuration: src_dir_conf)
@@ -455,7 +455,7 @@ if get_option('gtk_doc')
                  src_dir: [
                    gtkinc,
                 ],
-                 dependencies: libgtk_dep,
+                 dependencies: libctk_dep,
                  gobject_typesfile: configure_file(
                    input: 'gtk3.types.in',
                    output: 'gtk3.types',

@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_VIEW                (gtk_cell_view_get_type ())
+#define GTK_TYPE_CELL_VIEW                (ctk_cell_view_get_type ())
 #define GTK_CELL_VIEW(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_VIEW, GtkCellView))
 #define GTK_CELL_VIEW_CLASS(vtable)       (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_CELL_VIEW, GtkCellViewClass))
 #define GTK_IS_CELL_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_VIEW))
@@ -60,55 +60,55 @@ struct _GtkCellViewClass
   /*< private >*/
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType             gtk_cell_view_get_type                (void) G_GNUC_CONST;
+GType             ctk_cell_view_get_type                (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget        *gtk_cell_view_new                     (void);
+GtkWidget        *ctk_cell_view_new                     (void);
 GDK_AVAILABLE_IN_ALL
-GtkWidget        *gtk_cell_view_new_with_context        (GtkCellArea        *area,
+GtkWidget        *ctk_cell_view_new_with_context        (GtkCellArea        *area,
                                                          GtkCellAreaContext *context);
 GDK_AVAILABLE_IN_ALL
-GtkWidget        *gtk_cell_view_new_with_text           (const gchar     *text);
+GtkWidget        *ctk_cell_view_new_with_text           (const gchar     *text);
 GDK_AVAILABLE_IN_ALL
-GtkWidget        *gtk_cell_view_new_with_markup         (const gchar     *markup);
+GtkWidget        *ctk_cell_view_new_with_markup         (const gchar     *markup);
 GDK_AVAILABLE_IN_ALL
-GtkWidget        *gtk_cell_view_new_with_pixbuf         (GdkPixbuf       *pixbuf);
+GtkWidget        *ctk_cell_view_new_with_pixbuf         (GdkPixbuf       *pixbuf);
 GDK_AVAILABLE_IN_ALL
-void              gtk_cell_view_set_model               (GtkCellView     *cell_view,
+void              ctk_cell_view_set_model               (GtkCellView     *cell_view,
                                                          GtkTreeModel    *model);
 GDK_AVAILABLE_IN_ALL
-GtkTreeModel     *gtk_cell_view_get_model               (GtkCellView     *cell_view);
+GtkTreeModel     *ctk_cell_view_get_model               (GtkCellView     *cell_view);
 GDK_AVAILABLE_IN_ALL
-void              gtk_cell_view_set_displayed_row       (GtkCellView     *cell_view,
+void              ctk_cell_view_set_displayed_row       (GtkCellView     *cell_view,
                                                          GtkTreePath     *path);
 GDK_AVAILABLE_IN_ALL
-GtkTreePath      *gtk_cell_view_get_displayed_row       (GtkCellView     *cell_view);
+GtkTreePath      *ctk_cell_view_get_displayed_row       (GtkCellView     *cell_view);
 GDK_AVAILABLE_IN_ALL
-void              gtk_cell_view_set_background_rgba     (GtkCellView     *cell_view,
+void              ctk_cell_view_set_background_rgba     (GtkCellView     *cell_view,
                                                          const GdkRGBA   *rgba);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_cell_view_get_draw_sensitive      (GtkCellView     *cell_view);
+gboolean          ctk_cell_view_get_draw_sensitive      (GtkCellView     *cell_view);
 GDK_AVAILABLE_IN_ALL
-void              gtk_cell_view_set_draw_sensitive      (GtkCellView     *cell_view,
+void              ctk_cell_view_set_draw_sensitive      (GtkCellView     *cell_view,
                                                          gboolean         draw_sensitive);
 GDK_AVAILABLE_IN_ALL
-gboolean          gtk_cell_view_get_fit_model           (GtkCellView     *cell_view);
+gboolean          ctk_cell_view_get_fit_model           (GtkCellView     *cell_view);
 GDK_AVAILABLE_IN_ALL
-void              gtk_cell_view_set_fit_model           (GtkCellView     *cell_view,
+void              ctk_cell_view_set_fit_model           (GtkCellView     *cell_view,
                                                          gboolean         fit_model);
 
-GDK_DEPRECATED_IN_3_0_FOR(gtk_widget_get_preferred_size)
-gboolean          gtk_cell_view_get_size_of_row         (GtkCellView     *cell_view,
+GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_size)
+gboolean          ctk_cell_view_get_size_of_row         (GtkCellView     *cell_view,
                                                          GtkTreePath     *path,
                                                          GtkRequisition  *requisition);
-GDK_DEPRECATED_IN_3_4_FOR(gtk_cell_view_set_background_rgba)
-void              gtk_cell_view_set_background_color    (GtkCellView     *cell_view,
+GDK_DEPRECATED_IN_3_4_FOR(ctk_cell_view_set_background_rgba)
+void              ctk_cell_view_set_background_color    (GtkCellView     *cell_view,
                                                          const GdkColor  *color);
 
 G_END_DECLS

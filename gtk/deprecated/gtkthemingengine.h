@@ -32,7 +32,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_THEMING_ENGINE         (gtk_theming_engine_get_type ())
+#define GTK_TYPE_THEMING_ENGINE         (ctk_theming_engine_get_type ())
 #define GTK_THEMING_ENGINE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_THEMING_ENGINE, GtkThemingEngine))
 #define GTK_THEMING_ENGINE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), GTK_TYPE_THEMING_ENGINE, GtkThemingEngineClass))
 #define GTK_IS_THEMING_ENGINE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_THEMING_ENGINE))
@@ -188,104 +188,104 @@ struct _GtkThemingEngineClass
 };
 
 GDK_DEPRECATED_IN_3_14
-GType gtk_theming_engine_get_type (void) G_GNUC_CONST;
+GType ctk_theming_engine_get_type (void) G_GNUC_CONST;
 
 /* function implemented in gtkcsscustomproperty.c */
 GDK_DEPRECATED_IN_3_8
-void gtk_theming_engine_register_property (const gchar            *name_space,
+void ctk_theming_engine_register_property (const gchar            *name_space,
                                            GtkStylePropertyParser  parse_func,
                                            GParamSpec             *pspec);
 
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_property (GtkThemingEngine *engine,
+void ctk_theming_engine_get_property (GtkThemingEngine *engine,
                                       const gchar      *property,
                                       GtkStateFlags     state,
                                       GValue           *value);
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_valist   (GtkThemingEngine *engine,
+void ctk_theming_engine_get_valist   (GtkThemingEngine *engine,
                                       GtkStateFlags     state,
                                       va_list           args);
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get          (GtkThemingEngine *engine,
+void ctk_theming_engine_get          (GtkThemingEngine *engine,
                                       GtkStateFlags     state,
                                       ...) G_GNUC_NULL_TERMINATED;
 
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_style_property (GtkThemingEngine *engine,
+void ctk_theming_engine_get_style_property (GtkThemingEngine *engine,
                                             const gchar      *property_name,
                                             GValue           *value);
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_style_valist   (GtkThemingEngine *engine,
+void ctk_theming_engine_get_style_valist   (GtkThemingEngine *engine,
                                             va_list           args);
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_style          (GtkThemingEngine *engine,
+void ctk_theming_engine_get_style          (GtkThemingEngine *engine,
                                             ...);
 
 GDK_DEPRECATED_IN_3_14
-gboolean gtk_theming_engine_lookup_color (GtkThemingEngine *engine,
+gboolean ctk_theming_engine_lookup_color (GtkThemingEngine *engine,
                                           const gchar      *color_name,
                                           GdkRGBA          *color);
 
 GDK_DEPRECATED_IN_3_14
-const GtkWidgetPath * gtk_theming_engine_get_path (GtkThemingEngine *engine);
+const GtkWidgetPath * ctk_theming_engine_get_path (GtkThemingEngine *engine);
 
 GDK_DEPRECATED_IN_3_14
-gboolean gtk_theming_engine_has_class  (GtkThemingEngine *engine,
+gboolean ctk_theming_engine_has_class  (GtkThemingEngine *engine,
                                         const gchar      *style_class);
 GDK_DEPRECATED_IN_3_14
-gboolean gtk_theming_engine_has_region (GtkThemingEngine *engine,
+gboolean ctk_theming_engine_has_region (GtkThemingEngine *engine,
                                         const gchar      *style_region,
                                         GtkRegionFlags   *flags);
 
 GDK_DEPRECATED_IN_3_14
-GtkStateFlags gtk_theming_engine_get_state        (GtkThemingEngine *engine);
+GtkStateFlags ctk_theming_engine_get_state        (GtkThemingEngine *engine);
 GDK_DEPRECATED_IN_3_6
-gboolean      gtk_theming_engine_state_is_running (GtkThemingEngine *engine,
+gboolean      ctk_theming_engine_state_is_running (GtkThemingEngine *engine,
                                                    GtkStateType      state,
                                                    gdouble          *progress);
 
-GDK_DEPRECATED_IN_3_8_FOR(gtk_theming_engine_get_state)
-GtkTextDirection gtk_theming_engine_get_direction (GtkThemingEngine *engine);
+GDK_DEPRECATED_IN_3_8_FOR(ctk_theming_engine_get_state)
+GtkTextDirection ctk_theming_engine_get_direction (GtkThemingEngine *engine);
 
 GDK_DEPRECATED_IN_3_14
-GtkJunctionSides gtk_theming_engine_get_junction_sides (GtkThemingEngine *engine);
+GtkJunctionSides ctk_theming_engine_get_junction_sides (GtkThemingEngine *engine);
 
 /* Helper functions */
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_color            (GtkThemingEngine *engine,
+void ctk_theming_engine_get_color            (GtkThemingEngine *engine,
                                               GtkStateFlags     state,
                                               GdkRGBA          *color);
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_background_color (GtkThemingEngine *engine,
+void ctk_theming_engine_get_background_color (GtkThemingEngine *engine,
                                               GtkStateFlags     state,
                                               GdkRGBA          *color);
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_border_color     (GtkThemingEngine *engine,
+void ctk_theming_engine_get_border_color     (GtkThemingEngine *engine,
                                               GtkStateFlags     state,
                                               GdkRGBA          *color);
 
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_border  (GtkThemingEngine *engine,
+void ctk_theming_engine_get_border  (GtkThemingEngine *engine,
                                      GtkStateFlags     state,
                                      GtkBorder        *border);
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_padding (GtkThemingEngine *engine,
+void ctk_theming_engine_get_padding (GtkThemingEngine *engine,
                                      GtkStateFlags     state,
                                      GtkBorder        *padding);
 GDK_DEPRECATED_IN_3_14
-void gtk_theming_engine_get_margin  (GtkThemingEngine *engine,
+void ctk_theming_engine_get_margin  (GtkThemingEngine *engine,
                                      GtkStateFlags     state,
                                      GtkBorder        *margin);
 
-GDK_DEPRECATED_IN_3_8_FOR(gtk_theming_engine_get)
-const PangoFontDescription * gtk_theming_engine_get_font (GtkThemingEngine *engine,
+GDK_DEPRECATED_IN_3_8_FOR(ctk_theming_engine_get)
+const PangoFontDescription * ctk_theming_engine_get_font (GtkThemingEngine *engine,
                                                           GtkStateFlags     state);
 
 GDK_DEPRECATED_IN_3_14
-GtkThemingEngine * gtk_theming_engine_load (const gchar *name);
+GtkThemingEngine * ctk_theming_engine_load (const gchar *name);
 
 GDK_DEPRECATED_IN_3_14
-GdkScreen * gtk_theming_engine_get_screen (GtkThemingEngine *engine);
+GdkScreen * ctk_theming_engine_get_screen (GtkThemingEngine *engine);
 
 G_END_DECLS
 

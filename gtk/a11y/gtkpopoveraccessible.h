@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_POPOVER_ACCESSIBLE                      (gtk_popover_accessible_get_type ())
+#define GTK_TYPE_POPOVER_ACCESSIBLE                      (ctk_popover_accessible_get_type ())
 #define GTK_POPOVER_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_POPOVER_ACCESSIBLE, GtkPopoverAccessible))
 #define GTK_POPOVER_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_POPOVER_ACCESSIBLE, GtkPopoverAccessibleClass))
 #define GTK_IS_POPOVER_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_POPOVER_ACCESSIBLE))
@@ -49,7 +49,7 @@ struct _GtkPopoverAccessibleClass
 };
 
 GDK_AVAILABLE_IN_3_12
-GType gtk_popover_accessible_get_type (void);
+GType ctk_popover_accessible_get_type (void);
 
 G_END_DECLS
 

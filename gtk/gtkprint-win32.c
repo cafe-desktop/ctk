@@ -30,7 +30,7 @@
 #include "gtkprint-win32.h"
 
 void
-gtk_print_win32_devnames_free (GtkPrintWin32Devnames *devnames)
+ctk_print_win32_devnames_free (GtkPrintWin32Devnames *devnames)
 {
   g_free (devnames->driver);
   g_free (devnames->device);
@@ -39,7 +39,7 @@ gtk_print_win32_devnames_free (GtkPrintWin32Devnames *devnames)
 }
 
 GtkPrintWin32Devnames *
-gtk_print_win32_devnames_from_win32 (HGLOBAL global)
+ctk_print_win32_devnames_from_win32 (HGLOBAL global)
 {
   LPDEVNAMES win = GlobalLock (global);
   gunichar2 *data = (gunichar2 *)win;
@@ -59,7 +59,7 @@ gtk_print_win32_devnames_from_win32 (HGLOBAL global)
 }
 
 HGLOBAL 
-gtk_print_win32_devnames_to_win32 (const GtkPrintWin32Devnames *devnames)
+ctk_print_win32_devnames_to_win32 (const GtkPrintWin32Devnames *devnames)
 {
   HGLOBAL global;
   LPDEVNAMES windevnames;
@@ -102,16 +102,16 @@ gtk_print_win32_devnames_to_win32 (const GtkPrintWin32Devnames *devnames)
 }
 
 HGLOBAL 
-gtk_print_win32_devnames_to_win32_from_printer_name (const char *printer_name)
+ctk_print_win32_devnames_to_win32_from_printer_name (const char *printer_name)
 {
   HGLOBAL global;
   GtkPrintWin32Devnames *devnames;
 
-  devnames = gtk_print_win32_devnames_from_printer_name(printer_name);
+  devnames = ctk_print_win32_devnames_from_printer_name(printer_name);
   if (devnames)
     {
-      global = gtk_print_win32_devnames_to_win32 (devnames);
-      gtk_print_win32_devnames_free (devnames);
+      global = ctk_print_win32_devnames_to_win32 (devnames);
+      ctk_print_win32_devnames_free (devnames);
     }
   else
     global = NULL;
@@ -125,7 +125,7 @@ gtk_print_win32_devnames_to_win32_from_printer_name (const char *printer_name)
  * this function can return NULL.
  */
 GtkPrintWin32Devnames *
-gtk_print_win32_devnames_from_printer_name (const char *printer_name)
+ctk_print_win32_devnames_from_printer_name (const char *printer_name)
 {
   HANDLE hprinter;
   gunichar2* win32_printer_name;

@@ -29,10 +29,10 @@ recent_manager_get_default (void)
   GtkRecentManager *manager;
   GtkRecentManager *manager2;
 
-  manager = gtk_recent_manager_get_default ();
+  manager = ctk_recent_manager_get_default ();
   g_assert (manager != NULL);
 
-  manager2 = gtk_recent_manager_get_default ();
+  manager2 = ctk_recent_manager_get_default ();
   g_assert (manager == manager2);
 }
 
@@ -43,7 +43,7 @@ recent_manager_add (void)
   GtkRecentData *recent_data;
   gboolean res;
 
-  manager = gtk_recent_manager_get_default ();
+  manager = ctk_recent_manager_get_default ();
 
   recent_data = g_slice_new0 (GtkRecentData);
 
@@ -55,7 +55,7 @@ recent_manager_add (void)
   recent_data->app_exec = "testrecentchooser %u";
   if (g_test_trap_fork (0, G_TEST_TRAP_SILENCE_STDERR))
     {
-      res = gtk_recent_manager_add_full (manager,
+      res = ctk_recent_manager_add_full (manager,
                                          uri,
                                          recent_data);
     }
@@ -67,7 +67,7 @@ recent_manager_add (void)
   recent_data->app_exec = "testrecentchooser %u";
   if (g_test_trap_fork (0, G_TEST_TRAP_SILENCE_STDERR))
     {
-      res = gtk_recent_manager_add_full (manager,
+      res = ctk_recent_manager_add_full (manager,
                                          uri,
                                          recent_data);
     }
@@ -79,7 +79,7 @@ recent_manager_add (void)
   recent_data->app_exec = NULL;
   if (g_test_trap_fork (0, G_TEST_TRAP_SILENCE_STDERR))
     {
-      res = gtk_recent_manager_add_full (manager,
+      res = ctk_recent_manager_add_full (manager,
                                          uri,
                                          recent_data);
     }
@@ -90,7 +90,7 @@ recent_manager_add (void)
   recent_data->mime_type = "text/plain";
   recent_data->app_name = "testrecentchooser";
   recent_data->app_exec = "testrecentchooser %u";
-  res = gtk_recent_manager_add_full (manager,
+  res = ctk_recent_manager_add_full (manager,
                                      uri,
                                      recent_data);
   g_assert (res == TRUE);
@@ -145,7 +145,7 @@ recent_manager_add_many (void)
         g_print (G_STRLOC ": adding item %d\n", i);
 
       new_uri = g_strdup_printf ("file:///doesnotexist-%d.txt", i);
-      gtk_recent_manager_add_full (manager, new_uri, data);
+      ctk_recent_manager_add_full (manager, new_uri, data);
       g_free (new_uri);
 
       closure->counter += 1;
@@ -167,12 +167,12 @@ recent_manager_has_item (void)
   GtkRecentManager *manager;
   gboolean res;
 
-  manager = gtk_recent_manager_get_default ();
+  manager = ctk_recent_manager_get_default ();
 
-  res = gtk_recent_manager_has_item (manager, "file:///tmp/testrecentdoesnotexist.txt");
+  res = ctk_recent_manager_has_item (manager, "file:///tmp/testrecentdoesnotexist.txt");
   g_assert (res == FALSE);
 
-  res = gtk_recent_manager_has_item (manager, uri);
+  res = ctk_recent_manager_has_item (manager, uri);
   g_assert (res == TRUE);
 }
 
@@ -183,10 +183,10 @@ recent_manager_move_item (void)
   gboolean res;
   GError *error;
 
-  manager = gtk_recent_manager_get_default ();
+  manager = ctk_recent_manager_get_default ();
 
   error = NULL;
-  res = gtk_recent_manager_move_item (manager,
+  res = ctk_recent_manager_move_item (manager,
                                       "file:///tmp/testrecentdoesnotexist.txt",
                                       uri2,
                                       &error);
@@ -197,14 +197,14 @@ recent_manager_move_item (void)
   g_error_free (error);
 
   error = NULL;
-  res = gtk_recent_manager_move_item (manager, uri, uri2, &error);
+  res = ctk_recent_manager_move_item (manager, uri, uri2, &error);
   g_assert (res == TRUE);
   g_assert (error == NULL);
 
-  res = gtk_recent_manager_has_item (manager, uri);
+  res = ctk_recent_manager_has_item (manager, uri);
   g_assert (res == FALSE);
 
-  res = gtk_recent_manager_has_item (manager, uri2);
+  res = ctk_recent_manager_has_item (manager, uri2);
   g_assert (res == TRUE);
 }
 
@@ -215,10 +215,10 @@ recent_manager_lookup_item (void)
   GtkRecentInfo *info;
   GError *error;
 
-  manager = gtk_recent_manager_get_default ();
+  manager = ctk_recent_manager_get_default ();
 
   error = NULL;
-  info = gtk_recent_manager_lookup_item (manager,
+  info = ctk_recent_manager_lookup_item (manager,
                                          "file:///tmp/testrecentdoesnotexist.txt",
                                          &error);
   g_assert (info == NULL);
@@ -228,13 +228,13 @@ recent_manager_lookup_item (void)
   g_error_free (error);
 
   error = NULL;
-  info = gtk_recent_manager_lookup_item (manager, uri2, &error);
+  info = ctk_recent_manager_lookup_item (manager, uri2, &error);
   g_assert (info != NULL);
   g_assert (error == NULL);
 
-  g_assert (gtk_recent_info_has_application (info, "testrecentchooser"));
+  g_assert (ctk_recent_info_has_application (info, "testrecentchooser"));
 
-  gtk_recent_info_unref (info);
+  ctk_recent_info_unref (info);
 }
 
 static void
@@ -244,10 +244,10 @@ recent_manager_remove_item (void)
   gboolean res;
   GError *error;
 
-  manager = gtk_recent_manager_get_default ();
+  manager = ctk_recent_manager_get_default ();
 
   error = NULL;
-  res = gtk_recent_manager_remove_item (manager,
+  res = ctk_recent_manager_remove_item (manager,
                                         "file:///tmp/testrecentdoesnotexist.txt",
                                         &error);
   g_assert (res == FALSE);
@@ -258,11 +258,11 @@ recent_manager_remove_item (void)
 
   /* remove an item that's actually there */
   error = NULL;
-  res = gtk_recent_manager_remove_item (manager, uri2, &error);
+  res = ctk_recent_manager_remove_item (manager, uri2, &error);
   g_assert (res == TRUE);
   g_assert (error == NULL);
 
-  res = gtk_recent_manager_has_item (manager, uri2);
+  res = ctk_recent_manager_has_item (manager, uri2);
   g_assert (res == FALSE);
 }
 
@@ -274,22 +274,22 @@ recent_manager_purge (void)
   gint n;
   GError *error;
 
-  manager = gtk_recent_manager_get_default ();
+  manager = ctk_recent_manager_get_default ();
 
   /* purge, add 1, purge again and check that 1 item has been purged */
   error = NULL;
-  n = gtk_recent_manager_purge_items (manager, &error);
+  n = ctk_recent_manager_purge_items (manager, &error);
   g_assert (error == NULL);
 
   recent_data = g_slice_new0 (GtkRecentData);
   recent_data->mime_type = "text/plain";
   recent_data->app_name = "testrecentchooser";
   recent_data->app_exec = "testrecentchooser %u";
-  gtk_recent_manager_add_full (manager, uri, recent_data);
+  ctk_recent_manager_add_full (manager, uri, recent_data);
   g_slice_free (GtkRecentData, recent_data);
 
   error = NULL;
-  n = gtk_recent_manager_purge_items (manager, &error);
+  n = ctk_recent_manager_purge_items (manager, &error);
   g_assert (error == NULL);
   g_assert (n == 1);
 }
@@ -298,7 +298,7 @@ int
 main (int    argc,
       char **argv)
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_add_func ("/recent-manager/get-default", recent_manager_get_default);
   g_test_add_func ("/recent-manager/add", recent_manager_add);

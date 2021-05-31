@@ -71,7 +71,7 @@ find_toplevel_at_pointer (GdkDisplay *display)
   GdkWindow *pointer_window;
   GtkWidget *widget = NULL;
 
-  pointer_window = gdk_device_get_window_at_position (gtk_get_current_event_device (),
+  pointer_window = gdk_device_get_window_at_position (ctk_get_current_event_device (),
                                                       NULL, NULL);
 
   /* The user data field of a GdkWindow is used to store a pointer
@@ -84,7 +84,7 @@ find_toplevel_at_pointer (GdkDisplay *display)
       widget = widget_ptr;
     }
 
-  return widget ? gtk_widget_get_toplevel (widget) : NULL;
+  return widget ? ctk_widget_get_toplevel (widget) : NULL;
 }
 
 static gboolean
@@ -110,25 +110,25 @@ query_for_toplevel (GdkScreen  *screen,
   GtkWidget *toplevel = NULL;
   GdkDevice *device;
 
-  popup = gtk_window_new (GTK_WINDOW_POPUP);
-  gtk_window_set_screen (GTK_WINDOW (popup), screen);
-  gtk_window_set_modal (GTK_WINDOW (popup), TRUE);
-  gtk_window_set_position (GTK_WINDOW (popup), GTK_WIN_POS_CENTER);
+  popup = ctk_window_new (GTK_WINDOW_POPUP);
+  ctk_window_set_screen (GTK_WINDOW (popup), screen);
+  ctk_window_set_modal (GTK_WINDOW (popup), TRUE);
+  ctk_window_set_position (GTK_WINDOW (popup), GTK_WIN_POS_CENTER);
 
-  frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
-  gtk_container_add (GTK_CONTAINER (popup), frame);
+  frame = ctk_frame_new (NULL);
+  ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
+  ctk_container_add (GTK_CONTAINER (popup), frame);
 
-  label = gtk_label_new (prompt);
+  label = ctk_label_new (prompt);
   g_object_set (label, "margin", 10, NULL);
-  gtk_container_add (GTK_CONTAINER (frame), label);
+  ctk_container_add (GTK_CONTAINER (frame), label);
 
-  gtk_widget_show_all (popup);
+  ctk_widget_show_all (popup);
   cursor = gdk_cursor_new_from_name (display, "crosshair");
-  device = gtk_get_current_event_device ();
+  device = ctk_get_current_event_device ();
 
   if (gdk_seat_grab (gdk_device_get_seat (device),
-                     gtk_widget_get_window (popup),
+                     ctk_widget_get_window (popup),
                      GDK_SEAT_CAPABILITY_ALL_POINTING,
                      FALSE, cursor, NULL, NULL, NULL) == GDK_GRAB_SUCCESS)
     {
@@ -150,7 +150,7 @@ query_for_toplevel (GdkScreen  *screen,
     }
 
   g_object_unref (cursor);
-  gtk_widget_destroy (popup);
+  ctk_widget_destroy (popup);
   gdk_display_flush (display);                 /* Really release the grab */
 
   return toplevel;
@@ -162,7 +162,7 @@ query_for_toplevel (GdkScreen  *screen,
 static void
 query_change_display (ChangeDisplayInfo *info)
 {
-  GdkScreen *screen = gtk_widget_get_screen (info->window);
+  GdkScreen *screen = ctk_widget_get_screen (info->window);
   GtkWidget *toplevel;
 
   toplevel = query_for_toplevel (screen,
@@ -170,7 +170,7 @@ query_change_display (ChangeDisplayInfo *info)
                                  "to move to the new screen");
 
   if (toplevel)
-    gtk_window_set_screen (GTK_WINDOW (toplevel), gdk_display_get_default_screen (info->current_display));
+    ctk_window_set_screen (GTK_WINDOW (toplevel), gdk_display_get_default_screen (info->current_display));
   else
     gdk_display_beep (gdk_screen_get_display (screen));
 }
@@ -187,7 +187,7 @@ response_cb (GtkDialog         *dialog,
   if (response_id == GTK_RESPONSE_OK)
     query_change_display (info);
   else
-    gtk_widget_destroy (GTK_WIDGET (dialog));
+    ctk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 /* Called when the user clicks on "Open..." in the display
@@ -205,34 +205,34 @@ open_display_cb (GtkWidget         *button,
   gchar *new_screen_name = NULL;
   GdkDisplay *result = NULL;
 
-  dialog = gtk_dialog_new_with_buttons ("Open Display",
+  dialog = ctk_dialog_new_with_buttons ("Open Display",
                                         GTK_WINDOW (info->window),
                                         GTK_DIALOG_MODAL,
                                         _("_Cancel"), GTK_RESPONSE_CANCEL,
                                         _("_OK"), GTK_RESPONSE_OK,
                                         NULL);
 
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-  display_entry = gtk_entry_new ();
-  gtk_entry_set_activates_default (GTK_ENTRY (display_entry), TRUE);
+  ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  display_entry = ctk_entry_new ();
+  ctk_entry_set_activates_default (GTK_ENTRY (display_entry), TRUE);
   dialog_label =
-    gtk_label_new ("Please enter the name of\nthe new display\n");
+    ctk_label_new ("Please enter the name of\nthe new display\n");
 
-  content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+  content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
 
-  gtk_container_add (GTK_CONTAINER (content_area), dialog_label);
-  gtk_container_add (GTK_CONTAINER (content_area), display_entry);
+  ctk_container_add (GTK_CONTAINER (content_area), dialog_label);
+  ctk_container_add (GTK_CONTAINER (content_area), display_entry);
 
-  gtk_widget_grab_focus (display_entry);
-  gtk_widget_show_all (gtk_bin_get_child (GTK_BIN (dialog)));
+  ctk_widget_grab_focus (display_entry);
+  ctk_widget_show_all (ctk_bin_get_child (GTK_BIN (dialog)));
 
   while (!result)
     {
-      gint response_id = gtk_dialog_run (GTK_DIALOG (dialog));
+      gint response_id = ctk_dialog_run (GTK_DIALOG (dialog));
       if (response_id != GTK_RESPONSE_OK)
         break;
 
-      new_screen_name = gtk_editable_get_chars (GTK_EDITABLE (display_entry),
+      new_screen_name = ctk_editable_get_chars (GTK_EDITABLE (display_entry),
                                                 0, -1);
 
       if (strcmp (new_screen_name, "") != 0)
@@ -243,7 +243,7 @@ open_display_cb (GtkWidget         *button,
               gchar *error_msg =
                 g_strdup_printf  ("Can't open display:\n\t%s\nplease try another one\n",
                                   new_screen_name);
-              gtk_label_set_text (GTK_LABEL (dialog_label), error_msg);
+              ctk_label_set_text (GTK_LABEL (dialog_label), error_msg);
               g_free (error_msg);
             }
 
@@ -251,7 +251,7 @@ open_display_cb (GtkWidget         *button,
         }
     }
 
-  gtk_widget_destroy (dialog);
+  ctk_widget_destroy (dialog);
 }
 
 /* Called when the user clicks on the "Close" button in the
@@ -278,8 +278,8 @@ display_changed_cb (GtkTreeSelection  *selection,
 
   if (info->current_display)
     g_object_unref (info->current_display);
-  if (gtk_tree_selection_get_selected (selection, &model, &iter))
-    gtk_tree_model_get (model, &iter,
+  if (ctk_tree_selection_get_selected (selection, &model, &iter))
+    ctk_tree_model_get (model, &iter,
                         DISPLAY_COLUMN_DISPLAY, &info->current_display,
                         -1);
   else
@@ -302,33 +302,33 @@ create_frame (ChangeDisplayInfo *info,
   GtkWidget *scrollwin;
   GtkWidget *hbox;
 
-  *frame = gtk_frame_new (title);
+  *frame = ctk_frame_new (title);
 
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
-  gtk_container_add (GTK_CONTAINER (*frame), hbox);
+  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+  ctk_container_set_border_width (GTK_CONTAINER (hbox), 8);
+  ctk_container_add (GTK_CONTAINER (*frame), hbox);
 
-  scrollwin = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrollwin),
+  scrollwin = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrollwin),
                                   GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrollwin),
+  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrollwin),
                                        GTK_SHADOW_IN);
-  gtk_box_pack_start (GTK_BOX (hbox), scrollwin, TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (hbox), scrollwin, TRUE, TRUE, 0);
 
-  *tree_view = gtk_tree_view_new ();
-  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (*tree_view), FALSE);
-  gtk_container_add (GTK_CONTAINER (scrollwin), *tree_view);
+  *tree_view = ctk_tree_view_new ();
+  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (*tree_view), FALSE);
+  ctk_container_add (GTK_CONTAINER (scrollwin), *tree_view);
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (*tree_view));
-  gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (*tree_view));
+  ctk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
 
-  *button_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  gtk_box_pack_start (GTK_BOX (hbox), *button_vbox, FALSE, FALSE, 0);
+  *button_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+  ctk_box_pack_start (GTK_BOX (hbox), *button_vbox, FALSE, FALSE, 0);
 
   if (!info->size_group)
-    info->size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+    info->size_group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
-  gtk_size_group_add_widget (GTK_SIZE_GROUP (info->size_group), *button_vbox);
+  ctk_size_group_add_widget (GTK_SIZE_GROUP (info->size_group), *button_vbox);
 }
 
 /* If we have a stack of buttons, it often looks better if their contents
@@ -338,11 +338,11 @@ create_frame (ChangeDisplayInfo *info,
 GtkWidget *
 left_align_button_new (const char *label)
 {
-  GtkWidget *button = gtk_button_new_with_mnemonic (label);
-  GtkWidget *child = gtk_bin_get_child (GTK_BIN (button));
+  GtkWidget *button = ctk_button_new_with_mnemonic (label);
+  GtkWidget *child = ctk_bin_get_child (GTK_BIN (button));
 
-  gtk_widget_set_halign (child, GTK_ALIGN_START);
-  gtk_widget_set_valign (child, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (child, GTK_ALIGN_START);
+  ctk_widget_set_valign (child, GTK_ALIGN_CENTER);
 
   return button;
 }
@@ -363,25 +363,25 @@ create_display_frame (ChangeDisplayInfo *info)
 
   button = left_align_button_new ("_Open...");
   g_signal_connect (button, "clicked",  G_CALLBACK (open_display_cb), info);
-  gtk_box_pack_start (GTK_BOX (button_vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (button_vbox), button, FALSE, FALSE, 0);
 
   button = left_align_button_new ("_Close");
   g_signal_connect (button, "clicked",  G_CALLBACK (close_display_cb), info);
-  gtk_box_pack_start (GTK_BOX (button_vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (button_vbox), button, FALSE, FALSE, 0);
 
-  info->display_model = (GtkTreeModel *)gtk_list_store_new (DISPLAY_NUM_COLUMNS,
+  info->display_model = (GtkTreeModel *)ctk_list_store_new (DISPLAY_NUM_COLUMNS,
                                                             G_TYPE_STRING,
                                                             GDK_TYPE_DISPLAY);
 
-  gtk_tree_view_set_model (GTK_TREE_VIEW (tree_view), info->display_model);
+  ctk_tree_view_set_model (GTK_TREE_VIEW (tree_view), info->display_model);
 
-  column = gtk_tree_view_column_new_with_attributes ("Name",
-                                                     gtk_cell_renderer_text_new (),
+  column = ctk_tree_view_column_new_with_attributes ("Name",
+                                                     ctk_cell_renderer_text_new (),
                                                      "text", DISPLAY_COLUMN_NAME,
                                                      NULL);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
   g_signal_connect (selection, "changed",
                     G_CALLBACK (display_changed_cb), info);
 
@@ -399,18 +399,18 @@ display_closed_cb (GdkDisplay        *display,
   GtkTreeIter iter;
   gboolean valid;
 
-  for (valid = gtk_tree_model_get_iter_first (info->display_model, &iter);
+  for (valid = ctk_tree_model_get_iter_first (info->display_model, &iter);
        valid;
-       valid = gtk_tree_model_iter_next (info->display_model, &iter))
+       valid = ctk_tree_model_iter_next (info->display_model, &iter))
     {
       GdkDisplay *tmp_display;
 
-      gtk_tree_model_get (info->display_model, &iter,
+      ctk_tree_model_get (info->display_model, &iter,
                           DISPLAY_COLUMN_DISPLAY, &tmp_display,
                           -1);
       if (tmp_display == display)
         {
-          gtk_list_store_remove (GTK_LIST_STORE (info->display_model), &iter);
+          ctk_list_store_remove (GTK_LIST_STORE (info->display_model), &iter);
           break;
         }
     }
@@ -427,8 +427,8 @@ add_display (ChangeDisplayInfo *info,
   const gchar *name = gdk_display_get_name (display);
   GtkTreeIter iter;
 
-  gtk_list_store_append (GTK_LIST_STORE (info->display_model), &iter);
-  gtk_list_store_set (GTK_LIST_STORE (info->display_model), &iter,
+  ctk_list_store_append (GTK_LIST_STORE (info->display_model), &iter);
+  ctk_list_store_set (GTK_LIST_STORE (info->display_model), &iter,
                       DISPLAY_COLUMN_NAME, name,
                       DISPLAY_COLUMN_DISPLAY, display,
                       -1);
@@ -522,37 +522,37 @@ do_changedisplay (GtkWidget *do_widget)
 
       info = g_new0 (ChangeDisplayInfo, 1);
 
-      info->window = gtk_dialog_new_with_buttons ("Change Display",
+      info->window = ctk_dialog_new_with_buttons ("Change Display",
                                                   GTK_WINDOW (do_widget),
                                                   0,
                                                   "Close", GTK_RESPONSE_CLOSE,
                                                   "Change", GTK_RESPONSE_OK,
                                                   NULL);
 
-      gtk_window_set_default_size (GTK_WINDOW (info->window), 300, 400);
+      ctk_window_set_default_size (GTK_WINDOW (info->window), 300, 400);
 
       g_signal_connect (info->window, "response",
                         G_CALLBACK (response_cb), info);
       g_signal_connect (info->window, "destroy",
                         G_CALLBACK (destroy_cb), &info);
 
-      content_area = gtk_dialog_get_content_area (GTK_DIALOG (info->window));
+      content_area = ctk_dialog_get_content_area (GTK_DIALOG (info->window));
 
-      vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-      gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-      gtk_box_pack_start (GTK_BOX (content_area), vbox, TRUE, TRUE, 0);
+      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+      ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
+      ctk_box_pack_start (GTK_BOX (content_area), vbox, TRUE, TRUE, 0);
 
       frame = create_display_frame (info);
-      gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+      ctk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
       initialize_displays (info);
 
-      gtk_widget_show_all (info->window);
+      ctk_widget_show_all (info->window);
       return info->window;
     }
   else
     {
-      gtk_widget_destroy (info->window);
+      ctk_widget_destroy (info->window);
       return NULL;
     }
 }

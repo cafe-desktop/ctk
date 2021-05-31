@@ -47,7 +47,7 @@ struct _GtkCssParser
 };
 
 GtkCssParser *
-_gtk_css_parser_new (const char            *data,
+_ctk_css_parser_new (const char            *data,
                      GFile                 *file,
                      GtkCssParserErrorFunc  error_func,
                      gpointer               user_data)
@@ -72,7 +72,7 @@ _gtk_css_parser_new (const char            *data,
 }
 
 void
-_gtk_css_parser_free (GtkCssParser *parser)
+_ctk_css_parser_free (GtkCssParser *parser)
 {
   g_return_if_fail (GTK_IS_CSS_PARSER (parser));
 
@@ -83,7 +83,7 @@ _gtk_css_parser_free (GtkCssParser *parser)
 }
 
 gboolean
-_gtk_css_parser_is_eof (GtkCssParser *parser)
+_ctk_css_parser_is_eof (GtkCssParser *parser)
 {
   g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), TRUE);
 
@@ -91,7 +91,7 @@ _gtk_css_parser_is_eof (GtkCssParser *parser)
 }
 
 gboolean
-_gtk_css_parser_begins_with (GtkCssParser *parser,
+_ctk_css_parser_begins_with (GtkCssParser *parser,
                              char          c)
 {
   g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), TRUE);
@@ -100,7 +100,7 @@ _gtk_css_parser_begins_with (GtkCssParser *parser,
 }
 
 gboolean
-_gtk_css_parser_has_prefix (GtkCssParser *parser,
+_ctk_css_parser_has_prefix (GtkCssParser *parser,
                             const char   *prefix)
 {
   g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
@@ -109,7 +109,7 @@ _gtk_css_parser_has_prefix (GtkCssParser *parser,
 }
 
 guint
-_gtk_css_parser_get_line (GtkCssParser *parser)
+_ctk_css_parser_get_line (GtkCssParser *parser)
 {
   g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), 1);
 
@@ -117,7 +117,7 @@ _gtk_css_parser_get_line (GtkCssParser *parser)
 }
 
 guint
-_gtk_css_parser_get_position (GtkCssParser *parser)
+_ctk_css_parser_get_position (GtkCssParser *parser)
 {
   g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), 1);
 
@@ -125,7 +125,7 @@ _gtk_css_parser_get_position (GtkCssParser *parser)
 }
 
 static GFile *
-gtk_css_parser_get_base_file (GtkCssParser *parser)
+ctk_css_parser_get_base_file (GtkCssParser *parser)
 {
   GFile *base;
 
@@ -144,7 +144,7 @@ gtk_css_parser_get_base_file (GtkCssParser *parser)
 }
 
 GFile *
-_gtk_css_parser_get_file_for_path (GtkCssParser *parser,
+_ctk_css_parser_get_file_for_path (GtkCssParser *parser,
                                    const char   *path)
 {
   GFile *base, *file;
@@ -152,7 +152,7 @@ _gtk_css_parser_get_file_for_path (GtkCssParser *parser,
   g_return_val_if_fail (parser != NULL, NULL);
   g_return_val_if_fail (path != NULL, NULL);
 
-  base = gtk_css_parser_get_base_file (parser);
+  base = ctk_css_parser_get_base_file (parser);
   file = g_file_resolve_relative_path (base, path);
   g_object_unref (base);
 
@@ -160,7 +160,7 @@ _gtk_css_parser_get_file_for_path (GtkCssParser *parser,
 }
 
 GFile *
-_gtk_css_parser_get_file (GtkCssParser *parser)
+_ctk_css_parser_get_file (GtkCssParser *parser)
 {
   g_return_val_if_fail (parser != NULL, NULL);
 
@@ -168,7 +168,7 @@ _gtk_css_parser_get_file (GtkCssParser *parser)
 }
 
 void
-_gtk_css_parser_take_error (GtkCssParser *parser,
+_ctk_css_parser_take_error (GtkCssParser *parser,
                             GError       *error)
 {
   parser->error_func (parser, error, parser->user_data);
@@ -177,7 +177,7 @@ _gtk_css_parser_take_error (GtkCssParser *parser,
 }
 
 void
-_gtk_css_parser_error (GtkCssParser *parser,
+_ctk_css_parser_error (GtkCssParser *parser,
                        const char   *format,
                        ...)
 {
@@ -191,11 +191,11 @@ _gtk_css_parser_error (GtkCssParser *parser,
                               format, args);
   va_end (args);
 
-  _gtk_css_parser_take_error (parser, error);
+  _ctk_css_parser_take_error (parser, error);
 }
 
 void
-_gtk_css_parser_error_full (GtkCssParser        *parser,
+_ctk_css_parser_error_full (GtkCssParser        *parser,
                             GtkCssProviderError  code,
                             const char          *format,
                             ...)
@@ -209,10 +209,10 @@ _gtk_css_parser_error_full (GtkCssParser        *parser,
                               code, format, args);
   va_end (args);
 
-  _gtk_css_parser_take_error (parser, error);
+  _ctk_css_parser_take_error (parser, error);
 }
 static gboolean
-gtk_css_parser_new_line (GtkCssParser *parser)
+ctk_css_parser_new_line (GtkCssParser *parser)
 {
   gboolean result = FALSE;
 
@@ -237,7 +237,7 @@ gtk_css_parser_new_line (GtkCssParser *parser)
 }
 
 static gboolean
-gtk_css_parser_skip_comment (GtkCssParser *parser)
+ctk_css_parser_skip_comment (GtkCssParser *parser)
 {
   if (parser->data[0] != '/' ||
       parser->data[1] != '*')
@@ -251,7 +251,7 @@ gtk_css_parser_skip_comment (GtkCssParser *parser)
 
       parser->data += len;
   
-      if (gtk_css_parser_new_line (parser))
+      if (ctk_css_parser_new_line (parser))
         continue;
 
       parser->data++;
@@ -259,22 +259,22 @@ gtk_css_parser_skip_comment (GtkCssParser *parser)
       if (len > 0 && parser->data[-2] == '*')
         return TRUE;
       if (parser->data[0] == '*')
-        _gtk_css_parser_error (parser, "'/*' in comment block");
+        _ctk_css_parser_error (parser, "'/*' in comment block");
     }
 
   /* FIXME: position */
-  _gtk_css_parser_error (parser, "Unterminated comment");
+  _ctk_css_parser_error (parser, "Unterminated comment");
   return TRUE;
 }
 
 void
-_gtk_css_parser_skip_whitespace (GtkCssParser *parser)
+_ctk_css_parser_skip_whitespace (GtkCssParser *parser)
 {
   size_t len;
 
   while (*parser->data)
     {
-      if (gtk_css_parser_new_line (parser))
+      if (ctk_css_parser_new_line (parser))
         continue;
 
       len = strspn (parser->data, WHITESPACE_CHARS);
@@ -284,13 +284,13 @@ _gtk_css_parser_skip_whitespace (GtkCssParser *parser)
           continue;
         }
       
-      if (!gtk_css_parser_skip_comment (parser))
+      if (!ctk_css_parser_skip_comment (parser))
         break;
     }
 }
 
 gboolean
-_gtk_css_parser_try (GtkCssParser *parser,
+_ctk_css_parser_try (GtkCssParser *parser,
                      const char   *string,
                      gboolean      skip_whitespace)
 {
@@ -303,7 +303,7 @@ _gtk_css_parser_try (GtkCssParser *parser,
   parser->data += strlen (string);
 
   if (skip_whitespace)
-    _gtk_css_parser_skip_whitespace (parser);
+    _ctk_css_parser_skip_whitespace (parser);
   return TRUE;
 }
 
@@ -319,7 +319,7 @@ get_xdigit (char c)
 }
 
 static void
-_gtk_css_parser_unescape (GtkCssParser *parser,
+_ctk_css_parser_unescape (GtkCssParser *parser,
                           GString      *str)
 {
   guint i;
@@ -342,15 +342,15 @@ _gtk_css_parser_unescape (GtkCssParser *parser,
       g_string_append_unichar (str, result);
       parser->data += i;
 
-      /* NB: gtk_css_parser_new_line() forward data pointer itself */
-      if (!gtk_css_parser_new_line (parser) &&
+      /* NB: ctk_css_parser_new_line() forward data pointer itself */
+      if (!ctk_css_parser_new_line (parser) &&
           *parser->data &&
           strchr (WHITESPACE_CHARS, *parser->data))
         parser->data++;
       return;
     }
 
-  if (gtk_css_parser_new_line (parser))
+  if (ctk_css_parser_new_line (parser))
     return;
 
   g_string_append_c (str, *parser->data);
@@ -360,7 +360,7 @@ _gtk_css_parser_unescape (GtkCssParser *parser,
 }
 
 static gboolean
-_gtk_css_parser_read_char (GtkCssParser *parser,
+_ctk_css_parser_read_char (GtkCssParser *parser,
                            GString *     str,
                            const char *  allowed)
 {
@@ -383,7 +383,7 @@ _gtk_css_parser_read_char (GtkCssParser *parser,
     }
   if (*parser->data == '\\')
     {
-      _gtk_css_parser_unescape (parser, str);
+      _ctk_css_parser_unescape (parser, str);
       return TRUE;
     }
 
@@ -391,7 +391,7 @@ _gtk_css_parser_read_char (GtkCssParser *parser,
 }
 
 char *
-_gtk_css_parser_try_name (GtkCssParser *parser,
+_ctk_css_parser_try_name (GtkCssParser *parser,
                           gboolean      skip_whitespace)
 {
   GString *name;
@@ -400,17 +400,17 @@ _gtk_css_parser_try_name (GtkCssParser *parser,
 
   name = g_string_new (NULL);
 
-  while (_gtk_css_parser_read_char (parser, name, NMCHAR))
+  while (_ctk_css_parser_read_char (parser, name, NMCHAR))
     ;
 
   if (skip_whitespace)
-    _gtk_css_parser_skip_whitespace (parser);
+    _ctk_css_parser_skip_whitespace (parser);
 
   return g_string_free (name, FALSE);
 }
 
 char *
-_gtk_css_parser_try_ident (GtkCssParser *parser,
+_ctk_css_parser_try_ident (GtkCssParser *parser,
                            gboolean      skip_whitespace)
 {
   const char *start;
@@ -428,24 +428,24 @@ _gtk_css_parser_try_ident (GtkCssParser *parser,
       parser->data++;
     }
 
-  if (!_gtk_css_parser_read_char (parser, ident, NMSTART))
+  if (!_ctk_css_parser_read_char (parser, ident, NMSTART))
     {
       parser->data = start;
       g_string_free (ident, TRUE);
       return NULL;
     }
 
-  while (_gtk_css_parser_read_char (parser, ident, NMCHAR))
+  while (_ctk_css_parser_read_char (parser, ident, NMCHAR))
     ;
 
   if (skip_whitespace)
-    _gtk_css_parser_skip_whitespace (parser);
+    _ctk_css_parser_skip_whitespace (parser);
 
   return g_string_free (ident, FALSE);
 }
 
 gboolean
-_gtk_css_parser_is_string (GtkCssParser *parser)
+_ctk_css_parser_is_string (GtkCssParser *parser)
 {
   g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
 
@@ -453,7 +453,7 @@ _gtk_css_parser_is_string (GtkCssParser *parser)
 }
 
 char *
-_gtk_css_parser_read_string (GtkCssParser *parser)
+_ctk_css_parser_read_string (GtkCssParser *parser)
 {
   GString *str;
   char quote;
@@ -464,7 +464,7 @@ _gtk_css_parser_read_string (GtkCssParser *parser)
   
   if (quote != '"' && quote != '\'')
     {
-      _gtk_css_parser_error (parser, "Expected a string.");
+      _ctk_css_parser_error (parser, "Expected a string.");
       return NULL;
     }
   
@@ -482,14 +482,14 @@ _gtk_css_parser_read_string (GtkCssParser *parser)
       switch (*parser->data)
         {
         case '\\':
-          _gtk_css_parser_unescape (parser, str);
+          _ctk_css_parser_unescape (parser, str);
           break;
         case '"':
         case '\'':
           if (*parser->data == quote)
             {
               parser->data++;
-              _gtk_css_parser_skip_whitespace (parser);
+              _ctk_css_parser_skip_whitespace (parser);
               return g_string_free (str, FALSE);
             }
           
@@ -498,11 +498,11 @@ _gtk_css_parser_read_string (GtkCssParser *parser)
           break;
         case '\0':
           /* FIXME: position */
-          _gtk_css_parser_error (parser, "Missing end quote in string.");
+          _ctk_css_parser_error (parser, "Missing end quote in string.");
           g_string_free (str, TRUE);
           return NULL;
         default:
-          _gtk_css_parser_error (parser, 
+          _ctk_css_parser_error (parser, 
                                  "Invalid character in string. Must be escaped.");
           g_string_free (str, TRUE);
           return NULL;
@@ -514,7 +514,7 @@ _gtk_css_parser_read_string (GtkCssParser *parser)
 }
 
 gboolean
-_gtk_css_parser_try_int (GtkCssParser *parser,
+_ctk_css_parser_try_int (GtkCssParser *parser,
                          int          *value)
 {
   gint64 result;
@@ -539,13 +539,13 @@ _gtk_css_parser_try_int (GtkCssParser *parser,
   parser->data = end;
   *value = result;
 
-  _gtk_css_parser_skip_whitespace (parser);
+  _ctk_css_parser_skip_whitespace (parser);
 
   return TRUE;
 }
 
 gboolean
-_gtk_css_parser_try_uint (GtkCssParser *parser,
+_ctk_css_parser_try_uint (GtkCssParser *parser,
                           guint        *value)
 {
   guint64 result;
@@ -566,13 +566,13 @@ _gtk_css_parser_try_uint (GtkCssParser *parser,
   parser->data = end;
   *value = result;
 
-  _gtk_css_parser_skip_whitespace (parser);
+  _ctk_css_parser_skip_whitespace (parser);
 
   return TRUE;
 }
 
 gboolean
-_gtk_css_parser_try_double (GtkCssParser *parser,
+_ctk_css_parser_try_double (GtkCssParser *parser,
                             gdouble      *value)
 {
   gdouble result;
@@ -591,13 +591,13 @@ _gtk_css_parser_try_double (GtkCssParser *parser,
   parser->data = end;
   *value = result;
 
-  _gtk_css_parser_skip_whitespace (parser);
+  _ctk_css_parser_skip_whitespace (parser);
 
   return TRUE;
 }
 
 gboolean
-_gtk_css_parser_has_number (GtkCssParser *parser)
+_ctk_css_parser_has_number (GtkCssParser *parser)
 {
   char c;
 
@@ -611,7 +611,7 @@ _gtk_css_parser_has_number (GtkCssParser *parser)
 }
 
 GtkCssValue *
-gtk_css_dimension_value_parse (GtkCssParser           *parser,
+ctk_css_dimension_value_parse (GtkCssParser           *parser,
                                GtkCssNumberParseFlags  flags)
 {
   static const struct {
@@ -645,12 +645,12 @@ gtk_css_dimension_value_parse (GtkCssParser           *parser,
   value = g_ascii_strtod (parser->data, &end);
   if (errno)
     {
-      _gtk_css_parser_error (parser, "not a number: %s", g_strerror (errno));
+      _ctk_css_parser_error (parser, "not a number: %s", g_strerror (errno));
       return NULL;
     }
   if (parser->data == end)
     {
-      _gtk_css_parser_error (parser, "not a number");
+      _ctk_css_parser_error (parser, "not a number");
       return NULL;
     }
 
@@ -659,11 +659,11 @@ gtk_css_dimension_value_parse (GtkCssParser           *parser,
   if (flags & GTK_CSS_POSITIVE_ONLY &&
       value < 0)
     {
-      _gtk_css_parser_error (parser, "negative values are not allowed.");
+      _ctk_css_parser_error (parser, "negative values are not allowed.");
       return NULL;
     }
 
-  unit_name = _gtk_css_parser_try_ident (parser, FALSE);
+  unit_name = _ctk_css_parser_try_ident (parser, FALSE);
 
   if (unit_name)
     {
@@ -678,7 +678,7 @@ gtk_css_dimension_value_parse (GtkCssParser           *parser,
 
       if (i >= G_N_ELEMENTS (units))
         {
-          _gtk_css_parser_error (parser, "'%s' is not a valid unit.", unit_name);
+          _ctk_css_parser_error (parser, "'%s' is not a valid unit.", unit_name);
           g_free (unit_name);
           return NULL;
         }
@@ -690,7 +690,7 @@ gtk_css_dimension_value_parse (GtkCssParser           *parser,
   else
     {
       if ((flags & GTK_CSS_PARSE_PERCENT) &&
-          _gtk_css_parser_try (parser, "%", FALSE))
+          _ctk_css_parser_try (parser, "%", FALSE))
         {
           unit = GTK_CSS_PERCENT;
         }
@@ -709,7 +709,7 @@ gtk_css_dimension_value_parse (GtkCssParser           *parser,
         }
       else if (flags & GTK_CSS_NUMBER_AS_PIXELS)
         {
-          _gtk_css_parser_error_full (parser,
+          _ctk_css_parser_error_full (parser,
                                       GTK_CSS_PROVIDER_ERROR_DEPRECATED,
                                       "Not using units is deprecated. Assuming 'px'.");
           unit = GTK_CSS_PX;
@@ -720,35 +720,35 @@ gtk_css_dimension_value_parse (GtkCssParser           *parser,
         }
       else
         {
-          _gtk_css_parser_error (parser, "Unit is missing.");
+          _ctk_css_parser_error (parser, "Unit is missing.");
           return NULL;
         }
     }
 
-  _gtk_css_parser_skip_whitespace (parser);
+  _ctk_css_parser_skip_whitespace (parser);
 
-  return gtk_css_dimension_value_new (value, unit);
+  return ctk_css_dimension_value_new (value, unit);
 }
 
 /* XXX: we should introduce GtkCssLenght that deals with
  * different kind of units */
 gboolean
-_gtk_css_parser_try_length (GtkCssParser *parser,
+_ctk_css_parser_try_length (GtkCssParser *parser,
                             int          *value)
 {
-  if (!_gtk_css_parser_try_int (parser, value))
+  if (!_ctk_css_parser_try_int (parser, value))
     return FALSE;
 
   /* FIXME: _try_uint skips spaces while the
    * spec forbids them
    */
-  _gtk_css_parser_try (parser, "px", TRUE);
+  _ctk_css_parser_try (parser, "px", TRUE);
 
   return TRUE;
 }
 
 gboolean
-_gtk_css_parser_try_enum (GtkCssParser *parser,
+_ctk_css_parser_try_enum (GtkCssParser *parser,
 			  GType         enum_type,
 			  int          *value)
 {
@@ -766,7 +766,7 @@ _gtk_css_parser_try_enum (GtkCssParser *parser,
 
   start = parser->data;
 
-  str = _gtk_css_parser_try_ident (parser, TRUE);
+  str = _ctk_css_parser_try_ident (parser, TRUE);
   if (str == NULL)
     return FALSE;
 
@@ -796,7 +796,7 @@ _gtk_css_parser_try_enum (GtkCssParser *parser,
 }
 
 gboolean
-_gtk_css_parser_try_hash_color (GtkCssParser *parser,
+_ctk_css_parser_try_hash_color (GtkCssParser *parser,
                                 GdkRGBA      *rgba)
 {
   if (parser->data[0] == '#' &&
@@ -823,7 +823,7 @@ _gtk_css_parser_try_hash_color (GtkCssParser *parser,
           parser->data += 4;
         }
 
-      _gtk_css_parser_skip_whitespace (parser);
+      _ctk_css_parser_skip_whitespace (parser);
 
       return TRUE;
     }
@@ -832,37 +832,37 @@ _gtk_css_parser_try_hash_color (GtkCssParser *parser,
 }
 
 GFile *
-_gtk_css_parser_read_url (GtkCssParser *parser)
+_ctk_css_parser_read_url (GtkCssParser *parser)
 {
   gchar *path;
   char *scheme;
   GFile *file;
 
-  if (_gtk_css_parser_try (parser, "url", FALSE))
+  if (_ctk_css_parser_try (parser, "url", FALSE))
     {
-      if (!_gtk_css_parser_try (parser, "(", TRUE))
+      if (!_ctk_css_parser_try (parser, "(", TRUE))
         {
-          _gtk_css_parser_skip_whitespace (parser);
-          if (_gtk_css_parser_try (parser, "(", TRUE))
+          _ctk_css_parser_skip_whitespace (parser);
+          if (_ctk_css_parser_try (parser, "(", TRUE))
             {
-              _gtk_css_parser_error_full (parser,
+              _ctk_css_parser_error_full (parser,
                                           GTK_CSS_PROVIDER_ERROR_DEPRECATED,
                                           "Whitespace between 'url' and '(' is deprecated");
             }
           else
             {
-              _gtk_css_parser_error (parser, "Expected '(' after 'url'");
+              _ctk_css_parser_error (parser, "Expected '(' after 'url'");
               return NULL;
             }
         }
 
-      path = _gtk_css_parser_read_string (parser);
+      path = _ctk_css_parser_read_string (parser);
       if (path == NULL)
         return NULL;
 
-      if (!_gtk_css_parser_try (parser, ")", TRUE))
+      if (!_ctk_css_parser_try (parser, ")", TRUE))
         {
-          _gtk_css_parser_error (parser, "No closing ')' found for 'url'");
+          _ctk_css_parser_error (parser, "No closing ')' found for 'url'");
           g_free (path);
           return NULL;
         }
@@ -878,22 +878,22 @@ _gtk_css_parser_read_url (GtkCssParser *parser)
     }
   else
     {
-      path = _gtk_css_parser_try_name (parser, TRUE);
+      path = _ctk_css_parser_try_name (parser, TRUE);
       if (path == NULL)
         {
-          _gtk_css_parser_error (parser, "Not a valid url");
+          _ctk_css_parser_error (parser, "Not a valid url");
           return NULL;
         }
     }
 
-  file = _gtk_css_parser_get_file_for_path (parser, path);
+  file = _ctk_css_parser_get_file_for_path (parser, path);
   g_free (path);
 
   return file;
 }
 
 static void
-gtk_css_parser_resync_internal (GtkCssParser *parser,
+ctk_css_parser_resync_internal (GtkCssParser *parser,
                                 gboolean      sync_at_semicolon,
                                 gboolean      read_sync_token,
                                 char          terminator)
@@ -904,18 +904,18 @@ gtk_css_parser_resync_internal (GtkCssParser *parser,
     len = strcspn (parser->data, "\\\"'/()[]{};" NEWLINE_CHARS);
     parser->data += len;
 
-    if (gtk_css_parser_new_line (parser))
+    if (ctk_css_parser_new_line (parser))
       continue;
 
-    if (_gtk_css_parser_is_string (parser))
+    if (_ctk_css_parser_is_string (parser))
       {
         /* Hrm, this emits errors, and i suspect it shouldn't... */
-        char *free_me = _gtk_css_parser_read_string (parser);
+        char *free_me = _ctk_css_parser_read_string (parser);
         g_free (free_me);
         continue;
       }
 
-    if (gtk_css_parser_skip_comment (parser))
+    if (ctk_css_parser_skip_comment (parser))
       continue;
 
     switch (*parser->data)
@@ -923,7 +923,7 @@ gtk_css_parser_resync_internal (GtkCssParser *parser,
       case '\\':
         {
           GString *ignore = g_string_new (NULL);
-          _gtk_css_parser_unescape (parser, ignore);
+          _ctk_css_parser_unescape (parser, ignore);
           g_string_free (ignore, TRUE);
         }
         break;
@@ -933,30 +933,30 @@ gtk_css_parser_resync_internal (GtkCssParser *parser,
         parser->data++;
         if (sync_at_semicolon)
           {
-            _gtk_css_parser_skip_whitespace (parser);
+            _ctk_css_parser_skip_whitespace (parser);
             return;
           }
         break;
       case '(':
         parser->data++;
-        _gtk_css_parser_resync (parser, FALSE, ')');
+        _ctk_css_parser_resync (parser, FALSE, ')');
         if (*parser->data)
           parser->data++;
         break;
       case '[':
         parser->data++;
-        _gtk_css_parser_resync (parser, FALSE, ']');
+        _ctk_css_parser_resync (parser, FALSE, ']');
         if (*parser->data)
           parser->data++;
         break;
       case '{':
         parser->data++;
-        _gtk_css_parser_resync (parser, FALSE, '}');
+        _ctk_css_parser_resync (parser, FALSE, '}');
         if (*parser->data)
           parser->data++;
         if (sync_at_semicolon || !terminator)
           {
-            _gtk_css_parser_skip_whitespace (parser);
+            _ctk_css_parser_skip_whitespace (parser);
             return;
           }
         break;
@@ -965,7 +965,7 @@ gtk_css_parser_resync_internal (GtkCssParser *parser,
       case ']':
         if (terminator == *parser->data)
           {
-            _gtk_css_parser_skip_whitespace (parser);
+            _ctk_css_parser_skip_whitespace (parser);
             return;
           }
         parser->data++;
@@ -981,7 +981,7 @@ gtk_css_parser_resync_internal (GtkCssParser *parser,
 }
 
 char *
-_gtk_css_parser_read_value (GtkCssParser *parser)
+_ctk_css_parser_read_value (GtkCssParser *parser)
 {
   const char *start;
   char *result;
@@ -991,7 +991,7 @@ _gtk_css_parser_read_value (GtkCssParser *parser)
   start = parser->data;
 
   /* This needs to be done better */
-  gtk_css_parser_resync_internal (parser, TRUE, FALSE, '}');
+  ctk_css_parser_resync_internal (parser, TRUE, FALSE, '}');
 
   result = g_strndup (start, parser->data - start);
   if (result)
@@ -1005,23 +1005,23 @@ _gtk_css_parser_read_value (GtkCssParser *parser)
     }
 
   if (result == NULL)
-    _gtk_css_parser_error (parser, "Expected a property value");
+    _ctk_css_parser_error (parser, "Expected a property value");
 
   return result;
 }
 
 void
-_gtk_css_parser_resync (GtkCssParser *parser,
+_ctk_css_parser_resync (GtkCssParser *parser,
                         gboolean      sync_at_semicolon,
                         char          terminator)
 {
   g_return_if_fail (GTK_IS_CSS_PARSER (parser));
 
-  gtk_css_parser_resync_internal (parser, sync_at_semicolon, TRUE, terminator);
+  ctk_css_parser_resync_internal (parser, sync_at_semicolon, TRUE, terminator);
 }
 
 void
-_gtk_css_print_string (GString    *str,
+_ctk_css_print_string (GString    *str,
                        const char *string)
 {
   gsize len;

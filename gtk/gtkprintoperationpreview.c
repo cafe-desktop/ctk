@@ -23,10 +23,10 @@
 #include "gtkintl.h"
 
 
-static void gtk_print_operation_preview_base_init (gpointer g_iface);
+static void ctk_print_operation_preview_base_init (gpointer g_iface);
 
 GType
-gtk_print_operation_preview_get_type (void)
+ctk_print_operation_preview_get_type (void)
 {
   static GType print_operation_preview_type = 0;
 
@@ -35,7 +35,7 @@ gtk_print_operation_preview_get_type (void)
       const GTypeInfo print_operation_preview_info =
       {
         sizeof (GtkPrintOperationPreviewIface), /* class_size */
-	gtk_print_operation_preview_base_init,   /* base_init */
+	ctk_print_operation_preview_base_init,   /* base_init */
 	NULL,		/* base_finalize */
 	NULL,
 	NULL,		/* class_finalize */
@@ -56,7 +56,7 @@ gtk_print_operation_preview_get_type (void)
 }
 
 static void
-gtk_print_operation_preview_base_init (gpointer g_iface)
+ctk_print_operation_preview_base_init (gpointer g_iface)
 {
   static gboolean initialized = FALSE;
 
@@ -92,14 +92,14 @@ gtk_print_operation_preview_base_init (gpointer g_iface)
        *
        * A handler for this signal should update the @context
        * according to @page_setup and set up a suitable cairo
-       * context, using gtk_print_context_set_cairo_context().
+       * context, using ctk_print_context_set_cairo_context().
        */
       g_signal_new (I_("got-page-size"),
 		    GTK_TYPE_PRINT_OPERATION_PREVIEW,
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkPrintOperationPreviewIface, got_page_size),
 		    NULL, NULL,
-		    _gtk_marshal_VOID__OBJECT_OBJECT,
+		    _ctk_marshal_VOID__OBJECT_OBJECT,
 		    G_TYPE_NONE, 2,
 		    GTK_TYPE_PRINT_CONTEXT,
 		    GTK_TYPE_PAGE_SETUP);
@@ -109,7 +109,7 @@ gtk_print_operation_preview_base_init (gpointer g_iface)
 }
 
 /**
- * gtk_print_operation_preview_render_page:
+ * ctk_print_operation_preview_render_page:
  * @preview: a #GtkPrintOperationPreview
  * @page_nr: the page to render
  *
@@ -126,7 +126,7 @@ gtk_print_operation_preview_base_init (gpointer g_iface)
  * Since: 2.10 
  */
 void    
-gtk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
+ctk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
 					 gint			   page_nr)
 {
   g_return_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (preview));
@@ -136,7 +136,7 @@ gtk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
 }
 
 /**
- * gtk_print_operation_preview_end_preview:
+ * ctk_print_operation_preview_end_preview:
  * @preview: a #GtkPrintOperationPreview
  *
  * Ends a preview. 
@@ -146,7 +146,7 @@ gtk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
  * Since: 2.10
  */
 void
-gtk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview)
+ctk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview)
 {
   g_return_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (preview));
 
@@ -154,7 +154,7 @@ gtk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview)
 }
 
 /**
- * gtk_print_operation_preview_is_selected:
+ * ctk_print_operation_preview_is_selected:
  * @preview: a #GtkPrintOperationPreview
  * @page_nr: a page number
  *
@@ -166,7 +166,7 @@ gtk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview)
  * Since: 2.10
  */
 gboolean
-gtk_print_operation_preview_is_selected (GtkPrintOperationPreview *preview,
+ctk_print_operation_preview_is_selected (GtkPrintOperationPreview *preview,
 					 gint                      page_nr)
 {
   g_return_val_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (preview), FALSE);

@@ -1916,7 +1916,7 @@ msgstr "Slået fra"
 
 #. This label is displayed in a treeview cell displaying
 #. * an accelerator key combination that is not valid according
-#. * to gtk_accelerator_valid().
+#. * to ctk_accelerator_valid().
 #.
 #: gtk/gtkcellrendereraccel.c:283
 msgctxt "Accelerator"
@@ -4192,10 +4192,10 @@ msgstr "Ingen"
 
 # Fra kildefilen:
 #
-# gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_NONE, _("None"));
-# gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_CAPTURE, _("Capture"));
-# gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_BUBBLE, _("Bubble"));
-# gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_TARGET, _("Target"));
+# ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_NONE, _("None"));
+# ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_CAPTURE, _("Capture"));
+# ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_BUBBLE, _("Bubble"));
+# ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_TARGET, _("Target"));
 #
 # Tyder på at capture er en fase, dvs. substantiv (indfangning) snarere end imperativ
 #: gtk/inspector/gestures.c:130

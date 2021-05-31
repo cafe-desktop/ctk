@@ -53,8 +53,8 @@ record_state_change (AtkObject   *accessible,
         return;
     }
 
-  w = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
-  name = gtk_buildable_get_name (GTK_BUILDABLE (w));
+  w = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  name = ctk_buildable_get_name (GTK_BUILDABLE (w));
   g_string_append_printf (string, "%s %s %d\n", name, state, set); 
 }
 
@@ -85,11 +85,11 @@ do_action (GtkBuilder *builder, const gchar *action, GString *string)
             {
               GObject *o, *a;
 
-              o = gtk_builder_get_object (builder, parts[i]);
+              o = ctk_builder_get_object (builder, parts[i]);
               if (ATK_IS_OBJECT (o))
                 a = o;
               else if (GTK_IS_WIDGET (o))
-                a = G_OBJECT (gtk_widget_get_accessible (GTK_WIDGET (o)));
+                a = G_OBJECT (ctk_widget_get_accessible (GTK_WIDGET (o)));
               else
                 g_assert_not_reached (); 
               g_signal_connect (a, "state-change", G_CALLBACK (record_state_change), string);
@@ -106,23 +106,23 @@ do_action (GtkBuilder *builder, const gchar *action, GString *string)
             {
               GObject *o;
 
-              o = gtk_builder_get_object (builder, parts[i]);
-              gtk_widget_destroy (GTK_WIDGET (o));
+              o = ctk_builder_get_object (builder, parts[i]);
+              ctk_widget_destroy (GTK_WIDGET (o));
             }
         }
       else if (strcmp (parts[0], "show") == 0)
         {
           GObject *o;
 
-          o = gtk_builder_get_object (builder, parts[1]);
-          gtk_widget_show_now (GTK_WIDGET (o));
+          o = ctk_builder_get_object (builder, parts[1]);
+          ctk_widget_show_now (GTK_WIDGET (o));
         }
       else if (strcmp (parts[0], "focus") == 0)
         {
           GObject *o;
 
-          o = gtk_builder_get_object (builder, parts[1]);
-          gtk_widget_grab_focus (GTK_WIDGET (o));
+          o = ctk_builder_get_object (builder, parts[1]);
+          ctk_widget_grab_focus (GTK_WIDGET (o));
         }
       else if (strcmp (parts[0], "wait") == 0)
         {
@@ -150,9 +150,9 @@ record_events (const gchar *ui_file,
   gchar **actions;
   gint i, len;
 
-  builder = gtk_builder_new ();
+  builder = ctk_builder_new ();
   error = NULL;
-  gtk_builder_add_from_file (builder, ui_file, &error);
+  ctk_builder_add_from_file (builder, ui_file, &error);
   g_assert_no_error (error);
   
   g_file_get_contents (in_file, &contents, NULL, &error);
@@ -373,7 +373,7 @@ main (int argc, char *argv[])
 
   g_option_context_free (context);
 
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   if (arg_base_dir)
     basedir = arg_base_dir;

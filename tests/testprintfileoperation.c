@@ -22,7 +22,7 @@ test_print_file_operation_finalize (GObject *object)
 static void
 test_print_file_operation_init (TestPrintFileOperation *operation)
 {
-  gtk_print_operation_set_unit (GTK_PRINT_OPERATION (operation), GTK_UNIT_POINTS);
+  ctk_print_operation_set_unit (GTK_PRINT_OPERATION (operation), GTK_UNIT_POINTS);
   operation->font_size = 14.0;
 }
 
@@ -53,7 +53,7 @@ test_print_file_operation_begin_print (GtkPrintOperation *operation, GtkPrintCon
   int i;
   double height;
 
-  height = gtk_print_context_get_height (context) - HEADER_HEIGHT - HEADER_GAP;
+  height = ctk_print_context_get_height (context) - HEADER_HEIGHT - HEADER_GAP;
   
   op->lines_per_page = floor (height / op->font_size);
   
@@ -70,7 +70,7 @@ test_print_file_operation_begin_print (GtkPrintOperation *operation, GtkPrintCon
   
   op->num_lines = i;
   op->num_pages = (op->num_lines - 1) / op->lines_per_page + 1;
-  gtk_print_operation_set_n_pages (operation, op->num_pages);
+  ctk_print_operation_set_n_pages (operation, op->num_pages);
 }
 
 static void
@@ -86,8 +86,8 @@ test_print_file_operation_draw_page (GtkPrintOperation *operation,
   PangoFontDescription *desc;
   char *page_str;
 
-  cr = gtk_print_context_get_cairo_context (context);
-  width = gtk_print_context_get_width (context);
+  cr = ctk_print_context_get_cairo_context (context);
+  width = ctk_print_context_get_width (context);
 
   cairo_rectangle (cr, 0, 0, width, HEADER_HEIGHT);
   
@@ -98,7 +98,7 @@ test_print_file_operation_draw_page (GtkPrintOperation *operation,
   cairo_set_line_width (cr, 1);
   cairo_stroke (cr);
 
-  layout = gtk_print_context_create_pango_layout (context);
+  layout = ctk_print_context_create_pango_layout (context);
 
   desc = pango_font_description_from_string ("sans 14");
   pango_layout_set_font_description (layout, desc);
@@ -124,7 +124,7 @@ test_print_file_operation_draw_page (GtkPrintOperation *operation,
   
   g_object_unref (layout);
   
-  layout = gtk_print_context_create_pango_layout (context);
+  layout = ctk_print_context_create_pango_layout (context);
   
   desc = pango_font_description_from_string ("mono");
   pango_font_description_set_size (desc, op->font_size * PANGO_SCALE);

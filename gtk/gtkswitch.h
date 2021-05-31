@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SWITCH                 (gtk_switch_get_type ())
+#define GTK_TYPE_SWITCH                 (ctk_switch_get_type ())
 #define GTK_SWITCH(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SWITCH, GtkSwitch))
 #define GTK_IS_SWITCH(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SWITCH))
 #define GTK_SWITCH_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SWITCH, GtkSwitchClass))
@@ -84,22 +84,22 @@ struct _GtkSwitchClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_switch_get_type (void) G_GNUC_CONST;
+GType ctk_switch_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *     gtk_switch_new          (void);
+GtkWidget *     ctk_switch_new          (void);
 
 GDK_AVAILABLE_IN_ALL
-void            gtk_switch_set_active   (GtkSwitch *sw,
+void            ctk_switch_set_active   (GtkSwitch *sw,
                                          gboolean   is_active);
 GDK_AVAILABLE_IN_ALL
-gboolean        gtk_switch_get_active   (GtkSwitch *sw);
+gboolean        ctk_switch_get_active   (GtkSwitch *sw);
 
 GDK_AVAILABLE_IN_3_14
-void            gtk_switch_set_state   (GtkSwitch *sw,
+void            ctk_switch_set_state   (GtkSwitch *sw,
                                         gboolean   state);
 GDK_AVAILABLE_IN_3_14
-gboolean        gtk_switch_get_state   (GtkSwitch *sw);
+gboolean        ctk_switch_get_state   (GtkSwitch *sw);
 
 G_END_DECLS
 

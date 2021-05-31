@@ -36,7 +36,7 @@ G_BEGIN_DECLS
 
 typedef struct _GtkBorder GtkBorder;
 
-#define GTK_TYPE_BORDER (gtk_border_get_type ())
+#define GTK_TYPE_BORDER (ctk_border_get_type ())
 
 /**
  * GtkBorder:
@@ -57,15 +57,15 @@ struct _GtkBorder
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_border_get_type (void) G_GNUC_CONST;
+GType      ctk_border_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkBorder *gtk_border_new      (void) G_GNUC_MALLOC;
+GtkBorder *ctk_border_new      (void) G_GNUC_MALLOC;
 GDK_AVAILABLE_IN_ALL
-GtkBorder *gtk_border_copy     (const GtkBorder *border_);
+GtkBorder *ctk_border_copy     (const GtkBorder *border_);
 GDK_AVAILABLE_IN_ALL
-void       gtk_border_free     (GtkBorder       *border_);
+void       ctk_border_free     (GtkBorder       *border_);
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkBorder, gtk_border_free)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkBorder, ctk_border_free)
 
 G_END_DECLS
 

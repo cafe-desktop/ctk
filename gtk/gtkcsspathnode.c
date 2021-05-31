@@ -22,59 +22,59 @@
 #include "gtkprivate.h"
 #include "gtkstylecontextprivate.h"
 
-G_DEFINE_TYPE (GtkCssPathNode, gtk_css_path_node, GTK_TYPE_CSS_NODE)
+G_DEFINE_TYPE (GtkCssPathNode, ctk_css_path_node, GTK_TYPE_CSS_NODE)
 
 static void
-gtk_css_path_node_finalize (GObject *object)
+ctk_css_path_node_finalize (GObject *object)
 {
   GtkCssPathNode *node = GTK_CSS_PATH_NODE (object);
 
   if (node->path)
-    gtk_widget_path_unref (node->path);
+    ctk_widget_path_unref (node->path);
 
-  G_OBJECT_CLASS (gtk_css_path_node_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_css_path_node_parent_class)->finalize (object);
 }
 
 static void
-gtk_css_path_node_invalidate (GtkCssNode *node)
+ctk_css_path_node_invalidate (GtkCssNode *node)
 {
   GtkCssPathNode *path_node = GTK_CSS_PATH_NODE (node);
 
   if (path_node->context)
-    gtk_style_context_validate (path_node->context, NULL);
+    ctk_style_context_validate (path_node->context, NULL);
 }
 
 gboolean
-gtk_css_path_node_real_init_matcher (GtkCssNode     *node,
+ctk_css_path_node_real_init_matcher (GtkCssNode     *node,
                                      GtkCssMatcher  *matcher)
 {
   GtkCssPathNode *path_node = GTK_CSS_PATH_NODE (node);
 
   if (path_node->path == NULL ||
-      gtk_widget_path_length (path_node->path) == 0)
+      ctk_widget_path_length (path_node->path) == 0)
     return FALSE;
 
-  return _gtk_css_matcher_init (matcher,
+  return _ctk_css_matcher_init (matcher,
                                 path_node->path,
-                                gtk_css_node_get_declaration (node));
+                                ctk_css_node_get_declaration (node));
 }
 
 static GtkWidgetPath *
-gtk_css_path_node_real_create_widget_path (GtkCssNode *node)
+ctk_css_path_node_real_create_widget_path (GtkCssNode *node)
 {
   GtkCssPathNode *path_node = GTK_CSS_PATH_NODE (node);
   GtkWidgetPath *path;
   guint length;
 
   if (path_node->path == NULL)
-    path = gtk_widget_path_new ();
+    path = ctk_widget_path_new ();
   else
-    path = gtk_widget_path_copy (path_node->path);
+    path = ctk_widget_path_copy (path_node->path);
 
-  length = gtk_widget_path_length (path);
+  length = ctk_widget_path_length (path);
   if (length > 0)
     {
-      gtk_css_node_declaration_add_to_widget_path (gtk_css_node_get_declaration (node),
+      ctk_css_node_declaration_add_to_widget_path (ctk_css_node_get_declaration (node),
                                                    path,
                                                    length - 1);
     }
@@ -83,7 +83,7 @@ gtk_css_path_node_real_create_widget_path (GtkCssNode *node)
 }
 
 static const GtkWidgetPath *
-gtk_css_path_node_real_get_widget_path (GtkCssNode *node)
+ctk_css_path_node_real_get_widget_path (GtkCssNode *node)
 {
   GtkCssPathNode *path_node = GTK_CSS_PATH_NODE (node);
 
@@ -91,49 +91,49 @@ gtk_css_path_node_real_get_widget_path (GtkCssNode *node)
 }
 
 static GtkCssStyle *
-gtk_css_path_node_update_style (GtkCssNode   *cssnode,
+ctk_css_path_node_update_style (GtkCssNode   *cssnode,
                                 GtkCssChange  change,
                                 gint64        timestamp,
                                 GtkCssStyle  *style)
 {
   /* This should get rid of animations */
-  return GTK_CSS_NODE_CLASS (gtk_css_path_node_parent_class)->update_style (cssnode, change, 0, style);
+  return GTK_CSS_NODE_CLASS (ctk_css_path_node_parent_class)->update_style (cssnode, change, 0, style);
 }
 
 static GtkStyleProviderPrivate *
-gtk_css_path_node_get_style_provider (GtkCssNode *node)
+ctk_css_path_node_get_style_provider (GtkCssNode *node)
 {
   GtkCssPathNode *path_node = GTK_CSS_PATH_NODE (node);
 
   if (path_node->context == NULL)
     return NULL;
 
-  return gtk_style_context_get_style_provider (path_node->context);
+  return ctk_style_context_get_style_provider (path_node->context);
 }
 
 static void
-gtk_css_path_node_class_init (GtkCssPathNodeClass *klass)
+ctk_css_path_node_class_init (GtkCssPathNodeClass *klass)
 {
   GtkCssNodeClass *node_class = GTK_CSS_NODE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gtk_css_path_node_finalize;
+  object_class->finalize = ctk_css_path_node_finalize;
 
-  node_class->invalidate = gtk_css_path_node_invalidate;
-  node_class->update_style = gtk_css_path_node_update_style;
-  node_class->init_matcher = gtk_css_path_node_real_init_matcher;
-  node_class->create_widget_path = gtk_css_path_node_real_create_widget_path;
-  node_class->get_widget_path = gtk_css_path_node_real_get_widget_path;
-  node_class->get_style_provider = gtk_css_path_node_get_style_provider;
+  node_class->invalidate = ctk_css_path_node_invalidate;
+  node_class->update_style = ctk_css_path_node_update_style;
+  node_class->init_matcher = ctk_css_path_node_real_init_matcher;
+  node_class->create_widget_path = ctk_css_path_node_real_create_widget_path;
+  node_class->get_widget_path = ctk_css_path_node_real_get_widget_path;
+  node_class->get_style_provider = ctk_css_path_node_get_style_provider;
 }
 
 static void
-gtk_css_path_node_init (GtkCssPathNode *cssnode)
+ctk_css_path_node_init (GtkCssPathNode *cssnode)
 {
 }
 
 GtkCssNode *
-gtk_css_path_node_new (GtkStyleContext *context)
+ctk_css_path_node_new (GtkStyleContext *context)
 {
   GtkCssPathNode *node;
   
@@ -146,40 +146,40 @@ gtk_css_path_node_new (GtkStyleContext *context)
 }
 
 void
-gtk_css_path_node_unset_context (GtkCssPathNode *node)
+ctk_css_path_node_unset_context (GtkCssPathNode *node)
 {
-  gtk_internal_return_if_fail (GTK_IS_CSS_PATH_NODE (node));
-  gtk_internal_return_if_fail (node->context != NULL);
+  ctk_internal_return_if_fail (GTK_IS_CSS_PATH_NODE (node));
+  ctk_internal_return_if_fail (node->context != NULL);
 
   node->context = NULL;
 
-  gtk_css_node_invalidate_style_provider (GTK_CSS_NODE (node));
+  ctk_css_node_invalidate_style_provider (GTK_CSS_NODE (node));
 }
 
 void
-gtk_css_path_node_set_widget_path (GtkCssPathNode *node,
+ctk_css_path_node_set_widget_path (GtkCssPathNode *node,
                                    GtkWidgetPath  *path)
 {
-  gtk_internal_return_if_fail (GTK_IS_CSS_PATH_NODE (node));
+  ctk_internal_return_if_fail (GTK_IS_CSS_PATH_NODE (node));
 
   if (node->path == path)
     return;
 
   if (node->path)
-    gtk_widget_path_unref (node->path);
+    ctk_widget_path_unref (node->path);
 
   if (path)
-    gtk_widget_path_ref (path);
+    ctk_widget_path_ref (path);
 
   node->path = path;
 
-  gtk_css_node_invalidate (GTK_CSS_NODE (node), GTK_CSS_CHANGE_ANY);
+  ctk_css_node_invalidate (GTK_CSS_NODE (node), GTK_CSS_CHANGE_ANY);
 }
 
 GtkWidgetPath *
-gtk_css_path_node_get_widget_path (GtkCssPathNode *node)
+ctk_css_path_node_get_widget_path (GtkCssPathNode *node)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_PATH_NODE (node), NULL);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_PATH_NODE (node), NULL);
 
   return node->path;
 }

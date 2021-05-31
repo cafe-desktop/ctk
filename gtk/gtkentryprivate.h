@@ -76,28 +76,28 @@ struct _GtkEntryCompletionPrivate
   GdkDevice *device;
 };
 
-void     _gtk_entry_completion_resize_popup (GtkEntryCompletion *completion);
-void     _gtk_entry_completion_popdown      (GtkEntryCompletion *completion);
-void     _gtk_entry_completion_connect      (GtkEntryCompletion *completion,
+void     _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion);
+void     _ctk_entry_completion_popdown      (GtkEntryCompletion *completion);
+void     _ctk_entry_completion_connect      (GtkEntryCompletion *completion,
                                              GtkEntry           *entry);
-void     _gtk_entry_completion_disconnect   (GtkEntryCompletion *completion);
+void     _ctk_entry_completion_disconnect   (GtkEntryCompletion *completion);
 
-gchar*   _gtk_entry_get_display_text       (GtkEntry *entry,
+gchar*   _ctk_entry_get_display_text       (GtkEntry *entry,
                                             gint      start_pos,
                                             gint      end_pos);
-void     _gtk_entry_get_borders            (GtkEntry  *entry,
+void     _ctk_entry_get_borders            (GtkEntry  *entry,
                                             GtkBorder *borders);
-GtkIMContext* _gtk_entry_get_im_context    (GtkEntry  *entry);
-GtkCssGadget* gtk_entry_get_gadget         (GtkEntry  *entry);
-void     _gtk_entry_grab_focus             (GtkEntry  *entry,
+GtkIMContext* _ctk_entry_get_im_context    (GtkEntry  *entry);
+GtkCssGadget* ctk_entry_get_gadget         (GtkEntry  *entry);
+void     _ctk_entry_grab_focus             (GtkEntry  *entry,
                                             gboolean   select_all);
 
 /* in gtkspinbutton.c (because I'm too lazy to create gtkspinbuttonprivate.h) */
-gint     gtk_spin_button_get_text_width    (GtkSpinButton *spin_button);
+gint     ctk_spin_button_get_text_width    (GtkSpinButton *spin_button);
 
-void     gtk_entry_enter_text              (GtkEntry   *entry,
+void     ctk_entry_enter_text              (GtkEntry   *entry,
                                             const char *text);
-void     gtk_entry_set_positions           (GtkEntry   *entry,
+void     ctk_entry_set_positions           (GtkEntry   *entry,
                                             int         current_pos,
                                             int         selection_bound);
 

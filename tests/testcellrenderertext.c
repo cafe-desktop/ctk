@@ -109,7 +109,7 @@ create_list_store (void)
   GtkListStore *list_store;
   int i;
 
-  list_store = gtk_list_store_new (NUM_COLS,
+  list_store = ctk_list_store_new (NUM_COLS,
 				   G_TYPE_STRING,		/* 0 */ 
 				   G_TYPE_STRING,		/* 1 */ 
 				   G_TYPE_INT,			/* 2 */ 
@@ -138,8 +138,8 @@ create_list_store (void)
 
       g_snprintf (buf, sizeof (buf), "%d", i);
 
-      gtk_list_store_append (list_store, &iter);
-      gtk_list_store_set (list_store, &iter,
+      ctk_list_store_append (list_store, &iter);
+      ctk_list_store_set (list_store, &iter,
 			  0, p->description,
 			  1, p->test,
 			  2, p->xpad,
@@ -173,41 +173,41 @@ create_tree (gboolean rtl)
   GtkCellRenderer *renderer;
   GdkPixbuf *pixbuf;
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw), GTK_SHADOW_IN);
-  gtk_widget_set_direction (sw, rtl ? GTK_TEXT_DIR_RTL : GTK_TEXT_DIR_LTR);
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw), GTK_SHADOW_IN);
+  ctk_widget_set_direction (sw, rtl ? GTK_TEXT_DIR_RTL : GTK_TEXT_DIR_LTR);
 
   list_store = create_list_store ();
 
-  treeview = gtk_tree_view_new_with_model (GTK_TREE_MODEL (list_store));
-  gtk_widget_set_direction (treeview, rtl ? GTK_TEXT_DIR_RTL : GTK_TEXT_DIR_LTR);
-  gtk_container_add (GTK_CONTAINER (sw), treeview);
+  treeview = ctk_tree_view_new_with_model (GTK_TREE_MODEL (list_store));
+  ctk_widget_set_direction (treeview, rtl ? GTK_TEXT_DIR_RTL : GTK_TEXT_DIR_LTR);
+  ctk_container_add (GTK_CONTAINER (sw), treeview);
 
   /* Line number */
 
-  renderer = gtk_cell_renderer_text_new ();
-  column = gtk_tree_view_column_new_with_attributes ("#",
+  renderer = ctk_cell_renderer_text_new ();
+  column = ctk_tree_view_column_new_with_attributes ("#",
 						     renderer,
 						     "text", COL_LINE_NUM,
 						     NULL);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
   /* Description */
 
-  renderer = gtk_cell_renderer_text_new ();
+  renderer = ctk_cell_renderer_text_new ();
   g_object_set (renderer,
 		"font", "monospace",
 		NULL);
-  column = gtk_tree_view_column_new_with_attributes ("Description",
+  column = ctk_tree_view_column_new_with_attributes ("Description",
 						     renderer,
 						     "text", 0,
 						     NULL);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
   /* Test text */
 
-  renderer = gtk_cell_renderer_text_new ();
-  column = gtk_tree_view_column_new_with_attributes ("Test",
+  renderer = ctk_cell_renderer_text_new ();
+  column = ctk_tree_view_column_new_with_attributes ("Test",
 						     renderer,
 						     "text", 1,
 						     "xpad", 2,
@@ -225,23 +225,23 @@ create_tree (gboolean rtl)
 						     "alignment", 14,
 						     "cell_background", 15,
 						     NULL);
-  gtk_tree_view_column_set_resizable (column, TRUE);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+  ctk_tree_view_column_set_resizable (column, TRUE);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
   /* Empty column */
 
   pixbuf = gdk_pixbuf_new_from_file ("apple-red.png", NULL);
 
-  renderer = gtk_cell_renderer_pixbuf_new ();
+  renderer = ctk_cell_renderer_pixbuf_new ();
   g_object_set (renderer,
 		"pixbuf", pixbuf,
 		"xpad", 10,
 		"ypad", 10,
 		NULL);
-  column = gtk_tree_view_column_new_with_attributes ("Empty",
+  column = ctk_tree_view_column_new_with_attributes ("Empty",
 						     renderer,
 						     NULL);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
   return sw;
 }
@@ -254,34 +254,34 @@ main (int argc, char **argv)
   GtkWidget *label;
   GtkWidget *tree;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "destroy",
-		    G_CALLBACK (gtk_main_quit), NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (window), 12);
+		    G_CALLBACK (ctk_main_quit), NULL);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 12);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
   /* LTR */
 
-  label = gtk_label_new ("Left to right");
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  label = ctk_label_new ("Left to right");
+  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   tree = create_tree (FALSE);
-  gtk_box_pack_start (GTK_BOX (vbox), tree, TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), tree, TRUE, TRUE, 0);
 
   /* RTL */
 
-  label = gtk_label_new ("Right to left");
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  label = ctk_label_new ("Right to left");
+  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   tree = create_tree (TRUE);
-  gtk_box_pack_start (GTK_BOX (vbox), tree, TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), tree, TRUE, TRUE, 0);
 
-  gtk_widget_show_all (window);
-  gtk_main ();
+  ctk_widget_show_all (window);
+  ctk_main ();
 
   return 0;
 }

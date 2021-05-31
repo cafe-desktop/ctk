@@ -50,8 +50,8 @@ list_store_append (GtkTreeModel *model,
   gchar *text;
 
   text = g_strdup_printf ("row %d", i);
-  gtk_list_store_append (store, &iter);
-  gtk_list_store_set (store, &iter, 0, i, 1, text, -1);
+  ctk_list_store_append (store, &iter);
+  ctk_list_store_set (store, &iter, 0, i, 1, text, -1);
   g_free (text);
 }
 
@@ -65,8 +65,8 @@ list_store_prepend (GtkTreeModel *model,
   gchar *text;
 
   text = g_strdup_printf ("row %d", i);
-  gtk_list_store_prepend (store, &iter);
-  gtk_list_store_set (store, &iter, 0, i, 1, text, -1);
+  ctk_list_store_prepend (store, &iter);
+  ctk_list_store_set (store, &iter, 0, i, 1, text, -1);
   g_free (text);
 }
 
@@ -82,8 +82,8 @@ list_store_insert (GtkTreeModel *model,
 
   text = g_strdup_printf ("row %d", i);
   n = g_random_int_range (0, i + 1);
-  gtk_list_store_insert (store, &iter, n);
-  gtk_list_store_set (store, &iter, 0, i, 1, text, -1);
+  ctk_list_store_insert (store, &iter, n);
+  ctk_list_store_set (store, &iter, 0, i, 1, text, -1);
   g_free (text);
 }
 
@@ -96,8 +96,8 @@ compare (GtkTreeModel *model,
   gchar *str_a, *str_b;
   gint result;
 
-  gtk_tree_model_get (model, a, 1, &str_a, -1);
-  gtk_tree_model_get (model, b, 1, &str_b, -1);
+  ctk_tree_model_get (model, a, 1, &str_a, -1);
+  ctk_tree_model_get (model, b, 1, &str_b, -1);
   
   result = strcmp (str_a, str_b);
 
@@ -117,8 +117,8 @@ tree_store_append (GtkTreeModel *model,
   gchar *text;
 
   text = g_strdup_printf ("row %d", i);
-  gtk_tree_store_append (store, &iter, NULL);
-  gtk_tree_store_set (store, &iter, 0, i, 1, text, -1);
+  ctk_tree_store_append (store, &iter, NULL);
+  ctk_tree_store_set (store, &iter, 0, i, 1, text, -1);
   g_free (text);
 }
 
@@ -132,8 +132,8 @@ tree_store_prepend (GtkTreeModel *model,
   gchar *text;
 
   text = g_strdup_printf ("row %d", i);
-  gtk_tree_store_prepend (store, &iter, NULL);
-  gtk_tree_store_set (store, &iter, 0, i, 1, text, -1);
+  ctk_tree_store_prepend (store, &iter, NULL);
+  ctk_tree_store_set (store, &iter, 0, i, 1, text, -1);
   g_free (text);
 }
 
@@ -149,8 +149,8 @@ tree_store_insert_flat (GtkTreeModel *model,
 
   text = g_strdup_printf ("row %d", i);
   n = g_random_int_range (0, i + 1);
-  gtk_tree_store_insert (store, &iter, NULL, n);
-  gtk_tree_store_set (store, &iter, 0, i, 1, text, -1);
+  ctk_tree_store_insert (store, &iter, NULL, n);
+  ctk_tree_store_set (store, &iter, 0, i, 1, text, -1);
   g_free (text);
 }
 
@@ -196,9 +196,9 @@ tree_store_insert_deep (GtkTreeModel *model,
   data.i = 0;
   data.found = FALSE;
   if (data.n < i)
-    gtk_tree_model_foreach (model, find_nth, &data);
-  gtk_tree_store_insert (store, &iter, data.found ? &(data.iter) : NULL, data.n);
-  gtk_tree_store_set (store, &iter, 0, i, 1, text, -1);
+    ctk_tree_model_foreach (model, find_nth, &data);
+  ctk_tree_store_insert (store, &iter, data.found ? &(data.iter) : NULL, data.n);
+  ctk_tree_store_set (store, &iter, 0, i, 1, text, -1);
   g_free (text);
 }
 
@@ -257,74 +257,74 @@ main (int argc, char *argv[])
 {
   GtkTreeModel *model;
   
-  gtk_init_with_args (&argc, &argv, NULL, entries, NULL, NULL);
+  ctk_init_with_args (&argc, &argv, NULL, entries, NULL, NULL);
 
-  model = GTK_TREE_MODEL (gtk_list_store_new (2, G_TYPE_INT, G_TYPE_STRING));
+  model = GTK_TREE_MODEL (ctk_list_store_new (2, G_TYPE_INT, G_TYPE_STRING));
   
   test_run ("list store append", 
 	    model, 
-	    (ClearFunc*)gtk_list_store_clear, 
+	    (ClearFunc*)ctk_list_store_clear, 
 	    (InsertFunc*)list_store_append);
 
   test_run ("list store prepend", 
 	    model, 
-	    (ClearFunc*)gtk_list_store_clear, 
+	    (ClearFunc*)ctk_list_store_clear, 
 	    (InsertFunc*)list_store_prepend);
 
   test_run ("list store insert", 
 	    model, 
-	    (ClearFunc*)gtk_list_store_clear, 
+	    (ClearFunc*)ctk_list_store_clear, 
 	    (InsertFunc*)list_store_insert);
 
-  gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model), 
+  ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model), 
 					   compare, NULL, NULL);
-  gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model), 
+  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model), 
 					GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
 					GTK_SORT_ASCENDING);
 
   test_run ("list store insert (sorted)", 
 	    model, 
-	    (ClearFunc*)gtk_list_store_clear, 
+	    (ClearFunc*)ctk_list_store_clear, 
 	    (InsertFunc*)list_store_insert);
 
   g_object_unref (model);
   
-  model = GTK_TREE_MODEL (gtk_tree_store_new (2, G_TYPE_INT, G_TYPE_STRING));
+  model = GTK_TREE_MODEL (ctk_tree_store_new (2, G_TYPE_INT, G_TYPE_STRING));
 
   test_run ("tree store append", 
 	    model, 
-	    (ClearFunc*)gtk_tree_store_clear, 
+	    (ClearFunc*)ctk_tree_store_clear, 
 	    (InsertFunc*)tree_store_append);
 
   test_run ("tree store prepend", 
 	    model, 
-	    (ClearFunc*)gtk_tree_store_clear, 
+	    (ClearFunc*)ctk_tree_store_clear, 
 	    (InsertFunc*)tree_store_prepend);
 
   test_run ("tree store insert (flat)", 
 	    model, 
-	    (ClearFunc*)gtk_tree_store_clear, 
+	    (ClearFunc*)ctk_tree_store_clear, 
 	    (InsertFunc*)tree_store_insert_flat);
 
   test_run ("tree store insert (deep)", 
 	    model, 
-	    (ClearFunc*)gtk_tree_store_clear, 
+	    (ClearFunc*)ctk_tree_store_clear, 
 	    (InsertFunc*)tree_store_insert_deep);
 
-  gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model), 
+  ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model), 
 					   compare, NULL, NULL);
-  gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model), 
+  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model), 
 					GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
 					GTK_SORT_ASCENDING);
 
   test_run ("tree store insert (flat, sorted)", 
 	    model, 
-	    (ClearFunc*)gtk_tree_store_clear, 
+	    (ClearFunc*)ctk_tree_store_clear, 
 	    (InsertFunc*)tree_store_insert_flat);
 
   test_run ("tree store insert (deep, sorted)", 
 	    model, 
-	    (ClearFunc*)gtk_tree_store_clear, 
+	    (ClearFunc*)ctk_tree_store_clear, 
 	    (InsertFunc*)tree_store_insert_deep);
 
   return 0;

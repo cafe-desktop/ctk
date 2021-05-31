@@ -722,7 +722,7 @@ _gdk_win32_display_get_cursor_for_name (GdkDisplay  *display,
 }
 
 GdkPixbuf *
-gdk_win32_icon_to_pixbuf_libgtk_only (HICON hicon,
+gdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
                                       gdouble *x_hot,
                                       gdouble *y_hot)
 {
@@ -907,7 +907,7 @@ _gdk_win32_cursor_get_surface (GdkCursor *cursor,
 
   g_return_val_if_fail (cursor != NULL, NULL);
 
-  pixbuf = gdk_win32_icon_to_pixbuf_libgtk_only (((GdkWin32Cursor *) cursor)->hcursor, x_hot, y_hot);
+  pixbuf = gdk_win32_icon_to_pixbuf_libctk_only (((GdkWin32Cursor *) cursor)->hcursor, x_hot, y_hot);
 
   if (pixbuf == NULL)
     return NULL;
@@ -1288,7 +1288,7 @@ _gdk_win32_pixbuf_to_hcursor (GdkPixbuf *pixbuf,
 }
 
 HICON
-gdk_win32_pixbuf_to_hicon_libgtk_only (GdkPixbuf *pixbuf)
+gdk_win32_pixbuf_to_hicon_libctk_only (GdkPixbuf *pixbuf)
 {
   return _gdk_win32_pixbuf_to_hicon (pixbuf);
 }

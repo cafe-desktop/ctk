@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RECENT_ACTION                  (gtk_recent_action_get_type ())
+#define GTK_TYPE_RECENT_ACTION                  (ctk_recent_action_get_type ())
 #define GTK_RECENT_ACTION(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RECENT_ACTION, GtkRecentAction))
 #define GTK_IS_RECENT_ACTION(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RECENT_ACTION))
 #define GTK_RECENT_ACTION_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RECENT_ACTION, GtkRecentActionClass))
@@ -53,29 +53,29 @@ struct _GtkRecentActionClass
   GtkActionClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_DEPRECATED_IN_3_10
-GType      gtk_recent_action_get_type         (void) G_GNUC_CONST;
+GType      ctk_recent_action_get_type         (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
-GtkAction *gtk_recent_action_new              (const gchar      *name,
+GtkAction *ctk_recent_action_new              (const gchar      *name,
                                                const gchar      *label,
                                                const gchar      *tooltip,
                                                const gchar      *stock_id);
 GDK_DEPRECATED_IN_3_10
-GtkAction *gtk_recent_action_new_for_manager  (const gchar      *name,
+GtkAction *ctk_recent_action_new_for_manager  (const gchar      *name,
                                                const gchar      *label,
                                                const gchar      *tooltip,
                                                const gchar      *stock_id,
                                                GtkRecentManager *manager);
 GDK_DEPRECATED_IN_3_10
-gboolean   gtk_recent_action_get_show_numbers (GtkRecentAction  *action);
+gboolean   ctk_recent_action_get_show_numbers (GtkRecentAction  *action);
 GDK_DEPRECATED_IN_3_10
-void       gtk_recent_action_set_show_numbers (GtkRecentAction  *action,
+void       ctk_recent_action_set_show_numbers (GtkRecentAction  *action,
                                                gboolean          show_numbers);
 
 G_END_DECLS

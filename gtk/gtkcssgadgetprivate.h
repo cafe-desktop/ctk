@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_GADGET           (gtk_css_gadget_get_type ())
+#define GTK_TYPE_CSS_GADGET           (ctk_css_gadget_get_type ())
 #define GTK_CSS_GADGET(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_GADGET, GtkCssGadget))
 #define GTK_CSS_GADGET_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_GADGET, GtkCssGadgetClass))
 #define GTK_IS_CSS_GADGET(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_GADGET))
@@ -72,70 +72,70 @@ struct _GtkCssGadgetClass
                                                          GtkCssStyleChange      *change);
 };
 
-GType           gtk_css_gadget_get_type                 (void) G_GNUC_CONST;
+GType           ctk_css_gadget_get_type                 (void) G_GNUC_CONST;
 
-GtkCssNode *    gtk_css_gadget_get_node                 (GtkCssGadget           *gadget);
-GtkCssStyle *   gtk_css_gadget_get_style                (GtkCssGadget           *gadget);
-GtkWidget *     gtk_css_gadget_get_owner                (GtkCssGadget           *gadget);
+GtkCssNode *    ctk_css_gadget_get_node                 (GtkCssGadget           *gadget);
+GtkCssStyle *   ctk_css_gadget_get_style                (GtkCssGadget           *gadget);
+GtkWidget *     ctk_css_gadget_get_owner                (GtkCssGadget           *gadget);
 
-void            gtk_css_gadget_set_node                 (GtkCssGadget           *gadget,
+void            ctk_css_gadget_set_node                 (GtkCssGadget           *gadget,
                                                          GtkCssNode             *node);
-void            gtk_css_gadget_set_visible              (GtkCssGadget           *gadget,
+void            ctk_css_gadget_set_visible              (GtkCssGadget           *gadget,
                                                          gboolean                visible);
-gboolean        gtk_css_gadget_get_visible              (GtkCssGadget           *gadget);
+gboolean        ctk_css_gadget_get_visible              (GtkCssGadget           *gadget);
 
-gboolean        gtk_css_gadget_margin_box_contains_point (GtkCssGadget          *gadget,
+gboolean        ctk_css_gadget_margin_box_contains_point (GtkCssGadget          *gadget,
                                                           int                    x,
                                                           int                    y);
-gboolean        gtk_css_gadget_border_box_contains_point (GtkCssGadget          *gadget,
+gboolean        ctk_css_gadget_border_box_contains_point (GtkCssGadget          *gadget,
                                                           int                    x,
                                                           int                    y);
-gboolean        gtk_css_gadget_content_box_contains_point (GtkCssGadget         *gadget,
+gboolean        ctk_css_gadget_content_box_contains_point (GtkCssGadget         *gadget,
                                                            int                   x,
                                                            int                   y);
-void            gtk_css_gadget_get_margin_box           (GtkCssGadget           *gadget,
+void            ctk_css_gadget_get_margin_box           (GtkCssGadget           *gadget,
                                                          GtkAllocation          *box);
-void            gtk_css_gadget_get_border_box           (GtkCssGadget           *gadget,
+void            ctk_css_gadget_get_border_box           (GtkCssGadget           *gadget,
                                                          GtkAllocation          *box);
-void            gtk_css_gadget_get_content_box          (GtkCssGadget           *gadget,
+void            ctk_css_gadget_get_content_box          (GtkCssGadget           *gadget,
                                                          GtkAllocation          *box);
 
-void            gtk_css_gadget_add_class                (GtkCssGadget           *gadget,
+void            ctk_css_gadget_add_class                (GtkCssGadget           *gadget,
                                                          const char             *name);
-void            gtk_css_gadget_remove_class             (GtkCssGadget           *gadget,
+void            ctk_css_gadget_remove_class             (GtkCssGadget           *gadget,
                                                          const char             *name);
-void            gtk_css_gadget_set_state                (GtkCssGadget           *gadget,
+void            ctk_css_gadget_set_state                (GtkCssGadget           *gadget,
                                                          GtkStateFlags           state);
-void            gtk_css_gadget_add_state                (GtkCssGadget           *gadget,
+void            ctk_css_gadget_add_state                (GtkCssGadget           *gadget,
                                                          GtkStateFlags           state);
-void            gtk_css_gadget_remove_state             (GtkCssGadget           *gadget,
+void            ctk_css_gadget_remove_state             (GtkCssGadget           *gadget,
                                                          GtkStateFlags           state);
 
-void            gtk_css_gadget_get_preferred_size       (GtkCssGadget           *gadget,
+void            ctk_css_gadget_get_preferred_size       (GtkCssGadget           *gadget,
                                                          GtkOrientation          orientation,
                                                          gint                    for_size,
                                                          gint                   *minimum,
                                                          gint                   *natural,
                                                          gint                   *minimum_baseline,
                                                          gint                   *natural_baseline);
-void            gtk_css_gadget_allocate                 (GtkCssGadget           *gadget,
+void            ctk_css_gadget_allocate                 (GtkCssGadget           *gadget,
                                                          const GtkAllocation    *allocation,
                                                          int                     baseline,
                                                          GtkAllocation          *out_clip);
-void            gtk_css_gadget_draw                     (GtkCssGadget           *gadget,
+void            ctk_css_gadget_draw                     (GtkCssGadget           *gadget,
                                                          cairo_t                *cr);
 
-void            gtk_css_gadget_queue_resize             (GtkCssGadget           *gadget);
-void            gtk_css_gadget_queue_allocate           (GtkCssGadget           *gadget);
-void            gtk_css_gadget_queue_draw               (GtkCssGadget           *gadget);
+void            ctk_css_gadget_queue_resize             (GtkCssGadget           *gadget);
+void            ctk_css_gadget_queue_allocate           (GtkCssGadget           *gadget);
+void            ctk_css_gadget_queue_draw               (GtkCssGadget           *gadget);
 
-void            gtk_css_gadget_get_margin_allocation    (GtkCssGadget           *gadget,
+void            ctk_css_gadget_get_margin_allocation    (GtkCssGadget           *gadget,
                                                          GtkAllocation          *allocation,
                                                          int                    *baseline);
-void            gtk_css_gadget_get_border_allocation    (GtkCssGadget           *gadget,
+void            ctk_css_gadget_get_border_allocation    (GtkCssGadget           *gadget,
                                                          GtkAllocation          *allocation,
                                                          int                    *baseline);
-void            gtk_css_gadget_get_content_allocation   (GtkCssGadget           *gadget,
+void            ctk_css_gadget_get_content_allocation   (GtkCssGadget           *gadget,
                                                          GtkAllocation          *allocation,
                                                          int                    *baseline);
 

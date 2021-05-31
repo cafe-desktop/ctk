@@ -22,35 +22,35 @@
 #include "gtktogglebuttonaccessible.h"
 
 
-G_DEFINE_TYPE (GtkToggleButtonAccessible, gtk_toggle_button_accessible, GTK_TYPE_BUTTON_ACCESSIBLE)
+G_DEFINE_TYPE (GtkToggleButtonAccessible, ctk_toggle_button_accessible, GTK_TYPE_BUTTON_ACCESSIBLE)
 
 static void
-gtk_toggle_button_accessible_toggled (GtkWidget *widget)
+ctk_toggle_button_accessible_toggled (GtkWidget *widget)
 {
   AtkObject *accessible;
   GtkToggleButton *toggle_button;
 
   toggle_button = GTK_TOGGLE_BUTTON (widget);
 
-  accessible = gtk_widget_get_accessible (widget);
+  accessible = ctk_widget_get_accessible (widget);
   atk_object_notify_state_change (accessible, ATK_STATE_CHECKED,
-                                  gtk_toggle_button_get_active (toggle_button));
+                                  ctk_toggle_button_get_active (toggle_button));
 }
 
 static void
-gtk_toggle_button_accessible_initialize (AtkObject *obj,
+ctk_toggle_button_accessible_initialize (AtkObject *obj,
                                          gpointer   data)
 {
-  ATK_OBJECT_CLASS (gtk_toggle_button_accessible_parent_class)->initialize (obj, data);
+  ATK_OBJECT_CLASS (ctk_toggle_button_accessible_parent_class)->initialize (obj, data);
 
   g_signal_connect (data, "toggled",
-                    G_CALLBACK (gtk_toggle_button_accessible_toggled), NULL);
+                    G_CALLBACK (ctk_toggle_button_accessible_toggled), NULL);
 
   obj->role = ATK_ROLE_TOGGLE_BUTTON;
 }
 
 static void
-gtk_toggle_button_accessible_notify_gtk (GObject    *obj,
+ctk_toggle_button_accessible_notify_gtk (GObject    *obj,
                                          GParamSpec *pspec)
 {
   GtkToggleButton *toggle_button = GTK_TOGGLE_BUTTON (obj);
@@ -58,9 +58,9 @@ gtk_toggle_button_accessible_notify_gtk (GObject    *obj,
   gboolean sensitive;
   gboolean inconsistent;
 
-  atk_obj = gtk_widget_get_accessible (GTK_WIDGET (toggle_button));
-  sensitive = gtk_widget_get_sensitive (GTK_WIDGET (toggle_button));
-  inconsistent = gtk_toggle_button_get_inconsistent (toggle_button);
+  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (toggle_button));
+  sensitive = ctk_widget_get_sensitive (GTK_WIDGET (toggle_button));
+  inconsistent = ctk_toggle_button_get_inconsistent (toggle_button);
 
   if (strcmp (pspec->name, "inconsistent") == 0)
     {
@@ -74,27 +74,27 @@ gtk_toggle_button_accessible_notify_gtk (GObject    *obj,
       atk_object_notify_state_change (atk_obj, ATK_STATE_ENABLED, (sensitive && !inconsistent));
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (gtk_toggle_button_accessible_parent_class)->notify_gtk (obj, pspec);
+    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_toggle_button_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static AtkStateSet*
-gtk_toggle_button_accessible_ref_state_set (AtkObject *accessible)
+ctk_toggle_button_accessible_ref_state_set (AtkObject *accessible)
 {
   AtkStateSet *state_set;
   GtkToggleButton *toggle_button;
   GtkWidget *widget;
 
-  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
-  state_set = ATK_OBJECT_CLASS (gtk_toggle_button_accessible_parent_class)->ref_state_set (accessible);
+  state_set = ATK_OBJECT_CLASS (ctk_toggle_button_accessible_parent_class)->ref_state_set (accessible);
   toggle_button = GTK_TOGGLE_BUTTON (widget);
 
-  if (gtk_toggle_button_get_active (toggle_button))
+  if (ctk_toggle_button_get_active (toggle_button))
     atk_state_set_add_state (state_set, ATK_STATE_CHECKED);
 
-  if (gtk_toggle_button_get_inconsistent (toggle_button))
+  if (ctk_toggle_button_get_inconsistent (toggle_button))
     {
       atk_state_set_remove_state (state_set, ATK_STATE_ENABLED);
       atk_state_set_add_state (state_set, ATK_STATE_INDETERMINATE);
@@ -104,18 +104,18 @@ gtk_toggle_button_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-gtk_toggle_button_accessible_class_init (GtkToggleButtonAccessibleClass *klass)
+ctk_toggle_button_accessible_class_init (GtkToggleButtonAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
 
-  widget_class->notify_gtk = gtk_toggle_button_accessible_notify_gtk;
+  widget_class->notify_gtk = ctk_toggle_button_accessible_notify_gtk;
 
-  class->ref_state_set = gtk_toggle_button_accessible_ref_state_set;
-  class->initialize = gtk_toggle_button_accessible_initialize;
+  class->ref_state_set = ctk_toggle_button_accessible_ref_state_set;
+  class->initialize = ctk_toggle_button_accessible_initialize;
 }
 
 static void
-gtk_toggle_button_accessible_init (GtkToggleButtonAccessible *button)
+ctk_toggle_button_accessible_init (GtkToggleButtonAccessible *button)
 {
 }

@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_CHOOSER_DIALOG             (gtk_file_chooser_dialog_get_type ())
+#define GTK_TYPE_FILE_CHOOSER_DIALOG             (ctk_file_chooser_dialog_get_type ())
 #define GTK_FILE_CHOOSER_DIALOG(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_CHOOSER_DIALOG, GtkFileChooserDialog))
 #define GTK_FILE_CHOOSER_DIALOG_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FILE_CHOOSER_DIALOG, GtkFileChooserDialogClass))
 #define GTK_IS_FILE_CHOOSER_DIALOG(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_CHOOSER_DIALOG))
@@ -51,16 +51,16 @@ struct _GtkFileChooserDialogClass
   GtkDialogClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_file_chooser_dialog_get_type         (void) G_GNUC_CONST;
+GType      ctk_file_chooser_dialog_get_type         (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_file_chooser_dialog_new              (const gchar          *title,
+GtkWidget *ctk_file_chooser_dialog_new              (const gchar          *title,
 						     GtkWindow            *parent,
 						     GtkFileChooserAction  action,
 						     const gchar          *first_button_text,

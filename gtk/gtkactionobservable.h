@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION_OBSERVABLE                          (gtk_action_observable_get_type ())
+#define GTK_TYPE_ACTION_OBSERVABLE                          (ctk_action_observable_get_type ())
 #define GTK_ACTION_OBSERVABLE(inst)                         (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
                                                              GTK_TYPE_ACTION_OBSERVABLE, GtkActionObservable))
 #define GTK_IS_ACTION_OBSERVABLE(inst)                      (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
@@ -47,11 +47,11 @@ struct _GtkActionObservableInterface
                                 GtkActionObserver   *observer);
 };
 
-GType                   gtk_action_observable_get_type                  (void);
-void                    gtk_action_observable_register_observer         (GtkActionObservable *observable,
+GType                   ctk_action_observable_get_type                  (void);
+void                    ctk_action_observable_register_observer         (GtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          GtkActionObserver   *observer);
-void                    gtk_action_observable_unregister_observer       (GtkActionObservable *observable,
+void                    ctk_action_observable_unregister_observer       (GtkActionObservable *observable,
                                                                          const gchar         *action_name,
                                                                          GtkActionObserver   *observer);
 

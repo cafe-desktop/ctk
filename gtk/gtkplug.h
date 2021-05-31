@@ -40,7 +40,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PLUG            (gtk_plug_get_type ())
+#define GTK_TYPE_PLUG            (ctk_plug_get_type ())
 #define GTK_PLUG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PLUG, GtkPlug))
 #define GTK_PLUG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PLUG, GtkPlugClass))
 #define GTK_IS_PLUG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PLUG))
@@ -67,34 +67,34 @@ struct _GtkPlugClass
   void (*embedded) (GtkPlug *plug);
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType      gtk_plug_get_type              (void) G_GNUC_CONST;
+GType      ctk_plug_get_type              (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_plug_construct             (GtkPlug    *plug,
+void       ctk_plug_construct             (GtkPlug    *plug,
                                            Window      socket_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_plug_new                   (Window      socket_id);
+GtkWidget *ctk_plug_new                   (Window      socket_id);
 
 GDK_AVAILABLE_IN_ALL
-void       gtk_plug_construct_for_display (GtkPlug    *plug,
+void       ctk_plug_construct_for_display (GtkPlug    *plug,
                                            GdkDisplay *display,
                                            Window      socket_id);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *gtk_plug_new_for_display       (GdkDisplay *display,
+GtkWidget *ctk_plug_new_for_display       (GdkDisplay *display,
                                            Window      socket_id);
 GDK_AVAILABLE_IN_ALL
-Window     gtk_plug_get_id                (GtkPlug    *plug);
+Window     ctk_plug_get_id                (GtkPlug    *plug);
 GDK_AVAILABLE_IN_ALL
-gboolean   gtk_plug_get_embedded          (GtkPlug    *plug);
+gboolean   ctk_plug_get_embedded          (GtkPlug    *plug);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *gtk_plug_get_socket_window     (GtkPlug    *plug);
+GdkWindow *ctk_plug_get_socket_window     (GtkPlug    *plug);
 
 G_END_DECLS
 

@@ -25,6 +25,6 @@ set_letter_spacing (GtkLabel *label)
 
   attrs = pango_attr_list_new ();
   pango_attr_list_insert (attrs, pango_attr_letter_spacing_new (10 * PANGO_SCALE));
-  gtk_label_set_attributes (label, attrs);
+  ctk_label_set_attributes (label, attrs);
   pango_attr_list_unref (attrs);
 }

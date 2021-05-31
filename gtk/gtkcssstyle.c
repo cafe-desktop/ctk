@@ -38,53 +38,53 @@
 #include "gtkstylepropertyprivate.h"
 #include "gtkstyleproviderprivate.h"
 
-G_DEFINE_ABSTRACT_TYPE (GtkCssStyle, gtk_css_style, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (GtkCssStyle, ctk_css_style, G_TYPE_OBJECT)
 
 static GtkCssSection *
-gtk_css_style_real_get_section (GtkCssStyle *style,
+ctk_css_style_real_get_section (GtkCssStyle *style,
                                 guint        id)
 {
   return NULL;
 }
 
 static gboolean
-gtk_css_style_real_is_static (GtkCssStyle *style)
+ctk_css_style_real_is_static (GtkCssStyle *style)
 {
   return TRUE;
 }
 
 static void
-gtk_css_style_class_init (GtkCssStyleClass *klass)
+ctk_css_style_class_init (GtkCssStyleClass *klass)
 {
-  klass->get_section = gtk_css_style_real_get_section;
-  klass->is_static = gtk_css_style_real_is_static;
+  klass->get_section = ctk_css_style_real_get_section;
+  klass->is_static = ctk_css_style_real_is_static;
 }
 
 static void
-gtk_css_style_init (GtkCssStyle *style)
+ctk_css_style_init (GtkCssStyle *style)
 {
 }
 
 GtkCssValue *
-gtk_css_style_get_value (GtkCssStyle *style,
+ctk_css_style_get_value (GtkCssStyle *style,
                           guint        id)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
 
   return GTK_CSS_STYLE_GET_CLASS (style)->get_value (style, id);
 }
 
 GtkCssSection *
-gtk_css_style_get_section (GtkCssStyle *style,
+ctk_css_style_get_section (GtkCssStyle *style,
                            guint        id)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
 
   return GTK_CSS_STYLE_GET_CLASS (style)->get_section (style, id);
 }
 
 GtkBitmask *
-gtk_css_style_add_difference (GtkBitmask  *accumulated,
+ctk_css_style_add_difference (GtkBitmask  *accumulated,
                               GtkCssStyle *style,
                               GtkCssStyle *other)
 {
@@ -93,30 +93,30 @@ gtk_css_style_add_difference (GtkBitmask  *accumulated,
   if (style == other)
     return accumulated;
 
-  len = _gtk_css_style_property_get_n_properties ();
+  len = _ctk_css_style_property_get_n_properties ();
   for (i = 0; i < len; i++)
     {
-      if (_gtk_bitmask_get (accumulated, i))
+      if (_ctk_bitmask_get (accumulated, i))
         continue;
 
-      if (!_gtk_css_value_equal (gtk_css_style_get_value (style, i),
-                                 gtk_css_style_get_value (other, i)))
-        accumulated = _gtk_bitmask_set (accumulated, i, TRUE);
+      if (!_ctk_css_value_equal (ctk_css_style_get_value (style, i),
+                                 ctk_css_style_get_value (other, i)))
+        accumulated = _ctk_bitmask_set (accumulated, i, TRUE);
     }
 
   return accumulated;
 }
 
 gboolean
-gtk_css_style_is_static (GtkCssStyle *style)
+ctk_css_style_is_static (GtkCssStyle *style)
 {
-  gtk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), TRUE);
+  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), TRUE);
 
   return GTK_CSS_STYLE_GET_CLASS (style)->is_static (style);
 }
 
 /*
- * gtk_css_style_print:
+ * ctk_css_style_print:
  * @style: a #GtkCssStyle
  * @string: the #GString to print to
  * @indent: level of indentation to use
@@ -130,7 +130,7 @@ gtk_css_style_is_static (GtkCssStyle *style)
  * Returns: %TRUE is any properties have been printed
  */
 gboolean
-gtk_css_style_print (GtkCssStyle *style,
+ctk_css_style_print (GtkCssStyle *style,
                      GString     *string,
                      guint        indent,
                      gboolean     skip_initial)
@@ -141,29 +141,29 @@ gtk_css_style_print (GtkCssStyle *style,
   g_return_val_if_fail (GTK_IS_CSS_STYLE (style), FALSE);
   g_return_val_if_fail (string != NULL, FALSE);
 
-  for (i = 0; i < _gtk_css_style_property_get_n_properties (); i++)
+  for (i = 0; i < _ctk_css_style_property_get_n_properties (); i++)
     {
       GtkCssSection *section;
       GtkCssStyleProperty *prop;
       GtkCssValue *value;
       const char *name;
 
-      section = gtk_css_style_get_section (style, i);
+      section = ctk_css_style_get_section (style, i);
       if (!section && skip_initial)
         continue;
 
-      prop = _gtk_css_style_property_lookup_by_id (i);
-      name = _gtk_style_property_get_name (GTK_STYLE_PROPERTY (prop));
-      value = gtk_css_style_get_value (style, i);
+      prop = _ctk_css_style_property_lookup_by_id (i);
+      name = _ctk_style_property_get_name (GTK_STYLE_PROPERTY (prop));
+      value = ctk_css_style_get_value (style, i);
 
       g_string_append_printf (string, "%*s%s: ", indent, "", name);
-      _gtk_css_value_print (value, string);
+      _ctk_css_value_print (value, string);
       g_string_append_c (string, ';');
 
       if (section)
         {
           g_string_append (string, " /* ");
-          _gtk_css_section_print (section, string);
+          _ctk_css_section_print (section, string);
           g_string_append (string, " */");
         }
 
@@ -176,7 +176,7 @@ gtk_css_style_print (GtkCssStyle *style,
 }
 
 char *
-gtk_css_style_to_string (GtkCssStyle *style)
+ctk_css_style_to_string (GtkCssStyle *style)
 {
   GString *string;
 
@@ -184,7 +184,7 @@ gtk_css_style_to_string (GtkCssStyle *style)
 
   string = g_string_new ("");
 
-  gtk_css_style_print (style, string, 0, FALSE);
+  ctk_css_style_print (style, string, 0, FALSE);
 
   return g_string_free (string, FALSE);
 }
@@ -219,7 +219,7 @@ add_pango_attr (PangoAttrList  *attrs,
 }
 
 PangoAttrList *
-gtk_css_style_get_pango_attributes (GtkCssStyle *style)
+ctk_css_style_get_pango_attributes (GtkCssStyle *style)
 {
   PangoAttrList *attrs = NULL;
   GtkTextDecorationLine decoration_line;
@@ -230,10 +230,10 @@ gtk_css_style_get_pango_attributes (GtkCssStyle *style)
   const char *font_feature_settings;
 
   /* text-decoration */
-  decoration_line = _gtk_css_text_decoration_line_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_LINE));
-  decoration_style = _gtk_css_text_decoration_style_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_STYLE));
-  color = _gtk_css_rgba_value_get_rgba (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR));
-  decoration_color = _gtk_css_rgba_value_get_rgba (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_COLOR));
+  decoration_line = _ctk_css_text_decoration_line_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_LINE));
+  decoration_style = _ctk_css_text_decoration_style_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_STYLE));
+  color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_COLOR));
+  decoration_color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_TEXT_DECORATION_COLOR));
 
   switch (decoration_line)
     {
@@ -257,14 +257,14 @@ gtk_css_style_get_pango_attributes (GtkCssStyle *style)
     }
 
   /* letter-spacing */
-  letter_spacing = _gtk_css_number_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_LETTER_SPACING), 100);
+  letter_spacing = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_LETTER_SPACING), 100);
   if (letter_spacing != 0)
     {
       attrs = add_pango_attr (attrs, pango_attr_letter_spacing_new (letter_spacing * PANGO_SCALE));
     }
 
   /* font-feature-settings */
-  font_feature_settings = _gtk_css_string_value_get (gtk_css_style_get_value (style, GTK_CSS_PROPERTY_FONT_FEATURE_SETTINGS));
+  font_feature_settings = _ctk_css_string_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_FONT_FEATURE_SETTINGS));
   if (font_feature_settings != NULL)
     {
       attrs = add_pango_attr (attrs, pango_attr_font_features_new (font_feature_settings));
@@ -277,17 +277,17 @@ static GtkCssValue *
 query_func (guint    id,
             gpointer values)
 {
-  return gtk_css_style_get_value (values, id);
+  return ctk_css_style_get_value (values, id);
 }
 
 PangoFontDescription *
-gtk_css_style_get_pango_font (GtkCssStyle *style)
+ctk_css_style_get_pango_font (GtkCssStyle *style)
 {
   GtkStyleProperty *prop;
   GValue value = { 0, };
 
-  prop = _gtk_style_property_lookup ("font");
-  _gtk_style_property_query (prop, &value, query_func, style);
+  prop = _ctk_style_property_lookup ("font");
+  _ctk_style_property_query (prop, &value, query_func, style);
 
   return (PangoFontDescription *)g_value_get_boxed (&value);
 }

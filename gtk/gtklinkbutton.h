@@ -32,7 +32,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LINK_BUTTON		(gtk_link_button_get_type ())
+#define GTK_TYPE_LINK_BUTTON		(ctk_link_button_get_type ())
 #define GTK_LINK_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LINK_BUTTON, GtkLinkButton))
 #define GTK_IS_LINK_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LINK_BUTTON))
 #define GTK_LINK_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LINK_BUTTON, GtkLinkButtonClass))
@@ -74,31 +74,31 @@ struct _GtkLinkButtonClass
 
   /*< private >*/
   /* Padding for future expansion */
-  void (*_gtk_padding1) (void);
-  void (*_gtk_padding2) (void);
-  void (*_gtk_padding3) (void);
-  void (*_gtk_padding4) (void);
+  void (*_ctk_padding1) (void);
+  void (*_ctk_padding2) (void);
+  void (*_ctk_padding3) (void);
+  void (*_ctk_padding4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType                 gtk_link_button_get_type          (void) G_GNUC_CONST;
+GType                 ctk_link_button_get_type          (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkWidget *           gtk_link_button_new               (const gchar   *uri);
+GtkWidget *           ctk_link_button_new               (const gchar   *uri);
 GDK_AVAILABLE_IN_ALL
-GtkWidget *           gtk_link_button_new_with_label    (const gchar   *uri,
+GtkWidget *           ctk_link_button_new_with_label    (const gchar   *uri,
 						         const gchar   *label);
 
 GDK_AVAILABLE_IN_ALL
-const gchar *         gtk_link_button_get_uri           (GtkLinkButton *link_button);
+const gchar *         ctk_link_button_get_uri           (GtkLinkButton *link_button);
 GDK_AVAILABLE_IN_ALL
-void                  gtk_link_button_set_uri           (GtkLinkButton *link_button,
+void                  ctk_link_button_set_uri           (GtkLinkButton *link_button,
 						         const gchar   *uri);
 
 GDK_AVAILABLE_IN_ALL
-gboolean              gtk_link_button_get_visited       (GtkLinkButton *link_button);
+gboolean              ctk_link_button_get_visited       (GtkLinkButton *link_button);
 GDK_AVAILABLE_IN_ALL
-void                  gtk_link_button_set_visited       (GtkLinkButton *link_button,
+void                  ctk_link_button_set_visited       (GtkLinkButton *link_button,
                                                          gboolean       visited);
 
 

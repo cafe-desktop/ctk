@@ -147,7 +147,7 @@ msgstr ""
 #: ../gtk/gtkaboutdialog.c:483
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 
 #: ../gtk/gtkaboutdialog.c:498
@@ -2244,7 +2244,7 @@ msgstr ""
 #: ../gtk/gtkentry.c:887
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 
 #: ../gtk/gtkentry.c:903
@@ -4403,7 +4403,7 @@ msgstr ""
 
 #: ../gtk/gtkradioaction.c:112
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
 
@@ -4681,7 +4681,7 @@ msgstr ""
 
 #: ../gtk/gtkrecentmanager.c:235
 msgid ""
-"The maximum number of items to be returned by gtk_recent_manager_get_items()"
+"The maximum number of items to be returned by ctk_recent_manager_get_items()"
 msgstr ""
 
 #: ../gtk/gtkrecentmanager.c:251
@@ -6800,7 +6800,7 @@ msgid "No show all"
 msgstr ""
 
 #: ../gtk/gtkwidget.c:681
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
 
 #: ../gtk/gtkwidget.c:704

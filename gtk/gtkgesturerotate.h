@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_ROTATE         (gtk_gesture_rotate_get_type ())
+#define GTK_TYPE_GESTURE_ROTATE         (ctk_gesture_rotate_get_type ())
 #define GTK_GESTURE_ROTATE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_ROTATE, GtkGestureRotate))
 #define GTK_GESTURE_ROTATE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_ROTATE, GtkGestureRotateClass))
 #define GTK_IS_GESTURE_ROTATE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_ROTATE))
@@ -40,13 +40,13 @@ typedef struct _GtkGestureRotate GtkGestureRotate;
 typedef struct _GtkGestureRotateClass GtkGestureRotateClass;
 
 GDK_AVAILABLE_IN_3_14
-GType        gtk_gesture_rotate_get_type        (void) G_GNUC_CONST;
+GType        ctk_gesture_rotate_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GtkGesture * gtk_gesture_rotate_new             (GtkWidget        *widget);
+GtkGesture * ctk_gesture_rotate_new             (GtkWidget        *widget);
 
 GDK_AVAILABLE_IN_3_14
-gdouble      gtk_gesture_rotate_get_angle_delta (GtkGestureRotate *gesture);
+gdouble      ctk_gesture_rotate_get_angle_delta (GtkGestureRotate *gesture);
 
 G_END_DECLS
 

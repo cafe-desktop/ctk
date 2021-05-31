@@ -104,7 +104,7 @@ headerfile_start = """/* GTK - The GIMP Tool Kit
  * that depend on the locale or selected input method.
  */
 
-static const guint16 gtk_compose_seqs_compact[] = {"""
+static const guint16 ctk_compose_seqs_compact[] = {"""
 
 headerfile_end = """};
 

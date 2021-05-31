@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COMBO_BOX_ACCESSIBLE                      (gtk_combo_box_accessible_get_type ())
+#define GTK_TYPE_COMBO_BOX_ACCESSIBLE                      (ctk_combo_box_accessible_get_type ())
 #define GTK_COMBO_BOX_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COMBO_BOX_ACCESSIBLE, GtkComboBoxAccessible))
 #define GTK_COMBO_BOX_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_COMBO_BOX_ACCESSIBLE, GtkComboBoxAccessibleClass))
 #define GTK_IS_COMBO_BOX_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COMBO_BOX_ACCESSIBLE))
@@ -50,7 +50,7 @@ struct _GtkComboBoxAccessibleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType gtk_combo_box_accessible_get_type (void);
+GType ctk_combo_box_accessible_get_type (void);
 
 G_END_DECLS
 

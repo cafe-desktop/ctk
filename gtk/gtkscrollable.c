@@ -58,10 +58,10 @@
 #include "gtktypebuiltins.h"
 #include "gtkintl.h"
 
-G_DEFINE_INTERFACE (GtkScrollable, gtk_scrollable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (GtkScrollable, ctk_scrollable, G_TYPE_OBJECT)
 
 static void
-gtk_scrollable_default_init (GtkScrollableInterface *iface)
+ctk_scrollable_default_init (GtkScrollableInterface *iface)
 {
   GParamSpec *pspec;
 
@@ -133,7 +133,7 @@ gtk_scrollable_default_init (GtkScrollableInterface *iface)
 }
 
 /**
- * gtk_scrollable_get_hadjustment:
+ * ctk_scrollable_get_hadjustment:
  * @scrollable: a #GtkScrollable
  *
  * Retrieves the #GtkAdjustment used for horizontal scrolling.
@@ -143,7 +143,7 @@ gtk_scrollable_default_init (GtkScrollableInterface *iface)
  * Since: 3.0
  **/
 GtkAdjustment *
-gtk_scrollable_get_hadjustment (GtkScrollable *scrollable)
+ctk_scrollable_get_hadjustment (GtkScrollable *scrollable)
 {
   GtkAdjustment *adj = NULL;
 
@@ -162,7 +162,7 @@ gtk_scrollable_get_hadjustment (GtkScrollable *scrollable)
 }
 
 /**
- * gtk_scrollable_set_hadjustment:
+ * ctk_scrollable_set_hadjustment:
  * @scrollable: a #GtkScrollable
  * @hadjustment: (allow-none): a #GtkAdjustment
  *
@@ -171,7 +171,7 @@ gtk_scrollable_get_hadjustment (GtkScrollable *scrollable)
  * Since: 3.0
  **/
 void
-gtk_scrollable_set_hadjustment (GtkScrollable *scrollable,
+ctk_scrollable_set_hadjustment (GtkScrollable *scrollable,
                                 GtkAdjustment *hadjustment)
 {
   g_return_if_fail (GTK_IS_SCROLLABLE (scrollable));
@@ -181,7 +181,7 @@ gtk_scrollable_set_hadjustment (GtkScrollable *scrollable,
 }
 
 /**
- * gtk_scrollable_get_vadjustment:
+ * ctk_scrollable_get_vadjustment:
  * @scrollable: a #GtkScrollable
  *
  * Retrieves the #GtkAdjustment used for vertical scrolling.
@@ -191,7 +191,7 @@ gtk_scrollable_set_hadjustment (GtkScrollable *scrollable,
  * Since: 3.0
  **/
 GtkAdjustment *
-gtk_scrollable_get_vadjustment (GtkScrollable *scrollable)
+ctk_scrollable_get_vadjustment (GtkScrollable *scrollable)
 {
   GtkAdjustment *adj = NULL;
 
@@ -210,7 +210,7 @@ gtk_scrollable_get_vadjustment (GtkScrollable *scrollable)
 }
 
 /**
- * gtk_scrollable_set_vadjustment:
+ * ctk_scrollable_set_vadjustment:
  * @scrollable: a #GtkScrollable
  * @vadjustment: (allow-none): a #GtkAdjustment
  *
@@ -219,7 +219,7 @@ gtk_scrollable_get_vadjustment (GtkScrollable *scrollable)
  * Since: 3.0
  **/
 void
-gtk_scrollable_set_vadjustment (GtkScrollable *scrollable,
+ctk_scrollable_set_vadjustment (GtkScrollable *scrollable,
                                 GtkAdjustment *vadjustment)
 {
   g_return_if_fail (GTK_IS_SCROLLABLE (scrollable));
@@ -230,7 +230,7 @@ gtk_scrollable_set_vadjustment (GtkScrollable *scrollable,
 
 
 /**
- * gtk_scrollable_get_hscroll_policy:
+ * ctk_scrollable_get_hscroll_policy:
  * @scrollable: a #GtkScrollable
  *
  * Gets the horizontal #GtkScrollablePolicy.
@@ -240,7 +240,7 @@ gtk_scrollable_set_vadjustment (GtkScrollable *scrollable,
  * Since: 3.0
  **/
 GtkScrollablePolicy
-gtk_scrollable_get_hscroll_policy (GtkScrollable *scrollable)
+ctk_scrollable_get_hscroll_policy (GtkScrollable *scrollable)
 {
   GtkScrollablePolicy policy;
 
@@ -252,7 +252,7 @@ gtk_scrollable_get_hscroll_policy (GtkScrollable *scrollable)
 }
 
 /**
- * gtk_scrollable_set_hscroll_policy:
+ * ctk_scrollable_set_hscroll_policy:
  * @scrollable: a #GtkScrollable
  * @policy: the horizontal #GtkScrollablePolicy
  *
@@ -263,7 +263,7 @@ gtk_scrollable_get_hscroll_policy (GtkScrollable *scrollable)
  * Since: 3.0
  **/
 void
-gtk_scrollable_set_hscroll_policy (GtkScrollable       *scrollable,
+ctk_scrollable_set_hscroll_policy (GtkScrollable       *scrollable,
 				   GtkScrollablePolicy  policy)
 {
   g_return_if_fail (GTK_IS_SCROLLABLE (scrollable));
@@ -272,7 +272,7 @@ gtk_scrollable_set_hscroll_policy (GtkScrollable       *scrollable,
 }
 
 /**
- * gtk_scrollable_get_vscroll_policy:
+ * ctk_scrollable_get_vscroll_policy:
  * @scrollable: a #GtkScrollable
  *
  * Gets the vertical #GtkScrollablePolicy.
@@ -282,7 +282,7 @@ gtk_scrollable_set_hscroll_policy (GtkScrollable       *scrollable,
  * Since: 3.0
  **/
 GtkScrollablePolicy
-gtk_scrollable_get_vscroll_policy (GtkScrollable *scrollable)
+ctk_scrollable_get_vscroll_policy (GtkScrollable *scrollable)
 {
   GtkScrollablePolicy policy;
 
@@ -294,7 +294,7 @@ gtk_scrollable_get_vscroll_policy (GtkScrollable *scrollable)
 }
 
 /**
- * gtk_scrollable_set_vscroll_policy:
+ * ctk_scrollable_set_vscroll_policy:
  * @scrollable: a #GtkScrollable
  * @policy: the vertical #GtkScrollablePolicy
  *
@@ -305,7 +305,7 @@ gtk_scrollable_get_vscroll_policy (GtkScrollable *scrollable)
  * Since: 3.0
  **/
 void
-gtk_scrollable_set_vscroll_policy (GtkScrollable       *scrollable,
+ctk_scrollable_set_vscroll_policy (GtkScrollable       *scrollable,
 				   GtkScrollablePolicy  policy)
 {
   g_return_if_fail (GTK_IS_SCROLLABLE (scrollable));
@@ -314,7 +314,7 @@ gtk_scrollable_set_vscroll_policy (GtkScrollable       *scrollable,
 }
 
 /**
- * gtk_scrollable_get_border:
+ * ctk_scrollable_get_border:
  * @scrollable: a #GtkScrollable
  * @border: (out caller-allocates): return location for the results
  *
@@ -329,7 +329,7 @@ gtk_scrollable_set_vscroll_policy (GtkScrollable       *scrollable,
  * Since: 3.16
  */
 gboolean
-gtk_scrollable_get_border (GtkScrollable *scrollable,
+ctk_scrollable_get_border (GtkScrollable *scrollable,
                            GtkBorder     *border)
 {
   g_return_val_if_fail (GTK_IS_SCROLLABLE (scrollable), FALSE);

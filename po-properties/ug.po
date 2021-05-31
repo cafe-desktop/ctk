@@ -519,8 +519,8 @@ msgstr "تۇغ"
 #: ../gtk/gtkaboutdialog.c:504
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
-msgstr "ھەققىدە كۆزنەكچىسىنىڭ تۇغى. ئەگەر بېكىتىلمىسە كۆڭۈلدىكىسى gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
+msgstr "ھەققىدە كۆزنەكچىسىنىڭ تۇغى. ئەگەر بېكىتىلمىسە كۆڭۈلدىكىسى ctk_window_get_default_icon_list()"
 
 #: ../gtk/gtkaboutdialog.c:519
 msgid "Logo Icon Name"
@@ -2928,8 +2928,8 @@ msgstr "جەريان ئىمپۇلس قەدىمى"
 #: ../gtk/gtkentry.c:990
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
-msgstr "تۈرنىڭ ئومۇمىي كەڭلىكىدىكى ھەر قېتىم gtk_entry_progress_pulse() چاقىرغاندا جەريان ئىمپۇلس قەدىمىنىڭ كەڭلىكى"
+"each call to ctk_entry_progress_pulse()"
+msgstr "تۈرنىڭ ئومۇمىي كەڭلىكىدىكى ھەر قېتىم ctk_entry_progress_pulse() چاقىرغاندا جەريان ئىمپۇلس قەدىمىنىڭ كەڭلىكى"
 
 #: ../gtk/gtkentry.c:1008
 msgid "Show text in the entry when it's empty and unfocused"
@@ -5039,9 +5039,9 @@ msgstr "قىممىتى"
 
 #: ../gtk/gtkradioaction.c:117
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
-msgstr "بۇ مەشغۇلات مەشغۇلات گۇرۇپپىسىنىڭ نۆۋەتتىكى ھەرىكىتى بولغاندا gtk_radio_action_get_current_value() قايتۇرغان قىممەت."
+msgstr "بۇ مەشغۇلات مەشغۇلات گۇرۇپپىسىنىڭ نۆۋەتتىكى ھەرىكىتى بولغاندا ctk_radio_action_get_current_value() قايتۇرغان قىممەت."
 
 #: ../gtk/gtkradioaction.c:133 ../gtk/gtkradiobutton.c:163
 #: ../gtk/gtkradiomenuitem.c:426 ../gtk/gtkradiotoolbutton.c:83
@@ -7483,8 +7483,8 @@ msgid "No show all"
 msgstr "ھەممىسىنى كۆرسەتمە"
 
 #: ../gtk/gtkwidget.c:1097
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "gtk_widget_show_all() بۇ ۋىجېتقا تەسىر كۆرسەتمەمدۇ يوق"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "ctk_widget_show_all() بۇ ۋىجېتقا تەسىر كۆرسەتمەمدۇ يوق"
 
 #: ../gtk/gtkwidget.c:1120
 msgid "Whether this widget has a tooltip"

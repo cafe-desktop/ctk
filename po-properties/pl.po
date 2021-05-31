@@ -785,10 +785,10 @@ msgstr "Wartość"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Wartość zwracana przez funkcję gtk_radio_action_get_current_value(), gdy ta "
+"Wartość zwracana przez funkcję ctk_radio_action_get_current_value(), gdy ta "
 "czynność jest obecną czynnością w swojej grupie."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1249,10 +1249,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Logo dla okna z informacją o programie. Jeżeli nie jest ustawione, domyślnie "
-"przyjmuje wartość gtk_window_get_default_icon_list()"
+"przyjmuje wartość ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3477,10 +3477,10 @@ msgstr "Krok postępu jako impuls"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Część postępu, o jaką powinien zostać przesunięty odbijający się prostokąt "
-"przy każdym wywołaniu gtk_entry_progress_pulse()"
+"przy każdym wywołaniu ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9205,9 +9205,9 @@ msgid "No show all"
 msgstr "Bez obsługi sygnału wyświetlania wszystkich"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr ""
-"Określa, czy funkcja gtk_widget_show_all() powinna mieć wpływ na ten widżet"
+"Określa, czy funkcja ctk_widget_show_all() powinna mieć wpływ na ten widżet"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"

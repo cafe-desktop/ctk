@@ -11,7 +11,7 @@
         <child>
           <object class="GtkToggleButton" id="button">
             <property name="visible">1</property>
-            <signal name="toggled" handler="gtk_combo_box_button_toggled" swapped="no"/>
+            <signal name="toggled" handler="ctk_combo_box_button_toggled" swapped="no"/>
             <child>
               <object class="GtkBox">
                 <property name="visible">1</property>

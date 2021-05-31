@@ -272,7 +272,7 @@ msgstr "ikirango"
 #, fuzzy
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "A ikirango kugirango i Ibyerekeye Agasanduku iyi ni OYA Gushyiraho Kuri"
 
@@ -2657,7 +2657,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr "Imigabane Bya Igiteranyo Aho bigeze Kuri Kwimura i Funga Ryari:"
 
 #: gtk/gtkentry.c:904
@@ -4991,7 +4991,7 @@ msgstr "Agaciro"
 #: gtk/gtkradioaction.c:119
 #, fuzzy
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr "Agaciro ku Ryari: iyi Igikorwa ni i KIGEZWEHO Igikorwa Bya Itsinda"
 
@@ -7699,7 +7699,7 @@ msgstr "Garagaza Byose"
 
 #: gtk/gtkwidget.c:841
 #, fuzzy
-msgid "Whether gtk_widget_show_all() should not affect this widget"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr "OYA iyi"
 
 #: gtk/gtkwidget.c:864

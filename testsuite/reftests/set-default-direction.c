@@ -27,28 +27,28 @@ G_MODULE_EXPORT void
 set_default_direction_ltr (void)
 {
   g_test_message ("Attention: globally setting default text direction to LTR");
-  gtk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
+  ctk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
 }
 
 G_MODULE_EXPORT void
 set_default_direction_rtl (void)
 {
   g_test_message ("Attention: globally setting default text direction to RTL");
-  gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+  ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 }
 
 G_MODULE_EXPORT void
 switch_default_direction (void)
 {
-  switch (gtk_widget_get_default_direction ())
+  switch (ctk_widget_get_default_direction ())
     {
     case GTK_TEXT_DIR_LTR:
       g_test_message ("Attention: globally switching default text direction from LTR to RTL");
-      gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+      ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
       break;
     case GTK_TEXT_DIR_RTL:
       g_test_message ("Attention: globally switching default text direction from RTL to LTR");
-      gtk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
+      ctk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
       break;
     case GTK_TEXT_DIR_NONE:
     default:
@@ -60,13 +60,13 @@ switch_default_direction (void)
 G_MODULE_EXPORT void
 switch_direction (GtkWidget *widget)
 {
-  switch (gtk_widget_get_direction (widget))
+  switch (ctk_widget_get_direction (widget))
     {
     case GTK_TEXT_DIR_LTR:
-      gtk_widget_set_direction (widget, GTK_TEXT_DIR_RTL);
+      ctk_widget_set_direction (widget, GTK_TEXT_DIR_RTL);
       break;
     case GTK_TEXT_DIR_RTL:
-      gtk_widget_set_direction (widget, GTK_TEXT_DIR_LTR);
+      ctk_widget_set_direction (widget, GTK_TEXT_DIR_LTR);
       break;
     case GTK_TEXT_DIR_NONE:
     default:
@@ -80,9 +80,9 @@ swap_child (GtkWidget *window)
 {
   GtkWidget *image;
 
-  gtk_container_remove (GTK_CONTAINER (window), gtk_bin_get_child (GTK_BIN (window)));
+  ctk_container_remove (GTK_CONTAINER (window), ctk_bin_get_child (GTK_BIN (window)));
 
-  image = gtk_image_new_from_icon_name ("go-next", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image);
-  gtk_container_add (GTK_CONTAINER (window), image);
+  image = ctk_image_new_from_icon_name ("go-next", GTK_ICON_SIZE_BUTTON);
+  ctk_widget_show (image);
+  ctk_container_add (GTK_CONTAINER (window), image);
 }

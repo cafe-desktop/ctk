@@ -39,7 +39,7 @@ create_model (void)
   int i;
   GtkListStore *store;
 
-  store = gtk_list_store_new (5,
+  store = ctk_list_store_new (5,
                               G_TYPE_STRING,
                               G_TYPE_STRING,
                               G_TYPE_STRING,
@@ -51,7 +51,7 @@ create_model (void)
       gchar *str;
 
       str = g_strdup_printf ("Row %d", i);
-      gtk_list_store_insert_with_values (store, NULL, i,
+      ctk_list_store_insert_with_values (store, NULL, i,
                                          0, str,
                                          1, "Blah blah blah blah blah",
                                          2, "Less blah",
@@ -70,10 +70,10 @@ toggle_long_content_row (GtkToggleButton *button,
 {
   GtkTreeModel *model;
 
-  model = gtk_tree_view_get_model (GTK_TREE_VIEW (user_data));
-  if (gtk_tree_model_iter_n_children (model, NULL) == N_ROWS)
+  model = ctk_tree_view_get_model (GTK_TREE_VIEW (user_data));
+  if (ctk_tree_model_iter_n_children (model, NULL) == N_ROWS)
     {
-      gtk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, N_ROWS,
+      ctk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, N_ROWS,
                                          0, "Very very very very longggggg",
                                          1, "Blah blah blah blah blah",
                                          2, "Less blah",
@@ -85,8 +85,8 @@ toggle_long_content_row (GtkToggleButton *button,
     {
       GtkTreeIter iter;
 
-      gtk_tree_model_iter_nth_child (model, &iter, NULL, N_ROWS);
-      gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
+      ctk_tree_model_iter_nth_child (model, &iter, NULL, N_ROWS);
+      ctk_list_store_remove (GTK_LIST_STORE (model), &iter);
     }
 }
 
@@ -98,16 +98,16 @@ combo_box_changed (GtkComboBox *combo_box,
   GList *list;
   GList *columns;
 
-  str = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combo_box));
+  str = ctk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combo_box));
   if (!str)
     return;
 
-  columns = gtk_tree_view_get_columns (GTK_TREE_VIEW (user_data));
+  columns = ctk_tree_view_get_columns (GTK_TREE_VIEW (user_data));
 
   if (!strcmp (str, NO_EXPAND))
     {
       for (list = columns; list; list = list->next)
-        gtk_tree_view_column_set_expand (list->data, FALSE);
+        ctk_tree_view_column_set_expand (list->data, FALSE);
     }
   else if (!strcmp (str, SINGLE_EXPAND))
     {
@@ -115,9 +115,9 @@ combo_box_changed (GtkComboBox *combo_box,
         {
           if (list->prev && !list->prev->prev)
             /* This is the second column */
-            gtk_tree_view_column_set_expand (list->data, TRUE);
+            ctk_tree_view_column_set_expand (list->data, TRUE);
           else
-            gtk_tree_view_column_set_expand (list->data, FALSE);
+            ctk_tree_view_column_set_expand (list->data, FALSE);
         }
     }
   else if (!strcmp (str, MULTI_EXPAND))
@@ -126,33 +126,33 @@ combo_box_changed (GtkComboBox *combo_box,
         {
           if (list->prev && !list->prev->prev)
             /* This is the second column */
-            gtk_tree_view_column_set_expand (list->data, TRUE);
+            ctk_tree_view_column_set_expand (list->data, TRUE);
           else if (list->prev && !list->prev->prev->prev)
             /* This is the third column */
-            gtk_tree_view_column_set_expand (list->data, TRUE);
+            ctk_tree_view_column_set_expand (list->data, TRUE);
           else
-            gtk_tree_view_column_set_expand (list->data, FALSE);
+            ctk_tree_view_column_set_expand (list->data, FALSE);
         }
     }
   else if (!strcmp (str, LAST_EXPAND))
     {
       for (list = columns; list->next; list = list->next)
-        gtk_tree_view_column_set_expand (list->data, FALSE);
+        ctk_tree_view_column_set_expand (list->data, FALSE);
       /* This is the last column */
-      gtk_tree_view_column_set_expand (list->data, TRUE);
+      ctk_tree_view_column_set_expand (list->data, TRUE);
     }
   else if (!strcmp (str, BORDER_EXPAND))
     {
-      gtk_tree_view_column_set_expand (columns->data, TRUE);
+      ctk_tree_view_column_set_expand (columns->data, TRUE);
       for (list = columns->next; list->next; list = list->next)
-        gtk_tree_view_column_set_expand (list->data, FALSE);
+        ctk_tree_view_column_set_expand (list->data, FALSE);
       /* This is the last column */
-      gtk_tree_view_column_set_expand (list->data, TRUE);
+      ctk_tree_view_column_set_expand (list->data, TRUE);
     }
   else if (!strcmp (str, ALL_EXPAND))
     {
       for (list = columns; list; list = list->next)
-        gtk_tree_view_column_set_expand (list->data, TRUE);
+        ctk_tree_view_column_set_expand (list->data, TRUE);
     }
 
   g_free (str);
@@ -170,68 +170,68 @@ main (int argc, char **argv)
   GtkWidget *tree_view;
   GtkWidget *button;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   /* Window and box */
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_default_size (GTK_WINDOW (window), 640, 480);
-  g_signal_connect (window, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (window), 5);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (GTK_WINDOW (window), 640, 480);
+  g_signal_connect (window, "delete-event", G_CALLBACK (ctk_main_quit), NULL);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 5);
 
-  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+  ctk_container_add (GTK_CONTAINER (window), vbox);
 
   /* Option menu contents */
-  combo_box = gtk_combo_box_text_new ();
+  combo_box = ctk_combo_box_text_new ();
 
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), NO_EXPAND);
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), SINGLE_EXPAND);
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), MULTI_EXPAND);
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), LAST_EXPAND);
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), BORDER_EXPAND);
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), ALL_EXPAND);
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), NO_EXPAND);
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), SINGLE_EXPAND);
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), MULTI_EXPAND);
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), LAST_EXPAND);
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), BORDER_EXPAND);
+  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), ALL_EXPAND);
 
-  gtk_box_pack_start (GTK_BOX (vbox), combo_box, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), combo_box, FALSE, FALSE, 0);
 
   /* Scrolled window and tree view */
-  sw = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+  sw = ctk_scrolled_window_new (NULL, NULL);
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_AUTOMATIC,
                                   GTK_POLICY_AUTOMATIC);
-  gtk_box_pack_start (GTK_BOX (vbox), sw, TRUE, TRUE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), sw, TRUE, TRUE, 0);
 
-  tree_view = gtk_tree_view_new_with_model (create_model ());
-  gtk_container_add (GTK_CONTAINER (sw), tree_view);
+  tree_view = ctk_tree_view_new_with_model (create_model ());
+  ctk_container_add (GTK_CONTAINER (sw), tree_view);
 
   for (i = 0; i < 5; i++)
     {
       GtkTreeViewColumn *column;
 
-      gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+      ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
                                                    i, "Header",
-                                                   gtk_cell_renderer_text_new (),
+                                                   ctk_cell_renderer_text_new (),
                                                    "text", i,
                                                    NULL);
 
-      column = gtk_tree_view_get_column (GTK_TREE_VIEW (tree_view), i);
-      gtk_tree_view_column_set_resizable (column, TRUE);
+      column = ctk_tree_view_get_column (GTK_TREE_VIEW (tree_view), i);
+      ctk_tree_view_column_set_resizable (column, TRUE);
     }
 
   /* Toggle button for long content row */
-  button = gtk_toggle_button_new_with_label ("Toggle long content row");
+  button = ctk_toggle_button_new_with_label ("Toggle long content row");
   g_signal_connect (button, "toggled",
                     G_CALLBACK (toggle_long_content_row), tree_view);
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   /* Set up option menu callback and default item */
   g_signal_connect (combo_box, "changed",
                     G_CALLBACK (combo_box_changed), tree_view);
-  gtk_combo_box_set_active (GTK_COMBO_BOX (combo_box), 0);
+  ctk_combo_box_set_active (GTK_COMBO_BOX (combo_box), 0);
 
   /* Done */
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main ();
+  ctk_main ();
 
   return 0;
 }

@@ -33,19 +33,19 @@
 struct _GtkMountOperationLookupContext;
 typedef struct _GtkMountOperationLookupContext GtkMountOperationLookupContext;
 
-GtkMountOperationLookupContext *_gtk_mount_operation_lookup_context_get  (GdkDisplay *display);
+GtkMountOperationLookupContext *_ctk_mount_operation_lookup_context_get  (GdkDisplay *display);
 
-gboolean _gtk_mount_operation_lookup_info         (GtkMountOperationLookupContext *context,
+gboolean _ctk_mount_operation_lookup_info         (GtkMountOperationLookupContext *context,
                                                    GPid                            pid,
                                                    gint                            size_pixels,
                                                    gchar                         **out_name,
                                                    gchar                         **out_command_line,
                                                    GdkPixbuf                     **out_pixbuf);
 
-void     _gtk_mount_operation_lookup_context_free (GtkMountOperationLookupContext *context);
+void     _ctk_mount_operation_lookup_context_free (GtkMountOperationLookupContext *context);
 
 /* throw G_IO_ERROR_FAILED_HANDLED if a helper already reported the error to the user */
-gboolean _gtk_mount_operation_kill_process (GPid      pid,
+gboolean _ctk_mount_operation_kill_process (GPid      pid,
                                             GError  **error);
 
 #endif /* __GTK_MOUNT_OPERATION_PRIVATE_H__ */

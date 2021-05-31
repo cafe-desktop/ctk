@@ -1,8 +1,8 @@
 <protocol name="gtk">
 
-  <interface name="gtk_shell1" version="3">
+  <interface name="ctk_shell1" version="3">
     <description summary="gtk specific extensions">
-      gtk_shell is a protocol extension providing additional features for
+      ctk_shell is a protocol extension providing additional features for
       clients implementing it.
     </description>
 
@@ -16,8 +16,8 @@
       <arg name="capabilities" type="uint"/>
     </event>
 
-    <request name="get_gtk_surface">
-      <arg name="gtk_surface" type="new_id" interface="gtk_surface1"/>
+    <request name="get_ctk_surface">
+      <arg name="ctk_surface" type="new_id" interface="ctk_surface1"/>
       <arg name="surface" type="object" interface="wl_surface"/>
     </request>
 
@@ -26,7 +26,7 @@
     </request>
 
     <request name="system_bell">
-      <arg name="surface" type="object" interface="gtk_surface1" allow-null="true"/>
+      <arg name="surface" type="object" interface="ctk_surface1" allow-null="true"/>
     </request>
 
     <!-- Version 3 additions -->
@@ -35,7 +35,7 @@
     </request>
   </interface>
 
-  <interface name="gtk_surface1" version="3">
+  <interface name="ctk_surface1" version="3">
     <request name="set_dbus_properties">
       <arg name="application_id" type="string" allow-null="true"/>
       <arg name="app_menu_path" type="string" allow-null="true"/>

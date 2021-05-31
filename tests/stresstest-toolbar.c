@@ -33,19 +33,19 @@ add_random (GtkToolbar *toolbar, gint n)
   gint position;
   gchar *label = g_strdup_printf ("Button %d", n);
 
-  GtkToolItem *toolitem = gtk_tool_button_new (NULL, label);
-  gtk_tool_item_set_tooltip_text (toolitem, "Bar");
+  GtkToolItem *toolitem = ctk_tool_button_new (NULL, label);
+  ctk_tool_item_set_tooltip_text (toolitem, "Bar");
 
   g_free (label);
-  gtk_widget_show_all (GTK_WIDGET (toolitem));
+  ctk_widget_show_all (GTK_WIDGET (toolitem));
 
-  n_items = gtk_toolbar_get_n_items (toolbar);
+  n_items = ctk_toolbar_get_n_items (toolbar);
   if (n_items == 0)
     position = 0;
   else
     position = g_random_int_range (0, n_items);
 
-  gtk_toolbar_insert (toolbar, toolitem, position);
+  ctk_toolbar_insert (toolbar, toolitem, position);
 }
 
 static void
@@ -55,16 +55,16 @@ remove_random (GtkToolbar *toolbar)
   gint n_items;
   gint position;
 
-  n_items = gtk_toolbar_get_n_items (toolbar);
+  n_items = ctk_toolbar_get_n_items (toolbar);
 
   if (n_items == 0)
     return;
 
   position = g_random_int_range (0, n_items);
 
-  tool_item = gtk_toolbar_get_nth_item (toolbar, position);
+  tool_item = ctk_toolbar_get_nth_item (toolbar, position);
 
-  gtk_container_remove (GTK_CONTAINER (toolbar),
+  ctk_container_remove (GTK_CONTAINER (toolbar),
                         GTK_WIDGET (tool_item));
 }
 
@@ -83,19 +83,19 @@ stress_test_old_api (gpointer data)
 
   if (info->counter++ == 200)
     {
-      gtk_main_quit ();
+      ctk_main_quit ();
       return FALSE;
     }
 
   if (!info->toolbar)
     {
-      info->toolbar = GTK_TOOLBAR (gtk_toolbar_new ());
-      gtk_container_add (GTK_CONTAINER (info->window),
+      info->toolbar = GTK_TOOLBAR (ctk_toolbar_new ());
+      ctk_container_add (GTK_CONTAINER (info->window),
 			 GTK_WIDGET (info->toolbar));
-      gtk_widget_show (GTK_WIDGET (info->toolbar));
+      ctk_widget_show (GTK_WIDGET (info->toolbar));
     }
 
-  n_items = gtk_toolbar_get_n_items (info->toolbar);
+  n_items = ctk_toolbar_get_n_items (info->toolbar);
   if (n_items == 0)
     {
       add_random (info->toolbar, info->counter);
@@ -135,21 +135,21 @@ main (gint argc, gchar **argv)
 {
   Info info;
   
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
   info.toolbar = NULL;
   info.counter = 0;
-  info.window = GTK_WINDOW (gtk_window_new (GTK_WINDOW_TOPLEVEL));
+  info.window = GTK_WINDOW (ctk_window_new (GTK_WINDOW_TOPLEVEL));
 
-  gtk_widget_show (GTK_WIDGET (info.window));
+  ctk_widget_show (GTK_WIDGET (info.window));
   
   gdk_threads_add_idle (stress_test_old_api, &info);
 
-  gtk_widget_show_all (GTK_WIDGET (info.window));
+  ctk_widget_show_all (GTK_WIDGET (info.window));
   
-  gtk_main ();
+  ctk_main ();
 
-  gtk_widget_destroy (GTK_WIDGET (info.window));
+  ctk_widget_destroy (GTK_WIDGET (info.window));
 
   info.toolbar = NULL;
   info.window = NULL;

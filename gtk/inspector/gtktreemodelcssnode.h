@@ -26,7 +26,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_TREE_MODEL_CSS_NODE			(gtk_tree_model_css_node_get_type ())
+#define GTK_TYPE_TREE_MODEL_CSS_NODE			(ctk_tree_model_css_node_get_type ())
 #define GTK_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNode))
 #define GTK_TREE_MODEL_CSS_NODE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TREE_MODEL_CSS_NODE, GtkTreeModelCssNodeClass))
 #define GTK_IS_TREE_MODEL_CSS_NODE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_MODEL_CSS_NODE))
@@ -55,21 +55,21 @@ struct _GtkTreeModelCssNodeClass
 };
 
 
-GType         gtk_tree_model_css_node_get_type          (void) G_GNUC_CONST;
+GType         ctk_tree_model_css_node_get_type          (void) G_GNUC_CONST;
 
-GtkTreeModel *gtk_tree_model_css_node_new               (GtkTreeModelCssNodeGetFunc get_func,
+GtkTreeModel *ctk_tree_model_css_node_new               (GtkTreeModelCssNodeGetFunc get_func,
                                                          gint            n_columns,
 					                 ...);
-GtkTreeModel *gtk_tree_model_css_node_newv              (GtkTreeModelCssNodeGetFunc get_func,
+GtkTreeModel *ctk_tree_model_css_node_newv              (GtkTreeModelCssNodeGetFunc get_func,
                                                          gint            n_columns,
 					                 GType          *types);
 
-void          gtk_tree_model_css_node_set_root_node     (GtkTreeModelCssNode    *model,
+void          ctk_tree_model_css_node_set_root_node     (GtkTreeModelCssNode    *model,
                                                          GtkCssNode             *node);
-GtkCssNode   *gtk_tree_model_css_node_get_root_node     (GtkTreeModelCssNode    *model);
-GtkCssNode   *gtk_tree_model_css_node_get_node_from_iter(GtkTreeModelCssNode    *model,
+GtkCssNode   *ctk_tree_model_css_node_get_root_node     (GtkTreeModelCssNode    *model);
+GtkCssNode   *ctk_tree_model_css_node_get_node_from_iter(GtkTreeModelCssNode    *model,
                                                          GtkTreeIter            *iter);
-void          gtk_tree_model_css_node_get_iter_from_node(GtkTreeModelCssNode    *model,
+void          ctk_tree_model_css_node_get_iter_from_node(GtkTreeModelCssNode    *model,
                                                          GtkTreeIter            *iter,
                                                          GtkCssNode             *node);
 

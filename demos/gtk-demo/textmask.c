@@ -18,7 +18,7 @@ draw_text (GtkWidget *da,
 
   cairo_save (cr);
 
-  layout = gtk_widget_create_pango_layout (da, "Pango power!\nPango power!\nPango power!");
+  layout = ctk_widget_create_pango_layout (da, "Pango power!\nPango power!\nPango power!");
   desc = pango_font_description_from_string ("sans bold 34");
   pango_layout_set_font_description (layout, desc);
   pango_font_description_free (desc);
@@ -28,8 +28,8 @@ draw_text (GtkWidget *da,
   g_object_unref (layout);
 
   pattern = cairo_pattern_create_linear (0.0, 0.0,
-                                         gtk_widget_get_allocated_width (da),
-                                         gtk_widget_get_allocated_height (da));
+                                         ctk_widget_get_allocated_width (da),
+                                         ctk_widget_get_allocated_height (da));
   cairo_pattern_add_color_stop_rgb (pattern, 0.0, 1.0, 0.0, 0.0);
   cairo_pattern_add_color_stop_rgb (pattern, 0.2, 1.0, 0.0, 0.0);
   cairo_pattern_add_color_stop_rgb (pattern, 0.3, 1.0, 1.0, 0.0);
@@ -61,25 +61,25 @@ do_textmask (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
-      gtk_widget_set_size_request (window, 400, 200);
-      gtk_window_set_title (GTK_WINDOW (window), "Text Mask");
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_window_set_resizable (GTK_WINDOW (window), TRUE);
+      ctk_widget_set_size_request (window, 400, 200);
+      ctk_window_set_title (GTK_WINDOW (window), "Text Mask");
 
       g_signal_connect (window, "destroy",
-                        G_CALLBACK (gtk_widget_destroyed), &window);
+                        G_CALLBACK (ctk_widget_destroyed), &window);
 
-      da = gtk_drawing_area_new ();
+      da = ctk_drawing_area_new ();
 
-      gtk_container_add (GTK_CONTAINER (window), da);
+      ctk_container_add (GTK_CONTAINER (window), da);
       g_signal_connect (da, "draw",
                         G_CALLBACK (draw_text), NULL);
     }
 
-  if (!gtk_widget_get_visible (window))
-    gtk_widget_show_all (window);
+  if (!ctk_widget_get_visible (window))
+    ctk_widget_show_all (window);
   else
-    gtk_widget_destroy (window);
+    ctk_widget_destroy (window);
 
   return window;
 }

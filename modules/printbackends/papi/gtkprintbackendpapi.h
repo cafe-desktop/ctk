@@ -26,14 +26,14 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_BACKEND_PAPI            (gtk_print_backend_papi_get_type ())
+#define GTK_TYPE_PRINT_BACKEND_PAPI            (ctk_print_backend_papi_get_type ())
 #define GTK_PRINT_BACKEND_PAPI(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_BACKEND_PAPI, GtkPrintBackendPapi))
 #define GTK_IS_PRINT_BACKEND_PAPI(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_BACKEND_PAPI))
 
 typedef struct _GtkPrintBackendPapi      GtkPrintBackendPapi;
 
-GtkPrintBackend *gtk_print_backend_papi_new      (void);
-GType          gtk_print_backend_papi_get_type (void) G_GNUC_CONST;
+GtkPrintBackend *ctk_print_backend_papi_new      (void);
+GType          ctk_print_backend_papi_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 

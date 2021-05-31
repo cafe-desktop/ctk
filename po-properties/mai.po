@@ -252,9 +252,9 @@ msgstr "लोगो"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
-"बाक्स क' लेल लोगो. जँ ई सेट नहि होइछ ई gtk_window_get_default_icon_list() मे मूलभूत "
+"बाक्स क' लेल लोगो. जँ ई सेट नहि होइछ ई ctk_window_get_default_icon_list() मे मूलभूत "
 "अछि"
 
 #: gtk/gtkaboutdialog.c:502
@@ -2307,10 +2307,10 @@ msgstr "प्रगति नब्ज चरण"
 #: gtk/gtkentry.c:888
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:904
 msgid "Primary pixbuf"
@@ -4331,10 +4331,10 @@ msgstr "मान"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"gtk_radio_action_get_current_value() क' द्वारा देल मान जखन ई क्रिया ई समूह क' "
+"ctk_radio_action_get_current_value() क' द्वारा देल मान जखन ई क्रिया ई समूह क' "
 "वर्तमान स्ट्रिंग अछि."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -6723,8 +6723,8 @@ msgid "No show all"
 msgstr "कोनो प्रदर्शन नहि"
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "की gtk_widget_show_all() केँ ई विजेटकेँ प्रभावित नहि कएनाइ चाही"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "की ctk_widget_show_all() केँ ई विजेटकेँ प्रभावित नहि कएनाइ चाही"
 
 #: gtk/gtkwidget.c:864
 msgid "Whether this widget has a tooltip"
@@ -7290,9 +7290,9 @@ msgstr "आगत विधि प्रस्थति बार कहिन�
 #~ "जखन सही अछि भिन्न विवरण क' सँग बेलन क' हिस्सा स्लाइडर क' दुनू तरफ घींचल जाइछ"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
-#~ msgstr "gtk_recent_manager_get_items() क' द्वारा घुराएल मद क' अधिकतम सँख्या"
+#~ msgstr "ctk_recent_manager_get_items() क' द्वारा घुराएल मद क' अधिकतम सँख्या"
 
 #~ msgid "Blinking"
 #~ msgstr "टिमटिमाहट"

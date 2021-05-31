@@ -46,45 +46,45 @@ typedef struct
   gchar *label;
 } GtkBookmark;
 
-GtkBookmarksManager *_gtk_bookmarks_manager_new (GtkBookmarksChangedFunc changed_func,
+GtkBookmarksManager *_ctk_bookmarks_manager_new (GtkBookmarksChangedFunc changed_func,
 						 gpointer                changed_func_data);
 
 
-void _gtk_bookmarks_manager_free (GtkBookmarksManager *manager);
+void _ctk_bookmarks_manager_free (GtkBookmarksManager *manager);
 
-GSList *_gtk_bookmarks_manager_list_bookmarks (GtkBookmarksManager *manager);
+GSList *_ctk_bookmarks_manager_list_bookmarks (GtkBookmarksManager *manager);
 
-gboolean _gtk_bookmarks_manager_insert_bookmark (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_insert_bookmark (GtkBookmarksManager *manager,
 						 GFile               *file,
 						 gint                 position,
 						 GError             **error);
 
-gboolean _gtk_bookmarks_manager_remove_bookmark (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_remove_bookmark (GtkBookmarksManager *manager,
 						 GFile               *file,
 						 GError             **error);
 
-gboolean _gtk_bookmarks_manager_reorder_bookmark (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_reorder_bookmark (GtkBookmarksManager *manager,
 						  GFile               *file,
 						  gint                 new_position,
 						  GError             **error);
 
-gboolean _gtk_bookmarks_manager_has_bookmark (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_has_bookmark (GtkBookmarksManager *manager,
                                               GFile               *file);
 
-gchar * _gtk_bookmarks_manager_get_bookmark_label (GtkBookmarksManager *manager,
+gchar * _ctk_bookmarks_manager_get_bookmark_label (GtkBookmarksManager *manager,
 						   GFile               *file);
 
-gboolean _gtk_bookmarks_manager_set_bookmark_label (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_set_bookmark_label (GtkBookmarksManager *manager,
 						    GFile               *file,
 						    const gchar         *label,
 						    GError             **error);
 
-gboolean _gtk_bookmarks_manager_get_xdg_type (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_get_xdg_type (GtkBookmarksManager *manager,
                                               GFile               *file,
                                               GUserDirectory      *directory);
-gboolean _gtk_bookmarks_manager_get_is_builtin (GtkBookmarksManager *manager,
+gboolean _ctk_bookmarks_manager_get_is_builtin (GtkBookmarksManager *manager,
                                                 GFile               *file);
 
-gboolean _gtk_bookmarks_manager_get_is_xdg_dir_builtin (GUserDirectory xdg_type);
+gboolean _ctk_bookmarks_manager_get_is_xdg_dir_builtin (GUserDirectory xdg_type);
 
 #endif /* __GTK_BOOKMARKS_MANAGER_H__ */

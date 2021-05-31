@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TREE_MENU		  (_gtk_tree_menu_get_type ())
+#define GTK_TYPE_TREE_MENU		  (_ctk_tree_menu_get_type ())
 #define GTK_TREE_MENU(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_MENU, GtkTreeMenu))
 #define GTK_TREE_MENU_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TREE_MENU, GtkTreeMenuClass))
 #define GTK_IS_TREE_MENU(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_MENU))
@@ -58,42 +58,42 @@ struct _GtkTreeMenuClass
 
   /*< private >*/
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
-  void (*_gtk_reserved5) (void);
-  void (*_gtk_reserved6) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
+  void (*_ctk_reserved5) (void);
+  void (*_ctk_reserved6) (void);
 };
 
-GType                 _gtk_tree_menu_get_type                       (void) G_GNUC_CONST;
+GType                 _ctk_tree_menu_get_type                       (void) G_GNUC_CONST;
 
-GtkWidget            *_gtk_tree_menu_new                            (void);
-GtkWidget            *_gtk_tree_menu_new_with_area                  (GtkCellArea         *area);
-GtkWidget            *_gtk_tree_menu_new_full                       (GtkCellArea         *area,
+GtkWidget            *_ctk_tree_menu_new                            (void);
+GtkWidget            *_ctk_tree_menu_new_with_area                  (GtkCellArea         *area);
+GtkWidget            *_ctk_tree_menu_new_full                       (GtkCellArea         *area,
                                                                      GtkTreeModel        *model,
                                                                      GtkTreePath         *root);
-void                  _gtk_tree_menu_set_model                      (GtkTreeMenu         *menu,
+void                  _ctk_tree_menu_set_model                      (GtkTreeMenu         *menu,
                                                                      GtkTreeModel        *model);
-GtkTreeModel         *_gtk_tree_menu_get_model                      (GtkTreeMenu         *menu);
-void                  _gtk_tree_menu_set_root                       (GtkTreeMenu         *menu,
+GtkTreeModel         *_ctk_tree_menu_get_model                      (GtkTreeMenu         *menu);
+void                  _ctk_tree_menu_set_root                       (GtkTreeMenu         *menu,
                                                                      GtkTreePath         *path);
-GtkTreePath          *_gtk_tree_menu_get_root                       (GtkTreeMenu         *menu);
-gboolean              _gtk_tree_menu_get_tearoff                    (GtkTreeMenu         *menu);
-void                  _gtk_tree_menu_set_tearoff                    (GtkTreeMenu         *menu,
+GtkTreePath          *_ctk_tree_menu_get_root                       (GtkTreeMenu         *menu);
+gboolean              _ctk_tree_menu_get_tearoff                    (GtkTreeMenu         *menu);
+void                  _ctk_tree_menu_set_tearoff                    (GtkTreeMenu         *menu,
                                                                      gboolean             tearoff);
-gint                  _gtk_tree_menu_get_wrap_width                 (GtkTreeMenu         *menu);
-void                  _gtk_tree_menu_set_wrap_width                 (GtkTreeMenu         *menu,
+gint                  _ctk_tree_menu_get_wrap_width                 (GtkTreeMenu         *menu);
+void                  _ctk_tree_menu_set_wrap_width                 (GtkTreeMenu         *menu,
                                                                      gint                 width);
-gint                  _gtk_tree_menu_get_row_span_column            (GtkTreeMenu         *menu);
-void                  _gtk_tree_menu_set_row_span_column            (GtkTreeMenu         *menu,
+gint                  _ctk_tree_menu_get_row_span_column            (GtkTreeMenu         *menu);
+void                  _ctk_tree_menu_set_row_span_column            (GtkTreeMenu         *menu,
                                                                      gint                 row_span);
-gint                  _gtk_tree_menu_get_column_span_column         (GtkTreeMenu         *menu);
-void                  _gtk_tree_menu_set_column_span_column         (GtkTreeMenu         *menu,
+gint                  _ctk_tree_menu_get_column_span_column         (GtkTreeMenu         *menu);
+void                  _ctk_tree_menu_set_column_span_column         (GtkTreeMenu         *menu,
                                                                      gint                 column_span);
 
-GtkTreeViewRowSeparatorFunc _gtk_tree_menu_get_row_separator_func   (GtkTreeMenu          *menu);
-void                        _gtk_tree_menu_set_row_separator_func   (GtkTreeMenu          *menu,
+GtkTreeViewRowSeparatorFunc _ctk_tree_menu_get_row_separator_func   (GtkTreeMenu          *menu);
+void                        _ctk_tree_menu_set_row_separator_func   (GtkTreeMenu          *menu,
                                                                      GtkTreeViewRowSeparatorFunc func,
                                                                      gpointer              data,
                                                                      GDestroyNotify        destroy);

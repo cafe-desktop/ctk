@@ -26,7 +26,7 @@
 
 #include <gtk/gtkwindow.h>
 
-#define GTK_TYPE_INSPECTOR_WINDOW            (gtk_inspector_window_get_type())
+#define GTK_TYPE_INSPECTOR_WINDOW            (ctk_inspector_window_get_type())
 #define GTK_INSPECTOR_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindow))
 #define GTK_INSPECTOR_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindowClass))
 #define GTK_INSPECTOR_IS_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_WINDOW))
@@ -90,20 +90,20 @@ typedef struct
 
 G_BEGIN_DECLS
 
-GType      gtk_inspector_window_get_type    (void);
-GtkWidget *gtk_inspector_window_new         (void);
+GType      ctk_inspector_window_get_type    (void);
+GtkWidget *ctk_inspector_window_new         (void);
 
-void       gtk_inspector_flash_widget       (GtkInspectorWindow *iw,
+void       ctk_inspector_flash_widget       (GtkInspectorWindow *iw,
                                              GtkWidget          *widget);
-void       gtk_inspector_start_highlight    (GtkWidget          *widget);
-void       gtk_inspector_stop_highlight     (GtkWidget          *widget);
+void       ctk_inspector_start_highlight    (GtkWidget          *widget);
+void       ctk_inspector_stop_highlight     (GtkWidget          *widget);
 
-void       gtk_inspector_on_inspect         (GtkWidget          *widget,
+void       ctk_inspector_on_inspect         (GtkWidget          *widget,
                                              GtkInspectorWindow *iw);
 
-void       gtk_inspector_window_select_widget_under_pointer (GtkInspectorWindow *iw);
+void       ctk_inspector_window_select_widget_under_pointer (GtkInspectorWindow *iw);
 
-void       gtk_inspector_window_rescan     (GtkWidget          *iw);
+void       ctk_inspector_window_rescan     (GtkWidget          *iw);
 
 G_END_DECLS
 

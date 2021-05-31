@@ -8,7 +8,7 @@ da_draw (GtkWidget *widget,
   GtkOffscreenWindow *offscreen = (GtkOffscreenWindow *)user_data;
 
   cairo_set_source_surface (cr,
-                            gtk_offscreen_window_get_surface (offscreen),
+                            ctk_offscreen_window_get_surface (offscreen),
                             50, 50);
   cairo_paint (cr);
 
@@ -20,7 +20,7 @@ offscreen_damage (GtkWidget      *widget,
                   GdkEventExpose *event,
                   GtkWidget      *da)
 {
-  gtk_widget_queue_draw (da);
+  ctk_widget_queue_draw (da);
 
   return TRUE;
 }
@@ -28,7 +28,7 @@ offscreen_damage (GtkWidget      *widget,
 static gboolean
 da_button_press (GtkWidget *area, GdkEventButton *event, GtkWidget *button)
 {
-  gtk_widget_set_size_request (button, 150, 60);
+  ctk_widget_set_size_request (button, 150, 60);
   return TRUE;
 }
 
@@ -40,16 +40,16 @@ main (int argc, char **argv)
   GtkWidget *offscreen;
   GtkWidget *da;
 
-  gtk_init (&argc, &argv);
+  ctk_init (&argc, &argv);
 
-  offscreen = gtk_offscreen_window_new ();
+  offscreen = ctk_offscreen_window_new ();
 
-  button = gtk_button_new_with_label ("Test");
-  gtk_widget_set_size_request (button, 50, 50);
-  gtk_container_add (GTK_CONTAINER (offscreen), button);
-  gtk_widget_show (button);
+  button = ctk_button_new_with_label ("Test");
+  ctk_widget_set_size_request (button, 50, 50);
+  ctk_container_add (GTK_CONTAINER (offscreen), button);
+  ctk_widget_show (button);
 
-  gtk_widget_show (offscreen);
+  ctk_widget_show (offscreen);
 
   /* Queue exposures and ensure they are handled so
    * that the result is uptodate for the first
@@ -57,13 +57,13 @@ main (int argc, char **argv)
    * changes, also track damage on the offscreen
    * as done above.
    */
-  gtk_widget_queue_draw (offscreen);
+  ctk_widget_queue_draw (offscreen);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "delete-event",
-                    G_CALLBACK (gtk_main_quit), window);
-  da = gtk_drawing_area_new ();
-  gtk_container_add (GTK_CONTAINER (window), da);
+                    G_CALLBACK (ctk_main_quit), window);
+  da = ctk_drawing_area_new ();
+  ctk_container_add (GTK_CONTAINER (window), da);
 
   g_signal_connect (da,
                     "draw",
@@ -75,13 +75,13 @@ main (int argc, char **argv)
                     G_CALLBACK (offscreen_damage),
                     da);
 
-  gtk_widget_add_events (da, GDK_BUTTON_PRESS_MASK);
+  ctk_widget_add_events (da, GDK_BUTTON_PRESS_MASK);
   g_signal_connect (da, "button_press_event", G_CALLBACK (da_button_press),
                     button);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
-  gtk_main();
+  ctk_main();
 
   return 0;
 }

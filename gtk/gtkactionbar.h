@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION_BAR            (gtk_action_bar_get_type ())
+#define GTK_TYPE_ACTION_BAR            (ctk_action_bar_get_type ())
 #define GTK_ACTION_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ACTION_BAR, GtkActionBar))
 #define GTK_ACTION_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ACTION_BAR, GtkActionBarClass))
 #define GTK_IS_ACTION_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ACTION_BAR))
@@ -51,27 +51,27 @@ struct _GtkActionBarClass
   GtkBinClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_3_12
-GType        gtk_action_bar_get_type          (void) G_GNUC_CONST;
+GType        ctk_action_bar_get_type          (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_12
-GtkWidget   *gtk_action_bar_new               (void);
+GtkWidget   *ctk_action_bar_new               (void);
 GDK_AVAILABLE_IN_3_12
-GtkWidget   *gtk_action_bar_get_center_widget (GtkActionBar *action_bar);
+GtkWidget   *ctk_action_bar_get_center_widget (GtkActionBar *action_bar);
 GDK_AVAILABLE_IN_3_12
-void         gtk_action_bar_set_center_widget (GtkActionBar *action_bar,
+void         ctk_action_bar_set_center_widget (GtkActionBar *action_bar,
                                                GtkWidget    *center_widget);
 
 GDK_AVAILABLE_IN_3_12
-void         gtk_action_bar_pack_start        (GtkActionBar *action_bar,
+void         ctk_action_bar_pack_start        (GtkActionBar *action_bar,
                                                GtkWidget    *child);
 GDK_AVAILABLE_IN_3_12
-void         gtk_action_bar_pack_end          (GtkActionBar *action_bar,
+void         ctk_action_bar_pack_end          (GtkActionBar *action_bar,
                                                GtkWidget    *child);
 G_END_DECLS
 

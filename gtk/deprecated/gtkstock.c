@@ -102,9 +102,9 @@ real_add (const GtkStockItem *items,
 
       if (replace_primary && (guint)item->modifier == PRIMARY_MODIFIER)
         {
-          item = gtk_stock_item_copy (item);
+          item = ctk_stock_item_copy (item);
           ((GtkStockItem *)item)->modifier = (NON_STATIC_MASK |
-                                              _gtk_get_primary_accel_mod ());
+                                              _ctk_get_primary_accel_mod ());
         }
       else
         {
@@ -116,7 +116,7 @@ real_add (const GtkStockItem *items,
 
           if (copy)
             {
-              item = gtk_stock_item_copy (item);
+              item = ctk_stock_item_copy (item);
               ((GtkStockItem *)item)->modifier |= NON_STATIC_MASK;
             }
         }
@@ -126,7 +126,7 @@ real_add (const GtkStockItem *items,
         {
           g_hash_table_remove (stock_hash, old_key);
 	  if (((GtkStockItem *)old_value)->modifier & NON_STATIC_MASK)
-	    gtk_stock_item_free (old_value);
+	    ctk_stock_item_free (old_value);
         }
       
       g_hash_table_insert (stock_hash,
@@ -137,7 +137,7 @@ real_add (const GtkStockItem *items,
 }
 
 /**
- * gtk_stock_add:
+ * ctk_stock_add:
  * @items: (array length=n_items): a #GtkStockItem or array of items
  * @n_items: number of #GtkStockItem in @items
  *
@@ -145,13 +145,13 @@ real_add (const GtkStockItem *items,
  * exists with the same stock ID as one of the @items, the old item
  * gets replaced. The stock items are copied, so GTK+ does not hold
  * any pointer into @items and @items can be freed. Use
- * gtk_stock_add_static() if @items is persistent and GTK+ need not
+ * ctk_stock_add_static() if @items is persistent and GTK+ need not
  * copy the array.
  *
  * Deprecated: 3.10
  **/
 void
-gtk_stock_add (const GtkStockItem *items,
+ctk_stock_add (const GtkStockItem *items,
                guint               n_items)
 {
   g_return_if_fail (items != NULL);
@@ -160,17 +160,17 @@ gtk_stock_add (const GtkStockItem *items,
 }
 
 /**
- * gtk_stock_add_static:
+ * ctk_stock_add_static:
  * @items: (array length=n_items): a #GtkStockItem or array of #GtkStockItem
  * @n_items: number of items
  *
- * Same as gtk_stock_add(), but doesn’t copy @items, so
+ * Same as ctk_stock_add(), but doesn’t copy @items, so
  * @items must persist until application exit.
  *
  * Deprecated: 3.10
  **/
 void
-gtk_stock_add_static (const GtkStockItem *items,
+ctk_stock_add_static (const GtkStockItem *items,
                       guint               n_items)
 {
   g_return_if_fail (items != NULL);
@@ -179,7 +179,7 @@ gtk_stock_add_static (const GtkStockItem *items,
 }
 
 /**
- * gtk_stock_lookup:
+ * ctk_stock_lookup:
  * @stock_id: a stock item name
  * @item: (out): stock item to initialize with values
  *
@@ -191,7 +191,7 @@ gtk_stock_add_static (const GtkStockItem *items,
  * Deprecated: 3.10
  **/
 gboolean
-gtk_stock_lookup (const gchar  *stock_id,
+ctk_stock_lookup (const gchar  *stock_id,
                   GtkStockItem *item)
 {
   const GtkStockItem *found;
@@ -228,10 +228,10 @@ gtk_stock_lookup (const gchar  *stock_id,
 }
 
 /**
- * gtk_stock_list_ids:
+ * ctk_stock_list_ids:
  * 
  * Retrieves a list of all known stock IDs added to a #GtkIconFactory
- * or registered with gtk_stock_add(). The list must be freed with g_slist_free(),
+ * or registered with ctk_stock_add(). The list must be freed with g_slist_free(),
  * and each string in the list must be freed with g_free().
  *
  * Returns: (element-type utf8) (transfer full): a list of known stock IDs
@@ -239,7 +239,7 @@ gtk_stock_lookup (const gchar  *stock_id,
  * Deprecated: 3.10
  **/
 GSList*
-gtk_stock_list_ids (void)
+ctk_stock_list_ids (void)
 {
   GList *ids;
   GList *icon_ids;
@@ -249,7 +249,7 @@ gtk_stock_list_ids (void)
   init_stock_hash ();
 
   ids = g_hash_table_get_keys (stock_hash);
-  icon_ids = _gtk_icon_factory_list_ids ();
+  icon_ids = _ctk_icon_factory_list_ids ();
   ids = g_list_concat (ids, icon_ids);
 
   ids = g_list_sort (ids, (GCompareFunc)strcmp);
@@ -281,7 +281,7 @@ gtk_stock_list_ids (void)
 }
 
 /**
- * gtk_stock_item_copy: (skip)
+ * ctk_stock_item_copy: (skip)
  * @item: a #GtkStockItem
  * 
  * Copies a stock item, mostly useful for language bindings and not in applications.
@@ -291,7 +291,7 @@ gtk_stock_list_ids (void)
  * Deprecated: 3.10
  **/
 GtkStockItem *
-gtk_stock_item_copy (const GtkStockItem *item)
+ctk_stock_item_copy (const GtkStockItem *item)
 {
   GtkStockItem *copy;
 
@@ -309,17 +309,17 @@ gtk_stock_item_copy (const GtkStockItem *item)
 }
 
 /**
- * gtk_stock_item_free:
+ * ctk_stock_item_free:
  * @item: a #GtkStockItem
  *
  * Frees a stock item allocated on the heap, such as one returned by
- * gtk_stock_item_copy(). Also frees the fields inside the stock item,
+ * ctk_stock_item_copy(). Also frees the fields inside the stock item,
  * if they are not %NULL.
  *
  * Deprecated: 3.10
  **/
 void
-gtk_stock_item_free (GtkStockItem *item)
+ctk_stock_item_free (GtkStockItem *item)
 {
   g_return_if_fail (item != NULL);
 
@@ -466,7 +466,7 @@ static const GtkStockItem builtin_items [] =
 };
 
 /**
- * gtk_stock_set_translate_func: 
+ * ctk_stock_set_translate_func: 
  * @domain: the translation domain for which @func shall be used
  * @func: a #GtkTranslateFunc 
  * @data: data to pass to @func
@@ -503,9 +503,9 @@ static const GtkStockItem builtin_items [] =
  *
  * ...
  *
- * gtk_stock_add (items, G_N_ELEMENTS (items));
- * gtk_stock_set_translate_func ("odd-item-domain", my_translate_func, "odd items"); 
- * gtk_stock_set_translate_func ("even-item-domain", my_translate_func, "even items"); 
+ * ctk_stock_add (items, G_N_ELEMENTS (items));
+ * ctk_stock_set_translate_func ("odd-item-domain", my_translate_func, "odd items"); 
+ * ctk_stock_set_translate_func ("even-item-domain", my_translate_func, "even items"); 
  * ]|
  * 
  * Since: 2.8
@@ -513,7 +513,7 @@ static const GtkStockItem builtin_items [] =
  * Deprecated: 3.10
  */
 void
-gtk_stock_set_translate_func (const gchar      *domain,
+ctk_stock_set_translate_func (const gchar      *domain,
 			      GtkTranslateFunc  func,
 			      gpointer          data,
 			      GDestroyNotify    notify)
@@ -565,15 +565,15 @@ init_stock_hash (void)
       translate_hash = g_hash_table_new_full (g_str_hash, g_str_equal,
 	                                      g_free, NULL);
 
-      gtk_stock_set_translate_func (GETTEXT_PACKAGE, 
+      ctk_stock_set_translate_func (GETTEXT_PACKAGE, 
 				    sgettext_swapped,
 				    "Stock label",
 				    NULL);
-      gtk_stock_set_translate_func (GETTEXT_PACKAGE "-navigation", 
+      ctk_stock_set_translate_func (GETTEXT_PACKAGE "-navigation", 
 				    sgettext_swapped,
 				    "Stock label, navigation",
 				    NULL);
-      gtk_stock_set_translate_func (GETTEXT_PACKAGE "-media", 
+      ctk_stock_set_translate_func (GETTEXT_PACKAGE "-media", 
 				    sgettext_swapped,
 				    "Stock label, media",
 				    NULL);

@@ -34,10 +34,10 @@
  */
 
 
-static void gtk_tree_sortable_base_init (gpointer g_class);
+static void ctk_tree_sortable_base_init (gpointer g_class);
 
 GType
-gtk_tree_sortable_get_type (void)
+ctk_tree_sortable_get_type (void)
 {
   static GType tree_sortable_type = 0;
 
@@ -46,7 +46,7 @@ gtk_tree_sortable_get_type (void)
       const GTypeInfo tree_sortable_info =
       {
 	sizeof (GtkTreeSortableIface), /* class_size */
-	gtk_tree_sortable_base_init,   /* base_init */
+	ctk_tree_sortable_base_init,   /* base_init */
 	NULL,		/* base_finalize */
 	NULL,
 	NULL,		/* class_finalize */
@@ -67,7 +67,7 @@ gtk_tree_sortable_get_type (void)
 }
 
 static void
-gtk_tree_sortable_base_init (gpointer g_class)
+ctk_tree_sortable_base_init (gpointer g_class)
 {
   static gboolean initialized = FALSE;
 
@@ -93,13 +93,13 @@ gtk_tree_sortable_base_init (gpointer g_class)
 }
 
 /**
- * gtk_tree_sortable_sort_column_changed:
+ * ctk_tree_sortable_sort_column_changed:
  * @sortable: A #GtkTreeSortable
  * 
  * Emits a #GtkTreeSortable::sort-column-changed signal on @sortable.
  */
 void
-gtk_tree_sortable_sort_column_changed (GtkTreeSortable *sortable)
+ctk_tree_sortable_sort_column_changed (GtkTreeSortable *sortable)
 {
   g_return_if_fail (GTK_IS_TREE_SORTABLE (sortable));
 
@@ -107,7 +107,7 @@ gtk_tree_sortable_sort_column_changed (GtkTreeSortable *sortable)
 }
 
 /**
- * gtk_tree_sortable_get_sort_column_id:
+ * ctk_tree_sortable_get_sort_column_id:
  * @sortable: A #GtkTreeSortable
  * @sort_column_id: (out): The sort column id to be filled in
  * @order: (out): The #GtkSortType to be filled in
@@ -121,7 +121,7 @@ gtk_tree_sortable_sort_column_changed (GtkTreeSortable *sortable)
  *   column ids.
  **/
 gboolean
-gtk_tree_sortable_get_sort_column_id (GtkTreeSortable  *sortable,
+ctk_tree_sortable_get_sort_column_id (GtkTreeSortable  *sortable,
 				      gint             *sort_column_id,
 				      GtkSortType      *order)
 {
@@ -138,7 +138,7 @@ gtk_tree_sortable_get_sort_column_id (GtkTreeSortable  *sortable,
 }
 
 /**
- * gtk_tree_sortable_set_sort_column_id:
+ * ctk_tree_sortable_set_sort_column_id:
  * @sortable: A #GtkTreeSortable
  * @sort_column_id: the sort column id to set
  * @order: The sort order of the column
@@ -154,7 +154,7 @@ gtk_tree_sortable_get_sort_column_id (GtkTreeSortable  *sortable,
  * - %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID: no sorting will occur
  */
 void
-gtk_tree_sortable_set_sort_column_id (GtkTreeSortable  *sortable,
+ctk_tree_sortable_set_sort_column_id (GtkTreeSortable  *sortable,
 				      gint              sort_column_id,
 				      GtkSortType       order)
 {
@@ -171,7 +171,7 @@ gtk_tree_sortable_set_sort_column_id (GtkTreeSortable  *sortable,
 }
 
 /**
- * gtk_tree_sortable_set_sort_func:
+ * ctk_tree_sortable_set_sort_func:
  * @sortable: A #GtkTreeSortable
  * @sort_column_id: the sort column id to set the function for
  * @sort_func: The comparison function
@@ -183,7 +183,7 @@ gtk_tree_sortable_set_sort_column_id (GtkTreeSortable  *sortable,
  * the model will sort using this function.
  */
 void
-gtk_tree_sortable_set_sort_func (GtkTreeSortable        *sortable,
+ctk_tree_sortable_set_sort_func (GtkTreeSortable        *sortable,
 				 gint                    sort_column_id,
 				 GtkTreeIterCompareFunc  sort_func,
 				 gpointer                user_data,
@@ -204,7 +204,7 @@ gtk_tree_sortable_set_sort_func (GtkTreeSortable        *sortable,
 }
 
 /**
- * gtk_tree_sortable_set_default_sort_func:
+ * ctk_tree_sortable_set_default_sort_func:
  * @sortable: A #GtkTreeSortable
  * @sort_func: The comparison function
  * @user_data: (allow-none): User data to pass to @sort_func, or %NULL
@@ -221,7 +221,7 @@ gtk_tree_sortable_set_sort_func (GtkTreeSortable        *sortable,
  * is %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, the model will be unsorted.
  */
 void
-gtk_tree_sortable_set_default_sort_func (GtkTreeSortable        *sortable,
+ctk_tree_sortable_set_default_sort_func (GtkTreeSortable        *sortable,
 					 GtkTreeIterCompareFunc  sort_func,
 					 gpointer                user_data,
 					 GDestroyNotify          destroy)
@@ -239,7 +239,7 @@ gtk_tree_sortable_set_default_sort_func (GtkTreeSortable        *sortable,
 }
 
 /**
- * gtk_tree_sortable_has_default_sort_func:
+ * ctk_tree_sortable_has_default_sort_func:
  * @sortable: A #GtkTreeSortable
  * 
  * Returns %TRUE if the model has a default sort function. This is used
@@ -249,7 +249,7 @@ gtk_tree_sortable_set_default_sort_func (GtkTreeSortable        *sortable,
  * Returns: %TRUE, if the model has a default sort function
  */
 gboolean
-gtk_tree_sortable_has_default_sort_func (GtkTreeSortable *sortable)
+ctk_tree_sortable_has_default_sort_func (GtkTreeSortable *sortable)
 {
   GtkTreeSortableIface *iface;
 

@@ -100,7 +100,7 @@
 typedef struct _GtkIMModule      GtkIMModule;
 typedef struct _GtkIMModuleClass GtkIMModuleClass;
 
-#define GTK_TYPE_IM_MODULE          (gtk_im_module_get_type ())
+#define GTK_TYPE_IM_MODULE          (ctk_im_module_get_type ())
 #define GTK_IM_MODULE(im_module)    (G_TYPE_CHECK_INSTANCE_CAST ((im_module), GTK_TYPE_IM_MODULE, GtkIMModule))
 #define GTK_IS_IM_MODULE(im_module) (G_TYPE_CHECK_INSTANCE_TYPE ((im_module), GTK_TYPE_IM_MODULE))
 
@@ -129,14 +129,14 @@ struct _GtkIMModuleClass
   GTypeModuleClass parent_class;
 };
 
-static GType gtk_im_module_get_type (void);
+static GType ctk_im_module_get_type (void);
 
 static gint n_loaded_contexts = 0;
 static GHashTable *contexts_hash = NULL;
 static GSList *modules_list = NULL;
 
 static gboolean
-gtk_im_module_load (GTypeModule *module)
+ctk_im_module_load (GTypeModule *module)
 {
   GtkIMModule *im_module = GTK_IM_MODULE (module);
   
@@ -174,7 +174,7 @@ gtk_im_module_load (GTypeModule *module)
 }
 
 static void
-gtk_im_module_unload (GTypeModule *module)
+ctk_im_module_unload (GTypeModule *module)
 {
   GtkIMModule *im_module = GTK_IM_MODULE (module);
   
@@ -192,35 +192,35 @@ gtk_im_module_unload (GTypeModule *module)
     }
 }
 
-G_DEFINE_TYPE (GtkIMModule, gtk_im_module, G_TYPE_TYPE_MODULE)
+G_DEFINE_TYPE (GtkIMModule, ctk_im_module, G_TYPE_TYPE_MODULE)
 
 /* This only will ever be called if an error occurs during
  * initialization
  */
 static void
-gtk_im_module_finalize (GObject *object)
+ctk_im_module_finalize (GObject *object)
 {
   GtkIMModule *module = GTK_IM_MODULE (object);
 
   g_free (module->path);
 
-  G_OBJECT_CLASS (gtk_im_module_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ctk_im_module_parent_class)->finalize (object);
 }
 
 static void
-gtk_im_module_class_init (GtkIMModuleClass *class)
+ctk_im_module_class_init (GtkIMModuleClass *class)
 {
   GTypeModuleClass *module_class = G_TYPE_MODULE_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
-  module_class->load = gtk_im_module_load;
-  module_class->unload = gtk_im_module_unload;
+  module_class->load = ctk_im_module_load;
+  module_class->unload = ctk_im_module_unload;
 
-  gobject_class->finalize = gtk_im_module_finalize;
+  gobject_class->finalize = ctk_im_module_finalize;
 }
 
 static void 
-gtk_im_module_init (GtkIMModule* object)
+ctk_im_module_init (GtkIMModule* object)
 {
 }
 
@@ -283,7 +283,7 @@ correct_libdir_prefix (gchar **path)
        * one on this machine.
        */
       gchar *tem = *path;
-      *path = g_strconcat (_gtk_get_libdir (), tem + strlen (GTK_LIBDIR), NULL);
+      *path = g_strconcat (_ctk_get_libdir (), tem + strlen (GTK_LIBDIR), NULL);
       g_free (tem);
     }
 }
@@ -295,7 +295,7 @@ correct_localedir_prefix (gchar **path)
   if (strncmp (*path, GTK_LOCALEDIR, strlen (GTK_LOCALEDIR)) == 0)
     {
       gchar *tem = *path;
-      *path = g_strconcat (_gtk_get_localedir (), tem + strlen (GTK_LOCALEDIR), NULL);
+      *path = g_strconcat (_ctk_get_localedir (), tem + strlen (GTK_LOCALEDIR), NULL);
       g_free (tem);
     }
 }
@@ -333,11 +333,11 @@ add_builtin_module (const gchar             *module_name,
 }
 
 static void
-gtk_im_module_initialize (void)
+ctk_im_module_initialize (void)
 {
   GString *line_buf = g_string_new (NULL);
   GString *tmp_buf = g_string_new (NULL);
-  gchar *filename = gtk_rc_get_im_module_file();
+  gchar *filename = ctk_rc_get_im_module_file();
   FILE *file;
   gboolean have_error = FALSE;
 
@@ -350,17 +350,17 @@ gtk_im_module_initialize (void)
   {									\
     const GtkIMContextInfo **contexts;					\
     int n_contexts;							\
-    extern void _gtk_immodule_ ## m ## _list (const GtkIMContextInfo ***contexts, \
+    extern void _ctk_immodule_ ## m ## _list (const GtkIMContextInfo ***contexts, \
 					      int                      *n_contexts); \
-    extern void _gtk_immodule_ ## m ## _init (GTypeModule *module);	\
-    extern void _gtk_immodule_ ## m ## _exit (void);			\
-    extern GtkIMContext *_gtk_immodule_ ## m ## _create (const gchar *context_id); \
+    extern void _ctk_immodule_ ## m ## _init (GTypeModule *module);	\
+    extern void _ctk_immodule_ ## m ## _exit (void);			\
+    extern GtkIMContext *_ctk_immodule_ ## m ## _create (const gchar *context_id); \
 									\
-    _gtk_immodule_ ## m ## _list (&contexts, &n_contexts);		\
+    _ctk_immodule_ ## m ## _list (&contexts, &n_contexts);		\
     module = add_builtin_module (#m, contexts, n_contexts);		\
-    module->init = _gtk_immodule_ ## m ## _init;			\
-    module->exit = _gtk_immodule_ ## m ## _exit;			\
-    module->create = _gtk_immodule_ ## m ## _create;			\
+    module->init = _ctk_immodule_ ## m ## _init;			\
+    module->exit = _ctk_immodule_ ## m ## _exit;			\
+    module->create = _ctk_immodule_ ## m ## _create;			\
     module = NULL;							\
   }
 
@@ -421,13 +421,13 @@ gtk_im_module_initialize (void)
       return;
     }
 
-  while (!have_error && gtk_read_line (file, line_buf))
+  while (!have_error && ctk_read_line (file, line_buf))
     {
       const char *p;
 
       p = line_buf->str;
 
-      if (!gtk_skip_space (&p))
+      if (!ctk_skip_space (&p))
 	{
 	  /* Blank line marking the end of a module
 	   */
@@ -447,7 +447,7 @@ gtk_im_module_initialize (void)
 	   */
 	  module = g_object_new (GTK_TYPE_IM_MODULE, NULL);
 
-	  if (!gtk_scan_string (&p, tmp_buf) || gtk_skip_space (&p))
+	  if (!ctk_scan_string (&p, tmp_buf) || ctk_skip_space (&p))
 	    {
 	      g_warning ("Error parsing context info in '%s'\n  %s", filename, line_buf->str);
 	      have_error = TRUE;
@@ -465,19 +465,19 @@ gtk_im_module_initialize (void)
 
 	  /* Read information about a context type
 	   */
-	  if (!gtk_scan_string (&p, tmp_buf))
+	  if (!ctk_scan_string (&p, tmp_buf))
 	    goto context_error;
 	  info->context_id = g_strdup (tmp_buf->str);
 
-	  if (!gtk_scan_string (&p, tmp_buf))
+	  if (!ctk_scan_string (&p, tmp_buf))
 	    goto context_error;
 	  info->context_name = g_strdup (tmp_buf->str);
 
-	  if (!gtk_scan_string (&p, tmp_buf))
+	  if (!ctk_scan_string (&p, tmp_buf))
 	    goto context_error;
 	  info->domain = g_strdup (tmp_buf->str);
 
-	  if (!gtk_scan_string (&p, tmp_buf))
+	  if (!ctk_scan_string (&p, tmp_buf))
 	    goto context_error;
 
 	  info->domain_dirname = g_strdup (tmp_buf->str);
@@ -485,11 +485,11 @@ gtk_im_module_initialize (void)
 	  correct_localedir_prefix ((char **) &info->domain_dirname);
 #endif
 
-	  if (!gtk_scan_string (&p, tmp_buf))
+	  if (!ctk_scan_string (&p, tmp_buf))
 	    goto context_error;
 	  info->default_locales = g_strdup (tmp_buf->str);
 
-	  if (gtk_skip_space (&p))
+	  if (ctk_skip_space (&p))
 	    goto context_error;
 
 	  infos = g_slist_prepend (infos, info);
@@ -523,7 +523,7 @@ compare_gtkimcontextinfo_name (const GtkIMContextInfo **a,
 }
 
 /**
- * _gtk_im_module_list:
+ * _ctk_im_module_list:
  * @contexts: location to store an array of pointers to #GtkIMContextInfo
  *            this array should be freed with g_free() when you are finished.
  *            The structures it points are statically allocated and should
@@ -533,7 +533,7 @@ compare_gtkimcontextinfo_name (const GtkIMContextInfo **a,
  * List all available types of input method context
  */
 void
-_gtk_im_module_list (const GtkIMContextInfo ***contexts,
+_ctk_im_module_list (const GtkIMContextInfo ***contexts,
 		     guint                    *n_contexts)
 {
   int n = 0;
@@ -575,7 +575,7 @@ _gtk_im_module_list (const GtkIMContextInfo ***contexts,
 #endif
 
   if (!contexts_hash)
-    gtk_im_module_initialize ();
+    ctk_im_module_initialize ();
 
 #ifdef G_OS_WIN32
   if (!beenhere)
@@ -621,7 +621,7 @@ _gtk_im_module_list (const GtkIMContextInfo ***contexts,
 }
 
 /**
- * _gtk_im_module_create:
+ * _ctk_im_module_create:
  * @context_id: the context ID for the context type to create
  * 
  * Create an IM context of a type specified by the string
@@ -631,7 +631,7 @@ _gtk_im_module_list (const GtkIMContextInfo ***contexts,
  *     if that could not be created, a newly created GtkIMContextSimple.
  */
 GtkIMContext *
-_gtk_im_module_create (const gchar *context_id)
+_ctk_im_module_create (const gchar *context_id)
 {
   GtkIMModule *im_module;
   GtkIMContext *context = NULL;
@@ -640,7 +640,7 @@ _gtk_im_module_create (const gchar *context_id)
     return NULL;
 
   if (!contexts_hash)
-    gtk_im_module_initialize ();
+    ctk_im_module_initialize ();
 
   if (strcmp (context_id, SIMPLE_ID) != 0)
     {
@@ -663,7 +663,7 @@ _gtk_im_module_create (const gchar *context_id)
     }
 
   if (!context)
-     return gtk_im_context_simple_new ();
+     return ctk_im_context_simple_new ();
   else
     return context;
 }
@@ -710,7 +710,7 @@ match_backend (GtkIMContextInfo *context)
 
       return GDK_IS_WAYLAND_DISPLAY (display) &&
              gdk_wayland_display_query_registry (display,
-                                                 "gtk_text_input_manager");
+                                                 "ctk_text_input_manager");
     }
 #endif
 
@@ -818,7 +818,7 @@ get_current_input_language (void)
 #endif
 
 /**
- * _gtk_im_module_get_default_context_id:
+ * _ctk_im_module_get_default_context_id:
  * 
  * Return the context_id of the best IM context type 
  * for the given window.
@@ -826,7 +826,7 @@ get_current_input_language (void)
  * Returns: the context ID (will never be %NULL)
  */
 const gchar *
-_gtk_im_module_get_default_context_id (void)
+_ctk_im_module_get_default_context_id (void)
 {
   GSList *tmp_list;
   const gchar *context_id = NULL;
@@ -838,7 +838,7 @@ _gtk_im_module_get_default_context_id (void)
   GtkSettings *settings;
 
   if (!contexts_hash)
-    gtk_im_module_initialize ();
+    ctk_im_module_initialize ();
 
   envvar = g_getenv ("GTK_IM_MODULE");
   if (envvar)
@@ -854,7 +854,7 @@ _gtk_im_module_get_default_context_id (void)
   /* Check if the certain immodule is set in XSETTINGS.
    */
   screen = gdk_screen_get_default ();
-  settings = gtk_settings_get_for_screen (screen);
+  settings = ctk_settings_get_for_screen (screen);
   g_object_get (G_OBJECT (settings), "gtk-im-module", &tmp, NULL);
   if (tmp)
     {
@@ -872,9 +872,9 @@ _gtk_im_module_get_default_context_id (void)
   tmp_locale = get_current_input_language ();
   if (!tmp_locale)
     /* Default to system locale when input language is unknown */
-    tmp_locale = _gtk_get_lc_ctype ();
+    tmp_locale = _ctk_get_lc_ctype ();
 #else
-  tmp_locale = _gtk_get_lc_ctype ();
+  tmp_locale = _ctk_get_lc_ctype ();
 #endif
 
   /* Strip the locale code down to the essentials

@@ -52,7 +52,7 @@ test_root (void)
 int
 main (int argc, char *argv[])
 {
-  gtk_test_init (&argc, &argv, NULL);
+  ctk_test_init (&argc, &argv, NULL);
 
   g_test_add_func ("/util/toolkit-name", test_toolkit_name);
   g_test_add_func ("/util/toolkit-version", test_toolkit_version);

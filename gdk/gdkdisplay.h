@@ -126,7 +126,7 @@ void             gdk_display_warp_pointer          (GdkDisplay             *disp
 #endif /* GDK_MULTIDEVICE_SAFE */
 
 GDK_DEPRECATED_IN_3_16
-GdkDisplay *gdk_display_open_default_libgtk_only (void);
+GdkDisplay *gdk_display_open_default_libctk_only (void);
 
 GDK_AVAILABLE_IN_ALL
 gboolean gdk_display_supports_cursor_alpha     (GdkDisplay    *display);

@@ -25,13 +25,13 @@
 
 G_BEGIN_DECLS
 
-GtkCssValue *   _gtk_css_corner_value_new           (GtkCssValue            *x,
+GtkCssValue *   _ctk_css_corner_value_new           (GtkCssValue            *x,
                                                      GtkCssValue            *y);
-GtkCssValue *   _gtk_css_corner_value_parse         (GtkCssParser           *parser);
+GtkCssValue *   _ctk_css_corner_value_parse         (GtkCssParser           *parser);
 
-double          _gtk_css_corner_value_get_x         (const GtkCssValue      *corner,
+double          _ctk_css_corner_value_get_x         (const GtkCssValue      *corner,
                                                      double                  one_hundred_percent);
-double          _gtk_css_corner_value_get_y         (const GtkCssValue      *corner,
+double          _ctk_css_corner_value_get_y         (const GtkCssValue      *corner,
                                                      double                  one_hundred_percent);
 
 

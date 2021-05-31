@@ -42,7 +42,7 @@
         <para>
           Write a function to create and show a popup menu.  This
           function needs to know the button number and the event's
-          time to pass them to gtk_menu_popup().  You can implement
+          time to pass them to ctk_menu_popup().  You can implement
           such a function like this:
         </para>
 
@@ -53,9 +53,9 @@ do_popup_menu (GtkWidget *my_widget, GdkEventButton *event)
   GtkWidget *menu;
   int button, event_time;
 
-  menu = gtk_menu_new (<!-- -->);
+  menu = ctk_menu_new (<!-- -->);
   g_signal_connect (menu, "deactivate",
-                    G_CALLBACK (gtk_widget_destroy), NULL);
+                    G_CALLBACK (ctk_widget_destroy), NULL);
 
   /* ... add menu items ... */
 
@@ -67,11 +67,11 @@ do_popup_menu (GtkWidget *my_widget, GdkEventButton *event)
   else
     {
       button = 0;
-      event_time = gtk_get_current_event_time (<!-- -->);
+      event_time = ctk_get_current_event_time (<!-- -->);
     }
 
-  gtk_menu_attach_to_widget (GTK_MENU (menu), my_widget, NULL);
-  gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
+  ctk_menu_attach_to_widget (GTK_MENU (menu), my_widget, NULL);
+  ctk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
                   button, event_time);
 }
         </programlisting>
@@ -118,7 +118,7 @@ my_widget_popup_menu_handler (GtkWidget *widget)
 
     <note>
       <para>
-        If you do not pass a positioning function to gtk_menu_popup(),
+        If you do not pass a positioning function to ctk_menu_popup(),
         it will show the menu at the mouse position by default.  This
         is what you usually want when the menu is shown as a result of
         pressing a mouse button.  However, if you press the
@@ -142,7 +142,7 @@ my_widget_popup_menu_handler (GtkWidget *widget)
         able to take the keyboard focus.  In general, widgets should
         be fully usable through the keyboard and not just the mouse.
         The very first step of this is to ensure that your widget
-        can receive focus, using gtk_widget_set_can_focus().
+        can receive focus, using ctk_widget_set_can_focus().
       </para>
     </note>
   </section>
@@ -217,7 +217,7 @@ my_widget_expose_event_handler (GtkWidget *widget, GdkEventExpose *event)
     <formalpara>
       <title>Why</title>
       <para>
-        With gtk_accelerator_get_default_mod_mask() you can test for
+        With ctk_accelerator_get_default_mod_mask() you can test for
         modifier keys reliably; this way your key event handlers will
         work correctly even if <keycap>NumLock</keycap> or
         <keycap>CapsLock</keycap> are activated.
@@ -231,7 +231,7 @@ my_widget_expose_event_handler (GtkWidget *widget, GdkEventExpose *event)
       Modifiers are keys like <keycap>Control</keycap> and
       <keycap>NumLock</keycap>.  When implementing a
       #GtkWidget::key-press-event handler, you should use
-      gtk_accelerator_get_default_mod_mask() to
+      ctk_accelerator_get_default_mod_mask() to
       test against modifier keys.  This function returns a bit mask
       which encompasses all the modifiers which the user may be
       actively pressing, such as <keycap>Control</keycap>,
@@ -251,7 +251,7 @@ my_widget_expose_event_handler (GtkWidget *widget, GdkEventExpose *event)
       <literal>GDK_CONTROL_MASK | GDK_LOCK_MASK</literal>, and the
       simple test will fail.  By taking the logical-and of
       <structfield>event->state</structfield> and
-      gtk_accelerator_get_default_mod_mask(), you
+      ctk_accelerator_get_default_mod_mask(), you
       can ignore the modifiers which are not actively pressed by the
       user at the same time as the base key.
     </para>
@@ -268,7 +268,7 @@ my_widget_key_press_event_handler (GtkWidget *widget, GdkEventKey *event)
 {
   GdkModifierType modifiers;
 
-  modifiers = gtk_accelerator_get_default_mod_mask (<!-- -->);
+  modifiers = ctk_accelerator_get_default_mod_mask (<!-- -->);
 
   if (event-&gt;keysym == GDK_F10
       &amp;&amp; (event-&gt;state &amp; modifiers) == GDK_CONTROL_MASK)
@@ -294,9 +294,9 @@ my_widget_key_press_event_handler (GtkWidget *widget, GdkEventKey *event)
     </formalpara>
 
     <para>
-      Named icons can be used for window icons (see gtk_window_set_icon_name())
-      and images (see gtk_image_set_from_icon_name()). You can also use named icons
-      for drag-and-drop (see gtk_drag_source_set_icon_name()) and in treeview
+      Named icons can be used for window icons (see ctk_window_set_icon_name())
+      and images (see ctk_image_set_from_icon_name()). You can also use named icons
+      for drag-and-drop (see ctk_drag_source_set_icon_name()) and in treeview
       cells (see the #GtkCellRendererPixbuf:icon-name property).
     </para>
   </section>

@@ -254,10 +254,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:487
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Logo ar gyfer y blwch ynghylch. Os na osodir hyn, y dewis rhagosodedig yw "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:502
 msgid "Logo Icon Name"
@@ -2361,7 +2361,7 @@ msgstr "Cam Pwls Cynnydd"
 #, fuzzy
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr "Ffracsiwn yr holl gynnydd i symud y bloc sboncio pan mae pwls"
 
 # EFALLAI
@@ -4345,7 +4345,7 @@ msgstr "Dewis drwy Hofran"
 #: gtk/gtkprintoperation.c:1288
 #, fuzzy
 msgid "TRUE if the print operation will support print of selection."
-msgstr "GWIR os ddylai gtk_print_operation_run() ddangos y ddeialog argraffu."
+msgstr "GWIR os ddylai ctk_print_operation_run() ddangos y ddeialog argraffu."
 
 #: gtk/gtkprintoperation.c:1304 gtk/gtkprintunixdialog.c:349
 #, fuzzy
@@ -4510,10 +4510,10 @@ msgstr "Y gwerth"
 
 #: gtk/gtkradioaction.c:119
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"Y gwerth a ddychwelir gan gtk_radio_action_get_current_value() pan mae'r "
+"Y gwerth a ddychwelir gan ctk_radio_action_get_current_value() pan mae'r "
 "weithred hon yn weithred gyfredol ei grŵp."
 
 #: gtk/gtkradioaction.c:135 gtk/gtkradiobutton.c:160
@@ -7034,8 +7034,8 @@ msgid "No show all"
 msgstr "Dim \"dangos popeth\""
 
 #: gtk/gtkwidget.c:841
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "A ddylai gtk_widget_show_all() beidio ag effeithio'r teclyn hwn"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "A ddylai ctk_widget_show_all() beidio ag effeithio'r teclyn hwn"
 
 #: gtk/gtkwidget.c:864
 msgid "Whether this widget has a tooltip"
@@ -7618,10 +7618,10 @@ msgstr "Sut i arlunio'r bar statws modd mewnbwn"
 #~ "manylion gwahanol"
 
 #~ msgid ""
-#~ "The maximum number of items to be returned by gtk_recent_manager_get_items"
+#~ "The maximum number of items to be returned by ctk_recent_manager_get_items"
 #~ "()"
 #~ msgstr ""
-#~ "Uchafrif nifer yr eitemau a ddychwelir gan gtk_recent_manager_get_items()"
+#~ "Uchafrif nifer yr eitemau a ddychwelir gan ctk_recent_manager_get_items()"
 
 #~ msgid "Blinking"
 #~ msgstr "Chwincio"
@@ -7905,9 +7905,9 @@ msgstr "Sut i arlunio'r bar statws modd mewnbwn"
 #~ msgid "Show Preview"
 #~ msgstr "Dangos Rhagolwg"
 
-#~ msgid "TRUE if gtk_print_operation_run() should show the print preview."
+#~ msgid "TRUE if ctk_print_operation_run() should show the print preview."
 #~ msgstr ""
-#~ "GWIR os ddylai gtk_print_operation_run() ddangos y rhagolwg argraffu."
+#~ "GWIR os ddylai ctk_print_operation_run() ddangos y rhagolwg argraffu."
 
 #~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
 #~ msgstr "A ydy'r testun yma wedi ei guddio. Ni chynhelir yn GTK 2.0"

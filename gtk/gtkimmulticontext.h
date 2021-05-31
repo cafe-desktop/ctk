@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_IM_MULTICONTEXT              (gtk_im_multicontext_get_type ())
+#define GTK_TYPE_IM_MULTICONTEXT              (ctk_im_multicontext_get_type ())
 #define GTK_IM_MULTICONTEXT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IM_MULTICONTEXT, GtkIMMulticontext))
 #define GTK_IM_MULTICONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IM_MULTICONTEXT, GtkIMMulticontextClass))
 #define GTK_IS_IM_MULTICONTEXT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IM_MULTICONTEXT))
@@ -52,25 +52,25 @@ struct _GtkIMMulticontextClass
   GtkIMContextClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType         gtk_im_multicontext_get_type (void) G_GNUC_CONST;
+GType         ctk_im_multicontext_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkIMContext *gtk_im_multicontext_new      (void);
+GtkIMContext *ctk_im_multicontext_new      (void);
 
 GDK_DEPRECATED_IN_3_10
-void          gtk_im_multicontext_append_menuitems (GtkIMMulticontext *context,
+void          ctk_im_multicontext_append_menuitems (GtkIMMulticontext *context,
 						    GtkMenuShell      *menushell);
 GDK_AVAILABLE_IN_ALL
-const char  * gtk_im_multicontext_get_context_id   (GtkIMMulticontext *context);
+const char  * ctk_im_multicontext_get_context_id   (GtkIMMulticontext *context);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_im_multicontext_set_context_id   (GtkIMMulticontext *context,
+void          ctk_im_multicontext_set_context_id   (GtkIMMulticontext *context,
                                                     const char        *context_id);
  
 G_END_DECLS

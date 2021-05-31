@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_AREA_BOX            (gtk_cell_area_box_get_type ())
+#define GTK_TYPE_CELL_AREA_BOX            (ctk_cell_area_box_get_type ())
 #define GTK_CELL_AREA_BOX(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_AREA_BOX, GtkCellAreaBox))
 #define GTK_CELL_AREA_BOX_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_AREA_BOX, GtkCellAreaBoxClass))
 #define GTK_IS_CELL_AREA_BOX(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_AREA_BOX))
@@ -58,37 +58,37 @@ struct _GtkCellAreaBoxClass
   GtkCellAreaClass parent_class;
 
   /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
+  void (*_ctk_reserved1) (void);
+  void (*_ctk_reserved2) (void);
+  void (*_ctk_reserved3) (void);
+  void (*_ctk_reserved4) (void);
 };
 
 GDK_AVAILABLE_IN_ALL
-GType        gtk_cell_area_box_get_type    (void) G_GNUC_CONST;
+GType        ctk_cell_area_box_get_type    (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GtkCellArea *gtk_cell_area_box_new         (void);
+GtkCellArea *ctk_cell_area_box_new         (void);
 GDK_AVAILABLE_IN_ALL
-void         gtk_cell_area_box_pack_start  (GtkCellAreaBox  *box,
+void         ctk_cell_area_box_pack_start  (GtkCellAreaBox  *box,
                                             GtkCellRenderer *renderer,
                                             gboolean         expand,
                                             gboolean         align,
                                             gboolean         fixed);
 GDK_AVAILABLE_IN_ALL
-void         gtk_cell_area_box_pack_end    (GtkCellAreaBox  *box,
+void         ctk_cell_area_box_pack_end    (GtkCellAreaBox  *box,
                                             GtkCellRenderer *renderer,
                                             gboolean         expand,
                                             gboolean         align,
                                             gboolean         fixed);
 GDK_AVAILABLE_IN_ALL
-gint         gtk_cell_area_box_get_spacing (GtkCellAreaBox  *box);
+gint         ctk_cell_area_box_get_spacing (GtkCellAreaBox  *box);
 GDK_AVAILABLE_IN_ALL
-void         gtk_cell_area_box_set_spacing (GtkCellAreaBox  *box,
+void         ctk_cell_area_box_set_spacing (GtkCellAreaBox  *box,
                                             gint             spacing);
 
 /* Private interaction with GtkCellAreaBoxContext */
-gboolean    _gtk_cell_area_box_group_visible (GtkCellAreaBox  *box,
+gboolean    _ctk_cell_area_box_group_visible (GtkCellAreaBox  *box,
                                               gint             group_idx);
 
 G_END_DECLS

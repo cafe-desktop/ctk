@@ -35,40 +35,40 @@ struct _GtkCssSection
   guint               end_position;   /* end position if parser is %NULL */
 };
 
-G_DEFINE_BOXED_TYPE (GtkCssSection, gtk_css_section, gtk_css_section_ref, gtk_css_section_unref)
+G_DEFINE_BOXED_TYPE (GtkCssSection, ctk_css_section, ctk_css_section_ref, ctk_css_section_unref)
 
 GtkCssSection *
-_gtk_css_section_new (GtkCssSection     *parent,
+_ctk_css_section_new (GtkCssSection     *parent,
                       GtkCssSectionType  type,
                       GtkCssParser      *parser)
 {
   GtkCssSection *section;
 
-  gtk_internal_return_val_if_fail (parser != NULL, NULL);
+  ctk_internal_return_val_if_fail (parser != NULL, NULL);
 
   section = g_slice_new0 (GtkCssSection);
 
   section->ref_count = 1;
   section->section_type = type;
   if (parent)
-    section->parent = gtk_css_section_ref (parent);
-  section->file = _gtk_css_parser_get_file (parser);
+    section->parent = ctk_css_section_ref (parent);
+  section->file = _ctk_css_parser_get_file (parser);
   if (section->file)
     g_object_ref (section->file);
-  section->start_line = _gtk_css_parser_get_line (parser);
-  section->start_position = _gtk_css_parser_get_position (parser);
+  section->start_line = _ctk_css_parser_get_line (parser);
+  section->start_position = _ctk_css_parser_get_position (parser);
   section->parser = parser;
 
   return section;
 }
 
 GtkCssSection *
-_gtk_css_section_new_for_file (GtkCssSectionType  type,
+_ctk_css_section_new_for_file (GtkCssSectionType  type,
                                GFile             *file)
 {
   GtkCssSection *section;
 
-  gtk_internal_return_val_if_fail (G_IS_FILE (file), NULL);
+  ctk_internal_return_val_if_fail (G_IS_FILE (file), NULL);
 
   section = g_slice_new0 (GtkCssSection);
 
@@ -80,18 +80,18 @@ _gtk_css_section_new_for_file (GtkCssSectionType  type,
 }
 
 void
-_gtk_css_section_end (GtkCssSection *section)
+_ctk_css_section_end (GtkCssSection *section)
 {
-  gtk_internal_return_if_fail (section != NULL);
-  gtk_internal_return_if_fail (section->parser != NULL);
+  ctk_internal_return_if_fail (section != NULL);
+  ctk_internal_return_if_fail (section->parser != NULL);
 
-  section->end_line = _gtk_css_parser_get_line (section->parser);
-  section->end_position = _gtk_css_parser_get_position (section->parser);
+  section->end_line = _ctk_css_parser_get_line (section->parser);
+  section->end_position = _ctk_css_parser_get_position (section->parser);
   section->parser = NULL;
 }
 
 /**
- * gtk_css_section_ref:
+ * ctk_css_section_ref:
  * @section: a #GtkCssSection
  *
  * Increments the reference count on @section.
@@ -101,9 +101,9 @@ _gtk_css_section_end (GtkCssSection *section)
  * Since: 3.2
  **/
 GtkCssSection *
-gtk_css_section_ref (GtkCssSection *section)
+ctk_css_section_ref (GtkCssSection *section)
 {
-  gtk_internal_return_val_if_fail (section != NULL, NULL);
+  ctk_internal_return_val_if_fail (section != NULL, NULL);
 
   section->ref_count += 1;
 
@@ -111,7 +111,7 @@ gtk_css_section_ref (GtkCssSection *section)
 }
 
 /**
- * gtk_css_section_unref:
+ * ctk_css_section_unref:
  * @section: a #GtkCssSection
  *
  * Decrements the reference count on @section, freeing the
@@ -120,16 +120,16 @@ gtk_css_section_ref (GtkCssSection *section)
  * Since: 3.2
  **/
 void
-gtk_css_section_unref (GtkCssSection *section)
+ctk_css_section_unref (GtkCssSection *section)
 {
-  gtk_internal_return_if_fail (section != NULL);
+  ctk_internal_return_if_fail (section != NULL);
 
   section->ref_count -= 1;
   if (section->ref_count > 0)
     return;
 
   if (section->parent)
-    gtk_css_section_unref (section->parent);
+    ctk_css_section_unref (section->parent);
   if (section->file)
     g_object_unref (section->file);
 
@@ -137,7 +137,7 @@ gtk_css_section_unref (GtkCssSection *section)
 }
 
 /**
- * gtk_css_section_get_section_type:
+ * ctk_css_section_get_section_type:
  * @section: the section
  *
  * Gets the type of information that @section describes.
@@ -147,22 +147,22 @@ gtk_css_section_unref (GtkCssSection *section)
  * Since: 3.2
  **/
 GtkCssSectionType
-gtk_css_section_get_section_type (const GtkCssSection *section)
+ctk_css_section_get_section_type (const GtkCssSection *section)
 {
-  gtk_internal_return_val_if_fail (section != NULL, GTK_CSS_SECTION_DOCUMENT);
+  ctk_internal_return_val_if_fail (section != NULL, GTK_CSS_SECTION_DOCUMENT);
 
   return section->section_type;
 }
 
 /**
- * gtk_css_section_get_parent:
+ * ctk_css_section_get_parent:
  * @section: the section
  *
  * Gets the parent section for the given @section. The parent section is
  * the section that contains this @section. A special case are sections of
  * type #GTK_CSS_SECTION_DOCUMENT. Their parent will either be %NULL
  * if they are the original CSS document that was loaded by
- * gtk_css_provider_load_from_file() or a section of type
+ * ctk_css_provider_load_from_file() or a section of type
  * #GTK_CSS_SECTION_IMPORT if it was loaded with an import rule from
  * a different file.
  *
@@ -171,20 +171,20 @@ gtk_css_section_get_section_type (const GtkCssSection *section)
  * Since: 3.2
  **/
 GtkCssSection *
-gtk_css_section_get_parent (const GtkCssSection *section)
+ctk_css_section_get_parent (const GtkCssSection *section)
 {
-  gtk_internal_return_val_if_fail (section != NULL, NULL);
+  ctk_internal_return_val_if_fail (section != NULL, NULL);
 
   return section->parent;
 }
 
 /**
- * gtk_css_section_get_file:
+ * ctk_css_section_get_file:
  * @section: the section
  *
  * Gets the file that @section was parsed from. If no such file exists,
  * for example because the CSS was loaded via
- * @gtk_css_provider_load_from_data(), then %NULL is returned.
+ * @ctk_css_provider_load_from_data(), then %NULL is returned.
  *
  * Returns: (transfer none): the #GFile that @section was parsed from
  *     or %NULL if @section was parsed from other data
@@ -192,15 +192,15 @@ gtk_css_section_get_parent (const GtkCssSection *section)
  * Since: 3.2
  **/
 GFile *
-gtk_css_section_get_file (const GtkCssSection *section)
+ctk_css_section_get_file (const GtkCssSection *section)
 {
-  gtk_internal_return_val_if_fail (section != NULL, NULL);
+  ctk_internal_return_val_if_fail (section != NULL, NULL);
 
   return section->file;
 }
 
 /**
- * gtk_css_section_get_start_line:
+ * ctk_css_section_get_start_line:
  * @section: the section
  *
  * Returns the line in the CSS document where this section starts.
@@ -212,34 +212,34 @@ gtk_css_section_get_file (const GtkCssSection *section)
  * Since: 3.2
  **/
 guint
-gtk_css_section_get_start_line (const GtkCssSection *section)
+ctk_css_section_get_start_line (const GtkCssSection *section)
 {
-  gtk_internal_return_val_if_fail (section != NULL, 0);
+  ctk_internal_return_val_if_fail (section != NULL, 0);
 
   return section->start_line;
 }
 
 /**
- * gtk_css_section_get_start_position:
+ * ctk_css_section_get_start_position:
  * @section: the section
  *
  * Returns the offset in bytes from the start of the current line
- * returned via gtk_css_section_get_start_line().
+ * returned via ctk_css_section_get_start_line().
  *
  * Returns: the offset in bytes from the start of the line.
  *
  * Since: 3.2
  **/
 guint
-gtk_css_section_get_start_position (const GtkCssSection *section)
+ctk_css_section_get_start_position (const GtkCssSection *section)
 {
-  gtk_internal_return_val_if_fail (section != NULL, 0);
+  ctk_internal_return_val_if_fail (section != NULL, 0);
 
   return section->start_position;
 }
 
 /**
- * gtk_css_section_get_end_line:
+ * ctk_css_section_get_end_line:
  * @section: the section
  *
  * Returns the line in the CSS document where this section end.
@@ -257,22 +257,22 @@ gtk_css_section_get_start_position (const GtkCssSection *section)
  * Since: 3.2
  **/
 guint
-gtk_css_section_get_end_line (const GtkCssSection *section)
+ctk_css_section_get_end_line (const GtkCssSection *section)
 {
-  gtk_internal_return_val_if_fail (section != NULL, 0);
+  ctk_internal_return_val_if_fail (section != NULL, 0);
 
   if (section->parser)
-    return _gtk_css_parser_get_line (section->parser);
+    return _ctk_css_parser_get_line (section->parser);
   else
     return section->end_line;
 }
 
 /**
- * gtk_css_section_get_end_position:
+ * ctk_css_section_get_end_position:
  * @section: the section
  *
  * Returns the offset in bytes from the start of the current line
- * returned via gtk_css_section_get_end_line().
+ * returned via ctk_css_section_get_end_line().
  * This value may change in future invocations of this function if
  * @section is not yet parsed completely. This will for example
  * happen in the GtkCssProvider::parsing-error signal.
@@ -285,18 +285,18 @@ gtk_css_section_get_end_line (const GtkCssSection *section)
  * Since: 3.2
  **/
 guint
-gtk_css_section_get_end_position (const GtkCssSection *section)
+ctk_css_section_get_end_position (const GtkCssSection *section)
 {
-  gtk_internal_return_val_if_fail (section != NULL, 0);
+  ctk_internal_return_val_if_fail (section != NULL, 0);
 
   if (section->parser)
-    return _gtk_css_parser_get_position (section->parser);
+    return _ctk_css_parser_get_position (section->parser);
   else
     return section->end_position;
 }
 
 void
-_gtk_css_section_print (const GtkCssSection  *section,
+_ctk_css_section_print (const GtkCssSection  *section,
                         GString              *string)
 {
   if (section->file)
@@ -321,19 +321,19 @@ _gtk_css_section_print (const GtkCssSection  *section,
     }
 
   g_string_append_printf (string, ":%u:%u", 
-                          gtk_css_section_get_end_line (section) + 1,
-                          gtk_css_section_get_end_position (section));
+                          ctk_css_section_get_end_line (section) + 1,
+                          ctk_css_section_get_end_position (section));
 }
 
 char *
-_gtk_css_section_to_string (const GtkCssSection *section)
+_ctk_css_section_to_string (const GtkCssSection *section)
 {
   GString *string;
 
-  gtk_internal_return_val_if_fail (section != NULL, NULL);
+  ctk_internal_return_val_if_fail (section != NULL, NULL);
 
   string = g_string_new (NULL);
-  _gtk_css_section_print (section, string);
+  _ctk_css_section_print (section, string);
 
   return g_string_free (string, FALSE);
 }

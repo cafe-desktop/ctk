@@ -34,7 +34,7 @@ G_BEGIN_DECLS
  */
 #define GTK_MAX_COMPOSE_LEN 7
 
-#define GTK_TYPE_IM_CONTEXT_SIMPLE              (gtk_im_context_simple_get_type ())
+#define GTK_TYPE_IM_CONTEXT_SIMPLE              (ctk_im_context_simple_get_type ())
 #define GTK_IM_CONTEXT_SIMPLE(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IM_CONTEXT_SIMPLE, GtkIMContextSimple))
 #define GTK_IM_CONTEXT_SIMPLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IM_CONTEXT_SIMPLE, GtkIMContextSimpleClass))
 #define GTK_IS_IM_CONTEXT_SIMPLE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IM_CONTEXT_SIMPLE))
@@ -60,17 +60,17 @@ struct _GtkIMContextSimpleClass
 };
 
 GDK_AVAILABLE_IN_ALL
-GType         gtk_im_context_simple_get_type  (void) G_GNUC_CONST;
+GType         ctk_im_context_simple_get_type  (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
-GtkIMContext *gtk_im_context_simple_new       (void);
+GtkIMContext *ctk_im_context_simple_new       (void);
 
 GDK_AVAILABLE_IN_ALL
-void          gtk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
+void          ctk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
 					       guint16            *data,
 					       gint                max_seq_len,
 					       gint                n_seqs);
 GDK_AVAILABLE_IN_3_20
-void          gtk_im_context_simple_add_compose_file (GtkIMContextSimple *context_simple,
+void          ctk_im_context_simple_add_compose_file (GtkIMContextSimple *context_simple,
                                                       const gchar        *compose_file);
 
 

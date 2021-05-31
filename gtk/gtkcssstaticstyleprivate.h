@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_STATIC_STYLE           (gtk_css_static_style_get_type ())
+#define GTK_TYPE_CSS_STATIC_STYLE           (ctk_css_static_style_get_type ())
 #define GTK_CSS_STATIC_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyle))
 #define GTK_CSS_STATIC_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyleClass))
 #define GTK_IS_CSS_STATIC_STYLE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_STATIC_STYLE))
@@ -50,21 +50,21 @@ struct _GtkCssStaticStyleClass
   GtkCssStyleClass parent_class;
 };
 
-GType                   gtk_css_static_style_get_type           (void) G_GNUC_CONST;
+GType                   ctk_css_static_style_get_type           (void) G_GNUC_CONST;
 
-GtkCssStyle *           gtk_css_static_style_get_default        (void);
-GtkCssStyle *           gtk_css_static_style_new_compute        (GtkStyleProviderPrivate *provider,
+GtkCssStyle *           ctk_css_static_style_get_default        (void);
+GtkCssStyle *           ctk_css_static_style_new_compute        (GtkStyleProviderPrivate *provider,
                                                                  const GtkCssMatcher    *matcher,
                                                                  GtkCssStyle            *parent);
 
-void                    gtk_css_static_style_compute_value      (GtkCssStaticStyle      *style,
+void                    ctk_css_static_style_compute_value      (GtkCssStaticStyle      *style,
                                                                  GtkStyleProviderPrivate*provider,
                                                                  GtkCssStyle            *parent_style,
                                                                  guint                   id,
                                                                  GtkCssValue            *specified,
                                                                  GtkCssSection          *section);
 
-GtkCssChange            gtk_css_static_style_get_change         (GtkCssStaticStyle      *style);
+GtkCssChange            ctk_css_static_style_get_change         (GtkCssStaticStyle      *style);
 
 G_END_DECLS
 

@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_SYSTEM         (_gtk_file_system_get_type ())
+#define GTK_TYPE_FILE_SYSTEM         (_ctk_file_system_get_type ())
 #define GTK_FILE_SYSTEM(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_FILE_SYSTEM, GtkFileSystem))
 #define GTK_FILE_SYSTEM_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), GTK_TYPE_FILE_SYSTEM, GtkFileSystemClass))
 #define GTK_IS_FILE_SYSTEM(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_FILE_SYSTEM))
@@ -64,55 +64,55 @@ typedef void (* GtkFileSystemVolumeMountCallback)  (GCancellable        *cancell
 						    gpointer             data);
 
 /* GtkFileSystem methods */
-GType           _gtk_file_system_get_type     (void) G_GNUC_CONST;
+GType           _ctk_file_system_get_type     (void) G_GNUC_CONST;
 
-GtkFileSystem * _gtk_file_system_new          (void);
+GtkFileSystem * _ctk_file_system_new          (void);
 
-GSList *        _gtk_file_system_list_volumes   (GtkFileSystem *file_system);
+GSList *        _ctk_file_system_list_volumes   (GtkFileSystem *file_system);
 
-GCancellable *  _gtk_file_system_get_info               (GtkFileSystem                     *file_system,
+GCancellable *  _ctk_file_system_get_info               (GtkFileSystem                     *file_system,
 							 GFile                             *file,
 							 const gchar                       *attributes,
 							 GtkFileSystemGetInfoCallback       callback,
 							 gpointer                           data);
-GCancellable *  _gtk_file_system_mount_volume           (GtkFileSystem                     *file_system,
+GCancellable *  _ctk_file_system_mount_volume           (GtkFileSystem                     *file_system,
 							 GtkFileSystemVolume               *volume,
 							 GMountOperation                   *mount_operation,
 							 GtkFileSystemVolumeMountCallback   callback,
 							 gpointer                           data);
-GCancellable *  _gtk_file_system_mount_enclosing_volume (GtkFileSystem                     *file_system,
+GCancellable *  _ctk_file_system_mount_enclosing_volume (GtkFileSystem                     *file_system,
 							 GFile                             *file,
 							 GMountOperation                   *mount_operation,
 							 GtkFileSystemVolumeMountCallback   callback,
 							 gpointer                           data);
 
-GtkFileSystemVolume * _gtk_file_system_get_volume_for_file (GtkFileSystem       *file_system,
+GtkFileSystemVolume * _ctk_file_system_get_volume_for_file (GtkFileSystem       *file_system,
 							    GFile               *file);
 
 /* GtkFileSystemVolume methods */
-gchar *               _gtk_file_system_volume_get_display_name (GtkFileSystemVolume *volume);
-gboolean              _gtk_file_system_volume_is_mounted       (GtkFileSystemVolume *volume);
-GFile *               _gtk_file_system_volume_get_root         (GtkFileSystemVolume *volume);
-GIcon *               _gtk_file_system_volume_get_symbolic_icon (GtkFileSystemVolume *volume);
-cairo_surface_t *     _gtk_file_system_volume_render_icon      (GtkFileSystemVolume  *volume,
+gchar *               _ctk_file_system_volume_get_display_name (GtkFileSystemVolume *volume);
+gboolean              _ctk_file_system_volume_is_mounted       (GtkFileSystemVolume *volume);
+GFile *               _ctk_file_system_volume_get_root         (GtkFileSystemVolume *volume);
+GIcon *               _ctk_file_system_volume_get_symbolic_icon (GtkFileSystemVolume *volume);
+cairo_surface_t *     _ctk_file_system_volume_render_icon      (GtkFileSystemVolume  *volume,
 							        GtkWidget            *widget,
 							        gint                  icon_size,
 							        GError              **error);
 
-GtkFileSystemVolume  *_gtk_file_system_volume_ref              (GtkFileSystemVolume *volume);
-void                  _gtk_file_system_volume_unref            (GtkFileSystemVolume *volume);
+GtkFileSystemVolume  *_ctk_file_system_volume_ref              (GtkFileSystemVolume *volume);
+void                  _ctk_file_system_volume_unref            (GtkFileSystemVolume *volume);
 
 /* GFileInfo helper functions */
-cairo_surface_t *     _gtk_file_info_render_icon (GFileInfo *info,
+cairo_surface_t *     _ctk_file_info_render_icon (GFileInfo *info,
 						  GtkWidget *widget,
 						  gint       icon_size);
 
-gboolean	_gtk_file_info_consider_as_directory (GFileInfo *info);
+gboolean	_ctk_file_info_consider_as_directory (GFileInfo *info);
 
 /* GFile helper functions */
-gboolean	_gtk_file_has_native_path (GFile *file);
+gboolean	_ctk_file_has_native_path (GFile *file);
 
-gboolean        _gtk_file_consider_as_remote (GFile *file);
+gboolean        _ctk_file_consider_as_remote (GFile *file);
 
 G_END_DECLS
 

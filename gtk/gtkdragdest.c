@@ -33,26 +33,26 @@
 
 
 static void
-gtk_drag_dest_realized (GtkWidget *widget)
+ctk_drag_dest_realized (GtkWidget *widget)
 {
-  GtkWidget *toplevel = gtk_widget_get_toplevel (widget);
+  GtkWidget *toplevel = ctk_widget_get_toplevel (widget);
 
-  if (gtk_widget_is_toplevel (toplevel))
-    gdk_window_register_dnd (gtk_widget_get_window (toplevel));
+  if (ctk_widget_is_toplevel (toplevel))
+    gdk_window_register_dnd (ctk_widget_get_window (toplevel));
 }
 
 static void
-gtk_drag_dest_hierarchy_changed (GtkWidget *widget,
+ctk_drag_dest_hierarchy_changed (GtkWidget *widget,
                                  GtkWidget *previous_toplevel)
 {
-  GtkWidget *toplevel = gtk_widget_get_toplevel (widget);
+  GtkWidget *toplevel = ctk_widget_get_toplevel (widget);
 
-  if (gtk_widget_is_toplevel (toplevel) && gtk_widget_get_realized (toplevel))
-    gdk_window_register_dnd (gtk_widget_get_window (toplevel));
+  if (ctk_widget_is_toplevel (toplevel) && ctk_widget_get_realized (toplevel))
+    gdk_window_register_dnd (ctk_widget_get_window (toplevel));
 }
 
 static void
-gtk_drag_dest_site_destroy (gpointer data)
+ctk_drag_dest_site_destroy (gpointer data)
 {
   GtkDragDestSite *site = data;
 
@@ -60,13 +60,13 @@ gtk_drag_dest_site_destroy (gpointer data)
     g_object_unref (site->proxy_window);
 
   if (site->target_list)
-    gtk_target_list_unref (site->target_list);
+    ctk_target_list_unref (site->target_list);
 
   g_slice_free (GtkDragDestSite, site);
 }
 
 static void
-gtk_drag_dest_set_internal (GtkWidget       *widget,
+ctk_drag_dest_set_internal (GtkWidget       *widget,
                             GtkDragDestSite *site)
 {
   GtkDragDestSite *old_site;
@@ -75,35 +75,35 @@ gtk_drag_dest_set_internal (GtkWidget       *widget,
   if (old_site)
     {
       g_signal_handlers_disconnect_by_func (widget,
-                                            gtk_drag_dest_realized,
+                                            ctk_drag_dest_realized,
                                             old_site);
       g_signal_handlers_disconnect_by_func (widget,
-                                            gtk_drag_dest_hierarchy_changed,
+                                            ctk_drag_dest_hierarchy_changed,
                                             old_site);
 
       site->track_motion = old_site->track_motion;
     }
 
-  if (gtk_widget_get_realized (widget))
-    gtk_drag_dest_realized (widget);
+  if (ctk_widget_get_realized (widget))
+    ctk_drag_dest_realized (widget);
 
   g_signal_connect (widget, "realize",
-                    G_CALLBACK (gtk_drag_dest_realized), site);
+                    G_CALLBACK (ctk_drag_dest_realized), site);
   g_signal_connect (widget, "hierarchy-changed",
-                    G_CALLBACK (gtk_drag_dest_hierarchy_changed), site);
+                    G_CALLBACK (ctk_drag_dest_hierarchy_changed), site);
 
   g_object_set_data_full (G_OBJECT (widget), I_("gtk-drag-dest"),
-                          site, gtk_drag_dest_site_destroy);
+                          site, ctk_drag_dest_site_destroy);
 }
 
 /**
- * gtk_drag_dest_set: (method)
+ * ctk_drag_dest_set: (method)
  * @widget: a #GtkWidget
  * @flags: which types of default drag behavior to use
  * @targets: (allow-none) (array length=n_targets): a pointer to an array of
  *     #GtkTargetEntrys indicating the drop types that this @widget will
  *     accept, or %NULL. Later you can access the list with
- *     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+ *     ctk_drag_dest_get_target_list() and ctk_drag_dest_find_target().
  * @n_targets: the number of entries in @targets
  * @actions: a bitmask of possible actions for a drop onto this @widget.
  *
@@ -121,9 +121,9 @@ gtk_drag_dest_set_internal (GtkWidget       *widget,
  * behaviors described by @flags make some assumptions, that can conflict
  * with your own signal handlers. For instance #GTK_DEST_DEFAULT_DROP causes
  * invokations of gdk_drag_status() in the context of #GtkWidget::drag-motion,
- * and invokations of gtk_drag_finish() in #GtkWidget::drag-data-received.
+ * and invokations of ctk_drag_finish() in #GtkWidget::drag-data-received.
  * Especially the later is dramatic, when your own #GtkWidget::drag-motion
- * handler calls gtk_drag_get_data() to inspect the dragged data.
+ * handler calls ctk_drag_get_data() to inspect the dragged data.
  *
  * There’s no way to set a default action here, you can use the
  * #GtkWidget::drag-motion callback for that. Here’s an example which selects
@@ -138,7 +138,7 @@ gtk_drag_dest_set_internal (GtkWidget       *widget,
  * {
 *   GdkModifierType mask;
  *
- *   gdk_window_get_pointer (gtk_widget_get_window (widget),
+ *   gdk_window_get_pointer (ctk_widget_get_window (widget),
  *                           NULL, NULL, &mask);
  *   if (mask & GDK_CONTROL_MASK)
  *     gdk_drag_status (context, GDK_ACTION_COPY, time);
@@ -148,7 +148,7 @@ gtk_drag_dest_set_internal (GtkWidget       *widget,
  * ]|
  */
 void
-gtk_drag_dest_set (GtkWidget            *widget,
+ctk_drag_dest_set (GtkWidget            *widget,
                    GtkDestDefaults       flags,
                    const GtkTargetEntry *targets,
                    gint                  n_targets,
@@ -163,7 +163,7 @@ gtk_drag_dest_set (GtkWidget            *widget,
   site->flags = flags;
   site->have_drag = FALSE;
   if (targets)
-    site->target_list = gtk_target_list_new (targets, n_targets);
+    site->target_list = ctk_target_list_new (targets, n_targets);
   else
     site->target_list = NULL;
   site->actions = actions;
@@ -171,11 +171,11 @@ gtk_drag_dest_set (GtkWidget            *widget,
   site->proxy_window = NULL;
   site->track_motion = FALSE;
 
-  gtk_drag_dest_set_internal (widget, site);
+  ctk_drag_dest_set_internal (widget, site);
 }
 
 /**
- * gtk_drag_dest_set_proxy: (method)
+ * ctk_drag_dest_set_proxy: (method)
  * @widget: a #GtkWidget
  * @proxy_window: the window to which to forward drag events
  * @protocol: the drag protocol which the @proxy_window accepts
@@ -189,7 +189,7 @@ gtk_drag_dest_set (GtkWidget            *widget,
  * Deprecated: 3.22
  */
 void
-gtk_drag_dest_set_proxy (GtkWidget       *widget,
+ctk_drag_dest_set_proxy (GtkWidget       *widget,
                          GdkWindow       *proxy_window,
                          GdkDragProtocol  protocol,
                          gboolean         use_coordinates)
@@ -213,19 +213,19 @@ gtk_drag_dest_set_proxy (GtkWidget       *widget,
   site->proxy_coords = use_coordinates;
   site->track_motion = FALSE;
 
-  gtk_drag_dest_set_internal (widget, site);
+  ctk_drag_dest_set_internal (widget, site);
 }
 
 /**
- * gtk_drag_dest_unset: (method)
+ * ctk_drag_dest_unset: (method)
  * @widget: a #GtkWidget
  *
  * Clears information about a drop destination set with
- * gtk_drag_dest_set(). The widget will no longer receive
+ * ctk_drag_dest_set(). The widget will no longer receive
  * notification of drags.
  */
 void
-gtk_drag_dest_unset (GtkWidget *widget)
+ctk_drag_dest_unset (GtkWidget *widget)
 {
   GtkDragDestSite *old_site;
 
@@ -235,10 +235,10 @@ gtk_drag_dest_unset (GtkWidget *widget)
   if (old_site)
     {
       g_signal_handlers_disconnect_by_func (widget,
-                                            gtk_drag_dest_realized,
+                                            ctk_drag_dest_realized,
                                             old_site);
       g_signal_handlers_disconnect_by_func (widget,
-                                            gtk_drag_dest_hierarchy_changed,
+                                            ctk_drag_dest_hierarchy_changed,
                                             old_site);
     }
 
@@ -246,7 +246,7 @@ gtk_drag_dest_unset (GtkWidget *widget)
 }
 
 /**
- * gtk_drag_dest_get_target_list: (method)
+ * ctk_drag_dest_get_target_list: (method)
  * @widget: a #GtkWidget
  *
  * Returns the list of targets this widget can accept from
@@ -255,7 +255,7 @@ gtk_drag_dest_unset (GtkWidget *widget)
  * Returns: (nullable) (transfer none): the #GtkTargetList, or %NULL if none
  */
 GtkTargetList *
-gtk_drag_dest_get_target_list (GtkWidget *widget)
+ctk_drag_dest_get_target_list (GtkWidget *widget)
 {
   GtkDragDestSite *site;
 
@@ -267,16 +267,16 @@ gtk_drag_dest_get_target_list (GtkWidget *widget)
 }
 
 /**
- * gtk_drag_dest_set_target_list: (method)
+ * ctk_drag_dest_set_target_list: (method)
  * @widget: a #GtkWidget that’s a drag destination
  * @target_list: (allow-none): list of droppable targets, or %NULL for none
  *
  * Sets the target types that this widget can accept from drag-and-drop.
  * The widget must first be made into a drag destination with
- * gtk_drag_dest_set().
+ * ctk_drag_dest_set().
  */
 void
-gtk_drag_dest_set_target_list (GtkWidget     *widget,
+ctk_drag_dest_set_target_list (GtkWidget     *widget,
                                GtkTargetList *target_list)
 {
   GtkDragDestSite *site;
@@ -287,103 +287,103 @@ gtk_drag_dest_set_target_list (GtkWidget     *widget,
 
   if (!site)
     {
-      g_warning ("Can't set a target list on a widget until you've called gtk_drag_dest_set() "
+      g_warning ("Can't set a target list on a widget until you've called ctk_drag_dest_set() "
                  "to make the widget into a drag destination");
       return;
     }
 
   if (target_list)
-    gtk_target_list_ref (target_list);
+    ctk_target_list_ref (target_list);
 
   if (site->target_list)
-    gtk_target_list_unref (site->target_list);
+    ctk_target_list_unref (site->target_list);
 
   site->target_list = target_list;
 }
 
 /**
- * gtk_drag_dest_add_text_targets: (method)
+ * ctk_drag_dest_add_text_targets: (method)
  * @widget: a #GtkWidget that’s a drag destination
  *
  * Add the text targets supported by #GtkSelectionData to
  * the target list of the drag destination. The targets
  * are added with @info = 0. If you need another value,
- * use gtk_target_list_add_text_targets() and
- * gtk_drag_dest_set_target_list().
+ * use ctk_target_list_add_text_targets() and
+ * ctk_drag_dest_set_target_list().
  *
  * Since: 2.6
  */
 void
-gtk_drag_dest_add_text_targets (GtkWidget *widget)
+ctk_drag_dest_add_text_targets (GtkWidget *widget)
 {
   GtkTargetList *target_list;
 
-  target_list = gtk_drag_dest_get_target_list (widget);
+  target_list = ctk_drag_dest_get_target_list (widget);
   if (target_list)
-    gtk_target_list_ref (target_list);
+    ctk_target_list_ref (target_list);
   else
-    target_list = gtk_target_list_new (NULL, 0);
-  gtk_target_list_add_text_targets (target_list, 0);
-  gtk_drag_dest_set_target_list (widget, target_list);
-  gtk_target_list_unref (target_list);
+    target_list = ctk_target_list_new (NULL, 0);
+  ctk_target_list_add_text_targets (target_list, 0);
+  ctk_drag_dest_set_target_list (widget, target_list);
+  ctk_target_list_unref (target_list);
 }
 
 /**
- * gtk_drag_dest_add_image_targets: (method)
+ * ctk_drag_dest_add_image_targets: (method)
  * @widget: a #GtkWidget that’s a drag destination
  *
  * Add the image targets supported by #GtkSelectionData to
  * the target list of the drag destination. The targets
  * are added with @info = 0. If you need another value,
- * use gtk_target_list_add_image_targets() and
- * gtk_drag_dest_set_target_list().
+ * use ctk_target_list_add_image_targets() and
+ * ctk_drag_dest_set_target_list().
  *
  * Since: 2.6
  */
 void
-gtk_drag_dest_add_image_targets (GtkWidget *widget)
+ctk_drag_dest_add_image_targets (GtkWidget *widget)
 {
   GtkTargetList *target_list;
 
-  target_list = gtk_drag_dest_get_target_list (widget);
+  target_list = ctk_drag_dest_get_target_list (widget);
   if (target_list)
-    gtk_target_list_ref (target_list);
+    ctk_target_list_ref (target_list);
   else
-    target_list = gtk_target_list_new (NULL, 0);
-  gtk_target_list_add_image_targets (target_list, 0, FALSE);
-  gtk_drag_dest_set_target_list (widget, target_list);
-  gtk_target_list_unref (target_list);
+    target_list = ctk_target_list_new (NULL, 0);
+  ctk_target_list_add_image_targets (target_list, 0, FALSE);
+  ctk_drag_dest_set_target_list (widget, target_list);
+  ctk_target_list_unref (target_list);
 }
 
 /**
- * gtk_drag_dest_add_uri_targets: (method)
+ * ctk_drag_dest_add_uri_targets: (method)
  * @widget: a #GtkWidget that’s a drag destination
  *
  * Add the URI targets supported by #GtkSelectionData to
  * the target list of the drag destination. The targets
  * are added with @info = 0. If you need another value,
- * use gtk_target_list_add_uri_targets() and
- * gtk_drag_dest_set_target_list().
+ * use ctk_target_list_add_uri_targets() and
+ * ctk_drag_dest_set_target_list().
  *
  * Since: 2.6
  */
 void
-gtk_drag_dest_add_uri_targets (GtkWidget *widget)
+ctk_drag_dest_add_uri_targets (GtkWidget *widget)
 {
   GtkTargetList *target_list;
 
-  target_list = gtk_drag_dest_get_target_list (widget);
+  target_list = ctk_drag_dest_get_target_list (widget);
   if (target_list)
-    gtk_target_list_ref (target_list);
+    ctk_target_list_ref (target_list);
   else
-    target_list = gtk_target_list_new (NULL, 0);
-  gtk_target_list_add_uri_targets (target_list, 0);
-  gtk_drag_dest_set_target_list (widget, target_list);
-  gtk_target_list_unref (target_list);
+    target_list = ctk_target_list_new (NULL, 0);
+  ctk_target_list_add_uri_targets (target_list, 0);
+  ctk_drag_dest_set_target_list (widget, target_list);
+  ctk_target_list_unref (target_list);
 }
 
 /**
- * gtk_drag_dest_set_track_motion: (method)
+ * ctk_drag_dest_set_track_motion: (method)
  * @widget: a #GtkWidget that’s a drag destination
  * @track_motion: whether to accept all targets
  *
@@ -397,7 +397,7 @@ gtk_drag_dest_add_uri_targets (GtkWidget *widget)
  * Since: 2.10
  */
 void
-gtk_drag_dest_set_track_motion (GtkWidget *widget,
+ctk_drag_dest_set_track_motion (GtkWidget *widget,
                                 gboolean   track_motion)
 {
   GtkDragDestSite *site;
@@ -412,7 +412,7 @@ gtk_drag_dest_set_track_motion (GtkWidget *widget,
 }
 
 /**
- * gtk_drag_dest_get_track_motion: (method)
+ * ctk_drag_dest_get_track_motion: (method)
  * @widget: a #GtkWidget that’s a drag destination
  *
  * Returns whether the widget has been configured to always
@@ -424,7 +424,7 @@ gtk_drag_dest_set_track_motion (GtkWidget *widget,
  * Since: 2.10
  */
 gboolean
-gtk_drag_dest_get_track_motion (GtkWidget *widget)
+ctk_drag_dest_get_track_motion (GtkWidget *widget)
 {
   GtkDragDestSite *site;
 
@@ -439,16 +439,16 @@ gtk_drag_dest_get_track_motion (GtkWidget *widget)
 }
 
 /**
- * gtk_drag_dest_find_target: (method)
+ * ctk_drag_dest_find_target: (method)
  * @widget: drag destination widget
  * @context: drag context
  * @target_list: (allow-none): list of droppable targets, or %NULL to use
- *    gtk_drag_dest_get_target_list (@widget).
+ *    ctk_drag_dest_get_target_list (@widget).
  *
  * Looks for a match between the supported targets of @context and the
  * @dest_target_list, returning the first matching target, otherwise
  * returning %GDK_NONE. @dest_target_list should usually be the return
- * value from gtk_drag_dest_get_target_list(), but some widgets may
+ * value from ctk_drag_dest_get_target_list(), but some widgets may
  * have different valid targets for different parts of the widget; in
  * that case, they will have to implement a drag_motion handler that
  * passes the correct target list to this function.
@@ -457,7 +457,7 @@ gtk_drag_dest_get_track_motion (GtkWidget *widget)
  *     and the dest can accept, or %GDK_NONE
  */
 GdkAtom
-gtk_drag_dest_find_target (GtkWidget      *widget,
+ctk_drag_dest_find_target (GtkWidget      *widget,
                            GdkDragContext *context,
                            GtkTargetList  *target_list)
 {
@@ -468,9 +468,9 @@ gtk_drag_dest_find_target (GtkWidget      *widget,
   g_return_val_if_fail (GTK_IS_WIDGET (widget), GDK_NONE);
   g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_NONE);
 
-  source_widget = gtk_drag_get_source_widget (context);
+  source_widget = ctk_drag_get_source_widget (context);
   if (target_list == NULL)
-    target_list = gtk_drag_dest_get_target_list (widget);
+    target_list = ctk_drag_dest_get_target_list (widget);
 
   if (target_list == NULL)
     return GDK_NONE;

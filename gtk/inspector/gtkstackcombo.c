@@ -43,24 +43,24 @@ enum {
   PROP_STACK
 };
 
-G_DEFINE_TYPE (GtkStackCombo, gtk_stack_combo, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkStackCombo, ctk_stack_combo, GTK_TYPE_BOX)
 
 static void
-gtk_stack_combo_init (GtkStackCombo *self)
+ctk_stack_combo_init (GtkStackCombo *self)
 {
   self->stack = NULL;
-  self->combo = GTK_COMBO_BOX (gtk_combo_box_text_new ());
-  gtk_widget_show (GTK_WIDGET (self->combo));
-  gtk_box_pack_start (GTK_BOX (self), GTK_WIDGET (self->combo), FALSE, FALSE, 0);
+  self->combo = GTK_COMBO_BOX (ctk_combo_box_text_new ());
+  ctk_widget_show (GTK_WIDGET (self->combo));
+  ctk_box_pack_start (GTK_BOX (self), GTK_WIDGET (self->combo), FALSE, FALSE, 0);
 }
 
-static void gtk_stack_combo_set_stack (GtkStackCombo *self,
+static void ctk_stack_combo_set_stack (GtkStackCombo *self,
                                        GtkStack      *stack);
 
 static void
 rebuild_combo (GtkStackCombo *self)
 {
-  gtk_stack_combo_set_stack (self, self->stack);
+  ctk_stack_combo_set_stack (self, self->stack);
 }
 
 static void
@@ -76,16 +76,16 @@ add_child (GtkWidget     *widget,
   g_signal_handlers_disconnect_by_func (widget, G_CALLBACK (on_child_visible_changed), self);
   g_signal_connect_swapped (widget, "notify::visible", G_CALLBACK (on_child_visible_changed), self);
 
-  if (gtk_widget_get_visible (widget))
+  if (ctk_widget_get_visible (widget))
     {
       char *name, *title;
 
-      gtk_container_child_get (GTK_CONTAINER (self->stack), widget,
+      ctk_container_child_get (GTK_CONTAINER (self->stack), widget,
                                "name", &name,
                               "title", &title,
                                NULL);
 
-      gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (self->combo), name, title);
+      ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (self->combo), name, title);
 
       g_free (name);
       g_free (title);
@@ -95,13 +95,13 @@ add_child (GtkWidget     *widget,
 static void
 populate_combo (GtkStackCombo *self)
 {
-  gtk_container_foreach (GTK_CONTAINER (self->stack), (GtkCallback)add_child, self);
+  ctk_container_foreach (GTK_CONTAINER (self->stack), (GtkCallback)add_child, self);
 }
 
 static void
 clear_combo (GtkStackCombo *self)
 {
-  gtk_combo_box_text_remove_all (GTK_COMBO_BOX_TEXT (self->combo));
+  ctk_combo_box_text_remove_all (GTK_COMBO_BOX_TEXT (self->combo));
 }
 
 static void
@@ -141,7 +141,7 @@ connect_stack_signals (GtkStackCombo *self)
 }
 
 static void
-gtk_stack_combo_set_stack (GtkStackCombo *self,
+ctk_stack_combo_set_stack (GtkStackCombo *self,
                            GtkStack      *stack)
 {
   if (stack)
@@ -163,7 +163,7 @@ gtk_stack_combo_set_stack (GtkStackCombo *self,
 }
 
 static void
-gtk_stack_combo_get_property (GObject    *object,
+ctk_stack_combo_get_property (GObject    *object,
                               guint       prop_id,
                               GValue     *value,
                               GParamSpec *pspec)
@@ -183,7 +183,7 @@ gtk_stack_combo_get_property (GObject    *object,
 }
 
 static void
-gtk_stack_combo_set_property (GObject      *object,
+ctk_stack_combo_set_property (GObject      *object,
                               guint         prop_id,
                               const GValue *value,
                               GParamSpec   *pspec)
@@ -195,7 +195,7 @@ gtk_stack_combo_set_property (GObject      *object,
     case PROP_STACK:
       if (self->stack != g_value_get_object (value))
         {
-          gtk_stack_combo_set_stack (self, g_value_get_object (value));
+          ctk_stack_combo_set_stack (self, g_value_get_object (value));
           g_object_notify (G_OBJECT (self), "stack");
         }
       break;
@@ -207,24 +207,24 @@ gtk_stack_combo_set_property (GObject      *object,
 }
 
 static void
-gtk_stack_combo_dispose (GObject *object)
+ctk_stack_combo_dispose (GObject *object)
 {
   GtkStackCombo *self = GTK_STACK_COMBO (object);
 
-  gtk_stack_combo_set_stack (self, NULL);
+  ctk_stack_combo_set_stack (self, NULL);
 
-  G_OBJECT_CLASS (gtk_stack_combo_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ctk_stack_combo_parent_class)->dispose (object);
 }
 
 static void
-gtk_stack_combo_class_init (GtkStackComboClass *class)
+ctk_stack_combo_class_init (GtkStackComboClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
 
-  object_class->get_property = gtk_stack_combo_get_property;
-  object_class->set_property = gtk_stack_combo_set_property;
-  object_class->dispose = gtk_stack_combo_dispose;
+  object_class->get_property = ctk_stack_combo_get_property;
+  object_class->set_property = ctk_stack_combo_set_property;
+  object_class->dispose = ctk_stack_combo_dispose;
 
   g_object_class_install_property (object_class,
                                    PROP_STACK,
@@ -235,5 +235,5 @@ gtk_stack_combo_class_init (GtkStackComboClass *class)
                                                         GTK_PARAM_READWRITE |
                                                         G_PARAM_CONSTRUCT));
 
-  gtk_widget_class_set_css_name (widget_class, "stackcombo");
+  ctk_widget_class_set_css_name (widget_class, "stackcombo");
 }

@@ -774,10 +774,10 @@ msgstr "Vērtība"
 
 #: gtk/deprecated/gtkradioaction.c:121
 msgid ""
-"The value returned by gtk_radio_action_get_current_value() when this action "
+"The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
 msgstr ""
-"gtk_radio_action_get_current_value() atgrieztā vērtība, kad šī darbība ir "
+"ctk_radio_action_get_current_value() atgrieztā vērtība, kad šī darbība ir "
 "pašreizējā darbība tās grupai."
 
 #: gtk/deprecated/gtkradioaction.c:139 gtk/gtkradiobutton.c:184
@@ -1235,10 +1235,10 @@ msgstr "Logo"
 #: gtk/gtkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 msgstr ""
 "Logo “Par” kastei. Ja šis nav iestatīts, tas ir noklusēts pēc "
-"gtk_window_get_default_icon_list()"
+"ctk_window_get_default_icon_list()"
 
 #: gtk/gtkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -3419,10 +3419,10 @@ msgstr "Progresa pulsa solis"
 #: gtk/gtkentry.c:1094
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
-"each call to gtk_entry_progress_pulse()"
+"each call to ctk_entry_progress_pulse()"
 msgstr ""
 "Daļa no kopējā ieraksta platuma, par kādu pārvietot progresa lēkājošo bloku "
-"katram izsaukumam uz gtk_entry_progress_pulse()"
+"katram izsaukumam uz ctk_entry_progress_pulse()"
 
 #: gtk/gtkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -9034,8 +9034,8 @@ msgid "No show all"
 msgstr "Nerādīt visu"
 
 #: gtk/gtkwidget.c:1264
-msgid "Whether gtk_widget_show_all() should not affect this widget"
-msgstr "Vai gtk_widget_show_all() nevajadzētu ietekmēt šo logdaļu"
+msgid "Whether ctk_widget_show_all() should not affect this widget"
+msgstr "Vai ctk_widget_show_all() nevajadzētu ietekmēt šo logdaļu"
 
 #: gtk/gtkwidget.c:1286
 msgid "Whether this widget has a tooltip"
